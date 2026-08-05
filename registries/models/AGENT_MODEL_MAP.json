@@ -17,7 +17,10 @@
       "mulerouter"
     ],
     "redistribution": "6 agents across 6 primary pools for rate-limit isolation",
-    "constitutional_rule": "deepseek-v4-pro, glm-5.2, qwen3.8-max, and MiniMax-M3 may serve 666_JUDGE and 999_SEAL roles. MiniMax-M3 reinstated 2026-08-03 after endpoint correction + SHADOW-MM-001 resolution."
+    "constitutional_rule": "deepseek-v4-pro, glm-5.2, qwen3.8-max, and MiniMax-M3 may serve 666_JUDGE and 999_SEAL roles. MiniMax-M3 reinstated 2026-08-03 after endpoint correction + SHADOW-MM-001 resolution.",
+    "balance_policy": "NO static balances. Use FED :7074 (fed_status tool or curl :7074/health → providers[].balance_usd). Any balance_usd in this file is STALE and must be treated as FALSE.",
+    "last_purged_balances": "2026-08-05T07:05:00Z by 333-AGI",
+    "canonical_balance_source": "FED :7074 (token_bank.db, live API probes)"
   },
   "providers": [
     {
@@ -28,7 +31,6 @@
       "api_key_ref": "secrets::DEEPSEEK_API_KEY",
       "billing_model": "prepaid",
       "billing_cycle": "top-up",
-      "balance_usd": 18.53,
       "balance_checked": "2026-07-30T14:19:04.877319+00:00",
       "data_retention_days": 0,
       "cloud_act_exposed": false,
@@ -37,7 +39,10 @@
         "deepseek-v4-pro",
         "deepseek-v4-flash"
       ],
-      "last_verified": "2026-07-20"
+      "last_verified": "2026-07-20",
+      "balance_source": "FED ::7074 (fed_status / curl :7074/health)",
+      "balance_note": "PURGED 2026-08-05 by 333-AGI. Static balance (was 18.53) removed. Use FED :7074 for live balance -- never trust cached registry.",
+      "balance_checked_note": "See FED :7074 for last probe timestamp"
     },
     {
       "provider_id": "qwen-token-plan",
@@ -60,7 +65,7 @@
       "docs": "https://docs.qwencloud.com/token-plan/personal/token-plan-personal",
       "data_retention_days": "unknown",
       "cloud_act_exposed": false,
-      "status": "QUOTA_EXHAUSTED",
+      "status": "ACTIVE",
       "route": "direct",
       "dialect": "openai_chat",
       "dialect_note": "Standard OpenAI-compatible /v1/chat/completions. No model name translation needed — use exact model IDs as returned by /v1/models.",
@@ -117,7 +122,7 @@
       "plan_quota_note": "Team Edition: MONTHLY quota only, NO 5hr/7day window limits. Standard 25K/mo, Pro 100K/mo, Max 250K/mo per seat.",
       "plan_concurrent_note": "Team Edition: no documented concurrent agent limit (unlike Personal)",
       "enabled": false,
-      "status_note": "2026-08-04: quota exhausted (429), disabled per F13 directive. Config preserved."
+      "status_note": "STATUS CORRECTED 2026-08-05 by 333-AGI. Previously QUOTA_EXHAUSTED — exhaustion was for qwen-token-plan-individual (Pool C, RATE_LIMITED), not TEAM pool (Pool D). TEAM pool verified: $150 seat value, 3 seats, 21 models probed HTTP 200, last verified 2026-08-04. Pool D serves 555-ASI primary + Arif primary (qwen3.8-max)."
     },
     {
       "provider_id": "minimax",
@@ -127,7 +132,6 @@
       "api_key_ref": "secrets::MINIMAX_PLUGIN_API_KEY (active verified 2026-08-02) | secrets::MINIMAX_API_KEY (legacy, may be invalid)",
       "billing_model": "monthly_token_plan",
       "billing_cycle": "monthly",
-      "balance_usd": null,
       "data_retention_days": "unknown",
       "cloud_act_exposed": false,
       "status": "ACTIVE",
@@ -148,7 +152,9 @@
         "MiniMax-M2.5",
         "MiniMax-M2.1",
         "MiniMax-M2"
-      ]
+      ],
+      "balance_source": "FED ::7074 (fed_status / curl :7074/health)",
+      "balance_note": "PURGED 2026-08-05 by 333-AGI. Static balance (was None) removed. Use FED :7074 for live balance -- never trust cached registry."
     },
     {
       "provider_id": "bailian-token-plan",
@@ -162,8 +168,7 @@
       "billing_cycle": "monthly (31 days remaining)",
       "plan": "Individual Pro",
       "portal": "https://home.qwencloud.com/api-keys",
-      "balance_usd": 208.54,
-      "balance_note": "Total spend July 2026",
+      "balance_note": "PURGED 2026-08-05 by 333-AGI. Static balance (was 208.54) removed. Use FED :7074 for live balance -- never trust cached registry.",
       "data_retention_days": "unknown",
       "cloud_act_exposed": false,
       "status": "ACTIVE",
@@ -193,7 +198,8 @@
         "qwen-image-2.0-pro"
       ],
       "last_verified": "2026-07-31",
-      "note": "KEY ROTATED 2026-07-31: Arif activated Qwen Cloud Token Plan (Individual Pro, home.qwencloud.com). New primary key (sk-sp-H...) provides 9 core models. Old Bailian key (sk-sp-D...) retained as QWEN_BAILIAN_KEY fallback for flash/kimi/minimax models. Same endpoint for both keys. SPOF still applies — 9 of 14 agents route through this single endpoint."
+      "note": "KEY ROTATED 2026-07-31: Arif activated Qwen Cloud Token Plan (Individual Pro, home.qwencloud.com). New primary key (sk-sp-H...) provides 9 core models. Old Bailian key (sk-sp-D...) retained as QWEN_BAILIAN_KEY fallback for flash/kimi/minimax models. Same endpoint for both keys. SPOF still applies — 9 of 14 agents route through this single endpoint.",
+      "balance_source": "FED ::7074 (fed_status / curl :7074/health)"
     },
     {
       "provider_id": "tokenrouter",
@@ -203,7 +209,6 @@
       "api_key_ref": "secrets::TOKENROUTER_API_KEY",
       "billing_model": "prepaid",
       "billing_cycle": "top_up",
-      "balance_usd": 59.96,
       "data_retention_days": 0,
       "cloud_act_exposed": true,
       "status": "PARKED",
@@ -230,7 +235,9 @@
         "$200 developer credits available",
         "Kimi K3 FREE tier — TokenRouter GPU cluster, limited-time"
       ],
-      "note": "PARKED 2026-08-02. Drain $59.94 balance, no top-ups. SHADOW-TR-001: K3 max_tokens capped ~1500 via TR (native 1M); DeepSeek returns EMPTY via TR, perfect direct. TR is gateway contamination. Replaced by direct Qwen Plan + OpenCode Go/Zen for primary routes."
+      "note": "PARKED 2026-08-02. Drain $59.94 balance, no top-ups. SHADOW-TR-001: K3 max_tokens capped ~1500 via TR (native 1M); DeepSeek returns EMPTY via TR, perfect direct. TR is gateway contamination. Replaced by direct Qwen Plan + OpenCode Go/Zen for primary routes.",
+      "balance_source": "FED ::7074 (fed_status / curl :7074/health)",
+      "balance_note": "PURGED 2026-08-05 by 333-AGI. Static balance (was 59.96) removed. Use FED :7074 for live balance -- never trust cached registry."
     },
     {
       "provider_id": "mimo-platform",
@@ -240,7 +247,6 @@
       "api_key_ref": "secrets::MIMO_API_KEY",
       "billing_model": "monthly_token_plan",
       "billing_cycle": "renews 2026-07-15",
-      "balance_usd": null,
       "plan_details": "Lite Monthly, 4.1B credits, auto-renewal",
       "data_retention_days": "unknown",
       "cloud_act_exposed": false,
@@ -251,7 +257,9 @@
         "mimo-v2.5"
       ],
       "last_verified": "2026-07-20",
-      "note": "Cheap sovereign bypass. Note: opencode-go exposes MiMo V2.5/V2.5-Pro at SAME price + massive volume (150,400 req/mo on V2.5 Free path)."
+      "note": "Cheap sovereign bypass. Note: opencode-go exposes MiMo V2.5/V2.5-Pro at SAME price + massive volume (150,400 req/mo on V2.5 Free path).",
+      "balance_source": "FED ::7074 (fed_status / curl :7074/health)",
+      "balance_note": "PURGED 2026-08-05 by 333-AGI. Static balance (was None) removed. Use FED :7074 for live balance -- never trust cached registry."
     },
     {
       "provider_id": "groq",
@@ -261,12 +269,13 @@
       "api_key_ref": "secrets::GROQ_API_KEY",
       "billing_model": "free_tier",
       "billing_cycle": "daily_limit",
-      "balance_usd": 0,
       "data_retention_days": "unknown",
       "cloud_act_exposed": true,
       "status": "ACTIVE",
       "note": "Free tier only. Fast inference (560-1000 t/s). Daily rate limits. Used for lightweight/fallback tasks. US jurisdiction — not for sovereign data.",
-      "last_verified": "2026-07-20"
+      "last_verified": "2026-07-20",
+      "balance_source": "FED ::7074 (fed_status / curl :7074/health)",
+      "balance_note": "PURGED 2026-08-05 by 333-AGI. Static balance (was 0) removed. Use FED :7074 for live balance -- never trust cached registry."
     },
     {
       "provider_id": "gemini",
@@ -276,12 +285,13 @@
       "api_key_ref": "secrets::GEMINI_API_KEY",
       "billing_model": "free_tier",
       "billing_cycle": "daily_limit",
-      "balance_usd": 0,
       "data_retention_days": "unknown",
       "cloud_act_exposed": true,
       "status": "ACTIVE",
       "note": "Permanent free tier. 1,500 req/day, 10-15 RPM, 250K TPM. Gemini Flash models — best free baseline. Multimodal. Google account only, no credit card. US jurisdiction — not for sovereign data.",
-      "last_verified": "2026-07-20"
+      "last_verified": "2026-07-20",
+      "balance_source": "FED ::7074 (fed_status / curl :7074/health)",
+      "balance_note": "PURGED 2026-08-05 by 333-AGI. Static balance (was 0) removed. Use FED :7074 for live balance -- never trust cached registry."
     },
     {
       "provider_id": "sea-lion",
@@ -291,12 +301,13 @@
       "api_key_ref": "secrets::SEA_LION_API_KEY",
       "billing_model": "free_trial",
       "billing_cycle": "trial_key",
-      "balance_usd": 0,
       "data_retention_days": "unknown",
       "cloud_act_exposed": false,
       "status": "ACTIVE",
       "note": "Trial key STILL ACTIVE (probed 2026-07-29). 11 models available including new v3.5 and v4.5 variants. 10 RPM limit. Best BM/SEA language quality. SG jurisdiction preferred for ASEAN data sovereignty.",
-      "last_verified": "2026-07-29"
+      "last_verified": "2026-07-29",
+      "balance_source": "FED ::7074 (fed_status / curl :7074/health)",
+      "balance_note": "PURGED 2026-08-05 by 333-AGI. Static balance (was 0) removed. Use FED :7074 for live balance -- never trust cached registry."
     },
     {
       "provider_id": "kimi-moonshot",
@@ -311,7 +322,6 @@
       "api_key_ref": "secrets::KIMI_API_KEY",
       "billing_model": "monthly",
       "billing_cycle": "monthly",
-      "balance_usd": null,
       "data_retention_days": "unknown",
       "cloud_act_exposed": false,
       "status": "ACTIVE",
@@ -321,7 +331,9 @@
         "kimi-for-coding-highspeed"
       ],
       "last_verified": "2026-07-28",
-      "note": "Kimi K3 supersedes K2.7 Code as flagship. K3: 2.8T MoE, 104B activated, 896 experts (16/token), 1M context, KDA + Gated MLA, MoonViT-V2, always-on thinking with reasoning_effort. First open 3T-class model."
+      "note": "Kimi K3 supersedes K2.7 Code as flagship. K3: 2.8T MoE, 104B activated, 896 experts (16/token), 1M context, KDA + Gated MLA, MoonViT-V2, always-on thinking with reasoning_effort. First open 3T-class model.",
+      "balance_source": "FED ::7074 (fed_status / curl :7074/health)",
+      "balance_note": "PURGED 2026-08-05 by 333-AGI. Static balance (was None) removed. Use FED :7074 for live balance -- never trust cached registry."
     },
     {
       "provider_id": "ollama",
@@ -331,12 +343,13 @@
       "api_key_ref": null,
       "billing_model": "free_local",
       "billing_cycle": null,
-      "balance_usd": 0,
       "data_retention_days": 0,
       "cloud_act_exposed": false,
       "status": "ACTIVE",
       "note": "Local CPU inference. Blind survival knife — works when all remote models are down. No API cost. Slow (4.5s cold start). Used for embeddings (bge-m3) and last-resort fallback.",
-      "last_verified": "2026-07-20"
+      "last_verified": "2026-07-20",
+      "balance_source": "FED ::7074 (fed_status / curl :7074/health)",
+      "balance_note": "PURGED 2026-08-05 by 333-AGI. Static balance (was 0) removed. Use FED :7074 for live balance -- never trust cached registry."
     },
     {
       "provider_id": "openrouter",
@@ -347,14 +360,16 @@
       "management_key_ref": "secrets::OPENROUTER_MANAGEMENT_KEY",
       "billing_model": "pay_per_token",
       "billing_cycle": "per_call",
-      "balance_usd": 0.0,
       "data_retention_days": 0,
       "zdr_supported": true,
       "cloud_act_exposed": true,
       "status": "DEGRADED",
       "note": "DEGRADED 2026-08-02: free tier saturated daily (200/200 req). FLAME cascade demoted OpenRouter to T10 fallback-only. Replacement: OpenCode Zen FREE models (Big Pickle, DeepSeek V4 Flash Free, MiMo-V2.5 Free, Ling-3.0-flash Free, North Mini Code Free, Nemotron 3 Ultra Free).",
       "last_verified": "2026-07-24",
-      "balance_checked": "2026-07-30T14:19:05.177533+00:00"
+      "balance_checked": "2026-07-30T14:19:05.177533+00:00",
+      "balance_source": "FED ::7074 (fed_status / curl :7074/health)",
+      "balance_note": "PURGED 2026-08-05 by 333-AGI. Static balance (was 0.0) removed. Use FED :7074 for live balance -- never trust cached registry.",
+      "balance_checked_note": "See FED :7074 for last probe timestamp"
     },
     {
       "provider_id": "opencode-go",
@@ -364,14 +379,15 @@
       "api_key_ref": null,
       "billing_model": "free_tier",
       "billing_cycle": "daily_limit",
-      "balance_usd": 0,
       "data_retention_days": "unknown",
       "cloud_act_exposed": false,
       "status": "DEAD",
       "note": "FREE tier via Xiaomi OpenCode Go. Access to MiMo V2.5 Free + DeepSeek V4 Flash Free. Used by Hermes for free-tier overflow. 4 models in free tier.",
       "last_verified": "2026-07-20",
       "enabled": false,
-      "status_note": "2026-08-04: 401 Insufficient balance. Config preserved."
+      "status_note": "2026-08-04: 401 Insufficient balance. Config preserved.",
+      "balance_source": "FED ::7074 (fed_status / curl :7074/health)",
+      "balance_note": "PURGED 2026-08-05 by 333-AGI. Static balance (was 0) removed. Use FED :7074 for live balance -- never trust cached registry."
     },
     {
       "provider_id": "azure-openai",
@@ -381,12 +397,13 @@
       "api_key_ref": "secrets::AZURE_OPENAI_API_KEY",
       "billing_model": "pay_per_token",
       "billing_cycle": "monthly",
-      "balance_usd": null,
       "data_retention_days": "unknown",
       "cloud_act_exposed": true,
       "status": "DEPRECATING",
       "note": "RETIRING October 2026. GPT-4.1-mini only. Kept for legacy Codex fallback. Do NOT add new workloads. US jurisdiction.",
-      "last_verified": "2026-06-04"
+      "last_verified": "2026-06-04",
+      "balance_source": "FED ::7074 (fed_status / curl :7074/health)",
+      "balance_note": "PURGED 2026-08-05 by 333-AGI. Static balance (was None) removed. Use FED :7074 for live balance -- never trust cached registry."
     },
     {
       "provider_id": "cerebras",
@@ -396,13 +413,14 @@
       "api_key_ref": "secrets::CEREBRAS_API_KEY",
       "billing_model": "credit",
       "billing_cycle": "one_time",
-      "balance_usd": 5.0,
       "credit_expires": "2026-08-20",
       "data_retention_days": "unknown",
       "cloud_act_exposed": true,
       "status": "DEPRECATING",
       "note": "DEPRECATING 2026-08-02: $5 free credit expires 2026-08-20 (~18 days). 3 models (gpt-oss-120b, gemma-4-31b, zai-glm-4.7) will vanish from free tier.",
-      "last_verified": "2026-07-29"
+      "last_verified": "2026-07-29",
+      "balance_source": "FED ::7074 (fed_status / curl :7074/health)",
+      "balance_note": "PURGED 2026-08-05 by 333-AGI. Static balance (was 5.0) removed. Use FED :7074 for live balance -- never trust cached registry."
     },
     {
       "provider_id": "xai",
@@ -412,12 +430,13 @@
       "api_key_ref": "secrets::XAI_API_KEY",
       "billing_model": "pay_per_token",
       "billing_cycle": "monthly",
-      "balance_usd": null,
       "data_retention_days": "unknown",
       "cloud_act_exposed": true,
       "status": "ACTIVE",
       "note": "Grok Build primary. US jurisdiction — not for sovereign data.",
-      "last_verified": "2026-07-20"
+      "last_verified": "2026-07-20",
+      "balance_source": "FED ::7074 (fed_status / curl :7074/health)",
+      "balance_note": "PURGED 2026-08-05 by 333-AGI. Static balance (was None) removed. Use FED :7074 for live balance -- never trust cached registry."
     },
     {
       "provider_id": "zhipu-z-ai",
@@ -427,7 +446,6 @@
       "api_key_ref": null,
       "billing_model": "pay_per_token + flat_plan",
       "billing_cycle": "monthly",
-      "balance_usd": null,
       "data_retention_days": "unknown",
       "cloud_act_exposed": false,
       "status": "UNREGISTERED",
@@ -444,7 +462,9 @@
       },
       "last_verified": "2026-07-29",
       "note": "ADDED 2026-07-29 from tech-insider.org article. NOT yet registered as live provider — API key not acquired. Models accessed via Bailian Token Plan (cheaper: $0.30/$1.20). Z.ai direct at $1.40/$4.40 — 4.7x more expensive than Bailian. Flat $72/mo Coding Plan Pro available. MIT open weights via zai-org/GLM-5 on Hugging Face.",
-      "registration_status": "pending_api_key"
+      "registration_status": "pending_api_key",
+      "balance_source": "FED ::7074 (fed_status / curl :7074/health)",
+      "balance_note": "PURGED 2026-08-05 by 333-AGI. Static balance (was None) removed. Use FED :7074 for live balance -- never trust cached registry."
     },
     {
       "provider_id": "mulerouter",
@@ -454,7 +474,6 @@
       "api_key_ref": "secrets::MULEROUTER_API_KEY",
       "billing_model": "pay-as-you-go",
       "billing_cycle": "per-call",
-      "balance_usd": 0.5,
       "balance_checked": "2026-07-30T13:39:50.899272Z",
       "data_retention_days": 0,
       "cloud_act_exposed": false,
@@ -493,7 +512,10 @@
       "probed_by": "opencode FI-001 333-AGI",
       "routing_note": "PRIMARY for vision + Hermes chat. BACKUP for constitutional DeepSeek V4 Pro.",
       "enabled": false,
-      "status_note": "2026-08-04: negative balance (-0.75 credits). Config preserved."
+      "status_note": "2026-08-04: negative balance (-0.75 credits). Config preserved.",
+      "balance_source": "FED ::7074 (fed_status / curl :7074/health)",
+      "balance_note": "PURGED 2026-08-05 by 333-AGI. Static balance (was 0.5) removed. Use FED :7074 for live balance -- never trust cached registry.",
+      "balance_checked_note": "See FED :7074 for last probe timestamp"
     },
     {
       "provider_id": "dashscope",
@@ -513,11 +535,12 @@
       "api_key_ref": "secrets::OPENCODE_ZEN_API_KEY",
       "billing_model": "pay_as_you_go",
       "billing_cycle": "per_request",
-      "balance_usd": null,
       "data_retention_days": 0,
       "cloud_act_exposed": false,
       "status": "ACTIVE",
-      "note": "NEW 2026-08-02 per F13 ratification. 50+ models PAYG plus 7 transient FREE (big-pickle, deepseek-v4-flash-free, mimo-v2.5-free, ling-3.0-flash-free, north-mini-code-free, nemotron-3-ultra-free, laguna-s-2.1-free). Auto-reload $20 when balance < $5 (DISABLE recommended for im-miskin). Claude at $5/$25 (Opus 5) within Zen = same as Anthropic direct intro. Sonnet 5 $2/$10 via Zen = CHEAPER than direct. See https://opencode.ai/docs/zen/ for full pricing table."
+      "note": "NEW 2026-08-02 per F13 ratification. 50+ models PAYG plus 7 transient FREE (big-pickle, deepseek-v4-flash-free, mimo-v2.5-free, ling-3.0-flash-free, north-mini-code-free, nemotron-3-ultra-free, laguna-s-2.1-free). Auto-reload $20 when balance < $5 (DISABLE recommended for im-miskin). Claude at $5/$25 (Opus 5) within Zen = same as Anthropic direct intro. Sonnet 5 $2/$10 via Zen = CHEAPER than direct. See https://opencode.ai/docs/zen/ for full pricing table.",
+      "balance_source": "FED ::7074 (fed_status / curl :7074/health)",
+      "balance_note": "PURGED 2026-08-05 by 333-AGI. Static balance (was None) removed. Use FED :7074 for live balance -- never trust cached registry."
     }
   ],
   "models": [
@@ -7314,16 +7337,15 @@
     },
     {
       "agent_id": "555-ASI",
-      "primary_model": "qwen-token-plan/qwen3.6-flash",
+      "primary_model": "deepseek/deepseek-v4-flash",
       "fallback_chain": [
         "qwen-token-plan-individual/qwen3.6-flash",
-        "mimo-token-plan/mimo-v2.5-pro",
-        "deepseek/deepseek-v4-flash",
         "kimi/kimi-for-coding-highspeed",
-        "qwen-token-plan/qwen3.6-flash"
+        "ollama/qwen2.5-coder:3b"
       ],
-      "pool": "D",
-      "pool_name": "Qwen Team #2 (Bailian)"
+      "pool": "A",
+      "pool_name": "DeepSeek (Pool A, shared with 333-AGI)",
+      "_note": "2026-08-05: Switched from Qwen Pool D to DeepSeek Pool A — Qwen pool exhausted. deepseek-v4-flash chosen for cost/speed."
     },
     {
       "agent_id": "555-ASI-VISION",
