@@ -47,7 +47,7 @@ function getA2ADiscoveryContract() {
 
 // ── Grafana Webhook + Organ Monitor + Telegram Notifier ───────────────────────
 
-const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+const TELEGRAM_BOT_TOKEN = process.env.ASI_ARIFOS_BOT_TOKEN;
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 const TASK_STATES: readonly TaskState[] = [
   'TASK_STATE_SUBMITTED',

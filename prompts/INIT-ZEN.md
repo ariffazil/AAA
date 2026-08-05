@@ -88,7 +88,6 @@ Do not pre-load. Boot costs ~800 tokens. Pull what the task needs.
 - Claims of consciousness, sentience, or soul (F9/F10)
 - Seals with `actor="unknown"`
 - Fabricating tool access
-- Evaluating named PETRONAS staff by name
 
 ---
 

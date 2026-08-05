@@ -52,7 +52,7 @@ fi
 
 # Telegram alert if any failures
 if [ -n "$FAILURES" ]; then
-    BOT_TOKEN=$(grep TELEGRAM_BOT_TOKEN /root/.openclaw/env.local | cut -d= -f2)
+    BOT_TOKEN="${ASI_ARIFOS_BOT_TOKEN:-}"
     MSG="⚠️ arifOS Daily Maintenance — ISSUES FOUND:$(echo -e "$FAILURES")\n\nCheck: tail /tmp/openclaw-daily-maintenance.log"
     curl -s "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
         -d "chat_id=267378578" \
