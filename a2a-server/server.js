@@ -60,6 +60,9 @@ const { witnessGate, witnessGateSync } = require('./witness_gate');
 // ── G3 Predict Gate — pre-execution risk simulation (forged 2026-08-05) ─
 const { predictGate } = require('./predict_gate');
 
+// ── Orchestrator Agent — task lifecycle manager (forged 2026-08-05) ─
+const { getOrchestrator } = require('./orchestrator');
+
 const app = express();
 app.use(express.json({ limit: '12mb' }));
 
@@ -5213,6 +5216,53 @@ app.post('/predict', express.json(), (req, res) => {
   });
   res.setHeader('Cache-Control', 'no-store');
   res.json(prediction);
+});
+
+// ── ORCHESTRATOR ENDPOINTS — task lifecycle management (Step 6) ────
+
+app.post('/orchestrate', express.json(), async (req, res) => {
+  try {
+    const { intent, domain, tool, priority, constraints } = req.body || {};
+    if (!intent) return res.status(400).json({ error: 'intent required' });
+
+    const orchestrator = getOrchestrator(redisClient, null);
+    const task = orchestrator.createTask({ intent, domain, tool, priority, constraints });
+    res.status(201).json(task);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+app.post('/orchestrate/tick', async (req, res) => {
+  try {
+    const orchestrator = getOrchestrator(redisClient, null);
+    const result = await orchestrator.tick();
+    res.json(result);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+app.get('/orchestrate/stats', (req, res) => {
+  const orchestrator = getOrchestrator(redisClient, null);
+  res.json(orchestrator.stats());
+});
+
+app.get('/orchestrate/:taskId', (req, res) => {
+  const orchestrator = getOrchestrator(redisClient, null);
+  const task = orchestrator.getTask(req.params.taskId);
+  if (!task) return res.status(404).json({ error: 'task not found' });
+  res.json(task);
+});
+
+app.get('/orchestrate', (req, res) => {
+  const orchestrator = getOrchestrator(redisClient, null);
+  const filter = req.query.filter || 'all';
+  const tasks = orchestrator.listTasks(filter);
+  res.json({ filter, count: tasks.length, tasks: tasks.map(t => ({
+    task_id: t.task_id, state: t.state, intent: t.intent.substring(0, 60),
+    domain: t.domain, assigned_agent: t.assigned_agent, retry_count: t.retry_count,
+  }))});
 });
 
 app.get('/witness', (req, res) => {
