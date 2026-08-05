@@ -24,7 +24,7 @@
 | **VAULT999** | MEMORY | filesystem | Immutable sealed receipts (append-only hash chain). Canonical: `/root/arifOS/VAULT999/outcomes.jsonl` |
 | **FED** | ADVISORY | 7074 | Model route advisor — answers *where* to call |
 | **FLAME** | ADVISORY | 18901 | RM0 free-loop inference mesh |
-| **HERMES** | EDGE | 18087/18789 | Multimodal Telegram bridge |
+| **HERMES** | EDGE | 18089/18789 | Multimodal Telegram bridge |
 | **OpenClaw / OpenCode** | EDGE | (Telegram) | Edge agent bridge |
 
 ## Substrate services (data plane — Docker / local only)
