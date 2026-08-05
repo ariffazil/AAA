@@ -273,12 +273,12 @@
       "all"
     ],
     "model_rotation": {
-      "forge": "opencode-go/deepseek-v4-pro",
-      "auditor": "opencode-go/deepseek-v4-flash",
-      "ops": "opencode-go/deepseek-v4-flash",
-      "planner": "opencode-go/deepseek-v4-pro",
+      "forge": "qwen-token-plan/deepseek-v4-pro",
+      "auditor": "deepseek/deepseek-v4-pro",
+      "ops": "qwen-token-plan/deepseek-v4-flash",
+      "planner": "kimi/k3",
       "recovery": "ollama/qwen2.5-coder:3b",
-      "image-prompt-architect": "opencode-go/deepseek-v4-pro"
+      "image-prompt-architect": "qwen-token-plan/deepseek-v4-pro"
     }
   },
   "autonomy_tiers": {
@@ -817,9 +817,9 @@
   "identity_bound_at": "2026-07-29T13:55:07.275889+00:00",
   "route": {
     "agi": "deepseek/deepseek-v4-pro@direct",
-    "asi": "glm-5.2@tokenrouter",
-    "apex": "claude-sonnet-5@opencode-zen",
-    "doctrine": "SHADOW-TR-001: DS never via TokenRouter. GLM via TR fine for telemetry. Claude via Zen for judge path."
+    "asi": "glm-5.2@qwen-token-plan",
+    "apex": "minimax/MiniMax-M3@direct",
+    "doctrine": "SHADOW-TR-001: DS never via TokenRouter. Dead routes purged 2026-08-05 — tokenrouter PARKED, opencode-go DEAD. ASI rerouted to Qwen Token Plan. APEX rerouted to MiniMax M3 direct (F13 ratified)."
   },
   "trinity_models": {
     "agi": {
@@ -829,12 +829,12 @@
     },
     "asi": {
       "model": "glm-5.2",
-      "route": "tokenrouter",
+      "route": "qwen-token-plan",
       "role": "Core — remembers, watches"
     },
     "apex": {
-      "model": "claude-sonnet-5",
-      "route": "opencode-zen",
+      "model": "MiniMax-M3",
+      "route": "direct (api.minimax.io)",
       "role": "Soul — judges, frozen"
     }
   },

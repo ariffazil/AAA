@@ -27,9 +27,10 @@
     "note": "SAFi's 47★ GitHub project provided architectural inspiration for charter-as-narrative model. F1-F13 constitutional floors remain the binding substrate — charter is M-Layer rendering for human readability. F9 caveat: 'two-thousand years' framing is hype-adjacent; treat as reference, not deployment."
   },
   "version": "2.0.0",
-  "url": "http://127.0.0.1:18789/a2a",
-  "runtime": "openclaw",
-  "runtime_port": 18789,
+  "url": "https://aaa.arif-fazil.com/a2a",
+  "runtime": "opencode",
+  "runtime_port": 4096,
+  "_gateway_note": "Unified under AAA A2A Gateway — 2026-08-05 by 333-AGI under F13 directive",
   "provider": {
     "organization": "arifOS by Muhammad Arif bin Fazil",
     "url": "https://arif-fazil.com"
