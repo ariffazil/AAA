@@ -79,6 +79,18 @@ TOKENROUTER_PRICING = {
     "glm-5.2": {"input": 0.00, "output": 0.00},
 }
 
+# FLAME — Free inference mesh (:18901). Groq + Gemini free tiers. Zero cost.
+# Zen 2026-08-05: Added by 333-AGI under F13 directive "wire FLAME to FED".
+FLAME_PRICING = {
+    "flame-free": {"input": 0.00, "output": 0.00},
+    "qwen/qwen3.6-27b": {"input": 0.00, "output": 0.00},
+    "llama-3.3-70b-versatile": {"input": 0.00, "output": 0.00},
+    "openai/gpt-oss-120b": {"input": 0.00, "output": 0.00},
+    "openai/gpt-oss-20b": {"input": 0.00, "output": 0.00},
+    "llama-3.1-8b-instant": {"input": 0.00, "output": 0.00},
+    "gemini-2.5-flash": {"input": 0.00, "output": 0.00},
+}
+
 
 def _estimate_cost(provider_id: str, model_id: str, tokens_in: int, tokens_out: int) -> float:
     """Calculate estimated cost in USD. Zen 2026-08-02: added deepseek pricing."""
@@ -86,6 +98,9 @@ def _estimate_cost(provider_id: str, model_id: str, tokens_in: int, tokens_out: 
         "deepseek": DEEPSEEK_PRICING,
         "mulerouter": MULEROUTER_PRICING,
         "tokenrouter": TOKENROUTER_PRICING,
+        "flame": FLAME_PRICING,
+        "qwen-token-plan-team": DEEPSEEK_PRICING,  # Qwen routes deepseek models at similar pricing
+        "bailian-token-plan": DEEPSEEK_PRICING,  # Bailian also similar
     }
     pricing = tables.get(provider_id, {}).get(model_id, {"input": 0.50, "output": 2.00})
     return round((tokens_in / 1_000_000) * pricing["input"] + (tokens_out / 1_000_000) * pricing["output"], 8)
@@ -97,6 +112,9 @@ def _estimate_cost_per_1k(provider_id: str, model_id: str) -> dict:
         "deepseek": DEEPSEEK_PRICING,
         "mulerouter": MULEROUTER_PRICING,
         "tokenrouter": TOKENROUTER_PRICING,
+        "flame": FLAME_PRICING,
+        "qwen-token-plan-team": DEEPSEEK_PRICING,
+        "bailian-token-plan": DEEPSEEK_PRICING,
     }
     pricing = tables.get(provider_id, {}).get(model_id, {"input": 0.50, "output": 2.00})
     return {
@@ -496,6 +514,19 @@ MODEL_ROUTES = {
             "priority": 2,
         },
     ],
+    # FLAME — Free inference mesh (:18901). Groq + Gemini free tiers.
+    # Zen 2026-08-05: 333-AGI under F13 directive "wire FLAME to FED".
+    "flame-free": [
+        {
+            "provider": "flame",
+            "router": "direct",
+            "class": "direct",
+            "constitutional": False,
+            "shadow": None,
+            "priority": 1,
+            "notes": "FREE — RM0-TOOLS-FREELOOP. Auto-routes Groq→Gemini fallback.",
+        },
+    ],
 }
 
 # Modality boost map
@@ -521,13 +552,13 @@ CONSTITUTIONAL_ALLOWED = {
 # "Don't pick models, pick effort." — Thorsten Ball (Amp)
 # Effort overrides model parameter when set. Constitutional tier still gates authority.
 EFFORT_MODEL_MAP = {
-    "low": "deepseek-v4-flash",
+    "low": "flame-free",  # FREE tier via FLAME :18901 (Groq+Gemini) — Zen 2026-08-05
     "medium": "deepseek-v4-pro",
     "high": "deepseek-v4-pro",
     "ultra": "deepseek-v4-pro",
 }
 EFFORT_ALT_MODELS = {
-    "low": ["qwen3.6-flash", "glm-5.2"],
+    "low": ["deepseek-v4-flash", "qwen3.6-flash", "glm-5.2"],
     "medium": ["qwen3.8-max", "MiniMax-M3"],
     "high": ["MiniMax-M3"],
     "ultra": ["MiniMax-M3"],
