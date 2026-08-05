@@ -52,10 +52,11 @@ federation:
       src_files: 11525
       health: green
       role: constitutional_governor
-    arif-sites:
+    arif-fazil.com:
       git: synced
       health: green
       role: public_surface
+      note: "was arif-sites; GitHub rename 301 → ariffazil/arif-fazil.com"
     arifFlow:
       git: synced
       health: green
