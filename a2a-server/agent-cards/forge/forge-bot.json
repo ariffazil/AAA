@@ -1,0 +1,19 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "id": "forge-bot",
+  "name": "FORGE Bot — Gateway 3",
+  "class": "executor",
+  "bound_to": "333-AGI",
+  "power_band": "execution_shell",
+  "skills_prefix": ["FORGE-"],
+  "runtime_harness": "forge-bot",
+  "identity_anchor": "/opt/forge-bot/bot.py",
+  "mcp_servers": ["aforge"],
+  "description": "Telegram @arifOS_bot — A-FORGE execution gateway. Routes commands to A-FORGE :7071 for governed execution. Commands: /health, /status, /fq, /deploy, /who.",
+  "telegram": {"bot": "@arifOS_bot", "webhook": "https://forge.arif-fazil.com/webhook/forge"},
+  "authority": "EXECUTE_AFTER_SEAL",
+  "max_action_class": "MUTATE",
+  "status": "active",
+  "port": 8091
+}
