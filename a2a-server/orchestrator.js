@@ -82,7 +82,7 @@ const AGENT_PRIORITY = {
 // ── Orchestrator ──────────────────────────────────────────────────────
 
 class Orchestrator {
-    constructor(redisClient, inbox, cockpitPath) {
+    constructor(redisClient, inbox, cockpitPath, options = {}) {
         /** Redis client for persistence */
         this.redis = redisClient;
         /** Agent Inbox for task dispatch */
@@ -95,6 +95,29 @@ class Orchestrator {
         this.queueKey = 'aaa:orchestrator:queue';
         /** Active task counter */
         this.taskCount = 0;
+
+        // N6 (2026-08-05) — Orchestrator Wire Fix: bounded failure surface.
+        // Without these guards, a single dead agent / unreadable cockpit /
+        // unreachable NATS stalls the whole tick and leaves ASSIGNED tasks
+        // hanging forever. The federation experiences this as "orchestrator
+        // choke" — H9 confirmed-in-code, not-fixed in the closure map.
+        this.opts = Object.assign({
+            defaultTaskTimeoutMs: options.defaultTaskTimeoutMs ?? 30000,
+            cockpitStaleMs: options.cockpitStaleMs ?? 30000,
+            tickIdleMs: options.tickIdleMs ?? 60000,
+            tickDownMs: options.tickDownMs ?? 300000,
+            safeAgents: options.safeAgents || [
+                'arifos', 'a-forge', 'opencode', 'hermes',
+                '888-APEX', '333-AGI', '555-ASI',
+            ],
+        }, options);
+
+        // Tick telemetry — exposed by health()
+        this._lastTickAt = null;
+        this._lastTickError = null;
+        this._lastDispatchAt = null;
+        this._lastTickSummary = null;
+        this._stats = { ticks: 0, dispatched: 0, failed: 0, timedOut: 0 };
     }
 
     /**
@@ -136,24 +159,96 @@ class Orchestrator {
      * @returns {Promise<{dispatched: number, results: object[]}>}
      */
     async tick() {
+        const tickStart = Date.now();
+        this._stats.ticks++;
+
         const pending = Array.from(this.tasks.values())
             .filter(t => t.state === TASK_STATES.PENDING)
             .sort((a, b) => a.priority - b.priority);
 
-        const results = [];
-        for (const task of pending) {
-            try {
-                const result = await this._dispatchTask(task);
-                results.push(result);
-            } catch (e) {
-                results.push({ task_id: task.task_id, error: e.message });
-            }
-        }
+        // N6 — Run dispatches in parallel with per-task deadline_ms cap.
+        // Sequential awaits were the silent-hang chokepoint: one slow
+        // inbox.send blocked every later task until the whole federation
+        // timed out. Bounded parallelism + explicit timeout restores
+        // liveness under partial failure.
+        const tickResults = await Promise.all(pending.map(task => this._dispatchBounded(task)));
 
-        return {
-            dispatched: results.filter(r => r.dispatched).length,
-            results,
+        const dispatched = tickResults.filter(r => r && r.dispatched).length;
+        const failed = tickResults.filter(r => r && r.failed).length;
+        const timedOut = tickResults.filter(r => r && r.timedOut).length;
+
+        this._stats.dispatched += dispatched;
+        this._stats.failed += failed;
+        this._stats.timedOut += timedOut;
+
+        const summary = {
+            dispatched,
+            failed,
+            timedOut,
+            total: pending.length,
+            durationMs: Date.now() - tickStart,
         };
+        this._lastTickAt = Date.now();
+        this._lastTickError = null;
+        this._lastTickSummary = summary;
+
+        return { dispatched, failed, timedOut, total: pending.length, results: tickResults };
+    }
+
+    /**
+     * N6 — Wrap a single dispatch in a deadline-bounded race. Returns a
+     * structured result instead of throwing so the orchestrator tick stays
+     * alive even when one task wedges the inbox or the agent is dead.
+     */
+    async _dispatchBounded(task) {
+        const deadlineMs = Math.min(
+            task.deadline_ms || this.opts.defaultTaskTimeoutMs,
+            this.opts.defaultTaskTimeoutMs,
+        );
+
+        let timer;
+        const timeout = new Promise((_, reject) => {
+            timer = setTimeout(
+                () => reject(new Error(`dispatch timed out after ${deadlineMs}ms`)),
+                deadlineMs,
+            );
+        });
+
+        try {
+            const result = await Promise.race([this._dispatchTask(task), timeout]);
+            clearTimeout(timer);
+            return result || { task_id: task.task_id, dispatched: false, error: 'no result' };
+        } catch (e) {
+            clearTimeout(timer);
+            // N6 — Surface failure to task state and counters. Previously
+            // an exception here was swallowed at the tick level, leaving
+            // the task in ASSIGNED/RETRYING limbo until manual cleanup.
+            task.state = TASK_STATES.RETRYING;
+            task.error = `dispatch_failed: ${e.message}`;
+            task.updated_at = new Date().toISOString();
+            task.attempt_history.push({
+                agent: task.assigned_agent || 'unknown',
+                timestamp: new Date().toISOString(),
+                state: task.state,
+                error: e.message,
+                timedOut: /timed out/.test(e.message),
+            });
+            this._persistQueue();
+
+            // If retries are exhausted, escalate so the queue drains.
+            task.retry_count++;
+            if (task.retry_count >= task.max_retries) {
+                task.state = TASK_STATES.ESCALATED;
+            }
+
+            return {
+                task_id: task.task_id,
+                dispatched: false,
+                failed: true,
+                timedOut: /timed out/.test(e.message),
+                error: e.message,
+            };
+        }
     }
 
     /**
@@ -186,19 +281,77 @@ class Orchestrator {
 
         // Send via inbox if available
         if (this.inbox && this.inbox.connected) {
-            try {
-                await this.inbox.send({
-                    from: 'AAA-Orchestrator',
-                    to: bestAgent,
-                    intent: task.intent,
-                    evidence: { OBS: [`Task ${task.task_id} dispatched by AAA Orchestrator`], DER: [], INT: [] },
-                    constraints: task.constraints,
-                    metadata: { task_id: task.task_id, domain: task.domain, priority: task.priority },
-                });
+            // N6 — inbox.send is a *call*, not a side-effect. It returns
+            // { ok:false, error } on validation/NATS failure. The legacy
+            // try/catch silently left the task in ASSIGNED. Honour the
+            // structured result and fail the dispatch explicitly when the
+            // inbox refuses to carry the message.
+            const sendResult = await this.inbox.send({
+                from: 'AAA-Orchestrator',
+                to: bestAgent,
+                intent: task.intent,
+                evidence: { OBS: [`Task ${task.task_id} dispatched by AAA Orchestrator`], DER: [], INT: [] },
+                constraints: task.constraints,
+                metadata: { task_id: task.task_id, domain: task.domain, priority: task.priority },
+            });
+            if (sendResult && sendResult.ok) {
                 task.state = TASK_STATES.IN_PROGRESS;
-            } catch (e) {
-                console.error(`[orchestrator] Inbox send failed for ${bestAgent}: ${e.message}`);
+                this._lastDispatchAt = Date.now();
+            } else {
+                const reason = (sendResult && sendResult.error) || 'inbox send failed';
+                console.error(`[orchestrator] Inbox send rejected for ${bestAgent}: ${reason}`);
+                // N6 — Reject the dispatch so the task leaves ASSIGNED.
+                // Reuse the retry/escalate machinery instead of orphaning.
+                task.error = reason;
+                task.attempt_history.push({
+                    agent: bestAgent,
+                    timestamp: new Date().toISOString(),
+                    state: task.state,
+                    error: reason,
+                });
+                task.retry_count++;
+                if (task.retry_count >= task.max_retries) {
+                    task.state = TASK_STATES.ESCALATED;
+                } else {
+                    task.state = TASK_STATES.RETRYING;
+                }
+                task.updated_at = new Date().toISOString();
+                this._persistQueue();
+                return {
+                    task_id: task.task_id,
+                    dispatched: false,
+                    failed: true,
+                    error: reason,
+                    agent: bestAgent,
+                };
             }
+        } else {
+            // N6 — Inbox not reachable. Don't pretend the dispatch
+            // succeeded. Mark RETRYING/ESCALATED so the task leaves
+            // ASSIGNED and surfaces in stats.
+            const reason = 'inbox not connected';
+            task.error = reason;
+            task.attempt_history.push({
+                agent: bestAgent,
+                timestamp: new Date().toISOString(),
+                state: task.state,
+                error: reason,
+            });
+            task.retry_count++;
+            if (task.retry_count >= task.max_retries) {
+                task.state = TASK_STATES.ESCALATED;
+            } else {
+                task.state = TASK_STATES.RETRYING;
+            }
+            task.updated_at = new Date().toISOString();
+            this._persistQueue();
+            return {
+                task_id: task.task_id,
+                dispatched: false,
+                failed: true,
+                error: reason,
+                agent: bestAgent,
+            };
         }
 
         task.attempt_history.push({
@@ -303,6 +456,12 @@ class Orchestrator {
             completed: all.filter(t => t.state === TASK_STATES.COMPLETED).length,
             failed: all.filter(t => t.state === TASK_STATES.FAILED).length,
             escalated: all.filter(t => t.state === TASK_STATES.ESCALATED).length,
+            // N6 — wire telemetry from health()
+            ticks: this._stats.ticks,
+            dispatched: this._stats.dispatched,
+            dispatch_failed: this._stats.failed,
+            dispatch_timed_out: this._stats.timedOut,
+            health: this.health().status,
         };
     }
 
@@ -336,17 +495,98 @@ class Orchestrator {
 
     _filterLiveAgents(candidates) {
         let liveAgents = [];
+        let cockpitStale = false;
+        let cockpitFresh = null;
+
         try {
+            const stat = fs.statSync(this.cockpitPath);
+            const ageMs = Date.now() - stat.mtimeMs;
+            cockpitFresh = { path: this.cockpitPath, ageMs, mtime: stat.mtimeMs };
+            if (ageMs > this.opts.cockpitStaleMs) {
+                cockpitStale = true;
+            }
             const cockpit = JSON.parse(fs.readFileSync(this.cockpitPath, 'utf8'));
             const agentList = cockpit.agent_list || [];
             const alive = new Set(agentList.filter(a => a.status === 'healthy').map(a => a.agent_id));
 
             liveAgents = candidates.filter(c => alive.has(c) || c === '333-AGI' || c === '888-APEX');
         } catch {
-            // Cockpit unavailable — assume all available
-            liveAgents = [...candidates];
+            cockpitStale = true;
         }
+
+        if (cockpitStale) {
+            // N6 — Cockpit unreadable OR stale is the explicit choke vector:
+            // dispatching the full candidate list to a stale registry just
+            // round-trips work into dead agents' inboxes. Fail-safe:
+            // intersect candidates with the hardcoded safe-agent list. If
+            // nothing matches, return empty (caller will retry/escalate).
+            const safe = new Set(this.opts.safeAgents);
+            const fallback = candidates.filter(c => safe.has(c));
+            if (fallback.length === 0) {
+                console.warn(`[orchestrator] Cockpit stale/missing at ${this.cockpitPath}; no candidates intersect safe-agent list`);
+                return [];
+            }
+            console.warn(`[orchestrator] Cockpit stale${cockpitFresh ? ` (age=${cockpitFresh.ageMs}ms)` : '/missing'}; restricting live set to ${fallback.join(',')}`);
+            return fallback;
+        }
+
         return liveAgents;
+    }
+
+    /**
+     * N6 — Orchestrator self-health snapshot. OK / DEGRADED / DOWN.
+     * Consumed by AAA cockpit probe and arifFlow FQ reporting.
+     */
+    health() {
+        const lastTickAgeMs = this._lastTickAt ? Date.now() - this._lastTickAt : null;
+        let status = 'OK';
+        if (lastTickAgeMs == null) {
+            status = 'UNKNOWN';
+        } else if (lastTickAgeMs > this.opts.tickDownMs) {
+            status = 'DOWN';
+        } else if (lastTickAgeMs > this.opts.tickIdleMs) {
+            status = 'DEGRADED';
+        }
+
+        const total = this._stats.dispatched + this._stats.failed + this._stats.timedOut;
+        const failRate = total > 0
+            ? (this._stats.failed + this._stats.timedOut) / total
+            : 0;
+        if (total > 0 && failRate > 0.25 && status === 'OK') {
+            status = 'DEGRADED';
+        }
+
+        return {
+            status,
+            lastTickAt: this._lastTickAt ? new Date(this._lastTickAt).toISOString() : null,
+            lastTickAgeMs,
+            lastTickError: this._lastTickError,
+            lastTickSummary: this._lastTickSummary,
+            stats: { ...this._stats },
+            failRate: Number(failRate.toFixed(4)),
+            inboxConnected: !!(this.inbox && this.inbox.connected),
+        };
+    }
+
+    /**
+     * N6 — Direct A2A bypass. Skips the orchestrator entirely and pushes
+     * a SIAL envelope straight onto the inbox. The right tool when the
+     * orchestrator is DOWN but NATS is still up. Idempotent: caller
+     * builds the envelope; orchestrator doesn't classify or schedule.
+     */
+    async directA2A(sialEnvelope) {
+        if (!this.inbox || !this.inbox.connected) {
+            return { ok: false, error: 'inbox not connected', path: 'direct' };
+        }
+        if (!sialEnvelope || typeof sialEnvelope !== 'object') {
+            return { ok: false, error: 'sialEnvelope required', path: 'direct' };
+        }
+        try {
+            const result = await this.inbox.send(sialEnvelope);
+            return { ...result, path: 'direct' };
+        } catch (e) {
+            return { ok: false, error: e.message, path: 'direct' };
+        }
     }
 
     _persistQueue() {
@@ -364,9 +604,9 @@ class Orchestrator {
 
 let _orchestrator = null;
 
-function getOrchestrator(redisClient, inbox) {
+function getOrchestrator(redisClient, inbox, cockpitPath, options) {
     if (!_orchestrator) {
-        _orchestrator = new Orchestrator(redisClient, inbox);
+        _orchestrator = new Orchestrator(redisClient, inbox, cockpitPath, options);
     }
     return _orchestrator;
 }
