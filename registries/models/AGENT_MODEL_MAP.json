@@ -154,7 +154,8 @@
         "MiniMax-M2"
       ],
       "balance_source": "FED ::7074 (fed_status / curl :7074/health)",
-      "balance_note": "PURGED 2026-08-05 by 333-AGI. Static balance (was None) removed. Use FED :7074 for live balance -- never trust cached registry."
+      "balance_note": "PURGED 2026-08-05 by 333-AGI. Static balance (was None) removed. Use FED :7074 for live balance -- never trust cached registry.",
+      "status_note": "MONTHLY TOKEN PLAN — ARIF CONFIRMED WORKING 2026-08-05. Balance shows $0.00 because it is a monthly plan with allocated credits, not a prepaid balance. LiteLLM health: HEALTHY. FED: LIVE. 8 models (M3/M2.7/M2.5/M2.1/M2). M3 flagship 1M ctx multimodal. Key: MINIMAX_API_KEY + MINIMAX_PLUGIN_API_KEY. Last verified LIVE 2026-08-04. DO NOT mark as PAYG or zero balance — the plan model is different from prepaid."
     },
     {
       "provider_id": "bailian-token-plan",
