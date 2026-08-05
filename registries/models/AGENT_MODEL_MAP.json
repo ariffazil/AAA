@@ -122,7 +122,7 @@
       "plan_quota_note": "Team Edition: MONTHLY quota only, NO 5hr/7day window limits. Standard 25K/mo, Pro 100K/mo, Max 250K/mo per seat.",
       "plan_concurrent_note": "Team Edition: no documented concurrent agent limit (unlike Personal)",
       "enabled": false,
-      "status_note": "STATUS CORRECTED 2026-08-05 by 333-AGI. Previously QUOTA_EXHAUSTED — exhaustion was for qwen-token-plan-individual (Pool C, RATE_LIMITED), not TEAM pool (Pool D). TEAM pool verified: $150 seat value, 3 seats, 21 models probed HTTP 200, last verified 2026-08-04. Pool D serves 555-ASI primary + Arif primary (qwen3.8-max)."
+      "status_note": "STATUS: ACTIVE for deepseek/GLM/kimi models via token-plan. qwen3.6-flash is RATE_LIMITED (429 quota exhausted per LiteLLM health probe 2026-08-05T07:08Z). qwen3.7-plus via dashscope-intl returns 401 (auth issue). SEAT 1/3 Pro (arifOS): 333-AGI+888-APEX. SEAT 2/3 Standard (ariffazil): 555-ASI+Hermes. SEAT 3/3 Standard (aliyun): Owner reserve. All non-qwen models probed HTTP 200, 21 models. Updated 2026-08-05."
     },
     {
       "provider_id": "minimax",
