@@ -74,13 +74,15 @@ repositories:
       note: "27 well_* tools on public wire. README agrees."
     health_endpoint: ":18083/health"
 
-  arif-sites:
-    repo: ariffazil/arif-sites
+  arif-fazil-com:
+    repo: ariffazil/arif-fazil.com
     role: public_projection
     authority_ceiling: DISPLAY_ONLY
     tool_surface:
-      note: "Static sites — no MCP surface. Built from signed federation manifest."
+      note: "Unified federation web surface — no MCP. Supersedes ariffazil/arif-sites (301 rename). Law in web-canon; pages here."
     health_endpoint: null
+    aliases:
+      - arif-sites  # historical name; GitHub 301 → arif-fazil.com
 
   hermes:
     repo: ariffazil/HERMES
