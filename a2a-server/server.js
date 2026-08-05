@@ -2998,6 +2998,66 @@ motto: 'Ditempa Bukan Diberi',
   });
 });
 
+// ── Cockpit Live Polling Endpoints (forged 2026-08-05) ─────────────────
+// Status written by aaa-cockpit-probe.service every 15s via cockpit_probe.py
+
+app.get('/cockpit/live', (req, res) => {
+  try {
+    const data = JSON.parse(fs.readFileSync('/root/AAA/state/status.json', 'utf8'));
+    res.setHeader('Cache-Control', 'no-store');
+    res.json(data);
+  } catch (_) {
+    res.status(503).json({ error: 'cockpit_not_ready', hint: 'wait for first probe cycle' });
+  }
+});
+
+app.get('/cockpit/agents', (req, res) => {
+  try {
+    const data = JSON.parse(fs.readFileSync('/root/AAA/state/status.json', 'utf8'));
+    const filter = req.query.filter || 'all';
+    let agents = data.agent_list || [];
+    if (filter === 'alive') agents = agents.filter(a => a.status === 'healthy');
+    else if (filter === 'dead') agents = agents.filter(a => a.status === 'dead');
+    res.setHeader('Cache-Control', 'no-store');
+    res.json({ filter, count: agents.length, agents });
+  } catch (_) {
+    res.status(503).json({ error: 'cockpit_not_ready' });
+  }
+});
+
+app.get('/cockpit/agent/:agentId', (req, res) => {
+  try {
+    const data = JSON.parse(fs.readFileSync('/root/AAA/state/status.json', 'utf8'));
+    const agent = (data.agent_list || []).find(a => a.agent_id === req.params.agentId);
+    if (!agent) return res.status(404).json({ error: 'agent_not_found', agent_id: req.params.agentId });
+    res.setHeader('Cache-Control', 'no-store');
+    res.json(agent);
+  } catch (_) {
+    res.status(503).json({ error: 'cockpit_not_ready' });
+  }
+});
+
+app.get('/cockpit/status.json', (req, res) => {
+  try {
+    const data = JSON.parse(fs.readFileSync('/root/AAA/state/status.json', 'utf8'));
+    res.setHeader('Cache-Control', 'no-store');
+    res.setHeader('Content-Type', 'application/json');
+    res.json(data);
+  } catch (_) {
+    res.status(503).json({ error: 'cockpit_not_ready' });
+  }
+});
+
+// Heartbeat receiver — organs can POST their liveness directly
+app.post('/cockpit/heartbeat', express.json(), (req, res) => {
+  const { agent_id, status, load, capabilities, tools_count, latency_ms } = req.body || {};
+  if (!agent_id) return res.status(400).json({ error: 'agent_id required' });
+  // For now: heartbeat is logged, probe system is authoritative
+  // Future: integrate with status.json state machine
+  console.log(`[cockpit] heartbeat: ${agent_id} status=${status || 'healthy'}`);
+  res.json({ accepted: true, agent_id, source: 'heartbeat_passthrough' });
+});
+
 // zen federated memory state (AAA cockpit — simple view of kernel L1-L6)
 app.get('/federation/memory', async (req, res) => {
   // FLW2: Perspective scope check for REST API access
