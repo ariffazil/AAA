@@ -117,8 +117,12 @@ supply_gates:
     status: not_built
     required_by: sprint_5
   huggingface_import_gate:
-    status: not_built
+    status: built
     required_by: sprint_5
+    forged: 2026-08-05
+    module: arifosmcp/federation/hf_import_gate.py
+    tests: tests/test_hf_import_gate.py (34/34 PASS)
+    note: "Gate validates F1-F13 floor checks, thermodynamic scores, entropy receipt. HF API integration via huggingface_hub. No kernel wire-up yet (arif_forge pending)."
 
 missing_layers:
   reality_ledger:
