@@ -60,7 +60,10 @@
       "plan_credits_5hr": null,
       "plan_concurrent_agents": null,
       "plan_spend_jul": 208.54,
-      "credit_packs": "$700/pack/month, 625,000 Credits/pack",
+      "credit_packs": {
+        "purchased": 0,
+        "available": "$700/pack (625K credits)"
+      },
       "portal": "https://home.qwencloud.com/api-keys",
       "docs": "https://docs.qwencloud.com/token-plan/personal/token-plan-personal",
       "data_retention_days": "unknown",
@@ -122,22 +125,34 @@
       "plan_quota_note": "Team Edition: MONTHLY quota only, NO 5hr/7day window limits. Standard 25K/mo, Pro 100K/mo, Max 250K/mo per seat.",
       "plan_concurrent_note": "Team Edition: no documented concurrent agent limit (unlike Personal)",
       "enabled": false,
-      "status_note": "ACTIVE SUBSCRIPTION (renewed monthly). Seat quota temporarily depleted for qwen-native models (qwen3.6-flash → 429). Non-qwen models (deepseek/GLM/kimi) still routing via Credit Pack or different seat keys. 26 models supported per official docs. qwen3.8-max available as preview (10x promotional Credits). Resolution: auto-renews, or purchase Credit Pack. DO NOT mark as DEAD or PERMANENTLY EXHAUSTED.",
+      "status_note": "ACTIVE SUBSCRIPTION (renews 2026-10-01, credits reset 2026-09-01). ALL 3 seats EXHAUSTED (0/150,000 credits remaining). No Credit Pack purchased. Qwen-native models blocked (429). Non-qwen models (deepseek/GLM/kimi) still route via LiteLLM (likely direct API keys, not token plan credits). Resolution: credits auto-reset 2026-09-01, or purchase Credit Pack. Last renewal: 2026-08-05 ($124.22 for Standard+Pro seats).",
       "subscription_model": "monthly_token_plan",
       "plan_name": "QwenCloud Token Plan Team Edition",
       "seats": {
-        "pro": {
-          "count": 1,
-          "credits_per_month": 100000,
-          "price": "$75/mo"
+        "standard_1": {
+          "assigned_to": "ariffazil",
+          "remaining": 0,
+          "total": 25000,
+          "status": "EXHAUSTED"
         },
-        "standard": {
-          "count": 2,
-          "credits_per_month": 25000,
-          "price": "$20/mo"
+        "standard_2": {
+          "assigned_to": "aliyun-owner",
+          "remaining": 0,
+          "total": 25000,
+          "status": "EXHAUSTED"
         },
-        "total_monthly_credits": 150000,
-        "credit_pack_available": "$700/pack (625K credits)"
+        "pro_1": {
+          "assigned_to": "arifOS",
+          "remaining": 0,
+          "total": 100000,
+          "status": "EXHAUSTED"
+        },
+        "max": {
+          "purchased": false
+        },
+        "total_remaining": 0,
+        "total_capacity": 150000,
+        "all_exhausted": true
       },
       "endpoint": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
       "region": "Singapore",
@@ -168,7 +183,14 @@
         "happyhorse-1.1-t2v",
         "happyhorse-1.1-i2v",
         "happyhorse-1.1-r2v"
-      ]
+      ],
+      "subscription": {
+        "auto_renew": true,
+        "expiry": "2026-10-01",
+        "remaining_days": 56,
+        "credits_reset": "2026-09-01 11:00:00",
+        "august_spend": "$124.23 (seat renewal, not usage)"
+      }
     },
     {
       "provider_id": "minimax",
