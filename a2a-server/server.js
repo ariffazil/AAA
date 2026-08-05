@@ -223,7 +223,7 @@ const REDIS_URL = process.env.REDIS_URL || 'redis://127.0.0.1:6379';
 const NATS_URL = process.env.NATS_URL || 'nats://127.0.0.1:4222';
 
 // === GRAFANA WEBHOOK + ORGAN MONITOR + TELEGRAM NOTIFIER ===
-const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '';
+const TELEGRAM_BOT_TOKEN = process.env.ASI_ARIFOS_BOT_TOKEN || '';
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID || '267378578';
 
 const HTTP = require('http');

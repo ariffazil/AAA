@@ -4,7 +4,7 @@
 # Uses curl direct to gateway /health (shell HTTP, no model call).
 # Correct restart: openclaw restart (not systemctl)
 
-TELEGRAM_TOKEN="${TELEGRAM_BOT_TOKEN:-}"
+TELEGRAM_TOKEN="${ASI_ARIFOS_BOT_TOKEN:-}"
 TELEGRAM_CHAT="267378578"
 STATEFILE="/tmp/openclaw-watchdog-state.json"
 BUDGET_WINDOW_HOURS=2

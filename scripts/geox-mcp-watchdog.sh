@@ -5,7 +5,7 @@
 
 LOGFILE="/var/log/arifOS-watchdog.log"
 STATEFILE="/tmp/geox-watchdog-state.json"
-TELEGRAM_TOKEN="${TELEGRAM_BOT_TOKEN:-${TELEGRAM_TOKEN:-}}"
+TELEGRAM_TOKEN="${ASI_ARIFOS_BOT_TOKEN:-${TELEGRAM_TOKEN:-}}"
 TELEGRAM_CHAT="267378578"
 CONTAINER="geox_eic"
 HEALTH_URL="http://localhost:8081/health"

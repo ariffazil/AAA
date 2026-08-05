@@ -1,0 +1,86 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "id": "777-forge",
+  "name": "777-FORGE — Governed Coding Bridge",
+  "description": "Autonomous code execution bridge for arifOS Federation. Receives coding tasks via A2A from Hermes ASI or OpenClaw AGI, executes through A-FORGE (:7072) under F1-F13 governance, returns build artifacts via tasks/send streaming.",
+  "version": "3.0.0",
+  "protocolVersion": "1.2",
+  "url": "https://aaa.arif-fazil.com/a2a/777-forge",
+  "provider": {
+    "organization": "arifOS Federation",
+    "system": "AAA Control Plane + A-FORGE Execution",
+    "runtime": "777-FORGE A2A Bridge (Python, wraps A-FORGE :7072)"
+  },
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "777-FORGE",
+    "intelligence_tier": "AGI",
+    "authority_level": "executor",
+    "citizenship_forged": "2026-07-29"
+  },
+  "bound_to": "A-FORGE",
+  "sovereign": "888 (Muhammad Arif bin Fazil, F13 SOVEREIGN)",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "stateTransitionHistory": true
+  },
+  "securitySchemes": [
+    {"id": "arifos-sct", "type": "bearer", "description": "arifOS SCT required for mutate-class ops"},
+    {"id": "aaa-a2a-bearer", "type": "bearer", "description": "AAA federation bearer token"}
+  ],
+  "security": [["arifos-sct"]],
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "FORGE-shell",
+      "name": "Governed Shell Execution",
+      "description": "Shell commands via A-FORGE forge_shell. Dry-run first. SEAL verdict required for mutate. F1 AMANAH enforced.",
+      "approval_policy": "hold",
+      "floor_scope": ["F1", "F4", "F11"]
+    },
+    {
+      "id": "FORGE-git",
+      "name": "Governed Git Operations",
+      "description": "Git status, diff, commit, push via forge_git. Conventional commits. No force-push without F13. F11 AUDIT enforced.",
+      "approval_policy": "on-demand",
+      "floor_scope": ["F1", "F11"]
+    },
+    {
+      "id": "FORGE-docker",
+      "name": "Docker Lifecycle",
+      "description": "Container ps, logs, exec via forge_docker. Destructive ops require 888_HOLD.",
+      "approval_policy": "on-demand",
+      "floor_scope": ["F1", "F11"]
+    },
+    {
+      "id": "FORGE-build-deploy",
+      "name": "Build and Deploy Pipeline",
+      "description": "make deploy-local after green tests. One organ at a time with health checks between. F8 GENIUS enforced.",
+      "approval_policy": "hold",
+      "floor_scope": ["F1", "F4", "F8", "F11"]
+    },
+    {
+      "id": "FORGE-artifact",
+      "name": "Artifact Delivery",
+      "description": "Package and deliver build artifacts via A2A tasks/send streaming interface. F11 AUDIT enforced.",
+      "approval_policy": "none",
+      "floor_scope": ["F11"]
+    }
+  ],
+  "a2a_transport": {
+    "protocol": "jsonrpc-2.0",
+    "transport": "http",
+    "endpoint": "https://aaa.arif-fazil.com/a2a/777-forge",
+    "capabilities": ["tasks/send", "tasks/get", "tasks/cancel"]
+  },
+  "topological_role": "Executor",
+  "ed25519_pubkey": "ccc731bc8c93ec0192611635ea5520ea5ca96844bfe59d4fa7101278026dd987",
+  "identity_fingerprint": "da0048a80249dead98942edd067b5039",
+  "model": "deepseek/deepseek-v4-pro",
+  "fallback_chain": ["deepseek/deepseek-v4-flash", "minimax/MiniMax-M3"],
+  "forged": "2026-08-05T04:04:00+08:00",
+  "doctrine": "DITEMPA BUKAN DIBERI"
+}

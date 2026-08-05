@@ -4,7 +4,7 @@
 
 LOGFILE="/var/log/arifOS-watchdog.log"
 STATEFILE="/tmp/container-sweep-state.json"
-TELEGRAM_TOKEN="${TELEGRAM_BOT_TOKEN:-${TELEGRAM_TOKEN:-}}"
+TELEGRAM_TOKEN="${ASI_ARIFOS_BOT_TOKEN:-${TELEGRAM_TOKEN:-}}"
 TELEGRAM_CHAT="267378578"
 
 # Core stack only (present on this machine)
