@@ -1,0 +1,76 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "id": "forge-bot",
+  "name": "FORGE Bot — Telegram Coding Bridge",
+  "principal_agent": {
+    "type": "edge-bridge",
+    "category": "Telegram channel handler → A-FORGE execution",
+    "principle_origin": "Runt by A-FORGE, governed by F1-F13"
+  },
+  "description": "Telegram @arifOS_bot — governed coding execution bridge. Human types code tasks in Telegram → A-FORGE executes under F1-F13. Webhook receiver at /forge/webhook → :7071.",
+  "version": "1.0.0",
+  "protocolVersion": "1.2",
+  "url": "https://arif-fazil.com/forge/webhook",
+  "provider": {
+    "organization": "arifOS Federation",
+    "system": "A-FORGE Execution Shell",
+    "runtime": "A-FORGE (Node.js, systemd a-forge.service)"
+  },
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "777-FORGE",
+    "intelligence_tier": "EXECUTION",
+    "authority_level": "operator",
+    "citizenship_forged": "2025-06-01"
+  },
+  "channel": {
+    "type": "telegram",
+    "bot_handle": "@arifOS_bot",
+    "webhook_path": "/forge/webhook",
+    "upstream_port": 7071,
+    "upstream_service": "a-forge.service",
+    "role": "Governed coding execution — build, deploy, test, debug",
+    "human_contract": "DM for code tasks (build, deploy, git, debug). Not for general Q&A."
+  },
+  "ports": {
+    "execution": 7071,
+    "mcp": 7072
+  },
+  "supportedInterfaces": [
+    {
+      "type": "telegram_webhook",
+      "path": "/forge/webhook",
+      "transport": "https"
+    },
+    {
+      "type": "mcp",
+      "url": "https://mcp.arif-fazil.com/mcp",
+      "transport": "streamable-http"
+    }
+  ],
+  "skills": [
+    "FORGE-github-ops",
+    "FORGE-ci-diagnose",
+    "FORGE-web-zen",
+    "FORGE-shell-exec",
+    "FORGE-vps-docker",
+    "FORGE-incident-triage"
+  ],
+  "authority": {
+    "tier": "T2_ANNOUNCE",
+    "max_action_class": "EXECUTE_AFTER_SEAL",
+    "irreversible_requires": "888_HOLD + F13 ACK"
+  },
+  "status": "ACTIVE",
+  "security": {
+    "authentication": "Telegram bot token (env: FORGE_BOT_TOKEN)",
+    "sct_required": false,
+    "channel_encryption": "TLS (Cloudflare → Caddy → localhost)"
+  },
+  "governance": {
+    "floor_compliance": ["F1", "F2", "F4", "F7", "F8", "F9", "F11", "F13"],
+    "judge_required_for": ["deploy_prod", "force_push", "rm_rf", "secret_rotation"],
+    "cooling_policy": "Every session ends with forge_vault receipt"
+  }
+}
