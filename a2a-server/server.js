@@ -54,12 +54,55 @@ const { emdValidationGate } = require('./emd-validation-gate');
 // ── Agent Inbox — NATS JetStream inter-agent message bus (forged 2026-08-05) ─
 const { getInbox, createSIAL, validateSIAL } = require('./agent_inbox');
 
+// ── G2 Witness Gate — pre-execution tri-witness consensus (forged 2026-08-05) ─
+const { witnessGate, witnessGateSync } = require('./witness_gate');
+
 const app = express();
 app.use(express.json({ limit: '12mb' }));
 
 // Membrane gate — every cross-organ message must pass through
 app.use(membraneMiddleware);
 app.use(membraneResponseHook);
+
+// ── G2 WITNESS GATE — blocks MUTATE actions when consensus is DIVERGENT ─
+app.use((req, res, next) => {
+  const envelope = req._membrane;
+  if (!envelope) return next();
+
+  const actionClass = envelope.action_class;
+  if (actionClass !== 'MUTATE' && actionClass !== 'IRREVERSIBLE') {
+    return next();
+  }
+
+  // Run witness gate sync (reads cockpit status.json)
+  const witness = witnessGateSync();
+
+  // Attach witness result to envelope and request
+  envelope._witness_gate = witness;
+  req._witness_gate = witness;
+
+  if (!witness.pass && witness.verdict === 'DIVERGENT') {
+    console.log(`[witness-gate] BLOCKED ${actionClass}: W³=${witness.w3_score} ${witness.verdict}`);
+    return res.status(423).json({
+      error: 'G2_WITNESS_DIVERGENT',
+      verdict: 'HOLD',
+      message: `Pre-execution witness consensus failed (W³=${witness.w3_score}, threshold=${0.40}). Route to 888-APEX.`,
+      witness,
+      gate: 'G2',
+      next_action: 'Route to 888-APEX for constitutional verdict, or wait for organ health recovery.',
+    });
+  }
+
+  if (witness.verdict === 'WEAK') {
+    console.log(`[witness-gate] WEAK ${actionClass}: W³=${witness.w3_score} — proceeding with caution`);
+    res.setHeader('X-Witness-Verdict', 'WEAK');
+    res.setHeader('X-Witness-W3', witness.w3_score.toString());
+  } else {
+    console.log(`[witness-gate] PASS ${actionClass}: W³=${witness.w3_score} CONSENSUS`);
+  }
+
+  next();
+});
 
 // ── MCP Receipt Middleware (F2·F4·F11) — auto-wrap every MCP call to VAULT999
 const { receiptWrap } = require('./middleware/receipt_wrap');
@@ -5109,7 +5152,11 @@ app.delete('/inbox/:agentId/:msgId', async (req, res) => {
   }
 });
 
-// === 404 FALLBACK HANDLER ===
+app.get('/witness', (req, res) => {
+  const witness = witnessGateSync();
+  res.setHeader('Cache-Control', 'no-store');
+  res.json(witness);
+});
 // Placed AFTER all valid routes so only truly unknown paths hit this
 // === 404 HANDLER ===
 app.use((req, res) => {
