@@ -57,6 +57,9 @@ const { getInbox, createSIAL, validateSIAL } = require('./agent_inbox');
 // ── G2 Witness Gate — pre-execution tri-witness consensus (forged 2026-08-05) ─
 const { witnessGate, witnessGateSync } = require('./witness_gate');
 
+// ── G3 Predict Gate — pre-execution risk simulation (forged 2026-08-05) ─
+const { predictGate } = require('./predict_gate');
+
 const app = express();
 app.use(express.json({ limit: '12mb' }));
 
@@ -99,6 +102,52 @@ app.use((req, res, next) => {
     res.setHeader('X-Witness-W3', witness.w3_score.toString());
   } else {
     console.log(`[witness-gate] PASS ${actionClass}: W³=${witness.w3_score} CONSENSUS`);
+  }
+
+  next();
+});
+
+// ── G3 PREDICT GATE — risk assessment before high-risk MUTATE ─
+app.use((req, res, next) => {
+  const envelope = req._membrane;
+  if (!envelope) return next();
+
+  const actionClass = envelope.action_class;
+  if (actionClass !== 'MUTATE' && actionClass !== 'IRREVERSIBLE' && actionClass !== 'DRAFT') {
+    return next();
+  }
+
+  const prediction = predictGate({
+    intent: req.body?.message || req.body?.text || req.body?.intent || '',
+    tool: req.body?.tool || req.body?.skill || '',
+    blast_radius: envelope.blast_radius || req.body?.blast_radius || 'LOW',
+    reversibility: envelope.reversibility || req.body?.reversibility || 'FULL',
+    affected_organs: req.body?.affected_organs || [],
+    action_class: actionClass,
+  });
+
+  // Attach to request
+  req._predict_gate = prediction;
+  envelope._predict_gate = prediction;
+
+  if (!prediction.pass && prediction.verdict === 'DANGER') {
+    console.log(`[predict-gate] BLOCKED ${actionClass} ${prediction.domain}: risk=${prediction.risk_score} DANGER`);
+    return res.status(423).json({
+      error: 'G3_PREDICT_DANGER',
+      verdict: 'HOLD',
+      message: `Pre-execution risk assessment exceeded safe threshold (risk=${prediction.risk_score}, domain=${prediction.domain}). Route to 888-APEX.`,
+      prediction,
+      gate: 'G3',
+      next_action: 'Run simulation, reduce blast radius, or request F13 sovereign override.',
+    });
+  }
+
+  if (prediction.verdict === 'RISKY') {
+    console.log(`[predict-gate] RISKY ${actionClass} ${prediction.domain}: risk=${prediction.risk_score}`);
+    res.setHeader('X-Predict-Verdict', 'RISKY');
+    res.setHeader('X-Predict-Risk', prediction.risk_score.toString());
+  } else {
+    console.log(`[predict-gate] PASS ${actionClass} ${prediction.domain}: risk=${prediction.risk_score} ${prediction.verdict}`);
   }
 
   next();
@@ -5150,6 +5199,20 @@ app.delete('/inbox/:agentId/:msgId', async (req, res) => {
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
+});
+
+// ── G3 Predict endpoint — pre-check risk before acting ──
+app.post('/predict', express.json(), (req, res) => {
+  const prediction = predictGate({
+    intent: req.body?.intent || req.body?.message || '',
+    tool: req.body?.tool || '',
+    blast_radius: req.body?.blast_radius || 'LOW',
+    reversibility: req.body?.reversibility || 'FULL',
+    affected_organs: req.body?.affected_organs || [],
+    action_class: req.body?.action_class || 'MUTATE',
+  });
+  res.setHeader('Cache-Control', 'no-store');
+  res.json(prediction);
 });
 
 app.get('/witness', (req, res) => {
