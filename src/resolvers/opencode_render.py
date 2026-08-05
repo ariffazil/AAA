@@ -219,7 +219,8 @@ def validate_model_ids(sot: dict) -> list[str]:
         aid = agent.get("agent_id", "?")
         fb = agent.get("fallback_chain", [])
         for f in fb:
-            mk = f.get("model_key", "")
+            # Handle both dict {"model_key":"...","provider":"..."} and flat string "provider/model"
+            mk = f if isinstance(f, str) else f.get("model_key", "")
             if mk in checked:
                 continue
             checked.add(mk)
@@ -234,8 +235,19 @@ def validate_model_ids(sot: dict) -> list[str]:
 # Canonical federation agent roster — every entry must exist in SOT agents[].
 # Chaos test 6 (2026-07-24): hermes deletion passed ALL validation. This is the fix (Path B).
 REQUIRED_SOT_AGENTS = [
-    "opencode", "forge", "auditor", "ops", "planner", "hermes", "openclaw",
-    "claude-code", "copilot", "kimi-code", "codex", "grok", "recovery",
+    "opencode",
+    "forge",
+    "auditor",
+    "ops",
+    "planner",
+    "hermes",
+    "openclaw",
+    "claude-code",
+    "copilot",
+    "kimi-code",
+    "codex",
+    "grok",
+    "recovery",
     "image-prompt-architect",
 ]
 
@@ -262,7 +274,9 @@ import re as _re
 _MODEL_ID_RE = _re.compile(r"^~?[A-Za-z0-9._-]+/[A-Za-z0-9._:-]+$")
 
 
-def validate_provider_model_ids(config: dict, live_or_ids: set | None = None, registered_or_ids: set | None = None) -> tuple[list[str], list[str]]:
+def validate_provider_model_ids(
+    config: dict, live_or_ids: set | None = None, registered_or_ids: set | None = None
+) -> tuple[list[str], list[str]]:
     """Validate model_ids inside live config provider blocks.
 
     Catches the chaos test 4 gap: typos in provider block model_ids survived
@@ -337,7 +351,6 @@ def fetch_live_or_model_ids(max_age_sec: int = 300) -> set | None:
         return set(ids)
     except Exception:
         return None
-
 
 
 def build_providers(sot: dict) -> list:
@@ -502,7 +515,8 @@ def main():
         if "--live" in args and live_or_ids is None:
             model_errors.append("--live requested but OpenRouter catalog unreachable (no key or network)")
         prov_errors, prov_warnings = validate_provider_model_ids(
-            current, live_or_ids,
+            current,
+            live_or_ids,
             registered_or_ids={m.get("model_key", "") for m in sot.get("models", [])},
         )
         model_errors.extend(prov_errors)
@@ -534,7 +548,9 @@ def main():
                 print(f"  {w}")
         if failed:
             sys.exit(1)
-        print("✅ VERIFIED: OpenCode config aligned with SOT (structural + instruction intent + completeness + model_ids)")
+        print(
+            "✅ VERIFIED: OpenCode config aligned with SOT (structural + instruction intent + completeness + model_ids)"
+        )
         print(f"   instructions={len(generated.get('instructions', []))} files, all exist")
         print(f"   agents={len(sot.get('agents', []))}/{len(REQUIRED_SOT_AGENTS)} required present")
         print(f"   models={len(sot.get('models', []))} in SOT, all translated")
