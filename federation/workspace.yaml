@@ -32,7 +32,7 @@ canonical_repos:
     class: CORE_VITALITY
   - name: HERMES
     path: /root/HERMES
-    port: 18087
+    port: 18089
     class: EDGE
   - name: arif-fazil.com
     path: /root/arif-fazil.com

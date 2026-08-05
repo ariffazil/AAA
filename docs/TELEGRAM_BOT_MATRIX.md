@@ -17,7 +17,7 @@
 | Endpoint | Port | Protocol | Status | Exposed |
 |----------|------|----------|--------|---------|
 | **AAA A2A Server** | `:3001` | JSON-RPC 2.0 (A2A v1.0) | ✅ LIVE | Caddy `/a2a/*` + Tailscale |
-| **Hermes A2A Listener** | `:18087` | JSON-RPC 2.0 (A2A v1.0) | ❌ DOWN (2026-08-05) | local-only, needs fix |
+| **Hermes A2A Listener** | `:18089` | JSON-RPC 2.0 (A2A v1.0) | ✅ LIVE | local-only |
 | **A-FORGE MCP** | `:7072` | MCP Streamable HTTP | ✅ LIVE | Caddy `mcp.arif-fazil.com` |
 
 ## Human Interaction Contract
@@ -51,7 +51,7 @@ curl -sI https://arif-fazil.com/telegram-webhook | head -1
 
 # A2A endpoints
 curl -sf http://127.0.0.1:3001/health        # AAA A2A server
-curl -sf http://127.0.0.1:18087/health       # Hermes A2A listener
+curl -sf http://127.0.0.1:18089/health       # Hermes A2A listener
 ```
 
 ## Port Map — Agent Card vs Runtime Truth
