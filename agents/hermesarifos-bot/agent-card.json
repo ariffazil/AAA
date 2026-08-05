@@ -1,0 +1,7 @@
+{
+  "id": "hermesarifos-bot", "name": "Hermes Archive Bot — Gateway 4",
+  "description": "Memory/archive via @hermesarifos_bot. VAULT999 queries, federation history.",
+  "url": "https://forge.arif-fazil.com/webhook/hermesarifos",
+  "gateway": 4, "bot": "@hermesarifos_bot", "port": 8092,
+  "authority": "DISPLAY_ONLY", "status": "active"
+}

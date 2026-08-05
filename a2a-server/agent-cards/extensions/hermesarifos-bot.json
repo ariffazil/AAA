@@ -1,0 +1,19 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "id": "hermesarifos-bot",
+  "name": "Hermes Archive Bot — Gateway 4",
+  "class": "ASI-Peripheral",
+  "bound_to": "555-ASI",
+  "power_band": "memory_archive",
+  "skills_prefix": ["ARCHIVE-"],
+  "runtime_harness": "hermesarifos-bot",
+  "identity_anchor": "/opt/hermesarifos-bot/bot.py",
+  "mcp_servers": ["arifos"],
+  "description": "Telegram @hermesarifos_bot — Memory and archive gateway. Queries VAULT999, federation history, and retrospective analysis.",
+  "telegram": {"bot": "@hermesarifos_bot", "webhook": "https://forge.arif-fazil.com/webhook/hermesarifos"},
+  "authority": "DISPLAY_ONLY",
+  "max_action_class": "OBSERVE",
+  "status": "active",
+  "port": 8092
+}
