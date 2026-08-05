@@ -6623,34 +6623,28 @@
           "provider": "qwen-token-plan",
           "priority": 1,
           "cost": "token_plan",
-          "note": "Qwen TP RM0 marginal \u2014 switched from primary to fallback 2026-08-02 per F13 directive"
+          "note": "Qwen TP RM0 marginal — switched from primary to fallback 2026-08-02 per F13 directive"
         },
         {
-          "model_key": "deepseek/deepseek-v4-pro",
-          "provider": "opencode-go",
+          "model_key": "deepseek/deepseek-v4-flash",
+          "provider": "deepseek",
           "priority": 2,
-          "cost": "subscription",
-          "note": "OpenCode Go $10/mo flat"
+          "cost": "prepaid",
+          "note": "Same provider, fast flash variant — 1M ctx, $0.14/$0.28"
         },
         {
-          "model_key": "deepseek/deepseek-v4-pro",
-          "provider": "tokenrouter-arifos",
+          "model_key": "kimi/k3",
+          "provider": "kimi-moonshot",
           "priority": 3,
-          "cost": "prepaid",
-          "note": "TokenRouter \u2014 PARKED, drain $59.94"
+          "cost": "monthly",
+          "note": "Cross-provider — 2.8T MoE, 1M ctx, always-on thinking"
         },
         {
           "model_key": "ollama/qwen2.5-coder:3b",
           "provider": "ollama",
           "priority": 4,
           "cost": "free",
-          "note": "Local recovery \u2014 always available"
-        },
-        {
-          "model": "deepseek/deepseek-v4-pro",
-          "priority": 99,
-          "cost": "unknown",
-          "note": "auto-fixed from bare string"
+          "note": "Local recovery — always available"
         }
       ],
       "circuit_breaker": {
@@ -6663,8 +6657,8 @@
       "cost_budget_monthly_usd": 20.0,
       "config_file_path": "/root/.config/opencode/opencode.json",
       "status": "ACTIVE",
-      "last_verified": "2026-08-02",
-      "notes": "DS NATIVE PRIMARY 2026-08-02 \u2014 F13 directive. DeepSeek V4 Pro direct ($18.57 prepaid, 1M ctx, 384K output, sovereign-grade, F2/CLEAN). Fallback: Qwen TP \u2192 OpenCode Go \u2192 TokenRouter \u2192 Ollama. MODEL > PROVIDER > BILLING enforced. MiniMax REMOVED. Primary forge+coding agent serving as 333-AGI (\u0394 MIND) and FORGE (000\u03a9).",
+      "last_verified": "2026-08-05",
+      "notes": "DS NATIVE PRIMARY 2026-08-02 — F13 directive. DeepSeek V4 Pro direct ($18.57 prepaid, 1M ctx, 384K output, sovereign-grade, F2/CLEAN). Fallback: Qwen TP → DS Flash → Kimi K3 → Ollama. Dead providers (opencode-go, tokenrouter-arifos) removed 2026-08-05. MODEL > PROVIDER > BILLING enforced.",
       "tier": "T1_frontier_reasoning",
       "philosophy": "MODEL > PROVIDER > BILLING",
       "autonomous_profile": {
@@ -7435,22 +7429,18 @@
           "note": "Premium tier \u2014 PAYG only"
         },
         {
-          "model_key": "deepseek/deepseek-v4-pro",
-          "provider": "opencode-go",
+          "model_key": "kimi/k3",
+          "provider": "kimi-moonshot",
           "priority": 3,
-          "cost": "flat_rate"
+          "cost": "monthly",
+          "note": "Cross-provider — 2.8T MoE, 1M ctx, always-on thinking"
         },
         {
           "model_key": "deepseek/deepseek-v4-pro",
           "provider": "deepseek",
           "priority": 4,
-          "cost": "prepaid"
-        },
-        {
-          "model": "deepseek/deepseek-v4-pro",
-          "priority": 99,
-          "cost": "unknown",
-          "note": "auto-fixed from bare string"
+          "cost": "prepaid",
+          "note": "DS V4 Pro trusted fallback"
         }
       ],
       "circuit_breaker": null,
@@ -7459,8 +7449,8 @@
       "cost_budget_monthly_usd": 15.0,
       "config_file_path": "/root/.codex/config.toml",
       "status": "ACTIVE",
-      "last_verified": "2026-07-20",
-      "notes": "GPT 5.6 Sol via TokenRouter. guardian_subagent mode. DeepSeek V4 Pro fallback.",
+      "last_verified": "2026-08-05",
+      "notes": "GPT 5.6 Sol via TokenRouter. Dead provider (opencode-go) removed 2026-08-05. DeepSeek V4 Pro + Kimi K3 fallback.",
       "tier": "T2",
       "philosophy": "MODEL > PROVIDER > BILLING",
       "autonomous_profile": {
@@ -7571,27 +7561,31 @@
       "fallback_chain": [
         {
           "model_key": "kimi/k3",
-          "provider": "opencode-go",
+          "provider": "kimi-moonshot",
           "priority": 1,
-          "cost": "flat_rate"
+          "cost": "monthly",
+          "note": "Direct Kimi K3 — 2.8T MoE, always-on thinking, vision"
         },
         {
           "model_key": "kimi/k3",
-          "provider": "tokenrouter",
+          "provider": "openrouter",
           "priority": 2,
-          "cost": "prepaid"
+          "cost": "prepaid",
+          "note": "OpenRouter fallback"
+        },
+        {
+          "model_key": "kimi/kimi-for-coding",
+          "provider": "kimi-moonshot",
+          "priority": 3,
+          "cost": "monthly",
+          "note": "K2.7 Code fallback, vision-capable"
         },
         {
           "model_key": "deepseek/deepseek-v4-pro",
-          "provider": "opencode-go",
-          "priority": 3,
-          "cost": "flat_rate"
-        },
-        {
-          "model": "kimi-k3",
-          "priority": 99,
-          "cost": "unknown",
-          "note": "auto-fixed from bare string"
+          "provider": "deepseek",
+          "priority": 4,
+          "cost": "prepaid",
+          "note": "Cross-provider DS V4 Pro trusted fallback"
         }
       ],
       "circuit_breaker": null,
@@ -7600,8 +7594,8 @@
       "cost_budget_monthly_usd": 5.0,
       "config_file_path": "/root/.config/opencode/opencode.json (agent.image-prompt-architect)",
       "status": "ACTIVE",
-      "last_verified": "2026-07-24",
-      "notes": "OpenCode RUNTIME-LOCAL subagent. Vision-enabled image prompt generation via Kimi K3. Permission-gated (bash: allow, *: deny). Called manually by user. NOT a constitutional federation agent \u2014 runtime-local only.",
+      "last_verified": "2026-08-05",
+      "notes": "OpenCode RUNTIME-LOCAL subagent. Vision-enabled image prompt generation via Kimi K3. Dead providers (opencode-go) removed 2026-08-05. Permission-gated (bash: allow, *: deny). Called manually by user. NOT a constitutional federation agent — runtime-local only.",
       "tier": "T2",
       "philosophy": "MODEL > PROVIDER > BILLING",
       "autonomous_profile": {

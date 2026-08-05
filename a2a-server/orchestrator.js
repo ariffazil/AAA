@@ -22,6 +22,7 @@
 
 const crypto = require('crypto');
 const fs = require('fs');
+const { classifyDomain } = require('./predict_gate');
 
 // ── Task States ──────────────────────────────────────────────────────
 const TASK_STATES = {
@@ -146,6 +147,14 @@ class Orchestrator {
             error: null,
         };
 
+        // OBSERVE fast-path: reads fail fast, no retry, no escalation (P0.3, 2026-08-05)
+        if (spec.action_class === 'OBSERVE'
+            || (spec.intent && classifyDomain(spec.intent) === 'observe')) {
+            task.observe_fastpath = true;
+            task.max_retries = 0;
+            task.deadline_ms = Math.min(spec.deadline_ms || 15000, 15000);
+        }
+
         this.tasks.set(taskId, task);
         this.taskCount++;
         this._persistQueue();
@@ -235,6 +244,16 @@ class Orchestrator {
             });
             this._persistQueue();
 
+            // OBSERVE fast-path: skip retry, fail directly
+            if (task.observe_fastpath) {
+                task.state = TASK_STATES.FAILED;
+                task.error = `${e.message} (observe fast-path: no retry)`;
+                task.updated_at = new Date().toISOString();
+                this._persistQueue();
+                return { task_id: task.task_id, dispatched: false, failed: true,
+                         timedOut: /timed out/.test(e.message), error: task.error };
+            }
+
             // If retries are exhausted, escalate so the queue drains.
             task.retry_count++;
             if (task.retry_count >= task.max_retries) {
@@ -309,11 +328,16 @@ class Orchestrator {
                     state: task.state,
                     error: reason,
                 });
-                task.retry_count++;
-                if (task.retry_count >= task.max_retries) {
-                    task.state = TASK_STATES.ESCALATED;
+                if (!task.observe_fastpath) {
+                    task.retry_count++;
+                    if (task.retry_count >= task.max_retries) {
+                        task.state = TASK_STATES.ESCALATED;
+                    } else {
+                        task.state = TASK_STATES.RETRYING;
+                    }
                 } else {
-                    task.state = TASK_STATES.RETRYING;
+                    task.state = TASK_STATES.FAILED;
+                    task.error = `${reason} (observe fast-path: no retry)`;
                 }
                 task.updated_at = new Date().toISOString();
                 this._persistQueue();
@@ -370,6 +394,15 @@ class Orchestrator {
      * Handle case when no live agents are available.
      */
     _handleNoLiveAgents(task, candidates) {
+        if (task.observe_fastpath) {
+            task.state = TASK_STATES.FAILED;
+            task.error = `No live agents (observe fast-path). Candidates: ${candidates.join(', ')}`;
+            task.updated_at = new Date().toISOString();
+            this._persistQueue();
+            return { task_id: task.task_id, dispatched: false, failed: true,
+                     error: task.error };
+        }
+
         task.retry_count++;
         if (task.retry_count < task.max_retries) {
             task.state = TASK_STATES.RETRYING;
