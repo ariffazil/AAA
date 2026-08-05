@@ -122,7 +122,53 @@
       "plan_quota_note": "Team Edition: MONTHLY quota only, NO 5hr/7day window limits. Standard 25K/mo, Pro 100K/mo, Max 250K/mo per seat.",
       "plan_concurrent_note": "Team Edition: no documented concurrent agent limit (unlike Personal)",
       "enabled": false,
-      "status_note": "STATUS: ACTIVE for deepseek/GLM/kimi models via token-plan. qwen3.6-flash is RATE_LIMITED (429 quota exhausted per LiteLLM health probe 2026-08-05T07:08Z). qwen3.7-plus via dashscope-intl returns 401 (auth issue). SEAT 1/3 Pro (arifOS): 333-AGI+888-APEX. SEAT 2/3 Standard (ariffazil): 555-ASI+Hermes. SEAT 3/3 Standard (aliyun): Owner reserve. All non-qwen models probed HTTP 200, 21 models. Updated 2026-08-05."
+      "status_note": "ACTIVE SUBSCRIPTION (renewed monthly). Seat quota temporarily depleted for qwen-native models (qwen3.6-flash → 429). Non-qwen models (deepseek/GLM/kimi) still routing via Credit Pack or different seat keys. 26 models supported per official docs. qwen3.8-max available as preview (10x promotional Credits). Resolution: auto-renews, or purchase Credit Pack. DO NOT mark as DEAD or PERMANENTLY EXHAUSTED.",
+      "subscription_model": "monthly_token_plan",
+      "plan_name": "QwenCloud Token Plan Team Edition",
+      "seats": {
+        "pro": {
+          "count": 1,
+          "credits_per_month": 100000,
+          "price": "$75/mo"
+        },
+        "standard": {
+          "count": 2,
+          "credits_per_month": 25000,
+          "price": "$20/mo"
+        },
+        "total_monthly_credits": 150000,
+        "credit_pack_available": "$700/pack (625K credits)"
+      },
+      "endpoint": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+      "region": "Singapore",
+      "official_docs": "https://docs.qwencloud.com/llms.txt",
+      "supported_models": [
+        "qwen3.8-max",
+        "qwen3.8-max-preview",
+        "qwen3.7-max",
+        "qwen3.7-plus",
+        "qwen3.6-plus",
+        "qwen3.6-flash",
+        "qwen-image-2.0",
+        "qwen-image-2.0-pro",
+        "qwen-audio-3.0-tts-plus",
+        "wan2.7-image",
+        "wan2.7-image-pro",
+        "deepseek-v4-pro",
+        "deepseek-v4-flash",
+        "deepseek-v4-flash-0731",
+        "deepseek-v3.2",
+        "kimi-k2.7-code",
+        "kimi-k2.6",
+        "kimi-k2.5",
+        "glm-5.2",
+        "glm-5.1",
+        "glm-5",
+        "MiniMax-M2.5",
+        "happyhorse-1.1-t2v",
+        "happyhorse-1.1-i2v",
+        "happyhorse-1.1-r2v"
+      ]
     },
     {
       "provider_id": "minimax",
