@@ -146,6 +146,60 @@ def ttl_label(status: str, age: float) -> str:
     return "🔴 LOST"
 
 
+def _probe_memory_tiers() -> dict:
+    """Probe all memory tiers (L1-L6) and return health status."""
+    import subprocess
+
+    result = {
+        "L1-L2_redis": {"status": "unknown", "detail": ""},
+        "L3_qdrant": {"status": "unknown", "detail": ""},
+        "L5_graphiti": {"status": "unknown", "detail": ""},
+        "L6_vault999": {"status": "unknown", "detail": ""},
+    }
+    # L1-L2 Redis
+    try:
+        r = subprocess.run(["redis-cli", "PING"], capture_output=True, text=True, timeout=3)
+        result["L1-L2_redis"]["status"] = "healthy" if "PONG" in r.stdout else "degraded"
+        result["L1-L2_redis"]["detail"] = r.stdout.strip()
+    except Exception as e:
+        result["L1-L2_redis"]["status"] = "dead"
+        result["L1-L2_redis"]["detail"] = str(e)[:80]
+    # L3 Qdrant
+    try:
+        r = Request("http://127.0.0.1:6333", headers={"User-Agent": "Cockpit-Probe"})
+        with urlopen(r, timeout=3) as resp:
+            result["L3_qdrant"]["status"] = "healthy" if resp.status == 200 else "degraded"
+            result["L3_qdrant"]["detail"] = f"HTTP {resp.status}"
+    except Exception as e:
+        result["L3_qdrant"]["status"] = "dead"
+        result["L3_qdrant"]["detail"] = str(e)[:80]
+    # L5 Graphiti
+    try:
+        r = Request("http://127.0.0.1:8000/health", headers={"User-Agent": "Cockpit-Probe"})
+        with urlopen(r, timeout=3) as resp:
+            body = json.loads(resp.read().decode())
+            result["L5_graphiti"]["status"] = body.get("status", "degraded")
+            result["L5_graphiti"]["detail"] = body.get("service", "")
+    except Exception as e:
+        result["L5_graphiti"]["status"] = "dead"
+        result["L5_graphiti"]["detail"] = str(e)[:80]
+    # L6 VAULT999
+    from pathlib import Path
+
+    vault_path = Path("/root/arifOS/VAULT999/outcomes.jsonl")
+    if vault_path.exists():
+        result["L6_vault999"]["status"] = "healthy"
+        try:
+            lines = vault_path.read_text().strip().split("\n")
+            result["L6_vault999"]["detail"] = f"{len(lines)} entries"
+        except Exception:
+            result["L6_vault999"]["detail"] = "present"
+    else:
+        result["L6_vault999"]["status"] = "dead"
+        result["L6_vault999"]["detail"] = "missing"
+    return result
+
+
 def main():
     t0 = time.monotonic()
     prior = load_prior_state()
@@ -203,6 +257,7 @@ def main():
             "alive": alive_count,
             "dead": dead_count,
         },
+        "memory_tiers": _probe_memory_tiers(),
         "agent_list": agent_list,
         "_probe_count": probe_count,
         "_boot_time": boot_time,
