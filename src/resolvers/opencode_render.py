@@ -73,6 +73,23 @@ MODEL_KEY_TRANSLATION = {
     "minimax/MiniMax-M2.7": "minimax/MiniMax-M2.7",
     "minimax/MiniMax-M2.5": "minimax/MiniMax-M2.5",
     "ollama/qwen2.5-coder:3b": "ollama/qwen2.5-coder:3b",
+    "ollama/qwen2.5:3b": "ollama/qwen2.5-coder:3b",  # variant → canonical
+    # Qwen Token Plan Individual (separate billing pool)
+    "qwen-token-plan-individual/qwen3.6-flash": "qwen-token-plan-individual/qwen3.6-flash",
+    "qwen-token-plan-individual/qwen3.7-plus": "qwen-token-plan-individual/qwen3.7-plus",
+    "qwen-token-plan-individual/deepseek-v4-pro": "qwen-token-plan-individual/deepseek-v4-pro",
+    # Qwen Responses API
+    "qwen-responses/qwen3.7-plus": "qwen-responses/qwen3.7-plus",
+    # Bailian PAYG
+    "bailian-token-plan-payments/qwen3.7-plus": "bailian-token-plan-payments/qwen3.7-plus",
+    # MiMo Token Plan
+    "mimo-token-plan/mimo-v2.5-pro": "mimo-token-plan/mimo-v2.5-pro",
+    # Kimi additional variants
+    "kimi/kimi-k3": "kimi/kimi-k3",
+    "kimi/kimi-for-coding-highspeed": "kimi/kimi-for-coding-highspeed",
+    "moonshotai/kimi-k3-free": "kimi/kimi-k3",  # free tier → k3
+    # Claude → OpenRouter bridge
+    "claude-sonnet-5": "openrouter/claude-sonnet-latest",
     "glm/glm-5.2": "tokenrouter-arifos/z-ai/glm-5.2",
     "mimo/mimo-v2.5-pro": "opencode-go/mimo-v2.5-pro",
     "mimo/mimo-v2.5-pro-ultraspeed": "opencode-go/mimo-v2.5-pro",
