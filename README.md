@@ -1,7 +1,7 @@
 <!-- SOT-MANIFEST
 federation_release: v2026.08.04
 last_verified: 2026-08-04T20:23:33Z
-live_commit: pending
+live_commit: 59d79cae (P0 hardening — OBSERVE fast-path + cascade drill + dead provider fix)
 truth_rule: /health + agent registry beat any static count in prose
 a2a_port: 3001
 a2a_status: healthy GREEN (deployment_drift: false)
@@ -109,7 +109,21 @@ npm run a2a:conformance                           # Validate A2A suite
 
 ---
 
-## 📜 Sovereignty & License
+## 📡 Federation Registries
+
+AAA operates the A2A (Agent-to-Agent) mesh — discovery metadata is exposed at the standard agent card endpoints.
+
+| Registry | Manifest |
+|----------|----------|
+| **A2A v1.0** | `GET https://aaa.arif-fazil.com/.well-known/agent.json` — base agent card |
+| **A2A v2.x** | `GET https://aaa.arif-fazil.com/.well-known/agent-card.json` — extended card (authenticated) |
+| **Federation Discovery** | `GET https://arifos.arif-fazil.com/.well-known/federation/agents.json` — all 11 forge instruments |
+
+Federation surface: [aaa.arif-fazil.com](https://aaa.arif-fazil.com) · Health: `GET https://aaa.arif-fazil.com/health`
+
+---
+
+## � Sovereignty & License
 
 - **License:** GNU Affero General Public License v3.0 (**AGPL-3.0**)
 - **Sovereign:** **Muhammad Arif bin Fazil** (F13 SOVEREIGN). AAA is the institutional window for sovereign oversight.
