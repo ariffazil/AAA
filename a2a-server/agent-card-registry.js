@@ -384,6 +384,23 @@ function findBySkill(skillId) {
     console.log(`[agent-card-registry] CIV-33 scan added/refreshed ${civ33Result.loaded.length} cards`);
   }
 
+  // Tertiary scan: warga agent cards at /root/AAA/agents/*/agent-card.json
+  // (hermes, openclaw, forge-bot, 777-forge, etc. — live identity cards)
+  const wargaRoot = path.resolve(__dirname, '..', 'agents');
+  if (fs.existsSync(wargaRoot) && path.resolve(wargaRoot) !== path.resolve(defaultDir) && path.resolve(wargaRoot) !== path.resolve(civ33Root)) {
+    console.log(`[agent-card-registry] Scanning warga agent cards: ${wargaRoot}...`);
+    const wargaResult = loadDirectoryRecursive(wargaRoot);
+    console.log(`[agent-card-registry] Warga scan added/refreshed ${wargaResult.loaded.length} cards`);
+    if (wargaResult.errors.length > 0) {
+      console.warn(`[agent-card-registry] ${wargaResult.errors.length} warga load errors (first 5):`);
+      for (const err of wargaResult.errors.slice(0, 5)) {
+        console.warn(`  ${err}`);
+      }
+    }
+  } else {
+    console.warn(`[agent-card-registry] Warga agents dir not found: ${wargaRoot}`);
+  }
+
   // Summary by CIV-33 layer
   const byLayer = {};
   for (const c of cards.values()) {
