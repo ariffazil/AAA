@@ -58,19 +58,19 @@ curl -sf http://127.0.0.1:18087/health       # Hermes A2A listener
 
 | Agent | Card Says | Runtime Truth | Status |
 |-------|-----------|---------------|--------|
-| **Hermes ASI** | gateway:18086, a2a:18089 | gateway:8444+8445 (Caddy /telegram/webhook) | Card STALE — gateway port changed |
+| **Hermes ASI** | gateway:18086, a2a:18089 | gateway:8444+8445 (Caddy /telegram/webhook) | Card FIXED — gateway port synced to 8444 |
 | **OpenClaw AGI** | gateway:8787 | gateway:8787+18789 (Caddy /telegram-webhook*) | Card ≈ Runtime |
 | **FORGE Bot** | exec:7071, mcp:7072 | exec:7071 (Caddy /forge/webhook) | Card ≈ Runtime |
 | ~~Hindsight~~ | :18087→8888 | :18087 was Hindsight KB, NOT Hermes A2A | **RETIRED 2026-08-05** |
-| Hermes A2A | planned :18089 per card | Never deployed | Service unit doesn't exist |
+| Hermes A2A | :18089 per card | ✅ **LIVE** | `python3` pid 3760673, 2 tasks stored, MCP connected, uptime ~4.2h |
 
 ## Known Issues
 
 | Issue | Severity | Status |
 |-------|----------|--------|
 | Hindsight KB on :18087 crashed (no API key) — port hijacked from planned Hermes A2A | ✅ RESOLVED | Container stopped+removed. :18087+:18088 freed. |
-| Hermes agent card says gateway:18086 but runtime is :8444 | LOW | Card needs sync with live Caddy routes |
-| Hermes A2A (:18089) planned but never deployed | MEDIUM | `hermes-a2a.service` unit file doesn't exist |
+| Hermes agent card says gateway:18086 but runtime is :8444 | ✅ RESOLVED | Card updated — gateway port now 8444 |
+| Hermes A2A (:18089) planned but never deployed | ✅ RESOLVED | Live probe confirms UP: `{"status":"ok","port":18089,"mcp_connected":true}` |
 | 3 Telegram bots' agent cards exist but not visible in AAA directory | LOW | Cards at `/root/AAA/agents/<bot>/agent-card.json`. AAA `card-inventory-loader` scans directory. Discovery gap likely in live-probe filter. |
 | FORGE-bot agent card was missing | ✅ RESOLVED | Created at `/root/AAA/agents/forge-bot/agent-card.json` |
 | 3 bot identities → user mental model noisy | ✅ RESOLVED | Contract matrix is the answer |
