@@ -328,10 +328,10 @@ components:
       - constitutional_judgment
       - self_authorization
 
-  - id: arif-sites
+  - id: arif-fazil-com
     class: EDGE
-    display_name: arif-sites
-    repo: ariffazil/arif-sites
+    display_name: arif-fazil.com
+    repo: ariffazil/arif-fazil.com
     role: public_projection
     authority_ceiling: DISPLAY_ONLY
     owned_domains:
@@ -340,6 +340,7 @@ components:
     forbidden_domains:
       - constitutional_truth
       - engineering_execution
+    notes: "Supersedes id arif-sites / repo ariffazil/arif-sites (GitHub rename 301). Canon law: web-canon."
 
   # ── SUPPORT ──────────────────────────────────────────────────────
   - id: well-witness
