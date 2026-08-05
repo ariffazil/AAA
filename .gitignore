@@ -199,3 +199,7 @@ IDENTITY/identity.toml.*.bak
 
 ### existing content preserved above ###
 ledger/
+gateway/
+gateway-forge/
+gateway-hermes/
+gateway-openclaw/
