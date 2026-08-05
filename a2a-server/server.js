@@ -51,6 +51,9 @@ const { membraneMiddleware, membraneResponseHook } = require('./membrane_middlew
 // ── EMD Validation Gate — External A2A Payload Sanitizer v1.0.0 (2026-07-20) ─
 const { emdValidationGate } = require('./emd-validation-gate');
 
+// ── Agent Inbox — NATS JetStream inter-agent message bus (forged 2026-08-05) ─
+const { getInbox, createSIAL, validateSIAL } = require('./agent_inbox');
+
 const app = express();
 app.use(express.json({ limit: '12mb' }));
 
@@ -5023,6 +5026,89 @@ try {
   console.warn('[AAA] Toolbench router not loaded:', e.message);
 }
 
+// ── AGENT INBOX ROUTES — NATS JetStream Inter-Agent Messaging (forged 2026-08-05) ─
+// SIAL protocol: Structured Inter-Agent Language v1.0
+
+app.post('/inbox/send', express.json(), async (req, res) => {
+  try {
+    const inbox = await getInbox(NATS_URL);
+    if (!inbox.connected) {
+      return res.status(503).json({ error: 'inbox_not_connected' });
+    }
+    const { from, to, intent, evidence, constraints, expected_output_schema } = req.body || {};
+    const envelope = createSIAL(from, to, intent, evidence, constraints, expected_output_schema);
+    const result = await inbox.send(envelope);
+    if (result.ok) {
+      res.status(201).json(result);
+    } else {
+      res.status(400).json(result);
+    }
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+app.get('/inbox/stats', async (req, res) => {
+  try {
+    const inbox = await getInbox(NATS_URL);
+    if (!inbox.connected) {
+      return res.status(503).json({ error: 'inbox_not_connected' });
+    }
+    const result = await inbox.stats();
+    res.json(result);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+app.get('/inbox/:agentId', async (req, res) => {
+  try {
+    const inbox = await getInbox(NATS_URL);
+    if (!inbox.connected) {
+      return res.status(503).json({ error: 'inbox_not_connected' });
+    }
+    const limit = parseInt(req.query.limit) || 20;
+    const result = await inbox.poll(req.params.agentId, { limit });
+    res.json(result);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+app.get('/inbox/:agentId/:msgId', async (req, res) => {
+  try {
+    const inbox = await getInbox(NATS_URL);
+    if (!inbox.connected) {
+      return res.status(503).json({ error: 'inbox_not_connected' });
+    }
+    const result = await inbox.get(req.params.agentId, req.params.msgId);
+    if (result.ok) {
+      res.json(result);
+    } else {
+      res.status(404).json(result);
+    }
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+app.delete('/inbox/:agentId/:msgId', async (req, res) => {
+  try {
+    const inbox = await getInbox(NATS_URL);
+    if (!inbox.connected) {
+      return res.status(503).json({ error: 'inbox_not_connected' });
+    }
+    const result = await inbox.delete(req.params.agentId, req.params.msgId);
+    if (result.ok) {
+      res.json(result);
+    } else {
+      res.status(404).json(result);
+    }
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
 // === 404 FALLBACK HANDLER ===
 // Placed AFTER all valid routes so only truly unknown paths hit this
 // === 404 HANDLER ===
@@ -5048,6 +5134,16 @@ async function initAsyncBackbone() {
   try {
     natsConnection = await connect({ servers: NATS_URL });
     console.log('[nats] connected');
+
+    // ── Agent Inbox — initialize JetStream KV store for inter-agent comms ─
+    try {
+      const inbox = await getInbox(NATS_URL);
+      if (inbox.connected) {
+        console.log('[inbox] Agent Inbox ready — NATS JetStream KV backed');
+      }
+    } catch (e) {
+      console.warn('[inbox] Failed to init (non-fatal):', e.message);
+    }
 
     // ── Start Mesh Coordinator (P3 2026-06-14) ──────────────────────────
     // Reuses the existing NATS connection. Subscribes to governance events
