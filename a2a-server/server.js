@@ -54,6 +54,9 @@ const { emdValidationGate } = require('./emd-validation-gate');
 // ── Agent Inbox — NATS JetStream inter-agent message bus (forged 2026-08-05) ─
 const { getInbox, createSIAL, validateSIAL } = require('./agent_inbox');
 
+// ── FQ Gate — constitutional HOLD at FQ < 0.5 (forged 2026-08-05) ─
+const { fqGateSync } = require('./fq_gate');
+
 // ── G2 Witness Gate — pre-execution tri-witness consensus (forged 2026-08-05) ─
 const { witnessGate, witnessGateSync } = require('./witness_gate');
 
@@ -69,6 +72,40 @@ app.use(express.json({ limit: '12mb' }));
 // Membrane gate — every cross-organ message must pass through
 app.use(membraneMiddleware);
 app.use(membraneResponseHook);
+
+// ── FQ GATE — constitutional HOLD at FQ < 0.5 (blocks MUTATE) ─
+app.use((req, res, next) => {
+  const envelope = req._membrane;
+  if (!envelope) return next();
+
+  const actionClass = envelope.action_class;
+  // OBSERVE always passes FQ gate
+  if (actionClass === 'OBSERVE' || actionClass === 'ANALYZE') {
+    return next();
+  }
+
+  const fq = fqGateSync();
+
+  // Attach FQ state to envelope
+  envelope._fq_gate = fq;
+  req._fq_gate = fq;
+
+  if (!fq.pass) {
+    console.log(`[fq-gate] BLOCKED ${actionClass}: FQ=${fq.fq.quotient.toFixed(3)} ${fq.fq.verdict}`);
+    return res.status(423).json({
+      error: 'FQ_HOLD',
+      verdict: 'HOLD',
+      message: fq.reason,
+      fq: fq.fq,
+      gate: 'FQ',
+      threshold: fq.threshold,
+      next_action: 'Verify pending receipts, reduce execute cadence, or request F13 override.',
+    });
+  }
+
+  console.log(`[fq-gate] PASS FQ=${fq.fq.quotient.toFixed(3)} ${fq.fq.verdict}`);
+  next();
+});
 
 // ── G2 WITNESS GATE — blocks MUTATE actions when consensus is DIVERGENT ─
 app.use((req, res, next) => {
@@ -5263,6 +5300,12 @@ app.get('/orchestrate', (req, res) => {
     task_id: t.task_id, state: t.state, intent: t.intent.substring(0, 60),
     domain: t.domain, assigned_agent: t.assigned_agent, retry_count: t.retry_count,
   }))});
+});
+
+app.get('/fq', (req, res) => {
+  const fq = fqGateSync();
+  res.setHeader('Cache-Control', 'no-store');
+  res.json(fq);
 });
 
 app.get('/witness', (req, res) => {
