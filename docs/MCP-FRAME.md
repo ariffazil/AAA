@@ -95,7 +95,7 @@ INFRASTRUCTURE
   arifflow  :7073         ·      ·      🟢     🟢     ·      🟢     ·      ·
   hermes    :18901        🟢     ·      🟢     ·      ·      🟢     ·      ·
   hermes-agent :18090     ·      ·      🟢     ·      ·      ·      ·      ·
-  hindsight :18087        ·      ·      🟢     ·      ·      🟢     ·      ·
+  hindsight :18087 (RETIRED 2026-08-05)  ·      ·      ·      ·      ·      ·      ·      ·
 
 RESEARCH & SEARCH
   brave-search            ·      🟢     ·      ·      🟢     🟢     ·      ·
