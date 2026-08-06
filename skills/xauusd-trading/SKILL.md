@@ -58,14 +58,14 @@ client = get_oanda_client()
 
 | Path | Purpose |
 |------|---------|
-| `/root/trading/` | Python venv + all trading code |
-| `/root/trading/bin/python3` | Python interpreter with all packages |
-| `/root/trading/config/oanda.env` | OANDA credentials (NEVER commit) |
-| `/root/trading/strategies/` | Backtrader strategies |
-| `/root/trading/data/` | Cached market data |
-| `/root/trading/logs/` | Trade logs |
+| `${TRADING_HOME:-/root/trading}/` | Python venv + all trading code |
+| `${TRADING_HOME:-/root/trading}/bin/python3` | Python interpreter with all packages |
+| `${TRADING_HOME:-/root/trading}/config/oanda.env` | OANDA credentials (NEVER commit) |
+| `${TRADING_HOME:-/root/trading}/strategies/` | Backtrader strategies |
+| `${TRADING_HOME:-/root/trading}/data/` | Cached market data |
+| `${TRADING_HOME:-/root/trading}/logs/` | Trade logs |
 | `/root/XAUUSD_TRADING_RESEARCH.md` | Full research brief |
-| `/root/AAA/prompts/XAUUSD_RSI_UPGRADE_v1.0.md` | RSI upgrade prompt |
+| `${AAA_HOME:-/root/AAA}/prompts/XAUUSD_RSI_UPGRADE_v1.0.md` | RSI upgrade prompt |
 
 ## Installed Packages
 
@@ -122,7 +122,7 @@ Any agent can find this skill via:
 ## For Hermes ASI
 
 Hermes can use this skill to:
-1. Run backtests via `/root/trading/bin/python3 strategies/xauusd_rsi_basic.py`
+1. Run backtests via `${TRADING_HOME:-/root/trading}/bin/python3 strategies/xauusd_rsi_basic.py`
 2. Fetch live prices via the quickstart module
 3. Generate trade signals with RSI + macro overlay
 4. Route trade approval through arifOS (F1-F13)
