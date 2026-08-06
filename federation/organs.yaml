@@ -412,14 +412,18 @@ components:
     display_name: OpenClaw
     role: edge_agent_telegram
     units:
-      - openclaw-gateway.service    # primary; WebSocket gateway :18789 + Telegram webhook :8787
-      - openclaw-bot.service        # canon-listed worker (currently DISABLED — awaiting intentional activation)
-      - apa-telegram-bridge.service # F13 veto surface via A-FORGE forge_telegram :18096
+      - openclaw-gateway.service    # ACTIVE — WebSocket gateway :18789 + Telegram webhook :8787
+      - openclaw-bot.service        # DISABLED — canon-listed worker (awaiting intentional activation)
+      - apa-telegram-bridge.service # ACTIVE — F13 veto surface via A-FORGE forge_telegram :18096
+      - openclaw-restart.service    # INACTIVE (dead trigger unit) — fires openclaw-gateway restart on path change
     authority_ceiling: EDGE_AGENT
     # Zen-2026-08-02 (kimi-code/FI-008): multi-unit listing after drift discovery
     #   - 22 production secrets verified in vault.flat.env (cross-checked 2026-08-02)
     #   - 5 orphan env files archived+deleted: _archive/2026-08-02-pre-unif/drift-env-cleanup.tar.gz
     #   - T1.2 done; T2.a gateway-restart done; canon now matches live state
+    # Zen-2026-08-06 (AUDIT-M3): STATUS annotations + openclaw-restart trigger unit added
+    #   - Live systemctl shows 3 units (gateway ACTIVE, apa-bridge ACTIVE, restart DEAD-trigger)
+    #   - openclaw-bot remains DISABLED pending intentional activation
     forbidden_domains:
       - constitutional_judgment
       - self_authorization
@@ -541,6 +545,14 @@ components:
     port: 4222
     unit: nats-server.service
     role: message_bus
+    companions:
+      - id: nats-prometheus-exporter
+        class: SUPPORT
+        port: 7777  # default metrics endpoint
+        unit: nats-prometheus-exporter.service
+        role: metrics_export
+    # Zen-2026-08-06 (AUDIT-M4): companion nats-prometheus-exporter added
+    #   - Single nats-server instance; prometheus-exporter is SUPPORT companion (not a duplicate)
   - id: searxng
     class: DATA
     port: 8080
@@ -558,6 +570,62 @@ components:
     class: DATA
     unit: caddy.service
     role: ingress_membrane
+
+# ── PORT OBSERVABILITY (zen-2026-08-06 AUDIT-M2) ─────────────────────────
+# Live ports classified. Sub-processes (a-forge sub-workers, devtools, debug)
+# are out of scope for SOT — they don't claim authority. Substrate ports below
+# ARE in SOT but their actual binding (tailscale vs localhost) is documented here.
+port_observability:
+  audited_at: "2026-08-06T11:05:00Z"
+  audited_by: "ARIF via kimi-code/FI-008 (zen-remediation-2026-08-06)"
+  total_live_ports: 51
+  sot_registered: 23
+  drift_status:
+    raw_unknown: 28        # ports with live listener but no SOT entry
+    classified_known: 23   # ports in SOT (substrate + organs + infra)
+    drift_reduction: "from 75 (audit-zen-2026-08-06) to 28 (post-classification)"
+  substrate_ports:
+    - {port: 5432, service: "Postgres L4", binding: "127.0.0.1"}
+    - {port: 6379, service: "Redis L1-L2", binding: "127.0.0.1"}
+    - {port: 6333, service: "Qdrant L3", binding: "127.0.0.1"}
+    - {port: 6334, service: "Qdrant gRPC", binding: "127.0.0.1"}
+    - {port: 6380, service: "FalkorDB L5", binding: "127.0.0.1"}
+    - {port: 4222, service: "NATS client", binding: "127.0.0.1"}
+    - {port: 8222, service: "NATS monitoring", binding: "127.0.0.1"}
+    - {port: 7777, service: "NATS prom-exporter", binding: "127.0.0.1", note: "added 2026-08-06 (B2)"}
+    - {port: 8000, service: "Graphiti MCP", binding: "127.0.0.1"}
+    - {port: 8083, service: "Headscale", binding: "127.0.0.1"}
+    - {port: 6274, service: "MCPJam inspector", binding: "127.0.0.1"}
+    - {port: 6277, service: "MCPJam proxy", binding: "127.0.0.1"}
+    - {port: 9000, service: "MinIO API", binding: "127.0.0.1"}
+    - {port: 9001, service: "MinIO console", binding: "127.0.0.1"}
+    - {port: 8080, service: "SearXNG", binding: "127.0.0.1"}
+  organ_ports_localhost:
+    - {port: 8088, organ: "arifOS", binding: "127.0.0.1"}
+    - {port: 7071, organ: "A-FORGE API", binding: "127.0.0.1"}
+    - {port: 7072, organ: "A-FORGE MCP", binding: "127.0.0.1"}
+    - {port: 8081, organ: "GEOX", binding: "127.0.0.1"}
+    - {port: 8787, organ: "OpenClaw gateway", binding: "127.0.0.1"}
+    - {port: 7073, organ: "arifFlow", binding: "127.0.0.1"}
+    - {port: 7074, organ: "FED router", binding: "127.0.0.1"}
+    - {port: 18901, organ: "FLAME", binding: "127.0.0.1"}
+  organ_ports_tailscale:
+    - {port: 3001, organ: "AAA", binding: "100.64.0.2 (tailnet)"}
+    - {port: 18082, organ: "WEALTH", binding: "100.64.0.2 (tailnet)"}
+    - {port: 18083, organ: "WELL", binding: "100.64.0.2 (tailnet)"}
+  infra_ports:
+    - {port: 53, service: "systemd-resolved", binding: "127.0.0.53/54"}
+    - {port: 22888, service: "sshd", binding: "0.0.0.0"}
+    - {port: 9100, service: "prometheus node_exporter", binding: "127.0.0.1"}
+    - {port: 9090, service: "prometheus server", binding: "127.0.0.1"}
+    - {port: 8125, service: "netdata", binding: "127.0.0.1"}
+    - {port: 19999, service: "netdata dashboard", binding: "127.0.0.1"}
+    - {port: 4317, service: "otel-collector", binding: "127.0.0.1"}
+    - {port: 20241, service: "cloudflared", binding: "127.0.0.1"}
+  sub_process_out_of_scope:
+    description: "a-forge sub-workers, debug ports, litellm 4000, hermes 8444, dev tools — not registered as SOT components (no authority claim)"
+    examples: [4000, 4096, 4173, 4329, 5001, 7099, 8090, 8091, 8092, 8094, 8100, 8444, 8931, 9222, 39570, 46590]
+  hermes_observability_note: "HERMES binds :8444 publicly but listed out_of_scope above — Hermes is an EDGE organ without explicit port SOT entry (organ registry has hermes.mcp_port=18086 only)"
 
 # Explicit non-components (naming traps — do not register as organs)
 non_components:
