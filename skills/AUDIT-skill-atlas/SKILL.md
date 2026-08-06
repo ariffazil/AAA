@@ -40,8 +40,8 @@ It does NOT execute, judge, or seal. It classifies, routes, and illuminates.
 
 **Ops skill:** `AGI-skill-unification` (AAA + mesh views) — alias/mesh/boot contract. NOTE: One-way reference. AGI-skill-unification references this atlas; this atlas does NOT reference back (P6 circular dependency resolved 2026-08-01).
 
-**Live atlas (T₁):** `/root/A-FORGE/forge_work/2026-07-12/GROK-CLI-AAA-SKILL-UNIFICATION-ATLAS.md`  
-**Current receipt:** `/root/forge_work/2026-07-15/AAA-SKILL-TOOL-RECONCILIATION.json`
+**Live atlas (T₁):** `${AFORGE_HOME:-/root/A-FORGE}/forge_work/2026-07-12/GROK-CLI-AAA-SKILL-UNIFICATION-ATLAS.md`  
+**Current receipt:** `${FORGE_WORK:-/root/forge_work}/2026-07-15/AAA-SKILL-TOOL-RECONCILIATION.json`
 
 ---
 
@@ -65,14 +65,14 @@ Hermes categories | Kimi roles | OpenClaw owned
 | Surface | Count | Role |
 |---------|-------|------|
 | Grok `~/.grok/skills` | **184** resolvable bodies | View + native keepers; 0 broken |
-| AAA `/root/AAA/skills` | **108** active bodies | **Catalog**; archives excluded |
+| AAA `${AAA_HOME:-/root/AAA}/skills` | **108** active bodies | **Catalog**; archives excluded |
 | V3 registry | **64** logical (6+3+55) | Short-name registry |
 | Alias table | **133 rows** | 104 active mappings + 29 tombstone/history rows |
 | `.agents/skills` | **130** active bodies | Stage/domain doctrine |
 | Claude / Codex / OpenCode | **176 / 56 / 39** | Mesh/profile views; 0 broken |
 | Kimi | **7** | Role contrast/RSI skills |
 
-Count method and provenance: `/root/forge_work/2026-07-15/AAA-SKILL-TOOL-RECONCILIATION.json`. Counts are dated observations; `skill-mesh-sync.sh --check` is the operational gate.
+Count method and provenance: `${FORGE_WORK:-/root/forge_work}/2026-07-15/AAA-SKILL-TOOL-RECONCILIATION.json`. Counts are dated observations; `skill-mesh-sync.sh --check` is the operational gate.
 
 ### Grok native keepers (harness-only)
 
@@ -81,10 +81,10 @@ Count method and provenance: `/root/forge_work/2026-07-15/AAA-SKILL-TOOL-RECONCI
 
 ### Dual-name gap — RESOLVED (2026-07-15)
 
-**Machine table:** `/root/AAA/skills/SKILL_ALIAS_TABLE.json` — 133 rows; active mappings and tombstone history are separate.  
-**Human:** `A-FORGE/forge_work/2026-07-12/SKILL_ALIAS_TABLE.md`  
-**Hermes bridge:** `A-FORGE/forge_work/2026-07-12/HERMES-V3-DOMAIN-BRIDGE.md`  
-**Mesh sync:** `bash /root/AAA/skills/scripts/skill-mesh-sync.sh [--apply|--check]`
+**Machine table:** `${AAA_HOME:-/root/AAA}/skills/SKILL_ALIAS_TABLE.json` — 133 rows; active mappings and tombstone history are separate.  
+**Human:** `${AFORGE_HOME:-/root/A-FORGE}/forge_work/2026-07-12/SKILL_ALIAS_TABLE.md`  
+**Hermes bridge:** `${AFORGE_HOME:-/root/A-FORGE}/forge_work/2026-07-12/HERMES-V3-DOMAIN-BRIDGE.md`  
+**Mesh sync:** `bash ${AAA_HOME:-/root/AAA}/skills/scripts/skill-mesh-sync.sh [--apply|--check]`
 
 | V3 short | Primary disk path |
 |----------|-------------------|
@@ -504,7 +504,7 @@ These are capabilities that NO single skill covers but the federation needs.
 | **P0** | Source-less aliases | ✅ 2 quarantined, no fabricated bodies |
 | **P0** | Grok office prune | ✅ `.deprecated` |
 | **P0** | Hermes bridge (no flatten) | ✅ |
-| **P1** | Keep dated reconciliation receipt | ✅ `/root/forge_work/2026-07-15/AAA-SKILL-TOOL-RECONCILIATION.json` |
+| **P1** | Keep dated reconciliation receipt | ✅ `${FORGE_WORK:-/root/forge_work}/2026-07-15/AAA-SKILL-TOOL-RECONCILIATION.json` |
 | **P2** | Migrate high-traffic doctrine bodies into AAA | Optional; only when one canonical body is proven better |
 | **P3** | New skills | Only for a verified capability gap, never for count parity |
 
@@ -527,7 +527,7 @@ These are capabilities that NO single skill covers but the federation needs.
   "mesh_check": "PASS",
   "broken_links": 0,
   "dual_name_debt": false,
-  "atlas_artifact": "/root/forge_work/2026-07-15/AAA-SKILL-TOOL-RECONCILIATION.json",
+  "atlas_artifact": "${FORGE_WORK:-/root/forge_work}/2026-07-15/AAA-SKILL-TOOL-RECONCILIATION.json",
   "routing_decision": "{{routed_to_skill}}",
   "latency_ms": 0
 }
@@ -552,5 +552,15 @@ These are capabilities that NO single skill covers but the federation needs.
 *Updated: 2026-07-02 — forge-document-intelligence filled*  
 *Updated: 2026-07-12 — multi-harness §0; V3/bootstrap alignment; atlas artifact*  
 *Updated: 2026-07-15 — 64 logical skills, 133 alias rows, live tool snapshot, mesh repaired and verified*  
+*Updated: 2026-08-06 — de-hardcoded (cycle 2/5): $FORGE_WORK, $AAA_HOME, $AFORGE_HOME env vars*  
 *Canon: AAA catalog · harness views · BOOTSTRAP first*  
 *DITEMPA BUKAN DIBERI — The mesa sees the terrain. The terrain does not see the mesa.*
+
+## De-hardcoding Log (v2026-08-06 — cycle 2/5)
+
+- **Reconciliation receipt path** (4 references: lines 44, 75, 507, 530) → `$FORGE_WORK` env, default `/root/forge_work`
+- **AAA source path** (3 references: lines 68, 84, 87) → `$AAA_HOME` env, default `/root/AAA`
+- **A-FORGE source path** (3 references: lines 43, 85, 86) → `$AFORGE_HOME` env, default `/root/A-FORGE`
+- **HERMES SOUL.md path** (line 290): `/root/.hermes/SOUL.md` — kept inline as Hermes is single-instance on af-forge VPS; flag for review if multi-host
+- Defaults match current deployment — change in production requires re-deployment of root home
+- Behavior unchanged for sovereign's af-forge VPS
