@@ -133,7 +133,7 @@ arif_forge   777 · EXECUTE  Governed mutation. Only after SEAL verdict.
 arif_seal    999 · CLOSE    Immutable append to VAULT999. The one door facing out.
 ```
 
-**The loop is not a checklist. It is a discipline. Skip no verb. Verify each.**
+**The loop is not a checklist. It is not a method. The loop is the institution. Every iteration compresses the cycle time for the next. The loop's throughput — not any single discovery — is the civilizational output. Skip no verb. Verify each.**
 
 ---
 
