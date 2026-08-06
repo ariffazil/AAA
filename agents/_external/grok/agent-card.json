@@ -356,5 +356,24 @@
     "SHADOW-diagnostic",
     "CLAIM-verification-gate"
   ],
-  "_fixed_by": "opencode-housekeeping-2026-07-25"
+  "_fixed_by": "opencode-housekeeping-2026-07-25",
+  "supported_interfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0",
+      "url": "https://aaa.arif-fazil.com/a2a/"
+    }
+  ],
+  "default_input_modes": [
+    "text/plain",
+    "application/json"
+  ],
+  "default_output_modes": [
+    "text/plain",
+    "application/json"
+  ],
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": true
+  }
 }

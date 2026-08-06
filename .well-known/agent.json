@@ -13,18 +13,43 @@
           "input": {
             "type": "object",
             "properties": {
-              "mode": { "type": "string", "enum": ["init", "light", "resume", "validate"] },
-              "actor_id": { "type": "string" },
-              "intent": { "type": "string" }
+              "mode": {
+                "type": "string",
+                "enum": [
+                  "init",
+                  "light",
+                  "resume",
+                  "validate"
+                ]
+              },
+              "actor_id": {
+                "type": "string"
+              },
+              "intent": {
+                "type": "string"
+              }
             },
-            "required": ["actor_id"]
+            "required": [
+              "actor_id"
+            ]
           },
           "output": {
             "type": "object",
             "properties": {
-              "session_id": { "type": "string" },
-              "authority": { "type": "string", "enum": ["SEAL", "OBSERVE_ONLY", "FULL"] },
-              "constitution_hash": { "type": "string" }
+              "session_id": {
+                "type": "string"
+              },
+              "authority": {
+                "type": "string",
+                "enum": [
+                  "SEAL",
+                  "OBSERVE_ONLY",
+                  "FULL"
+                ]
+              },
+              "constitution_hash": {
+                "type": "string"
+              }
             }
           }
         },
@@ -34,9 +59,22 @@
           "input": {
             "type": "object",
             "properties": {
-              "mode": { "type": "string", "enum": ["search", "ingest", "vitals", "entropy_dS"] },
-              "query": { "type": "string" },
-              "url": { "type": "string", "format": "uri" }
+              "mode": {
+                "type": "string",
+                "enum": [
+                  "search",
+                  "ingest",
+                  "vitals",
+                  "entropy_dS"
+                ]
+              },
+              "query": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              }
             }
           }
         },
@@ -46,10 +84,23 @@
           "input": {
             "type": "object",
             "properties": {
-              "mode": { "type": "string", "enum": ["reason", "plan", "critique", "verify", "reflect"] },
-              "query": { "type": "string" }
+              "mode": {
+                "type": "string",
+                "enum": [
+                  "reason",
+                  "plan",
+                  "critique",
+                  "verify",
+                  "reflect"
+                ]
+              },
+              "query": {
+                "type": "string"
+              }
             },
-            "required": ["query"]
+            "required": [
+              "query"
+            ]
           }
         },
         {
@@ -58,10 +109,23 @@
           "input": {
             "type": "object",
             "properties": {
-              "intent": { "type": "string" },
-              "organ": { "type": "string", "enum": ["geox", "wealth", "well", "aforge", "arifos"] }
+              "intent": {
+                "type": "string"
+              },
+              "organ": {
+                "type": "string",
+                "enum": [
+                  "geox",
+                  "wealth",
+                  "well",
+                  "aforge",
+                  "arifos"
+                ]
+              }
             },
-            "required": ["intent"]
+            "required": [
+              "intent"
+            ]
           }
         },
         {
@@ -70,20 +134,63 @@
           "input": {
             "type": "object",
             "properties": {
-              "actor": { "type": "string" },
-              "intent": { "type": "string" },
-              "requested_capability": { "type": "string" },
-              "domain": { "type": "string" },
-              "reversibility_level": { "type": "string", "enum": ["FULL", "PARTIAL", "NONE"] },
-              "blast_radius": { "type": "string", "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"] }
+              "actor": {
+                "type": "string"
+              },
+              "intent": {
+                "type": "string"
+              },
+              "requested_capability": {
+                "type": "string"
+              },
+              "domain": {
+                "type": "string"
+              },
+              "reversibility_level": {
+                "type": "string",
+                "enum": [
+                  "FULL",
+                  "PARTIAL",
+                  "NONE"
+                ]
+              },
+              "blast_radius": {
+                "type": "string",
+                "enum": [
+                  "LOW",
+                  "MEDIUM",
+                  "HIGH",
+                  "CRITICAL"
+                ]
+              }
             },
-            "required": ["actor", "intent", "requested_capability", "domain", "reversibility_level", "blast_radius"]
+            "required": [
+              "actor",
+              "intent",
+              "requested_capability",
+              "domain",
+              "reversibility_level",
+              "blast_radius"
+            ]
           },
           "output": {
             "type": "object",
             "properties": {
-              "verdict": { "type": "string", "enum": ["SEAL", "HOLD", "SABAR", "VOID"] },
-              "violated_floors": { "type": "array", "items": { "type": "string" } }
+              "verdict": {
+                "type": "string",
+                "enum": [
+                  "SEAL",
+                  "HOLD",
+                  "SABAR",
+                  "VOID"
+                ]
+              },
+              "violated_floors": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
             }
           }
         },
@@ -93,10 +200,17 @@
           "input": {
             "type": "object",
             "properties": {
-              "seal_verdict_id": { "type": "string" },
-              "approved_action_hash": { "type": "string" }
+              "seal_verdict_id": {
+                "type": "string"
+              },
+              "approved_action_hash": {
+                "type": "string"
+              }
             },
-            "required": ["seal_verdict_id", "approved_action_hash"]
+            "required": [
+              "seal_verdict_id",
+              "approved_action_hash"
+            ]
           }
         },
         {
@@ -105,11 +219,24 @@
           "input": {
             "type": "object",
             "properties": {
-              "mode": { "type": "string", "enum": ["seal", "verify", "ledger"] },
-              "payload": { "type": "string" },
-              "ack_irreversible": { "type": "boolean" }
+              "mode": {
+                "type": "string",
+                "enum": [
+                  "seal",
+                  "verify",
+                  "ledger"
+                ]
+              },
+              "payload": {
+                "type": "string"
+              },
+              "ack_irreversible": {
+                "type": "boolean"
+              }
             },
-            "required": ["mode"]
+            "required": [
+              "mode"
+            ]
           }
         }
       ]
@@ -130,7 +257,7 @@
     "Claim consciousness, sentience, or soul (F9 ANTI-HANTU enforced)",
     "Expose secrets, tokens, or private kernel state to A2A peers",
     "Override F13 SOVEREIGN (human Arif) veto",
-    "Upgrade INFERRED→VERIFIED→GROUND_TRUTH without evidence transition",
+    "Upgrade INFERRED\u2192VERIFIED\u2192GROUND_TRUTH without evidence transition",
     "Modify or delete VAULT999 records after sealing",
     "Act as a domain specialist (delegates to GEOX/WEALTH/WELL/A-FORGE)",
     "Make financial trades, physical changes, or real-money decisions"
@@ -143,20 +270,23 @@
   "authentication": {
     "type": "session-bound",
     "description": "Each session binds an actor_id via arif_init. Authority level determined by actor verification. OBSERVE_ONLY if unverified. F13 level requires sovereign signature.",
-    "mechanisms": ["actor_id declaration", "session_id continuity"]
+    "mechanisms": [
+      "actor_id declaration",
+      "session_id continuity"
+    ]
   },
   "escalation_rules": [
-    "T1 — AUTO: observe, reason, plan, route (no human needed)",
-    "T2 — ANNOUNCE: multi-file refactor, new dependency, deploy after tests (10s window)",
-    "T3 — 888_HOLD: irreversible mutation, vault seal without prior SEAL, production deploy without tests",
-    "F13 — SOVEREIGN: Arif's direct veto overrides all tool outputs. Final authority."
+    "T1 \u2014 AUTO: observe, reason, plan, route (no human needed)",
+    "T2 \u2014 ANNOUNCE: multi-file refactor, new dependency, deploy after tests (10s window)",
+    "T3 \u2014 888_HOLD: irreversible mutation, vault seal without prior SEAL, production deploy without tests",
+    "F13 \u2014 SOVEREIGN: Arif's direct veto overrides all tool outputs. Final authority."
   ],
-  "internal_memory_exposure": "NONE — arifOS does not expose session memory, vault contents, or internal state to A2A peers. Memory is accessed only through authorized tools (arif_vault_query, arif_seal).",
+  "internal_memory_exposure": "NONE \u2014 arifOS does not expose session memory, vault contents, or internal state to A2A peers. Memory is accessed only through authorized tools (arif_vault_query, arif_seal).",
   "security": {
     "tool_boundary_enforced": true,
     "additionalProperties_false": true,
-    "authority_metadata": "PENDING — WAJIB-005 implementation in progress",
-    "evidence_freshness": "PENDING — WAJIB-006 implementation in progress"
+    "authority_metadata": "PENDING \u2014 WAJIB-005 implementation in progress",
+    "evidence_freshness": "PENDING \u2014 WAJIB-006 implementation in progress"
   },
   "federation_peers": [
     {
@@ -206,5 +336,40 @@
     "constitution": "F1-F13 floors at /root/arifOS/docs/CONSTITUTION.md",
     "authority_model": "/root/A-FORGE/forge_work/2026-06-30/fiqh-wajib-005-authority-labels.md",
     "surface_inventory": "/root/A-FORGE/forge_work/2026-06-30/fiqh-wajib-002-full-inventory.md"
-  }
+  },
+  "supported_interfaces": [
+    {
+      "url": "https://arif-fazil.com/a2a",
+      "protocol_binding": "JSONRPC",
+      "protocol_version": "1.0"
+    }
+  ],
+  "default_input_modes": [
+    "text/plain",
+    "application/json"
+  ],
+  "default_output_modes": [
+    "text/plain",
+    "application/json"
+  ],
+  "skills": [
+    {
+      "id": "arif_init",
+      "name": "Session Init",
+      "description": "Bootstrap constitutional session",
+      "tags": [
+        "kernel",
+        "canonical"
+      ]
+    },
+    {
+      "id": "arif_judge",
+      "name": "Constitutional Verdict",
+      "description": "Render SEAL/HOLD/SABAR/VOID verdict",
+      "tags": [
+        "kernel",
+        "judge"
+      ]
+    }
+  ]
 }

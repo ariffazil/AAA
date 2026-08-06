@@ -66,5 +66,25 @@
       "description": "Route external evidence through EMD gate"
     }
   ],
-  "_fixed_by": "opencode-housekeeping-2026-07-25"
+  "_fixed_by": "opencode-housekeeping-2026-07-25",
+  "supported_interfaces": [
+    {
+      "url": "https://aaa.arif-fazil.com/a2a/",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "default_input_modes": [
+    "text/plain",
+    "application/json"
+  ],
+  "default_output_modes": [
+    "text/plain",
+    "application/json"
+  ],
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "version": "1.0.0"
 }

@@ -132,5 +132,20 @@
       "created": "2026-07-12T23:36:09Z",
       "type": "Ed25519Signature2020"
     }
+  ],
+  "supported_interfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.2",
+      "url": "https://aaa.arif-fazil.com/a2a"
+    }
+  ],
+  "default_input_modes": [
+    "text/plain",
+    "application/json"
+  ],
+  "default_output_modes": [
+    "text/plain",
+    "application/json"
   ]
 }
