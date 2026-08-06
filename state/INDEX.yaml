@@ -1,0 +1,126 @@
+# ═══════════════════════════════════════════════════════════════════
+# AAA State — Machine-Twin Discovery Index
+# ═══════════════════════════════════════════════════════════════════
+# HUMAN TWIN: /root/AAA/docs/STATE_INDEX.md (this file is machine SOT)
+# Truth rule: live filesystem beats this index. Re-probe before SEAL claims.
+# Forged: 2026-08-06 by kimi-code/FI-008 (warga-aaa) under F13 SOVEREIGN override
+# DITEMPA BUKAN DIBERI ⚒️
+
+schema_version: 1
+generated: "2026-08-06T03:55:00Z"
+maintainer: "AAA Control Plane (warga-aaa FI-008 under sovereign override)"
+human_map: /root/AAA/docs/STATE_INDEX.md
+truth_rule: live_filesystem_beats_index
+classification_mirror: /root/AAA/federation/organs.yaml  # anchor pattern
+
+# ═══ PURPOSE ═══
+purpose: >
+  Discovery layer for /root/AAA/state/ — replaces direct-path ANCHORs.
+  Resolves state machine files (HARAMKAN_MAP, flow_state, goal_registry,
+  nodes, mesh logs, stabilization snapshots) by reference rather than
+  hardcoding. This file is the SINGLE discovery surface for state paths.
+
+# ═══ CLASSIFICATION LEGEND ═══
+classification_legend:
+  STATE:        live runtime state (TTL-based, may go stale)
+  HARAMKAN_MAP:  explicit kill / freeze register (forbidden actions)
+  GOAL:         goal registry (durable cross-session intent)
+  NODE:         federation node topology (peers, reachability)
+  STABILIZATION: stabilization snapshots (recovery references)
+  MESH:         mesh-coordination logs (inter-organ pings)
+  BACKUP:       backup snapshots (recovery anchors, NOT canonical)
+
+# ═══ FILES ═══
+files:
+
+  # - path: HARAMKAN_MAP.md
+  #   category: HARAMKAN_MAP
+  #   description: "Explicit HARAM (forbidden) map — actions/patterns that MUST NOT execute under any circumstance"
+  #   size_bytes: 9874
+  #   last_modified: 2026-08-03T13:47Z
+  #   sensitivity: "HIGH — write-protected; sovereign-only access"
+  #   note: "Explicitly listed for discovery. Edit under sovereign ack only."
+
+  - path: STABILIZATION_SEVEN.md
+    category: STABILIZATION
+    description: "Seven-stabilization doctrine — recovery reference for substrate lock"
+    size_bytes: 3617
+    last_modified: 2026-07-30T12:02Z
+    sensitivity: "MEDIUM — doctrine-grade"
+
+  - path: flow_state.json
+    category: STATE
+    description: "Live federation flow state — arifFlow FQ + health snapshot"
+    size_bytes: 869
+    last_modified: 2026-08-06T03:51Z
+    sensitivity: "LOW — operational"
+    schema_inline:
+      format: json
+      notes: "Updated by /root/scripts/federation_ritual.py and arifFlow timer"
+
+  - path: flow_state.json.bak-pre-sot-refresh-20260804
+    category: BACKUP
+    description: "flow_state.json backup taken 2026-08-04 before SOT refresh"
+    size_bytes: 425
+    last_modified: 2026-08-04T16:39Z
+    sensitivity: "LOW — recovery only, not canonical"
+
+  - path: goal_registry.json
+    category: GOAL
+    description: "Cross-session durable goal registry (CreateGoal writes)"
+    size_bytes: 5411
+    last_modified: 2026-08-02T20:50Z
+    sensitivity: "MEDIUM — durable intent"
+
+  - path: mesh.log
+    category: MESH
+    description: "Mesh-coordination log (inter-organ ping events)"
+    size_bytes: 0
+    last_modified: 2026-07-31T20:05Z
+    sensitivity: "LOW — operational"
+    note: "Currently empty; populated by mesh coordinator on event"
+
+  - path: nodes.json
+    category: NODE
+    description: "Federation node topology — peers + reachability"
+    size_bytes: 1484
+    last_modified: 2026-08-01T11:30Z
+    sensitivity: "LOW — operational"
+
+# ═══ HARAMKAN_MAP — REFERENCED BUT NOT INLINED (sensitivity) ═══
+harankan_map:
+  path: HARAMKAN_MAP.md
+  reason_not_inlined: "HIGH sensitivity — sovereign-only write access; this index only DISCOVERS its existence and sensitivity"
+  consumer_directive: "Read this file directly via filesystem, never embed contents in skill/state files"
+  sealed_by_sovereign: true
+
+# ═══ INDEXING RULES ═══
+indexing_rules:
+  rule: All state paths MUST be discovered via this INDEX
+  fallback: Only use hardcoded path when INDEX is unreachable AND the value is needed for recovery
+  update_policy: Edit this file when adding/removing/renaming state files
+  classification_mirror: /root/AAA/federation/organs.yaml
+  sister_indexes:
+    - path: /root/AAA/governance/INDEX.yaml
+      purpose: "Discovery for governance paths"
+
+# ═══ DE-HARDCODE BRIDGE (carry_forward) ═══
+de_hardcode_bridge:
+  purpose: >
+    Replaces A12 + A13 hardcoded state anchor stubs with discovery.
+    Consumers should resolve `state::<filename>` via this INDEX rather
+    than hardcoding `/root/AAA/state/<filename>`.
+  consumer_pattern: "if index exists, read it; else fall back to hardcoded"
+  pre_existing_anchors: 2
+  after_index: 0  # A12/A13 stubs become DISCOVERY through this INDEX
+  net_anchor_delta: -2
+
+# ═══ LINKS ═══
+links:
+  human_map: /root/AAA/docs/STATE_INDEX.md
+  anchor_pattern: /root/AAA/federation/organs.yaml
+  governance_index: /root/AAA/governance/INDEX.yaml
+  toolbench: /root/AAA/registries/opencode_toolbench.yaml
+
+# ═══ DOCTRINE ═══
+doctrine: "DITEMPA BUKAN DIBERI — State is alive; index is the contract."
