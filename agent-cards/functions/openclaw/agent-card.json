@@ -610,5 +610,17 @@
   ],
   "model": "deepseek/deepseek-v4-pro",
   "_model_sot": "/root/AAA/registries/models/AGENT_MODEL_MAP.json",
-  "_model_prior": "minimax/MiniMax-M3 (direct API key invalid 2049 — routed via TokenRouter gateway; provider ACTIVE, model LIVE per registry 2026-08-03)"
+  "_model_prior": "minimax/MiniMax-M3 (direct API key invalid 2049 \u2014 routed via TokenRouter gateway; provider ACTIVE, model LIVE per registry 2026-08-03)",
+  "supported_interfaces": [
+    {
+      "url": "https://aaa.arif-fazil.com/a2a",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    },
+    {
+      "url": "https://aaa.arif-fazil.com/a2a/jsonrpc",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ]
 }

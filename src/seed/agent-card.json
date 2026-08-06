@@ -17,6 +17,15 @@
       "protocolVersion": "1.0"
     }
   ],
+  "supported_interfaces": [
+    {
+      "url": "https://aaa.arif-fazil.com/a2a",
+      "protocol_binding": "JSONRPC",
+      "protocol_version": "1.0"
+    }
+  ],
+  "default_input_modes": ["text/plain", "application/json", "text/markdown"],
+  "default_output_modes": ["text/plain", "application/json", "text/markdown", "application/vnd.a2a.task+json"],
   "capabilities": {
     "streaming": true,
     "pushNotifications": true,

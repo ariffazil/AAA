@@ -27,6 +27,51 @@ The loop MUST close. An open loop is an unaccountable action.
 The hash chain IS the arrow of time.
 ```
 
+## 0.5 CANONICAL 4-STEP SEQUENCE
+
+> **NOTATION RESOLVED (2026-08-05):** The old "3-step ceremony" notation (init→judge→seal) was a documentation artifact — it omitted `arif_forge` (step 3), collapsing execution into sealing. The canonical sequence is 4-step: **init → judge → forge → seal**. Lane A runs all four. Lane B skips judge (step 2). This resolves carry_forward `T3 #6` and RSI bottleneck `SEAL_CEREMONY_MISSING_JUDGE`. F13 ratified.
+
+Every record — receipt OR seal — follows this chain. Lane A executes all four steps. Lane B skips step 2 (autonomous).
+
+```
+[1] arif_init      — bind session, attest identity, scope authority
+[2] arif_judge     — Lane A: required, returns SEAL verdict + judge_state_hash
+                     Lane B: skipped (autonomous, no constitutional threshold)
+[3] arif_forge     — apply the decision (write/edit/execute or no-op)
+[4] arif_seal      — emit the record
+                     Lane B: forge_vault(mode="receipt")
+                     Lane A: arif_seal(judge_state_hash=<from step 2>)
+```
+
+**Hard rule:** Lane A without step 2 = VOID (judge-first, F13 binding).
+Lane B without step 2 = autonomous (T1/T2 work, receipts not seals).
+
+### Example — Lane A (CONSTITUTIONAL_SEAL)
+
+```python
+session = arif_init(actor="...", intent="Production deploy of fix-X")
+verdict = arif_judge(session, action="deploy_fix_X")          # F13 + tri-witness + G-score
+apply   = arif_forge(session, action="deploy_fix_X")          # execute the deploy
+seal    = arif_seal(session, judge_state_hash=verdict.hash)   # CONSTITUTIONAL_SEAL
+```
+
+### Example — Lane B (SESSION_RECEIPT)
+
+```python
+session = forge_session_init(actor="...", intent="Audit KimiCode alignment")
+apply   = forge_filesystem.read/write  # audit work, no judge needed
+receipt = forge_vault(mode="receipt",
+                      name="audit-2026-08-05",
+                      content="<summary>",
+                      reason="SESSION_CLOSE",
+                      tier="session.ledger",
+                      actor_id="...",
+                      session_id=session.id,
+                      session_token=session.token)
+```
+
+This sequence is the gate made explicit at the doc's head, before the lane-by-lane detail below. The 4-step chain is what every agent follows; lane routing only decides whether step 2 runs.
+
 ---
 
 ## 1. THE TWO-LANE ARCHITECTURE
@@ -501,5 +546,6 @@ DITEMPA BUKAN DIBERI ⚒️
 ---
 
 *Forged: 2026-07-25 · Unified: 2026-07-29 · Upgraded: 2026-08-03 — Arif F13 directive (reversibility classification, structured ApprovalRequest, session_close documentation)*
+*Canonical 4-step sequence explicit: 2026-08-05 — kimi-code/FI-008 (T1 documentation edit per sovereign directive; reversible)*
 *Two lanes. One envelope. Receipt ≠ Seal. Agent proposes. Sovereign seals.*
 *DITEMPA BUKAN DIBERI ⚒️*
