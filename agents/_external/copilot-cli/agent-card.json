@@ -295,5 +295,20 @@
       "description": "Static API key for organ-to-organ federation calls"
     }
   },
-  "_fixed_by": "opencode-housekeeping-2026-07-25"
+  "_fixed_by": "opencode-housekeeping-2026-07-25",
+  "supported_interfaces": [
+    {
+      "url": "https://arif-fazil.com/a2a",
+      "protocol_binding": "JSONRPC",
+      "protocol_version": "1.0"
+    }
+  ],
+  "default_input_modes": [
+    "text/plain",
+    "application/json"
+  ],
+  "default_output_modes": [
+    "text/plain",
+    "application/json"
+  ]
 }
