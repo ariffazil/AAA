@@ -232,6 +232,112 @@ components:
     notes:
       - routes/checkpoints/witnesses; never judges; never executes
 
+  - id: signal
+    class: CORE
+    display_name: SIGNAL
+    repo: arifOS (embedded organ)
+    role: signal_membrane
+    authority_ceiling: OBSERVE_ONLY
+    port: 18084
+    unit: signal-organ.service
+    source_path: /root/SIGNAL
+    runtime_path: /opt/signal/app
+    runtime: python-3.12
+    mcp_port: 18084
+    public_mcp: null
+    owned_domains:
+      - webhook_ingestion
+      - cryptographic_gate
+      - governed_broadcast
+      - sovereign_ping
+      - priority_classification
+      - quiet_hours_enforcement
+    forbidden_domains:
+      - constitutional_judgment
+      - engineering_execution
+      - mutation_authorization
+    interfaces:
+      health: /health
+    endpoints:
+      ingest:
+        - /signal/github
+        - /signal/tradingview
+        - /signal/generic
+      kabarkan:
+        - /kabarkan/telegram
+        - /kabarkan/sovereign
+        - /kabarkan/broadcast
+    chambers:
+      chamber_1: crypto_gate
+      chamber_2: idempotency_buffer
+      chamber_3: tcoa_ingestion
+      chamber_4: priority_classify
+      chamber_5: channel_route
+      chamber_6: governed_send
+    doctrine:
+      ingest: "A webhook never executes a command. A webhook only proposes an observation."
+      kabarkan: "A signal is broadcast only when the entropy cost of silence exceeds the entropy cost of interruption."
+    live_probe_2026_08_06:
+      status: healthy
+      redis: healthy
+      all_6_chambers: active
+
+  - id: frame
+    class: CORE
+    display_name: FRAME
+    repo: arifOS (embedded organ)
+    role: federation_measurement
+    authority_ceiling: ADVISORY_ONLY
+    port: 18085
+    unit: frame-organ.service
+    source_path: /root/FRAME
+    runtime_path: /opt/frame/app
+    runtime: python-3.12
+    public_mcp: null
+    owned_domains:
+      - institutional_baseline
+      - organ_probe
+      - drift_detection
+      - trend_analysis
+      - threshold_alerting
+      - institutional_reporting
+    forbidden_domains:
+      - constitutional_judgment
+      - engineering_execution
+      - mutation_authorization
+    interfaces:
+      health: /health
+    endpoints:
+      baseline:
+        - /frame/baseline
+        - /frame/baseline/{organ}
+      probe:
+        - /frame/probe
+        - /frame/probe/{organ}
+      compare:
+        - /frame/drift
+      trend:
+        - /frame/trend
+      alert:
+        - /frame/alert
+      report:
+        - /frame/report
+        - /frame/report/{period}
+    chambers:
+      chamber_1: baseline
+      chamber_2: probe
+      chamber_3: compare
+      chamber_4: trend
+      chamber_5: alert
+      chamber_6: report
+    doctrine: "Measurement without a reference frame is just numbers. FRAME provides the baseline, the trend, and the drift signal that makes every other organ's metrics meaningful."
+    live_probe_2026_08_06:
+      status: healthy
+      all_6_chambers: active
+      baseline_organs: 10
+      drift_verdict: STABLE
+      fq: 0.887
+
   - id: vault999
     class: MEMORY
     display_name: VAULT999
