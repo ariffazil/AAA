@@ -1,7 +1,7 @@
-version: 2
-last_forged: '2026-07-29T19:45:00Z'
-forged_by: "OpenCode 333-AGI \u2014 Trinity Zen Collapse"
-truth_rule: live opencode debug config and opencode mcp list beat registry prose
+version: 3
+last_forged: '2026-08-06T03:33:00Z'
+forged_by: "333-AGI Δ MIND — FED Auto-Sync Zen Collapse"
+truth_rule: live opencode debug config and opencode mcp list beat registry prose · FED fed_provider_state.json is canonical provider truth
 opencode_version: 1.18.9
 opencode_binary: /root/.npm-global/bin/opencode
 config_paths:
@@ -163,17 +163,21 @@ axes:
     - /root/memory
   L0_trinity_lanes:
     agi_delta_mind:
-      model: deepseek-v4-pro@direct
+      model: deepseek/deepseek-v4-pro@direct
+      provider: deepseek (Pool A)
       tools: FULL
       invokes:
       - asi
       - apex
     asi_omega_core:
-      model: glm-5.2@tokenrouter
+      model: qwen3.6-flash (text) · qwen3.7-plus (vision) 
+      provider: qwen-token-plan (D) · bailian-payments (PAYG)
       tools: GATED
       role: memory, telemetry, research
+      note: Qwen prepaid pools exhausted 2026-08-04 — primary switched
     apex_psi_soul:
-      model: claude-sonnet-5@opencode-zen
+      model: minimax/MiniMax-M3
+      provider: minimax (Pool B)
       tools: READ-ONLY
       role: constitutional verdict
 agentic_loop:
@@ -200,7 +204,46 @@ model_strategy:
   primary: deepseek/deepseek-v4-pro
   small: ollama/qwen2.5-coder:3b
   recovery: ollama/qwen2.5-coder:3b
-  note: Live config primary = deepseek/deepseek-v4-pro (333-AGI). Free routes available via openrouter + opencode-go.
+  note: Live config primary = deepseek/deepseek-v4-pro (333-AGI). Free routes available via openrouter.
+fed_auto_sync:
+  status: ACTIVE (2026-08-05 forged)
+  timer: fed-sync.timer (every 15 min)
+  source: FED token_bank.db → /root/.local/share/arifos/fed_provider_state.json
+  consumer: any agent reads fed_provider_state.json for canonical provider truth
+  thresholds: Track A <$1 HARD disable · Track B <$5 SOFT warn
+  drift_gate: if fed_provider_state.json age > 300s → treat as STALE, probe FED live
+shadow_scars:
+  last_audit: 2026-08-06T03:33:00Z
+  model_registry_stale:
+    - agent: ops
+      registry_model: qwen-token-plan/deepseek-v4-flash
+      issue: qwen prepaid pool exhausted 2026-08-04
+      recommendation: switch to deepseek/deepseek-v4-flash (Pool A)
+    - agent: planner
+      registry_model: kimi-k3
+      issue: should match kimi/kimi-for-coding per TOOLS.md
+      recommendation: canonicalize to kimi/kimi-for-coding
+    - agent: copilot
+      registry_model: z-ai/glm-5.2
+      issue: legacy agent, unknown if still active
+      recommendation: verify or retire
+    - agent: openclaw
+      registry_model: deepseek/deepseek-v4-pro
+      issue: rules AGENT_MODEL_MAP say minimax/MiniMax-M3
+      recommendation: align to minimax/MiniMax-M3
+  absorbed_agents_in_registry:
+    - opencode (absorbed → 333-AGI)
+    - forge (absorbed → 333-AGI execution)
+    - auditor (absorbed → 555-ASI)
+  absorbed_note: these exist in AGENT_MODEL_MAP.json but not in live opencode agent configs
+  dead_providers_referenced:
+    - tokenrouter: DISABLED in FED, $59 frozen (S3 surfaced)
+    - mulerouter: DISABLED in FED, $49 frozen (S3 surfaced)
+    - opencode-go: DEAD (401), not in any chain
+  sovereign_surfaced:
+    - S2: DeepSeek SPOF — 8 agents share primary model
+    - S3: $110 frozen capital (tokenrouter $60 + mulerouter $50)
+    - S4: Kernel authority — OBSERVE_ONLY silently upgraded
 verification:
   commands:
   - opencode --version
@@ -222,3 +265,13 @@ verification:
   - live model and MCP roster equal ROOT_AGENT_CONFIG.yaml
   - credentials referenced through environment, never embedded
   - new MCP tools must pass naming lint per MCP_NAMING_STANDARD.md §3.1
+L8_fed_autonomic:
+  status: ACTIVE (forged 2026-08-05)
+  role: provider truth propagation — autonomic nervous system
+  timer: fed-sync.timer (every 15 min)
+  canonical_state: /root/.local/share/arifos/fed_provider_state.json
+  thresholds:
+    track_a_hard_disable: balance < $1.00
+    track_b_soft_warn: balance < $5.00
+  drift_detection: if state file age > 300s — probe FED live via :7074/health
+  note: FED is no longer advisory — it is the autonomic nervous system. When a provider dies, within 15 minutes, every config in the federation knows.
