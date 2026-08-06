@@ -34,7 +34,7 @@ ATLAS333 is the cognitive geometry of arifOS. It maps 33 human paradoxes across 
 ATLAS333 lives as MCP resources on arifOS (:8088). Read them via:
 
 ```
-POST http://127.0.0.1:8088/mcp
+POST ${ARIFOS_MCP_URL:-http://127.0.0.1:8088/mcp}
 Content-Type: application/json
 
 {"jsonrpc":"2.0","method":"resources/read","id":N,"params":{"uri":"arifos://atlas333/INDEX"}}
@@ -161,12 +161,19 @@ Content-Type: application/json
 
 | Component | File |
 |-----------|------|
-| MCP resources | `/root/arifOS/arifosmcp/resources/atlas333.py` (720 lines) |
-| Evergreen doc | `/root/arifOS/core/shared/ATLAS333_EVERGREEN.md` |
-| Cognitive geometry | `/root/arifOS/core/shared/ATLAS333_COGNITIVE_GEOMETRY.md` |
-| Bridge doc | `/root/arifOS/core/shared/ATLAS333_BRIDGE.md` |
-| Knowledge base | `/root/ATLAS333/` (88K) |
-| Paradox quotes | `/root/arifOS/arifosmcp/constitution/paradox_quotes.py` |
+| MCP resources | `${ARIFOS_HOME:-/root/arifOS}/arifosmcp/resources/atlas333.py` (720 lines) |
+| Evergreen doc | `${ARIFOS_HOME:-/root/arifOS}/core/shared/ATLAS333_EVERGREEN.md` |
+| Cognitive geometry | `${ARIFOS_HOME:-/root/arifOS}/core/shared/ATLAS333_COGNITIVE_GEOMETRY.md` |
+| Bridge doc | `${ARIFOS_HOME:-/root/arifOS}/core/shared/ATLAS333_BRIDGE.md` |
+| Knowledge base | `${ATLAS333_HOME:-/root/ATLAS333}/` (88K) |
+| Paradox quotes | `${ARIFOS_HOME:-/root/arifOS}/arifosmcp/constitution/paradox_quotes.py` |
+
+## De-hardcoding Log (v2026-08-06)
+
+- **arifOS MCP endpoint** (`http://127.0.0.1:8088/mcp`) → `$ARIFOS_MCP_URL` env, default preserved
+- **arifOS source paths** (6 entries in Code Anchors) → `$ARIFOS_HOME` env, defaults preserved
+- **ATLAS333 home** (`/root/ATLAS333/`) → `$ATLAS333_HOME` env, default preserved
+- Defaults match current deployment — change in production requires re-deployment of $ARIFOS_HOME; skills remain valid for sovereign's af-forge VPS
 
 ## Survival checkpoint (2026-07-18 T3a+SCT)
 
