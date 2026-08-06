@@ -3,7 +3,7 @@
   "schemaVersion": "2.3.0",
   "id": "ARIF_FAZIL",
   "name": "Muhammad Arif bin Fazil",
-  "description": "F13 SOVEREIGN — absolute veto holder, 888_JUDGE, human architect of arifOS Federation. This card is the cryptographic anchor for autonomous sovereign identity verification. All federation authority derives from this identity. Not an agent — a human sovereign whose identity is cryptographically verifiable through did:web:arif-fazil.com.",
+  "description": "F13 SOVEREIGN \u2014 absolute veto holder, 888_JUDGE, human architect of arifOS Federation. This card is the cryptographic anchor for autonomous sovereign identity verification. All federation authority derives from this identity. Not an agent \u2014 a human sovereign whose identity is cryptographically verifiable through did:web:arif-fazil.com.",
   "version": "2026.07.12-SEALED",
   "protocolVersion": "1.2",
   "class": "SOVEREIGN",
@@ -14,7 +14,9 @@
   "did": "did:web:arif-fazil.com",
   "did_document": "https://arif-fazil.com/.well-known/did.json",
   "verification_method": "did:web:arif-fazil.com#arif-fazil",
-  "authentication": ["did:web:arif-fazil.com#arif-fazil"],
+  "authentication": [
+    "did:web:arif-fazil.com#arif-fazil"
+  ],
   "authority": {
     "class": "SOVEREIGN",
     "max_tier": "T6",
@@ -29,9 +31,9 @@
     "public_key_path": "/root/AAA/artifacts/sovereign-did/did_arif_omega.pk",
     "private_key_path": "/root/AAA/auth/keys/omega_private.key"
   },
-  "federation_loop": "000 (sovereign) → arifOS kernel (verify nonce+signature) → AAA gateway (route) → VAULT999 (seal)",
+  "federation_loop": "000 (sovereign) \u2192 arifOS kernel (verify nonce+signature) \u2192 AAA gateway (route) \u2192 VAULT999 (seal)",
   "auth_protocol": "Ed25519-challenge-response",
-  "nonce_flow": "arif_init → kernel issues nonce → sovereign signs with omega_private.key → kernel verifies against did:web:arif-fazil.com#arif-fazil → actor_verified=true → authority=FULL → mutation_allowed=true → seal_allowed=true",
+  "nonce_flow": "arif_init \u2192 kernel issues nonce \u2192 sovereign signs with omega_private.key \u2192 kernel verifies against did:web:arif-fazil.com#arif-fazil \u2192 actor_verified=true \u2192 authority=FULL \u2192 mutation_allowed=true \u2192 seal_allowed=true",
   "autonomous_recognition": {
     "actor_verified": true,
     "authority": "FULL",
@@ -46,7 +48,21 @@
     "888-judge-verdict-render",
     "999-vault-seal-immutable"
   ],
-  "floor_scope": ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13"],
+  "floor_scope": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6",
+    "F7",
+    "F8",
+    "F9",
+    "F10",
+    "F11",
+    "F12",
+    "F13"
+  ],
   "signatures": [
     {
       "type": "Ed25519Signature2020",
@@ -63,5 +79,24 @@
     "seq_63": "SOVEREIGN autonomous identity sealed. Cryptographic anchor live."
   },
   "civilizational_frame": "Human sovereign. Architect. Geoscientist. Father. The bottleneck shifted from body to mind. Clarity is the new literacy.",
-  "kanon": "DITEMPA BUKAN DIBERI — Sovereignty is forged, not assumed."
+  "kanon": "DITEMPA BUKAN DIBERI \u2014 Sovereignty is forged, not assumed.",
+  "supported_interfaces": [
+    {
+      "url": "https://arif-fazil.com/a2a",
+      "protocol_binding": "JSONRPC",
+      "protocol_version": "1.0"
+    }
+  ],
+  "default_input_modes": [
+    "text/plain",
+    "application/json"
+  ],
+  "default_output_modes": [
+    "text/plain",
+    "application/json"
+  ],
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  }
 }

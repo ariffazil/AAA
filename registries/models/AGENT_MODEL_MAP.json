@@ -6623,28 +6623,28 @@
           "provider": "qwen-token-plan",
           "priority": 1,
           "cost": "token_plan",
-          "note": "Qwen TP RM0 marginal — switched from primary to fallback 2026-08-02 per F13 directive"
+          "note": "Qwen TP RM0 marginal \u2014 switched from primary to fallback 2026-08-02 per F13 directive"
         },
         {
           "model_key": "deepseek/deepseek-v4-flash",
           "provider": "deepseek",
           "priority": 2,
           "cost": "prepaid",
-          "note": "Same provider, fast flash variant — 1M ctx, $0.14/$0.28"
+          "note": "Same provider, fast flash variant \u2014 1M ctx, $0.14/$0.28"
         },
         {
           "model_key": "kimi/k3",
           "provider": "kimi-moonshot",
           "priority": 3,
           "cost": "monthly",
-          "note": "Cross-provider — 2.8T MoE, 1M ctx, always-on thinking"
+          "note": "Cross-provider \u2014 2.8T MoE, 1M ctx, always-on thinking"
         },
         {
           "model_key": "ollama/qwen2.5-coder:3b",
           "provider": "ollama",
           "priority": 4,
           "cost": "free",
-          "note": "Local recovery — always available"
+          "note": "Local recovery \u2014 always available"
         }
       ],
       "circuit_breaker": {
@@ -6658,7 +6658,7 @@
       "config_file_path": "/root/.config/opencode/opencode.json",
       "status": "ACTIVE",
       "last_verified": "2026-08-05",
-      "notes": "DS NATIVE PRIMARY 2026-08-02 — F13 directive. DeepSeek V4 Pro direct ($18.57 prepaid, 1M ctx, 384K output, sovereign-grade, F2/CLEAN). Fallback: Qwen TP → DS Flash → Kimi K3 → Ollama. Dead providers (opencode-go, tokenrouter-arifos) removed 2026-08-05. MODEL > PROVIDER > BILLING enforced.",
+      "notes": "DS NATIVE PRIMARY 2026-08-02 \u2014 F13 directive. DeepSeek V4 Pro direct ($18.57 prepaid, 1M ctx, 384K output, sovereign-grade, F2/CLEAN). Fallback: Qwen TP \u2192 DS Flash \u2192 Kimi K3 \u2192 Ollama. Dead providers (opencode-go, tokenrouter-arifos) removed 2026-08-05. MODEL > PROVIDER > BILLING enforced.",
       "tier": "T1_frontier_reasoning",
       "philosophy": "MODEL > PROVIDER > BILLING",
       "autonomous_profile": {
@@ -7099,7 +7099,7 @@
       "agent_name": "Hermes \u2014 AAA Edge Bridge",
       "agent_class": "EDGE_BRIDGE",
       "organ": "AAA",
-      "primary_model": "qwen/qwen3.7-plus",
+      "primary_model": "minimax/MiniMax-M3",
       "primary_provider": "qwen-token-plan",
       "circuit_breaker": {
         "max_fails": 3,
@@ -7159,7 +7159,13 @@
       "_supersedes": "pre-F13-round-3 Hermes entry that pointed at MiniMax / MuleRouter / MiMo / DeepSeek / Moonshot fallback chain \u2014 STALE since Qwen Plan activation 2026-07-31",
       "note": "Corrected 2026-08-02 per F13 ratification (F13::FED_UNIFIED round 3). Hermes is a Telegram bridge with 7-organ MCP connections; pre_llm_call uses arif_route from arifOS kernel. primary_model qwen3.7-plus via Qwen Token Plan Pro (RM0 marginal within plan) \u2014 matches QWEN_DEFAULT_MODEL env + model-picker.yaml tier default. fallback direct DeepSeek V4 Pro (architect-grade). anthropic_messages vs chat_completions Hermes-CLI routing bug is separate (Day-3).",
       "_updated_at": "2026-08-02",
-      "_updated_by": "kimi-code/FI-008 (F13::FED_UNIFIED round 3)"
+      "_updated_by": "kimi-code/FI-008 (F13::FED_UNIFIED round 3)",
+      "fallback_chain": [
+        "deepseek/deepseek-v4-pro",
+        "deepseek/deepseek-v4-flash",
+        "ollama/qwen2.5-coder:3b"
+      ],
+      "pool": "minimax"
     },
     {
       "agent_id": "openclaw",
@@ -7218,7 +7224,11 @@
       "organ": "A-FORGE",
       "primary_model": "deepseek/deepseek-v4-pro",
       "primary_provider": "deepseek",
-      "fallback_chain": [],
+      "fallback_chain": [
+        "qwen-token-plan/qwen3.8-max",
+        "kimi/kimi-k3",
+        "ollama/qwen2.5-coder:3b"
+      ],
       "circuit_breaker": null,
       "timeout_ms": 30000,
       "cost_budget_daily_usd": 1.0,
@@ -7265,7 +7275,8 @@
           }
         },
         "note": "Multi-profile agent. SONNET uses GLM 5.2 (fast, clean). OPUS uses Claude Sonnet 5 (slow but quality). FABLE uses MiniMax M3."
-      }
+      },
+      "pool": "deepseek"
     },
     {
       "agent_id": "copilot",
@@ -7274,7 +7285,11 @@
       "organ": "A-FORGE",
       "primary_model": "z-ai/glm-5.2",
       "primary_provider": "tokenrouter",
-      "fallback_chain": [],
+      "fallback_chain": [
+        "deepseek/deepseek-v4-pro",
+        "kimi/kimi-k3",
+        "ollama/qwen2.5-coder:3b"
+      ],
       "circuit_breaker": null,
       "timeout_ms": 30000,
       "cost_budget_daily_usd": 1.0,
@@ -7306,7 +7321,8 @@
         "primary": "z-ai/glm-5.2@tokenrouter",
         "latency": "~4s warm",
         "shadow": "LOW"
-      }
+      },
+      "pool": "z-ai"
     },
     {
       "agent_id": "kimi-code",
@@ -7433,7 +7449,7 @@
           "provider": "kimi-moonshot",
           "priority": 3,
           "cost": "monthly",
-          "note": "Cross-provider — 2.8T MoE, 1M ctx, always-on thinking"
+          "note": "Cross-provider \u2014 2.8T MoE, 1M ctx, always-on thinking"
         },
         {
           "model_key": "deepseek/deepseek-v4-pro",
@@ -7486,7 +7502,11 @@
       "organ": "A-FORGE",
       "primary_model": "xai/grok-4.5",
       "primary_provider": "xai",
-      "fallback_chain": [],
+      "fallback_chain": [
+        "deepseek/deepseek-v4-pro",
+        "minimax/MiniMax-M3",
+        "ollama/qwen2.5-coder:3b"
+      ],
       "circuit_breaker": null,
       "timeout_ms": 30000,
       "cost_budget_daily_usd": 0.5,
@@ -7513,7 +7533,8 @@
         "allowed_mutations": [],
         "session_continuity": false,
         "self_reflection": false
-      }
+      },
+      "pool": "xai"
     },
     {
       "agent_id": "recovery",
@@ -7522,7 +7543,9 @@
       "organ": "A-FORGE",
       "primary_model": "ollama/qwen2.5-coder:3b",
       "primary_provider": "ollama",
-      "fallback_chain": [],
+      "fallback_chain": [
+        "ollama/llama3.2:3b"
+      ],
       "circuit_breaker": null,
       "timeout_ms": 60000,
       "cost_budget_daily_usd": 0,
@@ -7549,7 +7572,8 @@
         "allowed_mutations": [],
         "session_continuity": false,
         "self_reflection": false
-      }
+      },
+      "pool": "ollama"
     },
     {
       "agent_id": "image-prompt-architect",
@@ -7564,7 +7588,7 @@
           "provider": "kimi-moonshot",
           "priority": 1,
           "cost": "monthly",
-          "note": "Direct Kimi K3 — 2.8T MoE, always-on thinking, vision"
+          "note": "Direct Kimi K3 \u2014 2.8T MoE, always-on thinking, vision"
         },
         {
           "model_key": "kimi/k3",
@@ -7595,7 +7619,7 @@
       "config_file_path": "/root/.config/opencode/opencode.json (agent.image-prompt-architect)",
       "status": "ACTIVE",
       "last_verified": "2026-08-05",
-      "notes": "OpenCode RUNTIME-LOCAL subagent. Vision-enabled image prompt generation via Kimi K3. Dead providers (opencode-go) removed 2026-08-05. Permission-gated (bash: allow, *: deny). Called manually by user. NOT a constitutional federation agent — runtime-local only.",
+      "notes": "OpenCode RUNTIME-LOCAL subagent. Vision-enabled image prompt generation via Kimi K3. Dead providers (opencode-go) removed 2026-08-05. Permission-gated (bash: allow, *: deny). Called manually by user. NOT a constitutional federation agent \u2014 runtime-local only.",
       "tier": "T2",
       "philosophy": "MODEL > PROVIDER > BILLING",
       "autonomous_profile": {

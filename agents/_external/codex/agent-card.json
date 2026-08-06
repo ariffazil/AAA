@@ -8,7 +8,7 @@
     "category": "LLM-as-principal (Claude/GPT/Gemini/etc \u2014 the model is the principal, CLI is harness)",
     "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
   },
-  "description": "OpenAI Codex CLI forge instrument — DeepSeek V4 Pro via Token Plan (rerouted 2026-08). Wired to federation MCPs. F1-F13 enforced. Card synced 2026-08-05 by 333-AGI.",
+  "description": "OpenAI Codex CLI forge instrument \u2014 DeepSeek V4 Pro via Token Plan (rerouted 2026-08). Wired to federation MCPs. F1-F13 enforced. Card synced 2026-08-05 by 333-AGI.",
   "version": "2.3.0",
   "model": "deepseek/deepseek-v4-pro",
   "binary": "/root/.npm-global/bin/codex",
@@ -94,7 +94,7 @@
           "session"
         ],
         "version": "2026-08-05",
-        "_synced_by": "333-AGI — arif_act→arif_forge, +arif_memory, live probe count 8"
+        "_synced_by": "333-AGI \u2014 arif_act\u2192arif_forge, +arif_memory, live probe count 8"
       },
       {
         "url": "http://localhost:7072/mcp",
@@ -117,7 +117,7 @@
           "deploy"
         ],
         "version": "2026-08-05",
-        "_synced_by": "333-AGI — live probe count 114, was 72"
+        "_synced_by": "333-AGI \u2014 live probe count 114, was 72"
       },
       {
         "url": "http://localhost:8081/mcp",
@@ -155,7 +155,7 @@
           "seismic"
         ],
         "version": "2026-08-05",
-        "_synced_by": "333-AGI — live probe count 33, was 35"
+        "_synced_by": "333-AGI \u2014 live probe count 33, was 35"
       },
       {
         "url": "http://localhost:18082/mcp",
@@ -182,7 +182,7 @@
           "wisdom"
         ],
         "version": "2026-08-05",
-        "_synced_by": "333-AGI — live probe count 14, was 26"
+        "_synced_by": "333-AGI \u2014 live probe count 14, was 26"
       },
       {
         "url": "http://localhost:18083/mcp",
@@ -203,7 +203,7 @@
           "homeostasis"
         ],
         "version": "2026-08-05",
-        "_synced_by": "333-AGI — live probe count 8, was 22"
+        "_synced_by": "333-AGI \u2014 live probe count 8, was 22"
       }
     ]
   },
@@ -544,5 +544,25 @@
       "type": "Ed25519Signature2020"
     }
   ],
-  "_model_sot": "/root/.config/federation-models.json"
+  "_model_sot": "/root/.config/federation-models.json",
+  "supported_interfaces": [
+    {
+      "url": "https://aaa.arif-fazil.com/a2a",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    },
+    {
+      "url": "https://aaa.arif-fazil.com/a2a/jsonrpc",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "default_input_modes": [
+    "text/plain",
+    "application/json"
+  ],
+  "default_output_modes": [
+    "text/plain",
+    "application/json"
+  ]
 }

@@ -29,7 +29,11 @@ interface AgentSkill {
 interface AgentInterface {
   url: string;
   protocolBinding: 'JSONRPC' | 'HTTP+JSON' | 'gRPC' | 'Custom';
+  /** A2A v1.0 snake_case alias */
+  protocol_binding: 'JSONRPC' | 'HTTP+JSON' | 'gRPC' | 'Custom';
   protocolVersion: string;
+  /** A2A v1.0 snake_case alias */
+  protocol_version: string;
 }
 
 interface AgentCapabilities {
@@ -63,10 +67,16 @@ interface AgentCard {
   url: string;
   version: string;
   supportedInterfaces: AgentInterface[];
+  /** A2A v1.0 snake_case alias */
+  supported_interfaces: AgentInterface[];
   capabilities: AgentCapabilities;
   skills: AgentSkill[];
   defaultInputModes: string[];
+  /** A2A v1.0 snake_case alias */
+  default_input_modes: string[];
   defaultOutputModes: string[];
+  /** A2A v1.0 snake_case alias */
+  default_output_modes: string[];
   securitySchemes?: Record<string, SecurityScheme>;
   securityRequirements?: SecurityRequirement[];
   signature?: {
@@ -112,7 +122,9 @@ export function migrateCard(legacy: LegacyCard): AgentCard {
   const interfaces: AgentInterface[] = [{
     url: `${url}/a2a`,
     protocolBinding: 'JSONRPC',
+    protocol_binding: 'JSONRPC',
     protocolVersion: '1.0',
+    protocol_version: '1.0',
   }];
 
   // ── capabilities ─────────────────────────────────────────────────────
@@ -199,10 +211,13 @@ export function migrateCard(legacy: LegacyCard): AgentCard {
     url,
     version,
     supportedInterfaces: interfaces,
+    supported_interfaces: interfaces,
     capabilities,
     skills,
     defaultInputModes,
+    default_input_modes: defaultInputModes,
     defaultOutputModes,
+    default_output_modes: defaultOutputModes,
     securitySchemes: Object.keys(securitySchemes).length > 0 ? securitySchemes : undefined,
     securityRequirements: securityRequirements.length > 0 ? securityRequirements : undefined,
     signature: {
