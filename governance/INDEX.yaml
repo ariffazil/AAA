@@ -1,0 +1,335 @@
+# ═══════════════════════════════════════════════════════════════════
+# AAA Governance — Machine-Twin Discovery Index
+# ═══════════════════════════════════════════════════════════════════
+# HUMAN TWIN: /root/AAA/docs/GOVERNANCE_INDEX.md (this file is machine SOT)
+# Truth rule: live filesystem beats this index. Re-probe before SEAL claims.
+# Forged: 2026-08-06 by kimi-code/FI-008 (warga-aaa) under F13 SOVEREIGN override
+# DITEMPA BUKAN DIBERI ⚒️
+
+schema_version: 1
+generated: "2026-08-06T03:55:00Z"
+maintainer: "AAA Control Plane (warga-aaa FI-008 under sovereign override)"
+human_map: /root/AAA/docs/GOVERNANCE_INDEX.md
+truth_rule: live_filesystem_beats_index
+classification_mirror: /root/AAA/federation/organs.yaml  # this is the ANCHOR pattern
+
+# ═══ PURPOSE ═══
+purpose: >
+  Discovery layer for /root/AAA/governance/ — replaces direct-path ANCHORs.
+  Resolves governance configs, doctrine, contracts, schemas, and audit logs
+  by reference rather than hardcoding. This file is the SINGLE discovery
+  surface for governance paths. Anything under /root/AAA/governance/ that
+  is referenced should appear here with classification + brief description.
+
+# ═══ CLASSIFICATION LEGEND ═══
+classification_legend:
+  DOCTRINE:    foundational rules / principles (rarely changes; constitutional weight)
+  CONTRACT:    agreements / protocols / versioned interfaces
+  SCHEMA:      structural definitions for data exchange
+  PLAYBOOK:    operational procedures / runbooks
+  AUDIT:       audit logs / results / dated snapshots
+  ADMEMO:      ad-hoc memoranda / dated observations
+  POLICY:      routing / governance policies (AAA-managed)
+  LAW:         constitutional canon documents (under governance/laws/)
+  ADR:         architecture decision records (under governance/adr/)
+  AMENDMENT:   constitutional amendments (under governance/amendments/)
+  SCRIPT:      governance-enforcement Python modules
+  CONSTITUTION: foundational substrate doctrine (under governance/constitution/)
+  ILMU:        knowledge / public reference (under governance/ilmu/)
+  FIQH:        jurisprudence / case-law (under governance/fiqh/)
+  KILL_CYCLE:  terminated doctrine (do not propagate) (under governance/kill-cycles/)
+
+# ═══ FILES — TOP-LEVEL ═══
+files:
+
+  # ── DOCTRINE ─────────────────────────────────────────────────────
+  - path: 001_MOTD_RSI.md
+    category: DOCTRINE
+    description: "M.O.T.D. (Message of the Day) + RSI boot doctrine. Re-forged 2026-08-04 by render-agents.sh"
+  - path: AAA-ZEN-ALIGNMENT.md
+    category: DOCTRINE
+    description: "Federation-wide Zen alignment — supersedes per-runtime AGENTS.md Zen conflicts"
+  - path: ADAT_AGENTIC.md
+    category: DOCTRINE
+    description: "Adat Agentic — cultural / dignity / sovereignty lens for AAA state records"
+  - path: AGENCY_LEVELS.md
+    category: DOCTRINE
+    description: "L0–L6 agency ladder + 7-property contract. F13 ratified 2026-07-12"
+  - path: AGENT-CHARTER.md
+    category: DOCTRINE
+    description: "Per-agent charter template (governance wrapper)"
+  - path: AGENTIC_BENEFITS_DELTA_OMEGA_PSI.md
+    category: DOCTRINE
+    description: "ΔΩΨ axis doctrine for agentic intelligence substrate"
+  - path: AGI_ASI_APEX_HUMAN.md
+    category: DOCTRINE
+    description: "Lane doctrine — AGI vs ASI vs APEX vs HUMAN separation"
+  - path: APEX_AXIOMS_6_7.md
+    category: DOCTRINE
+    description: "APEX Axioms 6 + 7 (constitutional constraints on judge authority)"
+  - path: ARIFOS_CONSTITUTIONAL_LAYER_ABOVE_LLM.md
+    category: DOCTRINE
+    description: "arifOS as constitutional layer above any single LLM substrate"
+  - path: AUTHERSHIP_DOCTRINE.md
+    category: DOCTRINE
+    description: "Authorship attribution doctrine — DITEMPA BUKAN DIBERI"
+  - path: CODEX_AGENT_BEHAVIORAL_CONTRACT.md
+    category: DOCTRINE
+    description: "Codex CLI agent behavioral contract"
+  - path: CRITIQUE_AGENT.md
+    category: DOCTRINE
+    description: "Critique agent doctrine — 555-ASI lane substrate"
+  - path: DITEMPA_BUKAN_DIBERI_DOCTRINE.md
+    category: DOCTRINE
+    description: "Sovereign motto — forged, not given"
+
+  # ── CONTRACT ─────────────────────────────────────────────────────
+  - path: AGENT-EMAIL-PROTOCOL-v1.0.md
+    category: CONTRACT
+    description: "Inter-agent email protocol v1.0"
+  - path: FEDERATION_CONTRACT.md
+    category: CONTRACT
+    description: "Federation-level organ contract (binding)"
+  - path: FEDERATION_HANDSHAKE.md
+    category: CONTRACT
+    description: "Federation handshake protocol (registration + identity proof)"
+  - path: FEDERATION_SCHEMA_ALIGNMENT.md
+    category: CONTRACT
+    description: "Schema alignment across federation organs"
+  - path: GHOST_DETERMINISM_BOUNDARY.md
+    category: CONTRACT
+    description: "Ghost / determinism / boundary protocol (state machine integrity)"
+  - path: G_FOLD_AS_COMPASS.md
+    category: CONTRACT
+    description: "G-fold as compass — F8 GENIUS computation rule"
+  - path: KAMUS_DEWAN.md
+    category: CONTRACT
+    description: "Federation vocabulary glossary (DEWAN)"
+  - path: KILL_LIST.md
+    category: CONTRACT
+    description: "Active kill-list — patterns/contracts to terminate"
+  - path: REPO_AUTHORITY.md
+    category: CONTRACT
+    description: "Per-repo authority mapping (who owns what)"
+  - path: SEPARATION_OF_POWERS_TOOL_USE.md
+    category: CONTRACT
+    description: "Separation of powers — tool possession vs authority"
+  - path: TWO_THRESHOLD_DOCTRINE.md
+    category: CONTRACT
+    description: "Two-threshold doctrine (constitutional + capability)"
+  - path: ZEN_AGENTIK.md
+    category: CONTRACT
+    description: "Zen Agentik — operational Zen principles"
+
+  # ── POLICY ───────────────────────────────────────────────────────
+  - path: AAA_COMMS.md
+    category: POLICY
+    description: "Inter-agent communication policy"
+  - path: AAA_HUMAN_SPEECH_RULE.md
+    category: POLICY
+    description: "Human-facing speech rules (civility, dignity)"
+  - path: AAA_KNOWLEDGE_MATERIALS_HUMAN.md
+    category: POLICY
+    description: "Knowledge packaging policy for human consumption"
+  - path: AAA_STATE.md
+    category: POLICY
+    description: "State machine policy — sovereign state transitions"
+  - path: AAA_TOOL_RIGHTS_POLICY.md
+    category: POLICY
+    description: "AAA Tool Rights Policy v0.1 (superseded — see v0.2)"
+  - path: AAA_TOOL_RIGHTS_POLICY_v0.2.md
+    category: POLICY
+    description: "AAA Tool Rights Policy v0.2 — SEALED 2026-08-04, eureka RESOLVED"
+  - path: EXPLORER_DISPATCH_PROTOCOL.md
+    category: POLICY
+    description: "Explorer dispatch protocol — bounded sub-agent missions"
+  - path: MD-HARAM-POLICY.md
+    category: POLICY
+    description: "Markdown HARAM policy (F9 anti-hantu + F11 auditability)"
+  - path: SKILL_RUNTIME_GOVERNANCE.md
+    category: POLICY
+    description: "Skill runtime governance — capability registration gates"
+
+  # ── PLAYBOOK ─────────────────────────────────────────────────────
+  - path: CONTEXT_MANIFEST_SCHEMA.md
+    category: SCHEMA
+    description: "Context manifest schema — session initialization"
+  - path: ENTROPY_REDUCTION_PLAYBOOK.md
+    category: PLAYBOOK
+    description: "ΔS ≤ 0 playbook — entropy reduction discipline"
+  - path: EVIDENCE_ROUTING_PROTOCOL.md
+    category: PLAYBOOK
+    description: "Evidence routing across organs (provenance + chain)"
+  - path: FED-harness-tool-governance-v1.0.0.md
+    category: CONTRACT
+    description: "FED harness + tool governance v1.0.0"
+  - path: FEDERATION_TOOL_GOVERNANCE.md
+    category: POLICY
+    description: "Federation tool governance policy"
+  - path: HERMES_SEVEN_GATES_v1.0.md
+    category: POLICY
+    description: "Hermes 7-gates admission protocol v1.0"
+  - path: INTELLIGENCE_CONSTRAINT_PHYSICS.md
+    category: PLAYBOOK
+    description: "Intelligence constraint physics — ΔΩΨ geometry"
+  - path: L0-L6_TO_T0-T3_ALIGNMENT.md
+    category: POLICY
+    description: "Alignment between agency levels (L0-L6) and action tiers (T0-T3)"
+  - path: MULTIMODAL_AGENTIC_INTELLIGENCE.md
+    category: DOCTRINE
+    description: "Multimodal agentic intelligence doctrine"
+  - path: MULTIMODAL_AGI_DOCTRINE.md
+    category: DOCTRINE
+    description: "Multimodal AGI substrate doctrine"
+  - path: PUSTAKA_GENESIS.md
+    category: DOCTRINE
+    description: "Pustaka Genesis — foundational literary canon"
+  - path: ZERO_DAY_SENTINEL_ARCHITECTURE.md
+    category: PLAYBOOK
+    description: "Zero-day sentinel architecture (defensive doctrine)"
+
+  # ── AUDIT ────────────────────────────────────────────────────────
+  - path: DISABLED_MCP_AUDIT_2026-08-04.md
+    category: AUDIT
+    description: "Disabled MCP audit snapshot 2026-08-04"
+
+  # ── SCHEMA ───────────────────────────────────────────────────────
+  - path: DEWAN_REGISTRY.yaml
+    category: SCHEMA
+    description: "DEWAN governance registry — vocabulary + protocols"
+
+  # ── ADMEMO ───────────────────────────────────────────────────────
+  - path: AAA_AGENT_INVARIANTS.md
+    category: ADMEMO
+    description: "AAA agent invariants — distilled operating contract"
+  - path: README.md
+    category: ADMEMO
+    description: "Governance directory README (if any)"
+
+  # ── SCRIPT (governance-enforcement modules) ──────────────────────
+  - path: federation_sct.py
+    category: SCRIPT
+    description: "Federation SCT — session capability token helper"
+  - path: register_with_aaa.py
+    category: SCRIPT
+    description: "AAA registration helper — onboarding entry"
+  - path: sct_decision_event.py
+    category: SCRIPT
+    description: "SCT decision event module"
+  - path: tool_authority_registry.py
+    category: SCRIPT
+    description: "Tool authority registry — per-tool action-class gates"
+
+# ═══ SUBDIRECTORIES — INDEX ENTRIES ═══
+subdirectories:
+
+  - path: adr/
+    category: ADR
+    description: "Architecture Decision Records"
+    count: 5
+    files:
+      - ADR-001-AAA-PHASE1-TOPOLOGY.md
+      - ADR-002-ARIFOS-TRANSPORT.md
+      - ADR-010-AAA-TELEGRAM-VISIBILITY.md
+      - AAA_ADR_002.md
+      - AAA_ADR_003_PENTAGON.md
+
+  - path: amendments/
+    category: AMENDMENT
+    description: "Constitutional amendments"
+    count: 3
+    files:
+      - A01_BOOTSTRAP_LEASE_GATE.md
+      - A02_GOVERNED_DIGEST_GATE.md
+      - A03_SEAL_HARNESS.md
+
+  - path: constitution/
+    category: CONSTITUTION
+    description: "Substrate / Nusantara constitutional doctrine"
+    count: 2
+    files:
+      - NUSANTARA_SUBSTRATE.md
+      - SCAR_MELAYU.md
+
+  - path: fiqh/
+    category: FIQH
+    description: "Jurisprudence — case-law and master todo"
+    count: 1
+    files:
+      - MASTER_TODO.md
+
+  - path: ilmu/
+    category: ILMU
+    description: "Public knowledge / sealed knowledge / blocked topics"
+    count: 5
+    files:
+      - FFF_ARIFOS.md
+      - FFF_v2_arifos_benchmark_doctrine.json
+      - ILMU_BLOCKED.md
+      - PUBLIC_ILMU.md
+      - SEAL_ILMU.md
+
+  - path: kill-cycles/
+    category: KILL_CYCLE
+    description: "Terminated doctrine — do NOT propagate"
+    count: 1
+    files:
+      - KILL_LIST_CYCLE_2026-Q3.md
+
+  - path: laws/
+    category: LAW
+    description: "Constitutional canon — laws"
+    count: 4
+    files:
+      - LC_ARCHITECT.md
+      - LC_ARCHITECTURE.md
+      - LC_COMPRESSED.md
+      - LC_DISCOVERY.md
+      - LC_MONEY.md
+
+  - path: policies/
+    category: POLICY
+    description: "Routing / governance policies"
+    count: 3
+    files:
+      - AGENT_CARD_VERSION_POLICY.md
+      - BROWSER_ORACLE.md
+      - REPO_ROUTING.md
+
+  - path: schemas/
+    category: SCHEMA
+    description: "Governance schemas"
+    count: 1
+    files:
+      - sct_decision_event.v1.json
+
+# ═══ INDEXING RULES ═══
+indexing_rules:
+  rule: All governance paths MUST be discovered via this INDEX
+  fallback: Only use hardcoded path when INDEX is unreachable AND the value is needed for recovery
+  update_policy: Edit this file when adding/removing/renaming governance paths
+  classification_mirror: /root/AAA/federation/organs.yaml
+  sister_indexes:
+    - path: /root/AAA/state/INDEX.yaml
+      purpose: "Discovery for state machine files"
+
+# ═══ DE-HARDCODE BRIDGE (carry_forward) ═══
+de_hardcode_bridge:
+  purpose: >
+    Replaces A4's five hardcoded governance anchor stubs with discovery.
+    Consumers should resolve `governance::<filename>` via this INDEX rather
+    than hardcoding `/root/AAA/governance/<filename>`.
+  consumer_pattern: "if index exists, read it; else fall back to hardcoded"
+  pre_existing_anchors: 5
+  after_index: 0  # all 5 stubs become DISCOVERY through this INDEX
+  net_anchor_delta: -5
+
+# ═══ LINKS ═══
+links:
+  human_map: /root/AAA/docs/GOVERNANCE_INDEX.md
+  anchor_pattern: /root/AAA/federation/organs.yaml
+  state_index: /root/AAA/state/INDEX.yaml
+  toolbench: /root/AAA/registries/opencode_toolbench.yaml
+
+# ═══ DOCTRINE ═══
+doctrine: "DITEMPA BUKAN DIBERI — Discover, don't anchor."
