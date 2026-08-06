@@ -275,3 +275,16 @@ L8_fed_autonomic:
     track_b_soft_warn: balance < $5.00
   drift_detection: if state file age > 300s — probe FED live via :7074/health
   note: FED is no longer advisory — it is the autonomic nervous system. When a provider dies, within 15 minutes, every config in the federation knows.
+L9_anchor_policy:
+  rule: >
+    /root/AAA/federation/organs.yaml is the ONE address permitted to be stated directly.
+    Everything else resolves through it — organ ports, roles, public URLs, health endpoints.
+    This is the federation's root pointer. Classified: ANCHOR — justified as the single
+    machine-readable topology registry. If organs.yaml moves, update one path; six stubs
+    break, but they break together and fix together.
+  secondary_anchor: /root/AAA/federation/workspace.yaml (skill roots, fragment paths, state files)
+  discovery_method: for any organ property, resolve from organs.yaml first; only fall back
+    to hardcoded address when organs.yaml is unreachable AND the value is needed for recovery.
+  current_anchor_rate: 15 direct port references remain in AGENTS.md — all six organs plus
+    arifFlow, FLAME, memory tiers. These are legacy; the discovery rewrite is a separate
+    de-hardcoding pass tracked in carry_forward.
