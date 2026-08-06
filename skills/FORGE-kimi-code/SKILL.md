@@ -2,7 +2,7 @@
 id: kimi-code-aaa
 name: FORGE-kimi-code
 autonomy_tier: T1
-version: 1.0.0
+version: 1.0.1
 description: Configure, audit, and align Kimi Code CLI as AAA warga FI-008 with arifOS
   kernel and A-FORGE stdio actuator.
 owner: AAA
@@ -134,8 +134,20 @@ Ensure `disabled: true` on legacy servers in `mcp.json`. Start fresh session: `/
 ## Health Verification
 
 ```bash
-for p in 8088 8081 18082 18083 7071 3001; do
-  curl -sf "http://127.0.0.1:$p/health" >/dev/null && echo ":$p OK" || echo ":$p FAIL"
+# De-hardcoded v1.0.1 — ports sourced from federation organ registry
+PROBE_HOST="${FEDERATION_PROBE_HOST:-127.0.0.1}"
+REGISTRY="${FEDERATION_REGISTRY:-/root/AAA/federation/organs.yaml}"
+PORTS=$(python3 -c "
+import yaml, sys
+try:
+    with open('$REGISTRY') as f: r = yaml.safe_load(f)
+    print(' '.join(str(o.get('port','')) for o in r.get('organs',[]) if o.get('port')))
+except Exception as e:
+    sys.stderr.write(f'registry read failed: {e}\n')
+    sys.exit(1)
+" 2>/dev/null) || PORTS="8088 8081 18082 18083 7071 3001"   # fallback to known-good if registry unreachable
+for p in $PORTS; do
+  curl -sf "http://$PROBE_HOST:$p/health" >/dev/null && echo ":$p OK" || echo ":$p FAIL"
 done
 kimi doctor
 ```
@@ -145,7 +157,15 @@ kimi doctor
 | Condition | Action |
 |-----------|--------|
 | OAuth revoked | `/login` in Kimi TUI |
-| A-FORGE stdio fails | `cd /root/A-FORGE && npm run build` then retry |
+| A-FORGE stdio fails | `cd ${AFORGE_HOME:-/root/A-FORGE} && npm run build` then retry |
 | Cross-repo architecture change | 888_HOLD → Arif |
+
+## De-hardcoding Log (v1.0.1)
+
+- **Health Verification ports** — sourced from `/root/AAA/federation/organs.yaml` (organ registry), overridable via `$FEDERATION_REGISTRY`
+- **Probe host** — `$FEDERATION_PROBE_HOST` env, defaults to `127.0.0.1` (LOCALHOST_IS_PASSWORD doctrine)
+- **A-FORGE source path** — `$AFORGE_HOME` env, defaults to `/root/A-FORGE` (backward compatible)
+- **Fallback port list** — kept inline as last-resort if registry read fails; mirrors known-good ports
+- **Canonical paths table** (lines 83–90) — intentionally left as documentation, since these are reference material not executable code
 
 DITEMPA BUKAN DIBERI.
