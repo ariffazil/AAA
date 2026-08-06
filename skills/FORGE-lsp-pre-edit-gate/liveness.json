@@ -1,0 +1,17 @@
+{
+  "skill_id": "forge-lsp-pre-edit-gate",
+  "status": "active",
+  "forged": "2026-08-06",
+  "last_verified": "2026-08-06T08:45:00Z",
+  "agent_scope": ["333-AGI", "FORGE", "OpenCode", "555-ASI"],
+  "file_extensions_gated": [".ts", ".tsx", ".py", ".js", ".jsx"],
+  "lsp_servers_required": ["typescript", "pyright"],
+  "mandatory": true,
+  "auto_load": true,
+  "constitutional_alignment": {
+    "F2_TRUTH": "LSP provides compiler-grade ground truth — no blind edits",
+    "F4_CLARITY": "LSP diagnostics reduce entropy — type errors caught before commit",
+    "F7_HUMILITY": "Agent admits it doesn't know structure without LSP witness",
+    "F11_AUDIT": "LSP probes logged per file per session — traceable grounding"
+  }
+}
