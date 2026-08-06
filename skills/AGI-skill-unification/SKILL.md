@@ -31,18 +31,18 @@ Do not invent a second Grok-only catalog.
 
 | Artifact | Path |
 |----------|------|
-| Alias table (133 rows: 104 active + 29 tombstone) | `/root/AAA/skills/SKILL_ALIAS_TABLE.json` |
-| Mesh sync | `/root/AAA/skills/scripts/skill-mesh-sync.sh` |
-| V3 registry (64 logical) | `/root/AAA/skills/FEDERATED_SKILLS_REGISTRY_V3.yaml` |
+| Alias table (133 rows: 104 active + 29 tombstone) | `${AAA_HOME:-/root/AAA}/skills/SKILL_ALIAS_TABLE.json` |
+| Mesh sync | `${AAA_HOME:-/root/AAA}/skills/scripts/skill-mesh-sync.sh` |
+| V3 registry (64 logical) | `${AAA_HOME:-/root/AAA}/skills/FEDERATED_SKILLS_REGISTRY_V3.yaml` |
 | Meta atlas | `AUDIT-skill-atlas` |
-| Historical receipt | `/root/AAA/skills/docs/SKILL-UNIFICATION-COMPLETE-2026-07-12.md` |
-| Current receipt | `/root/forge_work/2026-07-15/AAA-SKILL-TOOL-RECONCILIATION.json` |
-| Hermes bridge | `/root/A-FORGE/forge_work/2026-07-12/HERMES-V3-DOMAIN-BRIDGE.md` |
+| Historical receipt | `${AAA_HOME:-/root/AAA}/skills/docs/SKILL-UNIFICATION-COMPLETE-2026-07-12.md` |
+| Current receipt | `${FORGE_WORK:-/root/forge_work}/2026-07-15/AAA-SKILL-TOOL-RECONCILIATION.json` |
+| Hermes bridge | `${AFORGE_HOME:-/root/A-FORGE}/forge_work/2026-07-12/HERMES-V3-DOMAIN-BRIDGE.md` |
 
 ## Resolve a V3 short name
 
 ```bash
-python3 -c "import json;d=json.load(open('/root/AAA/skills/SKILL_ALIAS_TABLE.json'));
+python3 -c "import json;d=json.load(open('${AAA_HOME:-/root/AAA}/skills/SKILL_ALIAS_TABLE.json'));
 print([a for a in d['aliases'] if a['v3_name']=='meta-atlas'][0])"
 ```
 
@@ -52,11 +52,11 @@ Prefer `primary_path` / `primary_resolved`. Never invent paths from short names 
 
 ```bash
 # dry-run
-bash /root/AAA/skills/scripts/skill-mesh-sync.sh
+bash ${AAA_HOME:-/root/AAA}/skills/scripts/skill-mesh-sync.sh
 # apply missing links (Grok natives preserved)
-bash /root/AAA/skills/scripts/skill-mesh-sync.sh --apply
+bash ${AAA_HOME:-/root/AAA}/skills/scripts/skill-mesh-sync.sh --apply
 # CI / pre-seal
-bash /root/AAA/skills/scripts/skill-mesh-sync.sh --check
+bash ${AAA_HOME:-/root/AAA}/skills/scripts/skill-mesh-sync.sh --check
 ```
 
 Harnesses synced: `~/.grok/skills`, `~/.claude/skills`, `~/.codex/skills`.
