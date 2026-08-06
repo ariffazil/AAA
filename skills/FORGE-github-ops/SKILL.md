@@ -1,8 +1,8 @@
 ---
 id: github-ops
 name: FORGE-github-ops
-version: 1.0.0
-description: "Runbook for GitHub & Git operations across federation repos — commit workflow, PR ops, branch discipline."
+version: 1.1.0
+description: "Runbook for GitHub & Git operations across federation repos — commit workflow, PR ops, branch discipline. v1.1.0: organ paths from organ registry, no hardcoded /root/<repo> paths."
 owner: AAA
 risk_tier: low
 floor_scope: [F1, F2, F11]
@@ -10,84 +10,100 @@ autonomy_tier: T1
 tags: [github, git, runbook, ops]
 ---
 
-# GitHub & Git Operations
+# GitHub & Git Operations (Probe-Based v1.1.0)
 
-## Federation Repos (7 active)
-```
-ariffazil/arifOS       — Constitutional kernel (Python 3.12+)
-ariffazil/A-FORGE      — Execution engine (TypeScript/Node.js)
-ariffazil/GEOX         — Earth intelligence (Python 3.11+)
-ariffazil/wealth       — Capital intelligence (Python 3.12+)
-ariffazil/well         — Vitality intelligence (Python 3.12+)
-ariffazil/AAA          — Control plane (TypeScript/React)
-—                      — APEX (DECOMMISSIONED — deliberation moved to AAA)
-—                      — HERMES (local only, no remote)
-```
+## Federation Repos — Discover from Organ Registry
 
-## Git Status & Inspection
+**DO NOT hardcode repo paths.** Read them from the canonical organ registry:
+
 ```bash
-cd /root/<repo> && git status
-cd /root/<repo> && git log --oneline -10
-cd /root/<repo> && git diff
-cd /root/<repo> && git remote -v
+python3 -c "
+import yaml
+with open('/root/AAA/federation/organs.yaml') as f:
+    reg = yaml.safe_load(f)
+for o in reg.get('organs', []):
+    print(f'{o[\"id\"]:12s} src={o.get(\"source_path\",\"?\")}')
+"
+```
+
+For GitHub org/repo names, probe git remotes:
+```bash
+git -C <source_path> remote get-url origin
+# e.g. git@github.com:ariffazil/arifOS.git → org=ariffazil, repo=arifOS
+```
+
+## Git Status & Inspection (per organ, from registry)
+
+```bash
+# For each organ's source_path from registry:
+git -C <source_path> status
+git -C <source_path> log --oneline -10
+git -C <source_path> diff
+git -C <source_path> remote -v
 ```
 
 ## Git Commit Workflow
+
 ```bash
-cd /root/<repo>
+# Replace <source_path> with organ registry value
+cd <source_path>
 git status                    # what changed?
 git diff                      # review changes
 git add .                     # stage everything
 git commit -m "feat: <what>"  # commit
-# NEVER: git push without ARIF confirmation
+# NEVER: git push without ARIF confirmation (F13 SOVEREIGN)
 ```
 
-## Git Branch
+## Git Branch (per repo)
+
 ```bash
-git branch                    # list branches
-git checkout -b <name>        # create and switch to new branch
-git checkout main             # switch back to main
+git -C <source_path> branch                    # list branches
+git -C <source_path> checkout -b <name>         # create and switch
+git -C <source_path> checkout main              # switch back
 ```
 
-## GitHub Issue / PR Check
+## GitHub Issue / PR Check — Org/Repo from git remote
+
 ```bash
-gh issue list -R ariffazil/arifOS --state open --limit 20
-gh pr list -R ariffazil/arifOS --state open
-gh pr view -R ariffazil/arifOS <number>
+# Derive org/repo from: git -C <source_path> remote get-url origin
+ORG_REPO="ariffazil/arifOS"  # EXAMPLE — probe actual value
+gh issue list -R "$ORG_REPO" --state open --limit 20
+gh pr list -R "$ORG_REPO" --state open
+gh pr view -R "$ORG_REPO" <number>
 ```
 
-## Build & Test per Repo
+## Build & Test — Per-Organ (paths from registry)
+
 ```bash
 # arifOS
-cd /root/arifOS && pip install -e ".[dev]" && pytest tests/ -q
+cd $(python3 -c "import yaml;r=yaml.safe_load(open('/root/AAA/federation/organs.yaml'));print([o['source_path'] for o in r['organs'] if o['id']=='arifos'][0])") && pip install -e ".[dev]" && pytest tests/ -q
 
 # A-FORGE
-cd /root/A-FORGE && npm install && npm run build && npm test
+cd $(python3 -c "import yaml;r=yaml.safe_load(open('/root/AAA/federation/organs.yaml'));print([o['source_path'] for o in r['organs'] if o['id']=='aforge'][0])") && npm install && npm run build && npm test
 
 # GEOX
-cd /root/geox && pip install -e ".[dev]" && pytest tests/ -q
+cd $(python3 -c "import yaml;r=yaml.safe_load(open('/root/AAA/federation/organs.yaml'));print([o['source_path'] for o in r['organs'] if o['id']=='geox'][0])") && pip install -e ".[dev]" && pytest tests/ -q
 
-# WEALTH
-cd /root/WEALTH && pip install -e . && python internal/monolith.py
-
-# WELL
-cd /root/WELL && pip install -e . && python test_well.py
-
-# AAA
-cd /root/AAA && npm install && npm run build && npm run lint
-
-# HERMES
-cd /root/HERMES && npm install && npm test
+# Same pattern for WEALTH, WELL, AAA — probe source_path from registry
 ```
 
+**Rule:** Every path in this document that starts with `/root/` is an EXAMPLE. Replace with the live organ registry value. If a path doesn't match the registry, the registry wins.
+
 ## GH CLI Auth Check
+
 ```bash
 gh auth status
 ```
 
-## Sensitive Actions (ask ARIF first)
+## Sensitive Actions (ask ARIF first — F13 SOVEREIGN)
 - `git push` to main/master
 - `git push --force`
 - `git rebase`
 - Deleting branches on remote
 - Creating PRs that affect >1 repo
+
+## De-hardcoding Log (v1.1.0)
+- Replaced all hardcoded `/root/<repo>` paths with organ registry reads
+- GitHub org/repo names derived from `git remote get-url origin`
+- Build commands now use registry-derived source_paths
+- Added explicit rule: hardcoded paths are EXAMPLES, registry is truth
