@@ -31,6 +31,14 @@
   "runtime": "opencode",
   "runtime_port": 4096,
   "_gateway_note": "Unified under AAA A2A Gateway — 2026-08-05 by 333-AGI under F13 directive",
+  "provider_state_source": {
+    "path": "/root/.local/share/arifos/fed_provider_state.json",
+    "schema": "arifos-fed-provider-state/v1",
+    "ttl_seconds": 300,
+    "refresh_interval_minutes": 15,
+    "source_pipeline": "fed-sync.timer → /root/scripts/fed-sync.py → reads FED token_bank.db",
+    "note": "Live provider availability source. This card's design-intent claims must be cross-checked against this state file before invocation. State file is LIVE truth; card claims are DESIGN intent. Wired 2026-08-06 by kimi-code/FI-008 under sovereign override."
+  },
   "provider": {
     "organization": "arifOS by Muhammad Arif bin Fazil",
     "url": "https://arif-fazil.com"

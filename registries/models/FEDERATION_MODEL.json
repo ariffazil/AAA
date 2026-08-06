@@ -2,7 +2,17 @@
   "schema": "arifos-federation-model-registry-v1",
   "forged": "2026-07-02",
   "authority": "F13 SOVEREIGN (Arif Fazil)",
-  "note": "Canonical lane→model mapping. Soul/shadow profiles in same directory.",
+  "note": "Canonical lane→model mapping. Soul/shadow profiles in same directory. Status fields here are DESIGN intent — for LIVE availability, see _provider_state_pointer below.",
+  "_provider_state_pointer": {
+    "path": "/root/.local/share/arifos/fed_provider_state.json",
+    "schema": "arifos-fed-provider-state/v1",
+    "ttl_seconds": 300,
+    "refresh_interval_minutes": 15,
+    "source_pipeline": "fed-sync.timer → /root/scripts/fed-sync.py → reads FED token_bank.db",
+    "consumers_must_check": "Before invoking any model listed in `models[]`, read fed_provider_state.json and confirm the provider's verdict is ENABLE or WARN (not DISABLE).",
+    "wired_at": "2026-08-06T03:48:00Z",
+    "wired_by": "kimi-code/FI-008 under sovereign override"
+  },
   "models": [
     {
       "lane": "MAIN",
