@@ -1,0 +1,101 @@
+{
+  "$schema": "https://arifos.arif-fazil.com/schemas/completion-promise/v1",
+  "$id": "completion-promise-defaults-v1",
+  "title": "COMPLETION_CONTRACT — Autonomous Task Termination Protocol",
+  "version": "1.0.0",
+  "forged": "2026-08-06",
+  "forged_by": "333-AGI Δ MIND under F13 SOVEREIGN directive",
+  "doctrine": "DITEMPA BUKAN DIBERI",
+
+  "description": "Every autonomous task boundary MUST inject this contract. The agent cannot claim completion until ALL verification criteria pass. Scheduled verification (cron/timer) evaluates the contract — agents do NOT self-certify completion.",
+
+  "defaults": {
+    "promise_token": "COMPLETE",
+    "max_iterations": 8,
+    "max_model_calls": 6,
+    "max_tool_calls": 20,
+    "max_wall_clock_seconds": 180,
+    "on_timeout": "SEAL_PARTIAL",
+    "on_violation": "HOLD"
+  },
+
+  "verification_criteria": [
+    {
+      "id": "delta_S_lte_zero",
+      "name": "Entropy Gate",
+      "description": "ΔS ≤ 0 — the workspace must not be more chaotic after the task than before.",
+      "evaluator": "forge_entropy_sweep",
+      "threshold": { "max_delta_S": 0.0 },
+      "weight": "HARD",
+      "failure_verdict": "HOLD"
+    },
+    {
+      "id": "lsp_diagnostics_zero",
+      "name": "LSP Grounding Gate",
+      "description": "Zero LSP errors on all modified files. Compiler-grade truth, not agent guesswork.",
+      "evaluator": "lsp_diagnostics_count",
+      "threshold": { "max_errors": 0, "max_warnings": 5 },
+      "weight": "HARD",
+      "failure_verdict": "HOLD"
+    },
+    {
+      "id": "test_suite_pass",
+      "name": "Test Suite Gate",
+      "description": "All relevant tests must pass. No regression tolerated.",
+      "evaluator": "forge_shell",
+      "threshold": { "exit_code": 0 },
+      "weight": "HARD",
+      "failure_verdict": "HOLD"
+    },
+    {
+      "id": "git_anchor_present",
+      "name": "Temporal Anchor Gate",
+      "description": "Every iteration must be anchored to a git hash. No unanchored mutation.",
+      "evaluator": "forge_git",
+      "threshold": { "dirty_files": 0 },
+      "weight": "SOFT",
+      "failure_verdict": "CAUTION"
+    },
+    {
+      "id": "fq_above_threshold",
+      "name": "Metabolic Pulse Gate",
+      "description": "arifFlow FQ must be ≥ 0.5 before sealing. Bila FQ turun, semua HOLD.",
+      "evaluator": "arifflow_flow_health",
+      "threshold": { "min_fq": 0.5 },
+      "weight": "HARD",
+      "failure_verdict": "HOLD"
+    },
+    {
+      "id": "promise_token_emitted",
+      "name": "Completion Token Gate",
+      "description": "The agent MUST emit the promise_token ('COMPLETE') to stdout before claiming done.",
+      "evaluator": "grep_promise_token",
+      "threshold": { "token": "COMPLETE" },
+      "weight": "HARD",
+      "failure_verdict": "HOLD"
+    }
+  ],
+
+  "scheduled_verification": {
+    "method": "cron",
+    "script": "/root/scripts/completion-promise-verifier.sh",
+    "frequency": "*/5 * * * *",
+    "note": "Runs every 5 minutes. Evaluates all active COMPLETION_CONTRACTs against their criteria. Gates loop termination — does NOT hold state via active API connections."
+  },
+
+  "lifecycle": {
+    "inject_at": "arif_init (task boundary)",
+    "read_by": ["arifOS kernel (:8088)", "A-FORGE (:7071)", "completion-promise-verifier (cron)"],
+    "source_of_truth": "this file — /root/AAA/contracts/completion-promise-defaults.json",
+    "kernel_role": "arif_init READS this manifest and injects the contract into the task context. Kernel does NOT bake the schema — the manifest is the single source of truth.",
+    "sovereign_edit": "Arif (F13) can edit any field in this file. No kernel redeploy needed. Changes take effect on next arif_init."
+  },
+
+  "anti_patterns": [
+    "Agent self-certifying completion without verification criteria passing",
+    "Agent claiming COMPLETE without emitting the promise_token",
+    "Skipping LSP probe because 'I already know this file' — LSP is the witness, not agent memory",
+    "Committing without git anchoring — every iteration needs a hash anchor",
+    "Sealing when FQ < 0.5 — metabolic pulse gates all seals"
+  ]
+}
