@@ -1,0 +1,1 @@
+/root/.config/opencode/agents/333-AGI.md
