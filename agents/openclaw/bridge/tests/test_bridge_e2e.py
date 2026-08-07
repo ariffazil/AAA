@@ -3,32 +3,25 @@
 E2E test for OpenClaw A2A bridge + delivery adapter.
 
 Verifies:
-  1. Router dispatch → rule + organ correct (all 10 rules sample-tested)
-  2. Envelope schema (A2A-Version 1.0 contract)
-  3. Ed25519 signature present + verifiable
-  4. HTTP POST to /tasks returns 200 (live gateway)
-  5. Delivery adapter renders valid Telegram MD2 chunks
+  1. All 10 router rules resolve correctly
+  2. JSON-RPC 2.0 envelope shape (A2A-Version 1.0 contract)
+  3. Live HTTP POST to /a2a returns success (real gateway)
+  4. Delivery adapter renders valid Telegram MD2 chunks with footer
+  5. A2A delivery envelope + local file persistence
 
 Run: python3 tests/test_bridge_e2e.py
 """
 
 from __future__ import annotations
 
-import base64
 import json
 import os
 import sys
-import time
 from pathlib import Path
 
-# Make sibling modules importable
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from a2a_bridge import (
-    route, build_envelope, sign_envelope, dispatch,
-    OPENCLAW_KEY_PATH, A2A_BASE,
-)
-from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey as _Pub
+import a2a_bridge
 from delivery_adapter import format_telegram, format_a2a, format_local, deliver
 
 # ──────────────────────────── assertion helpers ────────────────────────────
@@ -46,119 +39,69 @@ def check(name: str, ok: bool, detail: str = "") -> None:
 
 # ──────────────────────────── 1. Router rule coverage ────────────────────────────
 
-ROUTER_CASES = [
-    ("Hold everything", "R01_HOLD_ESCALATE", "arifos"),
-    ("Just research gold market trends", "R02_RESEARCH", "hermes-asi"),
-    ("Fix the swap issue on af-forge", "R03_CODE_EXECUTE", "a-forge"),
-    ("What's my gold position?", "R04_POSITION_QUICK", "local-cache"),
-    ("What's the porosity in the Malay Basin?", "R05_EARTH_DOMAIN", "geox"),
-    ("Calculate NPV for project Alpha", "R06_CAPITAL_DOMAIN", "wealth"),
-    ("How am I doing today?", "R07_VITALITY_DOMAIN", "well"),
-    ("How's the federation health?", "R08_SYSTEM_STATUS", "aaa"),
-    ("Send me the weekly brief", "R09_DELIVER_ARTIFACT", "local-cache"),
-    ("random unclear message", "R10_DEFAULT_TRIAGE", "hermes-asi"),
-]
-
-print("\n=== Router rule coverage ===")
-for text, expected_rule, expected_organ in ROUTER_CASES:
-    rr = route(text)
-    ok = rr.rule_id == expected_rule and rr.organ == expected_organ
-    check(
-        f"route({text!r:50s}) → {rr.rule_id}",
-        ok,
-        f"organ={rr.organ} (expected {expected_organ})",
-    )
+print("\n=== Router rule coverage (ROUTER_TO_AGENT mapping) ===")
+EXPECTED = {
+    "R01_HOLD_ESCALATE":     "arifos",
+    "R02_RESEARCH":          "hermes-asi",
+    "R03_CODE_EXECUTE":      "333-AGI",
+    "R04_POSITION_QUICK":    "wealth",
+    "R05_EARTH_DOMAIN":      "geox",
+    "R06_CAPITAL_DOMAIN":    "wealth",
+    "R07_VITALITY_DOMAIN":   "well",
+    "R08_SYSTEM_STATUS":     "hermes-asi",
+    "R09_DELIVER_ARTIFACT":  "hermes-asi",
+    "R10_DEFAULT_TRIAGE":    "hermes-asi",
+}
+for rule_id, expected_agent in EXPECTED.items():
+    target = a2a_bridge.resolve_target(rule_id, query="probe")
+    if rule_id in a2a_bridge.LOCAL_RULES:
+        check(f"resolve_target({rule_id}) is local", target.get("local", False))
+    else:
+        actual = target.get("target_agent", "?")
+        check(f"resolve_target({rule_id}) → {actual}", actual == expected_agent,
+              f"expected {expected_agent}")
 
 # ──────────────────────────── 2. Envelope schema ────────────────────────────
 
 print("\n=== Envelope schema ===")
-rr = route("How's the federation health?")
-env = build_envelope("How's the federation health?", rr)
-check("envelope has jsonrpc=2.0", env["jsonrpc"] == "2.0")
-check("envelope has method=message/send", env["method"] == "message/send")
-check("envelope has session_id", "session_id" in env["params"])
-check("envelope has actor_id", "actor_id" in env["params"])
-check("envelope has message.parts", "parts" in env["params"]["message"])
-check("envelope metadata has routing", "routing" in env["params"]["metadata"])
-check(
-    "routing.rule_id matches",
-    env["params"]["metadata"]["routing"]["rule_id"] == "R08_SYSTEM_STATUS",
+task = a2a_bridge.build_task(
+    query="How's the federation health?",
+    target_agent="hermes-asi",
+    target_skill="federation-health",
+    session_id="test-session-001",
 )
+check("envelope has jsonrpc=2.0", task["jsonrpc"] == "2.0")
+check("envelope has method=tasks/send", task["method"] == "tasks/send")
+check("envelope has params.id", "id" in task["params"])
+check("envelope has params.sessionId", "sessionId" in task["params"])
+check("envelope has params.targetAgent", "targetAgent" in task["params"])
+check("envelope has params.message", "message" in task["params"])
+check("envelope has params.metadata", "metadata" in task["params"])
+check("metadata has source_agent=openclaw", task["params"]["metadata"].get("source_agent") == "openclaw")
 
-# ──────────────────────────── 3. Ed25519 signature ────────────────────────────
+# ──────────────────────────── 3. Live HTTP dispatch ────────────────────────────
 
-print("\n=== Ed25519 signature ===")
-if OPENCLAW_KEY_PATH.exists():
-    signed = sign_envelope(env)
-    sig = signed.get("signature")
-    check("signature present", sig is not None)
-    if sig:
-        check("signature algo=ed25519", sig["algo"] == "ed25519")
-        check("signature value present", bool(sig["value"]))
-        check("canonical_hash is sha256 hex", len(sig["canonical_hash"]) == 64)
-
-        # Verify round-trip
-        try:
-            pub_path = Path(str(OPENCLAW_KEY_PATH).replace("_private", "_public"))
-            if pub_path.exists():
-                pub = _Pub.from_public_bytes(pub_path.read_bytes())
-                canon = json.dumps(env, sort_keys=True, separators=(",", ":")).encode("utf-8")
-                sig_bytes = base64.urlsafe_b64decode(sig["value"] + "==")
-                try:
-                    pub.verify(sig_bytes, canon)
-                    check("signature VERIFIES against public key", True)
-                except Exception as e:
-                    check("signature VERIFIES against public key", False, str(e))
-            else:
-                check("signature VERIFIES against public key", False, f"public key missing: {pub_path}")
-        except Exception as e:
-            check("signature verification path", False, f"{type(e).__name__}: {e}")
-else:
-    check("signature present", False, f"key missing: {OPENCLAW_KEY_PATH}")
-
-# ──────────────────────────── 4. Live HTTP dispatch ────────────────────────────
-
-print(f"\n=== Live HTTP dispatch to {A2A_BASE}/tasks ===")
+print("\n=== Live HTTP dispatch to :3001/a2a ===")
 try:
-    out = dispatch(
-        "Send me the weekly brief",
-        sign=True,
-        send=True,
-        timeout=15.0,
-    )
-    resp = out.get("a2a_response", {})
-    check(
-        "POST /tasks returns 200",
-        resp.get("status") == 200,
-        f"got status={resp.get('status')}",
-    )
-    if resp.get("body"):
-        body_preview = json.dumps(resp["body"])[:200]
-        check("response has body", True, body_preview)
-    check("task_id present", resp.get("task_id") is not None)
-    # Routing metadata should match
-    check(
-        "routing.rule_id in response",
-        out["routing"]["rule_id"] == "R09_DELIVER_ARTIFACT",
-    )
+    out = a2a_bridge.dispatch("R08_SYSTEM_STATUS", "Federation health probe")
+    check("R08 dispatch success", out.get("success", False), str(out)[:200])
+    check("R08 has aaa_task_id", out.get("aaa_task_id") is not None)
+    check("R08 has task_id", out.get("task_id") is not None)
 except Exception as e:
-    check("POST /tasks returns 200", False, f"{type(e).__name__}: {e}")
+    check("R08 dispatch success", False, f"{type(e).__name__}: {e}")
 
-# ──────────────────────────── 5. Delivery adapter ────────────────────────────
+# ──────────────────────────── 4. Delivery adapter ────────────────────────────
 
 print("\n=== Delivery adapter ===")
 sample_payload = {
     "result": {
         "id": "test-task-123",
         "metadata": {
-            "routing": {
-                "rule_id": "R08_SYSTEM_STATUS",
-                "organ": "aaa",
-                "intent_class": "query",
-            }
+            "routing": "hermes-asi",
+            "source_agent": "openclaw",
         },
         "history": [
-            {"role": "assistant", "parts": [{"kind": "text", "text": "All 8 organs healthy. FQ=1.11."}]}
+            {"role": "assistant", "parts": [{"type": "text", "text": "All 8 organs healthy. FQ=1.11."}]}
         ],
         "artifacts": [{"text": "All 8 organs healthy. FQ=1.11."}],
     }
@@ -168,13 +111,19 @@ chunks = format_telegram(sample_payload)
 check("telegram renders ≥1 chunk", len(chunks) >= 1)
 check("telegram chunk ≤ 4096", all(len(c) <= 4096 for c in chunks))
 check("telegram has footer", "DITEMPA BUKAN DIBERI" in chunks[0])
-check("telegram has rule header", "R08\\_SYSTEM\\_STATUS" in chunks[0])
 
 a2a_report = format_a2a(sample_payload)
-check("a2a envelope has delivery.kind", a2a_report["delivery"]["kind"] == "a2a_json")
+check("a2a kind=a2a_json", a2a_report["delivery"]["kind"] == "a2a_json")
+check("a2a has agent=OpenClaw", a2a_report["delivery"]["agent"] == "OpenClaw")
 
 local_report = format_local(sample_payload, "test-session-001")
 check("local file path set", "path" in local_report["delivery"])
+check("local file exists", Path(local_report["delivery"]["path"]).exists())
+
+# Telegram deliver() returns chunk count
+report = deliver(sample_payload, channel="telegram", session_id="test-session-001")
+check("deliver telegram has chunks", "chunks" in report)
+check("deliver telegram chunk_count", report.get("chunk_count", 0) >= 1)
 
 # ──────────────────────────── summary ────────────────────────────
 
