@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "last_verified": "2026-08-05",
+    "last_verified": "2026-08-07T03:44:59Z",
     "alive_pools": [
       "deepseek",
       "minimax",
@@ -20,7 +20,9 @@
     "constitutional_rule": "deepseek-v4-pro, glm-5.2, qwen3.8-max, and MiniMax-M3 may serve 666_JUDGE and 999_SEAL roles. MiniMax-M3 reinstated 2026-08-03 after endpoint correction + SHADOW-MM-001 resolution.",
     "balance_policy": "NO static balances. Use FED :7074 (fed_status tool or curl :7074/health \u2192 providers[].balance_usd). Any balance_usd in this file is STALE and must be treated as FALSE.",
     "last_purged_balances": "2026-08-05T07:05:00Z by 333-AGI",
-    "canonical_balance_source": "FED :7074 (token_bank.db, live API probes)"
+    "canonical_balance_source": "FED :7074 (token_bank.db, live API probes)",
+    "last_fed_alignment": "2026-08-07T03:38:00Z",
+    "last_fed_alignment_note": "Aligned agent primary models to FED (litellm-federation). Replaced dead PAYG (bailian-token-plan-payments) + non-FED primary routes with FED cascade aliases. F2 evidence: live curl probes on :4000."
   },
   "providers": [
     {
@@ -6615,36 +6617,29 @@
       "agent_name": "OpenCode",
       "agent_class": "C2",
       "organ": "A-FORGE",
-      "primary_model": "deepseek/deepseek-v4-pro",
-      "primary_provider": "deepseek",
+      "primary_model": "litellm-federation/opencode",
+      "primary_provider": "litellm-federation",
       "fallback_chain": [
         {
-          "model_key": "qwen-token-plan/deepseek-v4-pro",
-          "provider": "qwen-token-plan",
+          "model_key": "litellm-federation/opencode",
+          "provider": "litellm-federation",
           "priority": 1,
-          "cost": "token_plan",
-          "note": "Qwen TP RM0 marginal \u2014 switched from primary to fallback 2026-08-02 per F13 directive"
+          "cost": "cascade",
+          "note": "FED cascade: deepseek-v4-pro \u2192 mimo-v2.5-pro \u2192 MiniMax-M3 \u2192 qwen3.7-max (Individual key)"
         },
         {
-          "model_key": "deepseek/deepseek-v4-flash",
+          "model_key": "deepseek/deepseek-v4-pro",
           "provider": "deepseek",
           "priority": 2,
-          "cost": "prepaid",
-          "note": "Same provider, fast flash variant \u2014 1M ctx, $0.14/$0.28"
-        },
-        {
-          "model_key": "kimi/k3",
-          "provider": "kimi-moonshot",
-          "priority": 3,
-          "cost": "monthly",
-          "note": "Cross-provider \u2014 2.8T MoE, 1M ctx, always-on thinking"
+          "cost": "direct",
+          "note": "Direct DeepSeek (prepaid $12.54)"
         },
         {
           "model_key": "ollama/qwen2.5-coder:3b",
           "provider": "ollama",
-          "priority": 4,
+          "priority": 99,
           "cost": "free",
-          "note": "Local recovery \u2014 always available"
+          "note": "Local fallback"
         }
       ],
       "circuit_breaker": {
@@ -7644,69 +7639,73 @@
     },
     {
       "agent_id": "333-AGI",
-      "primary_model": "deepseek/deepseek-v4-pro",
+      "primary_model": "litellm-federation/agi-333",
       "fallback_chain": [
-        "minimax/MiniMax-M3",
-        "mimo-token-plan/mimo-v2.5-pro",
+        "litellm-federation/agi-333",
+        "deepseek/deepseek-v4-pro",
         "qwen-token-plan-individual/deepseek-v4-pro",
-        "kimi/kimi-k3",
-        "ollama/qwen2.5-coder:3b",
-        "deepseek/deepseek-v4-pro"
+        "minimax/MiniMax-M3",
+        "ollama/qwen2.5-coder:3b"
       ],
       "pool": "A",
-      "pool_name": "DeepSeek Direct"
+      "pool_name": "DeepSeek Direct",
+      "primary_provider": "litellm-federation"
     },
     {
       "agent_id": "555-ASI",
-      "primary_model": "deepseek/deepseek-v4-flash",
+      "primary_model": "litellm-federation/asi-555",
       "fallback_chain": [
+        "litellm-federation/asi-555",
         "qwen-token-plan-individual/qwen3.6-flash",
-        "kimi/kimi-for-coding-highspeed",
         "ollama/qwen2.5-coder:3b"
       ],
       "pool": "A",
       "pool_name": "DeepSeek (Pool A, shared with 333-AGI)",
-      "_note": "2026-08-05: Switched from Qwen Pool D to DeepSeek Pool A \u2014 Qwen pool exhausted. deepseek-v4-flash chosen for cost/speed."
+      "_note": "2026-08-05: Switched from Qwen Pool D to DeepSeek Pool A \u2014 Qwen pool exhausted. deepseek-v4-flash chosen for cost/speed.",
+      "primary_provider": "litellm-federation"
     },
     {
       "agent_id": "555-ASI-VISION",
-      "primary_model": "bailian-token-plan-payments/qwen3.7-plus",
+      "primary_model": "litellm-federation/asi-555",
       "fallback_chain": [
+        "litellm-federation/asi-555",
         "qwen-token-plan-individual/qwen3.7-plus",
         "qwen-responses/qwen3.7-plus",
-        "minimax/MiniMax-M3",
-        "bailian-token-plan-payments/qwen3.7-plus"
+        "minimax/MiniMax-M3"
       ],
       "pool": "PAYG",
       "pool_name": "Bailian PAYG (fallback: Qwen Individual, Qwen Responses, MiniMax M3)",
-      "_note": "2026-08-04: Switched primary to PAYG \u2014 Qwen prepaid pools exhausted weekly quota until Aug 07. PAYG has independent billing."
+      "_note": "2026-08-04: Switched primary to PAYG \u2014 Qwen prepaid pools exhausted weekly quota until Aug 07. PAYG has independent billing.",
+      "primary_provider": "litellm-federation",
+      "vision_capable": true
     },
     {
       "agent_id": "888-APEX",
       "primary_model": "minimax/MiniMax-M3",
       "fallback_chain": [
         "deepseek/deepseek-v4-pro",
-        "mimo-token-plan/mimo-v2.5-pro",
-        "qwen-token-plan-individual/deepseek-v4-pro",
-        "kimi/kimi-k3",
-        "minimax/MiniMax-M3"
+        "minimax/MiniMax-M3",
+        "kimi/kimi-k3"
       ],
       "pool": "B",
-      "pool_name": "MiniMax (dedicated subscription)",
-      "status": "ACTIVE"
+      "pool_name": "MiniMax (dedicated subscription, primary)",
+      "status": "ACTIVE",
+      "primary_provider": "minimax"
     },
     {
       "agent_id": "image-analyzer",
-      "primary_model": "bailian-token-plan-payments/qwen3.7-plus",
+      "primary_model": "litellm-federation/asi-555",
       "fallback_chain": [
+        "litellm-federation/asi-555",
         "qwen-token-plan-individual/qwen3.7-plus",
         "qwen-responses/qwen3.7-plus",
-        "minimax/MiniMax-M3",
-        "bailian-token-plan-payments/qwen3.7-plus"
+        "minimax/MiniMax-M3"
       ],
       "pool": "PAYG",
       "pool_name": "Bailian PAYG (fallback: Qwen Individual, Qwen Responses, MiniMax M3)",
-      "_note": "2026-08-04: Switched primary to PAYG \u2014 Qwen prepaid pools exhausted weekly quota until Aug 07. PAYG has independent billing."
+      "_note": "2026-08-04: Switched primary to PAYG \u2014 Qwen prepaid pools exhausted weekly quota until Aug 07. PAYG has independent billing.",
+      "primary_provider": "litellm-federation",
+      "vision_capable": true
     },
     {
       "agent_id": "dispatch",

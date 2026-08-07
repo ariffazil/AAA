@@ -1,0 +1,153 @@
+{
+  "id": "kimi_spawn_protocol_v0.1.0",
+  "status": "PARTIAL_SEAL",
+  "ratification": "HOLD",
+  "drafted_at": "2026-08-07",
+  "authority": "ARIF_F13_SOVEREIGN",
+
+  "federation_invariant": {
+    "rule": "Governance is measured per spawn, never solely per task.",
+    "aggregate_role": "dashboard_only",
+    "audit_floor": "spawn_level"
+  },
+
+  "pre_spawn_gate": {
+    "mandatory_fields": [
+      "archetype",
+      "spawn_reason",
+      "risk_tier",
+      "expected_entropy_reduction",
+      "parent_session_id",
+      "parent_spawn_id"
+    ],
+    "missing_field_action": "NO_SPAWN",
+    "return_value": "reason_to_primary"
+  },
+
+  "archetype_ceiling": {
+    "af_explore":     "OBSERVE_ONLY",
+    "af_reviewer":    "OBSERVE_ONLY",
+    "af_plan":        "DRAFT_ONLY",
+    "af_fix":         "EXECUTE_REVERSIBLE",
+    "af_worker":      "EXECUTE_REVERSIBLE",
+    "af_coordinator": "DISPATCH_ONLY",
+    "af_forge":       "EXECUTE_AFTER_SEAL"
+  },
+
+  "archetype_confidence_ceiling": {
+    "af_explore":      0.60,
+    "af_reviewer":     0.70,
+    "af_plan":         0.75,
+    "af_worker":       0.80,
+    "af_fix":          0.85,
+    "af_coordinator":  0.70,
+    "af_forge":        0.90
+  },
+
+  "risk_tier": ["T1", "T2", "T3"],
+
+  "spawn_reason_enum": [
+    "verification",
+    "criticism",
+    "synthesis",
+    "reconnaissance",
+    "domain_analysis",
+    "implementation",
+    "refactor"
+  ],
+
+  "structured_return": {
+    "mandatory_fields": [
+      "worker",
+      "task",
+      "inputs",
+      "evidence",
+      "interpretation",
+      "hypothesis",
+      "unknown",
+      "confidence",
+      "key_challenge",
+      "receipt_hash",
+      "parent_spawn_hash"
+    ],
+    "evidence_labels": ["OBS", "DER", "INT", "SPEC"],
+    "source_types": ["observation", "derivation", "interpretation", "specification", "external"],
+    "transformation_types": ["direct", "inference", "aggregation", "derived"],
+    "missing_field_action": "INVALID_RETURN",
+    "retry_semantics": {
+      "max_retries": 1,
+      "on_retry_use_different_archetype": true,
+      "on_second_failure": "ESCALATE_TO_APEX",
+      "apex_endpoint": "http://127.0.0.1:8088/mcp",
+      "apex_tool": "arif_judge"
+    }
+  },
+
+  "judgment_coverage": {
+    "per_spawn_telemetry": [
+      "spawn_id",
+      "mutations_taken",
+      "recommendations_made",
+      "conclusions_drawn",
+      "apex_verdicts_sought"
+    ],
+    "formulas": {
+      "risky_actions_taken": "mutations_taken + recommendations_made + conclusions_drawn",
+      "judgment_coverage": "min(apex_verdicts_sought / max(risky_actions_taken, 1), 1.0)",
+      "judgment_debt": "risky_actions_taken - apex_verdicts_sought"
+    },
+    "scope": "spawn_only",
+    "aggregate_constraint": "cannot_replace_per_spawn_metric",
+    "surface_below_1": "session_seal"
+  },
+
+  "seal_status_enum": {
+    "SEALED": {
+      "meaning": "receipt succeeded AND validation passed",
+      "severity": "none"
+    },
+    "UNSEALED_INFRA": {
+      "meaning": "forge_vault unavailable; receipt generation failed",
+      "severity": "infrastructure_only",
+      "NOT_punished_as_governance_violation": true
+    },
+    "FAILED_VALIDATION": {
+      "meaning": "receipt generated but did not pass validation",
+      "severity": "constitutional_violation"
+    },
+    "RETRY": {
+      "meaning": "first attempt returned INVALID, retry once with different archetype",
+      "max_retries": 1
+    }
+  },
+
+  "parallel_spawn": {
+    "allowed": true,
+    "flat_tree_required": true,
+    "max_parallel": 6,
+    "per_spawn_telemetry_required": true,
+    "aggregate_only_for_dashboard": true,
+    "rationale": "no_nesting_invariant_preserves_central_authority_saturation_constraint"
+  },
+
+  "open_sealing_conditions": [
+    {"id": "C1", "description": "Clamp judgment_coverage to [0,1]", "status": "DRAFTED"},
+    {"id": "C2", "description": "Declare confidence ceilings per archetype", "status": "DRAFTED"},
+    {"id": "C3", "description": "Separate mutation/recommendation/conclusion telemetry", "status": "DRAFTED"},
+    {"id": "C4", "description": "Preserve flat-tree invariant", "status": "DRAFTED"},
+    {"id": "C5", "description": "Require per-spawn telemetry for parallel af-* execution", "status": "DRAFTED"},
+    {"id": "C6", "description": "Resolve tool capability stripping conflicts (af-fix, af-worker, af-coordinator)", "status": "HOLDING"},
+    {"id": "C7", "description": "Confirm enforcement hook exists in runtime (kimi PreToolUse)", "status": "HOLDING_RUNTIME_GAP"},
+    {"id": "C8", "description": "forge_vault failure handling (UNSEALED_INFRA vs FAILED_VALIDATION)", "status": "DRAFTED"},
+    {"id": "C9", "description": "Confidence label reconciliation across Hermes doctrine and Kimi protocol", "status": "HOLDING"},
+    {"id": "C10", "description": "Cross-harness enum authority (single canonical naming)", "status": "HOLDING"}
+  ],
+
+  "doctrine": "DITEMPA_BUKAN_DIBERI",
+  "omega_0": 0.04,
+  "seal_pending": [
+    "runtime_enforcement_hook",
+    "tool_capability_reconciliation",
+    "cross_harness_naming_consensus"
+  ]
+}

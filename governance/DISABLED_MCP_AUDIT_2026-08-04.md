@@ -1,6 +1,6 @@
 # Disabled MCP Audit — 2026-08-04
 
-> **STATUS:** SEAL
+> **STATUS:** SEAL (TIER-1 executed 2026-08-07; TIER-2 deferred — see post-audit below)
 > **DATE:** 2026-08-04
 > **DOCTRINE:** Separation of Powers in Agent Tool Use
 > **METHODOLOGY:** Source-level audit of all 6 disabled MCP servers in opencode.json
@@ -415,4 +415,20 @@ without explicit governance gating on the Execution tools.**
 
 *Forged 2026-08-04. Source-level audit of 6 disabled MCP servers.
 Cross-referenced against AAA_TOOL_RIGHTS_POLICY_v0.2 and SEPARATION_OF_POWERS_TOOL_USE.md.*
+
+---
+
+## POST-AUDIT EXECUTION (2026-08-07 · 333-AGI · SEAL-047af60ba8904405)
+
+| Tier | Action | Status |
+|------|--------|--------|
+| TIER 1 | Enable capability-index (SEAL_READONLY) | ✅ EXECUTED — opencode.json enabled=true |
+| TIER 1 | Enable repomapper (SEAL_READONLY) | ✅ EXECUTED — opencode.json enabled=true |
+| TIER 2 | Graphiti read-only subset (5 tools) | ❌ DEFERRED — marked redundant vs megamemory in opencode.meta.json |
+| TIER 2 | Hindsight read-only subset (15 tools) | ❌ DEFERRED — marked redundant vs forge_memory in opencode.meta.json |
+| TIER 2 | SQLite read-only subset (3 tools) | ❌ DEFERRED — marked redundant vs forge_postgres/supabase in opencode.meta.json |
+| TIER 3 | Serena keep disabled (VOID) | ✅ KEPT DISABLED — separation-of-powers violation |
+
+**Note:** The pragmatic redundancy justification in opencode.meta.json diverges from this audit's constitutional classification. The HOLD items were deferred by redundancy decision, not by constitutional re-review. This should be reconciled formally — either execute the read-only exposures or document the redundancy decision as a Standing Risk Acceptance with expiry.
+
 *DITEMPA BUKAN DIBERI ⚒️*
