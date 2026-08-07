@@ -27,14 +27,14 @@ from typing import Any
 
 logger = logging.getLogger("federation.sct.decision")
 
-SCHEMA_VERSION = "sct_decision_event.v1"
+SCHEMA_VERSION = "act_decision_event.v1"
 SCHEMA_ID = "https://arif-fazil.com/schema/sct_decision_event/v1"
 
 # Where detailed events land (observability plane — not VAULT999)
 _DEFAULT_EVENT_DIR = Path(
     os.environ.get(
-        "SCT_DECISION_EVENT_DIR",
-        "/root/A-FORGE/forge_work/2026-07-17/sct_decision_events",
+        "ACT_DECISION_EVENT_DIR",
+        "/root/A-FORGE/forge_work/2026-07-17/act_decision_events",
     )
 )
 
@@ -183,7 +183,7 @@ def append_decision_event(
     try:
         d.mkdir(parents=True, exist_ok=True)
         day = time.strftime("%Y-%m-%d", time.gmtime())
-        path = d / f"sct_decisions_{day}.jsonl"
+        path = d / f"act_decisions_{day}.jsonl"
         with path.open("a", encoding="utf-8") as fh:
             fh.write(event.to_jsonl() + "\n")
         return path

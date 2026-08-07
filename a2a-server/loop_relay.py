@@ -63,7 +63,7 @@ class PromptLoopRelay:
             return "HOLD", f"Turn limit exceeded ({turn_id}/{max_turns})"
 
         sct = envelope.get("sct_ref", "")
-        if not sct.startswith("sct_v1."):
+        if not sct.startswith("act_v1."):
             return "VOID", "Missing or invalid delegated SCT context"
 
         if history:
@@ -115,7 +115,7 @@ if __name__ == "__main__":
         "via_agent": "openclaw",
         "prompt": "Evaluate code formatting in /root/AAA/registries/AGENTS_UNIFIED.yaml",
         "context_ref": "ref_20260802_001",
-        "sct_ref": "sct_v1.delegated_hermes_to_opencode",
+        "sct_ref": "act_v1.delegated_hermes_to_opencode",
         "receipt_ref": "RECEIPT-2026-08-02-001",
         "entropy_receipt_ref": "ENTROPY-2026-08-02-001",
         "max_turns": 3,
