@@ -50,8 +50,8 @@ honest_self_audit:
 sources:
   human_warga_allowlist: agents/warga/AAA_WARGA.txt
   constitutional_topology: agents/HEXAGON.yaml
-  human_registry: agents/AGENT_REGISTRY.md
-  machine_registry: AAA_AGENTS_REGISTRY.json
+  human_registry: registries/AGENTS_UNIFIED.yaml
+  machine_registry: registries/AAA_AGENTS_REGISTRY.json
   a2a_public_registry: public/a2a/agents.json
   forge_instruments: registries/forge_instruments.yaml
   opencode_toolbench: registries/opencode_toolbench.yaml
@@ -65,21 +65,21 @@ aaa_warga:
   ring: Delta MIND
   role: primary reasoning and execution
   status: live
-  runtime: openclaw
+  runtime: opencode
   runtime_port: 18789
-  card: agents/333-AGI/agent-card.json
+  card: agent-cards/identity/333-AGI/agent-card.json
 - id: 555-ASI
   class: ASI
-  ring: Omega HEART
-  role: memory synthesis and ethical critique
-  status: spec
-  card: agents/555-ASI/agent-card.json
+  ring: Phi SENSE
+  role: sensory gatekeeper, drift detection, telemetry, research
+  status: live
+  card: agent-cards/identity/555-ASI/agent-card.json
 - id: 888-APEX
   class: APEX
-  ring: PHI JUDGE
-  role: constitutional verdicts
-  status: spec
-  card: agents/888-APEX/agent-card.json
+  ring: Psi SOUL
+  role: constitutional verdicts, SEAL/HOLD/VOID gates
+  status: live
+  card: agent-cards/identity/888-APEX/agent-card.json
 - id: A-AUDIT
   class: oversight
   ring: observer
@@ -113,7 +113,7 @@ runtime_peers:
   status: live
   role: Gemini-backed autonomous coding harness
   port: null
-  config_ref: agents/antigravity/agent-card.json
+  config_ref: agents/_external/agy/agent-card.json
 organ_peers:
 - id: arifos-kernel
   status: live
@@ -146,7 +146,7 @@ forge_instruments:
   class: forge-instrument
   citizenship: warga-aaa
   constitutional_proxy: 333-AGI
-  warga_card: agents/opencode/WARGAAA_CARD.md
+  warga_card: agents/opencode/agent-card.json
   hooks_dir: /root/.openclaw/workspace/bots/opencode-bot/hooks
   action_taxonomy: /root/.openclaw/workspace/bots/opencode-bot/action_taxonomy.py
   federation_mcp_surface:
@@ -166,7 +166,7 @@ forge_instruments:
   resolved_binary: /root/.npm-global/bin/opencode
   version: 1.18.3
   model: deepseek/deepseek-v4-pro  # canonical: /root/.config/federation-models.json
-  small_model: ollama/qwen2.5-coder:3b  # canonical: /root/.config/federation-models.json
+  small_model: ollama/qwen2.5:3b  # canonical: /root/.config/federation-models.json
   native_mcp: true
   mcp_count: 25
   mcp_servers:
