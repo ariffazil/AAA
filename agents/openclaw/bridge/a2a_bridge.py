@@ -82,14 +82,14 @@ def _canon(obj: Any) -> str:
     return json.dumps(obj, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
 
 
-def _load_private_key(path: Path) -> "Ed25519PrivateKey":
+def _load_private_key(path: Path):
     """Load an Ed25519 private key.
 
     Supports two formats:
       1. Raw 32-byte Ed25519 seed (arifOS convention at /root/AAA/auth/keys/)
       2. PEM-encoded PKCS8 Ed25519 (standard)
     """
-    Ed25519PrivateKey = _load_ed25519()
+    from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
     raw = path.read_bytes()
     # Try PEM first (heuristic: PEM starts with b'-----BEGIN')
     if raw.lstrip().startswith(b"-----BEGIN"):
