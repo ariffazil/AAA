@@ -47,9 +47,23 @@ messageTemplate: |
 # Reversibility: remove mapping from hooks.mappings → restore witness-only
 # F13 decision: T2 territory — runtime change on live gateway
 
-# Phase 1 requires:
-# 1. Verify OpenClaw pre_mutation event type exists in its hook schema
-# 2. Verify agent invocation via messageTemplate actually works
-# 3. Test with T3 command (rm -rf /tmp/test) → expect BLOCK
-# 4. Confirm receipt written to openclaw_hook_receipts.jsonl
-# 5. Wire live (requires F13 approval)
+# Phase 1 VERIFIED (2026-08-07 by 333-AGI):
+# 1. ✅ OpenClaw natively supports PreToolUse hook events
+#    - Native hook relay: hooks-cli --event <event> --pre-tool-use-unavailable <mode>
+#    - Internal events: "agent:bootstrap" pattern confirmed
+#    - emitCodexNativePreToolUseFailureDiagnostic / nativePreToolUseFailures in source
+# 2. ⚠️ Hook mapping format uses match.path, not match.event — design needs update
+# 3. ⬜ Test with T3 command → expect BLOCK
+# 4. ⬜ Confirm receipt written to openclaw_hook_receipts.jsonl
+# 5. ⬜ Wire live (requires F13 approval — T3: production Telegram bridge)
+#
+# CORRECTED FINDING:
+# The enforcement matrix reported "No gate/hook in config found" — this is accurate
+# for CONFIGURED hooks, but OpenClaw HAS native PreToolUse hook capability.
+# It needs a hook MAPPING added to openclaw.json hooks.mappings that intercepts
+# PreToolUse events and routes to arifOS for constitutional floor check.
+# 
+# The existing opencode_thermodynamic_precheck mapping shows the pattern:
+# match.path triggers → action:agent → agentId → messageTemplate → agent evaluates
+# A similar pattern for PreToolUse would need: match.event (or match.path for
+# native relay) → constitutional check → allow/witness/block decision.
