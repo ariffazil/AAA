@@ -523,6 +523,26 @@ function validateAgentPolicy(envelope, toolName) {
     return { ok: false, reason: `T${riskTierNum} tool exceeds irreversibility threshold for agent ${agentId}` };
   }
 
+  // Capability ceiling — DISPLAY_ONLY must never invoke mutation
+  const ACTION_CLASS_RANK = { OBSERVE: 0, PREPARE: 1, MUTATE: 2, ATOMIC: 3, SEAL: 3 };
+  const ROLE_CEILING = {
+    observer: 'OBSERVE',
+    relay: 'PREPARE',
+    router: 'PREPARE',      // DISPLAY_ONLY — route, never mutate
+    engineer: 'MUTATE',
+    admin: 'ATOMIC',
+  };
+  const maxClass = ROLE_CEILING[policy.agent_role] || 'OBSERVE';
+  const toolClass = toolRisk.action_class;
+  const maxRank = ACTION_CLASS_RANK[maxClass] || 0;
+  const toolRank = ACTION_CLASS_RANK[toolClass] || 0;
+  if (toolRank > maxRank) {
+    return {
+      ok: false,
+      reason: `Capability ceiling violation: ${agentId} (${policy.agent_role}, max ${maxClass}) cannot invoke ${toolName} (${toolClass})`,
+    };
+  }
+
   return { ok: true, reason: 'POLICY_PASS' };
 }
 
@@ -551,6 +571,15 @@ registerAgentPolicy('openclaw', {
   // OpenClaw may NEVER mutate production state directly. All mutations route to A-FORGE.
   irreversibility_threshold: 0.05,
   notes: 'OpenClaw EDGE warga — agentic mesh router. DISPLAY_ONLY. Signs A2A envelopes with did:arif:openclaw. Forged 2026-08-07 by 333-AGI / Hermes-ASI under F13 directive.',
+});
+
+// OpenClaw bridge identity (actor_id used in A2A envelopes from the bridge)
+registerAgentPolicy('openclaw:ingress', {
+  agent_role: 'router',
+  allowed_tools: ['/tasks', 'arif_sense_observe', 'arif_ops_measure', 'arif_memory_recall', 'arif_reply_compose'],
+  allowed_organs: ['arifOS', 'AAA', 'GEOX', 'WEALTH', 'WELL', 'A-FORGE'],
+  irreversibility_threshold: 0.05,
+  notes: 'OpenClaw bridge actor — DISPLAY_ONLY. See openclaw policy for full docs.',
 });
 
 // ── A2A DID Signature Verification (Gap 4 — Day 5) ──────────────────
