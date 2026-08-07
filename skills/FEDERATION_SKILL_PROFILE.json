@@ -312,6 +312,6 @@
       "archived_tier_not_loadable": 33,
       "alignment": "97/130 loadable (74%)"
     },
-    "action": "Moved 32 archived skills to archived_cold_storage tier. Removed identity-invariance (ghost). Added 2 orphaned archived to tracking."
+    "action": "Moved 32 archived skills to archived_cold_storage tier. identity-invariance registry entry removed but file still present at warga/constitutional/identity-invariance/SKILL.md (zen-2026-08-07: truth correction — was NOT removed). Added 2 orphaned archived to tracking."
   }
 }

@@ -120,5 +120,19 @@
   "timestamp": "2026-07-11T16:15:41.176433",
   "expires": "2026-10-11T00:00:00Z",
   "content_hash": "sha256:1b48a9f6e2d1d71c7f9368d69d49876b",
-  "status": "SIGNED"
+  "status": "SIGNED",
+  "_runtime_corrections": {
+    "forged": "2026-08-07",
+    "reason": "Kernel surface collapsed from 13 to 8 canonical tools (2026-06-22 alias migration). arif_verify and arif_compose are NOT registered MCP tools. The signed body above is preserved for audit provenance. Runtime consumers MUST use the mappings below.",
+    "verb_overrides": {
+      "arif_verify": "arif_judge",
+      "arif_compose": "arif_think"
+    },
+    "skill_overrides": {
+      "verify-gate": "arif_judge",
+      "know-math": "arif_think",
+      "know-language": "arif_think"
+    },
+    "audit_ref": "LOOP-2-F-01, session SEAL-047af60ba8904405"
+  }
 }
