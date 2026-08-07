@@ -19,10 +19,10 @@ class DelegatedSCTHandler:
     def issue_delegated_token(self, from_agent: str, to_agent: str, loop_id: str, turn_limit: int = 3) -> dict:
         """Issue a bounded, delegated SCT context token."""
         ts = int(time.time())
-        token_id = f"sct_v1.delegated_{from_agent}_to_{to_agent}_{loop_id}_{ts}"
+        token_id = f"act_v1.delegated_{from_agent}_to_{to_agent}_{loop_id}_{ts}"
         
         token_data = {
-            "sct_version": "sct_v1.delegated",
+            "sct_version": "act_v1.delegated",
             "token_id": token_id,
             "root_authority": self.root_authority,
             "delegated_by": from_agent,
@@ -58,7 +58,7 @@ class DelegatedSCTHandler:
         if token_data.get("root_authority") != self.root_authority:
             return False, "Invalid root authority"
             
-        if not token_data.get("token_id", "").startswith("sct_v1.delegated"):
+        if not token_data.get("token_id", "").startswith("act_v1.delegated"):
             return False, "Token ID format invalid"
             
         forbidden = token_data.get("forbidden_scope", [])

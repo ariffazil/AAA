@@ -23,7 +23,7 @@ from governance.tool_authority_registry import (
     resolve_tool_authority,
     strip_caller_action_class,
 )
-from governance.federation_sct import gate_tool_ingress
+from governance.federation_act import gate_tool_ingress
 
 
 @pytest.fixture(autouse=True)
@@ -83,10 +83,10 @@ class TestOrganDefaults:
 class TestCallerCannotWeaken:
     def test_strip_action_class(self):
         cleaned = strip_caller_action_class(
-            {"action_class": "OBSERVE", "session_token": "sct_v1.x", "actor_id": "a"}
+            {"action_class": "OBSERVE", "session_token": "act_v1.x", "actor_id": "a"}
         )
         assert "action_class" not in cleaned
-        assert cleaned["session_token"] == "sct_v1.x"
+        assert cleaned["session_token"] == "act_v1.x"
         assert cleaned["actor_id"] == "a"
 
     def test_caller_cannot_disable_sct_on_mutate(self):

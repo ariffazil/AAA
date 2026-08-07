@@ -10,7 +10,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from governance.sct_decision_event import (
+from governance.act_decision_event import (
     DECISION_EVENT_JSON_SCHEMA,
     append_decision_event,
     build_decision_event,
@@ -18,15 +18,15 @@ from governance.sct_decision_event import (
     extract_trace_id,
     new_trace_id,
 )
-from governance.federation_sct import gate_tool_ingress
+from governance.federation_act import gate_tool_ingress
 
 
 @pytest.fixture
 def event_dir(tmp_path, monkeypatch):
     d = tmp_path / "events"
-    monkeypatch.setenv("SCT_DECISION_EVENT_DIR", str(d))
+    monkeypatch.setenv("ACT_DECISION_EVENT_DIR", str(d))
     # force module to re-read default — append uses env at call time via Path in module
-    import governance.sct_decision_event as m
+    import governance.act_decision_event as m
 
     monkeypatch.setattr(m, "_DEFAULT_EVENT_DIR", d)
     return d
@@ -62,12 +62,12 @@ class TestDecisionEvent:
             actor_id="agent",
         )
         blob = ev.to_jsonl()
-        assert "sct_v1." not in blob
+        assert "act_v1." not in blob
         assert "Bearer" not in blob
         assert "sha256:deadbeef" in blob
         d = json.loads(blob)
         assert d["decision"] == "REJECT"
-        assert d["schema"] == "sct_decision_event.v1"
+        assert d["schema"] == "act_decision_event.v1"
 
     def test_append_jsonl(self, event_dir):
         ev = build_decision_event(
@@ -100,18 +100,18 @@ class TestGateEmitsDecision:
         assert rej.get("error") == "SCT_REQUIRED"
         assert rej.get("trace_id") == "trc-shared-65"
         # file written
-        files = list(event_dir.glob("sct_decisions_*.jsonl"))
+        files = list(event_dir.glob("act_decisions_*.jsonl"))
         assert files
         raw = files[0].read_text()
         assert "trc-shared-65" in raw
-        assert "sct_v1." not in raw
+        assert "act_v1." not in raw
         assert "REJECT" in raw
 
     def test_allow_observe_emits(self, event_dir):
         args = {"actor_id": "agent", "trace_id": "trc-obs-1"}
         rej = gate_tool_ingress("forge_status", args, organ="a-forge")
         assert rej is None
-        files = list(event_dir.glob("sct_decisions_*.jsonl"))
+        files = list(event_dir.glob("act_decisions_*.jsonl"))
         assert files
         assert "OK_OBSERVE_NO_SCT" in files[0].read_text()
         assert "ALLOW" in files[0].read_text()
