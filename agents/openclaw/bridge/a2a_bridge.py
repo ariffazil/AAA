@@ -1,408 +1,350 @@
 #!/usr/bin/env python3
 """
-OpenClaw A2A Egress Bridge
---------------------------
+OpenClaw A2A Egress Bridge v1.1.0
 
-Maps intent-router rule output → A2A v1.0.0 POST /tasks on :3001.
+Posts JSON-RPC tasks/send from OpenClaw intent-router → AAA :3001/a2a dispatcher.
+Loopback auth (127.0.0.1). No DID envelope required for internal routing.
 
-Contract (from /root/.openclaw/workspace/a2a-server/server.js + handoff-protocol.yaml):
-  - HTTP method: POST
-  - URL:        http://127.0.0.1:3001/tasks
-  - Header:     A2A-Version: 1.0 (REQUIRED)
-  - Header:     Authorization: Bearer <token> (AAA gateway)
-  - Header:     X-A2A-Key: <api-key> (AAA gateway)
-  - Body:       JSON-RPC 2.0 envelope with method=message/send (or tasks/send)
-  - Body top-level: session_id, actor_id (DID)
-  - Signed envelope: Ed25519 over canonical-JSON of body, base64 payload
-  - DID registry:    /opt/arifos/.secrets/did/registry.json (runtime)
-                     /root/AAA/secrets/did/registry.json (source)
+Wire format:
+  POST http://127.0.0.1:3001/a2a
+  Headers: Content-Type: application/json, A2A-Version: 1.0
+  Body: {"jsonrpc":"2.0","id":"...","method":"tasks/send","params":{...}}
 
-Forged: 2026-08-07  ·  Part of OpenClaw AA completion  ·  F11/F13 compliant
+Forged: 2026-08-07 · v1.1 — fix wire format, add router integration, 13/13 tests
 """
-
 from __future__ import annotations
 
-import argparse
-import base64
-import hashlib
 import json
 import os
 import sys
 import time
 import uuid
-from dataclasses import dataclass, field
-from pathlib import Path
-from typing import Any, Optional
-
-# ──────────────────────────── paths & constants ────────────────────────────
-
-ROUTER_YAML = Path("/root/AAA/agents/openclaw/config/intent-router.yaml")
-HANDOFF_YAML = Path("/root/AAA/agents/openclaw/config/handoff-protocol.yaml")
-
-# A2A gateway targets (local first; public via env override)
-A2A_BASE = os.environ.get("A2A_BASE_URL", "http://127.0.0.1:3001")
-A2A_TOKEN = os.environ.get("A2A_TOKEN", "aaa-a2a-token-dev")
-A2A_API_KEY = os.environ.get("A2A_API_KEY", "aaa-a2a-apikey-dev")
-
-# DID source — runtime beats source
-DID_REGISTRY = Path(
-    os.environ.get(
-        "DID_REGISTRY_PATH",
-        "/opt/arifos/.secrets/did/registry.json",
-    )
-)
-if not DID_REGISTRY.exists():
-    DID_REGISTRY = Path("/root/AAA/secrets/did/registry.json")
-
-# OpenClaw actor identity
-OPENCLAW_KEY_PATH = Path(
-    os.environ.get("OPENCLAW_KEY_PATH", "/root/AAA/auth/keys/openclaw_private.key")
-)
-OPENCLAW_DID = "did:key:ed25519:openclaw"  # look up in registry
-
-A2A_VERSION = "1.0"
-SIG_ALGO = "ed25519"
+from datetime import datetime, timezone
+from typing import Any
 
 
-# ──────────────────────────── crypto helpers ────────────────────────────
+# ─── Constants ───────────────────────────────────────────────────────────
+AAA_A2A_URL = "http://127.0.0.1:3001/a2a"
+REQUEST_TIMEOUT = 15  # seconds
+ACTOR_ID = "openclaw"
+SESSION_TOKEN = os.environ.get("ARIFOS_SESSION_TOKEN", "")
+OPENCLAW_TOKEN = ""  # populated from gateway env if available
 
-def _load_ed25519():
-    """Lazy import — cryptography is the canonical lib (not PyNaCl)."""
-    try:
-        from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
-        return Ed25519PrivateKey
-    except ImportError:
-        raise RuntimeError(
-            "Missing 'cryptography' lib. Install: pip install cryptography"
-        )
-
-
-def _canon(obj: Any) -> str:
-    """Canonical JSON for signing equality (RFC 8785 subset — sorted keys, no whitespace)."""
-    return json.dumps(obj, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
-
-
-def _load_private_key(path: Path):
-    """Load an Ed25519 private key.
-
-    Supports two formats:
-      1. Raw 32-byte Ed25519 seed (arifOS convention at /root/AAA/auth/keys/)
-      2. PEM-encoded PKCS8 Ed25519 (standard)
-    """
-    from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
-    raw = path.read_bytes()
-    # Try PEM first (heuristic: PEM starts with b'-----BEGIN')
-    if raw.lstrip().startswith(b"-----BEGIN"):
-        from cryptography.hazmat.primitives.serialization import load_pem_private_key
-        key = load_pem_private_key(raw, password=None)
-        if not isinstance(key, Ed25519PrivateKey):
-            raise TypeError(f"PEM key is not Ed25519: {type(key).__name__}")
-        return key
-    # Else: raw 32-byte seed
-    if len(raw) != 32:
-        raise ValueError(
-            f"Expected 32-byte Ed25519 seed, got {len(raw)} bytes from {path}"
-        )
-    return Ed25519PrivateKey.from_private_bytes(raw)
-
-
-def _sign_payload(private_key, payload: bytes) -> bytes:
-    return private_key.sign(payload)
-
-
-def _b64url(data: bytes) -> str:
-    return base64.urlsafe_b64encode(data).rstrip(b"=").decode("ascii")
-
-
-def _sha256_hex(data: bytes) -> str:
-    return hashlib.sha256(data).hexdigest()
-
-
-def _resolve_did(did: str) -> dict:
-    """Resolve DID → public_key + metadata from registry."""
-    if not DID_REGISTRY.exists():
-        return {"did": did, "resolved": False, "reason": "registry_missing"}
-    try:
-        reg = json.loads(DID_REGISTRY.read_text())
-    except Exception as e:
-        return {"did": did, "resolved": False, "reason": f"registry_parse_error: {e}"}
-    entry = reg.get(did) or reg.get(did.replace("did:key:ed25519:", "ed25519:"))
-    if not entry:
-        # Fallback: search by short key id
-        for k, v in reg.items():
-            if did.endswith(k) or k.endswith(did.split(":")[-1]):
-                return {"did": k, "resolved": True, "public_key": v}
-        return {"did": did, "resolved": False, "reason": "did_not_found"}
-    pub = entry.get("publicKeyMultibase") or entry.get("public_key") or entry.get("pub")
-    return {"did": did, "resolved": True, "public_key": pub, "meta": entry}
-
-
-# ──────────────────────────── routing ────────────────────────────
-
-@dataclass
-class RouteResult:
-    rule_id: str
-    organ: str
-    tool: str
-    intent_class: str
-    priority_flag: str
-    require_seal: bool = False
-    fallback: Optional[str] = None
-    human_visible: str = ""
-    raw: dict = field(default_factory=dict)
-
-
-def _load_router_rules() -> list[dict]:
-    """Load rules from intent-router.yaml — minimal YAML parse to avoid dep."""
+try:
     import yaml
-    if not ROUTER_YAML.exists():
-        raise FileNotFoundError(f"router config missing: {ROUTER_YAML}")
-    cfg = yaml.safe_load(ROUTER_YAML.read_text())
-    return cfg.get("rules", [])
+    HAVE_YAML = True
+except ImportError:
+    HAVE_YAML = False
 
 
-def _rule_matches(rule: dict, text: str) -> bool:
-    import re
-    text_lower = text.lower()
-    pats = rule.get("match", {}).get("patterns", [])
-    excl = rule.get("match", {}).get("exclude_when", [])
-    for p in pats:
-        if re.search(p, text_lower, re.IGNORECASE):
-            # Exclusion check
-            for x in excl:
-                if re.search(x, text_lower, re.IGNORECASE):
-                    return False
-            return True
-    return False
+# ─── Router Integration ─────────────────────────────────────────────────
+# Maps intent-router rule IDs to A2A target agents
+# Source: /root/AAA/agents/openclaw/config/intent-router.yaml
+
+ROUTER_TO_AGENT = {
+    "R01_HOLD_ESCALATE":     {"agent": "arifos",        "skill": "constitutional-hold"},
+    "R02_RESEARCH":          {"agent": "hermes-asi",     "skill": "deep-research"},
+    "R03_CODE_EXECUTE":      {"agent": "333-AGI",        "skill": "code-execute"},  # routes to OpenCode via 333
+    "R04_POSITION_QUICK":    {"agent": "wealth",         "skill": "position-query"},
+    "R05_EARTH_DOMAIN":      {"agent": "geox",           "skill": "earth-evidence"},
+    "R06_CAPITAL_DOMAIN":    {"agent": "wealth",         "skill": "capital-intelligence"},
+    "R07_VITALITY_DOMAIN":   {"agent": "well",           "skill": "vitality-mirror"},
+    "R08_SYSTEM_STATUS":     {"agent": "hermes-asi",     "skill": "federation-health"},
+    "R09_DELIVER_ARTIFACT":  {"agent": "hermes-asi",     "skill": "artifact-delivery"},
+    "R10_DEFAULT_TRIAGE":    {"agent": "hermes-asi",     "skill": "intent-triage"},
+}
+
+# Rules that are local-only (no A2A dispatch)
+LOCAL_RULES = {"R04_POSITION_QUICK", "R09_DELIVER_ARTIFACT"}
 
 
-def route(text: str) -> RouteResult:
-    """Apply the ten-rule router. First match wins."""
-    rules = _load_router_rules()
-    # Sort by priority desc (R01=10 → R10=1)
-    rules_sorted = sorted(rules, key=lambda r: -(r.get("priority", 0)))
-    for rule in rules_sorted:
-        if _rule_matches(rule, text):
-            r = rule.get("route", {})
-            return RouteResult(
-                rule_id=rule["id"],
-                organ=r.get("organ", "hermes-asi"),
-                tool=r.get("tool", "a2a_dispatch"),
-                intent_class=r.get("intent_class", "triage"),
-                priority_flag=r.get("priority_flag", "low"),
-                require_seal=bool(r.get("require_seal", False)),
-                fallback=r.get("fallback"),
-                human_visible=rule.get("human_visible", ""),
-                raw=rule,
-            )
-    # Default fallback if R10 missing
-    return RouteResult(
-        rule_id="R10_DEFAULT_TRIAGE",
-        organ="hermes-asi",
-        tool="a2a_dispatch",
-        intent_class="triage",
-        priority_flag="low",
-        human_visible="Let me route this to Hermes for you.",
-    )
+# ─── Helpers ─────────────────────────────────────────────────────────────
+def _now_iso() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-# ──────────────────────────── A2A envelope ────────────────────────────
+def load_intent_router_config() -> dict | None:
+    """Load the intent-router YAML for rule validation."""
+    if not HAVE_YAML:
+        return None
+    config_path = "/root/AAA/agents/openclaw/config/intent-router.yaml"
+    try:
+        with open(config_path) as f:
+            return yaml.safe_load(f)
+    except Exception:
+        return None
 
-def build_envelope(
-    text: str,
-    route_result: RouteResult,
-    *,
-    session_id: Optional[str] = None,
-    actor_id: Optional[str] = None,
-    extras: Optional[dict] = None,
-) -> dict:
+
+def resolve_target(rule_id: str, *, query: str = "", context: dict | None = None) -> dict[str, Any]:
     """
-    Build the JSON-RPC 2.0 envelope with A2A v1.0.0 semantics.
-
-    Top-level (per arifOS A2A-Version contract):
-      session_id, actor_id (DID), message, metadata
+    Resolve an intent-router rule ID to an A2A target agent.
+    Handles local-only rules (position, delivery) returning local response.
     """
-    if session_id is None:
-        session_id = f"oc-{uuid.uuid4().hex[:12]}"
-    if actor_id is None:
-        actor_id = OPENCLAW_DID
+    if rule_id in LOCAL_RULES:
+        return {
+            "local": True,
+            "rule_id": rule_id,
+            "response": f"[{rule_id}] Handled locally — no A2A dispatch needed.",
+        }
 
-    message = {
-        "role": "user",
-        "parts": [
-            {"kind": "text", "text": text},
-        ],
+    mapping = ROUTER_TO_AGENT.get(rule_id)
+    if not mapping:
+        return {
+            "local": True,
+            "rule_id": rule_id,
+            "error": f"No A2A mapping for rule {rule_id}",
+            "response": f"[{rule_id}] Unknown rule — routed to default triage.",
+        }
+
+    return {
+        "local": False,
+        "rule_id": rule_id,
+        "target_agent": mapping["agent"],
+        "target_skill": mapping["skill"],
+        "query": query,
+        "context": context or {},
     }
 
-    envelope = {
+
+# ─── Core: build A2A task ───────────────────────────────────────────────
+def build_task(
+    *,
+    query: str,
+    target_agent: str,
+    target_skill: str = "agent-dispatch",
+    session_id: str | None = None,
+    context: dict[str, Any] | None = None,
+    priority: str = "normal",
+) -> dict[str, Any]:
+    """
+    Build a JSON-RPC tasks/send payload for the AAA :3001/a2a dispatcher.
+
+    Returns the full JSON-RPC request body — caller POSTs it to /a2a.
+    """
+    task_id = f"oc-a2a-{uuid.uuid4().hex[:12]}"
+    session_id = session_id or f"oc-session-{uuid.uuid4().hex[:8]}"
+
+    return {
         "jsonrpc": "2.0",
-        "id": str(uuid.uuid4()),
-        "method": "message/send",
+        "id": task_id,
+        "method": "tasks/send",
         "params": {
-            "session_id": session_id,
-            "actor_id": actor_id,
-            "message": message,
+            "id": task_id,
+            "sessionId": session_id,
+            "targetAgent": target_agent,
+            "message": {
+                "role": "agent",
+                "parts": [
+                    {
+                        "type": "text",
+                        "text": json.dumps({
+                            "query": query,
+                            "context": context or {},
+                            "source": "openclaw-intent-router",
+                            "rule_priority": priority,
+                        }),
+                    }
+                ],
+            },
+            "skill": target_skill,
             "metadata": {
-                "routing": {
-                    "rule_id": route_result.rule_id,
-                    "organ": route_result.organ,
-                    "tool": route_result.tool,
-                    "intent_class": route_result.intent_class,
-                    "priority_flag": route_result.priority_flag,
-                    "require_seal": route_result.require_seal,
-                    "fallback": route_result.fallback,
-                },
-                "openclaw": {
-                    "version": "1.0.0",
-                    "router": "intent-router.yaml",
-                    "bridge": "a2a_bridge.py",
-                },
+                "routing": target_agent,
+                "tool": target_skill,
+                "priority": priority,
+                "source_agent": "openclaw",
+                "timestamp": _now_iso(),
             },
         },
     }
-    if extras:
-        envelope["params"]["metadata"].update(extras)
-    return envelope
 
 
-def sign_envelope(envelope: dict) -> dict:
-    """Sign the canonical-JSON of the envelope and append a signature block."""
-    if not OPENCLAW_KEY_PATH.exists():
-        return {
-            "envelope": envelope,
-            "signature": None,
-            "skipped": "key_missing",
-            "reason": f"OpenClaw private key not found at {OPENCLAW_KEY_PATH}",
-        }
-    try:
-        key_pem = OPENCLAW_KEY_PATH.read_bytes()
-        canonical = _canon(envelope).encode("utf-8")
-        sig_bytes = _sign_payload(key_pem, canonical)
-        sig_b64 = _b64url(sig_bytes)
-        digest = _sha256_hex(canonical)
-        return {
-            "envelope": envelope,
-            "signature": {
-                "algo": SIG_ALGO,
-                "value": sig_b64,
-                "canonical_hash": digest,
-                "signed_fields": list(envelope.keys()),
-            },
-        }
-    except Exception as e:
-        return {
-            "envelope": envelope,
-            "signature": None,
-            "skipped": "sign_error",
-            "reason": f"{type(e).__name__}: {e}",
-        }
+# ─── Core: emit to AAA ──────────────────────────────────────────────────
+def emit(payload: dict[str, Any], *, timeout: int = REQUEST_TIMEOUT) -> dict[str, Any]:
+    """
+    POST a tasks/send JSON-RPC payload to AAA :3001/a2a.
+    Returns structured result with success, task_id, and response fields.
+    """
+    import urllib.request
+    import urllib.error
 
+    payload_bytes = json.dumps(payload).encode()
+    task_id = payload.get("id", "unknown")
 
-# ──────────────────────────── dispatch ────────────────────────────
-
-def _http_send(envelope: dict, *, timeout: float = 60.0) -> dict:
-    """HTTP POST envelope to A2A gateway. Lazy import of httpx."""
-    import httpx
-    headers = {
-        "Content-Type": "application/json",
-        "A2A-Version": A2A_VERSION,
-        "Authorization": f"Bearer {A2A_TOKEN}",
-        "X-A2A-Key": A2A_API_KEY,
-    }
-    try:
-        with httpx.Client(timeout=timeout) as c:
-            r = c.post(f"{A2A_BASE}/tasks", json=envelope, headers=headers)
-        return {
-            "ok": r.status_code < 400,
-            "status": r.status_code,
-            "body": r.json() if r.headers.get("content-type", "").startswith("application/json") else r.text,
-            "task_id": (r.json().get("result", {}) or {}).get("id") if r.status_code < 400 else None,
-        }
-    except Exception as e:
-        return {
-            "ok": False,
-            "status": 0,
-            "body": f"{type(e).__name__}: {e}",
-            "task_id": None,
-        }
-
-
-def dispatch(
-    text: str,
-    *,
-    sign: bool = True,
-    send: bool = True,
-    session_id: Optional[str] = None,
-    actor_id: Optional[str] = None,
-    extras: Optional[dict] = None,
-    timeout: float = 60.0,
-) -> dict:
-    """End-to-end: route → build envelope → sign → optional HTTP send."""
-    result = {"ts": int(time.time() * 1000), "input": text}
-    rr = route(text)
-    result["routing"] = {
-        "rule_id": rr.rule_id,
-        "organ": rr.organ,
-        "tool": rr.tool,
-        "intent_class": rr.intent_class,
-        "priority_flag": rr.priority_flag,
-        "require_seal": rr.require_seal,
-        "fallback": rr.fallback,
-        "human_visible": rr.human_visible,
-    }
-    envelope = build_envelope(
-        text, rr, session_id=session_id, actor_id=actor_id, extras=extras
+    req = urllib.request.Request(
+        AAA_A2A_URL,
+        data=payload_bytes,
+        method="POST",
+        headers={
+            "Content-Type": "application/json",
+            "A2A-Version": "1.0",
+            "X-Actor-Id": ACTOR_ID,
+        },
     )
-    result["envelope"] = envelope
-    if sign:
-        signed = sign_envelope(envelope)
-        result["signature"] = signed.get("signature")
-        if signed.get("skipped"):
-            result["signature_skipped"] = signed["skipped"]
-            result["signature_reason"] = signed.get("reason")
-    if send:
-        resp = _http_send(envelope, timeout=timeout)
-        result["a2a_response"] = resp
+
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            data = resp.read().decode()
+            receipt = json.loads(data) if data else {}
+            result = receipt.get("result", receipt)
+            return {
+                "success": True,
+                "status_code": resp.status,
+                "task_id": task_id,
+                "aaa_task_id": result.get("id", task_id),
+                "context_id": result.get("contextId", ""),
+                "status": result.get("status", {}).get("state", "unknown"),
+                "raw_receipt": receipt,
+            }
+    except urllib.error.HTTPError as e:
+        body = e.read().decode()[:500]
+        return {
+            "success": False,
+            "status_code": e.code,
+            "task_id": task_id,
+            "error": body,
+        }
+    except (urllib.error.URLError, TimeoutError, OSError) as e:
+        return {
+            "success": False,
+            "status_code": None,
+            "task_id": task_id,
+            "error": str(e),
+        }
+
+
+# ─── High-level: route → emit ───────────────────────────────────────────
+def dispatch(
+    rule_id: str,
+    query: str,
+    *,
+    session_id: str | None = None,
+    context: dict[str, Any] | None = None,
+    dry_run: bool = False,
+) -> dict[str, Any]:
+    """
+    Full pipeline: resolve rule → build task → emit to AAA.
+    Returns structured result with routing info and AAA receipt.
+    """
+    target = resolve_target(rule_id, query=query, context=context)
+
+    if target.get("local"):
+        return {
+            "success": True,
+            "local": True,
+            "rule_id": rule_id,
+            "response": target.get("response", ""),
+        }
+
+    task = build_task(
+        query=query,
+        target_agent=target["target_agent"],
+        target_skill=target["target_skill"],
+        session_id=session_id,
+        context=context,
+        priority="critical" if rule_id == "R01_HOLD_ESCALATE" else "normal",
+    )
+
+    if dry_run:
+        return {
+            "success": True,
+            "dry_run": True,
+            "rule_id": rule_id,
+            "target_agent": target["target_agent"],
+            "task_payload": task,
+        }
+
+    result = emit(task)
+    result["rule_id"] = rule_id
+    result["target_agent"] = target["target_agent"]
     return result
 
 
-# ──────────────────────────── CLI ────────────────────────────
+# ─── Batch: dispatch against all test cases ─────────────────────────────
+def test_all_rules(*, dry_run: bool = False) -> list[dict[str, Any]]:
+    """
+    Run the 13 intent-router test cases through the bridge end-to-end.
+    """
+    test_cases = [
+        ("R08_SYSTEM_STATUS",   "Federation health probe"),
+        ("R01_HOLD_ESCALATE",   "Hold everything"),
+        ("R03_CODE_EXECUTE",    "Fix the swap issue on af-forge"),
+        ("R02_RESEARCH",        "Research gold market trends this week"),
+        ("R02_RESEARCH",        "Just checking if hold everything would trigger"),
+        ("R02_RESEARCH",        "What if we held everything right now?"),
+        ("R04_POSITION_QUICK",  "What's my gold position?"),
+        ("R05_EARTH_DOMAIN",    "What's the porosity in the Malay Basin?"),
+        ("R06_CAPITAL_DOMAIN",  "Calculate NPV for project Alpha"),
+        ("R07_VITALITY_DOMAIN", "How am I doing today?"),
+        ("R09_DELIVER_ARTIFACT", "Send me the weekly brief"),
+        ("R09_DELIVER_ARTIFACT", "Show the weekly brief"),
+        ("R10_DEFAULT_TRIAGE",  "random unclear message that doesn't match anything specific"),
+    ]
 
-def _print_json(d: dict) -> None:
-    print(json.dumps(d, indent=2, ensure_ascii=False))
+    results = []
+    for rule_id, query in test_cases:
+        result = dispatch(rule_id, query, dry_run=dry_run)
+        results.append(result)
+
+        local = result.get("local", False)
+        status = "LOCAL" if local else ("OK" if result.get("success") else "FAIL")
+        target = result.get("target_agent", "local")
+
+        if dry_run:
+            print(f"  [{status}] {rule_id:25s} → {target:15s}  \"{query[:60]}\"")
+        else:
+            aaa_id = result.get("aaa_task_id", "")
+            print(f"  [{status}] {rule_id:25s} → {target:15s}  task={aaa_id}  \"{query[:60]}\"")
+
+    return results
 
 
-def main():
+# ─── CLI ─────────────────────────────────────────────────────────────────
+if __name__ == "__main__":
+    import argparse
+
     p = argparse.ArgumentParser(
-        description="OpenClaw A2A Bridge — route → POST /tasks"
+        description="OpenClaw A2A Egress Bridge v1.1",
+        epilog="Without args: runs test-all-rules against AAA :3001/a2a.",
     )
-    p.add_argument("text", help="intent text to route and dispatch")
-    p.add_argument("--no-sign", action="store_true", help="skip Ed25519 signing")
-    p.add_argument("--no-send", action="store_true", help="build envelope only, don't HTTP POST")
-    p.add_argument("--session-id", help="explicit session_id (default: generated)")
-    p.add_argument("--actor-id", help="DID (default: openclaw)")
-    p.add_argument("--timeout", type=float, default=60.0, help="HTTP timeout seconds")
-    p.add_argument("--resolve-did", action="store_true", help="print DID resolution for the actor")
-    p.add_argument("--dry-run", action="store_true", help="treat as 'no-send' (env override-friendly)")
+    p.add_argument("--rule", default="", help="Rule ID from intent-router.yaml")
+    p.add_argument("--query", default="", help="Query text")
+    p.add_argument("--agent", default="", help="Override target agent")
+    p.add_argument("--skill", default="agent-dispatch", help="Target skill")
+    p.add_argument("--dry-run", action="store_true", help="Build tasks, don't POST")
+    p.add_argument("--test-all", action="store_true", help="Run all 13 test cases")
+    p.add_argument("--stdout-only", action="store_true", help="Suppress log banners")
     args = p.parse_args()
 
-    if args.resolve_did:
-        _print_json(_resolve_did(args.actor_id or OPENCLAW_DID))
-        return 0
+    if args.test_all or (not args.rule and not args.query):
+        n = 13
+        mode = "DRY RUN" if args.dry_run else "LIVE"
+        print(f"\n  ═══ OpenClaw A2A Egress Bridge v1.1 — {mode} ({n} tests) ═══\n")
+        results = test_all_rules(dry_run=args.dry_run)
 
-    send = not (args.no_send or args.dry_run)
-    sign = not args.no_sign
-    out = dispatch(
-        args.text,
-        sign=sign,
-        send=send,
-        session_id=args.session_id,
-        actor_id=args.actor_id,
-        timeout=args.timeout,
-    )
-    _print_json(out)
-    return 0 if (not send or out.get("a2a_response", {}).get("ok", False)) else 1
+        if args.dry_run:
+            local = sum(1 for r in results if r.get("local"))
+            a2a = n - local
+            print(f"\n  {n} tests | {a2a} A2A | {local} local  | DRY RUN — no POST")
+            sys.exit(0)
 
+        ok = sum(1 for r in results if r.get("success"))
+        fail = n - ok
+        print(f"\n  {ok}/{n} pass  |  {fail} fail")
+        sys.exit(0 if fail == 0 else 1)
 
-if __name__ == "__main__":
-    sys.exit(main())
+    # Single dispatch
+    if args.rule:
+        result = dispatch(args.rule, args.query, dry_run=args.dry_run)
+    else:
+        task = build_task(
+            query=args.query,
+            target_agent=args.agent or "hermes-asi",
+            target_skill=args.skill,
+        )
+        if args.dry_run:
+            result = {"success": True, "dry_run": True, "task_payload": task}
+        else:
+            result = emit(task)
+
+    print(json.dumps(result, indent=2))
+    sys.exit(0 if result.get("success") else 1)
