@@ -11,13 +11,17 @@
 ### Cryptographic secret distribution
 
 ```
-/opt/arifos/app/.signing_key      mode 640   owner: root   group: arifos
-/opt/arifos/app/.arifos_secrets/  mode 750   owner: root   group: arifos
+/opt/arifos/.secrets/             mode 750   owner: root   group: arifos-auth
+├── did/registry.json              DID → Ed25519 public keys (verified by arifOS authority)
+└── extra.env                      per-organ env overrides
 ```
 
-`arifos` group = federation trust circle (`root`, `arifos`, `nobody`, `ariffazil`).
-**Never use `/etc/environment` for cryptographic secrets** — mode 644 is world-readable.
-For HMAC session secrets, pass `ARIFOS_SESSION_SECRET_FILE=/opt/arifos/app/.signing_key`.
+`arifos-auth` group = federation trust circle (`root`, `arifos`, `nobody`, `ariffazil`).
+**Never use `/etc/environment`** for cryptographic secrets — mode 644 is world-readable.
+
+For DID-signed envelopes (A2A / arif_seal), the registry is the canonical source — no key file path needed in the agent. Ed25519 signing is exposed via the kernel MCP `arif_seal` tool, not via direct file access.
+
+For agents dispatching A2A tasks, use `/root/AAA/auth/keys/<organ>_private.key` (mode 600, owner root) — key files in `/root/AAA/auth/keys/` are the canonical signing keys for cross-process dispatch.
 
 ### Permission repair discipline
 
