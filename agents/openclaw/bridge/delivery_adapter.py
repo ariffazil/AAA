@@ -135,13 +135,20 @@ def format_telegram(payload: dict) -> list[str]:
     body = body.rstrip() + DOSSIER_FOOTER
 
     # Build header with rule + organ (read from metadata if present)
-    meta = (result.get("metadata") or {}).get("routing") or {}
+    meta = (result.get("metadata") or {}).get("routing")
     if meta:
-        header = (
-            f"*Rule:* `{_esc(meta.get('rule_id', '?'))}`  "
-            f"*→*  `{_esc(meta.get('organ', '?'))}`  "
-            f"*•*  `{_esc(meta.get('intent_class', '?'))}`\n\n"
-        )
+        if isinstance(meta, dict):
+            header = (
+                f"*Rule:* `{_esc(meta.get('rule_id', '?'))}`  "
+                f"*→*  `{_esc(meta.get('organ', meta.get('tool', '?')))}`  "
+                f"*•*  `{_esc(meta.get('intent_class', '?'))}`\n\n"
+            )
+        else:
+            rule_id = result.get("id", "?")
+            header = (
+                f"*Agent:* `{_esc(str(meta))}`  "
+                f"*•*  `task={_esc(str(rule_id))}`\n\n"
+            )
     else:
         header = ""
 
