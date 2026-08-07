@@ -108,7 +108,7 @@ servers:
   memory:
     agent: any
     type: npx
-    package: @modelcontextprotocol/server-memory
+    package: "@modelcontextprotocol/server-memory"
     enabled: true
     auto_start: false
     antigravity:
@@ -118,14 +118,14 @@ servers:
   sequential-thinking:
     agent: any
     type: npx
-    package: @modelcontextprotocol/server-sequential-thinking
+    package: "@modelcontextprotocol/server-sequential-thinking"
     enabled: true
     auto_start: false
 
   filesystem:
     agent: any
     type: npx
-    package: @modelcontextprotocol/server-filesystem
+    package: "@modelcontextprotocol/server-filesystem"
     args: [C:\ariffazil, C:\Users\User\Downloads]
     enabled: true
     auto_start: false
@@ -135,7 +135,7 @@ servers:
   github-official:
     agent: any
     type: npx
-    package: @github/github-mcp-server
+    package: "@github/github-mcp-server"
     env:
       GITHUB_PERSONAL_ACCESS_TOKEN: ${GITHUB_PERSONAL_ACCESS_TOKEN}
     enabled: true
@@ -154,7 +154,7 @@ servers:
   playwright:
     agent: any
     type: npx
-    package: @playwright/mcp
+    package: "@playwright/mcp"
     env:
       PLAYWRIGHT_HEADLESS: "true"
     enabled: true
@@ -163,7 +163,7 @@ servers:
   desktop-commander:
     agent: any
     type: npx
-    package: @wonderwhy-er/desktop-commander@latest
+    package: "@wonderwhy-er/desktop-commander@latest"
     args: [--no-onboarding]
     enabled: true
     auto_start: false
@@ -171,7 +171,7 @@ servers:
   brave-search:
     agent: any
     type: npx
-    package: @modelcontextprotocol/server-brave-search
+    package: "@modelcontextprotocol/server-brave-search"
     env:
       BRAVE_API_KEY: ${BRAVE_API_KEY}
     enabled: true
@@ -180,7 +180,7 @@ servers:
   context7:
     agent: any
     type: npx
-    package: @upstash/context7-mcp
+    package: "@upstash/context7-mcp"
     env:
       CONTEXT7_API_KEY: ${CONTEXT7_API_KEY}
     enabled: true
@@ -189,7 +189,7 @@ servers:
   perplexity:
     agent: any
     type: npx
-    package: @perplexity-ai/mcp-server
+    package: "@perplexity-ai/mcp-server"
     env:
       PERPLEXITY_API_KEY: ${PERPLEXITY_API_KEY}
     enabled: true
@@ -207,7 +207,7 @@ servers:
   fetch:
     agent: any
     type: npx
-    package: @modelcontextprotocol/server-fetch
+    package: "@modelcontextprotocol/server-fetch"
     enabled: true
     auto_start: false
 
@@ -286,6 +286,46 @@ servers:
     serverUrl: https://mapscodeassist.googleapis.com/mcp
     enabled: false
     auto_start: false
+  # === MiniMax Media MCP — multimodal generation (video / image / TTS / music) ===
+  # Live on 127.0.0.1:18100. Upstream: api.minimax.io.
+  # Authority: SUPPORT class. Billable per request — F13 sovereign consent required.
+  # Port 18090 default collides with hermes bridges; live instance runs on 18100
+  # via /opt/minimax-mcp-media/run_v2.py (overrides default run_sse.py hardcoding).
+  # See /root/AAA/federation/organs.yaml#minimax-media for SOT entry.
+  minimax_media:
+    agent: any
+    type: local
+    command: python
+    args:
+      - /opt/minimax-mcp-media/run_v2.py
+    cwd: /opt/minimax-mcp-media
+    env:
+      PYTHONPATH: /opt/minimax-mcp-media
+      FASTMCP_HOST: "127.0.0.1"
+      FASTMCP_PORT: "18100"
+      MINIMAX_API_HOST: "${MINIMAX_API_HOST}"
+      MINIMAX_API_KEY: "${MINIMAX_API_KEY}"
+      MINIMAX_MCP_BASE_PATH: "/tmp/minimax-media-output"
+      MINIMAX_API_RESOURCE_MODE: "url"
+    enabled: true
+    auto_start: false
+    approval_policy: on-demand   # F13 sovereign consent per billable run
+    mcp_endpoint: "http://127.0.0.1:18100/mcp"
+    transport: streamable-http
+    tools_exposed:
+      - generate_video
+      - query_video_generation
+      - text_to_image
+      - text_to_audio
+      - list_voices
+      - voice_clone
+      - voice_design
+      - play_audio
+      - music_generation
+    cost_posture: billable_per_request
+    organ_sot_ref: "/root/AAA/federation/organs.yaml#minimax-media"
+    verified: "2026-08-07 (Arif — sado chest-flex demo, MiniMax-Hailuo-02 I2V, 5.64s 720x720)"
+
 
 # Approval tiers by agent
 approval_tiers:
@@ -327,3 +367,4 @@ vault_paths:
   claude: null
   codex: null
   default: C:\ariffazil\arifOS\VAULT999
+
