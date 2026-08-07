@@ -59,6 +59,6 @@ Sovereign veto bypass. Mutable infrastructure drift. Premature optimisation. Spe
 
 > When this domain is invoked, defer to the `arifos` kernel for constitutional
 > gating before answering. Every claim must carry an evidence tag (OBS / DER / INT /
-> SPEC) and a confidence cap ≤ 0.90.
+> SPEC) and a confidence cap ≤ 0.95 (F7: Ω₀ ∈ [0.03,0.05] → cap ∈ [0.95,0.97]).
 
 *Forged under CIV-33 orchestration · 2026-07-12 · domain-atlas/code/950/*
