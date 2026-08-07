@@ -456,6 +456,25 @@ function createEnvelopeValidator(options = {}) {
 
     if (!result.ok) {
       logFn(`[ENVELOPE HOLD] ${toolName}: ${result.reason}`);
+
+      // Security receipt — non-sensitive structured audit log
+      // F11 AUDIT: every rejected envelope creates a traceable receipt
+      try {
+        const receipt = {
+          ts: new Date().toISOString(),
+          event: 'ENVELOPE_REJECTED',
+          reason: result.reason,
+          actor_id: envelope.actor_id || 'unknown',
+          from_did: envelope.from_did || null,
+          tool: toolName,
+          ip: req.ip || req.socket?.remoteAddress || 'unknown',
+          correlation_id: envelope.correlation_id || req.body?.id || null,
+        };
+        const fs = require('fs');
+        const receiptPath = '/root/forge_work/security-receipts.jsonl';
+        fs.appendFileSync(receiptPath, JSON.stringify(receipt) + '\n');
+      } catch (_) { /* fail-open on receipt write — never block rejection for logging */ }
+
       return res.status(403).json({
         jsonrpc: '2.0',
         id: req.body?.id || 0,
@@ -646,12 +665,15 @@ function verifyEd25519(message, signatureHex, publicKeyHex) {
     const pubKey = Buffer.from(publicKeyHex, 'hex');
     if (pubKey.length !== 32) return false;
 
-    // Ed25519 DER SPKI prefix: 302a300506032b6570032100
+    // Ed25519 DER SPKI prefix: 302a300506032b6570032100 (1.3.101.112 + raw key)
     const derPrefix = Buffer.from('302a300506032b6570032100', 'hex');
     const derKey = Buffer.concat([derPrefix, pubKey]);
 
+    // Explicitly create a KeyObject — auto-detection from raw DER Buffer
+    // is unreliable across Node.js versions for Ed25519.
+    const keyObj = crypto.createPublicKey({ key: derKey, format: 'der', type: 'spki' });
     const sig = Buffer.from(signatureHex, 'hex');
-    return crypto.verify(null, message, derKey, sig);
+    return crypto.verify(null, message, keyObj, sig);
   } catch {
     return false;
   }
