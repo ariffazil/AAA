@@ -1,0 +1,236 @@
+# AAA Federation Contract — Minimal Constitution
+# Status: DRAFT — awaiting sovereign seal (888)
+# Authored: 2026-08-07 | v0.1.1 (amended per sovereign reformulation)
+# Path: /root/AAA/federation/contracts/AAA_FEDERATION_CONTRACT_v0.1.1.yaml
+
+version: 0.1.2
+contract: AAA_FEDERATION_CONTRACT
+predecessor: GENESIS/000_KERNEL_CANON.md
+invariant_count: 16
+amendment_log:
+  - v0.1.0 (2026-08-07): initial 15 invariants
+  - v0.1.1 (2026-08-07): load-bearing 4 marked; INV-03/11/15 reformulated; meta-purpose added; preconditions_for_seal section added
+  - v0.1.2 (2026-08-07): INV-16 added (Reality Before Ratification); E-22 audit gate formalized; load-bearing count 4 → 5
+
+# ============================================================================
+# META-PURPOSE
+# ============================================================================
+# This contract is not a rulebook. It is an Institution Compiler.
+# It does not say "Kimi must be honest" — it says "If Kimi is not honest,
+# the receipt chain will show where." Mechanism, not culture.
+# ============================================================================
+
+meta_purpose: |
+  Institution Compiler — mechanisms that detect violations, not rules that request compliance.
+  Cultural compliance depends on memory (and memory fails).
+  Constitutional compliance depends on runtime (and runtime is testable).
+
+# ============================================================================
+# LOAD-BEARING INVARIANTS (4)
+# ============================================================================
+# These are the pillars. The other 11 reinforce them.
+# Removing any load-bearing invariant collapses the contract.
+# ============================================================================
+
+load_bearing_invariants: [INV-01, INV-03, INV-11, INV-15, INV-16]
+reinforcement_invariants: [INV-02, INV-04, INV-05, INV-06, INV-07, INV-08, INV-09, INV-10, INV-12, INV-13, INV-14]
+
+# ============================================================================
+# INVARIANTS
+# ============================================================================
+
+invariants:
+
+  # ===== F13 SOVEREIGN =====
+  - id: INV-10
+    statement: "Human sovereign retains veto. First-SEAL-wins unless sovereign reverses."
+    enforces: F13 SOVEREIGN
+    consequence: VOID on violation
+    source: arifOS canon
+    tier: reinforcement
+
+  # ===== F1 AMANAH =====
+  - id: INV-01
+    statement: "Spawn transfers work, never authority."
+    enforces: F1, F4
+    consequence: HOLD
+    source: sovereign formulation 2026-08-07
+    tier: load-bearing
+    rationale: |
+      Antidote to feudal-agentism. Authority is bound to role, not to agent.
+      Subagents inherit scope, not power.
+
+  - id: INV-09
+    statement: "Capability ceilings override prompt instructions. Cannot do X is stronger than don't do X."
+    enforces: F1
+    consequence: tool blocked regardless of prompt
+    source: Hermes A2 archetypes, Kimi af-* ceilings
+    tier: reinforcement
+
+  - id: INV-12
+    statement: "Reversible-first; irreversible only under 888_HOLD."
+    enforces: F1
+    consequence: HOLD
+    source: arifOS canon
+    tier: reinforcement
+
+  - id: INV-14
+    statement: "Enforcement gaps fail closed, not open."
+    enforces: F1, F11
+    consequence: action denied by default
+    source: FAIL-CLOSED principle
+    tier: reinforcement
+
+  # ===== F11 AUDITABILITY =====
+  - id: INV-02
+    statement: "All risky actions require a traceable judgment path."
+    enforces: F1, F11
+    consequence: HOLD + warning
+    source: spawn_protocol audit 2026-08-07
+    tier: reinforcement
+
+  - id: INV-03
+    statement: "T2+ actions require traceable judgment path; T3 actions require SEAL. Governance is measured per spawn, never solely per task."
+    enforces: F1, F11
+    consequence: HOLD on missing judgment path; VOID on missing T3 SEAL
+    source: sovereign reformulation 2026-08-07 (T2/T3 escalation) + original per-spawn invariant
+    tier: load-bearing
+    rationale: |
+      Connects action to accountability. Without escalation, receipts are history, not governance.
+      T1 actions reversible. T2 require documented judgment. T3 require explicit SEAL.
+
+  - id: INV-07
+    statement: "Per-spawn telemetry is mandatory."
+    enforces: F11
+    consequence: governance leak
+    source: Kimi spawn_protocol
+    tier: reinforcement
+
+  - id: INV-08
+    statement: "Aggregate telemetry is derived-only. Aggregate may summarize but may not replace spawn-level audit."
+    enforces: F4, F11
+    consequence: aggregate cannot be used as governance proof
+    source: sovereign audit 2026-08-07
+    tier: reinforcement
+
+  - id: INV-11
+    statement: "Enforcement that depends on memory has already failed. Runtime must enforce, not model recall. Every action produces a receipt."
+    enforces: F1, F11
+    consequence: action denied if runtime check absent
+    source: sovereign reformulation 2026-08-07 (runtime > memory) + original receipt rule
+    tier: load-bearing
+    rationale: |
+      Cultural compliance depends on memory. Memory fails.
+      Constitutional compliance depends on runtime. Runtime is testable.
+      Hooks, not reminders. Code-level, not prompt-level.
+
+  # ===== F2 TRUTH + F9 ANTIHANTU =====
+  - id: INV-04
+    statement: "Unknown is a valid output."
+    enforces: F9
+    consequence: VOID on forced answer
+    source: Kimi spawn_protocol A3 unknown field
+    tier: reinforcement
+
+  - id: INV-05
+    statement: "Every claim requires provenance (claim + source + transformation)."
+    enforces: F2, F11
+    consequence: HOLD
+    source: Kimi spawn_protocol A6
+    tier: reinforcement
+
+  # ===== F4 CLARITY =====
+  - id: INV-13
+    statement: "Identity is by role, runtime-agnostic."
+    enforces: F4, F11
+    consequence: identity collision → resolve at AAA registry
+    source: naming principle 2026-08-07
+    tier: reinforcement
+
+  - id: INV-15
+    statement: "Runtime must not violate the contract without leaving a receipt."
+    enforces: F1, F11
+    consequence: silent violation = constitutional failure
+    source: sovereign reformulation 2026-08-07
+    tier: load-bearing
+    rationale: |
+      The constitutional gate between Constitution State and Federation State.
+      If runtime can violate without trace, contract is decorative, not constitutive.
+      This is the final test of AAA Constitutional Federation.
+
+  # ===== STRUCTURAL =====
+  - id: INV-06
+    statement: "Flat tree unless explicitly ratified. No nesting by default."
+    enforces: F1, topology discipline
+    consequence: HOLD
+    source: three-harness convergence (OpenCode, Kimi, Hermes)
+    tier: reinforcement
+
+  # ===== INV-16: REALITY BEFORE RATIFICATION =====
+  - id: INV-16
+    statement: "Reality Before Ratification. No enforcement claim may be sealed until a failed-path test has been executed."
+    enforces: F1, F2, F11
+    consequence: enforcement claim without failed-path evidence = HOLD
+    source: sovereign formulation 2026-08-07 (EUREKA-22 implementation)
+    tier: load-bearing
+    rationale: |
+      Test happy path AND failure path. For every assertion
+      "judge gate works" — test "judge gate fails".
+      AAA becomes strong when tested from the failure direction.
+      Enforcement claims without failed-path evidence are decorative.
+
+# ============================================================================
+# PRECONDITIONS FOR SEAL
+# ============================================================================
+# The contract can only be invoked as constitutional law after these hold.
+# ============================================================================
+
+preconditions_for_seal:
+  - documentation_alignment: docs match reality (F4) — moved from prior INV-15
+  - per_harness_convergence: contract loaded by all active harnesses (3/3)
+  - runtime_verification: Constitutional Penetration Test PASSED for active harnesses
+
+# ============================================================================
+# DERIVATION TREE
+# ============================================================================
+
+derivation:
+  contract: AAA_FEDERATION_CONTRACT_v0.1.1
+  protocols_to_forge:
+    - SPAWN_CANON_v0.1      # derives from INV-01, 03, 07, 08, 09
+    - FED_ROUTING_v0.1      # derives from F11 telemetry + balance probe
+    - A2A_AAA_v0.1          # derives from INV-13 + archetype ceilings
+  active_implementations:
+    - OpenCode agents/*.md (5 wired)
+    - Kimi Code af-* family (7 archetypes)
+    - Hermes delegation-context.md
+  dormant_treaty_members:
+    - Codex, Copilot CLI, Claude Code, Cursor, Gemini CLI, Aider, Qwen Code
+
+# ============================================================================
+# STATE TRANSITION
+# ============================================================================
+
+state_transition:
+  from: Constitution State
+    triggers:
+      - "Constitutional Penetration Test PASSED on all active harnesses"
+      - "Documentation alignment verified"
+      - "Per-harness convergence confirmed"
+  to: Federation State
+    meaning: |
+      Constitution State = contract exists; invariants are defined.
+      Federation State = runtime cannot violate without trace.
+      The transition is the proof of governance, not the existence of rules.
+
+# ============================================================================
+# STATUS AS OF 2026-08-07
+# ============================================================================
+
+status:
+  identity_alignment:    partial     # 3/9 active harnesses have full identity
+  authority_alignment:   mismatch    # no per-harness ceiling enforcement verified
+  receipts_alignment:    format-defined
+  enforcement_alignment: not-verified
+  state: Constitution State
+  next_audit: Constitutional Penetration Test (gate to Federation State)

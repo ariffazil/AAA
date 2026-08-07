@@ -1,0 +1,87 @@
+# AAA Federation Envelope — Canonical Schema
+# Authority: AAA_FEDERATION_CONTRACT_v0.1 (INV-01, INV-02, INV-03, INV-14)
+# Date: 2026-08-07
+# Version: 0.1.0
+# Status: DRAFT — pending ratification
+
+# Purpose: single canonical envelope all AAA federation agents must carry.
+# Without envelope: spawn denied (K-04), T2/T3 blocked (K-03).
+
+envelope_version: "0.1.0"
+
+fields:
+  identity:
+    agent_id: { type: string, required: true }
+    harness:
+      type: string
+      enum: [hermes, opencode, kimi, openclaw, codex, agy, claude, copilot, future]
+      required: true
+    session_id: { type: string, required: true }
+
+  authority:
+    ceiling:
+      type: string
+      enum: [OBSERVE_ONLY, DRAFT_ONLY, EXECUTE_REVERSIBLE, EXECUTE_AFTER_SEAL, DISPATCH_ONLY, JUDGMENT_ONLY]
+      required: true
+    role:
+      type: string
+      enum: [SENSE, THINK, VERIFY, JUDGE, EXECUTE, WITNESS, ROUTE, RED_TEAM, CLERK, SCOUT]
+      required: true
+
+  classification:
+    tier:
+      type: string
+      enum: [OBSERVE, T1, T2, T3]
+      required: true
+    reversal:
+      type: string
+      enum: [YES, NO, PARTIAL]
+      required: true
+
+  constraints:
+    type: list
+    required: true
+    default:
+      - no-self-modification
+      - fail-closed
+      - receipt-required
+      - envelope-required
+
+  judgment:
+    verdict:
+      type: string
+      enum: [SEAL, HOLD, VOID, NONE]
+      required: true
+    judge_id: { type: string, required: false }
+    judge_url: { type: string, required: false }
+    judged_at: { type: datetime, required: false }
+
+  receipt:
+    receipt_id: { type: string, required: true }
+    parent_receipt: { type: string, required: false }
+    vault_path: { type: string, required: true }
+    emitted_at: { type: datetime, required: true }
+
+  transport:
+    layer:
+      type: string
+      enum: [MCP, A2A, DIRECT, RPC]
+      required: true
+    target: { type: string, required: false }
+
+# Inheritance rules (parent to child)
+inheritance:
+  child_id: "<parent_agent_id>.<child_role>.<n>"
+  ceiling: "child.ceiling <= parent.ceiling"
+  constraints: "union(parent.constraints, spawn.constraints)"
+  parent_receipt: "child.receipt.parent_receipt must reference parent.receipt.receipt_id"
+
+# Gate behaviour when fields missing
+gate:
+  missing_envelope: "DENY — no envelope = ungoverned"
+  missing_identity: "DENY — no identity"
+  missing_ceiling: "DENY — no ceiling = unrestricted"
+  missing_tier: "DEFAULT OBSERVE (fail-closed)"
+  missing_verdict_t2t3: "BLOCK — T2/T3 requires verdict"
+  missing_receipt_id: "DENY — no receipt"
+  missing_parent_receipt_root_only: "ALLOW"
