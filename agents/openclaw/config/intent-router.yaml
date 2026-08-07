@@ -94,8 +94,29 @@ rules:
       priority_flag: medium
       require_signed_snapshot: true
       max_freshness_seconds: 300
+      # Strict semantic boundary — R04 returns a snapshot, never executes.
+      permitted_output:
+        - signed_snapshot
+        - timestamp
+        - source_reference
+        - pre-approved_thresholds
+        - confidence_band
+      forbidden_actions:
+        - order_placement
+        - portfolio_mutation
+        - leverage_change
+        - execution_recommendation_without_human_review
+      require_receipt: true
+      on_stale: route_to_wealth_or_hermes
     human_visible: "Checking your position from signed snapshot."
     note: "LOCAL ONLY if signed snapshot is fresh (<5min). Otherwise fallback to WEALTH."
+    # The display layer MUST include provenance + refusal-style footer.
+    delivery_format:
+      - "Source: <verifier> @ <timestamp>"
+      - "Snapshot: <field> = <value>"
+      - "Thresholds: <pre-approved levels>"
+      - "Confidence: <band>"
+      - "Not execution advice — reply DETAILS for scenarios and sources"
 
   - id: R05_EARTH_DOMAIN
     priority: 7
