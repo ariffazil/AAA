@@ -172,6 +172,13 @@ function extractEnvelope(params) {
     authority: params.authority || { source: 'fallback' },
     risk: params.risk || { tier: 'T0', action_class: 'OBSERVE' },
     receipts: params.receipts || {},
+    // A2A security fields — extracted from flattened params (OpenClaw bridge path)
+    from_did: params.from_did || null,
+    signature: params.signature || null,
+    expires_at: params.expires_at || null,
+    key_id: params.key_id || null,
+    message_id: params.message_id || null,
+    correlation_id: params.correlation_id || null,
     legacy_wrap: true,
     // Structural Coherence Transmission — EUREKA v2026.06.05
     // Governance architecture is signal compression. Envelopes that carry
