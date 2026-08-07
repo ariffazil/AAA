@@ -1,10 +1,18 @@
-# 🌱 INIT — arifOS Agentic Bootstrap
-## Attestation · Abduction · Agentic · Init→Seal→RSI→Reality
+# 🌱 INIT — arifOS Agentic Bootstrap · POINTER
 
-> **Forged:** 2026-08-05 by 333-AGI (Δ MIND) under F13 SOVEREIGN directive
-> **Supersedes:** INIT v3.0 (2026-07-17) — archived at `archive/INIT_v3_2026-07-17.md`
-> **Architecture:** 12 orthogonal layers + 2 reference sections. Each layer self-contained. No cross-contamination.
-> **Principle:** Patterns over recipes. Pointers over hardcoded values. The loop is the institution.
+> **CANONICAL OPERATIONAL PROTOCOL (v5.0):** MCP `prompts/get(name="/init")` on arifOS `:8088`
+> **FILESYSTEM SOURCE:** `/root/.config/opencode/command/init.md`
+> **FILESYSTEM FALLBACK:** `/root/forge_work/2026-08-07-collapsed-init-seal/COLLAPSED_PROTOCOL.md`
+> **Supersedes:** INIT v4.0 (2026-08-05) — archived at `forge_work/2026-08-07-collapsed-init-seal/snapshots/`
+> **Status:** POINTER — the 12-layer doctrine below is REFERENCE ONLY.
+> **THIS FILE IS NO LONGER THE CANONICAL OPERATIONAL PROTOCOL.**
+>
+> The operational protocol was collapsed from 21 steps to 9 (4 init + 5 seal) on 2026-08-07
+> under F13 SOVEREIGN architectural review. Lane detection moved to init. Governance Profile
+> axis added (OBSERVE/BUILD/MUTATE/DEPLOY). ATLAS333/EUREKA777/FLAME/Graphiti demoted
+> to intent-driven optional plugins. SCT token handoff gap fixed.
+>
+> **To load the current protocol:** `prompts/get(name="/init")` on arifOS :8088.
 > **Doctrine:** DITEMPA BUKAN DIBERI — Forged, Not Given
 
 ---

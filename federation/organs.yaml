@@ -338,6 +338,72 @@ components:
       drift_verdict: STABLE
       fq: 0.887
 
+  - id: minimax-media
+    class: SUPPORT
+    display_name: MiniMax Media MCP
+    role: multimodal_generation
+    authority_ceiling: OBSERVE_AND_GENERATE
+    port: 18100
+    unit: minimax-media-mcp.service
+    source_path: /opt/minimax-mcp-media
+    runtime: python-3.12-fastmcp
+    mcp_port: 18100
+    public_mcp: null
+    upstream_provider: MiniMax Cloud API (api.minimax.io)
+    upstream_models:
+      video:
+        - MiniMax-Hailuo-02          # best quality, 768P/1080P, 6s/10s
+        - I2V-01-Director            # image-to-video with camera instructions
+        - I2V-01-live                # live-action image-to-video
+        - T2V-01-Director            # text-to-video with camera instructions
+        - T2V-01                     # text-to-video base
+      image: wan2.7-image/pro
+      audio: qwen-audio-3.0-tts-plus
+      music: suno-style music generation
+    owned_domains:
+      - video_generation            # text-to-video + image-to-video
+      - image_generation            # text-to-image (wan2.7)
+      - text_to_speech              # 200+ voices incl. voice_clone + voice_design
+      - music_generation            # suno-like prompt + lyrics → song
+    forbidden_domains:
+      - constitutional_judgment
+      - engineering_execution
+      - mutation_authorization
+      - capital_allocation
+    interfaces:
+      health: n/a (MCP streamable-http)
+      mcp_endpoint: /mcp
+      transport: streamable-http
+    cost_posture: billable_per_request
+    rate_limits: per-MiniMax-cloud-quota
+    tools_exposed:
+      - generate_video
+      - query_video_generation
+      - text_to_image
+      - text_to_audio
+      - list_voices
+      - voice_clone
+      - voice_design
+      - play_audio
+      - music_generation
+    notes:
+      - Port 18090 collides with hermes bridges; live instance runs on 18100 via run_v2.py
+      - Default .env FASTMCP_PORT=18090 must be overridden to 18100 before launch
+      - minimax-media.service (REST mode, js) and minimax-media-mcp.service (Python) are both available
+      - Costs billed per API call — F13 sovereign consent required for billable runs
+    live_probe_2026_08_07:
+      status: active
+      port: 18100
+      launched_by: "Arif via Hermes (sado chest-flex demo)"
+      tools_count: 9
+      verified_models:
+        - MiniMax-Hailuo-02
+        - I2V-01-Director
+        - T2V-01
+        - wan2.7-image/pro
+        - suno-music
+      sample_run: sado_chest_real.mp4 (5.64s, 720x720, 765KB)
+
   - id: vault999
     class: MEMORY
     display_name: VAULT999
@@ -608,6 +674,7 @@ port_observability:
     - {port: 8787, organ: "OpenClaw gateway", binding: "127.0.0.1"}
     - {port: 7073, organ: "arifFlow", binding: "127.0.0.1"}
     - {port: 7074, organ: "FED router", binding: "127.0.0.1"}
+    - {port: 18100, organ: "MiniMax Media MCP", binding: "127.0.0.1"}
     - {port: 18901, organ: "FLAME", binding: "127.0.0.1"}
   organ_ports_tailscale:
     - {port: 3001, organ: "AAA", binding: "100.64.0.2 (tailnet)"}
