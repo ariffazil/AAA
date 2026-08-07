@@ -266,7 +266,7 @@ function validateEnvelope(envelope, toolName) {
     }
   }
 
-  // 3. Identity check
+  // 4. Identity check
   // FALLBACK policy: anonymous allowed for OBSERVE/PREPARE (Green/Yellow bands)
   // MUTATE/ATOMIC requires real identity
   const CANONICAL_ACTORS = new Set([
@@ -281,6 +281,7 @@ function validateEnvelope(envelope, toolName) {
     'wealth',
     'well',
     'openclaw',
+    'openclaw:ingress',
     'forge',
     '777-forge',
     'anonymous',
@@ -308,7 +309,25 @@ function validateEnvelope(envelope, toolName) {
     return result;
   }
 
-  // 4. Authority check for mutating actions
+  // 5. A2A DID signature verification — enforced on all remote envelopes
+  //    F2 TRUTH: the receiver MUST verify, not trust the sender's claim.
+  if (envelope.from_did) {
+    const sigResult = verifyA2ASignature(envelope);
+    if (!sigResult.ok) {
+      result.reason = `A2A signature verification failed: ${sigResult.reason}`;
+      result.action_taken = 'HOLD';
+      return result;
+    }
+    // Bind verified identity to envelope
+    envelope._verified_did = sigResult.did;
+    envelope._verified_organ = sigResult.organId;
+  } else if (!isAnonymous && (acl === 'MUTATE' || acl === 'ATOMIC')) {
+    // Non-anonymous MUTATE/ATOMIC MUST carry a DID
+    result.reason = 'MUTATE/ATOMIC requires from_did for cryptographic identity binding';
+    return result;
+  }
+
+  // 6. Authority check for mutating actions
   const auth = envelope.authority || { source: 'unknown' };
   if ((acl === 'MUTATE' || acl === 'ATOMIC') &&
       (auth.source === 'unknown' || auth.source === 'fallback')) {
