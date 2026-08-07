@@ -79,6 +79,16 @@ def _soft_split(text: str, max_len: int) -> list[str]:
             # Single para too long → split on lines
             if len(para) > max_len:
                 for line in para.split("\n"):
+                    # Hard-split a single line longer than max_len (never mid-word when avoidable)
+                    while len(line) > max_len:
+                        cut = line.rfind(" ", 0, max_len)
+                        if cut < max_len // 2:  # no usable word boundary → hard cut
+                            cut = max_len
+                        head, line = line[:cut], line[cut:].lstrip()
+                        if cur:
+                            chunks.append(cur)
+                            cur = ""
+                        chunks.append(head)
                     if len(cur) + len(line) + 1 > max_len:
                         if cur:
                             chunks.append(cur)
