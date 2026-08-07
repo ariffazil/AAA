@@ -1,0 +1,257 @@
+# OpenClaw Ten-Rule Intent Router v1.0.0
+# Canonical routing config for AAA federation A2A dispatch
+# Forged: 2026-08-07 under F13 SOVEREIGN directive
+# Authority: DISPLAY_ONLY — this file routes; it never mutates
+
+router:
+  name: "OpenClaw Intent Router"
+  version: "1.0.0"
+  mode: deterministic          # regex rules, no LLM
+  default_route: hermes-triage # unknown → Hermes classifies
+  idempotency: true            # same input → same route always
+
+# ── THE TEN RULES ──────────────────────────────────────
+# Rules evaluated top-to-bottom. First match wins.
+# Priority: specificity over generality.
+
+rules:
+
+  - id: R01_HOLD_ESCALATE
+    priority: 10
+    match:
+      patterns:
+        - '\b(hold|stop|pause|tahan|sabar)\s+(everything|all|semua)\b'
+        - '\b888[_ ]?HOLD\b'
+        - '\bemergency\b'
+        - '\boverride\b'
+      exclude_when:
+        - 'just checking'
+        - 'what if'
+        - 'hypothetical'
+    route:
+      organ: arifos
+      tool: arif_judge
+      intent_class: escalation
+      priority_flag: critical
+      ttl_seconds: 30
+    human_visible: "Routing to arifOS for constitutional hold."
+    note: "F13 override path. Must be explicit — not triggered by hypotheticals."
+
+  - id: R02_RESEARCH
+    priority: 8
+    match:
+      patterns:
+        - '\b(research|analyze|audit|investigate|synthesize)\b'
+        - '\b(what|how|why|explain|compare|contrast)\b.*\b(market|gold|oil|portfolio|risk|scenario)\b'
+        - '\bapex\s*audit\b'
+        - '\bdeep\s*(dive|research)\b'
+        - '\b(just\s+)?(checking|wondering|what\s+if).*\b(hold|held|holding|trigger|override)\b'
+        - '\bhypothetical\b'
+      exclude_when:
+        - 'my\s+(position|portfolio|gold|exposure|balance)'
+        - 'send.*(weekly\s*)?brief'
+        - 'show.*(weekly\s*)?brief'
+    route:
+      organ: hermes-asi
+      tool: a2a_dispatch
+      intent_class: research
+      priority_flag: high
+      require_context: true
+    human_visible: "Routing to HERMES ASI for research and synthesis."
+    note: "Hermes owns cognition. All 'what is X' with domain depth goes here."
+
+  - id: R03_CODE_EXECUTE
+    priority: 9
+    match:
+      patterns:
+        - '\b(fix|patch|refactor|deploy|build|commit|push)\b'
+        - '\b(code|repo|git|branch|merge|PR|pull.request)\b'
+        - '\b(service|systemd|restart|start|stop)\s+\w+'
+        - '\b(docker|container|image|compose)\b'
+        - '\b(test|lint|typecheck|compile)\b'
+    route:
+      organ: a-forge
+      tool: forge_execute
+      intent_class: mutation
+      priority_flag: high
+      require_seal: true
+      blast_radius_check: true
+    human_visible: "Routing to A-FORGE / OpenCode for execution."
+    note: "All code and infra changes go through A-FORGE with SEAL gate."
+
+  - id: R04_POSITION_QUICK
+    priority: 9
+    match:
+      patterns:
+        - '\b(what.?s?\s+my|check\s+my|show\s+me\s+my)\b.*\b(position|portfolio|gold|exposure|balance)\b'
+        - '\b(position|portfolio)\s+(status|check|snapshot)\b'
+      exclude_when:
+        - '\b(audit|analysis|scenario|forecast|deep)\b'
+    route:
+      organ: local-cache
+      fallback: wealth
+      intent_class: query
+      priority_flag: medium
+      require_signed_snapshot: true
+      max_freshness_seconds: 300
+    human_visible: "Checking your position from signed snapshot."
+    note: "LOCAL ONLY if signed snapshot is fresh (<5min). Otherwise fallback to WEALTH."
+
+  - id: R05_EARTH_DOMAIN
+    priority: 7
+    match:
+      patterns:
+        - '\b(seismic|basin|petrophysics|geology|subsurface|reservoir|formation|prospect)\b'
+        - '\b(well|log|core|porosity|permeability|saturation)\b'
+        - '\b(GEOX|earth|stratigraphy|fault|horizon|depth)\b'
+    route:
+      organ: geox
+      tool: geox_evidence_synthesize
+      intent_class: domain_evidence
+      priority_flag: medium
+    human_visible: "Routing to GEOX for Earth evidence."
+    note: "All geological/petrophysical queries. GEOX computes; arifOS judges."
+
+  - id: R06_CAPITAL_DOMAIN
+    priority: 7
+    match:
+      patterns:
+        - '\b(NPV|IRR|EMV|DCF|cash.flow|valuation|discount)\b'
+        - '\b(market|FX|MYR|USD|commodity|gold|oil|gas).*(price|rate|index)\b'
+        - '\b(portfolio|allocation|risk|kelly|markowitz)\b'
+        - '\b(inflation|interest.rate|yield|bond)\b'
+    route:
+      organ: wealth
+      tool: capital_market
+      intent_class: domain_evidence
+      priority_flag: medium
+    human_visible: "Routing to WEALTH for capital intelligence."
+    note: "WEALTH computes; arifOS judges. Never allocates."
+
+  - id: R07_VITALITY_DOMAIN
+    priority: 6
+    match:
+      patterns:
+        - '\b(sleep|fatigue|readiness|vitality|stress)\b'
+        - '\b(how\s+(am\s+)?I\s+(doing|feeling))\b'
+        - '\b(my\s+)?(health|wellness)\b'
+        - '\b(WELL|homeostasis|dignity|maruah)\b'
+      exclude_when:
+        - '\b(federation|system|machine|server|service|organ)\s+health\b'
+    route:
+      organ: well
+      tool: well_assess_homeostasis
+      intent_class: domain_evidence
+      priority_flag: low
+    human_visible: "Routing to WELL for vitality mirror."
+    note: "REFLECT_ONLY. WELL mirrors; arifOS judges."
+
+  - id: R08_SYSTEM_STATUS
+    priority: 7
+    match:
+      patterns:
+        - '\b(status|alive|up|down)\b.*\b(organ|service|federation|machine|VPS)\b'
+        - '\b(how.?s|check)\s+(the\s+)?(system|machine|server|federation)\b'
+        - '\b(federation|system|machine)\s+(health|status)\b'
+        - '\b(probe|doctor|diagnostic)\b'
+      exclude_when:
+        - 'my\s+(health|sleep|fatigue|stress)'
+    route:
+      organ: aaa
+      tool: aaa_organ_probe
+      intent_class: query
+      priority_flag: low
+    human_visible: "Checking federation health."
+    note: "System status is local-safe. No organ mutation."
+
+  - id: R09_DELIVER_ARTIFACT
+    priority: 9
+    match:
+      patterns:
+        - '\b(send|deliver|push|notify)\b.*\b(report|brief|summary|artifact|PDF)\b'
+        - '\b(where.?s|show)\s+(the\s+)?(report|brief|file|artifact)\b'
+        - '\bweekly\s*brief\b'
+    route:
+      organ: local-cache
+      fallback: hermes-asi
+      intent_class: delivery
+      priority_flag: low
+    human_visible: "Retrieving your artifact."
+    note: "Check local cache first. Fallback to Hermes generation."
+
+  - id: R10_DEFAULT_TRIAGE
+    priority: 1
+    match:
+      patterns:
+        - '.*'                     # catch-all
+    route:
+      organ: hermes-asi
+      tool: a2a_dispatch
+      intent_class: triage
+      priority_flag: low
+      require_context: true
+    human_visible: "Let me route this to Hermes for you."
+    note: "Default: Hermes triages unknown intents. Safe fallback."
+
+# ── ROUTING TABLE (quick reference) ────────────────────
+routing_table:
+  research:          { organ: hermes-asi,  ceiling: COMPUTE_ONLY }
+  code_execute:      { organ: a-forge,     ceiling: EXECUTE_AFTER_SEAL }
+  position_query:    { organ: wealth,      ceiling: COMPUTE_ONLY, local_cache: true }
+  earth_domain:      { organ: geox,        ceiling: COMPUTE_ONLY }
+  capital_domain:    { organ: wealth,      ceiling: COMPUTE_ONLY }
+  vitality_domain:   { organ: well,        ceiling: REFLECT_ONLY }
+  system_status:     { organ: aaa,         ceiling: DISPLAY_ONLY }
+  escalation:        { organ: arifos,      ceiling: JUDGE_ONLY }
+  delivery:          { organ: local-cache, ceiling: DISPLAY_ONLY, fallback: hermes-asi }
+  default_triage:    { organ: hermes-asi,  ceiling: COMPUTE_ONLY }
+
+# ── ANTI-PATTERNS ──────────────────────────────────────
+# Rules that would be WRONG to add:
+#   - Keyword-only matching (needs exclusion patterns)
+#   - Routing code execution without SEAL gate
+#   - Answering position queries without signed snapshot
+#   - Sending "hold" to anything other than arifOS
+#   - Letting OpenClaw generate instead of route
+
+# ── TEST CASES ─────────────────────────────────────────
+tests:
+  - input: "Research gold market trends this week"
+    expected_rule: R02_RESEARCH
+    expected_organ: hermes-asi
+  - input: "Fix the swap issue on af-forge"
+    expected_rule: R03_CODE_EXECUTE
+    expected_organ: a-forge
+  - input: "What's my gold position?"
+    expected_rule: R04_POSITION_QUICK
+    expected_organ: local-cache
+  - input: "Deep audit of my XAUUSD portfolio with scenario analysis"
+    expected_rule: R02_RESEARCH
+    expected_organ: hermes-asi
+  - input: "Hold everything"
+    expected_rule: R01_HOLD_ESCALATE
+    expected_organ: arifos
+  - input: "How's the federation health?"
+    expected_rule: R08_SYSTEM_STATUS
+    expected_organ: aaa
+  - input: "What's the porosity in the Malay Basin?"
+    expected_rule: R05_EARTH_DOMAIN
+    expected_organ: geox
+  - input: "Calculate NPV for project Alpha"
+    expected_rule: R06_CAPITAL_DOMAIN
+    expected_organ: wealth
+  - input: "Send me the weekly brief"
+    expected_rule: R09_DELIVER_ARTIFACT
+    expected_organ: local-cache
+  - input: "Just checking if hold everything would trigger"
+    expected_rule: R02_RESEARCH
+    expected_organ: hermes-asi
+  - input: "What if we held everything right now?"
+    expected_rule: R02_RESEARCH
+    expected_organ: hermes-asi
+  - input: "How am I doing today?"
+    expected_rule: R07_VITALITY_DOMAIN
+    expected_organ: well
+  - input: "random unclear message that doesn't match anything specific"
+    expected_rule: R10_DEFAULT_TRIAGE
+    expected_organ: hermes-asi
