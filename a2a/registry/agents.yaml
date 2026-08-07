@@ -369,3 +369,16 @@ agents:
   push_notifications: false
   openclaw_target: continue-cli
   notes: Continue CLI — open-source coding harness. 12 skills.
+- agent_id: openclaw-edge-2026-08
+  card_path: agents/_external/openclaw-edge-2026-08/agent-card.json
+  binding_type: local-cli
+  trust_level: internal
+  auth_scheme: ed25519-signature
+  streaming: false
+  push_notifications: true
+  openclaw_target: openclaw-gateway
+  notes: OpenClaw EDGE warga — agentic mesh router, DISPLAY_ONLY ceiling. Signs
+    A2A envelopes with did:arif:openclaw. Routes from Hermes/cron to downstream
+    organs. Forged 2026-08-07 by 333-AGI / Hermes-ASI under F13 SOVEREIGN directive
+    (Apex Audit v2 → openclaw-mesh-bridge skill → AAA canonicalization). Key
+    fingerprint: see /root/AAA/secrets/did/registry.json did:arif:openclaw.

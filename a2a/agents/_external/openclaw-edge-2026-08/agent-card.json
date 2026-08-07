@@ -1,0 +1,59 @@
+{
+  "agent_id": "openclaw-edge-2026-08",
+  "name": "OpenClaw EDGE Warga",
+  "version": "1.0.0",
+  "did": "did:arif:openclaw",
+  "public_key_hex": "cd0d9338766d1f9786f023b04e85598c021fe9055b103768b5ecd7688358cb8d",
+  "public_key_fingerprint": "sha256:3cee209e4d8ee4c8479629344d10609d29bb501b21d8f95264940f100dceeec4",
+  "algorithm": "Ed25519",
+  "role": "agentic_mesh_router",
+  "ceiling": "DISPLAY_ONLY",
+  "binding": {
+    "type": "local-cli",
+    "openclaw_target": "openclaw-gateway",
+    "port": 18789
+  },
+  "capabilities": [
+    "a2a_dispatch",
+    "session_continuity",
+    "channel_aggregation",
+    "task_queue",
+    "result_aggregation"
+  ],
+  "forbidden": [
+    "constitutional_judgment",
+    "engineering_execution",
+    "human_face",
+    "cognitive_research",
+    "memory_curation",
+    "skills_library",
+    "vault_write"
+  ],
+  "receives_from": ["hermes", "cron_jobs", "system_alerts"],
+  "routes_to": [
+    "333-agi",
+    "opencode",
+    "555-asi",
+    "arifos",
+    "geox",
+    "wealth",
+    "well"
+  ],
+  "partner_organ": "hermes",
+  "envelope_format": {
+    "transport": "JSON-RPC 2.0 over HTTP",
+    "method": "tasks.dispatch",
+    "a2a_version": "1.0",
+    "signature": "Ed25519 over canonical JSON of params"
+  },
+  "operational": {
+    "max_retry": 3,
+    "retry_backoff_ms": 2000,
+    "queue_path": "/root/forge_work/openclaw-a2a-queue.jsonl",
+    "receipt_path": "/root/forge_work/openclaw-a2a-receipts.jsonl"
+  },
+  "forged_by": "333-AGI / Hermes-ASI",
+  "forged_on": "2026-08-07",
+  "ratified_under": "F13 SOVEREIGN directive (Apex Audit v2 → openclaw-mesh-bridge skill → AAA canonicalization)",
+  "doctrine_doc": "/root/.openclaw/workspace/ops/hermes/plugins/openclaw-mesh-bridge/SKILL.md"
+}
