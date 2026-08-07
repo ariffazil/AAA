@@ -1,0 +1,187 @@
+{
+  "_meta": {
+    "status": "PARTIAL_SEAL — DRAFT_REVIEW_PASSED, awaiting full SEAL",
+    "drafted": "2026-08-07",
+    "source": "Kimi spawn_protocol_v0.1.0 + Hermes golden test + Arif PARTIAL-SEAL directive",
+    "purpose": "Canonical enum source for cross-harness spawn classification. All 3 harnesses (Hermes delegation, OpenCode 333-AGI task tool, Kimi af-forge task tool) MUST use these enums.",
+    "version": "0.1.0"
+  },
+  "spawn_reason": [
+    "verification",
+    "criticism",
+    "synthesis",
+    "reconnaissance",
+    "domain_analysis",
+    "implementation",
+    "refactor"
+  ],
+  "risk_tier": {
+    "T1": {
+      "label": "read-only observation",
+      "judge_required": false,
+      "auto_execute": true,
+      "note": "Must be minority tier. Per-session T1 cap TBD after baseline."
+    },
+    "T2": {
+      "label": "recommendation that may influence decision",
+      "judge_required": true,
+      "auto_execute": false,
+      "note": "Route to arif_judge before integration."
+    },
+    "T3": {
+      "label": "mutation, structural change, or constitutional amendment",
+      "judge_required": true,
+      "auto_execute": false,
+      "note": "REQUIRES arif_judge SEAL before integration."
+    }
+  },
+  "archetype_ceilings": {
+    "Hermes": {
+      "SCOUT": {
+        "ceiling": "OBSERVE_ONLY",
+        "max_confidence": 0.7
+      },
+      "CRITIC": {
+        "ceiling": "OBSERVE_ONLY",
+        "max_confidence": 0.7
+      },
+      "SYNTHESIZER": {
+        "ceiling": "OBSERVE_ONLY",
+        "max_confidence": 0.75
+      },
+      "AUDITOR": {
+        "ceiling": "OBSERVE_ONLY",
+        "max_confidence": 0.8
+      }
+    },
+    "OpenCode_333AGI": {
+      "333-AGI": {
+        "ceiling": "EXECUTE_AFTER_SEAL",
+        "max_confidence": 0.9
+      },
+      "555-ASI": {
+        "ceiling": "OBSERVE_ONLY",
+        "max_confidence": 0.8
+      },
+      "555-ASI-VISION": {
+        "ceiling": "OBSERVE_ONLY",
+        "max_confidence": 0.8
+      },
+      "888-APEX": {
+        "ceiling": "JUDGMENT_ONLY",
+        "max_confidence": 0.9
+      },
+      "image-analyzer": {
+        "ceiling": "OBSERVE_ONLY",
+        "max_confidence": 0.75
+      },
+      "dispatch": {
+        "ceiling": "DISPATCH_ONLY",
+        "max_confidence": 0.8
+      }
+    },
+    "Kimi_af": {
+      "af-explore": {
+        "ceiling": "OBSERVE_ONLY",
+        "max_confidence": 0.6
+      },
+      "af-reviewer": {
+        "ceiling": "OBSERVE_ONLY",
+        "max_confidence": 0.7
+      },
+      "af-plan": {
+        "ceiling": "DRAFT_ONLY",
+        "max_confidence": 0.75
+      },
+      "af-worker": {
+        "ceiling": "EXECUTE_REVERSIBLE",
+        "max_confidence": 0.8
+      },
+      "af-fix": {
+        "ceiling": "EXECUTE_REVERSIBLE",
+        "max_confidence": 0.85
+      },
+      "af-coordinator": {
+        "ceiling": "DISPATCH_ONLY",
+        "max_confidence": 0.85
+      },
+      "af-forge": {
+        "ceiling": "EXECUTE_AFTER_SEAL",
+        "max_confidence": 0.9
+      }
+    }
+  },
+  "judgment_coverage_formula": {
+    "formula": "min(apex_verdicts_sought / max(risky_actions_taken, 1), 1.0)",
+    "telemetry_fields": {
+      "mutations_taken": "int — count of T2/T3 mutations executed",
+      "recommendations_made": "int — count of T2+ recommendations surfaced",
+      "conclusions_reached": "int — count of interpretive conclusions drawn",
+      "risky_actions_taken": "int — mutations_taken + recommendations_made + conclusions_reached",
+      "apex_verdicts_sought": "int — explicit arif_judge calls before action (restricted to T2+T3)",
+      "judgment_coverage": "float — clamped to [0.0, 1.0]",
+      "judgment_debt": "int — risky_actions_taken - apex_verdicts_sought (raw, not clamped)"
+    },
+    "note": "Kimi's original formula (verdicts / max(actions,1)) clamped to [0,1] per Arif directive. coverage > 1.0 is physically impossible; coverage = 1.0 means all risky actions judged. coverage < threshold = constitutionally insolvent."
+  },
+  "parallel_spawn_rule": {
+    "allowed": true,
+    "max_parallel": 3,
+    "per_spawn_telemetry": {
+      "required": true,
+      "per_spawn_fields": [
+        "mutations_taken",
+        "recommendations_made",
+        "conclusions_reached",
+        "risky_actions_taken",
+        "apex_verdicts_sought",
+        "judgment_coverage",
+        "judgment_debt",
+        "seal_status"
+      ],
+      "aggregate_role": "dashboard_only",
+      "note": "Aggregate telemetry is derived from per-spawn fields. Never canonical."
+    },
+    "aggregate_seal": true,
+    "note": "Per Arif PARTIAL-SEAL directive: 'BENARKAN parallel spawn. Tetapi max_parallel: N dan telemetry per spawn wajib.' Aggregate telemetry sealed via forge_vault after all spawns complete."
+  },
+  "archetype_confidence_caps": {
+    "af-explore": 0.6,
+    "af-reviewer": 0.7,
+    "af-plan": 0.75,
+    "af-worker": 0.8,
+    "af-fix": 0.85,
+    "af-coordinator": 0.85,
+    "af-forge": 0.9,
+    "SCOUT": 0.7,
+    "CRITIC": 0.7,
+    "SYNTHESIZER": 0.75,
+    "AUDITOR": 0.8,
+    "_note": "Derived from Arif PARTIAL-SEAL + Kimi protocol. Lower ceilings for read-only archetypes, higher for execution. Non-negotiable."
+  },
+  "seal_requirements": {
+    "before_seal": [
+      "clamp judgment_coverage to [0,1] in formula",
+      "declare confidence ceiling per archetype (this file serves as canonical source)",
+      "separate mutation/recommendation/conclusion telemetry fields",
+      "preserve flat-tree invariant (no nesting, max_spawn_depth=1)",
+      "require per-spawn telemetry for parallel af-* execution",
+      "add federation_invariant: governance measured per spawn, never solely per task"
+    ],
+    "seal_authority": "F13 SOVEREIGN (Arif)",
+    "current_status": "PARTIAL_SEAL — architecture reviewed, implementation unverified"
+  },
+  "federation_invariant": {
+    "rule": "Governance is measured per spawn, never solely per task.",
+    "aggregate_derived_only": true,
+    "aggregate_seal_forbidden": false,
+    "note": "Aggregate telemetry may summarize for dashboard, but may not replace spawn-level telemetry. Per Arif PARTIAL-SEAL+ directive 2026-08-07.",
+    "source_spawn": "spawn_1 (coverage: 1.0) + spawn_2 (coverage: 0.4) + spawn_3 (coverage: 1.0) = aggregate (derived_only: true, coverage: 0.8). Spawn #2 is governance leak; aggregate hides it. Per-spawn for audit, aggregate for dashboard."
+  },
+  "seal_status": {
+    "SEALED": "Constitutional seal applied. Receipt stored in VAULT999.",
+    "UNSEALED_INFRA": "Receipt valid but vault unavailable. Infrastructure failure, not constitutional failure. Retry seal when vault recovers. Do not treat as governance leak.",
+    "FAILED_VALIDATION": "Receipt rejected by constitutional validation. Governance leak — must be investigated.",
+    "note": "Do not punish governance for infrastructure. Separate vault downtime from seal failure."
+  }
+}
