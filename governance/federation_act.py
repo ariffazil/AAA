@@ -1,5 +1,5 @@
 """
-federation_sct.py — Cross-organ SCT verification helper
+federation_act.py — Cross-organ SCT verification helper
 ═══════════════════════════════════════════════════════════════════════
 Forged 2026-07-14 · SCT v1 wiring steps 4-7 closure
 
@@ -33,7 +33,7 @@ logger = logging.getLogger("federation.sct")
 ARIFOS_BASE = os.getenv("ARIFOS_BASE_URL", "http://localhost:8088")
 ARIFOS_TIMEOUT_S = float(os.getenv("ARIFOS_SCT_TIMEOUT_S", "2.0"))
 
-# Token shape: sct_v1.<base64url>.<hmac>
+# Token shape: act_v1.<base64url>.<hmac>
 SCT_RE = re.compile(r"^sct_v1\.[A-Za-z0-9_\-]+(?:\.[A-Za-z0-9_\-]+)?$")
 
 
@@ -45,7 +45,7 @@ def _fingerprint(token: str) -> str:
 @dataclass
 class TokenSource:
     """One location where a token was found."""
-    location: str       # e.g. "arguments.sct", "header.x-arifos-sct"
+    location: str       # e.g. "arguments.sct", "header.x-arifos-act"
     fingerprint: str    # sha256 prefix
     length: int
 
@@ -128,7 +128,7 @@ def extract_sct_from_call(
       2. arguments._meta.{sct, session_token, arifos_sct}
       3. explicit meta dict
       4. headers X-ArifOS-SCT / X-Session-Token / X-ArifOS-Session-Token
-      5. headers Authorization: Bearer <sct_v1.*|arifos.v1.*>
+      5. headers Authorization: Bearer <act_v1.*|arifos.v1.*>
 
     Returns TokenExtraction with:
       - ABSENT: zero tokens found
@@ -186,7 +186,7 @@ def extract_sct_from_call(
     # 4. HTTP headers
     if headers:
         lower = {str(k).lower(): v for k, v in headers.items()}
-        for key in ("x-arifos-sct", "x-session-token", "x-arifos-session-token"):
+        for key in ("x-arifos-act", "x-session-token", "x-arifos-session-token"):
             val = lower.get(key)
             if isinstance(val, str) and val.strip():
                 token = val.strip()
@@ -204,7 +204,7 @@ def extract_sct_from_call(
         auth = lower.get("authorization") or ""
         if isinstance(auth, str) and auth.lower().startswith("bearer "):
             token = auth[7:].strip()
-            if token.startswith("sct_v1.") or token.startswith("arifos.v1."):
+            if token.startswith("act_v1.") or token.startswith("arifos.v1."):
                 fp = _fingerprint(token)
                 sources.append(TokenSource(
                     location="header.authorization",
@@ -282,12 +282,12 @@ def verify_federation_sct(
             error_code="SCT_MISSING",
             error_message="No SCT provided in call or _meta envelope",
         )
-    # Format validation — sct_v1.<base64url>.<hmac> or arifos.v1.*
-    if not (sct.startswith("sct_v1.") or sct.startswith("arifos.v1.")):
+    # Format validation — act_v1.<base64url>.<hmac> or arifos.v1.*
+    if not (sct.startswith("act_v1.") or sct.startswith("arifos.v1.")):
         return SCTVerification(
             ok=False,
             error_code="SCT_MALFORMED",
-            error_message=f"SCT does not match sct_v1.<b64>.<hmac> shape: {sct[:24]}...",
+            error_message=f"SCT does not match act_v1.<b64>.<hmac> shape: {sct[:24]}...",
         )
 
     # Ask arifOS kernel to verify via arif_init(mode=validate).
@@ -527,7 +527,7 @@ def _emit_gate_decision(
 ) -> str:
     """PR3: emit decision event; return trace_id. Never raises into gate path."""
     try:
-        from governance.sct_decision_event import emit_decision
+        from governance.act_decision_event import emit_decision
     except ImportError:  # pragma: no cover
         try:
             from sct_decision_event import emit_decision  # type: ignore

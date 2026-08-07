@@ -23,7 +23,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from governance.federation_sct import (
+from governance.federation_act import (
     SCTVerification,
     _extract_sct_from_meta,
     _validate_format,
@@ -73,7 +73,7 @@ def _patch_post(monkeypatch: pytest.MonkeyPatch, response: _FakeResponse) -> dic
         seen["timeout"] = timeout
         return response
 
-    monkeypatch.setattr("governance.federation_sct.httpx.post", _fake_post)
+    monkeypatch.setattr("governance.federation_act.httpx.post", _fake_post)
     return seen
 
 
@@ -83,10 +83,10 @@ def _patch_post_error(monkeypatch: pytest.MonkeyPatch, exc: Exception) -> None:
     def _boom(*args: Any, **kwargs: Any) -> None:
         raise exc
 
-    monkeypatch.setattr("governance.federation_sct.httpx.post", _boom)
+    monkeypatch.setattr("governance.federation_act.httpx.post", _boom)
 
 
-VALID_SCT = "sct_v1.dGVzdC1zY3Q.hmac-valid-signature"
+VALID_SCT = "act_v1.dGVzdC1zY3Q.hmac-valid-signature"
 
 
 # ---------------------------------------------------------------------------
@@ -192,7 +192,7 @@ def test_invalid_signature_rejected(monkeypatch: pytest.MonkeyPatch) -> None:
 
 def test_tampered_token_rejected(monkeypatch: pytest.MonkeyPatch) -> None:
     _patch_post(monkeypatch, _kernel_reject("HMAC mismatch"))
-    verdict = verify_federation_sct("sct_v1.dGVzdC1zY3Q.tampered-hmac")
+    verdict = verify_federation_sct("act_v1.dGVzdC1zY3Q.tampered-hmac")
 
     assert verdict.ok is False
     assert verdict.error_code == "SCT_INVALID"
@@ -286,7 +286,7 @@ def test_garbage_token_rejected_by_format_check() -> None:
 
 
 def test_short_token_rejected() -> None:
-    verdict = verify_federation_sct("sct_v1.a")
+    verdict = verify_federation_sct("act_v1.a")
 
     assert verdict.ok is False
     assert verdict.error_code == "SCT_MALFORMED"
@@ -300,7 +300,7 @@ def test_token_without_hmac_prefix_rejected() -> None:
 
 
 def test_injection_attempt_rejected() -> None:
-    verdict = verify_federation_sct("sct_v1.${injection}.hmac")
+    verdict = verify_federation_sct("act_v1.${injection}.hmac")
 
     assert verdict.ok is False
     # Should be malformed or missing, never accepted
@@ -334,18 +334,18 @@ def test_kernel_http_403_rejected(monkeypatch: pytest.MonkeyPatch) -> None:
 
 
 def test_extract_sct_from_meta_sct_key() -> None:
-    result = _extract_sct_from_meta({"sct": "sct_v1.test.hmac"})
-    assert result == "sct_v1.test.hmac"
+    result = _extract_sct_from_meta({"sct": "act_v1.test.hmac"})
+    assert result == "act_v1.test.hmac"
 
 
 def test_extract_sct_from_meta_session_token_key() -> None:
-    result = _extract_sct_from_meta({"session_token": "sct_v1.test.hmac"})
-    assert result == "sct_v1.test.hmac"
+    result = _extract_sct_from_meta({"session_token": "act_v1.test.hmac"})
+    assert result == "act_v1.test.hmac"
 
 
 def test_extract_sct_from_meta_arifos_sct_key() -> None:
-    result = _extract_sct_from_meta({"arifos_sct": "sct_v1.test.hmac"})
-    assert result == "sct_v1.test.hmac"
+    result = _extract_sct_from_meta({"arifos_sct": "act_v1.test.hmac"})
+    assert result == "act_v1.test.hmac"
 
 
 def test_extract_sct_from_meta_none() -> None:
@@ -423,12 +423,12 @@ def test_sct_verification_error_to_dict() -> None:
 
 
 def test_validate_format_valid_sct() -> None:
-    assert _validate_format("sct_v1.dGVzdC1zY3Q.hmac-valid") is True
+    assert _validate_format("act_v1.dGVzdC1zY3Q.hmac-valid") is True
 
 
 def test_validate_format_valid_no_hmac() -> None:
     # Token without HMAC component (still matches regex)
-    assert _validate_format("sct_v1.dGVzdC1zY3Q") is True
+    assert _validate_format("act_v1.dGVzdC1zY3Q") is True
 
 
 def test_validate_format_empty() -> None:
@@ -440,7 +440,7 @@ def test_validate_format_none() -> None:
 
 
 def test_validate_format_too_short() -> None:
-    assert _validate_format("sct_v1.a") is False
+    assert _validate_format("act_v1.a") is False
 
 
 def test_validate_format_no_prefix() -> None:
