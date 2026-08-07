@@ -471,7 +471,7 @@ function createEnvelopeValidator(options = {}) {
           correlation_id: envelope.correlation_id || req.body?.id || null,
         };
         const fs = require('fs');
-        const receiptPath = '/root/forge_work/security-receipts.jsonl';
+        const receiptPath = '/tmp/aaa-security-receipts.jsonl';
         fs.appendFileSync(receiptPath, JSON.stringify(receipt) + '\n');
       } catch (_) { /* fail-open on receipt write — never block rejection for logging */ }
 
