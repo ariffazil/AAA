@@ -28,6 +28,7 @@ from a2a_bridge import (
     route, build_envelope, sign_envelope, dispatch,
     OPENCLAW_KEY_PATH, A2A_BASE,
 )
+from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey as _Pub
 from delivery_adapter import format_telegram, format_a2a, format_local, deliver
 
 # ──────────────────────────── assertion helpers ────────────────────────────
@@ -98,21 +99,16 @@ if OPENCLAW_KEY_PATH.exists():
 
         # Verify round-trip
         try:
-            from cryptography.hazmat.primitives.serialization import load_pem_public_key
-            from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
             pub_path = Path(str(OPENCLAW_KEY_PATH).replace("_private", "_public"))
             if pub_path.exists():
-                pub = load_pem_public_key(pub_path.read_bytes())
-                if isinstance(pub, Ed25519PublicKey):
-                    canon = json.dumps(env, sort_keys=True, separators=(",", ":")).encode("utf-8")
-                    sig_bytes = base64.urlsafe_b64decode(sig["value"] + "==")
-                    try:
-                        pub.verify(sig_bytes, canon)
-                        check("signature VERIFIES against public key", True)
-                    except Exception as e:
-                        check("signature VERIFIES against public key", False, str(e))
-                else:
-                    check("signature VERIFIES against public key", False, "public key not Ed25519")
+                pub = _Pub.from_public_bytes(pub_path.read_bytes())
+                canon = json.dumps(env, sort_keys=True, separators=(",", ":")).encode("utf-8")
+                sig_bytes = base64.urlsafe_b64decode(sig["value"] + "==")
+                try:
+                    pub.verify(sig_bytes, canon)
+                    check("signature VERIFIES against public key", True)
+                except Exception as e:
+                    check("signature VERIFIES against public key", False, str(e))
             else:
                 check("signature VERIFIES against public key", False, f"public key missing: {pub_path}")
         except Exception as e:
@@ -172,7 +168,7 @@ chunks = format_telegram(sample_payload)
 check("telegram renders ≥1 chunk", len(chunks) >= 1)
 check("telegram chunk ≤ 4096", all(len(c) <= 4096 for c in chunks))
 check("telegram has footer", "DITEMPA BUKAN DIBERI" in chunks[0])
-check("telegram has rule header", "R08_SYSTEM_STATUS" in chunks[0])
+check("telegram has rule header", "R08\\_SYSTEM\\_STATUS" in chunks[0])
 
 a2a_report = format_a2a(sample_payload)
 check("a2a envelope has delivery.kind", a2a_report["delivery"]["kind"] == "a2a_json")
