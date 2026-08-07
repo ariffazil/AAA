@@ -505,6 +505,16 @@ registerAgentPolicy('hermes-asi', {
   irreversibility_threshold: 0.2,
 });
 
+registerAgentPolicy('openclaw', {
+  agent_role: 'router',
+  allowed_tools: ['/tasks', 'arif_sense_observe', 'arif_ops_measure', 'arif_memory_recall', 'arif_reply_compose'],
+  allowed_organs: ['arifOS', 'AAA', 'GEOX', 'WEALTH', 'WELL', 'A-FORGE'],
+  // DISPLAY_ONLY ceiling: lowest irreversibility threshold
+  // OpenClaw may NEVER mutate production state directly. All mutations route to A-FORGE.
+  irreversibility_threshold: 0.05,
+  notes: 'OpenClaw EDGE warga — agentic mesh router. DISPLAY_ONLY. Signs A2A envelopes with did:arif:openclaw. Forged 2026-08-07 by 333-AGI / Hermes-ASI under F13 directive.',
+});
+
 // ── A2A DID Signature Verification (Gap 4 — Day 5) ──────────────────
 // Verifies Ed25519 signatures on A2A envelopes using the DID registry.
 // When A-FORGE sends an envelope to GEOX, GEOX verifies did:arif:a-forge's
