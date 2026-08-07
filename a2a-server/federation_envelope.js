@@ -231,7 +231,26 @@ function validateEnvelope(envelope, toolName) {
     envRisk.tier = toolRisk.tier;
   }
 
-  // 2. Legacy wrap policy: ceiling = T2 (PREPARE max)
+  // 2. Expiry enforcement — reject expired or future-dated envelopes
+  if (envelope.expires_at) {
+    const now = Date.now();
+    const expiry = new Date(envelope.expires_at).getTime();
+    if (isNaN(expiry)) {
+      result.reason = `Invalid expires_at: "${envelope.expires_at}" — must be ISO 8601`;
+      return result;
+    }
+    if (now > expiry + 30000) {  // 30s clock-skew tolerance
+      result.reason = `Envelope expired at ${envelope.expires_at} (${Math.round((now - expiry) / 1000)}s ago)`;
+      return result;
+    }
+    // Reject timestamps unreasonably far in the future (>24h)
+    if (expiry > now + 86400000) {
+      result.reason = `Envelope expires_at ${envelope.expires_at} is >24h in the future — rejected`;
+      return result;
+    }
+  }
+
+  // 3. Legacy wrap policy: ceiling = T2 (PREPARE max)
   const acl = envRisk.action_class;
   if (envelope.legacy_wrap) {
     if (acl === 'MUTATE' || acl === 'ATOMIC') {
