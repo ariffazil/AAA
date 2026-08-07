@@ -125,6 +125,56 @@ components:
       - hosts machine SOT at federation/organs.yaml
       - companion units: aaa-signing, aaa-preforge (SUPPORT)
 
+  - id: openclaw
+    class: EDGE
+    display_name: OpenClaw
+    repo: openclaw/openclaw
+    source_path: /root/.openclaw
+    role: agentic_mesh_router
+    authority_ceiling: DISPLAY_ONLY
+    port: 18789
+    port_web: 8787
+    unit: openclaw-gateway.service
+    runtime: node-22
+    actor_id: "openclaw:ingress"
+    did: "did:key:z7QHNDZM4dm0fl4bwI7BOhVmMAh_pBVsQN2i17Ndog1jLjQ"
+    signing_key: "/root/AAA/auth/keys/openclaw_private.key"
+    live_probe_2026_08_07:
+      status: active
+      gateway_port: 18789
+      web_ui_port: 8787  # currently down — known
+    owned_domains:
+      - a2a_dispatch
+      - session_continuity
+      - channel_aggregation
+      - task_queue
+      - result_aggregation
+    forbidden_domains:
+      - constitutional_judgment
+      - engineering_execution
+      - human_face  # Hermes owns the human face — OpenClaw is agent-facing
+      - cognitive_research
+      - memory_curation  # arifOS memory tiers are canonical
+      - skills_library  # Hermes skills are canonical
+    receives_from:
+      - hermes          # inbound research/agent requests from the human face
+      - cron_jobs       # scheduled task outputs
+      - system_alerts   # organ health / failover notifications
+    routes_to:
+      - "333-agi"       # reasoning/planning core
+      - opencode        # engineering execution (via A-FORGE)
+      - "555-asi"       # causal/structural intelligence
+      - arifos          # constitutional judgment / SEAL
+      - geox / wealth / well  # domain evidence organs
+    partner_organ: hermes  # Hermes is human-facing; OpenClaw is agent-facing
+    notes:
+      - Agent-facing mesh router. NOT human-facing (Hermes owns Telegram/CLI/cron).
+      - DISPLAY_ONLY ceiling — can never mutate federation state directly.
+      - Owns WhatsApp/Signal/iMessage/macOS/iOS/Android channels (Hermes owns Telegram).
+      - Cross-channel session continuity via session_id propagation.
+      - Escalation gate: routes F13 holds to Hermes for Arif review.
+      - "Hermes is the face. OpenClaw is the spine. OpenCode is the hands. arifOS is the law. Arif is the sovereign."
+
   - id: geox
     class: CORE
     display_name: GEOX
