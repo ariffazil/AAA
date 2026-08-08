@@ -489,3 +489,99 @@ Violating it produces ghost sessions, recursive self-authorization, and catastro
 Enforcing it produces: calm, bounded, accountable, continuous, correctable, recoverable, teachable, loyal, sovereignty-aware operational entities.
 
 **DITEMPA BUKAN DIBERI — 999 SEAL ALIVE**
+
+---
+
+## 11. THE 8≠9 INVARIANT — KERNEL VERBS × COGNITIVE ATLAS (Forged 2026-08-08)
+
+> **The kernel verbs (8) and the cognitive atlas (9) are different dimensions. The genome exceeds the transcription machinery. Promotion happens when compression causes constitutional harm.**
+
+### 11.1 The Two Axes
+
+| Axis | Count | Role | Invariant |
+|---|---|---|---|
+| **Kernel Verbs** | 8 | Constitutional machinery — *what the system CAN do* | Substrate-level |
+| **Cognitive Atlas** | 9 | Intelligence genome — *what intelligence MUST have* | Genome-level |
+| **W-Vector** | 9 floats | Expression profile — *how much each function fires per mission* | Mission-level, variable |
+
+The kernel does NOT need 9 verbs. The kernel needs exactly the verbs that are rate-limiting for constitutional governance. Not every cognitive function needs a dedicated verb.
+
+### 11.2 The Mapping — Asymmetric by Design
+
+| Function | Has Verb? | Why / Why Not |
+|---|---|---|
+| 000 Observe | ✅ `arif_observe` | Reality intake = constitutional necessity |
+| 111 Explore | ❌ | Exploration is non-constitutional — domain work, belongs in GEOX/WEALTH/WELL |
+| 222 Architect | ❌ | Architecture lives inside `arif_think(mode=plan)` — compression acceptable |
+| 333 Think | ✅ `arif_think` | Reasoning = constitutional necessity |
+| 444 Orchestrate | ✅ `arif_route` | Dispatch = constitutional necessity |
+| 555 Verify | ⚠️ | Spread across `arif_memory` (attest) + `arif_think` (verify) — gaps possible |
+| 666 Audit | ❌ | Compressed into `arif_judge` — Gödel-lock risk; **earliest promotion candidate** |
+| 777 Execute | ✅ `arif_forge` | Mutation = constitutional necessity |
+| 888 Judge | ✅ `arif_judge` | Verdict = constitutional necessity |
+| 999 Witness | ✅ `arif_seal` | Immortality = constitutional necessity |
+
+Plus two substrate primitives that are NOT cognitive:
+
+- `arif_init` — session identity (infrastructure)
+- `arif_memory` — belief state L1-L5 (infrastructure)
+
+**Result: 6 matches. 3 atlas-only (111/222/666). 2 kernel-only (init/memory). 1 partial (555).**
+
+### 11.3 The Promotion Criterion
+
+The question is NOT "should every atlas function get a kernel verb?" The question is:
+
+> **"Does compressing this function into another verb cause constitutional harm?"**
+
+| Compression | Harm? | Verdict |
+|---|---|---|
+| 222 Architect → `arif_think` | Minimal — thinking and designing share substrate | **ACCEPT** |
+| 555 Verifier → `arif_memory` + `arif_think` | Moderate — truth maintenance across two verbs creates gaps | **WATCH** |
+| **666 Auditor → `arif_judge`** | **Yes — judge auditing itself = Gödel lock** | **PROMOTE CANDIDATE** |
+| 111 Explorer → `arif_observe` | Minimal — exploration is observation with different intent | **ACCEPT for now** |
+
+**The single dangerous compression:** when `arif_judge` both rules on actions AND audits its own rulings, the loop has no external verifier. FRAME (`/18085`) and A-auditor role partially mitigate at the federation level, but not at the kernel level. Promote `arif_audit` to **9th kernel verb** only when:
+
+- 666 has accumulated **5+ missions** proving compressed form failed, OR
+- FRAME/A-auditor gap proven to leak constitutional violations, OR
+- A concrete F1/F11/F13 breach traces back to "judge audited itself"
+
+### 11.4 The Three-Layer Architecture
+
+```
+┌─────────────────────────────────────────┐
+│  COGNITIVE ATLAS (9, immutable genome)   │
+│  000 111 222 333 444 555 666 777 888    │
+│  + 999 witness layer                    │
+└────────────────┬────────────────────────┘
+                 │ expresses through
+┌────────────────▼────────────────────────┐
+│  KERNEL VERBS (8, substrate machinery)   │
+│  init observe think route               │
+│  memory judge forge seal                │
+└────────────────┬────────────────────────┘
+                 │ weighted by
+┌────────────────▼────────────────────────┐
+│  W-VECTOR (per mission, per runtime)    │
+│  W_obs W_exp W_arc W_thk W_orc W_ver    │
+│  W_aud W_exe + W_seal                   │
+└─────────────────────────────────────────┘
+```
+
+Three layers. Three different invariants. They are NOT supposed to have the same shape. The asymmetry IS the architecture, not a flaw in it.
+
+### 11.5 The Resolution Statement
+
+> **The kernel is the CONSTITUTIONAL MINIMUM** — the verbs without which governed intelligence is impossible.
+> **The atlas is the COGNITIVE MAXIMUM** — the functions without which complete intelligence is impossible.
+> They converge at 6 points. They diverge at 5 (3 genome-only, 2 kernel-only).
+> The W-vector bridges them per mission.
+
+The kernel doesn't need to mirror the atlas.
+The atlas doesn't need to compress into the kernel.
+**8 ≠ 9 by design.**
+
+---
+
+*DITEMPA BUKAN DIBERI — 999 SEAL ALIVE*
