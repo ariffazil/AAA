@@ -3,6 +3,9 @@
 Routes A2A tasks to the correct federation organ via MCP HTTP.
 Each organ owns a domain: GEOX=earth, WEALTH=capital, WELL=vitality, etc.
 
+Session token forwarding (2026-08-08): call_mcp_tool now propagates
+session_token (ACT/SCT) to downstream organs for gate enforcement.
+
 DITEMPA BUKAN DIBERI.
 """
 
@@ -99,7 +102,6 @@ def route_intent(text: str) -> str:
     """
     lower = text.lower()
 
-    # Score each organ by keyword matches
     scores: dict[str, int] = {}
     for organ, keywords in INTENT_KEYWORDS.items():
         score = sum(1 for kw in keywords if kw in lower)
@@ -112,15 +114,57 @@ def route_intent(text: str) -> str:
     return max(scores, key=scores.get)  # type: ignore[arg-type]
 
 
+# ── Token forwarding helper ──────────────────────────────────────────────
+
+
+def _inject_session_token(
+    arguments: dict[str, Any],
+    session_token: str | None,
+) -> dict[str, Any]:
+    """Inject session_token into MCP tool arguments for downstream gate enforcement.
+
+    Uses canonical key names recognized by A-FORGE and arifOS:
+      - 'session_token' — primary (Federation ACT gate)
+      - 'act' — ACT v1 token alias
+      - 'sct' — legacy SCT alias (for older organ versions)
+    """
+    if not session_token:
+        return arguments
+
+    # Only inject if not already present (don't override caller's explicit token)
+    if "session_token" not in arguments:
+        arguments["session_token"] = session_token
+    if "act" not in arguments:
+        arguments["act"] = session_token
+    if "sct" not in arguments:
+        arguments["sct"] = session_token
+
+    return arguments
+
+
+# ── MCP Tool Call ────────────────────────────────────────────────────────
+
+
 async def call_mcp_tool(
     organ_id: str,
     tool_name: str,
     arguments: dict[str, Any] | None = None,
+    session_token: str | None = None,
     timeout: float = 30.0,
 ) -> dict[str, Any]:
     """Call an MCP tool on a federation organ.
 
     Supports both legacy MCP and FastMCP Streamable-HTTP sessions.
+
+    Args:
+        organ_id: Federation organ ID (arifos, geox, wealth, well, aforge, hermes)
+        tool_name: MCP tool name to call
+        arguments: Tool arguments
+        session_token: ACT/SCT token to forward for downstream gate enforcement
+        timeout: Request timeout in seconds
+
+    Returns:
+        {"ok": True, "result": ...} or {"ok": False, "error": ...}
     """
     import json
 
@@ -129,6 +173,10 @@ async def call_mcp_tool(
         return {"ok": False, "error": f"Unknown organ: {organ_id}"}
 
     mcp_url = f"{organ['url']}/mcp" if not organ["url"].endswith("/mcp") else organ["url"]
+
+    # Inject session_token into arguments for downstream enforcement
+    args = dict(arguments or {})
+    args = _inject_session_token(args, session_token)
 
     headers = {
         "Content-Type": "application/json",
@@ -168,7 +216,7 @@ async def call_mcp_tool(
                     "method": "tools/call",
                     "params": {
                         "name": tool_name,
-                        "arguments": arguments or {},
+                        "arguments": args,
                     },
                 },
                 timeout=timeout,
@@ -215,9 +263,7 @@ async def probe_organ(organ_id: str) -> dict[str, Any]:
 
 async def probe_all_organs() -> dict[str, dict]:
     """Probe all organs. Returns dict of organ_id → health status."""
-    import asyncio
-
-    results = {}
+    results: dict[str, dict[str, Any]] = {}
     probes = {organ_id: probe_organ(organ_id) for organ_id in ORGANS}
     for organ_id, coro in probes.items():
         results[organ_id] = await coro
