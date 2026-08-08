@@ -3123,6 +3123,9 @@ app.get('/health', async (req, res) => {
       witness_oracle: 'active',
     },
     final_authority: 'ARIF',
+    // F2-fidelity fix (MCP-PROBE-2026-08-08): declare authority_ceiling.
+    // Per ORGAN.md, AAA = DISPLAY_ONLY (cockpit/control plane, no mutation).
+    authority_ceiling: 'DISPLAY_ONLY',
     protocol: 'A2A',
     version: 'v2026.07.24',
     federation_schema_version: '2.0.0',
