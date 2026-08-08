@@ -15,6 +15,8 @@
   "root_config": "ROOT_AGENT_CONFIG.yaml",
   "binary": "/root/.npm-global/bin/opencode",
   "tier": "FI-001",
+  "priority": "PRIMARY",
+  "replaces": ["codex", "claude-code"],
   "role": "warga",
   "class": "AGI",
   "trinity": "\u0394 MIND (bound)",
