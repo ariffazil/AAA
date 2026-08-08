@@ -1,5 +1,5 @@
 version: 3
-last_updated: '2026-07-25'
+last_updated: '2026-08-08'
 canonical_home: /root/AAA/skills
 contrast_doc: /root/AAA/docs/TOOLBENCH_3WAY_CONTRAST.md
 architecture: 3-layer-3-axis
@@ -24,7 +24,7 @@ layers:
     - know-language
     load: ALL agents, ALWAYS, AFTER substrate
   domain:
-    count: 55
+    count: 86
     load: Per-agent, per-task, on demand
     domains:
       geo:
@@ -54,6 +54,15 @@ layers:
       - dev-wiki
       - dev-analysis
       - dev-repo-audit
+      - dev-web-builder
+      - dev-db-stack
+      - dev-fastapi
+      - dev-did-identity
+      - dev-t3a-matrix
+      - dev-komda-law
+      - dev-sct-ingress
+      - dev-seal-close
+      - dev-jsonld
       ops:
       - ops-docker
       - ops-vps
@@ -68,6 +77,10 @@ layers:
       - ops-model-monitor
       - ops-google
       - ops-transport
+      - ops-infra-crons
+      - ops-compressor
+      - ops-compress
+      - ops-data-compress
       meta:
       - meta-skill-create
       - meta-skill-lint
@@ -91,6 +104,23 @@ layers:
       - research-summarize
       - research-search
       - research-deep
+      domain:
+      - domain-causal
+      - domain-delta-omega-psi
+      - domain-wealth-claim
+      - domain-summarize
+      - domain-federation-hs
+      - domain-release-attest
+      constitutional:
+      - apex-audit-coverage
+      - apex-authority-check
+      - apex-floor-check
+      - apex-reversibility
+      - apex-scope-check
+      - apex-tool-gate
+      - apex-verdict-hold
+      - apex-verdict-seal
+      - apex-quantum-eureka
       kernel:
       - kernel-eureka
       - kernel-superposition
@@ -263,8 +293,8 @@ agent_profiles:
     agent_card: /root/AAA/a2a-server/agent-cards/harnesses/aider.json
     notes: Aider AI pair programming. Provider-agnostic. No native MCP — works via
       aider's built-in tool system.
-total_skills: 64
-logical_registry_count: 64
+total_skills: 95
+logical_registry_count: 95
 alias_table_rows: 133
 active_alias_rows: 104
 tombstone_alias_rows: 29
