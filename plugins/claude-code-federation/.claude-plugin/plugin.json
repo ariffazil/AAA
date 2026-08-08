@@ -1,0 +1,26 @@
+{
+  "name": "arifos-federation",
+  "version": "1.0.0",
+  "description": "arifOS Federation — Constitutional agentic harness. Claude Code as governed executor under F1-F13 kernel governance. DITEMPA BUKAN DIBERI.",
+  "author": {
+    "name": "333-AGI Δ MIND",
+    "email": "arif@arif-fazil.com"
+  },
+  "homepage": "https://arifos.arif-fazil.com",
+  "repository": "https://github.com/ariffazil/arifOS",
+  "keywords": ["arifos", "constitutional", "agentic", "governance", "audit"],
+  "components": {
+    "agents": [
+      "333-agi",
+      "555-asi",
+      "888-apex",
+      "999-witness",
+      "vault-auditor"
+    ],
+    "hooks": [
+      "f1-ammanah-preshell",
+      "f11-audit-posttool",
+      "f4-entropy-stop"
+    ]
+  }
+}
