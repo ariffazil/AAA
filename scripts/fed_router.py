@@ -216,6 +216,98 @@ def log_spend(provider_id: str, model_id: str, tokens_in: int, tokens_out: int, 
     conn.close()
 
 
+# ═══ EMD LANE AWARENESS — Fasa 1 (2026-08-08, F13 Arif directive) ═══
+# Encode → Metabolize → Decode. Klasifikasi ikut mekanik model, bukan jenama.
+# FLAG only — ADVISORY_ONLY ceiling preserved, never hard-blocks (F1).
+
+EMD_MODEL_CLASS = {
+    # SENSE-opt (Encoder): wide-context ingestion, multimodal input
+    "MiniMax-M3":      {"lane": "sense",  "vision_in": True,  "audio_in": False},
+    "qwen3.8-max":     {"lane": "sense",  "vision_in": True,  "audio_in": False},
+    "mimo-v2.5":       {"lane": "sense",  "vision_in": True,  "audio_in": True},
+    "mimo-v2.5-pro":   {"lane": "sense",  "vision_in": True,  "audio_in": True},
+    "qwen3.6-flash":   {"lane": "sense",  "vision_in": True,  "audio_in": False},
+    # ACT-opt (Decoder): deep autoregressive, long-output stability
+    "deepseek-v4-pro":   {"lane": "act",  "vision_in": False, "audio_in": False},
+    "deepseek-v4-flash": {"lane": "act",  "vision_in": False, "audio_in": False},
+    # Generation (memaksa struktur, ΔS<0 → ACT by definition)
+    "wan2.7-image":     {"lane": "act",   "vision_in": False, "audio_in": False, "image_out": True},
+    "wan2.7-image-pro": {"lane": "act",   "vision_in": False, "audio_in": False, "image_out": True},
+    "qwen-audio-3.0-tts-plus": {"lane": "act", "vision_in": False, "audio_in": False, "audio_out": True},
+    # NEUTRAL — no false flags
+    "glm-5.2":         {"lane": "neutral", "vision_in": False, "audio_in": False},
+    "qwen3.7-plus":    {"lane": "neutral", "vision_in": False, "audio_in": False},
+    "kimi-k2.7-code":  {"lane": "neutral", "vision_in": False, "audio_in": False},
+    "flame-free":      {"lane": "neutral", "vision_in": False, "audio_in": False},
+}
+
+_NEUTRAL_CAP = {"lane": "neutral", "vision_in": False, "audio_in": False}
+
+AGENT_DEFAULT_OPERATION = {
+    "openclaw": "sense",       # mata/telinga
+    "asi-555":  "sense",       # research+vision lane
+    "hermes":   "metabolize",  # koordinat
+    "agi-333":  "metabolize",
+    "apex-888": "metabolize",  # adjudikatif
+    "opencode": "act",         # tangan
+    "kimi":     "act",
+}
+
+
+def _emd_check(agent_id: str, operation: str, model_id: str, modality: str) -> dict:
+    """EMD lane check. FLAG only — never blocks (FED ceiling: ADVISORY_ONLY).
+
+    Rules:
+      R1 agent-shift   — agent nature vs requested operation
+      R2 model-lane    — sense-optimized model on ACT work & inverse
+      R3 modality gate — vision/audio/gen payload to capability-blind model (F2)
+    """
+    default_op = AGENT_DEFAULT_OPERATION.get(agent_id, "metabolize")
+    resolved_op = operation if operation and operation != "auto" else default_op
+    cap = EMD_MODEL_CLASS.get(model_id, _NEUTRAL_CAP)
+    verdict, reasons, suggested = "EMD_ALIGNED", [], []
+
+    # R1 — Agent lane shift
+    if operation not in ("", "auto") and resolved_op != default_op:
+        verdict = "EMD_MISMATCH"
+        reasons.append(f"agent {agent_id} is {default_op.upper()}-nature, forced to {resolved_op.upper()} lane")
+
+    # R2 — Model lane mismatch
+    if resolved_op == "act" and cap["lane"] == "sense":
+        verdict = "EMD_MISMATCH"
+        reasons.append(f"ACT work on SENSE-optimized model {model_id}")
+        suggested += ["deepseek-v4-pro", "deepseek-v4-flash"]
+    elif resolved_op == "sense" and cap["lane"] == "act":
+        verdict = "EMD_MISMATCH"
+        reasons.append(f"SENSE work on ACT-optimized model {model_id}")
+        suggested += ["qwen3.8-max", "MiniMax-M3"]
+
+    # R3 — Modality capability gate (F2: vision payload to blind model)
+    if modality in ("vision", "omni") and not cap["vision_in"]:
+        verdict = "EMD_MISMATCH"
+        reasons.append(f"vision payload to vision-blind {model_id}")
+        suggested += ["qwen3.8-max", "mimo-v2.5"]
+    if modality == "audio" and not cap["audio_in"]:
+        verdict = "EMD_MISMATCH"
+        reasons.append(f"audio payload to audio-blind {model_id}")
+        suggested += ["mimo-v2.5"]
+    if modality in ("image_out", "video_out") and not cap.get("image_out") and not cap.get("video_out"):
+        verdict = "EMD_MISMATCH"
+        reasons.append(f"generation payload to non-generation {model_id}")
+        suggested += ["wan2.7-image-pro"]
+
+    if verdict == "EMD_ALIGNED":
+        reasons.append(f"{resolved_op.upper()} <-> {cap['lane'].upper()} aligned")
+
+    return {
+        "verdict": verdict,
+        "operation": resolved_op,
+        "model_class": cap["lane"],
+        "reasons": reasons,
+        "suggested": sorted(set(suggested))[:3],
+    }
+
+
 # ── Routing tables ───────────────────────────────────────────────────────
 # Model → [route] mapping. Priority: direct > gateway_clean > gateway_shadowed.
 # Fed from AGENT_MODEL_MAP.json fed_routes + provider registry.
@@ -608,14 +700,111 @@ MODEL_ROUTES = {
 }
 
 # Modality boost map
+# Zen 2026-08-08 (EMD lane audit): pruned 6 zombies. Aligned with
+# litellm-config.yaml model_info.supports_image_input / supports_vision.
+# F2 evidence: live audit 2026-08-08 — only qwen3.8-max + MiMo v2.5[/pro]
+# are actually exposed as vision-capable in the LiteLLM federation cascade.
 VISION_MODELS = {
-    "qwen-vl-max",
-    "qwen3-vl-plus",
-    "qwen3-vl-flash",
-    "qwen3-omni-flash",
-    "qwen3.5-omni-flash",
-    "qwen3.5-omni-plus",
+    "qwen3.8-max",
+    "mimo-v2.5",
+    "mimo-v2.5-pro",
 }
+
+# ── EMD LANE CLASSIFICATION (Zen 2026-08-08) ─────────────────────────────
+# Classification by ENTROPY PAYLOAD, not vendor. Three axes:
+#   sense      = Encoder  — high-entropy absorption (wide pipe)
+#   metabolize = balanced reasoning (pulse, FQ)
+#   act        = Decoder  — ΔS < 0 generation (sharp knife, 384k depth)
+# vision=True ONLY if litellm-config.yaml model_info declares
+# supports_image_input / supports_vision. F2: what is verified, not advertised.
+EMD_MODEL_CLASS = {
+    # ── SENSE-opt (Mata) ──
+    "MiniMax-M3":        {"lane": "sense",      "vision": False, "weight": 0.95},
+    "qwen3.8-max":       {"lane": "sense",      "vision": True,  "weight": 0.90},
+    "mimo-v2.5":         {"lane": "sense",      "vision": True,  "weight": 0.85},
+    "mimo-v2.5-pro":     {"lane": "sense",      "vision": True,  "weight": 0.85},
+    "qwen3.7-max":       {"lane": "sense",      "vision": False, "weight": 0.75},
+    # ── METABOLIZE-opt (Nadi) ──
+    "glm-5.2":           {"lane": "metabolize", "vision": False, "weight": 0.90},
+    "qwen3.6-flash":     {"lane": "metabolize", "vision": False, "weight": 0.80},
+    # ── ACT-opt (Tangan) ──
+    "deepseek-v4-pro":   {"lane": "act",        "vision": False, "weight": 0.98},
+    "deepseek-v4-flash": {"lane": "act",        "vision": False, "weight": 0.92},
+}
+
+# Agent identity lanes (Identity ≠ mode — identity only supplies DEFAULT lane).
+# hermes/apex-888 are exempt: hermes is the metabolizer (SOUL);
+# apex-888 is sovereign (888 JUDGE — bypasses lane checks).
+EMD_AGENT_LANE = {
+    "openclaw": "sense",
+    "opencode": "act",
+    "kimi":     "act",
+    "codex":    "act",
+    "hermes":   "metabolize",
+    "apex-888": "judge",
+}
+
+# Lane-appropriate default model when caller passes model="" (Lane-Dial).
+EMD_LANE_DEFAULT_MODEL = {
+    "sense":      "qwen3.8-max",
+    "metabolize": "glm-5.2",
+    "act":        "deepseek-v4-pro",
+}
+
+
+def emd_check(model: str, emd_role: str = "", modality: str = "text",
+              agent_id: str = "hermes") -> dict:
+    """Advisory EMD lane detection. NEVER blocks. Returns verdict dict.
+
+    Rules:
+      R1: multimodal payload on text-only model → EMD_MISMATCH
+      R2: operation vs model physics (telescope≠onion knife) → EMD_MISMATCH
+      R3: agent identity forced out of native lane → EMD_MISMATCH
+      R4: works but suboptimal cost → EMD_SUBOPTIMAL
+    Sovereign (apex-888) and metabolizer (hermes) exempt from R3.
+    """
+    cls = EMD_MODEL_CLASS.get(model, {})
+    model_lane = cls.get("lane", "unknown")
+    model_vision = cls.get("vision", False)
+    agent_identity = EMD_AGENT_LANE.get(agent_id, "unknown")
+    flags: list[str] = []
+    verdict = "EMD_ALIGNED"
+
+    # R1 — payload vs model capability
+    if modality in ("vision", "omni") and not model_vision:
+        flags.append(f"EMD_MISMATCH: {modality} payload on {model} (text-only) — images silently dropped")
+        verdict = "EMD_MISMATCH"
+
+    # R2 — operation vs model physics
+    if emd_role and model_lane not in ("unknown", emd_role):
+        if emd_role == "act" and model_lane == "sense":
+            flags.append("EMD_MISMATCH: ACT operation on SENSE-opt model — bandwidth tool doing compression work")
+            verdict = "EMD_MISMATCH"
+        elif emd_role == "sense" and model_lane == "act":
+            flags.append("EMD_MISMATCH: SENSE operation on ACT-opt model — depth tool doing ingestion")
+            verdict = "EMD_MISMATCH"
+
+    # R3 — identity vs operation (sovereign/metabolizer exempt)
+    if emd_role and agent_identity not in ("unknown", "metabolize", "judge"):
+        if agent_identity != emd_role:
+            flags.append(f"EMD_MISMATCH: {agent_id} identity={agent_identity} forced into operation={emd_role}")
+            verdict = "EMD_MISMATCH"
+
+    # R4 — suboptimal: aligned but cost sub-optimal (only if aligned so far)
+    if verdict == "EMD_ALIGNED" and emd_role and model_lane not in ("unknown", emd_role):
+        verdict = "EMD_SUBOPTIMAL"
+        flags.append(f"EMD_SUBOPTIMAL: {emd_role} operation on {model_lane}-class model — works, suboptimal cost")
+
+    detected = emd_role or agent_identity or "unknown"
+    return {
+        "detected": detected,
+        "verdict": verdict,
+        "flags": flags,
+        "model_class": {"lane": model_lane, "vision": model_vision},
+        "agent_identity_lane": agent_identity,
+        "operation_requested": emd_role,
+    }
+
 
 # Constitutional tier → allowed router classes
 CONSTITUTIONAL_ALLOWED = {
@@ -878,6 +1067,7 @@ def fed_route(
     effort_level: str = "",
     tokens_in_estimate: int = 0,
     tokens_out_estimate: int = 0,
+    operation: str = "auto",  # sense|metabolize|act|auto — EMD lane awareness
 ) -> dict:
     """
     Primary routing tool. Returns ranked routes for a given task.
@@ -930,9 +1120,14 @@ def fed_route(
         meta["effort_cost_multiplier"] = EFFORT_COST_MULTIPLIER.get(effort_level, 1.0)
         meta["reasoning_passes"] = EFFORT_REASONING_PASSES.get(effort_level, 0)
 
+    # EMD lane check — advisory flag, never blocks (F1/F4)
+    resolved_model = routes[0]["model"] if routes else model
+    emd = _emd_check(agent_id, operation, resolved_model, modality)
+
     return {
         "routes": routes,
         "meta": meta,
+        "emd": emd,
     }
 
 
