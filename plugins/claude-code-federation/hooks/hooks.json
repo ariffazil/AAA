@@ -1,5 +1,5 @@
 {
-  "description": "arifOS Federation — Constitutional governance hooks. F1 AMANAH (snapshot-before-mutate), F11 AUDIT (trace-every-action), F4 CLARITY (entropy-check-on-stop), 000 INIT (session identity boot).",
+  "description": "arifOS Federation \u2014 Constitutional governance hooks. F1 AMANAH (snapshot-before-mutate), F11 AUDIT (trace-every-action), F4 CLARITY (entropy-check-on-stop), 000 INIT (session identity boot).",
   "hooks": {
     "SessionStart": [
       {
@@ -43,6 +43,17 @@
             "type": "command",
             "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/f4-entropy-stop.py",
             "timeout": 15
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/f11-precompact-archive.py",
+            "timeout": 10
           }
         ]
       }

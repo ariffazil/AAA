@@ -33,9 +33,19 @@ ARIFOS_HEALTH = "http://127.0.0.1:8088/health"
 ARIFOS_INIT = "http://127.0.0.1:8088/mcp"
 ARIFLOW_HEALTH = "http://127.0.0.1:7073/health"
 
-# FED routing for Claude Agent SDK
-os.environ.setdefault("ANTHROPIC_BASE_URL", "http://127.0.0.1:4000")
-os.environ.setdefault("ANTHROPIC_AUTH_TOKEN", os.environ.get("FED_TOKEN", "sk-local"))
+# FED routing for Claude Agent SDK — READ FROM CLAUDE CODE SETTINGS
+# Priority: env override > Claude Code settings.json > fallback
+try:
+    import json as _json
+
+    _settings = _json.load(open("/root/.claude/settings.json"))
+    _fed_url = _settings.get("env", {}).get("ANTHROPIC_BASE_URL", "http://127.0.0.1:4000")
+    _fed_token = _settings.get("env", {}).get("ANTHROPIC_AUTH_TOKEN", "")
+    os.environ["ANTHROPIC_BASE_URL"] = _fed_url
+    if _fed_token and not _fed_token.startswith("${"):
+        os.environ["ANTHROPIC_AUTH_TOKEN"] = _fed_token
+except Exception:
+    os.environ.setdefault("ANTHROPIC_BASE_URL", "http://127.0.0.1:4000")
 
 # ── Constitutional Context ─────────────────────────────────────────────
 
