@@ -99,7 +99,7 @@ def _estimate_cost(provider_id: str, model_id: str, tokens_in: int, tokens_out: 
         "mulerouter": MULEROUTER_PRICING,
         "tokenrouter": TOKENROUTER_PRICING,
         "flame": FLAME_PRICING,
-        "qwen-token-plan-team": DEEPSEEK_PRICING,  # Qwen routes deepseek models at similar pricing
+        "qwen-token-plan-individual": DEEPSEEK_PRICING,  # Qwen routes deepseek models at similar pricing
         "bailian-token-plan": DEEPSEEK_PRICING,  # Bailian also similar
         "qwen-token-plan-individual": DEEPSEEK_PRICING,  # Qwen Individual Pro — same SG endpoint, same pricing
     }
@@ -114,7 +114,7 @@ def _estimate_cost_per_1k(provider_id: str, model_id: str) -> dict:
         "mulerouter": MULEROUTER_PRICING,
         "tokenrouter": TOKENROUTER_PRICING,
         "flame": FLAME_PRICING,
-        "qwen-token-plan-team": DEEPSEEK_PRICING,
+        "qwen-token-plan-individual": DEEPSEEK_PRICING,
         "bailian-token-plan": DEEPSEEK_PRICING,
         "qwen-token-plan-individual": DEEPSEEK_PRICING,
     }
@@ -240,7 +240,7 @@ MODEL_ROUTES = {
             "priority": 2,
         },
         {
-            "provider": "qwen-token-plan-team",
+            "provider": "qwen-token-plan-individual",
             "router": "direct",
             "class": "direct",
             "constitutional": False,
@@ -282,7 +282,7 @@ MODEL_ROUTES = {
             "priority": 2,
         },
         {
-            "provider": "qwen-token-plan-team",
+            "provider": "qwen-token-plan-individual",
             "router": "direct",
             "class": "direct",
             "constitutional": False,
@@ -317,7 +317,7 @@ MODEL_ROUTES = {
             "priority": 1,
         },
         {
-            "provider": "qwen-token-plan-team",
+            "provider": "qwen-token-plan-individual",
             "router": "direct",
             "class": "direct",
             "constitutional": False,
@@ -343,7 +343,7 @@ MODEL_ROUTES = {
             "priority": 1,
         },
         {
-            "provider": "qwen-token-plan-team",
+            "provider": "qwen-token-plan-individual",
             "router": "direct",
             "class": "direct",
             "constitutional": False,
@@ -369,7 +369,7 @@ MODEL_ROUTES = {
             "priority": 1,
         },
         {
-            "provider": "qwen-token-plan-team",
+            "provider": "qwen-token-plan-individual",
             "router": "direct",
             "class": "direct",
             "constitutional": False,
@@ -387,7 +387,7 @@ MODEL_ROUTES = {
             "priority": 1,
         },
         {
-            "provider": "qwen-token-plan-team",
+            "provider": "qwen-token-plan-individual",
             "router": "direct",
             "class": "direct",
             "constitutional": False,
@@ -566,7 +566,7 @@ MODEL_ROUTES = {
             "free": True,
         },
         {
-            "provider": "qwen-token-plan-team",
+            "provider": "qwen-token-plan-individual",
             "router": "direct",
             "class": "direct",
             "constitutional": False,
@@ -576,7 +576,7 @@ MODEL_ROUTES = {
     ],
     "kimi-k2.7-code": [
         {
-            "provider": "qwen-token-plan-team",
+            "provider": "qwen-token-plan-individual",
             "router": "direct",
             "class": "direct",
             "constitutional": False,
