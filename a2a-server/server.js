@@ -63,6 +63,12 @@ const { witnessGate, witnessGateSync } = require('./witness_gate');
 // ── G3 Predict Gate — pre-execution risk simulation (forged 2026-08-05) ─
 const { predictGate } = require('./predict_gate');
 
+// ── G4 ART Gate — admission gate (forged 2026-08-08 by 333-AGI) ─
+const { artGate, actGate, classifyAction } = require('./art_gate');
+
+// ── arifFLOW Ingest — metabolic ledger recording (forged 2026-08-08 by 333-AGI) ─
+const { ingestFlow, getFlowHealth } = require('./flow_ingest');
+
 // ── Orchestrator Agent — task lifecycle manager (forged 2026-08-05) ─
 const { getOrchestrator } = require('./orchestrator');
 
@@ -188,6 +194,79 @@ app.use((req, res, next) => {
     res.setHeader('X-Predict-Risk', prediction.risk_score.toString());
   } else {
     console.log(`[predict-gate] PASS ${actionClass} ${prediction.domain}: risk=${prediction.risk_score} ${prediction.verdict}`);
+  }
+
+  next();
+});
+
+// ── G4 ART GATE — admission control (forged 2026-08-08 by 333-AGI) ─
+// Questions: "May this call enter?" / "May reality change?"
+// Delegates to arifOS kernel for MUTATE+ actions. Fail-closed on DEPLOY/IRREVERSIBLE.
+app.use(async (req, res, next) => {
+  const envelope = req._membrane;
+  if (!envelope) return next();
+
+  const actionClass = envelope.action_class || classifyAction(req.body?.message || req.body?.text || '');
+  const agentId = envelope.actor_id || envelope.actor || 'aaa-gateway';
+
+  // OBSERVE always passes ART
+  if (actionClass === 'OBSERVE' || actionClass === 'ANALYZE') {
+    return next();
+  }
+
+  // Extract session token from request (if present)
+  const sessionToken = req.body?.session_token || req.body?.act || req.body?.sct
+    || req.body?.params?.session_token || req.headers['x-act-token'];
+
+  // ART admission check
+  const artResult = await artGate({
+    actionClass,
+    agentId,
+    toolName: req.body?.tool || req.body?.skill || '',
+    intentText: req.body?.message || req.body?.text || '',
+  });
+
+  req._art_gate = artResult;
+  envelope._art_gate = artResult;
+
+  if (!artResult.pass && (artResult.verdict === 'VOID' || artResult.verdict === 'HOLD')) {
+    console.log(`[art-gate] BLOCKED ${actionClass}: ${artResult.reason}`);
+    return res.status(423).json({
+      error: 'ART_HOLD',
+      verdict: artResult.verdict,
+      message: artResult.reason,
+      gate: 'G4',
+      details: artResult.details,
+      next_action: artResult.verdict === 'VOID'
+        ? 'Constitutional block — route to 888-APEX for review.'
+        : 'Resolve admission issues or request F13 override.',
+    });
+  }
+
+  // ACT execution check for MUTATE+
+  if (actionClass === 'MUTATE' || actionClass === 'DEPLOY' || actionClass === 'IRREVERSIBLE') {
+    const actResult = actGate({ actionClass, sessionToken, agentId });
+    req._act_gate = actResult;
+    envelope._act_gate = actResult;
+
+    if (!actResult.pass) {
+      console.log(`[act-gate] BLOCKED ${actionClass}: ${actResult.reason}`);
+      return res.status(423).json({
+        error: 'ACT_HOLD',
+        verdict: 'HOLD',
+        message: actResult.reason,
+        gate: 'ACT',
+        details: actResult.details,
+        next_action: 'Provide session_token (call arif_init first) or request F13 sovereign acknowledgment.',
+      });
+    }
+  }
+
+  if (artResult.verdict === 'SABAR') {
+    console.log(`[art-gate] SABAR ${actionClass} — proceeding with caution`);
+    res.setHeader('X-Art-Verdict', 'SABAR');
+  } else {
+    console.log(`[art-gate] PASS ${actionClass}`);
   }
 
   next();
@@ -2868,6 +2947,21 @@ app.post('/a2a/tasks/send', authMiddleware, async (req, res) => {
     return res.status(400).json(createJSONRPCError(req.body?.id || 0, -32602, 'message required'));
   }
   const resolvedTaskId = taskId || generateId();
+
+  // ── arifFLOW ingest on response finish (metabolic ledger — forged 2026-08-08) ─
+  // Non-blocking: fires after response is sent, failure is logged not fatal.
+  res.on('finish', () => {
+    const stepType = res.statusCode >= 400 ? 'Execute' : 'Execute';
+    const floorVerdict = res.statusCode >= 500 ? 'Hold' : res.statusCode >= 400 ? 'Caution' : 'Pass';
+    ingestFlow({
+      actorId: sourceAgent,
+      sessionId: resolvedTaskId,
+      stepType,
+      epistemicLabel: 'Derivation',
+      floorVerdict,
+      payload: { targetAgent, statusCode: res.statusCode },
+    }).catch(() => {}); // fire-and-forget — never block the response
+  });
 
   // ── A2A DID Signature Verification (FORGED 2026-08-02 — ENFORCED) ──
   // NOW ENFORCED: All A2A tasks/send MUST carry a valid DID envelope.
