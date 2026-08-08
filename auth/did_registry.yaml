@@ -49,6 +49,6 @@ dids:
   description: HERMES-ASI alias
 - did: did:arif:openclaw
   organ_id: openclaw
-  public_key_hex: d73852df0e16009beee3cb1a531dc3f29e2bca0881ef00bcd978accb67e8048a
+  public_key_hex: 133462bdb96b4ee83f485b11aa1fe5e3e9d9381c7f91555394dd0101a03728af
   algorithm: Ed25519
-  description: OpenClaw AGI runtime
+  description: "OpenClaw AGI runtime — Telegram bridge gateway (key reconciled 2026-08-08, key source: /root/.openclaw/identity/device.json)"
