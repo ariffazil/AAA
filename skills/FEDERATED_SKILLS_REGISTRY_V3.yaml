@@ -59,6 +59,7 @@ layers:
       - ops-vps
       - ops-mcp-builder
       - ops-mcp-probe
+      - ops-mcp-testing
       - ops-infra
       - ops-incident
       - ops-spatial
