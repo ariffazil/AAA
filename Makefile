@@ -144,3 +144,14 @@ help:
 # ──────────────────────────────────────────────
 aaa-drift-check:
 	@python3 scripts/aaa_drift_check.py
+deploy-local: verify
+	@echo "═══ AAA deploy-local ═══"
+	@echo "source → runtime: /root/AAA/a2a-server/ (node from source)"
+	systemctl restart aaa-a2a.service
+	@echo "restarted aaa-a2a.service"
+	@sleep 3
+	@curl -sf http://127.0.0.1:3001/health >/dev/null && echo "✅ AAA healthy" || echo "❌ AAA down"
+
+verify:
+	@echo "verifying authority_ceiling on AAA..."
+	@curl -sf http://127.0.0.1:3001/health | python3 -c "import json,sys;h=json.load(sys.stdin);assert h.get('authority_ceiling'),'authority_ceiling ABSENT';print(f'✅ authority_ceiling={h[\"authority_ceiling\"]}')" || echo "❌ verify failed"
