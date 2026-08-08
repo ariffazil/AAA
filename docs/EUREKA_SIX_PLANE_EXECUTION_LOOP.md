@@ -104,6 +104,112 @@ Invariant:  Intelligence does not equal authority. Capability ≠ permission.
 - Access sovereign keys
 - Self-authorize any action
 
+### Phenotype Substrate — Genotype/Phenotype Split (Forged 2026-08-08)
+
+> **8 ≠ 9 by design.** The asymmetry between kernel verbs (8) and the cognitive atlas (9) is architecture, not a flaw.
+
+#### The Three Layers
+
+```
+COGNITIVE ATLAS (9, immutable genome)   — WHAT intelligence must have
+        │ expresses through
+KERNEL VERBS (8, constitutional machinery) — HOW it is transmitted
+        │ weighted by
+W-VECTOR (per-mission, measurable)      — WHICH functions dominate
+```
+
+| Layer | Count | Invariant | Answers |
+|-------|-------|-----------|---------|
+| **Cognitive Atlas** | 9 | Immutable — the complete genome of intelligence | What must exist? |
+| **Kernel Verbs** | 8 | Constitutional minimum — verbs without which governed intelligence is impossible | What is rate-limiting for governance? |
+| **W-Vector** | 9 weights | Mutable per mission, auditable, measured via FRAME | Which function dominates now? |
+
+#### The 9-Function Cognitive Atlas (Genome)
+
+```
+000 OBSERVER    — What is real?
+111 EXPLORER    — What else is possible?
+222 ARCHITECT   — How should reality be structured?
+333 THINKER     — What does it mean?
+444 ORCHESTRATOR — Who should do what?
+555 VERIFIER    — Is it true?
+666 AUDITOR     — Is it governed correctly?
+777 EXECUTOR    — Make it real.
+888 JUDGE       — Is it allowed?
+999 WITNESS     — What actually happened? (attestation layer, not agent)
+```
+
+These are NOT agents, NOT runtimes, NOT authority classes. They are the irreducible set of cognitive functions every complete intelligence must perform.
+
+#### The 8 Kernel Verbs (Transmission Machinery)
+
+```
+arif_init    — Identity binding (substrate, not in atlas)
+arif_observe — ← 000 OBSERVER
+arif_think   — ← 333 THINKER + 222 ARCHITECT (compressed)
+arif_route   — ← 444 ORCHESTRATOR
+arif_memory  — Belief state L1-L5 (substrate, not in atlas)
+arif_judge   — ← 888 JUDGE + 666 AUDITOR (compressed — Gödel lock risk)
+arif_forge   — ← 777 EXECUTOR
+arif_seal    — ← 999 WITNESS
+```
+
+**6 direct mappings. 2 substrate primitives. 3 compressions.** Not a bug — different axes of the tensor.
+
+#### Why 8 ≠ 9 (The Promotion Criterion)
+
+The kernel verbs are NOT the atlas. They are the **constitutional minimum** — verbs without which governed intelligence is impossible. The atlas is the **cognitive maximum** — functions without which complete intelligence is impossible.
+
+A function earns a kernel verb ONLY when its compression causes **constitutional harm**:
+
+| Compression | Harm | Status |
+|-------------|------|--------|
+| 222 Architect → `arif_think` | Minimal — thinking and designing share substrate | ACCEPT |
+| 555 Verifier → `arif_memory` + `arif_think` | Moderate — spread across two verbs | WATCH |
+| 666 Auditor → `arif_judge` | **Severe — judge auditing itself = Gödel lock** | **CANDIDATE** |
+| 111 Explorer → `arif_observe` | Minimal — exploration is observation with different intent | ACCEPT |
+
+```
+PROMOTION RULE:
+  Function → Verb ONLY when 5+ missions prove compression causes harm.
+  NOT because the atlas says so.
+  DITEMPA BUKAN DIBERI — the verb is forged by evidence, not declared by symmetry.
+```
+
+#### The W-Vector (Measurable Phenotype)
+
+Every runtime (OpenCode, Hermes, etc.) instantiates the same genome with a different weight vector:
+
+| Slot | Runtime | Key Weights | Measurable Signal |
+|------|---------|-------------|-------------------|
+| **A-FORGE (forge)** | OpenCode | W_arch, W_think, W_exec | plan_files_emitted, mutations_applied, tests_passed |
+| **AAA (gateway)** | Hermes | W_orch, W_ver, W_aud, W_exp | dispatches_routed, evidence_sealed, contradictions_logged |
+| **EDGE** | OpenClaw | W_orch, W_exec | plugins_active, automations_executed |
+
+Weights are measured by FRAME per mission. A weight without a measurable signal is **narrative, not governance**.
+
+#### Slot Hierarchy — Not "Federation of Species"
+
+```
+arifOS KERNEL (substrate — same for ALL runtimes)
+   ↓
+AAA CONTROL PLANE (same for ALL runtimes)
+   ├── Gateway Slot  → Hermes runtime instance
+   ├── Forge Slot    → OpenCode runtime instance (PRIMARY)
+   └── Edge Slot     → OpenClaw runtime instance
+```
+
+Runtimes are **replaceable phenotypes** occupying fixed **organ slots**. Not species with equal constitutional rank. The kernel and AAA control plane remain the constitutional substrate for all of them.
+
+#### The Tensor: 9 × 4 × 5 × N
+
+```
+Cognitive Function (WHAT) × Constitutional Lane (POWER) × A-ROLE (HOW) × Harness (WHERE)
+        9               ×           4                ×     5          ×    N
+```
+
+Not a tree of 9×9 agents. Not a flat list. A tensor where each cognitive function occupies exactly one lane + one role + can swap harnesses.
+
 ---
 
 ### Plane 4: EXECUTION (Physical Truth)
