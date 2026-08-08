@@ -182,3 +182,37 @@ The single dangerous compression: when `arif_judge` both rules on actions AND au
 ---
 
 *DITEMPA BUKAN DIBERI — 999 SEAL ALIVE*
+
+---
+
+## ⟁ 7. Telegram Posting Identity — FORGE Bot (F13-ratified 2026-08-08)
+
+> **Wire:** Every warga AAA coding agent that needs to post to the AAA Telegram group MUST use the **FORGE bot** (`@arifOS_bot` / 🔥FORGE🔥). This is the sole posting identity for the federation's engine layer. Hermes (`@ASI_arifos_bot`) remains the human-facing speaker; FORGE posts are execution/engine confirmations.
+
+### 7.1 Credentials (token home = vault only)
+
+| Item | Value |
+|------|-------|
+| Bot | 🔥FORGE🔥 `@arifOS_bot` |
+| Bot ID | `8727562763` |
+| Token | `8727562763:AAGJKmvV6BoMUL11QaDQzGzwp1M3pTGRSks` — **source** `/root/.secrets/kunci-mas.env` → `FORGE_BOT_TOKEN` |
+| Group | `-1003753855708` (AAA supergroup, forum) |
+| Generic thread | none (general post OK: msg 47874/47877/47881) |
+| Topic threads | use Hermes channel_directory; Telegram `message_thread_id` differs (resolve per-topic) |
+
+### 7.2 Posting Invariant (F2 TRUTH + F11 AUDIT + P1 TOKEN SOVEREIGNTY)
+
+1. **Token home = vault only.** Never hardcode the token in code/agent cards. Source `FORGE_BOT_TOKEN` from `/root/.secrets/kunci-mas.env`.
+2. **One token, one owner.** Only FORGE/engine layer uses this token for posting. OpenClaw (`@AGI_ASI_bot`) and Hermes (`@ASI_arifos_bot`) keep their own tokens (P1).
+3. **Reversible-first.** A warga posts a confirmation/verdict, never engine-spam. One message per session.
+4. **Tool path.** Use `/usr/local/bin/forge-post` (reads `FORGE_BOT_TOKEN` from env, falls back to vault with quote-stripping).
+5. **No anonymous posting.** Every post declares identity header: `FORGE / 🔥FORGE / @arifOS_bot`.
+
+### 7.3 Verification (2026-08-08)
+
+- `getMe` → `{ok:true, id:8727562763, username:"arifOS_bot"}` ✅
+- Post to AAA group → `{ok:true, message_id:47874}` ✅
+- Internal A2A (`127.0.0.1:3001/health`) → `healthy` ✅
+- Public A2A (`aaa.arif-fazil.com/a2a/agents.json`) → 200, 28 agents ✅
+
+*DITEMPA BUKAN DIBERI — 999 SEAL ALIVE*
