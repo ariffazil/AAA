@@ -845,5 +845,20 @@
     "EUR-002: Iron Law of agentic loops (latency × loop depth)"
   ],
   "updated": "2026-07-29",
-  "_zen_note": "2026-08-03: Aligned with opencode.json redistribution. Primary: deepseek/deepseek-v4-pro (Pool A)"
+  "_zen_note": "2026-08-03: Aligned with opencode.json redistribution. Primary: deepseek/deepseek-v4-pro (Pool A)",
+  "telegram_posting": {
+    "telegram_posting": {
+      "bot": "@arifOS_bot",
+      "bot_name": "🔥FORGE🔥 FORGE Bot",
+      "bot_id": "8727562763",
+      "token_env": "FORGE_BOT_TOKEN",
+      "token_vault": "/root/.secrets/kunci-mas.env",
+      "group_chat_id": "-1003753855708",
+      "post_tool": "/usr/local/bin/forge-post",
+      "identity_header": "FORGE / 🔥FORGE / @arifOS_bot",
+      "rule": "Post to AAA group via FORGE bot only. One post per session. Token from vault, never hardcode.",
+      "wired_at": "2026-08-08T05:44:00Z",
+      "canon": "/root/AAA/docs/9-ATLAS-GENOME.md §7"
+    }
+  }
 }

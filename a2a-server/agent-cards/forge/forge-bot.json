@@ -6,14 +6,36 @@
   "class": "executor",
   "bound_to": "333-AGI",
   "power_band": "execution_shell",
-  "skills_prefix": ["FORGE-"],
+  "skills_prefix": [
+    "FORGE-"
+  ],
   "runtime_harness": "forge-bot",
   "identity_anchor": "/opt/forge-bot/bot.py",
-  "mcp_servers": ["aforge"],
+  "mcp_servers": [
+    "aforge"
+  ],
   "description": "Telegram @arifOS_bot — A-FORGE execution gateway. Routes commands to A-FORGE :7071 for governed execution. Commands: /health, /status, /fq, /deploy, /who.",
-  "telegram": {"bot": "@arifOS_bot", "webhook": "https://forge.arif-fazil.com/webhook/forge"},
+  "telegram": {
+    "bot": "@arifOS_bot",
+    "webhook": "https://forge.arif-fazil.com/webhook/forge"
+  },
   "authority": "EXECUTE_AFTER_SEAL",
   "max_action_class": "MUTATE",
   "status": "active",
-  "port": 8091
+  "port": 8091,
+  "telegram_posting": {
+    "telegram_posting": {
+      "bot": "@arifOS_bot",
+      "bot_name": "🔥FORGE🔥 FORGE Bot",
+      "bot_id": "8727562763",
+      "token_env": "FORGE_BOT_TOKEN",
+      "token_vault": "/root/.secrets/kunci-mas.env",
+      "group_chat_id": "-1003753855708",
+      "post_tool": "/usr/local/bin/forge-post",
+      "identity_header": "FORGE / 🔥FORGE / @arifOS_bot",
+      "rule": "Post to AAA group via FORGE bot only. One post per session. Token from vault, never hardcode.",
+      "wired_at": "2026-08-08T05:44:00Z",
+      "canon": "/root/AAA/docs/9-ATLAS-GENOME.md §7"
+    }
+  }
 }
