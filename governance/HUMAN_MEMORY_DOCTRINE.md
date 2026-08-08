@@ -3,6 +3,7 @@
 > **Sealed:** 2026-08-08 by F13 SOVEREIGN (Muhammad Arif bin Fazil)
 > **Rendered into:** AGENTS.md via `render-agents.sh`
 > **SoT:** `/root/AAA/governance/HUMAN_MEMORY_DOCTRINE.md`
+> **H5 Scar Registry (SoT):** `/root/memory/H5-scars/H5_SCAR_REGISTRY.json` — canonical index for all scars. Added 2026-08-08, F13-authorised "seal all".
 
 ---
 
@@ -76,6 +77,17 @@ Scar → Lesson → Law → System
 ```
 
 Example: Father's death → Success and grief coexist → Human reality must be witnessed → WELL.
+
+### Scar Registry Schema (SoT)
+The canonical scar registry lives at `/root/memory/H5-scars/H5_SCAR_REGISTRY.json`.
+
+Schema:
+- version: semver
+- sovereignty: "Agent does not read scar content unless scar:<id> invoked. Index reads are permitted for lineage and cross-link integrity checks."
+- scars[]: each entry has {scar_id, title, created, file_path, cross_links, meaning_anchor, last_verified}
+- stats: {total_scars, verified, stale}
+
+Registry is the index. Scar files are the content. Never merge them.
 
 ### H4 — Identity Memory
 **Who I became.**
