@@ -101,6 +101,7 @@ def _estimate_cost(provider_id: str, model_id: str, tokens_in: int, tokens_out: 
         "flame": FLAME_PRICING,
         "qwen-token-plan-team": DEEPSEEK_PRICING,  # Qwen routes deepseek models at similar pricing
         "bailian-token-plan": DEEPSEEK_PRICING,  # Bailian also similar
+        "qwen-token-plan-individual": DEEPSEEK_PRICING,  # Qwen Individual Pro — same SG endpoint, same pricing
     }
     pricing = tables.get(provider_id, {}).get(model_id, {"input": 0.50, "output": 2.00})
     return round((tokens_in / 1_000_000) * pricing["input"] + (tokens_out / 1_000_000) * pricing["output"], 8)
@@ -115,6 +116,7 @@ def _estimate_cost_per_1k(provider_id: str, model_id: str) -> dict:
         "flame": FLAME_PRICING,
         "qwen-token-plan-team": DEEPSEEK_PRICING,
         "bailian-token-plan": DEEPSEEK_PRICING,
+        "qwen-token-plan-individual": DEEPSEEK_PRICING,
     }
     pricing = tables.get(provider_id, {}).get(model_id, {"input": 0.50, "output": 2.00})
     return {
@@ -230,12 +232,20 @@ MODEL_ROUTES = {
             "priority": 1,
         },
         {
+            "provider": "qwen-token-plan-individual",
+            "router": "direct",
+            "class": "direct",
+            "constitutional": True,
+            "shadow": None,
+            "priority": 2,
+        },
+        {
             "provider": "qwen-token-plan-team",
             "router": "direct",
             "class": "direct",
             "constitutional": False,
             "shadow": None,
-            "priority": 2,
+            "priority": 3,
         },
         {
             "provider": "mulerouter",
@@ -243,7 +253,7 @@ MODEL_ROUTES = {
             "class": "gateway",
             "constitutional": False,
             "shadow": None,
-            "priority": 3,
+            "priority": 4,
         },
         {
             "provider": "tokenrouter",
@@ -251,7 +261,7 @@ MODEL_ROUTES = {
             "class": "gateway_shadowed",
             "constitutional": False,
             "shadow": "SHADOW-TR-001",
-            "priority": 4,
+            "priority": 5,
         },
     ],
     "deepseek-v4-flash": [
@@ -264,6 +274,49 @@ MODEL_ROUTES = {
             "priority": 1,
         },
         {
+            "provider": "qwen-token-plan-individual",
+            "router": "direct",
+            "class": "direct",
+            "constitutional": False,
+            "shadow": None,
+            "priority": 2,
+        },
+        {
+            "provider": "qwen-token-plan-team",
+            "router": "direct",
+            "class": "direct",
+            "constitutional": False,
+            "shadow": None,
+            "priority": 3,
+        },
+        {
+            "provider": "mulerouter",
+            "router": "gateway",
+            "class": "gateway",
+            "constitutional": False,
+            "shadow": None,
+            "priority": 4,
+        },
+        {
+            "provider": "tokenrouter",
+            "router": "gateway",
+            "class": "gateway_shadowed",
+            "constitutional": False,
+            "shadow": "SHADOW-TR-001",
+            "priority": 5,
+        },
+    ],
+    # Qwen family — best via MuleRouter (vision models)
+    "qwen3.6-flash": [
+        {
+            "provider": "qwen-token-plan-individual",
+            "router": "direct",
+            "class": "direct",
+            "constitutional": False,
+            "shadow": None,
+            "priority": 1,
+        },
+        {
             "provider": "qwen-token-plan-team",
             "router": "direct",
             "class": "direct",
@@ -279,19 +332,10 @@ MODEL_ROUTES = {
             "shadow": None,
             "priority": 3,
         },
-        {
-            "provider": "tokenrouter",
-            "router": "gateway",
-            "class": "gateway_shadowed",
-            "constitutional": False,
-            "shadow": "SHADOW-TR-001",
-            "priority": 4,
-        },
     ],
-    # Qwen family — best via MuleRouter (vision models)
-    "qwen3.6-flash": [
+    "qwen3.7-plus": [
         {
-            "provider": "qwen-token-plan-team",
+            "provider": "qwen-token-plan-individual",
             "router": "direct",
             "class": "direct",
             "constitutional": False,
@@ -299,27 +343,53 @@ MODEL_ROUTES = {
             "priority": 1,
         },
         {
+            "provider": "qwen-token-plan-team",
+            "router": "direct",
+            "class": "direct",
+            "constitutional": False,
+            "shadow": None,
+            "priority": 2,
+        },
+        {
             "provider": "mulerouter",
             "router": "gateway",
             "class": "gateway",
+            "constitutional": False,
+            "shadow": None,
+            "priority": 3,
+        },
+    ],
+    "qwen3.7-max": [
+        {
+            "provider": "qwen-token-plan-individual",
+            "router": "direct",
+            "class": "direct",
+            "constitutional": False,
+            "shadow": None,
+            "priority": 1,
+        },
+        {
+            "provider": "qwen-token-plan-team",
+            "router": "direct",
+            "class": "direct",
             "constitutional": False,
             "shadow": None,
             "priority": 2,
         },
     ],
-    "qwen3.7-plus": [
+    "qwen3.8-max": [
         {
-            "provider": "qwen-token-plan-team",
+            "provider": "qwen-token-plan-individual",
             "router": "direct",
             "class": "direct",
-            "constitutional": False,
+            "constitutional": True,
             "shadow": None,
             "priority": 1,
         },
         {
-            "provider": "mulerouter",
-            "router": "gateway",
-            "class": "gateway",
+            "provider": "qwen-token-plan-team",
+            "router": "direct",
+            "class": "direct",
             "constitutional": False,
             "shadow": None,
             "priority": 2,
@@ -479,12 +549,20 @@ MODEL_ROUTES = {
     ],
     "glm-5.2": [
         {
+            "provider": "qwen-token-plan-individual",
+            "router": "direct",
+            "class": "direct",
+            "constitutional": True,
+            "shadow": None,
+            "priority": 1,
+        },
+        {
             "provider": "tokenrouter",
             "router": "gateway",
             "class": "gateway",
-            "constitutional": False,
+            "constitutional": True,
             "shadow": None,
-            "priority": 1,
+            "priority": 2,
             "free": True,
         },
         {
@@ -493,7 +571,7 @@ MODEL_ROUTES = {
             "class": "direct",
             "constitutional": False,
             "shadow": None,
-            "priority": 2,
+            "priority": 3,
         },
     ],
     "kimi-k2.7-code": [
@@ -663,9 +741,17 @@ def fed_route_engine(
         balance = bal["balance_usd"] if bal else None
         confidence = bal["balance_confidence"] if bal else 0.30
         track = bal["track"] if bal else "B"
+        notes = str(bal.get("notes", "") or "") if bal else ""
         balance_flag = None
 
-        if track == "A" and confidence >= 0.95:
+        # Monthly token plans (credit-based, not USD) — do not HARD-demote on $0 balance.
+        # Track A + monthly_plan marker → check notes for "monthly" or "credit" to skip HARD gate.
+        is_monthly_plan = any(
+            tag in notes.lower()
+            for tag in ("monthly_token_plan", "credit pack", "credit-based", "monthly plan", "credit_plan")
+        )
+
+        if track == "A" and confidence >= 0.95 and not is_monthly_plan:
             # Track A: API-probed, hard gate at $1.00
             if balance is not None and balance < 1.00:
                 priority += 10  # HARD demotion
