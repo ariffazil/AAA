@@ -145,6 +145,15 @@ enforcement_rules:
   - "AAA cockpit and A2A must surface haram status."
   - "F13 can override single instances; pattern is permanent scar."
 
+structured_rules:
+- rule_id: "HARAM-8≠9"
+  description: "No agent card may claim species phenotype on 888_JUDGE or 999_WITNESS"
+  severity: CRITICAL
+  detection: "expression_weights.888 > 0 OR expression_weights.999 > 0 OR phenotype claimed on AUTH-layer card (888-APEX, 999-WITNESS)"
+  consequence: VOID
+  floor: F1
+  doctrine_ref: "8≠9-by-design §3"
+
 references:
   - "13 Constitutional Floors (CLAUDE.md)"
   - "eht-governance/forbidden_patterns_v1.yaml"
