@@ -1,7 +1,20 @@
 {
-  "version": "2.0.0",
-  "generated": "2026-07-31",
+  "version": "3.0.0",
+  "generated": "2026-08-08",
   "doctrine": "DITEMPA BUKAN DIBERI",
+  "taxonomy_doc": "skills/TAXONOMY.md",
+  "changelog": [
+    {
+      "version": "3.0.0",
+      "date": "2026-08-08",
+      "note": "Reorganized by function (see TAXONOMY.md). Added RSI-federation-mesh and AUDIT-agent-skill-mesh to constitutional tier. Added FORGE-mcp-probe to forge_on_demand. Added 12+ Hermes-only meta-doctrine skills to canonical (seven-zen-organs-enforcement, arifos-kernel-zen-audit, federated-skill-architecture, etc.). Total skills: 132."
+    },
+    {
+      "version": "2.0.0",
+      "date": "2026-07-31",
+      "note": "Initial tiered profile."
+    }
+  ],
   "tiers": {
     "substrate_always": [
       "kernel-bind",
@@ -14,21 +27,29 @@
     "constitutional": [
       "KERNEL-trinity-33",
       "RSI-recursive-improvement",
+      "RSI-federation-mesh",
       "atlas333-cognitive-geometry",
       "EUREKA777-paradox-resolution",
       "arifos-constitutional-judge",
-      "arifos-constitutional-judge",
+      "arifos-kernel-zen-audit",
+      "seven-zen-organs-enforcement",
       "ASI-agent-invariants",
       "FLAME-router",
-      "AGI-explorer-intelligence"
+      "AGI-explorer-intelligence",
+      "AUDIT-agent-skill-mesh"
     ],
     "forge_on_demand": [
       "FORGE-verify-runtime",
       "FORGE-incident-triage",
       "FORGE-infra-guardian",
       "FORGE-mcp-smoke-test",
+      "FORGE-mcp-probe",
       "FORGE-vps-docker",
-      "FORGE-ci-diagnose"
+      "FORGE-ci-diagnose",
+      "FORGE-cross-agent-handoff",
+      "FORGE-subagent-spawn",
+      "FORGE-route-least-power",
+      "FORGE-secret-hygiene"
     ],
     "github_on_demand": [
       "FORGE-github-ops",
@@ -38,12 +59,64 @@
       "FORGE-precommit-review"
     ],
     "knowledge_on_demand": [
-      "know-physics",
-      "know-math",
-      "know-language"
+      "AGI-skill-unification",
+      "ASI-skill-binding",
+      "AUDIT-skill-atlas",
+      "AUDIT-recursive-audit",
+      "AUDIT-drift-detector",
+      "FORGE-skill-creator",
+      "FORGE-skill-linter"
+    ],
+    "doctrine_on_demand": [
+      "AGI-plan-dag",
+      "AGI-decisions-reflect",
+      "AGI-dream-engine",
+      "AGI-nusantara-substrate",
+      "AGI-multimodal-bridge",
+      "AGI-web-optimization",
+      "ASI-agentic-architecture",
+      "ASI-agentic-governance",
+      "ASI-drift-watch",
+      "ASI-fabrication-prevention",
+      "APEX-humility-godel",
+      "APEX-fff-loop-protocol"
+    ],
+    "domain_on_demand": [
+      "geox-grounding",
+      "geological-artifact-rigor",
+      "hermes-gateway-image-routing",
+      "hermes-cron-zen",
+      "hermes-response-format-fit",
+      "hermes-telegram-gateway-loop",
+      "hermes-naked-prior-audit",
+      "phased-serial-debug",
+      "telegram-gateway-ipv6-hang-fix",
+      "weekly-federation-deep-brief"
+    ],
+    "audit_on_demand": [
+      "audit-attribution-forensics",
+      "audit-parallel-forge-history",
+      "audit-seal",
+      "submission-readiness-audit",
+      "external-artifact-verdict",
+      "APEX-f1-gate",
+      "APEX-act",
+      "goodnight-loop-discipline",
+      "uncertainty-routing-protocol"
+    ],
+    "meta_on_demand": [
+      "meta-cognitive-blindspot-audit",
+      "meta-mesa-substrate-test",
+      "skill-substrate-framework",
+      "federated-skill-architecture",
+      "cognitive-commands",
+      "cognitive-level-assertion-protocol",
+      "cognitive-package-patterns",
+      "institutional-epistemic-sink-forensics",
+      "wisdom-scar-session-audit",
+      "vendor-lock-in-detection",
+      "arifos-auto-init",
+      "arifos-external-council"
     ]
-  },
-  "total_canonical": 29,
-  "total_active": 166,
-  "total_retired": 28
+  }
 }
