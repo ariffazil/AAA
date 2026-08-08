@@ -841,6 +841,534 @@
    "restored_live": false
   },
   {
+   "v3_name": "apex-audit-coverage",
+   "layer": "domain",
+   "primary_disk_name": "apex_audit_coverage_check",
+   "primary_path": "/root/AAA/skills/apex_audit_coverage_check",
+   "primary_resolved": "/root/AAA/skills/apex_audit_coverage_check",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "apex_audit_coverage_check",
+     "path": "/root/AAA/skills/apex_audit_coverage_check",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "apex-authority-check",
+   "layer": "domain",
+   "primary_disk_name": "apex_authority_check",
+   "primary_path": "/root/AAA/skills/apex_authority_check",
+   "primary_resolved": "/root/AAA/skills/apex_authority_check",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "apex_authority_check",
+     "path": "/root/AAA/skills/apex_authority_check",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "apex-floor-check",
+   "layer": "domain",
+   "primary_disk_name": "apex_floor_check",
+   "primary_path": "/root/AAA/skills/apex_floor_check",
+   "primary_resolved": "/root/AAA/skills/apex_floor_check",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "apex_floor_check",
+     "path": "/root/AAA/skills/apex_floor_check",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "apex-reversibility",
+   "layer": "domain",
+   "primary_disk_name": "apex_reversibility_test",
+   "primary_path": "/root/AAA/skills/apex_reversibility_test",
+   "primary_resolved": "/root/AAA/skills/apex_reversibility_test",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "apex_reversibility_test",
+     "path": "/root/AAA/skills/apex_reversibility_test",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "apex-scope-check",
+   "layer": "domain",
+   "primary_disk_name": "apex_scope_check",
+   "primary_path": "/root/AAA/skills/apex_scope_check",
+   "primary_resolved": "/root/AAA/skills/apex_scope_check",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "apex_scope_check",
+     "path": "/root/AAA/skills/apex_scope_check",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "apex-tool-gate",
+   "layer": "domain",
+   "primary_disk_name": "apex_tool_approval_gate",
+   "primary_path": "/root/AAA/skills/apex_tool_approval_gate",
+   "primary_resolved": "/root/AAA/skills/apex_tool_approval_gate",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "apex_tool_approval_gate",
+     "path": "/root/AAA/skills/apex_tool_approval_gate",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "apex-verdict-hold",
+   "layer": "domain",
+   "primary_disk_name": "apex_verdict_hold",
+   "primary_path": "/root/AAA/skills/apex_verdict_hold",
+   "primary_resolved": "/root/AAA/skills/apex_verdict_hold",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "apex_verdict_hold",
+     "path": "/root/AAA/skills/apex_verdict_hold",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "apex-verdict-seal",
+   "layer": "domain",
+   "primary_disk_name": "apex_verdict_seal",
+   "primary_path": "/root/AAA/skills/apex_verdict_seal",
+   "primary_resolved": "/root/AAA/skills/apex_verdict_seal",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "apex_verdict_seal",
+     "path": "/root/AAA/skills/apex_verdict_seal",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "apex-quantum-eureka",
+   "layer": "domain",
+   "primary_disk_name": "APEX-quantum-eureka",
+   "primary_path": "/root/AAA/skills/APEX-quantum-eureka",
+   "primary_resolved": "/root/AAA/skills/APEX-quantum-eureka",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "APEX-quantum-eureka",
+     "path": "/root/AAA/skills/APEX-quantum-eureka",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "ops-compressor",
+   "layer": "domain",
+   "primary_disk_name": "FORGE-context-compressor",
+   "primary_path": "/root/AAA/skills/FORGE-context-compressor",
+   "primary_resolved": "/root/AAA/skills/FORGE-context-compressor",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "FORGE-context-compressor",
+     "path": "/root/AAA/skills/FORGE-context-compressor",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "ops-compress",
+   "layer": "domain",
+   "primary_disk_name": "FORGE-context-compress",
+   "primary_path": "/root/AAA/skills/FORGE-context-compress",
+   "primary_resolved": "/root/AAA/skills/FORGE-context-compress",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "FORGE-context-compress",
+     "path": "/root/AAA/skills/FORGE-context-compress",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "ops-data-compress",
+   "layer": "domain",
+   "primary_disk_name": "FORGE-data-compression",
+   "primary_path": "/root/AAA/skills/FORGE-data-compression",
+   "primary_resolved": "/root/AAA/skills/FORGE-data-compression",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "FORGE-data-compression",
+     "path": "/root/AAA/skills/FORGE-data-compression",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "ops-infra-crons",
+   "layer": "domain",
+   "primary_disk_name": "FORGE-infra-crons",
+   "primary_path": "/root/AAA/skills/FORGE-infra-crons",
+   "primary_resolved": "/root/AAA/skills/FORGE-infra-crons",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "FORGE-infra-crons",
+     "path": "/root/AAA/skills/FORGE-infra-crons",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "dev-web-builder",
+   "layer": "domain",
+   "primary_disk_name": "FORGE-nextjs-mastery",
+   "primary_path": "/root/AAA/skills/FORGE-nextjs-mastery",
+   "primary_resolved": "/root/AAA/skills/FORGE-nextjs-mastery",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "FORGE-nextjs-mastery",
+     "path": "/root/AAA/skills/FORGE-nextjs-mastery",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "dev-db-stack",
+   "layer": "domain",
+   "primary_disk_name": "FORGE-postgres-schema-design",
+   "primary_path": "/root/AAA/skills/FORGE-postgres-schema-design",
+   "primary_resolved": "/root/AAA/skills/FORGE-postgres-schema-design",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "FORGE-postgres-schema-design",
+     "path": "/root/AAA/skills/FORGE-postgres-schema-design",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "dev-fastapi",
+   "layer": "domain",
+   "primary_disk_name": "FORGE-fastapi-api-builder",
+   "primary_path": "/root/AAA/skills/FORGE-fastapi-api-builder",
+   "primary_resolved": "/root/AAA/skills/FORGE-fastapi-api-builder",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "FORGE-fastapi-api-builder",
+     "path": "/root/AAA/skills/FORGE-fastapi-api-builder",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "dev-did-identity",
+   "layer": "domain",
+   "primary_disk_name": "FORGE-did-web-identity",
+   "primary_path": "/root/AAA/skills/FORGE-did-web-identity",
+   "primary_resolved": "/root/AAA/skills/FORGE-did-web-identity",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "FORGE-did-web-identity",
+     "path": "/root/AAA/skills/FORGE-did-web-identity",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "dev-t3a-matrix",
+   "layer": "domain",
+   "primary_disk_name": "FORGE-t3a-binding-matrix",
+   "primary_path": "/root/AAA/skills/FORGE-t3a-binding-matrix",
+   "primary_resolved": "/root/AAA/skills/FORGE-t3a-binding-matrix",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "FORGE-t3a-binding-matrix",
+     "path": "/root/AAA/skills/FORGE-t3a-binding-matrix",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "dev-komda-law",
+   "layer": "domain",
+   "primary_disk_name": "FORGE-komda-color-law",
+   "primary_path": "/root/AAA/skills/FORGE-komda-color-law",
+   "primary_resolved": "/root/AAA/skills/FORGE-komda-color-law",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "FORGE-komda-color-law",
+     "path": "/root/AAA/skills/FORGE-komda-color-law",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "dev-sct-ingress",
+   "layer": "domain",
+   "primary_disk_name": "FORGE-act-federation-ingress",
+   "primary_path": "/root/AAA/skills/FORGE-act-federation-ingress",
+   "primary_resolved": "/root/AAA/skills/FORGE-act-federation-ingress",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "FORGE-act-federation-ingress",
+     "path": "/root/AAA/skills/FORGE-act-federation-ingress",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "dev-seal-close",
+   "layer": "domain",
+   "primary_disk_name": "FORGE-seal-a-close",
+   "primary_path": "/root/AAA/skills/FORGE-seal-a-close",
+   "primary_resolved": "/root/AAA/skills/FORGE-seal-a-close",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "FORGE-seal-a-close",
+     "path": "/root/AAA/skills/FORGE-seal-a-close",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "dev-jsonld",
+   "layer": "domain",
+   "primary_disk_name": "FORGE-governance-jsonld",
+   "primary_path": "/root/AAA/skills/FORGE-governance-jsonld",
+   "primary_resolved": "/root/AAA/skills/FORGE-governance-jsonld",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "FORGE-governance-jsonld",
+     "path": "/root/AAA/skills/FORGE-governance-jsonld",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "domain-causal",
+   "layer": "domain",
+   "primary_disk_name": "causal555-pywhy",
+   "primary_path": "/root/AAA/skills/causal555-pywhy",
+   "primary_resolved": "/root/AAA/skills/causal555-pywhy",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "causal555-pywhy",
+     "path": "/root/AAA/skills/causal555-pywhy",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "domain-delta-omega-psi",
+   "layer": "domain",
+   "primary_disk_name": "delta-omega-psi-multimodal-cognition",
+   "primary_path": "/root/AAA/skills/delta-omega-psi-multimodal-cognition",
+   "primary_resolved": "/root/AAA/skills/delta-omega-psi-multimodal-cognition",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "delta-omega-psi-multimodal-cognition",
+     "path": "/root/AAA/skills/delta-omega-psi-multimodal-cognition",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "domain-wealth-claim",
+   "layer": "domain",
+   "primary_disk_name": "wealth-claim-state",
+   "primary_path": "/root/AAA/skills/wealth-claim-state",
+   "primary_resolved": "/root/AAA/skills/wealth-claim-state",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "wealth-claim-state",
+     "path": "/root/AAA/skills/wealth-claim-state",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "domain-summarize",
+   "layer": "domain",
+   "primary_disk_name": "ASI-summarize",
+   "primary_path": "/root/AAA/skills/ASI-summarize",
+   "primary_resolved": "/root/AAA/skills/ASI-summarize",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "ASI-summarize",
+     "path": "/root/AAA/skills/ASI-summarize",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "domain-federation-hs",
+   "layer": "domain",
+   "primary_disk_name": "federation-connect-headscale",
+   "primary_path": "/root/AAA/skills/federation-connect-headscale",
+   "primary_resolved": "/root/AAA/skills/federation-connect-headscale",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "federation-connect-headscale",
+     "path": "/root/AAA/skills/federation-connect-headscale",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "domain-release-attest",
+   "layer": "domain",
+   "primary_disk_name": "federation-release-attestation",
+   "primary_path": "/root/AAA/skills/federation-release-attestation",
+   "primary_resolved": "/root/AAA/skills/federation-release-attestation",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "federation-release-attestation",
+     "path": "/root/AAA/skills/federation-release-attestation",
+     "home": "aaa"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": false,
+   "restored_live": false
+  },
+  {
+   "v3_name": "dev-sct-ingress-deprecated",
+   "layer": "domain",
+   "primary_disk_name": "FORGE-act-federation-ingress",
+   "primary_path": "/root/AAA/skills/FORGE-act-federation-ingress",
+   "primary_resolved": "/root/AAA/skills/FORGE-act-federation-ingress",
+   "primary_home": "aaa",
+   "related": [
+    {
+     "name": "FORGE-act-federation-ingress",
+     "path": "/root/AAA/skills/FORGE-act-federation-ingress",
+     "home": "aaa"
+    },
+    {
+     "name": "FORGE-sct-federation-ingress",
+     "path": "/root/AAA/skills/FORGE-sct-federation-ingress",
+     "home": "aaa",
+     "note": "LEGACY \u2014 renamed SCT\u2192ACT"
+    }
+   ],
+   "status": "RESOLVED",
+   "tombstone": true,
+   "restored_live": false
+  },
+  {
    "v3_name": "ops-google",
    "layer": "domain",
    "primary_disk_name": "google-workspace-cli",

@@ -2,10 +2,9 @@
 id: arifos-recursive-audit
 name: AUDIT-recursive-audit
 autonomy_tier: T1
-version: 1.0.0
-description: Audit all installed skills for overlap, stale docs, prompt bloat, trigger
-  ambiguity, and broken references. Load when reviewing the skill portfolio or after
-  modifying or adding new skills.
+version: 2.0.0
+updated: 2026-08-08
+description: "v2.0: Multi-surface skill audit (10 agent homes) with cross-surface contrast, drift/orphan/dual-name detection. Load when reviewing the skill portfolio, after modifying skills, or after adding/removing agent harnesses."
 owner: AAA
 risk_tier: medium
 knowledge_basis:
@@ -47,7 +46,47 @@ floor_scope:
 - F11
 ---
 
-# arifos-recursive-audit (O_Ω Constitutional Layer)
+# arifos-recursive-audit v2.0 (O_Ω Constitutional Layer)
+
+## v2.0 Upgrade (2026-08-08)
+
+> Cross-surface methodology added. Now audits ALL 10 agent surfaces (AAA canonical, kimi, opencode, grok, claude, codex, hermes, hermes-asi, openclaw-ws, openclaw-bundled), not just one directory.
+> **Contrast template:** `/root/AAA/skills/CONTRAST_ANALYSIS_2026-08-08.md`
+
+## Cross-Surface Inventory (NEW)
+
+```bash
+# 1. Dump each surface (example for AAA vs kimi)
+comm -23 <(ls /root/AAA/skills/ | sort) <(ls /root/.kimi-code/skills/ | sort)   # orphans: AAA has, kimi lacks
+comm -13 <(ls /root/AAA/skills/ | sort) <(ls /root/.kimi-code/skills/ | sort)   # drift: kimi has, AAA lacks
+```
+
+### 10 Surfaces
+
+| # | Surface | Path | Type |
+|---|---------|------|------|
+| 1 | AAA canonical | `/root/AAA/skills/` | SOT |
+| 2 | kimi | `/root/.kimi-code/skills/` | copy |
+| 3 | opencode | `/root/.arifos/agents/opencode/skills/` | symlink |
+| 4 | grok | `/root/.grok/skills/` | symlink |
+| 5 | claude | `/root/.claude/skills/` | symlink |
+| 6 | codex | `/root/.codex/skills/` | symlink |
+| 7 | hermes | `/root/.hermes/skills/` | copy |
+| 8 | hermes-asi | `/usr/local/lib/hermes-agent/skills/` | copy |
+| 9 | openclaw-ws | `/root/.openclaw/workspace/skills/` | copy |
+| 10 | openclaw-bundled | bundled | built-in |
+
+### Classification Matrix (NEW)
+
+| Verdict | Condition | Action |
+|---------|-----------|--------|
+| ✅ PROMOTE | kimi/agent has it, AAA lacks, universal | Copy to AAA, register V3, add alias |
+| 📦 ARCHIVE | agent has it, AAA has better version | Move to `_retired/<date>/` |
+| 🔧 HARNESS-NATIVE | agent-specific (claude-xml, copilot, grok-profile) | OK — don't promote |
+| 🔲 NEED MIRROR | AAA has it, agent lacks | Copy/symlink to agent |
+| ⚠️ DUAL-NAME | Same skill, different names across surfaces | Alias table entry or symlink |
+| ☠️ VOID | Zero invocations, zero evidence | SKILL.md → SKILL.md.VOID |
+
 
 ## arifOS-ACT Embedding
 
@@ -89,6 +128,8 @@ Each checked skill must receive a specific Rot Rating in the audit report:
 *   **`trigger-rot`:** The skill's triggering criteria overlap semantically with other skills, leading to multiple activations or trigger failures.
 *   **`unused-rot`:** The skill is structurally valid but has not registered a telemetry execution record within the threshold window.
 *   **`archive-void-rot`:** (Added 2026-08-04) The skill has been physically moved to `.archive-20260804/` but remains discoverable by the skill loader. Physical archive without deactivation (SKILL.md → SKILL.md.VOID) creates drift between filesystem and registry. This is a new rot class discovered during the first autonomous VOID audit.
+*   **`drift-rot`:** (Added 2026-08-08) Skill exists on agent surface but NOT in AAA canonical, or vice versa. Classify per matrix: PROMOTE / ARCHIVE / HARNESS-NATIVE / MIRROR.
+*   **`dual-name-rot`:** (Added 2026-08-08) Same skill has different names on different surfaces (e.g. FORGE-act-federation-ingress vs FORGE-sct-federation-ingress). Fix via alias table or symlink.
 
 ## Procedure
 1.  **Portfolio Scan:** Map all active `SKILL.md` files and resolve their frontmatter definitions. Include `.archive-*` directories in the scan — archived skills still discoverable by the loader are `archive-void-rot`.
