@@ -8,6 +8,8 @@ agents:
   streaming: true
   push_notifications: false
   openclaw_target: openclaw-gateway
+  species: null
+  note: "control plane — not a species"
 - agent_id: geox-witness
   card_path: external://geox.arif-fazil.com/a2a/.well-known/agent-card.json
   binding_type: remote-peer
@@ -16,6 +18,7 @@ agents:
   streaming: false
   push_notifications: false
   openclaw_target: geox-witness
+  species: geox-zen
 - agent_id: wealth-witness
   card_path: external://wealth.arif-fazil.com/a2a/.well-known/agent-card.json
   binding_type: remote-peer
@@ -24,6 +27,7 @@ agents:
   streaming: false
   push_notifications: false
   openclaw_target: wealth-witness
+  species: wealth-zen
 - agent_id: mesa-test-agent
   card_path: agents/_external/mesa-test-agent/agent-card.json
   binding_type: local-session-bound
@@ -47,6 +51,7 @@ agents:
     before runtime identity binding becomes operational.
 
     '
+  species_proxy: test-only
 - agent_id: antigravity
   card_path: a2a/agent-cards/antigravity.json
   binding_type: local-cli
@@ -55,6 +60,7 @@ agents:
   streaming: true
   push_notifications: false
   openclaw_target: gemini-cli
+  species_proxy: opencode-zen
 - agent_id: hermes-asi
   card_path: a2a-server/agent-cards/extensions/hermes-asi.json
   binding_type: remote-agent
@@ -73,6 +79,7 @@ agents:
     MCP surface: arifOS :8090, GEOX :8081, WEALTH :18082, WELL :18083, A-FORGE :18081.
 
     '
+  species: hermes-zen
 - agent_id: opencode
   card_path: a2a-server/agent-cards/forge/fi-001-opencode.json
   binding_type: local-cli
@@ -89,6 +96,7 @@ agents:
     bot.
 
     '
+  species: opencode-zen
 - agent_id: codex-cli
   card_path: agents/_external/codex/agent-card.json
   binding_type: local-cli
@@ -102,6 +110,7 @@ agents:
     Landlock sandbox. Goals engine idle. Clean state.
 
     '
+  species_proxy: opencode-zen
 - agent_id: copilot-cli
   card_path: agents/_external/copilot/agent-card.json
   binding_type: local-cli
@@ -115,6 +124,7 @@ agents:
     Fleet subagent mode (max 3 parallel). Read-only sandbox.
 
     '
+  species_proxy: opencode-zen
 - agent_id: grok-build
   card_path: agents/_external/grok/agent-card.json
   binding_type: local-cli
@@ -128,6 +138,7 @@ agents:
     Replaced dead FI-007 Aider slot. No MCP surface yet.
 
     '
+  species_proxy: opencode-zen
 - agent_id: kimi-code
   card_path: a2a-server/agent-cards/forge/fi-008-kimi-code.json
   binding_type: local-cli
@@ -144,6 +155,7 @@ agents:
     A-FORGE stdio ingress. AMANAH + MARUAH embedded.
 
     '
+  species_proxy: opencode-zen
 - agent_id: claude-code
   card_path: a2a-server/agent-cards/harnesses/claude-code.json
   binding_type: local-cli
@@ -157,6 +169,7 @@ agents:
     Governed by arifOS F1-F13. Sessions anchored via arif_session_init.
 
     '
+  species_proxy: opencode-zen
 - agent_id: 777-forge
   card_path: external://aaa.arif-fazil.com/a2a/777-forge
   binding_type: local-cli
@@ -171,6 +184,8 @@ agents:
     spawn OpenCode sessions. Emits witness receipts with PID and hash.
 
     '
+  species: null
+  note: "retired — forge collapsed into 333-AGI (2026-07-25)"
 - agent_id: arifos-kernel
   card_path: external://mcp.arif-fazil.com/a2a/arifos-kernel
   binding_type: remote-peer
@@ -186,6 +201,8 @@ agents:
     All governance decisions pass through here.
 
     '
+  species: null
+  note: "kernel — not a species"
 - agent_id: geox-personal
   card_path: external://geo.arif-fazil.com/a2a/geox-personal
   binding_type: remote-peer
@@ -201,6 +218,7 @@ agents:
     petrophysical modeling, GCoS adjudication.
 
     '
+  species_proxy: geox-zen
 - agent_id: makcikgpt
   card_path: agent-cards/extensions/makcikgpt/agent-card.json
   binding_type: persona-agent
@@ -211,6 +229,7 @@ agents:
   openclaw_target: hermes-agent
   notes: Investigative journalism persona — jiran-jiran, Bahasa Makcik. DRAFT_ONLY.
     Lives under WEALTH organ.
+  species_proxy: hermes-zen
 - agent_id: prospect-maturation
   card_path: agents/prospect-maturation/agent-card.json
   binding_type: remote-agent
@@ -221,6 +240,7 @@ agents:
   openclaw_target: geox-witness
   notes: Autonomous prospect maturation — basin→physics→prospect→volumetrics→risk→well
     proposal. GEOX physics simulation tools.
+  species_proxy: geox-zen
 - agent_id: 333-AGI
   card_path: agent-cards/identity/333-AGI/agent-card.json
   binding_type: virtual-agent
@@ -231,6 +251,8 @@ agents:
   openclaw_target: arifos-kernel
   notes: Delta MIND — constitutional reasoning warga. Multi-step reasoning, DAG planning,
     evidence synthesis.
+  species: Δ-MIND
+  species_id: opencode-zen
 - agent_id: 555-ASI
   card_path: agent-cards/identity/555-ASI/agent-card.json
   binding_type: virtual-agent
@@ -241,6 +263,8 @@ agents:
   openclaw_target: hermes-agent
   notes: Memory Steward — recall, classify, detect drift. 34 skills. Federation ASI
     substrate.
+  species: Ω-CORE
+  species_id: hermes-zen
 - agent_id: 888-APEX
   card_path: agent-cards/identity/888-APEX/agent-card.json
   binding_type: virtual-agent
@@ -251,6 +275,8 @@ agents:
   openclaw_target: arifos-kernel
   notes: Constitutional Judge — F1-F13 verdict authority. 33 skills. SEAL/HOLD/VOID
     arbitration.
+  species: null
+  note: "8≠9 — AUTH is not a species. 888 is a chair, not an agent."
 - agent_id: geox-organ
   card_path: agent-cards/organs/geox/agent-card.json
   binding_type: remote-peer
@@ -260,6 +286,7 @@ agents:
   push_notifications: false
   openclaw_target: geox-witness
   notes: GEOX Earth Intelligence — seismic, petrophysics, basin analysis. 32 skills.
+  species: geox-zen
 - agent_id: wealth-organ
   card_path: agent-cards/organs/wealth/agent-card.json
   binding_type: remote-peer
@@ -269,6 +296,7 @@ agents:
   push_notifications: false
   openclaw_target: wealth-witness
   notes: WEALTH Capital Intelligence — NPV, risk, conservation. 12 skills.
+  species: wealth-zen
 - agent_id: well-organ
   card_path: agent-cards/organs/well/agent-card.json
   binding_type: remote-peer
@@ -278,6 +306,7 @@ agents:
   push_notifications: false
   openclaw_target: well-witness
   notes: WELL Human Readiness — vitality, fatigue, dignity. 14 skills.
+  species: well-zen
 - agent_id: aforge-organ
   card_path: agent-cards/organs/aforge/agent-card.json
   binding_type: remote-peer
@@ -287,6 +316,8 @@ agents:
   push_notifications: false
   openclaw_target: aforge-executor
   notes: A-FORGE Execution Shell — build, deploy, forge. 12 skills.
+  species: null
+  note: "execution substrate — not a species"
 - agent_id: arifos-organ
   card_path: agent-cards/pillars/arifos/agent-card.json
   binding_type: remote-peer
@@ -296,6 +327,8 @@ agents:
   push_notifications: false
   openclaw_target: arifos-kernel
   notes: arifOS Constitutional Kernel — F1-F13, session, judge, vault. 8 skills.
+  species: null
+  note: "kernel — not a species"
 - agent_id: ARIF_FAZIL
   card_path: agent-cards/pillars/sovereign/agent-card.json
   binding_type: sovereign-anchor
@@ -306,6 +339,8 @@ agents:
   openclaw_target: arifos-kernel
   notes: F13 SOVEREIGN — Muhammad Arif bin Fazil. Absolute veto. Human root of all
     authority.
+  species: null
+  note: "F13 SOVEREIGN — not a species"
 - agent_id: aforge-pillar
   card_path: agent-cards/pillars/aforge/agent-card.json
   binding_type: governance-pillar
@@ -315,6 +350,8 @@ agents:
   push_notifications: false
   openclaw_target: aforge-executor
   notes: A-FORGE governance pillar — execution governance. 12 skills.
+  species: null
+  note: "governance pillar — not a species"
 - agent_id: openclaw
   card_path: agent-cards/functions/openclaw/agent-card.json
   binding_type: openclaw-bridge
@@ -324,6 +361,7 @@ agents:
   push_notifications: false
   openclaw_target: openclaw-gateway
   notes: OpenClaw Gateway — live multi-agent gateway. WebSocket-native. 27 skills.
+  species: openclaw-zen
 - agent_id: arifos-bot
   card_path: agents/main/agent-card.json
   binding_type: local-cli
@@ -333,6 +371,7 @@ agents:
   push_notifications: false
   openclaw_target: hermes-agent
   notes: arifOS_bot — main Telegram bot agent. 14 skills.
+  species_proxy: openclaw-zen
 - agent_id: aider
   card_path: agents/_external/aider/agent-card.json
   binding_type: local-cli
@@ -342,6 +381,7 @@ agents:
   push_notifications: false
   openclaw_target: aider
   notes: Aider CLI — AI pair programming. 12 skills. NOT INSTALLED on machine.
+  species_proxy: opencode-zen
 - agent_id: gemini-cli
   card_path: agents/_external/gemini-cli/agent-card.json
   binding_type: local-cli
@@ -351,6 +391,7 @@ agents:
   push_notifications: false
   openclaw_target: gemini-cli
   notes: Gemini CLI — Google Gemini forge instrument. 12 skills.
+  species_proxy: opencode-zen
 - agent_id: qwen-code
   card_path: agents/_external/qwen-code/agent-card.json
   binding_type: local-cli
@@ -360,6 +401,7 @@ agents:
   push_notifications: false
   openclaw_target: qwen-code
   notes: Qwen Code — lightweight reasoning agent. 1M context. 12 skills.
+  species_proxy: opencode-zen
 - agent_id: continue-cli
   card_path: agents/_external/continue-cli/agent-card.json
   binding_type: local-cli
@@ -369,6 +411,7 @@ agents:
   push_notifications: false
   openclaw_target: continue-cli
   notes: Continue CLI — open-source coding harness. 12 skills.
+  species_proxy: opencode-zen
 - agent_id: openclaw-edge-2026-08
   card_path: agents/_external/openclaw-edge-2026-08/agent-card.json
   binding_type: local-cli
@@ -377,8 +420,10 @@ agents:
   streaming: false
   push_notifications: true
   openclaw_target: openclaw-gateway
-  notes: OpenClaw EDGE warga — agentic mesh router, DISPLAY_ONLY ceiling. Signs
+  notes: 'OpenClaw EDGE warga — agentic mesh router, DISPLAY_ONLY ceiling. Signs
     A2A envelopes with did:arif:openclaw. Routes from Hermes/cron to downstream
     organs. Forged 2026-08-07 by 333-AGI / Hermes-ASI under F13 SOVEREIGN directive
     (Apex Audit v2 → openclaw-mesh-bridge skill → AAA canonicalization). Key
     fingerprint: see /root/AAA/secrets/did/registry.json did:arif:openclaw.
+    '
+  species_proxy: openclaw-zen

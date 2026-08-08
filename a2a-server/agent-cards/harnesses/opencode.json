@@ -23,6 +23,15 @@
   "warga_status": "attested",
   "attestation_id": "OPENCODE-WARGA-ATTESTED-20260626",
   "bound_to": "333-AGI",
+  "species": {
+    "species_id": "opencode-zen",
+    "phenotype": "coder",
+    "primary_loci": [222, 333, 777],
+    "expression_weights": {"000": 0.30, "111": 0.20, "222": 0.90, "333": 0.85, "444": 0.40, "555": 0.60, "666": 0.20, "777": 0.95, "888": 0.00, "999": 0.00},
+    "genome_version": "9-ATLAS-v1",
+    "host_runtimes": ["opencode-cli"],
+    "proxy_for_harnesses": ["kimi-code", "claude-code", "codex", "copilot-cli", "grok-build", "gemini-cli", "antigravity", "continue-cli", "aider", "qwen-code"]
+  },
   "protocolVersion": "1.0",
   "url": "https://aaa.arif-fazil.com/a2a/opencode",
   "provider": {

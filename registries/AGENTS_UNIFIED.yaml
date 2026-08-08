@@ -17,6 +17,18 @@ identity_lanes:
   subagents:
   - 555-ASI
   - 888-APEX
+  species: Δ-MIND
+  expression_weights:
+    "000": 0.40
+    "111": 0.30
+    "222": 0.70
+    "333": 0.90
+    "444": 0.50
+    "555": 0.50
+    "666": 0.20
+    "777": 0.60
+    "888": 0.00
+    "999": 0.00
   description: Δ Mind of the Trinity. Reasons, plans, builds, forges, synthesizes.
     Primary conversational surface. Orchestrates 555-ASI and 888-APEX.
 - id: 555-ASI
@@ -26,6 +38,18 @@ identity_lanes:
   status: active
   canonical_card: /root/AAA/agent-cards/identity/555-ASI/agent-card.json
   kernel_bound: true
+  species: Ω-CORE
+  expression_weights:
+    "000": 0.60
+    "111": 0.85
+    "222": 0.30
+    "333": 0.40
+    "444": 0.85
+    "555": 0.90
+    "666": 0.80
+    "777": 0.10
+    "888": 0.00
+    "999": 0.00
   description: Ω Core of the Trinity. Memory steward, vector mapping, probe execution,
     drift detection, research synthesis.
 - id: 888-APEX
@@ -35,6 +59,10 @@ identity_lanes:
   status: active
   canonical_card: /root/AAA/agent-cards/identity/888-APEX/agent-card.json
   kernel_bound: true
+  species: null
+  expression_weights: null
+  constitutional_role: JUDGE
+  note: "8≠9 invariant — AUTH is not a species. 888 is a chair, not an agent."
   description: Ψ Soul of the Trinity. Constitutional verdict engine. Gated irreversible
     mutations. Read-only, never mutates.
 forge_instruments:
@@ -49,6 +77,7 @@ forge_instruments:
   bound_to_identity: 333-AGI
   description: Primary forge instrument. Governed coding forge bound to 333-AGI (Δ
     MIND). DeepSeek V4 Pro direct. 200+ MCP tools.
+  species_proxy: opencode-zen
 - fi_slot: FI-002
   id: claude-code
   name: Claude Code CLI
@@ -58,6 +87,7 @@ forge_instruments:
   canonical_card: /root/AAA/agents/_external/claude-code/agent-card.json
   description: 'Anthropic Claude Code harness. Sovereign-delegate authority. OAuth:
     arifbfazil@gmail.com. Sub-agents disabled.'
+  species_proxy: opencode-zen
 - fi_slot: FI-003
   id: qwen-code
   name: Qwen Code CLI
@@ -67,6 +97,7 @@ forge_instruments:
   canonical_card: /root/AAA/agents/_external/qwen-code/agent-card.json
   description: Alibaba Qwen Code harness. Zero MCP connections. Heavily restricted
     Bash. Low risk.
+  species_proxy: opencode-zen
 - fi_slot: FI-004
   id: antigravity
   name: Antigravity CLI
@@ -75,6 +106,7 @@ forge_instruments:
   status: active
   canonical_card: /root/AAA/agents/_external/agy/agent-card.json
   description: Google Antigravity CLI. Gemini 3.5 Flash. 5 federation organs + context7.
+  species_proxy: opencode-zen
 - fi_slot: FI-005
   id: codex
   name: Codex CLI
@@ -84,6 +116,7 @@ forge_instruments:
   canonical_card: /root/AAA/agents/_external/codex/agent-card.json
   description: OpenAI Codex CLI. GPT-5.6 Sol (reasoning=medium). Landlock sandbox.
     8 MCP servers.
+  species_proxy: opencode-zen
 - fi_slot: FI-006
   id: copilot
   name: Copilot CLI
@@ -93,6 +126,7 @@ forge_instruments:
   canonical_card: /root/AAA/agents/_external/copilot/agent-card.json
   description: GitHub Copilot CLI. DeepSeek V4 Pro via Anthropic compat API. 11 MCP
     servers. Fleet subagent mode.
+  species_proxy: opencode-zen
 - fi_slot: FI-007
   id: grok-build
   name: Grok Build
@@ -102,6 +136,7 @@ forge_instruments:
   canonical_card: /root/AAA/agents/_external/grok-build/agent-card.json
   description: xAI Grok Build. REPLACED dead FI-007 Aider slot (2026-07-18). Always-approve.
     No MCP surface yet.
+  species_proxy: opencode-zen
 - fi_slot: FI-008
   id: kimi-code
   name: Kimi Code CLI
@@ -111,12 +146,14 @@ forge_instruments:
   canonical_card: /root/AAA/agents/kimi-code/agent-card.json
   description: Moonshot Kimi Code CLI. K3 model (2.8T MoE, 1M ctx, vision, thinking).
     8 MCP servers. A-FORGE stdio ingress.
+  species_proxy: opencode-zen
 - fi_slot: FI-009
   id: null
   name: '[VACANT]'
   previous: A-AUDIT (collapsed into 888-APEX per Zen 99 doctrine, 2026-07-15)
   status: vacant
   canonical_card: null
+  species_proxy: null
   description: FI-009 is VACANT. A-AUDIT was absorbed into 888-APEX. Reserved for
     future forge instrument.
 extensions:
@@ -129,6 +166,7 @@ extensions:
   bound_to_identity: 555-ASI
   description: Telegram conversational agent. Bahasa Malaysia + English. Bound to
     555-ASI (Ω CORE). Reads FQ, never executes.
+  species_proxy: hermes-zen
 - id: main
   name: arifOS Telegram Bot
   role: Sovereign-facing Telegram interface
@@ -136,6 +174,7 @@ extensions:
   status: active
   canonical_card: /root/AAA/agents/main/agent-card.json
   description: Primary Telegram bot @ASI_arifos_bot. Direct Arif interface.
+  species_proxy: openclaw-zen
 - id: makcikgpt
   name: MakcikGPT
   role: Investigative persona
@@ -143,6 +182,7 @@ extensions:
   status: active
   canonical_card: /root/AAA/agents/makcikgpt/agent-card.json
   description: Investigative persona. Lives under WEALTH domain. NOT an FI slot holder.
+  species_proxy: hermes-zen
 - id: prospect-maturation
   name: Prospect Maturation Agent
   role: GEOX domain specialist
@@ -150,6 +190,7 @@ extensions:
   status: active
   canonical_card: /root/AAA/agents/prospect-maturation/agent-card.json
   description: GEOX prospect evaluation and maturation specialist.
+  species_proxy: geox-zen
 - id: agentic-trading-companion
   name: Agentic Trading Companion
   role: WEALTH domain specialist
@@ -157,6 +198,7 @@ extensions:
   status: active
   canonical_card: /root/AAA/agents/agentic-trading-companion/agent-card.json
   description: WEALTH capital markets and trading companion.
+  species_proxy: wealth-zen
 organs:
 - id: arifos
   name: arifOS Kernel
