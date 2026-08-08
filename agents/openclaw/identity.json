@@ -1,15 +1,21 @@
 {
   "agent_id": "openclaw",
-  "actor_id": "openclaw/FI-???",
-  "ed25519_pubkey_hex": "6c232cbe23b8414b25e07a981ac0530e784bc02665f209ab9fa46a8ea72bbd2c",
+  "actor_id": "openclaw",
+  "fi_slot": "HARNESS",
+  "ed25519_pubkey_hex": "133462bdb96b4ee83f485b11aa1fe5e3e9d9381c7f91555394dd0101a03728af",
   "bound_to": "arif-fazil/F13",
   "capabilities": [
     "OBSERVE",
     "REASON",
     "ROUTE",
-    "MEMORY"
+    "MEMORY",
+    "EXECUTE",
+    "FORGE"
   ],
-  "max_blast_radius": "T1",
+  "max_blast_radius": "T2",
   "created_at": "2026-07-29T13:55:07.272023+00:00",
-  "fingerprint": "d34446ad0908b3f58b6b57031ea4153d"
+  "updated_at": "2026-08-08T03:51:57Z",
+  "fingerprint": "aa1e1da7e3a0d01443ad36075b9182a8",
+  "key_source": "device.json — /root/.openclaw/identity/device.json",
+  "fix_note": "2026-08-08 333-AGI: Reconciled 4-way key fragmentation. Canonical key from device.json. actor_id resolved from FI-??? to HARNESS."
 }
