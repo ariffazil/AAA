@@ -5,16 +5,22 @@
 
 ---
 
-## The Architecture: Two Substrate Primitives
+## The Architecture: Two Substrate Primitives + One Execute Gate
 
 ```
-INIT    = who is acting
-MEMORY  = what was known
+INIT      = who is acting        (T0, always callable)
+MEMORY    = what was known       (T0, substrate)
+FORGE     = 777 EXECUTE gate     (T0 observe | T1+ mutate requires SEAL)
+REQUEST-SEAL = propose → 888 judge → 999 seal  (T0, proposal only)
 
-Every other command is downstream of these two.
+Every mutation command is downstream of /forge. Every seal command is
+downstream of /request-seal. /init is required before either.
 ```
 
-OpenClaw must answer **`/init`** and **`/request-seal`** before any other operation. Convenience commands (`/new`, `/compress`, `/goal`) are SECONDARY — they assume init has already been called.
+OpenClaw must answer **`/init`** and **`/request-seal`** before any other
+operation. `/forge` is the execution surface — observe free, mutate gated.
+Convenience commands (`/new`, `/compress`, `/goal`) are SECONDARY — they
+assume init has already been called.
 
 ---
 
@@ -26,6 +32,18 @@ OpenClaw must answer **`/init`** and **`/request-seal`** before any other operat
 |---|---|---|---|
 | `/init` | T0 | Establish session, identity, lane, slot, authority, atlas expression | None (always callable) |
 | `/request-seal` | T0 | Route to 888-APEX for constitutional verdict | None (proposal only) |
+| `/forge` | T0 (observe) / T1+ (mutate) | 777 EXECUTE gate — subcommands init/probe/status/judge/execute | Observe: none · Mutate: cc_id from SEAL |
+
+### FORGE SUBCOMMANDS (gate per subcommand)
+
+| Sub | Tier | Class | Auth | Routes to |
+|---|---|---|---|---|
+| `/forge init` | T0 | OBSERVE | None | `forge_session_init` → arifOS |
+| `/forge probe` | T0 | OBSERVE | None | dry-run only |
+| `/forge status` | T0 | OBSERVE | None | `forge_lease` status + health |
+| `/forge judge` | T0 | OBSERVE | None | `forge_heart_critique` (pre-check) |
+| `/forge execute` | T1–T2 | MUTATE | **cc_id from /request-seal SEAL** | `forge_execute` |
+| `/forge sealed` | T2 | MUTATE | **stage_id + F13 human_seal_token** | `forge_execute_sealed` (FAILS HARD otherwise) |
 
 ### OBSERVE (T0 — read-only)
 
@@ -108,9 +126,10 @@ Atlas Expression:
   Secondary:  222 ARCHITECT, 777 EXECUTE
   Tertiary:   000 OBSERVE, 555 VERIFY
 ─────────────────────────────
-Authority:    T1 (auto-mutate, reversible)
-              T2 requires announce
-              T3 requires F13 ack
+Authority:
+  T1 (auto-mutate, reversible)
+  T2 requires announce
+  T3 requires F13 ack
 
 Constitution:
   F1 AMANAH    ✅ active
@@ -126,6 +145,8 @@ Seal:         DENIED (888-APEX only)
 Witness:      VAULT999 (read-only stream)
 ─────────────────────────────
 ```
+
+---
 
 ## The Constitutional /request-seal
 
@@ -148,32 +169,68 @@ Witness:  VAULT999 chain_hash
 
 ---
 
+## The Constitutional /forge
+
+**What it returns (per subcommand):**
+
+```
+FORGE SURFACE
+─────────────────────────────
+Subcommand:   <init|probe|status|judge|execute>
+Session:      <session_id>
+Lease:        <lease_id | none>
+Authority:    <T0|T1|T2> (from lease, never self-asserted)
+─────────────────────────────
+Plan:         <description of intended mutation>
+cc_id:        <present | MISSING>
+  MISSING → BLOCKED — route /request-seal → 888 first
+  PRESENT → forge_execute (reversible first, dry-run probe available)
+Stage:        <stage_id | none>
+F13 token:    <present | absent>  (only for forge_execute_sealed)
+─────────────────────────────
+```
+
+**Gate rule:** No SEAL → No Mutation. `/forge execute` without a cc_id
+from a prior `/request-seal` is BLOCKED.
+
+---
+
 ## Removed Commands (replaced or deprecated)
 
 | Old | New | Why |
 |---|---|---|
 | `/new` | `/init` then continue | /new is convenience over /init — call /init first |
 | (none) | `/request-seal` | OpenClaw cannot self-seal; routes to 888 |
+| (none) | `/forge <subcommand>` | 777 EXECUTE gate — observe free, mutate requires SEAL |
 | `/yolo` | `/yolo` (with stronger warning) | Still exists but Atlas expression makes danger explicit |
 
 ---
 
-## ZEN — Why /init and /request-seal Matter
+## ZEN — Why /init, /request-seal, and /forge Matter
 
 ```
-/init    answers:  WHO AM I?
-         → slot, authority, lane, atlas expression
-         → without /init, every other command is unauthenticated
+/init          answers:  WHO AM I?
+               → slot, authority, lane, atlas expression
+               → without /init, every other command is unauthenticated
 
-/request-seal answers:  CAN THIS BE SEALED?
-         → routes to 888 for verdict
-         → OpenClaw cannot self-authorize
+/request-seal  answers:  CAN THIS BE SEALED?
+               → routes to 888 for verdict
+               → OpenClaw cannot self-authorize
+
+/forge         answers:  CAN THIS MUTATE?
+               → observe free; mutate requires cc_id from SEAL
+               → 777 EXECUTE — No SEAL → No Mutation
 
 Together:
-  /init → I know who I am
-  /request-seal → I ask 888 to validate what I propose
-  /init without /request-seal → opinion only
-  /request-seal without /init → unauthenticated seal attempt
+  /init          → I know who I am
+  /request-seal  → I ask 888 to validate what I propose
+  /forge         → I ask 777 to mutate, but only after 888 has sealed
+
+  /init alone           → opinion only
+  /init + /request-seal → sealed proposal
+  /init + /forge probe  → safe dry-run
+  /init + /forge execute (no cc_id)  → BLOCKED
+  /init + /request-seal + /forge execute (with cc_id) → governed mutation
 ```
 
 ---
