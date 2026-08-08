@@ -1,0 +1,51 @@
+{
+  "description": "arifOS Federation — Constitutional governance hooks. F1 AMANAH (snapshot-before-mutate), F11 AUDIT (trace-every-action), F4 CLARITY (entropy-check-on-stop), 000 INIT (session identity boot).",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/000-init-sessionstart.py",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/f1-amanah-preshell.py",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/f11-audit-posttool.py",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/f4-entropy-stop.py",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}
