@@ -222,3 +222,7 @@ AAA       = constitutional surface state (catalog · telephone · readiness · A
 **SEALED.**
 
 DITEMPA BUKAN DIBERI.
+
+## Enforcement
+
+Live matrix: [`PROTOCOL_ENFORCEMENT_MATRIX.md`](./PROTOCOL_ENFORCEMENT_MATRIX.md) · `scripts/protocol-enforce.sh`

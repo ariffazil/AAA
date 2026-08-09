@@ -37,3 +37,12 @@ sleep 3
 opencode run "reply: CALL_MAP_OK"
 # or: read /root/AAA/docs/CALL_MAP.md and dispatch via Hermes
 ```
+
+## Protocol enforcement (L0–L6)
+
+```bash
+/root/AAA/scripts/state-probe.sh          # institution + light gates
+/root/AAA/scripts/protocol-enforce.sh     # full matrix — must print PROTOCOL_ENFORCED
+```
+
+Doctrine: `docs/CONSTITUTIONAL_LAYER_SEPARATION.md` · `docs/PROTOCOL_ENFORCEMENT_MATRIX.md`
