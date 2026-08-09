@@ -348,7 +348,9 @@ Territory detail: `ORGAN.md`
 | **B Canon** | Elaboration | `philosophy/` · `doctrine/` · `canon/` | Header: FEDERATED → STATE.md |
 | **C Operational** | Procedure | `operations/` · `contracts/` · `transport/` · `geox/` | Header: Constitutional Context |
 | **D Receipts** | Proof | `sessions/` · `audit-*` · `receipts/` | **Preserve.** Never merge. Proof > compression |
-| **Legacy** | History | `architecture/` · `archive/` | Archive when dead; do not fold into STATE |
+| **Satellite** | Prior drafts | root `docs/*.md` historical | Header only → STATE wins on conflict |
+| **Live-paired** | Working twins | `ORGAN.md` · `CALL_MAP.md` · `README.md` | Detail under STATE, not archive |
+| **Legacy** | History | `architecture/` · `archive/` | Archive when **proven** dead; no mass delete |
 
 **Four tests (new MD):**
 
@@ -357,8 +359,9 @@ Territory detail: `ORGAN.md`
 3. Only procedure lost? → **operations/contracts**  
 4. Evidence lost? → **receipts** (preserve)
 
-**Forbidden:** mega-STATE (entropy singularity).  
-**Formula:** `STATE.md = Constitution, not Library.`
+**Forbidden:** mega-STATE · mass-delete of unproven-dead docs · treating “less files” as zen.  
+**Formula:** `STATE.md = Constitution, not Library.`  
+**Inventory rule:** pointer-ize first; archive only with evidence; delete only when duplicate of sealed pointer.
 
 ---
 

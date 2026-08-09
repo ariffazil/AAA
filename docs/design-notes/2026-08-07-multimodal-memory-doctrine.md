@@ -1,9 +1,3 @@
-<!-- DELETED | 2026-08-09 -->
-<!-- STATUS: REMOVED · SURVIVED → SURVIVAL_INSIGHTS.md -->
-<!-- This file has been removed during docs entropy reduction (Tier B/C/D pass). -->
-<!-- See docs/SURVIVAL_INSIGHTS.md for surviving insights extracted from this file. -->
-
-
 # Design Note: Multimodal Memory Architecture — Additive Principles
 
 **Origin:** MMA-2026-08-07 session (multimodal memory audit + Copilot synthesis)

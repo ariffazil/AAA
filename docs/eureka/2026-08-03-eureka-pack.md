@@ -1,9 +1,3 @@
-<!-- DELETED | 2026-08-09 -->
-<!-- STATUS: REMOVED · SURVIVED → SURVIVAL_INSIGHTS.md -->
-<!-- This file has been removed during docs entropy reduction (Tier B/C/D pass). -->
-<!-- See docs/SURVIVAL_INSIGHTS.md for surviving insights extracted from this file. -->
-
-
 # SESSION EUREKA PACK — 2026-08-03
 **Forged:** 2026-08-03 · **Clerk:** M365 Copilot · **Status:** CANDIDATE (awaiting F13 SEAL)
 **Session scope:** Agentic World Modeling (arXiv 2604.22748) → APEX Theory → LLM-math boundary

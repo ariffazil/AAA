@@ -1,9 +1,3 @@
-<!-- DELETED | 2026-08-09 -->
-<!-- STATUS: REMOVED · SURVIVED → SURVIVAL_INSIGHTS.md -->
-<!-- This file has been removed during docs entropy reduction (Tier B/C/D pass). -->
-<!-- See docs/SURVIVAL_INSIGHTS.md for surviving insights extracted from this file. -->
-
-
 # Architect Brief — Distill MXC + DeepSeek + browser-harness into the arifOS Federation
 
 **Session:** SEAL-5d1232e556bf44f3 · **Date:** 2026-06-13
