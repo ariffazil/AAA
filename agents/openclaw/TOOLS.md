@@ -58,3 +58,9 @@ All channel tokens via SecretRef — no inline secrets.
 ---
 
 *Last updated: 2026-04-29*
+
+### MCP testing (MCPJam)
+- Iron rule: test MCP with MCPJam Inspector, not coding agents.
+- Skills: FORGE-mcp-testing · FORGE-mcp-probe
+- UI: http://127.0.0.1:6274 · http://100.64.0.2:6274
+- https://github.com/MCPJam/inspector

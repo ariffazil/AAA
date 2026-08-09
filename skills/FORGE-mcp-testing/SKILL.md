@@ -5,14 +5,31 @@ description: "How to test any MCP server — use MCPJam Inspector, not coding ag
 
 # MCP Testing — MCPJam Inspector
 
-> **For all AAA agents, OpenClaw, opencode, Kimi Code, Codex, Claude Code, AGY CLI, Copilot, Hermes**
-> Forged: 2026-08-08 | Domain: forge | Authority: F13 SOVEREIGN
+> **For all AAA agents, OpenClaw, opencode, Kimi Code, Codex, Claude Code, AGY CLI, Copilot, Hermes, Grok**
+> Forged: 2026-08-08 | Re-wired: 2026-08-09 | Domain: forge | Authority: F13 SOVEREIGN
+> Upstream: https://github.com/MCPJam/inspector
 
 ## Iron Rule
 
 **MCP servers are tested with MCPJam Inspector, not with coding agents.**
 
-Coding agents (Claude Code, opencode, Kimi Code, AGY, Copilot, OpenClaw) are for **building** MCP servers. MCPJam is for **testing** them. Different tools, different jobs.
+Coding agents (Claude Code, opencode, Kimi Code, AGY, Copilot, OpenClaw, Grok, Hermes) are for **building** MCP servers. MCPJam is for **testing** them. Different tools, different jobs.
+
+Companion skill: **`FORGE-mcp-probe`** (CLI/SDK doctor + conformance). Load both when verifying an endpoint.
+
+## Agent wiring (AAA catalog → harness views)
+
+| Harness | Skill home | `FORGE-mcp-testing` | `FORGE-mcp-probe` |
+|---|---|---|---|
+| Grok | `~/.grok/skills` | symlink → AAA | symlink → AAA |
+| Claude Code | `~/.claude/skills` | symlink → AAA | symlink → AAA |
+| Codex | `~/.codex/skills` | symlink → AAA | symlink → AAA |
+| OpenCode | `~/.arifos/agents/opencode/skills` + `~/.config/opencode/skills` | linked / copy | linked / copy |
+| Hermes | `~/HERMES/skills` + `~/.hermes/skills` | copy (mesh) | copy (mesh) |
+| Kimi Code | `~/.kimi-code/skills` | copy (mesh) | copy (mesh) |
+| OpenClaw | `~/.openclaw/workspace/skills/{forge-mcp-*,FORGE-mcp-*}` | copy | copy |
+
+Canon body: `/root/AAA/skills/FORGE-mcp-testing/`. After editing canon, re-copy hermes/kimi/openclaw (mesh-sync does not touch those trees).
 
 ## Why Not Coding Agents
 
@@ -39,51 +56,67 @@ Coding agents (Claude Code, opencode, Kimi Code, AGY, Copilot, OpenClaw) are for
 
 ```
 Container: mcpjam-federation (Docker, mcpjam/mcp-inspector:latest)
-Status: Up, healthy
-Ports:
-  127.0.0.1:6274      → localhost (SSH tunnel)
-  100.64.0.2:6274      → Tailscale mesh (Arif's Windows client)
-  127.0.0.1:6277       → dev server, localhost only
+Network:   host (required — organs bind 127.0.0.1; bridge cannot reach loopback)
+Listen:    0.0.0.0:6274 inside host-net container (image DOCKER_CONTAINER=true)
+Public:    UFW DENY on public NIC for 6274 — never Caddy/Cloudflare
+Access:
+  http://127.0.0.1:6274      → localhost / SSH tunnel
+  http://100.64.0.2:6274      → Tailscale (Arif Windows)
 Config: /opt/mcpjam/docker-compose.yaml
 Data:   /opt/mcpjam/data
+Seed:   /opt/mcpjam/data/federation-organs.json
+Env:    /opt/mcpjam/.env (MCPJAM_* only — synced from KUNCI-MAS)
 ```
 
-**Access:** `http://127.0.0.1:6274` (local) or `http://100.64.0.2:6274` (Tailscale)
+## Hosted API key (`sk_…`)
 
+Docs: https://docs.mcpjam.com/reference/api-keys · https://docs.mcpjam.com/
+
+| Item | Location |
+|------|----------|
+| Secret | `MCPJAM_API_KEY` in `/root/.secrets/kunci-mas.env` (mode 600) |
+| Runtime env | `/opt/mcpjam/.env` (narrow — never mount full vault) |
+| Sync | `/opt/mcpjam/sync-env-from-vault.sh` then `docker compose up -d` |
+| Load in shell | `source /opt/mcpjam/env.sh` or `source /root/.secrets/kunci-mas.env` |
+| API base | `https://app.mcpjam.com/api/v1` (`MCPJAM_API_BASE`) |
+| Default project | `MCPJAM_PROJECT_ID` (hosted "Default") |
+
+```bash
+# Auth check (do not print the key)
+source /opt/mcpjam/env.sh
+curl -sS -H "Authorization: Bearer $MCPJAM_API_KEY" \
+  "$MCPJAM_API_BASE/me" | jq '{id,email,name,plan}'
+```
+
+Local organ doctor (no key needed against localhost MCP): open the Inspector UI or use CLI `server doctor --url http://127.0.0.1:8088/mcp`.  
+Hosted project ops / eval save / hosts / environments need `MCPJAM_API_KEY`.
 ## Feeding an Organ Into Inspector
 
-1. Open `http://127.0.0.1:6274`
+1. Open `http://127.0.0.1:6274` (or Tailscale URL from Windows)
 2. Click "Add MCP Server"
-3. Enter URL: `http://localhost:8088/mcp` (for arifOS) or respective organ port
-4. Inspector connects, lists all tools/resources/prompts
-5. You can now: manually run tools, chat with LLM against it, trace every message
+3. Enter URL from table below (prefer `127.0.0.1` when on host)
+4. Inspector connects, lists tools/resources/prompts
+5. Manually run tools, chat against it, trace every JSON-RPC message
 
-### Federation Organ URLs
+### Federation Organ URLs (host-net; server-side probe)
 
-| Organ | URL |
-|---|---|
-| arifOS | `http://localhost:8088/mcp` |
-| A-FORGE | `http://localhost:7072/mcp` |
-| GEOX | `http://localhost:8081/mcp/` |
-| WEALTH | `http://localhost:18082/mcp` |
-| WELL | `http://localhost:18083/mcp` |
-| SIGNAL | `http://localhost:18084/mcp` |
-| FRAME | `http://localhost:18085/mcp` |
+| Organ | URL | Casual test? |
+|---|---|---|
+| arifOS | `http://127.0.0.1:8088/mcp` | yes (JUDGE_ONLY) |
+| GEOX | `http://127.0.0.1:8081/mcp/` | yes (COMPUTE_ONLY) |
+| WEALTH | `http://127.0.0.1:18082/mcp` | yes (COMPUTE_ONLY) |
+| WELL | `http://127.0.0.1:18083/mcp` | yes (REFLECT_ONLY) |
+| A-FORGE | `http://127.0.0.1:7072/mcp` | **no** — mutation surface; exclude casual |
+| stateless ref | `https://stateless.mcpjam.com/mcp` | yes — protocol 2026-07-28 fixture |
 
 ## CLI Quick Reference
 
 ```bash
-# Health probe
-npx @mcpjam/inspector doctor http://localhost:8088/mcp
-
-# List tools
-npx @mcpjam/inspector tools http://localhost:8088/mcp
-
-# Run evals
-npx @mcpjam/inspector eval --server http://localhost:8088/mcp --suite /root/A-FORGE/evals/mcp/
-
-# OAuth conformance
-npx @mcpjam/inspector oauth http://localhost:8088/mcp --spec 03-26
+# UI already running on :6274 — do not start a second npx instance on same port
+# From a free shell (stop container first if you need ephemeral CLI on 6274):
+npx @mcpjam/inspector@latest doctor http://127.0.0.1:8088/mcp
+npx @mcpjam/inspector@latest tools http://127.0.0.1:8088/mcp
+npx @mcpjam/inspector@latest oauth http://127.0.0.1:8088/mcp --spec 03-26
 ```
 
 ## When to Use
@@ -97,27 +130,24 @@ npx @mcpjam/inspector oauth http://localhost:8088/mcp --spec 03-26
 
 - To build features — use coding agents (Claude Code, opencode, Kimi Code)
 - To run production workloads — inspector is a test tool
-- As a replacement for federation health monitoring — use HEARTBEAT.md cron jobs
+- As a replacement for federation health monitoring — use HEARTBEAT.md / doctor.sh
 
 ## Docker Management
 
 ```bash
-# Check status
 docker ps --filter name=mcpjam
-
-# Restart
 docker restart mcpjam-federation
-
-# Update
-docker pull mcpjam/mcp-inspector:latest && docker restart mcpjam-federation
-
-# Logs
+docker pull mcpjam/mcp-inspector:latest && cd /opt/mcpjam && docker compose up -d
 docker logs mcpjam-federation --tail 50
+# verify Path A access (not public)
+curl -sf -o /dev/null -w 'local=%{http_code}\n' http://127.0.0.1:6274/
+curl -sf -o /dev/null -w 'ts=%{http_code}\n' http://100.64.0.2:6274/
+ufw status | grep 6274   # expect DENY on public NIC
 ```
 
 ## Stateless MCP Note
 
-MCPJam also hosts `stateless.mcpjam.com/mcp` — a stateless MCP compliance server (protocol 2026-07-28). If a coding agent can talk to that endpoint, it supports stateless MCP. Currently, **none of our agents do**. This is expected — the spec is new and SDK-level support is still emerging. Use `curl` with the stateless envelope to probe it directly:
+MCPJam hosts `stateless.mcpjam.com/mcp` — a stateless MCP compliance server (protocol 2026-07-28). If a coding agent can talk to that endpoint, it supports stateless MCP. Use it as a reference rig, not production.
 
 ```bash
 curl -sS -X POST 'https://stateless.mcpjam.com/mcp' \
