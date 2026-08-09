@@ -1,3 +1,9 @@
+<!-- DELETED | 2026-08-09 -->
+<!-- STATUS: REMOVED · SURVIVED → SURVIVAL_INSIGHTS.md -->
+<!-- This file has been removed during docs entropy reduction (Tier B/C/D pass). -->
+<!-- See docs/SURVIVAL_INSIGHTS.md for surviving insights extracted from this file. -->
+
+
 # 9-ATLAS-GENOME.md — The Irreducible 9-Function Cognitive Genome
 
 > **SOT:** 2026-08-08 05:16 UTC | **Forge:** OpenCode-Zen (FI-001) species wiring augmentation

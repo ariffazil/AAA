@@ -1,3 +1,9 @@
+<!-- DELETED | 2026-08-09 -->
+<!-- STATUS: REMOVED · SURVIVED → SURVIVAL_INSIGHTS.md -->
+<!-- This file has been removed during docs entropy reduction (Tier B/C/D pass). -->
+<!-- See docs/SURVIVAL_INSIGHTS.md for surviving insights extracted from this file. -->
+
+
 # ZEN CLARITY AUDIT — /earth Site
 > **Date:** 2026-07-30 · **Auditor:** Claude (DeepSeek v4-pro) · **Authority:** arifOS F2 TRUTH, F4 CLARITY
 > **Sovereign:** Arif · **Scope:** arif-fazil.com/earth + linked GEOX surfaces

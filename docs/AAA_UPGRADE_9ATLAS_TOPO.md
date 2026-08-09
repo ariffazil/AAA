@@ -1,3 +1,9 @@
+<!-- DELETED | 2026-08-09 -->
+<!-- STATUS: REMOVED · SURVIVED → SURVIVAL_INSIGHTS.md -->
+<!-- This file has been removed during docs entropy reduction (Tier B/C/D pass). -->
+<!-- See docs/SURVIVAL_INSIGHTS.md for surviving insights extracted from this file. -->
+
+
 # AAA Upgrade — 9-ATLAS Topology & A2A Wiring
 
 > **SOT:** 2026-08-08 04:47 UTC | **Forge:** OpenClaw AGI trace | **Seal:** pending OpenCode execution

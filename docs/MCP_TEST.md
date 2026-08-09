@@ -1,3 +1,9 @@
+<!-- DELETED | 2026-08-09 -->
+<!-- STATUS: REMOVED · SURVIVED → SURVIVAL_INSIGHTS.md -->
+<!-- This file has been removed during docs entropy reduction (Tier B/C/D pass). -->
+<!-- See docs/SURVIVAL_INSIGHTS.md for surviving insights extracted from this file. -->
+
+
 # MCP_TEST.md — Cognitive Physics Testing
 
 > **MCP testing is not software testing. It is cognitive physics testing.**

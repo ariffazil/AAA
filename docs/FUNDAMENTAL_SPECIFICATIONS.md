@@ -1,3 +1,9 @@
+<!-- DELETED | 2026-08-09 -->
+<!-- STATUS: REMOVED · SURVIVED → SURVIVAL_INSIGHTS.md -->
+<!-- This file has been removed during docs entropy reduction (Tier B/C/D pass). -->
+<!-- See docs/SURVIVAL_INSIGHTS.md for surviving insights extracted from this file. -->
+
+
 # 13 Fundamental Specifications — ΔH_human < 0
 
 > **Ratified:** 2026-07-11 by F13 SOVEREIGN — Muhammad Arif bin Fazil (888)

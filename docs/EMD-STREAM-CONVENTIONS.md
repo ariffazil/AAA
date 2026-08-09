@@ -1,3 +1,9 @@
+<!-- DELETED | 2026-08-09 -->
+<!-- STATUS: REMOVED · SURVIVED → SURVIVAL_INSIGHTS.md -->
+<!-- This file has been removed during docs entropy reduction (Tier B/C/D pass). -->
+<!-- See docs/SURVIVAL_INSIGHTS.md for surviving insights extracted from this file. -->
+
+
 # EMD STREAM CONVENTIONS — Zone 2 Formatting for arifOS Agents
 
 > **Forged: 2026-08-06 by 333-AGI Δ MIND · F13 SOVEREIGN**

@@ -1,3 +1,9 @@
+<!-- DELETED | 2026-08-09 -->
+<!-- STATUS: REMOVED · SURVIVED → SURVIVAL_INSIGHTS.md -->
+<!-- This file has been removed during docs entropy reduction (Tier B/C/D pass). -->
+<!-- See docs/SURVIVAL_INSIGHTS.md for surviving insights extracted from this file. -->
+
+
 # RELEASE NOTES — arifOS Federation (v2026.05.16)
 
 > **Epoch:** 2026-05-16 | **Status:** SEALED | **Authority:** 888_JUDGE

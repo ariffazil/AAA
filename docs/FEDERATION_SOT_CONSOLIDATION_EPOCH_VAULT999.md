@@ -1,3 +1,9 @@
+<!-- DELETED | 2026-08-09 -->
+<!-- STATUS: REMOVED · SURVIVED → SURVIVAL_INSIGHTS.md -->
+<!-- This file has been removed during docs entropy reduction (Tier B/C/D pass). -->
+<!-- See docs/SURVIVAL_INSIGHTS.md for surviving insights extracted from this file. -->
+
+
 # FEDERATION SOURCE-OF-TRUTH CONSOLIDATION EPOCH — VAULT999 ENVELOPE SPEC
 **Document Identity:** `FEDERATION-SOT-VAULT999-v2026.07.13`  
 **Classification:** Immutable Cryptographic Seal Contract & Authority Envelope Specification  
