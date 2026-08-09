@@ -1,8 +1,8 @@
-<!-- DELETED | 2026-08-09 -->
-<!-- STATUS: REMOVED · SURVIVED → SURVIVAL_INSIGHTS.md -->
-<!-- This file has been removed during docs entropy reduction (Tier B/C/D pass). -->
-<!-- See docs/SURVIVAL_INSIGHTS.md for surviving insights extracted from this file. -->
-
+<!-- SATELLITE | tier:satellite | sot:STATE.md | 2026-08-09 -->
+> **Satellite** — historical elaboration / design note / prior draft.  
+> **Canonical SOT:** [`STATE.md`](./STATE.md) (§1–16).  
+> If this file conflicts with STATE.md, **STATE wins**. Do not fork law here.  
+> *One truth · Many projections · 0 contradictions* · DITEMPA BUKAN DIBERI.
 
 Reality verdict
 
@@ -36,7 +36,6 @@ RSI stop correctness    65    Partial–strong    The confusion matrix and audit
 Organ integration    48    Degraded    GEOX and WEALTH show active repair work; WELL’s MCP bridge remains explicitly session-incomplete.
 Runtime observability    60    Partial    Runtime manifests, hashes and traces exist, but not all organ/runtime relationships were independently verified.
 Audit and receipts    55    Partial    Receipt architecture exists; the present audit session remains UNSEALED.
-
 
 
 ---
@@ -175,7 +174,6 @@ What remains unverified is whether:
 5. Ledger writes are cryptographically incorporated into VAULT999 integrity proofs.
 
 
-
 The module exists. The operational feedback loop is not yet fully proven.
 
 
@@ -248,7 +246,6 @@ The architecture correctly permits GEOX, WEALTH and WELL to disagree.
 But there is no verified rule answering:
 
 > What does the kernel do when all organs are internally valid but recommend incompatible actions?
-
 
 
 This cannot be solved using a universal majority vote. Three organs are not interchangeable voters.
@@ -522,7 +519,6 @@ Supersession chain
 Injection-risk scanning
 
 
-
 ---
 
 Organ readiness
@@ -705,7 +701,6 @@ Initial required tests:
 18. Organ conflict cannot silently resolve through execution order.
 
 
-
 Unimplemented tests should be marked xfail(strict=True) or equivalent.
 
 A strict expected failure remains visible. An absent test becomes forgotten.
@@ -752,7 +747,6 @@ Evidence is stale
 Original success criteria are missing
 
 Results cannot be independently reproduced
-
 
 
 ---
@@ -834,7 +828,6 @@ Session ID substitution: denied
 Parallel child authority aggregation: denied
 
 
-
 ---
 
 WAJIB 5 — Re-authorize deferred execution at fire time
@@ -888,7 +881,6 @@ Required completion criteria:
 
 
 8. Integration tests run against the actual transport.
-
 
 
 Until then, any workflow requiring WELL as a safety constraint must HOLD or explicitly declare WELL unavailable.
@@ -1091,7 +1083,6 @@ Order    Wajib action    Gate
 9    Context-capture governance    Agents cannot write their own law
 10    RSI calibration    Judgment quality becomes measurable
 11    End-to-end signed canary    Federation-level readiness proof
-
 
 
 ---

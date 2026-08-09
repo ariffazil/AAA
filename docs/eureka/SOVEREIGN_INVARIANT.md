@@ -1,9 +1,3 @@
-<!-- DELETED | 2026-08-09 -->
-<!-- STATUS: REMOVED · SURVIVED → SURVIVAL_INSIGHTS.md -->
-<!-- This file has been removed during docs entropy reduction (Tier B/C/D pass). -->
-<!-- See docs/SURVIVAL_INSIGHTS.md for surviving insights extracted from this file. -->
-
-
 # THE 80/20 SOVEREIGN INVARIANT
 
 > **Eureka Forged:** 2026-06-05 04:55 UTC

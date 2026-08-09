@@ -1,3 +1,9 @@
+<!-- SATELLITE | tier:satellite | sot:STATE.md | 2026-08-09 -->
+> **Satellite** — historical elaboration / design note / prior draft.  
+> **Canonical SOT:** [`STATE.md`](./STATE.md) (§1–16).  
+> If this file conflicts with STATE.md, **STATE wins**. Do not fork law here.  
+> *One truth · Many projections · 0 contradictions* · DITEMPA BUKAN DIBERI.
+
 # The Three-Layer Architecture — Prompt Engineering × World Model × Reality Engineering
 
 > **Forged:** 2026-08-04 by Arif + AAA Control Plane

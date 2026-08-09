@@ -1,3 +1,10 @@
+<!-- LIVE-PAIRED | tier:live-ops | sot:STATE.md | 2026-08-09 -->
+> **Live operational twin** (not archive).  
+> **Constitutional SOT:** [`STATE.md`](./STATE.md) — institution.  
+> This file is the **working detail** for a pillar (telephone / territory / entry).  
+> Edit here for operational truth; do not duplicate constitutional law.  
+> DITEMPA BUKAN DIBERI.
+
 # 📚 AAA Documentation — Master Index
 
 > **DITEMPA BUKAN DIBERI** — Control plane for the arifOS federation.

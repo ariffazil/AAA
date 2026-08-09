@@ -1,3 +1,9 @@
+<!-- SATELLITE | tier:satellite | sot:STATE.md | 2026-08-09 -->
+> **Satellite** — historical elaboration / design note / prior draft.  
+> **Canonical SOT:** [`STATE.md`](./STATE.md) (§1–16).  
+> If this file conflicts with STATE.md, **STATE wins**. Do not fork law here.  
+> *One truth · Many projections · 0 contradictions* · DITEMPA BUKAN DIBERI.
+
 # AAA Secrets Baseline — Proposed Delta (197 new entries)
 
 **Review gate:** this is the trust-list expansion. Each entry below is flagged by `detect-secrets` as a potential secret. **None are in my new `composio/` files.** All 197 are pre-existing in AAA repo (baseline stale since 2026-05-22).
