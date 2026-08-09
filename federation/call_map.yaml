@@ -88,6 +88,25 @@ agents:
     can: [forge_code, byok_deepseek]
     boundary: T3_HOLD
 
+
+  agy:
+    layer: harness
+    agentId: agy
+    fi: FI-009
+    bound_to: 333-AGI
+    invoke:
+      cli: "agy --agent antigravity-preview-05-2026 --print \"<task>\""
+      cli_alt: "agy -p \"<task>\""
+      binary: /root/.local/bin/agy
+      a2a: "POST …/a2a  A2A-Version:1.0  target=agy"
+      endpoint_card: https://aaa.arif-fazil.com/a2a/agy
+    can: [forge_code, mcp_organs, agentic_coding]
+    cannot: [self_seal_constitutional, irreversible_without_T3_or_F13]
+    boundary: T3_HOLD
+    model_socket: "Gemini-native gemini-3.6-flash via Antigravity (not FED primary)"
+    settings: /root/.arifos/agents/gemini/AAA/antigravity-cli/settings.json
+    note: "Hermes 2026-08-09 wired MCP+Antigravity; AAA zen 2026-08-09 aligned FI-009 + above-protocol"
+
   openclaw:
     layer: binding
     agentId: openclaw
