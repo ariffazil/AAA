@@ -1,3 +1,9 @@
+<!-- DELETED | 2026-08-09 -->
+<!-- STATUS: REMOVED · SURVIVED → SURVIVAL_INSIGHTS.md -->
+<!-- This file has been removed during docs entropy reduction (Tier B/C/D pass). -->
+<!-- See docs/SURVIVAL_INSIGHTS.md for surviving insights extracted from this file. -->
+
+
 # GATEWAY_CONFIG_HOMES.md — Canonical Gateway Config Map
 
 > **Purpose:** End the "which config do I edit?" confusion. This box has **multiple Hermes config homes**; only one is read by the live gateway.

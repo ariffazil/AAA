@@ -1,3 +1,9 @@
+<!-- DELETED | 2026-08-09 -->
+<!-- STATUS: REMOVED · SURVIVED → SURVIVAL_INSIGHTS.md -->
+<!-- This file has been removed during docs entropy reduction (Tier B/C/D pass). -->
+<!-- See docs/SURVIVAL_INSIGHTS.md for surviving insights extracted from this file. -->
+
+
 # Floor Wiring Map
 **Epoch:** 2026-04-23T15:36+08 | **Commit:** b906c68 | **Pipeline:** 000-INIT → 888-JUDGE
 **Scope:** `core/` + `integrations/arifos/` | **Tool:** grep -R "F0\|F1\|F2\|F9\|F10\|F13\|SEAL\|HOLD\|VOID\|VERDICT\|CAUTION\|SABAR\|COMPLY"

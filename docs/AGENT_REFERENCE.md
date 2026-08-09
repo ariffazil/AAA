@@ -1,3 +1,9 @@
+<!-- DELETED | 2026-08-09 -->
+<!-- STATUS: REMOVED · SURVIVED → SURVIVAL_INSIGHTS.md -->
+<!-- This file has been removed during docs entropy reduction (Tier B/C/D pass). -->
+<!-- See docs/SURVIVAL_INSIGHTS.md for surviving insights extracted from this file. -->
+
+
 # Agent Reference: Gateway Layer + arifOS Federation
 > **Audience:** Any agent operating in or adjacent to the arifOS federation.
 > **Author:** OPENCLAW (AGI-tier constitutional operator)

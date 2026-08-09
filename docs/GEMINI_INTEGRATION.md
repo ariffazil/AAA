@@ -1,3 +1,9 @@
+<!-- DELETED | 2026-08-09 -->
+<!-- STATUS: REMOVED · SURVIVED → SURVIVAL_INSIGHTS.md -->
+<!-- This file has been removed during docs entropy reduction (Tier B/C/D pass). -->
+<!-- See docs/SURVIVAL_INSIGHTS.md for surviving insights extracted from this file. -->
+
+
 # Gemini Integration — arifOS Federation
 
 > **SOT:** Google [Thinking](https://ai.google.dev/gemini-api/docs/thinking) · [Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview) · [OpenAI compat](https://ai.google.dev/gemini-api/docs/openai)  
