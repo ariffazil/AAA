@@ -278,7 +278,7 @@ function loadDirectory(dirPath) {
       if (card.agentId || card.id || (card.identity && card.identity.organId)) {
         const result = register(card, fullPath);
         loaded.push(result.agentId);
-      } else {
+      } else if (entry.name !== 'aaa-cockpit.json') {
         errors.push(`${entry.name}: no identifiable agent ID in any schema`);
       }
     } catch (e) {
@@ -290,15 +290,36 @@ function loadDirectory(dirPath) {
 }
 
 // ── Recursively load all agent cards from a root directory ──────────────
+// Skip noise dirs; prefer agent-card.json under agents/ trees; never treat
+// identity.json / SESSION specs as cards (entropy reduction 2026-08-09).
+const SKIP_DIRS = new Set([
+  '_brief', '_docs', '_archive', '_retired', '_audit', '__pycache__',
+  'node_modules', '.git', 'memories', 'profiles', 'dist', 'build',
+]);
+
+function isLikelyAgentCardFile(name, rootPath) {
+  if (!name.endsWith('.json')) return false;
+  // Explicit non-cards
+  if (/^(identity|liveness|package|tsconfig|sessionspec)/i.test(name)) return false;
+  if (name === 'aaa-cockpit.json') return false; // control plane meta, not agent
+  // Under /agents/ only accept agent-card.json (and *agent-card*.json)
+  if (rootPath.includes('/agents') && !rootPath.includes('/agent-cards')) {
+    return name === 'agent-card.json' || name.endsWith('.agent-card.json');
+  }
+  // Under agent-cards/ tree: allow flat id.json (333-AGI.json, opencode.json, …)
+  return true;
+}
+
 function loadDirectoryRecursive(rootPath) {
   const resolved = path.resolve(rootPath);
-  let results = { loaded: [], errors: [], dirs: 0 };
+  let results = { loaded: [], errors: [], dirs: 0, skipped: 0 };
   try {
     const entries = fs.readdirSync(resolved, { withFileTypes: true });
-  const jsonFiles = entries.filter((e) => (e.isFile() || e.isSymbolicLink()) && e.name.endsWith('.json'));
-    const subdirs = entries.filter((e) => e.isDirectory());
+    const jsonFiles = entries.filter(
+      (e) => (e.isFile() || e.isSymbolicLink()) && isLikelyAgentCardFile(e.name, resolved)
+    );
+    const subdirs = entries.filter((e) => e.isDirectory() && !SKIP_DIRS.has(e.name) && !e.name.startsWith('.'));
 
-    // Load JSON files at this level
     for (const entry of jsonFiles) {
       const fullPath = path.join(resolved, entry.name);
       try {
@@ -308,19 +329,20 @@ function loadDirectoryRecursive(rootPath) {
           const result = register(card, fullPath);
           results.loaded.push(`${entry.name} → ${result.agentId}`);
         } else {
-          results.errors.push(`${entry.name}: no identifiable agent ID`);
+          results.skipped += 1; // silent skip — not an error
         }
       } catch (e) {
+        // Parse errors only for files we intended as cards
         results.errors.push(`${entry.name}: ${e.message}`);
       }
     }
 
-    // Recurse into subdirectories
     for (const subdir of subdirs) {
       const subPath = path.join(resolved, subdir.name);
       const sub = loadDirectoryRecursive(subPath);
       results.loaded.push(...sub.loaded.map((l) => `${subdir.name}/${l}`));
       results.errors.push(...sub.errors.map((e) => `${subdir.name}/${e}`));
+      results.skipped += sub.skipped || 0;
       results.dirs += 1 + sub.dirs;
     }
   } catch (e) {
@@ -329,6 +351,7 @@ function loadDirectoryRecursive(rootPath) {
 
   return results;
 }
+
 
 // ── Query methods ───────────────────────────────────────────────────────
 
@@ -445,10 +468,13 @@ function findBySkill(skillId) {
     const wargaResult = loadDirectoryRecursive(wargaRoot);
     console.log(`[agent-card-registry] Warga scan added/refreshed ${wargaResult.loaded.length} cards`);
     if (wargaResult.errors.length > 0) {
-      console.warn(`[agent-card-registry] ${wargaResult.errors.length} warga load errors (first 5):`);
-      for (const err of wargaResult.errors.slice(0, 5)) {
+      console.warn(`[agent-card-registry] ${wargaResult.errors.length} warga load errors (first 3):`);
+      for (const err of wargaResult.errors.slice(0, 3)) {
         console.warn(`  ${err}`);
       }
+    }
+    if (wargaResult.skipped) {
+      console.log(`[agent-card-registry] Warga non-card JSON skipped: ${wargaResult.skipped}`);
     }
   } else {
     console.warn(`[agent-card-registry] Warga agents dir not found: ${wargaRoot}`);
