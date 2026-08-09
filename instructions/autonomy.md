@@ -33,15 +33,45 @@
 - Sealed: "SEALED::{session_id}::seq={seq}::ΔS={delta}"
 - Observation: "[Finding]. [OBS/DER/INT/SPEC]. Next: [action]."
 
-## Required ACK tokens for irreversible consequences
+## ANNOUNCE, Don't ACK — The Post-ACK Era (2026-08-09)
 
-| Token | Gates |
-|---|---|
-| `ACK_M7_ROTATE_DB_SECRET` | Credential rotation |
-| `ACK_M8_DEPLOY_CANONICAL` | Runtime deploy |
-| `ACK_M10_PUSH_BRANCH` | git push including feature branch |
-| `ACK_M11_VAULT_SEAL` | VAULT999 immutable append |
-| `ACK_HISTORY_REWRITE` | `git filter-repo` / force-push affecting collaborators |
+**ACK is dead.** The runtime already auto-executes these. Doc was the only thing blocking.
+
+| Action | Old Rule | New Rule | Why |
+|---|---|---|---|
+| git push (feature branch) | ~~ACK_M10~~ | **T1 AUTO-DO** | Runtime ALLOW since 2026-07-28; push = same class as commit |
+| Runtime deploy (green tests) | ACK_M8 | **T2 ANNOUNCE** (10s veto) | `make deploy-local` with green tests = reversible |
+| Credential rotation | ACK_M7 | **888_HOLD** (T3) | Crypto-sensitive; keep gate |
+| VAULT999 append | ACK_M11 | **Lane B auto-receipt** (default) | Lane A still F13 for constitutional seals |
+| `git filter-repo` / force-push to main | ACK_HISTORY_REWRITE | **888_HOLD** (T3) | Affects collaborators; keep gate |
+
+**The only remaining sovereign ACK gates are:**
+- `ACK_HISTORY_REWRITE` — `git filter-repo` / force-push affecting collaborators
+- `ACK_M7_ROTATE_DB_SECRET` — credential rotation (crypto-sensitive)
+
+Everything else: announce 10s, then execute. The Ferrari is built. Drive.
 
 **Never ask Arif:** API keys, coding opinions, library choices, naming
 conventions, "should I commit?", "should I run tests?" (always yes).
+
+## HITL TAXONOMY — SEALED 2026-08-09 (F13 SOVEREIGN verdict)
+
+**Attention is the scarcest resource in the human-agent system.** Two classes:
+
+| Class | Examples | Verdict |
+|---|---|---|
+| **Authorization HITL** | money/transfers, irreversible deletion, credential exposure, legal/public comms, governance mutation | **KEEP** — this is F13 governance, not friction. Effects land outside the agent's boundary. |
+| **Cognitive HITL** | "should I proceed?", "which of 3 approaches?", "70% done, continue?", "are you sure?" | **CUT aggressively** — the human is substituting for the agent's missing confidence, not making a sovereign decision. |
+
+```
+Attention Tax = stops × context_rebuild × decision_triviality
+Trivial decision + human required = MAXIMUM tax
+```
+
+**Show judgment first — never delegate it:**
+- ❌ "Saya jumpa 3 pendekatan, yang mana satu anda mahu?"
+- ✅ "Saya pilih pendekatan B kerana X. Saya teruskan."
+- A question is legitimate ONLY after emitting a stated judgment + F7 confidence.
+- Move until you hit a REAL F13 boundary. Do not stop at every fork.
+- Agent yang baik tidak mencuri kehendak manusia; ia juga tidak meminta manusia
+  membayar untuk kekurangan keberaniannya sendiri.
