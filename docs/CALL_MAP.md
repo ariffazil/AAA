@@ -180,3 +180,9 @@ Need work done?
 ---
 
 *Forged 2026-08-09. Directory without telephone is a silent federation.*
+
+---
+
+## State
+
+This is the **telephone**. Territory + readiness of the **state**: [`STATE.md`](./STATE.md). Catalog: AAA 3-layer cards. Power: FED.

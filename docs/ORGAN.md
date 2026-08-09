@@ -345,3 +345,9 @@ Canonical path: `/root/AAA/docs/ORGAN.md` · Machine twin: `/root/AAA/federation
 ## Call map (telephone)
 
 Topology above is **who/where organs are**. **How to invoke** agents and organs: [`CALL_MAP.md`](./CALL_MAP.md) · machine: `federation/call_map.yaml`.
+
+---
+
+## State readiness
+
+Institution before citizens: [`STATE.md`](./STATE.md) · probe: `/root/AAA/scripts/state-probe.sh` · machine: `federation/STATE.yaml`.
