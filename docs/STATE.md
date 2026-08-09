@@ -136,3 +136,7 @@ Then: **bring citizens in** (attestation, FI stamps, SOUL/AGENTS per warga).
 ---
 
 *Institution before passport. Geometry before gala.*
+
+## Ops
+
+Operator runbook: [`STATE_OPS.md`](./STATE_OPS.md)
