@@ -1,6 +1,6 @@
 <!-- SOT-MANIFEST
-federation_release: v2026.08.04
-last_verified: 2026-08-04T20:23:33Z
+federation_release: v2026.08.09
+last_verified: 2026-08-09T10:00:04Z
 live_commit: 59d79cae (P0 hardening — OBSERVE fast-path + cascade drill + dead provider fix)
 truth_rule: /health + agent registry beat any static count in prose
 a2a_port: 3001
@@ -30,6 +30,21 @@ domain_organs: 6 (arifOS:8088, A-FORGE:7071, GEOX:8081, WEALTH:18082, WELL:18083
 **AAA (Alignment, Authority, Accountability)** is the institutional control plane of the arifOS Federation. It operates the A2A (Agent-to-Agent) Mesh Gateway, the agent identity registry, the task router, and the operator cockpit — connecting **11 forge instruments**, **6 domain organs**, and the sovereign human operator under a unified protocol.
 
 ---
+
+
+## Institutional density (2026-08-09)
+
+Hermes / federation are evolving as **anti-chaos infrastructure**, not agent thrash.
+
+| Doc | Role |
+|-----|------|
+| `governance/HOLY8_FOUR_LAYER_LANGUAGE.md` | Observation / Interpretation / Constraint / Action |
+| `governance/HERMES_DNA.md` | ECHO·SCAR·ATLAS·MAP topology + Dark Mirror |
+| `governance/DOUBLE_HELIX_ECHO_SCAR.md` | Dual continuity strands |
+| `governance/INSTITUTIONAL_COMPRESSION.md` | Ambiguity reduction + freeze |
+| `governance/AGENTIC_INSTITUTION_PARADOXES.md` | MAP·ATLAS·ECHO doctrine |
+
+Telemetry (observe-only freeze): `map-atlas-echo` · Kabarkan → PG · cron 6h.
 
 ## 🧬 Agent · Skill · Tool · Organ — The Entity Ontology
 
