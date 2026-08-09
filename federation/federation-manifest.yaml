@@ -131,12 +131,13 @@ organs:
 
   vault999:
     role: immutable_audit
-    records: 171
-    head_seq: 9915
-    timestamps_present: 22
-    timestamps_missing: 140
-    chain_breaks: 1
-    status: INTACT_BUT_DEGRADED
+    records: 45712
+    head_seq: N/A
+    timestamps_present: 1343
+    timestamps_missing: 44369
+    chain_breaks: 0
+    status: HEALTHY
+    note: "Kernel reports vault999_health=healthy. 45,712 entries append-only. Timestamps missing on legacy entries but chain intact. Updated 2026-08-09."
 
 # Cross-organ contracts
 contracts:
