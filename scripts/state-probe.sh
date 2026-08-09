@@ -101,6 +101,31 @@ for u in hermes-asi-gateway openclaw-gateway opencode arifos a-forge; do
   fi
 done
 
+echo "── 7 Protocol gates (lightweight) ──"
+# A2A version gate
+if curl -sS --max-time 3 -X POST http://127.0.0.1:3001/a2a \
+  -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"x","params":{}}' 2>/dev/null | grep -q A2A-Version; then
+  ok "A2A-Version enforced"
+else
+  soft "A2A-Version gate unclear"
+fi
+# Kernel tools
+if curl -sS --max-time 4 -X POST http://127.0.0.1:8088/mcp \
+  -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}' 2>/dev/null | grep -q arif_judge; then
+  ok "arifOS Holy tools (arif_judge present)"
+else
+  bad "arifOS tools/list missing arif_judge"
+fi
+# VAULT file
+if [ -s /root/arifOS/VAULT999/outcomes.jsonl ]; then
+  ok "VAULT999 outcomes.jsonl"
+else
+  bad "VAULT999 outcomes.jsonl"
+fi
+# Full matrix: /root/AAA/scripts/protocol-enforce.sh
+
 echo "── RESULT ──"
 if [ "$fail" -ge 1 ]; then
   echo "STATE_DEGRADED fail=$fail warn=$warn"

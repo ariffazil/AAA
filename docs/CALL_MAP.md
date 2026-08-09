@@ -404,3 +404,7 @@ Policy: [`GEMINI_INTEGRATION.md`](./GEMINI_INTEGRATION.md). Seats: `gemini-flash
 | **AGY** FI-009 | `agy --agent antigravity-preview-05-2026 -p "<task>"` | Gemini-native Antigravity; MCP organs | T3 HOLD |
 Full contrast: [`OPENCLAW_HERMES_CONTRAST.md`](./OPENCLAW_HERMES_CONTRAST.md)
 | **AGY** FI-009 | `agy --agent antigravity-preview-05-2026 -p "<task>"` | Gemini-native Antigravity; MCP organs | T3 HOLD |
+
+## A2A enforcement
+
+All A2A JSON-RPC to AAA **must** send header `A2A-Version: 1.0`. Missing → 400. Anonymous external → EMD tri-witness gate.
