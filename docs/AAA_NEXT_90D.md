@@ -145,3 +145,16 @@ DITEMPA BUKAN DIBERI.
 ## Identity names (F13 2026-08-09)
 
 See [`IDENTITY_NAMING_REGISTRY.md`](./IDENTITY_NAMING_REGISTRY.md) — ACT only; agentId+did:web; warga passport; no AIMS/SPIRE/HDP brands.
+
+## Phase E (parked) — horizon only, NOT next
+
+Horizon intelligence (x402/AP2, IBCT/HDP migration, PEER, Labuan IBFC, ISO 42001 / EU AI Act as *drivers*).  
+**Do not schedule as AAA architecture until:**
+
+1. STATE_READY holds without drama  
+2. **One proven Hermes → OpenCode dial** (internal telephone used)  
+3. External CALL_MAP draft exists  
+
+Identity names stay: ACT · agentId+did:web · warga passport · ACT chain deferred.  
+See `IDENTITY_NAMING_REGISTRY.md`. External standards **map**; they do not rename.
+
