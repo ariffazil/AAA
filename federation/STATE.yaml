@@ -45,3 +45,13 @@ boot_order:
   - CALL_MAP
   - ORGAN
   - arif_init_if_mutating
+
+# AAA above protocol (2026-08-09 SEAL)
+architecture:
+  posture: above_protocol
+  doctrine: docs/AAA_ABOVE_PROTOCOL.md
+  layers: [canonical_state, constitutional_api, protocol_adapters, external_agents]
+  adapters: [mcp, a2a, rest, future_x]
+  not_a_protocol: true
+  judge_owner: arifOS
+  seal_owner: VAULT999
