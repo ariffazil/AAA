@@ -241,3 +241,7 @@ Plus: ACT / session when mutating; never treat AAA as seal authority.
 Evidence: live curls 2026-08-09; MCP initialize results; A2A-Version + EMD behavior; PROTOCOL_MAP inventory.
 
 DITEMPA BUKAN DIBERI.
+
+## Architecture SEAL
+
+See [`AAA_ABOVE_PROTOCOL.md`](./AAA_ABOVE_PROTOCOL.md) — protocol follows AAA state projection; AAA does not become a protocol.
