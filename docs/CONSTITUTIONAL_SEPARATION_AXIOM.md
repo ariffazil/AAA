@@ -1,11 +1,9 @@
 # POINTER
 
-> **Canonical SOT:** [`STATE.md`](./STATE.md) — single zen constitutional working file.
+> **Canonical SOT:** [`STATE.md`](./STATE.md)
 >
-> Do not fork. Edit **STATE.md** only.
+> Communication ≠ Authority ≠ Proof.  
+> A2A = how to talk · DID = who · ACT = what may · arifOS = should · VAULT = prove.  
+> 403 when transport valid but ACT denies = constitutional enforcement.
 >
-> Probes: `scripts/state-probe.sh` · `scripts/protocol-enforce.sh`
->
-> *Protocol = undang-undang koordinasi. Governance = undang-undang kebenaran.*  
-> *403 on ACT deny while A2A/MCP valid = constitutional enforcement.*  
-> DITEMPA BUKAN DIBERI.
+> Edit **STATE.md** only.

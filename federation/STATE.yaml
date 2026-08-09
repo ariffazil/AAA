@@ -90,3 +90,16 @@ labels:
 - PROVE
 act_is_not_protocol: true
 proof_of_constitution: 403_when_transport_valid_but_ACT_denies
+compression:
+- DID proves identity
+- ACT grants authority
+- arifOS decides legitimacy
+- A2A carries intent
+- MCP executes tools
+- VAULT999 preserves evidence
+a2a_role: how_participants_communicate
+did_role: who_is_speaking
+never_mix:
+- communication
+- authority
+- proof
