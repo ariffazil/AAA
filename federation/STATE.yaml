@@ -95,6 +95,18 @@ labels:
 - PROVE
 act_is_not_protocol: true
 proof_of_constitution: 403_when_transport_valid_but_ACT_denies
+intent_grammar:
+  humans_share: reality
+  agents_share: intent
+  subagents_share: contracts
+  judges_share: verdicts
+  not_shared: monolithic_prompts
+  contradiction: feature
+  ore_body: human
+  forge: agent
+  seal: governance
+  sot_section: "STATE.md §17"
+  elaboration: docs/doctrine/federation-intent-grammar.md
 compression:
 - AUTH proves control of DID
 - ART admits the call (reflex)
