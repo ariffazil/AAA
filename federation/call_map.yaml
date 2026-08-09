@@ -71,13 +71,18 @@ agents:
   grok-build:
     layer: harness
     fi: FI-007
+    # Known gap (not a bug): no static XAI_API_KEY → NOT a FED seat.
+    # Auth = xAI OIDC / CLI login. Invoke directly; skip FED cascade drill.
+    model_socket: "direct CLI (OIDC) — NOT litellm/FED. Do not add model_name: grok without static key."
+    cascade_drill: skip
     invoke:
       cli: "grok -p \"<task>\""
       binary: /root/.local/bin/grok
-      a2a: "POST …/a2a/tasks/send target=grok-build"
+      a2a: "POST …/a2a/tasks/send target=grok-build (optional; CLI primary)"
       endpoint_card: https://aaa.arif-fazil.com/a2a/grok-build
     can: [plan_search_build, worktree, parallel_subagents]
     boundary: T3_HOLD
+    note: "Hermes/OpenCode/OpenClaw/Kimi use FED :4000. Grok stays CLI-only until xAI offers static API keys."
 
   copilot:
     layer: harness
