@@ -150,6 +150,7 @@ organs:
     invoke: "MCP http://127.0.0.1:8088/mcp"
     health: "curl -sf http://127.0.0.1:8088/health"
     tools: [arif_init, arif_observe, arif_think, arif_route, arif_memory, arif_judge, arif_forge, arif_seal]
+    apex_judge_cli: /root/.local/bin/apex-judge
     ceiling: JUDGE_ONLY
   a-forge:
     invoke: "MCP http://127.0.0.1:7072/mcp  API :7071"
@@ -186,6 +187,10 @@ intent_routing:
   coding: opencode
   coding_fallback: [claude-code, kimi-code, grok-build, codex]
   judge: arifos
+  judge_cli: "apex-judge --candidate '…' --actor <HARNESS>"  # Option 3 · forbids free-text SEAL
+  judge_skill: arifos-constitutional-judge
+  judge_subagent_prompt: /root/AAA/prompts/APEX_JUDGE_SUBAGENT.md
+  judge_forbidden: "free-text 888-APEX JUDGMENT without kernel call_hash"
   earth: geox
   capital: wealth
   readiness: well

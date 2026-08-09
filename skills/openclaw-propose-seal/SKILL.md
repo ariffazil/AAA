@@ -63,9 +63,10 @@ Without all 5, the proposal is **INADMISSIBLE-QQQ-INCOMPLETE**.
    ↓
 OpenClaw compiles evidence (auto-detect recent files, git refs, live probes)
    ↓
-OpenClaw submits to 888-APEX via arif_judge tool
+OpenClaw submits via `apex-judge --actor OPENCLAW` (or arif_init→arif_judge MCP).
+   Never free-text "888-APEX JUDGMENT". Quote effective_verdict + call_hash.
    ↓
-888-APEX returns SEAL | HOLD | VOID | SABAR
+Kernel arif_judge returns SEAL | HOLD | VOID | SABAR
    ↓
 If SEAL → OpenClaw appends correction receipt to VAULT999 via forge_vault(mode="receipt")
    ↓
