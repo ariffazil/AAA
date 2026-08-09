@@ -129,6 +129,7 @@ SENSE → COORDINATE → ACT
 | C5 | AAA/STATE.md path drift: canonical expected at /root/AAA/STATE.md, actual at /root/AAA/governance/AAA_STATE.md | LOW | DOCUMENTED — pointer needed |
 | C6 | Hermes A2A: mcp_connected=false for 14+ hours | MEDIUM | OPERATIONAL — needs probe, not code |
 | C7 | arifOS deploy drift: deployed=39f6b1d ≠ source=1cdcc315 (KERNEL DEPLOY GUARD active) | LOW | HEALTHY GATE — guard working as designed |
+| C8 | JIT Skill Routing: proposed architecture already exists upstream (hermes-agent skill_utils.py, context_compressor.py) | RESOLVED | ZERO-FORK — 3-step convergence: standardize triggers frontmatter, sync engine files, verify native pruning |
 
 ### ENTROPY STATE (2026-08-09 16:50Z)
 
@@ -144,13 +145,17 @@ SENSE → COORDINATE → ACT
 ### NEXT SESSION CARRY-FORWARD
 
 1. **K9 DEPLOY arifOS** — `make deploy-local` to align deployed=39f6b1d→1cdcc315
-2. **WIRE arifFlow** — automate flow ingest per agent task (currently 1 receipt = starving)
+2. **WIRE arifFlow** — automate flow ingest per agent task (currently manual = starving)
 3. **HERMES A2A** — probe mcp_connected=false, diagnose root cause
-4. **Open loops preserved** — DRIFT_5a (wiki), 666-AUDITOR-GODEL, FRAME-NOT-IMPLEMENTED, PRIMARY-DEMOTION-CRITERIA
+4. **SKILL FRONTMATTER** — standardize `triggers:` field across 524 skills (currently 16% have trigger keywords; upstream `skill_utils.py` needs this for native JIT)
+5. **UPSTREAM SYNC** — diff AAA Hermes's `skill_utils.py` / `context_compressor.py` against NousResearch/hermes-agent main
+6. **Open loops preserved** — DRIFT_5a (wiki), 666-AUDITOR-GODEL, FRAME-NOT-IMPLEMENTED, PRIMARY-DEMOTION-CRITERIA
 
 ### THE LIVING INSIGHT
 
-The federation's largest entropy source is not code. It is **agents not knowing their role in the architecture.** The EMD framework resolves this structurally: every agent now knows whether it SENSEs, COORDINATEs, or ACTs. The remaining entropy is metabolic — arifFlow needs to breathe, Hermes needs to reconnect, and the deploy guard needs to be honored (not bypassed).
+Two architectural resolutions this session:
+1. **EMD Framework**: Every agent now knows its role (SENSE/COORDINATE/ACT). 12 agents carry DECODER passport.
+2. **JIT Skill Routing = Upstream**: The 524-skill mesh doesn't need custom middleware. Upstream `skill_utils.py` + `context_compressor.py` already handle trigger-based loading, context pruning, and ghost reinjection. Zero fork. Zero new code. Just standardize frontmatter and sync.
 
 ---
 
