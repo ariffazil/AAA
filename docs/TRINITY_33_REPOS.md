@@ -1,3 +1,9 @@
+<!-- SATELLITE | tier:satellite | sot:STATE.md | 2026-08-09 -->
+> **Satellite** — historical elaboration / design note / prior draft.  
+> **Canonical SOT:** [`STATE.md`](./STATE.md) (§1–16).  
+> If this file conflicts with STATE.md, **STATE wins**. Do not fork law here.  
+> *One truth · Many projections · 0 contradictions* · DITEMPA BUKAN DIBERI.
+
 # Final 33 GitHub Repositories for the arifOS Trinity
 
 > **Status:** CANONICAL — 2026-07-08 | **Authority:** F13 SOVEREIGN — Arif

@@ -1,9 +1,3 @@
-<!-- DELETED | 2026-08-09 -->
-<!-- STATUS: REMOVED · SURVIVED → SURVIVAL_INSIGHTS.md -->
-<!-- This file has been removed during docs entropy reduction (Tier B/C/D pass). -->
-<!-- See docs/SURVIVAL_INSIGHTS.md for surviving insights extracted from this file. -->
-
-
 # Dual-Surface Web Applications
 
 > **When one organ serves both humans and agents, the implementation must be one service with two faces — not two services pretending to be one.**
