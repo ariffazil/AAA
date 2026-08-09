@@ -153,7 +153,7 @@ Skill alias: `FORGE-call-map`.
 | **AGY** FI-009 | `agy --agent antigravity-preview-05-2026 -p "<task>"` | Gemini-native Antigravity; MCP organs | T3 HOLD |
 | **Codex** FI-005 | `codex exec "<task>"` | `…/a2a/codex` | code; Responses via **:4001** clean-proxy → :4000 | T3 HOLD |
 | **AGY** FI-009 | `agy --agent antigravity-preview-05-2026 -p "<task>"` | Gemini-native Antigravity; MCP organs | T3 HOLD |
-| **Grok Build** FI-007 | `grok -p "<task>"` | `…/a2a/grok-build` | plan+search+build, worktrees | T3 HOLD |
+| **Grok Build** FI-007 | `grok -p "<task>"` (**CLI primary**, OIDC) | `…/a2a/grok-build` (optional) | plan+search+build · **not FED** | T3 HOLD |
 | **AGY** FI-009 | `agy --agent antigravity-preview-05-2026 -p "<task>"` | Gemini-native Antigravity; MCP organs | T3 HOLD |
 | **Copilot** FI-006 | `copilot -p "<task>"` | `…/a2a/copilot` | code BYOK | T3 HOLD |
 | **AGY** FI-009 | `agy --agent antigravity-preview-05-2026 -p "<task>"` | Gemini-native Antigravity; MCP organs | T3 HOLD |
@@ -411,6 +411,21 @@ Policy: [`GEMINI_INTEGRATION.md`](./GEMINI_INTEGRATION.md). Seats: `gemini-flash
 | **AGY** FI-009 | `agy --agent antigravity-preview-05-2026 -p "<task>"` | Gemini-native Antigravity; MCP organs | T3 HOLD |
 Full contrast: [`OPENCLAW_HERMES_CONTRAST.md`](./OPENCLAW_HERMES_CONTRAST.md)
 | **AGY** FI-009 | `agy --agent antigravity-preview-05-2026 -p "<task>"` | Gemini-native Antigravity; MCP organs | T3 HOLD |
+
+
+
+## Grok Build — CLI / OIDC only (known gap, not a bug)
+
+| Fact | Value |
+|------|--------|
+| **FI** | **FI-007** (canonical; card must match) |
+| **Invoke** | `grok -p "…"` / Grok Build TUI |
+| **Auth** | xAI **OIDC** login — **no** static `XAI_API_KEY` |
+| **FED** | **No seat.** Do not add `model_name: grok` to litellm without a static key |
+| **Cascade drill** | **Skip** for Grok (0 routes expected on FED) |
+| **Peers on FED** | Hermes · OpenCode · OpenClaw · Kimi → `:4000` |
+
+If xAI ever ships static API keys, then wire a FED seat. Until then: **direct CLI only**.
 
 ## A2A enforcement
 
