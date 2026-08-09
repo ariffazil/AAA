@@ -394,4 +394,59 @@ Territory detail: `ORGAN.md`
 
 ---
 
+## 17. Federation intent grammar (prompt is not the product)
+
+> **90% of federation failure is not bad prompts.**  
+> It is who speaks to whom, under which identity, with which office, how truth is judged.
+
+```text
+LLM optimum          → prompt quality
+Agent optimum        → protocol quality
+Federation optimum   → contradiction quality
+```
+
+### 17.1 What is shared (and what is not)
+
+| Share | Do **not** share |
+|-------|------------------|
+| Intent contracts | One gigantic shared system prompt for all agents |
+| Identity (DID) + AUTH | Fake consensus (“feed said X → all say X”) |
+| Capability / office (ACT) | Internal native prompt style of other subagents |
+| Verdict grammar (SEAL/HOLD/VOID) | Premature normalization of raw human signal |
+
+**Federation Prompt Principle:**
+
+```text
+Humans share reality.
+Agents share intent.
+Subagents share contracts.
+Judges share verdicts.
+# NOT: everyone shares prompts.
+```
+
+### 17.2 Pipeline (not Prompt → Agent → Result)
+
+```text
+Intent (raw human signal preserved)
+  → Translation (intent contract, not rewritten prose)
+  → Routing (capability match — CALL_MAP / arif_route)
+  → Identity (AUTH · DID)
+  → Office (ACT)
+  → Subagent native language (Hermes/OpenClaw/Grok/888 each own dialect)
+  → Verification (evidence, W³)
+  → Judgment (arifOS F1–F13)
+  → Proof (VAULT999)
+```
+
+**Bahasa kampung / raw signal:** keep original human words when they carry uncertainty or intuition.  
+Early conversion to corporate English kills ore body.
+
+**Contradiction is a feature:** healthy federation surfaces Hermes maybe-not-X, OpenClaw historical Y, 555 weak evidence, 888 HOLD — not monoculture agreement.
+
+**Ore body = human. Forge = agent. SEAL = governance.**
+
+Elaboration: `doctrine/federation-intent-grammar.md` (Tier B).
+
+---
+
 *Institution before passport. Protocol under governance. Ditempa, bukan diberi.*
