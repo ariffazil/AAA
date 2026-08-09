@@ -77,6 +77,9 @@
     "capabilities": ["tasks/send", "tasks/get", "tasks/cancel"]
   },
   "topological_role": "Executor",
+  "emd_role": "DECODER",
+  "emd_lane": "EXECUTION — the ACT in SENSE→COORDINATE→ACT. All FI coding agents decode instructions into artifacts.",
+  "emd_architecture": "/root/AAA/instructions/emd-architecture.md",
   "ed25519_pubkey": "ccc731bc8c93ec0192611635ea5520ea5ca96844bfe59d4fa7101278026dd987",
   "identity_fingerprint": "da0048a80249dead98942edd067b5039",
   "model": "deepseek/deepseek-v4-pro",
