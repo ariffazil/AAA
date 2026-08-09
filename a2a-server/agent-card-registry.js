@@ -22,12 +22,19 @@ const cards = new Map();
 // Maps top-level directory → CIV-33 layer label. Used to enrich normalised
 // cards with `civ_layer` so /a2a/discover and dashboards can group by layer.
 const CIV33_LAYERS = {
+  // 3-layer geometry (2026-08-09 F13 FINAL — Hermes + Arif):
+  //   L1 IDENTITY  — who (333/555/888) sealed rare
+  //   L2 HARNESS   — where / FI runtime engines
+  //   L3 BINDING   — attachment: forge + functions + roles + organs + pillars + extensions
+  // Physical folders stay. AAA = catalog. WHICH engine = FED/runtime only.
   identity: 'identity',
-  functions: 'function',
-  extensions: 'extension',
   harnesses: 'harness',
-  pillars: 'pillar',
-  organs: 'organ',
+  forge: 'binding',
+  functions: 'binding',
+  roles: 'binding',
+  organs: 'binding',
+  pillars: 'binding',
+  extensions: 'binding',
   _retired: 'retired',
 };
 
@@ -149,9 +156,48 @@ function normaliseCard(card, sourcePath) {
   // CIV-33 layer detection from sourcePath (e.g. .../agent-cards/identity/333-AGI/agent-card.json)
   let civLayer = null;
   if (typeof sourcePath === 'string') {
+    // Physical a2a-server/agent-cards/<dir>/ → L1–L3 via CIV33_LAYERS
     const m = sourcePath.match(/\/agent-cards\/([^/]+)\//);
     if (m && Object.prototype.hasOwnProperty.call(CIV33_LAYERS, m[1])) {
       civLayer = CIV33_LAYERS[m[1]];
+    }
+    // Warga home cards under AAA/agents/ — classify without moving folders
+    if (!civLayer) {
+      const base = sourcePath.replace(/\\/g, '/');
+      if (
+        /\/agents\/_lanes\//.test(base) ||
+        /\/agents\/333-AGI\//.test(base) ||
+        /\/agents\/555-ASI\//.test(base) ||
+        /\/agents\/888-APEX\//.test(base) ||
+        /\/identity\/333-AGI\//.test(base) ||
+        /\/identity\/555-ASI\//.test(base) ||
+        /\/identity\/888-APEX\//.test(base)
+      ) {
+        civLayer = 'identity';
+      } else if (
+        /\/agents\/_external\//.test(base) ||
+        /\/agents\/opencode\//.test(base) ||
+        /\/agents\/kimi-code\//.test(base)
+      ) {
+        civLayer = 'harness';
+      } else if (
+        /\/agents\/hermes/.test(base) ||
+        /\/agents\/makcikgpt\//.test(base) ||
+        /\/agents\/main\//.test(base) ||
+        /hermesarifos/.test(base)
+      ) {
+        civLayer = 'binding'; // edge home cards fold into L3 BINDING (3-layer final)
+      } else if (
+        /\/agents\/openclaw\//.test(base) ||
+        /\/agents\/forge-bot\//.test(base) ||
+        /\/agents\/777/.test(base) ||
+        /\/agents\/prospect/.test(base) ||
+        /\/agents\/agentic-trading/.test(base) ||
+        /\/agents\/skill-auditor\//.test(base)
+      ) {
+        // openclaw home + domain specialists + forge-bot = attachment surface
+        civLayer = 'binding';
+      }
     }
   }
 
@@ -196,6 +242,13 @@ function register(card, sourcePath) {
     const err = new Error('Agent card missing agentId/identity.organId/id');
     err.code = 'INVALID_CARD';
     throw err;
+  }
+  // 3-layer geometry: never downgrade a classified card to unclassified.
+  // The canonical agent-cards/ tree (scanned first) sets the layer; later
+  // warga scans (agents/) may refresh fields but must not wipe civ_layer.
+  const existing = cards.get(normalised.agentId);
+  if (existing && existing.civ_layer && !normalised.civ_layer) {
+    normalised.civ_layer = existing.civ_layer;
   }
   cards.set(normalised.agentId, normalised);
   return normalised;
