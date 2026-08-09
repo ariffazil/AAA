@@ -148,3 +148,7 @@ Operator runbook: [`STATE_OPS.md`](./STATE_OPS.md)
 ## Protocol audit
 
 Live MCP/A2A/state stack: [`AAA_STATE_PROTOCOL_AUDIT.md`](./AAA_STATE_PROTOCOL_AUDIT.md)
+
+## AAA above protocol
+
+Doctrine: [`AAA_ABOVE_PROTOCOL.md`](./AAA_ABOVE_PROTOCOL.md) — AAA is canonical federation surface state; MCP/A2A are adapters, not masters. arifOS remains judge.
