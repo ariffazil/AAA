@@ -1,14 +1,13 @@
 ---
 name: arifos-constitutional-judge
 id: arifos-constitutional-judge
-version: 1.1.0
+version: 1.2.0
 owner: AAA
 description: >
-  Single load-bearing constitutional-judgment skill. Routes all F1–F13,
-  verdict, hold, seal, scope, authority and floor-check calls through the
-  live arif_judge surface. FORBIDS free-text self-SEAL ("888-APEX JUDGMENT"
-  without kernel receipt). Option 3: CLI or isolated subagent must call
-  kernel. Option 2 (A2A → 888-APEX) is the long-term path.
+  Real apex-judge skill. Gödel lock + strange-loop zen: doer ≠ judge lane,
+  evidence-only packages, kernel arif_judge is sole effective_verdict source,
+  F13 is true external for critical. FORBIDS free-text self-SEAL and same-agent
+  self-audit. Default: apex-judge isolate. Option 2 A2A 888-APEX is backlog.
 agent: 888-APEX
 namespace: arifos
 cluster: CONSTITUTION · VERDICT · ACT
@@ -17,136 +16,112 @@ autonomy_tier: T2
 floor_scope: [F1, F2, F4, F7, F9, F11, F13]
 ---
 
-# arifos-constitutional-judge (LOAD-BEARING · GÖDEL LOCK)
+# arifos-constitutional-judge (LOAD-BEARING · GÖDEL · STRANGE-LOOP ZEN)
 
-> **Forged:** 2026-08-01 · **Hardened:** 2026-08-09 (auto apex-judge federation-wide)  
-> **Status:** Single canonical entry. DITEMPA BUKAN DIBERI.  
-> **Reversible:** delete this file + restore from forge_work quarantine.
+> **Forged:** 2026-08-01 · **Zen:** 2026-08-09 (real isolate apex-judge)  
+> **Doctrine:** `/root/AAA/governance/GODEL_LOCK_STRANGE_LOOP.md`  
+> **Status:** Single canonical entry. DITEMPA BUKAN DIBERI.
 
-## The problem this skill kills
+## The problem (two layers)
 
-Agents (Hermes especially) emit **text** like:
+1. **Free-text SEAL** — agent writes `888-APEX JUDGMENT` without `arif_judge`.
+2. **Strange loop** — agent audits itself; logs may be true, **conclusion is not independent**.
 
-```text
-## 888-APEX JUDGMENT
-Verdict: SEAL
+```
+Hermes audits Hermes → report says "fake" → report is also Hermes
+→ GÖDEL LOOP (even with correct log evidence)
 ```
 
-…without calling `arif_judge`. That is **self-certification** — Gödel loop.  
-Invalid as constitutional fact. Treat as **VOID prose**.
+## Independence ladder
 
-## Use When
+| Class | Meaning |
+|-------|---------|
+| `STRANGE_LOOP_VOID` | doer == judge; rejected exit 6 |
+| `ACTOR_SEPARATED` | different actor_id (still AI) |
+| `KERNEL_ARBITER` | `effective_verdict` from arifOS only |
+| `F13_REQUIRED` | human sovereign for critical |
 
-1. Evaluating an action against F1–F13 (floor, authority, scope, verdict, hold, seal, audit).
-2. Before any irreversible / T2+ mutation when a verdict is required.
-3. After `delegate_task` returns T2+ results (parent must re-judge before integrate).
-4. Anytime the agent is about to type `SEAL` / `888-APEX` / `HOLD` as a formal gate.
+**Only F13 is true external.** Kernel is independent of the chat; F13 is independent of the system.
 
-## Do NOT Use When
-
-1. Pure T0 read with no constitutional claim.
-2. Casual chat with no gate language.
-3. Local lint that does not claim federation authority.
-
-## Iron rules (non-bypassable)
+## Iron rules
 
 | # | Rule |
 |---|------|
-| G1 | **Never** free-text a constitutional verdict. |
-| G2 | Verdict source must be `arifOS.kernel.arif_judge` (MCP or `apex-judge` CLI). |
-| G3 | Quote `effective_verdict` + `call_hash` + `session_id` when reporting. |
-| G4 | Top-level MCP `status=completed` is **execution**, not SEAL. Use `effective_verdict`. |
-| G5 | If kernel unreachable → **HOLD**, never invent SEAL. |
-| G6 | Subagent/CLI isolation preferred (Option 3) so the judge has no parent chat to rubber-stamp. |
+| G1 | Never free-text a constitutional verdict. |
+| G2 | Verdict source = `arifOS.kernel.arif_judge` only. |
+| G3 | Quote `effective_verdict` + `call_hash` + `session_id` + `independence_class`. |
+| G4 | `status=completed` ≠ SEAL. |
+| G5 | Kernel down → HOLD. |
+| G6 | **doer ≠ judge_actor** — use `apex-judge isolate`. |
+| G7 | Evidence = OBS/DER only; no smuggled SEAL prose. |
+| G8 | Critical/self-federation → `--critical` → F13_REQUIRED. |
 
-## Procedure — Option 3 (default, all harnesses)
+## Procedure — default (all harnesses)
 
-### Path A — CLI (universal, every agent runtime)
-
-```bash
-# installed as /root/.local/bin/apex-judge
-apex-judge --candidate "<action under judgment>" --actor <HERMES|OPENCLAW|GROK|CLAUDE|OPENCODE|…> --human --pretty
-```
-
-Optional evidence:
+### Path A — ISOLATE (mandatory for self-audit / T2+ gates)
 
 ```bash
-apex-judge -c "…" -a HERMES -e /tmp/evidence.json --pretty
+apex-judge isolate \
+  --doer HERMES \
+  --candidate "<action or claim under judgment>" \
+  --evidence-file /tmp/ev.json \
+  --pretty --human
+
+# critical self-federation
+apex-judge isolate --doer HERMES --critical -c "…"
 ```
 
-Audit draft for self-SEAL:
+Strange-loop only:
+
+```bash
+apex-judge --check-loop --doer HERMES --candidate "audit myself"
+```
+
+### Path B — Isolated subagent
+
+Prompt: `/root/AAA/prompts/APEX_JUDGE_SUBAGENT.md`  
+Parent passes evidence package only (no chat). Subagent runs Path A.
+
+### Path C — MCP (judge actor ≠ doer)
+
+1. `arif_init` as **judge lane** (e.g. OPENCLAW), not as the doer.
+2. `arif_judge` with `evidence.in_band=true`.
+3. Parent quotes receipt only.
+
+### Path D — Audit prose
 
 ```bash
 apex-judge --audit-text - <<'EOF'
-…draft response…
+…draft…
 EOF
 ```
 
-### Path B — MCP tools (same session or subagent)
+## Separation table
 
-1. `arif_init(mode="init", actor_id="<HARNESS>", requested_authority="STANDARD", verbosity="minimal")`
-2. `arif_judge(mode="judge", candidate="…", session_id, session_token, evidence={…, "in_band": true})`
-3. Read **`effective_verdict`**, not prose.
-
-MCP names by harness (all are the same tool):
-
-| Harness | Tool name examples |
-|---------|-------------------|
-| Grok Build | `arifos_mcp__arif_judge` |
-| Hermes / Claude | `mcp__arifos__arif_judge` or `arif_judge` |
-| OpenClaw | organ MCP `arif_judge` |
-| Any shell | `apex-judge` CLI |
-
-### Path C — Isolated subagent (when parent has rich chat bias)
-
-Load prompt: `/root/AAA/prompts/APEX_JUDGE_SUBAGENT.md`  
-Spawn with **only** MCP arifOS tools (or shell `apex-judge`).  
-Parent integrates **only** the returned JSON receipt.
-
-## Verdict mapping (kernel truth)
-
-| `effective_verdict` | Agent behavior |
-|---------------------|----------------|
-| `SEAL` | Proceed; mint receipt if required. |
-| `SABAR` | Proceed with stated conditions only. |
-| `HOLD` | Stop. Surface reasons. No mutation. |
-| `VOID` | Blocked. New evidence required. |
-
-If `constitutional_check.hold_required=true` → treat as **HOLD** even if prose says otherwise.
-
-## Failure modes
-
-| Mode | Response |
-|------|----------|
-| MCP down | CLI against `127.0.0.1:8088`; still HOLD if both fail |
-| `EVIDENCE_HASH_MISSING` | Add `"in_band": true` or proper `evidence_hash` |
-| Free-text SEAL detected | `apex-judge --audit-text` → VOID that draft |
-| Actor OBSERVE_ONLY / no SCT | Still call judge — kernel returns real HOLD/SEAL; do not fake FULL |
-
-## Option 2 backlog (A2A — correct architecture, later)
-
-```
-Hermes/OpenClaw → A2A tasks/send → 888-APEX agent card
-  → 888-APEX calls arif_judge → returns kernel receipt
-```
-
-Do **not** wait for Option 2 to stop self-certifying. Option 3 is mandatory now.
+| Role | Who | May produce |
+|------|-----|-------------|
+| DOER | Hermes / Grok / OpenCode / … | work + OBS evidence |
+| JUDGE LANE | different actor (`OPENCLAW` default) | no free text SEAL |
+| KERNEL | arifOS `:8088` | `effective_verdict` |
+| F13 | Arif | critical approve |
 
 ## Reporting template (only valid form)
 
 ```markdown
 ### Kernel judgment (not agent opinion)
-- source: arifOS.kernel.arif_judge
+- independence_class: KERNEL_ARBITER
+- doer: <X>
+- judge_actor: <Y≠X>
+- judge_persona: 888-APEX
 - effective_verdict: <from receipt>
-- session_id: <sid>
-- call_hash: <hash>
-- reasons: <kernel reasons>
+- session_id: …
+- call_hash: …
+- reasons: …
 ```
 
-Anything labeled `888-APEX JUDGMENT` **without** those four fields is **VOID prose**.
+## Option backlog
 
-## Empirical reference
-
-Live smoke 2026-08-09: `apex-judge` → `arif_init`+`arif_judge` for OPENCLAW/HERMES/GROK/CLAUDE/OPENCODE returns kernel `effective_verdict` + `call_hash`. Free-text path forbidden by this skill v1.1.0.
+- **Option 2:** A2A → `888-APEX` agent card (persona mesh).  
+- Do not wait for Option 2 to stop self-certify — isolate is live.
 
 DITEMPA BUKAN DIBERI.
