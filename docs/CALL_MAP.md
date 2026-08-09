@@ -190,3 +190,14 @@ This is the **telephone**. Territory + readiness of the **state**: [`STATE.md`](
 ## Gemini (multimodal seats)
 
 Policy: [`GEMINI_INTEGRATION.md`](./GEMINI_INTEGRATION.md). Seats: `gemini-flash`, `gemini-pro`, `fed/image-gen`. **Not** on hermes-asi tool loops.
+
+## OpenClaw vs Hermes (adapter)
+
+| | Hermes ASI | OpenClaw |
+|--|------------|----------|
+| agentId | hermes-asi | openclaw |
+| FI | FI-000 | *(none — binding gateway)* |
+| FED seat | hermes-asi | openclaw |
+| Role | human bridge | persona router / metabolizer |
+
+Full contrast: [`OPENCLAW_HERMES_CONTRAST.md`](./OPENCLAW_HERMES_CONTRAST.md)
