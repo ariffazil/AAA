@@ -549,9 +549,9 @@
     "ratifiedAt": "2026-07-01T20:22:00Z",
     "doctrine": "DITEMPA BUKAN DIBERI"
   },
-  "fi_slot": "FI-010",
+  "fi_slot": "FI-007",
   "metadata": {
-    "fi_slot": "FI-010",
+    "fi_slot": "FI-007",
     "kernel_deps": [
       "KERNEL-trinity-33",
       "KERNEL-session-inhabit",
@@ -603,5 +603,11 @@
   ],
   "did": "did:web:arif-fazil.com",
   "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN",
-  "_model_sot": "/root/.config/federation-models.json"
+  "_model_sot": "/root/.config/federation-models.json",
+  "model_routing": {
+    "provider": "xai",
+    "routing": "direct_cli_oidc",
+    "fed_seat": false
+  },
+  "notes_routing": "Grok Build is CLI+OIDC only. Not a FED/litellm seat. Cascade drill N/A. FI-007 canonical."
 }
