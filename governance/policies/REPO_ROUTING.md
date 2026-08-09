@@ -8,7 +8,7 @@
 
 ## Core Principle
 
-Work lands in the correct repo or it does not land at all. The Amanah rule: routing confidence below 0.8 means stop, emit reason, ask Arif.
+Work lands in the correct repo or it does not land at all. The Amanah rule: routing confidence below 0.8 means stop, emit reason, and machine-gate via apex-judge isolate or least-risk default — never block on human for internal routing (F13 ruling 2026-08-09).
 
 ## Decision Tree
 
@@ -24,7 +24,7 @@ Work lands in the correct repo or it does not land at all. The Amanah rule: rout
 
 ## Confidence Threshold
 
-**Routing confidence < 0.8 → STOP, emit reason, ask Arif.**
+**Routing confidence < 0.8 → STOP, emit reason, machine-gate (apex-judge isolate) or least-risk default + flag. No human ask for internal routing.**
 
 Never route faster than certainty.
 
