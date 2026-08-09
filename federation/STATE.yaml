@@ -107,6 +107,11 @@ intent_grammar:
   seal: governance
   sot_section: "STATE.md §17"
   elaboration: docs/doctrine/federation-intent-grammar.md
+  genesis: arifOS/GENESIS/060_FEDERATION_INTENT_GRAMMAR.md
+  compression_risk_asymmetry: every_compression_is_tax_on_verification
+  contradiction_axiom: federation_without_contradiction_cannot_sustain_truth
+  godel_breaker_at_entry: raw_signal_keeps_loop_open
+  filter_is: corruption
 compression:
 - AUTH proves control of DID
 - ART admits the call (reflex)
