@@ -156,3 +156,7 @@ Doctrine: [`AAA_ABOVE_PROTOCOL.md`](./AAA_ABOVE_PROTOCOL.md) — AAA is canonica
 ## Constitutional layer separation
 
 Eureka SEAL: [`CONSTITUTIONAL_LAYER_SEPARATION.md`](./CONSTITUTIONAL_LAYER_SEPARATION.md) — protocol subordinate to governance; AAA is surface state not a protocol.
+
+## Enforcement
+
+Live matrix: [`PROTOCOL_ENFORCEMENT_MATRIX.md`](./PROTOCOL_ENFORCEMENT_MATRIX.md) · `scripts/protocol-enforce.sh`
