@@ -32,6 +32,16 @@ contradictions_flag=0
 GATE=SEAL_EXECUTE  # still requires T2/T3 tier policy
 ```
 
+## WELL honesty (not fake green)
+
+| Item | OBS |
+|------|-----|
+| Mock 2026-04-30 TEST state | **retired** → `state.json.mock-2026-04-30.retired.json` |
+| Live operator state | PROD · FRESH age=0 · **INSUFFICIENT_DATA** · WELL_HOLD |
+| has_verified_telemetry | false (truthful — no biometric inject) |
+
+WELL **degraded** = honest substrate HOLD, not service crash.
+
 ## Residual (not C1/C2/C4)
 
 | Item | Status |
