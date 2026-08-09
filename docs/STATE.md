@@ -55,98 +55,138 @@ MCP/A2A are replaceable adapters. arifOS decides. VAULT999 proves.
 
 ---
 
-## 3. Constitutional stack (pecahan kuasa)
-
-### 3.1 One spine — labels under the steps
+## 3. Three things never mixed
 
 ```text
-STATE_READY → CALL_MAP → MCP → A2A → arifOS F1-F13 → ACT → did:web → VAULT999
-              HOW        WHAT  WHO   SHOULD         WHAT MAY  WHO ARE  PROVE
+Communication  ≠  Authority  ≠  Proof
 ```
 
-| Step | Role | Class |
-|------|------|--------|
-| STATE_READY | Institution standing? | Surface |
-| CALL_MAP | How / where to dial? | Surface |
-| MCP | How tools run? | **Replaceable** protocol |
-| A2A | Who talks to whom? | **Replaceable** protocol |
-| arifOS F1–F13 | **Should** it be done? | **Constitutional** |
-| ACT | **What office / what may?** | **Authority** (not protocol) |
-| did:web / did:arif | **Who are you?** | **Identity** (not protocol) |
-| VAULT999 | **Prove** it happened | **Immutable** proof |
+| Bucket | Layers | Trap if collapsed |
+|--------|--------|-------------------|
+| **Communication** | A2A · MCP · CALL_MAP | Protocol becomes policy → agent anarchy |
+| **Authority** | DID · ACT · arifOS F1–F13 | “Works” mistaken for “allowed” |
+| **Proof** | VAULT999 | Claims without evidence |
 
-**Authority flow (who rules whom):** VAULT ← ACT+DID ← arifOS ← A2A ← MCP ← CALL_MAP ← STATE  
+Good governance always knows **enforced** vs **assumed**.
+
+---
+
+## 4. Constitutional stack (pecahan kuasa)
+
+### 4.1 Compression
+
+```text
+DID proves identity.
+ACT grants authority.
+arifOS decides legitimacy.
+A2A carries intent.
+MCP executes tools.
+VAULT999 preserves evidence.
+```
+
+| Question | Layer |
+|----------|--------|
+| **WHO AM I?** | DID (`did:web` / `did:arif`) |
+| **WHAT MAY I DO?** | ACT (`act_v1.*`) |
+| **SHOULD I DO?** | arifOS F1–F13 |
+| **HOW TO TALK?** | A2A |
+| **HOW TO ACT?** | MCP |
+| **CAN I PROVE?** | VAULT999 |
+
+### 4.2 Spine
+
+```text
+STATE_READY → CALL_MAP → MCP → A2A → arifOS → ACT → DID → VAULT999
+```
+
+| Step | Precise role | Class |
+|------|--------------|--------|
+| STATE_READY | Institution standing? | Surface |
+| CALL_MAP | Where do I send *here*? | Surface |
+| **MCP** | **How is work executed?** (tooling) | Replaceable |
+| **A2A** | **How participants communicate** (carries DID; does not prove it) | Replaceable |
+| **arifOS** | **Should it be done?** | Immutable |
+| **ACT** | **What may this office do?** | Immutable |
+| **DID** | **Who is speaking?** (identity verified here) | Immutable |
+| **VAULT999** | **Can we prove it?** | Immutable |
+
+**Locked refinement:** A2A ≠ “who is talking?”. **DID** answers who. A2A is the **channel**. ACT is **office**. arifOS is **judgment**.
+
+**Authority flow:** VAULT ← ACT+DID ← arifOS ← A2A ← MCP ← CALL_MAP ← STATE  
 **Execution climbs the other way. Never reverse.**
 
 | Class | Layers |
 |-------|--------|
-| **Immutable** | VAULT999 · ACT · did · arifOS F1–F13 |
+| **Immutable** | VAULT999 · ACT · DID · arifOS F1–F13 |
 | **Replaceable** | A2A · MCP |
 | **Disposable** | FastMCP · SDKs · frameworks · harness CLIs |
 
 ```
-MCP/A2A = jalan raya
-AAA     = peta + pejabat kawalan (surface state — NOT a protocol)
+MCP/A2A = jalan raya (coordination)
+AAA     = peta + pejabat kawalan (surface — NOT a protocol)
 888     = hakim (arifOS)
 VAULT   = arkib
 ```
 
 ```
-Protocol PASS + Governance VOID = must not act
-Protocol FAIL                   = no road
+Protocol PASS + Authority DENY = must not act
+Protocol FAIL                  = no road
 ```
 
 ---
 
-## 4. Authority layer — did + ACT (403 is the proof)
+## 5. Authority layer — DID + ACT (403 is the proof)
 
-did:web and ACT are **not** communication protocols (unlike MCP/A2A). They are the **authority layer**.
+DID and ACT are **not** communication. They are **authority**.
 
-| | did:web / did:arif | ACT (`act_v1.*`) |
-|--|--------------------|------------------|
-| Question | Who are you? | What office / what may you do? |
-| Without | “trust me bro” | Identity → Action (ungoverned) |
-| With | cryptographic actor | did → capability → authority → action |
+| | DID | ACT (`act_v1.*`) |
+|--|-----|------------------|
+| Question | Who are you? | What office / what may you? |
+| Without | “trust me bro” | Identity → Action ungoverned |
+| With | cryptographic actor | DID → capability → F1–F13 → action |
 
-**Live forms:** public `did:web:arif-fazil.com…` · registry `did:arif:{organ}` + Ed25519. Map both.
+**Live:** `did:web:arif-fazil.com…` (public) · `did:arif:{organ}` (registry) + Ed25519. Map both.
 
-**Offices ACT enforces:**
+**Offices:** 333 Propose · 555 Verify · 888 Judge · A-FORGE Execute · VAULT Witness.
 
-| Actor | Allowed |
-|-------|---------|
-| 333 | Propose |
-| 555 | Verify |
-| 888 | Judge |
-| A-FORGE | Execute |
-| VAULT999 | Witness |
-
-### 4.1 The 403 proof (constitutional enforcement)
+### 5.1 The 403 proof (constitutional, not “security feature”)
 
 ```text
 Hermes → AAA: "SEAL this action"
 
-1 did:web     Who?     → did:…:hermes     ✅
-2 ACT         Rights?  → OBSERVE/RESEARCH ✅
-3 Request     SEAL
-4 ACT check   SEAL office? → NO            ❌
+1 DID   Who?            → did:…:hermes     ✅
+2 ACT   Office rights?  → OBSERVE/RESEARCH ✅
+3 Req  SEAL
+4 ACT   SEAL capability? → NO             ❌
 
 Result: 403 / HOLD — AUTHORITY DENIED
 ```
 
-Even though **A2A valid · MCP valid · JSON-RPC valid** — authority still fails.
-
-That is **not** a security feature. That is **constitutional enforcement**.
+**A2A valid · MCP valid · JSON-RPC valid — still DENY.**  
+Transport success is orthogonal to office rights.
 
 ```text
 Without ACT:  Identity → Action
-With ACT:     did:web → Capability → Authority (F1–F13) → Action → VAULT
+With ACT:     DID → Capability → arifOS → Action → VAULT
 ```
 
-**Wire:** ART `actGate` — OBSERVE exempt; MUTATE needs `act_v1.*`/`sct_v1.*` (prefer act); IRREVERSIBLE → F13. Envelope **DENY ALL** without policy; DISPLAY_ONLY max PREPARE.
+**Wire:** ART `actGate` (OBSERVE exempt; MUTATE needs `act_v1.*`; IRREVERSIBLE → F13). Envelope DENY ALL; DISPLAY_ONLY max PREPARE.
+
+### 5.2 Enforced vs assumed (honest)
+
+| Enforced (fail-closed) | Soft / assumed today |
+|------------------------|----------------------|
+| Missing A2A-Version → **400** | Every CLI mutate live-ACT on every tool edge |
+| Anonymous low W³ → **403 EMD** | Multi-hop ACT chain |
+| DISPLAY_ONLY ceiling | Hermes A2A agent-card |
+| Holy 8 kernel tools | Full OTel |
+| ACT format + IRREVERSIBLE HOLD | — |
+| DID registry + organ keys | — |
+| VAULT file + vault CONNECTED | — |
 
 ---
 
-## 5. AAA above protocol (anti lock-in)
+## 6. AAA above protocol (anti lock-in)
 
 ```
          AAA STATE (L0–L1 surface)
@@ -167,7 +207,7 @@ With ACT:     did:web → Capability → Authority (F1–F13) → Action → VAU
 
 ---
 
-## 6. Identity naming (locked)
+## 7. Identity naming (locked)
 
 | Domain | Canonical |
 |--------|-----------|
@@ -181,7 +221,7 @@ External standards **map**. They never rename the institution.
 
 ---
 
-## 7. Operators (no passport required yet)
+## 8. Operators (no passport required yet)
 
 | Surface | agentId / FI | Role | Model socket (WHICH) |
 |---------|--------------|------|----------------------|
@@ -195,7 +235,7 @@ Operating ≠ passport. **State first.**
 
 ---
 
-## 8. Probes (enforcement)
+## 9. Probes (enforcement)
 
 ```bash
 /root/AAA/scripts/state-probe.sh        # STATE_READY · §7 light gates
@@ -215,7 +255,7 @@ Operating ≠ passport. **State first.**
 
 ---
 
-## 9. Boot law (every agent)
+## 10. Boot law (every agent)
 
 ```
 1. state-probe.sh  (or this file + ports)
@@ -227,7 +267,7 @@ Operating ≠ passport. **State first.**
 
 ---
 
-## 10. Next (after boring green)
+## 11. Next (after boring green)
 
 | Order | Work | Not |
 |-------|------|-----|
@@ -240,7 +280,7 @@ Operating ≠ passport. **State first.**
 
 ---
 
-## 11. Survival tests
+## 12. Survival tests
 
 | Remove | Survive? |
 |--------|----------|
@@ -253,13 +293,13 @@ Operating ≠ passport. **State first.**
 
 ---
 
-## 12. Explicitly deferred
+## 13. Explicitly deferred
 
 Warga stamps · multi-hop ACT · AIMS/SPIRE rename · economy rails · force-push/main deploy without T3.
 
 ---
 
-## 13. Ops (one block)
+## 14. Ops (one block)
 
 ```bash
 # Prove institution
@@ -277,19 +317,19 @@ systemctl restart aaa-a2a.service && sleep 3
 
 ---
 
-## 14. Pointer index (satellites → this file)
+## 15. Pointer index (satellites → this file)
 
 | Former / related doc | Status |
 |----------------------|--------|
-| CONSTITUTIONAL_SEPARATION_AXIOM | **→ this file §3–11** |
+| CONSTITUTIONAL_SEPARATION_AXIOM | **→ this file §3–12** |
 | CONSTITUTIONAL_LAYER_SEPARATION | **→ this file** |
-| AAA_ABOVE_PROTOCOL | **→ this file §5** |
-| ACT_AUTHORITY_LAYER | **→ this file §4** |
-| PROTOCOL_ENFORCEMENT_MATRIX | **→ this file §8** + `protocol-enforce.sh` |
-| AAA_STATE_PROTOCOL_AUDIT | **→ this file §3,8** + script |
-| IDENTITY_NAMING_REGISTRY | **→ this file §6** |
-| AAA_NEXT_90D | **→ this file §10** |
-| STATE_OPS | **→ this file §13** |
+| AAA_ABOVE_PROTOCOL | **→ this file §7** |
+| ACT_AUTHORITY_LAYER | **→ this file §5** |
+| PROTOCOL_ENFORCEMENT_MATRIX | **→ this file §9** + `protocol-enforce.sh` |
+| AAA_STATE_PROTOCOL_AUDIT | **→ this file §4,9** + script |
+| IDENTITY_NAMING_REGISTRY | **→ this file §7** |
+| AAA_NEXT_90D | **→ this file §11** |
+| STATE_OPS | **→ this file §14** |
 
 Machine twin: `federation/STATE.yaml`  
 Telephone detail: `CALL_MAP.md`  
