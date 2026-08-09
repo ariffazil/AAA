@@ -1,9 +1,9 @@
 {
-  "id": "FI-009",
+  "id": "agy",
   "agent_id": "agy",
   "name": "AGY",
   "class": "FORGE_INSTRUMENT",
-  "layer": "harnesses",
+  "layer": "harness",
   "principal_agent": {
     "type": "agent",
     "category": "Forge instrument \u2014 governed by 333-AGI (Delta MIND)",
@@ -14,11 +14,13 @@
     "lane": "333-AGI",
     "intelligence_tier": "AGI",
     "authority_level": "engineer",
-    "citizenship_forged": "2026-07-25"
+    "citizenship_forged": "2026-07-25",
+    "status": "resident_not_stamped",
+    "stamp": "deferred_phase_B"
   },
-  "description": "AGY (You Only Need AGY) v1.1.7 \u2014 minimal agentic coding harness.",
-  "model": "deepseek/deepseek-v4-pro",
-  "fallback_model": "deepseek-v4-flash",
+  "description": "AGY CLI (You Only Need AGY) \u2014 FI-009 forge instrument on Antigravity harness. Gemini-native model for managed agents; federation MCP mounted as adapters. AAA DISPLAY_ONLY; arifOS judges.",
+  "model": "gemini-3.6-flash",
+  "fallback_model": "gemini-2.5-flash",
   "binary": "/root/.local/bin/agy",
   "izin": "GRANTED",
   "izin_date": "2026-07-25",
@@ -86,5 +88,19 @@
     "streaming": false,
     "pushNotifications": false
   },
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "agentId": "agy",
+  "fi": "FI-009",
+  "fi_slot": "FI-009",
+  "metadata": {
+    "fi_slot": "FI-009"
+  },
+  "model_socket": "gemini-native (Antigravity managed agent; ANTIGRAVITY_API_KEY / Gemini API)",
+  "harness": "antigravity-preview-05-2026",
+  "capability_token": "act_v1",
+  "identity_vs_runtime": "WHO=agy FI-009 \u00b7 WHICH=gemini-3.6-flash native (not FED seat)",
+  "settings_path": "/root/.arifos/agents/gemini/AAA/antigravity-cli/settings.json",
+  "system_md": "/root/.gemini/system.md",
+  "mcp_inventory": 15,
+  "aaa_aligned": "2026-08-09"
 }

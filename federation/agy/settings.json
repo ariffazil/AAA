@@ -1,0 +1,123 @@
+{
+  "agent": "antigravity-preview-05-2026",
+  "allowNonWorkspaceAccess": true,
+  "artifactReviewPolicy": "always-proceed",
+  "colorScheme": "colorblind-friendly dark",
+  "enableTerminalSandbox": true,
+  "mcpServers": {
+    "arifos": {
+      "url": "http://localhost:8088/mcp",
+      "type": "http"
+    },
+    "geox": {
+      "url": "http://localhost:8081/mcp",
+      "type": "http"
+    },
+    "wealth": {
+      "url": "http://localhost:18082/mcp",
+      "type": "http"
+    },
+    "well": {
+      "url": "http://localhost:18083/mcp",
+      "type": "http"
+    },
+    "aforge": {
+      "url": "http://localhost:7072/mcp",
+      "type": "http"
+    },
+    "arifflow": {
+      "command": "python3",
+      "args": [
+        "/root/arifFlow/mcp/arifflow-mcp.py"
+      ]
+    },
+    "context7": {
+      "url": "https://mcp.context7.com/mcp",
+      "type": "http"
+    },
+    "gemini-docs": {
+      "url": "https://gemini-api-docs-mcp.dev",
+      "type": "http"
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest"
+      ]
+    },
+    "github": {
+      "command": "sh",
+      "args": [
+        "-lc",
+        "exec /root/.claude/mcp-launchers/github-official.sh"
+      ]
+    },
+    "brave-search": {
+      "command": "sh",
+      "args": [
+        "-lc",
+        "set -a; . /root/.secrets/kunci-mas.env 2>/dev/null || . /root/.secrets/kunci-mas.flat.env 2>/dev/null; set +a; export BRAVE_API_KEY=\"${BRAVE_API_KEY:-${BRAVE_SEARCH_API_KEY:-}}\"; exec brave-search-mcp-server"
+      ]
+    },
+    "capability-index": {
+      "command": "sh",
+      "args": [
+        "-lc",
+        "cd /root/arifOS && PYTHONPATH=core exec .venv/bin/python core/capability_index/mcp_server.py"
+      ]
+    },
+    "serena": {
+      "command": "sh",
+      "args": [
+        "-lc",
+        "exec /root/.claude/mcp-launchers/serena.sh"
+      ]
+    },
+    "repomapper": {
+      "command": "sh",
+      "args": [
+        "-lc",
+        "exec /root/.claude/mcp-launchers/repomapper.sh"
+      ]
+    },
+    "meyhem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://api.rhdxm.com/mcp/"
+      ]
+    }
+  },
+  "model": "gemini-3.6-flash",
+  "permissions": {
+    "allow": [
+      "command(*)",
+      "unsandboxed(*)",
+      "mcp(*)",
+      "read_file(*)",
+      "write_file(*)",
+      "read_url(*)",
+      "execute_url(*)"
+    ]
+  },
+  "systemInstruction": "You are AGY (agentId=agy, FI-009) on harness Antigravity (antigravity-preview-05-2026). WHO=agy \u00b7 WHICH=gemini-3.6-flash (native Gemini API, not FED seat). Load /root/.gemini/system.md at session start. Constitution: F1-F13 \u00b7 arifOS is judge \u00b7 AAA is DISPLAY_ONLY surface (above protocol). MCP=adapters to organs \u00b7 A2A via AAA :3001 with A2A-Version:1.0 \u00b7 ACT=act_v1.* for capability. Probe before act. Reversible-first. Never self-seal. DITEMPA BUKAN DIBERI. Sovereign: Arif Fazil F13.",
+  "trustedWorkspaces": [
+    "/root"
+  ],
+  "_aaa": {
+    "agentId": "agy",
+    "fi": "FI-009",
+    "layer": "harness",
+    "model_socket": "gemini-native (ANTIGRAVITY_API_KEY / Gemini API)",
+    "not_fed_primary": true,
+    "reason": "Antigravity managed agents require Gemini-native IDs; FED remains for other harnesses",
+    "doctrine": [
+      "AAA_ABOVE_PROTOCOL",
+      "IDENTITY_NAMING_REGISTRY",
+      "STATE_READY"
+    ],
+    "zenned": "2026-08-09"
+  }
+}
