@@ -6,8 +6,10 @@ aaa_is_protocol: false
 aaa_role: federation_surface_state_DISPLAY_ONLY
 authority_flow:
 - vault999
-- act_did
 - arifos
+- act
+- art
+- auth_did
 - a2a
 - mcp
 - call_map
@@ -16,6 +18,8 @@ immutable:
 - vault999
 - act
 - did
+- auth
+- art
 - arifos_floors
 replaceable:
 - a2a
@@ -79,23 +83,26 @@ deferred:
 - warga_stamps
 - multi_hop_act
 - external_live_bridge
-spine: STATE_READY → CALL_MAP → MCP → A2A → arifOS → ACT → did → VAULT999
+spine: STATE_READY → CALL_MAP → MCP|A2A → AUTH(DID) → ART → ACT → arifOS → execute → VAULT999
 labels:
-- HOW
-- WHAT
 - WHO
+- PROVE_WHO
+- MAY_ENTER
+- WHAT_OFFICE
 - SHOULD
-- WHAT_MAY
-- WHO_ARE
+- HOW_TALK
+- HOW_EXECUTE
 - PROVE
 act_is_not_protocol: true
 proof_of_constitution: 403_when_transport_valid_but_ACT_denies
 compression:
-- DID proves identity
-- ACT grants authority
-- arifOS decides legitimacy
-- A2A carries intent
-- MCP executes tools
+- AUTH proves control of DID
+- ART admits the call (reflex)
+- DID names who
+- ACT binds office (act_v1)
+- arifOS decides legitimacy (F1-F13)
+- A2A carries intent (channel only)
+- MCP executes tools (adapter only)
 - VAULT999 preserves evidence
 a2a_role: how_participants_communicate
 did_role: who_is_speaking
