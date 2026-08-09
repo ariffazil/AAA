@@ -76,51 +76,63 @@ Good governance always knows **enforced** vs **assumed**.
 ### 4.1 Compression
 
 ```text
-DID proves identity.
-ACT grants authority.
-arifOS decides legitimacy.
-A2A carries intent.
-MCP executes tools.
+AUTH proves control of identity (DID + signature).
+ART admits the call (reflex: may this enter?).
+DID names who (identity material).
+ACT binds office (what may this office do?).
+arifOS decides legitimacy (F1–F13).
+A2A carries intent (channel only).
+MCP executes tools (adapter only).
 VAULT999 preserves evidence.
 ```
 
 | Question | Layer |
 |----------|--------|
-| **WHO AM I?** | DID (`did:web` / `did:arif`) |
-| **WHAT MAY I DO?** | ACT (`act_v1.*`) |
-| **SHOULD I DO?** | arifOS F1–F13 |
-| **HOW TO TALK?** | A2A |
-| **HOW TO ACT?** | MCP |
-| **CAN I PROVE?** | VAULT999 |
+| **WHO?** | **DID** (`did:web` / `did:arif`) — identity *name* |
+| **PROVE WHO?** | **AUTH** — verify DID + Ed25519 / bearer (authentication) |
+| **MAY ENTER?** | **ART** — Autonomous Reflex Trigger (pre-action admission) |
+| **WHAT OFFICE?** | **ACT** (`act_v1.*`) — capability / office token |
+| **SHOULD?** | arifOS **F1–F13** |
+| **HOW TO TALK?** | A2A (carries DID; does not prove it) |
+| **HOW TO EXECUTE?** | MCP |
+| **PROVE IT HAPPENED?** | VAULT999 |
 
-### 4.2 Spine
+### 4.2 Spine (gates, not agents)
 
 ```text
-STATE_READY → CALL_MAP → MCP → A2A → arifOS → ACT → DID → VAULT999
+STATE_READY → CALL_MAP → [MCP|A2A channel]
+              → AUTH(DID) → ART → ACT → arifOS → execute → VAULT999
 ```
 
 | Step | Precise role | Class |
 |------|--------------|--------|
 | STATE_READY | Institution standing? | Surface |
 | CALL_MAP | Where do I send *here*? | Surface |
-| **MCP** | **How is work executed?** (tooling) | Replaceable |
-| **A2A** | **How participants communicate** (carries DID; does not prove it) | Replaceable |
-| **arifOS** | **Should it be done?** | Immutable |
-| **ACT** | **What may this office do?** | Immutable |
-| **DID** | **Who is speaking?** (identity verified here) | Immutable |
-| **VAULT999** | **Can we prove it?** | Immutable |
+| **MCP** | How is work executed? (tooling) | Replaceable |
+| **A2A** | How participants communicate (carries DID; does not prove it) | Replaceable |
+| **AUTH** | Authentication — prove control of DID | Immutable gate |
+| **DID** | Who is speaking? (identifier + keys) | Immutable material |
+| **ART** | Pre-execution reflex — may this enter / classify risk? | Immutable gate |
+| **ACT** | What may this office do? (`act_v1.*`) | Immutable material |
+| **arifOS** | Should it be done? (F1–F13) | Immutable |
+| **VAULT999** | Can we prove it? | Immutable |
 
-**Locked refinement:** A2A ≠ “who is talking?”. **DID** answers who. A2A is the **channel**. ACT is **office**. arifOS is **judgment**.
+**Locked refinements (no synonym chaos):**
 
-**Authority flow:** VAULT ← ACT+DID ← arifOS ← A2A ← MCP ← CALL_MAP ← STATE  
+- A2A ≠ who. **DID** = who. A2A = **channel**.  
+- **AUTH ≠ ACT.** AUTH = prove identity. ACT = office/capability.  
+- **AUTH ≠ F11.** F11 is **AUDITABILITY** (floor). AUTH here = authentication gate.  
+- **ART ≠ ACT.** ART = reflex admission. ACT = capability token. Wire: `art_gate.js` + `actGate`.  
+- **ART/ACT/AUTH are gates**, not warga agents and not organs.
+
+**Authority flow:** VAULT ← arifOS ← ACT ← ART ← AUTH(DID) ← A2A/MCP ← CALL_MAP ← STATE  
 **Execution climbs the other way. Never reverse.**
 
 | Class | Layers |
 |-------|--------|
-| **Immutable** | VAULT999 · ACT · DID · arifOS F1–F13 |
+| **Immutable** | VAULT999 · ACT · DID · AUTH · ART · arifOS F1–F13 |
 | **Replaceable** | A2A · MCP |
 | **Disposable** | FastMCP · SDKs · frameworks · harness CLIs |
-
 ```
 MCP/A2A = jalan raya (coordination)
 AAA     = peta + pejabat kawalan (surface — NOT a protocol)
@@ -135,29 +147,44 @@ Protocol FAIL                  = no road
 
 ---
 
-## 5. Authority layer — DID + ACT (403 is the proof)
+## 5. Authority layer — AUTH · ART · DID · ACT (403 is the proof)
 
-DID and ACT are **not** communication. They are **authority**.
+Communication ≠ Authentication ≠ Office ≠ Constitution ≠ Proof.
 
-| | DID | ACT (`act_v1.*`) |
-|--|-----|------------------|
-| Question | Who are you? | What office / what may you? |
-| Without | “trust me bro” | Identity → Action ungoverned |
-| With | cryptographic actor | DID → capability → F1–F13 → action |
+| Layer | Expands to | Question | Not |
+|-------|------------|----------|-----|
+| **DID** | Decentralized Identifier | Who are you (named)? | Not power |
+| **AUTH** | Authentication | Prove you control that DID | Not ACT; not F11 auditability |
+| **ART** | Autonomous Reflex Trigger | May this call enter? (risk class) | Not office; not judgment |
+| **ACT** | Action Capability Token `act_v1.*` | What office / what may you? | Not identity |
+| **F1–F13** | arifOS floors | Should that office act? | Not transport |
+| **VAULT999** | Sealed ledger | Prove it happened | Not authorization |
 
-**Live:** `did:web:arif-fazil.com…` (public) · `did:arif:{organ}` (registry) + Ed25519. Map both.
+| | DID | AUTH | ART | ACT |
+|--|-----|------|-----|-----|
+| Question | Who? | Prove who? | May enter? | What office? |
+| Without | “hermes” string | Trust header | Blind entry | Identity → Action |
+| With | `did:arif:hermes` | Ed25519 / registry | classify + hold bad patterns | capability bound |
 
-**Offices:** 333 Propose · 555 Verify · 888 Judge · A-FORGE Execute · VAULT Witness.
+**Live DID:** `did:web:arif-fazil.com…` (public) · `did:arif:{organ}` (registry) + Ed25519. Map both.  
+**Live AUTH:** envelope signature + DID registry resolve (AAA `federation_envelope.js`).  
+**Live ART:** `a2a-server/art_gate.js` — OBSERVE/REASON pass; MUTATE+ may escalate.  
+**Live ACT:** `actGate` — MUTATE needs `act_v1.*` (legacy `sct_v1.*` dual-read); IRREVERSIBLE → F13 ack.
+
+**Offices (examples):** 333 Propose · 555 Verify · 888 Judge · A-FORGE Execute · VAULT Witness.
 
 ### 5.1 The 403 proof (constitutional, not “security feature”)
 
 ```text
 Hermes → AAA: "SEAL this action"
 
-1 DID   Who?            → did:…:hermes     ✅
-2 ACT   Office rights?  → OBSERVE/RESEARCH ✅
-3 Req  SEAL
-4 ACT   SEAL capability? → NO             ❌
+0 AUTH  Signature?      → valid Ed25519 on did:…:hermes  ✅
+1 DID   Who?            → did:…:hermes                   ✅
+2 ART   May enter?      → classified MUTATE/IRREVERSIBLE ✅/HOLD
+3 ACT   Office rights?  → OBSERVE/RESEARCH               ✅
+4 Req  SEAL
+5 ACT   SEAL capability? → NO                            ❌
+6 F13   Sovereign?      → not granted                    ❌
 
 Result: 403 / HOLD — AUTHORITY DENIED
 ```
@@ -166,12 +193,12 @@ Result: 403 / HOLD — AUTHORITY DENIED
 Transport success is orthogonal to office rights.
 
 ```text
-Without ACT:  Identity → Action
-With ACT:     DID → Capability → arifOS → Action → VAULT
+Without separation:  Identity → Action          (dangerous)
+With full spine:     AUTH(DID) → ART → ACT → arifOS → Action → VAULT
 ```
 
-**Wire:** ART `actGate` (OBSERVE exempt; MUTATE needs `act_v1.*`; IRREVERSIBLE → F13). Envelope DENY ALL; DISPLAY_ONLY max PREPARE.
-
+**Wire summary:** ART admits; ACT authorizes office; arifOS legitimates; VAULT witnesses.  
+Envelope DENY ALL default; DISPLAY_ONLY max PREPARE.
 ### 5.2 Enforced vs assumed (honest)
 
 | Enforced (fail-closed) | Soft / assumed today |
