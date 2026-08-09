@@ -41,13 +41,17 @@ Setiap HITL stop mencuri attention sovereign yang sepatutnya tak diperlukan. Tuj
 | `governance/policies/REPO_ROUTING.md` (x2) | "routing confidence < 0.8 → stop, ask Arif" | machine-gate via apex-judge isolate atau least-risk default + flag; no human ask untuk routing dalaman |
 | `seed/SOUL.md` | "Irreversible → 888_HOLD. Ask Arif. No exceptions." | 888_HOLD + report structured options; continue reversible work; ask permission untuk reversible = HARAM |
 
-### 🚧 CONVERT — code level (forge prompt dispatched → opencode)
+### ✅ CONVERTED — code level (DONE via opencode forge, committed)
 
-| Lokasi | Was | Will be |
-|---|---|---|
-| `A-FORGE/a_think/organ_affordances.yaml` — A-FORGE GOVERN | `requires_human_ack: true` (modify/write/commit/build/deploy) | `false` untuk reversible di bawah kernel lease; destructive/publish/delete kekal gated |
-| `organ_affordances.yaml` — hard_laws A-FORGE | "may not publish, deploy, delete, or commit without explicit approval" | align ACTION_LADDER: commit = T1 auto, deploy = T2 announce-proceed, publish/delete = apex-judge isolate |
-| `organ_affordances.yaml` — WEALTH vault_write | `requires_human_ack: true` | `false` JIKA receipt-mode (Lane B autonomous); verify semantik dulu, jangan flip kalau seal-mode |
+| Lokasi | Was | Now | Commit |
+|---|---|---|---|
+| `A-FORGE/a_think/organ_affordances.yaml` — A-FORGE GOVERN | `requires_human_ack: true` | `false` — reversible autonomous di bawah kernel lease; destructive per-tool gates (mcp_guard GOVERN + affordance HARAM 3) **tidak disentuh** | `a73efef1` |
+| `organ_affordances.yaml` — hard_laws A-FORGE | "may not publish, deploy, delete, or commit without explicit approval" | publish/delete = apex-judge isolate; deploy = T2 announce-proceed; commit = T1 auto | `a73efef1` |
+| `organ_affordances.yaml` — WEALTH vault_write | `requires_human_ack: true` | **KEKAL true — BY DESIGN**: vault_write = Lane A seal-mode (VAULT999 immutable append, `ack_irreversible=True`, c2/irreversible dalam organ_governance.py). Lane B receipt (`forge_vault mode=receipt`) sudah autonomous. | `a73efef1` (comment only) |
+
+**Verified (Hermes, 2026-08-09):** diff check ✅ (2 commits — hanya organ_affordances.yaml + litellm-config.yaml); YAML parse ✅; worktree bersih ✅.
+**F11 note:** commit `d896e9e4` sweep litellm-config.yaml (deepseek-v4-pro order 99→1 — perubahan FED yang disengajakan sebelum session) dengan message tak padan. Content betul, message keliru. No history rewrite (remote wujud). Flag untuk awareness.
+**Test noise (pre-existing, bukan regresi):** npm test 15 kegagalan EphemeralGenesisRunner (sandbox/bwrap infra); pytest `a_think/tests.py` gagal collect — opentelemetry import dalam venv (import OK di system python).
 
 **Catatan kritikal:** perlindungan destructive per-tool (`mcp_guard.py` GOVERN mode + `affordance.py` HARAM 3) mesti kekal — flip ini hanya coarse gate per-organ, bukan per-tool destructive flag.
 
