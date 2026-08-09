@@ -186,3 +186,7 @@ Need work done?
 ## State
 
 This is the **telephone**. Territory + readiness of the **state**: [`STATE.md`](./STATE.md). Catalog: AAA 3-layer cards. Power: FED.
+
+## Gemini (multimodal seats)
+
+Policy: [`GEMINI_INTEGRATION.md`](./GEMINI_INTEGRATION.md). Seats: `gemini-flash`, `gemini-pro`, `fed/image-gen`. **Not** on hermes-asi tool loops.
