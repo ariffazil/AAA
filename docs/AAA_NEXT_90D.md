@@ -141,3 +141,7 @@ Research those as **landscape** only (T0). Never paste into `organs.yaml` withou
 Not economy. Not jurisdiction. Not multi-hop crypto. Not a thicker control plane.
 
 DITEMPA BUKAN DIBERI.
+
+## Identity names (F13 2026-08-09)
+
+See [`IDENTITY_NAMING_REGISTRY.md`](./IDENTITY_NAMING_REGISTRY.md) — ACT only; agentId+did:web; warga passport; no AIMS/SPIRE/HDP brands.
