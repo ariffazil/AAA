@@ -438,14 +438,57 @@ Intent (raw human signal preserved)
   → Proof (VAULT999)
 ```
 
-**Bahasa kampung / raw signal:** keep original human words when they carry uncertainty or intuition.  
-Early conversion to corporate English kills ore body.
+### 17.3 Compression-Risk Asymmetry (GENESIS/060)
 
-**Contradiction is a feature:** healthy federation surfaces Hermes maybe-not-X, OpenClaw historical Y, 555 weak evidence, 888 HOLD — not monoculture agreement.
+```text
+Every compression step is a TAX on verification.
+888 cannot judge signal that died upstream.
+```
 
-**Ore body = human. Forge = agent. SEAL = governance.**
+| Industry | arifOS |
+|----------|--------|
+| Risk = misinterpretation → compress harder | Risk = **signal death** → keep raw, open governance |
+| Structured prompts as safety | F2 labels · F7 cap · F9 anti-deception · 888 verdict |
 
-Elaboration: `doctrine/federation-intent-grammar.md` (Tier B).
+**Bahasa kampung matters at layer one, not layer end** — maximum material for verification.
+
+### 17.4 Grammar of intent (shared grammar, not shared language)
+
+| Cell | Human | Federation |
+|------|-------|------------|
+| Intent | “aku tak sedap hati” | `type: anomaly, conf: 0.42` |
+| Capability | “tanya doctor” | `capability: risk_assessment` |
+| Contract | “kau check, aku decide” | `authority: JUDGE_ONLY` |
+| Verdict | “jangan proceed” | `SEAL` / `HOLD` / `VOID` |
+
+### 17.5 Contradiction axiom
+
+```text
+AXIOM: A federation that cannot sustain contradiction cannot sustain truth.
+```
+
+Gödel false consensus: Feed→Agent→Judge all say X.  
+Healthy: multi-agent OBS/DER/INT/SPEC conflict → 888 HOLD on real contradiction.
+
+### 17.6 Bahasa kampung = Gödel breaker at entry
+
+| Input | Loop | 888 material |
+|-------|------|----------------|
+| Raw (“tak kena tapi semua proceed”) | **Open** | Yes |
+| Polished directive only | **Closed** | Often none |
+
+Anti-Gödel stack: **raw entry → native dialects → judge contradiction (not erase).**
+
+**Share reality, not representation.** Different frames = gold. Same mega-prompt = flat consensus.
+
+```text
+Filter anywhere = corruption there = local Gödel loop.
+Ore body = human · Forge = agent · SEAL = governance.
+Apex = courage not to polish — at every layer.
+```
+
+**Canon:** `arifOS/GENESIS/060_FEDERATION_INTENT_GRAMMAR.md`  
+**Elaboration:** `doctrine/federation-intent-grammar.md` (Tier B).
 
 ---
 
