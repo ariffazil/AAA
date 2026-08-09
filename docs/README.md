@@ -1,12 +1,26 @@
 # 📚 AAA Documentation — Master Index
 
 > **DITEMPA BUKAN DIBERI** — Control plane for the arifOS federation.
-> **Cross-linked:** 2026-07-20 · Connected to [arifOS](../arifOS/README.md)
+> **Working SOT:** [`STATE.md`](./STATE.md) — constitution only (~300L). Not the library.
+> **Zen:** One truth · Many projections · 0 contradictions. See STATE §16.
+
+## Docs entropy (4-tier)
+
+| Tier | Role | Where |
+|------|------|-------|
+| **A** | Constitution | [`STATE.md`](./STATE.md) |
+| **B** | Canon (elaborations) | [`philosophy/`](philosophy/) · [`doctrine/`](doctrine/) · [`canon/`](canon/) |
+| **C** | Operational | [`operations/`](operations/) · [`contracts/`](contracts/) · [`transport/`](transport/) · [`geox/`](geox/) |
+| **D** | Receipts (preserve) | [`sessions/`](sessions/) · [`audit-2026-06-06/`](audit-2026-06-06/) · [`receipts/`](receipts/) |
+| Legacy | Design history | [`architecture/`](architecture/) · [`archive/`](archive/) |
+
+Do **not** merge Tier B–D into STATE.md (entropy singularity).
 
 ## 🧭 Entry Points
 
 | Resource | Path | Description |
 |----------|------|-------------|
+| **STATE.md** | [STATE.md](./STATE.md) | **Constitutional SOT** (edit law here) |
 | **README** | [../README.md](../README.md) | AAA overview |
 | **AGENTS.md** | [../AGENTS.md](../AGENTS.md) | Agent surface |
 | **CLAUDE.md** | [../CLAUDE.md](../CLAUDE.md) | Claude agent surface |

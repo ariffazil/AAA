@@ -1,3 +1,10 @@
+<!-- OPERATIONAL | tier:C-ops | context:STATE.md | 2026-08-09 -->
+> **OPERATIONAL (Tier C)**  
+> **Constitutional Context:** [`STATE.md`](../STATE.md)  
+> This is **procedure / implementation**, not constitutional truth.  
+> Institution lives in STATE.md. Losing this file loses procedure, not the institution.  
+> DITEMPA BUKAN DIBERI.
+
 # Ed25519 Chain — End-to-End Identity Trace (G4)
 
 > **EUREKA P1, G4** — Trace actor_id through all 6 planes of the arifOS

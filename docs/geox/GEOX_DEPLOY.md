@@ -1,3 +1,10 @@
+<!-- OPERATIONAL | tier:C-ops | context:STATE.md | 2026-08-09 -->
+> **OPERATIONAL (Tier C)**  
+> **Constitutional Context:** [`STATE.md`](../STATE.md)  
+> This is **procedure / implementation**, not constitutional truth.  
+> Institution lives in STATE.md. Losing this file loses procedure, not the institution.  
+> DITEMPA BUKAN DIBERI.
+
 # GEOX Build & Deploy Guide
 
 **For any agent working on af-forge (VPS: af-forge.tailf6bfb5.ts.net)**
