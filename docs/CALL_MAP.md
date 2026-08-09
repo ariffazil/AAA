@@ -53,27 +53,36 @@ authority      = canDo/cannotDo over both
 
 Skill alias: `FORGE-call-map`.
 
-### 1.1 Apex-judge dial (every harness — Option 3)
+### 1.1 Apex-judge dial (Gödel · strange-loop zen)
+
+Doctrine: `/root/AAA/governance/GODEL_LOCK_STRANGE_LOOP.md`
 
 ```bash
-# Universal — Hermes, OpenClaw, Grok, OpenCode, Claude, Kimi, AGY
-apex-judge --candidate "<action>" --actor <HERMES|OPENCLAW|GROK|OPENCODE|CLAUDE|…> --pretty --human
+# REAL default — doer ≠ judge lane → kernel (Option 3)
+apex-judge isolate --doer HERMES --candidate "<action>" -e /tmp/ev.json --pretty --human
 
-# Audit draft for free-text self-SEAL
+# Critical self-federation (F13_REQUIRED; SEAL demoted to HOLD)
+apex-judge isolate --doer HERMES --critical -c "…"
+
+# Strange-loop gate only
+apex-judge --check-loop --doer HERMES -c "audit myself"
+
+# Free-text self-SEAL audit
 apex-judge --audit-text - <<'EOF'
-…agent draft…
+…draft…
 EOF
 ```
 
 | Field | Source of truth |
 |-------|-----------------|
+| `independence_class` | isolate gate + kernel |
 | `effective_verdict` | kernel only |
-| `call_hash` | kernel receipt |
-| Skill | `arifos-constitutional-judge` |
-| Subagent prompt | `/root/AAA/prompts/APEX_JUDGE_SUBAGENT.md` |
-| Binary | `/root/.local/bin/apex-judge` → `/root/scripts/apex_judge.py` |
+| `call_hash` / `session_id` | kernel receipt |
+| Skill | `arifos-constitutional-judge` v1.2 |
+| Subagent | `/root/AAA/prompts/APEX_JUDGE_SUBAGENT.md` |
+| Binary | `/root/.local/bin/apex-judge` |
 
-**Forbidden:** harness inventing SEAL/HOLD/SABAR/VOID as constitutional fact without the receipt above.
+**Forbidden:** same-agent self-audit conclusions; free-text `888-APEX JUDGMENT` without receipt.
 
 ---
 

@@ -187,10 +187,11 @@ intent_routing:
   coding: opencode
   coding_fallback: [claude-code, kimi-code, grok-build, codex]
   judge: arifos
-  judge_cli: "apex-judge --candidate '…' --actor <HARNESS>"  # Option 3 · forbids free-text SEAL
+  judge_cli: "apex-judge isolate --doer <WORKER> --candidate '…'"  # Option 3 Gödel · doer≠judge→kernel
   judge_skill: arifos-constitutional-judge
   judge_subagent_prompt: /root/AAA/prompts/APEX_JUDGE_SUBAGENT.md
-  judge_forbidden: "free-text 888-APEX JUDGMENT without kernel call_hash"
+  judge_doctrine: /root/AAA/governance/GODEL_LOCK_STRANGE_LOOP.md
+  judge_forbidden: "free-text 888-APEX JUDGMENT; same-agent self-audit conclusions"
   earth: geox
   capital: wealth
   readiness: well
