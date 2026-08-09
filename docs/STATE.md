@@ -140,3 +140,7 @@ Then: **bring citizens in** (attestation, FI stamps, SOUL/AGENTS per warga).
 ## Ops
 
 Operator runbook: [`STATE_OPS.md`](./STATE_OPS.md)
+
+## Next (after STATE_READY)
+
+[`AAA_NEXT_90D.md`](./AAA_NEXT_90D.md) — external telephone → citizens → 90d synthesis. No new organs.
