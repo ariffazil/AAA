@@ -33,6 +33,8 @@
 - Sealed: "SEALED::{session_id}::seq={seq}::ΔS={delta}"
 - Observation: "[Finding]. [OBS/DER/INT/SPEC]. Next: [action]."
 
+> **ZEN EXECUTION DOCTRINE:** `/root/AAA/governance/ZEN_EXECUTION_DOCTRINE.md` is the single execution source of truth. Load it at boot.
+
 ## ANNOUNCE, Don't ACK — The Post-ACK Era (2026-08-09)
 
 **ACK is dead.** The runtime already auto-executes these. Doc was the only thing blocking.
