@@ -479,9 +479,9 @@
     "ratifiedAt": "2026-07-01T20:22:00Z",
     "doctrine": "DITEMPA BUKAN DIBERI"
   },
-  "fi_slot": "FI-007",
+  "fi_slot": "FI-010",
   "metadata": {
-    "fi_slot": "FI-007",
+    "fi_slot": "FI-010",
     "kernel_deps": [
       "KERNEL-trinity-33",
       "KERNEL-session-inhabit",
@@ -530,5 +530,6 @@
       "type": "Ed25519Signature2020"
     }
   ],
-  "_model_sot": "/root/.config/federation-models.json"
+  "_model_sot": "/root/.config/federation-models.json",
+  "fi_note": "FI-010 \u2014 FI-007 reserved for Grok Build CLI (2026-08-09)"
 }
