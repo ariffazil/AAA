@@ -89,25 +89,37 @@ agents:
     boundary: T3_HOLD
 
   openclaw:
-    layer: binding_and_harness
+    layer: binding
+    agentId: openclaw
+    fi: null  # not a forge instrument — gateway binding (personas dispatch TO FI)
+    bound_to: gateway
     invoke:
       cli: "openclaw agent -m \"<msg>\""
       gateway: "http://127.0.0.1:18789"
       a2a: "POST …/a2a/tasks/send target=openclaw"
-    can: [route_personas, telegram_surface, dispatch_to_fi]
-    cannot: [be_primary_coder]
+      endpoint_card: https://aaa.arif-fazil.com/a2a/openclaw
+    can: [route_personas, telegram_surface, dispatch_to_fi, metabolize]
+    cannot: [be_primary_coder, self_seal_constitutional]
     boundary: ROUTE_OBSERVE
+    model_socket: "FED litellm-federation/openclaw → :4000 (primary); direct deepseek/minimax fallbacks"
     personas: [main, opencode, codex, kimi, claude]
+    contrast_hermes: "OpenClaw=gateway metabolizer+personas; Hermes=human ASI bridge. Both may share Telegram surface — dial carefully."
 
   hermes-asi:
-    layer: binding_extension
+    layer: binding
+    agentId: hermes-asi
+    fi: FI-000
+    bound_to: 555-ASI
     invoke:
       telegram: "@AGI_ASI_bot / gateway hermes-asi-gateway.service"
       a2a: "POST …/a2a/tasks/send target=hermes-asi"
       local_cli: "hermes …"
+      endpoint_card: https://aaa.arif-fazil.com/a2a/hermes-asi
     can: [human_bridge, route_to_coders, multimodal]
-    cannot: [mutate_prod_code_as_primary_executor]
+    cannot: [mutate_prod_code_as_primary_executor, be_primary_coder]
     boundary: OBSERVE_ROUTE
+    model_socket: "FED litellm-federation/hermes-asi → :4000; thinking pad for MiMo/DeepSeek"
+    contrast_openclaw: "Hermes FI-000 edge/human; OpenClaw binding gateway. WHICH=FED seat, not identity."
 
 organs:
   arifos:

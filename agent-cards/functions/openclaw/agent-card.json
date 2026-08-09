@@ -622,5 +622,17 @@
       "protocolBinding": "JSONRPC",
       "protocolVersion": "1.0"
     }
-  ]
+  ],
+  "agentId": "openclaw",
+  "layer": "binding",
+  "fi": null,
+  "fi_note": "Not FI \u2014 gateway binding; dispatches to FI harnesses",
+  "model_socket": "fed/openclaw",
+  "identity_vs_runtime": "agentId=openclaw; runtime=FED seat openclaw (not opencode FI-001)",
+  "warga_binding": {
+    "status": "resident_not_stamped",
+    "planned": "infrastructure_citizen",
+    "stamp": "deferred_phase_B"
+  },
+  "capability_token": "act_v1"
 }
