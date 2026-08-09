@@ -152,3 +152,7 @@ Live MCP/A2A/state stack: [`AAA_STATE_PROTOCOL_AUDIT.md`](./AAA_STATE_PROTOCOL_A
 ## AAA above protocol
 
 Doctrine: [`AAA_ABOVE_PROTOCOL.md`](./AAA_ABOVE_PROTOCOL.md) — AAA is canonical federation surface state; MCP/A2A are adapters, not masters. arifOS remains judge.
+
+## Constitutional layer separation
+
+Eureka SEAL: [`CONSTITUTIONAL_LAYER_SEPARATION.md`](./CONSTITUTIONAL_LAYER_SEPARATION.md) — protocol subordinate to governance; AAA is surface state not a protocol.
