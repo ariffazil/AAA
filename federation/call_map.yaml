@@ -1,0 +1,158 @@
+# CALL MAP — Machine twin (how to invoke, not who you are)
+# Human SOT: /root/AAA/docs/CALL_MAP.md
+# Truth: live :port/health + which binary --help beats this file.
+# Forged: 2026-08-09 · Gap: catalog without call contract
+schema_version: 1
+forged: "2026-08-09"
+doctrine: |
+  AAA 3-layer map = DIRECTORY (who/what).
+  CALL_MAP = TELEPHONE (how to dial).
+  FED = WHICH engine (tokens). Separate.
+
+invoke_priority:
+  - local_cli        # lowest friction for coding on VPS
+  - a2a_tasks_send   # cross-agent mesh via AAA :3001
+  - mcp_tools        # organs via MCP ports
+  - arif_route       # kernel intent → organ
+
+agents:
+  opencode:
+    layer: harness
+    fi: FI-001
+    bound_to: 333-AGI
+    invoke:
+      cli: "opencode run \"<task>\""
+      cli_alt: "/root/scripts/opencode-fed-preflight.sh run \"<task>\""
+      binary: /root/.npm-global/bin/opencode
+      a2a: "POST https://aaa.arif-fazil.com/a2a/tasks/send  target=opencode"
+      a2a_local: "POST http://127.0.0.1:3001/a2a/tasks/send"
+      endpoint_card: https://aaa.arif-fazil.com/a2a/opencode
+    can: [forge_code, git, pr, test, mcp_organs, subagent_spawn]
+    cannot: [self_seal_constitutional, irreversible_without_T3_or_F13]
+    boundary: T3_HOLD
+    model_socket: "FED litellm-federation/opencode → :4000 (direct fallbacks in opencode.json)"
+
+  claude-code:
+    layer: harness
+    fi: FI-002
+    invoke:
+      cli: "claude -p \"<task>\""
+      binary: /root/.local/bin/claude
+      a2a: "POST …/a2a/tasks/send target=claude-code"
+      endpoint_card: https://aaa.arif-fazil.com/a2a/claude-code
+      hermes_skill: hermes-claude-code-spawn
+    can: [forge_code, mcp_organs, spawn_by_hermes]
+    boundary: T3_HOLD
+    model_socket: "ANTHROPIC_BASE_URL → :4000 (FED aliases hermes-asi/apex-888)"
+
+  kimi-code:
+    layer: harness
+    fi: FI-008
+    invoke:
+      cli: "kimi -p \"<task>\""
+      binary: /root/.kimi-code/bin/kimi
+      a2a: "POST …/a2a/tasks/send target=kimi-code"
+      endpoint_card: https://aaa.arif-fazil.com/a2a/kimi-code
+    can: [forge_code, long_context_1M]
+    boundary: T3_HOLD
+
+  codex:
+    layer: harness
+    fi: FI-005
+    invoke:
+      cli: "codex exec \"<task>\""
+      binary: /root/.npm-global/bin/codex
+      a2a: "POST …/a2a/tasks/send target=codex"
+      note: "Responses API via :4001 fed-clean-proxy → :4000"
+    can: [forge_code, sandboxed_exec]
+    boundary: T3_HOLD
+    model_socket: "provider fed base_url http://127.0.0.1:4001/v1 model=codex"
+
+  grok-build:
+    layer: harness
+    fi: FI-007
+    invoke:
+      cli: "grok -p \"<task>\""
+      binary: /root/.local/bin/grok
+      a2a: "POST …/a2a/tasks/send target=grok-build"
+      endpoint_card: https://aaa.arif-fazil.com/a2a/grok-build
+    can: [plan_search_build, worktree, parallel_subagents]
+    boundary: T3_HOLD
+
+  copilot:
+    layer: harness
+    fi: FI-006
+    invoke:
+      cli: "copilot -p \"<task>\""
+      binary: /root/.npm-global/bin/copilot
+    can: [forge_code, byok_deepseek]
+    boundary: T3_HOLD
+
+  openclaw:
+    layer: binding_and_harness
+    invoke:
+      cli: "openclaw agent -m \"<msg>\""
+      gateway: "http://127.0.0.1:18789"
+      a2a: "POST …/a2a/tasks/send target=openclaw"
+    can: [route_personas, telegram_surface, dispatch_to_fi]
+    cannot: [be_primary_coder]
+    boundary: ROUTE_OBSERVE
+    personas: [main, opencode, codex, kimi, claude]
+
+  hermes-asi:
+    layer: binding_extension
+    invoke:
+      telegram: "@AGI_ASI_bot / gateway hermes-asi-gateway.service"
+      a2a: "POST …/a2a/tasks/send target=hermes-asi"
+      local_cli: "hermes …"
+    can: [human_bridge, route_to_coders, multimodal]
+    cannot: [mutate_prod_code_as_primary_executor]
+    boundary: OBSERVE_ROUTE
+
+organs:
+  arifos:
+    invoke: "MCP http://127.0.0.1:8088/mcp"
+    health: "curl -sf http://127.0.0.1:8088/health"
+    tools: [arif_init, arif_observe, arif_think, arif_route, arif_memory, arif_judge, arif_forge, arif_seal]
+    ceiling: JUDGE_ONLY
+  a-forge:
+    invoke: "MCP http://127.0.0.1:7072/mcp  API :7071"
+    health: "curl -sf http://127.0.0.1:7071/health"
+    ceiling: EXECUTE_AFTER_SEAL
+  geox:
+    invoke: "MCP http://127.0.0.1:8081/mcp"
+    ceiling: COMPUTE_ONLY
+  wealth:
+    invoke: "MCP http://127.0.0.1:18082/mcp"
+    ceiling: COMPUTE_ONLY
+  well:
+    invoke: "MCP http://127.0.0.1:18083/mcp"
+    ceiling: REFLECT_ONLY
+  aaa:
+    invoke: "A2A http://127.0.0.1:3001  public https://aaa.arif-fazil.com"
+    health: "curl -sf http://127.0.0.1:3001/health"
+    ceiling: DISPLAY_ONLY
+  arifflow:
+    invoke: "http://127.0.0.1:7073/health"
+    ceiling: METABOLIZE_ONLY
+
+advisory:
+  fed_gateway:
+    invoke: "http://127.0.0.1:4000/v1  (OpenAI-compat)"
+    health: "curl -sf http://127.0.0.1:4000/health/liveliness"
+    key_env: LITELLM_MASTER_KEY
+  fed_advisor:
+    invoke: "http://127.0.0.1:7074/mcp  tools: fed_route, fed_status"
+  flame:
+    invoke: "http://127.0.0.1:18901"
+
+intent_routing:
+  coding: opencode
+  coding_fallback: [claude-code, kimi-code, grok-build, codex]
+  judge: arifos
+  earth: geox
+  capital: wealth
+  readiness: well
+  execute_mutation: a-forge
+  human_chat: hermes-asi
+  model_route_advice: fed_advisor

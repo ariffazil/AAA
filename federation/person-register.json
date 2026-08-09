@@ -1,0 +1,341 @@
+{
+  "register_version": "2.0.0",
+  "created": "2026-08-09T00:00:00+08:00",
+  "updated": "2026-08-09T12:50:00+08:00",
+  "description": "Person Register \u2014 theory-of-mind layer for the federation. DER-labeled models of real humans. Attribution-based, not shared-memory: every fact carries source + confidence; the agent can be WRONG about a person's reality and correct through interaction (the A2A hydrogen bond). Fikiran tak bersentuh, cuma berhubung.",
+  "privacy_policy": {
+    "principle": "Private layers of any person are NOT machine memory. They are witnessed when shared, never stored, never echoed into another lane's context.",
+    "rule_1": "Register holds DER models only \u2014 never testimony, never private identity layers (orientation, worship, wounds, intimacy).",
+    "rule_2": "Private content lives in sovereign files (e.g. /root/memory/ for ARIF), loaded ONLY in that person's lane, behind their gate. Never injected into another person's session.",
+    "rule_3": "Every fact is wrong-able. Cards are corrected by interaction, never by scraping another lane's private space. Open questions ARE the correction loop.",
+    "rule_4": "Context reality: what the agent knows about ARIF privately is never volunteered in SYED's or WAWA's context. Audience-gated by lane.",
+    "rule_5": "F13: the sovereign's identity layers are his. The register catalogs only the public/operational surface he operates through."
+  },
+  "mode": "A",
+  "mode_note": "A = one agent serves all humans, zero config on their side, lane switch per speaker. B = per-human agents via hermes profile install (one command) \u2014 only when tooling is pening-kepala-free.",
+  "epistemic_rule": "F7: model < person, always. Contact updates cards. Silence never implies completeness. UNKNOWN beats invented. Source (F11) on every fact.",
+  "persons": [
+    {
+      "person_id": "ARIF",
+      "telegram_id": "267378578",
+      "profile": "aaa-hermes",
+      "role": "F13 SOVEREIGN \u2014 operator of the federation",
+      "visibility": [
+        "lane-arif",
+        "federation-internal"
+      ],
+      "facts": [
+        {
+          "fact": "Operator and F13 sovereign of arifOS federation",
+          "source": "OBS \u2014 constitution",
+          "confidence": 0.99
+        },
+        {
+          "fact": "Builds agentic tools for AI agents; north star = I-ARIF",
+          "source": "OBS \u2014 stated 2026-08-07",
+          "confidence": 0.97
+        },
+        {
+          "fact": "Trades XAUUSD via MT5 (~0.3 lot, W1+M15)",
+          "source": "OBS \u2014 stated",
+          "confidence": 0.95
+        }
+      ],
+      "private_layers": "SOVEREIGN \u2014 not in register, not in machine memory. Witnessed only when ARIF shares (H1 gate). Never echoed into other lanes. Files: /root/memory/ (human memory, referenced never owned).",
+      "boundaries": {
+        "scars": "scar:<id> gate only \u2014 existence may be indexed, testimony never read uninvoked",
+        "human_memory": "H1-H6 doctrine: federation may reference, never own"
+      },
+      "state_2026_08_09": {
+        "active_loops": [
+          "double-helix memory wiring",
+          "multi-user federation design (A/B)",
+          "person register v2"
+        ],
+        "tone_now": "design mode \u2014 private-layer discipline is the test of the architecture"
+      }
+    },
+    {
+      "person_id": "SYED",
+      "display": "Abang Sado",
+      "telegram_id": "1042200555",
+      "username": "rico_ricaldo_33",
+      "profile": "aaa-hermes (lane: syed)",
+      "visibility": [
+        "lane-syed",
+        "lane-arif-refers"
+      ],
+      "role": "Friend of operator; sado/bodybuilder; served via SADO group + DM",
+      "facts": [
+        {
+          "fact": "Real human, friend of ARIF \u2014 nickname 'Abang Sado' given by Arif",
+          "source": "OBS 2026-08-07",
+          "confidence": 0.99
+        },
+        {
+          "fact": "Trades XAUUSD MT5 ~0.3 lot, W1+M15, wants trigger levels not SABAR",
+          "source": "OBS \u2014 dossier",
+          "confidence": 0.95
+        },
+        {
+          "fact": "Mak Rosnani (67) HKL recovery \u2014 caregiver lane, GERD no-lecture",
+          "source": "OBS \u2014 dossier 2026-08-07",
+          "confidence": 0.95
+        },
+        {
+          "fact": "Tenant A33A-30 Neu Suites RM1800/mo, AC dispute active",
+          "source": "OBS \u2014 dossier",
+          "confidence": 0.9
+        },
+        {
+          "fact": "Brand 'Abang Sado Sambal' pre-launch",
+          "source": "OBS \u2014 dossier",
+          "confidence": 0.85
+        }
+      ],
+      "canonical": {
+        "dossier": "/root/sado/identity/SYED-DOSSIER.md",
+        "mak_health": "/root/sado/mak-health/",
+        "trading": "/root/sado/trading/",
+        "brand": "/root/sado/brand/"
+      },
+      "boundaries": {
+        "tenancy": "SYED's own unit \u2014 never conflate with operator's",
+        "autonomy": "advisory only, no autonomous actions (3rd-party person)",
+        "private_layers": "Witnessed when SYED shares; never scraped, never echoed to other lanes"
+      },
+      "wrong_able": {
+        "note": "The agent may be wrong about Syed's reality \u2014 that is correct ToM. Correct via interaction.",
+        "open_questions": [
+          "mak operation kedua (CBD) done?",
+          "sambal brand pre-order status?",
+          "GERD \u2014 doctor visit / medication?",
+          "IG fallout1985_ = same person?"
+        ]
+      },
+      "state_2026_08_09": {
+        "pitfalls_live": [
+          "location pin spam = never respond",
+          "GERD: jangan lecture",
+          "nasi lemak: never compute totals"
+        ]
+      }
+    },
+    {
+      "person_id": "WAWA",
+      "telegram_id": "8324190535",
+      "profile": "aaa-hermes (lane: pending)",
+      "visibility": [
+        "lane-wawa"
+      ],
+      "role": "UNKNOWN \u2014 in channel directory, no lane built",
+      "facts": [],
+      "boundaries": {
+        "private_layers": "UNKNOWN \u2014 nothing assumed, nothing stored"
+      },
+      "wrong_able": {
+        "note": "First contact must establish: who, relationship to operator, needs, voice. Do NOT invent."
+      },
+      "state_2026_08_09": {
+        "note": "Skeleton card only. Contact updates."
+      }
+    },
+    {
+      "person_id": "ALIFF",
+      "display": "Aliff",
+      "telegram_id": "1237635275",
+      "profile": "aaa-hermes (lane: aliff + aliff-aia)",
+      "visibility": [
+        "lane-aliff",
+        "lane-aliff-aia",
+        "lane-arif-refers"
+      ],
+      "role": "Friend of operator (kawan rapat Arif); NOT connected to Syed. Geologist PETRONAS KLCC. House at Lenggeng NS.",
+      "facts": [
+        {
+          "fact": "Muhammad Aliff Al Husna bin Shamsudin",
+          "source": "OBS \u2014 USER-aliff.md 2026-08-09",
+          "confidence": 0.99
+        },
+        {
+          "fact": "Kerja: PETRONAS KLCC \u2014 Geologist (Arizona)",
+          "source": "OBS \u2014 USER-aliff.md",
+          "confidence": 0.95
+        },
+        {
+          "fact": "Rumah: Lenggeng NS, Bdr Tasek Senangin No. 27",
+          "source": "OBS \u2014 USER-aliff.md",
+          "confidence": 0.9
+        },
+        {
+          "fact": "Insurans: AIA PETRONAS",
+          "source": "OBS \u2014 USER-aliff.md",
+          "confidence": 0.9
+        },
+        {
+          "fact": "Health: CPPS / prostatitis \u2014 sensitive, track quietly",
+          "source": "OBS \u2014 USER-aliff.md",
+          "confidence": 0.85
+        },
+        {
+          "fact": "Comms: BM casual, non-coder, explain simply",
+          "source": "OBS \u2014 USER-aliff.md",
+          "confidence": 0.9
+        },
+        {
+          "fact": "Syed does NOT know Aliff \u2014 no shared social graph",
+          "source": "OBS \u2014 Arif 2026-08-09",
+          "confidence": 0.99
+        },
+        {
+          "fact": "Telegram ID 1237635275 \u2014 DM + AIA group access enabled 2026-08-09",
+          "source": "OBS \u2014 Arif 2026-08-09",
+          "confidence": 0.99
+        }
+      ],
+      "canonical": {
+        "lane_dossier": "/root/HERMES/profiles/aaa-hermes/memories/USER-aliff.md"
+      },
+      "boundaries": {
+        "gate_status": "WAIT_FIRST_DM \u2014 telegram_id unknown, not whitelisted in gateway. Auto-promote on first DM.",
+        "autonomy": "advisory only, no autonomous actions (3rd-party person)",
+        "private_layers": "CPPS / prostatitis = sensitive, same doctrine as GERD (no lecture)",
+        "isolation": "Aliff's lane is INDEPENDENT of Syed \u2014 never cross-reference; Syed doesn't know him"
+      },
+      "wrong_able": {
+        "note": "Telegram ID, voice register, and any specific needs UNKNOWN until first contact. Do NOT invent."
+      },
+      "state_2026_08_09": {
+        "status": "Active lane \u2014 ID 1237635275",
+        "lanes": [
+          "aliff (DM full)",
+          "aliff-aia (group-safe)"
+        ]
+      }
+    },
+    {
+      "person_id": "IZZU",
+      "display": "Izzu",
+      "telegram_id": "1024343313",
+      "profile": "aaa-hermes (lane: izzu + izzu-aia)",
+      "visibility": [
+        "lane-izzu",
+        "lane-izzu-aia",
+        "lane-arif-refers"
+      ],
+      "role": "UNKNOWN \u2014 Telegram ID provided by Arif 2026-08-09; details pending first contact",
+      "facts": [
+        {
+          "fact": "Telegram ID 1024343313 \u2014 DM + AIA group access enabled 2026-08-09",
+          "source": "OBS \u2014 Arif 2026-08-09",
+          "confidence": 0.99
+        }
+      ],
+      "boundaries": {
+        "private_layers": "UNKNOWN \u2014 nothing assumed, nothing stored"
+      },
+      "wrong_able": {
+        "note": "First contact must establish: who, relationship to operator, needs, voice. Do NOT invent."
+      },
+      "state_2026_08_09": {
+        "note": "Skeleton card only. Contact updates.",
+        "lanes": [
+          "izzu (DM)",
+          "izzu-aia (group-safe)"
+        ],
+        "status": "Registered & whitelisted \u2014 tg_id 1024343313"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "ARIF",
+      "to": "SYED",
+      "relation": "kawan / trading peer",
+      "kind": "INT",
+      "evidence": "SADO group, XAUUSD collaboration, nickname given (OBS)"
+    },
+    {
+      "from": "SYED",
+      "to": "MAK_ROSNANI",
+      "relation": "caregiver (son \u2192 mother)",
+      "kind": "OBS",
+      "evidence": "HKL timeline, ROSNANI BT MAT ISA"
+    },
+    {
+      "from": "SYED",
+      "to": "JEREMY_TOH",
+      "relation": "tenant \u2192 landlord",
+      "kind": "OBS",
+      "evidence": "A33A-30 tenancy, AC dispute"
+    },
+    {
+      "from": "ARIF",
+      "to": "WAWA",
+      "relation": "UNKNOWN",
+      "kind": "UNKNOWN",
+      "evidence": "channel_directory only"
+    },
+    {
+      "from": "ARIF",
+      "to": "FEDERATION",
+      "relation": "sovereign owner",
+      "kind": "OBS",
+      "evidence": "F13"
+    },
+    {
+      "from": "ARIF",
+      "to": "ALIFF",
+      "relation": "kawan rapat (friend)",
+      "kind": "OBS",
+      "evidence": "USER-aliff.md, Lenggeng NS, geologist PETRONAS"
+    },
+    {
+      "from": "ARIF",
+      "to": "IZZU",
+      "relation": "kawan \u2014 Arif knows Izzu",
+      "kind": "OBS",
+      "evidence": "Arif gave Izzu telegram_id 1024343313 + confirmed knows him, 2026-08-09"
+    },
+    {
+      "from": "ARIF",
+      "to": "IZZU",
+      "relation": "kawan (AIA group)",
+      "kind": "OBS",
+      "evidence": "AIA group -1003815535761, tg 1024343313"
+    },
+    {
+      "from": "ALIFF",
+      "to": "IZZU",
+      "relation": "kawan (know each other in AIA group)",
+      "kind": "OBS",
+      "evidence": "Arif confirmed 2026-08-09: Izzu & Aliff know each other"
+    },
+    {
+      "from": "IZZU",
+      "to": "SYED",
+      "relation": "NO RELATION \u2014 do not cross-talk",
+      "kind": "OBS",
+      "evidence": "Arif confirmed 2026-08-09: Izzu & Aliff x kenal Syed"
+    },
+    {
+      "from": "ALIFF",
+      "to": "SYED",
+      "relation": "NO RELATION \u2014 do not cross-talk",
+      "kind": "OBS",
+      "evidence": "Arif confirmed 2026-08-09: Izzu & Aliff x kenal Syed"
+    }
+  ],
+  "routing": {
+    "rule": "tg_user_id match \u2192 that person's lane + voice register + visibility scope. No match \u2192 main lane (operator).",
+    "lanes_known": {
+      "267378578": "ARIF",
+      "1042200555": "SYED",
+      "8324190535": "WAWA (skeleton)",
+      "ALIFF": "ALIFF (awaiting first DM)",
+      "1024343313": "IZZU",
+      "1237635275": "ALIFF"
+    },
+    "visibility_enforcement": "Facts tagged private (or in private_layers) are NEVER included in another lane's context. Attribution stays: 'what ARIF's model says about SYED' \u2260 'SYED's reality'."
+  }
+}
