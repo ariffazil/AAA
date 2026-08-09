@@ -231,3 +231,7 @@ Protocol FAIL  +  anything         =  no road
 ```
 
 DITEMPA BUKAN DIBERI.
+
+## Constitutional layer separation
+
+Eureka SEAL: [`CONSTITUTIONAL_LAYER_SEPARATION.md`](./CONSTITUTIONAL_LAYER_SEPARATION.md) — protocol subordinate to governance; AAA is surface state not a protocol.

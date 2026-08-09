@@ -55,3 +55,12 @@ architecture:
   not_a_protocol: true
   judge_owner: arifOS
   seal_owner: VAULT999
+
+constitutional_layer_separation:
+  doctrine: docs/CONSTITUTIONAL_LAYER_SEPARATION.md
+  eureka: "AAA is not a protocol; AAA is federation surface constitutional state"
+  immutable: [vault999, act, did_web, arifos_floors]
+  replaceable: [a2a, mcp]
+  disposable: [fastmcp, sdks, frameworks]
+  authority_flow: [vault999, act_did, arifos, a2a, mcp, call_map, state_ready]
+  least_power_cli: true

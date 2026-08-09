@@ -245,3 +245,7 @@ DITEMPA BUKAN DIBERI.
 ## Architecture SEAL
 
 See [`AAA_ABOVE_PROTOCOL.md`](./AAA_ABOVE_PROTOCOL.md) — protocol follows AAA state projection; AAA does not become a protocol.
+
+## Constitutional layer separation
+
+Eureka SEAL: [`CONSTITUTIONAL_LAYER_SEPARATION.md`](./CONSTITUTIONAL_LAYER_SEPARATION.md) — protocol subordinate to governance; AAA is surface state not a protocol.
