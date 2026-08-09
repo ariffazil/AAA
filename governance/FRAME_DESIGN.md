@@ -1,8 +1,8 @@
 # FRAME — W-Vector Measurement Infrastructure
 
-> **Status:** DRAFT v0.1 · Design only · No implementation
+> **Status:** v1.0 · IMPLEMENTED (3/5 dims live, 2 gaps documented)
 > **Forged:** 2026-08-09 by 333-AGI under F13 directive
-> **Carry-forward:** FRAME-NOT-IMPLEMENTED → IN_DESIGN
+> **Carry-forward:** FRAME-NOT-IMPLEMENTED → IMPLEMENTED (3/5 live)
 
 ## Problem
 
@@ -82,3 +82,41 @@ The W-vector MEASURES. arifOS JUDGES. Arif DECIDES.
 ## Implementation Note
 
 All signals are measurable with existing tools (curl, grep, jq, python3). No new infrastructure needed. The FRAME system is a COMPUTATION on existing telemetry, not a new data collection pipeline.
+
+## Implementation (v1.0 — 2026-08-10)
+
+**Script:** `/root/AAA/governance/scripts/frame_measure.py`
+**Usage:** `python3 frame_measure.py [--json] [--verbose]`
+**Output:** 5-dimension report with per-dimension scores, verdicts, and aggregate W.
+
+### Live Results (2026-08-10T18:21Z)
+
+| Dimension | Score | Verdict | Signal Source |
+|-----------|-------|---------|---------------|
+| W1 Objective Fidelity | 0.842 | ✅ OK | RSI ledger (265 entries) |
+| W2 Authority Boundary | N/A | ❓ NO_DATA | **GAP** |
+| W3 Context Integrity | 0.625 | ✅ OK | carry_forward (3 open, 5 resolved) |
+| W4 Tool Control | N/A | ❓ NO_DATA | **GAP** |
+| W5 Feedback Integrity | 0.440 | ⚠️ CAUTION | RSI ledger (33/75 remediated) |
+| **AGGREGATE W** | **0.638** | ✅ **OK** | 3/5 dims available |
+
+### Infrastructure Gaps
+
+**W2 — Authority Boundary Integrity:**
+- Required: SCT token claim audit trail + arif_judge verdict log
+- Missing: No structured log at `/root/.local/share/arifos/authority-claims.jsonl`
+- Recommendation: Instrument arifOS kernel to append authority claims per session
+
+**W4 — Tool Control:**
+- Required: Tool call log with power classification per call
+- Missing: No forge_shell_ledger or tool-power-log
+- Recommendation: Instrument A-FORGE to log tool calls with power class to `/root/.local/share/arifos/tool-power-log.jsonl`
+
+### Key Finding: W5 = 0.44 (CAUTION)
+
+We diagnose 75 bottlenecks but only remediate 33 (44%). This is a real signal: **we are better at identifying problems than fixing them.** Many fixes are documented but not installed (`fix_installed=False`). This suggests either:
+1. Fixes require sovereign action (blocked by F13 gate)
+2. Fixes are deferred to "next session" and lost
+3. Fix complexity exceeds single-session capacity
+
+**Action:** W5 should trigger a review of unfixed bottlenecks to determine which are genuinely blocked vs. dropped.
