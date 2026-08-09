@@ -166,6 +166,24 @@ curl -sS -X POST 'https://stateless.mcpjam.com/mcp' \
 
 If your MCP client only sends body `protocolVersion`, it will be rejected with `-32020 HeaderMismatch`.
 
+## Protocol eras (2026-08-09)
+
+| Era | Version | Wire shape | arifOS |
+|-----|---------|------------|--------|
+| **Modern (preferred)** | `2026-07-28` | Stateless: `server/discover`, no Mcp-Session-Id, per-request `_meta`, `Mcp-Method`/`Mcp-Name` | **Supported** |
+| Legacy handshake | `2025-11-25` | initialize + session | **Supported** |
+
+```bash
+# Modern discover
+curl -sS -X POST http://127.0.0.1:8088/mcp \
+  -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' \
+  -H 'MCP-Protocol-Version: 2026-07-28' -H 'Mcp-Method: server/discover' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"server/discover","params":{"_meta":{"io.modelcontextprotocol/protocolVersion":"2026-07-28","io.modelcontextprotocol/clientCapabilities":{},"io.modelcontextprotocol/clientInfo":{"name":"probe","version":"1"}}}}'
+```
+
+Governance session (`arif_init` SCT) is **application** state — not transport session.
+Refs: https://modelcontextprotocol.io/llms.txt · https://gofastmcp.com/llms.txt
+
 ## Federation Sweep Recipe
 
 Run this in any AAA / Hermes / Kimi session to audit the whole federation at once:
