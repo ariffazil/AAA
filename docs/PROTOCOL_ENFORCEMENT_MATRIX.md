@@ -59,3 +59,7 @@ L0 STATE_READY  → Is the system standing?
 > **MCP tells how to use tools, A2A how to talk, ACT/did:web who may act, arifOS what is allowed, VAULT999 what can be proven — and probes fail closed when those gates are missing.**
 
 DITEMPA BUKAN DIBERI.
+
+## Authority layer detail
+
+[`ACT_AUTHORITY_LAYER.md`](./ACT_AUTHORITY_LAYER.md) — did:web = who · ACT = what office · F1–F13 = should · VAULT = prove.
