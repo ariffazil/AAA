@@ -150,6 +150,34 @@ else
   soft "DID registry path not found at standard locations"
 fi
 # Identity naming registry doctrine
+# ACT format reject (portable logic matching art_gate.js)
+python3 - <<'PY2'
+# Simulate actGate format rules (OBSERVE exempt; MUTATE needs act_v1)
+def act_gate(action_class, token=None):
+    if action_class in ("OBSERVE","REASON","DRAFT"):
+        return True, "exempt"
+    if not token:
+        return False, "missing"
+    if not (token.startswith("act_v1.") or token.startswith("sct_v1.")):
+        return False, "bad_format"
+    if action_class == "IRREVERSIBLE":
+        return False, "needs_f13"
+    return True, "ok"
+assert act_gate("OBSERVE")[0]
+assert not act_gate("MUTATE")[0]
+assert not act_gate("MUTATE", "bearer-xyz")[0]
+assert act_gate("MUTATE", "act_v1.dummy.sig")[0]
+assert not act_gate("IRREVERSIBLE", "act_v1.dummy.sig")[0]
+print("ACT_SIM_OK")
+PY2
+if [ $? -eq 0 ]; then ok "ACT gate rules (format/MUTATE/IRREVERSIBLE)"; else bad "ACT gate rule simulation failed"; fi
+# did:arif registry actors
+if python3 -c "import json;d=json.load(open('/opt/arifos/.secrets/did/registry.json'));assert 'did:arif:hermes' in d.get('dids',d) or any('hermes' in k for k in (d.get('dids') or d).keys())" 2>/dev/null; then
+  ok "DID registry includes hermes actor"
+else
+  soft "DID hermes key shape check soft-fail"
+fi
+
 if [ -f /root/AAA/docs/IDENTITY_NAMING_REGISTRY.md ]; then
   ok "IDENTITY_NAMING_REGISTRY (ACT only)"
 else

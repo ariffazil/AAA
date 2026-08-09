@@ -155,4 +155,61 @@ Even though:
 
 ---
 
-*DITEMPA BUKAN DIBERI.*
+## Live enforcement map (OBS 2026-08-09)
+
+Authority is not only doctrine — it is wired:
+
+| Step | Live surface | Behavior |
+|------|--------------|----------|
+| Identity present | `/opt/arifos/.secrets/did/registry.json` | Organs keyed as `did:arif:{organ}` + Ed25519 `public_key_hex` |
+| Public form | `did:web:arif-fazil.com` (+ `#…` methods) | Human-facing / card / sovereign docs |
+| Internal form | `did:arif:hermes`, `did:arif:a-forge`, … | Envelope `from_did` / policy binding |
+| ACT required for MUTATE+ | `a2a-server/art_gate.js` → `actGate()` | Missing token → **HOLD**; non-`act_v1.*`/`sct_v1.*` → **HOLD** |
+| OBSERVE/REASON/DRAFT | same gate | Exempt (read path) |
+| IRREVERSIBLE | same gate | HOLD until F13 / `ack_irreversible` |
+| Capability ceiling | `federation_envelope.js` → `validateAgentPolicy` | No policy → **DENY ALL**; DISPLAY_ONLY max **PREPARE**; tool class > role → deny |
+| Explicit deny tools | agent policy `denied_tools` | Deny even if A2A/MCP valid |
+| Constitutional judge | arifOS `arif_judge` / Holy 8 | F1–F13 after ACT path |
+| Proof | VAULT999 `outcomes.jsonl` | Receipt after seal path |
+
+### Dual DID naming (do not fight)
+
+| Form | Use |
+|------|-----|
+| `did:web:arif-fazil.com…` | Public, cards, external verifiers |
+| `did:arif:{organ}` | Live registry + envelope (current VPS) |
+
+Both answer **Who are you?** — map, don’t invent a third scheme. Prefer **act_v1.*** over legacy **sct_v1.*** (IDENTITY_NAMING_REGISTRY).
+
+### Protocol still valid, authority still fails
+
+```text
+A2A-Version OK + JSON-RPC OK + MCP OK
+    + Hermes asks SEAL
+    + ACT office = OBSERVE only
+    → DENY / HOLD
+```
+
+Transport success is **orthogonal** to office rights.
+
+### Probe
+
+```bash
+/root/AAA/scripts/protocol-enforce.sh   # L5: keys, DID registry, ART act_v1 gate file
+```
+
+---
+
+## Separation from communication protocols
+
+| If you only have… | You get… |
+|-------------------|----------|
+| MCP/A2A only | Roads without passports |
+| did:web only | Named strangers without office |
+| ACT only | Office without constitutional law |
+| F1–F13 only | Law without actors |
+| Full chain | Governed action + proof |
+
+---
+
+*DITEMPA BUKAN DIBERI. Amended 2026-08-09 — live enforcement map (Grok/AAA). Original SEAL: F13 + Hermes witness.*
