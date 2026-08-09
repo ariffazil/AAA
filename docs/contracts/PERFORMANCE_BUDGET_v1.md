@@ -1,3 +1,10 @@
+<!-- OPERATIONAL | tier:C-ops | context:STATE.md | 2026-08-09 -->
+> **OPERATIONAL (Tier C)**  
+> **Constitutional Context:** [`STATE.md`](../STATE.md)  
+> This is **procedure / implementation**, not constitutional truth.  
+> Institution lives in STATE.md. Losing this file loses procedure, not the institution.  
+> DITEMPA BUKAN DIBERI.
+
 # Performance Budget Specification v1 — G6 (Wawa D2)
 
 > **EUREKA P1, G6** — Define latency budgets per step of the 12-step

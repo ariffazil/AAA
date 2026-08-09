@@ -337,4 +337,29 @@ Territory detail: `ORGAN.md`
 
 ---
 
+## 16. Docs entropy (4-tier — One truth · Many projections)
+
+**Not:** less files = less entropy.  
+**Yes:** 1 truth · N references · 0 contradictions.
+
+| Tier | Role | Paths | Action |
+|------|------|-------|--------|
+| **A Constitution** | Institution | **This file** (~200–400L) | Edit here only for law |
+| **B Canon** | Elaboration | `philosophy/` · `doctrine/` · `canon/` | Header: FEDERATED → STATE.md |
+| **C Operational** | Procedure | `operations/` · `contracts/` · `transport/` · `geox/` | Header: Constitutional Context |
+| **D Receipts** | Proof | `sessions/` · `audit-*` · `receipts/` | **Preserve.** Never merge. Proof > compression |
+| **Legacy** | History | `architecture/` · `archive/` | Archive when dead; do not fold into STATE |
+
+**Four tests (new MD):**
+
+1. Institution changes if lost? → **STATE.md**  
+2. Knowledge lost? → **canon/philosophy/doctrine**  
+3. Only procedure lost? → **operations/contracts**  
+4. Evidence lost? → **receipts** (preserve)
+
+**Forbidden:** mega-STATE (entropy singularity).  
+**Formula:** `STATE.md = Constitution, not Library.`
+
+---
+
 *Institution before passport. Protocol under governance. Ditempa, bukan diberi.*
