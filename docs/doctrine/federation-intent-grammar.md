@@ -220,3 +220,16 @@ RAW / BAHASA KAMPUNG
 **Filter = corruption.** Apex intelligence = courage not to polish at every layer.
 
 **GENESIS:** `/root/arifOS/GENESIS/060_FEDERATION_INTENT_GRAMMAR.md`
+
+---
+
+## Signal survival & agreement trap (v1.1)
+
+- Optimize for **survival of signal to verification**, not cosmetics of cleanliness.
+- **False consensus** > hallucination as federation risk.
+- Unit: shared reality + verdict grammar + independent representations.
+- **AXIOM F:** Fragile when agreement valued over contradiction.
+- Era 3: protocol + contradiction handling = governance.
+- Metric: is contradiction still alive?
+- Ore body = reality · Contradiction = assay · Seal = attestation.
+
