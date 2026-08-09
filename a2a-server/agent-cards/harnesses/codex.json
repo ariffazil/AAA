@@ -8,9 +8,9 @@
     "category": "LLM-as-principal (model is principal, CLI is harness)",
     "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
   },
-  "description": "OpenAI Codex CLI forge instrument \u2014 GPT-5/o3 coding harness. Wired to federation MCPs. F1-F13 enforced.",
-  "version": "2.0.0",
-  "model": "openai/gpt-5.6-sol",
+  "description": "OpenAI Codex CLI forge instrument — GPT-5/o3 coding harness. Wired to federation MCPs. F1-F13 enforced.",
+  "version": "2.3.0",
+  "model": "deepseek/deepseek-v4-pro",
   "binary": "/root/.npm-global/bin/codex",
   "tier": "FI-004",
   "role": "forge_instrument",
@@ -267,7 +267,7 @@
     {
       "id": "ASI-autonomous-execution",
       "name": "Autonomous Governed Execution",
-      "description": "Governed execution: T1/T2 auto, T3\u2192888_HOLD. F1-F13 enforced.",
+      "description": "Governed execution: T1/T2 auto, T3→888_HOLD. F1-F13 enforced.",
       "tags": [
         "autonomous",
         "F1-F13",
@@ -305,7 +305,7 @@
     },
     {
       "id": "APEX-humility-godel",
-      "name": "G\u00f6del Humility Lock",
+      "name": "Gödel Humility Lock",
       "description": "Epistemic humility before SEAL-grade claims. F2/F7 enforced.",
       "tags": [
         "humility",
@@ -381,7 +381,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
+      "description": "INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -397,7 +397,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Every output reduces entropy. \u0394S < 0.",
+      "description": "Every output reduces entropy. ΔS < 0.",
       "tags": [
         "kernel",
         "rsi",
@@ -439,7 +439,7 @@
       "from_version": "1.0.0",
       "to_version": "2.0.0",
       "upgraded_at": "2026-07-01T21:00:00Z",
-      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
+      "upgraded_by": "FORGE (000Ω) — Phase 5.1 A2A Protocol Alignment",
       "changes": [
         "topological_role binding",
         "a2a_transport declaration",
@@ -518,6 +518,6 @@
     }
   ],
   "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN",
+  "sovereign": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
   "_model_sot": "/root/.config/federation-models.json"
 }
