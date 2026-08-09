@@ -255,9 +255,11 @@ External standards **map**. They never rename the institution.
 | OpenCode | FI-001 | Primary forge | FED `opencode` |
 | Hermes ASI | FI-000 | Human bridge | FED `hermes-asi` |
 | OpenClaw | *(binding, no FI)* | Gateway metabolizer | FED `openclaw` |
+| **Grok Build** | **FI-007** | Plan+build harness | **CLI + OIDC only — not FED** |
 | AGY | FI-009 | Forge instrument | Gemini-native `gemini-3.6-flash` |
 | Organs | ministries | Law/hands/earth/capital/vitality | MCP ports |
 
+**Grok:** no static `XAI_API_KEY` → no litellm seat → **skip FED cascade drill**. Known gap, not bug.
 Operating ≠ passport. **State first.**
 
 ---
