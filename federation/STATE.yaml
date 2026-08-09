@@ -135,3 +135,15 @@ never_mix:
 - communication
 - authority
 - proof
+
+autonomous_governed_execution:
+  genesis: arifOS/GENESIS/061_AUTONOMOUS_GOVERNED_EXECUTION.md
+  state_section: "STATE.md §18"
+  principle: autonomy_to_execution_authority_to_judgment
+  forbidden: state_ready_and_protocol_enforced_implies_deploy_safe
+  signals: [CONTINUE, PAUSE, ESCALATE, HOLD]
+  loop: [OBSERVE, PROPOSE, VERIFY, JUDGE, EXECUTE, WITNESS, RE-EVALUATE]
+  gate: SEAL_EXECUTE_or_PARTIAL_EXECUTE_or_HOLD
+  prime_directive: never_optimize_for_consensus
+  next_frontier: autonomous_contradiction_governance
+

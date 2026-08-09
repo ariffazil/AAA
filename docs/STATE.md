@@ -519,4 +519,79 @@ Epistemic courage (raw doubt) is a contradiction carrier — preserve it at entr
 
 ---
 
+
+---
+
+## 18. Autonomous governed execution (CONTINUE / HOLD)
+
+> **Canon:** `arifOS/GENESIS/061_AUTONOMOUS_GOVERNED_EXECUTION.md`  
+> **Problem class:** not deploy speed — **autonomous governance boundary**.
+
+```text
+Autonomy is granted to execution.
+Authority is retained by judgment.
+```
+
+### 18.1 Forbidden false consensus
+
+```text
+STATE_READY ∧ PROTOCOL_ENFORCED  ⇏  DEPLOY_SAFE
+all green  ⇏  most green
+```
+
+If REALITY_CONSISTENCY fails (drift, degraded organs, C1–C6 class), **HOLD** or **PARTIAL_EXECUTE** only.
+
+### 18.2 Loop
+
+```text
+OBSERVE → PROPOSE → VERIFY → JUDGE → EXECUTE → WITNESS → RE-EVALUATE
+# any fail → HOLD (not infinite retry)
+```
+
+### 18.3 Signals
+
+| Signal | Use |
+|--------|-----|
+| CONTINUE | Clear T0/T1 path |
+| PAUSE | Cool / wait |
+| ESCALATE | Higher tier or human |
+| HOLD | 888_HOLD — stop consequential path |
+
+### 18.4 Tiers (summary)
+
+| Tier | May | Gate |
+|------|-----|------|
+| **T0** | observe only | — |
+| **T1** | reversible ops (cache, warmup, reports, receipts) | reversible |
+| **T2** | commit/deploy/restart | independent verify + rollback + contradictions **acknowledged** |
+| **T3** | destructive / constitutional / secrets / topology | **F13 explicit** |
+
+### 18.5 Before execute
+
+```text
+Find disagreement first — not justification first.
+record → classify → score  (never suppress)
+```
+
+### 18.6 Execution gate
+
+```yaml
+IF state_ready ∧ protocol_enforced ∧ contradictions_none → SEAL_EXECUTE
+ELSE IF contradictions ∧ blast_radius_low → PARTIAL_EXECUTE
+ELSE → HOLD
+```
+
+### 18.7 AAA Prime Directive
+
+```text
+Never optimize for consensus.
+Optimize for survival of reality.
+Prefer contradiction over false certainty.
+Prefer HOLD over irreversible error.
+Prefer evidence over agreement.
+Reality wins · Protocol governs · Judgment authorizes · Execution obeys.
+```
+
+**Next frontier:** autonomous **contradiction** governance.
+
 *Institution before passport. Protocol under governance. Ditempa, bukan diberi.*
