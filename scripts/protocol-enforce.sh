@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # protocol-enforce.sh — L0–L6 governance-over-protocol enforcement probe
-# Doctrine: CONSTITUTIONAL_LAYER_SEPARATION.md · AAA_ABOVE_PROTOCOL.md
+# Doctrine: STATE.md · STATE.md
 # Exit 0 = PROTOCOL_ENFORCED · 1 = PROTOCOL_GAP · 2 = CRITICAL
 #
 # Authority flow (must hold):
@@ -30,7 +30,7 @@ fi
 # ── L1 CALL_MAP / discovery ───────────────────────────────────────
 echo "── L1 CALL_MAP / Agent Cards ──"
 for f in /root/AAA/docs/CALL_MAP.md /root/AAA/federation/call_map.yaml \
-         /root/AAA/docs/STATE.md /root/AAA/docs/CONSTITUTIONAL_LAYER_SEPARATION.md; do
+         /root/AAA/docs/STATE.md /root/AAA/docs/STATE.md; do
   [ -f "$f" ] && ok "$(basename "$f")" || bad "missing $f"
 done
 if grep -q 'A2A-Version: 1.0' /root/AAA/docs/CALL_MAP.md 2>/dev/null; then
@@ -178,10 +178,10 @@ else
   soft "DID hermes key shape check soft-fail"
 fi
 
-if [ -f /root/AAA/docs/IDENTITY_NAMING_REGISTRY.md ]; then
-  ok "IDENTITY_NAMING_REGISTRY (ACT only)"
+if grep -q 'act_v1' /root/AAA/docs/STATE.md 2>/dev/null; then
+  ok "STATE.md names ACT (act_v1)"
 else
-  soft "IDENTITY_NAMING_REGISTRY missing"
+  soft "STATE.md ACT naming unclear"
 fi
 
 # ── L6 VAULT999 (can it be proven?) ───────────────────────────────
