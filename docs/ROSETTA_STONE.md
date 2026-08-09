@@ -1,8 +1,8 @@
-<!-- DELETED | 2026-08-09 -->
-<!-- STATUS: REMOVED · SURVIVED → SURVIVAL_INSIGHTS.md -->
-<!-- This file has been removed during docs entropy reduction (Tier B/C/D pass). -->
-<!-- See docs/SURVIVAL_INSIGHTS.md for surviving insights extracted from this file. -->
-
+<!-- SATELLITE | tier:satellite | sot:STATE.md | 2026-08-09 -->
+> **Satellite** — historical elaboration / design note / prior draft.  
+> **Canonical SOT:** [`STATE.md`](./STATE.md) (§1–16).  
+> If this file conflicts with STATE.md, **STATE wins**. Do not fork law here.  
+> *One truth · Many projections · 0 contradictions* · DITEMPA BUKAN DIBERI.
 
 # AAA Rosetta Stone v1.0
 ## Cross-CLI Vocabulary Map for the arifOS Federation
