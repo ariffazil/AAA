@@ -487,6 +487,33 @@ Ore body = human · Forge = agent · SEAL = governance.
 Apex = courage not to polish — at every layer.
 ```
 
+
+### 17.7 Signal survival (metric inversion)
+
+```text
+Not only signal quality — signal SURVIVAL to verification.
+Compression ↓ → Verification capacity ↓
+```
+
+**False consensus** is more dangerous than flashy hallucination (looks clean, kills independence).
+
+**Federation unit:** shared reality + shared verdict grammar + independent representations  
+(not shared mega-prompts).
+
+```text
+AXIOM F: A federation becomes fragile when agreement becomes more valuable than contradiction.
+```
+
+**Era 3:** better protocol + contradiction handling = better governance.  
+Metric: *Is contradiction still alive?*
+
+```text
+Ore body = reality · Forge = reasoning · Contradiction = assay
+Verdict = judgment · Seal = attestation
+```
+
+Epistemic courage (raw doubt) is a contradiction carrier — preserve it at entry.
+
 **Canon:** `arifOS/GENESIS/060_FEDERATION_INTENT_GRAMMAR.md`  
 **Elaboration:** `doctrine/federation-intent-grammar.md` (Tier B).
 

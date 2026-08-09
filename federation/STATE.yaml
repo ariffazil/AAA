@@ -112,6 +112,14 @@ intent_grammar:
   contradiction_axiom: federation_without_contradiction_cannot_sustain_truth
   godel_breaker_at_entry: raw_signal_keeps_loop_open
   filter_is: corruption
+  signal_survival: true
+  false_consensus_worse_than_hallucination: true
+  axiom_f_agreement_trap: fragile_when_agreement_valued_over_contradiction
+  era: 3_protocol_plus_contradiction_handling
+  metric: is_contradiction_still_alive
+  ore_body: reality
+  contradiction: assay
+  seal: attestation
 compression:
 - AUTH proves control of DID
 - ART admits the call (reflex)
