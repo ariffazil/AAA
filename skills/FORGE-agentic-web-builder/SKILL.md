@@ -141,6 +141,30 @@ diff -rq <snapshot-or-source>/ <live>/ | grep "^Only in"
 4. `forge_vault(mode="seal")` with: scope, pass count, content-truth table, gaps closed, commits, skill.
 5. Session-end: one seal, not two. F4.
 
+## OP 6 — AUDIT · SITE CONSTITUTION LANES (SEAL 2026-08-09)
+
+```bash
+python3 /root/arif-fazil.com/scripts/web-zen/web_zen.py audit
+```
+
+Four lanes — **Lane A** = existing doctor/verify (technical). **Lane B** = navigation
+(crawl; canon/trust/observatory/organs reachable ≤3 clicks from landing → else FAIL_NAVIGATION;
+SPA-aware: routes live in JS bundle). **Lane C** = visual surface (h1/nav/content mass →
+FAIL_VISUAL). **Lane D** = attention cost (human markers vs jargon → HALT if a page can't
+answer What/Why/Care; redirect stubs score their destination).
+
+**Mandatory read before ANY mutation of the constellation:**
+- `/root/arif-fazil.com/SITE_CONSTITUTION.md` — RULE 1–6 (human understanding > protocol
+  exposure; navigation clarity > feature growth; visual coherence > cleverness; agent
+  surfaces secondary; every page answers What/Why/Care; no new surface before auditing).
+- `/root/arif-fazil.com/SITE_IDENTITY.md` — what is sacred (the human, the motive, the
+  motto, the system line, the visual identity, the canon, MakcikGPT, the organs).
+- Both also live at `https://arif-fazil.com/SITE_CONSTITUTION.md` and
+  `https://arif-fazil.com/SITE_IDENTITY.md` (public/ copies, served to agents).
+
+Deploy gate: `deploy-vps.sh` runs `web_zen.py audit` after truth verification.
+`human_clarity: required: true` is a build artifact. FAIL = no deploy.
+
 ## OP 5 — EPHEMERAL TOOL GENESIS (capability ≠ authority)
 
 ```bash
