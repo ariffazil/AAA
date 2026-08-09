@@ -245,9 +245,10 @@ components:
     public_mcp: https://well.arif-fazil.com/mcp
     default_branch: main
     runtime: python-3.12
-    live_probe_2026_07_30:
+    live_probe_2026_08_09:
       status: degraded
-      tools: 10
+      tools: 14
+      note: "Port GREEN but /health reports degraded. Root cause: NO LIVE BIOMETRIC DATA — WELL state.json is from 2026-07-04 (36+ days stale), running in MOCK mode. No biometric pipeline (Apple Watch→VPS) is feeding real data. This is an architectural gap, not a code defect. WELL correctly reports degraded when it has nothing real to reflect. Fix requires: sovereign biometric data source + ingestion pipeline."
     owned_domains:
       - human_readiness
       - vitality_reflection
