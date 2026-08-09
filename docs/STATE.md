@@ -55,37 +55,38 @@ MCP/A2A are replaceable adapters. arifOS decides. VAULT999 proves.
 
 ---
 
-## 3. Constitutional stack — two flows
+## 3. Constitutional stack (pecahan kuasa)
 
-### 3.1 Authority flow (who rules)
+### 3.1 One spine — labels under the steps
 
-```
-L6 VAULT999          Can it be proven?
-L5 ACT + did:web     Who may act? / Who am I?
-L4 arifOS F1–F13     Should it be done?
-L3 A2A               Who is talking?     (replaceable)
-L2 MCP               How is work done?   (replaceable)
-L1 CALL_MAP / cards  Where do I send?    (surface)
-L0 STATE_READY       Is institution up?  (surface)
+```text
+STATE_READY → CALL_MAP → MCP → A2A → arifOS F1-F13 → ACT → did:web → VAULT999
+              HOW        WHAT  WHO   SHOULD         WHAT MAY  WHO ARE  PROVE
 ```
 
-### 3.2 Dependency flow (how we assemble)
+| Step | Role | Class |
+|------|------|--------|
+| STATE_READY | Institution standing? | Surface |
+| CALL_MAP | How / where to dial? | Surface |
+| MCP | How tools run? | **Replaceable** protocol |
+| A2A | Who talks to whom? | **Replaceable** protocol |
+| arifOS F1–F13 | **Should** it be done? | **Constitutional** |
+| ACT | **What office / what may?** | **Authority** (not protocol) |
+| did:web / did:arif | **Who are you?** | **Identity** (not protocol) |
+| VAULT999 | **Prove** it happened | **Immutable** proof |
 
-```
-STATE_READY → CALL_MAP → MCP → A2A → arifOS → ACT+DID → VAULT999
-```
-
-**Authority flows down. Execution climbs. Never reverse.**
+**Authority flow (who rules whom):** VAULT ← ACT+DID ← arifOS ← A2A ← MCP ← CALL_MAP ← STATE  
+**Execution climbs the other way. Never reverse.**
 
 | Class | Layers |
 |-------|--------|
-| **Immutable** | VAULT999 · ACT+DID · arifOS F1–F13 |
+| **Immutable** | VAULT999 · ACT · did · arifOS F1–F13 |
 | **Replaceable** | A2A · MCP |
 | **Disposable** | FastMCP · SDKs · frameworks · harness CLIs |
 
 ```
 MCP/A2A = jalan raya
-AAA     = peta + pejabat kawalan (surface)
+AAA     = peta + pejabat kawalan (surface state — NOT a protocol)
 888     = hakim (arifOS)
 VAULT   = arkib
 ```
@@ -97,35 +98,51 @@ Protocol FAIL                   = no road
 
 ---
 
-## 4. L5 Authority — did + ACT (not communication)
+## 4. Authority layer — did + ACT (403 is the proof)
+
+did:web and ACT are **not** communication protocols (unlike MCP/A2A). They are the **authority layer**.
 
 | | did:web / did:arif | ACT (`act_v1.*`) |
 |--|--------------------|------------------|
 | Question | Who are you? | What office / what may you do? |
-| Without | “trust me bro” | Identity → Action ungoverned |
-| With | cryptographic actor | Identity → capability → action |
+| Without | “trust me bro” | Identity → Action (ungoverned) |
+| With | cryptographic actor | did → capability → authority → action |
 
-**Live forms:** public `did:web:arif-fazil.com…` · registry `did:arif:{organ}` + Ed25519. Map both; no third scheme.
+**Live forms:** public `did:web:arif-fazil.com…` · registry `did:arif:{organ}` + Ed25519. Map both.
 
-**ACT enforces offices:**
+**Offices ACT enforces:**
 
-| Actor | Office |
-|-------|--------|
+| Actor | Allowed |
+|-------|---------|
 | 333 | Propose |
 | 555 | Verify |
 | 888 | Judge |
 | A-FORGE | Execute |
 | VAULT999 | Witness |
 
-333 SEAL attempt → **ACT DENY** even if A2A/MCP/JSON-RPC valid.
+### 4.1 The 403 proof (constitutional enforcement)
 
-**Chain:**
+```text
+Hermes → AAA: "SEAL this action"
 
+1 did:web     Who?     → did:…:hermes     ✅
+2 ACT         Rights?  → OBSERVE/RESEARCH ✅
+3 Request     SEAL
+4 ACT check   SEAL office? → NO            ❌
+
+Result: 403 / HOLD — AUTHORITY DENIED
 ```
-did → ACT → F1–F13 → execute → VAULT receipt
+
+Even though **A2A valid · MCP valid · JSON-RPC valid** — authority still fails.
+
+That is **not** a security feature. That is **constitutional enforcement**.
+
+```text
+Without ACT:  Identity → Action
+With ACT:     did:web → Capability → Authority (F1–F13) → Action → VAULT
 ```
 
-**Wire:** ART `actGate` (MUTATE needs `act_v1.*`; OBSERVE exempt; IRREVERSIBLE → F13). Envelope default-deny + DISPLAY_ONLY ceiling.
+**Wire:** ART `actGate` — OBSERVE exempt; MUTATE needs `act_v1.*`/`sct_v1.*` (prefer act); IRREVERSIBLE → F13. Envelope **DENY ALL** without policy; DISPLAY_ONLY max PREPARE.
 
 ---
 
