@@ -150,7 +150,8 @@
     ],
     "rsi_doctrine": "RSI-recursive-improvement",
     "substrate_bind": "2026-07-12T18:30:00Z",
-    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK",
+    "fi_slot": "FI-000"
   },
   "kernel_skills": [
     "KERNEL-trinity-33",
@@ -230,5 +231,11 @@
   },
   "ed25519_pubkey": "a1b7808227d5610fcec9c902eae9e82ff140850eea4cc5a3c4e09d76d1db2add",
   "identity_fingerprint": "f26fea82633eaa1d6eb8676c76b8bc85",
-  "identity_bound_at": "2026-07-29T13:55:07.269277+00:00"
+  "identity_bound_at": "2026-07-29T13:55:07.269277+00:00",
+  "agentId": "hermes-asi",
+  "layer": "binding",
+  "fi": "FI-000",
+  "fi_slot": "FI-000",
+  "model_socket": "fed/hermes-asi",
+  "capability_token": "act_v1"
 }
