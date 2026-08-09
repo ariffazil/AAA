@@ -52,7 +52,9 @@ CALL_MAP
 STATE_READY
 ```
 
-### The Layer Table
+#> **Amended by:** ACT_AUTHORITY_LAYER.md (L5 detail — did:web + ACT separation of powers)
+
+## The Layer Table
 
 | Layer | Category | What lives here | Test: remove it |
 |-------|----------|----------------|-----------------|
@@ -62,6 +64,8 @@ STATE_READY
 | **L3** | REPLACEABLE | A2A — how do I talk | Institution survives ✅ |
 | **L2** | REPLACEABLE | MCP — how do I call | Institution survives ✅ |
 | **L1** | DISPOSABLE | FastMCP, SDK, Framework, Libraries | Institution survives ✅ |
+
+**L5 detail:** See `ACT_AUTHORITY_LAYER.md` for did:web (identity) + ACT (authority) separation of powers, 403 enforcement proof.
 
 ### The Questions
 
