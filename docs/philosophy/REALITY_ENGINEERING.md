@@ -1,3 +1,10 @@
+<!-- FEDERATED | tier:B-canon | sot:STATE.md | 2026-08-09 -->
+> **FEDERATED (Tier B — Canon)**  
+> **Canonical SOT:** [`STATE.md`](../STATE.md) — constitutional working file.  
+> This document **elaborates** concepts defined in STATE.md.  
+> Do not fork law here. Edit **STATE.md** for institution; edit this file only for elaboration.  
+> *One truth · Many projections · 0 contradictions* · DITEMPA BUKAN DIBERI.
+
 # Reality Engineering — The Canon
 
 > **"If we rebuilt AI from scratch, we would build a reality-centric, multi-organ governed intelligence system where the LLM is only the language organ, not the world model."**
