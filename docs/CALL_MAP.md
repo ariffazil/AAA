@@ -84,6 +84,8 @@ EOF
 
 **Forbidden:** same-agent self-audit conclusions; free-text `888-APEX JUDGMENT` without receipt.
 
+**Authority SOT (2026-08-09):** `/root/AAA/docs/SOT_AUTHORITY_TRUST.md` — dual-truth iron rule; OPENCLAW/OPENCODE → LIMITED_MUTATE via host keys; guest `GUEST-*`; F13 spoof → VOID.
+
 ---
 
 ## 2. Intent → who to call (fast)
