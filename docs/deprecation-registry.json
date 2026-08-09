@@ -1,7 +1,7 @@
 {
   "version": "2026.07.19",
-  "last_audit": "2026-08-04T08:00:12.502030+00:00",
-  "auditor": "333-AGI — Federation Stabilization Pass 2026-08-04",
+  "last_audit": "2026-08-09T18:10:00Z",
+  "auditor": "333-AGI — P0 fix status audit + registry reconciliation 2026-08-09",
   "deprecated": [
     {
       "id": "SOUL.md",
@@ -121,17 +121,26 @@
   ],
   "quarantined": [],
   "replaced": {
-    "setActor()": "registerVerifiedSession(sessionId, actorId) — P0.1 fix pending",
-    "activeActor (process-global)": "verifiedSessions Map (per-request) — P0.1 fix pending",
-    "default:sovereign (for unverified)": "default:observe-deny — P0.2 fix pending",
-    "LCL-* lease fallback": "HOLD when kernel unreachable — P0.6 fix pending",
-    "SEAL-* (format-only trust)": "cryptographic SCT verification — P0.5 fix pending",
+    "setActor()": "registerVerifiedSession(sessionId, actorId, sct, organSecret) — P0.1 IN_PROGRESS (new method exists at McpPolicyGate.ts:268, old setActor() deprecated at :288, caller migration pending)",
+    "activeActor (process-global)": "verifiedSessions Map (per-request) — P0.1 IN_PROGRESS",
+    "default:sovereign (for unverified)": "default:observe-deny — P0.2 PENDING_DESIGN (architectural change affecting all agents; requires policy design, multi-agent testing, F13 ratification. Current buildDefaultSovereignPolicy() at McpPolicyGate.ts:781 has allow_by_default:true for all 21+ MCP servers.)",
+    "LCL-* lease fallback": "HOLD when kernel unreachable — P0.6 COMPLETE (2026-07-19, forgeTools.ts:394-406. Local lease fallback DISABLED by default. A-FORGE MUST HOLD on kernel unreachable. LCL-* only minted in dev mode.)",
+    "SEAL-* (format-only trust)": "cryptographic SCT verification — P0.5 PENDING_KERNEL (requires arifOS kernel SCT crypto-verification changes; depends on KERNEL-TODO-V5.1 P2-2 opaque handle work)",
     "AGENT_KICKSTART.md": "Deprecated 2026-07-19 — absorbed into copilot-instructions.md AUTOPILOT baseline"
+  },
+  "p0_audit": {
+    "audited_by": "333-AGI",
+    "audited_at": "2026-08-09T18:10:00Z",
+    "p0_1_status": "IN_PROGRESS — registerVerifiedSession() implemented, setActor() deprecated, caller migration not yet complete",
+    "p0_2_status": "PENDING_DESIGN — default:observe-deny would break all agents without explicit policy design. Requires dedicated security hardening sprint.",
+    "p0_5_status": "PENDING_KERNEL — depends on arifOS kernel SCT changes (KERNEL-TODO-V5.1 P2-2)",
+    "p0_6_status": "COMPLETE — LCL-* local lease fallback disabled by default since 2026-07-19"
   },
   "known_issues": {
     "a-forge-mcp-transport-timeout": "Copilot CLI tools/call times out on :7071/mcp. :7072 stateless works.",
     "well-degraded": "WELL :18083 reports degraded — REFLECT_ONLY normal state",
-    "stdio-startup-noise": "cli.js prints to stdout, polluting MCP protocol"
+    "stdio-startup-noise": "cli.js prints to stdout, polluting MCP protocol",
+    "graphiti-not-installed": "Port :8000 has no service/container — Graphiti MCP was never installed or was decommissioned. Remove from health probes or install."
   },
   "active_skills": {
     "aaa_library": 406,
