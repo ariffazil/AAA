@@ -1,3 +1,9 @@
+<!-- DELETED | 2026-08-09 -->
+<!-- STATUS: REMOVED · SURVIVED → SURVIVAL_INSIGHTS.md -->
+<!-- This file has been removed during docs entropy reduction (Tier B/C/D pass). -->
+<!-- See docs/SURVIVAL_INSIGHTS.md for surviving insights extracted from this file. -->
+
+
 # PRIMITIVE-SPEC v2.0 — Constitutional Primitive Specification
 
 > **Issued:** 2026-07-12T18:48:00Z *(revised 2026-07-12T19:30:00Z; verdict corrections applied 2026-07-12)*

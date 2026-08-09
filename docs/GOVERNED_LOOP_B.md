@@ -1,3 +1,9 @@
+<!-- DELETED | 2026-08-09 -->
+<!-- STATUS: REMOVED · SURVIVED → SURVIVAL_INSIGHTS.md -->
+<!-- This file has been removed during docs entropy reduction (Tier B/C/D pass). -->
+<!-- See docs/SURVIVAL_INSIGHTS.md for surviving insights extracted from this file. -->
+
+
 # Hermes Role Addendum — v0.3 (governed-loop-autonomy)
 
 > **plan_id:** `AAA-GOVERNED-AGENTIC-LOOP-AUTONOMY-2026-06-27-v0.3`

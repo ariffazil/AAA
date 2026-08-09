@@ -1,3 +1,9 @@
+<!-- DELETED | 2026-08-09 -->
+<!-- STATUS: REMOVED · SURVIVED → SURVIVAL_INSIGHTS.md -->
+<!-- This file has been removed during docs entropy reduction (Tier B/C/D pass). -->
+<!-- See docs/SURVIVAL_INSIGHTS.md for surviving insights extracted from this file. -->
+
+
 # SCT_V1_PHASE1_SHADOW.md — Ed25519 Actor Binding (Shadow Build)
 
 > **Authority:** Phase 1 of IDENTITY_BINDING_SPEC.md

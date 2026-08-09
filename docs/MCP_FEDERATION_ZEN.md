@@ -1,3 +1,9 @@
+<!-- DELETED | 2026-08-09 -->
+<!-- STATUS: REMOVED · SURVIVED → SURVIVAL_INSIGHTS.md -->
+<!-- This file has been removed during docs entropy reduction (Tier B/C/D pass). -->
+<!-- See docs/SURVIVAL_INSIGHTS.md for surviving insights extracted from this file. -->
+
+
 # 🌐 MCP Federation ZEN — MCP affordance / drift ops
 
 > **Topology SOT:** [`ORGAN.md`](./ORGAN.md) · machine [`../federation/organs.yaml`](../federation/organs.yaml)  

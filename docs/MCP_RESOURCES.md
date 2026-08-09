@@ -1,3 +1,9 @@
+<!-- DELETED | 2026-08-09 -->
+<!-- STATUS: REMOVED · SURVIVED → SURVIVAL_INSIGHTS.md -->
+<!-- This file has been removed during docs entropy reduction (Tier B/C/D pass). -->
+<!-- See docs/SURVIVAL_INSIGHTS.md for surviving insights extracted from this file. -->
+
+
 # MCP RESOURCES MAP — Zen Aligned (2026-06-30)
 
 **SOT under AAA.** Extends AAA_ZEN.md + heptalogy. All agents/warga load this via reference + MCP resource read after AGENTS.md + AAA_ZEN_INIT.
