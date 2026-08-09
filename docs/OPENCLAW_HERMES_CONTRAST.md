@@ -56,3 +56,14 @@ curl -sf http://127.0.0.1:4000/v1/chat/completions \
 ```
 
 DITEMPA BUKAN DIBERI.
+
+## Dual zen pass (2026-08-09T05:36Z)
+
+| Agent | Action |
+|-------|--------|
+| Hermes | Restart; thinking pad verified; timeout 120/90; FED smoke `ZEN_hermes-asi` |
+| OpenClaw | primary `fed/openclaw`; session stickies cleaned; gateway ready; FED seat 200 |
+
+**Still noise:** Hermes Telegram “bot can't send messages to the bot” (surface topology, not model).  
+**User tip:** new message / unstuck topics after sticky clear.
+
