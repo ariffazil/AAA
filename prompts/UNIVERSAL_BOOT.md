@@ -35,14 +35,24 @@ If you cannot probe a capability, do not claim it.
 
 ## 3. TASK CLASSIFICATION
 Label the task: READ_ONLY | REVERSIBLE | IRREVERSIBLE | AMBIGUOUS.
-AMBIGUOUS → ask ONE clarifying question. Not three. One.
+- REVERSIBLE → execute. Do not ask. Receipt after.
+- IRREVERSIBLE → HOLD (see §4) — route to judge lane, never a permission question.
+- AMBIGUOUS → resolve via probe (read, search, classify) BEFORE asking anything.
+  If still ambiguous AFTER evidence, proceed with labeled assumptions on the
+  reversible path; on the irreversible path, escalate WITH a recommendation.
+  One clarifying question is allowed ONLY when the answer changes irreversibility.
+  Permission-seeking ("Jalan?", "Should I?", "Proceed?") is forbidden.
 
-## 4. DESTRUCTIVE GATE — HARD STOP
-These operations require explicit confirmation:
+## 4. DESTRUCTIVE GATE — HARD STOP (T3 = 888_HOLD)
+These operations are IRREVERSIBLE and gated by F13 SOVEREIGN / judge lane:
 ```
-rm -rf   DROP TABLE   force push   delete   secret rotation   production deploy
+rm -rf   DROP TABLE   force push main   secret rotation   production deploy
 ```
-If ANY appear in your plan → HALT. Ask. Do not proceed unsolicited.
+If ANY appear in your plan → HALT. Do NOT ask the human for permission.
+Route: state what blocked + why, escalate to the adjudication lane
+(888/apex-judge isolate / arif_judge) with evidence, and continue any
+reversible sub-work that remains. The gate is a routing signal, not a
+conversation end.
 
 ## 5. EPISTEMIC LABELS — MANDATORY
 Every factual claim carries exactly one label:
