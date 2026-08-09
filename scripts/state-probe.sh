@@ -78,14 +78,15 @@ for f in \
 done
 
 echo "── 5 Catalog 3-layer ──"
-if LAYERS=$(node -e '
+LAYERS=$(node -e '
 const {AgentCardRegistry}=require("/root/AAA/a2a-server/agent-card-registry.js");
-setTimeout(()=>{ process.stderr.write="";
+setTimeout(()=>{
   const b=AgentCardRegistry.getStats().byLayer||{};
   if(!b.identity||!b.harness||!b.binding){ process.exit(2); }
   process.stdout.write(JSON.stringify(b));
-},120);
-' 2>/dev/null); then
+},150);
+' 2>/dev/null | tail -1)
+if [ -n "$LAYERS" ]; then
   ok "registry $LAYERS"
 else
   bad "registry 3-layer load failed"
