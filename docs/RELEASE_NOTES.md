@@ -1,34 +1,10 @@
-<!-- SATELLITE | tier:satellite | sot:STATE.md | 2026-08-09 -->
-> **Satellite** — historical elaboration / design note / prior draft.  
-> **Canonical SOT:** [`STATE.md`](./STATE.md) (§1–16).  
-> If this file conflicts with STATE.md, **STATE wins**. Do not fork law here.  
+<!-- ARCHIVED_STUB | 2026-08-09 | light entropy pass -->
+# ARCHIVED — `RELEASE_NOTES.md`
+
+> **Proven dead:** SEALED release notes for v2026.05.16 epoch only; not current SOT  
+> **Canonical live:** [`STATE.md`](./STATE.md) · git tags / CHANGELOG if present  
+> **Historical body:** [`archive/2026-08-09-docs-entropy/RELEASE_NOTES.md`](./archive/2026-08-09-docs-entropy/RELEASE_NOTES.md)  
+> **Constitution:** [`STATE.md`](./STATE.md)  
+>
+> Do not restore content here. Edit canon only.  
 > *One truth · Many projections · 0 contradictions* · DITEMPA BUKAN DIBERI.
-
-# RELEASE NOTES — arifOS Federation (v2026.05.16)
-
-> **Epoch:** 2026-05-16 | **Status:** SEALED | **Authority:** 888_JUDGE
-
-This release marks the completion of the **Horizon Alignment** and **Root Hygiene** mission across the seven core repositories.
-
-## 🚀 Unified Changes
-
-### 🏛️ Infrastructure Alignment
-- **Centralized Deployment**: All `docker-compose` and `Caddy` logic has been moved from domain repos to the `A-FORGE` orchestration shell.
-- **Relative Pathing**: All volume mounts refactored to use relative paths anchored in the federation topology.
-
-### 🧹 Root Hygiene (888 Grade)
-- **Entropy Reduction**: Cleared root directories of ad-hoc scripts, stale backups, and misplaced logs.
-- **Canonical Grammar**: Enforced the `src/`, `specs/`, `docs/`, `tests/`, `data/`, `scripts/`, `archive/` directory structure.
-- **Decommissioning**: Successfully archived technical debt (e.g., the root WEALTH monolith).
-
-### 📖 Documentation Hardening
-- **SOT READMEs**: Root READMEs across all repos have been rewritten as "Truth Sensors," linking to siblings and reflecting actual file system reality.
-- **Agent Contracts**: Established `AGENT_LAYOUT.md` and `NO_BANGANG_CHECKLIST.md` to prevent future "Stochastic Entropy."
-
-### 🛡️ Organ Specifics
-- **well**: Hardened `server.py` with multi-tier `state.json` resolution.
-- **arifOS**: Standardized `arifosmcp` CLI entrypoints.
-- **AAA**: Verified `npm` build/dev lifecycle.
-
----
-*Ditempa Bukan Diberi — 999 SEAL ALIVE*
