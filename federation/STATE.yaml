@@ -1,32 +1,92 @@
-# Machine twin of docs/STATE.md — live probes beat this file
 schema_version: 1
-forged: "2026-08-09"
+forged: '2026-08-09'
 sot_human: docs/STATE.md
 doctrine: DITEMPA_BUKAN_DIBERI
 aaa_is_protocol: false
 aaa_role: federation_surface_state_DISPLAY_ONLY
-authority_flow: [vault999, act_did, arifos, a2a, mcp, call_map, state_ready]
-immutable: [vault999, act, did, arifos_floors]
-replaceable: [a2a, mcp]
-disposable: [fastmcp, sdks, frameworks]
+authority_flow:
+- vault999
+- act_did
+- arifos
+- a2a
+- mcp
+- call_map
+- state_ready
+immutable:
+- vault999
+- act
+- did
+- arifos_floors
+replaceable:
+- a2a
+- mcp
+disposable:
+- fastmcp
+- sdks
+- frameworks
 pillars:
-  territory: {sot: [docs/ORGAN.md, federation/organs.yaml]}
-  law: {sot: arifOS, port: 8088}
-  government: {ports: [8088, 7071, 7072, 7073, 3001, 8081, 18082, 18083]}
-  power: {fed: "127.0.0.1:4000"}
-  telephone: {sot: [docs/CALL_MAP.md, federation/call_map.yaml]}
-  catalog: {layers: [identity, harness, binding]}
-  records: {vault: VAULT999}
+  territory:
+    sot:
+    - docs/ORGAN.md
+    - federation/organs.yaml
+  law:
+    sot: arifOS
+    port: 8088
+  government:
+    ports:
+    - 8088
+    - 7071
+    - 7072
+    - 7073
+    - 3001
+    - 8081
+    - 18082
+    - 18083
+  power:
+    fed: 127.0.0.1:4000
+  telephone:
+    sot:
+    - docs/CALL_MAP.md
+    - federation/call_map.yaml
+  catalog:
+    layers:
+    - identity
+    - harness
+    - binding
+  records:
+    vault: VAULT999
 probes:
   state: /root/AAA/scripts/state-probe.sh
   protocol: /root/AAA/scripts/protocol-enforce.sh
 operators:
-  opencode: {fi: FI-001, layer: harness}
-  hermes-asi: {fi: FI-000, layer: binding}
-  openclaw: {fi: null, layer: binding}
-  agy: {fi: FI-009, layer: harness}
+  opencode:
+    fi: FI-001
+    layer: harness
+  hermes-asi:
+    fi: FI-000
+    layer: binding
+  openclaw:
+    fi: null
+    layer: binding
+  agy:
+    fi: FI-009
+    layer: harness
 naming:
   capability_token: act_v1
   agent_id: agentId
   citizen: warga_status
-deferred: [warga_stamps, multi_hop_act, external_live_bridge]
+deferred:
+- warga_stamps
+- multi_hop_act
+- external_live_bridge
+spine: STATE_READY → CALL_MAP → MCP → A2A → arifOS → ACT → did → VAULT999
+labels:
+- HOW
+- WHAT
+- WHO
+- SHOULD
+- WHAT_MAY
+- WHO_ARE
+- PROVE
+act_is_not_protocol: true
+proof_of_constitution: 403_when_transport_valid_but_ACT_denies

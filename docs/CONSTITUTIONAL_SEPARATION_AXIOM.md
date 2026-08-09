@@ -1,10 +1,11 @@
-# CONSTITUTIONAL_SEPARATION_AXIOM
+# POINTER
 
-> **POINTER** — Canonical SOT is **[`STATE.md`](./STATE.md)** (unified 2026-08-09 zen).
+> **Canonical SOT:** [`STATE.md`](./STATE.md) — single zen constitutional working file.
 >
-> Do not fork doctrine here. Edit `STATE.md` only.
+> Do not fork. Edit **STATE.md** only.
 >
-> Related scripts: `/root/AAA/scripts/state-probe.sh` · `protocol-enforce.sh`
+> Probes: `scripts/state-probe.sh` · `scripts/protocol-enforce.sh`
 >
+> *Protocol = undang-undang koordinasi. Governance = undang-undang kebenaran.*  
+> *403 on ACT deny while A2A/MCP valid = constitutional enforcement.*  
 > DITEMPA BUKAN DIBERI.
-
