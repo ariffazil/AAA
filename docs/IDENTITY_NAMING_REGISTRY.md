@@ -66,3 +66,7 @@ Requires separate F13 nod. Default: **no alias field**.
 - Multi-hop ACT chain remains **deferred** (name held, not HDP)
 
 DITEMPA BUKAN DIBERI.
+
+## Authority layer detail
+
+[`ACT_AUTHORITY_LAYER.md`](./ACT_AUTHORITY_LAYER.md) — did:web = who · ACT = what office · F1–F13 = should · VAULT = prove.

@@ -226,3 +226,7 @@ DITEMPA BUKAN DIBERI.
 ## Enforcement
 
 Live matrix: [`PROTOCOL_ENFORCEMENT_MATRIX.md`](./PROTOCOL_ENFORCEMENT_MATRIX.md) · `scripts/protocol-enforce.sh`
+
+## Authority layer detail
+
+[`ACT_AUTHORITY_LAYER.md`](./ACT_AUTHORITY_LAYER.md) — did:web = who · ACT = what office · F1–F13 = should · VAULT = prove.
