@@ -53,6 +53,28 @@ authority      = canDo/cannotDo over both
 
 Skill alias: `FORGE-call-map`.
 
+### 1.1 Apex-judge dial (every harness — Option 3)
+
+```bash
+# Universal — Hermes, OpenClaw, Grok, OpenCode, Claude, Kimi, AGY
+apex-judge --candidate "<action>" --actor <HERMES|OPENCLAW|GROK|OPENCODE|CLAUDE|…> --pretty --human
+
+# Audit draft for free-text self-SEAL
+apex-judge --audit-text - <<'EOF'
+…agent draft…
+EOF
+```
+
+| Field | Source of truth |
+|-------|-----------------|
+| `effective_verdict` | kernel only |
+| `call_hash` | kernel receipt |
+| Skill | `arifos-constitutional-judge` |
+| Subagent prompt | `/root/AAA/prompts/APEX_JUDGE_SUBAGENT.md` |
+| Binary | `/root/.local/bin/apex-judge` → `/root/scripts/apex_judge.py` |
+
+**Forbidden:** harness inventing SEAL/HOLD/SABAR/VOID as constitutional fact without the receipt above.
+
 ---
 
 ## 2. Intent → who to call (fast)
@@ -60,7 +82,8 @@ Skill alias: `FORGE-call-map`.
 | Intent | Primary | Fallback |
 |--------|---------|----------|
 | **Coding / forge** | OpenCode (FI-001) | Claude Code → Kimi → Grok → Codex |
-| **Judge / seal gate** | arifOS `:8088` | — (never harness) |
+| **Judge / seal gate** | `apex-judge` CLI → arifOS `arif_judge` `:8088` | MCP holy-8; later A2A `888-APEX` (Option 2) |
+| **Judge (never)** | Free-text `888-APEX JUDGMENT` | — **VOID** (Gödel self-certify) |
 | **Earth / geology** | GEOX MCP `:8081` | — |
 | **NPV / capital** | WEALTH MCP `:18082` | — |
 | **Readiness** | WELL MCP `:18083` | — |

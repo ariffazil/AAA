@@ -80,8 +80,10 @@ def hermes_propose_seal_handler(event, description: str):
         "request_id": new_uuid(),
     }
 
-    # 6. Route to 888-APEX (NEVER self-seal)
-    verdict = call_arif_judge(proposal)
+    # 6. Kernel judge only — NEVER free-text "888-APEX JUDGMENT" (Gödel lock)
+    # Prefer: subprocess apex-judge --actor HERMES --candidate description
+    # Or MCP: arif_init → arif_judge; quote effective_verdict + call_hash
+    verdict = call_arif_judge(proposal)  # must be kernel receipt, not prose
 
     # 7. If SEAL → append correction receipt to VAULT999
     if verdict == "SEAL":
@@ -101,9 +103,10 @@ def hermes_propose_seal_handler(event, description: str):
    ↓
 Hermes compiles evidence (auto-detect recent files, git refs, live probes)
    ↓
-Hermes submits to 888-APEX via arif_judge tool
+Hermes submits via `apex-judge --actor HERMES` (or arif_init→arif_judge MCP).
+   Never free-text self-SEAL. Quote effective_verdict + call_hash.
    ↓
-888-APEX returns SEAL | HOLD | VOID | SABAR
+Kernel arif_judge returns SEAL | HOLD | VOID | SABAR
    ↓
 If SEAL → Hermes calls forge_vault(mode="receipt") → append to VAULT999
    ↓
