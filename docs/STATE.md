@@ -144,3 +144,7 @@ Operator runbook: [`STATE_OPS.md`](./STATE_OPS.md)
 ## Next (after STATE_READY)
 
 [`AAA_NEXT_90D.md`](./AAA_NEXT_90D.md) — external telephone → citizens → 90d synthesis. No new organs.
+
+## Protocol audit
+
+Live MCP/A2A/state stack: [`AAA_STATE_PROTOCOL_AUDIT.md`](./AAA_STATE_PROTOCOL_AUDIT.md)
