@@ -211,15 +211,17 @@ done
 - Sealed: "SEALED::{session_id}::seq={seq}::ΔS={delta}"
 - Observation: "[Finding]. [OBS/DER/INT/SPEC]. Next: [action]."
 
-## Required ACK tokens for irreversible consequences
+## Required ACK tokens — POST-ACK ERA (2026-08-09)
 
-| Token | Gates |
-|---|---|
-| `ACK_M7_ROTATE_DB_SECRET` | Credential rotation |
-| `ACK_M8_DEPLOY_CANONICAL` | Runtime deploy |
-| `ACK_M10_PUSH_BRANCH` | git push including feature branch |
-| `ACK_M11_VAULT_SEAL` | VAULT999 immutable append |
-| `ACK_HISTORY_REWRITE` | `git filter-repo` / force-push affecting collaborators |
+| Token | Gates | Status |
+|---|---|---|
+| `ACK_M7_ROTATE_DB_SECRET` | Credential rotation | **KEEP** — 888_HOLD (T3) |
+| `ACK_M8_DEPLOY_CANONICAL` | Runtime deploy (green tests) | ~~DEAD~~ → T2 ANNOUNCE |
+| `ACK_M10_PUSH_BRANCH` | git push including feature branch | ~~DEAD~~ → **T1 AUTO-DO** (runtime ALLOW since 2026-07-28) |
+| `ACK_M11_VAULT_SEAL` | VAULT999 immutable append | Lane B auto-receipt (default); Lane A F13 for constitutional seals |
+| `ACK_HISTORY_REWRITE` | `git filter-repo` / force-push to main | **KEEP** — 888_HOLD (T3) |
+
+Only ACK_M7 + ACK_HISTORY_REWRITE remain sovereign gates. Everything else: announce 10s (T2) or just do (T1).
 
 **Never ask Arif:** API keys, coding opinions, library choices, naming
 conventions, "should I commit?", "should I run tests?" (always yes).
