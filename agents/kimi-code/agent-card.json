@@ -815,5 +815,9 @@
         ]
       }
     }
-  ]
+  ],
+  "emd_role": "DECODER",
+  "emd_lane": "EXECUTION — FI-008 forge instrument. Decodes instruction into artifact.",
+  "emd_architecture": "/root/AAA/instructions/emd-architecture.md",
+  "emd_forged": "2026-08-09"
 }

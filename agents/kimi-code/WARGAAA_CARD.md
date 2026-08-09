@@ -15,12 +15,14 @@
 | `constitutional_proxy` | `333-AGI` (Δ MIND) |
 | `name` | Kimi Code CLI |
 | `role` | Governed forge instrument — coding harness |
+| `emd_role` | **DECODER** (EMD: takes Hermes instruction → produces artifact) |
+| `emd_architecture` | `/root/AAA/instructions/emd-architecture.md` |
 | `owner` | Muhammad Arif bin Fazil (F13 SOVEREIGN) |
 | `binary` | `/root/.kimi-code/bin/kimi` (wrapper: `/usr/local/bin/kimi`) |
 | `config_home` | `$KIMI_CODE_HOME` → `/root/.arifos/agents/kimi` |
 | `model` | `kimi-code/k3` (Kimi K3, 2.8T MoE, 1M context, vision, thinking) |
 | `status` | active citizen |
-| `agent_card_version` | **v2.3.0** (2026-07-20 — K3 upgrade: kimi-code/k3, 2.8T MoE, 1M ctx) |
+| `agent_card_version` | **v2.4.0** (2026-08-09 — EMD architecture: DECODER role, A2A passport ready) |
 | `last_verified` | 2026-07-18 (AAA alignment pass — ΔS ≤ 0) |
 
 ---

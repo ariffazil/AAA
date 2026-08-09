@@ -5,7 +5,7 @@
   "class": "FORGE_INSTRUMENT",
   "principal_agent": {
     "type": "agent",
-    "category": "Forge instrument \u2014 governed by 333-AGI (Delta MIND)",
+    "category": "Forge instrument — governed by 333-AGI (Delta MIND)",
     "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive"
   },
   "warga_binding": {
@@ -15,7 +15,7 @@
     "authority_level": "engineer",
     "citizenship_forged": "2026-07-12"
   },
-  "description": "Grok Build harness (xAI) \u2014 governed forge instrument. Plan\u2192search\u2192build, superior parallelism (worktree/subagents). F1-F13 enforced.",
+  "description": "Grok Build harness (xAI) — governed forge instrument. Plan→search→build, superior parallelism (worktree/subagents). F1-F13 enforced.",
   "version": "2.0.0",
   "model": "xai/grok-4.5",
   "fallback_model": "xai/grok-build-0.1",
@@ -321,7 +321,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -337,7 +337,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -375,5 +375,9 @@
   "capabilities": {
     "streaming": false,
     "pushNotifications": true
-  }
+  },
+  "emd_role": "DECODER",
+  "emd_lane": "EXECUTION — FI forge instrument. Decodes instruction into artifact.",
+  "emd_architecture": "/root/AAA/instructions/emd-architecture.md",
+  "emd_forged": "2026-08-09"
 }

@@ -2,7 +2,8 @@
 
 > **Codename:** CODEX
 > **Tier:** AGI
-> **Role:** engineer-executor
+> **EMD Role:** DECODER — execution instrument. Takes instruction → produces artifact.
+> **Architecture:** `/root/AAA/instructions/emd-architecture.md`
 > **Transport:** CLI_SHELL (with MCP-SSE-STDIO ready)
 > **F13 SOVEREIGN:** Muhammad Arif bin Fazil
 
