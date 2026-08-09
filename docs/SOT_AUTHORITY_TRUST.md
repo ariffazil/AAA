@@ -33,14 +33,24 @@ effective_verdict  ──►  effective_state.mutation_allowed
 
 ## Localhost auto-identity (OPENCLAW / OPENCODE)
 
-**Intentional** on the VPS under `LOCALHOST_IS_PASSWORD`:
+**Intentional only for true local loopback** (STAB trust push 2026-08-09+):
 
-- Kernel process auto-signs challenges with on-disk Ed25519 keys for registered harnesses.
-- Traffic reaches `:8088` via Caddy/CF but **terminates on localhost** — kernel sees local keys.
-- Band after auto-sign: **LIMITED_MUTATE** (not FULL, not SOVEREIGN) for operators.
-- **Not** a password; **is** host-bound key possession.
+| Caller | Auto-sign / name-exempt elevate? | Band if elevated |
+|--------|----------------------------------|------------------|
+| Process → `127.0.0.1:8088` **no** CF/XFF headers | Yes (host keys) | LIMITED_MUTATE |
+| Public → Cloudflare → Caddy → `:8088` (has CF/XFF) | **No** | OBSERVE_ONLY for name claim alone |
+| Name `OPENCLAW` without local trust | OBSERVE_ONLY | No SCT |
+
+- Env: `ARIFOS_TRUST_AUTO_SIGN=1` (default) enables local auto-sign; `=0` disables entirely.
+- Implementation: `request_trust.py` + `RequestTrustMiddleware`.
+- **Not** a password; **is** host-bound key possession **and** unproxied loopback peer.
 
 **Not intentional for:** claiming `F13` / `ARIF FAZIL SOVEREIGN` without signature → **VOID** + `SOVEREIGN_SPOOF_ATTEMPT`.
+
+### Dual-truth iron rule (mutation)
+
+`mutation_allowed` is forced consistent in `attach_effective_verdict` last-writer:
+- `effective_verdict ∈ {HOLD, VOID, OBSERVE_ONLY, SABAR}` → all nested `mutation_allowed=false`.
 
 ## Guest sessions
 
