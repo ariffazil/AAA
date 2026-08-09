@@ -358,3 +358,15 @@ Topology above is **who/where organs are**. **How to invoke** agents and organs:
 ## State readiness
 
 Institution before citizens: [`STATE.md`](./STATE.md) · probe: `/root/AAA/scripts/state-probe.sh` · machine: `federation/STATE.yaml`.
+
+## Institutional density (SOT 2026-08-09)
+
+Canonical topology remains this file + `federation/organs.yaml` + live health.
+Institutional *language* (not a third map):
+
+- Holy 8 four layers → `governance/HOLY8_FOUR_LAYER_LANGUAGE.md`
+- HERMES DNA (ECHO/SCAR/ATLAS/MAP) → `governance/HERMES_DNA.md`
+- Telemetry observe freeze → `map-atlas-echo` · Kabarkan · cron 6h
+
+Truth rule unchanged: live `:port/health` wins.
+
