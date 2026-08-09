@@ -1,48 +1,10 @@
-# STATE OPS — keep the institution boring
+# STATE_OPS
 
-## Daily / after every AAA change
+> **POINTER** — Canonical SOT is **[`STATE.md`](./STATE.md)** (unified 2026-08-09 zen).
+>
+> Do not fork doctrine here. Edit `STATE.md` only.
+>
+> Related scripts: `/root/AAA/scripts/state-probe.sh` · `protocol-enforce.sh`
+>
+> DITEMPA BUKAN DIBERI.
 
-```bash
-# 1) Prove state
-/root/AAA/scripts/state-probe.sh
-
-# 2) After git commit on AAA (also auto via post-commit hook)
-/root/AAA/scripts/sync-deploy-marker.sh
-
-# 3) If registry or a2a-server code changed
-systemctl restart aaa-a2a.service
-sleep 3
-/root/AAA/scripts/state-probe.sh
-```
-
-## Green criteria (STATE_READY)
-
-- 8 government ports up
-- FED `:4000/health/liveliness`
-- AAA `healthy`, `deployment_drift=false`, vault CONNECTED
-- G ≥ 0.70, C_dark ≤ 0.30, QDF ≥ 0.90
-- CALL_MAP + STATE docs present
-- Catalog 3 layers load
-- Operators: hermes / openclaw / opencode (optional warn if down)
-
-## Never for “state harden”
-
-- Warga passport ceremony
-- New geometry layers
-- Putting judge/execute on AAA
-
-## Telephone test (optional weekly)
-
-```bash
-opencode run "reply: CALL_MAP_OK"
-# or: read /root/AAA/docs/CALL_MAP.md and dispatch via Hermes
-```
-
-## Protocol enforcement (L0–L6)
-
-```bash
-/root/AAA/scripts/state-probe.sh          # institution + light gates
-/root/AAA/scripts/protocol-enforce.sh     # full matrix — must print PROTOCOL_ENFORCED
-```
-
-Doctrine: `docs/CONSTITUTIONAL_LAYER_SEPARATION.md` · `docs/PROTOCOL_ENFORCEMENT_MATRIX.md`
