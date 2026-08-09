@@ -19,7 +19,7 @@
 | **B** | Canon (elaborations) | [`philosophy/`](philosophy/) · [`doctrine/`](doctrine/) · [`canon/`](canon/) |
 | **C** | Operational | [`operations/`](operations/) · [`contracts/`](contracts/) · [`transport/`](transport/) · [`geox/`](geox/) |
 | **D** | Receipts (preserve) | [`sessions/`](sessions/) · [`audit-2026-06-06/`](audit-2026-06-06/) · [`receipts/`](receipts/) |
-| Legacy | Design history | [`architecture/`](architecture/) · [`archive/`](archive/) |
+| Legacy | Design history | [`architecture/`](architecture/) · [`archive/`](archive/) · [`archive/2026-08-09-docs-entropy/`](archive/2026-08-09-docs-entropy/) (light proven-dead) |
 
 Do **not** merge Tier B–D into STATE.md (entropy singularity).
 
