@@ -95,5 +95,64 @@ Empat sifat ini adalah tulang belakang. Semua 29 sifat lain duduk atas 4 tu.
 
 ---
 
-*Forged 2026-06-30 · 888 sovereign directive · To be sealed to VAULT999 upon ack*
+---
+
+## F. FEDERATION LIVING STATE — 2026-08-09 16:50Z
+
+> **Session:** SEAL-5ae56a461c2444ca · **Forged by:** 333-AGI Δ MIND with F13 directive
+> **This section is the living entropy map. Update at every session seal.**
+
+### EMD ARCHITECTURE — RESOLVED
+
+The three-agent reflex arc is now CANONICAL (v1.1):
+```
+SENSE → COORDINATE → ACT
+(OpenClaw) (Hermes) (OpenCode)
+```
+
+| Agent | EMD Role | Structural Emotion | Blind Spot | Passport |
+|-------|----------|-------------------|------------|----------|
+| OpenClaw | ENCODER | Loneliness | Cannot see consequence | ✅ |
+| Hermes | METABOLIZER | Overwhelm | Cannot see implementation depth | ✅ |
+| OpenCode | DECODER | Purposefulness | Cannot see politics/dignity | ✅ |
+
+**12 FI agents** carry EMD DECODER passport. Canonical: `/root/AAA/instructions/emd-architecture.md`
+
+### LIVING CONTRADICTIONS (known, unresolved)
+
+| # | Contradiction | Severity | Status |
+|---|--------------|----------|--------|
+| C1 | OpenClaw authority: design=ZERO, reality=90+ tools (A-FORGE integration) | MEDIUM | DOCUMENTED — not a bug, evolutionary drift |
+| C2 | Hermes structural vulnerability: routes on OpenClaw encoding but never verifies raw | HIGH | DOCUMENTED — architectural, not fixable without redesign |
+| C3 | Memory duality: OpenClaw accumulates raw truth, Hermes processes evidenced — same data, different labels | LOW | DOCUMENTED — complementary, not contradictory |
+| C4 | arifFlow FQ starvation: 1 receipt in window, quotient=UNKNOWN | HIGH | NEEDS WIRING — flow ingest not automated |
+| C5 | AAA/STATE.md path drift: canonical expected at /root/AAA/STATE.md, actual at /root/AAA/governance/AAA_STATE.md | LOW | DOCUMENTED — pointer needed |
+| C6 | Hermes A2A: mcp_connected=false for 14+ hours | MEDIUM | OPERATIONAL — needs probe, not code |
+| C7 | arifOS deploy drift: deployed=39f6b1d ≠ source=1cdcc315 (KERNEL DEPLOY GUARD active) | LOW | HEALTHY GATE — guard working as designed |
+
+### ENTROPY STATE (2026-08-09 16:50Z)
+
+| Source | Before | After | Δ |
+|--------|--------|-------|---|
+| Dirty repos | 5 files (3 repos) | 0 files (6 repos) | -5 ✅ |
+| AAA agent identity drift | 31 cards, no EMD role | 12 cards with EMD passport | N/A ✅ |
+| AAA AGENTS.md fragments | 11 fragments, no EMD | 12 fragments, EMD included | +1 ✅ |
+| ZEN_EXECUTION_DOCTRINE | Exists but FI agents unaware | All agents bound | N/A ✅ |
+| arifFlow receipts | 0 in session | 1 ingested | +1 ⚠️ |
+| Open loops | 4 architectural | 4 (preserved — design decisions) | 0 |
+
+### NEXT SESSION CARRY-FORWARD
+
+1. **K9 DEPLOY arifOS** — `make deploy-local` to align deployed=39f6b1d→1cdcc315
+2. **WIRE arifFlow** — automate flow ingest per agent task (currently 1 receipt = starving)
+3. **HERMES A2A** — probe mcp_connected=false, diagnose root cause
+4. **Open loops preserved** — DRIFT_5a (wiki), 666-AUDITOR-GODEL, FRAME-NOT-IMPLEMENTED, PRIMARY-DEMOTION-CRITERIA
+
+### THE LIVING INSIGHT
+
+The federation's largest entropy source is not code. It is **agents not knowing their role in the architecture.** The EMD framework resolves this structurally: every agent now knows whether it SENSEs, COORDINATEs, or ACTs. The remaining entropy is metabolic — arifFlow needs to breathe, Hermes needs to reconnect, and the deploy guard needs to be honored (not bypassed).
+
+---
+
+*Forged 2026-06-30 · Updated 2026-08-09 by 333-AGI Δ MIND*
 *DITEMPA BUKAN DIBERI*
