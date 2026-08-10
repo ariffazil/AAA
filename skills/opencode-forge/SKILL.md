@@ -3,6 +3,8 @@ name: opencode-forge
 description: OpenCode-native /forge — execution primitive. After identity is established via /init, /forge mutates code under the agent's authority band. The flow: /init → /forge → /propose-seal.
 tags: [forge, execution, coding-agent, opencode]
 license: MIT
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 # OpenCode /forge — Execution Primitive
 

@@ -29,6 +29,8 @@ tests:
 - "Run the compare command and confirm every shared skill reports SYNC"
 - "Bump a version in one tree, re-run, confirm the row flips to DIVERGED"
 - "Delete a SKILL.md from one tree, re-run, confirm MISSING_FROM_X"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # AUDIT — Agent Skill Mesh Sync

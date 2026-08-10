@@ -19,6 +19,8 @@ floor_scope:
 - F7
 - F11
 autonomy_tier: T0
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 # /check-work -- Self-Verification
 

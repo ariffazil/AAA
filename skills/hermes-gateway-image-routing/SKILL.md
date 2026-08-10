@@ -26,6 +26,8 @@ source: hermes-only
 synthesized: 2026-08-08
 floor_scope: [F2, F4, F9, F12]
 autonomy_tier: T1
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Hermes Gateway Image Routing

@@ -44,6 +44,8 @@ floor_scope:
 - F9
 - F10
 - F11
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # skill-trigger-linter (O_Ψ Verification Layer)

@@ -17,6 +17,8 @@ sources:
   - Live harness mesh: ~/.grok ~/.claude ~/.codex ~/.agents AAA
   - forge_work/2026-07-15/AAA-SKILL-TOOL-RECONCILIATION.json
   - AGENTS.md federation organ index
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # META-MESA — Skill Atlas & Gap Detection

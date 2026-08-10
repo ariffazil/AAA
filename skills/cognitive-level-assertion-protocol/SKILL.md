@@ -11,6 +11,8 @@ constitutional: true
 load_when: "Any governed interaction, constitutional decision, artifact creation, or agent reasoning chain"
 source: hermes-only
 synthesized: 2026-08-08
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Cognitive Level Assertion Protocol (CLAP v2)

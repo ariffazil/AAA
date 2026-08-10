@@ -4,6 +4,8 @@ description: Audit whether every constitutional floor and federation organ has c
 agent: 888-APEX
 namespace: apex_*
 cluster: AUDIT
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # APEX-constitutional-audit

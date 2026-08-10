@@ -13,6 +13,8 @@ floor_scope: [F2, F4, F11]
 tags: [aaa, meta, skills, mesh, grok, unification, alias]
 forged: 2026-07-12
 updated: 2026-07-15
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Skill Unification — AAA Catalog × Harness Views

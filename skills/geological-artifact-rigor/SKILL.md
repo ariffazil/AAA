@@ -8,6 +8,8 @@ tags: [geology, GEOX, rigor, standing-instruction, F2-truth]
 related: [hermes-prime-identity, explorer-dispatch-protocol, measure-before-acting, evidence-before-elegance]
 source: hermes-only
 synthesized: 2026-08-08
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Geological & Technical Artifact Rigor

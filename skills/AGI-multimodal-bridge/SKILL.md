@@ -24,6 +24,8 @@ floor_scope:
 - F08
 owner: AAA
 autonomy_tier: T1
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 # AGI-multimodal-bridge
 

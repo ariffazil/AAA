@@ -20,6 +20,8 @@ cognitive_hints:
   hermes: GitHub op? Auth. Execute. Verify. Log. Next.
 owner: A-FORGE
 autonomy_tier: T1
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 # FORGE-github-workflow
 

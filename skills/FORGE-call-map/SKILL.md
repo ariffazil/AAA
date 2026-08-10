@@ -15,6 +15,8 @@ triggers:
   - "call map"
   - "macam mana nak call"
   - session boot / init when dispatching to another agent
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # FORGE-call-map

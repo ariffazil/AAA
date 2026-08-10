@@ -24,6 +24,8 @@ floor_scope:
 - F12
 - F13
 autonomy_tier: T0
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 ## When to Use
 

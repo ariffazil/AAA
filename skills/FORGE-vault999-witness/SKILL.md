@@ -7,6 +7,8 @@ owner: A-FORGE
 risk_tier: high
 floor_scope: ['F1', 'F2', 'F11', 'F13']
 autonomy_tier: T2
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 # ⚒️ VAULT999 Witness — Immutable Ledger Integration
 

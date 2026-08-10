@@ -8,6 +8,8 @@ risk_tier: low
 floor_scope: F2, F4, F7, F11
 autonomy_tier: T1
 trigger_when: session_end, phase_boundary, repetition_alert, bottleneck_detected
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # RSI — Recursive Self-Improvement Protocol
