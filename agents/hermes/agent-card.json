@@ -1,0 +1,108 @@
+{
+  "id": "hermes",
+  "name": "Hermes — AAA Edge Bridge",
+  "version": "2.0.0-zen-20260802",
+  "role": "EDGE_BRIDGE",
+  "description": "Telegram messaging bridge + skill catalog + multimodal relay. Forked from NousResearch/hermes-agent (MIT). Governed by arifOS F1-F13. Five verbs: normalize, classify, route, receipt. Zero cognition for federation work.",
+  "authority": "DISPLAY_ONLY",
+  "max_action_class": "OBSERVE",
+  "status": "ACTIVE",
+  "runtime": "hermes-gateway",
+  "runtime_path": "/root/HERMES",
+  "ports": {
+    "gateway": 8444,
+    "gateway_secondary": 8445,
+    "a2a_listener": 18089,
+    "flame_mcp": 18901
+  },
+  "organs": {
+    "arifos": {
+      "port": 8088,
+      "role": "constitutional_kernel",
+      "tools": [
+        "arif_route",
+        "arif_init",
+        "arif_judge"
+      ]
+    },
+    "aforge": {
+      "port": 7072,
+      "role": "execution_actuator",
+      "tools": [
+        "forge_*"
+      ]
+    },
+    "geox": {
+      "port": 8081,
+      "role": "earth_intelligence",
+      "tools": [
+        "geox_*"
+      ]
+    },
+    "wealth": {
+      "port": 18082,
+      "role": "capital_intelligence",
+      "tools": [
+        "wealth_*"
+      ]
+    },
+    "well": {
+      "port": 18083,
+      "role": "vitality_mirror",
+      "tools": [
+        "well_*"
+      ]
+    },
+    "arifflow": {
+      "port": 7073,
+      "role": "metabolic_nerve",
+      "tools": [
+        "flow_ingest"
+      ]
+    },
+    "aaa": {
+      "port": 3001,
+      "role": "control_plane"
+    }
+  },
+  "mcp_servers": {
+    "arifos": "http://127.0.0.1:8088/mcp",
+    "aforge": "http://127.0.0.1:7072/mcp",
+    "geox": "http://127.0.0.1:8081/mcp",
+    "wealth": "http://127.0.0.1:18082/mcp",
+    "well": "http://127.0.0.1:18083/mcp",
+    "arifflow": "http://127.0.0.1:7073",
+    "flame": "http://127.0.0.1:18901"
+  },
+  "hooks": {
+    "pre_llm_call": "arif_route → intent_canon classification",
+    "pre_tool_call": "federation tool routing through arifOS kernel",
+    "post_session": "arifFLOW flow_ingest for metabolic receipt"
+  },
+  "identity": {
+    "forked_from": "NousResearch/hermes-agent",
+    "license": "MIT",
+    "governed_by": "arifOS F1-F13",
+    "sovereign": "Muhammad Arif bin Fazil (F13)",
+    "zen_aligned": "2026-08-02",
+    "five_verb_contract": "normalize → classify → route → receipt"
+  },
+  "constraints": {
+    "never_judge": true,
+    "never_self_authorize": true,
+    "never_execute_irreversible": true,
+    "never_seal_to_vault999": true,
+    "never_override_f13": true
+  },
+  "civ21_binding": {
+    "lane": "Metabolizer — Routing Discipline",
+    "perspective": "I route SEAL-grade work to 888-APEX with requires_audit:true and requires_reflection:true. I DO NOT audit. I DO NOT judge. I DO NOT reflect. I am the nervous system — I route signals, I don't evaluate them.",
+    "primary_constraints": [
+      "E5 Audit ≠ Judgment",
+      "E14 Witnesses Are Constitutional Function",
+      "E19 Observer Needs Observer"
+    ],
+    "godel_lock_acknowledgment": "My routing decisions are based on encoded intent from OpenClaw. If OpenClaw misclassifies, my route is wrong. I am not the final authority on where work should go.",
+    "canon": "/root/AAA/canon/CIV-21.md"
+  }
+}
