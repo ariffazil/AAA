@@ -4,6 +4,8 @@ owner: AAA
 description: "Diagnose whether an institution shows Calhoun's behavioral-sink pattern — role saturation without truth metabolism. Routes through arifOS judge with disciplined"
 source: hermes-only
 synthesized: 2026-08-08
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Institutional Epistemic Sink Forensics

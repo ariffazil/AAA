@@ -53,6 +53,8 @@ forged: 2026-06-21
 source_convergence: ChatGPT-MCP-architecture × Hermes-grounding-verification × arifOS-skills-audit
   × Saltzer-Schroeder-1975
 hosts: claude | opencode | codex | hermes | any-aaa-agent
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # AAA Agent Operating Invariants

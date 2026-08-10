@@ -16,6 +16,8 @@ risk_tier: T2
 floor_scope: [F1, F2, F4, F11]
 autonomy_tier: ANNOUNCE
 forged_from: INCIDENT-2026-07-23 + MISSIONS-ZEN-2026-07-30
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # 🌐 FORGE — Agentic Web Builder

@@ -62,6 +62,8 @@ floor_scope:
 - F6
 - F11
 - F13
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Incident Triage — Lower Entropy Response

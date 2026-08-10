@@ -42,6 +42,8 @@ floor_scope:
 - F2
 - F7
 - F9
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # GEOX Grounding

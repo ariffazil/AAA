@@ -14,6 +14,8 @@ allowed_tools:
 - Grep
 owner: A-FORGE
 autonomy_tier: T0
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 # Precommit Review
 

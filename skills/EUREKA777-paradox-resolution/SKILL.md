@@ -30,6 +30,8 @@ outputs:
   - cooling_trajectory
 version_lock:
   schema_version: "1"
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # 💡 EUREKA777 — Paradox Resolution & Cooling Engine

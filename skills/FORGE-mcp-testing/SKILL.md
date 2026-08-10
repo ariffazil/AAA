@@ -1,6 +1,8 @@
 ---
 name: "forge-mcp-testing"
 description: "How to test any MCP server — use MCPJam Inspector, not coding agents"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # MCP Testing — MCPJam Inspector

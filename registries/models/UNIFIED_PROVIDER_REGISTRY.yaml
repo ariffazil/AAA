@@ -1,0 +1,368 @@
+# UNIFIED PROVIDER & MODEL REGISTRY — arifOS Federation
+# Forged: 2026-08-10 by 333-AGI under F13 directive
+# Canonical: /root/AAA/registries/models/UNIFIED_PROVIDER_REGISTRY.yaml
+# Rule: NEVER remove dead providers. Set status: disabled. Preserve config.
+# SOT: Live probe of all endpoints at forge time.
+
+providers:
+  # ============================================================
+  # POOL A — 333-AGI PRIMARY
+  # ============================================================
+  deepseek:
+    status: live
+    api: https://api.deepseek.com/v1
+    balance: unknown  # via FED: fed_status
+    capabilities: [chat, function_calling, reasoning]
+    models:
+      - id: deepseek-v4-pro
+        tier: heavy
+        role: 333-AGI primary
+      - id: deepseek-v4-flash
+        tier: cheap
+        role: ops/monitoring
+
+  # ============================================================
+  # POOL B — 888-APEX PRIMARY + MiniMax media
+  # ============================================================
+  minimax:
+    status: live
+    api: https://api.minimax.io/v1
+    balance: unknown
+    capabilities: [chat, function_calling, reasoning]
+    models:
+      - id: MiniMax-M3
+        tier: heavy
+        role: 888-APEX primary · multimodal · vision
+        note: Arif confirmed LIVE 2026-08-04
+      - id: MiniMax-M2.7
+        tier: medium
+      - id: MiniMax-M2.5
+        tier: medium
+      - id: MiniMax-M2.1
+        tier: cheap
+
+  # VIDEO MODELS (MiniMax MCP — server broken, direct API works)
+  minimax-video:
+    status: live_api_only
+    api: https://api.minimax.io/v1/video_generation
+    mcp_port: 18100
+    mcp_status: broken  # mcp 1.24-1.29 FastMCP.run() API mismatch
+    workaround: POST /v1/video_generation (async, poll /v1/query/video_generation)
+    models:
+      - id: T2V-01
+        type: text-to-video
+        max_duration_s: 10
+        resolution: 1080p
+        cost_per_clip: 0.30
+      - id: I2V-01
+        type: image-to-video
+        max_duration_s: 10
+      - id: Hailuo-02
+        type: text-to-video + image-to-video
+        max_duration_s: 10
+        resolution: 1080p
+        note: Physics champion (WorldModelBench). Best for human motion.
+
+  # ============================================================
+  # POOL C — Qwen Individual (RATE LIMITED)
+  # ============================================================
+  qwen-token-plan-individual:
+    status: rate_limited
+    api: https://token-plan.ap-southeast-1.maas.aliyuncs.com/v1
+    balance: unknown
+    capabilities: [chat, function_calling, reasoning]
+    models:
+      - id: qwen3.6-flash
+      - id: deepseek-v4-flash-0731
+      - id: glm-5.2
+      - id: qwen3.8-max
+      - id: qwen3.7-max
+    note: Pool C — FED auto-reenable on recovery. DO NOT REMOVE.
+
+  # ============================================================
+  # POOL D — Qwen Token Plan Team (555-ASI primary)
+  # ============================================================
+  qwen-token-plan:
+    status: rate_limited
+    api: https://token-plan.ap-southeast-1.maas.aliyuncs.com/v1
+    balance: unknown
+    capabilities: [chat, function_calling, reasoning]
+    models:
+      - id: qwen3.8-max
+      - id: qwen3.7-max
+      - id: qwen3.7-plus
+      - id: deepseek-v4-pro
+      - id: deepseek-v4-flash-0731
+    note: Pool D — 555-ASI primary. Quota exhausted 2026-08-10.
+
+  # ============================================================
+  # DashScope PAYG — UNLIMITED (no cap) ⭐
+  # ============================================================
+  dashscope-payg:
+    status: live
+    api: https://dashscope-intl.aliyuncs.com/compatible-mode/v1
+    key_env: DASHSCOPE_API_KEY
+    balance: unlimited_payg
+    capabilities: [chat, function_calling, reasoning, vision, image_gen, tts, asr]
+    models:
+      text:
+        - qwen3.8-max
+        - qwen3.7-max
+        - qwen3.7-plus
+        - qwen3.6-flash
+        - deepseek-v4-pro
+        - deepseek-v4-flash
+      vision:
+        - qwen-vl-max      # Dedicated vision — confirmed working 2026-08-10
+        - qwen3-vl-plus
+        - qwen3-vl-flash
+        - qwen3-omni-flash
+      image_gen:
+        - qwen-image-2.0-pro   # Working ✅
+        - qwen-image-2.0       # Working ✅
+        - qwen-image-3.0-pro   # New
+        - wan2.7-image-pro
+        - wan2.7-image         # Image only — NOT video
+      tts:
+        - qwen3-tts-flash
+        - qwen3-tts-instruct-flash
+      asr:
+        - qwen3-asr-flash
+    note: Working — images, vision, chat confirmed. No video (wan is image-only).
+
+  # ============================================================
+  # Gemini — Google AI (RELOADED 2026-08-10)
+  # ============================================================
+  gemini:
+    status: live
+    api: https://generativelanguage.googleapis.com/v1beta
+    key_env: GEMINI_API_KEY
+    balance: payg
+    capabilities: [chat, image_gen, image_edit, video_gen, video_edit, tts, search]
+    models:
+      image:
+        - id: gemini-3.1-flash-image
+          name: Nano Banana 2
+          tier: general_workhorse
+          resolutions: [512px, 1K, 2K, 4K]
+          ref_images_max: 14
+          confirmed: true  # 2026-08-10 03:36 MYT
+        - id: gemini-3.1-flash-lite-image
+          name: Nano Banana 2 Lite
+          tier: budget_fast
+          resolution: 1K
+        - id: gemini-3-pro-image
+          name: Nano Banana Pro
+          tier: premium
+          resolutions: [1K, 2K, 4K]
+      video:
+        - id: gemini-omni-flash-preview
+          name: Gemini Omni Flash
+          type: text-to-video + image-to-video + edit
+          max_duration_s: 10
+          aspect_ratios: ["16:9", "9:16"]
+          audio: true
+          note: Interactions API. Synchronous. Stateful editing.
+        - id: veo-3.1-generate-preview
+          name: Veo 3.1
+          type: text-to-video + image-to-video
+          max_duration_s: 8
+          resolutions: [720p, 1080p, 4K]
+          audio: true
+          note: predictLongRunning (async). Reference images (up to 3).
+      tts:
+        - id: gemini-3.1-flash-tts-preview
+          voices: 30
+          languages: [en, ms, id, ar, zh, ja, ko, ...]  # Malay supported!
+      chat:
+        - id: gemini-2.5-flash
+    note: Key reloaded 2026-08-10. Nano Banana confirmed. Omni Flash TBD.
+
+  # ============================================================
+  # Qwen Token Plan — Standard + Team Owner
+  # ============================================================
+  qwen-token-plan-standard:
+    status: live
+    api: https://token-plan.ap-southeast-1.maas.aliyuncs.com/v1
+    capabilities: [chat, function_calling, reasoning]
+    models:
+      - qwen3.8-max
+      - qwen3.7-max
+      - qwen3.7-plus
+
+  qwen-token-plan-team-owner:
+    status: live
+    api: https://token-plan.ap-southeast-1.maas.aliyuncs.com/v1
+    capabilities: [chat, function_calling, reasoning]
+    models:
+      - qwen3.8-max
+      - qwen3.7-max
+      - qwen3.7-plus
+
+  # ============================================================
+  # OpenRouter
+  # ============================================================
+  openrouter:
+    status: live_but_low_credits
+    api: https://openrouter.ai/api/v1
+    key_env: OPENROUTER_API_KEY
+    balance: unknown  # query failed 2026-08-10
+    capabilities: [chat, function_calling, image_gen]
+    models:
+      - deepseek/deepseek-v4-pro
+      - deepseek/deepseek-v4-flash
+      - google/gemini-3.5-flash
+      - moonshotai/kimi-k3
+
+  # ============================================================
+  # Groq — FREE
+  # ============================================================
+  groq:
+    status: live
+    api: https://api.groq.com/openai/v1
+    balance: free_tier
+    capabilities: [chat]
+    models:
+      - llama-3.1-8b-instant
+      - llama-3.3-70b-versatile
+      - openai/gpt-oss-20b
+      - openai/gpt-oss-120b
+      - qwen/qwen3.6-27b
+
+  # ============================================================
+  # Ollama — LOCAL (recovery only)
+  # ============================================================
+  ollama:
+    status: live
+    api: http://127.0.0.1:11434/v1
+    balance: free_local
+    capabilities: [chat]
+    models:
+      - qwen2.5-coder:3b
+    role: blind_survival_recovery
+
+  # ============================================================
+  # SEA-LION — Singapore
+  # ============================================================
+  sea-lion:
+    status: live
+    api: https://api.sea-lion.ai/v1
+    capabilities: [chat]
+    models:
+      - aisingapore/Qwen-SEA-LION-v4-32B-IT
+      - aisingapore/Llama-SEA-LION-v3-70B-IT
+      - aisingapore/Gemma-SEA-LION-v4-27B-IT
+
+  # ============================================================
+  # DISABLED — DO NOT REMOVE (preserve config)
+  # ============================================================
+  mulerouter:
+    status: disabled
+    api: https://api.mulerouter.ai/vendors/openai/v1
+    balance: -0.75
+    disabled_reason: negative_balance
+    disabled_at: 2026-08-04
+    models: [deepseek-v4-flash, deepseek-v4-pro, qwen3.7-max, qwen3.8-max, qwen3.7-plus]
+    note: DO NOT REMOVE. Re-enable when balance recovers.
+
+  opencode-go:
+    status: disabled
+    api: https://opencode.ai/zen/go/v1/chat/completions
+    disabled_reason: 401_insufficient_balance
+    disabled_at: 2026-08-04
+    models: [deepseek-v4-pro, kimi-k3, minimax-m3, deepseek-v4-flash, glm-5.2]
+    note: DO NOT REMOVE.
+
+  tokenrouter:
+    status: disabled
+    disabled_reason: 503_model_not_found
+    disabled_at: 2026-08-04
+    note: PARKED. DO NOT REMOVE.
+
+  mimo-token-plan:
+    status: disabled
+    api: https://token-plan-sgp.xiaomimimo.com/v1
+    disabled_reason: api_unresponsive
+    disabled_at: 2026-08-10
+    models: [mimo-v2.5-pro, mimo-v2.5]
+    note: Was auxiliary.vision provider. Failed vision test. Switched to dashscope-payg qwen-vl-max.
+          DO NOT REMOVE. Re-enable if MiMo recovers.
+
+  # ============================================================
+  # FED — Internal router (LiteLLM proxy)
+  # ============================================================
+  fed:
+    status: degraded
+    api: http://127.0.0.1:4000/v1
+    capabilities: [chat, function_calling, reasoning, vision, audio, video]
+    models:
+      - hermes-asi
+      - hermes-asi-vision
+      - asi-555
+      - asi-555-vision
+      - asi-555-audio
+      - asi-555-video
+    note: LiteLLM proxy. /chat/completions responds but model routing may be incomplete.
+
+# ============================================================
+# AGENT → PRIMARY MODEL BINDING
+# ============================================================
+agent_model_bindings:
+  333-AGI:
+    primary: deepseek/deepseek-v4-pro
+    pool: A (deepseek)
+    fallback: [dashscope-payg/qwen3.8-max, qwen-token-plan-individual/deepseek-v4-pro, ollama/qwen2.5-coder:3b]
+
+  555-ASI:
+    primary: qwen-token-plan/qwen3.6-flash
+    pool: D (qwen-token-plan)
+    fallback: [dashscope-payg/qwen3.8-max, qwen-token-plan-individual/qwen3.6-flash, deepseek/deepseek-v4-flash, ollama]
+
+  555-ASI-VISION:
+    primary: dashscope-payg/qwen-vl-max
+    pool: dashscope-payg
+    fallback: [gemini/gemini-2.5-flash, qwen-token-plan-individual/qwen3.7-plus, minimax/MiniMax-M3]
+
+  888-APEX:
+    primary: minimax/MiniMax-M3
+    pool: B (minimax)
+    fallback: [gemini/gemini-3.5-flash, deepseek/deepseek-v4-pro, ollama/qwen2.5-coder:3b]
+
+  Hermes:
+    primary: minimax/MiniMax-M3
+    pool: B (minimax)
+    fallback: [deepseek/deepseek-v4-pro, dashscope-payg/qwen3.8-max, openrouter, ollama]
+
+  image-analyzer:
+    primary: dashscope-payg/qwen-vl-max
+    pool: dashscope-payg
+    fallback: [gemini/gemini-2.5-flash, minimax/MiniMax-M3]
+
+  dispatch:
+    primary: dashscope-payg/qwen3.6-flash
+    pool: dashscope-payg
+    fallback: [qwen-token-plan/qwen3.8-max, deepseek/deepseek-v4-flash, ollama]
+
+# ============================================================
+# RULES
+# ============================================================
+rules:
+  - NEVER remove disabled providers. Set status: disabled, preserve config.
+  - Disabled providers retain their model lists, API URLs, and key references.
+  - When a provider recovers (balance, API, key), flip status back to live.
+  - FED :7074 is canonical for live balances. Cache only in this file.
+  - Fallback chains must have ≥4 entries including at least 1 cross-provider.
+  - Constitutional roles (666_JUDGE, 999_SEAL) only on deepseek-v4-pro or MiniMax-M3.
+  - Retry primary 3× with exponential backoff before falling back.
+
+# ============================================================
+# SOT
+# ============================================================
+sot:
+  canonical_balance: FED :7074/health
+  canonical_models: Live API probe per provider
+  cache_file: /root/AAA/state/flow_state.json (TTL 5 min)
+  this_registry: /root/AAA/registries/models/UNIFIED_PROVIDER_REGISTRY.yaml
+  update_cadence: On every session /init + on provider status change
+
+# DITEMPA BUKAN DIBERI — registry is forged, not given. ⚒️

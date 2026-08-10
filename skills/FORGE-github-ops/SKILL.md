@@ -8,6 +8,8 @@ risk_tier: low
 floor_scope: [F1, F2, F11]
 autonomy_tier: T1
 tags: [github, git, runbook, ops]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # GitHub & Git Operations (Probe-Based v1.1.0)

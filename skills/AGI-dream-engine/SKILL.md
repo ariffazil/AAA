@@ -54,6 +54,8 @@ floor_scope:
 - F4
 - F6
 - F7
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Agentic Dream Engine — Federation Memory Consolidation

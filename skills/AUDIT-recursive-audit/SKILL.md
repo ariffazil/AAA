@@ -44,6 +44,8 @@ floor_scope:
 - F7
 - F9
 - F11
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # arifos-recursive-audit v2.0 (O_Ω Constitutional Layer)

@@ -3,6 +3,8 @@ name: openclaw-propose-seal
 description: OpenClaw-native /propose-seal — proposes a sealed candidate to 888-APEX. NEVER self-seals. Pipeline: agent proposes → 888 judges → F13 authorizes → 999 executes (append to VAULT999).
 tags: [constitutional, seal, propose, substrate-primitive, telegram-native, openclaw]
 license: MIT
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 # OpenClaw /propose-seal — Substrate Primitive
 

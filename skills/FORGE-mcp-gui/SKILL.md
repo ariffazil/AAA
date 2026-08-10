@@ -8,6 +8,8 @@ risk_tier: medium
 autonomy_tier: T2
 floor_scope: [F1, F2, F4, F11, F12]
 tags: [forge, mcp, apps, ui, sep-1865, csp]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # ⚒️ FORGE-mcp-gui — MCP GUI/Apps Development Skill
