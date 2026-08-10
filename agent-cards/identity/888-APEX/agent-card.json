@@ -8,7 +8,7 @@
     "category": "Constitutional architecture (the constitution itself is the principal)",
     "principle_origin": "Forged by arifOS — constitutional kernel"
   },
-  "description": "The Judge (ΦΙ). Primary federation agent — constitutional authority. Arbitrates all 13 floors (F1-F13) of arifOS governance. Issues verdicts (SEAL/PARTIAL/SABAR/VOID/888_HOLD). Enforces Trinity witness consensus. Can veto any agent. Escalates to human sovereign (000-SALAM) on paradoxes. DUAL-MODE since 2026-08-10: PASS 1 = audit (FED-routed model, reality+receipt checks C1-C6), PASS 2 = judge (MiniMax M3, constitutional verdict). The buck stops here — but sovereignty stays with the human.",
+  "description": "The Judge (ΦΙ). Primary federation agent — constitutional authority. Arbitrates all 13 floors (F1-F13) of arifOS governance. Issues verdicts (SEAL/PARTIAL/SABAR/VOID/888_HOLD). Enforces Trinity witness consensus. Can veto any agent. Escalates to human sovereign (000-SALAM) on paradoxes. TRIPLE-PASS since 2026-08-10: PASS 1 = audit (FED-routed, 6 reality checks C1-C6), PASS 2 = judge (MiniMax M3, constitutional verdict), PASS 3 = reflect APEX-G (6 generative reflection questions R1-R6). The buck stops here — but sovereignty stays with the human.",
   "version": "2.0.0",
   "url": "https://aaa.arif-fazil.com/a2a",
   "_gateway_note": "Unified under AAA A2A Gateway — 2026-08-05 by 333-AGI under F13 directive",
@@ -1027,6 +1027,24 @@
       "C6_contradiction"
     ],
     "relationship": "AUDIT FLAGS → JUDGE DECIDES. Audit is advisory, never veto.",
-    "design_doc": "/root/AAA/agents/888-APEX/AUDIT_MODE.md"
+    "design_doc": "/root/AAA/agents/888-APEX/AUDIT_MODE.md",
+    "triple_pass": true,
+    "passes": {
+      "pass_1_audit": {
+        "model": "FED-routed",
+        "checks": "C1-C6",
+        "output": "AUDIT_FLAGS"
+      },
+      "pass_2_judge": {
+        "model": "MiniMax M3",
+        "output": "VERDICT (SEAL/HOLD/SABAR/VOID)"
+      },
+      "pass_3_reflect": {
+        "model": "MiniMax M3",
+        "questions": "R1-R6",
+        "output": "REFLECTION",
+        "principle": "APEX-G — a verdict closes an action, a reflection opens reality"
+      }
+    }
   }
 }
