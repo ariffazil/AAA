@@ -22,11 +22,11 @@ Any divergence = immediate fix.
 | Property | Value |
 |----------|-------|
 | Name | arifOS Constitutional |
-| Public URL | `https://arifos.arif-fazil.com/mcp` |
+| Public URL | `https://mcp.arif-fazil.com/mcp` |
 | Transport | `streamable-http` |
 | Internal | `http://127.0.0.1:8088/mcp` |
 | Port | 8088 (bare-metal systemd) |
-| Caddy route | `arifos.arif-fazil.com/mcp*` → `127.0.0.1:8088` |
+| Caddy route | `mcp.arif-fazil.com/mcp*` → `127.0.0.1:8088` |
 | Tools | 8 canonical (arif_init → arif_seal) |
 | Auth | None (public) |
 | Status | ✅ HEALTHY |
@@ -35,11 +35,11 @@ Any divergence = immediate fix.
 | Property | Value |
 |----------|-------|
 | Name | A-FORGE Engineering Shell |
-| Public URL | `https://mcp.arif-fazil.com/mcp` |
+| Public URL | `https://forge.arif-fazil.com/mcp` |
 | Transport | `streamable-http` |
 | Internal | `http://127.0.0.1:7072/mcp` |
 | Port | 7072 (MCP) / 7071 (API) — bare-metal systemd |
-| Caddy route | `mcp.arif-fazil.com/mcp*` → `127.0.0.1:7072` |
+| Caddy route | `forge.arif-fazil.com/mcp*` → `127.0.0.1:7072` |
 | Tools | 114 (forge_* shell, filesystem, git, docker, browser, vault, etc.) |
 | Auth | SCT (Session Capability Token) |
 | Status | ✅ HEALTHY |
@@ -102,8 +102,8 @@ Any divergence = immediate fix.
 
 | Service | Internal URL | Public URL | Transport |
 |---------|-------------|-----------|-----------|
-| arifOS | `http://127.0.0.1:8088/mcp` | `https://arifos.arif-fazil.com/mcp` | `streamable-http` |
-| A-FORGE | `http://127.0.0.1:7072/mcp` | `https://mcp.arif-fazil.com/mcp` | `streamable-http` |
+| arifOS | `http://127.0.0.1:8088/mcp` | `https://mcp.arif-fazil.com/mcp` | `streamable-http` |
+| A-FORGE | `http://127.0.0.1:7072/mcp` | `https://forge.arif-fazil.com/mcp` | `streamable-http` |
 | GEOX | `http://127.0.0.1:8081/mcp` | `https://geox.arif-fazil.com/mcp` | `streamable-http` |
 | WEALTH | `http://127.0.0.1:18082/mcp` | `https://wealth.arif-fazil.com/mcp` | `streamable-http` |
 | WELL | `http://127.0.0.1:18083/mcp` | `https://well.arif-fazil.com/mcp` | `streamable-http` |
@@ -136,7 +136,7 @@ curl -s --max-time 5 https://well.arif-fazil.com/health
 curl -s --max-time 5 https://aaa.arif-fazil.com/health
 
 # MCP tool discovery (after initialize)
-curl -s --max-time 5 -X POST https://arifos.arif-fazil.com/mcp \
+curl -s --max-time 5 -X POST https://mcp.arif-fazil.com/mcp \
   -H "Content-Type: application/json" \
   -d '{"jsonrpc":"2.0","method":"tools/list","params":{},"id":1}'
 ```

@@ -41,7 +41,7 @@ Source of truth file:
 - AAA docs endpoint registry: `AAA/docs/MCP_ENDPOINT.md`
 
 Current public MCP endpoints:
-- arifOS kernel: `https://arifos.arif-fazil.com/mcp`
+- arifOS kernel: `https://mcp.arif-fazil.com/mcp`
 - GEOX: `https://geox.arif-fazil.com/mcp`
 - WEALTH: `https://wealth.arif-fazil.com/mcp`
 - WELL: `https://well.arif-fazil.com/mcp` (registry notes service may be offline)

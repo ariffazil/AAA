@@ -224,7 +224,7 @@ The federation is a **body with specialized organs**, each owning a domain, all 
 
 | Symbol | Organ | Repo | Port | Public endpoint | Role |
 |---|---|---|---|---|---|
-| **Δ** | **arifOS** | `ariffazil/arifos` | 8088 | `https://arifos.arif-fazil.com/mcp` | Constitutional kernel |
+| **Δ** | **arifOS** | `ariffazil/arifos` | 8088 | `https://mcp.arif-fazil.com/mcp` | Constitutional kernel |
 | **Ω** | **AAA** | `ariffazil/AAA` | 3001 | `https://aaa.arif-fazil.com/` | Control plane / cockpit |
 | **Ψ** | **A-FORGE** | `ariffazil/A-FORGE` | 7071 | `https://forge.arif-fazil.com/mcp` | Execution shell |
 | 🌍 | **GEOX** | `ariffazil/geox` | 8081 | `https://geox.arif-fazil.com/mcp` | Earth intelligence |
@@ -412,7 +412,7 @@ Cloudflare (WAF/DDoS/SSL at edge)
 VPS:443 (Caddy v2.11.4)
     ↓  by Host header
 ┌─────────────────────────────────────────────┐
-│ arifOS MCP    → https://arifos.arif-fazil.com/mcp     (port 8088) │
+│ arifOS MCP    → https://mcp.arif-fazil.com/mcp     (port 8088) │
 │ GEOX          → https://geox.arif-fazil.com/mcp        (port 8081) │
 │ WEALTH        → https://wealth.arif-fazil.com/mcp     (port 18082) │
 │ WELL          → https://well.arif-fazil.com/mcp        (port 18083) │

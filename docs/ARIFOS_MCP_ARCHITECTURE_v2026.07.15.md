@@ -84,7 +84,7 @@ Reality has structure. The arifOS federation maps to those structures **exactly*
 | Field | Value |
 |-------|--------|
 | Role | Constitutional substrate. Law, session, SEAL, HOLD, VOID. F1–F13. |
-| Port | `:8088` · public `https://arifos.arif-fazil.com/mcp` |
+| Port | `:8088` · public `https://mcp.arif-fazil.com/mcp` |
 | Does | Judge admissibility · bind identity · route · seal to VAULT999 |
 | Never | Domain compute (earth / capital / biology) |
 | Live tools | **8** kernel verbs (probe) |
@@ -272,10 +272,10 @@ Each organ README must carry the same constitutional skeleton, domain language o
       "url": "https://well.arif-fazil.com/mcp"
     },
     "arifos": {
-      "url": "https://arifos.arif-fazil.com/mcp"
+      "url": "https://mcp.arif-fazil.com/mcp"
     },
     "aforge": {
-      "url": "https://mcp.arif-fazil.com/mcp"
+      "url": "https://forge.arif-fazil.com/mcp"
     }
   }
 }

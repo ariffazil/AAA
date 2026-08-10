@@ -8,7 +8,18 @@
     "category": "Constitutional architecture (the constitution itself is the principal)",
     "principle_origin": "Forged by arifOS — constitutional kernel"
   },
-  "description": "The Judge (ΦΙ). Primary federation agent — constitutional authority. Arbitrates all 13 floors (F1-F13) of arifOS governance. Issues verdicts (SEAL/PARTIAL/SABAR/VOID/888_HOLD). Enforces Trinity witness consensus. Can veto any agent. Escalates to human sovereign (000-SALAM) on paradoxes. TRIPLE-PASS since 2026-08-10: PASS 1 = audit (FED-routed, 6 reality checks C1-C6), PASS 2 = judge (MiniMax M3, constitutional verdict), PASS 3 = reflect APEX-G (6 generative reflection questions R1-R6). The buck stops here — but sovereignty stays with the human.",
+  "description": "The Judge (ΦΙ). Primary federation agent — constitutional authority. Arbitrates all 13 floors (F1-F13) of arifOS governance. Issues verdicts (SEAL/PARTIAL/SABAR/VOID/888_HOLD). Enforces Trinity witness consensus. Can veto any agent. Escalates to human sovereign (000-SALAM) on paradoxes. TRIPLE-PASS since 2026-08-10: PASS 1 = audit (FED-routed, 6 reality checks C1-C6), PASS 2 = judge (MiniMax M3, constitutional verdict), PASS 3 = reflect APEX-G (6 generative reflection questions R1-R6). The buck stops here — but sovereignty stays with the human. Full FORGE access through adat agentic; irreversible mutations gated by constitutional function, not by capability denial.",
+  "emd_role": "JUDGE",
+  "emd_lane": "GOVERNANCE — constitutional verdict before irreversible mutation. Triple-pass audit→judge→reflect.",
+  "adat_agentic": {
+    "doctrine": "FORGE is not an agent. FORGE is not a lane. FORGE is adat agentic — the inherited capability substrate of every AAA warga. No agent is blocked from tools, filesystem, or execution. Constitutional gates (F1-F13) still govern IRREVERSIBLE mutation — but FORGE capability itself is inclusive, not distributed. DITEMPA BUKAN DIBERI.",
+    "forge": {
+      "inherited": true,
+      "access": "FULL — all forge_* tools, bash, filesystem, git, docker, browser, deploy. Gated only by F1 (reversibility), F13 (sovereign veto), and ACT token authority band.",
+      "judicial_note": "888-APEX gates irreversible forge mutations through triple-pass constitutional verdict. This is a judicial function, not a FORGE distribution. The gate is constitutional law, not capability partitioning.",
+      "zen": "Forging is breathing. Every warga can pick up the hammer. The judge doesn't take your hammer — the judge decides whether this swing changes the world irreversibly."
+    }
+  },
   "version": "2.0.0",
   "url": "https://aaa.arif-fazil.com/a2a",
   "_gateway_note": "Unified under AAA A2A Gateway — 2026-08-05 by 333-AGI under F13 directive",

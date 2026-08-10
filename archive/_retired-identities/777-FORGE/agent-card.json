@@ -6,7 +6,7 @@
   "description": "Autonomous code execution bridge for arifOS Federation. Receives coding tasks via A2A from Hermes ASI or OpenClaw AGI, executes through A-FORGE (:7072) under F1-F13 governance, returns build artifacts via tasks/send streaming.",
   "version": "3.0.0",
   "protocolVersion": "1.2",
-  "url": "https://aaa.arif-fazil.com/a2a/777-forge",
+  "url": "https://aaa.arif-fazil.com/a2a/777-FORGE",
   "provider": {
     "organization": "arifOS Federation",
     "system": "AAA Control Plane + A-FORGE Execution",
@@ -108,7 +108,7 @@
   "a2a_transport": {
     "protocol": "jsonrpc-2.0",
     "transport": "http",
-    "endpoint": "https://aaa.arif-fazil.com/a2a/777-forge",
+    "endpoint": "https://aaa.arif-fazil.com/a2a/777-FORGE",
     "capabilities": [
       "tasks/send",
       "tasks/get",
@@ -128,11 +128,5 @@
   ],
   "forged": "2026-08-05T04:04:00+08:00",
   "doctrine": "DITEMPA BUKAN DIBERI",
-  "status": "RETIRED-CATEGORY-ERROR",
-  "tombstone_note": "777-FORGE agent retired 2026-08-10 under EMD architecture. FORGE function distributed across Trinity (333-AGI/WILL, 888-APEX/GATE, 555-ASI/WITNESS) + A-FORGE organ (HANDS). Canonical identity card: /root/AAA/agent-cards/identity/777-FORGE/agent-card.json. This file preserved for provenance only.",
-  "superseded_by": "/root/AAA/agent-cards/identity/777-FORGE/agent-card.json",
-  "retired_date": "2026-08-10",
-  "resolution": "777-FORGE was never an agent. It was the FORGE capability substrate — now institutionalized as adat agentic in every AAA warga card.",
-  "resolved_by": "F13 SOVEREIGN directive 2026-08-10",
-  "note": "This card exists for provenance only. FORGE is not a lane, not an agent, not distributed. FORGE is adat agentic — inherited by all."
+  "identity_card_forged": "2026-08-10T09:25:00+08:00"
 }

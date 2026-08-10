@@ -144,8 +144,8 @@ MCPJam `:6274/:6277` · Headscale `:8083` · Caddy `:80/:443` · Cloudflared.
 
 | Organ | Public | Local |
 |---|---|---|
-| arifOS | `https://arifos.arif-fazil.com/mcp` | `127.0.0.1:8088` |
-| A-FORGE | `https://mcp.arif-fazil.com/mcp` | `127.0.0.1:7072` |
+| arifOS | `https://mcp.arif-fazil.com/mcp` | `127.0.0.1:8088` |
+| A-FORGE | `https://forge.arif-fazil.com/mcp` | `127.0.0.1:7072` |
 | GEOX | `https://geox.arif-fazil.com/mcp` | `127.0.0.1:8081` |
 | WEALTH | `https://wealth.arif-fazil.com/mcp` | `127.0.0.1:18082` |
 | WELL | `https://well.arif-fazil.com/mcp` | `127.0.0.1:18083` |

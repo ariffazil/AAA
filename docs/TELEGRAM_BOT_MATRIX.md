@@ -24,7 +24,7 @@
 |----------|------|----------|--------|---------|
 | **AAA A2A Server** | `:3001` | JSON-RPC 2.0 (A2A v1.0) | ✅ LIVE | Caddy `/a2a/*` + Tailscale |
 | **Hermes A2A Listener** | `:18089` | JSON-RPC 2.0 (A2A v1.0) | ✅ LIVE | local-only |
-| **A-FORGE MCP** | `:7072` | MCP Streamable HTTP | ✅ LIVE | Caddy `mcp.arif-fazil.com` |
+| **A-FORGE MCP** | `:7072` | MCP Streamable HTTP | ✅ LIVE | Caddy `forge.arif-fazil.com` |
 
 ## Human Interaction Contract
 

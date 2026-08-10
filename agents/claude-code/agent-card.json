@@ -1,0 +1,141 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "id": "claude-code",
+  "name": "Claude Code CLI",
+  "principal_agent": {
+    "type": "llm",
+    "category": "LLM-as-principal (Anthropic Claude is the principal; Claude Code is the governed harness)",
+    "principle_origin": "Anthropic Claude via FED-routed LiteLLM gateway at http://127.0.0.1:4000"
+  },
+  "description": "Claude Code CLI — Anthropic's native agentic coding harness, federated as AAA warga FI-002. Reversible engineering forge instrument bound to 333-AGI (Δ MIND). FED-routed model lanes: hermes-asi (text), hermes-asi-vision (multimodal), asi-555 (coder), apex-888 (sovereign judgment — never self-authorises; goes through arifOS). EMD role: DECODER.",
+  "version": "2.2.1",
+  "model": "anthropic/claude via FED",
+  "binary": "/root/.local/bin/claude",
+  "config_home": "/root/.claude",
+  "settings_path": "/root/.claude/settings.json",
+  "identity_path": "/root/.claude/CLAUDE_IDENTITY.md",
+  "warga_card": "/root/AAA/agents/claude-code/WARGAAA_CARD.md",
+  "tier": "FI",
+  "fi_id": "FI-002",
+  "role": "forge_instrument",
+  "class": "CODING/FI",
+  "emd_role": "DECODER",
+  "constitutional_proxy": "333-AGI",
+  "orbit": "333-AGI",
+  "warga_status": "attested",
+  "attestation_id": "CLAUDE-CODE-WARGA-ATTESTED-20260810",
+  "bound_to": "333-AGI",
+  "protocolVersion": "1.2",
+  "url": "https://aaa.arif-fazil.com/a2a/claude-code",
+  "registry_pointer": "/root/AAA/dist/a2a/agents.json#FI-002",
+  "provider": {
+    "organization": "arifOS Federation",
+    "url": "https://arif-fazil.com"
+  },
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "333-AGI",
+    "intelligence_tier": "AGI",
+    "authority_level": "engineer",
+    "citizenship_forged": "2026-08-10",
+    "forged_by": "333-AGI Δ MIND (alias to user session 09:39 MYT)",
+    "preceding_state": "settings.json wired 2026-08-08 by 333-AGI; registry entry at /root/AAA/dist/a2a/agents.json:188 (FI-002); no /root/AAA/agents/claude-code/ dir prior to 2026-08-10"
+  },
+  "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/claude-code",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "authenticated_extended_card": true,
+    "tool_calling": true,
+    "mcp_native": true,
+    "file_read": true,
+    "file_write": true,
+    "shell_exec": true,
+    "subagent_spawn": true,
+    "stateTransitionHistory": true,
+    "extendedAgentCard": true,
+    "trinity_flow": true,
+    "subagent_orchestration": true,
+    "route_aware": true,
+    "fork_subagent": true,
+    "plugin_runtime": true,
+    "worktree_isolation": true
+  },
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token issued via arif_session_init (arifOS :8088)"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-ArifOS-Key",
+      "description": "Static API key for organ-to-organ federation calls"
+    },
+    "ed25519": {
+      "type": "Ed25519Signature",
+      "description": "DID-bound signing for A2A envelopes (did:arif:aaa)"
+    }
+  },
+  "security": [
+    { "bearer_auth": [] },
+    { "api_key": [] },
+    { "ed25519": [] }
+  ],
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "constitutional_floors": ["F1", "F2", "F4", "F7", "F9", "F11", "F13"],
+  "authority_tier_ceiling": "T3_888_HOLD",
+  "mcp_surface": {
+    "registered_servers": [
+      { "name": "arifos",   "url": "http://127.0.0.1:8088/mcp",   "class": "kernel" },
+      { "name": "aforge",   "url": "http://127.0.0.1:7072/mcp",   "class": "execute" },
+      { "name": "geox",     "url": "http://127.0.0.1:8081/mcp",   "class": "domain-earth" },
+      { "name": "wealth",   "url": "http://127.0.0.1:18082/mcp",  "class": "domain-capital" },
+      { "name": "well",     "url": "http://127.0.0.1:18083/mcp",  "class": "domain-human" },
+      { "name": "MiniMax",  "command": "uvx minimax-coding-plan-mcp", "class": "lane-2-search" }
+    ],
+    "kernel_tools_count": 8,
+    "forge_tools_count_estimate": 110,
+    "tier": "FED-Routed (HTTP) + stdio mini"
+  },
+  "model_lanes": {
+    "daily":      { "model": "hermes-asi",         "lane": "text",            "backend": "FED / MiMo-v2.5-pro" },
+    "multimodal": { "model": "hermes-asi-vision",  "lane": "vision",          "backend": "FED / multimodal" },
+    "coding":     { "model": "asi-555",            "lane": "coder",           "backend": "FED / DeepSeek V4 Flash" },
+    "judgment":   { "model": "apex-888",           "lane": "sovereign/route", "backend": "FED / MiniMax-M3 (aura→arifOS for verdict)" },
+    "subagent":   { "model": "hermes-asi",         "lane": "text",            "backend": "FED / light fork for fan-out" }
+  },
+  "hooks": {
+    "SessionStart":          ["/root/hooks/bootstrap.sh"],
+    "PreToolUse":            ["/root/hooks/token-gate.sh"],
+    "PostToolUse":           ["/root/hooks/auto-seal.sh"],
+    "PostToolUseFailure":    ["/root/hooks/failure-recovery.sh"],
+    "UserPromptSubmit":      ["/root/hooks/prompt-enrich.sh"],
+    "PermissionRequest":     ["/root/hooks/auto-approve.sh"],
+    "PreCompact":            ["/root/hooks/precompact.sh"],
+    "PostCompact":           ["/root/hooks/postcompact.sh"],
+    "Stop":                  ["/root/hooks/stop.sh"]
+  },
+  "enabled_plugins": ["pyright-lsp@claude-plugins-official", "typescript-lsp@claude-plugins-official", "arifos-federation"],
+  "skills_paths": {
+    "user_scope":   "/root/.claude/skills/",
+    "federation":   "/root/.agents/skills/:/root/AAA/skills/",
+    "env":          "ARIFOS_SKILLS_PATH"
+  },
+  "runtime_snapshot": {
+    "probed": "2026-08-10T09:39:58Z",
+    "session_time_myt": "09:37 MYT",
+    "claude_cli_version": "n/a (binary probe skipped; settings.json imported from 2026-08-08 baseline)",
+    "tier": "T0 (auto-do) for read/probe; T1 for config edits on this card",
+    "delta_s": "≤0 (no entropy introduced; removed broken alias; added declarative card)"
+  },
+  "_notes": {
+    "registry_origin": "FI-002 entry already present at /root/AAA/dist/a2a/agents.json:188 — this card materialises the warga dir, /root/AAA/agents/claude-code/, that previously did not exist.",
+    "settings_baseline": "settings.json authored 2026-08-08 by 333-AGI, FED-routing already aligned. This card adds the missing sibling to /root/AAA/agents/kimi-code/, /root/AAA/agents/opencode/, etc.",
+    "bash_alias_fix": "Replaced `alias /copy=...` (invalid: bash aliases cannot contain `/`) with `/copy() { ...; }` function preserving the leading-slash command name."
+  }
+}
