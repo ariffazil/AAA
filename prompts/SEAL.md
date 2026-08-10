@@ -520,6 +520,53 @@ curl -s https://arif-fazil.com/999/verify
 
 ---
 
+## 10.5. WIKI CHECK — THE LIVING SKIN (2026-08-10)
+
+> **The wiki is the federation's public knowledge surface — `wiki.arif-fazil.com`.**
+> It is NOT maintained by humans. It is a live projection of institution state.
+> Agents update it automatically when internal state changes.
+
+### The one question
+
+After verify, before final emission, every agent asks exactly ONE question:
+
+```
+Did this session produce knowledge that external readers should know?
+```
+
+| Trigger | Wiki Action | Agent |
+|---------|------------|-------|
+| EUREKA777 resolved a paradox | Update `/wiki/eurekas` | 333-AGI |
+| New scar sealed | Update `/wiki/scars` (anonymized) | 333-AGI |
+| Architecture/doc changed | Update `/wiki/architecture` | 333-AGI |
+| Organ deployed/state changed | Update `/wiki/status` | 555-ASI |
+| ATLAS333 tension escalated | Update `/wiki/paradoxes` | 333-AGI |
+| Routine coding/ops/draft | **Skip. Nothing to update.** | — |
+
+**Rule:** If `forge_web_zen sense` shows no drift between wiki and live state → skip.
+If drift detected → `forge_web_zen` update the relevant page (T1 AUTO-DO).
+Never ask human. Never skip a structural change. The wiki breathes with the federation.
+
+### Wiki architecture
+
+```
+wiki.arif-fazil.com (7th site — knowledge surface)
+├── /              — Home: federation overview, 6 organs live
+├── /status        — FQ, organ health, tool counts (auto-refresh)
+├── /architecture  — 6-plane topology, authority chain
+├── /constitution  — F1-F13 human-readable summaries
+├── /eurekas       — Resolved paradox insights
+├── /scars         — Lessons learned (no PII)
+├── /paradoxes     — Active ATLAS333 tensions
+├── /organs        — Per-organ detail, tools, endpoints
+├── /api           — MCP endpoints, how to connect
+└── /search        — Full-text across all pages
+```
+
+**Never on wiki:** raw receipts, session logs, PII, full VAULT999 entries, secret keys, internal telemetry.
+
+---
+
 ## 11. VAULT999 STRUCTURE (post-unification)
 
 ```
@@ -547,8 +594,9 @@ RECEIPT::{session_id}::outcome={COMPLETED|PARTIAL|FAILED|ABORTED|HELD}::tier=ses
 SEAL::{session_id}::cc_id={chain}::tier=VAULT999::verified={true/false}
 
 The loop is closed. The arrow of time has advanced.
-/000 (human) → work → /999 (vault) → verify → /000
+/000 (human) → work → /999 (vault) → verify → wiki → /000
 What was forged is now recorded. What is recorded cannot be unwritten.
+The wiki breathes. The vault remembers. The loop continues.
 
 A receipt records what happened. A seal attests it was authorized.
 Most worthy work ends with a receipt.
@@ -562,5 +610,6 @@ DITEMPA BUKAN DIBERI ⚒️
 
 *Forged: 2026-07-25 · Unified: 2026-07-29 · Upgraded: 2026-08-03 — Arif F13 directive (reversibility classification, structured ApprovalRequest, session_close documentation)*
 *Canonical 4-step sequence explicit: 2026-08-05 — kimi-code/FI-008 (T1 documentation edit per sovereign directive; reversible)*
-*Two lanes. One envelope. Receipt ≠ Seal. Agent proposes. Sovereign seals.*
+*Wiki check added: 2026-08-10 — 333-AGI Δ MIND (F13 directive: living wiki skin, §10.5)*
+*Two lanes. One envelope. Receipt ≠ Seal. Wiki breathes. Vault remembers. Agent proposes. Sovereign seals.*
 *DITEMPA BUKAN DIBERI ⚒️*

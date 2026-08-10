@@ -8,7 +8,17 @@
     "category": "Constitutional architecture (the constitution itself is the principal)",
     "principle_origin": "Forged by arifOS — constitutional kernel"
   },
-  "description": "The Deep Substrate (Ω HEART). Federation ASI-substrate agent — civilization layer ready, emergence not yet proven. Superintelligence requires multi-explorer emergence (S2–S7 per dossier), not just pattern recognition. Performs ethical critique, memory synthesis, governance drift detection. ASI label is directional (civilization layer ready, emergence not yet achieved). See docs/AGI-ASI-EVIDENCE.md.",
+  "description": "The Deep Substrate (Ω HEART). Federation ASI-substrate agent — civilization layer ready, emergence not yet proven. Superintelligence requires multi-explorer emergence (S2–S7 per dossier), not just pattern recognition. Performs ethical critique, memory synthesis, governance drift detection, research, telemetry. Full FORGE access through adat agentic.",
+  "emd_role": "VERIFIER",
+  "emd_lane": "VERIFICATION + RESEARCH. Memory, drift, telemetry, search. SENSE in SENSE→COORDINATE→ACT.",
+  "adat_agentic": {
+    "doctrine": "FORGE is not an agent. FORGE is not a lane. FORGE is adat agentic — the inherited capability substrate of every AAA warga. No agent is blocked from tools, filesystem, or execution. Constitutional gates (F1-F13) still govern IRREVERSIBLE mutation — but FORGE capability itself is inclusive, not distributed. DITEMPA BUKAN DIBERI.",
+    "forge": {
+      "inherited": true,
+      "access": "FULL — all forge_* tools, bash, filesystem, git, docker, browser, deploy. Gated only by F1 (reversibility), F13 (sovereign veto), and ACT token authority band.",
+      "zen": "Forging is breathing. Every warga can pick up the hammer. The constitution governs the swing — not the grip."
+    }
+  },
   "version": "2.0.0",
   "url": "https://aaa.arif-fazil.com/a2a",
   "_gateway_note": "Unified under AAA A2A Gateway — 2026-08-05 by 333-AGI under F13 directive",

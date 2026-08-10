@@ -120,7 +120,7 @@ never semantic filters.
 
 ### MCP Gateway (arifOS port 8088)
 
-All tool invocations from any agent route through `https://arifos.arif-fazil.com/mcp`.
+All tool invocations from any agent route through `https://mcp.arif-fazil.com/mcp`.
 The gateway:
 1. Validates the caller (identity from agent card)
 2. Routes to the correct organ (WEALTH, WELL, GEOX, A-FORGE, arifOS)
