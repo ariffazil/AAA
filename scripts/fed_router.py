@@ -1497,6 +1497,14 @@ def fed_report_latency(
     health_status = "LIVE" if status_code < 500 else "DEGRADED"
     if status_code == 429:
         health_status = "RATE_LIMITED"
+    # Q4 closure (scar c3c30ea0 + 8dc66fd4): cross-check providers table before
+    # marking route LIVE. Insolvency at the balance layer (confidence=0.0) must
+    # downgrade ALL routes of that provider, regardless of HTTP status of this
+    # individual model call. Without this, route_health stays LIVE 5+ days after
+    # balance has gone to -$0.13 — the half-fixed invariant observed 2026-08-10.
+    provider_balance = read_provider_balance(provider)
+    if provider_balance and provider_balance.get("balance_confidence", 1.0) == 0.0:
+        health_status = "DEAD"
     conn.execute(
         """INSERT INTO route_health (provider_name, model_id, status, last_checked)
            VALUES (?, ?, ?, ?)
