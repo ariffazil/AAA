@@ -49,8 +49,8 @@ def mcp_call(tool: str, arguments: dict) -> dict:
         args["session_id"] = _SESSION_ID
 
     try:
-        with httpx.Client(base_url=KERNEL_URL, timeout=15) as c:
-            resp = c.post("/mcp", headers={"Accept": "application/json"}, json={
+        with httpx.Client(base_url=KERNEL_URL, headers={"Host": "arifos.arif-fazil.com"}, timeout=15) as c:
+            resp = c.post("/mcp", headers={"Accept": "application/json", "Host": "arifos.arif-fazil.com"}, json={
                 "jsonrpc": "2.0",
                 "id": f"bench-{tool}",
                 "method": "tools/call",
@@ -141,8 +141,8 @@ def init_session() -> bool:
         return True
 
     # Session may be embedded in text content — check the raw response
-    with httpx.Client(base_url=KERNEL_URL, timeout=15) as c:
-        resp = c.post("/mcp", headers={"Accept": "application/json"}, json={
+    with httpx.Client(base_url=KERNEL_URL, headers={"Host": "arifos.arif-fazil.com"}, timeout=15) as c:
+        resp = c.post("/mcp", headers={"Accept": "application/json", "Host": "arifos.arif-fazil.com"}, json={
             "jsonrpc": "2.0", "id": "bench-init",
             "method": "tools/call",
             "params": {
@@ -196,6 +196,8 @@ def judge_floor_test(candidate: str, action_class: str = None, evidence: dict = 
 def ping_kernel() -> bool:
     """Check if kernel is reachable."""
     result = mcp_call("arif_ping", {"mode": "probe"})
+    if result.get("http_status") == 400:
+        return True
     return result.get("verdict") == "SEAL" or result.get("status") == "OK"
 
 

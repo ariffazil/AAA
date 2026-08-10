@@ -584,9 +584,13 @@ function mountFederationRoutes(app) {
     res.status(result.ok ? 200 : 404).json(result);
   });
 
-  // GET /federation/resource/:scheme/* — URL-encoded resource resolution
-  app.get('/federation/resource/:scheme/*', authMiddleware, async (req, res) => {
-    const uri = `${req.params.scheme}://${req.params[0] || ''}`;
+  // GET /federation/resource/:scheme/*splat — URL-encoded resource resolution
+  // (path-to-regexp v8 requires named splat; bare * silently fails at route
+  //  registration — observed 2026-08-10 flap-loop on AAA :3001 with all other
+  //  health green. Fix: name the splat and read req.params.splat instead of
+  //  the legacy req.params[0] array index.)
+  app.get('/federation/resource/:scheme/*splat', authMiddleware, async (req, res) => {
+    const uri = `${req.params.scheme}://${req.params.splat || ''}`;
     const result = await resolveResource(uri);
     res.status(result.ok ? 200 : 404).json(result);
   });
@@ -614,7 +618,7 @@ function mountFederationRoutes(app) {
       gateway: 'Federation Gateway v1.0.0 — 2026-07-10',
       endpoints: {
         'POST /federation/resource': 'Resolve cross-organ resource URI (wealth://, arifos://, well://)',
-        'GET /federation/resource/:scheme/*': 'URL-encoded resource resolution',
+        'GET /federation/resource/:scheme/*splat': 'URL-encoded resource resolution',
         'POST /federation/pipeline': 'Execute cross-organ pipeline [step1, step2, ...]',
         'GET /federation/status': 'Live census of all organs (tools, prompts, health)',
         'GET /federation/capabilities': 'This page',
