@@ -14,7 +14,7 @@
 | Agent ID | Organ | Card Path | Status |
 |----------|-------|-----------|--------|
 | 888-APEX | arifOS | `arifos.arif-fazil.com/.well-known/agent-card.json` | ✅ ACTIVE |
-| 777-forge | A-FORGE | `forge.arif-fazil.com/.well-known/agent-card.json` | ✅ ACTIVE |
+| 777-FORGE | A-FORGE | `forge.arif-fazil.com/.well-known/agent-card.json` | ✅ ACTIVE |
 | 333-AGI | AAA | `aaa.arif-fazil.com/agents/333-AGI/agent-card.json` | ✅ ACTIVE |
 | 555-ASI | AAA | `aaa.arif-fazil.com/agents/555-ASI/agent-card.json` | ✅ ACTIVE |
 | GEOX | GEOX | `geox.arif-fazil.com/.well-known/agent-card.json` | ✅ ACTIVE |

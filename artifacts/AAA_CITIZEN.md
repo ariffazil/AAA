@@ -24,7 +24,7 @@
 |---------|----------------------|-------------|------------|--------------------|---------------|-------|
 | hermes-asi | 8+ (with polymorphic) | Δ/Ω/ΦΙ mix | Routing + Interface + Relay | role-binding-polymorphic (core), closing-router-discipline, arifos-agent-landscape, telegram-mode-guards, arifos-health-probe, substrate-gate-telegram | ACTIVE (polymorphic) | Primary relay; load 555/333/ops as needed |
 | openclaw | 12 | Ψ (Forge) + Δ/Ω | Execution + Subagent Orchestration | openclaw-doctor-recipes, mcp-boot-failure-diagnosis, kanban-playbook, arif-federation-ops, subagent-spawn procedures | LEASED (gateway) | Has procedures/SUBAGENT_SPAWN.md |
-| 777-forge | 3 | ΦΙ + Ψ | Witness/Spawn | 777-spawn-witness, 777-preflight-validator, role-binding for forge | LEASED | Minimal; enhance for spawn |
+| 777-FORGE | 3 | ΦΙ + Ψ | Witness/Spawn | 777-spawn-witness, 777-preflight-validator, role-binding for forge | LEASED | Minimal; enhance for spawn |
 | antigravity | 8 | Δ | Analysis + Autonomy | arifos-agent-landscape, evidence-reasoning patterns | LEASED | L3-Autonomous |
 
 **CODING / FI (Forge Instruments - Grok-build exemplar)**

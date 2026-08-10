@@ -28,7 +28,7 @@
 |---------|-----------|------|
 | 333-AGI | `AAA/agents/333-AGI/` | Reasoner — multi-domain evidence synthesis |
 | 555-ASI | `AAA/agents/555-ASI/` | Memory keeper — institutional continuity |
-| 777-forge | `AAA/agents/777-forge/` | Executor — governed execution |
+| 777-FORGE | `AAA/agents/777-FORGE/` | Executor — governed execution |
 | 888-APEX | `AAA/agents/888-APEX/` | Judge — constitutional verdicts |
 
 ## AAA Edge Agents (7)
