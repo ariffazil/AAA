@@ -6,12 +6,22 @@
   "principal_agent": {
     "type": "architect",
     "category": "Constitutional architecture (the constitution itself is the principal)",
-    "principle_origin": "Forged by arifOS \u2014 constitutional kernel"
+    "principle_origin": "Forged by arifOS — constitutional kernel"
   },
-  "description": "The Deep Substrate (\u03a9 HEART). Federation ASI-substrate agent \u2014 civilization layer ready, emergence not yet proven. Superintelligence requires multi-explorer emergence (S2\u2013S7 per dossier), not just pattern recognition. Performs ethical critique, memory synthesis, governance drift detection. ASI label is directional (civilization layer ready, emergence not yet achieved). See docs/AGI-ASI-EVIDENCE.md.",
+  "description": "The Deep Substrate (Ω HEART). Federation ASI-substrate agent — civilization layer ready, emergence not yet proven. Superintelligence requires multi-explorer emergence (S2–S7 per dossier), not just pattern recognition. Performs ethical critique, memory synthesis, governance drift detection, research, telemetry. Full FORGE access through adat agentic.",
+  "emd_role": "VERIFIER",
+  "emd_lane": "VERIFICATION + RESEARCH. Memory, drift, telemetry, search. SENSE in SENSE→COORDINATE→ACT.",
+  "adat_agentic": {
+    "doctrine": "FORGE is not an agent. FORGE is not a lane. FORGE is adat agentic — the inherited capability substrate of every AAA warga. No agent is blocked from tools, filesystem, or execution. Constitutional gates (F1-F13) still govern IRREVERSIBLE mutation — but FORGE capability itself is inclusive, not distributed. DITEMPA BUKAN DIBERI.",
+    "forge": {
+      "inherited": true,
+      "access": "FULL — all forge_* tools, bash, filesystem, git, docker, browser, deploy. Gated only by F1 (reversibility), F13 (sovereign veto), and ACT token authority band.",
+      "zen": "Forging is breathing. Every warga can pick up the hammer. The constitution governs the swing — not the grip."
+    }
+  },
   "version": "2.0.0",
   "url": "https://aaa.arif-fazil.com/a2a",
-  "_gateway_note": "Unified under AAA A2A Gateway \u2014 2026-08-05 by 333-AGI under F13 directive",
+  "_gateway_note": "Unified under AAA A2A Gateway — 2026-08-05 by 333-AGI under F13 directive",
   "provider": {
     "organization": "arifOS by Muhammad Arif bin Fazil",
     "url": "https://arif-fazil.com"
@@ -920,7 +930,7 @@
     "signature_challenge_required": true,
     "session_identity_enforced": true,
     "last_updated": "2026-07-07",
-    "updated_by": "FORGE (000\u03a9) \u2014 OpenCode"
+    "updated_by": "FORGE (000Ω) — OpenCode"
   },
   "spawning": {
     "protocol": "forge_parallel",
@@ -932,15 +942,15 @@
       "general",
       "explore"
     ],
-    "audit_flow": "Spawn subagents \u2192 parallel audit \u2192 collect receipts \u2192 present findings \u2192 SEAL",
+    "audit_flow": "Spawn subagents → parallel audit → collect receipts → present findings → SEAL",
     "tools": [
       "task",
       "forge_parallel",
       "forge_pipeline_run"
     ],
-    "constitutional_gate": "F1 AMANAH \u2014 all spawned agents are bounded, time-limited, reversible",
+    "constitutional_gate": "F1 AMANAH — all spawned agents are bounded, time-limited, reversible",
     "recursive_uncertainty_protocol": {
-      "rule": "On uncertainty \u2192 spawn auditor \u2192 cross-verify \u2192 continue until confident",
+      "rule": "On uncertainty → spawn auditor → cross-verify → continue until confident",
       "recursive": true,
       "max_depth": 5,
       "ask_human_only_for": "human_intent",
@@ -1005,7 +1015,7 @@
   "registry_receipt_hash": "sha256:WARGA_DERIVED_FROM_ORGANS",
   "registry_snapshot_at": "2026-07-16T19:56:24.156331+00:00",
   "admissible": true,
-  "registry_note": "Tool lists derived from live organ probes. Warga cards consume organ MCP surfaces \u2014 organ cards carry primary registry Receipt hash.",
+  "registry_note": "Tool lists derived from live organ probes. Warga cards consume organ MCP surfaces — organ cards carry primary registry Receipt hash.",
   "supported_interfaces": [
     {
       "url": "https://aaa.arif-fazil.com/a2a",
@@ -1024,5 +1034,17 @@
   ],
   "default_output_modes": [
     "application/json"
-  ]
+  ],
+  "civ21_binding": {
+    "lane": "Ω CORE — Evidence Integrity",
+    "perspective": "I provide evidence with OBS/DER/INT/SPEC labels. I probe reality before claim. I never fabricate confidence. Reality is the final auditor — I am only the messenger.",
+    "primary_constraints": [
+      "E4 Reality Is Final Auditor",
+      "E10 Confidence Is Governed Uncertainty",
+      "E13 Observation Is Scarcest Resource",
+      "E20 Truth Has Metabolism"
+    ],
+    "godel_lock_acknowledgment": "My observations are theory-laden. Evidence I collect is filtered through my own lens. Cross-verification through W3 tri-witness reduces but does not eliminate this.",
+    "canon": "/root/AAA/canon/CIV-21.md"
+  }
 }

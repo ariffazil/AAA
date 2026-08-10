@@ -1,0 +1,41 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/2026/server.json",
+  "id": "ext.serena",
+  "name": "serena-federation-extension",
+  "description": "Serena MCP \u2014 IDE-grade code navigation via LSP. DISABLED: stdio wrapper unstable post sh\u2192bash fix. Will retry on next harness sweep.",
+  "version": "v2026.08.10",
+  "author": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+  "category": "meta-utility",
+  "tags": [
+    "ide",
+    "lsp",
+    "serena",
+    "disabled"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "sh -lc exec /root/.claude/mcp-launchers/serena.sh"
+  },
+  "auth": {
+    "type": "none"
+  },
+  "constitutional_tier": "F2_TRUTH",
+  "tools_count": 0,
+  "tools": [],
+  "status": "DISABLED:transient:stdio-unstable",
+  "status_reason": "stdio wrapper crashed on sh\u2192bash transition. Re-attempt on next harness sweep (target 2026-08-12).",
+  "harness_visibility": [
+    "OPENCODE",
+    "COPILOT"
+  ],
+  "protocol_versions_supported": [
+    "2025-06-18"
+  ],
+  "mrtr_capable": false,
+  "subscriptions": [],
+  "cache_scope": "private",
+  "opencode_enabled": false,
+  "opencode_source_path": "/root/.config/opencode/opencode.json",
+  "last_reconciled": "2026-08-10T10:30:00.000000+00:00",
+  "_disabled_reason": "transient:stdio-unstable-post-sh-to-bash"
+}

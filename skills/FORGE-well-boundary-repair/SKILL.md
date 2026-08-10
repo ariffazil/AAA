@@ -4,6 +4,8 @@ description: 'Repair WELL organ boundary violations — fix substrate readiness 
   biometric staleness, and dignity floor gaps. Engineering actuator for WELL organ
   health restoration. F1 AMANAH: reversible fixes only.'
 owner: A-FORGE
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 # FORGE-well-boundary-repair
 

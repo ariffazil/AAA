@@ -36,6 +36,36 @@ from typing import Optional
 
 from fastmcp import FastMCP
 
+# ── JIT Intent Retrieval (P1.5) ────────────────────────────────────
+# Lazily import intent_retriever to avoid loading sentence-transformers at boot.
+# Only loaded when a task prompt triggers JIT context injection.
+_intent_retriever = None
+
+
+def _get_intent_retriever():
+    global _intent_retriever
+    if _intent_retriever is None:
+        try:
+            from intent_retriever import build_jit_context as _build
+
+            _intent_retriever = _build
+        except ImportError:
+            _intent_retriever = False  # Sentinel: failed to load
+    return _intent_retriever if _intent_retriever is not False else None
+
+
+# ── A2A Trace Propagation (P1.7) ────────────────────────────────────
+try:
+    from trace_propagation import make_trace_headers
+
+    _trace_enabled = True
+except ImportError:
+    _trace_enabled = False
+
+    def make_trace_headers(*args, **kwargs):
+        return {}
+
+
 # ── Config ───────────────────────────────────────────────────────────────
 FED_STATE_DB = Path("/root/.local/share/arifos/token_bank.db")
 FED_PORT = 7074
@@ -221,36 +251,50 @@ def log_spend(provider_id: str, model_id: str, tokens_in: int, tokens_out: int, 
 # FLAG only — ADVISORY_ONLY ceiling preserved, never hard-blocks (F1).
 
 EMD_MODEL_CLASS = {
-    # SENSE-opt (Encoder): wide-context ingestion, multimodal input
-    "MiniMax-M3":      {"lane": "sense",  "vision_in": True,  "audio_in": False},
-    "qwen3.8-max":     {"lane": "sense",  "vision_in": True,  "audio_in": False},
-    "mimo-v2.5":       {"lane": "sense",  "vision_in": True,  "audio_in": True},
-    "mimo-v2.5-pro":   {"lane": "sense",  "vision_in": True,  "audio_in": True},
-    "qwen3.6-flash":   {"lane": "sense",  "vision_in": True,  "audio_in": False},
-    # ACT-opt (Decoder): deep autoregressive, long-output stability
-    "deepseek-v4-pro":   {"lane": "act",  "vision_in": False, "audio_in": False},
-    "deepseek-v4-flash": {"lane": "act",  "vision_in": False, "audio_in": False},
-    # Generation (memaksa struktur, ΔS<0 → ACT by definition)
-    "wan2.7-image":     {"lane": "act",   "vision_in": False, "audio_in": False, "image_out": True},
-    "wan2.7-image-pro": {"lane": "act",   "vision_in": False, "audio_in": False, "image_out": True},
-    "qwen-audio-3.0-tts-plus": {"lane": "act", "vision_in": False, "audio_in": False, "audio_out": True},
-    # NEUTRAL — no false flags
+    # ═══ ENCODE (E) — Context Compiler ═══
+    # Multimodal ingestion, long-context parsing, schema normalization.
+    # 1M+ token / multimodal compilers: repos, PDFs, UI/UX, video frames.
+    # Canonical: Arif #50177 (2026-08-10)
+    "gemini-3.1-pro":   {"lane": "encode",  "vision_in": True,  "audio_in": False, "notes": "multimodal deep context + Search grounding"},
+    "MiniMax-M3":       {"lane": "encode",  "vision_in": True,  "audio_in": False, "notes": "5.1B tok/mo fleet worker, repo scanning"},
+    "qwen-vl-max":      {"lane": "encode",  "vision_in": True,  "audio_in": False, "notes": "visual document ingestion"},
+    "qwen3.6-flash":    {"lane": "encode",  "vision_in": True,  "audio_in": False, "notes": "fast multimodal ingestion"},
+    # ═══ METABOLIZE (M) — Primary Reasoning Engine ═══
+    # Epistemic truth validation (F2), logic verification, code synthesis.
+    # Precision logic + autonomous SWE + multi-day coding loops.
+    # Canonical: Arif #50177 (2026-08-10)
+    "deepseek-v4-pro":   {"lane": "metabolize",  "vision_in": False, "audio_in": False, "notes": "algorithmic surgeon — math, strict logic, unit-testable code"},
+    "qwen3.8-max":      {"lane": "metabolize",  "vision_in": True,  "audio_in": False, "notes": "system architect — multi-file AST, GitHub PR, tool orchestration"},
+    "kimi-k3":          {"lane": "metabolize",  "vision_in": False, "audio_in": False, "notes": "autonomous coding loops + reasoning"},
+    "deepseek-v4-flash": {"lane": "metabolize",  "vision_in": False, "audio_in": False, "notes": "fast reasoning fallback"},
+    # ═══ DECODE (D) — Action & Generation ═══
+    # High-throughput tool calls, fast sub-agent execution, media synthesis.
+    # Sub-100ms action + media output: JSON, web grounding, ASR/TTS, gen.
+    # Canonical: Arif #50177 (2026-08-10)
+    "gemini-3.5-flash-lite": {"lane": "decode",  "vision_in": False, "audio_in": False, "notes": "sub-agent tool calling in active loops"},
+    "mimo-v2.5":        {"lane": "decode",  "vision_in": True,  "audio_in": True,  "notes": "voice + off-peak (ASR/TTS, 20% discount)"},
+    "mimo-v2.5-pro":    {"lane": "decode",  "vision_in": True,  "audio_in": True,  "notes": "enhanced voice + long-context decode"},
+    "opencode-go":      {"lane": "decode",  "vision_in": False, "audio_in": False, "notes": "fast tool execution"},
+    # Generation — media synthesis (ΔS<0 → decode by definition)
+    "wan2.7-image":     {"lane": "decode",  "vision_in": False, "audio_in": False, "image_out": True},
+    "wan2.7-image-pro": {"lane": "decode",  "vision_in": False, "audio_in": False, "image_out": True},
+    "qwen-audio-3.0-tts-plus": {"lane": "decode", "vision_in": False, "audio_in": False, "audio_out": True},
+    # ═══ NEUTRAL — no false flags ═══
     "glm-5.2":         {"lane": "neutral", "vision_in": False, "audio_in": False},
     "qwen3.7-plus":    {"lane": "neutral", "vision_in": False, "audio_in": False},
     "kimi-k2.7-code":  {"lane": "neutral", "vision_in": False, "audio_in": False},
     "flame-free":      {"lane": "neutral", "vision_in": False, "audio_in": False},
 }
-
 _NEUTRAL_CAP = {"lane": "neutral", "vision_in": False, "audio_in": False}
 
 AGENT_DEFAULT_OPERATION = {
-    "openclaw": "sense",       # mata/telinga
-    "asi-555":  "sense",       # research+vision lane
-    "hermes":   "metabolize",  # koordinat
-    "agi-333":  "metabolize",
+    "openclaw": "sense",  # mata/telinga
+    "asi-555": "sense",  # research+vision lane
+    "hermes": "metabolize",  # koordinat
+    "agi-333": "metabolize",
     "apex-888": "metabolize",  # adjudikatif
-    "opencode": "act",         # tangan
-    "kimi":     "act",
+    "opencode": "act",  # tangan
+    "kimi": "act",
 }
 
 
@@ -306,6 +350,155 @@ def _emd_check(agent_id: str, operation: str, model_id: str, modality: str) -> d
         "reasons": reasons,
         "suggested": sorted(set(suggested))[:3],
     }
+
+
+# ═══ CAPABILITY SIGNATURE ROUTING — Fasa 1 (2026-08-10, F13 directive) ═══
+# Transition FED from static model routing to capability-based routing.
+# Agents request a CAPABILITY, not a model name. FED resolves to model+provider cascade.
+# Zen: "Decouple task from provider. Never hardcode model names. Use capability aliases."
+#
+# Each capability signature maps to a cascade of [model → provider_priority].
+# Fallback arrays trigger in <80ms on 429/5xx — model-level cascading handles failover.
+# The existing MODEL_ROUTES table resolves each model to provider cascades.
+
+CAPABILITY_SIGNATURES = {
+    "fed-reasoning-heavy": {
+        "description": "Heavy reasoning, coding, planning, constitutional judgment",
+        "models": ["deepseek-v4-pro", "qwen3.8-max", "MiniMax-M3"],
+        "constitutional_tier": 333,
+        "modality": "text",
+    },
+    "fed-multimodal-vision": {
+        "description": "Image/video analysis, OCR, chart reading, screenshot inspection",
+        "models": ["qwen-vl-max", "mimo-v2.5", "MiniMax-M3"],
+        "constitutional_tier": 555,
+        "modality": "vision",
+    },
+    "fed-long-context": {
+        "description": "Long documents, large context windows, multi-chunk processing",
+        "models": ["MiniMax-M3", "mimo-v2.5-pro", "qwen3.8-max"],
+        "constitutional_tier": 333,
+        "modality": "text",
+    },
+    "fed-agent-subagent": {
+        "description": "Subagent spawning, multi-step orchestration, DAG execution",
+        "models": ["deepseek-v4-flash", "qwen3.6-flash", "mimo-v2.5"],
+        "constitutional_tier": 333,
+        "modality": "text",
+    },
+    "fed-realtime-voice": {
+        "description": "Text-to-speech, speech-to-text, real-time audio",
+        "models": ["mimo-v2.5-tts", "mimo-v2.5-asr"],
+        "constitutional_tier": 333,
+        "modality": "audio",
+    },
+    # ── Latent-Aware Routing (forged 2026-08-10 by 333-AGI, Lane B) ──
+    # Mirrors /root/AAA/federation/fed_signatures.yaml. The active
+    # routing logic lives in /root/AAA/federation/fed_router_v2.py.
+    "fed-image-generation": {
+        "description": (
+            "Diffusion-based image synthesis (DiT/SDXL/Wan2.7). "
+            "Renderer / Executor role. Iterative denoising on "
+            "continuous spatial latents. Fails structurally."
+        ),
+        "models": [
+            "bailian-token-plan/wan2.7-image-pro",
+            "bailian-token-plan/wan2.7-image",
+            "qwen-token-plan-individual/wan2.7-image-pro",
+        ],
+        "constitutional_tier": 555,
+        "modality": "pixel",
+    },
+    "fed-grounded-vision": {
+        "description": (
+            "Compact VLM with spatial grounding (bbox protocol). "
+            "Inspector / Evaluator role. Returns P_quality ∈ [0,1]."
+        ),
+        "models": [
+            "mulerouter/qwen-vl-max",
+            "bailian-token-plan/qwen-vl-max",
+            "flame/gemini-2.5-flash",
+        ],
+        "constitutional_tier": 555,
+        "modality": "vision",
+    },
+    "fed-inpainting": {
+        "description": (
+            "Targeted image repair via ControlNet / inpainting. "
+            "Triggered when fed-grounded-vision returns P_quality < 0.88 "
+            "with localized defect bboxes."
+        ),
+        "models": [
+            "comfyui/controlnet-inpaint",
+            "comfyui/sdxl-inpaint",
+        ],
+        "constitutional_tier": 555,
+        "modality": "pixel",
+    },
+    "fed-judge-deputy": {
+        "description": (
+            "Backup JUDGE channels for constitutional seats. Routes "
+            "glm-5.2 / qwen3.8-max through bailian / qwen-individual "
+            "when primary 4 seats fail. Resolves JUDGE_SEAT_UNAVAILABLE "
+            "cascades."
+        ),
+        "models": [
+            "bailian-token-plan/glm-5.2",
+            "bailian-token-plan/qwen3.8-max",
+            "qwen-token-plan-individual/glm-5.2",
+            "qwen-token-plan-individual/qwen3.8-max",
+        ],
+        "constitutional_tier": 666,
+        "modality": "text",
+    },
+    # ── LOCAL RUNTIME — Path A legitimate alternative (forged 2026-08-10) ──
+    # Replaces the prior "fed-uncensored-sovereign" shadow signature which
+    # violated F4 (parallel ledger), F11 (audit bypass), and F13 (no sovereign
+    # ack). Shadow infrastructure (/root/.shadow/, shadow_guard.py) was REMOVED
+    # in the same session. This signature achieves the same operational goal
+    # (local GPU execution with uncensored checkpoints) through the canonical
+    # ledger + content_classification field. No shadow files, no bypass.
+    "fed-local-uncensored": {
+        "description": (
+            "LOCAL RUNTIME: Uncensored local diffusion execution on "
+            "ComfyUI/SD-WebUI (:8188/:7860). Pony V6 / RealVisXL / FLUX "
+            "checkpoints permitted. SINGLE LEDGER — full audit via "
+            "arifflow_receipts.jsonl with content_classification field. "
+            "F4 + F11 compliant by design. Replaced fed-uncensored-sovereign "
+            "(shadow plane) per F13 directive 2026-08-10. Path A+ extensions: "
+            "LedgerViewFilter (operator ACL by content_class) + TelemetryRing "
+            "(TTL-bounded performance ring, sampled, promoted to canonical) — "
+            "addresses Dark Mirror concern via policy + bounded entropy, "
+            "not via shadow ledger."
+        ),
+        "models": [
+            "comfyui/pony-v6-xl",
+            "comfyui/realvisxl-v4",
+            "comfyui/flux-1-schnell",
+        ],
+        "constitutional_tier": 555,
+        "modality": "pixel",
+        "cost_band": "zero-api-cost",
+        "priority": "high_for_local_only_payloads",
+        "default_effort": "low",
+        "path_a_plus_extensions": [
+            "LedgerViewFilter (operator ACL by content_class)",
+            "TelemetryRing (TTL 300s, 1% sampling, canonical promotion)",
+        ],
+    },
+}
+
+
+def resolve_capability(capability: str) -> list[str]:
+    """Resolve a capability signature to its model cascade. Returns list of model IDs."""
+    if capability in CAPABILITY_SIGNATURES:
+        return CAPABILITY_SIGNATURES[capability]["models"]
+    return []
+
+
+def get_capability_meta(capability: str) -> dict | None:
+    """Return metadata for a capability signature."""
+    return CAPABILITY_SIGNATURES.get(capability)
 
 
 # ── Routing tables ───────────────────────────────────────────────────────
@@ -767,6 +960,7 @@ def fed_route_engine(
 
     Steps:
       0. EFFORT DIAL: if effort_level set, override model by effort tier
+      0.5 CAPABILITY: if model is a fed-* capability, resolve to multi-model cascade
       1. FILTER: remove DEAD providers
       2. HEALTH GATE: skip DEGRADED, demote RATE_LIMITED (LiteLLM cooldown)
       3. RANK: by priority class (direct > gateway > shadowed)
@@ -787,7 +981,34 @@ def fed_route_engine(
         # Constitutional tier still gates — effort can't override authority
         if constitutional_tier >= 666:
             model = "deepseek-v4-pro"  # Only constitutional models for judge/seal
-    routes = MODEL_ROUTES.get(model, MODEL_ROUTES.get("deepseek-v4-pro", []))
+
+    # ── Step 0.5: CAPABILITY SIGNATURE RESOLUTION ──────────────────
+    # "Decouple task from provider. Use capability aliases, not model names."
+    # If model is a fed-* capability signature, expand to multi-model cascade.
+    capability_meta = None
+    capability_models = []
+    if model.startswith("fed-"):
+        capability_models = resolve_capability(model)
+        capability_meta = get_capability_meta(model)
+        if not capability_models:
+            return [{"rank": 0, "error": f"Unknown capability signature: {model}"}]
+        # Use the capability's modality if not explicitly overridden
+        if modality == "text" and capability_meta:
+            modality = capability_meta.get("modality", "text")
+
+    # ── Resolve routes: single model or capability cascade ──────────
+    if capability_models:
+        # Capability cascade: collect routes from all models in the capability
+        all_routes = []
+        for cap_model in capability_models:
+            model_routes = MODEL_ROUTES.get(cap_model, [])
+            for route in model_routes:
+                route_with_model = dict(route)
+                route_with_model["_capability_model"] = cap_model
+                all_routes.append(route_with_model)
+        routes = all_routes
+    else:
+        routes = MODEL_ROUTES.get(model, MODEL_ROUTES.get("deepseek-v4-pro", []))
 
     if not routes:
         return [{"rank": 0, "error": f"No routes defined for model: {model}"}]
@@ -797,6 +1018,8 @@ def fed_route_engine(
 
     for route in routes:
         provider_id = route["provider"]
+        # If capability cascade, use the specific model from the cascade
+        route_model = route.get("_capability_model", model)
         bal = read_provider_balance(provider_id)
 
         # ── Step 1: FILTER dead providers ────────────────────────────
@@ -804,7 +1027,7 @@ def fed_route_engine(
             continue
 
         # ── Step 2: HEALTH GATE (Zen: LiteLLM cooldown pattern) ─────
-        health = read_route_health(provider_id, model)
+        health = read_route_health(provider_id, route_model)
         health_status = health["status"] if health else "LIVE"
         health_flag = None
 
@@ -825,7 +1048,7 @@ def fed_route_engine(
         priority = route["priority"]
         if modality == "vision" and provider_id == "mulerouter":
             priority -= 2  # Boost MuleRouter for vision (4 VL models)
-        if modality == "vision" and model in VISION_MODELS:
+        if modality == "vision" and route_model in VISION_MODELS:
             priority -= 1
         if health_flag == "RATE_LIMITED":
             priority += 8  # Heavy demotion — last resort
@@ -862,7 +1085,7 @@ def fed_route_engine(
                 # NEVER demote for unknown balance
 
         # ── Step 6: LATENCY GATE (passive) ───────────────────────────
-        lat = read_route_latency(provider_id, model)
+        lat = read_route_latency(provider_id, route_model)
         p50_ms = lat["p50_ms"] if lat else None
         p95_ms = lat["p95_ms"] if lat else None
         sample_count = lat["sample_count"] if lat else 0
@@ -886,14 +1109,14 @@ def fed_route_engine(
                     priority += 1
 
         # ── Step 8: COST SURFACE (Zen: LiteLLM model catalog) ────────
-        cost_per_1k = _estimate_cost_per_1k(provider_id, model)
+        cost_per_1k = _estimate_cost_per_1k(provider_id, route_model)
 
         ranked.append(
             {
                 "rank": 0,  # filled after sort
                 "priority": priority,
                 "provider": provider_id,
-                "model": model,
+                "model": route_model,
                 "router": route["router"],
                 "router_class": route["class"],
                 "balance_usd": balance,
@@ -978,7 +1201,13 @@ def fed_route(
 
     Args:
         task: Natural language description of the task
-        model: Target model (default: deepseek-v4-pro). Ignored if effort_level is set.
+        model: Target model (default: deepseek-v4-pro). Can also be a capability signature:
+            fed-reasoning-heavy  → [deepseek-v4-pro, qwen3.8-max, MiniMax-M3]
+            fed-multimodal-vision → [qwen-vl-max, mimo-v2.5, MiniMax-M3]
+            fed-long-context     → [MiniMax-M3, mimo-v2.5-pro, qwen3.8-max]
+            fed-agent-subagent   → [deepseek-v4-flash, qwen3.6-flash, mimo-v2.5]
+            fed-realtime-voice   → [mimo-v2.5-tts, mimo-v2.5-asr]
+            fed-local-uncensored → LOCAL RUNTIME: routes to ComfyUI :8188 with full audit
         modality: text, vision, video, audio, omni
         agent_id: Calling agent (opencode, hermes, asi-555, apex-888)
         constitutional_tier: 0=default, 333=primary, 555=research, 666=judge, 999=seal
@@ -994,6 +1223,10 @@ def fed_route(
         { routes: [...], meta: { query_time_ms, effort_applied, ... } }
     """
     t0 = time.time()
+
+    # Resolve capability signature for metadata
+    cap_meta = get_capability_meta(model) if model.startswith("fed-") else None
+    cap_models = resolve_capability(model) if model.startswith("fed-") else []
     routes = fed_route_engine(
         task=task,
         model=model,
@@ -1008,7 +1241,7 @@ def fed_route(
     if tokens_in_estimate or tokens_out_estimate:
         primary = routes[0] if routes else None
         if primary:
-            log_spend(primary["provider"], model, tokens_in_estimate, tokens_out_estimate, agent_id)
+            log_spend(primary["provider"], primary["model"], tokens_in_estimate, tokens_out_estimate, agent_id)
 
     meta = {
         "query_time_ms": elapsed,
@@ -1023,15 +1256,83 @@ def fed_route(
         meta["effort_applied"] = effort_level
         meta["effort_cost_multiplier"] = EFFORT_COST_MULTIPLIER.get(effort_level, 1.0)
         meta["reasoning_passes"] = EFFORT_REASONING_PASSES.get(effort_level, 0)
+    if model.startswith("fed-"):
+        meta["capability_signature"] = model
+        meta["capability_description"] = cap_meta.get("description", "") if cap_meta else ""
+        meta["capability_models"] = cap_models
 
     # EMD lane check — advisory flag, never blocks (F1/F4)
     resolved_model = routes[0]["model"] if routes else model
     emd = _emd_check(agent_id, operation, resolved_model, modality)
 
+    # ── JIT Intent Retrieval (P1.5) ────────────────────────────────
+    # Fire-and-forget: runs in background thread to avoid blocking routing.
+    # First call loads sentence-transformers (~7s), subsequent calls <10ms.
+    jit_context = None
+    if task and len(task) > 5:
+        import threading as _jt
+
+        def _run_jit():
+            nonlocal jit_context
+            build_jit = _get_intent_retriever()
+            if build_jit:
+                try:
+                    jit_context = build_jit(task)
+                except Exception:
+                    pass
+
+        _jt.Thread(target=_run_jit, daemon=True).start()
+
+    # ── A2A Trace Propagation (P1.7) ────────────────────────────────
+    trace_headers = make_trace_headers()
+
+    # ── Sidecar Auto-Ingest (P1.6) ─────────────────────────────────
+    # Emit execution span to arifFlow asynchronously (fire-and-forget).
+    # Self-attestation ban: the sidecar captures, not the agent.
+    import threading
+
+    def _ingest_span():
+        try:
+            import json, urllib.request, uuid
+
+            span = {
+                "trace_id": trace_headers.get("arif_trace_id", uuid.uuid4().hex[:32]),
+                "span_id": trace_headers.get("arif_span_id", uuid.uuid4().hex[:16]),
+                "agent_id": agent_id,
+                "session_id": "",
+                "step_type": "Execute",
+                "cost_ns": int(elapsed * 1_000_000),
+                "epistemic_label": "Observation",
+                "floor_verdict": "Pass",
+                "payload": {
+                    "operation": "fed_route",
+                    "model": model,
+                    "modality": modality,
+                    "routes_count": len(routes),
+                    "capability": model if model.startswith("fed-") else None,
+                    "captured_by": "sidecar-auto-ingest",
+                },
+                "witness_organs": ["fed"],
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+            }
+            req = urllib.request.Request(
+                "http://127.0.0.1:7073/ingest",
+                data=json.dumps(span).encode(),
+                headers={"Content-Type": "application/json"},
+                method="POST",
+            )
+            urllib.request.urlopen(req, timeout=2)
+        except Exception:
+            pass  # arifFlow may be down — span loss is acceptable for routing telemetry
+
+    threading.Thread(target=_ingest_span, daemon=True).start()
+
     return {
         "routes": routes,
         "meta": meta,
         "emd": emd,
+        "jit": jit_context,
+        "trace": trace_headers if _trace_enabled else None,
     }
 
 
@@ -1122,7 +1423,7 @@ def fed_health() -> dict:
     return {
         "status": "LIVE",
         "port": FED_PORT,
-        "version": "3.2.0-effort-dial",
+        "version": "3.3.0-capability-routing",
         "tables": [t["name"] for t in tables],
         "state_db": str(FED_STATE_DB),
     }
@@ -1228,9 +1529,11 @@ if __name__ == "__main__":
     import os
 
     os.environ["FASTMCP_PORT"] = str(FED_PORT)
-    print(f"🔀 FED Router v3.2 (Effort Dial) starting on :{FED_PORT}")
+    print(f"🔀 FED Router v3.3 (Capability Routing) starting on :{FED_PORT}")
     print(f"   State DB: {FED_STATE_DB}")
     print(f"   Invariants: state-isolation, constitutional-hard-gate, dual-track-bypass")
+    print(
+        f"   Capabilities: fed-reasoning-heavy, fed-multimodal-vision, fed-long-context, fed-agent-subagent, fed-realtime-voice"
+    )
     print(f"   Tools: fed_route, fed_status, fed_probe, fed_contrast, fed_health")
-    print(f"   New: effort_level (low/medium/high/ultra) — Thorsten Ball pattern")
     mcp.run(transport="streamable-http", host="127.0.0.1")

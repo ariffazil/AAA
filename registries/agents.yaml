@@ -91,7 +91,7 @@ agents:
   - aaa-gateway
   - hermes-asi
   - antigravity
-  - 777-forge
+  - 777-FORGE
   - arifos-kernel
   allowed_servers:
   - arifos-mcp
@@ -262,7 +262,7 @@ agents:
   - aaa-gateway
   - antigravity
   - claude-code
-  - 777-forge
+  - 777-FORGE
   - arifos-kernel
   - geox-witness
   - wealth-witness
@@ -359,7 +359,7 @@ agents:
   - hermes-asi
   - antigravity
   - claude-code
-  - 777-forge
+  - 777-FORGE
   - arifos-kernel
   - geox-witness
   - wealth-witness
@@ -595,7 +595,7 @@ agents:
 
     '
   host_binding: opencode
-  id: 777-forge
+  id: 777-FORGE
   intelligence_band: 777
   intelligence_tier: 777
   name: 777 FORGE 🔥🧠⚒️🌎💎
@@ -617,7 +617,7 @@ agents:
   witness_ledger: /root/VAULT999/witness/777-forge-spawns.jsonl
 - a2a_exposure: authenticated
   allowed_peers:
-  - 777-forge
+  - 777-FORGE
   - aaa-gateway
   - hermes-asi
   - claude-code

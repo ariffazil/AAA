@@ -1,0 +1,43 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/2026/server.json",
+  "id": "ext.hostinger-vps",
+  "name": "hostinger-vps-federation-extension",
+  "description": "Hostinger VPS MCP — managed-VPS primitives. 62 tools. Bypasses A-FORGE governance by design (VPS actuator, not federation).",
+  "version": "v2026.08.10",
+  "author": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+  "category": "dev-tool",
+  "tags": [
+    "vps",
+    "hostinger",
+    "infra"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "/root/.npm-global/bin/hostinger-vps-mcp --stdio"
+  },
+  "auth": {
+    "type": "env_scoped",
+    "env_keys": [
+      "HOSTINGER_API_TOKEN"
+    ]
+  },
+  "constitutional_tier": "F1_MUTATE",
+  "tools_count": 0,
+  "tools": [],
+  "status": "ONLINE",
+  "harness_visibility": [
+    "OPENCODE",
+    "COPILOT"
+  ],
+  "protocol_versions_supported": [
+    "2025-11-25"
+  ],
+  "mrtr_capable": false,
+  "subscriptions": [
+    "toolsListChanged"
+  ],
+  "cache_scope": "private",
+  "opencode_enabled": true,
+  "opencode_source_path": "/root/.config/opencode/opencode.json",
+  "last_reconciled": "2026-08-10T10:30:00.000000+00:00"
+}

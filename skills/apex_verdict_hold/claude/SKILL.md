@@ -49,6 +49,8 @@ floor_scope:
 - F9
 - F11
 - F13
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # arifOS ACT — Constitutional Reflex

@@ -17,6 +17,8 @@ trigger_when:
   - before_cross_agent_handoff
   - after_skill_change_in_any_harness
 tags: [meta, rsi, federation, mesh, cross-agent, recursive-improvement, sync, drift]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # RSI — Federation Mesh (Cross-Agent Recursive Improvement)

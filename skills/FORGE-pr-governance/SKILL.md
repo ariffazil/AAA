@@ -55,6 +55,8 @@ canonical_siblings:
 - github-pr-review        # checklist (T2)
 - github-ci-diagnose      # if CI red blocks signoff
 - secret-safety-scan      # if PR touches secrets
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # PR Review Governance

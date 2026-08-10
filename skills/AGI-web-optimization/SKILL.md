@@ -8,6 +8,8 @@ risk_tier: low
 floor_scope: [F2, F4]
 autonomy_tier: T1
 tags: [web, optimization, seo, rag, llm]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # SKILL: Agentic Web Optimization

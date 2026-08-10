@@ -58,6 +58,8 @@ canonical_siblings:
 - github-pr-review        # gate reviewer on PR-branch CI failure
 - secret-safety-scan      # if root cause is secret-gate
 - parallel-authority-detection  # if root cause is cross-repo break
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # GitHub CI Diagnose

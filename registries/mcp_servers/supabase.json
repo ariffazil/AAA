@@ -1,0 +1,40 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/2026/server.json",
+  "id": "ext.supabase",
+  "name": "supabase-federation-extension",
+  "description": "Supabase MCP — Postgres + Auth + Storage via @supabase/mcp-server-supabase. Project ref pinned in opencode.json.",
+  "version": "v2026.08.10",
+  "author": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+  "category": "data-store",
+  "tags": [
+    "database",
+    "supabase",
+    "sql"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx @supabase/mcp-server-supabase --project-ref=utbmmjmbolmuahwixjqc"
+  },
+  "auth": {
+    "type": "none"
+  },
+  "constitutional_tier": "F1_MUTATE",
+  "tools_count": 0,
+  "tools": [],
+  "status": "ONLINE",
+  "harness_visibility": [
+    "OPENCODE",
+    "COPILOT"
+  ],
+  "protocol_versions_supported": [
+    "2025-11-25"
+  ],
+  "mrtr_capable": false,
+  "subscriptions": [
+    "toolsListChanged"
+  ],
+  "cache_scope": "private",
+  "opencode_enabled": true,
+  "opencode_source_path": "/root/.config/opencode/opencode.json",
+  "last_reconciled": "2026-08-10T10:30:00.000000+00:00"
+}

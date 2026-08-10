@@ -12,6 +12,8 @@ version: 1.0.0
 tags: [handoff, a2a, protocol, delegation, F1, F11]
 floor_scope: [F01, F04, F11]
 autonomy_tier: T1
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # FORGE-cross-agent-handoff

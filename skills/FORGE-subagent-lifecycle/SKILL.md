@@ -1,3 +1,9 @@
+---
+capability_tier: fed-agent-subagent
+name: FORGE-subagent-lifecycle
+description: "Unified sub-agent lifecycle manager — 9-stage orchestration pattern from spawn to retire with constitutional gates"
+ecology_state: WARM
+---
 # FORGE-subagent-lifecycle — Unified Sub-Agent Lifecycle Manager
 
 > **Forged:** 2026-08-07 by 333-AGI Δ MIND under F13 SOVEREIGN directive

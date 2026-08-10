@@ -7,9 +7,14 @@
 # AAA MCP FRAME — Federation Resource & Agent Mapping Engine
 
 > **DITEMPA BUKAN DIBERI** — Forged 2026-08-04 by 333-AGI Δ MIND
+> **Updated:** 2026-08-10 — G9/G10 closed, ADR-005/006/007 ratified, 26-server registry live
 > **Owner:** Muhammad Arif bin Fazil (F13 SOVEREIGN)
 > **Domain:** AAA Control Plane — capability-to-agent mapping
 > **NOT:** FED (provider routing, LiteLLM :4000) · FLAME (free inference lane, :18901) · ATLAS333 (cognitive geometry)
+>
+> **Registry:** `/root/AAA/registries/mcp_servers/INDEX.json` — 26 servers, 2026-07-28 stateless fields
+> **Sync:** `/root/AAA/registries/mcp_servers/sync.py` — read-only diff emitter
+> **Drift:** `/root/AAA/registries/mcp_servers/drift_audit.sh` — one-shot config vs live probe
 
 ---
 
@@ -66,7 +71,7 @@ Missing:     arifFLOW MCP (should have it — the metabolism nerve owner)
 
 | Agent | MCP Count | FED Model Alias | Status |
 |-------|----------|-----------------|--------|
-| OpenCode | 23 | `opencode` | Primary coder (Δ MIND) |
+| OpenCode | 25 | `opencode` | Primary coder (Δ MIND) — 21 extensions wired (5 disabled) |
 | Kimi Code | 7 | `opencode` | FI-008 warga |
 | Codex | 9 | `opencode` | GPT-5.6 solver |
 | Copilot CLI | 29 ⚠️ | `opencode` | Too many MCPs — context warning |
@@ -113,6 +118,7 @@ RESEARCH & SEARCH
   exa                     ·      ·      ·      ·      ·      🟢     ·      ·
   fetch                   ·      ·      ·      ·      ·      🟢     ·      ·
   deep-research           🟢     ·      ·      ·      ·      ·      ·      ·
+  free-search             ·      ·      🟢     ·      ·      ·      ·      ·
 
 DATA & STORAGE
   supabase                ·      ·      🟢     ·      ·      🟢     ·      ·
@@ -122,6 +128,7 @@ DATA & STORAGE
   graphiti                ·      ·      🟢     ·      ·      🟢     ·      ·
   megamemory              ·      ·      🟢     ·      ·      ·      ·      ·
   memory                  ·      🟢     ·      ·      ·      🟢     ·      ·
+  codebase-memory         ·      ·      🟢     ·      ·      ·      ·      ·
 
 DEV TOOLS
   github                  🟢     ·      ·      ·      🟢     🟢     ·      ·
@@ -141,7 +148,7 @@ META & UTILITY
   hound                   🟢     ·      ·      ·      ·      ·      ·      ·
   mage                    🟢     ·      ·      ·      ·      ·      ·      ·
 ────────────────────────────────────────────────────────────────────────────
-TOTAL:                    13     10     23      7      9     29      6      0
+TOTAL:                    13     10     25      7      9     29      6      0
 ```
 
 ---
@@ -167,6 +174,8 @@ TOTAL:                    13     10     23      7      9     29      6      0
 | G6 | **Aider has 0 MCPs** | LOW | By design — lightweight, provider-only. Acceptable. |
 | G7 | **OpenRouter still wired** in Hermes + OpenCode | LOW | Remove — FED replaces it completely |
 | G8 | **Claude Code not on FED** | ARCHITECTURAL | Anthropic protocol limitation — cannot route through LiteLLM |
+| G9 | **MCP registry incomplete** — 5 organs tracked, 21 extension servers missing | HIGH | ✅ CLOSED 2026-08-10 — INDEX.json extended to 26 servers, sync.py diff emitter live, per-server files created |
+| G10 | **Stateless MCP readiness** — registry not tracking 2026-07-28 protocol changes | MEDIUM | ✅ CLOSED 2026-08-10 — all 26 entries carry protocol_versions_supported, mrtr_capable, subscriptions, cache_scope |
 
 ---
 
@@ -192,12 +201,39 @@ TOTAL:                    13     10     23      7      9     29      6      0
 **Rationale:** OpenClaw is the router/orchestrator. arifFLOW is the metabolism nerve. The nerve owner must have the nerve tool.
 **Date:** 2026-08-04
 
+### ADR-005: MCP registry is INDEX.json + per-server files + sync.py (read-only)
+**Decision:** The AAA MCP registry lives at `/root/AAA/registries/mcp_servers/` with INDEX.json as the canonical map and one JSON file per server following the 2026 MCP server schema. A `sync.py` script emits diffs between harness configs (opencode.json, etc.) and the registry — it never writes directly.
+**Rationale:** E6 (functions before entities), E18 (every compression creates a blind spot), and the AAA skill-catalog / harness-view boundary require: (a) no new registry entity, (b) no sync liability from mirroring, (c) drift detection as a function on existing tools (forge_mcp_lifeguard), not a new tool. sync.py is a read-only diff observer. The per-server files extend an existing pattern (5 organs already had files). ΔS ≤ 0 by construction.
+**Date:** 2026-08-10
+**Protocol:** Stateless MCP 2026-07-28 fields (protocol_versions_supported, mrtr_capable, subscriptions, cache_scope, endpoints) added to all entries. Mcp-Session-Id deprecated → entries drop session state.
+**Scope:** opencode-aligned 26 servers. External candidates (223) remain in `external/INDEX.json` as reference only.
+
+### ADR-006: MCP drift audit is a mode on forge_mcp_lifeguard, not a new tool
+**Decision:** MCP surface drift detection (config vs live health vs tool-list snapshots) is a new `drift_audit` mode on the existing `forge_mcp_lifeguard` tool at A-FORGE, not a standalone entity.
+**Rationale:** E6 — functions before entities. forge_mcp_lifeguard already has the health probe + auto-recovery surface. Extending it with a drift audit mode is adding a function to an existing agent, not creating a new one. Output is a receipt, not a persistent file.
+**Date:** 2026-08-10
+
+### ADR-007: Stateless MCP 2026-07-28 as federation default
+**Decision:** All MCP servers in the federation registry declare `protocol_versions_supported` and target the 2026-07-28 stateless spec. The `Mcp-Session-Id` header is removed; round-robin LB is permissible; `Mcp-Method` + `Mcp-Name` headers are required for WAF-layer auth.
+**Rationale:** Stateless MCP scales like the rest of the web — CDN-cacheable, load-balanced, identity-decoupled. Federation benefits: WAF can route on headers, multi-instance deployment is trivial, cache hints (`ttlMs` + `cacheScope`) reduce polling. The cost of supporting session state is no longer worth the operational complexity.
+**Date:** 2026-08-10
+**Migration window:** 12-month minimum per MCP feature lifecycle policy. Servers still on 2025-11-25 are NOT removed; they are flagged as `protocol_versions_supported: ["2025-11-25"]` in the registry and will be re-evaluated in 2027-Q3.
+
 ---
 
 ## 6. Canonical Source
 
 This file (`/root/AAA/docs/MCP-FRAME.md`) is the canonical MCP capability map.
 Changes to any agent's MCP config must be reflected here.
+
+The 26-server registry at `/root/AAA/registries/mcp_servers/` is the machine-readable
+twin of this document. `sync.py` keeps it in lockstep with `/root/.config/opencode/opencode.json`.
+Per-server entries follow the MCP 2026 server schema and carry stateless-ready fields
+(`protocol_versions_supported`, `endpoints[]`, `mrtr_capable`, `subscriptions`, `cache_scope`).
+
+Drift check: `bash /root/AAA/registries/mcp_servers/drift_audit.sh` (one-shot, read-only,
+emits JSONL receipt per server). This is the `forge_mcp_lifeguard mode=drift` surface.
+
 Probe command for live verification:
 ```bash
 python3 -c "
@@ -223,4 +259,4 @@ for name, path in agents.items():
 ---
 
 *DITEMPA BUKAN DIBERI — capabilities are forged, not given.*
-*AAA MCP FRAME v1.0 — 2026-08-04 — 333-AGI Δ MIND*
+*AAA MCP FRAME v1.1 — 2026-08-10 — 333-AGI Δ MIND (registry extension)*

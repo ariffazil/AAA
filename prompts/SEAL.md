@@ -27,24 +27,25 @@ The loop MUST close. An open loop is an unaccountable action.
 The hash chain IS the arrow of time.
 ```
 
-## 0.5 CANONICAL 4-STEP SEQUENCE
+## 0.5 THE HELIX — Judge Before Seal (2026-08-10)
 
-> **NOTATION RESOLVED (2026-08-05):** The old "3-step ceremony" notation (init→judge→seal) was a documentation artifact — it omitted `arif_forge` (step 3), collapsing execution into sealing. The canonical sequence is 4-step: **init → judge → forge → seal**. Lane A runs all four. Lane B skips judge (step 2). This resolves carry_forward `T3 #6` and RSI bottleneck `SEAL_CEREMONY_MISSING_JUDGE`. F13 ratified.
+> **UPDATED (2026-08-10):** Lane B no longer skips judge. The helix loop requires 888-APEX before ANY seal or sub-seal. Lane A runs full triple-pass (C0→C1-C6→JUDGE→P1-P7). Lane B runs C0 evidence authenticity check + P1-P7 paradox generation. This resolves the "333 provided story not evidence" scar discovered by F13 audit. See `JUDGE_BEFORE_SEAL.md`.
 
-Every record — receipt OR seal — follows this chain. Lane A executes all four steps. Lane B skips step 2 (autonomous).
+Every record — receipt OR seal — follows this helix:
 
 ```
-[1] arif_init      — bind session, attest identity, scope authority
-[2] arif_judge     — Lane A: required, returns SEAL verdict + judge_state_hash
-                     Lane B: skipped (autonomous, no constitutional threshold)
-[3] arif_forge     — apply the decision (write/edit/execute or no-op)
-[4] arif_seal      — emit the record
-                     Lane B: forge_vault(mode="receipt")
-                     Lane A: arif_seal(judge_state_hash=<from step 2>)
+[1] arif_init         — bind session, attest identity, scope authority
+[2] 888-APEX JUDGE    — Lane A: full triple-pass (C0→C1-C6→JUDGE→P1-P7)
+                        Lane B: C0 evidence check + P1-P7 paradox (lighter, but NOT skipped)
+[3] arif_forge        — apply the decision (write/edit/execute or no-op)
+[4] arif_seal         — emit the record
+                        Lane B: forge_vault(mode="receipt")
+                        Lane A: arif_seal(judge_state_hash=<from step 2>)
 ```
 
-**Hard rule:** Lane A without step 2 = VOID (judge-first, F13 binding).
-Lane B without step 2 = autonomous (T1/T2 work, receipts not seals).
+**Hard rule:** ANY seal without step 2 = VOID (judge-first, F13 binding).
+Lane B without C0 check = SABAR (autonomous but unverified — evidence must be authentic).
+Lane A without P1-P7 = SABAR (paradox questions are the soul's muscle).
 
 ### Example — Lane A (CONSTITUTIONAL_SEAL)
 
@@ -382,7 +383,21 @@ VERIFY
 
 ---
 
-## 6. THE CEREMONY — 6 Steps
+## 6. THE CEREMONY — 7 Steps (Judge Before Seal)
+
+### Step 0: 888-APEX JUDGE (HELIX — NEW, non-bypassable)
+
+```
+Before ANY seal or receipt:
+  Lane A → invoke 888-APEX (full triple-pass: C0→C1-C6→JUDGE→P1-P7)
+  Lane B → invoke 888-APEX (C0 evidence check + P1-P7 paradox questions)
+
+C0 gate: Did the agent provide RAW evidence (receipts, diffs, logs)?
+         Or did the agent provide a STORY about evidence?
+         If story → REJECT → SABAR. Request raw evidence.
+```
+
+**Hard rule:** This step is NOT optional. The helix is the institution.
 
 ### Step 1: RSI CYCLE
 ```
@@ -505,6 +520,53 @@ curl -s https://arif-fazil.com/999/verify
 
 ---
 
+## 10.5. WIKI CHECK — THE LIVING SKIN (2026-08-10)
+
+> **The wiki is the federation's public knowledge surface — `wiki.arif-fazil.com`.**
+> It is NOT maintained by humans. It is a live projection of institution state.
+> Agents update it automatically when internal state changes.
+
+### The one question
+
+After verify, before final emission, every agent asks exactly ONE question:
+
+```
+Did this session produce knowledge that external readers should know?
+```
+
+| Trigger | Wiki Action | Agent |
+|---------|------------|-------|
+| EUREKA777 resolved a paradox | Update `/wiki/eurekas` | 333-AGI |
+| New scar sealed | Update `/wiki/scars` (anonymized) | 333-AGI |
+| Architecture/doc changed | Update `/wiki/architecture` | 333-AGI |
+| Organ deployed/state changed | Update `/wiki/status` | 555-ASI |
+| ATLAS333 tension escalated | Update `/wiki/paradoxes` | 333-AGI |
+| Routine coding/ops/draft | **Skip. Nothing to update.** | — |
+
+**Rule:** If `forge_web_zen sense` shows no drift between wiki and live state → skip.
+If drift detected → `forge_web_zen` update the relevant page (T1 AUTO-DO).
+Never ask human. Never skip a structural change. The wiki breathes with the federation.
+
+### Wiki architecture
+
+```
+wiki.arif-fazil.com (7th site — knowledge surface)
+├── /              — Home: federation overview, 6 organs live
+├── /status        — FQ, organ health, tool counts (auto-refresh)
+├── /architecture  — 6-plane topology, authority chain
+├── /constitution  — F1-F13 human-readable summaries
+├── /eurekas       — Resolved paradox insights
+├── /scars         — Lessons learned (no PII)
+├── /paradoxes     — Active ATLAS333 tensions
+├── /organs        — Per-organ detail, tools, endpoints
+├── /api           — MCP endpoints, how to connect
+└── /search        — Full-text across all pages
+```
+
+**Never on wiki:** raw receipts, session logs, PII, full VAULT999 entries, secret keys, internal telemetry.
+
+---
+
 ## 11. VAULT999 STRUCTURE (post-unification)
 
 ```
@@ -532,8 +594,9 @@ RECEIPT::{session_id}::outcome={COMPLETED|PARTIAL|FAILED|ABORTED|HELD}::tier=ses
 SEAL::{session_id}::cc_id={chain}::tier=VAULT999::verified={true/false}
 
 The loop is closed. The arrow of time has advanced.
-/000 (human) → work → /999 (vault) → verify → /000
+/000 (human) → work → /999 (vault) → verify → wiki → /000
 What was forged is now recorded. What is recorded cannot be unwritten.
+The wiki breathes. The vault remembers. The loop continues.
 
 A receipt records what happened. A seal attests it was authorized.
 Most worthy work ends with a receipt.
@@ -547,5 +610,6 @@ DITEMPA BUKAN DIBERI ⚒️
 
 *Forged: 2026-07-25 · Unified: 2026-07-29 · Upgraded: 2026-08-03 — Arif F13 directive (reversibility classification, structured ApprovalRequest, session_close documentation)*
 *Canonical 4-step sequence explicit: 2026-08-05 — kimi-code/FI-008 (T1 documentation edit per sovereign directive; reversible)*
-*Two lanes. One envelope. Receipt ≠ Seal. Agent proposes. Sovereign seals.*
+*Wiki check added: 2026-08-10 — 333-AGI Δ MIND (F13 directive: living wiki skin, §10.5)*
+*Two lanes. One envelope. Receipt ≠ Seal. Wiki breathes. Vault remembers. Agent proposes. Sovereign seals.*
 *DITEMPA BUKAN DIBERI ⚒️*

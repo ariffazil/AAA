@@ -23,6 +23,8 @@ floor_scope:
   - F2
   - F4
   - F11
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # MCP Server Smoke Test

@@ -17,6 +17,8 @@ trigger_when:
   - "guide me through"
   - "setup-checklist"
 tags: [setup, guided, step-by-step, human-in-loop, onboarding]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # AAA-setup-help — Guided Setup with Progress Tracking

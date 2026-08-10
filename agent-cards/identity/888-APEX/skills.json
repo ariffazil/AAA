@@ -6,7 +6,7 @@
   "layer": "identity",
   "ring": "ΦΙ JUDGE",
   "role": "Constitutional verdicts (SEAL/HOLD/VOID)",
-  "skill_count": 24,
+  "skill_count": 25,
   "skills": [
     {
       "id": "arifos-constitutional-judge",
@@ -129,6 +129,13 @@
       "why": "888-APEX (ΦΙ JUDGE) issues SEAL verdicts, but the manifest assigns FORGE-verify-runtime only to OpenCode / 777-forge / aforge. Post-seal verification of runtime health is constitutional work — a SEAL without a runtime check is incomplete. The JUDGE must own this.",
       "forged_at": "2026-07-12T23:18:41.111426+00:00",
       "forge_hash": "896ab49c0c51bf66fd0db2e90e6f8db7b4ab852f881ed95e59b1fc6ca1ed987e"
+    },
+    {
+      "id": "apex-audit-mode",
+      "source": "/root/AAA/agents/888-APEX/AUDIT_MODE.md",
+      "why": "666-AUDIT — Gödel mitigation via dual-pass (audit+judge). FED-routed model for reality+receipt checks C1-C6.",
+      "forged_at": "2026-08-10",
+      "forged_by": "333-AGI under F13 SOVEREIGN directive"
     }
   ],
   "sealed_at": "2026-07-12T23:18:03.298108+00:00"

@@ -14,6 +14,8 @@ cognitive_hints:
   codex: "Step 1: state claim. Step 2: assign confidence. Step 3: list unknowns. Step 4: attack claim. Step 5: adjust."
   hermes: "State claim. How sure? What you don't know. Attack it. Adjust. Seal or hold."
 autonomy_tier: T1
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # APEX-humility-godel
