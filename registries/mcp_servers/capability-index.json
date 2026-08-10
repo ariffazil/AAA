@@ -1,0 +1,41 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/2026/server.json",
+  "id": "ext.capability-index",
+  "name": "capability-index-federation-extension",
+  "description": "Capability Index — federation-wide tool/skill/surface discoverability. Pairs with /root/AAA/registries/CAPABILITY_INDEX.json.",
+  "version": "v2026.08.10",
+  "author": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+  "category": "meta-utility",
+  "tags": [
+    "registry",
+    "capability",
+    "arifos"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "bash -lc cd /root/arifOS && PYTHONPATH=core exec .venv/bin/python core/capability_index/mcp_server.py"
+  },
+  "auth": {
+    "type": "none"
+  },
+  "constitutional_tier": "F2_TRUTH",
+  "tools_count": 0,
+  "tools": [],
+  "status": "ONLINE",
+  "harness_visibility": [
+    "OPENCODE",
+    "CODEX",
+    "COPILOT"
+  ],
+  "protocol_versions_supported": [
+    "2025-11-25"
+  ],
+  "mrtr_capable": false,
+  "subscriptions": [
+    "toolsListChanged"
+  ],
+  "cache_scope": "public",
+  "opencode_enabled": true,
+  "opencode_source_path": "/root/.config/opencode/opencode.json",
+  "last_reconciled": "2026-08-10T10:30:00.000000+00:00"
+}

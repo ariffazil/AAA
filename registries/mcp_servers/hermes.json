@@ -1,0 +1,45 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/2026/server.json",
+  "id": "ext.hermes",
+  "name": "hermes-federation-extension",
+  "description": "Hermes edge agent — Telegram gateway, multimodal bridge, A2A router. The ONLY agent that communicates with Arif directly (F13 governance).",
+  "version": "v2026.08.10",
+  "author": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+  "category": "infrastructure",
+  "tags": [
+    "arifos-federation",
+    "edge",
+    "hermes",
+    "telegram"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "python3 /root/.hermes/mcp_servers/hermes_mcp.py"
+  },
+  "auth": {
+    "type": "env_scoped",
+    "env_keys": [
+      "HERMES_MCP_TRANSPORT"
+    ]
+  },
+  "constitutional_tier": "F13_SOVEREIGN",
+  "tools_count": 0,
+  "tools": [],
+  "status": "ONLINE",
+  "harness_visibility": [
+    "HERMES"
+  ],
+  "protocol_versions_supported": [
+    "2025-11-25",
+    "2026-07-28"
+  ],
+  "mrtr_capable": true,
+  "subscriptions": [
+    "toolsListChanged",
+    "resourcesListChanged"
+  ],
+  "cache_scope": "private",
+  "opencode_enabled": true,
+  "opencode_source_path": "/root/.config/opencode/opencode.json",
+  "last_reconciled": "2026-08-10T10:30:00.000000+00:00"
+}
