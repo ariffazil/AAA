@@ -1,54 +1,306 @@
 {
-  "generated_at": "2026-07-28T10:43:45.590507+00:00",
+  "generated_at": "2026-08-10T10:30:00.000000+00:00",
   "federation": "arifOS",
-  "sovereign": "Muhammad Arif bin Fazil (F13)",
-  "total_servers": 5,
+  "sovereign": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+  "spec_version": "MCP 2026-07-28 (stateless)",
+  "total_servers": 26,
   "total_tools": 181,
+  "enabled_count": 16,
+  "disabled_count": 5,
+  "harness_alignment": "opencode (26/26)",
   "servers": {
-    "arifos": {
-      "id": "organ.arifos",
-      "name": "Constitutional AI orchestration kernel — session, judge, vault, seal",
-      "category": "kernel",
-      "tool_count": 8,
+    "arifflow": {
+      "id": "ext.arifflow",
+      "name": "arifflow-federation-extension",
+      "category": "infrastructure",
+      "tool_count": 0,
       "status": "ONLINE",
-      "endpoint": "https://arifos.arif-fazil.com/mcp",
-      "metadata_file": "arifos.json"
+      "enabled": true,
+      "endpoint": "/root/arifFlow/mcp/arifflow-mcp.py",
+      "harness_visibility": [
+        "OPENCODE",
+        "KIMI",
+        "COPILOT"
+      ],
+      "metadata_file": "arifflow.json"
     },
-    "aforge": {
-      "id": "organ.aforge",
-      "name": "Governed execution shell — build, deploy, mutate under constitutional lease",
-      "category": "execution",
-      "tool_count": 120,
+    "fed": {
+      "id": "ext.fed",
+      "name": "fed-federation-extension",
+      "category": "infrastructure",
+      "tool_count": 0,
       "status": "ONLINE",
-      "endpoint": "https://forge.arif-fazil.com/mcp",
-      "metadata_file": "aforge.json"
+      "enabled": true,
+      "endpoint": "http://127.0.0.1:7074/mcp",
+      "harness_visibility": [
+        "OPENCODE",
+        "KIMI",
+        "HERMES"
+      ],
+      "metadata_file": "fed.json"
     },
-    "geox": {
-      "id": "organ.geox",
-      "name": "Earth intelligence — seismic, petrophysics, basin, prospect evaluation",
-      "category": "earth-intelligence",
-      "tool_count": 33,
-      "status": "AUTH_GATED",
-      "endpoint": "https://geox.arif-fazil.com/mcp",
-      "metadata_file": "geox.json"
+    "context7": {
+      "id": "ext.context7",
+      "name": "context7-federation-extension",
+      "category": "research",
+      "tool_count": 0,
+      "status": "ONLINE",
+      "enabled": true,
+      "endpoint": "/usr/local/bin/context7-mcp",
+      "harness_visibility": [
+        "OPENCODE",
+        "COPILOT"
+      ],
+      "metadata_file": "context7.json"
     },
-    "wealth": {
-      "id": "organ.wealth",
-      "name": "Capital intelligence — NPV, risk, conservation, flow, entropy",
-      "category": "capital-intelligence",
-      "tool_count": 12,
-      "status": "AUTH_GATED",
-      "endpoint": "https://wealth.arif-fazil.com/mcp",
-      "metadata_file": "wealth.json"
+    "supabase": {
+      "id": "ext.supabase",
+      "name": "supabase-federation-extension",
+      "category": "data-store",
+      "tool_count": 0,
+      "status": "ONLINE",
+      "enabled": true,
+      "endpoint": "npx @supabase/mcp-server-supabase --project-ref=utbmmjmbolmuahwixjqc",
+      "harness_visibility": [
+        "OPENCODE",
+        "COPILOT"
+      ],
+      "metadata_file": "supabase.json"
     },
-    "well": {
-      "id": "organ.well",
-      "name": "Human readiness — vitality, fatigue, dignity, homeostasis (REFLECT_ONLY)",
-      "category": "human-readiness",
-      "tool_count": 8,
-      "status": "AUTH_GATED",
-      "endpoint": "https://well.arif-fazil.com/mcp",
-      "metadata_file": "well.json"
+    "qdrant": {
+      "id": "ext.qdrant",
+      "name": "qdrant-federation-extension",
+      "category": "data-store",
+      "tool_count": 0,
+      "status": "ONLINE",
+      "enabled": true,
+      "endpoint": "python3 /usr/local/bin/qdrant-mcp-bridge.py",
+      "harness_visibility": [
+        "OPENCODE",
+        "COPILOT"
+      ],
+      "metadata_file": "qdrant.json"
+    },
+    "hostinger-vps": {
+      "id": "ext.hostinger-vps",
+      "name": "hostinger-vps-federation-extension",
+      "category": "dev-tool",
+      "tool_count": 0,
+      "status": "ONLINE",
+      "enabled": true,
+      "endpoint": "/root/.npm-global/bin/hostinger-vps-mcp --stdio",
+      "harness_visibility": [
+        "OPENCODE",
+        "COPILOT"
+      ],
+      "metadata_file": "hostinger-vps.json"
+    },
+    "hermes": {
+      "id": "ext.hermes",
+      "name": "hermes-federation-extension",
+      "category": "infrastructure",
+      "tool_count": 0,
+      "status": "ONLINE",
+      "enabled": true,
+      "endpoint": "python3 /root/.hermes/mcp_servers/hermes_mcp.py",
+      "harness_visibility": [
+        "HERMES"
+      ],
+      "metadata_file": "hermes.json"
+    },
+    "hermes-agent": {
+      "id": "ext.hermes-agent",
+      "name": "hermes-agent-federation-extension",
+      "category": "infrastructure",
+      "tool_count": 0,
+      "status": "ONLINE",
+      "enabled": true,
+      "endpoint": "http://127.0.0.1:18090/mcp",
+      "harness_visibility": [
+        "OPENCODE"
+      ],
+      "metadata_file": "hermes-agent.json"
+    },
+    "megamemory": {
+      "id": "ext.megamemory",
+      "name": "megamemory-federation-extension",
+      "category": "data-store",
+      "tool_count": 0,
+      "status": "ONLINE",
+      "enabled": true,
+      "endpoint": "npx megamemory",
+      "harness_visibility": [
+        "OPENCODE"
+      ],
+      "metadata_file": "megamemory.json"
+    },
+    "sqlite": {
+      "id": "ext.sqlite",
+      "name": "sqlite-federation-extension",
+      "category": "data-store",
+      "tool_count": 0,
+      "status": "DISABLED",
+      "enabled": false,
+      "endpoint": "/usr/bin/mcp-server-sqlite --db-path /root/.local/share/arifos/local.db",
+      "harness_visibility": [
+        "OPENCODE",
+        "COPILOT"
+      ],
+      "metadata_file": "sqlite.json"
+    },
+    "graphiti": {
+      "id": "ext.graphiti",
+      "name": "graphiti-federation-extension",
+      "category": "data-store",
+      "tool_count": 0,
+      "status": "DISABLED:transient:falkordb-down",
+      "enabled": false,
+      "endpoint": "http://127.0.0.1:8000/mcp",
+      "harness_visibility": [
+        "OPENCODE",
+        "COPILOT"
+      ],
+      "metadata_file": "graphiti.json",
+      "_disabled_reason": "transient:falkordb-endpoint-down-pending-revive"
+    },
+    "openrouter": {
+      "id": "ext.openrouter",
+      "name": "openrouter-federation-extension",
+      "category": "external-bridge",
+      "tool_count": 0,
+      "status": "PHASING_OUT",
+      "enabled": true,
+      "endpoint": "https://mcp.openrouter.ai/mcp",
+      "harness_visibility": [
+        "OPENCODE",
+        "HERMES"
+      ],
+      "metadata_file": "openrouter.json"
+    },
+    "semgrep": {
+      "id": "ext.semgrep",
+      "name": "semgrep-federation-extension",
+      "category": "dev-tool",
+      "tool_count": 0,
+      "status": "DISABLED",
+      "enabled": false,
+      "endpoint": "bash -lc exec /root/.arifos/agents/kimi/mcp-launchers/semgrep.sh",
+      "harness_visibility": [
+        "OPENCODE",
+        "COPILOT"
+      ],
+      "metadata_file": "semgrep.json"
+    },
+    "capability-index": {
+      "id": "ext.capability-index",
+      "name": "capability-index-federation-extension",
+      "category": "meta-utility",
+      "tool_count": 0,
+      "status": "ONLINE",
+      "enabled": true,
+      "endpoint": "bash -lc cd /root/arifOS && PYTHONPATH=core exec .venv/bin/python core/capability_index/mcp_server.py",
+      "harness_visibility": [
+        "OPENCODE",
+        "CODEX",
+        "COPILOT"
+      ],
+      "metadata_file": "capability-index.json"
+    },
+    "hindsight": {
+      "id": "ext.hindsight",
+      "name": "hindsight-federation-extension",
+      "category": "infrastructure",
+      "tool_count": 0,
+      "status": "RETIRED",
+      "enabled": false,
+      "endpoint": "http://127.0.0.1:18087/mcp",
+      "harness_visibility": [],
+      "metadata_file": "hindsight.json"
+    },
+    "serena": {
+      "id": "ext.serena",
+      "name": "serena-federation-extension",
+      "category": "meta-utility",
+      "tool_count": 0,
+      "status": "DISABLED:transient:stdio-unstable",
+      "enabled": false,
+      "endpoint": "sh -lc exec /root/.claude/mcp-launchers/serena.sh",
+      "harness_visibility": [
+        "OPENCODE",
+        "COPILOT"
+      ],
+      "metadata_file": "serena.json",
+      "_disabled_reason": "transient:stdio-unstable-post-sh-to-bash"
+    },
+    "repomapper": {
+      "id": "ext.repomapper",
+      "name": "repomapper-federation-extension",
+      "category": "meta-utility",
+      "tool_count": 0,
+      "status": "ONLINE",
+      "enabled": true,
+      "endpoint": "bash -lc exec /root/.claude/mcp-launchers/repomapper.sh",
+      "harness_visibility": [
+        "OPENCODE",
+        "COPILOT"
+      ],
+      "metadata_file": "repomapper.json"
+    },
+    "minimax": {
+      "id": "ext.minimax",
+      "name": "minimax-federation-extension",
+      "category": "research",
+      "tool_count": 0,
+      "status": "ONLINE",
+      "enabled": true,
+      "endpoint": "minimax-coding-plan-mcp",
+      "harness_visibility": [
+        "OPENCODE",
+        "KIMI",
+        "HERMES",
+        "CLAUD"
+      ],
+      "metadata_file": "minimax.json"
+    },
+    "minimax-mcp": {
+      "id": "ext.minimax-mcp",
+      "name": "minimax-mcp-federation-extension",
+      "category": "multimodal",
+      "tool_count": 0,
+      "status": "ONLINE",
+      "enabled": true,
+      "endpoint": "uvx minimax-mcp -y",
+      "harness_visibility": [
+        "OPENCODE",
+        "OPENCLAW"
+      ],
+      "metadata_file": "minimax-mcp.json"
+    },
+    "codebase-memory": {
+      "id": "ext.codebase-memory",
+      "name": "codebase-memory-federation-extension",
+      "category": "data-store",
+      "tool_count": 0,
+      "status": "ONLINE",
+      "enabled": true,
+      "endpoint": "/root/.npm-global/bin/codebase-memory-mcp",
+      "harness_visibility": [
+        "OPENCODE"
+      ],
+      "metadata_file": "codebase-memory.json"
+    },
+    "free-search": {
+      "id": "ext.free-search",
+      "name": "free-search-federation-extension",
+      "category": "research",
+      "tool_count": 0,
+      "status": "ONLINE",
+      "enabled": true,
+      "endpoint": "uvx free-search-mcp",
+      "harness_visibility": [
+        "OPENCODE"
+      ],
+      "metadata_file": "free-search.json"
     }
   }
 }
