@@ -16,10 +16,8 @@ concurrency:
 
 jobs:
   build:
+    if: github.actor != 'dependabot[bot]' && github.actor != 'app/dependabot'
     runs-on: ubuntu-latest
-    # AAA repo does not have GitHub Pages enabled — this is a non-blocking
-    # placeholder. AAA cockpit is served from VPS aaa-a2a (:3001), not Pages.
-    # When Pages is needed, remove continue-on-error on both jobs.
     continue-on-error: true
     steps:
       - name: Checkout
@@ -49,6 +47,7 @@ jobs:
           path: dist
 
   deploy:
+    if: github.actor != 'dependabot[bot]' && github.actor != 'app/dependabot'
     needs: build
     continue-on-error: true
     runs-on: ubuntu-latest

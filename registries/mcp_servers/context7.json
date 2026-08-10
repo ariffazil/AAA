@@ -1,0 +1,43 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/2026/server.json",
+  "id": "ext.context7",
+  "name": "context7-federation-extension",
+  "description": "Context7 — library documentation lookup. AI-synthesized code snippets for any library version.",
+  "version": "v2026.08.10",
+  "author": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+  "category": "research",
+  "tags": [
+    "docs",
+    "library",
+    "context7"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "/usr/local/bin/context7-mcp"
+  },
+  "auth": {
+    "type": "env_scoped",
+    "env_keys": [
+      "CONTEXT7_API_KEY"
+    ]
+  },
+  "constitutional_tier": "F2_TRUTH",
+  "tools_count": 0,
+  "tools": [],
+  "status": "ONLINE",
+  "harness_visibility": [
+    "OPENCODE",
+    "COPILOT"
+  ],
+  "protocol_versions_supported": [
+    "2025-11-25"
+  ],
+  "mrtr_capable": false,
+  "subscriptions": [
+    "toolsListChanged"
+  ],
+  "cache_scope": "public",
+  "opencode_enabled": true,
+  "opencode_source_path": "/root/.config/opencode/opencode.json",
+  "last_reconciled": "2026-08-10T10:30:00.000000+00:00"
+}

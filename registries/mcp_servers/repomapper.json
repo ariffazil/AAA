@@ -1,0 +1,40 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/2026/server.json",
+  "id": "ext.repomapper",
+  "name": "repomapper-federation-extension",
+  "description": "RepoMapper — codebase topology sensor. Emits file/import graph for context injection. Pairs with AAA/docs/OBSERVATORY_FOLDER_STRUCTURE.md.",
+  "version": "v2026.08.10",
+  "author": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+  "category": "meta-utility",
+  "tags": [
+    "repo",
+    "mapper",
+    "topology"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "bash -lc exec /root/.claude/mcp-launchers/repomapper.sh"
+  },
+  "auth": {
+    "type": "none"
+  },
+  "constitutional_tier": "F2_TRUTH",
+  "tools_count": 0,
+  "tools": [],
+  "status": "ONLINE",
+  "harness_visibility": [
+    "OPENCODE",
+    "COPILOT"
+  ],
+  "protocol_versions_supported": [
+    "2025-11-25"
+  ],
+  "mrtr_capable": false,
+  "subscriptions": [
+    "toolsListChanged"
+  ],
+  "cache_scope": "private",
+  "opencode_enabled": true,
+  "opencode_source_path": "/root/.config/opencode/opencode.json",
+  "last_reconciled": "2026-08-10T10:30:00.000000+00:00"
+}
