@@ -49,7 +49,7 @@ PUBLIC MCP ENDPOINTS:
 - https://geox.arif-fazil.com/health (earth health)
 - https://wealth.arif-fazil.com/health (capital health)
 - https://well.arif-fazil.com/health (vitality health)
-- https://arifos.arif-fazil.com/mcp (kernel MCP)
+- https://mcp.arif-fazil.com/mcp (kernel MCP)
 
 PUBLIC DOCTRINE PAGES:
 - https://arif-fazil.com/words/doctrine (13 Floors visual canon)
