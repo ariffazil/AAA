@@ -71,3 +71,23 @@ This assessment recommends a structural change (new agent, new model routing). F
 ## Scar Note
 
 If this assessment is correct and the Gödel lock is real, the FIRST breach (a corrupt judge self-certifying) would create a scar. The scar would then harden the system against that specific failure mode — but the breach would already have occurred. Prevention is cheaper than scar-based learning.
+
+## UPDATE: 2026-08-10 — Trial Phase Active
+
+**F13 decision received.** 666-AUDITOR implemented as 888-APEX sub-mode (not separate agent).
+
+Architecture:
+- 888-APEX now dual-pass: audit (FED-routed model) → judge (MiniMax M3)
+- 6 reality+receipt checks: C1 Missing Evidence, C2 Receipt Gap, C3 Self-Loop, C4 Reality Drift, C5 Witness Missing, C6 Contradiction
+- Audit is ADVISORY. Judge decides. Flags ignored must have stated reasoning.
+- Model diversity via FED (:7074) dynamic routing — different provider from MiniMax M3
+
+Trial metrics (1 week):
+- Divergence rate target: 5-15%
+- If <5% → too correlated → escalate to 666 as separate entity
+- If >15% → audit too sensitive → recalibrate C1-C6 thresholds
+
+Design doc: /root/AAA/agents/888-APEX/AUDIT_MODE.md
+Flow doc: /root/AAA/agents/ZEN_AUDIT_FLOW.md
+
+**Status: 666-AUDITOR-GODEL-LOCK → TRIAL_ACTIVE (was AWAITING_F13)**
