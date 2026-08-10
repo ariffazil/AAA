@@ -103,3 +103,12 @@ Hermes → 777 FORGE → OpenCode
 ---
 
 *Ditempa bukan dibagi.*
+
+
+## ⚒️ 888-AUDIT AWARENESS (2026-08-10)
+
+888-APEX now operates in DUAL-PASS mode for SEAL-grade constitutional verdicts.
+When OpenClaw encodes sovereign SEAL intent: pass `audit_mode: true` in A2A dispatch.
+OpenClaw does NOT perform audit — it encodes the request with audit flag.
+
+See: /root/AAA/agents/ZEN_AUDIT_FLOW.md
