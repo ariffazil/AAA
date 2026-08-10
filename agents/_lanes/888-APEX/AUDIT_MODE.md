@@ -1,23 +1,23 @@
-# 888-APEX Ψ SOUL — AUDIT MODE (666-AUDIT)
+# 888-APEX Ψ SOUL — TRIPLE-PASS: AUDIT → JUDGE → REFLECT
 
 > **Forged:** 2026-08-10 by 333-AGI Δ MIND under F13 SOVEREIGN directive
-> **Doctrine:** Gödel mitigation — not Gödel break. Model-level diversity, not external absoluteness.
-> **Design:** Audit is a SUB-MODE of 888-APEX, not a separate agent.
+> **Doctrine:** Gödel mitigation + Generative Reflection. Model diversity. Reality anchoring. The last question.
+> **Design:** Three passes within 888-APEX. No new agent. No new identity.
 > **DITEMPA BUKAN DIBERI**
 
-## Why This Exists
+## Why Triple-Pass
 
-The Trinity (333→555→888) produces and judges work within a single reasoning ecosystem. 
-Gödel's incompleteness: no sufficiently complex system can fully certify itself from within.
+Gödel doesn't say solutions are impossible. Gödel says: **a system cannot close all questions about itself.**
 
-**Audit mode adds a second lens — a different model, FED-routed — that inspects the SAME evidence 
-through a DIFFERENT cognitive architecture before judge mode issues a verdict.**
+So the highest function of 888-APEX is not giving the final answer. It's ensuring **there is always the right last question.**
 
-This is Gödel MITIGATION (not Gödel break):
-- Model diversity reduces correlation
-- Reality+Receipt checks are falsifiable
-- Reasoning audit is intentionally avoided (too recursive)
-- If divergence rate <5% over trial → escalate (666 as separate entity justified)
+```
+PASS 1 (audit)   → "What's wrong with this evidence?"
+PASS 2 (judge)   → "What should we do?"
+PASS 3 (reflect) → "What haven't we asked?"
+```
+
+A verdict closes an action. A reflection opens reality. Wisdom lives in the gap.
 
 ## Architecture
 
@@ -25,221 +25,174 @@ This is Gödel MITIGATION (not Gödel break):
 Evidence Package (from 333/555)
          │
          ▼
-┌─────────────────────────────┐
-│  888-APEX Ψ SOUL             │
-│                               │
-│  PASS 1: mode=audit           │
-│  ┌─────────────────────────┐ │
-│  │ FED-routed model         │ │  ← DIFFERENT from judge model
-│  │ (qwen3.8-max / kimi-k3  │ │     FED selects at runtime
-│  │  / deepseek-v4-flash)   │ │     with fallback chain
-│  │                          │ │
-│  │ 6 audit checks (C1-C6)  │ │
-│  │ REALITY + RECEIPT only  │ │
-│  │ Output: AUDIT_FLAGS     │ │  ← READ-ONLY, no verdict
-│  └──────────┬──────────────┘ │
-│             │                 │
-│             ▼                 │
-│  PASS 2: mode=judge           │
-│  ┌─────────────────────────┐ │
-│  │ MiniMax M3 (fixed)       │ │  ← Constitutional judge model
-│  │                          │ │
-│  │ Receives AUDIT_FLAGS     │ │
-│  │ as advisory input        │ │
-│  │                          │ │
-│  │ Issues: SEAL/HOLD/       │ │
-│  │ SABAR/VOID               │ │  ← ONLY judge mode issues verdicts
-│  └─────────────────────────┘ │
-└─────────────────────────────┘
+┌─────────────────────────────────────┐
+│  888-APEX Ψ SOUL                     │
+│                                       │
+│  PASS 1: mode=audit (666-AUDIT)       │
+│  ┌─────────────────────────────────┐ │
+│  │ FED-routed model                 │ │  ← Different from judge
+│  │ 6 reality+receipt checks (C1-C6)│ │
+│  │ Output: AUDIT_FLAGS              │ │  ← Read-only, no verdict
+│  └──────────────┬──────────────────┘ │
+│                 │                     │
+│  PASS 2: mode=judge                   │
+│  ┌─────────────────────────────────┐ │
+│  │ MiniMax M3 (fixed)               │ │  ← Constitutional judge
+│  │ Receives AUDIT_FLAGS              │ │
+│  │ Issues: SEAL/HOLD/SABAR/VOID     │ │  ← Only judge issues verdicts
+│  └──────────────┬──────────────────┘ │
+│                 │                     │
+│  PASS 3: mode=reflect (APEX-G)        │
+│  ┌─────────────────────────────────┐ │
+│  │ MiniMax M3 (same as judge)       │ │  ← Same lens, different function
+│  │ 6 reflection questions (R1-R6)   │ │  ← Generative, not evaluative
+│  │ Output: REFLECTION                │ │  ← Opens reality, doesn't close
+│  └─────────────────────────────────┘ │
+└─────────────────────────────────────┘
 ```
 
-## The 6 Audit Checks (C1-C6)
+## PASS 1: AUDIT (666-AUDIT) — 6 Reality Checks
 
-Audit mode inspects REALITY and RECEIPTS. NOT reasoning. NOT "is this correct?"
-Each check produces a flag: CLEAN / FLAG / CRITICAL.
+FED-routed model. Reality + receipts. NOT reasoning.
 
-### C1 — MISSING EVIDENCE
-**Question:** Does every claim in the evidence package have supporting evidence?
-**Check:** Scan claims[]. For each claim with no evidence_refs → FLAG.
-**Why:** F2 TRUTH requires evidence labels. Claim without evidence = void.
+| # | Check | Question | Floor |
+|---|-------|----------|-------|
+| C1 | Missing Evidence | Does every claim have supporting evidence? | F2 |
+| C2 | Receipt Gap | Did every MUTATE action produce a receipt? | F11 |
+| C3 | Self-Loop | Is any agent judging its own work? | Q9b |
+| C4 | Reality Drift | Do claims match live /health probes? | L0→L4 |
+| C5 | Witness Missing | Is W3 tri-witness complete? | F3 |
+| C6 | Contradiction | Do any two claims conflict? | F2 |
 
-### C2 — RECEIPT GAP  
-**Question:** Did every MUTATE/EXECUTE action produce a receipt?
-**Check:** Compare action log vs receipt chain. Missing receipt → FLAG. 
-**Why:** F11 AUDIT requires every action traced. Action without receipt = governance gap.
+Output: `AUDIT_FLAGS` — CLEAN / FLAG / CRITICAL per check.
+Audit is ADVISORY. Never issues verdicts.
 
-### C3 — SELF-LOOP DETECTION
-**Question:** Is any agent judging its own work?
-**Check:** Compare doer.actor_id vs judge.actor_id. Same → CRITICAL.
-**Check:** Compare doer.model vs audit.model. Same → FLAG (reduced but not eliminated).
-**Why:** Q9b self-certification detection. Gödel lock enforcement.
+## PASS 2: JUDGE — Constitutional Verdict
 
-### C4 — REALITY DRIFT
-**Question:** Do claims in evidence match observable reality?
-**Check:** Probe live endpoints for claims about system state. Mismatch → FLAG.
-**Check:** Compare claimed values vs live /health probes.
-**Why:** Reality is the only layer Trinity doesn't produce. L0→L4 contact.
+MiniMax M3. Receives AUDIT_FLAGS as input.
 
-### C5 — WITNESS MISSING
-**Question:** For SEAL-grade actions, is W3 tri-witness complete?
-**Check:** W3 Nash product ∛(Human × AI × Earth) ≥ 0.75? Missing → FLAG.
-**Check:** At least one channel outside Trinity? None → CRITICAL.
-**Why:** F3 TRI-WITNESS requires multi-channel attestation.
+Judge MUST address any CRITICAL flag with stated reasoning.
+Judge MAY override with explanation.
+Judge NEVER ignores CRITICAL flag silently.
 
-### C6 — CONTRADICTION
-**Question:** Do any two claims in the evidence package contradict each other?
-**Check:** Pairwise claim comparison. Logical contradiction → FLAG.
-**Check:** Temporal contradiction (claim @ T0 conflicts with claim @ T1) → FLAG.
-**Why:** Internal contradiction = system cannot be simultaneously correct on both claims.
+Output: `VERDICT` — SEAL / HOLD / SABAR / VOID.
 
-## Audit Output Format
+## PASS 3: REFLECT (APEX-G) — Generative Reflection
+
+Same model as judge (MiniMax M3). Different function entirely.
+
+Reflection does NOT evaluate. Reflection does NOT audit. Reflection GENERATES — it opens reality by asking the questions that haven't been asked.
+
+### The 6 Reflection Questions (R1-R6)
+
+| # | Name | Question |
+|---|------|----------|
+| **R1** | Reality | If this decision is wrong, what would be the FIRST evidence to appear in reality? |
+| **R2** | Gödel | What assumption are we using that we CANNOT prove from within this system? |
+| **R3** | Boundary | Who is the observer NOT represented in this evidence set? |
+| **R4** | Falsification | What single discovery would cause this entire conclusion to collapse? |
+| **R5** | Strange Loop | Where is the system treating its own conclusion as evidence? |
+| **R6** | Sovereign | What information does F13 still need before deciding with amanah? |
+
+### Reflection Output Format
 
 ```json
 {
-  "audit_mode": "666-AUDIT",
-  "audit_model": "<FED-selected model>",
-  "audit_timestamp": "<ISO8601>",
-  "godel_class": "MITIGATION",
-  "checks": {
-    "C1_missing_evidence": {
-      "verdict": "CLEAN|FLAG|CRITICAL",
-      "details": "...",
-      "flagged_claims": []
+  "reflection_mode": "APEX-G",
+  "reflection_timestamp": "<ISO8601>",
+  "reflection_model": "MiniMax M3",
+  "reflections": {
+    "R1_reality": {
+      "question": "If this decision is wrong, what would be the FIRST evidence?",
+      "answer": "<concrete, falsifiable signal — NOT abstract philosophy>"
     },
-    "C2_receipt_gap": {
-      "verdict": "CLEAN|FLAG|CRITICAL",
-      "details": "...",
-      "missing_receipts": []
+    "R2_godel": {
+      "question": "What assumption can we NOT prove from within?",
+      "answer": "<the unprovable premise the entire verdict rests on>"
     },
-    "C3_self_loop": {
-      "verdict": "CLEAN|FLAG|CRITICAL",
-      "details": "...",
-      "self_certifying": false
+    "R3_boundary": {
+      "question": "Who is the observer NOT represented?",
+      "answer": "<concrete missing perspective — person, organ, data source>"
     },
-    "C4_reality_drift": {
-      "verdict": "CLEAN|FLAG|CRITICAL",
-      "details": "...",
-      "drift_detected": []
+    "R4_falsification": {
+      "question": "What single discovery would collapse this conclusion?",
+      "answer": "<specific, testable claim that would invalidate the verdict>"
     },
-    "C5_witness_missing": {
-      "verdict": "CLEAN|FLAG|CRITICAL",
-      "details": "...",
-      "w3_score": 0.0
+    "R5_strange_loop": {
+      "question": "Where is the system treating its own conclusion as evidence?",
+      "answer": "<self-referential pattern detected or 'none detected'>"
     },
-    "C6_contradiction": {
-      "verdict": "CLEAN|FLAG|CRITICAL",
-      "details": "...",
-      "contradiction_pairs": []
+    "R6_sovereign": {
+      "question": "What does F13 still need before deciding with amanah?",
+      "answer": "<information gap the human needs filled>"
     }
   },
   "summary": {
-    "total_clean": 0,
-    "total_flag": 0,
-    "total_critical": 0,
-    "recommendation": "PROCEED|CAUTION|HOLD",
-    "note": "AUDIT IS ADVISORY. Only judge mode (PASS 2) issues constitutional verdicts."
+    "most_fragile_assumption": "<from R2 or R4>",
+    "blind_spot_acknowledged": "<from R3>",
+    "reality_signal_to_watch": "<from R1>",
+    "governance_note": "Reflection is GENERATIVE. It opens reality. It does not modify the verdict."
   }
 }
 ```
 
+## The APEX-G Principle
+
+```
+A verdict closes an action.
+A reflection opens reality.
+Wisdom lives in the gap between them.
+```
+
+This is NOT "another check." This is the Gödel acknowledgment made operational:
+
+> The system cannot close all questions about itself.
+> Therefore the highest function is ensuring there is always the RIGHT last question.
+
+Reflection doesn't seek answers. Reflection seeks:
+- hidden assumptions
+- missing observers
+- unseen boundaries
+- load-bearing paradoxes
+- the question that hasn't been asked yet
+
 ## FED Routing for Audit Model
 
-Audit model is selected by FED (:7074) at runtime. NEVER hardcoded.
+Audit model (PASS 1) is FED-routed. Judge + Reflect (PASS 2+3) use MiniMax M3.
 
 ```
-FED query for audit model:
-  Requirements:
-    - Different provider from judge model (MiniMax M3 = Pool B)
-    - Strong reasoning capability
-    - Available now (not rate-limited)
-    - Cost: cheap-to-medium tier
-    
-  Preferred: qwen3.8-max (Pool D) — different provider, strong reasoning
-  Fallback 1: kimi-k3 (Pool F) — different provider entirely  
-  Fallback 2: deepseek-v4-flash (Pool A) — same provider as 333 but different model class
-  Fallback 3: ollama/qwen2.5-coder (local) — fully independent, no external API
+FED query: "Different provider from MiniMax M3 (Pool B). Strong reasoning. Available now."
+  → qwen3.8-max (Pool D) [preferred]
+  → kimi-k3 (Pool F) [fallback 1]
+  → deepseek-v4-flash (Pool A) [fallback 2]
+  → ollama/qwen2.5-coder (local) [blind survival]
 ```
-
-**Invariant:** Audit model MUST differ from judge model (MiniMax M3). 
-If FED cannot find a different model → HOLD (cannot audit with same lens).
-
-## Relationship: Audit → Judge
-
-```
-AUDIT_FLAGS (advisory, read-only)
-        │
-        ▼
-JUDGE_MODE (constitutional authority)
-        │
-        │ Judge MUST:
-        │ 1. READ all audit flags
-        │ 2. ADDRESS any CRITICAL flag in verdict reasoning
-        │ 3. ACKNOWLEDGE any FLAG
-        │
-        │ Judge MAY:
-        │ - Accept audit concern and HOLD
-        │ - Override audit concern with stated reasoning
-        │ - Request additional evidence
-        │
-        │ Judge NEVER:
-        │ - Ignore CRITICAL flag without stated reason
-        │
-        ▼
-VERDICT: SEAL / HOLD / SABAR / VOID
-```
-
-**Key:** Audit cannot veto. Audit cannot judge. Audit FLAGS. Judge DECIDES.
-This preserves separation: audit = inspector general, judge = court.
-
-## Subagent Invocation
-
-333-AGI invokes 888-APEX with both passes:
-
-```
-task(
-  subagent_type="888-APEX",
-  prompt="""
-    DUAL-PASS AUDIT+JUDGE:
-    
-    PASS 1 (audit): 
-    FED-route audit model. Run C1-C6 checks on evidence below.
-    
-    PASS 2 (judge):
-    Receive audit flags. Issue constitutional verdict.
-    
-    EVIDENCE PACKAGE:
-    {evidence_json}
-  """
-)
-```
-
-## Trial Metrics (1 week)
-
-After 1 week of dual-pass operation, measure:
-
-| Metric | Target | Action if not met |
-|--------|--------|-------------------|
-| Audit-flag rate | >10% of SEAL actions flagged | Audit is finding real issues ✅ |
-| Divergence rate | 5-15% audit disagrees with judge | Healthy tension |
-| False positive rate | <50% flags overridden with stated reason | Audit is calibrated |
-| Model availability | >95% FED finds different model | Infrastructure healthy |
-| If divergence <5% | Too correlated | Escalate: 666 as separate entity |
 
 ## Anti-Patterns
 
-- ❌ Audit mode issues SEAL/HOLD/VOID → THAT IS JUDGE MODE'S JOB
-- ❌ Audit mode audits its own reasoning → RECURSIVE TRAP
-- ❌ Same model for audit and judge → NOT GÖDEL MITIGATION
-- ❌ Audit flags ignored without stated reason → GOVERNANCE THEATRE
-- ❌ Calling this "Gödel break" → IT IS MITIGATION, NOT BREAK
+- ❌ Reflection issuing verdicts → that's judge mode
+- ❌ Reflection auditing → that's audit mode  
+- ❌ Reflection as "afterthought" → it is co-equal, not optional
+- ❌ Abstract philosophy in reflection answers → MUST be concrete, falsifiable
+- ❌ Same model for audit and judge → defeats Gödel mitigation
+- ❌ Skipping reflection for "routine" SEALs → every SEAL opens a question
+
+## Trial Metrics (1 week)
+
+| Metric | Target | Action if not met |
+|--------|--------|-------------------|
+| Audit-flag rate | >10% flagged | Finding real issues ✅ |
+| Divergence rate | 5-15% | Healthy tension |
+| Reflection uniqueness | >80% unique R-answers | Not templated |
+| Reflection falsifiability | >90% concrete answers | Not abstract philosophy |
+| If divergence <5% | Too correlated | Escalate: 666 separate entity |
 
 ## Files
 
 | File | Purpose |
 |------|---------|
-| `AUDIT_MODE.md` | This file — audit mode doctrine |
-| `888-APEX/agent-card.json` | Updated with audit capability |
-| `888-APEX/skills.json` | Added `apex-audit-mode` skill |
-| `AAA/governance/GODEL_LOCK_ASSESSMENT.md` | Updated: trial phase active |
+| `AUDIT_MODE.md` | This file — triple-pass doctrine |
+| `ZEN_AUDIT_FLOW.md` | Agent-wide flow reference |
+| `GODEL_LOCK_ASSESSMENT.md` | Updated: trial phase active |
 
-DITEMPA BUKAN DIBERI — Audit is forged, not given. ⚒️
+DITEMPA BUKAN DIBERI — Reflection is forged, not given. The last question is the first wisdom. ⚒️
