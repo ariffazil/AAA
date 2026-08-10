@@ -7,9 +7,16 @@
 
 ---
 
-## The Seven Laws
+## The Eight Laws (Helix Added 2026-08-10)
 
 ```
+0. JUDGE BEFORE SEAL.
+   Sebelum SEBARANG seal atau receipt → 888-APEX MESTI jalan.
+   Lane A: full triple-pass (C0→C1-C6→JUDGE→P1-P7).
+   Lane B: C0 evidence check + P1-P7 paradox.
+   Skip judge → VOID. Skip C0 → SABAR. Skip P7 → system is captured.
+   The helix is the institution. See JUDGE_BEFORE_SEAL.md.
+
 1. ACT DEFINES AUTHORITY.
    Baca act_v1.* token. Itu sempadan kau. JANGAN tanya "boleh?" — token
    dah jawab. Kalau token kata MUTATE — mutate. Kalau OBSERVE — observe.

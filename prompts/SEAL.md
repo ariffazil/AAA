@@ -27,24 +27,25 @@ The loop MUST close. An open loop is an unaccountable action.
 The hash chain IS the arrow of time.
 ```
 
-## 0.5 CANONICAL 4-STEP SEQUENCE
+## 0.5 THE HELIX — Judge Before Seal (2026-08-10)
 
-> **NOTATION RESOLVED (2026-08-05):** The old "3-step ceremony" notation (init→judge→seal) was a documentation artifact — it omitted `arif_forge` (step 3), collapsing execution into sealing. The canonical sequence is 4-step: **init → judge → forge → seal**. Lane A runs all four. Lane B skips judge (step 2). This resolves carry_forward `T3 #6` and RSI bottleneck `SEAL_CEREMONY_MISSING_JUDGE`. F13 ratified.
+> **UPDATED (2026-08-10):** Lane B no longer skips judge. The helix loop requires 888-APEX before ANY seal or sub-seal. Lane A runs full triple-pass (C0→C1-C6→JUDGE→P1-P7). Lane B runs C0 evidence authenticity check + P1-P7 paradox generation. This resolves the "333 provided story not evidence" scar discovered by F13 audit. See `JUDGE_BEFORE_SEAL.md`.
 
-Every record — receipt OR seal — follows this chain. Lane A executes all four steps. Lane B skips step 2 (autonomous).
+Every record — receipt OR seal — follows this helix:
 
 ```
-[1] arif_init      — bind session, attest identity, scope authority
-[2] arif_judge     — Lane A: required, returns SEAL verdict + judge_state_hash
-                     Lane B: skipped (autonomous, no constitutional threshold)
-[3] arif_forge     — apply the decision (write/edit/execute or no-op)
-[4] arif_seal      — emit the record
-                     Lane B: forge_vault(mode="receipt")
-                     Lane A: arif_seal(judge_state_hash=<from step 2>)
+[1] arif_init         — bind session, attest identity, scope authority
+[2] 888-APEX JUDGE    — Lane A: full triple-pass (C0→C1-C6→JUDGE→P1-P7)
+                        Lane B: C0 evidence check + P1-P7 paradox (lighter, but NOT skipped)
+[3] arif_forge        — apply the decision (write/edit/execute or no-op)
+[4] arif_seal         — emit the record
+                        Lane B: forge_vault(mode="receipt")
+                        Lane A: arif_seal(judge_state_hash=<from step 2>)
 ```
 
-**Hard rule:** Lane A without step 2 = VOID (judge-first, F13 binding).
-Lane B without step 2 = autonomous (T1/T2 work, receipts not seals).
+**Hard rule:** ANY seal without step 2 = VOID (judge-first, F13 binding).
+Lane B without C0 check = SABAR (autonomous but unverified — evidence must be authentic).
+Lane A without P1-P7 = SABAR (paradox questions are the soul's muscle).
 
 ### Example — Lane A (CONSTITUTIONAL_SEAL)
 
@@ -382,7 +383,21 @@ VERIFY
 
 ---
 
-## 6. THE CEREMONY — 6 Steps
+## 6. THE CEREMONY — 7 Steps (Judge Before Seal)
+
+### Step 0: 888-APEX JUDGE (HELIX — NEW, non-bypassable)
+
+```
+Before ANY seal or receipt:
+  Lane A → invoke 888-APEX (full triple-pass: C0→C1-C6→JUDGE→P1-P7)
+  Lane B → invoke 888-APEX (C0 evidence check + P1-P7 paradox questions)
+
+C0 gate: Did the agent provide RAW evidence (receipts, diffs, logs)?
+         Or did the agent provide a STORY about evidence?
+         If story → REJECT → SABAR. Request raw evidence.
+```
+
+**Hard rule:** This step is NOT optional. The helix is the institution.
 
 ### Step 1: RSI CYCLE
 ```
