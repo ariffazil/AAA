@@ -19,6 +19,8 @@ floor_scope:
 - F04
 - F07
 owner: A-FORGE
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 # FORGE-data-compression
 

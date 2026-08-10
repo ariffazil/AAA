@@ -7,6 +7,8 @@ risk_tier: low
 floor_scope: [F1, F2, F4, F7]
 description: Control plane router for GEOX agentic Earth-reasoning stack. Classifies requests into OBSERVE, COMPUTE, INTERPRET, CHALLENGE, CERTIFY, DEPLOY, ACTUATE lanes and enforces non-negotiable state boundaries before routing to specialist skills or tool surfaces.
 autonomy_tier: T1
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # 🏛️ GEOX Production Cockpit (Control Plane Router)

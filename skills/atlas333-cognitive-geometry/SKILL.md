@@ -13,6 +13,8 @@ triggers:
   - "when the agent needs to check which paradoxes are active"
   - "during arif_think (stage 333) — the ATLAS333 stage"
 autonomy_tier: T1
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # ⧉ ATLAS333 — Cognitive Geometry Consumer Skill

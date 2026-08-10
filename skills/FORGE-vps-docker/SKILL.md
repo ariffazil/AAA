@@ -8,6 +8,8 @@ risk_tier: medium
 floor_scope: [F1, F2, F4, F8]
 autonomy_tier: T2
 tags: [docker, vps, runbook, ops, compose, entropy]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # VPS Docker Operations — Production Discipline

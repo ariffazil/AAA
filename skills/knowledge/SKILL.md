@@ -7,6 +7,8 @@ owner: AAA
 risk_tier: low
 floor_scope: ['F1', 'F2']
 autonomy_tier: T1
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 # AAA Knowledge Skills
 
