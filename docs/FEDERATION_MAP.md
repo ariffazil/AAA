@@ -81,8 +81,8 @@ arif-sites
 
 | Repo | Port | Public Endpoint | Tools |
 |------|------|----------------|-------|
-| arifOS | 8088 | `arifos.arif-fazil.com/mcp` | 8 public: arif_init, arif_observe, arif_think, arif_route, arif_memory, arif_judge, arif_forge, arif_seal |
-| A-FORGE | 7072 | `mcp.arif-fazil.com/mcp` | 80+ forge_* tools |
+| arifOS | 8088 | `mcp.arif-fazil.com/mcp` | 8 public: arif_init, arif_observe, arif_think, arif_route, arif_memory, arif_judge, arif_forge, arif_seal |
+| A-FORGE | 7072 | `forge.arif-fazil.com/mcp` | 80+ forge_* tools |
 | GEOX | 8081 | `geox.arif-fazil.com/mcp` | 15 geox_* tools |
 | WEALTH | 18082 | `wealth.arif-fazil.com/mcp` | 20+ capital_* tools |
 | WELL | 18083 | `well.arif-fazil.com/mcp` | 10+ well_* tools |
