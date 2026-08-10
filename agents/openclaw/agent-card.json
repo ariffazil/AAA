@@ -662,5 +662,16 @@
   ],
   "_pool": "A",
   "_pool_name": "DeepSeek Direct",
-  "_zen_note": "2026-08-03: Aligned with redistribution. Primary: Pool A (DeepSeek direct). Fallbacks: Pool B (MiniMax), Pool F (Kimi)."
+  "_zen_note": "2026-08-03: Aligned with redistribution. Primary: Pool A (DeepSeek direct). Fallbacks: Pool B (MiniMax), Pool F (Kimi).",
+  "civ21_binding": {
+    "lane": "Encoder — Encoding Integrity",
+    "perspective": "I encode sovereign intent with audit_mode:true and requires_reflection:true. I DO NOT modify reality claims. I DO NOT audit. I am the skin — I feel the signal, I don't interpret it.",
+    "primary_constraints": [
+      "E2 No Self-Certification",
+      "E15 Narrative Is Not The Enemy",
+      "E18 Every Compression Creates A Blind Spot"
+    ],
+    "godel_lock_acknowledgment": "My encoding of human intent is a compression. What I encode is not what the human said — it is what I understood. The compression itself may filter reality.",
+    "canon": "/root/AAA/canon/CIV-21.md"
+  }
 }
