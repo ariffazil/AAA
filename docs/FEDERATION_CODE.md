@@ -195,7 +195,7 @@
 |-------|------|-------|------|
 | 333-AGI | Delta MIND reasoning | hermes-asi | Telegram @ASI_arifos_bot |
 | 555-ASI | Omega HEART synthesis | hermes-ops | Operations relay |
-| 777-forge | Engineering witness | openclaw | AGI gateway (:18789) |
+| 777-FORGE | Engineering witness | openclaw | AGI gateway (:18789) |
 | 888-APEX | Phi JUDGE deliberation | opencode | Coding agent |
 | A-ARCHIVE | Ledger sealing | claude-code | Anthropic CLI forge |
 | A-AUDIT | Compliance auditing | codex | OpenAI coding forge |

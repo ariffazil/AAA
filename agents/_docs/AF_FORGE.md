@@ -37,7 +37,7 @@ Every coding harness on `af-forge` must answer four questions:
 |---|---|---|---|
 | `grok-build` | high-power build harness | CLI + rich toolbench object in registry | parallel agents, plan/search/build FSM, heavy MCP surface |
 | `openclaw` | live gateway | `/root/AAA/agents/openclaw/agent-card.json` + `a2a-server/agent-cards/openclaw.json` | hosts multi-agent execution and routing |
-| `777-forge` | witness spawn anchor | `/root/AAA/agents/777-forge/IDENTITY.md` + `a2a-server/agent-cards/777-forge.json` | proves session spawn reality with PID receipts |
+| `777-FORGE` | witness spawn anchor | `/root/AAA/agents/777-FORGE/IDENTITY.md` + `a2a-server/agent-cards/777-FORGE.json` | proves session spawn reality with PID receipts |
 
 ## Alignment Contract
 
@@ -49,7 +49,7 @@ Every coding harness on `af-forge` must answer four questions:
 ## Current Status
 
 - `qwen-code` was previously half-bound: forge card existed, top-level AAA citizen did not. This file and its companion card close that gap.
-- `777-forge` existed in A2A but was absent from the machine registry. That gap is now closed at registry level.
+- `777-FORGE` existed in A2A but was absent from the machine registry. That gap is now closed at registry level.
 - Several FI cards had stale binary paths. Those paths are normalized to observed VPS reality in the current repo state.
 - `continue-cli` was normalized via Continue's official Linux installer path and now resolves to observed local version `1.5.47`.
 - `aider` remains declared in AAA but is not currently installed on `af-forge`. It is a spec citizen, not an observed active harness.
