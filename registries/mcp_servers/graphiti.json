@@ -1,0 +1,41 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/2026/server.json",
+  "id": "ext.graphiti",
+  "name": "graphiti-federation-extension",
+  "description": "Graphiti MCP \u2014 temporal knowledge graph (FalkorDB + Ollama). DISABLED: endpoint down, not yet revived.",
+  "version": "v2026.08.10",
+  "author": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+  "category": "data-store",
+  "tags": [
+    "graph",
+    "temporal",
+    "falkordb",
+    "disabled"
+  ],
+  "transport": {
+    "type": "streamable_http",
+    "endpoint": "http://127.0.0.1:8000/mcp"
+  },
+  "auth": {
+    "type": "sct_bearer"
+  },
+  "constitutional_tier": "F2_TRUTH",
+  "tools_count": 0,
+  "tools": [],
+  "status": "DISABLED:transient:falkordb-down",
+  "status_reason": "Endpoint offline since 2026-08-08. Awaiting FalkorDB restart. Will be re-attempted in F2-2026-Q3 sprint.",
+  "harness_visibility": [
+    "OPENCODE",
+    "COPILOT"
+  ],
+  "protocol_versions_supported": [
+    "2025-06-18"
+  ],
+  "mrtr_capable": false,
+  "subscriptions": [],
+  "cache_scope": "private",
+  "opencode_enabled": false,
+  "opencode_source_path": "/root/.config/opencode/opencode.json",
+  "last_reconciled": "2026-08-10T10:30:00.000000+00:00",
+  "_disabled_reason": "transient:falkordb-endpoint-down-pending-revive"
+}

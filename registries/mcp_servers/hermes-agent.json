@@ -1,0 +1,40 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/2026/server.json",
+  "id": "ext.hermes-agent",
+  "name": "hermes-agent-federation-extension",
+  "description": "Hermes Agent endpoint — companion HTTP surface to Hermes stdio. A2A dispatch for federation agents.",
+  "version": "v2026.08.10",
+  "author": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+  "category": "infrastructure",
+  "tags": [
+    "arifos-federation",
+    "agent",
+    "hermes"
+  ],
+  "transport": {
+    "type": "streamable_http",
+    "endpoint": "http://127.0.0.1:18090/mcp"
+  },
+  "auth": {
+    "type": "sct_bearer"
+  },
+  "constitutional_tier": "F13_SOVEREIGN",
+  "tools_count": 0,
+  "tools": [],
+  "status": "ONLINE",
+  "harness_visibility": [
+    "OPENCODE"
+  ],
+  "protocol_versions_supported": [
+    "2025-11-25",
+    "2026-07-28"
+  ],
+  "mrtr_capable": true,
+  "subscriptions": [
+    "toolsListChanged"
+  ],
+  "cache_scope": "private",
+  "opencode_enabled": true,
+  "opencode_source_path": "/root/.config/opencode/opencode.json",
+  "last_reconciled": "2026-08-10T10:30:00.000000+00:00"
+}

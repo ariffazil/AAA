@@ -1,0 +1,39 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/2026/server.json",
+  "id": "ext.sqlite",
+  "name": "sqlite-federation-extension",
+  "description": "SQLite MCP — local file-backed DB for arifos local state. DISABLED: schema migrated to Postgres.",
+  "version": "v2026.08.10",
+  "author": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+  "category": "data-store",
+  "tags": [
+    "database",
+    "sqlite",
+    "disabled"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "/usr/bin/mcp-server-sqlite --db-path /root/.local/share/arifos/local.db"
+  },
+  "auth": {
+    "type": "none"
+  },
+  "constitutional_tier": "F1_MUTATE",
+  "tools_count": 0,
+  "tools": [],
+  "status": "DISABLED",
+  "status_reason": "Schema migrated to Postgres. Local SQLite kept read-only for forensic replay. Do not re-enable.",
+  "harness_visibility": [
+    "OPENCODE",
+    "COPILOT"
+  ],
+  "protocol_versions_supported": [
+    "2025-06-18"
+  ],
+  "mrtr_capable": false,
+  "subscriptions": [],
+  "cache_scope": "private",
+  "opencode_enabled": false,
+  "opencode_source_path": "/root/.config/opencode/opencode.json",
+  "last_reconciled": "2026-08-10T10:30:00.000000+00:00"
+}

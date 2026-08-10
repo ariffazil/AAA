@@ -1,0 +1,41 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/2026/server.json",
+  "id": "ext.fed",
+  "name": "fed-federation-extension",
+  "description": "FED — Federation Router. Answers WHICH model@provider to call. Constitutional tier gate: ≥666 → direct only. SOT: /root/.config/federation-models.json",
+  "version": "v2026.08.10",
+  "author": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+  "category": "infrastructure",
+  "tags": [
+    "arifos-federation",
+    "router",
+    "fed"
+  ],
+  "transport": {
+    "type": "streamable_http",
+    "endpoint": "http://127.0.0.1:7074/mcp"
+  },
+  "auth": {
+    "type": "sct_bearer"
+  },
+  "constitutional_tier": "F2_TRUTH",
+  "tools_count": 0,
+  "tools": [],
+  "status": "ONLINE",
+  "harness_visibility": [
+    "OPENCODE",
+    "KIMI",
+    "HERMES"
+  ],
+  "protocol_versions_supported": [
+    "2025-11-25"
+  ],
+  "mrtr_capable": false,
+  "subscriptions": [
+    "toolsListChanged"
+  ],
+  "cache_scope": "private",
+  "opencode_enabled": true,
+  "opencode_source_path": "/root/.config/opencode/opencode.json",
+  "last_reconciled": "2026-08-10T10:30:00.000000+00:00"
+}
