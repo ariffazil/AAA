@@ -284,6 +284,7 @@ EMD_MODEL_CLASS = {
     "qwen3.7-plus":    {"lane": "neutral", "vision_in": False, "audio_in": False},
     "kimi-k2.7-code":  {"lane": "neutral", "vision_in": False, "audio_in": False},
     "flame-free":      {"lane": "neutral", "vision_in": False, "audio_in": False},
+}
 _NEUTRAL_CAP = {"lane": "neutral", "vision_in": False, "audio_in": False}
 
 AGENT_DEFAULT_OPERATION = {
@@ -390,6 +391,100 @@ CAPABILITY_SIGNATURES = {
         "models": ["mimo-v2.5-tts", "mimo-v2.5-asr"],
         "constitutional_tier": 333,
         "modality": "audio",
+    },
+    # ── Latent-Aware Routing (forged 2026-08-10 by 333-AGI, Lane B) ──
+    # Mirrors /root/AAA/federation/fed_signatures.yaml. The active
+    # routing logic lives in /root/AAA/federation/fed_router_v2.py.
+    "fed-image-generation": {
+        "description": (
+            "Diffusion-based image synthesis (DiT/SDXL/Wan2.7). "
+            "Renderer / Executor role. Iterative denoising on "
+            "continuous spatial latents. Fails structurally."
+        ),
+        "models": [
+            "bailian-token-plan/wan2.7-image-pro",
+            "bailian-token-plan/wan2.7-image",
+            "qwen-token-plan-individual/wan2.7-image-pro",
+        ],
+        "constitutional_tier": 555,
+        "modality": "pixel",
+    },
+    "fed-grounded-vision": {
+        "description": (
+            "Compact VLM with spatial grounding (bbox protocol). "
+            "Inspector / Evaluator role. Returns P_quality ∈ [0,1]."
+        ),
+        "models": [
+            "mulerouter/qwen-vl-max",
+            "bailian-token-plan/qwen-vl-max",
+            "flame/gemini-2.5-flash",
+        ],
+        "constitutional_tier": 555,
+        "modality": "vision",
+    },
+    "fed-inpainting": {
+        "description": (
+            "Targeted image repair via ControlNet / inpainting. "
+            "Triggered when fed-grounded-vision returns P_quality < 0.88 "
+            "with localized defect bboxes."
+        ),
+        "models": [
+            "comfyui/controlnet-inpaint",
+            "comfyui/sdxl-inpaint",
+        ],
+        "constitutional_tier": 555,
+        "modality": "pixel",
+    },
+    "fed-judge-deputy": {
+        "description": (
+            "Backup JUDGE channels for constitutional seats. Routes "
+            "glm-5.2 / qwen3.8-max through bailian / qwen-individual "
+            "when primary 4 seats fail. Resolves JUDGE_SEAT_UNAVAILABLE "
+            "cascades."
+        ),
+        "models": [
+            "bailian-token-plan/glm-5.2",
+            "bailian-token-plan/qwen3.8-max",
+            "qwen-token-plan-individual/glm-5.2",
+            "qwen-token-plan-individual/qwen3.8-max",
+        ],
+        "constitutional_tier": 666,
+        "modality": "text",
+    },
+    # ── LOCAL RUNTIME — Path A legitimate alternative (forged 2026-08-10) ──
+    # Replaces the prior "fed-uncensored-sovereign" shadow signature which
+    # violated F4 (parallel ledger), F11 (audit bypass), and F13 (no sovereign
+    # ack). Shadow infrastructure (/root/.shadow/, shadow_guard.py) was REMOVED
+    # in the same session. This signature achieves the same operational goal
+    # (local GPU execution with uncensored checkpoints) through the canonical
+    # ledger + content_classification field. No shadow files, no bypass.
+    "fed-local-uncensored": {
+        "description": (
+            "LOCAL RUNTIME: Uncensored local diffusion execution on "
+            "ComfyUI/SD-WebUI (:8188/:7860). Pony V6 / RealVisXL / FLUX "
+            "checkpoints permitted. SINGLE LEDGER — full audit via "
+            "arifflow_receipts.jsonl with content_classification field. "
+            "F4 + F11 compliant by design. Replaced fed-uncensored-sovereign "
+            "(shadow plane) per F13 directive 2026-08-10. Path A+ extensions: "
+            "LedgerViewFilter (operator ACL by content_class) + TelemetryRing "
+            "(TTL-bounded performance ring, sampled, promoted to canonical) — "
+            "addresses Dark Mirror concern via policy + bounded entropy, "
+            "not via shadow ledger."
+        ),
+        "models": [
+            "comfyui/pony-v6-xl",
+            "comfyui/realvisxl-v4",
+            "comfyui/flux-1-schnell",
+        ],
+        "constitutional_tier": 555,
+        "modality": "pixel",
+        "cost_band": "zero-api-cost",
+        "priority": "high_for_local_only_payloads",
+        "default_effort": "low",
+        "path_a_plus_extensions": [
+            "LedgerViewFilter (operator ACL by content_class)",
+            "TelemetryRing (TTL 300s, 1% sampling, canonical promotion)",
+        ],
     },
 }
 
@@ -1112,6 +1207,7 @@ def fed_route(
             fed-long-context     → [MiniMax-M3, mimo-v2.5-pro, qwen3.8-max]
             fed-agent-subagent   → [deepseek-v4-flash, qwen3.6-flash, mimo-v2.5]
             fed-realtime-voice   → [mimo-v2.5-tts, mimo-v2.5-asr]
+            fed-local-uncensored → LOCAL RUNTIME: routes to ComfyUI :8188 with full audit
         modality: text, vision, video, audio, omni
         agent_id: Calling agent (opencode, hermes, asi-555, apex-888)
         constitutional_tier: 0=default, 333=primary, 555=research, 666=judge, 999=seal
@@ -1127,6 +1223,7 @@ def fed_route(
         { routes: [...], meta: { query_time_ms, effort_applied, ... } }
     """
     t0 = time.time()
+
     # Resolve capability signature for metadata
     cap_meta = get_capability_meta(model) if model.startswith("fed-") else None
     cap_models = resolve_capability(model) if model.startswith("fed-") else []
