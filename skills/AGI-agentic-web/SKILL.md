@@ -78,8 +78,8 @@ LEVEL 5 — BROWSER:      forge_browser_navigate → click → type → screensh
 | Read a URL | `forge_fetch(mode=readable)` |
 | Raw HTML | `forge_fetch(mode=html)` |
 | Search the web | `forge_search(query=...)` |
-| Different search lens | `forge_minimax_search` |
-| AI-synthesized answers | `perplexity_ask` |
+| Different search lens | `free-search_search` (DDG+Mojeek) |
+| AI-synthesized answers | `perplexity_ask` (if connected) |
 | Deep multi-source research | `forge_research(depth=deep)` |
 | PDF/DOCX from URL | `free-search_read_doc` |
 | Navigate a page | `forge_browser_navigate` |
@@ -125,12 +125,15 @@ LEVEL 5 — BROWSER:      forge_browser_navigate → click → type → screensh
 
 Use at least 2 different search providers for consequential research:
 ```
-forge_search (Brave) + forge_minimax_search (MiniMax)
 forge_search (Brave) + free-search_search (DDG+Mojeek)
-perplexity_search + forge_search (Brave)
+forge_search (Brave) + minimax_web_search (MiniMax MCP native)
+forge_search (Brave) + brave_web_search (Brave direct — different endpoint)
+free-search_search (DDG+Mojeek) + perplexity_search (if connected)
 ```
 
-Single-provider research on constitutional matters = VOID.
+**Note:** `forge_minimax_search` (A-FORGE wrapper) was REMOVED 2026-07-31. The MiniMax search capability lives on through MiniMax's own MCP server (`minimax_web_search` / `web_search` at :18091). Use the MiniMax MCP native tools for MiniMax-powered search diversity.
+`perplexity_*` and `exa_*` require specific MCP connections not present in all sessions.
+`playwright_browser_*` (:8931) is unreachable — use `forge_browser_*` instead.
 
 ---
 
