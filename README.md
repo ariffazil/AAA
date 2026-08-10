@@ -1,6 +1,6 @@
 <!-- SOT-MANIFEST
 federation_release: v2026.08.09
-last_verified: 2026-08-09T10:00:04Z
+last_verified: 2026-08-10T12:10:00Z
 live_commit: 59d79cae (P0 hardening — OBSERVE fast-path + cascade drill + dead provider fix)
 truth_rule: /health + agent registry beat any static count in prose
 a2a_port: 3001
@@ -145,3 +145,30 @@ Federation surface: [aaa.arif-fazil.com](https://aaa.arif-fazil.com) · Health: 
 
 > *DITEMPA BUKAN DIBERI — Forged, Not Given.*  
 > *Maruah without SEAL is sentiment. SEAL without Maruah is enforcement. 999 SEAL ALIVE.*
+
+---
+
+## 🛡️ CI Governance (F13 verdict 2026-08-10)
+
+This repo follows the federation's CI governance pattern (replicated from `ariffazil/arifOS` PR #683). The pattern ensures Dependabot PRs receive a real, reproducible unprivileged verdict — no more all-red check rolls from structurally-incompatible gates.
+
+**Per-repo adapter** (see `.github/workflows/` for the actual files):
+
+- `.github/dependabot.yml` — `uv` (Python) / `cargo` (Rust) / `npm` (TypeScript) ecosystem; cooldown 3d; open-PRs 5; constitutional packages un-grouped (no `ignore:` — visibility preserved)
+- `.github/workflows/dependabot-ci.yml` — unprivileged gate; runs ONLY on Dependabot PRs; SHA-bound probes
+- `.github/workflows/{ci-uv-lock-invariant|cargo-lock-invariant|npm-lock-invariant}.yml` — universal `{uv lock --check && uv sync --frozen | cargo check --locked && cargo build --locked | npm ci}` invariant on every PR + push to main
+- `.github/workflows/auto-merge-dependabot.yml` — constitutional package denylist (per-language); F13 review the only merge path
+- Privileged workflows gated with `if: github.actor != 'dependabot[bot]' && github.actor != 'app/dependabot'` — so they SKIP for Dependabot PRs where their inputs cannot be satisfied
+
+**Constitutional packages** (denied auto-merge, require F13 review):
+
+| Language | Denylist |
+|---|---|
+| Python | `protobuf`, `cryptography`, `fastmcp-slim`, `fastmcp`, `caio`, `sentence-transformers`, `pynacl`, `blake3` |
+| Rust    | `serde`, `tokio`, `hyper`, `axum`, `reqwest`, `rustls`, `async-trait`, `clap`, `tracing` |
+| TypeScript | `zod`, `@modelcontextprotocol/sdk`, `fastmcp`, `mcp-sdk`, `tsx`, `vitest`, `@types/node`, `typescript`, `ts-node` |
+| Static site | `vite`, `react`, `react-dom`, `react-router`, `@tanstack/react-query`, `tailwindcss` |
+
+**Reference:** [`/root/AGENTS.md`](/root/AGENTS.md) — canonical federation doctrine. `AAA/docs/ORGAN.md` — topology.
+
+DITEMPA BUKAN DIBERI — governance is forged, not given.
