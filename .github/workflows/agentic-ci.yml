@@ -36,6 +36,7 @@ jobs:
   # F11 — Gitleaks (parity with GEOX/WEALTH/WELL/A-FORGE/HERMES)
   # ─────────────────────────────────────────────────────────────
   secrets:
+    if: github.actor != 'dependabot[bot]' && github.actor != 'app/dependabot'
     name: 🔐 Secrets Scan (gitleaks)
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -51,6 +52,7 @@ jobs:
   # LANE 1: STANDARD CI — lint + build + test
   # ─────────────────────────────────────────────────────────────
   standard:
+    if: github.actor != 'dependabot[bot]' && github.actor != 'app/dependabot'
     name: "Lane 1 — Standard CI"
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -92,6 +94,7 @@ jobs:
   # LANE 2: BIJAKSANA — TypeScript-native entropy metrics
   # ─────────────────────────────────────────────────────────────
   bijaksana:
+    if: github.actor != 'dependabot[bot]' && github.actor != 'app/dependabot'
     name: "Lane 2 — BIJAKSANA ΔS Φ Ψ Ω"
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -177,10 +180,11 @@ jobs:
   # REPORT: Aggregate + Post Agentic CI Check Run
   # ─────────────────────────────────────────────────────────────
   report:
+    if: (always()) && (github.actor != 'dependabot[bot]' && github.actor != 
+      'app/dependabot')
     name: "📊 Agentic CI Report"
     runs-on: ubuntu-latest
     needs: [standard, bijaksana]
-    if: always()
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v7
@@ -194,10 +198,10 @@ jobs:
           echo "Ref: ${{ github.ref_name }}"
           echo "Time: $(date -u '+%Y-%m-%dT%H:%M:%SZ')"
           echo ""
-          
+
           STANDARD_OK="${{ needs.standard.result }}"
           echo "Lane 1 (Standard CI): $STANDARD_OK"
-          
+
           DS="${{ needs.bijaksana.outputs.ds-value }}"
           PHI="${{ needs.bijaksana.outputs.phi-value }}"
           PSI="${{ needs.bijaksana.outputs.psi-value }}"
@@ -206,7 +210,7 @@ jobs:
           echo "Φ  = $PHI  (build health)"
           echo "Ψ  = $PSI  (agent registry)"
           echo "Ω  = $OMEGA  (governance)"
-          
+
           # Verdict: CI evidence, never sovereign language
           STANDARD_OK="${{ needs.standard.result }}"
           if [ "$STANDARD_OK" = "success" ] && [ "$OMEGA" = "0" ] && [ "$DS" -lt 100 ]; then
@@ -217,7 +221,7 @@ jobs:
             VERDICT="CI_FAIL"
           fi
           echo "Verdict: $VERDICT"
-          
+
           cat > agentic_ci_report.json << REPORTEOF
           {
             "organ": "AAA",
@@ -246,7 +250,7 @@ jobs:
             const report = JSON.parse(fs.readFileSync('agentic_ci_report.json', 'utf8'));
             const conclusion = report.verdict === 'CI_PASS' ? 'success' : 
                               report.verdict === 'ADVISORY_WARN' ? 'neutral' : 'failure';
-            
+
             await github.rest.checks.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -283,10 +287,11 @@ jobs:
   # FINAL GATE: honest pass/fail from real job outcomes
   # ─────────────────────────────────────────────────────────────
   final-gate:
+    if: (always()) && (github.actor != 'dependabot[bot]' && github.actor != 
+      'app/dependabot')
     name: "🔒 Final Gate"
     runs-on: ubuntu-latest
     needs: [standard, bijaksana, report]
-    if: always()
     timeout-minutes: 2
     steps:
       - name: Verdict
