@@ -53,7 +53,8 @@ LEVEL 5 — BROWSER (A-FORGE :7072, MUTATE):
 | "I need to read a URL" | `forge_fetch(mode=readable)` | Governed, cached, SSRF-safe |
 | "I need the raw HTML" | `forge_fetch(mode=html)` | Raw for parsing |
 | "I need to search the web" | `forge_search(query=...)` | Governed, receipt-logged, FLAME-synthesized |
-| "I need a different search lens" | `forge_minimax_search` | Provider diversity (Gödel E3) |
+| "I need a different search lens" | `free-search_search` | Provider diversity — DDG+Mojeek (Gödel E3) |
+| "I need feedback-ranked search" | `meyhem_search` | Unique feedback loop re-ranks results |
 | "I need AI-synthesized answers" | `perplexity_ask` (if available) | Answers, not links |
 | "I need deep multi-source research" | `forge_research(depth=deep)` | Multi-hop, cited |
 | "I need a PDF/DOCX from URL" | `free-search_read_doc` | Document parser |
@@ -69,6 +70,8 @@ LEVEL 5 — BROWSER (A-FORGE :7072, MUTATE):
 | "I need side-by-side URL compare" | `free-search_compare` | Parallel fetch |
 | "I need structured metadata" | `free-search_extract_structured` | Schema extraction |
 | "I need to save a file from URL" | `free-search_download` | Binary to disk |
+| "I need parallel multi-URL fetch" | `free-search_fetch_batch` | Up to 20 URLs in parallel |
+| "I need to discover search engines" | `free-search_engines` | Lists available backends |
 | "I don't know what tool exists" | `capability-index_capability_search` | Tool discovery |
 
 ---
@@ -126,12 +129,17 @@ These patterns emerged from all 3 major browser-agent projects. Every agent shou
 > **E3: Independence is measured. No single search provider is sufficient.**
 
 ```
-forge_search (Brave)           → primary governed search
-forge_minimax_search (MiniMax) → provider diversity
-free-search_search (DDG+Mojeek)→ engine diversity, zero-key
-brave_web_search (Brave direct)→ bypass governance wrapper
-perplexity_search              → AI-synthesized answers
+forge_search (Brave)            → primary governed search
+free-search_search (DDG+Mojeek) → engine diversity, zero-key (replaces forge_minimax_search — REMOVED 2026-07-31)
+brave_web_search (Brave direct) → bypass governance wrapper
+minimax_web_search (MiniMax MCP) → MiniMax native search — provider diversity (Gödel E3)
+perplexity_search               → AI-synthesized (requires Perplexity MCP — not in all sessions)
+meyhem_search                   → feedback-driven search with result ranking (when available)
 ```
+
+**Note on `forge_minimax_search`:** The A-FORGE wrapper was removed 2026-07-31 when MiniMax's REST API was being deprecated. MiniMax has since launched an official MCP server exposing `minimax_web_search` and `web_search` natively. The capability is alive through MiniMax MCP (:18091) — just not through the old A-FORGE wrapper.
+
+**Session availability note:** Not all tools are reachable in every session. `perplexity_*`, `exa_*`, `playwright_browser_*` (port :8931), and `forge_minimax_search` (DEAD since 2026-07-31) may not be connected. Always prefer the universally-available `forge_*` and `free-search_*` tools.
 
 **Rule:** When researching anything of consequence, use at least 2 different search providers. Provider diversity IS the Gödel E3 operationalization. Different providers see different webs. Consolidation = single observer capture = VOID.
 

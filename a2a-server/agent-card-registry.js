@@ -22,14 +22,14 @@ const cards = new Map();
 // Maps top-level directory → CIV-33 layer label. Used to enrich normalised
 // cards with `civ_layer` so /a2a/discover and dashboards can group by layer.
 const CIV33_LAYERS = {
-  // 3-layer geometry (2026-08-09 F13 FINAL — Hermes + Arif):
-  //   L1 IDENTITY  — who (333/555/888) sealed rare
+  // 3-layer geometry (2026-08-10 F13 — adat agentic update):
+  //   L1 IDENTITY  — who (333/555/888) sealed rare · carries adat_agentic.forge
   //   L2 HARNESS   — where / FI runtime engines
-  //   L3 BINDING   — attachment: forge + functions + roles + organs + pillars + extensions
+  //   L3 BINDING   — attachment: functions + roles + organs + pillars + extensions
+  // FORGE is no longer a binding layer. FORGE is adat agentic — inherited by all warga.
   // Physical folders stay. AAA = catalog. WHICH engine = FED/runtime only.
   identity: 'identity',
   harnesses: 'harness',
-  forge: 'binding',
   functions: 'binding',
   roles: 'binding',
   organs: 'binding',
@@ -189,14 +189,19 @@ function normaliseCard(card, sourcePath) {
         civLayer = 'binding'; // edge home cards fold into L3 BINDING (3-layer final)
       } else if (
         /\/agents\/openclaw\//.test(base) ||
-        /\/agents\/forge-bot\//.test(base) ||
-        /\/agents\/777/.test(base) ||
         /\/agents\/prospect/.test(base) ||
         /\/agents\/agentic-trading/.test(base) ||
         /\/agents\/skill-auditor\//.test(base)
       ) {
-        // openclaw home + domain specialists + forge-bot = attachment surface
+        // openclaw home + domain specialists = attachment surface
         civLayer = 'binding';
+      } else if (
+        /\/agents\/777/.test(base) ||
+        /\/agents\/forge-bot\//.test(base)
+      ) {
+        // 777-FORGE retired (F13 directive 2026-08-10 — FORGE is adat agentic, not a lane)
+        // forge-bot = execution bot, not an identity
+        civLayer = 'retired';
       }
     }
   }
@@ -222,6 +227,11 @@ function normaliseCard(card, sourcePath) {
     skills_prefix: card.skills_prefix || [],
     runtime_harness: card.runtime_harness || null,
     identity_anchor: card.identity_anchor || null,
+    // adat agentic — FORGE as inherited capability substrate (F13 directive 2026-08-10)
+    adat_agentic: card.adat_agentic || null,
+    forge_inherited: card.adat_agentic?.forge?.inherited === true,
+    forge_access: card.adat_agentic?.forge?.access || null,
+    forge_zen: card.adat_agentic?.forge?.zen || null,
     mcp_servers: card.mcp_servers || [],
     epistemic_floor: card.epistemic_floor || null,
     f1_boundary: card.f1_boundary || null,
