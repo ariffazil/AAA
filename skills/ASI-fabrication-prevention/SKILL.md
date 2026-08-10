@@ -20,6 +20,8 @@ cognitive_hints:
   hermes: Claim exists? Prove it. Can't prove? UNKNOWN. Never fabricate.
 owner: AAA
 autonomy_tier: T0
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 # ASI-fabrication-prevention
 

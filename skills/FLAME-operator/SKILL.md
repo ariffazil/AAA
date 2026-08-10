@@ -14,6 +14,8 @@ floor_scope:
   - F2
   - F11
   - F13
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 # 🔥 FLAME-operator — Operate & Maintain FLAME
 

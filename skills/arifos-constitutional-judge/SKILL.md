@@ -14,6 +14,8 @@ cluster: CONSTITUTION · VERDICT · ACT
 risk_tier: high
 autonomy_tier: T2
 floor_scope: [F1, F2, F4, F7, F9, F11, F13]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # arifos-constitutional-judge (LOAD-BEARING · GÖDEL · STRANGE-LOOP ZEN)

@@ -1,3 +1,7 @@
+---
+capability_tier: fed-agent-subagent
+ecology_state: WARM
+---
 # FORGE-subagent-lifecycle — Unified Sub-Agent Lifecycle Manager
 
 > **Forged:** 2026-08-07 by 333-AGI Δ MIND under F13 SOVEREIGN directive

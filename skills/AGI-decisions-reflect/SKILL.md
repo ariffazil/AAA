@@ -20,6 +20,8 @@ trigger_when:
   - after_multi_file_change
   - before_seal
 tags: [decisions, reflection, uncertainty, review, meta-cognition]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # AGI-decisions-reflect — Lightweight Decision Uncertainty Surfacing

@@ -36,6 +36,8 @@ tests:
 - "Detect protocol version mismatch (e.g. client wants 2026-07-28, server is 2025-11-25)"
 - "Produce JSON-RPC trace showing every request/response header + body"
 - "Confirm OAuth flow is enabled or absent on a given server"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # ⚒️ FORGE-mcp-probe — MCP Conformance Testing Skill

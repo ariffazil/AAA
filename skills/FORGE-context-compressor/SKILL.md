@@ -26,6 +26,8 @@ tags:
 - rsi-breaker
 status: NEW (Phase 3 gap fill)
 owner: A-FORGE
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 # FORGE · context-compressor
 

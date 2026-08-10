@@ -16,6 +16,8 @@ floor_scope:
 - F12
 - F13
 autonomy_tier: T1
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 # Secret Hygiene
 

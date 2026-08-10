@@ -16,7 +16,8 @@ metadata:
     requires_toolsets: []
 source: hermes-only
 synthesized: 2026-08-08
-
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Seven Zen Organs — Constitutional Enforcement

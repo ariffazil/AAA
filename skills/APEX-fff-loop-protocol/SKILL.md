@@ -22,6 +22,8 @@ cognitive_hints:
   hermes: 5 passes. Diagnose. Attack. Forge. Verify. Seal. Run them.
 owner: AAA
 autonomy_tier: T1
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 # APEX-fff-loop-protocol
 

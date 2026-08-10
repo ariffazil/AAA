@@ -38,6 +38,8 @@ triggers:
   - "Copilot wrote"
 source: hermes-only
 synthesized: 2026-08-08
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # External Artifact Verdict

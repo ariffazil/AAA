@@ -8,6 +8,8 @@ risk_tier: high
 floor_scope: [F1, F2, F9, F13]
 autonomy_tier: T1
 tags: [identity, invariance, rsi, hexagon, constitutional]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # HEXAGON IDENTITY INVARIANCE TEST v1.0.0

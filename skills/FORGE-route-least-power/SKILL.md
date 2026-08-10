@@ -16,6 +16,8 @@ tags: [routing, least-power, discipline, anti-yak-shaving, efficiency, entropy]
 scope: all_agents
 priority: 80
 autonomy_tier: T1
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # ROUTE LEAST POWER — Lower Machine Entropy

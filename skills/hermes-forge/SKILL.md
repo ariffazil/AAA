@@ -3,6 +3,8 @@ name: hermes-forge
 description: /forge — routes execution to A-FORGE or a coding runtime (OpenCode-Zen). The execution primitive after /init establishes identity and /propose-seal establishes evidence. /forge = "go execute this mutation under my authority."
 tags: [forge, execution, coding-agent, telegram-native, hermes]
 license: MIT
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 # Hermes /forge — Execution Primitive
 

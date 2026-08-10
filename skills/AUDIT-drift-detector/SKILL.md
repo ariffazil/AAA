@@ -22,6 +22,8 @@ floor_scope:
 - F11
 owner: A-FORGE
 autonomy_tier: T0
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 # AUDIT-drift-detector
 
