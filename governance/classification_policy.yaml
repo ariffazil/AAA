@@ -1,0 +1,471 @@
+# ⚒️ MCP TOOL CLASSIFICATION POLICY v1.0
+#
+# Constitutional SOT for tool authority classification.
+# NOT a hand-maintained inventory. This is the COMPILABLE rule set.
+# Every tool in the federation is classified by APPLYING these rules.
+#
+# Canon: /root/AAA/governance/classification_policy.yaml
+# Forged: 2026-08-10 by 333-AGI Δ MIND under 888-APEX review
+# Gap: G5 — Tool classification authority source
+# DITEMPA BUKAN DIBERI
+
+# ─── METADATA ───
+policy:
+  id: "classification-policy-v1.0"
+  forged: "2026-08-10T04:55:00Z"
+  forged_by: "333-AGI"
+  reviewed_by: "888-APEX"
+  authority: "F13 SOVEREIGN ratification required for mutation of this policy"
+  protocol_baseline: "2026-07-28"
+  gap_resolved: "G5 — Tool classification authority source"
+
+# ─── THE FOUR CLASSES ───
+classes:
+  OBSERVE:
+    id: 0
+    description: "Read-only. No side effects. May be stateless."
+    session_required: false
+    reversible: true
+    authority_floor: "NONE"
+    
+  GOVERN:
+    id: 1
+    description: "Gate, route, judge, evaluate. Controls what CAN happen."
+    session_required: true
+    reversible: true
+    authority_floor: "OBSERVE_ONLY"
+
+  MUTATE:
+    id: 2
+    description: "Changes state. Files, DB, shell, deploy. Requires lease."
+    session_required: true
+    reversible: false
+    authority_floor: "LIMITED_MUTATE"
+
+  SEAL:
+    id: 3
+    description: "Immutable append to VAULT999. Highest authority."
+    session_required: true
+    reversible: false
+    authority_floor: "FULL_MUTATE"
+
+# ─── VERB-BASED CLASSIFICATION ───
+# Applied by tokenizing tool name and matching against these sets.
+# First match wins. Order: SEAL > GOVERN > MUTATE > OBSERVE.
+
+verb_rules:
+  SEAL:
+    verbs:
+      - seal        # forge_seal, arif_seal
+      - attest      # federation_release_attestation
+      - vault_append
+    patterns:
+      - "_seal$"
+      - "_sealed$"
+      - "visual_seal"
+
+  GOVERN:
+    verbs:
+      - judge       # arif_judge, forge_judge_proxy
+      - witness     # forge_witness
+      - evaluate    # forge_evaluate
+      - route       # arif_route, fed_route
+      - lease       # forge_lease
+      - lock        # forge_lock
+      - policy      # forge_policy
+      - authorize
+      - gate        # apex_verdict_*, apex_floor_check
+      - audit       # forge_surface_audit (governance audit)
+      - guard       # forge_surface_guard
+      - register    # forge_register (governance gate)
+      - encode      # forge_apex_encode
+      - recompute   # forge_apex_recompute
+      - emd         # forge_apex_emd
+      - tier_bind
+      - govern      # forge_check_governance
+      - init        # arif_init, forge_session_init
+      - bind        # kernel_bind
+    patterns:
+      - "^arif_init$"
+      - "^arif_judge"
+      - "^arif_route$"
+      - "_governance$"
+      - "_governance_check$"
+      - "_gate$"
+      - "_auth_"
+
+  MUTATE:
+    verbs:
+      - write       # forge_filesystem(write), forge_skillstore_write
+      - edit        # (native edit tool)
+      - update      # forge_apex_metabolize (updates state)
+      - execute     # forge_execute, forge_shell
+      - commit      # forge_git_commit
+      - push        # forge_git(push)
+      - create      # forge_skill, forge_github_create_*
+      - delete      # forge_filesystem(delete), forge_sandbox_evict
+      - restart     # deploy/restart
+      - deploy      # forge_execute_sealed (deploy path)
+      - apply       # supabase_apply_migration
+      - merge       # supabase_merge_branch
+      - send        # forge_send_confirm, forge_gmail(send)
+      - transfer    # forge_transfer_confirm
+      - spawn       # forge_parallel, openrouter_spawn
+      - generate    # openrouter_generate-*, forge_skill
+      - synthesize  # forge_synthesize
+      - stage       # forge_stage
+      - ingest      # arifflow_flow_ingest, forge_document_ingest(chunk)
+      - mutate
+      - click       # forge_browser_click
+      - type        # forge_browser_type
+      - navigate    # forge_browser_navigate
+      - canonize    # forge_canonize
+      - metabolize  # forge_apex_metabolize
+      - pause       # forge_sandbox_pause
+      - resume      # forge_sandbox_resume
+      - evict       # forge_sandbox_auto_evict
+      - retire      # forge_ephemeral(retire)
+      - index       # codebase-memory_index_repository (mutates graph)
+      - migrate     # supabase_apply_migration
+      - rebase      # supabase_rebase_branch
+      - reset       # supabase_reset_branch
+      - install     # openrouter_install-*
+      - transcribe  # openrouter_transcribe-audio
+      - download    # free-search_download
+      - remove      # megamemory_remove_concept
+      - resolve     # megamemory_resolve_conflict (mutates graph)
+    patterns:
+      - "_write$"
+      - "_create$"
+      - "_delete$"
+      - "_deploy$"
+      - "_execute"
+      - "_mutate"
+      - "^forge_shell$"
+      - "^forge_git$"
+      - "^forge_docker$"
+      - "^forge_browser_"
+
+  OBSERVE:
+    # DEFAULT: any tool not matching above rules falls here
+    verbs:
+      - get         # forge_github_get_file, megamemory_get_concept
+      - list        # forge_registry(list), supabase_list_tables
+      - search      # forge_search, capability_search, free-search_search
+      - query       # forge_postgres(query), context7_query-docs
+      - recall      # forge_memory(recall)
+      - status      # forge_status, forge_registry_status
+      - health      # forge_health_check, hermes_health
+      - metrics     # forge_netdata_metrics, forge_wm_stats
+      - inspect     # forge_document_ingest(analyze)
+      - scan        # forge_scan, forge_security_drift_scan
+      - probe       # forge_probe, aaa_organ_probe
+      - fetch       # forge_fetch, free-search_fetch
+      - read        # forge_filesystem(read), forge_skillstore_read
+      - view        # geox_well(view)
+      - check       # forge_fingerprint_check, hermes_fact_check
+      - verify      # forge_verify_timeline, forge_runtime_verify
+      - diagnose    # capital_diagnose, well_machine_diagnose
+      - observe     # arif_observe
+      - think       # arif_think (read-only reasoning)
+      - memory      # arif_memory(recall)
+      - measure     # aaa_measure (OBSERVE stage only)
+      - discover
+      - find
+      - compare     # free-search_compare
+      - detect      # codebase-memory_detect_changes
+      - trace       # codebase-memory_trace_path, well_trace_lineage
+      - map         # repomapper_repo_map, geox_map
+      - compute     # geox_seismic_compute
+      - interpret   # geox_seismic_interpret
+      - model       # geox_model
+      - backtest    # capital_backtest
+      - indicator   # capital_indicator (OBSERVE — computes, never acts)
+      - entry_plan  # capital_entry_plan (OBSERVE — proposes, never executes)
+      - entropy     # capital_entropy (OBSERVE — measures, never mutates)
+      - primitive   # capital_primitive (OBSERVE — pure computation)
+      - market      # capital_market (OBSERVE — reads market data)
+      - health      # capital_health (OBSERVE — reads financial state)
+      - assess      # well_assess_*
+      - validate    # well_validate_vitality
+      - guard       # well_guard_dignity (REFLECT, not GOVERN in WELL context)
+      - classify    # well_classify_substrate
+      - recommend   # well_machine_recommend (ADVISORY — never executes)
+      - report      # fed_report_latency (writes telemetry, not governed state)
+      - ping        # openrouter_ping
+      - understand  # minimax_understand_image, megamemory_understand
+      - look        # forge_docs_lookup
+      - extract     # forge_browser_extract_text, free-search_extract_structured
+      - screenshot  # forge_browser_screenshot
+      - chart       # forge_chart
+      - dryrun      # forge_shell_dryrun
+      - predict     # forge_predict
+      - review      # hermes_plan_review
+      - critique    # forge_heart_critique (routes to arifOS — doesn't judge)
+      - sweep       # forge_entropy_sweep
+      - worktree    # forge_worktree
+      - fingerprint # forge_fingerprint_check
+      - isomorphism # forge_isomorphism_check
+      - journalctl   # forge_journalctl (read-only logs)
+      - ledger      # forge_shell_ledger (read-only), capital_ledger(read)
+      - alert       # forge_shell_alert_history
+      - schema      # semgrep_rule_schema, codebase-memory_get_graph_schema
+      - ast         # semgrep_get_abstract_syntax_tree
+      - findings    # semgrep_semgrep_findings
+      - docs        # supabase_search_docs, openrouter_search-docs
+      - logs        # supabase_get_logs, forge_journalctl
+      - architecture # codebase-memory_get_architecture
+      - snippet     # codebase-memory_get_code_snippet
+      - graph       # codebase-memory_query_graph, codebase-memory_search_graph
+      - code        # codebase-memory_search_code
+      - project     # codebase-memory_list_projects
+      - engines     # free-search_engines
+      - credits     # openrouter_get-credits
+      - model       # openrouter_get-model, openrouter_list-models
+      - preset      # openrouter_get-preset, openrouter_list-presets
+      - provider    # openrouter_list-providers
+      - generation  # openrouter_get-generation
+      - endpoint    # openrouter_get-endpoint-uptime-history, openrouter_list-model-endpoints
+      - benchmark   # openrouter_list-benchmarks
+      - ranking     # openrouter_list-*-rankings
+      - task        # openrouter_list-task-classifications
+      - app         # openrouter_list-app-rankings
+      - feedback    # openrouter_send-feedback (writes external, not governed)
+      - message     # openrouter_send-message (pass-through inference)
+      - eval        # openrouter_spawn-ori-eval (launches sandbox — but advisory only)
+      - advisor     # supabase_get_advisors
+      - extension   # supabase_list_extensions
+      - migration   # supabase_list_migrations (read-only)
+      - table       # supabase_list_tables
+      - branch      # supabase_list_branches
+      - function    # supabase_list_edge_functions, supabase_get_edge_function
+      - typescript  # supabase_generate_typescript_types
+      - key         # supabase_get_publishable_keys (read)
+      - url         # supabase_get_project_url
+      - language    # semgrep_get_supported_languages
+      - supply_chain # semgrep_semgrep_scan_supply_chain (scan = read)
+      - custom_rule # semgrep_semgrep_scan_with_custom_rule
+      - schedule    # forge_calendar(read)
+      - drive       # forge_drive(read)
+      - sheet       # forge_sheets(read)
+      - gmail       # forge_gmail(read)
+      - agent       # aaa_list_agents, forge_agent(list/status)
+      - task        # aaa_poll_task
+      - contrast    # fed_contrast
+      - system      # hermes_system_status
+      - cross       # hermes_cross_verify (delegates, doesn't judge)
+      - epistemic   # hermes_epistemic_check (checks, doesn't judge)
+      - fact        # hermes_fact_check
+      - steward     # hermes_memory_steward (classifies, doesn't mutate)
+      - plan        # hermes_plan_review (reviews, doesn't approve)
+      - research    # free-search_research
+      - cache       # free-search_cache_search
+      - doc         # free-search_read_doc
+      - structured  # free-search_extract_structured
+      - batch       # free-search_fetch_batch
+      - collection  # qdrant_collections_list
+      - count       # qdrant_count
+      - qdrant      # qdrant_search
+      - concept     # megamemory_get_concept, megamemory_list_roots
+      - conflict    # megamemory_list_conflicts
+      - link        # megamemory_link (reads + writes relationship, but OBSERVE-dominant)
+      - understand  # megamemory_understand
+      - histogram   # (reserved)
+      - profile     # geox_basin(profile)
+      - resolve     # geox_basin(resolve), context7_resolve-library-id
+      - macrostrat  # geox_basin(macrostrat)
+      - backstrip   # geox_basin(backstrip)
+      - maturity    # geox_basin or geox_source
+      - reconstruct # geox_basin(reconstruct)
+      - petrophysics # geox_petrophysics
+      - geomechanics # geox_geomechanics
+      - prospect    # geox_prospect
+      - seismic     # geox_seismic_*
+      - spatial     # geox_spatial
+      - temporal    # geox_temporal
+      - well        # geox_well, geox_well_ingest, geox_well_qc
+      - source      # geox_source
+      - deep_time   # geox_deep_time
+      - workspace   # geox_workspace
+      - claim       # geox_claim (creates claims, but COMPUTE_ONLY organ)
+      - falsify     # geox_claim(falsify)
+      - challenge   # geox_claim(challenge)
+      - basin       # geox_basin
+    patterns:
+      - "_list$"
+      - "_get$"
+      - "_read$"
+      - "_search$"
+      - "_query$"
+      - "_fetch$"
+      - "_status$"
+      - "_health$"
+      - "^hermes_health$"
+      - "_scan$"
+      - "_probe$"
+      - "_check$"
+      - "_verify$"
+      - "_dryrun$"
+      - "_diagnose$"
+      - "_assess$"
+      - "_validate$"
+      - "_classify$"
+      - "_recommend$"
+      - "_compute$"
+      - "_interpret$"
+      - "_backtest$"
+      - "_indicator$"
+      - "_primitive$"
+      - "_market$"
+      - "_entropy$"
+
+# ─── ORGAN-LEVEL OVERRIDES ───
+# Some organs have a hard authority ceiling that overrides verb classification.
+# Even if a tool name suggests MUTATE, the organ's ceiling restricts it.
+
+organ_overrides:
+  GEOX:
+    authority_ceiling: "COMPUTE_ONLY"
+    max_class: "OBSERVE"
+    note: "geox_claim(mode=seal) is OBSERVE despite name — seal requires arifOS"
+
+  WEALTH:
+    authority_ceiling: "COMPUTE_ONLY"
+    max_class: "OBSERVE"
+    exception:
+      - tool: "capital_ledger"
+        mode: "write"
+        class: "MUTATE"
+        note: "Requires human acknowledgment. Writes to vault receipt, not VAULT999."
+
+  WELL:
+    authority_ceiling: "REFLECT_ONLY"
+    max_class: "OBSERVE"
+    note: "well_guard_dignity is REFLECT, not GOVERN — WELL cannot adjudicate"
+
+  AAA:
+    authority_ceiling: "DISPLAY_ONLY"
+    max_class: "GOVERN"
+    note: "aaa_dispatch_a2a is GOVERN (routes), aaa_organ_probe is OBSERVE"
+
+  arifFlow:
+    authority_ceiling: "METABOLIZE_ONLY"
+    max_class: "MUTATE"
+    note: "flow_ingest writes to metabolic ledger, not governed state"
+
+  FLAME:
+    authority_ceiling: "ADVISORY"
+    max_class: "OBSERVE"
+
+  FED:
+    authority_ceiling: "ADVISORY"
+    max_class: "GOVERN"
+
+# ─── MODE-AWARE OVERRIDES ───
+# Some tools change class depending on their `mode` parameter.
+# These are applied AFTER verb rules but BEFORE organ ceiling.
+
+mode_overrides:
+  - tool: "forge_filesystem"
+    modes:
+      read: "OBSERVE"
+      list: "OBSERVE"
+      search: "OBSERVE"
+      write: "MUTATE"
+      delete: "MUTATE"
+      move: "MUTATE"
+
+  - tool: "forge_postgres"
+    modes:
+      query: "OBSERVE"
+      schema: "OBSERVE"
+      mutate: "MUTATE"
+
+  - tool: "forge_git"
+    modes:
+      status: "OBSERVE"
+      diff: "OBSERVE"
+      log: "OBSERVE"
+      commit: "MUTATE"
+      push: "MUTATE"
+
+  - tool: "forge_docker"
+    modes:
+      ps: "OBSERVE"
+      logs: "OBSERVE"
+      images: "OBSERVE"
+      exec: "MUTATE"
+
+  - tool: "forge_vault"
+    modes:
+      read: "OBSERVE"
+      list: "OBSERVE"
+      write: "MUTATE"
+      receipt: "SEAL"
+
+  - tool: "forge_reality_loop"
+    modes:
+      start: "MUTATE"
+      advance: "MUTATE"
+      record: "MUTATE"
+      report: "OBSERVE"
+      metrics: "OBSERVE"
+      list: "OBSERVE"
+      destroy: "MUTATE"
+
+  - tool: "forge_ephemeral"
+    modes:
+      inspect_gap: "OBSERVE"
+      list_templates: "OBSERVE"
+      list_active: "OBSERVE"
+      generate: "MUTATE"
+      sandbox_test: "MUTATE"
+      invoke: "MUTATE"
+      verify: "GOVERN"
+      retire: "MUTATE"
+      propose_promotion: "GOVERN"
+
+  - tool: "forge_session_init"
+    modes:
+      init: "GOVERN"
+      validate: "OBSERVE"
+
+  - tool: "capital_ledger"
+    modes:
+      read: "OBSERVE"
+      query: "OBSERVE"
+      write: "MUTATE"
+
+# ─── CLASSIFICATION ALGORITHM ───
+# Applied in this order:
+#
+# 1. Extract verb from tool name (tokenize on _ and -)
+# 2. Check mode_overrides (if tool has mode parameter)
+# 3. Match verbs against verb_rules (SEAL → GOVERN → MUTATE → OBSERVE)
+# 4. Apply organ_overrides (cap at organ's authority_ceiling)
+# 5. Default: OBSERVE
+#
+# Any tool not classified → OBSERVE (fail-safe)
+
+algorithm:
+  version: "1.0"
+  steps:
+    - "tokenize tool name by '_' and '-'"
+    - "if tool has mode param, check mode_overrides first"
+    - "match tokens against SEAL verbs → if match, class=SEAL"
+    - "match tokens against GOVERN verbs → if match, class=GOVERN"
+    - "match tokens against MUTATE verbs → if match, class=MUTATE"
+    - "match remaining patterns for each class"
+    - "apply organ authority_ceiling cap"
+    - "default: OBSERVE"
+
+# ─── GOVERNANCE ───
+# This policy document IS the constitutional source of truth for tool classification.
+# The mcp_inventory.json is GENERATED from this policy, not maintained by hand.
+# Changing a tool's class requires changing THIS policy, not the inventory.
+
+governance:
+  authority: "F13 SOVEREIGN"
+  mutation_gate: "888_HOLD"
+  review_trigger: "Any new organ or MCP server added to federation"
+  staleness_check: "forge_surface_guard check → detect tools not covered by policy"
