@@ -22,6 +22,7 @@ concurrency:
 
 jobs:
   gitleaks:
+    if: github.actor != 'dependabot[bot]' && github.actor != 'app/dependabot'
     name: F11 — Gitleaks Full History Scan
     runs-on: ubuntu-latest
     timeout-minutes: 10

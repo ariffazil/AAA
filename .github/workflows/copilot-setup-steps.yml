@@ -13,10 +13,10 @@ on:
 jobs:
   # MUST be named exactly `copilot-setup-steps`
   copilot-setup-steps:
+    if: github.actor != 'dependabot[bot]' && github.actor != 'app/dependabot'
     name: "AAA — Pre-install control plane and A2A gateway dependencies"
     runs-on: ubuntu-latest
     timeout-minutes: 15
-
     permissions:
       contents: read
 
