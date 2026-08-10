@@ -21,7 +21,7 @@
 
 **Current Layers (updated):**
 - L1 HEXAGON (spec): 333-AGI, 555-ASI, 888-APEX + A-AUDIT, A-ARCHIVE
-- L2 RUNTIME LIVE: hermes-asi (ASI relay), openclaw (AGI gateway), 777-forge, antigravity
+- L2 RUNTIME LIVE: hermes-asi (ASI relay), openclaw (AGI gateway), 777-FORGE, antigravity
 - L3 INFRA ORGANS (A2A peers): arifos-kernel, aforge-executor, geox/wealth/well-witness, aaa-gateway
 - L4 CODING / Forge Instruments: opencode (FI-001), claude-code, qwen, antigravity, codex, copilot, aider, kimi-code, continue-cli + **NOW grok-build**
 - L4.5 ROLE (bounded): Kernel Scribe, Ops Planner, Self-Forge Advisor, External Watcher

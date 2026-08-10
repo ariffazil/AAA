@@ -38,7 +38,7 @@ This file replaces the Gödel loop of "read AGENTS.md, then CLAUDE.md, then CONT
 
 - **AAA is the state + cockpit.** It owns display, routing, registries, approval queues. It **does not** judge, execute, or seal. arifOS judges. A-FORGE executes. arifOS also seals.
 - **7 organs, 1 sovereign.** `arifOS` · `A-FORGE` · `GEOX` · `WEALTH` · `WELL` · `AAA` · `VAULT999`. Arif (F13) holds the veto. Organs never self-seal.
-- **3 constitutional citizens (HEXAGON).** `333-AGI` (Δ MIND) · `555-ASI` (Ω HEART) · `888-APEX` (ΦΙ JUDGE). `A-AUDIT` and `A-ARCHIVE` are **collapsed 2026-07-15** (cross-cutting functions embedded in every organ, validated by 888-APEX). `777-forge` is A-FORGE's lane persona — **not** a 4th identity.
+- **3 constitutional citizens (HEXAGON).** `333-AGI` (Δ MIND) · `555-ASI` (Ω HEART) · `888-APEX` (ΦΙ JUDGE). `A-AUDIT` and `A-ARCHIVE` are **collapsed 2026-07-15** (cross-cutting functions embedded in every organ, validated by 888-APEX). `777-FORGE` is A-FORGE's lane persona — **not** a 4th identity.
 
 ---
 
