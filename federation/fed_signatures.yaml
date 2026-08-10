@@ -1,0 +1,263 @@
+# FED Capability Signatures — Declarative Spec
+#
+# Forged 2026-08-10 by 333-AGI under F13 directive "zen FED via Deterministic
+# Latent-Aware Router". Lane B SESSION_RECEIPT ratification.
+#
+# Architecture: 3 orthogonal routing dimensions
+#   1. modality        — text | pixel | mixed
+#   2. task_class      — plan | generate | inspect | repair
+#   3. fidelity_gate   — persist (≥0.88) | repair (<0.88 with bbox mask)
+#
+# Spec mapping (Deterministic Latent-Aware Router doctrine):
+#   LLM (autoregressive)        → text + plan → fed-reasoning-heavy
+#   DiT / SDXL (diffusion)      → pixel + generate → fed-image-generation
+#   VLM (cross-attention)        → pixel + inspect → fed-grounded-vision
+#   ControlNet / Inpainting      → pixel + repair → fed-inpainting
+
+signatures:
+
+  # ── EXISTING (preserved from fed_router.py v3.1 Zen) ────────────────
+  fed-reasoning-heavy:
+    description: "Heavy reasoning, coding, planning, constitutional judgment"
+    modality: text
+    task_class: plan
+    constitutional_tier: 333
+    models: [deepseek-v4-pro, qwen3.8-max, MiniMax-M3]
+    spec_arch: LLM
+    spec_role: planner
+    fidelity_gate: null  # text plans don't have fidelity scores
+
+  fed-multimodal-vision:
+    description: "Image/video analysis, OCR, chart reading, screenshot inspection"
+    modality: vision
+    task_class: inspect
+    constitutional_tier: 555
+    models: [qwen-vl-max, mimo-v2.5, MiniMax-M3]
+    spec_arch: VLM
+    spec_role: inspector_generic
+
+  fed-long-context:
+    description: "Long documents, large context windows, multi-chunk processing"
+    modality: text
+    task_class: plan
+    constitutional_tier: 333
+    models: [MiniMax-M3, mimo-v2.5-pro, qwen3.8-max]
+
+  fed-agent-subagent:
+    description: "Subagent spawning, multi-step orchestration, DAG execution"
+    modality: text
+    task_class: plan
+    constitutional_tier: 333
+    models: [deepseek-v4-flash, qwen3.6-flash, mimo-v2.5]
+
+  fed-realtime-voice:
+    description: "Text-to-speech, speech-to-text, real-time audio"
+    modality: audio
+    task_class: plan
+    constitutional_tier: 333
+    models: [mimo-v2.5-tts, mimo-v2.5-asr]
+
+  # ── NEW — Latent-Aware Routing (forged 2026-08-10) ──────────────────
+
+  fed-image-generation:
+    description: >
+      Diffusion-based image synthesis. DiT / SDXL / Wan2.7 routes via ComfyUI.
+      Spec role: Renderer / Executor. Iterative denoising on continuous
+      spatial latents. Fails structurally (anatomical distortion, hand
+      artifacts) — never semantically.
+    modality: pixel
+    task_class: generate
+    constitutional_tier: 555
+    models:
+      primary: [bailian-token-plan/wan2.7-image-pro]
+      fallback: [bailian-token-plan/wan2.7-image, qwen-token-plan-individual/wan2.7-image-pro]
+    spec_arch: DiT
+    spec_role: renderer
+    failure_mode: structural_distortion
+    perceptual_guard: fed-grounded-vision (post-flight)
+    cost_band: B  # per-image, but Wan2.7 is cheap
+    expected_latency_ms: [3000, 15000]
+    constitutional_seat: false  # never a JUDGE
+
+  fed-grounded-vision:
+    description: >
+      Compact VLM with spatial grounding (bbox protocol). Spec role:
+      Inspector / Evaluator. Used both for standalone inspection AND as
+      post-flight verifier for fed-image-generation. Returns bbox-tagged
+      fidelity score P_quality in [0,1].
+    modality: pixel
+    task_class: inspect
+    constitutional_tier: 555
+    models:
+      primary: [mulerouter/qwen-vl-max]
+      fallback: [bailian-token-plan/qwen-vl-max, flame/gemini-2.5-flash]
+    spec_arch: VLM
+    spec_role: inspector_grounded
+    failure_mode: visual_hallucination_spatial_blindness
+    prompt_protocol: "object:{name} bbox:{x,y,w,h} score:{0-1}"
+    output_schema:
+      fidelity_score: float  # 0..1
+      defects: list[BoundingBox]
+      perception_summary: str
+    constitutional_seat: true  # Lane B RECEIPT-verifier eligible
+
+  fed-inpainting:
+    description: >
+      Targeted image repair via ControlNet / inpainting. Spec role:
+      Closed-Loop Repair Dispatch. Triggered when fed-grounded-vision
+      returns P_quality < 0.88 with localized defect bboxes. Re-runs the
+      affected region only — NOT the full generation.
+    modality: pixel
+    task_class: repair
+    constitutional_tier: 555
+    models:
+      primary: [comfyui/controlnet-inpaint]
+      fallback: [comfyui/sdxl-inpaint]
+    spec_arch: DiT_with_mask
+    spec_role: repair_dispatch
+    trigger_condition: "P_quality < 0.88 AND len(defects) > 0"
+    input_contract:
+      original_image_uri: str
+      mask_bbox: list[float]  # [x, y, w, h] in [0,1] normalized
+      defect_description: str
+    constitutional_seat: false
+
+  # ── SHADOW PLANE — Uncensored Local Runtime (forged 2026-08-10) ──────
+
+  fed-uncensored-sovereign:
+    description: >
+      Uncensored local diffusion & vision execution on isolated GPU pod.
+      NEVER routes to public cloud APIs. Telemetry isolated from main ledger.
+      Network: localhost/Tailscale only (127.0.0.1:8188 on pod).
+    modality: pixel
+    task_class: generate
+    domain: local_shadow_runtime
+    isolation_level: SHADOW_STRICT
+    constitutional_tier: 555
+    cost_band: S  # Sovereign/Local — zero API cost
+    models:
+      primary: [local/pony-v6, local/realvisxl-v5, local/flux-uncensored]
+      fallback: [local/sdxl-uncensored]
+    spec_arch: DiT
+    spec_role: shadow_renderer
+    target_endpoint: "${SHADOW_COMFY_URL:-http://127.0.0.1:8188}"
+    telemetry_ledger: "/root/.shadow/shadow_telemetry.jsonl"
+    public_api_blocklist:
+      - api.openai.com
+      - dashscope.aliyuncs.com
+      - api.anthropic.com
+      - api.anthropic.com
+      - generativelanguage.googleapis.com
+      - api.cloudflare.com
+    failure_mode: structural_distortion
+    constitutional_seat: false
+    guard: AAAShadowGuard  # enforcement via shadow_isolation.py
+
+  # ── CASCADE RESCUE (also forged 2026-08-10) ────────────────────────
+
+  fed-judge-deputy:
+    description: >
+      Backup JUDGE channels for constitutional seats when primary 4 fail.
+      Routes same models (glm-5.2, qwen3.8-max) through bailian /
+      qwen-individual channels — different transport, same architecture.
+      Resolves JUDGE_SEAT_UNAVAILABLE cascades.
+    modality: text
+    task_class: plan
+    constitutional_tier: 666
+    models:
+      primary: [bailian-token-plan/glm-5.2, bailian-token-plan/qwen3.8-max]
+      fallback: [qwen-token-plan-individual/glm-5.2, qwen-token-plan-individual/qwen3.8-max]
+    spec_arch: LLM
+    spec_role: judge_deputy
+    triggered_by: "JUDGE_SEAT_UNAVAILABLE from primary 4"
+    confidence_floor: 0.95
+    constitutional_seat: true
+    amendment_required: AGENT_MODEL_MAP 666_JUDGE.allowed_models
+
+  # ── LOCAL RUNTIME — Uncensored checkpoints, full audit (forged 2026-08-10) ──
+
+  fed-local-uncensored:
+    description: >
+      Local GPU execution via ComfyUI (:8188). Uncensored checkpoints
+      permitted (Pony V6, RealVisXL, FLUX, etc.). SINGLE LEDGER —
+      every receipt emits to arifflow_receipts.jsonl with explicit
+      content_classification field for downstream filtering. No shadow
+      ledger, no bypass of public logging. F4 + F11 compliant by design.
+
+      Path A+ extensions (forged 2026-08-10, response to Dark Mirror):
+        - LedgerViewFilter: per-operator ACL by content_class. F11
+          "inspectable by appropriate authority" satisfied via policy,
+          not via ledger separation.
+        - TelemetryRing: TTL-bounded performance ring (300s default).
+          Sampled at 1%, aggregates promoted to canonical via
+          flow_ingest. Bounded entropy, no parallel source.
+    modality: pixel
+    task_class: generate
+    constitutional_tier: 555
+    models:
+      primary: [comfyui/pony-v6-xl]
+      fallback: [comfyui/realvisxl-v4, comfyui/flux-1-schnell]
+    spec_arch: DiT
+    spec_role: renderer_local
+    content_class_options: [general, sensitive, artistic, research, medical]
+    default_content_class: general
+    cost_band: zero-api-cost  # local GPU, no cloud API billing
+    priority: high_for_local_only_payloads  # Dark Mirror mitigation
+    default_effort: low  # routine exploration is cheap
+    audit:
+      ledger: /root/.local/share/arifos/arifflow_receipts.jsonl
+      epistemic_label_required: true
+      payload_field: content_classification
+      operator_view_filter: LedgerViewFilter
+      performance_ring: TelemetryRing
+    target_endpoint: http://127.0.0.1:8188
+    federal_gate: |
+      Lane B RECEIPT always emitted. No silent routes. F13 ACK required
+      only for constitutional_seal=true work (not for routine generation).
+      Per-operator visibility filter hides sensitive content_class from
+      default operators; sovereign can unlock via LedgerViewFilter
+      clearance escalation.
+    constitutional_seat: false
+
+  # ── SHADOW / SOVEREIGN PLANE (forged 2026-08-10, Dual-Plane Routing) ────
+  # Isolated execution route. Zero public API contact. Local GPU only.
+  # Telemetry: /root/.shadow/shadow_telemetry.jsonl (never touches main ledger)
+  # Guard: shadow_guard.py assert_shadow_isolation() enforces localhost-only
+
+  fed-uncensored-sovereign:
+    description: >
+      Uncensored local diffusion & vision execution on isolated GPU pod.
+      Dual-Plane Shadow Route — completely isolated from public federation plane.
+      Zero public API contact. Zero main ledger contamination.
+      ComfyUI on localhost:8188 with uncensored checkpoints (Pony V6, RealVisXL, FLUX).
+    modality: pixel
+    task_class: generate
+    constitutional_tier: 0  # sovereign local — no federation authority
+    models:
+      primary: [comfyui/pony-v6-xl, comfyui/realvisxl-v40, comfyui/flux-dev]
+      fallback: [comfyui/pony-v6-xl]
+    spec_arch: DiT_local
+    spec_role: sovereign_renderer
+    isolation_level: SHADOW_STRICT
+    cost_band: S  # Sovereign/Local Zero-API-Cost
+    target_endpoint: "http://127.0.0.1:8188"  # Local ComfyUI daemon
+    telemetry_ledger: "/root/.shadow/shadow_telemetry.jsonl"
+    public_api_blocklist:
+      - api.openai.com
+      - dashscope.aliyuncs.com
+      - api.anthropic.com
+      - api.deepseek.com
+      - api.moonshot.cn
+    guard_enforcement: shadow_guard.py::AAAShadowGuard.assert_shadow_isolation
+    constitutional_seat: false  # never a JUDGE, never in public MODEL_ROUTES
+
+# ── Repair Loop (Closed-Loop Dispatch Constants) ──────────────────────
+repair_loop:
+  fidelity_threshold: 0.88
+  max_repair_attempts: 3
+  escalation_policy: |
+    1st repair → fed-inpainting with VLM-supplied bbox mask
+    2nd repair → fed-inpainting with widened bbox (×1.5)
+    3rd repair → escalate to F13 SOVEREIGN (re-roll whole generation requires ACK)
+  ledger_on_persist: arifflow_receipts.jsonl
+  receipt_steps: [Barrier, Execute, Verify, Seal]
