@@ -70,15 +70,33 @@ def load_secrets() -> dict:
 
 # ── Balance parsers ──────────────────────────────────────────────────────
 def _parse_deepseek(data: dict) -> dict:
-    """Parse DeepSeek /user/balance response."""
+    """Parse DeepSeek /user/balance response.
+
+    IMPORTANT (2026-08-10 audit): DeepSeek returns HTTP 200 even when the
+    account is over the credit limit; the only signal is `is_available: false`
+    inside the JSON body. Returning the soft signal was silently marking the
+    account LIVE in token_bank.db. Now we surface unavailability as an error
+    so the probe correctly DOWNGRADES confidence to 0.0 and the provider is
+    treated as DEAD by downstream FED consumers.
+    """
     infos = data.get("balance_infos", [])
     total = sum(float(info.get("total_balance", 0)) for info in infos)
     topped = sum(float(info.get("topped_up_balance", 0)) for info in infos)
-    return {
+    is_available = bool(data.get("is_available", False))
+    parsed = {
         "balance_usd": round(total, 4),
         "topped_up_usd": round(topped, 4),
-        "is_available": data.get("is_available", False),
+        "is_available": is_available,
     }
+    if not is_available:
+        # Bug A fix: surface 402-style insolvency as an error so callers
+        # downgrade rather than mark LIVE.
+        parsed["error"] = (
+            f"DeepSeek account not available (is_available=false, "
+            f"balance=${round(total, 4)}). Top up required."
+        )
+        parsed["confidence"] = 0.0
+    return parsed
 
 
 def _parse_openrouter(data: dict) -> dict:
@@ -192,12 +210,32 @@ def main() -> int:
 
         if "error" not in result:
             balance = result.get("balance_usd", 0)
-            print(f"  ✅ {provider_name}: ${balance:.4f} (confidence=1.0)")
-            write_balance(provider_name, balance, confidence=1.0)
+            parser_confidence = result.get("confidence", 1.0)
+            print(
+                f"  ✅ {provider_name}: ${balance:.4f} "
+                f"(confidence={parser_confidence})"
+            )
+            write_balance(provider_name, balance, confidence=parser_confidence)
             check_drift(provider_name, balance)
             ok += 1
         else:
-            print(f"  ❌ {provider_name}: {result['error']}")
+            error_msg = result["error"]
+            # Bug A fix: when the parser surfaces a soft-unavailability error
+            # (e.g. DeepSeek is_available=false with a known balance), write
+            # the DB row at confidence=0.0 so downstream FED consumers see
+            # DEAD instead of the stale LIVE flag. Pure connectivity failures
+            # (no balance_usd returned) still write confidence=0.0 with the
+            # last-seen balance as a "DEGRADED" signal — better than silence.
+            balance = result.get("balance_usd", None)
+            print(f"  ❌ {provider_name}: {error_msg}")
+            if balance is not None:
+                print(f"     ↳ last known balance: ${balance:.4f}; marking DEAD")
+                write_balance(
+                    provider_name,
+                    balance,
+                    confidence=0.0,
+                    source=f"api_probe_insolvent:{error_msg[:60]}",
+                )
             failed += 1
 
     print(f"\n── Summary ──")
