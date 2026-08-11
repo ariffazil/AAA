@@ -24,6 +24,14 @@ from urllib.error import URLError, HTTPError
 STATUS_JSON_PATH = Path("/root/AAA/state/status.json")
 MAX_MISSED_PROBES = 3  # 45 seconds at 15s interval
 
+# P3B — Closure SLO (doctrine: ARIFOS::CLOSURE_RECOVERY::v1 LEVERAGE POINT #3)
+CLOSURE_SLO_DIR = Path("/root/forge_work/closure-slo")
+RECOVERY_SCAN_DIR = Path("/root/forge_work/recovery-scans")
+FORGE_WORK_DIR = Path("/root/forge_work")
+PENDING_RECEIPTS_PATH = Path("/root/.local/share/arifos/pending_receipts.jsonl")
+SEAL_PENDING_DIR = Path("/root/.local/share/arifos/seal-pending")
+OPENCODE_RECEIPTS_PATH = Path("/root/.local/share/arifos/opencode_receipts.jsonl")
+
 PROBED_ORGANS = [
     {"id": "arifos", "port": 8088, "role": "Kernel", "ceiling": "JUDGE_ONLY", "class": "CORE"},
     {"id": "a-forge", "port": 7071, "role": "Execution", "ceiling": "EXECUTE_AFTER_SEAL", "class": "CORE"},
@@ -200,6 +208,134 @@ def _probe_memory_tiers() -> dict:
     return result
 
 
+def _closure_slo() -> dict:
+    """P3B — Closure SLO metrics for cockpit.
+
+    Surfaces at boot:
+      - unsealed_sessions_over_24h  (from opencode_receipts.jsonl)
+      - pending_receipts            (count from pending_receipts.jsonl)
+      - seal_pending_oldest_days    (max mtime in seal-pending/)
+      - zombie_count                (latest reaper snapshot)
+      - closure_velocity_24h        (forge_work .md created last 24h)
+      - forge_velocity_24h          (forge_work all files created last 24h)
+
+    Doctrine: ARIFOS::CLOSURE_RECOVERY::v1 LEVERAGE POINT #3
+    """
+    metrics = {
+        "unsealed_sessions_over_24h": 0,
+        "pending_receipts": 0,
+        "seal_pending_oldest_days": 0.0,
+        "zombie_count": 0,
+        "closure_velocity_24h": 0,
+        "forge_velocity_24h": 0,
+        "doctrine_ref": "ARIFOS::CLOSURE_RECOVERY::v1",
+        "leverage_point": 3,
+        "verdict": "GREEN",
+        "thresholds": {"unsealed_24h_max": 10, "pending_max": 5, "zombie_max": 20},
+    }
+
+    # 1. Unsealed > 24h (sessions with last activity > 24h ago)
+    if OPENCODE_RECEIPTS_PATH.exists():
+        try:
+            from collections import defaultdict
+            from datetime import datetime, timezone, timedelta
+
+            sess = defaultdict(list)
+            with open(OPENCODE_RECEIPTS_PATH) as f:
+                for line in f:
+                    try:
+                        d = json.loads(line)
+                        sid = d.get("sessionID") or d.get("session_id")
+                        if not sid or sid == "boot":
+                            continue
+                        sess[sid].append(d)
+                    except Exception:
+                        pass
+            cutoff = datetime.now(timezone.utc) - timedelta(hours=24)
+            old = 0
+            for sid, evs in sess.items():
+                evs.sort(key=lambda x: x.get("ts", ""))
+                if not evs:
+                    continue
+                try:
+                    last = datetime.fromisoformat(evs[-1].get("ts", "").replace("Z", "+00:00"))
+                    if last < cutoff:
+                        old += 1
+                except Exception:
+                    pass
+            metrics["unsealed_sessions_over_24h"] = old
+        except Exception:
+            pass
+
+    # 2. Pending receipts
+    if PENDING_RECEIPTS_PATH.exists():
+        try:
+            with open(PENDING_RECEIPTS_PATH) as f:
+                metrics["pending_receipts"] = sum(1 for _ in f)
+        except Exception:
+            pass
+
+    # 3. Seal-pending oldest age
+    if SEAL_PENDING_DIR.exists():
+        try:
+            from datetime import datetime as _dt
+
+            files = [f for f in SEAL_PENDING_DIR.iterdir() if f.is_file()]
+            if files:
+                oldest_mtime = max(f.stat().st_mtime for f in files)
+                metrics["seal_pending_oldest_days"] = round((_dt.now().timestamp() - oldest_mtime) / 86400, 1)
+        except Exception:
+            pass
+
+    # 4. Zombie count from latest reaper scan (live probe over cron-snapshots)
+    try:
+        snaps = sorted(RECOVERY_SCAN_DIR.glob("cron-snapshots/reaper-*.json"))
+        if snaps:
+            d = json.loads(snaps[-1].read_text())
+            metrics["zombie_count"] = d.get("zombie_count", 0)
+        else:
+            # fall back to latest reap scan
+            reaps = sorted(RECOVERY_SCAN_DIR.glob("reap-*.json"))
+            if reaps:
+                d = json.loads(reaps[-1].read_text())
+                metrics["zombie_count"] = d.get("summary", {}).get("by_verdict", {}).get("HOLD", 0)
+    except Exception:
+        pass
+
+    # 5+6. Closure velocity + forge velocity (last 24h)
+    if FORGE_WORK_DIR.exists():
+        try:
+            cutoff_ts = time.time() - 86400
+            md_count = 0
+            all_count = 0
+            for p in FORGE_WORK_DIR.rglob("*"):
+                try:
+                    if p.is_file() and p.stat().st_mtime >= cutoff_ts:
+                        all_count += 1
+                        if p.suffix == ".md":
+                            md_count += 1
+                except Exception:
+                    continue
+            metrics["closure_velocity_24h"] = md_count
+            metrics["forge_velocity_24h"] = all_count
+        except Exception:
+            pass
+
+    # Verdict — yellow/red if thresholds breached
+    verdict = "GREEN"
+    if metrics["unsealed_sessions_over_24h"] > metrics["thresholds"]["unsealed_24h_max"]:
+        verdict = "YELLOW"
+    if metrics["pending_receipts"] > metrics["thresholds"]["pending_max"]:
+        verdict = "YELLOW"
+    if metrics["zombie_count"] > metrics["thresholds"]["zombie_max"]:
+        verdict = "RED"
+    if metrics["forge_velocity_24h"] == 0:
+        verdict = "RED"
+    metrics["verdict"] = verdict
+
+    return metrics
+
+
 def main():
     t0 = time.monotonic()
     prior = load_prior_state()
@@ -258,6 +394,7 @@ def main():
             "dead": dead_count,
         },
         "memory_tiers": _probe_memory_tiers(),
+        "closure_slo": _closure_slo(),
         "agent_list": agent_list,
         "_probe_count": probe_count,
         "_boot_time": boot_time,

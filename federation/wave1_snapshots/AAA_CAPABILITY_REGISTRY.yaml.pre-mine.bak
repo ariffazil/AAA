@@ -87,7 +87,7 @@ axes:
           # Wave 1 (2026-08-11) — the 7 organs (QMG_E1).
           # arifOS routes its internal MCP through the canonical kernel host.
           arifos: { F_rating: REVIEW, enabled: true, seal: sealed, transport: stdio, authority_mode: read_only, note: "arifOS constitutional kernel — F1-F13 + 888_JUDGE; routes reality.search via canonical kernel" }
-          minimax: { F_rating: REVIEW, enabled: true, seal: sealed, transport: stdio, authority_mode: read_only, note: "minimax-coding-plan-mcp (uvx) — web_search via MiniMax provider; canonical name = minimax" }
+          minimax: { F_rating: REVIEW, enabled: true, seal: sealed, transport: stdio, authority_mode: read_only, note: "minimax-coding-plan-mcp (uvx) — web_search via MiniMax provider" }
         dedup_resolution: "collapse to top-2 by F-rating once Wave 2 unsealed"
       reality.browse:
         description: "Structured browser interaction through accessibility snapshots."
@@ -171,18 +171,11 @@ axes:
         F_rating: REVIEW
         backends:
           hermes: { F_rating: REVIEW, enabled: true, transport: stdio, note: "internal — must route via arifOS, not duplicate", seal: sealed}
-          # Wave 1 (2026-08-11) — the 7 organs (QMG_E1).
-          arifos: { F_rating: REVIEW, enabled: true, seal: sealed, transport: stdio, authority_mode: read_only, note: "arifOS constitutional kernel — F1-F13 + 888_JUDGE + 888_APEX" }
-          geox: { F_rating: REVIEW, enabled: true, seal: sealed, transport: http, url: http://127.0.0.1:8081/mcp, authority_mode: read_only, note: "GEOX earth intelligence — 33 canonical tools, EVIDENCE_ONLY" }
-          wealth: { F_rating: REVIEW, enabled: true, seal: sealed, transport: http, url: http://127.0.0.1:18082/mcp, authority_mode: read_only, note: "WEALTH capital intelligence — EVIDENCE_ONLY" }
-          well: { F_rating: REVIEW, enabled: true, seal: sealed, transport: http, url: http://127.0.0.1:18083/mcp, authority_mode: reflect_only, note: "WELL human readiness — REFLECT_ONLY (F6 maruah)" }
       evidence.reasoning:
         description: "Structured multi-step reasoning amplification."
         F_rating: HOLD
         backends:
           sequential-thinking: { F_rating: HOLD, enabled: true, transport: stdio, note: "execution amplifier — FQ risk; A-FORGE gate required", seal: sealed}
-          # Wave 1 (2026-08-11) — FED model router (QMG_E1).
-          fed: { F_rating: REVIEW, enabled: true, seal: sealed, transport: http, url: http://127.0.0.1:7074/mcp, authority_mode: read_only, note: "FED federation router — fed_route, fed_status, fed_probe, fed_contrast, fed_health, fed_report_latency" }
 
   # ---------- AXIS 6 — FORGE -------------------------------------------------
   forge:
@@ -195,8 +188,6 @@ axes:
         gate: A-FORGE_lease
         backends:
           github: { F_rating: HOLD, enabled: true, transport: stdio, gate: A-FORGE_lease, note: "duplicates forge_github_*", seal: sealed}
-          # Wave 1 (2026-08-11) — A-FORGE engineering actuator (QMG_E1).
-          aforge: { F_rating: HOLD, enabled: true, seal: sealed, transport: stdio, gate: A-FORGE_lease, authority_mode: read_write, note: "A-FORGE governed engineering actuator — 77 forge_* tools; AMANAH: MUTATE/DELETE/IRREVERSIBLE requires arifOS SEAL or 888_HOLD" }
       forge.container:
         description: "Container execution and management."
         F_rating: HOLD
@@ -216,11 +207,7 @@ axes:
         F_rating: HOLD
         gate: A-FORGE_lease
         backends:
-          # Eliminated 2026-08-11 (QMG musyawarah): the canonical name for the
-          # minimax provider is `minimax` (under reality.search). The legacy
-          # `minimax-mcp` was a placeholder kept while the registry waited for
-          # a stable canonical name. Now replaced — see dedup_register.
-          minimax: { F_rating: REVIEW, enabled: true, seal: sealed, transport: stdio, authority_mode: read_only, note: "minimax-coding-plan-mcp (uvx) — web_search via MiniMax provider; canonical name = minimax" }
+          minimax-mcp: { F_rating: HOLD, enabled: true, transport: stdio, gate: A-FORGE_lease, note: "BLOCKED — name collision with minimax on Kimi", seal: sealed}
       forge.infrastructure:
         description: "VPS / bare-metal management."
         F_rating: HOLD
@@ -281,27 +268,10 @@ enablement_policy:
       - serena
       - hostinger-vps
       - fetch
+      - minimax-mcp
       - sequential-thinking
     auto_enable: false
     require: [333_propose, 555_verify, 888_judge, seal, A-FORGE_lease]
-  # Wave 1 (2026-08-11) — the 7 organs (QMG_E1). musyawarah_phase: OPEN_DOOR.
-  # The 7 organs are routed through the canonical capability keys above
-  # (arifos, aforge, geox, wealth, well, fed, minimax). They are NOT GATED
-  # by the three-wave policy because they are the kanon organg — they ARE
-  # the federation. F13 SOVEREIGN ratification gates them directly.
-  wave_4_organs:
-    description: "The 7 QMG organs. F13 ratification gates this wave. No further sub-pipeline."
-    list:
-      - arifos
-      - aforge
-      - geox
-      - wealth
-      - well
-      - fed
-      - minimax
-    auto_enable: false
-    require: [F13_SOVEREIGN]
-    ratified_at: "2026-08-11"
 
 # -----------------------------------------------------------------------------
 # Dedup register — collapse candidate groups to one canonical capability
@@ -320,8 +290,8 @@ dedup_register:
     backends: [postgres, supabase, sqlite]
     resolution: "single canonical = forge_postgres; sqlite as Postgres primitive"
   forge.provider:
-    backends: [minimax]
-    resolution: "Canonical = minimax (under reality.search); legacy minimax-mcp retired 2026-08-11"
+    backends: [minimax-mcp]
+    resolution: "BLOCKED — name collision with minimax already on Kimi Code"
   memory.recall:
     backends: [hindsight, graphiti]
     resolution: "keep both — graph (graphiti) and bank (hindsight) are orthogonal surfaces"

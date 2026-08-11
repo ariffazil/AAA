@@ -12,11 +12,14 @@ from __future__ import annotations
 
 import hashlib
 import sys
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Literal, Optional
 
 import yaml
+import requests
+import json
 
 
 # Canonical seven axes (binding — matches AAA_CAPABILITY_REGISTRY.yaml)
@@ -43,7 +46,7 @@ DOCTRINE_CANONICAL_NAMES: tuple[str, ...] = (
 
 F_RATING_VALUES: tuple[str, ...] = ("SAFE", "REVIEW", "HOLD")
 SEAL_VALUES: tuple[str, ...] = ("pending", "ratifying", "sealed", "void")
-TRANSPORT_VALUES: tuple[str, ...] = ("stdio", "http")
+TRANSPORT_VALUES: tuple[str, ...] = ("stdio", "http", "filesystem")
 
 
 @dataclass(frozen=True)
@@ -179,25 +182,58 @@ def _merge_backend_entry(
     """
     Merge a second declaration of an already-known backend.
 
-    Cross-axis policy: transport, F_rating, seal, url, gate must match
-    (a backend is one process — same transport). Note and authority_mode
-    are merged into services. enabled is taken as OR (any true = true).
+    Cross-axis policy:
+      STRICT (one process, one identity):
+        - transport, seal, url, gate, name  must match
+      PER-SERVICE (variance allowed when authority_mode differs):
+        - F_rating, note, rank, authority_mode
+      MERGE OR:
+        - enabled  (any true = true)
+
+    Rationale: a backend like `github` serves forge.forge.repository
+    (HOLD, write via A-FORGE lease) AND witness.witness.append
+    (SAFE, read-only commit refs). These are legitimately different
+    authority surfaces on the same process. The CapabilityBackend
+    exposes the worst-case F_rating; per-service F_ratings are tracked
+    via BackendService.
     """
+    name = existing.name  # F1: never bind an unbound identifier in error paths
     if existing.transport != addition["transport"]:
         raise RegistryLoadError(
             f"Backend '{name}' declared with conflicting transports: "
             f"{existing.transport!r} vs {addition['transport']!r}"
-        )
-    if existing.F_rating != addition["F_rating"]:
-        raise RegistryLoadError(
-            f"Backend '{name}' declared with conflicting F_ratings: "
-            f"{existing.F_rating!r} vs {addition['F_rating']!r}"
         )
     if existing.seal != addition["seal"]:
         raise RegistryLoadError(
             f"Backend '{name}' declared with conflicting seals: "
             f"{existing.seal!r} vs {addition['seal']!r}"
         )
+    if existing.url is not None and addition["url"] is not None and existing.url != addition["url"]:
+        raise RegistryLoadError(
+            f"Backend '{name}' declared with conflicting urls: "
+            f"{existing.url!r} vs {addition['url']!r}"
+        )
+    if existing.gate is not None and addition["gate"] is not None and existing.gate != addition["gate"]:
+        raise RegistryLoadError(
+            f"Backend '{name}' declared with conflicting gates: "
+            f"{existing.gate!r} vs {addition['gate']!r}"
+        )
+    # F_rating variance — only conflict if same authority_mode (or both None)
+    # and F_ratings differ. Cross-axis entries with explicit authority_mode
+    # differences are legitimate.
+    new_auth = addition.get("authority_mode")
+    existing_auths = {s.authority_mode for s in existing.services}
+    same_mode = (
+        new_auth is None
+        and (len(existing_auths) == 1 and None in existing_auths)
+    ) or (new_auth in existing_auths)
+    if same_mode and existing.F_rating != addition["F_rating"]:
+        raise RegistryLoadError(
+            f"Backend '{name}' declared with conflicting F_ratings under "
+            f"the same authority_mode ({new_auth!r}): "
+            f"{existing.F_rating!r} vs {addition['F_rating']!r}"
+        )
+
     # Merge services
     new_service = _parse_service(name, axis, capability, addition)
     merged_services = existing.services + (new_service,)
@@ -207,6 +243,12 @@ def _merge_backend_entry(
     merged_url = existing.url if existing.url is not None else addition["url"]
     # gate: prefer non-None
     merged_gate = existing.gate if existing.gate is not None else addition["gate"]
+    # F_rating: take the more restrictive (HOLD > REVIEW > SAFE)
+    _STRICTNESS = {"SAFE": 0, "REVIEW": 1, "HOLD": 2}
+    if _STRICTNESS.get(addition["F_rating"], 2) > _STRICTNESS.get(existing.F_rating, 2):
+        merged_F_rating = addition["F_rating"]  # type: ignore[assignment]
+    else:
+        merged_F_rating = existing.F_rating
     # note: concatenate if both present
     notes = []
     if existing.note:
@@ -218,7 +260,7 @@ def _merge_backend_entry(
     return CapabilityBackend(
         name=name,
         transport=existing.transport,
-        F_rating=existing.F_rating,
+        F_rating=merged_F_rating,  # type: ignore[arg-type]
         seal=existing.seal,
         enabled=merged_enabled,
         services=merged_services,
@@ -339,7 +381,7 @@ def load_registry(path: Path | str) -> CapabilityIndex:
     enabled_count = sum(1 for b in backends.values() if b.enabled)
     invariants_declared = raw.get("invariants", {})
 
-    return CapabilityIndex(
+    _index_pre = CapabilityIndex(
         version=str(raw["version"]),
         sovereign=str(raw["sovereign"]),
         status=str(raw["status"]),
@@ -354,9 +396,141 @@ def load_registry(path: Path | str) -> CapabilityIndex:
         architectural_verdict=architectural_verdict,
         raw=raw,
     )
+    # Musyawawah phase: multi-voice deliberation between validation and seal
+    final_verdict = _musyawawah_phase(_index_pre, raw)
+    return replace(_index_pre, architectural_verdict=final_verdict)
+
+
+def _musyawawah_phase(index: CapabilityIndex, raw_registry: dict[str, Any]) -> str:
+    """Multi-voice deliberation (musyawawah) between ARCHITECT, AUDITOR, SOVEREIGN."""
+    verdicts: list[str] = []
+    reasons: list[str] = []
+
+    # Voice 1: ARCHITECT
+    architect_verdict = "OPEN_QUESTIONS"
+    if index.enabled_count > 0 and index.status == "RATIFIED":
+        architect_verdict = "ALIGNED"
+        reasons.append("ARCHITECT: Enabled backends aligned with RATIFIED status.")
+    elif index.status == "DRAFT":
+        architect_verdict = "DRAFT_PHASE"
+        reasons.append("ARCHITECT: Registry still in DRAFT phase.")
+    verdicts.append(architect_verdict)
+
+    # Voice 2: AUDITOR — probes arifFlow + VAULT999
+    auditor_verdict = "UNKNOWN"
+    try:
+        arifflow = requests.get("http://127.0.0.1:7073/health", timeout=2).json()
+        fq = arifflow.get("fq", {}).get("verdict", "UNKNOWN")
+        if fq == "OPTIMAL":
+            auditor_verdict = "OPTIMAL_FQ"
+            reasons.append("AUDITOR: arifFlow FQ OPTIMAL, metabolism healthy.")
+        elif fq == "SUBOPTIMAL":
+            auditor_verdict = "SUBOPTIMAL_FQ"
+            reasons.append("AUDITOR: arifFlow FQ SUBOPTIMAL.")
+        else:
+            auditor_verdict = "UNKNOWN_FQ"
+            reasons.append(f"AUDITOR: arifFlow FQ status {fq}.")
+
+        vault = Path("/srv/arifos/VAULT999/SEALED_EVENTS.jsonl")
+        if vault.exists():
+            seals = 0
+            bad_lines = 0
+            with open(vault) as f:
+                for line in list(f)[-100:]:
+                    try:
+                        if json.loads(line).get("stage") == "999_SEAL":
+                            seals += 1
+                    except (json.JSONDecodeError, ValueError):
+                        bad_lines += 1
+                        continue
+            if seals > 50:
+                reasons.append(f"AUDITOR: {seals} recent 999_SEALs in VAULT999, federation active.")
+            else:
+                reasons.append(f"AUDITOR: Low recent 999_SEALs ({seals}), federation quiet.")
+            if bad_lines:
+                reasons.append(f"AUDITOR: Skipped {bad_lines} malformed VAULT999 lines (corruption tolerated).")
+        else:
+            reasons.append("AUDITOR: VAULT999 not at expected path.")
+    except Exception as e:
+        reasons.append(f"AUDITOR: probe failed: {e}")
+        auditor_verdict = "PROBE_FAILED"
+    verdicts.append(auditor_verdict)
+
+    # Voice 3: SOVEREIGN
+    sovereign_verdict = "CONSENSUS_PENDING"
+    if "ALIGNED" in verdicts and "OPTIMAL_FQ" in verdicts:
+        sovereign_verdict = "SEALED_MUSYAWARAH_CONSENSUS"
+        reasons.append("SOVEREIGN: Musyawawah consensus reached (ARCHITECT + AUDITOR FQ optimal), ready for SEAL.")
+    elif "ALIGNED" in verdicts and "PROBE_FAILED" in verdicts:
+        sovereign_verdict = "SEALED_WITH_PROBE_FAILURE"
+        reasons.append("SOVEREIGN: Consensus reached but probe failed — SEAL with caveat.")
+    elif index.enabled_count < index.catalogued_count:
+        sovereign_verdict = "PARTIAL_ENGAGEMENT"
+        reasons.append("SOVEREIGN: Partial backend engagement, musyawawah ongoing.")
+    else:
+        reasons.append("SOVEREIGN: Musyawawah ongoing, awaiting clearer signals.")
+    verdicts.append(sovereign_verdict)
+
+    final_verdict = "MUSYAWARAH_IN_PROGRESS"
+    if "SEALED_MUSYAWARAH_CONSENSUS" in verdicts:
+        final_verdict = "SEALED_MUSYAWARAH_CONSENSUS"
+    elif "SEALED_WITH_PROBE_FAILURE" in verdicts:
+        final_verdict = "SEALED_WITH_PROBE_FAILURE"
+    elif "DRAFT_PHASE" in verdicts:
+        final_verdict = "DRAFT_PHASE"
+    elif "PARTIAL_ENGAGEMENT" in verdicts:
+        final_verdict = "PARTIAL_ENGAGEMENT"
+
+    print("\n--- MUSYAWARAH DELIBERATION ---", file=sys.stderr)
+    for reason in reasons:
+        print(f"  {reason}", file=sys.stderr)
+    print(f"  Final Musyawawah Verdict: {final_verdict}", file=sys.stderr)
+    print("--------------------------------", file=sys.stderr)
+    return final_verdict
 
 
 # --- CLI ---
+
+def _write_mcp_json(index: CapabilityIndex, target: Path) -> None:
+    """Regenerate mcp.json so the next session sees the musyawawah verdict.
+
+    Visible to: next Kimi spawn, OpenCode spawn, any agent loading the registry.
+    Includes: architectural_verdict, backends (enabled + sealed only), capabilities.
+    """
+    runtime_ready = [
+        b for b in index.backends.values()
+        if b.enabled and b.seal in ("ratifying", "sealed")
+    ]
+    mcp_payload = {
+        "schema_version": "mcp.json.v1",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "source_registry_sha256": index.source_sha256,
+        "source_registry_status": index.status,
+        "architectural_verdict": index.architectural_verdict,
+        "musyawawah_visible": index.architectural_verdict == "SEALED_MUSYAWARAH_CONSENSUS",
+        "axes": list(index.axes),
+        "canonical_capabilities": list(index.canonical_names),
+        "runtime_ready_backends": [
+            {
+                "name": b.name,
+                "transport": b.transport,
+                "url": b.url,
+                "F_rating": b.F_rating,
+                "seal": b.seal,
+                "gate": b.gate,
+                "note": b.note,
+            }
+            for b in runtime_ready
+        ],
+        "summary": {
+            "backends_catalogued": index.catalogued_count,
+            "backends_runtime_ready": len(runtime_ready),
+            "capabilities_recognized": len(index.canonical_names),
+        },
+    }
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(json.dumps(mcp_payload, indent=2, sort_keys=True), encoding="utf-8")
+
 
 def _print_summary(index: CapabilityIndex) -> None:
     print(f"REGISTRY: loaded")
@@ -382,6 +556,13 @@ def main(argv: list[str]) -> int:
         print(f"  reason: {e}", file=sys.stderr)
         return 1
     _print_summary(index)
+    # Regenerate mcp.json so the next session sees musyawawah verdict
+    mcp_target = Path("/root/AAA/mcp.json")
+    try:
+        _write_mcp_json(index, mcp_target)
+        print(f"  mcp.json: regenerated → {mcp_target} (verdict: {index.architectural_verdict})")
+    except Exception as e:
+        print(f"  mcp.json: regeneration_failed — {e}", file=sys.stderr)
     return 0
 
 

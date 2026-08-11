@@ -1,0 +1,315 @@
+{
+  "architectural_verdict": "SEALED_MUSYAWARAH_CONSENSUS",
+  "axes": [
+    "sense",
+    "know",
+    "remember",
+    "understand",
+    "verify",
+    "forge",
+    "witness"
+  ],
+  "canonical_capabilities": [
+    "forge.infrastructure",
+    "witness.append",
+    "code.navigate",
+    "evidence.scan",
+    "reality.search",
+    "knowledge.repo_map",
+    "db.query",
+    "evidence.reasoning",
+    "forge.provider",
+    "memory.recall",
+    "evidence.epistemic",
+    "knowledge.docs",
+    "forge.repository",
+    "knowledge.capability_index",
+    "evidence.browser",
+    "forge.container",
+    "forge.database",
+    "memory.vector",
+    "reality.browse"
+  ],
+  "generated_at": "2026-08-11T15:02:57.752214+00:00",
+  "musyawawah_visible": true,
+  "runtime_ready_backends": [
+    {
+      "F_rating": "REVIEW",
+      "gate": null,
+      "name": "brave-search",
+      "note": "dedup candidate",
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "REVIEW",
+      "gate": null,
+      "name": "exa",
+      "note": "dedup candidate",
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "REVIEW",
+      "gate": null,
+      "name": "perplexity",
+      "note": "dedup candidate",
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "HOLD",
+      "gate": null,
+      "name": "fetch",
+      "note": "duplicates forge_fetch (suppress)",
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "REVIEW",
+      "gate": null,
+      "name": "arifos",
+      "note": "arifOS constitutional kernel \u2014 F1-F13 + 888_JUDGE; routes reality.search via canonical kernel | arifOS constitutional kernel \u2014 F1-F13 + 888_JUDGE + 888_APEX",
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "REVIEW",
+      "gate": null,
+      "name": "minimax",
+      "note": "minimax-coding-plan-mcp (uvx) \u2014 web_search via MiniMax provider; canonical name = minimax | minimax-coding-plan-mcp (uvx) \u2014 web_search via MiniMax provider; canonical name = minimax",
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "HOLD",
+      "gate": null,
+      "name": "playwright",
+      "note": "duplicates forge_browser_*; A-FORGE gate required",
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "REVIEW",
+      "gate": null,
+      "name": "context7",
+      "note": null,
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "REVIEW",
+      "gate": null,
+      "name": "capability-index",
+      "note": "verify not a shadow of forge_kernel",
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "HOLD",
+      "gate": null,
+      "name": "repomapper",
+      "note": "overlaps FORGE-repo-intelligence | edit-capable surface; cross-axis with knowledge.repo_map (read_only)",
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "SAFE",
+      "gate": null,
+      "name": "hindsight",
+      "note": "searchable operational experience",
+      "seal": "sealed",
+      "transport": "http",
+      "url": "http://127.0.0.1:18087/mcp"
+    },
+    {
+      "F_rating": "SAFE",
+      "gate": null,
+      "name": "graphiti",
+      "note": "relationships + temporal context",
+      "seal": "sealed",
+      "transport": "http",
+      "url": "http://127.0.0.1:8000/mcp"
+    },
+    {
+      "F_rating": "HOLD",
+      "gate": null,
+      "name": "qdrant",
+      "note": "check pgvector duplication before Wave 3",
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "HOLD",
+      "gate": null,
+      "name": "serena",
+      "note": "duplicates forge_filesystem semantics",
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "HOLD",
+      "gate": "A-FORGE_lease",
+      "name": "postgres",
+      "note": "duplicates forge_postgres | single canonical | append-only receipt rows; cross-axis from forge.database/db.query",
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "HOLD",
+      "gate": "A-FORGE_lease",
+      "name": "supabase",
+      "note": "wraps postgres + project-ref | secondary; project-pinned",
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "HOLD",
+      "gate": null,
+      "name": "semgrep",
+      "note": null,
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "REVIEW",
+      "gate": null,
+      "name": "hermes",
+      "note": "internal \u2014 must route via arifOS, not duplicate",
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "REVIEW",
+      "gate": null,
+      "name": "geox",
+      "note": "GEOX earth intelligence \u2014 33 canonical tools, EVIDENCE_ONLY",
+      "seal": "sealed",
+      "transport": "http",
+      "url": "http://127.0.0.1:8081/mcp"
+    },
+    {
+      "F_rating": "REVIEW",
+      "gate": null,
+      "name": "wealth",
+      "note": "WEALTH capital intelligence \u2014 EVIDENCE_ONLY",
+      "seal": "sealed",
+      "transport": "http",
+      "url": "http://127.0.0.1:18082/mcp"
+    },
+    {
+      "F_rating": "REVIEW",
+      "gate": null,
+      "name": "well",
+      "note": "WELL human readiness \u2014 REFLECT_ONLY (F6 maruah)",
+      "seal": "sealed",
+      "transport": "http",
+      "url": "http://127.0.0.1:18083/mcp"
+    },
+    {
+      "F_rating": "HOLD",
+      "gate": null,
+      "name": "sequential-thinking",
+      "note": "execution amplifier \u2014 FQ risk; A-FORGE gate required",
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "REVIEW",
+      "gate": null,
+      "name": "fed",
+      "note": "FED federation router \u2014 fed_route, fed_status, fed_probe, fed_contrast, fed_health, fed_report_latency",
+      "seal": "sealed",
+      "transport": "http",
+      "url": "http://127.0.0.1:7074/mcp"
+    },
+    {
+      "F_rating": "HOLD",
+      "gate": "A-FORGE_lease",
+      "name": "github",
+      "note": "duplicates forge_github_* | immutable commit/PR references; cross-axis from forge.repository",
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "HOLD",
+      "gate": "A-FORGE_lease",
+      "name": "aforge",
+      "note": "A-FORGE governed engineering actuator \u2014 77 forge_* tools; AMANAH: MUTATE/DELETE/IRREVERSIBLE requires arifOS SEAL or 888_HOLD",
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "HOLD",
+      "gate": "A-FORGE_lease",
+      "name": "docker",
+      "note": null,
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "HOLD",
+      "gate": "A-FORGE_lease",
+      "name": "sqlite",
+      "note": "should be Postgres primitive, not side-channel",
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "HOLD",
+      "gate": "A-FORGE_lease",
+      "name": "hostinger-vps",
+      "note": "A-FORGE-only \u2014 VPS ops must never bypass federation gates",
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "SAFE",
+      "gate": null,
+      "name": "VAULT999",
+      "note": "primary receipt store",
+      "seal": "sealed",
+      "transport": "filesystem",
+      "url": null
+    },
+    {
+      "F_rating": "SAFE",
+      "gate": null,
+      "name": "arifFlow",
+      "note": "FQ metabolism + receipts",
+      "seal": "sealed",
+      "transport": "http",
+      "url": "http://127.0.0.1:7073"
+    }
+  ],
+  "schema_version": "mcp.json.v1",
+  "source_registry_sha256": "c45c22be5b7ba81386e5df4e9ee769ee6381fe4b44c404f4787da0e38050409d",
+  "source_registry_status": "RATIFIED",
+  "summary": {
+    "backends_catalogued": 30,
+    "backends_runtime_ready": 30,
+    "capabilities_recognized": 19
+  }
+}

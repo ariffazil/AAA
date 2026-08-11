@@ -1,0 +1,26 @@
+{
+  "catalogued_enabled_sealed": [
+    [
+      "VAULT999",
+      "witness"
+    ],
+    [
+      "arifFlow",
+      "witness"
+    ]
+  ],
+  "emitted": [
+    "arifFlow"
+  ],
+  "emitted_count": 1,
+  "enabled_no_launcher": [
+    "VAULT999"
+  ],
+  "enabled_not_sealed": [],
+  "launcher_map_path": "/root/AAA/federation/launcher_map.yaml",
+  "mcp_json_backup": "/root/.kimi-code/mcp.json.20260811T143123Z.bak",
+  "mcp_json_path": "/root/.kimi-code/mcp.json",
+  "registry_path": "/root/AAA/federation/AAA_CAPABILITY_REGISTRY.yaml",
+  "ts": "2026-08-11T14:31:23Z",
+  "verdict": "REGENERATED"
+}
