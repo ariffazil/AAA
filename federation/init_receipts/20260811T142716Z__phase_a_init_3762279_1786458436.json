@@ -1,0 +1,27 @@
+{
+  "actor_id": "root@phase_a_init",
+  "doctrine_capabilities_seen": [],
+  "extra_capabilities": [],
+  "fail_closed_reasons": [
+    "YAML_MISSING_OR_INVALID:Backend 'repomapper' declared with conflicting F_ratings: 'REVIEW' vs 'HOLD'"
+  ],
+  "indicators": {
+    "AXES": 0,
+    "BACKENDS": "uncatalogued",
+    "CREDENTIALS_EXPOSED": "unknown",
+    "ENABLED": "unknown",
+    "LEASES": "unknown",
+    "MUTATIONS": "unknown",
+    "REGISTRY": "not_loaded",
+    "SCHEMA": "not_validated",
+    "VERDICT": "HOLD"
+  },
+  "invariants_ok": {},
+  "reason": "Backend 'repomapper' declared with conflicting F_ratings: 'REVIEW' vs 'HOLD'",
+  "receipt_type": "CAPABILITY_HOLD",
+  "registry_path": "/root/AAA/federation/AAA_CAPABILITY_REGISTRY.yaml",
+  "registry_sha256": "uncomputed",
+  "session_id": "phase_a_init_3762279_1786458436",
+  "ts": "2026-08-11T14:27:16Z",
+  "verdict": "HOLD"
+}
