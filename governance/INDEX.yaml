@@ -213,7 +213,7 @@ files:
   - path: register_with_aaa.py
     category: SCRIPT
     description: "AAA registration helper — onboarding entry"
-  - path: sct_decision_event.py
+  - path: act_decision_event.py
     category: SCRIPT
     description: "SCT decision event module"
   - path: tool_authority_registry.py
@@ -301,7 +301,7 @@ subdirectories:
     description: "Governance schemas"
     count: 1
     files:
-      - sct_decision_event.v1.json
+      - act_decision_event.v1.json
 
 # ═══ INDEXING RULES ═══
 indexing_rules:

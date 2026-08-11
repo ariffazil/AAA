@@ -329,5 +329,6 @@ ALL THREE              →  Enforce E21 (the master invariant)
 | `COLLAPSE_BACKTEST.md` | Triple backtest (Holocaust, Enron, 1MDB) |
 | `AUDIT_MODE.md` | 888-APEX triple-pass operational doctrine |
 | `ZEN_AUDIT_FLOW.md` | Agent-wide flow reference |
+| `CIV-21-APPLICATION-NOTE-non-deterministic-substrates.md` | **Application note (2026-08-11)** — operationalises E5+E11+E14+E17+E20 for non-deterministic substrates (LLM calls, agent inferences). Maps the four primitives (epistemic labels, W³ witnesses, F1-F13 floors, VAULT999 receipts) onto Apache Airflow `@task.llm` pattern. Elaborates existing rungs, does NOT add E22. Lane A seal carried forward pending kernel reconciliation. |
 
 DITEMPA BUKAN DIBERI — All 21 forged in the gap between verdict and question. Every one Gödel-locked. The last question remains open. ⚒️🍓

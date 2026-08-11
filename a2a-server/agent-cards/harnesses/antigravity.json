@@ -321,15 +321,6 @@
       "url": "https://aaa.arif-fazil.com/a2a/antigravity"
     }
   ],
-  "signatures": [
-    {
-      "did": "did:arif:aaa",
-      "proofValue": "xLEaqQltUyOIm8adUR+LD4VhRUfktUdfZpTC2OjjFb2sDvURlFazC7e5C2Zbje3CSHLzjHZGfotWKz7tSTR6AQ==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T23:25:58Z",
-      "type": "Ed25519Signature2020"
-    }
-  ],
   "did": "did:web:arif-fazil.com",
   "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN",
   "a2a_transport": {
@@ -354,5 +345,14 @@
     "governance_port": 8088,
     "governance_endpoint": "https://mcp.arif-fazil.com/mcp"
   },
-  "_model_sot": "/root/.config/federation-models.json"
+  "_model_sot": "/root/.config/federation-models.json",
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "8/eEJvdSHqhVn+veKUpTkkbQ4YncyJRUdJx26CHxP21Vm85QqD5kT46NnnGtUP1WMmu7KJ4xHWp6Rksi9J80Bw==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-08-11T11:58:41Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
 }
