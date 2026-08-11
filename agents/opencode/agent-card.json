@@ -860,5 +860,12 @@
       "wired_at": "2026-08-08T05:44:00Z",
       "canon": "/root/AAA/docs/9-ATLAS-GENOME.md §7"
     }
+  },
+  "drift_governance_ref": {
+    "schema_path": "/root/FRAME/doctrine/FI_DRIFT_GOVERNANCE.md",
+    "baseline_path": "/root/FRAME/data/fi_baselines/FI-001.jsonl",
+    "drift_receipts_path": "/root/forge_work/frame-drift-FI-001.jsonl",
+    "owned_by": "FRAME",
+    "registered_by": "AAA"
   }
 }

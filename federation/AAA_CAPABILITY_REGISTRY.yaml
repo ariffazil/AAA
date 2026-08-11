@@ -1,0 +1,353 @@
+# ⚒️ AAA Capability Registry v1 — Seven Axes of Reality Execution
+#
+# Path:        /root/AAA/federation/AAA_CAPABILITY_REGISTRY.yaml
+# Status:      DRAFT · awaiting F13 SOVEREIGN ratification
+# Authority:   ARIF (Muhammad Arif bin Fazil, F13 SOVEREIGN)
+# Derived:     AAA_FEDERATION_CONTRACT_v0.1 (INV-01..10) + CIV-21 + arifOS F1-F13
+# Generated:   2026-08-11
+# Generator:   import-from-cc-codex (kimi/FI-008) · reviewed by 888_APEX
+# Sealed:      pending_F13
+#
+# Purpose:
+#   Single canonical registry for every external capability the federation can
+#   reach. Agents never name an MCP directly — they request a canonical
+#   capability (e.g. `reality.search`) and the AAA Capability Router chooses
+#   the backend. One canonical name per capability. Stateless MCP servers.
+#   Write tools gated by A-FORGE lease.
+#
+# Invariants (binding — INV-11..17, derived from F1/F4/F11/F13):
+#   INV-11  one_canonical_name_per_capability          — no MCP sprawl
+#   INV-12  mcp_servers_must_be_stateless              — no cognition/authority/continuity owner-ship
+#   INV-13  cognition_owner   = agent                  — model + agent only
+#   INV-14  authority_owner   = AAA_router             — never delegated to MCP server
+#   INV-15  continuity_owner  = VAULT999 + arifFlow     — never delegated to MCP server
+#   INV-16  write_tools_gated_by   = A-FORGE_lease      — F1 AMANAH
+#   INV-17  credentials_held_by    = gateway_only       — F12 RESILIENCE
+
+version: v1
+status: DRAFT
+sovereign: ARIF
+ratified_by: pending_F13
+generated_by: import-from-cc-codex
+reviewed_by: 888_APEX
+generated_at: "2026-08-11"
+
+# -----------------------------------------------------------------------------
+# Constitutional invariants (INV-11..17) — derived from F1-F13 + CIV-21
+# -----------------------------------------------------------------------------
+invariants:
+  one_canonical_name_per_capability: true
+  mcp_servers_must_be_stateless: true
+  cognition_owner: agent
+  authority_owner: AAA_router
+  continuity_owner: "VAULT999 + arifFlow"
+  write_tools_gated_by: A-FORGE_lease
+  credentials_held_by: gateway_only
+  per_task_activation_only: true          # do NOT boot every MCP at session start
+  duplicate_resolution: collapse_to_canonical_capability
+  raw_mcp_bypass_forbidden: true          # F12 RESILIENCE
+
+# -----------------------------------------------------------------------------
+# Source audit — every backend traceable to a Claude/Codex/Kimi source
+# -----------------------------------------------------------------------------
+sources:
+  claude:
+    config: /root/.claude/mcp.json
+    server_count: 29
+    provenance_sealed: false
+  codex:
+    config: /root/.codex/config.toml
+    server_count: 26
+    provenance_sealed: false
+  kimi_code:
+    config: /root/.kimi-code/mcp.json
+    server_count: 8
+    server_names: [arifos, aforge, arifflow, fed, geox, minimax, wealth, well]
+
+# -----------------------------------------------------------------------------
+# The Seven Axes of Reality Execution
+# Each axis owns one or more canonical capabilities. Each capability is
+# served by one or more backends. Backends are F-rated and disabled-by-default.
+# -----------------------------------------------------------------------------
+axes:
+
+  # ---------- AXIS 1 — SENSE -------------------------------------------------
+  sense:
+    description: "Observe the current external world."
+    authority_default: read_only
+    canonical_capabilities:
+      reality.search:
+        description: "Capability-keyed web/news/image/local retrieval."
+        F_rating: REVIEW
+        backends:
+          brave-search: { rank: 1, F_rating: REVIEW, enabled: false, transport: stdio, note: "dedup candidate" }
+          exa:          { rank: 2, F_rating: REVIEW, enabled: false, transport: stdio, note: "dedup candidate" }
+          perplexity:   { rank: 3, F_rating: REVIEW, enabled: false, transport: stdio, note: "dedup candidate" }
+          fetch:        { rank: 4, F_rating: HOLD,   enabled: false, transport: stdio, note: "duplicates forge_fetch (suppress)" }
+        dedup_resolution: "collapse to top-2 by F-rating once Wave 2 unsealed"
+      reality.browse:
+        description: "Structured browser interaction through accessibility snapshots."
+        F_rating: HOLD
+        backends:
+          playwright: { F_rating: HOLD, enabled: false, transport: stdio, note: "duplicates forge_browser_*; A-FORGE gate required" }
+
+  # ---------- AXIS 2 — KNOW --------------------------------------------------
+  know:
+    description: "Retrieve authoritative documentation and operational context."
+    authority_default: read_only
+    canonical_capabilities:
+      knowledge.docs:
+        description: "Library / SDK documentation lookup with version specificity."
+        F_rating: REVIEW
+        backends:
+          context7: { F_rating: REVIEW, enabled: false, transport: stdio }
+      knowledge.capability_index:
+        description: "Compact map of available federation capabilities."
+        F_rating: REVIEW
+        backends:
+          capability-index: { F_rating: REVIEW, enabled: false, transport: stdio, note: "verify not a shadow of forge_kernel" }
+      knowledge.repo_map:
+        description: "Repository topology and dependency maps."
+        F_rating: REVIEW
+        backends:
+          repomapper: { F_rating: REVIEW, enabled: false, transport: stdio, note: "overlaps FORGE-repo-intelligence" }
+
+  # ---------- AXIS 3 — REMEMBER ----------------------------------------------
+  remember:
+    description: "Recover durable experience across otherwise stateless calls."
+    authority_default: read_append
+    canonical_capabilities:
+      memory.recall:
+        description: "Persistent relationship/temporal memory."
+        F_rating: SAFE
+        backends:
+          hindsight: { F_rating: SAFE, enabled: false, transport: http, url: http://127.0.0.1:18087/mcp, seal: pending, source: claude+codex }
+          graphiti:  { F_rating: SAFE, enabled: false, transport: http, url: http://127.0.0.1:8000/mcp,  seal: pending, source: claude+codex }
+      memory.vector:
+        description: "Semantic vector storage and retrieval."
+        F_rating: HOLD
+        backends:
+          qdrant: { F_rating: HOLD, enabled: false, transport: stdio, note: "check pgvector duplication before Wave 3" }
+
+  # ---------- AXIS 4 — UNDERSTAND --------------------------------------------
+  understand:
+    description: "Navigate symbols, dependencies, and structured systems."
+    authority_default: read_only
+    canonical_capabilities:
+      code.navigate:
+        description: "Semantic code retrieval and editing."
+        F_rating: HOLD
+        backends:
+          serena:     { F_rating: HOLD, enabled: false, transport: stdio, note: "duplicates forge_filesystem semantics" }
+          repomapper: { F_rating: HOLD, enabled: false, transport: stdio }
+      db.query:
+        description: "Structured relational truth retrieval."
+        F_rating: HOLD
+        backends:
+          postgres: { F_rating: HOLD, enabled: false, transport: stdio, note: "duplicates forge_postgres" }
+          supabase: { F_rating: HOLD, enabled: false, transport: stdio, note: "wraps postgres + project-ref" }
+
+  # ---------- AXIS 5 — VERIFY ------------------------------------------------
+  verify:
+    description: "Test claims, code, and proposed changes."
+    authority_default: read_only_scanners
+    canonical_capabilities:
+      evidence.scan:
+        description: "Static security/quality scan."
+        F_rating: HOLD
+        backends:
+          semgrep: { F_rating: HOLD, enabled: false, transport: stdio }
+      evidence.browser:
+        description: "Browser-level behavioural evidence capture."
+        F_rating: HOLD
+        backends:
+          playwright: { F_rating: HOLD, enabled: false, transport: stdio, mode: verify_only }
+      evidence.epistemic:
+        description: "Federation epistemic and contradiction checks."
+        F_rating: REVIEW
+        backends:
+          hermes: { F_rating: REVIEW, enabled: false, transport: stdio, note: "internal — must route via arifOS, not duplicate" }
+      evidence.reasoning:
+        description: "Structured multi-step reasoning amplification."
+        F_rating: HOLD
+        backends:
+          sequential-thinking: { F_rating: HOLD, enabled: false, transport: stdio, note: "execution amplifier — FQ risk; A-FORGE gate required" }
+
+  # ---------- AXIS 6 — FORGE -------------------------------------------------
+  forge:
+    description: "Mutate repositories, databases, and infrastructure."
+    authority_default: gated_write
+    canonical_capabilities:
+      forge.repository:
+        description: "Repository mutation (issues, PRs, commits)."
+        F_rating: HOLD
+        gate: A-FORGE_lease
+        backends:
+          github: { F_rating: HOLD, enabled: false, transport: stdio, gate: A-FORGE_lease, note: "duplicates forge_github_*" }
+      forge.container:
+        description: "Container execution and management."
+        F_rating: HOLD
+        gate: A-FORGE_lease
+        backends:
+          docker: { F_rating: HOLD, enabled: false, transport: stdio, gate: A-FORGE_lease }
+      forge.database:
+        description: "Database mutation — single canonical = forge_postgres."
+        F_rating: HOLD
+        gate: A-FORGE_lease
+        backends:
+          postgres: { F_rating: HOLD, enabled: false, transport: stdio, gate: A-FORGE_lease, note: "single canonical" }
+          supabase: { F_rating: HOLD, enabled: false, transport: stdio, gate: A-FORGE_lease, note: "secondary; project-pinned" }
+          sqlite:   { F_rating: HOLD, enabled: false, transport: stdio, gate: A-FORGE_lease, note: "should be Postgres primitive, not side-channel" }
+      forge.provider:
+        description: "Third-party model provider MCP."
+        F_rating: HOLD
+        gate: A-FORGE_lease
+        backends:
+          minimax-mcp: { F_rating: HOLD, enabled: false, transport: stdio, gate: A-FORGE_lease, note: "BLOCKED — name collision with minimax on Kimi" }
+      forge.infrastructure:
+        description: "VPS / bare-metal management."
+        F_rating: HOLD
+        gate: A-FORGE_lease
+        backends:
+          hostinger-vps: { F_rating: HOLD, enabled: false, transport: stdio, gate: A-FORGE_lease, note: "A-FORGE-only — VPS ops must never bypass federation gates" }
+
+  # ---------- AXIS 7 — WITNESS -----------------------------------------------
+  witness:
+    description: "Record outcomes, evidence, and operational health."
+    authority_default: append_only
+    canonical_capabilities:
+      witness.append:
+        description: "Immutable, append-only operational witness. Authority mode = append_only (read references, no mutation). Same backend may serve other axes under different authority modes — the capability-keyed router enforces axis at call site."
+        F_rating: SAFE
+        backends:
+          # Primary (already canonical)
+          VAULT999: { F_rating: SAFE, enabled: true,  transport: filesystem, note: "primary receipt store" }
+          arifFlow: { F_rating: SAFE, enabled: true,  transport: http, url: http://127.0.0.1:7073, note: "FQ metabolism + receipts" }
+          # Cross-axis: same backend, different authority mode
+          hindsight: { F_rating: SAFE, enabled: false, transport: http, url: http://127.0.0.1:18087/mcp, authority_mode: append_only, note: "searchable operational experience" }
+          graphiti:  { F_rating: SAFE, enabled: false, transport: http, url: http://127.0.0.1:8000/mcp,  authority_mode: append_only, note: "relationships + temporal context" }
+          github:    { F_rating: SAFE, enabled: false, transport: stdio, authority_mode: read_only, note: "immutable commit/PR references; cross-axis from forge.repository" }
+          postgres:  { F_rating: SAFE, enabled: false, transport: stdio, authority_mode: append_only, note: "append-only receipt rows; cross-axis from forge.database/db.query" }
+
+# -----------------------------------------------------------------------------
+# Enable policy — three-wave rollout, every wave gated by F13 seal
+# -----------------------------------------------------------------------------
+enablement_policy:
+  wave_1_safe_http:
+    description: "HTTP-only, read/append, low blast. Auto-enabled AFTER F13 seal."
+    list: [hindsight, graphiti]
+    auto_enable: false              # always require explicit F13 seal before enabled: true
+    transport_constraint: http_only
+  wave_2_review:
+    description: "Backend-pluggable. Require 333_propose → 555_verify → 888_judge → seal."
+    list:
+      - brave-search
+      - exa
+      - perplexity
+      - context7
+      - capability-index
+      - repomapper
+      - hermes
+    auto_enable: false
+    require: [333_propose, 555_verify, 888_judge, seal]
+  wave_3_hold:
+    description: "Execution amplifiers / duplicates. Require full pipeline + A-FORGE lease."
+    list:
+      - playwright
+      - docker
+      - semgrep
+      - github
+      - postgres
+      - qdrant
+      - supabase
+      - sqlite
+      - serena
+      - hostinger-vps
+      - fetch
+      - minimax-mcp
+      - sequential-thinking
+    auto_enable: false
+    require: [333_propose, 555_verify, 888_judge, seal, A-FORGE_lease]
+
+# -----------------------------------------------------------------------------
+# Dedup register — collapse candidate groups to one canonical capability
+# -----------------------------------------------------------------------------
+dedup_register:
+  reality.search:
+    backends: [brave-search, exa, perplexity, fetch]
+    resolution: "collapse to top-2 by F-rating once Wave 2 unsealed; fetch suppressed (duplicates forge_fetch)"
+  forge.repository:
+    backends: [github]
+    resolution: "suppress raw MCP; route via forge_github_*"
+  db.query:
+    backends: [postgres, supabase]
+    resolution: "suppress raw MCP; route via forge_postgres"
+  forge.database:
+    backends: [postgres, supabase, sqlite]
+    resolution: "single canonical = forge_postgres; sqlite as Postgres primitive"
+  forge.provider:
+    backends: [minimax-mcp]
+    resolution: "BLOCKED — name collision with minimax already on Kimi Code"
+  memory.recall:
+    backends: [hindsight, graphiti]
+    resolution: "keep both — graph (graphiti) and bank (hindsight) are orthogonal surfaces"
+
+# -----------------------------------------------------------------------------
+# Backwards references
+# -----------------------------------------------------------------------------
+derives_from:
+  - /root/AAA/federation/AAA_FEDERATION_CONTRACT_v0.1.md
+  - /root/AAA/federation/AAA_EUREKA_DOCTRINE_v1.md
+  - /root/arifOS/GENESIS/000_KERNEL_CANON.md
+  - /root/arifOS/GENESIS/FLOOR_TABLE.json
+  - /root/AAA/canon/GODEL_EUREKAS.md
+related_artifacts:
+  - /root/AAA/federation/FEDERATED_SKILLS_REGISTRY_V3.yaml
+  - /root/forge_work/_import_2026-08-11/mcp_gap_normalized.json   # raw import source
+
+# -----------------------------------------------------------------------------
+# Architectural ratification (SEAL_ARCHITECTURE verdict, 2026-08-11)
+# -----------------------------------------------------------------------------
+# F13 SOVEREIGN ratified the architectural shape — the seven axes, the
+# stateless MCP principle, and the Zen-Apex router pattern. Operational
+# enablement (status flip + Lane A seal) is still pending.
+architectural_ratification:
+  verdict: SEAL_ARCHITECTURE
+  issued_by: ARIF
+  issued_at: "2026-08-11"
+  scope:
+    - "Seven Axes of Reality Execution (SENSE/KNOW/REMEMBER/UNDERSTAND/VERIFY/FORGE/WITNESS)"
+    - "Stateless MCP principle — servers do not own cognition/authority/continuity"
+    - "Zen-Apex router pattern — agents request canonical capability names, AAA chooses backend"
+    - "One canonical name per capability (no MCP sprawl)"
+    - "Per-task activation (no boot-everything)"
+    - "Credentials held by gateway, never agent"
+    - "Every mutation followed by a witnessed receipt"
+  canonical_capability_names:
+    - reality.search
+    - knowledge.docs
+    - memory.recall
+    - code.navigate
+    - evidence.scan
+    - forge.repository
+    - witness.append
+  cross_axis_principle: "Same backend may serve multiple axes under different authority modes (read/append_only/write). The capability-keyed router enforces axis at call site."
+
+# -----------------------------------------------------------------------------
+# Operational ratification gate (pending F13 sign-off)
+# -----------------------------------------------------------------------------
+ratification:
+  required_signoff: F13_SOVEREIGN
+  architectural_verdict: SEAL_ARCHITECTURE    # ← ratified 2026-08-11
+  operational_status: HOLD                   # ← still pending
+  status: DRAFT                              # ← flip to RATIFIED when operational seal lands
+  ratified_by: pending_F13
+  trigger_to_unseal: "Flip `status: DRAFT` → `status: RATIFIED` and `ratified_by: pending_F13` → sovereign sign-off. Then seal a Lane A receipt to VAULT999."
+
+# -----------------------------------------------------------------------------
+# DITEMPA BUKAN DIBERI
+# Ω₀ ≈ 0.04
+# Architectural verdict: SEAL_ARCHITECTURE (2026-08-11)
+# Operational status: DRAFT (awaiting F13 sign-off)
+# -----------------------------------------------------------------------------
+

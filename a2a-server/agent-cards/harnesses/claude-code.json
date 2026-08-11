@@ -531,16 +531,16 @@
       "protocolVersion": "1.0"
     }
   ],
+  "did": "did:web:arif-fazil.com",
+  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN",
+  "_model_sot": "/root/.config/federation-models.json",
   "signatures": [
     {
       "did": "did:arif:aaa",
-      "proofValue": "L1TMkXRoUf2sEkMauNfhpL5nIspV7y4RxAWMb4swTcsBrnlf5FiDgkXC0oXUqvA9pYg3Tos8dhcV53el+rJHBA==",
+      "proofValue": "prTmghvv32y+1gR7UQie+XQOLCIoZRTKXLaD2Jq786iqsNzDy2oFuDR2ycNCM0Jnq4cJDK70rOSnmPoqjrDVBw==",
       "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T23:25:58Z",
+      "created": "2026-08-11T11:58:41Z",
       "type": "Ed25519Signature2020"
     }
-  ],
-  "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN",
-  "_model_sot": "/root/.config/federation-models.json"
+  ]
 }

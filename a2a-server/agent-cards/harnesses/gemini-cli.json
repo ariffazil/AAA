@@ -521,15 +521,22 @@
       "protocolVersion": "1.0"
     }
   ],
+  "_model_sot": "/root/.config/federation-models.json",
+  "fi_note": "FI-010 \u2014 FI-007 reserved for Grok Build CLI (2026-08-09)",
+  "status": "OUT_OF_SOT",
+  "sot_note": "No slot assigned in forge_instruments.yaml. Antigravity CLI (FI-004) is the canonical Gemini harness.",
+  "drift": {
+    "fi_slot": "FI-010",
+    "forge_tier": "FI-007",
+    "tier": "FI-007"
+  },
   "signatures": [
     {
       "did": "did:arif:aaa",
-      "proofValue": "p0hLbUOkwCVy80ln17ibRyhlYNjF+jaoJzjyCR1vbyDDd6w9ZavZE8o1S+OsZK2vAsRve6ZEb7wN8o9MkAiBAw==",
+      "proofValue": "dn6f8q/tDwRbI/Zzy/l/nEkJ5HJWKwmfaK2CjOQruf/1ClFy+EN+7EfaxHAEISGnC9YXsn9CAvzra64+2r/NCw==",
       "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T23:51:27Z",
+      "created": "2026-08-11T11:59:17Z",
       "type": "Ed25519Signature2020"
     }
-  ],
-  "_model_sot": "/root/.config/federation-models.json",
-  "fi_note": "FI-010 \u2014 FI-007 reserved for Grok Build CLI (2026-08-09)"
+  ]
 }

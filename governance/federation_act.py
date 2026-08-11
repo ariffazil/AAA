@@ -530,7 +530,7 @@ def _emit_gate_decision(
         from governance.act_decision_event import emit_decision
     except ImportError:  # pragma: no cover
         try:
-            from sct_decision_event import emit_decision  # type: ignore
+            from act_decision_event import emit_decision  # type: ignore
         except ImportError:
             return ""
 
@@ -560,10 +560,10 @@ def _emit_gate_decision(
         actor_id=actor or "",
         action_class=str(reg.get("action_class") or ""),
         required_authority=eff_authority,
-        require_sct=eff_require_sct,
-        sct_fingerprint=fp,
-        sct_source_count=source_count,
-        sct_unique_tokens=unique_tokens,
+        require_act=eff_require_act,
+        act_fingerprint=fp,
+        act_source_count=source_count,
+        act_unique_tokens=unique_tokens,
         registry_source="tools.yaml" if reg.get("tool_id") else "unknown",
         registry_known=bool(reg.get("tool_id")) and reg.get("action_class") != "UNKNOWN",
         extraction_locations=locations,
@@ -709,7 +709,7 @@ def gate_tool_ingress(
             actor=actor,
             auth=auth,
             extraction=extraction,
-            eff_require_sct=eff_require_sct,
+            eff_require_act=eff_require_act,
             eff_authority=eff_authority,
         )
         if tid:
@@ -751,7 +751,7 @@ def gate_tool_ingress(
             actor=actor,
             auth=auth,
             extraction=extraction,
-            eff_require_sct=eff_require_sct,
+            eff_require_act=eff_require_act,
             eff_authority=eff_authority,
         )
         # Do NOT inject _sct_trace_id into arguments — breaks Pydantic tool schemas.
@@ -777,7 +777,7 @@ def gate_tool_ingress(
             actor=actor,
             auth=auth,
             extraction=extraction,
-            eff_require_sct=eff_require_sct,
+            eff_require_act=eff_require_act,
             eff_authority=eff_authority,
         )
         # Do NOT inject _sct_trace_id into arguments (schema-safe).
@@ -798,7 +798,7 @@ def gate_tool_ingress(
         actor=actor,
         auth=auth,
         extraction=extraction,
-        eff_require_sct=eff_require_sct,
+        eff_require_act=eff_require_act,
         eff_authority=eff_authority,
     )
     if tid:
