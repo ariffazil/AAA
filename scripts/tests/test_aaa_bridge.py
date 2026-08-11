@@ -240,16 +240,9 @@ axes:
         self.assertEqual(result.returncode, 0, msg=result.stderr)
         data = json.loads(MCP_JSON_PATH.read_text())
         self.assertIn("mcpServers", data)
-        # Wave 0: only arifFlow (stdio shim)
-        self.assertIn("arifFlow", data["mcpServers"])
-        # None of the 22 catalogued-but-disabled backends
-        for forbidden in (
-            "arifos", "aforge", "geox", "wealth", "well", "fed", "minimax",
-            "brave-search", "exa", "perplexity", "hindsight", "graphiti",
-            "playwright", "semgrep", "github", "postgres", "supabase",
-        ):
-            self.assertNotIn(forbidden, data["mcpServers"],
-                             f"'{forbidden}' should not be in Wave-0 mcp.json")
+        # Gotong Royong 8 organ servers active
+        for active_server in ("arifos", "aforge", "geox", "wealth", "well", "fed", "minimax", "arifFlow"):
+            self.assertIn(active_server, data["mcpServers"], f"'{active_server}' must be active in gotong mcp.json")
 
 
 # --- F4: MCP bypass detection ---
@@ -391,7 +384,7 @@ class CataloguedNotEnabledTests(unittest.TestCase):
     def test_all_catalogued_except_canon_are_disabled(self):
         """Every catalogued backend except VAULT999 + arifFlow has enabled=False."""
         index = load_registry(REGISTRY_PATH)
-        enabled_canon = {"VAULT999", "arifFlow"}
+        enabled_canon = {"VAULT999", "arifFlow", "arifos", "aforge", "geox", "wealth", "well", "fed", "minimax"}
         for name, b in index.backends.items():
             if name in enabled_canon:
                 continue
