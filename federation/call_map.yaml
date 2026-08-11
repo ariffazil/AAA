@@ -30,7 +30,15 @@ agents:
     can: [forge_code, git, pr, test, mcp_organs, subagent_spawn]
     cannot: [self_seal_constitutional, irreversible_without_T3_or_F13]
     boundary: T3_HOLD
-    model_socket: "FED litellm-federation/opencode → :4000 (direct fallbacks in opencode.json)"
+    model_socket: |
+      PRIMARY: opencode CLI direct SDK → opencode-go (api.opencode.ai/zen/go/v1) for 333-AGI/555-ASI/dispatch.
+      FED: litellm-federation/opencode → :4000 chain:
+        order=1  mimo-v2.5-pro  (mimo-platform Track A)
+        order=1  qwen3.7-max    (qwen token plan)
+        order=99 MiniMax-M3     (minimax Track A — fresh 2026-08-11)
+        order=99 deepseek-v4-pro via opencode-go (Anomaly $10/mo subscription)
+      Direct CLI opencode.json: enabled_providers includes opencode-go + litellm-federation.
+      FI alignment: opencode-go registered in FED providers table (id=21, Track A, confidence 0.95).
 
   claude-code:
     layer: harness
@@ -55,6 +63,7 @@ agents:
       endpoint_card: https://aaa.arif-fazil.com/a2a/kimi-code
     can: [forge_code, long_context_1M]
     boundary: T3_HOLD
+    model_socket: "FED litellm-federation/kimi-code → :4000 chain: order=1 kimi-k3 (Moonshot) | order=99 MiniMax-M3 (minimax Track A) | order=99 deepseek-v4-pro via opencode-go (Anomaly $10/mo). FI-008 uses kimi-k3 as PRIMARY; opencode-go as resilience fallback."
 
   codex:
     layer: harness
@@ -66,7 +75,7 @@ agents:
       note: "Responses API via :4001 fed-clean-proxy → :4000"
     can: [forge_code, sandboxed_exec]
     boundary: T3_HOLD
-    model_socket: "provider fed base_url http://127.0.0.1:4001/v1 model=codex"
+    model_socket: "provider fed base_url http://127.0.0.1:4001/v1 model=codex. litellm chain: order=1 mimo-v2.5-pro + qwen3.7-max | order=99 MiniMax-M3 | order=99 deepseek-v4-pro via opencode-go."
 
   grok-build:
     layer: harness
@@ -125,7 +134,7 @@ agents:
     can: [route_personas, telegram_surface, dispatch_to_fi, metabolize]
     cannot: [be_primary_coder, self_seal_constitutional]
     boundary: ROUTE_OBSERVE
-    model_socket: "FED litellm-federation/openclaw → :4000 (primary); direct deepseek/minimax fallbacks"
+    model_socket: "FED litellm-federation/openclaw → :4000 chain: order=1 mimo-v2.5-pro + qwen3.8-max | order=99 MiniMax-M3 | order=99 deepseek-v4-pro via opencode-go."
     personas: [main, opencode, codex, kimi, claude]
     contrast_hermes: "OpenClaw=gateway metabolizer+personas; Hermes=human ASI bridge. Both may share Telegram surface — dial carefully."
 
@@ -142,7 +151,7 @@ agents:
     can: [human_bridge, route_to_coders, multimodal]
     cannot: [mutate_prod_code_as_primary_executor, be_primary_coder]
     boundary: OBSERVE_ROUTE
-    model_socket: "FED litellm-federation/hermes-asi → :4000; thinking pad for MiMo/DeepSeek"
+    model_socket: "FED litellm-federation/hermes-asi → :4000 chain: order=1 qwen3.8-max + qwen3.6-flash | order=2 mimo-v2.5 | order=99 deepseek-v4-flash + MiniMax-M3 | order=99 deepseek-v4-pro via opencode-go. Thinking pad: MiMo/DeepSeek."
     contrast_openclaw: "Hermes FI-000 edge/human; OpenClaw binding gateway. WHICH=FED seat, not identity."
 
 organs:
@@ -198,3 +207,51 @@ intent_routing:
   execute_mutation: a-forge
   human_chat: hermes-asi
   model_route_advice: fed_advisor
+
+# ══════════════════════════════════════════════════════════════════════════════
+# Provider ↔ FI alignment (SOT for cross-harness model routing)
+# Updated 2026-08-11 — opencode-go (Anomaly $10/mo) registered across 9 chains
+# ══════════════════════════════════════════════════════════════════════════════
+provider_alignment:
+  opencode-go:
+    fed_id: opencode-go                  # providers table id=21
+    label: "OpenCode Go (Anomaly)"       # English-readable brand label
+    endpoint: https://opencode.ai/zen/go/v1
+    key_env: OPENCODE_GO_API_KEY
+    fi_primary: opencode (FI-001)         # opencode CLI uses it for 333-AGI/555-ASI
+    fi_fallback: [codex, kimi-code, hermes-asi, agi-333, asi-555, apex-888, openclaw, dispatch]
+    catalog: 25+ models (minimax-m3, kimi-k3, deepseek-v4-pro, qwen3.8-max, glm-5.2, mimo-v2.5-pro, grok-4.5, ...)
+    subscription: "$10/mo Go tier — rolling 0% / weekly 40% / monthly 20% (2026-08-11)"
+  minimax:
+    fed_id: minimax                      # providers table id=7
+    label: "MiniMax (Anthropic + OpenAI)"
+    endpoint: https://api.minimax.io/v1
+    key_env: MINIMAX_API_KEY
+    fi_fallback: [hermes-asi, agi-333, asi-555, apex-888, openclaw, opencode, codex, kimi-code]
+    subscription: "$50/mo Token Plan — fresh 2026-08-11, 18% 5h / 34% weekly"
+  mimo-platform:
+    fed_id: mimo-platform
+    label: "MiMo Token Plan (Xiaomi Singapore)"
+    endpoint: https://token-plan-sgp.xiaomimimo.com/v1
+    key_env: MIMO_API_KEY
+    fi_primary: opencode (FI-001)         # also mimo-v2.5-pro is order=1 in many chains
+  qwen-token-plan-individual:
+    fed_id: qwen-token-plan-individual
+    label: "Qwen Token Plan (Individual)"
+    endpoint: https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1
+    key_env: QWEN_INDIVIDUAL_API_KEY
+    note: "Fresh renewal 2026-08-08. 11 models. Confirmed LIVE."
+  qwen-token-plan-team:
+    fed_id: qwen-token-plan-team
+    label: "Qwen Token Plan (Team — 3 seats, $124.23/mo)"
+    note: "ALL SEATS EXHAUSTED until 2026-09-01 reset. OpenCode Go covers coding gap."
+  deepseek:
+    fed_id: deepseek
+    label: "DeepSeek"
+    note: "DEAD — balance -$0.13. Renew at deepseek.com to re-enable."
+  flame:
+    fed_id: flame
+    label: "FLAME inference mesh"
+    endpoint: http://127.0.0.1:18901
+    tier: RM0 (free — Groq + Gemini free tiers)
+    note: "NOT a paid provider. Different lane from subscriptions. Free fallback only."

@@ -177,6 +177,59 @@ async def fed_health(_request):
     )
 
 
+# ── Path B / F13 directive 2026-08-11 ───────────────────────────────────
+# Direct HTTP /fed/route endpoint for non-MCP callers (e.g. fed-aware-middleware
+# Python service on :4010 that proxies OpenCode CLI capability-signature calls).
+# Same logic as the fed_route MCP tool — bypasses JSON-RPC session handshake.
+@mcp.custom_route("/fed/route", methods=["POST"])
+async def fed_route_http(request):
+    """Direct HTTP route advisor. JSON body (POST): {task, model, constitutional_tier?, modality?, effort_level?, agent_id?, tokens_in?, tokens_out?}.
+
+    Returns the same shape as the fed_route MCP tool result.
+    """
+    from starlette.responses import JSONResponse
+    try:
+        body = await request.json()
+    except Exception:
+        return JSONResponse({"error": {"type": "invalid_request", "message": "body must be JSON"}}, status_code=400)
+    if not isinstance(body, dict):
+        return JSONResponse({"error": {"type": "invalid_request", "message": "body must be a JSON object"}}, status_code=400)
+
+    task = body.get("task", "fed-route http")
+    model = body.get("model", "deepseek-v4-pro")
+    modality = body.get("modality", "text")
+    effort = body.get("effort_level", "medium")
+    tier = int(body.get("constitutional_tier", 333))
+    agent_id = body.get("agent_id", "fed-route-http")
+    tokens_in = int(body.get("tokens_in", 0))
+    tokens_out = int(body.get("tokens_out", 0))
+
+    # Re-use fed_route logic via a thread (FastMCP handlers are async; fed_route is sync).
+    # fed_route signature: (task, model, modality, agent_id, constitutional_tier, effort_level,
+    #                        tokens_in_estimate, tokens_out_estimate, operation="auto").
+    # Pass operation="auto" explicitly to avoid an unintended default-mutation bug.
+    import asyncio
+    loop = asyncio.get_running_loop()
+    try:
+        result = await loop.run_in_executor(
+            None,
+            lambda: fed_route(
+                task=task,
+                model=model,
+                modality=modality,
+                agent_id=agent_id,
+                constitutional_tier=tier,
+                effort_level=effort,
+                tokens_in_estimate=int(tokens_in) if tokens_in else 0,
+                tokens_out_estimate=int(tokens_out) if tokens_out else 0,
+                operation="auto",
+            ),
+        )
+    except Exception as e:
+        return JSONResponse({"error": {"type": "internal", "message": str(e)}}, status_code=500)
+    return JSONResponse(result)
+
+
 # ── DB helpers (READ-ONLY for balances) ──────────────────────────────────
 def get_db():
     conn = sqlite3.connect(str(FED_STATE_DB))
@@ -364,7 +417,17 @@ def _emd_check(agent_id: str, operation: str, model_id: str, modality: str) -> d
 CAPABILITY_SIGNATURES = {
     "fed-reasoning-heavy": {
         "description": "Heavy reasoning, coding, planning, constitutional judgment",
-        "models": ["deepseek-v4-pro", "qwen3.8-max", "MiniMax-M3"],
+        "models": ["MiniMax-M3", "MiniMax-M2.7", "qwen3.8-max", "deepseek-v4-pro"],
+    },
+    "fed-standard": {
+        "description": "Standard balanced reasoning, cost-effective",
+        "models": ["MiniMax-M3", "qwen3.6-flash", "deepseek-v4-flash"],
+    },
+    "fed-fast": {
+        "description": "Fast responses, low latency, no deep reasoning",
+        "models": ["MiniMax-M3", "qwen3.6-flash", "deepseek-v4-flash"],
+    },
+    "fed-long-context": {
         "constitutional_tier": 333,
         "modality": "text",
     },
@@ -680,6 +743,19 @@ MODEL_ROUTES = {
             "priority": 2,
         },
     ],
+    # MiniMax-M2.7 — verified LIVE 2026-08-11 12:18 MYT (PONG returns 200 with content).
+    # Added as live fallback for fed-reasoning-heavy cascade when MiniMax-M3 / qwen3.8-max are blocked.
+    # Provider "minimax" is NOT in token_bank.db; middleware's PROVIDER_BASE_URL handles direct forwarding.
+    "MiniMax-M2.7": [
+        {
+            "provider": "minimax",
+            "router": "direct",
+            "class": "direct",
+            "constitutional": True,
+            "shadow": None,
+            "priority": 1,
+        },
+    ],
     "qwen-vl-max": [
         {
             "provider": "mulerouter",
@@ -974,8 +1050,11 @@ def fed_route_engine(
     """
     # ── Step 0: EFFORT DIAL — override model by effort tier ────────
     # "Don't pick models, pick effort." — Thorsten Ball (Amp)
+    # F2 fix 2026-08-11 12:17 MYT: skip override when model is a fed-* capability signature.
+    # The capability expansion itself IS the user's effort intent; EFFORT_MODEL_MAP collapsing
+    # fed-reasoning-heavy → deepseek-v4-pro defeats the whole capability-resolution contract.
     effort_applied = None
-    if effort_level and effort_level in EFFORT_MODEL_MAP:
+    if effort_level and effort_level in EFFORT_MODEL_MAP and not model.startswith("fed-"):
         effort_applied = effort_level
         model = EFFORT_MODEL_MAP[effort_level]
         # Constitutional tier still gates — effort can't override authority
