@@ -129,7 +129,7 @@ class LoaderTests(unittest.TestCase):
         # All backends have F_rating + transport + seal
         for b in index.backends.values():
             self.assertIn(b.F_rating, ("SAFE", "REVIEW", "HOLD"))
-            self.assertIn(b.transport, ("stdio", "http"))
+            self.assertIn(b.transport, ("stdio", "http", "filesystem"))
             self.assertIn(b.seal, ("pending", "ratifying", "sealed", "void"))
 
     def test_load_minimal_valid_registry(self):

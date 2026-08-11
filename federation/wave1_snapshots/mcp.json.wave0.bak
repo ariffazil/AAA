@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "arifFlow": {
+      "command": "/root/.arifos/agents/kimi/mcp-launchers/arifflow.sh",
+      "description": "arifFLOW metabolism organ \u2014 FQ pulse + receipt ingestion. Stdout bridge to http://127.0.0.1:7073/mcp.",
+      "enabled": true,
+      "startupTimeoutMs": 30000,
+      "toolTimeoutMs": 30000
+    }
+  }
+}

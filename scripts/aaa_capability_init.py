@@ -169,9 +169,9 @@ def run_init(registry_path: Path | str) -> InitReceipt:
     )
 
 
-def write_receipt(receipt: InitReceipt, dest_dir: Path | None = None) -> Optional[Path]:
+def write_receipt(receipt: InitReceipt, dest_dir: Path | str | None = None) -> Optional[Path]:
     """Persist receipt as JSON. Returns the path written, or None on failure."""
-    target_dir = dest_dir or RECEIPT_DIR
+    target_dir = Path(dest_dir) if dest_dir is not None else RECEIPT_DIR
     try:
         target_dir.mkdir(parents=True, exist_ok=True)
     except OSError:
