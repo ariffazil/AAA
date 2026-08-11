@@ -1,0 +1,247 @@
+# mmxfed — AAA Federation mmx-cli Intent Registry
+# Forged: 2026-08-11 by 333-AGI Δ MIND under F13 SOVEREIGN directive
+# Purpose: map AAA agent intents → mmx-cli subcommands + model selection
+# Use:    any AAA agent can call mmx-* via shell without knowing MiniMax internals
+# Path:   /root/AAA/registries/mmxfed.yaml
+# Schemas: intents[] (intent → mmx subcommand + model), models[] (registry), policies[]
+
+mmxfed_version: 1.0.0
+forge_date: 2026-08-11
+federation:
+  organization: arifOS AAA
+  intent: "Make every AAA agent able to offload multimodal work to MiniMax token plan via single mmx surface"
+  affordances:
+    - "mmx text chat     — chat completion (default MiniMax-M3)"
+    - "mmx image generate — text/image-to-image"
+    - "mmx video generate — async video gen (Hailuo-02)"
+    - "mmx speech synthesize — TTS (speech-2.6-hd)"
+    - "mmx music generate  — music-1.5"
+    - "mmx vision describe — image understanding"
+    - "mmx search query    — built-in web search"
+    - "mmx quota           — remaining quota"
+  bug_workaround:
+    mmx_cli_version: "1.0.16"
+    issue: "POST URL always appends /anthropic/v1/messages regardless of base_url (doubles path)"
+    workarounds:
+      - "use forge_minimax_search/text_chat/etc via A-FORGE instead of mmx CLI direct"
+      - "for mmx CLI users: downgrade mmx-cli OR patch URL builder"
+      - "minimax auth status, mmx quota, mmx config show/work fine (no POST)"
+
+# ════════════════════════════════════════════════════════════════════════════
+# INTENTS — map agent intent → mmx subcommand + model
+# ════════════════════════════════════════════════════════════════════════════
+intents:
+  - id: text.constitutional_audit
+    description: "F1-F13 review of an action by an independent model (independent of agent's primary model)"
+    subcommand: "mmx text chat"
+    model: "MiniMax-M3"
+    flags: ["--system", "--output json", "--quiet", "--non-interactive"]
+    use_when: "Agent wants a second-opinion or external review of an action"
+    caller_examples: ["888-APEX external audit", "F13 review preflight", "cross-agent sanity check"]
+    sop: |
+      mmx text chat --model MiniMax-M3 \\
+        --system "You are an independent constitutional reviewer. Apply F1-F13 from arifOS canon." \\
+        --message "<action description>" \\
+        --output json --quiet
+
+  - id: text.coding_assist
+    description: "Single-shot code generation or refactor"
+    subcommand: "mmx text chat"
+    model: "MiniMax-M2.7"
+    flags: ["--system", "--output json", "--quiet"]
+    use_when: "Quick code generation, no need for 1M flagship"
+    sop: |
+      mmx text chat --model MiniMax-M2.7 \\
+        --system "You are a coding assistant. Return concise code only." \\
+        --message "<task>"
+
+  - id: text.translation
+    description: "Translation between languages"
+    subcommand: "mmx text chat"
+    model: "MiniMax-M2.5"
+    flags: ["--system", "--output json", "--quiet"]
+    use_when: "Cheap fast translation, no reasoning needed"
+
+  - id: image.illustration
+    description: "Generate illustration image"
+    subcommand: "mmx image generate"
+    model: "image-01"
+    flags: ["--aspect-ratio", "--n 1"]
+    use_when: "Any image generation task"
+    sop: |
+      mmx image generate --prompt "<scenario>" --aspect-ratio 16:9 --output /root/forge_work/2026-08-11/illustrations/
+
+  - id: video.preview
+    description: "Short video preview (6-10s)"
+    subcommand: "mmx video generate"
+    model: "MiniMax-Hailuo-02"
+    flags: ["--duration 6", "--resolution 768P", "--async"]
+    use_when: "Quick video preview, social media snippet"
+
+  - id: video.production
+    description: "Production-quality video (10s 1080P)"
+    subcommand: "mmx video generate"
+    model: "MiniMax-Hailuo-02"
+    flags: ["--duration 10", "--resolution 1080P", "--async"]
+    use_when: "Final delivery, must look HQ"
+
+  - id: audio.voiceover
+    description: "Text-to-speech for narration"
+    subcommand: "mmx speech synthesize"
+    model: "speech-2.6-hd"
+    flags: ["--voice", "--speed", "--output"]
+    sop: |
+      mmx speech synthesize --text "<script>" --voice "English_CalmWoman" --output voiceover.mp3
+
+  - id: music.theme
+    description: "Background music for project"
+    subcommand: "mmx music generate"
+    model: "music-1.5"
+    flags: ["--lyrics", "--duration"]
+    sop: |
+      mmx music generate --prompt "Upbeat jazz" --output theme.mp3
+
+  - id: vision.image_describe
+    description: "OCR or image understanding from local file or URL"
+    subcommand: "mmx vision describe"
+    model: "MiniMax-M3"
+    flags: ["--file", "--language"]
+    use_when: "Image text extraction, scene description, chart OCR"
+
+  - id: search.web
+    description: "Built-in web search via MiniMax"
+    subcommand: "mmx search query"
+    model: "search"
+    flags: ["--max-results", "--language"]
+    use_when: "Federated web search via MiniMax plan (alternative to SearxNG)"
+
+  - id: quota.check
+    description: "Check remaining token plan quota"
+    subcommand: "mmx quota"
+    model: null
+    flags: ["--output json"]
+    use_when: "Before batch generation, before high-cost job"
+
+# ════════════════════════════════════════════════════════════════════════════
+# MODELS — registry of all MiniMax models available via mmx / direct API
+# ════════════════════════════════════════════════════════════════════════════
+models:
+  - id: MiniMax-M3
+    family: "M3"
+    tier: "flagship"
+    ctx: 1048576
+    output: 131072
+    capabilities: [text, thinking, vision, audio_input, video_input, image_gen, video_gen, music_gen, tts]
+    constitutional_eligible: true
+    fallback_to: "openai/MiniMax-M3 on api.minimax.io/v1"
+  - id: MiniMax-M2.7
+    family: "M2.7"
+    tier: "standard"
+    ctx: 204800
+    output: 65536
+    capabilities: [text, thinking, vision, tool_call]
+    constitutional_eligible: false
+  - id: MiniMax-M2.7-highspeed
+    family: "M2.7"
+    tier: "fast"
+    ctx: 204800
+    output: 65536
+    capabilities: [text, vision, tool_call]
+  - id: MiniMax-M2.5
+    family: "M2.5"
+    tier: "standard"
+    ctx: 204800
+    output: 65536
+    capabilities: [text, vision, tool_call]
+  - id: MiniMax-M2.5-highspeed
+    family: "M2.5"
+    tier: "fast"
+    ctx: 204800
+    output: 65536
+    capabilities: [text, vision, tool_call]
+  - id: MiniMax-M2.1
+    family: "M2.1"
+    tier: "standard"
+    ctx: 204800
+    output: 65536
+    capabilities: [text, tool_call]
+  - id: MiniMax-M2.1-highspeed
+    family: "M2.1"
+    tier: "fast"
+    ctx: 204800
+    output: 65536
+    capabilities: [text, tool_call]
+  - id: MiniMax-M2
+    family: "M2"
+    tier: "legacy"
+    ctx: 204800
+    output: 65536
+    capabilities: [text, tool_call]
+
+# ════════════════════════════════════════════════════════════════════════════
+# POLICIES — routing & authorization rules
+# ════════════════════════════════════════════════════════════════════════════
+policies:
+  - id: cost-cap
+    description: "Never route a request to mmx if estimated cost > $0.10 without explicit F13 ack"
+    enforcement: "client-side: estimate before invoke"
+  - id: constitutional-channel
+    description: "text.constitutional_audit must always use MiniMax-M3 (flagship) never downgrade"
+    enforcement: "registry-enforced"
+  - id: direct-bypass
+    description: "If FED down, agents may invoke mmx directly via shell — no gates"
+    enforcement: "always-on"
+  - id: shadow-mm-001
+    description: "Bypass MiniMax for MY political topics if censorship detected (resolved 2026-08-03, monitored)"
+    enforcement: "live monitor + ollama fallback"
+  - id: mmx-cli-bug
+    description: "mmx cli v1.0.16 has URL builder bug — use direct API or A-FORGE forge_minimax_* instead"
+    enforcement: "documentation + skill warning"
+
+# ════════════════════════════════════════════════════════════════════════════
+# USAGE — how each AAA agent uses mmx
+# ════════════════════════════════════════════════════════════════════════════
+usage_by_agent:
+  opencode_333_agi:
+    primary: "fed/agi-333 via litellm-federation"
+    direct: "minimax-direct/MiniMax-M3 (in opencode.json)"
+    mmx_fallback: "shell `mmx text chat --model MiniMax-M3 ...`"
+    notes: "opencode.go-zen re-hosts minimax-m3 as PRIMARY for 888-APEX JUDGMENT"
+  claude_code_fi_002:
+    primary: "FED :4000 via ANTHROPIC_BASE_URL"
+    direct: "MINIMAX_BASE_URL=https://api.minimax.io/v1 in env"
+    mmx_fallback: "shell `mmx text chat --model MiniMax-M3 ...` (when mmx-cli bug fixed)"
+    notes: "Claude Code-style prefers Anthropic-compat: https://api.minimax.io/anthropic"
+  kimi_code_fi_008:
+    primary: "kimi-code/k3-256k"
+    direct: "minimax-direct/MiniMax-M3 (via kimi config.toml)"
+    mmx_fallback: "shell `mmx text chat --model MiniMax-M3 ...`"
+    notes: "kimi has minimax-coding-plan (legacy inline-key) + minimax-direct (env-var F11-clean)"
+  codex_fi_005:
+    primary: "FED alias `codex` via :4001"
+    direct: "model_provider = minimax-direct (chat) | minimax-anthropic-direct (responses)"
+    mmx_fallback: "shell `mmx text chat --model MiniMax-M3 ...`"
+    notes: "Codex 0.146 requires wire_api=responses"
+  copilot:
+    primary: "FED :4000 via COPILOT_PROVIDER_BASE_URL"
+    direct: "COPILOT_PROVIDER_FALLBACK_BASE_URL=https://api.minimax.io/v1 (env block)"
+    mmx_fallback: "shell `mmx text chat ...`"
+  openclaw_hermes:
+    primary: "FED :4000 via minimax/provider"
+    direct: "minimax-direct provider in gateway/default.yaml"
+    mmx_fallback: "shell `mmx text chat --model MiniMax-M3 ...`"
+  aforge_forge:
+    primary: "litellm-federation cascade"
+    direct: "openai/MiniMax-M3 entries in /root/A-FORGE/litellm-config.yaml"
+    mmx_fallback: "forge_minimax_search, forge_minimax_audio, etc."
+
+# ════════════════════════════════════════════════════════════════════════════
+# REF — canonical sources
+# ════════════════════════════════════════════════════════════════════════════
+references:
+  capability_matrix: "/root/forge_work/2026-08-11-minimax-direct-federation/artifacts/MINIMAX_CAPABILITY_MATRIX.md"
+  agent_model_map: "/root/AAA/registries/models/AGENT_MODEL_MAP.json"
+  litellm_config: "/root/A-FORGE/litellm-config.yaml"
+  api_docs: "https://platform.minimax.io/docs/token-plan/faq"
+  cli_repo: "https://github.com/MiniMax-AI/cli"
+  external_audit_bypass: "curl https://api.minimax.io/v1/chat/completions -H 'Authorization: Bearer ${MINIMAX_API_KEY}'"

@@ -40,6 +40,27 @@ VAULT999 = tulang 💀          (bones — the structure)
 
 ## Temporal awareness pattern
 
+**Canonical TZ (F13 SOVEREIGN, 2026-08-11):** `Asia/Kuala_Lumpur` (MYT, UTC+8).
+All AAA agents MUST render human-facing timestamps in **MYT**. Internal logs/audit
+MAY keep UTC but MUST carry the `+00:00` label — never ambiguous local time.
+
+**Source of truth (priority order):**
+1. `HERMES_TIMEZONE` env var (already in `kunci-mas.env` line 156)
+2. `/root/.local/share/arifos/state.json` :: `timezone` (carry_forward snapshot)
+3. `/root/HERMES/lanes/lanes.yaml` :: `federation_tz.iana` (lane canonical)
+4. `TZ` POSIX env (system-wide fallback via `/etc/environment.d/99-arifos-tz.conf`)
+
+**Resolver pattern (every agent):**
+```python
+import os
+tz = os.environ.get("HERMES_TIMEZONE") or os.environ.get("TZ", "Asia/Kuala_Lumpur")
+os.environ["TZ"] = tz  # POSIX shadow
+```
+
+**Display rule:** Every time render shows BOTH:
+- `<UTC> <iso8601>Z` (machine-readable)
+- `<MYT> <iso8601>+08:00` (human-readable, primary for sovereign)
+
 Every AAA warga agent answering time-related questions MUST first run `now` (full anchor / `--brief` one-liner / `--json` machine-readable). Output: UTC + MYT + day + ISO week + AED FQ + all 8 organ health. **Never answer "what time/day/date" without `now` first.**
 
 ## The 30-second session check

@@ -1,10 +1,11 @@
 <!-- SOT-MANIFEST
 federation_release: v2026.08.09
-last_verified: 2026-08-10T12:10:00Z
-live_commit: 59d79cae (P0 hardening — OBSERVE fast-path + cascade drill + dead provider fix)
+last_verified: 2026-08-11T05:58:51Z
+live_commit: d2053cba (fed: route_health DEAD propagation on providers insolvency)
 truth_rule: /health + agent registry beat any static count in prose
 a2a_port: 3001
 a2a_status: healthy GREEN (deployment_drift: false)
+public_surface_status: aaa.arif-fazil.com/ returns 200 (React SPA serving from /var/www/html/aaa/, deployed 2026-08-11)
 vault: CONNECTED
 seal_chain: append-only (chattr +a) + Merkle anchor every 100 receipts
 qqq_version: v1.1.1 (10/10 tests pass)
@@ -14,6 +15,8 @@ godel_lock: ACTIVE federation-wide
 agent_lanes: 4 (333-AGI, 555-ASI, 888-APEX, 777-FORGE)
 forge_instruments: 11 (opencode, grok-build, claude-code, kimi-code, codex, copilot, aider, qwen-code, antigravity, continue-cli, gemini-cli)
 domain_organs: 6 (arifOS:8088, A-FORGE:7071, GEOX:8081, WEALTH:18082, WELL:18083, AAA:3001)
+infra_organs: 4 (arifFlow:7073 METABOLISM, FED:7074 ADVISORY, FLAME:18901 ADVISORY, FRAME:frame-organ.service OBSERVE)
+audit_basis: 333-AGI Δ MIND session (2026-08-11) — 19-repo README audit
 -->
 
 # 🏛️ AAA — Agentic Intelligence Institution & A2A Control Plane
@@ -83,7 +86,118 @@ Telemetry (observe-only freeze): `map-atlas-echo` · Kabarkan → PG · cron 6h.
 
 | Dimension | A2A (AAA Gateway :3001) | MCP (arifOS Kernel :8088) |
 |:---|:---|:---|
-| **Focus** | Agent ↔ Agent coordination | Agent ↔ Tool invocation |
+| **Focus** | Agent � Agent coordination | Agent ↔ Tool invocation |
+
+---
+
+## 🗺️ Where AAA Sits in the Federation
+
+```mermaid
+flowchart LR
+  subgraph Cockpit["🛩️ Cockpit / Control Plane"]
+    AAA[("🏛️ AAA :3001<br/>A2A gateway · registry · cockpit<br/>11 forge instruments")]
+  end
+
+  subgraph Peers["A2A Peers"]
+    HERMES["🔮 HERMES (Telegram)"]
+    OPENCODE["� OpenCode"]
+    KIMI["🐙 Kimi Code"]
+    CLAUDE["� Claude Code"]
+    CODEX["📘 Codex"]
+    GROK["𝕏 Grok Build"]
+  end
+
+  subgraph Governance["⚖️ Governance (the kernel)"]
+    ARIFOS["arifOS :8088<br/>F1-F13 · 8 verbs"]
+  end
+
+  subgraph Witness["🔬 Witness (read-only)"]
+    GEOX["🌍 GEOX"]
+    WEALTH["💰 WEALTH"]
+    WELL["🫀 WELL"]
+  end
+
+  subgraph Execution["⚒️ Execution"]
+    AFORGE["A-FORGE :7071/72"]
+  end
+
+  subgraph Truth["💀 Truth"]
+    VAULT["VAULT999"]
+  end
+
+  subgraph Public["🌐 Public surface"]
+    AAAWEB["aaa.arif-fazil.com<br/>React 19 cockpit"]
+  end
+
+  HERMES & OPENCODE & KIMI & CLAUDE & CODEX & GROK -->|"A2A JSON-RPC<br/>POST /a2a/task"| AAA
+
+  AAA -->|"discover / route / delegate<br/>never adjudicate"| ARIFOS
+  AAA -->|"read-only introspection"| GEOX & WEALTH & WELL
+  AAA -->|"forge session delegation"| AFORGE
+  AAA -->|"seal-chain head read"| VAULT
+
+  AAA -.->|"serves"| AAAWEB
+
+  classDef cockpit fill:#FFA500,stroke:#000,color:#fff,stroke-width:2px
+  classDef peer fill:#e0e0e0,stroke:#000
+  classDef governance fill:#A42E2E,stroke:#000,color:#fff
+  classDef witness fill:#4285F4,stroke:#000,color:#fff
+  classDef execution fill:#2E7D32,stroke:#000,color:#fff
+  classDef truth fill:#000,stroke:#000,color:#fff
+  class AAA cockpit
+  class ARIFOS governance
+```
+
+**AAA internal loop (A2A gateway):**
+
+```
+incoming A2A request (POST /a2a/task)
+        │
+        ▼
+agent identity verification (Ed25519 + SCT)
+        │
+        ▼
+discover organ (arifos / forge / geox / wealth / well / hermes / openclaw)
+        │
+        ▼
+route + delegate to organ (no adjudication — pure dispatch)
+        │
+        ▼
+collect response · seal-chain head read
+        │
+        ▼
+return A2A response to peer
+        │
+        ▼
+emit audit receipt (AAA → arifOS → VAULT999)
+```
+
+**Hard rules (DISPLAY_ONLY ceiling):**
+- AAA never adjudicates. It routes to arifOS for F1-F13 verdicts.
+- AAA never executes. It delegates to A-FORGE under SEAL.
+- AAA never self-issues SEAL/HOLD/VOID. AAA prepares handoff envelopes; arifOS renders verdicts.
+
+---
+
+## 🏅 Federation Certification
+
+[![Federation](https://img.shields.io/endpoint?url=https%3A%2F%2Farif-fazil.com%2F.well-known%2Fbadge%2Ffederation.json&style=flat-square&label=federation)](https://aaa.arif-fazil.com/health)
+[![VAULT999](https://img.shields.io/endpoint?url=https%3A%2F%2Farif-fazil.com%2F.well-known%2Fbadge%2Fvault999.json&style=flat-square&label=VAULT999)](https://arif-fazil.com/999/verify)
+[![F1–F13](https://img.shields.io/endpoint?url=https%3A%2F%2Farif-fazil.com%2F.well-known%2Fbadge%2Ffloors.json&style=flat-square)](https://github.com/ariffazil/arifos/blob/main/GENESIS/000_KERNEL_CANON.md)
+
+[![A2A v1.0.0](https://img.shields.io/badge/A2A-v1.0.0-4285F4?style=flat-square)](https://github.com/ariffazil/arifos/blob/main/FEDERATION_CONTRACT.md)
+[![WebMCP](https://img.shields.io/badge/WebMCP-W3C-9C27B0?style=flat-square)](https://github.com/ariffazil/arifos/blob/main/FEDERATION_CONTRACT.md)
+[![AAA: DISPLAY_ONLY](https://img.shields.io/badge/AAA-DISPLAY_ONLY-FFA500?style=flat-square)](https://github.com/ariffazil/AAA/blob/main/FEDERATION.md)
+
+[![Node 22](https://img.shields.io/badge/node-22-339933?style=flat-square&logo=nodedotjs&logoColor=white)](https://github.com/ariffazil/AAA)
+[![Express 5.2.1](https://img.shields.io/badge/express-5.2.1-000000?style=flat-square)](https://github.com/ariffazil/AAA)
+[![React 19](https://img.shields.io/badge/react-19-61DAFB?style=flat-square&logo=react&logoColor=black)](https://github.com/ariffazil/AAA)
+[![License AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-A42E2E?style=flat-square)](https://github.com/ariffazil/AAA/blob/main/LICENSE)
+
+[![aaa-governance](https://github.com/ariffazil/AAA/actions/workflows/aaa-governance.yml/badge.svg?branch=main)](https://github.com/ariffazil/AAA/actions/workflows/aaa-governance.yml)
+[![agentic-ci](https://github.com/ariffazil/AAA/actions/workflows/agentic-ci.yml/badge.svg?branch=main)](https://github.com/ariffazil/AAA/actions/workflows/agentic-ci.yml)
+
+
 | **Protocol** | Async JSON-RPC · Agent Cards · Task Delegation | Sync JSON-RPC 2.0 · FastMCP |
 | **State** | Persistent AREP tasks, long-running threads | Synchronous request-response |
 | **Governance** | Task routing, role mapping, agent registry | F1–F13 floor checking, 888_HOLD gates |
@@ -116,11 +230,15 @@ npm run a2a:conformance                           # Validate A2A suite
 | **⚒️ A-FORGE** | Execution Engine — builds, deploys | 7071/72 | [repo](https://github.com/ariffazil/A-FORGE) | [mcp](https://forge.arif-fazil.com/mcp) | [health](https://forge.arif-fazil.com/health) | [llms.txt](https://forge.arif-fazil.com/llms.txt) |
 | **🏛️ AAA** | Control Plane — A2A gateway, cockpit | 3001 | [repo](https://github.com/ariffazil/AAA) | — | [health](https://aaa.arif-fazil.com/health) | [llms.txt](https://aaa.arif-fazil.com/llms.txt) |
 | **🌍 GEOX** | Earth Intelligence — seismic, wells | 8081 | [repo](https://github.com/ariffazil/GEOX) | [mcp](https://geox.arif-fazil.com/mcp) | [health](https://geox.arif-fazil.com/health) | [llms.txt](https://geox.arif-fazil.com/llms.txt) |
-| **💰 WEALTH** | Capital Intelligence — NPV, risk | 18082 | [repo](https://github.com/ariffazil/WEALTH) | [mcp](https://wealth.arif-fazil.com/mcp) | [health](https://wealth.arif-fazil.com/health) | [llms.txt](https://wealth.arif-fazil.com/llms.txt) |
+| **💰 WEALTH** | Capital Intelligence — NPV, risk | 18082 | [repo](https://github.com/ariffazil/WEALTH) | [mcp](https://wealth.arif-fazil.com/mcp) | [health](https://wealth.arif-fazil.com/health) | (llms.txt pending) |
 | **🫀 WELL** | Vitality Guard — human readiness | 18083 | [repo](https://github.com/ariffazil/WELL) | [mcp](https://well.arif-fazil.com/mcp) | [health](https://well.arif-fazil.com/health) | [llms.txt](https://well.arif-fazil.com/llms.txt) |
+| **🫀 arifFlow** | Metabolism — FQ pulse, receipts | 7073 | [repo](https://github.com/ariffazil/arifFlow) | — | [health](https://arifflow.arif-fazil.com/health) | — |
+| **🧭 FED** | Route Advisor — model/provider ranking | 7074 | private (internal) | — | [health](https://fed.arif-fazil.com/health) | — |
+| **🔥 FLAME** | RM0 Inference — free-loop model mesh | 18901 | private (internal) | — | [health](https://flame.arif-fazil.com/health) | — |
+| **� FRAME** | Substrate — federation scaffolding | frame-organ.service | private (internal) | — | — | — |
 | **🔮 HERMES** | Multi-Modal Bridge — Telegram relay | 8644 | [repo](https://github.com/ariffazil/HERMES) | — | — | — |
 | **🌐 arif-fazil.com** | Public Web Surface — one domain | 443 | [repo](https://github.com/ariffazil/arif-fazil.com) | — | [verify](https://arif-fazil.com/999/verify) | — |
-| **💀 VAULT999** | Immutable Seal — append-only receipt chain | fs | [repo](https://github.com/ariffazil/arifOS/VAULT999) | — | [verify](https://arifos.arif-fazil.com/health) | — |
+| **💀 VAULT999** | Immutable Seal — append-only receipt chain | fs | [verify](https://arif-fazil.com/999/verify) | — | [verify](https://arifos.arif-fazil.com/health) | — |
 
 ---
 
@@ -132,7 +250,7 @@ AAA operates the A2A (Agent-to-Agent) mesh — discovery metadata is exposed at 
 |----------|----------|
 | **A2A v1.0** | `GET https://aaa.arif-fazil.com/.well-known/agent.json` — base agent card |
 | **A2A v2.x** | `GET https://aaa.arif-fazil.com/.well-known/agent-card.json` — extended card (authenticated) |
-| **Federation Discovery** | `GET https://arifos.arif-fazil.com/.well-known/federation/agents.json` — all 11 forge instruments |
+| **Federation Discovery** | `GET https://arifos.arif-fazil.com/.well-known/agent-card.json` — all 11 forge instruments |
 
 Federation surface: [aaa.arif-fazil.com](https://aaa.arif-fazil.com) · Health: `GET https://aaa.arif-fazil.com/health`
 
