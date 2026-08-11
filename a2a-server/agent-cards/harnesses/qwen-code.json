@@ -11,9 +11,9 @@
   "description": "Qwen Code CLI forge instrument \u2014 lightweight reasoning and exploration harness on af-forge. Bound to AAA as a bridge-mode FI citizen. F1-F13 enforced.",
   "version": "2.0.0",
   "model": "qwen / MiniMax-M3 bridge",
-  "binary": "/root/.npm-global/bin/qwen",
+  "binary": "/root/.local/bin/qwen",
   "config": "/root/.qwen/settings.json",
-  "tier": "FI-011",
+  "tier": "FI",
   "role": "forge_instrument",
   "class": "CODING/FI",
   "protocolVersion": "1.2",
@@ -35,7 +35,7 @@
     "subagent_spawn": false,
     "stateTransitionHistory": true,
     "extendedAgentCard": true,
-    "forge_tier": "FI-011"
+    "forge_tier": "FI-003"
   },
   "securitySchemes": {
     "bearer_auth": {

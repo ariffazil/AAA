@@ -11,7 +11,7 @@
   "description": "Qwen Code CLI forge instrument — lightweight reasoning and exploration harness on af-forge. Bound to AAA as a bridge-mode FI citizen. F1-F13 enforced.",
   "version": "2.0.0",
   "model": "qwen / MiniMax-M3 bridge",
-  "binary": "/root/.npm-global/bin/qwen",
+  "binary": "/root/.local/bin/qwen",
   "config": "/root/.qwen/settings.json",
   "tier": "FI",
   "role": "forge_instrument",
