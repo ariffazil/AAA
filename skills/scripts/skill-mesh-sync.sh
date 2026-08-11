@@ -106,8 +106,8 @@ collect_sources() {
         fi
       fi
     done
-    # substrate / knowledge nested
-    for nest in substrate knowledge; do
+    # substrate / knowledge / QQQ nested
+    for nest in substrate knowledge primitives capabilities domains workflows; do
       [[ -d "$root/$nest" ]] || continue
       for p in "$root/$nest"/*; do
         [[ -d "$p" && -f "$p/SKILL.md" ]] || continue
