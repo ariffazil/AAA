@@ -1,5 +1,5 @@
 version: 3
-last_updated: '2026-08-08'
+last_updated: '2026-08-11T05:50:30+00:00'
 canonical_home: /root/AAA/skills
 contrast_doc: /root/AAA/docs/TOOLBENCH_3WAY_CONTRAST.md
 architecture: 3-layer-3-axis
@@ -24,7 +24,7 @@ layers:
     - know-language
     load: ALL agents, ALWAYS, AFTER substrate
   domain:
-    count: 86
+    count: 175
     load: Per-agent, per-task, on demand
     domains:
       geo:
