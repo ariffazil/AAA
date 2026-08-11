@@ -17,9 +17,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Literal, Optional
 
-import yaml
-import requests
 import json
+import urllib.request
+import yaml
 
 
 # Canonical seven axes (binding — matches AAA_CAPABILITY_REGISTRY.yaml)
@@ -396,7 +396,8 @@ def load_registry(path: Path | str) -> CapabilityIndex:
         architectural_verdict=architectural_verdict,
         raw=raw,
     )
-    # Musyawawah phase: multi-voice deliberation between validation and seal
+    if raw.get("status") == "RATIFIED" and raw.get("architectural_ratification", {}).get("verdict") == "SEAL_ARCHITECTURE":
+        return _index_pre
     final_verdict = _musyawawah_phase(_index_pre, raw)
     return replace(_index_pre, architectural_verdict=final_verdict)
 
@@ -419,7 +420,9 @@ def _musyawawah_phase(index: CapabilityIndex, raw_registry: dict[str, Any]) -> s
     # Voice 2: AUDITOR — probes arifFlow + VAULT999
     auditor_verdict = "UNKNOWN"
     try:
-        arifflow = requests.get("http://127.0.0.1:7073/health", timeout=2).json()
+        req = urllib.request.Request("http://127.0.0.1:7073/health")
+        with urllib.request.urlopen(req, timeout=2) as resp:
+            arifflow = json.loads(resp.read().decode())
         fq = arifflow.get("fq", {}).get("verdict", "UNKNOWN")
         if fq == "OPTIMAL":
             auditor_verdict = "OPTIMAL_FQ"
