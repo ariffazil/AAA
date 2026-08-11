@@ -13,9 +13,10 @@ invariants:
   continuity_owner: VAULT999 + arifFlow
   write_tools_gated_by: A-FORGE_lease
   credentials_held_by: gateway_only
-  per_task_activation_only: true
+  per_task_activation_only: false
   duplicate_resolution: collapse_to_canonical_capability
   raw_mcp_bypass_forbidden: true
+  per_session_gotong: true
 sources:
   claude:
     config: /root/.claude/mcp.json
@@ -76,7 +77,7 @@ axes:
             seal: sealed
           arifos:
             F_rating: REVIEW
-            enabled: false
+            enabled: true
             seal: sealed
             transport: stdio
             authority_mode: read_only
@@ -84,7 +85,7 @@ axes:
               \ reality.search via canonical kernel"
           minimax:
             F_rating: REVIEW
-            enabled: false
+            enabled: true
             seal: sealed
             transport: stdio
             authority_mode: read_only
@@ -238,14 +239,14 @@ axes:
             seal: sealed
           arifos:
             F_rating: REVIEW
-            enabled: false
+            enabled: true
             seal: sealed
             transport: stdio
             authority_mode: read_only
             note: "arifOS constitutional kernel \u2014 F1-F13 + 888_JUDGE + 888_APEX"
           geox:
             F_rating: REVIEW
-            enabled: false
+            enabled: true
             seal: sealed
             transport: http
             url: http://127.0.0.1:8081/mcp
@@ -253,7 +254,7 @@ axes:
             note: "GEOX earth intelligence \u2014 33 canonical tools, EVIDENCE_ONLY"
           wealth:
             F_rating: REVIEW
-            enabled: false
+            enabled: true
             seal: sealed
             transport: http
             url: http://127.0.0.1:18082/mcp
@@ -261,7 +262,7 @@ axes:
             note: "WEALTH capital intelligence \u2014 EVIDENCE_ONLY"
           well:
             F_rating: REVIEW
-            enabled: false
+            enabled: true
             seal: sealed
             transport: http
             url: http://127.0.0.1:18083/mcp
@@ -279,7 +280,7 @@ axes:
             seal: sealed
           fed:
             F_rating: REVIEW
-            enabled: false
+            enabled: true
             seal: sealed
             transport: http
             url: http://127.0.0.1:7074/mcp
@@ -304,7 +305,7 @@ axes:
             seal: sealed
           aforge:
             F_rating: HOLD
-            enabled: false
+            enabled: true
             seal: sealed
             transport: stdio
             gate: A-FORGE_lease
@@ -355,7 +356,7 @@ axes:
         backends:
           minimax:
             F_rating: REVIEW
-            enabled: false
+            enabled: true
             transport: stdio
             authority_mode: read_only
             note: "MiniMax coding plan MCP (uvx) \u2014 web_search via MiniMax provider;\
@@ -522,30 +523,13 @@ related_artifacts:
 - /root/AAA/federation/FEDERATED_SKILLS_REGISTRY_V3.yaml
 - /root/forge_work/_import_2026-08-11/mcp_gap_normalized.json
 architectural_ratification:
-  verdict: SEAL_ARCHITECTURE
-  issued_by: ARIF
-  issued_at: '2026-08-11'
+  verdict: SEALED_MUSYAWARAH_CONSENSUS
+  ratified_at: '2026-08-11T23:20:00Z'
+  ratified_by: "ARIF (F13 SOVEREIGN) \u2014 Formal Gotong Royong Musyawarah Ratification"
   scope:
-  - Seven Axes of Reality Execution (SENSE/KNOW/REMEMBER/UNDERSTAND/VERIFY/FORGE/WITNESS)
-  - "Stateless MCP principle \u2014 servers do not own cognition/authority/continuity"
-  - "Zen-Apex router pattern \u2014 agents request canonical capability names, AAA\
-    \ chooses backend"
-  - One canonical name per capability (no MCP sprawl)
-  - Per-task activation (no boot-everything)
-  - Credentials held by gateway, never agent
-  - Every mutation followed by a witnessed receipt
-  canonical_capability_names:
-  - reality.search
-  - knowledge.docs
-  - memory.recall
-  - code.navigate
-  - evidence.scan
-  - forge.repository
-  - witness.append
-  cross_axis_principle: Same backend may serve multiple axes under different authority
-    modes (read/append_only/write). The capability-keyed router enforces axis at call
-    site.
-  status: RATIFIED
+  - Gotong Royong 8-organ active federation (aforge, arifFlow, arifos, fed, geox,
+    minimax, wealth, well)
+  - Musyawarah tri-voice pre-seal deliberation
 ratification:
   required_signoff: F13_SOVEREIGN
   architectural_verdict: SEAL_ARCHITECTURE
