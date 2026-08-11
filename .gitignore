@@ -204,3 +204,6 @@ gateway-forge/
 gateway-hermes/
 gateway-openclaw/
 .git_commit
+
+# Generated init receipts
+federation/init_receipts/*.json
