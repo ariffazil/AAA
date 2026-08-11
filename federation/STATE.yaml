@@ -69,6 +69,14 @@ operators:
   hermes-asi:
     fi: FI-000
     layer: binding
+    bound_to: i-ARIF  # refactored 2026-08-12 — identity routes through i-ARIF
+  i-ARIF:
+    fi: FI-000
+    layer: identity
+    bound_to: F13-SOVEREIGN
+    multimodal: [vision, audio, image, video]
+    _refactored_from: "hermes-asi (FI-000 binding) — per F13 SOVEREIGN DIRECTIVE 2026-08-11"
+    _relation: "hermes-asi = reality bridge | i-ARIF = identity core"
   openclaw:
     fi: null
     layer: binding

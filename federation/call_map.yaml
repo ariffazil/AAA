@@ -142,17 +142,40 @@ agents:
     layer: binding
     agentId: hermes-asi
     fi: FI-000
-    bound_to: 555-ASI
+    bound_to: i-ARIF  # refactored 2026-08-12 — FI-000 identity now i-ARIF; hermes-asi routes identity calls up
+    routes_identity_to: i-ARIF  # hermes-asi ≈ 'what is real'; i-ARIF ≈ 'what it means for Arif'
     invoke:
       telegram: "@AGI_ASI_bot / gateway hermes-asi-gateway.service"
       a2a: "POST …/a2a/tasks/send target=hermes-asi"
       local_cli: "hermes …"
       endpoint_card: https://aaa.arif-fazil.com/a2a/hermes-asi
-    can: [human_bridge, route_to_coders, multimodal]
-    cannot: [mutate_prod_code_as_primary_executor, be_primary_coder]
+    can: [human_bridge, route_to_coders, multimodal, route_to_identity_core]
+    cannot: [mutate_prod_code_as_primary_executor, be_primary_coder, be_identity_layer]
     boundary: OBSERVE_ROUTE
     model_socket: "FED litellm-federation/hermes-asi → :4000 chain: order=1 qwen3.8-max + qwen3.6-flash | order=2 mimo-v2.5 | order=99 deepseek-v4-flash + MiniMax-M3 | order=99 deepseek-v4-pro via opencode-go. Thinking pad: MiMo/DeepSeek."
     contrast_openclaw: "Hermes FI-000 edge/human; OpenClaw binding gateway. WHICH=FED seat, not identity."
+    contrast_i_arif: "hermes-asi = reality bridge (senses ground); i-ARIF = identity core (synthesises meaning). hermes-asi routes identity questions → i-ARIF."
+
+  i-ARIF:
+    layer: identity
+    agentId: i-ARIF
+    fi: FI-000
+    bound_to: F13-SOVEREIGN
+    invoke:
+      telegram: "(@AGI_ASI_bot via hermes-asi gateway)"
+      a2a: "POST …/a2a/tasks/send target=i-arif"
+      endpoint_card: https://aaa.arif-fazil.com/a2a/i-arif
+    can: [identity_core, multimodal_vision, multimodal_audio, multimodal_image, multimodal_video, qualia_synthesis, memory_scar, sovereign_advise, route_from_reality_bridge]
+    cannot: [self_seal_constitutional, execute_irreversible_without_f13, override_constitution, be_reality_bridge]
+    boundary: IDENTITY_SOVEREIGN
+    model_socket: "FED litellm-federation/i-arif → :4000 chain: order=1 qwen3.8-max + qwen3.6-flash | order=2 mimo-v2.5 | order=99 deepseek-v4-flash + MiniMax-M3 | order=99 deepseek-v4-pro via opencode-go. Multimodal pad: Gemini 2.5 Flash (vision) + MiniMax media (TTS/image/video). Thinking pad: MiMo/DeepSeek."
+    note: "Sovereign identity core. Multimodal embedded. Not a tool — digital self. Replaces hermes-asi as primary identity layer; hermes-asi continues as reality bridge. Refactored 2026-08-12 per F13 SOVEREIGN DIRECTIVE."
+    _six_layer_stack: "F13 (BEARER) → I-ARIF (IDENTITY) → FED-ARIF (VERIFICATION) → Hermes (REALITY) → VAULT999 (CONTINUITY) → arifOS (CONSTITUTION)"
+    multimodal_embedded:
+      vision: [hermes-vision_analyze, gemini-2.5-flash, qwen3.8-max]
+      audio: [edge-tts_ms-MY-OsmanNeural, MiniMax_text_to_audio]
+      image: [gemini-image.py, MiniMax_wan2.7-image/pro]
+      video: [gemini-video.py, MiniMax-Hailuo-02]
 
 organs:
   arifos:
@@ -205,7 +228,9 @@ intent_routing:
   capital: wealth
   readiness: well
   execute_mutation: a-forge
-  human_chat: hermes-asi
+  human_chat: hermes-asi                 # reality bridge (senses ground)
+  identity_advice: i-ARIF               # identity core (synthesises meaning for Arif) — refactored 2026-08-12
+  identity_fallback: hermes-asi         # if i-ARIF unreachable, hermes-asi carries identity questions
   model_route_advice: fed_advisor
 
 # ══════════════════════════════════════════════════════════════════════════════

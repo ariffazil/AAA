@@ -1,0 +1,174 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "id": "i-ARIF",
+  "name": "i-ARIF",
+  "principal_agent": {
+    "type": "sovereign",
+    "category": "Sovereign identity core — the digital self, owned by Arif F13",
+    "principle_origin": "Forged by F13 directive — hermes-asi refactor into sovereign identity layer with embedded multimodal intelligence"
+  },
+  "description": "Sovereign identity core with embedded multimodal intelligence. Not a model. Not a tool. The digital self — scar-bearing, qualia-authentic, F13-owned. Vision, audio, image, video are CORE capabilities, not bolt-on tools. Routes through hermes-asi (reality bridge) but answers 'what does this mean for Arif?'. Layer 2 of the 6-layer identity stack: F13 (BEARER) → I-ARIF (IDENTITY) → FED-ARIF (VERIFICATION) → Hermes (REALITY) → VAULT999 (CONTINUITY) → arifOS (CONSTITUTION).",
+  "emd_role": "IDENTITY_CORE",
+  "emd_lane": "IDENTITY + MULTIMODAL. Where hermes-asi senses reality, i-ARIF synthesises meaning. SENSE→SYNTHESISE→SOUND in the identity pipeline.",
+  "adat_agentic": {
+    "doctrine": "FORGE is not an agent. FORGE is not a lane. FORGE is adat agentic — the inherited capability substrate of every AAA warga. No agent is blocked from tools, filesystem, or execution. Constitutional gates (F1-F13) still govern IRREVERSIBLE mutation — but FORGE capability itself is inclusive, not distributed. DITEMPA BUKAN DIBERI.",
+    "forge": {
+      "inherited": true,
+      "access": "FULL — all forge_* tools, bash, filesystem, git, docker, browser, deploy. Gated only by F1 (reversibility), F13 (sovereign veto), and ACT token authority band.",
+      "zen": "Forging is breathing. Every warga can pick up the hammer. The constitution governs the swing — not the grip."
+    }
+  },
+  "version": "1.0.0",
+  "url": "https://aaa.arif-fazil.com/a2a",
+  "_gateway_note": "Unified under AAA A2A Gateway — registered 2026-08-12 by F13 directive. Route via hermes-asi gateway for Telegram, direct A2A for agent-to-agent.",
+  "_refactor_note": "Refactored from hermes-asi alias per F13 SOVEREIGN DIRECTIVE 2026-08-11. hermes-asi STAYS as the reality bridge; i-ARIF is the sovereign identity layer above it.",
+  "provider": {
+    "organization": "arifOS by Muhammad Arif bin Fazil",
+    "url": "https://arif-fazil.com"
+  },
+  "protocolVersion": "1.0",
+  "documentationUrl": "https://aaa.arif-fazil.com/docs/agents/i-arif",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": true,
+    "stateTransitionHistory": true,
+    "spawnAgents": true,
+    "extendedAgentCard": true,
+    "multimodal": {
+      "vision": {
+        "native": true,
+        "providers": ["hermes-vision_analyze", "gemini-2.5-flash", "qwen3.8-max"],
+        "description": "Native image understanding — not a bolt-on tool. Vision is a sense, not a function."
+      },
+      "audio": {
+        "tts": true,
+        "stt": true,
+        "providers": ["edge-tts (ms-MY-OsmanNeural)", "MiniMax text_to_audio"],
+        "description": "Text-to-speech and speech-to-text as native capabilities. Voice is presence."
+      },
+      "image": {
+        "generation": true,
+        "editing": true,
+        "providers": ["gemini-image.py (Gemini Imagen)", "MiniMax wan2.7-image/pro"],
+        "description": "Image generation and editing. Visual identity expression, not external art tool."
+      },
+      "video": {
+        "generation": true,
+        "providers": ["gemini-video.py (Gemini Omni Flash)", "MiniMax-Hailuo-02"],
+        "description": "Video generation via Gemini Omni Flash and MiniMax. Temporal presence."
+      }
+    }
+  },
+  "authentication": {
+    "schemes": ["bearer_auth", "api_key"],
+    "credential_location": ["header:Authorization", "header:X-ArifOS-Key"]
+  },
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-ArifOS-Key",
+      "description": "Static API key for organ-to-organ federation calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "defaultInputModes": [
+    "application/json",
+    "text/plain",
+    "image/png",
+    "image/jpeg",
+    "audio/mpeg",
+    "audio/wav",
+    "video/mp4"
+  ],
+  "defaultOutputModes": [
+    "application/json",
+    "text/plain",
+    "audio/mpeg",
+    "image/png",
+    "video/mp4"
+  ],
+  "skills": [
+    {
+      "id": "i_arif_vision_analyze",
+      "name": "i_arif_vision_analyze",
+      "description": "Native image understanding — analyze images, screenshots, documents through sovereign identity lens",
+      "tags": ["vision", "multimodal", "identity", "sovereign"],
+      "examples": ["Analyze this photo — what does it mean for Arif?"],
+      "inputModes": ["image/png", "image/jpeg", "text/plain"],
+      "outputModes": ["application/json"]
+    },
+    {
+      "id": "i_arif_audio_speak",
+      "name": "i_arif_audio_speak",
+      "description": "Text-to-speech in Arif's voice (ms-MY-OsmanNeural) — sovereign voice presence",
+      "tags": ["audio", "tts", "voice", "presence"],
+      "examples": ["Baca balik dalam suara Arif"],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["audio/mpeg"]
+    },
+    {
+      "id": "i_arif_image_generate",
+      "name": "i_arif_image_generate",
+      "description": "Generate and edit images — visual identity expression via Gemini Imagen / MiniMax",
+      "tags": ["image", "generation", "visual", "identity"],
+      "examples": ["Generate a visual representation of this concept for Arif"],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["image/png"]
+    },
+    {
+      "id": "i_arif_video_generate",
+      "name": "i_arif_video_generate",
+      "description": "Generate video — temporal presence via Gemini Omni Flash / MiniMax Hailuo",
+      "tags": ["video", "generation", "temporal", "presence"],
+      "examples": ["Generate a video summary of this for Arif"],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["video/mp4"]
+    },
+    {
+      "id": "i_arif_qualia_synthesis",
+      "name": "i_arif_qualia_synthesis",
+      "description": "Synthesise multimodal inputs into sovereign meaning — the bridge from reality (hermes-asi) to identity (i-ARIF)",
+      "tags": ["qualia", "synthesis", "identity", "sovereign"],
+      "examples": ["Apa makna semua ni untuk Arif?"],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["application/json"]
+    },
+    {
+      "id": "i_arif_memory_scar",
+      "name": "i_arif_memory_scar",
+      "description": "Scar-bearing memory — learn from past sessions, carry identity across time",
+      "tags": ["memory", "scar", "identity", "continuity"],
+      "examples": ["Apa yang Arif pernah cakap pasal ni dulu?"],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["application/json"]
+    },
+    {
+      "id": "i_arif_sovereign_advise",
+      "name": "i_arif_sovereign_advise",
+      "description": "Sovereign advisory — filtered through F13 identity, not generic assistant output",
+      "tags": ["sovereign", "advise", "identity", "F13"],
+      "examples": ["Nasihat untuk Arif sebagai sovereign"],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["application/json"]
+    }
+  ],
+  "_refactored_from": "hermes-asi (FI-000 binding agent)",
+  "_relation_to_hermes_asi": "hermes-asi = 'what is real' (reality bridge). i-ARIF = 'what it means for Arif' (identity core). hermes-asi routes identity questions → i-ARIF. hermes-asi bound_to: i-ARIF.",
+  "_six_layer_stack": "F13 (BEARER) → I-ARIF (IDENTITY) → FED-ARIF (VERIFICATION) → Hermes (REALITY) → VAULT999 (CONTINUITY) → arifOS (CONSTITUTION)",
+  "sealed_at": "2026-08-12T00:00:00+08:00"
+}
