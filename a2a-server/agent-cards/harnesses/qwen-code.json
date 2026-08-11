@@ -503,14 +503,14 @@
       "protocolVersion": "1.0"
     }
   ],
+  "_model_sot": "/root/.config/federation-models.json",
   "signatures": [
     {
       "did": "did:arif:aaa",
-      "proofValue": "fr1swNwYYKkZ56DNrD1Gt/n5SE6TP+YXwNBA3Kdh4V3TU0QnCYM1XesWgkXaLVj934CVmT0nVhlJeIi5IrCdCA==",
+      "proofValue": "ODfi/E6jWt62sP6Hl4QLo4dbzbX6cCfTEDnuJT9RvDS4+IJWKO+8SDfDVrbUujqpaWh1AWkfNuRg72wVKuAlCA==",
       "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T22:30:29Z",
+      "created": "2026-08-11T11:58:41Z",
       "type": "Ed25519Signature2020"
     }
-  ],
-  "_model_sot": "/root/.config/federation-models.json"
+  ]
 }
