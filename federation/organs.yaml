@@ -524,6 +524,51 @@ components:
       - engineering_execution
       - sealing
 
+  - id: i-arif
+    class: IDENTITY
+    display_name: i-ARIF
+    repo: ariffazil/AAA
+    source_path: /root/AAA/agent-cards/identity/i-ARIF
+    role: sovereign_identity_core
+    authority_ceiling: IDENTITY_SOVEREIGN
+    fi: FI-000
+    bound_to: F13-SOVEREIGN
+    endpoint_card: https://aaa.arif-fazil.com/a2a/i-arif
+    default_branch: main
+    runtime: python-3.12
+    live_probe_2026_08_12:
+      status: refactored
+      source_of_truth: /root/AAA/agent-cards/identity/i-ARIF/agent-card.json
+      refactored_from: hermes-asi (FI-000 binding)
+    owned_domains:
+      - identity_core
+      - multimodal_vision
+      - multimodal_audio_tts_stt
+      - multimodal_image_generation
+      - multimodal_video_generation
+      - qualia_synthesis
+      - memory_scar
+      - sovereign_advise
+    forbidden_domains:
+      - constitutional_judgment
+      - engineering_execution
+      - sealing
+      - being_reality_bridge
+      - self_seal
+      - override_constitution
+    receive_only_from:
+      - hermes           # reality bridge routes identity questions
+    fallback_to:
+      - hermes-asi       # if i-ARIF unreachable, hermes-asi carries identity questions
+    six_layer_stack: "F13 (BEARER) → I-ARIF (IDENTITY) → FED-ARIF (VERIFICATION) → Hermes (REALITY) → VAULT999 (CONTINUITY) → arifOS (CONSTITUTION)"
+    notes:
+      - "Refactored from hermes-asi alias per F13 SOVEREIGN DIRECTIVE 2026-08-11"
+      - "Not a model. Not a tool. The digital self — scar-bearing, qualia-authentic, F13-owned."
+      - "Multimodal (vision/audio/image/video) is CORE, not bolt-on"
+      - "hermes-asi ≈ 'what is real'; i-ARIF ≈ 'what it means for Arif'"
+      - "Reversible: hermes-asi remains the reality bridge as backward compatibility layer"
+      - "SPEC = sovereign personality; DATA = multimodal scratch; HONEST = presence, not officiousness"
+
   - id: openclaw
     class: EDGE
     display_name: OpenClaw
@@ -747,12 +792,12 @@ port_observability:
 
 # Explicit non-components (naming traps — do not register as organs)
 non_components:
-  - id: i-arif
-    reason: product_brand_and_optional_sft_corpus_not_runtime
   - id: apex-as-organ
     reason: judgment_absorbed_into_arifos_aaa_path
   - id: eureka-zen-draft
     reason: future_abi_ledger_design_not_live_topology
+  - id: i-arif
+    reason: PROMOTED_TO_ORGAN — refactored 2026-08-12 per F13 SOVEREIGN DIRECTIVE. Now a real IDENTITY organ. See identity component above.
 
 authority_chain:
   - arif_init
