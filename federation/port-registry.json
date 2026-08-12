@@ -1,0 +1,413 @@
+{
+  "schema_version": "1.0.0",
+  "generated": "2026-08-12T17:25:00+08:00",
+  "doctrine": "Single source of truth for federation topology. Read by all consumers.",
+  "source": "/root/AAA/federation/organs.yaml",
+  "truth_rule": "live_health_beats_file",
+  "components": {
+    "arifos": {
+      "class": "CORE",
+      "role": "governance_kernel",
+      "port": 8088,
+      "mcp_port": 8088,
+      "unit": "arifos.service",
+      "repo": "ariffazil/arifos",
+      "runtime_path": "/opt/arifos/app",
+      "source_path": "/root/arifOS",
+      "interfaces": {
+        "health": "/health",
+        "mcp": "/mcp"
+      },
+      "owned_domains": [
+        "constitutional_judgment",
+        "session_identity",
+        "floor_enforcement",
+        "vault999_seal_gate",
+        "capability_routing"
+      ]
+    },
+    "a-forge": {
+      "class": "CORE",
+      "role": "execution_actuator",
+      "port": 7071,
+      "mcp_port": 7072,
+      "repo": "ariffazil/A-FORGE",
+      "runtime_path": "/opt/a-forge/app",
+      "source_path": "/root/A-FORGE",
+      "owned_domains": [
+        "engineering_execution",
+        "build_deploy",
+        "shell_orchestration",
+        "rollback"
+      ]
+    },
+    "aaa": {
+      "class": "CORE",
+      "role": "control_plane",
+      "port": 3001,
+      "unit": "aaa-a2a.service",
+      "repo": "ariffazil/AAA",
+      "source_path": "/root/AAA",
+      "owned_domains": [
+        "federation_registry",
+        "a2a_routing",
+        "cockpit_display",
+        "schema_validation"
+      ]
+    },
+    "openclaw": {
+      "class": "EDGE",
+      "role": "edge_agent_telegram"
+    },
+    "geox": {
+      "class": "CORE",
+      "role": "domain_evidence",
+      "port": 8081,
+      "unit": "geox-mcp.service",
+      "repo": "ariffazil/geox",
+      "source_path": "/root/GEOX",
+      "owned_domains": [
+        "earth",
+        "subsurface",
+        "petrophysics",
+        "seismic",
+        "basin",
+        "mcp_apps_ui"
+      ]
+    },
+    "wealth": {
+      "class": "CORE",
+      "role": "domain_evidence",
+      "port": 18082,
+      "unit": "wealth-organ.service",
+      "repo": "ariffazil/wealth",
+      "source_path": "/root/WEALTH",
+      "owned_domains": [
+        "capital_computation",
+        "financial_modeling",
+        "market_data",
+        "risk_scenarios"
+      ]
+    },
+    "well": {
+      "class": "CORE",
+      "role": "domain_evidence",
+      "port": 18083,
+      "unit": "well.service",
+      "repo": "ariffazil/well",
+      "source_path": "/root/WELL",
+      "owned_domains": [
+        "human_readiness",
+        "vitality_reflection",
+        "dignity_guard",
+        "machine_reliability_signal"
+      ]
+    },
+    "arifflow": {
+      "class": "METABOLISM",
+      "role": "federation_metabolism",
+      "port": 7073,
+      "unit": "arifflow.service",
+      "owned_domains": [
+        "flow_quotient",
+        "receipt_metabolism",
+        "attention_checkpointing"
+      ]
+    },
+    "signal": {
+      "class": "CORE",
+      "role": "signal_membrane",
+      "port": 18084,
+      "mcp_port": 18084,
+      "unit": "signal-organ.service",
+      "repo": "arifOS (embedded organ)",
+      "runtime_path": "/opt/signal/app",
+      "source_path": "/root/SIGNAL",
+      "interfaces": {
+        "health": "/health"
+      },
+      "owned_domains": [
+        "webhook_ingestion",
+        "cryptographic_gate",
+        "governed_broadcast",
+        "sovereign_ping",
+        "priority_classification",
+        "quiet_hours_enforcement"
+      ]
+    },
+    "frame": {
+      "class": "CORE",
+      "role": "federation_measurement",
+      "port": 18085,
+      "unit": "frame-organ.service",
+      "repo": "arifOS (embedded organ)",
+      "runtime_path": "/opt/frame/app",
+      "source_path": "/root/FRAME",
+      "interfaces": {
+        "health": "/health"
+      },
+      "owned_domains": [
+        "institutional_baseline",
+        "organ_probe",
+        "drift_detection",
+        "trend_analysis",
+        "threshold_alerting",
+        "institutional_reporting"
+      ]
+    },
+    "minimax-media": {
+      "class": "SUPPORT",
+      "role": "multimodal_generation",
+      "port": 18100,
+      "mcp_port": 18100,
+      "unit": "minimax-media-mcp.service",
+      "source_path": "/opt/minimax-mcp-media",
+      "interfaces": {
+        "health": "n/a (MCP streamable-http)",
+        "mcp_endpoint": "/mcp",
+        "transport": "streamable-http"
+      },
+      "owned_domains": [
+        "video_generation",
+        "image_generation",
+        "text_to_speech",
+        "music_generation"
+      ]
+    },
+    "vault999": {
+      "class": "MEMORY",
+      "role": "immutable_audit_memory",
+      "owned_domains": [
+        "sealed_receipts",
+        "hash_chain",
+        "replay"
+      ]
+    },
+    "fed": {
+      "class": "ADVISORY",
+      "role": "model_route_advisor",
+      "port": 7074,
+      "unit": "fed-router.service",
+      "source_path": "/root/AAA/scripts/fed_router.py",
+      "owned_domains": [
+        "model_route_ranking",
+        "provider_balance_awareness"
+      ]
+    },
+    "flame": {
+      "class": "ADVISORY",
+      "role": "rm0_free_inference_mesh",
+      "port": 18901,
+      "unit": "flame-api.service",
+      "owned_domains": [
+        "free_tier_tool_inference"
+      ]
+    },
+    "hermes": {
+      "class": "EDGE",
+      "role": "multimodal_telegram_bridge",
+      "mcp_port": 18086,
+      "repo": "ariffazil/HERMES",
+      "source_path": "/root/HERMES",
+      "owned_domains": [
+        "telegram_relay",
+        "multimodal_bridge"
+      ]
+    },
+    "opencode": {
+      "class": "EDGE",
+      "role": "edge_agent_forge_hands",
+      "unit": "opencode-bot.service"
+    },
+    "arif-fazil-com": {
+      "class": "EDGE",
+      "role": "public_projection",
+      "repo": "ariffazil/arif-fazil.com",
+      "owned_domains": [
+        "public_websites",
+        "federation_projection"
+      ]
+    },
+    "well-witness": {
+      "class": "SUPPORT",
+      "port": 18084,
+      "unit": "well-witness.service"
+    },
+    "aaa-signing": {
+      "class": "SUPPORT",
+      "port": 18900,
+      "unit": "aaa-signing.service"
+    },
+    "aaa-preforge": {
+      "class": "SUPPORT",
+      "unit": "aaa-preforge.service"
+    },
+    "surface-guard": {
+      "class": "SUPPORT",
+      "unit": "surface-guard.service"
+    },
+    "apa-email-bridge": {
+      "class": "SUPPORT",
+      "unit": "apa-email-bridge.service"
+    },
+    "apa-calendar-bridge": {
+      "class": "SUPPORT",
+      "unit": "apa-calendar-bridge.service"
+    },
+    "apa-github-bridge": {
+      "class": "SUPPORT",
+      "unit": "apa-github-bridge.service"
+    },
+    "apa-telegram-bridge": {
+      "class": "SUPPORT",
+      "unit": "apa-telegram-bridge.service"
+    },
+    "miniapp-api": {
+      "class": "SUPPORT",
+      "unit": "miniapp-api.service"
+    },
+    "arifosd": {
+      "class": "SUPPORT",
+      "unit": "arifosd.service"
+    },
+    "postgres": {
+      "class": "DATA",
+      "role": "durable_state",
+      "port": 5432
+    },
+    "redis": {
+      "class": "DATA",
+      "role": "ephemeral_locks_session",
+      "port": 6379
+    },
+    "qdrant": {
+      "class": "DATA",
+      "role": "vector_similarity_not_truth",
+      "port": 6333
+    },
+    "falkordb": {
+      "class": "DATA",
+      "role": "graph",
+      "port": 6380
+    },
+    "graphiti-mcp": {
+      "class": "DATA",
+      "role": "knowledge_graph_mcp",
+      "port": 8000
+    },
+    "minio": {
+      "class": "DATA",
+      "role": "object_storage",
+      "port": 9000
+    },
+    "nats": {
+      "class": "DATA",
+      "role": "message_bus",
+      "port": 4222,
+      "unit": "nats-server.service"
+    },
+    "searxng": {
+      "class": "DATA",
+      "role": "search",
+      "port": 8080
+    },
+    "mcpjam": {
+      "class": "DATA",
+      "role": "mcp_inspector",
+      "port": 6274
+    },
+    "headscale": {
+      "class": "DATA",
+      "role": "mesh_coordination",
+      "port": 8083,
+      "unit": "headscale.service"
+    },
+    "caddy": {
+      "class": "DATA",
+      "role": "ingress_membrane",
+      "unit": "caddy.service"
+    },
+    "i-arif": {
+      "class": "IDENTITY",
+      "role": "sovereign_identity_core",
+      "owned_domains": [
+        "identity_core",
+        "qualia_synthesis",
+        "multimodal_vision",
+        "multimodal_audio",
+        "meaning_interpretation"
+      ]
+    }
+  },
+  "ports": {
+    "ARIFOS": 8088,
+    "ARIFOS_MCP": 8088,
+    "A_FORGE": 7071,
+    "A_FORGE_MCP": 7072,
+    "AAA": 3001,
+    "GEOX": 8081,
+    "WEALTH": 18082,
+    "WELL": 18083,
+    "ARIFFLOW": 7073,
+    "SIGNAL": 18084,
+    "SIGNAL_MCP": 18084,
+    "FRAME": 18085,
+    "MINIMAX_MEDIA": 18100,
+    "MINIMAX_MEDIA_MCP": 18100,
+    "FED": 7074,
+    "FLAME": 18901,
+    "HERMES_MCP": 18086,
+    "WELL_WITNESS": 18084,
+    "AAA_SIGNING": 18900,
+    "POSTGRES": 5432,
+    "REDIS": 6379,
+    "QDRANT": 6333,
+    "FALKORDB": 6380,
+    "GRAPHITI_MCP": 8000,
+    "MINIO": 9000,
+    "NATS": 4222,
+    "SEARXNG": 8080,
+    "MCPJAM": 6274,
+    "HEADSCALE": 8083
+  },
+  "env_vars": {
+    "ARIFOS": 8088,
+    "AFORGE": 7071,
+    "AAA": 3001,
+    "OPENCLAW": 18789,
+    "GEOX": 8081,
+    "WEALTH": 18082,
+    "WELL": 18083,
+    "ARIFLOW": 7073,
+    "FED": 7074,
+    "FLAME": 18901,
+    "HERMES": 18086,
+    "HERMES_MCP": 18086,
+    "HERMES_AGENT": 18089,
+    "HERMES_A2A": 18090,
+    "OPENCODE": 18091,
+    "ARIF_FAZIL_COM": 18092,
+    "MINIMAX_MEDIA": 18100,
+    "SIGNAL": 18084,
+    "FRAME": 18085,
+    "WELL_WITNESS": 18084,
+    "AAA_SIGNING": 18900,
+    "POSTGRES": 5432,
+    "REDIS": 6379,
+    "QDRANT": 6333,
+    "FALKORDB": 6380,
+    "GRAPHITI": 8000,
+    "MINIO": 9000,
+    "NATS": 4222,
+    "SEARXNG": 8080,
+    "MCPJAM": 6274,
+    "HEADSCALE": 8083,
+    "LITELLM": 4000,
+    "ARIFOS_MCP": 8088,
+    "AFORGE_MCP": 7071,
+    "GEOX_MCP": 8081,
+    "WEALTH_MCP": 18082,
+    "WELL_MCP": 18083,
+    "FED_MCP": 7074
+  }
+}
