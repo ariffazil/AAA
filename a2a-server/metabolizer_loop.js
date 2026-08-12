@@ -51,23 +51,23 @@ function decomposeGoal(G) {
   };
 
   // ENCODER: G → T
-  const { tasks, meta } = encodeGoalToTasks(goal);
+  const { tasks, jacobian, receipts } = encodeGoalToTasks(goal);
 
   // DECODER: T → A2AEnvelope[]
-  const envelopes = decodeTasksToEnvelopes(tasks, meta.jacobian_skeleton);
+  const envelopes = decodeTasksToEnvelopes(tasks, jacobian, goal);
 
   // Register in metabolic tracker
   _activeDecompositions.set(goal.id, {
     goal,
     tasks,
-    meta,
+    meta: { jacobian, receipts },
     envelopes,
     started_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
     metabolic_cycles: 0,
   });
 
-  return { goal_id: goal.id, tasks, envelopes, meta };
+  return { goal_id: goal.id, tasks, envelopes, meta: { jacobian, receipts } };
 }
 
 /**
