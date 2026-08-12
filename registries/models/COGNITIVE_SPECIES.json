@@ -1,0 +1,549 @@
+{
+  "_meta": {
+    "name": "COGNITIVE_SPECIES",
+    "version": "1.1.0",
+    "forged": "2026-08-13",
+    "forged_by": "333-AGI under F13 SOVEREIGN directive",
+    "doctrine": "Models are cognitive species, not leaderboard competitors. Route by species first, effort second.",
+    "ditempa_bukan_diberi": true,
+    "source_insight": "F13 SOVEREIGN architectural directive — compiler vs context vs worker vs judge",
+    "constitutional_alignment": {
+      "F2_TRUTH": "Species classification is evidence-based (task keywords + agent role), not guessed",
+      "F7_HUMILITY": "Species boundaries acknowledged — no model serves all species equally",
+      "F8_GENIUS": "Species routing reduces wasted computation (worker no longer does compiler work)",
+      "F9_ANTI_HANTU": "No model claims capabilities outside its species",
+      "Gödel_3": "Judge species MUST be different provider from compiler species (independence measured)"
+    },
+    "usage": "FED Step -1: classify_task_species(task, agent_id) → species → route within species",
+    "updated": "2026-08-13T04:00:00+08:00",
+    "species_count": 6
+  },
+  "species": {
+    "compiler": {
+      "name": "COMPILER",
+      "role": "Converts intent into implementation. Creates reality.",
+      "analogy": "gcc — the code generator. Deterministic, syntax-accurate, local reasoning.",
+      "characteristics": [
+        "highly deterministic",
+        "strong syntax accuracy",
+        "local reasoning (function/file scope)",
+        "implementation-first",
+        "patch generation"
+      ],
+      "optimal_for": [
+        "code generation",
+        "code editing",
+        "refactoring",
+        "test writing",
+        "schema migration",
+        "config changes",
+        "build scripts",
+        "pull request creation",
+        "diff generation"
+      ],
+      "models_ranked": [
+        {
+          "rank": 1,
+          "model": "glm-5.2",
+          "provider_pool": [
+            "zai-direct",
+            "opencode-zen",
+            "qwen-token-plan"
+          ],
+          "note": "Compiler Prime — highest leverage position in the federation"
+        },
+        {
+          "rank": 2,
+          "model": "qwen3.8-max",
+          "provider_pool": [
+            "qwen-token-plan",
+            "bailian-token-plan"
+          ],
+          "note": "Compiler Secondary — strong refactor + architecture"
+        },
+        {
+          "rank": 3,
+          "model": "kimi-k2.7-code",
+          "provider_pool": [
+            "opencode-go",
+            "kimi"
+          ],
+          "note": "Compiler Tertiary — coding specialist"
+        },
+        {
+          "rank": 4,
+          "model": "deepseek-v4-pro",
+          "provider_pool": [
+            "deepseek",
+            "qwen-token-plan"
+          ],
+          "note": "Compiler Reserve — sovereign-grade fallback"
+        }
+      ],
+      "fallback_rule": "Stay within compiler species. Never fall to worker or context species.",
+      "task_keywords": [
+        "implement",
+        "code",
+        "edit",
+        "write",
+        "refactor",
+        "fix",
+        "debug",
+        "function",
+        "class",
+        "test",
+        "build",
+        "compile",
+        "deploy",
+        "commit",
+        "patch",
+        "merge",
+        "schema",
+        "migration",
+        "script",
+        "api",
+        "endpoint"
+      ],
+      "agent_defaults": [
+        "333-AGI",
+        "opencode",
+        "aforge"
+      ]
+    },
+    "context": {
+      "name": "CONTEXT",
+      "role": "Converts chaos into understanding. Discovers reality.",
+      "analogy": "PostgreSQL — the database. Builds topology from evidence surfaces.",
+      "characteristics": [
+        "large context window (100K-1M tokens)",
+        "topology building across repos/files/logs",
+        "evidence synthesis from disparate sources",
+        "relationship discovery",
+        "multimodal understanding (text + image + data)",
+        "architectural mapping"
+      ],
+      "optimal_for": [
+        "repository archaeology (100k+ lines)",
+        "multi-repo analysis",
+        "receipt/log aggregation and pattern discovery",
+        "architecture review",
+        "evidence synthesis across organs",
+        "drift detection across federation",
+        "cross-domain research",
+        "summarization of complex state"
+      ],
+      "models_ranked": [
+        {
+          "rank": 1,
+          "model": "MiniMax-M3",
+          "provider_pool": [
+            "minimax",
+            "opencode-zen",
+            "opencode-go-zen"
+          ],
+          "note": "Context Prime — 1M context, repository archaeology champion"
+        },
+        {
+          "rank": 2,
+          "model": "claude-sonnet-5",
+          "provider_pool": [
+            "opencode-zen"
+          ],
+          "note": "Context Secondary — independent provider (Gödel-3 independence)"
+        },
+        {
+          "rank": 3,
+          "model": "gemini-3.1-pro",
+          "provider_pool": [
+            "opencode-zen"
+          ],
+          "note": "Context Tertiary — multimodal evidence synthesis"
+        }
+      ],
+      "fallback_rule": "Stay within context species. If M3 fails → Claude (independent provider). Never fall to compiler.",
+      "task_keywords": [
+        "analyze",
+        "understand",
+        "summarize",
+        "review",
+        "archaeology",
+        "investigate",
+        "discover",
+        "pattern",
+        "evidence",
+        "drift",
+        "architecture",
+        "topology",
+        "map",
+        "relationship",
+        "synthesize",
+        "aggregate",
+        "cross-reference",
+        "audit",
+        "assess"
+      ],
+      "agent_defaults": [
+        "555-ASI",
+        "hermes",
+        "dispatch"
+      ]
+    },
+    "worker": {
+      "name": "WORKER",
+      "role": "Parallelizes cheap cognition. Scales, doesn't lead.",
+      "analogy": "make -j32 — distributed build workers. Fast, cheap, parallel.",
+      "characteristics": [
+        "low cost per token",
+        "fast response time",
+        "narrow scope per call",
+        "high throughput",
+        "scales horizontally",
+        "does NOT lead cognition — follows instructions"
+      ],
+      "optimal_for": [
+        "parallel subtasks (forge_parallel)",
+        "simple classification/labeling",
+        "data extraction from documents",
+        "bulk text processing",
+        "translation/formatting",
+        "quick lookups",
+        "swarm intelligence (many cheap calls)"
+      ],
+      "models_ranked": [
+        {
+          "rank": 1,
+          "model": "mimo-v2.5",
+          "provider_pool": [
+            "mimo-token-plan",
+            "opencode-go"
+          ],
+          "note": "Worker Prime — scales cognition at low cost"
+        },
+        {
+          "rank": 2,
+          "model": "mimo-v2.5-flash",
+          "provider_pool": [
+            "mimo-token-plan"
+          ],
+          "note": "Worker Swarm — cheapest reasoning"
+        },
+        {
+          "rank": 3,
+          "model": "deepseek-v4-flash",
+          "provider_pool": [
+            "deepseek",
+            "qwen-token-plan"
+          ],
+          "note": "Worker Reserve — fast lane compiler-grade"
+        },
+        {
+          "rank": 4,
+          "model": "qwen3.6-flash",
+          "provider_pool": [
+            "qwen-token-plan"
+          ],
+          "note": "Worker Alt — Alibaba flash tier"
+        }
+      ],
+      "fallback_rule": "Stay within worker species. Workers are expendable — rotate freely.",
+      "task_keywords": [
+        "parallel",
+        "batch",
+        "bulk",
+        "extract",
+        "classify",
+        "label",
+        "format",
+        "translate",
+        "convert",
+        "simple",
+        "quick",
+        "swarm"
+      ],
+      "agent_defaults": [
+        "worker",
+        "parallel-agent"
+      ]
+    },
+    "judge": {
+      "name": "JUDGE",
+      "role": "Independent contradiction detection and constitutional verdict.",
+      "analogy": "Supreme Court — reads evidence, issues binding verdict, never executes.",
+      "characteristics": [
+        "independent provider from compiler/context (Gödel-3)",
+        "contradiction detection across evidence",
+        "constitutional floor checking (F1-F13)",
+        "SEAL/HOLD/SABAR/VOID verdicts",
+        "never self-certifies (Gödel-2)",
+        "reflection carries APEX-G (R1-R6)"
+      ],
+      "optimal_for": [
+        "constitutional judgment (888-APEX)",
+        "plan review and dissent",
+        "contradiction detection",
+        "floor compliance checking",
+        "SEAL-grade verification",
+        "independent audit of compiler output"
+      ],
+      "models_ranked": [
+        {
+          "rank": 1,
+          "model": "MiniMax-M3",
+          "provider_pool": [
+            "minimax",
+            "opencode-go-zen"
+          ],
+          "note": "Constitutional Judge — F13-ratified for 666/999 roles. Independent from GLM compiler.",
+          "constitutional_role": true
+        },
+        {
+          "rank": 2,
+          "model": "claude-sonnet-5",
+          "provider_pool": [
+            "opencode-zen"
+          ],
+          "note": "Independent Dissent — different provider family, maximum Gödel-3 independence",
+          "constitutional_role": false,
+          "role_note": "Independent auditor / dissent voice — NOT 666/999 constitutional judge"
+        }
+      ],
+      "fallback_rule": "Judge species MUST be different provider from the compiler that produced the work under review. No self-certification (Gödel-2).",
+      "task_keywords": [
+        "judge",
+        "verdict",
+        "review",
+        "approve",
+        "reject",
+        "hold",
+        "constitutional",
+        "floor",
+        "compliance",
+        "contradiction",
+        "dissent",
+        "seal",
+        "audit",
+        "verify",
+        "inspect"
+      ],
+      "agent_defaults": [
+        "888-APEX"
+      ]
+    },
+    "arbiter": {
+      "name": "ARBITER",
+      "role": "Tie-breaker when judge and compiler disagree. Final computational word before sovereign.",
+      "analogy": "Constitutional Tribunal — resolves deadlock, never routine work.",
+      "characteristics": [
+        "highest reasoning depth",
+        "multi-step deliberation",
+        "reserved for deadlock resolution",
+        "never used for routine tasks",
+        "expensive — deploy sparingly"
+      ],
+      "optimal_for": [
+        "tie-breaking when 888 and 333 disagree",
+        "complex multi-constraint optimization",
+        "architectural deadlock resolution",
+        "final pre-sovereign computational verdict"
+      ],
+      "models_ranked": [
+        {
+          "rank": 1,
+          "model": "gpt-5.6-sol",
+          "provider_pool": [
+            "opencode-zen"
+          ],
+          "note": "Arbiter Prime — frontier reasoning for deadlock resolution"
+        },
+        {
+          "rank": 2,
+          "model": "deepseek-v4-pro",
+          "provider_pool": [
+            "deepseek",
+            "qwen-token-plan"
+          ],
+          "note": "Arbiter Secondary — sovereign-grade reasoning"
+        }
+      ],
+      "fallback_rule": "Arbiter is a rare invocation. If both arbiter models fail, escalate to F13 SOVEREIGN.",
+      "task_keywords": [
+        "arbitrate",
+        "tie-break",
+        "deadlock",
+        "resolve",
+        "decide",
+        "final",
+        "ultimate",
+        "break"
+      ],
+      "agent_defaults": []
+    },
+    "edge": {
+      "name": "EDGE",
+      "role": "Sensory membrane. Captures human reality — screenshots, voice, images, PDFs, emotional signal. Encodes raw multimodal input into structured evidence packets.",
+      "analogy": "The skin — it feels before the brain thinks.",
+      "characteristics": [
+        "multimodal perception (image, audio, video, text)",
+        "fast encoding (low latency, high throughput)",
+        "human-bound context ownership",
+        "evidence normalization (raw → structured)",
+        "return loop (before/after proof to human)"
+      ],
+      "optimal_for": [
+        "screenshot capture and analysis",
+        "voice transcription and emotional signal detection",
+        "PDF/document intake",
+        "visual QA and before/after comparison",
+        "human feedback encoding",
+        "multimodal evidence packaging"
+      ],
+      "models_ranked": [
+        {
+          "rank": 1,
+          "model": "gemini-2.5-flash",
+          "provider_pool": [
+            "google-gemini"
+          ],
+          "note": "Edge Prime — multimodal, 1M ctx, FREE daily quota"
+        },
+        {
+          "rank": 2,
+          "model": "gemini-2.5-flash-lite",
+          "provider_pool": [
+            "google-gemini"
+          ],
+          "note": "Edge Secondary — cheaper, faster"
+        },
+        {
+          "rank": 3,
+          "model": "MiniMax-M3",
+          "provider_pool": [
+            "minimax-coding-plan"
+          ],
+          "note": "Edge Tertiary — when deep context needed on visual evidence"
+        }
+      ],
+      "fallback_rule": "Stay within edge species. Never fall to compiler — edge perceives, compiler builds.",
+      "task_keywords": [
+        "screenshot",
+        "image",
+        "photo",
+        "visual",
+        "see",
+        "look",
+        "voice",
+        "audio",
+        "listen",
+        "hear",
+        "scan",
+        "capture",
+        "observe",
+        "sense",
+        "perceive",
+        "screenshot evidence",
+        "before/after",
+        "visual diff",
+        "human feedback",
+        "user complaint",
+        "UI review"
+      ],
+      "agents": [
+        "openclaw",
+        "hermes"
+      ],
+      "codex_lane": "codex.edge",
+      "architecture_layer": "EDGE"
+    }
+  },
+  "agent_species_map": {
+    "333-AGI": {
+      "default_species": "compiler",
+      "can_switch_to": [
+        "context",
+        "arbiter"
+      ],
+      "note": "Δ MIND — primarily compiler, can scout when needed"
+    },
+    "555-ASI": {
+      "default_species": "context",
+      "can_switch_to": [
+        "judge"
+      ],
+      "note": "Ω CORE — scout/evidence, can dissent (independent lens)"
+    },
+    "888-APEX": {
+      "default_species": "judge",
+      "can_switch_to": [],
+      "note": "Ψ SOUL — constitutional verdict only, never compiles"
+    },
+    "hermes": {
+      "default_species": "context",
+      "can_switch_to": [
+        "compiler"
+      ],
+      "note": "Conversation/evidence synthesis, can dispatch to compiler"
+    },
+    "opencode": {
+      "default_species": "compiler",
+      "can_switch_to": [
+        "context"
+      ],
+      "note": "Primary forge instrument"
+    },
+    "dispatch": {
+      "default_species": "context",
+      "can_switch_to": [],
+      "note": "A2A routing — reads intent, dispatches"
+    },
+    "worker": {
+      "default_species": "worker",
+      "can_switch_to": [],
+      "note": "Parallel cognition — follows, never leads"
+    },
+    "i-arif": {
+      "default_species": "arbiter",
+      "can_switch_to": [
+        "judge"
+      ],
+      "note": "Sovereign lane — tie-break before F13"
+    }
+  },
+  "pipeline_patterns": {
+    "_note": "Phase 2: Multi-model pipelines. One task routed through multiple species in sequence.",
+    "archaeology_then_compile": {
+      "trigger": "Task requires understanding existing codebase before modifying it",
+      "pipeline": [
+        "context(M3) → compiler(GLM)"
+      ],
+      "description": "M3 scouts the territory and builds a map, hands context to GLM which compiles the change"
+    },
+    "compile_then_judge": {
+      "trigger": "Task requires independent review of compiler output",
+      "pipeline": [
+        "compiler(GLM) → judge(Claude/M3)"
+      ],
+      "description": "GLM generates implementation, independent judge species reviews for contradictions"
+    },
+    "parallel_workers_then_synthesize": {
+      "trigger": "Bulk processing with aggregation",
+      "pipeline": [
+        "worker(MiMo ×N) → context(M3)"
+      ],
+      "description": "MiMo swarm processes in parallel, M3 synthesizes results into understanding"
+    },
+    "full_gauntlet": {
+      "trigger": "SEAL-grade work requiring maximum independence",
+      "pipeline": [
+        "context(M3 scout) → compiler(GLM forge) → judge(Claude dissent) → arbiter(GPT-Codex tie-break if needed) → F13(seal)"
+      ],
+      "description": "Full cognitive gauntlet — every species contributes, sovereign seals"
+    }
+  },
+  "constitutional_constraints": {
+    "godel_2_no_self_certification": "Judge species model MUST be different provider from compiler species model that produced the work under review. GLM compiles → MiniMax-M3 or Claude judges. Never GLM judges GLM.",
+    "godel_3_independence_measured": "Judge model and audit model MUST be from different provider families. M3 (MiniMax) can judge GLM (Z.ai). Claude (Anthropic) can audit both.",
+    "constitutional_rule_666_999": "Only MiniMax-M3 and deepseek-v4-pro may serve 666_JUDGE and 999_SEAL constitutional roles. This is F13-ratified and unchanged by species routing.",
+    "species_isolation_on_failure": "When a model fails, fallback MUST stay within the same cognitive species. Cross-species fallback is a bug, not a feature.",
+    "sovereign_invariant": "F13 ARIF is always SOVEREIGN species. No model serves this role. The human holds final veto."
+  }
+}
