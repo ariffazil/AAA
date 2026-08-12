@@ -688,6 +688,45 @@ components:
     unit: caddy.service
     role: ingress_membrane
 
+  # ── IDENTITY ORGAN (promoted 2026-08-12) ─────────────────────────
+  - id: i-arif
+    class: IDENTITY
+    display_name: i-ARIF
+    fi: FI-000
+    bound_to: F13-SOVEREIGN
+    role: sovereign_identity_core
+    authority_ceiling: IDENTITY_SOVEREIGN
+    layer: identity
+    source_path: null
+    port: null
+    mcp_port: null
+    unit: null
+    default_branch: null
+    runtime: null
+    live_probe_2026_08_12:
+      status: active
+      note: "Identity layer — no standalone process. Runs via litellm FED chain :4000. 13 model chains registered."
+    owned_domains:
+      - identity_core
+      - qualia_synthesis
+      - multimodal_vision
+      - multimodal_audio
+      - meaning_interpretation
+    forbidden_domains:
+      - engineering_execution
+      - constitutional_judgment
+      - earth_evidence
+      - capital_allocation
+    receive_only_from:
+      - hermes
+      - openclaw
+    routes_to: []
+    notes:
+      - "Promoted from non_components 2026-08-12 per F13 SOVEREIGN directive."
+      - "ID class: only organ bound_directly to F13-SOVEREIGN."
+      - "hermes-asi = nerve (routes signal). i-ARIF = brain (synthesises meaning)."
+      - "FI-000: pre-harness. Identity precedes engine."
+
 # ── PORT OBSERVABILITY (zen-2026-08-06 AUDIT-M2) ─────────────────────────
 # Live ports classified. Sub-processes (a-forge sub-workers, devtools, debug)
 # are out of scope for SOT — they don't claim authority. Substrate ports below
@@ -748,7 +787,7 @@ port_observability:
 # Explicit non-components (naming traps — do not register as organs)
 non_components:
   - id: i-arif
-    reason: product_brand_and_optional_sft_corpus_not_runtime
+    reason: "PROMOTED_TO_ORGAN — refactored 2026-08-12 per F13 SOVEREIGN directive. Class: IDENTITY. FI-000. bound_to: F13-SOVEREIGN."
   - id: apex-as-organ
     reason: judgment_absorbed_into_arifos_aaa_path
   - id: eureka-zen-draft
