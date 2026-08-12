@@ -69,6 +69,9 @@ const { artGate, actGate, classifyAction } = require('./art_gate');
 // ── arifFLOW Ingest — metabolic ledger recording (forged 2026-08-08 by 333-AGI) ─
 const { ingestFlow, getFlowHealth } = require('./flow_ingest');
 
+// ── Metabolizer Loop — goal decomposition metabolic cycle (forged 2026-08-12) ─
+const { decomposeGoal, metabolizeResults, getGoalState, listActiveDecompositions } = require('./metabolizer_loop');
+
 // ── Orchestrator Agent — task lifecycle manager (forged 2026-08-05) ─
 const { getOrchestrator } = require('./orchestrator');
 
@@ -4505,7 +4508,7 @@ app.delete('/a2a/tasks/:taskId/pushNotificationConfig/:configId', authMiddleware
 // DITEMPA BUKAN DIBERI — Forged 2026-07-25
 // ═══════════════════════════════════════════════════════════════════════════
 
-const { encodeGoalToTasks, buildJacobian } = require('./goal_decomposition');
+const { encodeGoalToTasks, buildJacobian, decodeTasksToEnvelopes } = require('./goal_decomposition');
 
 app.post('/a2a/goal/decompose', jsonRpcValidate, async (req, res) => {
   try {
@@ -4535,7 +4538,10 @@ app.post('/a2a/goal/decompose', jsonRpcValidate, async (req, res) => {
     const J = buildJacobian(G, tasks);
     const routed = decodeTasksToEnvelopes(tasks, J, G);
 
-    console.log(`[Δ→Ω→Ψ] ${tasks.length} tasks from "${rawGoal.slice(0, 60)}"`);
+    // Register in active decompositions so metabolizeResults can find it
+    decomposeGoal(G);
+
+    console.log(`[Δ→Ω→Ψ] ${tasks.length} tasks from "${rawGoal.slice(0, 60)}" (registered: ${G.id})`);
 
     res.json({
       jsonrpc: '2.0', id: id || 1,
@@ -4569,6 +4575,89 @@ app.post('/a2a/goal/decompose', jsonRpcValidate, async (req, res) => {
       jsonrpc: '2.0', id: req.body?.id || 1,
       error: { code: -32603, message: error.message }
     });
+  }
+});
+
+app.post('/a2a/goal/list', jsonRpcValidate, async (req, res) => {
+  try {
+    const { id } = req.jsonrpc || req.body;
+    const active = listActiveDecompositions();
+    res.json({
+      jsonrpc: '2.0', id: id || 1,
+      result: {
+        count: active.length,
+        goals: active.map(g => ({ goal_id: g.goal_id, actor: g.actor, intent: g.intent?.slice(0, 80) }))
+      }
+    });
+  } catch (error) {
+    res.status(500).json({ jsonrpc: '2.0', id: req.body?.id || 1, error: { code: -32603, message: error.message } });
+  }
+});
+
+// ── /a2a/goal/metabolize — feed results back into the Δ→Ω→Ψ loop ────
+app.post('/a2a/goal/metabolize', jsonRpcValidate, async (req, res) => {
+  try {
+    const { id, params } = req.jsonrpc || req.body;
+    const goal_id = params?.goal_id || req.body?.goal_id;
+    const results = params?.results || req.body?.results || [];
+
+    if (!goal_id || typeof goal_id !== 'string') {
+      return res.status(400).json({
+        jsonrpc: '2.0', id: id || 1,
+        error: { code: -32602, message: 'goal_id string required' }
+      });
+    }
+    if (!Array.isArray(results) || results.length === 0) {
+      return res.status(400).json({
+        jsonrpc: '2.0', id: id || 1,
+        error: { code: -32602, message: 'results array required (non-empty)' }
+      });
+    }
+
+    const outcome = metabolizeResults(goal_id, results);
+    if (!outcome.ok) {
+      return res.status(404).json({
+        jsonrpc: '2.0', id: id || 1,
+        error: { code: -32602, message: outcome.error }
+      });
+    }
+
+    console.log(`[Ψ] metabolized ${results.length} results for ${goal_id} → state=${outcome.state}`);
+
+    res.json({
+      jsonrpc: '2.0', id: id || 1,
+      result: {
+        goal_id: outcome.goal_id,
+        state: outcome.state,
+        metabolic_cycles: outcome.metabolic_cycles,
+        task_count: outcome.tasks?.length || 0,
+        seal: outcome.seal || null,
+      }
+    });
+  } catch (error) {
+    console.error('[Ψ] metabolize error:', error.message);
+    res.status(500).json({ jsonrpc: '2.0', id: req.body?.id || 1, error: { code: -32603, message: error.message } });
+  }
+});
+
+// ── /a2a/goal/:goal_id — read status of a single decomposition ───────
+app.get('/a2a/goal/:goal_id', async (req, res) => {
+  try {
+    const goalId = req.params.goal_id;
+    const state = getGoalState(goalId);
+    if (!state) {
+      return res.status(404).json({ error: `Goal ${goalId} not found` });
+    }
+    res.json({
+      goal_id: goalId,
+      state: state.state,
+      metabolic_cycles: state.metabolic_cycles,
+      task_count: state.tasks?.length || 0,
+      started_at: state.started_at,
+      updated_at: state.updated_at,
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 });
 
