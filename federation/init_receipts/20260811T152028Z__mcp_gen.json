@@ -1,0 +1,69 @@
+{
+  "catalogued_enabled_sealed": [
+    [
+      "arifos",
+      "sense"
+    ],
+    [
+      "minimax",
+      "sense"
+    ],
+    [
+      "arifos",
+      "verify"
+    ],
+    [
+      "geox",
+      "verify"
+    ],
+    [
+      "wealth",
+      "verify"
+    ],
+    [
+      "well",
+      "verify"
+    ],
+    [
+      "fed",
+      "verify"
+    ],
+    [
+      "aforge",
+      "forge"
+    ],
+    [
+      "minimax",
+      "forge"
+    ],
+    [
+      "VAULT999",
+      "witness"
+    ],
+    [
+      "arifFlow",
+      "witness"
+    ]
+  ],
+  "emitted": [
+    "arifos",
+    "minimax",
+    "geox",
+    "wealth",
+    "well",
+    "fed",
+    "aforge",
+    "arifFlow"
+  ],
+  "emitted_count": 8,
+  "enabled_no_launcher": [
+    "VAULT999"
+  ],
+  "enabled_not_sealed": [],
+  "launcher_map_path": "/root/AAA/federation/launcher_map.yaml",
+  "mcp_json_backup": "/root/.kimi-code/mcp.json.20260811T152028Z.bak",
+  "mcp_json_path": "/root/.kimi-code/mcp.json",
+  "registry_path": "/root/AAA/federation/AAA_CAPABILITY_REGISTRY.yaml",
+  "ts": "2026-08-11T15:20:28Z",
+  "verdict": "REGENERATED"
+}

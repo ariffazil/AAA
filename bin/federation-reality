@@ -1,0 +1,186 @@
+#!/usr/bin/env python3
+"""federation-reality — single-shot health gate for the federation.
+
+Exit codes:
+  0 = GREEN (all organs echo client protocol, MCPJam UI reachable, all MCPJam flow tests 200)
+  1 = RED (one or more organs failed)
+  2 = DEGRADED (some organs healthy, some not)
+
+Usage:
+  federation-reality           # probe, print JSON, exit
+  federation-reality --quiet  # only print on RED
+
+Checks (in order):
+  1. MCPJam UI on http://127.0.0.1:6274/ is reachable (200)
+  2. For each MCP organ: POST /mcp initialize with 2025-06-18 → 200, protocolVersion echoed
+  3. For each MCP organ: POST /mcp tools/list with Origin: https://app.mcpjam.com and
+     Mcp-Method: tools/list + MCP-Protocol-Version: 2026-07-28 → 200 with at least
+     one tool in the response.
+"""
+from __future__ import annotations
+
+import json
+import sys
+import urllib.error
+import urllib.request
+
+ORGANS = {
+    "arifOS":  "https://mcp.arif-fazil.com/mcp",
+    "A-FORGE": "https://forge.arif-fazil.com/mcp",
+    "GEOX":    "https://geox.arif-fazil.com/mcp",
+    "WEALTH":  "https://wealth.arif-fazil.com/mcp",
+    "WELL":    "https://well.arif-fazil.com/mcp",
+}
+MCPJAM_URL = "http://127.0.0.1:6274/"
+MCPJAM_ORIGIN = "https://app.mcpjam.com"
+
+
+def post_json(url: str, body: dict, headers: dict | None = None, timeout: int = 10) -> tuple[int, dict | str]:
+    data = json.dumps(body).encode()
+    h = {"Content-Type": "application/json", "Accept": "application/json, text/event-stream"}
+    if headers:
+        h.update(headers)
+    req = urllib.request.Request(url, data=data, method="POST", headers=h)
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            raw = r.read().decode()
+            return r.status, _parse_one_or_concatenated_json(raw)
+    except urllib.error.HTTPError as e:
+        raw = e.read().decode()
+        return e.code, _parse_one_or_concatenated_json(raw)
+    except Exception as e:
+        return 0, repr(e)
+
+
+def _parse_one_or_concatenated_json(raw: str) -> dict | str:
+    """Parse a JSON body. Some servers emit two concatenated JSON documents
+    (e.g., arifOS's ResultTypeASGIMiddleware). For those, return the
+    dictionary with the largest 'result' payload.
+    """
+    if not raw:
+        return {}
+    decoder = json.JSONDecoder()
+    pos = 0
+    parsed: list[dict] = []
+    while pos < len(raw):
+        while pos < len(raw) and raw[pos].isspace():
+            pos += 1
+        if pos >= len(raw):
+            break
+        try:
+            obj, end = decoder.raw_decode(raw, pos)
+        except json.JSONDecodeError:
+            if parsed:
+                break
+            return raw[:300]
+        if isinstance(obj, dict):
+            parsed.append(obj)
+        pos = end
+    if not parsed:
+        return raw[:300]
+    if len(parsed) == 1:
+        return parsed[0]
+    # Multiple JSON docs: pick the one with the most result content
+    parsed.sort(key=lambda d: len(json.dumps(d.get("result", {}))), reverse=True)
+    return parsed[0]
+
+
+def probe_mcpjam() -> int | str:
+    try:
+        with urllib.request.urlopen(MCPJAM_URL, timeout=5) as r:
+            return r.status
+    except Exception as e:
+        return f"error: {e!r}"
+
+
+def probe_organ(name: str, url: str) -> dict:
+    """Run the full MCPJam flow against one organ."""
+    result: dict = {"name": name, "url": url}
+
+    # Step 1: initialize (no Origin needed, plain probe)
+    status, body = post_json(url, {
+        "jsonrpc": "2.0", "id": 1, "method": "initialize",
+        "params": {
+            "protocolVersion": "2025-06-18",
+            "capabilities": {},
+            "clientInfo": {"name": "federation-reality", "version": "1.0"},
+        },
+    })
+    result["initialize_status"] = status
+    if isinstance(body, dict):
+        result["initialize_protocolVersion"] = body.get("result", {}).get("protocolVersion")
+    else:
+        result["initialize_body"] = body[:200] if isinstance(body, str) else str(body)[:200]
+
+    # Step 2: tools/list with MCPJam Origin and 2026-07-28 protocol
+    status, body = post_json(
+        url,
+        {"jsonrpc": "2.0", "id": 2, "method": "tools/list", "params": {}},
+        headers={
+            "Origin": MCPJAM_ORIGIN,
+            "MCP-Protocol-Version": "2026-07-28",
+            "Mcp-Method": "tools/list",
+        },
+    )
+    result["mcpjam_status"] = status
+    if isinstance(body, dict):
+        tools = body.get("result", {}).get("tools", [])
+        result["mcpjam_tool_count"] = len(tools) if isinstance(tools, list) else 0
+    else:
+        result["mcpjam_body"] = body[:200] if isinstance(body, str) else str(body)[:200]
+
+    return result
+
+
+def main() -> int:
+    quiet = "--quiet" in sys.argv
+    mcpjam_status = probe_mcpjam()
+
+    organs = {name: probe_organ(name, url) for name, url in ORGANS.items()}
+
+    # Gates:
+    #  (1) MCPJam UI is 200
+    mcpjam_ok = mcpjam_status == 200
+
+    #  (2) Each organ's initialize echoes 2025-06-18
+    initialize_ok = {
+        name: organ.get("initialize_protocolVersion") == "2025-06-18"
+        for name, organ in organs.items()
+    }
+
+    #  (3) Each organ's MCPJam tools/list returns 200 with at least one tool
+    mcpjam_ok_per_organ = {
+        name: organ.get("mcpjam_status") == 200 and organ.get("mcpjam_tool_count", 0) > 0
+        for name, organ in organs.items()
+    }
+
+    all_green = mcpjam_ok and all(initialize_ok.values()) and all(mcpjam_ok_per_organ.values())
+    any_green = mcpjam_ok and any(initialize_ok.values())
+
+    report = {
+        "mcpjam_ui": mcpjam_status,
+        "mcpjam_ui_ok": mcpjam_ok,
+        "organs": {
+            name: {
+                "initialize_protocolVersion": organ.get("initialize_protocolVersion"),
+                "initialize_ok": initialize_ok[name],
+                "mcpjam_status": organ.get("mcpjam_status"),
+                "mcpjam_tool_count": organ.get("mcpjam_tool_count", 0),
+                "mcpjam_ok": mcpjam_ok_per_organ[name],
+            }
+            for name, organ in organs.items()
+        },
+    }
+
+    if not quiet or not all_green:
+        print(json.dumps(report, indent=2, sort_keys=True))
+
+    if all_green:
+        return 0
+    if not mcpjam_ok and not any(initialize_ok.values()):
+        return 1
+    return 2
+
+
+if __name__ == "__main__":
+    sys.exit(main())
