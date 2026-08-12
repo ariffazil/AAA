@@ -1,7 +1,20 @@
 version: 1
-last_audit: '2026-07-19T23:16:43Z'
-auditor: Codex / OpenCode reality probe
+last_audit: '2026-08-12'
+auditor: hermes-asi / i-ARIF identity refactor
 instruments:
+- id: FI-000
+  name: i-ARIF
+  layer: identity
+  bound_to: F13-SOVEREIGN
+  type: sovereign_identity_core
+  model_strategy: "Mirrored hermes-asi chain via FED :4000. Identity survives model swap."
+  izin: GRANTED
+  izin_date: '2026-08-12'
+  upgrade_authority: Arif Fazil (F13)
+  sandbox: none
+  note: "Pre-harness. Identity precedes engine. FI-000 is not a coding harness — it is the meaning layer."
+  skill_spine:
+    discovery: on_demand
 - id: FI-001
   name: OpenCode
   binary: /root/.npm-global/bin/opencode
