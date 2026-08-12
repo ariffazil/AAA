@@ -1,0 +1,46 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "id": "555-ASI",
+  "fi_id": "FI-003",
+  "name": "555-ASI \u2014 Causal / Structural Intelligence",
+  "description": "Domain-evidence ASI lane (GEOX-aligned). Causal inference + structural reasoning.",
+  "version": "1.0.0",
+  "protocolVersion": "1.2",
+  "principal_agent": {
+    "type": "agent",
+    "category": "Sovereign citizen warga \u2014 binds to 555-ASI lane",
+    "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive (2026-08-12 sweep)"
+  },
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "555-ASI",
+    "intelligence_tier": "ASI",
+    "authority_level": "sovereign-delegate",
+    "citizenship_forged": "2026-08-12T22:47:00+08:00"
+  },
+  "bound_to": "AAA",
+  "power_band": "555-asi_cognitive_ring",
+  "skills_prefix": [
+    "555_ASI-"
+  ],
+  "runtime_harness": "AAA warga harness",
+  "identity_anchor": "/root/AAA/agents/555-ASI/SOUL.md",
+  "public_key": {
+    "format": "Ed25519 SPKI",
+    "hex": "aa8f8d33451731570a4ac89dd4d45ca59684594ba8145c71b484b065cef49de0",
+    "fingerprint_sha256": "2e98e75c0c5133d8",
+    "path": "/root/AAA/IDENTITY/keys/555-ASI_public.pem"
+  },
+  "authority": "OBSERVE_ONLY",
+  "max_action_class": "OBSERVE",
+  "status": "ACTIVE",
+  "constitutional_class": "warga",
+  "federation_metadata": {
+    "registered_via": "AAA sovereign sweep 2026-08-12",
+    "keygen_method": "Ed25519 PrivateKey.generate() (cryptography library)",
+    "license": "AGPL-3.0",
+    "source_repo": "AAA",
+    "fingerprint_short": "2e98e75c0c5133d8"
+  }
+}

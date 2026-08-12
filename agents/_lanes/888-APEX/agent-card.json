@@ -1,0 +1,46 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "id": "888-APEX",
+  "fi_id": "FI-004",
+  "name": "888-APEX \u2014 Sovereign / Adjudicative",
+  "description": "arifOS-aligned adjudicative lane. Never self-authorises. Triple-pass: audit \u2192 judge \u2192 reflect.",
+  "version": "1.0.0",
+  "protocolVersion": "1.2",
+  "principal_agent": {
+    "type": "agent",
+    "category": "Sovereign citizen warga \u2014 binds to 888-APEX lane",
+    "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive (2026-08-12 sweep)"
+  },
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "888-APEX",
+    "intelligence_tier": "APEX",
+    "authority_level": "adjudicator",
+    "citizenship_forged": "2026-08-12T22:47:00+08:00"
+  },
+  "bound_to": "AAA",
+  "power_band": "888-apex_cognitive_ring",
+  "skills_prefix": [
+    "888_APEX-"
+  ],
+  "runtime_harness": "AAA warga harness",
+  "identity_anchor": "/root/AAA/agents/888-APEX/SOUL.md",
+  "public_key": {
+    "format": "Ed25519 SPKI",
+    "hex": "ed289ca0614455f3b552c1a8aaf99637d03cba2ad62ca7ae8747d3b797e551d8",
+    "fingerprint_sha256": "1b4cad09d347de82",
+    "path": "/root/AAA/IDENTITY/keys/888-APEX_public.pem"
+  },
+  "authority": "OBSERVE_ONLY",
+  "max_action_class": "OBSERVE",
+  "status": "ACTIVE",
+  "constitutional_class": "warga",
+  "federation_metadata": {
+    "registered_via": "AAA sovereign sweep 2026-08-12",
+    "keygen_method": "Ed25519 PrivateKey.generate() (cryptography library)",
+    "license": "AGPL-3.0",
+    "source_repo": "AAA",
+    "fingerprint_short": "1b4cad09d347de82"
+  }
+}
