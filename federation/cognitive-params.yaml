@@ -1,0 +1,47 @@
+# cognitive-params.yaml — Dynamic thresholds for Hermes cognitive layer
+# F13 Sovereign Override: 2026-08-12
+# DOCTRINE: These values are WATER, not granite. Load from here, not from Python constants.
+# Truth: live_health_beats_file
+
+schema_version: 1.0.0
+source: "F13 6-domain taxonomy (2026-08-12)"
+loaded_by: cognitive/config.py (runtime)
+
+# F7 — HUMILITY thresholds
+f7_humility:
+  omega_0: 0.03           # Epistemic floor — breathe with runtime feedback
+  confidence_cap: 0.90    # Derived ceiling — constitutional, do NOT change
+  lambda_decay: 0.05      # Decay rate — tuned, will retune
+  eta_inertia: 0.50       # Initial inertia — never recalibrated (debt)
+
+# Drift detection
+drift:
+  warning_threshold: 0.30  # Empirical — adapt with C_dark feedback
+  alert_threshold: 0.50    # Empirical — adapt with environment
+
+# Value system
+value_factor_weights:
+  authority: 0.30
+  evidence: 0.25
+  precedent: 0.15
+  cost: 0.15
+  reversibility: 0.10
+  time_pressure: 0.05
+
+# Memory tier thresholds
+memory_tier_thresholds:
+  l1_ephemeral: 0.1       # Redis ephemeral
+  l2_session: 0.3         # Redis session
+  l3_fuzzy: 0.5           # Qdrant vectors
+  l4_structured: 0.7      # Supabase tables
+  l5_graph: 0.85          # Graphiti relations
+  l6_sealed: 1.0          # VAULT999
+
+# Timeouts (from D6 — single source of truth)
+timeouts:
+  a2a_listener_default: 30.0
+  mcp_server_default: 3.0
+  real_bridge_default: 30
+  agent_mcp_health_check: 60.0
+  agent_mcp_shutdown: 15.0
+  agent_mcp_startup: 30
