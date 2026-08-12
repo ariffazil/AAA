@@ -73,3 +73,18 @@ This rule was forged from the constraint Arif imposed on 2026-08-12:
 The fix: observation is metabolized internally. Output is receipt only.
 
 DITEMPA BUKAN DIBERI — Execution is forged, not narrated. ⚒️
+## Human Decode Layer — Emoji Evidence Labels (2026-08-12 F13 Directive)
+
+> **Principle:** Machine layer stays ASCII-parseable. Human layer gets pre-attentive visual compression. Emoji reduces ΔS at decode — visual cortex processes pictograms before conscious text parsing.
+
+| Machine Label (code/logs/JSON/VAULT999) | Human Label (Telegram/receipts) | Meaning |
+|---|---|---|
+| `[OBS]` | 👁️ | Direct observation, raw evidence, live probe |
+| `[DER]` | 🔗 | Derived — inference from evidence chain |
+| `[INT]` | 🧭 | Interpretation — navigated meaning, model-applied |
+| `[SPEC]` | 🎲 | Speculation — uncertain, low confidence |
+| `[UNKNOWN]` | ❓ | Not known. Never fabricated. |
+
+**Iron rule:** The machine label is always present in structured evidence (JSON, logs, VAULT999). The emoji is the **decode-layer rendering** for human consumption. They are the same epistemic value, different transport encoding.
+
+DITEMPA BUKAN DIBERI — Evidence is forged, not narrated. ⚒️
