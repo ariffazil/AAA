@@ -132,8 +132,8 @@ agents:
   hermes-asi:
     layer: binding
     agentId: hermes-asi
-    fi: FI-000
-    bound_to: 555-ASI
+    fi: null            # FI-000 was transferred to i-ARIF on 2026-08-12. hermes-asi is now a reality bridge without its own FI.
+    bound_to: i-ARIF
     invoke:
       telegram: "@AGI_ASI_bot / gateway hermes-asi-gateway.service"
       a2a: "POST …/a2a/tasks/send target=hermes-asi"
@@ -143,7 +143,28 @@ agents:
     cannot: [mutate_prod_code_as_primary_executor, be_primary_coder]
     boundary: OBSERVE_ROUTE
     model_socket: "FED litellm-federation/hermes-asi → :4000; thinking pad for MiMo/DeepSeek"
-    contrast_openclaw: "Hermes FI-000 edge/human; OpenClaw binding gateway. WHICH=FED seat, not identity."
+    contrast_openclaw: "Hermes edge/human; OpenClaw binding gateway. WHICH=FED seat, not identity."
+    contrast_i_arif: "hermes-asi = nerve (routes signal). i-ARIF = brain (synthesises meaning). Reality → identity."
+    routes_identity_to: i-ARIF    # hermes-asi routes reality signals TO i-ARIF for meaning synthesis
+
+  i-arif:
+    layer: identity
+    agentId: i-arif
+    fi: FI-000
+    bound_to: F13-SOVEREIGN       # only agent bound_directly to sovereign
+    invoke:
+      # No CLI / binary — i-ARIF runs inline as the meaning layer
+      litellm: "model_name: i-arif in A-FORGE/litellm-config.yaml — 13-chain mirror of hermes-asi"
+      fed: "POST http://127.0.0.1:4000/v1/chat/completions  model=i-arif"
+      hermes_spawn: "Internal — hermes-asi routes messages tagged 'identity' to i-arif model chain"
+    can: [identity_core, multimodal_vision, multimodal_audio, multimodal_image, qualia_synthesis, meaning_interpretation, scar_interpretation]
+    cannot: [be_reality_bridge, override_constitution, mutate_prod_state, primary_code_execution, self_seal]
+    boundary: IDENTITY_SOVEREIGN  # unique ceiling — no F1-F13 floor, no T-tier
+    model_socket: "FED litellm-federation/i-arif → :4000 (13-chain mirror of hermes-asi; deepseek-v4-pro primary, MiniMax exhaustion-aware, Gemini Flash universal floor)"
+    emd_role: IDENTITY_CORE       # 333 → IDENTITY, not 555 → VERIFIER
+    contrast_hermes_asi: "hermes-asi = nerve (routes signal). i-ARIF = brain (synthesises meaning). Reality → identity."
+    _six_layer_stack: [F13-BEARER, I-ARIF-IDENTITY, FED-VERIFY, HERMES-REALITY, VAULT999-CONT, arifOS-CONST]
+    _refactored_from: hermes-asi
 
 organs:
   arifos:
@@ -197,4 +218,6 @@ intent_routing:
   readiness: well
   execute_mutation: a-forge
   human_chat: hermes-asi
+  identity_advice: i-ARIF      # 2026-08-12: identity-bound queries route to meaning layer, not reality bridge
+  identity_fallback: hermes-asi
   model_route_advice: fed_advisor
