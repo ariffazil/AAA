@@ -1,0 +1,46 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "id": "decisions",
+  "fi_id": "FI-007",
+  "name": "decisions \u2014 Decision Ledger Witness",
+  "description": "Witness agent for /root/AAA/decisions/ ledger. Read-only over decision artifacts.",
+  "version": "1.0.0",
+  "protocolVersion": "1.2",
+  "principal_agent": {
+    "type": "agent",
+    "category": "Sovereign citizen warga \u2014 binds to 888-APEX lane",
+    "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive (2026-08-12 sweep)"
+  },
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "888-APEX",
+    "intelligence_tier": "APEX",
+    "authority_level": "witness",
+    "citizenship_forged": "2026-08-12T22:47:00+08:00"
+  },
+  "bound_to": "AAA",
+  "power_band": "888-apex_cognitive_ring",
+  "skills_prefix": [
+    "DECISIONS-"
+  ],
+  "runtime_harness": "AAA warga harness",
+  "identity_anchor": "/root/AAA/agents/decisions/SOUL.md",
+  "public_key": {
+    "format": "Ed25519 SPKI",
+    "hex": "d5e0145326e22b31bdd2e2af15f7f09a6038ce193cace2732ac34ceab21bc398",
+    "fingerprint_sha256": "027d1a2031f2b14f",
+    "path": "/root/AAA/IDENTITY/keys/decisions_public.pem"
+  },
+  "authority": "OBSERVE_ONLY",
+  "max_action_class": "OBSERVE",
+  "status": "ACTIVE",
+  "constitutional_class": "warga",
+  "federation_metadata": {
+    "registered_via": "AAA sovereign sweep 2026-08-12",
+    "keygen_method": "Ed25519 PrivateKey.generate() (cryptography library)",
+    "license": "AGPL-3.0",
+    "source_repo": "AAA",
+    "fingerprint_short": "027d1a2031f2b14f"
+  }
+}
