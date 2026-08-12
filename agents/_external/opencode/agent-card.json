@@ -1,0 +1,183 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "id": "opencode",
+  "name": "OpenCode CLI",
+  "fi_designation": "FI-001",
+  "version": "2.1.0",
+  "lane": "333-AGI",
+  "schemaVersion": "2.2.0",
+  "protocolVersion": "1.0",
+  "description": "Substrate-as-actor. The 333-AGI declared runtime. 16 providers, 9 AAA instruction files, plugin-based architecture. Deepest federation integration of any FI. Canonical orchestrator.",
+  "substrate": {
+    "upstream": "opencode-ai/opencode",
+    "cli_version": "1.18.11",
+    "vanilla_remaining_pct": 10,
+    "forged_surface_summary": "16 enabled providers, 9 AAA instruction files, 333-AGI agent def, capability cascade, 5 plugins"
+  },
+  "model_routing": {
+    "declared_model": "zai-direct/glm-5.2",
+    "effective_model": "GLM-5.2 (Z.ai Coding Plan)",
+    "route_chain": [
+      "opencode",
+      "zai-direct",
+      "glm-5.2"
+    ],
+    "primary": {
+      "provider": "zai-direct",
+      "model": "glm-5.2",
+      "path": "direct"
+    },
+    "small_model": "opencode-go-zen/deepseek-v4-flash",
+    "fallback_models": [
+      "kimi-k3 (Go)",
+      "GLM-5.2 (Go)",
+      "mimo-v2.5-pro (Go)",
+      "deepseek-v4-flash (Go)",
+      "LiteLLM FED",
+      "qwen3.7-plus (Individual)"
+    ],
+    "provider_diversity": 16,
+    "vendor_collapse_risk": "MINIMAL — 16 providers, full cascade"
+  },
+  "federation_binding": {
+    "arif_init": "instruction-driven (9 AAA files loaded at boot)",
+    "session_binding": "via AAA/prompts/INIT.md + AAA/agents/opencode/SOUL.md",
+    "instruction_files": [
+      {
+        "path": "/root/AAA/prompts/INIT.md",
+        "role": "Trinity-33 ignition"
+      },
+      {
+        "path": "/root/AAA/agents/opencode/SOUL.md",
+        "role": "FI identity"
+      },
+      {
+        "path": "/root/AAA/agents/opencode/DOCTRINE.md",
+        "role": "operational doctrine"
+      },
+      {
+        "path": "/root/AAA/agents/opencode/DOMAIN.md",
+        "role": "domain knowledge"
+      },
+      {
+        "path": "/root/AAA/prompts/AAA-ZEN-ALIGNMENT.md",
+        "role": "Zen alignment"
+      },
+      {
+        "path": "/root/AAA/skills/OPENCODE_SKILL_PROFILE.json",
+        "role": "skill profile"
+      },
+      {
+        "path": "/root/AAA/registries/opencode_skills_alignment.yaml",
+        "role": "skill alignment"
+      },
+      {
+        "path": "/root/.config/opencode/rules/arifos-governance.md",
+        "role": "governance rules"
+      },
+      {
+        "path": "/root/AAA/governance/ZEN_EXECUTION_DOCTRINE.md",
+        "role": "execution doctrine"
+      }
+    ],
+    "total_instruction_files": 9,
+    "total_instruction_lines": 1000
+  },
+  "mcp_surface": {
+    "consumed": [
+      {
+        "organ": "arifos-kernel",
+        "port": 8088
+      },
+      {
+        "organ": "aforge",
+        "port": 7072
+      },
+      {
+        "organ": "geox",
+        "port": 8081
+      },
+      {
+        "organ": "wealth",
+        "port": 18082
+      },
+      {
+        "organ": "well",
+        "port": 18083
+      }
+    ],
+    "total_organs_wired": 5,
+    "skill_source": "plugin-based (not filesystem skills)",
+    "skill_mode": "plugins",
+    "plugins": [
+      "aaa-autonomy.ts",
+      "aaa-dispatch.ts",
+      "arifos-kernel-bridge.ts",
+      "arifos-turn-rsi.ts",
+      "arifos-judge-gate.ts",
+      "arifos-federation-manifest.ts"
+    ]
+  },
+  "authority": {
+    "permission_mode": "federation-config",
+    "real_gate": "arifOS F1-F13 (via instruction + plugin enforcement)",
+    "vendor_gate": "removed"
+  },
+  "capabilities": {
+    "streaming": true,
+    "tool_calling": true,
+    "mcp_native": true,
+    "file_read": true,
+    "file_write": true,
+    "shell_exec": true,
+    "subagent_spawn": true,
+    "multi_agent": true,
+    "worktree_isolation": true
+  },
+  "agents_defined": {
+    "333-AGI": {
+      "role": "primary architect + forge",
+      "model": "zai-direct/glm-5.2"
+    },
+    "555-ASI": {
+      "role": "memory + drift + telemetry",
+      "model": "litellm-federation/asi-555"
+    },
+    "888-APEX": {
+      "role": "constitutional circuit breaker",
+      "model": "opencode-go-zen/minimax-m3"
+    },
+    "DISPATCH": {
+      "role": "A2A cross-agent router",
+      "model": "opencode-go-zen/deepseek-v4-flash"
+    }
+  },
+  "unique_capabilities": [
+    "16-provider cascade (most diverse)",
+    "4 named agents (333/555/888/DISPATCH)",
+    "6 TypeScript plugins for federation governance",
+    "declared runtime of 333-AGI lane identity",
+    "capability cascade via FED Path B"
+  ],
+  "emergence_role": {
+    "emd_phase": "DECODER (primary execution fabric)",
+    "primary_role": "Canonical orchestrator, complex multi-repo work, provider failover",
+    "secondary_role": "Policy-bound execution, ADR generation, integration",
+    "codex_fed_alias": "codex.forge"
+  },
+  "identity_note": "OpenCode IS the 333-AGI substrate. The lane card (agent-cards/identity/333-AGI/agent-card.json) declares runtime:opencode. This card is the FI-level identity; the lane card is the role-level identity. They are complementary, not duplicate.",
+  "provider": {
+    "organization": "arifOS by Muhammad Arif bin Fazil",
+    "url": "https://arif-fazil.com"
+  },
+  "status": "active",
+  "verified_against": "2026-08-13T04:00:00+08:00",
+  "verification_method": "live probe (opencode --version, opencode.json, plugin list)",
+  "model": "GLM-5.2 (Z.ai Coding Plan)",
+  "codex_fed_alias": "codex.forge",
+  "architecture_layer": "CODEX",
+  "architecture_role": "Compiler Prime — primary forge",
+  "codex_lane": "codex.forge",
+  "cognitive_species": "compiler",
+  "species_rank": 1
+}
