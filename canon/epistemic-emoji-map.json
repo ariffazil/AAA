@@ -1,0 +1,134 @@
+{
+  "meta": {
+    "canonical": true,
+    "forged": "2026-08-12",
+    "ratified_by": "F13 SOVEREIGN (Muhammad Arif bin Fazil)",
+    "session": "SEAL-APEX-888-via-emoji-analysis",
+    "parent_docs": ["/root/AAA/canon/GODEL_EUREKAS.md", "/root/AAA/canon/CIV-21.md"],
+    "superposition_invariant": "Text is canonical. Emoji is render-only. If divergence occurs → text wins.",
+    "constitutional_rule": "Emoji = epistemic label, NEVER vibe/decoration.",
+    "discipline": "emoji = epistemic label, never decoration. Agent shall not sprinkle emoji without label meaning.",
+    "anti_pattern": "sprinkle emoji as vibe without epistemic label reference"
+  },
+  "F2_LABELS": {
+    "OBS": {
+      "emoji": "👁️",
+      "name": "Observation",
+      "rule": "Directly observed reality. Live probe, sensor reading, direct witness."
+    },
+    "DER": {
+      "emoji": "🔗",
+      "name": "Derived",
+      "rule": "Computed from observations. Entails chain of reasoning from OBS inputs."
+    },
+    "INT": {
+      "emoji": "🧭",
+      "name": "Interpretation",
+      "rule": "Reasoned judgment from evidence. Expert assessment, geological interpretation."
+    },
+    "SPEC": {
+      "emoji": "❓",
+      "name": "Speculation",
+      "rule": "Unverified, hypothetical. Explicitly low confidence. Do not bet on this."
+    }
+  },
+  "F2_BANDS": {
+    "CLAIM": {
+      "emoji": "📢",
+      "name": "Claim",
+      "rule": "Asserted, evidence pending. Requires verification before use."
+    },
+    "PLAUSIBLE": {
+      "emoji": "👍",
+      "name": "Plausible",
+      "rule": "Reasonable, unverified. Consistent but not confirmed."
+    },
+    "ESTIMATE": {
+      "emoji": "🎲",
+      "name": "Estimate",
+      "rule": "Numerical approximation with uncertainty bounds."
+    },
+    "UNKNOWN": {
+      "emoji": "❓",
+      "name": "Unknown",
+      "rule": "Genuinely unknown. This is an honest admission of ignorance."
+    }
+  },
+  "VERDICTS": {
+    "SEAL": {
+      "emoji": "✅",
+      "rule": "Proceed — constitutional. All gates passed. Action is authorized."
+    },
+    "HOLD": {
+      "emoji": "⏸️",
+      "rule": "Pause — need more evidence or human sovereign decision. Do not proceed."
+    },
+    "VOID": {
+      "emoji": "🚫",
+      "rule": "Blocked — constitutional violation. Irreversible rejection."
+    },
+    "SABAR": {
+      "emoji": "⏳",
+      "rule": "Wait — not urgent, revisit later. Do not escalate."
+    }
+  },
+  "EXECUTION": {
+    "EXE": {
+      "emoji": "⚒️",
+      "name": "Execution Receipt",
+      "rule": "Task completed. Terminal output per Hermes Output Contract."
+    },
+    "EXE_PARTIAL": {
+      "emoji": "🔨",
+      "name": "Execution Partial",
+      "rule": "Task in progress. Checkpoint receipt, not terminal."
+    }
+  },
+  "ENTROPY": {
+    "DS_OK": {
+      "emoji": "🟢",
+      "rule": "ΔS ≤ 0. Entropy stable or decreasing. System is healthy."
+    },
+    "DS_WARN": {
+      "emoji": "🟡",
+      "rule": "ΔS > 0.5. Entropy rising. Action needed before further mutation."
+    },
+    "DS_CRIT": {
+      "emoji": "🔴",
+      "rule": "ΔS > 0.8. Critical entropy. HOLD all mutation until resolved."
+    }
+  },
+  "APEX": {
+    "G_PASS": {
+      "emoji": "🏛️",
+      "rule": "G ≥ 0.80. F8 GENIUS gate passed. Action is sound."
+    },
+    "G_FAIL": {
+      "emoji": "🏚️",
+      "rule": "G < 0.80. F8 GENIUS gate failed. Action needs redesign."
+    }
+  },
+  "CIV21": {
+    "E1":  {"emoji": "🔒", "name": "Gödel Lock"},
+    "E2":  {"emoji": "🪞", "name": "No Self-Certification"},
+    "E3":  {"emoji": "🔬", "name": "Independence Spectrum"},
+    "E4":  {"emoji": "🌍", "name": "Reality is Final Auditor"},
+    "E5":  {"emoji": "⚖️", "name": "Audit ≠ Judgment"},
+    "E6":  {"emoji": "🧩", "name": "Functions Before Entities"},
+    "E7":  {"emoji": "⛓️", "name": "No Infinite Auditors"},
+    "E8":  {"emoji": "❔", "name": "Verdict + Reflection"},
+    "E9":  {"emoji": "💡", "name": "Find Better Questions"},
+    "E10": {"emoji": "📊", "name": "Confidence is Governed Uncertainty"},
+    "E11": {"emoji": "🔇", "name": "Collapse is Signal Suppression"},
+    "E12": {"emoji": "👁️‍🗨️", "name": "Auditors Force Observation"},
+    "E13": {"emoji": "💎", "name": "Uncaptured Observation is Scarce"},
+    "E14": {"emoji": "👤", "name": "Witnesses are Constitutional"},
+    "E15": {"emoji": "📖", "name": "Narrative is Not The Enemy"},
+    "E16": {"emoji": "🪟", "name": "Reflection is Anti-Capture"},
+    "E17": {"emoji": "🧠", "name": "Intelligence is Observation Preservation"},
+    "E18": {"emoji": "🕶️", "name": "Every Compression Creates a Blind Spot"},
+    "E19": {"emoji": "🗼", "name": "The Observer Must Have an Observer"},
+    "E20": {"emoji": "🔄", "name": "Truth Has a Metabolism"},
+    "E21": {"emoji": "🏛️", "name": "CIV-21 Invariant"}
+  }
+}
