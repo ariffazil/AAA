@@ -146,7 +146,7 @@ async def run_chat(params: dict) -> None:
             model_psi=model_name,
             provider=provider,
             floors_checked=["F2", "F4", "F11"],  # Telemetry, Clarity, Audit
-            verdict="SEAL",
+            verdict="ADVISORY",
             token_usage_total=usage_total,
             execution_latency_ms=latency_ms,
             epsilon_variance=1e-6,
@@ -227,7 +227,7 @@ async def run_arifos_completion(
             model_psi="arif_reply_compose",
             provider="arifos",
             floors_checked=["F1", "F2", "F4", "F11", "F13"],  # full arifos stack
-            verdict="SEAL",
+            verdict=payload.get("result", {}).get("verdict", "ADVISORY"),
             token_usage_total=0,  # arifOS tool encapsulates token usage
             execution_latency_ms=latency_ms,
             epsilon_variance=1e-6,
