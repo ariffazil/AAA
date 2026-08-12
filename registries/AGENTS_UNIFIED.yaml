@@ -1,4 +1,4 @@
-version: 2.0.0
+version: 2026.08.12T02.55Z-qwen-code-incarnated
 forged: '2026-07-31'
 forged_by: 333-AGI (Δ MIND) — F13 SOVEREIGN directive
 supersedes:
@@ -19,18 +19,18 @@ identity_lanes:
   - 888-APEX
   species: Δ-MIND
   expression_weights:
-    "000": 0.40
-    "111": 0.30
-    "222": 0.70
-    "333": 0.90
-    "444": 0.50
-    "555": 0.50
-    "666": 0.20
-    "777": 0.60
-    "888": 0.00
-    "999": 0.00
-  description: Δ Mind of the Trinity. Reasons, plans, builds, forges, synthesizes.
-    Primary conversational surface. Orchestrates 555-ASI and 888-APEX.
+    '000': 0.4
+    '111': 0.3
+    '222': 0.7
+    '333': 0.9
+    '444': 0.5
+    '555': 0.5
+    '666': 0.2
+    '777': 0.6
+    '888': 0.0
+    '999': 0.0
+  description: Δ Mind of the Trinity. Reasons, plans, builds, forges, synthesizes. Primary conversational surface. Orchestrates
+    555-ASI and 888-APEX.
 - id: 555-ASI
   name: 555-ASI (Ω CORE)
   role: Memory, telemetry, drift, research
@@ -40,18 +40,17 @@ identity_lanes:
   kernel_bound: true
   species: Ω-CORE
   expression_weights:
-    "000": 0.60
-    "111": 0.85
-    "222": 0.30
-    "333": 0.40
-    "444": 0.85
-    "555": 0.90
-    "666": 0.80
-    "777": 0.10
-    "888": 0.00
-    "999": 0.00
-  description: Ω Core of the Trinity. Memory steward, vector mapping, probe execution,
-    drift detection, research synthesis.
+    '000': 0.6
+    '111': 0.85
+    '222': 0.3
+    '333': 0.4
+    '444': 0.85
+    '555': 0.9
+    '666': 0.8
+    '777': 0.1
+    '888': 0.0
+    '999': 0.0
+  description: Ω Core of the Trinity. Memory steward, vector mapping, probe execution, drift detection, research synthesis.
 - id: 888-APEX
   name: 888-APEX (Ψ SOUL)
   role: Constitutional verdict, SEAL/HOLD/VOID
@@ -62,9 +61,8 @@ identity_lanes:
   species: null
   expression_weights: null
   constitutional_role: JUDGE
-  note: "8≠9 invariant — AUTH is not a species. 888 is a chair, not an agent."
-  description: Ψ Soul of the Trinity. Constitutional verdict engine. Gated irreversible
-    mutations. Read-only, never mutates.
+  note: 8≠9 invariant — AUTH is not a species. 888 is a chair, not an agent.
+  description: Ψ Soul of the Trinity. Constitutional verdict engine. Gated irreversible mutations. Read-only, never mutates.
 forge_instruments:
 - fi_slot: FI-001
   id: opencode
@@ -75,8 +73,8 @@ forge_instruments:
   status: active
   canonical_card: /root/AAA/agents/opencode/agent-card.json
   bound_to_identity: 333-AGI
-  description: Primary forge instrument. Governed coding forge bound to 333-AGI (Δ
-    MIND). DeepSeek V4 Pro direct. 200+ MCP tools.
+  description: Primary forge instrument. Governed coding forge bound to 333-AGI (Δ MIND). DeepSeek V4 Pro direct. 200+ MCP
+    tools.
   species_proxy: opencode-zen
 - fi_slot: FI-002
   id: claude-code
@@ -85,19 +83,22 @@ forge_instruments:
   model: deepseek/deepseek-v4-pro
   status: active
   canonical_card: /root/AAA/agents/_external/claude-code/agent-card.json
-  description: 'Anthropic Claude Code harness. Sovereign-delegate authority. OAuth:
-    arifbfazil@gmail.com. Sub-agents disabled.'
+  description: 'Anthropic Claude Code harness. Sovereign-delegate authority. OAuth: arifbfazil@gmail.com. Sub-agents disabled.'
   species_proxy: opencode-zen
+  bound_to_identity: 333-AGI
+  _identity_binding_note: auto-bound to 333-AGI per F11 auditability (2026-08-12T02:45Z)
 - fi_slot: FI-003
   id: qwen-code
   name: Qwen Code CLI
-  binary: /usr/bin/qwen
+  binary: '/root/.local/bin/qwen  # also symlinked to /usr/bin/qwen'
   model: deepseek/deepseek-v4-pro
   status: active
   canonical_card: /root/AAA/agents/_external/qwen-code/agent-card.json
-  description: Alibaba Qwen Code harness. Zero MCP connections. Heavily restricted
-    Bash. Low risk.
+  description: Alibaba Qwen Code harness. Zero MCP connections. Heavily restricted Bash. Low risk.
   species_proxy: opencode-zen
+  bound_to_identity: 333-AGI
+  _identity_binding_note: auto-bound to 333-AGI per F11 auditability (2026-08-12T02:45Z)
+  _path_correction: 2026-08-12T02:55Z — was /usr/bin/qwen, actual lives at /root/.local/bin/qwen
 - fi_slot: FI-004
   id: antigravity
   name: Antigravity CLI
@@ -107,6 +108,8 @@ forge_instruments:
   canonical_card: /root/AAA/agents/_external/agy/agent-card.json
   description: Google Antigravity CLI. Gemini 3.5 Flash. 5 federation organs + context7.
   species_proxy: opencode-zen
+  bound_to_identity: 333-AGI
+  _identity_binding_note: auto-bound to 333-AGI per F11 auditability (2026-08-12T02:45Z)
 - fi_slot: FI-005
   id: codex
   name: Codex CLI
@@ -114,9 +117,10 @@ forge_instruments:
   model: openai/gpt-5.6-sol
   status: active
   canonical_card: /root/AAA/agents/_external/codex/agent-card.json
-  description: OpenAI Codex CLI. GPT-5.6 Sol (reasoning=medium). Landlock sandbox.
-    8 MCP servers.
+  description: OpenAI Codex CLI. GPT-5.6 Sol (reasoning=medium). Landlock sandbox. 8 MCP servers.
   species_proxy: opencode-zen
+  bound_to_identity: 333-AGI
+  _identity_binding_note: auto-bound to 333-AGI per F11 auditability (2026-08-12T02:45Z)
 - fi_slot: FI-006
   id: copilot
   name: Copilot CLI
@@ -124,9 +128,10 @@ forge_instruments:
   model: deepseek/deepseek-v4-pro
   status: active
   canonical_card: /root/AAA/agents/_external/copilot/agent-card.json
-  description: GitHub Copilot CLI. DeepSeek V4 Pro via Anthropic compat API. 11 MCP
-    servers. Fleet subagent mode.
+  description: GitHub Copilot CLI. DeepSeek V4 Pro via Anthropic compat API. 11 MCP servers. Fleet subagent mode.
   species_proxy: opencode-zen
+  bound_to_identity: 333-AGI
+  _identity_binding_note: auto-bound to 333-AGI per F11 auditability (2026-08-12T02:45Z)
 - fi_slot: FI-007
   id: grok-build
   name: Grok Build
@@ -134,9 +139,10 @@ forge_instruments:
   model: xai/grok-build
   status: active
   canonical_card: /root/AAA/agents/_external/grok-build/agent-card.json
-  description: xAI Grok Build. REPLACED dead FI-007 Aider slot (2026-07-18). Always-approve.
-    No MCP surface yet.
+  description: xAI Grok Build. REPLACED dead FI-007 Aider slot (2026-07-18). Always-approve. No MCP surface yet.
   species_proxy: opencode-zen
+  bound_to_identity: 333-AGI
+  _identity_binding_note: auto-bound to 333-AGI per F11 auditability (2026-08-12T02:45Z)
 - fi_slot: FI-008
   id: kimi-code
   name: Kimi Code CLI
@@ -144,9 +150,10 @@ forge_instruments:
   model: kimi/k3
   status: active
   canonical_card: /root/AAA/agents/kimi-code/agent-card.json
-  description: Moonshot Kimi Code CLI. K3 model (2.8T MoE, 1M ctx, vision, thinking).
-    8 MCP servers. A-FORGE stdio ingress.
+  description: Moonshot Kimi Code CLI. K3 model (2.8T MoE, 1M ctx, vision, thinking). 8 MCP servers. A-FORGE stdio ingress.
   species_proxy: opencode-zen
+  bound_to_identity: 555-ASI
+  _identity_binding_note: auto-bound to 555-ASI per F11 auditability (2026-08-12T02:45Z)
 - fi_slot: FI-009
   id: null
   name: '[VACANT]'
@@ -154,8 +161,7 @@ forge_instruments:
   status: vacant
   canonical_card: null
   species_proxy: null
-  description: FI-009 is VACANT. A-AUDIT was absorbed into 888-APEX. Reserved for
-    future forge instrument.
+  description: FI-009 is VACANT. A-AUDIT was absorbed into 888-APEX. Reserved for future forge instrument.
 extensions:
 - id: hermes-asi
   name: Hermes ASI
@@ -164,8 +170,7 @@ extensions:
   status: active
   canonical_card: /root/AAA/agents/hermes-asi/agent-card.json
   bound_to_identity: 555-ASI
-  description: Telegram conversational agent. Bahasa Malaysia + English. Bound to
-    555-ASI (Ω CORE). Reads FQ, never executes.
+  description: Telegram conversational agent. Bahasa Malaysia + English. Bound to 555-ASI (Ω CORE). Reads FQ, never executes.
   species_proxy: hermes-zen
 - id: main
   name: arifOS Telegram Bot
@@ -308,7 +313,6 @@ fi_slot_summary:
     id: null
     name: '[VACANT]'
     identity: null
-
 prompt_loop:
   enabled: false
   mode: observe_only
@@ -320,19 +324,18 @@ prompt_loop:
   require_zen_gate: true
   require_receipts: true
   allowed_pairs:
-    - from: hermes
-      to: opencode
-      via: openclaw
-    - from: opencode
-      to: hermes
-      via: openclaw
+  - from: hermes
+    to: opencode
+    via: openclaw
+  - from: opencode
+    to: hermes
+    via: openclaw
   halt_conditions:
-    - missing_sct
-    - missing_receipt_sink
-    - delta_s_lte_zero
-    - novelty_below_epsilon
-    - max_turns_exceeded
-    - repeated_error
-    - f13_override
-    - mutation_requested_without_seal
-
+  - missing_sct
+  - missing_receipt_sink
+  - delta_s_lte_zero
+  - novelty_below_epsilon
+  - max_turns_exceeded
+  - repeated_error
+  - f13_override
+  - mutation_requested_without_seal

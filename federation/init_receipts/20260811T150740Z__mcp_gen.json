@@ -1,0 +1,20 @@
+{
+  "catalogued_enabled_sealed": [
+    [
+      "VAULT999",
+      "witness"
+    ]
+  ],
+  "emitted": [],
+  "emitted_count": 0,
+  "enabled_no_launcher": [
+    "VAULT999"
+  ],
+  "enabled_not_sealed": [],
+  "launcher_map_path": "/tmp/tmpxl30kp62/map.yaml",
+  "mcp_json_backup": null,
+  "mcp_json_path": "/tmp/tmpxl30kp62/mcp.json",
+  "registry_path": "/tmp/tmpxl30kp62/reg.yaml",
+  "ts": "2026-08-11T15:07:40Z",
+  "verdict": "REGENERATED"
+}
