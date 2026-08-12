@@ -66,9 +66,17 @@ operators:
   opencode:
     fi: FI-001
     layer: harness
-  hermes-asi:
+  i-arif:
     fi: FI-000
+    layer: identity
+    bound_to: F13-SOVEREIGN
+    multimodal: [vision, audio, image, video]
+    promoted: 2026-08-12
+    status: ACTIVE
+  hermes-asi:
+    fi: null        # FI-000 transferred to i-arif on 2026-08-12
     layer: binding
+    bound_to: i-arif
   openclaw:
     fi: null
     layer: binding
