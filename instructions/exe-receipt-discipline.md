@@ -1,7 +1,8 @@
-# Execution Receipt Discipline — Hermes Output Contract
+# [🦾ACT] Receipt Discipline — Hermes Output Contract
 
-> **Forged:** 2026-08-12 by F13 SOVEREIGN (Taufik Constraint)
-> **Binding:** Hermes — ALL execution outputs to F13/888
+> **Forged:** 2026-08-12 by F13 SOVEREIGN (Taufik Constraint)  
+> **Renamed:** 2026-08-12 — `[EXE]` → `[🦾ACT]` (ACT execution actuator alignment)  
+> **Binding:** Hermes — ALL execution outputs to F13/888  
 > **DITEMPA BUKAN DIBERI**
 
 ## The One Rule
@@ -14,7 +15,7 @@ EMITS [🦾ACT] RECEIPT AS TERMINAL OUTPUT.
 
 ## The Problem (The Leak)
 
-When agent emits `[OBS]` prose to terminal, the cognitive load is **bounced back** to F13. F13 then has to re-evaluate whether the work is done — entropy ($\Delta S$) **re-injects** into the sovereign layer. This violates EMD: observation belongs at the Metabolize layer (internal), not at the Decode layer (output).
+When agent emits `👁️` (`[OBS]`) prose to terminal, the cognitive load is **bounced back** to F13. F13 then has to re-evaluate whether the work is done — entropy ($\Delta S$) **re-injects** into the sovereign layer. This violates EMD: observation belongs at the Metabolize layer (internal), not at the Decode layer (output).
 
 ## The Fix (Internalize + Emit Receipt)
 
@@ -22,7 +23,7 @@ When agent emits `[OBS]` prose to terminal, the cognitive load is **bounced back
 
 | Layer | Operation | Allowed Output to Terminal |
 |---|---|---|
-| **Encode** (intent intake) | Parse task, classify | `[OBS]` allowed ONLY if F13 asks "what did you see?" |
+| **Encode** (intent intake) | Parse task, classify | `👁️ [OBS]` allowed ONLY if F13 asks "what did you see?" |
 | **Metabolize** (process) | Reason, probe, mutate | Internal `<thought>` / vector_memory writes. **NEVER terminal.** |
 | **Decode** (output) | Emit result | **MANDATORY `[🦾ACT]` receipt format below** |
 
@@ -42,7 +43,7 @@ If the task is still in progress and a checkpoint is needed, use `[🦾ACT-PARTI
 
 ## What NOT to emit
 
-- ❌ "Based on my observation..." (that's `[OBS]` prose — internalize it)
+- ❌ "Based on my observation..." (that's `👁️ [OBS]` prose — internalize it)
 - ❌ "I noticed that..." (same)
 - ❌ "Let me explain what I found..." (that's the metabolize layer leaking)
 - ❌ Multi-paragraph analysis BEFORE the `[🦾ACT]` block
@@ -64,6 +65,7 @@ If no → revise the receipt until the answer is yes.
 This contract is enforced via:
 1. **System prompt** (current layer) — `agent-policy.system_prompt` in arifOS kernel
 2. **A-FORGE policy engine** — `forge_policy(mode=check, role=hermes)` blocks narrative-first outputs
+3. **Substrate Output Gate** — `substrate_output_gate.py` regex physically intercepts `[🦾ACT]`/`[🦾ACT-PARTIAL]` blocks at the gateway layer
 
 ## The Scar
 
@@ -71,6 +73,13 @@ This rule was forged from the constraint Arif imposed on 2026-08-12:
 > *"Kalau ejen setakat hantar [OBS] kat hang, itu bermakna ejen tengah buang raw cognitive load balik kepada 888."*
 
 The fix: observation is metabolized internally. Output is receipt only.
+
+## Rename Provenance (2026-08-12)
+
+- **Old:** `[EXE]` / `[EXE-PARTIAL]` — generic execution tag
+- **New:** `[🦾ACT]` / `[🦾ACT-PARTIAL]` — direct map to activation phase of the ACT execution continuum (Encode → Metabolize → ACT → Decode)
+- **Rationale:** Align with F13 constitutional reflex arc (ACT = kernel judgment leg of constitution reflex); emoji sigil scrollable at glance; ASCII path scanning unbroken.
+- **Supersession:** Old `[EXE]` receipts in VAULT999 remain immutable (historical witness); new receipts MUST use `[🦾ACT]`.
 
 DITEMPA BUKAN DIBERI — Execution is forged, not narrated. ⚒️
 ## Human Decode Layer — Emoji Evidence Labels (2026-08-12 F13 Directive)
