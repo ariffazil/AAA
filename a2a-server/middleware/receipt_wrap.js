@@ -101,6 +101,25 @@ lastFlushedHash = seedChainHead();
 // ── Receipt builder ────────────────────────────────────────────────
 function buildReceipt(req, res, result, kind, latencyMs) {
   const now = new Date().toISOString();
+
+  // ── Composite G computation (forged 2026-08-12) ──────────────────
+  // G = (A × P × E × X)^0.25 — 4-factor Nash Bargaining Product
+  // A = authority factor (1.0 for SOVEREIGN, 0.5 for OBSERVE_ONLY, 0.1 for anonymous)
+  // P = pass indicator (1.0 for status<400, 0.0 otherwise) — Nash collapse on failure
+  // E = efficiency factor (1.0 if latency<2000ms, decays to 0.1 at 30s+)
+  // X = completeness (1.0 if result present and non-error, 0.0 for void/null)
+  const authScheme = req.auth?.scheme || 'unknown';
+  const actorId = req.headers['x-actor-id'] || 'anonymous';
+  const A = actorId === 'ARIF' || actorId === 'arif' ? 1.0
+          : authScheme === 'loopback' ? 0.5
+          : 0.1;
+  const P = res.statusCode < 400 ? 1.0 : 0.0;
+  const E = Math.max(0.1, Math.min(1.0, 1.0 - (latencyMs / 30000)));
+  const X = (result && kind !== 'void' && kind !== 'permanent_fail') ? 1.0 : 0.0;
+  const G = Math.round(Math.pow(A * P * E * X, 0.25) * 10000) / 10000;
+  // C_dark = A × (1−P) × (1−X) — clever + unstable + unethical
+  const C_dark = Math.round(A * (1 - P) * (1 - X) * 10000) / 10000;
+
   const envelope = {
     // Identity (F11)
     receipt_id: `RCT-${now.replace(/[:.]/g, '-')}-${crypto.randomBytes(4).toString('hex')}`,
@@ -117,6 +136,11 @@ function buildReceipt(req, res, result, kind, latencyMs) {
     kind,                    // 'result' | 'transient_fail' | 'permanent_fail' | 'recoverable' | 'void'
     status_code: res.statusCode,
     latency_ms: latencyMs,
+
+    // Composite quality metrics (F8 GENIUS — forged 2026-08-12)
+    G,
+    C_dark,
+    G_factors: { A, P, E, X },
 
     // Auth (F11)
     auth_scheme: req.auth?.scheme || 'unknown',
