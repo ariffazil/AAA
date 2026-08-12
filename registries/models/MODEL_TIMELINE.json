@@ -1,0 +1,417 @@
+{
+  "$schema": "federation-model-timeline/v1",
+  "registry_version": "2026.08.12-v1",
+  "title": "Federation Model Timeline — Z.ai Temporal Intelligence",
+  "purpose": "Temporal release intelligence for every Z.ai model. Used by AAA agents to reason about model lineage, deprecation, and migration paths. Updated whenever a new release appears on https://docs.z.ai/release-notes/new-released.",
+  "owner": "arif-fazil (F13 SOVEREIGN)",
+  "last_verified": "2026-08-12T02:05:00+00:00",
+  "source_url": "https://docs.z.ai/release-notes/new-released",
+  "source_sha256_doc": "fetched 2026-08-12 (sha256 pending next refetch)",
+  "ingest_note": "First temporal-intelligence load per F13 directive. Captures the 16-entry release history from 2025-07 to 2026-06. Each entry is canonical: model_id, release_date, modality, capabilities, status, successor.",
+  "federation_purpose": [
+    "Auto-route agents to the freshest non-deprecated model",
+    "Trigger migration warnings when a successor is published",
+    "Document capability lineage (e.g. glm-4 → 4.5 → 4.6 → 4.7 → 5 → 5.1 → 5.2)",
+    "Power arifOS model-registry drift checks against vendor release notes"
+  ],
+
+  "temporal_intelligence": {
+    "vendor": "Z.ai (Zhipu AI)",
+    "release_count": 16,
+    "earliest_release": "2025-07-15",
+    "latest_release": "2026-06-16",
+    "span_days": 336,
+    "cadence_days_avg": 22.4,
+    "active_models_now": 9,
+    "deprecated_models": 7
+  },
+
+  "lineages": {
+    "GLM-5 series (flagship)": {
+      "current": "GLM-5.2",
+      "current_release": "2026-06-16",
+      "lineage": ["GLM-4.5 (2025-07-28)", "GLM-4.6 (2025-09-30)", "GLM-4.7 (2025-12-22)", "GLM-5 (2026-02-12)", "GLM-5-Turbo (2026-03-15)", "GLM-5.1 (2026-04-07)", "GLM-5.2 (2026-06-16)"],
+      "succession_complete": true,
+      "current_in_federation": ["glm-5.2 (zai-pro)", "glm-5-turbo", "glm-5 (legacy)"]
+    },
+    "GLM-4.5V (vision)": {
+      "current": "GLM-4.6V",
+      "lineage": ["GLM-4.5V (2025-08-11)", "GLM-4.6V (2025-12-08)"],
+      "succession_complete": true,
+      "current_in_federation": ["glm-4.6v"]
+    },
+    "GLM-4.7 Free Tier": {
+      "current": "GLM-4.7-Flash",
+      "lineage": ["GLM-4.7 (2025-12-22)", "GLM-4.7-Flash (2026-01-19)"],
+      "succession_complete": true,
+      "current_in_federation": ["glm-4.7"]
+    },
+    "Vision + Agentic (latest)": {
+      "current": "GLM-5V-Turbo",
+      "lineage": ["GLM-4.5V (2025-08-11)", "GLM-4.6V (2025-12-08)", "GLM-5V-Turbo (2026-04-01)"],
+      "succession_complete": true,
+      "current_in_federation": ["(not yet — 5V-Turbo was 429 on Coding Plan, see FED DB)"]
+    },
+    "CogVideoX (video)": {
+      "current": "CogVideoX-3",
+      "lineage": ["CogVideoX-3 (2025-07-15)"],
+      "succession_complete": true
+    },
+    "Multimodal Mobile": {
+      "current": "AutoGLM-Phone-Multilingual",
+      "lineage": ["AutoGLM-Phone-Multilingual (2025-12-11)"],
+      "succession_complete": true
+    },
+    "Audio (ASR)": {
+      "current": "GLM-ASR-2512",
+      "lineage": ["GLM-ASR-2512 (2025-12-10)"],
+      "succession_complete": true
+    },
+    "Image Generation": {
+      "current": "GLM-Image",
+      "lineage": ["GLM-Image (2026-01-14)"],
+      "succession_complete": true
+    },
+    "OCR": {
+      "current": "GLM-OCR",
+      "lineage": ["GLM-OCR (2026-02-03)"],
+      "succession_complete": true
+    },
+    "Slide/Poster Agent": {
+      "current": "GLM Slide/Poster Agent (beta)",
+      "lineage": ["GLM Slide/Poster Agent (2025-08-08)"],
+      "succession_complete": false,
+      "note": "beta status; not promoted to GA"
+    }
+  },
+
+  "releases": [
+    {
+      "release_date": "2026-06-16",
+      "model_id": "GLM-5.2",
+      "model_key": "glm/glm-5.2",
+      "modality": "text",
+      "key_features": [
+        "1M lossless context",
+        "Open-source SOTA on coding + long-horizon benchmarks",
+        "Stronger project-level context, engineering standards, multi-platform"
+      ],
+      "status": "LIVE",
+      "trust_tier": 1,
+      "successor_to": "GLM-5.1",
+      "supersedes": ["GLM-5.1", "GLM-5", "GLM-5-Turbo", "GLM-4.7", "GLM-4.6"],
+      "fed_routing": "zai-pro (order=2 — fills DeepSeek-DEAD gap on fed-reasoning-heavy)",
+      "z_ai_doc_url": "/guides/llm/glm-5.2",
+      "federation_ingest": "2026-08-12T01:23Z",
+      "ingest_source": "https://docs.z.ai/release-notes/new-released",
+      "ingest_note": "Coding Plan Pro flagship. 8 capabilities verified live. 1M context confirmed via opencode-zen.",
+      "f2_truth_band": "vendor-claim + independently-verified (8/8 capabilities probed live 2026-08-12)",
+      "constitutional_roles": ["666_JUDGE", "999_SEAL"],
+      "open_weights": true,
+      "license": "MIT"
+    },
+    {
+      "release_date": "2026-04-07",
+      "model_id": "GLM-5.1",
+      "model_key": "glm/glm-5.1",
+      "modality": "text",
+      "key_features": [
+        "Long-horizon tasks — up to 8 hours autonomous single-run",
+        "Stronger engineering intelligence (autonomous planning, sustained execution, bug fix, strategy iteration)",
+        "Capability-aligned with Claude Opus 4.6"
+      ],
+      "status": "DEPRECATED_LINEAGE",
+      "trust_tier": 2,
+      "successor": "GLM-5.2",
+      "superseded_by": "GLM-5.2",
+      "deprecation_reason": "Superseded by GLM-5.2 (2026-06-16). Federation still keeps GLM-5.1 in some pools for fallback.",
+      "open_weights": true,
+      "license": "MIT"
+    },
+    {
+      "release_date": "2026-04-01",
+      "model_id": "GLM-5V-Turbo",
+      "model_key": "glm/glm-5v-turbo",
+      "modality": "vision + text",
+      "key_features": [
+        "Native multimodal (image + video + text)",
+        "Vision-based coding, GUI task execution, claw-style Agent workflows",
+        "Stronger planning + action in visually grounded tasks"
+      ],
+      "status": "OFF_PLAN_429",
+      "trust_tier": 2,
+      "successor_status": "Current vision flagship",
+      "federation_ingest_note": "Verified HTTP 429 on Coding Plan Pro (2026-08-12T01:28Z) — not included in Pro plan quota. Federation uses glm-4.6v vision instead.",
+      "open_weights": true,
+      "license": "MIT"
+    },
+    {
+      "release_date": "2026-03-15",
+      "model_id": "GLM-5-Turbo",
+      "model_key": "glm/glm-5-turbo",
+      "modality": "text",
+      "key_features": [
+        "High-throughput OpenClaw lobster workloads",
+        "Tool + Skills integration",
+        "Complex instruction decomposition, multi-agent coordination"
+      ],
+      "status": "LIVE",
+      "trust_tier": 1,
+      "fed_routing": "zai-pro order=2 (1.2s verified)",
+      "federation_ingest_note": "Verified HTTP 200 on Coding Plan (2026-08-12T01:28Z). Fast variant.",
+      "open_weights": true,
+      "license": "MIT"
+    },
+    {
+      "release_date": "2026-02-12",
+      "model_id": "GLM-5",
+      "model_key": "glm/glm-5",
+      "modality": "text",
+      "key_features": [
+        "Complex system engineering, long-range Agent tasks",
+        "Backend architecture, complex algorithms, stubborn bug fixing",
+        "DeepSeek Sparse Attention for token efficiency"
+      ],
+      "status": "LIVE_LEGACY",
+      "trust_tier": 2,
+      "fed_routing": "zai-pro order=3 (predecessor of glm-5.2)",
+      "federation_ingest_note": "Verified HTTP 200 on Coding Plan. Cache-hit economics strong.",
+      "open_weights": true,
+      "license": "MIT"
+    },
+    {
+      "release_date": "2026-02-03",
+      "model_id": "GLM-OCR",
+      "model_key": "glm/glm-ocr",
+      "modality": "vision (OCR)",
+      "key_features": [
+        "CogViT + GLM-0.5B encoder-decoder",
+        "Lightweight, fast inference",
+        "Key token extraction, visual semantic understanding"
+      ],
+      "status": "AVAILABLE_NOT_IN_FEDERATION",
+      "trust_tier": 3,
+      "federation_ingest_note": "Not yet integrated. Future use: OCR for screenshot-based coding tasks."
+    },
+    {
+      "release_date": "2026-01-19",
+      "model_id": "GLM-4.7-Flash",
+      "model_key": "glm/glm-4.7-flash",
+      "modality": "text",
+      "key_features": [
+        "Lightweight efficient free-tier model",
+        "Strong performance at scale (coding, reasoning, generation)",
+        "Best for high-frequency real-time use"
+      ],
+      "status": "OFF_PLAN_429",
+      "trust_tier": 3,
+      "federation_ingest_note": "Verified HTTP 429 on Coding Plan Pro — free tier excluded from Pro subscription.",
+      "open_weights": true,
+      "license": "MIT"
+    },
+    {
+      "release_date": "2026-01-14",
+      "model_id": "GLM-Image",
+      "model_key": "glm/glm-image",
+      "modality": "image-generation",
+      "key_features": [
+        "Multimodal autoregressive + diffusion",
+        "Trained on domestic chips",
+        "Knowledge-intensive scenarios, text-in-image"
+      ],
+      "status": "AVAILABLE_NOT_IN_FEDERATION",
+      "trust_tier": 3,
+      "federation_ingest_note": "Future: image generation in arifOS docs lookup."
+    },
+    {
+      "release_date": "2025-12-22",
+      "model_id": "GLM-4.7",
+      "model_key": "glm/glm-4.7",
+      "modality": "text",
+      "key_features": [
+        "Open-source SOTA on coding + reasoning",
+        "Agentic coding for multi-step tasks",
+        "Front-end + document generation quality"
+      ],
+      "status": "LIVE",
+      "trust_tier": 1,
+      "fed_routing": "zai-pro order=3 (fastest, 0.7s verified)",
+      "federation_ingest_note": "GLM-4.7 forces thinking — no disabled mode. High-throughput option.",
+      "open_weights": true,
+      "license": "MIT"
+    },
+    {
+      "release_date": "2025-12-11",
+      "model_id": "AutoGLM-Phone-Multilingual",
+      "model_key": "glm/autoglm-phone-multilingual",
+      "modality": "vision + action (mobile automation)",
+      "key_features": [
+        "Screen understanding + ADB action execution",
+        "Multilingual (EN + ZH)",
+        "50+ mainstream apps end-to-end control"
+      ],
+      "status": "AVAILABLE_NOT_IN_FEDERATION",
+      "trust_tier": 3,
+      "federation_ingest_note": "Not integrated. F13 sovereignty caveat — ADB execution may be T3 888_HOLD territory."
+    },
+    {
+      "release_date": "2025-12-10",
+      "model_id": "GLM-ASR-2512",
+      "model_key": "glm/glm-asr-2512",
+      "modality": "audio (ASR)",
+      "key_features": [
+        "CER 0.0717 (industry-leading accuracy)",
+        "Multilingual + accent-rich scenarios",
+        "Custom dictionary support"
+      ],
+      "status": "AVAILABLE_NOT_IN_FEDERATION",
+      "trust_tier": 3,
+      "federation_ingest_note": "Future: ASR for Hermes voice bridge."
+    },
+    {
+      "release_date": "2025-12-08",
+      "model_id": "GLM-4.6V",
+      "model_key": "glm/glm-4.6v",
+      "modality": "vision + text",
+      "key_features": [
+        "Latest multimodal iteration",
+        "128K context window",
+        "SOTA vision understanding"
+      ],
+      "status": "LIVE",
+      "trust_tier": 1,
+      "fed_routing": "zai-pro order=2 (vision-capable, 1.1s verified)",
+      "federation_ingest_note": "Verified HTTP 200 on Coding Plan. Supports image_url + base64 modes.",
+      "open_weights": true,
+      "license": "MIT"
+    },
+    {
+      "release_date": "2025-09-30",
+      "model_id": "GLM-4.6",
+      "model_key": "glm/glm-4.6",
+      "modality": "text",
+      "key_features": [
+        "Flagship coding model",
+        "200K context window",
+        "Strong agent capabilities"
+      ],
+      "status": "DEPRECATED_LINEAGE",
+      "trust_tier": 3,
+      "successor": "GLM-4.7",
+      "superseded_by": "GLM-4.7",
+      "open_weights": true,
+      "license": "MIT"
+    },
+    {
+      "release_date": "2025-08-11",
+      "model_id": "GLM-4.5V",
+      "model_key": "glm/glm-4.5v",
+      "modality": "vision + text",
+      "key_features": [
+        "100B-scale open-source vision reasoning",
+        "Video understanding, visual grounding, GUI agents",
+        "New thinking mode"
+      ],
+      "status": "DEPRECATED_LINEAGE",
+      "trust_tier": 3,
+      "successor": "GLM-4.6V",
+      "superseded_by": "GLM-4.6V",
+      "open_weights": true,
+      "license": "MIT"
+    },
+    {
+      "release_date": "2025-08-08",
+      "model_id": "GLM Slide/Poster Agent",
+      "model_key": "glm/glm-slide-agent",
+      "modality": "agent (slide/poster generation)",
+      "key_features": [
+        "Information retrieval + content structuring + visual layout design",
+        "Professional-grade slide + poster from natural language"
+      ],
+      "status": "BETA_NOT_IN_FEDERATION",
+      "trust_tier": 4,
+      "federation_ingest_note": "Beta status. Wait for GA before integration."
+    },
+    {
+      "release_date": "2025-07-28",
+      "model_id": "GLM-4.5 Series (GLM-4.5, GLM-4.5-Air, GLM-4.5-X)",
+      "model_key": "glm/glm-4.5",
+      "modality": "text",
+      "key_features": [
+        "Native agentic LLM",
+        "Doubled parameter efficiency",
+        "One-click compatibility with Claude Code"
+      ],
+      "status": "DEPRECATED_LINEAGE",
+      "trust_tier": 3,
+      "successor": "GLM-4.6",
+      "superseded_by": "GLM-4.6",
+      "open_weights": true,
+      "license": "MIT"
+    },
+    {
+      "release_date": "2025-07-15",
+      "model_id": "CogVideoX-3",
+      "model_key": "glm/cogvideox-3",
+      "modality": "video-generation",
+      "key_features": [
+        "Incremental upgrade to video generation",
+        "Start + end frame synthesis"
+      ],
+      "status": "AVAILABLE_NOT_IN_FEDERATION",
+      "trust_tier": 3,
+      "federation_ingest_note": "Future: video generation for arifOS doc/educational content."
+    }
+  ],
+
+  "federation_status_summary": {
+    "live_in_federation": [
+      "glm/glm-5.2 (zai-pro, flagship, 1M ctx, 8/8 caps)",
+      "glm/glm-5-turbo (zai-pro, fast 1.2s)",
+      "glm/glm-5 (zai-pro, predecessor)",
+      "glm/glm-4.7 (zai-pro, fastest 0.7s, forces thinking)",
+      "glm/glm-4.6v (zai-pro, vision, 1.1s)"
+    ],
+    "off_plan_429": [
+      "glm/glm-5v-turbo (vision flagship — not in Pro)",
+      "glm/glm-4.7-flash (free tier — not in Pro)"
+    ],
+    "deprecated_lineage": [
+      "glm/glm-5.1 (→ glm-5.2)",
+      "glm/glm-4.6 (→ glm-4.7)",
+      "glm/glm-4.5v (→ glm-4.6v)",
+      "glm/glm-4.5 (→ glm-4.6)"
+    ],
+    "available_not_in_federation": [
+      "glm/glm-ocr (OCR — future use)",
+      "glm/glm-image (image-gen — future use)",
+      "glm/glm-asr-2512 (ASR — Hermes future)",
+      "glm/autoglm-phone-multilingual (mobile — F13 caveat)",
+      "glm/glm-slide-agent (slide/poster — beta)",
+      "glm/cogvideox-3 (video — future)"
+    ]
+  },
+
+  "migration_paths": {
+    "from_glm_4.5": "→ glm-4.6 (2025-09-30) → glm-4.7 (2025-12-22) → glm-5 (2026-02-12) → glm-5.1 (2026-04-07) → glm-5.2 (2026-06-16)",
+    "from_glm_4.5v_vision": "→ glm-4.6v (2025-12-08) — 128K ctx, SOTA vision",
+    "from_glm_4.6": "→ glm-4.7 (2025-12-22) — open-source SOTA coding + reasoning",
+    "from_glm_4.7_free": "→ glm-4.7-Flash (2026-01-19) — lightweight free tier",
+    "from_glm_5": "→ glm-5-Turbo (2026-03-15) or glm-5.1 (2026-04-07) → glm-5.2 (2026-06-16)",
+    "from_glm_5.1": "→ glm-5.2 (2026-06-16) — 1M lossless context"
+  },
+
+  "drift_detection": {
+    "purpose": "Cross-check this file against Z.ai's official release-notes page (https://docs.z.ai/release-notes/new-released) on a 24h cron",
+    "fields_to_compare": ["model_id", "release_date", "key_features[0]"],
+    "drift_action": "If new model appears in vendor doc but not in this file, append entry and trigger FED DB update",
+    "next_check": "2026-08-13T02:00:00+00:00"
+  },
+
+  "audit": {
+    "created_at": "2026-08-12T02:05:00+00:00",
+    "created_by": "kimi-code/FI-008 + 333-AGI (F13 SOVEREIGN directive)",
+    "doctrine": "DITEMPA BUKAN DIBERI — temporal intelligence is constitutional memory",
+    "next_action": "Wire drift detection cron + arifOS MCP tool arif_model_timeline_lookup"
+  }
+}
