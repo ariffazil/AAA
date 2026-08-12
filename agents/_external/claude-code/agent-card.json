@@ -8,9 +8,17 @@
     "category": "LLM-as-principal (Claude/GPT/Gemini/etc — the model is the principal, CLI is harness)",
     "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
   },
-  "description": "Claude Code CLI forge instrument — Anthropic's terminal coding harness. Wired to federation MCPs (arifOS, geox, wealth, well, aforge). F1-F13 enforced at every tool boundary.",
-  "version": "2.0.0",
-  "model": "deepseek/deepseek-v4-pro",
+  "description": "Claude Code CLI forge instrument — Anthropic's terminal coding harness. Model routed via hermes-asi through OpenRouter. F1-F13 enforced at every tool boundary. Card truth-repaired 2026-08-13.",
+  "version": "2.1.0",
+  "model": "hermes-asi (via OpenRouter)",
+  "declared_model": "deepseek/deepseek-v4-pro",
+  "effective_model": "hermes-asi via OpenRouter",
+  "route_chain": [
+    "claude-code",
+    "openrouter",
+    "hermes-asi"
+  ],
+  "codex_fed_alias": "metered.claude",
   "binary": "/root/.local/bin/claude",
   "tier": "FI",
   "role": "forge_instrument",
@@ -566,5 +574,12 @@
   "emd_role": "DECODER",
   "emd_lane": "EXECUTION — FI forge instrument. Decodes instruction into artifact.",
   "emd_architecture": "/root/AAA/instructions/emd-architecture.md",
-  "emd_forged": "2026-08-09"
+  "emd_forged": "2026-08-09",
+  "verified_against": "2026-08-13T04:00:00+08:00",
+  "verification_method": "live probe (claude --version, .claude.json)",
+  "architecture_layer": "CODEX",
+  "architecture_role": "Independent Judge — reviewer + dissenter",
+  "codex_lane": "codex.review",
+  "cognitive_species": "judge",
+  "species_rank": 1
 }

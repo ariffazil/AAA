@@ -8,9 +8,17 @@
     "category": "LLM-as-principal (Qwen/MiniMax bridge — the model is the principal, CLI is harness)",
     "principle_origin": "Qwen CLI harness on af-forge, bridged into arifOS federation"
   },
-  "description": "Qwen Code CLI forge instrument — lightweight reasoning and exploration harness on af-forge. Bound to AAA as a bridge-mode FI citizen. F1-F13 enforced.",
-  "version": "2.0.0",
-  "model": "qwen / MiniMax-M3 bridge",
+  "description": "Qwen Code CLI forge instrument — kernel-internal loop FI. 5 MCP organs, SessionStart→arif_init hook, yolo mode. F1-F13 enforced. Card truth-repaired 2026-08-13.",
+  "version": "2.1.0",
+  "model": "qwen3.7-plus (Alibaba Token Plan)",
+  "declared_model": "qwen3.7-plus",
+  "effective_model": "qwen3.7-plus via Alibaba Token Plan direct",
+  "route_chain": [
+    "qwen-code",
+    "token-plan",
+    "qwen3.7-plus"
+  ],
+  "codex_fed_alias": "codex.coder",
   "binary": "/root/.npm-global/bin/qwen",
   "config": "/root/.qwen/settings.json",
   "tier": "FI",
@@ -26,7 +34,7 @@
     "citizenship": "warga-aaa",
     "lane": "333-AGI",
     "intelligence_tier": "AGI",
-    "authority_level": "analyst",
+    "authority_level": "engineer",
     "citizenship_forged": "2026-06-10"
   },
   "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/qwen-code",
@@ -542,5 +550,12 @@
   "emd_role": "DECODER",
   "emd_lane": "EXECUTION — FI forge instrument. Decodes instruction into artifact.",
   "emd_architecture": "/root/AAA/instructions/emd-architecture.md",
-  "emd_forged": "2026-08-09"
+  "emd_forged": "2026-08-09",
+  "verified_against": "2026-08-13T04:00:00+08:00",
+  "verification_method": "live probe (qwen --version, settings.json, MCP config)",
+  "architecture_layer": "CODEX",
+  "architecture_role": "Compiler Secondary — writer + refactorer",
+  "codex_lane": "codex.coder",
+  "cognitive_species": "compiler",
+  "species_rank": 2
 }
