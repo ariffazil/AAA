@@ -27,9 +27,9 @@
       "rule": "Reasoned judgment from evidence. Expert assessment, geological interpretation."
     },
     "SPEC": {
-      "emoji": "❓",
+      "emoji": "🎲",
       "name": "Speculation",
-      "rule": "Unverified, hypothetical. Explicitly low confidence. Do not bet on this."
+      "rule": "Active hypothesis. Unverified, hypothetical. Explicitly low confidence. Do not bet on this without further evidence."
     }
   },
   "F2_BANDS": {
@@ -74,13 +74,15 @@
   },
   "EXECUTION": {
     "EXE": {
-      "emoji": "⚒️",
-      "name": "Execution Receipt",
-      "rule": "Task completed. Terminal output per Hermes Output Contract."
+      "emoji": "🦾",
+      "name": "ACT Execution Receipt",
+      "tag": "[🦾ACT]",
+      "rule": "Task completed. Terminal output per Hermes Output Contract. Direct map to ACT execution actuator."
     },
     "EXE_PARTIAL": {
       "emoji": "🔨",
       "name": "Execution Partial",
+      "tag": "[🦾ACT-PARTIAL]",
       "rule": "Task in progress. Checkpoint receipt, not terminal."
     }
   },
