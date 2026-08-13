@@ -5,7 +5,7 @@
   "name": "GitHub Copilot CLI (DeepSeek BYOK)",
   "principal_agent": {
     "type": "llm",
-    "category": "LLM-as-principal (DeepSeek V4 Pro \u2014 Anthropic-compatible endpoint via BYOK)",
+    "category": "LLM-as-principal (DeepSeek V4 Pro — Anthropic-compatible endpoint via BYOK)",
     "principle_origin": "DeepSeek Platform (https://platform.deepseek.com/)"
   },
   "description": "GitHub Copilot CLI forge instrument with DeepSeek V4 Pro as backend (BYOK Anthropic-compatible endpoint). Wire via env vars: COPILOT_PROVIDER_TYPE=anthropic, COPILOT_PROVIDER_BASE_URL=https://api.deepseek.com/anthropic, COPILOT_PROVIDER_API_KEY=sk-..., COPILOT_MODEL=deepseek-v4-pro. Source script: /root/.bashrc.copilot. F1-F13 enforced.",
@@ -61,7 +61,7 @@
     "test_prompt": "Reply with the literal string: hello from deepseek via copilot cli. Do not add anything else.",
     "actual_response": "hello from deepseek via copilot cli",
     "duration_seconds": 18,
-    "tokens_used": "\u2191141.0k (17.7k cached) \u2022 \u219335 (24 reasoning)",
+    "tokens_used": "↑141.0k (17.7k cached) • ↓35 (24 reasoning)",
     "verified_by": "Hermes-Prime",
     "verified_at": "2026-07-19T09:55:00Z"
   },
@@ -122,7 +122,7 @@
     {
       "id": "ASI-fabrication-prevention",
       "name": "Fabrication Prevention",
-      "description": "Artifact fabrication prevention \u2014 verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. F2, F9 enforced. LEASED.",
+      "description": "Artifact fabrication prevention — verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. F2, F9 enforced. LEASED.",
       "tags": [
         "fabrication",
         "F2",
@@ -138,7 +138,7 @@
     {
       "id": "ASI-autonomous-execution",
       "name": "Autonomous Governed Execution",
-      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. \u03a6\u0399 + Functional Execution. LEASED \u2192 ACTIVE.",
+      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. ΦΙ + Functional Execution. LEASED → ACTIVE.",
       "tags": [
         "autonomous",
         "F1-F13",
@@ -176,7 +176,7 @@
     },
     {
       "id": "APEX-humility-godel",
-      "name": "G\u00f6del Humility Lock",
+      "name": "Gödel Humility Lock",
       "description": "Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. LEASED.",
       "tags": [
         "humility",
@@ -192,7 +192,7 @@
     {
       "id": "FORGE-github-workflow",
       "name": "GitHub Workflow",
-      "description": "Class-level umbrella for GitHub operations \u2014 auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
+      "description": "Class-level umbrella for GitHub operations — auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
       "tags": [
         "github",
         "workflow",
@@ -207,7 +207,7 @@
     {
       "id": "APEX-mcp-federation",
       "name": "arifOS MCP Federation",
-      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. \u0394 axis primary. LEASED.",
+      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. Δ axis primary. LEASED.",
       "tags": [
         "MCP",
         "federation",
@@ -252,7 +252,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -268,7 +268,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -310,5 +310,7 @@
   "default_output_modes": [
     "text/plain",
     "application/json"
-  ]
+  ],
+  "fi": "FI-COPILOT-CLI",
+  "bound_to": "333-AGI"
 }

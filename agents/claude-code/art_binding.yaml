@@ -1,0 +1,7 @@
+# CANONICAL REFERENCE — all substance at /root/AAA/contracts/art_binding.canonical.yaml
+# Local override: agent identity + specific defaults only.
+# Do NOT duplicate floor rules, evidence gates, or substrate paths here.
+
+canonical: /root/AAA/contracts/art_binding.canonical.yaml
+agent_id: claude-code
+default_action_class: ANALYZE
