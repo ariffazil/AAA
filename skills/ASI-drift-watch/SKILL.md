@@ -23,6 +23,9 @@ floor_scope:
 autonomy_tier: T0
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+required_tools: ['arif_observe', 'forge_fetch']
+tool_gate: permissive
+
 ---
 # Drift Watch — Probe-Based (v1.1.0)
 

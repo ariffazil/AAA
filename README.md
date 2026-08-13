@@ -1,7 +1,7 @@
 <!-- SOT-MANIFEST
 federation_release: v2026.08.09
-last_verified: 2026-08-10T12:10:00Z
-live_commit: 59d79cae (P0 hardening — OBSERVE fast-path + cascade drill + dead provider fix)
+last_verified: 2026-08-13T20:21:00Z
+live_commit: dc0d4df8 (docs(aaa): Hermes audio/TTS/voice/music knowledge graph)
 truth_rule: /health + agent registry beat any static count in prose
 a2a_port: 3001
 a2a_status: healthy GREEN (deployment_drift: false)

@@ -1,0 +1,216 @@
+{
+  "probe_id": "probe-20260812T202837Z",
+  "generated_utc": "20260812T202837Z",
+  "witness": [
+    {
+      "layer": "SEMANTIC",
+      "engine": "qdrant :6333",
+      "collections": [
+        {
+          "collection": "arifOS_skill_mesh",
+          "points": 297,
+          "dim": 384,
+          "distance": "Cosine"
+        },
+        {
+          "collection": "arif_evidence",
+          "points": 9,
+          "dim": 768,
+          "distance": "Cosine"
+        },
+        {
+          "collection": "arifos_constitution",
+          "points": 14,
+          "dim": 1024,
+          "distance": "Cosine"
+        },
+        {
+          "collection": "arifos_memory",
+          "points": 49,
+          "dim": 1024,
+          "distance": "Cosine"
+        },
+        {
+          "collection": "arifos_precedent",
+          "points": 6,
+          "dim": 1024,
+          "distance": "Cosine"
+        },
+        {
+          "collection": "arifos_session_memory",
+          "points": 56,
+          "dim": 1024,
+          "distance": "Cosine"
+        },
+        {
+          "collection": "arifos_skill_mesh",
+          "points": 8,
+          "dim": 384,
+          "distance": "Cosine"
+        },
+        {
+          "collection": "arifos_vault_canon",
+          "points": 13,
+          "dim": 1024,
+          "distance": "Cosine"
+        },
+        {
+          "collection": "arifos_vault_ephemeral",
+          "points": 0,
+          "dim": 1024,
+          "distance": "Cosine"
+        },
+        {
+          "collection": "arifos_vault_quarantine",
+          "points": 0,
+          "dim": 1024,
+          "distance": "Cosine"
+        },
+        {
+          "collection": "arifos_vault_sacred",
+          "points": 0,
+          "dim": 1024,
+          "distance": "Cosine"
+        },
+        {
+          "collection": "arifos_vault_working",
+          "points": 7,
+          "dim": 1024,
+          "distance": "Cosine"
+        },
+        {
+          "collection": "atlas333_eureka",
+          "points": 74,
+          "dim": 1024,
+          "distance": "Cosine"
+        },
+        {
+          "collection": "federation_shared",
+          "points": 30,
+          "dim": 1024,
+          "distance": "Cosine"
+        },
+        {
+          "collection": "openclaw_memory",
+          "points": 9,
+          "dim": 1024,
+          "distance": "Cosine"
+        },
+        {
+          "collection": "petronas_knowledge",
+          "points": 1460,
+          "dim": 1024,
+          "distance": "Cosine"
+        },
+        {
+          "collection": "test_memory_arch",
+          "points": 0,
+          "dim": 1024,
+          "distance": "Cosine"
+        }
+      ],
+      "summary": {
+        "total_points": 2032,
+        "populated": 13,
+        "empty": 4,
+        "collections_total": 17
+      },
+      "method": "GET localhost:6333/collections/{name}"
+    },
+    {
+      "layer": "RELATIONSHIP",
+      "engine": "falkordb :6380",
+      "graphs": [
+        {
+          "graph": "arifos",
+          "nodes": 41,
+          "status": "LIVE"
+        },
+        {
+          "graph": "arifos_federation",
+          "nodes": 7,
+          "status": "LIVE"
+        },
+        {
+          "graph": "arif_l5_knowledge",
+          "nodes": 104,
+          "status": "LIVE"
+        },
+        {
+          "graph": "af_forge",
+          "nodes": 17,
+          "status": "LIVE"
+        },
+        {
+          "graph": "clem-membrane-redteam",
+          "nodes": 0,
+          "status": "GHOST"
+        },
+        {
+          "graph": "clem-postfix",
+          "nodes": 0,
+          "status": "GHOST"
+        },
+        {
+          "graph": "shadow-decoder",
+          "nodes": 0,
+          "status": "GHOST"
+        },
+        {
+          "graph": "atlas333_test",
+          "nodes": 1,
+          "status": "LIVE"
+        },
+        {
+          "graph": "atlas333_graph",
+          "nodes": 30,
+          "status": "LIVE"
+        },
+        {
+          "graph": "sado_knowledge",
+          "nodes": 4,
+          "status": "LIVE"
+        },
+        {
+          "graph": "arifOS",
+          "nodes": 0,
+          "status": "GHOST"
+        },
+        {
+          "graph": "knowledge",
+          "nodes": 0,
+          "status": "GHOST"
+        },
+        {
+          "graph": "skill_mesh",
+          "nodes": 0,
+          "status": "GHOST"
+        },
+        {
+          "graph": "mesh",
+          "nodes": 0,
+          "status": "GHOST"
+        }
+      ],
+      "summary": {
+        "graphs_total": 14,
+        "live": 7,
+        "ghost": 7
+      },
+      "method": "redis-cli -p 6380 GRAPH.QUERY <g> 'MATCH (n) RETURN count(n)'"
+    },
+    {
+      "layer": "EXECUTION",
+      "engine": "crontab + /etc/cron.d + systemd timers",
+      "mechanisms": {
+        "root_crontab": 50,
+        "cron_d_lines": 81,
+        "systemd_timers": 39
+      },
+      "summary": {
+        "scheduled_entries": 170
+      },
+      "method": "crontab -l; ls /etc/cron.d/*; systemctl list-timers"
+    }
+  ]
+}
