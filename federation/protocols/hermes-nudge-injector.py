@@ -244,14 +244,30 @@ def _inject_message(
 
 
 def _strip_receipt_blocks(text: str) -> str:
-    """Remove [🦾ACT] / [EXE] receipt blocks (including multi-line)."""
-    # Strip markdown blocks that start with [🦾ACT] or [EXE]
-    text = re.sub(r"\[\s*🦾ACT[^\]]*\].*?(?=\n\[|\Z)", "", text, flags=re.DOTALL)
-    text = re.sub(r"\[\s*EXE[^\]]*\].*?(?=\n\[|\Z)", "", text, flags=re.DOTALL)
-    # Strip single-line receipt headers
-    text = re.sub(r"^\s*\[\s*🦾ACT[^\]]*\].*$", "", text, flags=re.MULTILINE)
-    text = re.sub(r"^\s*\[\s*EXE[^\]]*\].*$", "", text, flags=re.MULTILINE)
-    return text
+    """Remove [🦾ACT] / [EXE] receipt blocks (including multi-line).
+
+    Uses a line-by-line state machine so a receipt header followed by human
+    text does not swallow the human text.
+    """
+    _RECEIPT_START_RE = re.compile(r"^\s*\[(?:\s*🦾ACT|\s*EXE)(?:-PARTIAL)?\]", re.IGNORECASE)
+    _RECEIPT_CONT_RE = re.compile(
+        r"^\s*(?:-\s+\w|Delta\s+S|W_scar|Proof\s*[:=]|Action\s*[:=]|Bl\s*[,S]+\s*W\s*[:=])",
+        re.IGNORECASE,
+    )
+
+    lines = text.split("\n")
+    out: list[str] = []
+    in_receipt = False
+    for line in lines:
+        if _RECEIPT_START_RE.match(line):
+            in_receipt = True
+            continue
+        if in_receipt:
+            if _RECEIPT_CONT_RE.match(line) or line.strip() == "":
+                continue
+            in_receipt = False
+        out.append(line)
+    return "\n".join(out)
 
 
 def _strip_epistemic_labels(text: str) -> str:
