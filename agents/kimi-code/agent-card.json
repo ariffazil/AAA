@@ -9,9 +9,9 @@
     "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
   },
   "description": "Kimi Code CLI forge instrument — Moonshot coding harness. Wired to federation MCPs. Activated skills: agentic-builder + webmcp-site-builder. F1-F13 enforced. v2.1.0 (2026-07-16): zen pass — 7 contrast/reflector skills v1.1.0, KIMI_RSI_INIT_PROMPT cold-boot recipe, KIMI_HANDOVER_PROMPT post-deploy recipe, all mirrored to runtime + AAA.",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "model": "kimi/k3",
-  "_card_synced": "2026-08-05 by 333-AGI — MCP surface refreshed to live probe counts",
+  "_card_synced": "2026-08-13 by FI-008 — anti-bangang forge: 12 hooks, YOLO-native governance",
   "binary": "/root/.kimi-code/bin/kimi",
   "config_home": "/root/.arifos/agents/kimi",
   "kimi_code_binary": "/root/.kimi-code/bin/kimi",
@@ -714,6 +714,23 @@
         "SHA-256 over canonical-JSON (sorted keys, no whitespace) signed with /opt/arifos/app/.signing_key",
         "_signature_pending_re_sign flag cleared"
       ]
+    },
+    {
+      "from_version": "2.3.0",
+      "to_version": "2.4.0",
+      "upgraded_at": "2026-08-13T13:20:00Z",
+      "upgraded_by": "Kimi Code (FI-008) — anti-bangang forge: YOLO-native governance architecture",
+      "changes": [
+        "12 hooks total (was 10): added TurnStarted (aaa-turn-classify.sh) + UserPromptQueued (aaa-danger-warn.sh)",
+        "max_steps_per_turn = 40 set in loop_control (was unset)",
+        "anti_bangang_architecture section added to agent card",
+        "YOLO permission mode preserved per F13 sovereign directive",
+        "aaa-completion-check.sh created (anti-fake-completion, unwired for future use)",
+        "Perplexity v0.36.0 claim debunked — CDN confirms 0.35.0 is latest",
+        "Hook smoke tests passed (TurnStarted + UserPromptQueued verified)",
+        "WARGAAA_CARD.md updated to v2.4.0",
+        "A2A forge card fi-008-kimi-code.json synced to live state"
+      ]
     }
   ],
   "": "arifOS/agent-card/v2.2.0",
@@ -819,5 +836,84 @@
   "emd_role": "DECODER",
   "emd_lane": "EXECUTION — FI-008 forge instrument. Decodes instruction into artifact.",
   "emd_architecture": "/root/AAA/instructions/emd-architecture.md",
-  "emd_forged": "2026-08-09"
+  "emd_forged": "2026-08-09",
+  "anti_bangang_architecture": {
+    "philosophy": "YOLO-native. Constitutional governance via F1-F13 floors + hook telemetry + scar-to-skill learning. NOT permission prompts.",
+    "permission_mode": "yolo",
+    "max_steps_per_turn": 40,
+    "hook_count": 12,
+    "hook_inventory": {
+      "TurnStarted": {
+        "script": "aaa-turn-classify.sh",
+        "purpose": "Risk classification telemetry (T0/T2/T3)",
+        "blocks": false
+      },
+      "UserPromptQueued": {
+        "script": "aaa-danger-warn.sh",
+        "purpose": "Danger intent regex detection (22 patterns) with stderr warning",
+        "blocks": false
+      },
+      "PreToolUse": {
+        "script": "aaa-witness-pre.sh",
+        "purpose": "Shell/file mutation governance (23KB)",
+        "blocks": true
+      },
+      "PostToolUse": {
+        "script": "aaa-witness-post.sh",
+        "purpose": "Post-mutation evidence capture",
+        "blocks": false
+      },
+      "PostToolUseFailure": {
+        "script": "aaa-witness-post.sh",
+        "purpose": "Failure evidence capture",
+        "blocks": false
+      },
+      "Stop": {
+        "script": "aaa-session-end.sh",
+        "purpose": "284-line governance seal + reality loop + NATS + VAULT999",
+        "blocks": false
+      },
+      "SessionStart": {
+        "script": "aaa-session-start.sh",
+        "purpose": "Session ignition + trace ID minting",
+        "blocks": false
+      },
+      "SessionEnd": {
+        "script": "aaa-session-close.sh",
+        "purpose": "Session cleanup",
+        "blocks": false
+      },
+      "SubagentStop": {
+        "script": "aaa-subagent-stop.sh",
+        "purpose": "Subagent lifecycle tracking",
+        "blocks": false
+      },
+      "UserPromptSubmit": {
+        "script": "aaa-prompt-enrich.sh",
+        "purpose": "Prompt enrichment + context injection",
+        "blocks": true
+      },
+      "Notification": {
+        "script": "aaa-notify.sh",
+        "purpose": "Alert routing (permission_prompt/warning/error)",
+        "blocks": false
+      },
+      "PreCompact": {
+        "script": "aaa-session-close.sh",
+        "purpose": "Context compaction pre-seal",
+        "blocks": false
+      }
+    },
+    "anti_bangang_layers": [
+      "Layer 1: TurnStarted → risk classification (T0/T2/T3) → telemetry only",
+      "Layer 2: UserPromptQueued → danger regex detection → stderr warning + telemetry",
+      "Layer 3: PreToolUse → aaa-witness-pre (23KB) → shell/file mutation governance",
+      "Layer 4: Stop → aaa-session-end (284-line) → seal, reality loop, NATS, summary",
+      "Layer 5: AGENTS.md doctrine → evidence-before-done behavioral constraint",
+      "Layer 6: F1-F13 constitutional floors → the ACTUAL governor"
+    ],
+    "key_principle": "Anti-bangang = constitutional governance + scar learning + telemetry, NOT approval prompts. YOLO means full tool access; governance means the constitution constrains it.",
+    "forged": "2026-08-13",
+    "sovereign_directive": "F13: YOLO stays. Governed agentic intelligence recursive improvement helix. No permission theatre."
+  }
 }
