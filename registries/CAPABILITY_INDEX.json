@@ -4,7 +4,7 @@
   "protocolVersion": "2026-07-28",
   "forgedAt": "2026-08-10T06:00:00Z",
   "total_tools": 261,
-  "digest": "474ef0e64819d8a6b0c37d436e66708203fcb886838b570655452dfc486616c9",
+  "digest": "49e4f360d7313443590c713a1d2e90e61416038d3346c9f860045005621edf1f",
   "servers": [
     {
       "name": "GEOX",
@@ -101,6 +101,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -115,6 +116,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -129,6 +131,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -143,6 +146,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -157,6 +161,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -171,6 +176,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -185,6 +191,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "SEAL",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -199,6 +206,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -213,6 +221,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -227,6 +236,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -241,6 +251,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -255,6 +266,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -269,6 +281,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -283,6 +296,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -297,6 +311,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -311,6 +326,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -325,6 +341,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -339,6 +356,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "GOVERN",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -353,6 +371,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -367,6 +386,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -381,6 +401,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -395,6 +416,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -409,6 +431,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -423,6 +446,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -437,6 +461,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -451,6 +476,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -465,6 +491,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -479,6 +506,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -493,6 +521,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -507,6 +536,7 @@
         "geoscience",
         "earth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -525,6 +555,7 @@
         "macro",
         "capital"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -541,6 +572,7 @@
         "physics",
         "economics"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -557,6 +589,7 @@
         "maruah",
         "stewardship"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "GOVERN",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -573,6 +606,7 @@
         "liabilities",
         "reserves"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -588,6 +622,7 @@
         "efficiency",
         "energy"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "high",
@@ -605,6 +640,7 @@
         "noc",
         "governance"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "GOVERN",
       "effective_class": "OBSERVE",
       "risk_tier": "high",
@@ -621,6 +657,7 @@
         "uncertainty",
         "tail-risk"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "high",
@@ -637,6 +674,7 @@
         "retirement",
         "projection"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "high",
@@ -654,6 +692,7 @@
         "energy",
         "carbon"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "high",
@@ -670,6 +709,7 @@
         "burn",
         "runway"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -686,6 +726,7 @@
         "bargaining",
         "coordination"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -702,6 +743,7 @@
         "allocation",
         "sovereign"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -718,6 +760,7 @@
         "mispricing",
         "trading"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "high",
@@ -733,6 +776,7 @@
         "federation",
         "stability"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -749,6 +793,7 @@
         "diagnosis",
         "social"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "high",
@@ -765,6 +810,7 @@
         "fragility",
         "stress"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "high",
@@ -780,6 +826,7 @@
         "query",
         "audit"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -796,6 +843,7 @@
         "vault",
         "irreversible"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -812,6 +860,7 @@
         "commodity",
         "macro"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -828,6 +877,7 @@
         "capital",
         "deal"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -845,6 +895,7 @@
         "net-worth",
         "personal"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -861,6 +912,7 @@
         "utility",
         "decision"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -877,6 +929,7 @@
         "evidence",
         "e-and-p"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "high",
@@ -893,6 +946,7 @@
         "burn",
         "runway"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -908,6 +962,7 @@
         "diagnostic",
         "truth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -924,6 +979,7 @@
         "payback",
         "time-value"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -939,6 +995,7 @@
         "malaysia",
         "islamic-finance"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -953,6 +1010,7 @@
         "health",
         "deprecated"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -971,6 +1029,7 @@
         "energy",
         "stress"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "high",
@@ -987,6 +1046,7 @@
         "dignity",
         "meaning"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "high",
@@ -1002,6 +1062,7 @@
         "throughput",
         "biology"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "high",
@@ -1017,6 +1078,7 @@
         "machine",
         "institution"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1032,6 +1094,7 @@
         "entropy",
         "behavioral-modeling"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -1048,6 +1111,7 @@
         "resilience",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -1063,6 +1127,7 @@
         "classification",
         "boundary"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -1078,6 +1143,7 @@
         "entropy",
         "thermodynamics"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "high",
@@ -1093,6 +1159,7 @@
         "detection",
         "membrane"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -1109,6 +1176,7 @@
         "personhood",
         "boundaries"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "GOVERN",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1125,6 +1193,7 @@
         "pressure",
         "attention"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "high",
@@ -1140,6 +1209,7 @@
         "diagnostic",
         "blueprint"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1155,6 +1225,7 @@
         "truth",
         "somatic"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1171,6 +1242,7 @@
         "trace",
         "vault"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1186,6 +1258,7 @@
         "readiness",
         "niat"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "high",
@@ -1200,6 +1273,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1214,6 +1288,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1228,6 +1303,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1242,6 +1318,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "GOVERN",
       "effective_class": "GOVERN",
       "risk_tier": "medium",
@@ -1256,6 +1333,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "MUTATE",
       "risk_tier": "medium",
@@ -1270,6 +1348,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1284,6 +1363,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "MUTATE",
       "risk_tier": "medium",
@@ -1298,6 +1378,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1312,6 +1393,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "MUTATE",
       "risk_tier": "medium",
@@ -1326,6 +1408,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1340,6 +1423,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1354,6 +1438,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1368,6 +1453,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1382,6 +1468,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1396,6 +1483,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "GOVERN",
       "effective_class": "GOVERN",
       "risk_tier": "medium",
@@ -1410,6 +1498,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "GOVERN",
       "effective_class": "GOVERN",
       "risk_tier": "medium",
@@ -1424,6 +1513,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "GOVERN",
       "effective_class": "GOVERN",
       "risk_tier": "medium",
@@ -1438,6 +1528,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1452,6 +1543,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1466,6 +1558,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1480,6 +1573,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1494,6 +1588,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1508,6 +1603,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1522,6 +1618,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1536,6 +1633,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1550,6 +1648,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1564,6 +1663,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1578,6 +1678,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1592,6 +1693,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1606,6 +1708,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1620,6 +1723,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "GOVERN",
       "effective_class": "GOVERN",
       "risk_tier": "medium",
@@ -1634,6 +1738,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1648,6 +1753,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1662,6 +1768,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1676,6 +1783,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1690,6 +1798,7 @@
         "aforge",
         "forge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1705,6 +1814,7 @@
         "list",
         "governance"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1720,6 +1830,7 @@
         "governance",
         "challenge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1735,6 +1846,7 @@
         "status",
         "governance"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1750,6 +1862,7 @@
         "citation",
         "fact-check"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1766,6 +1879,7 @@
         "build",
         "execution"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "MUTATE",
       "risk_tier": "low",
@@ -1781,6 +1895,7 @@
         "gateway",
         "multi-agent"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1797,6 +1912,7 @@
         "human-impact",
         "safety"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1813,6 +1929,7 @@
         "constitutional",
         "deliberation"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "GOVERN",
       "effective_class": "GOVERN",
       "risk_tier": "low",
@@ -1828,6 +1945,7 @@
         "orchestration",
         "dispatch"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "GOVERN",
       "effective_class": "GOVERN",
       "risk_tier": "low",
@@ -1844,6 +1962,7 @@
         "history",
         "recall"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1860,6 +1979,7 @@
         "reflection",
         "analysis"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1876,6 +1996,7 @@
         "monitoring",
         "ops"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1891,6 +2012,7 @@
         "reply",
         "formatting"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1907,6 +2029,7 @@
         "observation",
         "evidence"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1922,6 +2045,7 @@
         "session",
         "constitutional"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "GOVERN",
       "effective_class": "GOVERN",
       "risk_tier": "low",
@@ -1938,6 +2062,7 @@
         "audit",
         "immutable"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "SEAL",
       "effective_class": "SEAL",
       "risk_tier": "low",
@@ -1952,6 +2077,7 @@
         "arifos",
         "arif"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -1966,6 +2092,7 @@
         "arifos",
         "arif"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "GOVERN",
       "effective_class": "GOVERN",
       "risk_tier": "medium",
@@ -1980,6 +2107,7 @@
         "arifos",
         "arif"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "GOVERN",
       "effective_class": "GOVERN",
       "risk_tier": "medium",
@@ -1994,6 +2122,7 @@
         "arifos",
         "arif"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2008,6 +2137,7 @@
         "arifos",
         "arif"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2022,6 +2152,7 @@
         "arifos",
         "arif"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "GOVERN",
       "effective_class": "GOVERN",
       "risk_tier": "medium",
@@ -2036,6 +2167,7 @@
         "arifos",
         "arif"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "SEAL",
       "effective_class": "SEAL",
       "risk_tier": "medium",
@@ -2050,6 +2182,7 @@
         "arifos",
         "arif"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2065,6 +2198,7 @@
         "search",
         "brave"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2081,6 +2215,7 @@
         "business",
         "brave"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2096,6 +2231,7 @@
         "search",
         "brave"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2112,6 +2248,7 @@
         "brave",
         "ai"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -2127,6 +2264,7 @@
         "search",
         "brave"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2145,6 +2283,7 @@
         "updates",
         "mcp"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2159,6 +2298,7 @@
         "context7",
         "query-docs"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2173,6 +2313,7 @@
         "context7",
         "resolve-library-id"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "MUTATE",
       "risk_tier": "medium",
@@ -2187,6 +2328,7 @@
         "geox",
         "geox"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2201,6 +2343,7 @@
         "geox",
         "geox"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2215,6 +2358,7 @@
         "geox",
         "geox"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2229,6 +2373,7 @@
         "geox",
         "geox"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2243,6 +2388,7 @@
         "geox",
         "geox"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2257,6 +2403,7 @@
         "geox",
         "geox"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2271,6 +2418,7 @@
         "geox",
         "geox"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2285,6 +2433,7 @@
         "geox",
         "geox"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2299,6 +2448,7 @@
         "geox",
         "geox"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2313,6 +2463,7 @@
         "geox",
         "geox"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2327,6 +2478,7 @@
         "geox",
         "geox"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2341,6 +2493,7 @@
         "geox",
         "geox"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2355,6 +2508,7 @@
         "geox",
         "geox"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2369,6 +2523,7 @@
         "geox",
         "geox"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2383,6 +2538,7 @@
         "geox",
         "geox"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2397,6 +2553,7 @@
         "geox",
         "geox"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2411,6 +2568,7 @@
         "geox",
         "geox"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2425,6 +2583,7 @@
         "geox",
         "geox"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2440,6 +2599,7 @@
         "file",
         "read"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2455,6 +2615,7 @@
         "issue",
         "detail"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2470,6 +2631,7 @@
         "pull-request",
         "detail"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2485,6 +2647,7 @@
         "pull-request",
         "comments"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2500,6 +2663,7 @@
         "pull-request",
         "files"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2515,6 +2679,7 @@
         "pull-request",
         "reviews"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2530,6 +2695,7 @@
         "pull-request",
         "status"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2545,6 +2711,7 @@
         "commit",
         "list"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2560,6 +2727,7 @@
         "issue",
         "list"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2575,6 +2743,7 @@
         "pull-request",
         "list"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2590,6 +2759,7 @@
         "code",
         "search"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2605,6 +2775,7 @@
         "issue",
         "search"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2620,6 +2791,7 @@
         "search",
         "repository"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2635,6 +2807,7 @@
         "user",
         "search"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2650,6 +2823,7 @@
         "issue",
         "comment"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2665,6 +2839,7 @@
         "branch",
         "create"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "MUTATE",
       "risk_tier": "low",
@@ -2680,6 +2855,7 @@
         "issue",
         "create"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "MUTATE",
       "risk_tier": "low",
@@ -2695,6 +2871,7 @@
         "file",
         "write"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "MUTATE",
       "risk_tier": "low",
@@ -2710,6 +2887,7 @@
         "pull-request",
         "create"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "MUTATE",
       "risk_tier": "low",
@@ -2725,6 +2903,7 @@
         "pull-request",
         "review"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "MUTATE",
       "risk_tier": "low",
@@ -2740,6 +2919,7 @@
         "repository",
         "create"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "MUTATE",
       "risk_tier": "low",
@@ -2755,6 +2935,7 @@
         "fork",
         "repository"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2770,6 +2951,7 @@
         "file",
         "read"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2785,6 +2967,7 @@
         "issue",
         "detail"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2800,6 +2983,7 @@
         "pull-request",
         "detail"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2815,6 +2999,7 @@
         "pull-request",
         "comments"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2830,6 +3015,7 @@
         "pull-request",
         "files"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2845,6 +3031,7 @@
         "pull-request",
         "reviews"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2860,6 +3047,7 @@
         "pull-request",
         "status"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2875,6 +3063,7 @@
         "commit",
         "list"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2890,6 +3079,7 @@
         "issue",
         "list"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2905,6 +3095,7 @@
         "pull-request",
         "list"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2920,6 +3111,7 @@
         "pull-request",
         "merge"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "MUTATE",
       "risk_tier": "low",
@@ -2936,6 +3128,7 @@
         "push",
         "commit"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "MUTATE",
       "risk_tier": "low",
@@ -2951,6 +3144,7 @@
         "code",
         "search"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2966,6 +3160,7 @@
         "issue",
         "search"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2981,6 +3176,7 @@
         "search",
         "repository"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -2996,6 +3192,7 @@
         "user",
         "search"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3011,6 +3208,7 @@
         "issue",
         "update"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "MUTATE",
       "risk_tier": "low",
@@ -3026,6 +3224,7 @@
         "pull-request",
         "update"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "MUTATE",
       "risk_tier": "low",
@@ -3040,6 +3239,7 @@
         "memory",
         "add"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3054,6 +3254,7 @@
         "memory",
         "create"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "MUTATE",
       "risk_tier": "medium",
@@ -3068,6 +3269,7 @@
         "memory",
         "create"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "MUTATE",
       "risk_tier": "medium",
@@ -3082,6 +3284,7 @@
         "memory",
         "delete"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "MUTATE",
       "risk_tier": "medium",
@@ -3096,6 +3299,7 @@
         "memory",
         "delete"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "MUTATE",
       "risk_tier": "medium",
@@ -3110,6 +3314,7 @@
         "memory",
         "delete"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "MUTATE",
       "risk_tier": "medium",
@@ -3124,6 +3329,7 @@
         "memory",
         "open"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3138,6 +3344,7 @@
         "memory",
         "read"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3152,6 +3359,7 @@
         "memory",
         "search"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3166,6 +3374,7 @@
         "discovery",
         "capability"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -3180,6 +3389,7 @@
         "discovery",
         "server"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -3195,6 +3405,7 @@
         "search",
         "meyhem"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3210,6 +3421,7 @@
         "search",
         "meyhem"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3225,6 +3437,7 @@
         "select",
         "content"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3240,6 +3453,7 @@
         "image",
         "analysis"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "medium",
@@ -3255,6 +3469,7 @@
         "search",
         "ranking"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3266,6 +3481,7 @@
       "description": "Generate video from text prompt or first-frame image. Supports camera direction instructions.",
       "parameters": null,
       "tags": [],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "MUTATE",
       "risk_tier": "MEDIUM",
@@ -3277,6 +3493,7 @@
       "description": "List all available system and cloned voices.",
       "parameters": null,
       "tags": [],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "READ_ONLY",
@@ -3288,6 +3505,7 @@
       "description": "Generate music from prompt and lyrics with style/mood control. Up to 1 minute.",
       "parameters": null,
       "tags": [],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "MEDIUM",
@@ -3299,6 +3517,7 @@
       "description": "Play an audio file (WAV/MP3) on the local system.",
       "parameters": null,
       "tags": [],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "LOW",
@@ -3310,6 +3529,7 @@
       "description": "Check status of async video generation task and retrieve result.",
       "parameters": null,
       "tags": [],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "LOW",
@@ -3321,6 +3541,7 @@
       "description": "Convert text to speech with voice selection, speed, pitch, emotion control. Outputs audio file.",
       "parameters": null,
       "tags": [],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "LOW",
@@ -3332,6 +3553,7 @@
       "description": "Generate images from text prompt with aspect ratio and count control.",
       "parameters": null,
       "tags": [],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "LOW",
@@ -3343,6 +3565,7 @@
       "description": "Clone a voice from provided audio file. Charged upon first use.",
       "parameters": null,
       "tags": [],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "MEDIUM",
@@ -3354,6 +3577,7 @@
       "description": "Design custom voice from text description with preview audio.",
       "parameters": null,
       "tags": [],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "MEDIUM",
@@ -3369,6 +3593,7 @@
         "image",
         "analysis"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3384,6 +3609,7 @@
         "search",
         "ranking"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3398,6 +3624,7 @@
         "postgres",
         "query"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3413,6 +3640,7 @@
         "language",
         "detect"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3430,6 +3658,7 @@
         "tree-sitter",
         "pagerank"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3445,6 +3674,7 @@
         "file",
         "find"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3460,6 +3690,7 @@
         "symbol",
         "reference"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3475,6 +3706,7 @@
         "symbol",
         "find"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3489,6 +3721,7 @@
         "serena",
         "config"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3504,6 +3737,7 @@
         "symbol",
         "overview"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3519,6 +3753,7 @@
         "directory",
         "list"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3534,6 +3769,7 @@
         "memory",
         "list"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3549,6 +3785,7 @@
         "onboarding",
         "init"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3564,6 +3801,7 @@
         "file",
         "read"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3579,6 +3817,7 @@
         "memory",
         "read"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3595,6 +3834,7 @@
         "pattern",
         "ripgrep"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3609,6 +3849,7 @@
         "wealth",
         "capital"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3623,6 +3864,7 @@
         "wealth",
         "capital"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3637,6 +3879,7 @@
         "wealth",
         "capital"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3651,6 +3894,7 @@
         "wealth",
         "capital"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3665,6 +3909,7 @@
         "wealth",
         "capital"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3679,6 +3924,7 @@
         "wealth",
         "capital"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3693,6 +3939,7 @@
         "wealth",
         "capital"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "MUTATE",
       "effective_class": "MUTATE",
       "risk_tier": "medium",
@@ -3707,6 +3954,7 @@
         "wealth",
         "capital"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3721,6 +3969,7 @@
         "wealth",
         "capital"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3735,6 +3984,7 @@
         "wealth",
         "capital"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3749,6 +3999,7 @@
         "wealth",
         "wealth"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "GOVERN",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3763,6 +4014,7 @@
         "well",
         "well"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3777,6 +4029,7 @@
         "well",
         "well"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3791,6 +4044,7 @@
         "well",
         "well"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3805,6 +4059,7 @@
         "well",
         "well"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3819,6 +4074,7 @@
         "well",
         "well"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "GOVERN",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3833,6 +4089,7 @@
         "well",
         "well"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3847,6 +4104,7 @@
         "well",
         "well"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3861,6 +4119,7 @@
         "well",
         "well"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3875,6 +4134,7 @@
         "well",
         "well"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
@@ -3889,6 +4149,7 @@
         "well",
         "well"
       ],
+      "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",

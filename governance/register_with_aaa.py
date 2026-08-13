@@ -3,7 +3,7 @@
 register_with_aaa.py — MANUAL DIAGNOSTIC ONLY (deprecated for boot)
 
 Historical role: this script used to be called by organ boot scripts as a
-mandatory boot gate.  As of the 2026-07-22 PRL/recovery refactor it is
+mandatory boot gate.  As of the 2026-07-22 HIB/recovery refactor it is
 NO LONGER wired into systemd.  Production auto-registration is performed
 by ``AAA/a2a-server/auto-register-organs.js`` on the AAA side, with
 bounded readiness probes (timeout + retry + backoff).

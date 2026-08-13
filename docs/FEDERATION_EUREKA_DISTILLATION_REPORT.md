@@ -124,7 +124,7 @@
 | Field | Value |
 |-------|-------|
 | **Source** | `memory/.archive-2026-07/2026-05-14-CALHOUN-EFFECT.md` |
-| **Insight** | Universe 25 mouse utopia → behavioral sink → population collapse maps directly to Shumailov et al. (2024) model collapse. Same entropy pattern recurs in biological, institutional, and AI domains. The "beautiful ones" = models that only consume their own output. |
+| **Insight** | Universe 25 mouse utopia → governance drift → population collapse maps directly to Shumailov et al. (2024) model collapse. Same entropy pattern recurs in biological, institutional, and AI domains. The "beautiful ones" = models that only consume their own output. |
 | **Why survives** | Multi-domain constitutional insight. The same entropy pattern (ΔS > 0 accumulating across generations) is detectable in all three domains. Not formalized in current architecture. |
 | **Target** | `docs/architecture/CALHOUN_PARALLEL.md` — cross-domain entropy collapse model |
 | **Plane** | THINK (ATLAS333 — paradox navigation) |
