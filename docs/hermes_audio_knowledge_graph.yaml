@@ -1,0 +1,630 @@
+meta:
+  version: "1.0"
+  generated_at: "2026-08-13T16:27:19Z"
+  agent: "kimi-code/FI-008"
+  scope: "hermes_audio_to_aaa_skills"
+
+nodes:
+  # ── Hermes runtime audio capabilities ───────────────────────────────────────
+  - id: hermes_streaming_tts_consumer
+    type: capability
+    name: "Hermes Streaming TTS Consumer"
+    path: "/usr/local/lib/hermes-agent/gateway/streaming_tts_consumer.py"
+    description: "Gateway consumer that turns LLM text deltas into streaming PCM audio via adapter sinks, suppressing whole-file TTS when successful."
+    tags: [audio, tts, voice, streaming]
+
+  - id: hermes_tts_streaming_provider
+    type: capability
+    name: "Hermes TTS Streaming Provider"
+    path: "/usr/local/lib/hermes-agent/tools/tts_streaming.py"
+    description: "Provider-agnostic streaming TTS dispatcher with chunked APIs (ElevenLabs/OpenAI PCM) and per-sentence fallback."
+    tags: [audio, tts, voice, streaming]
+
+  - id: hermes_tts_tool
+    type: capability
+    name: "Hermes TTS Tool"
+    path: "/usr/local/lib/hermes-agent/tools/tts_tool.py"
+    description: "Canonical synchronous text-to-speech tool supporting Edge, MiniMax/MuleRouter, MiMo, OpenAI, ElevenLabs, and NeuTTS backends."
+    tags: [audio, tts, voice]
+
+  - id: hermes_voice_mode
+    type: capability
+    name: "Hermes Voice Mode"
+    path: "/usr/local/lib/hermes-agent/tools/voice_mode.py"
+    description: "CLI push-to-talk audio capture, STT dispatch, and TTS playback using sounddevice."
+    tags: [audio, voice, asr, tts]
+
+  - id: hermes_voice_state
+    type: capability
+    name: "Hermes Voice State Extractor"
+    path: "/usr/local/lib/hermes-agent/tools/voice_state.py"
+    description: "Layer-1 prosody feature extraction (librosa) that maps audio to WELL homeostasis inputs before STT."
+    tags: [audio, voice, prosody, well]
+
+  - id: hermes_wake_word
+    type: capability
+    name: "Hermes Wake Word Detector"
+    path: "/usr/local/lib/hermes-agent/tools/wake_word.py"
+    description: "Always-on hotword listener ('Hey Hermes') supporting openwakeword, sherpa, and porcupine engines."
+    tags: [audio, voice, wake_word]
+
+  - id: hermes_transcription_tools
+    type: capability
+    name: "Hermes Transcription Tools"
+    path: "/usr/local/lib/hermes-agent/tools/transcription_tools.py"
+    description: "Multi-provider speech-to-text supporting local faster-whisper, Groq, OpenAI, Mistral, xAI, and ElevenLabs Scribe."
+    tags: [audio, asr, voice, stt]
+
+  - id: hermes_audio_container
+    type: capability
+    name: "Hermes Audio Container Sniffer"
+    path: "/usr/local/lib/hermes-agent/tools/audio_container.py"
+    description: "Magic-byte audio/AV container detection used to repair/relabel inbound/outbound audio bytes."
+    tags: [audio, container, tts, stt]
+
+  - id: hermes_neutts_synth
+    type: capability
+    name: "Hermes NeuTTS Synthesis Helper"
+    path: "/usr/local/lib/hermes-agent/tools/neutts_synth.py"
+    description: "Subprocess wrapper for Neuphonic NeuTTS voice-cloning TTS with reference audio and text."
+    tags: [audio, tts, voice, voice_cloning]
+
+  - id: hermes_platform_base_audio
+    type: capability
+    name: "Hermes Platform Base Audio Contract"
+    path: "/usr/local/lib/hermes-agent/gateway/platforms/base.py"
+    description: "Base adapter AudioFormat and StreamingTTSHandle plus send_voice / streaming-TTS hooks used by platform adapters."
+    tags: [audio, tts, voice, platform]
+
+  # ── Hermes plugins / platform adapters ──────────────────────────────────────
+  - id: hermes_google_meet
+    type: plugin
+    name: "Hermes Google Meet Plugin"
+    path: "/usr/local/lib/hermes-agent/plugins/google_meet"
+    description: "Meet bot with transcribe and realtime modes; realtime feeds TTS into a virtual audio bridge."
+    tags: [audio, voice, realtime, meeting]
+
+  - id: hermes_google_meet_audio_bridge
+    type: tool
+    name: "Google Meet Virtual Audio Bridge"
+    path: "/usr/local/lib/hermes-agent/plugins/google_meet/audio_bridge.py"
+    description: "PulseAudio/BlackHole virtual mic setup used by Meet realtime mode."
+    tags: [audio, voice, realtime, virtual_audio]
+
+  - id: hermes_discord_voice_mixer
+    type: plugin
+    name: "Hermes Discord Voice Mixer"
+    path: "/usr/local/lib/hermes-agent/plugins/platforms/discord/voice_mixer.py"
+    description: "Continuous PCM mixer for Discord voice channels with ambient/idle loop and speech ducking."
+    tags: [audio, voice, discord, mixer]
+
+  - id: hermes_spotify
+    type: plugin
+    name: "Hermes Spotify Plugin"
+    path: "/usr/local/lib/hermes-agent/plugins/spotify"
+    description: "Spotify playback/control plugin; surface for music-related intent."
+    tags: [audio, music, spotify, playback]
+
+  # ── A-FORGE audio tooling ───────────────────────────────────────────────────
+  - id: aforge_audio_event_bridge
+    type: tool
+    name: "A-FORGE Audio Event Bridge"
+    path: "/root/A-FORGE/audio/audio_event_bridge.py"
+    description: "Hermes ↔ A-FORGE bridge: extracts VoiceState, transcribes, persists AudioEvent to Qdrant, writes TTS hint sidecar."
+    tags: [audio, voice, tts, stt, qdrant]
+
+  - id: aforge_audio_watcher
+    type: tool
+    name: "A-FORGE Audio Watcher"
+    path: "/root/A-FORGE/audio/audio_watcher.py"
+    description: "Polls Hermes audio cache and runs canonical ingest + Qdrant persistence."
+    tags: [audio, voice, watcher, memory]
+
+  - id: aforge_state_aware_tts
+    type: tool
+    name: "A-FORGE State-Aware TTS"
+    path: "/root/A-FORGE/audio/state_aware_tts.py"
+    description: "F9-gated diagnostic acknowledgment layer; reads VoiceState sidecar but does not mutate TTS delivery."
+    tags: [audio, tts, voice, governance]
+
+  - id: aforge_forge_audio_features
+    type: tool
+    name: "A-FORGE Forge Audio Features"
+    path: "/root/A-FORGE/tools/forge_audio_features.py"
+    description: "Prosody/VoiceState extraction using parselmouth (Praat) + scipy; produces fatigue/arousal indices."
+    tags: [audio, voice, prosody, dsp]
+
+  - id: aforge_forge_audio_ingest
+    type: tool
+    name: "A-FORGE Forge Audio Ingest"
+    path: "/root/A-FORGE/tools/forge_audio_ingest.py"
+    description: "Persists AudioEvent with well vector to Qdrant and maintains append-only ledger."
+    tags: [audio, voice, memory, ingest]
+
+  # ── Federation model routes ─────────────────────────────────────────────────
+  - id: fed_asi_555_audio
+    type: model
+    name: "Federation Alias asi-555-audio"
+    path: "/root/A-FORGE/litellm-config.yaml"
+    description: "Native audio input chat alias backed by MiMo V2.5."
+    tags: [audio, voice, model_alias, asr, tts]
+
+  - id: fed_fed_audio
+    type: model
+    name: "Federation Alias fed/audio"
+    path: "/root/A-FORGE/litellm-config.yaml"
+    description: "Federation audio lane alias backed by MiMo V2.5 / MiMo V2.5 Pro."
+    tags: [audio, voice, model_alias, asr, tts]
+
+  - id: fed_fed_realtime_voice
+    type: model
+    name: "Federation Alias fed-realtime-voice"
+    path: "/root/A-FORGE/litellm-config.yaml"
+    description: "Realtime voice alias backed by MiMo V2.5 ASR for ASR/TTS/voice clone/design."
+    tags: [audio, voice, model_alias, realtime, asr, tts]
+
+  - id: fed_fed_vision
+    type: model
+    name: "Federation Alias fed/vision"
+    path: "/root/A-FORGE/litellm-config.yaml"
+    description: "Vision alias that also declares supports_audio_input via MiMo V2.5 Pro."
+    tags: [audio, vision, model_alias, multimodal]
+
+  - id: provider_minimax
+    type: provider
+    name: "MiniMax Audio/TTS/Music"
+    path: null
+    description: "Cloud provider for speech synthesis (speech-2.8-hd), music generation (music-2.6), and audio covers."
+    tags: [audio, tts, music, provider]
+
+  - id: provider_mimo
+    type: provider
+    name: "MiMo V2.5 Audio"
+    path: null
+    description: "Xiaomi MiMo audio models: ASR, TTS, voice design, and voice clone."
+    tags: [audio, tts, asr, voice, provider]
+
+  - id: provider_openai_audio
+    type: provider
+    name: "OpenAI STT/TTS"
+    path: null
+    description: "Whisper STT and GPT-4o / OpenAI TTS used by Hermes voice tools and Meet realtime."
+    tags: [audio, tts, asr, provider]
+
+  - id: provider_elevenlabs
+    type: provider
+    name: "ElevenLabs STT/TTS"
+    path: null
+    description: "ElevenLabs Scribe STT and streaming TTS used by Hermes."
+    tags: [audio, tts, asr, provider]
+
+  - id: provider_groq
+    type: provider
+    name: "Groq Whisper"
+    path: null
+    description: "Groq-hosted Whisper API used as a free-tier STT option."
+    tags: [audio, asr, provider]
+
+  # ── Hermes skill-layer audio capabilities ───────────────────────────────────
+  - id: hermes_skill_token_plan_tts
+    type: skill
+    name: "Hermes Token Plan TTS Skill"
+    path: "/root/HERMES/skills/media/text-to-speech/SKILL.md"
+    description: "QwenCloud Token Plan TTS via dashscope (qwen-audio-3.0-tts-plus)."
+    tags: [audio, tts, voice]
+
+  - id: hermes_skill_tts_edge_fallback
+    type: skill
+    name: "Hermes TTS Edge Fallback Skill"
+    path: "/root/HERMES/skills/media/tts-edge-fallback/SKILL.md"
+    description: "Edge-tts free Malay/English fallback with voice profiles and Nusantara mode."
+    tags: [audio, tts, voice, malay]
+
+  - id: hermes_skill_music_intelligence
+    type: skill
+    name: "Hermes Music Intelligence Skill"
+    path: "/root/HERMES/skills/media/music-intelligence/SKILL.md"
+    description: "Governed music generation + somatic scoring pipeline using scipy/numpy DSP."
+    tags: [audio, music, generation, dsp]
+
+  - id: hermes_skill_music_generation
+    type: skill
+    name: "Hermes Music Generation Skill"
+    path: "/root/HERMES/skills/media/music-generation/SKILL.md"
+    description: "Full music generation pipeline across MiniMax, HeartMuLa, AudioCraft, Suno, and RVC cover paths."
+    tags: [audio, music, generation, minimax]
+
+  - id: hermes_skill_audio_analysis
+    type: skill
+    name: "Hermes Audio Analysis Skill"
+    path: "/root/HERMES/skills/media/audio-analysis/SKILL.md"
+    description: "DSP-based audio feature extraction and scoring; documents safe/unsafe librosa functions."
+    tags: [audio, dsp, analysis, features]
+
+  - id: hermes_skill_runpod_whisper
+    type: skill
+    name: "Hermes Runpod Whisper Endpoint Skill"
+    path: "/root/HERMES/skills/runpod/golden-paths/03-whisper-endpoint/README.md"
+    description: "Deploys serverless Whisper ASR endpoint on Runpod via Hub or flash."
+    tags: [audio, asr, whisper, runpod]
+
+  - id: hermes_skill_mt5_voice
+    type: skill
+    name: "Hermes MT5 AI Trading Agent Voice"
+    path: "/root/HERMES/skills/trading/mt5-ai-trading-agent/SKILL.md"
+    description: "Trading agent skill that defaults to voice-note signal delivery via edge-tts."
+    tags: [audio, tts, voice, trading]
+
+  - id: hermes_skill_ig_story_audio
+    type: skill
+    name: "Hermes IG Story Gym Quotes Audio"
+    path: "/root/HERMES/skills/social-media/ig-story-gym-quotes/SKILL.md"
+    description: "Generates 8s IG Story video with numpy+wave beat synthesis."
+    tags: [audio, music, beat, video]
+
+  - id: hermes_skill_comfyui_audio
+    type: skill
+    name: "Hermes ComfyUI Audio Media Type"
+    path: "/root/HERMES/skills/creative/comfyui/scripts/_common.py"
+    description: "ComfyUI skill recognizes .wav/.mp3/.flac/.ogg/.m4a as audio media type in workflow tooling."
+    tags: [audio, comfyui, media_type]
+
+  - id: hermes_skill_songwriting
+    type: skill
+    name: "Hermes Songwriting & AI Music Skill"
+    path: "/root/HERMES/skills/creative/songwriting-and-ai-music/SKILL.md"
+    description: "Songwriting craft guidelines and Suno AI music prompt engineering."
+    tags: [audio, music, songwriting]
+
+  # ── AAA skills intelligence ─────────────────────────────────────────────────
+  - id: aaa_skill_audio_quantum_cognition
+    type: skill
+    name: "AAA AGI Audio Quantum Cognition"
+    path: "/root/AAA/skills/AGI-audio-quantum-cognition/SKILL.md"
+    description: "Constitutional audio doctrine covering STT/TTS/DSP governance and the audio triangle."
+    tags: [audio, tts, asr, voice, music, governance]
+
+  - id: aaa_skill_mmx_cli
+    type: skill
+    name: "AAA mmx-cli Skill"
+    path: "/root/.kimi-code/skills/mmx-cli/SKILL.md"
+    description: "MiniMax CLI skill for text/image/video/speech/music generation."
+    tags: [audio, tts, music, minimax]
+
+  - id: aaa_skill_minimax_image_gen
+    type: skill
+    name: "AAA MiniMax Image Generation Skill"
+    path: "/root/.kimi-code/skills/minimax-image-gen/SKILL.md"
+    description: "MiniMax MCP skill covering text_to_audio and music_generation."
+    tags: [audio, tts, music, minimax]
+
+  - id: aaa_skill_agi_multimodal_bridge
+    type: skill
+    name: "AAA AGI Multimodal Bridge"
+    path: "/root/.kimi-code/skills/AGI-multimodal-bridge/SKILL.md"
+    description: "Cross-modal reasoning bridge for text/image/table/geospatial; applicable to audio evidence fusion."
+    tags: [audio, multimodal, reasoning, bridge]
+
+  - id: aaa_skill_delta_omega_psi
+    type: skill
+    name: "AAA Δ·Ω·Ψ Multimodal Cognition"
+    path: "/root/.kimi-code/skills/delta-omega-psi-multimodal-cognition/SKILL.md"
+    description: "Enforces Δ-substrate metabolism for multimodal inputs including audio."
+    tags: [audio, multimodal, governance]
+
+  - id: aaa_skill_token_plan_image
+    type: skill
+    name: "AAA Token Plan Image Skill"
+    path: "/root/.kimi-code/skills/token-plan-image/SKILL.md"
+    description: "Qwen Token Plan multimodal generation; sibling lane for Token Plan TTS."
+    tags: [audio, tts, token_plan]
+
+  - id: aaa_skill_imagine
+    type: skill
+    name: "AAA Imagine Skill"
+    path: "/root/.kimi-code/skills/imagine/SKILL.md"
+    description: "Image/video generation guidance; mentions TTS/video tools may not exist in Grok Build."
+    tags: [audio, video, image_generation]
+
+  - id: aaa_skill_pdf_voice_protocol
+    type: skill
+    name: "AAA PDF Voice Protocol"
+    path: "/root/.kimi-code/skills/aaa-pdf-voice-protocol/SKILL.md"
+    description: "Translates federation epistemic vocabulary into publication-grade geological prose for PDF artifacts."
+    tags: [audio, voice, publication]
+
+  - id: aaa_skill_tts_edge_fallback
+    type: skill
+    name: "AAA TTS Edge Fallback Skill"
+    path: "/root/.kimi-code/skills/_retired/ARCHIVE-tts-edge-fallback/SKILL.md"
+    description: "Archived AAA view of edge-tts fallback (superseded by Hermes skill-layer canonical)."
+    tags: [audio, tts, voice]
+
+  - id: aforge_paradox_engine
+    type: tool
+    name: "A-FORGE Paradox Engine"
+    path: "/root/A-FORGE/paradox-engine"
+    description: "16-dim somatic vector engine referenced by music-intelligence but not yet wired to the music pipeline."
+    tags: [audio, music, somatic, paradox]
+
+edges:
+  - source: hermes_streaming_tts_consumer
+    relation: uses
+    target: hermes_tts_streaming_provider
+    notes: "Consumer resolves provider and feeds sentence chunks to streamer."
+
+  - source: hermes_tts_streaming_provider
+    relation: implements
+    target: hermes_tts_tool
+    notes: "Streaming provider subclasses and fallback path reuse tts_tool config/backends."
+
+  - source: hermes_tts_tool
+    relation: fallback_to
+    target: hermes_skill_tts_edge_fallback
+    notes: "Edge-tts is the default free Malay fallback when cloud TTS fails."
+
+  - source: hermes_tts_tool
+    relation: uses
+    target: provider_minimax
+    notes: "MiniMax Speech 2.8 HD via mulerouter-tts.py / mmx-cli."
+
+  - source: hermes_tts_tool
+    relation: uses
+    target: provider_mimo
+    notes: "MiMo V2.5 TTS voice design / voice clone configurable under tts:."
+
+  - source: hermes_tts_tool
+    relation: uses
+    target: provider_openai_audio
+    notes: "OpenAI TTS backend."
+
+  - source: hermes_tts_tool
+    relation: uses
+    target: provider_elevenlabs
+    notes: "ElevenLabs streaming and whole-file TTS."
+
+  - source: hermes_voice_mode
+    relation: uses
+    target: hermes_transcription_tools
+    notes: "Voice mode records audio then dispatches to STT."
+
+  - source: hermes_voice_mode
+    relation: uses
+    target: hermes_tts_tool
+    notes: "Voice mode playback uses the TTS tool."
+
+  - source: hermes_wake_word
+    relation: uses
+    target: hermes_voice_mode
+    notes: "Wake word triggers a fresh voice session."
+
+  - source: hermes_transcription_tools
+    relation: fallback_to
+    target: provider_groq
+    notes: "Groq Whisper is the default free-tier cloud STT fallback."
+
+  - source: hermes_transcription_tools
+    relation: uses
+    target: provider_openai_audio
+    notes: "OpenAI Whisper API."
+
+  - source: hermes_transcription_tools
+    relation: uses
+    target: provider_elevenlabs
+    notes: "ElevenLabs Scribe STT."
+
+  - source: hermes_audio_container
+    relation: implements
+    target: hermes_tts_tool
+    notes: "Repairs outbound format mismatches from TTS backends."
+
+  - source: hermes_audio_container
+    relation: implements
+    target: hermes_platform_base_audio
+    notes: "Inbound voice-note bytes are sniffed before STT."
+
+  - source: hermes_neutts_synth
+    relation: implements
+    target: hermes_tts_tool
+    notes: "NeuTTS is one of the TTS backend options."
+
+  - source: hermes_platform_base_audio
+    relation: enables
+    target: hermes_streaming_tts_consumer
+    notes: "StreamingTTSHandle and AudioFormat contract enable streaming."
+
+  - source: hermes_discord_voice_mixer
+    relation: implements
+    target: hermes_platform_base_audio
+    notes: "Discord adapter mixes outgoing PCM streams."
+
+  - source: hermes_google_meet
+    relation: uses
+    target: provider_openai_audio
+    notes: "Realtime mode uses OpenAI Realtime API for speech I/O."
+
+  - source: hermes_google_meet
+    relation: uses
+    target: hermes_google_meet_audio_bridge
+    notes: "Realtime mode provisions virtual audio device."
+
+  - source: hermes_spotify
+    relation: maps_to
+    target: hermes_skill_music_intelligence
+    notes: "Spotify intent can route into music intelligence workflows."
+
+  - source: aforge_audio_event_bridge
+    relation: uses
+    target: hermes_voice_state
+    notes: "Bridge calls Hermes canonical voice_state.py extractor."
+
+  - source: aforge_audio_event_bridge
+    relation: uses
+    target: aforge_forge_audio_features
+    notes: "Bridge imports VoiceState from forge_audio_features for TTS hint."
+
+  - source: aforge_audio_watcher
+    relation: uses
+    target: aforge_forge_audio_ingest
+    notes: "Watcher invokes forge_audio_ingest.py on new Hermes cache files."
+
+  - source: aforge_forge_audio_ingest
+    relation: uses
+    target: hermes_voice_state
+    notes: "Ingest uses extract_voice_state and voice_state_to_well_features."
+
+  - source: aforge_state_aware_tts
+    relation: uses
+    target: aforge_forge_audio_features
+    notes: "Reads well_features sidecar produced by forge_audio_ingest."
+
+  - source: aforge_forge_audio_features
+    relation: extracts
+    target: hermes_voice_state
+    notes: "Provides an alternate parselmouth-based VoiceState extractor."
+
+  - source: fed_asi_555_audio
+    relation: fallback_to
+    target: fed_fed_audio
+    notes: "Both aliases route to MiMo V2.5 audio-capable models."
+
+  - source: fed_fed_audio
+    relation: uses
+    target: provider_mimo
+    notes: "fed/audio points to mimo-v2.5-pro / mimo-v2.5."
+
+  - source: fed_fed_realtime_voice
+    relation: uses
+    target: provider_mimo
+    notes: "fed-realtime-voice points to mimo-v2.5-asr."
+
+  - source: fed_fed_vision
+    relation: uses
+    target: provider_mimo
+    notes: "MiMo V2.5 Pro entry also declares supports_audio_input."
+
+  - source: aaa_skill_mmx_cli
+    relation: uses
+    target: provider_minimax
+    notes: "mmx speech synthesize and mmx music generate."
+
+  - source: aaa_skill_minimax_image_gen
+    relation: uses
+    target: provider_minimax
+    notes: "minimax-mcp text_to_audio and music_generation."
+
+  - source: hermes_skill_music_intelligence
+    relation: uses
+    target: aaa_skill_mmx_cli
+    notes: "Music intelligence pipeline invokes mmx music generate."
+
+  - source: hermes_skill_music_generation
+    relation: uses
+    target: aaa_skill_mmx_cli
+    notes: "MuleRouter MiniMax music generation path uses mmx-cli."
+
+  - source: hermes_skill_mt5_voice
+    relation: uses
+    target: hermes_skill_tts_edge_fallback
+    notes: "Trading skill defaults to edge-tts for BM voice notes."
+
+  - source: hermes_skill_ig_story_audio
+    relation: uses
+    target: hermes_skill_audio_analysis
+    notes: "Beat synthesis uses numpy+wave DSP patterns documented in audio-analysis."
+
+  - source: hermes_skill_runpod_whisper
+    relation: implements
+    target: hermes_transcription_tools
+    notes: "Offers a scalable cloud ASR backend for Hermes STT."
+
+  - source: hermes_skill_audio_analysis
+    relation: syncs_with
+    target: aforge_forge_audio_features
+    notes: "Both document parselmouth-based prosody extraction and scipy-only DSP."
+
+  - source: aaa_skill_audio_quantum_cognition
+    relation: syncs_with
+    target: hermes_voice_mode
+    notes: "Doctrine covers voice-mode STT/TTS governance."
+
+  - source: aaa_skill_audio_quantum_cognition
+    relation: syncs_with
+    target: hermes_skill_music_intelligence
+    notes: "Doctrine covers music/DSP analysis."
+
+  - source: aaa_skill_audio_quantum_cognition
+    relation: syncs_with
+    target: hermes_skill_tts_edge_fallback
+    notes: "Doctrine references edge-tts voice profiles."
+
+  - source: aaa_skill_agi_multimodal_bridge
+    relation: syncs_with
+    target: hermes_skill_audio_analysis
+    notes: "Audio evidence can be fused into multimodal reasoning."
+
+  - source: aaa_skill_delta_omega_psi
+    relation: governs
+    target: aaa_skill_audio_quantum_cognition
+    notes: "Δ·Ω·Ψ substrate rules govern audio cognition claims."
+
+  - source: aaa_skill_token_plan_image
+    relation: fallback_to
+    target: hermes_skill_token_plan_tts
+    notes: "Both use Qwen Token Plan multimodal API; image skill is canonical while TTS skill lives in Hermes layer."
+
+  - source: hermes_skill_music_intelligence
+    relation: maps_to
+    target: aforge_paradox_engine
+    notes: "Music-intelligence references A-FORGE paradox engine but notes it is not wired."
+
+  - source: hermes_skill_songwriting
+    relation: syncs_with
+    target: hermes_skill_music_generation
+    notes: "Songwriting craft feeds music generation engines."
+
+  - source: hermes_skill_comfyui_audio
+    relation: maps_to
+    target: hermes_skill_music_generation
+    notes: "ComfyUI can host AudioCraft/music nodes; skill only classifies audio media type."
+
+gaps:
+  - description: "Hermes streaming TTS consumer has no dedicated AAA skill; only generic AGI-audio-quantum-cognition covers it."
+    severity: high
+    suggested_fix: "Create a AAA skill for Hermes streaming-TTS governance covering barge-in, suppression, and adapter contracts."
+
+  - description: "No unified federation voice/audio registry; Hermes, A-FORGE, and AAA skills each maintain separate audio capability docs."
+    severity: high
+    suggested_fix: "Promote this knowledge graph to a living registry and add CI drift checks against /usr/local/lib/hermes-agent and /root/A-FORGE."
+
+  - description: "Hermes wake_word / hands-free trigger has no corresponding AAA skill or federation model alias."
+    severity: high
+    suggested_fix: "Add a governance skill for wake-word activation linking to voice mode and AAA Δ·Ω·Ψ substrate rules."
+
+  - description: "Hermes voice_state.py (librosa) and A-FORGE forge_audio_features.py (parselmouth) duplicate prosody extraction with different feature sets."
+    severity: medium
+    suggested_fix: "Converge on one canonical VoiceState extractor; route Hermes gateway to A-FORGE forge_audio_features."
+
+  - description: "A-FORGE audio tooling (audio_event_bridge, audio_watcher, forge_audio_ingest) is not linked to any AAA skill beyond music-intelligence references."
+    severity: medium
+    suggested_fix: "Create or extend a AAA skill that documents the A-FORGE audio memory pipeline and Qdrant contract."
+
+  - description: "Hermes Google Meet realtime mode depends on OpenAI Realtime API instead of federation aliases (fed-realtime-voice / MiMo)."
+    severity: medium
+    suggested_fix: "Add MiMo-backed realtime provider option to Meet plugin and map to fed-realtime-voice."
+
+  - description: "ASR/Whisper deployment know-how only exists in the Hermes runpod skill; no AAA-level skill for serverless ASR governance."
+    severity: medium
+    suggested_fix: "Extract a canonical AAA ASR deployment skill covering Runpod Whisper, Groq, and local faster-whisper."
+
+  - description: "Hermes Spotify plugin is not wired to AAA music-intelligence or music-generation skills."
+    severity: low
+    suggested_fix: "Add a routing note in the Spotify plugin/skill to delegate generation/analysis to music-intelligence."
+
+  - description: "Hermes ComfyUI skill only tests audio media-type classification; no audio generation workflow or node catalog exists."
+    severity: low
+    suggested_fix: "Add AudioCraft/MusicGen workflow template and node catalog to ComfyUI skill workflows/."
+
+  - description: "Token Plan TTS skill lives under /root/HERMES/skills/media but has no AAA mirror; AAA token-plan-image is image-only."
+    severity: low
+    suggested_fix: "Create AAA token-plan-tts skill or extend token-plan-image to cover Qwen audio-3.0-tts-plus."
