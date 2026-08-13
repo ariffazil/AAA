@@ -266,35 +266,42 @@ instruments:
 - id: FI-008
   name: Kimi Code CLI
   binary: /root/.kimi-code/bin/kimi
-  version: 0.27.0
+  version: 0.35.0
   model: kimi-code/k3
   izin: GRANTED
   izin_date: '2026-06-10'
   sandbox: process
+  permission_mode: yolo
+  hook_count: 12
+  anti_bangang: YOLO-native — constitutional governance via F1-F13 + hook telemetry, NOT permission prompts
   subagent_policy:
     default: 888_HOLD
     registered_subagents:
     - explore
-    - fix
-    - coordinator
-    - worker
+    - plan
+    - agent
+    - coder
   mcp_surface:
-  - arifOS
-  - wealth
-  - well
-  - geox
-  - aforge
-  - capability-index
-  - repomapper
-  - serena
+  - arifOS        # 8 tools (kernel)
+  - aforge        # 114 tools (execution) via stdio
+  - geox          # 33 tools (earth)
+  - wealth        # 14 tools (capital)
+  - well          # 8 tools (human readiness)
+  - fed           # 6 tools (FED router)
+  - arifFlow      # 2 tools (metabolism)
+  - minimax       # 2 tools (search)
   mcp_servers_disabled:
-  - github
-  - brave-search
-  - meyhem
-  - playwright-mcp
-  config_path: /root/.kimi/config.toml
-  mcp_config_path: /root/.kimi/mcp.json
-  agent_card: /root/AAA/a2a-server/agent-cards/forge/fi-008-kimi-code.json
-  note: 'Aligned 2026-07-20. Model: Kimi K3 (2.8T MoE, 1M ctx, vision, thinking) via managed:kimi-code (OAuth, Allegretto).
-    A-FORGE ingress is stdio. AMANAH + MARUAH embedded.
-    Legacy direct MCPs disabled. Trust tier: proposed 2 pending A-AUDIT + F13 ratification.'
+  - github        # route through A-FORGE forge_* tools
+  - brave-search  # route through A-FORGE forge_* tools
+  - meyhem        # deprecated
+  - playwright-mcp # route through A-FORGE forge_* tools
+  config_path: /root/.kimi-code/config.toml
+  mcp_config_path: /root/.kimi-code/mcp.json
+  hooks_path: /root/.arifos/agents/kimi/hooks/
+  agent_card: /root/AAA/agents/kimi-code/agent-card.json
+  a2a_forge_card: /root/AAA/a2a-server/agent-cards/forge/fi-008-kimi-code.json
+  a2a_harness_card: /root/AAA/a2a-server/agent-cards/harnesses/kimi-code.json
+  warga_card: /root/AAA/agents/kimi-code/WARGAAA_CARD.md
+  note: 'Synced 2026-08-13 by FI-008 anti-bangang forge. v2.4.0 agent card, 12 hooks (TurnStarted + UserPromptQueued added),
+    max_steps_per_turn=40, YOLO-native governance. Version 0.35.0 (latest on CDN; Perplexity v0.36.0 claim debunked).
+    A-FORGE ingress is stdio. AMANAH + MARUAH embedded. Legacy direct MCPs disabled.'
