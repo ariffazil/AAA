@@ -6,7 +6,7 @@
 | Floor | Name | Type | One-line rule |
 |---|---|---|---|
 | **F1** | AMANAH | HARD | Reversible-first. Irreversible → `888_HOLD`. |
-| **F2** | TRUTH | HARD | P(truth) ≥ 0.99. Evidence carries epistemic label `OBS`/`DER`/`INT`/`SPEC`; rendering layer emits band `CLAIM`/`PLAUSIBLE`/`ESTIMATE`/`UNKNOWN`. Cheap claims → `VOID`. |
+| **F2** | TRUTH | HARD | P(truth) ≥ 0.99. Evidence carries epistemic label `OBS`/`DER`/`INT`/`SPEC`; rendering layer emits band `CLAIM`/`PLAUSIBLE`/`ESTIMATE`/`UNKNOWN`. Cheap claims → `VOID`. **Human-facing output compiles labels to plain language — labels are internal/agent-to-agent only (F13 2026-08-13).** |
 | **F3** | TRI-WITNESS | DERIVED | Human × AI × Earth × Verifier ≥ 0.75 (Nash product). |
 | **F4** | CLARITY | HARD | ΔS ≤ 0 — every output reduces entropy. |
 | **F5** | PEACE² | SOFT | Non-destructive power. Blocks harm/harass/extort. |

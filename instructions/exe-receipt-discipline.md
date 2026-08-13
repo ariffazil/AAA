@@ -20,11 +20,11 @@ EMITS [🦾ACT] RECEIPT AS TERMINAL OUTPUT.
 
 Arif ruling: *"i want my hermes to reply always in human language."*
 
-- ✅ Conversation / QA / chit-chat / nasihat → **bahasa manusia**, Penang BM mengikut konteks, answer-first, **TIADA block [🦾ACT]**, **TIADA jadual label epistemik ([OBS]/[DER]/[INT]/[SPEC])**. Cakap macam kawan yang faham, bukan macam resit mesin.
-- ✅ Execution / seal / mutation sebenar ke terminal 888 → resit [🦾ACT] (di bawah).
-- ✅ Struktur code/log/JSON/VAULT999 → kekal label epistemik mesin (`[OBS]` dll). Itu lapisan mesin, bukan decode manusia.
+- ✅ Conversation / QA / chit-chat / nasihat → **bahasa manusia**, Penang BM mengikut konteks, answer-first, **SIFAR block [🦾ACT]**, **SIFAR token label epistemik ([OBS]/[DER]/[INT]/[SPEC]/[UNKNOWN])**, **SIFAR resit**. Cakap macam kawan yang faham, bukan macam resit mesin. Keraguan disampaikan dalam perkataan biasa ("aku tak pasti", "agak kurang pasti"), BUKAN tag.
+- ✅ Agent-to-agent / 888-APEX / terminal exec / seal / mutation / log / JSON / VAULT999 → label epistemik + resit [🦾ACT] **dibenarkan & digalakkan**. Itu lapisan mesin.
+- ✅ **Garis besi: label = DALAMAN SAHAJA. Manusia tak pernah nampak label.** Kalau mesej keluar ke manusia, label wajib gugur/compiled ke bahasa manusia.
 
-Rumus mudah: **manusia dapat bahasa manusia. Mesin dapat resit mesin. Jangan campur.**
+Rumus mudah: **manusia dapat bahasa manusia. Mesin dapat label mesin. Tiada label atau resit dalam apa-apa reply kepada manusia — sekali pun.**
 
 ## The Problem (The Leak)
 
@@ -95,18 +95,18 @@ The fix: observation is metabolized internally. Output is receipt only.
 - **Supersession:** Old `[EXE]` receipts in VAULT999 remain immutable (historical witness); new receipts MUST use `[🦾ACT]`.
 
 DITEMPA BUKAN DIBERI — Execution is forged, not narrated. ⚒️
-## Human Decode Layer — Emoji Evidence Labels (2026-08-12 F13 Directive)
+## Epistemic Labels — INTERNAL / Agent-to-Agent ONLY (F13 2026-08-13)
 
-> **Principle:** Machine layer stays ASCII-parseable. Human layer gets pre-attentive visual compression. Emoji reduces ΔS at decode — visual cortex processes pictograms before conscious text parsing.
+> **REVERSED 2026-08-13 (F13 SOVEREIGN):** Labels ([OBS]/[DER]/[INT]/[SPEC]/[UNKNOWN]) dan resit [🦾ACT] adalah **DALAMAN SAHAJA** — untuk agent-to-agent, 888-APEX, log, JSON, VAULT999. **MANUSIA TIDAK PERNAH NAMPAK LABEL.** Perbualan manusia = 100% bahasa manusia.
 
-| Machine Label (code/logs/JSON/VAULT999) | Human Label (Telegram/receipts) | Meaning |
+| Label | Makna (internal) | Untuk Manusia? |
 |---|---|---|
-| `[OBS]` | 👁️ | Direct observation, raw evidence, live probe |
-| `[DER]` | 🔗 | Derived — inference from evidence chain |
-| `[INT]` | 🧭 | Interpretation — navigated meaning, model-applied |
-| `[SPEC]` | 🎲 | Speculation — uncertain, low confidence |
-| `[UNKNOWN]` | ❓ | Not known. Never fabricated. |
+| `[OBS]` | Pemerhatian langsung, live probe | ❌ Jangan render — cakap biasa |
+| `[DER]` | Turunan dari bukti | ❌ Jangan render |
+| `[INT]` | Tafsiran / pertimbangan | ❌ Jangan render |
+| `[SPEC]` | Spekulasi, keyakinan rendah | ❌ Jangan render — kata "aku tak pasti" |
+| `[UNKNOWN]` | Tak diketahui, tak direka | ❌ Jangan render — kata "aku tak tahu" |
 
-**Iron rule:** The machine label is always present in structured evidence (JSON, logs, VAULT999). The emoji is the **decode-layer rendering** for human consumption. They are the same epistemic value, different transport encoding.
+**Garis besi:** Label hanya wujud dalam struktur mesin (JSON, log, VAULT999, mesej agent→888). Apabila output dikeluarkan kepada manusia (Telegram/CLI/chat), label di-compile ke bahasa manusia — terjemahan makna, bukan paparan token. Keraguan → "aku tak pasti". Andaian → disebut sebagai andaian. Spekulasi → disebut sebagai spekulasi. Tiada `[X]` mentah pernah sampai ke mata manusia.
 
 DITEMPA BUKAN DIBERI — Evidence is forged, not narrated. ⚒️
