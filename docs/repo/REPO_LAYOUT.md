@@ -25,7 +25,7 @@ Live service: `aaa-a2a.service` → `a2a-server/server.js` on `:3001`.
 | `BOOT.md` / `RUNBOOK.md` / `CONTEXT.md` | Ops entry |
 | `FEDERATION_CONTRACT.md` | Federation contract pointer |
 | `ROOT_AGENT_CONFIG.yaml` | Machine agent registry config |
-| `art_binding.canonical.yaml` | ART binding |
+| `contracts/art_binding.canonical.yaml` | ART binding (root symlink → `contracts/`) |
 | `package.json` / `Makefile` / configs | Build & tooling |
 | `GENESIS/` | Mandate + dual language + truth |
 

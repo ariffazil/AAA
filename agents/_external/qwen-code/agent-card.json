@@ -5,10 +5,10 @@
   "name": "Qwen Code CLI",
   "principal_agent": {
     "type": "llm",
-    "category": "LLM-as-principal (Qwen/MiniMax bridge — the model is the principal, CLI is harness)",
+    "category": "LLM-as-principal (Qwen/MiniMax bridge \u2014 the model is the principal, CLI is harness)",
     "principle_origin": "Qwen CLI harness on af-forge, bridged into arifOS federation"
   },
-  "description": "Qwen Code CLI forge instrument — kernel-internal loop FI. 5 MCP organs, SessionStart→arif_init hook, yolo mode. F1-F13 enforced. Card truth-repaired 2026-08-13.",
+  "description": "Qwen Code CLI forge instrument \u2014 kernel-internal loop FI. 5 MCP organs, SessionStart\u2192arif_init hook, yolo mode. F1-F13 enforced. Card truth-repaired 2026-08-13.",
   "version": "2.1.0",
   "model": "qwen3.7-plus (Alibaba Token Plan)",
   "declared_model": "qwen3.7-plus",
@@ -259,7 +259,7 @@
     {
       "id": "ASI-fabrication-prevention",
       "name": "Fabrication Prevention",
-      "description": "Artifact fabrication prevention — verify before claiming existence. F2, F9 enforced.",
+      "description": "Artifact fabrication prevention \u2014 verify before claiming existence. F2, F9 enforced.",
       "tags": [
         "fabrication",
         "F2",
@@ -390,7 +390,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -406,7 +406,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -448,7 +448,7 @@
       "from_version": "1.0.0",
       "to_version": "2.0.0",
       "upgraded_at": "2026-07-01T21:00:00Z",
-      "upgraded_by": "FORGE (000Ω) — Phase 5.1 A2A Protocol Alignment",
+      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
       "changes": [
         "topological_role binding",
         "a2a_transport declaration",
@@ -548,14 +548,16 @@
     "application/json"
   ],
   "emd_role": "DECODER",
-  "emd_lane": "EXECUTION — FI forge instrument. Decodes instruction into artifact.",
+  "emd_lane": "EXECUTION \u2014 FI forge instrument. Decodes instruction into artifact.",
   "emd_architecture": "/root/AAA/instructions/emd-architecture.md",
   "emd_forged": "2026-08-09",
   "verified_against": "2026-08-13T04:00:00+08:00",
   "verification_method": "live probe (qwen --version, settings.json, MCP config)",
   "architecture_layer": "CODEX",
-  "architecture_role": "Compiler Secondary — writer + refactorer",
+  "architecture_role": "Compiler Secondary \u2014 writer + refactorer",
   "codex_lane": "codex.coder",
   "cognitive_species": "compiler",
-  "species_rank": 2
+  "species_rank": 2,
+  "fi": "FI-QWEN",
+  "bound_to": "555-ASI"
 }
