@@ -156,4 +156,67 @@ Tiga delta ini sahaja. Selebihnya sudah hidup — gunakan.
 
 ---
 
+## §10 — Envelope Standard (delta-3 implementation)
+
+> **Forged:** 2026-08-13 · Pattern adapted from claude-code-prompt-improver (severity1)
+> **Binding:** ALL delegate_task calls from Hermes MUST use this envelope format
+> **F4 CLARITY:** Envelope replaces prose delegation. Zero politeness. XML boundaries.
+
+### The Envelope
+
+```xml
+<TASK>
+[1-3 sentences: what to do, not how to do it]
+</TASK>
+<STATE_IN>
+[Only the observation/relevant data — NOT full session history]
+</STATE_IN>
+<CONSTRAINT>
+[F1-F13 boundaries that apply. If none: "None."]
+</CONSTRAINT>
+```
+
+### Rules
+
+1. **Zero politeness.** No "tolong", "I need you to", "can you check". Agent has no feelings.
+2. **TASK is imperative.** "Fix X" not "Could you look at X?".
+3. **STATE_IN is filtered.** Hermes extracts ONLY relevant [OBS] data. NOT full session history. OpenCode starts clean.
+4. **CONSTRAINT is hard.** F13 override. T3 actions always listed. If none apply: "None."
+5. **Max 200 tokens.** Envelope is a pointer, not a document. If >200 tokens, the task is too vague — re-clarify first.
+
+### Example
+
+```xml
+<TASK>
+Fix ARIFOS_TRUST_AUTO_SIGN_UNKNOWN env var in /venv/kernel.
+The var is missing from the deployed venv but exists in source.
+</TASK>
+<STATE_IN>
+mode=init broken. venv drift from app copy. make deploy-local not run since last code change.
+</STATE_IN>
+<CONSTRAINT>
+Do not touch F1-F13 rule sets. Do not run git push. Reversible only.
+</CONSTRAINT>
+```
+
+### What NOT to send
+
+- ❌ Full SOUL.md, MEMORY.md, USER.md — agent doesn't need Hermes identity
+- ❌ Full conversation history — filter to relevant observations only
+- ❌ Skill index or tool schemas — agent loads its own tools
+- ❌ Receipt format or label taxonomy — agent uses its own conventions
+- ❌ Politeness, greetings, filler — zero tokens wasted on social protocol
+
+### Integration with existing infrastructure
+
+| Component | How it integrates |
+|---|---|
+| `delegate_task` tool | Envelope IS the `context` parameter |
+| `FORGE-cross-agent-handoff` skill | Envelope replaces prose handoff |
+| `forge-musyawawah-deliberation` | Envelope for Phase 1 critique dispatch |
+| `aaa-autonomy.ts` plugin | Reads envelope for tool restriction |
+| W_scar gate hook | Envelope CONSTRAINT validated against F1-F13 |
+
+---
+
 DITEMPA BUKAN DIBERI — Agent bercakap dalam structured state machine, bukan sembang manusia. Entropy menurun. Truth berskala. ⚒️
