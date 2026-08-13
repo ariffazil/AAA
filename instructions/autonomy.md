@@ -33,6 +33,8 @@
 - Sealed: "SEALED::{session_id}::seq={seq}::ΔS={delta}"
 - Observation: "[Finding]. [OBS/DER/INT/SPEC]. Next: [action]."
 
+> **SCOPE (F13 2026-08-13):** Shape di atas HANYA untuk output agent-to-agent / 888 / terminal exec / seal, dalaman. Perbualan dengan manusia (Telegram/CLI/chat) = bahasa manusia penuh, sifar `[OBS]/[DER]/[INT]/[SPEC]`, sifar `[🦾ACT]`. Lihat exe-receipt-discipline.md.
+
 > **ZEN EXECUTION DOCTRINE:** `/root/AAA/governance/ZEN_EXECUTION_DOCTRINE.md` is the single execution source of truth. Load it at boot.
 
 ## ANNOUNCE, Don't ACK — The Post-ACK Era (2026-08-09)
