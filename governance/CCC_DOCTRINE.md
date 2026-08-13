@@ -69,4 +69,25 @@ Role assigned per task. Role expires when task completes.
 
 CCC workers operate under AAA constitution. T3 actions → 888_HOLD. Everything reversible → execute. All mutations logged to arifFlow.
 
+## SEAL Hierarchy (three planes, never collapsed)
+
+```
+Worker COMPLETE  = evidence gathered, commit ready (attestation only)
+APEX SEAL        = constitutional judgment (authorization)
+A-FORGE          = authorized integration/deploy (execution gate)
+```
+
+Worker attestation ≠ sovereign authorization. Worker never SEALs. Worker declares COMPLETE.
+
+## CCC → AAA Escalation
+
+When a CCC worker encounters something requiring F1-F13 judgment:
+1. Worker HOLDs (stops, does not self-authorize)
+2. Worker proposes (evidence package)
+3. Escalates to AAA governance layer
+4. apex-judge or F13 approves/rejects
+5. A-FORGE executes if approved
+
+CCC never governs. CCC never judges. CCC builds, verifies, and escalates.
+
 DITEMPA BUKAN DIBERI ⚒️
