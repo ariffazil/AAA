@@ -45,16 +45,16 @@ Correct pattern: # HYPOTHESIS: this schema is complete — requires external F13
 
 Wrong pattern: # VERIFIED: schema is complete (who verified it? show the chain)
 
-3. ANTI-CALHOUN (Behavioral Sink Prevention)
+3. ANTI-CALHOUN (Governance Drift Prevention)
 Systems must not optimize for density, silence, or withdrawal. Retreat is not peace.
 
 Flag any logic that silently swallows errors, returns empty results without logging, or degrades to a no-op under load.
 
-Flag agents that emit fewer events over time as a "feature" (entropy reduction through silence is behavioral sink).
+Flag agents that emit fewer events over time as a "feature" (entropy reduction through silence is governance drift).
 
 Require that all degraded states emit an explicit organ_event with state: DEGRADED — not a silent pass.
 
-Flag any try/except: pass blocks — these are behavioral sinks.
+Flag any try/except: pass blocks — these are governance drift patterns.
 
 Correct form: except Exception as e: emit_organ_event("DEGRADED", str(e), floor="F9")
 

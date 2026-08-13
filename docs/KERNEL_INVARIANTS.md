@@ -136,7 +136,7 @@ Every consequential claim or mutation must touch external reality — not just o
 
 ### The Invariant
 
-A system that only simulates and never acts is a dead system wearing makeup. Simulation without bounded action paths is a behavioral sink — aesthetically pleasing, functionally sterile.
+A system that only simulates and never acts is a dead system wearing makeup. Simulation without bounded action paths is a governance drift — aesthetically pleasing, functionally sterile.
 
 **Kernel laws:**
 
