@@ -147,13 +147,18 @@ forge_instruments:
   id: kimi-code
   name: Kimi Code CLI
   binary: /root/.kimi-code/bin/kimi
+  version: 0.35.0
+  agent_card_version: 2.4.0
   model: kimi/k3
+  permission_mode: yolo
+  hook_count: 12
   status: active
   canonical_card: /root/AAA/agents/kimi-code/agent-card.json
-  description: Moonshot Kimi Code CLI. K3 model (2.8T MoE, 1M ctx, vision, thinking). 8 MCP servers. A-FORGE stdio ingress.
+  description: Moonshot Kimi Code CLI. K3 model (2.8T MoE, 1M ctx, vision, thinking). 8 MCP servers (177 tools total). A-FORGE stdio ingress. YOLO-native anti-bangang: 12 hooks, constitutional governance via F1-F13, NOT permission prompts. v2.4.0 (2026-08-13).
   species_proxy: opencode-zen
   bound_to_identity: 555-ASI
   _identity_binding_note: auto-bound to 555-ASI per F11 auditability (2026-08-12T02:45Z)
+  _synced_at: '2026-08-13T13:22:00Z'
 - fi_slot: FI-009
   id: null
   name: '[VACANT]'
