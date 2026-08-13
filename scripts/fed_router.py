@@ -70,45 +70,71 @@ except ImportError:
 FED_STATE_DB = Path("/root/.local/share/arifos/token_bank.db")
 FED_PORT = 7074
 
+# ── SINGLE SOURCE OF TRUTH ───────────────────────────────────────────────
+# Zen 2026-08-13 under F13 "make it all SOT": every static routing table
+# below used to be a hardcoded dict in this file (710 lines across 16 dicts).
+# They now load from one JSON SOT. Live balance/latency/health stay in
+# token_bank.db and are deliberately NOT mirrored here — duplicating them is
+# what let three stores disagree about mulerouter (SOT said DEAD, probe said
+# HTTP 200).
+#
+# FAIL-CLOSED: a missing or malformed SOT aborts startup. It must never fall
+# back to defaults — silent fallback is exactly what hid a revoked Kimi key
+# and kept a DEAD route ranked #2.
+FED_SOT_PATH = Path("/root/.config/federation-models.json")
+
+_SOT_REQUIRED = (
+    "pricing", "pricing_default", "model_routes", "capability_signatures",
+    "emd_model_class", "emd_neutral_cap", "agent_default_operation",
+    "vision_models", "constitutional_allowed", "effort",
+)
+_SOT_REQUIRED_PRICING = ("deepseek", "mulerouter", "tokenrouter", "kimi-moonshot", "flame")
+_SOT_REQUIRED_EFFORT = ("model_map", "alt_models", "cost_multiplier", "reasoning_passes")
+
+
+def _load_sot() -> dict:
+    """Load the static federation SOT. Aborts startup on any defect."""
+    if not FED_SOT_PATH.exists():
+        raise SystemExit(f"FED FATAL: SOT missing at {FED_SOT_PATH}")
+    try:
+        sot = json.loads(FED_SOT_PATH.read_text())
+    except Exception as exc:
+        raise SystemExit(f"FED FATAL: SOT unparseable ({FED_SOT_PATH}): {exc}")
+
+    for key in _SOT_REQUIRED:
+        if key not in sot:
+            raise SystemExit(f"FED FATAL: SOT missing required section '{key}'")
+        if not sot[key]:
+            raise SystemExit(f"FED FATAL: SOT section '{key}' is empty")
+    for prov in _SOT_REQUIRED_PRICING:
+        if prov not in sot["pricing"]:
+            raise SystemExit(f"FED FATAL: SOT pricing missing provider '{prov}'")
+    for sub in _SOT_REQUIRED_EFFORT:
+        if sub not in sot["effort"]:
+            raise SystemExit(f"FED FATAL: SOT effort missing '{sub}'")
+
+    print(
+        f"   SOT: {FED_SOT_PATH} — "
+        f"{len(sot['model_routes'])} routes, "
+        f"{len(sot['capability_signatures'])} capabilities, "
+        f"{sum(len(v) for v in sot['pricing'].values())} prices, "
+        f"{len(sot.get('providers', []))} providers, "
+        f"{len(sot.get('models', []))} models"
+    )
+    return sot
+
+
+_SOT = _load_sot()
+
 # ── Pricing tables (inlined — shared logic with token_bank.py) ──────────
 # Keep in sync with /root/AAA/scripts/token_bank.py pricing tables
 # Zen 2026-08-02: Added DeepSeek direct pricing + all provider tables (LiteLLM model catalog pattern)
 
-DEEPSEEK_PRICING = {
-    "deepseek-v4-pro": {"input": 0.435, "output": 0.87},
-    "deepseek-v4-flash": {"input": 0.14, "output": 0.28},
-}
+DEEPSEEK_PRICING = _SOT["pricing"]["deepseek"]
 
-MULEROUTER_PRICING = {
-    "deepseek-v4-pro": {"input": 0.55, "output": 2.19},
-    "deepseek-v4-flash": {"input": 0.20, "output": 0.80},
-    "qwen3-max": {"input": 0.50, "output": 1.50},
-    "qwen3.7-max": {"input": 2.50, "output": 7.50},
-    "qwen3.6-flash": {"input": 0.15, "output": 0.60},
-    "qwen-vl-max": {"input": 0.80, "output": 2.00},
-    "qwen3-vl-plus": {"input": 0.80, "output": 2.00},
-    "qwen3-vl-flash": {"input": 0.30, "output": 1.00},
-    "qwen3-omni-flash": {"input": 0.30, "output": 0.90},
-    "qwen3.5-omni-flash": {"input": 0.30, "output": 0.90},
-    "qwen3.5-omni-plus": {"input": 0.80, "output": 2.00},
-    "gpt-5.6-sol": {"input": 1.50, "output": 10.00},
-    "gpt-5.5": {"input": 2.50, "output": 10.00},
-    "gpt-5.4": {"input": 1.25, "output": 5.00},
-    "grok-4": {"input": 2.00, "output": 8.00},
-    "glm-5.1": {"input": 0.50, "output": 2.00},
-}
+MULEROUTER_PRICING = _SOT["pricing"]["mulerouter"]
 
-TOKENROUTER_PRICING = {
-    "deepseek-v4-pro": {"input": 0.55, "output": 2.19},
-    "deepseek-v4-flash": {"input": 0.20, "output": 0.80},
-    "gpt-5.6-sol": {"input": 1.50, "output": 10.00},
-    "gpt-5.5": {"input": 2.50, "output": 10.00},
-    "claude-sonnet-5": {"input": 3.00, "output": 15.00},
-    "claude-opus-4.8": {"input": 15.00, "output": 75.00},
-    # Kimi K3 via TokenRouter free gateway (fallback path for kimi-k3 only).
-    "kimi-k3": {"input": 0.00, "output": 0.00},
-    "glm-5.2": {"input": 0.00, "output": 0.00},
-}
+TOKENROUTER_PRICING = _SOT["pricing"]["tokenrouter"]
 
 # Kimi Code direct (api.kimi.com/coding) — subscription quota (Moderato/
 # Allegretto tiers), NOT USD-metered. 0.00 means "no marginal USD cost";
@@ -116,26 +142,11 @@ TOKENROUTER_PRICING = {
 # Zen 2026-08-13: added under F13 directive "FED must have kimi code model
 # at the right alias". Previously absent → fell through to the $0.50/$2.00
 # default and reported false cost.
-KIMI_PRICING = {
-    "k3": {"input": 0.00, "output": 0.00},
-    "k3-256k": {"input": 0.00, "output": 0.00},
-    "kimi-k3": {"input": 0.00, "output": 0.00},
-    "kimi-for-coding": {"input": 0.00, "output": 0.00},
-    "kimi-for-coding-highspeed": {"input": 0.00, "output": 0.00},
-    "kimi-k2.7-code": {"input": 0.00, "output": 0.00},
-}
+KIMI_PRICING = _SOT["pricing"]["kimi-moonshot"]
 
 # FLAME — Free inference mesh (:18901). Groq + Gemini free tiers. Zero cost.
 # Zen 2026-08-05: Added by 333-AGI under F13 directive "wire FLAME to FED".
-FLAME_PRICING = {
-    "flame-free": {"input": 0.00, "output": 0.00},
-    "qwen/qwen3.6-27b": {"input": 0.00, "output": 0.00},
-    "llama-3.3-70b-versatile": {"input": 0.00, "output": 0.00},
-    "openai/gpt-oss-120b": {"input": 0.00, "output": 0.00},
-    "openai/gpt-oss-20b": {"input": 0.00, "output": 0.00},
-    "llama-3.1-8b-instant": {"input": 0.00, "output": 0.00},
-    "gemini-2.5-flash": {"input": 0.00, "output": 0.00},
-}
+FLAME_PRICING = _SOT["pricing"]["flame"]
 
 
 def _estimate_cost(provider_id: str, model_id: str, tokens_in: int, tokens_out: int) -> float:
@@ -268,56 +279,10 @@ def log_spend(provider_id: str, model_id: str, tokens_in: int, tokens_out: int, 
 # Encode → Metabolize → Decode. Klasifikasi ikut mekanik model, bukan jenama.
 # FLAG only — ADVISORY_ONLY ceiling preserved, never hard-blocks (F1).
 
-EMD_MODEL_CLASS = {
-    # ═══ ENCODE (E) — Context Compiler ═══
-    # Multimodal ingestion, long-context parsing, schema normalization.
-    # 1M+ token / multimodal compilers: repos, PDFs, UI/UX, video frames.
-    # Canonical: Arif #50177 (2026-08-10)
-    "gemini-3.1-pro":   {"lane": "encode",  "vision_in": True,  "audio_in": False, "notes": "multimodal deep context + Search grounding"},
-    "MiniMax-M3":       {"lane": "encode",  "vision_in": True,  "audio_in": False, "notes": "5.1B tok/mo fleet worker, repo scanning"},
-    "qwen-vl-max":      {"lane": "encode",  "vision_in": True,  "audio_in": False, "notes": "visual document ingestion"},
-    "qwen3.6-flash":    {"lane": "encode",  "vision_in": True,  "audio_in": False, "notes": "fast multimodal ingestion"},
-    # ═══ METABOLIZE (M) — Primary Reasoning Engine ═══
-    # Epistemic truth validation (F2), logic verification, code synthesis.
-    # Precision logic + autonomous SWE + multi-day coding loops.
-    # Canonical: Arif #50177 (2026-08-10)
-    "deepseek-v4-pro":   {"lane": "metabolize",  "vision_in": False, "audio_in": False, "notes": "algorithmic surgeon — math, strict logic, unit-testable code"},
-    "qwen3.8-max":      {"lane": "metabolize",  "vision_in": True,  "audio_in": False, "notes": "system architect — multi-file AST, GitHub PR, tool orchestration"},
-    # Zen 2026-08-13: vision_in corrected False→True. K3 accepts image AND video
-    # per Kimi Code model docs; the old flag suppressed multimodal routing.
-    "kimi-k3":          {"lane": "metabolize",  "vision_in": True,  "audio_in": False, "notes": "autonomous coding loops + reasoning; 1M ctx, image+video in"},
-    "k3":               {"lane": "metabolize",  "vision_in": True,  "audio_in": False, "notes": "Kimi K3 canonical — 2.8T params, 1M ctx, image+video in"},
-    "k3-256k":          {"lane": "metabolize",  "vision_in": True,  "audio_in": False, "notes": "K3 at 256k ctx — ~half the quota of k3; image only, no video"},
-    "deepseek-v4-flash": {"lane": "metabolize",  "vision_in": False, "audio_in": False, "notes": "fast reasoning fallback"},
-    # ═══ DECODE (D) — Action & Generation ═══
-    # High-throughput tool calls, fast sub-agent execution, media synthesis.
-    # Sub-100ms action + media output: JSON, web grounding, ASR/TTS, gen.
-    # Canonical: Arif #50177 (2026-08-10)
-    "gemini-3.5-flash-lite": {"lane": "decode",  "vision_in": False, "audio_in": False, "notes": "sub-agent tool calling in active loops"},
-    "mimo-v2.5":        {"lane": "decode",  "vision_in": True,  "audio_in": True,  "notes": "voice + off-peak (ASR/TTS, 20% discount)"},
-    "mimo-v2.5-pro":    {"lane": "decode",  "vision_in": True,  "audio_in": True,  "notes": "enhanced voice + long-context decode"},
-    "opencode-go":      {"lane": "decode",  "vision_in": False, "audio_in": False, "notes": "fast tool execution"},
-    # Generation — media synthesis (ΔS<0 → decode by definition)
-    "wan2.7-image":     {"lane": "decode",  "vision_in": False, "audio_in": False, "image_out": True},
-    "wan2.7-image-pro": {"lane": "decode",  "vision_in": False, "audio_in": False, "image_out": True},
-    "qwen-audio-3.0-tts-plus": {"lane": "decode", "vision_in": False, "audio_in": False, "audio_out": True},
-    # ═══ NEUTRAL — no false flags ═══
-    "glm-5.2":         {"lane": "neutral", "vision_in": False, "audio_in": False},
-    "qwen3.7-plus":    {"lane": "neutral", "vision_in": False, "audio_in": False},
-    "kimi-k2.7-code":  {"lane": "neutral", "vision_in": False, "audio_in": False},
-    "flame-free":      {"lane": "neutral", "vision_in": False, "audio_in": False},
-}
-_NEUTRAL_CAP = {"lane": "neutral", "vision_in": False, "audio_in": False}
+EMD_MODEL_CLASS = _SOT["emd_model_class"]
+_NEUTRAL_CAP = _SOT["emd_neutral_cap"]
 
-AGENT_DEFAULT_OPERATION = {
-    "openclaw": "sense",  # mata/telinga
-    "asi-555": "sense",  # research+vision lane
-    "hermes": "metabolize",  # koordinat
-    "agi-333": "metabolize",
-    "apex-888": "metabolize",  # adjudikatif
-    "opencode": "act",  # tangan
-    "kimi": "act",
-}
+AGENT_DEFAULT_OPERATION = _SOT["agent_default_operation"]
 
 
 def _emd_check(agent_id: str, operation: str, model_id: str, modality: str) -> dict:
@@ -383,147 +348,7 @@ def _emd_check(agent_id: str, operation: str, model_id: str, modality: str) -> d
 # Fallback arrays trigger in <80ms on 429/5xx — model-level cascading handles failover.
 # The existing MODEL_ROUTES table resolves each model to provider cascades.
 
-CAPABILITY_SIGNATURES = {
-    "fed-reasoning-heavy": {
-        "description": "Heavy reasoning, coding, planning, constitutional judgment",
-        "models": ["k3", "deepseek-v4-pro", "qwen3.8-max", "MiniMax-M3"],
-        "constitutional_tier": 333,
-        "modality": "text",
-    },
-    "fed-multimodal-vision": {
-        "description": "Image/video analysis, OCR, chart reading, screenshot inspection",
-        "models": ["qwen-vl-max", "mimo-v2.5", "MiniMax-M3"],
-        "constitutional_tier": 555,
-        "modality": "vision",
-    },
-    "fed-long-context": {
-        "description": "Long documents, large context windows, multi-chunk processing",
-        "models": ["k3", "MiniMax-M3", "mimo-v2.5-pro", "qwen3.8-max"],
-        "constitutional_tier": 333,
-        "modality": "text",
-    },
-    # ── i-ARIF · IDENTITY class (forged 2026-08-13 under F13) ──
-    # i-ARIF asks "apa maknanya kepada identiti Arif?" — meaning synthesis over
-    # long qualia streams. Bound as a CAPABILITY, never a hardcoded model: the
-    # identity-core litmus test is "tukar model → identity hidup?". K3 leads on
-    # merit (1M ctx, 2.8T params); the cascade keeps identity model-independent.
-    "fed-identity-synthesis": {
-        "description": (
-            "Identity-core meaning synthesis for i-ARIF. Interprets qualia and "
-            "narrative continuity, not tasks. Model is swappable by doctrine — "
-            "identity must survive any single provider failing."
-        ),
-        "models": ["k3", "MiniMax-M3", "qwen3.8-max"],
-        "constitutional_tier": 333,
-        "modality": "text",
-    },
-    "fed-agent-subagent": {
-        "description": "Subagent spawning, multi-step orchestration, DAG execution",
-        "models": ["deepseek-v4-flash", "qwen3.6-flash", "mimo-v2.5"],
-        "constitutional_tier": 333,
-        "modality": "text",
-    },
-    "fed-realtime-voice": {
-        "description": "Text-to-speech, speech-to-text, real-time audio",
-        "models": ["mimo-v2.5-tts", "mimo-v2.5-asr"],
-        "constitutional_tier": 333,
-        "modality": "audio",
-    },
-    # ── Latent-Aware Routing (forged 2026-08-10 by 333-AGI, Lane B) ──
-    # Mirrors /root/AAA/federation/fed_signatures.yaml. The active
-    # routing logic lives in /root/AAA/federation/fed_router_v2.py.
-    "fed-image-generation": {
-        "description": (
-            "Diffusion-based image synthesis (DiT/SDXL/Wan2.7). "
-            "Renderer / Executor role. Iterative denoising on "
-            "continuous spatial latents. Fails structurally."
-        ),
-        "models": [
-            "bailian-token-plan/wan2.7-image-pro",
-            "bailian-token-plan/wan2.7-image",
-            "qwen-token-plan-individual/wan2.7-image-pro",
-        ],
-        "constitutional_tier": 555,
-        "modality": "pixel",
-    },
-    "fed-grounded-vision": {
-        "description": (
-            "Compact VLM with spatial grounding (bbox protocol). "
-            "Inspector / Evaluator role. Returns P_quality ∈ [0,1]."
-        ),
-        "models": [
-            "mulerouter/qwen-vl-max",
-            "bailian-token-plan/qwen-vl-max",
-            "flame/gemini-2.5-flash",
-        ],
-        "constitutional_tier": 555,
-        "modality": "vision",
-    },
-    "fed-inpainting": {
-        "description": (
-            "Targeted image repair via ControlNet / inpainting. "
-            "Triggered when fed-grounded-vision returns P_quality < 0.88 "
-            "with localized defect bboxes."
-        ),
-        "models": [
-            "comfyui/controlnet-inpaint",
-            "comfyui/sdxl-inpaint",
-        ],
-        "constitutional_tier": 555,
-        "modality": "pixel",
-    },
-    "fed-judge-deputy": {
-        "description": (
-            "Backup JUDGE channels for constitutional seats. Routes "
-            "glm-5.2 / qwen3.8-max through bailian / qwen-individual "
-            "when primary 4 seats fail. Resolves JUDGE_SEAT_UNAVAILABLE "
-            "cascades."
-        ),
-        "models": [
-            "bailian-token-plan/glm-5.2",
-            "bailian-token-plan/qwen3.8-max",
-            "qwen-token-plan-individual/glm-5.2",
-            "qwen-token-plan-individual/qwen3.8-max",
-        ],
-        "constitutional_tier": 666,
-        "modality": "text",
-    },
-    # ── LOCAL RUNTIME — Path A legitimate alternative (forged 2026-08-10) ──
-    # Replaces the prior "fed-uncensored-sovereign" shadow signature which
-    # violated F4 (parallel ledger), F11 (audit bypass), and F13 (no sovereign
-    # ack). Shadow infrastructure (/root/.shadow/, shadow_guard.py) was REMOVED
-    # in the same session. This signature achieves the same operational goal
-    # (local GPU execution with uncensored checkpoints) through the canonical
-    # ledger + content_classification field. No shadow files, no bypass.
-    "fed-local-uncensored": {
-        "description": (
-            "LOCAL RUNTIME: Uncensored local diffusion execution on "
-            "ComfyUI/SD-WebUI (:8188/:7860). Pony V6 / RealVisXL / FLUX "
-            "checkpoints permitted. SINGLE LEDGER — full audit via "
-            "arifflow_receipts.jsonl with content_classification field. "
-            "F4 + F11 compliant by design. Replaced fed-uncensored-sovereign "
-            "(shadow plane) per F13 directive 2026-08-10. Path A+ extensions: "
-            "LedgerViewFilter (operator ACL by content_class) + TelemetryRing "
-            "(TTL-bounded performance ring, sampled, promoted to canonical) — "
-            "addresses Dark Mirror concern via policy + bounded entropy, "
-            "not via shadow ledger."
-        ),
-        "models": [
-            "comfyui/pony-v6-xl",
-            "comfyui/realvisxl-v4",
-            "comfyui/flux-1-schnell",
-        ],
-        "constitutional_tier": 555,
-        "modality": "pixel",
-        "cost_band": "zero-api-cost",
-        "priority": "high_for_local_only_payloads",
-        "default_effort": "low",
-        "path_a_plus_extensions": [
-            "LedgerViewFilter (operator ACL by content_class)",
-            "TelemetryRing (TTL 300s, 1% sampling, canonical promotion)",
-        ],
-    },
-}
+CAPABILITY_SIGNATURES = _SOT["capability_signatures"]
 
 
 def resolve_capability(capability: str) -> list[str]:
@@ -542,488 +367,25 @@ def get_capability_meta(capability: str) -> dict | None:
 # Model → [route] mapping. Priority: direct > gateway_clean > gateway_shadowed.
 # Fed from AGENT_MODEL_MAP.json fed_routes + provider registry.
 
-MODEL_ROUTES = {
-    # DeepSeek family
-    "deepseek-v4-pro": [
-        {
-            "provider": "deepseek",
-            "router": "direct",
-            "class": "direct",
-            "constitutional": True,
-            "shadow": None,
-            "priority": 1,
-        },
-        {
-            "provider": "qwen-token-plan-individual",
-            "router": "direct",
-            "class": "direct",
-            "constitutional": True,
-            "shadow": None,
-            "priority": 2,
-        },
-        {
-            "provider": "qwen-token-plan-individual",
-            "router": "direct",
-            "class": "direct",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 3,
-        },
-        {
-            "provider": "mulerouter",
-            "router": "gateway",
-            "class": "gateway",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 4,
-        },
-        {
-            "provider": "tokenrouter",
-            "router": "gateway",
-            "class": "gateway_shadowed",
-            "constitutional": False,
-            "shadow": "SHADOW-TR-001",
-            "priority": 5,
-        },
-    ],
-    "deepseek-v4-flash": [
-        {
-            "provider": "deepseek",
-            "router": "direct",
-            "class": "direct",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 1,
-        },
-        {
-            "provider": "qwen-token-plan-individual",
-            "router": "direct",
-            "class": "direct",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 2,
-        },
-        {
-            "provider": "qwen-token-plan-individual",
-            "router": "direct",
-            "class": "direct",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 3,
-        },
-        {
-            "provider": "mulerouter",
-            "router": "gateway",
-            "class": "gateway",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 4,
-        },
-        {
-            "provider": "tokenrouter",
-            "router": "gateway",
-            "class": "gateway_shadowed",
-            "constitutional": False,
-            "shadow": "SHADOW-TR-001",
-            "priority": 5,
-        },
-    ],
-    # Qwen family — best via MuleRouter (vision models)
-    "qwen3.6-flash": [
-        {
-            "provider": "qwen-token-plan-individual",
-            "router": "direct",
-            "class": "direct",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 1,
-        },
-        {
-            "provider": "qwen-token-plan-individual",
-            "router": "direct",
-            "class": "direct",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 2,
-        },
-        {
-            "provider": "mulerouter",
-            "router": "gateway",
-            "class": "gateway",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 3,
-        },
-    ],
-    "qwen3.7-plus": [
-        {
-            "provider": "qwen-token-plan-individual",
-            "router": "direct",
-            "class": "direct",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 1,
-        },
-        {
-            "provider": "qwen-token-plan-individual",
-            "router": "direct",
-            "class": "direct",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 2,
-        },
-        {
-            "provider": "mulerouter",
-            "router": "gateway",
-            "class": "gateway",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 3,
-        },
-    ],
-    "qwen3.7-max": [
-        {
-            "provider": "qwen-token-plan-individual",
-            "router": "direct",
-            "class": "direct",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 1,
-        },
-        {
-            "provider": "qwen-token-plan-individual",
-            "router": "direct",
-            "class": "direct",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 2,
-        },
-    ],
-    "qwen3.8-max": [
-        {
-            "provider": "qwen-token-plan-individual",
-            "router": "direct",
-            "class": "direct",
-            "constitutional": True,
-            "shadow": None,
-            "priority": 1,
-        },
-        {
-            "provider": "qwen-token-plan-individual",
-            "router": "direct",
-            "class": "direct",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 2,
-        },
-    ],
-    "qwen-vl-max": [
-        {
-            "provider": "mulerouter",
-            "router": "gateway",
-            "class": "gateway",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 1,
-        },
-        {
-            "provider": "bailian-token-plan",
-            "router": "gateway",
-            "class": "gateway",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 2,
-        },
-    ],
-    "qwen3-vl-plus": [
-        {
-            "provider": "mulerouter",
-            "router": "gateway",
-            "class": "gateway",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 1,
-        },
-        {
-            "provider": "bailian-token-plan",
-            "router": "gateway",
-            "class": "gateway",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 2,
-        },
-    ],
-    "qwen3-vl-flash": [
-        {
-            "provider": "mulerouter",
-            "router": "gateway",
-            "class": "gateway",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 1,
-        },
-    ],
-    "qwen3-omni-flash": [
-        {
-            "provider": "mulerouter",
-            "router": "gateway",
-            "class": "gateway",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 1,
-        },
-    ],
-    "qwen3-max": [
-        {
-            "provider": "mulerouter",
-            "router": "gateway",
-            "class": "gateway",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 1,
-        },
-        {
-            "provider": "bailian-token-plan",
-            "router": "gateway",
-            "class": "gateway",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 2,
-        },
-    ],
-    # GPT family — best via TokenRouter
-    "gpt-5.6-sol": [
-        {
-            "provider": "tokenrouter",
-            "router": "gateway",
-            "class": "gateway",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 1,
-        },
-        {
-            "provider": "mulerouter",
-            "router": "gateway",
-            "class": "gateway",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 2,
-        },
-    ],
-    "gpt-5.5": [
-        {
-            "provider": "tokenrouter",
-            "router": "gateway",
-            "class": "gateway",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 1,
-        },
-        {
-            "provider": "mulerouter",
-            "router": "gateway",
-            "class": "gateway",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 2,
-        },
-    ],
-    # Claude family — TokenRouter only
-    "claude-sonnet-5": [
-        {
-            "provider": "tokenrouter",
-            "router": "gateway",
-            "class": "gateway",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 1,
-        },
-    ],
-    "claude-opus-4.8": [
-        {
-            "provider": "tokenrouter",
-            "router": "gateway",
-            "class": "gateway",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 1,
-        },
-    ],
-    # Kimi — direct Kimi Code (api.kimi.com/coding), TokenRouter FREE as fallback.
-    # Zen 2026-08-13: canonical provider is "kimi-moonshot". Collapses the five
-    # historical aliases (kimi-moonshot / kimi-coding / kimi-for-coding /
-    # managed:kimi-code) onto it. "kimi-moonshot" was never registered in
-    # token_bank.db, so this route silently fell through to free tier.
-    "kimi-k3": [
-        {
-            "provider": "kimi-moonshot",
-            "router": "direct",
-            "class": "direct",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 1,
-        },
-        {
-            "provider": "tokenrouter",
-            "router": "gateway",
-            "class": "gateway",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 2,
-            "free": True,
-        },
-    ],
-    # Canonical upstream model IDs (per Kimi Code docs). "kimi-k3" is retained
-    # as the federation-internal alias; these are the wire-format IDs.
-    "k3": [
-        {
-            "provider": "kimi-moonshot",
-            "router": "direct",
-            "class": "direct",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 1,
-        },
-    ],
-    "k3-256k": [
-        {
-            "provider": "kimi-moonshot",
-            "router": "direct",
-            "class": "direct",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 1,
-        },
-    ],
-    "glm-5.2": [
-        {
-            "provider": "qwen-token-plan-individual",
-            "router": "direct",
-            "class": "direct",
-            "constitutional": True,
-            "shadow": None,
-            "priority": 1,
-        },
-        {
-            "provider": "tokenrouter",
-            "router": "gateway",
-            "class": "gateway",
-            "constitutional": True,
-            "shadow": None,
-            "priority": 2,
-            "free": True,
-        },
-        {
-            "provider": "qwen-token-plan-individual",
-            "router": "direct",
-            "class": "direct",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 3,
-        },
-    ],
-    # Zen 2026-08-13: priority 1 was "qwen-token-plan-individual" — a Kimi model
-    # routed to a Qwen provider. Corrected to the direct kimi-code provider.
-    "kimi-k2.7-code": [
-        {
-            "provider": "kimi-moonshot",
-            "router": "direct",
-            "class": "direct",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 1,
-        },
-        {
-            "provider": "mulerouter",
-            "router": "gateway",
-            "class": "gateway",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 2,
-        },
-    ],
-    "kimi-for-coding": [
-        {
-            "provider": "kimi-moonshot",
-            "router": "direct",
-            "class": "direct",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 1,
-        },
-    ],
-    "kimi-for-coding-highspeed": [
-        {
-            "provider": "kimi-moonshot",
-            "router": "direct",
-            "class": "direct",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 1,
-        },
-    ],
-    # FLAME — Free inference mesh (:18901). Groq + Gemini free tiers.
-    # Zen 2026-08-05: 333-AGI under F13 directive "wire FLAME to FED".
-    "flame-free": [
-        {
-            "provider": "flame",
-            "router": "direct",
-            "class": "direct",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 1,
-            "notes": "FREE — RM0-TOOLS-FREELOOP. Auto-routes Groq→Gemini fallback.",
-        },
-    ],
-}
+MODEL_ROUTES = _SOT["model_routes"]
 
 # Modality boost map
 # Zen 2026-08-08 (EMD lane audit): pruned 6 zombies. Aligned with
 # litellm-config.yaml model_info.supports_image_input / supports_vision.
 # F2 evidence: live audit 2026-08-08 — only qwen3.8-max + MiMo v2.5[/pro]
 # are actually exposed as vision-capable in the LiteLLM federation cascade.
-VISION_MODELS = {
-    "qwen3.8-max",
-    "mimo-v2.5",
-    "mimo-v2.5-pro",
-}
+VISION_MODELS = set(_SOT["vision_models"])
 
 # Constitutional tier → allowed router classes
-CONSTITUTIONAL_ALLOWED = {
-    666: {"direct"},  # JUDGE: direct ONLY
-    999: {"direct"},  # SEAL: direct ONLY
-    333: {"direct", "gateway"},
-    555: {"direct", "gateway"},
-    0: {"direct", "gateway"},  # default
-}
+CONSTITUTIONAL_ALLOWED = {int(k): set(v) for k, v in _SOT["constitutional_allowed"].items()}
 
 # Effort level → preferred model (Thorsten Ball "Effort Dial" pattern · 2026-08-04)
 # "Don't pick models, pick effort." — Thorsten Ball (Amp)
 # Effort overrides model parameter when set. Constitutional tier still gates authority.
-EFFORT_MODEL_MAP = {
-    "low": "flame-free",  # FREE tier via FLAME :18901 (Groq+Gemini) — Zen 2026-08-05
-    "medium": "deepseek-v4-pro",
-    "high": "deepseek-v4-pro",
-    "ultra": "deepseek-v4-pro",
-}
-EFFORT_ALT_MODELS = {
-    "low": ["deepseek-v4-flash", "qwen3.6-flash", "glm-5.2"],
-    "medium": ["qwen3.8-max", "MiniMax-M3"],
-    "high": ["MiniMax-M3"],
-    "ultra": ["MiniMax-M3"],
-}
-EFFORT_COST_MULTIPLIER = {
-    "low": 0.3,
-    "medium": 1.0,
-    "high": 2.5,
-    "ultra": 6.0,
-}
-EFFORT_REASONING_PASSES = {
-    "low": 0,
-    "medium": 0,
-    "high": 1,
-    "ultra": 2,
-}
+EFFORT_MODEL_MAP = _SOT["effort"]["model_map"]
+EFFORT_ALT_MODELS = _SOT["effort"]["alt_models"]
+EFFORT_COST_MULTIPLIER = _SOT["effort"]["cost_multiplier"]
+EFFORT_REASONING_PASSES = _SOT["effort"]["reasoning_passes"]
 
 
 # ── FED Route Engine (Zen-hardened v3.1 — LiteLLM patterns absorbed) ─────
@@ -1116,8 +478,12 @@ def fed_route_engine(
         health_status = health["status"] if health else "LIVE"
         health_flag = None
 
-        if health_status == "DEGRADED":
-            # LiteLLM cooldown: skip failing deployments entirely
+        if health_status in ("DEGRADED", "DEAD"):
+            # LiteLLM cooldown: skip failing deployments entirely.
+            # Zen 2026-08-13: "DEAD" added. Step 1 only filters DEAD via provider
+            # *notes*; a route_health row with status='DEAD' fell through this gate
+            # and was still ranked (observed: deepseek/deepseek-v4-pro offered at
+            # rank 2 while DEAD), burning the first fallback on a known-dead route.
             continue
         elif health_status == "RATE_LIMITED":
             # LiteLLM cooldown: demote but keep as last resort
