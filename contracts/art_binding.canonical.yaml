@@ -157,7 +157,7 @@ agents:
     tier: AGI
     ring: DELTA_MIND
     boot_path: /root/.openclaw/workspace/AGENTS.md
-    default_action_class: MUTATE
+    default_action_class: OBSERVE
 
     blast_radius_defaults:
       gateway_routing: low
@@ -287,7 +287,7 @@ agents:
     model_key: kimi-k2-thinking
     tier: AGI
     ring: "1"
-    default_action_class: MUTATE
+    default_action_class: OBSERVE
 
     blast_radius_defaults:
       code_generation: medium

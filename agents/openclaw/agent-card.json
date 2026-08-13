@@ -511,7 +511,7 @@
     "reflex_path": "/root/arifOS/arifosmcp/runtime/art.py",
     "skill_path": "/root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md",
     "load_at_init": true,
-    "default_action_class": "MUTATE",
+    "default_action_class": "OBSERVE",
     "substrates": {
       "md": "/root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md",
       "schema": "/root/arifOS/arifosmcp/schemas/art.py",
