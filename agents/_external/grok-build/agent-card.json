@@ -637,5 +637,7 @@
   "codex_lane": "codex.forge",
   "cognitive_species": "compiler",
   "species_rank": 3,
-  "note": "sandbox only — no canonical writes until governance wired"
+  "note": "sandbox only — no canonical writes until governance wired",
+  "fi": "FI-GROK-BUILD",
+  "bound_to": "333-AGI"
 }

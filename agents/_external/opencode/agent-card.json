@@ -37,7 +37,7 @@
       "qwen3.7-plus (Individual)"
     ],
     "provider_diversity": 16,
-    "vendor_collapse_risk": "MINIMAL — 16 providers, full cascade"
+    "vendor_collapse_risk": "MINIMAL \u2014 16 providers, full cascade"
   },
   "federation_binding": {
     "arif_init": "instruction-driven (9 AAA files loaded at boot)",
@@ -176,8 +176,10 @@
   "model": "GLM-5.2 (Z.ai Coding Plan)",
   "codex_fed_alias": "codex.forge",
   "architecture_layer": "CODEX",
-  "architecture_role": "Compiler Prime — primary forge",
+  "architecture_role": "Compiler Prime \u2014 primary forge",
   "codex_lane": "codex.forge",
   "cognitive_species": "compiler",
-  "species_rank": 1
+  "species_rank": 1,
+  "fi": "FI-OPENCODE",
+  "bound_to": "888-APEX"
 }
