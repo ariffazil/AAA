@@ -40,6 +40,9 @@ dependencies:
   skills: []
 canonical: /root/forge_work/2026-08-10-browser-zen/BROWSER_ZEN_MAP.md
 machine_inventory: /root/forge_work/2026-08-10-browser-zen/TOOL_INVENTORY.jsonl
+required_tools: ['forge_fetch', 'forge_search']
+tool_gate: permissive
+
 ---
 
 # AGI-agentic-web — The Unified Web Doctrine
