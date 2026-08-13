@@ -13,7 +13,7 @@ The collapse signatures aren't biological — they're structural. The same patte
 | Social role breakdown     | Nobody owns first-principles questioning          | "Let's not reopen basement interpretation at this stage" |
 | "Beautiful ones" withdraw | Smart staff become presentation polishers         | Staff polish slides but stop generating new claims |
 | Reproduction collapse     | No new theories survive internal review           | Citation drift: 1996 paper cited as 2026 standard |
-| Behavioral sink           | Citation sink / committee sink                    | Same model defended across decades despite contradictory data |
+| Governance drift           | Citation sink / committee sink                    | Same model defended across decades despite contradictory data |
 
 ## Sub-types of Institutional Sink
 
@@ -128,7 +128,7 @@ If all 5 active → Type 9 collapse. HOLD at 0.58, wait for falsification tests.
 
 - **Calhoun, J. B. (1962-1973).** Population density and social pathology. *Scientific American* 206, 139-148. (Original mouse universe)
 - **Calhoun, J. B. (1973).** Death squared: The explosive growth and demise of a mouse population. *Proceedings of the Royal Society of Medicine* 66(1), 80-88.
-- **ChatGPT 2026-07-03 review** of Kinabalu two-oceanics: institutional analogy of behavioral sink
+- **ChatGPT 2026-07-03 review** of Kinabalu two-oceanics: institutional analogy of governance drift
 - **Wealth-collapse-signature** skill: `/root/.agents/skills/wealth-collapse-signature/SKILL.md`
 
 **The metaphor is structural, not biological.** Use it to diagnose institutions, not to predict mouse behavior. F13 SOVEREIGN reserves the right to reject any diagnosis that crosses into F6 MARUAH territory.

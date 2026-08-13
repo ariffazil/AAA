@@ -14,6 +14,9 @@ floor_scope:
 autonomy_tier: T1
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
+required_tools: ['vision_analyze', 'arif_observe']
+tool_gate: strict
+
 ---
 
 # AAA-OCR — Optical Compression Pipeline

@@ -246,6 +246,17 @@
         "status": "Registered & whitelisted \u2014 tg_id 1024343313"
       }
     }
+  ,
+    {
+      "person_id": "USER_5444180135",
+      "telegram_id": "5444180135",
+      "profile": "aaa-hermes (lane: pending)",
+      "visibility": ["lane-arif-refers"],
+      "role": "UNKNOWN — skeleton",
+      "facts": [],
+      "boundaries": {"private_layers": "UNKNOWN — nothing assumed, nothing stored"},
+      "state_2026_08_13": {"note": "Added to allowlist for YANG ARIF group (-5443591163)"}
+    }
   ],
   "edges": [
     {

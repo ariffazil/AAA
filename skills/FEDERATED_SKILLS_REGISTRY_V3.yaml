@@ -124,6 +124,12 @@ layers:
       kernel:
       - kernel-eureka
       - kernel-superposition
+      hermes-media:
+      - hermes-voice-config
+      - tts-edge-fallback
+      - hermes-text-to-speech
+      - music-generation
+      - audio-analysis
 agent_profiles:
   hermes:
     substrates: 6

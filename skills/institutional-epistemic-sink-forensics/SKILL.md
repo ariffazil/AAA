@@ -7,6 +7,8 @@ synthesized: 2026-08-08
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
 ---
+<!-- RENAMED 2026-08-13 per F13 directive: Calhoun-style institutional-failure vocabulary replaced with governance-effectiveness terms (governance drift, ceremonial control). -->
+
 
 # Institutional Epistemic Sink Forensics
 
@@ -51,7 +53,7 @@ Before driving any tool, write the meta-pattern in your own words. The Calhoun U
 | Social role breakdown     | Nobody owns first-principles questioning          |
 | "Beautiful ones" withdraw | Smart staff become presentation polishers         |
 | Reproduction collapse     | No new theories survive internal review           |
-| Behavioral sink           | Citation sink / committee sink                    |
+| Governance drift           | Citation sink / committee sink                    |
 
 **Key thesis:** The collapse is not lack of resources. The collapse is **role saturation without truth metabolism.** Everyone has a role. Nobody has authority to break the false frame.
 

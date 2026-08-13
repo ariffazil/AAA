@@ -137,7 +137,7 @@
       "implementation": "arifosmcp.runtime.godel_lock_gate.py (322 lines). Φ_external ≥ 0.50 for SEAL-bound actions. Self-certification (caller == target_actor) → HOLD."
     },
     "q10_calhoun_lock": {
-      "rule": "Must have an unsolved problem. Must be in a friction arena. Can it fail? Equilibrium without tension = mouse utopia = behavioral sink.",
+      "rule": "Must have an unsolved problem. Must be in a friction arena. Can it fail? Equilibrium without tension = mouse utopia = governance drift.",
       "implementation": "arifosmcp.runtime.calhoun_anti_sink_gate.py. Detects when agent outputs become self-referential loops grooming their own logic without external signal."
     },
     "q11_refusal_closure": {

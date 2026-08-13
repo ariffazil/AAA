@@ -14,6 +14,9 @@ axis_version: 1.0.0
 autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+required_tools: ['arif_memory']
+tool_gate: strict
+
 ---
 
 # memory-manage
