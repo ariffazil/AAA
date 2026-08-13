@@ -4,7 +4,7 @@ id: forge-federation-orchestrator
 version: 1.0.0
 risk_tier: low
 description: 'Monitor and manage the arifOS federation: docker compose ps, restart
-  dead services, MCP health probes (8080-8083), container drift detection, restart
+  dead services, MCP health probes (Observed Port Map), container drift detection, restart
   count monitoring. USE WHEN: "federation status", "restart dead container", "container
   health", "docker drift", "service down", "probe MCP", "health check federation".
   Runs on af-forge (VPS) — native docker and curl required.'
@@ -27,7 +27,7 @@ ecology_state: WARM
 
 - `docker compose ps` across all federation stacks
 - Container restart count tracking (flag containers with >3 restarts)
-- MCP endpoint health probes (8080-8083)
+- MCP endpoint health probes (Observed Port Map below)
 - Dead service auto-restart (with confirmation threshold)
 - Federation status report generation
 - Restart history audit
@@ -39,11 +39,10 @@ ecology_state: WARM
 docker compose ps
 docker ps -a --filter "status=restarting"
 
-# Check MCP endpoints
-curl -s --max-time 5 http://localhost:8080/health
-curl -s --max-time 5 http://localhost:8081/health
-curl -s --max-time 5 http://localhost:8082/health
-curl -s --max-time 5 http://localhost:8083/health
+# Check organ endpoints (verified 2026-08-14)
+for url in 8088 7071 7072 7073 7074 8081 18082 18083; do
+  curl -s -o /dev/null -w "%{http_code} :$url\n" --max-time 5 http://localhost:$url/health
+done
 
 # Restart dead container
 docker compose restart <service>
@@ -62,7 +61,7 @@ cd /root/AAA && docker compose ps
 ```bash
 #!/bin/bash
 # Probe all MCP endpoints
-for port in 8080 8081 8082 8083; do
+for port in 8088 7071 7072 7073 7074 8081 18082 18083; do
   code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 5 http://localhost:$port/health)
   if [ "$code" = "200" ]; then
     echo "✅ MCP:$port OK"
@@ -81,7 +80,23 @@ done
 | 4–9 | 🔴 Degraded | Alert + review |
 | 10+ | ⛔ Critical | Auto-restart cooldown + human alert |
 
-## Federation Nodes
+## Observed Port Map (verified 2026-08-14 via ss + systemctl + curl)
+
+| Port | Service | Owner |
+|---|---|---|
+| 8088 | arifOS kernel | systemd arifos.service |
+| 7071 | A-FORGE executor | systemd a-forge.service |
+| 7072 | A-FORGE MCP gateway | systemd a-forge-mcp.service |
+| 7073 | arifFlow daemon | systemd arifflow.service |
+| 7074 | FED router | systemd fed-router.service (`/root/AAA/scripts/fed_router.py`) |
+| 8081 | GEOX MCP | systemd geox-mcp.service |
+| 18082 | WEALTH | systemd wealth-organ.service |
+| 18083 | WELL | systemd (python3) |
+| 8080 | searxng (Docker) | NOT an organ — do not probe as arifOS |
+| 8083 | headscale | NOT an organ |
+| 8082 | (vacant) | legacy WEALTH slot, superseded by 18082 |
+
+## Federation Nodes (LEGACY docker-compose era — verify at runtime before trusting)
 
 | Container | Port | Stack | Criticality |
 |---|---|---|---|
