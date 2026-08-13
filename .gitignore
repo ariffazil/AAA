@@ -204,3 +204,4 @@ gateway-forge/
 gateway-hermes/
 gateway-openclaw/
 .git_commit
+*.bak

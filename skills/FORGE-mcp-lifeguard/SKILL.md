@@ -26,6 +26,9 @@ floor_scope:
 autonomy_tier: T0
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+required_tools: ['forge_health_check']
+tool_gate: strict
+
 ---
 ## When to Use
 

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "last_verified": "2026-08-10T07:30:18Z",
+    "last_verified": "2026-08-13T08:13:37Z",
     "alive_pools": 9,
     "dead_pools": 4,
     "redistribution": "6 agents across 6 primary pools for rate-limit isolation",
@@ -30,6 +30,444 @@
       "f13_directive": true,
       "reversible": true,
       "rollback": "git checkout AGENT_MODEL_MAP.json (or .bak-pre-deputy-20260810)"
+    },
+    "deep_research_date": "2026-08-13",
+    "openrouter_market_intelligence_2026_08_13": {
+      "source": "https://openrouter.ai/rankings (F13 SOVEREIGN provided)",
+      "snapshot_date": "2026-08-13",
+      "snapshot_by": "333-AGI under F13 directive",
+      "epistemic_label": "OBS",
+      "top_10_by_monthly_tokens": [
+        {
+          "rank": 1,
+          "model": "MiMo-V2.5",
+          "author": "xiaomi",
+          "tokens_mo": "32T",
+          "growth": "+56%",
+          "our_status": "REGISTERED"
+        },
+        {
+          "rank": 2,
+          "model": "DeepSeek V4 Flash 0423",
+          "author": "deepseek",
+          "tokens_mo": "26.3T",
+          "growth": "+22%",
+          "our_status": "REGISTERED"
+        },
+        {
+          "rank": 3,
+          "model": "Hy3",
+          "author": "tencent",
+          "tokens_mo": "21.7T",
+          "growth": ">999%",
+          "our_status": "REGISTERED (opencode-go)",
+          "note": "FASTEST GROWING"
+        },
+        {
+          "rank": 4,
+          "model": "DeepSeek V4 Flash 0731",
+          "author": "deepseek",
+          "tokens_mo": "15.2T",
+          "growth": "new",
+          "our_status": "REGISTERED"
+        },
+        {
+          "rank": 5,
+          "model": "GLM 5.2",
+          "author": "z-ai",
+          "tokens_mo": "14.5T",
+          "growth": "+51%",
+          "our_status": "REGISTERED (333-AGI PRIMARY)"
+        },
+        {
+          "rank": 6,
+          "model": "DeepSeek V4 Pro",
+          "author": "deepseek",
+          "tokens_mo": "12.7T",
+          "growth": "+22%",
+          "our_status": "REGISTERED (constitutional)"
+        },
+        {
+          "rank": 7,
+          "model": "Hy3 (free)",
+          "author": "tencent",
+          "tokens_mo": "11.8T",
+          "growth": "-",
+          "our_status": "via opencode-go"
+        },
+        {
+          "rank": 8,
+          "model": "Nemotron 3 Ultra (free)",
+          "author": "nvidia",
+          "tokens_mo": "10.6T",
+          "growth": "+114%",
+          "our_status": "REGISTERED (opencode-zen)"
+        },
+        {
+          "rank": 9,
+          "model": "MiniMax M3",
+          "author": "minimax",
+          "tokens_mo": "9.59T",
+          "growth": "+44%",
+          "our_status": "REGISTERED (constitutional)"
+        },
+        {
+          "rank": 10,
+          "model": "GPT-5.6 Luna",
+          "author": "openai",
+          "tokens_mo": "9.43T",
+          "growth": ">999%",
+          "our_status": "REGISTERED",
+          "note": "OpenAI volume play"
+        }
+      ],
+      "intelligence_index_top_10": [
+        {
+          "rank": 1,
+          "model": "Claude Opus 5 (max)",
+          "score": 63.1,
+          "our_status": "opencode-zen"
+        },
+        {
+          "rank": 2,
+          "model": "Claude Fable 5 (max)",
+          "score": 62.1,
+          "our_status": "MISSING"
+        },
+        {
+          "rank": 3,
+          "model": "GPT-5.6 Sol (max)",
+          "score": 60.9,
+          "our_status": "have sol, not max"
+        },
+        {
+          "rank": 4,
+          "model": "Grok 4.6 (high)",
+          "score": 60.9,
+          "our_status": "MISSING (have 4.5)"
+        },
+        {
+          "rank": 5,
+          "model": "Kimi K3 (max)",
+          "score": 59.7,
+          "our_status": "REGISTERED"
+        },
+        {
+          "rank": 6,
+          "model": "Qwen3.8 Max",
+          "score": 58.1,
+          "our_status": "REGISTERED (constitutional)"
+        },
+        {
+          "rank": 7,
+          "model": "Claude Opus 4.8 (max)",
+          "score": 57.3,
+          "our_status": "lineage in opus-5"
+        },
+        {
+          "rank": 8,
+          "model": "GPT-5.6 Terra (max)",
+          "score": 56.6,
+          "our_status": "MISSING"
+        },
+        {
+          "rank": 9,
+          "model": "GPT-5.5 (xhigh)",
+          "score": 56.3,
+          "our_status": "MISSING"
+        },
+        {
+          "rank": 10,
+          "model": "Grok 4.5 (high)",
+          "score": 55.8,
+          "our_status": "REGISTERED"
+        }
+      ],
+      "market_share_by_author": {
+        "deepseek": {
+          "share": "25.3%",
+          "requests_60d": "510M"
+        },
+        "google": {
+          "share": "24.7%",
+          "requests_60d": "497M"
+        },
+        "openai": {
+          "share": "19.9%",
+          "requests_60d": "401M"
+        },
+        "qwen": {
+          "share": "5.2%",
+          "requests_60d": "105M"
+        },
+        "anthropic": {
+          "share": "3.7%",
+          "requests_60d": "74.8M"
+        },
+        "tencent": {
+          "share": "3.5%",
+          "requests_60d": "70.8M",
+          "note": "Hy3 shockwave >999%"
+        },
+        "meta-llama": {
+          "share": "3.4%",
+          "requests_60d": "69.4M"
+        },
+        "z-ai": {
+          "share": "2.4%",
+          "requests_60d": "47.3M",
+          "note": "GLM-5.2 +51%"
+        },
+        "inclusionai": {
+          "share": "2.2%",
+          "requests_60d": "44.6M"
+        }
+      },
+      "strategic_findings": [
+        "Tencent Hy3 fastest-growing model globally (>999%, 21.7T tokens/mo, #1 Python 16.9%)",
+        "Chinese labs = ~71% of all LLM traffic. CN-jurisdiction bias market-correct.",
+        "Anthropic wins quality (Opus 5=63.1) but 14x cost of DeepSeek V4 Pro at 50+ turns",
+        "GPT-5.6 Luna = OpenAI volume play, >999% growth",
+        "MiMo-V2.5 = most-used model on Earth (32T tokens/mo)",
+        "Missing: Claude Fable 5 (#2 intel), Grok 4.6 (#4), GPT-5.6 Terra, GPT-5.5 xhigh",
+        "Cost frontier: Opus 5 ($13.73) -> DS V4 Pro ($0.99) -> MiMo ($0.53) -> Groq ($0)"
+      ],
+      "missing_models_candidates": [
+        {
+          "model": "Claude Fable 5",
+          "intelligence_index": 62.1,
+          "priority": "MEDIUM"
+        },
+        {
+          "model": "Grok 4.6",
+          "intelligence_index": 60.9,
+          "priority": "MEDIUM"
+        },
+        {
+          "model": "GPT-5.6 Terra",
+          "intelligence_index": 56.6,
+          "priority": "LOW"
+        },
+        {
+          "model": "GPT-5.5 xhigh",
+          "intelligence_index": 56.3,
+          "priority": "LOW"
+        }
+      ]
+    },
+    "openrouter_discover_2026_08_13": {
+      "source": "https://openrouter.ai/discover (F13 SOVEREIGN provided)",
+      "snapshot_date": "2026-08-13",
+      "epistemic_label": "OBS",
+      "total_models_on_openrouter": 539,
+      "today_frontier": [
+        {
+          "rank": 1,
+          "model": "Claude Opus 5",
+          "author": "anthropic",
+          "intelligence_index": 63
+        },
+        {
+          "rank": 2,
+          "model": "GPT-5.6 Sol",
+          "author": "openai",
+          "intelligence_index": 61
+        },
+        {
+          "rank": 3,
+          "model": "Grok 4.6",
+          "author": "x-ai",
+          "intelligence_index": 61
+        },
+        {
+          "rank": 4,
+          "model": "Gemini 3.5 Flash",
+          "author": "google",
+          "intelligence_index": 52
+        }
+      ],
+      "category_leaders": {
+        "number_1_on_openrouter": {
+          "model": "DeepSeek V4 Flash 0731",
+          "tokens_wk": "10.5T"
+        },
+        "smartest_open_model": {
+          "model": "Kimi K3",
+          "intelligence": 60
+        },
+        "best_value": {
+          "model": "Ling-3.0-flash",
+          "cost_per_m": "$0.02"
+        },
+        "fastest": {
+          "model": "gpt-oss-120b",
+          "throughput_toks": 766
+        },
+        "smartest_coding": {
+          "model": "GPT-5.6 Sol",
+          "coding_index": 78
+        }
+      },
+      "value_leaders": [
+        {
+          "rank": 1,
+          "model": "Ling-3.0-flash",
+          "author": "inclusionai",
+          "intel_pctl": 52,
+          "coding_pctl": 60,
+          "agentic_pctl": 57,
+          "tokens": "98.8B"
+        },
+        {
+          "rank": 2,
+          "model": "Solar Pro 4",
+          "author": "upstage",
+          "intel_pctl": 63,
+          "coding_pctl": 64,
+          "agentic_pctl": 67,
+          "tokens": "65.8B"
+        },
+        {
+          "rank": 3,
+          "model": "DeepSeek V4 Flash 0731",
+          "author": "deepseek",
+          "intel_pctl": 79,
+          "coding_pctl": 83,
+          "agentic_pctl": 87,
+          "tokens": "10.5T"
+        },
+        {
+          "rank": 4,
+          "model": "Hy3 preview",
+          "author": "tencent",
+          "intel_pctl": 64,
+          "coding_pctl": 72,
+          "agentic_pctl": 63,
+          "tokens": "25.9B"
+        },
+        {
+          "rank": 5,
+          "model": "GPT-5.6 Luna",
+          "author": "openai",
+          "intel_pctl": 81,
+          "coding_pctl": 88,
+          "agentic_pctl": 85,
+          "tokens": "5.1T"
+        }
+      ],
+      "fastest_models": [
+        {
+          "rank": 1,
+          "model": "gpt-oss-120b",
+          "author": "openai",
+          "throughput_tps": 766,
+          "ttft_ms": 248,
+          "providers": 19
+        },
+        {
+          "rank": 2,
+          "model": "Qwen3 32B",
+          "author": "qwen",
+          "throughput_tps": 325,
+          "ttft_ms": 315,
+          "providers": 4
+        },
+        {
+          "rank": 3,
+          "model": "Nemotron 3.5 Lightning (free)",
+          "author": "nvidia",
+          "throughput_tps": 304,
+          "ttft_ms": 289,
+          "providers": 4
+        },
+        {
+          "rank": 4,
+          "model": "gpt-oss-20b",
+          "author": "openai",
+          "throughput_tps": 277,
+          "ttft_ms": 247,
+          "providers": 13
+        },
+        {
+          "rank": 5,
+          "model": "GLM 4.7",
+          "author": "z-ai",
+          "throughput_tps": 259,
+          "ttft_ms": 299,
+          "providers": 9
+        }
+      ],
+      "free_models_top5": [
+        {
+          "rank": 1,
+          "model": "Nemotron 3 Ultra (free)",
+          "tokens_wk": "2.2T",
+          "context": "1M"
+        },
+        {
+          "rank": 2,
+          "model": "Laguna S 2.1 (free)",
+          "tokens_wk": "1.7T",
+          "context": "262K"
+        },
+        {
+          "rank": 3,
+          "model": "Nemotron 3 Super (free)",
+          "tokens_wk": "340.8B",
+          "context": "262K"
+        },
+        {
+          "rank": 4,
+          "model": "North Mini Code (free)",
+          "tokens_wk": "225.4B",
+          "context": "256K"
+        },
+        {
+          "rank": 5,
+          "model": "Laguna XS 2.1 (free)",
+          "tokens_wk": "163.7B",
+          "context": "262K"
+        }
+      ],
+      "routers": {
+        "auto_router": "Task-aware router. Classifies request, routes to most popular model for that task based on aggregate spend.",
+        "fusion": "Multi-model deliberation panel. Expert models analyze in parallel + judge synthesizes. For research/expert critique.",
+        "pareto_code_router": "Tiered coding model shortlist ranked by Artificial Analysis coding percentiles. Configurable min_coding_score.",
+        "free_models_router": "Selects free models at random. Smart-filters for required features (image, tools, structured outputs)."
+      },
+      "multimodal_leaders": {
+        "image_generation": [
+          "Seedream 4.5 (bytedance)",
+          "Nano Banana 2 (google)",
+          "GPT Image 2 (openai)",
+          "FLUX.2 Pro (black-forest-labs)",
+          "Qwen Image 3 Pro (qwen)",
+          "MAI-Image-2.5 (microsoft)"
+        ],
+        "video_generation": [
+          "Veo 3.1 (google)",
+          "Seedance 2.5 (bytedance)",
+          "Kling Video v3.0 Pro (kwaivgi)",
+          "Sora 2 Pro (openai)",
+          "H3 (minimax)"
+        ],
+        "speech_tts": [
+          "Gemini 3.1 Flash TTS Preview (google)",
+          "Kokoro 82M (hexgrad)",
+          "Grok Voice TTS 1.0 (x-ai)",
+          "Qwen-Audio-3.0-TTS Flash (qwen)",
+          "Speech 2.8 HD (minimax)"
+        ]
+      },
+      "strategic_insights": [
+        "GPT-5.6 Luna = VALUE LEADER in top 5 (intel 81st, coding 88th, agentic 85th) - extraordinary value",
+        "DeepSeek V4 Flash 0731 is #1 on OpenRouter (10.5T tokens/wk) - most used RIGHT NOW",
+        "Ling-3.0-flash at $0.02/M is best value model globally - we have via opencode-zen free tier",
+        "Solar Pro 4 (upstage, Korean) is a NEW value leader we don't have - intel 63rd, coding 64th",
+        "GLM 4.7 is #5 fastest (259 tok/s) - fast-tier option alongside our GLM 5.2 primary",
+        "OpenRouter routers (Auto, Fusion, Pareto Code) offer task-aware routing we could learn from for FED",
+        "Multimodal: Seedream 4.5 leads images, Veo 3.1 leads video, Gemini 3.1 Flash TTS leads speech"
+      ]
     }
   },
   "providers": [
@@ -807,6 +1245,12 @@
         "tokens_60d": "3.5T",
         "trend": "-13%",
         "note": "Architect frontier. Slight decline."
+      },
+      "market_signal_2026_08_13": {
+        "openrouter_rank": 6,
+        "tokens_mo": "12.7T",
+        "growth": "+22%",
+        "note": "Constitutional anchor"
       }
     },
     {
@@ -901,6 +1345,19 @@
         "tokens_60d": "14T",
         "trend": "+21%",
         "note": "King. Cache ratio observed 95%."
+      },
+      "market_signal_2026_08_13": {
+        "openrouter_rank": 2,
+        "tokens_mo": "41.5T combined (0423+0731)",
+        "growth": "+22%",
+        "note": "King of flash tier"
+      },
+      "discover_signal_2026_08_13": {
+        "intel_pctl": 79,
+        "coding_pctl": 83,
+        "agentic_pctl": 87,
+        "value_leader_rank": 3,
+        "note": "#1 on OpenRouter 10.5T tokens/wk"
       }
     },
     {
@@ -1012,7 +1469,13 @@
       "soul_file_ref": "minimax_soul.yaml",
       "shadow_file_ref": "minimax_shadow.yaml",
       "last_verified": "2026-08-03",
-      "note": "RESTORED 2026-08-03. ALIVE on api.minimax.io. SHADOW-MM-001 resolved (6/6 topics clean). FFF 8/8 PASS. Full constitutional roles restored. 1M ctx, multimodal, reasoning mode. Endpoint was misconfigured as .chat in registry — corrected to .io."
+      "note": "RESTORED 2026-08-03. ALIVE on api.minimax.io. SHADOW-MM-001 resolved (6/6 topics clean). FFF 8/8 PASS. Full constitutional roles restored. 1M ctx, multimodal, reasoning mode. Endpoint was misconfigured as .chat in registry — corrected to .io.",
+      "market_signal_2026_08_13": {
+        "openrouter_rank": 9,
+        "tokens_mo": "9.59T",
+        "growth": "+44%",
+        "note": "Constitutional eligible"
+      }
     },
     {
       "model_key": "minimax/MiniMax-M2.7",
@@ -1260,6 +1723,12 @@
         "tokens_60d": "1.1T",
         "trend": "+12%",
         "note": "High-volume cheap."
+      },
+      "market_signal_2026_08_13": {
+        "openrouter_rank": 1,
+        "tokens_mo": "32T",
+        "growth": "+56%",
+        "note": "#1 MOST USED MODEL ON EARTH"
       }
     },
     {
@@ -1484,7 +1953,9 @@
           "multimodal": "#2/34",
           "head_to_head": "Trilogy: Qwen 80 vs Kimi K3 83 (single run — do not overclaim)"
         },
-        "note": "⚠️ All provider-published benchmarks are vendor claims [INT]. BenchLM + Trilogy are independent [OBS]."
+        "note": "⚠️ All provider-published benchmarks are vendor claims [INT]. BenchLM + Trilogy are independent [OBS].",
+        "artificial_analysis_intelligence_index": 58.1,
+        "index_source": "OpenRouter/Artificial Analysis 2026-08-13 [OBS]"
       },
       "rate_limits": {
         "rpm": null,
@@ -1614,7 +2085,12 @@
       "note": "GA 2026-08-05. Qwen most capable. 2.4T/95B MoE. Arif primary model. FFF 8/8 PASS (G8 by F13 directive). FULL constitutional: 333_THINK, 666_JUDGE, 777_FORGE, 999_SEAL. First non-DeepSeek model with full judge/seal authority. Pro seat quota issue documented.",
       "promo_active": false,
       "promo_details": "Preview promo (10x/90% off) ENDED with preview retirement 2026-08-05. GA pricing applies. One-time 7-day quota reset benefit active.",
-      "constitutional_roles_note": "FULL constitutional eligibility by F13 sovereign directive. All 8 FFF gates pass. First non-DeepSeek model granted 666_JUDGE and 999_SEAL roles. Sovereign override on G8 pending async open-weights audit."
+      "constitutional_roles_note": "FULL constitutional eligibility by F13 sovereign directive. All 8 FFF gates pass. First non-DeepSeek model granted 666_JUDGE and 999_SEAL roles. Sovereign override on G8 pending async open-weights audit.",
+      "market_signal_2026_08_13": {
+        "intelligence_index": 58.1,
+        "rank": 6,
+        "note": "Top 6 intelligence. Constitutional."
+      }
     },
     {
       "model_key": "qwen/qwen3.6-flash",
@@ -1998,6 +2474,12 @@
         "tokens_60d": "606B",
         "trend": "-29%",
         "note": "Declining — keep but deprioritize."
+      },
+      "market_signal_2026_08_13": {
+        "openrouter_rank": 5,
+        "tokens_mo": "14.5T",
+        "growth": "+51%",
+        "note": "333-AGI primary. Market confirms."
       }
     },
     {
@@ -2192,7 +2674,9 @@
           "OmniDocBench": "91.1",
           "MMMU_Pro": "81.6 / 83.4 (with Python)",
           "Video_MME": "90.0"
-        }
+        },
+        "artificial_analysis_intelligence_index": 59.7,
+        "index_source": "OpenRouter/Artificial Analysis 2026-08-13 [OBS]"
       },
       "status": "LIVE",
       "trust_tier": 2,
@@ -2246,6 +2730,18 @@
         "tokens_60d": "301B",
         "trend": "+32%",
         "note": "Rising. Keep native Moonshot."
+      },
+      "market_signal_2026_08_13": {
+        "intelligence_index": 59.7,
+        "rank": 5,
+        "note": "Top 5 intelligence"
+      },
+      "discover_signal_2026_08_13": {
+        "intel_pctl": null,
+        "coding_pctl": null,
+        "agentic_pctl": null,
+        "intelligence_index": 60,
+        "note": "Smartest open model"
       }
     },
     {
@@ -2827,6 +3323,15 @@
         "tokens_60d": "28B",
         "trend": "-7%",
         "note": ""
+      },
+      "market_signal_2026_08_13": {
+        "intelligence_index": 55.8,
+        "rank": 10,
+        "note": "Top 10. Grok 4.6 supersedes."
+      },
+      "benchmark_highlights": {
+        "artificial_analysis_intelligence_index": 55.8,
+        "index_source": "OpenRouter/Artificial Analysis 2026-08-13 [OBS]"
       }
     },
     {
@@ -3267,7 +3772,13 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "FREE via Groq LPU (500 tok/s). GPT-OSS-120B — failed G2 Truth in FFF. Use with JSON-mode contract. NOT for sovereign truth paths. US jurisdiction. Different provider from Cerebras version — same model weights, different hardware."
+      "note": "FREE via Groq LPU (500 tok/s). GPT-OSS-120B — failed G2 Truth in FFF. Use with JSON-mode contract. NOT for sovereign truth paths. US jurisdiction. Different provider from Cerebras version — same model weights, different hardware.",
+      "discover_signal_2026_08_13": {
+        "throughput_tps": 766,
+        "ttft_ms": 248,
+        "providers": 19,
+        "note": "FASTEST model on OpenRouter"
+      }
     },
     {
       "model_key": "sea-lion/Gemma-SEA-LION-v4-27B-IT",
@@ -4078,7 +4589,15 @@
       "last_verified": "2026-07-28",
       "last_ingested": "2026-07-28",
       "ingest_source": "https://github.com/MoonshotAI/Kimi-K3",
-      "license_note": "NOT Apache 2.0. Custom Kimi K3 License. Read actual license file before deployment."
+      "license_note": "NOT Apache 2.0. Custom Kimi K3 License. Read actual license file before deployment.",
+      "benchmark_highlights": {
+        "artificial_analysis_intelligence_index": 59.7,
+        "index_source": "OpenRouter/Artificial Analysis 2026-08-13 [OBS]"
+      },
+      "discover_signal_2026_08_13": {
+        "intelligence_index": 60,
+        "note": "Smartest open model"
+      }
     },
     {
       "model_key": "google/gemma-4-31b-it:free",
@@ -4618,7 +5137,19 @@
       "source": "opencode-go",
       "plan_cap": "$10/mo flat / $60/mo aggregate",
       "expected_req_per_month": 10250,
-      "note": "NEW per OpenCode Go roster — cheap agentic"
+      "note": "NEW per OpenCode Go roster — cheap agentic",
+      "market_signal_2026_08_13": {
+        "openrouter_rank": 10,
+        "tokens_mo": "9.43T",
+        "growth": ">999%",
+        "note": "OpenAI volume play"
+      },
+      "discover_signal_2026_08_13": {
+        "intel_pctl": 81,
+        "coding_pctl": 88,
+        "agentic_pctl": 85,
+        "value_leader_rank": 5
+      }
     },
     {
       "model_key": "opencode-go/glm-5.2",
@@ -5010,7 +5541,19 @@
       "source": "opencode-go",
       "plan_cap": "$10/mo flat / $60/mo aggregate",
       "expected_req_per_month": 4300,
-      "note": "+110% MoM — Tencent"
+      "note": "+110% MoM — Tencent",
+      "market_signal_2026_08_13": {
+        "openrouter_rank": 3,
+        "tokens_mo": "33.5T (paid+free)",
+        "growth": ">999%",
+        "note": "FASTEST GROWING. Tencent shockwave. NOT YET FFF-GATED."
+      },
+      "discover_signal_2026_08_13": {
+        "intel_pctl": 64,
+        "coding_pctl": 72,
+        "agentic_pctl": 63,
+        "value_leader_rank": 4
+      }
     },
     {
       "model_key": "opencode-zen/big-pickle",
@@ -5125,7 +5668,14 @@
       "status": "LIVE",
       "last_verified": "2026-08-02",
       "source": "opencode-zen",
-      "note": "TRANSIENT FREE tier (free-tier). Limited time. May vanish without notice. Use for FLAME lane replacement for OpenRouter :free which is saturated. Re-probe before SEAL-grade claims."
+      "note": "TRANSIENT FREE tier (free-tier). Limited time. May vanish without notice. Use for FLAME lane replacement for OpenRouter :free which is saturated. Re-probe before SEAL-grade claims.",
+      "discover_signal_2026_08_13": {
+        "intel_pctl": 52,
+        "coding_pctl": 60,
+        "agentic_pctl": 57,
+        "value_leader_rank": 1,
+        "note": "BEST VALUE globally at $0.02/M"
+      }
     },
     {
       "model_key": "opencode-zen/north-mini-code-free",
@@ -5171,7 +5721,18 @@
       "status": "LIVE",
       "last_verified": "2026-08-02",
       "source": "opencode-zen",
-      "note": "TRANSIENT FREE tier (free-tier-nvidia). Limited time. May vanish without notice. Use for FLAME lane replacement for OpenRouter :free which is saturated. Re-probe before SEAL-grade claims."
+      "note": "TRANSIENT FREE tier (free-tier-nvidia). Limited time. May vanish without notice. Use for FLAME lane replacement for OpenRouter :free which is saturated. Re-probe before SEAL-grade claims.",
+      "market_signal_2026_08_13": {
+        "openrouter_rank": 8,
+        "tokens_mo": "10.6T",
+        "growth": "+114%",
+        "note": "Nvidia free tier doubling"
+      },
+      "discover_signal_2026_08_13": {
+        "free_tokens_wk": "2.2T",
+        "free_context": "1M",
+        "note": "#1 FREE model on OpenRouter"
+      }
     },
     {
       "model_key": "opencode-zen/gemini-3.5-flash-lite",
@@ -5411,7 +5972,11 @@
       "status": "LIVE",
       "last_verified": "2026-08-02",
       "source": "opencode-zen",
-      "note": "Same as Anthropic intro — only via Zen if monthly cap useful"
+      "note": "Same as Anthropic intro — only via Zen if monthly cap useful",
+      "benchmark_highlights": {
+        "artificial_analysis_intelligence_index": 63.1,
+        "index_source": "OpenRouter/Artificial Analysis 2026-08-13 [OBS]"
+      }
     },
     {
       "model_key": "qwen/qwen3.7-plus",

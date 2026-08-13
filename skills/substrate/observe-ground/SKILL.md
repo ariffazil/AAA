@@ -14,6 +14,9 @@ axis_version: 1.0.0
 autonomy_tier: T0
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+required_tools: ['arif_observe', 'arif_think']
+tool_gate: strict
+
 ---
 
 # observe-ground
