@@ -3,5 +3,5 @@
 # Do NOT duplicate floor rules, evidence gates, or substrate paths here.
 
 canonical: /root/AAA/contracts/art_binding.canonical.yaml
-agent_id: hermes-asi
+agent_id: claude-code
 default_action_class: ANALYZE

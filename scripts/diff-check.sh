@@ -9,7 +9,7 @@
 
 set -euo pipefail
 
-CANONICAL="/root/AAA/art_binding.canonical.yaml"
+CANONICAL="/root/AAA/contracts/art_binding.canonical.yaml"
 AGENTS=(hermes-asi openclaw claude-code opencode)
 
 echo ""
@@ -66,7 +66,7 @@ for agent in "${AGENTS[@]}"; do
   fi
 
   # Check local stub references canonical
-  if grep -q "canonical: /root/AAA/art_binding.canonical.yaml" "$LOCAL"; then
+  if grep -q "canonical: /root/AAA/contracts/art_binding.canonical.yaml" "$LOCAL"; then
     :
   else
     echo "  ❌ $agent — local stub missing canonical reference"

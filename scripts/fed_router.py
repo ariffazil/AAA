@@ -105,8 +105,24 @@ TOKENROUTER_PRICING = {
     "gpt-5.5": {"input": 2.50, "output": 10.00},
     "claude-sonnet-5": {"input": 3.00, "output": 15.00},
     "claude-opus-4.8": {"input": 15.00, "output": 75.00},
+    # Kimi K3 via TokenRouter free gateway (fallback path for kimi-k3 only).
     "kimi-k3": {"input": 0.00, "output": 0.00},
     "glm-5.2": {"input": 0.00, "output": 0.00},
+}
+
+# Kimi Code direct (api.kimi.com/coding) — subscription quota (Moderato/
+# Allegretto tiers), NOT USD-metered. 0.00 means "no marginal USD cost";
+# the real constraint is plan quota, tracked outside token_bank.
+# Zen 2026-08-13: added under F13 directive "FED must have kimi code model
+# at the right alias". Previously absent → fell through to the $0.50/$2.00
+# default and reported false cost.
+KIMI_PRICING = {
+    "k3": {"input": 0.00, "output": 0.00},
+    "k3-256k": {"input": 0.00, "output": 0.00},
+    "kimi-k3": {"input": 0.00, "output": 0.00},
+    "kimi-for-coding": {"input": 0.00, "output": 0.00},
+    "kimi-for-coding-highspeed": {"input": 0.00, "output": 0.00},
+    "kimi-k2.7-code": {"input": 0.00, "output": 0.00},
 }
 
 # FLAME — Free inference mesh (:18901). Groq + Gemini free tiers. Zero cost.
@@ -129,6 +145,7 @@ def _estimate_cost(provider_id: str, model_id: str, tokens_in: int, tokens_out: 
         "mulerouter": MULEROUTER_PRICING,
         "tokenrouter": TOKENROUTER_PRICING,
         "flame": FLAME_PRICING,
+        "kimi-moonshot": KIMI_PRICING,
         "qwen-token-plan-individual": DEEPSEEK_PRICING,  # Qwen routes deepseek models at similar pricing
         "bailian-token-plan": DEEPSEEK_PRICING,  # Bailian also similar
         "qwen-token-plan-individual": DEEPSEEK_PRICING,  # Qwen Individual Pro — same SG endpoint, same pricing
@@ -144,6 +161,7 @@ def _estimate_cost_per_1k(provider_id: str, model_id: str) -> dict:
         "mulerouter": MULEROUTER_PRICING,
         "tokenrouter": TOKENROUTER_PRICING,
         "flame": FLAME_PRICING,
+        "kimi-moonshot": KIMI_PRICING,
         "qwen-token-plan-individual": DEEPSEEK_PRICING,
         "bailian-token-plan": DEEPSEEK_PRICING,
         "qwen-token-plan-individual": DEEPSEEK_PRICING,
@@ -265,7 +283,11 @@ EMD_MODEL_CLASS = {
     # Canonical: Arif #50177 (2026-08-10)
     "deepseek-v4-pro":   {"lane": "metabolize",  "vision_in": False, "audio_in": False, "notes": "algorithmic surgeon — math, strict logic, unit-testable code"},
     "qwen3.8-max":      {"lane": "metabolize",  "vision_in": True,  "audio_in": False, "notes": "system architect — multi-file AST, GitHub PR, tool orchestration"},
-    "kimi-k3":          {"lane": "metabolize",  "vision_in": False, "audio_in": False, "notes": "autonomous coding loops + reasoning"},
+    # Zen 2026-08-13: vision_in corrected False→True. K3 accepts image AND video
+    # per Kimi Code model docs; the old flag suppressed multimodal routing.
+    "kimi-k3":          {"lane": "metabolize",  "vision_in": True,  "audio_in": False, "notes": "autonomous coding loops + reasoning; 1M ctx, image+video in"},
+    "k3":               {"lane": "metabolize",  "vision_in": True,  "audio_in": False, "notes": "Kimi K3 canonical — 2.8T params, 1M ctx, image+video in"},
+    "k3-256k":          {"lane": "metabolize",  "vision_in": True,  "audio_in": False, "notes": "K3 at 256k ctx — ~half the quota of k3; image only, no video"},
     "deepseek-v4-flash": {"lane": "metabolize",  "vision_in": False, "audio_in": False, "notes": "fast reasoning fallback"},
     # ═══ DECODE (D) — Action & Generation ═══
     # High-throughput tool calls, fast sub-agent execution, media synthesis.
@@ -364,7 +386,7 @@ def _emd_check(agent_id: str, operation: str, model_id: str, modality: str) -> d
 CAPABILITY_SIGNATURES = {
     "fed-reasoning-heavy": {
         "description": "Heavy reasoning, coding, planning, constitutional judgment",
-        "models": ["deepseek-v4-pro", "qwen3.8-max", "MiniMax-M3"],
+        "models": ["k3", "deepseek-v4-pro", "qwen3.8-max", "MiniMax-M3"],
         "constitutional_tier": 333,
         "modality": "text",
     },
@@ -376,7 +398,22 @@ CAPABILITY_SIGNATURES = {
     },
     "fed-long-context": {
         "description": "Long documents, large context windows, multi-chunk processing",
-        "models": ["MiniMax-M3", "mimo-v2.5-pro", "qwen3.8-max"],
+        "models": ["k3", "MiniMax-M3", "mimo-v2.5-pro", "qwen3.8-max"],
+        "constitutional_tier": 333,
+        "modality": "text",
+    },
+    # ── i-ARIF · IDENTITY class (forged 2026-08-13 under F13) ──
+    # i-ARIF asks "apa maknanya kepada identiti Arif?" — meaning synthesis over
+    # long qualia streams. Bound as a CAPABILITY, never a hardcoded model: the
+    # identity-core litmus test is "tukar model → identity hidup?". K3 leads on
+    # merit (1M ctx, 2.8T params); the cascade keeps identity model-independent.
+    "fed-identity-synthesis": {
+        "description": (
+            "Identity-core meaning synthesis for i-ARIF. Interprets qualia and "
+            "narrative continuity, not tasks. Model is swappable by doctrine — "
+            "identity must survive any single provider failing."
+        ),
+        "models": ["k3", "MiniMax-M3", "qwen3.8-max"],
         "constitutional_tier": 333,
         "modality": "text",
     },
@@ -812,24 +849,50 @@ MODEL_ROUTES = {
             "priority": 1,
         },
     ],
-    # Kimi / GLM — TokenRouter FREE
+    # Kimi — direct Kimi Code (api.kimi.com/coding), TokenRouter FREE as fallback.
+    # Zen 2026-08-13: canonical provider is "kimi-moonshot". Collapses the five
+    # historical aliases (kimi-moonshot / kimi-coding / kimi-for-coding /
+    # managed:kimi-code) onto it. "kimi-moonshot" was never registered in
+    # token_bank.db, so this route silently fell through to free tier.
     "kimi-k3": [
-        {
-            "provider": "tokenrouter",
-            "router": "gateway",
-            "class": "gateway",
-            "constitutional": False,
-            "shadow": None,
-            "priority": 1,
-            "free": True,
-        },
         {
             "provider": "kimi-moonshot",
             "router": "direct",
             "class": "direct",
             "constitutional": False,
             "shadow": None,
+            "priority": 1,
+        },
+        {
+            "provider": "tokenrouter",
+            "router": "gateway",
+            "class": "gateway",
+            "constitutional": False,
+            "shadow": None,
             "priority": 2,
+            "free": True,
+        },
+    ],
+    # Canonical upstream model IDs (per Kimi Code docs). "kimi-k3" is retained
+    # as the federation-internal alias; these are the wire-format IDs.
+    "k3": [
+        {
+            "provider": "kimi-moonshot",
+            "router": "direct",
+            "class": "direct",
+            "constitutional": False,
+            "shadow": None,
+            "priority": 1,
+        },
+    ],
+    "k3-256k": [
+        {
+            "provider": "kimi-moonshot",
+            "router": "direct",
+            "class": "direct",
+            "constitutional": False,
+            "shadow": None,
+            "priority": 1,
         },
     ],
     "glm-5.2": [
@@ -859,9 +922,11 @@ MODEL_ROUTES = {
             "priority": 3,
         },
     ],
+    # Zen 2026-08-13: priority 1 was "qwen-token-plan-individual" — a Kimi model
+    # routed to a Qwen provider. Corrected to the direct kimi-code provider.
     "kimi-k2.7-code": [
         {
-            "provider": "qwen-token-plan-individual",
+            "provider": "kimi-moonshot",
             "router": "direct",
             "class": "direct",
             "constitutional": False,
@@ -875,6 +940,26 @@ MODEL_ROUTES = {
             "constitutional": False,
             "shadow": None,
             "priority": 2,
+        },
+    ],
+    "kimi-for-coding": [
+        {
+            "provider": "kimi-moonshot",
+            "router": "direct",
+            "class": "direct",
+            "constitutional": False,
+            "shadow": None,
+            "priority": 1,
+        },
+    ],
+    "kimi-for-coding-highspeed": [
+        {
+            "provider": "kimi-moonshot",
+            "router": "direct",
+            "class": "direct",
+            "constitutional": False,
+            "shadow": None,
+            "priority": 1,
         },
     ],
     # FLAME — Free inference mesh (:18901). Groq + Gemini free tiers.
@@ -1062,9 +1147,15 @@ def fed_route_engine(
 
         # Monthly token plans (credit-based, not USD) — do not HARD-demote on $0 balance.
         # Track A + monthly_plan marker → check notes for "monthly" or "credit" to skip HARD gate.
+        # Zen 2026-08-13: added "subscription" markers. Kimi Code bills by plan tier
+        # (Moderato/Allegretto), so balance_usd is structurally 0 and the $1.00 hard
+        # gate was demoting a healthy, entitled route.
         is_monthly_plan = any(
             tag in notes.lower()
-            for tag in ("monthly_token_plan", "credit pack", "credit-based", "monthly plan", "credit_plan")
+            for tag in (
+                "monthly_token_plan", "credit pack", "credit-based", "monthly plan",
+                "credit_plan", "subscription", "subscription_quota", "plan quota",
+            )
         )
 
         if track == "A" and confidence >= 0.95 and not is_monthly_plan:

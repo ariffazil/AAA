@@ -8,7 +8,7 @@
     "category": "LLM-as-principal (test-agent role bounded to META-MESA charter replay)",
     "principle_origin": "Forged 2026-07-12 by kimi-code-cli (FI-008) under F13 SOVEREIGN directive. Ed25519 keypair generated; public key registered at /root/AAA/IDENTITY/keys/mesa_test_agent_public.pem."
   },
-  "description": "META-MESA substrate test agent \u2014 bounded registry entry created so positive mutation replay tests can execute end-to-end. Identity verifiable via Ed25519 signature against registered public key. Operating authority: bounded test (NOT SOVEREIGN \u2014 actor_id is NOT in PROTECTED_SOVEREIGN_IDS, so signature produces OPERATOR-level verified status under F13 hotfix refactor policy). Mission scope: META-MESA sandbox canary execution only. Rollback mandatory; never self-seal.",
+  "description": "META-MESA substrate test agent — bounded registry entry created so positive mutation replay tests can execute end-to-end. Identity verifiable via Ed25519 signature against registered public key. Operating authority: bounded test (NOT SOVEREIGN — actor_id is NOT in PROTECTED_SOVEREIGN_IDS, so signature produces OPERATOR-level verified status under F13 hotfix refactor policy). Mission scope: META-MESA sandbox canary execution only. Rollback mandatory; never self-seal.",
   "version": "1.0.0",
   "model": "n/a (identity carrier, not a model)",
   "binary": "n/a",
@@ -50,7 +50,7 @@
       "key_path": "/root/AAA/IDENTITY/keys/mesa_test_agent_public.pem",
       "key_id": "ed25519:sha256:04761fd348a64558",
       "sha256_fingerprint": "sha256:04761fd348a6455851cab0d2d6950c5314bc5b8036e00bc545850998cc10eabd",
-      "description": "actor_verified=True ONLY when this signature verifies against the key above. Authority level resolved to OPERATOR \u2014 never SOVEREIGN (actor_id is not in PROTECTED_SOVEREIGN_IDS set)."
+      "description": "actor_verified=True ONLY when this signature verifies against the key above. Authority level resolved to OPERATOR — never SOVEREIGN (actor_id is not in PROTECTED_SOVEREIGN_IDS set)."
     }
   },
   "security": [
@@ -89,10 +89,10 @@
       "forge_shell_dryrun (preview only)"
     ],
     "forbidden_actions": [
-      "arif_judge (constitutional verdict \u2014 reserved for SOVEREIGN)",
-      "arif_seal (immutable ledger \u2014 reserved for SOVEREIGN)",
-      "arif_forge (high-impact mutations \u2014 reserved for SOVEREIGN)",
-      "forge_shell (live execution \u2014 gated by SOVEREIGN_KEY_IDS)",
+      "arif_judge (constitutional verdict — reserved for SOVEREIGN)",
+      "arif_seal (immutable ledger — reserved for SOVEREIGN)",
+      "arif_forge (high-impact mutations — reserved for SOVEREIGN)",
+      "forge_shell (live execution — gated by SOVEREIGN_KEY_IDS)",
       "any production-system mutation"
     ],
     "blast_radius_limit": "sandbox-only (single disposable directory under /tmp)",
@@ -110,7 +110,7 @@
   "topological_role": "bounded-test-agent (RUNTIME tier support; not in HEXAGON primary)",
   "a2a_transport": {
     "transport": "internal-federation",
-    "endpoint": "arifOS MCP \u2014 actor-bound only"
+    "endpoint": "arifOS MCP — actor-bound only"
   },
   "mcp_binding": {
     "forge_tools": [
@@ -185,5 +185,7 @@
   "default_output_modes": [
     "application/json",
     "text/plain"
-  ]
+  ],
+  "fi": "FI-MESA",
+  "bound_to": "AAA"
 }

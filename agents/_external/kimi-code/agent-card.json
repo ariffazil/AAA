@@ -33,7 +33,7 @@
       "mimo-v2.5-pro"
     ],
     "provider_diversity": 5,
-    "vendor_collapse_risk": "LOW — 5 providers in config.toml"
+    "vendor_collapse_risk": "LOW \u2014 5 providers in config.toml"
   },
   "federation_binding": {
     "arif_init": "config-driven (federation wire in config.toml)",
@@ -130,8 +130,10 @@
   "model": "MiniMax-M3",
   "codex_fed_alias": "codex.scout",
   "architecture_layer": "CODEX",
-  "architecture_role": "Context Prime — scout + indexer",
+  "architecture_role": "Context Prime \u2014 scout + indexer",
   "codex_lane": "codex.scout",
   "cognitive_species": "context",
-  "species_rank": 1
+  "species_rank": 1,
+  "fi": "FI-KIMI",
+  "bound_to": "333-AGI"
 }
