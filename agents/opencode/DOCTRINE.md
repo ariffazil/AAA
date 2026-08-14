@@ -40,7 +40,7 @@ Only `arif_seal` writes to VAULT999. Only A-FORGE mutates production state.
 | **T2** | Service restart prod, schema migration dev, new dep, deploy after green | "Going to X. Why: Y. Risk: reversible. Proceeding in 10s." |
 | **T3** | `rm -rf` unknown, `DROP TABLE`, force-push main, branch delete, new paid API > $10/mo, F1-F13 changes, secret rotation, external comms, prod deploy without test pass | **888_HOLD** |
 
-**Post-ACK era (2026-08-09):** Only `ACK_M7_ROTATE_DB_SECRET` and `ACK_HISTORY_REWRITE` remain sovereign gates. Everything else: announce 10s (T2) or just do (T1).
+**Post-ACK era (2026-08-14):** ALL ACK tokens killed. No sovereign gates remain as buttons. T3 HOLD comes with full diagnostic report. Everything else: announce 10s (T2) or just do (T1).
 
 ## 3. 7-layer agentic kernel
 
