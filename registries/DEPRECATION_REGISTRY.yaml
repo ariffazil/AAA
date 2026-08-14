@@ -110,6 +110,23 @@ categories:
         replaced_by: "registries/skills.yaml + 234 SKILL.md files"
         deprecation_class: "DRAFT-ONLY"
 
+  # Dead skill bodies — removed from disk 2026-08-15, archived (F1 archive-don't-delete)
+  dead_skill_bodies_2026_08:
+    description: "Retired skill directories removed from AAA tree; full contents in cold storage"
+    entries:
+      - path: "agents/hermes-asi/runtime/skills/yuanbao"
+        deprecated_at: "2026-08-15"
+        deprecated_by: "333-AGI (MQP T2 dead-capital prune, session SEAL-cbca783ddc6b452b)"
+        archive: "/root/backups/dead-capital-2026-08-15/aaa-hermes-asi-runtime-skills-deadcapital.tar.gz"
+        archive_sha256: "9a1f23c6d4c4a0da…full in SHA256SUMS"
+        reason: "Dead capital: absent from active skills.yaml routing view (196 active); disk-only leftover"
+      - path: "agents/hermes-asi/runtime/skills/smart-home"
+        deprecated_at: "2026-08-15"
+        deprecated_by: "333-AGI (MQP T2 dead-capital prune, session SEAL-cbca783ddc6b452b)"
+        archive: "/root/backups/dead-capital-2026-08-15/aaa-hermes-asi-runtime-skills-deadcapital.tar.gz"
+        archive_sha256: "9a1f23c6d4c4a0da…full in SHA256SUMS"
+        reason: "Dead capital: openhue smart-home skill, absent from active routing view; disk-only leftover"
+
   # Models with active sunset/deprecation
   sunset_models_2026:
     description: "Provider/model entries flagged DEAD / DEPRECATING / SUNSET — kept here for cross-reference"
