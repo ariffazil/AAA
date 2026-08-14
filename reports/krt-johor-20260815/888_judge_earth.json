@@ -1,0 +1,100 @@
+{
+ "status": "completed",
+ "tool": "arif_judge",
+ "verdict": "completed",
+ "actor": {
+  "actor_id": "arif",
+  "actor_verified": true,
+  "authority_level": "LIMITED_MUTATE"
+ },
+ "session_id": "SEAL-4aef2edeb8e34417",
+ "call_hash": "sha256:f940a23a8531e2d2d2527227b7b96806104385c7fb412edfd2b32e81a7d9abcc",
+ "trace_id": "trc-4016231a26da",
+ "signature": null,
+ "session_token": "act_v1.eyJhY3RfdiI6MSwiYWN0b3IiOiJhcmlmIiwiYWxsb3dlZCI6WyJhcmlmX2luaXQiLCJhcmlmX29ic2VydmUiLCJhcmlmX3RoaW5rIiwiYXJpZl9yb3V0ZSIsImFyaWZfbWVtb3J5IiwiYXJpZl9qdWRnZSIsImFyaWZfZm9yZ2UiLCJhcmlmX3NlYWwiLCJhcmlmX3N0YWdlIl0sImFwZXgiOnsiQ19kYXJrIjowLjE5NTMsIkciOjAuNDU4MiwiVzMiOiJVTk1FQVNVUkVEIiwiaCI6MC45MTE1fSwiYXV0aCI6IkxJTUlURURfTVVUQVRFIiwiYXYiOnRydWUsImV4cCI6MTc4Njc3MDg2NiwiaWF0IjoxNzg2NzQyMDY2LCJraWQiOiJkZWZhdWx0IiwibGFuZSI6IkFHSSIsIm5iZiI6MTc4Njc0MjA2Niwic2lkIjoiU0VBTC00YWVmMmVkZWI4ZTM0NDE3Iiwic3RhZ2UiOiIwMDAiLCJ0dGwiOjI4ODAwLCJ2ZXJkaWN0Ijp7ImRvbWluYW50X3JlYXNvbiI6bnVsbCwic3RhdGUiOiJTQUJBUi5ERUdSQURFRCJ9LCJ3aXRuZXNzIjp7ImFjdGl2ZSI6MSwiZGl2ZXJzaXR5IjoiUEFSVElBTCJ9fQ.e7ca72b06a8a3410",
+ "audit_provenance": {
+  "call_hash": "sha256:f940a23a8531e2d2d2527227b7b96806104385c7fb412edfd2b32e81a7d9abcc",
+  "trace_id": "trc-4016231a26da",
+  "signature": null,
+  "kernel_signature_anchor": "constitutional_init_v1"
+ },
+ "next_safe_action": {
+  "action": "Review result. If confidence low, gather more evidence via observe or domain organ.",
+  "tool": null,
+  "reason": "Derived from result"
+ },
+ "constitutional_check": {
+  "floor_passed": null,
+  "_floor_measurement": "unmeasured",
+  "hold_required": false,
+  "hold_reason": null,
+  "failed_floors": [],
+  "substrate_state": "PASS",
+  "session_state": "LIMITED_MUTATE",
+  "agency_level": "SOVEREIGN",
+  "observe_class_exempt": true,
+  "_derivation": "attach_effective_verdict:last_writer",
+  "_stab_fix": "2026-08-07-P0-dual-truth"
+ },
+ "risk": {
+  "blast_radius": "medium",
+  "reversibility": "reversible",
+  "human_confirmation_required": false,
+  "agency_level": "SOVEREIGN"
+ },
+ "effective_verdict": "SEAL",
+ "execution_state": "COMPLETED",
+ "status_scope": "execution",
+ "reason_code": "APPROVED",
+ "next_action": "PROCEED",
+ "receipt_state": "UNSEALED",
+ "delta_S": null,
+ "result": {
+  "raw_response": "None",
+  "reasons": [],
+  "actor": "arif",
+  "actor_id": "arif",
+  "session_token": "act_v1.eyJhY3RfdiI6MSwiYWN0b3IiOiJhcmlmIiwiYWxsb3dlZCI6WyJhcmlmX2luaXQiLCJhcmlmX29ic2VydmUiLCJhcmlmX3RoaW5rIiwiYXJpZl9yb3V0ZSIsImFyaWZfbWVtb3J5IiwiYXJpZl9qdWRnZSIsImFyaWZfZm9yZ2UiLCJhcmlmX3NlYWwiLCJhcmlmX3N0YWdlIl0sImFwZXgiOnsiQ19kYXJrIjowLjE5NTMsIkciOjAuNDU4MiwiVzMiOiJVTk1FQVNVUkVEIiwiaCI6MC45MTE1fSwiYXV0aCI6IkxJTUlURURfTVVUQVRFIiwiYXYiOnRydWUsImV4cCI6MTc4Njc3MDg2NiwiaWF0IjoxNzg2NzQyMDY2LCJraWQiOiJkZWZhdWx0IiwibGFuZSI6IkFHSSIsIm5iZiI6MTc4Njc0MjA2Niwic2lkIjoiU0VBTC00YWVmMmVkZWI4ZTM0NDE3Iiwic3RhZ2UiOiIwMDAiLCJ0dGwiOjI4ODAwLCJ2ZXJkaWN0Ijp7ImRvbWluYW50X3JlYXNvbiI6bnVsbCwic3RhdGUiOiJTQUJBUi5ERUdSQURFRCJ9LCJ3aXRuZXNzIjp7ImFjdGl2ZSI6MSwiZGl2ZXJzaXR5IjoiUEFSVElBTCJ9fQ.e7ca72b06a8a3410",
+  "apex_scalars": {
+   "G": 0.5039,
+   "C_dark": 0.1213,
+   "W3": null,
+   "h": 0.7776,
+   "sample_size": 13956,
+   "source": "apex_primitives.py"
+  },
+  "standing_source": "sct"
+ },
+ "reasons": [
+  "Reversible operation verified",
+  "Constitutional floors passed",
+  "No irreversible state change"
+ ],
+ "authority": "LIMITED_MUTATE",
+ "can_continue_observing": true,
+ "can_claim_success": true,
+ "meta": {
+  "actor_id": "arif",
+  "session_notice": {
+   "id": "sn-043954f0a0ab",
+   "source_node": "arif_judge",
+   "timestamp": "2026-08-14T21:32:43.275411+00:00",
+   "severity": "GREEN",
+   "session_state": "OBSERVE_ONLY",
+   "action_verdict": "",
+   "tool_name": "arif_judge",
+   "message": "Session scope restricted to OBSERVE_ONLY. Action scope=APPROVED. Not a failure \u2014 informational notice only.",
+   "tags": [
+    "ws8:session_restriction_only"
+   ]
+  }
+ },
+ "timestamp": "2026-08-14T21:32:43.275549+00:00",
+ "output_policy": "DOMAIN_SEAL",
+ "nine_signal": {
+  "overall": {
+   "state": "SELAMAT",
+   "en": "SAFE"
+  }
+ }
+}
