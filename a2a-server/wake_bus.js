@@ -339,13 +339,15 @@ class WakeBus {
    * timeout and gives up (memory state remains authoritative for the queue).
    */
   _withTimeout(promise, ms, label) {
-    return Promise.race([
-      promise,
-      new Promise((resolve) => setTimeout(() => {
+    let timer = null;
+    const timeout = new Promise((resolve) => {
+      timer = setTimeout(() => {
         console.warn(`[wake-bus] ${label} timed out after ${ms}ms (Redis unavailable?) — continuing in-memory`);
         resolve(false);
-      }, ms)),
-    ]);
+      }, ms);
+      if (typeof timer.unref === 'function') timer.unref();
+    });
+    return Promise.race([promise, timeout]).finally(() => clearTimeout(timer));
   }
 
   async persistWake(wake) {
