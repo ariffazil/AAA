@@ -119,3 +119,20 @@ Organs are the substrate that agents run ON. Every cognitive function resides in
 ---
 
 *DITEMPA BUKAN DIBERI — Reality first. Judgment second. Architecture forged 2026-08-08.*
+
+---
+
+## KRT Test Protocol (forged 2026-08-15, from KRT-JOHOR-2026-08-15)
+
+Two agents ran the same kernel reality test concurrently and collided: double kernel
+restarts mid-measurement, artifacts split across two paths. Rules to prevent recurrence:
+
+1. **One report path:** KRT artifacts go to `/root/AAA/reports/krt-<case>-<date>/`.
+   Never `/tmp` — /tmp does not survive and cannot be audited.
+2. **One measurer:** before a kernel-touching test, check for a live peer
+   (`journalctl -u arifos.service --since "-30 min"` for foreign actors; kernel log
+   shows caller identity). If another agent is mid-ladder: HOLD or join, never race.
+3. **Restart discipline:** `systemctl restart arifos.service` during someone's
+   measurement invalidates their receipts. Announce in the report dir
+   (`RESTART.lock` file with owner + timestamp) before restarting; delete after.
+4. **Concurrent contamination is a finding, not noise** — log it in the receipt.

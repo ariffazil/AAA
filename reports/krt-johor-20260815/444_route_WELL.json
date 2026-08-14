@@ -1,0 +1,315 @@
+{
+ "status": "completed",
+ "tool": "arif_route",
+ "verdict": "completed",
+ "actor": {
+  "actor_id": "arif",
+  "actor_verified": true,
+  "authority_level": "LIMITED_MUTATE"
+ },
+ "session_id": "SEAL-4aef2edeb8e34417",
+ "call_hash": "sha256:67a71188635abd1a640700c3be29c749d9fca9059bba64bd51f73f4d55670670",
+ "trace_id": "TRACE-7a958620ec2f",
+ "signature": null,
+ "session_token": "act_v1.eyJhY3RfdiI6MSwiYWN0b3IiOiJhcmlmIiwiYWxsb3dlZCI6WyJhcmlmX2luaXQiLCJhcmlmX29ic2VydmUiLCJhcmlmX3RoaW5rIiwiYXJpZl9yb3V0ZSIsImFyaWZfbWVtb3J5IiwiYXJpZl9qdWRnZSIsImFyaWZfZm9yZ2UiLCJhcmlmX3NlYWwiLCJhcmlmX3N0YWdlIl0sImFwZXgiOnsiQ19kYXJrIjowLjE5NTMsIkciOjAuNDU4MiwiVzMiOiJVTk1FQVNVUkVEIiwiaCI6MC45MTE1fSwiYXV0aCI6IkxJTUlURURfTVVUQVRFIiwiYXYiOnRydWUsImV4cCI6MTc4Njc3MDg2NiwiaWF0IjoxNzg2NzQyMDY2LCJraWQiOiJkZWZhdWx0IiwibGFuZSI6IkFHSSIsIm5iZiI6MTc4Njc0MjA2Niwic2lkIjoiU0VBTC00YWVmMmVkZWI4ZTM0NDE3Iiwic3RhZ2UiOiIwMDAiLCJ0dGwiOjI4ODAwLCJ2ZXJkaWN0Ijp7ImRvbWluYW50X3JlYXNvbiI6bnVsbCwic3RhdGUiOiJTQUJBUi5ERUdSQURFRCJ9LCJ3aXRuZXNzIjp7ImFjdGl2ZSI6MSwiZGl2ZXJzaXR5IjoiUEFSVElBTCJ9fQ.e7ca72b06a8a3410",
+ "audit_provenance": {
+  "call_hash": "sha256:67a71188635abd1a640700c3be29c749d9fca9059bba64bd51f73f4d55670670",
+  "trace_id": "TRACE-7a958620ec2f",
+  "signature": null,
+  "kernel_signature_anchor": "constitutional_init_v1"
+ },
+ "next_safe_action": {
+  "action": "Review result. If confidence low, gather more evidence via observe or domain organ.",
+  "tool": null,
+  "reason": "Derived from result"
+ },
+ "confidence": 0.95,
+ "constitutional_check": {
+  "floor_passed": null,
+  "_floor_measurement": "unmeasured",
+  "hold_required": true,
+  "hold_reason": "STAB-2026-08-07b canonical: effective_verdict=HOLD failed_floors=[]",
+  "failed_floors": [],
+  "substrate_state": "HEALTHY",
+  "session_state": "LIMITED_MUTATE",
+  "agency_level": "SOVEREIGN",
+  "observe_class_exempt": true,
+  "_derivation": "attach_effective_verdict:last_writer",
+  "_stab_fix": "2026-08-07-P0-dual-truth"
+ },
+ "risk": {
+  "blast_radius": "low",
+  "reversibility": "reversible",
+  "human_confirmation_required": false,
+  "agency_level": "SOVEREIGN"
+ },
+ "effective_verdict": "HOLD",
+ "execution_state": "COMPLETED",
+ "status_scope": "execution",
+ "reason_code": "NEEDS_REVIEW",
+ "next_action": "AWAIT_INPUT",
+ "receipt_state": "UNSEALED",
+ "delta_S": 0.0,
+ "result": {
+  "intent": "KRT-JOHOR dispatch: household burden, community consent, displacement, weakest stakeholder",
+  "mission_id": "investigate",
+  "organ": "ARIFOS",
+  "port": 8088,
+  "tool_prefix": "arifos_",
+  "organ_tool": null,
+  "status": "routed",
+  "routing_rule": "intent_map",
+  "source_of_truth": {
+   "origin": "arif_route",
+   "actor_id": "arif",
+   "session_id": "SEAL-4aef2edeb8e34417",
+   "timestamp": 1786742815.036253,
+   "routing_confidence": 0.95,
+   "chain": [
+    {
+     "step": "intent_received",
+     "timestamp": 1786742815.0362537
+    },
+    {
+     "step": "mission_bound",
+     "mission_id": "investigate",
+     "classified_by": "keyword_router_v1",
+     "timestamp": 1786742815.0362546
+    },
+    {
+     "step": "organ_resolved",
+     "organ": "ARIFOS",
+     "timestamp": 1786742815.0362551
+    },
+    {
+     "step": "atlas333_gpv_resolved",
+     "lane": "CARE",
+     "\u03c4": 0.4,
+     "\u03ba": 0.7,
+     "\u03c1": 0.2,
+     "paradox_axes": [
+      11,
+      12,
+      13,
+      15,
+      16,
+      17,
+      20
+     ],
+     "timestamp": 1786742815.0805106
+    }
+   ]
+  },
+  "mission": {
+   "mission_id": "investigate",
+   "confidence": 0.15,
+   "human_label": "Investigate \u2014 Gather and test reality",
+   "autonomy": "AUTO_DO",
+   "output_format": "Structured evidence bundle with epistemic tags and confidence bands.",
+   "classified_by": "keyword_router_v1",
+   "matched_triggers": [
+    "(no keyword match \u2014 defaulting to investigate)"
+   ],
+   "pipeline": [
+    {
+     "stage": 1,
+     "organ": "arifOS",
+     "capability": "observe",
+     "tools_hint": [
+      "arif_observe"
+     ],
+     "can_parallel": false
+    },
+    {
+     "stage": 2,
+     "organ": "GEOX",
+     "capability": "query",
+     "tools_hint": [
+      "geox_basin",
+      "geox_surface_status"
+     ],
+     "can_parallel": true
+    },
+    {
+     "stage": 2,
+     "organ": "WEALTH",
+     "capability": "query",
+     "tools_hint": [
+      "capital_market",
+      "capital_health"
+     ],
+     "can_parallel": true
+    },
+    {
+     "stage": 2,
+     "organ": "WELL",
+     "capability": "sense",
+     "tools_hint": [
+      "well_machine_diagnose",
+      "well_classify_substrate"
+     ],
+     "can_parallel": true
+    },
+    {
+     "stage": 2,
+     "organ": "A-FORGE",
+     "capability": "status",
+     "tools_hint": [
+      "forge_probe",
+      "forge_health_check"
+     ],
+     "can_parallel": true
+    },
+    {
+     "stage": 3,
+     "organ": "arifOS",
+     "capability": "synthesize",
+     "tools_hint": [
+      "arif_think"
+     ],
+     "can_parallel": false
+    }
+   ],
+   "primary_organ": "ARIFOS",
+   "human_facing": "**Mission:** Investigate \u2014 Gather and test reality\n**Confidence in classification:** 15%\n**Autonomy:** AUTO_DO\n**Pipeline stages:** 6\n\n_No tools will be shown. The federation handles them silently._",
+   "web_zen": {
+    "cli": "/root/arif-fazil.com/scripts/web-zen/web_zen.py",
+    "doctor": "python3 /root/arif-fazil.com/scripts/web-zen/web_zen.py doctor",
+    "when": "site / deploy / missions / vitals / caddy / SPA work"
+   }
+  },
+  "web_zen_hint": {
+   "cli": "/root/arif-fazil.com/scripts/web-zen/web_zen.py",
+   "doctor": "python3 /root/arif-fazil.com/scripts/web-zen/web_zen.py doctor",
+   "when": "site / deploy / missions / vitals / caddy / SPA work"
+  },
+  "gpv": {
+   "lane": "CARE",
+   "\u03c4": 0.4,
+   "\u03ba": 0.7,
+   "\u03c1": 0.2,
+   "paradox_axes": [
+    11,
+    12,
+    13,
+    15,
+    16,
+    17,
+    20
+   ],
+   "query_type": "FACTUAL"
+  },
+  "actor_id": "arif",
+  "session_id": "SEAL-4aef2edeb8e34417",
+  "_affordance": {
+   "tool_name": "arif_route",
+   "resolved_from": null,
+   "purpose": "Route an intent to the correct federation organ. Pure discovery \u2014 no mutation.",
+   "use_when": [
+    "You know what you want but not which organ to call"
+   ],
+   "do_not_use_when": [
+    "You already know the exact tool to call"
+   ],
+   "authority_level": "advisory_only",
+   "side_effect": "read_only",
+   "blast_radius": "low",
+   "requires_human_confirmation": false,
+   "output_type": "routing_decision",
+   "evidence_required": false,
+   "agency_level": "L1_ANALYZE",
+   "decision_thresholds": "arifos://schema/decision_thresholds",
+   "action_class": "OBSERVE",
+   "mutation": false,
+   "external_side_effect": false,
+   "irreversible": false,
+   "requires_session": true,
+   "requires_lease": false,
+   "requires_human_ack": false,
+   "expected_blast_radius": "LOW",
+   "output_is_evidence": false,
+   "output_is_approval": false,
+   "safe_autonomous_use": true,
+   "known": true,
+   "agency": {
+    "level": 1,
+    "label": "Analyze",
+    "description": "Score, classify, compare. Agent may act alone.",
+    "autonomous_ok": true,
+    "human_confirmation": false
+   },
+   "agency_ref": "arifos://schema/agency/L1_ANALYZE",
+   "decision_thresholds_ref": "arifos://schema/decision_thresholds",
+   "use_when_discovery": "You know what you want but not which organ to call.",
+   "deprecated_aliases": [],
+   "keywords": [
+    "route",
+    "organ",
+    "which",
+    "where"
+   ],
+   "examples": [
+    "Route this to GEOX",
+    "Which organ handles geology?"
+   ],
+   "category": "routing"
+  },
+  "reasons": [
+   "Reversible operation \u2014 no irreversible state change",
+   "tool=arif_route",
+   "delta_S=0.0 within reversible thermodynamic bounds"
+  ],
+  "actor": "arif",
+  "mutation_allowed": false,
+  "seal_allowed": false,
+  "session_token": "act_v1.eyJhY3RfdiI6MSwiYWN0b3IiOiJhcmlmIiwiYWxsb3dlZCI6WyJhcmlmX2luaXQiLCJhcmlmX29ic2VydmUiLCJhcmlmX3RoaW5rIiwiYXJpZl9yb3V0ZSIsImFyaWZfbWVtb3J5IiwiYXJpZl9qdWRnZSIsImFyaWZfZm9yZ2UiLCJhcmlmX3NlYWwiLCJhcmlmX3N0YWdlIl0sImFwZXgiOnsiQ19kYXJrIjowLjE5NTMsIkciOjAuNDU4MiwiVzMiOiJVTk1FQVNVUkVEIiwiaCI6MC45MTE1fSwiYXV0aCI6IkxJTUlURURfTVVUQVRFIiwiYXYiOnRydWUsImV4cCI6MTc4Njc3MDg2NiwiaWF0IjoxNzg2NzQyMDY2LCJraWQiOiJkZWZhdWx0IiwibGFuZSI6IkFHSSIsIm5iZiI6MTc4Njc0MjA2Niwic2lkIjoiU0VBTC00YWVmMmVkZWI4ZTM0NDE3Iiwic3RhZ2UiOiIwMDAiLCJ0dGwiOjI4ODAwLCJ2ZXJkaWN0Ijp7ImRvbWluYW50X3JlYXNvbiI6bnVsbCwic3RhdGUiOiJTQUJBUi5ERUdSQURFRCJ9LCJ3aXRuZXNzIjp7ImFjdGl2ZSI6MSwiZGl2ZXJzaXR5IjoiUEFSVElBTCJ9fQ.e7ca72b06a8a3410",
+  "apex_scalars": {
+   "G": 0.5035,
+   "C_dark": 0.1211,
+   "W3": null,
+   "h": 0.7771,
+   "sample_size": 13935,
+   "source": "apex_primitives.py"
+  },
+  "standing_source": "sct"
+ },
+ "reasons": [
+  "Reversible operation \u2014 no irreversible state change",
+  "tool=arif_route",
+  "delta_S=0.0 within reversible thermodynamic bounds"
+ ],
+ "authority": "LIMITED_MUTATE",
+ "can_continue_observing": true,
+ "facts": [
+  "session bound: SEAL-4aef2edeb8e34417",
+  "session_id=SEAL-4aef2edeb8e34417",
+  "organ=ARIFOS",
+  "port=8088",
+  "status=routed",
+  "routing_rule=intent_map"
+ ],
+ "meta": {
+  "actor_id": "arif",
+  "session_notice": {
+   "id": "sn-e0bdc98a634d",
+   "source_node": "arif_route",
+   "timestamp": "2026-08-14T21:26:55.086153+00:00",
+   "severity": "GREEN",
+   "session_state": "OBSERVE_ONLY",
+   "action_verdict": "",
+   "tool_name": "arif_route",
+   "message": "Session scope restricted to OBSERVE_ONLY. Action scope=APPROVED. Not a failure \u2014 informational notice only.",
+   "tags": [
+    "ws8:session_restriction_only"
+   ]
+  }
+ },
+ "timestamp": "2026-08-14T21:26:55.080918+00:00",
+ "output_policy": "DOMAIN_SEAL",
+ "nine_signal": {
+  "overall": {
+   "state": "RETAK",
+   "en": "HOLDING"
+  }
+ }
+}

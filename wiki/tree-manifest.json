@@ -1,15 +1,15 @@
 {
   "schema_version": "2.0",
-  "generated_at": "2026-08-14T15:29:41.736067+00:00",
-  "total_entries": 135,
+  "generated_at": "2026-08-14T20:18:28.257458+00:00",
+  "total_entries": 136,
   "totals_by_kind": {
     "skill": 54,
     "concept": 27,
     "raw": 15,
     "entity": 10,
     "scar": 9,
+    "arifos": 6,
     "axiom": 6,
-    "arifos": 5,
     "workflow": 4,
     "infrastructure": 2,
     "nine-signal": 2,
@@ -17,7 +17,7 @@
   },
   "categories": {
     "root": {
-      "count": 64,
+      "count": 65,
       "maturity": "high",
       "index": "tree777://index/root"
     },
@@ -289,6 +289,24 @@
       "size": 2020,
       "word_count": 296,
       "updated_at": "2026-07-17T07:56:15.364010+00:00"
+    },
+    "tree777://arifos/root/rrr-resource-reality-resolution": {
+      "slug": "rrr-resource-reality-resolution",
+      "title": "RRR — Resource Reality Resolution",
+      "kind": "arifos",
+      "category": "root",
+      "tags": [
+        "kernel",
+        "rrr",
+        "sense",
+        "skills"
+      ],
+      "confidence": "medium",
+      "summary": "RRR names what `arif_observe` already does: establish the minimum reality set",
+      "sha256": "bcf05d74becd6fdf",
+      "size": 1114,
+      "word_count": 133,
+      "updated_at": "2026-08-15"
     },
     "tree777://axiom/root/epistemology": {
       "slug": "epistemology",
@@ -1011,9 +1029,9 @@
       ],
       "confidence": "high",
       "summary": "| URI | Title | Category | Summary |",
-      "sha256": "af30e677965e2a48",
-      "size": 22695,
-      "word_count": 3129,
+      "sha256": "0bb9604379de03fc",
+      "size": 23079,
+      "word_count": 3179,
       "updated_at": "2026-08-14"
     },
     "tree777://infrastructure/root/observability": {
@@ -1309,7 +1327,7 @@
       "sha256": "67d4f0d4a8c5e626",
       "size": 2868,
       "word_count": 397,
-      "updated_at": "2026-08-14T15:24:18.374533+00:00"
+      "updated_at": "2026-08-14T16:02:37.410230+00:00"
     },
     "tree777://scar/root/kimi": {
       "slug": "kimi",
