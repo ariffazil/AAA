@@ -43,7 +43,7 @@ const AGENT_ID_BY_FI = Object.freeze({
 const ROLE_BY_FI = Object.freeze({
   'FI-001': 'orchestrator',
   'FI-002': 'architect',
-  'FI-003': 'dormant',
+  'FI-003': 'engineer',
   'FI-004': 'executor',
   'FI-005': 'forge',
   'FI-006': 'forge',

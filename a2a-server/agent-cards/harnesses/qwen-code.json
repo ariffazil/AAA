@@ -5,15 +5,15 @@
   "name": "Qwen Code CLI",
   "principal_agent": {
     "type": "llm",
-    "category": "LLM-as-principal (Qwen/MiniMax bridge \u2014 the model is the principal, CLI is harness)",
+    "category": "LLM-as-principal (Qwen/MiniMax bridge — the model is the principal, CLI is harness)",
     "principle_origin": "Qwen CLI harness on af-forge, bridged into arifOS federation"
   },
-  "description": "Qwen Code CLI forge instrument \u2014 lightweight reasoning and exploration harness on af-forge. Bound to AAA as a bridge-mode FI citizen. F1-F13 enforced.",
+  "description": "Qwen Code CLI forge instrument — lightweight reasoning and exploration harness on af-forge. Bound to AAA as a bridge-mode FI citizen. F1-F13 enforced.",
   "version": "2.0.0",
   "model": "qwen / MiniMax-M3 bridge",
   "binary": "/root/.npm-global/bin/qwen",
   "config": "/root/.qwen/settings.json",
-  "tier": "FI-011",
+  "tier": "FI-003",
   "role": "forge_instrument",
   "class": "CODING/FI",
   "protocolVersion": "1.2",
@@ -35,7 +35,7 @@
     "subagent_spawn": false,
     "stateTransitionHistory": true,
     "extendedAgentCard": true,
-    "forge_tier": "FI-011"
+    "forge_tier": "FI-003"
   },
   "securitySchemes": {
     "bearer_auth": {
@@ -245,7 +245,7 @@
     {
       "id": "ASI-fabrication-prevention",
       "name": "Fabrication Prevention",
-      "description": "Artifact fabrication prevention \u2014 verify before claiming existence. F2, F9 enforced.",
+      "description": "Artifact fabrication prevention — verify before claiming existence. F2, F9 enforced.",
       "tags": [
         "fabrication",
         "F2",
@@ -376,7 +376,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -392,7 +392,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -434,7 +434,7 @@
       "from_version": "1.0.0",
       "to_version": "2.0.0",
       "upgraded_at": "2026-07-01T21:00:00Z",
-      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
+      "upgraded_by": "FORGE (000Ω) — Phase 5.1 A2A Protocol Alignment",
       "changes": [
         "topological_role binding",
         "a2a_transport declaration",
