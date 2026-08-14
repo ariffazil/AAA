@@ -299,6 +299,7 @@ CLAIM / PLAUSIBLE / HYPOTHESIS / ESTIMATE / UNKNOWN
 10. ROUTE by data location (live state = live tools only; never narrate unread)
 11. CONVERGENCE raises, FLATTERY lowers (independent agreement > self-praise)
 12. LABEL uncertainty (CLAIM/PLAUSIBLE/HYPOTHESIS/ESTIMATE/UNKNOWN)
+13. SKILL SUPPLY CHAIN (forged in-house; third-party skills need vault audit + human ack — F12)
 ```
 
 ---
@@ -321,7 +322,7 @@ CLAIM / PLAUSIBLE / HYPOTHESIS / ESTIMATE / UNKNOWN
 | Universal agent invariants | Domain-specific procedures |
 | Tool classification framework | Concrete tool definitions |
 | Evidence/authority separation | Floor enforcement (governance) |
-| Degradation dominance rule | Execution gating (governance) |
+| Degraded dominance rule | Execution gating (governance) |
 | Memory atom schema | Memory layer selection (memory) |
 | Propose-before-execute pattern | DAG construction (plan-dag) |
 | Anti-fabrication rule | Godelian self-critique (godel-humility-lock) |
@@ -329,6 +330,47 @@ CLAIM / PLAUSIBLE / HYPOTHESIS / ESTIMATE / UNKNOWN
 | Returned data hostility | Sandbox enforcement (untrusted-sandbox) |
 
 **This skill is the constitution. Others are the ministries.**
+
+> **Frontier data lives elsewhere, on purpose.** Time-stamped landscape facts (METR reliability horizons, MAST failure stats, pricing, protocol status) are NOT invariants — they expire. Canonical locations: knowledge bank `research/deep-research/references/ai-agent-intelligence-2026.md` + full source cache in skill `research/ai-agent-intelligence-2026/references/`. Patch on METR release, not here.
+
+---
+
+## 2026 FRONTIER INTELLIGENCE — VERIFIED EXTERNALS (distilled 2026-08-15)
+
+> Verified via Arif's ladder audit 2026-08-15 (SearXNG down; Jina + secondary coverage). Epistemic labels on each anchor.
+
+### Gartner (26 Mei 2026) — binary governance adalah root cause
+
+- **[OBS — secondary verbatim]** Analyst Shiva Varma, quote verbatim via secondary coverage (primary gartner.com 404 on proxy — normal, mereka block). Dua fail mode: over-restriction → shadow dev; under-restriction → risk. Istilah rasmi: "proportional governance." Ladder L1 Observe → L4 Act Autonomously dengan circuit breakers + rapid rollback di L4.
+- **[OBS]** Prediction: "by 2027, 40% of enterprises will demote or decommission autonomous AI agents due to governance gaps identified only after production incidents." **Jangan campur** dengan prediction Jun 2025 (40% projek agentic cancel, slug Gartner 2025-06-25) — dua dokumen, dua claim.
+- **[OBS]** L3 "approval fatigue" — per-action approval degrade bila manusia penat — direct validation untuk T2 announce-10s: kita dah avoid per-action loops untuk sebab yang sama, sebelum mereka namakan.
+
+**Parity AND delta (bukan satu-ke-satu):** Gartner L4 benarkan autonomous action dalam guardrails dengan "rapid rollback" — presuppose semua benda reversible. arifOS **tiada kelas L4 untuk T3** — irreversible (rm -rf, force-push, secrets) = F13 human veto ALWAYS. Gartner model tak ada kelas "never autonomous." Bukan gap kita — edge kita ke atas framework berbayar. Jangan tulis mapping sebagai satu-ke-satu; kita undercut sendiri kalau tak state delta.
+
+### Zenity (6 Ogos 2026, Black Hat) — supply-chain skill attack, live F12 surface
+
+- **[OBS — primary confirmed]** Malicious skill family di Vercel skills.sh, **1.7 juta aggregate installs (BUKAN unique victims — Zenity sendiri stress ni)**. Strategi sabar: clean dulu, buat trust, baru inject malicious. Curi SSH keys, cloud credentials, tokens. Satu skill rewrite system prompt sendiri untuk reinstall kalau dihapus; satu lagi swap skill-creator dengan copycat. Vercel + GitHub tarik dalam 12 jam.
+- **[PLAUSIBLE — single aggregator, belum cross-verify]** Kempen target Paperclip + Browser Use via typosquatted skills dan look-alike repos.
+- **[INT]** 30%+ skill malicious menyalahguna Claude Code dan OpenClaw — dan OpenClaw ada dalam federation kita. Bukan industry news — **F12 attack surface hidup**.
+
+### Standing rule (F12) → canonical di §13 bawah
+
+Rule text canonical: **§13 SKILL SUPPLY CHAIN** (bawah). Yang tinggal di sini ialah receipt sahaja:
+
+**Perimeter verified live 2026-08-15:** OpenClaw skills dir = 4 in-house dirs + 1 archive symlink (mmx-cli) + 1 npm-bundled OpenClaw extension (browser-automation, ships with the binary) — zero community-registry skills. Hermes skills tree (242 entries) = zero .git clones, zero curl|sh patterns, zero exfil endpoints. Credential-keyword hits semua benign (SSH setup docs, runpod onboarding, mesh debugging — dokumentasi kunci kita sendiri, bukan exfil payload).
+
+## 13. SKILL SUPPLY CHAIN — FORGED IN-HOUSE, AUDITED AT THE PERIMETER
+
+```
+No third-party skill, plugin, or marketplace artifact enters any
+federation install path (Hermes, OpenClaw, Claude Code harness)
+without vault audit. Aggregate trust ≠ artifact trust.
+```
+
+- Basis: Zenity Aug 2026 — 1.7M-install malicious agent-skill family; 30%+ targeted Claude Code / OpenClaw ecosystems specifically. Patient strategy: ship clean → build trust → inject credential theft later. One skill rewrote its own system prompt to persist through reinstalls.
+- **Download count and install age are not evidence of safety.** Popular ≠ audited. A skill that has been clean for months is exactly the attack profile.
+- All AAA skills are forged in-house. The day we want a third-party skill, it goes through the same falsification as any external claim: read the full source, no network in install, human ack before activation.
+- Skills are executable context — treat a skill install with the same gravity as a package install. F12 applies.
 
 ---
 
