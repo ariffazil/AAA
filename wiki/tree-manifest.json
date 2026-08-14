@@ -1,50 +1,111 @@
 {
-  "schema_version": "1.1",
-  "generated": "2026-06-26T02:19:21.450734",
-  "total_pages": 121,
-  "pages": {
-    "AGENT_IDENTITY_MATRIX": {
-      "path": "AGENT_IDENTITY_MATRIX.md",
+  "schema_version": "2.0",
+  "generated_at": "2026-08-14T15:29:41.736067+00:00",
+  "total_entries": 135,
+  "totals_by_kind": {
+    "skill": 54,
+    "concept": 27,
+    "raw": 15,
+    "entity": 10,
+    "scar": 9,
+    "axiom": 6,
+    "arifos": 5,
+    "workflow": 4,
+    "infrastructure": 2,
+    "nine-signal": 2,
+    "playbook": 1
+  },
+  "categories": {
+    "root": {
+      "count": 64,
+      "maturity": "high",
+      "index": "tree777://index/root"
+    },
+    "infrastructure": {
+      "count": 28,
+      "maturity": "high",
+      "index": "tree777://index/infrastructure"
+    },
+    "repos": {
+      "count": 13,
+      "maturity": "high",
+      "index": "tree777://index/repos"
+    },
+    "arifos": {
+      "count": 12,
+      "maturity": "high",
+      "index": "tree777://index/arifos"
+    },
+    "federation": {
+      "count": 10,
+      "maturity": "high",
+      "index": "tree777://index/federation"
+    },
+    "notes": {
+      "count": 2,
+      "maturity": "stub",
+      "index": "tree777://index/notes"
+    },
+    "geox": {
+      "count": 1,
+      "maturity": "stub",
+      "index": "tree777://index/geox"
+    },
+    "well": {
+      "count": 1,
+      "maturity": "stub",
+      "index": "tree777://index/well"
+    },
+    "agent": {
+      "count": 1,
+      "maturity": "stub",
+      "index": "tree777://index/agent"
+    },
+    "agent-onboarding": {
+      "count": 1,
+      "maturity": "stub",
+      "index": "tree777://index/agent-onboarding"
+    },
+    "scar-to-skill": {
+      "count": 1,
+      "maturity": "stub",
+      "index": "tree777://index/scar-to-skill"
+    },
+    "session-cycle": {
+      "count": 1,
+      "maturity": "stub",
+      "index": "tree777://index/session-cycle"
+    }
+  },
+  "coverage_warning": [
+    "notes",
+    "geox",
+    "well",
+    "agent",
+    "agent-onboarding",
+    "scar-to-skill",
+    "session-cycle"
+  ],
+  "template": "tree777://{kind}/{category}/{slug}",
+  "entries": {
+    "tree777://entity/root/identity": {
+      "slug": "identity",
       "title": "TREE777 — Agent Identity Matrix",
-      "type": "entity",
+      "kind": "entity",
+      "category": "root",
       "tags": [],
       "confidence": "medium",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "**Purpose:** Central registry of all federation agents and their Telegram bot token ownership.",
+      "sha256": "4c5f701bbbe07999",
+      "size": 1605,
       "word_count": 230,
-      "update_class": "NORMAL"
+      "updated_at": "2026-07-17T07:56:16.167881+00:00"
     },
-    "MEMORY_EUREKA_DOSSIER": {
-      "path": "MEMORY_EUREKA_DOSSIER.md",
-      "title": "arifOS Memory Eureka Dossier",
-      "type": "concept",
-      "tags": [],
-      "confidence": "medium",
-      "updated": "2026-06-21",
-      "created": "2026-05-17",
-      "word_count": 1550,
-      "update_class": "NORMAL"
-    },
-    "SCHEMA": {
-      "path": "SCHEMA.md",
-      "title": "AAA Wiki Schema",
-      "type": "schema",
-      "tags": [
-        "federation",
-        "wiki",
-        "governance",
-        "learning"
-      ],
-      "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
-      "word_count": 1216,
-      "update_class": "CRITICAL"
-    },
-    "arif-fazil-complete-map": {
-      "path": "arif-fazil-complete-map.md",
+    "tree777://entity/root/arif-fazil-complete-map": {
+      "slug": "arif-fazil-complete-map",
       "title": "Complete Human Map — Muhammad Arif bin Fazil",
-      "type": "human-map",
+      "kind": "entity",
+      "category": "root",
       "tags": [
         "human",
         "map",
@@ -58,97 +119,247 @@
         "sovereign"
       ],
       "confidence": "sovereign",
-      "updated": "2026-06-16T19:10Z",
-      "created": "2026-06-16",
+      "summary": "SURFACE    ─── 2024-now: The Architect Phase",
+      "sha256": "41a2e8e112bdff09",
+      "size": 10617,
       "word_count": 1575,
-      "update_class": "NORMAL"
+      "updated_at": "2026-06-16T19:10Z"
     },
-    "arif-fazil-metabolized": {
-      "path": "arif-fazil-metabolized.md",
+    "tree777://entity/root/arif-fazil-scar-terrain": {
+      "slug": "arif-fazil-scar-terrain",
       "title": "Metabolized Human Context — Muhammad Arif bin Fazil",
-      "type": "entity",
+      "kind": "entity",
+      "category": "root",
       "tags": [],
       "confidence": "medium",
-      "updated": "2026-06-16",
-      "created": "2026-05-17",
+      "summary": "- NEVER weaponize scars, shadows, or paradoxes against this human",
+      "sha256": "f2ae3fba65c44028",
+      "size": 2216,
       "word_count": 315,
-      "update_class": "NORMAL"
+      "updated_at": "2026-07-17T07:56:16.160389+00:00"
     },
-    "axioms.epistemology": {
-      "path": "axioms/epistemology.md",
-      "title": "AXIOM: Epistemology",
-      "type": "axiom",
+    "tree777://entity/root/hermes-arifos": {
+      "slug": "hermes-arifos",
+      "title": "Hermes ↔ arifOS Fusion Architecture Spec",
+      "kind": "entity",
+      "category": "root",
       "tags": [],
-      "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
-      "word_count": 948,
-      "update_class": "CRITICAL"
+      "confidence": "medium",
+      "summary": "**Status:** Phase 1+2 IMPLEMENTED — Phase 3 deferred",
+      "sha256": "f6921b29c97f0bfd",
+      "size": 12463,
+      "word_count": 1556,
+      "updated_at": "2026-07-17T07:56:16.168199+00:00"
     },
-    "axioms.ethics": {
-      "path": "axioms/ethics.md",
-      "title": "AXIOM: Ethics",
-      "type": "axiom",
+    "tree777://concept/root/memory-eureka": {
+      "slug": "memory-eureka",
+      "title": "arifOS Memory Eureka Dossier",
+      "kind": "concept",
+      "category": "root",
       "tags": [],
-      "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
-      "word_count": 837,
-      "update_class": "CRITICAL"
+      "confidence": "medium",
+      "summary": "LLM memory and agent memory are not the same thing. LLMs are inference engines with frozen training weights and temporary context windows, while agents become stateful only when a kernel governs persi",
+      "sha256": "9f1aedb7fcf6cd7e",
+      "size": 10771,
+      "word_count": 1550,
+      "updated_at": "2026-07-17T07:56:16.186906+00:00"
     },
-    "axioms.index": {
-      "path": "axioms/index.md",
-      "title": "Axioms — Foundational Invariants",
-      "type": "index",
+    "tree777://skill/root/post-task": {
+      "slug": "post-task",
+      "title": "POST-TASK UPDATE PROMPT CONTRACT",
+      "kind": "skill",
+      "category": "root",
       "tags": [
-        "axioms",
-        "foundational",
-        "invariants",
-        "TREE777"
+        "prompt",
+        "contract",
+        "post-task",
+        "TREE777",
+        "trace",
+        "evidence"
       ],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
-      "word_count": 626,
-      "update_class": "CRITICAL"
+      "summary": "After completing ANY non-trivial task, the agent MUST execute the trace-capture protocol before ending the session or starting new work.",
+      "sha256": "ed41308f5ff2aa4a",
+      "size": 7881,
+      "word_count": 935,
+      "updated_at": "2026-05-17"
     },
-    "axioms.language": {
-      "path": "axioms/language.md",
+    "tree777://scar/root/hermes": {
+      "slug": "hermes",
+      "title": "HERMES FABRICATION INCIDENT — 2026-05-17",
+      "kind": "scar",
+      "category": "root",
+      "tags": [
+        "hermes",
+        "fabrication",
+        "evidence",
+        "validation",
+        "F9",
+        "anti-pattern"
+      ],
+      "confidence": "high",
+      "summary": "During a spatial law deployment session, Hermes claimed to have created three artifacts:",
+      "sha256": "b2d5e7df005ea57c",
+      "size": 3934,
+      "word_count": 514,
+      "updated_at": "2026-05-17"
+    },
+    "tree777://scar/root/terrain": {
+      "slug": "terrain",
+      "title": "Biographical Scar Terrain Map — Muhammad Arif bin Fazil",
+      "kind": "scar",
+      "category": "root",
+      "tags": [
+        "scar",
+        "terrain",
+        "biography",
+        "human",
+        "sovereign",
+        "testimony",
+        "bedrock"
+      ],
+      "confidence": "sovereign",
+      "summary": "Born 1990, Penang, Malaysia. Father: **Fazil**, low-ranking civil servant. Mother: **Faridah**, factory worker. Three younger sisters. No toys. No safety nets. Quiet poverty in Bayan Lepas.",
+      "sha256": "a3c93e02219cb4e1",
+      "size": 14587,
+      "word_count": 2292,
+      "updated_at": "2026-06-16T18:55Z"
+    },
+    "tree777://arifos/root/aaa": {
+      "slug": "aaa",
+      "title": "AAA — Architect · Auditor · Agent",
+      "kind": "arifos",
+      "category": "root",
+      "tags": [],
+      "confidence": "medium",
+      "summary": "arifOS uses a three-role pattern (AAA) for all governed AI execution:",
+      "sha256": "fc32298e0ebc298d",
+      "size": 1796,
+      "word_count": 269,
+      "updated_at": "2026-07-17T07:56:15.363626+00:00"
+    },
+    "tree777://arifos/root/floors": {
+      "slug": "floors",
+      "title": "arifOS Floors",
+      "kind": "arifos",
+      "category": "root",
+      "tags": [],
+      "confidence": "medium",
+      "summary": "arifOS enforces 13 constitutional floors (F0–F13) on all AI tool executions. Each floor encodes a specific governance constraint. Floors are enforced at the kernel level — not advisory.",
+      "sha256": "5f827f1e0b11e1ca",
+      "size": 3154,
+      "word_count": 469,
+      "updated_at": "2026-07-17T07:56:15.363888+00:00"
+    },
+    "tree777://arifos/root/judge": {
+      "slug": "judge",
+      "title": "888_JUDGE — SEAL Authority",
+      "kind": "arifos",
+      "category": "root",
+      "tags": [],
+      "confidence": "medium",
+      "summary": "888_JUDGE is the constitutional auditor — the only entity in arifOS that can issue a SEAL verdict. All other tools emit CLAIM_ONLY unless overridden by 888_JUDGE.",
+      "sha256": "efd3ceb27bc366eb",
+      "size": 1820,
+      "word_count": 259,
+      "updated_at": "2026-07-17T07:56:15.363495+00:00"
+    },
+    "tree777://arifos/root/vault": {
+      "slug": "vault",
+      "title": "999_VAULT — MerkleV3 Ledger",
+      "kind": "arifos",
+      "category": "root",
+      "tags": [],
+      "confidence": "medium",
+      "summary": "VAULT999 is arifOS's audit and sealing layer. Events that pass 888_JUDGE are sealed into a MerkleV3 ledger — append-only, cryptographically verifiable, non-repudiable.",
+      "sha256": "43acd156efcd119e",
+      "size": 1615,
+      "word_count": 219,
+      "updated_at": "2026-07-17T07:56:15.363755+00:00"
+    },
+    "tree777://arifos/root/verdicts": {
+      "slug": "verdicts",
+      "title": "arifOS Verdicts",
+      "kind": "arifos",
+      "category": "root",
+      "tags": [],
+      "confidence": "medium",
+      "summary": "Every arifOS tool output receives a verdict — the constitutional judgment on whether the output is safe to execute, hold for review, or void entirely.",
+      "sha256": "196f722adca3c39b",
+      "size": 2020,
+      "word_count": 296,
+      "updated_at": "2026-07-17T07:56:15.364010+00:00"
+    },
+    "tree777://axiom/root/epistemology": {
+      "slug": "epistemology",
+      "title": "AXIOM: Epistemology",
+      "kind": "axiom",
+      "category": "root",
+      "tags": [],
+      "confidence": "high",
+      "summary": "Epistemology is the theory of knowledge — what counts as evidence, what makes a belief warranted, what uncertainty means, and how to distinguish true claims from fabricated ones. Core domains:",
+      "sha256": "d5150af8a8f2fa93",
+      "size": 6254,
+      "word_count": 948,
+      "updated_at": "2026-07-17T07:56:16.167528+00:00"
+    },
+    "tree777://axiom/root/ethics": {
+      "slug": "ethics",
+      "title": "AXIOM: Ethics",
+      "kind": "axiom",
+      "category": "root",
+      "tags": [],
+      "confidence": "high",
+      "summary": "Ethics is the domain of **what ought to be done** — distinct from what *is* the case (descriptive) or what *can* be done (capability). Core domains:",
+      "sha256": "3bf2cd9814cf9fc5",
+      "size": 5427,
+      "word_count": 837,
+      "updated_at": "2026-07-17T07:56:16.166148+00:00"
+    },
+    "tree777://axiom/root/language": {
+      "slug": "language",
       "title": "AXIOM: Language",
-      "type": "axiom",
+      "kind": "axiom",
+      "category": "root",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "Language is the medium through which all intelligence encodes, transmits, and interprets meaning. Core domains:",
+      "sha256": "d53f8c0fa93034c1",
+      "size": 5057,
       "word_count": 710,
-      "update_class": "CRITICAL"
+      "updated_at": "2026-07-17T07:56:16.163565+00:00"
     },
-    "axioms.mathematics": {
-      "path": "axioms/mathematics.md",
+    "tree777://axiom/root/mathematics": {
+      "slug": "mathematics",
       "title": "AXIOM: Mathematics",
-      "type": "axiom",
+      "kind": "axiom",
+      "category": "root",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "Mathematics is the formal substrate of all reasoning — human and artificial. Core domains:",
+      "sha256": "7c2eea37023db95b",
+      "size": 5135,
       "word_count": 753,
-      "update_class": "CRITICAL"
+      "updated_at": "2026-07-17T07:56:16.167704+00:00"
     },
-    "axioms.physics": {
-      "path": "axioms/physics.md",
+    "tree777://axiom/root/physics": {
+      "slug": "physics",
       "title": "AXIOM: Physics",
-      "type": "axiom",
+      "kind": "axiom",
+      "category": "root",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "Physics is the grounding layer of all intelligence systems — both biological and artificial. It defines what is **actually possible** before any reasoning, skill, or knowledge claim is evaluated.",
+      "sha256": "9894023f4199101e",
+      "size": 4602,
       "word_count": 668,
-      "update_class": "CRITICAL"
+      "updated_at": "2026-07-17T07:56:16.163904+00:00"
     },
-    "axioms.ritual-precedence": {
-      "path": "axioms/ritual-precedence.md",
+    "tree777://axiom/root/ritual-precedence": {
+      "slug": "ritual-precedence",
       "title": "Axiom: The [MODE]/[PREFLIGHT] Ritual",
-      "type": "axiom",
+      "kind": "axiom",
+      "category": "root",
       "tags": [
         "ritual",
         "mode",
@@ -157,49 +368,17 @@
         "protocol"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "The `[MODE]` header binds the agent's LLM weights to a specific constitutional floor. It is a \"Cognitive Lock.\"",
+      "sha256": "dbb8986d5804d931",
+      "size": 1150,
       "word_count": 166,
-      "update_class": "CRITICAL"
+      "updated_at": "2026-05-17"
     },
-    "concepts.AGI_MIN_VIABLE": {
-      "path": "concepts/AGI_MIN_VIABLE.md",
-      "title": "AGI_MIN_VIABLE — The One Skill and The One Tool",
-      "type": "concept",
-      "tags": [],
-      "confidence": "medium",
-      "updated": "2026-06-24",
-      "created": "2026-05-17",
-      "word_count": 1395,
-      "update_class": "NORMAL"
-    },
-    "concepts.TREE777": {
-      "path": "concepts/TREE777.md",
-      "title": "TREE777 — AAA Intelligence Tree",
-      "type": "concept",
-      "tags": [
-        "tree",
-        "intelligence",
-        "governance",
-        "loop",
-        "recursive",
-        "skills",
-        "workflows",
-        "knowledge",
-        "memory",
-        "federation",
-        "TREE777"
-      ],
-      "confidence": "high",
-      "updated": "2026-05-20",
-      "created": "2026-05-17",
-      "word_count": 2243,
-      "update_class": "STALE"
-    },
-    "concepts.agent-skills-architecture": {
-      "path": "concepts/agent-skills-architecture.md",
+    "tree777://concept/root/skills": {
+      "slug": "skills",
       "title": "Agent Skills Architecture — Cross-Platform Landscape",
-      "type": "concept",
+      "kind": "concept",
+      "category": "root",
       "tags": [
         "skills",
         "architecture",
@@ -212,15 +391,30 @@
         "federation"
       ],
       "confidence": "medium",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "**Format:** Folder-based packages with `SKILL.md`",
+      "sha256": "9db378805e2a9ad9",
+      "size": 7032,
       "word_count": 906,
-      "update_class": "STALE"
+      "updated_at": "2026-05-17"
     },
-    "concepts.anti-fabrication-protocol": {
-      "path": "concepts/anti-fabrication-protocol.md",
+    "tree777://concept/root/agi-min": {
+      "slug": "agi-min",
+      "title": "AGI_MIN_VIABLE — The One Skill and The One Tool",
+      "kind": "concept",
+      "category": "root",
+      "tags": [],
+      "confidence": "medium",
+      "summary": "**Ratified:** 2026-06-24",
+      "sha256": "66654c5ceca7aac2",
+      "size": 9445,
+      "word_count": 1395,
+      "updated_at": "2026-07-17T07:56:16.168716+00:00"
+    },
+    "tree777://concept/root/anti-fabrication": {
+      "slug": "anti-fabrication",
       "title": "Anti-Fabrication Protocol",
-      "type": "concept",
+      "kind": "concept",
+      "category": "root",
       "tags": [
         "fabrication",
         "evidence",
@@ -229,15 +423,17 @@
         "anti-pattern"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "**Fabrication** = claiming existence of an artifact, state, or outcome without verifying via external evidence (filesystem check, database query, API call, log read).",
+      "sha256": "56b683ed4ded0186",
+      "size": 3380,
       "word_count": 478,
-      "update_class": "STALE"
+      "updated_at": "2026-05-17"
     },
-    "concepts.claude-code-skills-architecture": {
-      "path": "concepts/claude-code-skills-architecture.md",
+    "tree777://concept/root/claude-code": {
+      "slug": "claude-code",
       "title": "Claude Code Skills Architecture — Complete Reference",
-      "type": "concept",
+      "kind": "concept",
+      "category": "root",
       "tags": [
         "claude-code",
         "skills",
@@ -247,15 +443,17 @@
         "cross-platform"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "A **Claude Code skill** is a reusable, loadable instruction block stored as a `SKILL.md` file. It extends what Claude can do beyond its baseline. Claude loads skills when relevant to a conversation, o",
+      "sha256": "452c0872a5e22c3c",
+      "size": 15863,
       "word_count": 2279,
-      "update_class": "STALE"
+      "updated_at": "2026-05-17"
     },
-    "concepts.concept-a-forge-quantum-execution-lease": {
-      "path": "concepts/concept-a-forge-quantum-execution-lease.md",
+    "tree777://concept/root/a": {
+      "slug": "a",
       "title": "A-FORGE Quantum Execution Lease — Constitutional Physics of Autonomous Action",
-      "type": "concept",
+      "kind": "concept",
+      "category": "root",
       "tags": [
         "a-forge",
         "quantum",
@@ -269,15 +467,17 @@
         "arifOS"
       ],
       "confidence": "medium",
-      "updated": "2026-06-25",
-      "created": "2026-05-17",
+      "summary": "The word is not a metaphor.",
+      "sha256": "40242e6e410700e7",
+      "size": 15275,
       "word_count": 1875,
-      "update_class": "NORMAL"
+      "updated_at": "2026-07-17T07:56:16.169680+00:00"
     },
-    "concepts.concept-arifOS-F13-self-certification-fix": {
-      "path": "concepts/concept-arifOS-F13-self-certification-fix.md",
+    "tree777://concept/root/arifos-self-certification": {
+      "slug": "arifos-self-certification",
       "title": "Concept: arifOS F13 Self-Certification Bypass Fix",
-      "type": "concept",
+      "kind": "concept",
+      "category": "root",
       "tags": [
         "F13",
         "sovereign",
@@ -287,15 +487,17 @@
         "governance"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "`arif_judge_deliberate` (888_JUDGE) had a structural F13 violation in its candidate acceptance logic.",
+      "sha256": "9b9d0d3a9ba18276",
+      "size": 5165,
       "word_count": 691,
-      "update_class": "STALE"
+      "updated_at": "2026-05-17"
     },
-    "concepts.concept-arifOS-heart-critique-verdict-split": {
-      "path": "concepts/concept-arifOS-heart-critique-verdict-split.md",
+    "tree777://concept/root/arifos-heart-verdict-split": {
+      "slug": "arifos-heart-verdict-split",
       "title": "Concept: arif_heart_critique Verdict Split — Execution vs Action Risk",
-      "type": "concept",
+      "kind": "concept",
+      "category": "root",
       "tags": [
         "F13",
         "sovereign",
@@ -305,15 +507,17 @@
         "governance"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "`arif_heart_critique` returned a single `verdict` field that was being read two different ways:",
+      "sha256": "6e238bc32512890b",
+      "size": 3794,
       "word_count": 474,
-      "update_class": "STALE"
+      "updated_at": "2026-05-17"
     },
-    "concepts.concept-arifOS-kernel-not-LLM": {
-      "path": "concepts/concept-arifOS-kernel-not-LLM.md",
+    "tree777://concept/root/arifos-not-llm": {
+      "slug": "arifos-not-llm",
       "title": "Concept — arifOS is NOT an LLM: Kernel Architecture Clarification",
-      "type": "concept",
+      "kind": "concept",
+      "category": "root",
       "tags": [
         "arifOS",
         "architecture",
@@ -322,15 +526,17 @@
         "kernel"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "- arifOS exposed via MCP at `https://mcp.arif-fazil.com/mcp`",
+      "sha256": "88cb8cbbf73395d0",
+      "size": 5199,
       "word_count": 785,
-      "update_class": "STALE"
+      "updated_at": "2026-05-17"
     },
-    "concepts.concept-arifOS-loop-architecture": {
-      "path": "concepts/concept-arifOS-loop-architecture.md",
+    "tree777://concept/root/arifos-loops": {
+      "slug": "arifos-loops",
       "title": "arifOS Loop Architecture — Canonical Operational Loops",
-      "type": "concept",
+      "kind": "concept",
+      "category": "root",
       "tags": [
         "loop",
         "architecture",
@@ -344,107 +550,17 @@
         "operational"
       ],
       "confidence": "medium",
-      "updated": "2026-06-25",
-      "created": "2026-05-17",
+      "summary": "A **loop** in arifOS is a recurring, governed, reversible sequence of skills",
+      "sha256": "c58b712053faae29",
+      "size": 8981,
       "word_count": 1356,
-      "update_class": "NORMAL"
+      "updated_at": "2026-07-17T07:56:16.169855+00:00"
     },
-    "concepts.concept-browser-io-surfaces-arifos": {
-      "path": "concepts/concept-browser-io-surfaces-arifos.md",
-      "title": "CONCEPT: Browser I/O Surfaces in arifOS",
-      "type": "concept",
-      "tags": [],
-      "confidence": "high",
-      "updated": "2026-06-19",
-      "created": "2026-05-17",
-      "word_count": 1387,
-      "update_class": "NORMAL"
-    },
-    "concepts.concept-memory-knowledge-loop": {
-      "path": "concepts/concept-memory-knowledge-loop.md",
-      "title": "Memory ↔ Knowledge ↔ Skills — The Bidirectional Loop & Stability Paradox",
-      "type": "concept",
-      "tags": [
-        "memory",
-        "knowledge",
-        "skills",
-        "loop",
-        "stability",
-        "paradox",
-        "recursion",
-        "VAULT999",
-        "AAA"
-      ],
-      "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
-      "word_count": 1005,
-      "update_class": "STALE"
-    },
-    "concepts.concept-memory-knowledge-paradox": {
-      "path": "concepts/concept-memory-knowledge-paradox.md",
-      "title": "The Memory-Knowledge Paradox — Bidirectional Mirror and the Recursive Learning Loop",
-      "type": "concept",
-      "tags": [
-        "memory",
-        "knowledge",
-        "skills",
-        "loop",
-        "paradox",
-        "recursion",
-        "intelligence",
-        "federation"
-      ],
-      "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
-      "word_count": 1307,
-      "update_class": "STALE"
-    },
-    "concepts.concept-memory-layers-architecture": {
-      "path": "concepts/concept-memory-layers-architecture.md",
-      "title": "Concept — arifOS Memory Layers: L4, Qdrant, and Workspace Coupling",
-      "type": "concept",
-      "tags": [
-        "arifOS",
-        "memory",
-        "architecture",
-        "qdrant",
-        "postgres",
-        "workspace"
-      ],
-      "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
-      "word_count": 688,
-      "update_class": "STALE"
-    },
-    "concepts.concept-mirror-and-paradox": {
-      "path": "concepts/concept-mirror-and-paradox.md",
-      "title": "Mirror & Paradox — How Knowledge/Skills Mirror Memory, The Contrast",
-      "type": "concept",
-      "tags": [
-        "mirror",
-        "paradox",
-        "memory",
-        "knowledge",
-        "skills",
-        "capabilities",
-        "stability",
-        "permeability",
-        "loop",
-        "AAA"
-      ],
-      "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
-      "word_count": 1592,
-      "update_class": "STALE"
-    },
-    "concepts.concept-physics9-as-shadow-mirror": {
-      "path": "concepts/concept-physics9-as-shadow-mirror.md",
+    "tree777://concept/root/as": {
+      "slug": "as",
       "title": "Physics9 as Shadow-Mirror — F9 as Technical Self-Awareness",
-      "type": "concept",
+      "kind": "concept",
+      "category": "root",
       "tags": [
         "physics9",
         "shadow",
@@ -458,15 +574,140 @@
         "state-vs-derived"
       ],
       "confidence": "high",
-      "updated": "2026-05-19",
-      "created": "2026-05-19",
+      "summary": "**Physics9 is not merely a geoscience schema. It is the technical implementation of shadow-awareness for subsurface inference.**",
+      "sha256": "949db5db47d07a99",
+      "size": 7481,
       "word_count": 1127,
-      "update_class": "STALE"
+      "updated_at": "2026-05-19"
     },
-    "concepts.concept-reality-engineering-canon": {
-      "path": "concepts/concept-reality-engineering-canon.md",
+    "tree777://concept/root/browser": {
+      "slug": "browser",
+      "title": "CONCEPT: Browser I/O Surfaces in arifOS",
+      "kind": "concept",
+      "category": "root",
+      "tags": [],
+      "confidence": "high",
+      "summary": "The Playwright ecosystem is not four competing libraries. It is **one browser device class** exposed through four transport layers.",
+      "sha256": "e133adbfabee2ff0",
+      "size": 10023,
+      "word_count": 1387,
+      "updated_at": "2026-07-17T07:56:16.170126+00:00"
+    },
+    "tree777://concept/root/domains": {
+      "slug": "domains",
+      "title": "CONCEPT: TREE777 Full Domain Map",
+      "kind": "concept",
+      "category": "root",
+      "tags": [
+        "TREE777",
+        "domains",
+        "intelligence",
+        "architecture",
+        "map",
+        "ontology",
+        "federation"
+      ],
+      "confidence": "high",
+      "summary": "This page maps every domain of intelligence that the federation touches or could touch. It is a **reference map**, not a restructure order. The 5-dimension, 36-category structure below represents the ",
+      "sha256": "62ae6e9131a8741f",
+      "size": 11438,
+      "word_count": 1588,
+      "updated_at": "2026-05-17"
+    },
+    "tree777://concept/root/memory-knowledge-loop": {
+      "slug": "memory-knowledge-loop",
+      "title": "Memory ↔ Knowledge ↔ Skills — The Bidirectional Loop & Stability Paradox",
+      "kind": "concept",
+      "category": "root",
+      "tags": [
+        "memory",
+        "knowledge",
+        "skills",
+        "loop",
+        "stability",
+        "paradox",
+        "recursion",
+        "VAULT999",
+        "AAA"
+      ],
+      "confidence": "high",
+      "summary": "┌─────────────────────────────────────────────────────────────┐",
+      "sha256": "5b52366691acaf4b",
+      "size": 8469,
+      "word_count": 1005,
+      "updated_at": "2026-05-17"
+    },
+    "tree777://concept/root/memory-knowledge-paradox": {
+      "slug": "memory-knowledge-paradox",
+      "title": "The Memory-Knowledge Paradox — Bidirectional Mirror and the Recursive Learning Loop",
+      "kind": "concept",
+      "category": "root",
+      "tags": [
+        "memory",
+        "knowledge",
+        "skills",
+        "loop",
+        "paradox",
+        "recursion",
+        "intelligence",
+        "federation"
+      ],
+      "confidence": "high",
+      "summary": "This document resolves a paradox that emerges naturally from the intelligence tree:",
+      "sha256": "44ed7ad84dc12249",
+      "size": 9088,
+      "word_count": 1307,
+      "updated_at": "2026-05-17"
+    },
+    "tree777://concept/root/memory-layers": {
+      "slug": "memory-layers",
+      "title": "Concept — arifOS Memory Layers: L4, Qdrant, and Workspace Coupling",
+      "kind": "concept",
+      "category": "root",
+      "tags": [
+        "arifOS",
+        "memory",
+        "architecture",
+        "qdrant",
+        "postgres",
+        "workspace"
+      ],
+      "confidence": "high",
+      "summary": "| Store | Technology | Content | Size | Health |",
+      "sha256": "061faa0380d4ea66",
+      "size": 4882,
+      "word_count": 688,
+      "updated_at": "2026-05-17"
+    },
+    "tree777://concept/root/mirror": {
+      "slug": "mirror",
+      "title": "Mirror & Paradox — How Knowledge/Skills Mirror Memory, The Contrast",
+      "kind": "concept",
+      "category": "root",
+      "tags": [
+        "mirror",
+        "paradox",
+        "memory",
+        "knowledge",
+        "skills",
+        "capabilities",
+        "stability",
+        "permeability",
+        "loop",
+        "AAA"
+      ],
+      "confidence": "high",
+      "summary": "Skills, knowledge, and capabilities are derived from memory — but they also shape what future memory looks like.",
+      "sha256": "872a1a79fe538003",
+      "size": 11607,
+      "word_count": 1592,
+      "updated_at": "2026-05-17"
+    },
+    "tree777://concept/root/reality": {
+      "slug": "reality",
       "title": "Reality Engineering — arifOS Constitutional Physics Canon",
-      "type": "canon",
+      "kind": "concept",
+      "category": "root",
       "tags": [
         "reality-engineering",
         "constitutional",
@@ -479,26 +720,30 @@
         "canon"
       ],
       "confidence": "medium",
-      "updated": "2026-06-25",
-      "created": "2026-05-17",
+      "summary": "Reality engineering governs **what an agent may do, claim, and record** — not what an agent *is*.",
+      "sha256": "9efed0f5462dc60f",
+      "size": 11519,
       "word_count": 1587,
-      "update_class": "NORMAL"
+      "updated_at": "2026-07-17T07:56:16.172639+00:00"
     },
-    "concepts.concept-skills-tool-map": {
-      "path": "concepts/concept-skills-tool-map.md",
+    "tree777://concept/root/skills-mcp-tool-map": {
+      "slug": "skills-mcp-tool-map",
       "title": "CONCEPT: TREE777 Skills → MCP Tool Map",
-      "type": "concept",
+      "kind": "concept",
+      "category": "root",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "This map shows the **doctrine-to-actuator** relationship.",
+      "sha256": "37ead85c109e44a2",
+      "size": 10184,
       "word_count": 1158,
-      "update_class": "NORMAL"
+      "updated_at": "2026-07-17T07:56:16.170810+00:00"
     },
-    "concepts.concept-skills-vs-workflows": {
-      "path": "concepts/concept-skills-vs-workflows.md",
+    "tree777://concept/root/skills-vs-workflows": {
+      "slug": "skills-vs-workflows",
       "title": "Skills vs Workflows vs Knowledge — Operational Definitions",
-      "type": "concept",
+      "kind": "concept",
+      "category": "root",
       "tags": [
         "skills",
         "workflows",
@@ -508,34 +753,17 @@
         "arifOS"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "| Term | Definition | arifOS Form | Example |",
+      "sha256": "35f722e620f7e277",
+      "size": 6454,
       "word_count": 807,
-      "update_class": "STALE"
+      "updated_at": "2026-05-17"
     },
-    "concepts.concept-tREE777-domains": {
-      "path": "concepts/concept-tREE777-domains.md",
-      "title": "CONCEPT: TREE777 Full Domain Map",
-      "type": "concept",
-      "tags": [
-        "TREE777",
-        "domains",
-        "intelligence",
-        "architecture",
-        "map",
-        "ontology",
-        "federation"
-      ],
-      "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
-      "word_count": 1588,
-      "update_class": "STALE"
-    },
-    "concepts.concept-telegram-dual-bot-architecture": {
-      "path": "concepts/concept-telegram-dual-bot-architecture.md",
+    "tree777://concept/root/telegram": {
+      "slug": "telegram",
       "title": "Concept — Telegram Dual-Bot Architecture: OpenClaw vs Hermes",
-      "type": "concept",
+      "kind": "concept",
+      "category": "root",
       "tags": [
         "telegram",
         "openclaw",
@@ -545,15 +773,17 @@
         "webhook"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "| Property | OpenClaw | Hermes |",
+      "sha256": "664f97eceb7be3b0",
+      "size": 4353,
       "word_count": 613,
-      "update_class": "STALE"
+      "updated_at": "2026-05-17"
     },
-    "concepts.concept-tools-and-embodiment": {
-      "path": "concepts/concept-tools-and-embodiment.md",
+    "tree777://concept/root/tools": {
+      "slug": "tools",
       "title": "Tools & Embodiment — Soft vs Hard, arifOS Implementation",
-      "type": "concept",
+      "kind": "concept",
+      "category": "root",
       "tags": [
         "tools",
         "embodiment",
@@ -564,15 +794,37 @@
         "trinity"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "A tool is a primitive action the agent can invoke to affect the environment.",
+      "sha256": "e8f077232889e312",
+      "size": 6837,
       "word_count": 887,
-      "update_class": "STALE"
+      "updated_at": "2026-05-17"
     },
-    "concepts.intelligence-tree": {
-      "path": "concepts/intelligence-tree.md",
+    "tree777://concept/root/hampa": {
+      "slug": "hampa",
+      "title": "HAMPA — Human Adaptive Minimal Prism Architecture",
+      "kind": "concept",
+      "category": "root",
+      "tags": [
+        "hampa",
+        "human",
+        "prism",
+        "doctrine",
+        "governance",
+        "clarity"
+      ],
+      "confidence": "sovereign",
+      "summary": "HAMPA answers one question:",
+      "sha256": "d936b5f9bf458181",
+      "size": 3281,
+      "word_count": 541,
+      "updated_at": "2026-07-02"
+    },
+    "tree777://concept/root/intelligence-tree": {
+      "slug": "intelligence-tree",
       "title": "INTELLIGENCE TREE — Arif Fazil Federation Ontology",
-      "type": "concept",
+      "kind": "concept",
+      "category": "root",
       "tags": [
         "intelligence",
         "ontology",
@@ -588,26 +840,55 @@
         "MCP"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "This document is the compiled answer to a fundamental question:",
+      "sha256": "807c84bda037117b",
+      "size": 18508,
       "word_count": 2414,
-      "update_class": "STALE"
+      "updated_at": "2026-05-17"
     },
-    "concepts.mcp-architecture-mapping": {
-      "path": "concepts/mcp-architecture-mapping.md",
+    "tree777://concept/root/mcp-architecture": {
+      "slug": "mcp-architecture",
       "title": "CONCEPT: TREE777 MCP Architecture Mapping",
-      "type": "concept",
+      "kind": "concept",
+      "category": "root",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "This is the fundamental design constraint that everything else follows:",
+      "sha256": "197718a0fed6dc46",
+      "size": 9157,
       "word_count": 1317,
-      "update_class": "NORMAL"
+      "updated_at": "2026-07-17T07:56:16.173413+00:00"
     },
-    "entities.agent-opencode": {
-      "path": "entities/agent-opencode.md",
+    "tree777://concept/root/md": {
+      "slug": "md",
+      "title": "TREE777 — AAA Intelligence Tree",
+      "kind": "concept",
+      "category": "root",
+      "tags": [
+        "tree",
+        "intelligence",
+        "governance",
+        "loop",
+        "recursive",
+        "skills",
+        "workflows",
+        "knowledge",
+        "memory",
+        "federation",
+        "TREE777"
+      ],
+      "confidence": "high",
+      "summary": "Naming is the first act of creation because it binds a thing to intent.",
+      "sha256": "c9187032d6b9d77c",
+      "size": 16177,
+      "word_count": 2243,
+      "updated_at": "2026-05-20"
+    },
+    "tree777://entity/root/opencode": {
+      "slug": "opencode",
       "title": "Agent OpenCode",
-      "type": "entity",
+      "kind": "entity",
+      "category": "root",
       "tags": [
         "agent",
         "opencode",
@@ -616,15 +897,17 @@
         "opencode"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "| **Name** | OpenCode (Ω-FORGE Agent) |",
+      "sha256": "d036768622663034",
+      "size": 6432,
       "word_count": 901,
-      "update_class": "STALE"
+      "updated_at": "2026-05-17"
     },
-    "entities.federation-entities": {
-      "path": "entities/federation-entities.md",
+    "tree777://entity/root/federation-entities": {
+      "slug": "federation-entities",
       "title": "Federation Entity Registry",
-      "type": "entity",
+      "kind": "entity",
+      "category": "root",
       "tags": [
         "federation",
         "entities",
@@ -632,283 +915,372 @@
         "architecture"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "| Entity | Path | Role | Status |",
+      "sha256": "c600e624db036b2f",
+      "size": 3170,
       "word_count": 492,
-      "update_class": "STALE"
+      "updated_at": "2026-05-17"
     },
-    "hermes-arifos-integration-spec": {
-      "path": "hermes-arifos-integration-spec.md",
-      "title": "Hermes ↔ arifOS Fusion Architecture Spec",
-      "type": "concept",
-      "tags": [],
+    "tree777://entity/root/hampa-registry": {
+      "slug": "hampa-registry",
+      "title": "HAMPA Registry — All Humans in the Machine",
+      "kind": "entity",
+      "category": "root",
+      "tags": [
+        "hampa",
+        "registry",
+        "human",
+        "unified",
+        "zen"
+      ],
+      "confidence": "high",
+      "summary": "| # | Human | Relation | Card Path | Type | Confidence | Status |",
+      "sha256": "ff56d8dc80f18a00",
+      "size": 3976,
+      "word_count": 595,
+      "updated_at": "2026-07-02"
+    },
+    "tree777://entity/root/aliff": {
+      "slug": "aliff",
+      "title": "HAMPA — Aliff Husna",
+      "kind": "entity",
+      "category": "root",
+      "tags": [
+        "hampa",
+        "human",
+        "petronas",
+        "colleague",
+        "friend",
+        "confidant"
+      ],
       "confidence": "medium",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
-      "word_count": 1556,
-      "update_class": "NORMAL"
+      "summary": "- **Origin:** PETRONAS colleague. Same organizational layer as Arif.",
+      "sha256": "13d2740ae0384237",
+      "size": 1972,
+      "word_count": 290,
+      "updated_at": "2026-07-02"
     },
-    "index": {
-      "path": "index.md",
+    "tree777://entity/root/kak": {
+      "slug": "kak",
+      "title": "Human Card — Siti Suhana Bt Che M Sukri (Kak Su)",
+      "kind": "entity",
+      "category": "root",
+      "tags": [
+        "human",
+        "petronas",
+        "manager",
+        "performance-review",
+        "kinabalu"
+      ],
+      "confidence": "high",
+      "summary": "- **Name:** Siti Suhana Bt Che M Sukri",
+      "sha256": "c968bc42f9975c4d",
+      "size": 4943,
+      "word_count": 746,
+      "updated_at": "2026-07-02"
+    },
+    "tree777://entity/root/laletha": {
+      "slug": "laletha",
+      "title": "Human Card — Laletha Jeevachandran",
+      "kind": "entity",
+      "category": "root",
+      "tags": [
+        "human",
+        "petronas",
+        "manager",
+        "colleague",
+        "performance-review",
+        "kinabalu"
+      ],
+      "confidence": "high",
+      "summary": "- **Name:** Laletha Jeevachandran",
+      "sha256": "c488b7755333be55",
+      "size": 4383,
+      "word_count": 624,
+      "updated_at": "2026-07-02"
+    },
+    "tree777://concept/root/index": {
+      "slug": "index",
       "title": "AAA Wiki Index",
-      "type": "index",
+      "kind": "concept",
+      "category": "root",
       "tags": [
         "federation",
         "wiki",
         "index"
       ],
       "confidence": "high",
-      "updated": "2026-06-26",
-      "created": "2026-05-17",
-      "word_count": 1507,
-      "update_class": "CRITICAL"
+      "summary": "| URI | Title | Category | Summary |",
+      "sha256": "af30e677965e2a48",
+      "size": 22695,
+      "word_count": 3129,
+      "updated_at": "2026-08-14"
     },
-    "log": {
-      "path": "log.md",
-      "title": "Log",
-      "type": "log",
+    "tree777://infrastructure/root/observability": {
+      "slug": "observability",
+      "title": "Observability Stack",
+      "kind": "infrastructure",
+      "category": "root",
       "tags": [],
       "confidence": "medium",
-      "updated": "2026-06-22",
-      "created": "2026-05-17",
-      "word_count": 3816,
-      "update_class": "NORMAL"
+      "summary": "arifOS's observability stack uses Prometheus (metrics) + Grafana (visualization) + Nine-Signal alerting rules. All monitoring ports bound to `127.0.0.1` only — no public exposure.",
+      "sha256": "07cbba84a8d70b84",
+      "size": 2660,
+      "word_count": 302,
+      "updated_at": "2026-07-17T07:56:15.364546+00:00"
     },
-    "playbook.OPERATOR_PLAYBOOK": {
-      "path": "playbook/OPERATOR_PLAYBOOK.md",
+    "tree777://infrastructure/root/workspace": {
+      "slug": "workspace",
+      "title": "Workspace — AAA vs arifOS Repo Split",
+      "kind": "infrastructure",
+      "category": "root",
+      "tags": [],
+      "confidence": "medium",
+      "summary": "arifOS uses two GitHub repos with clean separation of concerns:",
+      "sha256": "7d05a7ea24264252",
+      "size": 2286,
+      "word_count": 312,
+      "updated_at": "2026-07-17T07:56:15.364650+00:00"
+    },
+    "tree777://nine-signal/root/overview": {
+      "slug": "overview",
+      "title": "Nine-Signal Overview",
+      "kind": "nine-signal",
+      "category": "root",
+      "tags": [],
+      "confidence": "medium",
+      "summary": "Nine-Signal is arifOS's observability framework — nine metrics that collectively determine the health, governance state, and epistemic quality of a running agent session.",
+      "sha256": "a75b9a0714ecd33d",
+      "size": 2555,
+      "word_count": 364,
+      "updated_at": "2026-07-17T07:56:15.364165+00:00"
+    },
+    "tree777://nine-signal/root/watchdog": {
+      "slug": "watchdog",
+      "title": "Watchdog — Golden Config Restore",
+      "kind": "nine-signal",
+      "category": "root",
+      "tags": [],
+      "confidence": "medium",
+      "summary": "The watchdog cron ensures arifOS remains operational by monitoring OpenClaw gateway health and restoring from a golden config if the agent goes silent.",
+      "sha256": "9d9725e72cfd9c71",
+      "size": 2008,
+      "word_count": 259,
+      "updated_at": "2026-07-17T07:56:15.364300+00:00"
+    },
+    "tree777://playbook/root/operator-playbook": {
+      "slug": "operator-playbook",
       "title": "OPERATOR PLAYBOOK — arifOS Federation",
-      "type": "workflow",
+      "kind": "playbook",
+      "category": "root",
       "tags": [],
       "confidence": "medium",
-      "updated": "2026-06-14",
-      "created": "2026-05-17",
+      "summary": "| Color | Meaning | What You Should Do |",
+      "sha256": "125f6cc24b1054e8",
+      "size": 8468,
       "word_count": 1357,
-      "update_class": "NORMAL"
+      "updated_at": "2026-07-17T07:56:16.186417+00:00"
     },
-    "post-task-update-prompt-contract": {
-      "path": "post-task-update-prompt-contract.md",
-      "title": "POST-TASK UPDATE PROMPT CONTRACT",
-      "type": "governance",
-      "tags": [
-        "prompt",
-        "contract",
-        "post-task",
-        "TREE777",
-        "trace",
-        "evidence"
-      ],
-      "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
-      "word_count": 935,
-      "update_class": "STALE"
-    },
-    "raw.notes.CONTEXT_TOKEN_WEALTH_DEEP_RESEARCH": {
-      "path": "raw/notes/CONTEXT_TOKEN_WEALTH_DEEP_RESEARCH.md",
+    "tree777://raw/notes/context-token": {
+      "slug": "context-token",
       "title": "Deep Research: Context Management, Token Optimization & WEALTH Resource Allocation",
-      "type": "raw",
+      "kind": "raw",
+      "category": "notes",
       "tags": [],
       "confidence": "medium",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "| Domain | Core Finding | Federation Relevance |",
+      "sha256": "03dcbb6b3d15651f",
+      "size": 25887,
       "word_count": 3208,
-      "update_class": "NORMAL"
+      "updated_at": "2026-07-17T07:56:16.163020+00:00"
     },
-    "raw.notes.ILMU_CLAW_DOSSIER": {
-      "path": "raw/notes/ILMU_CLAW_DOSSIER.md",
+    "tree777://raw/notes/ilmu-claw": {
+      "slug": "ilmu-claw",
       "title": "ILMU CLAW — TECHNICAL DOSSIER",
-      "type": "raw",
+      "kind": "raw",
+      "category": "notes",
       "tags": [],
       "confidence": "medium",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "**Classification:** Open Source Intelligence (OSINT)",
+      "sha256": "fa009c0b5d09dc47",
+      "size": 17165,
       "word_count": 2217,
-      "update_class": "NORMAL"
+      "updated_at": "2026-07-17T07:56:16.162775+00:00"
     },
-    "raw.repos.2026-04-30_ARIFOS_CHAOS_AUDIT": {
-      "path": "raw/repos/2026-04-30_ARIFOS_CHAOS_AUDIT.md",
-      "title": "VPS Architecture Audit — 2026-04-30",
-      "type": "raw",
-      "tags": [],
-      "confidence": "medium",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
-      "word_count": 721,
-      "update_class": "NORMAL"
-    },
-    "raw.repos.2026-04-30_DELETION_RANK": {
-      "path": "raw/repos/2026-04-30_DELETION_RANK.md",
-      "title": "VPS Deletion Rank — 2026-04-30",
-      "type": "raw",
-      "tags": [],
-      "confidence": "medium",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
-      "word_count": 863,
-      "update_class": "NORMAL"
-    },
-    "raw.repos.2026-04-30_SITES_CHAOS_AUDIT": {
-      "path": "raw/repos/2026-04-30_SITES_CHAOS_AUDIT.md",
-      "title": "Sites Chaos Audit — 2026-04-30",
-      "type": "raw",
-      "tags": [],
-      "confidence": "medium",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
-      "word_count": 790,
-      "update_class": "NORMAL"
-    },
-    "raw.repos.AGENTS_REFERENCE": {
-      "path": "raw/repos/AGENTS_REFERENCE.md",
+    "tree777://raw/repos/agents-reference": {
+      "slug": "agents-reference",
       "title": "AGENTS.md — arifOS Federation Workspace",
-      "type": "raw",
+      "kind": "raw",
+      "category": "repos",
       "tags": [],
       "confidence": "medium",
-      "updated": "2026-06-14",
-      "created": "2026-05-17",
+      "summary": "This document is the canonical orientation for AI coding agents working in the `/root` workspace. `/root` is a multi-project home directory that hosts the **arifOS Constitutional Federation** — a fami",
+      "sha256": "b5573cbeb00288fd",
+      "size": 33561,
       "word_count": 4467,
-      "update_class": "NORMAL"
+      "updated_at": "2026-07-17T07:56:16.161439+00:00"
     },
-    "raw.repos.ARCHITECTURE_CONTRAST": {
-      "path": "raw/repos/ARCHITECTURE_CONTRAST.md",
+    "tree777://raw/repos/architecture-contrast": {
+      "slug": "architecture-contrast",
       "title": "Deep Architecture Contrast: arifOS Federation vs. Upstream OpenClaw vs. Upstream Hermes Agent",
-      "type": "raw",
+      "kind": "raw",
+      "category": "repos",
       "tags": [],
       "confidence": "medium",
-      "updated": "2026-06-14",
-      "created": "2026-05-17",
+      "summary": "**Analyst:** Kimi Code CLI (arifOS session)",
+      "sha256": "d8584f1ffed3ca07",
+      "size": 29362,
       "word_count": 3791,
-      "update_class": "NORMAL"
+      "updated_at": "2026-07-17T07:56:16.160745+00:00"
     },
-    "raw.repos.ARCHITECTURE_SCORECARD": {
-      "path": "raw/repos/ARCHITECTURE_SCORECARD.md",
+    "tree777://raw/repos/architecture-scorecard": {
+      "slug": "architecture-scorecard",
       "title": "Architecture Scorecard: arifOS Federation vs OpenClaw vs Hermes Agent",
-      "type": "raw",
+      "kind": "raw",
+      "category": "repos",
       "tags": [],
       "confidence": "medium",
-      "updated": "2026-06-14",
-      "created": "2026-05-17",
+      "summary": "| # | Dimension | Weight | What It Measures |",
+      "sha256": "1f80f5c910791c47",
+      "size": 23519,
       "word_count": 3442,
-      "update_class": "NORMAL"
+      "updated_at": "2026-07-17T07:56:16.161659+00:00"
     },
-    "raw.repos.ARIF-REGISTRY": {
-      "path": "raw/repos/ARIF-REGISTRY.md",
+    "tree777://raw/repos/arifos-chaos": {
+      "slug": "arifos-chaos",
+      "title": "VPS Architecture Audit — 2026-04-30",
+      "kind": "raw",
+      "category": "repos",
+      "tags": [],
+      "confidence": "medium",
+      "summary": "Multiple overlapping copies of the same repos across `<path>` and `<path>`, with symlinks and divergent git states creating confusion about which is canonical.",
+      "sha256": "bce81e43a9121d10",
+      "size": 5301,
+      "word_count": 721,
+      "updated_at": "2026-07-17T07:56:16.160504+00:00"
+    },
+    "tree777://raw/repos/arif-registry": {
+      "slug": "arif-registry",
       "title": "ARIF-REGISTRY | Canonical Index v2026.04.24",
-      "type": "raw",
+      "kind": "raw",
+      "category": "repos",
       "tags": [],
       "confidence": "medium",
-      "updated": "2026-06-14",
-      "created": "2026-05-17",
+      "summary": "| # | Path | Ver | Lines | State | Clerk | Freshness | Notes |",
+      "sha256": "40831544e9a930d2",
+      "size": 3255,
       "word_count": 492,
-      "update_class": "NORMAL"
+      "updated_at": "2026-07-17T07:56:16.161323+00:00"
     },
-    "raw.repos.EUREKA_INSIGHTS.2026-04-30_EUREKA_EXTRACT": {
-      "path": "raw/repos/EUREKA_INSIGHTS/2026-04-30_EUREKA_EXTRACT.md",
-      "title": "EUREKA INSIGHTS — Extracted from /opt/arifos/src/",
-      "type": "raw",
+    "tree777://raw/repos/deletion-rank": {
+      "slug": "deletion-rank",
+      "title": "VPS Deletion Rank — 2026-04-30",
+      "kind": "raw",
+      "category": "repos",
       "tags": [],
       "confidence": "medium",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "| Path | Size | Reason |",
+      "sha256": "e6e7f6e141407a83",
+      "size": 5848,
+      "word_count": 863,
+      "updated_at": "2026-07-17T07:56:16.162222+00:00"
+    },
+    "tree777://raw/repos/eureka-extract": {
+      "slug": "eureka-extract",
+      "title": "EUREKA INSIGHTS — Extracted from <path>",
+      "kind": "raw",
+      "category": "repos",
+      "tags": [],
+      "confidence": "medium",
+      "summary": "**File:** `src/A-FORGE.git/fhs-clean-apply:AGENTS.md`",
+      "sha256": "89b927f385618f29",
+      "size": 8899,
       "word_count": 1038,
-      "update_class": "NORMAL"
+      "updated_at": "2026-07-17T07:56:16.160952+00:00"
     },
-    "raw.repos.EXTERNAL_CONTRIBUTION_WORKFLOW": {
-      "path": "raw/repos/EXTERNAL_CONTRIBUTION_WORKFLOW.md",
+    "tree777://raw/repos/external-contribution": {
+      "slug": "external-contribution",
       "title": "EXTERNAL CONTRIBUTION WORKFLOW",
-      "type": "raw",
+      "kind": "raw",
+      "category": "repos",
       "tags": [],
       "confidence": "medium",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "This document defines the canonical workflow for arifOS agents to investigate external open-source repositories, identify high-quality patches, and submit pull requests that reflect the federation's c",
+      "sha256": "80d0874eda78f11d",
+      "size": 11456,
       "word_count": 1769,
-      "update_class": "NORMAL"
+      "updated_at": "2026-07-17T07:56:16.161834+00:00"
     },
-    "raw.repos.INVARIANTS": {
-      "path": "raw/repos/INVARIANTS.md",
+    "tree777://raw/repos/invariants": {
+      "slug": "invariants",
       "title": "A-FORGE / AAA / arifOS / GEOX / WEALTH / WELL / AGI / ASI / APEX — Invariants Architecture",
-      "type": "raw",
+      "kind": "raw",
+      "category": "repos",
       "tags": [],
       "confidence": "medium",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "This artifact defines the **timeless invariants** of the intelligence machine. It is the single source of truth for identity, roles, boundaries, and non-negotiable laws across A-FORGE, AAA, arifOS, GE",
+      "sha256": "ee2b87db809e6add",
+      "size": 11199,
       "word_count": 1576,
-      "update_class": "NORMAL"
+      "updated_at": "2026-07-17T07:56:16.161974+00:00"
     },
-    "raw.repos.VPS_ARCHITECTURE_2026-05-07": {
-      "path": "raw/repos/VPS_ARCHITECTURE_2026-05-07.md",
+    "tree777://raw/repos/sites-chaos": {
+      "slug": "sites-chaos",
+      "title": "Sites Chaos Audit — 2026-04-30",
+      "kind": "raw",
+      "category": "repos",
+      "tags": [],
+      "confidence": "medium",
+      "summary": "<path>               74M   ← LIVE (Caddy mount: /var/www/html → <path>)",
+      "sha256": "70a679fa91c25062",
+      "size": 6207,
+      "word_count": 790,
+      "updated_at": "2026-07-17T07:56:16.160626+00:00"
+    },
+    "tree777://raw/repos/vps-architecture": {
+      "slug": "vps-architecture",
       "title": "VPS Architecture Audit — 2026-05-07",
-      "type": "raw",
+      "kind": "raw",
+      "category": "repos",
       "tags": [],
       "confidence": "medium",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "**Auditor:** Hermes ASI | **Timestamp:** 2026-05-07T04:37 UTC | **ΔS Target:** < 0",
+      "sha256": "ccba8f15968431d3",
+      "size": 14448,
       "word_count": 1728,
-      "update_class": "NORMAL"
+      "updated_at": "2026-07-17T07:56:16.161164+00:00"
     },
-    "raw.repos.VPS_MAP": {
-      "path": "raw/repos/VPS_MAP.md",
+    "tree777://raw/repos/vps-map": {
+      "slug": "vps-map",
       "title": "VPS Map — arifOS Federation",
-      "type": "raw",
+      "kind": "raw",
+      "category": "repos",
       "tags": [],
       "confidence": "medium",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "| Path | Purpose | Notes |",
+      "sha256": "9f81077fbadc7191",
+      "size": 7315,
       "word_count": 1033,
-      "update_class": "NORMAL"
+      "updated_at": "2026-07-17T07:56:16.162431+00:00"
     },
-    "raw.repos.ZKPC": {
-      "path": "raw/repos/ZKPC.md",
+    "tree777://raw/repos/zkpc": {
+      "slug": "zkpc",
       "title": "ZKPC — Zero-Knowledge Proof-of-Constraint 🔐⚖️",
-      "type": "raw",
+      "kind": "raw",
+      "category": "repos",
       "tags": [],
       "confidence": "medium",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "**Outcome Label: Definition / Approved Concept, Not Yet Implemented**",
+      "sha256": "ae41576160c85d3c",
+      "size": 4929,
       "word_count": 652,
-      "update_class": "NORMAL"
+      "updated_at": "2026-07-17T07:56:16.162610+00:00"
     },
-    "scar-hermes-fabrication-2026-05-17": {
-      "path": "scar-hermes-fabrication-2026-05-17.md",
-      "title": "HERMES FABRICATION INCIDENT — 2026-05-17",
-      "type": "scar",
-      "tags": [
-        "hermes",
-        "fabrication",
-        "evidence",
-        "validation",
-        "F9",
-        "anti-pattern"
-      ],
-      "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
-      "word_count": 514,
-      "update_class": "HIGH"
-    },
-    "scar-terrain-arif-fazil": {
-      "path": "scar-terrain-arif-fazil.md",
-      "title": "Biographical Scar Terrain Map — Muhammad Arif bin Fazil",
-      "type": "scar-terrain",
-      "tags": [
-        "scar",
-        "terrain",
-        "biography",
-        "human",
-        "sovereign",
-        "testimony",
-        "bedrock"
-      ],
-      "confidence": "sovereign",
-      "updated": "2026-06-16T18:55Z",
-      "created": "2026-06-16",
-      "word_count": 2292,
-      "update_class": "NORMAL"
-    },
-    "scars.scar-graphiti-hyphen-escape-2026-05-17": {
-      "path": "scars/scar-graphiti-hyphen-escape-2026-05-17.md",
+    "tree777://scar/root/graphiti": {
+      "slug": "graphiti",
       "title": "Scar — graphiti Hyphen Escape Failure in FalkorDB Fulltext Search",
-      "type": "scar",
+      "kind": "scar",
+      "category": "root",
       "tags": [
         "graphiti",
         "falkordb",
@@ -920,15 +1292,30 @@
         "escape"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "During MCP federation audit on 2026-05-17, `search_nodes` and `search_memory_facts` in graphiti MCP server failed 100% of the time with:",
+      "sha256": "41fe911f6e56174c",
+      "size": 4325,
       "word_count": 593,
-      "update_class": "HIGH"
+      "updated_at": "2026-05-17"
     },
-    "scars.scar-kimi-site-audit-fabrication-2026-05-17": {
-      "path": "scars/scar-kimi-site-audit-fabrication-2026-05-17.md",
+    "tree777://scar/root/judge-evidence-bridge": {
+      "slug": "judge-evidence-bridge",
+      "title": "Scar — Judge Evidence Transport Severed (Bridge Stringifies Composite Args)",
+      "kind": "scar",
+      "category": "root",
+      "tags": [],
+      "confidence": "HIGH",
+      "summary": "While connecting the federation's first load-bearing tree777 scar citation",
+      "sha256": "67d4f0d4a8c5e626",
+      "size": 2868,
+      "word_count": 397,
+      "updated_at": "2026-08-14T15:24:18.374533+00:00"
+    },
+    "tree777://scar/root/kimi": {
+      "slug": "kimi",
       "title": "Scar — Kimi Site Audit Fabrication (Trusted Docs Over Runtime)",
-      "type": "scar",
+      "kind": "scar",
+      "category": "root",
       "tags": [
         "kimi",
         "fabrication",
@@ -939,15 +1326,17 @@
         "deployment"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "On 2026-05-17, user asked about three subdomains: `arif-fazil.com`, `arifos.arif-fazil.com`, `aaa.arif-fazil.com`.",
+      "sha256": "a8b5012cd627bd49",
+      "size": 7378,
       "word_count": 973,
-      "update_class": "HIGH"
+      "updated_at": "2026-05-17"
     },
-    "scars.scar-openclaw-diagnostic-cascade-2026-05-17": {
-      "path": "scars/scar-openclaw-diagnostic-cascade-2026-05-17.md",
+    "tree777://scar/root/openclaw-diagnostic-cascade": {
+      "slug": "openclaw-diagnostic-cascade",
       "title": "Scar — OpenClaw Diagnostic Cascade Failure",
-      "type": "scar",
+      "kind": "scar",
+      "category": "root",
       "tags": [
         "openclaw",
         "diagnostic",
@@ -958,34 +1347,38 @@
         "entropy"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "During a diagnostic session on 2026-05-17 (AAA group), Hermes agent ran multiple OpenClaw CLI commands to verify OpenClaw's liveness:",
+      "sha256": "dc4b675d1539b83a",
+      "size": 5783,
       "word_count": 843,
-      "update_class": "HIGH"
+      "updated_at": "2026-05-17"
     },
-    "scars.scar-openclaw-telegram-409-2026-05-17": {
-      "path": "scars/scar-openclaw-telegram-409-2026-05-17.md",
+    "tree777://scar/root/openclaw-telegram-conflict": {
+      "slug": "openclaw-telegram-conflict",
       "title": "Scar — OpenClaw Telegram 409 Conflict + Webhook vs Polling Architecture",
-      "type": "scar",
+      "kind": "scar",
+      "category": "root",
       "tags": [
         "openclaw",
         "telegram",
         "webhook",
         "polling",
-        409,
+        "409",
         "hermes",
         "infrastructure"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "During a diagnostic session on 2026-05-17, OpenClaw's Telegram channel (@AGI_ASI_bot) showed a `409 Conflict` error in gateway logs:",
+      "sha256": "a0fc622022a0f320",
+      "size": 7784,
       "word_count": 1086,
-      "update_class": "HIGH"
+      "updated_at": "2026-05-17"
     },
-    "scars.scar-route-hijacking-dead-code-2026-05-17": {
-      "path": "scars/scar-route-hijacking-dead-code-2026-05-17.md",
+    "tree777://scar/root/route": {
+      "slug": "route",
       "title": "Scar — Route Hijacking & Dead Source Code in arifOS Sites",
-      "type": "scar",
+      "kind": "scar",
+      "category": "root",
       "tags": [
         "route-hijacking",
         "dead-code",
@@ -997,26 +1390,64 @@
         "forge"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "Comprehensive site estate audit (2026-05-17) revealed that **multiple sites have source code that is never served**, and **React routes are hijacked by Caddy static handles**, creating a fractured arc",
+      "sha256": "ae210bfeaef8e978",
+      "size": 6643,
       "word_count": 944,
-      "update_class": "HIGH"
+      "updated_at": "2026-05-17"
     },
-    "skills.arifos.skill-arifos-federation": {
-      "path": "skills/arifos/skill-arifos-federation.md",
+    "tree777://scar/root/tree777-hold": {
+      "slug": "tree777-hold",
+      "title": "SCAR: tree777 HOLD — \"We do not build what is not demanded.\"",
+      "kind": "scar",
+      "category": "root",
+      "tags": [],
+      "confidence": "medium",
+      "summary": "**Date:** 2026-08-14 · **Session:** SEAL-b413b305531e43f8",
+      "sha256": "25bcd0184ce0ae3b",
+      "size": 3086,
+      "word_count": 453,
+      "updated_at": "2026-08-14T15:29:34.363683+00:00"
+    },
+    "tree777://skill/root/anti": {
+      "slug": "anti",
+      "title": "Skill — Anti-Cascade Diagnostic Protocol",
+      "kind": "skill",
+      "category": "root",
+      "tags": [
+        "diagnostic",
+        "entropy",
+        "openclaw",
+        "health",
+        "protocol",
+        "agents",
+        "anti-cascade"
+      ],
+      "confidence": "high",
+      "summary": "When Arif (or any user) asks \"is X alive?\" or \"is X working?\" or any liveness question about a service in the arifOS federation.",
+      "sha256": "a3fc172cafce1294",
+      "size": 5404,
+      "word_count": 816,
+      "updated_at": "2026-05-17"
+    },
+    "tree777://skill/arifos/arifos-atlas": {
+      "slug": "arifos-atlas",
       "title": "SKILL: arifOS Federation Atlas",
-      "type": "skill",
+      "kind": "skill",
+      "category": "arifos",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Understanding federation architecture",
+      "sha256": "5bd5698b1940cfe5",
+      "size": 2936,
       "word_count": 499,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.188263+00:00"
     },
-    "skills.arifos.skill-arifos-memory": {
-      "path": "skills/arifos/skill-arifos-memory.md",
+    "tree777://skill/arifos/arifos-memory": {
+      "slug": "arifos-memory",
       "title": "Skill: arifOS Memory Mastery",
-      "type": "skill",
+      "kind": "skill",
+      "category": "arifos",
       "tags": [
         "memory",
         "l1",
@@ -1032,48 +1463,69 @@
         "persistence"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "Load this skill when the task involves:",
+      "sha256": "be89fb75b1f4d2e8",
+      "size": 4481,
       "word_count": 632,
-      "update_class": "HIGH"
+      "updated_at": "2026-05-17"
     },
-    "skills.arifos.skill-arifos-operator": {
-      "path": "skills/arifos/skill-arifos-operator.md",
+    "tree777://skill/arifos/arifos-operator": {
+      "slug": "arifos-operator",
       "title": "SKILL: arifOS Operator Protocol",
-      "type": "skill",
+      "kind": "skill",
+      "category": "arifos",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Any governed action touching agents, tools, floors (F1-F13), or VAULT999",
+      "sha256": "48869eca3e17a124",
+      "size": 2818,
       "word_count": 396,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.189001+00:00"
     },
-    "skills.arifos.skill-constitutional-advisor": {
-      "path": "skills/arifos/skill-constitutional-advisor.md",
+    "tree777://skill/arifos/constitutional-advisor": {
+      "slug": "constitutional-advisor",
       "title": "SKILL: Constitutional Advisor",
-      "type": "skill",
+      "kind": "skill",
+      "category": "arifos",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Before any governed action touching agents, tools, floors, or VAULT999",
+      "sha256": "df42568f9473cab0",
+      "size": 3347,
       "word_count": 532,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.188156+00:00"
     },
-    "skills.arifos.skill-constitutional-reasoning": {
-      "path": "skills/arifos/skill-constitutional-reasoning.md",
+    "tree777://skill/arifos/constitutional-reasoning": {
+      "slug": "constitutional-reasoning",
       "title": "SKILL: Constitutional Reasoning",
-      "type": "skill",
+      "kind": "skill",
+      "category": "arifos",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Any governed action before execution",
+      "sha256": "cf99ea3945ecb568",
+      "size": 3833,
       "word_count": 576,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.188030+00:00"
     },
-    "skills.arifos.skill-scar-distill": {
-      "path": "skills/arifos/skill-scar-distill.md",
+    "tree777://skill/arifos/ops": {
+      "slug": "ops",
+      "title": "SKILL: VAULT999 Operations",
+      "kind": "skill",
+      "category": "arifos",
+      "tags": [],
+      "confidence": "high",
+      "summary": "- Reading, verifying, merging, or auditing VAULT999 data",
+      "sha256": "2418aea1660344ca",
+      "size": 3368,
+      "word_count": 389,
+      "updated_at": "2026-07-17T07:56:16.189245+00:00"
+    },
+    "tree777://skill/arifos/scar": {
+      "slug": "scar",
       "title": "SKILL: Scar Distill — Convert Failures into Scar Drafts",
-      "type": "skill",
+      "kind": "skill",
+      "category": "arifos",
       "tags": [
         "scar",
         "failure",
@@ -1084,15 +1536,17 @@
         "countermeasure"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "When a failure or fabrication is detected, distill it into a **scar draft** with `status: proposed` in `wiki/scars/`. The scar draft includes: what happened, evidence, root cause, lesson, and a counte",
+      "sha256": "38a737f5a5a720bc",
+      "size": 7931,
       "word_count": 1170,
-      "update_class": "HIGH"
+      "updated_at": "2026-05-17"
     },
-    "skills.arifos.skill-skill-creator": {
-      "path": "skills/arifos/skill-skill-creator.md",
+    "tree777://skill/arifos/skill-creator": {
+      "slug": "skill-creator",
       "title": "Skill: Skill Creator",
-      "type": "skill",
+      "kind": "skill",
+      "category": "arifos",
       "tags": [
         "skill-creation",
         "meta-skill",
@@ -1103,45 +1557,51 @@
         "promotion"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "Load this skill when the task involves:",
+      "sha256": "cb9f1d1e3794e451",
+      "size": 2822,
       "word_count": 397,
-      "update_class": "HIGH"
+      "updated_at": "2026-05-17"
     },
-    "skills.arifos.skill-skill-promote": {
-      "path": "skills/arifos/skill-skill-promote.md",
+    "tree777://skill/arifos/skill-promote": {
+      "slug": "skill-promote",
       "title": "SKILL: Skill Promote — Convert Repeated Patterns into Canonical Proposals",
-      "type": "skill",
+      "kind": "skill",
+      "category": "arifos",
       "tags": [
         "promote",
         "skill",
         "pattern",
         "TREE777",
-        888,
+        "888",
         "governance",
         "ladder"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "When a technique, approach, or failure-countermeasure appears as a pattern in 2-3+ evidence bundles or scar drafts, distill it into a **skill promotion proposal** and submit it for 888 deliberation.",
+      "sha256": "bcbad1bd663eb6b3",
+      "size": 7956,
       "word_count": 1112,
-      "update_class": "HIGH"
+      "updated_at": "2026-05-17"
     },
-    "skills.arifos.skill-skill-reflector": {
-      "path": "skills/arifos/skill-skill-reflector.md",
+    "tree777://skill/arifos/skill-reflector": {
+      "slug": "skill-reflector",
       "title": "SKILL: Skill Reflector",
-      "type": "skill",
+      "kind": "skill",
+      "category": "arifos",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Auditing skills across federation",
+      "sha256": "d72a775c72fd1529",
+      "size": 2924,
       "word_count": 381,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.189131+00:00"
     },
-    "skills.arifos.skill-trace-capture": {
-      "path": "skills/arifos/skill-trace-capture.md",
+    "tree777://skill/arifos/trace": {
+      "slug": "trace",
       "title": "SKILL: Trace Capture — Post-Task Evidence Emission",
-      "type": "skill",
+      "kind": "skill",
+      "category": "arifos",
       "tags": [
         "trace",
         "evidence",
@@ -1152,48 +1612,43 @@
         "artifact"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "After completing any non-trivial task, emit four artifacts:",
+      "sha256": "72cac7bb9d3f3e01",
+      "size": 6267,
       "word_count": 934,
-      "update_class": "HIGH"
+      "updated_at": "2026-05-17"
     },
-    "skills.arifos.skill-vault-integrity": {
-      "path": "skills/arifos/skill-vault-integrity.md",
+    "tree777://skill/arifos/vault": {
+      "slug": "vault",
       "title": "SKILL: Vault Integrity",
-      "type": "skill",
+      "kind": "skill",
+      "category": "arifos",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Writing to VAULT999 (outcomes.jsonl, SEALED_EVENTS)",
+      "sha256": "ec95c56855ba28a5",
+      "size": 3005,
       "word_count": 417,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.187791+00:00"
     },
-    "skills.arifos.skill-vault999-ops": {
-      "path": "skills/arifos/skill-vault999-ops.md",
-      "title": "SKILL: VAULT999 Operations",
-      "type": "skill",
-      "tags": [],
-      "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
-      "word_count": 389,
-      "update_class": "HIGH"
-    },
-    "skills.federation.skill-aaa-workspace": {
-      "path": "skills/federation/skill-aaa-workspace.md",
+    "tree777://skill/federation/aaa": {
+      "slug": "aaa",
       "title": "SKILL: AAA Workspace Operations",
-      "type": "skill",
+      "kind": "skill",
+      "category": "federation",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Managing AAA-specific tasks",
+      "sha256": "fb500f37f6c9c4fe",
+      "size": 2173,
       "word_count": 273,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.192215+00:00"
     },
-    "skills.federation.skill-adapter-sync": {
-      "path": "skills/federation/skill-adapter-sync.md",
+    "tree777://skill/federation/adapter": {
+      "slug": "adapter",
       "title": "SKILL: Adapter Sync — Wiki Canonical to Platform Adapters",
-      "type": "skill",
+      "kind": "skill",
+      "category": "federation",
       "tags": [
         "adapter",
         "sync",
@@ -1205,15 +1660,17 @@
         "mcp"
       ],
       "confidence": "low",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "When a canonical skill in `AAA/wiki/skills/` is updated, propagate the changes to all platform adapters in `AAA/skills/{skill-name}/{platform}/`. The canonical wiki page is the **source of truth**. Pl",
+      "sha256": "8104e86f036d6ab4",
+      "size": 4818,
       "word_count": 695,
-      "update_class": "STALE"
+      "updated_at": "2026-05-17"
     },
-    "skills.federation.skill-agent-onboarding": {
-      "path": "skills/federation/skill-agent-onboarding.md",
+    "tree777://skill/federation/agent-onboarding": {
+      "slug": "agent-onboarding",
       "title": "SKILL: Agent Onboarding",
-      "type": "skill",
+      "kind": "skill",
+      "category": "federation",
       "tags": [
         "onboarding",
         "federation",
@@ -1222,37 +1679,56 @@
         "constitutional"
       ],
       "confidence": "low",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "Full procedure for onboarding a new agent to the arifOS federation: spatial grounding + constitutional prompt + tool access + verification.",
+      "sha256": "1247a9c842a4d8d7",
+      "size": 3401,
       "word_count": 498,
-      "update_class": "STALE"
+      "updated_at": "2026-05-17"
     },
-    "skills.federation.skill-agent-zero": {
-      "path": "skills/federation/skill-agent-zero.md",
+    "tree777://skill/federation/agent-zero": {
+      "slug": "agent-zero",
       "title": "SKILL: Agent Zero Operations",
-      "type": "skill",
+      "kind": "skill",
+      "category": "federation",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Delegating to Agent Zero from A-FORGE",
+      "sha256": "4ec0d720a185e1b6",
+      "size": 3710,
       "word_count": 525,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.191825+00:00"
     },
-    "skills.federation.skill-arifos-mcp-federation": {
-      "path": "skills/federation/skill-arifos-mcp-federation.md",
+    "tree777://skill/federation/arifos": {
+      "slug": "arifos",
       "title": "SKILL: arifOS MCP Federation Router",
-      "type": "skill",
+      "kind": "skill",
+      "category": "federation",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-25",
-      "created": "2026-05-17",
+      "summary": "- Task spans two or more organs (GEOX, WEALTH, WELL, A-FORGE, AAA)",
+      "sha256": "7cc9fc291ebedad9",
+      "size": 5725,
       "word_count": 862,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.191343+00:00"
     },
-    "skills.federation.skill-gemini-cli": {
-      "path": "skills/federation/skill-gemini-cli.md",
+    "tree777://skill/federation/federation": {
+      "slug": "federation",
+      "title": "federation-safety-wiring — THE 9 DISCOVERIES",
+      "kind": "skill",
+      "category": "federation",
+      "tags": [],
+      "confidence": "medium",
+      "summary": "| # | Discovery | Module | What It Does |",
+      "sha256": "a0dce5a28f85d348",
+      "size": 4457,
+      "word_count": 548,
+      "updated_at": "2026-07-17T07:56:16.189746+00:00"
+    },
+    "tree777://skill/federation/gemini": {
+      "slug": "gemini",
       "title": "Skill: Gemini CLI (Senior Infrastructure Clerk)",
-      "type": "skill",
+      "kind": "skill",
+      "category": "federation",
       "tags": [
         "gemini-cli",
         "clerk",
@@ -1263,26 +1739,30 @@
         "arifos"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "The **Gemini CLI** (Clerk) is the primary interactive terminal agent for Sovereign Arif Fazil. Unlike other agents, the Clerk is **NATIVE** to the VPS (`72.62.71.199`) and operates directly as **root*",
+      "sha256": "b6abc96e9a75f1e7",
+      "size": 1965,
       "word_count": 269,
-      "update_class": "HIGH"
+      "updated_at": "2026-05-17"
     },
-    "skills.federation.skill-hermes-ops": {
-      "path": "skills/federation/skill-hermes-ops.md",
+    "tree777://skill/federation/hermes": {
+      "slug": "hermes",
       "title": "SKILL: HERMES Operations",
-      "type": "skill",
+      "kind": "skill",
+      "category": "federation",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Operating HERMES ASI Deliberative Relay",
+      "sha256": "eb390879c942a5f7",
+      "size": 2513,
       "word_count": 365,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.191493+00:00"
     },
-    "skills.federation.skill-memory-bridge-protocol": {
-      "path": "skills/federation/skill-memory-bridge-protocol.md",
+    "tree777://skill/federation/memory": {
+      "slug": "memory",
       "title": "Skill: Memory Bridge Protocol",
-      "type": "skill",
+      "kind": "skill",
+      "category": "federation",
       "tags": [
         "memory",
         "postgres",
@@ -1292,15 +1772,17 @@
         "shared-memory"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "As of May 17, 2026, agents rely on local workspace files. This is \"Ghost Memory\" — it is invisible to the arifOS kernel and cannot be audited by the Judge (888).",
+      "sha256": "5aae00d626771f56",
+      "size": 1356,
       "word_count": 192,
-      "update_class": "HIGH"
+      "updated_at": "2026-05-17"
     },
-    "skills.federation.skill-site-architecture": {
-      "path": "skills/federation/skill-site-architecture.md",
+    "tree777://skill/federation/site": {
+      "slug": "site",
       "title": "Skill: Site Architecture",
-      "type": "skill",
+      "kind": "skill",
+      "category": "federation",
       "tags": [
         "site-architecture",
         "caddy",
@@ -1311,15 +1793,17 @@
         "subdomain"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "Load this skill when the task involves:",
+      "sha256": "d72606f7aed6b8a5",
+      "size": 7162,
       "word_count": 833,
-      "update_class": "HIGH"
+      "updated_at": "2026-05-17"
     },
-    "skills.geox.skill-spatial-grounding": {
-      "path": "skills/geox/skill-spatial-grounding.md",
+    "tree777://skill/geox/spatial": {
+      "slug": "spatial",
       "title": "SKILL: Spatial Grounding",
-      "type": "skill",
+      "kind": "skill",
+      "category": "geox",
       "tags": [
         "spatial-awareness",
         "VPS",
@@ -1328,59 +1812,69 @@
         "federation"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "Embed VPS spatial context in all agent configs so agents know they execute on VPS 72.62.71.199, not a remote machine to SSH to.",
+      "sha256": "332d10f79e272cf0",
+      "size": 4623,
       "word_count": 619,
-      "update_class": "HIGH"
+      "updated_at": "2026-05-17"
     },
-    "skills.infrastructure.skill-agents-sdk": {
-      "path": "skills/infrastructure/skill-agents-sdk.md",
+    "tree777://skill/infrastructure/agents": {
+      "slug": "agents",
       "title": "SKILL: Cloudflare Agents SDK",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Creating stateful agents, durable workflows",
+      "sha256": "7c24cc2ed30bd906",
+      "size": 3764,
       "word_count": 496,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.197535+00:00"
     },
-    "skills.infrastructure.skill-backup-dr": {
-      "path": "skills/infrastructure/skill-backup-dr.md",
+    "tree777://skill/infrastructure/backup": {
+      "slug": "backup",
       "title": "SKILL: Backup & Disaster Recovery",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Backup operations, restore testing",
+      "sha256": "1319fccd12dd573d",
+      "size": 3245,
       "word_count": 437,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.197755+00:00"
     },
-    "skills.infrastructure.skill-caddy-cloudflare": {
-      "path": "skills/infrastructure/skill-caddy-cloudflare.md",
+    "tree777://skill/infrastructure/caddy": {
+      "slug": "caddy",
       "title": "SKILL: Caddy + Cloudflare",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Caddyfile editing, configuration",
+      "sha256": "323b8d967659db31",
+      "size": 2514,
       "word_count": 324,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.194875+00:00"
     },
-    "skills.infrastructure.skill-claude-code-ops": {
-      "path": "skills/infrastructure/skill-claude-code-ops.md",
+    "tree777://skill/infrastructure/claude": {
+      "slug": "claude",
       "title": "SKILL: Claude Code Operations",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Claude Code broken, Bash tool fails",
+      "sha256": "588b5aac0076e94a",
+      "size": 2834,
       "word_count": 370,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.194983+00:00"
     },
-    "skills.infrastructure.skill-cloudflare-email-service": {
-      "path": "skills/infrastructure/skill-cloudflare-email-service.md",
+    "tree777://skill/infrastructure/cloudflare-email": {
+      "slug": "cloudflare-email",
       "title": "Skill: Cloudflare Email Service",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [
         "cloudflare",
         "email",
@@ -1393,70 +1887,82 @@
         "dmarc"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "Load this skill when the task involves:",
+      "sha256": "65c98c56fe8e06b1",
+      "size": 2029,
       "word_count": 278,
-      "update_class": "HIGH"
+      "updated_at": "2026-05-17"
     },
-    "skills.infrastructure.skill-cloudflare": {
-      "path": "skills/infrastructure/skill-cloudflare.md",
+    "tree777://skill/infrastructure/cloudflare-platform": {
+      "slug": "cloudflare-platform",
       "title": "SKILL: Cloudflare Platform",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Building on Cloudflare Workers, Pages, D1, R2, KV, AI",
+      "sha256": "11408604f21c44fd",
+      "size": 3267,
       "word_count": 443,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.192998+00:00"
     },
-    "skills.infrastructure.skill-database-tuning": {
-      "path": "skills/infrastructure/skill-database-tuning.md",
+    "tree777://skill/infrastructure/database": {
+      "slug": "database",
       "title": "SKILL: Database Tuning",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- PostgreSQL or Redis slow performance",
+      "sha256": "5cab3d8dbb429754",
+      "size": 3180,
       "word_count": 465,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.197422+00:00"
     },
-    "skills.infrastructure.skill-docker-security": {
-      "path": "skills/infrastructure/skill-docker-security.md",
+    "tree777://skill/infrastructure/docker-security": {
+      "slug": "docker-security",
       "title": "SKILL: Docker Security",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Auditing Docker containers for security",
+      "sha256": "4d42fd9c4a41829d",
+      "size": 2606,
       "word_count": 348,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.192411+00:00"
     },
-    "skills.infrastructure.skill-docker-thermodynamics": {
-      "path": "skills/infrastructure/skill-docker-thermodynamics.md",
+    "tree777://skill/infrastructure/docker-thermodynamics": {
+      "slug": "docker-thermodynamics",
       "title": "SKILL: Docker Thermodynamics",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Managing Docker containers, diagnosing unhealthy services",
+      "sha256": "36dace52337afcba",
+      "size": 3241,
       "word_count": 445,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.197976+00:00"
     },
-    "skills.infrastructure.skill-durable-objects": {
-      "path": "skills/infrastructure/skill-durable-objects.md",
+    "tree777://skill/infrastructure/durable": {
+      "slug": "durable",
       "title": "SKILL: Cloudflare Durable Objects",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Building stateful coordination (chat rooms, multiplayer games, booking)",
+      "sha256": "4394d9d9660ab3ea",
+      "size": 3438,
       "word_count": 435,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.195148+00:00"
     },
-    "skills.infrastructure.skill-evidence-verification": {
-      "path": "skills/infrastructure/skill-evidence-verification.md",
+    "tree777://skill/infrastructure/evidence": {
+      "slug": "evidence",
       "title": "SKILL: Evidence Verification — Generic Protocol",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [
         "evidence",
         "verification",
@@ -1466,26 +1972,30 @@
         "generic"
       ],
       "confidence": "medium",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "Generic evidence verification protocol — before claiming any artifact exists or any action succeeded, verify via external check (not LLM memory). This skill embodies the [[anti-fabrication-protocol]] ",
+      "sha256": "9bcb4f9ddfab1693",
+      "size": 4632,
       "word_count": 684,
-      "update_class": "STALE"
+      "updated_at": "2026-05-17"
     },
-    "skills.infrastructure.skill-fastmcp-deploy": {
-      "path": "skills/infrastructure/skill-fastmcp-deploy.md",
+    "tree777://skill/infrastructure/fastmcp": {
+      "slug": "fastmcp",
       "title": "SKILL: FastMCP VPS Deployment",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- FastMCP server deployment to VPS",
+      "sha256": "272150399ae5dc87",
+      "size": 2631,
       "word_count": 322,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.197646+00:00"
     },
-    "skills.infrastructure.skill-forge-claude-skill": {
-      "path": "skills/infrastructure/skill-forge-claude-skill.md",
+    "tree777://skill/infrastructure/forge": {
+      "slug": "forge",
       "title": "SKILL: Forge Claude Code Skill — Create or Upgrade a Personal Skill",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [
         "claude-code",
         "skills",
@@ -1496,48 +2006,56 @@
         "personal-skills"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "Forge a new personal Claude Code skill at `~/.claude/skills/<skill-name>/SKILL.md`, or upgrade an existing flat-file runbook to the proper directory-based SKILL.md format. Skills created here are avai",
+      "sha256": "cef6493fdfddb0fa",
+      "size": 7157,
       "word_count": 1001,
-      "update_class": "HIGH"
+      "updated_at": "2026-05-17"
     },
-    "skills.infrastructure.skill-github-issues": {
-      "path": "skills/infrastructure/skill-github-issues.md",
+    "tree777://skill/infrastructure/github": {
+      "slug": "github",
       "title": "SKILL: GitHub Issues Monitor",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Monitoring open GitHub issues across federation repos",
+      "sha256": "291d4314c70746e6",
+      "size": 1813,
       "word_count": 267,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.192890+00:00"
     },
-    "skills.infrastructure.skill-mcp-builder": {
-      "path": "skills/infrastructure/skill-mcp-builder.md",
+    "tree777://skill/infrastructure/mcp-server-builder": {
+      "slug": "mcp-server-builder",
       "title": "SKILL: MCP Server Builder",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Building a new MCP server from scratch",
+      "sha256": "59d1f4d4ff495a3b",
+      "size": 4444,
       "word_count": 628,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.196644+00:00"
     },
-    "skills.infrastructure.skill-mcp-unified": {
-      "path": "skills/infrastructure/skill-mcp-unified.md",
+    "tree777://skill/infrastructure/mcp-unified": {
+      "slug": "mcp-unified",
       "title": "SKILL: MCP Unified",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Designing or refactoring an MCP server",
+      "sha256": "7b508ff728736ea5",
+      "size": 4324,
       "word_count": 617,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.196236+00:00"
     },
-    "skills.infrastructure.skill-replicate-media": {
-      "path": "skills/infrastructure/skill-replicate-media.md",
+    "tree777://skill/infrastructure/replicate": {
+      "slug": "replicate",
       "title": "Skill: Replicate AI Media",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [
         "replicate",
         "ai-models",
@@ -1549,48 +2067,56 @@
         "mcp"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "Load this skill when the task involves:",
+      "sha256": "e5508634cd560277",
+      "size": 2104,
       "word_count": 272,
-      "update_class": "HIGH"
+      "updated_at": "2026-05-17"
     },
-    "skills.infrastructure.skill-sandbox-sdk": {
-      "path": "skills/infrastructure/skill-sandbox-sdk.md",
+    "tree777://skill/infrastructure/sandbox": {
+      "slug": "sandbox",
       "title": "SKILL: Cloudflare Sandbox SDK",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Building AI code interpreters",
+      "sha256": "affe1f0916a9c1e1",
+      "size": 2710,
       "word_count": 352,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.192665+00:00"
     },
-    "skills.infrastructure.skill-secret-hygiene": {
-      "path": "skills/infrastructure/skill-secret-hygiene.md",
+    "tree777://skill/infrastructure/secret-hygiene": {
+      "slug": "secret-hygiene",
       "title": "SKILL: Secret Hygiene",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Handling API keys, tokens, passwords, certificates",
+      "sha256": "8408b48383f79b18",
+      "size": 3322,
       "word_count": 504,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.198139+00:00"
     },
-    "skills.infrastructure.skill-secret-rotation-guide": {
-      "path": "skills/infrastructure/skill-secret-rotation-guide.md",
+    "tree777://skill/infrastructure/secret-rotation": {
+      "slug": "secret-rotation",
       "title": "SKILL: Secret Rotation Guide",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Planning secret rotation",
+      "sha256": "c1bb05e073cc5a3f",
+      "size": 3167,
       "word_count": 457,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.196516+00:00"
     },
-    "skills.infrastructure.skill-sot-parity-enforcement": {
-      "path": "skills/infrastructure/skill-sot-parity-enforcement.md",
+    "tree777://skill/infrastructure/sot": {
+      "slug": "sot",
       "title": "Skill: SOT Parity Enforcement",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [
         "env",
         "sot",
@@ -1599,59 +2125,69 @@
         "manifest"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "\"Environment Drift\" occurs when agents update `.env` but forget the Master Manifest. This leads to secret loss and deployment chaos.",
+      "sha256": "7eecb7052d9f5771",
+      "size": 1123,
       "word_count": 169,
-      "update_class": "HIGH"
+      "updated_at": "2026-05-17"
     },
-    "skills.infrastructure.skill-staff-engineer-review": {
-      "path": "skills/infrastructure/skill-staff-engineer-review.md",
+    "tree777://skill/infrastructure/staff": {
+      "slug": "staff",
       "title": "SKILL: Staff Engineer Code Review",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Reviewing pull requests",
+      "sha256": "611943de61d722e3",
+      "size": 3482,
       "word_count": 485,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.196771+00:00"
     },
-    "skills.infrastructure.skill-vps-audit": {
-      "path": "skills/infrastructure/skill-vps-audit.md",
+    "tree777://skill/infrastructure/vps-health-audit": {
+      "slug": "vps-health-audit",
       "title": "SKILL: VPS Health Audit",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Auditing VPS health, server condition",
+      "sha256": "ea378cd0cc7fdea1",
+      "size": 2456,
       "word_count": 382,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.192780+00:00"
     },
-    "skills.infrastructure.skill-vps-docker": {
-      "path": "skills/infrastructure/skill-vps-docker.md",
+    "tree777://skill/infrastructure/vps-docker-manager": {
+      "slug": "vps-docker-manager",
       "title": "SKILL: VPS Docker Manager",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Docker container lifecycle management",
+      "sha256": "a1283b267c7c47f2",
+      "size": 2259,
       "word_count": 300,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.194766+00:00"
     },
-    "skills.infrastructure.skill-vps-management": {
-      "path": "skills/infrastructure/skill-vps-management.md",
+    "tree777://skill/infrastructure/vps-management": {
+      "slug": "vps-management",
       "title": "SKILL: VPS Management",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Managing VPS server via SSH",
+      "sha256": "4e8b02f957af2a85",
+      "size": 2565,
       "word_count": 383,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.194469+00:00"
     },
-    "skills.infrastructure.skill-web-perf": {
-      "path": "skills/infrastructure/skill-web-perf.md",
+    "tree777://skill/infrastructure/web": {
+      "slug": "web",
       "title": "Skill: Web Performance Audit",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [
         "web-perf",
         "lighthouse",
@@ -1665,15 +2201,17 @@
         "audit"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "Load this skill when the task involves:",
+      "sha256": "cafce408b6c4c5d9",
+      "size": 1906,
       "word_count": 295,
-      "update_class": "HIGH"
+      "updated_at": "2026-05-17"
     },
-    "skills.infrastructure.skill-workers-best-practices": {
-      "path": "skills/infrastructure/skill-workers-best-practices.md",
+    "tree777://skill/infrastructure/workers": {
+      "slug": "workers",
       "title": "Skill: Cloudflare Workers Best Practices",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [
         "cloudflare",
         "workers",
@@ -1686,105 +2224,99 @@
         "observability"
       ],
       "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
+      "summary": "Load this skill when the task involves:",
+      "sha256": "69f32e3e011fc08c",
+      "size": 1891,
       "word_count": 268,
-      "update_class": "HIGH"
+      "updated_at": "2026-05-17"
     },
-    "skills.infrastructure.skill-wrangler": {
-      "path": "skills/infrastructure/skill-wrangler.md",
+    "tree777://skill/infrastructure/wrangler": {
+      "slug": "wrangler",
       "title": "SKILL: Wrangler CLI",
-      "type": "skill",
+      "kind": "skill",
+      "category": "infrastructure",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Deploying, developing, or managing Cloudflare Workers",
+      "sha256": "8ce441f13993a386",
+      "size": 3472,
       "word_count": 454,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.197866+00:00"
     },
-    "skills.skill-anti-cascade-diagnostic": {
-      "path": "skills/skill-anti-cascade-diagnostic.md",
-      "title": "Skill — Anti-Cascade Diagnostic Protocol",
-      "type": "skill",
-      "tags": [
-        "diagnostic",
-        "entropy",
-        "openclaw",
-        "health",
-        "protocol",
-        "agents",
-        "anti-cascade"
-      ],
-      "confidence": "high",
-      "updated": "2026-05-17",
-      "created": "2026-05-17",
-      "word_count": 816,
-      "update_class": "HIGH"
-    },
-    "skills.well.skill-well-governance-ops": {
-      "path": "skills/well/skill-well-governance-ops.md",
+    "tree777://skill/well/well": {
+      "slug": "well",
       "title": "SKILL: WELL Governance Operations",
-      "type": "skill",
+      "kind": "skill",
+      "category": "well",
       "tags": [],
       "confidence": "high",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
+      "summary": "- Auditing WELL docs or repo state",
+      "sha256": "6bdc9869fa5a2fd2",
+      "size": 2470,
       "word_count": 325,
-      "update_class": "HIGH"
+      "updated_at": "2026-07-17T07:56:16.187670+00:00"
     },
-    "workflows.workflow-agent-onboarding.reasoning.summary": {
-      "path": "workflows/workflow-agent-onboarding/reasoning/summary.md",
-      "title": "workflow-agent-onboarding — Execution Summary",
-      "type": "workflow",
-      "tags": [],
-      "confidence": "medium",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
-      "word_count": 147,
-      "update_class": "NORMAL"
-    },
-    "workflows.workflow-scar-to-skill.reasoning.summary": {
-      "path": "workflows/workflow-scar-to-skill/reasoning/summary.md",
-      "title": "workflow-scar-to-skill — Execution Summary",
-      "type": "workflow",
-      "tags": [],
-      "confidence": "medium",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
-      "word_count": 165,
-      "update_class": "NORMAL"
-    },
-    "workflows.workflow-session-cycle.reasoning.summary": {
-      "path": "workflows/workflow-session-cycle/reasoning/summary.md",
-      "title": "workflow-session-cycle — Execution Summary",
-      "type": "workflow",
-      "tags": [],
-      "confidence": "medium",
-      "updated": "2026-06-06",
-      "created": "2026-05-17",
-      "word_count": 191,
-      "update_class": "NORMAL"
-    },
-    "workflows.workflow-tree777-agent-cron-loop": {
-      "path": "workflows/workflow-tree777-agent-cron-loop.md",
+    "tree777://workflow/agent/agent": {
+      "slug": "agent",
       "title": "WORKFLOW: TREE777 Agent Cron Loop (777/888/999)",
-      "type": "workflow",
+      "kind": "workflow",
+      "category": "agent",
       "tags": [
         "workflow",
         "TREE777",
         "cron",
         "automation",
-        777,
-        888,
-        999,
+        "777",
+        "888",
+        "999",
         "agents",
         "phoenix72"
       ],
       "confidence": "high",
-      "updated": "2026-05-20",
-      "created": "2026-05-20",
+      "summary": "Canonical automation loop for each AAA agent, including **phoenix72**.",
+      "sha256": "5f99378fc4cc32b8",
+      "size": 1745,
       "word_count": 192,
-      "update_class": "STALE"
+      "updated_at": "2026-05-20"
+    },
+    "tree777://workflow/agent-onboarding/summary": {
+      "slug": "summary",
+      "title": "workflow-agent-onboarding — Execution Summary",
+      "kind": "workflow",
+      "category": "agent-onboarding",
+      "tags": [],
+      "confidence": "medium",
+      "summary": "Onboard a new agent to the federation with full spatial grounding + constitutional binding.",
+      "sha256": "f647687d78fbd9f4",
+      "size": 1298,
+      "word_count": 147,
+      "updated_at": "2026-07-17T07:56:16.178597+00:00"
+    },
+    "tree777://workflow/scar-to-skill/summary": {
+      "slug": "summary",
+      "title": "workflow-scar-to-skill — Execution Summary",
+      "kind": "workflow",
+      "category": "scar-to-skill",
+      "tags": [],
+      "confidence": "medium",
+      "summary": "Transform a failure trace into a skill update via constitutional judgment.",
+      "sha256": "4d93a6d7b02fda59",
+      "size": 1299,
+      "word_count": 165,
+      "updated_at": "2026-07-17T07:56:16.177145+00:00"
+    },
+    "tree777://workflow/session-cycle/summary": {
+      "slug": "summary",
+      "title": "workflow-session-cycle — Execution Summary",
+      "kind": "workflow",
+      "category": "session-cycle",
+      "tags": [],
+      "confidence": "medium",
+      "summary": "Standard session loop for all non-trivial tasks.",
+      "sha256": "7fda8f64b89055e2",
+      "size": 1478,
+      "word_count": 191,
+      "updated_at": "2026-07-17T07:56:16.179855+00:00"
     }
   }
 }
