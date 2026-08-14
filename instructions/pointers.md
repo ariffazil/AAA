@@ -25,6 +25,22 @@
 | `/root/scripts/render-agents.sh` | **Fragment composer** — generates AGENTS.md + adapter files |
 | `/root/scripts/doctor.sh` | **Federation health dashboard** — unified probe |
 
+## Sketchpad & Receipts (canonical, 2026-08-15)
+
+> **Single sketchpad:** `/root/forge_work`. No parallel roots.
+> (Pre-consolidation `AAA/forge_work` quarantined 2026-08-15 → `/root/forge_work/_quarantine/aaa-forge-work-preconsolidation-20260815`.)
+
+| Layer | Convention | Status |
+|---|---|---|
+| Working dir | `/root/forge_work/YYYY-MM-DD-<topic>/` | ✅ canonical |
+| Cross-cutting drafts | `/root/forge_work/_drafts/` | ✅ canonical |
+| Named receipts | `YYYY-MM-DD-FI-XXX-<slug>.md` at `/root/forge_work/` root | ✅ canonical (organic winner) |
+| Session ledger | append to `/root/forge_work/<fi>-sessions/sessions.jsonl` | ✅ canonical |
+| ~~`_receipts/` container~~ | deprecated 2026-08-15 (agents never adopted it) | 🪦 |
+| Promotion | `forge_canonize` → `/root/forge_work/CANON/` (SHA256 sidecar) → `arif_seal` → VAULT999 | ✅ path exists; receipts ≠ canon artifacts |
+
+Decay: hot → `_archive/` → `_cold-storage/`/`_cold_2026-Q3/` → `_tombstone/`. `_quarantine/` holds 7-day-grace isolates.
+
 ## AAA Tool Rights Policy
 
 > **Canonical:** `/root/AAA/governance/AAA_TOOL_RIGHTS_POLICY.md`
