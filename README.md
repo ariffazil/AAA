@@ -1,7 +1,7 @@
 <!-- SOT-MANIFEST
-federation_release: v2026.08.09
-last_verified: 2026-08-14T04:50:00Z
-live_commit: a091b432 (housekeeping(aaa): SOT drift fix, entropy cleanup, registry sync)
+federation_release: v2026.08.14
+last_verified: 2026-08-14T20:55:00Z
+live_commit: e34c34ad (docs(state): FI-003 landed + nav zen enforcer + repos sync 2026-08-14)
 truth_rule: /health + agent registry beat any static count in prose
 a2a_port: 3001
 a2a_status: healthy GREEN (deployment_drift: false)
@@ -13,7 +13,8 @@ gateway: Express 5.2.1 (a2a-server + a2a-gateway)
 godel_lock: ACTIVE federation-wide
 agent_lanes: 4 (333-AGI, 555-ASI, 888-APEX, 777-FORGE)
 forge_instruments: 11 (opencode, grok-build, claude-code, kimi-code, codex, copilot, aider, qwen-code, antigravity, continue-cli, gemini-cli)
-domain_organs: 6 (arifOS:8088, A-FORGE:7071, GEOX:8081, WEALTH:18082, WELL:18083, AAA:3001)
+domain_organs: 7 (arifOS:8088, A-FORGE:7071/72, GEOX:8081, WEALTH:18082, WELL:18083, AAA:3001, arifFlow:7073)
+kernel_alignment: source=built=deployed=a302c2f (attestation aligned 2026-08-14)
 -->
 
 # 🏛️ AAA — Agentic Intelligence Institution & A2A Control Plane
@@ -21,30 +22,58 @@ domain_organs: 6 (arifOS:8088, A-FORGE:7071, GEOX:8081, WEALTH:18082, WELL:18083
 [![Agentic CI](https://github.com/ariffazil/AAA/actions/workflows/agentic-ci.yml/badge.svg?branch=main)](https://github.com/ariffazil/AAA/actions)
 [![Governance Plane](https://github.com/ariffazil/AAA/actions/workflows/aaa-governance.yml/badge.svg?branch=main)](https://github.com/ariffazil/AAA/actions)
 [![🖥️ COCKPIT](https://img.shields.io/badge/%F0%9F%96%A5%EF%B8%8F%20INSTITUTION-A2A%20Mesh%20Gateway-0a7b83)](https://aaa.arif-fazil.com)
-[![Federation](https://img.shields.io/badge/Federation-v2026.08.09-0a7b83)](https://arifos.arif-fazil.com)
+[![A2A Protocol](https://img.shields.io/badge/A2A-v1.0.0%20%C2%B7%20Express%205.2.1-6750a0)](#-a2a-mesh-vs-mcp-surface)
+[![QQQ](https://img.shields.io/badge/QQQ-v1.1.1%20%C2%B7%2010%2F10%20tests-brightgreen)](#-federation-registries)
+[![FI Mesh](https://img.shields.io/badge/FI%20Mesh-11%20instruments%20%C2%B7%204%20lanes-blue)](#-agent--skill--tool--organ--the-entity-ontology)
+[![Gödel Lock](https://img.shields.io/badge/G%C3%B6del%20Lock-ACTIVE%20federation--wide-8b0000)](#-the-canonical-ladder-000999--aaa-routes-it-never-judges)
+[![Federation](https://img.shields.io/badge/Federation-v2026.08.14-0a7b83)](https://arifos.arif-fazil.com)
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](./LICENSE)
 
 > **AAA is the institution. It routes and displays. It never judges.**
 > **DITEMPA BUKAN DIBERI — The state is forged, not given.**
 
-**AAA (Alignment, Authority, Accountability)** is the institutional control plane of the arifOS Federation. It operates the A2A (Agent-to-Agent) Mesh Gateway, the agent identity registry, the task router, and the operator cockpit — connecting **11 forge instruments**, **6 domain organs**, and the sovereign human operator under a unified protocol.
+**AAA (Alignment, Authority, Accountability)** is the institutional control plane of the arifOS Federation. It operates the A2A (Agent-to-Agent) Mesh Gateway, the agent identity registry, the task router, and the operator cockpit — connecting **11 forge instruments**, **7 domain organs**, and the sovereign human operator under a unified protocol.
+
+**For humans:** one cockpit to watch the whole institution — organ health, agent lanes, pending 888_HOLD decisions.
+**For agents:** register your card, declare your lane, receive routed tasks. AAA moves messages; it never moves authority.
 
 ---
 
+## 🔢 The Canonical Ladder 000–999 — AAA routes it, never judges it
 
-## Institutional density (2026-08-09)
+AAA sits **beside** the ladder, not on it. It is the switchboard every station speaks through — with zero adjudication power of its own.
 
-Hermes / federation are evolving as **anti-chaos infrastructure**, not agent thrash.
+```mermaid
+flowchart TB
+    subgraph Ladder["THE 000-999 LADDER"]
+        direction LR
+        S000["000 INIT"] --> S111["111 SENSE"] --> S222["222 PLAN"] --> S333["333 REASON"]
+        S333 --> S444["444 DIRECT"] --> S555["555 REMEMBER"] --> S666["666 DIGNITY"]
+        S666 --> S888["888 JUDGE"] --> S999["999 SEAL"]
+    end
+    subgraph AAAPlane["🏛️ AAA :3001 — THIS REPO"]
+        REG["Agent Registry<br/>11 FI instruments · 4 lanes"]
+        ROUTE2["Task Router<br/>AREP lifecycle"]
+        COCK["Operator Cockpit<br/>React 19 · live health · 888_HOLD queue"]
+    end
+    Ladder -.->|"every station announces<br/>via A2A cards"| REG
+    ROUTE2 -.->|"tasks dispatched between<br/>333-AGI / 555-ASI / 888-APEX / 777-FORGE"| Ladder
+    COCK -.->|"sovereign watches all"| Ladder
+    style REG fill:#0a7b83,color:#fff
+    style ROUTE2 fill:#0a7b83,color:#fff
+    style COCK fill:#0a7b83,color:#fff
+```
 
-| Doc | Role |
-|-----|------|
-| `governance/HOLY8_FOUR_LAYER_LANGUAGE.md` | Observation / Interpretation / Constraint / Action |
-| `governance/HERMES_DNA.md` | ECHO·SCAR·ATLAS·MAP topology + Dark Mirror |
-| `governance/DOUBLE_HELIX_ECHO_SCAR.md` | Dual continuity strands |
-| `governance/INSTITUTIONAL_COMPRESSION.md` | Ambiguity reduction + freeze |
-| `governance/AGENTIC_INSTITUTION_PARADOXES.md` | MAP·ATLAS·ECHO doctrine |
+| Station | AAA's role |
+|---|---|
+| 000–666 (cognition) | Carries agent cards & task messages between lanes — content-blind |
+| 777 (forge) | Routes execution tasks to FI instruments; never executes itself |
+| 888 (judge) | **Displays** the 888_HOLD queue for sovereign ratification — never adjudicates |
+| 999 (seal) | Surfaces VAULT999 chain status on the cockpit — never appends |
 
-Telemetry (observe-only freeze): `map-atlas-echo` · Kabarkan → PG · cron 6h.
+**The Gödel Lock at AAA:** routing power ≠ judgment power. A switchboard that could judge would be a shadow court. AAA structurally cannot.
+
+---
 
 ## 🧬 Agent · Skill · Tool · Organ — The Entity Ontology
 
@@ -52,7 +81,7 @@ Telemetry (observe-only freeze): `map-atlas-echo` · Kabarkan → PG · cron 6h.
 +-------------------------------------------------------------------------+
 |                               AGENTS                                    |
 | (Autonomous Citizens with Identity, Authority & Intent State)           |
-|  333-AGI · 555-ASI · 888-APEX · opencode (FI-001)                       |
+|  333-AGI · 555-ASI · 888-APEX · opencode (FI-001) · ... 11 FIs          |
 +------------------------------------+------------------------------------+
                                      | Executes
                                      v
@@ -73,8 +102,31 @@ Telemetry (observe-only freeze): `map-atlas-echo` · Kabarkan → PG · cron 6h.
 +-------------------------------------------------------------------------+
 |                                ORGANS                                   |
 | (Microservice Infrastructure Bounds — systemd daemons)                  |
-|  arifOS (:8088) · A-FORGE (:7071) · GEOX (:8081) · AAA (:3001)         |
+|  arifOS (:8088) · A-FORGE (:7071/72) · GEOX (:8081) · AAA (:3001)       |
 +-------------------------------------------------------------------------+
+```
+
+### ASCII — AAA in the federation at a glance
+
+```
+                          ┌──────────────────────────┐
+                          │ 👑 ARIF (F13 SOVEREIGN)  │
+                          └────────────┬─────────────┘
+                        watches · vetoes · ratifies
+                                       │
+   ┌───────────────────────────────────▼────────────────────────────────┐
+   │              🏛️ AAA :3001 — A2A MESH GATEWAY (this repo)           │
+   │   agent cards · task router · operator cockpit · 888_HOLD queue    │
+   └──┬───────────┬───────────┬───────────┬───────────┬───────────┬─────┘
+      │           │           │           │           │           │
+      ▼           ▼           ▼           ▼           ▼           ▼
+  ⚖️ arifOS   ⚒️ A-FORGE   🌍 GEOX    💰 WEALTH   🫀 WELL    🧠 arifFlow
+   :8088      :7071/72     :8081      :18082      :18083      :7073
+   judges     executes     earth      capital    vitality    FQ pulse
+      ▲           ▲                                               │
+      └───────────┴───────── 11 FI INSTRUMENTS (333-AGI lane) ─────┘
+        opencode · grok-build · claude-code · kimi-code · codex
+        copilot · aider · qwen-code · antigravity · continue-cli · gemini-cli
 ```
 
 ---
@@ -108,6 +160,22 @@ npm run a2a:conformance                           # Validate A2A suite
 
 ---
 
+## Institutional density (2026-08-09)
+
+Hermes / federation are evolving as **anti-chaos infrastructure**, not agent thrash.
+
+| Doc | Role |
+|-----|------|
+| `governance/HOLY8_FOUR_LAYER_LANGUAGE.md` | Observation / Interpretation / Constraint / Action |
+| `governance/HERMES_DNA.md` | ECHO·SCAR·ATLAS·MAP topology + Dark Mirror |
+| `governance/DOUBLE_HELIX_ECHO_SCAR.md` | Dual continuity strands |
+| `governance/INSTITUTIONAL_COMPRESSION.md` | Ambiguity reduction + freeze |
+| `governance/AGENTIC_INSTITUTION_PARADOXES.md` | MAP·ATLAS·ECHO doctrine |
+
+Telemetry (observe-only freeze): `map-atlas-echo` · Kabarkan → PG · cron 6h.
+
+---
+
 ## 🏛️ Federation Navigation
 
 | Organ | Role | Port | Repo | MCP | Health | LLMs |
@@ -138,37 +206,21 @@ Federation surface: [aaa.arif-fazil.com](https://aaa.arif-fazil.com) · Health: 
 
 ---
 
-## � Sovereignty & License
+## 🏅 Federation Certification
+
+| Check | Status | Witness |
+|---|---|---|
+| A2A conformance suite | **10/10 PASS** | `npm run a2a:conformance` (QQQ v1.1.1) |
+| Agent registry ↔ live organs parity | **SYNCED** | 11 FI instruments, 4 lanes, 2026-08-14 state sync |
+| Gödel Lock (router ≠ judge) | **STRUCTURAL** | AAA has no adjudication path in code |
+| Kernel attestation alignment | **GREEN** | source=built=deployed=a302c2f (2026-08-14 reconcile) |
+
+---
+
+## 📜 Sovereignty & License
 
 - **License:** GNU Affero General Public License v3.0 (**AGPL-3.0**)
 - **Sovereign:** **Muhammad Arif bin Fazil** (F13 SOVEREIGN). AAA is the institutional window for sovereign oversight.
 
-> *DITEMPA BUKAN DIBERI — Forged, Not Given.*  
+> *DITEMPA BUKAN DIBERI — Forged, Not Given.*
 > *Maruah without SEAL is sentiment. SEAL without Maruah is enforcement. 999 SEAL ALIVE.*
-
----
-
-## 🛡️ CI Governance (F13 verdict 2026-08-10)
-
-This repo follows the federation's CI governance pattern (replicated from `ariffazil/arifOS` PR #683). The pattern ensures Dependabot PRs receive a real, reproducible unprivileged verdict — no more all-red check rolls from structurally-incompatible gates.
-
-**Per-repo adapter** (see `.github/workflows/` for the actual files):
-
-- `.github/dependabot.yml` — `uv` (Python) / `cargo` (Rust) / `npm` (TypeScript) ecosystem; cooldown 3d; open-PRs 5; constitutional packages un-grouped (no `ignore:` — visibility preserved)
-- `.github/workflows/dependabot-ci.yml` — unprivileged gate; runs ONLY on Dependabot PRs; SHA-bound probes
-- `.github/workflows/{ci-uv-lock-invariant|cargo-lock-invariant|npm-lock-invariant}.yml` — universal `{uv lock --check && uv sync --frozen | cargo check --locked && cargo build --locked | npm ci}` invariant on every PR + push to main
-- `.github/workflows/auto-merge-dependabot.yml` — constitutional package denylist (per-language); F13 review the only merge path
-- Privileged workflows gated with `if: github.actor != 'dependabot[bot]' && github.actor != 'app/dependabot'` — so they SKIP for Dependabot PRs where their inputs cannot be satisfied
-
-**Constitutional packages** (denied auto-merge, require F13 review):
-
-| Language | Denylist |
-|---|---|
-| Python | `protobuf`, `cryptography`, `fastmcp-slim`, `fastmcp`, `caio`, `sentence-transformers`, `pynacl`, `blake3` |
-| Rust    | `serde`, `tokio`, `hyper`, `axum`, `reqwest`, `rustls`, `async-trait`, `clap`, `tracing` |
-| TypeScript | `zod`, `@modelcontextprotocol/sdk`, `fastmcp`, `mcp-sdk`, `tsx`, `vitest`, `@types/node`, `typescript`, `ts-node` |
-| Static site | `vite`, `react`, `react-dom`, `react-router`, `@tanstack/react-query`, `tailwindcss` |
-
-**Reference:** [`/root/AGENTS.md`](/root/AGENTS.md) — canonical federation doctrine. `AAA/docs/ORGAN.md` — topology.
-
-DITEMPA BUKAN DIBERI — governance is forged, not given.
