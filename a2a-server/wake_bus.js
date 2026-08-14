@@ -334,14 +334,30 @@ class WakeBus {
 
   // ── Persistence (Redis optional; memory always works) ─────────────────
 
+  /**
+   * Never let a dead Redis block the wake path: persistWake races a short
+   * timeout and gives up (memory state remains authoritative for the queue).
+   */
+  _withTimeout(promise, ms, label) {
+    return Promise.race([
+      promise,
+      new Promise((resolve) => setTimeout(() => {
+        console.warn(`[wake-bus] ${label} timed out after ${ms}ms (Redis unavailable?) — continuing in-memory`);
+        resolve(false);
+      }, ms)),
+    ]);
+  }
+
   async persistWake(wake) {
     if (!this.redisClient || !this.redisClient.isOpen) return false;
     try {
-      await this.redisClient.hSet(REDIS_KEY, wake.id, JSON.stringify(wake));
-      await this.redisClient.zAdd(REDIS_INDEX_KEY, [
-        { score: Date.parse(wake.createdAt) || Date.now(), value: wake.id },
-      ]);
-      return true;
+      return await this._withTimeout((async () => {
+        await this.redisClient.hSet(REDIS_KEY, wake.id, JSON.stringify(wake));
+        await this.redisClient.zAdd(REDIS_INDEX_KEY, [
+          { score: Date.parse(wake.createdAt) || Date.now(), value: wake.id },
+        ]);
+        return true;
+      })(), 2_000, 'persist');
     } catch (err) {
       console.warn('[wake-bus] persist failed (non-fatal):', err.message);
       return false;
@@ -352,7 +368,8 @@ class WakeBus {
   async hydrate() {
     if (!this.redisClient || !this.redisClient.isOpen) return 0;
     try {
-      const all = await this.redisClient.hGetAll(REDIS_KEY);
+      const all = await this._withTimeout(this.redisClient.hGetAll(REDIS_KEY), 3_000, 'hydrate');
+      if (!all) return 0;
       let restored = 0;
       for (const [id, raw] of Object.entries(all)) {
         try {
