@@ -1,0 +1,99 @@
+# MY_PRIMARY_SOURCES.yaml — Malaysia Reality Stack · Canonical Primary-Source Registry
+# Owner: AAA (Control Plane) · Audited: 2026-08-15 by 333-AGI (session SEAL-cbca783ddc6b452b)
+# Doctrine: NO NEW MCP SERVERS. All access via modes on EXISTING tools (forge_fetch,
+# forge_document_ingest, free-search, websearch, webfetch) + WEALTH/GEOX compute organs.
+# F2 RULE (absolute): No macro/fiscal/policy number may be stated by any agent without
+# a payload tag: [OBS:<source-id>:<dataset> <as-of-date>]. Untagged numbers = VOID.
+# Anti-anthropomorphism (F9/F10): vector memory carries geometry, never biology metaphors.
+
+version: 1
+forged: 2026-08-15
+f2_tag_format: "[OBS:<source_id>:<dataset> <YYYY-MM-DD>]"
+
+sources:
+
+  bnm:
+    name: "Bank Negara Malaysia Open API"
+    base: "https://api.bnm.gov.my"
+    probe: {status: LIVE, http: 200, keyless: true, probed: 2026-08-15, witness: "OPR overnight 2.75 @2026-08-14; FX middle rates live"}
+    protocol: rest_json_v1   # Header: Accept: application/vnd.BNM.API.v1+json
+    datasets: [interest-rate, exchange-rate, fx-turnover, consumer-alert, kijang-emas]
+    note: "KijangAPI = gold (Kijang Emas) specifically — NOT the API family name. Proposal mislabel corrected."
+    wiring: {primary: "WEALTH provider slot — wealth_core/market_data_fallback.py PROVIDER_ORDER (MY assets FIRST: bnm > yfinance > stooq; inverted priority for usdmyr/opr/kijang-emas)", type: "mode on existing tool — NOT new MCP", caller_surface: "wealth_capital_market indicator=usd_myr|opr|kijang_emas (no caller change — provider chain is internal)", fallback: "forge_fetch mode=json with Accept header (direct, for non-WEALTH contexts)"}
+    implementation_notes: "Provider class slots into existing chain: independent failure + STALE-marked cache + TTL 300/3600 + vault receipts ALL already implemented in the engine. BNM needs no key. MYT already native."
+    f2_tag: "[OBS:bnm:<dataset> <date>]"
+    cadence: {opr: "event-driven post-MPC", fx: daily, cache_ttl_seconds: 3600}
+
+  dosm:
+    name: "OpenDOSM / DOSM statistics"
+    base: "https://opendosm.dosm.gov.my"
+    probe: {status: UNREACHABLE_FROM_FORGE, http: 000, probed: 2026-08-15}
+    fallback_chain: ["data.gov.my CKAN (correct path TBD by executor — /api/3/action/package_show 404 on guessed id)", "webfetch tool", "free-search site: dosm.gov.my"]
+    datasets: [inflation-cpi, labour-force, e-e-trade, current-account]
+    wiring: {feed_target: "WEALTH capital_health mode=sovereign_fiscal (params already exist: petronas_dividend_base_rm, oil_price_assumption_usd, total_govt_expenditure, non_oil_revenue) — DOSM/BNM actuals replace assumed inputs", fetch: "webfetch / free-search include_domains=[opendosm.dosm.gov.my]", ingest: "forge_document_ingest chunk"}
+    f2_tag: "[OBS:dosm:<dataset> <date>]"
+    open_task: "MY-RS-1: discover working CKAN/API path from forge; record here"
+
+  hansard:
+    name: "Parlimen Malaysia Hansard (Digital Hansard Portal)"
+    base: "https://www.parlimen.gov.my"
+    probe: {status: UNVERIFIED_PATH, probed: 2026-08-15, note: "portal HTML; full-text search on-site; no official API"}
+    tool: {primary: "forge_fetch mode=readable on hansard debate pages", pdf: "forge_document_ingest mode=chunk strategy=semantic (hansard PDFs)"}
+    f2_tag: "[OBS:hansard:<sitting/date> <mp-name>]"
+    cadence: {live: "sitting days only", archive: on-demand}
+    rule: "Ministerial claims cross-checked against bnm/dosm tags before entering memory."
+
+  lom_gazette:
+    name: "Laws of Malaysia (LOM/AGC) + e-Federal Gazette (PNM)"
+    bases: ["https://lom.agc.gov.my", "https://www.pnm.gov.my"]
+    probe: {status: LIVE, http: 200, probed: 2026-08-15}
+    tool: {primary: "forge_fetch mode=readable", pdf: "forge_document_ingest"}
+    f2_tag: "[OBS:lom:<act-no> | OBS:warta:<gazette-no/date>]"
+    note: "Proposal's 'Lembaga Penasihat' expansion wrong — LOM = Laws of Malaysia series (AGC). Corrected."
+
+  energy:
+    name: "Suruhanjaya Tenaga (ST) + PENINSULAR grid planning + PETRONAS reporting"
+    base: "https://www.st.gov.my"
+    probe: {status: UNVERIFIED, probed: 2026-08-15, note: "reports are PDF documents, no live API"}
+    tool: {primary: "forge_fetch (PDF) + forge_document_ingest mode=extract", compute: "geox organs for geometry"}
+    f2_tag: "[OBS:st:<report-name+page> <year>]"
+    rule: "Grid numbers (peak demand, retirements) carry report+page tags. The proposal's own '21.3 GW→33.5 GW' figures are UNTAGGED — executors must re-derive from ST source before ANY use. No inheritance."
+
+  did_water:
+    name: "JPS/DID river & reservoir telemetry (PublicInfoBanjir)"
+    base: "https://publicinfobanjir.water.gov.my"
+    probe: {status: LIVE, http: 200, probed: 2026-08-15}
+    tool: {primary: "forge_fetch mode=json (station endpoints)", context: "GEOX workspace basin registration"}
+    f2_tag: "[OBS:did:<station-id> <timestamp>]"
+    cadence: {flood_season: 900, normal: 3600}
+
+  bursa:
+    name: "Bursa Malaysia announcements"
+    probe: {status: BLOCKED_403_WAF, http: 403, probed: 2026-08-15}
+    fallback_chain: ["forge_fetch with browser-realistic headers", "websearch site:bursamalaysia.com", "webfetch render=browser"]
+    f2_tag: "[OBS:bursa:<company> <announcement-date>]"
+    open_task: "MY-RS-2: discover working announcements RSS/feed path; record here"
+
+  ssm:
+    name: "SSM (Suruhanjaya Syarikat Malaysia) corporate registry"
+    probe: {status: PAID_NO_FREE_API, probed: 2026-08-15}
+    rule: "UBO claims require human-supplied SSM documents. Agents MUST NOT claim SSM-derived ownership without them. Hard F2 stop — no workaround, no scraping."
+
+  wires:
+    name: "Verified local news wires"
+    domains: [bernama.com, theedgemalaysia.com, malaysiakini.com]
+    probe: {status: PARTIAL, note: "bernama /rss/ 404 on guess (path TBD); Edge/Mkini paywalled — headlines only"}
+    tool: {primary: "free-search include_domains=<domains> then forge_fetch the article", alt: "websearch"}
+    f2_tag: "[OBS:wire:<outlet> <url-hash> <date>]"
+    rule: "News = INT class until primary-source tag attached. Never sealed as fact alone."
+
+geox_binding:
+  note: "No GEOX 'extension module'. Malay Basin geometry ALREADY canonical (canon9_profile=malay_basin in geox_petrophysics)."
+  usage: "geox_workspace set basin=<name> once; geox_claim for falsifiable geological claims; geox_well_ingest for real well IDs — this is the anti-hallucination geometry the proposal asked for."
+
+prohibited:
+  - "Building bnm-mcp, parlimen-mcp, hansard-mcp, or ANY new FastMCP server for this stack (F13 directive 2026-08-15: no new MCP)"
+  - "New GEOX module registration"
+  - "New skill directories (existing: observe-ground, evidence-discipline cover behavior; this registry is the data)"
+
+memory_rule: "F9/F10 already prohibit biological framing. Vector memory stores tagged geometry+payloads only — provenance is the admission ticket (arif_memory governance)."
