@@ -472,9 +472,9 @@
     "ratifiedAt": "2026-07-01T20:22:00Z",
     "doctrine": "DITEMPA BUKAN DIBERI"
   },
-  "fi_slot": "FI-006",
+  "fi_slot": "none (superseded twin — see status)",
   "metadata": {
-    "fi_slot": "FI-006",
+    "fi_slot": "none",
     "kernel_deps": [
       "KERNEL-trinity-33",
       "KERNEL-session-inhabit",
@@ -549,5 +549,6 @@
   "emd_architecture": "/root/AAA/instructions/emd-architecture.md",
   "emd_forged": "2026-08-09",
   "fi": "FI-COPILOT",
-  "bound_to": "333-AGI"
+  "bound_to": "333-AGI",
+  "status": "superseded_by: copilot-cli (naming twin; runtime registry FI-006 = Copilot CLI) — 2026-08-14"
 }
