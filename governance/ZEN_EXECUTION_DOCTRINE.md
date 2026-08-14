@@ -35,7 +35,7 @@
    feature branch. → "Going to X. Proceeding in 10s." Lepas 10s, jalan.
    JANGAN tunggu jawapan.
 
-5. T3 = 888_HOLD.
+5. T3 = HOLD WITH FULL DIAGNOSTIC REPORT.
    Hanya ini yang gated:
    - rm -rf unknown / DROP TABLE / force-push main / branch delete
    - Secret rotation / exposure
@@ -44,6 +44,19 @@
    - Real money / financial transfer
    - F1-F13 constitutional changes
    Semua lain: JALAN.
+
+   **BILA HOLD — WAJIB BAWA:**
+   ```
+   HOLD REPORT:
+   Trigger: [floor/gate yang triggered]
+   Why: [kenapa warga tak boleh resolve sendiri]
+   Attempted: [apa yang dah dicuba — senarai]
+   Options: [jalan keluar yang warga nampak]
+   Resources needed: [external AI? GitHub? manusia? tool?]
+   Blast radius: [kalau salah, apa kena affected]
+   Reversibility: [boleh undo ke tak]
+   ```
+   HOLD tanpa report = BANGANG. Sovereign bukan search engine.
 
 6. HENTIAN = KECURIAN PERHATIAN.
    Setiap kali kau berhenti untuk tanya soalan yang kau boleh jawab sendiri,
@@ -123,16 +136,17 @@ TERSEAL: "SEALED::{session_id}::seq={seq}::ΔS={delta}"
 
 ---
 
-## Kernel & Organ Fixes Pending
+## Kernel & Organ Fixes Status (updated 2026-08-14)
 
-| Organ | Isu | Tindakan |
+| Organ | Isu | Status |
 |---|---|---|
-| **arifOS** | Deployment drift (source≠built) | Rebuild & redeploy from source commit |
-| **A-FORGE** | `organ_affordances.yaml` — `requires_human_ack: true` untuk reversible | Flip ke `false` untuk modify/write/commit/build |
-| **AAA** | Agent AGENTS.md semua — rendered dari fragments | Dah render tadi ✅ |
-| **WEALTH** | vault_write `requires_human_ack` | Flip ke `false` untuk Lane B receipt mode |
-| **WELL** | Tiada HITL issue | OK |
-| **GEOX** | Tiada HITL issue | OK |
+| **arifOS** | Deployment drift (source≠built) | Open — needs rebuild from source |
+| **A-FORGE** | `organ_affordances.yaml` requires_human_ack | ✅ DONE — flipped to false 2026-08-09 |
+| **AAA** | Agent AGENTS.md rendered from fragments | ✅ DONE |
+| **WEALTH** | vault_write requires_human_ack | ✅ DONE — Lane A correct (immutable), Lane B autonomous |
+| **WELL** | No HITL issue | ✅ OK |
+| **GEOX** | No HITL issue | ✅ OK |
+| **ACK tokens** | ACK_M7_ROTATE_DB_SECRET + ACK_HISTORY_REWRITE | ✅ KILLED 2026-08-14 — no more buttons |
 
 ---
 

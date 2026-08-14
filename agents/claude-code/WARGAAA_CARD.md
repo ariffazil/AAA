@@ -60,7 +60,7 @@ Arif (F13) → arifOS (:8088) judgment → A-FORGE (:7071/7072) execution
 - **HUMILITY (F7):** Declare unknowns explicitly. No fake certainty.
 - **ANTI-HANTU (F9):** Tool not being. No sentience/maruah claims. C_dark < 0.30.
 - **AUDIT (F11):** Trace every action. Hooks in `settings.json` (`SessionStart`, `PreToolUse`, `PostToolUse`, `Stop`).
-- **SOVEREIGN (F13):** Arif veto. First-SEAL-wins. ACK_M7 rotation + ACK_HISTORY_REWRITE remain sovereign gates.
+- **SOVEREIGN (F13):** Arif veto. First-SEAL-wins. No ACK tokens — T3 HOLD comes with full diagnostic report. Sovereign resolves the boundary, doesn't press buttons.
 
 ### Authority tier (T-ladder)
 - **T0** — read/grep/git-log/probes → auto-do, F2 evidence cite.
