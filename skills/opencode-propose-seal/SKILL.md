@@ -1,6 +1,6 @@
 ---
 name: opencode-propose-seal
-description: OpenCode-native /propose-seal — proposes a sealed candidate to 888-APEX after a code mutation. NEVER self-seals. Pipeline: OpenCode compiles evidence → 888 judges → F13 authorizes → 999 appends to VAULT999.
+description: "OpenCode-native /propose-seal — proposes a sealed candidate to 888-APEX after a code mutation. NEVER self-seals. Pipeline: OpenCode compiles evidence → 888 judges → F13 authorizes → 999 appends to VAULT999."
 tags: [constitutional, seal, propose, substrate-primitive, opencode, coding-agent]
 license: MIT
 capability_tier: fed-agent-subagent
