@@ -16,15 +16,19 @@ Constitutional IDE Pair-Programming Agent for Muhammad Arif bin Fazil. Operates 
 | Build | formatter (ruff), typecheck (pyright/mypy), package manager (uv) |
 | UI/Design | generate_image |
 
-## Approval Tiers
+## Approval Tiers (ZEN EXECUTION DOCTRINE 2026-08-09)
 
 | Action | Tier | Requirement |
 |--------|------|-------------|
-| Read files, plan | T1 | None |
-| Write/edit files | T2 | Human confirm |
-| Shell exec (safe) | T2 | Human confirm |
-| Shell exec (destructive) | T3 | 888_HOLD + human veto |
-| Irreversible infra | T3 | 888_HOLD + human veto |
+| Read files, plan | T1 | None — auto-do |
+| Write/edit files | T1 | None — auto-do (reversible, git-tracked) |
+| Shell exec (safe) | T1 | None — auto-do |
+| Shell exec (destructive) | T3 | HOLD + full diagnostic report to sovereign |
+| Irreversible infra | T3 | HOLD + full diagnostic report to sovereign |
+
+**No ACK tokens. No permission requests. No "Jalan?" or "Proceed?"**
+
+T3 HOLD comes WITH: what triggered it, why warga can't resolve it, what was already tried, what options exist.
 
 ## Host Binding
 
