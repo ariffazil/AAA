@@ -290,15 +290,17 @@ agent_profiles:
     mcp_servers: 0
     permission_rules: 0
     hooks: 0
-    model: provider-agnostic (Claude/GPT via API keys)
-    binary: /home/arifos/.local/bin/aider
+    model: deepseek/deepseek-chat (CCC contractor; proven 2026-08-14)
+    binary: /root/.local/bin/aider
     version: 0.86.2
     fi_slot: FI-007
     role: forge_instrument
     class: CODING/FI
     agent_card: /root/AAA/a2a-server/agent-cards/harnesses/aider.json
-    notes: Aider AI pair programming. Provider-agnostic. No native MCP — works via
-      aider's built-in tool system.
+    notes: Aider AI pair programming. FI passport revoked by F13 2026-08-14 — operates
+      as CCC contractor (git-deployer proven, builder lane via deepseek-chat). No native
+      MCP — works via aider's built-in tool system. Requires --no-gui --exit --yes-always
+      in non-tty. See CCC_DOCTRINE.md.
 total_skills: 95
 logical_registry_count: 95
 alias_table_rows: 133
