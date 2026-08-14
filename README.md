@@ -32,6 +32,11 @@ kernel_alignment: source=built=deployed=a302c2f (attestation aligned 2026-08-14)
 > **AAA is the institution. It routes and displays. It never judges.**
 > **DITEMPA BUKAN DIBERI — The state is forged, not given.**
 
+<!-- RULE-5 First Fold -->
+> **What?** Institutional control plane — connecting forge instruments, domain organs, and the sovereign human operator.
+> **Why?** Coordination without a control plane is chaos; AAA is the nervous system.
+> **Care?** For humans — one cockpit to watch the whole institution. For agents — register your card, declare your lane.
+
 **AAA (Alignment, Authority, Accountability)** is the institutional control plane of the arifOS Federation. It operates the A2A (Agent-to-Agent) Mesh Gateway, the agent identity registry, the task router, and the operator cockpit — connecting **11 forge instruments**, **7 domain organs**, and the sovereign human operator under a unified protocol.
 
 **For humans:** one cockpit to watch the whole institution — organ health, agent lanes, pending 888_HOLD decisions.
