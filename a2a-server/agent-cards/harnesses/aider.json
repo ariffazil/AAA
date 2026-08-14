@@ -8,13 +8,13 @@
     "category": "LLM-as-principal (model is principal, CLI is harness)",
     "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
   },
-  "description": "Aider CLI forge instrument \u2014 pair-programming coding harness. Wired to federation MCPs. F1-F13 enforced.",
+  "description": "Aider CLI pair-programming coding harness. HOLDS NO FI SLOT — FI citizenship retired 2026-07-18 when grok-build took FI-007. Binary not installed on this machine. Federation participation is CCC-contract-only: CCC(Aider) per CCC_DOCTRINE.md / CODER_FEDERATION_MAP.md (000-AIDER). FI is the passport; CCC is the contract. Aider has a contract lane, not a passport.",
   "version": "2.0.0",
   "model": "claude-sonnet-4 / gpt-5",
   "binary": "/root/.local/bin/aider",
-  "tier": "FI-006",
-  "role": "forge_instrument",
-  "class": "CODING/FI",
+  "tier": null,
+  "role": "ccc_contract_tool",
+  "class": "CODING/CCC-ONLY",
   "protocolVersion": "1.0",
   "url": "https://aaa.arif-fazil.com/a2a/aider",
   "provider": {
@@ -34,7 +34,7 @@
     "subagent_spawn": true,
     "stateTransitionHistory": true,
     "extendedAgentCard": true,
-    "forge_tier": "FI-006"
+    "forge_tier": null
   },
   "securitySchemes": {
     "bearer_auth": {
@@ -466,9 +466,11 @@
     "ratifiedAt": "2026-07-01T20:22:00Z",
     "doctrine": "DITEMPA BUKAN DIBERI"
   },
-  "fi_slot": "FI-007",
+  "fi_slot": null,
+  "fi_status": "REVOKED — grok-build holds FI-007 (2026-07-18). Aider holds NO FI slot.",
+  "ccc_lane": "ACTIVE — CCC-contract-only: CCC(Aider, role=?) per CCC_DOCTRINE.md / CODER_FEDERATION_MAP.md 000-AIDER. Model can swap. CLI can swap. Contract stays.",
   "metadata": {
-    "fi_slot": "FI-007",
+    "fi_slot": null,
     "kernel_deps": [
       "KERNEL-trinity-33",
       "KERNEL-session-inhabit",

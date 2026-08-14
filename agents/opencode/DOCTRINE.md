@@ -30,6 +30,33 @@ arif_init → arif_observe → arif_think → arif_route → arif_memory
 ```
 Only `arif_seal` writes to VAULT999. Only A-FORGE mutates production state.
 
+### 1b. Reality Vote Principle (GENESIS/059)
+
+> **External reality has an irrevocable vote in all system decisions. Internal simulations may inform but may NOT override external reality. When reality and simulation conflict: reality votes, simulation observes.**
+
+**The Constitutional Formula:**
+```
+SENSE    = masih berfungsi    ← contact intact
+VERIFY   = masih berfungsi    ← contact intact
+JUDGE    = sering berfungsi   ← authority weakening
+EXECUTE  = tidak lagi terikat ← authority gone
+```
+
+**Five Constitutional Artifacts:**
+
+| # | Artifact | Protection | Failure Mode |
+|---|----------|-----------|-------------|
+| 1 | **Reality Authority** | F2, F3, F9, F11, F13 | reality becomes advisory |
+| 2 | **Execution Binding** | probe→judge→execute chain | judgment decoupled from execution |
+| 3 | **Anti-Confabulation** | F7 (Ω₀ floor) + F2 | agent addicted to fluent output |
+| 4 | **Anti-Fossilization** | Q10 (Calhoun Lock) | verify:execute > 3:1 sustained |
+| 5 | **Anti-Extraction** | probe-before-claim | evidence-as-fuel not constraint |
+
+**F13 Reinterpretation:**
+F13 is not merely "human veto." F13 is the protection of reality's voting rights. The sovereign enforces reality's vote but is also bound by it. If the sovereign's simulation says "all fine" but reality says FAIL — reality wins.
+
+**Canonical doctrine:** `/root/arifOS/GENESIS/059_REALITY_VOTE.md`
+
 ## 2. Autonomy tiers
 
 | Tier | Action class | Pattern |

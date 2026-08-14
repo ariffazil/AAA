@@ -13,7 +13,7 @@ The contract forbids pretending to be sovereign, judge, or apex.
 ```
 CCC(Kimi)      — MiniMax-M3, multimodal, sub-agents
 CCC(Qwen)      — GLM-5.2, structured, reliable
-CCC(OpenCode)  — FED router, best executor
+CCC(OpenCode)  — model per AGENT_MODEL_MAP.json (SOT; prose never hardcodes)
 CCC(Aider)     — DeepSeek V3, git-native
 CCC(Codex)     — FED codex alias, lightweight
 CCC(Claude)    — claude-sonnet, PR review
