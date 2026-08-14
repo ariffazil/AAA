@@ -117,13 +117,14 @@ bash /root/AAA/scripts/federation-health.sh
 
 Last result: `YELLOW | organs:6 | vvv:6 | apex_replicated:5/5 | DEGRADED:GEOX,WELL,arifOS`
 
-## Repos (GitHub sync state as of 2026-08-14 04:30 MYT)
+## Repos (GitHub sync state as of 2026-08-14 19:10 MYT)
 
 | Repo | Remote | Branch | Sync |
 |---|---|---|---|
 | A-FORGE | github.com/ariffazil/A-FORGE | main | ✅ pushed |
-| arifOS | github.com/ariffazil/arifOS | main | ✅ pushed |
-| arif-fazil.com | github.com/ariffazil/arif-fazil.com | chore/housekeeping-2026-08-14 | ⚠️ PR needed (main protected) |
+| arifOS | github.com/ariffazil/arifOS | main | ✅ pushed (6bfcc4858 FI-003 Ω calibration) |
+| arif-fazil.com (arif-sites) | github.com/ariffazil/arif-fazil.com | feat/trilogy-languages-of-trust-20260814 | ✅ pushed (makcikgpt prev/next nav + nav zen) — PR needed (main protected) |
+| web-canon | github.com/ariffazil/web-canon | fix/nav-align-live-reorg-20260814 | ✅ pushed — PR #7 open (nav primary_links /words /work) |
 
 ## Missing Components (backlog)
 
@@ -132,6 +133,7 @@ Last result: `YELLOW | organs:6 | vvv:6 | apex_replicated:5/5 | DEGRADED:GEOX,WE
 3. Minimum-sufficient retrieval (governed, not vector dump)
 4. Non-executing reflection (Dream Engine Phase 2)
 5. mgrep federation rollout (F12 audit pending)
-6. arif-fazil.com/000 page (not built)
+6. ~~arif-fazil.com/000 page (not built)~~ — RESOLVED 2026-08-14: /000 live, nav zen'd to canon 5-link invariant
+7. Nav invariant enforcer: arif-sites scripts/zen-nav.cjs (canon v7 primary_links → all static surfaces; see FORGE-agentic-web-builder OP 7)
 
 DITEMPA BUKAN DIBERI ⚒️
