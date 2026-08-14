@@ -36,6 +36,10 @@ Agent directory structure:
 
 ### Step 1 — Agent → Path Mapping
 
+> ⚠️ HISTORICAL NUMBERING (2026-07 era) — preserved as procedure record. Live FI slots differ
+> (e.g. qwen-code=FI-003, kimi-code=FI-008, aider=FI-007→CCC contractor 2026-08-14).
+> Live SOT = per-agent `agent-card.json` `fi_slot` + `/root/AAA/federation/organs.yaml`. Do not renumber from this doc.
+
 Establish the mapping between manifest agent names and filesystem paths:
 
 ```python
