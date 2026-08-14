@@ -92,6 +92,8 @@ class WakeBus {
   constructor(opts = {}) {
     this.redisClient = opts.redisClient || null;
     this.cardRegistry = opts.cardRegistry || null;
+    /** @type {(hostname: string) => string|null} maps AAA's own public host → loopback base */
+    this.resolveSelfBase = opts.resolveSelfBase || null;
     this.firstRunGraceMs = opts.firstRunGraceMs ?? FIRST_RUN_GRACE_MS;
     this.maxAttempts = opts.maxAttempts ?? MAX_ATTEMPTS;
     this.deliverFn = opts.deliverFn || null;
@@ -197,14 +199,67 @@ class WakeBus {
 
   // ── Delivery ──────────────────────────────────────────────────────────
 
-  /** Resolve the A2A delivery URL for an actor from its agent card. */
+  /** Resolve the A2A delivery URL for an actor from its agent card.
+   *  AAA-hosted cards (baseUrl .../a2a/<agent>) deliver through the gateway's
+   *  canonical ingress POST /a2a/message/send, rewritten to loopback by the
+   *  caller-supplied `resolveSelfBase` (external public URLs hairpin through
+   *  Cloudflare and fail loopback auth). Peers running their own A2A server
+   *  keep their own path. */
   resolveDeliveryUrl(actorId) {
     if (!this.cardRegistry) return null;
     const card = this.cardRegistry.get(actorId);
     if (!card) return null;
-    const base = card.endpoints && (card.endpoints.baseUrl || card.endpoints.a2aUrl || card.endpoints.healthUrl);
+    const base = card.endpoints && (card.endpoints.baseUrl || card.endpoints.a2aUrl);
     if (!base) return null;
-    return `${String(base).replace(/\/+$/, '')}/a2a/message/send`.replace(/\/{2,}a2a/, '/a2a');
+    let url;
+    try { url = new URL(base); } catch { return null; }
+    const selfBase = this.resolveSelfBase ? this.resolveSelfBase(url.hostname) : null;
+    if (selfBase) {
+      const target = new URL(selfBase);
+      target.pathname = '/a2a/message/send';
+      return target.toString();
+    }
+    if (/^\/a2a\/.+/.test(url.pathname)) {
+      url.pathname = '/a2a/message/send';
+    } else {
+      url.pathname = url.pathname.replace(/\/+$/, '') + '/a2a/message/send';
+    }
+    return url.toString();
+  }
+
+  /** Build the A2A JSON-RPC message/send envelope carrying this wake.
+   *  Wakes ride the federation's own wire format — no new protocol. */
+  buildDeliveryBody(wake) {
+    return {
+      jsonrpc: '2.0',
+      id: wake.id,
+      method: 'message/send',
+      params: {
+        message: {
+          role: 'user',
+          parts: [
+            {
+              type: 'text',
+              text: `[WAKE:${wake.event}] ${wake.reason}${wake.target ? ` (target: ${wake.target})` : ''}`,
+            },
+            {
+              type: 'data',
+              data: {
+                wake: {
+                  id: wake.id,
+                  event: wake.event,
+                  reason: wake.reason,
+                  target: wake.target,
+                  payload: wake.payload,
+                  requested_by: wake.requestedBy,
+                  fingerprint: wake.fingerprint,
+                },
+              },
+            },
+          ],
+        },
+      },
+    };
   }
 
   backoffMs(attempt) {
@@ -243,16 +298,7 @@ class WakeBus {
     const deliver = this.deliverFn || defaultDeliver;
     let result;
     try {
-      result = await deliver(url, {
-        type: 'wake',
-        wake_id: wake.id,
-        event: wake.event,
-        reason: wake.reason,
-        target: wake.target,
-        payload: wake.payload,
-        requested_by: wake.requestedBy,
-        fingerprint: wake.fingerprint,
-      }, 10_000);
+      result = await deliver(url, this.buildDeliveryBody(wake), 10_000);
     } catch (err) {
       result = { ok: false, status: 0, error: err && err.message ? err.message : String(err) };
     }
@@ -439,7 +485,11 @@ async function defaultDeliver(url, body, timeoutMs = 10_000) {
   try {
     const res = await fetch(url, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        // A2A Protocol v1.0.0 §9.2 — version header required on JSON-RPC routes
+        'A2A-Version': '1.0',
+      },
       body: JSON.stringify(body),
       signal: controller.signal,
     });

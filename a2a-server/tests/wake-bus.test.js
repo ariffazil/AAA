@@ -128,15 +128,57 @@ function newBus(deliverFn, cardRegistry) {
     const enq = await bus.enqueue({ actor: 'opencode', event: 'assignment_created', reason: 'task routed by AREP', target: 'task-1' });
     const n = await bus.tick();
     record(n === 1, 'tick delivers one due wake');
-    record(deliveries.length === 1 && deliveries[0].url === 'http://127.0.0.1:19999/a2a/message/send', 'delivery URL = card baseUrl + /a2a/message/send');
-    record(deliveries[0].body.event === 'assignment_created' && deliveries[0].body.reason === 'task routed by AREP', 'wake body carries event + semantic reason');
+    record(deliveries[0].url === 'http://127.0.0.1:19999/a2a/message/send', 'delivery URL = peer base + /a2a/message/send');
+    const sent = deliveries[0].body;
+    record(
+      sent.jsonrpc === '2.0' && sent.method === 'message/send' && sent.params?.message?.parts?.length === 2,
+      'delivery body is A2A JSON-RPC message/send (text + data parts)',
+    );
+    const dataPart = (sent.params.message.parts || []).find((p) => p.type === 'data');
+    record(
+      dataPart && dataPart.data.wake.event === 'assignment_created' && dataPart.data.wake.reason === 'task routed by AREP',
+      'data part carries the wake (event + semantic reason + fingerprint)',
+    );
     const got = bus.getWake(enq.id);
     record(got.status === 'delivered' && got.attempts === 1 && got.consecutiveFailures === 0, 'delivered on first attempt, failure counter reset');
 
+    // AAA-hosted card (.../a2a/<agent>) routes to the gateway's canonical ingress
+    const hostedReg = { get: () => ({ endpoints: { baseUrl: 'https://aaa.arif-fazil.com/a2a/opencode' } }) };
+    const hostedDeliveries = [];
+    const busHosted2 = new WakeBus({
+      redisClient: null,
+      cardRegistry: hostedReg,
+      deliverFn: async (url) => { hostedDeliveries.push(url); return { ok: true, status: 200 }; },
+      autoStart: false,
+    });
+    await busHosted2.enqueue({ actor: 'opencode', event: 'comment_added', reason: 'F13 replied', target: 'pr-1' });
+    await busHosted2.tick();
+    record(
+      hostedDeliveries[0] === 'https://aaa.arif-fazil.com/a2a/message/send',
+      'AAA-hosted card resolves to canonical ingress /a2a/message/send (public host kept when no rewrite fn)',
+    );
+
+    // With the production loopback rewrite (server.js wiring), the same card delivers on 127.0.0.1
+    const localDeliveries = [];
+    const busLocal = new WakeBus({
+      redisClient: null,
+      cardRegistry: hostedReg,
+      deliverFn: async (url) => { localDeliveries.push(url); return { ok: true, status: 200 }; },
+      autoStart: false,
+      resolveSelfBase: (h) => (h === 'aaa.arif-fazil.com' ? 'http://127.0.0.1:3001' : null),
+    });
+    await busLocal.enqueue({ actor: 'opencode', event: 'comment_added', reason: 'F13 replied', target: 'pr-1' });
+    await busLocal.tick();
+    record(
+      localDeliveries[0] === 'http://127.0.0.1:3001/a2a/message/send',
+      'self-host rewrite: public card host → loopback ingress (loopback-only auth)',
+    );
+
     // Unknown actor → no card → no_delivery_url failure path
-    const ghost = await bus.enqueue({ actor: 'ghost-agent', event: 'budget_changed', reason: 'FLAME budget exhausted' });
-    await bus.tick();
-    const ghostWake = bus.getWake(ghost.id);
+    const ghostBus = newBus(async () => ({ ok: false, status: 503, error: 'http_503' }));
+    const ghost = await ghostBus.enqueue({ actor: 'ghost-agent', event: 'budget_changed', reason: 'FLAME budget exhausted' });
+    await ghostBus.tick();
+    const ghostWake = ghostBus.getWake(ghost.id);
     record(ghostWake.status === 'retrying' && /no_delivery_url/.test(ghostWake.lastError || ''), 'missing card → retrying with no_delivery_url (HOLD after 3)');
   }
 
