@@ -4224,6 +4224,63 @@ app.get('/api/arep/reality-feed', async (req, res) => {
   }
 });
 
+// ── WAKE BUS — event-driven wake queue as public infrastructure (2026-08-14)
+// Distilled from Paperclip P1 (heartbeat/agentWakeupRequests/task-watchdogs).
+// Map: doc/plans/2026-08-14-paperclip-semantic-map.md. AAA carries events,
+// never judges them. HOLD ≠ DROP — held wakes stay inspectable.
+const {
+  WakeBus,
+  WAKE_EVENTS: WAKE_BUS_EVENTS,
+} = require('./wake_bus');
+
+// redisClient connects async in initAsyncBackbone(); resolve lazily each call.
+const wakeBus = new WakeBus({
+  redisClient: null, // re-bound below once Redis is up
+  cardRegistry: AgentCardRegistry,
+  autoStart: true,
+});
+Object.defineProperty(wakeBus, 'redisClient', {
+  get() { return redisClient && redisClient.isOpen ? redisClient : null; },
+  configurable: true,
+});
+
+// Enqueue a wake. Public infrastructure: any organ/citizen may wake any actor.
+app.post('/api/wake', async (req, res) => {
+  try {
+    const result = await wakeBus.enqueue(req.body || {});
+    if (!result.accepted) {
+      return res.status(400).json({ ok: false, error: 'invalid_wake', errors: result.errors });
+    }
+    const body = { ok: true, id: result.id, deduped: result.deduped === true, wake: result.wake };
+    res.status(result.deduped ? 200 : 201).json(body);
+  } catch (err) {
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+// Queue snapshot: counts + recent wakes (query: ?actor=&event=&include_delivered=1&limit=)
+// NOTE: declared before /api/wake/:id so 'queue' is never captured as an id.
+app.get('/api/wake/queue', (req, res) => {
+  try {
+    const view = wakeBus.queueView({
+      includeDelivered: req.query.include_delivered === '1',
+      actor: typeof req.query.actor === 'string' && req.query.actor ? req.query.actor : null,
+      event: typeof req.query.event === 'string' && req.query.event ? req.query.event : null,
+      limit: Math.min(parseInt(req.query.limit, 10) || 200, 500),
+    });
+    res.json(view);
+  } catch (err) {
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+// Inspect a single wake (held wakes included — HOLD not DROP).
+app.get('/api/wake/:id', (req, res) => {
+  const wake = wakeBus.getWake(req.params.id);
+  if (!wake) return res.status(404).json({ ok: false, error: 'wake_not_found' });
+  res.json({ ok: true, wake });
+});
+
 app.get('/', (req, res) => {
   res.json({
     service: 'AAA A2A Gateway',
@@ -5516,6 +5573,7 @@ async function initAsyncBackbone() {
     await redisClient.connect();
     console.log('[redis] connected');
     await loadPersistedScopes(); // FLW2: A2A perspective scopes from Redis
+    await wakeBus.hydrate(); // WAKE BUS: restore in-flight wakes after restart
   } catch (e) {
     console.error('[redis] failed to connect:', e.message);
   }
