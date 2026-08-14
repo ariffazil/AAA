@@ -385,7 +385,40 @@ VERIFY
 
 ## 6. THE CEREMONY — 7 Steps (Judge Before Seal)
 
-### Step 0: 888-APEX JUDGE (HELIX — NEW, non-bypassable)
+### Step 0a: CLOSURE AUDIT — TAMAT (Completion Law, F13 2026-08-14)
+
+```
+Before the session may close — before judge, before record:
+
+  python3 /root/arifOS/arifosmcp/constitution/completion_governor.py audit <tasks.json>
+
+THE LAW (sovereign's words, verbatim):
+  "If additional verification cannot change the decision,
+   and execution is reversible,
+   then execution is mandatory before session close.
+   Deferral requires an explicit blocker, not mere uncertainty."
+
+Every task must exit as: SEAL (with execution evidence) | HOLD | VOID | BLOCKED (with blocker_id).
+"Continue later" is NOT a state. Verify-at-close must finish or file an explicit blocker.
+
+DUAL of SABAR-RETRY (surface_breaker.py):
+  SABAR: dVerdict/dRetry  = 0 on a FAILING surface → STOP retrying (anti-persistence)
+  TAMAT: dVerdict/dVerify = 0 on an OPEN task      → START executing (anti-deferral)
+
+TWIN GOVERNOR (v2, trilogi II 2026-08-14):
+  RIGHT side: invariant + reversible + valuable → EXECUTE_NOW (anti-deferral)
+  LEFT side:  exists-but-worthless              → KILL_NOW with kill_reason receipt
+                                              (anti-completion-addiction)
+  DISCRIMINATOR: "unfinished" looks identical for laziness / over-verify / rational
+  abandonment. ONLY receipts differentiate. Every non-DONE terminal requires one:
+  SEAL→evidence · HOLD→hold_reason · BLOCKED→blocker_id · VOID→kill_reason.
+  No receipt = laziness.
+
+Exit 2 = closure blocked. Execute the dangling reversible work NOW, then re-audit.
+Module: arifosmcp/constitution/completion_governor.py (stdlib-only, pure core, self-tested 18/18).
+```
+
+### Step 0b: 888-APEX JUDGE (HELIX — NEW, non-bypassable)
 
 ```
 Before ANY seal or receipt:

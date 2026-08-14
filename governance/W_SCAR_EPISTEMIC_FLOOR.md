@@ -3,6 +3,7 @@
 > **Forged:** 2026-08-13 by F13 SOVEREIGN (Arif) directive
 > **Eureka:** Gemini External — "AGI is knowing exactly where the machine's authority ends and the human's consequence begins"
 > **Wires to:** F2 Truth, F10 Ontology, F7 Humility, epistemic labels, HOLD_FOR_888, double-helix memory
+> **Ancestral to:** K1 Unknown Preservation (pre-generation restraint — see hermes-epistemic-architecture.md)
 > **DITEMPA BUKAN DIBERI**
 
 ---
@@ -111,6 +112,21 @@ Agent can't determine P(truth)?
 | W1_SCAR_TO_SKILL | Wire scars to skills | ✅ exists |
 | **GAP** | Formal W_scar as epistemic floor with automatic HOLD | **THIS DOC** |
 | **GAP** | Consequence severity assessment per claim | **THIS DOC** |
+
+## Relationship to K1-K3 (Pre-Generation Restraint)
+
+W_scar is the constitutional ancestor of K1 Unknown Preservation.
+
+| W_scar Property | K1-K3 Extension |
+|-----------------|-----------------|
+| Critical-path decisions only | ALL generation |
+| Post-generation evaluation (Layer 2-3) | Pre-generation suppression (Layer 0-1) |
+| Evaluate output → HOLD | Suppress generation → UNKNOWN |
+| P(truth) < 0.99 on critical variables | Evidence absent for ANY claim |
+
+W_scar proved the pattern: restraint BEFORE action, not just evaluation OF action. K1-K3 extends that pattern from "before execution" to "before generation."
+
+See: `/root/AAA/knowledge-graph/hermes-epistemic-architecture.md`
 
 ## What Changes
 
