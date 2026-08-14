@@ -4238,6 +4238,11 @@ const wakeBus = new WakeBus({
   redisClient: null, // re-bound below once Redis is up
   cardRegistry: AgentCardRegistry,
   autoStart: true,
+  // AAA-hosted cards publish the public Cloudflare host; delivery must go
+  // loopback (authMiddleware is loopback-only for mutations).
+  resolveSelfBase: (hostname) => (/^(aaa\.arif-fazil\.com|aaa\.localhost)$/.test(hostname)
+    ? `http://127.0.0.1:${PORT}`
+    : null),
 });
 Object.defineProperty(wakeBus, 'redisClient', {
   get() { return redisClient && redisClient.isOpen ? redisClient : null; },
