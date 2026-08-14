@@ -1,0 +1,6 @@
+ arifosmcp/constitutional_map.py             |   2 +-
+ arifosmcp/runtime/contradiction_detector.py |  14 ++++
+ arifosmcp/runtime/public_registry.py        |  22 +++---
+ arifosmcp/runtime/tools.py                  | 100 +++++++++++++++++++++++++++-
+ arifosmcp/runtime/verbosity.py              |  11 ++-
+ 5 files changed, 133 insertions(+), 16 deletions(-)

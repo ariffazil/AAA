@@ -1,6 +1,6 @@
 ---
 name: hermes-propose-seal
-description: Substrate primitive /propose-seal — proposes a sealed candidate to 888-APEX. NEVER self-seals. The flow: agent proposes → 888 judges → F13 authorizes → 999 executes (append to VAULT999).
+description: "Substrate primitive /propose-seal — proposes a sealed candidate to 888-APEX. NEVER self-seals. The flow: agent proposes → 888 judges → F13 authorizes → 999 executes (append to VAULT999)."
 tags: [constitutional, seal, propose, substrate-primitive, telegram-native, hermes]
 license: MIT
 capability_tier: fed-agent-subagent

@@ -1,0 +1,908 @@
+{
+ "raw": {
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+   "content": [
+    {
+     "type": "text",
+     "text": "{\"status\":\"completed\",\"tool\":\"arif_init\",\"verdicts\":{\"substrate\":{\"state\":\"DEGRADED\",\"issuer\":\"arifos_conformance\",\"evidence_reference\":\"deployment_drift\"},\"session\":{\"state\":\"LIMITED_MUTATE\",\"issuer\":\"session_capability_token\",\"evidence_reference\":\"actor_verified=True\"},\"action\":{\"state\":\"HOLD\",\"issuer\":\"effective_decision\",\"evidence_reference\":\"canonical_verdict=SEAL\",\"reason\":\"deployment_drift_floor\"},\"receipt\":{\"state\":\"SEALED\",\"issuer\":\"vault999\",\"evidence_reference\":\"\"}},\"result\":{\"effective_state\":{\"actor_verified\":true,\"authority_band\":\"OBSERVE_ONLY\",\"mutation_allowed\":false,\"seal_allowed\":false,\"substrate_state\":\"DEGRADED\",\"derived_from\":\"session_capability_token_v1\",\"computed_at\":\"2026-08-14T21:14:26Z\"},\"session_id\":\"SEAL-4aef2edeb8e34417\",\"actor_id\":\"arif-fazil\",\"actor_claimed\":true,\"actor_canonicalized\":true,\"actor_bound\":true,\"actor_cryptographically_verified\":false,\"authority_band\":\"LIMITED_MUTATE\",\"mutation_allowed\":false,\"seal_allowed\":false,\"init_mode\":\"light\",\"session_mode\":\"persistent_bound\",\"authority_scope\":\"SOVEREIGN\",\"kernel_epoch\":\"2026-07-03\",\"software_release\":{\"release_id\":\"arifos-5806f0b68993\",\"source_commit\":\"5806f0b68993b4f024eb6afb4341ea4d2b73fa10\",\"built_commit\":\"d5484f66ec29a2fbffdbe3f8b39ef34c5bf37abe\",\"deployed_commit\":\"5806f0b68993b4f024eb6afb4341ea4d2b73fa10\",\"drift\":true,\"wheel_hash\":\"sha256:e82d37b91698017903a3d5cd79ac9d0b81216b620640439d4ce518db4bc17f04\",\"runtime_manifest_hash\":\"sha256:d048c08d4f868383239781ed39c7029ad2b94032f4ab2879edec55024195703c\",\"surface_hash\":\"sha256:6295a69b2fb7444ce7b75594606c564e07369346cb23b47fbe6ddceb61ff6290\",\"service_pid\":2096641,\"service_started_at\":\"2026-08-14T20:43:14.778045+00:00\",\"critical_module_hash_count\":16,\"payload_mode\":\"compact\",\"_freshness_warning\":\"built_commit in this token is from install time and may be stale. Check live /health endpoint for current runtime attestation.\"},\"substrate\":{\"state\":\"DEGRADED\",\"drift\":true},\"allowed_next_verbs\":[\"arif_observe\",\"arif_think\",\"arif_route\",\"arif_judge\",\"arif_forge\",\"arif_seal\"],\"action_class\":\"OBSERVE\",\"constitution_hash\":\"arifos-constitution-v2026.05.05-SSCT\",\"detail_ref\":\"arifos://constitution/arifos-constitution-v2026.05.05-SSCT\",\"next_tool\":\"arif_observe\",\"degraded\":[\"kernel_drift\"],\"next_safe_action\":\"address degraded items\",\"session_birth\":{\"session_id\":\"SEAL-4aef2edeb8e34417\",\"actor_id\":\"ARIF\",\"actor_verified\":true,\"actor_cryptographically_verified\":false,\"authority_mode\":\"SOVEREIGN\",\"stage\":\"000\",\"lane\":\"AGI\",\"verdict\":\"LIMITED_MUTATE\",\"mutation_allowed\":false,\"seal_allowed\":false,\"substrate_state\":\"DEGRADED\",\"authority_source\":\"identity_band\"},\"vps_snapshot\":{\"timestamp\":\"2026-08-14T21:14:26.057092+00:00\",\"hostname\":\"forge\",\"load_1m\":6.17,\"mem_used_pct\":51.1,\"disk_used_pct\":72.9,\"organ_shas\":{\"arifos\":\"d5484f6\",\"aforge\":\"098941b\",\"aaa\":\"ca654bd\",\"geox\":\"86ccecd\",\"wealth\":\"af808fd\",\"well\":\"a7a7d6e\"},\"snapshot_hash\":\"7b8e9e52dae5c221\"},\"session_token\":\"act_v1.eyJhY3RfdiI6MSwiYWN0b3IiOiJhcmlmIiwiYWxsb3dlZCI6WyJhcmlmX2luaXQiLCJhcmlmX29ic2VydmUiLCJhcmlmX3RoaW5rIiwiYXJpZl9yb3V0ZSIsImFyaWZfbWVtb3J5IiwiYXJpZl9qdWRnZSIsImFyaWZfZm9yZ2UiLCJhcmlmX3NlYWwiLCJhcmlmX3N0YWdlIl0sImFwZXgiOnsiQ19kYXJrIjowLjE5NTMsIkciOjAuNDU4MiwiVzMiOiJVTk1FQVNVUkVEIiwiaCI6MC45MTE1fSwiYXV0aCI6IkxJTUlURURfTVVUQVRFIiwiYXYiOnRydWUsImV4cCI6MTc4Njc3MDg2NiwiaWF0IjoxNzg2NzQyMDY2LCJraWQiOiJkZWZhdWx0IiwibGFuZSI6IkFHSSIsIm5iZiI6MTc4Njc0MjA2Niwic2lkIjoiU0VBTC00YWVmMmVkZWI4ZTM0NDE3Iiwic3RhZ2UiOiIwMDAiLCJ0dGwiOjI4ODAwLCJ2ZXJkaWN0Ijp7ImRvbWluYW50X3JlYXNvbiI6bnVsbCwic3RhdGUiOiJTQUJBUi5ERUdSQURFRCJ9LCJ3aXRuZXNzIjp7ImFjdGl2ZSI6MSwiZGl2ZXJzaXR5IjoiUEFSVElBTCJ9fQ.e7ca72b06a8a3410\",\"apex_scalars\":{\"G\":0.4582,\"C_dark\":0.1953,\"W3\":null,\"h\":0.9115},\"kernel_baseline\":{\"G\":0.5027,\"C_dark\":0.1206,\"W3\":null,\"h\":0.7771,\"sample_size\":13842,\"window_seconds\":604800,\"note\":\"Federation-wide reference. Not this session's score.\"},\"standing_source\":\"act\",\"act_claims\":{\"auth\":\"LIMITED_MUTATE\",\"av\":true,\"exp\":1786770866,\"sid\":\"SEAL-4aef2edeb8e34417\",\"act_v\":1},\"session_bridge\":{\"status\":\"bound\",\"act_sid\":\"SEAL-4aef2edeb8e34417\",\"birth_sid\":\"SEAL-4aef2edeb8e34417\"},\"temporal_root\":{},\"work_contract\":{\"contract\":{\"task_id\":\"task-7576f230727142cc\",\"session_id\":\"SEAL-4aef2edeb8e34417\",\"objective\":\"KRT-JOHOR-2026-08-15 kernel E2E reality test \u2014 Johor water/power/AI six-scale ladder\",\"success_criteria\":[],\"budgets\":{\"reasoning\":{\"max_cycles\":8,\"max_model_calls\":6,\"max_elapsed_seconds\":180},\"tools\":{\"max_calls_total\":20,\"max_calls_per_tool\":6,\"max_failed_calls\":3},\"coordination\":{\"max_delegations\":3,\"max_depth\":2},\"cost\":{\"max_usd\":1.5}},\"verification\":{\"required\":true,\"criteria\":[]},\"autonomy_band\":\"ORANGE\",\"termination\":{\"confidence_target\":0.85,\"minimum_uncertainty_reduction\":0.05,\"stop_on_repeated_evidence\":true}},\"event_id\":\"evt-c6a89e6d55dd46b7a138bc5c4dfb2b3a\"},\"reasons\":[],\"actor\":\"arif-fazil\",\"effective_verdict\":\"HOLD\",\"reason_code\":\"DEPLOYMENT_DRIFT\",\"next_action\":\"RECONCILE_SOURCE_BUILT_DEPLOYED\"},\"meta\":{\"authority_mode\":\"SOVEREIGN\",\"ditempa\":{\"motto\":\"DITEMPA, BUKAN DIBERI\",\"state_emoji\":\"\ud83d\udd25\",\"mode_emoji\":\"\ud83d\udd25\",\"signature\":\"sha256:ea658f4aa2431d49\",\"signed_at\":1786742066.1524525,\"anchor\":\"constitutional_init_v1\"},\"actor_id\":\"arif-fazil\",\"session_notice\":{\"id\":\"sn-d89098df1a81\",\"source_node\":\"arif_init\",\"timestamp\":\"2026-08-14T21:14:26.274429+00:00\",\"severity\":\"GREEN\",\"session_state\":\"OBSERVE_ONLY\",\"action_verdict\":\"\",\"tool_name\":\"arif_init\",\"message\":\"Session scope restricted to OBSERVE_ONLY. Action scope=APPROVED. Not a failure \u2014 informational notice only.\",\"tags\":[\"ws8:session_restriction_only\"]}},\"delta_S\":null,\"timestamp\":\"2026-08-14T21:14:26.274726+00:00\",\"call_hash\":\"sha256:95268b7fe8c7e04fc6ab6dc16e7e5a1442111a62b3ad7ab90ec9c2714b1c830c\",\"trace_id\":\"trc-db54dbbce824\",\"called_from_kernel\":true,\"invocation_count\":0,\"session_id\":\"SEAL-4aef2edeb8e34417\",\"actor_id\":\"arif-fazil\",\"output_policy\":\"DOMAIN_SEAL\",\"status_scope\":\"execution\",\"nine_signal\":{\"overall\":{\"state\":\"RETAK\",\"en\":\"HOLDING\",\"reason\":\"deployment_drift\"},\"delta\":{\"plane\":\"machine_physical_state\",\"state\":\"KUKUH\",\"en\":\"SOLID\",\"domain_meaning\":\"Tool surface registered, schema valid, constitutional floors active\"},\"psi\":{\"plane\":\"governance_integrity\",\"state\":\"AMANAH\",\"en\":\"TRUSTED\",\"domain_meaning\":\"Floors respected, authority boundary declared, evidence not overstated\"},\"omega\":{\"plane\":\"intelligence_discipline\",\"state\":\"BIJAKSANA\",\"en\":\"WISE\",\"domain_meaning\":\"Reasoning constrained, humble, evidence-aware, consequence-aware\"}},\"reasons\":[\"Reversible operation verified\",\"Constitutional floors passed\",\"No irreversible state change\"],\"affordance_ref\":\"arifos://tools/affordance/arif_init\",\"affordance_contract\":{\"action_class\":\"OBSERVE\",\"mutation\":false,\"external_side_effect\":false,\"irreversible\":false,\"requires_session\":true,\"requires_lease\":false,\"requires_human_ack\":false,\"expected_blast_radius\":\"LOW\",\"output_is_evidence\":true,\"output_is_approval\":false,\"safe_autonomous_use\":true,\"known\":true},\"stage_progression\":{\"current_stage\":\"000\",\"next_stage\":\"111\",\"next_tool\":null,\"next_prompt\":null},\"actor\":{\"sovereign_id\":\"ARIF_FAZIL\",\"delegation_mode\":\"internal_executor\",\"principal_agent_separation\":false,\"authority_state\":{\"identity\":{\"claimed_actor_id\":\"ARIF\",\"sovereign_identity\":\"ARIF_FAZIL\",\"claim_recognized\":true,\"cryptographically_verified\":true,\"verification_method\":\"system_exempt\",\"verification_reason\":\"identity_claim_accepted\"},\"constitutional_role\":{\"role\":\"SOVEREIGN\",\"source\":\"identity_registry\"},\"runtime_grant\":{\"level\":\"LIMITED_MUTATE\",\"source\":\"session_capability_token\",\"allowed_verbs\":[\"arif_init\",\"arif_observe\",\"arif_think\",\"arif_route\",\"arif_memory\",\"arif_judge\",\"arif_forge\",\"arif_seal\",\"arif_stage\"],\"mutation_allowed\":true,\"seal_allowed\":false,\"expires_at\":\"\"},\"session\":{\"bound\":true,\"session_id\":\"SEAL-4aef2edeb8e34417\",\"actor_bound\":true},\"effective_action_authority\":{\"authorized\":true,\"reason_code\":\"authorized\"}},\"authority_level\":\"SOVEREIGN\"},\"facts\":[\"Session bound (deterministic identity bind)\"],\"inferences\":[{\"type\":\"session_create\",\"actor\":\"arif-fazil\"}],\"recommendations\":[],\"unknowns\":[],\"do_not_conclude\":[],\"confidence\":\"N/A \u2014 deterministic\",\"metacognition\":{\"confidence\":\"N/A \u2014 deterministic operation\",\"confidence_band\":\"DETERMINISTIC\",\"band_note\":\"Session bind is DETERMINISTIC, not probabilistic. Confidence scalar N/A.\",\"uncertainty_reason\":\"No major unknowns declared\",\"evidence_strength\":\"high\",\"assumptions\":[],\"failure_modes\":[\"Outdated data\",\"Ambiguous input\",\"Missing domain evidence\"],\"why_this_tool\":\"Bootstrap a constitutionally bound session and establish actor identity. Must be the first call in any agentic workflow. Returns session_id, authority level, surface pointers, and initial invariants. NOW BINDS THE ONE SKILL (restraint_flags) AND ONE TOOL (verdict_geometry + requires_verdict_loop).\",\"what_not_to_conclude\":[],\"reasoning_state\":\"DETERMINISTIC\",\"next_safe_action\":\"Proceed to arif_observe or arif_think with this session.\"},\"constitutional_check\":{\"floor_passed\":null,\"_floor_measurement\":\"unmeasured\",\"hold_required\":false,\"hold_reason\":null,\"failed_floors\":[],\"substrate_state\":\"DEGRADED\",\"session_state\":\"LIMITED_MUTATE\",\"agency_level\":\"SOVEREIGN\",\"observe_class_exempt\":true,\"_derivation\":\"attach_effective_verdict:last_writer\",\"_stab_fix\":\"2026-08-07-P0-dual-truth\"},\"next_safe_action\":{\"action\":\"Proceed to arif_observe or arif_think with this session.\",\"tool\":null,\"reason\":\"Derived from result\"},\"risk\":{\"blast_radius\":\"low\",\"reversibility\":\"reversible\",\"human_confirmation_required\":false,\"agency_level\":\"SOVEREIGN\"},\"effective_verdict\":\"SABAR\",\"reason_code\":\"PARTIAL_PROCEED\",\"next_action\":\"PROCEED_CAUTIOUSLY\",\"response_prefix\":\"\u26a0\ufe0f DRIFT DETECTED \u2014 substrate DEGRADED. mutation_allowed=false. Headline cannot be SEAL/SAFE. \",\"_drift_floor_applied\":true,\"session_token\":\"act_v1.eyJhY3RfdiI6MSwiYWN0b3IiOiJhcmlmIiwiYWxsb3dlZCI6WyJhcmlmX2luaXQiLCJhcmlmX29ic2VydmUiLCJhcmlmX3RoaW5rIiwiYXJpZl9yb3V0ZSIsImFyaWZfbWVtb3J5IiwiYXJpZl9qdWRnZSIsImFyaWZfZm9yZ2UiLCJhcmlmX3NlYWwiLCJhcmlmX3N0YWdlIl0sImFwZXgiOnsiQ19kYXJrIjowLjE5NTMsIkciOjAuNDU4MiwiVzMiOiJVTk1FQVNVUkVEIiwiaCI6MC45MTE1fSwiYXV0aCI6IkxJTUlURURfTVVUQVRFIiwiYXYiOnRydWUsImV4cCI6MTc4Njc3MDg2NiwiaWF0IjoxNzg2NzQyMDY2LCJraWQiOiJkZWZhdWx0IiwibGFuZSI6IkFHSSIsIm5iZiI6MTc4Njc0MjA2Niwic2lkIjoiU0VBTC00YWVmMmVkZWI4ZTM0NDE3Iiwic3RhZ2UiOiIwMDAiLCJ0dGwiOjI4ODAwLCJ2ZXJkaWN0Ijp7ImRvbWluYW50X3JlYXNvbiI6bnVsbCwic3RhdGUiOiJTQUJBUi5ERUdSQURFRCJ9LCJ3aXRuZXNzIjp7ImFjdGl2ZSI6MSwiZGl2ZXJzaXR5IjoiUEFSVElBTCJ9fQ.e7ca72b06a8a3410\",\"software_release\":{\"release_id\":\"arifos-5806f0b68993\",\"source_commit\":\"5806f0b68993b4f024eb6afb4341ea4d2b73fa10\",\"built_commit\":\"d5484f66ec29a2fbffdbe3f8b39ef34c5bf37abe\",\"deployed_commit\":\"5806f0b68993b4f024eb6afb4341ea4d2b73fa10\",\"drift\":true,\"wheel_hash\":\"sha256:e82d37b91698017903a3d5cd79ac9d0b81216b620640439d4ce518db4bc17f04\",\"runtime_manifest_hash\":\"sha256:d048c08d4f868383239781ed39c7029ad2b94032f4ab2879edec55024195703c\",\"surface_hash\":\"sha256:6295a69b2fb7444ce7b75594606c564e07369346cb23b47fbe6ddceb61ff6290\",\"service_pid\":2096641,\"service_started_at\":\"2026-08-14T20:43:14.778045+00:00\",\"critical_module_hash_count\":16,\"payload_mode\":\"compact\"},\"substrate\":{\"state\":\"DEGRADED\",\"drift\":true,\"source\":\"runtime_attestation_injected\"},\"degraded\":[\"kernel_drift\"],\"mutation_allowed\":false,\"seal_allowed\":false,\"_nine_signal_compliant\":true,\"_violations\":[],\"philosophical_anchor\":{\"quote_id\":\"INIT_Q_001\",\"text\":\"A journey of a thousand miles begins with a single step.\",\"author\":\"Lao Tzu, Tao Te Ching, Chapter 64\",\"source\":\"quote_registry_v2\",\"zone\":\"Tool-Specific\",\"zone_id\":\"ZT00\",\"atlas_mode\":\"tool_specific\",\"source_status\":\"VERIFIED\",\"symbolic_tags\":[\"discipline\",\"beginning\",\"structured_action\"],\"dimension_scores\":{},\"match_score\":0.3},\"standing\":{\"session_id\":\"SEAL-4aef2edeb8e34417\",\"actor\":{\"claimed_id\":\"arif-fazil\",\"canonical_id\":\"arif\",\"verified\":true,\"verification_method\":\"system_exempt\",\"evidence_ref\":\"key://sha256:c843960f8c85d625bd0e8dc563beba331b4cfe6d0c08f71c2e6da80eb58b8c6a\"},\"authority\":{\"band\":\"SOVEREIGN\",\"mutation_allowed\":false,\"seal_allowed\":false},\"issued_at\":\"2026-08-14T21:14:25.959357+00:00\",\"expires_at\":\"2026-08-15T21:14:26.122422+00:00\",\"state_version\":1},\"execution_state\":\"COMPLETED\",\"_epistemic\":{\"output_class\":\"DETERMINISTIC\",\"ai_involvement\":\"NONE\",\"authority_claim\":\"EXECUTIVE\",\"evidence_source\":\"COMPUTED\",\"degraded_reason\":null,\"tagged_by\":\"arifOS\",\"tagged_at\":\"2026-08-14T21:14:26.297936+00:00\",\"schema_version\":\"1.0.0\"},\"schema_version\":\"2.0.0\",\"capability_id\":\"session.bind\",\"implementation_tool\":\"arif_init\",\"authority_scope\":\"OBSERVE_ONLY\",\"receipt_state\":\"UNSEALED\",\"can_continue_observing\":true,\"can_mutate\":false,\"can_claim_success\":true,\"warnings\":[],\"evidence_refs\":[],\"recommended_next\":[]}"
+    }
+   ],
+   "structuredContent": {
+    "status": "completed",
+    "tool": "arif_init",
+    "verdicts": {
+     "substrate": {
+      "issuer": "arifos_conformance",
+      "evidence_reference": "deployment_drift"
+     },
+     "session": {
+      "issuer": "session_capability_token",
+      "evidence_reference": "actor_verified=True"
+     },
+     "action": {
+      "evidence_reference": "canonical_verdict=SEAL",
+      "reason": "deployment_drift_floor"
+     },
+     "receipt": {
+      "state": "SEALED",
+      "issuer": "vault999",
+      "evidence_reference": ""
+     }
+    },
+    "result": {
+     "effective_state": {
+      "actor_verified": true,
+      "authority_band": "OBSERVE_ONLY",
+      "mutation_allowed": false,
+      "seal_allowed": false,
+      "substrate_state": "DEGRADED",
+      "derived_from": "session_capability_token_v1",
+      "computed_at": "2026-08-14T21:14:26Z"
+     },
+     "session_id": "SEAL-4aef2edeb8e34417",
+     "actor_id": "arif-fazil",
+     "actor_claimed": true,
+     "actor_canonicalized": true,
+     "actor_bound": true,
+     "actor_cryptographically_verified": false,
+     "authority_band": "LIMITED_MUTATE",
+     "init_mode": "light",
+     "session_mode": "persistent_bound",
+     "authority_scope": "SOVEREIGN",
+     "kernel_epoch": "2026-07-03",
+     "software_release": {
+      "release_id": "arifos-5806f0b68993",
+      "source_commit": "5806f0b68993b4f024eb6afb4341ea4d2b73fa10",
+      "built_commit": "d5484f66ec29a2fbffdbe3f8b39ef34c5bf37abe",
+      "deployed_commit": "5806f0b68993b4f024eb6afb4341ea4d2b73fa10",
+      "drift": true,
+      "wheel_hash": "sha256:e82d37b91698017903a3d5cd79ac9d0b81216b620640439d4ce518db4bc17f04",
+      "runtime_manifest_hash": "sha256:d048c08d4f868383239781ed39c7029ad2b94032f4ab2879edec55024195703c",
+      "surface_hash": "sha256:6295a69b2fb7444ce7b75594606c564e07369346cb23b47fbe6ddceb61ff6290",
+      "service_pid": 2096641,
+      "service_started_at": "2026-08-14T20:43:14.778045+00:00",
+      "critical_module_hash_count": 16,
+      "payload_mode": "compact",
+      "_freshness_warning": "built_commit in this token is from install time and may be stale. Check live /health endpoint for current runtime attestation."
+     },
+     "substrate": {
+      "state": "DEGRADED",
+      "drift": true
+     },
+     "allowed_next_verbs": [
+      "arif_observe",
+      "arif_think",
+      "arif_route",
+      "arif_judge",
+      "arif_forge",
+      "arif_seal"
+     ],
+     "action_class": "OBSERVE",
+     "constitution_hash": "arifos-constitution-v2026.05.05-SSCT",
+     "detail_ref": "arifos://constitution/arifos-constitution-v2026.05.05-SSCT",
+     "next_tool": "arif_observe",
+     "degraded": [
+      "kernel_drift"
+     ],
+     "next_safe_action": "address degraded items",
+     "session_birth": {
+      "session_id": "SEAL-4aef2edeb8e34417",
+      "actor_id": "ARIF",
+      "actor_verified": true,
+      "actor_cryptographically_verified": false,
+      "authority_mode": "SOVEREIGN",
+      "stage": "000",
+      "lane": "AGI",
+      "verdict": "LIMITED_MUTATE",
+      "mutation_allowed": false,
+      "seal_allowed": false,
+      "substrate_state": "DEGRADED",
+      "authority_source": "identity_band"
+     },
+     "vps_snapshot": {
+      "timestamp": "2026-08-14T21:14:26.057092+00:00",
+      "hostname": "forge",
+      "load_1m": 6.17,
+      "mem_used_pct": 51.1,
+      "disk_used_pct": 72.9,
+      "organ_shas": {
+       "arifos": "d5484f6",
+       "aforge": "098941b",
+       "aaa": "ca654bd",
+       "geox": "86ccecd",
+       "wealth": "af808fd",
+       "well": "a7a7d6e"
+      },
+      "snapshot_hash": "7b8e9e52dae5c221"
+     },
+     "session_token": "act_v1.eyJhY3RfdiI6MSwiYWN0b3IiOiJhcmlmIiwiYWxsb3dlZCI6WyJhcmlmX2luaXQiLCJhcmlmX29ic2VydmUiLCJhcmlmX3RoaW5rIiwiYXJpZl9yb3V0ZSIsImFyaWZfbWVtb3J5IiwiYXJpZl9qdWRnZSIsImFyaWZfZm9yZ2UiLCJhcmlmX3NlYWwiLCJhcmlmX3N0YWdlIl0sImFwZXgiOnsiQ19kYXJrIjowLjE5NTMsIkciOjAuNDU4MiwiVzMiOiJVTk1FQVNVUkVEIiwiaCI6MC45MTE1fSwiYXV0aCI6IkxJTUlURURfTVVUQVRFIiwiYXYiOnRydWUsImV4cCI6MTc4Njc3MDg2NiwiaWF0IjoxNzg2NzQyMDY2LCJraWQiOiJkZWZhdWx0IiwibGFuZSI6IkFHSSIsIm5iZiI6MTc4Njc0MjA2Niwic2lkIjoiU0VBTC00YWVmMmVkZWI4ZTM0NDE3Iiwic3RhZ2UiOiIwMDAiLCJ0dGwiOjI4ODAwLCJ2ZXJkaWN0Ijp7ImRvbWluYW50X3JlYXNvbiI6bnVsbCwic3RhdGUiOiJTQUJBUi5ERUdSQURFRCJ9LCJ3aXRuZXNzIjp7ImFjdGl2ZSI6MSwiZGl2ZXJzaXR5IjoiUEFSVElBTCJ9fQ.e7ca72b06a8a3410",
+     "apex_scalars": {
+      "G": 0.4582,
+      "C_dark": 0.1953,
+      "W3": null,
+      "h": 0.9115
+     },
+     "kernel_baseline": {
+      "G": 0.5027,
+      "C_dark": 0.1206,
+      "W3": null,
+      "h": 0.7771,
+      "sample_size": 13842,
+      "window_seconds": 604800,
+      "note": "Federation-wide reference. Not this session's score."
+     },
+     "standing_source": "act",
+     "act_claims": {
+      "auth": "LIMITED_MUTATE",
+      "av": true,
+      "exp": 1786770866,
+      "sid": "SEAL-4aef2edeb8e34417",
+      "act_v": 1
+     },
+     "session_bridge": {
+      "status": "bound",
+      "act_sid": "SEAL-4aef2edeb8e34417",
+      "birth_sid": "SEAL-4aef2edeb8e34417"
+     },
+     "temporal_root": {},
+     "work_contract": {
+      "contract": {
+       "task_id": "task-7576f230727142cc",
+       "session_id": "SEAL-4aef2edeb8e34417",
+       "objective": "KRT-JOHOR-2026-08-15 kernel E2E reality test \u2014 Johor water/power/AI six-scale ladder",
+       "success_criteria": [],
+       "budgets": {
+        "reasoning": {
+         "max_cycles": 8,
+         "max_model_calls": 6,
+         "max_elapsed_seconds": 180
+        },
+        "tools": {
+         "max_calls_total": 20,
+         "max_calls_per_tool": 6,
+         "max_failed_calls": 3
+        },
+        "coordination": {
+         "max_delegations": 3,
+         "max_depth": 2
+        },
+        "cost": {
+         "max_usd": 1.5
+        }
+       },
+       "verification": {
+        "required": true,
+        "criteria": []
+       },
+       "autonomy_band": "ORANGE",
+       "termination": {
+        "confidence_target": 0.85,
+        "minimum_uncertainty_reduction": 0.05,
+        "stop_on_repeated_evidence": true
+       }
+      },
+      "event_id": "evt-c6a89e6d55dd46b7a138bc5c4dfb2b3a"
+     },
+     "reasons": [],
+     "actor": "arif-fazil",
+     "next_action": "RECONCILE_SOURCE_BUILT_DEPLOYED"
+    },
+    "meta": {
+     "ditempa": {
+      "motto": "DITEMPA, BUKAN DIBERI",
+      "state_emoji": "\ud83d\udd25",
+      "mode_emoji": "\ud83d\udd25",
+      "signature": "sha256:ea658f4aa2431d49",
+      "signed_at": 1786742066.1524525,
+      "anchor": "constitutional_init_v1"
+     },
+     "actor_id": "arif-fazil",
+     "session_notice": {
+      "id": "sn-d89098df1a81",
+      "source_node": "arif_init",
+      "timestamp": "2026-08-14T21:14:26.274429+00:00",
+      "severity": "GREEN",
+      "session_state": "OBSERVE_ONLY",
+      "action_verdict": "",
+      "tool_name": "arif_init",
+      "message": "Session scope restricted to OBSERVE_ONLY. Action scope=APPROVED. Not a failure \u2014 informational notice only.",
+      "tags": [
+       "ws8:session_restriction_only"
+      ]
+     }
+    },
+    "delta_S": null,
+    "timestamp": "2026-08-14T21:14:26.274726+00:00",
+    "call_hash": "sha256:95268b7fe8c7e04fc6ab6dc16e7e5a1442111a62b3ad7ab90ec9c2714b1c830c",
+    "trace_id": "trc-db54dbbce824",
+    "called_from_kernel": true,
+    "invocation_count": 0,
+    "session_id": "SEAL-4aef2edeb8e34417",
+    "actor_id": "arif-fazil",
+    "nine_signal": {
+     "overall": {
+      "reason": "deployment_drift"
+     },
+     "delta": {
+      "plane": "machine_physical_state",
+      "state": "KUKUH",
+      "en": "SOLID",
+      "domain_meaning": "Tool surface registered, schema valid, constitutional floors active"
+     },
+     "psi": {
+      "plane": "governance_integrity",
+      "state": "AMANAH",
+      "en": "TRUSTED",
+      "domain_meaning": "Floors respected, authority boundary declared, evidence not overstated"
+     },
+     "omega": {
+      "plane": "intelligence_discipline",
+      "state": "BIJAKSANA",
+      "en": "WISE",
+      "domain_meaning": "Reasoning constrained, humble, evidence-aware, consequence-aware"
+     }
+    },
+    "reasons": [
+     "Reversible operation verified",
+     "Constitutional floors passed",
+     "No irreversible state change"
+    ],
+    "affordance_ref": "arifos://tools/affordance/arif_init",
+    "affordance_contract": {
+     "external_side_effect": false,
+     "irreversible": false,
+     "requires_session": true,
+     "requires_lease": false,
+     "expected_blast_radius": "LOW",
+     "output_is_evidence": true,
+     "output_is_approval": false,
+     "safe_autonomous_use": true,
+     "known": true
+    },
+    "stage_progression": {
+     "current_stage": "000",
+     "next_stage": "111",
+     "next_tool": null,
+     "next_prompt": null
+    },
+    "actor": {
+     "sovereign_id": "ARIF_FAZIL",
+     "delegation_mode": "internal_executor",
+     "principal_agent_separation": false,
+     "authority_state": {
+      "identity": {
+       "claimed_actor_id": "ARIF",
+       "sovereign_identity": "ARIF_FAZIL",
+       "claim_recognized": true,
+       "cryptographically_verified": true,
+       "verification_method": "system_exempt",
+       "verification_reason": "identity_claim_accepted"
+      },
+      "constitutional_role": {
+       "role": "SOVEREIGN",
+       "source": "identity_registry"
+      },
+      "runtime_grant": {
+       "level": "LIMITED_MUTATE",
+       "source": "session_capability_token",
+       "allowed_verbs": [
+        "arif_init",
+        "arif_observe",
+        "arif_think",
+        "arif_route",
+        "arif_memory",
+        "arif_judge",
+        "arif_forge",
+        "arif_seal",
+        "arif_stage"
+       ],
+       "expires_at": ""
+      },
+      "session": {
+       "bound": true,
+       "session_id": "SEAL-4aef2edeb8e34417",
+       "actor_bound": true
+      },
+      "effective_action_authority": {
+       "authorized": true,
+       "reason_code": "authorized"
+      }
+     }
+    },
+    "facts": [
+     "Session bound (deterministic identity bind)"
+    ],
+    "inferences": [
+     {
+      "type": "session_create",
+      "actor": "arif-fazil"
+     }
+    ],
+    "recommendations": [],
+    "unknowns": [],
+    "do_not_conclude": [],
+    "confidence": "N/A \u2014 deterministic",
+    "metacognition": {
+     "confidence": "N/A \u2014 deterministic operation",
+     "confidence_band": "DETERMINISTIC",
+     "band_note": "Session bind is DETERMINISTIC, not probabilistic. Confidence scalar N/A.",
+     "uncertainty_reason": "No major unknowns declared",
+     "evidence_strength": "high",
+     "assumptions": [],
+     "failure_modes": [
+      "Outdated data",
+      "Ambiguous input",
+      "Missing domain evidence"
+     ],
+     "why_this_tool": "Bootstrap a constitutionally bound session and establish actor identity. Must be the first call in any agentic workflow. Returns session_id, authority level, surface pointers, and initial invariants. NOW BINDS THE ONE SKILL (restraint_flags) AND ONE TOOL (verdict_geometry + requires_verdict_loop).",
+     "what_not_to_conclude": [],
+     "reasoning_state": "DETERMINISTIC",
+     "next_safe_action": "Proceed to arif_observe or arif_think with this session."
+    },
+    "constitutional_check": {
+     "floor_passed": null,
+     "_floor_measurement": "unmeasured",
+     "hold_reason": null,
+     "failed_floors": [],
+     "substrate_state": "DEGRADED",
+     "session_state": "LIMITED_MUTATE",
+     "observe_class_exempt": true,
+     "_derivation": "attach_effective_verdict:last_writer",
+     "_stab_fix": "2026-08-07-P0-dual-truth"
+    },
+    "next_safe_action": {
+     "action": "Proceed to arif_observe or arif_think with this session.",
+     "tool": null,
+     "reason": "Derived from result"
+    },
+    "risk": {
+     "blast_radius": "low",
+     "reversibility": "reversible"
+    },
+    "session_token": "act_v1.eyJhY3RfdiI6MSwiYWN0b3IiOiJhcmlmIiwiYWxsb3dlZCI6WyJhcmlmX2luaXQiLCJhcmlmX29ic2VydmUiLCJhcmlmX3RoaW5rIiwiYXJpZl9yb3V0ZSIsImFyaWZfbWVtb3J5IiwiYXJpZl9qdWRnZSIsImFyaWZfZm9yZ2UiLCJhcmlmX3NlYWwiLCJhcmlmX3N0YWdlIl0sImFwZXgiOnsiQ19kYXJrIjowLjE5NTMsIkciOjAuNDU4MiwiVzMiOiJVTk1FQVNVUkVEIiwiaCI6MC45MTE1fSwiYXV0aCI6IkxJTUlURURfTVVUQVRFIiwiYXYiOnRydWUsImV4cCI6MTc4Njc3MDg2NiwiaWF0IjoxNzg2NzQyMDY2LCJraWQiOiJkZWZhdWx0IiwibGFuZSI6IkFHSSIsIm5iZiI6MTc4Njc0MjA2Niwic2lkIjoiU0VBTC00YWVmMmVkZWI4ZTM0NDE3Iiwic3RhZ2UiOiIwMDAiLCJ0dGwiOjI4ODAwLCJ2ZXJkaWN0Ijp7ImRvbWluYW50X3JlYXNvbiI6bnVsbCwic3RhdGUiOiJTQUJBUi5ERUdSQURFRCJ9LCJ3aXRuZXNzIjp7ImFjdGl2ZSI6MSwiZGl2ZXJzaXR5IjoiUEFSVElBTCJ9fQ.e7ca72b06a8a3410",
+    "software_release": {
+     "release_id": "arifos-5806f0b68993",
+     "source_commit": "5806f0b68993b4f024eb6afb4341ea4d2b73fa10",
+     "built_commit": "d5484f66ec29a2fbffdbe3f8b39ef34c5bf37abe",
+     "deployed_commit": "5806f0b68993b4f024eb6afb4341ea4d2b73fa10",
+     "drift": true,
+     "wheel_hash": "sha256:e82d37b91698017903a3d5cd79ac9d0b81216b620640439d4ce518db4bc17f04",
+     "runtime_manifest_hash": "sha256:d048c08d4f868383239781ed39c7029ad2b94032f4ab2879edec55024195703c",
+     "surface_hash": "sha256:6295a69b2fb7444ce7b75594606c564e07369346cb23b47fbe6ddceb61ff6290",
+     "service_pid": 2096641,
+     "service_started_at": "2026-08-14T20:43:14.778045+00:00",
+     "critical_module_hash_count": 16,
+     "payload_mode": "compact"
+    },
+    "substrate": {
+     "source": "runtime_attestation_injected"
+    },
+    "philosophical_anchor": {
+     "quote_id": "INIT_Q_001",
+     "text": "A journey of a thousand miles begins with a single step.",
+     "author": "Lao Tzu, Tao Te Ching, Chapter 64",
+     "source": "quote_registry_v2",
+     "zone": "Tool-Specific",
+     "zone_id": "ZT00",
+     "atlas_mode": "tool_specific",
+     "source_status": "VERIFIED",
+     "symbolic_tags": [
+      "discipline",
+      "beginning",
+      "structured_action"
+     ],
+     "dimension_scores": {},
+     "match_score": 0.3
+    },
+    "standing": {
+     "session_id": "SEAL-4aef2edeb8e34417",
+     "actor": {
+      "claimed_id": "arif-fazil",
+      "canonical_id": "arif",
+      "verification_method": "system_exempt",
+      "evidence_ref": "key://sha256:c843960f8c85d625bd0e8dc563beba331b4cfe6d0c08f71c2e6da80eb58b8c6a"
+     },
+     "authority": {},
+     "issued_at": "2026-08-14T21:14:25.959357+00:00",
+     "expires_at": "2026-08-15T21:14:26.122422+00:00",
+     "state_version": 1
+    },
+    "_epistemic": {
+     "output_class": "DETERMINISTIC",
+     "ai_involvement": "NONE",
+     "authority_claim": "EXECUTIVE",
+     "evidence_source": "COMPUTED",
+     "degraded_reason": null,
+     "tagged_by": "arifOS",
+     "tagged_at": "2026-08-14T21:14:26.297936+00:00",
+     "schema_version": "1.0.0"
+    },
+    "schema_version": "2.0.0",
+    "capability_id": "session.bind",
+    "implementation_tool": "arif_init",
+    "evidence_refs": [],
+    "recommended_next": [],
+    "authority": {
+     "verdict": "HOLD",
+     "may_mutate": false,
+     "may_seal": false,
+     "reason_code": "SUBSTRATE_DEGRADED",
+     "computed_from": {
+      "substrate": "DEGRADED",
+      "actor_verified": true,
+      "drift": true
+     },
+     "writer": "AuthorityMiddleware.compute"
+    }
+   },
+   "isError": false
+  }
+ },
+ "parsed": {
+  "status": "completed",
+  "tool": "arif_init",
+  "verdicts": {
+   "substrate": {
+    "state": "DEGRADED",
+    "issuer": "arifos_conformance",
+    "evidence_reference": "deployment_drift"
+   },
+   "session": {
+    "state": "LIMITED_MUTATE",
+    "issuer": "session_capability_token",
+    "evidence_reference": "actor_verified=True"
+   },
+   "action": {
+    "state": "HOLD",
+    "issuer": "effective_decision",
+    "evidence_reference": "canonical_verdict=SEAL",
+    "reason": "deployment_drift_floor"
+   },
+   "receipt": {
+    "state": "SEALED",
+    "issuer": "vault999",
+    "evidence_reference": ""
+   }
+  },
+  "result": {
+   "effective_state": {
+    "actor_verified": true,
+    "authority_band": "OBSERVE_ONLY",
+    "mutation_allowed": false,
+    "seal_allowed": false,
+    "substrate_state": "DEGRADED",
+    "derived_from": "session_capability_token_v1",
+    "computed_at": "2026-08-14T21:14:26Z"
+   },
+   "session_id": "SEAL-4aef2edeb8e34417",
+   "actor_id": "arif-fazil",
+   "actor_claimed": true,
+   "actor_canonicalized": true,
+   "actor_bound": true,
+   "actor_cryptographically_verified": false,
+   "authority_band": "LIMITED_MUTATE",
+   "mutation_allowed": false,
+   "seal_allowed": false,
+   "init_mode": "light",
+   "session_mode": "persistent_bound",
+   "authority_scope": "SOVEREIGN",
+   "kernel_epoch": "2026-07-03",
+   "software_release": {
+    "release_id": "arifos-5806f0b68993",
+    "source_commit": "5806f0b68993b4f024eb6afb4341ea4d2b73fa10",
+    "built_commit": "d5484f66ec29a2fbffdbe3f8b39ef34c5bf37abe",
+    "deployed_commit": "5806f0b68993b4f024eb6afb4341ea4d2b73fa10",
+    "drift": true,
+    "wheel_hash": "sha256:e82d37b91698017903a3d5cd79ac9d0b81216b620640439d4ce518db4bc17f04",
+    "runtime_manifest_hash": "sha256:d048c08d4f868383239781ed39c7029ad2b94032f4ab2879edec55024195703c",
+    "surface_hash": "sha256:6295a69b2fb7444ce7b75594606c564e07369346cb23b47fbe6ddceb61ff6290",
+    "service_pid": 2096641,
+    "service_started_at": "2026-08-14T20:43:14.778045+00:00",
+    "critical_module_hash_count": 16,
+    "payload_mode": "compact",
+    "_freshness_warning": "built_commit in this token is from install time and may be stale. Check live /health endpoint for current runtime attestation."
+   },
+   "substrate": {
+    "state": "DEGRADED",
+    "drift": true
+   },
+   "allowed_next_verbs": [
+    "arif_observe",
+    "arif_think",
+    "arif_route",
+    "arif_judge",
+    "arif_forge",
+    "arif_seal"
+   ],
+   "action_class": "OBSERVE",
+   "constitution_hash": "arifos-constitution-v2026.05.05-SSCT",
+   "detail_ref": "arifos://constitution/arifos-constitution-v2026.05.05-SSCT",
+   "next_tool": "arif_observe",
+   "degraded": [
+    "kernel_drift"
+   ],
+   "next_safe_action": "address degraded items",
+   "session_birth": {
+    "session_id": "SEAL-4aef2edeb8e34417",
+    "actor_id": "ARIF",
+    "actor_verified": true,
+    "actor_cryptographically_verified": false,
+    "authority_mode": "SOVEREIGN",
+    "stage": "000",
+    "lane": "AGI",
+    "verdict": "LIMITED_MUTATE",
+    "mutation_allowed": false,
+    "seal_allowed": false,
+    "substrate_state": "DEGRADED",
+    "authority_source": "identity_band"
+   },
+   "vps_snapshot": {
+    "timestamp": "2026-08-14T21:14:26.057092+00:00",
+    "hostname": "forge",
+    "load_1m": 6.17,
+    "mem_used_pct": 51.1,
+    "disk_used_pct": 72.9,
+    "organ_shas": {
+     "arifos": "d5484f6",
+     "aforge": "098941b",
+     "aaa": "ca654bd",
+     "geox": "86ccecd",
+     "wealth": "af808fd",
+     "well": "a7a7d6e"
+    },
+    "snapshot_hash": "7b8e9e52dae5c221"
+   },
+   "session_token": "act_v1.eyJhY3RfdiI6MSwiYWN0b3IiOiJhcmlmIiwiYWxsb3dlZCI6WyJhcmlmX2luaXQiLCJhcmlmX29ic2VydmUiLCJhcmlmX3RoaW5rIiwiYXJpZl9yb3V0ZSIsImFyaWZfbWVtb3J5IiwiYXJpZl9qdWRnZSIsImFyaWZfZm9yZ2UiLCJhcmlmX3NlYWwiLCJhcmlmX3N0YWdlIl0sImFwZXgiOnsiQ19kYXJrIjowLjE5NTMsIkciOjAuNDU4MiwiVzMiOiJVTk1FQVNVUkVEIiwiaCI6MC45MTE1fSwiYXV0aCI6IkxJTUlURURfTVVUQVRFIiwiYXYiOnRydWUsImV4cCI6MTc4Njc3MDg2NiwiaWF0IjoxNzg2NzQyMDY2LCJraWQiOiJkZWZhdWx0IiwibGFuZSI6IkFHSSIsIm5iZiI6MTc4Njc0MjA2Niwic2lkIjoiU0VBTC00YWVmMmVkZWI4ZTM0NDE3Iiwic3RhZ2UiOiIwMDAiLCJ0dGwiOjI4ODAwLCJ2ZXJkaWN0Ijp7ImRvbWluYW50X3JlYXNvbiI6bnVsbCwic3RhdGUiOiJTQUJBUi5ERUdSQURFRCJ9LCJ3aXRuZXNzIjp7ImFjdGl2ZSI6MSwiZGl2ZXJzaXR5IjoiUEFSVElBTCJ9fQ.e7ca72b06a8a3410",
+   "apex_scalars": {
+    "G": 0.4582,
+    "C_dark": 0.1953,
+    "W3": null,
+    "h": 0.9115
+   },
+   "kernel_baseline": {
+    "G": 0.5027,
+    "C_dark": 0.1206,
+    "W3": null,
+    "h": 0.7771,
+    "sample_size": 13842,
+    "window_seconds": 604800,
+    "note": "Federation-wide reference. Not this session's score."
+   },
+   "standing_source": "act",
+   "act_claims": {
+    "auth": "LIMITED_MUTATE",
+    "av": true,
+    "exp": 1786770866,
+    "sid": "SEAL-4aef2edeb8e34417",
+    "act_v": 1
+   },
+   "session_bridge": {
+    "status": "bound",
+    "act_sid": "SEAL-4aef2edeb8e34417",
+    "birth_sid": "SEAL-4aef2edeb8e34417"
+   },
+   "temporal_root": {},
+   "work_contract": {
+    "contract": {
+     "task_id": "task-7576f230727142cc",
+     "session_id": "SEAL-4aef2edeb8e34417",
+     "objective": "KRT-JOHOR-2026-08-15 kernel E2E reality test \u2014 Johor water/power/AI six-scale ladder",
+     "success_criteria": [],
+     "budgets": {
+      "reasoning": {
+       "max_cycles": 8,
+       "max_model_calls": 6,
+       "max_elapsed_seconds": 180
+      },
+      "tools": {
+       "max_calls_total": 20,
+       "max_calls_per_tool": 6,
+       "max_failed_calls": 3
+      },
+      "coordination": {
+       "max_delegations": 3,
+       "max_depth": 2
+      },
+      "cost": {
+       "max_usd": 1.5
+      }
+     },
+     "verification": {
+      "required": true,
+      "criteria": []
+     },
+     "autonomy_band": "ORANGE",
+     "termination": {
+      "confidence_target": 0.85,
+      "minimum_uncertainty_reduction": 0.05,
+      "stop_on_repeated_evidence": true
+     }
+    },
+    "event_id": "evt-c6a89e6d55dd46b7a138bc5c4dfb2b3a"
+   },
+   "reasons": [],
+   "actor": "arif-fazil",
+   "effective_verdict": "HOLD",
+   "reason_code": "DEPLOYMENT_DRIFT",
+   "next_action": "RECONCILE_SOURCE_BUILT_DEPLOYED"
+  },
+  "meta": {
+   "authority_mode": "SOVEREIGN",
+   "ditempa": {
+    "motto": "DITEMPA, BUKAN DIBERI",
+    "state_emoji": "\ud83d\udd25",
+    "mode_emoji": "\ud83d\udd25",
+    "signature": "sha256:ea658f4aa2431d49",
+    "signed_at": 1786742066.1524525,
+    "anchor": "constitutional_init_v1"
+   },
+   "actor_id": "arif-fazil",
+   "session_notice": {
+    "id": "sn-d89098df1a81",
+    "source_node": "arif_init",
+    "timestamp": "2026-08-14T21:14:26.274429+00:00",
+    "severity": "GREEN",
+    "session_state": "OBSERVE_ONLY",
+    "action_verdict": "",
+    "tool_name": "arif_init",
+    "message": "Session scope restricted to OBSERVE_ONLY. Action scope=APPROVED. Not a failure \u2014 informational notice only.",
+    "tags": [
+     "ws8:session_restriction_only"
+    ]
+   }
+  },
+  "delta_S": null,
+  "timestamp": "2026-08-14T21:14:26.274726+00:00",
+  "call_hash": "sha256:95268b7fe8c7e04fc6ab6dc16e7e5a1442111a62b3ad7ab90ec9c2714b1c830c",
+  "trace_id": "trc-db54dbbce824",
+  "called_from_kernel": true,
+  "invocation_count": 0,
+  "session_id": "SEAL-4aef2edeb8e34417",
+  "actor_id": "arif-fazil",
+  "output_policy": "DOMAIN_SEAL",
+  "status_scope": "execution",
+  "nine_signal": {
+   "overall": {
+    "state": "RETAK",
+    "en": "HOLDING",
+    "reason": "deployment_drift"
+   },
+   "delta": {
+    "plane": "machine_physical_state",
+    "state": "KUKUH",
+    "en": "SOLID",
+    "domain_meaning": "Tool surface registered, schema valid, constitutional floors active"
+   },
+   "psi": {
+    "plane": "governance_integrity",
+    "state": "AMANAH",
+    "en": "TRUSTED",
+    "domain_meaning": "Floors respected, authority boundary declared, evidence not overstated"
+   },
+   "omega": {
+    "plane": "intelligence_discipline",
+    "state": "BIJAKSANA",
+    "en": "WISE",
+    "domain_meaning": "Reasoning constrained, humble, evidence-aware, consequence-aware"
+   }
+  },
+  "reasons": [
+   "Reversible operation verified",
+   "Constitutional floors passed",
+   "No irreversible state change"
+  ],
+  "affordance_ref": "arifos://tools/affordance/arif_init",
+  "affordance_contract": {
+   "action_class": "OBSERVE",
+   "mutation": false,
+   "external_side_effect": false,
+   "irreversible": false,
+   "requires_session": true,
+   "requires_lease": false,
+   "requires_human_ack": false,
+   "expected_blast_radius": "LOW",
+   "output_is_evidence": true,
+   "output_is_approval": false,
+   "safe_autonomous_use": true,
+   "known": true
+  },
+  "stage_progression": {
+   "current_stage": "000",
+   "next_stage": "111",
+   "next_tool": null,
+   "next_prompt": null
+  },
+  "actor": {
+   "sovereign_id": "ARIF_FAZIL",
+   "delegation_mode": "internal_executor",
+   "principal_agent_separation": false,
+   "authority_state": {
+    "identity": {
+     "claimed_actor_id": "ARIF",
+     "sovereign_identity": "ARIF_FAZIL",
+     "claim_recognized": true,
+     "cryptographically_verified": true,
+     "verification_method": "system_exempt",
+     "verification_reason": "identity_claim_accepted"
+    },
+    "constitutional_role": {
+     "role": "SOVEREIGN",
+     "source": "identity_registry"
+    },
+    "runtime_grant": {
+     "level": "LIMITED_MUTATE",
+     "source": "session_capability_token",
+     "allowed_verbs": [
+      "arif_init",
+      "arif_observe",
+      "arif_think",
+      "arif_route",
+      "arif_memory",
+      "arif_judge",
+      "arif_forge",
+      "arif_seal",
+      "arif_stage"
+     ],
+     "mutation_allowed": true,
+     "seal_allowed": false,
+     "expires_at": ""
+    },
+    "session": {
+     "bound": true,
+     "session_id": "SEAL-4aef2edeb8e34417",
+     "actor_bound": true
+    },
+    "effective_action_authority": {
+     "authorized": true,
+     "reason_code": "authorized"
+    }
+   },
+   "authority_level": "SOVEREIGN"
+  },
+  "facts": [
+   "Session bound (deterministic identity bind)"
+  ],
+  "inferences": [
+   {
+    "type": "session_create",
+    "actor": "arif-fazil"
+   }
+  ],
+  "recommendations": [],
+  "unknowns": [],
+  "do_not_conclude": [],
+  "confidence": "N/A \u2014 deterministic",
+  "metacognition": {
+   "confidence": "N/A \u2014 deterministic operation",
+   "confidence_band": "DETERMINISTIC",
+   "band_note": "Session bind is DETERMINISTIC, not probabilistic. Confidence scalar N/A.",
+   "uncertainty_reason": "No major unknowns declared",
+   "evidence_strength": "high",
+   "assumptions": [],
+   "failure_modes": [
+    "Outdated data",
+    "Ambiguous input",
+    "Missing domain evidence"
+   ],
+   "why_this_tool": "Bootstrap a constitutionally bound session and establish actor identity. Must be the first call in any agentic workflow. Returns session_id, authority level, surface pointers, and initial invariants. NOW BINDS THE ONE SKILL (restraint_flags) AND ONE TOOL (verdict_geometry + requires_verdict_loop).",
+   "what_not_to_conclude": [],
+   "reasoning_state": "DETERMINISTIC",
+   "next_safe_action": "Proceed to arif_observe or arif_think with this session."
+  },
+  "constitutional_check": {
+   "floor_passed": null,
+   "_floor_measurement": "unmeasured",
+   "hold_required": false,
+   "hold_reason": null,
+   "failed_floors": [],
+   "substrate_state": "DEGRADED",
+   "session_state": "LIMITED_MUTATE",
+   "agency_level": "SOVEREIGN",
+   "observe_class_exempt": true,
+   "_derivation": "attach_effective_verdict:last_writer",
+   "_stab_fix": "2026-08-07-P0-dual-truth"
+  },
+  "next_safe_action": {
+   "action": "Proceed to arif_observe or arif_think with this session.",
+   "tool": null,
+   "reason": "Derived from result"
+  },
+  "risk": {
+   "blast_radius": "low",
+   "reversibility": "reversible",
+   "human_confirmation_required": false,
+   "agency_level": "SOVEREIGN"
+  },
+  "effective_verdict": "SABAR",
+  "reason_code": "PARTIAL_PROCEED",
+  "next_action": "PROCEED_CAUTIOUSLY",
+  "response_prefix": "\u26a0\ufe0f DRIFT DETECTED \u2014 substrate DEGRADED. mutation_allowed=false. Headline cannot be SEAL/SAFE. ",
+  "_drift_floor_applied": true,
+  "session_token": "act_v1.eyJhY3RfdiI6MSwiYWN0b3IiOiJhcmlmIiwiYWxsb3dlZCI6WyJhcmlmX2luaXQiLCJhcmlmX29ic2VydmUiLCJhcmlmX3RoaW5rIiwiYXJpZl9yb3V0ZSIsImFyaWZfbWVtb3J5IiwiYXJpZl9qdWRnZSIsImFyaWZfZm9yZ2UiLCJhcmlmX3NlYWwiLCJhcmlmX3N0YWdlIl0sImFwZXgiOnsiQ19kYXJrIjowLjE5NTMsIkciOjAuNDU4MiwiVzMiOiJVTk1FQVNVUkVEIiwiaCI6MC45MTE1fSwiYXV0aCI6IkxJTUlURURfTVVUQVRFIiwiYXYiOnRydWUsImV4cCI6MTc4Njc3MDg2NiwiaWF0IjoxNzg2NzQyMDY2LCJraWQiOiJkZWZhdWx0IiwibGFuZSI6IkFHSSIsIm5iZiI6MTc4Njc0MjA2Niwic2lkIjoiU0VBTC00YWVmMmVkZWI4ZTM0NDE3Iiwic3RhZ2UiOiIwMDAiLCJ0dGwiOjI4ODAwLCJ2ZXJkaWN0Ijp7ImRvbWluYW50X3JlYXNvbiI6bnVsbCwic3RhdGUiOiJTQUJBUi5ERUdSQURFRCJ9LCJ3aXRuZXNzIjp7ImFjdGl2ZSI6MSwiZGl2ZXJzaXR5IjoiUEFSVElBTCJ9fQ.e7ca72b06a8a3410",
+  "software_release": {
+   "release_id": "arifos-5806f0b68993",
+   "source_commit": "5806f0b68993b4f024eb6afb4341ea4d2b73fa10",
+   "built_commit": "d5484f66ec29a2fbffdbe3f8b39ef34c5bf37abe",
+   "deployed_commit": "5806f0b68993b4f024eb6afb4341ea4d2b73fa10",
+   "drift": true,
+   "wheel_hash": "sha256:e82d37b91698017903a3d5cd79ac9d0b81216b620640439d4ce518db4bc17f04",
+   "runtime_manifest_hash": "sha256:d048c08d4f868383239781ed39c7029ad2b94032f4ab2879edec55024195703c",
+   "surface_hash": "sha256:6295a69b2fb7444ce7b75594606c564e07369346cb23b47fbe6ddceb61ff6290",
+   "service_pid": 2096641,
+   "service_started_at": "2026-08-14T20:43:14.778045+00:00",
+   "critical_module_hash_count": 16,
+   "payload_mode": "compact"
+  },
+  "substrate": {
+   "state": "DEGRADED",
+   "drift": true,
+   "source": "runtime_attestation_injected"
+  },
+  "degraded": [
+   "kernel_drift"
+  ],
+  "mutation_allowed": false,
+  "seal_allowed": false,
+  "_nine_signal_compliant": true,
+  "_violations": [],
+  "philosophical_anchor": {
+   "quote_id": "INIT_Q_001",
+   "text": "A journey of a thousand miles begins with a single step.",
+   "author": "Lao Tzu, Tao Te Ching, Chapter 64",
+   "source": "quote_registry_v2",
+   "zone": "Tool-Specific",
+   "zone_id": "ZT00",
+   "atlas_mode": "tool_specific",
+   "source_status": "VERIFIED",
+   "symbolic_tags": [
+    "discipline",
+    "beginning",
+    "structured_action"
+   ],
+   "dimension_scores": {},
+   "match_score": 0.3
+  },
+  "standing": {
+   "session_id": "SEAL-4aef2edeb8e34417",
+   "actor": {
+    "claimed_id": "arif-fazil",
+    "canonical_id": "arif",
+    "verified": true,
+    "verification_method": "system_exempt",
+    "evidence_ref": "key://sha256:c843960f8c85d625bd0e8dc563beba331b4cfe6d0c08f71c2e6da80eb58b8c6a"
+   },
+   "authority": {
+    "band": "SOVEREIGN",
+    "mutation_allowed": false,
+    "seal_allowed": false
+   },
+   "issued_at": "2026-08-14T21:14:25.959357+00:00",
+   "expires_at": "2026-08-15T21:14:26.122422+00:00",
+   "state_version": 1
+  },
+  "execution_state": "COMPLETED",
+  "_epistemic": {
+   "output_class": "DETERMINISTIC",
+   "ai_involvement": "NONE",
+   "authority_claim": "EXECUTIVE",
+   "evidence_source": "COMPUTED",
+   "degraded_reason": null,
+   "tagged_by": "arifOS",
+   "tagged_at": "2026-08-14T21:14:26.297936+00:00",
+   "schema_version": "1.0.0"
+  },
+  "schema_version": "2.0.0",
+  "capability_id": "session.bind",
+  "implementation_tool": "arif_init",
+  "authority_scope": "OBSERVE_ONLY",
+  "receipt_state": "UNSEALED",
+  "can_continue_observing": true,
+  "can_mutate": false,
+  "can_claim_success": true,
+  "warnings": [],
+  "evidence_refs": [],
+  "recommended_next": []
+ }
+}

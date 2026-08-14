@@ -270,6 +270,7 @@ Detail: `AAA/docs/EUREKA_SIX_PLANE_EXECUTION_LOOP.md` (architecture essay — no
 |----------|-----------|-----------------|
 | **`AAA/docs/ORGAN.md` (this)** | **Topology SOT** | Who, ports, ceilings, links |
 | **`AAA/federation/organs.yaml`** | **Machine SOT** | Same facts for automation |
+| **`AAA/docs/LOW_ENTROPY_REFORGE.md`** | **Architecture & Invariant Canon** | Ratified low-entropy architecture & invariants |
 | `FEDERATION_CONTRACT.md` | Contract / web surface policy | Must **point** here for organ table |
 | `AGENTS.md` | Agent operating doctrine | Thin organ table + pointer here |
 | `MCP_FEDERATION_ZEN.md` | MCP affordance / drift ops | Tool naming, SEP notes — not organ invention |
