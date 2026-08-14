@@ -3,7 +3,7 @@
 **Domain:** arifOS Federation MOTD
 **Owner:** arifOS Kernel (via `/root/AAA/governance/`)
 **Update cycle:** As-needed (triggered by drift or performance regression)
-**GOLDEN_HASH: d72ffaf9967ec419afcb857d371f40aa
+**GOLDEN_HASH: 715c0f3ab3a70f516680fcf66e48b089
 
 ## Purpose
 
