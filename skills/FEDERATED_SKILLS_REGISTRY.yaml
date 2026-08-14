@@ -7,7 +7,7 @@
 # Agent-local directories are rebuilt from this registry by skill-sync.sh.
 #
 # Agents: claude(FI-002), opencode(FI-001), kimi(FI-008), codex(FI-005),
-#         grok(FI-010), agy(FI-004), copilot(FI-006), hermes(FI-relay)
+#         grok(FI-010), agy(FI-009), copilot(FI-006), hermes(FI-relay)
 
 version: 2
 last_updated: '2026-07-10'

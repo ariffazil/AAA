@@ -381,5 +381,7 @@
   "emd_architecture": "/root/AAA/instructions/emd-architecture.md",
   "emd_forged": "2026-08-09",
   "fi": "FI-GROK",
-  "bound_to": "333-AGI"
+  "bound_to": "333-AGI",
+  "status": "superseded_by: grok-build (naming twin; runtime registry FI-007 = Grok Build) — 2026-08-14",
+  "fi_slot": "none (superseded twin — see status)"
 }

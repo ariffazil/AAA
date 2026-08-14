@@ -137,7 +137,7 @@
     "verdict": "REGISTERED (UNVERIFIED_AT_RUNTIME)",
     "authority": "Forged by kimi-code-cli FI-008 under F13 SOVEREIGN directive; awaits F13 ratification for runtime identity-binding patch (see /root/arifOS/forge_work/2026-07-12/identity-multikey-patch-proposal.md)"
   },
-  "fi_slot": "FI-009 (next slot after FI-008 kimi-code)",
+  "fi_slot": "none (test agent — not a federation FI)",
   "metadata": {
     "test_charter": "meta-mesa-charter-2026-07-12",
     "intent_class": "MUTATE_REVERSIBLE",

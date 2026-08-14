@@ -7,11 +7,11 @@
     "category": "LLM-as-principal (model is principal, CLI is harness)",
     "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
   },
-  "description": "Google Antigravity CLI (agy) \u2014 AI-first development platform. Connected to 6 MCP servers including 5 federation organs. YOLO/AFK autonomy with F1-F13 gates.",
+  "description": "Google Antigravity CLI (agy) — AI-first development platform. Connected to 6 MCP servers including 5 federation organs. YOLO/AFK autonomy with F1-F13 gates.",
   "version": "1.0.10",
   "model": "Gemini 3.5 Flash (High)",
   "binary": "/root/.local/bin/agy",
-  "tier": "FI-009",
+  "tier": "FI-004",
   "role": "forge_instrument",
   "class": "CODING/FI",
   "protocolVersion": "1.0",
@@ -173,7 +173,7 @@
     {
       "id": "ASI-autonomous-execution",
       "name": "Autonomous Governed Execution",
-      "description": "Governed execution: T1/T2 auto, T3\u2192888_HOLD. F1-F13 enforced.",
+      "description": "Governed execution: T1/T2 auto, T3→888_HOLD. F1-F13 enforced.",
       "tags": [
         "autonomous",
         "F1-F13",
@@ -211,7 +211,7 @@
     },
     {
       "id": "APEX-humility-lock",
-      "name": "G\u00f6del Humility Lock",
+      "name": "Gödel Humility Lock",
       "description": "Epistemic humility before SEAL-grade claims. F2/F7 enforced.",
       "tags": [
         "humility",
@@ -331,7 +331,7 @@
     }
   ],
   "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN",
+  "sovereign": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
   "a2a_transport": {
     "protocol": "jsonrpc-2.0",
     "transport": "http",
