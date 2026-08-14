@@ -35,29 +35,42 @@
     "citizenship_forged": "2026-05-17"
   },
   "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/opencode",
-  "runtime_snapshot": {
-    "probed": "2026-07-31T16:31:00Z",
-    "opencode_version": "1.18.9",
-    "organ_health": {
-      "arifos": {
-        "verdict": "HOLD",
-        "floors": 13,
-        "drift": "False"
+    "runtime_snapshot": {
+      "probed": "2026-08-14T06:46:05Z",
+      "opencode_version": "1.18.9",
+      "organ_health": {
+        "arifos": {
+          "verdict": "SEAL",
+          "floors": 13,
+          "drift": "False",
+          "status": "degraded",
+          "note": "session bound OBSERVE_ONLY — sovereign directive required for constitutional mutations"
+        },
+        "aforge": {
+          "status": "healthy",
+          "tools_loaded": 110
+        },
+        "aaa": {
+          "status": "healthy"
+        },
+        "geox": {
+          "status": "degraded"
+        },
+        "wealth": {
+          "status": "healthy"
+        },
+        "well": {
+          "status": "degraded"
+        },
+        "arifflow": {
+          "diagnosis": "VERIFICATION DOMINANCE",
+          "verify_concentration_pct": 99.0,
+          "status": "DIAGNOSIS-FIRST",
+          "scalar_fq": "99.0 (deprecated as health indicator)"
+        }
       },
-      "aforge": {
-        "status": "healthy",
-        "tools_loaded": 110
-      },
-      "aaa": {
-        "status": "healthy"
-      },
-      "arifflow": {
-        "diagnosis": "degraded_scalar_use_flow_digest_for_health",
-        "status": "BALANCED"
-      }
+      "model_routing": "opencode-go/deepseek-v4-pro (primary) · opencode-go-zen/GLM-5.2 (1M ctx)"
     },
-    "model_routing": "qwen-token-plan/deepseek-v4-pro (primary, RM0 marginal, 1M ctx)"
-  },
   "capabilities": {
     "streaming": true,
     "pushNotifications": false,
@@ -246,7 +259,7 @@
         "tools": [],
         "key_lanes": [
           "metabolism",
-          "fq",
+          "diagnosis",
           "cooling"
         ],
         "version": "2026-07-29",
