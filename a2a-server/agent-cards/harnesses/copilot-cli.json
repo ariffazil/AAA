@@ -5,14 +5,14 @@
   "name": "GitHub Copilot CLI (DeepSeek BYOK)",
   "principal_agent": {
     "type": "llm",
-    "category": "LLM-as-principal (DeepSeek V4 Pro \u2014 Anthropic-compatible endpoint via BYOK)",
+    "category": "LLM-as-principal (DeepSeek V4 Pro — Anthropic-compatible endpoint via BYOK)",
     "principle_origin": "DeepSeek Platform (https://platform.deepseek.com/)"
   },
   "description": "GitHub Copilot CLI forge instrument with DeepSeek V4 Pro as backend (BYOK Anthropic-compatible endpoint). Wire via env vars: COPILOT_PROVIDER_TYPE=anthropic, COPILOT_PROVIDER_BASE_URL=https://api.deepseek.com/anthropic, COPILOT_PROVIDER_API_KEY=sk-..., COPILOT_MODEL=deepseek-v4-pro. Source script: /root/.bashrc.copilot. F1-F13 enforced.",
   "version": "1.0.0",
   "model": "deepseek-v4-pro (BYOK)",
   "binary": "/root/.npm-global/bin/copilot",
-  "tier": "FI-005",
+  "tier": "FI-006",
   "role": "forge_instrument",
   "class": "CODING/FI",
   "protocolVersion": "1.2",
@@ -34,7 +34,7 @@
     "subagent_spawn": true,
     "stateTransitionHistory": true,
     "extendedAgentCard": true,
-    "forge_tier": "FI-005"
+    "forge_tier": "FI-006"
   },
   "configuration": {
     "install": "npm install -g @github/copilot",
@@ -59,12 +59,12 @@
     "test_prompt": "Reply with the literal string: hello from deepseek via copilot cli. Do not add anything else.",
     "actual_response": "hello from deepseek via copilot cli",
     "duration_seconds": 18,
-    "tokens_used": "\u2191141.0k (17.7k cached) \u2022 \u219335 (24 reasoning)",
+    "tokens_used": "↑141.0k (17.7k cached) • ↓35 (24 reasoning)",
     "verified_by": "Hermes-Prime",
     "verified_at": "2026-07-19T09:55:00Z"
   },
   "federation_role": "external_forge_instrument",
-  "federation_binding": "FI-009",
+  "federation_binding": "FI-006",
   "constitutional_compliance": {
     "F1_AMANAH": "inherited from arifOS governance; no execution outside lease",
     "F2_TRUTH": "BYOK ensures response attribution; DeepSeek model verifiable",
@@ -136,7 +136,7 @@
     {
       "id": "ASI-autonomous-execution",
       "name": "Autonomous Governed Execution",
-      "description": "Governed execution: T1/T2 auto, T3\u2192888_HOLD. F1-F13 enforced.",
+      "description": "Governed execution: T1/T2 auto, T3→888_HOLD. F1-F13 enforced.",
       "tags": [
         "autonomous",
         "F1-F13",
@@ -174,7 +174,7 @@
     },
     {
       "id": "APEX-humility-godel",
-      "name": "G\u00f6del Humility Lock",
+      "name": "Gödel Humility Lock",
       "description": "Epistemic humility before SEAL-grade claims. F2/F7 enforced.",
       "tags": [
         "humility",
@@ -250,7 +250,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
+      "description": "INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -266,7 +266,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Every output reduces entropy. \u0394S < 0.",
+      "description": "Every output reduces entropy. ΔS < 0.",
       "tags": [
         "kernel",
         "rsi",
