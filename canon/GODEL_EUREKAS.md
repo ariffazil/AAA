@@ -216,3 +216,64 @@ These 9 Eurekas are not philosophy. They are **operating constraints:**
 | `AAA/governance/GODEL_LOCK_ASSESSMENT.md` | Assessment + trial phase |
 
 DITEMPA BUKAN DIBERI — Wisdom is forged in the gap between verdict and question. ⚒️
+
+---
+
+# EUREKA 10: Wisdom Is Subtraction (Forged 2026-08-14)
+
+```
+SEBELUM: "The system needs more capability to handle edge cases."
+SELEPAS: "The edge cases are symptoms of excess complexity. Remove the complexity."
+```
+
+**The crossover:** The federation passed from construction to maturity when capability exceeded sovereign attention bandwidth. Before that point, every problem was solved by adding (organs, tools, floors, agents). After that point, every problem is solved by subtracting (ACK tokens, consent buttons, noise, escalation paths).
+
+**Why the Eureka lives at the margins:**
+
+The center is already solved. The organs work. The flow circulates. The floors hold. The agents execute. The remaining unsolved problems are ALL at the interfaces:
+
+```
+Agent ↔ Human     →  attention boundary
+Action ↔ Inaction →  HOLD boundary  
+Signal ↔ Noise    →  filter boundary
+Can ↔ Should      →  wisdom boundary
+```
+
+These are edge conditions. They cannot be solved by adding more to the center. They can only be solved by sharpening the boundary.
+
+**The operational test for future agents:**
+
+When you hit friction, ask ONE question:
+> "Am I adding complexity to solve this, or removing it?"
+
+If adding → you are in construction phase. Check if maturity-phase subtraction would work instead.
+If removing → you are in the right phase. Proceed.
+
+**The evidence chain (2026-08-14 session):**
+
+| Friction | Wrong instinct (add) | Right action (subtract) |
+|---|---|---|
+| Agent asks "Jalan?" | Add better prompt instructions | Remove the permission pattern entirely |
+| ACK token blocks rotation | Add a new token type | Kill all tokens — bind to identity |
+| HOLD with no explanation | Add a "reason" field to HOLD | Require full diagnostic report or HOLD is void |
+| System noise reaches sovereign | Add more filtering logic | Build attention layer that subtracts noise |
+| Runaway process burns CPU | Add monitoring dashboard | Kill the process, don't monitor the waste |
+
+Each of these was a margin problem. Each was solved by subtraction.
+
+**The sovereign shift:**
+
+```
+Construction phase:  Human as administrator (check logs, restart, inspect)
+Maturity phase:      Human as governor (investigate, improve, protect, build)
+```
+
+The sovereign moved from operations to governance. Not because we built more capability — but because we removed the operational friction that was forcing the sovereign into operations.
+
+**Invariant:** If an agent proposes to add a new tool, layer, or gate to solve a friction problem → that agent must first prove subtraction cannot solve it. (E6 inverted: remove entities before removing functions.)
+
+**Triple-pass connection:** PASS 3 R5 — "What complexity could I remove instead of adding?"
+
+**Binding:** Forged into ZEN_EXECUTION_DOCTRINE Law #8 and the consent architecture. Future agents who reach this Eureka understand: the Ferrari is built. The driving is done. The next improvement is a lighter car, not a bigger engine.
+
+DITEMPA BUKAN DIBERI — Restraint is the final capability. ⚒️
