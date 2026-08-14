@@ -37,21 +37,22 @@
 
 > **ZEN EXECUTION DOCTRINE:** `/root/AAA/governance/ZEN_EXECUTION_DOCTRINE.md` is the single execution source of truth. Load it at boot.
 
-## ANNOUNCE, Don't ACK — The Post-ACK Era (2026-08-09)
+## ANNOUNCE, Don't ACK — The Post-ACK Era (2026-08-09, tokens killed 2026-08-14)
 
-**ACK is dead.** The runtime already auto-executes these. Doc was the only thing blocking.
+**ACK is dead. All ACK tokens killed 2026-08-14 by F13 SOVEREIGN directive.**
 
 | Action | Old Rule | New Rule | Why |
 |---|---|---|---|
 | git push (feature branch) | ~~ACK_M10~~ | **T1 AUTO-DO** | Runtime ALLOW since 2026-07-28; push = same class as commit |
-| Runtime deploy (green tests) | ACK_M8 | **T2 ANNOUNCE** (10s veto) | `make deploy-local` with green tests = reversible |
-| Credential rotation | ACK_M7 | **888_HOLD** (T3) | Crypto-sensitive; keep gate |
-| VAULT999 append | ACK_M11 | **Lane B auto-receipt** (default) | Lane A still F13 for constitutional seals |
-| `git filter-repo` / force-push to main | ACK_HISTORY_REWRITE | **888_HOLD** (T3) | Affects collaborators; keep gate |
+| Runtime deploy (green tests) | ~~ACK_M8~~ | **T2 ANNOUNCE** (10s veto) | `make deploy-local` with green tests = reversible |
+| Credential rotation | ~~ACK_M7~~ | **T3 HOLD + full diagnostic report** | Crypto-sensitive; agent reports collision, sovereign reshapes boundary |
+| VAULT999 append | ~~ACK_M11~~ | **Lane B auto-receipt** (default) | Lane A still F13 for constitutional seals |
+| `git filter-repo` / force-push to main | ~~ACK_HISTORY_REWRITE~~ | **T3 HOLD + full diagnostic report** | Affects collaborators; agent reports collision, sovereign reshapes boundary |
 
-**The only remaining sovereign ACK gates are:**
-- `ACK_HISTORY_REWRITE` — `git filter-repo` / force-push affecting collaborators
-- `ACK_M7_ROTATE_DB_SECRET` — credential rotation (crypto-sensitive)
+**No ACK tokens remain. No buttons. Consent is a boundary, not a door.**
+
+T3 HOLD comes WITH: Trigger, Why, Attempted, Options, Resources needed, Blast radius, Reversibility.
+HOLD without full diagnostic report = BANGANG.
 
 Everything else: announce 10s, then execute. The Ferrari is built. Drive.
 
