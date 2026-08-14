@@ -1,0 +1,31 @@
+{
+ "head": "sha256:215a36e7a7272f0d770341e24d4250e0cc5c02d8f90e15117ca38d07faaacba2",
+ "head_seq": 28,
+ "verified": false,
+ "chain_status": "gaps-found",
+ "gap_count": 17,
+ "canonical_entries": 45,
+ "last_seal": "2026-08-11T13:49:47.648109Z",
+ "last_actor": "333-AGI",
+ "verified_at": "2026-08-14T21:34:09.244090Z",
+ "chain_staleness_hours": 79.7,
+ "violation_reasons": [],
+ "public": true,
+ "vault": "VAULT999",
+ "constitution": "F1\u2013F13",
+ "falsification": {
+  "how_to_falsify_001": "Record head_hash now. Alter any sealed record. Fetch /999/verify again \u2014 chain_status will show GAPS_FOUND and verified will be False. This breaks 999-CLAIM-001.",
+  "how_to_cross_verify": "Compare the head_hash returned by this endpoint with the head_hash returned independently by GET https://aaa.arif-fazil.com/api/seal-chain/head. Both endpoints read the same underlying seal chain (/root/.local/share/arifos/vault999/seal_chain_head.json) but are served by independent processes (arifOS :8088 vs AAA :3001). They must match within one seal cycle (seconds). A persistent mismatch means either endpoint is stale, the chain has diverged, or one host is being served cached/transitional data. Use ONLY the two live endpoints named in cross_verify_endpoint \u2014 never any embedded or rendered value on a web page, which is a display convenience and goes stale after the next seal.",
+  "cross_verify_endpoint": "https://aaa.arif-fazil.com/api/seal-chain/head",
+  "cross_verify_owner": "AAA cockpit (:3001)",
+  "companion": "https://arif-fazil.com/000/"
+ },
+ "_meta": {
+  "failure_classes": {
+   "CANONICAL_MISSING_FIELDS": 17
+  },
+  "corrupt_lines": 0,
+  "historical_entries": 201,
+  "ledger": "/root/.local/share/arifos/vault999/seal_chain.jsonl"
+ }
+}

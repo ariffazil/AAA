@@ -10,7 +10,7 @@ confidence: high
 # AAA Wiki — Federation Knowledge Base Index
 
 > Content catalog. Every wiki page listed under its type with a one-line summary.
-> Last updated: 2026-08-14 | Total entries: 135
+> Last updated: 2026-08-14 | Total entries: 136
 
 > **MCP Server:** `tree777://index` — use the tree777 MCP server for programmatic access with `wiki_search` and `wiki_read` tools.
 
@@ -152,6 +152,7 @@ confidence: high
 | `tree777://arifos/root/aaa` | AAA — Architect · Auditor · Agent | root | arifOS uses a three-role pattern (AAA) for all governed AI execution: |
 | `tree777://arifos/root/floors` | arifOS Floors | root | arifOS enforces 13 constitutional floors (F0–F13) on all AI tool executions. Eac |
 | `tree777://arifos/root/judge` | 888_JUDGE — SEAL Authority | root | 888_JUDGE is the constitutional auditor — the only entity in arifOS that can iss |
+| `tree777://arifos/root/rrr-resource-reality-resolution` | RRR — Resource Reality Resolution | root | RRR names what `arif_observe` already does: establish the minimum reality set |
 | `tree777://arifos/root/vault` | 999_VAULT — MerkleV3 Ledger | root | VAULT999 is arifOS's audit and sealing layer. Events that pass 888_JUDGE are sea |
 | `tree777://arifos/root/verdicts` | arifOS Verdicts | root | Every arifOS tool output receives a verdict — the constitutional judgment on whe |
 
@@ -204,4 +205,4 @@ confidence: high
 | `tree777://raw/repos/vps-map` | VPS Map — arifOS Federation | repos | | Path | Purpose | Notes | |
 | `tree777://raw/repos/zkpc` | ZKPC — Zero-Knowledge Proof-of-Constraint 🔐⚖️ | repos | **Outcome Label: Definition / Approved Concept, Not Yet Implemented** |
 
-_Generated: 2026-08-14 15:29 UTC_
+_Generated: 2026-08-14 20:18 UTC_

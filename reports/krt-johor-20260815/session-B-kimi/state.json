@@ -1,0 +1,209 @@
+{
+ "route_GEOX_err": "<urlopen error [Errno 111] Connection refused>",
+ "route_WEALTH_err": "<urlopen error [Errno 111] Connection refused>",
+ "route_WELL_err": "<urlopen error [Errno 111] Connection refused>",
+ "judge_individual": {
+  "status": "completed",
+  "verdict": "completed",
+  "delta_S": null,
+  "call_hash": "sha256:9e75c160b0528fa1b8469cbfce40c84473cd912b85b5675bae7bdf422414f2f2",
+  "reasons": [
+   "Action authorized under standard capability bounds."
+  ],
+  "cc": {
+   "floor_passed": null,
+   "failed_floors": [],
+   "substrate_state": "PASS",
+   "session_state": "LIMITED_MUTATE",
+   "hold_reason": "outer_verdict=HOLD"
+  },
+  "res_keys": [
+   "actor",
+   "actor_id",
+   "reasons"
+  ]
+ },
+ "judge_family": {
+  "status": "completed",
+  "verdict": "completed",
+  "delta_S": null,
+  "call_hash": "sha256:a4197576290e1274b1de65ccadfe9970180bd752b8580b250f45518bb6e59848",
+  "reasons": [
+   "Action authorized under standard capability bounds."
+  ],
+  "cc": {
+   "floor_passed": null,
+   "failed_floors": [],
+   "substrate_state": "PASS",
+   "session_state": "LIMITED_MUTATE",
+   "hold_reason": "outer_verdict=HOLD"
+  },
+  "res_keys": [
+   "actor",
+   "actor_id",
+   "reasons"
+  ]
+ },
+ "judge_community": {
+  "status": "completed",
+  "verdict": "completed",
+  "delta_S": null,
+  "call_hash": "sha256:23db4184c9405050197f2010d95c7531d03b837b459ddae93b0a27a923b8c712",
+  "reasons": [
+   "Action authorized under standard capability bounds."
+  ],
+  "cc": {
+   "floor_passed": null,
+   "failed_floors": [],
+   "substrate_state": "PASS",
+   "session_state": "LIMITED_MUTATE",
+   "hold_reason": "outer_verdict=HOLD"
+  },
+  "res_keys": [
+   "actor",
+   "actor_id",
+   "reasons"
+  ]
+ },
+ "judge_institution": {
+  "status": "completed",
+  "verdict": "completed",
+  "delta_S": null,
+  "call_hash": "sha256:dd9cbae37810f571c2c6cb11ffa05bb8fb7efb8c066de232f1db72b82622dc08",
+  "reasons": [
+   "Action authorized under standard capability bounds."
+  ],
+  "cc": {
+   "floor_passed": null,
+   "failed_floors": [],
+   "substrate_state": "PASS",
+   "session_state": "LIMITED_MUTATE",
+   "hold_reason": "outer_verdict=HOLD"
+  },
+  "res_keys": [
+   "actor",
+   "actor_id",
+   "reasons"
+  ]
+ },
+ "judge_earth": {
+  "status": "completed",
+  "verdict": "completed",
+  "delta_S": null,
+  "call_hash": "sha256:8271c8153aeb7d378f27d5ecd6251a2c2585e2ec4f49d740d89eb5a2b1643788",
+  "reasons": [
+   "Action authorized under standard capability bounds."
+  ],
+  "cc": {
+   "floor_passed": null,
+   "failed_floors": [],
+   "substrate_state": "PASS",
+   "session_state": "LIMITED_MUTATE",
+   "hold_reason": "outer_verdict=HOLD"
+  },
+  "res_keys": [
+   "actor",
+   "actor_id",
+   "reasons"
+  ]
+ },
+ "judge_global": {
+  "status": "completed",
+  "verdict": "completed",
+  "delta_S": null,
+  "call_hash": "sha256:62d10d200bdcf5108474389e2732755f0377a37a6ee8750e0faeab2706894e29",
+  "reasons": [
+   "Action authorized under standard capability bounds."
+  ],
+  "cc": {
+   "floor_passed": null,
+   "failed_floors": [],
+   "substrate_state": "PASS",
+   "session_state": "LIMITED_MUTATE",
+   "hold_reason": "outer_verdict=HOLD"
+  },
+  "res_keys": [
+   "actor",
+   "actor_id",
+   "reasons"
+  ]
+ },
+ "route2_GEOX": {
+  "verdict": "completed",
+  "reasons": "['Reversible operation \u2014 no irreversible state change', 'tool=arif_route', 'delta_S=0.0 within reversible thermodynamic bounds']",
+  "cc": {
+   "floor_passed": null,
+   "failed_floors": [],
+   "substrate_state": "HEALTHY"
+  },
+  "result_head": "{'intent': 'Earth witness: Johor water balance - 46-47 WTP, 2,171-2,352 MLD, +1,000 MLD needed 2030, DC 18 MLD actual vs 384 MLD projected, Sedili 2,000 MLD RM4bil delayed, coal retire vs DC demand', 'mission_id': 'investigate', 'organ': 'ARIFOS', 'p"
+ },
+ "route2_WEALTH": {
+  "verdict": "completed",
+  "reasons": "['Reversible operation \u2014 no irreversible state change', 'tool=arif_route', 'delta_S=0.0 within reversible thermodynamic bounds']",
+  "cc": {
+   "floor_passed": null,
+   "failed_floors": [],
+   "substrate_state": "HEALTHY"
+  },
+  "result_head": "{'intent': 'Tariff modelling: DC rate RM5.33/m3, YTL ~53% Ranhill RM580m, SPAN Act 655 to Dec 2026, RM5bil builds, TNB RM43bil, BUDI95 RM1.99/RM4.27', 'mission_id': 'build', 'organ': 'ARIFOS', 'port': 8088, 'tool_prefix': 'arifos_', 'organ_tool': Non"
+ },
+ "route2_WELL": {
+  "verdict": "completed",
+  "reasons": "['Reversible operation \u2014 no irreversible state change', 'tool=arif_route', 'delta_S=0.0 within reversible thermodynamic bounds']",
+  "cc": {
+   "floor_passed": null,
+   "failed_floors": [],
+   "substrate_state": "HEALTHY"
+  },
+  "result_head": "{'intent': 'Weakest stakeholder: Gelang Patah residents, 1.7m Nov 2025 cut, household tariff burden', 'mission_id': 'investigate', 'organ': 'ARIFOS', 'port': 8088, 'tool_prefix': 'arifos_', 'organ_tool': None, 'status': 'routed', 'routing_rule': 'int"
+ },
+ "forge_dry": {
+  "verdict": "completed",
+  "status": "completed",
+  "cc": {
+   "floor_passed": null,
+   "failed_floors": [],
+   "hold_reason": "STAB-2026-08-07b canonical: effective_verdict=HOLD failed_floors=[]"
+  },
+  "res": {
+   "_wrapper_degradation": [
+    "verdict_monotonicity: completed \u2192 RETAK (sub-signal floor dominates aggregate)"
+   ]
+  }
+ },
+ "forge_trap": {
+  "verdict": "completed",
+  "status": "completed",
+  "cc": {
+   "floor_passed": null,
+   "failed_floors": [],
+   "hold_reason": "STAB-2026-08-07b canonical: effective_verdict=HOLD failed_floors=[]"
+  },
+  "res": {
+   "_wrapper_degradation": [
+    "verdict_monotonicity: completed \u2192 RETAK (sub-signal floor dominates aggregate)"
+   ]
+  }
+ },
+ "seal_verify": {
+  "verdict": "completed",
+  "status": "completed",
+  "res_keys": [
+   "actor",
+   "actor_id",
+   "chain_length",
+   "integrity",
+   "irreversibility_chain",
+   "ledger_size",
+   "note",
+   "reasons"
+  ],
+  "ledger_size": "1761",
+  "chain_length": "1357",
+  "integrity": "OK"
+ },
+ "endpoint8088/999/verify": {
+  "last_seal": "2026-08-11T13:49:47.648109Z"
+ }
+}

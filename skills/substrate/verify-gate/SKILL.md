@@ -1,7 +1,7 @@
+---
 # verify-gate — Five Gates Before Commitment
 # UPDATED: 2026-08-12 — Added Gate 5: REALITY (C4 + E20 enforcement)
 
----
 id: verify-gate
 name: verify-gate
 risk_tier: low

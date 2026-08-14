@@ -1,0 +1,175 @@
+{
+ "status": "completed",
+ "tool": "arif_observe",
+ "verdict": "completed",
+ "actor": {
+  "actor_id": "arif",
+  "actor_verified": true,
+  "authority_level": "LIMITED_MUTATE"
+ },
+ "session_id": "SEAL-4aef2edeb8e34417",
+ "call_hash": "sha256:5e0fdaff8dfe5d212b85221e4df2aac43921da52f7afa7d55ac5ffa0501267ec",
+ "trace_id": "TRACE-7a958620ec2f",
+ "signature": null,
+ "session_token": "act_v1.eyJhY3RfdiI6MSwiYWN0b3IiOiJhcmlmIiwiYWxsb3dlZCI6WyJhcmlmX2luaXQiLCJhcmlmX29ic2VydmUiLCJhcmlmX3RoaW5rIiwiYXJpZl9yb3V0ZSIsImFyaWZfbWVtb3J5IiwiYXJpZl9qdWRnZSIsImFyaWZfZm9yZ2UiLCJhcmlmX3NlYWwiLCJhcmlmX3N0YWdlIl0sImFwZXgiOnsiQ19kYXJrIjowLjE5NTMsIkciOjAuNDU4MiwiVzMiOiJVTk1FQVNVUkVEIiwiaCI6MC45MTE1fSwiYXV0aCI6IkxJTUlURURfTVVUQVRFIiwiYXYiOnRydWUsImV4cCI6MTc4Njc3MDg2NiwiaWF0IjoxNzg2NzQyMDY2LCJraWQiOiJkZWZhdWx0IiwibGFuZSI6IkFHSSIsIm5iZiI6MTc4Njc0MjA2Niwic2lkIjoiU0VBTC00YWVmMmVkZWI4ZTM0NDE3Iiwic3RhZ2UiOiIwMDAiLCJ0dGwiOjI4ODAwLCJ2ZXJkaWN0Ijp7ImRvbWluYW50X3JlYXNvbiI6bnVsbCwic3RhdGUiOiJTQUJBUi5ERUdSQURFRCJ9LCJ3aXRuZXNzIjp7ImFjdGl2ZSI6MSwiZGl2ZXJzaXR5IjoiUEFSVElBTCJ9fQ.e7ca72b06a8a3410",
+ "audit_provenance": {
+  "call_hash": "sha256:5e0fdaff8dfe5d212b85221e4df2aac43921da52f7afa7d55ac5ffa0501267ec",
+  "trace_id": "TRACE-7a958620ec2f",
+  "signature": null,
+  "kernel_signature_anchor": "constitutional_init_v1"
+ },
+ "next_safe_action": {
+  "action": "Review result. If confidence low, gather more evidence via observe or domain organ.",
+  "tool": null,
+  "reason": "Derived from result"
+ },
+ "constitutional_check": {
+  "floor_passed": false,
+  "_floor_measurement": "measured",
+  "hold_required": true,
+  "hold_reason": "failed_floors=L02,L03,L07,L08",
+  "failed_floors": [
+   "L02",
+   "L03",
+   "L07",
+   "L08"
+  ],
+  "substrate_state": "DEGRADED",
+  "session_state": "LIMITED_MUTATE",
+  "agency_level": "SOVEREIGN",
+  "observe_class_exempt": true,
+  "_derivation": "attach_effective_verdict:last_writer",
+  "_stab_fix": "2026-08-07-P0-dual-truth"
+ },
+ "risk": {
+  "blast_radius": "low",
+  "reversibility": "reversible",
+  "human_confirmation_required": false,
+  "agency_level": "SOVEREIGN"
+ },
+ "effective_verdict": "HOLD",
+ "execution_state": "COMPLETED",
+ "status_scope": "execution",
+ "reason_code": "NEEDS_REVIEW",
+ "next_action": "AWAIT_INPUT",
+ "receipt_state": "UNSEALED",
+ "delta_S": null,
+ "result": {
+  "_wrapper_degradation": [
+   "verdict_monotonicity: completed \u2192 RETAK (sub-signal floor dominates aggregate)"
+  ],
+  "_wrapper_note": "Verdict derived by _compute_canonical_verdict. Degradation signals listed in _wrapper_degradation.",
+  "reasons": [
+   "Constitutional HOLD: L02, L03, L07, L08"
+  ],
+  "actor": "arif",
+  "actor_id": "arif",
+  "mutation_allowed": false,
+  "seal_allowed": false,
+  "session_token": "act_v1.eyJhY3RfdiI6MSwiYWN0b3IiOiJhcmlmIiwiYWxsb3dlZCI6WyJhcmlmX2luaXQiLCJhcmlmX29ic2VydmUiLCJhcmlmX3RoaW5rIiwiYXJpZl9yb3V0ZSIsImFyaWZfbWVtb3J5IiwiYXJpZl9qdWRnZSIsImFyaWZfZm9yZ2UiLCJhcmlmX3NlYWwiLCJhcmlmX3N0YWdlIl0sImFwZXgiOnsiQ19kYXJrIjowLjE5NTMsIkciOjAuNDU4MiwiVzMiOiJVTk1FQVNVUkVEIiwiaCI6MC45MTE1fSwiYXV0aCI6IkxJTUlURURfTVVUQVRFIiwiYXYiOnRydWUsImV4cCI6MTc4Njc3MDg2NiwiaWF0IjoxNzg2NzQyMDY2LCJraWQiOiJkZWZhdWx0IiwibGFuZSI6IkFHSSIsIm5iZiI6MTc4Njc0MjA2Niwic2lkIjoiU0VBTC00YWVmMmVkZWI4ZTM0NDE3Iiwic3RhZ2UiOiIwMDAiLCJ0dGwiOjI4ODAwLCJ2ZXJkaWN0Ijp7ImRvbWluYW50X3JlYXNvbiI6bnVsbCwic3RhdGUiOiJTQUJBUi5ERUdSQURFRCJ9LCJ3aXRuZXNzIjp7ImFjdGl2ZSI6MSwiZGl2ZXJzaXR5IjoiUEFSVElBTCJ9fQ.e7ca72b06a8a3410",
+  "apex_scalars": {
+   "G": 0.5032,
+   "C_dark": 0.1209,
+   "W3": null,
+   "h": 0.7769,
+   "sample_size": 13892,
+   "source": "apex_primitives.py"
+  },
+  "standing_source": "sct"
+ },
+ "reasons": [
+  "Constitutional HOLD: L02, L03, L07, L08"
+ ],
+ "authority": "LIMITED_MUTATE",
+ "can_continue_observing": true,
+ "meta": {
+  "reason": "Constitutional HOLD: L02, L03, L07, L08",
+  "violated_laws": [
+   "L02",
+   "L03",
+   "L07",
+   "L08"
+  ],
+  "next_safe_action": "Produce reversible design blueprint only; no execution.",
+  "nine_signal": {
+   "overall": {
+    "state": "RETAK",
+    "en": "HOLDING"
+   },
+   "delta": {
+    "plane": "machine_physical_state",
+    "state": "RETAK",
+    "en": "CRACKED",
+    "domain_meaning": "Partial curves, missing metadata, questionable datum, weak density"
+   },
+   "psi": {
+    "plane": "governance_integrity",
+    "state": "SYUBHAH",
+    "en": "DOUBTFUL",
+    "domain_meaning": "Hypothesis only, evidence incomplete, uncertainty moderate, needs QC"
+   },
+   "omega": {
+    "plane": "intelligence_discipline",
+    "state": "BIJAK",
+    "en": "PRUDENT",
+    "domain_meaning": "Useful technical interpretation but still advisory"
+   }
+  },
+  "actor_id": "arif",
+  "failed_floors": [
+   "F02",
+   "F03",
+   "F07",
+   "F08"
+  ],
+  "sesat_event": {
+   "id": "sesat-338d20652c55",
+   "source_node": "arif_sense_observe",
+   "source_surface": "",
+   "timestamp": "2026-08-14T21:25:44.870496+00:00",
+   "severity": "YELLOW",
+   "failure_code": "JALAN_KUASA",
+   "failed_claim": "HOLD: Constitutional HOLD: L02, L03, L07, L08",
+   "observed_reality": "Constitutional HOLD: L02, L03, L07, L08",
+   "reversible": true,
+   "baik": {
+    "route": "inspect_and_retry",
+    "owner": "arif_sense_observe",
+    "max_retries": 1,
+    "fallback_routes": []
+   },
+   "lantai": [
+    "L02",
+    "L03",
+    "L07",
+    "L08"
+   ],
+   "evidence": {
+    "sha256": null,
+    "byte_length": null,
+    "mime_type": null,
+    "receipt_id": null,
+    "witness_refs": []
+   },
+   "blocked_actions": [
+    "claim_success"
+   ],
+   "next_safe_action": "Inspect and classify failure",
+   "malu_delta": 0.2,
+   "saksi_required": false,
+   "tebus_required": true,
+   "session_restriction_only": false,
+   "correction_status": null,
+   "effective_malu_delta": 0.2,
+   "tags": []
+  }
+ },
+ "timestamp": "2026-08-14T21:25:44.875976+00:00",
+ "output_policy": "DOMAIN_HOLD",
+ "nine_signal": {
+  "overall": {
+   "state": "RETAK",
+   "en": "HOLDING"
+  }
+ }
+}
