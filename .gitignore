@@ -206,3 +206,4 @@ gateway-openclaw/
 .git_commit
 *.bak
 .megamemory/
+data/bus/
