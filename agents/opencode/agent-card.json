@@ -52,7 +52,7 @@
         "status": "healthy"
       },
       "arifflow": {
-        "fq": 1.24,
+        "diagnosis": "degraded_scalar_use_flow_digest_for_health",
         "status": "BALANCED"
       }
     },
