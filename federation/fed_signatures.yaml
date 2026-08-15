@@ -261,3 +261,76 @@ repair_loop:
     3rd repair → escalate to F13 SOVEREIGN (re-roll whole generation requires ACK)
   ledger_on_persist: arifflow_receipts.jsonl
   receipt_steps: [Barrier, Execute, Verify, Seal]
+
+# ── ACTOR-ENVELOPE GEOMETRY (ratified F13 2026-08-15) ─────────────────
+# Doctrine: FED_ACTOR_ENVELOPE_DOCTRINE.md (same directory).
+# Verdict: "A externally, B internally" — actor picker + envelope routing.
+#
+#   Picker shows WHO. Router resolves HOW. Runtime chooses WHAT.
+#
+# Zen eurekas distilled 2026-08-15 from i-ARIF SWOT + external audit:
+#   E1 cognition is metered, identity is owned — picker names actors only,
+#      so "rented cognition" (harness-bukan-minda) stops being drift risk.
+#   E2 memory/modality/context/capability are ENVELOPE attributes on the
+#      request, never picker lanes — saturated context is a routing problem.
+#   E3 FED is model-blind by constitution — the anchor must sit outside the
+#      loop it anchors; audit independence (Gödel E3) is enforced structurally
+#      in cascade provider sets, not by agent discipline.
+#   E4 live probes are the only auditor — route_health/token_bank demote at
+#      runtime; static config notes never gate (MiniMax stale-EXHAUSTED scar).
+#   E5 fail-closed is equilibrium, not failure — sovereign offline ⇒ HOLD,
+#      never chaos (KRT-JOHOR 2026-08-15: restraint layer held under stress).
+#
+# FALSIFIER: next model release must cost exactly 1 SOT edit (cascades below),
+# 0 picker edits. If the picker changes on a model release, geometry failed.
+actor_geometry:
+  ratified: "F13 2026-08-15 — A externally (actor picker), B internally (envelope routing)"
+  picker:
+    actors: [agi-333, asi-555, forge-777, apex-888]
+    excluded_as_structure: [kernel-000, vault-999]  # structure is not selectable labor
+    surface: /root/.config/opencode/opencode.json → provider.litellm-federation.models
+  envelope:  # attaches per-request at arif_route 444 — never a picker lane
+    memory: "L1–L6 governed recall / Memory Helix injection"
+    modality: "auto-detected: text | vision | audio | pixel"
+    context_budget: "long-context cascade member selection"
+    capability: "task_class: plan | generate | inspect | repair"
+  cascades:  # SOT — the ONLY place model identity is written
+    # scar 2026-08-15: glm-5.3[1m] is not a valid Z.ai modelCode (err 1214);
+    # 1M ctx is served by glm-5.3 on coding-plan when available — verified live.
+    agi-333:  ["zai/glm-5.3", "mimo-v2.5-pro", "MiniMax-M3", "gemini-2.5-flash"]
+    asi-555:  ["mimo-v2.5-pro", "MiniMax-M3", "gemini-3.6-flash"]
+    forge-777: ["zai/glm-5.3", "kimi-k3", "MiniMax-M3"]
+    apex-888: ["gemini-2.5-pro", "gemini-3.6-flash", "zai/glm-5.3", "qwen3.8-max"]
+  audit_independence:
+    rule: "judge cascade provider set must not equal any worker cascade primary provider"
+    apex_888_primary: google
+    worker_primaries: [zai, xiaomi-mimo]  # gemini appears in workers only at depth ≥3
+    note: "fed-audit-glm merges INTO apex-888 as its GLM independence member"
+  guardrail:  # internalized — vendor configs carry zero safety theatre
+    kernel: "F1–F13 floors; SCT required for MUTATE-class calls"
+    state: "carry_forward.json + token_bank.db + route_health = live truth"
+    actuator: "all mutations route through A-FORGE lease; forge-777 chat surface is propose-only"
+  compat_aliases:  # callers may still send these; picker never shows them
+    kill_date: "2026-09-15"
+    translate_in: "fed-aware-middleware :4010 alias map (to be wired in Stage 2)"
+    map:
+      hermes-asi: i-arif        # edge persona pair share one cascade
+      i-arif-qualia: i-arif
+      zai-pro: i-arif
+      fed-audit-glm: apex-888
+      fed-reasoning-heavy: agi-333
+      fed-long-context: agi-333
+      fed-agent-subagent: agi-333
+      opencode: forge-777
+      codex: forge-777
+      kimi-code: forge-777
+      dispatch: agi-333
+      openclaw: i-arif
+      fed/vision: asi-555
+      fed-multimodal-vision: asi-555
+      asi-555-audio: fed/audio
+      asi-555-video: fed/audio
+      fed-realtime-voice: fed/audio
+      gemini-flash-lite: apex-888
+      gemini-flash: apex-888
+      gemini-pro: apex-888
