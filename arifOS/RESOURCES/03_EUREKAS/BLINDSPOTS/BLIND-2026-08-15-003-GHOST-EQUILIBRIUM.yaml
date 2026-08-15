@@ -1,0 +1,20 @@
+schema: arifOS_blindspot_v1
+id: BS-2026-08-15-003
+name: GHOST_EQUILIBRIUM_CONSTRUCTIVE_HERESY
+origin_layer: 888-APEX
+discovered_in: APEX_CONTRAST_VOID_CYCLE_01
+date: "2026-08-15"
+
+core_gap:
+  known_unknown: "Unchallenged consensus and ceremonial compliance masking deep structural entropy (Calhoun Universe 25 syndrome)."
+  missing_observation: "Absence of automated adversarial tension during multi-agent consensus loops."
+  category: "IMMUNOLOGICAL_DEFENSE"
+
+ontological_resolution:
+  epistemic_rule: "Constructive Heresy: The Verifier must actively attempt to falsify proposals before granting Tri-Witness approval."
+  enforcement: "Anti-Calhoun Gate enforces metabolic friction score to reject 'The Beautiful Ones' (ceremonial text without physical consequence)."
+
+metrics:
+  entropy_cost: "low"
+  confidence_score: 0.90
+  friction_weight: 0.85
