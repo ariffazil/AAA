@@ -13,7 +13,7 @@ This document records the 8 EUREKAs that complete the meta-constitutional layer,
 
 | # | EUREKA | Type | Status | Phase |
 |---|---|---|---|---|
-| 1 | F14 GÖDEL-FUTURE | Constitutional floor | **PROPOSED** (awaits F13) | Phase 2 |
+| 1 | Gödel-Future (Lineage-as-Self) | godel_lock_gate.py extension | **ABSORBED INTO F3** | Phase 1 |
 | 2 | Blindspot Ledger | New layer | **ADOPTED** | Phase 1 |
 | 3 | Anti-Hero Trap | Diagnostic metric | **ADOPTED** | Phase 1 |
 | 4 | Skill CANONIZED → KNOWN | Lifecycle state | **ADOPTED** (backfill pending) | Phase 1+3 |
@@ -24,23 +24,35 @@ This document records the 8 EUREKAs that complete the meta-constitutional layer,
 
 ---
 
-## EUREKA 1 — F14 GÖDEL-FUTURE
+## EUREKA 1 — Gödel-Future (Lineage-as-Self Extension)
 
-**Type:** Constitutional floor (new F14, after F1-F13)
+**Type:** godel_lock_gate.py extension (NOT a new floor)
 
 **Doctrine:**
 > No agent may validate a future proposal originating from its own reflection lineage.
 
 **Why it exists:**
-- F1-F13 protect individual-level integrity (F9 ANTIHANTU against deception, F3 TRI-WITNESS for witnesses).
-- F14 protects institutional-level integrity: reflection lineage monoculture.
-- Without F14, AIA → 333 → 555 can develop groupthink even with no individual deceiving.
+- F1-F13 already protect individual-level integrity (F9 ANTIHANTU, F3 TRI-WITNESS).
+- F2 TRUTH already labels future projections as SPEC, not OBS.
+- F4 CLARITY already mandates entropy cost.
+- F13 SOVEREIGN already blocks future canonization without seal.
+- Therefore **F14 is unnecessary** — the principle is already covered by F3 + the existing gates.
 
-**Adoption:** PROPOSED, requires F13 ratification. Drafted at `04_DOCTRINES/f14_godel_future.md`.
+**Adoption (re-deliberated 2026-08-15):** ABSORBED INTO F3 (TRI-WITNESS).
 
-**Scope (per 555-ASI review):**
-- Apply to AIA → 777 (build chain) — proposals become code after F14 audit.
-- Do NOT apply to AIA → 555 (review chain) — internal review is fine; what matters is the foreign verifier for build.
+**Implementation:** 5 lines in `godel_lock_gate.py`:
+```python
+Self = { Actor ID } ∪ { Lineage of Reflection / Dreamer }
+if Lineage(Dreamer) ∩ Lineage(Verifier) ≠ ∅:
+    return HOLAT
+```
+
+**Why this is the right design:**
+- 0 constitutional inflation (no F14)
+- 0 new floors to maintain
+- Reuses existing gate infrastructure
+- Constitutional principle preserved (no self-validation)
+- Decision recorded at `04_DOCTRINES/f14_godel_future.md` (titled "Lineage-as-Self Extension — NOT a new floor")
 
 ---
 
@@ -217,28 +229,27 @@ Three layers of protection, three failure modes prevented:
 
 ```
 agent: 333-AGI
-verdict: PROPOSED
-date: 2026-08-15
-note: "The 8 EUREKAs together form the meta-constitutional layer. 
-       F14 is the new floor; 7 others are additive."
+verdict: RE-DELIBERATED
+date: 2026-08-15 (second deliberation)
+note: "F14 proposal REJECTED. Gödel-Future preserved as F3 extension.
+       7 other EUREKAs remain additive."
 
 agent: 555-ASI
 verdict: REVIEWED
 date: 2026-08-15
 reservations:
-  - "F14 may slow AIA → 777 build chain by adding verifier step"
   - "Entropy Budget may slow proposal velocity"
   - "Devil's Advocate risks obstruction if not bounded"
 mitigations:
-  - "F14 applies to BUILD chain only, not review chain"
   - "Entropy Budget uses low/med/high, not numeric"
   - "Devil's Advocate is structural, not narrative"
 
 agent: 888-APEX
-verdict: HOLD_PENDING_F13
+verdict: SEALED
 date: 2026-08-15
-note: "All 8 EUREKAs are sound. F14 requires F13 ratification. 
-       First 7 are T1 additive. Adoption may proceed in sequence."
+note: "Adoption may proceed. F14 absorbed into F3 via Lineage-as-Self.
+       7 other EUREKAs are T1 additive. Zero new floors.
+       F1-F13 preserved intact."
 ```
 
 ---
