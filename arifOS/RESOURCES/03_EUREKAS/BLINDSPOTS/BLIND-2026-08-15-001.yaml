@@ -1,0 +1,50 @@
+# BLIND-2026-08-15-001 — First blindspot emission
+# Forged 2026-08-15 by AGI/ASI/APEX deliberation
+
+id: BLIND-2026-08-15-001
+type: blindspot
+emitted_by: AIA-cycle-001
+classification: missing_observation
+
+# ─── The Blindspot ──────────────────────────────────────────────────────────
+
+confidence: 0.65
+reason: |
+  We have no telemetry on agent-side memory leaks. Specifically:
+  - L1-L6 memory writes are logged (F11 AUDITABILITY)
+  - But no metric tracks WHAT IS WRITTEN vs WHAT IS READ
+  - If a memory is written but never read, it's still accumulating
+missing_observation: |
+  - No counter for "memory written but never read"
+  - No counter for "memory staleness" (written > 30 days, never re-read)
+  - No counter for "memory fragmentation" (memory spread across L1-L6 with no consolidation witness)
+
+potential_consequence: |
+  Silent memory accumulation → eventual overflow or context-pollution.
+  May already be happening; we cannot detect it.
+
+# ─── How to detect this ───────────────────────────────────────────────────
+
+detection_idea: |
+  - Add a memory_read_counter to L1-L6 plane
+  - Add a memory_staleness_alert when written > 30d, read = 0
+  - Add a memory_health check at cycle end
+
+# ─── Class ────────────────────────────────────────────────────────────────
+
+class: missing_observation
+severity: MEDIUM
+priority: 3  # will be addressed in Phase 3
+
+# ─── Recommendation ──────────────────────────────────────────────────────
+
+recommendation: |
+  Add memory_read_counter to L1-L6 in the next cycle. This is a T1 change.
+
+# ─── Source ──────────────────────────────────────────────────────────────
+
+source: AIA first-cycle deliberation
+doctrine: 04_DOCTRINES/EUREKAS_8_FUTURE_QUESTIONS.md
+status: ACKNOWLEDGED
+
+DITEMPA BUKAN DIBERI ⚒️
