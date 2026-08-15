@@ -1,0 +1,70 @@
+id: aaa://cockpit/architecture
+type: component
+state: ACTIVE
+freshness: 2026-08-15T00:00:00Z
+epoch: 219
+owner: 000-SALAM
+trust_tier: sovereign-canonical
+epistemic_label: DER
+
+title: AAA — Federation cockpit
+description: >
+  5817 files, 486 SKILL.md, 4 lanes (333/555/777/888), 15+ external harnesses.
+  The meta layer where agent identity, art bindings, and skill catalog live.
+
+links:
+  canonical: /root/AAA/
+  see_also:
+    - /root/AAA/registries/AGENTS_UNIFIED.yaml
+    - /root/AAA/agents/HEXAGON.yaml
+  implements:
+    - arifos://kernel/architecture
+
+requires:
+  - arifos://kernel/architecture
+  - arifos://kernel/genesis
+
+provides:
+  - aaa://agents/lanes/333-AGI
+  - aaa://agents/lanes/555-ASI
+  - aaa://agents/lanes/777-forge
+  - aaa://agents/lanes/888-APEX
+  - aaa://skills/catalog
+  - aaa://agents/identities
+  - aaa://agents/external/_all
+  - aaa://skills/FORGE-fastmcp
+  - aaa://skills/APEX-fff-loop-protocol
+  - aaa://skills/APEX-humility-godel
+
+love_links:
+  - arifos://kernel/architecture
+  - aforge://tools/registry
+  - arifflow://flow/ingest
+  - hermes://gateway/overview
+  - sovereign://canon/f13
+  - fastmcp://servers/server
+  - a2a://spec/overview
+  - openclaw://gateway/overview
+
+tags:
+  - cockpit
+  - sovereign-canonical
+  - skills
+  - agents
+  - lanes
+
+scope:
+  filesystem: true
+  network_read: false
+  network_write: false
+  secrets: false
+  vault_write: false
+  shell_exec: false
+
+freshness_tolerance_seconds: 86400
+reversible: true
+blast_radius: medium
+authority_ceiling: EXECUTE_REVERSIBLE
+constitutional_floors: [F1, F2, F11, F13]
+
+epoch_of_last_mutation: 219

@@ -1,0 +1,93 @@
+# 01_RESOURCES — Reality exists
+# Layer 111 SENSE. RRR's primary domain.
+# Doctrine: RRR discovers reality. It does not think. It does not judge. It does not execute.
+# Source: RRR-Native Resource OS — derived from Copilot + Arif synthesis 2026-08-15
+
+layer: 01
+name: RESOURCES
+purpose: Where reality is admitted. The single source of truth for every discoverable object in the federation.
+authority: 111_RRR
+doctrine: discover-only
+
+# What this layer provides
+provides:
+  - discoverable  # arif_observe(mode="rrr", query=intent) walks here
+  - freshness     # every resource carries .freshness
+  - trust_tier    # every resource carries .trust_tier
+  - requires      # every resource carries .requires
+  - provides      # every resource carries .provides
+
+# What this layer requires
+requires:
+  - 02_ONTOLOGY  # concepts are imported to classify what enters
+  - 03_EUREKAS   # discoveries annotate why a resource exists
+  - 11_GRAPH     # love-links are graph-resident
+
+# Sub-layers (the 10 sources)
+sources:
+  - id: mcp
+    title: Model Context Protocol (Anthropic)
+    freshness: 2026-07-28
+    trust_tier: external-canonical
+  - id: fastmcp
+    title: FastMCP Pythonic framework
+    freshness: 2026-07-28
+    trust_tier: external-canonical
+  - id: a2a
+    title: Agent2Agent protocol (Linux Foundation)
+    freshness: 2026-07-28
+    trust_tier: external-canonical
+  - id: openclaw
+    title: OpenClaw self-hosted gateway
+    freshness: 2026-07-28
+    trust_tier: external-canonical
+  - id: arifos
+    title: arifOS kernel (8-org language chain)
+    freshness: live
+    trust_tier: sovereign-canonical
+  - id: aaa
+    title: AAA federation cockpit
+    freshness: live
+    trust_tier: sovereign-canonical
+  - id: aforge
+    title: A-FORGE execution engine
+    freshness: live
+    trust_tier: sovereign-canonical
+  - id: arifflow
+    title: arifFlow metabolism ledger
+    freshness: live
+    trust_tier: sovereign-canonical
+  - id: hermes
+    title: HERMES gateway
+    freshness: live
+    trust_tier: sovereign-canonical
+  - id: sovereign
+    title: Sovereign canon (you, F13)
+    freshness: live
+    trust_tier: sovereign-canonical
+
+# Love-links (must be reciprocated by target)
+love_links:
+  - mcp             ↔ 02_ONTOLOGY/concepts/protocol   # MCP defines the protocol concept
+  - fastmcp         ↔ 01_RESOURCES/mcp                # FastMCP is the Python port
+  - a2a             ↔ 01_RESOURCES/mcp                # A2A peers with MCP
+  - a2a             ↔ 09_AGENTS/lanes                 # A2A operates between agents
+  - openclaw        ↔ 09_AGENTS/external              # OpenClaw hosts external harness agents
+  - aforge          ↔ 01_RESOURCES/mcp                # A-FORGE is an MCP server
+  - aforge          ↔ 06_CAPABILITIES/arif_forge      # A-FORGE implements arif_forge
+  - aaa             ↔ 07_SKILLS                       # AAA owns the skill catalog
+  - aaa             ↔ 09_AGENTS/lanes                 # AAA owns the 4 lanes
+  - arifflow        ↔ 10_RECEIPTS/seal                # arifFlow emits seals
+  - hermes          ↔ 01_RESOURCES/openclaw           # HERMES is openclaw-flavoured
+  - sovereign       ↔ 04_DOCTRINES/genesis            # F13 ratifies the canon
+  - arifos          ↔ 04_DOCTRINES/genesis            # arifOS holds the kernel canon
+  - arifos          ↔ 06_CAPABILITIES/*               # arifOS implements all 8 verbs
+
+# Resource manifest schema (every entry must satisfy)
+schema: ./../../resource-manifest.schema.json
+
+# Epoch
+epoch: 1
+updated: 2026-08-15
+
+DITEMPA BUKAN DIBERI ⚒️

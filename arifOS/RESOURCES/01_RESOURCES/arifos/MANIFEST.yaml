@@ -1,0 +1,63 @@
+id: arifos://kernel/architecture
+type: component
+state: ACTIVE
+freshness: 2026-08-15T00:00:00Z
+epoch: 41
+owner: 000-SALAM
+trust_tier: sovereign-canonical
+epistemic_label: DER
+
+title: arifOS — Constitutional kernel
+description: >
+  The 8-org language chain. 8185 Python files. GENESIS canon. F1-F13 floors.
+  The sovereign substrate of the federation. Cannot execute.
+
+links:
+  canonical: /root/arifOS/
+  see_also:
+    - /root/arifOS/GENESIS/000_KERNEL_CANON.md
+    - /root/arifOS/GENESIS/FLOOR_TABLE.json
+  implements:
+    - sovereign://canon/f13
+
+requires:
+  - sovereign://canon/f13
+
+provides:
+  - arifos://kernel/genesis
+  - arifos://kernel/floor_table
+  - arifos://kernel/8-verb-chain
+  - arifos://a2a/proto
+  - arifos://mcp/server
+
+love_links:
+  - mcp://spec/architecture
+  - a2a://spec/overview
+  - aaa://cockpit/architecture
+  - aforge://tools/registry
+  - arifflow://flow/ingest
+  - hermes://gateway/overview
+  - sovereign://canon/f13
+
+tags:
+  - kernel
+  - sovereign-canonical
+  - 8-verb-chain
+  - genesis
+  - constitutional
+
+scope:
+  filesystem: true
+  network_read: true
+  network_write: false
+  secrets: false
+  vault_write: true
+  shell_exec: false
+
+freshness_tolerance_seconds: 86400
+reversible: true
+blast_radius: critical
+authority_ceiling: IRREVERSIBLE
+constitutional_floors: [F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13]
+
+epoch_of_last_mutation: 41

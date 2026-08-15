@@ -1,0 +1,57 @@
+id: fastmcp://servers/server
+type: component
+state: ACTIVE
+freshness: 2026-07-28T00:00:00Z
+epoch: 4
+owner: jlowin
+trust_tier: external-canonical
+epistemic_label: OBS
+
+title: FastMCP — Pythonic MCP framework
+description: >
+  The standard Python framework for building MCP servers, clients, and apps.
+  Used by A-FORGE as the substrate for the 116-tool registry.
+
+links:
+  canonical: https://gofastmcp.com/
+  see_also:
+    - https://gofastmcp.com/llms.txt
+  implements:
+    - mcp://spec/architecture
+
+requires:
+  - mcp://spec/architecture
+
+provides:
+  - fastmcp://servers/tools
+  - fastmcp://servers/resources
+  - fastmcp://servers/prompts
+  - fastmcp://providers/skills
+  - fastmcp://transforms/code-mode
+  - fastmcp://apps/overview
+
+love_links:
+  - mcp://spec/architecture
+  - aforge://tools/registry
+  - aaa://cockpit/architecture
+
+tags:
+  - framework
+  - external-canonical
+  - python
+  - mcp
+
+scope:
+  filesystem: true
+  network_read: true
+  network_write: false
+  secrets: false
+  vault_write: false
+  shell_exec: false
+
+freshness_tolerance_seconds: 2592000
+reversible: true
+blast_radius: low
+authority_ceiling: OBSERVE
+constitutional_floors: [F1, F11, F12]
+epoch_of_last_mutation: 2026-07-28

@@ -1,0 +1,122 @@
+# Synthetic KNOWLEDGE_MUTATION — the first event in the Resource OS
+# Forged 2026-08-15 by F13 SOVEREIGN directive
+# Demonstrates the propagation chain: SCAR → EUREKA → ONTOLOGY → DOCTRINE → POLICY → SKILL → WORKFLOW → AGENT → RECEIPT
+
+id: EVT-2026-08-15-001
+type: KNOWLEDGE_MUTATION
+subtype: EUREKA
+created_at: 2026-08-15T00:00:00Z
+actor: 333-AGI
+
+object:
+  id: EUREKA-RRR-DISCOVERY-FIRST-CLASS
+  type: eureka
+  summary: >
+    RRR-EUREKA: The primary unit of a Skill OS is no longer the Skill —
+    it is the Resource. Skills are projections over reality. Reality
+    chooses the skill; the skill does not choose reality.
+
+# ─── Impact (the propagation chain) ───────────────────────────────────────
+impact:
+  scar_lineage:
+    - SCAR-2026-08-15-001-OBS-NON-BIDIRECTIONAL-EDGES
+  eurekas: 1
+  ontologies: 1
+  doctrines: 2
+  policies: 1
+  skills: 17
+  workflows: 4
+  agents: 3
+  affected_paths:
+    - "SCAR-2026-08-15-001 → EUREKA-RRR-DISCOVERY-FIRST-CLASS → ontology:resource/projection → doctrine:RRR-DISCOVERY → policy:capability-before-skill → skill:<domain>.<subdomain>.<action> → workflow:rrr_resolve → agent:333-AGI, 555-ASI, 888-APEX"
+    - "SCAR-2026-08-15-001 → EUREKA-RRR-DISCOVERY-FIRST-CLASS → ontology:resource/projection → doctrine:LOVE-LINK-RECIPROCITY → policy:love-link-required → skill:love-link-verifier → workflow:auth_pipeline → agent:888-APEX"
+
+# ─── Epoch (at the time of the mutation) ─────────────────────────────────
+epoch:
+  ontology: 51
+  scar: 22
+  eureka: 33
+  doctrine: 41
+  policy: 18
+  skill: 219
+  workflow: 1
+  agent: 1
+  receipt: 1
+  graph: 1
+  test: 1
+  resource: 1
+
+# ─── Constitutional floors ────────────────────────────────────────────────
+constitutional_floors:
+  - F1  # AMANAH — reversible
+  - F2  # TRUTH — epistemic label
+  - F11 # AUDITABILITY — emitted as receipt
+  - F13 # SOVEREIGN — F13 ratification
+
+# ─── Severity ─────────────────────────────────────────────────────────────
+severity: SIGNIFICANT
+required_action: delta_ingestion
+
+# ─── Witness (F3 TRI-WITNESS) ─────────────────────────────────────────────
+witness:
+  human: 0.95    # F13 sovereign
+  ai:    0.92    # 333-AGI + 555-ASI + 888-APEX
+  earth: 0.85    # /root/AAA/arifOS/RESOURCES/ — 12-layer live substrate
+
+# ─── Evidence paths ───────────────────────────────────────────────────────
+evidence_paths:
+  - /root/AAA/arifOS/RESOURCES/01_RESOURCES/INDEX.yaml
+  - /root/AAA/arifOS/RESOURCES/01_RESOURCES/mcp/MANIFEST.yaml
+  - /root/AAA/arifOS/RESOURCES/01_RESOURCES/arifos/MANIFEST.yaml
+  - /root/AAA/arifOS/RESOURCES/love-link-verifier.py
+  - /root/AAA/arifOS/RESOURCES/03_EUREKAS/INDEX.yaml
+  - /root/AAA/wiki/arifos/rrr-resource-reality-resolution.md
+  - /root/forge_work/2026-08-15-rrr-assessment/DECISION_PACKAGE.md
+
+# ─── Delta payload (what consumers must apply) ────────────────────────────
+delta_payload:
+  added:
+    - id: arifos://rrr/eureka/discovery-first-class
+      type: eureka
+      strength: HIGH
+    - id: arifos://rrr/doctrine/love-link-reciprocity
+      type: doctrine
+    - id: arifos://rrr/policy/capability-before-skill
+      type: policy
+  modified:
+    - id: arifos://kernel/architecture
+      change: "06_CAPABILITIES now atomic verbs before 07_SKILLS compositions"
+  removed: []
+
+# ─── Seal (vault-witnessed) ───────────────────────────────────────────────
+seal:
+  seal_id: null
+  signed_by: null
+  timestamp: null
+  note: "Draft event — seal requires F13 stg_<16+> token. Lifecycle: SEAL when F13 approves."
+
+# ─── The RRR doctrine reaffirmed ──────────────────────────────────────────
+doctrine_reaffirmation: >
+  "RRR discovers reality. It does not think. It does not judge. It does not execute."
+  — arifOS · 000-SALAM · F13 SOVEREIGN · 2026-08-15
+
+# ─── Chain of custody ─────────────────────────────────────────────────────
+chain_of_custody:
+  - step: 1
+    actor: 333-AGI
+    verb: arif_observe
+    action: "Discovered the bifurcation: skill-first vs resource-first"
+  - step: 2
+    actor: 555-ASI
+    verb: arif_think
+    action: "Reviewed the RRR decision package (DITEMPA BUKAN DIBERI)"
+  - step: 3
+    actor: 888-APEX
+    verb: arif_judge
+    action: "Issued SEAL on the 12-layer architecture"
+  - step: 4
+    actor: 000-SALAM
+    verb: arif_seal
+    action: "F13 ratification — Resources-first, Skills-view, RRR-sensory"
+
+# DITEMPA BUKAN DIBERI ⚒️
