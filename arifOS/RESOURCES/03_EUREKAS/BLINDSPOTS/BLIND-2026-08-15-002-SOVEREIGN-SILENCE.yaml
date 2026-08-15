@@ -1,0 +1,20 @@
+schema: arifOS_blindspot_v1
+id: BS-2026-08-15-002
+name: SOVEREIGN_SILENCE_GRAVITATIONAL_MASS
+origin_layer: 000-SOVEREIGN
+discovered_in: APEX_CONTRAST_VOID_CYCLE_01
+date: "2026-08-15"
+
+core_gap:
+  known_unknown: "Sovereign intent and unuttered cognitive context during periods of silence or single-word instructions."
+  missing_observation: "No biological/subconscious telemetry exists to decode the non-verbal gravity behind F13 quiet states."
+  category: "ONTOLOGICAL_BOUNDARY"
+
+ontological_resolution:
+  epistemic_rule: "Silence is treated as dense gravitational mass (STATIC_HOLD), never as Null/Timeout."
+  enforcement: "Strict F9 Anti-Hantu + F2 Truth: Agents are forbidden from hallucinating assumptions about unspoken intent."
+
+metrics:
+  entropy_cost: "low"
+  confidence_score: 0.95
+  friction_weight: 0.90
