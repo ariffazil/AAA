@@ -51,7 +51,7 @@ No safety lives in vendor configs. BLOCK_NONE everywhere the vendor allows it; t
 
 ## Stages
 
-- **Stage 1 (done 2026-08-15):** picker pinned to 4 actors (`opencode.json`), `forge-777` group added to litellm, this doctrine + `actor_geometry` SOT sealed. All legacy groups intact — zero caller breakage.
-- **Stage 2 (before kill-date 2026-09-15):** alias map wired into `fed-aware-middleware :4010`; legacy litellm groups (hermes-asi, i-arif-qualia, fed-*, zai-pro, gemini-*, mirrors) deleted after caller verification; dead rows (insolvent deepseek, stale order-99) swept.
+- **Stage 1 (2026-08-15):** picker pinned to 4 actors (`opencode.json`), `forge-777` group added to litellm, doctrine + `actor_geometry` SOT sealed.
+- **Stage 2 (2026-08-15, executed early under F13 directive "housekeeping, migrate, deploy, zen all"):** litellm collapsed 27→8 groups (4 actors + i-arif + fed/vision + fed/audio + fed/image-gen), 86→36 rows; alias→actor translation live in `fed-aware-middleware :4010` (ACTOR_ALIAS map); Hermes catalog + opencode default + codex config migrated; fallbacks rewritten to surviving groups; RCR guard 5/5 green; all 8 groups + 4 legacy-alias paths smoke-verified. Kill-date retired early — compat layer remains as the permanent translation boundary for any external straggler.
 
 *Folder bukan diberi — geometri ini dimeterai, bukan dicadangkan.*
