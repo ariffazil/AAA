@@ -1,29 +1,43 @@
-# POLICY — aia-72h v0.3 (renamed from hermes-impian-72h by F13, 2026-08-15)
-policy_id: aia-72h
-architecture: AIA   # Agentic Impian Architecture
-carrier: hermes
-mode: impian                 # Hermes::IMPIAN — a MODE, not an agent
-layer_position: "222"        # pre-deliberation layer — horizon BEFORE AAA (333/555/888/777/999)
-classification: FUTURE_REFLECTION
+# Policy — Hermes Impian 72h (AIA::72H)
+# Forged: 2026-08-15 · Ratified by ARIF (F13) 2026-08-15 11:25 MYT
+# Doctrine: 04_DOCTRINES/constrained_imagination.md
+# Workflow: 08_WORKFLOWS/aia_72h_cycle.yaml
+
+policy: hermes-impian-72h
+name: AIA::72H — Agentic Impian Architecture
+version: 0.2
+
+cadence: every_72h
 authority: OBSERVE_ONLY
+classification: FUTURE_REFLECTION
 mutation: forbidden
 auto_execute: false
 default_verdict: HOLD
-cadence: 72h
-deliver: origin
-separation_rule:             # HARD, F13 2026-08-15
-  dream: "VVV 72h = memory organization (konsolidasi lalu) — NEVER merged with AIA"
-  impian: "AIA 72h = future imagination (jurang hadapan) — NEVER merged with VVV"
-storage:
-  receipts: 10_RECEIPTS/AIA/<YYYY-MM-DD>/
-  future_candidates: 03_EUREKAS/FUTURE/
+
+limits:
+  max_proposals_per_cycle: 3
+  confidence_cap: 0.90
+  external_council: monthly_only        # NOT every cycle — ringgit + injection surface
+  external_council_allowlist: []        # F13 populates when council first convened
+  propose_only: true                    # never build, never approve self
+
+paths:
+  grounded_proposals: 03_EUREKAS/FUTURE/
   quarantine: 03_EUREKAS/FANTASIES/
-gates:
-  - reality_anchor required (live probe / verified path, this run)
-  - scar_id or evidence path required
-  - evidence_paths non-empty
-  - max 3 proposals per cycle
-budget:
-  max_output_lines: 8
-review:
-  every_90_days: keep-or-kill per F3 CRON LAW
+  receipts: 10_RECEIPTS/AIA/
+
+anti_fantasy_gate:
+  required: [reality_anchor, scar_id, evidence_paths]
+  if_missing: quarantine_as_fantasy
+
+delivery:
+  digest_to: sovereign_chat             # Arif — every cycle, BM, <= 8 lines
+  quiet_hours: "23:00-07:00 MYT → hold digest until morning"
+
+kill_criteria:                           # F3 CRON LAW — empty cron = burned ringgit
+  - 3 consecutive cycles with zero proposals AND zero quarantines → flag for F13 review
+  - every cycle must still produce receipt + digest (knowing "nothing new" is also foresight)
+
+separation_law:
+  dream: memory_consolidation_backwards   # nightly dream-engine — DO NOT MERGE
+  impian: future_imagination_forwards     # this policy
