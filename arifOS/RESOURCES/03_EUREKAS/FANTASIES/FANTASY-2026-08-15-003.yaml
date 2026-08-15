@@ -1,0 +1,9 @@
+id: FANTASY-2026-08-15-003
+reality_anchor: rrr://runtime/snapshot/2026-08-15
+scar_id: SCAR-2026-08-12-001
+evidence_paths: []
+capability_gap: Something.
+future_skill: all.knowing.oracle
+reality_status: FANTASY
+fantasy_status: FANTASY
+verdict_reason: evidence_paths is empty

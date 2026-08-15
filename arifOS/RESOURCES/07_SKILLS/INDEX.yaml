@@ -1,0 +1,74 @@
+# 07_SKILLS — Compositions exist
+# Skill = composition of capabilities + resources.
+# This is the existing skill catalog, lifted into the Resource OS.
+
+layer: 07
+name: SKILLS
+purpose: Where reusable compositions live. A skill bundles capabilities + resources to produce a repeatable outcome.
+authority: 8-verb chain (composition)
+doctrine: compose-from-capabilities
+
+# What this layer provides
+provides:
+  - skill_ids            # <domain>.<subdomain>.<action>
+  - manifest             # MANIFEST.yaml per skill
+  - requires_capabilities  # which atomic verbs this skill uses
+  - requires_resources     # which resources this skill consumes
+  - provides_outcomes      # the named outputs
+  - love_links             # graph edges to other skills/agents
+
+# What this layer requires
+requires:
+  - 06_CAPABILITIES  # at least one atomic verb
+  - 01_RESOURCES     # at least one resource (the skill's reality)
+  - 04_DOCTRINES     # at least one doctrine anchor
+  - 05_POLICIES      # at least one policy binding
+
+# Existing skill catalog (lifted into Resource OS)
+catalog:
+  paths:
+    - /root/AAA/skills/           # 221 skill folders
+    - /root/.kimi-code/skills/    # 259 SKILL.md (kimi scope)
+  total: 486
+  count_basis: SKILL.md per folder
+
+# Naming convention (reverse-domain)
+naming:
+  pattern: "<domain>.<subdomain>.<action>"
+  examples:
+    - geology.prospect.evaluate
+    - finance.cashflow.forecast
+    - arifos.kernel.audit
+    - vault999.receipt.verify
+  anti_examples:
+    - AnalyzerV2
+    - UltimateSkill
+    - AuditFinalV5
+
+# Per-skill directory layout
+structure:
+  - SKILL.md         # what + why
+  - MANIFEST.yaml    # machine-readable registry
+  - README.md        # human onboarding
+  - POLICY.md        # F1-F13 binding
+  - KNOWLEDGE/       # truths (ontology + glossary)
+  - TOOLS/           # capability executors
+  - WORKFLOWS/       # sequence files
+  - RECEIPTS/        # audit trail
+  - TESTS/           # verification
+  - EXAMPLES/        # input/output pairs
+  - MEMORY/          # skill-scoped memory
+  - GRAPH/           # skill's own edges
+
+# Love-links
+love_links:
+  - 07_SKILLS/*  ↔ 06_CAPABILITIES/*  # skills consume capabilities
+  - 07_SKILLS/*  ↔ 01_RESOURCES/*     # skills consume resources
+  - 07_SKILLS/*  ↔ 04_DOCTRINES/*     # skills derive from doctrines
+  - 07_SKILLS/*  ↔ 09_AGENTS/*        # skills are loaded by agents
+  - 07_SKILLS/*  ↔ 11_GRAPH/edges     # skills are graph nodes
+
+epoch: 219
+updated: 2026-08-15
+
+DITEMPA BUKAN DIBERI ⚒️

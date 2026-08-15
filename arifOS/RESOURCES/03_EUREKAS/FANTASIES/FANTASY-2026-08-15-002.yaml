@@ -1,0 +1,9 @@
+id: FANTASY-2026-08-15-002
+reality_anchor: rrr://runtime/snapshot/2026-08-15
+evidence_paths:
+- /tmp/fake.json
+capability_gap: Something.
+future_skill: doctrine.auto.healer
+reality_status: FANTASY
+fantasy_status: FANTASY
+verdict_reason: scar_id is null

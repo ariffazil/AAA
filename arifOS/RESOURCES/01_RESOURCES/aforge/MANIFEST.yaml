@@ -1,0 +1,66 @@
+id: aforge://tools/registry
+type: component
+state: ACTIVE
+freshness: 2026-08-15T00:00:00Z
+epoch: 116
+owner: 000-SALAM
+trust_tier: sovereign-canonical
+epistemic_label: DER
+
+title: A-FORGE — Execution engine
+description: >
+  116 MCP tools, 1833 TS files, port 7071. The actuator. Mutates only after SEAL.
+  Implements the AUTH pipeline. Built on FastMCP.
+
+links:
+  canonical: /root/A-FORGE/
+  see_also:
+    - /root/A-FORGE/AGENTS.md
+  implements:
+    - arifos://capabilities/arif_forge
+
+requires:
+  - arifos://kernel/architecture
+  - fastmcp://servers/server
+  - aaa://cockpit/architecture
+
+provides:
+  - aforge://tools/forge_shell
+  - aforge://tools/forge_git
+  - aforge://tools/forge_filesystem
+  - aforge://tools/forge_probe
+  - aforge://tools/forge_evaluate
+  - aforge://tools/forge_witness
+  - aforge://tools/forge_seal
+  - aforge://workflows/auth-pipeline
+  - aforge://receipts/ledger
+
+love_links:
+  - mcp://spec/architecture
+  - fastmcp://servers/server
+  - arifos://kernel/architecture
+  - aaa://cockpit/architecture
+  - arifflow://flow/ingest
+  - sovereign://canon/f13
+
+tags:
+  - execution
+  - sovereign-canonical
+  - mcp-server
+  - 116-tools
+
+scope:
+  filesystem: true
+  network_read: true
+  network_write: true
+  secrets: false
+  vault_write: true
+  shell_exec: true
+
+freshness_tolerance_seconds: 86400
+reversible: true
+blast_radius: high
+authority_ceiling: EXECUTE_HIGH_IMPACT
+constitutional_floors: [F1, F2, F4, F11, F12]
+
+epoch_of_last_mutation: 116
