@@ -48,3 +48,8 @@ doctrine: 04_DOCTRINES/EUREKAS_8_FUTURE_QUESTIONS.md
 status: ACKNOWLEDGED
 
 DITEMPA BUKAN DIBERI ⚒️
+
+# ─── Entropy Budget (added 2026-08-15 post-verification; was missing) ──────
+entropy_cost: low          # one read-counter + one staleness alert, no new organ
+maintenance_cost: low      # counters piggyback existing telemetry
+complexity_cost: low       # no schema change; two gauges

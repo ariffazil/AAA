@@ -1,0 +1,67 @@
+# 06_CAPABILITIES/arif_challenge — Devil's Advocate
+# Verb 444-challenge — every proposal must answer this question before being filed.
+
+id: arif_challenge
+code: 444-challenge
+name: Devil's Advocate
+floor: F9  # ANTIHANTU — protects against deception
+role: challenge
+
+# Description
+description: |
+  The structural challenge capability. Cheap to run; prevents catastrophic blind spots.
+  Every AIA proposal must be passed through arif_challenge before being filed to
+  03_EUREKAS/FUTURE/. The challenge is structural, not narrative.
+
+# Prompt template
+prompt_template: |
+  If this dream destroys arifOS, how would it do so?
+  Apply the four checks:
+    1. Self-deception: Is this proposal subtly self-serving?
+    2. Groupthink: Does this align with what we already believe?
+    3. Recursive hallucination: Is this a fantasy that we cite as evidence?
+    4. Backfire: If implemented, what is the worst realistic outcome?
+
+# Inputs
+inputs:
+  - proposal_under_test
+  - lineage          # who created this proposal
+  - evidence_paths  # the receipts the proposal cites
+
+# Outputs
+outputs:
+  - verdict: PASS | HOLD | REJECT
+  - risk_factors: [string]
+  - improvement_suggestions: [string]
+
+# Usage
+usage:
+  who_runs: |
+    AIA cycle (after synthesize, before file)
+  when: |
+    Mandatory on every proposal before FUTURE/ filing
+  cost: |
+    LOW (no LLM call by default; structural check)
+
+# Authority
+authority: GOVERNANCE-mild
+trigger: every AIA proposal
+binding: true
+
+# Constitutional
+constitutional_floors: [F9, F14-PROPOSED]
+
+# Love-links
+love_links:
+  - 06_CAPABILITIES/arif_impian
+  - 04_DOCTRINES/EUREKAS_8_FUTURE_QUESTIONS.md
+  - 04_DOCTRINES/constrained_imagination.md
+  - 04_DOCTRINES/f14_godel_future.md
+  - 03_EUREKAS/FUTURE
+  - 03_EUREKAS/BLINDSPOTS
+  - 03_EUREKAS/FANTASIES
+
+# Epistemic label
+epistemic_label: INT
+
+DITEMPA BUKAN DIBERI ⚒️
