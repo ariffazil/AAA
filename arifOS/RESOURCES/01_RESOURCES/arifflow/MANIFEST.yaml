@@ -1,0 +1,58 @@
+id: arifflow://flow/ingest
+type: component
+state: ACTIVE
+freshness: 2026-08-15T00:00:00Z
+epoch: 1
+owner: 000-SALAM
+trust_tier: sovereign-canonical
+epistemic_label: DER
+
+title: arifFlow — Metabolism ledger
+description: >
+  581 files, port 7073. Flow Quotient (FQ = verify/execute ratio). Ingests
+  FlowReceipts. Emits cooling signals. The nervous system of the federation.
+
+links:
+  canonical: /root/arifFlow/
+  see_also:
+    - /root/arifFlow/ARIFLOW_KERNEL_CANON.md
+  implements:
+    - arifos://capabilities/arif_memory
+
+requires:
+  - arifos://kernel/architecture
+  - aaa://cockpit/architecture
+
+provides:
+  - arifflow://flow/health
+  - arifflow://flow/ingest
+  - arifflow://flow/quotient
+  - arifflow://flow/cooling
+
+love_links:
+  - arifos://kernel/architecture
+  - aaa://cockpit/architecture
+  - aforge://tools/registry
+  - sovereign://canon/f13
+
+tags:
+  - metabolism
+  - sovereign-canonical
+  - flow-quotient
+  - cooling
+
+scope:
+  filesystem: true
+  network_read: true
+  network_write: true
+  secrets: false
+  vault_write: true
+  shell_exec: false
+
+freshness_tolerance_seconds: 86400
+reversible: true
+blast_radius: medium
+authority_ceiling: EXECUTE_REVERSIBLE
+constitutional_floors: [F1, F2, F11, F12]
+
+epoch_of_last_mutation: 1
