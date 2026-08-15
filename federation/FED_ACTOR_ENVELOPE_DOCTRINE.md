@@ -1,6 +1,7 @@
 # FED Actor-Envelope Doctrine
 
 > Ratified F13, 2026-08-15. Verdict: **"A externally, B internally."**
+> Canon sentence (F13, 2026-08-15): **"State is no longer topology."**
 > Companion SOT: `fed_signatures.yaml → actor_geometry` (cascades live there, not here).
 > Parent: ACTOR_SURFACE_DOCTRINE (`/root/forge_work/2026-08-15-runtime-geometry/`).
 
