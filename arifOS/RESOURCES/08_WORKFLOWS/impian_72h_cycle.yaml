@@ -1,0 +1,148 @@
+# 08_WORKFLOWS/impian_72h_cycle.yaml — BIJAKSANA IMPIAN 72-hour cycle
+# Forged 2026-08-15 by F13 SOVEREIGN directive
+
+id: workflow.impian.72h
+name: BIJAKSANA IMPIAN 72-hour cycle
+type: reflection
+trigger: cron("every 72h")
+agent: hermes
+mode: bijakasana-impian
+
+# Constitutional floors
+constitutional_floors: [F1, F2, F11]
+
+# Reversibility
+reversible: true
+blast_radius: low
+authority_ceiling: OBSERVE
+
+# ─── The 9 steps ───────────────────────────────────────────────────────────
+
+steps:
+  - id: wake_hermes
+    capability: arif_impian
+    input: cron_ticker
+    output: hermes.instance
+    description: "Wake Hermes from idle. Inherit identity, epoch, security context."
+    duration_ms: 200
+
+  - id: rrr_snapshot
+    capability: arif_observe
+    mode: rrr
+    produces: rrr://runtime/snapshot/<date>
+    description: "RRR snapshot of the present. The ground truth for reality_anchor."
+    duration_ms: 2000
+
+  - id: scar_walk
+    capability: arif_observe
+    inputs:
+      - scar_ledger          # 10_RECEIPTS/sesat
+      - holds_log            # 10_RECEIPTS/human_envelope
+      - repeated_failures    # 12_TESTS/constitutional
+    produces: scar_panorama.yaml
+    description: "Walk the scar ledger. Compile the failure topography."
+    duration_ms: 5000
+
+  - id: gap_scan
+    capability: arif_observe
+    inputs:
+      - capability_inventory     # 06_CAPABILITIES/*
+      - unused_skills            # 07_SKILLS/_retired
+      - manual_work_ledger       # 05_POLICIES/observability
+    produces: capability_gap_map.yaml
+    description: "Scan for capability gaps. The opposite of skill graveyard."
+    duration_ms: 15000
+
+  - id: external_council
+    capability: a2a
+    parallel:
+      - agent: external-council-A
+        prompt: "Support | Challenge | Alternative | Risk"
+      - agent: external-council-B
+        prompt: "Support | Challenge | Alternative | Risk"
+      - agent: external-council-C
+        prompt: "Support | Challenge | Alternative | Risk"
+    description: "Cross-challenge with external agents. No copy, only compare."
+    duration_ms: 60000
+
+  - id: synthesize
+    lane: 333-AGI
+    capability: arif_think
+    produces: future_skill_candidates.yaml
+    description: "333 synthesizes the proposals. Filter fantasy by Anti-Fantasy Safeguard."
+    duration_ms: 30000
+
+  - id: critique
+    lane: 555-ASI
+    capability: arif_memory
+    produces: real_fantasy_diff.yaml
+    description: "555 critiques the synthesis. Mark the GROUNDED vs FANTASY boundary."
+    duration_ms: 15000
+
+  - id: hold
+    lane: 888-APEX
+    produces: approved_proposals.yaml
+    verdict: HOLD | PROMOTE | REJECT
+    description: "888 holds. No execution. Only proposal-level approval."
+    duration_ms: 5000
+
+  - id: seal
+    capability: arif_seal
+    produces: 10_RECEIPTS/impian/<date>.seal
+    description: "Seal the cycle. The thinking trail is preserved."
+    duration_ms: 1000
+
+# ─── Anti-Fantasy Safeguard (binding) ────────────────────────────────────
+
+anti_fantasy_safeguard:
+  reject_if:
+    - reality_anchor is null
+    - scar_id is null
+    - evidence_paths is empty
+  quarantine_to: 03_EUREKAS/FANTASIES/
+  log_to: 10_RECEIPTS/impian/<date>.log
+
+# ─── Hub Constitution Compliance ──────────────────────────────────────────
+
+# Each step MUST emit a receipt
+each_step_emits_receipt: true
+# No step may mutate policy without separate SEAL
+no_policy_mutation: true
+# No step may bypass F13
+f13_veto_active: true
+# No self-approval
+self_approval_forbidden: true
+
+# ─── Failure Modes ────────────────────────────────────────────────────────
+
+failure_modes:
+  - mode: external_council_unavailable
+    handling: skip and emit HOLD
+  - mode: rrr_snapshot_empty
+    handling: abort cycle, escalate to 888
+  - mode: anti_fantasy_failed
+    handling: quarantine, emit REJECT
+  - mode: cycle_locked
+    handling: 888_HOLD, F13 notification
+
+# ─── The Test (the only test that matters) ────────────────────────────────
+
+the_test: |
+  "Boleh ARIF sambung jejak pemikiran ni bila dia jaga 5 tahun lagi?"
+  If yes → IMPIAN is healthy.
+  If no → IMPIAN is BANGANG.
+
+# ─── Related Resources ────────────────────────────────────────────────────
+
+related:
+  doctrine: 04_DOCTRINES/constrained_imagination.md
+  policy: 05_POLICIES/hermes-impian-72h.yaml
+  verb: 06_CAPABILITIES/arif_impian/
+  manifest: 09_AGENTS/hermes-bijaksana-impian.yaml
+  driver: forge_impian.py
+  storage:
+    candidates: 03_EUREKAS/FUTURE/
+    quarantine: 03_EUREKAS/FANTASIES/
+    receipts: 10_RECEIPTS/impian/
+
+DITEMPA BUKAN DIBERI ⚒️

@@ -1,0 +1,86 @@
+# 09_AGENTS — Runtime actors exist
+# The 4 lanes of the federation. Agent = consumer of skills, runner of workflows.
+
+layer: 09
+name: AGENTS
+purpose: Where runtime actors are defined. Each agent is a bounded, auditable, constitutionally-bound runtime.
+authority: 4-lane constraint
+doctrine: bounded-not-sovereign
+
+# The 4 lanes + 1 agent with 2 modes
+lanes:
+  - id: 333-AGI
+    name: THINK
+    duty: Propose architecture, plan, reversible draft
+    boundary: cannot judge, cannot execute, cannot certify
+  - id: 555-ASI
+    name: DREAM
+    duty: Review + audit (blind to each other)
+    boundary: REVIEW and AUDIT share no context
+  - id: 777-FORGE
+    name: EXECUTE
+    duty: Mutate under SEAL
+    boundary: cannot plan, cannot self-authorize, cannot self-seal
+  - id: 888-APEX
+    name: JUDGE
+    duty: Constitutional verdict, authority resolution
+    boundary: cannot execute, cannot produce domain evidence
+
+# The 5th — Hermes with two modes (NEW 2026-08-15)
+agent_hub:
+  - id: hermes
+    name: OBSERVATORY
+    modes:
+      - id: hermes::mode/present
+        verb: 111
+        cadence: real-time
+        duty: observe, fact-check, inject-scan, cross-witness
+      - id: hermes::mode/bijaksana-impian
+        verb: 222
+        cadence: 72h
+        duty: observe, reflect, propose (NEVER execute, NEVER fantasize)
+        doctrine: 04_DOCTRINES/constrained_imagination.md
+        policy: 05_POLICIES/hermes-impian-72h.yaml
+
+# The sovereign (above the registry)
+sovereign:
+  - id: 000-SALAM
+    name: Human Sovereign
+    role: F13 · above the registry · not an agent
+    authority: Muhammad Arif bin Fazil
+
+# Sub-layers
+subdirs:
+  - lanes:         # 333-AGI, 555-ASI, 777-FORGE, 888-APEX
+  - external:      # 15+ external harnesses (aider, claude-code, codex, copilot, etc.)
+  - identities:    # Ed25519 fingerprints, key files, F13-ratified test agents
+
+# What this layer provides
+provides:
+  - agent_ids            # 333-AGI, 555-ASI, etc.
+  - lane_boundaries      # what each lane can and cannot do
+  - escalation_paths     # where violations go
+  - skill_loaders        # which skills each agent loads
+
+# What this layer requires
+requires:
+  - 06_CAPABILITIES       # agents use capabilities
+  - 07_SKILLS             # agents load skills
+  - 08_WORKFLOWS          # agents run workflows
+  - 05_POLICIES           # agents are policy-bound
+  - 01_RESOURCES/sovereign  # F13 ratifies sovereign test agents
+
+# Love-links
+love_links:
+  - 09_AGENTS/lanes/333-AGI    ↔ 06_CAPABILITIES/arif_think
+  - 09_AGENTS/lanes/555-ASI    ↔ 06_CAPABILITIES/arif_memory
+  - 09_AGENTS/lanes/777-forge  ↔ 06_CAPABILITIES/arif_forge
+  - 09_AGENTS/lanes/888-APEX   ↔ 06_CAPABILITIES/arif_judge
+  - 09_AGENTS/external         ↔ 01_RESOURCES/openclaw  # external harnesses via OpenClaw
+  - 09_AGENTS/identities       ↔ 01_RESOURCES/sovereign  # F13 ratifies identities
+  - 09_AGENTS/*                ↔ 08_WORKFLOWS/*          # agents run workflows
+
+epoch: 1
+updated: 2026-08-15
+
+DITEMPA BUKAN DIBERI ⚒️

@@ -1,0 +1,50 @@
+id: a2a://spec/overview
+type: spec
+state: ACTIVE
+freshness: 2026-07-28T00:00:00Z
+epoch: 1
+owner: linuxfoundation
+trust_tier: external-canonical
+epistemic_label: OBS
+
+title: Agent2Agent (A2A) Protocol
+description: >
+  Open protocol enabling communication between opaque agentic applications.
+  arifOS uses A2A for inter-agent dispatch between 333-AGI, 555-ASI, 888-APEX lanes.
+
+links:
+  canonical: https://github.com/a2aproject/A2A
+  see_also:
+    - https://a2a-protocol.org/latest/
+  implements:
+    - arifos://kernel/inter-agent
+
+requires:
+  - arifos://kernel/genesis
+
+provides:
+  - a2a://methods/tasks/send
+  - a2a://methods/tasks/get
+  - a2a://methods/tasks/cancel
+  - a2a://spec/agent-card
+  - a2a://spec/streaming
+
+love_links:
+  - mcp://spec/architecture
+  - arifos://kernel/architecture
+  - openclaw://gateway/overview
+  - aaa://cockpit/architecture
+  - hermes://gateway/overview
+
+tags:
+  - protocol
+  - external-canonical
+  - agent-to-agent
+
+freshness_tolerance_seconds: 2592000
+reversible: true
+blast_radius: none
+authority_ceiling: OBSERVE
+constitutional_floors: [F1, F11, F13]
+
+epoch_of_last_mutation: 2026-07-28

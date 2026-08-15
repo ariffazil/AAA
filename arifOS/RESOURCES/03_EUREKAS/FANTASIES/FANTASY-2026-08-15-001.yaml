@@ -1,0 +1,9 @@
+id: FANTASY-2026-08-15-001
+scar_id: SCAR-fake
+evidence_paths:
+- /tmp/fake.json
+capability_gap: Generic aspiration.
+future_skill: universal.consensus.engine
+reality_status: FANTASY
+fantasy_status: FANTASY
+verdict_reason: reality_anchor is null

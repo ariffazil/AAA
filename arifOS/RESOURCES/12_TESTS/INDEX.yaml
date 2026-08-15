@@ -1,0 +1,52 @@
+# 12_TESTS — Verification exists
+# The proof layer. Tri-witness (W1×W2×W3 ≥ 0.75) + constitutional invariants.
+
+layer: 12
+name: TESTS
+purpose: Where truth is verified. Every test asserts a structural or constitutional invariant.
+authority: 333_THINK + 555_ASI
+doctrine: tri-witness-required
+
+# What this layer provides
+provides:
+  - test_ids           # T-{N}
+  - tri_witness_runs   # W1×W2×W3 ≥ 0.75
+  - constitutional     # F1-F13 invariants
+  - mesa_composition   # verifies mesa can compose over RRR
+
+# What this layer requires
+requires:
+  - 04_DOCTRINES/floors   # F1-F13 tests verify floors
+  - 11_GRAPH/lovelinks    # bipartite love-link tests
+  - 06_CAPABILITIES/*     # capability tests verify 8-verb chain
+  - 07_SKILLS/*           # skill tests verify composition
+
+# Sub-layers
+subdirs:
+  - unit:               # single-skill tests
+  - integration:        # cross-layer tests
+  - tri_witness:        # W1×W2×W3 ≥ 0.75
+  - constitutional:     # F1-F13 invariants
+  - mesa_composition:   # verify mesa can compose over RRR
+
+# Test categories
+categories:
+  - RRR resolves correct sources           # scorecard B
+  - RRR freshness probes return valid data  # scorecard B
+  - Love-links are 100% bidirectional       # scorecard B
+  - All 486 SKILL.md still load             # scorecard C
+  - Capabilities discoverable at 06        # scorecard C
+  - Synthetic SCAR → EUREKA → propagation   # scorecard A
+  - Epoch delta loads in correct agents    # scorecard A
+  - F1-F13 floors are not bypassed          # constitutional
+
+# Love-links
+love_links:
+  - 12_TESTS/constitutional  ↔ 04_DOCTRINES/floors  # tests verify floors
+  - 12_TESTS/tri_witness    ↔ 11_GRAPH/lovelinks    # tests verify bipartite
+  - 12_TESTS/mesa_composition ↔ 01_RESOURCES/*     # mesa tests discover resources
+
+epoch: 1
+updated: 2026-08-15
+
+DITEMPA BUKAN DIBERI ⚒️

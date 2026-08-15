@@ -1,0 +1,10 @@
+id: PROP-2026-08-15-001
+reality_anchor: rrr://runtime/snapshot/2026-08-15
+scar_id: SCAR-2026-08-12-001
+evidence_paths:
+- /root/VAULT999/2026-08-12/seal-8821.json
+capability_gap: Doctrine impact tracing is manual, 17 repeats in 30 days.
+future_skill: doctrine.impact.simulator
+reality_status: GROUNDED
+fantasy_status: NOT_FANTASY
+verdict_reason: Anti-Fantasy Safeguard passed

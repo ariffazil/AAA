@@ -1,0 +1,188 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://arif-fazil.com/schemas/arifos-rrr/resource-manifest/v1.0",
+  "title": "arifOS Resource Manifest",
+  "description": "The contract every entry in 01_RESOURCES/ must satisfy. Forged 2026-08-15 by F13 SOVEREIGN directive. RRR-native: discovers, never thinks, never judges, never executes.",
+  "type": "object",
+  "required": ["id", "type", "state", "freshness", "owner", "trust_tier", "links"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^(arifos|rfc|mcp|fastmcp|a2a|openclaw|sc|eureka|doctrine|policy|skill|workflow|agent|receipt|graph|test)://[a-z0-9_-]+(/[a-z0-9_-]+)*$",
+      "description": "Reverse-domain resource identifier. The 'arifos://' namespace is canonical; external sources use their own prefix (mcp://, fastmcp://, a2a://, openclaw://)."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "spec", "registry", "skill", "agent", "workflow",
+        "component", "event", "doc", "tool", "service",
+        "source", "ontology", "doctrine", "policy",
+        "capability", "receipt", "node", "edge"
+      ],
+      "description": "The kind of resource this entry represents."
+    },
+    "state": {
+      "type": "string",
+      "enum": ["ACTIVE", "DEPRECATED", "PROPOSED", "RETIRED", "STALE"],
+      "description": "Lifecycle state. STALE is set by the freshness probe when the resource is no longer reachable."
+    },
+    "freshness": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of the last successful freshness probe. Diff against 'now' must be ≤ epoch-freshness tolerance."
+    },
+    "owner": {
+      "type": "string",
+      "description": "The actor responsible for this resource. F13 sovereign, an arifOS lane (333/555/777/888), or an external owner."
+    },
+    "trust_tier": {
+      "type": "string",
+      "enum": [
+        "sovereign-canonical",     # F13-ratified, lives in arifOS canon
+        "sovereign-experimental",  # F13-ratified, in trial
+        "sovereign-deprecated",    # F13-ratified, being phased out
+        "external-canonical",      # third-party stable spec
+        "external-experimental",   # third-party in trial
+        "external-deprecated",     # third-party deprecated
+        "internal-canonical",      # federation-internal stable
+        "internal-experimental"    # federation-internal trial
+      ]
+    },
+    "epoch": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The version of reality this resource reflects. Paired with freshness."
+    },
+    "epistemic_label": {
+      "type": "string",
+      "enum": ["OBS", "DER", "INT", "SPEC", "UNKNOWN"],
+      "default": "DER",
+      "description": "F2 epistemic label. OBS=observed; DER=derived; INT=interpreted; SPEC=specular; UNKNOWN=non-claim."
+    },
+    "links": {
+      "type": "object",
+      "description": "Inbound + outbound links. Each is a relationship edge in the love-link graph.",
+      "properties": {
+        "canonical": {
+          "type": "string",
+          "format": "uri",
+          "description": "Canonical URL for the upstream source."
+        },
+        "see_also": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Related resources (informational)."
+        },
+        "implements": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Resources this entry implements or conforms to."
+        }
+      }
+    },
+    "requires": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Resources this entry requires. Each must reciprocate with 'required_by'."
+    },
+    "provides": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Resources this entry provides. Each must reciprocate with 'provided_by'."
+    },
+    "love_links": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Bidirectional relationships. Target must have a matching love_link back. The verifier refuses to admit unpaired love-links."
+    },
+    "derived_from": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "EUREKA / SCAR lineage. Used by the propagation chain."
+    },
+    "invalidated_by": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Newer resources that supersede this one."
+    },
+    "invalidates": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Older resources this entry supersedes."
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Free-form tags for discoverability."
+    },
+    "scope": {
+      "type": "object",
+      "properties": {
+        "filesystem":     { "type": "boolean", "default": false },
+        "network_read":   { "type": "boolean", "default": false },
+        "network_write":  { "type": "boolean", "default": false },
+        "secrets":        { "type": "boolean", "default": false },
+        "vault_write":    { "type": "boolean", "default": false },
+        "shell_exec":     { "type": "boolean", "default": false }
+      },
+      "description": "Declared side effects. Tighter than required ↔ softer than required."
+    },
+    "freshness_tolerance_seconds": {
+      "type": "integer",
+      "default": 86400,
+      "description": "Maximum acceptable drift before the resource is marked STALE."
+    },
+    "reversible": {
+      "type": "boolean",
+      "default": true,
+      "description": "F1 AMANAH. If false, the resource is IRREVERSIBLE and requires F13 sign-off."
+    },
+    "blast_radius": {
+      "type": "string",
+      "enum": ["none", "low", "medium", "high", "critical"],
+      "default": "low"
+    },
+    "authority_ceiling": {
+      "type": "string",
+      "enum": ["OBSERVE", "PROPOSE", "DRAFT", "SUGGEST", "EXECUTE_REVERSIBLE", "MUTATE", "EXECUTE_HIGH_IMPACT", "IRREVERSIBLE"],
+      "default": "EXECUTE_REVERSIBLE"
+    },
+    "constitutional_floors": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^F(1[0-3]|[0-9])$" },
+      "description": "F1-F13 floors this resource is bound to. Mandatory: at least F1 (AMANAH) and F11 (AUDITABILITY)."
+    },
+    "checksum": {
+      "type": "string",
+      "description": "SHA-256 of the canonical source. Optional but recommended for ACTIVE resources."
+    },
+    "epoch_of_last_mutation": {
+      "type": "integer",
+      "description": "The epoch this resource was last mutated. The freshness probe uses this + delta to know when re-load is needed."
+    }
+  },
+  "additionalProperties": false,
+  "examples": [
+    {
+      "id": "arifos://kernel/floor_table",
+      "type": "doctrine",
+      "state": "ACTIVE",
+      "freshness": "2026-08-15T00:00:00Z",
+      "owner": "000-SALAM",
+      "trust_tier": "sovereign-canonical",
+      "epoch": 41,
+      "epistemic_label": "DER",
+      "links": {
+        "canonical": "/root/arifOS/GENESIS/FLOOR_TABLE.json",
+        "implements": ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13"]
+      },
+      "requires": ["arifos://kernel/genesis"],
+      "provides": ["arifos://constitutional/floors"],
+      "love_links": ["arifos://kernel/genesis"],
+      "constitutional_floors": ["F1", "F11"],
+      "reversible": true,
+      "blast_radius": "high",
+      "authority_ceiling": "EXECUTE_REVERSIBLE"
+    }
+  ]
+}

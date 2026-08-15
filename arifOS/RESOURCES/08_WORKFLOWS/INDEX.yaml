@@ -1,0 +1,105 @@
+# 08_WORKFLOWS — Sequences exist
+# Workflows are the ONLY place where sequence lives.
+# Skill ≠ workflow. Skill is composition; workflow is order.
+
+layer: 08
+name: WORKFLOWS
+purpose: Where ordered compositions live. A workflow chains capabilities + skills into a sequence with deterministic order.
+authority: 8-verb chain (orchestration)
+doctrine: sequence-lives-only-here
+
+# What this layer provides
+provides:
+  - workflow_ids       # <verb>.<flow>.yaml
+  - step_list          # ordered list of {capability | skill | workflow}
+  - preconditions      # each step has a precondition
+  - rollback           # each workflow has a rollback path
+  - receipts           # each step emits a receipt
+
+# What this layer requires
+requires:
+  - 06_CAPABILITIES   # at least one step uses a capability
+  - 07_SKILLS         # may use a skill as a step
+  - 05_POLICIES       # each step is policy-bound
+  - 10_RECEIPTS       # each step emits a receipt
+
+# The 6 canonical workflows
+canonical:
+  - id: hexagonal_flow
+    steps:
+      - AGI_PROPOSE
+      - ASI_REVIEW
+      - APEX_JUDGE
+      - AFORGE_EXECUTE
+      - ASI_AUDIT
+      - APEX_RESOLVE
+      - VAULT_RECEIPT
+  - id: forge_2b
+    steps:
+      - DECLARE
+      - FQ_GATE
+      - LEASE
+      - LOCK
+      - EXECUTE
+      - EVIDENCE
+      - VERIFY
+      - JUDGE
+      - MERGE
+      - SEAL
+      - INGEST
+  - id: rrr_resolve
+    steps:
+      - discover
+      - freshness_probe
+      - skill_select
+      - graph_walk
+  - id: auth_pipeline
+    steps:
+      - DECLARE
+      - FQ_GATE
+      - LEASE
+      - LOCK
+      - EXECUTE
+      - EVIDENCE
+      - VERIFY
+      - JUDGE
+      - MERGE
+      - SEAL
+      - INGEST
+  - id: mesa_compose
+    steps:
+      - intent_from_rrr
+      - resource_graph_walk
+      - capability_selection
+      - skill_selection
+      - workflow_composition
+      - delta_load
+  - id: impian_72h_cycle   ← NEW 2026-08-15
+    agent: hermes
+    mode: bijakasana-impian
+    cadence: 72h
+    steps:
+      - wake_hermes
+      - rrr_snapshot
+      - scar_walk
+      - gap_scan
+      - external_council
+      - synthesize
+      - critique
+      - hold
+      - seal
+    anti_fantasy_safeguard: binding
+    doctrine: 04_DOCTRINES/constrained_imagination.md
+
+# Love-links
+love_links:
+  - 08_WORKFLOWS/*  ↔ 06_CAPABILITIES/*  # workflows consume capabilities
+  - 08_WORKFLOWS/*  ↔ 07_SKILLS/*         # workflows may use skills as steps
+  - 08_WORKFLOWS/*  ↔ 05_POLICIES/*       # workflows respect policies
+  - 08_WORKFLOWS/*  ↔ 10_RECEIPTS/*       # each step emits a receipt
+  - 08_WORKFLOWS/*  ↔ 09_AGENTS/*         # workflows run inside agents
+
+epoch: 1
+updated: 2026-08-15
+
+DITEMPA BUKAN DIBERI ⚒️

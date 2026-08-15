@@ -1,0 +1,44 @@
+# 05_POLICIES — Constraints exist
+# The operational layer. Policies make doctrines checkable at every invocation.
+
+layer: 05
+name: POLICIES
+purpose: Where doctrines are made checkable. Every policy is a doctrine + a verification step.
+authority: 888_JUDGE
+doctrine: constrain-and-verify
+
+# What this layer provides
+provides:
+  - policy_ids          # POLICY-{N}
+  - capability_tiers    # T0 | T1 | T1.5 | T2 | T3 + custom ceilings
+  - verification        # how each policy is checked
+  - escalation_ladder   # where violations go
+
+# What this layer requires
+requires:
+  - 04_DOCTRINES        # every policy anchors a doctrine
+  - 06_CAPABILITIES     # every policy applies to a capability
+  - 12_TESTS            # every policy is verified by a test
+
+# Sub-layers
+subdirs:
+  - governance:     # autonomy tiers, HITL taxonomy, RRR doctrine
+  - security:       # F12 RESILIENCE, injection defence, prompt scan
+  - privacy:        # F6 EMPATHY⇄MARUAH, dignity, PII
+  - reversibility:  # F1 AMANAH, snapshot, rollback
+  - trust:          # capability tiers, lease ceiling, MUTATE/IRREVERSIBLE
+  - hermes-impian-72h.yaml  # BIJAKSANA IMPIAN cycle policy (NEW 2026-08-15)
+
+# Love-links
+love_links:
+  - 05_POLICIES/governance    ↔ 04_DOCTRINES/floors   # governance binds floors
+  - 05_POLICIES/security      ↔ 01_RESOURCES/mcp       # MCP security best practices
+  - 05_POLICIES/security      ↔ 04_DOCTRINES           # F12 RESILIENCE
+  - 05_POLICIES/privacy       ↔ 04_DOCTRINES           # F6 EMPATHY⇄MARUAH
+  - 05_POLICIES/reversibility ↔ 01_RESOURCES/aforge    # A-FORGE snapshots
+  - 05_POLICIES/trust         ↔ 06_CAPABILITIES/*      # tier table maps to capabilities
+
+epoch: 18
+updated: 2026-08-15
+
+DITEMPA BUKAN DIBERI ⚒️

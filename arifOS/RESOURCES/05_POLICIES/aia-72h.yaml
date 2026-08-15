@@ -1,0 +1,29 @@
+# POLICY — aia-72h v0.3 (renamed from hermes-impian-72h by F13, 2026-08-15)
+policy_id: aia-72h
+architecture: AIA   # Agentic Impian Architecture
+carrier: hermes
+mode: impian                 # Hermes::IMPIAN — a MODE, not an agent
+layer_position: "222"        # pre-deliberation layer — horizon BEFORE AAA (333/555/888/777/999)
+classification: FUTURE_REFLECTION
+authority: OBSERVE_ONLY
+mutation: forbidden
+auto_execute: false
+default_verdict: HOLD
+cadence: 72h
+deliver: origin
+separation_rule:             # HARD, F13 2026-08-15
+  dream: "VVV 72h = memory organization (konsolidasi lalu) — NEVER merged with AIA"
+  impian: "AIA 72h = future imagination (jurang hadapan) — NEVER merged with VVV"
+storage:
+  receipts: 10_RECEIPTS/AIA/<YYYY-MM-DD>/
+  future_candidates: 03_EUREKAS/FUTURE/
+  quarantine: 03_EUREKAS/FANTASIES/
+gates:
+  - reality_anchor required (live probe / verified path, this run)
+  - scar_id or evidence path required
+  - evidence_paths non-empty
+  - max 3 proposals per cycle
+budget:
+  max_output_lines: 8
+review:
+  every_90_days: keep-or-kill per F3 CRON LAW

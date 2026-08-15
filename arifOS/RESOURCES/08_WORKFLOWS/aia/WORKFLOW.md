@@ -1,4 +1,4 @@
-# WORKFLOW — 72H_IMPIAN_REFLECTION_WORKFLOW v0.2 (LIVE)
+# WORKFLOW — AIA_72H (Agentic Impian Architecture) v0.3 (LIVE)
 
 > **v0.2 (2026-08-15, ~11:30 MYT):** F13 go-signal received — cycle is LIVE.
 > Refinements adopted from AAA dialogue: (1) IMPIAN is a MODE of Hermes (Hermes::IMPIAN), not an organ/lane — functions before entities. (2) Chain position 222: 111 RRR → 222 IMPIAN → 333 THINK → 555 VERIFY → 888 JUDGE → 777 FORGE → 999 SEAL. (3) FANTASIES quarantine dir added — fantasy is quarantined, not deleted. (4) Doctrine + policy now exist: 04_DOCTRINES/constrained_imagination.md, 05_POLICIES/hermes-impian-72h.yaml.
@@ -6,7 +6,7 @@
 > **Forged:** 2026-08-15, post-3AM dialogue on agent impian
 > **Authority:** OBSERVE_ONLY · FUTURE_REFLECTION · mutation forbidden · auto_execute false
 > **Default verdict:** HOLD — this workflow proposes, never executes
-> **Cadence anchor:** VVV 72h dream-engine cadence (forged 2026-08-14 04:00, /root/memory/VVV/README.md)
+> **Cadence:** 72h — same rhythm as VVV dream engine, but HARD-SEPARATED (F13 2026-08-15): Dream=memory organization (VVV) · Impian=future imagination (AIA). Never merged.
 
 ## Lineage
 

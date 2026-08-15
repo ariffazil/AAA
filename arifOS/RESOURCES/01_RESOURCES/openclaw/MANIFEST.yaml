@@ -1,0 +1,55 @@
+id: openclaw://gateway/overview
+type: component
+state: ACTIVE
+freshness: 2026-07-28T00:00:00Z
+epoch: 1
+owner: openclaw
+trust_tier: external-canonical
+epistemic_label: OBS
+
+title: OpenClaw — Self-hosted AI gateway
+description: >
+  Self-hosted gateway connecting 12 channels (Telegram, Slack, Discord, WhatsApp,
+  iMessage, MS Teams, Signal, Matrix, Google Chat, Zalo, etc.) to AI coding
+  agents. arifOS's HERMES is built on OpenClaw.
+
+links:
+  canonical: https://docs.openclaw.ai/
+  see_also:
+    - https://docs.openclaw.ai/llms.txt
+  implements:
+    - hermes://gateway/overview
+
+requires:
+  - a2a://spec/overview
+
+provides:
+  - openclaw://channels/telegram
+  - openclaw://channels/slack
+  - openclaw://channels/discord
+  - openclaw://channels/whatsapp
+  - openclaw://channels/signal
+  - openclaw://channels/matrix
+  - openclaw://channels/google-chat
+  - openclaw://channels/msteams
+  - openclaw://channels/zalo
+  - openclaw://bridge/agent-runtime
+
+love_links:
+  - a2a://spec/overview
+  - hermes://gateway/overview
+  - aaa://cockpit/architecture
+
+tags:
+  - gateway
+  - external-canonical
+  - channels
+  - agent-runtime
+
+freshness_tolerance_seconds: 2592000
+reversible: true
+blast_radius: low
+authority_ceiling: OBSERVE
+constitutional_floors: [F1, F11, F12]
+
+epoch_of_last_mutation: 2026-07-28

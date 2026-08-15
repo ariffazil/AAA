@@ -1,0 +1,70 @@
+# epoch-registry.yaml — Layer epochs for the arifOS Resource OS
+# Forged 2026-08-15 by F13 SOVEREIGN directive
+# Every layer has its own epoch. Updates increment epochs, not files.
+# Agents boot against the global epoch; delta-load via epoch_diff.
+
+version: 1.0
+updated: 2026-08-15
+
+# Per-layer epochs
+epochs:
+  ontoloy:    51       # ONTOLOGY: changes when concepts are added/renamed
+  scar:       22       # SCAR: every failure observed
+  eureka:     33       # EUREKA: every discovery
+  doctrine:   41       # DOCTRINE: every interpretation blessed
+  policy:     18       # POLICY: every check added
+  skill:      219      # SKILL: every composition registered
+  workflow:   1        # WORKFLOW: every sequence (new layer, low count)
+  agent:      1        # AGENT: every runtime actor
+  receipt:    1        # RECEIPT: monotonically increases per event
+  graph:      1        # GRAPH: every edge added
+  test:       1        # TEST: every verification
+  resource:   1        # RESOURCE: every source admitted
+
+# Global epoch (the highest layer epoch + 1)
+global_epoch: 52
+
+# Epoch delta semantics
+delta_semantics:
+  - increment: trigger_new_observation
+    doc: "Any Scar or fresh observation increments SCAR_EPOCH"
+  - increment: trigger_eureka_collapse
+    doc: "Any Eureka collapses from a Scar increments EUREKA_EPOCH"
+  - increment: trigger_doctrine_blessing
+    doc: "Any doctrine blessed by 888_JUDGE increments DOCTRINE_EPOCH"
+  - increment: trigger_skill_registration
+    doc: "Any new skill registered increments SKILL_EPOCH"
+  - increment: trigger_resource_admission
+    doc: "Any new resource admitted to 01_RESOURCES increments RESOURCE_EPOCH"
+
+# Agent boot pattern
+agent_boot:
+  pattern: |
+    agent_epoch = { eureka: 33, doctrine: 41, ... }
+    global_epoch = { eureka: 34, doctrine: 41, ... }
+    load_scar_diff = [SCAR_eureka_diff]
+    load_eureka_diff = [EUREKA_doctrine_diff]
+    load_doctrine_diff = []
+    # never reload the universe
+
+# Symbiotic: every agent carries its own epoch table
+agent_epoch_table:
+  333-AGI:    { eureka: 33, doctrine: 41, skill: 219 }
+  555-ASI:    { eureka: 33, doctrine: 41, policy: 18 }
+  777-forge:  { eureka: 33, doctrine: 41, policy: 18, skill: 219 }
+  888-APEX:   { eureka: 33, doctrine: 41, policy: 18 }
+  000-SALAM:  { eureka: 33, doctrine: 41, policy: 18, sovereign: 1 }
+
+# The propagation chain (EUREKA → DOCTRINE → POLICY → SKILL)
+propagation_chain:
+  - scar          # observed
+  - eureka        # compressed
+  - ontology      # classified
+  - doctrine      # interpreted
+  - policy        # constrained
+  - skill         # composed
+  - workflow      # sequenced
+  - agent         # consumed
+  - receipt       # witnessed
+
+# DITEMPA BUKAN DIBERI ⚒️

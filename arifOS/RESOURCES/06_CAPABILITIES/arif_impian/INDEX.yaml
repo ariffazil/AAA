@@ -1,0 +1,80 @@
+# 06_CAPABILITIES/arif_impian — Verb 222
+# Constrained Imagination. The future-sensing twin of arif_observe (RRR).
+
+id: arif_impian
+code: 222
+name: Constrained Imagination
+floor: F2  # TRUTH — anti-fantasy protection
+role: imagine
+
+# Identity
+mode: bijakasana-impian
+agent: hermes
+cadence: 72h
+
+# Description
+description: |
+  The future-sensory verb. The twin of arif_observe.
+  arif_observe (111) senses the present.
+  arif_impian (222) senses the future.
+  Both are observe-only. Both refuse to fantasize.
+
+# Inputs
+inputs:
+  - rrr_snapshot             # arif_observe(mode="rrr")
+  - scar_ledger              # 10_RECEIPTS/sesat
+  - holds_log                # 10_RECEIPTS/human_envelope
+  - capability_inventory     # 06_CAPABILITIES/*
+  - unused_skills            # 07_SKILLS/_retired
+  - manual_work_ledger       # 05_POLICIES/observability
+  - external_signals         # 01_RESOURCES/mcp, a2a, openclaw
+
+# Outputs
+outputs:
+  - future_skill_candidates        # 03_EUREKAS/FUTURE/
+  - future_doctrine_candidates     # 04_DOCTRINES/_proposed/
+  - future_capability_proposals    # 06_CAPABILITIES/_proposed/
+  - quarantined_fantasies           # 03_EUREKAS/FANTASIES/
+
+# The Anti-Fantasy Safeguard (the constitutional floor)
+anti_fantasy:
+  check_1_reality:    rrr_snapshot must be present
+  check_2_scar:       scar_id must be present
+  check_3_evidence:   evidence_paths must be non-empty
+  check_4_gap:        capability_gap must be defined
+  on_failure:         quarantine to 03_EUREKAS/FANTASIES/
+
+# Authority
+authority: OBSERVE-only
+may_not:
+  - mutate policy
+  - execute code
+  - approve self
+  - bypass F13
+
+# Constitutional
+constitutional_floors: [F1, F2, F11]
+
+# Resources
+manifest: 09_AGENTS/hermes-bijaksana-impian.yaml
+doctrine: 04_DOCTRINES/constrained_imagination.md
+policy: 05_POLICIES/hermes-impian-72h.yaml
+workflow: 08_WORKFLOWS/impian_72h_cycle.yaml
+driver: forge_impian.py
+
+# Love-links
+love_links:
+  - 04_DOCTRINES/constrained_imagination
+  - 05_POLICIES/hermes-impian-72h
+  - 08_WORKFLOWS/impian_72h_cycle
+  - 09_AGENTS/hermes-bijaksana-impian
+  - 03_EUREKAS/FUTURE
+  - 03_EUREKAS/FANTASIES
+  - arif_observe
+  - hermes://gateway/overview
+  - sovereign://canon/f13
+
+# Epistemic label
+epistemic_label: SPEC  # spec/forecast — signatures may carry INT later
+
+DITEMPA BUKAN DIBERI ⚒️

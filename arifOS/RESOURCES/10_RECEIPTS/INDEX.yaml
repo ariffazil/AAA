@@ -1,0 +1,53 @@
+# 10_RECEIPTS — Evidence exists
+# Append-only. Hash-chained. F11 AUDITABILITY ground truth.
+
+layer: 10
+name: RECEIPTS
+purpose: Where every decision, action, and event is witnessed. Immutable. Hash-chained.
+authority: 999_SEAL
+doctrine: append-only-witness
+
+# What this layer provides
+provides:
+  - receipt_ids       # R-{seq} or seal_id
+  - kill_chain        # session → actor → task → tool → evidence
+  - drfit_trace       # cool_drift + cool_pattern signals
+  - hash_chain        # SHA-256 chain from genesis
+  - verification      # chain_verify at any depth
+
+# What this layer requires
+requires:
+  - 06_CAPABILITIES      # every arif_* call emits a receipt
+  - 07_SKILLS            # every skill invocation emits a receipt
+  - 08_WORKFLOWS         # every workflow step emits a receipt
+  - 09_AGENTS            # every agent action emits a receipt
+
+# Sub-layers
+subdirs:
+  - killchain:           # session → actor → task → tool → evidence
+  - sesat:               # constitutional-violation events
+  - drift:               # cool_drift + cool_pattern signals
+  - seal:                # VAULT999 append-only chain
+  - human_envelope:      # F13 ack, 888_HOLD, force-stop
+
+# Storage
+storage:
+  - primary: /root/VAULT999
+  - mirror: /root/AAA/VAULT999
+  - ledger_format: jsonl
+  - hash_algo: SHA-256
+  - chain_verification: enabled
+
+# Love-links
+love_links:
+  - 10_RECEIPTS/seal             ↔ 01_RESOURCES/arifos     # VAULT999 lives in arifOS
+  - 10_RECEIPTS/seal             ↔ 01_RESOURCES/arifflow    # arifFlow emits seals
+  - 10_RECEIPTS/seal             ↔ 04_DOCTRINES/floors      # F11 AUDITABILITY
+  - 10_RECEIPTS/human_envelope   ↔ 09_AGENTS/identities    # F13 ack binds to identity
+  - 10_RECEIPTS/drift            ↔ 03_EUREKAS              # drift → eureka
+  - 10_RECEIPTS/sesat            ↔ 05_POLICIES             # sesat events cite policy
+
+epoch: 1
+updated: 2026-08-15
+
+DITEMPA BUKAN DIBERI ⚒️

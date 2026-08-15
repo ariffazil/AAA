@@ -1,0 +1,57 @@
+# 11_GRAPH — Relationships exist
+# The graph-first substrate. Nodes are objects; edges are relationships.
+# Love-links are first-class citizens here.
+
+layer: 11
+name: GRAPH
+purpose: Where relationships are stored. Every link is a graph edge. Every edge has a reciprocator.
+authority: 333_THINK + 888_JUDGE
+doctrine: graph-first-bidirectional
+
+# What this layer provides
+provides:
+  - node_ids          # every object in the federation
+  - edge_types        # DERIVES, INVALIDATES, REQUIRES, PROVIDES, PART_OF, MEASURED_BY, CONTAINS, CONSUMER_OF, LOVE_LINK_OF
+  - love_links        # bidirectional assertions
+  - resolver          # capability-index semantic search
+  - impact_walk       # starting from a SCAR, walk outgoing DERIVES edges
+
+# What this layer requires
+requires:
+  - 01_RESOURCES       # resources are nodes
+  - 02_ONTOLOGY        # concepts are nodes
+  - 03_EUREKAS         # eurekas are nodes
+  - 04_DOCTRINES       # doctrines are nodes
+  - 07_SKILLS          # skills are nodes
+  - 09_AGENTS          # agents are nodes
+
+# Edge types (the canonical vocabulary)
+edge_types:
+  - DERIVES       # A derives from B (eureka → scar, skill → doctrine)
+  - INVALIDATES   # A invalidates B (newer eureka supersedes older)
+  - REQUIRES      # A requires B (skill requires capability)
+  - PROVIDES      # A provides B (resource provides value)
+  - PART_OF       # A is part of B (doctrine part of canon)
+  - MEASURED_BY   # A is measured by B (reservoir measured by porosity)
+  - CONTAINS      # A contains B (basin contains reservoir)
+  - CONSUMER_OF   # A consumes B (agent consumes skill)
+  - LOVE_LINK_OF  # A is the bidirectional love-link of B (the reciprocity edge)
+
+# Sub-layers
+subdirs:
+  - nodes:        # one file per object
+  - edges:        # adjacencies
+  - lovelinks:    # bidirectional assertions
+  - resolver:     # capability-index semantic search
+
+# Love-links
+love_links:
+  - 11_GRAPH/edges    ↔ 01_RESOURCES/*   # graph edges reference resources
+  - 11_GRAPH/nodes    ↔ 01_RESOURCES/*   # graph nodes are resources
+  - 11_GRAPH/lovelinks ↔ 11_GRAPH/edges  # lovelinks are reciprocal edges
+  - 11_GRAPH/resolver ↔ 01_RESOURCES     # resolver queries RRR
+
+epoch: 1
+updated: 2026-08-15
+
+DITEMPA BUKAN DIBERI ⚒️

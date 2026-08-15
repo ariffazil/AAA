@@ -1,0 +1,183 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://arif-fazil.com/schemas/arifos-rrr/knowledge-mutation-event/v1.0",
+  "title": "KNOWLEDGE_MUTATION Event",
+  "description": "The event type emitted when a Scar collapses into an Eureka, when a Doctrine is updated, or when any propagation chain is triggered. The substrate for the A → EUREKA IMPACT ANALYZER.",
+  "type": "object",
+  "required": ["id", "type", "created_at", "actor", "object", "impact", "epoch", "constitutional_floors"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^EVT-[0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9]{3}$",
+      "description": "Sequential event id. Format: EVT-YYYY-MM-DD-NNN."
+    },
+    "type": {
+      "type": "string",
+      "const": "KNOWLEDGE_MUTATION",
+      "description": "The event lineage. Subtypes can be added (e.g. KNOWLEDGE_MUTATION.SCAR, KNOWLEDGE_MUTATION.EUREKA)."
+    },
+    "subtype": {
+      "type": "string",
+      "enum": ["SCAR", "EUREKA", "DOCTRINE", "POLICY", "SKILL", "WORKFLOW", "AGENT", "RECEIPT"],
+      "description": "The kind of mutation."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp."
+    },
+    "actor": {
+      "type": "string",
+      "description": "The actor that triggered the mutation. Format: <lane-id> or <external-id>."
+    },
+    "object": {
+      "type": "object",
+      "description": "The object that was mutated.",
+      "required": ["id", "type"],
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string" },
+        "summary": { "type": "string" }
+      }
+    },
+    "impact": {
+      "type": "object",
+      "description": "The calculated impact of this mutation across the propagation chain.",
+      "properties": {
+        "scar_lineage":    { "type": "array",  "items": { "type": "string" } },
+        "eurekas":         { "type": "integer", "minimum": 0 },
+        "ontologies":      { "type": "integer", "minimum": 0 },
+        "doctrines":       { "type": "integer", "minimum": 0 },
+        "policies":        { "type": "integer", "minimum": 0 },
+        "skills":          { "type": "integer", "minimum": 0 },
+        "workflows":       { "type": "integer", "minimum": 0 },
+        "agents":          { "type": "integer", "minimum": 0 },
+        "affected_paths":  {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Each path is a derivation chain: scar → eureka → doctrine → policy → skill → workflow → agent."
+        }
+      }
+    },
+    "epoch": {
+      "type": "object",
+      "description": "Layer epochs at the time of the mutation.",
+      "properties": {
+        "ontology":  { "type": "integer" },
+        "scar":      { "type": "integer" },
+        "eureka":    { "type": "integer" },
+        "doctrine":  { "type": "integer" },
+        "policy":    { "type": "integer" },
+        "skill":     { "type": "integer" },
+        "workflow":  { "type": "integer" },
+        "agent":     { "type": "integer" },
+        "receipt":   { "type": "integer" },
+        "graph":     { "type": "integer" },
+        "test":      { "type": "integer" },
+        "resource":  { "type": "integer" }
+      }
+    },
+    "constitutional_floors": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^F(1[0-3]|[0-9])$" },
+      "minItems": 1,
+      "description": "F1-F13 floors involved. At minimum F1 (AMANAH) and F11 (AUDITABILITY)."
+    },
+    "delta_payload": {
+      "type": "object",
+      "description": "What changed. The diff that consumers must apply.",
+      "properties": {
+        "added":    { "type": "array", "items": { "type": "object" } },
+        "removed":  { "type": "array", "items": { "type": "object" } },
+        "modified": { "type": "array", "items": { "type": "object" } }
+      }
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["INFO", "MINOR", "SIGNIFICANT", "CRITICAL"],
+      "description": "The severity of the mutation. Copilot's 'impact' should never be 0 for SIGNIFICANT+."
+    },
+    "required_action": {
+      "type": "string",
+      "enum": ["delta_ingestion", "manual_review", "888_HOLD", "F13_sign_off"],
+      "description": "What the receiver must do."
+    },
+    "witness": {
+      "type": "object",
+      "description": "The witness tier that observed this event.",
+      "properties": {
+        "human": { "type": "number", "minimum": 0, "maximum": 1 },
+        "ai":    { "type": "number", "minimum": 0, "maximum": 1 },
+        "earth": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "evidence_paths": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "File paths to the underlying evidence. F11 AUDITABILITY anchor."
+    },
+    "seal": {
+      "type": "object",
+      "description": "If the event is sealed to VAULT999, the seal record.",
+      "properties": {
+        "seal_id": { "type": "string" },
+        "signed_by": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "additionalProperties": false,
+  "examples": [
+    {
+      "id": "EVT-2026-08-15-001",
+      "type": "KNOWLEDGE_MUTATION",
+      "subtype": "EUREKA",
+      "created_at": "2026-08-15T00:00:00Z",
+      "actor": "333-AGI",
+      "object": {
+        "id": "EUREKA-RRR-DISCOVERY-FIRST-CLASS",
+        "type": "eureka",
+        "summary": "RRR-EUREKA: RRR is the LIBRARIAN, not the BOOK. Skills are projections over reality, not reality itself."
+      },
+      "impact": {
+        "scar_lineage": ["SCAR-2026-08-15-001"],
+        "eurekas": 1,
+        "ontologies": 1,
+        "doctrines": 2,
+        "policies": 1,
+        "skills": 17,
+        "workflows": 4,
+        "agents": 3,
+        "affected_paths": [
+          "scar → eureka → ontology → doctrine → policy → skill → workflow → agent"
+        ]
+      },
+      "epoch": {
+        "ontology": 51,
+        "scar": 22,
+        "eureka": 33,
+        "doctrine": 41,
+        "policy": 18,
+        "skill": 219,
+        "workflow": 1,
+        "agent": 1,
+        "receipt": 1,
+        "graph": 1,
+        "test": 1,
+        "resource": 1
+      },
+      "constitutional_floors": ["F1", "F2", "F11"],
+      "severity": "SIGNIFICANT",
+      "required_action": "delta_ingestion",
+      "witness": {
+        "human": 0.95,
+        "ai": 0.92,
+        "earth": 0.85
+      },
+      "evidence_paths": [
+        "/root/AAA/arifOS/RESOURCES/01_RESOURCES/INDEX.yaml",
+        "/root/AAA/wiki/arifos/rrr-resource-reality-resolution.md"
+      ]
+    }
+  ]
+}

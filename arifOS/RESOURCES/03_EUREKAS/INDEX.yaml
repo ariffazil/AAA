@@ -1,0 +1,69 @@
+# 03_EUREKAS — Discoveries exist
+# First-class citizens. The compression step in the propagation chain.
+# SCAR → EUREKA → ONTOLOGY → DOCTRINE.
+
+layer: 03
+name: EUREKAS
+purpose: Where discoveries are stored. Every Scar collapses into an Eureka at the moment of observation.
+authority: 333_THINK
+doctrine: compress-and-propagate
+
+# What this layer provides
+provides:
+  - eureka_ids       # EUREKA-N identifier
+  - scar_lineage     # each eureka references the scar it collapses
+  - doctrine_targets # each eureka points to the doctrines it updates
+  - impact_anchors   # the graph walk starts here for propagation
+
+# What this layer requires
+requires:
+  - 01_RESOURCES       # scar observations are admitted via RRR
+  - 02_ONTOLOGY        # eurekas classify into the ontology
+  - 04_DOCTRINES       # eurekas are the source of doctrinal updates
+  - 11_GRAPH/edges     # DERIVES + INVALIDATES edges point here
+
+# Sub-layers (the 30+ known eurekas today)
+known:
+  - group: 9-godel
+    title: "9 Gödel Eurekas (binding constraints)"
+    count: 9
+    ingest_date: 2026-08-10
+  - group: 20-hexagon
+    title: "20 HEXAGON Eurekas (routing/architecture)"
+    count: 20
+    ingest_date: 2026-07-29
+  - group: FUTURE
+    title: "BIJAKSANA IMPIAN candidates (grounded proposals)"
+    count: 1
+    filed: 2026-08-15
+    note: "Each candidate passes the Anti-Fantasy Safeguard."
+  - group: FANTASIES
+    title: "Quarantined fantasies (Anti-Fantasy Safeguard rejected)"
+    count: 3
+    filed: 2026-08-15
+    note: "Kept for 30 days before archive. Reveals what the federation WISHES were true."
+
+# Schema for new Eurekas
+schema:
+  id: EUREKA-{N}
+  derived_from: scar_id  # from where it collapsed
+  classified_into: ontology_node
+  doctrine_targets: [doctrine_id, ...]
+  invalidated_by: eureka_id  # optional
+  invalidates: [eureka_id, ...]  # optional
+  strength: HIGH | MEDIUM | LOW
+  severity: HIGH | MEDIUM | LOW
+  epoch: integer
+
+# Love-links
+love_links:
+  - 03_EUREKAS             ↔ 04_DOCTRINES      # eurekas → doctrines
+  - 03_EUREKAS             ↔ 01_RESOURCES      # eurekas admit resources they explain
+  - 03_EUREKAS/9-godel    ↔ 01_RESOURCES/arifos  # godel eurekas bind the kernel
+  - 03_EUREKAS/20-hexagon ↔ 01_RESOURCES/aaa     # hexagon eurekas bind the cockpit
+  - 03_EUREKAS/lineage    ↔ 03_EUREKAS/*       # parent-child eureka chains
+
+epoch: 33
+updated: 2026-08-15
+
+DITEMPA BUKAN DIBERI ⚒️
