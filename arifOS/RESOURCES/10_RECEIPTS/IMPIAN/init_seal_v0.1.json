@@ -1,0 +1,18 @@
+{
+  "type": "IMPIAN_INIT_SEAL",
+  "workflow": "72H_IMPIAN_REFLECTION_WORKFLOW",
+  "version": "v0.1",
+  "status": "DRAFT_SEALED_INIT",
+  "authority": "OBSERVE_ONLY",
+  "classification": "FUTURE_REFLECTION",
+  "mutation": "forbidden",
+  "auto_execute": false,
+  "default_verdict": "HOLD",
+  "initiator": "F13_SOVEREIGN_ARIF",
+  "sealed_by": "HERMES_COORDINATE",
+  "cadence_anchor": "VVV_72h (2026-08-14 04:00)",
+  "path": "/root/AAA/arifOS/RESOURCES/08_WORKFLOWS/impian/WORKFLOW.md",
+  "sha256": "cebcd4970b5dd129aefd98692f59d6fcafe48a60965a851cca047190a43f00e0",
+  "sealed_at": "2026-08-15T11:28:11+0800",
+  "note": "Init sealed as canon-candidate definition only. No cron, no mutation, no agent change. Activation requires explicit F13 go-signal."
+}
