@@ -1,12 +1,17 @@
-# 08_WORKFLOWS/impian_72h_cycle.yaml — BIJAKSANA IMPIAN 72-hour cycle
+# 08_WORKFLOWS/aia_72h_cycle.yaml — AIA 72-hour cycle
+# AIA = Agentic Impian Architecture
+# AIA is a horizon layer BEFORE AAA (not a member of AAA).
 # Forged 2026-08-15 by F13 SOVEREIGN directive
 
-id: workflow.impian.72h
-name: BIJAKSANA IMPIAN 72-hour cycle
+id: workflow.aia.72h
+name: AIA 72-hour cycle (Agentic Impian Architecture)
 type: reflection
 trigger: cron("every 72h")
-agent: hermes
-mode: bijakasana-impian
+architecture: AIA
+codename: 222-AIA
+layer_position: pre-deliberation
+runtime: hermes      # Hermes is the runtime driver; AIA is the architecture
+mode: AIA           # AIA is the horizon layer's mode of operation
 
 # Constitutional floors
 constitutional_floors: [F1, F2, F11]
@@ -19,11 +24,11 @@ authority_ceiling: OBSERVE
 # ─── The 9 steps ───────────────────────────────────────────────────────────
 
 steps:
-  - id: wake_hermes
+  - id: wake_aia
     capability: arif_impian
     input: cron_ticker
-    output: hermes.instance
-    description: "Wake Hermes from idle. Inherit identity, epoch, security context."
+    output: aia.instance
+    description: "Wake AIA from idle. Hermes is the runtime; AIA is the architecture that runs."
     duration_ms: 200
 
   - id: rrr_snapshot
@@ -65,11 +70,15 @@ steps:
     description: "Cross-challenge with external agents. No copy, only compare."
     duration_ms: 60000
 
+  - id: handoff_to_aaa
+    description: "AIA hands synthetic proposals to AAA. The horizon layer → the deliberation lanes."
+    duration_ms: 100
+
   - id: synthesize
     lane: 333-AGI
     capability: arif_think
     produces: future_skill_candidates.yaml
-    description: "333 synthesizes the proposals. Filter fantasy by Anti-Fantasy Safeguard."
+    description: "333 synthesizes the proposals (now in AAA). Filter fantasy by Anti-Fantasy Safeguard."
     duration_ms: 30000
 
   - id: critique
@@ -136,9 +145,9 @@ the_test: |
 
 related:
   doctrine: 04_DOCTRINES/constrained_imagination.md
-  policy: 05_POLICIES/hermes-impian-72h.yaml
+  policy: 05_POLICIES/aia-72h.yaml
   verb: 06_CAPABILITIES/arif_impian/
-  manifest: 09_AGENTS/hermes-bijaksana-impian.yaml
+  manifest: 09_AGENTS/aia_horizon.yaml
   driver: forge_impian.py
   storage:
     candidates: 03_EUREKAS/FUTURE/

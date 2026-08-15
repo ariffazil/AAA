@@ -74,7 +74,7 @@ canonical:
       - skill_selection
       - workflow_composition
       - delta_load
-  - id: aia_72h_cycle   ← NEW 2026-08-15 (renamed from impian_72h_cycle)
+  - id: aia_72h_cycle   ← NEW 2026-08-15 (AIA horizon layer)
     architecture: AIA
     codename: 222-AIA
     cadence: 72h

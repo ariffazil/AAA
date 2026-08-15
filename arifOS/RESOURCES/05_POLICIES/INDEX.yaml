@@ -27,7 +27,7 @@ subdirs:
   - privacy:        # F6 EMPATHY⇄MARUAH, dignity, PII
   - reversibility:  # F1 AMANAH, snapshot, rollback
   - trust:          # capability tiers, lease ceiling, MUTATE/IRREVERSIBLE
-  - aia-72h.yaml     # AIA horizon layer cycle policy (NEW 2026-08-15, renamed from hermes-impian-72h.yaml)
+  - aia-72h.yaml     # AIA horizon layer cycle policy (NEW 2026-08-15)
 
 # Love-links
 love_links:
