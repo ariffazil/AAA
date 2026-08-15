@@ -49,24 +49,18 @@ Verdict: KEEP F1-F13. Don't create F14. Embed Gödel-Future in F3.
 ```python
 # In godel_lock_gate.py (existing gate, extended)
 
-def validate_proposal(proposal, action):
-    actor = actor_registry.get(action.executor_id)
-    if not actor:
-        return "HOLAT"
-
-    # Existing check (F9 ANTIHANTU, F1-F13)
-    if actor.id == proposal.actor_id:
-        return "HOLAT"
-
-    # NEW check (Gödel-Future, embedded in F3 TRI-WITNESS)
-    if action.tier in ["verify_future_proposal", "approve_doctrine", "build_proposal"]:
-        dreamer_lineage = proposal.lineage.reflection
-        verifier_lineage = actor.lineage
-        if dreamer_lineage & verifier_lineage:
-            return "HOLAT"  # foreign verifier required
-
-    return "OK"
+def _is_self_certifying(ctx: Any) -> tuple[bool, str]:
+    # ... existing actor_id check ...
+    
+    # ── Gödel-Future (Lineage-as-Self): F3 TRI-WITNESS extension — 5 lines ──
+    l_d = set(params.get("lineage_reflection", []) or [])
+    l_v = set(params.get("lineage_verifier", []) or [])
+    if l_d and l_v and (l_d & l_v):
+        return True, f"Gödel-Future: lineage intersection {l_d & l_v}"
+    return False, ""
 ```
+
+**Applied:** 2026-08-15 at `/root/arifOS/arifosmcp/runtime/godel_lock_gate.py` (the `arifOS` kernel repo). The extension is wired into the existing `_is_self_certifying` function — no new floor, no new schema. Foreign verifier required when dreamer lineage intersects verifier lineage.
 
 ## Mapping to F1-F13
 
@@ -114,10 +108,13 @@ Test surface: 1 gate (vs 1 new floor + 1 new gate)
 | Component | Status |
 |---|---|
 | F14 in FLOOR_TABLE.json | ← NOT ADOPTED |
-| godel_lock_gate.py extension | ← ADOPTED (5 lines) |
-| Lineage field on proposals | ← ADOPTED (schema) |
-| Foreign verifier for build chain | ← ADOPTED (policy) |
-| Anti-Fantasy Safeguard | ← ADOPTED (unchanged) |
+| godel_lock_gate.py extension | ← **APPLIED** 2026-08-15 (5 lines) |
+| Lineage field on proposals | ← **APPLIED** via `params.lineage_reflection` / `params.lineage_verifier` |
+| Foreign verifier for build chain | ← **APPLIED** via policy |
+| Anti-Fantasy Safeguard | ← UNCHANGED |
+| forge_aia.py test for Godel-Future | ← **APPLIED** (test 8: self-certifying, test 9: foreign verifier) |
+| Epistemic tag enforcer (222-AIA) | ← **APPLIED** (test 5: strip [OBS], test 6: prepend [SPEC], test 7: preserve [INT]) |
+| BLINDSPOTS template.yaml | ← **APPLIED** at `/root/AAA/arifOS/RESOURCES/03_EUREKAS/BLINDSPOTS/template.yaml` |
 
 ## Reversibility
 
