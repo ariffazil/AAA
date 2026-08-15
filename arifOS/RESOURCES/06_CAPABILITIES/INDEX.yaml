@@ -1,0 +1,90 @@
+# 06_CAPABILITIES — Verbs exist
+# The 8-verb chain. Atomic, single-purpose, no composition.
+# Capabilities come BEFORE skills. Skill = composition of capabilities + resources.
+
+layer: 06
+name: CAPABILITIES
+purpose: Where atomic verbs are defined. Each capability is a single primitive that does ONE thing.
+authority: 8-verb chain (000-999)
+doctrine: atomic-no-composition
+
+# The 9 verbs (the full 000-999 spectrum, extended 2026-08-15)
+verbs:
+  - id: arif_init
+    code: 000
+    name: Session ignition
+    floor: F1
+    role: bind
+  - id: arif_observe
+    code: 111
+    name: Sense reality (RRR)
+    floor: F2
+    role: discover
+  - id: arif_impian
+    code: 222
+    name: Constrained Imagination (BIJAKSANA IMPIAN)   ← NEW 2026-08-15
+    floor: F2
+    role: imagine
+    agent: hermes
+    cadence: 72h
+    doctrine: 04_DOCTRINES/constrained_imagination.md
+  - id: arif_think
+    code: 333
+    name: Mind (structured reasoning)
+    floor: F2
+    role: reason
+  - id: arif_route
+    code: 444
+    name: Intent-router
+    floor: F1
+    role: dispatch
+  - id: arif_memory
+    code: 555
+    name: Memory governor
+    floor: F11
+    role: persist
+  - id: arif_judge
+    code: 888
+    name: Constitutional verdict
+    floor: F13
+    role: arbitrate
+  - id: arif_forge
+    code: 777
+    name: Execution gate
+    floor: F1
+    role: mutate
+  - id: arif_seal
+    code: 999
+    name: VAULT999 immutable append
+    floor: F11
+    role: witness
+
+# What this layer provides
+provides:
+  - verb_ids            # arif_*
+  - input_schema        # each verb has a typed input
+  - output_schema       # each verb has a typed output
+  - requires_floors     # each verb is bound to F1-F13
+  - authority_ceiling   # each verb has a max authority class
+
+# What this layer requires
+requires:
+  - 01_RESOURCES       # verbs discover resources
+  - 05_POLICIES        # verbs are constrained by policies
+  - 04_DOCTRINES       # verbs obey doctrines
+
+# Love-links
+love_links:
+  - 06_CAPABILITIES/arif_observe  ↔ 01_RESOURCES/*  # RRR is the only consumer
+  - 06_CAPABILITIES/arif_think   ↔ 03_EUREKAS      # thinking derives eurekas
+  - 06_CAPABILITIES/arif_route   ↔ 09_AGENTS       # routing dispatches to agents
+  - 06_CAPABILITIES/arif_memory  ↔ 10_RECEIPTS     # memory writes receipts
+  - 06_CAPABILITIES/arif_judge   ↔ 04_DOCTRINES    # judge cites doctrine
+  - 06_CAPABILITIES/arif_forge   ↔ 01_RESOURCES/aforge  # forge is implemented by A-FORGE
+  - 06_CAPABILITIES/arif_seal    ↔ 10_RECEIPTS/seal     # seal appends
+  - 06_CAPABILITIES/arif_init    ↔ 09_AGENTS/identities  # init binds identity
+
+epoch: 1
+updated: 2026-08-15
+
+DITEMPA BUKAN DIBERI ⚒️

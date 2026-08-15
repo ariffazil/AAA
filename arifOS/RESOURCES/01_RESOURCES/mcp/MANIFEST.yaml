@@ -1,0 +1,61 @@
+id: mcp://spec/architecture
+type: spec
+state: ACTIVE
+freshness: 2026-07-28T00:00:00Z
+epoch: 2026-07-28
+owner: modelcontextprotocol
+trust_tier: external-canonical
+epistemic_label: OBS
+
+title: Model Context Protocol — Architecture
+description: >
+  The canonical MCP spec. Defines Resources, Tools, Prompts, Transports, Authorization.
+  Foundation for arifOS's 8-verb chain (each verb exposed as an MCP tool).
+
+links:
+  canonical: https://modelcontextprotocol.io/specification/2026-07-28/architecture/
+  see_also:
+    - https://modelcontextprotocol.io/llms.txt
+    - https://modelcontextprotocol.io/registry/about.md
+  implements:
+    - arifos://kernel/architecture
+
+requires:
+  - arifos://kernel/genesis
+
+provides:
+  - mcp://spec/transport/stdio
+  - mcp://spec/transport/streamable-http
+  - mcp://spec/authorization
+  - mcp://spec/resources
+  - mcp://spec/tools
+  - mcp://spec/prompts
+
+love_links:
+  - fastmcp://servers/server
+  - a2a://spec/overview
+  - aforge://tools/registry
+  - arifos://kernel/architecture
+
+tags:
+  - protocol
+  - external-canonical
+  - spec
+  - specification
+  - mcp
+
+scope:
+  filesystem: false
+  network_read: true
+  network_write: false
+  secrets: false
+  vault_write: false
+  shell_exec: false
+
+freshness_tolerance_seconds: 2592000
+reversible: true
+blast_radius: none
+authority_ceiling: OBSERVE
+constitutional_floors: [F1, F11, F12]
+
+epoch_of_last_mutation: 2026-07-28

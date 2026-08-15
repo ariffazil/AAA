@@ -1,0 +1,54 @@
+# 04_DOCTRINES — Meaning exists
+# Interpreted knowledge. After classification (Ontology), meaning is composed here.
+# Tied to the canonical kernel canon (GENESIS).
+
+layer: 04
+name: DOCTRINES
+purpose: Where interpretation is composed. Every doctrine is the marriage of an Eureka + an Ontology anchor.
+authority: 333_THINK + 888_JUDGE
+doctrine: interpret-and-bind
+
+# What this layer provides
+provides:
+  - doctrine_ids       # DOCTRINE-{N} or canon-blessed names
+  - canonical_law      # the binding text of every doctrine
+  - floor_anchors      # which F1-F13 floor each doctrine touches
+  - skill_targets      # which skills are derived from this doctrine
+
+# What this layer requires
+requires:
+  - 02_ONTOLOGY        # every doctrine references an ontology node
+  - 03_EUREKAS         # every doctrine has eureka lineage
+  - 05_POLICIES        # policies operationalise doctrines
+  - 07_SKILLS          # skills execute doctrines
+
+# Sub-layers
+subdirs:
+  - genesis    # canonical kernel documents (symlink to /root/arifOS/GENESIS)
+  - canon      # the canon pieces (kernel_000, floor_table, etc.)
+  - floors     # F1-F13 doctrine texts
+
+# Existing canonical contents
+canonical:
+  - paths: /root/arifOS/GENESIS
+    sha: live
+  - paths: /root/AAA/GENESIS
+    sha: live
+  - paths: ./constrained_imagination.md
+    title: "Anti-Fantasy Safeguard"
+    forged: 2026-08-15
+    status: RATIFIED
+    summary: "Imagination without constraint is BANGANG. With reality + scar + evidence, it is BIJAKSANA."
+
+# Love-links
+love_links:
+  - 04_DOCTRINES/genesis  ↔ 01_RESOURCES/arifos  # canonical kernel
+  - 04_DOCTRINES          ↔ 05_POLICIES         # doctrines → policies
+  - 04_DOCTRINES          ↔ 07_SKILLS           # doctrines → skills via DERIVES
+  - 04_DOCTRINES/floors   ↔ 01_RESOURCES/sovereign  # F13 sovereign ratifies
+  - 04_DOCTRINES          ↔ 03_EUREKAS          # doctrines trace eurekas
+
+epoch: 41
+updated: 2026-08-15
+
+DITEMPA BUKAN DIBERI ⚒️
