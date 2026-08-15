@@ -1,4 +1,7 @@
-# WORKFLOW — 72H_IMPIAN_REFLECTION_WORKFLOW v0.1 (DRAFT, SEALED-INIT)
+# WORKFLOW — 72H_IMPIAN_REFLECTION_WORKFLOW v0.2 (LIVE)
+
+> **v0.2 (2026-08-15, ~11:30 MYT):** F13 go-signal received — cycle is LIVE.
+> Refinements adopted from AAA dialogue: (1) IMPIAN is a MODE of Hermes (Hermes::IMPIAN), not an organ/lane — functions before entities. (2) Chain position 222: 111 RRR → 222 IMPIAN → 333 THINK → 555 VERIFY → 888 JUDGE → 777 FORGE → 999 SEAL. (3) FANTASIES quarantine dir added — fantasy is quarantined, not deleted. (4) Doctrine + policy now exist: 04_DOCTRINES/constrained_imagination.md, 05_POLICIES/hermes-impian-72h.yaml.
 
 > **Forged:** 2026-08-15, post-3AM dialogue on agent impian
 > **Authority:** OBSERVE_ONLY · FUTURE_REFLECTION · mutation forbidden · auto_execute false
@@ -49,7 +52,7 @@ reflections_total · future_capabilities_proposed · later_built · false_positi
 
 ## Activation Path (deliberately un-executed)
 
-This v0.1 is a SEALED-INIT DRAFT: the workflow definition is now canon-candidate, but **no cron is created, no agent behavior changed**. When Arif wants it live, the path is:
+~~v0.1 draft~~ → **ACTIVATED 2026-08-15**: cron `impian-72h` created on Hermes (every 72h, deliver=origin, OBSERVE_ONLY). Original activation path kept for the record:
 1. Arif says "impian live" (or similar F13 go-signal)
 2. Cron `impian-72h` created: every 72h, deliver=origin, skill chain: reality snapshot → scar review → gap discovery → proposal → HOLD-receipt to Arif
 3. First 90-day review of metrics decides keep/kill (F3 CRON LAW)
