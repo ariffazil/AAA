@@ -95,7 +95,7 @@ def run_cycle() -> Dict:
         "started_at": now.isoformat(),
         "doctrine": "constrained_imagination",
         "agent": "hermes",
-        "mode": "bijaksana-impian",
+        "mode": "AIA",
         "cadence": "72h",
         "constitutional_floors": ["F1", "F2", "F11"],
         "anti_fantasy_safeguard_active": True,
@@ -103,7 +103,7 @@ def run_cycle() -> Dict:
     }
 
     steps = [
-        ("wake_hermes",        "arif_impian",    None,             "Hermes wakes. Inherits identity, epoch, security context."),
+        ("wake_aia",          "arif_impian",    None,             "AIA horizon layer wakes. Hermes is the runtime; AIA is the architecture that runs."),
         ("rrr_snapshot",       "arif_observe",   "rrr",            "RRR snapshot of the present. The ground truth for reality_anchor."),
         ("scar_walk",          "arif_observe",   None,             "Walk the scar ledger. Compile the failure topography."),
         ("gap_scan",           "arif_observe",   None,             "Scan for capability gaps. The opposite of skill graveyard."),
