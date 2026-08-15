@@ -1,10 +1,10 @@
 {
-  "audit_timestamp": "2026-08-10T06:30:19.126896+00:00",
+  "audit_timestamp": "2026-08-15T17:23:34.297637+00:00",
   "total_organs": 4,
   "total_tools": 96,
   "total_prompts": 54,
-  "total_resources": 116,
-  "total_templates": 41,
+  "total_resources": 118,
+  "total_templates": 43,
   "organs": [
     {
       "organ_id": "arifOS",
@@ -12,11 +12,11 @@
       "authority_ceiling": "JUDGE_ONLY",
       "total_tools": 6,
       "total_prompts": 13,
-      "total_resources": 34,
-      "total_templates": 25,
+      "total_resources": 35,
+      "total_templates": 27,
       "tools_passed": 6,
       "prompts_passed": 13,
-      "resources_passed": 34,
+      "resources_passed": 35,
       "tools": [
         {
           "name": "arif_init",
@@ -670,7 +670,7 @@
         },
         {
           "name": "arif_memory",
-          "description": "KERNEL memory governor \u2014 L1\u2013L6 governed semantic recall, storage, and persistence.",
+          "description": "KERNEL 555 \u00b7 Memory governor \u2014 L1\u2013L6 governed semantic recall, storage, and persistence.",
           "parameters": {
             "additionalProperties": false,
             "properties": {
@@ -1498,6 +1498,9 @@
                     "type": "object"
                   },
                   {
+                    "type": "string"
+                  },
+                  {
                     "type": "null"
                   }
                 ],
@@ -1861,7 +1864,7 @@
           "name": "get_vitals",
           "mime_type": "text/plain",
           "test_status": "VERIFIED",
-          "test_detail": "Read ok (1416 bytes)"
+          "test_detail": "Read ok (1409 bytes)"
         },
         {
           "uri": "arifos://init/agent_init",
@@ -1875,7 +1878,7 @@
           "name": "get_carry_forward",
           "mime_type": "text/plain",
           "test_status": "VERIFIED",
-          "test_detail": "Read ok (2180 bytes)"
+          "test_detail": "Read ok (3702 bytes)"
         },
         {
           "uri": "arifos://flow-state",
@@ -2020,6 +2023,13 @@
         {
           "uri": "arifos://wisdom/contract",
           "name": "wisdom_contract",
+          "mime_type": "text/plain",
+          "test_status": "VERIFIED",
+          "test_detail": "URI registered"
+        },
+        {
+          "uri": "arifos://skill-health",
+          "name": "skill_health_resource",
           "mime_type": "text/plain",
           "test_status": "VERIFIED",
           "test_detail": "URI registered"
@@ -2200,6 +2210,16 @@
           "mime_type": "text/plain"
         },
         {
+          "uri_template": "arifos://rrr/{intent}",
+          "name": "rrr_resource",
+          "mime_type": "text/plain"
+        },
+        {
+          "uri_template": "arifos://skill-drift/{skill_name}",
+          "name": "skill_drift_resource",
+          "mime_type": "text/plain"
+        },
+        {
           "uri_template": "arifos://atlas333/scar/{id}",
           "name": "scar_by_id",
           "mime_type": "text/plain"
@@ -2216,7 +2236,7 @@
         }
       ],
       "status": "VERIFIED",
-      "elapsed_ms": 7325.3821327816695
+      "elapsed_ms": 7260.706003056839
     },
     {
       "organ_id": "GEOX",
@@ -6854,7 +6874,7 @@
         }
       ],
       "status": "VERIFIED",
-      "elapsed_ms": 2103.5916281398386
+      "elapsed_ms": 2161.4696520846337
     },
     {
       "organ_id": "WEALTH",
@@ -7181,7 +7201,7 @@
             "type": "object"
           },
           "test_status": "VERIFIED",
-          "test_detail": "Call note: [Errno 13] Permission denied: '/root/VAULT999/wealth/receipt"
+          "test_detail": "NPV call ok (3311 chars)"
         },
         {
           "name": "capital_health",
@@ -8560,7 +8580,7 @@
       ],
       "templates": [],
       "status": "VERIFIED",
-      "elapsed_ms": 308.2887299824506
+      "elapsed_ms": 218.83508004248142
     },
     {
       "organ_id": "WELL",
@@ -8568,11 +8588,11 @@
       "authority_ceiling": "REFLECT_ONLY",
       "total_tools": 45,
       "total_prompts": 18,
-      "total_resources": 29,
+      "total_resources": 30,
       "total_templates": 3,
       "tools_passed": 45,
       "prompts_passed": 18,
-      "resources_passed": 29,
+      "resources_passed": 30,
       "tools": [
         {
           "name": "well_log",
@@ -11277,6 +11297,13 @@
           "test_detail": "URI registered"
         },
         {
+          "uri": "well://transport/stages",
+          "name": "transport_stages",
+          "mime_type": "text/plain",
+          "test_status": "VERIFIED",
+          "test_detail": "URI registered"
+        },
+        {
           "uri": "well://tools/canon_map",
           "name": "tools_canon_map",
           "mime_type": "text/plain",
@@ -11372,7 +11399,7 @@
         }
       ],
       "status": "VERIFIED",
-      "elapsed_ms": 996.4633968193084
+      "elapsed_ms": 2780.7818020228297
     }
   ]
 }
