@@ -7,7 +7,7 @@ purpose: Where runtime actors are defined. Each agent is a bounded, auditable, c
 authority: 4-lane constraint
 doctrine: bounded-not-sovereign
 
-# The 4 lanes + 1 agent with 2 modes
+# The 4 lanes of AAA (Architects, Auditors, Agents)
 lanes:
   - id: 333-AGI
     name: THINK
@@ -26,21 +26,45 @@ lanes:
     duty: Constitutional verdict, authority resolution
     boundary: cannot execute, cannot produce domain evidence
 
-# The 5th — Hermes with two modes (NEW 2026-08-15)
-agent_hub:
-  - id: hermes
-    name: OBSERVATORY
-    modes:
-      - id: hermes::mode/present
-        verb: 111
-        cadence: real-time
-        duty: observe, fact-check, inject-scan, cross-witness
-      - id: hermes::mode/bijaksana-impian
-        verb: 222
-        cadence: 72h
-        duty: observe, reflect, propose (NEVER execute, NEVER fantasize)
-        doctrine: 04_DOCTRINES/constrained_imagination.md
-        policy: 05_POLICIES/hermes-impian-72h.yaml
+# ─── The Horizon Layer (AIA) — pre-deliberation, NOT a member of AAA ────
+
+horizon_layer:
+  id: aia://architecture/horizon
+  canonical_name: AIA
+  expansion: Agentic Impian Architecture
+  codename: 222-AIA
+  position: pre-deliberation
+  verb: arif_impian
+  floor: F2
+  cadence: 72h
+  doctrine: 04_DOCTRINES/constrained_imagination.md
+  policy: 05_POLICIES/aia-72h.yaml
+  workflow: 08_WORKFLOWS/aia_72h_cycle.yaml
+  manifest: 09_AGENTS/aia_horizon.yaml
+  driver: forge_aia.py
+
+  purpose: |
+    Sees future possibilities BEFORE AAA deliberates.
+    Hands proposals to AAA (333-AGI synthesizes, 555-ASI critiques,
+    888-APEX holds, 777-FORGE builds, 999-Seal witnesses).
+
+  relationship_to_aaa: |
+    AIA is NOT a member of AAA. AIA is a horizon layer that
+    AAA draws from. Without AIA, AAA only sees the present.
+    Without AAA, AIA is possibilities without deliberation.
+
+# ─── Dream vs Impian (the clarifying distinction) ──────────────────────
+
+dream_vs_impian:
+  dream:
+    location: /root/AAA/skills/AGI-dream-engine
+    purpose: Memory consolidation (past → present)
+    cadence: 72h
+  impian:
+    location: AIA horizon layer (this substrate)
+    purpose: Future possibility sensing (present → future)
+    cadence: 72h
+  note: "Dream is for memory organization. Impian is for future imagination."
 
 # The sovereign (above the registry)
 sovereign:

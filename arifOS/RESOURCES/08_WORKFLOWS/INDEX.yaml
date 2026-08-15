@@ -74,20 +74,22 @@ canonical:
       - skill_selection
       - workflow_composition
       - delta_load
-  - id: impian_72h_cycle   ← NEW 2026-08-15
-    agent: hermes
-    mode: bijakasana-impian
+  - id: aia_72h_cycle   ← NEW 2026-08-15 (renamed from impian_72h_cycle)
+    architecture: AIA
+    codename: 222-AIA
     cadence: 72h
+    layer_position: pre-deliberation
     steps:
-      - wake_hermes
+      - wake_aia
       - rrr_snapshot
       - scar_walk
       - gap_scan
       - external_council
-      - synthesize
-      - critique
-      - hold
-      - seal
+      - handoff_to_aaa
+      - synthesize        # 333-AGI
+      - critique          # 555-ASI
+      - hold              # 888-APEX
+      - seal              # 999
     anti_fantasy_safeguard: binding
     doctrine: 04_DOCTRINES/constrained_imagination.md
 

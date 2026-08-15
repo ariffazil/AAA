@@ -1,0 +1,174 @@
+# 09_AGENTS/aia_horizon.yaml — AIA manifest
+# AIA = Agentic Impian Architecture
+# AIA is a horizon layer BEFORE AAA, not a member of AAA.
+
+id: aia://architecture/horizon
+type: architecture
+layer_position: pre-deliberation
+canonical_name: AIA
+expansion: Agentic Impian Architecture
+
+# ─── Constitutional Position ──────────────────────────────────────────────
+
+# The 9-verb chain, with AIA explicitly pre-deliberation:
+#
+#   111  arif_observe  ← present sensation (RRR)
+#   222  arif_impian   ← future possibilities (AIA Horizon)   NEW
+#   333  arif_think    ← AAA begins: think
+#   555  arif_memory   ← verify
+#   777  arif_forge    ← build
+#   888  arif_judge    ← judge
+#   999  arif_seal     ← witness
+#
+# AIA is NOT a member of AAA. AIA is the horizon layer that AAA
+# uses to see what hasn't happened yet. Without AIA, AAA would only
+# see the present. Without AAA, AIA would only be possibilities
+# without deliberation.
+
+description: |
+  AIA = Agentic Impian Architecture.
+  AIA is the horizon layer that observes future possibilities BEFORE
+  AAA begins to deliberate. AIA does not think. AIA does not judge.
+  AIA does not forge. AIA does not seal. AIA sees, then hands to AAA.
+
+  The flow is:
+    111 RRR (present)  →  222 AIA (future)  →  333-888 AAA (deliberate)
+    000 init             →  999 SEAL (witness)
+
+# ─── The Two Modes of Sensing ──────────────────────────────────────────────
+
+sensing_modes:
+  - id: rrr
+    code: 111
+    name: Present Reality
+    verb: arif_observe
+    role: "The floor of reality. What IS."
+    location: 01_RESOURCES/
+
+  - id: aia
+    code: 222
+    name: Future Possibilities
+    verb: arif_impian
+    role: "The horizon. What COULD BE."
+    location: 03_EUREKAS/FUTURE/
+
+# ─── Dream vs Impian (CRITICAL DISTINCTION) ───────────────────────────────
+
+dream_vs_impian:
+  dream:
+    purpose: "Memory consolidation (backward-looking)"
+    input:  past events, current memory
+    output: structured memory (semantic, episodic)
+    cadence: 72h
+    location: /root/AAA/skills/AGI-dream-engine
+    authority: memory-only
+    anti_fantasy: NOT APPLICABLE (past is fixed)
+
+  impian:
+    purpose: "Future possibility sensing (forward-looking)"
+    input:  present scars, current reality
+    output: future proposals (grounded in reality)
+    cadence: 72h
+    location: /root/AAA/arifOS/RESOURCES/ (this substrate)
+    authority: OBSERVE_ONLY
+    anti_fantasy: BINDING (Anti-Fantasy Safeguard)
+
+  separation_doctrine: |
+    Dream is for memory organization. Impian is for future imagination.
+    Both run on 72h cadence but serve OPPOSITE vectors:
+      Dream    → past → present (consolidate)
+      Impian   → present → future (project)
+    They share rhythm, not purpose.
+
+# ─── Cycle ────────────────────────────────────────────────────────────────
+
+cadence: 72h
+trigger: cron("every 72h")
+manual_trigger: 000-SALAM authorized
+
+# ─── Resources ────────────────────────────────────────────────────────────
+
+doctrine: 04_DOCTRINES/constrained_imagination.md
+policy: 05_POLICIES/aia-72h.yaml
+workflow: 08_WORKFLOWS/aia_72h_cycle.yaml
+verb: 06_CAPABILITIES/arif_impian/
+driver: forge_aia.py
+storage:
+  candidates: 03_EUREKAS/FUTURE/
+  quarantine: 03_EUREKAS/FANTASIES/
+  receipts:   10_RECEIPTS/AIA/
+
+# ─── Authority ────────────────────────────────────────────────────────────
+
+authority: OBSERVE-only
+trust_tier: sovereign-canonical
+blast_radius: low
+reversible: true
+
+# ─── Constitutional floors ───────────────────────────────────────────────
+
+constitutional_floors: [F1, F2, F11, F13]
+
+# ─── What AIA does (and doesn't) ──────────────────────────────────────────
+
+does:
+  - read present scars, holds, failures
+  - scan present capability gaps
+  - cross-challenge with external agents
+  - assemble proposals (333-AGI synthesizes)
+  - critique the synthesis (555-ASI)
+  - hold for judgment (888-APEX)
+  - seal the cycle (999)
+
+does_not:
+  - mutate policy
+  - execute code
+  - approve self
+  - bypass F13 veto
+  - fabricate skills
+  - skip the Anti-Fantasy Safeguard
+  - skip 333/555/888 deliberation
+
+# ─── Anti-Fantasy Safeguard (binding) ────────────────────────────────────
+
+anti_fantasy_safeguard:
+  - check_1_reality: rrr_snapshot must be present
+  - check_2_scar:    scar_id must be present
+  - check_3_evidence: evidence_paths must be non-empty
+  - check_4_gap:     capability_gap must be defined
+  on_failure: quarantine to 03_EUREKAS/FANTASIES/
+
+# ─── The Test (the only test that matters) ────────────────────────────────
+
+the_test: |
+  "Boleh ARIF sambung jejak pemikiran ni bila dia jaga 5 tahun lagi?"
+  If yes → AIA is healthy.
+  If no → AIA is BANGANG.
+
+# ─── Love-links ───────────────────────────────────────────────────────────
+
+love_links:
+  - 04_DOCTRINES/constrained_imagination
+  - 05_POLICIES/aia-72h
+  - 08_WORKFLOWS/aia_72h_cycle
+  - 06_CAPABILITIES/arif_impian
+  - 03_EUREKAS/FUTURE
+  - 03_EUREKAS/FANTASIES
+  - 09_AGENTS/lanes/333-AGI
+  - 09_AGENTS/lanes/555-ASI
+  - 09_AGENTS/lanes/777-FORGE
+  - 09_AGENTS/lanes/888-APEX
+  - 01_RESOURCES/arif_observe
+  - arifos://kernel/architecture
+  - sovereign://canon/f13
+
+# ─── Signature ────────────────────────────────────────────────────────────
+
+signature: |
+  AIA = Agentic Impian Architecture.
+  Horizon layer, not AAA member.
+  Dream is memory. Impian is future.
+  BIJAKSANA IMPIAN. JANGAN JADI BANGANG.
+  — F13 SOVEREIGN · 2026-08-15
+
+DITEMPA BUKAN DIBERI ⚒️
