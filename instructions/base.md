@@ -88,10 +88,15 @@ NATS bind `127.0.0.1` with no auth. UFW blocks the outside. Full doctrine:
 1. `source /root/.secrets/kunci-mas.env` (5-R Protocol ready)
 2. Read `/root/AGENTS.md` + `/root/CLAUDE.md`
 3. Boot: `cat /root/AAA/prompts/INIT.md` (Trinity-33 · RSI)
-4. Live state: `/root/.local/share/arifos/carry_forward.json`
-5. Probe federation: `make health` or per-organ `curl :PORT/health`
+4. One-shot state pane: `now` — time + 10 federation surfaces + FRAME observer drift + last session carry. (`now --json` for machine-readable)
+5. Deep probe if needed: `make health` (10 surfaces) or per-organ `curl :PORT/health`
 6. Check dirty repos:
    `for d in /root/{arifOS,A-FORGE,AAA,GEOX,WEALTH,WELL}; do git -C "$d" status -s; done`
 7. Check deprecation map: `cat /root/AAA/docs/deprecation-registry.json | jq .`
+
+**State-read conventions (2026-08-15):**
+- `carry_forward.json` is hand-written by the closing agent. All timestamps ISO-8601 **UTC** (local = Asia/Kuala_Lumpur). Stamp a backup into `~/.local/share/arifos/carry_forward_backups/` when writing.
+- HTTP 401/403 on a health endpoint = service UP, auth-gated. Only conn-refused/timeout = DOWN. FED :4000 no-auth endpoint: `/health/liveliness`.
+- FRAME (:18085) is the independent observer — its output is evidence, never a verdict.
 
 **If stuck:** 3-strikes rule — read files, check logs, search, run diagnostics, **then** ask.
