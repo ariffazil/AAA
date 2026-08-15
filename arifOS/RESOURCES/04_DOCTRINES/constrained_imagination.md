@@ -106,7 +106,16 @@ Position: IMPIAN is Level 1 (grounded future reflection) operating toward Level 
 
 This extends the Gödel Lock into the temporal axis. Cognitive inbreeding — the agent that dreams approving its own dream — is a category violation even when every individual step is honest.
 
-**Status: CLAUSE now, FLOOR later.** Elevation to kernel floor F14 GÖDEL-FUTURE requires: (a) 90 days of clause-level practice in receipts, (b) apex-judge isolate session, (c) F13 ratification. A floor is constitutional infrastructure, not documentation — it earns its number.
+**Status: RESOLVED 2026-08-15 (F13) — NO F14. Ever.** Gödel-Future bukan undang-undang baharu; ia fungsi lantai sedia ada (Rule 6: functions before entities). The Gödel Lock already covers past/present/future — minting F14 for the temporal axis would be floor inflation (F15, F16… entropy expansion) with zero new constraint. Mapping:
+
+| Prinsip masa depan | Lantai asal | Penerapan |
+|---|---|---|
+| Dreamer ≠ Verifier | F3 TRI-WITNESS + Gödel Lock | Verifier wajib lineage/model berbeza, Φ_external > 0; ejen pencetus impian haram jadi saksi pengesah |
+| Impian bukan fakta | F2 TRUTH | Unjuran 222-AIA kekal SPEC/INT; haram naik OBS tanpa bukti dunia nyata |
+| Kos kompleksiti impian | F4 CLARITY (ΔS ≤ 0) | Entropy Budget wajib; maintenance > 0 tanpa pengurangan entropi = tolak |
+| Hak menolak masa depan | F13 SOVEREIGN | Tiada masa depan di-kanon tanpa meterai fizikal ARIF |
+
+**Implementation path (when needed, separate gated act):** extend the gate's definition of self — `Self = {Actor ID} ∪ {Lineage of Reflection}`; `Lineage(Dreamer) ∩ Lineage(Verifier) ≠ ∅ → HOLD`. A ~5-line patch in `godel_lock_gate.py` (kernel mutation, own apex-judge + F13 gate), bukan pindaan perlembagaan.
 
 ## The Triad (binding frame)
 
