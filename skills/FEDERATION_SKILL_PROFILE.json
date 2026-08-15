@@ -79,6 +79,8 @@
         "FORGE-agentic-web-builder",
         "FORGE-document-intelligence",
         "FORGE-code-analysis",
+        "FORGE-mcp-jam-inspector",
+        "FORGE-mcp-jam-inspector",
         "minimax-image-gen"
       ]
     },
@@ -155,6 +157,7 @@
       "description": "Meta-skills about the skill system itself: skill creation, linting, auditing, binding, observability, context management, summarization.",
       "count": 10,
       "skills": [
+        "display-operational-cockpit",
         "AUDIT-skill-atlas",
         "AUDIT-drift-detector",
         "AUDIT-recursive-audit",
