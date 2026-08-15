@@ -297,6 +297,8 @@ actor_geometry:
   cascades:  # SOT — the ONLY place model identity is written
     # scar 2026-08-15: glm-5.3[1m] is not a valid Z.ai modelCode (err 1214);
     # 1M ctx is served by glm-5.3 on coding-plan when available — verified live.
+    # scar 2026-08-15: kimi coding endpoint is api.kimi.com/coding/V1/... —
+    # missing /v1 yields 404 resource_not_found that masquerades as bad model ID.
     agi-333:  ["zai/glm-5.3", "mimo-v2.5-pro", "MiniMax-M3", "gemini-2.5-flash"]
     asi-555:  ["mimo-v2.5-pro", "MiniMax-M3", "gemini-3.6-flash"]
     forge-777: ["zai/glm-5.3", "kimi-k3", "MiniMax-M3"]
