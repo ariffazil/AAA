@@ -120,7 +120,7 @@ steps:
 
   - id: seal
     capability: arif_seal
-    produces: 10_RECEIPTS/impian/<date>.seal
+    produces: 10_RECEIPTS/AIA/<date>.seal
     description: "Seal the cycle. The thinking trail is preserved."
     duration_ms: 1000
 
@@ -132,7 +132,7 @@ anti_fantasy_safeguard:
     - scar_id is null
     - evidence_paths is empty
   quarantine_to: 03_EUREKAS/FANTASIES/
-  log_to: 10_RECEIPTS/impian/<date>.log
+  log_to: 10_RECEIPTS/AIA/<date>.log
 
 # ─── 8 EUREKAs — meta-constitutional additions ─────────────────────────────
 
@@ -216,10 +216,10 @@ related:
   policy: 05_POLICIES/aia-72h.yaml
   verb: 06_CAPABILITIES/arif_impian/
   manifest: 09_AGENTS/aia_horizon.yaml
-  driver: forge_impian.py
+  driver: forge_aia.py
   storage:
     candidates: 03_EUREKAS/FUTURE/
     quarantine: 03_EUREKAS/FANTASIES/
-    receipts: 10_RECEIPTS/impian/
+    receipts: 10_RECEIPTS/AIA/
 
 # DITEMPA BUKAN DIBERI ⚒️
