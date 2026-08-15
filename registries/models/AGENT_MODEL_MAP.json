@@ -1,5 +1,7 @@
 {
   "_meta": {
+    "status": "SUPERSEDED_BY_FEDERATION_MODELS_JSON",
+    "superseded_note": "FROZEN 2026-08-15 per ACTOR_SURFACE_DOCTRINE + FED actor-envelope geometry (SEAL-964555aa01da4500). Identity/bindings SOT = /root/.config/federation-models.json (agents+providers) + AAA/federation/fed_signatures.yaml (cascades). This file is a read-only historical snapshot; new writes are rejected. Dynamic fields migrate per 3-phase plan: forge_work/2026-08-15-FI-003-FED-resolver-session1.md",
     "last_verified": "2026-08-13T08:13:37Z",
     "alive_pools": 9,
     "dead_pools": 4,
