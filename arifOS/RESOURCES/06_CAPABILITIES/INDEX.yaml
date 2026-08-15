@@ -22,10 +22,10 @@ verbs:
     role: discover
   - id: arif_impian
     code: 222
-    name: Constrained Imagination (BIJAKSANA IMPIAN)   ← NEW 2026-08-15
+    name: Constrained Imagination (AIA Horizon)   ← NEW 2026-08-15
     floor: F2
     role: imagine
-    agent: hermes
+    architecture: AIA  # AIA = Agentic Impian Architecture
     cadence: 72h
     doctrine: 04_DOCTRINES/constrained_imagination.md
   - id: arif_think

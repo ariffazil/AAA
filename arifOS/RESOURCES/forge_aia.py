@@ -1,19 +1,23 @@
 #!/usr/bin/env python3
 """
-forge_impian.py — BIJAKSANA IMPIAN cycle driver
+forge_aia.py — AIA (Agentic Impian Architecture) cycle driver
 
-The 72-hour reflection cycle for Hermes. Observe-only. Observes the future
-through the Anti-Fantasy Safeguard. Emits proposals to 03_EUREKAS/FUTURE/
-or quarantines fantasies to 03_EUREKAS/FANTASIES/.
+Runs the 72-hour reflection cycle for the AIA horizon layer. Observe-only.
+Observes the future through the Anti-Fantasy Safeguard. Emits proposals to
+03_EUREKAS/FUTURE/, blindspots to 03_EUREKAS/BLINDSPOTS/, or quarantines
+fantasies to 03_EUREKAS/FANTASIES/.
 
 > Imagination without constraint is BANGANG.
 > Imagination grounded in reality, scars, and evidence is BIJAKSANA.
 > — 04_DOCTRINES/constrained_imagination.md
 
+AIA is the doctrine name. arif_impian is the verb (code 222). The architecture
+is at 09_AGENTS/aia_horizon.yaml. See 04_DOCTRINES/EUREKAS_8_FUTURE_QUESTIONS.md.
+
 Usage:
-    python3 forge_impian.py run               # run the 9-step cycle
-    python3 forge_impian.py validate PROPOSAL # validate a single proposal
-    python3 forge_impian.py test              # run Anti-Fantasy Safeguard tests
+    python3 forge_aia.py run               # run the 9-step cycle
+    python3 forge_aia.py validate PROPOSAL # validate a single proposal
+    python3 forge_aia.py test              # run Anti-Fantasy Safeguard + epistemic + godel-future tests
 """
 
 from __future__ import annotations
@@ -32,7 +36,7 @@ ROOT = Path("/root/AAA/arifOS/RESOURCES")
 FUTURE_DIR = ROOT / "03_EUREKAS" / "FUTURE"
 FANTASIES_DIR = ROOT / "03_EUREKAS" / "FANTASIES"
 BLINDSPOTS_DIR = ROOT / "03_EUREKAS" / "BLINDSPOTS"
-RECEIPTS_DIR = ROOT / "10_RECEIPTS" / "impian"
+RECEIPTS_DIR = ROOT / "10_RECEIPTS" / "AIA"
 
 # ─── Epistemic tag enforcement (222-AIA layer) ─────────────────────────────
 # DNA: 222-AIA reflects future possibilities. Its outputs MUST be tagged as
@@ -367,7 +371,7 @@ def _is_self_certifying_like_godel(ctx: Any) -> Tuple[bool, str]:
 
 def main() -> int:
     if len(sys.argv) < 2:
-        print("Usage: python3 forge_impian.py {run|validate|test}")
+        print("Usage: python3 forge_aia.py {run|validate|test}")
         return 2
 
     cmd = sys.argv[1]
@@ -379,7 +383,7 @@ def main() -> int:
 
     if cmd == "validate":
         if len(sys.argv) < 3:
-            print("Usage: python3 forge_impian.py validate <proposal.yaml>")
+            print("Usage: python3 forge_aia.py validate <proposal.yaml>")
             return 2
         try:
             import yaml
