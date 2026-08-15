@@ -1,0 +1,24 @@
+# POLICY — hermes-impian-72h v0.2
+policy_id: hermes-impian-72h
+carrier: hermes
+mode: impian
+classification: FUTURE_REFLECTION
+authority: OBSERVE_ONLY
+mutation: forbidden          # this cycle may never mutate skills/policies/capabilities
+auto_execute: false          # proposals only; build requires separate FORGE pass
+default_verdict: HOLD
+cadence: 72h                 # anchored to VVV 72h dream-engine rhythm (2026-08-14)
+deliver: origin              # brief to Arif's DM
+storage:
+  receipts: 10_RECEIPTS/IMPIAN/<YYYY-MM-DD>/
+  future_candidates: 03_EUREKAS/FUTURE/       # dream-state, NOT canon
+  quarantine: 03_EUREKAS/FANTASIES/           # Reality or Scar missing
+gates:
+  - reality_anchor required (live probe / verified path, this run)
+  - scar_id or evidence path required
+  - evidence_paths non-empty
+  - max 3 proposals per cycle (bounded, ringgit-aware)
+budget:
+  max_output_lines: 8         # the delivered brief stays tight
+review:
+  every_90_days: keep-or-kill per F3 CRON LAW (must prove foresight value)
