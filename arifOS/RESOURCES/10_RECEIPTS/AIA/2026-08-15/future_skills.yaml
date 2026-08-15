@@ -1,0 +1,59 @@
+# AIA future_skills — cycle AIA-2026-08-15-1135 (OBSERVE_ONLY proposals, default HOLD)
+# Promotion to 03_EUREKAS/FUTURE/ requires separate 888/FORGE pass with apex-judge.
+# Classification is ADVISORY ONLY — not ratification.
+
+- id: PROP-2026-08-15-01
+  title: Observability evidence sink — route cron receipts into 10_RECEIPTS
+  reality_anchor: "rrr://runtime/snapshot/2026-08-15 — drift/ and sesat/ empty under /root/AAA/arifOS/RESOURCES/10_RECEIPTS/ while artifact-drift-audit + contradiction-scan crons enabled and executions.db shows completed runs"
+  scar_id: scar-002-sct-validation-monitoring-gap
+  evidence_paths:
+    - /root/AAA/arifOS/RESOURCES/10_RECEIPTS/INDEX.yaml
+    - /root/AAA/canon/SCAR_RECORDS/scar-002-sct-validation-monitoring-gap.md
+    - /root/HERMES/cron/jobs.json
+  capability_gap: "Daily/weekly audit crons complete but their evidence evaporates in per-run output dirs; the F11 layer designed to hold it stays empty — the federation is witnessing without a memory of being witnessed"
+  trend_vector: "observability crons growing (5+ governance jobs) with no shared receipt convention"
+  future_skill: "FORGE-cron-receipt-sink (convention: every governance cron appends a receipt to its 10_RECEIPTS subdir before exit)"
+  confidence: 0.78
+  affected_layers: [10_RECEIPTS, 08_WORKFLOWS]
+  classification: SEED  # cheapest, highest leverage; pure convention, no new organ
+  reality_status: GROUNDED
+  fantasy_status: NOT_FANTASY
+  verdict: HOLD
+
+- id: PROP-2026-08-15-02
+  title: Functional health probes (zombie-service guard)
+  reality_anchor: "rrr://runtime/snapshot/2026-08-15 — :8088/:7071/:7073 all report healthy/liveness-style status today, but scar-002 documents 3 days of FQ=0.00 with health=OK"
+  scar_id: scar-002-sct-validation-monitoring-gap
+  evidence_paths:
+    - /root/AAA/canon/SCAR_RECORDS/scar-002-sct-validation-monitoring-gap.md
+    - /root/AAA/canon/SCAR_RECORDS/scar-001-esm-sct-silent-fail.md
+  capability_gap: "No health check verifies SCT validation actually returns {valid:true} for a known-good token — liveness without correctness"
+  trend_vector: "federation services multiply (116 tools on A-FORGE-sense alone); unverified functional surface grows with each deploy"
+  future_skill: "FORGE-sct-validation-healthcheck (known-good token probe as scheduled health check, per scar-002 test_fixture)"
+  confidence: 0.72
+  affected_layers: [06_CAPABILITIES, 12_TESTS]
+  classification: WATCH  # scar-002 itself demands a full functional-audit BEFORE skill generation — do not jump the gate
+  note: "scar-002 note: root cause only partially known; audit first, skill second"
+  reality_status: GROUNDED
+  fantasy_status: NOT_FANTASY
+  verdict: HOLD
+
+- id: PROP-2026-08-15-03
+  title: Transport-degradation graceful fallback
+  reality_anchor: "rrr://runtime/snapshot/2026-08-15 — recovery PARTIAL per scar-003; live verification of scar-001's skill still incomplete"
+  scar_id: scar-003-transport-degradation
+  evidence_paths:
+    - /root/AAA/canon/SCAR_RECORDS/scar-003-transport-degradation.md
+  capability_gap: "When shell transport degrades mid-session the agent stalls; no write-only fallback + queued-retry doctrine is encoded anywhere"
+  trend_vector: "multi-CLI dispatch and subagent spawning both assume working shell; single transport failure cascades"
+  future_skill: "FORGE-transport-fallback (detect failure <=1 call, switch to write-only mode, queue shell ops for cron/subagent retry — per scar-003 test_fixture)"
+  confidence: 0.65
+  affected_layers: [08_WORKFLOWS, 07_SKILLS]
+  classification: RESEARCH  # root cause UNDER INVESTIGATION per scar-003 — mechanism not yet confirmed, do not build on sand
+  reality_status: GROUNDED
+  fantasy_status: NOT_FANTASY
+  verdict: HOLD
+
+# Quarantined this cycle (gate failed — see FANTASIES/2026-08-15.yaml):
+#   FANTASY-2026-08-15-004: "federation-wide auto-healing mesh that rewrites its own doctrine" — no scar, no evidence; self-mutation violates F13/Gödel Lock.
+#   FANTASY-2026-08-15-005: "skill graveyard auto-compressor that deletes fossil skills" — deletion is a mutation act; OBSERVE_ONLY cycle cannot propose destructive automation; also fossil signals (grep name-collisions) are unreliable as evidence.

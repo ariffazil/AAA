@@ -1,0 +1,21 @@
+# FANTASY QUARANTINE — AIA cycle 2026-08-15-1135 (layer 222, OBSERVE_ONLY)
+# Ideas that failed the Anti-Fantasy Gate. Never proposed. Kept so the impulse is remembered, not repeated.
+
+- id: FANTASY-2026-08-15-004
+  imagined_skill: federation.autoheal.mesh
+  impulse: "Let the federation detect contradictions and rewrite its own doctrine/policies automatically — zero human in the loop"
+  reality_anchor: null  # no scar, no evidence — aspiration only
+  scar_id: null
+  evidence_paths: []
+  fantasy_reason: "No reality anchor, no scar, no evidence. Worse: self-mutation of doctrine violates F13 + Gödel Lock (judge ≠ doer). Building this would create exactly the unaccountable self-editing system the constitution exists to prevent."
+  verdict: QUARANTINED
+
+- id: FANTASY-2026-08-15-005
+  imagined_skill: skill.graveyard.auto.compressor
+  impulse: "Auto-delete/archive fossil skills (252 skills, at least 2 with zero external references) to keep the substrate lean"
+  reality_anchor: partial  # fossil count is real, deletion authority is not
+  scar_id: null
+  evidence_paths:
+    - /usr/local/lib/hermes-agent/profiles/aaa-hermes/skills/  # 252 dirs observed
+  fantasy_reason: "Deletion is a destructive mutation — an OBSERVE_ONLY cycle cannot even propose it. Fossil detection via name-grep is unreliable (apple/flash/media collide with common words). No scar links skill-fossil-count to any actual failure. Purge already has a dedicated path (provider-retirement-purge) governed separately."
+  verdict: QUARANTINED
