@@ -94,4 +94,56 @@ Position: IMPIAN is Level 1 (grounded future reflection) operating toward Level 
 - ✅ Grounded proposals filed to `03_EUREKAS/FUTURE/` as **dream-state, not canon**
 - ✅ Unknown stated as unknown
 
+## Gödel-Future Clause (v2, 2026-08-15 — F13 direction)
+
+**Dreamer ≠ Generator ≠ Verifier.** Tiada ejen dibenarkan mengesahkan cadangan masa depan yang berasal daripada susur galur refleksinya sendiri.
+
+| Role | Who | Never |
+|---|---|---|
+| Dreamer | AIA cycle (222) — imagines | never builds, never verifies own output |
+| Generator | 777-FORGE — builds | never verifies own build |
+| Verifier | apex-judge isolate (≠ dreamer actor) + F13 | never dreams the thing it verifies |
+
+This extends the Gödel Lock into the temporal axis. Cognitive inbreeding — the agent that dreams approving its own dream — is a category violation even when every individual step is honest.
+
+**Status: CLAUSE now, FLOOR later.** Elevation to kernel floor F14 GÖDEL-FUTURE requires: (a) 90 days of clause-level practice in receipts, (b) apex-judge isolate session, (c) F13 ratification. A floor is constitutional infrastructure, not documentation — it earns its number.
+
+## The Triad (binding frame)
+
+> RRR melindungi daripada realiti palsu (hallucination). IMPIAN melindungi daripada ketiadaan masa depan. Blindspot Ledger melindungi daripada andaian yang tidak kelihatan.
+
+Three spaces under 03_EUREKAS/, three failure modes, one metabolism: FUTURE/ (valuable not-yet-true) · BLINDSPOTS/ (known unknowns, ≥1 per cycle) · FANTASIES/ (gate failures, quarantined).
+
+## Anti-Hero Trap (founder-dependency scan)
+
+Sovereignty kekal pada F13; keupayaan tak boleh tersangkut dalam kepala pengasas sahaja. Setiap kitaran mengimbas: "Keupayaan mana yang hanya wujud dalam kepala Arif dan belum diterjemahkan ke dalam kod/doktrin?" Ketergantungan merah → keutamaan tertinggi kitaran seterusnya ialah cadangan pemeteraian doktrin (canonization), bukan ability baharu.
+
+## Skill Lifecycle
+
+```
+ACTIVE → STABLE → CANONIZED → KNOWN
+```
+
+Kemahiran yang berjaya tidak mati jadi fosil — ia bertukar jadi DNA. Bila KNOWN, ia bukan lagi skrip yang dipanggil; ia refleks dalam system prompt dan hukum teras. Fosil tanpa laluan KNOWN = kematian, bukan persaraan.
+
+## Proposal Cost Schema (Entropy Budget)
+
+Setiap `impian_proposal` wajib melampirkan:
+
+```yaml
+entropy_cost: low | med | high        # berapa banyak entri/makna baru dicipta
+maintenance_cost: <komitmen runtime berterusan, RM-aware>
+complexity_cost: <kesan kepada seni bina lean>
+```
+
+Proposal bernilai tinggi dengan entropy tinggi dan tiada penyelenggara = Goodhart memakai topeng. Cost fields wajib sebelum verdict.
+
+## Adversarial Witness (Devil's Advocate)
+
+Verifier bukan pencari salah sintaksis ja. Soalan wajib: **"Jika impian ini bakal memusnahkan arifOS, bagaimana ia akan berlaku?"** Jawapan direkod dalam receipt proposal. Tiada jawapan = tiada verdict.
+
+## Circuit Breaker (doc-level; kernel elevation deferred)
+
+Holy 8 Loop: maksimum 3 lelaran dengan fixed-point detection — jika tiada perubahan status antara fasa, jatuh terus ke 888_HOLD (ATLAS333_NON_CONVERGENCE) dan serah diagnostik kepada F13. Infinite deliberation ialah entropi berpura-pura jadi usaha.
+
 *Itu bukan desire. Itu amanah masa depan.* — ARIF, 2026-08-15
