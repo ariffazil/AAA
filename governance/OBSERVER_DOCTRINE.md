@@ -49,6 +49,20 @@ FRAME is the billboard over the valley of ashes: **it sees everything and judges
 999 = Witness
 ```
 
+## The pattern nests (amended same day, cross-FI synthesis)
+
+SIGNAL≠OBSERVER is not one binary — it repeats at every layer. Each layer's self-report is a signal; the layer above's probe is its observer:
+
+```text
+Session (mortal)    : FQ, ΔS, entropy → read by session heartbeat (self)
+Federation (stable) : heartbeats, receipts, organ health → read by FRAME (external)
+Observer plane      : FRAME itself → read by watchdog-of-the-watchdog
+```
+
+The chain terminates at F13/reality — the only reader with no reader above.
+
+**6. An observer must outlive what it observes.** A session-scoped observer can never witness inter-session drift. FRAME runs as systemd, not as a skill, precisely because it must watch the night when no agent is breathing. Observers are immortal *relative to* their subject — this is why baselines exist and why carry_forward bridges what mortal sessions cannot.
+
 ## Doctrine sentence
 
 > **Self-reported reality is necessary but never sufficient —
