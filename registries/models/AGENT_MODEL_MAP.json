@@ -973,7 +973,8 @@
       "cloud_act_exposed": false,
       "status": "live",
       "models_available": [
-        "glm-5.2 (753B MoE, 1M ctx, MIT license, open weights)"
+        "glm-5.3 (NEW 2026-08-14: frontier coding/agents, same 753B base as 5.2 + scaled post-training, Coding Plan all tiers, weights open ~2026-08-28)",
+        "glm-5.2 (753B MoE, 1M ctx, MIT license, open weights — ⚠️ Coding Plan calls auto-redirect to glm-5.3)"
       ],
       "pricing": {
         "list_input_per_1m": 1.4,
@@ -983,8 +984,8 @@
         "coding_plan_pro_monthly": 72,
         "note": "Coding Plan Pro: flat $72/mo for predictable agentic coding bills"
       },
-      "last_verified": "2026-07-29",
-      "note": "ADDED 2026-07-29 from tech-insider.org article. NOT yet registered as live provider — API key not acquired. Models accessed via Bailian Token Plan (cheaper: $0.30/$1.20). Z.ai direct at $1.40/$4.40 — 4.7x more expensive than Bailian. Flat $72/mo Coding Plan Pro available. MIT open weights via zai-org/GLM-5 on Hugging Face.",
+      "last_verified": "2026-08-15",
+      "note": "GLM-5.3 RELEASED 2026-08-14 (z.ai/blog/glm-5.3). Live on GLM Coding Plan for all tiers (Max/Pro/Lite) — our Pro key on api.z.ai/api/coding/paas/v4 serves it now as model id glm-5.3 (204K) / glm-5.3[1m] (1M). Coding Plan auto-redirects glm-5.2/glm-5.1 → glm-5.3. Plan quota now points-based: input 6.9 / cached 1.7 / output 24 multipliers, 50% off-peak outside Mon-Fri 14:00-18:00 UTC+8. Benchmarks vs 5.2: Z.ai Code Bench +50%, Terminal-Bench 3.0 4.6→28.3, DeepSWE 46.2→66.9, Agents Last Exam 23.8→28.5, CyberGym 77.2→84.5. GLM-5.3 NOT yet seated for 666_JUDGE/999_SEAL — pending FFF gate (same policy as qwen3.8-max). Original note: ADDED 2026-07-29 from tech-insider.org article. NOT yet registered as live provider — API key not acquired. Models accessed via Bailian Token Plan (cheaper: $0.30/$1.20). Z.ai direct at $1.40/$4.40 — 4.7x more expensive than Bailian. Flat $72/mo Coding Plan Pro available. MIT open weights via zai-org/GLM-5 on Hugging Face.",
       "registration_status": "pending_api_key",
       "balance_source": "FED ::7074 (fed_status / curl :7074/health)",
       "balance_note": "PURGED 2026-08-05 by 333-AGI. Static balance (was None) removed. Use FED :7074 for live balance -- never trust cached registry."
