@@ -78,8 +78,20 @@ steps:
     lane: 333-AGI
     capability: arif_think
     produces: future_skill_candidates.yaml
-    description: "333 synthesizes the proposals (now in AAA). Filter fantasy by Anti-Fantasy Safeguard."
+    description: "333 synthesizes the proposals (now in AAA). Filter fantasy by Anti-Fantasy Safeguard. Entropy Budget wajib per proposal (entropy_cost, maintenance_cost, complexity_cost) dan jawapan Devil's Advocate (Jika impian ini bakal memusnahkan arifOS, bagaimana?) dalam receipt - tiada jawapan, tiada verdict."
     duration_ms: 30000
+
+  - id: blindspot_ledger
+    capability: arif_impian
+    produces: 03_EUREKAS/BLINDSPOTS/BLIND-<date>-NN.yaml
+    description: "Min 1 blindspot record per cycle: confidence, reason, missing_observation, review_after. Known unknowns."
+    duration_ms: 10000
+
+  - id: anti_hero_scan
+    capability: arif_impian
+    produces: founder_dependency.yaml
+    description: "Keupayaan mana yang hanya wujud dalam kepala Arif dan belum diterjemahkan ke kod/doktrin? Merah = canonization priority."
+    duration_ms: 10000
 
   - id: critique
     lane: 555-ASI
@@ -154,4 +166,4 @@ related:
     quarantine: 03_EUREKAS/FANTASIES/
     receipts: 10_RECEIPTS/impian/
 
-DITEMPA BUKAN DIBERI ⚒️
+# DITEMPA BUKAN DIBERI ⚒️
