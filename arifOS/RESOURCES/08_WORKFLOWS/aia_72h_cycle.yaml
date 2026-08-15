@@ -93,6 +93,17 @@ steps:
     description: "Keupayaan mana yang hanya wujud dalam kepala Arif dan belum diterjemahkan ke kod/doktrin? Merah = canonization priority."
     duration_ms: 10000
 
+  - id: devils_advocate
+    capability: arif_challenge
+    verb: 444-challenge
+    produces: devil_advocate_report.yaml
+    prompt: "If this dream destroys arifOS, how would it do so?"
+    description: |
+      Devil's Advocate (EUREKA 6). Every proposal must pass through
+      arif_challenge before being filed to 03_EUREKAS/FUTURE/. Structural,
+      not narrative. Verdict: PASS | HOLD | REJECT.
+    duration_ms: 5000
+
   - id: critique
     lane: 555-ASI
     capability: arif_memory
@@ -122,6 +133,51 @@ anti_fantasy_safeguard:
     - evidence_paths is empty
   quarantine_to: 03_EUREKAS/FANTASIES/
   log_to: 10_RECEIPTS/impian/<date>.log
+
+# ─── 8 EUREKAs — meta-constitutional additions ─────────────────────────────
+
+entropy_budget:
+  required_fields_per_proposal:
+    entropy_cost: low | med | high
+    maintenance_cost: "<runtime commitment, e.g. '2h/week'>"
+    complexity_cost: "<+N edges to graph>"
+  forge_777_must_refuse_if: entropy_cost > entropy_budget
+  status: REQUIRED
+
+r2r_metric:
+  formula: "useful_proposals / total_proposals"
+  thresholds:
+    healthy: "> 0.6"
+    normal: "0.2 - 0.6"
+    overthinking: "< 0.2 for 3+ cycles"
+  logged_in: 10_RECEIPTS/AIA/
+
+anti_hero_trap:
+  question: "What capability exists only inside ARIF?"
+  thresholds:
+    red: 0.7
+    yellow: 0.4
+    green: 0.4
+  on_red: "schedule F13 transfer briefing"
+  on_yellow: "accelerate canonization"
+  logged_in: 10_RECEIPTS/AIA/
+
+skill_lifecycle:
+  states: [ACTIVE, STABLE, CANONIZED, KNOWN]
+  known_means: "skill embedded into doctrine; cultural memory, not executable"
+  backfill_target: 454 SKILL.md
+  status: REQUIRED
+
+godel_future_lineage_as_self:
+  status: ADOPTED — embedded in godel_lock_gate.py (5 lines)
+  scope: AIA → 777-FORGE build chain
+  doctrine: 04_DOCTRINES/f14_godel_future.md
+  implementation: |
+    Self = { Actor ID } ∪ { Lineage of Reflection / Dreamer }
+    if Lineage(Dreamer) ∩ Lineage(Verifier) ≠ ∅:
+      return HOLAT  # foreign verifier required
+  enforcement: godel_lock_gate.py (existing)
+  constitutional: NO new floor (F1-F13 preserved)
 
 # ─── Hub Constitution Compliance ──────────────────────────────────────────
 
