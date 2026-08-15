@@ -17,7 +17,7 @@ CCC is the **capability standard** for any coding worker. Any CLI harness can be
 
 ```
 CCC(Kimi)     — MiniMax-M3
-CCC(Qwen)     — GLM-5.2
+CCC(Qwen)     — runtime-resolved (federation-models.json agents[qwen-code]; last: glm-5.3)
 CCC(OpenCode) — MiniMax-M3 Go-zen
 CCC(Aider)    — DeepSeek V3
 CCC(Codex)    — FED cascade
