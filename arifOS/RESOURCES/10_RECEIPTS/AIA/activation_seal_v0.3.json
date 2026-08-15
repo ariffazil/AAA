@@ -1,0 +1,33 @@
+{
+  "type": "AIA_ACTIVATION_SEAL",
+  "architecture": "AIA — Agentic Impian Architecture",
+  "version": "v0.3",
+  "cron": {
+    "id": "c91f537f3cea",
+    "name": "aia-72h",
+    "schedule": "every 72h",
+    "deliver": "origin",
+    "next_run": "2026-08-18T11:34:57+08:00"
+  },
+  "authority": "OBSERVE_ONLY",
+  "separation_law": "Dream (VVV 72h) = memory organization | Impian (AIA 72h) = future imagination. NEVER merged.",
+  "layer": "222 pre-deliberation horizon — before AAA (333 think / 555 verify / 888 judge / 777 forge / 999 seal)",
+  "substrate_commits": [
+    "14dc5819",
+    "5d74e6e2"
+  ],
+  "apex_gate": {
+    "independence_class": "KERNEL_ARBITER",
+    "effective_verdict": "HOLD",
+    "session_id": "SEAL-e0e3246b66964c23",
+    "call_hash": "sha256:f7a65c91765caee043d0a5fb40bb645ef8653b9270dc4beec8b0995e17359d93",
+    "action": "authorized under standard capability bounds; F13 explicit order in-session"
+  },
+  "f13_directives_applied": [
+    "AIA = Agentic Impian Architecture (not Agent)",
+    "222 = pre-deliberation layer, not AAA member",
+    "Dream ≠ Impian hard separation"
+  ],
+  "sealed_at": "2026-08-15T11:35:08+0800",
+  "sealed_by": "HERMES_COORDINATE under F13_SOVEREIGN_ARIF"
+}
