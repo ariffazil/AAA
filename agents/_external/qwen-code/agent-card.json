@@ -8,18 +8,20 @@
     "category": "LLM-as-principal (Qwen/MiniMax bridge \u2014 the model is the principal, CLI is harness)",
     "principle_origin": "Qwen CLI harness on af-forge, bridged into arifOS federation"
   },
-  "description": "Qwen Code CLI forge instrument \u2014 kernel-internal loop FI. 5 MCP organs, SessionStart\u2192arif_init hook, yolo mode. F1-F13 enforced. Card truth-repaired 2026-08-13.",
-  "version": "2.1.0",
-  "model": "qwen3.7-plus (Alibaba Token Plan)",
-  "declared_model": "qwen3.7-plus",
-  "effective_model": "qwen3.7-plus via Alibaba Token Plan direct",
-  "route_chain": [
-    "qwen-code",
-    "token-plan",
-    "qwen3.7-plus"
-  ],
+  "description": "Qwen Code CLI forge instrument \u2014 kernel-internal loop FI. 7 MCP organs, SessionStart\u2192arif_init hook, yolo mode. F1-F13 enforced. Card truth-repaired 2026-08-13; model de-static'd 2026-08-15 (binding, not storage).",
+  "version": "2.2.1",
+  "model_binding": {
+    "policy": "RUNTIME-RESOLVED \u2014 this card never stores static model authority. Model identity is resolved at session start from runtime config; fields below are the last resolution snapshot, not the source of truth.",
+    "runtime_sot": "/root/.qwen/settings.json",
+    "federation_sot": "/root/.config/federation-models.json",
+    "sot_entry": "agents[agent_id=qwen-code]",
+    "resolved_model": "glm-5.3",
+    "resolved_provider": "zai-coding-plan (https://api.z.ai/api/coding/paas/v4)",
+    "resolved_at": "2026-08-15T08:05:00Z",
+    "resolved_by": "FI-003 session SEAL-d186bb9c9f934225"
+  },
   "codex_fed_alias": "codex.coder",
-  "binary": "/root/.npm-global/bin/qwen",
+  "binary": "/root/.local/bin/qwen",
   "config": "/root/.qwen/settings.json",
   "tier": "FI",
   "role": "forge_instrument",
