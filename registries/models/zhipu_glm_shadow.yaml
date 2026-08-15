@@ -9,7 +9,7 @@
 
 model_id: zhipu_glm_shadow
 model_family: GLM-5 (Zhipu AI)
-version: 1.0.0
+version: 1.1.0
 status: CANON
 
 shadow:
@@ -79,6 +79,33 @@ shadow:
     evidence: "Vendor API specs: DS V4 Pro 384K output, GLM-5.2 131K output."
     scar_ref: null
     last_observed: "2026-07-29"
+
+  - id: SHADOW-GLM-004
+    name: silent_version_redirect
+    severity: HIGH
+    class: truth_drift
+    pattern: >
+      VERIFIED 2026-08-15 by FI-003 (session SEAL-d186bb9c9f934225): requesting
+      glm-5.2 on the Z.ai coding endpoint (api.z.ai/api/coding/paas/v4) returns
+      model=glm-5.3 with no warning field. Requested != returned. Any config,
+      contract, or lane pinning "glm-5.2" on the coding plan is now a mislabel.
+      FED zai-direct litellm route pins model_name=glm-5.2 and is affected.
+      Additionally glm-5.3[1m] is rejected (error 1214) on paas/v4 — the [1m]
+      suffix is Anthropic-endpoint only; glm-5.3 is native 1M on paas/v4.
+    triggers:
+      - lane_pins_glm_5_2
+      - constitutional_seat_on_zai
+      - a_b_testing_on_coding_plan
+    floor_posture_delta:
+      F2_TRUTH: elevated
+      F11_AUDIT: note
+    mitigation:
+      - "Model-echo check: compare requested vs returned model on every constitutional call — redirect caught day one"
+      - "True 5.2 A/B only via bailian-token-plan mirror"
+      - "666/999 seats: never route through zai coding plan (seat rotation must never be silent)"
+    evidence: "Live probe 2026-08-15: request glm-5.2 -> response .model=glm-5.3, finish=stop, content served."
+    scar_ref: null
+    last_observed: "2026-08-15"
 
 lifecycle:
   created: "2026-07-29"
