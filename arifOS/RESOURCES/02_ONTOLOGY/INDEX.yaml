@@ -1,0 +1,59 @@
+# 02_ONTOLOGY — Concepts exist
+# Layer between EUREKA (discovered) and DOCTRINE (interpreted).
+# Classifies what exists in 01_RESOURCES so doctrines don't drift.
+
+layer: 02
+name: ONTOLOGY
+purpose: Where concepts are pinned. EUREKA = discovered; ONTOLOGY = classified; DOCTRINE = interpreted.
+authority: 333_THINK
+doctrine: classify-relations
+
+# What this layer provides
+provides:
+  - concept_ids       # every noun in the federation has an id here
+  - classification    # categorises resources into types
+  - relations         # edges between concepts (part_of, requires, measured_by)
+  - glossary          # canonical definitions
+
+# What this layer requires
+requires:
+  - 01_RESOURCES       # ontology imports from resources
+  - 03_EUREKAS         # ontology is informed by discoveries
+  - 11_GRAPH/nodes     # every concept is a graph node
+
+# Sub-layers
+ontologies:
+  constitutional:  # F1-F13, AGENT, SESSION, LEASE, VERDICT, SEAL, SCAR
+  knowledge:       # OBS, DER, INT, SPEC, UNKNOWN (epistemic labels)
+  machine:         # PORT, SERVICE, CONTAINER, MOUNT, ENV
+  concepts:        # generic domain concepts
+  finance:         # CAPACITY, RUNWAY, EMV, N_ASSETS
+  wellness:        # SUBSTRATE, DIGNITY, MARUAH, DECISION_CLASS
+  geology:         # BASIN, RESERVOIR, SEAL, TRAP, MIGRATION, PROSPECT
+
+# Resources that pull this layer
+imports:
+  - 01_RESOURCES/mcp        # MCP protocols are concepts
+  - 01_RESOURCES/a2a        # A2A methods are concepts
+  - 01_RESOURCES/fastmcp    # FastMCP providers are concepts
+  - 01_RESOURCES/openclaw   # OpenClaw channels are concepts
+
+# Exports (where this layer is consumed)
+exports:
+  - 04_DOCTRINES  # every doctrine references an ontology node
+  - 03_EUREKAS    # every eureka classifies into ontology
+  - 07_SKILLS     # every skill has an ontology.yaml declaring concepts
+
+# Love-links
+love_links:
+  - 02_ONTOLOGY/concepts  ↔ 01_RESOURCES/*  # classify incoming resources
+  - 02_ONTOLOGY          ↔ 03_EUREKAS      # classify discoveries
+  - 02_ONTOLOGY          ↔ 04_DOCTRINES    # doctrines reference concepts
+  - 02_ONTOLOGY/finance  ↔ 01_RESOURCES/sovereign  # WEALTH finance ontology rooted in sovereign canon
+  - 02_ONTOLOGY/wellness ↔ 01_RESOURCES/sovereign  # WELL wellness ontology rooted in sovereign canon
+  - 02_ONTOLOGY/geology  ↔ 01_RESOURCES/sovereign  # GEOX geology ontology rooted in sovereign canon
+
+epoch: 51   # matches arifOS canon
+updated: 2026-08-15
+
+DITEMPA BUKAN DIBERI ⚒️

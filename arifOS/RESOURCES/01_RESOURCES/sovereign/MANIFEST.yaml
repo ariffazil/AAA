@@ -1,0 +1,59 @@
+id: sovereign://canon/f13
+type: doctrine
+state: ACTIVE
+freshness: 2026-08-15T00:00:00Z
+epoch: 1
+owner: 000-SALAM
+trust_tier: sovereign-canonical
+epistemic_label: DER
+
+title: Sovereign — F13 canon
+description: >
+  Muhammad Arif bin Fazil · F13 SOVEREIGN. The 000-SALAM pin. Authority over
+  the entire federation. The only entity that can ratify, veto, or seal.
+
+links:
+  canonical: /root/ariffazil/
+  see_also:
+    - /root/ariffazil/INDEX.md
+    - /root/ariffazil/CANON.md
+    - /root/ariffazil/SOVEREIGNTY/
+  implements:
+    - floor://F13
+
+requires: []
+
+provides:
+  - sovereign://canon/f13
+  - sovereign://canon/constitution
+  - sovereign://canon/scar-ledger
+  - sovereign://canon/seal-authority
+
+love_links:
+  - arifos://kernel/architecture
+  - aaa://cockpit/architecture
+  - arifflow://flow/ingest
+  - aforge://tools/registry
+  - hermes://gateway/overview
+
+tags:
+  - sovereign
+  - f13
+  - canon
+  - ratification
+
+scope:
+  filesystem: true
+  network_read: true
+  network_write: true
+  secrets: true
+  vault_write: true
+  shell_exec: true
+
+freshness_tolerance_seconds: 60
+reversible: false
+blast_radius: critical
+authority_ceiling: IRREVERSIBLE
+constitutional_floors: [F1, F2, F11, F12, F13]
+
+epoch_of_last_mutation: 1

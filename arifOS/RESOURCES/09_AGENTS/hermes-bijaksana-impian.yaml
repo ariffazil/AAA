@@ -1,0 +1,116 @@
+# 09_AGENTS/hermes-bijaksana-impian.yaml — BIJAKSANA IMPIAN mode manifest
+# A mode of Hermes, not a new agent.
+
+id: hermes://mode/bijaksana-impian
+type: capability
+agent: hermes
+mode_name: bijakasana-impian
+
+# ─── Description ──────────────────────────────────────────────────────────
+
+description: |
+  The future-sensing mode of Hermes. The companion of HERMES::PRESENT.
+  Pieter Note: "Hermes has two modes: PRESENT (today) and IMPIAN (tomorrow).
+  Both are observe-only. Both refuse to fantasize."
+
+# ─── Inheritance ──────────────────────────────────────────────────────────
+
+inherits_from: hermes://gateway/overview
+inherits_identity: true
+inherits_capabilities: [arif_observe, arif_think, arif_memory, arif_route]
+
+# ─── Cycle ────────────────────────────────────────────────────────────────
+
+cadence: 72h
+trigger: cron("every 72h")
+manual_trigger: 000-SALAM authorized
+
+# ─── Resources ────────────────────────────────────────────────────────────
+
+doctrine: 04_DOCTRINES/constrained_imagination.md
+policy: 05_POLICIES/hermes-impian-72h.yaml
+workflow: 08_WORKFLOWS/impian_72h_cycle.yaml
+verb: 06_CAPABILITIES/arif_impian/
+driver: forge_impian.py
+
+# ─── Authority ────────────────────────────────────────────────────────────
+
+authority: OBSERVE-only
+trust_tier: sovereign-canonical
+blast_radius: low
+reversible: true
+
+# ─── Constitutional floors ───────────────────────────────────────────────
+
+constitutional_floors: [F1, F2, F11, F13]
+
+# ─── The Two Modes of Hermes ──────────────────────────────────────────────
+
+modes:
+  present:
+    verb: 111
+    cadence: real-time
+    purpose: "Observe, fact-check, inject-scan, cross-witness"
+  impian:
+    verb: 222
+    cadence: 72h
+    purpose: "Observe, reflect, propose. Never execute. Never fantasize."
+
+# ─── What this mode does (and doesn't) ────────────────────────────────────
+
+does:
+  - read scars, holds, failures
+  - scan capability gaps
+  - cross-challenge with external agents
+  - synthesize proposals (333-AGI)
+  - critique the synthesis (555-ASI)
+  - hold (888-APEX)
+  - seal the cycle
+
+does_not:
+  - mutate policy
+  - execute code
+  - approve self
+  - bypass F13 veto
+  - fabricate skills
+  - skip the Anti-Fantasy Safeguard
+
+# ─── Anti-Fantasy Safeguard (binding) ────────────────────────────────────
+
+anti_fantasy_safeguard:
+  - check_1_reality: rrr_snapshot must be present
+  - check_2_scar:    scar_id must be present
+  - check_3_evidence: evidence_paths must be non-empty
+  - check_4_gap:     capability_gap must be defined
+  on_failure: quarantine to 03_EUREKAS/FANTASIES/
+
+# ─── Storage ──────────────────────────────────────────────────────────────
+
+storage:
+  candidates: 03_EUREKAS/FUTURE/
+  quarantine: 03_EUREKAS/FANTASIES/
+  receipts:   10_RECEIPTS/impian/
+
+# ─── Love-links ───────────────────────────────────────────────────────────
+
+love_links:
+  - hermes://gateway/overview              # inherited mode
+  - 04_DOCTRINES/constrained_imagination   # the doctrine
+  - 05_POLICIES/hermes-impian-72h          # the policy
+  - 08_WORKFLOWS/impian_72h_cycle          # the workflow
+  - 06_CAPABILITIES/arif_impian            # the verb
+  - 03_EUREKAS/FUTURE                      # candidates
+  - 03_EUREKAS/FANTASIES                   # quarantine
+  - 09_AGENTS/hermes                       # the agent identity
+  - 01_RESOURCES/hermes                    # the source
+  - arifos://kernel/architecture           # constitutional anchor
+  - sovereign://canon/f13                  # F13 ratification
+  - arif_observe                           # RRR twin
+
+# ─── Signature ────────────────────────────────────────────────────────────
+
+signature: |
+  BIJAKSANA IMPIAN. JANGAN JADI BANGANG.
+  — F13 SOVEREIGN · 2026-08-15
+
+DITEMPA BUKAN DIBERI ⚒️
