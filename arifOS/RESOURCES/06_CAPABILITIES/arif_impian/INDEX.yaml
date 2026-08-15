@@ -1,4 +1,5 @@
 # 06_CAPABILITIES/arif_impian — Verb 222
+# Part of the AIA (Agentic Impian Architecture) horizon layer.
 # Constrained Imagination. The future-sensing twin of arif_observe (RRR).
 
 id: arif_impian
@@ -7,9 +8,13 @@ name: Constrained Imagination
 floor: F2  # TRUTH — anti-fantasy protection
 role: imagine
 
+# Architecture
+architecture: AIA           # AIA = Agentic Impian Architecture
+layer_position: pre-deliberation   # horizon layer, BEFORE AAA
+parent_architecture: 09_AGENTS/aia_horizon.yaml
+
 # Identity
-mode: bijakasana-impian
-agent: hermes
+mode: AIA
 cadence: 72h
 
 # Description
@@ -18,6 +23,7 @@ description: |
   arif_observe (111) senses the present.
   arif_impian (222) senses the future.
   Both are observe-only. Both refuse to fantasize.
+  This verb belongs to the AIA horizon layer, not AAA.
 
 # Inputs
 inputs:
@@ -56,23 +62,25 @@ may_not:
 constitutional_floors: [F1, F2, F11]
 
 # Resources
-manifest: 09_AGENTS/hermes-bijaksana-impian.yaml
+manifest: 09_AGENTS/aia_horizon.yaml
 doctrine: 04_DOCTRINES/constrained_imagination.md
-policy: 05_POLICIES/hermes-impian-72h.yaml
-workflow: 08_WORKFLOWS/impian_72h_cycle.yaml
-driver: forge_impian.py
+policy: 05_POLICIES/aia-72h.yaml
+workflow: 08_WORKFLOWS/aia_72h_cycle.yaml
+driver: forge_aia.py
 
 # Love-links
 love_links:
   - 04_DOCTRINES/constrained_imagination
-  - 05_POLICIES/hermes-impian-72h
-  - 08_WORKFLOWS/impian_72h_cycle
-  - 09_AGENTS/hermes-bijaksana-impian
+  - 05_POLICIES/aia-72h
+  - 08_WORKFLOWS/aia_72h_cycle
+  - 09_AGENTS/aia_horizon
   - 03_EUREKAS/FUTURE
   - 03_EUREKAS/FANTASIES
   - arif_observe
-  - hermes://gateway/overview
   - sovereign://canon/f13
+  - 09_AGENTS/lanes/333-AGI
+  - 09_AGENTS/lanes/555-ASI
+  - 09_AGENTS/lanes/888-APEX
 
 # Epistemic label
 epistemic_label: SPEC  # spec/forecast — signatures may carry INT later
