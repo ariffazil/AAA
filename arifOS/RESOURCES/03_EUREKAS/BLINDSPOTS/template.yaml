@@ -1,0 +1,67 @@
+# 03_EUREKAS/BLINDSPOTS/template.yaml — Blindspot Ledger Template
+# Forged 2026-08-15 by F13 SOVEREIGN directive
+# Doctrine: 04_DOCTRINES/EUREKAS_8_FUTURE_QUESTIONS.md (EUREKA 2)
+# Schema: arifOS_blindspot_v1
+
+schema: arifOS_blindspot_v1
+
+# ─── Metadata ─────────────────────────────────────────────────────────────
+metadata:
+  id: BLIND-YYYY-MM-DD-NNN             # required; auto-assigned by AIA cycle
+  origin_layer: ""                     # required; e.g., "222-AIA", "R2R assessment", "manual"
+  emitted_at: ""                       # ISO 8601
+  emitted_by: ""                       # actor_id (e.g., "arif_observe", "333-AGI", "arif_challenge")
+
+# ─── Core Gap (the actual blindspot) ───────────────────────────────────────
+core_gap:
+  known_unknown: ""                    # required; what we know we cannot see
+  missing_observation: ""              # required; what data/sensor/telemetry is absent
+  potential_consequence: ""             # required; what happens if we remain blind
+  class: ""                            # required; one of:
+                                       #   missing_observation | missing_capability
+                                       #   missing_evidence | missing_relationship
+                                       #   missing_metric | missing_consensus
+
+# ─── Metrics ──────────────────────────────────────────────────────────────
+metrics:
+  entropy_cost: "low|med|high"        # F4 constraint — required
+  confidence_score: 0.0               # required; MESTI < 0.99 (per EUREKA 2 doctrine)
+  urgency: "low|med|high"             # optional
+  impact_severity: "low|med|high|critical"   # optional
+
+# ─── Detection Idea ───────────────────────────────────────────────────────
+detection_idea: |
+  Optional field. How could we detect this blindspot?
+  E.g., "Add memory_read_counter to L1-L6 plane."
+
+# ─── Recommendation ────────────────────────────────────────────────────────
+recommendation: |
+  Optional field. What action should follow?
+  E.g., "T1 change — add metric to arif_judgement stat counter."
+
+# ─── Source Lineage ───────────────────────────────────────────────────────
+source:
+  cycle_id: ""                         # AIA cycle that emitted this, if any
+  scar_id: ""                          # related scar, if any
+  dreamer_lineage: []                  # who imagined this blindspot
+  verifier_lineage: []                 # who verified it
+  rerence: "arifOS_blindspot_v1"      # schema version
+
+# ─── Status ───────────────────────────────────────────────────────────────
+status: "ACKNOWLEDGED"                 # ACKNOWLEDGED | IN_REVIEW | RESOLVED | STALE
+
+# ─── Constitutional binding ──────────────────────────────────────────────
+constitutional_floors: [F1, F2, F4, F11]
+
+# ─── Anti-Fantasy Safeguard ───────────────────────────────────────────────
+# Note: Blindspots are NOT proposals. They are acknowledged unknown unknowns.
+# They do NOT need reality_anchor or scar_id. They do not propose future skills.
+# They exist to make institutional blind spots visible to the founder.
+
+# ─── Signature ────────────────────────────────────────────────────────────
+signature: |
+  AIA Cycle · 222
+  "Boleh ARIF sambung jejak pemikiran ni bila dia jaga 5 tahun lagi?"
+  — F13 SOVEREIGN · 2026-08-15
+
+DITEMPA BUKAN DIBERI ⚒️
