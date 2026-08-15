@@ -2,7 +2,7 @@
 
 > Forged: 2026-08-15 · Ratified: ARIF (F13), Telegram 2026-08-15 11:25 MYT
 > Authority: OBSERVE_ONLY · Classification: FUTURE_REFLECTION · Mutation: forbidden
-> Implements: 222-AIA (Agentic Impian Architecture) · Workflow: `08_WORKFLOWS/aia_72h_cycle.yaml` · Policy: `05_POLICIES/hermes-impian-72h.yaml`
+> Implements: 222-AIA (Agentic Impian Architecture) · Workflow: `08_WORKFLOWS/aia_72h_cycle.yaml` · Policy: `05_POLICIES/aia-72h.yaml`
 
 ## One line
 
@@ -17,7 +17,7 @@ Two different organs, two different directions. **Never merge.**
 | Direction | Backward (what happened) | Forward (what could be) |
 | Function | Memory organization / consolidation | Future imagination / gap sensing |
 | Cadence | Nightly (04:00) | Every 72 hours |
-| Owner | dream-engine | Hermes mode `impian` (222-AIA) |
+| Owner | dream-engine | AIA horizon layer (222-AIA) |
 | Question | "What must be kept?" | "What must exist next?" |
 
 Dream is for memory organization. Impian is for future imagination. A dream-engine that proposes futures, or an impian-cycle that consolidates memory, is a category error.

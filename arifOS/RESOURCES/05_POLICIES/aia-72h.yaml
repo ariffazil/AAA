@@ -3,7 +3,7 @@
 # Doctrine: 04_DOCTRINES/constrained_imagination.md
 # Workflow: 08_WORKFLOWS/aia_72h_cycle.yaml
 
-policy: hermes-impian-72h
+policy: aia-72h
 name: AIA::72H — Agentic Impian Architecture
 version: 0.2
 
