@@ -1,0 +1,24 @@
+# WORKFLOW — impian_72h_cycle v0.2 (LIVE via Hermes cron 'impian-72h')
+trigger: interval(72h)
+agent: hermes
+mode: impian
+chain_position: "222"   # 111 RRR → 222 IMPIAN → 333 THINK → 555 VERIFY → 888 JUDGE → 777 FORGE → 999 SEAL
+steps:
+  - wake                # cron fire, fresh session
+  - rrr_snapshot        # live probes :8088/:7071/:7073 + organ git state + cron inventory
+  - scar_walk           # SCAR_RECORDS, open HOLDs, contradiction scans, repeated manual work
+  - gap_scan            # fossil/unused skills, recurring workarounds, Arif-dependency signals
+  - reflect             # constrained imagination: Reality+Scar+Gap+Trend
+  - council_optional    # one peer consult (federation-peer-consultation) if available; else solo
+  - synthesize          # max 3 impian_proposals, confidence stated
+  - gate                # anti-fantasy check; failures → 03_EUREKAS/FANTASIES/
+  - hold                # 888 classification only: SEED/WATCH/RESEARCH/DEFER/REJECT
+  - receipt             # 10_RECEIPTS/IMPIAN/<date>/impian_receipt.yaml (+future_skills.yaml)
+  - brief               # ≤8 lines BM to Arif; 'tiada proposal layak' is valid
+anti_fantasy_safeguard:
+  reject_if: { reality_anchor: null, scar_or_evidence: null, evidence_paths: empty }
+  quarantine_to: 03_EUREKAS/FANTASIES/
+never:
+  - mutate 05_POLICIES / 06_CAPABILITIES / 07_SKILLS / 09_AGENTS without separate SEAL
+  - self-approve
+  - execute any proposal
