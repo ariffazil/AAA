@@ -2,7 +2,7 @@
 
 > Ratified F13, 2026-08-15. Verdict: **"A externally, B internally."**
 > Canon sentence (F13, 2026-08-15): **"State is no longer topology."**
-> Companion SOT: `fed_signatures.yaml → actor_geometry` (cascades live there, not here).
+> Companion SOT: `/root/.config/federation-models.json` (cascades / fallback_chains). `fed_signatures.yaml` is tombstoned — see `FED_SIGNATURES_TOMBSTONE.md`.
 > Parent: ACTOR_SURFACE_DOCTRINE (`/root/forge_work/2026-08-15-runtime-geometry/`).
 
 ## The geometry
@@ -28,7 +28,7 @@ Surface → Model → Provider
 
 ## Falsifier (the one test)
 
-> **Next model release = 1 SOT edit (`fed_signatures.yaml → cascades`), 0 picker edits.**
+> **Next model release = 1 SOT edit (`federation-models.json` fallback_chains / model_routes), 0 picker edits.**
 > If the picker changes on a model release, the geometry failed, not the model.
 
 ## Zen eurekas (distilled from i-ARIF SWOT + external audit, 2026-08-15)
