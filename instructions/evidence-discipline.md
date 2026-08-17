@@ -62,6 +62,22 @@ This discipline implements:
 - **E20 Truth Metabolism**: Evidence must be primary source, not secondary narrative.
 - **C0 Evidence Authenticity**: The gate between story and evidence.
 
+## Membrane (2026-08-18 — ghost-boot exam)
+
+Provenance is decided **before** reasoning, not during. Do not add a ninth Holy verb for this.
+
+| Layer | What it is | Who sees it |
+|---|---|---|
+| Internal / agent-to-agent | `OBS` / `DER` / `INT` / `SPEC` (existing names — do not invent EVIDENCE/INTERPRET/UNKNOWN) | The model **must** see its own tags (F7). |
+| Human-facing | Compiled to ordinary language | Never raw tags (F13 2026-08-13). |
+| Audit | Observability / receipts | System trail (F11). Catches what the model missed. |
+
+**Enforce now:** prompt discipline (already in INIT / this file) + audit trail.  
+**Enforce later, junctions only:** middleware on `arif_judge` / `arif_seal` / forge execute — refuse unlabeled claims. Not a new public tool.  
+**Do not:** formal kernel verb until this has been load-tested. Prompt-only dies under demotion; verb-too-early locks today's shape.
+
+---
+
 ## The Scar
 
 This rule was forged from the scar discovered on 2026-08-10:
