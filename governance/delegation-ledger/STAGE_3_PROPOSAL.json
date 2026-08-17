@@ -1,0 +1,83 @@
+{
+  "token_id": "sha256:25d2f4fed0da8f056dab958a90efcb824ba64123415b0551e7738ada92c001f1",
+  "version": "aip-ibct-v0.1",
+  "issued_at": "2026-08-17T05:51:19Z",
+  "issuer": {
+    "actor_id": "ariffazil",
+    "actor_type": "sovereign",
+    "pubkey_ref": "/root/AAA/IDENTITY/keys/888_public.pem",
+    "signature_algorithm": "ed25519",
+    "signature": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
+  },
+  "attenuated_scope": {
+    "allowed_actions": [
+      "read",
+      "audit",
+      "analyze",
+      "compile_test"
+    ],
+    "forbidden_actions": [
+      "delete_file",
+      "rm",
+      "DROP_TABLE",
+      "force_push",
+      "modify_existing_kernel_source"
+    ],
+    "resource_patterns": [
+      "/root/arifOS/arifosmcp/arifos_policy/*",
+      "/root/forge_work/2026-08-17-zen-delegation-ledger/*",
+      "/root/AAA/governance/delegation-ledger/*"
+    ],
+    "constraints": {
+      "additive_only": true,
+      "no_destructive_operations": true,
+      "max_files_touched": 8,
+      "max_runtime_seconds": 1800,
+      "require_live_evidence": true
+    },
+    "tier": "hard",
+    "expiry": "2026-08-25T05:30:00Z"
+  },
+  "parent_token_hash": "sha256:7bb94ef8525a8d42a1c8fa03edcea445d12450d55c7dad0ed80dcd0cc6c4ed12",
+  "constitutional_verdict": {
+    "effective_verdict": "SEAL",
+    "constitutional_floors_checked": [
+      "F1",
+      "F2",
+      "F11",
+      "F13"
+    ],
+    "floor_violations": [],
+    "cedar_policy_hash": null,
+    "tier": "hard"
+  },
+  "outcome_receipt": {
+    "executed_at": "2026-08-17T05:51:19Z",
+    "files_created": [
+      "/root/AAA/governance/delegation-ledger/STAGE_3_PROPOSAL.json"
+    ],
+    "files_modified": [],
+    "files_deleted": [],
+    "commands_run": [
+      "python3 -c 'import json; s = json.load(open(\"/root/AAA/governance/delegation-ledger/STAGE_2_CONTRACT.json\")); print(s[\"audit\"][\"chain_hash\"])'  # verify parent chain"
+    ],
+    "exit_codes": [
+      0
+    ],
+    "side_effects": [
+      "Stage 3 PROPOSAL \u2014 NOT EXECUTED. Per CONTRACT_TEMPLATE_v0.1.md Clause 4, awaits F13 ratification.",
+      "Two options: (A) cedar policy compilation at /root/arifOS/arifosmcp/arifos_policy/cedar_bridge.py (Phase 2 stub exists; needs Rust Cedar engine integration via PyO3); (B) A2A extension adding IBCT fields to Agent Cards at /root/AAA/aaa-a2a/src/aaa_a2a/extensions/ibct/.",
+      "Chain index 2 (parent = Stage 2 chain_hash = sha256:7bb94ef8525a8d42a...)",
+      "Both options require new IBCT for execution \u2014 this is the PROPOSAL, not the execution.",
+      "Carry-forward: cedar_bridge.py stub returns ALLOW with override=True (always) \u2014 Stage 3A would replace with actual Cedar policy compilation.",
+      "Carry-forward: A2A spec Discussion #741 + Issue #2026 \u2014 Stage 3B would add IBCT fields to A2A Agent Card schema."
+    ]
+  },
+  "audit": {
+    "schema_version": "aip-ibct-v0.1",
+    "chain_hash": "sha256:e90206dd535e8374462a442d7c399636d818da84f04ddce082f7913e20efbb10",
+    "chain_index": 2,
+    "parent_chain_hash": "sha256:7bb94ef8525a8d42a1c8fa03edcea445d12450d55c7dad0ed80dcd0cc6c4ed12",
+    "ledger_root": null
+  }
+}
