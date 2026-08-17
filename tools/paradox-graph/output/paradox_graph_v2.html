@@ -1,0 +1,435 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script>function neighbourhoodHighlight(params) {
+  // console.log("in nieghbourhoodhighlight");
+  allNodes = nodes.get({ returnType: "Object" });
+  // originalNodes = JSON.parse(JSON.stringify(allNodes));
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    highlightActive = true;
+    var i, j;
+    var selectedNode = params.nodes[0];
+    var degrees = 2;
+
+    // mark all nodes as hard to read.
+    for (let nodeId in allNodes) {
+      // nodeColors[nodeId] = allNodes[nodeId].color;
+      allNodes[nodeId].color = "rgba(200,200,200,0.5)";
+      if (allNodes[nodeId].hiddenLabel === undefined) {
+        allNodes[nodeId].hiddenLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+    var connectedNodes = network.getConnectedNodes(selectedNode);
+    var allConnectedNodes = [];
+
+    // get the second degree nodes
+    for (i = 1; i < degrees; i++) {
+      for (j = 0; j < connectedNodes.length; j++) {
+        allConnectedNodes = allConnectedNodes.concat(
+          network.getConnectedNodes(connectedNodes[j])
+        );
+      }
+    }
+
+    // all second degree nodes get a different color and their label back
+    for (i = 0; i < allConnectedNodes.length; i++) {
+      // allNodes[allConnectedNodes[i]].color = "pink";
+      allNodes[allConnectedNodes[i]].color = "rgba(150,150,150,0.75)";
+      if (allNodes[allConnectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[allConnectedNodes[i]].label =
+          allNodes[allConnectedNodes[i]].hiddenLabel;
+        allNodes[allConnectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // all first degree nodes get their own color and their label back
+    for (i = 0; i < connectedNodes.length; i++) {
+      // allNodes[connectedNodes[i]].color = undefined;
+      allNodes[connectedNodes[i]].color = nodeColors[connectedNodes[i]];
+      if (allNodes[connectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[connectedNodes[i]].label =
+          allNodes[connectedNodes[i]].hiddenLabel;
+        allNodes[connectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // the main node gets its own color and its label back.
+    // allNodes[selectedNode].color = undefined;
+    allNodes[selectedNode].color = nodeColors[selectedNode];
+    if (allNodes[selectedNode].hiddenLabel !== undefined) {
+      allNodes[selectedNode].label = allNodes[selectedNode].hiddenLabel;
+      allNodes[selectedNode].hiddenLabel = undefined;
+    }
+  } else if (highlightActive === true) {
+    // console.log("highlightActive was true");
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      // allNodes[nodeId].color = "purple";
+      allNodes[nodeId].color = nodeColors[nodeId];
+      // delete allNodes[nodeId].color;
+      if (allNodes[nodeId].hiddenLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].hiddenLabel;
+        allNodes[nodeId].hiddenLabel = undefined;
+      }
+    }
+    highlightActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    // console.log("Nothing was selected");
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        // allNodes[nodeId].color = {};
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function filterHighlight(params) {
+  allNodes = nodes.get({ returnType: "Object" });
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    filterActive = true;
+    let selectedNodes = params.nodes;
+
+    // hiding all nodes and saving the label
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = true;
+      if (allNodes[nodeId].savedLabel === undefined) {
+        allNodes[nodeId].savedLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+
+    for (let i=0; i < selectedNodes.length; i++) {
+      allNodes[selectedNodes[i]].hidden = false;
+      if (allNodes[selectedNodes[i]].savedLabel !== undefined) {
+        allNodes[selectedNodes[i]].label = allNodes[selectedNodes[i]].savedLabel;
+        allNodes[selectedNodes[i]].savedLabel = undefined;
+      }
+    }
+
+  } else if (filterActive === true) {
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = false;
+      if (allNodes[nodeId].savedLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].savedLabel;
+        allNodes[nodeId].savedLabel = undefined;
+      }
+    }
+    filterActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function selectNode(nodes) {
+  network.selectNodes(nodes);
+  neighbourhoodHighlight({ nodes: nodes });
+  return nodes;
+}
+
+function selectNodes(nodes) {
+  network.selectNodes(nodes);
+  filterHighlight({nodes: nodes});
+  return nodes;
+}
+
+function highlightFilter(filter) {
+  let selectedNodes = []
+  let selectedProp = filter['property']
+  if (filter['item'] === 'node') {
+    let allNodes = nodes.get({ returnType: "Object" });
+    for (let nodeId in allNodes) {
+      if (allNodes[nodeId][selectedProp] && filter['value'].includes((allNodes[nodeId][selectedProp]).toString())) {
+        selectedNodes.push(nodeId)
+      }
+    }
+  }
+  else if (filter['item'] === 'edge'){
+    let allEdges = edges.get({returnType: 'object'});
+    // check if the selected property exists for selected edge and select the nodes connected to the edge
+    for (let edge in allEdges) {
+      if (allEdges[edge][selectedProp] && filter['value'].includes((allEdges[edge][selectedProp]).toString())) {
+        selectedNodes.push(allEdges[edge]['from'])
+        selectedNodes.push(allEdges[edge]['to'])
+      }
+    }
+  }
+  selectNodes(selectedNodes)
+}</script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+            
+            
+            
+            
+            
+
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 900px;
+                 background-color: #0d1117;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+             #loadingBar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width: 100%;
+                 height: 900px;
+                 background-color:rgba(200,200,200,0.8);
+                 -webkit-transition: all 0.5s ease;
+                 -moz-transition: all 0.5s ease;
+                 -ms-transition: all 0.5s ease;
+                 -o-transition: all 0.5s ease;
+                 transition: all 0.5s ease;
+                 opacity:1;
+             }
+
+             #bar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width:20px;
+                 height:20px;
+                 margin:auto auto auto auto;
+                 border-radius:11px;
+                 border:2px solid rgba(30,30,30,0.05);
+                 background: rgb(0, 173, 246); /* Old browsers */
+                 box-shadow: 2px 0px 4px rgba(0,0,0,0.4);
+             }
+
+             #border {
+                 position:absolute;
+                 top:10px;
+                 left:10px;
+                 width:500px;
+                 height:23px;
+                 margin:auto auto auto auto;
+                 box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+                 border-radius:10px;
+             }
+
+             #text {
+                 position:absolute;
+                 top:8px;
+                 left:530px;
+                 width:30px;
+                 height:50px;
+                 margin:auto auto auto auto;
+                 font-size:22px;
+                 color: #000000;
+             }
+
+             div.outerBorder {
+                 position:relative;
+                 top:400px;
+                 width:600px;
+                 height:44px;
+                 margin:auto auto auto auto;
+                 border:8px solid rgba(0,0,0,0.1);
+                 background: rgb(252,252,252); /* Old browsers */
+                 background: -moz-linear-gradient(top,  rgba(252,252,252,1) 0%, rgba(237,237,237,1) 100%); /* FF3.6+ */
+                 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(237,237,237,1))); /* Chrome,Safari4+ */
+                 background: -webkit-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Chrome10+,Safari5.1+ */
+                 background: -o-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
+                 background: -ms-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* IE10+ */
+                 background: linear-gradient(to bottom,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* W3C */
+                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+                 border-radius:72px;
+                 box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+             }
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+    <div style="position:fixed;top:10px;left:10px;background:#161b22;padding:15px;border-radius:8px;border:1px solid #30363d;z-index:1000;font-family:monospace;font-size:12px;color:#c9d1d9;">
+    <b style="font-size:14px;">Paradox Knowledge Graph</b><br><br>
+    <b>Clusters:</b><br>
+    <span style="color:#FF6B6B;">●</span> ATLAS333 Paradoxes (P01-P35)<br>
+    <span style="color:#FFD93D;">●</span> Apex Dials<br>
+    <span style="color:#DDA0DD;">●</span> Governance<br>
+    <span style="color:#FF8C00;">●</span> Genesis<br>
+    <span style="color:#4ECDC4;">●</span> Memory<br>
+    <span style="color:#98FB98;">●</span> Engine<br>
+    <span style="color:#FF1493;">●</span> Void Paradox<br><br>
+    <b>Edges:</b><br>
+    <span style="color:#ef4444;">━</span> Tension (paradox pair)<br>
+    <span style="color:#3b82f6;">━</span> Wires To (architectural)<br>
+    <span style="color:#22c55e;">┅</span> References<br>
+    <span style="color:#f59e0b;">━</span> Extends<br>
+    <span style="color:#8b5cf6;">━</span> Implements<br>
+    <span style="color:#06b6d4;">━</span> Informed By<br>
+    </div>
+    
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+            <div id="loadingBar">
+              <div class="outerBorder">
+                <div id="text">0%</div>
+                <div id="border">
+                  <div id="bar"></div>
+                </div>
+              </div>
+            </div>
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P01", "label": "P01", "shape": "dot", "size": 45, "title": "\u003cb\u003eP01-energy-entropy\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 37\u003cbr\u003eCentrality: 0.287\u003cbr\u003eTension: energy vs entropy\u003cbr\u003eConcepts: energy, aaa, tension poles:, wealth, well\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P02", "label": "P02", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP02-remember-forget\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: remember vs forget\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, a-forge\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P03", "label": "P03", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP03-truth-uncertainty\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: truth vs uncertainty\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, truth\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P04", "label": "P04", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP04-evidence-claim\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: evidence vs claim\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, claim\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P05", "label": "P05", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP05-order-chaos\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: order vs chaos\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, chaos\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P06", "label": "P06", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP06-stability-rigidity\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: stability vs rigidity\u003cbr\u003eConcepts: rigidity, aaa, tension poles:, wealth, well\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P07", "label": "P07", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP07-light-shadow\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: light vs shadow\u003cbr\u003eConcepts: aaa, wealth, light, tension poles:, well\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P08", "label": "P08", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP08-tradition-innovation\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: tradition vs innovation\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, innovation\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P09", "label": "P09", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP09-layer-collapse\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: layer vs collapse\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, a-forge\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P10", "label": "P10", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP10-conservation-change\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: conservation vs change\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, a-forge\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P11", "label": "P11", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP11-individual-collective\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: individual vs collective\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, a-forge\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P12", "label": "P12", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP12-capability-authority\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: capability vs authority\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, a-forge\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P13", "label": "P13", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP13-doubt-decision\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: doubt vs decision\u003cbr\u003eConcepts: aaa, wealth, tension poles:, decision, well\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P14", "label": "P14", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP14-reason-intuition\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: reason vs intuition\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, intuition\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P15", "label": "P15", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP15-local-global\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: local vs global\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, a-forge\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P16", "label": "P16", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP16-open-closed\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: open vs closed\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, a-forge\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P17", "label": "P17", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP17-utility-truth\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: utility vs truth\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, truth\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P18", "label": "P18", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP18-observer-observed\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: observer vs observed\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, a-forge\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P19", "label": "P19", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP19-story-structure\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: story vs structure\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, story\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P20", "label": "P20", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP20-name-shape\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: name vs shape\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, a-forge\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P21", "label": "P21", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP21-measurable-meaningful\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: measurable vs meaningful\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, meaningful\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P22", "label": "P22", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP22-unity-diversity\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: unity vs diversity\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, unity\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P23", "label": "P23", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP23-judge-cluster\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: judge vs cluster\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, cluster\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P29", "label": "P29", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP29-sovereignty\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, a-forge\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P30", "label": "P30", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP30-justice-mercy\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: justice vs mercy\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, a-forge\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P31", "label": "P31", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP31-permanence-reversibility\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: permanence vs reversibility\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, reversibility\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P32", "label": "P32", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP32-certainty-uncertainty\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: certainty vs uncertainty\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, certainty\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P33", "label": "P33", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP33-self-governance\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: self vs governance\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, a-forge\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P34", "label": "P34", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP34-root-kernel\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: root vs kernel\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, a-forge\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P35", "label": "P35", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP35-positive-closed\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: positive vs closed\u003cbr\u003eConcepts: aaa, wealth, tension poles:, well, positive\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P36", "label": "P36", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP36-witness-dignity\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: witness vs dignity\u003cbr\u003eConcepts: dignity, ditempa bukan diberi \u2692\ufe0f, witness, wires to:, tension:\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P37", "label": "P37", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP37-scar-forgiveness\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: scar vs forgiveness\u003cbr\u003eConcepts: record, ditempa bukan diberi \u2692\ufe0f, wires to:, scar, release\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P38", "label": "P38", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP38-synthetic-accountability\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: synthetic vs accountability\u003cbr\u003eConcepts: accountability, generation, ditempa bukan diberi \u2692\ufe0f, wires to:, tension:\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P39", "label": "P39", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP39-flesh-computation\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: flesh vs computation\u003cbr\u003eConcepts: endurance, flesh, computation, ditempa bukan diberi \u2692\ufe0f, wires to:\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "P40", "label": "P40", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP40-intelligence-consequence\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eTension: intelligence vs consequence\u003cbr\u003eConcepts: carry, intelligence, consequence, ditempa bukan diberi \u2692\ufe0f, wires to:\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FFD93D", "border": "#FFD93D"}, "font": {"color": "#c9d1d9"}, "id": "APEX_PHI_FALSIFICATION", "label": "APEX_PHI_FALSIFICATION", "shape": "dot", "size": 28.775193798449614, "title": "\u003cb\u003ePHI-falsification\u003c/b\u003e\u003cbr\u003eCluster: apex\u003cbr\u003eConnections: 5\u003cbr\u003eCentrality: 0.039\u003cbr\u003eConcepts: PHI-falsification\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FFD93D", "border": "#FFD93D"}, "font": {"color": "#c9d1d9"}, "id": "APEX_W3_TRI_WITNESS", "label": "APEX_W3_TRI_WITNESS", "shape": "dot", "size": 16.310077519379846, "title": "\u003cb\u003eW3-tri-witness\u003c/b\u003e\u003cbr\u003eCluster: apex\u003cbr\u003eConnections: 2\u003cbr\u003eCentrality: 0.016\u003cbr\u003eConcepts: W3-tri-witness\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FFD93D", "border": "#FFD93D"}, "font": {"color": "#c9d1d9"}, "id": "APEX_C_DARK_DARKNESS", "label": "APEX_C_DARK_DARKNESS", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eC-dark-darkness\u003c/b\u003e\u003cbr\u003eCluster: apex\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eConcepts: C-dark-darkness\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FFD93D", "border": "#FFD93D"}, "font": {"color": "#c9d1d9"}, "id": "APEX_G_CAPABILITY", "label": "APEX_G_CAPABILITY", "shape": "dot", "size": 16.310077519379846, "title": "\u003cb\u003eG-capability\u003c/b\u003e\u003cbr\u003eCluster: apex\u003cbr\u003eConnections: 2\u003cbr\u003eCentrality: 0.016\u003cbr\u003eConcepts: G-capability\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FFD93D", "border": "#FFD93D"}, "font": {"color": "#c9d1d9"}, "id": "APEX_H_HUMILITY", "label": "APEX_H_HUMILITY", "shape": "dot", "size": 16.310077519379846, "title": "\u003cb\u003eH-humility\u003c/b\u003e\u003cbr\u003eCluster: apex\u003cbr\u003eConnections: 2\u003cbr\u003eCentrality: 0.016\u003cbr\u003eConcepts: H-humility\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF1493", "border": "#FF1493"}, "font": {"color": "#c9d1d9"}, "id": "VOID PARADOX DOCTRINE", "label": "VOID PARADOX DOCTRINE", "shape": "dot", "size": 12, "title": "\u003cb\u003eVOID_PARADOX_DOCTRINE\u003c/b\u003e\u003cbr\u003eCluster: void\u003cbr\u003eConnections: 0\u003cbr\u003eCentrality: 0.000\u003cbr\u003eConcepts: void, paradox, doctrine\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#DDA0DD", "border": "#DDA0DD"}, "font": {"color": "#c9d1d9"}, "id": "AGENTIC INSTITUTION PARADOXES", "label": "AGENTIC INSTITUTION PARADOXES", "shape": "dot", "size": 24.62015503875969, "title": "\u003cb\u003eAGENTIC_INSTITUTION_PARADOXES\u003c/b\u003e\u003cbr\u003eCluster: governance\u003cbr\u003eConnections: 4\u003cbr\u003eCentrality: 0.031\u003cbr\u003eConcepts: agentic, institution, paradoxes\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#DDA0DD", "border": "#DDA0DD"}, "font": {"color": "#c9d1d9"}, "id": "PARADOX SUBSTRATE MAP", "label": "PARADOX SUBSTRATE MAP", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003ePARADOX_SUBSTRATE_MAP\u003c/b\u003e\u003cbr\u003eCluster: governance\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eConcepts: paradox, substrate, map\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#DDA0DD", "border": "#DDA0DD"}, "font": {"color": "#c9d1d9"}, "id": "REALITY TRUTH PARADOXES", "label": "REALITY TRUTH PARADOXES", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eREALITY-TRUTH-PARADOXES\u003c/b\u003e\u003cbr\u003eCluster: governance\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eConcepts: reality, truth, paradoxes\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#DDA0DD", "border": "#DDA0DD"}, "font": {"color": "#c9d1d9"}, "id": "PARADOX OF TIME AND TRUTH", "label": "PARADOX OF TIME AND TRUTH", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003ePARADOX_OF_TIME_AND_TRUTH\u003c/b\u003e\u003cbr\u003eCluster: governance\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eConcepts: paradox, time, and, truth\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF8C00", "border": "#FF8C00"}, "font": {"color": "#c9d1d9"}, "id": "004 OPUS NAMING PARADOX", "label": "004 OPUS NAMING PARADOX", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003e004_OPUS_NAMING_PARADOX\u003c/b\u003e\u003cbr\u003eCluster: genesis\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eConcepts: opus, naming, paradox\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF8C00", "border": "#FF8C00"}, "font": {"color": "#c9d1d9"}, "id": "006 PETRONAS PARADOX", "label": "006 PETRONAS PARADOX", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003e006_PETRONAS_PARADOX\u003c/b\u003e\u003cbr\u003eCluster: genesis\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eConcepts: petronas, paradox\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#DDA0DD", "border": "#DDA0DD"}, "font": {"color": "#c9d1d9"}, "id": "paradox anchors", "label": "paradox anchors", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eparadox_anchors\u003c/b\u003e\u003cbr\u003eCluster: governance\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#4ECDC4", "border": "#4ECDC4"}, "font": {"color": "#c9d1d9"}, "id": "CLUSTER_MEMORY", "label": "CLUSTER_MEMORY", "shape": "dot", "size": 12, "title": "\u003cb\u003ememory cluster\u003c/b\u003e\u003cbr\u003eCluster: memory\u003cbr\u003eConnections: 0\u003cbr\u003eCentrality: 0.000\u003cbr\u003eConcepts: memory\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "CLUSTER_MIND", "label": "CLUSTER_MIND", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003emind cluster\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eConcepts: mind\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "CLUSTER_JUDGE", "label": "CLUSTER_JUDGE", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003ejudge cluster\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eConcepts: judge\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#FF6B6B", "border": "#FF6B6B"}, "font": {"color": "#c9d1d9"}, "id": "CLUSTER_CONTOUR", "label": "CLUSTER_CONTOUR", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003econtour cluster\u003c/b\u003e\u003cbr\u003eCluster: atlas333\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003eConcepts: contour\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#98FB98", "border": "#98FB98"}, "font": {"color": "#c9d1d9"}, "id": "ENGINE_paradox", "label": "ENGINE_paradox", "shape": "dot", "size": 12, "title": "\u003cb\u003eparadox-engine\u003c/b\u003e\u003cbr\u003eCluster: engine\u003cbr\u003eConnections: 0\u003cbr\u003eCentrality: 0.000\u003cbr\u003eConcepts: paradox, engine, resolution\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "energy", "label": "energy", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eenergy\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "entropy", "label": "entropy", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eentropy\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "remember", "label": "remember", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eremember\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "forget", "label": "forget", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eforget\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "truth", "label": "truth", "shape": "dot", "size": 16.310077519379846, "title": "\u003cb\u003etruth\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 2\u003cbr\u003eCentrality: 0.016\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "uncertainty", "label": "uncertainty", "shape": "dot", "size": 16.310077519379846, "title": "\u003cb\u003euncertainty\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 2\u003cbr\u003eCentrality: 0.016\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "evidence", "label": "evidence", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eevidence\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "claim", "label": "claim", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eclaim\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "order", "label": "order", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eorder\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "chaos", "label": "chaos", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003echaos\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "stability", "label": "stability", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003estability\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "rigidity", "label": "rigidity", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003erigidity\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "light", "label": "light", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003elight\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "shadow", "label": "shadow", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eshadow\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "tradition", "label": "tradition", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003etradition\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "innovation", "label": "innovation", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003einnovation\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "layer", "label": "layer", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003elayer\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "collapse", "label": "collapse", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003ecollapse\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "conservation", "label": "conservation", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003econservation\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "change", "label": "change", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003echange\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "individual", "label": "individual", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eindividual\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "collective", "label": "collective", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003ecollective\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "capability", "label": "capability", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003ecapability\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "authority", "label": "authority", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eauthority\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "doubt", "label": "doubt", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003edoubt\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "decision", "label": "decision", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003edecision\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "reason", "label": "reason", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003ereason\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "intuition", "label": "intuition", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eintuition\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "local", "label": "local", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003elocal\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "global", "label": "global", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eglobal\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "open", "label": "open", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eopen\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "closed", "label": "closed", "shape": "dot", "size": 16.310077519379846, "title": "\u003cb\u003eclosed\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 2\u003cbr\u003eCentrality: 0.016\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "utility", "label": "utility", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eutility\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "observer", "label": "observer", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eobserver\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "observed", "label": "observed", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eobserved\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "story", "label": "story", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003estory\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "structure", "label": "structure", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003estructure\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "name", "label": "name", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003ename\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "shape", "label": "shape", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eshape\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "measurable", "label": "measurable", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003emeasurable\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "meaningful", "label": "meaningful", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003emeaningful\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "unity", "label": "unity", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eunity\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "diversity", "label": "diversity", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003ediversity\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "judge", "label": "judge", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003ejudge\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "cluster", "label": "cluster", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003ecluster\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "justice", "label": "justice", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003ejustice\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "mercy", "label": "mercy", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003emercy\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "permanence", "label": "permanence", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003epermanence\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "reversibility", "label": "reversibility", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003ereversibility\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "certainty", "label": "certainty", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003ecertainty\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "self", "label": "self", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eself\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "governance", "label": "governance", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003egovernance\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "root", "label": "root", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eroot\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "kernel", "label": "kernel", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003ekernel\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "positive", "label": "positive", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003epositive\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "witness", "label": "witness", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003ewitness\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "dignity", "label": "dignity", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003edignity\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "scar", "label": "scar", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003escar\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "forgiveness", "label": "forgiveness", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eforgiveness\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "synthetic", "label": "synthetic", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003esynthetic\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "accountability", "label": "accountability", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eaccountability\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "flesh", "label": "flesh", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eflesh\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "computation", "label": "computation", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003ecomputation\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "intelligence", "label": "intelligence", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eintelligence\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "consequence", "label": "consequence", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003econsequence\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "VOID_PARADOX_DOCTRINE", "label": "VOID_PARADOX_DOCTRINE", "shape": "dot", "size": 20.46511627906977, "title": "\u003cb\u003eVOID_PARADOX_DOCTRINE\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 3\u003cbr\u003eCentrality: 0.023\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "P03-truth-uncertainty", "label": "P03-truth-uncertainty", "shape": "dot", "size": 16.310077519379846, "title": "\u003cb\u003eP03-truth-uncertainty\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 2\u003cbr\u003eCentrality: 0.016\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "P18-observer-observed", "label": "P18-observer-observed", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP18-observer-observed\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "P19-story-structure", "label": "P19-story-structure", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP19-story-structure\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "REALITY-TRUTH-PARADOXES", "label": "REALITY-TRUTH-PARADOXES", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eREALITY-TRUTH-PARADOXES\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "PARADOX_SUBSTRATE_MAP", "label": "PARADOX_SUBSTRATE_MAP", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003ePARADOX_SUBSTRATE_MAP\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "P09-layer-collapse", "label": "P09-layer-collapse", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP09-layer-collapse\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "AGENTIC_INSTITUTION_PARADOXES", "label": "AGENTIC_INSTITUTION_PARADOXES", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eAGENTIC_INSTITUTION_PARADOXES\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "P33-self-governance", "label": "P33-self-governance", "shape": "dot", "size": 16.310077519379846, "title": "\u003cb\u003eP33-self-governance\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 2\u003cbr\u003eCentrality: 0.016\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "P01-energy-entropy", "label": "P01-energy-entropy", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP01-energy-entropy\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "P12-capability-authority", "label": "P12-capability-authority", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP12-capability-authority\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}, {"borderWidth": 2, "color": {"background": "#666666", "border": "#666666"}, "font": {"color": "#c9d1d9"}, "id": "P30-justice-mercy", "label": "P30-justice-mercy", "shape": "dot", "size": 12.155038759689923, "title": "\u003cb\u003eP30-justice-mercy\u003c/b\u003e\u003cbr\u003eCluster: extracted\u003cbr\u003eConnections: 1\u003cbr\u003eCentrality: 0.008\u003cbr\u003e"}]);
+                  edges = new vis.DataSet([{"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P02", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P03", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P04", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P05", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P06", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P07", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P08", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P09", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P10", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P11", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P12", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P13", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P14", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P15", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P16", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P17", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P18", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P19", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P20", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P21", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P22", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P23", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P29", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P30", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P31", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P32", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P33", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P34", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P35", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P36", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P37", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P38", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P39", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "P40", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "CLUSTER_MIND", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "CLUSTER_JUDGE", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "P01", "title": "MEMBER_OF: atlas333 cluster", "to": "CLUSTER_CONTOUR", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "APEX_PHI_FALSIFICATION", "title": "MEMBER_OF: apex cluster", "to": "APEX_W3_TRI_WITNESS", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "APEX_PHI_FALSIFICATION", "title": "MEMBER_OF: apex cluster", "to": "APEX_C_DARK_DARKNESS", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "APEX_PHI_FALSIFICATION", "title": "MEMBER_OF: apex cluster", "to": "APEX_G_CAPABILITY", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "APEX_PHI_FALSIFICATION", "title": "MEMBER_OF: apex cluster", "to": "APEX_H_HUMILITY", "width": 1.05}, {"color": "#06b6d4", "dashes": false, "from": "APEX_PHI_FALSIFICATION", "title": "INFORMED_BY: Cross-cluster bridge", "to": "P33-self-governance", "width": 1.75}, {"color": "#06b6d4", "dashes": false, "from": "APEX_W3_TRI_WITNESS", "title": "INFORMED_BY: Cross-cluster bridge", "to": "P30-justice-mercy", "width": 1.75}, {"color": "#06b6d4", "dashes": false, "from": "APEX_G_CAPABILITY", "title": "INFORMED_BY: Cross-cluster bridge", "to": "P12-capability-authority", "width": 1.75}, {"color": "#06b6d4", "dashes": false, "from": "APEX_H_HUMILITY", "title": "INFORMED_BY: Cross-cluster bridge", "to": "P01-energy-entropy", "width": 1.75}, {"color": "#4b5563", "dashes": false, "from": "AGENTIC INSTITUTION PARADOXES", "title": "MEMBER_OF: governance cluster", "to": "PARADOX SUBSTRATE MAP", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "AGENTIC INSTITUTION PARADOXES", "title": "MEMBER_OF: governance cluster", "to": "REALITY TRUTH PARADOXES", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "AGENTIC INSTITUTION PARADOXES", "title": "MEMBER_OF: governance cluster", "to": "PARADOX OF TIME AND TRUTH", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "AGENTIC INSTITUTION PARADOXES", "title": "MEMBER_OF: governance cluster", "to": "paradox anchors", "width": 1.05}, {"color": "#4b5563", "dashes": false, "from": "004 OPUS NAMING PARADOX", "title": "MEMBER_OF: genesis cluster", "to": "006 PETRONAS PARADOX", "width": 1.05}, {"color": "#ef4444", "dashes": false, "from": "energy", "title": "TENSION: P01: energy vs entropy", "to": "entropy", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "remember", "title": "TENSION: P02: remember vs forget", "to": "forget", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "truth", "title": "TENSION: P03: truth vs uncertainty", "to": "uncertainty", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "truth", "title": "TENSION: P17: utility vs truth", "to": "utility", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "uncertainty", "title": "TENSION: P32: certainty vs uncertainty", "to": "certainty", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "evidence", "title": "TENSION: P04: evidence vs claim", "to": "claim", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "order", "title": "TENSION: P05: order vs chaos", "to": "chaos", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "stability", "title": "TENSION: P06: stability vs rigidity", "to": "rigidity", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "light", "title": "TENSION: P07: light vs shadow", "to": "shadow", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "tradition", "title": "TENSION: P08: tradition vs innovation", "to": "innovation", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "layer", "title": "TENSION: P09: layer vs collapse", "to": "collapse", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "conservation", "title": "TENSION: P10: conservation vs change", "to": "change", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "individual", "title": "TENSION: P11: individual vs collective", "to": "collective", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "capability", "title": "TENSION: P12: capability vs authority", "to": "authority", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "doubt", "title": "TENSION: P13: doubt vs decision", "to": "decision", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "reason", "title": "TENSION: P14: reason vs intuition", "to": "intuition", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "local", "title": "TENSION: P15: local vs global", "to": "global", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "open", "title": "TENSION: P16: open vs closed", "to": "closed", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "closed", "title": "TENSION: P35: positive vs closed", "to": "positive", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "observer", "title": "TENSION: P18: observer vs observed", "to": "observed", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "story", "title": "TENSION: P19: story vs structure", "to": "structure", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "name", "title": "TENSION: P20: name vs shape", "to": "shape", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "measurable", "title": "TENSION: P21: measurable vs meaningful", "to": "meaningful", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "unity", "title": "TENSION: P22: unity vs diversity", "to": "diversity", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "judge", "title": "TENSION: P23: judge vs cluster", "to": "cluster", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "justice", "title": "TENSION: P30: justice vs mercy", "to": "mercy", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "permanence", "title": "TENSION: P31: permanence vs reversibility", "to": "reversibility", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "self", "title": "TENSION: P33: self vs governance", "to": "governance", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "root", "title": "TENSION: P34: root vs kernel", "to": "kernel", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "witness", "title": "TENSION: P36: witness vs dignity", "to": "dignity", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "scar", "title": "TENSION: P37: scar vs forgiveness", "to": "forgiveness", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "synthetic", "title": "TENSION: P38: synthetic vs accountability", "to": "accountability", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "flesh", "title": "TENSION: P39: flesh vs computation", "to": "computation", "width": 3.15}, {"color": "#ef4444", "dashes": false, "from": "intelligence", "title": "TENSION: P40: intelligence vs consequence", "to": "consequence", "width": 3.15}, {"color": "#f59e0b", "dashes": false, "from": "VOID_PARADOX_DOCTRINE", "title": "EXTENDS: Cross-cluster bridge", "to": "P03-truth-uncertainty", "width": 1.75}, {"color": "#f59e0b", "dashes": false, "from": "VOID_PARADOX_DOCTRINE", "title": "EXTENDS: Cross-cluster bridge", "to": "P18-observer-observed", "width": 1.75}, {"color": "#f59e0b", "dashes": false, "from": "VOID_PARADOX_DOCTRINE", "title": "EXTENDS: Cross-cluster bridge", "to": "P19-story-structure", "width": 1.75}, {"color": "#22c55e", "dashes": true, "from": "P03-truth-uncertainty", "title": "REFERENCES: Cross-cluster bridge", "to": "REALITY-TRUTH-PARADOXES", "width": 1.75}, {"color": "#22c55e", "dashes": true, "from": "PARADOX_SUBSTRATE_MAP", "title": "REFERENCES: Cross-cluster bridge", "to": "P09-layer-collapse", "width": 1.75}, {"color": "#22c55e", "dashes": true, "from": "AGENTIC_INSTITUTION_PARADOXES", "title": "REFERENCES: Cross-cluster bridge", "to": "P33-self-governance", "width": 1.75}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"physics": {"forceAtlas2Based": {"gravitationalConstant": -80, "centralGravity": 0.008, "springLength": 180, "springConstant": 0.015, "damping": 0.5}, "solver": "forceAtlas2Based", "stabilization": {"iterations": 250}}, "interaction": {"hover": true, "navigationButtons": true, "keyboard": true}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+                      network.on("stabilizationProgress", function(params) {
+                          document.getElementById('loadingBar').removeAttribute("style");
+                          var maxWidth = 496;
+                          var minWidth = 20;
+                          var widthFactor = params.iterations/params.total;
+                          var width = Math.max(minWidth,maxWidth * widthFactor);
+                          document.getElementById('bar').style.width = width + 'px';
+                          document.getElementById('text').innerHTML = Math.round(widthFactor*100) + '%';
+                      });
+                      network.once("stabilizationIterationsDone", function() {
+                          document.getElementById('text').innerHTML = '100%';
+                          document.getElementById('bar').style.width = '496px';
+                          document.getElementById('loadingBar').style.opacity = 0;
+                          // really clean the dom element
+                          setTimeout(function () {document.getElementById('loadingBar').style.display = 'none';}, 500);
+                      });
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

@@ -108,7 +108,7 @@ for item in "${REPOS[@]}"; do
 
   if [ -d "$RPATH/.git" ]; then
     COMMITS=$(git -C "$RPATH" log --since="$SINCE" --oneline 2>/dev/null || true)
-    COUNT=$(echo -n "$COMMITS" | grep -c '^' || echo 0)
+    COUNT=$(echo -n "$COMMITS" | grep -c '^' 2>/dev/null || true)
     TOTAL_COMMITS=$((TOTAL_COMMITS + COUNT))
 
     DIRTY=$(git -C "$RPATH" status --porcelain 2>/dev/null | wc -l)
