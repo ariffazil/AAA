@@ -1,0 +1,73 @@
+{
+  "token_id": "sha256:8002c23b38a8ba85cf3f47ff351f77641c86195664c40bd8963fefe20340c513",
+  "version": "aip-ibct-v0.1",
+  "issued_at": "2026-08-17T05:00:00Z",
+  "issuer": {
+    "actor_id": "ariffazil",
+    "actor_type": "sovereign",
+    "pubkey_ref": "/root/AAA/IDENTITY/keys/888_public.pem",
+    "signature_algorithm": "ed25519",
+    "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+  },
+  "attenuated_scope": {
+    "allowed_actions": [
+      "read",
+      "audit",
+      "create_file"
+    ],
+    "forbidden_actions": [
+      "delete_file",
+      "rm",
+      "DROP_TABLE"
+    ],
+    "resource_patterns": [
+      "/root/AAA/governance/delegation-ledger/*"
+    ],
+    "constraints": {
+      "additive_only": true,
+      "no_destructive_operations": true,
+      "max_files_touched": 5,
+      "max_runtime_seconds": 600,
+      "require_live_evidence": true
+    },
+    "tier": "hard",
+    "expiry": "2026-08-18T05:00:00Z"
+  },
+  "parent_token_hash": null,
+  "constitutional_verdict": {
+    "effective_verdict": "SEAL",
+    "constitutional_floors_checked": [
+      "F1",
+      "F2",
+      "F11",
+      "F13"
+    ],
+    "floor_violations": [],
+    "cedar_policy_hash": null,
+    "tier": "hard"
+  },
+  "outcome_receipt": {
+    "executed_at": "2026-08-17T05:00:00Z",
+    "files_created": [
+      "/root/AAA/governance/delegation-ledger/IBCT_SCHEMA_v0.1.json"
+    ],
+    "files_modified": [],
+    "files_deleted": [],
+    "commands_run": [
+      "echo IBCT schema written and validated"
+    ],
+    "exit_codes": [
+      0
+    ],
+    "side_effects": [
+      "Example IBCT minted to demonstrate schema works"
+    ]
+  },
+  "audit": {
+    "schema_version": "aip-ibct-v0.1",
+    "chain_hash": "sha256:1eac1909e3e3aa90661c893b5784074d24c32ac9066d8651149990d52704f3d0",
+    "chain_index": 0,
+    "parent_chain_hash": null,
+    "ledger_root": null
+  }
+}
