@@ -4,7 +4,7 @@
 > **Status:** CONSTITUTIONAL — defines the agency boundary across the federation
 > **Scope:** All agents, all organs, all skill/tool surfaces
 > **Supersedes:** informal "multi-agent" usage; L0–L6 ladder source verdict (2026-07-12, L4_INFERRED → SEAL)
-> **Last verified:** 2026-07-12
+> **Last verified:** 2026-08-18
 > **DITEMPA BUKAN DIBERI**
 
 ---
@@ -36,6 +36,10 @@ A **real agent** is a bounded decision loop with all seven:
 **Rule:** Missing two or more → **skillful capability**, not an agent — no matter how many personas wrap it.
 
 **Boundary test:** Strip the persona. If the same model + prompt + retrieved evidence produces the same output as a single-prompt baseline, it is not an agent.
+
+**Witness ≠ memory ≠ learning.** VAULT999 attests (immutable). Redis / Postgres / Qdrant / `state.db` operate (mutable). Learning is derived change to future behavior. Sealing a feeling is not remembering. Updating `state.db` is not a constitutional seal.
+
+**Identity ≠ authority ≠ law.** Actor card = who. Session token = this hour's permit. Kernel = rules. A live process without a live bind is a **ghost** — not READY. systemd restarts meat; it does not mint legitimacy.
 
 ---
 

@@ -20,6 +20,17 @@ ecology_state: WARM
 
 > **Purpose:** Right organ for right intent. Classify intent, map to organ, dispatch with fallback. Law ≠ execution.
 
+## Two moments of route (one verb: `arif_route`)
+
+Do not add a ninth public tool. Both moments are `arif_route`.
+
+| Moment | Question | When |
+|---|---|---|
+| **Cheap route** | What *kind* of thing is this? | After observe, before think. GEOX / WELL / kernel / A-FORGE. Stops cognition in the wrong shop. |
+| **Path route** | Which tool / organ *executes*? | After think. Picks the execution path. |
+
+A route failure can look like an intelligence failure. This morning: A-FORGE work delivered to GEOX.
+
 ## Axis 1: Invariants
 
 - **authority**: arif_route returns organ + tool + confidence
