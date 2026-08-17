@@ -1,6 +1,6 @@
 # Stage 3 Proposal — Cedar policy compilation OR A2A extension
 
-**Status:** PROPOSAL ONLY — NOT EXECUTED per CONTRACT_TEMPLATE_v0.1.md Clause 4
+**Status:** F13 NAMED 2026-08-18 — **Option B (A2A) first.** Not executed. Cedar stays a stub. Do not compile `cedar_bridge.py` (`override=True` is not policy).
 **Chain lineage:** Stage 0 → Stage 2 → Stage 3 PROPOSAL (this file)
 **IBCT token_id:** sha256:25d2f4fed0da8f056dab958a90efcb824ba64123415b0551e7738ada92c001f1
 **IBCT chain_hash:** sha256:e90206dd535e8374462a442d7c399636d818da84f04ddce082f7913e20efbb10
@@ -63,25 +63,11 @@ Add IBCT fields to A2A Agent Cards at `/root/AAA/aaa-a2a/src/aaa_a2a/extensions/
 
 ---
 
-## Recommended sequencing
+## F13 sequence (named 2026-08-18)
 
-1. **Option A first** (smaller blast radius — just kernel + cedar_bridge.py)
-2. **Option B after** (extends to A2A ecosystem)
-
-OR
-
-1. **Option B first** (additive only, lower risk)
-2. **Option A after** (requires kernel changes)
+1. **Option B first** — A2A / IBCT on Agent Cards. Additive. Not started.
+2. **Option A later or never** — Cedar. `cedar_bridge.py` is a 27-line always-ALLOW stub. Do not treat it as live policy. Do not install a Cedar engine until a new F13 names it.
 
 ---
 
-## F13 ratification questions
-
-1. Authorize Option A (Cedar policy compilation)?
-2. Authorize Option B (A2A extension)?
-3. Set sequence (A-then-B or B-then-A)?
-4. Override semantic: does Cedar's "explicit Deny" still allow arifOS kernel override, or is F1-F13 non-compensatory?
-
----
-
-DITEMPA BUKAN DIBERI ⚒️ — Stage 0 → Stage 2 sealed. Stage 3 PROPOSAL awaits F13 ratification per Clause 4.
+DITEMPA BUKAN DIBERI ⚒️ — Stage 0 → Stage 2 sealed. Stage 3 B named, not executed.

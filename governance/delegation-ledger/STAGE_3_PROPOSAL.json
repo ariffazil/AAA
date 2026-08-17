@@ -73,6 +73,12 @@
       "Carry-forward: A2A spec Discussion #741 + Issue #2026 \u2014 Stage 3B would add IBCT fields to A2A Agent Card schema."
     ]
   },
+  "f13_amendment_2026_08_18": {
+    "named": "B_A2A_first",
+    "executed": false,
+    "cedar": "not compiled — stub remains always-ALLOW",
+    "note": "Does not rewrite token_id or chain_hash. Named after issue; not a new IBCT."
+  },
   "audit": {
     "schema_version": "aip-ibct-v0.1",
     "chain_hash": "sha256:e90206dd535e8374462a442d7c399636d818da84f04ddce082f7913e20efbb10",
