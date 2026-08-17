@@ -18,9 +18,9 @@
       "enabled": true,
       "endpoint": "/root/arifFlow/mcp/arifflow-mcp.py",
       "harness_visibility": [
-        "OPENCODE",
-        "KIMI",
-        "COPILOT"
+        "codex",
+        "kimi",
+        "opencode"
       ],
       "metadata_file": "arifflow.json"
     },
@@ -33,9 +33,8 @@
       "enabled": true,
       "endpoint": "http://127.0.0.1:7074/mcp",
       "harness_visibility": [
-        "OPENCODE",
-        "KIMI",
-        "HERMES"
+        "kimi",
+        "opencode"
       ],
       "metadata_file": "fed.json"
     },
@@ -48,8 +47,8 @@
       "enabled": true,
       "endpoint": "/usr/local/bin/context7-mcp",
       "harness_visibility": [
-        "OPENCODE",
-        "COPILOT"
+        "codex",
+        "opencode"
       ],
       "metadata_file": "context7.json"
     },
@@ -62,8 +61,8 @@
       "enabled": true,
       "endpoint": "npx @supabase/mcp-server-supabase --project-ref=utbmmjmbolmuahwixjqc",
       "harness_visibility": [
-        "OPENCODE",
-        "COPILOT"
+        "codex",
+        "opencode"
       ],
       "metadata_file": "supabase.json"
     },
@@ -76,8 +75,8 @@
       "enabled": true,
       "endpoint": "python3 /usr/local/bin/qdrant-mcp-bridge.py",
       "harness_visibility": [
-        "OPENCODE",
-        "COPILOT"
+        "codex",
+        "opencode"
       ],
       "metadata_file": "qdrant.json"
     },
@@ -90,8 +89,8 @@
       "enabled": true,
       "endpoint": "/root/.npm-global/bin/hostinger-vps-mcp --stdio",
       "harness_visibility": [
-        "OPENCODE",
-        "COPILOT"
+        "codex",
+        "opencode"
       ],
       "metadata_file": "hostinger-vps.json"
     },
@@ -104,7 +103,8 @@
       "enabled": true,
       "endpoint": "python3 /root/.hermes/mcp_servers/hermes_mcp.py",
       "harness_visibility": [
-        "HERMES"
+        "codex",
+        "opencode"
       ],
       "metadata_file": "hermes.json"
     },
@@ -117,7 +117,7 @@
       "enabled": true,
       "endpoint": "http://127.0.0.1:18090/mcp",
       "harness_visibility": [
-        "OPENCODE"
+        "opencode"
       ],
       "metadata_file": "hermes-agent.json"
     },
@@ -130,7 +130,7 @@
       "enabled": true,
       "endpoint": "npx megamemory",
       "harness_visibility": [
-        "OPENCODE"
+        "opencode"
       ],
       "metadata_file": "megamemory.json"
     },
@@ -143,8 +143,7 @@
       "enabled": false,
       "endpoint": "/usr/bin/mcp-server-sqlite --db-path /root/.local/share/arifos/local.db",
       "harness_visibility": [
-        "OPENCODE",
-        "COPILOT"
+        "opencode"
       ],
       "metadata_file": "sqlite.json"
     },
@@ -153,15 +152,14 @@
       "name": "graphiti-federation-extension",
       "category": "data-store",
       "tool_count": 0,
-      "status": "DISABLED:transient:falkordb-down",
+      "status": "DISABLED",
       "enabled": false,
       "endpoint": "http://127.0.0.1:8000/mcp",
       "harness_visibility": [
-        "OPENCODE",
-        "COPILOT"
+        "codex",
+        "opencode"
       ],
-      "metadata_file": "graphiti.json",
-      "_disabled_reason": "transient:falkordb-endpoint-down-pending-revive"
+      "metadata_file": "graphiti.json"
     },
     "openrouter": {
       "id": "ext.openrouter",
@@ -172,8 +170,7 @@
       "enabled": true,
       "endpoint": "https://mcp.openrouter.ai/mcp",
       "harness_visibility": [
-        "OPENCODE",
-        "HERMES"
+        "opencode"
       ],
       "metadata_file": "openrouter.json"
     },
@@ -186,8 +183,8 @@
       "enabled": false,
       "endpoint": "bash -lc exec /root/.arifos/agents/kimi/mcp-launchers/semgrep.sh",
       "harness_visibility": [
-        "OPENCODE",
-        "COPILOT"
+        "codex",
+        "opencode"
       ],
       "metadata_file": "semgrep.json"
     },
@@ -200,9 +197,8 @@
       "enabled": true,
       "endpoint": "bash -lc cd /root/arifOS && PYTHONPATH=core exec .venv/bin/python core/capability_index/mcp_server.py",
       "harness_visibility": [
-        "OPENCODE",
-        "CODEX",
-        "COPILOT"
+        "codex",
+        "opencode"
       ],
       "metadata_file": "capability-index.json"
     },
@@ -214,7 +210,10 @@
       "status": "RETIRED",
       "enabled": false,
       "endpoint": "http://127.0.0.1:18087/mcp",
-      "harness_visibility": [],
+      "harness_visibility": [
+        "codex",
+        "opencode"
+      ],
       "metadata_file": "hindsight.json"
     },
     "serena": {
@@ -222,15 +221,14 @@
       "name": "serena-federation-extension",
       "category": "meta-utility",
       "tool_count": 0,
-      "status": "DISABLED:transient:stdio-unstable",
+      "status": "DISABLED",
       "enabled": false,
       "endpoint": "sh -lc exec /root/.claude/mcp-launchers/serena.sh",
       "harness_visibility": [
-        "OPENCODE",
-        "COPILOT"
+        "codex",
+        "opencode"
       ],
-      "metadata_file": "serena.json",
-      "_disabled_reason": "transient:stdio-unstable-post-sh-to-bash"
+      "metadata_file": "serena.json"
     },
     "repomapper": {
       "id": "ext.repomapper",
@@ -241,8 +239,8 @@
       "enabled": true,
       "endpoint": "bash -lc exec /root/.claude/mcp-launchers/repomapper.sh",
       "harness_visibility": [
-        "OPENCODE",
-        "COPILOT"
+        "codex",
+        "opencode"
       ],
       "metadata_file": "repomapper.json"
     },
@@ -255,10 +253,8 @@
       "enabled": true,
       "endpoint": "minimax-coding-plan-mcp",
       "harness_visibility": [
-        "OPENCODE",
-        "KIMI",
-        "HERMES",
-        "CLAUD"
+        "kimi",
+        "opencode"
       ],
       "metadata_file": "minimax.json"
     },
@@ -271,8 +267,7 @@
       "enabled": true,
       "endpoint": "uvx minimax-mcp -y",
       "harness_visibility": [
-        "OPENCODE",
-        "OPENCLAW"
+        "opencode"
       ],
       "metadata_file": "minimax-mcp.json"
     },
@@ -285,7 +280,7 @@
       "enabled": true,
       "endpoint": "/root/.npm-global/bin/codebase-memory-mcp",
       "harness_visibility": [
-        "OPENCODE"
+        "opencode"
       ],
       "metadata_file": "codebase-memory.json"
     },
@@ -298,7 +293,7 @@
       "enabled": true,
       "endpoint": "uvx free-search-mcp",
       "harness_visibility": [
-        "OPENCODE"
+        "opencode"
       ],
       "metadata_file": "free-search.json"
     }
