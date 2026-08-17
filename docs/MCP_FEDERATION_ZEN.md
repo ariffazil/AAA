@@ -38,11 +38,12 @@
 ## 🔥 Organ Map — Who Serves What
 
 > **Live tool counts:** re-probe `/health` or read ORGAN.md §2. Numbers below are **ops snapshot**, not SOT.
+> `stateless_tools` on `:7072/health` is the sessionless whitelist (77 live / 82 source), **not** `tools/list`.
 
 | Organ | Port | MCP Endpoint | Live tools (2026-07-30) | Status |
 |-------|------|-------------|-------------------------|--------|
 | **arifOS** | 8088 | `mcp.arif-fazil.com/mcp` | 8 public | GOVERNANCE |
-| **A-FORGE** | 7071/7072 | `forge.arif-fazil.com/mcp` | 124 API / 52 MCP | EXECUTION |
+| **A-FORGE** | 7071/7072 | `forge.arif-fazil.com/mcp` | 116 API / 112 local MCP (116 public) | EXECUTION |
 | **AAA** | 3001 | `aaa.arif-fazil.com` | A2A | COCKPIT |
 | **GEOX** | 8081 | `geox.arif-fazil.com/mcp` | 33 | EARTH |
 | **WEALTH** | 18082 | `wealth.arif-fazil.com/mcp` | 14 public | CAPITAL |

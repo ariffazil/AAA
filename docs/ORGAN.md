@@ -117,7 +117,7 @@ Everything else is a **pointer**, **contract**, **runbook**, or **draft** — no
 |-------|-----------|---------|------|------|--------|------|------------|
 | **SOVEREIGN** | ARIF | — | human | — | — | purpose, irreversible yes | routine execution |
 | **KERNEL** | arifOS | 8088 | `arifos.service` | healthy | 8 public | identity, admit, judge, memory law, seal gate | earth/capital compute, free execution |
-| **EXECUTE** | A-FORGE | 7071 / 7072 | `a-forge` + `a-forge-mcp` | healthy | 124 API / 52 MCP stateless | plan, dry-run, apply, rollback | self-authorise, seal |
+| **EXECUTE** | A-FORGE | 7071 / 7072 | `a-forge` + `a-forge-mcp` | healthy | 116 API / 112 local MCP (116 public) | plan, dry-run, apply, rollback | self-authorise, seal |
 | **EARTH** | GEOX | 8081 | `geox-mcp.service` | healthy | 33 | earth evidence, physics claims | capital, judgment |
 | **CAPITAL** | WEALTH | 18082 | `wealth-organ.service` | healthy | 14 public (9 canonical) | capital state, risk scenarios | allocation authority, earth truth |
 | **VITALITY** | WELL | 18083 | `well.service` | **degraded** | 10 | readiness, dignity signal | medical diagnosis, final verdict |
@@ -125,7 +125,7 @@ Everything else is a **pointer**, **contract**, **runbook**, or **draft** — no
 | **METABOLISM** | arifFLOW | 7073 | `arifflow.service` | ok | — | FQ pulse, receipt metabolism | judge, execute |
 | **TRUTH** | VAULT999 | path | filesystem | append-only | — | immutable receipts | reinterpretation |
 
-\*Tool counts = live health probe. Re-probe before any SEAL-grade claim.
+\*Tool counts = live health probe. Re-probe before any SEAL-grade claim. `stateless_tools` on `:7072/health` is the sessionless whitelist (77 live / 82 source), **not** `tools/list`.
 
 **Public MCP doors (edge protocol — not substrate truth):**
 
