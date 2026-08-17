@@ -1,0 +1,253 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "arifos://delegation-ledger/ibct/v0.1",
+  "title": "Invocation-Bound Capability Token (IBCT) v0.1",
+  "description": "AIP-aligned (draft-prakash-aip-00) capability token binding: issuer identity, attenuated scope, parent-token hash, constitutional verdict, and outcome receipt into a single cryptographic artifact. Hard/soft tier annotation enables Cedar-style non-compensatory floor enforcement. Chain hash is SHA-256 over canonical-JSON (RFC 8785 JCS) of the entire object minus the chain_hash field itself.",
+  "version": "aip-ibct-v0.1",
+  "frozen": true,
+  "frozen_reason": "v0.1 is the smallest first cut per F13 directive. Subsequent versions MUST be additive (new optional fields only); no breaking changes to existing fields without F13 ratification.",
+  "definitions": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "iso8601": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?Z$"
+    },
+    "actor_type": {
+      "type": "string",
+      "enum": ["sovereign", "kernel", "agent", "user", "service"]
+    },
+    "verdict": {
+      "type": "string",
+      "enum": ["SEAL", "HOLD", "VOID", "SABAR", "OBSERVE_ONLY"]
+    },
+    "tier": {
+      "type": "string",
+      "enum": ["hard", "soft"],
+      "description": "Cedar-style tier: hard = non-compensatory (cannot be overridden by any permit), soft = advisory (can be overridden by F13 sovereign)"
+    }
+  },
+  "type": "object",
+  "required": [
+    "token_id",
+    "version",
+    "issued_at",
+    "issuer",
+    "attenuated_scope",
+    "parent_token_hash",
+    "constitutional_verdict",
+    "outcome_receipt",
+    "audit"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "token_id": {
+      "type": "string",
+      "description": "Unique token identifier. MUST be SHA-256 of the canonical-JSON-serialization of all other fields (excluding token_id itself and audit.chain_hash).",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "version": {
+      "type": "string",
+      "const": "aip-ibct-v0.1"
+    },
+    "issued_at": {
+      "$ref": "#/definitions/iso8601",
+      "description": "ISO-8601 UTC timestamp of token issuance"
+    },
+    "issuer": {
+      "type": "object",
+      "required": ["actor_id", "actor_type", "signature_algorithm", "signature"],
+      "additionalProperties": false,
+      "properties": {
+        "actor_id": {
+          "type": "string",
+          "description": "Stable identifier of the delegator (e.g. 'ariffazil', 'arifOS:kernel', 'agent:333-AGI')"
+        },
+        "actor_type": {
+          "$ref": "#/definitions/actor_type"
+        },
+        "pubkey_ref": {
+          "type": "string",
+          "description": "Path to issuer's Ed25519 public key (PEM). Optional if the verifier already knows the issuer's key."
+        },
+        "signature_algorithm": {
+          "type": "string",
+          "const": "ed25519",
+          "description": "v0.1 only supports Ed25519. Future versions may add ECDSA-P256 or post-quantum."
+        },
+        "signature": {
+          "type": "string",
+          "description": "Base64-encoded Ed25519 signature over the canonical-JSON serialization of all other token fields (excluding signature itself).",
+          "pattern": "^[A-Za-z0-9+/=]+$"
+        }
+      }
+    },
+    "attenuated_scope": {
+      "type": "object",
+      "description": "What the bearer may do. NARROWER than parent_token's scope (attenuation rule). Hard-tier constraints are non-compensatory (cannot be overridden by any permit).",
+      "required": ["allowed_actions", "forbidden_actions", "resource_patterns", "constraints", "tier", "expiry"],
+      "additionalProperties": false,
+      "properties": {
+        "allowed_actions": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Verbs the bearer may perform (e.g. ['read', 'audit', 'create_file'])"
+        },
+        "forbidden_actions": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Explicitly forbidden verbs (overrides any allow). For v0.1, the implementation MUST reject if any executed action appears here."
+        },
+        "resource_patterns": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Glob patterns the bearer may touch (e.g. ['/root/AAA/governance/delegation-ledger/*'])"
+        },
+        "constraints": {
+          "type": "object",
+          "description": "Hard constraints (tier='hard') are non-compensatory. Soft constraints (tier='soft') are advisory.",
+          "required": ["additive_only", "no_destructive_operations"],
+          "additionalProperties": true,
+          "properties": {
+            "additive_only": {
+              "type": "boolean",
+              "description": "If true, outcome_receipt.files_deleted MUST be empty. Non-compensatory when tier='hard'."
+            },
+            "no_destructive_operations": {
+              "type": "boolean",
+              "description": "If true, no rm/DROP/force-push commands allowed. Non-compensatory when tier='hard'."
+            },
+            "max_files_touched": { "type": "integer", "minimum": 0 },
+            "max_runtime_seconds": { "type": "integer", "minimum": 0 },
+            "require_live_evidence": {
+              "type": "boolean",
+              "description": "If true, bearer MUST show a passing live test + runnable command for each 'adopted'/'integrated'/'complete' claim."
+            }
+          }
+        },
+        "tier": { "$ref": "#/definitions/tier" },
+        "expiry": {
+          "$ref": "#/definitions/iso8601",
+          "description": "After this timestamp, the token is VOID regardless of issuer signature."
+        }
+      }
+    },
+    "parent_token_hash": {
+      "description": "sha256 of parent token's chain_hash (or null for root tokens issued directly by F13 sovereign). Attenuation invariant: child scope MUST be subset of parent scope.",
+      "oneOf": [
+        { "$ref": "#/definitions/sha256" },
+        { "type": "null" }
+      ]
+    },
+    "constitutional_verdict": {
+      "type": "object",
+      "description": "The constitutional gate decision (per F1-F13 floors). Hard-tier floors cannot be overridden by any permit. Soft-tier floors can be overridden by F13 sovereign only.",
+      "required": ["effective_verdict", "constitutional_floors_checked", "floor_violations", "tier"],
+      "additionalProperties": false,
+      "properties": {
+        "effective_verdict": { "$ref": "#/definitions/verdict" },
+        "constitutional_floors_checked": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^F[0-9]+$" },
+          "minItems": 1,
+          "description": "Which F1-F13 floors were checked. Hard-tier floors MUST appear in this list."
+        },
+        "floor_violations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["floor", "code", "severity", "message"],
+            "additionalProperties": false,
+            "properties": {
+              "floor": { "type": "string", "pattern": "^F[0-9]+$" },
+              "code": { "type": "string" },
+              "severity": { "type": "string", "enum": ["VOID", "RED", "AMBER", "INFO"] },
+              "message": { "type": "string" }
+            }
+          },
+          "description": "Empty array = no violations. Non-empty = token MUST be revoked."
+        },
+        "cedar_policy_hash": {
+          "description": "sha256 of the Cedar policy that produced this verdict. Optional in v0.1; required in v1.0.",
+          "oneOf": [
+            { "$ref": "#/definitions/sha256" },
+            { "type": "null" }
+          ]
+        },
+        "tier": { "$ref": "#/definitions/tier" }
+      }
+    },
+    "outcome_receipt": {
+      "type": "object",
+      "description": "What actually happened. MUST be filled before token is sealed.",
+      "required": ["executed_at", "files_created", "files_modified", "files_deleted", "commands_run", "exit_codes", "side_effects"],
+      "additionalProperties": false,
+      "properties": {
+        "executed_at": { "$ref": "#/definitions/iso8601" },
+        "files_created": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Files created. MUST be empty if attenuated_scope.constraints.additive_only=true and tier='hard'."
+        },
+        "files_modified": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "files_deleted": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Files deleted. MUST be empty if attenuated_scope.constraints.additive_only=true."
+        },
+        "commands_run": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Commands executed. MUST NOT contain rm/DROP/force-push if no_destructive_operations=true."
+        },
+        "exit_codes": {
+          "type": "array",
+          "items": { "type": "integer" },
+          "minItems": 0
+        },
+        "side_effects": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Human-readable side effects (receipts sealed, services restarted, etc.)"
+        }
+      }
+    },
+    "audit": {
+      "type": "object",
+      "description": "Hash chain linking tokens into a tamper-evident ledger. chain_hash = SHA-256(JCS(this minus chain_hash)).",
+      "required": ["schema_version", "chain_hash", "chain_index", "parent_chain_hash", "ledger_root"],
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": { "type": "string", "const": "aip-ibct-v0.1" },
+        "chain_hash": {
+          "$ref": "#/definitions/sha256",
+          "description": "SHA-256 over canonical-JSON (RFC 8785 JCS) of all other fields in this token (excluding chain_hash itself)."
+        },
+        "chain_index": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Sequential index in the chain (0 = root)."
+        },
+        "parent_chain_hash": {
+          "description": "Same as parent_token_hash (denormalized for hash-chain verification convenience).",
+          "oneOf": [
+            { "$ref": "#/definitions/sha256" },
+            { "type": "null" }
+          ]
+        },
+        "ledger_root": {
+          "description": "Merkle root of all chain_hashes in the lineage. v0.1 stores it for forward-compatibility; v1.0 will verify against it.",
+          "oneOf": [
+            { "$ref": "#/definitions/sha256" },
+            { "type": "null" }
+          ]
+        }
+      }
+    }
+  }
+}
