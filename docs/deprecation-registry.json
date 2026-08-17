@@ -2,7 +2,67 @@
   "version": "2026.07.19",
   "last_audit": "2026-08-09T18:10:00Z",
   "auditor": "333-AGI — P0 fix status audit + registry reconciliation 2026-08-09",
-  "deprecated": [
+  "deprecated_services": [
+    {
+      "id": "apex-prime.service",
+      "type": "service",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-06-02",
+      "reason": "Deterministic deliberation ported into AAA a2a-server.",
+      "replacement": "AAA a2a-server"
+    }
+  ],
+  "deprecated_patterns": [
+    {
+      "id": "non_date_tags",
+      "type": "pattern",
+      "status": "DEPRECATED",
+      "reason": "Use date-based tags for clarity.",
+      "replacement": "YYYY-MM-DD tags"
+    },
+    {
+      "id": "containerize_core_organs",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "reason": "Containerization strategy has been updated.",
+      "replacement": "New containerization skill"
+    }
+  ],
+  "deprecated_skills": [
+    {
+      "id": "APA-sovereign-connector",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-07-09",
+      "reason": "APA experiment concluded"
+    },
+    {
+      "id": "quantum-kernel-runtime",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-07-09",
+      "reason": "Quantum kernel experiment concluded"
+    }
+  ],
+  "deprecated_tools": [
+    {
+      "id": "forge_*",
+      "type": "tool",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-07-15",
+      "reason": "A-FORGE pre-execution sub-tools removed. Use A-FORGE MCP directly.",
+      "replacement": "A-FORGE MCP"
+    },
+    {
+      "id": "arif_judge_deliberate",
+      "type": "tool",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-06-02",
+      "reason": "Internal deliberation surface for AAA a2a-server. Absorbed into arif_judge.",
+      "replacement": "arif_judge"
+    }
+  ],
+  "deprecated_files": [
     {
       "id": "SOUL.md",
       "type": "file",
@@ -35,99 +95,10 @@
       "reviewed": true,
       "reviewed_date": "2026-08-09",
       "reviewed_by": "333-AGI/Hermes"
-    },
-    {
-      "id": "opencode_skills_alignment.yaml",
-      "type": "file",
-      "status": "TOMBSTONED",
-      "tombstone_date": "2026-08-04",
-      "reason": "Superseded by FEDERATION_SKILL_PROFILE.json v2.0.0",
-      "replacement": "/root/AAA/skills/FEDERATION_SKILL_PROFILE.json",
-      "reviewed": true,
-      "reviewed_date": "2026-08-09",
-      "reviewed_by": "333-AGI/Hermes"
-    },
-    {
-      "id": "OPENCODE_SKILL_PROFILE.json",
-      "type": "file",
-      "status": "SUPERSEDED",
-      "tombstone_date": "2026-08-04",
-      "reason": "Superseded by FEDERATION_SKILL_PROFILE.json v2.0.0. Now a pointer file only.",
-      "replacement": "/root/AAA/skills/FEDERATION_SKILL_PROFILE.json",
-      "reviewed": true,
-      "reviewed_date": "2026-08-09",
-      "reviewed_by": "333-AGI/Hermes"
-    },
-    {
-      "id": "tokenrouter-arifos",
-      "type": "provider",
-      "status": "DEAD",
-      "tombstone_date": "2026-07-31",
-      "reason": "503 model_not_found — removed from all agent fallback chains",
-      "reviewed": true,
-      "reviewed_date": "2026-08-09",
-      "reviewed_by": "333-AGI/Hermes"
-    },
-    {
-      "id": "opencode-go",
-      "type": "provider",
-      "status": "DEAD",
-      "tombstone_date": "2026-08-01",
-      "reason": "401 Insufficient balance",
-      "reviewed": true,
-      "reviewed_date": "2026-08-09",
-      "reviewed_by": "333-AGI/Hermes"
-    },
-    {
-      "id": "mulerouter",
-      "type": "provider",
-      "status": "DEAD",
-      "tombstone_date": "2026-08-01",
-      "reason": "Negative balance (-0.75 credits)",
-      "reviewed": true,
-      "reviewed_date": "2026-08-09",
-      "reviewed_by": "333-AGI/Hermes"
-    },
-    {
-      "id": "APA-sovereign-connector",
-      "type": "skill",
-      "status": "DEPRECATED",
-      "tombstone_date": "2026-07-09",
-      "reason": "APA experiment concluded",
-      "reviewed": true,
-      "reviewed_date": "2026-08-09",
-      "reviewed_by": "333-AGI/Hermes"
-    },
-    {
-      "id": "quantum-kernel-runtime",
-      "type": "skill",
-      "status": "DEPRECATED",
-      "tombstone_date": "2026-07-09",
-      "reason": "Quantum kernel experiment concluded",
-      "reviewed": true,
-      "reviewed_date": "2026-08-09",
-      "reviewed_by": "333-AGI/Hermes"
-    },
-    {
-      "id": "skills-archive-20260804",
-      "type": "batch",
-      "status": "ARCHIVED",
-      "tombstone_date": "2026-08-04",
-      "reason": "48 stale skills archived to .archive-20260804/. Non-breaking — archive preserved.",
-      "reviewed": true,
-      "reviewed_date": "2026-08-09",
-      "reviewed_by": "333-AGI/Hermes"
     }
   ],
-  "quarantined": [],
-  "replaced": {
-    "setActor()": "registerVerifiedSession(sessionId, actorId, sct, organSecret) — P0.1 IN_PROGRESS (new method exists at McpPolicyGate.ts:268, old setActor() deprecated at :288, caller migration pending)",
-    "activeActor (process-global)": "verifiedSessions Map (per-request) — P0.1 IN_PROGRESS",
-    "default:sovereign (for unverified)": "default:observe-deny — P0.2 PENDING_DESIGN (architectural change affecting all agents; requires policy design, multi-agent testing, F13 ratification. Current buildDefaultSovereignPolicy() at McpPolicyGate.ts:781 has allow_by_default:true for all 21+ MCP servers.)",
-    "LCL-* lease fallback": "HOLD when kernel unreachable — P0.6 COMPLETE (2026-07-19, forgeTools.ts:394-406. Local lease fallback DISABLED by default. A-FORGE MUST HOLD on kernel unreachable. LCL-* only minted in dev mode.)",
-    "SEAL-* (format-only trust)": "cryptographic SCT verification — P0.5 PENDING_KERNEL (requires arifOS kernel SCT crypto-verification changes; depends on KERNEL-TODO-V5.1 P2-2 opaque handle work)",
-    "AGENT_KICKSTART.md": "Deprecated 2026-07-19 — absorbed into copilot-instructions.md AUTOPILOT baseline"
-  },
+    "deprecated_endpoints": [],
+    "deprecated_conventions": [],
   "p0_audit": {
     "audited_by": "333-AGI",
     "audited_at": "2026-08-09T18:10:00Z",

@@ -218,8 +218,9 @@ is correct. Check `get-credits` (via OpenRouter MCP) at session start and every 
 
 ```
 /root/AAA/scripts/openrouter-credit-check.sh   # Cron every 30 min
-# If credit < $5, switch default tier to openrouter/free
-# If credit < $1, surface warning to user + escalate to F13
+# If credit low, switch default tier to openrouter/free
+# If credit critical, surface warning to user + escalate to F13
+# Balance is dynamic — read from get-credits API, never hardcode
 ```
 
 ### 5.2 Per-tier CQT settings for Hermes

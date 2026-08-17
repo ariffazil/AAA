@@ -84,9 +84,16 @@ FED_PORT = 7074
 FED_SOT_PATH = Path("/root/.config/federation-models.json")
 
 _SOT_REQUIRED = (
-    "pricing", "pricing_default", "model_routes", "capability_signatures",
-    "emd_model_class", "emd_neutral_cap", "agent_default_operation",
-    "vision_models", "constitutional_allowed", "effort",
+    "pricing",
+    "pricing_default",
+    "model_routes",
+    "capability_signatures",
+    "emd_model_class",
+    "emd_neutral_cap",
+    "agent_default_operation",
+    "vision_models",
+    "constitutional_allowed",
+    "effort",
 )
 _SOT_REQUIRED_PRICING = ("deepseek", "mulerouter", "tokenrouter", "kimi-moonshot", "flame")
 _SOT_REQUIRED_EFFORT = ("model_map", "alt_models", "cost_multiplier", "reasoning_passes")
@@ -211,6 +218,46 @@ def get_db():
     conn = sqlite3.connect(str(FED_STATE_DB))
     conn.row_factory = sqlite3.Row
     return conn
+
+
+@mcp.custom_route("/fed/route", methods=["GET", "POST"])
+async def fed_route_http(request):
+    """Direct HTTP route advisor — consumed by fed-aware-middleware (:4010) Path B.
+
+    Contract: POST JSON {task, model, modality, effort_level, constitutional_tier, agent_id}
+              → {"routes": [...]} rank-1 first, same dicts as MCP tool fed_route.
+    Revival 2026-08-15: v3.0 refactor dropped this endpoint; the middleware
+    capability lane (fed/fast, fed/reasoning-heavy, ...) died with HTTP 404 and
+    raw signatures leaked to litellm as invalid model names. This handler calls
+    the same fed_route_engine as the MCP tool — no drift by construction.
+    ADVISORY_ONLY ceiling preserved: ranks, never blocks.
+    """
+    from starlette.responses import JSONResponse
+
+    if request.method == "POST":
+        try:
+            body = await request.json()
+        except Exception:
+            body = {}
+        if not isinstance(body, dict):
+            body = {}
+    else:
+        body = dict(request.query_params)
+
+    routes = fed_route_engine(
+        task=str(body.get("task", "")),
+        model=str(body.get("model", "deepseek-v4-pro")),
+        modality=str(body.get("modality", "text")),
+        agent_id=str(body.get("agent_id", "fed-aware-middleware")),
+        constitutional_tier=int(body.get("constitutional_tier", 333) or 333),
+        effort_level=str(body.get("effort_level", "") or ""),
+    )
+    return JSONResponse(
+        {
+            "routes": routes,
+            "meta": {"endpoint": "/fed/route", "revived": "2026-08-15"},
+        }
+    )
 
 
 def read_provider_balance(provider_id: str) -> dict | None:
@@ -519,8 +566,14 @@ def fed_route_engine(
         is_monthly_plan = any(
             tag in notes.lower()
             for tag in (
-                "monthly_token_plan", "credit pack", "credit-based", "monthly plan",
-                "credit_plan", "subscription", "subscription_quota", "plan quota",
+                "monthly_token_plan",
+                "credit pack",
+                "credit-based",
+                "monthly plan",
+                "credit_plan",
+                "subscription",
+                "subscription_quota",
+                "plan quota",
             )
         )
 

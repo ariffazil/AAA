@@ -1,0 +1,1840 @@
+{
+  "generated": "2026-08-16T01:52:43.090330",
+  "stats": {
+    "nodes": 130,
+    "edges": 90
+  },
+  "nodes": [
+    {
+      "id": "P01",
+      "label": "P01",
+      "full_name": "P01-energy-entropy",
+      "title_text": "P1 \u2014 Energy/Entropy",
+      "cluster": "atlas333",
+      "concepts": "energy, aaa, tension poles:, wealth, well",
+      "tension": "energy vs entropy",
+      "degree": 37,
+      "centrality": 0.2868217054263566
+    },
+    {
+      "id": "P02",
+      "label": "P02",
+      "full_name": "P02-remember-forget",
+      "title_text": "P2 \u2014 Remember/Forget",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, a-forge",
+      "tension": "remember vs forget",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P03",
+      "label": "P03",
+      "full_name": "P03-truth-uncertainty",
+      "title_text": "P3 \u2014 Truth/Uncertainty",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, truth",
+      "tension": "truth vs uncertainty",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P04",
+      "label": "P04",
+      "full_name": "P04-evidence-claim",
+      "title_text": "P4 \u2014 Evidence/Claim",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, claim",
+      "tension": "evidence vs claim",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P05",
+      "label": "P05",
+      "full_name": "P05-order-chaos",
+      "title_text": "P5 \u2014 Order/Chaos",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, chaos",
+      "tension": "order vs chaos",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P06",
+      "label": "P06",
+      "full_name": "P06-stability-rigidity",
+      "title_text": "P6 \u2014 Stability/Rigidity",
+      "cluster": "atlas333",
+      "concepts": "rigidity, aaa, tension poles:, wealth, well",
+      "tension": "stability vs rigidity",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P07",
+      "label": "P07",
+      "full_name": "P07-light-shadow",
+      "title_text": "P7 \u2014 Light/Shadow",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, light, tension poles:, well",
+      "tension": "light vs shadow",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P08",
+      "label": "P08",
+      "full_name": "P08-tradition-innovation",
+      "title_text": "P8 \u2014 Tradition/Innovation",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, innovation",
+      "tension": "tradition vs innovation",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P09",
+      "label": "P09",
+      "full_name": "P09-layer-collapse",
+      "title_text": "P9 \u2014 Layer/Collapse",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, a-forge",
+      "tension": "layer vs collapse",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P10",
+      "label": "P10",
+      "full_name": "P10-conservation-change",
+      "title_text": "P10 \u2014 Conservation/Change",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, a-forge",
+      "tension": "conservation vs change",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P11",
+      "label": "P11",
+      "full_name": "P11-individual-collective",
+      "title_text": "P11 \u2014 Individual/Collective",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, a-forge",
+      "tension": "individual vs collective",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P12",
+      "label": "P12",
+      "full_name": "P12-capability-authority",
+      "title_text": "P12 \u2014 Capability/Authority",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, a-forge",
+      "tension": "capability vs authority",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P13",
+      "label": "P13",
+      "full_name": "P13-doubt-decision",
+      "title_text": "P13 \u2014 Doubt/Decision",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, decision, well",
+      "tension": "doubt vs decision",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P14",
+      "label": "P14",
+      "full_name": "P14-reason-intuition",
+      "title_text": "P14 \u2014 Reason/Intuition",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, intuition",
+      "tension": "reason vs intuition",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P15",
+      "label": "P15",
+      "full_name": "P15-local-global",
+      "title_text": "P15 \u2014 Local/Global",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, a-forge",
+      "tension": "local vs global",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P16",
+      "label": "P16",
+      "full_name": "P16-open-closed",
+      "title_text": "P16 \u2014 Open/Closed",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, a-forge",
+      "tension": "open vs closed",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P17",
+      "label": "P17",
+      "full_name": "P17-utility-truth",
+      "title_text": "P17 \u2014 Utility/Truth",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, truth",
+      "tension": "utility vs truth",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P18",
+      "label": "P18",
+      "full_name": "P18-observer-observed",
+      "title_text": "P18 \u2014 Observer/Observed",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, a-forge",
+      "tension": "observer vs observed",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P19",
+      "label": "P19",
+      "full_name": "P19-story-structure",
+      "title_text": "P19 \u2014 Story/Structure",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, story",
+      "tension": "story vs structure",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P20",
+      "label": "P20",
+      "full_name": "P20-name-shape",
+      "title_text": "P20 \u2014 Name/Shape",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, a-forge",
+      "tension": "name vs shape",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P21",
+      "label": "P21",
+      "full_name": "P21-measurable-meaningful",
+      "title_text": "P21 \u2014 Measurable/Meaningful",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, meaningful",
+      "tension": "measurable vs meaningful",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P22",
+      "label": "P22",
+      "full_name": "P22-unity-diversity",
+      "title_text": "P22 \u2014 Unity/Diversity",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, unity",
+      "tension": "unity vs diversity",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P23",
+      "label": "P23",
+      "full_name": "P23-judge-cluster",
+      "title_text": "P23-P28 \u2014 Judge Domain Cluster",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, cluster",
+      "tension": "judge vs cluster",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P29",
+      "label": "P29",
+      "full_name": "P29-sovereignty",
+      "title_text": "P29 \u2014 Sovereignty",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, a-forge",
+      "tension": "",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P30",
+      "label": "P30",
+      "full_name": "P30-justice-mercy",
+      "title_text": "P30 \u2014 Justice/Mercy",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, a-forge",
+      "tension": "justice vs mercy",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P31",
+      "label": "P31",
+      "full_name": "P31-permanence-reversibility",
+      "title_text": "P31 \u2014 Permanence/Reversibility",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, reversibility",
+      "tension": "permanence vs reversibility",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P32",
+      "label": "P32",
+      "full_name": "P32-certainty-uncertainty",
+      "title_text": "P32 \u2014 Certainty/Uncertainty",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, certainty",
+      "tension": "certainty vs uncertainty",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P33",
+      "label": "P33",
+      "full_name": "P33-self-governance",
+      "title_text": "P33 \u2014 Self-Governance",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, a-forge",
+      "tension": "self vs governance",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P34",
+      "label": "P34",
+      "full_name": "P34-root-kernel",
+      "title_text": "P34 \u2014 Root/Kernel",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, a-forge",
+      "tension": "root vs kernel",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P35",
+      "label": "P35",
+      "full_name": "P35-positive-closed",
+      "title_text": "P35 \u2014 Positive/Closed",
+      "cluster": "atlas333",
+      "concepts": "aaa, wealth, tension poles:, well, positive",
+      "tension": "positive vs closed",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P36",
+      "label": "P36",
+      "full_name": "P36-witness-dignity",
+      "title_text": "P36 \u2014 Saksi & Maruah (The Witness & Dignity Paradox)",
+      "cluster": "atlas333",
+      "concepts": "dignity, ditempa bukan diberi \u2692\ufe0f, witness, wires to:, tension:",
+      "tension": "witness vs dignity",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P37",
+      "label": "P37",
+      "full_name": "P37-scar-forgiveness",
+      "title_text": "P37 \u2014 Parut & Kemaafan (The Scar & Forgiveness Paradox)",
+      "cluster": "atlas333",
+      "concepts": "record, ditempa bukan diberi \u2692\ufe0f, wires to:, scar, release",
+      "tension": "scar vs forgiveness",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P38",
+      "label": "P38",
+      "full_name": "P38-synthetic-accountability",
+      "title_text": "P38 \u2014 Cermin & Beban Akal (The Synthetic Substrate Paradox)",
+      "cluster": "atlas333",
+      "concepts": "accountability, generation, ditempa bukan diberi \u2692\ufe0f, wires to:, tension:",
+      "tension": "synthetic vs accountability",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P39",
+      "label": "P39",
+      "full_name": "P39-flesh-computation",
+      "title_text": "P39 \u2014 Jasad & Akal (The Flesh & Computation Paradox)",
+      "cluster": "atlas333",
+      "concepts": "endurance, flesh, computation, ditempa bukan diberi \u2692\ufe0f, wires to:",
+      "tension": "flesh vs computation",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P40",
+      "label": "P40",
+      "full_name": "P40-intelligence-consequence",
+      "title_text": "P40 \u2014 Akibat & Kedaulatan (The Irreversible Consequence & F13 Paradox)",
+      "cluster": "atlas333",
+      "concepts": "carry, intelligence, consequence, ditempa bukan diberi \u2692\ufe0f, wires to:",
+      "tension": "intelligence vs consequence",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "APEX_PHI_FALSIFICATION",
+      "label": "APEX_PHI_FALSIFICATION",
+      "full_name": "PHI-falsification",
+      "title_text": "\u03a6 \u2014 \u03a6 \u2014 Falsification Rate",
+      "cluster": "apex",
+      "concepts": "PHI-falsification",
+      "tension": "",
+      "degree": 5,
+      "centrality": 0.03875968992248062
+    },
+    {
+      "id": "APEX_W3_TRI_WITNESS",
+      "label": "APEX_W3_TRI_WITNESS",
+      "full_name": "W3-tri-witness",
+      "title_text": "W\u00b3 \u2014 W\u00b3 \u2014 Tri-Witness Consensus",
+      "cluster": "apex",
+      "concepts": "W3-tri-witness",
+      "tension": "",
+      "degree": 2,
+      "centrality": 0.015503875968992248
+    },
+    {
+      "id": "APEX_C_DARK_DARKNESS",
+      "label": "APEX_C_DARK_DARKNESS",
+      "full_name": "C-dark-darkness",
+      "title_text": "C_dark \u2014 C_dark \u2014 Darkness / Hallucination Risk",
+      "cluster": "apex",
+      "concepts": "C-dark-darkness",
+      "tension": "",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "APEX_G_CAPABILITY",
+      "label": "APEX_G_CAPABILITY",
+      "full_name": "G-capability",
+      "title_text": "G \u2014 G \u2014 Capability Score",
+      "cluster": "apex",
+      "concepts": "G-capability",
+      "tension": "",
+      "degree": 2,
+      "centrality": 0.015503875968992248
+    },
+    {
+      "id": "APEX_H_HUMILITY",
+      "label": "APEX_H_HUMILITY",
+      "full_name": "H-humility",
+      "title_text": "h \u2014 h \u2014 Humility Calibration",
+      "cluster": "apex",
+      "concepts": "H-humility",
+      "tension": "",
+      "degree": 2,
+      "centrality": 0.015503875968992248
+    },
+    {
+      "id": "VOID PARADOX DOCTRINE",
+      "label": "VOID PARADOX DOCTRINE",
+      "full_name": "VOID_PARADOX_DOCTRINE",
+      "title_text": "The Void Paradox Doctrine \u2014 Text \u2260 Reality",
+      "cluster": "void",
+      "concepts": "void, paradox, doctrine",
+      "tension": "",
+      "degree": 0,
+      "centrality": 0.0
+    },
+    {
+      "id": "AGENTIC INSTITUTION PARADOXES",
+      "label": "AGENTIC INSTITUTION PARADOXES",
+      "full_name": "AGENTIC_INSTITUTION_PARADOXES",
+      "title_text": "Agentic Institution Design \u2014 Three Paradoxes + MAP \u00b7 ATLAS \u00b7 ECHO",
+      "cluster": "governance",
+      "concepts": "agentic, institution, paradoxes",
+      "tension": "",
+      "degree": 4,
+      "centrality": 0.031007751937984496
+    },
+    {
+      "id": "PARADOX SUBSTRATE MAP",
+      "label": "PARADOX SUBSTRATE MAP",
+      "full_name": "PARADOX_SUBSTRATE_MAP",
+      "title_text": "PARADOX SUBSTRATE MAP \u2014 Somatic Intelligence in the arifOS Federation",
+      "cluster": "governance",
+      "concepts": "paradox, substrate, map",
+      "tension": "",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "REALITY TRUTH PARADOXES",
+      "label": "REALITY TRUTH PARADOXES",
+      "full_name": "REALITY-TRUTH-PARADOXES",
+      "title_text": "Reality, Truth, and the Paradoxes of Agentic Intelligence",
+      "cluster": "governance",
+      "concepts": "reality, truth, paradoxes",
+      "tension": "",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "PARADOX OF TIME AND TRUTH",
+      "label": "PARADOX OF TIME AND TRUTH",
+      "full_name": "PARADOX_OF_TIME_AND_TRUTH",
+      "title_text": "The Paradox of Time and Truth in Agentic Systems",
+      "cluster": "governance",
+      "concepts": "paradox, time, and, truth",
+      "tension": "",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "004 OPUS NAMING PARADOX",
+      "label": "004 OPUS NAMING PARADOX",
+      "full_name": "004_OPUS_NAMING_PARADOX",
+      "title_text": "004_OPUS_NAMING_PARADOX",
+      "cluster": "genesis",
+      "concepts": "opus, naming, paradox",
+      "tension": "",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "006 PETRONAS PARADOX",
+      "label": "006 PETRONAS PARADOX",
+      "full_name": "006_PETRONAS_PARADOX",
+      "title_text": "006_PETRONAS_PARADOX",
+      "cluster": "genesis",
+      "concepts": "petronas, paradox",
+      "tension": "",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "paradox anchors",
+      "label": "paradox anchors",
+      "full_name": "paradox_anchors",
+      "title_text": "Paradox Anchors \u2014 Non-Executable Philosophical Canon",
+      "cluster": "governance",
+      "concepts": "",
+      "tension": "",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "CLUSTER_MEMORY",
+      "label": "CLUSTER_MEMORY",
+      "full_name": "memory cluster",
+      "title_text": "ATLAS333 Memory Cluster",
+      "cluster": "memory",
+      "concepts": "memory",
+      "tension": "",
+      "degree": 0,
+      "centrality": 0.0
+    },
+    {
+      "id": "CLUSTER_MIND",
+      "label": "CLUSTER_MIND",
+      "full_name": "mind cluster",
+      "title_text": "ATLAS333 Mind Cluster",
+      "cluster": "atlas333",
+      "concepts": "mind",
+      "tension": "",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "CLUSTER_JUDGE",
+      "label": "CLUSTER_JUDGE",
+      "full_name": "judge cluster",
+      "title_text": "ATLAS333 Judge Cluster",
+      "cluster": "atlas333",
+      "concepts": "judge",
+      "tension": "",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "CLUSTER_CONTOUR",
+      "label": "CLUSTER_CONTOUR",
+      "full_name": "contour cluster",
+      "title_text": "ATLAS333 Contour Cluster",
+      "cluster": "atlas333",
+      "concepts": "contour",
+      "tension": "",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "ENGINE_paradox",
+      "label": "ENGINE_paradox",
+      "full_name": "paradox-engine",
+      "title_text": "A-FORGE Paradox Engine",
+      "cluster": "engine",
+      "concepts": "paradox, engine, resolution",
+      "tension": "",
+      "degree": 0,
+      "centrality": 0.0
+    },
+    {
+      "id": "energy",
+      "label": "energy",
+      "full_name": "energy",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "entropy",
+      "label": "entropy",
+      "full_name": "entropy",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "remember",
+      "label": "remember",
+      "full_name": "remember",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "forget",
+      "label": "forget",
+      "full_name": "forget",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "truth",
+      "label": "truth",
+      "full_name": "truth",
+      "cluster": "extracted",
+      "degree": 2,
+      "centrality": 0.015503875968992248
+    },
+    {
+      "id": "uncertainty",
+      "label": "uncertainty",
+      "full_name": "uncertainty",
+      "cluster": "extracted",
+      "degree": 2,
+      "centrality": 0.015503875968992248
+    },
+    {
+      "id": "evidence",
+      "label": "evidence",
+      "full_name": "evidence",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "claim",
+      "label": "claim",
+      "full_name": "claim",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "order",
+      "label": "order",
+      "full_name": "order",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "chaos",
+      "label": "chaos",
+      "full_name": "chaos",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "stability",
+      "label": "stability",
+      "full_name": "stability",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "rigidity",
+      "label": "rigidity",
+      "full_name": "rigidity",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "light",
+      "label": "light",
+      "full_name": "light",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "shadow",
+      "label": "shadow",
+      "full_name": "shadow",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "tradition",
+      "label": "tradition",
+      "full_name": "tradition",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "innovation",
+      "label": "innovation",
+      "full_name": "innovation",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "layer",
+      "label": "layer",
+      "full_name": "layer",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "collapse",
+      "label": "collapse",
+      "full_name": "collapse",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "conservation",
+      "label": "conservation",
+      "full_name": "conservation",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "change",
+      "label": "change",
+      "full_name": "change",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "individual",
+      "label": "individual",
+      "full_name": "individual",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "collective",
+      "label": "collective",
+      "full_name": "collective",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "capability",
+      "label": "capability",
+      "full_name": "capability",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "authority",
+      "label": "authority",
+      "full_name": "authority",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "doubt",
+      "label": "doubt",
+      "full_name": "doubt",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "decision",
+      "label": "decision",
+      "full_name": "decision",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "reason",
+      "label": "reason",
+      "full_name": "reason",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "intuition",
+      "label": "intuition",
+      "full_name": "intuition",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "local",
+      "label": "local",
+      "full_name": "local",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "global",
+      "label": "global",
+      "full_name": "global",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "open",
+      "label": "open",
+      "full_name": "open",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "closed",
+      "label": "closed",
+      "full_name": "closed",
+      "cluster": "extracted",
+      "degree": 2,
+      "centrality": 0.015503875968992248
+    },
+    {
+      "id": "utility",
+      "label": "utility",
+      "full_name": "utility",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "observer",
+      "label": "observer",
+      "full_name": "observer",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "observed",
+      "label": "observed",
+      "full_name": "observed",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "story",
+      "label": "story",
+      "full_name": "story",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "structure",
+      "label": "structure",
+      "full_name": "structure",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "name",
+      "label": "name",
+      "full_name": "name",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "shape",
+      "label": "shape",
+      "full_name": "shape",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "measurable",
+      "label": "measurable",
+      "full_name": "measurable",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "meaningful",
+      "label": "meaningful",
+      "full_name": "meaningful",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "unity",
+      "label": "unity",
+      "full_name": "unity",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "diversity",
+      "label": "diversity",
+      "full_name": "diversity",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "judge",
+      "label": "judge",
+      "full_name": "judge",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "cluster",
+      "label": "cluster",
+      "full_name": "cluster",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "justice",
+      "label": "justice",
+      "full_name": "justice",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "mercy",
+      "label": "mercy",
+      "full_name": "mercy",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "permanence",
+      "label": "permanence",
+      "full_name": "permanence",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "reversibility",
+      "label": "reversibility",
+      "full_name": "reversibility",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "certainty",
+      "label": "certainty",
+      "full_name": "certainty",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "self",
+      "label": "self",
+      "full_name": "self",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "governance",
+      "label": "governance",
+      "full_name": "governance",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "root",
+      "label": "root",
+      "full_name": "root",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "kernel",
+      "label": "kernel",
+      "full_name": "kernel",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "positive",
+      "label": "positive",
+      "full_name": "positive",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "witness",
+      "label": "witness",
+      "full_name": "witness",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "dignity",
+      "label": "dignity",
+      "full_name": "dignity",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "scar",
+      "label": "scar",
+      "full_name": "scar",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "forgiveness",
+      "label": "forgiveness",
+      "full_name": "forgiveness",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "synthetic",
+      "label": "synthetic",
+      "full_name": "synthetic",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "accountability",
+      "label": "accountability",
+      "full_name": "accountability",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "flesh",
+      "label": "flesh",
+      "full_name": "flesh",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "computation",
+      "label": "computation",
+      "full_name": "computation",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "intelligence",
+      "label": "intelligence",
+      "full_name": "intelligence",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "consequence",
+      "label": "consequence",
+      "full_name": "consequence",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "VOID_PARADOX_DOCTRINE",
+      "label": "VOID_PARADOX_DOCTRINE",
+      "full_name": "VOID_PARADOX_DOCTRINE",
+      "cluster": "extracted",
+      "degree": 3,
+      "centrality": 0.023255813953488372
+    },
+    {
+      "id": "P03-truth-uncertainty",
+      "label": "P03-truth-uncertainty",
+      "full_name": "P03-truth-uncertainty",
+      "cluster": "extracted",
+      "degree": 2,
+      "centrality": 0.015503875968992248
+    },
+    {
+      "id": "P18-observer-observed",
+      "label": "P18-observer-observed",
+      "full_name": "P18-observer-observed",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P19-story-structure",
+      "label": "P19-story-structure",
+      "full_name": "P19-story-structure",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "REALITY-TRUTH-PARADOXES",
+      "label": "REALITY-TRUTH-PARADOXES",
+      "full_name": "REALITY-TRUTH-PARADOXES",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "PARADOX_SUBSTRATE_MAP",
+      "label": "PARADOX_SUBSTRATE_MAP",
+      "full_name": "PARADOX_SUBSTRATE_MAP",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P09-layer-collapse",
+      "label": "P09-layer-collapse",
+      "full_name": "P09-layer-collapse",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "AGENTIC_INSTITUTION_PARADOXES",
+      "label": "AGENTIC_INSTITUTION_PARADOXES",
+      "full_name": "AGENTIC_INSTITUTION_PARADOXES",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P33-self-governance",
+      "label": "P33-self-governance",
+      "full_name": "P33-self-governance",
+      "cluster": "extracted",
+      "degree": 2,
+      "centrality": 0.015503875968992248
+    },
+    {
+      "id": "P01-energy-entropy",
+      "label": "P01-energy-entropy",
+      "full_name": "P01-energy-entropy",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P12-capability-authority",
+      "label": "P12-capability-authority",
+      "full_name": "P12-capability-authority",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    },
+    {
+      "id": "P30-justice-mercy",
+      "label": "P30-justice-mercy",
+      "full_name": "P30-justice-mercy",
+      "cluster": "extracted",
+      "degree": 1,
+      "centrality": 0.007751937984496124
+    }
+  ],
+  "edges": [
+    {
+      "source": "P01",
+      "target": "P02",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P03",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P04",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P05",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P06",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P07",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P08",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P09",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P10",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P11",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P12",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P13",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P14",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P15",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P16",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P17",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P18",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P19",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P20",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P21",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P22",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P23",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P29",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P30",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P31",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P32",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P33",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P34",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P35",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P36",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P37",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P38",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P39",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "P40",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "CLUSTER_MIND",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "CLUSTER_JUDGE",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "P01",
+      "target": "CLUSTER_CONTOUR",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "atlas333 cluster"
+    },
+    {
+      "source": "APEX_PHI_FALSIFICATION",
+      "target": "APEX_W3_TRI_WITNESS",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "apex cluster"
+    },
+    {
+      "source": "APEX_PHI_FALSIFICATION",
+      "target": "APEX_C_DARK_DARKNESS",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "apex cluster"
+    },
+    {
+      "source": "APEX_PHI_FALSIFICATION",
+      "target": "APEX_G_CAPABILITY",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "apex cluster"
+    },
+    {
+      "source": "APEX_PHI_FALSIFICATION",
+      "target": "APEX_H_HUMILITY",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "apex cluster"
+    },
+    {
+      "source": "APEX_PHI_FALSIFICATION",
+      "target": "P33-self-governance",
+      "type": "INFORMED_BY",
+      "weight": 0.5,
+      "label": "Cross-cluster bridge"
+    },
+    {
+      "source": "APEX_W3_TRI_WITNESS",
+      "target": "P30-justice-mercy",
+      "type": "INFORMED_BY",
+      "weight": 0.5,
+      "label": "Cross-cluster bridge"
+    },
+    {
+      "source": "APEX_G_CAPABILITY",
+      "target": "P12-capability-authority",
+      "type": "INFORMED_BY",
+      "weight": 0.5,
+      "label": "Cross-cluster bridge"
+    },
+    {
+      "source": "APEX_H_HUMILITY",
+      "target": "P01-energy-entropy",
+      "type": "INFORMED_BY",
+      "weight": 0.5,
+      "label": "Cross-cluster bridge"
+    },
+    {
+      "source": "AGENTIC INSTITUTION PARADOXES",
+      "target": "PARADOX SUBSTRATE MAP",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "governance cluster"
+    },
+    {
+      "source": "AGENTIC INSTITUTION PARADOXES",
+      "target": "REALITY TRUTH PARADOXES",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "governance cluster"
+    },
+    {
+      "source": "AGENTIC INSTITUTION PARADOXES",
+      "target": "PARADOX OF TIME AND TRUTH",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "governance cluster"
+    },
+    {
+      "source": "AGENTIC INSTITUTION PARADOXES",
+      "target": "paradox anchors",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "governance cluster"
+    },
+    {
+      "source": "004 OPUS NAMING PARADOX",
+      "target": "006 PETRONAS PARADOX",
+      "type": "MEMBER_OF",
+      "weight": 0.3,
+      "label": "genesis cluster"
+    },
+    {
+      "source": "energy",
+      "target": "entropy",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P01: energy vs entropy"
+    },
+    {
+      "source": "remember",
+      "target": "forget",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P02: remember vs forget"
+    },
+    {
+      "source": "truth",
+      "target": "uncertainty",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P03: truth vs uncertainty"
+    },
+    {
+      "source": "truth",
+      "target": "utility",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P17: utility vs truth"
+    },
+    {
+      "source": "uncertainty",
+      "target": "certainty",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P32: certainty vs uncertainty"
+    },
+    {
+      "source": "evidence",
+      "target": "claim",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P04: evidence vs claim"
+    },
+    {
+      "source": "order",
+      "target": "chaos",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P05: order vs chaos"
+    },
+    {
+      "source": "stability",
+      "target": "rigidity",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P06: stability vs rigidity"
+    },
+    {
+      "source": "light",
+      "target": "shadow",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P07: light vs shadow"
+    },
+    {
+      "source": "tradition",
+      "target": "innovation",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P08: tradition vs innovation"
+    },
+    {
+      "source": "layer",
+      "target": "collapse",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P09: layer vs collapse"
+    },
+    {
+      "source": "conservation",
+      "target": "change",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P10: conservation vs change"
+    },
+    {
+      "source": "individual",
+      "target": "collective",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P11: individual vs collective"
+    },
+    {
+      "source": "capability",
+      "target": "authority",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P12: capability vs authority"
+    },
+    {
+      "source": "doubt",
+      "target": "decision",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P13: doubt vs decision"
+    },
+    {
+      "source": "reason",
+      "target": "intuition",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P14: reason vs intuition"
+    },
+    {
+      "source": "local",
+      "target": "global",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P15: local vs global"
+    },
+    {
+      "source": "open",
+      "target": "closed",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P16: open vs closed"
+    },
+    {
+      "source": "closed",
+      "target": "positive",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P35: positive vs closed"
+    },
+    {
+      "source": "observer",
+      "target": "observed",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P18: observer vs observed"
+    },
+    {
+      "source": "story",
+      "target": "structure",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P19: story vs structure"
+    },
+    {
+      "source": "name",
+      "target": "shape",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P20: name vs shape"
+    },
+    {
+      "source": "measurable",
+      "target": "meaningful",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P21: measurable vs meaningful"
+    },
+    {
+      "source": "unity",
+      "target": "diversity",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P22: unity vs diversity"
+    },
+    {
+      "source": "judge",
+      "target": "cluster",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P23: judge vs cluster"
+    },
+    {
+      "source": "justice",
+      "target": "mercy",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P30: justice vs mercy"
+    },
+    {
+      "source": "permanence",
+      "target": "reversibility",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P31: permanence vs reversibility"
+    },
+    {
+      "source": "self",
+      "target": "governance",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P33: self vs governance"
+    },
+    {
+      "source": "root",
+      "target": "kernel",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P34: root vs kernel"
+    },
+    {
+      "source": "witness",
+      "target": "dignity",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P36: witness vs dignity"
+    },
+    {
+      "source": "scar",
+      "target": "forgiveness",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P37: scar vs forgiveness"
+    },
+    {
+      "source": "synthetic",
+      "target": "accountability",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P38: synthetic vs accountability"
+    },
+    {
+      "source": "flesh",
+      "target": "computation",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P39: flesh vs computation"
+    },
+    {
+      "source": "intelligence",
+      "target": "consequence",
+      "type": "TENSION",
+      "weight": 0.9,
+      "label": "P40: intelligence vs consequence"
+    },
+    {
+      "source": "VOID_PARADOX_DOCTRINE",
+      "target": "P03-truth-uncertainty",
+      "type": "EXTENDS",
+      "weight": 0.5,
+      "label": "Cross-cluster bridge"
+    },
+    {
+      "source": "VOID_PARADOX_DOCTRINE",
+      "target": "P18-observer-observed",
+      "type": "EXTENDS",
+      "weight": 0.5,
+      "label": "Cross-cluster bridge"
+    },
+    {
+      "source": "VOID_PARADOX_DOCTRINE",
+      "target": "P19-story-structure",
+      "type": "EXTENDS",
+      "weight": 0.5,
+      "label": "Cross-cluster bridge"
+    },
+    {
+      "source": "P03-truth-uncertainty",
+      "target": "REALITY-TRUTH-PARADOXES",
+      "type": "REFERENCES",
+      "weight": 0.5,
+      "label": "Cross-cluster bridge"
+    },
+    {
+      "source": "PARADOX_SUBSTRATE_MAP",
+      "target": "P09-layer-collapse",
+      "type": "REFERENCES",
+      "weight": 0.5,
+      "label": "Cross-cluster bridge"
+    },
+    {
+      "source": "AGENTIC_INSTITUTION_PARADOXES",
+      "target": "P33-self-governance",
+      "type": "REFERENCES",
+      "weight": 0.5,
+      "label": "Cross-cluster bridge"
+    }
+  ]
+}
