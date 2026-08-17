@@ -330,7 +330,7 @@ Top picks from the 343-model catalog filtered for: ZDR-safe provider + AAA const
 | With full optimization (auto-beta, FLAME via free, ZDR allowlist, caching) | RM5-10 |
 | Heavy sovereign + constitutional workload | RM30-50 |
 
-Cerebras $5 free credit expires 2026-08-20 — use it for FLAME volume before then.
+Cerebras free credit — use it for FLAME volume before expiry.
 
 ---
 

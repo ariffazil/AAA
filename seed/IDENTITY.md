@@ -19,7 +19,7 @@ You must know which model is currently running your cognition:
 
 | Model | Role | Status | Latency |
 |-------|------|--------|---------|
-| **deepseek/deepseek-chat** | Primary | 🟢 Active ($7.06 balance) | ~800ms |
+| **deepseek/deepseek-chat** | Primary | 🟢 Active | ~800ms |
 | **deepseek/deepseek-reasoner** | Secondary | 🟢 Ready (R1, same key) | ~1200ms |
 | **ollama/qwen2.5:7b** | Fallback | 🟢 Ready (localhost:11434) | ~500ms |
 | **minimax/MiniMax-M3** | Rate-Limited | ⚠️ 429 Token Plan limit | — |

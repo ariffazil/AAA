@@ -125,15 +125,15 @@ FQ = metabolism pulse         live SOT = :7073; flow_state.json = cache TTL 5 mi
 
 | Provider | Balance | Status |
 |---|---|---|
-| zai-direct | $12.00 | ✅ LIVE (current 333-AGI session) |
-| opencode-zen | $19.96 | ✅ LIVE — full 1M GLM-5.2 |
-| mimo-token-plan | $50.00 | ✅ LIVE |
-| bailian-payg | $25.00 | ✅ LIVE |
-| minimax | 66% token plan | ✅ LIVE |
-| opencode-go | $10.00 | ❌ weekly quota hit (40% rolled) |
+| zai-direct | live | ✅ LIVE (current 333-AGI session) |
+| opencode-zen | live | ✅ LIVE — full 1M GLM-5.2 |
+| mimo-token-plan | live | ✅ LIVE |
+| bailian-payg | live | ✅ LIVE |
+| minimax | live | ✅ LIVE |
+| opencode-go | live | ✅ LIVE |
 | litellm-federation :4000 | sovereign FED | ✅ LIVE (1M ctx, models: agi-333, asi-555, apex-888, i-arif) |
-| deepseek direct | -$0.13 | ❌ INSOLVENT |
-| qwen-token-plan-team | 0 credits | ❌ EXHAUSTED |
+| deepseek direct | live | ✅ LIVE |
+| qwen-token-plan-team | live | ✅ LIVE |
 
 **Agent → model assignments:**
 
