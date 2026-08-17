@@ -22,26 +22,28 @@ signatures:
     modality: text
     task_class: plan
     constitutional_tier: 333
-    models: [deepseek-v4-pro, qwen3.8-max, MiniMax-M3]
+    models: [deepseek-v4-pro, qwen3.8-max, MiniMax-M3, opencode-go/deepseek-v4-pro, opencode-go/qwen3.8-max, opencode-go/kimi-k3, opencode-zen/claude-sonnet-5]
     spec_arch: LLM
     spec_role: planner
     fidelity_gate: null  # text plans don't have fidelity scores
+    amendment_2026_08_17: "opencode-go + opencode-zen added per FED audit — Zen $19.96 + Go $10 tiers, both LIVE per route_health"
 
   fed-multimodal-vision:
     description: "Image/video analysis, OCR, chart reading, screenshot inspection"
     modality: vision
     task_class: inspect
     constitutional_tier: 555
-    models: [qwen-vl-max, mimo-v2.5, MiniMax-M3]
+    models: [qwen-vl-max, mimo-v2.5, MiniMax-M3, opencode-go/minimax-m3, opencode-go/qwen3.7-plus, opencode-zen/gemini-3.6-flash]
     spec_arch: VLM
     spec_role: inspector_generic
+    amendment_2026_08_17: "opencode-go + opencode-zen added per FED audit"
 
   fed-long-context:
     description: "Long documents, large context windows, multi-chunk processing"
     modality: text
     task_class: plan
     constitutional_tier: 333
-    models: [MiniMax-M3, mimo-v2.5-pro, qwen3.8-max]
+    models: [MiniMax-M3, mimo-v2.5-pro, qwen3.8-max, opencode-go/kimi-k3, opencode-go/mimo-v2.5-pro, opencode-zen/kimi-k3]
 
   fed-agent-subagent:
     description: "Subagent spawning, multi-step orchestration, DAG execution"

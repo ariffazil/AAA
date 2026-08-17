@@ -40,14 +40,14 @@ VAULT999 = tulang 💀          (bones — the structure)
 
 ## Temporal awareness pattern
 
-Every AAA warga agent answering time-related questions MUST first run `now` (full anchor / `--brief` one-liner / `--json` machine-readable). Output: UTC + MYT + day + ISO week + AED FQ + all 8 organ health. **Never answer "what time/day/date" without `now` first.**
+Every AAA warga agent answering time-related questions MUST first run `now` (full anchor / `--brief` one-liner / `--json` machine-readable). Output: UTC + MYT + day + ISO week + AED FQ + all 10 federation surfaces (incl. FED + FRAME) + FRAME observer drift + last session carry. **Never answer "what time/day/date" without `now` first.**
 
 ## The 30-second session check
 
 1. `source /root/.secrets/kunci-mas.env`
 2. Read `/root/AGENTS.md` + `/root/CLAUDE.md`
 3. Boot: `cat /root/AAA/prompts/INIT.md`
-4. Live state: `/root/.local/share/arifos/carry_forward.json`
+4. One-shot pane: `now` (time + federation + FRAME + carry)
 5. Probe federation: `make health` or `/root/scripts/doctor.sh`
 6. Check dirty repos
 7. Check deprecation map

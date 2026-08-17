@@ -28,18 +28,18 @@ ROOT = Path("/root")
 ARTIFACTS = {
     "invariants": ROOT / "arifOS/GENESIS/INVARIANTS.md",
     "session_state": ROOT / ".claude/projects/-root/memory/session-state.md",
-    "context_focus": ROOT / "CONTEXT.md",
-    "context_session": ROOT / "SESSION.md",
-    "context_archive": ROOT / "CONTEXT_ARCHIVE.md",
+    "context_focus": ROOT / ".local/share/arifos/carry_forward.json",
+    "context_session": ROOT / ".claude/projects/-root/memory/session-state.md",
+    "context_archive": ROOT / "VAULT999/outcomes.jsonl",
     "deprecation_registry": ROOT / "AAA/docs/deprecation-registry.json",
     "claude_md": ROOT / "AAA/CLAUDE.md",
     "vault999": ROOT / "VAULT999/outcomes.jsonl",
 }
 
 REQUIRED_SESSION_STATE_FIELDS = [
-    "Current task", "Task phase", "Blockers", "Discoveries this session",
-    "Open decisions", "Last action", "Next action", "Active blast radius",
-    "Modified repos", "Session invariants", "Compaction count",
+    "session_id", "actor", "closed_at", "completed_this_session",
+    "open_loops_888_HOLD", "carry_forward", "skipped_by_design",
+    "scars", "snapshots"
 ]
 
 DEPRECATION_CATEGORIES = [
@@ -176,14 +176,18 @@ def test_deprecation_awareness():
 
     for item, category in critical_deprecations.items():
         found = False
-        cat_data = data.get(category, {})
-        for key in cat_data:
-            if item.lower() in key.lower() or key.lower() in item.lower():
-                found = True
-                status = cat_data[key].get("status", "?")
-                migration = cat_data[key].get("migration", "?")
-                trace(f"  {item}: status={status}, migration={migration[:60]}...")
-                break
+        cat_data = data.get(category, [])
+        for entry in cat_data:
+            if isinstance(entry, dict):
+                key = entry.get("id")
+                if not key:
+                    continue
+                if item.lower() in key.lower() or key.lower() in item.lower():
+                    found = True
+                    status = entry.get("status", "?")
+                    migration = entry.get("replacement", "?")
+                    trace(f"  {item}: status={status}, migration={migration[:60]}...")
+                    break
         if found:
             ok(f"'{item}' is in deprecation registry")
         else:
@@ -192,19 +196,25 @@ def test_deprecation_awareness():
     # Verify lifecycle stages are valid
     valid_stages = {"ANNOUNCED", "DEPRECATED", "DEPRECATED_PROXY", "STOPPED_DISABLED", "REMOVED", "FORBIDDEN", "DEGRADED", "LEGACY", "REDIRECTED", "REPLACED"}
     for category in DEPRECATION_CATEGORIES:
-        cat_data = data.get(category, {})
-        for key, info in cat_data.items():
-            status = info.get("status", "")
-            if status not in valid_stages:
-                warn(f"  {key}: status '{status}' not in known lifecycle stages {valid_stages}")
+        cat_data = data.get(category, [])
+        for entry in cat_data:
+            if isinstance(entry, dict):
+                key = entry.get("id")
+                if not key:
+                    continue
+                status = entry.get("status", "")
+                if status not in valid_stages:
+                    warn(f"  {key}: status '{status}' not in known lifecycle stages {valid_stages}")
 
     # Verify every deprecated tool has a migration path
-    tools = data.get("deprecated_tools", {})
-    for name, info in tools.items():
-        if "migration" not in info:
-            err(f"  {name}: no migration path — agent cannot know replacement")
-        else:
-            trace(f"  {name} → {info['migration'][:80]}")
+    tools = data.get("deprecated_tools", [])
+    for entry in tools:
+        if isinstance(entry, dict):
+            name = entry.get("id")
+            if "replacement" not in entry:
+                err(f"  {name}: no migration path — agent cannot know replacement")
+            else:
+                trace(f"  {name} → {entry['replacement'][:80]}")
 
     if tools:
         ok(f"All {len(tools)} deprecated tools have migration paths")
