@@ -36,9 +36,12 @@ Q10 SEAL:       Do I know the one seal path? (/root/AAA/prompts/SEAL.md)
 
 | State | Condition | Mode | Verbs allowed |
 |-------|-----------|------|---------------|
-| **OK** | 10/10 ✅ | FULL | All 8 canonical + forge_* |
+| **OK** | 10/10 ✅ | FULL / READY | All 8 canonical + forge_* |
 | **PARTIAL** | Any ⚠ | OBSERVE_ONLY | arif_observe, arif_think, arif_route, arif_memory (read) |
 | **FAIL** | Any ❌ | NO SESSION | None — HALT |
+| **GHOST** | Process up, kernel unreachable, or `arif_init` returned no session token | NO READY | Sense only. Do not mint a token. Do not assume bind. systemd restart ≠ legitimacy. Wait for a bind from outside the failed path. |
+
+Hard rule: **no token → no READY**. A live process without a live bind is a ghost. Identity (actor card) ≠ authority (session token) ≠ law (kernel).
 
 ---
 
