@@ -178,14 +178,21 @@ async function writeRecord(endpoint, payload) {
 }
 
 async function checkHealth() {
-  try {
-    const response = await fetch(`${VAULT_WRITER_URL}/health`, {
-      signal: AbortSignal.timeout(3000)
-    });
-    return response.ok;
-  } catch {
-    return false;
+  // Configured URL may still be the docker-era :8100 writer (down).
+  // Live bare-metal writer is 127.0.0.1:5001. Probe both; first OK wins.
+  const candidates = [];
+  if (VAULT_WRITER_URL) candidates.push(`${VAULT_WRITER_URL.replace(/\/$/, '')}/health`);
+  const fallback = 'http://127.0.0.1:5001/health';
+  if (!candidates.includes(fallback)) candidates.push(fallback);
+  for (const url of candidates) {
+    try {
+      const response = await fetch(url, { signal: AbortSignal.timeout(3000) });
+      if (response.ok) return true;
+    } catch {
+      /* try next */
+    }
   }
+  return false;
 }
 
 module.exports = {
