@@ -282,6 +282,9 @@ components:
       - engineering_execution
     notes:
       - routes/checkpoints/witnesses; never judges; never executes
+      - plane SOT: /root/AAA/governance/ARIF_FLOW_METABOLIC_PLANE.md
+      - live edges: /var/lib/arifflow/receipts.jsonl
+      - FLOW_GRAPH.json not minted — Phase 7 queued (architect lock 2026-08-18)
 
   - id: signal
     class: CORE

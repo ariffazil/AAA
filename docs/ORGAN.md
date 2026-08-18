@@ -34,6 +34,10 @@
 
 Everything else is a **pointer**, **contract**, **runbook**, or **draft** — not a competing map.
 
+**Planes** (MCP, A2A, discovery, metabolism — not extra organs):  
+`/root/AAA/governance/ARIF_FLOW_METABOLIC_PLANE.md`  
+`FLOW_GRAPH.json` is not minted. Phase 7 queued.
+
 ---
 
 ## 1. Anatomy (one organism)
