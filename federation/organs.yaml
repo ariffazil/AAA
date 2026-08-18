@@ -438,10 +438,9 @@ components:
       - play_audio
       - music_generation
     notes:
-      - Port 18090 collides with hermes bridges; live instance runs on 18100 via run_v2.py
-      - Default .env FASTMCP_PORT=18090 must be overridden to 18100 before launch
-      - minimax-media.service (REST mode, js) and minimax-media-mcp.service (Python) are both available
-      - Costs billed per API call — F13 sovereign consent required for billable runs
+      - Transport is 127.0.0.1:18100 (unit minimax-media-mcp.service). :18090 is Hermes MCP, not media.
+      - Default vendor .env FASTMCP_PORT=18090 must stay overridden.
+      - Billable per MiniMax cloud call — F13 consent for paid generation.
     live_probe_2026_08_07:
       status: active
       port: 18100
@@ -726,6 +725,8 @@ components:
       - "ID class: only organ bound_directly to F13-SOVEREIGN."
       - "hermes-asi = nerve (routes signal). i-ARIF = brain (synthesises meaning)."
       - "FI-000: pre-harness. Identity precedes engine."
+      - "Chain order 2026-08-18 (zen-fix): opencode-zen/deepseek-v4-pro (order 1) > kimi-moonshot/k3 (order 2) > MiMo V2.5 (order 3) > GLM-5.3 Z.ai (order 5). PATCH bypasses Xiaomi MiMo server-side content filter that blocked 'Fucker' and 'Look into deep memory' prompts."
+      - "Snapshot 2026-08-18 pre-patch: /root/forge_work/_quarantine/2026-08-18-i-arif-filter-fix/"
 
 # ── PORT OBSERVABILITY (zen-2026-08-06 AUDIT-M2) ─────────────────────────
 # Live ports classified. Sub-processes (a-forge sub-workers, devtools, debug)
