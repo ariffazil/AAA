@@ -155,7 +155,7 @@ Per Arif's clarification 2026-06-22:
 ### Integration (when desired)
 
 If MaxHermes is to be called from AAA in the future:
-1. Register MiniMax API key in `/root/.secrets/vault.env`
+1. Register MiniMax API key in `/root/.secrets/kunci-root.env`
 2. Add a **gateway route** in `aaa-gateway` (NOT a local agent entry)
 3. F13 ack required (data flows to external vendor)
 4. Witness every call via arifOS MCP

@@ -40,7 +40,7 @@ if [[ -z "$TASK" ]]; then
 fi
 
 # ── Secrets ─────────────────────────────────────────────
-set -a && source /root/.secrets/vault.env && set +a 2>/dev/null || true
+set -a && source /root/.secrets/kunci-root.env && set +a 2>/dev/null || true
 
 # ── Init: Refresh continuity bridge ─────────────────────
 echo "🧵 [INIT] Refreshing continuity bridge..."
