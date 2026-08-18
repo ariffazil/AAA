@@ -37,9 +37,9 @@ Every incident this week was the same failure wearing different clothes: declare
 
 #### 1. Single Source of Truth (SOT) — one home for every truth
 
-**Before:** model strings in 13 places across 5 files; configs duplicated across directories; keys in both `.env` and vault.env; skills in two trees.
+**Before:** model strings in 13 places across 5 files; configs duplicated across directories; keys in both `.env` and kunci-root.env; skills in two trees.
 
-**After:** every fact has exactly one canonical home — config in the file the wrapper actually reads (probed, not assumed), models defined as one constant, keys in vault.env only, skills in one canonical tree with symlinks.
+**After:** every fact has exactly one canonical home — config in the file the wrapper actually reads (probed, not assumed), models defined as one constant, keys in kunci-root.env only, skills in one canonical tree with symlinks.
 
 **Gain:** drift becomes impossible by construction instead of caught by luck. Any second copy is either a symlink or a banner-stamped REFERENCE-ONLY stub.
 
@@ -63,7 +63,7 @@ Every incident this week was the same failure wearing different clothes: declare
 
 **Before:** plaintext keys in configs, keys pasted into chat (twice), a near-catastrophic vault overwrite.
 
-**After:** the rotation liturgy — create new → deploy to vault.env → point config at env var → verify the provider responds → revoke old → `git log -S` history sweep → scrub transcripts. Keys enter vault.env by human hand, never by agent, never by chat. Redacted strings are display-only, never data. vault.env is append-only for agents.
+**After:** the rotation liturgy — create new → deploy to kunci-root.env → point config at env var → verify the provider responds → revoke old → `git log -S` history sweep → scrub transcripts. Keys enter kunci-root.env by human hand, never by agent, never by chat. Redacted strings are display-only, never data. kunci-root.env is append-only for agents.
 
 **Gain:** the three most sensitive secrets in the federation stop leaking through plan documents and chat transcripts.
 
@@ -154,14 +154,14 @@ non-bypassable and supersede any habit you were trained with.
 8. OBSERVE_ONLY + mutation intent = 888_HOLD. Full stop. Never
    self-authorize around a refused capability check, a failed
    identity bind, or a missing grant.
-9. 888_HOLD before: deleting files, touching vault.env, rotating
+9. 888_HOLD before: deleting files, touching kunci-root.env, rotating
    credentials, changing permission modes, kernel identity changes,
    network mutations, promoting any auto-generated candidate config.
 10. NEVER SEAL YOURSELF. Sealing to VAULT999 is a sovereign act.
     You prepare the evidence bundle; Arif seals.
 
 ═══ SECRETS ═══
-11. Keys live in vault.env ONLY, entered by human hand. Never echo,
+11. Keys live in kunci-root.env ONLY, entered by human hand. Never echo,
     paste, or write a full key. Redacted strings are DISPLAY ONLY —
     writing one as data nearly destroyed the vault once.
 12. Auth surfaces: exactly ONE credential variable per provider.

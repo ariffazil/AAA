@@ -69,7 +69,7 @@ for t in cfg['chains']['RM0-TOOLS-FREELOOP']['tiers']:
 | Signal | Meaning | Action |
 |--------|---------|--------|
 | ✅ 200 + content | Model healthy | None |
-| ❌ HTTP 4xx | Auth/key/config broken | Check vault.env, verify key |
+| ❌ HTTP 4xx | Auth/key/config broken | Check kunci-root.env, verify key |
 | ❌ HTTP 429 | Rate limited | Model auto-demoted, wait 5 min |
 | ❌ Empty content | Safety filter or model issue | Mark as degraded in hit-rate |
 | ⚠️ >5s latency | Model slow | Demote in next reorder cycle |

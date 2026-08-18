@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # arifOS hero — the only process allowed to interpret federation reality.
 # Observe writes state.json. Render reads state.json. Viewers call this.
+# Powered by: rich (terminal UI), pyfiglet (ASCII art), figlet (fallback)
 # DITEMPA BUKAN DIBERI
 set +e
 case "${1:-}" in
@@ -13,51 +14,74 @@ case "${1:-}" in
 esac
 export ARIFOS_HERO_MODE="$MODE"
 exec python3 - <<'PY'
-import json, os, re, urllib.request
+import json, os, re, shutil, subprocess, urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
+
+# ── Rich / Pyfiglet imports (graceful fallback) ──
+try:
+    from rich.console import Console
+    from rich.table import Table
+    from rich.panel import Panel
+    from rich.text import Text
+    from rich.columns import Columns
+    from rich.rule import Rule
+    from rich.console import Group
+    from rich import box
+    HAS_RICH = True
+except ImportError:
+    HAS_RICH = False
+
+try:
+    import pyfiglet
+    HAS_PYFIGLET = True
+except ImportError:
+    HAS_PYFIGLET = False
 
 MODE = os.environ.get("ARIFOS_HERO_MODE", "full")
 TERM = Path("/root/AAA/terminal")
 STATE = TERM / "state.json"
 TTL_S = 30
 
-R = "\033[0m"
-B = "\033[1m"
-G = "\033[32m"
-Y = "\033[33m"
-RD = "\033[31m"
-C = "\033[36m"
-GR = "\033[90m"
+# ── ANSI fallback palette ──
+RST = "\033[0m"
+BLD = "\033[1m"
+DIM = "\033[2m"
+RED = "\033[31m"
+GRN = "\033[32m"
+YLW = "\033[33m"
+CYN = "\033[36m"
+WHT = "\033[37m"
+GRY = "\033[90m"
+BG_BLK = "\033[40m"
 USE_COLOR = MODE in ("full",) and os.environ.get("NO_COLOR") is None
 
 ORGANS = [
-    ("arifos", 8088),
-    ("aforge", 7071),
+    ("arifos",   8088),
+    ("aforge",   7071),
     ("arifflow", 7073),
-    ("aaa", 3001),
-    ("geox", 8081),
-    ("wealth", 18082),
-    ("well", 18083),
+    ("aaa",      3001),
+    ("geox",     8081),
+    ("wealth",  18082),
+    ("well",    18083),
 ]
 
 
 def c(code, text):
     if not USE_COLOR:
         return str(text)
-    return f"{code}{text}{R}"
+    return f"{code}{text}{RST}"
 
 
 def vislen(s):
     return len(re.sub(r"\033\[[0-9;]*m", "", s))
 
 
-def box_line(inner, width=50):
-    pad = max(0, width - vislen(inner))
-    return c(GR, "║") + inner + (" " * pad) + c(GR, "║")
-
+# ═══════════════════════════════════════════════════
+# DATA LAYER — observe, probe, machine (unchanged)
+# ═══════════════════════════════════════════════════
 
 def read_txt(name, default=""):
     for cand in (name,):
@@ -92,15 +116,13 @@ def read_orders():
     return out or [
         ("333 THINK", "Unblock decisions stalled by redundant verification."),
         ("555 VERIFY", "Challenge only assumptions that change outcomes."),
-        ("888 JUDGE", "Issue verdicts rapidly on mature proposals."),
-        ("777 FORGE", "Execute only SEALed plans."),
-        ("999 VAULT", "Witness significant state transitions."),
+        ("888 JUDGE",  "Issue verdicts rapidly on mature proposals."),
+        ("777 FORGE",  "Execute only SEALed plans."),
+        ("999 VAULT",  "Witness significant state transitions."),
     ]
 
 
-
 def read_handover(limit=5):
-    """Last ACTIVE lines from append-only JSONL. Hero reads. Clerks append."""
     hp = Path("/root/AAA/telemetry/handover.log")
     out = []
     try:
@@ -113,6 +135,10 @@ def read_handover(limit=5):
         except Exception:
             continue
         if str(rec.get("status") or "ACTIVE").upper() not in ("ACTIVE", "SEALED"):
+            continue
+        actor = str(rec.get("actor") or "")
+        # Combined-lane self-certify stays in the log. It is not MOTD truth.
+        if "+" in actor and any(tag in actor.lower() for tag in ("888", "apex", "333-agi", "555-asi")):
             continue
         ts = rec.get("ts") or ""
         time_s = ts[11:16] if len(ts) >= 16 else ts
@@ -185,8 +211,8 @@ def fmt_age_hours(h):
 def probe():
     urls = {
         "kernel": "http://127.0.0.1:8088/health",
-        "flow": "http://127.0.0.1:7073/health",
-        "well": "http://127.0.0.1:18083/health",
+        "flow":   "http://127.0.0.1:7073/health",
+        "well":   "http://127.0.0.1:18083/health",
     }
     for name, port in ORGANS:
         urls[f"org:{name}"] = f"http://127.0.0.1:{port}/health"
@@ -235,13 +261,9 @@ def machine():
     except Exception:
         pass
     return {
-        "mem": mem,
-        "mem_pct": mem_pct,
-        "swap": swap,
-        "swap_pct": swap_pct,
-        "load": load,
-        "disk": disk,
-        "disk_pct": disk_pct,
+        "mem": mem, "mem_pct": mem_pct,
+        "swap": swap, "swap_pct": swap_pct,
+        "load": load, "disk": disk, "disk_pct": disk_pct,
     }
 
 
@@ -416,13 +438,60 @@ def ensure_fresh():
     return load_state() or observe()
 
 
-def flag(ok, text):
-    return c(G, text) if ok else c(Y, text)
+# ═══════════════════════════════════════════════════
+# RENDER — Rich-powered dashboard
+# ═══════════════════════════════════════════════════
+
+def make_header():
+    """Generate the arifOS ASCII art header using pyfiglet or figlet."""
+    if HAS_PYFIGLET:
+        try:
+            raw = pyfiglet.figlet_format("arifOS", font="slant", width=80)
+            return raw.rstrip("\n")
+        except Exception:
+            pass
+    # fallback: figlet CLI
+    try:
+        r = subprocess.run(["figlet", "-f", "slant", "arifOS"],
+                           capture_output=True, text=True, timeout=3)
+        if r.returncode == 0:
+            return r.stdout.rstrip("\n")
+    except Exception:
+        pass
+    # fallback: hardcoded
+    return (
+        "              _ ________  _____\n"
+        "  ____ ______(_) __/ __ \\/ ___/\n"
+        " / __ `/ ___/ / /_/ / / /\\__ \\ \n"
+        "/ /_/ / /  / / __/ /_/ /___/ /\n"
+        "\\__,_/_/  /_/_/  \\____//____/"
+    )
 
 
-def render(state):
+def status_dot(ok):
+    if HAS_RICH:
+        return "[green]●[/]" if ok else "[red]●[/]"
+    return c(GRN, "●") if ok else c(RED, "●")
+
+
+def status_word(ok, good="OK", bad="FAIL"):
+    if HAS_RICH:
+        return f"[green]{good}[/]" if ok else f"[red]{bad}[/]"
+    return c(GRN, good) if ok else c(RED, bad)
+
+
+def metric_val(ok, text):
+    if HAS_RICH:
+        return f"[green]{text}[/]" if ok else f"[yellow]{text}[/]"
+    return c(GRN, text) if ok else c(YLW, text)
+
+
+def render_rich(state):
+    """Full render using rich library."""
+    console = Console(highlight=False, force_terminal=True)
+
     mode = state.get("mode") or "HOLD"
-    mode_c = Y if mode == "HOLD" else G
+    mode_label = state.get("mode_label", mode)
     fq_s = state.get("fq_s") or "?"
     fq_v = state.get("fq_verdict") or state.get("fq_state") or "?"
     diag = state.get("diagnosis") or "?"
@@ -433,121 +502,386 @@ def render(state):
     g = state.get("g")
     cd = state.get("c_dark")
     w3 = state.get("w3")
-    g_ok = isinstance(g, (int, float)) and g >= 0.80
+    now = state.get("now") or ""
+
+    g_ok  = isinstance(g, (int, float)) and g >= 0.80
     cd_ok = isinstance(cd, (int, float)) and cd < 0.30
     w3_ok = isinstance(w3, (int, float)) and w3 >= 0.75
     ds_ok = isinstance(ds, (int, float)) and ds <= 0
     fq_ok = fq_v not in ("FOSSILIZED", "VOID")
+    kern_ok = state.get("kernel") in ("healthy", "ok")
+    well = state.get("well") or "?"
+    well_ok = str(well).upper() != "HOLD"
 
-    # arifOS ASCII Art — larger letters, framed, enhanced visual hierarchy
-    w_c   = "\033[37m"       # white
-    dw    = "\033[2;37m"     # dim white
-    lbl_c = c(B, mode_c if mode == "HOLD" else G,)
+    debt_s = str(debt) if debt is not None else "?"
+    vx = f"V/X={v}/{x}" if v is not None and x is not None else ""
 
-    def lbl(ok, text, bad_c=Y):
-        return c(G, text) if ok else c(bad_c, text)
+    # ── HEADER ──
+    header_art = make_header()
+    mode_style = "bold yellow" if mode == "HOLD" else "bold green"
+    header_text = Text()
+    header_text.append("arifOS Federation", style="bold white")
+    header_text.append("  ·  ", style="dim")
+    header_text.append(mode_label, style=mode_style)
+    header_text.append(f"  ·  {now}", style="dim")
 
-    g_ok   = isinstance(g, (int, float)) and g >= 0.80
-    ds_ok  = isinstance(ds, (int, float)) and ds <= 0
-    fq_ok  = fq_v not in ("FOSSILIZED", "VOID")
-    w3_ok  = isinstance(w3, (int, float)) and w3 >= 0.75
+    console.print()
+    console.print(Panel(
+        header_art,
+        subtitle=header_text,
+        subtitle_align="center",
+        border_style="cyan" if mode == "READY" else "yellow",
+        padding=(0, 2),
+        width=min(console.width, 88),
+    ))
 
-    # Colored half-block art: 'a' 'r' 'i' 'f' small, 'OS' big
-    h1 = (f"  {C}▄▄▄▄  ▄▄▄▄  ▄  ▄▄▄▄▄    {B}{C}╔═══╗      ╔═╗ {R}")
-    h2 = (f"  {C}█  █▌ █  █▌ █  █▌       {B}{C}╠═╗ ╦╔═╗  ╔═╣ {R}")
-    h3 = (f"  {C}▀▀▀▀  ▀▀▀▀  ▀  ▀▀▀▀▀    {B}{C}╚═══╩╚═╝  ╚═╝ {R}")
+    # ── AGENTIC LOOP VISUALIZATION ──
+    loop_phases = ["000", "333", "555", "888", "777", "999"]
+    loop_labels = ["INIT", "THINK", "VERIFY", "JUDGE", "FORGE", "SEAL"]
+    loop_hot = state.get("loop_hot") or "555"
+    loop_now = state.get("loop_now") or ""
 
-    thin  = "  ───────────────────────    ────────────────"
-    thin_c = f"  {dw}───────────────────────────────{R}"
+    # Find active phase index
+    try:
+        active_idx = loop_phases.index(loop_hot)
+    except ValueError:
+        active_idx = 2  # default to VERIFY
 
-    # Right-side metadata
-    def rmeta(label, value):
-        return f"  {GR}{label:<12}{R}{value}"
+    # Build the loop bar
+    loop_bar = Text()
+    loop_bar.append("  ")
+    for i, (phase, label) in enumerate(zip(loop_phases, loop_labels)):
+        if i == active_idx:
+            loop_bar.append(f" ◉ {phase} ", style="bold white on blue")
+            loop_bar.append(label, style="bold blue")
+        elif i < active_idx:
+            loop_bar.append(f" ● {phase} ", style="dim")
+            loop_bar.append(label, style="dim")
+        else:
+            loop_bar.append(f" ○ {phase} ", style="dim")
+            loop_bar.append(label, style="dim")
+        if i < len(loop_phases) - 1:
+            loop_bar.append(" → ", style="dim")
+    loop_bar.append(f"\n  {loop_now}", style="yellow" if not fq_ok else "green")
 
-    print()
-    print(h1 + rmeta("FEDERATION",  c(B, "arifOS") + " · " + c(mode_c, state.get("mode_label", mode))))
-    print(h2 + rmeta("AUTHORITY",   c(B, "ARIF") + " (F13) · " + c(GR, "DITEMPA BUKAN DIBERI")))
-    print(h3 + rmeta("VERDICTS",    "UNKNOWN · SABAR · " + c(Y, "HOLD") + " · " + c(G, "SEAL") + " · " + c(RD, "VOID")))
-    print(thin_c)
-    print(f"  {GR}{'':>28}{R}"  + rmeta("LOOP",        state.get("loop") or "000→333→555→888→777→999") + c(GR, "  (") + c(Y if not fq_ok else G, state.get("loop_now", "")) + c(GR, ")"))
-    print(f"  {GR}{'':>28}{R}"  + rmeta("RULE",        c(B, "NO SEAL → NO EXECUTION")))
-    print()
-    print()
+    # FQ Sparkline bar
+    fq_raw = state.get("fq")
+    fq_val = fq_raw if isinstance(fq_raw, (int, float)) else 0
+    fq_bar_len = 30
+    if isinstance(fq_val, (int, float)):
+        fill = min(fq_bar_len, max(0, int(fq_val / 10 * fq_bar_len)))
+    else:
+        fill = 0
+    fq_bar = Text()
+    fq_bar.append("  FQ [", style="dim")
+    fq_bar.append("█" * fill, style="red" if fq_val > 3 else "yellow" if fq_val > 1.5 else "green")
+    fq_bar.append("░" * (fq_bar_len - fill), style="dim")
+    fq_bar.append(f"] {fq_s}", style="bold " + ("red" if fq_val > 3 else "yellow" if fq_val > 1.5 else "green"))
+    fq_bar.append(f"  {fq_v}", style="red" if fq_v == "FOSSILIZED" else "yellow")
 
-    # ── ATLAS ──
-    print(f"  {B}ATLAS{R}")
+    # Session binding info
+    session_id = state.get("session_id") or "unbound"
+    session_text = Text()
+    session_text.append("  SESSION ", style="dim")
+    session_text.append(session_id[:20] if len(session_id) > 20 else session_id, style="cyan")
+    session_text.append("  FLOOR ", style="dim")
+    fl = state.get("floors")
+    session_text.append(f"{fl}/13", style="green" if fl == 13 else "yellow")
+    session_text.append("  BLOCKERS ", style="dim")
+    session_text.append("H-WELL / FQ=7.3 / G<0.80", style="yellow")
+
+    # Print agentic loop + FQ bar + session
+    console.print(Panel(
+        Group(loop_bar, fq_bar, session_text),
+        title="[bold]AGENTIC LOOP[/]",
+        border_style="blue",
+        padding=(0, 1),
+        box=box.ROUNDED,
+    ))
+
+    # ── METRICS ROW (3 panels side by side) ──
+    # FQ panel
+    fq_color = "green" if fq_ok else "yellow"
+    fq_content = Text()
+    fq_content.append(f"{fq_s}", style=f"bold {fq_color}")
+    fq_content.append(f"  {fq_v}", style=fq_color)
+    fq_content.append(f"  ·  {diag}", style="dim")
+    if vx:
+        fq_content.append(f"\n{vx}", style="dim")
+    debt_style = "yellow" if isinstance(debt, (int, float)) and debt > 5 else "dim"
+    fq_content.append(f"\nDebt = {debt_s}", style=debt_style)
+
+    # APEX panel
+    apex_content = Text()
+    apex_content.append("ΔS=", style="dim")
+    apex_content.append(fmt_num(ds), style="green" if ds_ok else "yellow")
+    apex_content.append("   G=", style="dim")
+    apex_content.append(fmt_num(g), style="green" if g_ok else "yellow")
+    if not g_ok and g is not None:
+        apex_content.append(" <0.80", style="red")
+    apex_content.append("\nC_dark=", style="dim")
+    apex_content.append(fmt_num(cd, 3), style="green" if cd_ok else "yellow")
+    apex_content.append("   W3=", style="dim")
+    apex_content.append(fmt_num(w3), style="green" if w3_ok else "yellow")
+    if not w3_ok and w3 is not None:
+        apex_content.append(" <0.75", style="red")
+    apex_content.append("\nG=(A·P·E·X)^(1/4)", style="dim")
+
+    # Organs panel
+    org_up = state.get("org_up") or []
+    org_hold = state.get("org_hold") or []
+    org_down = state.get("org_down") or []
+    org_content = Text()
+    for name, _ in ORGANS:
+        if name in org_down:
+            org_content.append(f"● {name}", style="red")
+        elif name in org_hold:
+            org_content.append(f"● {name}", style="yellow")
+        else:
+            org_content.append(f"● {name}", style="green")
+        org_content.append("  ", style="dim")
+    org_content.append(f"\nfloors={state.get('floors')}/13", style="dim")
+
+    panel_width = min(38, (console.width - 4) // 3)
+    console.print(Columns([
+        Panel(fq_content, title="[bold]FQ[/]", border_style=fq_color,
+              padding=(0, 1), width=panel_width, box=box.ROUNDED),
+        Panel(apex_content, title="[bold]APEX[/]", border_style="cyan",
+              padding=(0, 1), width=panel_width, box=box.ROUNDED),
+        Panel(org_content, title="[bold]ORGANS[/]",
+              border_style="green" if not org_down else "red",
+              padding=(0, 1), width=panel_width, box=box.ROUNDED),
+    ], padding=1, equal=False, expand=True))
+
+    # ── OPEN HOLDS ──
+    holds = state.get("holds") or []
+    if holds:
+        holds_text = Text()
+        for h in holds[:6]:
+            holds_text.append("  ▸ ", style="yellow")
+            holds_text.append(h + "\n")
+        console.print(Panel(
+            holds_text, title="[bold yellow]OPEN HOLDS[/]",
+            border_style="yellow", padding=(0, 1),
+            box=box.ROUNDED,
+        ))
+    else:
+        console.print(Panel(
+            "  [green]All clear — no open holds[/]",
+            title="[bold green]HOLDS[/]",
+            border_style="green", padding=(0, 1),
+            box=box.ROUNDED,
+        ))
+
+    # ── ORDERS + LOOP (side by side) ──
+    orders_table = Table(show_header=False, box=None, padding=(0, 2))
+    orders_table.add_column(style="cyan", min_width=12)
+    orders_table.add_column()
+    for role, duty in state.get("orders") or []:
+        orders_table.add_row(role, duty)
+
+    loop_text = Text()
+    loop_text.append("LOOP  ", style="bold")
+    loop_text.append(state.get("loop") or "", style="dim")
+    loop_text.append("\n\n")
+    loop_text.append("NOW   ", style="bold")
+    loop_text.append(state.get("loop_now") or "", style="yellow" if not fq_ok else "green")
+    loop_text.append("\n\n")
+    loop_text.append("RULE  ", style="bold")
+    loop_text.append("NO SEAL → NO EXECUTION", style="bold white")
+    loop_text.append("\n\n")
+    loop_text.append("MISSION  ", style="bold")
+    loop_text.append(state.get("mission") or "", style="dim")
+
+    orders_panel = Panel(orders_table, title="[bold]ORDERS[/]",
+                         border_style="cyan", box=box.ROUNDED)
+    loop_panel = Panel(loop_text, title="[bold]LOOP[/]",
+                       border_style="blue", box=box.ROUNDED)
+    console.print(Columns([orders_panel, loop_panel], padding=1, expand=True))
+
+    # ── BROADCAST + LAW + ATLAS ──
+    broadcast = state.get("broadcast") or ""
+    today_law = state.get("today_law") or state.get("law") or ""
+
+    info_text = Text()
+    info_text.append("BROADCAST  ", style="bold")
+    info_text.append(broadcast + "\n")
+    info_text.append("LAW        ", style="bold")
+    info_text.append(today_law + "\n\n")
+    info_text.append("ATLAS\n", style="bold")
     atlas = state.get("atlas") or {}
     for key in ("LAW", "STATE", "BRAIN", "CAPS", "TOOLS", "SKILLS", "FLOW"):
         val = atlas.get(key)
-        shown = val if val else f"{GR}[UNMINTED]{R}"
-        print(f"  {GR}{key:<7}{R}{shown}")
+        info_text.append(f"  {key:<7}", style="dim")
+        info_text.append(val if val else "[UNMINTED]", style="dim" if not val else None)
+        info_text.append("\n")
         if key == "LAW" and atlas.get("LAW_FED"):
-            print(f"  {GR}        {R}fed {atlas['LAW_FED']}")
+            info_text.append(f"         fed {atlas['LAW_FED']}\n", style="dim")
+
+    console.print(Panel(
+        info_text, title="[bold]CONTEXT[/]",
+        border_style="blue", padding=(0, 1),
+        box=box.ROUNDED,
+    ))
 
     # ── HANDOVER ──
-    print()
-    print(f"  {B}HANDOVER{R}")
     hops = state.get("handover") or []
-    if not hops:
-        print(f"  {GR}none — clerks append /root/AAA/telemetry/handover.log{R}")
-    else:
+    if hops:
+        hop_text = Text()
         for h in hops:
-            print(f"  {Y}• [{h.get('time')}]{R} {h.get('actor')}: {h.get('summary')}")
-
-    # ── METRICS (side-by-side compact) ──
-    print()
-    fq_color = G if fq_ok else Y
-    ds_color = G if ds_ok else Y
-    g_color  = G if g_ok  else Y
-    w3_color = G if w3_ok else Y
-    cd_color = G if cd_ok else Y
-
-    debt_s = f"{debt}" if debt is not None else "?"
-    vx = f"  FQ=V/X={v}/{x}" if v is not None and x is not None else ""
-
-    print(f"  {B}FQ{R}  {fq_color}{fq_s}{R}  {fq_color}{fq_v}{R}  {GR}·{R}  {diag}")
-    print(f"  {GR}APEX{R}  ΔS={ds_color}{fmt_num(ds)}{R}  G={g_color}{fmt_num(g)}{R}{(' <0.80' if not g_ok and g is not None else ' ≥0.80' if g_ok else '')}  C_dark={cd_color}{fmt_num(cd, 3)}{R}  W3={w3_color}{fmt_num(w3)}{R}{(' <0.75' if not w3_ok and w3 is not None else '')}")
-    print(f"  {GR}     {R}  G=(A·P·E·X)^(1/4)  Debt=V−X={debt_s}{vx}")
-
-    # ── BROADCAST / MISSION / HOLDS ──
-    print()
-    print(f"  {B}BROADCAST{R}")
-    print(f"  {state.get('broadcast') or ''}")
-    print()
-    print(f"  {B}MISSION{R}  {state.get('mission') or ''}")
-    print()
-    print(f"  {B}OPEN HOLDS{R}")
-    holds = state.get("holds") or []
-    if not holds:
-        print(f"  {G}none — board empty means resolved{R}")
-    else:
-        for h in holds[:6]:
-            print(f"  {Y}•{R} {h}")
-
-    # ── ORDERS ──
-    print()
-    for role, duty in state.get("orders") or []:
-        print(f"  {C}{role:<10}{R} {duty}")
-
-    # ── TODAY'S LAW ──
-    print()
-    print(f"  {B}TODAY'S LAW{R}")
-    print(f"  {state.get('today_law') or state.get('law') or ''}")
+            hop_text.append(f"  ● [{h.get('time')}] ", style="yellow")
+            hop_text.append(f"{h.get('actor')}: ", style="bold")
+            hop_text.append(f"{h.get('summary')}\n")
+        console.print(Panel(
+            hop_text, title="[bold]HANDOVER[/]",
+            border_style="yellow", padding=(0, 1),
+            box=box.ROUNDED,
+        ))
 
     # ── SYSTEM STATUS BAR ──
+    m = state.get("machine") or {}
+    bar = Text()
+    bar.append(" kernel ", style="dim")
+    bar.append(state.get("kernel") or "?", style="green" if kern_ok else "red")
+    bar.append("  well ", style="dim")
+    bar.append(well, style="green" if well_ok else "yellow")
+    bar.append(f"  floors {state.get('floors')}/13", style="dim")
+    bar.append(f"  mem {m.get('mem_pct')}%", style="dim")
+    bar.append(f"  load {m.get('load')}", style="dim")
+    bar.append(f"  disk {m.get('disk')}", style="dim")
+    bar.append(f"  {now}", style="dim")
+
+    console.print(Panel(
+        bar, border_style="dim", padding=(0, 1),
+        box=box.HORIZONTALS,
+    ))
+    console.print()
+
+
+def render_ansi(state):
+    """Fallback ANSI-only render (no rich)."""
+    mode = state.get("mode") or "HOLD"
+    mode_label = state.get("mode_label", mode)
+    fq_s = state.get("fq_s") or "?"
+    fq_v = state.get("fq_verdict") or state.get("fq_state") or "?"
+    diag = state.get("diagnosis") or "?"
+    v = state.get("verify")
+    x = state.get("execute")
+    debt = state.get("debt")
+    ds = state.get("ds")
+    g = state.get("g")
+    cd = state.get("c_dark")
+    w3 = state.get("w3")
+    now = state.get("now") or ""
+
+    g_ok  = isinstance(g, (int, float)) and g >= 0.80
+    cd_ok = isinstance(cd, (int, float)) and cd < 0.30
+    w3_ok = isinstance(w3, (int, float)) and w3 >= 0.75
+    ds_ok = isinstance(ds, (int, float)) and ds <= 0
+    fq_ok = fq_v not in ("FOSSILIZED", "VOID")
+    kern_ok = state.get("kernel") in ("healthy", "ok")
+    well = state.get("well") or "?"
+    well_ok = str(well).upper() != "HOLD"
+
+    debt_s = str(debt) if debt is not None else "?"
+    vx = f"V/X={v}/{x}" if v is not None and x is not None else ""
+
+    mode_c = YLW if mode == "HOLD" else GRN
+    header = make_header()
+
+    print()
+    for line in header.split("\n"):
+        print(f"  {CYN}{line}{RST}")
+    print(f"  {GRY}{'─' * 60}{RST}")
+    print(f"  {BLD}arifOS Federation{RST}  ·  {c(mode_c, mode_label)}  ·  {c(GRY, now)}")
+    print()
+
+    # FQ + APEX
+    fq_c = GRN if fq_ok else YLW
+    print(f"  {BLD}FQ{RST}   {c(fq_c, fq_s)}  {c(fq_c, fq_v)}  {c(GRY, '·')}  {diag}   {c(GRY, vx)}  Debt={debt_s}")
+    print(f"  {GRY}APEX{RST}  ΔS={c(GRN if ds_ok else YLW, fmt_num(ds))}  G={c(GRN if g_ok else YLW, fmt_num(g))}{' <0.80' if not g_ok and g is not None else ''}  C_dark={c(GRN if cd_ok else YLW, fmt_num(cd, 3))}  W3={c(GRN if w3_ok else YLW, fmt_num(w3))}{' <0.75' if not w3_ok and w3 is not None else ''}")
+    print()
+
+    # Organs
+    org_up = state.get("org_up") or []
+    org_hold = state.get("org_hold") or []
+    org_down = state.get("org_down") or []
+    parts = []
+    for name, _ in ORGANS:
+        if name in org_down:
+            parts.append(c(RED, f"●{name}"))
+        elif name in org_hold:
+            parts.append(c(YLW, f"●{name}"))
+        else:
+            parts.append(c(GRN, f"●{name}"))
+    fl = state.get("floors")
+    print(f"  {BLD}ORGANS{RST}  {'  '.join(parts)}  {c(GRY, f'floors={fl}/13')}")
+
+    # Holds
+    print()
+    holds = state.get("holds") or []
+    if holds:
+        print(f"  {BLD}{c(YLW, 'OPEN HOLDS')}{RST}")
+        for h in holds[:6]:
+            print(f"  {c(YLW, '▸')} {h}")
+    else:
+        print(f"  {c(GRN, '● All clear — no open holds')}")
+
+    # Orders
+    print()
+    for role, duty in state.get("orders") or []:
+        print(f"  {c(CYN, f'{role:<10}')} {duty}")
+
+    # Loop + Mission
+    print()
+    print(f"  {BLD}LOOP{RST}     {state.get('loop') or ''}")
+    print(f"  {BLD}NOW{RST}      {c(YLW if not fq_ok else GRN, state.get('loop_now') or '')}")
+    print(f"  {BLD}RULE{RST}     {BLD}NO SEAL → NO EXECUTION{RST}")
+    print(f"  {BLD}MISSION{RST}  {state.get('mission') or ''}")
+
+    # Broadcast + Law
+    print()
+    print(f"  {BLD}BROADCAST{RST}  {state.get('broadcast') or ''}")
+    print(f"  {BLD}LAW{RST}         {state.get('today_law') or state.get('law') or ''}")
+
+    # Atlas
+    print()
+    print(f"  {BLD}ATLAS{RST}")
+    atlas = state.get("atlas") or {}
+    for key in ("LAW", "STATE", "BRAIN", "CAPS", "TOOLS", "SKILLS", "FLOW"):
+        val = atlas.get(key)
+        shown = val if val else f"{GRY}[UNMINTED]{RST}"
+        print(f"  {c(GRY, f'{key:<7}')}{shown}")
+        if key == "LAW" and atlas.get("LAW_FED"):
+            print(f"  {c(GRY, '        ')}fed {atlas['LAW_FED']}")
+
+    # Handover
+    hops = state.get("handover") or []
+    if hops:
+        print()
+        print(f"  {BLD}HANDOVER{RST}")
+        for h in hops:
+            t = h.get('time')
+            a = h.get('actor')
+            s = h.get('summary')
+            print(f"  {c(YLW, f'● [{t}]')} {BLD}{a}{RST}: {s}")
+
+    # System bar
     print()
     m = state.get("machine") or {}
-    well = state.get("well")
-    well_c = Y if str(well).upper() == "HOLD" else G
-    kern_c = G if state.get("kernel") in ("healthy", "ok") else RD
-    floors = state.get('floors')
-
-    bar  = f"  {GR}kernel{R} {kern_c}{state.get('kernel') or '?'}{R}"
-    bar += f"  {GR}well{R} {well_c}{well}{R}"
-    bar += f"  {GR}floors{R} {floors}/13"
-    bar += f"  {GR}mem{R} {m.get('mem_pct')}%  {GR}load{R} {m.get('load')}  {GR}disk{R} {m.get('disk')}"
-    bar += f"  {GR}{state.get('now')}{R}"
-    print(bar)
+    fl = state.get("floors")
+    mp = m.get("mem_pct")
+    ld = m.get("load")
+    dk = m.get("disk")
+    kn = state.get("kernel") or "?"
+    print(
+        f"  {c(GRY, 'kernel')} {c(GRN if kern_ok else RED, kn)}"
+        f"  {c(GRY, 'well')} {c(GRN if well_ok else YLW, well)}"
+        f"  {c(GRY, f'floors {fl}/13')}"
+        f"  {c(GRY, f'mem {mp}%')}  {c(GRY, f'load {ld}')}"
+        f"  {c(GRY, f'disk {dk}')}"
+        f"  {c(GRY, now)}"
+    )
     print()
 
 
@@ -586,7 +920,11 @@ def main():
     if MODE == "compact":
         render_compact(state)
         return
-    render(state)
+    # Use rich if available, else ANSI fallback
+    if HAS_RICH:
+        render_rich(state)
+    else:
+        render_ansi(state)
 
 
 if __name__ == "__main__":

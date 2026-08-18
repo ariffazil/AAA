@@ -580,7 +580,7 @@ arif_seal --payload "$(cat /tmp/rsi-last-entry.json)" \
 | **RSI ledger** | `/root/.local/share/arifos/rsi-ledger.jsonl` |
 | **VAULT999** | `/root/VAULT999/` |
 | **Seal chain** | `/root/.local/share/arifos/vault999/seal_chain.jsonl` |
-| **Secrets** | `/root/.secrets/vault.env` |
+| **Secrets** | `/root/.secrets/kunci-root.env` |
 | **Context** | `/root/CONTEXT.md` |
 | **Session state** | `/root/.claude/projects/-root/memory/session-state.md` |
 

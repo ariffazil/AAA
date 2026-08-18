@@ -67,13 +67,15 @@ Defined in `AAA/agent-cards/identity/`.
 ## Shell init — always run first
 
 ```bash
-set -a && source /root/.secrets/kunci-mas.env && set +a
+set -a && source /root/.secrets/kunci-root.env && set +a
 ```
 
-Loads keys from the KUNCI-MAS golden vault. Symlinks at
-`/root/.secrets/{vault,vault.env,mimo,qwen,tokenrouter}.env` resolve to the same
-file. **Iron Rule:** only edit `kunci-mas.env`. systemd services consume
-`kunci-mas.flat.env` (auto-generated via `make -f /root/.secrets/Makefile vault-generate`).
+Loads keys from the KUNCI-ROOT golden vault (`/root/.secrets/kunci-root.env`).
+Aliases `kunci-mas.env`, `vault.env`, `mimo.env`, `qwen.env`, `tokenrouter.env`
+resolve to the same file. **Iron Rule:** only edit `kunci-root.env`. systemd
+consumes `kunci-root.flat.env` (auto-generated via
+`make -f /root/.secrets/Makefile vault-generate`). Terminal bind:
+`/etc/profile.d/kunci-root.sh` + `/root/.bashrc` + `BASH_ENV`.
 
 **5-R Protocol:** READ → RESOLVE → RECONCILE → RESTART → REPORT.
 Never hardcode keys, never paste in chat or VAULT999, never commit `.env`,
@@ -85,7 +87,7 @@ NATS bind `127.0.0.1` with no auth. UFW blocks the outside. Full doctrine:
 
 ### 30-second session start checklist
 
-1. `source /root/.secrets/kunci-mas.env` (5-R Protocol ready)
+1. `source /root/.secrets/kunci-root.env` (5-R Protocol ready)
 2. Read `/root/AGENTS.md` + `/root/CLAUDE.md`
 3. Boot: `cat /root/AAA/prompts/INIT.md` (Trinity-33 · RSI)
 4. One-shot state pane: `now` — time + 10 federation surfaces + FRAME observer drift + last session carry. (`now --json` for machine-readable)

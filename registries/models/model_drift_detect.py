@@ -142,14 +142,15 @@ def check_drift(registry: dict, verbose: bool = True) -> list:
 
         # Check fallback chain integrity
         for fb in agent.get("fallback_chain", []):
-            fb_model = models.get(fb["model_key"])
+            fb_key = fb if isinstance(fb, str) else (fb.get("model_key") or fb.get("model") or "")
+            fb_model = models.get(fb_key)
             if not fb_model:
                 findings.append(
                     {
                         "agent": agent["agent_id"],
                         "type": "MISSING_FALLBACK_MODEL",
                         "severity": "HIGH",
-                        "fallback_model": fb["model_key"],
+                        "fallback_model": fb_key,
                         "reason": "Fallback model not found in registry",
                     }
                 )

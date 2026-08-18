@@ -60,7 +60,7 @@ Secrets are **radioactive material**. Every leaked secret is a financial and sec
 
 | Location | Type |
 |-----------|------|
-| `/root/.secrets/vault.env` | Canonical secret vault (chmod 600) |
+| `/root/.secrets/kunci-root.env` | Canonical secret vault (chmod 600) |
 | Docker secrets | For compose services |
 | Environment variables | Sourced from .env via .bashrc |
 | NEVER: VAULT999 | Append-only ledger, not a secret store |
@@ -82,7 +82,7 @@ Secrets are **radioactive material**. Every leaked secret is a financial and sec
 ## Uncertainty Protocol
 
 - Unsure whether a value IS a secret → treat it as one
-- Unsure whether key is live or dead → check vault.env status
+- Unsure whether key is live or dead → check kunci-root.env status
 - Unsure how to rotate → 888_HOLD, do not experiment
 - Key appears in conversation → flag immediately, do not echo back
 - NEVER put secrets in VAULT999. If tempted → radioactive object.

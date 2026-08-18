@@ -392,8 +392,8 @@ low-credit warnings to user only after the conversation is complete (don't break
 | OpenRouter auto-beta fallback | WIRED | SOT priority 2, cqt=9 |
 | OpenRouter free fallback | WIRED | SOT priority 3, cqt=9 |
 | Ollama local survival | WIRED | SOT priority 4 |
-| `OPENROUTER_API_KEY` in vault.env | PRESENT | used by `consult_external.sh` |
-| `OPENROUTER_MANAGEMENT_KEY` in vault.env | PRESENT | rotation-pending F13 |
+| `OPENROUTER_API_KEY` in kunci-root.env | PRESENT | used by `consult_external.sh` |
+| `OPENROUTER_MANAGEMENT_KEY` in kunci-root.env | PRESENT | rotation-pending F13 |
 | `consult_external.sh` | FUNCTIONAL | Default model: `google/gemma-4-31b-it:free` |
 | MCP server `mcp.openrouter.ai/mcp` | WIRED (enabled, OAuth-pending) | Blocked pending rotation |
 | Per-tier CQT in Hermes config | NOT WIRED | Recommended defaults in §5.2 |

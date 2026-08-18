@@ -830,7 +830,7 @@ agents:
   - AGENTIC
   hooks:
     SessionStart:
-    - source /root/.secrets/vault.env — secrets load
+    - source /root/.secrets/kunci-root.env — secrets load
     - health probe — 6 organs
     - load AAA doctrine — custom instructions stack
     PreToolUse:
