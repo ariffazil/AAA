@@ -1,28 +1,37 @@
 ---
 name: "token-plan-image"
 id: "token-plan-image"
-version: 1.0.0
+version: 1.1.0
 owner: AAA
 risk_tier: low
 floor_scope: [F1, F2, F4, F7]
-description: "Call the Qwen Token Plan text-to-image / image-edit models (qwen-image-2.0, qwen-image-2.0-pro, wan2.7-image, wan2.7-image-pro) to generate or edit images. Activates when the user asks to draw or generate images."
+description: "Call Qwen Token Plan image models on the Personal allowlist (qwen-image-3.0-pro, wan2.7-image, wan2.7-image-pro). Activate when the user asks to draw, generate, or edit an image via Token Plan."
 autonomy_tier: T1
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
 ---
 
-Call the Qwen Token Plan multimodal-generation API to generate (or edit) an image.
+Generate or edit an image on **Qwen Token Plan** only. Capability SOT: `CAPABILITIES.json` (`image_out`).
 
 User request: $ARGUMENTS
 
+## Allowlist (exact IDs — do not invent versions)
+
+| Model | When |
+|---|---|
+| `qwen-image-3.0-pro` | **Default.** Layout, fine text, multilingual fonts, gen+edit, ≤6 outs, 2048² |
+| `wan2.7-image` | Faster Wan, ≤2K |
+| `wan2.7-image-pro` | 4K t2i, brand color, multi-ref edit (up to 9 images) |
+
+Not on Token Plan Personal allowlist: `qwen-image-2.0`, `qwen-image-2.0-pro`, `z-image-turbo`. Do not call them on this key.
+
 ## Steps
 
-1. Extract prompt (image description), model (default `qwen-image-2.0`), and size (default `1024*1024`) from the user request. If the user explicitly specifies a model (e.g. `model=wan2.7-image` or `use wan2.7-image-pro`), use that model name exactly. Available models: `qwen-image-2.0`, `qwen-image-2.0-pro`, `wan2.7-image`, `wan2.7-image-pro`.
-
-2. Call the API (use bash):
+1. Prompt + model (default `qwen-image-3.0-pro`) + size (default `1024*1024`).
+2. Call Token Plan Singapore (not dashscope-intl pay-as-you-go):
 
 ```bash
-source /root/.secrets/vault.env
+source /root/.secrets/kunci-root.env
 curl -s -X POST "https://token-plan.ap-southeast-1.maas.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation" \
   -H "Authorization: Bearer $QWEN_API_KEY" \
   -H "Content-Type: application/json" \
@@ -35,22 +44,15 @@ curl -s -X POST "https://token-plan.ap-southeast-1.maas.aliyuncs.com/api/v1/serv
   }'
 ```
 
-3. Extract the image URL from `output.choices[*].message.content[*].image` in the response JSON.
+3. Image URL from `output.choices[*].message.content[*].image`.
+4. Download to `generated_$(date +%Y%m%d_%H%M%S).png`.
+5. Return the path.
 
-4. Download the image:
-
-```bash
-curl -sL -o "generated_$(date +%Y%m%d_%H%M%S).png" "<URL>"
-```
-
-5. Display the generated image file path to the user.
+Edit: `content = [{"image": "<url>"}, {"text": "<edit>"}]`. Prefer `qwen-image-3.0-pro` or `wan2.7-image-pro`.
 
 ## Notes
 
-- Token Plan Team Edition — Credits deducted from seat monthly quota (RM0 marginal).
-- `qwen-image-2.0-pro` and `wan2.7-image-pro` are higher quality / slower.
-- For image editing (input image + edit prompt), use `wan2.7-image-pro` with `input.messages[0].content = [{"image": "<input_url>"}, {"text": "<edit prompt>"}]`.
-- wan2.7-image-pro supports multi-image fusion (up to 9 inputs) + 2K output.
-- Base64 payloads MUST go via file (`-d @file.json`), not inline.
-- If HTTP 400 `Throttling.AllocationQuota` → seat quota exhausted. Check https://home.qwencloud.com/billing/subscription/token-plan
-- If HTTP 200 `InvalidApiKey` → key expired/deactivated. Rotate in /root/.secrets/kunci-mas.env.
+- Credits from Token Plan seat. Video/image burn faster than text.
+- `Throttling.AllocationQuota` → seat window exhausted.
+- MiniMax media (`minimax-media`) is a different hand. This skill is Qwen Token Plan only.
+- Docs: https://docs.qwencloud.com/developer-guides/getting-started/image-models
