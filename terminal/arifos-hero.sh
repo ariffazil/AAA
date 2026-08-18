@@ -439,82 +439,115 @@ def render(state):
     ds_ok = isinstance(ds, (int, float)) and ds <= 0
     fq_ok = fq_v not in ("FOSSILIZED", "VOID")
 
-    # arifOS ASCII Art Block (arif smallcaps, OS ALL CAPS) ala agy
-    art_lines = [
-        ("                 ▄▀▀▄ ▄▀▀▀", c(B, "arifOS Federation") + " · " + c(mode_c, state.get("mode_label", mode))),
-        ("                 █  █ ▀▀▀▄", c(GR, "AUTHORITY: ") + c(B, "ARIF") + " (F13) · " + c(GR, "DITEMPA BUKAN DIBERI")),
-        ("  ▄▀█ █▀▄ ▀█▀ █▀▀ █  █   ▀▄", c(GR, "VERDICTS:  ") + "UNKNOWN · SABAR · HOLD · SEAL · VOID"),
-        ("  █▀█ █▀▄  █  █▀  █  █ ▄  █", c(GR, "RULE:      ") + c(B, "NO SEAL → NO EXECUTION")),
-        ("  ▀ ▀ ▀ ▀ ▀▀▀ ▀   ▀▄▄▀ ▀▀▀ ", c(GR, "LOOP:      ") + (state.get("loop") or "000 → 333 → 555 → 888 → 777 → 999") + c(GR, " (") + c(Y, state.get("loop_now", "")) + c(GR, ")")),
-    ]
+    # arifOS ASCII Art — larger letters, framed, enhanced visual hierarchy
+    w_c   = "\033[37m"       # white
+    dw    = "\033[2;37m"     # dim white
+    lbl_c = c(B, mode_c if mode == "HOLD" else G,)
+
+    def lbl(ok, text, bad_c=Y):
+        return c(G, text) if ok else c(bad_c, text)
+
+    g_ok   = isinstance(g, (int, float)) and g >= 0.80
+    ds_ok  = isinstance(ds, (int, float)) and ds <= 0
+    fq_ok  = fq_v not in ("FOSSILIZED", "VOID")
+    w3_ok  = isinstance(w3, (int, float)) and w3 >= 0.75
+
+    # Colored half-block art: 'a' 'r' 'i' 'f' small, 'OS' big
+    h1 = (f"  {C}▄▄▄▄  ▄▄▄▄  ▄  ▄▄▄▄▄    {B}{C}╔═══╗      ╔═╗ {R}")
+    h2 = (f"  {C}█  █▌ █  █▌ █  █▌       {B}{C}╠═╗ ╦╔═╗  ╔═╣ {R}")
+    h3 = (f"  {C}▀▀▀▀  ▀▀▀▀  ▀  ▀▀▀▀▀    {B}{C}╚═══╩╚═╝  ╚═╝ {R}")
+
+    thin  = "  ───────────────────────    ────────────────"
+    thin_c = f"  {dw}───────────────────────────────{R}"
+
+    # Right-side metadata
+    def rmeta(label, value):
+        return f"  {GR}{label:<12}{R}{value}"
 
     print()
-    for art, meta in art_lines:
-        print(f" {c(C, art)}   {meta}")
+    print(h1 + rmeta("FEDERATION",  c(B, "arifOS") + " · " + c(mode_c, state.get("mode_label", mode))))
+    print(h2 + rmeta("AUTHORITY",   c(B, "ARIF") + " (F13) · " + c(GR, "DITEMPA BUKAN DIBERI")))
+    print(h3 + rmeta("VERDICTS",    "UNKNOWN · SABAR · " + c(Y, "HOLD") + " · " + c(G, "SEAL") + " · " + c(RD, "VOID")))
+    print(thin_c)
+    print(f"  {GR}{'':>28}{R}"  + rmeta("LOOP",        state.get("loop") or "000→333→555→888→777→999") + c(GR, "  (") + c(Y if not fq_ok else G, state.get("loop_now", "")) + c(GR, ")"))
+    print(f"  {GR}{'':>28}{R}"  + rmeta("RULE",        c(B, "NO SEAL → NO EXECUTION")))
+    print()
     print()
 
-    print()
-    print(c(B, "ATLAS"))
+    # ── ATLAS ──
+    print(f"  {B}ATLAS{R}")
     atlas = state.get("atlas") or {}
     for key in ("LAW", "STATE", "BRAIN", "CAPS", "TOOLS", "SKILLS", "FLOW"):
         val = atlas.get(key)
-        shown = val if val else "[UNMINTED]"
-        print(c(GR, f"  {key:<7}") + shown)
+        shown = val if val else f"{GR}[UNMINTED]{R}"
+        print(f"  {GR}{key:<7}{R}{shown}")
         if key == "LAW" and atlas.get("LAW_FED"):
-            print(c(GR, "         ") + "fed " + atlas["LAW_FED"])
+            print(f"  {GR}        {R}fed {atlas['LAW_FED']}")
+
+    # ── HANDOVER ──
     print()
-    print(c(B, "HANDOVER"))
+    print(f"  {B}HANDOVER{R}")
     hops = state.get("handover") or []
     if not hops:
-        print(c(GR, "  none — clerks append /root/AAA/telemetry/handover.log"))
+        print(f"  {GR}none — clerks append /root/AAA/telemetry/handover.log{R}")
     else:
         for h in hops:
-            print(c(Y, f"  • [{h.get('time')}] ") + f"{h.get('actor')}: {h.get('summary')}")
+            print(f"  {Y}• [{h.get('time')}]{R} {h.get('actor')}: {h.get('summary')}")
+
+    # ── METRICS (side-by-side compact) ──
     print()
-    print(c(B, "FQ") + f" {c(Y if not fq_ok else G, fq_s)} " + c(Y if not fq_ok else G, fq_v) + c(GR, "  ·  ") + str(diag))
-    vx = f"  FQ = V/X = {v}/{x}" if v is not None and x is not None else ""
+    fq_color = G if fq_ok else Y
+    ds_color = G if ds_ok else Y
+    g_color  = G if g_ok  else Y
+    w3_color = G if w3_ok else Y
+    cd_color = G if cd_ok else Y
+
     debt_s = f"{debt}" if debt is not None else "?"
-    print(
-        c(GR, "APEX")
-        + "  ΔS=" + flag(ds_ok, fmt_num(ds))
-        + "  G=" + flag(g_ok, fmt_num(g))
-        + (" <0.80" if not g_ok and g is not None else " ≥0.80" if g_ok else "")
-        + "  C_dark=" + flag(cd_ok, fmt_num(cd, 3))
-        + "  W3=" + flag(w3_ok, fmt_num(w3))
-        + (" <0.75" if not w3_ok and w3 is not None else "")
-    )
-    print(c(GR, "     ") + f"  G=(A·P·E·X)^(1/4)  Debt=V−X={debt_s}" + vx)
+    vx = f"  FQ=V/X={v}/{x}" if v is not None and x is not None else ""
+
+    print(f"  {B}FQ{R}  {fq_color}{fq_s}{R}  {fq_color}{fq_v}{R}  {GR}·{R}  {diag}")
+    print(f"  {GR}APEX{R}  ΔS={ds_color}{fmt_num(ds)}{R}  G={g_color}{fmt_num(g)}{R}{(' <0.80' if not g_ok and g is not None else ' ≥0.80' if g_ok else '')}  C_dark={cd_color}{fmt_num(cd, 3)}{R}  W3={w3_color}{fmt_num(w3)}{R}{(' <0.75' if not w3_ok and w3 is not None else '')}")
+    print(f"  {GR}     {R}  G=(A·P·E·X)^(1/4)  Debt=V−X={debt_s}{vx}")
+
+    # ── BROADCAST / MISSION / HOLDS ──
     print()
-    print(c(B, "BROADCAST"))
-    print("  " + (state.get("broadcast") or ""))
+    print(f"  {B}BROADCAST{R}")
+    print(f"  {state.get('broadcast') or ''}")
     print()
-    print(c(B, "MISSION") + "  " + (state.get("mission") or ""))
+    print(f"  {B}MISSION{R}  {state.get('mission') or ''}")
     print()
-    print(c(B, "OPEN HOLDS"))
+    print(f"  {B}OPEN HOLDS{R}")
     holds = state.get("holds") or []
     if not holds:
-        print(c(G, "  none — board empty means resolved"))
+        print(f"  {G}none — board empty means resolved{R}")
     else:
         for h in holds[:6]:
-            print(c(Y, "  • ") + h)
+            print(f"  {Y}•{R} {h}")
+
+    # ── ORDERS ──
     print()
     for role, duty in state.get("orders") or []:
-        print(f"  {c(C, f'{role:<10}')} {duty}")
+        print(f"  {C}{role:<10}{R} {duty}")
+
+    # ── TODAY'S LAW ──
     print()
-    print(c(B, "TODAY'S LAW"))
-    print("  " + (state.get("today_law") or state.get("law") or ""))
+    print(f"  {B}TODAY'S LAW{R}")
+    print(f"  {state.get('today_law') or state.get('law') or ''}")
+
+    # ── SYSTEM STATUS BAR ──
     print()
     m = state.get("machine") or {}
     well = state.get("well")
     well_c = Y if str(well).upper() == "HOLD" else G
-    print(
-        c(GR, "kernel ")
-        + c(G if state.get("kernel") in ("healthy", "ok") else RD, state.get("kernel") or "?")
-        + c(GR, "  well ")
-        + c(well_c, well)
-        + c(GR, f"  floors {state.get('floors')}/13")
-        + c(GR, f"  mem {m.get('mem_pct')}%  load {m.get('load')}  disk {m.get('disk')}  {state.get('now')}")
-    )
+    kern_c = G if state.get("kernel") in ("healthy", "ok") else RD
+    floors = state.get('floors')
+
+    bar  = f"  {GR}kernel{R} {kern_c}{state.get('kernel') or '?'}{R}"
+    bar += f"  {GR}well{R} {well_c}{well}{R}"
+    bar += f"  {GR}floors{R} {floors}/13"
+    bar += f"  {GR}mem{R} {m.get('mem_pct')}%  {GR}load{R} {m.get('load')}  {GR}disk{R} {m.get('disk')}"
+    bar += f"  {GR}{state.get('now')}{R}"
+    print(bar)
     print()
 
 
