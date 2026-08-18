@@ -1,5 +1,8 @@
 # 🌀 OPENCLAW — Boot
 
+> **Planes:** `/root/AAA/governance/ARIF_FLOW_METABOLIC_PLANE.md`  
+> Worker layer: execute, do not evolve. `FLOW_GRAPH` not minted. Phase 7 queued.
+
 ## Cold Start Sequence
 
 ```

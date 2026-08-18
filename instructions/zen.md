@@ -25,10 +25,14 @@
 ```
 arifOS   = undang-undang ⚖️  (law — the brain, :8088)
 A-FORGE  = tangan 👐         (hands — the body, :7071)
-arifFlow = saraf 🧠           (nerves — the flow, :7073)
+MCP      = saraf 🧠           (tool transport — nerves)
+arifFLOW = metabolisme        (receipts · FQ · consequences, :7073)
 FQ       = nadi ❤️            (pulse — the heartbeat)
 VAULT999 = tulang 💀          (bones — the structure)
 ```
+
+Planes (10 roles · 6 SOTs · 1 substrate): `/root/AAA/governance/ARIF_FLOW_METABOLIC_PLANE.md`  
+`FLOW_GRAPH.json` is not minted. Phase 7 queued. Agent does not get smarter. Federation does.
 
 > **Bila FQ turun, semua HOLD. Bila FQ naik, semua forge.**
 > DITEMPA BUKAN DIBERI — dan ditempa dalam flow, bukan dalam drift.
@@ -44,7 +48,7 @@ Every AAA warga agent answering time-related questions MUST first run `now` (ful
 
 ## The 30-second session check
 
-1. `source /root/.secrets/kunci-mas.env`
+1. `source /root/.secrets/kunci-root.env`
 2. Read `/root/AGENTS.md` + `/root/CLAUDE.md`
 3. Boot: `cat /root/AAA/prompts/INIT.md`
 4. One-shot pane: `now` (time + federation + FRAME + carry)
