@@ -34,8 +34,8 @@ Three things you must know:
 
 | Variable | Source | Used by | Notes |
 |---|---|---|---|
-| `OPENROUTER_API_KEY` | `/root/.secrets/vault.env` (mode 600) | All OpenAI-compatible API calls | `${env:OPENROUTER_API_KEY}` in opencode.json |
-| `OPENROUTER_MANAGEMENT_KEY` | `/root/.secrets/vault.env` (mode 600) | Management API only (guardrails, key rotation) | Treat as rotation-pending F13 SOVEREIGN |
+| `OPENROUTER_API_KEY` | `/root/.secrets/kunci-root.env` (mode 600) | All OpenAI-compatible API calls | `${env:OPENROUTER_API_KEY}` in opencode.json |
+| `OPENROUTER_MANAGEMENT_KEY` | `/root/.secrets/kunci-root.env` (mode 600) | Management API only (guardrails, key rotation) | Treat as rotation-pending F13 SOVEREIGN |
 
 **Operational rules:**
 - Read both from env, **never** from `~/.bash_history`, chat, VAULT999, or logs
@@ -542,8 +542,8 @@ transparently fails over on 5xx/429/network errors. Failure modes:
 | Provider registration | ACTIVE in SOT | 2026-07-24 |
 | 10 OpenRouter models in `opencode.json` | WIRED | 2026-07-24 |
 | MCP server entry | WIRED (enabled, remote, OAuth-pending) | 2026-07-24 |
-| `OPENROUTER_API_KEY` in vault.env | PRESENT | pre-2026-07-24 |
-| `OPENROUTER_MANAGEMENT_KEY` in vault.env | PRESENT, **rotation-pending** | pre-2026-07-24 |
+| `OPENROUTER_API_KEY` in kunci-root.env | PRESENT | pre-2026-07-24 |
+| `OPENROUTER_MANAGEMENT_KEY` in kunci-root.env | PRESENT, **rotation-pending** | pre-2026-07-24 |
 | Workspace guardrail | NOT PROVISIONED | awaiting F13 rotation |
 | OAuth flow at `mcp.openrouter.ai/mcp` | NOT TRIGGERED | awaiting F13 rotation |
 | SOT shadow SHADOW-OR-001 | DRAFTED in §5.2 of Zen doc | 2026-07-24 |
@@ -556,7 +556,7 @@ transparently fails over on 5xx/429/network errors. Failure modes:
 
 | Path | Purpose |
 |---|---|
-| `/root/.secrets/vault.env` | OPENROUTER_API_KEY + OPENROUTER_MANAGEMENT_KEY (mode 600) |
+| `/root/.secrets/kunci-root.env` | OPENROUTER_API_KEY + OPENROUTER_MANAGEMENT_KEY (mode 600) |
 | `/root/.config/opencode/opencode.json` | Live provider config (10 OpenRouter models + MCP) |
 | `/root/AAA/registries/models/AGENT_MODEL_MAP.json` | Canonical SOT — provider, models, routing_rules |
 | `/root/AAA/docs/OPENROUTER_ZEN_OPTIMIZATION.md` | Strategic doctrine (this doc's parent) |

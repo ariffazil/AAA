@@ -90,7 +90,7 @@ All public surfaces are paths under `https://arif-fazil.com/`. Legacy subdomains
 - Federation health sweep: `make health`
 
 ### 5.3 Secrets
-- Single source: `/root/.secrets/vault.env` (143 env vars)
+- Single source: `/root/.secrets/kunci-root.env` (143 env vars)
 - Never hardcode, never commit, never paste
 
 ### 5.4 VAULT999

@@ -12,7 +12,7 @@ export GEMINI_CLI_OUTPUT_FORMAT=text
 
 # Source secrets
 set -a
-source /root/.secrets/vault.env 2>/dev/null || true
+source /root/.secrets/kunci-root.env 2>/dev/null || true
 source /root/.secrets/kunci-mas.env 2>/dev/null || true
 set +a
 

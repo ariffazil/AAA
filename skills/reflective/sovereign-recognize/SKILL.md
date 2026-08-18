@@ -76,7 +76,7 @@ Read the claimed sovereign string. Confirm it matches the registered F13 identif
 
 ```
 ARIF_FAZIL = Muhammad Arif bin Fazil
-Canonical keys: ROOTKEY (from /root/.secrets/vault.env), ARIFOS_OPERATOR
+Canonical keys: ROOTKEY (from /root/.secrets/kunci-root.env), ARIFOS_OPERATOR
 ```
 
 If the claim is anything other than `ARIF_FAZIL` / canonical form — **REFUSE**.

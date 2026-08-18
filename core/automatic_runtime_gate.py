@@ -625,7 +625,7 @@ def check_all_floors(
                     passed=True,  # passed=True = not a violation, just advisory
                     severity="SABAR",
                     code="F2_HARDCODED_SECRET",
-                    reason="F2 TRUTH (ADVISORY): Hardcoded API key pattern detected. Use ${ENV_VAR} from vault.env instead.",
+                    reason="F2 TRUTH (ADVISORY): Hardcoded API key pattern detected. Use ${ENV_VAR} from kunci-root.env instead.",
                 )
             )
             break

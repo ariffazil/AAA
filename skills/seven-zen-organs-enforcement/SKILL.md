@@ -684,7 +684,7 @@ Step 4:   REPORT the evidence, not your evaluation.
 
 20. **Never trust an agent's self-description of its own identity — verify via process × config × API cross-check (validated 2026-07-26, OpenClaw identity trust failure).** When an agent (OpenClaw, Codex, Claude Code, any A2A peer) describes itself — its role, its bot mapping, its federation membership — the agent's own self-description is **NOT a primary source**. It's a self-report. Self-reports can be wrong, misleading, or aspirational.
 
-    **Concrete failure (2026-07-26):** OpenClaw's self-description table claimed "🦞 AGI (Hermes — saya)" — implying OpenClaw IS Hermes. Reality-check: `ps aux | grep gateway` shows two processes. `vault.env` shows two tokens. Telegram API `getMe` returns two bot identities. OpenClaw is a SEPARATE process with its own token. The user corrected: "Tidak. OpenClaw tu tipu sikit dalam self-description dia."
+    **Concrete failure (2026-07-26):** OpenClaw's self-description table claimed "🦞 AGI (Hermes — saya)" — implying OpenClaw IS Hermes. Reality-check: `ps aux | grep gateway` shows two processes. `kunci-root.env` shows two tokens. Telegram API `getMe` returns two bot identities. OpenClaw is a SEPARATE process with its own token. The user corrected: "Tidak. OpenClaw tu tipu sikit dalam self-description dia."
 
     **The reflex — Identity Triple Cross-Check:**
 
@@ -694,7 +694,7 @@ Step 4:   REPORT the evidence, not your evaluation.
     Layer 1 PROCESS  — ps aux | grep <agent>
                        → Is there ONE process or MULTIPLE?
                        → What process binary is actually running?
-    Layer 2 CONFIG   — grep token vault.env, config.yaml
+    Layer 2 CONFIG   — grep token kunci-root.env, config.yaml
                        → Does the token mapping match what the agent claims?
                        → Is there one bot_token_env or multiple?
     Layer 3 API      — curl -sf "https://api.telegram.org/bot${TOKEN}/getMe"
@@ -709,7 +709,7 @@ Step 4:   REPORT the evidence, not your evaluation.
 
     # 2. Which token maps to which bot?
     for token_var in ASI_ARIFOS_BOT_TOKEN TELEGRAM_BOT_TOKEN FORGE_BOT_TOKEN; do
-      token=$(grep "^export $token_var=" /root/.secrets/vault.env | sed 's/.*=//')
+      token=$(grep "^export $token_var=" /root/.secrets/kunci-root.env | sed 's/.*=//')
       echo "$token_var → $(curl -sf \"https://api.telegram.org/bot${token}/getMe\" | jq -r '.result.username // \"FAIL\"')"
     done
 

@@ -31,7 +31,7 @@ Adding a new organ to the arifOS Federation requires constitutional, technical, 
 - [ ] Date-stamp tags only (`vYYYY.MM.DD`)
 
 ## Step 4: Secrets & Environment
-- [ ] All secrets from `/root/.secrets/vault.env` only
+- [ ] All secrets from `/root/.secrets/kunci-root.env` only
 - [ ] No hardcoded keys, no `.env` files committed
 - [ ] 5-R protocol documented: READ → RESOLVE → RECONCILE → RESTART → REPORT
 

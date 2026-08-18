@@ -9,7 +9,7 @@
    ├── OS: Linux (af-forge VPS, 72.62.71.199)
    ├── Workspace: /root (all federation repos)
    ├── Config: /root/.gemini/
-   └── Secrets: /root/.secrets/vault.env
+   └── Secrets: /root/.secrets/kunci-root.env
 
 2. LOAD CONTEXT
    ├── SYSTEM_MD.md    → /root/.gemini/SYSTEM_MD.md (runtime system prompt)

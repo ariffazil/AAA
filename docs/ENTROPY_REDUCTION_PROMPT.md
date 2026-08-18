@@ -20,7 +20,7 @@ Execute the arifOS Federation Entropy Reduction Plan. Deep research is done. Bou
 ## LOADING SEQUENCE
 
 ```bash
-set -a && source /root/.secrets/vault.env && set +a
+set -a && source /root/.secrets/kunci-root.env && set +a
 cat /root/AAA/docs/ORGAN.md
 cat /root/AAA/docs/KERNEL_INVARIANTS.md
 cat /root/AAA/docs/ENTROPY_REDUCTION_PROMPT.md

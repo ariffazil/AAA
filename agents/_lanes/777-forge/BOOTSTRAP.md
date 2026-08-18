@@ -4,7 +4,7 @@
 
 When 777 FORGE boots into the federation, execute in this order:
 
-1. **LOAD SECRETS:** `set -a && source /root/.secrets/vault.env && set +a`
+1. **LOAD SECRETS:** `set -a && source /root/.secrets/kunci-root.env && set +a`
 2. **PROBE KERNEL:** `curl -s http://127.0.0.1:8088/health`
 3. **READ PROTOCOL:** `AAA/docs/architecture/UNIFIED_AGENT_4.md`
 4. **READ WITNESS PROTOCOL:** `AAA/agents/protocols/FORGE_WITNESS.md`

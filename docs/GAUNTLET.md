@@ -22,8 +22,8 @@
 | 0.1 | **Rotate exposed OAuth tokens** | `/root/.hermes/google_token.json` | Revoke in Google Cloud Console, generate new, store in `/root/.secrets/` with SOPS |
 | 0.2 | **Remove hardcoded bot token** | `arifOS/deploy/docker-compose.yml` line 122 | Replace with `${NOTIFIER_TELEGRAM_BOT_TOKEN}` |
 | 0.3 | **Remove hardcoded DB password** | `arifOS/deploy/docker-compose.yml` line 71 | Replace with `${POSTGRES_PASSWORD}` |
-| 0.4 | **Remove hardcoded API keys** | `arifOS/arifosmcp/gateway/config.yaml` lines 40-55 | Move to env vars, load from `vault.env` |
-| 0.5 | **Move Telegram bot token from JSON** | `.hermes/platforms/telegram/config.json` | Extract to `vault.env`, keep template in YAML |
+| 0.4 | **Remove hardcoded API keys** | `arifOS/arifosmcp/gateway/config.yaml` lines 40-55 | Move to env vars, load from `kunci-root.env` |
+| 0.5 | **Move Telegram bot token from JSON** | `.hermes/platforms/telegram/config.json` | Extract to `kunci-root.env`, keep template in YAML |
 
 ---
 

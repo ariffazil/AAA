@@ -13,7 +13,7 @@ Options:
     --raw       Use Chat Completions (no tools, fastest)
     (default)   Chat Completions, no tools
 
-Env: AZURE_OPENAI_KEY from /root/.secrets/vault.env
+Env: AZURE_OPENAI_KEY from /root/.secrets/kunci-root.env
 """
 
 import json
@@ -22,7 +22,7 @@ import os
 import subprocess
 
 import dotenv
-dotenv.load_dotenv("/root/.secrets/vault.env", override=False)
+dotenv.load_dotenv("/root/.secrets/kunci-root.env", override=False)
 KEY = os.environ.get("AZURE_OPENAI_KEY", "")
 ENDPOINT = os.environ.get("AZURE_OPENAI_ENDPOINT", "https://ariffazil-7416-resource.services.ai.azure.com/openai/v1")
 MODEL = os.environ.get("AZURE_OPENAI_MODEL", "gpt-4.1-mini")

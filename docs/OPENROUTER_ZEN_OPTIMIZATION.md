@@ -337,7 +337,7 @@ Cerebras free credit — use it for FLAME volume before expiry.
 ## 9. Implementation Plan
 
 ### Phase 1 — Immediate (T2, after rotation)
-1. **Rotate** exposed OpenRouter management key + add new key to `/root/.secrets/vault.env` as `OPENROUTER_MANAGEMENT_KEY`
+1. **Rotate** exposed OpenRouter management key + add new key to `/root/.secrets/kunci-root.env` as `OPENROUTER_MANAGEMENT_KEY`
 2. **Provision** `aaa-sovereign-guardrail` via Management API (script below)
 3. **Set** workspace defaults: `zdr: true` on, prompt-injection `block`, email/phone `redact`
 4. **Update** `AGENT_MODEL_MAP.json` `provider.openrouter.note` with ZDR + guardrail refs
