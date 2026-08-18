@@ -432,6 +432,16 @@ C0 gate: Did the agent provide RAW evidence (receipts, diffs, logs)?
 
 **Hard rule:** This step is NOT optional. The helix is the institution.
 
+### Steps 1-3: INDEPENDENT — run concurrently
+
+Steps 1, 2, and 3 are independent — none consumes another's output. Execute them concurrently (parallel tool calls, Promise.allSettled, or equivalent). Do not serialize them.
+
+```
+                → Step 1: RSI CYCLE      ─┐
+SESSION END     → Step 2: GATE FIRE      ─┤→ Step 4: BIND SESSION
+                → Step 3: COOLING LEDGER ─┘
+```
+
 ### Step 1: RSI CYCLE
 ```
 Trace → Diagnose → Remediate → Ledger
