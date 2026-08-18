@@ -155,6 +155,12 @@ KIMI_PRICING = _SOT["pricing"]["kimi-moonshot"]
 # Zen 2026-08-05: Added by 333-AGI under F13 directive "wire FLAME to FED".
 FLAME_PRICING = _SOT["pricing"]["flame"]
 
+# QWEN TEAM SEAT — Anthropic-compatible arifOS team seat on Qwen Token Plan.
+# Patch 2026-08-18: F13 directive "qwen token plan team seat arifos is alive —
+# make sure all FED got this." Endpoint is apps/anthropic/v1 (NOT compatible-mode).
+# OpenAI-compatible path on the same seat remains quota-exhausted; do not use it.
+QWEN_TEAM_PRICING = _SOT["pricing"]["qwen-token-plan-team"]
+
 
 def _estimate_cost(provider_id: str, model_id: str, tokens_in: int, tokens_out: int) -> float:
     """Calculate estimated cost in USD. Zen 2026-08-02: added deepseek pricing."""
@@ -164,6 +170,7 @@ def _estimate_cost(provider_id: str, model_id: str, tokens_in: int, tokens_out: 
         "tokenrouter": TOKENROUTER_PRICING,
         "flame": FLAME_PRICING,
         "kimi-moonshot": KIMI_PRICING,
+        "qwen-token-plan-team": QWEN_TEAM_PRICING,
         "qwen-token-plan-individual": DEEPSEEK_PRICING,  # Qwen routes deepseek models at similar pricing
         "bailian-token-plan": DEEPSEEK_PRICING,  # Bailian also similar
         "qwen-token-plan-individual": DEEPSEEK_PRICING,  # Qwen Individual Pro — same SG endpoint, same pricing
@@ -180,6 +187,7 @@ def _estimate_cost_per_1k(provider_id: str, model_id: str) -> dict:
         "tokenrouter": TOKENROUTER_PRICING,
         "flame": FLAME_PRICING,
         "kimi-moonshot": KIMI_PRICING,
+        "qwen-token-plan-team": QWEN_TEAM_PRICING,
         "qwen-token-plan-individual": DEEPSEEK_PRICING,
         "bailian-token-plan": DEEPSEEK_PRICING,
         "qwen-token-plan-individual": DEEPSEEK_PRICING,
