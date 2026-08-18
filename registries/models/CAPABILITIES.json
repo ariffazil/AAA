@@ -1,0 +1,737 @@
+{
+  "_meta": {
+    "schema_version": 1,
+    "name": "CAPABILITIES",
+    "forged": "2026-08-18",
+    "forged_by": "kimi-code/FI-008",
+    "owner": "Modality Truth",
+    "doctrine": "Modalities \u2260 Features. They drift separately. Default = false. If a flag is absent, the model does not have it.",
+    "phase": "1 \u2014 modality SOT only. Phase 2 = drift audit. Phase 3+ = consumers (Hermes, OpenClaw).",
+    "supersedes_scattered": [
+      "kimi-code/config.toml capabilities arrays (image_in/video_in/audio_in)",
+      "A-FORGE/litellm-config.yaml supports_vision / supports_function_calling / supports_prompt_caching",
+      ".config/federation-models.json modalities arrays",
+      "AAA/federation/organs.yaml minimax-media upstream_models lists"
+    ],
+    "references_sot_not_duplicate": {
+      "brain": ".config/federation-models.json",
+      "species_role": "AAA/registries/models/COGNITIVE_SPECIES.json",
+      "execution_chain": "A-FORGE/litellm-config.yaml",
+      "law": "arifOS :8088"
+    },
+    "audit_command": "python3 /root/AAA/registries/models/capabilities_audit.py",
+    "drift_policy": "Zero drift tolerated. Run capabilities_audit before any Hermes/consumer reads. Drift > 0 \u2192 HOLD + patch.",
+    "provenance": "Extracted 2026-08-18 from 4 scattered sources. Snapshots: /root/forge_work/_quarantine/2026-08-18-capabilities-sot/"
+  },
+  "defaults": {
+    "modalities": {
+      "text": true,
+      "vision": false,
+      "audio_in": false,
+      "audio_out": false,
+      "video_in": false,
+      "video_out": false,
+      "image_out": false,
+      "music_out": false
+    },
+    "features": {
+      "tool_calling": false,
+      "structured_output": false,
+      "reasoning_tier": "low"
+    }
+  },
+  "models": {
+    "i-arif": {
+      "_note": "Identity organ FI-000. Backs onto i-arif chain (opencode-zen deepseek-v4-pro primary after 2026-08-18 zen-fix).",
+      "modalities": {
+        "vision": true,
+        "audio_in": true
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "high"
+      }
+    },
+    "MiniMax-M3": {
+      "_note": "Multimodal flagship \u2014 1M ctx. Vision + audio + video + image + music generation per provider docs + federation-models.json capabilities array (music, tts, image_generation, video_generation).",
+      "modalities": {
+        "vision": true,
+        "audio_in": true,
+        "audio_out": true,
+        "video_in": true,
+        "video_out": true,
+        "image_out": true,
+        "music_out": true
+      },
+      "features": {
+        "tool_calling": true,
+        "structured_output": true,
+        "reasoning_tier": "high"
+      }
+    },
+    "minimax-media": {
+      "_note": "Generation organ, not a text LLM. Hands live at runtime (minimax-media MCP). Do not treat port numbers as capability truth.",
+      "modalities": {
+        "audio_out": true,
+        "image_out": true,
+        "video_out": true,
+        "music_out": true
+      },
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "kimi-k3": {
+      "_note": "Kimi Moonshot K3 \u2014 1M ctx, image+video input per kimi/config.toml.",
+      "modalities": {
+        "vision": true,
+        "video_in": true
+      },
+      "features": {
+        "tool_calling": true,
+        "structured_output": true,
+        "reasoning_tier": "high"
+      }
+    },
+    "kimi-k2.7-code": {
+      "_note": "Coding specialist \u2014 image input.",
+      "modalities": {
+        "vision": true
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "mid"
+      }
+    },
+    "kimi-k2.6": {
+      "modalities": {
+        "vision": true
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "mid"
+      }
+    },
+    "kimi-k2.5": {
+      "modalities": {
+        "vision": true
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "mid"
+      }
+    },
+    "claude-sonnet-5": {
+      "_note": "Anthropic Sonnet 5 via opencode-zen. Image input only.",
+      "modalities": {
+        "vision": true
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "high"
+      }
+    },
+    "claude-opus-5": {
+      "modalities": {
+        "vision": true
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "ultra"
+      }
+    },
+    "claude-opus-4.8": {
+      "modalities": {
+        "vision": true
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "ultra"
+      }
+    },
+    "claude-opus-4.7": {
+      "modalities": {
+        "vision": true
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "ultra"
+      }
+    },
+    "claude-sonnet-4.6": {
+      "modalities": {
+        "vision": true
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "high"
+      }
+    },
+    "claude-haiku-4.5": {
+      "modalities": {
+        "vision": true
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "mid"
+      }
+    },
+    "qwen3.8-max": {
+      "_note": "Qwen Token Plan flagship \u2014 vision per kimi/config.",
+      "modalities": {
+        "vision": true,
+        "video_in": true
+      },
+      "features": {
+        "tool_calling": true,
+        "structured_output": true,
+        "reasoning_tier": "high"
+      }
+    },
+    "qwen3.7-max": {
+      "modalities": {
+        "vision": true
+      },
+      "features": {
+        "tool_calling": true,
+        "structured_output": true,
+        "reasoning_tier": "high"
+      }
+    },
+    "qwen3.7-plus": {
+      "modalities": {
+        "vision": true
+      },
+      "features": {
+        "tool_calling": true,
+        "structured_output": true,
+        "reasoning_tier": "mid"
+      }
+    },
+    "qwen3.6-plus": {
+      "modalities": {
+        "vision": true
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "mid"
+      }
+    },
+    "qwen3.6-flash": {
+      "modalities": {
+        "vision": true
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "mid"
+      }
+    },
+    "gpt-5.5": {
+      "_note": "OpenAI flagship via opencode-zen \u2014 vision + reasoning per kimi/config.",
+      "modalities": {
+        "vision": true
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "high"
+      }
+    },
+    "gpt-5.4-pro": {
+      "modalities": {
+        "vision": true
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "high"
+      }
+    },
+    "gpt-5-codex": {
+      "modalities": {
+        "vision": true
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "mid"
+      }
+    },
+    "gemini-2.5-flash": {
+      "_note": "Google Gemini Flash \u2014 multimodal native (vision + audio). Free tier 10rpm/250 RPD.",
+      "modalities": {
+        "vision": true,
+        "audio_in": true
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "mid"
+      }
+    },
+    "gemini-3-flash": {
+      "modalities": {
+        "vision": true,
+        "audio_in": true
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "mid"
+      }
+    },
+    "deepseek-v4-pro": {
+      "_note": "Text-only per default. Vision optional in some cascades \u2014 not confirmed in i-arif chain.",
+      "modalities": {},
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "ultra"
+      }
+    },
+    "deepseek-v4-flash": {
+      "modalities": {},
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "high"
+      }
+    },
+    "glm-5.3": {
+      "_note": "Z.ai Coding Plan Pro \u2014 text-only in default. 1M ctx.",
+      "modalities": {},
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "high"
+      }
+    },
+    "glm-5.2": {
+      "modalities": {},
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "high"
+      }
+    },
+    "mimo-v2.5-pro": {
+      "_note": "Xiaomi MiMo \u2014 vision per federation-models.json modalities.",
+      "modalities": {
+        "vision": true
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "mid"
+      }
+    },
+    "mimo-v2.5": {
+      "modalities": {
+        "vision": true
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "mid"
+      }
+    },
+    "auto": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "auto-beta": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "big-pickle": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "claude-sonnet-latest": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "deepseek-r1": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "deepseek-v4-flash-free": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "free": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "free-aggregator": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "gemini-3.1-pro": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "gemini-3.5-flash-lite": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "gemini-3.6-flash": {
+      "modalities": {
+        "vision": true
+      },
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "mid"
+      }
+    },
+    "gemini-flash-latest": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "gemini-flash-lite-latest": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "gemma-4-31b": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "gemma-4-31b-it:free": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "Gemma-SEA-LION-v4-27B-IT": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "glm-5.1": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "gpt-5-nano": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "gpt-5.6-luna": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "gpt-5.6-sol": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "gpt-oss-120b": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "grok-4.5": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "hy3": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "kimi-for-coding": {
+      "modalities": {
+        "vision": true
+      },
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "mid"
+      }
+    },
+    "kimi-for-coding-highspeed": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "kimi-k3-free": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "laguna-s-2.1-free": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "ling-3.0-flash-free": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "llama-3.1-8b-instant": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "llama-3.2-3b-instruct:free": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "llama-3.3-70b-versatile": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "Llama-SEA-LION-v3-70B-IT": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "Llama-SEA-LION-v3.5-70B-R": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "mimo-v2.5-free": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "mimo-v2.5-pro-ultraspeed": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "MiniMax-M2.5": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "MiniMax-M2.7": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "minimax-m2.7": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "nemotron-3-super-120b-a12b:free": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "nemotron-3-ultra-free": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "north-mini-code-free": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "openai/gpt-oss-120b": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "Qwen-SEA-LION-v4-32B-IT": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "Qwen-SEA-LION-v4.5-27B-IT": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "qwen2.5-coder:3b": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "qwen2.5:3b": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "qwen3.5-plus": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "qwen3.6-27b-dense": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "zai-glm-4.7": {
+      "modalities": {},
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "minimax-m3": {
+      "modalities": {
+        "vision": true,
+        "video_in": true
+      },
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "mid"
+      }
+    }
+  }
+}

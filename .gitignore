@@ -81,7 +81,11 @@ log/
 history/
 history.jsonl
 user-history/
-telemetry/
+# Session junk dumps. AAA/telemetry schema+scripts are tracked; JSONL is not.
+telemetry/*
+!telemetry/SCHEMA.md
+!telemetry/handover-append.sh
+!telemetry/append_handover.py
 shell_snapshots/
 file-history/
 projects/
@@ -207,3 +211,10 @@ gateway-openclaw/
 *.bak
 .megamemory/
 data/bus/
+
+# Terminal live board (hero writes; never commit)
+terminal/state.json
+terminal/state.json.tmp
+
+# Clerk exhaust (append-only; do not commit session stream)
+telemetry/handover.log
