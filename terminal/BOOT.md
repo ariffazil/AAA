@@ -8,12 +8,13 @@ LAW            ← /root/arifOS/GENESIS/000_KERNEL_CANON.md   (floors / constitu
 STATE          ← /root/AAA/terminal/state.json
 HANDOVER       ← /root/AAA/telemetry/handover.log
 FLOW           ← arifFLOW :7073  (metabolize only — not a 7th ledger)
+               ← /root/AAA/governance/ARIF_FLOW_METABOLIC_PLANE.md
 CAPABILITIES   ← /root/AAA/registries/models/CAPABILITIES.json
 MODELS         ← /root/.config/federation-models.json
 TASK
 ```
 
-TOOLS.json and SKILLS.json are not minted. Do not invent them.
+TOOLS.json and SKILLS.json are not minted. `FLOW_GRAPH.json` is not minted (Phase 7 queued). Do not invent them.
 Until they exist: existing `SKILL.md` files are recipes; MCP/API surfaces are hands. Model is chosen last.
 
 ## Clerk, not archaeologist

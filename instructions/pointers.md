@@ -18,12 +18,15 @@
 | `/root/arifOS/GENESIS/FLOOR_TABLE.json` | **Canonical F1–F13 definitions** |
 | `/root/arifOS/GENESIS/INVARIANTS.md` | MCP-level constitutional physics |
 | `/root/RUNBOOK.md` | Restart / health / rollback |
-| `/root/.secrets/INDEX.md` · `/root/.secrets/kunci-mas.env` | Secrets vault index + golden key |
+| `/root/.secrets/INDEX.md` · `/root/.secrets/kunci-root.env` | Secrets vault index + golden key (`kunci-mas.env` is an alias) |
 | `/root/.local/share/arifos/carry_forward.json` | **Live** session state |
 | `/root/VAULT999` | Append-only sealed receipts |
 | `/root/AAA/instructions/` | **Canonical instruction fragments** — edit these, not the generated output |
 | `/root/scripts/render-agents.sh` | **Fragment composer** — generates AGENTS.md + adapter files |
 | `/root/scripts/doctor.sh` | **Federation health dashboard** — unified probe |
+| `/root/AAA/governance/ARIF_FLOW_METABOLIC_PLANE.md` | **Plane SOT** — 10 roles · 6 SOTs · metabolism. `FLOW_GRAPH` not minted |
+| `/root/AAA/governance/SIX_CONSTITUTIONAL_LEDGERS.md` | Six ledgers (LAW STATE BRAIN CAPS TOOLS SKILLS) |
+| `/root/AAA/terminal/BOOT.md` | Clerk contract — inherit `state.json`, increment X |
 
 ## Sketchpad & Receipts (canonical, 2026-08-15)
 
@@ -57,12 +60,13 @@ Decay: hot → `_archive/` → `_cold-storage/`/`_cold_2026-Q3/` → `_tombstone
 ## FQ TRUTH (metabolism)
 
 ```
-Authoritative:  arifFlow :7073/health  → field fq
+Clerk card:     /root/AAA/terminal/state.json   (hero already thought)
+Hero/doctor:    arifFlow :7073/health  → vector.diagnosis
 Cache:          /root/AAA/state/flow_state.json  (TTL 15 min)
-Rule:           If |arifFlow.FQ − flow_state.FQ| > 0.3 → FQ_SIGNAL_DRIFT → use arifFlow
 ```
 
-**Never SEAL high-stakes work on cache alone. Prefer live `:7073` probe.**
+Clerks do **not** curl `:7073` at init. Hero is the only thinker.  
+**Never SEAL high-stakes work on cache alone.**
 
 ## Skill Mesh & MCP Testing (2026-08-08)
 
