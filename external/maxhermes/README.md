@@ -55,7 +55,7 @@ This cleanup:
 
 If you want to integrate MaxHermes externally (call `agent.minimaxi.com/max-hermes` from
 arifOS), the path is:
-1. Register MiniMax API key in `/root/.secrets/vault.env`
+1. Register MiniMax API key in `/root/.secrets/kunci-root.env`
 2. Add a gateway route in `aaa-gateway` config (NOT a local agent entry)
 3. F13 ack required for any data flowing to external (data sovereignty)
 4. Witness via arifOS MCP

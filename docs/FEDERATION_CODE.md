@@ -401,7 +401,7 @@ NETWORK:
 
 | Location | Contents |
 |----------|----------|
-| `/root/.secrets/vault.env` | All secrets (16.7 KB) |
+| `/root/.secrets/kunci-root.env` | All secrets (16.7 KB) |
 | `/root/.secrets/vault.flat.env` | Systemd-safe flat env (8.9 KB) |
 | `/root/.secrets/providers.yml` | AI provider configs |
 | `/root/.secrets/INDEX.md` | Full credential inventory |

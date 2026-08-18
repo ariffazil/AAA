@@ -3409,7 +3409,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "Permanent free tier. Best free LLM baseline in 2026. Multimodal (text+image+audio). 1M context. US jurisdiction — not for sovereign data. Google account key — already in vault.env::GEMINI_API_KEY."
+      "note": "Permanent free tier. Best free LLM baseline in 2026. Multimodal (text+image+audio). 1M context. US jurisdiction — not for sovereign data. Google account key — already in kunci-root.env::GEMINI_API_KEY."
     },
     {
       "model_key": "gemini/gemini-3-flash",
@@ -8521,7 +8521,7 @@
       "timeout_ms": 30000,
       "cost_budget_daily_usd": 1.0,
       "cost_budget_monthly_usd": 10.0,
-      "config_file_path": "/root/.secrets/vault.env (ANTHROPIC_* vars routed to DeepSeek bridge)",
+      "config_file_path": "/root/.secrets/kunci-root.env (ANTHROPIC_* vars routed to DeepSeek bridge)",
       "status": "ACTIVE",
       "last_verified": "2026-07-17",
       "notes": "Anthropic CLI routed through DeepSeek Anthropic Bridge. ANTHROPIC_MODEL=deepseek-v4-pro[1m]. Native Anthropic models (Claude) BLOCKED — kernelized F1-F13 incompatible with prompt-loaded CAI constitution.",
