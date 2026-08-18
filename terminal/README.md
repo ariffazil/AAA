@@ -40,7 +40,8 @@ commander files + live probes
 | `arifos-banner-cache.sh` | pointer |
 | PS1 | reads `mode` from `state.json` once: `[\u@\h HOLD]\$ ` |
 | `now` | deep probe; overlapping FQ/WELL/mode read `state.json` |
-| `boot.sh` | agent clerk card — files only, no curl |
+| `boot.sh` | agent clerk card — files only, no curl. Surfaces V/X/debt. |
+| `/root/scripts/boot.sh` | pointer |
 | `BOOT.md` | boot contract |
 | `FLOW.md` | arifFLOW = metabolism, not agent |
 

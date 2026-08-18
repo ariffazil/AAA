@@ -44,6 +44,10 @@ card = {
     "diagnosis": (st or {}).get("diagnosis"),
     "mission": (st or {}).get("mission"),
     "today_law": (st or {}).get("today_law") or (st or {}).get("law"),
+    "broadcast": (st or {}).get("broadcast"),
+    "verify": (st or {}).get("verify"),
+    "execute": (st or {}).get("execute"),
+    "debt": (st or {}).get("debt"),
     "well": (st or {}).get("well"),
     "well_note": (st or {}).get("well_note"),
     "holds": (st or {}).get("holds") or [],
@@ -83,6 +87,11 @@ print(f"fq        : {card['fq_s']} {card['fq_state']}")
 print(f"diagnosis : {card['diagnosis']}")
 print(f"mission   : {card['mission']}")
 print(f"law       : {card['today_law']}")
+v, x, d = card["verify"], card["execute"], card["debt"]
+if v is not None or x is not None:
+    print(f"vx        : V={v} X={x} debt={d}  ← increment X")
+if card.get("broadcast"):
+    print(f"broadcast : {card['broadcast']}")
 print(f"well      : {card['well']} ({card['well_note'] or 'ok'})")
 print(f"loop      : {card['loop_now']}")
 print(f"kernel    : {card['kernel']}  floors {card['floors']}/13")
@@ -103,6 +112,7 @@ print(f"MODELS  {card['registries']['models']}")
 print(f"CAPS    {card['registries']['capabilities']}")
 print("TOOLS   (not minted — do not invent TOOLS.json)")
 print("SKILLS  (not minted — do not invent SKILLS.json)")
+print("order    : inherit. increment X. do not archaeologize.")
 print("=== clerk ready ===")
 sys.exit(0 if fresh else 2)
 PY
