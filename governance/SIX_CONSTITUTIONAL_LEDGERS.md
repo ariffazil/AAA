@@ -34,6 +34,10 @@ Runtime inherits reality (Agent consumes minted ledgers).
 6. SKILLS       ← SKILLS.json (Proven Sequential Workflows, Phase 5)
 ```
 
+Plane topology, metabolism cycle, and phase calendar (3C now → 8 at +45d):  
+`/root/AAA/governance/ARIF_FLOW_METABOLIC_PLANE.md`  
+`FLOW_GRAPH.json` is **not minted**. Phase 7 is queued. Do not invent it.
+
 ---
 
 ## 3. The New Meaning of HOLD

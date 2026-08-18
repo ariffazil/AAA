@@ -89,6 +89,8 @@ Organs are runtime services, not static configuration. Their ports live in the m
 | AAA | Cockpit, registry, A2A gateway | DISPLAY_ONLY |
 | arifFLOW | Metabolism, FQ pulse | METABOLIZE_ONLY |
 
+**Planes (not a third organ map):** `/root/AAA/governance/ARIF_FLOW_METABOLIC_PLANE.md` — 10 roles · 6 SOTs · `FLOW_GRAPH` not minted.
+
 **How to find them:** Ports, URLs, and health endpoints are NOT hardcoded here. Probe from the canonical registry:
 - **Human SOT:** `/root/AAA/docs/ORGAN.md`
 - **Machine SOT:** `/root/AAA/federation/organs.yaml`
