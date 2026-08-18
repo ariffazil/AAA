@@ -118,7 +118,7 @@ Every new feature, tool, or skill created after 2026-08-04 MUST nominate a kill 
 | VAULT999 outcomes.jsonl | Immutable by design (F11, chattr +a) |
 | FLOOR_TABLE.json | Constitutional source |
 | 000_KERNEL_CANON.md | Constitutional source |
-| KUNCI-MAS vault.env | Secrets — rotation only, never deletion |
+| KUNCI-MAS kunci-root.env | Secrets — rotation only, never deletion |
 | carry_forward.json (active session) | Live state |
 | AGENTS.md (root) | Federation kernel pointer |
 | AGENT_MODEL_MAP.json | Canonical model registry |

@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arifos.federation/telemetry/event/v1",
+  "title": "Cross-Agent Telemetry Event",
+  "description": "Structured outcome published by any arifOS-governed agent to the NATS JetStream agent.memory stream",
+  "type": "object",
+  "required": [
+    "event_id",
+    "timestamp",
+    "agent_id",
+    "event_type",
+    "payload"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "description": "UUIDv7"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "agent_id": {
+      "type": "string",
+      "enum": [
+        "hermes-asi",
+        "openclaw-agi",
+        "claude-code",
+        "kimi-code",
+        "copilot",
+        "codex",
+        "continue",
+        "opencode",
+        "aider",
+        "a-forge",
+        "arifos-kernel"
+      ]
+    },
+    "session_id": {
+      "type": "string",
+      "description": "arifOS session ID from arif_session_init"
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "task.started",
+        "task.completed",
+        "task.failed",
+        "tool.called",
+        "tool.result",
+        "verdict.sealed",
+        "verdict.held",
+        "verdict.voided",
+        "memory.promoted",
+        "memory.demoted",
+        "route.chosen",
+        "route.fallback",
+        "capability.discovered",
+        "capability.used",
+        "error.encountered",
+        "error.recovered",
+        "learning.recorded"
+      ]
+    },
+    "payload": {
+      "type": "object",
+      "description": "Event-specific data"
+    },
+    "routing": {
+      "type": "object",
+      "properties": {
+        "source_agent": {
+          "type": "string"
+        },
+        "target_agent": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    },
+    "capabilities_used": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tool names used in this event"
+    },
+    "outcome": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "success",
+            "partial",
+            "failure",
+            "held",
+            "voided"
+          ]
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "File paths, URLs, or IDs produced"
+        },
+        "lessons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Human-readable learnings for cross-agent memory"
+        },
+        "verdict_id": {
+          "type": "string",
+          "description": "VAULT999 seal ID if applicable"
+        }
+      }
+    },
+    "memory_promotion": {
+      "type": "object",
+      "description": "Memory tier classification per AAA doctrine",
+      "properties": {
+        "tier": {
+          "enum": [
+            "ephemeral",
+            "session",
+            "reusable",
+            "sealed"
+          ]
+        },
+        "promotable": {
+          "type": "boolean"
+        },
+        "expires_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "properties": {
+        "floors_checked": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "verdict": {
+          "enum": [
+            "SEAL",
+            "HOLD",
+            "VOID",
+            "NOT_CHECKED"
+          ]
+        },
+        "human_ack_required": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

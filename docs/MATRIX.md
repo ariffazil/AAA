@@ -200,7 +200,7 @@ INTENT (human)
 | I3 | **VAULT999 append-only** | Never edit, delete, or rewrite seal chain entries. |
 | I4 | **No self-authorization** | No organ may SEAL its own actions without external witness. |
 | I5 | **T₁ before irreversible** | Probe live state at T₁ before any irreversible act. |
-| I6 | **Single source of truth** | Secrets: `/root/.secrets/vault.env`. Ports: live `:port/health`. |
+| I6 | **Single source of truth** | Secrets: `/root/.secrets/kunci-root.env`. Ports: live `:port/health`. |
 | I7 | **Mode > tool** | New capability = new mode on existing tool, not new tool. |
 
 ---

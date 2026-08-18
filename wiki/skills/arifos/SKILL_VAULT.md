@@ -51,7 +51,7 @@ Every write is permanent and cryptographically sealed. It answers: "What happene
 
 ## What Does NOT Belong
 
-- Secrets, keys, tokens, passwords (→ vault.env or Docker secrets)
+- Secrets, keys, tokens, passwords (→ kunci-root.env or Docker secrets)
 - Routine operational logs (→ system logs)
 - Debug output or temporary state
 - Personal notes or session memory (→ /root/.claude/memory/)

@@ -314,7 +314,7 @@ Full structural contrast of GEOX / WEALTH / WELL trees, zen 9-layer skeleton, ha
 ### 000 INIT (every agent session)
 
 ```bash
-set -a && source /root/.secrets/vault.env && set +a
+set -a && source /root/.secrets/kunci-root.env && set +a
 # SALAM
 # arif_init(mode=init, actor_id=..., intent=...)
 # probe health + tools/list before any CLAIM about tool counts

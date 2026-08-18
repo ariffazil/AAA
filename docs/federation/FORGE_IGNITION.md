@@ -83,10 +83,10 @@
 | Layer | Auth Mechanism | Arif Types? |
 |-------|---------------|-------------|
 | Arif → Telegram | Telegram username + chat ID | **Nothing** — just talks |
-| Telegram → Hermes | Telegram Bot API (bot token in vault.env) | **Nothing** — infrastructure |
+| Telegram → Hermes | Telegram Bot API (bot token in kunci-root.env) | **Nothing** — infrastructure |
 | Hermes → 777-FORGE | localhost A2A (port 18001) | **Nothing** — localhost IS the password (ADR-001) |
 | 777-FORGE → OpenCode | localhost bash spawn | **Nothing** — same machine |
-| Hermes LLM calls | API keys in vault.env | **Nothing** — infrastructure |
+| Hermes LLM calls | API keys in kunci-root.env | **Nothing** — infrastructure |
 | OpenCode MCP calls | localhost (all 18 MCPs on 127.0.0.1) | **Nothing** — localhost IS the password |
 
 **The only "key" Arif ever uses:** His Telegram account. He already has it. He never types it.

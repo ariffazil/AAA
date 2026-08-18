@@ -11,7 +11,7 @@ TMP_FILE="$STATE_DIR/sys_health.tmp.json"
 LOG_FILE="/root/AAA/logs/openclaw_errors.log"
 
 # Source vault secrets for DeepSeek API key
-set -a && source /root/.secrets/vault.env && set +a
+set -a && source /root/.secrets/kunci-root.env && set +a
 
 mkdir -p "$STATE_DIR"
 

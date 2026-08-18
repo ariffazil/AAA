@@ -76,7 +76,7 @@ Before using this skill on any mutating, irreversible, or high-blast-radius task
 
 ## When NOT to Use
 
-- Do not use to rotate secrets in `vault.env` without 888_HOLD
+- Do not use to rotate secrets in `kunci-root.env` without 888_HOLD
 - Do not enable `default_yolo = true` for constitutional work
 - Do not wire A-FORGE HTTP `:7071/mcp` as primary ingress (single-session SDK limit)
 
@@ -103,7 +103,7 @@ Before using this skill on any mutating, irreversible, or high-blast-radius task
 1. **Binary:** `which kimi` → `/usr/local/bin/kimi` → exec `~/.kimi-code/bin/kimi`
 2. **Home:** `echo $KIMI_CODE_HOME` → `/root/.arifos/agents/kimi`
 3. **Doctor:** `kimi doctor` → `OK config.toml`
-4. **Auth:** OAuth via `/login` — **never** use dead `KIMI_API_KEY` from `vault.env` (causes 404)
+4. **Auth:** OAuth via `/login` — **never** use dead `KIMI_API_KEY` from `kunci-root.env` (causes 404)
 5. **MCP launchers:** All stdio servers use `mcp-launchers/*.sh` (bash), not inline `sh -lc` with `source`
 6. **A-FORGE:** stdio via `aforge.sh` — not HTTP for Kimi primary ingress
 7. **Serena:** `arifOS/.serena/project.yml` and `A-FORGE/.serena/project.yml` exist

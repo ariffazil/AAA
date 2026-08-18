@@ -399,7 +399,7 @@ platforms.telegram.extra.command_menu:
 12. **Cognitive load-adaptive DM.** Probe WELL fatigue at session start. Fatigue > 0.6 → short. Fatigue < 0.3 → full depth. Flag mode: `[SHORT/BALANCED/FULL]`.
 13. **Know your audience.** See `references/telegram-routing-doctrine.md`. Every channel gets ONE voice.
 14. **No command overlap.** Every slash command has exactly one job. If two overlap, one must go. Current menu: 17 entries, zero redundancy.
-15. **1-minute ASI rule.** Before any irreversible act: source vault.env, probe organs, check WELL vitality, brief Arif. Reversible (read/search/analyze/draft) → T1 auto-do.
+15. **1-minute ASI rule.** Before any irreversible act: source kunci-root.env, probe organs, check WELL vitality, brief Arif. Reversible (read/search/analyze/draft) → T1 auto-do.
 16. **Sibling-agent file discipline.** Before editing skill/config when a sibling subagent is active, re-read the file first. Python scripts that rewrite entire files silently truncate concurrent changes — use targeted string replace. After every config edit: `python3 -c "import yaml; yaml.safe_load(open('/root/.hermes/config.yaml'))"`.
 
 ---
