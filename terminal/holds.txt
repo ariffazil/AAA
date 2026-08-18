@@ -1,0 +1,3 @@
+# Commander holds — one line each. Delete the line when resolved.
+# Live holds (FQ fossil, WELL sensor debt, G/W3 floors) are computed by hero.
+# Do not repeat live holds here.
