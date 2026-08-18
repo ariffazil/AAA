@@ -1,6 +1,10 @@
 # 🌱 INIT — arifOS Agentic Bootstrap · POINTER
 
-> **CANONICAL OPERATIONAL PROTOCOL (v5.0):** MCP `prompts/get(name="/init")` on arifOS `:8088`
+> **BOOT CONTRACT (v6.1):** `/root/AAA/terminal/BOOT.md`
+> Clerk card (no curl): `/root/AAA/terminal/boot.sh`
+> Board truth: `/root/AAA/terminal/state.json`
+>
+> **CANONICAL OPERATIONAL PROTOCOL:** MCP `prompts/get(name="/init")` on arifOS `:8088`
 > **FILESYSTEM SOURCE:** `/root/.config/opencode/command/init.md`
 > **FILESYSTEM FALLBACK:** `/root/forge_work/2026-08-07-collapsed-init-seal/COLLAPSED_PROTOCOL.md`
 > **Supersedes:** INIT v4.0 (2026-08-05) — archived at `forge_work/2026-08-07-collapsed-init-seal/snapshots/`
