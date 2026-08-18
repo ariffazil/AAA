@@ -24,7 +24,8 @@ On spawn, run:
 /root/AAA/terminal/boot.sh
 ```
 
-That is enough to know authority, mode, FQ, mission, law, WELL.
+That is enough to know authority, mode, FQ, V/X/debt, mission, law, WELL.
+`FOSSILIZED` on the card means increment **X**. Do not open a discovery loop.
 
 Do **not** at init:
 
