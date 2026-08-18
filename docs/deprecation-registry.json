@@ -1,7 +1,7 @@
 {
   "version": "2026.07.19",
-  "last_audit": "2026-08-09T18:10:00Z",
-  "auditor": "333-AGI — P0 fix status audit + registry reconciliation 2026-08-09",
+  "last_audit": "2026-08-18T01:40:00Z",
+  "auditor": "GROK-FI-007 — fitness cull (husks only, not YAML-VOID mass kill)",
   "deprecated_services": [
     {
       "id": "apex-prime.service",
@@ -42,6 +42,30 @@
       "status": "DEPRECATED",
       "tombstone_date": "2026-07-09",
       "reason": "Quantum kernel experiment concluded"
+    },
+    {
+      "id": "FORGE-mcp-jam-inspector",
+      "type": "skill",
+      "status": "ARCHIVED",
+      "tombstone_date": "2026-08-18",
+      "reason": "No SKILL.md. Stub run.sh greps the tree. Living hand is FORGE-mcp-testing.",
+      "archive": "skills/.archive/2026-08-18-fitness/FORGE-mcp-jam-inspector"
+    },
+    {
+      "id": "external-apex-audit",
+      "type": "skill",
+      "status": "ARCHIVED",
+      "tombstone_date": "2026-08-18",
+      "reason": "Empty directory. No body.",
+      "archive": "skills/.archive/2026-08-18-fitness/external-apex-audit"
+    },
+    {
+      "id": "_retired",
+      "type": "skill",
+      "status": "ARCHIVED",
+      "tombstone_date": "2026-08-18",
+      "reason": "Placeholder retired dir (liveness.json only).",
+      "archive": "skills/.archive/2026-08-18-fitness/_retired"
     }
   ],
   "deprecated_tools": [
@@ -97,8 +121,8 @@
       "reviewed_by": "333-AGI/Hermes"
     }
   ],
-    "deprecated_endpoints": [],
-    "deprecated_conventions": [],
+  "deprecated_endpoints": [],
+  "deprecated_conventions": [],
   "p0_audit": {
     "audited_by": "333-AGI",
     "audited_at": "2026-08-09T18:10:00Z",
@@ -135,7 +159,7 @@
     ],
     "agents_fixed": {
       "copilot-cli": "AUTOPILOT ON, SOT stamped, permissions full",
-      "codex-cli": "approvals→guardian_subagent, MCPs 7→9 (added A-FORGE+GEOX), AGENTS.md created, vault.env path fixed",
+      "codex-cli": "approvals→guardian_subagent, MCPs 7→9 (added A-FORGE+GEOX), AGENTS.md created, kunci-root.env path fixed",
       "opencode": "AGENTS.md created with full federation spec",
       "grok-build": "AGENTS.md created with full federation spec",
       "openclaw-gateway": "system.md updated: legacy HITL removed, SOT added, boot paths fixed, MUBAH baseline",
