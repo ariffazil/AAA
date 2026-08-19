@@ -35,6 +35,7 @@ const CIV33_LAYERS = {
   organs: 'binding',
   pillars: 'binding',
   extensions: 'binding',
+  federation: 'binding',  // federation.yaml generated cards (2026-08-19 registry zen)
   _retired: 'retired',
 };
 

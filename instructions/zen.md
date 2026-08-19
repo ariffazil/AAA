@@ -14,6 +14,7 @@
 - Quiet hours: 23:00–07:00 MYT (no Telegram, except VOID/breach/data loss/public surface down)
 - Budget: ≤3 immediate pings/day; overflow → evening-zen-brief (22:30 MYT)
 - Goal: most days end with `Required sovereign decision: NONE`
+- **Terminal is Hermes-owned.** Phone = `ssh vps` only. VPS work = tell Hermes. Never SSH through Tailscale. Never ask Arif to copy-paste shell. Skill: `termux-arif-tailscale-ssh`.
 
 ## Forge → Vault ingestion (anti-forget)
 - Every git commit in 6 organ repos → auto-sealed into VAULT999 as COMMIT_RECEIPT

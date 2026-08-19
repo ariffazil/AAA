@@ -1,0 +1,46 @@
+"# Generated from federation.yaml \u2014 DO NOT EDIT": see federation.yaml
+organ:
+  arifos:
+    port: 8088
+    tier: organ
+    surface: public
+    status: live
+    capability:
+    - law
+    - judge
+  aforge:
+    port: 7072
+    tier: organ
+    surface: internal
+    status: live
+    capability:
+    - execute
+  geox:
+    port: 8081
+    tier: organ
+    surface: public
+    status: live
+    capability:
+    - earth
+  wealth:
+    port: 18082
+    tier: organ
+    surface: internal
+    status: live
+    capability:
+    - capital
+  well:
+    port: 18083
+    tier: organ
+    surface: internal
+    status: live
+    capability:
+    - human
+  arifflow:
+    port: 7073
+    tier: organ
+    surface: internal
+    status: simulation
+    capability:
+    - flow
+    - metabolism

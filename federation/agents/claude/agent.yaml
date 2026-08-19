@@ -1,0 +1,263 @@
+'# Generated from federation.yaml': "DO NOT EDIT \u2014 edit federation.yaml"
+name: claude
+description: "claude \u2014 Lightweight reasoning + organ access"
+version: 1.0.0
+role: clerk
+fi: FI-002
+runtime: anthropic
+capabilities:
+  streaming: true
+  pushNotifications: false
+  opaqueExecution: true
+server:
+  aforge:
+    port: 7072
+    tier: organ
+    surface: internal
+    capability:
+    - execute
+  arifos:
+    port: 8088
+    tier: organ
+    surface: public
+    capability:
+    - law
+    - judge
+  delegation_ledger:
+    port: 18801
+    tier: extra
+    surface: internal
+    capability:
+    - delegation
+  fed:
+    port: 7074
+    tier: extra
+    surface: internal
+    capability:
+    - delegation
+  geox:
+    port: 8081
+    tier: organ
+    surface: public
+    capability:
+    - earth
+  graphiti:
+    port: 8000
+    tier: extra
+    surface: private
+    capability:
+    - knowledge_graph
+  hermes_agent:
+    port: 18090
+    tier: extra
+    surface: internal
+    capability:
+    - delegation
+  openrouter:
+    port: null
+    tier: extra
+    surface: private
+    capability:
+    - delegation
+  tree777:
+    port: 18077
+    tier: extra
+    surface: private
+    capability:
+    - knowledge_graph
+  wealth:
+    port: 18082
+    tier: organ
+    surface: internal
+    capability:
+    - capital
+  well:
+    port: 18083
+    tier: organ
+    surface: internal
+    capability:
+    - human
+skill:
+- id: agi-decisions-reflect
+  owner: arifos
+- id: agi-explorer
+  owner: arifos
+- id: agi-graph-engineering
+  owner: arifos
+- id: agi-multimodal-bridge
+  owner: arifos
+- id: agi-plan-dag
+  owner: arifos
+- id: agi-web-optimization
+  owner: arifos
+- id: apex-audit-coverage
+  owner: arifos
+- id: apex-authority-check
+  owner: arifos
+- id: apex-floor-check
+  owner: arifos
+- id: apex-humility-godel
+  owner: arifos
+- id: apex-reversibility-test
+  owner: arifos
+- id: apex-scope-check
+  owner: arifos
+- id: apex-verdict-hold
+  owner: arifos
+- id: apex-verdict-seal
+  owner: arifos
+- id: asi-agent-invariants
+  owner: arifos
+- id: asi-agentic-governance
+  owner: arifos
+- id: asi-drift-watch
+  owner: arifos
+- id: asi-fabrication-prevention
+  owner: arifos
+- id: asi-summarize
+  owner: arifos
+- id: audit-agent-skill-mesh
+  owner: arifos
+- id: audit-drift-detector
+  owner: arifos
+- id: audit-recursive
+  owner: arifos
+- id: audit-repo-reality
+  owner: arifos
+- id: audit-seal
+  owner: arifos
+- id: audit-skill-atlas
+  owner: arifos
+- id: dev-analysis
+  owner: aforge
+- id: dev-ci-diagnose
+  owner: aforge
+- id: dev-db-stack
+  owner: aforge
+- id: dev-did-identity
+  owner: aforge
+- id: dev-fastapi
+  owner: aforge
+- id: dev-github
+  owner: aforge
+- id: dev-issue-triage
+  owner: aforge
+- id: dev-jsonld
+  owner: aforge
+- id: dev-komda-law
+  owner: aforge
+- id: dev-pr-governance
+  owner: aforge
+- id: dev-pr-review
+  owner: aforge
+- id: dev-repo-audit
+  owner: aforge
+- id: dev-sct-ingress
+  owner: aforge
+- id: dev-seal-close
+  owner: aforge
+- id: dev-t3a-matrix
+  owner: aforge
+- id: dev-web-builder
+  owner: aforge
+- id: dev-wiki
+  owner: aforge
+- id: forge-exec
+  owner: aforge
+- id: forge-verbs
+  owner: aforge
+- id: geo-artifact-rigor
+  owner: geox
+- id: geo-basin
+  owner: geox
+- id: geo-constitution
+  owner: geox
+- id: geo-petrophysics
+  owner: geox
+- id: geo-prospect
+  owner: geox
+- id: geo-well-tie
+  owner: geox
+- id: geo-writing
+  owner: geox
+- id: gov-constitutional-judge
+  owner: arifos
+- id: gov-external-council
+  owner: arifos
+- id: gov-musyawarah
+  owner: arifos
+- id: kernel-bind
+  owner: arifos
+- id: know-language
+  owner: arifos
+- id: know-math
+  owner: arifos
+- id: know-physics
+  owner: arifos
+- id: media-imagine
+  owner: aforge
+- id: memory-manage
+  owner: arifos
+- id: observe-ground
+  owner: arifos
+- id: ops-docker
+  owner: aforge
+- id: ops-google
+  owner: aforge
+- id: ops-health
+  owner: aforge
+- id: ops-incident
+  owner: aforge
+- id: ops-infra
+  owner: aforge
+- id: ops-infra-crons
+  owner: aforge
+- id: ops-mcp-builder
+  owner: aforge
+- id: ops-mcp-lifeguard
+  owner: aforge
+- id: ops-mcp-probe
+  owner: aforge
+- id: ops-mcp-testing
+  owner: aforge
+- id: ops-model-monitor
+  owner: aforge
+- id: ops-spatial
+  owner: aforge
+- id: ops-transport
+  owner: aforge
+- id: ops-vps
+  owner: aforge
+- id: route-dispatch
+  owner: arifos
+- id: verify-gate
+  owner: arifos
+- id: wealth-collapse
+  owner: wealth
+- id: wealth-reason
+  owner: wealth
+- id: wealth-thermo
+  owner: wealth
+- id: well-boundary
+  owner: well
+- id: well-readiness
+  owner: well
+grant:
+- capital
+- delegation
+- earth
+- execute
+- human
+- judge
+- knowledge_graph
+- law
+securitySchemes:
+  bearer:
+    type: http
+    scheme: bearer
+    description: arifOS SCT token
+defaultInputModes:
+- text
+defaultOutputModes:
+- text
+note: Expresses via Claude Code CLI

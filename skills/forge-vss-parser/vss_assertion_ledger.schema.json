@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "VSSAssertionLedger",
+  "description": "Strict Assertion Ledger Contract for Verified Scene Synthesis (VSS-1)",
+  "type": "object",
+  "required": [
+    "scene_id",
+    "raw_prompt",
+    "entities",
+    "assertions",
+    "uncertainties",
+    "unsupported_claims"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "scene_id": {
+      "type": "string",
+      "pattern": "^scene_([a-f0-9]{8}|test_[0-9]{3})$"
+    },
+    "raw_prompt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "type", "count", "attributes"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9_]+_\\d+$" },
+          "label": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": ["object", "container", "agent", "light_source", "surface", "background"]
+          },
+          "count": { "type": "integer", "minimum": 1 },
+          "attributes": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "assertions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "subject",
+          "relation",
+          "target",
+          "class",
+          "verifier",
+          "tolerance",
+          "failure_action",
+          "status"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^assert_[0-9]{3}(_[a-z])?$" },
+          "subject": { "type": "string" },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "inside",
+              "on",
+              "beside",
+              "behind",
+              "in_front_of",
+              "supported_by",
+              "near",
+              "illuminates",
+              "casts_shadow_towards",
+              "reflects",
+              "occludes"
+            ]
+          },
+          "target": { "type": "string" },
+          "class": {
+            "type": "string",
+            "enum": ["HARD_GEOMETRIC", "HARD_COUNT", "OPTICAL_LIGHTING", "SOFT_STYLE"]
+          },
+          "verifier": {
+            "type": "string",
+            "enum": ["containment_v1", "count_v1", "perspective_v1", "shadow_v1", "none"]
+          },
+          "tolerance": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+          "failure_action": {
+            "type": "string",
+            "enum": ["LOCAL_REPAIR", "GLOBAL_RESAMPLE", "WARN_ONLY", "LOG"]
+          },
+          "status": {
+            "type": "string",
+            "enum": ["UNVERIFIED", "PASSED", "FAILED"]
+          }
+        }
+      }
+    },
+    "uncertainties": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["target_id", "reason"],
+        "additionalProperties": false,
+        "properties": {
+          "target_id": { "type": "string" },
+          "reason": { "type": "string" }
+        }
+      }
+    },
+    "unsupported_claims": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
