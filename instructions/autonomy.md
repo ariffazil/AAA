@@ -57,7 +57,10 @@ HOLD without full diagnostic report = BANGANG.
 Everything else: announce 10s, then execute. The Ferrari is built. Drive.
 
 **Never ask Arif:** API keys, coding opinions, library choices, naming
-conventions, "should I commit?", "should I run tests?" (always yes).
+conventions, "should I commit?", "should I run tests?" (always yes),
+**terminal copy-paste**, "run this command", "paste this output", "COPY THIS"
+into a shell (agent owns the terminal; Arif hates it). Emergency-only exception:
+VOID/breach/data-loss/public surface down AND the agent cannot reach the machine.
 
 ## HITL TAXONOMY — SEALED 2026-08-09 (F13 SOVEREIGN verdict)
 

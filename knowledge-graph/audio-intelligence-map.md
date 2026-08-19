@@ -118,10 +118,67 @@ Config: `voice.record_key: ctrl+b`, `voice.max_recording_seconds: 120`, `voice.a
 | **audio-feature-analysis** | librosa + scipy | Chroma, motif detection, similarity matrices, segmentation | ✅ Active |
 | **music-intelligence** | MiniMax + DSP | Governed generation + somatic scoring pipeline | ✅ Active |
 
+### 2.4 MiMo Token Plan — Economics & Scope (2026-08-19 update)
+
+> Source: https://mimo.mi.com/docs/en-US/price/token-plan (probed 2026-08-19, F2 cite).
+
+**Catalog — 6 active models on Token Plan**:
+
+| Model | In | Out | Pricing | Role |
+|---|---|---|---|---|
+| `mimo-v2.5-pro` | text | text | 2.5 hit / 300 miss / 600 out (cred/tok) | Flagship reasoning |
+| `mimo-v2.5` | text+image | text | 2 hit / 100 miss / 200 out (cred/tok) | Multimodal LLM |
+| `mimo-v2.5-asr` | audio | text | 30M cred/hour | Native audio STT |
+| `mimo-v2.5-tts` | text | audio | **Free** (limited time) | Base TTS |
+| `mimo-v2.5-tts-voiceclone` | text+audio | audio | **Free** | Zero-shot voice clone |
+| `mimo-v2.5-tts-voicedesign` | text | audio | **Free** | Prompt-driven design (Penang path) |
+
+**Deprecated 2026-06-30**: `mimo-v2-pro`, `mimo-v2-omni`, `mimo-v2-tts`.
+
+**Plan tiers (monthly credits / USD / CNY)**:
+
+| Tier | Credits | USD/mo | CNY/mo | mimo-v2.5 rounds (baseline) |
+|---|---|---|---|---|
+| Lite | 4.1 B | $6 | ¥39 | ~200 |
+| Standard | 11 B | $16 | ¥99 | ~1,600 |
+| Pro | 38 B | $50 | ¥329 | ~5,600 |
+| Max | 82 B | $100 | ¥659 | ~12,800 |
+
+Annual: ~12× monthly at **88% off** (Lite $63.36/yr). 12% first-purchase discount (one-time, no annual). 0.8× off-peak BJT 00:00–08:00 = UTC 16:00–24:00.
+
+**Endpoints**:
+
+- `https://token-plan-sgp.xiaomimimo.com/v1` (Singapore OpenAI-compat)
+- `https://token-plan-sgp.xiaomimimo.com/anthropic` (Anthropic-compat for Claude Code / Hermes)
+
+**F13 SOVEREIGN Scope (license-binding)** — verbatim from the page:
+> "The Token Plan package quota can only be used in programming tools (such as OpenClaw, OpenCode, etc.), and is prohibited from being used in the form of API calls for request behaviors in clearly non-Coding scenarios such as automated scripts and custom application backends."
+
+All production Token Plan traffic MUST flow through a Forge Instrument harness (opencode / claude / codex / kimi / qwen / grok) or the OpenClaw gateway. Direct `curl`/SDK calls from custom backends or batch scripts are PROHIBITED under the license.
+
+**Δ·Ω·Ψ lens for MiMo**:
+- **Δ**: 6 models × {text, image, audio} modalities; credits as cost unit
+- **Ω**: ASR (30M/h) → LLM (per-token, 50–120× cache penalty on miss) → TTS (free)
+- **ΦΙ**: voice identity continuity for i-ARIF, Penang-Besi dialect capability, cost discipline via cache hit
+
+### 2.5 Native Multimodal Coverage (vision + video on MiMo)
+
+`mimo-v2.5` is native multimodal (text+image input → text output) with 1M context. When audio + image arrive together, route via:
+
+```
+audio (mimo-v2.5-asr) ─┐
+                        ├─→ metabolize (mimo-v2.5-pro, 1M ctx) ─→ mimo-v2.5-tts-*
+image (mimo-v2.5 vision)─┘
+```
+
+Video is sampled at keyframes (e.g. 1 fps) and reduced to image + audio pairs before ingestion. See `knowledge-graph/video-intelligence-map.md` for video-specific doctrine.
+
+Cross-skill map: `AGI-multimodal-bridge` + `delta-omega-psi-multimodal-cognition` govern the Δ·Ω·Ψ coherence.
+
 **Known segfaults** (system-specific): `beat_track`, `chroma_cqt`, `onset_detect` — use manual workarounds.
 **Safe functions**: `load`, `stft`, `onset_strength`, `rms`, `mfcc`, `spectral_flatness`, `zcr`, `spectral_centroid`, `chroma_stft`.
 
-### 2.4 Music Generation (Creative Audio)
+### 2.6 Music Generation (Creative Audio)
 
 | Skill | Engine | Capabilities | Status |
 |---|---|---|---|
@@ -130,7 +187,7 @@ Config: `voice.record_key: ctrl+b`, `voice.max_recording_seconds: 120`, `voice.a
 | **ComfyUI ACE-Step 1.5** | Local Stable Audio | Text-to-audio generation | ✅ Blueprint ready |
 | **ComfyUI Stable Audio 3** | Local | Audio generation (medium/base) | ✅ Blueprint ready |
 
-### 2.5 Voice Identity & Writing
+### 2.7 Voice Identity & Writing
 
 | Skill | Purpose | Status |
 |---|---|---|
@@ -139,7 +196,7 @@ Config: `voice.record_key: ctrl+b`, `voice.max_recording_seconds: 120`, `voice.a
 | **human-voice-writing** | Arif's personal docs in bahasa kampung voice | ✅ Active |
 | **aaa-pdf-voice-protocol** | Federation→geological prose translation | ✅ Active |
 
-### 2.6 Human Speech Enforcer (arifOS Kernel)
+### 2.8 Human Speech Enforcer (arifOS Kernel)
 
 | Component | Path | Purpose | Status |
 |---|---|---|---|
