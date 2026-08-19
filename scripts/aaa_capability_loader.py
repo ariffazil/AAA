@@ -18,6 +18,7 @@ from pathlib import Path
 from typing import Any, Literal, Optional
 
 import json
+import shutil
 import urllib.request
 import yaml
 
@@ -47,6 +48,14 @@ DOCTRINE_CANONICAL_NAMES: tuple[str, ...] = (
 F_RATING_VALUES: tuple[str, ...] = ("SAFE", "REVIEW", "HOLD")
 SEAL_VALUES: tuple[str, ...] = ("pending", "ratifying", "sealed", "void")
 TRANSPORT_VALUES: tuple[str, ...] = ("stdio", "http", "filesystem")
+
+# Real musyawarah runtime (musyawarah.md §4, FORGE-musyawarah-gotong).
+# Preferred when the Grok workflow exists AND the grok CLI is installed;
+# otherwise the loader falls back to the in-process heuristic.
+MUSYAWARAH_WORKFLOW_PATH = Path("/root/.grok/workflows/musyawarah-gotong.rhai")
+GROK_BINARY = "grok"
+MUSYAWARAH_KIND_REAL = "real_dual_agent"
+MUSYAWARAH_KIND_HEURISTIC = "in_process_heuristic"
 
 
 @dataclass(frozen=True)
@@ -97,6 +106,8 @@ class CapabilityIndex:
     catalogued_count: int = 0
     invariants_declared: dict[str, Any] = field(default_factory=dict)
     architectural_verdict: Optional[str] = None
+    musyawarah_kind: str = MUSYAWARAH_KIND_HEURISTIC
+    musyawarah_workflow: Optional[str] = None
     raw: dict[str, Any] = field(default_factory=dict)
 
 
@@ -396,12 +407,44 @@ def load_registry(path: Path | str) -> CapabilityIndex:
         architectural_verdict=architectural_verdict,
         raw=raw,
     )
-    final_verdict = _musyawawah_phase(_index_pre, raw)
-    return replace(_index_pre, architectural_verdict=final_verdict)
+    real_runtime, workflow_path = _real_musyawarah_runtime()
+    final_verdict = _musyawawah_phase(_index_pre, raw, real_workflow=workflow_path)
+    return replace(
+        _index_pre,
+        architectural_verdict=final_verdict,
+        musyawarah_kind=MUSYAWARAH_KIND_REAL if real_runtime else MUSYAWARAH_KIND_HEURISTIC,
+        musyawarah_workflow=workflow_path,
+    )
 
 
-def _musyawawah_phase(index: CapabilityIndex, raw_registry: dict[str, Any]) -> str:
-    """Multi-voice deliberation (musyawawah) between ARCHITECT, AUDITOR, SOVEREIGN."""
+def _real_musyawarah_runtime() -> tuple[bool, Optional[str]]:
+    """Detect the real dual-agent musyawarah runtime.
+
+    Real musyawarah = 333-agi ARCHITECT ∥ 555-asi AUDITOR (read-only,
+    independent), 888-apex on residual disagreement. Available when the
+    Grok workflow exists and the grok CLI is installed. The loader stays a
+    pure data transformation (no subprocess spawn) — it detects the runtime
+    and declares which kind governs, instead of pretending the heuristic is
+    real musyawarah.
+    """
+    if not MUSYAWARAH_WORKFLOW_PATH.is_file():
+        return False, None
+    if shutil.which(GROK_BINARY) is None:
+        return False, None
+    return True, str(MUSYAWARAH_WORKFLOW_PATH)
+
+
+def _musyawawah_phase(
+    index: CapabilityIndex,
+    raw_registry: dict[str, Any],
+    real_workflow: Optional[str] = None,
+) -> str:
+    """Multi-voice deliberation (musyawawah) between ARCHITECT, AUDITOR, SOVEREIGN.
+
+    FALLBACK ONLY — NOT real musyawarah (musyawarah.md §4). When
+    real_workflow is set, the real dual-agent runtime governs and this
+    in-process computation is diagnostic only; it is never stamped as F3.
+    """
     verdicts: list[str] = []
     reasons: list[str] = []
 
@@ -467,6 +510,14 @@ def _musyawawah_phase(index: CapabilityIndex, raw_registry: dict[str, Any]) -> s
         final_verdict = "PARTIAL_ENGAGEMENT"
 
     print("\n--- MUSYAWARAH DELIBERATION ---", file=sys.stderr)
+    if real_workflow:
+        print("  KIND: real dual-agent runtime — 333-agi ARCHITECT ∥ 555-asi AUDITOR, 888 on residual.", file=sys.stderr)
+        print(f"  Workflow: {real_workflow}", file=sys.stderr)
+        print("  In-process computation below is fallback/diagnostic only — not stamped as F3.", file=sys.stderr)
+    else:
+        print("  KIND: in-process heuristic — NOT sibling musyawarah (F9).", file=sys.stderr)
+        print("  Real musyawarah = 333∥555 independent, then 888 on residual.", file=sys.stderr)
+        print("  Enable the real runtime: grok CLI + /root/.grok/workflows/musyawarah-gotong.rhai.", file=sys.stderr)
     for reason in reasons:
         print(f"  {reason}", file=sys.stderr)
     print(f"  Final Musyawawah Verdict: {final_verdict}", file=sys.stderr)
@@ -493,6 +544,8 @@ def _write_mcp_json(index: CapabilityIndex, target: Path) -> None:
         "source_registry_status": index.status,
         "architectural_verdict": index.architectural_verdict,
         "musyawawah_visible": index.architectural_verdict == "SEALED_MUSYAWARAH_CONSENSUS",
+        "musyawarah_kind": index.musyawarah_kind,
+        "musyawarah_workflow": index.musyawarah_workflow,
         "axes": list(index.axes),
         "canonical_capabilities": list(index.canonical_names),
         "runtime_ready_backends": [
