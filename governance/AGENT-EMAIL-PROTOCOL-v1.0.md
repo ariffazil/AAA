@@ -52,7 +52,7 @@ New roles added by `agents_acl.yaml` (v1.3 §7.5). ACL widening requires F13 ack
 ```
 mcp_aforge_forge_email_send_via_resend(
   actor_id:       SOUL.ID,                    // required: which agent is sending
-  session_id:     sct_v1....,                 // required: kimi/arifos session token
+  session_id:     act_v1....,                 // required: kimi/arifos session token
   to:             [EmailAddr, ...],           // required: 1..N recipients (RFC 5322)
   cc:             [EmailAddr, ...] | null,    // optional
   bcc:            [EmailAddr, ...] | null,    // optional (audit-logged)
@@ -228,7 +228,7 @@ Every send/receive lands one of these in `outcomes.jsonl`:
   "ts": "2026-08-01T09:42:11.103Z",
   "kind": "mail.send" | "mail.receive",
   "agent_actor_id": "333-AGI",
-  "session_id": "sct_v1.kimi-fi008-...",
+  "session_id": "act_v1.kimi-fi008-...",
   "lease_id": "lease:...",
   "envelope": {
     "from": "agent@arif-fazil.com",

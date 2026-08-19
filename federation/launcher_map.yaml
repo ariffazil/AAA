@@ -1,0 +1,100 @@
+# ⚒️ AAA Launcher Map — process-level binding for capability backends
+#
+# Path:        /root/AAA/federation/launcher_map.yaml
+# Authority:   AAA Capability Plane (operational)
+# Purpose:     Maps a registry backend name → concrete launch command/URL.
+#              The registry declares CAPABILITIES. This file declares PROCESSES.
+#
+# Invariants:
+#   INV-LM-1  every entry here MUST correspond to a backend in
+#             AAA_CAPABILITY_REGISTRY.yaml
+#   INV-LM-2  a launcher is added to this map ONLY when its backend is
+#             marked enabled: true AND seal: sealed in the registry
+#   INV-LM-3  credentials are loaded from /root/.secrets/vault.env by the
+#             launcher's _tier_a_envelope.sh — NEVER inline keys here
+#
+# Status:      Wave 1 (2026-08-11) — the 7 organs are unsealed.
+#             musyawarah_phase: OPEN_DOOR.
+#             VAULT999 is filesystem-transport, no MCP launcher required.
+
+version: v1
+sovereign: ARIF
+generated_at: "2026-08-11"
+wave: 1
+musyawarah_phase: OPEN_DOOR
+
+# -----------------------------------------------------------------------------
+# Launcher entries. One per enabled backend. The generator emits a Kimi
+# mcpServers entry for each.
+# -----------------------------------------------------------------------------
+launchers:
+
+  arifFlow:
+    description: "arifFLOW metabolism organ — FQ pulse + receipt ingestion. Stdout bridge to http://127.0.0.1:7073/mcp."
+    transport: stdio
+    command: /root/.arifos/agents/kimi/mcp-launchers/arifflow.sh
+    args: []
+    env: {}
+    startup_timeout_ms: 30000
+    tool_timeout_ms: 30000
+
+  # Wave 1 — the 7 organs (QMG_E1). F13 SOVEREIGN ratified 2026-08-11.
+
+  arifos:
+    description: "arifOS constitutional kernel — F1-F13, 888_JUDGE, VAULT999. Via stdio (avoids http oauth metadata on localhost)."
+    transport: stdio
+    command: /root/.arifos/agents/kimi/mcp-launchers/arifos.sh
+    args: []
+    env: {}
+    startup_timeout_ms: 90000
+    tool_timeout_ms: 90000
+
+  aforge:
+    description: "A-FORGE governed engineering actuator via stdio (77 forge_* tools). AMANAH: MUTATE/DELETE/IRREVERSIBLE requires arifOS SEAL or 888_HOLD."
+    transport: stdio
+    command: /root/.arifos/agents/kimi/mcp-launchers/aforge.sh
+    args: []
+    env: {}
+    startup_timeout_ms: 90000
+    tool_timeout_ms: 90000
+
+  geox:
+    description: "GEOX earth intelligence — 33 canonical tools. Evidence-only organ."
+    transport: http
+    url: http://127.0.0.1:8081/mcp
+    startup_timeout_ms: 45000
+    tool_timeout_ms: 90000
+
+  wealth:
+    description: "WEALTH capital intelligence — EVIDENCE_ONLY. Streamable-HTTP."
+    transport: http
+    url: http://127.0.0.1:18082/mcp
+    startup_timeout_ms: 45000
+    tool_timeout_ms: 90000
+
+  well:
+    description: "WELL human readiness — REFLECT_ONLY. Streamable-HTTP."
+    transport: http
+    url: http://127.0.0.1:18083/mcp
+    startup_timeout_ms: 45000
+    tool_timeout_ms: 90000
+
+  fed:
+    description: "FED — Federation Router (streamable-http, 6 tools: fed_route, fed_status, fed_probe, fed_contrast, fed_health, fed_report_latency). Answers WHICH model@provider to call. Constitutional tier gate: ≥666 → direct only. SOT: /root/.config/federation-models.json"
+    transport: http
+    url: http://127.0.0.1:7074/mcp
+    startup_timeout_ms: 15000
+    tool_timeout_ms: 30000
+
+  minimax:
+    description: "minimax Token Plan MCP — web_search for coding queries. Arif 2026-08-04."
+    transport: stdio
+    command: uvx
+    args:
+      - minimax-coding-plan-mcp
+      - "-y"
+    env:
+      MINIMAX_API_KEY: "${MINIMAX_API_KEY}"
+      MINIMAX_API_HOST: "https://api.minimax.io"
+    startup_timeout_ms: 30000
+    tool_timeout_ms: 30000
