@@ -91,6 +91,18 @@ components:
       - build_deploy
       - shell_orchestration
       - rollback
+      - web_exploration
+      - agentic_search
+      - research_intelligence
+    public_tools:
+      - forge_search
+      - forge_research
+      - forge_fetch
+      - forge_browser_navigate
+      - forge_explore
+    a2a_intent_routing:
+      EXPLORE: "A-FORGE (:7072 / stdio) is primary organ for web exploration and deep multi-source research. Agents hitting epistemic walls must delegate search to A-FORGE via A2A."
+      ACT: "A-FORGE (:7071 / :7072) is primary organ for governed engineering execution."
     forbidden_domains:
       - constitutional_judgment
       - self_authorization
