@@ -1,0 +1,79 @@
+{
+  "browser": [
+    "stealth_browser"
+  ],
+  "capital": [
+    "wealth"
+  ],
+  "code_index": [
+    "capability_index",
+    "repomapper"
+  ],
+  "code_repo": [
+    "github"
+  ],
+  "data": [
+    "supabase"
+  ],
+  "delegation": [
+    "fed",
+    "hermes_agent",
+    "delegation_ledger",
+    "openrouter"
+  ],
+  "docs": [
+    "context7",
+    "zread",
+    "gemini_docs",
+    "notebooklm"
+  ],
+  "earth": [
+    "geox"
+  ],
+  "execute": [
+    "aforge"
+  ],
+  "flow": [
+    "arifflow"
+  ],
+  "human": [
+    "well"
+  ],
+  "judge": [
+    "arifos"
+  ],
+  "knowledge_graph": [
+    "tree777",
+    "graphiti"
+  ],
+  "law": [
+    "arifos"
+  ],
+  "media": [
+    "minimax_media",
+    "mage"
+  ],
+  "memory": [
+    "megamemory",
+    "qdrant"
+  ],
+  "metabolism": [
+    "arifflow"
+  ],
+  "vision": [
+    "zai_vision"
+  ],
+  "vps": [
+    "hostinger_vps"
+  ],
+  "web_scrape": [
+    "firecrawl",
+    "zai_web_reader"
+  ],
+  "web_search": [
+    "minimax_search",
+    "brave",
+    "zai_web_search",
+    "meyhem"
+  ]
+}
