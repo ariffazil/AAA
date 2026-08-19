@@ -7,6 +7,7 @@ set -euo pipefail
 
 AAA_SKILLS="/root/AAA/skills"
 AGENTS_SKILLS="/root/.agents/skills"
+HERMES_SKILLS="/root/HERMES/skills"
 
 RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'; NC='\033[0m'
 log() { echo -e "${GREEN}[SYNC]${NC} $*"; }
@@ -14,13 +15,15 @@ warn() { echo -e "${YELLOW}[WARN]${NC} $*"; }
 
 find_canonical() {
     local skill_id="$1"
-    if [ -d "$AAA_SKILLS/$skill_id" ]; then
-        echo "$AAA_SKILLS/$skill_id"
-    elif [ -d "$AGENTS_SKILLS/$skill_id" ]; then
+    if [ -d "$HERMES_SKILLS/$skill_id" ] && [ ! -L "$HERMES_SKILLS/$skill_id" ]; then
+        echo "$HERMES_SKILLS/$skill_id"
+    elif [ -d "$AGENTS_SKILLS/$skill_id" ] && [ ! -L "$AGENTS_SKILLS/$skill_id" ]; then
         echo "$AGENTS_SKILLS/$skill_id"
+    elif [ -d "$AAA_SKILLS/$skill_id" ] && [ ! -L "$AAA_SKILLS/$skill_id" ]; then
+        echo "$AAA_SKILLS/$skill_id"
     else
         local found
-        found=$(find "$AAA_SKILLS" "$AGENTS_SKILLS" -maxdepth 2 -name "SKILL.md" -path "*/$skill_id/*" 2>/dev/null | head -1)
+        found=$(find "$HERMES_SKILLS" "$AGENTS_SKILLS" "$AAA_SKILLS" -maxdepth 3 -name "SKILL.md" -path "*/$skill_id/*" 2>/dev/null | head -1)
         if [ -n "$found" ]; then
             dirname "$found"
         fi
@@ -92,6 +95,7 @@ ALL_SKILLS=(
     explorer-intelligence-architecture ask-search seek federation-orchestrator
     mcp-lifeguard model-fallback-monitor telegram-security-audit google-workspace-cli
     agentic-web-optimization subagent-spawn-template
+    agentic-web AGI-agentic-web AGI-explorer-intelligence
 )
 
 sync_agent() {
