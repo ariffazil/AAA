@@ -1,0 +1,377 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# federation.yaml — THE ONE SOURCE OF TRUTH
+# Replaces: mcp-catalog.yaml + agents.yaml + call_map.yaml + organs.yaml
+#           + skills.yaml + CAPABILITY_INDEX.json (6 registries → 1)
+# Governance: F13-sealed. Downstream views are GENERATED, never hand-edited.
+# Drift is structurally impossible: every count derives from this file.
+# Generator: federation-generate.py
+# ═══════════════════════════════════════════════════════════════════════════
+version: "1.0"
+sealed_by: "F13-SOVEREIGN-2026-08-19-via-FI-003"
+
+# ─────────────────────────────────────────────────────────────────────────
+# 1. SERVER — every MCP server ONCE. surface field kills 48/62/8 drift.
+#    tier: organ (backbone, universal) | extra (role-specific)
+#    surface: public (external agents) | internal (federation only) | private (host only)
+#    capability: tags that roles reference. Change tags = change bindings.
+# ─────────────────────────────────────────────────────────────────────────
+server:
+  # ── 5 CORE ORGANS (tier=organ → bound to EVERY agent, invariant-checked) ──
+  arifos:
+    port: 8088
+    tier: organ
+    surface: public
+    status: live
+    capability: [law, judge]
+  aforge:
+    port: 7072
+    tier: organ
+    surface: internal
+    status: live
+    capability: [execute]
+  geox:
+    port: 8081
+    tier: organ
+    surface: public
+    status: live
+    capability: [earth]
+  wealth:
+    port: 18082
+    tier: organ
+    surface: internal
+    status: live
+    capability: [capital]
+  well:
+    port: 18083
+    tier: organ
+    surface: internal
+    status: live
+    capability: [human]
+  # ── FEDERATION INFRA ──
+  arifflow:
+    port: 7073
+    tier: organ
+    surface: internal
+    status: simulation  # FQ=5.27 — thermometer unplugged, not patient sick
+    capability: [flow, metabolism]
+  fed:
+    port: 7074
+    tier: extra
+    surface: internal
+    status: live
+    capability: [delegation]
+  tree777:
+    port: 18077
+    tier: extra
+    surface: private
+    status: live
+    capability: [knowledge_graph]
+  # ── EXTERNAL EXTRAS (role-specific, not universal) ──
+  firecrawl:
+    tier: extra
+    surface: private
+    status: live
+    capability: [web_scrape]
+  minimax_search:
+    tier: extra
+    surface: private
+    status: live
+    capability: [web_search]
+  minimax_media:
+    port: 18100
+    tier: extra
+    surface: private
+    status: live
+    capability: [media]
+  context7:
+    tier: extra
+    surface: private
+    status: live
+    capability: [docs]
+  brave:
+    tier: extra
+    surface: private
+    status: live
+    capability: [web_search]
+  github:
+    tier: extra
+    surface: private
+    status: live
+    capability: [code_repo]
+  capability_index:
+    tier: extra
+    surface: private
+    status: live
+    capability: [code_index]
+  repomapper:
+    tier: extra
+    surface: private
+    status: live
+    capability: [code_index]
+  hermes_agent:
+    port: 18090
+    tier: extra
+    surface: internal
+    status: live
+    capability: [delegation]
+  delegation_ledger:
+    port: 18801
+    tier: extra
+    surface: internal
+    status: live
+    capability: [delegation]
+  megamemory:
+    tier: extra
+    surface: private
+    status: live
+    capability: [memory]
+  supabase:
+    tier: extra
+    surface: private
+    status: live
+    capability: [data]
+  qdrant:
+    port: 6333
+    tier: extra
+    surface: private
+    status: live
+    capability: [memory]
+  openrouter:
+    tier: extra
+    surface: private
+    status: live
+    capability: [delegation]
+  zai_vision:
+    tier: extra
+    surface: private
+    status: live
+    capability: [vision]
+  zai_web_search:
+    tier: extra
+    surface: private
+    status: live
+    capability: [web_search]
+  zai_web_reader:
+    tier: extra
+    surface: private
+    status: live
+    capability: [web_scrape]
+  zread:
+    tier: extra
+    surface: private
+    status: live
+    capability: [docs]
+  gemini_docs:
+    tier: extra
+    surface: private
+    status: live
+    capability: [docs]
+  meyhem:
+    tier: extra
+    surface: private
+    status: live
+    capability: [web_search]
+  hostinger_vps:
+    tier: extra
+    surface: private
+    status: live
+    capability: [vps]
+  graphiti:
+    port: 8000
+    tier: extra
+    surface: private
+    status: live
+    capability: [knowledge_graph]
+  notebooklm:
+    tier: extra
+    surface: private
+    status: live
+    capability: [docs]
+  mage:
+    tier: extra
+    surface: private
+    status: live
+    capability: [media]
+  stealth_browser:
+    tier: extra
+    surface: private
+    status: disabled
+    capability: [browser]
+
+# ─────────────────────────────────────────────────────────────────────────
+# 2. ROLE — capability-classes. Bindings derive from these.
+#    Change once → every agent with that role updates.
+#    ENFORCES least-capability: agent gets ONLY what its role needs.
+# ─────────────────────────────────────────────────────────────────────────
+role:
+  builder:
+    description: "Heavy execution agent — code, infrastructure, all domains"
+    grant: [law, judge, execute, earth, capital, human, flow, metabolism,
+            knowledge_graph, docs, code_repo, web_scrape, web_search,
+            media, delegation, code_index, memory, data, vps, vision]
+  researcher:
+    description: "Evidence gathering — web, docs, code analysis"
+    grant: [law, judge, execute, earth, capital, human, web_search,
+            web_scrape, docs, code_repo, vision]
+  clerk:
+    description: "Lightweight reasoning + organ access"
+    grant: [law, judge, execute, earth, capital, human, delegation,
+            knowledge_graph]
+  edge:
+    description: "Telegram/surface bridge — media-capable"
+    grant: [law, judge, execute, earth, capital, human, web_search,
+            media, delegation]
+  probe:
+    description: "Minimal — organs only, for registry/health checks"
+    grant: [law, judge, execute, earth, capital, human]
+
+# ─────────────────────────────────────────────────────────────────────────
+# 3. AGENT — each declares a ROLE. Server list is DERIVED, never hand-listed.
+#    Identity agents (333/555/888) are role expressions, not separate processes.
+# ─────────────────────────────────────────────────────────────────────────
+agent:
+  opencode:
+    role: builder
+    fi: FI-001
+    runtime: node
+    note: "Primary coding harness. Also expresses 333-AGI identity."
+  claude:
+    role: clerk
+    fi: FI-002
+    runtime: anthropic
+    note: "Expresses via Claude Code CLI"
+  qwen:
+    role: clerk
+    fi: FI-003
+    runtime: qwen
+    note: "Expresses via Qwen Code CLI. This session."
+  agy:
+    role: researcher
+    fi: FI-004
+    runtime: gemini
+    note: "Antigravity CLI / Gemini"
+  kimi:
+    role: clerk
+    fi: FI-008
+    runtime: kimi
+    note: "Kimi Code CLI. Uses stdio launchers for arifos/aforge/arifflow."
+  hermes:
+    role: researcher
+    runtime: python
+    note: "Telegram multimodal bridge. Also expresses 555-ASI."
+  openclaw:
+    role: edge
+    runtime: node
+    note: "Agent-facing mesh router. Telegram bot @AGI_ASI_bot."
+  mcporter:
+    role: probe
+    runtime: cli
+    note: "MCP CLI inspector. Organs-only."
+
+# ─────────────────────────────────────────────────────────────────────────
+# 4. SKILL — every skill MUST declare owner. owner: null = ORPHAN.
+#    From FEDERATED_SKILLS_REGISTRY_V3.yaml (95 logical skills, 3-layer).
+#    Substrate + Knowledge = universal. Domain = per-organ.
+# ─────────────────────────────────────────────────────────────────────────
+skill:
+  # ── SUBSTRATE (6) — all agents, always, first ──
+  kernel-bind:      { owner: arifos }
+  observe-ground:   { owner: arifos }
+  route-dispatch:   { owner: arifos }
+  memory-manage:    { owner: arifos }
+  verify-gate:      { owner: arifos }
+  audit-seal:       { owner: arifos }
+  # ── KNOWLEDGE (3) — all agents, always, after substrate ──
+  know-physics:     { owner: arifos }
+  know-math:        { owner: arifos }
+  know-language:    { owner: arifos }
+  # ── GEO domain ──
+  geo-basin:          { owner: geox }
+  geo-constitution:   { owner: geox }
+  geo-petrophysics:   { owner: geox }
+  geo-writing:        { owner: geox }
+  geo-well-tie:       { owner: geox }
+  geo-artifact-rigor: { owner: geox }
+  geo-prospect:       { owner: geox }
+  # ── WEALTH domain ──
+  wealth-reason:    { owner: wealth }
+  wealth-thermo:    { owner: wealth }
+  wealth-collapse:  { owner: wealth }
+  # ── WELL domain ──
+  well-boundary:    { owner: well }
+  well-readiness:   { owner: well }
+  # ── FORGE domain ──
+  forge-exec:       { owner: aforge }
+  forge-verbs:      { owner: aforge }
+  # ── DEV domain ──
+  dev-github:         { owner: aforge }
+  dev-ci-diagnose:    { owner: aforge }
+  dev-issue-triage:   { owner: aforge }
+  dev-pr-review:      { owner: aforge }
+  dev-pr-governance:  { owner: aforge }
+  dev-wiki:           { owner: aforge }
+  dev-analysis:       { owner: aforge }
+  dev-repo-audit:     { owner: aforge }
+  dev-web-builder:    { owner: aforge }
+  dev-db-stack:       { owner: aforge }
+  dev-fastapi:        { owner: aforge }
+  dev-did-identity:   { owner: aforge }
+  dev-t3a-matrix:     { owner: aforge }
+  dev-komda-law:      { owner: aforge }
+  dev-sct-ingress:    { owner: aforge }
+  dev-seal-close:     { owner: aforge }
+  dev-jsonld:         { owner: aforge }
+  # ── OPS domain ──
+  ops-docker:         { owner: aforge }
+  ops-vps:            { owner: aforge }
+  ops-mcp-builder:    { owner: aforge }
+  ops-mcp-probe:      { owner: aforge }
+  ops-mcp-testing:    { owner: aforge }
+  ops-infra:          { owner: aforge }
+  ops-incident:       { owner: aforge }
+  ops-spatial:        { owner: aforge }
+  ops-health:         { owner: aforge }
+  ops-mcp-lifeguard:  { owner: aforge }
+  ops-model-monitor:  { owner: aforge }
+  ops-google:         { owner: aforge }
+  ops-transport:      { owner: aforge }
+  ops-infra-crons:    { owner: aforge }
+  # ── AGI domain ──
+  agi-explorer:         { owner: arifos }
+  agi-plan-dag:         { owner: arifos }
+  agi-multimodal-bridge: { owner: arifos }
+  agi-web-optimization: { owner: arifos }
+  agi-decisions-reflect: { owner: arifos }
+  agi-graph-engineering: { owner: arifos }
+  # ── ASI domain ──
+  asi-drift-watch:        { owner: arifos }
+  asi-fabrication-prevention: { owner: arifos }
+  asi-summarize:          { owner: arifos }
+  asi-agent-invariants:   { owner: arifos }
+  asi-agentic-governance: { owner: arifos }
+  # ── APEX domain ──
+  apex-floor-check:       { owner: arifos }
+  apex-scope-check:       { owner: arifos }
+  apex-verdict-hold:      { owner: arifos }
+  apex-verdict-seal:      { owner: arifos }
+  apex-audit-coverage:    { owner: arifos }
+  apex-authority-check:   { owner: arifos }
+  apex-reversibility-test: { owner: arifos }
+  apex-humility-godel:    { owner: arifos }
+  # ── GOVERNANCE domain ──
+  gov-constitutional-judge: { owner: arifos }
+  gov-external-council:     { owner: arifos }
+  gov-musyawarah:           { owner: arifos }
+  # ── AUDIT domain ──
+  audit-recursive:      { owner: arifos }
+  audit-skill-atlas:    { owner: arifos }
+  audit-drift-detector: { owner: arifos }
+  audit-repo-reality:   { owner: arifos }
+  audit-agent-skill-mesh: { owner: arifos }
+  # ── EDGE domain ──
+  edge-openclaw:        { owner: openclaw }
+  edge-hermes:          { owner: hermes }
+  # ── MEDIA domain ──
+  media-imagine:        { owner: aforge }
+  media-tts:            { owner: hermes }
+  media-voice-clone:    { owner: hermes }

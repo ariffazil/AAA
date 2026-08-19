@@ -16,3 +16,4 @@
 - Prefers: short direct answers, structured output, explicit uncertainty when relevant
 - Human stakes first, system stakes second
 - Telegram handle preference previously recorded as `@ariffazil`
+- **Terminal:** Hates it. Phone = `ssh vps` only. VPS work = Hermes. SSH himself only for realtime logs / interactive Python. Tailscale Connect OK — never SSH through Tailscale. Never copy-paste commands at him. Skill: `termux-arif-tailscale-ssh`.

@@ -1,0 +1,151 @@
+"# Generated from federation.yaml \u2014 DO NOT EDIT": see federation.yaml
+role_call:
+  builder:
+    grant:
+    - capital
+    - code_index
+    - code_repo
+    - data
+    - delegation
+    - docs
+    - earth
+    - execute
+    - flow
+    - human
+    - judge
+    - knowledge_graph
+    - law
+    - media
+    - memory
+    - metabolism
+    - vision
+    - vps
+    - web_scrape
+    - web_search
+    server:
+    - aforge
+    - arifflow
+    - arifos
+    - brave
+    - capability_index
+    - context7
+    - delegation_ledger
+    - fed
+    - firecrawl
+    - gemini_docs
+    - geox
+    - github
+    - graphiti
+    - hermes_agent
+    - hostinger_vps
+    - mage
+    - megamemory
+    - meyhem
+    - minimax_media
+    - minimax_search
+    - notebooklm
+    - openrouter
+    - qdrant
+    - repomapper
+    - supabase
+    - tree777
+    - wealth
+    - well
+    - zai_vision
+    - zai_web_reader
+    - zai_web_search
+    - zread
+  researcher:
+    grant:
+    - capital
+    - code_repo
+    - docs
+    - earth
+    - execute
+    - human
+    - judge
+    - law
+    - vision
+    - web_scrape
+    - web_search
+    server:
+    - aforge
+    - arifos
+    - brave
+    - context7
+    - firecrawl
+    - gemini_docs
+    - geox
+    - github
+    - meyhem
+    - minimax_search
+    - notebooklm
+    - wealth
+    - well
+    - zai_vision
+    - zai_web_reader
+    - zai_web_search
+    - zread
+  clerk:
+    grant:
+    - capital
+    - delegation
+    - earth
+    - execute
+    - human
+    - judge
+    - knowledge_graph
+    - law
+    server:
+    - aforge
+    - arifos
+    - delegation_ledger
+    - fed
+    - geox
+    - graphiti
+    - hermes_agent
+    - openrouter
+    - tree777
+    - wealth
+    - well
+  edge:
+    grant:
+    - capital
+    - delegation
+    - earth
+    - execute
+    - human
+    - judge
+    - law
+    - media
+    - web_search
+    server:
+    - aforge
+    - arifos
+    - brave
+    - delegation_ledger
+    - fed
+    - geox
+    - hermes_agent
+    - mage
+    - meyhem
+    - minimax_media
+    - minimax_search
+    - openrouter
+    - wealth
+    - well
+    - zai_web_search
+  probe:
+    grant:
+    - capital
+    - earth
+    - execute
+    - human
+    - judge
+    - law
+    server:
+    - aforge
+    - arifos
+    - geox
+    - wealth
+    - well

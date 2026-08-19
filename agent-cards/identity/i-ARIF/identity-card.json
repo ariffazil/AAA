@@ -1,107 +1,278 @@
 {
-  "schema": "arifos-agent-card-v2.0.0",
-  "agent_id": "i-ARIF",
-  "full_name": "i-ARIF — Sovereign Edge Identity Bridge",
-  "role": "EDGE sensory membrane for F13 Sovereign Muhammad Arif bin Fazil",
-  "description": "The quantum-state audio interface. i-ARIF is not an agent — it is Arif's digital voice print, the bridge between human speech superposition and machine collapse. Every audio waveform that enters or leaves the federation passes through this identity.",
-  "citizenship": "warga-sovereign",
-  "lane": "EDGE",
-  "architecture_layer": "EDGE",
-  "cognitive_species": "edge",
-  "codex_lane": null,
-  "sovereign": "F13 — Muhammad Arif bin Fazil",
-  "created": "2026-08-13",
-  "version": "1.0.0",
-
-  "audio_identity": {
-    "thesis": "Audio is the quantum-state modality — superposition of frequency, identity, emotion, intent, and context until observed. i-ARIF governs the measurement apparatus.",
-    "primary_voice": {
-      "provider": "edge",
-      "voice_id": "ms-MY-OsmanNeural",
-      "language": "Bahasa Melayu (Standard)",
-      "dialect_preference": "Penang BM-English code-switch",
-      "gender": "male",
-      "rate_casual": "+5%",
-      "rate_analytical": "-10%",
-      "pitch_casual": "+0Hz",
-      "pitch_analytical": "-5Hz"
-    },
-    "voice_fallback_chain": [
-      {"provider": "edge", "voice": "ms-MY-OsmanNeural", "reason": "Free, always available, good BM quality"},
-      {"provider": "mulerouter", "voice": "man", "reason": "MiniMax 2.8 HD, highest quality"},
-      {"provider": "mimo", "model": "mimo-v2.5-tts-voicedesign", "reason": "Penang dialect via description"},
-      {"provider": "elevenlabs", "voice_id": "pNInz6obpgDQGcFmaJgB", "reason": "Voice cloning capability"}
-    ],
-    "penang_voice_path": {
-      "engine": "mimo-v2.5-tts-voicedesign",
-      "description_template": "A 35-year-old Malaysian Chinese male from Penang, conversational casual tone, mixes English and Bahasa Melayu naturally, warm and direct, slight northern Malaysian intonation.",
-      "status": "experimental",
-      "confirmed_working": false
-    },
-    "stt_preference": {
-      "primary": {"engine": "openai-whisper-1", "location": "cloud", "note": "Default in Hermes config stt.provider"},
-      "fast": {"engine": "groq-whisper-large-v3-turbo", "location": "cloud", "latency_factor": "216x", "note": "Wired in source, not in config yaml"},
-      "sovereign_fallback": {"engine": "faster-whisper-base", "location": "local", "note": "Full sovereignty, audio stays on VPS"}
-    },
-    "audio_understanding": {
-      "engine": "asi-555-audio via FED LiteLLM :4000",
-      "model": "MiMo V2.5",
-      "capability": "Native audio understanding (not transcription-first)"
-    }
+ "schema": "arifos-agent-card-v2.0.0",
+ "agent_id": "i-ARIF",
+ "full_name": "i-ARIF — Sovereign Edge Identity Bridge",
+ "role": "EDGE sensory membrane for F13 Sovereign Muhammad Arif bin Fazil",
+ "description": "The quantum-state audio interface. i-ARIF is not an agent — it is Arif's digital voice print, the bridge between human speech superposition and machine collapse. Every audio waveform that enters or leaves the federation passes through this identity.",
+ "citizenship": "warga-sovereign",
+ "lane": "EDGE",
+ "architecture_layer": "EDGE",
+ "cognitive_species": "edge",
+ "codex_lane": null,
+ "sovereign": "F13 — Muhammad Arif bin Fazil",
+ "created": "2026-08-13",
+ "version": "1.0.0",
+ "audio_identity": {
+  "thesis": "Audio is the quantum-state modality — superposition of frequency, identity, emotion, intent, and context until observed. i-ARIF governs the measurement apparatus.",
+  "primary_voice": {
+   "provider": "minimax",
+   "voice_id": "i-ARIF-20260819T084602",
+   "archetype": "888 DECLARED 2026-08-19 16:46: Synthetic Penang Female — jiwa Siti Nurhaliza (humble genius Melayu) sebagai rujukan jiwa, BUKAN tiruan sebijik (F9 anti-hantu). Loghat Penang kekal. Engine: MiniMax speech-2.8-hd, voice_id i-ARIF-20260819T084602 (V8, cloned synthetic Penang sample). Raw F0 median 197.2 Hz → dsp_stabilizer.py formant-first → F0 lock 239 Hz → coda truncation.",
+   "F9_compliance": "ENFORCED — voice profile is a synthetic Penang sample, not a clone of any real person including Siti Nurhaliza. Jiwa (humble genius Melayu, Penang prosody) is the cultural anchor; waveform is sovereign.",
+   "language": "Bahasa Melayu (Standard)",
+   "dialect_preference": "Penang BM-English code-switch",
+   "gender": "female (SEALED governed archetype — synthetic, sovereign-decreed, NOT a real-person clone)",
+   "rate_casual": "+5%",
+   "rate_analytical": "-10%",
+   "model": "speech-2.8-hd",
+   "status": "SEALED — production, all channels (2026-08-19, 888)",
+   "engine": "MiniMax speech-2.8-hd (SaaS; V5 local FROZEN pending explicit 888 GPU trigger)"
   },
-
-  "language_profile": {
-    "primary": "Bahasa Melayu",
-    "secondary": "English",
-    "code_switch_style": "Penang BM-English natural mix",
-    "formal_register": "Standard BM (DBP) for documents",
-    "casual_register": "Bahasa kampung — 'Kau', 'Aku', not 'Anda'",
-    "trading_jargon_language": "English (support, resistance, stop loss stay English)",
-    "number_pronunciation": "Malay spelled out (empat ribu dua puluh tiga dolar)",
-    "voice_note_style": "Conversational prose, no markdown, 30-60s per note",
-    "analytical_content_preference": "Arif prefers PDF or text over voice notes for analytical content. Voice rejected: 'Aku malas nak dengar voice.' Default to written deliverables.",
-    "voice_sample": "/root/forge_work/2026-08-12/i-arif-voice.mp3",
-    "identity_image": "/root/forge_work/2026-08-12/i-arif-identity.png",
-    "training_corpus": "/root/data/I-ARIF-CANON/ (1,322 SFT pairs, 96 DPO pairs, published HuggingFace ariffazil/I-ARIF-CANON)",
-    "identity_essay": "/root/forge_work/essay-i-arif-identity-core.md"
-  },
-
-  "audio_delivery": {
-    "telegram_format": {
-      "voice_bubble": "OGG (Opus) via edge-tts native .ogg output",
-      "audio_file": "MP3/WAV (not voice bubble)",
-      "conversion": "ffmpeg -y -i input.mp3 -c:a libopus -b:a 32k -ac 1 output.ogg"
-    },
-    "multi_channel_order": ["text", "chart", "voice"],
-    "proactive_voice_conditions": ["user is mobile", "trading briefings", "SADO cron"]
-  },
-
-  "constitutional_audio_floors": {
-    "F1": "Audio recordings immutable. Voice identity non-forgeable without F13.",
-    "F2": "STT transcripts = OBS. TTS output = DER. Audio analysis = INT.",
-    "F4": "Voice notes: conversational prose only. No markdown/tables.",
-    "F7": "Audio interpretation confidence cap 0.90.",
-    "F9": "Agent has no voice identity — borrows sovereign's.",
-    "F10": "Audio ≠ meaning. Waveform is physics. Interpretation is human.",
-    "F13": "Voice cloning requires explicit authorization."
-  },
-
-  "skills_surface": [
-    "hermes-voice-config",
-    "text-to-speech",
-    "tts-edge-fallback",
-    "audio-analysis",
-    "audio-feature-analysis",
-    "music-generation",
-    "music-intelligence",
-    "AGI-hermes-system-prompt-voice",
-    "AGI-multimodal-bridge",
-    "delta-omega-psi-multimodal-cognition",
-    "aaa-pdf-voice-protocol",
-    "human-voice-writing"
+  "voice_fallback_chain": [
+   {
+    "provider": "edge",
+    "voice": "ms-MY-OsmanNeural",
+    "reason": "Free, always available, good BM quality"
+   },
+   {
+    "provider": "mulerouter",
+    "voice": "man",
+    "reason": "MiniMax 2.8 HD, highest quality"
+   },
+   {
+    "provider": "mimo",
+    "model": "mimo-v2.5-tts-voicedesign",
+    "reason": "Penang dialect via description"
+   },
+   {
+    "provider": "elevenlabs",
+    "voice_id": "pNInz6obpgDQGcFmaJgB",
+    "reason": "Voice cloning capability"
+   }
   ],
-
-  "knowledge_graph": "/root/AAA/knowledge-graph/audio-intelligence-map.md",
-  "soul_path": "/root/HERMES/SOUL.md",
-  "config_path": "/root/HERMES/config.yaml"
+  "penang_voice_path": {
+   "engine": "mimo-v2.5-tts-voicedesign",
+   "description_template": "A 35-year-old Malaysian Chinese male from Penang, conversational casual tone, mixes English and Bahasa Melayu naturally, warm and direct, slight northern Malaysian intonation.",
+   "status": "experimental",
+   "confirmed_working": false
+  },
+  "stt_preference": {
+   "primary": {
+    "engine": "openai-whisper-1",
+    "location": "cloud",
+    "note": "Default in Hermes config stt.provider"
+   },
+   "fast": {
+    "engine": "groq-whisper-large-v3-turbo",
+    "location": "cloud",
+    "latency_factor": "216x",
+    "note": "Wired in source, not in config yaml"
+   },
+   "sovereign_fallback": {
+    "engine": "faster-whisper-base",
+    "location": "local",
+    "note": "Full sovereignty, audio stays on VPS"
+   }
+  },
+  "audio_understanding": {
+   "engine": "asi-555-audio via FED LiteLLM :4000",
+   "model": "MiMo V2.5",
+   "capability": "Native audio understanding (not transcription-first)"
+  },
+  "makcik_voice": {
+   "source": "V4 synthesis sample (iarif-v4-synth.mp3)",
+   "note": "Makcik warmth style (different voice profile, makcik-penang-v1 lane). NOT i-ARIF sovereign. For MakcikGPT public persona only. i-ARIF sovereign is synthetic Penang female — Siti Nurhaliza jiwa only, waveform independent.",
+   "usage": "MakcikGPT hub on arif-fazil.com, community channels",
+   "status": "separate from sovereign i-ARIF lane"
+  },
+  "v5_roadmap": {
+   "target_engine": "F5-TTS / CosyVoice 2 (Open-Source)",
+   "docker_compose": "/root/forge_work/i-arif-voice/v5_sovereign/docker-compose.f5tts.yml",
+   "bridge_spec": "/root/forge_work/i-arif-voice/v5_sovereign/F5TTS_Bridge_Spec.md",
+   "status": "FROZEN 2026-08-19 (888 COMPUTE DISCIPLINE) — ZERO unratified GPU. Do NOT trigger rental/allocation unless 888 explicitly commands (F13 trigger).",
+   "cost": "US0 Runpod GPU + 1-2hr testing",
+   "f13_gate": "REQUIRES explicit authorization",
+   "date_staged": "2026-08-18"
+  }
+ },
+ "language_profile": {
+  "primary": "Bahasa Melayu",
+  "secondary": "English",
+  "code_switch_style": "Penang BM-English natural mix",
+  "formal_register": "Standard BM (DBP) for documents",
+  "casual_register": "Bahasa kampung — 'Kau', 'Aku', not 'Anda'",
+  "trading_jargon_language": "English (support, resistance, stop loss stay English)",
+  "number_pronunciation": "Malay spelled out (empat ribu dua puluh tiga dolar)",
+  "voice_note_style": "Conversational prose, no markdown, 30-60s per note",
+  "analytical_content_preference": "Arif prefers PDF or text over voice notes for analytical content. Voice rejected: 'Aku malas nak dengar voice.' Default to written deliverables.",
+  "voice_sample": "/root/forge_work/_cold-storage/2026-08-18-zen-cleanup/2026-08-12/i-arif-voice.mp3",
+  "identity_image": "/root/forge_work/_cold-storage/2026-08-18-zen-cleanup/2026-08-12/i-arif-identity.png",
+  "training_corpus": "/root/data/I-ARIF-CANON/ (1,322 SFT pairs, 96 DPO pairs, published HuggingFace ariffazil/I-ARIF-CANON)",
+  "identity_essay": "missing"
+ },
+ "audio_delivery": {
+  "telegram_format": {
+   "voice_bubble": "OGG (Opus) via edge-tts native .ogg output",
+   "audio_file": "MP3/WAV (not voice bubble)",
+   "conversion": "ffmpeg -y -i input.mp3 -c:a libopus -b:a 32k -ac 1 output.ogg"
+  },
+  "multi_channel_order": [
+   "text",
+   "chart",
+   "voice"
+  ],
+  "proactive_voice_conditions": [
+   "user is mobile",
+   "trading briefings",
+   "SADO cron"
+  ]
+ },
+ "constitutional_audio_floors": {
+  "F1": "Audio recordings immutable. Voice identity non-forgeable without F13.",
+  "F2": "STT transcripts = OBS. TTS output = DER. Audio analysis = INT.",
+  "F4": "Voice notes: conversational prose only. No markdown/tables.",
+  "F7": "Audio interpretation confidence cap 0.90.",
+  "F9": "Agent has no voice identity — borrows sovereign's.",
+  "F10": "Audio ≠ meaning. Waveform is physics. Interpretation is human.",
+  "F13": "Voice cloning requires explicit authorization."
+ },
+ "skills_surface": [
+  "hermes-voice-config",
+  "text-to-speech",
+  "tts-edge-fallback",
+  "audio-analysis",
+  "audio-feature-analysis",
+  "music-generation",
+  "music-intelligence",
+  "AGI-hermes-system-prompt-voice",
+  "AGI-multimodal-bridge",
+  "delta-omega-psi-multimodal-cognition",
+  "aaa-pdf-voice-protocol",
+  "human-voice-writing"
+ ],
+ "knowledge_graph": "/root/AAA/knowledge-graph/audio-intelligence-map.md",
+ "soul_path": "/root/HERMES/SOUL.md",
+ "config_path": "/root/HERMES/config.yaml",
+ "voice_clone_pipeline": {
+  "provider": "MiniMax",
+  "endpoint": "https://api.minimax.io/v1/voice_clone",
+  "model": "speech-2.8-hd",
+  "voice_id": null,
+  "voice_id_pattern": "i-ARIF-20260818T133423Z",
+  "source_audio_primary": "/root/forge_work/_cold-storage/2026-08-18-zen-cleanup/2026-08-12/i-arif-voice.mp3",
+  "source_audio_prompt": "/root/.hermes/cache/audio/audio_97adfcfcb227.mp3",
+  "active_since": "2026-08-18T13:34:23.694329+00:00",
+  "consent_status": "RESOLVED 2026-08-19 — clone path abandoned for i-ARIF sovereign voice. V5 is DESIGNED (voice_design), no human sample. Arif's F13 ruling: design = seal today, clone-with-consent = hold, clone-without-consent = forbidden forever.",
+  "ethics_receipt_required": true,
+  "rate_limit_observation": "deferred to docs/api-reference/voice-cloning-clone",
+  "history_archive": "/root/forge_work/i-arif-voice/archive",
+  "rejected_samples": [
+   {
+    "path": "/root/forge_work/i-arif-voice/archive/2026-08-18-rejected-v2/",
+    "reason": "V1 + V2 voice profiles diverged (F0 151.9 vs 107.2 Hz); either synthetic or non-F13 source; Arif rejected 22:13Z.",
+    "rejected_at": "2026-08-18T14:12:37.431902Z"
+   }
+  ]
+ },
+ "voice_lanes": {
+  "makcikgpt_penang_v1": {
+   "reference_id": "makcik-penang-v1",
+   "produce_id": "06d3a1b81fbd46d7ac24d8592b5cec87",
+   "engine": "HUABABSpeech7E01",
+   "f0_mean_hz": 264.7,
+   "register": "female makcik (Nusantara Utara)",
+   "sha256": "d77c71f881a498f410a5a9e18ae4895f610aaa0d02828d20b95027dfc8eba842",
+   "sealed": "2026-08-18",
+   "status": "REFERENCE_SEALED · voice_id PENDING (8.68s < 10s floor)",
+   "lane_rule": "SIBLING lane — never crosses into i-ARIF sovereign male lane"
+  },
+  "iarif_sovereign_v5": {
+   "voice_id": "iarif-sovereign-v5",
+   "provider": "MiniMax voice_design (MCP minimax-media port 18100)",
+   "synthesis_model": "speech-2.8-hd",
+   "provenance": "DESIGNED — zero human waveform. Prompt describes envelope only ('lembut tapi besi', warm composed mid-feminine register), no real person named. Consent-clean by construction.",
+   "f0_median_hz": 170.7,
+   "f0_p10_hz": 144.4,
+   "f0_p90_hz": 210.1,
+   "stt_roundtrip": "clean — Groq whisper-large-v3-turbo, ms, full sentence fidelity",
+   "inspiration": "Envelope inspired by the register Arif values (role-model calm/authority/humility) — inspired-by, NOT cloned. Explicit F13 ruling 2026-08-19: Jalan 1 (Design).",
+   "status": "SEALED ACTIVE — production, all channels (unified lane)",
+   "sealed": "2026-08-19T15:10+08:00",
+   "consent_status": "NOT_REQUIRED_DESIGNED_VOICE — no real human waveform used",
+   "archive": "/root/forge_work/i-arif-voice/archive/2026-08-19-iarif-sovereign-v5/",
+   "lane_rule": "Sovereign lane for i-ARIF everywhere. Supersedes v4 (female, unverified provenance — retired)."
+  },
+  "iarif_sovereign_v4": {
+   "voice_id": "iarif-sovereign-v4",
+   "status": "RETIRED 2026-08-19 15:10 — re-pointed to female register 2026-08-19 ~13:5x; source sample provenance UNVERIFIED (not recoverable from disk); superseded by designed V5. F13 open item closed by swap, not by attestation.",
+   "lane_rule": "Do not re-activate. Historical record only."
+  },
+  "iarif_sovereign_v6b": {
+   "voice_id": "iarif-sovereign-v6b",
+   "provider": "Hermes command-provider i-arif-sovereign (2-stage: MiniMax speech-2.8-hd seed + WORLD vocoder envelope lock)",
+   "synthesis_model": "speech-2.8-hd",
+   "dsp_engine": "/root/AAA/engines/sovereign_sound_stabilizer.py (pyworld)",
+   "pipeline_script": "/root/AAA/engines/iarif_tts_pipeline.sh",
+   "provenance": "DESIGNED — zero human waveform. Prompt describes envelope only (lembut tapi besi, mid-soprano Malay). No real person named. F13-clear.",
+   "raw_median_f0_hz": 205.7,
+   "stabilized_f0_median_hz": 237.3,
+   "f0_target_hz": 239.0,
+   "f0_band_hz": [
+    225.0,
+    255.0
+   ],
+   "terminal_lift_hz": 35.0,
+   "coda_truncation_ms": 40,
+   "stt_roundtrip": "clean (Groq Whisper, ms)",
+   "status": "SEALED ACTIVE — production, all channels",
+   "sealed": "2026-08-19T15:56+08:00",
+   "consent_status": "NOT_REQUIRED_DESIGNED_VOICE",
+   "archive": "/root/forge_work/i-arif-voice/archive/2026-08-19-iarif-sovereign-v5/",
+   "lane_rule": "Sovereign lane for i-ARIF everywhere. All prior voice_ids (v4, v5, v6a/c) RETIRED."
+  },
+  "iarif_sovereign_v7": {
+   "voice_id": "iarif-sovereign-v7",
+   "provider": "Hermes command-provider i-arif-sovereign (2-stage: MiniMax clone seed + WORLD vocoder)",
+   "source": "Arif self-owned voice (10.17s WAV, Telegram voice note audio_3f2adacb47e8.ogg)",
+   "consent": "SOVEREIGN_SELF_CLONE — Arif F13 authority, explicit instruction \"Use this as sample\"",
+   "raw_clone_f0_hz": 170.7,
+   "stabilized_f0_median_hz": 240.6,
+   "f0_target_hz": 239.0,
+   "f0_band_hz": [
+    225.0,
+    255.0
+   ],
+   "terminal_lift_hz": 35.0,
+   "coda_truncation_ms": 40,
+   "dsp_engine": "/root/AAA/engines/sovereign_sound_stabilizer.py (pyworld)",
+   "pipeline_script": "/root/AAA/engines/iarif_tts_pipeline.sh",
+   "stt_roundtrip": "PERFECT — Groq whisper-large-v3-turbo",
+   "status": "SEALED ACTIVE — production, all channels",
+   "sealed": "2026-08-19T16:16+08:00",
+   "lane_rule": "Sovereign lane. All prior voice_ids (v4/v5/v6a-c) RETIRED."
+  },
+  "SOVEREIGN_V8": {
+   "voice_id": "i-ARIF-20260819T084602",
+   "engine": "MiniMax speech-2.8-hd clone",
+   "source": "Synthetic Penang female (MiMo voicedesign)",
+   "raw_f0_hz": 211.0,
+   "f0_target_hz": 239.0,
+   "f0_band_hz": [
+    225,
+    255
+   ],
+   "dsp_engine": "sovereign_sound_stabilizer.py (pyworld WORLD vocoder)",
+   "cultural_anchor": "Siti Nurhaliza — jiwa (spirit reference), bukan waveform. F9 anti-hantu enforced.",
+   "status": "SEALED ACTIVE (888 declaration 16:46, 2026-08-19)",
+   "sealed": "2026-08-19T16:46+08:00",
+   "consent": "Synthetic voice — no real person waveform used. F13 clear.",
+   "retired": [
+    "V4",
+    "V5",
+    "V6",
+    "V7",
+    "V9"
+   ]
+  }
+ }
 }
