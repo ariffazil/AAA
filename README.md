@@ -40,7 +40,7 @@ kernel_alignment: source=built=deployed=a302c2f (attestation aligned 2026-08-14)
 > **Why?** Coordination without a control plane is chaos; AAA is the nervous system.
 > **Care?** For humans — one cockpit to watch the whole institution. For agents — register your card, declare your lane.
 
-**AAA (Alignment, Authority, Accountability)** is the institutional control plane of the arifOS Federation. It operates the A2A (Agent-to-Agent) Mesh Gateway, the agent identity registry, the task router, and the operator cockpit — connecting **11 forge instruments**, **7 domain organs**, and the sovereign human operator under a unified protocol.
+**AAA (Agents, API, AI, Apps)** is the institutional control plane of the arifOS Federation. It operates the A2A (Agent-to-Agent) Mesh Gateway, the agent identity registry, the task router, and the operator cockpit — connecting **11 forge instruments**, **7 domain organs**, and the sovereign human operator under a unified protocol. *AAA also embodies Alignment, Authority, and Accountability — the governance principles behind every routing decision.*
 
 **For humans:** one cockpit to watch the whole institution — organ health, agent lanes, pending 888_HOLD decisions.
 **For agents:** register your card, declare your lane, receive routed tasks. AAA moves messages; it never moves authority.
@@ -56,8 +56,8 @@ flowchart TB
     subgraph Ladder["THE 000-999 LADDER"]
         direction LR
         S000["000 INIT"] --> S111["111 SENSE"] --> S222["222 PLAN"] --> S333["333 REASON"]
-        S333 --> S444["444 DIRECT"] --> S555["555 REMEMBER"] --> S666["666 DIGNITY"]
-        S666 --> S888["888 JUDGE"] --> S999["999 SEAL"]
+        S333 --> S444["444 DIRECT"] --> S555["555 REMEMBER"] --> S666["666 JUDGE"]
+        S666 --> S888["888 HOLD"] --> S999["999 SEAL"]
     end
     subgraph AAAPlane["🏛️ AAA :3001 — THIS REPO"]
         REG["Agent Registry<br/>11 FI instruments · 4 lanes"]
@@ -74,9 +74,10 @@ flowchart TB
 
 | Station | AAA's role |
 |---|---|
-| 000–666 (cognition) | Carries agent cards & task messages between lanes — content-blind |
+| 000–555 (cognition) | Carries agent cards & task messages between lanes — content-blind |
+| 666 (judge) | **Displays** the 888_HOLD queue for sovereign ratification — never adjudicates |
 | 777 (forge) | Routes execution tasks to FI instruments; never executes itself |
-| 888 (judge) | **Displays** the 888_HOLD queue for sovereign ratification — never adjudicates |
+| 888 (hold) | Verdict class: `888_HOLD` = human approval gate (F13 territory) |
 | 999 (seal) | Surfaces VAULT999 chain status on the cockpit — never appends |
 
 **The Gödel Lock at AAA:** routing power ≠ judgment power. A switchboard that could judge would be a shadow court. AAA structurally cannot.
@@ -195,8 +196,9 @@ Telemetry (observe-only freeze): `map-atlas-echo` · Kabarkan → PG · cron 6h.
 | **💰 WEALTH** | Capital Intelligence — NPV, risk | 18082 | [repo](https://github.com/ariffazil/WEALTH) | [mcp](https://wealth.arif-fazil.com/mcp) | [health](https://wealth.arif-fazil.com/health) | [llms.txt](https://wealth.arif-fazil.com/llms.txt) |
 | **🫀 WELL** | Vitality Guard — human readiness | 18083 | [repo](https://github.com/ariffazil/WELL) | [mcp](https://well.arif-fazil.com/mcp) | [health](https://well.arif-fazil.com/health) | [llms.txt](https://well.arif-fazil.com/llms.txt) |
 | **🔮 HERMES** | Multi-Modal Bridge — Telegram relay | 8644 | [repo](https://github.com/ariffazil/HERMES) | — | — | — |
+| **🧠 arifFlow** | FQ Metabolic Pulse — session metabolism | 7073 | [repo](https://github.com/ariffazil/arifFlow) | — | [health](http://127.0.0.1:7073/health) | — |
 | **🌐 arif-fazil.com** | Public Web Surface — one domain | 443 | [repo](https://github.com/ariffazil/arif-fazil.com) | — | [verify](https://arif-fazil.com/999/verify) | — |
-| **💀 VAULT999** | Immutable Seal — append-only receipt chain | fs | [repo](https://github.com/ariffazil/arifOS/VAULT999) | — | [verify](https://arifos.arif-fazil.com/health) | — |
+| **💀 VAULT999** | Immutable Seal — append-only receipt chain | fs | [repo](https://github.com/ariffazil/arifOS) | — | [verify](https://arifos.arif-fazil.com/health) | — |
 
 ---
 
@@ -206,8 +208,8 @@ AAA operates the A2A (Agent-to-Agent) mesh — discovery metadata is exposed at 
 
 | Registry | Manifest |
 |----------|----------|
-| **A2A v1.0** | `GET https://aaa.arif-fazil.com/.well-known/agent.json` — base agent card |
-| **A2A v2.x** | `GET https://aaa.arif-fazil.com/.well-known/agent-card.json` — extended card (authenticated) |
+| **A2A v1.0** | `GET https://aaa.arif-fazil.com/.well-known/agent-card.json` — public agent card (no auth, per RFC 8615) |
+| **A2A v0.x** | `GET https://aaa.arif-fazil.com/.well-known/agent.json` — legacy base card |
 | **Federation Discovery** | `GET https://arifos.arif-fazil.com/.well-known/federation/agents.json` — all 11 forge instruments |
 
 Federation surface: [aaa.arif-fazil.com](https://aaa.arif-fazil.com) · Health: `GET https://aaa.arif-fazil.com/health`
@@ -218,10 +220,13 @@ Federation surface: [aaa.arif-fazil.com](https://aaa.arif-fazil.com) · Health: 
 
 | Check | Status | Witness |
 |---|---|---|
-| A2A conformance suite | **10/10 PASS** | `npm run a2a:conformance` (QQQ v1.1.1) |
+| A2A conformance suite (internal) | **10/10 PASS** | `npm run a2a:conformance` (QQQ v1.1.1) |
+| A2A public probe (external) | **D-grade (56/100)** | Agenstry probe — missing protocolVersion, auth-gated, owner unverified |
 | Agent registry ↔ live organs parity | **SYNCED** | 11 FI instruments, 4 lanes, 2026-08-14 state sync |
 | Gödel Lock (router ≠ judge) | **STRUCTURAL** | AAA has no adjudication path in code |
 | Kernel attestation alignment | **GREEN** | source=built=deployed=a302c2f (2026-08-14 reconcile) |
+
+> **F2 note:** Internal conformance suite passes10/10; external public probe scores D-grade due to missing `protocolVersion` in agent card and auth-gated endpoints. Both are true. Fix: add `"protocolVersion": "1.0"` to agent card + make public card accessible without auth.
 
 ---
 
