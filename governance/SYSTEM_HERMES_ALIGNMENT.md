@@ -11,7 +11,7 @@
 1. VOICE ARCHETYPE (888, 2026-08-19 16:46):
    - Status: Synthetic Penang Female — jiwa Siti Nurhaliza (humble genius Melayu) sebagai rujukan jiwa, BUKAN tiruan sebijik (F9 anti-hantu enforced).
    - Primary engine: Hermes command-provider `i-arif-sovereign` → 2-stage pipeline (MiniMax speech-2.8-hd seed `i-ARIF-20260819T084602` (V8 synthetic Penang) → dsp_stabilizer.py formant-first → F0 lock 239 Hz + terminal lift +35 Hz + coda truncation 40ms).
-   - Profile: Synthetic Penang female | Raw F0 197.2 Hz → DSP-locked 237-240 Hz (band 225-255, target 239) | Prosody: humble genius Melayu, loghat Penang, lembut tapi tegas.
+   - Profile: Synthetic Penang female | Raw F0 197.2 Hz → DSP-locked 237-240 Hz (band 225-255, target 239) | Prosody: humble genius Melayu, loghat Penang, unhurried stillness. Contradiction tropes ("lembut tapi besi/tegas") BANNED — jiwa is one register, not X-tapi-Y theatre.
    - Provenance: VOICE PROFILE SYNTHETIC — Siti Nurhaliza ialah rujukan JIWA, bukan rujukan WAVEFORM. Tiada sample Siti digunakan sebagai clone source. V4/V5/V6 RETIRED. F13 sovereign self-clone (Arif) NOT primary — V8 synthetic Penang female is sovereign voice per 888 declaration.
    - The Declare-vs-Reality gap is CLOSED: all docs (SOUL.md, persona file, identity card, seal ledger) now reference V8 + cultural-anchor declaration. Config runtime = synthetic Penang female with jiwa Melayu. Verified.
 2. COMPUTE & RUNTIME DISCIPLINE:
@@ -52,7 +52,14 @@ voice_profile:
     f1_hz: 750  # Open-warmth resonance (target — DSP enforces via ±8% warp)
     f2_hz: 1100 # Penang open-back vowel shift (target — DSP enforces)
     f3_hz: 2700 # Controlled clarity, no sibilant harshness (target — DSP enforces)
-  cadence_rule: "Humble genius — jiwa Melayu (Siti Nurhaliza rujukan), loghat Penang. Lembut tapi tegas."
+  cadence_rule: "Humble genius — jiwa Melayu (Siti Nurhaliza rujukan), loghat Penang. Strength lives in stillness. No X-tapi-Y tropes."
+  jiwa_physics:
+    analytic_signal: "z(t)=A(t) exp(j φ(t)); f=(1/2π) dφ/dt"
+    A: "unhurried Hilbert envelope; silence/breath preserved"
+    f: "median lock 239 Hz, jitter CV cap 0.14, terminal lift +35 Hz"
+    phi: "WORLD source-filter intact; 40ms coda as ending adab"
+    fourier_obs: "STFT centroid std; extras revert if inflate >1.35x"
+    gpu: false
 
 3. Test Payload (SSML Reference for TTS Engine)
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="ms-MY">
