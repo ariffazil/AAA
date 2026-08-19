@@ -56,13 +56,13 @@ function ensureUniqueIds(items, label, errors) {
 const errors = [];
 
 const registries = {
-  agents: loadYaml("registries/agents.yaml"),
+  agents: loadYaml("federation/_deprecated_20260819/agents.yaml"),
   bundles: loadYaml("registries/bundles.yaml"),
   domains: loadYaml("registries/domains.yaml"),
   hosts: loadYaml("registries/hosts.yaml"),
   integrations: loadYaml("registries/integrations.yaml"),
   servers: loadYaml("registries/servers.yaml"),
-  skills: loadYaml("registries/skills.yaml"),
+  skills: loadYaml("federation/_deprecated_20260819/skills.yaml"),
   tools: loadYaml("registries/tools.yaml"),
   workflows: loadYaml("registries/workflows.yaml"),
 };
