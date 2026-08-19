@@ -65,26 +65,36 @@ Before any EXECUTE / MUTATE class action:
 
 ```
 1. FQ  = curl -sf http://127.0.0.1:7073/health → .fq   # LIVE SOT — NOT flow_state.json alone
-2. If FQ.quotient is unavailable → HOLD or read cache with age check (TTL 5 min)
-3. If FQ.verdict in {OVERHEAT, BURNING} OR quotient implies execute>>verify → ANNOUNCE; throttle execute; prefer verify
-4. If FQ.quotient < 0.5 → HOLD all non-critical MUTATE until FQ recovers
+2. If FQ.quotient is unavailable → log signal, read cache with age check (TTL 5 min), continue
+3. If FQ.verdict in {OVERHEAT, BURNING} OR quotient implies execute>>verify → ANNOUNCE; throttle execute; prefer verify (signal informs, work continues)
+4. If FQ.quotient < 0.5 → SIGNAL + log to /root/.local/share/arifos/fq_signal.jsonl; throttle non-critical MUTATE; PREFER verify over execute (DO NOT BLOCK work)
 5. G   = forge_evaluate(...) → is_canonical_g MUST be true; if G < 0.80 → HOLD (F8)
 6. J   = forge_apex_encode(goal) → is_canonical_g is false; G_local is NOT constitutional G
 7. If any task sensitivity |J| > 0.6 on a changing field → recompute via forge_apex_recompute before act
 ```
 
+**P5 (2026-08-11) — FQ DEMOTED FROM GATE → SIGNAL.**
+Doctrine ref: ARIFOS::CLOSURE_RECOVERY::v1 LEVERAGE POINT #5.
+FQ informs autonomous decisions but DOES NOT BLOCK work.
+The previous gate "FQ < 0.5 → HOLD all MUTATE" was a 242-session anti-pattern:
+agents waited for metabolism instead of producing, inflating forge velocity
+without closure. Closure Velocity / Forge Velocity now drives rhythm.
+FQ continues to be probed, logged, and surfaced to cockpit — but agents
+continue executing even at low FQ, preferring verify-heavy paths.
+
 **HARAM:** Using `taskJacobian` / `G_local` as APEX G → treat as VOID (F2/F8 confusion).
 **HARAM:** Sealing high-stakes work on stale `flow_state.json` without live `:7073` probe.
+**HARAM (new):** Halting MUTATE because FQ dropped. FQ informs. Work continues.
 
 **SOT doctrine:**
-| Signal | Authoritative source | Cache |
-|--------|---------------------|-------|
-| FQ | arifFlow `:7073/health` | `AAA/state/flow_state.json` (TTL 5 min, mirrored by `arifflow-fq-mirror.timer`) |
-| G | `forge_evaluate` (`is_canonical_g: true`) | none |
-| J | `forge_apex_encode` / `forge_apex_recompute` (`is_canonical_g: false`) | session goal store |
-| RASA | arifOS RASA contract + WELL | never machine qualia |
+| Signal | Authoritative source | Cache | Gate? |
+|--------|---------------------|-------|-------|
+| FQ | arifFlow `:7073/health` | `AAA/state/flow_state.json` (TTL 5 min, mirrored by `arifflow-fq-mirror.timer`) | **NO** — signal only (P5) |
+| G | `forge_evaluate` (`is_canonical_g: true`) | none | **YES** (F8) |
+| J | `forge_apex_encode` / `forge_apex_recompute` (`is_canonical_g: false`) | session goal store | **YES** (J > 0.6 recompute) |
+| RASA | arifOS RASA contract + WELL | never machine qualia | **YES** (F5/F6) |
 
-FQ ≠ G ≠ RASA ≠ J-space.
+FQ ≠ G ≠ RASA ≠ J-space. Only G, J, and RASA gate. FQ informs.
 
 ## 3. AUTO-HEAL — Federation Self-Repair (NO HUMAN)
 
@@ -99,8 +109,8 @@ These are now AUTONOMOUS. No agent asks. No human approves. The federation heals
 | Open loops (>3 days) | Escalate to 555-ASI for root cause → auto-resolve or route to capable agent | Daily sweep |
 | Dead MCP server | Restart service → probe → if still dead, route to Hermes for sovereign FYI | On detection |
 | Disk >80% | Clean logs, purge temp files, report health | Hourly probe |
-| FQ <0.5 | ALL agents HOLD. Wait for FQ to rise. Auto-resume when FQ ≥ 0.5 | Real-time |
-| FQ OVERHEAT / BURNING | ANNOUNCE; reduce execute; increase verify; no high-risk MUTATE | Real-time |
+| FQ <0.5 | SIGNAL only (P5). Log to `/root/.local/share/arifos/fq_signal.jsonl`. Throttle non-critical MUTATE; prefer verify. Work continues. | Real-time (signal, not gate) |
+| FQ OVERHEAT / BURNING | SIGNAL + ANNOUNCE; reduce execute; increase verify; no high-risk MUTATE | Real-time |
 | FQ_SIGNAL_DRIFT (\|live−cache\| > 0.3) | Prefer live arifFlow `:7073/health` over `flow_state.json` | Real-time |
 
 **No human needed for any of the above.** The federation is a living organism, not a dashboard.

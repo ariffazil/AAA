@@ -1,0 +1,55 @@
+# ⚒️ AAA Launcher Map — process-level binding for capability backends
+#
+# Path:        /root/AAA/federation/launcher_map.yaml
+# Authority:   AAA Capability Plane (operational)
+# Purpose:     Maps a registry backend name → concrete launch command/URL.
+#              The registry declares CAPABILITIES. This file declares PROCESSES.
+#
+# Invariants:
+#   INV-LM-1  every entry here MUST correspond to a backend in
+#             AAA_CAPABILITY_REGISTRY.yaml
+#   INV-LM-2  a launcher is added to this map ONLY when its backend is
+#             marked enabled: true AND seal: sealed in the registry
+#   INV-LM-3  credentials are loaded from /root/.secrets/vault.env by the
+#             launcher's _tier_a_envelope.sh — NEVER inline keys here
+#
+# Status:      Wave 0 — only arifFlow is unsealed.
+#             VAULT999 is filesystem-transport, no MCP launcher required.
+
+version: v1
+sovereign: ARIF
+generated_at: "2026-08-11"
+wave: 0
+
+# -----------------------------------------------------------------------------
+# Launcher entries. One per enabled backend. The generator emits a Kimi
+# mcpServers entry for each.
+# -----------------------------------------------------------------------------
+launchers:
+
+  arifFlow:
+    description: "arifFLOW metabolism organ — FQ pulse + receipt ingestion. Stdout bridge to http://127.0.0.1:7073/mcp."
+    transport: stdio
+    command: /root/.arifos/agents/kimi/mcp-launchers/arifflow.sh
+    args: []
+    env: {}
+    startup_timeout_ms: 30000
+    tool_timeout_ms: 30000
+
+  # Wave 1 — not yet unsealed. Listed for future reference only.
+  # When Wave 1 lands, flip `enabled: true` in the registry AND add a
+  # launcher entry here. The generator will then emit the mcpServers entry.
+
+  # hindsight:
+  #   description: "Hindsight memory bank — searchable operational experience."
+  #   transport: http
+  #   url: http://127.0.0.1:18087/mcp
+  #   startup_timeout_ms: 15000
+  #   tool_timeout_ms: 30000
+
+  # graphiti:
+  #   description: "Graphiti memory graph — relationships + temporal context."
+  #   transport: http
+  #   url: http://127.0.0.1:8000/mcp
+  #   startup_timeout_ms: 15000
+  #   tool_timeout_ms: 30000

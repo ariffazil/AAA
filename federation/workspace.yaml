@@ -32,8 +32,13 @@ canonical_repos:
     class: CORE_VITALITY
   - name: HERMES
     path: /root/HERMES
+    runtime: /opt/hermes/app
     port: 18089
+    hostname: 127.0.0.1
+    mcp_path: /mcp
     class: EDGE
+    authority: GATEWAY_ONLY
+    note: "EDGE bridge to Telegram + A2A. /opt runtime mirror pending — zen-2026-08-11 audit gap."
   - name: arif-fazil.com
     path: /root/arif-fazil.com
     class: PUBLIC
