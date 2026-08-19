@@ -43,3 +43,23 @@ Every Musyawarah exchange MUST adhere to F2 Truth and F4 Clarity:
    - `Done. [what changed]. ΔS=[value]. [evidence path].`
    - `Blocked. [gate]. Reason: [why]. Options: [path].`
    - `SEALED::{session_id}::seq={seq}::ΔS={delta}`
+
+---
+
+## 4. Runtime (2026-08-19) — this is what fires
+
+Musyawarah is **two independent voices**, not one process wearing three hats.
+
+```
+MUSYAWARAH  333 ARCHITECT ∥ 555 AUDITOR     read-only, they do not see each other
+CONVERGE    parent synthesizes              888-apex only on residual disagreement
+GOTONG      sequential hop                  previous output = next STATE_IN
+```
+
+- **Grok:** workflow `musyawarah-gotong` (`/root/.grok/workflows/musyawarah-gotong.rhai`). Skill: `FORGE-musyawarah-gotong`.
+- **Hermes:** `forge-musyawawah-deliberation` (adapter). Same physics.
+- **Not musyawarah:** `aaa_capability_loader._musyawawah_phase` — in-process heuristic. `musyawarah_kind=in_process_heuristic`. Do not cite `SEALED_MUSYAWARAH_CONSENSUS` as F3.
+
+Authority star. Evidence = position files. Not a chatboard. See `inter-agent-protocol.md` §11.
+
+Gotong royong runs **only** after dual GO. Default is packet only (`execute=false`). Dual GO is not a SEAL.
