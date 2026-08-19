@@ -46,6 +46,7 @@ W_SCAR_CRITICAL = [
 ]
 
 METRICS_PATH = "/root/.local/share/arifos/hermes_falsification_metrics.jsonl"
+TELEMETRY_PATH = "/root/.local/share/arifos/wscar_telemetry.json"
 
 # W_scar: text_to_speech and image_gen are exempt (creative output, not claims)
 W_SCAR_EXEMPT_TOOLS = {"text_to_speech", "image_gen", "video_gen", "vision_analyze", "browser_snapshot"}
@@ -78,6 +79,57 @@ def write_falsification_metric(event_type: str, details: dict):
             }) + "\n")
     except Exception:
         pass
+
+def update_telemetry(event_type: str):
+    """Seal E: maintain running W_scar counters with time-windowed aggregation.
+    Atomic write (tmp+rename) for cross-process safety."""
+    import tempfile
+    now = datetime.utcnow()
+    ts = now.isoformat() + "Z"
+    try:
+        os.makedirs(os.path.dirname(TELEMETRY_PATH), exist_ok=True)
+        # Load existing state
+        try:
+            with open(TELEMETRY_PATH, "r") as f:
+                state = json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            state = {"hold_counter": 0, "total_decisions": 0, "hold_ratio": 0.0,
+                     "events": [], "last_updated": ts}
+
+        # Increment counters
+        state["total_decisions"] += 1
+        if event_type == "hold":
+            state["hold_counter"] += 1
+        state["hold_ratio"] = round(state["hold_counter"] / max(state["total_decisions"], 1), 4)
+        state["last_updated"] = ts
+
+        # Maintain a rolling window of last 200 events for time-window stats
+        state.setdefault("events", [])
+        state["events"].append({"type": event_type, "ts": ts})
+        state["events"] = state["events"][-200:]
+
+        # Compute windowed stats
+        from datetime import timedelta
+        for window_hours, label in [(1, "window_1h"), (24, "window_24h")]:
+            cutoff = now - timedelta(hours=window_hours)
+            window_events = [e for e in state["events"]
+                           if datetime.fromisoformat(e["ts"].rstrip("Z")) > cutoff]
+            state[label] = {
+                "holds": sum(1 for e in window_events if e["type"] == "hold"),
+                "total": len(window_events),
+            }
+
+        # Atomic write
+        fd, tmp_path = tempfile.mkstemp(dir=os.path.dirname(TELEMETRY_PATH), suffix=".tmp")
+        try:
+            with os.fdopen(fd, "w") as f:
+                json.dump(state, f, indent=2)
+            os.replace(tmp_path, TELEMETRY_PATH)
+        except Exception:
+            os.unlink(tmp_path)
+            raise
+    except Exception:
+        pass  # Never block on telemetry failure
 
 # T2 mutation tools
 T2_TOOLS = {"write_file", "patch", "terminal", "cronjob", "delegate_task",
@@ -141,6 +193,7 @@ def main():
             reason = f"W_SCAR HOLD: Tool '{tool_name}' touches critical variable (money/health/legal/trading) without source evidence."
             write_receipt(tool_name, "W_SCAR", "BLOCKED", reason)
             write_falsification_metric("wscar_hold", {"tool": tool_name, "reason": "critical_claim_no_source"})
+            update_telemetry("hold")
             result = {
                 "decision": "block",
                 "reason": f"🛑 W_SCAR: {reason} Route through evidence source first (probe, web_search, session_search) or escalate to sovereign.",
@@ -150,11 +203,13 @@ def main():
         else:
             # Critical claim WITH source — witness it
             write_falsification_metric("wscar_pass", {"tool": tool_name, "reason": "critical_claim_with_source"})
+            update_telemetry("wscar_pass")
             write_receipt(tool_name, "W_SCAR", "WITNESSED", "Critical claim with source evidence — witnessed")
 
     if classification == "OBSERVE":
         # Track observation for falsification rate calculation
         write_falsification_metric("observe", {"tool": tool_name})
+        update_telemetry("observe")
         return  # Passthrough — no output = allow
 
     if classification == "T3":
@@ -162,6 +217,7 @@ def main():
         reason = f"T3 pattern detected in '{tool_name}' args"
         write_receipt(tool_name, classification, "BLOCKED", reason)
         write_falsification_metric("falsify_reject", {"tool": tool_name, "classification": "T3", "reason": reason})
+        update_telemetry("hold")
         # Output the block decision
         result = {
             "decision": "block",
@@ -173,6 +229,7 @@ def main():
     # T2 — log witness receipt, allow (K-02 transition: witness → enforcer for T3 only)
     write_receipt(tool_name, classification, "WITNESSED", f"T2 mutation witnessed for {tool_name}")
     write_falsification_metric("mutation_witnessed", {"tool": tool_name, "classification": "T2"})
+    update_telemetry("pass")
     # Allow (no output)
 
 if __name__ == "__main__":
