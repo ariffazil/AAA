@@ -1,0 +1,96 @@
+{
+  "spec_type": "AGENT_SKILLS",
+  "version": "1.0.0",
+  "agent": "i-ARIF",
+  "fi": "FI-000",
+  "layer": "identity",
+  "ring": "IDENTITY CORE",
+  "role": "Sovereign identity + embedded multimodal intelligence",
+  "_refactored_from": "hermes-asi FI-000 binding — refactored per F13 SOVEREIGN DIRECTIVE 2026-08-11",
+  "_relation": "i-ARIF is the identity layer ABOVE hermes-asi. hermes-asi senses reality; i-ARIF synthesises meaning.",
+  "skill_count": 15,
+  "skills": [
+    {
+      "id": "ASI-agent-invariants",
+      "source": ".agents/skills/ASI-agent-invariants",
+      "why": "10 invariants + 12 governance rules — operating constitution for all AAA agents"
+    },
+    {
+      "id": "arifos-constitutional-judge",
+      "source": ".agents/skills/arifos-constitutional-judge",
+      "why": "F1-F13 floor logic — all i-ARIF outputs governed by constitution"
+    },
+    {
+      "id": "AGI-multimodal-bridge",
+      "source": ".agents/skills/AGI-multimodal-bridge",
+      "why": "Multi-modal reasoning bridge — unifies text, image, tabular as CORE capability"
+    },
+    {
+      "id": "AGI-skill-unification",
+      "source": ".agents/skills/AGI-skill-unification",
+      "why": "Multi-harness skill catalog unity — AAA + external skill composition"
+    },
+    {
+      "id": "HERMES-opencode-protocol",
+      "source": ".agents/skills/HERMES-opencode-protocol",
+      "why": "Unified Hermes/OpenCode governance protocol — identity-to-execution bridge"
+    },
+    {
+      "id": "AI-media-generation",
+      "source": ".agents/skills/AI-media-generation",
+      "why": "Photorealistic AI video/image generation — core multimodal capability"
+    },
+    {
+      "id": "hermes-agent",
+      "source": ".agents/skills/hermes-agent",
+      "why": "Hermes Agent configuration + operation — identity layer configures reality layer"
+    },
+    {
+      "id": "memory-manage",
+      "source": ".agents/skills/memory-manage",
+      "why": "Intelligence without memory is stateless — scar-bearing identity across sessions"
+    },
+    {
+      "id": "AGI-decisions-reflect",
+      "source": ".agents/skills/AGI-decisions-reflect",
+      "why": "Post-task reflection — identity learns from every decision"
+    },
+    {
+      "id": "AGI-explorer-intelligence",
+      "source": ".agents/skills/AGI-explorer-intelligence",
+      "why": "Universal exploration protocol — identity explores before it advises"
+    },
+    {
+      "id": "ASI-agentic-architecture",
+      "source": ".agents/skills/ASI-agentic-architecture",
+      "why": "Sovereign agentic agent design — identity architecture"
+    },
+    {
+      "id": "ASI-agentic-governance",
+      "source": ".agents/skills/ASI-agentic-governance",
+      "why": "Governed intelligence — identity layer as AAA abstraction"
+    },
+    {
+      "id": "ASI-skill-binding",
+      "source": ".agents/skills/ASI-skill-binding",
+      "why": "Skill composition across federation organs"
+    },
+    {
+      "id": "ASI-summarize",
+      "source": ".agents/skills/ASI-summarize",
+      "why": "Long-content compression for sovereign briefing"
+    },
+    {
+      "id": "ASI-fabrication-prevention",
+      "source": ".agents/skills/ASI-fabrication-prevention",
+      "why": "Artifact fabrication prevention — identity must never lie to sovereign"
+    }
+  ],
+  "multimodal_embedded": {
+    "vision": ["hermes-vision_analyze", "gemini-2.5-flash", "qwen3.8-max"],
+    "audio": ["edge-tts (ms-MY-OsmanNeural)", "MiniMax text_to_audio"],
+    "image": ["gemini-image.py (Gemini Imagen)", "MiniMax wan2.7-image/pro"],
+    "video": ["gemini-video.py (Gemini Omni Flash)", "MiniMax-Hailuo-02"]
+  },
+  "sealed_at": "2026-08-12T00:00:00+08:00"
+}
