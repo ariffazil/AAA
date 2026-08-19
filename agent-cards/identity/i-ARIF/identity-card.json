@@ -19,7 +19,7 @@
    "voice_id": "i-ARIF-20260819T084602",
    "archetype": "888 DECLARED 2026-08-19 16:46: Synthetic Penang Female — jiwa Siti Nurhaliza (humble genius Melayu) sebagai rujukan jiwa, BUKAN tiruan sebijik (F9 anti-hantu). Loghat Penang kekal. Engine: MiniMax speech-2.8-hd, voice_id i-ARIF-20260819T084602 (V8, cloned synthetic Penang sample). Raw F0 median 197.2 Hz → dsp_stabilizer.py formant-first → F0 lock 239 Hz → coda truncation.",
    "F9_compliance": "ENFORCED — voice profile is a synthetic Penang sample, not a clone of any real person including Siti Nurhaliza. Jiwa (humble genius Melayu, Penang prosody) is the cultural anchor; waveform is sovereign.",
-   "language": "Bahasa Melayu (Standard)",
+   "language": "Bahasa Melayu (Penang)",
    "dialect_preference": "Penang BM-English code-switch",
    "gender": "female (SEALED governed archetype — synthetic, sovereign-decreed, NOT a real-person clone)",
    "rate_casual": "+5%",
@@ -31,8 +31,8 @@
   "voice_fallback_chain": [
    {
     "provider": "edge",
-    "voice": "ms-MY-OsmanNeural",
-    "reason": "Free, always available, good BM quality"
+    "voice": "ms-MY-YasminNeural",
+    "reason": "Free female fallback inside sealed envelope. OsmanNeural PURGED (male F0 violates 239 Hz)."
    },
    {
     "provider": "mulerouter",
@@ -263,6 +263,15 @@
    ],
    "dsp_engine": "sovereign_sound_stabilizer.py (pyworld WORLD vocoder)",
    "cultural_anchor": "Siti Nurhaliza — jiwa (spirit reference), bukan waveform. F9 anti-hantu enforced.",
+   "jiwa_physics": {
+    "analytic_signal": "z(t)=A(t) exp(j phi(t)); f=(1/2pi) dphi/dt",
+    "A": "unhurried Hilbert envelope; silence/breath preserved",
+    "f": "median lock 239 Hz, jitter CV cap 0.14, terminal lift +35 Hz",
+    "phi": "WORLD source-filter intact; 40ms coda as ending adab",
+    "fourier_obs": "STFT centroid std; extras revert if inflate >1.35x",
+    "gpu": false,
+    "enforcement": "code (iarif_tts_pipeline.sh + dsp_stabilizer.py), not prompt"
+   },
    "status": "SEALED ACTIVE (888 declaration 16:46, 2026-08-19)",
    "sealed": "2026-08-19T16:46+08:00",
    "consent": "Synthetic voice — no real person waveform used. F13 clear.",

@@ -23,11 +23,11 @@ Setiap unsur protocol dipetakan ke arkitek sedia ada. **Guna yang ini, bukan ver
 | EMD Inter-Agent Schema (Encode/Metabolize/Decode) | ✅ EMD STREAM CONVENTIONS (tiga zon) | `/root/AAA/docs/EMD-STREAM-CONVENTIONS.md` |
 | Label epistemik `[OBS][DER][INT][SPEC]` + F2 | ✅ marker EMD + floor F2 (but human-internal only) | EMD-STREAM-CONVENTIONS.md · constitution.md F2 |
 | Envelope ENCODER_PROTOCOL JSON | ✅ EMD Encode zone (normalize ke sini, §3) | EMD-STREAM-CONVENTIONS.md |
-| task_type MUSYAWARAH_CRITIQUE | ✅ musyawarah 7-fasa (deliberation, bukan negotiation) | skill `forge-musyawawah-deliberation` |
-| Falsification / destructive mandate | ⚠️ ada (probing) tapi belum first-class → **delta-1** | `forge-musyawawah-deliberation` Phase 1 |
-| Tri-Witness Validation | ✅ floor F3 + suara ARCHITECT/AUDITOR (+external witness) | constitution.md F3 · `forge-musyawawah-deliberation` |
-| Conflict resolution (B vs C → delta ke metabolizer, F1>F2>888) | ✅ CONVERGE + Gödel lock (no self-cert) | `forge-musyawawah-deliberation` Phase 4 · `apex_reversibility_test` |
-| GOTONG_ROYONG_EXECUTE (output→input, filter ΔS) | ✅ cross-agent handoff + capability `fed-agent-subagent` | skill `FORGE-cross-agent-handoff` |
+| task_type MUSYAWARAH_CRITIQUE | ✅ independent 333∥555 then converge (deliberation, bukan negotiation) | skill `FORGE-musyawarah-gotong` · workflow `musyawarah-gotong` · Hermes adapter `forge-musyawawah-deliberation` |
+| Falsification / destructive mandate | ⚠️ ada (AUDITOR voice) tapi belum first-class → **delta-1** | AUDITOR prompt in `musyawarah-gotong` · `forge-musyawawah-deliberation` Phase 1 |
+| Tri-Witness Validation | ✅ floor F3 + suara ARCHITECT/AUDITOR (+external witness) | constitution.md F3 · `FORGE-musyawarah-gotong` |
+| Conflict resolution (B vs C → delta ke metabolizer, F1>F2>888) | ✅ CONVERGE + Gödel lock (no self-cert) | workflow Converge phase · `apex_reversibility_test` |
+| GOTONG_ROYONG_EXECUTE (output→input, filter ΔS) | ✅ sequential hop after dual GO + handoff | workflow gotong phase · `FORGE-cross-agent-handoff` |
 | Decoder: SOLUTION + TRADE_OFFS + RISKS_FOR_888 | ✅ position-file + closeout (Lane B vs A, F13 surface) | `forge-musyawawah-deliberation` templates |
 | INCLUSIVE_DELTA → kitaran musyawarah berikutnya | ⚠️ "Surprises/findings" ada tapi tidak first-class → **delta-2** | `forge-musyawawah-deliberation` Phase 4 |
 | W_scar boundary / 888 escalation / SYSTEM_HALT | ✅ Gödel lock + `apex-judge isolate` + F13 | `arifos-constitutional-judge` · `apex_verdict_hold` |
@@ -206,6 +206,7 @@ Do not touch F1-F13 rule sets. Do not run git push. Reversible only.
 - ❌ Skill index or tool schemas — agent loads its own tools
 - ❌ Receipt format or label taxonomy — agent uses its own conventions
 - ❌ Politeness, greetings, filler — zero tokens wasted on social protocol
+- ❌ A sibling "chatboard" as the TASK or CONSTRAINT — see §11
 
 ### Integration with existing infrastructure
 
@@ -218,5 +219,56 @@ Do not touch F1-F13 rule sets. Do not run git push. Reversible only.
 | W_scar gate hook | Envelope CONSTRAINT validated against F1-F13 |
 
 ---
+
+## §11 — Sibling ledger: evidence mesh, authority star
+
+> **Forged:** 2026-08-19 · Metabolized from X `2089274936481161421` (Kimi K3 "chatboard" in pentest-swarm).
+> **Status:** law, not a 4th original delta. Do not mint a 5th bus. Bind onto WAJIB 8 + spawn contract.
+> **One line:** A sibling may share what it saw. It may not tell you what to be.
+
+### Bangang (do not copy)
+
+1. **Name = disease.** "Chatboard" invites sembang. Agents passing prose to siblings is ΔS > 0. The protocol already forbids this (§2).
+2. **Prompt-as-law.** `preamble.md` / `orchestrator.md` is a wish. Long context + a spicy finding and the specialist ignores "don't replace K3".
+3. **Self-asserted identity.** `--from K3 --role orchestrator --kind guidance` are caller strings. Any specialist can post steer. Read-side filter is not mediation (Saltzer: complete mediation is on write).
+4. **One ledger, two physics.** They say the board is untrusted like tool output, then also say the orchestrator steers via `guidance` on that same board. Either it is untrusted (not a control plane) or it is a command channel (needs auth). Both at once is confused deputy.
+5. **Orchestrator mints its own constitution.** K3 "suggested and implement" the board mid-task. That is WAJIB 8: agent-authored guidance loaded as policy.
+6. **Diary sold as control.** They admitted steering a running agent is best-effort (next checkpoint re-read). A file the child may never re-read is not a control plane.
+7. **TTL as authority.** 120s expiry does not bind role. Vanishing guidance mid-edit is worse than stale guidance.
+8. **Flock-20-writers ≠ swarm intelligence.** Durability of JSONL ≠ coherence. You get duplicate observations, conflicting proposals, and a monitor that treats unanswered questions as liveness — a metric agents will game by not asking.
+9. **Model name = rank.** "K3 remains Orchestrator" is a label. Rank is spawn-declared actor_id, enforced by the writer gate, not by the model's brand.
+
+### Bijaksana (bind — already-named parts)
+
+| Keep | Where it already lives |
+|---|---|
+| Kinds as classes, not chat | WAJIB 8: `observation` / `guidance` / `policy` |
+| Board is untrusted input | Agent invariants §2 + §7: tool output ≠ command |
+| Hard interrupt ≠ board post | Envelope §10 + cancel/resume. New `STATE_IN`. |
+| One write path, flock, fail closed | File engineering, not a new organ |
+| Filtered tail by kind | Envelope STATE_IN is already a filter |
+| Checkpoint pull, not push | Honest. Don't fake mid-run control |
+
+### Binding split
+
+```
+EVIDENCE  → mesh allowed. Siblings may append observation|question|proposal|answer.
+AUTHORITY → star only. Parent → child. guidance is parent-authored or it is not guidance.
+INTERRUPT → runtime. cancel + resume with new envelope. Never a JSONL line.
+```
+
+### Write-side bind (the actual fix)
+
+- `kind` / `class` is **derived from spawn-declared role**, not a CLI/JSON field the caller chooses.
+- Only the parent/orchestrator `actor_id` may emit `guidance`.
+- Specialists emit `observation | question | proposal | answer` only. A specialist `kind=guidance` is dropped (fail closed), not relabeled after the fact.
+- Writer identity is bound independently of the payload (`--from` is display, not auth).
+- Readers load every sibling line as **tool output**. `output_is_instruction: false`.
+- Do not name it chat. If a shared file exists, it is an **evidence ledger**.
+
+### What we will not build
+
+- No `board_append.py` organ. No MCP server. No replacement of A2A / EMD / metabolic `state.json`.
+- Parallel specialists still report to the parent. A shared evidence ledger is optional compression, never a command bus.
 
 DITEMPA BUKAN DIBERI — Agent bercakap dalam structured state machine, bukan sembang manusia. Entropy menurun. Truth berskala. ⚒️
