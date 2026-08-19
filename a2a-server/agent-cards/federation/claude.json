@@ -1,0 +1,716 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "protocolVersion": "1.2",
+  "agentId": "claude",
+  "name": "claude",
+  "description": "claude \u2014 Lightweight reasoning + organ access",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "arifOS Federation",
+    "source": "federation.yaml (generated)"
+  },
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "opaqueExecution": true
+  },
+  "defaultInputModes": [
+    "text"
+  ],
+  "defaultOutputModes": [
+    "text"
+  ],
+  "securitySchemes": {
+    "bearer": {
+      "type": "http",
+      "scheme": "bearer",
+      "description": "arifOS SCT token"
+    }
+  },
+  "skills": [
+    {
+      "id": "agi-decisions-reflect",
+      "name": "Agi Decisions Reflect",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "agi-explorer",
+      "name": "Agi Explorer",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "agi-graph-engineering",
+      "name": "Agi Graph Engineering",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "agi-multimodal-bridge",
+      "name": "Agi Multimodal Bridge",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "agi-plan-dag",
+      "name": "Agi Plan Dag",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "agi-web-optimization",
+      "name": "Agi Web Optimization",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "apex-audit-coverage",
+      "name": "Apex Audit Coverage",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "apex-authority-check",
+      "name": "Apex Authority Check",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "apex-floor-check",
+      "name": "Apex Floor Check",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "apex-humility-godel",
+      "name": "Apex Humility Godel",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "apex-reversibility-test",
+      "name": "Apex Reversibility Test",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "apex-scope-check",
+      "name": "Apex Scope Check",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "apex-verdict-hold",
+      "name": "Apex Verdict Hold",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "apex-verdict-seal",
+      "name": "Apex Verdict Seal",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "asi-agent-invariants",
+      "name": "Asi Agent Invariants",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "asi-agentic-governance",
+      "name": "Asi Agentic Governance",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "asi-drift-watch",
+      "name": "Asi Drift Watch",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "asi-fabrication-prevention",
+      "name": "Asi Fabrication Prevention",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "asi-summarize",
+      "name": "Asi Summarize",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "audit-agent-skill-mesh",
+      "name": "Audit Agent Skill Mesh",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "audit-drift-detector",
+      "name": "Audit Drift Detector",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "audit-recursive",
+      "name": "Audit Recursive",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "audit-repo-reality",
+      "name": "Audit Repo Reality",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "audit-seal",
+      "name": "Audit Seal",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "audit-skill-atlas",
+      "name": "Audit Skill Atlas",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "dev-analysis",
+      "name": "Dev Analysis",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "dev-ci-diagnose",
+      "name": "Dev Ci Diagnose",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "dev-db-stack",
+      "name": "Dev Db Stack",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "dev-did-identity",
+      "name": "Dev Did Identity",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "dev-fastapi",
+      "name": "Dev Fastapi",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "dev-github",
+      "name": "Dev Github",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "dev-issue-triage",
+      "name": "Dev Issue Triage",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "dev-jsonld",
+      "name": "Dev Jsonld",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "dev-komda-law",
+      "name": "Dev Komda Law",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "dev-pr-governance",
+      "name": "Dev Pr Governance",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "dev-pr-review",
+      "name": "Dev Pr Review",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "dev-repo-audit",
+      "name": "Dev Repo Audit",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "dev-sct-ingress",
+      "name": "Dev Sct Ingress",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "dev-seal-close",
+      "name": "Dev Seal Close",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "dev-t3a-matrix",
+      "name": "Dev T3A Matrix",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "dev-web-builder",
+      "name": "Dev Web Builder",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "dev-wiki",
+      "name": "Dev Wiki",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "forge-exec",
+      "name": "Forge Exec",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "forge-verbs",
+      "name": "Forge Verbs",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "geo-artifact-rigor",
+      "name": "Geo Artifact Rigor",
+      "tags": [
+        "geox"
+      ]
+    },
+    {
+      "id": "geo-basin",
+      "name": "Geo Basin",
+      "tags": [
+        "geox"
+      ]
+    },
+    {
+      "id": "geo-constitution",
+      "name": "Geo Constitution",
+      "tags": [
+        "geox"
+      ]
+    },
+    {
+      "id": "geo-petrophysics",
+      "name": "Geo Petrophysics",
+      "tags": [
+        "geox"
+      ]
+    },
+    {
+      "id": "geo-prospect",
+      "name": "Geo Prospect",
+      "tags": [
+        "geox"
+      ]
+    },
+    {
+      "id": "geo-well-tie",
+      "name": "Geo Well Tie",
+      "tags": [
+        "geox"
+      ]
+    },
+    {
+      "id": "geo-writing",
+      "name": "Geo Writing",
+      "tags": [
+        "geox"
+      ]
+    },
+    {
+      "id": "gov-constitutional-judge",
+      "name": "Gov Constitutional Judge",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "gov-external-council",
+      "name": "Gov External Council",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "gov-musyawarah",
+      "name": "Gov Musyawarah",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "kernel-bind",
+      "name": "Kernel Bind",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "know-language",
+      "name": "Know Language",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "know-math",
+      "name": "Know Math",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "know-physics",
+      "name": "Know Physics",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "media-imagine",
+      "name": "Media Imagine",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "memory-manage",
+      "name": "Memory Manage",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "observe-ground",
+      "name": "Observe Ground",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "ops-docker",
+      "name": "Ops Docker",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "ops-google",
+      "name": "Ops Google",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "ops-health",
+      "name": "Ops Health",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "ops-incident",
+      "name": "Ops Incident",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "ops-infra",
+      "name": "Ops Infra",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "ops-infra-crons",
+      "name": "Ops Infra Crons",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "ops-mcp-builder",
+      "name": "Ops Mcp Builder",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "ops-mcp-lifeguard",
+      "name": "Ops Mcp Lifeguard",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "ops-mcp-probe",
+      "name": "Ops Mcp Probe",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "ops-mcp-testing",
+      "name": "Ops Mcp Testing",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "ops-model-monitor",
+      "name": "Ops Model Monitor",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "ops-spatial",
+      "name": "Ops Spatial",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "ops-transport",
+      "name": "Ops Transport",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "ops-vps",
+      "name": "Ops Vps",
+      "tags": [
+        "aforge"
+      ]
+    },
+    {
+      "id": "route-dispatch",
+      "name": "Route Dispatch",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "verify-gate",
+      "name": "Verify Gate",
+      "tags": [
+        "arifos"
+      ]
+    },
+    {
+      "id": "wealth-collapse",
+      "name": "Wealth Collapse",
+      "tags": [
+        "wealth"
+      ]
+    },
+    {
+      "id": "wealth-reason",
+      "name": "Wealth Reason",
+      "tags": [
+        "wealth"
+      ]
+    },
+    {
+      "id": "wealth-thermo",
+      "name": "Wealth Thermo",
+      "tags": [
+        "wealth"
+      ]
+    },
+    {
+      "id": "well-boundary",
+      "name": "Well Boundary",
+      "tags": [
+        "well"
+      ]
+    },
+    {
+      "id": "well-readiness",
+      "name": "Well Readiness",
+      "tags": [
+        "well"
+      ]
+    }
+  ],
+  "mcp_surface": {
+    "aforge": {
+      "port": 7072,
+      "tier": "organ",
+      "surface": "internal",
+      "capability": [
+        "execute"
+      ]
+    },
+    "arifos": {
+      "port": 8088,
+      "tier": "organ",
+      "surface": "public",
+      "capability": [
+        "law",
+        "judge"
+      ]
+    },
+    "delegation_ledger": {
+      "port": 18801,
+      "tier": "extra",
+      "surface": "internal",
+      "capability": [
+        "delegation"
+      ]
+    },
+    "fed": {
+      "port": 7074,
+      "tier": "extra",
+      "surface": "internal",
+      "capability": [
+        "delegation"
+      ]
+    },
+    "geox": {
+      "port": 8081,
+      "tier": "organ",
+      "surface": "public",
+      "capability": [
+        "earth"
+      ]
+    },
+    "graphiti": {
+      "port": 8000,
+      "tier": "extra",
+      "surface": "private",
+      "capability": [
+        "knowledge_graph"
+      ]
+    },
+    "hermes_agent": {
+      "port": 18090,
+      "tier": "extra",
+      "surface": "internal",
+      "capability": [
+        "delegation"
+      ]
+    },
+    "openrouter": {
+      "port": null,
+      "tier": "extra",
+      "surface": "private",
+      "capability": [
+        "delegation"
+      ]
+    },
+    "tree777": {
+      "port": 18077,
+      "tier": "extra",
+      "surface": "private",
+      "capability": [
+        "knowledge_graph"
+      ]
+    },
+    "wealth": {
+      "port": 18082,
+      "tier": "organ",
+      "surface": "internal",
+      "capability": [
+        "capital"
+      ]
+    },
+    "well": {
+      "port": 18083,
+      "tier": "organ",
+      "surface": "internal",
+      "capability": [
+        "human"
+      ]
+    }
+  },
+  "role": "clerk",
+  "grant": [
+    "capital",
+    "delegation",
+    "earth",
+    "execute",
+    "human",
+    "judge",
+    "knowledge_graph",
+    "law"
+  ],
+  "federation_metadata": {
+    "fi": "FI-002",
+    "runtime": "anthropic",
+    "note": "Expresses via Claude Code CLI",
+    "source": "federation.yaml",
+    "generated_by": "federation-a2a-sync.py"
+  }
+}

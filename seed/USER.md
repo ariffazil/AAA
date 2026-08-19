@@ -18,3 +18,4 @@
 - Telegram handle preference previously recorded as `@ariffazil`
 - **Question budget:** 1 per task. If more needed, ASI failed.
 - **Language:** Full human language only. No jargon, no code unless asked. Penang BM-English mix naturally.
+- **Terminal:** Hates it. Phone = `ssh vps` only. VPS work = Hermes. SSH himself only for realtime logs / interactive Python. Tailscale Connect OK — never SSH through Tailscale. Never copy-paste commands at him. Skill: `termux-arif-tailscale-ssh`.

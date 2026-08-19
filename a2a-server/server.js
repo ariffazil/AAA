@@ -3233,6 +3233,69 @@ motto: 'Ditempa Bukan Diberi',
   });
 });
 
+// ── Federation Health Proxy — /api/kernel-health, /api/organ-health/:organ ──
+// Lightweight proxies for the /apps launcher page. Caches 10s to avoid hammering organs.
+
+const ORGAN_PORTS = {
+  arifos: 8088,
+  aforge: 7072,
+  geox: 8081,
+  wealth: 18082,
+  well: 18083,
+  fed: 7074,
+  flame: 18901,
+  signal: 18084,
+  frame: 18085,
+};
+
+const _healthCache = { data: {}, ts: {} };
+const HEALTH_CACHE_TTL = 10_000;
+
+function _fetchOrganHealth(organ) {
+  const port = ORGAN_PORTS[organ];
+  if (!port) return Promise.resolve({ status: 'unknown', error: 'no_port' });
+  const now = Date.now();
+  if (_healthCache.data[organ] && now - _healthCache.ts[organ] < HEALTH_CACHE_TTL) {
+    return Promise.resolve(_healthCache.data[organ]);
+  }
+  return new Promise((resolve) => {
+    const timer = setTimeout(() => resolve({ status: 'timeout', organ }), 4000);
+    const req = HTTP.get(`http://127.0.0.1:${port}/health`, (r) => {
+      let body = '';
+      r.on('data', (c) => body += c);
+      r.on('end', () => {
+        clearTimeout(timer);
+        try {
+          const data = JSON.parse(body);
+          const result = { status: data.status || 'ok', organ, tools: data.tools_loaded || data.canonical_tools_loaded || data.tools || 0 };
+          _healthCache.data[organ] = result;
+          _healthCache.ts[organ] = now;
+          resolve(result);
+        } catch (_) {
+          resolve({ status: 'parse_error', organ });
+        }
+      });
+    });
+    req.on('error', () => { clearTimeout(timer); resolve({ status: 'unreachable', organ }); });
+  });
+}
+
+app.get('/api/kernel-health', async (req, res) => {
+  const result = await _fetchOrganHealth('arifos');
+  res.setHeader('Cache-Control', 'no-store');
+  res.json(result);
+});
+
+app.get('/api/organ-health/:organ', async (req, res) => {
+  const organ = req.params.organ;
+  if (!ORGAN_PORTS[organ]) {
+    return res.status(404).json({ status: 'unknown', error: `Unknown organ: ${organ}` });
+  }
+  const result = await _fetchOrganHealth(organ);
+  res.setHeader('Cache-Control', 'no-store');
+  res.json(result);
+});
+
 // ── Cockpit Live Polling Endpoints (forged 2026-08-05) ─────────────────
 // Status written by aaa-cockpit-probe.service every 15s via cockpit_probe.py
 
