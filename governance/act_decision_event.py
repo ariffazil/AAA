@@ -1,10 +1,10 @@
 """
-SCT Decision Event — PR 3 observability foundation.
+ACT Decision Event — PR 3 observability foundation.
 
 Every ALLOW/REJECT at organ ingress produces one structured decision event:
   - shared trace_id (black-box incident number)
   - organ, tool, action_class (registry-owned)
-  - SCT fingerprint only (never raw token)
+  - ACT fingerprint only (never raw token)
   - decision + reason
   - timestamp
 
@@ -54,7 +54,7 @@ class SctDecisionEvent:
     required_authority: str = ""
     require_sct: bool = False
     decision: str = ""  # ALLOW | REJECT
-    reason_code: str = ""  # SCT_REQUIRED | SCT_AMBIGUOUS | SCT_INVALID | OK | …
+    reason_code: str = ""  # ACT_REQUIRED | ACT_AMBIGUOUS | ACT_INVALID | OK | …
     actor_id: str = ""
     sct_fingerprint: str = ""  # sha256:… or empty if absent
     sct_source_count: int = 0
@@ -253,7 +253,7 @@ def emit_decision(
 DECISION_EVENT_JSON_SCHEMA: dict[str, Any] = {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$id": SCHEMA_ID,
-    "title": "SCT Decision Event",
+    "title": "ACT Decision Event",
     "type": "object",
     "required": [
         "schema",
@@ -281,7 +281,7 @@ DECISION_EVENT_JSON_SCHEMA: dict[str, Any] = {
         "actor_id": {"type": "string"},
         "sct_fingerprint": {
             "type": "string",
-            "description": "sha256:… prefix only — never raw SCT",
+            "description": "sha256:… prefix only — never raw ACT",
         },
         "sct_source_count": {"type": "integer", "minimum": 0},
         "sct_unique_tokens": {"type": "integer", "minimum": 0},

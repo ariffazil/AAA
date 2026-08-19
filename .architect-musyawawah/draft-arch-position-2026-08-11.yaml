@@ -1,0 +1,19 @@
+# ARCHITECT_DRAFT_POSITION — 2026-08-11 Musyawawah deliberation
+# Author: Kimi (FI-008), voicing ARCHITECT.
+# Status: DRAFT (will be sealed by 888_JUDGE after AUDITOR + SOVEREIGN.)
+# Constraints: OBSERVE-only. No flags flipped. No files modified.
+# Sources: /root/AAA/federation/AAA_CAPABILITY_REGISTRY.yaml (540 lines)
+#          /root/forge_work/receipts/2026-08-11-musyawawah-loader-fix/RECEIPT.md
+
+# --- Canonical facts the position is grounded on ---
+# 1) 30 backends catalogued, 9 enabled (registry L1, also L20-40 'server_count: 8' for kimi's view,
+#    and L78-92 arifos+minimax already enabled in reality.search).
+# 2) Of 30 catalogued, 21 have enabled: false. The 21 are exactly the members of
+#    wave_2_review (7) + wave_3_hold (13) + wave_1_safe_http (2 minus 1 already enabled) =
+#    wait, wave_1 list has 2 (hindsight, graphiti) both with enabled:false elsewhere in the file
+#    (L146, L154) so technically "21 disabled" includes both Wave 1 entries.
+# 3) auto_enable: false on every wave (L438, L451, L474). F13 ratification is
+#    structurally required by the YAML — not by my opinion.
+# 4) The musyawawah loader fix (RECEIPT.md) restored registry to canonical v2 and
+#    made _musyawawah_phase fire on every load. Status flips still need
+#    "F13_SOVEREIGN sign-off + Lane A SEAL" per L533-540.
