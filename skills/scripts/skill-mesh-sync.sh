@@ -46,16 +46,24 @@ is_native_keep() {
 
 declare -A CODEX_KEEP=()
 if [[ -f "$CODEX_PROFILE" ]]; then
-  while IFS= read -r name; do
-    [[ -n "$name" ]] && CODEX_KEEP[$name]=1
-  done < <(python3 -c 'import json,sys; print("\n".join(x["name"] for x in json.load(open(sys.argv[1]))["skills"]))' "$CODEX_PROFILE")
+  if python3 -c "import json,sys; d=json.load(open(sys.argv[1])); assert 'skills' in d, 'no skills key'" "$CODEX_PROFILE" 2>/dev/null; then
+    while IFS= read -r name; do
+      [[ -n "$name" ]] && CODEX_KEEP[$name]=1
+    done < <(python3 -c 'import json,sys; print("\n".join(x["name"] for x in json.load(open(sys.argv[1]))["skills"]))' "$CODEX_PROFILE")
+  else
+    echo "NOTE: $CODEX_PROFILE has no 'skills' key (migrated format); profile filter disabled for codex"
+  fi
 fi
 
 declare -A OPENCODE_KEEP=()
 if [[ -f "$OPENCODE_PROFILE" ]]; then
-  while IFS= read -r name; do
-    [[ -n "$name" ]] && OPENCODE_KEEP[$name]=1
-  done < <(python3 -c 'import json,sys; print("\n".join(x["name"] for x in json.load(open(sys.argv[1]))["skills"]))' "$OPENCODE_PROFILE")
+  if python3 -c "import json,sys; d=json.load(open(sys.argv[1])); assert 'skills' in d, 'no skills key'" "$OPENCODE_PROFILE" 2>/dev/null; then
+    while IFS= read -r name; do
+      [[ -n "$name" ]] && OPENCODE_KEEP[$name]=1
+    done < <(python3 -c 'import json,sys; print("\n".join(x["name"] for x in json.load(open(sys.argv[1]))["skills"]))' "$OPENCODE_PROFILE")
+  else
+    echo "NOTE: $OPENCODE_PROFILE has no 'skills' key (migrated format); profile filter disabled for opencode"
+  fi
 fi
 
 is_codex_harness() {
@@ -106,8 +114,8 @@ collect_sources() {
         fi
       fi
     done
-    # substrate / knowledge nested
-    for nest in substrate knowledge; do
+    # substrate / knowledge / QQQ nested
+    for nest in substrate knowledge primitives capabilities domains workflows; do
       [[ -d "$root/$nest" ]] || continue
       for p in "$root/$nest"/*; do
         [[ -d "$p" && -f "$p/SKILL.md" ]] || continue

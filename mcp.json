@@ -1,0 +1,126 @@
+{
+  "architectural_verdict": "SEALED_MUSYAWARAH_CONSENSUS",
+  "axes": [
+    "sense",
+    "know",
+    "remember",
+    "understand",
+    "verify",
+    "forge",
+    "witness"
+  ],
+  "canonical_capabilities": [
+    "forge.container",
+    "knowledge.docs",
+    "evidence.epistemic",
+    "forge.repository",
+    "memory.recall",
+    "witness.append",
+    "forge.infrastructure",
+    "knowledge.capability_index",
+    "knowledge.repo_map",
+    "reality.browse",
+    "forge.provider",
+    "evidence.reasoning",
+    "forge.database",
+    "memory.vector",
+    "code.navigate",
+    "db.query",
+    "reality.search",
+    "evidence.scan",
+    "evidence.browser"
+  ],
+  "generated_at": "2026-08-11T15:53:38.324917+00:00",
+  "musyawawah_visible": true,
+  "runtime_ready_backends": [
+    {
+      "F_rating": "REVIEW",
+      "gate": null,
+      "name": "arifos",
+      "note": "arifOS constitutional kernel \u2014 F1-F13 + 888_JUDGE; routes reality.search via canonical kernel | arifOS constitutional kernel \u2014 F1-F13 + 888_JUDGE + 888_APEX",
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "REVIEW",
+      "gate": "A-FORGE_lease",
+      "name": "minimax",
+      "note": "MiniMax coding plan MCP (uvx) \u2014 web_search via MiniMax provider | MiniMax coding plan MCP (uvx) \u2014 web_search via MiniMax provider; canonical name = minimax",
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "REVIEW",
+      "gate": null,
+      "name": "geox",
+      "note": "GEOX earth intelligence \u2014 33 canonical tools, EVIDENCE_ONLY",
+      "seal": "sealed",
+      "transport": "http",
+      "url": "http://127.0.0.1:8081/mcp"
+    },
+    {
+      "F_rating": "REVIEW",
+      "gate": null,
+      "name": "wealth",
+      "note": "WEALTH capital intelligence \u2014 EVIDENCE_ONLY",
+      "seal": "sealed",
+      "transport": "http",
+      "url": "http://127.0.0.1:18082/mcp"
+    },
+    {
+      "F_rating": "REVIEW",
+      "gate": null,
+      "name": "well",
+      "note": "WELL human readiness \u2014 REFLECT_ONLY (F6 maruah)",
+      "seal": "sealed",
+      "transport": "http",
+      "url": "http://127.0.0.1:18083/mcp"
+    },
+    {
+      "F_rating": "REVIEW",
+      "gate": null,
+      "name": "fed",
+      "note": "FED federation router \u2014 fed_route, fed_status, fed_probe, fed_contrast, fed_health, fed_report_latency",
+      "seal": "sealed",
+      "transport": "http",
+      "url": "http://127.0.0.1:7074/mcp"
+    },
+    {
+      "F_rating": "HOLD",
+      "gate": "A-FORGE_lease",
+      "name": "aforge",
+      "note": "A-FORGE governed engineering actuator \u2014 77 forge_* tools; AMANAH: MUTATE/DELETE/IRREVERSIBLE requires arifOS SEAL or 888_HOLD",
+      "seal": "sealed",
+      "transport": "stdio",
+      "url": null
+    },
+    {
+      "F_rating": "SAFE",
+      "gate": null,
+      "name": "VAULT999",
+      "note": "primary receipt store",
+      "seal": "sealed",
+      "transport": "filesystem",
+      "url": null
+    },
+    {
+      "F_rating": "SAFE",
+      "gate": null,
+      "name": "arifFlow",
+      "note": "FQ metabolism + receipts",
+      "seal": "sealed",
+      "transport": "http",
+      "url": "http://127.0.0.1:7073"
+    }
+  ],
+  "schema_version": "mcp.json.v1",
+  "source_registry_sha256": "702641aba92f2dfcaa9ba5e3d8e62e7722ed0af9b2a7684156083e17f05ee1e8",
+  "source_registry_status": "RATIFIED",
+  "summary": {
+    "backends_catalogued": 30,
+    "backends_runtime_ready": 9,
+    "capabilities_recognized": 19
+  }
+}

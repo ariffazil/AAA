@@ -1,0 +1,55 @@
+{
+  "actor_id": "root@phase_a_init",
+  "doctrine_capabilities_seen": [
+    "code.navigate",
+    "evidence.scan",
+    "forge.repository",
+    "knowledge.docs",
+    "memory.recall",
+    "reality.search",
+    "witness.append"
+  ],
+  "extra_capabilities": [
+    "db.query",
+    "evidence.browser",
+    "evidence.epistemic",
+    "evidence.reasoning",
+    "forge.container",
+    "forge.database",
+    "forge.infrastructure",
+    "forge.provider",
+    "knowledge.capability_index",
+    "knowledge.repo_map",
+    "memory.vector",
+    "reality.browse"
+  ],
+  "fail_closed_reasons": [],
+  "indicators": {
+    "AXES": 7,
+    "BACKENDS": 24,
+    "CREDENTIALS_EXPOSED": 0,
+    "ENABLED": 2,
+    "LEASES": 0,
+    "MUTATIONS": 0,
+    "REGISTRY": "loaded",
+    "SCHEMA": "valid",
+    "VERDICT": "READY_READONLY"
+  },
+  "invariants_ok": {
+    "INV-11": true,
+    "INV-12": true,
+    "INV-13": true,
+    "INV-14": true,
+    "INV-15": true,
+    "INV-16": true,
+    "INV-17.a": true,
+    "INV-17.b": true
+  },
+  "reason": null,
+  "receipt_type": "CAPABILITY_INIT",
+  "registry_path": "/root/AAA/federation/AAA_CAPABILITY_REGISTRY.yaml",
+  "registry_sha256": "0c2fa9d390b9026bbb5cb637dd5d7ee276e75159f59acae111ec7bd481faf56c",
+  "session_id": "phase_a_init_3787685_1786458850",
+  "ts": "2026-08-11T14:34:10Z",
+  "verdict": "READY_READONLY"
+}
