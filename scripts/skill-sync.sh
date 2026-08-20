@@ -8,6 +8,7 @@ set -euo pipefail
 AAA_SKILLS="/root/AAA/skills"
 AGENTS_SKILLS="/root/.agents/skills"
 HERMES_SKILLS="/root/HERMES/skills"
+KIMI_SKILLS="/root/.kimi-code/skills"
 
 RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'; NC='\033[0m'
 log() { echo -e "${GREEN}[SYNC]${NC} $*"; }
@@ -134,16 +135,38 @@ sync_grok() {
     sync_agent "Grok Build" "$HOME/.grok/skills"
 }
 
+# RSI 2026-08-20: kimi was missing from sync targets entirely — its tree froze
+# at 2026-07-23 vintage (50 skills missing, 28 lagging). Physical-copy propagation
+# (not symlink-mount) because kimi carries 14 kimi-native orphans pending the
+# catalog reverse-propagation decision. Snapshot-first (F1), archives excluded,
+# no --delete (orphans preserved). AAA version wins on conflict (protocol §4).
+sync_kimi() {
+    local stamp
+    stamp=$(date +%Y%m%d)
+    mkdir -p "$HOME/.kimi-code/_snapshots"
+    if [ ! -f "$HOME/.kimi-code/_snapshots/skills-pre-sync-$stamp.tgz" ]; then
+        log "Snapshotting kimi skills → skills-pre-sync-$stamp.tgz"
+        tar -czf "$HOME/.kimi-code/_snapshots/skills-pre-sync-$stamp.tgz" -C "$HOME/.kimi-code" skills || warn "snapshot failed — aborting kimi sync"
+    fi
+    log "Syncing Kimi Code → $KIMI_SKILLS"
+    rsync -rla --exclude='.*' --exclude='_retired' "$AAA_SKILLS/" "$KIMI_SKILLS/" || warn "rsync partial (attrs) — verify with mesh audit"
+    local count
+    count=$(find "$KIMI_SKILLS" -maxdepth 2 -name SKILL.md 2>/dev/null | wc -l)
+    log "kimi-code: $count SKILL.md resolvable"
+}
+
 audit() {
     echo "═══════════════════════════════════════════════════"
     echo "  AAA Federated Skills Audit — $(date -Iseconds)"
     echo "═══════════════════════════════════════════════════"
     echo ""
-    echo "Skill counts:"
-    for d in "$AAA_SKILLS" "$AGENTS_SKILLS" "$HOME/.claude/skills" "$HOME/.kimi/skills" "$HOME/.codex/skills" "$HOME/.grok/skills"; do
-        local name=$(basename "$d")
-        local count=$(ls -d "$d"/*/ 2>/dev/null | wc -l)
-        [ -d "$d" ] && echo "  $name: $count dirs"
+    echo "Skill counts (tree):"
+    for d in "$AAA_SKILLS" "$AGENTS_SKILLS" "$HERMES_SKILLS" "$HOME/.kimi-code/skills" "$HOME/.claude/skills" "$HOME/.codex/skills" "$HOME/.grok/skills"; do
+        [ -d "$d" ] || continue
+        local name=$(echo "$d" | sed 's|/root/||; s|/skills||')
+        local phys=$(find "$d/" -maxdepth 2 -name SKILL.md -not -type l 2>/dev/null | wc -l)
+        local all=$(find "$d/" -maxdepth 2 -name SKILL.md 2>/dev/null | wc -l)
+        echo "  $name: $all SKILL.md resolvable ($phys physical)"
     done
     echo ""
     echo "Registry total: $(grep -c 'id:' /root/AAA/skills/FEDERATED_SKILLS_REGISTRY.yaml 2>/dev/null || echo 0) entries"
@@ -151,14 +174,15 @@ audit() {
 
 case "${1:-sync}" in
     audit)   audit ;;
-    sync)    sync_claude; sync_codex; sync_grok ;;
-    agent:*) 
+    sync)    sync_claude; sync_codex; sync_grok; sync_kimi ;;
+    agent:*)
         case "${1#agent:}" in
             claude) sync_claude ;;
             codex)  sync_codex ;;
             grok)   sync_grok ;;
+            kimi)   sync_kimi ;;
             *)      echo "Unknown agent"; exit 1 ;;
         esac
         ;;
-    *)  echo "Usage: $0 [audit|sync|agent:<claude|codex|grok>]"; exit 1 ;;
+    *)  echo "Usage: $0 [audit|sync|agent:<claude|codex|grok|kimi>]"; exit 1 ;;
 esac
