@@ -1,10 +1,25 @@
 # Federation Agent-Skill Map
 # Canonical source of truth for which skills belong to which agent
 # Forged: 2026-08-04 by 333-AGI
+# Refreshed: 2026-08-20 by 333-AGI — live-reality audit (mesh audit session SEAL-df6b582a304c40bd)
+#   All counts below are LIVE MEASURED (os.path scan following symlinks), not declared.
+#   Previous version (1.0.0) had: openclaw skill_count=1 (reality 5), opencode skills_dir
+#   pointing at an archive-only dir, kimi skills_dir pointing at the docs home not the
+#   runtime tree, and cached FQ=1.41 BALANCED. All corrected here.
 # See: /root/forge_work/2026-08-04/AGENT-SKILL-FLOW.md
 
-version: "1.0.0"
+version: "1.1.0"
 doctrine: "Intelligence survives reality NOT by being right, but by knowing exactly how wrong it could be."
+
+# ─── Mesh topology (filesystem layer, measured 2026-08-20) ───
+# The catalog /root/AAA/skills is a HYBRID: 186 physical dirs + 96 symlinks into
+# /root/HERMES/skills (0 broken). HERMES is a de-facto co-primary store.
+# Four harnesses mount the catalog whole via symlink:
+#   /root/.agents/skills  -> /root/AAA/skills
+#   /root/.claude/skills  -> /root/AAA/skills
+#   /root/.codex/skills   -> /root/AAA/skills
+#   /root/.grok/skills    -> /root/AAA/skills
+# skill-sync.sh covers claude/codex/grok only; hermes+kimi propagate by copy/rsync.
 
 agents:
   opencode:
@@ -14,9 +29,11 @@ agents:
     primary_model: "deepseek/deepseek-v4-pro"
     axis: [AGI, FORGE]
     authority: {T1: AUTO_DO, T2: ANNOUNCE, T3: 888_HOLD}
-    skills_dir: /root/.arifos/agents/opencode/skills/
-    canonical_profile: /root/AAA/skills/OPENCODE_SKILL_PROFILE.json
-    skill_count: 39
+    skills_dir: /root/.agents/skills/          # symlink -> /root/AAA/skills (live surface)
+    skills_dir_note: "/root/.arifos/agents/opencode/skills/ is ARCHIVE-ONLY (.profile-archive, .broken-archive) — not a live surface"
+    canonical_profile: /root/AAA/skills/FEDERATION_SKILL_PROFILE.json  # v2.0.0 (OPENCODE_SKILL_PROFILE.json is its pointer stub)
+    skill_count: 248                           # live resolvable via catalog (2026-08-20)
+    last_measured: 2026-08-20
 
   hermes:
     id: hermes-prime
@@ -25,10 +42,9 @@ agents:
     primary_model: "mimo/mimo-v2.5-pro-ultraspeed"
     axis: [ASI, APEX]
     authority: {T0: RELAY_ONLY, no_mutation: true}
-    skills_dir: /root/.hermes/skills/
-    canonical_profile: /root/AAA/skills/OPENCODE_SKILL_PROFILE.json  # shared
-    skill_count: 93  # 40 canonical symlinked + 53 hermes-native
-    canonical_linked: 40
+    skills_dir: /root/.hermes/skills/          # symlink -> /root/HERMES/skills (co-primary native tree)
+    skill_count: 242                           # live resolvable (2026-08-20); ~201 physical + symlink-resolved
+    last_measured: 2026-08-20
 
   openclaw:
     id: openclaw
@@ -38,8 +54,10 @@ agents:
     axis: [FORGE]  # legacy
     authority: {OBSERVE_ONLY: true}
     skills_dir: /root/.openclaw/skills/
-    skill_count: 1  # trading-signal only
+    skill_count: 5                             # mmx-cli, openclaw-forge, openclaw-init, openclaw-propose-seal, trading-signal
     archived_skills: /root/.openclaw/_archive/skills-2026-08-04/
+    last_sync: 2026-08-15                      # post-HOLD sync executed; snapshot skills-pre-sync-20260815.tgz exists
+    last_measured: 2026-08-20
 
   kimi-code:
     id: kimi-code/FI-008
@@ -48,8 +66,19 @@ agents:
     primary_model: "kimi/kimi-k3"
     axis: [AGI]
     authority: {T1: AUTO_DO, T2: ANNOUNCE, T3: 888_HOLD}
-    skills_dir: /root/AAA/agents/kimi-code/skills/
+    skills_dir: /root/.kimi-code/skills/       # RUNTIME tree (physical copy, not symlinked)
+    skills_dir_note: "/root/AAA/agents/kimi-code/skills/ is the docs/contrast home (SKILL_INDEX.md, kimi-*-contrast) — not the runtime tree"
+    skill_count: 212                           # pre-sync 2026-08-20; 50 catalog skills missing, 28 version-lagged (frozen ~2026-07-23)
+    sync_status: PROPAGATION_OVERDUE           # see audit session 2026-08-20; escalated per AUDIT-agent-skill-mesh §4
     agent_card: /root/AAA/agents/kimi-code/agent-card.json
+    last_measured: 2026-08-20
+
+# ─── Trinity lanes (333-AGI / 555-ASI / 888-APEX) ───
+# Lanes carry NO skill bindings in their agent-cards. De-facto truth (documented,
+# not changed): lanes inherit their skill surface from the HOST RUNTIME that
+# expresses them — opencode session -> /root/.agents/skills (AAA catalog),
+# hermes gateway -> /root/HERMES/skills. Binding lanes explicitly is an open
+# T1.5 proposal (flagged 2026-08-20 audit), NOT applied here.
 
 a2a_gateway:
   url: "http://127.0.0.1:3001"
@@ -61,8 +90,9 @@ a2a_gateway:
 arifflow:
   port: 7073
   role: "Metabolism — tracks execute:verify ratio"
-  current_fq: 1.41
-  current_verdict: "BALANCED"
+  probe: "curl -sf http://127.0.0.1:7073/health"   # live SOT — never cache FQ here
+  last_observed: {fq_scalar: 0.239, verdict: STUCK, when: "2026-08-20T16:40Z",
+                  note: "aggregate dragged by foreign actors (claude-code 455 exec / 0 verify); 333-AGI actor FQ=4.50 verification-dominant"}
 
 cross_agent_triggers:
   deploy:       [hermes → aaa → arifos → opencode → arifflow → hermes]
