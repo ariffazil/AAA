@@ -21,6 +21,9 @@
     "delegation_ledger",
     "openrouter"
   ],
+  "design": [
+    "design_intelligence"
+  ],
   "docs": [
     "context7",
     "zread",

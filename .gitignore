@@ -218,3 +218,14 @@ terminal/state.json.tmp
 
 # Clerk exhaust (append-only; do not commit session stream)
 telemetry/handover.log
+
+# ── Terminal live board — runtime state, never commit ──
+terminal/broadcast.txt
+terminal/holds.txt
+terminal/mission.txt
+terminal/orders.txt
+terminal/todays-law.txt
+terminal/sessions.jsonl
+
+# ── Ephemeral snapshots — regenerated per session ──
+snapshots/

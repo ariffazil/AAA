@@ -1,5 +1,0 @@
-333 THINK	Unblock decisions stalled by redundant verification.
-555 VERIFY	Challenge only assumptions that change outcomes.
-888 JUDGE	Issue verdicts rapidly on mature proposals.
-777 FORGE	Execute only SEALed plans.
-999 VAULT	Witness significant state transitions.
