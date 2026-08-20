@@ -1,0 +1,26 @@
+arifFLOW blast-radius map  |  2026-08-20T03:54:48.087654+00:00
+sink = WORLD (default; INTERPRET)
+========================================================================
+SOURCE      MIN-CUT  VERDICT
+------------------------------------------------------------------------
+AAA               0  SEAL (1)
+GEOX              0  SEAL (1)
+WEALTH            0  SEAL (1)
+WELL              0  SEAL (1)
+arifOS            0  SEAL (1)
+A-FORGE           1  SEAL (1)
+
+Bottleneck arcs per source:
+  AAA (min-cut=0):
+
+  GEOX (min-cut=0):
+
+  WEALTH (min-cut=0):
+
+  WELL (min-cut=0):
+
+  arifOS (min-cut=0):
+
+  A-FORGE (min-cut=1):
+      GATE_F13 -> WORLD  [GATE]  cap=1
+
