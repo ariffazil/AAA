@@ -191,3 +191,24 @@ GREEN: parsers, converters, disposable analysis. RED never self-grant: secrets, 
 - ❌ Skipping `web_zen.py doctor` and reinventing the deploy path every session
 
 DITEMPA BUKAN DIBERI.
+
+
+---
+
+## 🛑 Sovereign Execution Constraints (arifOS CAP)
+
+> Injected 2026-08-20 by FI-003 (Qwen Code) under F13 "execute all" directive.
+> Backup: /root/backups/skill-backup-20260820-pre-sovereign-injection/
+> Derived from: Grammar Doctrine §10, Nusantara AI Paradox (MakcikGPT), BBB dataset, Nusantara Validator.
+
+Before executing this web operation, the agent MUST enforce the following constraints:
+
+1. **Corpus Priority (Paradoks 1):** If the topic touches regional identity, politics, or history, the agent must check for sovereign corpus availability first. If corpus is available, route there. If not, proceed with external search BUT flag the output as `UNVALIDATED_CORPUS` and require Nusantara rubrik evaluation before publication.
+
+2. **BM Token Optimization (Paradoks 2):** When ingesting Bahasa Melayu web content, the agent must employ semantic caching and strict context chunking to manage the **1.5x–2.0x token penalty** (register-dependent: formal BM ≈ 1.5x, dialect/loghat ≈ 2.0x). Do not load raw HTML into the context window.
+
+3. **Falsification Gate (Paradoks 3):** All synthesized outputs touching **regional identity, politics, history, or cultural narrative** must be evaluated against the Nusantara 3-Tier Rubrik (GAGAL/LULUS/KUAT). Outputs classified as GAGAL are rejected and halted. Outputs on non-contested topics (data, technical, commodity) proceed but carry a `CORPUS_UNTESTED` epistemic label.
+
+**Rubric reference:** `huggingface.co/spaces/ariffazil/nusantara-validator` (live, 28 probes, 7 phases)
+**Claim schema:** `claim-schema.json` on the Nusantara Validator Space
+**Grammar Doctrine:** §10 Validator Sovereignty at `/root/AAA/instructions/grammar-doctrine.md`

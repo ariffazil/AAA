@@ -13,7 +13,7 @@
 # Stage 2: WORLD + analytic jiwa (A/f/φ) -> F0 lock 239 Hz + stillness + coda
 # Fail-open: if stage 2 fails, deliver stage-1 audio rather than no voice.
 # GPU: NEVER. No runpod, no F5-TTS, no rental.
-set -uo pipefail
+set -o pipefail
 
 TEXT_FILE="${1:?usage: iarif_tts_pipeline.sh <text-file> <output-path>}"
 OUT_PATH="${2:?usage: iarif_tts_pipeline.sh <text-file> <output-path>}"
@@ -22,7 +22,12 @@ LIFT="${IARIF_LIFT:-35}"
 VOICE_ID="${IARIF_VOICE_ID:-i-ARIF-20260819T084602}"
 DSP="${IARIF_DSP:-/root/forge_work/dsp/dsp_stabilizer.py}"
 
-set -a; source /root/.secrets/kunci-root.env; set +a
+# 5-R Protocol: disable nounset during source (env file has forward-references)
+set +u
+set -a
+source /root/.secrets/kunci-root.env
+set +a
+set -u
 
 WORK="$(mktemp -d /tmp/iarif_tts.XXXXXX)"
 trap 'rm -rf "$WORK"' EXIT
