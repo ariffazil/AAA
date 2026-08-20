@@ -68,8 +68,10 @@ agents:
     authority: {T1: AUTO_DO, T2: ANNOUNCE, T3: 888_HOLD}
     skills_dir: /root/.kimi-code/skills/       # RUNTIME tree (physical copy, not symlinked)
     skills_dir_note: "/root/AAA/agents/kimi-code/skills/ is the docs/contrast home (SKILL_INDEX.md, kimi-*-contrast) — not the runtime tree"
-    skill_count: 212                           # pre-sync 2026-08-20; 50 catalog skills missing, 28 version-lagged (frozen ~2026-07-23)
-    sync_status: PROPAGATION_OVERDUE           # see audit session 2026-08-20; escalated per AUDIT-agent-skill-mesh §4
+    skill_count: 262                           # post-sync 2026-08-20 (201 physical + 61 symlink-resolved)
+    sync_status: SYNCED_2026-08-20             # snapshot skills-pre-sync-20260820.tgz; 50 missing + 28 lagged resolved
+    sync_tool: "bash /root/AAA/scripts/skill-sync.sh agent:kimi"  # RSI 2026-08-20: kimi target added to script
+    open_flags: "14 kimi-native orphans pending catalog reverse-propagation (T1.5); 4 skills where HERMES now lags AAA (audio/TTS/voice + geox-production-cockpit) — flagged, not fixed, first sighting"
     agent_card: /root/AAA/agents/kimi-code/agent-card.json
     last_measured: 2026-08-20
 
