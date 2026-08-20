@@ -716,6 +716,7 @@ Intent → RRR (111) → Reality Snapshot → Capability → Skill → Action �
 | 2026-08-20 | **RRR first caller forged — TREE777 cleared** | `arifOS/scripts/rrr_first_caller.py` (4226 bytes; 6/6 PASS, exit 0) | §14.14.4 new subsection; RRR + arifos:// status flipped from PROPOSED → LIVE (reader-proven); W2 SKILL_METABOLISM and W3 CAPABILITY_MESH remain HOLD (separate surfaces, separate reader requirement); F2 finding logged: "geox domain audit" matched governance-audit (substring limitation, not bug) |
 | 2026-08-20 | **§16 TERMS IN LIMBO + §17 DUPLICATE REGISTRY forged** | this commit | §16: 7-day parking lot for new coinages (RRR first graduated entry); §17: labels 9 RRR sites + 5 floor terms + Grammar Doctrine partial + 9-term audit queue; addresses the structural finding that "kamus catches up but doesn't prevent" — §16 is the prevention half, §17 is the legibility half; B (linter) deferred until §16 adoption rate is measured |
 | 2026-08-20 | **§17.1 RRR audit verified + §16.0.1 timeout rule added** | this commit (v2.0.2) | All 9 RRR sites probe-read 2026-08-20; **NO DRIFT detected**; §17.1 promoted from assertion to evidence (every row has Verified Date + probe notes); §16.0.1 added: 30-day timeout + 8-row partial-satisfaction matrix + mandatory session-start monitor; audit trigger: first session after 2026-09-19 must run §16 audit; 9-term queue in §17.4 marked UNVERIFIED with per-term verification cost estimate |
+| 2026-08-20 | **§16.3 PARKING — 4 ACTIVE-but-not-CANON terms parked** | this commit (v2.0.3) | Quantitative probe (citation count) surfaced 4 HIGH/MEDIUM risk ACTIVE-but-not-CANON terms: EXECUTE_REVERSIBLE (293), OPERATOR_VETO_INTACT (259), REFLECT_ONLY (253), ILMU (160). Each verified meaning + first-reader requirement + external citation in §16.3 table. 30-day kill clock: 2026-08-20 → 2026-09-19. 4 medium-risk false positives (HERMES, LIVE, ARIF, GENESIS) flagged as informational, not parked. |
 
 ### §15.5 — v2.0 DELTA: What Was Added (F2-falsifiable)
 
@@ -739,6 +740,7 @@ Intent → RRR (111) → Reality Snapshot → Capability → Skill → Action �
 | **§15.5 itself** (this section's own contribution) | — | +50 lines, 1 metrics table | **+50 lines** |
 | **§14.14.4 First caller proof (this commit's load-bearing fix)** | 0 callers (TREE777 violation) | 1 caller script (`arifOS/scripts/rrr_first_caller.py`, 6/6 PASS) + 1 subsection + 2 status flips (RRR + arifos://) | **+4 (1 file, 1 §, 2 status)** |
 | **§16 TERMS IN LIMBO (7-day parking lot)** | 0 | 1 sub-section (RRR graduated) + promotion contract (3 conditions) + **§16.0.1 timeout + kill rule (30-day gate)** | **+1 § + 1 sub-section** |
+| **§16.3 PARKING — ACTIVE-but-not-CANON** | 4 ACTIVE-but-not-CANON terms (293+259+253+160 citations) | 4 HIGH/MEDIUM risk terms parked with verified F2 meanings + first-reader requirements + 30-day kill clock (2026-09-19) | **+4 parked terms** |
 | **§17 DUPLICATE REGISTRY** | 0 | 5 sub-sections (RRR 9 sites **all probe-verified**, Grammar Doctrine partial, floors density, audit queue, classification protocol) | **+1 §** |
 | Lived referenced canonical doctrine files | 1 (self) | 6 (KAMUS_DEWAN + DECISION_PACKAGE + memory-provenance-v2 + GRAMMAR_DOCTRINE + FM10_SELF_REFERENTIAL_FIX + rrr_first_caller.py) | **+5** |
 
@@ -847,6 +849,39 @@ After 7 days without all three, term moves to §16.1 KILLED_IN_LIMBO with reason
 |------|----------|--------------|----------|--------------|
 | **RRR (Resource · Reality · Resolution)** | 2026-08-20 | `arifOS/scripts/rrr_first_caller.py` (6/6 PASS, exit 0) | DECISION_PACKAGE 2026-08-15 (now in `_cold-storage/2026-08-18-zen-cleanup/`) | (pending ratification) |
 | **arifos://rrr/{intent} URI scheme** | 2026-08-20 | same as above (registered in `resources/__init__.py:529-530, 604`) | RFC 7595 (custom URI schemes) | (pending ratification) |
+
+### §16.3 — PARKING (terms in their 30-day clock, ACTIVE-but-not-CANON)
+
+> *Quantitative probe (2026-08-20, citation count across federation repos): 4 candidates functioning as opcodes without canonical anchor. Each one is in the ACTIVE gap — used 160–293 times without a §14 entry defining it. §16.3 surfaces them with verified meaning + first-reader requirement. 30-day kill clock per §16.0.1.*
+
+| # | Term | Citations | Parked | Risk | Verified Meaning (F2 probe) | Proposed §14 destination |
+|---|------|-----------|--------|------|-------------------------------|------------------------------|
+| 1 | **EXECUTE_REVERSIBLE** | 293 | 2026-08-20 | **HIGH** | Tool authority level (6th of 8 tiers in `INVARIANTS.md:26`): `OBSERVE \| SUGGEST \| SIMULATE \| DRAFT \| QUEUE \| EXECUTE_REVERSIBLE \| EXECUTE_HIGH_IMPACT \| IRREVERSIBLE`. Action class that **bypasses forge_shell judge** for reversible operations (`a2a-server/adat-agentic-forge.js:76-77`). | §14.4.1 NEW "Action Authority Spectrum (8 tiers)" |
+| 2 | **OPERATOR_VETO_INTACT** | 259 | 2026-08-20 | **HIGH** | W0 substrate invariant indicator: "operator veto is intact" → F13 not bypassed. Embedded as `"w0": "OPERATOR_VETO_INTACT / HIERARCHY_INVARIANT"` in WELL output (`well_livelihood_energy_check` source line 6295). Paired with REFLECT_ONLY in `GENESIS/049, 050, 051` headers. | §14.2 NEW F13 sub-section "F13 integrity indicators" |
+| 3 | **REFLECT_ONLY** | 253 | 2026-08-20 | **HIGH** | Authority ceiling for non-sovereign organs. Organ reflects substrate state but never diagnoses/treats/executes. WELL's ceiling per `cockpit_probe.py:41`; HERMES agent-card uses it; principal-agent-taxonomy.md:36: "earth principals ... REFLECT_ONLY or EVIDENCE_ONLY". | §14.5 NEW "Organ Authority Ceilings" |
+| 4 | **ILMU** | 160 | 2026-08-20 | MEDIUM | "Intelek Luhur Malaysia Untukku" — adversarial LLM substrate audited via APEX FALSIFICATION PROTOCOL (`GENESIS/013`, `014`). Negative baseline for BBB audit. Used as a stand-in for institutional capture / adversarial pattern testing. | §14.13 NEW "Adversarial Substrates" |
+
+**Promotion plan per term (F13-condition matrix):**
+
+| Term | First Reader Requirement | External Citation | F13 Ack |
+|------|---------------------------|-------------------|---------|
+| EXECUTE_REVERSIBLE | Tool invocation test exercising action-class tier enforcement (forge_shell dry-run that REJECTS at EXECUTE_HIGH_IMPACT, ACCEPTs at EXECUTE_REVERSIBLE) | `INVARIANTS.md:26,110` (kanon — archived in GENESIS) | (pending) |
+| OPERATOR_VETO_INTACT | WELL output assertion: `"w0": "OPERATOR_VETO_INTACT"` appears in healthy substrate state.json | `GENESIS/049_THERMODYNAMIC_ENERGY_GRADIENT.md:102`, `050_SHADOW_INTEGRATION_ARCHITECTURE.md:127`, `051_INDIVIDUATION_AS_AIM.md:135` | (pending) |
+| REFLECT_ONLY | WELL probe that verifies organ ceiling matches operational reality (cockpit_probe.py:41 row) | `cockpit_probe.py:41`; `principal-agent-taxonomy.md:36`; `dist/.well-known/agent-card.json:140` | (pending) |
+| ILMU | Adversarial audit run exercising APEX FALSIFICATION PROTOCOL (the 108-API-call/55-row BBB baseline) | `GENESIS/013_APEX_FALSIFICATION_PROTOCOL.md`; `GENESIS/014_APEX_VALIDATION_REPORT_v1.md` (CCC anomalous contrast evidence) | (pending) |
+
+**30-day kill clock:** 2026-08-20 → 2026-09-19. After that, any PARKING term without activity (first-reader / citation / F13 ack) → §16.1 KILLED_IN_LIMBO with reason `paractive-not-canon`.
+
+**Audit trigger:** First session after 2026-09-19 must scan §16.3 + advance graduated terms to §16.2 or kill to §16.1.
+
+**Lower-risk terms (NOT parked — informational only):**
+
+| Term | Citations | Reason not parked |
+|------|-----------|--------------------|
+| **HERMES** | 190 | Already partial canon (§13 LIVE INDEX term group + AAA agent class via `federation-concept-grounding` SKILL). Not a missing kanus entry — needs §14.7 HEXAGON agent row instead. Forward to §17.4 audit queue. |
+| **LIVE** | 458 | State keyword, not a doctrine term. Already in kamus header (v2.0 LIVE state indicator). False positive in citation count — most usages are `[LIVE]` badges. Not a candidate for kanus. |
+| **ARIF** | 343 | Sovereign signature. NOT a doctrine term. False positive. |
+| **GENESIS** | 170 | Repo folder convention. NOT a doctrine term. False positive. |
 
 ***
 
