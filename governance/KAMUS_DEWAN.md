@@ -715,6 +715,7 @@ Intent → RRR (111) → Reality Snapshot → Capability → Skill → Action �
 | 2026-08-20 | **KAMUS_DEWAN.md v2.0 published (LIVE)** | this commit | §13 LIVE INDEX, §14 QUALITATIVE CONTRAST MASTER TABLE, §15 CHANGELOG added; §1–§12 unchanged from v1.0 |
 | 2026-08-20 | **RRR first caller forged — TREE777 cleared** | `arifOS/scripts/rrr_first_caller.py` (4226 bytes; 6/6 PASS, exit 0) | §14.14.4 new subsection; RRR + arifos:// status flipped from PROPOSED → LIVE (reader-proven); W2 SKILL_METABOLISM and W3 CAPABILITY_MESH remain HOLD (separate surfaces, separate reader requirement); F2 finding logged: "geox domain audit" matched governance-audit (substring limitation, not bug) |
 | 2026-08-20 | **§16 TERMS IN LIMBO + §17 DUPLICATE REGISTRY forged** | this commit | §16: 7-day parking lot for new coinages (RRR first graduated entry); §17: labels 9 RRR sites + 5 floor terms + Grammar Doctrine partial + 9-term audit queue; addresses the structural finding that "kamus catches up but doesn't prevent" — §16 is the prevention half, §17 is the legibility half; B (linter) deferred until §16 adoption rate is measured |
+| 2026-08-20 | **§17.1 RRR audit verified + §16.0.1 timeout rule added** | this commit (v2.0.2) | All 9 RRR sites probe-read 2026-08-20; **NO DRIFT detected**; §17.1 promoted from assertion to evidence (every row has Verified Date + probe notes); §16.0.1 added: 30-day timeout + 8-row partial-satisfaction matrix + mandatory session-start monitor; audit trigger: first session after 2026-09-19 must run §16 audit; 9-term queue in §17.4 marked UNVERIFIED with per-term verification cost estimate |
 
 ### §15.5 — v2.0 DELTA: What Was Added (F2-falsifiable)
 
@@ -737,8 +738,8 @@ Intent → RRR (111) → Reality Snapshot → Capability → Skill → Action �
 | Changelog rows (§15 + §15.5) | — | 19 retrospective + 2 KILL_CYCLE + 3 deferred-to-v2.1 + this v2.0-DELTA + 1 first-caller-forged = **26** | **+26** |
 | **§15.5 itself** (this section's own contribution) | — | +50 lines, 1 metrics table | **+50 lines** |
 | **§14.14.4 First caller proof (this commit's load-bearing fix)** | 0 callers (TREE777 violation) | 1 caller script (`arifOS/scripts/rrr_first_caller.py`, 6/6 PASS) + 1 subsection + 2 status flips (RRR + arifos://) | **+4 (1 file, 1 §, 2 status)** |
-| **§16 TERMS IN LIMBO (7-day parking lot)** | 0 | 1 sub-section (RRR graduated) + promotion contract (3 conditions) | **+1 §** |
-| **§17 DUPLICATE REGISTRY** | 0 | 5 sub-sections (RRR 9 sites, Grammar Doctrine partial, floors density, audit queue, classification protocol) | **+1 §** |
+| **§16 TERMS IN LIMBO (7-day parking lot)** | 0 | 1 sub-section (RRR graduated) + promotion contract (3 conditions) + **§16.0.1 timeout + kill rule (30-day gate)** | **+1 § + 1 sub-section** |
+| **§17 DUPLICATE REGISTRY** | 0 | 5 sub-sections (RRR 9 sites **all probe-verified**, Grammar Doctrine partial, floors density, audit queue, classification protocol) | **+1 §** |
 | Lived referenced canonical doctrine files | 1 (self) | 6 (KAMUS_DEWAN + DECISION_PACKAGE + memory-provenance-v2 + GRAMMAR_DOCTRINE + FM10_SELF_REFERENTIAL_FIX + rrr_first_caller.py) | **+5** |
 
 **Falsification protocol:** Any reviewer can re-count lines and rows in `/root/AAA/governance/KAMUS_DEWAN.md` at commit hash `v2.0 LIVE`. Mismatch → v2.0 claim fails; re-forge.
@@ -803,6 +804,37 @@ After 7 days without all three, term moves to §16.1 KILLED_IN_LIMBO with reason
 
 **Why this exists (the F2 root cause):** Before §16, every forge cycle coined a new term without a designated parking slot. RRR had 9 definition sites; Grammar Doctrine had 10. Some were canon, most were interpretive lenses — but nothing distinguished them. §16 forces the discipline: a term that hasn't earned its keep in 7 days doesn't graduate. Cheap, reversible, no linter required.
 
+### §16.0.1 — Timeout + Kill Rule (the gate)
+
+> *Without this, §16 is a parking lot. With it, §16 is a real gate.*
+
+**Activity clock:** Any of the following counts as activity (resets the 30-day clock):
+
+1. First-reader invocation logged (TREE777 receipt — explicit code path)
+2. Citation reference added (DBP / OED / ISO / etc. — must be in the entry, not just promised)
+3. F13 ack entry logged (sovereign ping / voice note / signed ledger / carry_forward JSON)
+
+**Kill condition:** 30 days with NO activity → KILLED_IN_LIMBO with reason `timeout — no activity`. No implicit promotion. No silent graduation. Every transition requires an explicit §16.x row update.
+
+**Partial satisfaction (3-condition matrix):**
+
+| Reader | Citation | F13 ack | Outcome |
+|--------|----------|---------|---------|
+| ✓ | ✓ | ✓ | **GRADUATE** to §16.2 |
+| ✓ | ✓ | ✗ | stay in §16 — F13 is sovereign-only, cannot be coerced |
+| ✓ | ✗ | ✓ | stay in §16 — citation mandatory per F2 |
+| ✗ | ✓ | ✓ | stay in §16 — reader mandatory per TREE777 |
+| ✓ | ✗ | ✗ | stay in §16 — partial |
+| ✗ | ✓ | ✗ | stay in §16 — partial |
+| ✗ | ✗ | ✓ | stay in §16 — partial |
+| ✗ | ✗ | ✗ | stay in §16 → timeout-kill at 30 days |
+
+**Why 30 days, not 7:** §16.0 originally said 7-day window. Promote to 30 days: most terms take more than 7 days to gather reader + citation + F13 ack in a real forge cycle. 30 days aligns with the federation's 4-week monthly cadence. A 7-day window forces premature kills.
+
+**Monitor (mandatory session-start check):** Any agent loading this kamus MUST inspect §16 on session-start. If any entry has no activity column updated in 30+ days, agent MUST escalate — cannot silently kill.
+
+**Audit trigger:** The first session after 2026-09-19 (30 days from kamus v2.0.2) must run a §16 audit and either update or kill any stalled entries.
+
 ### §16.1 — KILLED_IN_LIMBO (7-day timeout)
 
 | Term | Proposed | Killed | Reason |
@@ -826,17 +858,21 @@ After 7 days without all three, term moves to §16.1 KILLED_IN_LIMBO with reason
 
 ### §17.1 — RRR (Resource · Reality · Resolution) — 9 known sites
 
-| # | Site | Status | Notes |
-|---|------|--------|-------|
-| 1 | `AAA/governance/KAMUS_DEWAN.md` §14.14 + §14.14.4 | **CANONICAL** | this file; TREE777 reader-proven 2026-08-20 |
-| 2 | `forge_work/_cold-storage/2026-08-18-zen-cleanup/2026-08-15-rrr-assessment/DECISION_PACKAGE.md` | LENS | decision state — verdict: A+B with reader demand |
-| 3 | `HERMES/skills/governance/federation-concept-grounding/SKILL.md` | LENS | operator trigger phrases — "what is RRR", "federation acronym" |
-| 4 | `HERMES/skills/governance/federation-concept-grounding/references/rrr-resource-resolution.md` | LENS | operator reference doc; closest mirror to kamus §14.14 |
-| 5 | `AAA/wiki/arifos/rrr-resource-reality-resolution.md` | MIRROR | full wiki mirror of kamus §14.14 (26 lines) |
-| 6 | `AAA/wiki/index.md` (catalog entry line 155) | MIRROR | wiki index link; one-liner summary |
-| 7 | `.qwen/projects/-root/memory/project-rrr-resource-reality-resolution.md` | LENS | model memory cache — for Qwen model context |
-| 8 | `.qwen/projects/-root/memory/MEMORY.md` | LENS | general model memory, RRR mentioned in scope |
-| 9 | `AAA/prompts/MQP-2026-08-15.md` (D-cluster item, line 38) | LENS | operational prompt — "RRR acronym normalization VERIFIED LIVE" |
+> *All 9 sites VERIFIED 2026-08-20 by direct read. **NO DRIFT detected.** Every non-canonical site matches kamus §14.14 with appropriate lens/mirror framing.*
+
+| # | Site | Status | Verified | Notes |
+|---|------|--------|----------|-------|
+| 1 | `AAA/governance/KAMUS_DEWAN.md` §14.14 + §14.14.4 | **CANONICAL** | 2026-08-20 | TREE777 reader-proven (6/6 PASS, exit 0) |
+| 2 | `forge_work/_cold-storage/2026-08-18-zen-cleanup/2026-08-15-rrr-assessment/DECISION_PACKAGE.md` | LENS | 2026-08-20 | decision state — verdict A+B with reader demand; matches kamus §14.14.3 precedent |
+| 3 | `HERMES/skills/governance/federation-concept-grounding/SKILL.md` | LENS | 2026-08-20 | operator trigger phrases (`- what is RRR`, `- RRR`, `- concept grounding`); points to references/rrr-resource-resolution.md; never redefines |
+| 4 | `HERMES/skills/governance/federation-concept-grounding/references/rrr-resource-resolution.md` | LENS | 2026-08-20 | operator reference doc; doctrine verbatim match with kamus §14.14 (LLM-free constraint, intent map, first-reader pattern, F13 ack flow) |
+| 5 | `AAA/wiki/arifos/rrr-resource-reality-resolution.md` | MIRROR | 2026-08-20 | full wiki mirror (26 lines); doctrine verbatim match with kamus §14.14 |
+| 6 | `AAA/wiki/index.md` (catalog entry line 155) | MIRROR | 2026-08-20 | wiki catalog link; one-liner summary |
+| 7 | `.qwen/projects/-root/memory/project-rrr-resource-reality-resolution.md` | LENS | 2026-08-20 | qwen project memory; doctrine verbatim match; adds "verb not subsystem" + "Functions before entities (Gödel #6)" — consistent with kamus §14.14.3 precedent |
+| 8 | `.qwen/projects/-root/memory/MEMORY.md` | LENS-INDEX | 2026-08-20 | index pointer to project-rrr-resource-reality-resolution.md (meta-reference, not a definition site) |
+| 9 | `AAA/prompts/MQP-2026-08-15.md` (D-cluster item, line 38) | LENS | 2026-08-20 | operational prompt — "RRR acronym normalization VERIFIED LIVE: deployed `/opt/arifos/app/arifosmcp/tools/sense.py` carries 3× 'Resource Reality Resolution', 0× legacy phrase" |
+
+**Probe method (F2):** All 9 sites read by kimi-code/FI-008 on 2026-08-20 between 13:51–13:54 +0800. No automated tool was used; classification is manual read + match against kamus §14.14. Mismatch threshold: any substantive re-definition would flip to DRIFT. None found.
 
 ### §17.2 — Grammar Doctrine — known sites (partial audit)
 
@@ -864,35 +900,43 @@ After 7 days without all three, term moves to §16.1 KILLED_IN_LIMBO with reason
 
 ### §17.4 — Pending Audit Queue (work not yet done)
 
-| Term | Sites | Audit Status |
-|------|-------|--------------|
-| **Adat Agentic** | `AAA/governance/ADAT_AGENTIC.md` (CANONICAL) + 5+ lenses | partial — known 2 mirrors, 3+ lenses pending |
-| **FM10** | `AAA/governance/FM10_SELF_REFERENTIAL_FIX.md` (CANONICAL) + 2 lenses | partial |
-| **Memory Provenance v2 (SG/TS/SY tags)** | `AAA/governance/memory-provenance-v2.md` (CANONICAL) + 3 lenses | partial |
-| **Musyawarah Runtime** | 4 lenses | partial — needs canonical pointer |
-| **BIJAKSANA threshold (F13-CS ≥ 0.80)** | 6 lenses | partial |
-| **AGI / ASI / APEX Trinity** | 8+ lenses | partial — high churn, need consolidation |
-| **W_scar telemetry** | 3 lenses | partial |
-| **Grammar Doctrine** | 10 sites (see §17.2) | partial — full audit deferred |
-| **Mu_reality_loop / dream_engine** | 4 lenses | unverified |
+> *All entries below are **UNVERIFIED** — no probe-backed classification yet. RRR (§17.1) is fully verified; this queue remains. Each entry should be probed in a future session per §17.5 protocol.*
+
+| Term | Sites | Audit Status | Verification cost (per §17.5) |
+|------|-------|--------------|----------------------------------|
+| **Adat Agentic** | `AAA/governance/ADAT_AGENTIC.md` (CANONICAL) + 5+ lenses | UNVERIFIED — probe-backed audit pending | ~5–15 min |
+| **FM10** | `AAA/governance/FM10_SELF_REFERENTIAL_FIX.md` (CANONICAL) + 2 lenses | UNVERIFIED | ~5–15 min |
+| **Memory Provenance v2 (SG/TS/SY tags)** | `AAA/governance/memory-provenance-v2.md` (CANONICAL) + 3 lenses | UNVERIFIED | ~5–15 min |
+| **Musyawarah Runtime** | 4 lenses (no canonical pointer yet) | UNVERIFIED — needs §14 canonical row first | ~10–20 min (canonical + audit) |
+| **BIJAKSANA threshold (F13-CS ≥ 0.80)** | 6 lenses | UNVERIFIED | ~5–10 min |
+| **AGI / ASI / APEX Trinity** | 8+ lenses | UNVERIFIED — high churn, consolidation needed | ~20–30 min |
+| **W_scar telemetry** | 3 lenses | UNVERIFIED | ~5 min |
+| **Grammar Doctrine** | 10 sites (see §17.2 partial) | UNVERIFIED — full audit deferred | ~15–20 min |
+| **Mu_reality_loop / dream_engine** | 4 lenses | UNVERIFIED | ~5–10 min |
 
 ### §17.5 — Classification Protocol
 
 When a known duplicate is found that is NOT in §17:
 
-1. Read the file at the duplicate site
-2. Determine if it's actually a re-definition or just a usage mention
-3. If re-definition: classify as LENS / MIRROR / DRIFT / DEPRECATED
-4. Add row to the appropriate §17.x sub-section
-5. If DRIFT: file a scar via `forge_scar(mode="seal", domain="arifos", failure_mode="duplicate definition drift", ...)`
-6. Update §17.4 audit queue
+1. **Read** the file at the duplicate site (probe-backed, not assertion)
+2. **Determine** if it's actually a re-definition or just a usage mention
+3. **If re-definition:** classify as LENS / MIRROR / DRIFT / DEPRECATED with reasoning
+4. **Add row** to the appropriate §17.x sub-section with Verified Date
+5. **If DRIFT:** file a scar via `forge_scar(mode="seal", domain="arifos", failure_mode="duplicate definition drift", ...)`
+6. **Update §17.4** audit queue — remove if completed, downgrade cost if narrowed
 
 The kamus is the CANONICAL dictionary. Other sites are lenses. Lenses should:
 - Match canonical when re-stating the term
 - Add context (operator reference, model memory, decision state) without changing meaning
 - Point back to kamus as the source of truth
 
-If a lens diverges from canonical → DRIFT → fix or delete the lens, NOT the kamus.
+If a lens diverges from canonical → DRIFT → fix in place or tombstone, NOT the kamus.
+
+**Cost model (per term, per the narrow audit scope Arif proposed):**
+- CANONICAL pointer: ~1 min
+- MIRROR acknowledgement: ~2 min
+- LENS with verified alignment: ~5 min
+- DRIFT (must fix or tombstone): ~15–30 min
 
 ***
 
