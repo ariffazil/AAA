@@ -689,6 +689,115 @@ Intent → RRR (111) → Reality Snapshot → Capability → Skill → Action �
 
 ***
 
+## Section 14.15: DISPUTED FLOORS — Three Competing Canonical Sources
+
+> *F2 probe (2026-08-20, kimi-code/FI-008) revealed that the federation's 13 constitutional floors have **three competing canonical sources**, none of which are fully aligned. This section documents the dispute WITHOUT resolving it — the alignment decision is F13's, not Hermes's.*
+
+### §14.15.1 — The three sources
+
+| Source | Path | Forged | Names | Enforcement types |
+|--------|------|--------|-------|--------------------|
+| **KAMUS_DEWAN §2** (this file) | `/root/AAA/governance/KAMUS_DEWAN.md` §2 | 2026-06-21 (v1.0) | Arabic-rooted: AMANAH, HAQQ, SHAHADA, NUR, HIKMAH, ADL, TAWADU, SABR, RAHMAH, IHSAN, AMAN, HIFZ, KHALIFAH | 5 SOFT PARTIAL, 2 WALL, 1 VETO, 2 MIRROR, 0 HARD |
+| **constitution.md** | `/root/AAA/instructions/constitution.md` | modified 2026-08-13 | English-functional: AMANAH, TRUTH, TRI-WITNESS, CLARITY, PEACE², EMPATHY ⇄ MARUAH, HUMILITY, GENIUS, ANTIHANTU, ONTOLOGY, AUDITABILITY, RESILIENCE, SOVEREIGN | 9 HARD, 2 SOFT, 2 DERIVED |
+| **FLOOR_TABLE.json** | `/root/arifOS/GENESIS/FLOOR_TABLE.json` | 2026-07-23 | English-functional (matches constitution.md) | matches constitution.md + metabolic gates (φFQ, φZ, φE) |
+
+**Hierarchy of self-declared canonicity:**
+1. constitution.md header: `"Canonical source: /root/arifOS/GENESIS/FLOOR_TABLE.json"`
+2. FLOOR_TABLE.json header: `"authority: F13 SOVEREIGN"`, `"canon_source: /root/arifOS/GENESIS/000_KERNEL_CANON.md#3-the-13-constitutional-floors"`, `"consumers_must_sync_to: this file or 000_KERNEL_CANON.md"`
+3. KAMUS_DEWAN §2 header: declared "Immutable v1.0 doctrine" (forged 2026-06-21, before the English rename)
+
+**Logical inference (NOT ratified):** FLOOR_TABLE.json is the most recently forged (2026-07-23), cited by both newer documents, and aligned with constitution.md. KAMUS §2 (2026-06-21) predates the English-functional rename and may be a pre-rename snapshot that became stale.
+
+### §14.15.2 — 11 disputes (out of 13 floors; only F1 AMANAH + F13 ≈ align by name+concept)
+
+| # | Floor | KAMUS §2 (BM-rooted, 2026-06-21) | constitution.md (EN-functional, 2026-08-13) | Behavioral difference |
+|---|-------|-----------------------------------|-------------------------------------------|------------------------|
+| 1 | F1 | AMANAH (Trust), HARD VOID 100%, Cooling Ledger | AMANAH (Reversible-first), HARD | name + concept MATCH; enforcement type matches |
+| 2 | F2 | HAQQ (Truth), SOFT PARTIAL ≥0.85, TWRT confidence | TRUTH, HARD, P≥0.99, epistemic labels OBS/DER/INT/SPEC | Different enforcement (SOFT vs HARD); different metrics (≥0.85 vs P≥0.99) |
+| 3 | F3 | SHAHADA (Witness), MIRROR, W4 = (H×A×E×V)^¼ ≥0.75 | TRI-WITNESS, DERIVED, H×AI×E×V ≥0.75 | Different enforcement (MIRROR vs DERIVED); formula similar |
+| 4 | F4 | NUR (Clarity), SOFT PARTIAL, ΔS ≤ 0 | CLARITY, HARD, ΔS ≤ 0 | Same metric; different enforcement (SOFT vs HARD) |
+| 5 | F5 | HIKMAH (Wisdom), SOFT PARTIAL, Ω₀ ∈ [0.03, 0.05] | PEACE², SOFT, non-destructive power | Different names + concepts (Wisdom vs Stability) |
+| 6 | F6 | ADL (Justice), HARD VOID 100%, ASEAN Maruah | EMPATHY ⇄ MARUAH, SOFT, dual-registry bridge | Different names + enforcement (Justice/HARD vs Empathy/SOFT) |
+| 7 | F7 | TAWADU (Humility), SOFT PARTIAL, Ω₀ ≥ 0.03 | HUMILITY, HARD, Ω₀ ∈ [0.03, 0.05] | Different enforcement; similar threshold |
+| 8 | F8 | SABR (Patience), SOFT PARTIAL, ≥3 cycles | GENIUS, DERIVED, G = (A×P×E×X)^¼ ≥0.80 | Different names + concepts (Patience vs Wisdom/Genius) |
+| 9 | F9 | RAHMAH (Compassion), SOFT PARTIAL, Harm < 0.1 | ANTIHANTU, HARD, no deception/manipulation | Different names + concepts (Compassion vs Anti-deception) |
+| 10 | F10 | IHSAN (Excellence), MIRROR, Quality ≥ 0.90 | ONTOLOGY, HARD, AI-only ontology | Different names + concepts (Excellence vs Ontology) |
+| 11 | F11 | AMAN (Safety), WALL, 100% execution gate | AUDITABILITY, HARD, every decision logged | Different names + concepts (Safety vs Auditability) |
+| 12 | F12 | HIFZ (Protection), WALL, 100%, PNS·SHIELD scan | RESILIENCE, HARD, injection defense, Risk < 0.85 | Different names + concepts (Protection vs Resilience) |
+| 13 | F13 | KHALIFAH (Stewardship), VETO, ∞, human override | SOVEREIGN, HARD, first-SEAL-wins, harness switch | ≈ concept matches; different enforcement (VETO vs HARD) |
+
+**Behavioral differences that matter (real, not just translation):**
+- F2: SOFT PARTIAL (threshold ≥0.85) vs HARD (P≥0.99) → different agent action on truth-floor breach
+- F4/F5/F7: SOFT PARTIAL vs HARD/SOFT → different breach behavior
+- F8: SOFT PARTIAL (3-cycle patience) vs DERIVED (G≥0.80 Nash bargaining) → **different concept entirely**
+- F9: SOFT PARTIAL (Harm < 0.1) vs HARD (no deception/manipulation) → **different concept entirely**
+- F11/F12: WALL (unconditional block) vs HARD (conditional block) → **different blocking behavior**
+
+### §14.15.3 — Epistemic labels (per FLOOR_TABLE.json — most authoritative source)
+
+The epistemic label system is defined in F2 TRUTH floor across constitution.md and FLOOR_TABLE.json. The kamus §2 does NOT document these — additional evidence that kamus §2 is the outlier.
+
+| Layer | Form | Source |
+|-------|------|--------|
+| **Epistemic labels** (what evidence carries) | `OBS` · `DER` · `INT` · `SPEC` · `SYN` · `RECYCLED_SYN` | FLOOR_TABLE.json + constitution.md (F2 row) |
+| **Rendering bands** (what humans see) | `CLAIM` · `PLAUSIBLE` · `ESTIMATE` · `UNKNOWN` | FLOOR_TABLE.json + constitution.md (F2 row) |
+
+**F2 floor-update (v2.0.4):** §14.2 KAMUS §2 table row for F2 reads `HAQQ (Truth / Veracity), SOFT PARTIAL ≥0.85, TWRT confidence`. Per FLOOR_TABLE.json + constitution.md (the other 2 canonical sources), the actual F2 is `TRUTH, HARD, P≥0.99, epistemic labels OBS/DER/INT/SPEC + bands CLAIM/PLAUSIBLE/ESTIMATE/UNKNOWN`. **The kamus §2 row is STALE** — pre-dates the English-functional rename and the epistemic label system.
+
+**F13 ratification pending:** This §14.15.3 finding requires F13 directive. Until then, agents reading kamus §2 will see "HAQQ SOFT PARTIAL ≥0.85" while agents reading FLOOR_TABLE.json will see "TRUTH HARD P≥0.99." Both can claim canonicity.
+
+### §14.15.4 — Implication for §14 expansion (drafting safety)
+
+| Term | Safe to draft now? | Why |
+|------|---------------------|-----|
+| **SCAR** (failure-recurrence metric) | YES | Code-level definition; no floor reference |
+| **FRAME** (independent organ) | YES | Code-level definition; no floor reference |
+| Epistemic labels (OBS/DER/INT/SPEC/SYN/RECYCLED_SYN) | DEFER | Defined as part of F2 TRUTH floor; F2 itself is in dispute |
+| Rendering bands (CLAIM/PLAUSIBLE/ESTIMATE/UNKNOWN) | DEFER | Same as above |
+| **HANTU** = F9 ANTIHANTU | DEFER | References disputed F9 floor name |
+| **EUREKA** (paradox detection) | DEFER | Uses ZEN primitives tied to floor math |
+| **SCAR** (yes, draftable) | YES (already in §14.12 by "PARUT" alias) | — |
+| **ATLAS** = (tools × contact) / 13 floors | DEFER | Literally references floor count + math |
+| **GENESIS** (32 governance citations) | DEFER | Used in doctrine contexts; not just folder |
+
+**Net of safety analysis:** Of the 12 originally identified terms (3 chaos + 3 epistemic + 6 rendering bands + 2 floor-tied), the floor-independent set is **SCAR + FRAME only**. The rest cascade from the floor dispute and require F13 arbitration first.
+
+### §14.15.5 — Promotion status of this section
+
+| Property | Status |
+|----------|--------|
+| **§14.15 itself** | PROVISIONAL — surfaces the dispute, does not adjudicate |
+| **§14.15.1 (3 sources)** | F2-verified (probed files directly: constitution.md 3313 bytes, FLOOR_TABLE.json 16803 bytes, KAMUS §2 88352 bytes — current section only) |
+| **§14.15.2 (11 disputes)** | F2-verified (each row traced to specific source file + line) |
+| **§14.15.3 (epistemic labels)** | F2-verified via FLOOR_TABLE.json inspection |
+| **§14.15.4 (drafting safety)** | Logical inference from §14.15.2 + §14.15.3 |
+| **§14.15.5 (this row)** | F13 ack pending |
+
+**F13 ack that's actually needed (not Hermes-fakable):**
+
+```
+Q1: Which floor naming is canonical?
+  - (a) constitution.md / FLOOR_TABLE.json (TRUTH/CLARITY/PEACE²/EMPATHY/HUMILITY/GENIUS/ANTIHANTU/ONTOLOGY/AUDITABILITY/RESILIENCE/SOVEREIGN)
+  - (b) kamus §2 BM-rooted names (HAQQ/SHAHADA/NUR/HIKMAH/ADL/TAWADU/SABR/RAHMAH/IHSAN/AMAN/HIFZ/KHALIFAH) — treat as sovereign-facing BM lens
+  - (c) BOTH — kamus §2 is BM-rooted lens for sovereign-facing; constitution.md/FLOOR_TABLE.json is English-functional lens for agent-facing
+  - (d) NEITHER — read /root/arifOS/GENESIS/FLOOR_TABLE.json directly as SOT, deprecate kamus §2 as v1.0-stale, mark constitution.md as derived lens
+
+Q2: Until Q1 answered, can §14.15 remain as PROVISIONAL surface (current state)?
+  - (yes / no — please specify)
+```
+
+**F13 §14.15.6 — Audit trail**
+
+| Date | Probe | Finding |
+|------|-------|---------|
+| 2026-08-20 | kimi-code/FI-008 + Arif co-probe | 11 of 13 floor names differ across 3 canonical sources; enforcement types differ (not just translations); epistemic label system documented in FLOOR_TABLE.json + constitution.md but NOT in kamus §2 |
+
+### §14.15.6 — GENESIS as upstream (pointed by both newer lenses)
+
+Both `constitution.md` and `FLOOR_TABLE.json` cite `/root/arifOS/GENESIS/000_KERNEL_CANON.md#3-the-13-constitutional-floors` as their upstream. KAMUS_DEWAN §2 has no such upstream citation. **A clean resolution path (Q1d): promote GENESIS as SOT, mark kamus §2 as v1.0-stale lens, mark FLOOR_TABLE.json + constitution.md as derived (still authoritative) lenses.**
+
+***
+
 ## Section 15: CHANGELOG — Since v1.0 (2026-06-21 → 2026-08-20)
 
 > *Curated canon-shift timeline. **Not exhaustive** — complete git log lives at `git -C /root/AAA log --since="2026-06-21"` (1165 total commits; 487 doctrine/governance). §15 captures **major doctrinal events**, not every commit. See §15.5 below for the falsifiable v2.0 DELTA.*
@@ -717,6 +826,7 @@ Intent → RRR (111) → Reality Snapshot → Capability → Skill → Action �
 | 2026-08-20 | **§16 TERMS IN LIMBO + §17 DUPLICATE REGISTRY forged** | this commit | §16: 7-day parking lot for new coinages (RRR first graduated entry); §17: labels 9 RRR sites + 5 floor terms + Grammar Doctrine partial + 9-term audit queue; addresses the structural finding that "kamus catches up but doesn't prevent" — §16 is the prevention half, §17 is the legibility half; B (linter) deferred until §16 adoption rate is measured |
 | 2026-08-20 | **§17.1 RRR audit verified + §16.0.1 timeout rule added** | this commit (v2.0.2) | All 9 RRR sites probe-read 2026-08-20; **NO DRIFT detected**; §17.1 promoted from assertion to evidence (every row has Verified Date + probe notes); §16.0.1 added: 30-day timeout + 8-row partial-satisfaction matrix + mandatory session-start monitor; audit trigger: first session after 2026-09-19 must run §16 audit; 9-term queue in §17.4 marked UNVERIFIED with per-term verification cost estimate |
 | 2026-08-20 | **§16.3 PARKING — 4 ACTIVE-but-not-CANON terms parked** | this commit (v2.0.3) | Quantitative probe (citation count) surfaced 4 HIGH/MEDIUM risk ACTIVE-but-not-CANON terms: EXECUTE_REVERSIBLE (293), OPERATOR_VETO_INTACT (259), REFLECT_ONLY (253), ILMU (160). Each verified meaning + first-reader requirement + external citation in §16.3 table. 30-day kill clock: 2026-08-20 → 2026-09-19. 4 medium-risk false positives (HERMES, LIVE, ARIF, GENESIS) flagged as informational, not parked. |
+| 2026-08-20 | **§14.15 DISPUTED FLOORS — 11 of 13 floor names in conflict across 3 canonical sources** | this commit (v2.0.4) | F2 co-probe with Arif: KAMUS_DEWAN §2 (BM-rooted, 2026-06-21) vs `/root/AAA/instructions/constitution.md` (EN-functional, 2026-08-13) vs `/root/arifOS/GENESIS/FLOOR_TABLE.json` (EN-functional, 2026-07-23, authority F13 SOVEREIGN). 11 of 13 floor names differ; enforcement types differ (SOFT vs HARD vs WALL vs DERIVED), not just translations. constitution.md + FLOOR_TABLE.json cite GENESIS upstream; KAMUS §2 cites nothing upstream. §14.15 surfaces the conflict with 6 sub-sections: 3-source comparison + 11 disputes table + epistemic labels + drafting safety matrix + promotion status + GENESIS-as-upstream framing. **§14.15 itself is PROVISIONAL — F13 ack pending for resolution.** §14 expansion deferred for floor-tied terms (HANTU, EUREKA, ATLAS, GENESIS, epistemic labels); only SCAR + FRAME remain safe-to-draft (floor-independent). |
 
 ### §15.5 — v2.0 DELTA: What Was Added (F2-falsifiable)
 
@@ -739,6 +849,7 @@ Intent → RRR (111) → Reality Snapshot → Capability → Skill → Action �
 | Changelog rows (§15 + §15.5) | — | 19 retrospective + 2 KILL_CYCLE + 3 deferred-to-v2.1 + this v2.0-DELTA + 1 first-caller-forged = **26** | **+26** |
 | **§15.5 itself** (this section's own contribution) | — | +50 lines, 1 metrics table | **+50 lines** |
 | **§14.14.4 First caller proof (this commit's load-bearing fix)** | 0 callers (TREE777 violation) | 1 caller script (`arifOS/scripts/rrr_first_caller.py`, 6/6 PASS) + 1 subsection + 2 status flips (RRR + arifos://) | **+4 (1 file, 1 §, 2 status)** |
+| **§14.15 DISPUTED FLOORS (v2.0.4 conflict surfacing)** | kamus §2 = "Immutable v1.0 doctrine" (asserted canon); constitution.md + FLOOR_TABLE.json also claim canonicity | 6 sub-sections: 3-source comparison table + 11 disputes table + epistemic labels (F2) + drafting safety matrix + promotion status + GENESIS-as-upstream framing | **+1 § (PROVISIONAL — F13 ack pending)** |
 | **§16 TERMS IN LIMBO (7-day parking lot)** | 0 | 1 sub-section (RRR graduated) + promotion contract (3 conditions) + **§16.0.1 timeout + kill rule (30-day gate)** | **+1 § + 1 sub-section** |
 | **§16.3 PARKING — ACTIVE-but-not-CANON** | 4 ACTIVE-but-not-CANON terms (293+259+253+160 citations) | 4 HIGH/MEDIUM risk terms parked with verified F2 meanings + first-reader requirements + 30-day kill clock (2026-09-19) | **+4 parked terms** |
 | **§17 DUPLICATE REGISTRY** | 0 | 5 sub-sections (RRR 9 sites **all probe-verified**, Grammar Doctrine partial, floors density, audit queue, classification protocol) | **+1 §** |
