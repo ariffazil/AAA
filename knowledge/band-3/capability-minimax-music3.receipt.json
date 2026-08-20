@@ -1,0 +1,30 @@
+{
+  "receipt_type": "CAPABILITY_DEPRECATION_SEAL",
+  "finding": "MiniMax music_generation API deprecated — 410 Gone",
+  "replacement": "MiniMax-Music3 (open-weights, self-hosted)",
+  "status": "REGISTERED — gated on GPU availability",
+  "evidence": {
+    "api_probe": "curl https://api.minimax.io/v1/music_generation → 410 Gone (2026-08-20T00:23Z)",
+    "repo_verified": "https://github.com/MiniMax-AI/MiniMax-Music3 — 613 stars",
+    "vps_capability": "NO GPU — AMD EPYC 9354P, nvidia-smi not found"
+  },
+  "architecture": {
+    "hybrid_lm": "8B Global + 0.6B Local",
+    "synthesis": "2.4B Flow Matching → 123M Flow-VAE",
+    "output": "32kHz 16-bit stereo WAV, up to 5 min"
+  },
+  "requirements": {
+    "sglaang_omni": "2× CUDA GPU",
+    "diffusers_single": "24GB VRAM (full), 8GB (group offload)"
+  },
+  "federation_path": {
+    "immediate": "DEAD — no active dependency on music_generation MCP tool",
+    "gpu_path": "Runpod GPU → SGLang-Omni → MCP endpoint → multimodal router"
+  },
+  "capability_doc": "/root/AAA/knowledge/band-3/capability-minimax-music3.md",
+  "seal_blocked_reason": "GUEST session (FI-008 not in canonical registry). Requires privileged session (ARIF/FORGE) to seal to VAULT999.",
+  "actor": "kimi-code/FI-008",
+  "session_id": "GUEST-136578d501b9",
+  "timestamp": "2026-08-20T00:29:32Z",
+  "sha256": null
+}

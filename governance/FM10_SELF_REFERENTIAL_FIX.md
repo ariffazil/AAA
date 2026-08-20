@@ -94,6 +94,27 @@ But the model CANNOT distinguish "weakly recalled" from "confidently generated" 
 5. Agent output: "I generated this name. Confirm or correct?"
 6. **LOOP BROKEN at step 3-4**
 
+## Theoretical Foundation — Grammar Doctrine
+
+FM10 is not a one-off bug. It is the **micro-scale manifestation of a universal pattern**:
+
+> Any sufficiently powerful grammar can generate structures it cannot fully validate.
+
+FM10's loop (generate → store → cite → believe) is the same pathological recursion at every scale:
+
+| Scale | Pattern | Name |
+|---|---|---|
+| LLM | Generate entity → auto-save → cite own output | **FM10** |
+| Agent | Plan → self-assess as valid → execute blind | **Agent hallucination** |
+| Institution | Rule → self-validate → enforce without audit | **Bureaucracy drift** |
+| Civilization | Constitution → self-legitimize → ignore reality | **Ideological capture** |
+
+The fix is the same at every scale: **external validation**. FM10's 3 gates are the LLM-layer implementation of the universal principle.
+
+**Full doctrine:** `/root/AAA/governance/GRAMMAR_DOCTRINE.md`
+
+---
+
 ## Metrics (2-week collection window)
 
 Track in rsi-ledger:

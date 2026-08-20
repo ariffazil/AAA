@@ -72,6 +72,8 @@ The 13 floors are LIVE at `:8088/health`. They are runtime state, not static tex
 **Falsifiable:** `curl -sf http://127.0.0.1:8088/health` → `floors_active`, `verdict`, `runtime_drift`
 **Fallback:** `/root/arifOS/GENESIS/FLOOR_TABLE.json`
 
+**Grammar Doctrine (2026-08-19):** Every grammar powerful enough to generate all it can describe cannot validate all it generates — F1–F13 exist because the system needs external validators it cannot fully control. Full doctrine: `/root/AAA/governance/GRAMMAR_DOCTRINE.md`
+
 ---
 
 ## 2. TOPOLOGY — Federation Organs
