@@ -11,7 +11,7 @@ Remaining 14 verdicts below. Default owner: Hermes single-writer pass.
 | 4 | know-math/physics/language | KEEP-BY-DESIGN | Keluarga template sengaja; bezakan trigger ringan |
 | 5 | memory-manage ↔ audit-seal | KEEP | Perkongsian session_end sahaja; risiko rendah |
 | 6 | apex_scope_check ↔ floor_check | KEEP + DIFFERENTIATE | Scope vs floors = semakan berbeza |
-| 7 | MCP cluster (6 skills) | MERGE-CANDIDATE (6→3) | ops+federation-ops→satu; smoke-test+probe+testing→satu; lifeguard kekal |
+| 7 | MCP cluster (6 skills) | ~~MERGE 6→3~~ → DIFFERENTIATE (verdict overturned 2026-08-21 late: inline read shows 6 distinct functions — ops/SCT-ingress/smoke/inspector/lifeguard/probe) | trigger scopes differentiated on testing trio ✅; optional next pass: smoke+testing merge |
 | 8 | hermes/openclaw/opencode families | KEEP-BY-DESIGN | Primitif per-harness sengaja (×3 agent) |
 | 9 | pr-review/governance/precommit | KEEP-BY-DESIGN | 3 lapisan (policy/checklist/gate) |
 | 10 | vps-docker ↔ vps-runbook | MERGE-CANDIDATE (weak) | Runbook jadi appendix docker |
@@ -24,3 +24,6 @@ Remaining 14 verdicts below. Default owner: Hermes single-writer pass.
 Eksekusi hari ini: cluster 1 sahaja (blast radius rendah, provenance FI-008).
 Cluster 7 & 12 = merge seterusnya paling berbaloi (6→3, 2→1). Lain-lain:
 differentiate trigger lines, kerja ringan single-writer.
+
+## Amendment 2026-08-21 (late)
+Cluster 7 verdict overturned after inline content analysis — 6 distinct functions, not duplication. Testing-trio trigger scopes differentiated in place. Cluster 12 (github 2→1) executed instead, 11 cards rebound.
