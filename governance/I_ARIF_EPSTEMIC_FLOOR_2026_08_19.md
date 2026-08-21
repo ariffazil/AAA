@@ -136,8 +136,8 @@ This patch is sealed by F13 (Muhammad Arif bin Fazil) on 2026-08-19. The five se
 
 **Implementation status (as of seal):**
 - A: Recategorized — i-ARIF config default updated (2026-08-19 13:07 MYT, pre-seal).
-- B: Pending implementation — bypass receipt + latency cap need code; flagged for next forge session.
-- C: Pending implementation — write-lock enforcement; currently advisory; flagged for next forge session.
+- B: Engine IMPLEMENTED 2026-08-21 (FI-003): i-ARIF synthesis service live at loopback :18095 (`/root/A-FORGE/iarif_synthesis.py`, systemd `iarif-synthesis.service`, engine=fed:i-arif cascade). Synthesis + bypass-receipt + 3s typing-cap paths all falsification-tested green. REMAINING: Hermes gateway wire-in (adapter interception, ~5600-line live Telegram surface — deliberate handover to dedicated Hermes session, spec in /root/forge_work/2026-08-21-FI-003-seal-b-c-implementation.md).
+- C: IMPLEMENTED + VERIFIED 2026-08-21 (FI-003): single-writer CQRS gate live in arif_memory (`/root/arifOS/arifosmcp/tools/memory.py`, synced /opt, kernel restarted). Labor writes (store/import/learn/update) → durable proposal buffer `~/.local/share/arifos/memory_proposals/` (STORED_AS_PROPOSAL receipt, no work lost). i-ARIF drains via mode=consolidate through FULL constitutional chain. Writer allowlist extensible by F13 via ARIF_MEMORY_WRITERS env. In-process falsification: labor store → STORED_AS_PROPOSAL ✅, labor consolidate → HOLD ✅.
 - D: Partially applied — M3 demoted for 888-APEX; i-ARIF engine isolation pending engine ladder review.
 - E: Pending implementation — telemetry counters need to be added to FED fed_route observability plane.
 

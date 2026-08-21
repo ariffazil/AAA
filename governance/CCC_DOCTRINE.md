@@ -16,11 +16,11 @@ ARIF → AAA → FED → CCC(harness, role=?) → A-FORGE → arifFlow → VAULT
 CCC is the **capability standard** for any coding worker. Any CLI harness can be instantiated as a CCC worker:
 
 ```
-CCC(Kimi)     — MiniMax-M3
+CCC(Kimi)     — MiniMax-M3 default + zai glm-5.3 forge lane (config.toml)
 CCC(Qwen)     — runtime-resolved (federation-models.json agents[qwen-code]; last: glm-5.3)
-CCC(OpenCode) — MiniMax-M3 Go-zen
+CCC(OpenCode) — runtime-resolved (litellm-federation/forge-777 cascade, GLM-primary)
 CCC(Aider)    — DeepSeek V3
-CCC(Codex)    — FED cascade
+CCC(Codex)    — FED cascade (codex.forge lane: glm-5.3 primary)
 ```
 
 ## What CCC Is NOT
