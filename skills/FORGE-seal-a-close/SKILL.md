@@ -6,8 +6,6 @@ description: >
   free_nonce, constitutional_grade, remaining seal tasks.
 version: 2026.07.17b
 floors: [F1, F2, F3, F7, F11, F13]
-capability_tier: fed-reasoning-heavy
-ecology_state: WARM
 ---
 
 # FORGE — Seal-A Close Path

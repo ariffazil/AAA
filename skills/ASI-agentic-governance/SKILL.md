@@ -67,8 +67,6 @@ floor_scope:
 - F11
 - F12
 - F13
-capability_tier: fed-reasoning-heavy
-ecology_state: WARM
 ---
 
 # AAA Agentic Governance

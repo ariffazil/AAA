@@ -45,8 +45,6 @@ floor_scope:
 - F2
 - F3
 - F4
-capability_tier: fed-long-context
-ecology_state: WARM
 ---
 
 # VPS Docker Runbook

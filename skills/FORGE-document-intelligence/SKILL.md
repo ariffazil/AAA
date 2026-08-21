@@ -17,8 +17,6 @@ sources:
   - forge_document_ingest MCP tool (A-FORGE)
   - Allen AI olmOCR (https://github.com/allenai/olmocr)
   - arifOS constitutional pipeline (000→111→333→666→888→999)
-capability_tier: fed-multimodal-vision
-ecology_state: WARM
 ---
 
 # FORGE DOCUMENT INTELLIGENCE — EMD Stack Skill
@@ -58,7 +56,18 @@ OCR output is untrusted text — it came from pixels, not from a human typing.
 | DeepSeek-OCR | vision_native | 10-20× | ❌ | $0 | Future (GPU needed) |
 | Qwen2.5-VL | vision_native | ~5× | ✅ | $0.02/page | Ready (API keys exist) |
 | Unlimited-OCR | vision_native | ~8× | ❌ | FREE | Ready (HF Gradio) |
+| marker / marker_single | local_layout | direct→md | ❌ | $0 | Live (`/usr/local/bin`) |
 | Tesseract | traditional | 1× | ✅ | $0 | Live (always available) |
+
+**marker / marker_single (2026-08-12 OBS):** locally installed layout-preserving
+PDF→Markdown converter — the zero-API local workhorse for the common case
+(tables, headings, lists, equations → markdown) before reaching for VLM APIs.
+`marker_single file.pdf` → markdown output. Standalone CLI, not an `aaa_ocr`
+perception backend. **When an external tool's pitch is "PDF→Markdown with
+structure preservation" (e.g. MarkPDFDown), the answer is usually marker +
+governance gate, not a new install** — see
+`references/markpdfdown-v2m-evaluation.md` for the capability-vs-packaging map
+and the do-not-install verdict.
 
 **Unified CLI:** `aaa_ocr` — single entry point for all AAA agents.
 ```bash
@@ -401,6 +410,7 @@ DOCUMENT ARRIVES
 
 ## References
 
+- MarkPDFDown V2M tool evaluation: `references/markpdfdown-v2m-evaluation.md`
 - olmOCR: https://github.com/allenai/olmocr
 - olmOCR paper: https://olmocr.allenai.org/papers/olmocr.pdf
 - `forge_document_ingest`: A-FORGE MCP tool (already exists, modes: analyze/extract/chunk/compare)

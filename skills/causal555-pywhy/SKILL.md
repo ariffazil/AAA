@@ -7,8 +7,6 @@ owner: AAA
 risk_tier: medium
 floor_scope: ['F1', 'F2', 'F8']
 autonomy_tier: T1
-capability_tier: fed-reasoning-heavy
-ecology_state: WARM
 ---
 # causal555-pywhy
 
