@@ -107,3 +107,8 @@ cross_agent_triggers:
   seal:         [opencode → arifos → vault999 → arifflow]
   health_check: [hermes → arifos → all_organs → hermes]
   audit:        [opencode → arifos → hermes → arifflow]
+
+# ─── Scheduled surfaces (measured 2026-08-21) ───
+# Canonical inventory + family linkage of ALL cron surfaces (root crontab,
+# /etc/cron.d, systemd timers, Hermes jobs.json, agent session crons):
+cron_map: federation/cron-task-map.yaml
