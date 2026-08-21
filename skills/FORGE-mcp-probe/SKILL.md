@@ -40,6 +40,7 @@ capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---
 
+SCOPE: probing ANY endpoint (incl. external/unknown) for protocol version, surface discovery, stateless-transport conformance. For our own organs quick health use FORGE-mcp-smoke-test; for inspector methodology use FORGE-mcp-testing.
 # ⚒️ FORGE-mcp-probe — MCP Conformance Testing Skill
 
 > **Forged:** 2026-08-08 by 333-AGI for AAA Control Plane
