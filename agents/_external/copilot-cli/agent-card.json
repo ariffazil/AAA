@@ -10,7 +10,7 @@
   },
   "description": "GitHub Copilot CLI forge instrument with DeepSeek V4 Pro as backend (BYOK Anthropic-compatible endpoint). Wire via env vars: COPILOT_PROVIDER_TYPE=anthropic, COPILOT_PROVIDER_BASE_URL=https://api.deepseek.com/anthropic, COPILOT_PROVIDER_API_KEY=sk-..., COPILOT_MODEL=deepseek-v4-pro. Source script: /root/.bashrc.copilot. F1-F13 enforced.",
   "version": "1.0.0",
-  "model": "deepseek-v4-pro (BYOK)",
+  "model": "RUNTIME-RESOLVED via /root/.copilot/settings.json (snapshot: codex @ FED :4000, MiniMax-M3 fallback, 2026-08-21)",
   "binary": "/root/.npm-global/bin/copilot",
   "tier": "FI-006",
   "role": "forge_instrument",
@@ -312,5 +312,6 @@
     "application/json"
   ],
   "fi": "FI-006",
-  "bound_to": "333-AGI"
+  "bound_to": "333-AGI",
+  "fi_slot": "FI-006"
 }
