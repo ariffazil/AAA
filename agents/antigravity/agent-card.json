@@ -225,8 +225,8 @@
       ]
     },
     {
-      "id": "FORGE-github-workflow",
-      "name": "GitHub Workflow",
+      "id": "FORGE-github-ops",
+      "name": "GitHub Ops (merged v1.2.0)",
       "description": "GitHub ops: repos, PRs, issues, review. F1/F11 enforced.",
       "tags": [
         "github",
@@ -372,9 +372,9 @@
   "signatures": [
     {
       "did": "did:arif:aaa",
-      "proofValue": "8bim2s1QZd+zXg9gXq6xEUmxsFNux8QOPpOGmgrcrFQhzuHrtNazxwRvxZQCn87AiKwMbtbc1GegQrq9UfCbBg==",
+      "proofValue": "QTYVf3YuYYinHwvhfx9zKyuecLC6oHBCRxp1rg18EkhFjFPPIX/7p3EIYOnpZFfXXFx/9GvzoJOJZOP/twltAA==",
       "proofPurpose": "assertionMethod",
-      "created": "2026-08-21T05:44:48Z",
+      "created": "2026-08-21T05:51:38Z",
       "type": "Ed25519Signature2020"
     }
   ]

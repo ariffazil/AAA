@@ -321,8 +321,8 @@
       ]
     },
     {
-      "id": "FORGE-github-workflow",
-      "name": "GitHub Workflow",
+      "id": "FORGE-github-ops",
+      "name": "GitHub Ops (merged v1.2.0)",
       "description": "Class-level umbrella for GitHub operations — auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
       "tags": [
         "github",
