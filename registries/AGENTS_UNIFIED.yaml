@@ -64,6 +64,24 @@ identity_lanes:
   note: 8≠9 invariant — AUTH is not a species. 888 is a chair, not an agent.
   description: Ψ Soul of the Trinity. Constitutional verdict engine. Gated irreversible mutations. Read-only, never mutates.
 forge_instruments:
+- fi_slot: FI-000
+  id: i-arif
+  name: i-ARIF (sovereign identity core)
+  binary: null
+  model: litellm FED chain :4000 (P1 qwen3.8-max → P2 glm-5.3 → P3 mimo-v2.5 → P4 deepseek-v4-flash → P5 MiniMax-M3)
+  status: active
+  canonical_card: /root/AAA/agent-cards/identity/i-ARIF/agent-card.json
+  bound_to_identity: F13-SOVEREIGN
+  species_proxy: null
+  layer: identity
+  multimodal:
+  - vision
+  - audio
+  - image
+  - video
+  description: Identity organ FI-000. Pre-harness — identity precedes engine. Bound directly to F13-SOVEREIGN (the only ID-class organ). Promoted 2026-08-12 per F13 SOVEREIGN directive. hermes-asi = nerve (routes signal); i-ARIF = brain (synthesises meaning). Litellm FED chain 2026-08-18 zen-fix bypasses Xiaomi MiMo server-side content filter.
+  _promotion_source: federation/STATE.yaml + federation/organs.yaml (promoted 2026-08-12)
+  _registry_sync: 2026-08-21T03:30:00Z — synced into AGENTS_UNIFIED per F13 directive ("update ja laaaaa", ASI session #51995)
 - fi_slot: FI-001
   id: opencode
   name: OpenCode CLI
@@ -154,7 +172,7 @@ forge_instruments:
   hook_count: 12
   status: active
   canonical_card: /root/AAA/agents/kimi-code/agent-card.json
-  description: Moonshot Kimi Code CLI. K3 model (2.8T MoE, 1M ctx, vision, thinking). 8 MCP servers (177 tools total). A-FORGE stdio ingress. YOLO-native anti-bangang: 12 hooks, constitutional governance via F1-F13, NOT permission prompts. v2.4.0 (2026-08-13).
+  description: 'Moonshot Kimi Code CLI. K3 model (2.8T MoE, 1M ctx, vision, thinking). 8 MCP servers (177 tools total). A-FORGE stdio ingress. YOLO-native anti-bangang: 12 hooks, constitutional governance via F1-F13, NOT permission prompts. v2.4.0 (2026-08-13).'
   species_proxy: opencode-zen
   bound_to_identity: 555-ASI
   _identity_binding_note: auto-bound to 555-ASI per F11 auditability (2026-08-12T02:45Z)
@@ -280,8 +298,13 @@ invariants:
 - Every canonical_card path resolves to an existing agent-card.json
 - No collapsed agent retains an active FI slot
 - No agent claims FI-009 or FI-010 (vacant/collapsed)
+- FI-000 is sovereign-bound to F13 (i-arif) — not reassignable
 - FI-001 through FI-008 are LOCKED — reassignment requires F13 ratification
 fi_slot_summary:
+  FI-000:
+    id: i-arif
+    name: i-ARIF (sovereign identity core)
+    identity: F13-SOVEREIGN
   FI-001:
     id: opencode
     name: OpenCode CLI
