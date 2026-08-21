@@ -38,8 +38,6 @@ floor_scope:
 - F11
 - F13
 autonomy_tier: T1
-capability_tier: fed-agent-subagent
-ecology_state: WARM
 ---
 ## Setup
 

@@ -8,8 +8,6 @@ risk_tier: low
 floor_scope: F1, F4, F11, F13
 autonomy_tier: T1
 trigger_when: complex_multi_phase_work, session_start_with_open_loops, diminishing_returns_detected
-capability_tier: fed-agent-subagent
-ecology_state: WARM
 ---
 
 # Reality Loop Operator — Autonomous 000→999

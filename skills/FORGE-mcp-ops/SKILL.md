@@ -8,8 +8,6 @@ risk_tier: low
 floor_scope: [F2, F8]
 autonomy_tier: T1
 tags: [mcp, cli, mcporter, ops, debugging]
-capability_tier: fed-agent-subagent
-ecology_state: WARM
 ---
 
 # mcporter — Universal MCP CLI (avAILABLE at /usr/bin/mcporter v0.9.0)

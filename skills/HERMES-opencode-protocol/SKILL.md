@@ -14,8 +14,6 @@ cognitive_hints:
   codex: "7-stage protocol. Each stage: input → process → output → gate. Strict sequencing."
   hermes: "7 stages. Govern. Execute. Verify. Seal. Fast."
 autonomy_tier: T1
-capability_tier: fed-agent-subagent
-ecology_state: WARM
 ---
 
 # HERMES-opencode-protocol

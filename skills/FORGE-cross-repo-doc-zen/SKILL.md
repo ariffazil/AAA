@@ -14,8 +14,6 @@ floor_scope:
   - F2
   - F4
   - F11
-capability_tier: fed-long-context
-ecology_state: WARM
 ---
 # FORGE-cross-repo-doc-zen — Federation Documentation Graph-Connect
 

@@ -15,8 +15,6 @@ description: >
 version: 2026.07.20
 floors: [F1, F2, F11, F12, F13]
 autonomy_tier: T1
-capability_tier: fed-long-context
-ecology_state: WARM
 ---
 
 # FORGE — SCT Federation Ingress
