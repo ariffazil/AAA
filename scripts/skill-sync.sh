@@ -135,25 +135,14 @@ sync_grok() {
     sync_agent "Grok Build" "$HOME/.grok/skills"
 }
 
-# RSI 2026-08-20: kimi was missing from sync targets entirely — its tree froze
-# at 2026-07-23 vintage (50 skills missing, 28 lagging). Physical-copy propagation
-# (not symlink-mount) because kimi carries 14 kimi-native orphans pending the
-# catalog reverse-propagation decision. Snapshot-first (F1), archives excluded,
-# no --delete (orphans preserved). AAA version wins on conflict (protocol §4).
-sync_kimi() {
-    local stamp
-    stamp=$(date +%Y%m%d)
-    mkdir -p "$HOME/.kimi-code/_snapshots"
-    if [ ! -f "$HOME/.kimi-code/_snapshots/skills-pre-sync-$stamp.tgz" ]; then
-        log "Snapshotting kimi skills → skills-pre-sync-$stamp.tgz"
-        tar -czf "$HOME/.kimi-code/_snapshots/skills-pre-sync-$stamp.tgz" -C "$HOME/.kimi-code" skills || warn "snapshot failed — aborting kimi sync"
-    fi
-    log "Syncing Kimi Code → $KIMI_SKILLS"
-    rsync -rla --exclude='.*' --exclude='_retired' "$AAA_SKILLS/" "$KIMI_SKILLS/" || warn "rsync partial (attrs) — verify with mesh audit"
-    local count
-    count=$(find "$KIMI_SKILLS" -maxdepth 2 -name SKILL.md 2>/dev/null | wc -l)
-    log "kimi-code: $count SKILL.md resolvable"
-}
+# F13 2026-08-21 "no more chaos redundant, all federated": sync_kimi REMOVED.
+# Rationale: the 2026-08-20 premise (14 kimi-native orphans needing physical-copy
+# propagation) was invalidated by the 2026-08-21 curation — they were stale
+# byte-identical mirrors of AAA canonical, quarantined to
+# /root/.kimi-code/quarantine-20260821. Kimi now reads AAA directly via
+# extra_skill_dirs in /root/.kimi-code/config.toml (single source, zero copies).
+# Kimi-native skills remain physical in /root/.kimi-code/skills (145 entries).
+# Re-flooding via rsync would recreate the 340-copy redundancy.
 
 audit() {
     echo "═══════════════════════════════════════════════════"
@@ -174,15 +163,14 @@ audit() {
 
 case "${1:-sync}" in
     audit)   audit ;;
-    sync)    sync_claude; sync_codex; sync_grok; sync_kimi ;;
+    sync)    sync_claude; sync_codex; sync_grok ;;
     agent:*)
         case "${1#agent:}" in
             claude) sync_claude ;;
             codex)  sync_codex ;;
             grok)   sync_grok ;;
-            kimi)   sync_kimi ;;
-            *)      echo "Unknown agent"; exit 1 ;;
+            *)      echo "Unknown agent (kimi target removed 2026-08-21 F13 — reads AAA via extra_skill_dirs)"; exit 1 ;;
         esac
         ;;
-    *)  echo "Usage: $0 [audit|sync|agent:<claude|codex|grok|kimi>]"; exit 1 ;;
+    *)  echo "Usage: $0 [audit|sync|agent:<claude|codex|grok>]"; exit 1 ;;
 esac
