@@ -5,6 +5,7 @@ capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---
 
+SCOPE: MCPJam Inspector methodology — deep conformance testing, tool-call verification, how to run the inspector. For quick organ health checks use FORGE-mcp-smoke-test; for protocol-era/stateless discovery use FORGE-mcp-probe.
 # MCP Testing — MCPJam Inspector
 
 > **For all AAA agents, OpenClaw, opencode, Kimi Code, Codex, Claude Code, AGY CLI, Copilot, Hermes, Grok**
