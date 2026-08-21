@@ -4,8 +4,6 @@ description: Gate and route tool use across federation MCP servers according to 
 agent: 888-APEX
 namespace: apex_*
 cluster: GATE
-capability_tier: fed-reasoning-heavy
-ecology_state: WARM
 ---
 
 # APEX-mcp-federation (O_Omega Orchestration Layer)

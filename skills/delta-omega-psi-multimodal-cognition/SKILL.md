@@ -17,8 +17,6 @@ risk_tier: LOW
 autonomy: T1
 forged: 2026-07-25
 version: 1.0.0
-capability_tier: fed-multimodal-vision
-ecology_state: WARM
 ---
 
 # Δ·Ω·Ψ Multimodal Cognition — Forge Skill

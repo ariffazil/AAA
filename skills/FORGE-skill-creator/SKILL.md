@@ -7,8 +7,6 @@ floor_scope: [F1, F2, F4, F7]
 description: Bootstrap, design, and package new skills
 version: 1.1.0
 autonomy_tier: T1
-capability_tier: fed-reasoning-heavy
-ecology_state: WARM
 ---
 # skill-creator (O_Ψ Verification Layer)
 

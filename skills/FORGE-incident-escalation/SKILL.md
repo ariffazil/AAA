@@ -50,8 +50,6 @@ floor_scope:
 - F6
 - F11
 - F13
-capability_tier: fed-reasoning-heavy
-ecology_state: WARM
 ---
 
 # Incident Escalation Protocol

@@ -4,8 +4,6 @@ description: Apply the constitutional HOLD path when authority, evidence, system
 agent: 888-APEX
 namespace: apex_*
 cluster: VERDICT
-capability_tier: fed-reasoning-heavy
-ecology_state: WARM
 ---
 
 # arifOS ACT — Constitutional Reflex

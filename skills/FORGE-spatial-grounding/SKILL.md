@@ -22,8 +22,6 @@ floor_scope:
   - F1
   - F7
   - F9
-capability_tier: fed-long-context
-ecology_state: WARM
 ---
 
 # Spatial Grounding

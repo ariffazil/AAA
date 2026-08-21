@@ -11,8 +11,6 @@ version: 2026.07.19
 floors: [F2, F4]
 risk_tier: low
 autonomy_tier: T1
-capability_tier: fed-agent-subagent
-ecology_state: WARM
 ---
 # 📡 FORGE — Telemetry Watchdog
 

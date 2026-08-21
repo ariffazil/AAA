@@ -9,8 +9,6 @@ autonomy_tier: T1.5
 forbidden:
   - Never --dangerously-skip-permissions
   - Never spawn without constitutional context
-capability_tier: fed-reasoning-heavy
-ecology_state: WARM
 ---
 
 # OpenClaw → Claude Code Spawn (Governed)

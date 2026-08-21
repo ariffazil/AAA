@@ -18,8 +18,6 @@ floor_scope:
 - F4
 - F7
 autonomy_tier: T0
-capability_tier: fed-long-context
-ecology_state: WARM
 ---
 # Grok Help
 

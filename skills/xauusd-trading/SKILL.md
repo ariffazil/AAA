@@ -32,8 +32,6 @@ outputs:
   - backtest_results
   - portfolio_metrics
   - sealed_trade_receipts (VAULT999)
-capability_tier: fed-reasoning-heavy
-ecology_state: WARM
 ---
 
 # XAUUSD Trading Stack — Federation Skill
