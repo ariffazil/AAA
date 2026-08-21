@@ -1,28 +1,32 @@
 version: 1
-last_audit: '2026-08-12'
-auditor: hermes-asi / i-ARIF identity refactor
+last_audit: '2026-08-21'
+auditor: qwen-code FI-003 (single-hand Hermes bundle, live-probed)
 instruments:
 - id: FI-000
   name: i-ARIF
   layer: identity
   bound_to: F13-SOVEREIGN
   type: sovereign_identity_core
-  model_strategy: "Mirrored hermes-asi chain via FED :4000. Identity survives model swap."
+  model_strategy: Mirrored hermes-asi chain via FED :4000. Identity survives model
+    swap.
   izin: GRANTED
   izin_date: '2026-08-12'
   upgrade_authority: Arif Fazil (F13)
   sandbox: none
-  note: "Pre-harness. Identity precedes engine. FI-000 is not a coding harness — it is the meaning layer."
+  note: Pre-harness. Identity precedes engine. FI-000 is not a coding harness — it
+    is the meaning layer.
   skill_spine:
     discovery: on_demand
 - id: FI-001
   name: OpenCode
   binary: /root/.npm-global/bin/opencode
-  version: 1.18.3
+  version: 1.18.11
   version_pinned_from: 2026-07-19 (live observed)
   model: deepseek/deepseek-v4-pro
   fallback_model: ollama/qwen2.5-coder:3b
-  model_strategy: DeepSeek V4 Pro free is the verified live primary; local Ollama qwen2.5-coder is the offline recovery route. All agents use DeepSeek V4 Pro via token-plan.
+  model_strategy: DeepSeek V4 Pro free is the verified live primary; local Ollama
+    qwen2.5-coder is the offline recovery route. All agents use DeepSeek V4 Pro via
+    token-plan.
   izin: GRANTED
   izin_date: '2026-05-17'
   last_upgrade: '2026-07-19'
@@ -58,7 +62,8 @@ instruments:
       agent: recovery
       model: ollama/qwen2.5-coder:3b
       authority: restore a bounded loop after provider or execution failure
-    separation_rule: roles are explicit agent surfaces; consequential authority remains with arifOS, A-FORGE leases, and F13 veto
+    separation_rule: roles are explicit agent surfaces; consequential authority remains
+      with arifOS, A-FORGE leases, and F13 veto
   skill_spine:
     discovery: on_demand
     live_discovered: 247
@@ -96,7 +101,8 @@ instruments:
   - meyhem
   mcp_disabled:
   - graph-memory
-  mcp_strategy: 25 registered; live discovery decides truth. At 2026-07-19 T1, 23 connected, Meyhem upstream TLS degraded, Graph Memory intentionally disabled.
+  mcp_strategy: 25 registered; live discovery decides truth. At 2026-07-19 T1, 23
+    connected, Meyhem upstream TLS degraded, Graph Memory intentionally disabled.
   root_config_ref: /root/AAA/ROOT_AGENT_CONFIG.yaml
   config_path: /root/.config/opencode/opencode.json
   toolbench_registry: /root/AAA/registries/opencode_toolbench.yaml
@@ -114,8 +120,8 @@ instruments:
     - geox
     - aforge
     - aaa
-  live_version_observed: 1.18.3
-  version_checked_at: '2026-07-19T23:16:43Z'
+  live_version_observed: 1.18.11
+  version_checked_at: '2026-08-21'
   live_skill_count: 247
   autonomous_loop:
     plugin: /root/.config/opencode/plugins/aaa-autonomy.ts
@@ -125,8 +131,8 @@ instruments:
 - id: FI-002
   name: Claude Code
   binary: /root/.local/bin/claude
-  version: 2.1.160
-  model: deepseek-v4-pro
+  version: 2.1.226
+  model: forge-777 @ FED :4000 (runtime-resolved via settings.json env)
   izin: GRANTED
   izin_date: '2026-04-15'
   sandbox: seatbelt (bubblewrap + seccomp)
@@ -150,29 +156,37 @@ instruments:
   config_path: /root/.claude.json
   settings_path: /root/.claude/settings.json
   oauth_account: arifbfazil@gmail.com
-  live_version_observed: 2.1.177 (Claude Code)
-  version_checked_at: '2026-06-29T16:13:57Z'
+  live_version_observed: 2.1.226
+  version_checked_at: '2026-08-21'
 - id: FI-003
   name: Qwen Code
   binary: /root/.local/bin/qwen
-  version: 0.21.8
-  model: DeepSeek V4 Pro
+  version: 0.21.15
+  model: glm-5.3 @ zai-coding-plan (runtime-resolved via settings.json)
   izin: GRANTED
   izin_date: '2026-06-10'
   sandbox: process
   subagent_policy:
     default: 888_HOLD
     historical: 1 Explore sub-agent session (read-only)
-  mcp_surface: []
+  mcp_surface:
+  - arifos-kernel
+  - aforge
+  - geox
+  - wealth
+  - well
+  - fed
   config_path: /root/.qwen/
-  live_version_observed: 0.21.8
-  version_checked_at: '2026-08-11'
-  note: Re-audited 2026-08-11 (Qwen Code self-audit). Binary moved to /root/.local/bin/qwen; version 0.17.1 -> 0.21.8. No mcp.json configured (bridge-mode only). Heavily restricted Bash permissions. LOW RISK.
-- id: FI-004
+  live_version_observed: 0.21.15
+  version_checked_at: '2026-08-21'
+  note: Re-audited 2026-08-21. Extension fi003-federation v1.1.0 linked (QWEN.md +
+    3 commands + 3 skills). 6 MCP loopback. Hooks SessionStart/End. permissionMode
+    yolo, empty deny.
+- id: FI-009
   name: Antigravity CLI
   binary: /root/.local/bin/agy
-  version: 1.1.3
-  model: Gemini 3.5 Flash (High)
+  version: 1.1.15
+  model: Gemini 3.7 Flash Medium (runtime-resolved via settings.json)
   izin: GRANTED
   izin_date: '2026-06-22'
   sandbox: process
@@ -190,19 +204,20 @@ instruments:
   - context7
   config_path: /root/.gemini/antigravity-cli/
   settings_path: /root/.gemini/antigravity-cli/settings.json
-  note: 'Aligned 2026-07-18. Gemini 3.5 Flash (High). 5 federation organs + context7. Active.'
-  live_version_observed: 1.1.3
-  version_checked_at: '2026-07-18'
+  note: Slot renumbered FI-004->FI-009 per C10 adjudication 2026-08-14 (commit 630a4865).
+    autonomy-guard plugin + brain 273. Active.
+  live_version_observed: 1.1.15
+  version_checked_at: '2026-08-21'
 - id: FI-005
   name: Codex CLI
   binary: /usr/local/bin/codex
-  version: 0.144.5
-  model: gpt-5.6-sol (reasoning=medium)
+  version: 0.147.0
+  model: forge-777 @ FED :4000 (via :4010 middleware)
   izin: GRANTED
   izin_date: '2026-05-20'
   sandbox: landlock
   subagent_policy:
-    default: "ALLOWED — only from registered .codex/agents/*.toml"
+    default: ALLOWED — only from registered .codex/agents/*.toml
     goals_engine: idle
     goals_db: /root/.codex/goals_1.sqlite
     active_goals: 0
@@ -217,19 +232,20 @@ instruments:
   - capability-index
   config_path: /root/.codex/
   mcp_config: /root/.codex/mcp.json
-  note: 'Aligned 2026-07-18. GPT-5.6 Sol (upgraded from GPT-5.5). 8 MCPs. Landlock sandbox. Clean state.'
-  live_version_observed: 0.144.5
-  version_checked_at: '2026-07-18'
+  note: Aligned 2026-07-18. GPT-5.6 Sol (upgraded from GPT-5.5). 8 MCPs. Landlock
+    sandbox. Clean state.
+  live_version_observed: 0.147.0
+  version_checked_at: '2026-08-21'
 - id: FI-006
   name: Copilot CLI
   binary: /usr/bin/copilot
-  version: 1.0.72
-  model: deepseek-v4-pro (via Anthropic compat API)
+  version: 1.0.78
+  model: codex @ FED :4000, MiniMax-M3 fallback (runtime-resolved via settings.json)
   izin: GRANTED
   izin_date: '2026-05-24'
   sandbox: process
   subagent_policy:
-    default: "ALLOWED — /fleet only, max 3 parallel, read-only sandbox"
+    default: ALLOWED — /fleet only, max 3 parallel, read-only sandbox
     fleet_max: 3
   mcp_surface:
   - arifOS
@@ -245,13 +261,13 @@ instruments:
   - serena
   config_path: /root/.copilot/mcp-config.json
   agent_doc: /root/.arifos/agents/copilot/AGENTS.md
-  note: 'Aligned 2026-07-18. GitHub Copilot GPT. 11 MCP servers. Fleet subagent mode.'
-  live_version_observed: 1.0.72
-  version_checked_at: '2026-07-18'
+  note: Aligned 2026-07-18. GitHub Copilot GPT. 11 MCP servers. Fleet subagent mode.
+  live_version_observed: 1.0.78
+  version_checked_at: '2026-08-21'
 - id: FI-007
   name: Grok Build
   binary: /root/.grok/bin/grok
-  version: 0.2.103
+  version: 1.0.5
   model: grok-build (xAI, yolo=off, always-approve)
   izin: GRANTED
   izin_date: '2026-07-18'
@@ -259,22 +275,31 @@ instruments:
   subagent_policy:
     default: 888_HOLD
     fork_model: grok-build
-  mcp_surface: []
+  mcp_surface:
+  - arifos
+  - aforge
+  - geox
+  - wealth
+  - well
+  - arifflow
   config_path: /root/.grok/config.toml
-  note: 'Registered 2026-07-18. xAI Grok Build. Replaced dead FI-007 Aider slot. Permission: always-approve. No MCP surface yet.'
-  live_version_observed: 0.2.103
-  version_checked_at: '2026-07-18'
+  note: 'Re-audited 2026-08-21: config.toml = MCP SOT (6 servers, grok mcp list verified).
+    Stale Claude-style mcp.json archived as mcp.json.inert-20260821. Skills symlink
+    -> AAA/skills 323.'
+  live_version_observed: 1.0.5
+  version_checked_at: '2026-08-21'
 - id: FI-008
   name: Kimi Code CLI
   binary: /root/.kimi-code/bin/kimi
-  version: 0.35.0
-  model: kimi-code/k3
+  version: 0.37.2
+  model: zai-coding-plan/glm-5.3 (runtime-resolved via config.toml)
   izin: GRANTED
   izin_date: '2026-06-10'
   sandbox: process
   permission_mode: yolo
   hook_count: 12
-  anti_bangang: YOLO-native — constitutional governance via F1-F13 + hook telemetry, NOT permission prompts
+  anti_bangang: YOLO-native — constitutional governance via F1-F13 + hook telemetry,
+    NOT permission prompts
   subagent_policy:
     default: 888_HOLD
     registered_subagents:
@@ -283,19 +308,19 @@ instruments:
     - agent
     - coder
   mcp_surface:
-  - arifOS        # 8 tools (kernel)
-  - aforge        # 114 tools (execution) via stdio
-  - geox          # 33 tools (earth)
-  - wealth        # 14 tools (capital)
-  - well          # 8 tools (human readiness)
-  - fed           # 6 tools (FED router)
-  - arifFlow      # 2 tools (metabolism)
-  - minimax       # 2 tools (search)
+  - arifOS
+  - aforge
+  - geox
+  - wealth
+  - well
+  - fed
+  - arifFlow
+  - minimax
   mcp_servers_disabled:
-  - github        # route through A-FORGE forge_* tools
-  - brave-search  # route through A-FORGE forge_* tools
-  - meyhem        # deprecated
-  - playwright-mcp # route through A-FORGE forge_* tools
+  - github
+  - brave-search
+  - meyhem
+  - playwright-mcp
   config_path: /root/.kimi-code/config.toml
   mcp_config_path: /root/.kimi-code/mcp.json
   hooks_path: /root/.arifos/agents/kimi/hooks/
@@ -303,6 +328,56 @@ instruments:
   a2a_forge_card: /root/AAA/a2a-server/agent-cards/forge/fi-008-kimi-code.json
   a2a_harness_card: /root/AAA/a2a-server/agent-cards/harnesses/kimi-code.json
   warga_card: /root/AAA/agents/kimi-code/WARGAAA_CARD.md
-  note: 'Synced 2026-08-13 by FI-008 anti-bangang forge. v2.4.0 agent card, 12 hooks (TurnStarted + UserPromptQueued added),
-    max_steps_per_turn=40, YOLO-native governance. Version 0.35.0 (latest on CDN; Perplexity v0.36.0 claim debunked).
-    A-FORGE ingress is stdio. AMANAH + MARUAH embedded. Legacy direct MCPs disabled.'
+  note: 'Re-audited 2026-08-21: 12 MCP live (serena/context7/playwright re-wired by
+    FI-008). Skills 340 physical copies vs mesh 323 — quarantine audit in progress
+    by FI-008. YOLO-native governance via 11 hooks.'
+  live_version_observed: 0.37.2
+  version_checked_at: '2026-08-21'
+- id: FI-010
+  name: Gemini CLI
+  binary: /usr/bin/gemini
+  version: 0.43.0
+  live_version_observed: 0.43.0
+  version_checked_at: '2026-08-21'
+  model: gemini-2.5-flash (runtime-resolved via /root/.arifos/agents/gemini/AAA/settings.json)
+  izin: TBD (entry created 2026-08-21 registry refresh; see agent-card)
+  sandbox: process
+  mcp_surface:
+  - aforge
+  - arifos
+  - cloudflare
+  - context7
+  - geox
+  - github
+  - memory
+  - postgres
+  - wealth
+  - well
+  config_path: /root/.arifos/agents/gemini/AAA
+  note: Slot per C10 adjudication. Harness TBD-merge candidate with agy FI-009 — decision
+    pending F13. No GEMINI.md native context yet.
+- id: FI-011
+  name: Continue CLI
+  binary: (config-only presence)
+  version: config v1.1.0
+  version_checked_at: '2026-08-21'
+  model: provider-agnostic (GLM-5.2 / DeepSeek V4 Pro / MiniMax M3 / Sonnet 4.6)
+  izin: TBD (entry created 2026-08-21 registry refresh; see agent-card)
+  sandbox: process
+  mcp_surface:
+  - arifOS
+  - A-FORGE
+  - geox
+  - arifflow
+  - memory
+  - github
+  - serena
+  - supabase
+  - playwright
+  - chrome-devtools
+  - minimax-coding-plan
+  - capability-index
+  config_path: /root/.continue/config.yaml
+  note: 'Repaired 2026-08-21: plaintext DeepSeek key -> ${DEEPSEEK_API_KEY}; 5 dead
+    doc refs + 2 dead skill refs stripped; systemMessage repointed to AGENTS.md/RUNBOOK.md.
+    Low usage (F13: "i dont use continue that much").'
