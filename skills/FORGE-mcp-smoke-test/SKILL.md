@@ -27,6 +27,7 @@ capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---
 
+SCOPE: quick health + schema sanity of FEDERATION-OWNED MCP servers (our 6 organs). Fast gate, not deep conformance. For methodology use FORGE-mcp-testing; for external/unknown endpoints use FORGE-mcp-probe.
 # MCP Server Smoke Test
 
 Validate that MCP servers respond correctly to health probes and basic tool calls. Detect down servers, mismatched schemas, and transport errors.
