@@ -19,7 +19,7 @@
     "stamp": "deferred_phase_B"
   },
   "description": "AGY CLI (You Only Need AGY) — FI-009 forge instrument on Antigravity harness. Gemini-native model for managed agents; federation MCP mounted as adapters. AAA DISPLAY_ONLY; arifOS judges.",
-  "model": "gemini-3.6-flash",
+  "model": "RUNTIME-RESOLVED via /root/.gemini/antigravity-cli/settings.json (snapshot: Gemini 3.7 Flash Medium, 2026-08-21)",
   "fallback_model": "gemini-2.5-flash",
   "binary": "/root/.local/bin/agy",
   "izin": "GRANTED",
