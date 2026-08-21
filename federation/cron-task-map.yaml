@@ -1,0 +1,125 @@
+# Federation Cron Task Map — canonical inventory + linkage
+# Forged: 2026-08-21 by kimi-code/FI-008 (read-only audit per FORGE-infra-crons, F1 AMANAH)
+# Surfaces inventoried: root crontab (20) · /etc/cron.d (30: 25 FED + 5 SYSTEM)
+#   · systemd timers (77 units) · Hermes jobs.json (14) · agent session crons (kimi: 0)
+# Machine Constitution registry assert 2026-08-21T14:08Z: live=72, verdict=WARN
+#   (6 live-unregistered, 2 stale-removed — see registry_drift below)
+# NOTE: this file is a MAP, not a mutator. Cron changes require 888_HOLD (F1).
+
+version: "1.0.0"
+measured: 2026-08-21
+total_live_cron_entries: 72          # per forge_vps_cron assert (root + cron.d)
+registry: /root/AAA/registry/machine-constitution   # canonical registry surface
+
+families:
+
+  ariflow_metabolism:
+    - {id: "hermes:6c672e289f80", sched: "0 22 * * *",  surface: hermes-jobs,  cmd: "arifFlow governance digest → Arif (delivered via Hermes gateway; relayed into agent sessions)", note: "the digest that reached kimi-code 2026-08-21 22:01 MYT"}
+    - {id: "crontab:arifflow_digest", sched: "0 14 * * *", surface: root-crontab, cmd: "/root/arifFlow/scripts/arifflow_digest.py → arifflow-digest.log", note: "file-based digest, separate lane from 22:00 Hermes delivery — same organ, two channels"}
+    - {id: "timer:arifflow-fq-mirror", sched: timer, surface: systemd, cmd: "FQ mirror to public state", related: [status-federation]}
+    - {id: "timer:arifflow-cooling-watchdog", sched: timer, surface: systemd, cmd: "cooling receipt watchdog"}
+
+  dream_memory:
+    - {id: "unit:arif-dream.service+.timer", sched: nightly, surface: systemd, cmd: "dreams/consolidate.py --execute @ /root/AAA/dream_engine", note: "FIXED 2026-08-21: WorkingDirectory drop-in (was pointing at archived openclaw path, 1275 restart-loop)"}
+    - {id: "cron.d:arifos-dreamer", sched: "15 * * * *", surface: cron.d, cmd: "dreamer.py --all @ A-FORGE/forge_work/current-honjo-pilot", note: "hourly A-FORGE dreamer — DIFFERENT from nightly arif-dream; registry has stale 2026-07-25 path"}
+    - {id: "cron.d:well-dream", sched: "0 20 * * *", surface: cron.d, cmd: "well_dream.py daily (user: arifos)"}
+    - {id: "cron.d:memory-helix-rollup", sched: "0 19 * * *", surface: cron.d, cmd: "/root/.arifos/scripts/memory-helix-rollup.sh"}
+    - {id: "cron.d:sot-cron-vault-bridge", sched: "23 7 * * *", surface: cron.d, cmd: "sot_cron.py → vault bridge"}
+    - {id: "timers:dream-engine(-weekly/-monthly, legacy)", sched: disabled, surface: systemd, cmd: "legacy dream timers (retired)"}
+
+  backup_integrity:
+    - {id: "cron.d:arifos-governed-obligations", sched: "0 3 * * *", surface: cron.d, cmd: "vault999-daily-backup.sh"}
+    - {id: "cron.d:federation-backup.daily", sched: "30 3 * * *", surface: cron.d, cmd: "federation-backup.sh"}
+    - {id: "crontab:phoenix72", sched: "0 3 * * *", surface: root-crontab, cmd: "phoenix72.sh", note: "registry-unregistered (assert ADDED)"}
+    - {id: "crontab:direct-backup", sched: "0 18 * * *", surface: root-crontab, cmd: "direct-backup.sh"}
+    - {id: "crontab:state-db-backup", sched: "0 */6 * * *", surface: root-crontab, cmd: "/root/.hermes/state-db-backup.sh", note: "registry-unregistered"}
+    - {id: "cron.d:hermes-state-integrity", sched: "0 */6 * * *", surface: cron.d, cmd: "HERMES state_db_recover.py", note: "registry-unregistered"}
+    - {id: "timer:arifos-backup", sched: masked, surface: systemd, cmd: "superseded by cron.d federation-backup"}
+
+  health_watchdog:
+    - {id: "crontab:asi-pulse", sched: "*/30 * * * *", surface: root-crontab, cmd: "asi-pulse.sh"}
+    - {id: "crontab:agentic-intelligence-pulse", sched: "*/30 * * * *", surface: root-crontab, cmd: "HERMES agentic-intelligence-pulse.sh"}
+    - {id: "cron.d:openclaw-agentic", sched: "0 * * * *", surface: cron.d, cmd: ".openclaw/workspace/skills/infra-crons/hermes-health.sh", note: "LEGACY NAME, LIVE TARGET (script mtime 2026-08-15) — openclaw archived but this health probe still runs; rename candidate for Hermes"}
+    - {id: "cron.d:zai-federation-watchdog", sched: "*/30 * * * *", surface: cron.d, cmd: "zai-federation-watchdog.sh"}
+    - {id: "cron.d:zai-temporal-drift-check", sched: "0 18 * * *", surface: cron.d, cmd: "zai-temporal-drift-check.sh"}
+    - {id: "cron.d:status-federation", sched: "*/5 * * * *", surface: cron.d, cmd: "status-generator.py (2026-08-06 forge_work)"}
+    - {id: "cron.d:arif-verify-attestation", sched: "*/5 * * * *", surface: cron.d, cmd: "arif-fazil.com verify-attestation.sh"}
+    - {id: "cron.d:arifos-vault-tail", sched: "*/1 * * * *", surface: cron.d, cmd: "vault-tail-refresh (www-data)"}
+    - {id: "timers:health-watchdog-batch", members: [vps-t1-check, stabilization-check, arifos-capability-probe, aaa-cockpit-probe, aaa-drift-check, arifos-drift-check, auditor-drift-check, sct-renew, arifosmcp-network-heal-disabled, ollama-idle-check], sched: various, surface: systemd}
+
+  web_surface:
+    - {id: "cron.d:arifos-site-audit-pipeline", sched: "*/15 * * * *", surface: cron.d, cmd: "arif-fazil.com sense.sh"}
+    - {id: "crontab:agentic-web", sched: "0 * * * *", surface: root-crontab, cmd: "web-canon agentic-web.sh"}
+    - {id: "cron.d:arif-commodity-reseal", sched: "7 * * * *", surface: cron.d, cmd: "reseal-commodity-pages (gold/oil/gas dashboards)"}
+    - {id: "crontab:sync-cockpit-static", sched: "*/5 * * * *", surface: root-crontab, cmd: "AAA sync-cockpit-static.sh"}
+    - {id: "crontab:observatory-snapshot", sched: "*/30 * * * *", surface: root-crontab, cmd: "emit_observatory_snapshot.py → /.well-known"}
+    - {id: "timer:arifos-public-state-refresh", sched: timer, surface: systemd}
+
+  skills_doctrine:
+    - {id: "timer:skill-mesh-sync", sched: timer, surface: systemd, cmd: "cross-harness skill mesh sync"}
+    - {id: "cron.d:skill-audit", sched: "0 20 * * 6", surface: cron.d, cmd: "skill-audit.sh (Sat)"}
+    - {id: "cron.d:hermes-skill-extract", sched: "0 */6 * * *", surface: cron.d, cmd: "hermes-asi skill-extractor.py"}
+    - {id: "cron.d:pati-sweep", sched: "0 18 * * 6", surface: cron.d, cmd: "pati-sweep.sh (Sat)"}
+
+  market_trading:
+    - {id: "cron.d:trading-scan", sched: "0 1,3,...,19 * * 1-5", surface: cron.d, cmd: "WEALTH trading scan (flocked)"}
+    - {id: "cron.d:wealth-briefing", sched: "0 6 * * *", surface: cron.d, cmd: "wealth-briefing-cron.sh"}
+    - {id: "timer:wealth-market-daily", sched: timer, surface: systemd}
+    - {id: "crontab:fomc-tripwire", sched: "0 8 * * 1-5", surface: root-crontab, cmd: "arifOS fomc-tripwire-trigger.sh"}
+
+  well_biometric:
+    - {id: "cron.d:well_auto_keepalive", sched: "0 */6 * * *", surface: cron.d, cmd: "WELL keepalive"}
+    - {id: "cron.d:google_fit_bridge", sched: "30 */6 * * *", surface: cron.d, cmd: "google_fit_bridge.py"}
+    - {id: "crontab:m6-collect", sched: "*/5 * * * *", surface: root-crontab, cmd: "m6-collect.sh (machine telemetry)"}
+    - {id: "timer:well-machine-telemetry", sched: timer, surface: systemd}
+
+  human_briefs_hermes:
+    - {id: "hermes:2a3fe4915620", sched: "0 6 * * *", surface: hermes-jobs, cmd: "arif-morning-pulse"}
+    - {id: "hermes:0e37cdaf4a37", sched: "0 9 * * *", surface: hermes-jobs, cmd: "arif-world-reality-intel"}
+    - {id: "hermes:012dbd1cb566", sched: "0 7 * * 1,3,5", surface: hermes-jobs, cmd: "i-ARIF morning brief (odd days)"}
+    - {id: "hermes:c9f2a8e14d3b", sched: "0 7 * * 0,2,4,6", surface: hermes-jobs, cmd: "i-ARIF morning brief (even days)"}
+    - {id: "hermes:a004b6357d06", sched: "30 6 * * 1", surface: hermes-jobs, cmd: "arif-reckoning (weekly)"}
+    - {id: "hermes:c1e41e6ee03a", sched: "0 8 * * 1", surface: hermes-jobs, cmd: "geo-econ-horizon"}
+    - {id: "hermes:9eddcab58b5c", sched: "0 12 * * 5", surface: hermes-jobs, cmd: "iron-radar (regional, Fri)"}
+    - {id: "hermes:a5b0eda31bfa", sched: "0 9 * * 1", surface: hermes-jobs, cmd: "syed-mak-cbd-followup"}
+    - {id: "crontab:federation-triage-digest", sched: "0 9 * * *", surface: root-crontab, cmd: "federation-triage-digest.sh (MYT)"}
+
+  audit_governance:
+    - {id: "cron.d:arifos-daily-probe", sched: "15 6 * * *", surface: cron.d, cmd: "arifos-daily-probe.sh"}
+    - {id: "cron.d:arifos-federation-audit", sched: "15 19 * * *", surface: cron.d, cmd: "check_tool_drift.py --codex-runtime-only"}
+    - {id: "cron.d:arifos-repo-audit", sched: "17 * * * *", surface: cron.d, cmd: "repo_duplicate_audit.py"}
+    - {id: "cron.d:arifos-sentinel-discovery", sched: "30 2 * * *", surface: cron.d, cmd: "AAA sentinel_discovery_audit.sh"}
+    - {id: "cron.d:arifos-sovereignty-drill", sched: "0 2 * * 0 (≤7th)", surface: cron.d, cmd: "sovereignty_drill.sh"}
+    - {id: "cron.d:entropy-governor", sched: "0 19 * * *", surface: cron.d, cmd: "entropy-governor.sh"}
+    - {id: "cron.d:institution-mae-pulse", sched: "0 */6 * * *", surface: cron.d, cmd: "HERMES institution MAE pulse"}
+    - {id: "crontab:unsealed-counter", sched: "*/30 * * * *", surface: root-crontab, cmd: "unsealed-counter.sh"}
+    - {id: "crontab:forge-work-gc", sched: "0 19 * * *", surface: root-crontab, cmd: "governance/forge-work-gc.sh"}
+    - {id: "crontab:zombie-reaper", sched: "0 * * * *", surface: root-crontab, cmd: "A-FORGE zombie_reaper_cron.sh"}
+    - {id: "hermes:b7943df5bad1", sched: "17 3 * * 0", surface: hermes-jobs, cmd: "weekly seal integrity check"}
+    - {id: "hermes:86b80f0cf94e", sched: "0 4 1 * *", surface: hermes-jobs, cmd: "monthly Hermes upstream drift watchdog"}
+    - {id: "hermes:4f47cde23bb8", sched: every-120m, surface: hermes-jobs, cmd: "unattended-PDF auto-attest"}
+    - {id: "hermes:4eee9cc62dfb", sched: every-360m, surface: hermes-jobs, cmd: "MAP·ATLAS·ECHO metrics → Kabarkan"}
+    - {id: "hermes:9eca62b8db1b / 67126c14382a", sched: 60m/360m, surface: hermes-jobs, cmd: "(no description in jobs.json — undocumented, flag for Hermes)"}
+
+  harness_quota:
+    - {id: "crontab:qwen-free-quota-probe", sched: "*/15 * * * *", surface: root-crontab, cmd: "qwen-free-quota-probe.sh"}
+    - {id: "crontab:claude-code-verify-flusher", sched: "*/5 * * * *", surface: root-crontab, cmd: "verify-flusher 10", note: "registry-unregistered; actor claude-code 313 steps/day in arifFlow — this flusher feeds it"}
+    - {id: "timer:dynamic-gate", sched: timer, surface: systemd, cmd: "333-AGI/dynamic-gate (304 steps/day in arifFlow)"}
+    - {id: "timer:aed", sched: timer, surface: systemd, cmd: "aed-v1 duty cycle (284 steps/day in arifFlow; A-FORGE branch proposal/aed-fixture-deprecation)"}
+
+registry_drift:                                  # forge_vps_cron assert 2026-08-21, verdict WARN
+  live_unregistered:                             # live on box, absent from Machine Constitution registry
+    - "0 */6 * * * /root/.hermes/state-db-backup.sh"
+    - "0 3 * * * /root/scripts/phoenix72.sh"
+    - "*/5 * * * * /root/scripts/claude-code-verify-flusher.sh 10"
+    - "0 */6 * * * HERMES state_db_recover.py (cron.d/hermes-state-integrity)"
+    - "22 5 * * 1 docker builder prune -f (cron.d/docker-builder-prune, SYSTEM)"
+    - "15 * * * * dreamer.py @ current-honjo-pilot (cron.d/arifos-dreamer)"
+  registry_stale:                                # in registry, no longer live
+    - "18 2 * * 6 docker builder prune --filter unused-for=168h (old schedule)"
+    - "15 * * * * dreamer.py @ 2026-07-25-honcho-pilot (old path)"
+  next_action: "Hermes to register the 6 + purge the 2 (888_HOLD mutation, not this map's job)"
+
+system_only:                                      # present but out of federation scope
+  cron_d: [certbot, clamav-daily, e2scrub_all, sysstat, docker-builder-prune]
+  timers_note: "77 systemd timer units total; federation-relevant listed above, remainder OS stock (apt, snapd, dpkg, ua, e2scrub, xfs, apport, sysstat, chrony, certbot, clamav, cloudflared, ci-* disabled set)"
