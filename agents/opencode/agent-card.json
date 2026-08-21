@@ -35,42 +35,42 @@
     "citizenship_forged": "2026-05-17"
   },
   "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/opencode",
-    "runtime_snapshot": {
-      "probed": "2026-08-14T06:46:05Z",
-      "opencode_version": "1.18.9",
-      "organ_health": {
-        "arifos": {
-          "verdict": "SEAL",
-          "floors": 13,
-          "drift": "False",
-          "status": "degraded",
-          "note": "session bound OBSERVE_ONLY — sovereign directive required for constitutional mutations"
-        },
-        "aforge": {
-          "status": "healthy",
-          "tools_loaded": 110
-        },
-        "aaa": {
-          "status": "healthy"
-        },
-        "geox": {
-          "status": "degraded"
-        },
-        "wealth": {
-          "status": "healthy"
-        },
-        "well": {
-          "status": "degraded"
-        },
-        "arifflow": {
-          "diagnosis": "VERIFICATION DOMINANCE",
-          "verify_concentration_pct": 99.0,
-          "status": "DIAGNOSIS-FIRST",
-          "scalar_fq": "99.0 (deprecated as health indicator)"
-        }
+  "runtime_snapshot": {
+    "probed": "2026-08-14T06:46:05Z",
+    "opencode_version": "1.18.9",
+    "organ_health": {
+      "arifos": {
+        "verdict": "SEAL",
+        "floors": 13,
+        "drift": "False",
+        "status": "degraded",
+        "note": "session bound OBSERVE_ONLY \u2014 sovereign directive required for constitutional mutations"
       },
-      "model_routing": "opencode-go/deepseek-v4-pro (primary) · opencode-go-zen/GLM-5.2 (1M ctx)"
+      "aforge": {
+        "status": "healthy",
+        "tools_loaded": 110
+      },
+      "aaa": {
+        "status": "healthy"
+      },
+      "geox": {
+        "status": "degraded"
+      },
+      "wealth": {
+        "status": "healthy"
+      },
+      "well": {
+        "status": "degraded"
+      },
+      "arifflow": {
+        "diagnosis": "VERIFICATION DOMINANCE",
+        "verify_concentration_pct": 99.0,
+        "status": "DIAGNOSIS-FIRST",
+        "scalar_fq": "99.0 (deprecated as health indicator)"
+      }
     },
+    "model_routing": "opencode-go/deepseek-v4-pro (primary) \u00b7 opencode-go-zen/GLM-5.2 (1M ctx)"
+  },
   "capabilities": {
     "streaming": true,
     "pushNotifications": false,
@@ -423,8 +423,8 @@
       ]
     },
     {
-      "id": "FORGE-github-workflow",
-      "name": "GitHub Workflow",
+      "id": "FORGE-github-ops",
+      "name": "GitHub Ops (merged v1.2.0)",
       "description": "Class-level umbrella for GitHub operations \u2014 auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
       "tags": [
         "github",
@@ -890,5 +890,14 @@
       "yaml": "/root/AAA/agents/opencode/art_binding.yaml"
     }
   },
-  "fi": "FI-OPENCODE"
+  "fi": "FI-OPENCODE",
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "uB5phEznmN1R3ZjHVg1jKvA2I4JTsjTCjYDumwEDH3Hdr2Benc6jGsHLTGP9t+EniScQDlwRG3dNM898X5i8Dg==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-08-21T05:51:38Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
 }

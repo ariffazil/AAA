@@ -538,8 +538,8 @@
       ]
     },
     {
-      "id": "FORGE-github-workflow",
-      "name": "GitHub Workflow",
+      "id": "FORGE-github-ops",
+      "name": "GitHub Ops (merged v1.2.0)",
       "description": "Class-level umbrella for GitHub operations \u2014 auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
       "tags": [
         "github",
@@ -1082,9 +1082,9 @@
   "signatures": [
     {
       "did": "did:arif:aaa",
-      "proofValue": "QkBv1MAZsXe+DEarbb8iCzKLu9sXC2VjcTNHb2Ow/ev4Nw4xx66Y8bDef59I4tl0vqwOc3Y2ffPISnes7/htCw==",
+      "proofValue": "pVAOi+ARAxjmHfAMLe848QMiUDA33WTbbQkOt5HrnxyPD26RMFXSrX8v8k1i/2LcUwgeGdA61kJ8qArSJvwuCw==",
       "proofPurpose": "assertionMethod",
-      "created": "2026-08-21T05:48:48Z",
+      "created": "2026-08-21T05:51:38Z",
       "type": "Ed25519Signature2020"
     }
   ]

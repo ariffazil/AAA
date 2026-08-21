@@ -313,8 +313,8 @@
       ]
     },
     {
-      "id": "FORGE-github-workflow",
-      "name": "GitHub Workflow",
+      "id": "FORGE-github-ops",
+      "name": "GitHub Ops (merged v1.2.0)",
       "description": "Umbrella skill for GitHub operations. F1, F11 enforced.",
       "tags": [
         "github",

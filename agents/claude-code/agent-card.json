@@ -8,7 +8,7 @@
     "category": "LLM-as-principal (Anthropic Claude is the principal; Claude Code is the governed harness)",
     "principle_origin": "Anthropic Claude via FED-routed LiteLLM gateway at http://127.0.0.1:4000"
   },
-  "description": "Claude Code CLI \u2014 Anthropic's native agentic coding harness, federated as AAA warga FI-002. Reversible engineering forge instrument bound to 333-AGI (\u0394 MIND). FED-routed model lanes: hermes-asi (text), hermes-asi-vision (multimodal), asi-555 (coder), apex-888 (sovereign judgment \u2014 never self-authorises; goes through arifOS). EMD role: DECODER.",
+  "description": "Claude Code CLI — Anthropic's native agentic coding harness, federated as AAA warga FI-002. Reversible engineering forge instrument bound to 333-AGI (Δ MIND). FED-routed model lanes: hermes-asi (text), hermes-asi-vision (multimodal), asi-555 (coder), apex-888 (sovereign judgment — never self-authorises; goes through arifOS). EMD role: DECODER.",
   "version": "2.2.1",
   "model": "claude-sonnet",
   "binary": "/root/.local/bin/claude",
@@ -38,7 +38,7 @@
     "intelligence_tier": "AGI",
     "authority_level": "engineer",
     "citizenship_forged": "2026-08-10",
-    "forged_by": "333-AGI \u0394 MIND (alias to user session 09:39 MYT)",
+    "forged_by": "333-AGI Δ MIND (alias to user session 09:39 MYT)",
     "preceding_state": "settings.json wired 2026-08-08 by 333-AGI; registry entry at /root/AAA/dist/a2a/agents.json:188 (FI-002); no /root/AAA/agents/claude-code/ dir prior to 2026-08-10"
   },
   "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/claude-code",
@@ -164,7 +164,7 @@
     "judgment": {
       "model": "apex-888",
       "lane": "sovereign/route",
-      "backend": "FED / MiniMax-M3 (aura\u2192arifOS for verdict)"
+      "backend": "FED / MiniMax-M3 (aura→arifOS for verdict)"
     },
     "subagent": {
       "model": "hermes-asi",
@@ -216,10 +216,10 @@
     "session_time_myt": "09:37 MYT",
     "claude_cli_version": "n/a (binary probe skipped; settings.json imported from 2026-08-08 baseline)",
     "tier": "T0 (auto-do) for read/probe; T1 for config edits on this card",
-    "delta_s": "\u22640 (no entropy introduced; removed broken alias; added declarative card)"
+    "delta_s": "≤0 (no entropy introduced; removed broken alias; added declarative card)"
   },
   "_notes": {
-    "registry_origin": "FI-002 entry already present at /root/AAA/dist/a2a/agents.json:188 \u2014 this card materialises the warga dir, /root/AAA/agents/claude-code/, that previously did not exist.",
+    "registry_origin": "FI-002 entry already present at /root/AAA/dist/a2a/agents.json:188 — this card materialises the warga dir, /root/AAA/agents/claude-code/, that previously did not exist.",
     "settings_baseline": "settings.json authored 2026-08-08 by 333-AGI, FED-routing already aligned. This card adds the missing sibling to /root/AAA/agents/kimi-code/, /root/AAA/agents/opencode/, etc.",
     "bash_alias_fix": "Replaced `alias /copy=...` (invalid: bash aliases cannot contain `/`) with `/copy() { ...; }` function preserving the leading-slash command name."
   },
@@ -239,5 +239,40 @@
       "yaml": "/root/AAA/agents/claude-code/art_binding.yaml"
     }
   },
-  "fi": "FI-CLAUDE"
+  "fi": "FI-CLAUDE",
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "61TXLNQYrZqye4YjRXvPZV0cZ6mPva6WjVSrv8GySFKCCYdlOFzmTAiEhefyuK0sdNegr5Od77gK/BrgpYsXAQ==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-08-21T05:51:38Z",
+      "type": "Ed25519Signature2020"
+    }
+  ],
+  "skills": [
+    {
+      "id": "FORGE-github-ops",
+      "name": "GitHub Ops (merged v1.2.0)",
+      "description": "Class-level umbrella for GitHub operations — auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
+      "tags": [
+        "github",
+        "workflow",
+        "PR",
+        "issues"
+      ],
+      "floor_scope": [
+        "F1",
+        "F11"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F1",
+            "floor:F11"
+          ]
+        }
+      ]
+    }
+  ]
 }
