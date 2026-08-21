@@ -78,7 +78,7 @@ PY
 export IARIF_TEXT_FILE="$(realpath "$WORK/input.txt")"
 
 # ---- Stage 1: MiniMax synthesis ----
-python3 - "$WORK" "$VOICE_ID" <<'PYEOF' || exit 1
+python3 - "$WORK" "$VOICE_ID" <<'PYEOF'
 import sys, os, json, urllib.request
 work, voice_id = sys.argv[1], sys.argv[2]
 text = open(os.environ["IARIF_TEXT_FILE"]).read().strip()
@@ -102,8 +102,53 @@ if br.get("status_code", 0) != 0:
 open(f"{work}/raw.mp3", "wb").write(bytes.fromhex(resp["data"]["audio"]))
 print("stage1-ok", file=sys.stderr)
 PYEOF
+# MiniMax down (quota/auth) -> Stage 1M: MiMo Token Plan (Xiaomi, token-plan-sgp).
+# Verified live 2026-08-21: chat/completions + modalities:["audio"] returns MP3.
+# Text rides in role:assistant; user role carries delivery instruction (BM).
+# Identity is Stage 2 DSP (F0 lock 239 Hz + formant-first) — provider-agnostic.
 if [ ! -s "$WORK/raw.mp3" ]; then
-  echo "iarif_tts_pipeline: stage 1 failed" >&2
+  echo "iarif_tts_pipeline: stage 1 (MiniMax) failed -- trying MiMo Token Plan" >&2
+  IARIF_MIMO_VOICE="${IARIF_MIMO_VOICE:-冰糖}" python3 - "$WORK" <<'PYMIMO'
+import sys, os, json, urllib.request, base64
+work = sys.argv[1]
+text = open(os.environ["IARIF_TEXT_FILE"]).read().strip()
+key = os.environ["MIMO_API_KEY"]
+voice = os.environ.get("IARIF_MIMO_VOICE", "冰糖")
+req = urllib.request.Request(
+    "https://token-plan-sgp.xiaomimimo.com/v1/chat/completions",
+    data=json.dumps({
+        "model": "mimo-v2.5-tts",
+        "modalities": ["audio"],
+        "audio": {"voice": voice, "format": "mp3"},
+        "messages": [
+            {"role": "user", "content": "Read the assistant text aloud in Malay, warm and composed."},
+            {"role": "assistant", "content": text},
+        ],
+    }).encode(),
+    headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
+)
+resp = json.loads(urllib.request.urlopen(req, timeout=120).read())
+audio = resp["choices"][0]["message"]["audio"]["data"]
+open(f"{work}/raw.mp3", "wb").write(base64.b64decode(audio))
+print("stage1m-ok", file=sys.stderr)
+PYMIMO
+fi
+if [ ! -s "$WORK/raw.mp3" ]; then
+  echo "iarif_tts_pipeline: stage 1 (MiniMax + MiMo) failed -- failing to edge-tts (ms-MY-YasminNeural)" >&2
+  python3 - "$WORK" <<'PYEDGE'
+import sys, os, asyncio
+work = sys.argv[1]
+text = open(os.environ["IARIF_TEXT_FILE"]).read().strip()
+async def main():
+    import edge_tts
+    tts = edge_tts.Communicate(text, "ms-MY-YasminNeural", rate="+5%")
+    await tts.save(f"{work}/raw.mp3")
+asyncio.run(main())
+print("stage1e-ok", file=sys.stderr)
+PYEDGE
+fi
+if [ ! -s "$WORK/raw.mp3" ]; then
+  echo "iarif_tts_pipeline: all synthesis lanes failed" >&2
   exit 1
 fi
 
