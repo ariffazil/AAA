@@ -4,7 +4,7 @@
   "protocolVersion": "1.2",
   "agentId": "agy",
   "name": "agy",
-  "description": "agy \u2014 Evidence gathering \u2014 web, docs, code analysis",
+  "description": "agy — Evidence gathering — web, docs, code analysis",
   "version": "1.0.0",
   "provider": {
     "organization": "arifOS Federation",
@@ -763,5 +763,9 @@
     "note": "Antigravity CLI / Gemini",
     "source": "federation.yaml",
     "generated_by": "federation-a2a-sync.py"
-  }
+  },
+  "status": "superseded",
+  "superseded_at": "2026-08-21",
+  "f13_decision": "merge",
+  "superseded_by": "antigravity (FI-009) — legacy 82-skill alias card"
 }
