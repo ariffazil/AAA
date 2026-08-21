@@ -7,8 +7,6 @@ owner: A-FORGE
 risk_tier: medium
 floor_scope: ['F1', 'F2', 'F4']
 autonomy_tier: T1
-capability_tier: fed-agent-subagent
-ecology_state: WARM
 ---
 # ⚒️ Redis + Qdrant Integration — Caching & Vector Memory
 

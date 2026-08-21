@@ -7,8 +7,6 @@ owner: A-FORGE
 risk_tier: low
 floor_scope: ['F1', 'F4']
 autonomy_tier: T1
-capability_tier: fed-reasoning-heavy
-ecology_state: WARM
 ---
 # ⚒️ Tailwind Tokens — Trinity Design System
 

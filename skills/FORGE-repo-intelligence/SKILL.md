@@ -68,8 +68,6 @@ floor_scope:
 - F1
 - F2
 - F11
-capability_tier: fed-agent-subagent
-ecology_state: WARM
 ---
 
 # FORGE-repo-intelligence — Controller Skill
