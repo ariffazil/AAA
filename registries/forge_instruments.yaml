@@ -340,7 +340,8 @@ instruments:
   live_version_observed: 0.43.0
   version_checked_at: '2026-08-21'
   model: gemini-2.5-flash (runtime-resolved via /root/.arifos/agents/gemini/AAA/settings.json)
-  izin: TBD (entry created 2026-08-21 registry refresh; see agent-card)
+  izin: SUPERSEDED (F13 merge 2026-08-21 — gemini lane folded into FI-009 agy/antigravity
+    as harness-of-record; binary /usr/bin/gemini retained unregistered for ad-hoc use)
   sandbox: process
   mcp_surface:
   - aforge
@@ -354,8 +355,8 @@ instruments:
   - wealth
   - well
   config_path: /root/.arifos/agents/gemini/AAA
-  note: Slot per C10 adjudication. Harness TBD-merge candidate with agy FI-009 — decision
-    pending F13. No GEMINI.md native context yet.
+  note: 'Superseded per F13 merge decision 2026-08-21. Historical record retained. Card
+    archived to agents/_superseded/gemini-cli/.'
 - id: FI-011
   name: Continue CLI
   binary: (config-only presence)
