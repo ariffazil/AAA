@@ -24,7 +24,7 @@ User request: $ARGUMENTS
 | `kimi-k2.5` | ✅ | ✓ |
 | `qwen3-max-2026-01-23` | ❌ | Load this skill |
 | `qwen3-coder-next` | ❌ | Load this skill |
-| `qwen3-coder-plus` | � | Load this skill |
+| `qwen3-coder-plus` | ❌ | Load this skill |
 | `glm-5` | ❌ | Load this skill |
 | `glm-4.7` | ❌ | Load this skill |
 | `MiniMax-M2.5` | ❌ | Load this skill |
