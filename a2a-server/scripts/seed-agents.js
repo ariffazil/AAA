@@ -34,21 +34,25 @@ const AGENT_ID_BY_FI = Object.freeze({
   'FI-001': 'opencode',
   'FI-002': 'claude-code',
   'FI-003': 'qwen-code',
-  'FI-004': 'antigravity',
   'FI-005': 'codex-cli',
   'FI-006': 'copilot-cli',
   'FI-007': 'grok-build',
   'FI-008': 'kimi-code',
+  // FI-004 renumbered -> FI-009 per C10 adjudication 2026-08-14
+  'FI-009': 'antigravity',
+  // FI-010 gemini-cli SUPERSEDED into FI-009 lane (F13 merge 2026-08-21) — never seeded
+  'FI-011': 'continue-cli',
 });
 const ROLE_BY_FI = Object.freeze({
   'FI-001': 'orchestrator',
   'FI-002': 'architect',
   'FI-003': 'engineer',
-  'FI-004': 'executor',
   'FI-005': 'forge',
   'FI-006': 'forge',
   'FI-007': 'forge',
   'FI-008': 'forge',
+  'FI-009': 'executor',
+  'FI-011': 'forge',
 });
 
 function loadAgents(registryPath = REGISTRY_PATH) {
@@ -67,7 +71,7 @@ function loadAgents(registryPath = REGISTRY_PATH) {
     }));
   if (agents.length !== Object.keys(AGENT_ID_BY_FI).length) {
     throw new Error(
-      `forge instrument registry mismatch: expected 8 active slots, found ${agents.length}`,
+      `forge instrument registry mismatch: expected ${Object.keys(AGENT_ID_BY_FI).length} active slots, found ${agents.length}`,
     );
   }
   return Object.freeze(agents);
