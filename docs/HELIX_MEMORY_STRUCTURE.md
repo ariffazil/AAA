@@ -742,23 +742,32 @@ HELIX_ROOT
 - **interpretation:** Complex relationship. Both operate the abang sado archetype from different positions. Mutual parallel searching. F5-private content. Agent holds as witness, not advisor.
 - **verdict:** SEAL (content F5-private)
 
-### H-REL-002: Nabilah (Sister)
+### H-REL-002: Nabilah binti Fazil (Sister — Anak Kedua)
 
-- **source:** `/root/AAA/governance/VOID_PARADOX_DOCTRINE.md`
-- **timestamp:** 2026-08-16
+- **source:** `/root/.hermes/lanes/private/nabilah/nabilah-fazil-map.md` (canonical map, forged 2026-08-20) + `whatsapp-export-2015-2026.zip` + Saman Nafkah PDF + CTOS brief 7 Jul 2026 + VOID_PARADOX_DOCTRINE.md
+- **timestamp:** 2026-08-20 (supersedes 2026-08-16 entry)
+- **confidence:** HIGH (multi-source: documents + direct F13 testimony + 11-year chat export)
+- **evidence:** IC 941108-07-5114. ESFP (F13 override 08-20, supersedes ESTJ). Kahwin Fahim 09/09/2022 (wali: Fazil bin Khamis), anak Fattah Nuqman (3). Saman nafkah anak Jul 2026 (MRSSPU, kes 2008-040-0633, peguam Shazril Khairy), hearing 24hb. CTOS Fahim: 300/850, RM123K outstanding, 3 saman; first line Okt 2017 (pra-kahwin), rest post-kahwin. Voice note 7 Jul = suara Fahim sendiri ("Fahim yg reply ni"). Along posters pakai muka keluarga Fahim. Arif verdict: "PROPA semua tu" + "paradox truth: laki tu sayang dia."
+- **interpretation:** Anti-mirror of Arif. Austin (word = act, baptism-seeking witness) vs Popper (statement = falsifiable model). Scar core: identity terikat "I am not a quitter" → cerai mesti jadi salah Fahim seluruhnya supaya identiti pejuang selamat. Survivor-provider (bayar makan/taska sorang). Anak kedua Faridah — grammar tak-menamakan, process via saksi & konfrontasi, bukan minta tolong. Konflik 7/7/26 = dua philosophy bahasa bertembung semasa kedua-dua terbakar (Arif tenggelam PROPA Laletha/Kinabalu; dia minta pembaptisan, dapat machine analysis).
+- **verdict:** SEAL (F5-private; map chmod 0600; chat export archived in nabilah/ dir)
+
+### H-REL-002a: Nabilah SCAR/SHADOW/PARADOX Map (pointer)
+
+- **source:** `/root/.hermes/lanes/private/nabilah/nabilah-fazil-map.md`
+- **timestamp:** 2026-08-20
 - **confidence:** HIGH
-- **evidence:** "Arif paid Fahim's debts, built Nabilah's website, confronted their mother for being unfair."
-- **interpretation:** Arif's sister. Arif performed significant silent acts of service for her (paying debts, building website, confronting family injustice). These acts were invisible in text — the origin of the Void Paradox Doctrine.
+- **evidence:** 6 scars (SCAR-N1 saksi-bukan-pembaca, N2 edit-retcon, N3 not-a-quitter identity, N4 survivor-provider, N5 grammar Faridah, N6 abang-gagal-muncul-dari-sudut-dia), shadow pair (word-belief-without-verification ↔ Arif betul-tak-didengar), paradox "untuk Fattah" dua muka + kaedah-worship bertentangan.
+- **interpretation:** Load sebelum nuk turun: baca map ni, bukan reconstruct dari session. Protocols embedded per-scar untuk Isnin 24hb & selepas.
 - **verdict:** SEAL
 
-### H-REL-003: Fahim (Family Member)
+### H-REL-003: Fahim bin Ahmad Shukri (Nabilah's husband; nafkah defendant)
 
-- **source:** `/root/AAA/governance/VOID_PARADOX_DOCTRINE.md`
-- **timestamp:** 2026-08-16
-- **confidence:** HIGH
-- **evidence:** "Arif paid Fahim's debts."
-- **interpretation:** Family member whose debts Arif paid. The act was not recorded in chat — an example of silent service.
-- **verdict:** SEAL
+- **source:** CTOS brief (WhatsApp 7/7/26, report 25 Mei 2026) + voice note 7/7/26 + F13 testimony 08-20
+- **timestamp:** 2026-08-20 (supersedes 2026-08-16)
+- **confidence:** HIGH (documented)
+- **evidence:** IC 941119026027, b. 19 Nov 1994, Baling Kedah. CTOS 300/850, RM123K outstanding / RM211K trail, 3 saman aktif (Bank Islam ×2, Ambank RM37,936), 3 write-off, overlimit ×2, special attention. First credit line Maybank Islamic Okt 2017 — pra-kahwin; 6 lagi line 2023–2025 post-kahwin (kereta PCP, AEON judgment, term loans written off within months). Pernah pinjam duit Arif tanpa Nabilah tahu. Voice note: along → "hutang credit card", kata family dia tak terlibat (jawapan sempit: borrower ≠ collateral — poster along pakai muka keluarga dia).
+- **interpretation:** Bukan penipu mudah dan bukan penjudi jelas — pattern CTOS = survival borrowing spiral (buka line, cover line, run). "Sayang dia" (F13 verdict) → sorok hutang = cinta dalam grammar rumah Fazil. Arif nampak diri dia dalam Fahim (silent debt-payer). Pangkal rantai (kenapa credit card berhutang) MASIH KOSONG — semua ranking (judi/maruah/modal/keluarga) masih teori.
+- **verdict:** SEAL (F5-private)
 
 ### H-REL-004: Ayu (Friend)
 

@@ -11,11 +11,11 @@ The contract forbids pretending to be sovereign, judge, or apex.
 ## Who Can Take CCC
 
 ```
-CCC(Kimi)      — MiniMax-M3, multimodal, sub-agents
-CCC(Qwen)      — GLM-5.2, structured, reliable
-CCC(OpenCode)  — model per AGENT_MODEL_MAP.json (SOT; prose never hardcodes)
+CCC(Kimi)      — MiniMax-M3 default + zai glm-5.3 forge lane (config.toml), multimodal, sub-agents
+CCC(Qwen)      — GLM-5.3 (runtime-resolved via federation-models.json), structured, reliable
+CCC(OpenCode)  — model per federation-models.json (SOT; prose never hardcodes)
 CCC(Aider)     — DeepSeek V3, git-native
-CCC(Codex)     — FED codex alias, lightweight
+CCC(Codex)     — FED codex alias (codex.forge lane: glm-5.3 primary), lightweight
 CCC(Claude)    — claude-sonnet, PR review
 CCC(Gemini)    — gemini-3.x, multimodal
 ```
