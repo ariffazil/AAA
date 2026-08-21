@@ -45,8 +45,9 @@ def _fingerprint(token: str) -> str:
 @dataclass
 class TokenSource:
     """One location where a token was found."""
-    location: str       # e.g. "arguments.sct", "header.x-arifos-act"
-    fingerprint: str    # sha256 prefix
+
+    location: str  # e.g. "arguments.sct", "header.x-arifos-act"
+    fingerprint: str  # sha256 prefix
     length: int
 
     def to_dict(self) -> dict[str, Any]:
@@ -60,8 +61,9 @@ class TokenSource:
 @dataclass
 class TokenExtraction:
     """Result of collecting all SCT sources and detecting conflicts."""
-    status: str                     # "PRESENT" | "ABSENT" | "AMBIGUOUS"
-    token: str | None = None        # Set only when PRESENT (one unique token)
+
+    status: str  # "PRESENT" | "ABSENT" | "AMBIGUOUS"
+    token: str | None = None  # Set only when PRESENT (one unique token)
     sources: list[TokenSource] = field(default_factory=list)
     source_count: int = 0
     unique_fingerprints: int = 0
@@ -101,9 +103,7 @@ class SCTVerification:
         return d
 
 
-def _collect_sct_from_meta(
-    meta: dict[str, Any] | None, location: str
-) -> list[tuple[str, str]]:
+def _collect_sct_from_meta(meta: dict[str, Any] | None, location: str) -> list[tuple[str, str]]:
     """Collect SCT candidates from an _meta envelope. Returns [(token, location), ...]."""
     if not meta or not isinstance(meta, dict):
         return []
@@ -147,11 +147,13 @@ def extract_sct_from_call(
         if isinstance(val, str) and val.strip():
             token = val.strip()
             fp = _fingerprint(token)
-            sources.append(TokenSource(
-                location=f"arguments.{key}",
-                fingerprint=fp,
-                length=len(token),
-            ))
+            sources.append(
+                TokenSource(
+                    location=f"arguments.{key}",
+                    fingerprint=fp,
+                    length=len(token),
+                )
+            )
             if fp not in seen_fingerprints:
                 seen_fingerprints.add(fp)
                 unique_tokens.append(token)
@@ -161,11 +163,13 @@ def extract_sct_from_call(
     if nested_meta:
         for token_val, loc in _collect_sct_from_meta(nested_meta, "arguments._meta"):
             fp = _fingerprint(token_val)
-            sources.append(TokenSource(
-                location=loc,
-                fingerprint=fp,
-                length=len(token_val),
-            ))
+            sources.append(
+                TokenSource(
+                    location=loc,
+                    fingerprint=fp,
+                    length=len(token_val),
+                )
+            )
             if fp not in seen_fingerprints:
                 seen_fingerprints.add(fp)
                 unique_tokens.append(token_val)
@@ -174,11 +178,13 @@ def extract_sct_from_call(
     if meta:
         for token_val, loc in _collect_sct_from_meta(meta, "_meta"):
             fp = _fingerprint(token_val)
-            sources.append(TokenSource(
-                location=loc,
-                fingerprint=fp,
-                length=len(token_val),
-            ))
+            sources.append(
+                TokenSource(
+                    location=loc,
+                    fingerprint=fp,
+                    length=len(token_val),
+                )
+            )
             if fp not in seen_fingerprints:
                 seen_fingerprints.add(fp)
                 unique_tokens.append(token_val)
@@ -191,11 +197,13 @@ def extract_sct_from_call(
             if isinstance(val, str) and val.strip():
                 token = val.strip()
                 fp = _fingerprint(token)
-                sources.append(TokenSource(
-                    location=f"header.{key}",
-                    fingerprint=fp,
-                    length=len(token),
-                ))
+                sources.append(
+                    TokenSource(
+                        location=f"header.{key}",
+                        fingerprint=fp,
+                        length=len(token),
+                    )
+                )
                 if fp not in seen_fingerprints:
                     seen_fingerprints.add(fp)
                     unique_tokens.append(token)
@@ -206,11 +214,13 @@ def extract_sct_from_call(
             token = auth[7:].strip()
             if token.startswith("act_v1.") or token.startswith("arifos.v1."):
                 fp = _fingerprint(token)
-                sources.append(TokenSource(
-                    location="header.authorization",
-                    fingerprint=fp,
-                    length=len(token),
-                ))
+                sources.append(
+                    TokenSource(
+                        location="header.authorization",
+                        fingerprint=fp,
+                        length=len(token),
+                    )
+                )
                 if fp not in seen_fingerprints:
                     seen_fingerprints.add(fp)
                     unique_tokens.append(token)
@@ -238,9 +248,9 @@ def extract_sct_from_call(
 
     # Multiple distinct tokens → AMBIGUOUS
     logger.warning(
-        "SCT_AMBIGUOUS: %d distinct tokens from %d sources. "
-        "Fingerprints: %s. This call MUST be rejected.",
-        unique_count, source_count,
+        "SCT_AMBIGUOUS: %d distinct tokens from %d sources. Fingerprints: %s. This call MUST be rejected.",
+        unique_count,
+        source_count,
         ", ".join(s.fingerprint for s in sources),
     )
     return TokenExtraction(
@@ -391,6 +401,7 @@ def verify_federation_sct(
             payload_part = sct.split(".", 2)[1] if sct.count(".") >= 2 else ""
             if payload_part:
                 import base64
+
                 padded = payload_part + "=" * ((4 - len(payload_part) % 4) % 4)
                 decoded = base64.urlsafe_b64decode(padded.encode("ascii"))
                 payload = json.loads(decoded.decode("utf-8"))
@@ -407,9 +418,7 @@ def verify_federation_sct(
         return SCTVerification(
             ok=False,
             error_code="SCT_INVALID",
-            error_message=result.get("error")
-            or result.get("message")
-            or "arifOS rejected SCT",
+            error_message=result.get("error") or result.get("message") or "arifOS rejected SCT",
         )
 
     claims = result.get("claims", {}) or {}
@@ -426,12 +435,7 @@ def verify_federation_sct(
             ),
         )
     actor = claims.get("actor") or claims.get("actor_id") or result.get("actor")
-    authority = (
-        claims.get("auth")
-        or claims.get("authority")
-        or result.get("authority")
-        or "OBSERVE_ONLY"
-    )
+    authority = claims.get("auth") or claims.get("authority") or result.get("authority") or "OBSERVE_ONLY"
 
     # Actor binding check
     if expected_actor and actor and str(actor).lower().strip() != str(expected_actor).lower().strip():
@@ -509,7 +513,6 @@ def verify_or_reject(
     }
 
 
-
 def _emit_gate_decision(
     *,
     tool_name: str,
@@ -560,10 +563,10 @@ def _emit_gate_decision(
         actor_id=actor or "",
         action_class=str(reg.get("action_class") or ""),
         required_authority=eff_authority,
-        require_act=eff_require_act,
-        act_fingerprint=fp,
-        act_source_count=source_count,
-        act_unique_tokens=unique_tokens,
+        require_sct=eff_require_sct,
+        sct_fingerprint=fp,
+        sct_source_count=source_count,
+        sct_unique_tokens=unique_tokens,
         registry_source="tools.yaml" if reg.get("tool_id") else "unknown",
         registry_known=bool(reg.get("tool_id")) and reg.get("action_class") != "UNKNOWN",
         extraction_locations=locations,
@@ -709,7 +712,7 @@ def gate_tool_ingress(
             actor=actor,
             auth=auth,
             extraction=extraction,
-            eff_require_act=eff_require_act,
+            eff_require_sct=eff_require_sct,
             eff_authority=eff_authority,
         )
         if tid:
@@ -751,7 +754,7 @@ def gate_tool_ingress(
             actor=actor,
             auth=auth,
             extraction=extraction,
-            eff_require_act=eff_require_act,
+            eff_require_sct=eff_require_sct,
             eff_authority=eff_authority,
         )
         # Do NOT inject _sct_trace_id into arguments — breaks Pydantic tool schemas.
@@ -777,7 +780,7 @@ def gate_tool_ingress(
             actor=actor,
             auth=auth,
             extraction=extraction,
-            eff_require_act=eff_require_act,
+            eff_require_sct=eff_require_sct,
             eff_authority=eff_authority,
         )
         # Do NOT inject _sct_trace_id into arguments (schema-safe).
@@ -798,7 +801,7 @@ def gate_tool_ingress(
         actor=actor,
         auth=auth,
         extraction=extraction,
-        eff_require_act=eff_require_act,
+        eff_require_sct=eff_require_sct,
         eff_authority=eff_authority,
     )
     if tid:
