@@ -1074,17 +1074,17 @@
   },
   "skills_runtime": {
     "curated": "2026-08-21",
-    "top_level_entries": 149,
+    "top_level_entries": 145,
     "was": "~340 scanned",
     "quarantine": "/root/.kimi-code/quarantine-20260821",
-    "note": "185 byte-identical mirror dupes of AAA canonical removed; 44 retired + 11 archives + 2 stubs quarantined; manifest kept; count = visible top-level (hidden dotdirs excluded, not skill-scanned)"
+    "note": "185 byte-identical mirror dupes of AAA canonical removed; 44 retired + 11 archives + 2 stubs quarantined; manifest kept; count = visible top-level (hidden dotdirs excluded, not skill-scanned); 4 taxonomy symlink trees (136 broken) removed \u2014 AAA intact = SOT"
   },
   "signatures": [
     {
       "did": "did:arif:aaa",
-      "proofValue": "xDKD9+3F3O+7v5y9OrIJvRJ2LYi2xfABFLjBejzzbOQ14kLC5M6jwt0iHHSmAJYbBKhfN+MYh/Pfi5HJTGkWBA==",
+      "proofValue": "QkBv1MAZsXe+DEarbb8iCzKLu9sXC2VjcTNHb2Ow/ev4Nw4xx66Y8bDef59I4tl0vqwOc3Y2ffPISnes7/htCw==",
       "proofPurpose": "assertionMethod",
-      "created": "2026-08-21T05:23:56Z",
+      "created": "2026-08-21T05:48:48Z",
       "type": "Ed25519Signature2020"
     }
   ]
