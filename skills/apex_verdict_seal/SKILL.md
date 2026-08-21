@@ -4,8 +4,6 @@ description: Verify the complete ART-to-kernel-to-ACT evidence path before a SEA
 agent: 888-APEX
 namespace: apex_*
 cluster: VERDICT
-capability_tier: fed-reasoning-heavy
-ecology_state: WARM
 ---
 
 # arifOS ACT — Constitutional Reflex

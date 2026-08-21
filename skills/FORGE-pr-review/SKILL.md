@@ -57,8 +57,6 @@ canonical_siblings:
 - github-ci-diagnose      # workflow failure analysis
 - github-issue-triage     # pre-PR context
 - github-issues           # OpenCode-scope: monitoring shell
-capability_tier: fed-reasoning-heavy
-ecology_state: WARM
 ---
 
 # GitHub PR Governance Review

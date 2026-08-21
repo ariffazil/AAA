@@ -202,7 +202,7 @@ Expected output (live as of 2026-08-08):
 
 | Port | Organ | Status | Protocol |
 |---|---|---|---|
-| 8088 | arifOS | healthy | 2025-11-25 |
+| 8088 | arifOS | healthy | 2026-07-28 (re-measured 2026-08-21 — kernel upgraded to stateless era) |
 | 7071 | A-FORGE | healthy | (stateless_tools: 48) |
 | 7072 | A-FORGE bridge | healthy | 2025-11-25 |
 | 8081 | GEOX | healthy | 2025-11-25 |
@@ -210,7 +210,7 @@ Expected output (live as of 2026-08-08):
 | 18083 | WELL | healthy | 2025-11-25 |
 | 3001 | AAA | healthy | 2025-11-25 |
 
-The federation is mostly on `2025-11-25`. The **stateless.mcpjam.com endpoint is the only 2026-07-28 server** in your stack today. Use it to verify the agent's MCP client supports the new format before you upgrade any organ.
+As of 2026-08-21 the arifOS kernel negotiates `2026-07-28` (stateless) while the other organs remain on `2025-11-25`. The **stateless.mcpjam.com endpoint** remains the reference server for verifying an MCP client's 2026-07-28 support before upgrading any other organ.
 
 ## Output Format
 

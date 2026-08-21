@@ -45,8 +45,6 @@ floor_scope:
 - F2
 - F3
 - F8
-capability_tier: fed-reasoning-heavy
-ecology_state: WARM
 ---
 
 # Docker Entropy Ops

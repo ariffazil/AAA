@@ -3,8 +3,6 @@ name: opencode-init
 description: OpenCode-native /init — substrate primitive for the OpenCode CLI runtime. Establishes session, lane, atlas expression, authority. Used when OpenCode is invoked via Telegram, A-FORGE delegate, or standalone CLI.
 tags: [constitutional, init, substrate-primitive, opencode, coding-agent]
 license: MIT
-capability_tier: fed-reasoning-heavy
-ecology_state: WARM
 ---
 # OpenCode /init — Substrate Primitive
 

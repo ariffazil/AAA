@@ -34,8 +34,6 @@ outputs:
 version_lock:
   schema_version: "1"
   artifact_hash: pending
-capability_tier: fed-reasoning-heavy
-ecology_state: WARM
 ---
 
 # SKILL: quantum-eureka-doctrine

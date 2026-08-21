@@ -7,8 +7,6 @@ owner: 333-AGI
 risk_tier: T1
 floor_scope: F2, F4, F7
 autonomy_tier: T1
-capability_tier: fed-multimodal-vision
-ecology_state: WARM
 ---
 
 # MiniMax Image Generation

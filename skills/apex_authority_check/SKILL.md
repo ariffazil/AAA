@@ -4,8 +4,6 @@ description: Detect conflicting or parallel source-of-truth claims across federa
 agent: 888-APEX
 namespace: apex_*
 cluster: IDENTITY
-capability_tier: fed-agent-subagent
-ecology_state: WARM
 ---
 
 # Parallel Authority Detection

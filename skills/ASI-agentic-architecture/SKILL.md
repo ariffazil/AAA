@@ -15,8 +15,6 @@ cognitive_hints:
   codex: "3-agent model: Architect→Engineer→Auditor. Each: define → implement → verify. Idempotent."
   hermes: "Design agent. 3-agent loop. 4 powers. Lower entropy. Build it."
 autonomy_tier: T1
-capability_tier: fed-reasoning-heavy
-ecology_state: WARM
 ---
 
 # ASI-agentic-architecture

@@ -4,8 +4,6 @@ description: Test whether a proposed change touching vault, seal, identity, cons
 agent: 888-APEX
 namespace: apex_*
 cluster: REVERSIBILITY
-capability_tier: fed-reasoning-heavy
-ecology_state: WARM
 ---
 
 # F1 AMANAH Gate
