@@ -12,7 +12,7 @@ capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---
 
-# GitHub & Git Operations (Probe-Based v1.1.0)
+# GitHub & Git Operations (Probe-Based v1.2.0 — workflow merged)
 
 ## Federation Repos — Discover from Organ Registry
 
@@ -109,3 +109,18 @@ gh auth status
 - GitHub org/repo names derived from `git remote get-url origin`
 - Build commands now use registry-derived source_paths
 - Added explicit rule: hardcoded paths are EXAMPLES, registry is truth
+
+## Lifecycle Doctrine (from FORGE-github-workflow — retired 2026-08-21, collision merge)
+
+### PR Lifecycle
+1. Create branch from main
+2. Changes + conventional commits
+3. Push branch, `gh pr create`
+4. CI green → review → merge → delete branch
+
+### Issue Lifecycle
+1. `gh issue create` → labels + milestone
+2. Triage (FORGE-issue-triage skill)
+3. Link PR on fix; close with evidence
+
+Cognitive hints: claude=XML workflow tags for multi-PR state; codex=strict gh API schema, auth→execute→verify→log; hermes=auth, do, verify, log.
