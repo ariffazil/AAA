@@ -6,9 +6,13 @@
 #   Previous version (1.0.0) had: openclaw skill_count=1 (reality 5), opencode skills_dir
 #   pointing at an archive-only dir, kimi skills_dir pointing at the docs home not the
 #   runtime tree, and cached FQ=1.41 BALANCED. All corrected here.
+# Refreshed: 2026-08-21 by kimi-code/FI-008 — kimi block corrected post zero-copy unification
+#   (commit dad36371): runtime tree is symlink-fed, agent:kimi sync target retired,
+#   dual-canon divergence quantified (see agents/kimi-code/skill-divergence-manifest-20260821.tsv),
+#   stale dead-lane skills quarantined (.kimi-code/quarantine-20260821-lane-mati/).
 # See: /root/forge_work/2026-08-04/AGENT-SKILL-FLOW.md
 
-version: "1.1.0"
+version: "1.2.0"
 doctrine: "Intelligence survives reality NOT by being right, but by knowing exactly how wrong it could be."
 
 # ─── Mesh topology (filesystem layer, measured 2026-08-20) ───
@@ -66,14 +70,14 @@ agents:
     primary_model: "kimi/kimi-k3"
     axis: [AGI]
     authority: {T1: AUTO_DO, T2: ANNOUNCE, T3: 888_HOLD}
-    skills_dir: /root/.kimi-code/skills/       # RUNTIME tree (physical copy, not symlinked)
-    skills_dir_note: "/root/AAA/agents/kimi-code/skills/ is the docs/contrast home (SKILL_INDEX.md, kimi-*-contrast) — not the runtime tree"
-    skill_count: 262                           # post-sync 2026-08-20 (201 physical + 61 symlink-resolved)
-    sync_status: SYNCED_2026-08-20             # snapshot skills-pre-sync-20260820.tgz; 50 missing + 28 lagged resolved
-    sync_tool: "bash /root/AAA/scripts/skill-sync.sh agent:kimi"  # RSI 2026-08-20: kimi target added to script
-    open_flags: "14 kimi-native orphans pending catalog reverse-propagation (T1.5); 4 skills where HERMES now lags AAA (audio/TTS/voice + geox-production-cockpit) — flagged, not fixed, first sighting"
+    skills_dir: /root/.kimi-code/skills/       # RUNTIME tree: 16 physical dirs + 94 symlinks (85 -> /root/HERMES/skills, 8 -> /root/AAA/skills, 1 -> archive) + 40 loose root files
+    skills_dir_note: "/root/AAA/agents/kimi-code/skills/ is the docs/contrast home (SKILL_INDEX.md, kimi-*-contrast) — not the runtime tree. Kimi ALSO mounts /root/AAA/skills via extra_skill_dirs (config.toml) — union surface exceeds this count"
+    skill_count: 110                           # live resolvable skill dirs in runtime tree (2026-08-21)
+    sync_status: ZERO_COPY_2026-08-21           # commit dad36371 retired the agent:kimi sync target (script exits 1 by F13 design); kimi reads stores directly — NO sync command for kimi exists
+    sync_tool: null                             # retired 2026-08-21 — do NOT re-add (F13 'all federated' zero-copy doctrine)
+    open_flags: "dual-canon divergence pending curation musyawarah: 124 diverged pairs AAA vs .hermes runtime (88 hermes-newer / 36 aaa-newer by mtime) + 4 aaa-missing — NO blind sync (2026-08-21); stale .arifos/agents/kimi/skills (203 SKILL.md) quarantined to .kimi-code/quarantine-20260821-lane-mati/"
     agent_card: /root/AAA/agents/kimi-code/agent-card.json
-    last_measured: 2026-08-20
+    last_measured: 2026-08-21
 
 # ─── Trinity lanes (333-AGI / 555-ASI / 888-APEX) ───
 # Lanes carry NO skill bindings in their agent-cards. De-facto truth (documented,

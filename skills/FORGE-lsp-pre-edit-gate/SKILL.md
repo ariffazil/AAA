@@ -17,8 +17,6 @@ scope: all_forge_agents
 priority: 95
 autonomy_tier: T1
 always_load: true
-capability_tier: fed-reasoning-heavy
-ecology_state: WARM
 ---
 
 # LSP PRE-EDIT GATE — Witness Observability for AGI Substrate

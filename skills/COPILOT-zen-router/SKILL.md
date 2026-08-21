@@ -26,8 +26,6 @@ autonomy: T1
 forged: 2026-07-28
 version: 1.0.0
 autonomy_tier: T1
-capability_tier: fed-long-context
-ecology_state: WARM
 ---
 
 # 🎯 COPILOT ZEN ROUTER — The Meta-Mesa

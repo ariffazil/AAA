@@ -4,8 +4,6 @@ description: Check whether a proposed action stays within its declared task, org
 agent: 888-APEX
 namespace: apex_*
 cluster: CONSTITUTION
-capability_tier: fed-reasoning-heavy
-ecology_state: WARM
 ---
 
 # arifos-governance (O_Ω Constitutional Layer)

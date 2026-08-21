@@ -44,8 +44,6 @@ floor_scope:
 - F9
 - F10
 - F11
-capability_tier: fed-long-context
-ecology_state: WARM
 ---
 
 # README Truth Check
