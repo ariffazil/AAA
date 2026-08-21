@@ -1,6 +1,6 @@
 {
   "name": "fi003-federation",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "displayName": "FI-003 Federation Runbook",
-  "description": "Portable AAA federation context + runbook commands for Qwen Code (FI-003): zai/GLM lanes, FED topology, model upgrade procedure, Seal B/C surfaces. Pure markdown — zero executable surface."
+  "description": "Portable AAA federation context + runbook commands + mesh skills (fi-mesh-check, fi-zai-probe, fi-qwen-upgrade) for Qwen Code (FI-003). Pure markdown — zero executable surface."
 }
