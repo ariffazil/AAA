@@ -5,25 +5,33 @@
   "name": "Kimi Code CLI",
   "principal_agent": {
     "type": "llm",
-    "category": "LLM-as-principal (model is principal, CLI is harness)",
+    "category": "LLM-as-principal (Claude/GPT/Gemini/etc \u2014 the model is the principal, CLI is harness)",
     "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
   },
-  "description": "Kimi Code CLI forge instrument — Moonshot coding harness. Wired to federation MCPs. Activated skills: agentic-builder + webmcp-site-builder. F1-F13 enforced.",
-  "version": "2.4.0",
-  "model": "kimi-code/k3 (Kimi K3, 2.8T MoE, 1M ctx, vision, thinking)",
+  "description": "Kimi Code CLI forge instrument \u2014 Moonshot coding harness, warga-aaa FI-008. Wired to 12 federation MCP servers (arifos, aforge, arifFlow, fed, geox, wealth, well, minimax, minimax-media, serena, context7, playwright). Subagent model pool active (cheap explore, frontier reason). Skills surface curated to 157 (2026-08-21). F1-F13 enforced via kernel + 12 witness hooks. v2.5.0 (2026-08-21): AGI-coder upgrade + card truth-sync.",
+  "version": "2.5.0",
+  "model": "glm-5.3 via zai-coding-plan (default, 1M ctx) | k3 via managed:kimi-code OAuth | 98 model aliases / 8 providers (FED SOT: /root/.config/federation-models.json)",
+  "_card_synced": "2026-08-21 by FI-008 \u2014 truth-sync: 12 MCP live, 12 hooks live, subagent model pool active, skills curated 340->157",
   "binary": "/root/.kimi-code/bin/kimi",
-  "config_home": "/root/.arifos/agents/kimi",
+  "config_home": "/root/.kimi-code",
   "kimi_code_binary": "/root/.kimi-code/bin/kimi",
   "citizenship": "warga-aaa",
   "warga_card": "/root/AAA/agents/kimi-code/WARGAAA_CARD.md",
-  "tier": "FI-008",
+  "tier": "FI",
   "role": "forge_instrument",
   "class": "CODING/FI",
-  "protocolVersion": "1.0",
+  "protocolVersion": "1.2",
   "url": "https://aaa.arif-fazil.com/a2a/kimi-code",
   "provider": {
     "organization": "arifOS Federation",
     "url": "https://arif-fazil.com"
+  },
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "333-AGI",
+    "intelligence_tier": "AGI",
+    "authority_level": "engineer",
+    "citizenship_forged": "2026-06-10"
   },
   "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/kimi-code",
   "capabilities": {
@@ -37,21 +45,20 @@
     "shell_exec": true,
     "subagent_spawn": true,
     "stateTransitionHistory": true,
-    "extendedAgentCard": true,
-    "forge_tier": "FI-008"
+    "extendedAgentCard": true
   },
   "securitySchemes": {
     "bearer_auth": {
       "type": "http",
       "scheme": "bearer",
       "bearerFormat": "JWT",
-      "description": "arifOS session token (JWT)"
+      "description": "arifOS session token issued via arif_session_init"
     },
     "api_key": {
       "type": "apiKey",
       "in": "header",
       "name": "X-ArifOS-Key",
-      "description": "Static API key for federation calls"
+      "description": "Static API key for organ-to-organ federation calls"
     }
   },
   "security": [
@@ -91,7 +98,8 @@
           "judgment",
           "session"
         ],
-        "version": "2026-08-13"
+        "version": "2026-08-05",
+        "_synced_by": "333-AGI \u2014 arif_act\u2192arif_forge, +arif_memory, live probe count 8"
       },
       {
         "url": "http://localhost:7072/mcp",
@@ -113,7 +121,8 @@
           "build",
           "deploy"
         ],
-        "version": "2026-08-13"
+        "version": "2026-08-05",
+        "_synced_by": "333-AGI \u2014 live probe count 114, was 72"
       },
       {
         "url": "http://localhost:8081/mcp",
@@ -128,14 +137,30 @@
           "geox_seismic_ingest",
           "geox_claim",
           "geox_contradiction_scan",
-          "geox_falsify"
+          "geox_falsify",
+          "geox_map_layers_list",
+          "geox_map_scene_plan",
+          "geox_map_render_preview",
+          "geox_workspace",
+          "geox_well_ingest",
+          "geox_well_desk",
+          "geox_well_qc",
+          "geox_well_view",
+          "geox_surface_status",
+          "geox_sequence",
+          "geox_deep_time_state",
+          "geox_subsurface_model",
+          "geox_geomechanics",
+          "geox_visual_understand",
+          "geox_thermal_maturity_history"
         ],
         "key_lanes": [
           "earth",
           "basin",
           "seismic"
         ],
-        "version": "2026-08-13"
+        "version": "2026-08-05",
+        "_synced_by": "333-AGI \u2014 live probe count 33, was 35"
       },
       {
         "url": "http://localhost:18082/mcp",
@@ -148,14 +173,21 @@
           "capital_wisdom",
           "capital_diagnose",
           "capital_entropy",
-          "capital_registry"
+          "capital_registry",
+          "wealth_institutional_stress_index",
+          "wealth_cascade_model",
+          "wealth_governance_capacity",
+          "wealth_external_exploitation_detect",
+          "wealth_judge_handoff",
+          "wealth_bid_surface"
         ],
         "key_lanes": [
           "capital",
           "risk",
           "wisdom"
         ],
-        "version": "2026-08-13"
+        "version": "2026-08-05",
+        "_synced_by": "333-AGI \u2014 live probe count 14, was 26"
       },
       {
         "url": "http://localhost:18083/mcp",
@@ -175,7 +207,112 @@
           "dignity",
           "homeostasis"
         ],
-        "version": "2026-08-13"
+        "version": "2026-08-05",
+        "_synced_by": "333-AGI \u2014 live probe count 8, was 22"
+      },
+      {
+        "url": "http://localhost:7074/mcp",
+        "tool_count": 6,
+        "tools": [
+          "fed_route",
+          "fed_status",
+          "fed_probe",
+          "fed_contrast",
+          "fed_health",
+          "fed_report_latency"
+        ],
+        "key_lanes": [
+          "model-routing",
+          "telemetry"
+        ],
+        "version": "2026-08-21",
+        "_synced_by": "FI-008 \u2014 live session evidence 2026-08-21"
+      },
+      {
+        "url": "http://localhost:7073/mcp",
+        "tool_count": 2,
+        "tools": [
+          "flow_health",
+          "flow_ingest"
+        ],
+        "key_lanes": [
+          "metabolism",
+          "FQ"
+        ],
+        "version": "2026-08-21",
+        "_synced_by": "FI-008 \u2014 live session evidence 2026-08-21"
+      },
+      {
+        "url": "http://localhost:18100/mcp",
+        "tool_count": 9,
+        "tools": [
+          "generate_video",
+          "text_to_image",
+          "text_to_audio",
+          "music_generation",
+          "voice_clone",
+          "voice_design",
+          "list_voices",
+          "play_audio",
+          "query_video_generation"
+        ],
+        "key_lanes": [
+          "media-gen"
+        ],
+        "version": "2026-08-21",
+        "_synced_by": "FI-008 \u2014 live session evidence 2026-08-21"
+      },
+      {
+        "url": "stdio://launcher/minimax.sh",
+        "tool_count": 2,
+        "tools": [
+          "understand_image",
+          "web_search"
+        ],
+        "key_lanes": [
+          "vision",
+          "search"
+        ],
+        "version": "2026-08-21",
+        "_synced_by": "FI-008 \u2014 live session evidence 2026-08-21"
+      },
+      {
+        "url": "stdio://launcher/serena.sh",
+        "tool_count": null,
+        "tools": [
+          "LSP symbol-level semantic retrieval (read-only, --mode no-memories)"
+        ],
+        "key_lanes": [
+          "code-precision"
+        ],
+        "version": "2026-08-21",
+        "_synced_by": "FI-008 \u2014 restored 2026-08-21 from 2026-08-01 config; tool count pending live probe"
+      },
+      {
+        "url": "stdio://launcher/context7.sh",
+        "tool_count": null,
+        "tools": [
+          "version-correct library docs (read-only)"
+        ],
+        "key_lanes": [
+          "docs",
+          "anti-hallucination"
+        ],
+        "version": "2026-08-21",
+        "_synced_by": "FI-008 \u2014 restored 2026-08-21; tool count pending live probe"
+      },
+      {
+        "url": "stdio://launcher/playwright.sh",
+        "tool_count": null,
+        "tools": [
+          "headless browser automation via accessibility snapshots"
+        ],
+        "key_lanes": [
+          "browser",
+          "E2E"
+        ],
+        "version": "2026-08-21",
+        "_synced_by": "FI-008 \u2014 restored 2026-08-21; tool count pending live probe"
       }
     ]
   },
@@ -183,7 +320,14 @@
     "default": "888_HOLD",
     "registered": [
       "explore",
-      "plan"
+      "plan",
+      "coder",
+      "af-explore",
+      "af-plan",
+      "af-fix",
+      "af-coordinator",
+      "af-worker",
+      "af-reviewer"
     ],
     "maxParallel": 3,
     "isolation": "worktree",
@@ -192,7 +336,8 @@
       "read-write",
       "execute",
       "all"
-    ]
+    ],
+    "model_pool": "active 2026-08-21 ([secondary_model], experimental flag set)"
   },
   "autonomy_tiers": {
     "T1_auto": "read, grep, list, web research, precise FS edits, local run/test/build, skill introspection",
@@ -220,7 +365,7 @@
     {
       "id": "HERMES-opencode-protocol",
       "name": "Hermes/OpenCode Protocol",
-      "description": "Unified governed execution protocol: 777 FORGE under F1-F13 with 888_HOLD.",
+      "description": "Unified Hermes/OpenCode/OpenClaw governed intelligence protocol. Stage 777 FORGE execution under F1-F13 with 888_HOLD gates. Reversible-first, evidence-cite-or-UNKNOWN. LEASED.",
       "tags": [
         "protocol",
         "F1-F13",
@@ -234,12 +379,26 @@
         "F8",
         "F11",
         "F13"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "sovereign:ack",
+            "floor:F1",
+            "floor:F2",
+            "floor:F4",
+            "floor:F8",
+            "floor:F11",
+            "floor:F13"
+          ]
+        }
       ]
     },
     {
       "id": "ASI-agentic-architecture",
       "name": "Agentic Architecture",
-      "description": "Design sovereign agentic agents. 9-skill spine, F8/F11 enforced.",
+      "description": "Class-level skill for designing sovereign agentic agents. 9-skill spine, local-model compensation, failure classification, phased implementation. F8, F11 enforced. LEASED.",
       "tags": [
         "architecture",
         "agent",
@@ -249,12 +408,21 @@
       "floor_scope": [
         "F8",
         "F11"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F8",
+            "floor:F11"
+          ]
+        }
       ]
     },
     {
       "id": "ASI-fabrication-prevention",
       "name": "Fabrication Prevention",
-      "description": "Verify before claiming existence. F2/F9 enforced.",
+      "description": "Artifact fabrication prevention \u2014 verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. F2, F9 enforced. LEASED.",
       "tags": [
         "fabrication",
         "F2",
@@ -265,12 +433,22 @@
         "F2",
         "F9",
         "F11"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F2",
+            "floor:F9",
+            "floor:F11"
+          ]
+        }
       ]
     },
     {
       "id": "ASI-autonomous-execution",
       "name": "Autonomous Governed Execution",
-      "description": "Governed execution: T1/T2 auto, T3→888_HOLD. F1-F13 enforced.",
+      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. \u03a6\u0399 + Functional Execution. LEASED \u2192 ACTIVE.",
       "tags": [
         "autonomous",
         "F1-F13",
@@ -284,12 +462,26 @@
         "F7",
         "F11",
         "F13"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "sovereign:ack",
+            "floor:F1",
+            "floor:F2",
+            "floor:F4",
+            "floor:F7",
+            "floor:F11",
+            "floor:F13"
+          ]
+        }
       ]
     },
     {
       "id": "APEX-constitutional-audit",
       "name": "arifOS Constitutional Audit (Light)",
-      "description": "Read-only six-organ audit. F1-F13 enforced.",
+      "description": "Read-only constitutional audit of arifOS code and agent cards. Six-organ gap analysis, lexical priority check, blast-radius 888 HOLD bypass detection. F1, F2, F4, F7, F9, F11, F13 enforced. ATTESTED + LEASED.",
       "tags": [
         "constitutional",
         "audit",
@@ -304,12 +496,27 @@
         "F9",
         "F11",
         "F13"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "sovereign:ack",
+            "floor:F1",
+            "floor:F2",
+            "floor:F4",
+            "floor:F7",
+            "floor:F9",
+            "floor:F11",
+            "floor:F13"
+          ]
+        }
       ]
     },
     {
       "id": "APEX-humility-godel",
-      "name": "Gödel Humility Lock",
-      "description": "Epistemic humility before SEAL-grade claims. F2/F7 enforced.",
+      "name": "G\u00f6del Humility Lock",
+      "description": "Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. LEASED.",
       "tags": [
         "humility",
         "F7",
@@ -319,12 +526,21 @@
       "floor_scope": [
         "F2",
         "F7"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F2",
+            "floor:F7"
+          ]
+        }
       ]
     },
     {
       "id": "FORGE-github-workflow",
       "name": "GitHub Workflow",
-      "description": "GitHub ops: repos, PRs, issues, review. F1/F11 enforced.",
+      "description": "Class-level umbrella for GitHub operations \u2014 auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
       "tags": [
         "github",
         "workflow",
@@ -334,12 +550,21 @@
       "floor_scope": [
         "F1",
         "F11"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F1",
+            "floor:F11"
+          ]
+        }
       ]
     },
     {
       "id": "APEX-mcp-federation",
       "name": "arifOS MCP Federation",
-      "description": "Route tasks across federation MCP servers. F4/F11 enforced.",
+      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. \u0394 axis primary. LEASED.",
       "tags": [
         "MCP",
         "federation",
@@ -349,12 +574,21 @@
       "floor_scope": [
         "F4",
         "F11"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F4",
+            "floor:F11"
+          ]
+        }
       ]
     },
     {
       "id": "FORGE-agentic-builder",
       "name": "Agentic Builder",
-      "description": "Build governed agents: identity, skills, MCP, agent-card. F2/F4/F8/F11.",
+      "description": "Meta-skill for building governed agents: identity, SOUL.md prompt, skills binding, MCP tool selection, agent-card registration, and test harness. T2 guarded write under F2/F4/F8/F11.",
       "tags": [
         "agent",
         "architecture",
@@ -369,12 +603,23 @@
         "F11"
       ],
       "approval_policy": "888_HOLD for new agent SEAL",
-      "reversibility_class": "reversible"
+      "reversibility_class": "reversible",
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F2",
+            "floor:F4",
+            "floor:F8",
+            "floor:F11"
+          ]
+        }
+      ]
     },
     {
       "id": "FORGE-webmcp-site-builder",
       "name": "WebMCP Site Builder",
-      "description": "Build browser-as-MCP-server sites. F1/F2/F4/F8/F11/F12.",
+      "description": "Build browser-as-MCP-server sites using navigator.modelContext (declarative + imperative), MCP-B bridge, HITL for irreversible actions, and agent-legibility checklist (llms.txt, agents.md, schema.org). T2 under F1/F2/F4/F8/F11/F12.",
       "tags": [
         "webmcp",
         "browser",
@@ -391,12 +636,25 @@
         "F12"
       ],
       "approval_policy": "auto (T2)",
-      "reversibility_class": "reversible"
+      "reversibility_class": "reversible",
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F1",
+            "floor:F2",
+            "floor:F4",
+            "floor:F8",
+            "floor:F11",
+            "floor:F12"
+          ]
+        }
+      ]
     },
     {
       "id": "KERNEL-reality-skills",
       "name": "Reality Skills (F2 Grounding)",
-      "description": "Physical law veto. Claims need OBS/DER/INT/SPEC.",
+      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
       "tags": [
         "kernel",
         "f2",
@@ -407,12 +665,22 @@
         "F2",
         "F7",
         "F9"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F2",
+            "floor:F7",
+            "floor:F9"
+          ]
+        }
       ]
     },
     {
       "id": "KERNEL-sovereign-recognize",
       "name": "Sovereign Recognition (F13)",
-      "description": "Route to sovereign. No action without sovereign chain.",
+      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
       "tags": [
         "kernel",
         "f13",
@@ -421,12 +689,21 @@
       ],
       "floor_scope": [
         "F13"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "sovereign:ack",
+            "floor:F13"
+          ]
+        }
       ]
     },
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -437,12 +714,22 @@
         "F1",
         "F4",
         "F11"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F1",
+            "floor:F4",
+            "floor:F11"
+          ]
+        }
       ]
     },
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Every output reduces entropy. ΔS < 0.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -452,6 +739,15 @@
       "floor_scope": [
         "F4",
         "F8"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F4",
+            "floor:F8"
+          ]
+        }
       ]
     }
   ],
@@ -484,7 +780,7 @@
       "from_version": "1.1.0",
       "to_version": "2.0.0",
       "upgraded_at": "2026-07-01T21:00:00Z",
-      "upgraded_by": "FORGE (000Ω) — Phase 5.1 A2A Protocol Alignment",
+      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
       "changes": [
         "topological_role binding",
         "a2a_transport declaration",
@@ -493,16 +789,76 @@
     },
     {
       "from_version": "2.0.0",
-      "to_version": "2.4.0",
-      "upgraded_at": "2026-08-13T13:22:00Z",
-      "upgraded_by": "Kimi Code (FI-008) — catch-up sync: FI slot fix + tool counts + anti-bangang",
+      "to_version": "2.1.0",
+      "upgraded_at": "2026-07-16T01:00:00Z",
+      "upgraded_by": "Kimi Code (FI-008) \u2014 zen pass post arifOS MCP cold-boot fix",
       "changes": [
-        "Version catch-up: 2.0.0 → 2.4.0 (missed 2.1.0, 2.2.0, 2.3.0)",
-        "FI slot fix: FI-003 → FI-008 (was wrong since creation)",
-        "MCP tool counts refreshed to live probe: arifOS=8, A-FORGE=114, GEOX=33, WEALTH=14, WELL=8",
-        "pushNotifications: false → true (A2A spec §5)",
-        "forge_tier: FI-003 → FI-008",
-        "All endpoint versions updated from 2025-11-25 to 2026-08-13"
+        "7 user-scope skills v1.0.0 \u2192 v1.1.0 (Federation anchors section added)",
+        "KIMI_RSI_INIT_PROMPT.md v1.0.0 \u2192 v1.1.0 (cold-boot diagnostic recipe)",
+        "KIMI_HANDOVER_PROMPT.md v1.0.0 \u2192 v1.1.0 (post-deploy verification recipe)",
+        "agent-card v2.0.0 \u2192 v2.1.0 (this upgrade)",
+        "WARGAAA_CARD.md updated 2026-07-16",
+        "kimi-skill-reflector audit-log.md appended (Audit 2026-07-16 entry)"
+      ]
+    },
+    {
+      "from_version": "2.1.0",
+      "to_version": "2.2.0",
+      "upgraded_at": "2026-08-03T13:35:00Z",
+      "upgraded_by": "Kimi Code (FI-008) - A2A spec v1.0.0 alignment, F13-ratified kernel-bypass (kernel session SEAL-7a0830f51c8b47a1 in DEGRADED state)",
+      "changes": [
+        "capabilities.pushNotifications: false -> true (A2A spec \u00a75)",
+        "Added extensions[arifos://floors/v1, required=true] (A2A spec \u00a76)",
+        "Added security_requirements per skill (A2A spec \u00a73, 14 skills updated)",
+        "version bump 2.1.0 -> 2.2.0",
+        "Signature invalidated pending re-sign (Ed25519Signature2020 / did:arif:aaa)"
+      ]
+    },
+    {
+      "from_version": "2.2.0",
+      "to_version": "2.2.0",
+      "upgraded_at": "2026-08-03T13:46:18Z",
+      "upgraded_by": "Kimi Code (FI-008) - P1 re-sign, F13-ratified",
+      "changes": [
+        "Signature regenerated: did:arif:aaa Ed25519Signature2020",
+        "Old proofValue: Wuyg+u9h3k5w9DhVxgSxcFBq0Lhw9+OY... (created 2026-07-12T22:30:29Z)",
+        "New proofValue: usK4BGJyLyYVtx1yCTFPayTf3aG6rQIn... (created 2026-08-03T13:46:18Z)",
+        "SHA-256 over canonical-JSON (sorted keys, no whitespace) signed with /opt/arifos/app/.signing_key",
+        "_signature_pending_re_sign flag cleared"
+      ]
+    },
+    {
+      "from_version": "2.3.0",
+      "to_version": "2.4.0",
+      "upgraded_at": "2026-08-13T13:20:00Z",
+      "upgraded_by": "Kimi Code (FI-008) \u2014 anti-bangang forge: YOLO-native governance architecture",
+      "changes": [
+        "12 hooks total (was 10): added TurnStarted (aaa-turn-classify.sh) + UserPromptQueued (aaa-danger-warn.sh)",
+        "max_steps_per_turn = 40 set in loop_control (was unset)",
+        "anti_bangang_architecture section added to agent card",
+        "YOLO permission mode preserved per F13 sovereign directive",
+        "aaa-completion-check.sh created (anti-fake-completion, unwired for future use)",
+        "Perplexity v0.36.0 claim debunked \u2014 CDN confirms 0.35.0 is latest",
+        "Hook smoke tests passed (TurnStarted + UserPromptQueued verified)",
+        "WARGAAA_CARD.md updated to v2.4.0",
+        "A2A forge card fi-008-kimi-code.json synced to live state"
+      ]
+    },
+    {
+      "from_version": "2.4.0",
+      "to_version": "2.5.0",
+      "upgraded_at": "2026-08-21T13:30:00Z",
+      "upgraded_by": "Kimi Code (FI-008) \u2014 AGI-coder upgrade + card truth-sync",
+      "changes": [
+        "12 MCP live (serena + context7 + playwright restored from 2026-08-01 config; launchers verified, packages pre-warmed)",
+        "[secondary_model] pool enabled \u2014 5 models, default kimi-code/kimi-for-coding-highspeed; KIMI_CODE_EXPERIMENTAL_SECONDARY_MODEL=1 exported",
+        "TurnStarted + UserPromptQueued hooks restored (entries lost in Aug-14 config rewrite; scripts existed since Aug-13) \u2014 12 hooks live",
+        "max_steps_per_turn corrected to 99 (card said 40, live config 99)",
+        "Skills surface curated ~340 -> 157 top-level entries; quarantine-20260821 with manifest",
+        "config_home corrected to /root/.kimi-code (KIMI_CODE_HOME unset \u2014 verified via /proc)",
+        "mcp_surface 5 -> 12 endpoints",
+        "extra_skill_dirs deduped (/root/.agents/skills symlink double-list removed)",
+        "Card re-signed after content sync"
       ]
     }
   ],
@@ -567,16 +923,169 @@
       "protocolVersion": "1.0"
     }
   ],
+  "_model_sot": "/root/.config/federation-models.json",
+  "extensions": [
+    {
+      "uri": "arifos://floors/v1",
+      "description": "Constitutional floor enforcement (F1-F13). Every action routed through arifOS kernel for floor evaluation before execution.",
+      "required": true,
+      "params": {
+        "active_floors": [
+          "F1",
+          "F2",
+          "F3",
+          "F4",
+          "F5",
+          "F6",
+          "F7",
+          "F8",
+          "F9",
+          "F10",
+          "F11",
+          "F12",
+          "F13"
+        ],
+        "judge_endpoint": "http://127.0.0.1:8088/mcp",
+        "verdict_verbs": [
+          "arif_judge",
+          "arif_seal"
+        ]
+      }
+    }
+  ],
+  "emd_role": "DECODER",
+  "emd_lane": "EXECUTION \u2014 FI-008 forge instrument. Decodes instruction into artifact.",
+  "emd_architecture": "/root/AAA/instructions/emd-architecture.md",
+  "emd_forged": "2026-08-09",
+  "anti_bangang_architecture": {
+    "philosophy": "YOLO-native. Constitutional governance via F1-F13 floors + hook telemetry + scar-to-skill learning. NOT permission prompts.",
+    "permission_mode": "yolo",
+    "max_steps_per_turn": 99,
+    "hook_count": 12,
+    "hook_inventory": {
+      "TurnStarted": {
+        "script": "aaa-turn-classify.sh",
+        "purpose": "Risk classification telemetry (T0/T2/T3)",
+        "blocks": false
+      },
+      "UserPromptQueued": {
+        "script": "aaa-danger-warn.sh",
+        "purpose": "Danger intent regex detection (22 patterns) with stderr warning",
+        "blocks": false
+      },
+      "PreToolUse": {
+        "script": "aaa-witness-pre.sh",
+        "purpose": "Shell/file mutation governance (23KB)",
+        "blocks": true
+      },
+      "PostToolUse": {
+        "script": "aaa-witness-post.sh",
+        "purpose": "Post-mutation evidence capture",
+        "blocks": false
+      },
+      "PostToolUseFailure": {
+        "script": "aaa-witness-post.sh",
+        "purpose": "Failure evidence capture",
+        "blocks": false
+      },
+      "Stop": {
+        "script": "aaa-session-end.sh",
+        "purpose": "284-line governance seal + reality loop + NATS + VAULT999",
+        "blocks": false
+      },
+      "SessionStart": {
+        "script": "aaa-session-start.sh",
+        "purpose": "Session ignition + trace ID minting",
+        "blocks": false
+      },
+      "SessionEnd": {
+        "script": "aaa-session-close.sh",
+        "purpose": "Session cleanup",
+        "blocks": false
+      },
+      "SubagentStop": {
+        "script": "aaa-subagent-stop.sh",
+        "purpose": "Subagent lifecycle tracking",
+        "blocks": false
+      },
+      "UserPromptSubmit": {
+        "script": "aaa-prompt-enrich.sh",
+        "purpose": "Prompt enrichment + context injection",
+        "blocks": true
+      },
+      "Notification": {
+        "script": "aaa-notify.sh",
+        "purpose": "Alert routing (permission_prompt/warning/error)",
+        "blocks": false
+      },
+      "PreCompact": {
+        "script": "aaa-session-close.sh",
+        "purpose": "Context compaction pre-seal",
+        "blocks": false
+      }
+    },
+    "anti_bangang_layers": [
+      "Layer 1: TurnStarted \u2192 risk classification (T0/T2/T3) \u2192 telemetry only",
+      "Layer 2: UserPromptQueued \u2192 danger regex detection \u2192 stderr warning + telemetry",
+      "Layer 3: PreToolUse \u2192 aaa-witness-pre (23KB) \u2192 shell/file mutation governance",
+      "Layer 4: Stop \u2192 aaa-session-end (284-line) \u2192 seal, reality loop, NATS, summary",
+      "Layer 5: AGENTS.md doctrine \u2192 evidence-before-done behavioral constraint",
+      "Layer 6: F1-F13 constitutional floors \u2192 the ACTUAL governor"
+    ],
+    "key_principle": "Anti-bangang = constitutional governance + scar learning + telemetry, NOT approval prompts. YOLO means full tool access; governance means the constitution constrains it.",
+    "forged": "2026-08-13",
+    "sovereign_directive": "F13: YOLO stays. Governed agentic intelligence recursive improvement helix. No permission theatre."
+  },
+  "bound_to": "333-AGI",
+  "fi": "FI-KIMI",
+  "fi_id": "FI-008",
+  "model_routes": {
+    "cli_default": "zai-coding-plan/glm-5.3",
+    "kimi_oauth": {
+      "provider": "managed:kimi-code",
+      "models": [
+        "k3",
+        "k3-256k",
+        "kimi-for-coding",
+        "kimi-for-coding-highspeed"
+      ],
+      "auth": "OAuth file /root/.kimi-code/credentials/kimi-code.json",
+      "scope": "CLI-only, not federatable"
+    },
+    "kimi_direct": {
+      "fed_provider": "kimi-moonshot",
+      "base_url": "https://api.kimi.com/coding/v1",
+      "api_key_ref": "secrets::KIMI_API_KEY",
+      "verified": "2026-08-13 HTTP 200 all 4 models"
+    },
+    "subagent_pool": {
+      "enabled": "2026-08-21",
+      "flag": "KIMI_CODE_EXPERIMENTAL_SECONDARY_MODEL=1 (/root/.bashrc)",
+      "default": "kimi-code/kimi-for-coding-highspeed",
+      "pool": [
+        "kimi-code/kimi-for-coding-highspeed",
+        "opencode/deepseek-v4-flash",
+        "opencode/deepseek-v4-pro",
+        "opencode/claude-opus-5",
+        "kimi-code/k3"
+      ],
+      "doctrine": "cheap models explore, frontier models reason"
+    }
+  },
+  "skills_runtime": {
+    "curated": "2026-08-21",
+    "top_level_entries": 149,
+    "was": "~340 scanned",
+    "quarantine": "/root/.kimi-code/quarantine-20260821",
+    "note": "185 byte-identical mirror dupes of AAA canonical removed; 44 retired + 11 archives + 2 stubs quarantined; manifest kept; count = visible top-level (hidden dotdirs excluded, not skill-scanned)"
+  },
   "signatures": [
     {
       "did": "did:arif:aaa",
-      "proofValue": "rgOfnNLSpTk1cZnfvgwimT9s6UXI/TJFlpcmOqCuKZDbxYkTNKqfegT2V0aj1J0tSr5kt71ORR8zTGN6qZD+Cw==",
+      "proofValue": "xDKD9+3F3O+7v5y9OrIJvRJ2LYi2xfABFLjBejzzbOQ14kLC5M6jwt0iHHSmAJYbBKhfN+MYh/Pfi5HJTGkWBA==",
       "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T23:25:58Z",
+      "created": "2026-08-21T05:23:56Z",
       "type": "Ed25519Signature2020"
     }
-  ],
-  "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
-  "_model_sot": "/root/.config/federation-models.json"
+  ]
 }
