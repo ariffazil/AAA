@@ -319,8 +319,8 @@
       ]
     },
     {
-      "id": "FORGE-github-workflow",
-      "name": "GitHub Workflow",
+      "id": "FORGE-github-ops",
+      "name": "GitHub Ops (merged v1.2.0)",
       "description": "GitHub ops: repos, PRs, issues, review. F1/F11 enforced.",
       "tags": [
         "github",

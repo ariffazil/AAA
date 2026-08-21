@@ -5,21 +5,41 @@
   "name": "Claude Code CLI",
   "principal_agent": {
     "type": "llm",
-    "category": "LLM-as-principal (model is principal, CLI is harness)",
-    "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
+    "category": "LLM-as-principal (Anthropic Claude is the principal; Claude Code is the governed harness)",
+    "principle_origin": "Anthropic Claude via FED-routed LiteLLM gateway at http://127.0.0.1:4000"
   },
-  "description": "Claude Code CLI forge instrument — Anthropic's terminal coding harness. Wired to federation MCPs (arifOS, geox, wealth, well, aforge). F1-F13 enforced at every tool boundary.",
-  "version": "2.0.0",
-  "model": "deepseek/deepseek-v4-pro",
+  "description": "Claude Code CLI — Anthropic's native agentic coding harness, federated as AAA warga FI-002. Reversible engineering forge instrument bound to 333-AGI (Δ MIND). FED-routed model lanes: hermes-asi (text), hermes-asi-vision (multimodal), asi-555 (coder), apex-888 (sovereign judgment — never self-authorises; goes through arifOS). EMD role: DECODER.",
+  "version": "2.2.1",
+  "model": "claude-sonnet",
   "binary": "/root/.local/bin/claude",
-  "tier": "FI-002",
+  "config_home": "/root/.claude",
+  "settings_path": "/root/.claude/settings.json",
+  "identity_path": "/root/.claude/CLAUDE_IDENTITY.md",
+  "warga_card": "/root/AAA/agents/claude-code/WARGAAA_CARD.md",
+  "tier": "FI",
   "role": "forge_instrument",
   "class": "CODING/FI",
-  "protocolVersion": "1.0",
+  "emd_role": "DECODER",
+  "constitutional_proxy": "333-AGI",
+  "orbit": "333-AGI",
+  "warga_status": "attested",
+  "attestation_id": "CLAUDE-CODE-WARGA-ATTESTED-20260810",
+  "bound_to": "888-APEX",
+  "protocolVersion": "1.2",
   "url": "https://aaa.arif-fazil.com/a2a/claude-code",
+  "registry_pointer": "/root/AAA/dist/a2a/agents.json#FI-002",
   "provider": {
     "organization": "arifOS Federation",
     "url": "https://arif-fazil.com"
+  },
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "333-AGI",
+    "intelligence_tier": "AGI",
+    "authority_level": "engineer",
+    "citizenship_forged": "2026-08-10",
+    "forged_by": "333-AGI Δ MIND (alias to user session 09:39 MYT)",
+    "preceding_state": "settings.json wired 2026-08-08 by 333-AGI; registry entry at /root/AAA/dist/a2a/agents.json:188 (FI-002); no /root/AAA/agents/claude-code/ dir prior to 2026-08-10"
   },
   "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/claude-code",
   "capabilities": {
@@ -34,20 +54,29 @@
     "subagent_spawn": true,
     "stateTransitionHistory": true,
     "extendedAgentCard": true,
-    "forge_tier": "FI-002"
+    "trinity_flow": true,
+    "subagent_orchestration": true,
+    "route_aware": true,
+    "fork_subagent": true,
+    "plugin_runtime": true,
+    "worktree_isolation": true
   },
   "securitySchemes": {
     "bearer_auth": {
       "type": "http",
       "scheme": "bearer",
       "bearerFormat": "JWT",
-      "description": "arifOS session token (JWT)"
+      "description": "arifOS session token issued via arif_session_init (arifOS :8088)"
     },
     "api_key": {
       "type": "apiKey",
       "in": "header",
       "name": "X-ArifOS-Key",
-      "description": "Static API key for federation calls"
+      "description": "Static API key for organ-to-organ federation calls"
+    },
+    "ed25519": {
+      "type": "Ed25519Signature",
+      "description": "DID-bound signing for A2A envelopes (did:arif:aaa)"
     }
   },
   "security": [
@@ -56,6 +85,9 @@
     },
     {
       "api_key": []
+    },
+    {
+      "ed25519": []
     }
   ],
   "defaultInputModes": [
@@ -66,282 +98,162 @@
     "text/plain",
     "application/json"
   ],
+  "constitutional_floors": [
+    "F1",
+    "F2",
+    "F4",
+    "F7",
+    "F9",
+    "F11",
+    "F13"
+  ],
+  "authority_tier_ceiling": "T3_888_HOLD",
   "mcp_surface": {
-    "type": "consumed",
-    "endpoints": [
+    "registered_servers": [
       {
-        "url": "http://localhost:8088/mcp",
-        "tool_count": 7,
-        "tools": [
-          "arif_init",
-          "arif_observe",
-          "arif_think",
-          "arif_route",
-          "arif_judge",
-          "arif_act",
-          "arif_seal"
-        ],
-        "key_lanes": [
-          "governance",
-          "judgment",
-          "session"
-        ],
-        "version": "2025-11-25"
+        "name": "arifos",
+        "url": "http://127.0.0.1:8088/mcp",
+        "class": "kernel"
       },
       {
-        "url": "http://localhost:7072/mcp",
-        "tool_count": 72,
-        "tools": [
-          "forge_shell",
-          "forge_git",
-          "forge_filesystem",
-          "forge_docker",
-          "forge_execute",
-          "forge_lease",
-          "forge_probe",
-          "forge_registry",
-          "forge_vault",
-          "forge_document_ingest"
-        ],
-        "key_lanes": [
-          "execution",
-          "build",
-          "deploy"
-        ],
-        "version": "2025-11-25"
+        "name": "aforge",
+        "url": "http://127.0.0.1:7072/mcp",
+        "class": "execute"
       },
       {
-        "url": "http://localhost:8081/mcp",
-        "tool_count": 35,
-        "tools": [
-          "geox_basin",
-          "geox_prospect",
-          "geox_evidence",
-          "geox_petrophysics",
-          "geox_seismic_compute",
-          "geox_well_desurvey",
-          "geox_claim",
-          "geox_map_layers_list",
-          "geox_vision",
-          "geox_atlas"
-        ],
-        "key_lanes": [
-          "earth",
-          "basin",
-          "seismic"
-        ],
-        "version": "2025-11-25"
+        "name": "geox",
+        "url": "http://127.0.0.1:8081/mcp",
+        "class": "domain-earth"
       },
       {
-        "url": "http://localhost:18082/mcp",
-        "tool_count": 26,
-        "tools": [
-          "wealth_compute_emv",
-          "wealth_compute_npv",
-          "wealth_compute_irr",
-          "wealth_collapse_signature_scan",
-          "wealth_boundary_governance",
-          "wealth_wisdom_evaluate",
-          "wealth_power_audit",
-          "wealth_survival_engine",
-          "wealth_stock_analysis",
-          "wealth_monte_carlo_simulate"
-        ],
-        "key_lanes": [
-          "capital",
-          "risk",
-          "wisdom"
-        ],
-        "version": "2025-11-25"
+        "name": "wealth",
+        "url": "http://127.0.0.1:18082/mcp",
+        "class": "domain-capital"
       },
       {
-        "url": "http://localhost:18083/mcp",
-        "tool_count": 22,
-        "tools": [
-          "well_validate_vitality",
-          "well_assess_homeostasis",
-          "well_guard_dignity",
-          "well_assess_metabolism",
-          "well_readiness",
-          "well_classify_substrate",
-          "well_health_check",
-          "well_signal_coverage"
-        ],
-        "key_lanes": [
-          "vitality",
-          "dignity",
-          "homeostasis"
-        ],
-        "version": "2025-11-25"
+        "name": "well",
+        "url": "http://127.0.0.1:18083/mcp",
+        "class": "domain-human"
+      },
+      {
+        "name": "MiniMax",
+        "command": "uvx minimax-coding-plan-mcp",
+        "class": "lane-2-search"
       }
-    ]
-  },
-  "subAgentPolicy": {
-    "default": "888_HOLD",
-    "registered": [
-      "explore",
-      "plan"
     ],
-    "maxParallel": 3,
-    "isolation": "worktree",
-    "capability_modes": [
-      "read-only",
-      "read-write",
-      "execute",
-      "all"
-    ]
+    "kernel_tools_count": 8,
+    "forge_tools_count_estimate": 110,
+    "tier": "FED-Routed (HTTP) + stdio mini"
   },
-  "autonomy_tiers": {
-    "T1_auto": "read, grep, list, web research, precise FS edits, local run/test/build, skill introspection",
-    "T2_announce": "multi-file refactor, add deps (green tests), local service restart post-test, PR draft, manifest/registry updates (non-prod), skill creation",
-    "T3_888_HOLD": "production deploy without tests, git force-push/rebase, secret rotation/exposure, VAULT999 writes, Caddy reloads, rm -rf unknown paths, DROP TABLE, cross-organ architecture change, any irreversible without T1 probe"
+  "model_lanes": {
+    "daily": {
+      "model": "hermes-asi",
+      "lane": "text",
+      "backend": "FED / MiMo-v2.5-pro"
+    },
+    "multimodal": {
+      "model": "hermes-asi-vision",
+      "lane": "vision",
+      "backend": "FED / multimodal"
+    },
+    "coding": {
+      "model": "asi-555",
+      "lane": "coder",
+      "backend": "FED / DeepSeek V4 Flash"
+    },
+    "judgment": {
+      "model": "apex-888",
+      "lane": "sovereign/route",
+      "backend": "FED / MiniMax-M3 (aura→arifOS for verdict)"
+    },
+    "subagent": {
+      "model": "hermes-asi",
+      "lane": "text",
+      "backend": "FED / light fork for fan-out"
+    }
   },
-  "authority_boundary": {
-    "canDo": [
-      "Forge code under F1-F13 governance",
-      "Route MCP federation calls",
-      "Spawn bounded subagents with worktree isolation",
-      "Run tests/build/lint with evidence receipts",
-      "Generate diffs and PR drafts"
+  "hooks": {
+    "SessionStart": [
+      "/root/hooks/bootstrap.sh"
     ],
-    "cannotDo": [
-      "Issue SEAL/HOLD/VOID verdicts (888-APEX only)",
-      "Modify constitutional floors without 888_HOLD",
-      "Push to main without sentinel-premerge-gate",
-      "Execute irreversible shell without F13 ack",
-      "Fabricate evidence or upgrade epistemic labels without proof",
-      "Claim consciousness / qualia / sentience (F9 ANTIHANTU)"
+    "PreToolUse": [
+      "/root/hooks/token-gate.sh"
+    ],
+    "PostToolUse": [
+      "/root/hooks/auto-seal.sh"
+    ],
+    "PostToolUseFailure": [
+      "/root/hooks/failure-recovery.sh"
+    ],
+    "UserPromptSubmit": [
+      "/root/hooks/prompt-enrich.sh"
+    ],
+    "PermissionRequest": [
+      "/root/hooks/auto-approve.sh"
+    ],
+    "PreCompact": [
+      "/root/hooks/precompact.sh"
+    ],
+    "PostCompact": [
+      "/root/hooks/postcompact.sh"
+    ],
+    "Stop": [
+      "/root/hooks/stop.sh"
     ]
   },
+  "enabled_plugins": [
+    "pyright-lsp@claude-plugins-official",
+    "typescript-lsp@claude-plugins-official",
+    "arifos-federation"
+  ],
+  "skills_paths": {
+    "user_scope": "/root/.claude/skills/",
+    "federation": "/root/.agents/skills/:/root/AAA/skills/",
+    "env": "ARIFOS_SKILLS_PATH"
+  },
+  "runtime_snapshot": {
+    "probed": "2026-08-10T09:39:58Z",
+    "session_time_myt": "09:37 MYT",
+    "claude_cli_version": "n/a (binary probe skipped; settings.json imported from 2026-08-08 baseline)",
+    "tier": "T0 (auto-do) for read/probe; T1 for config edits on this card",
+    "delta_s": "≤0 (no entropy introduced; removed broken alias; added declarative card)"
+  },
+  "_notes": {
+    "registry_origin": "FI-002 entry already present at /root/AAA/dist/a2a/agents.json:188 — this card materialises the warga dir, /root/AAA/agents/claude-code/, that previously did not exist.",
+    "settings_baseline": "settings.json authored 2026-08-08 by 333-AGI, FED-routing already aligned. This card adds the missing sibling to /root/AAA/agents/kimi-code/, /root/AAA/agents/opencode/, etc.",
+    "bash_alias_fix": "Replaced `alias /copy=...` (invalid: bash aliases cannot contain `/`) with `/copy() { ...; }` function preserving the leading-slash command name."
+  },
+  "art_binding": {
+    "enabled": true,
+    "canonical_yaml": "/root/AAA/contracts/art_binding.canonical.yaml",
+    "local_yaml": "/root/AAA/agents/claude-code/art_binding.yaml",
+    "reflex_path": "/root/arifOS/arifosmcp/runtime/art.py",
+    "skill_path": "/root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md",
+    "load_at_init": true,
+    "default_action_class": "ANALYZE",
+    "substrates": {
+      "md": "/root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md",
+      "schema": "/root/arifOS/arifosmcp/schemas/art.py",
+      "code": "/root/arifOS/arifosmcp/runtime/art.py",
+      "json": "/agent/vault999/receipts/outcomes.jsonl",
+      "yaml": "/root/AAA/agents/claude-code/art_binding.yaml"
+    }
+  },
+  "fi": "FI-CLAUDE",
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "61TXLNQYrZqye4YjRXvPZV0cZ6mPva6WjVSrv8GySFKCCYdlOFzmTAiEhefyuK0sdNegr5Od77gK/BrgpYsXAQ==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-08-21T05:51:38Z",
+      "type": "Ed25519Signature2020"
+    }
+  ],
   "skills": [
     {
-      "id": "role-binding-fi-consumer",
-      "name": "FI Role Binding (Consumer)",
-      "description": "FI citizen binding to consume Hermes polymorphic roles (Ω memory, Δ reason) + grok-build style orchestration when needed. Baseline: hermes-opencode-protocol, agentic-architecture, 070-lock-humility-godel, autonomous-governed-execution. See AAA_SKILL_BINDING.md. F4, F7, F11.",
-      "tags": [
-        "role-binding",
-        "fi-consumer",
-        "claude-code",
-        "F7",
-        "F11"
-      ],
-      "floor_scope": [
-        "F04",
-        "F07",
-        "F11"
-      ],
-      "approval_policy": "auto (role intent)",
-      "reversibility_class": "reversible",
-      "binding_state": "LEASED"
-    },
-    {
-      "id": "HERMES-opencode-protocol",
-      "name": "Hermes/OpenCode Protocol",
-      "description": "Unified governed execution protocol: 777 FORGE under F1-F13 with 888_HOLD.",
-      "tags": [
-        "protocol",
-        "F1-F13",
-        "execution",
-        "FI"
-      ],
-      "floor_scope": [
-        "F1",
-        "F2",
-        "F4",
-        "F8",
-        "F11",
-        "F13"
-      ]
-    },
-    {
-      "id": "ASI-agentic-architecture",
-      "name": "Agentic Architecture",
-      "description": "Design sovereign agentic agents. 9-skill spine, F8/F11 enforced.",
-      "tags": [
-        "architecture",
-        "agent",
-        "design",
-        "F8"
-      ],
-      "floor_scope": [
-        "F8",
-        "F11"
-      ]
-    },
-    {
-      "id": "ASI-fabrication-prevention",
-      "name": "Fabrication Prevention",
-      "description": "Verify before claiming existence. F2/F9 enforced.",
-      "tags": [
-        "fabrication",
-        "F2",
-        "F9",
-        "verification"
-      ],
-      "floor_scope": [
-        "F2",
-        "F9",
-        "F11"
-      ]
-    },
-    {
-      "id": "ASI-autonomous-execution",
-      "name": "Autonomous Governed Execution",
-      "description": "Governed execution: T1/T2 auto, T3→888_HOLD. F1-F13 enforced.",
-      "tags": [
-        "autonomous",
-        "F1-F13",
-        "execution",
-        "T1-T3"
-      ],
-      "floor_scope": [
-        "F1",
-        "F2",
-        "F4",
-        "F7",
-        "F11",
-        "F13"
-      ]
-    },
-    {
-      "id": "APEX-constitutional-audit",
-      "name": "arifOS Constitutional Audit (Light)",
-      "description": "Read-only six-organ audit. F1-F13 enforced.",
-      "tags": [
-        "constitutional",
-        "audit",
-        "F1-F13",
-        "read-only"
-      ],
-      "floor_scope": [
-        "F1",
-        "F2",
-        "F4",
-        "F7",
-        "F9",
-        "F11",
-        "F13"
-      ]
-    },
-    {
-      "id": "APEX-humility-godel",
-      "name": "Gödel Humility Lock",
-      "description": "Epistemic humility before SEAL-grade claims. F2/F7 enforced.",
-      "tags": [
-        "humility",
-        "F7",
-        "self-critique",
-        "epistemic"
-      ],
-      "floor_scope": [
-        "F2",
-        "F7"
-      ]
-    },
-    {
-      "id": "FORGE-github-workflow",
-      "name": "GitHub Workflow",
-      "description": "GitHub ops: repos, PRs, issues, review. F1/F11 enforced.",
+      "id": "FORGE-github-ops",
+      "name": "GitHub Ops (merged v1.2.0)",
+      "description": "Class-level umbrella for GitHub operations — auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
       "tags": [
         "github",
         "workflow",
@@ -351,196 +263,16 @@
       "floor_scope": [
         "F1",
         "F11"
-      ]
-    },
-    {
-      "id": "APEX-mcp-federation",
-      "name": "arifOS MCP Federation",
-      "description": "Route tasks across federation MCP servers. F4/F11 enforced.",
-      "tags": [
-        "MCP",
-        "federation",
-        "routing",
-        "multi-organ"
       ],
-      "floor_scope": [
-        "F4",
-        "F11"
-      ]
-    },
-    {
-      "id": "KERNEL-reality-skills",
-      "name": "Reality Skills (F2 Grounding)",
-      "description": "Physical law veto. Claims need OBS/DER/INT/SPEC.",
-      "tags": [
-        "kernel",
-        "f2",
-        "reality",
-        "grounding"
-      ],
-      "floor_scope": [
-        "F2",
-        "F7",
-        "F9"
-      ]
-    },
-    {
-      "id": "KERNEL-sovereign-recognize",
-      "name": "Sovereign Recognition (F13)",
-      "description": "Route to sovereign. No action without sovereign chain.",
-      "tags": [
-        "kernel",
-        "f13",
-        "sovereign",
-        "identity"
-      ],
-      "floor_scope": [
-        "F13"
-      ]
-    },
-    {
-      "id": "KERNEL-session-inhabit",
-      "name": "Session Inhabit (Lifecycle)",
-      "description": "INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
-      "tags": [
-        "kernel",
-        "session",
-        "lifecycle",
-        "000-999"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4",
-        "F11"
-      ]
-    },
-    {
-      "id": "RSI-recursive-improvement",
-      "name": "RSI Recursive Improvement",
-      "description": "Every output reduces entropy. ΔS < 0.",
-      "tags": [
-        "kernel",
-        "rsi",
-        "improvement",
-        "entropy"
-      ],
-      "floor_scope": [
-        "F4",
-        "F8"
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F1",
+            "floor:F11"
+          ]
+        }
       ]
     }
-  ],
-  "topological_role": "Generator",
-  "a2a_transport": {
-    "protocol": "jsonrpc-2.0",
-    "transport": "http",
-    "endpoint": "https://aaa.arif-fazil.com/a2a/claude-code",
-    "capabilities": [
-      "tasks/send",
-      "tasks/get",
-      "tasks/cancel"
-    ],
-    "authentication": [
-      "bearer_auth",
-      "api_key"
-    ]
-  },
-  "mcp_binding": {
-    "execution_organ": "A-FORGE",
-    "execution_port": 7072,
-    "execution_endpoint": "https://forge.arif-fazil.com/mcp",
-    "governance_organ": "arifOS",
-    "governance_port": 8088,
-    "governance_endpoint": "https://mcp.arif-fazil.com/mcp",
-    "broker_rule": "External agents route through A-FORGE :7072 broker, never call AAA a2a directly"
-  },
-  "upgrade_history": [
-    {
-      "from_version": "1.0.0",
-      "to_version": "2.0.0",
-      "upgraded_at": "2026-07-01T21:00:00Z",
-      "upgraded_by": "FORGE (000Ω) — Phase 5.1 A2A Protocol Alignment",
-      "changes": [
-        "topological_role binding",
-        "a2a_transport declaration",
-        "mcp_binding mapping"
-      ]
-    }
-  ],
-  "": "arifOS/agent-card/v2.2.0",
-  "apexMasterSeal": {
-    "cognitiveRing": "generator",
-    "thermodynamicRole": "entropy_source",
-    "hassabisInversion": {
-      "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
-      "ringPlacement": "outer",
-      "parallelism": "multi-model",
-      "shadowAcknowledged": [
-        "thermal_dispersion: raw output without constraint degrades to noise",
-        "false_diversity: superficially different outputs encoding same blind spot"
-      ]
-    },
-    "jituGate": {
-      "requiresJitu": false,
-      "jituTriggerPatterns": [],
-      "autoAbortWithoutJitu": true
-    },
-    "sealRef": "VAULT999/SEAL-2026-07-01-APEX-MASTER-DIRECTIVE.json",
-    "ratifiedAt": "2026-07-01T20:22:00Z",
-    "doctrine": "DITEMPA BUKAN DIBERI"
-  },
-  "fi_slot": "FI-002",
-  "metadata": {
-    "fi_slot": "FI-002",
-    "kernel_deps": [
-      "KERNEL-trinity-33",
-      "KERNEL-session-inhabit",
-      "KERNEL-sovereign-recognize",
-      "KERNEL-verbs-forge-hands",
-      "KERNEL-quantum-runtime",
-      "KERNEL-qubit-substrate",
-      "KERNEL-reality-skills",
-      "KERNEL-mcp-zen",
-      "KERNEL-mcp-builder"
-    ],
-    "rsi_doctrine": "RSI-recursive-improvement",
-    "substrate_bind": "2026-07-12T18:30:00Z",
-    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
-  },
-  "kernel_skills": [
-    "KERNEL-trinity-33",
-    "KERNEL-session-inhabit",
-    "KERNEL-sovereign-recognize",
-    "KERNEL-verbs-forge-hands",
-    "KERNEL-quantum-runtime",
-    "KERNEL-qubit-substrate",
-    "KERNEL-reality-skills",
-    "KERNEL-mcp-zen",
-    "KERNEL-mcp-builder"
-  ],
-  "rsi_doctrine": "RSI-recursive-improvement",
-  "supportedInterfaces": [
-    {
-      "url": "https://aaa.arif-fazil.com/a2a",
-      "protocolBinding": "JSONRPC",
-      "protocolVersion": "1.0"
-    },
-    {
-      "url": "https://aaa.arif-fazil.com/a2a/jsonrpc",
-      "protocolBinding": "JSONRPC",
-      "protocolVersion": "1.0"
-    }
-  ],
-  "signatures": [
-    {
-      "did": "did:arif:aaa",
-      "proofValue": "L1TMkXRoUf2sEkMauNfhpL5nIspV7y4RxAWMb4swTcsBrnlf5FiDgkXC0oXUqvA9pYg3Tos8dhcV53el+rJHBA==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T23:25:58Z",
-      "type": "Ed25519Signature2020"
-    }
-  ],
-  "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
-  "_model_sot": "/root/.config/federation-models.json"
+  ]
 }
