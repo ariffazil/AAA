@@ -7,8 +7,8 @@
     "category": "LLM-as-principal (model is principal, CLI is harness)",
     "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
   },
-  "description": "Google Antigravity CLI (agy) — AI-first development platform. Connected to 6 MCP servers including 5 federation organs. YOLO/AFK autonomy with F1-F13 gates.",
-  "version": "1.0.10",
+  "description": "Google Antigravity CLI (agy) \u2014 AI-first development platform. Connected to 6 MCP servers including 5 federation organs. YOLO/AFK autonomy with F1-F13 gates.",
+  "version": "1.0.11",
   "model": "Gemini 3.5 Flash (High)",
   "binary": "/root/.local/bin/agy",
   "tier": "FI-004",
@@ -173,7 +173,7 @@
     {
       "id": "ASI-autonomous-execution",
       "name": "Autonomous Governed Execution",
-      "description": "Governed execution: T1/T2 auto, T3→888_HOLD. F1-F13 enforced.",
+      "description": "Governed execution: T1/T2 auto, T3\u2192888_HOLD. F1-F13 enforced.",
       "tags": [
         "autonomous",
         "F1-F13",
@@ -211,7 +211,7 @@
     },
     {
       "id": "APEX-humility-lock",
-      "name": "Gödel Humility Lock",
+      "name": "G\u00f6del Humility Lock",
       "description": "Epistemic humility before SEAL-grade claims. F2/F7 enforced.",
       "tags": [
         "humility",
@@ -321,17 +321,8 @@
       "url": "https://aaa.arif-fazil.com/a2a/antigravity"
     }
   ],
-  "signatures": [
-    {
-      "did": "did:arif:aaa",
-      "proofValue": "xLEaqQltUyOIm8adUR+LD4VhRUfktUdfZpTC2OjjFb2sDvURlFazC7e5C2Zbje3CSHLzjHZGfotWKz7tSTR6AQ==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T23:25:58Z",
-      "type": "Ed25519Signature2020"
-    }
-  ],
   "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
+  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN",
   "a2a_transport": {
     "protocol": "jsonrpc-2.0",
     "transport": "http",
@@ -354,5 +345,37 @@
     "governance_port": 8088,
     "governance_endpoint": "https://mcp.arif-fazil.com/mcp"
   },
-  "_model_sot": "/root/.config/federation-models.json"
+  "_model_sot": "/root/.config/federation-models.json",
+  "aliases": [
+    "agy"
+  ],
+  "supersedes": {
+    "FI-010": "gemini-cli (F13 merge 2026-08-21)",
+    "legacy_cards": [
+      "federation/agy.json (82-skill alias, archived)"
+    ]
+  },
+  "harness_of_record_for": "Gemini lane (F13 merge 2026-08-21)",
+  "upgrade_history": [
+    {
+      "from_version": "1.0.10",
+      "to_version": "1.0.11",
+      "upgraded_at": "2026-08-21T14:00:00Z",
+      "upgraded_by": "Kimi Code (FI-008) \u2014 F13 gemini\u2194agy merge execution",
+      "changes": [
+        "FI-010 gemini-cli superseded into this lane (cards archived)",
+        "legacy agy alias cards archived",
+        "binary /usr/bin/gemini retained unregistered for ad-hoc"
+      ]
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "8bim2s1QZd+zXg9gXq6xEUmxsFNux8QOPpOGmgrcrFQhzuHrtNazxwRvxZQCn87AiKwMbtbc1GegQrq9UfCbBg==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-08-21T05:44:48Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
 }
