@@ -2,7 +2,7 @@
   "agent_id": "arif",
   "actor_id": "arif",
   "fi_slot": "F13-SOVEREIGN",
-  "ed25519_pubkey_hex": "d3b90f14ee8a40b0321ecb8110777aa45c04d06f4812d1220d76556f8d0a44de",
+  "ed25519_pubkey_hex": "6aec521dd3b0caf3beb3efec458ccaf5982f1a3f26e7b358ce66d8d74aacbd5e",
   "bound_to": "arif-fazil/F13",
   "capabilities": [
     "OBSERVE",
@@ -15,7 +15,7 @@
   "max_blast_radius": "T3",
   "created_at": "2026-08-23T09:29:00+00:00",
   "updated_at": "2026-08-23T09:29:00+00:00",
-  "fingerprint": "1b219990bd9f794cad1b0ccf8e5de9ec",
-  "key_source": "REGENERATED 2026-08-23 (old pair priv!=pub, broken); DID organ key did:arif:arifos (5118f527) is kernel-verdict layer, separate",
-  "fix_note": "2026-08-23 qwen-code FI-003: registered per device.json pattern (F13 directive) \u2014 closes kernel crypto-verify hole for actor identity layer"
+  "fingerprint": "17d9f11ad0d43563513bbf10c9206812",
+  "key_source": "/root/.secrets/aaa-identity/keys/arif_private.pem \u2014 the key arif-bind actually signs with (device.json pattern: mirror the signing key); AAA farm arif_public.pem consistent",
+  "fix_note": "2026-08-23 qwen-code FI-003: re-pointed from fresh regen to .secrets signing key after discovering arif-bind flow (superseded interim regen, preserved *.unused-regen-20260823.bak)"
 }
