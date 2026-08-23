@@ -1,0 +1,21 @@
+{
+  "agent_id": "antigravity",
+  "actor_id": "antigravity",
+  "fi_slot": "FI-009",
+  "ed25519_pubkey_hex": "d54041e5b40c354a3e02732580185a9ff556b346ab25427fe0e332fd69fabbe5",
+  "bound_to": "arif-fazil/F13",
+  "capabilities": [
+    "OBSERVE",
+    "REASON",
+    "ROUTE",
+    "MEMORY",
+    "EXECUTE",
+    "FORGE"
+  ],
+  "max_blast_radius": "T2",
+  "created_at": "2026-08-23T09:33:55+00:00",
+  "updated_at": "2026-08-23T09:33:55+00:00",
+  "fingerprint": "6976b413b1373c2a976d4c7b28752e33",
+  "key_source": "FRESH KEYGEN 2026-08-23 at A-FORGE/IDENTITY/keys/antigravity (no prior key in DID/farm/.secrets \u2014 verified before generation)",
+  "fix_note": "2026-08-23 qwen-code FI-003: keygen per F13 directive \u2014 clears final needs_keygen flags; legacy bots capped OBSERVE/REASON T1"
+}
