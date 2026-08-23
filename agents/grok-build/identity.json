@@ -1,0 +1,21 @@
+{
+  "agent_id": "grok-build",
+  "actor_id": "grok-build",
+  "fi_slot": "FI-007",
+  "ed25519_pubkey_hex": "31055187b00c6e0ae7a8a40d2430ccddfd8e0ff31e990a189f39104baa027128",
+  "bound_to": "arif-fazil/F13",
+  "capabilities": [
+    "OBSERVE",
+    "REASON",
+    "ROUTE",
+    "MEMORY",
+    "EXECUTE",
+    "FORGE"
+  ],
+  "max_blast_radius": "T2",
+  "created_at": "2026-08-23T09:29:00+00:00",
+  "updated_at": "2026-08-23T09:29:00+00:00",
+  "fingerprint": "98e82cbee311d3c645419d7d2c1f5e61",
+  "key_source": "A-FORGE/IDENTITY/keys/grok-build \u2014 f3-witness signing pair (only complete keypair)",
+  "fix_note": "2026-08-23 qwen-code FI-003: registered per device.json pattern (F13 directive) \u2014 closes kernel crypto-verify hole for actor identity layer"
+}
