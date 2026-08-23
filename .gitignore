@@ -229,3 +229,6 @@ terminal/sessions.jsonl
 
 # ── Ephemeral snapshots — regenerated per session ──
 snapshots/
+
+# agents/hermes is the registry identity dir, not runtime (unignore from broad hermes/ pattern)
+!agents/hermes/

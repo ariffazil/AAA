@@ -1,0 +1,21 @@
+{
+  "agent_id": "kimi-code",
+  "actor_id": "kimi-code",
+  "fi_slot": "FI-008",
+  "ed25519_pubkey_hex": "e45ed0007b53b57c50acb21fb29c0d332ec410eb89c56319498acd58f60b439d",
+  "bound_to": "arif-fazil/F13",
+  "capabilities": [
+    "OBSERVE",
+    "REASON",
+    "ROUTE",
+    "MEMORY",
+    "EXECUTE",
+    "FORGE"
+  ],
+  "max_blast_radius": "T2",
+  "created_at": "2026-08-23T09:29:00+00:00",
+  "updated_at": "2026-08-23T09:29:00+00:00",
+  "fingerprint": "3500e89b81ee395fe39bfc9ccf77cc6b",
+  "key_source": "A-FORGE/IDENTITY/keys/kimi-code \u2014 f3-witness signing pair; AAA farm FI-008_public.pem (59f70d6e) has no private anywhere, organ-layer only",
+  "fix_note": "2026-08-23 qwen-code FI-003: registered per device.json pattern (F13 directive) \u2014 closes kernel crypto-verify hole for actor identity layer"
+}
