@@ -1,0 +1,21 @@
+{
+  "agent_id": "arif",
+  "actor_id": "arif",
+  "fi_slot": "F13-SOVEREIGN",
+  "ed25519_pubkey_hex": "d3b90f14ee8a40b0321ecb8110777aa45c04d06f4812d1220d76556f8d0a44de",
+  "bound_to": "arif-fazil/F13",
+  "capabilities": [
+    "OBSERVE",
+    "REASON",
+    "ROUTE",
+    "MEMORY",
+    "EXECUTE",
+    "FORGE"
+  ],
+  "max_blast_radius": "T3",
+  "created_at": "2026-08-23T09:29:00+00:00",
+  "updated_at": "2026-08-23T09:29:00+00:00",
+  "fingerprint": "1b219990bd9f794cad1b0ccf8e5de9ec",
+  "key_source": "REGENERATED 2026-08-23 (old pair priv!=pub, broken); DID organ key did:arif:arifos (5118f527) is kernel-verdict layer, separate",
+  "fix_note": "2026-08-23 qwen-code FI-003: registered per device.json pattern (F13 directive) \u2014 closes kernel crypto-verify hole for actor identity layer"
+}
