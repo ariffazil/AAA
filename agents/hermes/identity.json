@@ -1,0 +1,21 @@
+{
+  "agent_id": "hermes",
+  "actor_id": "hermes",
+  "fi_slot": "COORDINATOR",
+  "ed25519_pubkey_hex": "0775872a5c14888bb4715cff267ace79ca01d1caaf7d7907bd9a703892653980",
+  "bound_to": "arif-fazil/F13",
+  "capabilities": [
+    "OBSERVE",
+    "REASON",
+    "ROUTE",
+    "MEMORY",
+    "EXECUTE",
+    "FORGE"
+  ],
+  "max_blast_radius": "T2",
+  "created_at": "2026-08-23T09:29:00+00:00",
+  "updated_at": "2026-08-23T09:29:00+00:00",
+  "fingerprint": "2b2da0c49e4046265bd0b84fa77a4dbf",
+  "key_source": "A-FORGE/IDENTITY/keys/hermes \u2014 actor-identity layer; organ/verdict layer key did:arif:hermes (39ed9013) is separate, untouched",
+  "fix_note": "2026-08-23 qwen-code FI-003: registered per device.json pattern (F13 directive) \u2014 closes kernel crypto-verify hole for actor identity layer"
+}
