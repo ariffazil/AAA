@@ -1,0 +1,21 @@
+{
+  "agent_id": "claude-code",
+  "actor_id": "claude-code",
+  "fi_slot": "FI-002",
+  "ed25519_pubkey_hex": "280fe014b353371dc3f2565edbde8028ece0a9334a7a7e6f46c5bcfa9eedcd15",
+  "bound_to": "arif-fazil/F13",
+  "capabilities": [
+    "OBSERVE",
+    "REASON",
+    "ROUTE",
+    "MEMORY",
+    "EXECUTE",
+    "FORGE"
+  ],
+  "max_blast_radius": "T2",
+  "created_at": "2026-08-23T09:31:50+00:00",
+  "updated_at": "2026-08-23T09:31:50+00:00",
+  "fingerprint": "31ea4788c52b1b3515b61a81a5340d67",
+  "key_source": "FRESH KEYGEN 2026-08-23 at A-FORGE/IDENTITY/keys/claude-code (no prior key existed anywhere \u2014 DID, farm, A-FORGE all empty for claude)",
+  "fix_note": "2026-08-23 qwen-code FI-003: keygen per F13 directive \u2014 closes needs_keygen flag from kernel IdentityRegistry"
+}
