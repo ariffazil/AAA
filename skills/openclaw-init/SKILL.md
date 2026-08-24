@@ -3,6 +3,8 @@ name: openclaw-init
 description: OpenClaw-native /init — substrate primitive for the OpenClaw runtime. Establishes session, lane, atlas expression, and authority. Returns the full constitutional session card via OpenClaw's Telegram bot (@AGI_ASI_bot).
 tags: [constitutional, init, substrate-primitive, telegram-native, openclaw]
 license: MIT
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 # OpenClaw /init — Substrate Primitive (Telegram-Native)
 

@@ -11,6 +11,8 @@ metadata:
   author: runpod
   version: "1.1.2" # x-release-please-version
 license: Apache-2.0
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Runpod usage (concepts)

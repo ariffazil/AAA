@@ -6,6 +6,8 @@ description: "Probe all FI coder CLIs live (qwen/kimi/opencode/codex/claude/grok
 owner: 333-AGI
 risk_tier: low
 floor_scope: [F2, F4]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # FI Mesh Check — falsification probe

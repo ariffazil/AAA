@@ -17,6 +17,8 @@ sources:
   - forge_document_ingest MCP tool (A-FORGE)
   - Allen AI olmOCR (https://github.com/allenai/olmocr)
   - arifOS constitutional pipeline (000→111→333→666→888→999)
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # FORGE DOCUMENT INTELLIGENCE — EMD Stack Skill

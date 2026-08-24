@@ -1,3 +1,7 @@
+---
+capability_tier: fed-agent-subagent
+ecology_state: WARM
+---
 # PETRONAS Intelligence Router
 
 > **Trigger:** Any query mentioning PETRONAS, Petronas, petronas, Petros, SEARAH, Gentari, Tengku Taufik, extraction ratio, PETRONAS Carigali, or Malaysian national oil company topics.

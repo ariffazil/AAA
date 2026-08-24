@@ -7,6 +7,8 @@ owner: F13 SOVEREIGN (directive 2026-08-15, external proposal adapted)
 risk_tier: low
 floor_scope: [F2, F7, F9, F10]
 autonomy_tier: T0
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # MY-REALITY-STACK — Malaysia Reality Routing

@@ -31,6 +31,8 @@ tags:
   - sovereign
   - controller-lens
 owner: AAA
+capability_tier: fed-realtime-voice
+ecology_state: WARM
 ---
 
 # AAA · Somatic Engine Catalog (The Dispensary)

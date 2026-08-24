@@ -119,7 +119,7 @@ Even external validation has a limit. The final validator is **human felt realit
 
 **Therefore:**
 
-- F1 (TRUTH) = the reality-contact floor
+- F2 (TRUTH) = the reality-contact floor
 - F13 (SOVEREIGN) = the human-experience floor
 
 These are not governance features. They are **architectural admissions** that the system lives in a world larger than its own grammar.

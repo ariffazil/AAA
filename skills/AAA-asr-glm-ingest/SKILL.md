@@ -23,6 +23,8 @@ tags:
   - code-switch
   - transcription
 owner: AAA
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # AAA · ASR — GLM-2512 Ingestion Layer

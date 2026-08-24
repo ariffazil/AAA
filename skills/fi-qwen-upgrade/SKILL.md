@@ -6,6 +6,8 @@ description: "Atomic-swap upgrade of the Qwen Code release install (SHA256-verif
 owner: 333-AGI
 risk_tier: medium
 floor_scope: [F1, F2, F11]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Qwen Code Atomic-Swap Upgrade

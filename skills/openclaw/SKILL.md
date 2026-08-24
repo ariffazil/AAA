@@ -34,6 +34,8 @@ tests:
 version_lock:
   schema_version: "1"
   artifact_hash: pending
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # OpenClaw — Edge Agent Bridge Operations

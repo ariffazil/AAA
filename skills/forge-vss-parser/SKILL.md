@@ -11,6 +11,8 @@ floor_scope:
   - F7
   - F9
   - F11
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # forge-vss-parser
