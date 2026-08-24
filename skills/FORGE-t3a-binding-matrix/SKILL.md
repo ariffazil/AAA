@@ -6,6 +6,8 @@ description: >
   forge_p0_binding_test, NEG.3, NEG.6b, authenticated_session_binding.
 version: 2026.07.17
 floors: [F1, F2, F7, F11, F13]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # FORGE — T3a Binding Matrix

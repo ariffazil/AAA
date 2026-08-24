@@ -23,6 +23,8 @@ tags:
   - edge
   - i-arif
 owner: AAA
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # AGI · Audio Quantum Cognition
