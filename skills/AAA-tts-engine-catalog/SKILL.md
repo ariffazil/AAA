@@ -29,6 +29,8 @@ tags:
   - engine-registry
   - qualia
 owner: AAA
+capability_tier: fed-realtime-voice
+ecology_state: WARM
 ---
 
 # AAA · TTS Engine Catalog
