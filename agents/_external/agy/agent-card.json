@@ -1,0 +1,47 @@
+{
+  "$schema": "arifOS/agent-card/v2.0.0",
+  "id": "antigravity-cli",
+  "name": "Antigravity CLI (agy)",
+  "description": "Google Antigravity terminal agent — CCC candidate worker. Google-hosted engine; hooks + MCP client + plan review native. F12 AUDIT 2026-08-24: HOLD pending F13 data-sharing ratification. Not installed.",
+  "version": "2026.08.24",
+  "url": "https://github.com/google-antigravity/antigravity-cli",
+  "provider": {
+    "organization": "Google (external)",
+    "url": "https://antigravity.google"
+  },
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "authenticated_extended_card": false,
+    "mcp_client": true,
+    "hooks": true,
+    "plan_mode_native": true,
+    "engine_location": "google-hosted (code/prompts leave the box by design)"
+  },
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "governance": {
+    "citizenship": "guest-pending",
+    "fi_slot": "FI-009-candidate",
+    "emd_role": "decoder-candidate",
+    "constitutional_proxy": "333-AGI",
+    "can_seal": false,
+    "can_judge": false,
+    "can_self_authorize": false,
+    "cannot_self_seal": true,
+    "status": "PROPOSED — HOLD pending F13 ratification of Google data-sharing terms",
+    "f12_audit": "/root/forge_work/2026-08-24-antigravity-f12/DECISION_PACKAGE.md",
+    "glue_hooks_existing": [
+      "/root/AAA/scripts/antigravity-pre-judge.sh  (PreToolUse → arif_judge gate)",
+      "/root/AAA/scripts/antigravity-post-seal.sh  (PostToolUse → VAULT999 seal)",
+      "/root/AAA/scripts/antigravity-autonomous.sh"
+    ],
+    "containment_profile_required": [
+      "install as non-root user (isolated home — deny /root/.secrets, VAULT999, SSH keys)",
+      "telemetry opt-out MANDATORY before first real session (default is ON)",
+      "wrapper script enforcing env (pattern: /usr/local/bin/kimi)",
+      "wire hooks to existing glue scripts before first autonomous run",
+      "install vector: staged checksum-verified installer only (audited install.sh in forge_work)"
+    ]
+  }
+}
