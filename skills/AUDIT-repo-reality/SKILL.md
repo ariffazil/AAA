@@ -9,6 +9,8 @@ floor_scope: [F02, F04, F07, F11]
 owner: F13 SOVEREIGN (Arif) — forged by 333-AGI
 autonomy_tier: T0
 reference: REPO_REALITY_AUDIT::v1.2
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # AUDIT-repo-reality — Repository Reality Auditor

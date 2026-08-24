@@ -113,7 +113,7 @@ EOF
 | **Claude Code** FI-002 | `claude -p "<task>"` | `…/a2a/claude-code` · skill `hermes-claude-code-spawn` | code + MCP; Hermes may spawn | T3 HOLD |
 | **Kimi Code** FI-008 | `kimi -p "<task>"` | `…/a2a/kimi-code` | code, long ctx | T3 HOLD |
 | **Codex** FI-005 | `codex exec "<task>"` | `…/a2a/codex` | code; Responses via **:4001** clean-proxy → :4000 | T3 HOLD |
-| **Grok Build** FI-007 | `grok -p "<task>"` (**CLI primary**, OIDC) | `…/a2a/grok-build` (optional) | plan+search+build · **not FED** | T3 HOLD |
+| **Grok Build** FI-007 | `grok -p "<task>"` · Imagine: `grok-multimodal.sh` | `…/a2a/grok-build` | plan+search+build + image_gen/image_edit/image_to_video · **not FED** | T3 HOLD |
 | **AGY** FI-009 | `agy --agent antigravity-preview-05-2026 -p "<task>"` | Gemini-native · MCP organs | T3 HOLD |
 | **Copilot** FI-006 | `copilot -p "<task>"` | `…/a2a/copilot` | code BYOK | T3 HOLD |
 | **OpenClaw** | `openclaw agent -m "…"` · gateway `:18789` | `…/a2a/openclaw` | route personas, Telegram | ROUTE/OBSERVE — not primary coder |
@@ -189,6 +189,7 @@ Need work done?
 ├─ Talk to human / Telegram     → Hermes ASI
 ├─ Route multi-agent Telegram   → OpenClaw
 ├─ Write/fix code               → OpenCode (CLI) → fallback FI
+├─ Image / I2V / Imagine edit   → Grok Build FI-007 (`grok-multimodal.sh`)
 ├─ Constitutional verdict       → arifOS arif_judge
 ├─ Domain number (NPV/earth)    → WEALTH / GEOX MCP
 ├─ Actually mutate after gate   → A-FORGE MCP
@@ -257,6 +258,17 @@ Full contrast: [`OPENCLAW_HERMES_CONTRAST.md`](./OPENCLAW_HERMES_CONTRAST.md)
 | **Peers on FED** | Hermes · OpenCode · OpenClaw · Kimi → `:4000` |
 
 If xAI ever ships static API keys, then wire a FED seat. Until then: **direct CLI only**.
+
+### Grok Imagine — multimodal for every AAA agent (2026-08-25)
+
+Full card: [`GROK_IMAGINE.md`](./GROK_IMAGINE.md)
+
+```bash
+grok-multimodal.sh image "prompt"
+grok-multimodal.sh edit  /path/to/ref.jpg "prompt"
+grok-multimodal.sh video /path/to/still.jpg "prompt"
+```
+
 
 ## A2A enforcement
 

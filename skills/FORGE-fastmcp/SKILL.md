@@ -10,6 +10,8 @@ author: arifOS (based on Hermes official/mcp/fastmcp)
 tags: MCP, FastMCP, Python, Tools, Deployment
 agents: claude | opencode | kimi | codex
 autonomy_tier: T1
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # FastMCP — Build & Deploy MCP Servers in Python

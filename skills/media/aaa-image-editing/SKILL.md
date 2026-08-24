@@ -8,7 +8,8 @@ autonomy_tier: T1
 description: "Image editing vs generation — route the right model for the task. Covers identity-preserving edits, multi-model ensemble runs, endpoint fallback, and Gemini Nano Banana family best practices. Triggers when user provides a real photo and asks to edit/transform/place-in-scene."
 required_tools: ['image_generate', 'vision_analyze']
 tool_gate: strict
-
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # AAA Image Editing v2.0

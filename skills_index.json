@@ -1,17 +1,38 @@
 {
-  "generated_at": "2026-08-13T05:33:25Z",
+  "generated_at": "2026-08-24T21:06:08Z",
   "root": "/root/AAA/skills",
   "schema_version": "1.0.0-orthogonal-discovery",
-  "count": 180,
-  "elapsed_ms": 14,
+  "count": 221,
+  "elapsed_ms": 20,
   "errors": [
-    "_retired: no SKILL.md found",
+    ".archive: no SKILL.md found",
+    ".hub: no SKILL.md found",
+    "FORGE-mcp-jam-inspector: no SKILL.md found",
     "capabilities: no SKILL.md found",
     "domains: no SKILL.md found",
-    "external-apex-audit: no SKILL.md found",
-    "skill-evolution: no SKILL.md found"
+    "github: no SKILL.md found",
+    "primitives: no SKILL.md found",
+    "skill-evolution: no SKILL.md found",
+    "workflows: no SKILL.md found"
   ],
   "skills": [
+    {
+      "name": "hermes-cron-zen",
+      "category": "hermes",
+      "path": "/root/AAA/skills/.profile-archive/hermes-cron-zen/SKILL.md",
+      "dir": "/root/AAA/skills/.profile-archive",
+      "frontmatter": {
+        "id": "hermes-cron-zen",
+        "name": "hermes-cron-zen",
+        "version": "1.1.0",
+        "description": "Audit, modify, and heal the Hermes cron subsystem — jobs.json, /root/HERMES/scripts/*, the validator at /root/HERMES/scripts/zen/validate_jobs_json.py. Probe-first, validator-writes-only, review-before-apply. USE WHEN: \"cron audit\", \"jobs.json\", \"fix broken cron job\", \"validate jobs.json\", \"patch cron job\", \"expand cron patch\", \"PRN16 / eureka-promote / watchdog-of-watchdogs / syedos-quiet bug\", \"Telegram token failure in cron\", \"silent Telegram token failure in cron\", \"missing script for cron\", \"convert LLM cron to script\", \"cron zen\", \"cron optimization\", \"kill cron job\", \"wasteful cron\", \"cron token savings\".",
+        "risk_tier": "low",
+        "floor_scope": "[F1, F2, F11, F13]",
+        "autonomy_tier": "T1",
+        "tags": "[hermes, cron, jobs.json, validator, audit, federation-ops]"
+      },
+      "has_sk": true
+    },
     {
       "name": "review-agent",
       "category": "review",
@@ -19,7 +40,9 @@
       "dir": "/root/AAA/skills/.system",
       "frontmatter": {
         "name": "review-agent",
-        "description": "Perform a read-only, defect-first review of a specified code change and return every actionable finding. Use when another agent delegates review of uncommitted changes, a base-branch diff, a commit, or custom review instructions."
+        "description": "Perform a read-only, defect-first review of a specified code change and return every actionable finding. Use when another agent delegates review of uncommitted changes, a base-branch diff, a commit, or custom review instructions.",
+        "capability_tier": "fed-agent-subagent",
+        "ecology_state": "WARM"
       },
       "has_sk": true
     },
@@ -39,6 +62,70 @@
         "floor_scope": "",
         "autonomy_tier": "T1",
         "capability_tier": "fed-multimodal-vision",
+        "ecology_state": "WARM",
+        "required_tools": "['vision_analyze', 'arif_observe']",
+        "tool_gate": "strict"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "AAA-asr-glm-ingest",
+      "category": "aaa",
+      "path": "/root/AAA/skills/AAA-asr-glm-ingest/SKILL.md",
+      "dir": "/root/AAA/skills/AAA-asr-glm-ingest",
+      "frontmatter": {
+        "name": "AAA-asr-glm-ingest",
+        "description": "ASR (Automatic Speech Recognition) ingestion layer using GLM-ASR-2512 (Z.AI). Decode phase of AAA-audio-emd-pipeline. Custom dictionary for arifOS-specific terms, audio chunking for ≤30 s/≤25 MB constraint, stream mode for realtime. Penang-Besi dialect and code-switching support.",
+        "version": "1.0.0",
+        "author": "kimi-code (FI-008) for ARIF",
+        "forged": "2026-08-18",
+        "floor_scope": "",
+        "extends": "",
+        "tags": "",
+        "owner": "AAA",
+        "capability_tier": "fed-long-context",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "AAA-audio-emd-pipeline",
+      "category": "aaa",
+      "path": "/root/AAA/skills/AAA-audio-emd-pipeline/SKILL.md",
+      "dir": "/root/AAA/skills/AAA-audio-emd-pipeline",
+      "frontmatter": {
+        "name": "AAA-audio-emd-pipeline",
+        "description": "EMD (Encode → Metabolize → Decode) orchestration doctrine for audio in the arifOS federation. The constitutional loop that binds ASR → LLM reasoning → TTS into a single governed pipeline. Every audio exchange in arifOS flows through this reflex arc.",
+        "version": "1.1.0",
+        "author": "kimi-code (FI-008) for ARIF",
+        "forged": "2026-08-18",
+        "revised": "2026-08-19",
+        "floor_scope": "",
+        "extends": "",
+        "tags": "",
+        "owner": "AAA",
+        "capability_tier": "fed-agent-subagent",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "AAA-audio-qualia-doctrine",
+      "category": "aaa",
+      "path": "/root/AAA/skills/AAA-audio-qualia-doctrine/SKILL.md",
+      "dir": "/root/AAA/skills/AAA-audio-qualia-doctrine",
+      "frontmatter": {
+        "name": "AAA-audio-qualia-doctrine",
+        "description": "Operational doctrine for Audio Intelligence with 'qualia rasa' in the arifOS federation. Defines qualia as high-fidelity acoustic variance — agents simulate biological imperfection (breath, pause, hesitation, dry wit, nasal resonance) synchronously with semantic context. Bridge doctrine between AGI-audio-quantum-cognition physics and AAA-audio-emd-pipeline reflex arc.",
+        "version": "1.0.0",
+        "author": "Muhammad Arif bin Fazil (F13) — for ARIF",
+        "forged": "2026-08-18",
+        "floor_scope": "",
+        "extends": "",
+        "companion": "",
+        "tags": "",
+        "owner": "AAA",
+        "capability_tier": "fed-agent-subagent",
         "ecology_state": "WARM"
       },
       "has_sk": true
@@ -67,6 +154,132 @@
       "has_sk": true
     },
     {
+      "name": "AAA-somatic-emd-pipeline",
+      "category": "aaa",
+      "path": "/root/AAA/skills/AAA-somatic-emd-pipeline/SKILL.md",
+      "dir": "/root/AAA/skills/AAA-somatic-emd-pipeline",
+      "frontmatter": {
+        "name": "AAA-somatic-emd-pipeline",
+        "description": "Three-phase reflex arc for Somatic Music Intelligence in arifOS. Decode from voice-cadence somatic_proxy (WPM, pitch_mean, hesitation_ms, RMS variance) — NOT WELL until sensors ready. Metabolize adds music_intent packet field (role|BPM|density|max_seconds|kill_on_barge_in). Encode routes to parametrically-controllable music engines (MiniMax T2A Music primary). Three-layer maturity enforced: Layer 1 voice-cadence only, Layer 2 adds WELL when live, Layer 3 = F13.",
+        "version": "1.0.0",
+        "author": "kimi-code (FI-008) for ARIF",
+        "forged": "2026-08-18",
+        "floor_scope": "",
+        "extends": "",
+        "companion": "",
+        "tags": "",
+        "owner": "AAA",
+        "capability_tier": "fed-realtime-voice",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "AAA-somatic-engine-catalog",
+      "category": "aaa",
+      "path": "/root/AAA/skills/AAA-somatic-engine-catalog/SKILL.md",
+      "dir": "/root/AAA/skills/AAA-somatic-engine-catalog",
+      "frontmatter": {
+        "name": "AAA-somatic-engine-catalog",
+        "description": "Registry of parametrically-controllable music engines for arifOS Somatic Music Intelligence. NOT a beat-maker catalog (composer lens handles that) — this is the Dispensary for engines that accept BPM/key/texture/density parameters and emit streaming audio. MiniMax T2A Music (music-2.6/3.0) primary; local sovereign alternatives (AudioGen/MusicGen) for F13 territory. i-ARIF vocal melodic: HARD DENY across all engines.",
+        "version": "1.0.0",
+        "author": "kimi-code (FI-008) for ARIF",
+        "forged": "2026-08-18",
+        "floor_scope": "",
+        "extends": "",
+        "companion": "",
+        "tags": "",
+        "owner": "AAA",
+        "capability_tier": "fed-realtime-voice",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "AAA-somatic-music-doctrine",
+      "category": "aaa",
+      "path": "/root/AAA/skills/AAA-somatic-music-doctrine/SKILL.md",
+      "dir": "/root/AAA/skills/AAA-somatic-music-doctrine",
+      "frontmatter": {
+        "name": "AAA-somatic-music-doctrine",
+        "description": "F10 ONTOLOGY + F9 ANTI-HANTU + F1 SAFETY/REVERSIBILITY constitution for Somatic Music Intelligence in arifOS. Music as acoustic_intent without words — cognitive prosthetic, NOT shaman, NOT healer. Three-layer maturity model: Layer 0 untouched, Layer 1 reversible, Layer 2 holds for WELL sensors, Layer 3 = F13 territory.",
+        "version": "1.0.0",
+        "author": "ARIF doctrine, zenned by kimi-code (FI-008)",
+        "forged": "2026-08-18",
+        "floor_scope": "",
+        "extends": "",
+        "companion": "",
+        "tags": "",
+        "owner": "AAA",
+        "capability_tier": "fed-reasoning-heavy",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "AAA-tts-engine-catalog",
+      "category": "aaa",
+      "path": "/root/AAA/skills/AAA-tts-engine-catalog/SKILL.md",
+      "dir": "/root/AAA/skills/AAA-tts-engine-catalog",
+      "frontmatter": {
+        "name": "AAA-tts-engine-catalog",
+        "description": "TTS engine registry for the arifOS federation. ChatTTS (qualitative conversational), F5-TTS / E2-TTS (zero-shot flow matching), Fish Speech (audio language model), MiniMax speech-2.8-hd (HD commercial), Edge / Mulberry (free fallback), MiMo Token Plan (Xiaomi multimodal subscription). Trade-off matrix, F13 governance, and routing rules. Single source of truth for which engine to use when.",
+        "version": "1.1.0",
+        "author": "kimi-code (FI-008) for ARIF",
+        "forged": "2026-08-18",
+        "revised": "2026-08-19",
+        "floor_scope": "",
+        "extends": "",
+        "tags": "",
+        "owner": "AAA",
+        "capability_tier": "fed-realtime-voice",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "AAA-voice-cloning-mimo-minimax",
+      "category": "aaa",
+      "path": "/root/AAA/skills/AAA-voice-cloning-mimo-minimax/SKILL.md",
+      "dir": "/root/AAA/skills/AAA-voice-cloning-mimo-minimax",
+      "frontmatter": {
+        "name": "AAA-voice-cloning-mimo-minimax",
+        "description": "Operational binding for the MiniMax voice cloning pipeline (mimo-v2.5-tts-voiceclone + speech-2.8-hd). Four-phase protocol: Ingestion → Calibration → Execution → Deployment. F13 SOVEREIGN-gated identity creation. i-ARIF voice profile lives here.",
+        "version": "1.1.0",
+        "author": "kimi-code (FI-008) for ARIF",
+        "forged": "2026-08-18",
+        "revised": "2026-08-19",
+        "floor_scope": "",
+        "extends": "",
+        "tags": "",
+        "owner": "AAA",
+        "capability_tier": "fed-realtime-voice",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "AAA-voice-cloning-qwen-cloud",
+      "category": "aaa",
+      "path": "/root/AAA/skills/AAA-voice-cloning-qwen-cloud/SKILL.md",
+      "dir": "/root/AAA/skills/AAA-voice-cloning-qwen-cloud",
+      "frontmatter": {
+        "name": "AAA-voice-cloning-qwen-cloud",
+        "description": "Operational binding for Qwen Cloud voice cloning (qwen-voice-enrollment, voice-enrollment) across Qwen-TTS, Qwen-Omni, CosyVoice, and Qwen-Audio-TTS. Hard constraints: target_model lock-in, 10–20 s sample window, URL vs Base64 ingestion split. Alternative to MiniMax binding when low latency or zero-shot instant enrollment matters.",
+        "version": "1.0.0",
+        "author": "kimi-code (FI-008) for ARIF",
+        "forged": "2026-08-18",
+        "floor_scope": "",
+        "extends": "",
+        "companion": "AAA-voice-cloning-mimo-minimax",
+        "tags": "",
+        "owner": "AAA",
+        "capability_tier": "fed-realtime-voice",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
       "name": "AGI-agentic-web",
       "category": "agi",
       "path": "/root/AAA/skills/AGI-agentic-web/SKILL.md",
@@ -86,6 +299,25 @@
         "skills": "[]",
         "canonical": "/root/forge_work/2026-08-10-browser-zen/BROWSER_ZEN_MAP.md",
         "machine_inventory": "/root/forge_work/2026-08-10-browser-zen/TOOL_INVENTORY.jsonl"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "AGI-audio-quantum-cognition",
+      "category": "agi",
+      "path": "/root/AAA/skills/AGI-audio-quantum-cognition/SKILL.md",
+      "dir": "/root/AAA/skills/AGI-audio-quantum-cognition",
+      "frontmatter": {
+        "name": "AGI-audio-quantum-cognition",
+        "description": "Quantum-state audio cognition doctrine for the arifOS federation. Audio as superposition — every agent that touches audio must understand it is the quantum modality.",
+        "version": "1.0.0",
+        "author": "FI-003 Qwen Code (333-AGI)",
+        "forged": "2026-08-13",
+        "floor_scope": "",
+        "tags": "",
+        "owner": "AAA",
+        "capability_tier": "fed-agent-subagent",
+        "ecology_state": "WARM"
       },
       "has_sk": true
     },
@@ -172,7 +404,35 @@
         "outputs": "",
         "version_lock": "",
         "schema_version": "1",
-        "artifact_hash": "pending",
+        "artifact_hash": "pending"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "AGI-graph-engineering-patterns",
+      "category": "agi",
+      "path": "/root/AAA/skills/AGI-graph-engineering-patterns/SKILL.md",
+      "dir": "/root/AAA/skills/AGI-graph-engineering-patterns",
+      "frontmatter": {
+        "id": "agi-graph-engineering-patterns",
+        "name": "AGI-graph-engineering-patterns",
+        "autonomy_tier": "T1",
+        "version": "1.0.0",
+        "description": ">",
+        "checklist. Source": "@0xwhrrari (Kollective.xyz), mapped to arifOS federation.",
+        "owner": "AAA",
+        "risk_tier": "low",
+        "knowledge_basis": "",
+        "language": "true",
+        "math": "false",
+        "physics": "false",
+        "host_compatibility": "",
+        "dependencies": "",
+        "skills": "",
+        "servers": "[]",
+        "tools": "[]",
+        "examples": "",
+        "tests": "",
         "capability_tier": "fed-agent-subagent",
         "ecology_state": "WARM"
       },
@@ -269,7 +529,9 @@
         "layer": "CODING/FI",
         "floor_scope": "",
         "capability_tier": "fed-agent-subagent",
-        "ecology_state": "WARM"
+        "ecology_state": "WARM",
+        "required_tools": "['terminal']",
+        "tool_gate": "strict"
       },
       "has_sk": true
     },
@@ -400,7 +662,7 @@
         "id": "aaa-agent-invariants",
         "name": "ASI-agent-invariants",
         "autonomy_tier": "T1",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "description": "Compact operating constitution for every AAA agent. Load before any non-trivial",
         "owner": "AAA",
         "risk_tier": "low",
@@ -510,7 +772,9 @@
         "floor_scope": "",
         "autonomy_tier": "T0",
         "capability_tier": "fed-agent-subagent",
-        "ecology_state": "WARM"
+        "ecology_state": "WARM",
+        "required_tools": "['arif_observe', 'forge_fetch']",
+        "tool_gate": "permissive"
       },
       "has_sk": true
     },
@@ -676,6 +940,27 @@
         "layer": "HEXAGON",
         "floor_scope": "",
         "capability_tier": "fed-long-context",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "AUDIT-repo-reality",
+      "category": "audit",
+      "path": "/root/AAA/skills/AUDIT-repo-reality/SKILL.md",
+      "dir": "/root/AAA/skills/AUDIT-repo-reality",
+      "frontmatter": {
+        "name": "AUDIT-repo-reality",
+        "id": "audit-repo-reality",
+        "risk_tier": "low",
+        "description": "REPO_REALITY_AUDIT::v1.2 — Sovereign doctrine (F13, 2026-08-14). Audit codebase reality, not AI output. Categories: STUB Tiers T1-T4, ORPHAN, SHIM, REALITY_LEAK, AUTHORITY_LEAK, CLAIM_DRIFT (A comment/B architecture/C metric), FAKE_METRIC. Pipeline: SCAN→CONTEXT→REACHABILITY→RUNTIME_IMPACT→VERDICT. HEURISTIC≠MEASUREMENT semantics. Nuclear Rule: no abstract feature without concrete consumer. USE WHEN: audit repo, find stubs, reality audit, orphan/shim detection, verify implementation claims.",
+        "version": "2026.08.14.2",
+        "tags": "[audit, reality, stub, dead-code, orphan, shim, reality-leak, authority-leak, F2, F7, F11]",
+        "floor_scope": "[F02, F04, F07, F11]",
+        "owner": "F13 SOVEREIGN (Arif) — forged by 333-AGI",
+        "autonomy_tier": "T0",
+        "reference": "REPO_REALITY_AUDIT::v1.2",
+        "capability_tier": "fed-reasoning-heavy",
         "ecology_state": "WARM"
       },
       "has_sk": true
@@ -934,23 +1219,6 @@
       "has_sk": true
     },
     {
-      "name": "FORGE-context-compress",
-      "category": "forge",
-      "path": "/root/AAA/skills/FORGE-context-compress/SKILL.md",
-      "dir": "/root/AAA/skills/FORGE-context-compress",
-      "frontmatter": {
-        "name": "FORGE-context-compress",
-        "version": "1.0.0-2026.07.13",
-        "description": "Context window compression for massive log/output payloads",
-        "domain": "forge",
-        "cognitive_engine_notes": "",
-        "claude": "Use <critical_sections> XML tags to mark preserved coordinates. Claude's extended context handles the structural wrapping natively.",
-        "codex": "Output compressed payload as strict JSON with `preserved_coordinates` array. Codex handles strict schema adherence best.",
-        "hermes": "Output as `--- COMPRESSED ---` markdown blocks with inline failure markers. Hermes reads conversational formatting fastest."
-      },
-      "has_sk": true
-    },
-    {
       "name": "FORGE-context-compressor",
       "category": "forge",
       "path": "/root/AAA/skills/FORGE-context-compressor/SKILL.md",
@@ -958,11 +1226,17 @@
       "frontmatter": {
         "name": "FORGE-context-compressor",
         "description": "Compress oversized logs, transcripts, diffs, and telemetry before they",
+        "version": "1.1.0-2026.08.21",
+        "merged_from": "[FORGE-context-compress, FORGE-data-compression]",
         "forge_of": "Kimi Code (FI-008) — EUREKA ZEN Phase 3 (gap fill · long-log compression",
         "forged": "2026-07-12 18:33:00+00:00",
         "rationale": "Directive OPERATION EUREKA ZEN explicitly named \"missing context-compression",
         "binding": "FORGE-* skills (cross-CLI), particularly for Grok (FI-010) and long-context",
         "floor_scope": "",
+        "cognitive_engine_notes": "",
+        "claude": "Use <critical_sections> XML tags to mark preserved coordinates. Claude's extended context handles the structural wrapping natively.",
+        "codex": "Output compressed payload as strict JSON with `preserved_coordinates` array. Codex handles strict schema adherence best.",
+        "hermes": "Output as `--- COMPRESSED ---` markdown blocks with inline failure markers. Hermes reads conversational formatting fastest.",
         "tags": "",
         "status": "NEW (Phase 3 gap fill)",
         "owner": "A-FORGE",
@@ -983,7 +1257,7 @@
         "risk_tier": "low",
         "description": ">",
         "context loss during agent transitions. USE WHEN": "hand off to\", \"transfer task\",",
-        "version": "1.0.0",
+        "version": "1.1.0",
         "tags": "[handoff, a2a, protocol, delegation, F1, F11]",
         "floor_scope": "[F01, F04, F11]",
         "autonomy_tier": "T1",
@@ -1013,20 +1287,25 @@
       "has_sk": true
     },
     {
-      "name": "FORGE-data-compression",
+      "name": "FORGE-design-intelligence",
       "category": "forge",
-      "path": "/root/AAA/skills/FORGE-data-compression/SKILL.md",
-      "dir": "/root/AAA/skills/FORGE-data-compression",
+      "path": "/root/AAA/skills/FORGE-design-intelligence/SKILL.md",
+      "dir": "/root/AAA/skills/FORGE-design-intelligence",
       "frontmatter": {
-        "name": "FORGE-data-compression",
-        "description": "Context-window-aware data compression for long logs, code dumps, and",
-        "pipelines. USE WHEN": "compress this log\", \"summarize before context window\", \"fit",
-        "version": "1.0.0",
-        "tags": "",
-        "floor_scope": "",
+        "id": "FORGE-design-intelligence",
+        "name": "FORGE-design-intelligence",
+        "version": "1.0.0-2026-08-20",
+        "description": ">",
         "owner": "A-FORGE",
-        "capability_tier": "fed-long-context",
-        "ecology_state": "WARM"
+        "risk_tier": "low",
+        "floor_scope": "['F1', 'F4', 'F6', 'F13']",
+        "autonomy_tier": "T1",
+        "capability_tier": "fed-reasoning-heavy",
+        "ecology_state": "WARM",
+        "tags": "[design, ui, ux, tailwind, accessibility, typography, color, styles, patterns]",
+        "trigger_phrases": "",
+        "dependencies": "",
+        "skills": ""
       },
       "has_sk": true
     },
@@ -1138,7 +1417,14 @@
       "category": "forge",
       "path": "/root/AAA/skills/FORGE-esm-require-guard/SKILL.md",
       "dir": "/root/AAA/skills/FORGE-esm-require-guard",
-      "frontmatter": {},
+      "frontmatter": {
+        "name": "FORGE-esm-require-guard",
+        "description": "ESM/CommonJS interop guard - blocks silent require() failure of .mjs modules at pre-commit. Foodset-derived from scar-001-esm-sct-silent-fail (2026-08-13). Static analysis, read-only.",
+        "tags": "[forge, guard, esm, pre-commit, scar-derived]",
+        "license": "MIT",
+        "capability_tier": "default",
+        "ecology_state": "WARM"
+      },
       "has_sk": true
     },
     {
@@ -1236,30 +1522,6 @@
         "floor_scope": "[F1, F2, F11]",
         "autonomy_tier": "T1",
         "tags": "[github, git, runbook, ops]",
-        "capability_tier": "fed-agent-subagent",
-        "ecology_state": "WARM"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "FORGE-github-workflow",
-      "category": "forge",
-      "path": "/root/AAA/skills/FORGE-github-workflow/SKILL.md",
-      "dir": "/root/AAA/skills/FORGE-github-workflow",
-      "frontmatter": {
-        "id": "FORGE-github-workflow",
-        "name": "FORGE-github-workflow",
-        "risk_tier": "low",
-        "version": "2.0.0",
-        "description": "Class-level umbrella for GitHub operations — auth, repo management,",
-        "one. BIJAKSANA": "XML-tagged for Claude, numbered steps for Codex, imperative for",
-        "floor_scope": "",
-        "cognitive_hints": "",
-        "claude": "Use <workflow>, <pr-lifecycle>, <issue-lifecycle> tags. Extended context",
-        "codex": "GitHub API schema adherence required. Each operation: authenticate → execute",
-        "hermes": "GitHub op? Auth. Execute. Verify. Log. Next.",
-        "owner": "A-FORGE",
-        "autonomy_tier": "T1",
         "capability_tier": "fed-agent-subagent",
         "ecology_state": "WARM"
       },
@@ -1638,7 +1900,9 @@
         "floor_scope": "",
         "autonomy_tier": "T0",
         "capability_tier": "fed-reasoning-heavy",
-        "ecology_state": "WARM"
+        "ecology_state": "WARM",
+        "required_tools": "['forge_health_check']",
+        "tool_gate": "strict"
       },
       "has_sk": true
     },
@@ -1746,6 +2010,27 @@
         "autonomy_tier": "T0",
         "capability_tier": "fed-agent-subagent",
         "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "FORGE-musyawarah-gotong",
+      "category": "forge",
+      "path": "/root/AAA/skills/FORGE-musyawarah-gotong/SKILL.md",
+      "dir": "/root/AAA/skills/FORGE-musyawarah-gotong",
+      "frontmatter": {
+        "id": "forge-musyawarah-gotong",
+        "name": "FORGE-musyawarah-gotong",
+        "version": "1.0.0",
+        "description": ">",
+        "position files. Not a chatboard. Grok": "workflow musyawarah-gotong.",
+        "owner": "AAA",
+        "risk_tier": "medium",
+        "floor_scope": "[F1, F2, F3, F4, F7, F9, F11, F13]",
+        "autonomy_tier": "T1",
+        "capability_tier": "fed-agent-subagent",
+        "ecology_state": "WARM",
+        "tags": "[musyawarah, gotong-royong, deliberation, handoff, F3, F13]"
       },
       "has_sk": true
     },
@@ -2060,22 +2345,6 @@
       "has_sk": true
     },
     {
-      "name": "FORGE-sct-federation-ingress",
-      "category": "forge",
-      "path": "/root/AAA/skills/FORGE-sct-federation-ingress/SKILL.md",
-      "dir": "/root/AAA/skills/FORGE-sct-federation-ingress",
-      "frontmatter": {
-        "name": "FORGE-sct-federation-ingress",
-        "description": ">",
-        "Use when": "SCT gate, session_token, federation_sct, SCT_AMBIGUOUS, tool_authority,",
-        "version": "2026.07.20",
-        "floors": "[F1, F2, F11, F12, F13]",
-        "capability_tier": "fed-long-context",
-        "ecology_state": "WARM"
-      },
-      "has_sk": true
-    },
-    {
       "name": "FORGE-seal-a-close",
       "category": "forge",
       "path": "/root/AAA/skills/FORGE-seal-a-close/SKILL.md",
@@ -2212,7 +2481,7 @@
       "frontmatter": {
         "id": "subagent-spawn-template",
         "name": "FORGE-subagent-spawn",
-        "version": "1.0.0",
+        "version": "1.1.0",
         "description": "Standard contract for spawning bounded, auditable sub-agents — input contract, output schema, evidence requirements.",
         "owner": "AAA",
         "risk_tier": "medium",
@@ -2505,6 +2774,36 @@
       "has_sk": true
     },
     {
+      "name": "Malaysia Reality Stack — Primary-Source Routing",
+      "category": "general",
+      "path": "/root/AAA/skills/MY-REALITY-STACK/SKILL.md",
+      "dir": "/root/AAA/skills/MY-REALITY-STACK",
+      "frontmatter": {
+        "id": "MY-REALITY-STACK",
+        "name": "Malaysia Reality Stack — Primary-Source Routing",
+        "version": "1.0.0-2026.08.15",
+        "description": "Route all Malaysia macro/policy/energy/corporate claims through primary government/financial sources using EXISTING federation tools. NO new MCP servers. Hard F2 provenance law for any MY figure.",
+        "owner": "F13 SOVEREIGN (directive 2026-08-15, external proposal adapted)",
+        "risk_tier": "low",
+        "floor_scope": "[F2, F7, F9, F10]",
+        "autonomy_tier": "T0",
+        "capability_tier": "fed-agent-subagent",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "PETRONAS-intelligence-router",
+      "category": "petronas",
+      "path": "/root/AAA/skills/PETRONAS-intelligence-router/SKILL.md",
+      "dir": "/root/AAA/skills/PETRONAS-intelligence-router",
+      "frontmatter": {
+        "capability_tier": "fed-agent-subagent",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
       "name": "RSI - Federation Mesh (Cross-Agent Recursive Improvement)",
       "category": "rsi",
       "path": "/root/AAA/skills/RSI-federation-mesh/SKILL.md",
@@ -2528,22 +2827,24 @@
       "has_sk": true
     },
     {
-      "name": "RSI - Recursive Self-Improvement Protocol",
+      "name": "RSI-recursive-improvement",
       "category": "rsi",
       "path": "/root/AAA/skills/RSI-recursive-improvement/SKILL.md",
       "dir": "/root/AAA/skills/RSI-recursive-improvement",
       "frontmatter": {
-        "id": "RSI-recursive-improvement",
-        "name": "RSI - Recursive Self-Improvement Protocol",
-        "version": "2.0.0",
-        "description": "Mandatory recursive self-improvement at session boundaries and phase transitions. Diagnoses bottlenecks, installs fixes, writes to RSI ledger, and carries forward to next session. The federation learns from every session or it stagnates.",
-        "owner": "333-AGI",
-        "risk_tier": "low",
-        "floor_scope": "F2, F4, F7, F11",
-        "autonomy_tier": "T1",
-        "trigger_when": "session_end, phase_boundary, repetition_alert, bottleneck_detected",
-        "capability_tier": "fed-agent-subagent",
+        "capability_tier": "fed-long-context",
         "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "a2a-task-delegator",
+      "category": "a2a",
+      "path": "/root/AAA/skills/a2a-task-delegator/SKILL.md",
+      "dir": "/root/AAA/skills/a2a-task-delegator",
+      "frontmatter": {
+        "name": "a2a-task-delegator",
+        "description": "Standardized JSON-RPC state machine, task queue delegation, and precondition contract manager for cross-vendor multi-agent swarms."
       },
       "has_sk": true
     },
@@ -2795,6 +3096,19 @@
       "has_sk": true
     },
     {
+      "name": "browser-playwright-runner",
+      "category": "browser",
+      "path": "/root/AAA/skills/browser-playwright-runner/SKILL.md",
+      "dir": "/root/AAA/skills/browser-playwright-runner",
+      "frontmatter": {
+        "name": "browser-playwright-runner",
+        "description": "Automated headless browser testing, end-to-end UI verification, full-page screenshot capture, visual regression checks, and client-side DOM assertions via Playwright.",
+        "capability_tier": "fed-multimodal-vision",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
       "name": "causal555-pywhy",
       "category": "causal555",
       "path": "/root/AAA/skills/causal555-pywhy/SKILL.md",
@@ -2855,6 +3169,19 @@
       "has_sk": true
     },
     {
+      "name": "code-security-static-auditor",
+      "category": "code",
+      "path": "/root/AAA/skills/code-security-static-auditor/SKILL.md",
+      "dir": "/root/AAA/skills/code-security-static-auditor",
+      "frontmatter": {
+        "name": "code-security-static-auditor",
+        "description": "Multi-stage automated code health, type-checking, linting, unit test coverage, and AST security vulnerability auditor combining Ruff, Pyright, Pytest, and Semgrep.",
+        "capability_tier": "fed-long-context",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
       "name": "cognitive-commands",
       "category": "cognitive",
       "path": "/root/AAA/skills/cognitive-commands/SKILL.md",
@@ -2907,7 +3234,22 @@
         "metadata": "",
         "author": "runpod",
         "version": "1.1.2\" # x-release-please-version",
-        "license": "Apache-2.0"
+        "license": "Apache-2.0",
+        "capability_tier": "fed-agent-subagent",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "contextstream-memory-code-search",
+      "category": "general",
+      "path": "/root/AAA/skills/contextstream-memory-code-search/SKILL.md",
+      "dir": "/root/AAA/skills/contextstream-memory-code-search",
+      "frontmatter": {
+        "name": "contextstream-memory-code-search",
+        "description": "Persistent conversational memory, semantic code search, dependency graph mapping, pre-compaction session capture, and workspace Q&A via ContextStream MCP server (mcp.contextstream.io/mcp).",
+        "capability_tier": "fed-long-context",
+        "ecology_state": "WARM"
       },
       "has_sk": true
     },
@@ -2940,7 +3282,24 @@
       "frontmatter": {
         "name": "image-text-editing",
         "description": "Edit existing images to add, replace, or remove text using PIL/Pillow",
-        "trigger": "User provides an image and asks to add, change, or remove text; user says \"same format\", \"exact copy\", \"just add\", \"change the value\"; user sends a screenshot and wants modifications to it."
+        "trigger": "User provides an image and asks to add, change, or remove text; user says \"same format\", \"exact copy\", \"just add\", \"change the value\"; user sends a screenshot and wants modifications to it.",
+        "required_tools": "['image_generate', 'vision_analyze']",
+        "tool_gate": "strict",
+        "capability_tier": "fed-multimodal-vision",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "decodo-web-ecommerce-scraping",
+      "category": "decodo",
+      "path": "/root/AAA/skills/decodo-web-ecommerce-scraping/SKILL.md",
+      "dir": "/root/AAA/skills/decodo-web-ecommerce-scraping",
+      "frontmatter": {
+        "name": "decodo-web-ecommerce-scraping",
+        "description": "Web scraping layer for AI agents via Decodo MCP server (mcp.decodo.com). Scrape JavaScript-heavy web pages to Markdown/JSON/screenshots, search engines (Google, Bing), eCommerce (Amazon, Walmart, Target, TikTok Shop), social media (Reddit, TikTok, YouTube), and AI search (ChatGPT, Perplexity).",
+        "capability_tier": "fed-multimodal-vision",
+        "ecology_state": "WARM"
       },
       "has_sk": true
     },
@@ -2980,6 +3339,30 @@
         "floor_scope": "['F1', 'F4']",
         "autonomy_tier": "T0",
         "capability_tier": "fed-long-context",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "duckdb-analytics-engine",
+      "category": "duckdb",
+      "path": "/root/AAA/skills/duckdb-analytics-engine/SKILL.md",
+      "dir": "/root/AAA/skills/duckdb-analytics-engine",
+      "frontmatter": {
+        "name": "duckdb-analytics-engine",
+        "description": "In-process columnar SQL analytics engine over Parquet, CSV, JSONL, and well log (.las) files using DuckDB and Polars."
+      },
+      "has_sk": true
+    },
+    {
+      "name": "emem-shared-memory",
+      "category": "emem",
+      "path": "/root/AAA/skills/emem-shared-memory/SKILL.md",
+      "dir": "/root/AAA/skills/emem-shared-memory",
+      "frontmatter": {
+        "name": "emem-shared-memory",
+        "description": "Verifiable shared memory layer for multi-agent systems and Earth observation (emem.dev). Enables citing signed facts (emem:fact: tokens), offline receipt verification, and cross-agent A2A collaboration without vendor lock-in.",
+        "capability_tier": "fed-agent-subagent",
         "ecology_state": "WARM"
       },
       "has_sk": true
@@ -3085,6 +3468,79 @@
       "has_sk": true
     },
     {
+      "name": "fi-mesh-check",
+      "category": "fi",
+      "path": "/root/AAA/skills/fi-mesh-check/SKILL.md",
+      "dir": "/root/AAA/skills/fi-mesh-check",
+      "frontmatter": {
+        "id": "fi-mesh-check",
+        "name": "fi-mesh-check",
+        "version": "1.0.0",
+        "description": "Probe all FI coder CLIs live (qwen/kimi/opencode/codex/claude/grok/gemini) with a minimal falsification prompt and report the mesh matrix. Use when Arif says 'mesh check', 'test all coder CLIs', 'FI mesh health', 'are all harnesses alive', or before/after cross-FI plumbing work.",
+        "owner": "333-AGI",
+        "risk_tier": "low",
+        "floor_scope": "[F2, F4]",
+        "capability_tier": "fed-long-context",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "fi-qwen-upgrade",
+      "category": "fi",
+      "path": "/root/AAA/skills/fi-qwen-upgrade/SKILL.md",
+      "dir": "/root/AAA/skills/fi-qwen-upgrade",
+      "frontmatter": {
+        "id": "fi-qwen-upgrade",
+        "name": "fi-qwen-upgrade",
+        "version": "1.0.0",
+        "description": "Atomic-swap upgrade of the Qwen Code release install (SHA256-verified, rollback-preserved). Use when Arif says 'upgrade qwen', 'qwen update', 'new qwen version', or when `qwen update` refuses with a misleading git-clone message.",
+        "owner": "333-AGI",
+        "risk_tier": "medium",
+        "floor_scope": "[F1, F2, F11]",
+        "capability_tier": "fed-agent-subagent",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "fi-zai-probe",
+      "category": "fi",
+      "path": "/root/AAA/skills/fi-zai-probe/SKILL.md",
+      "dir": "/root/AAA/skills/fi-zai-probe",
+      "frontmatter": {
+        "id": "fi-zai-probe",
+        "name": "fi-zai-probe",
+        "version": "1.0.0",
+        "description": "Probe Z.AI GLM coding plan health — models list, anthropic + openai endpoints, credit reality, cross-check 5 wired surfaces. Use when Arif says 'zai probe', 'check Z.AI plan', 'is GLM alive', 'zai health', or when any zai-backed harness (Qwen/Kimi/OpenCode/Claude) behaves oddly.",
+        "owner": "333-AGI",
+        "risk_tier": "low",
+        "floor_scope": "[F2, F4]",
+        "capability_tier": "fed-reasoning-heavy",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "firecrawl-web-search",
+      "category": "firecrawl",
+      "path": "/root/AAA/skills/firecrawl-web-search/SKILL.md",
+      "dir": "/root/AAA/skills/firecrawl-web-search",
+      "frontmatter": {
+        "name": "firecrawl-web-search",
+        "id": "firecrawl-web-search",
+        "version": "1.1.0",
+        "owner": "AAA",
+        "risk_tier": "low",
+        "floor_scope": "[F1, F2, F4, F7, F12]",
+        "description": "Web search + scrape + interact + parse + monitor + research via Firecrawl — used to extend AI coding tools (Claude Code, Codex, OpenCode, OpenClaw, Hermes) with real-time information retrieval. Activates when the user asks to look something up on the web, fetch a URL, interact with a page, parse a local document, monitor changes, or run research.",
+        "autonomy_tier": "T1",
+        "capability_tier": "fed-long-context",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
       "name": "flash",
       "category": "general",
       "path": "/root/AAA/skills/flash/SKILL.md",
@@ -3097,7 +3553,78 @@
         "metadata": "",
         "author": "runpod",
         "version": "1.1.2\" # x-release-please-version",
-        "license": "Apache-2.0"
+        "license": "Apache-2.0",
+        "capability_tier": "fed-agent-subagent",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "forge-multimodal-router",
+      "category": "forge",
+      "path": "/root/AAA/skills/forge-multimodal-router/SKILL.md",
+      "dir": "/root/AAA/skills/forge-multimodal-router",
+      "frontmatter": {
+        "name": "forge-multimodal-router",
+        "id": "forge-multimodal-router",
+        "risk_tier": "low",
+        "description": "Federation-wide multimodal routing skill. Resolves any vision/audio/video/somatic request to its canonical model + endpoint via /root/.config/federation-models.json (SOT). USE WHEN: \"which model should I use for X\", \"route this image/audio/video to the right engine\", \"unify multimodal routing across agents\", \"I have an image/audio/video and need to know where it goes\".",
+        "version": "1.0.0",
+        "tags": "",
+        "floor_scope": "",
+        "owner": "AAA",
+        "autonomy_tier": "T1",
+        "capability_tier": "fed-multimodal-router",
+        "ecology_state": "WARM",
+        "consumes_sot": "/root/.config/federation-models.json",
+        "mirror_paths": "",
+        "forged": "2026-08-20",
+        "forged_by": "FI-003 (Qwen Code)",
+        "f13_directive": "make sure my hermes agent telegram ASI_arifos_bot know how to use this",
+        "constitutional_floor": "F11 AUDIT — every routing decision logged to VAULT999 receipts"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "forge-vss-parser",
+      "category": "forge",
+      "path": "/root/AAA/skills/forge-vss-parser/SKILL.md",
+      "dir": "/root/AAA/skills/forge-vss-parser",
+      "frontmatter": {
+        "name": "forge-vss-parser",
+        "id": "forge-vss-parser",
+        "version": "1.0.0-2026.08.18",
+        "owner": "555-ASI",
+        "risk_tier": "low",
+        "autonomy_tier": "T1",
+        "floor_scope": "",
+        "capability_tier": "fed-agent-subagent",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "forge-vss-verifier-suite",
+      "category": "forge",
+      "path": "/root/AAA/skills/forge-vss-verifier-suite/SKILL.md",
+      "dir": "/root/AAA/skills/forge-vss-verifier-suite",
+      "frontmatter": {
+        "name": "forge-vss-verifier-suite",
+        "id": "forge-vss-verifier-suite",
+        "version": "1.0.0-2026.08.18",
+        "owner": "555-ASI",
+        "risk_tier": "low",
+        "autonomy_tier": "T1",
+        "floor_scope": "",
+        "description": ">",
+        "USE WHEN": "verify this generated image\", \"check if generation has violations\",",
+        "tags": "",
+        "harness": "hermes|kimi|opencode|openclaw|claude|codex",
+        "domain": "meta",
+        "capability_tier": "fed-multimodal-vision",
+        "ecology_state": "WARM",
+        "required_tools": "",
+        "tool_gate": "strict"
       },
       "has_sk": true
     },
@@ -3108,16 +3635,11 @@
       "dir": "/root/AAA/skills/geological-artifact-rigor",
       "frontmatter": {
         "name": "geological-artifact-rigor",
-        "owner": "AAA",
         "description": "Standing instruction for all geoscience artifacts — panels, dossiers, maps, cross-sections",
         "version": "1.2.0",
         "author": "arif-sovereign",
         "tags": "[geology, GEOX, rigor, standing-instruction, F2-truth]",
-        "related": "[hermes-prime-identity, explorer-dispatch-protocol, measure-before-acting, evidence-before-elegance]",
-        "source": "hermes-only",
-        "synthesized": "2026-08-08",
-        "capability_tier": "fed-reasoning-heavy",
-        "ecology_state": "WARM"
+        "related": "[hermes-prime-identity, explorer-dispatch-protocol, measure-before-acting, evidence-before-elegance]"
       },
       "has_sk": true
     },
@@ -3152,9 +3674,7 @@
         "trinitarian": "",
         "functional": "",
         "layer": "HEXAGON",
-        "floor_scope": "",
-        "capability_tier": "fed-reasoning-heavy",
-        "ecology_state": "WARM"
+        "floor_scope": ""
       },
       "has_sk": true
     },
@@ -3166,11 +3686,11 @@
       "frontmatter": {
         "name": "geox-production-cockpit",
         "id": "geox-production-cockpit",
-        "version": "1.0.0",
-        "owner": "AAA",
+        "version": "1.1.0-2026.08.17",
+        "owner": "GEOX",
         "risk_tier": "low",
         "floor_scope": "[F1, F2, F4, F7]",
-        "description": "Control plane router for GEOX agentic Earth-reasoning stack. Classifies requests into OBSERVE, COMPUTE, INTERPRET, CHALLENGE, CERTIFY, DEPLOY, ACTUATE lanes and enforces non-negotiable state boundaries before routing to specialist skills or tool surfaces.",
+        "description": "Control plane router for GEOX agentic Earth-reasoning stack. Classifies requests into OBSERVE, COMPUTE, INTERPRET, CHALLENGE, CERTIFY lanes and enforces non-negotiable state boundaries before routing to domain skills or tool surfaces.",
         "autonomy_tier": "T1",
         "capability_tier": "fed-reasoning-heavy",
         "ecology_state": "WARM"
@@ -3279,6 +3799,25 @@
         "tags": "[constitutional, seal, propose, substrate-primitive, telegram-native, hermes]",
         "license": "MIT",
         "capability_tier": "fed-agent-subagent",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "image-analyzer-vision",
+      "category": "image",
+      "path": "/root/AAA/skills/image-analyzer-vision/SKILL.md",
+      "dir": "/root/AAA/skills/image-analyzer-vision",
+      "frontmatter": {
+        "name": "image-analyzer-vision",
+        "id": "image-analyzer-vision",
+        "version": "1.0.0",
+        "owner": "AAA",
+        "risk_tier": "low",
+        "floor_scope": "[F1, F2, F4, F7]",
+        "description": "Adds visual understanding to text-only Token Plan models (glm-5, glm-4.7, MiniMax-M2.5, qwen3-max-2026-01-23, qwen3-coder-next, qwen3-coder-plus) by routing image inputs through a vision-capable model. Activates when the user passes an image to a text-only model or asks 'what's in this image'.",
+        "autonomy_tier": "T1",
+        "capability_tier": "fed-multimodal-vision",
         "ecology_state": "WARM"
       },
       "has_sk": true
@@ -3432,6 +3971,19 @@
       "has_sk": true
     },
     {
+      "name": "mapbox-cartography-gis",
+      "category": "mapbox",
+      "path": "/root/AAA/skills/mapbox-cartography-gis/SKILL.md",
+      "dir": "/root/AAA/skills/mapbox-cartography-gis",
+      "frontmatter": {
+        "name": "mapbox-cartography-gis",
+        "description": "Mapbox developer API suite, cartographic design, style management, GeoJSON validation/preview, coordinate conversion, and token security via Mapbox DevKit MCP server (mcp-devkit.mapbox.com).",
+        "capability_tier": "fed-reasoning-heavy",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
       "name": "aaa-image-editing",
       "category": "aaa",
       "path": "/root/AAA/skills/media/aaa-image-editing/SKILL.md",
@@ -3443,7 +3995,11 @@
         "risk_tier": "T1",
         "floor_scope": "[F2, F4, F7]",
         "autonomy_tier": "T1",
-        "description": "Image editing vs generation — route the right model for the task. Covers identity-preserving edits, multi-model ensemble runs, endpoint fallback, and Gemini Nano Banana family best practices. Triggers when user provides a real photo and asks to edit/transform/place-in-scene."
+        "description": "Image editing vs generation — route the right model for the task. Covers identity-preserving edits, multi-model ensemble runs, endpoint fallback, and Gemini Nano Banana family best practices. Triggers when user provides a real photo and asks to edit/transform/place-in-scene.",
+        "required_tools": "['image_generate', 'vision_analyze']",
+        "tool_gate": "strict",
+        "capability_tier": "fed-multimodal-vision",
+        "ecology_state": "WARM"
       },
       "has_sk": true
     },
@@ -3466,7 +4022,9 @@
         "axis_version": "1.0.0",
         "autonomy_tier": "T1",
         "capability_tier": "fed-agent-subagent",
-        "ecology_state": "WARM"
+        "ecology_state": "WARM",
+        "required_tools": "['arif_memory']",
+        "tool_gate": "strict"
       },
       "has_sk": true
     },
@@ -3508,7 +4066,9 @@
         "axis_version": "1.0.0",
         "autonomy_tier": "T0",
         "capability_tier": "fed-agent-subagent",
-        "ecology_state": "WARM"
+        "ecology_state": "WARM",
+        "required_tools": "['arif_observe', 'arif_think']",
+        "tool_gate": "strict"
       },
       "has_sk": true
     },
@@ -3651,6 +4211,49 @@
       "has_sk": true
     },
     {
+      "name": "pgvector-sovereign-rag",
+      "category": "pgvector",
+      "path": "/root/AAA/skills/pgvector-sovereign-rag/SKILL.md",
+      "dir": "/root/AAA/skills/pgvector-sovereign-rag",
+      "frontmatter": {
+        "name": "pgvector-sovereign-rag",
+        "description": "Zero-external-dependency local RAG and private vector search using PostgreSQL + pgvector container running on VPS (localhost:5432)."
+      },
+      "has_sk": true
+    },
+    {
+      "name": "prompts-chat-library",
+      "category": "prompts",
+      "path": "/root/AAA/skills/prompts-chat-library/SKILL.md",
+      "dir": "/root/AAA/skills/prompts-chat-library",
+      "frontmatter": {
+        "name": "prompts-chat-library",
+        "description": "Access thousands of curated AI system prompts, role personas, task templates, and variable substitution templates directly via prompts.chat MCP server (@fkadev/prompts.chat-mcp).",
+        "capability_tier": "fed-agent-subagent",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "qwen-harness-tools",
+      "category": "qwen",
+      "path": "/root/AAA/skills/qwen-harness-tools/SKILL.md",
+      "dir": "/root/AAA/skills/qwen-harness-tools",
+      "frontmatter": {
+        "name": "qwen-harness-tools",
+        "id": "qwen-harness-tools",
+        "version": "1.0.0",
+        "owner": "AAA",
+        "risk_tier": "low",
+        "floor_scope": "[F1, F2, F4, F7]",
+        "description": "Documents Qwen Token Plan Harness tools (web search, code interpreter, web scraping, reverse image search, text-to-image search) that are built into supported models. Activates when the user asks for real-time web info, code execution in a sandbox, or image search while using a Token Plan model.",
+        "autonomy_tier": "T1",
+        "capability_tier": "fed-multimodal-vision",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
       "name": "Reality Loop - Autonomous 000 to 999 Recursive Improvement",
       "category": "reality loop",
       "path": "/root/AAA/skills/reality-loop-operator/SKILL.md",
@@ -3723,7 +4326,9 @@
         "metadata": "",
         "author": "runpod",
         "version": "1.1.2\" # x-release-please-version",
-        "license": "Apache-2.0"
+        "license": "Apache-2.0",
+        "capability_tier": "fed-multimodal-vision",
+        "ecology_state": "WARM"
       },
       "has_sk": true
     },
@@ -3740,7 +4345,9 @@
         "metadata": "",
         "author": "runpod",
         "version": "1.1.2\" # x-release-please-version",
-        "license": "Apache-2.0"
+        "license": "Apache-2.0",
+        "capability_tier": "fed-agent-subagent",
+        "ecology_state": "WARM"
       },
       "has_sk": true
     },
@@ -3755,7 +4362,9 @@
         "metadata": "",
         "author": "runpod",
         "version": "1.1.2\" # x-release-please-version",
-        "license": "Apache-2.0"
+        "license": "Apache-2.0",
+        "capability_tier": "fed-multimodal-vision",
+        "ecology_state": "WARM"
       },
       "has_sk": true
     },
@@ -3772,7 +4381,9 @@
         "metadata": "",
         "author": "runpod",
         "version": "1.1.2\" # x-release-please-version",
-        "license": "Apache-2.0"
+        "license": "Apache-2.0",
+        "capability_tier": "fed-agent-subagent",
+        "ecology_state": "WARM"
       },
       "has_sk": true
     },
@@ -3796,6 +4407,19 @@
       "has_sk": true
     },
     {
+      "name": "scrapegraph-search",
+      "category": "scrapegraph",
+      "path": "/root/AAA/skills/scrapegraph-search/SKILL.md",
+      "dir": "/root/AAA/skills/scrapegraph-search",
+      "frontmatter": {
+        "name": "scrapegraph-search",
+        "description": "AI-powered web scraping, multi-format page extraction, async crawling, schema generation, and monitoring via ScrapeGraph AI MCP server (scrapegraph-mcp).",
+        "capability_tier": "fed-long-context",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
       "name": "scripts",
       "category": "general",
       "path": "/root/AAA/skills/scripts/SKILL.md",
@@ -3810,6 +4434,32 @@
         "floor_scope": "['F1']",
         "autonomy_tier": "T0",
         "capability_tier": "fed-agent-subagent",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "searxng-search",
+      "category": "searxng",
+      "path": "/root/AAA/skills/searxng-search/SKILL.md",
+      "dir": "/root/AAA/skills/searxng-search",
+      "frontmatter": {
+        "name": "searxng-search",
+        "description": "Private, self-hosted web search and URL content reader via SearXNG MCP server (mcp-searxng). Use for privacy-preserving web searches, query suggestions, instance discovery, and converting web pages to markdown.",
+        "capability_tier": "fed-agent-subagent",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "serpapi-search",
+      "category": "serpapi",
+      "path": "/root/AAA/skills/serpapi-search/SKILL.md",
+      "dir": "/root/AAA/skills/serpapi-search",
+      "frontmatter": {
+        "name": "serpapi-search",
+        "description": "Comprehensive multi-engine search engine API & structured SERP extractor via SerpApi MCP server (mcp.serpapi.com). Supports Google, Bing, Yahoo, DuckDuckGo, YouTube, eBay, Google Scholar, stock market, and weather data.",
+        "capability_tier": "fed-long-context",
         "ecology_state": "WARM"
       },
       "has_sk": true
@@ -3837,6 +4487,52 @@
         "requires_toolsets": "[]",
         "source": "hermes-only",
         "synthesized": "2026-08-08",
+        "capability_tier": "fed-agent-subagent",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "skill-creator",
+      "category": "skill",
+      "path": "/root/AAA/skills/skill-creator/SKILL.md",
+      "dir": "/root/AAA/skills/skill-creator",
+      "frontmatter": {
+        "name": "skill-creator",
+        "description": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Codex's capabilities with specialized knowledge, workflows, or tool integrations.",
+        "metadata": "",
+        "short-description": "Create or update a skill",
+        "capability_tier": "fed-agent-subagent",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "Sovereign Recognize",
+      "category": "general",
+      "path": "/root/AAA/skills/sovereign-recognize/SKILL.md",
+      "dir": "/root/AAA/skills/sovereign-recognize",
+      "frontmatter": {
+        "id": "sovereign-recognize",
+        "name": "Sovereign Recognize",
+        "version": "1.0.0",
+        "description": "Identifies and recognizes the sovereign (Arif, F13) before any action that targets them, addresses them, or binds them. Prevents agent",
+        "owner": "AAA",
+        "risk_tier": "low",
+        "knowledge_basis": "",
+        "physics": "false",
+        "math": "false",
+        "language": "true",
+        "host_compatibility": "",
+        "dependencies": "",
+        "skills": "[arif-agent-bootstrap, CONSTITUTIONAL_REFLEX]",
+        "servers": "[]",
+        "tools": "[]",
+        "examples": "",
+        "tests": "",
+        "version_lock": "",
+        "schema_version": "1",
+        "artifact_hash": "pending",
         "capability_tier": "fed-agent-subagent",
         "ecology_state": "WARM"
       },
@@ -3894,11 +4590,49 @@
       "frontmatter": {
         "name": "token-plan-image",
         "id": "token-plan-image",
+        "version": "1.1.0",
+        "owner": "AAA",
+        "risk_tier": "low",
+        "floor_scope": "[F1, F2, F4, F7]",
+        "description": "Call Qwen Token Plan image models on the Personal allowlist (qwen-image-3.0-pro, wan2.7-image, wan2.7-image-pro). Activate when the user asks to draw, generate, or edit an image via Token Plan.",
+        "autonomy_tier": "T1",
+        "capability_tier": "fed-multimodal-vision",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "token-plan-speech",
+      "category": "token",
+      "path": "/root/AAA/skills/token-plan-speech/SKILL.md",
+      "dir": "/root/AAA/skills/token-plan-speech",
+      "frontmatter": {
+        "name": "token-plan-speech",
+        "id": "token-plan-speech",
         "version": "1.0.0",
         "owner": "AAA",
         "risk_tier": "low",
         "floor_scope": "[F1, F2, F4, F7]",
-        "description": "Call the Qwen Token Plan text-to-image / image-edit models (qwen-image-2.0, qwen-image-2.0-pro, wan2.7-image, wan2.7-image-pro) to generate or edit images. Activates when the user asks to draw or generate images.",
+        "description": "Call Qwen Token Plan speech models on the Personal allowlist (TTS, ASR, realtime). Activate for text-to-speech, speech-to-text, or live voice on Token Plan.",
+        "autonomy_tier": "T1",
+        "capability_tier": "fed-multimodal-audio",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "token-plan-video",
+      "category": "token",
+      "path": "/root/AAA/skills/token-plan-video/SKILL.md",
+      "dir": "/root/AAA/skills/token-plan-video",
+      "frontmatter": {
+        "name": "token-plan-video",
+        "id": "token-plan-video",
+        "version": "1.0.0",
+        "owner": "AAA",
+        "risk_tier": "medium",
+        "floor_scope": "[F1, F2, F4, F7]",
+        "description": "Call Qwen Token Plan video models on the Personal allowlist (happyhorse-1.1-t2v / i2v / r2v). Activate for text-to-video, image-to-video, or reference-to-video on Token Plan.",
         "autonomy_tier": "T1",
         "capability_tier": "fed-multimodal-vision",
         "ecology_state": "WARM"
@@ -3910,7 +4644,34 @@
       "category": "verify",
       "path": "/root/AAA/skills/verify-gate/SKILL.md",
       "dir": "/root/AAA/skills/verify-gate",
-      "frontmatter": {},
+      "frontmatter": {
+        "# UPDATED": "2026-08-12 — Added Gate 5: REALITY (C4 + E20 enforcement)",
+        "id": "verify-gate",
+        "name": "verify-gate",
+        "risk_tier": "low",
+        "floor_scope": "[F1, F2, F4, F7, F11]",
+        "version": "2.0.0",
+        "layer": "substrate",
+        "description": "Five gates before commitment: authority + evidence + reversibility + lineage + REALITY. All five must open. One missing = HOLD.",
+        "owner": "F13 SOVEREIGN",
+        "status": "active",
+        "three_axis": "true",
+        "axis_version": "2.0.0",
+        "autonomy_tier": "T1",
+        "capability_tier": "fed-agent-subagent",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "vps-telemetry-auto-healer",
+      "category": "vps",
+      "path": "/root/AAA/skills/vps-telemetry-auto-healer/SKILL.md",
+      "dir": "/root/AAA/skills/vps-telemetry-auto-healer",
+      "frontmatter": {
+        "name": "vps-telemetry-auto-healer",
+        "description": "Real-time Caddy HTTP error spike monitor, Docker container log stream analyzer, and automated container health recovery watchdog."
+      },
       "has_sk": true
     },
     {
@@ -3918,6 +4679,25 @@
       "category": "general",
       "path": "/root/AAA/skills/warga/SKILL.md",
       "dir": "/root/AAA/skills/warga",
+      "frontmatter": {
+        "id": "warga",
+        "name": "warga",
+        "version": "1.0.0-2026.07.17",
+        "description": "Warga (citizen) agent skills for AAA federation members. See subdirectories for specialized warga skills.",
+        "owner": "AAA",
+        "risk_tier": "medium",
+        "floor_scope": "['F1', 'F6', 'F13']",
+        "autonomy_tier": "T1",
+        "capability_tier": "fed-agent-subagent",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "warga",
+      "category": "general",
+      "path": "/root/AAA/skills/warga-skills/SKILL.md",
+      "dir": "/root/AAA/skills/warga-skills",
       "frontmatter": {
         "id": "warga",
         "name": "warga",
