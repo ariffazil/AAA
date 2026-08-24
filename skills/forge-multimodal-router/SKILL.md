@@ -101,6 +101,8 @@ If SOT doesn't have a matching entry → STOP. Do NOT fallback to agent card or 
 | Image editing (identity-preserving) | `gemini/gemini-3.1-flash-image` | NB2 | 6 Iron Rules |
 | Image editing (fallback) | `dashscope/qwen-image-edit-max` | DashScope PAYG | LoRA support |
 | Image generation (Malay/SEA) | `minimax/image-01` | MiniMax MCP | Default |
+| Image generation (Grok Imagine T2I) | **harness** `grok-build/image_gen` | spawn `grok-multimodal.sh image` | Native Grok Build. Not FED. |
+| Image editing (Grok Imagine) | **harness** `grok-build/image_edit` | spawn `grok-multimodal.sh edit REF` | Reference-first for named people |
 
 ### Audio
 
@@ -129,6 +131,7 @@ If SOT doesn't have a matching entry → STOP. Do NOT fallback to agent card or 
 | Video generation (I2V) | `dashscope/wan2.7-i2v-2026-04-25` | DashScope PAYG | Preserve subject/style |
 | Video generation (R2V) | `dashscope/wan2.7-r2v-2026-06-12` | DashScope PAYG | Up to 9 refs |
 | Video generation (R2V alternative) | `dashscope/happyhorse-1.1-r2v` | DashScope PAYG | Realistic dynamic |
+| Video generation (Grok Imagine I2V) | **harness** `grok-build/image_to_video` | spawn `grok-multimodal.sh video REF` | 6s/10s · 720p. Native Grok Build. |
 | Video editing | `dashscope/wan2.7-videoedit` | DashScope PAYG | Local/global edits |
 | Last-frame analysis | `dashscope/qwen-vl-max` (re-use) | PRMT | No temporal context |
 | Video INPUT (continuous) | **GAP** | — | No skill yet — see forge-video-stream-ingest (P0) |
@@ -175,7 +178,12 @@ When an agent receives a multimodal request and needs to route:
 3. **Verify** the SOT entry is current (F11: log the lookup with SHA256 of SOT file)
 4. **Resolve** to `provider_id + model_key + endpoint_url`
 5. **Call** the model via the agent's MCP surface (e.g., `mcp__aforge__forge_browser_*` for browser, or direct API call for non-MCP)
-6. **Log** the routing decision to VAULT999 (F11 AUDIT)
+6. **If the route is Grok Imagine**: spawn `/root/.grok/bin/grok-multimodal.sh`. Those tools are harness-native to FI-007, not Hermes/OpenCode.
+7. **Log** the routing decision to VAULT999 (F11 AUDIT)
+
+### Harness-native Imagine (not a FED model)
+
+Telephone: `/root/AAA/docs/GROK_IMAGINE.md`. Wrapper: `grok-multimodal`. **Do not** add grok to LiteLLM.
 
 ## Cross-cutting doctrine (apply across modalities)
 
@@ -233,6 +241,7 @@ If the routing table here drifts from SOT, the table is wrong (SOT wins). Update
 
 ## Audit trail
 
+- **2026-08-25** — FI-007: Imagine spawn path for all AAA agents (`grok-multimodal.sh` + GROK_IMAGINE.md). Harness-native, not FED.
 - **2026-08-20** — forged by FI-003 Qwen Code
 - Driver: Arif F13 directive "now make sure my hermes agent telegram ASI_arifos_bot know how to use this"
 - Builds on: 32 multimodal models wired into `/root/HERMES/config.yaml` `dashscope-payg` provider + `tts/stt.qwen-audio-payg` entries (2026-08-20)

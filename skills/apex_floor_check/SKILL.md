@@ -4,6 +4,8 @@ description: Evaluate a proposed action against the arifOS F1-F13 constitutional
 agent: 888-APEX
 namespace: apex_*
 cluster: CONSTITUTION
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # arifos-governance (O_Ω Constitutional Layer)

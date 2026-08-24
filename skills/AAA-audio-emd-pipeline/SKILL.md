@@ -34,6 +34,8 @@ tags:
   - token-plan
   - meta-mesa
 owner: AAA
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # AAA · Audio EMD Pipeline
