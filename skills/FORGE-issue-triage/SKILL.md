@@ -60,6 +60,8 @@ canonical_siblings:
 - github-pr-review        # post-triage, when issue graduates to PR
 - github-ci-diagnose      # if issue reports CI failure
 - secret-safety-scan      # if issue smells like secret exposure
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # GitHub Issue Triage

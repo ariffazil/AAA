@@ -53,6 +53,8 @@ floor_scope:
 - F10
 - F11
 - F12
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # MCP Federation Operations
