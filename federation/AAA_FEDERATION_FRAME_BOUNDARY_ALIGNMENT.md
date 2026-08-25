@@ -1,0 +1,195 @@
+# 🧱 FRAME Boundary Alignment — Constitution & Migration Plan
+
+> **Substrate lives in state plane, not as peer organ.**
+> **Identity ≠ Location. Consolidate code without erasing identity.**
+
+| Field | Value |
+|-------|-------|
+| **Doctrine SEAL** | 2026-08-26 · F13 SOVEREIGN ratification pending |
+| **Architectural verdict** | SEAL (constitutional rationale) |
+| **Sprint 1 verdict** | SEAL (declaration phase) |
+| **GitHub strategy** | Archive `ariffazil/FRAME` read-only · do not rename |
+| **Migration risk class** | T1 → T2 (declaration → runtime swap) |
+| **Reversibility** | F1 AMANAH · rollback at every step |
+
+---
+
+## 1. Doctrine (SEAL 2026-08-26)
+
+### 1.1 The asymmetry
+
+The `arifOS-model-registry` audit (2026-08-26) and `FRAME` repo mapping surfaced a structural question: should FED, FLAME, and FRAME each have their own GitHub repository, or should they live under the AAA federation state plane?
+
+**FED** and **FLAME** were already in `/root/AAA/federation/` (and friends) — never extracted.
+
+**FRAME** was extracted on 2026-08-06 (`chore: init FRAME as independent repo`) to its own GitHub repo at `ariffazil/FRAME`, despite the organs.yaml SOT declaring `repo: arifOS (embedded organ)`.
+
+### 1.2 The decision
+
+```text
+Substrate → Foundation Layer → State Plane
+```
+
+FRAME is a **substrate** (observability scaffolding, drift detection, baseline measurement, threshold alerting). It scaffolds other organs. It never adjudicates. It has no F1/F2/F8 mutation authority.
+
+The doctrine: **a substrate should not exist as a peer sovereign surface.** Stones live in the foundation, not beside the building.
+
+Therefore:
+
+```text
+AAA
+└── federation
+    ├── fed     (already)
+    ├── flame   (already)
+    └── frame   (NEW — consolidates /root/FRAME)
+```
+
+### 1.3 Identity preservation (F1 AMANAH architectural pattern)
+
+Identity and location are **separate dimensions**:
+
+| Dimension | What it is | What survives migration |
+|-----------|------------|--------------------------|
+| **identity** | name, port, service unit, doctrine, public surface | YES — preserved |
+| **location** | `source_path`, repo URL, filesystem path | NO — relocates |
+
+This separation is the F1 AMANAH pattern at the federation level: **identity-preserving relocation**. The stone moves; the stone-ness stays.
+
+---
+
+## 2. Identity Inventory (what is preserved)
+
+| Asset | Identity form | Preservation tactic |
+|-------|---------------|---------------------|
+| **Systemd service unit** | `frame-organ.service` | KEEP name. Only `ExecStart` path changes. |
+| **MCP port** | `:18085` | unchanged |
+| **Python package** | `frame_organ` (import path) | KEEP name. Move `src/frame_organ/` intact. |
+| **Doctrine docs** | `doctrine/*.md` | MOVE intact — same filenames, same contents, same authorship. |
+| **Display name in SOT** | "FRAME" (organs.yaml) | KEEP. Only `repo:` and `source_path:` change. |
+| **GitHub mirror** | `ariffazil/FRAME` | ARCHIVE (read-only), not delete. F1 AMANAH preserves history. |
+| **README badge** | "🧱 FRAME — Substrate" | KEEP badge text. Update link to AAA location. |
+| **License** | AGPL-3.0 | KEEP. FRAME retains its own license header even inside AAA. |
+| **6 chambers** | baseline, probe, compare, trend, alert, report | KEEP names and semantics. |
+| **Public surface** | `/health`, `/frame/baseline`, `/frame/probe`, `/frame/drift`, `/frame/trend`, `/frame/alert`, `/frame/report` | unchanged endpoints. |
+
+---
+
+## 3. Migration Sprints
+
+### Sprint 1 — Declaration (T1 AUTO-DO) · **SEAL · executing**
+
+**Goal**: declare the doctrine before touching code.
+
+| # | Action | Class | Reversible |
+|---|--------|-------|------------|
+| 1.1 | amend `federation/organs.yaml`: FRAME `repo:` → `ariffazil/AAA`, `source_path:` → `/root/AAA/federation/frame/`, add `identity_preserved:` block | T1 | ✓ |
+| 1.2 | create `federation/frame/.gitkeep` placeholder | T1 | ✓ |
+| 1.3 | create this document (`AAA_FEDERATION_FRAME_BOUNDARY_ALIGNMENT.md`) | T1 | ✓ |
+
+**No code movement. No runtime change. No systemd touch. Pure declaration.**
+
+### Sprint 2 — Code relocation (T1 → T2) · **PENDING**
+
+**Goal**: move FRAME source tree into AAA state plane.
+
+| # | Action | Class | Reversible |
+|---|--------|-------|------------|
+| 2.1 | `cp -r /root/FRAME/{src,tests,doctrine,data,scripts,Makefile,pyproject.toml,LICENSE,README.md,.github} /root/AAA/federation/frame/` | T1 | ✓ (duplicate state) |
+| 2.2 | rewrite imports from `frame_organ` to new path (sed if needed) | T1 | ✓ |
+| 2.3 | squash FRAME git history into AAA as a single subdirectory merge commit | T1 | ✓ (commit amend) |
+| 2.4 | CI pipeline: ensure AAA's CI runs `pytest federation/frame/` with correct deps | T1 | ✓ |
+
+**At this point, `/root/FRAME` and `/root/AAA/federation/frame/` both exist. The old repo is the rollback safety net.**
+
+### Sprint 3 — Runtime swap (T2 — 10s announce) · **PENDING F13 ratification**
+
+**Goal**: live systemd unit points to new path.
+
+| # | Action | Class | Reversible |
+|---|--------|-------|------------|
+| 3.1 | stop `frame-organ.service` (brief downtime, F2 announced) | T2 | ✓ (restart old path) |
+| 3.2 | verify `/root/AAA/federation/frame/` is green (pytest, imports) | T1 | ✓ |
+| 3.3 | update `frame-organ.service` ExecStart to point to new venv | T2 | ✓ |
+| 3.4 | restart `frame-organ.service` | T2 | ✓ |
+| 3.5 | verify `:18085/health` returns 200 | T1 | ✓ |
+| 3.6 | if red: revert ExecStart to `/opt/frame/app` (old path) | T2 | ✓ |
+
+**The substrate must never go dark. If anything fails, `/root/FRAME` is still alive.**
+
+### Sprint 4 — Retire old repo (T1 → T2) · **PENDING F13 ratification**
+
+**Goal**: archive `ariffazil/FRAME` on GitHub.
+
+| # | Action | Class | Reversible |
+|---|--------|-------|------------|
+| 4.1 | add ARCHIVED notice to `ariffazil/FRAME` README | T1 | ✓ |
+| 4.2 | archive the repo via GitHub UI (read-only) | T2 | ✗ (GitHub archive is one-way) |
+| 4.3 | add DEPRECATION_REGISTRY.yaml entry: "FRAME merged into AAA state plane 2026-XX-XX" | T1 | ✓ |
+| 4.4 | update all docs/README badges | T1 | ✓ |
+| 4.5 | SEALS to VAULT999 (Lane A) | T2 | ✗ (seal is irreversible) |
+
+**F1 AMANAH note**: archive (not delete). Git history, issues, releases all preserved. Old repo URL still resolves to a read-only history.
+
+---
+
+## 4. Operational Risks
+
+| Risk | Severity | Mitigation |
+|------|----------|------------|
+| `frame-organ.service` ExecStart path wrong after move | HIGH | dry-run `systemd-analyze verify`; rollback path = `/root/FRAME` stays untouched until Sprint 3 verified |
+| Python import paths break (`from frame_organ import ...`) | MED | sed-rewrite in Sprint 2; CI runs pytest before systemd restart |
+| GitHub archive vs delete confusion | LOW | explicit "Archive" not "Delete" — GitHub preserves all commits + issues |
+| Doctrine doc authorship attribution lost | LOW | git blame + co-authored-by trailers in commit messages |
+| External A2A peers referencing `ariffazil/FRAME` | MED | redirect GitHub repo to AAA README section for 6 months via README banner |
+| CI matrix doubles (AAA-CI + FRAME-CI run same tests) | LOW | consolidate into AAA CI with `paths:` filter on `federation/frame/**` |
+| Sprint 3 downtime window (systemd stop/restart) | LOW | announce 10s in advance; service restart ~5s typical |
+
+---
+
+## 5. Reversibility Protocol (F1 AMANAH)
+
+```text
+T0  /root/FRAME still alive              — never touch old path until Sprint 3 verified
+T1  AAA/federation/frame/ created       — git-tracked, no systemd link yet
+T2  Code copied (cp -r)                  — duplicate state, can rollback by deleting
+T3  CI green on new location             — pytest + systemd-analyze verify
+T4  systemd ExecStart swap (atomic)     — old service still alive, just not active
+T5  Health probe confirms :18085 alive  — if red, ExecStart back to /root/FRAME
+T6  GitHub archive (read-only)           — last step, F1 AMANAH
+```
+
+If any step fails, **T0 still works**. The substrate never goes dark.
+
+---
+
+## 6. Doctrine Anchors
+
+- **Substrate doctrine** (FRAME README): *"FRAME is the substrate. It scaffolds. It never decides."*
+- **Identity separation doctrine** (this document): *"identity ≠ location."*
+- **F1 AMANAH** (`/root/AGENTS.md`): every mutation reversible; irreversible → 888_HOLD.
+- **F11 AUDIT**: every action traced, inspectable, attributable.
+- **F13 SOVEREIGN**: Arif's word is final. First-SEAL-wins.
+
+---
+
+## 7. What This Plan Does NOT Do
+
+- ❌ Adds no doctrine, no Eurekas, no new floors
+- ❌ Does not redesign FRAME's 6 chambers
+- ❌ Does not rename `frame-organ.service`
+- ❌ Does not delete `ariffazil/FRAME` GitHub repo
+- ❌ Does not push Sprint 3/4 changes without F13 ratification
+
+---
+
+## 8. Status
+
+| Sprint | Verdict | Status |
+|--------|---------|--------|
+| **1 — Declaration** | **SEAL** | in execution (2026-08-26) |
+| 2 — Code relocation | PENDING | T1 → T2, scheduled after Sprint 1 verified |
+| 3 — Runtime swap | PENDING | T2, requires 10s announce + F13 ratification |
+| 4 — Retire old repo | PENDING | T1 → T2, requires F13 ratification |
+
+**Ω₀ ≈ 0.04. Confidence: 0.90.**
+**DITEMPA BUKAN DIBERI. ⚒️**
