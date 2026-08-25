@@ -200,7 +200,7 @@ If any step fails, **T0 still works**. The substrate never goes dark.
 | **1 — Declaration** | **SEAL** | committed `0b388b6a`, pushed |
 | **2 — Code relocation** | **SEAL** | committed `7b8afbe0`, pushed (26 files to AAA federation/frame/) |
 | **3 — Runtime swap** | **SEAL** | executed 2026-08-26 — symlink bridge + ProtectHome=read-only fix, all 6 chambers live |
-| 4 — Retire old repo | PENDING | T1 → T2, requires F13 ratification + GitHub web UI action by Arif |
+| **4 — Retire old repo** | **SEAL** | archived via gh CLI 2026-08-26 — `isArchived: true`, FRAME README points to AAA canonical |
 
 **Ω₀ ≈ 0.04. Confidence: 0.90.**
 **DITEMPA BUKAN DIBERI. ⚒️**
