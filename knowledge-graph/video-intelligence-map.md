@@ -56,25 +56,31 @@ The federation's job: build the **spatio-temporal cross-modal attention layer** 
 ### 2.1 Video Generation (Output — write-only)
 
 Already mapped in `visual-intelligence-map.md` §2.4. Federation has:
+- **Gemini Omni Flash** (`gemini/gemini-omni-flash`) — ⭐ **DEFAULT** conversational video generation + multi-turn editing via Interactions API
+- **Veo 3.1** (`gemini/veo-3.1-generate-preview`) — Cinematic video with native synchronized audio (dialogue, ambient, SFX), 720p/1080p/4k, first/last frame interpolation, up to 3 reference assets, video extension up to 148s
+- **Veo 3.1 Fast / Lite** (`gemini/veo-3.1-fast-generate-preview`, `gemini/veo-3.1-lite-generate-preview`) — Fast/lightweight video generation
 - MiniMax Hailuo-02 (6/10s, 768P/1080P)
 - T2V-01 / T2V-01-Director (15 camera verbs)
 - I2V-01 / I2V-01-Director (image-to-video with camera)
+- DashScope Wan series (`wan3.0-video`, `wan2.7-t2v`, `wan2.7-i2v`, `wan2.7-r2v`)
 - Qwen Token Plan `happyhorse-1.1-t2v/i2v/r2v`
 - Runpod ComfyUI blueprint (Wan Video, HunyuanVideo, CogVideoX)
 
-**MCP:** `mcp__minimax-media__generate_video` (sync + async_mode)
+**MCP / Endpoints:** `gemini/gemini-omni-flash`, `gemini/veo-3.1-generate-preview`, `mcp__minimax-media__generate_video` (sync + async_mode)
 
-### 2.2 Video Understanding (Input — read-only) **← MAJOR GAP**
+### 2.2 Video Understanding (Input — read-only)
 
-| Capability | Tool | Status |
+| Capability | Tool / Model | Status |
 |---|---|---|
+| Native Omnimodal Video Reasoning | `gemini/gemini-omni-flash` | ✅ Available (Interactions API) |
+| YouTube Video-to-Image / Ingest | `gemini/gemini-3.1-flash-image` | ✅ Available (Files API / YouTube URI) |
 | Single-frame screenshot | `mcp__aforge__forge_browser_screenshot` | ✅ Available |
 | Continuous frame extraction | (none) | ❌ **GAP** |
 | Keyframe (I-frame) detection | (none) | ❌ **GAP** |
 | Motion vector (P-frame) tracking | (none) | ❌ **GAP** |
 | Video segmentation (entity tracking) | (none) | ❌ **GAP** |
 | Video OCR cascade | `AAA-OCR-optical-compression` (frame-by-frame only) | ⚠️ Partial — no temporal aggregation |
-| Video description (captioning) | (none) | ❌ **GAP** — current state is "stateless image of last frame" |
+| Video description (captioning) | `gemini/gemini-omni-flash` | ✅ Available (Full A-V temporal context) |
 | 3D/4D scene graph from video | GEOX `geox_seismic_interpret` for seismic volumes | ⚠️ Partial — seismic-specific |
 
 ### 2.3 Audio Side (Substrate for Fusion) — already in `audio-intelligence-map.md`

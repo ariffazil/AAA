@@ -119,15 +119,19 @@ Photorealistic. No text."
 
 | Provider | Model | Duration | Resolution | Status |
 |---|---|---|---|---|
-| **MiniMax Hailuo-02** | `MiniMax-Hailuo-02` | 6 or 10s | 768P / 1080P | ✅ DEFAULT |
+| **Google Gemini** | `gemini/gemini-omni-flash` | conversational multi-turn | standard | ⭐ **DEFAULT** (conversational editing & omnimodal reasoning) |
+| **Google Veo** | `gemini/veo-3.1-generate-preview` | 4s, 6s, 8s (up to 148s extension) | 720P, 1080P, 4K | ⭐ **PRIMARY** (native audio, first/last frame, reference assets) |
+| **Google Veo** | `gemini/veo-3.1-fast-generate-preview`, `gemini/veo-3.1-lite-generate-preview` | 4s, 6s, 8s | 720P, 1080P | ✅ Available (fast/lite) |
+| **MiniMax Hailuo-02** | `MiniMax-Hailuo-02` | 6 or 10s | 768P / 1080P | ✅ Available |
 | **MiniMax T2V-01** | `T2V-01` | varies | SD/HD | ✅ Available |
 | **MiniMax T2V-01-Director** | `T2V-01-Director` | camera movement | SD/HD | ✅ Available (15 camera verbs) |
 | **MiniMax I2V-01** | `I2V-01` | image-to-video | SD/HD | ✅ Available |
 | **MiniMax I2V-01-Director** | `I2V-01-Director` | camera + image | SD/HD | ✅ Available |
+| **DashScope Wan Video** | `dashscope/wan3.0-video`, `dashscope/wan2.7-t2v/i2v/r2v` | varies | 720P / 1080P | ✅ Available |
 | **Qwen Token Plan** | `happyhorse-1.1-t2v/i2v/r2v` | varies | varies | ✅ Available (`token-plan-video`) |
 | **Runpod ComfyUI** | Wan Video, HunyuanVideo, CogVideoX | varies | varies | ✅ Blueprint (`flash` skill) |
 
-**MCP:** `mcp__minimax-media__generate_video` (sync + async_mode for long generations)
+**MCP / Endpoints:** `gemini/gemini-omni-flash`, `gemini/veo-3.1-generate-preview`, `mcp__minimax-media__generate_video` (sync + async_mode for long generations)
 
 ### 2.5 Chart / Map / Screenshot Synthesis
 

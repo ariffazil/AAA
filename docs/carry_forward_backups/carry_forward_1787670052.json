@@ -6,11 +6,6 @@
       "event_id": "evt_scar_cron_log_gap",
       "reason": "Cron logging failed due to missing /var/log/arifos dir and CRLF in crontab - fixed and verified.",
       "timestamp": "2026-08-25T13:18:42Z"
-    },
-    {
-      "event_id": "evt_scar_fabricated_cross_model_constants",
-      "reason": "Never synthesize numerical limits (e.g. reference counts, enum options) by mixing disparate model cards when docs lack explicit parameters. Tag unverified items as INT per F2 Truth discipline.",
-      "timestamp": "2026-08-26T02:58:00Z"
     }
   ],
   "pending_skills": [
@@ -133,37 +128,17 @@
       "event_id": "evt_0d9b6517e9bbda44",
       "reason": "Reusable well capability/workflow discovered.",
       "target": "/root/HERMES/skills/_drafts/SKILL-session_archive.md"
-    },
-    {
-      "event_id": "evt_1b1d67857e5c4f6b",
-      "reason": "Reusable well capability/workflow discovered.",
-      "target": "/root/HERMES/skills/_drafts/SKILL-session_archive.md"
-    },
-    {
-      "event_id": "evt_74512f93787b9822",
-      "reason": "Reusable well capability/workflow discovered.",
-      "target": "/root/HERMES/skills/_drafts/SKILL-session_archive.md"
-    },
-    {
-      "event_id": "evt_50833344d9a5ee14",
-      "reason": "Reusable well capability/workflow discovered.",
-      "target": "/root/HERMES/skills/_drafts/SKILL-session_archive.md"
-    },
-    {
-      "event_id": "evt_7bca0e3bde268470",
-      "reason": "Reusable well capability/workflow discovered.",
-      "target": "/root/HERMES/skills/_drafts/SKILL-session_archive.md"
     }
   ],
   "metrics": {
-    "map": 0.97,
-    "echo": 14.5,
-    "total_sessions": 29,
-    "direct_executions": 28,
-    "retained_improvements": 29,
+    "map": 0.96,
+    "echo": 12.5,
+    "total_sessions": 25,
+    "direct_executions": 24,
+    "retained_improvements": 25,
     "honest_observations": 2
   },
-  "last_updated_utc": "2026-08-25T15:01:36Z",
+  "last_updated_utc": "2026-08-25T15:00:40Z",
   "timestamp_utc": "2026-08-25T13:25:00Z",
   "actor_id": "hermes",
   "intent": "Memory architecture L1-L5 wiring + organ metabolism extension",
@@ -213,11 +188,13 @@
   "actor": "333-AGI",
   "closed_at": "2026-08-25T14:18:11Z",
   "completed": [
-    "FRAME Boundary Alignment All 4 Sprints Sealed & Archived (ab7e4c06)",
-    "Gemini 3.7 Flash & Complete Multimodal Ecosystem Registered in SOT & CAPABILITIES",
-    "Nano Banana 2/Pro, Veo 3.1, Omni Flash, Lyria 3, and Flash TTS wired to forge-multimodal-router",
-    "Hermes config and skills external_dirs synchronized (/root/AAA/skills enabled)",
-    "Epistemic legend (F2 OBS/DER/INT/SPEC) and fabricated constant scar codified",
+    "Organ metabolism extension (GEOX/WEALTH/WELL domain keywords)",
+    "Organ session writer (write_organ_session function)",
+    "Organ session scanning (metabolize_cron.py update)",
+    "Session-end hook (session_end_hook.py)",
+    "Scar ledger cleaned (38 test artifacts removed)",
+    "Indentation fix (metabolize.py line 740)",
+    "Signature mismatch fix (auto_skill_promote.py call)",
     "Full L1-L5 pipeline verified end-to-end"
   ],
   "open_loops_888_HOLD": [
