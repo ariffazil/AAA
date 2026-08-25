@@ -1,0 +1,131 @@
+{
+  "test-auto-metabolism-fix": {
+    "name": "test-auto-metabolism-fix",
+    "description": "Fix memory amnesia by wiring auto-metabolism hooks",
+    "reuse_count": 2,
+    "created_at": "2026-08-25T13:02:28Z",
+    "status": "CANONICAL",
+    "last_used": "2026-08-25T13:02:28Z",
+    "promoted_at": "2026-08-25T13:02:28Z"
+  },
+  "evt_1071f20890736728": {
+    "name": "evt_1071f20890736728",
+    "description": "Reusable  capability/workflow discovered.",
+    "reuse_count": 1,
+    "created_at": "2026-08-25T14:12:44Z",
+    "status": "DRAFT",
+    "last_used": "2026-08-25T14:12:44Z"
+  },
+  "evt_13ce40bfa1fab3cc": {
+    "name": "evt_13ce40bfa1fab3cc",
+    "description": "Reusable  capability/workflow discovered.",
+    "reuse_count": 1,
+    "created_at": "2026-08-25T14:13:11Z",
+    "status": "DRAFT",
+    "last_used": "2026-08-25T14:13:11Z"
+  },
+  "evt_33d5e51ddd4ad671": {
+    "name": "evt_33d5e51ddd4ad671",
+    "description": "Reusable wealth capability/workflow discovered.",
+    "reuse_count": 1,
+    "created_at": "2026-08-25T14:13:58Z",
+    "status": "DRAFT",
+    "last_used": "2026-08-25T14:13:58Z"
+  },
+  "evt_test123": {
+    "name": "evt_test123",
+    "description": "Reusable workflow discovered",
+    "reuse_count": 1,
+    "created_at": "2026-08-25T14:15:45Z",
+    "status": "DRAFT",
+    "last_used": "2026-08-25T14:15:45Z"
+  },
+  "evt_985ce6e5679a56fd": {
+    "name": "evt_985ce6e5679a56fd",
+    "description": "Reusable  capability/workflow discovered.",
+    "reuse_count": 1,
+    "created_at": "2026-08-25T14:15:47Z",
+    "status": "DRAFT",
+    "last_used": "2026-08-25T14:15:47Z"
+  },
+  "evt_b87ad5ff6d27950a": {
+    "name": "evt_b87ad5ff6d27950a",
+    "description": "Reusable  capability/workflow discovered.",
+    "reuse_count": 1,
+    "created_at": "2026-08-25T14:18:47Z",
+    "status": "DRAFT",
+    "last_used": "2026-08-25T14:18:47Z"
+  },
+  "evt_ca3b9b9e104f0b56": {
+    "name": "evt_ca3b9b9e104f0b56",
+    "description": "Reusable  capability/workflow discovered.",
+    "reuse_count": 1,
+    "created_at": "2026-08-25T14:22:58Z",
+    "status": "DRAFT",
+    "last_used": "2026-08-25T14:22:58Z"
+  },
+  "evt_cd1274eca027a579": {
+    "name": "evt_cd1274eca027a579",
+    "description": "Reusable  capability/workflow discovered.",
+    "reuse_count": 1,
+    "created_at": "2026-08-25T14:23:51Z",
+    "status": "DRAFT",
+    "last_used": "2026-08-25T14:23:51Z"
+  },
+  "evt_70a88aea9e8a376d": {
+    "name": "evt_70a88aea9e8a376d",
+    "description": "Reusable  capability/workflow discovered.",
+    "reuse_count": 1,
+    "created_at": "2026-08-25T14:30:23Z",
+    "status": "DRAFT",
+    "last_used": "2026-08-25T14:30:23Z"
+  },
+  "evt_15be7bbff1f96c56": {
+    "name": "evt_15be7bbff1f96c56",
+    "description": "Reusable well capability/workflow discovered.",
+    "reuse_count": 1,
+    "created_at": "2026-08-25T15:00:28Z",
+    "status": "DRAFT",
+    "last_used": "2026-08-25T15:00:28Z"
+  },
+  "evt_0d9b6517e9bbda44": {
+    "name": "evt_0d9b6517e9bbda44",
+    "description": "Reusable well capability/workflow discovered.",
+    "reuse_count": 1,
+    "created_at": "2026-08-25T15:00:40Z",
+    "status": "DRAFT",
+    "last_used": "2026-08-25T15:00:40Z"
+  },
+  "evt_1b1d67857e5c4f6b": {
+    "name": "evt_1b1d67857e5c4f6b",
+    "description": "Reusable well capability/workflow discovered.",
+    "reuse_count": 1,
+    "created_at": "2026-08-25T15:00:52Z",
+    "status": "DRAFT",
+    "last_used": "2026-08-25T15:00:52Z"
+  },
+  "evt_74512f93787b9822": {
+    "name": "evt_74512f93787b9822",
+    "description": "Reusable well capability/workflow discovered.",
+    "reuse_count": 1,
+    "created_at": "2026-08-25T15:01:08Z",
+    "status": "DRAFT",
+    "last_used": "2026-08-25T15:01:08Z"
+  },
+  "evt_50833344d9a5ee14": {
+    "name": "evt_50833344d9a5ee14",
+    "description": "Reusable well capability/workflow discovered.",
+    "reuse_count": 1,
+    "created_at": "2026-08-25T15:01:22Z",
+    "status": "DRAFT",
+    "last_used": "2026-08-25T15:01:22Z"
+  },
+  "evt_7bca0e3bde268470": {
+    "name": "evt_7bca0e3bde268470",
+    "description": "Reusable well capability/workflow discovered.",
+    "reuse_count": 1,
+    "created_at": "2026-08-25T15:01:36Z",
+    "status": "DRAFT",
+    "last_used": "2026-08-25T15:01:36Z"
+  }
+}
