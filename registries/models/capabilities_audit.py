@@ -135,9 +135,9 @@ def load_federation_modalities():
                 flags.add(canon)
         # Output modality tokens from capabilities
         cap_list = m.get("capabilities", []) or []
-        if "tts" in cap_list:
+        if any(c in cap_list for c in ["tts", "audio_generation", "live_audio_a2a", "speech_generation", "music_generation"]):
             flags.add("audio_out")
-        if "music" in cap_list:
+        if "music" in cap_list or "music_generation" in cap_list:
             flags.add("music_out")
         if "image_generation" in cap_list:
             flags.add("image_out")

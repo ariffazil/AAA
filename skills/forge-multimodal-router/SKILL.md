@@ -95,10 +95,13 @@ If SOT doesn't have a matching entry → STOP. Do NOT fallback to agent card or 
 | OCR (Chinese) | `local/rapidocr-3.9` | Local | Free fallback |
 | Document extraction | `dashscope/qwen3-vl-ocr` | VLM specialist | See FORGE-document-intelligence |
 | Face ID (deterministic) | `local/onnx-insightface-buffalo_l-512dim` | Local | READ-ONLY, see `/root/.agents/skills/deterministic-face-id/SKILL.md` |
-| Image generation (T2I latest) | `dashscope/qwen-image-3.0-pro` | DashScope PAYG | Free quota eligible |
+| Image generation (Gemini NB2 Workhorse) | `gemini/gemini-3.1-flash-image` | Nano Banana 2 | 512px–4K, 14 refs, video-in, Image Search Grounding |
+| Image generation (Gemini NB2 Lite) | `gemini/gemini-3.1-flash-lite-image` | NB2 Lite | Fastest & lowest cost Gemini image gen |
+| Image generation (Gemini NB Pro) | `gemini/gemini-3-pro-image` | NB Pro | Thinking mode, 4K, interleaved text+image, style refs |
+| Image generation (T2I latest DashScope) | `dashscope/qwen-image-3.0-pro` | DashScope PAYG | Free quota eligible |
 | Image generation (T2I fast) | `dashscope/qwen-image-3.0` | DashScope PAYG | Newest Aug 2026 |
 | Image generation (T2I mass) | `dashscope/z-image-turbo` | DashScope PAYG | 8-step inference |
-| Image editing (identity-preserving) | `gemini/gemini-3.1-flash-image` | NB2 | 6 Iron Rules |
+| Image editing (identity-preserving NB2) | `gemini/gemini-3.1-flash-image` | NB2 | 6 Iron Rules, multi-turn conversational |
 | Image editing (fallback) | `dashscope/qwen-image-edit-max` | DashScope PAYG | LoRA support |
 | Image generation (Malay/SEA) | `minimax/image-01` | MiniMax MCP | Default |
 | Image generation (Grok Imagine T2I) | **harness** `grok-build/image_gen` | spawn `grok-multimodal.sh image` | Native Grok Build. Not FED. |
@@ -126,16 +129,21 @@ If SOT doesn't have a matching entry → STOP. Do NOT fallback to agent card or 
 
 | Request | SOT key | Engine | Notes |
 |---|---|---|---|
-| Video generation (T2V newest) | `dashscope/wan3.0-video` | DashScope PAYG | ⭐ Aug 2026 |
+| Video generation & editing (Omni default) | `gemini/gemini-omni-flash` | Gemini Omni Flash | ⭐ DEFAULT video model: multi-turn conversational editing & omnimodal reasoning |
+| Video generation (Cinematic + Native Audio) | `gemini/veo-3.1-generate-preview` | Veo 3.1 | Native dialogue/SFX/ambient, 720p/1080p/4k, first/last frame, up to 3 refs |
+| Video extension (Temporal sequence) | `gemini/veo-3.1-generate-preview` | Veo 3.1 | Extend Veo video by 7s (up to 20x, max 148s, 720p) |
+| Video generation (Veo Fast) | `gemini/veo-3.1-fast-generate-preview` | Veo 3.1 Fast | Fast video gen with native audio |
+| Video generation (Veo Lite) | `gemini/veo-3.1-lite-generate-preview` | Veo 3.1 Lite | Lightweight video gen (720p/1080p) |
+| Video generation (T2V DashScope newest) | `dashscope/wan3.0-video` | DashScope PAYG | Aug 2026 |
 | Video generation (T2V standard) | `dashscope/wan2.7-t2v-2026-06-12` | DashScope PAYG | Jul 2026 |
 | Video generation (I2V) | `dashscope/wan2.7-i2v-2026-04-25` | DashScope PAYG | Preserve subject/style |
 | Video generation (R2V) | `dashscope/wan2.7-r2v-2026-06-12` | DashScope PAYG | Up to 9 refs |
 | Video generation (R2V alternative) | `dashscope/happyhorse-1.1-r2v` | DashScope PAYG | Realistic dynamic |
 | Video generation (Grok Imagine I2V) | **harness** `grok-build/image_to_video` | spawn `grok-multimodal.sh video REF` | 6s/10s · 720p. Native Grok Build. |
-| Video editing | `dashscope/wan2.7-videoedit` | DashScope PAYG | Local/global edits |
+| Video editing (DashScope) | `dashscope/wan2.7-videoedit` | DashScope PAYG | Local/global edits |
 | Last-frame analysis | `dashscope/qwen-vl-max` (re-use) | PRMT | No temporal context |
-| Video INPUT (continuous) | **GAP** | — | No skill yet — see forge-video-stream-ingest (P0) |
-| A-V cross-modal fusion | **GAP** | — | Per video-intelligence-map.md §4 |
+| Video INPUT (continuous) | `gemini/gemini-omni-flash` | Gemini Omni Flash | Native video input reasoning via Interactions API |
+| A-V cross-modal fusion | `gemini/gemini-omni-flash` | Gemini Omni Flash | Text + Image + Audio + Video unified input |
 
 ### Somatic (Music Intelligence)
 
