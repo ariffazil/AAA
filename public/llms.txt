@@ -11,16 +11,16 @@
 - **Ingress:** Direct A-record → aaa.arif-fazil.com (Caddy → localhost:3001)
 - **Stack:** React 19 + Vite 8 + Tailwind 4 + Radix UI + Express A2A gateway
 
-## Federation Organs (7 live · as of 2026-07-01)
-| Organ | Port | Role | MCP Tools |
+## Federation Organs (live · 2026-08-25)
+| Organ | Port | Role | Public surface |
 |-------|------|------|-----------|
-| arifOS | 8088 | Constitutional kernel — F1-F13, 888 JUDGE, VAULT999 | 13 canonical |
-| A-FORGE | 7071/:7072 | Execution shell — build, deploy, forge, MCP gateway | 40+ |
-| GEOX | 8081 | Earth intelligence — wells, seismic, petrophysics, basin | 18 canonical |
-| WEALTH | 18082 | Capital intelligence — NPV, IRR, EMV, conservation, flow | 23 |
-| WELL | 18083 | Vitality mirror — readiness, homeostasis, dignity | 21 |
-| AAA | 3001 | Cockpit / identity / A2A gateway (this surface) | 9 |
-| VAULT999 | — | Immutable audit ledger — sealed past, hash-chained | — |
+| arifOS | 8088 | Constitutional kernel — F1-F13, 888 JUDGE, VAULT999 | 8 `arif_*` verbs · door `/mcp` |
+| A-FORGE | 7071/:7072 | Execution shell — build, deploy, forge, MCP gateway | 114 `forge_*` |
+| GEOX | 8081 | Earth intelligence — wells, seismic, petrophysics, basin | 19 |
+| WEALTH | 18082 | Capital intelligence — NPV, IRR, EMV, conservation, flow | 11 |
+| WELL | 18083 | Vitality mirror — readiness, homeostasis, dignity | 31 |
+| AAA | 3001 | DISPLAY_ONLY cockpit / A2A gateway (this surface) | A2A JSON-RPC — not MCP |
+| VAULT999 | — | Immutable audit ledger — sealed past, hash-chained | kernel-owned |
 
 ## Key Files
 - README.md — Full human-readable narrative (849 lines)

@@ -187,6 +187,11 @@ def main():
     s.add_argument("id")
     s.set_defaults(fn=cmd_reopen)
 
+    s = sub.add_parser("status")
+    s.add_argument("id")
+    s.add_argument("status", choices=list(STATUSES))
+    s.set_defaults(fn=cmd_status)
+
     s = sub.add_parser("note")
     s.add_argument("id")
     s.add_argument("text")

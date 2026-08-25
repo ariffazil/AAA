@@ -1,7 +1,7 @@
 {
   "name": "AAA Cockpit - Evidence-Based Industrialism",
   "short_name": "AAA Cockpit",
-  "description": "AAA Cockpit is the operations surface of arifOS - evidence-based industrialism for governed execution, agent supervision, and constitutional runtime control.",
+  "description": "AAA Cockpit is DISPLAY_ONLY — shows federation state, queues A2A. Never judges. Never executes.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#050505",
