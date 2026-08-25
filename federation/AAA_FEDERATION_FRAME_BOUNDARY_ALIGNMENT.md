@@ -101,20 +101,31 @@ This separation is the F1 AMANAH pattern at the federation level: **identity-pre
 
 **At this point, `/root/FRAME` and `/root/AAA/federation/frame/` both exist. The old repo is the rollback safety net.**
 
-### Sprint 3 — Runtime swap (T2 — 10s announce) · **PENDING F13 ratification**
+### Sprint 3 — Runtime swap (T2 — 10s announce) · **SEAL · EXECUTED 2026-08-26**
 
-**Goal**: live systemd unit points to new path.
+Approach: symlink bridge instead of ExecStart change.
 
-| # | Action | Class | Reversible |
-|---|--------|-------|------------|
-| 3.1 | stop `frame-organ.service` (brief downtime, F2 announced) | T2 | ✓ (restart old path) |
-| 3.2 | verify `/root/AAA/federation/frame/` is green (pytest, imports) | T1 | ✓ |
-| 3.3 | update `frame-organ.service` ExecStart to point to new venv | T2 | ✓ |
-| 3.4 | restart `frame-organ.service` | T2 | ✓ |
-| 3.5 | verify `:18085/health` returns 200 | T1 | ✓ |
-| 3.6 | if red: revert ExecStart to `/opt/frame/app` (old path) | T2 | ✓ |
+| # | Action | Class | Reversible | Result |
+|---|--------|-------|------------|--------|
+| 3.0 | preflight: pyproject identical, dirs match, runtime state preserved | T0 | ✓ | green |
+| 3.1 | backup unit file | T1 | ✓ | saved |
+| 3.2 | stop service | T2 | ✓ | stopped |
+| 3.3 | move old source out | T1 | ✓ | moved |
+| 3.4 | symlink bridge to AAA canonical | T1 | ✓ | linked |
+| 3.5 | first restart: FAILED — ModuleNotFoundError | T2 | ✓ | crash loop |
+| 3.5a | rollback to T0, substrate restored | T2 | ✓ | green |
+| 3.5b | diagnosis: ProtectHome=yes bind-mounts /root to /dev/null; ReadOnlyPaths cannot override | — | — | understood |
+| 3.5c | fix: ProtectHome=yes → ProtectHome=read-only | T2 | ✓ | applied |
+| 3.6 | daemon-reload, retry swap, restart | T2 | ✓ | active on attempt 1 |
+| 3.7 | verify health 200 + 6 chambers live | T0 | ✓ | green |
 
-**The substrate must never go dark. If anything fails, `/root/FRAME` is still alive.**
+Eureka: ProtectHome=yes bind-mounts /root to /dev/null; ReadOnlyPaths cannot grant access to non-existent paths. Use ProtectHome=read-only for surgical read access to /root.
+
+Identity preservation verified post-swap: service unit name unchanged, port 18085 unchanged, frame_organ import path unchanged, all 6 chambers live (baseline / probe / compare / trend / alert / report / rsi_verify), AGPL-3.0 preserved, doctrine docs preserved.
+
+Unit file changes: ProtectHome=yes → ProtectHome=read-only; ReadOnlyPaths extended to include /root/AAA/federation/frame.
+
+Rollback safety net: /opt/frame/app/frame_organ.bak.SPRINT3redux + /root/AAA/federation/frame/frame-organ.service.bak.pre-Sprint3.
 
 ### Sprint 4 — Retire old repo (T1 → T2) · **PENDING F13 ratification**
 
@@ -186,10 +197,10 @@ If any step fails, **T0 still works**. The substrate never goes dark.
 
 | Sprint | Verdict | Status |
 |--------|---------|--------|
-| **1 — Declaration** | **SEAL** | in execution (2026-08-26) |
-| 2 — Code relocation | PENDING | T1 → T2, scheduled after Sprint 1 verified |
-| 3 — Runtime swap | PENDING | T2, requires 10s announce + F13 ratification |
-| 4 — Retire old repo | PENDING | T1 → T2, requires F13 ratification |
+| **1 — Declaration** | **SEAL** | committed `0b388b6a`, pushed |
+| **2 — Code relocation** | **SEAL** | committed `7b8afbe0`, pushed (26 files to AAA federation/frame/) |
+| **3 — Runtime swap** | **SEAL** | executed 2026-08-26 — symlink bridge + ProtectHome=read-only fix, all 6 chambers live |
+| 4 — Retire old repo | PENDING | T1 → T2, requires F13 ratification + GitHub web UI action by Arif |
 
 **Ω₀ ≈ 0.04. Confidence: 0.90.**
 **DITEMPA BUKAN DIBERI. ⚒️**
