@@ -32,15 +32,15 @@ kernel_alignment: source=built=deployed=a302c2f (attestation aligned 2026-08-14)
 [![Federation](https://img.shields.io/badge/Federation-v2026.08.14-0a7b83)](https://arifos.arif-fazil.com)
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](./LICENSE)
 
-> **AAA is the institution. It routes and displays. It never judges.**
+> **AAA is the institution. Ceiling: `DISPLAY_ONLY`. It shows state and queues A2A. It never judges. It never executes.**
 > **DITEMPA BUKAN DIBERI — The state is forged, not given.**
 
 <!-- RULE-5 First Fold -->
-> **What?** Institutional control plane — connecting forge instruments, domain organs, and the sovereign human operator.
-> **Why?** Coordination without a control plane is chaos; AAA is the nervous system.
-> **Care?** For humans — one cockpit to watch the whole institution. For agents — register your card, declare your lane.
+> **What?** DISPLAY_ONLY cockpit + A2A gateway — connecting forge instruments, domain organs, and the sovereign human operator.
+> **Why?** Coordination without a control plane is chaos; AAA is the nervous system. A nervous system that judges or forges is a second kernel.
+> **Care?** For humans — one cockpit to watch the whole institution. For agents — register your card, declare your lane. Verdicts go to arifOS. Mutations go to A-FORGE. Seals go to Arif.
 
-**AAA (Agents, API, AI, Apps)** is the institutional control plane of the arifOS Federation. It operates the A2A (Agent-to-Agent) Mesh Gateway, the agent identity registry, the task router, and the operator cockpit — connecting **11 forge instruments**, **7 domain organs**, and the sovereign human operator under a unified protocol. *AAA also embodies Alignment, Authority, and Accountability — the governance principles behind every routing decision.*
+**AAA (Agents, API, AI, Apps)** is the institutional control plane of the arifOS Federation. It operates the A2A (Agent-to-Agent) Mesh Gateway, the agent identity registry, the task router, and the operator cockpit — connecting **11 forge instruments**, **7 domain organs**, and the sovereign human operator under a unified protocol. *AAA also embodies Alignment, Authority, and Accountability — the governance principles behind every routing decision. It does not adjudicate and it does not execute.*
 
 **For humans:** one cockpit to watch the whole institution — organ health, agent lanes, pending 888_HOLD decisions.
 **For agents:** register your card, declare your lane, receive routed tasks. AAA moves messages; it never moves authority.
@@ -191,7 +191,7 @@ Telemetry (observe-only freeze): `map-atlas-echo` · Kabarkan → PG · cron 6h.
 |:---|:---|:---:|:---|:---|:---|:---|
 | **⚖️ arifOS** | Constitutional Kernel — judges, seals | 8088 | [repo](https://github.com/ariffazil/arifos) | [mcp](https://mcp.arif-fazil.com/mcp) | [health](https://arifos.arif-fazil.com/health) | [llms.txt](https://arifos.arif-fazil.com/llms.txt) |
 | **⚒️ A-FORGE** | Execution Engine — builds, deploys | 7071/72 | [repo](https://github.com/ariffazil/A-FORGE) | [mcp](https://forge.arif-fazil.com/mcp) | [health](https://forge.arif-fazil.com/health) | [llms.txt](https://forge.arif-fazil.com/llms.txt) |
-| **🏛️ AAA** | Control Plane — A2A gateway, cockpit | 3001 | [repo](https://github.com/ariffazil/AAA) | — | [health](https://aaa.arif-fazil.com/health) | [llms.txt](https://aaa.arif-fazil.com/llms.txt) |
+| **🏛️ AAA** | DISPLAY_ONLY cockpit — A2A gateway. Never judges. Never executes. | 3001 | [repo](https://github.com/ariffazil/AAA) | — | [health](https://aaa.arif-fazil.com/health) | [llms.txt](https://aaa.arif-fazil.com/llms.txt) |
 | **🌍 GEOX** | Earth Intelligence — seismic, wells | 8081 | [repo](https://github.com/ariffazil/GEOX) | [mcp](https://geox.arif-fazil.com/mcp) | [health](https://geox.arif-fazil.com/health) | [llms.txt](https://geox.arif-fazil.com/llms.txt) |
 | **💰 WEALTH** | Capital Intelligence — NPV, risk | 18082 | [repo](https://github.com/ariffazil/WEALTH) | [mcp](https://wealth.arif-fazil.com/mcp) | [health](https://wealth.arif-fazil.com/health) | [llms.txt](https://wealth.arif-fazil.com/llms.txt) |
 | **🫀 WELL** | Vitality Guard — human readiness | 18083 | [repo](https://github.com/ariffazil/WELL) | [mcp](https://well.arif-fazil.com/mcp) | [health](https://well.arif-fazil.com/health) | [llms.txt](https://well.arif-fazil.com/llms.txt) |
