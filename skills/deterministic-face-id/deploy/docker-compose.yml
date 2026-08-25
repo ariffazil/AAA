@@ -1,0 +1,36 @@
+# docker-compose.yml · deterministic-face-id
+# F1 air-gap: container has NO outbound network. Only internal federation mesh.
+# F6: vault is the only peer (1:1 verification, no broadcast).
+
+services:
+  deterministic-face-id:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    image: arifos/deterministic-face-id:1.0.0
+    container_name: arif_biometric_lock
+    restart: unless-stopped
+    environment:
+      # F1: deterministic InsightFace path — host mount MUST match
+      - INSIGHTFACE_HOME=/opt/insightface
+      - DFID_LOG_LEVEL=INFO
+    volumes:
+      # F1 INVARIANT: ONNX weights mounted READ-ONLY from host pre-downloaded set
+      - ./models/buffalo_l:/opt/insightface/models/buffalo_l:ro
+    networks:
+      - arif_internal_net
+    # F1: explicit no-TTY, no-privileged, no-new-privileges
+    tty: false
+    privileged: false
+    security_opt:
+      - no-new-privileges:true
+    read_only: true  # F1: root FS read-only, only /tmp writable via tmpfs
+    tmpfs:
+      - /tmp:size=64m
+    mem_limit: 1g
+    cpus: 1.0
+
+networks:
+  arif_internal_net:
+    internal: true  # F1 HARD: drops ALL outbound traffic. No phone-home. No telemetry.
+    driver: bridge

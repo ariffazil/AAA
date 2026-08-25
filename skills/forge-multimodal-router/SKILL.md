@@ -94,7 +94,7 @@ If SOT doesn't have a matching entry → STOP. Do NOT fallback to agent card or 
 | OCR (Latin) | `local/tesseract-5.5` | Local | Free fallback |
 | OCR (Chinese) | `local/rapidocr-3.9` | Local | Free fallback |
 | Document extraction | `dashscope/qwen3-vl-ocr` | VLM specialist | See FORGE-document-intelligence |
-| Face ID (deterministic) | `local/dlib-128dim` | Local | READ-ONLY, see deterministic-face-id |
+| Face ID (deterministic) | `local/onnx-insightface-buffalo_l-512dim` | Local | READ-ONLY, see `/root/.agents/skills/deterministic-face-id/SKILL.md` |
 | Image generation (T2I latest) | `dashscope/qwen-image-3.0-pro` | DashScope PAYG | Free quota eligible |
 | Image generation (T2I fast) | `dashscope/qwen-image-3.0` | DashScope PAYG | Newest Aug 2026 |
 | Image generation (T2I mass) | `dashscope/z-image-turbo` | DashScope PAYG | 8-step inference |
@@ -200,7 +200,7 @@ Telephone: `/root/AAA/docs/GROK_IMAGINE.md`. Wrapper: `grok-multimodal`. **Do no
 | Somatic music | `AAA-somatic-music-doctrine` + `AAA-somatic-emd-pipeline` | Music constitution |
 | Document intelligence | `FORGE-document-intelligence` | Doc VLM |
 | OCR cascade | `AAA-OCR-optical-compression` | OCR Tier 1-3 |
-| Face ID | `deterministic-face-id` | READ-ONLY |
+| Face ID | `deterministic-face-id` | READ-ONLY, peer skill at `/root/.agents/skills/deterministic-face-id/` |
 | Cross-region config | `devops/provider-routing-zen` | Operational |
 
 ## Knowledge graphs (canonical unified maps)
