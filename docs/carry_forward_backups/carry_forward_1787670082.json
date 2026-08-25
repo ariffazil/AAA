@@ -1,0 +1,232 @@
+{
+  "last_session": "session_archive",
+  "unmetabolized": [],
+  "active_scars": [
+    {
+      "event_id": "evt_scar_cron_log_gap",
+      "reason": "Cron logging failed due to missing /var/log/arifos dir and CRLF in crontab - fixed and verified.",
+      "timestamp": "2026-08-25T13:18:42Z"
+    }
+  ],
+  "pending_skills": [
+    {
+      "event_id": "evt_5d6166d9a5a97c3e",
+      "reason": "Reusable capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-test_session.md"
+    },
+    {
+      "event_id": "evt_749f641392d157fa",
+      "reason": "Reusable capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-test_session.md"
+    },
+    {
+      "event_id": "evt_cbe8b16ceee71b53",
+      "reason": "Reusable capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-final_metabolize.md"
+    },
+    {
+      "event_id": "evt_f71f5306aaa3067a",
+      "reason": "Reusable geox capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-test-geox-prospe.md"
+    },
+    {
+      "event_id": "evt_0e52b45a33cc9710",
+      "reason": "Reusable geox capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-test-geox-prospe.md"
+    },
+    {
+      "event_id": "evt_81a90aa293349f74",
+      "reason": "Reusable  capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-test_session.md"
+    },
+    {
+      "event_id": "evt_6916abab5530bbc2",
+      "reason": "Reusable geox capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-test-full-pipeli.md"
+    },
+    {
+      "event_id": "evt_6e3028904947e953",
+      "reason": "Reusable geox capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-test-full-pipeli.md"
+    },
+    {
+      "event_id": "evt_857e6524270c708b",
+      "reason": "Reusable wealth capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-e2e-verify-001.md"
+    },
+    {
+      "event_id": "evt_7950e207767510f1",
+      "reason": "Reusable  capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-test_session.md"
+    },
+    {
+      "event_id": "evt_663ce92c0e8be326",
+      "reason": "Reusable wealth capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-e2e-verify-001.md"
+    },
+    {
+      "event_id": "evt_1ebf318eb86cf588",
+      "reason": "Reusable  capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-test_session.md"
+    },
+    {
+      "event_id": "evt_2ad29421bc7c63bc",
+      "reason": "Reusable  capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-test_session.md"
+    },
+    {
+      "event_id": "evt_4c523a1f09996c72",
+      "reason": "Reusable  capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-test_session.md"
+    },
+    {
+      "event_id": "evt_1071f20890736728",
+      "reason": "Reusable  capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-test_session.md"
+    },
+    {
+      "event_id": "evt_13ce40bfa1fab3cc",
+      "reason": "Reusable  capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-test_session.md"
+    },
+    {
+      "event_id": "evt_33d5e51ddd4ad671",
+      "reason": "Reusable wealth capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-e2e-verify-001.md"
+    },
+    {
+      "event_id": "evt_985ce6e5679a56fd",
+      "reason": "Reusable  capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-test_session.md"
+    },
+    {
+      "event_id": "evt_b87ad5ff6d27950a",
+      "reason": "Reusable  capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-test_session.md"
+    },
+    {
+      "event_id": "evt_ca3b9b9e104f0b56",
+      "reason": "Reusable  capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-test_session.md"
+    },
+    {
+      "event_id": "evt_cd1274eca027a579",
+      "reason": "Reusable  capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-test_session.md"
+    },
+    {
+      "event_id": "evt_70a88aea9e8a376d",
+      "reason": "Reusable  capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-test_session.md"
+    },
+    {
+      "event_id": "evt_15be7bbff1f96c56",
+      "reason": "Reusable well capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-session_archive.md"
+    },
+    {
+      "event_id": "evt_0d9b6517e9bbda44",
+      "reason": "Reusable well capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-session_archive.md"
+    },
+    {
+      "event_id": "evt_1b1d67857e5c4f6b",
+      "reason": "Reusable well capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-session_archive.md"
+    },
+    {
+      "event_id": "evt_74512f93787b9822",
+      "reason": "Reusable well capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-session_archive.md"
+    }
+  ],
+  "metrics": {
+    "map": 0.96,
+    "echo": 13.5,
+    "total_sessions": 27,
+    "direct_executions": 26,
+    "retained_improvements": 27,
+    "honest_observations": 2
+  },
+  "last_updated_utc": "2026-08-25T15:01:08Z",
+  "timestamp_utc": "2026-08-25T13:25:00Z",
+  "actor_id": "hermes",
+  "intent": "Memory architecture L1-L5 wiring + organ metabolism extension",
+  "files_mutated": [
+    "/root/arifOS/arifosmcp/runtime/megaTools/tool_13_arif_memory.py",
+    "/root/arifOS/arifosmcp/runtime/memory_handlers_v5.py",
+    "/root/arifOS/arifosmcp/tools/judge.py",
+    "/root/scripts/metabolize_cron.py",
+    "/root/scripts/metabolize.py",
+    "/root/.hermes/config.yaml",
+    "/root/AAA/docs/carry_forward.json"
+  ],
+  "gates_verified": [
+    "Gate_0_Classification",
+    "F1_Amanah",
+    "F2_Truth",
+    "F7_Humility",
+    "F9_AntiHantu",
+    "F11_Audit",
+    "F13_Sovereignty",
+    "LSP_Gate",
+    "Metabolism_Cron_Live",
+    "Organ_Skills_ExternalDirs",
+    "Zero_Loophole_Gitwrap"
+  ],
+  "pending_next_steps": [
+    "Priority 1: Deep domain skills execution in GEOX / WEALTH / WELL",
+    "Priority 2: Hermes session_search integration"
+  ],
+  "summary": "Unified memory metabolism engine deployed live. Cron active every 30m with verified disk logging. Git wrapped and verified 100% clean across all 7 federation repositories. Organ skills external_dirs wired for GEOX, WEALTH, WELL.",
+  "schema_version": "2.0.0",
+  "skill_canonical": 263,
+  "skill_drafts": 7,
+  "episodic_count": 4,
+  "receipts": 8,
+  "scars": 2,
+  "session_summary": {
+    "last_session_id": "e2e-verify-001",
+    "classification": "SKILL",
+    "organ": "wealth",
+    "promoted": true,
+    "l2_to_l3": "1 capabilities extracted",
+    "l4_to_l5": "0 receipts sealed",
+    "metabolized_at_utc": "2026-08-25T14:09:31Z"
+  },
+  "session_id": "SEAL-e4c5f29443534a2d",
+  "actor": "333-AGI",
+  "closed_at": "2026-08-25T14:18:11Z",
+  "completed": [
+    "Organ metabolism extension (GEOX/WEALTH/WELL domain keywords)",
+    "Organ session writer (write_organ_session function)",
+    "Organ session scanning (metabolize_cron.py update)",
+    "Session-end hook (session_end_hook.py)",
+    "Scar ledger cleaned (38 test artifacts removed)",
+    "Indentation fix (metabolize.py line 740)",
+    "Signature mismatch fix (auto_skill_promote.py call)",
+    "Full L1-L5 pipeline verified end-to-end"
+  ],
+  "open_loops_888_HOLD": [
+    "EUREKA #11: Success metabolism unproven \u2014 first promotion through reuse >= 2 needed",
+    "FED distillation write blocked by F1 hook",
+    "Token rotation for chat-history hygiene",
+    "forge_gemini A-FORGE tool",
+    "OAuth bridge flow for calendar/drive/sheets/gmail"
+  ],
+  "rsi_fixes": [
+    "Indentation error in metabolize.py line 740 (blank line between import and usage)",
+    "Signature mismatch in auto_skill_promote.py call (workflow_steps was string, expected List[str])"
+  ],
+  "session_metrics": {
+    "files_modified": [
+      "/root/scripts/metabolize.py",
+      "/root/scripts/metabolize_cron.py",
+      "/root/scripts/session_end_hook.py",
+      "/root/A-FORGE/.runtime/scars/index.json"
+    ],
+    "lines_added": "~200 (organ keywords, session writer, session-end hook)",
+    "bugs_fixed": 2,
+    "tests_passed": "end-to-end L1-L5 pipeline verified"
+  }
+}

@@ -277,6 +277,182 @@
         "reasoning_tier": "mid"
       }
     },
+    "gemini-3.1-flash-image": {
+      "_note": "Nano Banana 2 — Workhorse image generation & editing, 512px-4K, up to 14 reference images, video input, Google Image Search Grounding.",
+      "modalities": {
+        "vision": true,
+        "video_in": true,
+        "image_out": true
+      },
+      "features": {
+        "tool_calling": true,
+        "structured_output": true,
+        "reasoning_tier": "high"
+      }
+    },
+    "gemini-3.1-flash-lite-image": {
+      "_note": "Nano Banana 2 Lite — Fastest & lowest latency image generation/editing.",
+      "modalities": {
+        "vision": true,
+        "image_out": true
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "mid"
+      }
+    },
+    "gemini-3-pro-image": {
+      "_note": "Nano Banana Pro — High-fidelity asset production, Thinking mode, style references (up to 3), interleaved text+image, up to 4K.",
+      "modalities": {
+        "vision": true,
+        "image_out": true
+      },
+      "features": {
+        "tool_calling": true,
+        "structured_output": true,
+        "reasoning_tier": "ultra"
+      }
+    },
+    "gemini-2.5-flash-image": {
+      "_note": "Nano Banana (Legacy) — 1024px fixed resolution.",
+      "modalities": {
+        "vision": true,
+        "image_out": true
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "mid"
+      }
+    },
+    "gemini-omni-flash": {
+      "_note": "Gemini Omni Flash — Default model for conversational video generation & multi-turn editing with omnimodal reasoning (text, image, audio, video).",
+      "modalities": {
+        "vision": true,
+        "audio_in": true,
+        "video_in": true,
+        "video_out": true
+      },
+      "features": {
+        "tool_calling": true,
+        "structured_output": true,
+        "reasoning_tier": "high"
+      }
+    },
+    "veo-3.1-generate-preview": {
+      "_note": "Veo 3.1 — Video generation with native audio, extension up to 148s, 720p/1080p/4k, first/last frame interpolation, reference assets.",
+      "modalities": {
+        "vision": true,
+        "audio_out": true,
+        "video_in": true,
+        "video_out": true
+      },
+      "features": {
+        "tool_calling": false,
+        "reasoning_tier": "mid"
+      }
+    },
+    "veo-3.1-fast-generate-preview": {
+      "_note": "Veo 3.1 Fast — Fast native audio video generation with extension support.",
+      "modalities": {
+        "vision": true,
+        "audio_out": true,
+        "video_in": true,
+        "video_out": true
+      },
+      "features": {
+        "tool_calling": false,
+        "reasoning_tier": "mid"
+      }
+    },
+    "veo-3.1-lite-generate-preview": {
+      "_note": "Veo 3.1 Lite — Lightweight native audio video generation (720p/1080p).",
+      "modalities": {
+        "vision": true,
+        "audio_out": true,
+        "video_out": true
+      },
+      "features": {
+        "tool_calling": false,
+        "reasoning_tier": "mid"
+      }
+    },
+    "gemini-3.7-flash": {
+      "_note": "Gemini 3.7 Flash — GA flagship coding and agentic workhorse. 1M context, 64k output tokens, thinking levels (low, medium, high).",
+      "modalities": {
+        "vision": true,
+        "audio_in": true,
+        "video_in": true
+      },
+      "features": {
+        "tool_calling": true,
+        "structured_output": true,
+        "reasoning_tier": "ultra"
+      }
+    },
+    "gemini-3.1-flash-live-preview": {
+      "_note": "Gemini 3.1 Flash Live — Audio-to-audio bidirectional voice/dialogue model.",
+      "modalities": {
+        "audio_in": true,
+        "audio_out": true
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "high"
+      }
+    },
+    "gemini-3.1-flash-tts-preview": {
+      "_note": "Gemini 3.1 Flash TTS — Low latency controllable speech generation.",
+      "modalities": {
+        "audio_out": true
+      },
+      "features": {
+        "tool_calling": false,
+        "reasoning_tier": "mid"
+      }
+    },
+    "lyria-3-pro-preview": {
+      "_note": "Lyria 3 Pro — Flagship music generation model.",
+      "modalities": {
+        "audio_in": true,
+        "audio_out": true,
+        "music_out": true
+      },
+      "features": {
+        "tool_calling": false,
+        "reasoning_tier": "mid"
+      }
+    },
+    "deep-research-preview-04-2026": {
+      "_note": "Gemini Deep Research — Autonomous multi-source research agent.",
+      "modalities": {},
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "ultra"
+      }
+    },
+    "antigravity-preview-05-2026": {
+      "_note": "Antigravity Agent — Managed sandbox coding & execution agent powered by Gemini 3.7 Flash.",
+      "modalities": {
+        "vision": true
+      },
+      "features": {
+        "tool_calling": true,
+        "structured_output": true,
+        "reasoning_tier": "ultra"
+      }
+    },
+    "gemini-embedding-2-preview": {
+      "_note": "Gemini Embedding 2 — Unified multimodal embedding space (text, image, audio, video, PDF).",
+      "modalities": {
+        "vision": true,
+        "audio_in": true,
+        "video_in": true
+      },
+      "features": {
+        "tool_calling": false,
+        "reasoning_tier": "mid"
+      }
+    },
     "deepseek-v4-pro": {
       "_note": "Text-only per default. Vision optional in some cascades \u2014 not confirmed in i-arif chain.",
       "modalities": {},
