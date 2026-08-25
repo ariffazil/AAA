@@ -102,7 +102,7 @@ Dream engine integration: advisory telemetry only. HOLD on promotion gate.
 A-FORGE :7071 reads from arifOS :8088
 G:      0.4716  REPLICATED
 C_dark: 0.1226  REPLICATED
-W3:     0.7439  REPLICATED
+W3:     0.7439  REPLICATED→FROZEN-ARTIFACT 2026-08-25 (no live W3 meter; null in live payloads — see TODO.md #5)
 h:      0.7668  REPLICATED
 QDF:    0.4138  REPLICATED
 latency: 6ms
