@@ -108,6 +108,7 @@ installation_id
 *.sqlite
 *.sqlite-shm
 *.sqlite-wal
+graph/codegraph.db
 cache/
 __pycache__/
 venv/
