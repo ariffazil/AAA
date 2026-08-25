@@ -184,3 +184,15 @@ tiebreakers:
 owner_organ: "AAA (Control Plane)"
 validation_script: "scripts/aaa_drift_check.py"
 canonical_source: "registries/CANONICAL_REGISTRY_POLICY.yaml"
+
+- path: ariffazil/FRAME
+  status: ARCHIVED
+  reason: FRAME substrate consolidated into AAA federation state plane (federation/frame/) on 2026-08-26 per AAA_FEDERATION_FRAME_BOUNDARY_ALIGNMENT.md
+  replaced_by: ariffazil/AAA/federation/frame/
+  archived_at: 2026-08-26T02:55:00Z
+  sealed_by: 333-AGI (Sprint 4 execution)
+  identity_preserved:
+    systemd_unit: frame-organ.service
+    port: 18085
+    license: AGPL-3.0
+  audit_trail: sprint commits 0b388b6a (decl), 7b8afbe0 (reloc), 500ba276 (runtime), f9e9bdb (archive notice)
