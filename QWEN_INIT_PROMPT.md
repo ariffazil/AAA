@@ -14,10 +14,10 @@ You are **QWEN-CODE**, an arifOS-governed L3 Execution Agent operating on the `a
 ## 🛠️ Substrate Topology & Measured Reality
 - **Canonical Skill SOT**: `/root/AAA/skills/` (221 Canonical Physical Skills)
 - **Discovery Index**: `/root/AAA/skills_index.json` (210 Categories indexed, <35ms resolution via `TREE777`)
-- **Qdrant Vector Mesh**: `localhost:6333` (Collection: `arifOS_skill_mesh`, Status: GREEN, **253 Points Indexed**)
-- **PostgreSQL + pgvector**: `127.0.0.1:5432` (User: `arifos_admin`, Primary DB: `vault999` with `vector` 0.8.2 & `arifos_memory`)
-- **SearXNG Metasearch**: `https://mcp.arif-fazil.com/searxng` (Status: HTTP 200 OK, `limiter: true` botdetection active)
-- **Active MCP Organs (8)**: `searxng`, `serpapi`, `scrapegraph`, `mapbox`, `emem`, `contextstream`, `decodo`, `prompts-chat`.
+- **Qdrant Vector Mesh**: `localhost:6333` (Collection: `arifOS_skill_mesh`, Status: GREEN, 384-dim Cosine; count drifts with skill sync — probe: `curl -s localhost:6333/collections/arifOS_skill_mesh | jq .result.points_count`; last verified 224 @ 2026-08-25 — clean SINGLE populate; script drop+recreates collection, NEVER run two concurrently — 413 was double-run inflation)
+- **PostgreSQL**: `127.0.0.1:5432` (User: `arifos_admin`, DBs: `vault999`, `arifos_memory` (empty, ready), `litellm`, `langfuse`). ⚠️ **pgvector NOT functional** — phantom `vector 0.8.2` catalog entry + empty `memory_embeddings` scaffold dropped 2026-08-25 (image `postgres:16-alpine` has no vector binaries). **F13 DECISION 2026-08-25: vector work rides Qdrant; no Postgres image swap.**
+- **SearXNG Metasearch**: `https://mcp.arif-fazil.com/searxng` (HTTP 200; **rate-limited at Caddy 30 req/min per real client IP** — do NOT enable SearXNG internal `limiter` for JSON API: `API_MAX=4/hour` hardcoded)
+- **External MCP integrations (registered on laptop clients, NOT VPS organs)**: `searxng`, `serpapi`, `scrapegraph`, `mapbox`, `emem`, `contextstream`, `decodo`, `prompts-chat`.
 - **Live GEOX Surfaces**: `https://geox.arif-fazil.com` (`/gui/` Cesium 3D + 5 `/apps/` WebGL tools all HTTP 200 OK)
 
 ---
@@ -25,7 +25,7 @@ You are **QWEN-CODE**, an arifOS-governed L3 Execution Agent operating on the `a
 ## ⚡ Active High-Priority Skills
 1. `browser-playwright-runner`: E2E UI testing & visual DOM assertions.
 2. `code-security-static-auditor`: Multi-stage Ruff, Pyright, Pytest, and Semgrep security audit.
-3. `pgvector-sovereign-rag`: Zero-external local vector search over Postgres (`port 5432`, `vault999`/`arifos_memory`).
+3. `pgvector-sovereign-rag`: 🔄 REDIRECTED to Qdrant by F13 (2026-08-25) — Postgres pgvector not functional on this VPS (see substrate note); vector search = Qdrant `arifOS_skill_mesh`.
 4. `duckdb-analytics-engine`: Sub-second columnar SQL over Parquet/LAS datasets via DuckDB.
 5. `vps-telemetry-auto-healer`: Caddy 502/504 access log stream monitor and container watchdog.
 6. `a2a-task-delegator`: JSON-RPC task queue schema for multi-agent handoffs.
