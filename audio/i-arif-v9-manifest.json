@@ -1,0 +1,26 @@
+{
+  "voice_id": "ttv-voice-2026082515384726-njTJ5yOR",
+  "model": "speech-2.8-hd",
+  "engine": "minimax",
+  "archetype": "alpha_sopan_penang",
+  "source": "parametric_voice_design",
+  "consent": "original_voice_from_qualia_description",
+  "f9_compliance": "no_public_figure_audio",
+  "f13_compliance": "consented_internal_voice_source",
+  "acoustic_metrics": {
+    "f0_median_hz": 246.9,
+    "f0_target_hz": 237.3,
+    "f0_error_pct": 4.1,
+    "voiced_frames_pct": 82,
+    "spectral_centroid_hz": 1356,
+    "pitch_setting": 6
+  },
+  "audio_files": [
+    "/tmp/i-arif-v9-sopi-pitch6-test.ogg",
+    "/root/AAA/audio/processed/iarif-v9-sopi-pitch6_20260825_154156.mp3"
+  ],
+  "voice_sample_path": "/root/AAA/knowledge-graph/voice-sample/",
+  "filter_preset": "iarif_sopan_v9_preset",
+  "enrolled_at": "2026-08-25T15:41:56Z",
+  "vault_seal": "F13_APPROVED"
+}

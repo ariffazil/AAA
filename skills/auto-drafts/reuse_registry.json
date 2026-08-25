@@ -1,0 +1,11 @@
+{
+  "test-auto-metabolism-fix": {
+    "name": "test-auto-metabolism-fix",
+    "description": "Fix memory amnesia by wiring auto-metabolism hooks",
+    "reuse_count": 2,
+    "created_at": "2026-08-25T13:02:28Z",
+    "status": "CANONICAL",
+    "last_used": "2026-08-25T13:02:28Z",
+    "promoted_at": "2026-08-25T13:02:28Z"
+  }
+}

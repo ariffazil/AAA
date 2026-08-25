@@ -1,1 +1,0 @@
-/root/AAA/governance/GRAMMAR_DOCTRINE.md
