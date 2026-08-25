@@ -1,0 +1,133 @@
+# Federation Peers Registry
+# ═══════════════════════════════════════════════════════════════════
+# Canonical SOT for federation membership.
+# Companion files:
+#   - organs.yaml    (machine SOT — organs/services)
+#   - topology.md    (human SOT — topology/map)
+# Truth rule: live :port/health beats this file. Re-probe before SEAL claims.
+# Generated: 2026-08-25 · Post-cleanup canonicalization.
+# ═══════════════════════════════════════════════════════════════════
+
+schema_version: 1
+generated: "2026-08-25T19:06:00Z"
+maintainer: "Wawabot + ASI consensus"
+truth_rule: live_health_beats_file
+
+canonical_artifacts:
+  fed_router_py: /root/AAA/scripts/fed_router.py
+  federation_models_json: /root/.config/federation-models.json
+  federation_peers_yaml: /root/AAA/federation/federation-peers.yaml
+  sync_script: /root/AAA/scripts/fed-sync.sh
+  aggregator: /root/AAA/scripts/token-bank-aggregate.py
+
+peers:
+
+  - id: forge
+    role: primary
+    class: CORE
+    hostname: af-forge
+    tailscale_ip: 100.64.0.2
+    public_ip: 72.62.71.199
+    ssh_port: 22888
+    ssh_alias: af-forge
+    fed_port: 7074
+    fed_status: healthy
+    fed_artifact_md5: "388e697ff6d2c0bb53c3320d47b7d2bd"
+    secrets_md5: "15bd6d6d60857cc3aa77d13acd32949c"
+    secrets_status: full_vault
+    token_bank_records: 23
+    token_bank_total_cost_usd: 0.0996
+    authorized_by: f13_arif_direct
+    ratified: true
+    notes:
+      - Primary node. Authoritative for fed_router.py + federation-models.json.
+      - Token bank live. 23 records aggregating $0.0996 across 6 routes.
+
+  - id: flow
+    role: standby
+    class: EDGE
+    hostname: flow-edge
+    tailscale_ip: 100.64.0.1
+    tailscale_name_actual: arifs-s24
+    public_ip: 72.61.126.65
+    ssh_port: 22
+    ssh_user: root
+    ssh_key: /root/.ssh/af-forge-inbound
+    fed_port: 7075
+    fed_status: healthy
+    fed_artifact_md5: "388e697ff6d2c0bb53c3320d47b7d2bd"
+    secrets_md5: "148847691ddfe183e03cffb8ab54f8be"
+    secrets_status: stub
+    token_bank_records: 0
+    authorized_by: wawabot_self_init
+    ratified: false
+    notes:
+      - Deployed 2026-08-25 by Wawabot on Arif instruction.
+      - Staggered port 7075 to avoid conflict with FORGE.
+      - Secrets stub: sync from FORGE via vault breath for full functionality.
+      - Token bank empty: no production traffic routed here yet.
+
+  - id: azwaos
+    role: dormant
+    class: EDGE
+    hostname: azwaos
+    tailscale_ip: 100.64.0.4
+    tailscale_status: offline
+    fed_status: not_deployed
+    notes:
+      - Same public IP as flow. Awaiting Arif clarification.
+
+topology:
+  mode: primary_standby
+  active_peers: 2
+  staggered_ports: true
+  port_allocation:
+    forge: 7074
+    flow: 7075
+  sync_strategy:
+    type: stateless_mirror
+    script: /root/AAA/scripts/fed-sync.sh
+    files:
+      - /root/AAA/scripts/fed_router.py
+      - /root/.config/federation-models.json
+    direction: forge to flow
+    trigger: manual
+
+issues:
+  - id: secrets_mismatch
+    severity: medium
+    description: "FLOW has stub secrets 2 keys, FORGE has full vault 234 keys"
+    remediation: "Sync /root/.secrets/kunci-mas.env from FORGE to FLOW"
+    owner: f13_pending
+
+  - id: ratification_pending
+    severity: low
+    description: "FLOW deployed by Wawabot without explicit F13 record"
+    remediation: "Ratify FLOW as official member or rollback"
+    owner: f13_pending
+
+  - id: token_bank_fragmentation
+    severity: low
+    description: "Per-node token_bank.db accounting fragmented"
+    remediation: "Aggregator deployed; unified ledger is future"
+    owner: accepted
+
+  - id: azwaos_identity_conflict
+    severity: low
+    description: "Tailscale label vs public IP mapping unclear"
+    remediation: "Clarify if azwaos equals flow or different host"
+    owner: arif_confirm
+
+  - id: git_no_substrate
+    severity: medium
+    description: "FLOW /root/AAA is copy not git clone, drift risk"
+    remediation: "Migrate to git worktree for proper substrate"
+    owner: deferred
+
+  - id: cron_setup
+    severity: low
+    description: "fed-sync.sh runs manually; no automated sync yet"
+    remediation: "Setup 6h cron if Arif wants automation"
+    owner: deferred
+
+# DITEMPA BUKAN DIBERI - 999 SEAL ALIVE

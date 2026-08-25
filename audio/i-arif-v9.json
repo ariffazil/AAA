@@ -1,0 +1,14 @@
+{
+  "voice_id": "i_arif_v9_sopan_penang",
+  "archetype": "Sopan-Penang (female / resonance focus)",
+  "target_f0_median": 237.3,
+  "hnr_target_db": 22.8,
+  "dsp_pipeline": "qwen-audio-3.0-tts-plus + instruction parametric design",
+  "enrolled_at": "2026-08-25T15:33:00Z",
+  "vault_seal": "F13_APPROVED",
+  "manifest_hash": "sha256:e9b8f3c4a9e7d6b5c4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1",
+  "audio_files": [
+    "/root/AAA/audio/processed/iarif-v9-alpha-sopan_20260825_153251.ogg",
+    "/root/AAA/audio/processed/iarif-v9-beta-serak_20260825_153251.ogg"
+  ]
+}
