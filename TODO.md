@@ -28,7 +28,7 @@ Add after "openclaw": "operator",
 - [ ] cd /root/A-FORGE && pip install -e . && systemctl restart aforge
 
 ### 5. W3 Tri-Witness Threshold
-- [ ] W3=0.7439 (0.006 below F3 threshold 0.75)
+- [ ] ~~W3=0.7439 (0.006 below F3 threshold 0.75)~~ **PREMISE DEAD 2026-08-25**: 0.7439 is a frozen replication artifact (5 static copies: state.json, status.json, STATE_MAP, snapshot, this line). Live payloads return W3=null — no W3 meter exists. Real item: implement tri-witness computation (forge_witness wiring) as part of the measurement layer; do NOT chase 0.006 against a number nothing computes.
 
 ### 6. Fix FI Slot Conflicts
 - [ ] FI-005: codex OR copilot-cli
