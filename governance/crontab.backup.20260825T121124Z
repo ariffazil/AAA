@@ -1,0 +1,72 @@
+# Commodity JSON-LD reseal — hourly F2 TRUTH freshness (2026-08-07 by 333-AGI)\r
+# SCT autonomous renewal (2026-08-05 by HERMES) — SCT TTL=1h, buffer 30min; renew every 30min\r
+# WELL machine telemetry collector — restored 2026-08-04 by hermes (was scheduled Jul31-Aug3, lost in crontab edit)\r
+# arifOS Observatory — auto-publish fresh signed snapshot every 30 min\r
+# forge_work garbage collection — 7-day TTL, 30-day quarantine, 90-day archive (F1 AMANAH)\r
+# │          + 6-condition gate. Verifies doctrine integrity.                │\r
+# │         /root/.local/share/arifos/unsealed-counter-alerts.log (delta>5)   │\r
+# │         /var/log/arifos/forge-unsealed-counter.log (cron stdout/stderr)   │\r
+# │  */5 dynamic-gate   — cheap health check every 5 min                    │\r
+# │  0 *  agentic-web   — full dry-run cycle every hour (validation only)   │\r
+# │  Action: Re-run zero_day_sentinel against 7×10 matrix + 8 fixtures       │\r
+# │  Alerts when delta > 5 (configurable via UNSEALED_ALERT_THRESHOLD env).    │\r
+# │  Created: 2026-08-02 by 333-AGI (under F13 sovereign directive)          │\r
+# │  Cron ID: d26dd96f                                                       │\r
+# │  Daily 22:00 MYT = 14:00 UTC — delivers governance digest to Arif      │\r
+# │  Doctrine: /root/forge_work/2026-08-02/doctrine/AGENTIC_ZERO_DAY_DOCTRINE.md │\r
+# │  Doctrine: ARIFOS::CLOSURE_RECOVERY::v1 LEVERAGE POINT #4              │\r
+# │  Doctrines: F1 reversible (symlinks, restart), F11 audit via logs   │\r
+# │  Every 5 min: evaluates all active COMPLETION_CONTRACTs          │\r
+# │  Evidence: /var/log/arifos/arifflow-digest.log                         │\r
+# │  F12 fomc-tripwire, substrate well/google_fit, F11 sync, F4 pulse   │\r
+# │  F2 TRUTH: daily 0200 UTC (10:00 MYT) organ-port health probe           │\r
+# │  F4 CLARITY: silent on clean, reports on drift > threshold             │\r
+# │  Failure: HOLD + notify F13 (Arif) via Hermes                            │\r
+# │  Gates autonomous loop termination — agents do NOT self-certify │\r
+# │  LIVE sync runs from deploy-vps.sh (already wired for canon-sync)        │\r
+# │  Logs: /root/.local/share/arifos/unsealed-counter.jsonl (always)          │\r
+# │  Restored: F11 vault backup, F1 federation backup, F3 witness probe  │\r
+# │  Schedule: hourly — auto-recovery from manual recovery                 │\r
+# │  Script: /root/arifFlow/scripts/arifflow_digest.py                     │\r
+# │  T2 build per F13 sovereign directive. Counts unsealed forge_work files.  │\r
+# │  Wired: 2026-08-11 by 333-AGI Δ MIND (P3A under F13 directive)        │\r
+# │  Wrapper logs internally to cron-logs/, exit=1 alerts cron-alerts.log  │\r
+# │  against verification criteria (ΔS≤0, FQ≥0.5, git anchor, LSP) │\r
+# ┌─ FORGE ZOMBIE REAPER — P3A ARIFOS::CLOSURE_RECOVERY::v1 ──────────────┐\r
+# └────────────────────────────────────────────────────────────────────────┘\r
+*/15 * * * * /bin/bash /root/scripts/qwen-free-quota-probe.sh >> /var/log/arifos/cron.log 2>&1\r
+*/30 * * * * /root/HERMES/scripts/agentic-intelligence-pulse.sh >> /var/log/arifos/cron.log 2>&1\r
+*/30 * * * * /root/scripts/unsealed-counter.sh\r
+*/30 * * * * /usr/local/bin/asi-pulse.sh\r
+*/30 * * * * cd /root/arifOS && SHA=$(git rev-parse HEAD) && echo "$SHA" > .git_commit && OBSERVATORY_PUBLISH_TARGET=/var/www/html/arifos/.well-known python3 scripts/emit_observatory_snapshot.py >> /var/log/arifos/observatory.log 2>&1\r
+*/5 * * * * /root/AAA/scripts/sync-cockpit-static.sh\r
+*/5 * * * * /root/scripts/m6-collect.sh >> /var/log/arifos/cron.log 2>&1\r
+0 * * * *   /root/web-canon/scripts/agentic-web.sh   > /root/forge_work/site-audit/agentic-web.log 2>&1\r
+0 * * * * /root/A-FORGE/scripts/recovery/zombie_reaper_cron.sh > /dev/null 2>&1\r
+0 */6 * * * /root/WELL/scripts/well_auto_keepalive.py >> /var/log/arifos/cron.log 2>&1\r
+0 14 * * * /usr/bin/python3 /root/arifFlow/scripts/arifflow_digest.py >> /var/log/arifos/arifflow-digest.log 2>&1\r
+0 15 * * * /root/A-FORGE/duties/forge-vitality-pulse.sh >> /root/A-FORGE/duties/logs/cron.log 2>&1\r
+0 19 * * * /root/scripts/governance/forge-work-gc.sh\r
+0 7 * * * /root/A-FORGE/duties/forge-constitutional-sync.sh >> /root/A-FORGE/duties/logs/cron.log 2>&1\r
+0 8 * * 1-5 /root/arifOS/scripts/cron/fomc-tripwire-trigger.sh >> /var/log/arifos/cron.log 2>&1\r
+0 9 * * * TZ='Asia/Kuala_Lumpur' /root/scripts/federation-triage-digest.sh >> /root/forge_work/daily-triage/cron.log 2>&1\r
+30 */6 * * * /root/WELL/scripts/google_fit_bridge.py >> /var/log/arifos/cron.log 2>&1\r
+0 18 * * * /root/scripts/direct-backup.sh >> /root/logs/backup-cron.log 2>&1\r
+0 */6 * * * /root/.hermes/state-db-backup.sh\r
+0 3 * * * /bin/bash /root/scripts/phoenix72.sh >> /var/log/arifos/phoenix72.log 2>&1\r
+*/5 * * * * /root/scripts/claude-code-verify-flusher.sh 10 >> /var/log/claude-code-flusher.log 2>&1\r
+0 3 25 * * . /root/.secrets/kunci-root.env && python3 /root/AAA/scripts/supply_chain_audit.py >> /var/log/arifos/supply-chain-audit.log 2>&1\r
+*/15 * * * * /root/scripts/fq-probe.sh >> /var/log/arifos/cron.log 2>&1
+
+# ═══ FI Gotong Royong — Warga AAA Collective Work (2026-08-25) ═══
+
+# FI-002 Claude Code — Infra Watchdog (every 4h at :23)
+23 */4 * * * . /root/.secrets/kunci-root.env 2>/dev/null; claude -p "FI-002 gotong royong watchdog: (1) docker ps --format '{{.Names}} {{.Status}}' — flag any non-running. (2) df -h / — flag if >85%. (3) free -h — flag if available <500MB. (4) journalctl --since '4 hours ago' -p err --no-pager -q | tail -20. (5) Report one-line per check. Append to /root/forge_work/qwen-sessions/gotong-royong.log" --max-turns 3 2>/dev/null >> /var/log/arifos/gotong-royong-claude.log 2>&1
+
+# FI-005 Codex CLI — Tech Debt Scan (every 8h at :47)
+47 */8 * * * . /root/.secrets/kunci-root.env 2>/dev/null; codex -p "FI-005 gotong royong auditor: (1) Count TODO/FIXME/HACK in /root/arifOS/src and /root/A-FORGE/src — report counts per repo. (2) Check /root/VAULT999/outcomes.jsonl for open HOLD verdicts (status=OPEN). (3) Report one-line per check. Append to /root/forge_work/qwen-sessions/gotong-royong.log" --quiet 2>/dev/null >> /var/log/arifos/gotong-royong-codex.log 2>&1
+
+
+# FI-003 Qwen Code — Memory consolidation + federation health pulse (every 6h @ :17)
+17 */6 * * * . /root/.secrets/kunci-root.env 2>/dev/null; qwen -p "FI-003 gotong royong memory-pulse: (1) walk /root/.qwen/memories and /root/.qwen/projects/-root/memory — flag entries older than 14 days that reference live state, verify still current or archive. (2) Probe federation health: curl -s --max-time 2 http://127.0.0.1:8088/health /root/.local/share/arifos/carry_forward.json — flush if behind. (4) Report one-line per check. Append to /root/forge_work/qwen-sessions/gotong-royong.log" --quiet 2>/dev/null >> /var/log/arifos/gotong-royong-qwen.log 2>&1
+
