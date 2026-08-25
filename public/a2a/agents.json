@@ -368,7 +368,7 @@
       "layer": "pillars",
       "kind": "infrastructure",
       "civ_path": "/agent-cards/pillars/arifos/agent-card.json",
-      "description": "Constitutional AI governance kernel. 13 canonical tools, 13 floors (F1-F13), 888 JUDGE, 999 VAULT. Routes every agent action through constitutional enforcement before execution.",
+      "description": "Constitutional AI governance kernel. 8 public arif_* verbs, 13 floors (F1-F13), 888 JUDGE, 999 VAULT. Routes every agent action through constitutional enforcement before execution.",
       "version": "kanon-bac2bbd",
       "protocolVersion": "1.2",
       "endpoint": null,

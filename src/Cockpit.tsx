@@ -780,7 +780,22 @@ export default function Cockpit() {
             {/* SYSTEM HEALTH GRID */}
             <section className="mb-12">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-white/10">
-                <HealthMetric label="Integrity" value={kernelData?.contract_drift === false && kernelData?.runtime_drift === false ? '100%' : '—'} sub={kernelData?.contract_drift === false && kernelData?.runtime_drift === false ? 'No drift' : 'Drift detected'} color="text-red-500" />
+                <HealthMetric
+                  label="Kernel drift"
+                  value={
+                    kernelData?.contract_drift === undefined && kernelData?.runtime_drift === undefined
+                      ? '—'
+                      : kernelData?.contract_drift === false && kernelData?.runtime_drift === false
+                        ? 'none'
+                        : 'YES'
+                  }
+                  sub="contract + runtime fields only — not federation integrity"
+                  color={
+                    kernelData?.contract_drift === true || kernelData?.runtime_drift === true
+                      ? 'text-amber-500'
+                      : 'text-white'
+                  }
+                />
                 <HealthMetric label="Holds Open" value={String(holdsCount)} sub={holdsCount > 0 ? `${holdsBreakdown['input-required']} pending · ${holdsBreakdown['auth-required']} auth` : 'None'} color={holdsCount > 0 ? 'text-amber-500' : 'text-white'} />
                 <HealthMetric label="Seals" value={String(sealsCount)} sub={vaultConnected ? 'VAULT999' : 'In-memory'} color={vaultConnected ? 'text-emerald-500' : 'text-blue-400'} />
                 <HealthMetric label="Vault999" value={kernelData?.vault999_health?.toUpperCase() || '—'} sub={typeof kernelData?.freshness?.age_seconds === 'number' && !isNaN(kernelData.freshness.age_seconds) ? `fresh · ${kernelData.freshness.age_seconds}s` : kernelData?.freshness ? 'fresh · —' : 'no probe'} color={kernelData?.vault999_health === 'healthy' ? 'text-blue-500' : 'text-white/40'} />
@@ -800,7 +815,7 @@ export default function Cockpit() {
                     value={missionText}
                     onChange={e => setMissionText(e.target.value)}
                     onKeyDown={e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) void handleSubmitMission(e); }}
-                    placeholder="State the mission objective. System will sense → mind → heart → judge → vault — or HOLD for your decision. ⌘↵ to submit."
+                    placeholder="AAA queues A2A. arifOS judges. A-FORGE executes. You hold GO. ⌘↵ to queue."
                     rows={4}
                     className="w-full bg-transparent px-6 pt-5 pb-3 text-sm text-white/80 placeholder:text-white/20 font-mono resize-none outline-none"
                   />
@@ -815,7 +830,7 @@ export default function Cockpit() {
                       disabled={missionSubmitting || !missionText.trim()}
                       className="flex items-center gap-2 px-5 py-2 bg-red-500 text-white text-[10px] font-black tracking-widest uppercase hover:bg-red-400 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                     >
-                      {missionSubmitting ? 'DISPATCHING…' : 'DISPATCH MISSION'}
+                      {missionSubmitting ? 'QUEUING…' : 'QUEUE TO A2A'}
                       <Send className="w-3 h-3" />
                     </button>
                   </div>
