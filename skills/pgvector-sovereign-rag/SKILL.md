@@ -1,11 +1,13 @@
 ---
 name: pgvector-sovereign-rag
-description: Zero-external-dependency local RAG and private vector search using PostgreSQL + pgvector container running on VPS (localhost:5432).
+description: "REDIRECTED to Qdrant by F13 (2026-08-25): Postgres pgvector NOT functional on af-forge (postgres:16-alpine lacks binaries; phantom catalog entry dropped). Vector search = Qdrant arifOS_skill_mesh localhost:6333. Do not target :5432 for vectors; do not swap the Postgres image without new F13 authority."
 capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---
 
 # Sovereign Local RAG Skill (`pgvector-sovereign-rag`)
+
+> ⚠️ **REDIRECTED TO QDRANT — F13 decision 2026-08-25.** The Postgres path below is NON-FUNCTIONAL historical reference: container `postgres` runs stock `postgres:16-alpine` (no vector binaries; role `postgres` does not exist — only `arifos_admin`). Vector search = Qdrant `arifOS_skill_mesh` @ `localhost:6333`. Do not retry `CREATE EXTENSION vector` and do not swap the Postgres image without new F13 authority.
 
 Interfaces directly with the local PostgreSQL container running `pgvector` on VPS port `5432` for private, zero-external-dependency vector embedding, hybrid BM25 + cosine search, and project memory retrieval.
 
