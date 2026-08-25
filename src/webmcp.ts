@@ -253,7 +253,7 @@ if (typeof navigator !== 'undefined' && 'modelContext' in navigator) {
     },
     execute() {
       const governance = {
-        summary: 'AAA Gateway enforces arifOS constitutional Floors F1-F13 on all A2A task routing. No agent can self-approve consequential actions.',
+        summary: 'AAA Gateway displays floor state and queues A2A. arifOS enforces F1-F13. AAA never judges or executes.',
         constitutional_floors: {
           F1_AMANAH: 'No irreversible action without human acknowledgment',
           F2_TRUTH: 'Factual claims require citation or declaration of UNKNOWN',
