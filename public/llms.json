@@ -58,7 +58,7 @@
     "human": { "domain": "arif-fazil.com", "symbol": "Δ", "function": "Epistemic — The Body" },
     "theory": { "domain": "apex.arif-fazil.com", "symbol": "Ψ", "function": "Authority — The Soul" },
     "apps": { "domain": "arifos.arif-fazil.com", "symbol": "Ω", "function": "Safety — The Mind" },
-    "mind": { "domain": "aaa.arif-fazil.com", "function": "Runtime execution layer" }
+    "mind": { "domain": "aaa.arif-fazil.com", "function": "DISPLAY_ONLY cockpit + A2A gateway. Never judges. Never executes." }
   },
   "external_references": {
     "constitutional_canon": "https://apex.arif-fazil.com/llms.txt",
