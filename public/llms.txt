@@ -1,11 +1,11 @@
 # AAA — Control Plane / Agent Cockpit
 > React 19 cockpit + A2A mesh gateway. Operator surface for the 7-organ arifOS federation.
 > Port: 3001. License: AGPL-3.0. Status: OPERATIONAL. Version: 2026.07.01.
-> Transport: JSON-RPC unified · ΔS ≤ 0 · all 7 organs healthy.
+> Transport: JSON-RPC unified · ΔS ≤ 0 · DISPLAY_ONLY
 
 ## Quick Context
 - **What:** Operator dashboard + A2A message broker for the 7-organ arifOS federation
-- **Role:** OPERATES missions — queues HOLDs, routes A2A messages, displays state
+- **Role:** SHOWS state — queues HOLDs, routes A2A. Never judges. Never executes.
 - **Federation:** AAA shows. arifOS judges. A-FORGE executes. Arif controls.
 - **Transport:** JSON-RPC unified · ΔS ≤ 0
 - **Ingress:** Direct A-record → aaa.arif-fazil.com (Caddy → localhost:3001)
