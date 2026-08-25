@@ -1,5 +1,5 @@
 {
-  "last_session": "Final session seal: AGI-grade memory metabolism live, 7 repos clean, cron active, organ skills wired",
+  "last_session": "sess_memory_metabolism_seal",
   "unmetabolized": [],
   "active_scars": [
     {
@@ -18,22 +18,17 @@
       "event_id": "evt_749f641392d157fa",
       "reason": "Reusable capability/workflow discovered.",
       "target": "/root/HERMES/skills/_drafts/SKILL-test_session.md"
-    },
-    {
-      "event_id": "evt_cbe8b16ceee71b53",
-      "reason": "Reusable capability/workflow discovered.",
-      "target": "/root/HERMES/skills/_drafts/SKILL-final_metabolize.md"
     }
   ],
   "metrics": {
-    "map": 0.75,
-    "echo": 4.0,
-    "total_sessions": 4,
+    "map": 1.0,
+    "echo": 1.1,
+    "total_sessions": 3,
     "direct_executions": 3,
-    "retained_improvements": 4,
-    "honest_observations": 1
+    "retained_improvements": 3,
+    "honest_observations": 2
   },
-  "last_updated_utc": "2026-08-25T13:25:52Z",
+  "last_updated_utc": "2026-08-25T13:25:00Z",
   "timestamp_utc": "2026-08-25T13:25:00Z",
   "actor_id": "hermes",
   "intent": "Deploy AGI-grade memory metabolism, consolidate SOT, sanitize cron, wrap git across 7 repos",
