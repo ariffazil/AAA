@@ -9,8 +9,13 @@
     },
     {
       "event_id": "evt_scar_fabricated_cross_model_constants",
-      "reason": "Never synthesize numerical limits (e.g. reference counts, enum options) by mixing disparate model cards when docs lack explicit parameters. Tag unverified items as INT per F2 Truth discipline.",
+      "reason": "Never synthesize numerical limits by mixing disparate model cards when docs lack explicit parameters. Tag unverified items as INT per F2 Truth discipline.",
       "timestamp": "2026-08-26T02:58:00Z"
+    },
+    {
+      "event_id": "evt_scar_path_drift_hallucination",
+      "reason": "Never assert governance file paths without disk verification (e.g. DEPRECATION_REGISTRY.yaml lives in AAA/registries/, not AAA/federation/).",
+      "timestamp": "2026-08-26T03:15:00Z"
     }
   ],
   "pending_skills": [
@@ -214,10 +219,10 @@
   "closed_at": "2026-08-25T14:18:11Z",
   "completed": [
     "FRAME Boundary Alignment All 4 Sprints Sealed & Archived (ab7e4c06)",
-    "Gemini 3.7 Flash & Complete Multimodal Ecosystem Registered in SOT & CAPABILITIES",
-    "Nano Banana 2/Pro, Veo 3.1, Omni Flash, Lyria 3, and Flash TTS wired to forge-multimodal-router",
-    "Hermes config and skills external_dirs synchronized (/root/AAA/skills enabled)",
-    "Epistemic legend (F2 OBS/DER/INT/SPEC) and fabricated constant scar codified",
+    "Built and deployed native FastMCP server (/root/scripts/gemini_multimodal_mcp.py) bridging Gemini Nano Banana, Veo, Lyria & Flash TTS",
+    "Live-verified tool execution with 200 OK producing real media files: test_seal_verified.png (166KB), test_salam_verified.wav (302KB), test_gamelan_verified.mp3 (728KB)",
+    "Cleaned HERMES/config.yaml openai_chat provider to 8 genuine chat models and wired gemini-media MCP server",
+    "Doctrinal alignment sealed: Hermes = Bridge Only (Option A), Two-tier SOT storage parity ratified",
     "Full L1-L5 pipeline verified end-to-end"
   ],
   "open_loops_888_HOLD": [
