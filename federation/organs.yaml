@@ -351,15 +351,22 @@ components:
   - id: frame
     class: CORE
     display_name: FRAME
-    repo: arifOS (embedded organ)
+    repo: ariffazil/AAA  # 2026-08-26: consolidated from ariffazil/FRAME (standalone) → AAA state plane per FRAME_BOUNDARY_ALIGNMENT
     role: federation_measurement
     authority_ceiling: ADVISORY_ONLY
     port: 18085
     unit: frame-organ.service
-    source_path: /root/FRAME
+    source_path: /root/AAA/federation/frame/  # 2026-08-26: relocated from /root/FRAME — identity preserved (service unit, port, package name unchanged)
     runtime_path: /opt/frame/app
     runtime: python-3.12
     public_mcp: null
+    migration_doc: /root/AAA/federation/AAA_FEDERATION_FRAME_BOUNDARY_ALIGNMENT.md  # 2026-08-26: Sprint 1 declaration
+    identity_preserved:  # F1 AMANAH: identity ≠ location
+      service_unit: frame-organ.service  # systemd unit name unchanged
+      python_package: frame_organ        # import path unchanged
+      public_port: 18085                 # endpoint unchanged
+      doctrine_anchor: /root/AAA/federation/frame/doctrine/  # doctrine moved with code
+      github_mirror: ariffazil/FRAME (read-only archive post-Sprint 4)
     owned_domains:
       - institutional_baseline
       - organ_probe
