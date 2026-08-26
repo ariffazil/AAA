@@ -287,10 +287,19 @@ async def fed_route_http(request):
         constitutional_tier=int(body.get("constitutional_tier", 333) or 333),
         effort_level=str(body.get("effort_level", "") or ""),
     )
+    tier = int(body.get("constitutional_tier", 333) or 333)
     return JSONResponse(
         {
             "routes": routes,
-            "meta": {"endpoint": "/fed/route", "revived": "2026-08-15"},
+            "meta": {
+                "endpoint": "/fed/route",
+                "revived": "2026-08-15",
+                "hcsvog": _build_hcsvog(
+                    execution="bare",
+                    tools="mcp-core",
+                    gov=f"{tier}:yolo",
+                ),
+            },
         }
     )
 
