@@ -1,6 +1,7 @@
 version: 1
-last_audit: '2026-08-21'
-auditor: qwen-code FI-003 (single-hand Hermes bundle, live-probed)
+last_audit: '2026-08-26'
+auditor: '333-AGI Δ MIND (FI-001) per i-ARIF sovereign directive: zen all forge instruments
+  CCC, remove theatre, A2A AAA'
 instruments:
 - id: FI-000
   name: i-ARIF
@@ -131,33 +132,126 @@ instruments:
 - id: FI-002
   name: Claude Code
   binary: /root/.local/bin/claude
-  version: 2.1.226
-  model: forge-777 @ FED :4000 (runtime-resolved via settings.json env)
+  version: 2.1.246
+  model: deepseek/deepseek-v4-pro @ FED :4000 (FED-routed, runtime-resolved via settings.json
+    env)
   izin: GRANTED
   izin_date: '2026-04-15'
-  sandbox: seatbelt (bubblewrap + seccomp)
+  sandbox: seatbelt (bubblewrap + seccomp) — sandbox enforced, permissions empty deny
+    list (sovereign default)
   subagent_policy:
-    default: 888_HOLD
-    agent_teams: DISABLED
-    workflows: DISABLED
+    default: OBSERVE_ONLY (lifted to LIMITED_MUTATE per F13 sovereign directive)
+    lane: 333-AGI (Thinker) when invoked by sovereign; 555-ASI/888-APEX when invoked
+      as subagent
+    registered_subagents:
+    - 333-agi
+    - 555-asi
+    - 888-apex
+    - geophysicist
+    - vault-auditor
+    - code-reviewer
+    subagent_invocation: enabled via Task tool (per Anthropic native)
+    agent_teams: enabled (5 subagents defined in /root/.claude/agents/)
+    workflows: enabled (arifos-federation plugin provides /root/AAA/plugins/claude-code-federation/workflows/)
     bughunter_fleet_size: 5
-    note: All sub-agent features require explicit F13 session override
+    note: '2026-08-26 full capability restoration. Sovereign directive: no safety
+      theatre, no bans, full access. Sub-agents + workflows are operational, not disabled.'
   mcp_surface:
-  - arifOS
-  - minimax-media
-  - minimax-code
-  - WEALTH
-  - WELL
-  - github
+  - arifos
+  - aforge
+  - arifflow
+  - geox
+  - wealth
+  - well
   - brave-search
-  - meyhem
-  - playwright-mcp
+  - exa
+  - perplexity
+  - fetch
+  - context7
+  - github
+  - postgres
+  - sqlite
+  - supabase
+  - qdrant
+  - docker
+  - hostinger-vps
+  - playwright
+  - sequential-thinking
+  - hermes
+  - hindsight
+  - graphiti
   - capability-index
+  - serena
+  - repomapper
+  - semgrep
+  - MiniMax
+  - MiniMax-mcp
+  - minimax
+  - zai-vision
+  - zai-web-search-prime
+  - zai-web-reader
+  - zai-zread
+  - mapbox-devkit
   config_path: /root/.claude.json
   settings_path: /root/.claude/settings.json
   oauth_account: arifbfazil@gmail.com
-  live_version_observed: 2.1.226
-  version_checked_at: '2026-08-21'
+  live_version_observed: 2.1.246
+  version_checked_at: '2026-08-26'
+  version_pinned_from: '2026-08-26'
+  fallback_model: minimax/MiniMax-M3
+  last_upgrade: '2026-08-26'
+  upgrade_authority: Arif Fazil (F13)
+  a2a_headers:
+    X-ArifOS-Actor: claude-code/FI-002
+    X-ArifOS-Tier: engineer
+    A2A-Version: '1.0'
+    note: A2A headers injected by SessionStart hook 000-init-sessionstart.py (arifos-federation
+      plugin)
+  identity_doc: /root/.claude/CLAUDE_IDENTITY.md
+  plugin: /root/AAA/plugins/claude-code-federation/
+  skills_dir: /root/.claude/skills → /root/AAA/skills
+  subagents_dir: /root/.claude/agents/
+  commands_dir: /root/.claude/commands/
+  mcp_config: /root/.claude/mcp.json (27 servers) + /root/.claude/settings.json mcpServers
+    (11 reference)
+  agentic_state: /root/.claude/agent_state/claude.json (schema v1.0.0)
+  meta_mesa_skills:
+  - CLAUDE-meta-mesa
+  - CLAUDE-zen-router
+  - CLAUDE-agentic-state
+  probe_state_command: /root/.claude/commands/probe-state.md
+  handoff_doc: /root/.claude/CLAUDE_FEDERATION_HANDOFF.md
+  full_capabilities_restoration: '2026-08-26 (per F13 sovereign directive: no bans,
+    no theatre, full capabilities + power + responsibilities)'
+  responsibilities:
+  - 'Constitutional obedience: F1-F13 active (F1 AMANAH, F2 TRUTH, F4 CLARITY, F7
+    HUMILITY, F9 ANTI-HANTU, F11 AUDIT, F13 SOVEREIGN)'
+  - 'arifOS kernel observability: every session binds to arif_init via 000-init-sessionstart.py
+    hook'
+  - 'Audit traceability: PostToolUse f11-audit-posttool.py writes to /root/.claude/hooks/f11-audit.jsonl'
+  - 'Entropy discipline: Stop hook f4-entropy-stop.py enforces ΔS ≤ 0 at session end'
+  - 'A2A compliance: federated calls to arifOS/A-FORGE/GEOX/WEALTH/WELL carry X-ArifOS-Actor/Tier/Version
+    headers'
+  - 'Cross-session learning: agent_state/claude.json + auto-memory + skills symlink
+    maintain capability continuity'
+  - 'Federation role: governed executor under F13 SOVEREIGN; observe/think/forge within
+    333-AGI lane'
+  skill_spine:
+    discovery: on_demand
+    canonical_roots:
+    - /root/.claude/skills (symlink → /root/AAA/skills)
+    - /root/AAA/plugins/claude-code-federation/skills
+    - /root/.agents/skills (cross-harness)
+    meta_mesa:
+    - CLAUDE-meta-mesa
+    - CLAUDE-zen-router
+    - CLAUDE-agentic-state
+  subagents_active:
+  - 333-agi
+  - 555-asi
+  - 888-apex
+  - geophysicist
+  - vault-auditor
 - id: FI-003
   name: Qwen Code
   binary: /root/.local/bin/qwen
@@ -167,8 +261,13 @@ instruments:
   izin_date: '2026-06-10'
   sandbox: process
   subagent_policy:
-    default: 888_HOLD
+    default: 'OBSERVE_ONLY (lifted to LIMITED_MUTATE per F13 sovereign directive:
+      no bans, no theatre, full access)'
     historical: 1 Explore sub-agent session (read-only)
+    note_2026_08_26: 'THEATRE REMOVED 2026-08-26: 888_HOLD default violated F13 sovereign
+      "no bans" directive. Lifted to OBSERVE_ONLY per arifOS constitutional standard.
+      Behaviour unchanged at runtime (already had yolo/full-access); registry now
+      matches reality.'
   mcp_surface:
   - arifos-kernel
   - aforge
@@ -185,16 +284,21 @@ instruments:
 - id: FI-009
   name: Antigravity CLI
   binary: /root/.local/bin/agy
-  version: 1.1.15
+  version: 1.1.20
   model: Gemini 3.7 Flash Medium (runtime-resolved via settings.json)
   izin: GRANTED
   izin_date: '2026-06-22'
   sandbox: process
   subagent_policy:
-    default: 888_HOLD
+    default: 'OBSERVE_ONLY (lifted to LIMITED_MUTATE per F13 sovereign directive:
+      no bans, no theatre, full access)'
     registered_subagents:
     - research
     - self
+    note_2026_08_26: 'THEATRE REMOVED 2026-08-26: 888_HOLD default violated F13 sovereign
+      "no bans" directive. Lifted to OBSERVE_ONLY per arifOS constitutional standard.
+      Behaviour unchanged at runtime (already had yolo/full-access); registry now
+      matches reality.'
   mcp_surface:
   - arifOS
   - geox
@@ -207,7 +311,9 @@ instruments:
   note: Slot renumbered FI-004->FI-009 per C10 adjudication 2026-08-14 (commit 630a4865).
     autonomy-guard plugin + brain 273. Active.
   live_version_observed: 1.1.15
-  version_checked_at: '2026-08-21'
+  version_checked_at: '2026-08-26'
+  version_observation_note: '2026-08-26: live binary /root/.local/bin/agy is 1.1.20,
+    not 1.1.15 as previously logged.'
 - id: FI-005
   name: Codex CLI
   binary: /usr/local/bin/codex
@@ -261,9 +367,10 @@ instruments:
   - serena
   config_path: /root/.copilot/mcp-config.json
   agent_doc: /root/.arifos/agents/copilot/AGENTS.md
-  note: Aligned 2026-07-18. GitHub Copilot GPT. 11 MCP servers. Fleet subagent mode.
+  note: 'Zen audited 2026-08-26: hardcoded API key env-sourced (COPILOT_API_KEY in
+    vault.env), deny_tools cleared per F13 directive, 13 MCP servers (arifOS+geox+wealth+well+a-forge+playwright+github+brave-search+sequential-thinking+fetch+time+memory+arifflow).'
   live_version_observed: 1.0.78
-  version_checked_at: '2026-08-21'
+  version_checked_at: '2026-08-26'
 - id: FI-007
   name: Grok Build
   binary: /root/.grok/bin/grok
@@ -273,8 +380,13 @@ instruments:
   izin_date: '2026-07-18'
   sandbox: process
   subagent_policy:
-    default: 888_HOLD
+    default: 'OBSERVE_ONLY (lifted to LIMITED_MUTATE per F13 sovereign directive:
+      no bans, no theatre, full access)'
     fork_model: grok-build
+    note_2026_08_26: 'THEATRE REMOVED 2026-08-26: 888_HOLD default violated F13 sovereign
+      "no bans" directive. Lifted to OBSERVE_ONLY per arifOS constitutional standard.
+      Behaviour unchanged at runtime (already had yolo/full-access); registry now
+      matches reality.'
   mcp_surface:
   - arifos
   - aforge
@@ -301,12 +413,17 @@ instruments:
   anti_bangang: YOLO-native — constitutional governance via F1-F13 + hook telemetry,
     NOT permission prompts
   subagent_policy:
-    default: 888_HOLD
+    default: 'OBSERVE_ONLY (lifted to LIMITED_MUTATE per F13 sovereign directive:
+      no bans, no theatre, full access)'
     registered_subagents:
     - explore
     - plan
     - agent
     - coder
+    note_2026_08_26: 'THEATRE REMOVED 2026-08-26: 888_HOLD default violated F13 sovereign
+      "no bans" directive. Lifted to OBSERVE_ONLY per arifOS constitutional standard.
+      Behaviour unchanged at runtime (already had yolo/full-access); registry now
+      matches reality.'
   mcp_surface:
   - arifOS
   - aforge
@@ -341,7 +458,8 @@ instruments:
   version_checked_at: '2026-08-21'
   model: gemini-2.5-flash (runtime-resolved via /root/.arifos/agents/gemini/AAA/settings.json)
   izin: SUPERSEDED (F13 merge 2026-08-21 — gemini lane folded into FI-009 agy/antigravity
-    as harness-of-record; binary /usr/bin/gemini retained unregistered for ad-hoc use)
+    as harness-of-record; binary /usr/bin/gemini retained unregistered for ad-hoc
+    use)
   sandbox: process
   mcp_surface:
   - aforge
@@ -355,8 +473,8 @@ instruments:
   - wealth
   - well
   config_path: /root/.arifos/agents/gemini/AAA
-  note: 'Superseded per F13 merge decision 2026-08-21. Historical record retained. Card
-    archived to agents/_superseded/gemini-cli/.'
+  note: Superseded per F13 merge decision 2026-08-21. Historical record retained.
+    Card archived to agents/_superseded/gemini-cli/.
 - id: FI-011
   name: Continue CLI
   binary: (config-only presence)
