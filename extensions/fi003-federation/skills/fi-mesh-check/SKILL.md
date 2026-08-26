@@ -6,6 +6,8 @@ description: "Probe all FI coder CLIs live (qwen/kimi/opencode/codex/claude/grok
 owner: 333-AGI
 risk_tier: low
 floor_scope: [F2, F4]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # FI Mesh Check — falsification probe
@@ -30,4 +32,16 @@ Probe every FI coder CLI in the federation with a minimal falsification prompt. 
 
 ## Output
 
-End with the matrix table (FI × verdict × latency × note) + any root-cause fix performed. Root-cause fixes go to the responsible FI lane, not self-assigned cross-lane edits.
+End with the matrix table (FI × verdict × latency × hcsvog × note) + any root-cause fix performed. Root-cause fixes go to the responsible FI lane, not self-assigned cross-lane edits.
+
+### hcsvog columns (ETCSOVG harness metadata, arxiv 2605.23950)
+
+Capture per-FI harness identity during probe. Minimum: `h_fingerprint` + `h_tools` + `h_gov`.
+
+| Column | Source | Example |
+|---|---|---|
+| h_fingerprint | SHA256-first-8 of harness config | `a3f1c902` |
+| h_tools | Tool availability tier | `full`, `mcp-core`, `minimal`, `none` |
+| h_gov | Governance config | `333:yolo`, `333:confirm` |
+
+If harness metadata cannot be determined for an FI, mark as `—` (never infer).
