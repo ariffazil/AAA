@@ -27,6 +27,7 @@ Hardened v3.0 invariants (preserved):
 Forged: 2026-07-30  ·  Zen-dated: 2026-08-02  ·  DITEMPA BUKAN DIBERI
 """
 
+import hashlib
 import json
 import sqlite3
 import time
@@ -35,6 +36,32 @@ from pathlib import Path
 from typing import Optional
 
 from fastmcp import FastMCP
+
+
+# ── ETCSOVG Harness Metadata (arxiv 2605.23950) ─────────────────────
+def _build_hcsvog(
+    execution: str = "bare",
+    tools: str = "none",
+    context: str = "unknown:none:none",
+    schedule: str = "single:unlimited:none",
+    observe: str = "none",
+    verify: str = "none",
+    gov: str = "333:yolo",
+) -> dict:
+    """Build ETCSOVG harness metadata dict with stable fingerprint."""
+    hcsvog = {
+        "v": 1,
+        "h_execution": execution,
+        "h_tools": tools,
+        "h_context": context,
+        "h_schedule": schedule,
+        "h_observe": observe,
+        "h_verify": verify,
+        "h_gov": gov,
+    }
+    canonical = json.dumps(hcsvog, sort_keys=True, separators=(",", ":"))
+    hcsvog["h_fingerprint"] = hashlib.sha256(canonical.encode()).hexdigest()[:8]
+    return hcsvog
 
 # ── JIT Intent Retrieval (P1.5) ────────────────────────────────────
 # Lazily import intent_retriever to avoid loading sentence-transformers at boot.
@@ -779,6 +806,17 @@ def fed_route(
         meta["capability_description"] = cap_meta.get("description", "") if cap_meta else ""
         meta["capability_models"] = cap_models
 
+    # ── ETCSOVG Harness Metadata (arxiv 2605.23950) ─────────────────
+    meta["hcsvog"] = _build_hcsvog(
+        execution="bare",
+        tools="mcp-core",
+        context="unknown:none:none",
+        schedule="single:unlimited:none",
+        observe="receipt-only",
+        verify="none",
+        gov=f"{constitutional_tier}:yolo",
+    )
+
     # EMD lane check — advisory flag, never blocks (F1/F4)
     resolved_model = routes[0]["model"] if routes else model
     emd = _emd_check(agent_id, operation, resolved_model, modality)
@@ -829,6 +867,7 @@ def fed_route(
                     "routes_count": len(routes),
                     "capability": model if model.startswith("fed-") else None,
                     "captured_by": "sidecar-auto-ingest",
+                    "harness_fingerprint": meta.get("hcsvog", {}).get("h_fingerprint"),
                 },
                 "witness_organs": ["fed"],
                 "timestamp": datetime.now(timezone.utc).isoformat(),
@@ -914,6 +953,9 @@ def fed_contrast(route_a: str, route_b: str) -> dict:
     lat_a = read_route_latency(prov_a, model_a) if prov_a else None
     lat_b = read_route_latency(prov_b, model_b) if prov_b else None
 
+    # Build default harness metadata for contrast context
+    hcsvog = _build_hcsvog()
+
     return {
         "route_a": {
             "provider": prov_a,
@@ -927,6 +969,7 @@ def fed_contrast(route_a: str, route_b: str) -> dict:
             "balance": bal_b["balance_usd"] if bal_b else None,
             "latency_p50": lat_b["p50_ms"] if lat_b else None,
         },
+        "hcsvog": hcsvog,
     }
 
 
@@ -957,6 +1000,7 @@ def fed_report_latency(
     tokens_in: int = 0,
     tokens_out: int = 0,
     agent_id: str = "unknown",
+    hcsvog_fingerprint: str = "",
 ) -> dict:
     """
     Report latency for a provider-model route. Agents call this after every
@@ -970,6 +1014,8 @@ def fed_report_latency(
         tokens_in: Input tokens used
         tokens_out: Output tokens generated
         agent_id: Reporting agent
+        hcsvog_fingerprint: ETCSOVG harness fingerprint (SHA256-first-8) linking
+            this latency sample to a specific harness configuration
 
     Returns:
         { recorded: true, p50_ms: ..., sample_count: ... }
@@ -1001,6 +1047,16 @@ def fed_report_latency(
                VALUES (?, ?, ?, ?, 1, ?)""",
             (provider, model, latency_ms, latency_ms, now),
         )
+
+    # Store harness fingerprint if provided and column exists
+    if hcsvog_fingerprint:
+        try:
+            conn.execute(
+                """UPDATE route_latency SET h_fingerprint=? WHERE provider_name=? AND model_id=?""",
+                (hcsvog_fingerprint, provider, model),
+            )
+        except sqlite3.OperationalError:
+            pass  # Column not yet added (Tier 4 migration pending)
 
     # Log spend if tokens used
     if tokens_in or tokens_out:
