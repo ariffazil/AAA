@@ -88,7 +88,7 @@ In accordance with the **Zen Doctrine** and **F13 Sovereignty**:
 
 | Modality | Primary Models | Hardware Target | Use Case |
 | :--- | :--- | :--- | :--- |
-| **High-Fidelity T2I** | Flux.1-dev (FP8), SDXL Base 1.0 | A100 (16–24GB allocation) | Photorealism, artistic compositions, complex prompt adherence |
+| **High-Fidelity T2I** | Flux.1-dev (FP8), SDXL Base 1.0 | A100 (16–24GB allocation) | Photorealism, artistic compositions, complex prompt adherence (Canon: KSampler CFG=1.0, FluxGuidance=2.5–3.5, avoid burnt latents) |
 | **Fast Draft T2I** | Flux.1-schnell, SDXL Turbo/Lightning | A100 (8–12GB allocation) | 4–8 step rapid visual prototyping |
 | **Control & Consistency** | ControlNet (Depth, OpenPose, Canny), InstantID, PuLID | A100 (20–32GB allocation) | Pose transfer, facial identity preservation, structural framing |
 | **Video Generation** | Wan2.1 / Wan2.5, CogVideoX, HunyuanVideo | A100 (40–80GB allocation) | Text-to-video, image-to-video, character animation |
