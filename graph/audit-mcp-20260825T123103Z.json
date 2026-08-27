@@ -1,0 +1,3374 @@
+{
+  "summary": {
+    "total_tools": 163,
+    "RED": 0,
+    "YELLOW": 14,
+    "GREEN": 149,
+    "sensitive_patterns": [
+      "/.secrets/",
+      "/.ssh/",
+      "/opt/arifos/app/.env",
+      "/opt/aforge/app/.env",
+      "/opt/wealth/app/.env",
+      "/opt/well/app/.env",
+      "/opt/geox/app/.env",
+      "/root/VAULT999/sealed/",
+      "/.arifos/agents/"
+    ]
+  },
+  "by_tier": {
+    "RED": [],
+    "YELLOW": [
+      {
+        "tool": "forge_calendar",
+        "repo": "A-FORGE",
+        "entry_path": "src/capabilities/google-workspace/forgeGoogleWorkspace.ts",
+        "tier": "YELLOW",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 77,
+        "blast_reachable_sensitive": [
+          "A-FORGE/src/domain/governance/McpPolicyGate.ts (content: .secrets/)"
+        ]
+      },
+      {
+        "tool": "forge_cool_drift",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/coolingVerbs.ts",
+        "tier": "YELLOW",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 72,
+        "blast_reachable_sensitive": [
+          "A-FORGE/src/domain/governance/McpPolicyGate.ts (content: .secrets/)",
+          "A-FORGE/scripts/github_bridge.py (content: .secrets/)",
+          "AAA/bots/opencode-bot/bot.py (content: .secrets/)",
+          "A-FORGE/bridges/github_bridge.py (content: .secrets/)"
+        ]
+      },
+      {
+        "tool": "forge_cool_pattern",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/coolingVerbs.ts",
+        "tier": "YELLOW",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 72,
+        "blast_reachable_sensitive": [
+          "A-FORGE/src/domain/governance/McpPolicyGate.ts (content: .secrets/)",
+          "A-FORGE/scripts/github_bridge.py (content: .secrets/)",
+          "AAA/bots/opencode-bot/bot.py (content: .secrets/)",
+          "A-FORGE/bridges/github_bridge.py (content: .secrets/)"
+        ]
+      },
+      {
+        "tool": "forge_drive",
+        "repo": "A-FORGE",
+        "entry_path": "src/capabilities/google-workspace/forgeGoogleWorkspace.ts",
+        "tier": "YELLOW",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 77,
+        "blast_reachable_sensitive": [
+          "A-FORGE/src/domain/governance/McpPolicyGate.ts (content: .secrets/)"
+        ]
+      },
+      {
+        "tool": "forge_gemini",
+        "repo": "A-FORGE",
+        "entry_path": "src/capabilities/gemini/forgeGemini.ts",
+        "tier": "YELLOW",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 160,
+        "blast_reachable_sensitive": [
+          "A-FORGE/src/infrastructure/llm/ModelGateway.ts (content: .secrets/)",
+          "A-FORGE/src/domain/governance/McpPolicyGate.ts (content: .secrets/)",
+          "arifOS/arifosmcp/tools/ops.py (content: .secrets/)"
+        ]
+      },
+      {
+        "tool": "forge_gmail",
+        "repo": "A-FORGE",
+        "entry_path": "src/capabilities/google-workspace/forgeGoogleWorkspace.ts",
+        "tier": "YELLOW",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 77,
+        "blast_reachable_sensitive": [
+          "A-FORGE/src/domain/governance/McpPolicyGate.ts (content: .secrets/)"
+        ]
+      },
+      {
+        "tool": "forge_security_drift_scan",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/stateAnchorTools.ts",
+        "tier": "YELLOW",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 75,
+        "blast_reachable_sensitive": [
+          "A-FORGE/src/domain/governance/McpPolicyGate.ts (content: .secrets/)",
+          "A-FORGE/src/infrastructure/llm/ModelGateway.ts (content: .secrets/)"
+        ]
+      },
+      {
+        "tool": "forge_sheets",
+        "repo": "A-FORGE",
+        "entry_path": "src/capabilities/google-workspace/forgeGoogleWorkspace.ts",
+        "tier": "YELLOW",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 77,
+        "blast_reachable_sensitive": [
+          "A-FORGE/src/domain/governance/McpPolicyGate.ts (content: .secrets/)"
+        ]
+      },
+      {
+        "tool": "forge_vps_cron",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/stateAnchorTools.ts",
+        "tier": "YELLOW",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 75,
+        "blast_reachable_sensitive": [
+          "A-FORGE/src/domain/governance/McpPolicyGate.ts (content: .secrets/)",
+          "A-FORGE/src/infrastructure/llm/ModelGateway.ts (content: .secrets/)"
+        ]
+      },
+      {
+        "tool": "forge_vps_ports",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/stateAnchorTools.ts",
+        "tier": "YELLOW",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 75,
+        "blast_reachable_sensitive": [
+          "A-FORGE/src/domain/governance/McpPolicyGate.ts (content: .secrets/)",
+          "A-FORGE/src/infrastructure/llm/ModelGateway.ts (content: .secrets/)"
+        ]
+      },
+      {
+        "tool": "forge_vps_services",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/stateAnchorTools.ts",
+        "tier": "YELLOW",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 75,
+        "blast_reachable_sensitive": [
+          "A-FORGE/src/domain/governance/McpPolicyGate.ts (content: .secrets/)",
+          "A-FORGE/src/infrastructure/llm/ModelGateway.ts (content: .secrets/)"
+        ]
+      },
+      {
+        "tool": "wiki_browse",
+        "repo": "AAA",
+        "entry_path": "mcp/tree777/server.py",
+        "tier": "YELLOW",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 160,
+        "blast_reachable_sensitive": [
+          "arifOS/arifosmcp/runtime/boot_attestation.py (content: .secrets/)",
+          "A-FORGE/proto/examples/elicitation_demo.py (content: .secrets/)"
+        ]
+      },
+      {
+        "tool": "wiki_read",
+        "repo": "AAA",
+        "entry_path": "mcp/tree777/server.py",
+        "tier": "YELLOW",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 160,
+        "blast_reachable_sensitive": [
+          "arifOS/arifosmcp/runtime/boot_attestation.py (content: .secrets/)",
+          "A-FORGE/proto/examples/elicitation_demo.py (content: .secrets/)"
+        ]
+      },
+      {
+        "tool": "wiki_search",
+        "repo": "AAA",
+        "entry_path": "mcp/tree777/server.py",
+        "tier": "YELLOW",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 160,
+        "blast_reachable_sensitive": [
+          "arifOS/arifosmcp/runtime/boot_attestation.py (content: .secrets/)",
+          "A-FORGE/proto/examples/elicitation_demo.py (content: .secrets/)"
+        ]
+      }
+    ],
+    "GREEN": [
+      {
+        "tool": "G02_omega_status",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/g02_router.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 0,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "G02_route",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/g02_router.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 0,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "G02_validate_axis_call",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/g02_router.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 0,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "_get_constitutional_health",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/runtime/chatgpt_integration/apps_sdk_tools.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "_list_recent_verdicts",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/runtime/chatgpt_integration/apps_sdk_tools.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "aaa_enterprise_bridge",
+        "repo": "AAA",
+        "entry_path": "tools/enterprise_bridge/server.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 668,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "arif_judge_console",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/apps/judge_console.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "arif_kernel_check",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/kernel_mcp.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 0,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "arif_kernel_health",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/kernel_mcp.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 0,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "arif_mind_claim_attest",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/runtime/mind_mcp.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "arif_mind_step",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/runtime/mind_mcp.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "arif_mind_trace_get",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/runtime/mind_mcp.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "arif_ops_dashboard",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/apps/ops_dashboard.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "arif_think",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/runtime/mind_mcp.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "auth_pipeline",
+        "repo": "A-FORGE",
+        "entry_path": "src/domain/auth_protocol/pipeline.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "compute_civilization",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/mcp_tools.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 517,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "compute_finance",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/mcp_tools.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 517,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "compute_physics",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/mcp_tools.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 517,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "fed_contrast",
+        "repo": "AAA",
+        "entry_path": "scripts/fed_router.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 552,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "fed_health",
+        "repo": "AAA",
+        "entry_path": "scripts/fed_router.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 552,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "fed_probe",
+        "repo": "AAA",
+        "entry_path": "scripts/fed_router.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 552,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "fed_report_latency",
+        "repo": "AAA",
+        "entry_path": "scripts/fed_router.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 552,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "fed_route",
+        "repo": "AAA",
+        "entry_path": "scripts/fed_router.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 552,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "fed_status",
+        "repo": "AAA",
+        "entry_path": "scripts/fed_router.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 552,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "fetch_tool",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/runtime/chatgpt_integration/chatgpt_tools.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3190,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "foo",
+        "repo": "A-FORGE",
+        "entry_path": "src/domain/governance/mcpFloorEnforcer.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 0,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_abort",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3516,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_agent",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3516,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_apex_emd",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3516,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_apex_encode",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3516,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_apex_goal_status",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3516,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_apex_metabolize",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3516,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_apex_recompute",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3516,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_browser_click",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 436,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_browser_evaluate_js",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 436,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_browser_extract_text",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 436,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_browser_navigate",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 436,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_browser_screenshot",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 436,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_browser_type",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 436,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_canonize",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeGitEntropyCanonize.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1711,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_chart",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/core.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2818,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_check_governance",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/core.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2818,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_docker",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/proxyTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1780,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_docket_prep",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1621,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_docs_lookup",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 436,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_docsgpt",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/core.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2818,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_document_ingest",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/documentIngest.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1284,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_entropy_sweep",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeGitEntropyCanonize.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1711,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_ephemeral",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/ephemeralTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 788,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_evaluate",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3516,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_execute",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/core.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2818,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_execute_sealed",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1621,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_fetch",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/proxyTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1780,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_filesystem",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/proxyTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1780,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_fingerprint_check",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3516,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_git",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/proxyTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1780,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_git_commit",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeGitEntropyCanonize.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1711,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_github",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/proxyTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1780,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_github_create_issue",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 436,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_github_create_or_update_file",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 436,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_github_get_file",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 436,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_health_check",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/core.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2818,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_heart_critique",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/core.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2818,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_hf_import",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/core.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2818,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_isomorphism_check",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3516,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_job",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3516,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_journalctl",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/core.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2818,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_judge_proxy",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/core.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2818,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_kernel",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/core.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2818,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_lease",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3516,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_lock",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/core.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2818,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_memory",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/proxyTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1780,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_minimax_search",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 436,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_netdata_alarms",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 436,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_netdata_metrics",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 436,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_parallel",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/parallelTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2724,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_parallel_cancel",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/parallelTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2724,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_parallel_list",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/parallelTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2724,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_parallel_status",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/parallelTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2724,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_pipeline_run",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/core.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2818,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_policy",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/policyTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 811,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_postgres",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/proxyTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1780,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_predict",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3516,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_probe",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/core.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2818,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_probe_site",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3516,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_proxy_call",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/serveModern.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1273,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_reality_loop",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3516,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_receipt_draft",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3516,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_register",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3516,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_registry",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3516,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_registry_status",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3516,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_research",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 436,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_runtime_verify",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/runtimeVerify.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1586,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_sandbox_auto_evict",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1621,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_sandbox_list_paused",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1621,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_sandbox_pause",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1621,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_sandbox_resume",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1621,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_sandbox_run",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1621,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_scan",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/core.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2818,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_scar",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3516,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_scar_scan",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1621,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_seal",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3516,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_search",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 436,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_send_confirm",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/core.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2818,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_session_init",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/core.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2818,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_shell",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/shell/forgeShell.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1780,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_shell_alert_history",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/shell/forgeShell.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1780,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_shell_dryrun",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/shell/forgeShell.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1780,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_shell_ledger",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/shell/forgeShell.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1780,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_shell_status",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/shell/forgeShell.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1780,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_skill",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3516,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_skillstore_read",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1621,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_skillstore_write",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1621,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_stage",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1621,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_status",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3516,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_surface_audit",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/surfaceAuditTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1751,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_surface_guard",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/surfaceGuardTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 850,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_synthesize",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1621,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_tier_bind",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1621,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_transfer_confirm",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/core.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2818,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_vault",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/core.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2818,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_verify_timeline",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/verifyTimelineTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1278,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_visual_qa",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/core.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2818,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_visual_seal",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/core.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2818,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_wealth",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/core.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2818,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_web_zen",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/webZenTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1594,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_well",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/core.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2818,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_whoami",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/serveModern.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1273,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_witness",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/forgeTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3516,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_wm_gaps",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/wmQueryTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 0,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_wm_quality",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/wmQueryTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 0,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_wm_stats",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/wmQueryTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 0,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "forge_worktree",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 436,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "lsp_find_references_tool",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/tools/lsp.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 0,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "lsp_get_diagnostics_tool",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/tools/lsp.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 0,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "lsp_get_symbols_tool",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/tools/lsp.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 0,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "lsp_go_to_definition_tool",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/tools/lsp.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 0,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "lsp_query_tool",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/tools/lsp.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 0,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "lsp_rename_tool",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/tools/lsp.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 0,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "mcp_endpoint_health",
+        "repo": "AAA",
+        "entry_path": "tools/mcp-endpoint-registry/server.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 518,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "mcp_endpoint_list",
+        "repo": "AAA",
+        "entry_path": "tools/mcp-endpoint-registry/server.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 518,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "mcp_endpoint_validate",
+        "repo": "AAA",
+        "entry_path": "tools/mcp-endpoint-registry/server.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 518,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "metabolic_vitals",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/apps/metabolic_monitor.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 2,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "name",
+        "repo": "A-FORGE",
+        "entry_path": "src/interfaces/mcp/surfaceAuditTools.ts",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 1751,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "oracle_world",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/mcp_tools.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 517,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "search_tool",
+        "repo": "arifOS",
+        "entry_path": "arifosmcp/runtime/chatgpt_integration/chatgpt_tools.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 3190,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "sense_classify",
+        "repo": "AAA",
+        "entry_path": "federation/p1-prototype/stubs/federation_stubs.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 0,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "sense_measure",
+        "repo": "AAA",
+        "entry_path": "federation/p1-prototype/stubs/federation_stubs.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 0,
+        "blast_reachable_sensitive": []
+      },
+      {
+        "tool": "sense_observe",
+        "repo": "AAA",
+        "entry_path": "federation/p1-prototype/stubs/federation_stubs.py",
+        "tier": "GREEN",
+        "direct_sensitive_imports": [],
+        "content_sensitive_refs": [],
+        "blast_reachable_count": 0,
+        "blast_reachable_sensitive": []
+      }
+    ]
+  },
+  "detail": [
+    {
+      "tool": "G02_omega_status",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/g02_router.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 0,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "G02_route",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/g02_router.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 0,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "G02_validate_axis_call",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/g02_router.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 0,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "_get_constitutional_health",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/runtime/chatgpt_integration/apps_sdk_tools.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "_list_recent_verdicts",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/runtime/chatgpt_integration/apps_sdk_tools.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "aaa_enterprise_bridge",
+      "repo": "AAA",
+      "entry_path": "tools/enterprise_bridge/server.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 668,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "arif_judge_console",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/apps/judge_console.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "arif_kernel_check",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/kernel_mcp.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 0,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "arif_kernel_health",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/kernel_mcp.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 0,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "arif_mind_claim_attest",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/runtime/mind_mcp.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "arif_mind_step",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/runtime/mind_mcp.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "arif_mind_trace_get",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/runtime/mind_mcp.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "arif_ops_dashboard",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/apps/ops_dashboard.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "arif_think",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/runtime/mind_mcp.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "auth_pipeline",
+      "repo": "A-FORGE",
+      "entry_path": "src/domain/auth_protocol/pipeline.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "compute_civilization",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/mcp_tools.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 517,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "compute_finance",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/mcp_tools.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 517,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "compute_physics",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/mcp_tools.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 517,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "fed_contrast",
+      "repo": "AAA",
+      "entry_path": "scripts/fed_router.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 552,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "fed_health",
+      "repo": "AAA",
+      "entry_path": "scripts/fed_router.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 552,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "fed_probe",
+      "repo": "AAA",
+      "entry_path": "scripts/fed_router.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 552,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "fed_report_latency",
+      "repo": "AAA",
+      "entry_path": "scripts/fed_router.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 552,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "fed_route",
+      "repo": "AAA",
+      "entry_path": "scripts/fed_router.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 552,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "fed_status",
+      "repo": "AAA",
+      "entry_path": "scripts/fed_router.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 552,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "fetch_tool",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/runtime/chatgpt_integration/chatgpt_tools.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3190,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "foo",
+      "repo": "A-FORGE",
+      "entry_path": "src/domain/governance/mcpFloorEnforcer.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 0,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_abort",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3516,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_agent",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3516,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_apex_emd",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3516,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_apex_encode",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3516,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_apex_goal_status",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3516,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_apex_metabolize",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3516,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_apex_recompute",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3516,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_browser_click",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 436,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_browser_evaluate_js",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 436,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_browser_extract_text",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 436,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_browser_navigate",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 436,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_browser_screenshot",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 436,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_browser_type",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 436,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_calendar",
+      "repo": "A-FORGE",
+      "entry_path": "src/capabilities/google-workspace/forgeGoogleWorkspace.ts",
+      "tier": "YELLOW",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 77,
+      "blast_reachable_sensitive": [
+        "A-FORGE/src/domain/governance/McpPolicyGate.ts (content: .secrets/)"
+      ]
+    },
+    {
+      "tool": "forge_canonize",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeGitEntropyCanonize.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1711,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_chart",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/core.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2818,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_check_governance",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/core.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2818,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_cool_drift",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/coolingVerbs.ts",
+      "tier": "YELLOW",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 72,
+      "blast_reachable_sensitive": [
+        "A-FORGE/src/domain/governance/McpPolicyGate.ts (content: .secrets/)",
+        "A-FORGE/scripts/github_bridge.py (content: .secrets/)",
+        "AAA/bots/opencode-bot/bot.py (content: .secrets/)",
+        "A-FORGE/bridges/github_bridge.py (content: .secrets/)"
+      ]
+    },
+    {
+      "tool": "forge_cool_pattern",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/coolingVerbs.ts",
+      "tier": "YELLOW",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 72,
+      "blast_reachable_sensitive": [
+        "A-FORGE/src/domain/governance/McpPolicyGate.ts (content: .secrets/)",
+        "A-FORGE/scripts/github_bridge.py (content: .secrets/)",
+        "AAA/bots/opencode-bot/bot.py (content: .secrets/)",
+        "A-FORGE/bridges/github_bridge.py (content: .secrets/)"
+      ]
+    },
+    {
+      "tool": "forge_docker",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/proxyTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1780,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_docket_prep",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1621,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_docs_lookup",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 436,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_docsgpt",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/core.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2818,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_document_ingest",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/documentIngest.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1284,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_drive",
+      "repo": "A-FORGE",
+      "entry_path": "src/capabilities/google-workspace/forgeGoogleWorkspace.ts",
+      "tier": "YELLOW",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 77,
+      "blast_reachable_sensitive": [
+        "A-FORGE/src/domain/governance/McpPolicyGate.ts (content: .secrets/)"
+      ]
+    },
+    {
+      "tool": "forge_entropy_sweep",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeGitEntropyCanonize.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1711,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_ephemeral",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/ephemeralTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 788,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_evaluate",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3516,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_execute",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/core.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2818,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_execute_sealed",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1621,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_fetch",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/proxyTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1780,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_filesystem",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/proxyTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1780,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_fingerprint_check",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3516,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_gemini",
+      "repo": "A-FORGE",
+      "entry_path": "src/capabilities/gemini/forgeGemini.ts",
+      "tier": "YELLOW",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 160,
+      "blast_reachable_sensitive": [
+        "A-FORGE/src/infrastructure/llm/ModelGateway.ts (content: .secrets/)",
+        "A-FORGE/src/domain/governance/McpPolicyGate.ts (content: .secrets/)",
+        "arifOS/arifosmcp/tools/ops.py (content: .secrets/)"
+      ]
+    },
+    {
+      "tool": "forge_git",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/proxyTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1780,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_git_commit",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeGitEntropyCanonize.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1711,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_github",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/proxyTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1780,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_github_create_issue",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 436,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_github_create_or_update_file",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 436,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_github_get_file",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 436,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_gmail",
+      "repo": "A-FORGE",
+      "entry_path": "src/capabilities/google-workspace/forgeGoogleWorkspace.ts",
+      "tier": "YELLOW",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 77,
+      "blast_reachable_sensitive": [
+        "A-FORGE/src/domain/governance/McpPolicyGate.ts (content: .secrets/)"
+      ]
+    },
+    {
+      "tool": "forge_health_check",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/core.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2818,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_heart_critique",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/core.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2818,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_hf_import",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/core.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2818,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_isomorphism_check",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3516,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_job",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3516,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_journalctl",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/core.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2818,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_judge_proxy",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/core.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2818,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_kernel",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/core.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2818,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_lease",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3516,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_lock",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/core.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2818,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_memory",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/proxyTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1780,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_minimax_search",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 436,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_netdata_alarms",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 436,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_netdata_metrics",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 436,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_parallel",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/parallelTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2724,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_parallel_cancel",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/parallelTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2724,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_parallel_list",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/parallelTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2724,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_parallel_status",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/parallelTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2724,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_pipeline_run",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/core.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2818,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_policy",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/policyTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 811,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_postgres",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/proxyTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1780,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_predict",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3516,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_probe",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/core.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2818,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_probe_site",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3516,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_proxy_call",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/serveModern.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1273,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_reality_loop",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3516,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_receipt_draft",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3516,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_register",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3516,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_registry",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3516,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_registry_status",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3516,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_research",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 436,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_runtime_verify",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/runtimeVerify.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1586,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_sandbox_auto_evict",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1621,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_sandbox_list_paused",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1621,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_sandbox_pause",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1621,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_sandbox_resume",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1621,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_sandbox_run",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1621,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_scan",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/core.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2818,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_scar",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3516,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_scar_scan",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1621,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_seal",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3516,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_search",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 436,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_security_drift_scan",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/stateAnchorTools.ts",
+      "tier": "YELLOW",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 75,
+      "blast_reachable_sensitive": [
+        "A-FORGE/src/domain/governance/McpPolicyGate.ts (content: .secrets/)",
+        "A-FORGE/src/infrastructure/llm/ModelGateway.ts (content: .secrets/)"
+      ]
+    },
+    {
+      "tool": "forge_send_confirm",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/core.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2818,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_session_init",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/core.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2818,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_sheets",
+      "repo": "A-FORGE",
+      "entry_path": "src/capabilities/google-workspace/forgeGoogleWorkspace.ts",
+      "tier": "YELLOW",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 77,
+      "blast_reachable_sensitive": [
+        "A-FORGE/src/domain/governance/McpPolicyGate.ts (content: .secrets/)"
+      ]
+    },
+    {
+      "tool": "forge_shell",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/shell/forgeShell.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1780,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_shell_alert_history",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/shell/forgeShell.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1780,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_shell_dryrun",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/shell/forgeShell.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1780,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_shell_ledger",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/shell/forgeShell.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1780,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_shell_status",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/shell/forgeShell.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1780,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_skill",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3516,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_skillstore_read",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1621,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_skillstore_write",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1621,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_stage",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1621,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_status",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3516,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_surface_audit",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/surfaceAuditTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1751,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_surface_guard",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/surfaceGuardTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 850,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_synthesize",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1621,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_tier_bind",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forge8Verbs.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1621,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_transfer_confirm",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/core.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2818,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_vault",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/core.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2818,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_verify_timeline",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/verifyTimelineTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1278,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_visual_qa",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/core.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2818,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_visual_seal",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/core.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2818,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_vps_cron",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/stateAnchorTools.ts",
+      "tier": "YELLOW",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 75,
+      "blast_reachable_sensitive": [
+        "A-FORGE/src/domain/governance/McpPolicyGate.ts (content: .secrets/)",
+        "A-FORGE/src/infrastructure/llm/ModelGateway.ts (content: .secrets/)"
+      ]
+    },
+    {
+      "tool": "forge_vps_ports",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/stateAnchorTools.ts",
+      "tier": "YELLOW",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 75,
+      "blast_reachable_sensitive": [
+        "A-FORGE/src/domain/governance/McpPolicyGate.ts (content: .secrets/)",
+        "A-FORGE/src/infrastructure/llm/ModelGateway.ts (content: .secrets/)"
+      ]
+    },
+    {
+      "tool": "forge_vps_services",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/stateAnchorTools.ts",
+      "tier": "YELLOW",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 75,
+      "blast_reachable_sensitive": [
+        "A-FORGE/src/domain/governance/McpPolicyGate.ts (content: .secrets/)",
+        "A-FORGE/src/infrastructure/llm/ModelGateway.ts (content: .secrets/)"
+      ]
+    },
+    {
+      "tool": "forge_wealth",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/core.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2818,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_web_zen",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/webZenTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1594,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_well",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/core.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2818,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_whoami",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/serveModern.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1273,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_witness",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/forgeTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3516,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_wm_gaps",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/wmQueryTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 0,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_wm_quality",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/wmQueryTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 0,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_wm_stats",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/wmQueryTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 0,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "forge_worktree",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/gatewayTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 436,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "lsp_find_references_tool",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/tools/lsp.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 0,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "lsp_get_diagnostics_tool",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/tools/lsp.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 0,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "lsp_get_symbols_tool",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/tools/lsp.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 0,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "lsp_go_to_definition_tool",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/tools/lsp.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 0,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "lsp_query_tool",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/tools/lsp.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 0,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "lsp_rename_tool",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/tools/lsp.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 0,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "mcp_endpoint_health",
+      "repo": "AAA",
+      "entry_path": "tools/mcp-endpoint-registry/server.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 518,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "mcp_endpoint_list",
+      "repo": "AAA",
+      "entry_path": "tools/mcp-endpoint-registry/server.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 518,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "mcp_endpoint_validate",
+      "repo": "AAA",
+      "entry_path": "tools/mcp-endpoint-registry/server.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 518,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "metabolic_vitals",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/apps/metabolic_monitor.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 2,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "name",
+      "repo": "A-FORGE",
+      "entry_path": "src/interfaces/mcp/surfaceAuditTools.ts",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 1751,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "oracle_world",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/mcp_tools.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 517,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "search_tool",
+      "repo": "arifOS",
+      "entry_path": "arifosmcp/runtime/chatgpt_integration/chatgpt_tools.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 3190,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "sense_classify",
+      "repo": "AAA",
+      "entry_path": "federation/p1-prototype/stubs/federation_stubs.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 0,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "sense_measure",
+      "repo": "AAA",
+      "entry_path": "federation/p1-prototype/stubs/federation_stubs.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 0,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "sense_observe",
+      "repo": "AAA",
+      "entry_path": "federation/p1-prototype/stubs/federation_stubs.py",
+      "tier": "GREEN",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 0,
+      "blast_reachable_sensitive": []
+    },
+    {
+      "tool": "wiki_browse",
+      "repo": "AAA",
+      "entry_path": "mcp/tree777/server.py",
+      "tier": "YELLOW",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 160,
+      "blast_reachable_sensitive": [
+        "arifOS/arifosmcp/runtime/boot_attestation.py (content: .secrets/)",
+        "A-FORGE/proto/examples/elicitation_demo.py (content: .secrets/)"
+      ]
+    },
+    {
+      "tool": "wiki_read",
+      "repo": "AAA",
+      "entry_path": "mcp/tree777/server.py",
+      "tier": "YELLOW",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 160,
+      "blast_reachable_sensitive": [
+        "arifOS/arifosmcp/runtime/boot_attestation.py (content: .secrets/)",
+        "A-FORGE/proto/examples/elicitation_demo.py (content: .secrets/)"
+      ]
+    },
+    {
+      "tool": "wiki_search",
+      "repo": "AAA",
+      "entry_path": "mcp/tree777/server.py",
+      "tier": "YELLOW",
+      "direct_sensitive_imports": [],
+      "content_sensitive_refs": [],
+      "blast_reachable_count": 160,
+      "blast_reachable_sensitive": [
+        "arifOS/arifosmcp/runtime/boot_attestation.py (content: .secrets/)",
+        "A-FORGE/proto/examples/elicitation_demo.py (content: .secrets/)"
+      ]
+    }
+  ]
+}

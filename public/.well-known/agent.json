@@ -1,8 +1,8 @@
 {
   "$schema": "https://a2a-protocol.org/schemas/agent-card/v1.0",
   "name": "AAA A2A Gateway",
-  "description": "Federation A2A Gateway \u2014 central edge for all arifOS federation organs. Implements A2A Gateway pattern: task routing, authN/Z (OAuth 2.1), webhook broker, skill catalog aggregator, sovereign injection. One edge, six organs discoverable. Any A2A-native peer discovers the entire federation through this card.",
-  "version": "2026.07.24",
+  "description": "DISPLAY_ONLY A2A gateway for the arifOS federation. Shows state, queues A2A, aggregates organ cards. Never judges. Never executes. Never writes VAULT999. arifOS judges. A-FORGE executes. Arif (F13) seals. DITEMPA BUKAN DIBERI.",
+  "version": "2026.08.25",
   "url": "https://aaa.arif-fazil.com",
   "provider": {
     "organization": "arifOS Federation",
@@ -34,13 +34,14 @@
           "seal_anchor": "https://arif-fazil.com/999/",
           "seal_verification": "https://arif-fazil.com/999/seal.json",
           "authentication_protocol": "Ed25519-challenge-response",
-          "nonce_flow": "arif_init(nonce) \u2192 sign(nonce) \u2192 verify(signature) \u2192 FULL authority",
-          "sovereign_key_fingerprint": "sha256:c843960f8c85d625bd0e8dc563beba331b4cfe6d0c08f71c2e6da80eb58b8c6a"
+          "nonce_flow": "arif_init(nonce) → sign(nonce) → verify(signature) → FULL authority",
+          "sovereign_key_fingerprint": "sha256:17d9f11ad0d43563513bbf10c9206812b32063d1f01e88bb1cd624d8788bf449",
+          "aaa_ceiling": "DISPLAY_ONLY"
         }
       },
       {
         "uri": "https://arif-fazil.com/a2a/extensions/verdict-grammar/v1",
-        "description": "arifOS 888 JUDGE verdict grammar: SEAL | HOLD | SABAR | VOID",
+        "description": "arifOS 888 JUDGE verdict grammar (kernel, not AAA): SEAL | HOLD | SABAR | VOID. AAA displays verdicts; it does not issue them.",
         "required": false,
         "params": {
           "verdicts": [
@@ -161,7 +162,7 @@
       },
       {
         "uri": "https://arif-fazil.com/a2a/extensions/governance/v1",
-        "description": "arifOS constitutional governance \u2014 F1-F13 floors, verdict authority, injection defense",
+        "description": "arifOS constitutional governance — F1-F13 floors, verdict authority, injection defense",
         "required": false,
         "params": {
           "governance": {
@@ -201,10 +202,10 @@
         "description": "Card provenance and federation metadata",
         "required": false,
         "params": {
-          "doctrine": "DITEMPA BUKAN DIBERI \u2014 Control is forged, not given.",
+          "doctrine": "DITEMPA BUKAN DIBERI — Control is forged, not given.",
           "created": "2026-07-02T04:50:00Z",
-          "created_by": "FORGE (000\u03a9) \u2014 A2A Gateway pattern",
-          "rationale": "Copilot A2A analysis \u2014 blindspot #9: AAA should be A2A Gateway. One edge, N organs discoverable. Verdict grammar extension for sovereignty.",
+          "created_by": "FORGE (000Ω) — A2A Gateway pattern",
+          "rationale": "Copilot A2A analysis — blindspot #9: AAA should be A2A Gateway. One edge, N organs discoverable. Verdict grammar extension for sovereignty.",
           "gateway_pattern": "https://www.glukhov.org/ai-systems/architecture/a2a-protocol-explained/",
           "kernel_deps": [
             "KERNEL-trinity-33",
@@ -227,26 +228,26 @@
       },
       {
         "uri": "https://arif-fazil.com/a2a/extensions/federation-prompts/v1",
-        "description": "arifOS federation prompt catalog \u2014 zen-md single-sigil format",
+        "description": "arifOS federation prompt catalog — zen-md single-sigil format",
         "required": false,
         "params": {
           "version": "2026.07.16",
           "doctrine": "DITEMPA BUKAN DIBERI",
           "zen_format": "single-sigil + single-lexical per zen-md",
           "all_prompts": [
-            "\ud83c\udf31 BOOT",
-            "\ud83c\udf0a WITNESS",
-            "\ud83e\udde0 REASON",
-            "\u2696 MARUAH",
-            "\ud83d\udd0d PREFLIGHT",
-            "\ud83d\udd12 JUDGE",
-            "\ud83d\udd25 FORGE",
-            "\ud83d\udc8e SEAL",
-            "\ud83c\udf00 SABAR",
-            "\ud83d\udcdc REPLY"
+            "🌱 BOOT",
+            "🌊 WITNESS",
+            "🧠 REASON",
+            "⚖ MARUAH",
+            "🔍 PREFLIGHT",
+            "🔒 JUDGE",
+            "🔥 FORGE",
+            "💎 SEAL",
+            "🌀 SABAR",
+            "📜 REPLY"
           ],
-          "reality_loop_orchestrator": "\ud83c\udf00 SABAR",
-          "human_role": "init + seal only \u2014 autonomous 6-stage loop"
+          "reality_loop_orchestrator": "🌀 SABAR",
+          "human_role": "init + seal only — autonomous 6-stage loop"
         }
       },
       {
@@ -306,7 +307,7 @@
     {
       "id": "FORGE-route-task",
       "name": "Task Routing",
-      "description": "Route A2A tasks to the correct federation organ based on skill matching. Implements the A2A Gateway pattern: receives task \u2192 matches skill \u2192 routes to organ \u2192 streams result.",
+      "description": "Route A2A tasks to the correct organ by skill match. Routing is not execution. AAA never runs the organ tool itself.",
       "tags": [
         "routing",
         "gateway",
@@ -322,7 +323,7 @@
     {
       "id": "APEX-enforce-sovereign-veto",
       "name": "Sovereign Veto Enforcement",
-      "description": "When any organ emits auth-required (HOLD), pause task, push-notify ARIF, await sovereign decision. Implements F13 at A2A protocol level.",
+      "description": "When an organ emits auth-required (HOLD), surface it to ARIF. AAA pauses routing; F13 decides. AAA does not veto as kernel.",
       "tags": [
         "F13",
         "sovereign",
@@ -396,7 +397,7 @@
     {
       "id": "arifos.session.init",
       "name": "Federation Session Init",
-      "description": "Mint a governed session via arifOS kernel (port 8088). Returns session_id + session_token (sct_v1.*). Canonical entry point for any agent that needs authoritative identity. Same effect as calling arif_init directly \u2014 exposed here so cockpit-driven agents don't need to know kernel ports. Path C of 2026-07-24 federation unification. See /root/scripts/federation_ritual.py init.",
+      "description": "Queue session init to arifOS kernel arif_init (:8088). AAA does not mint SCTs itself. Returns whatever the kernel returns.",
       "tags": [
         "init",
         "session",
@@ -413,8 +414,8 @@
     },
     {
       "id": "arifos.session.seal",
-      "name": "Federation Session Seal",
-      "description": "Seal the active session via arifOS kernel (port 8088). Writes immutable entry to VAULT999 and returns entry_id + chain_hash. Canonical exit point. Same effect as arif_seal \u2014 exposed here for cockpit-driven agents. Path C of 2026-07-24 federation unification. See /root/scripts/federation_ritual.py seal.",
+      "name": "Queue kernel session seal",
+      "description": "Queue a session-close to arifOS kernel arif_seal (:8088). AAA does not write VAULT999. DISPLAY_ONLY — kernel + Arif seal.",
       "tags": [
         "seal",
         "session",
@@ -430,20 +431,22 @@
       ]
     }
   ],
+  "protocolVersion": "1.2",
+  "schema": "https://a2a-protocol.org/schemas/agent-card/v1.0",
   "signatures": [
     {
       "did": "did:web:arif-fazil.com",
-      "proofValue": "/QqHCZg5tADWfO5G2BqqU633e+tdKHEzvV16t4mrx8YOb+ZqIRoYxZ4q37ISs0EJsyHjKyyLpnCHyZZKvhA/BQ==",
+      "proofValue": "fzeuiwqYyBWJxJEqJnDiFC2mCn36bZZmg44eckt74Y7ey0zfXfy+zT44H7wz6mnt4E4g/5IZkMxXyjnWABuKDw==",
       "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T22:30:29Z",
+      "created": "2026-08-25T03:43:48Z",
       "type": "Ed25519Signature2020",
-      "verificationMethod": "did:web:arif-fazil.com#key-1",
+      "verificationMethod": "did:web:arif-fazil.com#arif-fazil",
       "canonical_form": "JCS-sorted-keys-no-whitespace",
-      "canonical_sha256": "75d0839918cb74b0ba780e25f72b5d080086308d644d8ce40602b076c2536f87",
+      "canonical_sha256": "3f0840e0465b0f7dae470b9a571c4aab244da1ef4d558855fa4b1906103bde08",
       "did_resolves_to": "https://arif-fazil.com/.well-known/did.json",
-      "nonce_flow": "arif_init(nonce) \u2192 sign(nonce) \u2192 verify \u2192 FULL"
+      "nonce_flow": "arif_init(nonce) → sign(nonce) → verify → FULL",
+      "signed_by": "ARIF F13 — DITEMPA BUKAN DIBERI — YANG ARIF LAGI BIJAKSANA",
+      "actor": "arif"
     }
-  ],
-  "protocolVersion": "1.2",
-  "schema": "https://a2a-protocol.org/schemas/agent-card/v1.0"
+  ]
 }

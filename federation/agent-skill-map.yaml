@@ -112,3 +112,27 @@ cross_agent_triggers:
 # Canonical inventory + family linkage of ALL cron surfaces (root crontab,
 # /etc/cron.d, systemd timers, Hermes jobs.json, agent session crons):
 cron_map: federation/cron-task-map.yaml
+
+# ─── Zen Consolidation 2026-08-26 ───
+# 224 → 182 SKILL.md files (-19%)
+# 63 items retired to skills-retired-20260826/
+# 7-layer orthogonal taxonomy established:
+#   substrate(7) knowledge(4) governance(2) engineering(15)
+#   agent-bindings(4) hermes(2) reflective(3) warga(3)
+# Symlink indexes rebuilt: domains/ capabilities/
+# Backup: /root/forge_work/skill-zen-backup-20260826/skills/
+zen_consolidation:
+  date: 2026-08-26
+  before: 224
+  after: 182
+  retired: 63
+  layers:
+    substrate: 7
+    knowledge: 4
+    governance: 2
+    engineering: 15
+    agent-bindings: 4
+    hermes: 2
+    reflective: 3
+    warga: 3
+    unlayered: 133
