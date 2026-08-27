@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ms-MY">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abang Sado · Nasi Lemak Hub</title>
+<meta name="temporal:timezone" content="Asia/Kuala_Lumpur">
+<meta name="temporal:offset" content="UTC+8">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0f;color:#d1d5db;min-height:100vh}
+.tab-bar{position:fixed;bottom:0;left:0;right:0;background:#12121a;border-top:1px solid #1e1e30;display:flex;z-index:2000;overflow-x:auto}
+.tab{flex:1;min-width:60px;text-align:center;padding:8px 4px;cursor:pointer;font-size:9px;color:#6b7280;border-top:2px solid transparent}
+.tab.active{color:#f0a500;border-top-color:#f0a500}
+.tab .icon{font-size:18px;margin-bottom:2px}
+.page{display:none;padding:16px;padding-bottom:70px}
+.page.active{display:block}
+h2{font-size:18px;color:#fff;margin-bottom:12px}
+h3{font-size:14px;color:#f0a500;margin-bottom:8px}
+.sub{font-size:11px;color:#6b7280;margin-bottom:12px}
+.card{background:#12121a;border:1px solid #1e1e30;border-radius:12px;padding:14px;margin-bottom:12px}
+.hero{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.stat{background:#12121a;border:1px solid #1e1e30;border-radius:10px;padding:10px 8px;text-align:center}
+.stat .l{font-size:9px;color:#6b7280;text-transform:uppercase}
+.stat .v{font-size:18px;font-weight:700;color:#fff;margin:2px 0}
+.stat .v.g{color:#22c55e}.stat .v.o{color:#f0a500}.stat .v.r{color:#ef4444}
+.stat .s{font-size:9px;color:#6b7280}
+table{width:100%;border-collapse:collapse;font-size:11px}
+th{text-align:left;color:#6b7280;font-weight:400;padding:5px 3px;border-bottom:1px solid #1e1e30;font-size:9px;text-transform:uppercase}
+td{padding:5px 3px;border-bottom:1px solid #0a0a0f}
+td.o{color:#f0a500;font-weight:600}td.g{color:#22c55e}td.r{color:#ef4444}
+.tag{display:inline-block;padding:2px 6px;border-radius:8px;font-size:9px;font-weight:600}
+.tag.no{background:rgba(239,68,68,.15);color:#ef4444}
+.tag.yes{background:rgba(34,197,94,.15);color:#22c55e}
+.btn{background:#f0a500;color:#0a0a0f;border:none;border-radius:8px;padding:10px 16px;font-weight:600;font-size:12px;cursor:pointer;width:100%;margin-top:8px}
+.btn:active{opacity:.8}
+.btn.red{background:#ef4444;color:#fff}
+.btn.green{background:#22c55e;color:#fff}
+.btn.blue{background:#3b82f6;color:#fff}
+.btn.outline{background:transparent;border:1px solid #f0a500;color:#f0a500}
+input,select,textarea{width:100%;background:#0a0a0f;border:1px solid #1e1e30;border-radius:8px;padding:10px;color:#d1d5db;font-size:12px;margin-bottom:8px;font-family:inherit}
+textarea{min-height:80px;resize:vertical}
+label{font-size:11px;color:#6b7280;display:block;margin-bottom:4px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.template-box{background:#0d0d15;border:1px solid #1e1e30;border-radius:8px;padding:12px;font-family:'Courier New',monospace;font-size:10px;color:#22c55e;line-height:1.6;white-space:pre-wrap;max-height:400px;overflow-y:auto}
+.card-row{display:flex;gap:8px;margin-bottom:8px}
+.card-row .card{flex:1;margin-bottom:0}
+.bar{height:12px;background:#1e1e30;border-radius:6px;overflow:hidden;margin-top:4px}
+.bar-fill{height:100%;border-radius:6px;background:#f0a500}
+.section-title{font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:1px;margin:16px 0 8px;font-weight:600}
+.price-card{background:#12121a;border:1px solid #1e1e30;border-radius:10px;padding:12px;text-align:center}
+.price-card .name{font-size:13px;color:#fff;font-weight:600}
+.price-card .cost{font-size:10px;color:#6b7280}
+.price-card .sell{font-size:20px;color:#f0a500;font-weight:700;margin:4px 0}
+.price-card .profit{font-size:11px;color:#22c55e}
+#mapRoute{height:300px;border-radius:10px;margin-bottom:12px}
+.ch{height:200px}
+.footer{text-align:center;padding:12px;font-size:10px;color:#374151;letter-spacing:1px;padding-bottom:80px}
+@media(max-width:600px){.hero,.grid3{grid-template-columns:repeat(3,1fr)}.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- ═══ TAB BAR ═══ -->
+<div class="tab-bar">
+<div class="tab active" onclick="showPage('home')"><div class="icon">🏠</div>Home</div>
+<div class="tab" onclick="showPage('order')"><div class="icon">📋</div>Order</div>
+<div class="tab" onclick="showPage('entry')"><div class="icon">📱</div>Entry</div>
+<div class="tab" onclick="showPage('track')"><div class="icon">📊</div>Track</div>
+<div class="tab" onclick="showPage('waste')"><div class="icon">⚠️</div>Waste</div>
+<div class="tab" onclick="showPage('route')"><div class="icon">🗺️</div>Route</div>
+<div class="tab" onclick="showPage('price')"><div class="icon">💰</div>Price</div>
+<div class="tab" onclick="showPage('sim')"><div class="icon">📈</div>Sim</div>
+</div>
+
+<!-- ═══ PAGE: HOME ═══ -->
+<div class="page active" id="page-home">
+<h2>🍚 Nasi Lemak Hub</h2>
+<div class="sub">Abang Sado · Ali Maju Sri Rampai · 12 Locations</div>
+
+<div class="hero">
+<div class="stat"><div class="l">Net Profit/mo</div><div class="v g" id="h-profit">RM11,655</div><div class="s">real numbers</div></div>
+<div class="stat"><div class="l">Today</div><div class="v o" id="h-today">--</div><div class="s" id="h-today-sub">units ordered</div></div>
+<div class="stat"><div class="l">Waste This Week</div><div class="v r" id="h-waste">RM0</div><div class="s">berlauk</div></div>
+</div>
+
+<div class="card">
+<h3>🍳 Vendor Economics (No Negotiation)</h3>
+<div class="grid2">
+<div><label>Rebus/Dadar</label><div style="font-size:16px;color:#22c55e;font-weight:700">RM1.20 → RM2.50 = +RM1.30</div></div>
+<div><label>Mata/Berlauk</label><div style="font-size:16px;color:#f0a500;font-weight:700">RM1.50 → RM3.00 = +RM1.50</div></div>
+</div>
+<div style="margin-top:8px;font-size:11px;color:#ef4444">⚠️ Berlauk: Syed cover kalau x habis. Telur: free waste.</div>
+</div>
+
+<div class="card">
+<h3>⚡ Quick Actions</h3>
+<div class="grid3">
+<button class="btn" onclick="showPage('order')">📋 Generate Order</button>
+<button class="btn green" onclick="showPage('entry')">📱 Log Today</button>
+<button class="btn blue" onclick="showPage('track')">📊 Weekly Report</button>
+</div>
+</div>
+
+<div class="card">
+<h3>📍 Location Rules</h3>
+<div class="grid2">
+<div><span class="tag no">🚫 NO BERLAUK</span><div style="font-size:10px;color:#6b7280;margin-top:4px">Mamak 2, Kedai P, Kedai A, Mamak 1</div></div>
+<div><span class="tag yes">✅ BERLAUK OK</span><div style="font-size:10px;color:#6b7280;margin-top:4px">DSP/DSW, LRT WM, LRT S, Kedai L, Even, Dato, Parlimen</div></div>
+</div>
+<div style="margin-top:8px;font-size:11px;color:#6b7280">Berlauk cap: 19 normal, 43 event. Order by 9pm. Pickup 5:15 AM.</div>
+</div>
+
+<div class="card">
+<h3>📈 31-Day Summary (from WhatsApp data)</h3>
+<div class="grid2">
+<div>
+<table>
+<tr><td>Total Orders</td><td class="o">31</td></tr>
+<tr><td>Total Units</td><td class="o">7,594</td></tr>
+<tr><td>Avg/Order</td><td>245</td></tr>
+<tr><td>Event Orders</td><td>7</td></tr>
+</table>
+</div>
+<div>
+<table>
+<tr><td>Best Day</td><td class="g">RM957 (Mon)</td></tr>
+<tr><td>Worst Day</td><td class="r">RM160 (Sun)</td></tr>
+<tr><td>Monthly Projection</td><td class="g">RM11,655</td></tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ═══ PAGE: ORDER TEMPLATE ═══ -->
+<div class="page" id="page-order">
+<h2>📋 Order Template</h2>
+<div class="sub">Auto-generate order text untuk Ali Maju</div>
+
+<div class="card">
+<label>Tarikh Delivery</label>
+<input type="date" id="orderDate">
+<label>Jenis Hari</label>
+<div class="grid2">
+<button class="btn" onclick="setOrderType('normal')" id="btn-normal" style="background:#f0a500">📅 Normal</button>
+<button class="btn outline" onclick="setOrderType('event')" id="btn-event">🎉 Event</button>
+</div>
+<div style="margin-top:8px">
+<label>Custom Berlauk Qty (optional)</label>
+<input type="number" id="customBerlauk" placeholder="Default: 19 normal, 43 event" min="0" max="50">
+</div>
+<button class="btn green" onclick="generateOrder()" style="margin-top:8px">📋 Generate Order</button>
+</div>
+
+<div class="card">
+<h3>Generated Order</h3>
+<div class="template-box" id="orderOutput">Tap "Generate" untuk buat order...</div>
+<button class="btn" onclick="copyOrder()" style="margin-top:8px">📋 Copy to Clipboard</button>
+</div>
+</div>
+
+<!-- ═══ PAGE: MOBILE ENTRY ═══ -->
+<div class="page" id="page-entry">
+<h2>📱 Log Today's Sales</h2>
+<div class="sub">Tap location + enter quantity. Save = auto-calculate profit.</div>
+
+<div class="card">
+<label>Date</label>
+<input type="date" id="entryDate">
+<label>Is Event Day?</label>
+<select id="entryEvent"><option value="false">No</option><option value="true">Yes — Event</option></select>
+</div>
+
+<div class="section-title">📍 Enter Units Sold Per Location</div>
+<div id="entryLocations"></div>
+
+<div class="card" style="text-align:center">
+<div style="font-size:11px;color:#6b7280;margin-bottom:8px">Estimated Revenue</div>
+<div style="font-size:24px;color:#f0a500;font-weight:700" id="entryRevenue">RM0.00</div>
+<div style="font-size:11px;color:#22c55e" id="entryProfit">Profit: RM0.00</div>
+<button class="btn green" onclick="saveEntry()" style="margin-top:12px">💾 Save Entry</button>
+</div>
+</div>
+
+<!-- ═══ PAGE: TRACK ═══ -->
+<div class="page" id="page-track">
+<h2>📊 P&L Tracker</h2>
+<div class="sub">All saved entries. Scroll untuk tengok history.</div>
+
+<div class="hero">
+<div class="stat"><div class="l">Total Revenue</div><div class="v o" id="t-rev">RM0</div></div>
+<div class="stat"><div class="l">Total Profit</div><div class="v g" id="t-profit">RM0</div></div>
+<div class="stat"><div class="l">Days Tracked</div><div class="v" id="t-days">0</div></div>
+</div>
+
+<div class="card">
+<h3>Weekly Summary</h3>
+<button class="btn blue" onclick="generateWeeklyReport()">📊 Generate Weekly Report</button>
+<div id="weeklyReport" style="margin-top:8px"></div>
+</div>
+
+<div class="card">
+<h3>Entry History</h3>
+<table>
+<thead><tr><th>Date</th><th>Day</th><th>Units</th><th>Revenue</th><th>Profit</th><th>Waste</th><th>Event</th></tr></thead>
+<tbody id="historyTable"></tbody>
+</table>
+</div>
+
+<div class="card">
+<h3>Charts</h3>
+<div class="ch"><canvas id="profitChart"></canvas></div>
+</div>
+
+<button class="btn red" onclick="clearEntries()" style="margin-top:8px">🗑️ Clear All Data</button>
+</div>
+
+<!-- ═══ PAGE: WASTE ═══ -->
+<div class="page" id="page-waste">
+<h2>⚠️ Berlauk Waste Log</h2>
+<div class="sub">Track berapa berlauk tak habis. Every unit = RM1.50 loss.</div>
+
+<div class="card">
+<label>Date</label>
+<input type="date" id="wasteDate">
+<label>Berlauk Ordered</label>
+<input type="number" id="wasteOrdered" placeholder="Berapa berlauk yang order hari ni?" min="0">
+<label>Berlauk Sold (x habis = leave blank)</label>
+<input type="number" id="wasteSold" placeholder="Berapa berlauk yang jual?" min="0">
+<button class="btn green" onclick="saveWaste()">💾 Save Waste Log</button>
+</div>
+
+<div class="hero">
+<div class="stat"><div class="l">Avg Waste %</div><div class="v" id="w-avg">0%</div></div>
+<div class="stat"><div class="l">Monthly Loss</div><div class="v r" id="w-loss">RM0</div></div>
+<div class="stat"><div class="l">Cap Violations</div><div class="v" id="w-violations">0</div></div>
+</div>
+
+<div class="card">
+<h3>Waste History</h3>
+<table>
+<thead><tr><th>Date</th><th>Ordered</th><th>Sold</th><th>Waste</th><th>%</th><th>Loss</th><th>Cap</th></tr></thead>
+<tbody id="wasteTable"></tbody>
+</table>
+</div>
+</div>
+
+<!-- ═══ PAGE: ROUTE ═══ -->
+<div class="page" id="page-route">
+<h2>🗺️ Delivery Route</h2>
+<div class="sub">Drag markers untuk pin exact location. Auto-generate route.</div>
+
+<div id="mapRoute"></div>
+
+<div class="card">
+<h3>Optimal Route</h3>
+<div id="routeList" style="font-size:11px;line-height:1.8"></div>
+<button class="btn blue" onclick="copyRoute()" style="margin-top:8px">📋 Copy Route Text</button>
+</div>
+
+<div class="card">
+<h3>Route Stats</h3>
+<div class="grid2">
+<div><label>Total Distance</label><div style="font-size:16px;color:#f0a500;font-weight:700" id="routeDistance">~28 km</div></div>
+<div><label>Est. Time</label><div style="font-size:16px;color:#f0a500;font-weight:700" id="routeTime">~90 min</div></div>
+</div>
+</div>
+</div>
+
+<!-- ═══ PAGE: PRICE SHEET ═══ -->
+<div class="page" id="page-price">
+<h2>💰 Price Sheet</h2>
+<div class="sub">Professional price list untuk tunjuk kedai baru.</div>
+
+<div class="card">
+<h3>Ali Maju Sri Rampai — Nasi Lemak Price List</h3>
+<div class="grid2">
+<div class="price-card">
+<div class="name">🥞 Nasi Lemak Dadar</div>
+<div class="cost">Vendor RM1.20</div>
+<div class="sell">RM2.50</div>
+<div class="profit">+RM1.30 / bungkus</div>
+</div>
+<div class="price-card">
+<div class="name">🥚 Nasi Lemak Rebus</div>
+<div class="cost">Vendor RM1.20</div>
+<div class="sell">RM2.50</div>
+<div class="profit">+RM1.30 / bungkus</div>
+</div>
+<div class="price-card">
+<div class="name">🍳 Nasi Lemak Mata</div>
+<div class="cost">Vendor RM1.50</div>
+<div class="sell">RM3.00</div>
+<div class="profit">+RM1.50 / bungkus</div>
+</div>
+<div class="price-card">
+<div class="name">🥩 Nasi Lemak Berlauk</div>
+<div class="cost">Vendor RM1.50</div>
+<div class="sell">RM3.00</div>
+<div class="profit">+RM1.50 / bungkus</div>
+</div>
+</div>
+<div style="margin-top:12px;font-size:11px;color:#6b7280;text-align:center">
+Min order: 5 bungkus · Delivery: setiap hari · Payment: cash on delivery<br>
+Call/WhatsApp: [SYED NUMBER]
+</div>
+</div>
+
+<div class="card">
+<h3>Customize</h3>
+<label>Your Phone Number</label>
+<input type="tel" id="pricePhone" placeholder="012-xxx-xxxx" onchange="updatePriceSheet()">
+<label>Your Name</label>
+<input type="text" id="priceName" placeholder="Abang Sado" onchange="updatePriceSheet()">
+<button class="btn" onclick="printPriceSheet()">🖨️ Print / Save as PDF</button>
+</div>
+</div>
+
+<!-- ═══ PAGE: GROWTH SIMULATOR ═══ -->
+<div class="page" id="page-sim">
+<h2>📈 Growth Simulator</h2>
+<div class="sub">"Kalau tambah X kedai, profit naik berapa?"</div>
+
+<div class="card">
+<label>New Locations to Add</label>
+<input type="number" id="simLocations" value="3" min="1" max="20" oninput="updateSim()">
+<label>Avg Units per New Location</label>
+<input type="number" id="simUnits" value="40" min="5" max="200" oninput="updateSim()">
+<label>Can New Locations Have Berlauk?</label>
+<select id="simBerlauk" onchange="updateSim()"><option value="yes">Yes</option><option value="no">No</option></select>
+</div>
+
+<div class="hero">
+<div class="stat"><div class="l">Current Net</div><div class="v g">RM11,655</div></div>
+<div class="stat"><div class="l">Projected Net</div><div class="v o" id="sim-net">RM11,655</div></div>
+<div class="stat"><div class="l">Growth</div><div class="v" id="sim-growth">+0%</div></div>
+</div>
+
+<div class="card">
+<h3>What-If Scenarios</h3>
+<table>
+<thead><tr><th>Scenario</th><th>Locations</th><th>Units/mo</th><th>Revenue</th><th>Net Profit</th><th>vs Current</th></tr></thead>
+<tbody id="simTable"></tbody>
+</table>
+</div>
+
+<div class="card">
+<h3>Capacity Check</h3>
+<div style="font-size:11px;line-height:1.8">
+<div id="simCapacity">Ali Maju capacity: 800 units/day max</div>
+<div class="bar" style="margin-top:4px"><div class="bar-fill" id="simCapBar" style="width:36%"></div></div>
+<div style="font-size:10px;color:#6b7280;margin-top:4px">Current avg: 292/day | Max: 800/day | Headroom: 508/day</div>
+</div>
+</div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">DITEMPA BUKAN DIBERI · SYEDOS NASI LEMAK HUB v4</div>
+
+<!-- ═══ SCRIPTS ═══ -->
+<script>
+// ══════════════════════════════════════════════
+// CORE DATA
+// ══════════════════════════════════════════════
+const LOCATIONS = [
+  {id:"mamak2",name:"Mamak 2",berlauk:false,avg:64,lat:3.2000,lon:101.7320,area:"Wangsa Maju"},
+  {id:"kedai_p",name:"Kedai P",berlauk:false,avg:48,lat:3.1980,lon:101.7280,area:"Setapak"},
+  {id:"kedai_a",name:"Kedai A",berlauk:false,avg:32,lat:3.2020,lon:101.7350,area:"Wangsa Maju"},
+  {id:"mamak1",name:"Mamak 1",berlauk:false,avg:67,lat:3.1970,lon:101.7200,area:"Sri Rampai"},
+  {id:"dsp_dsw",name:"DSP/DSW",berlauk:true,avg:77,lat:3.1930,lon:101.7180,area:"Sri Rampai"},
+  {id:"lrt_wm",name:"LRT Wangsa Maju",berlauk:true,avg:48,lat:3.2058,lon:101.7319,area:"Wangsa Maju"},
+  {id:"lrt_s",name:"LRT Sg Buloh",berlauk:true,avg:69,lat:3.2062,lon:101.5800,area:"Sg Buloh"},
+  {id:"kedai_l",name:"Kedai L",berlauk:true,avg:56,lat:3.1960,lon:101.7260,area:"Setapak"},
+  {id:"even",name:"Even/Events",berlauk:true,avg:47,lat:3.1700,lon:101.7100,area:"Various"},
+  {id:"dato",name:"Dato Order",berlauk:true,avg:70,lat:3.1550,lon:101.6900,area:"KLCC"},
+  {id:"parlimen",name:"Parlimen",berlauk:true,avg:35,lat:3.1501,lon:101.6791,area:"KL"},
+];
+
+const VARIANTS = {
+  rebus: {cost:1.20,sell:2.50,margin:1.30},
+  mata: {cost:1.50,sell:3.00,margin:1.50},
+  dadar: {cost:1.20,sell:2.50,margin:1.30},
+  berlauk: {cost:1.50,sell:3.00,margin:1.50},
+};
+
+const VENDOR_CUTOFF = "21:00";
+const PICKUP_TIME = "05:15";
+const DELIVERY_CUTOFF = "07:00";
+const BERLAUK_CAP_NORMAL = 19;
+const BERLAUK_CAP_EVENT = 43;
+
+let orderType = 'normal';
+
+// ══════════════════════════════════════════════
+// NAVIGATION
+// ══════════════════════════════════════════════
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.querySelectorAll('.tab')[['home','order','entry','track','waste','route','price','sim'].indexOf(id)].classList.add('active');
+  if (id === 'route') setTimeout(initMap, 100);
+  if (id === 'track') loadHistory();
+  if (id === 'waste') loadWaste();
+}
+
+// ══════════════════════════════════════════════
+// ORDER TEMPLATE
+// ══════════════════════════════════════════════
+function setOrderType(type) {
+  orderType = type;
+  document.getElementById('btn-normal').className = type==='normal'?'btn':'btn outline';
+  document.getElementById('btn-event').className = type==='event'?'btn green':'btn outline';
+}
+
+function generateOrder() {
+  const date = document.getElementById('orderDate').value;
+  if (!date) { alert('Pilih tarikh dulu'); return; }
+  
+  const blCap = parseInt(document.getElementById('customBerlauk').value) || (orderType==='event'?BERLAUK_CAP_EVENT:BERLAUK_CAP_NORMAL);
+  
+  let text = `Order untk ${date}\n`;
+  text += orderType==='event'?'[EVENT ORDER]\n':'[NORMAL ORDER]\n';
+  text += `========================================\n\n`;
+  
+  let totalUnits = 0, totalBl = 0;
+  
+  // Berlauk locations
+  text += `--- Berlauk Allowed ---\n`;
+  LOCATIONS.filter(l => l.berlauk && l.id !== 'even' && l.id !== 'dato').forEach(l => {
+    const rebus = Math.round(l.avg * 0.55);
+    const mata = Math.round(l.avg * 0.20);
+    const dadar = Math.round(l.avg * 0.10);
+    const bl = Math.min(Math.round(l.avg * 0.20), blCap - totalBl);
+    
+    text += `\n${l.name}\n`;
+    text += `  Nasi lemak telur rebus separuh sambal campur ${rebus}\n`;
+    text += `  Nasi lemak telur mata sambal campur ${mata}\n`;
+    text += `  Nasi lemak telur dadar sambal asing ${dadar}\n`;
+    if (bl > 0) {
+      text += `  Nasi lemak berlauk paru ${bl}\n`;
+      totalBl += bl;
+    }
+    totalUnits += rebus + mata + dadar + bl;
+  });
+  
+  // Telur only
+  text += `\n--- Telur Only (NO berlauk) ---\n`;
+  LOCATIONS.filter(l => !l.berlauk).forEach(l => {
+    const rebus = Math.round(l.avg * 0.55);
+    const mata = Math.round(l.avg * 0.20);
+    const dadar = Math.round(l.avg * 0.10);
+    const biasa = Math.round(l.avg * 0.15);
+    
+    text += `\n${l.name}\n`;
+    text += `  Nasi lemak telur rebus separuh sambal campur ${rebus}\n`;
+    text += `  Nasi lemak telur mata sambal campur ${mata}\n`;
+    text += `  Nasi lemak telur dadar sambal asing ${dadar}\n`;
+    text += `  Nasi lemak biasa ${biasa}\n`;
+    totalUnits += rebus + mata + dadar + biasa;
+  });
+  
+  text += `\n========================================\n`;
+  text += `TOTAL: ~${totalUnits} units (${totalBl} berlauk)\n`;
+  text += `Cap: ${blCap} berlauk\n`;
+  text += `Order by: ${VENDOR_CUTOFF} malam ni\n`;
+  text += `Ready: ${PICKUP_TIME} AM esok`;
+  
+  document.getElementById('orderOutput').textContent = text;
+}
+
+function copyOrder() {
+  const text = document.getElementById('orderOutput').textContent;
+  navigator.clipboard.writeText(text).then(() => alert('✅ Copied!'));
+}
+
+// ══════════════════════════════════════════════
+// MOBILE ORDER ENTRY
+// ══════════════════════════════════════════════
+function initEntry() {
+  const container = document.getElementById('entryLocations');
+  container.innerHTML = LOCATIONS.map(l => `
+    <div class="card" style="margin-bottom:4px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-size:12px;font-weight:600">${l.name}</div>
+          <div style="font-size:9px;color:#6b7280">${l.area} ${l.berlauk?'<span class="tag yes">berlauk</span>':'<span class="tag no">telur only</span>'}</div>
+        </div>
+        <input type="number" id="entry-${l.id}" placeholder="0" min="0" style="width:80px;text-align:center;margin:0" oninput="calcEntryRevenue()">
+      </div>
+    </div>
+  `).join('');
+}
+
+function calcEntryRevenue() {
+  let totalUnits = 0, revenue = 0, cost = 0;
+  LOCATIONS.forEach(l => {
+    const units = parseInt(document.getElementById('entry-'+l.id)?.value) || 0;
+    totalUnits += units;
+    if (l.berlauk) {
+      const bl = Math.round(units * 0.09);
+      const telur = units - bl;
+      revenue += telur * 2.70 + bl * 3.00;
+      cost += telur * 1.30 + bl * 1.50;
+    } else {
+      revenue += units * 2.65;
+      cost += units * 1.30;
+    }
+  });
+  
+  const profit = revenue - cost;
+  document.getElementById('entryRevenue').textContent = `RM${revenue.toFixed(2)}`;
+  document.getElementById('entryProfit').textContent = `Profit: RM${profit.toFixed(2)} (${totalUnits} units)`;
+}
+
+function saveEntry() {
+  const date = document.getElementById('entryDate').value;
+  if (!date) { alert('Pilih tarikh'); return; }
+  
+  const isEvent = document.getElementById('entryEvent').value === 'true';
+  let totalUnits = 0, revenue = 0, cost = 0, berlauk = 0, berlaukWaste = 0;
+  const locData = {};
+  
+  LOCATIONS.forEach(l => {
+    const units = parseInt(document.getElementById('entry-'+l.id)?.value) || 0;
+    if (units > 0) {
+      locData[l.id] = units;
+      totalUnits += units;
+      if (l.berlauk) {
+        const bl = Math.round(units * 0.09);
+        const telur = units - bl;
+        revenue += telur * 2.70 + bl * 3.00;
+        cost += telur * 1.30 + bl * 1.50;
+        berlauk += bl;
+      } else {
+        revenue += units * 2.65;
+        cost += units * 1.30;
+      }
+    }
+  });
+  
+  // Cap check
+  const blCap = isEvent ? BERLAUK_CAP_EVENT : BERLAUK_CAP_NORMAL;
+  if (berlauk > blCap) {
+    berlaukWaste = (berlauk - blCap) * 1.50;
+    alert(`⚠️ Berlauk ${berlauk} EXCEEDS cap ${blCap}! Extra ${berlauk-blCap} = RM${berlaukWaste} loss.`);
+  }
+  
+  const entry = {
+    date, event: isEvent, totalUnits, revenue: revenue.toFixed(2),
+    cost: cost.toFixed(2), profit: (revenue-cost).toFixed(2),
+    berlauk, berlaukWaste: berlaukWaste.toFixed(2),
+    locations: locData, timestamp: Date.now()
+  };
+  
+  const entries = JSON.parse(localStorage.getItem('nl_entries') || '[]');
+  entries.push(entry);
+  localStorage.setItem('nl_entries', JSON.stringify(entries));
+  
+  alert(`✅ Saved! ${totalUnits} units, RM${revenue.toFixed(2)} revenue, RM${(revenue-cost).toFixed(2)} profit`);
+  
+  // Clear
+  LOCATIONS.forEach(l => { const el = document.getElementById('entry-'+l.id); if(el) el.value=''; });
+  calcEntryRevenue();
+}
+
+// ══════════════════════════════════════════════
+// P&L TRACKER
+// ══════════════════════════════════════════════
+function loadHistory() {
+  const entries = JSON.parse(localStorage.getItem('nl_entries') || '[]').sort((a,b) => a.date.localeCompare(b.date));
+  
+  const totalRev = entries.reduce((s,e) => s + parseFloat(e.revenue), 0);
+  const totalProfit = entries.reduce((s,e) => s + parseFloat(e.profit), 0);
+  
+  document.getElementById('t-rev').textContent = `RM${totalRev.toFixed(0)}`;
+  document.getElementById('t-profit').textContent = `RM${totalProfit.toFixed(0)}`;
+  document.getElementById('t-days').textContent = entries.length;
+  
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  document.getElementById('historyTable').innerHTML = entries.map(e => {
+    const d = new Date(e.date);
+    return `<tr>
+      <td>${e.date}</td><td>${days[d.getDay()]}</td><td class="o">${e.totalUnits}</td>
+      <td>RM${e.revenue}</td><td class="g">RM${e.profit}</td>
+      <td class="r">RM${e.berlaukWaste||0}</td>
+      <td>${e.event?'<span style="color:#a855f7">🎪</span>':''}</td>
+    </tr>`;
+  }).join('');
+}
+
+function generateWeeklyReport() {
+  const entries = JSON.parse(localStorage.getItem('nl_entries') || '[]').sort((a,b) => a.date.localeCompare(b.date));
+  if (entries.length === 0) { document.getElementById('weeklyReport').innerHTML = '<div style="color:#ef4444">No data yet. Log entries first.</div>'; return; }
+  
+  const last7 = entries.slice(-7);
+  const totalRev = last7.reduce((s,e) => s + parseFloat(e.revenue), 0);
+  const totalProfit = last7.reduce((s,e) => s + parseFloat(e.profit), 0);
+  const totalUnits = last7.reduce((s,e) => s + e.totalUnits, 0);
+  const totalWaste = last7.reduce((s,e) => s + parseFloat(e.berlaukWaste||0), 0);
+  const best = last7.reduce((a,b) => parseFloat(a.profit) > parseFloat(b.profit) ? a : b);
+  const worst = last7.reduce((a,b) => parseFloat(a.profit) < parseFloat(b.profit) ? a : b);
+  
+  const report = `
+📊 WEEKLY REPORT (${last7[0]?.date} → ${last7[last7.length-1]?.date})
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+📦 Total Units: ${totalUnits}
+💰 Revenue: RM${totalRev.toFixed(2)}
+💵 Profit: RM${totalProfit.toFixed(2)}
+⚠️ Waste: RM${totalWaste.toFixed(2)}
+📈 Best Day: ${best.date} (RM${parseFloat(best.profit).toFixed(0)})
+📉 Worst Day: ${worst.date} (RM${parseFloat(worst.profit).toFixed(0)})
+━━━━━━━━━━━━━━━━━━━━━━━━━━`;
+  
+  document.getElementById('weeklyReport').innerHTML = `<div class="template-box">${report}</div>`;
+}
+
+function clearEntries() {
+  if (confirm('Clear all data?')) {
+    localStorage.removeItem('nl_entries');
+    localStorage.removeItem('nl_waste');
+    loadHistory();
+  }
+}
+
+// ══════════════════════════════════════════════
+// WASTE TRACKER
+// ══════════════════════════════════════════════
+function saveWaste() {
+  const date = document.getElementById('wasteDate').value;
+  const ordered = parseInt(document.getElementById('wasteOrdered').value);
+  const sold = parseInt(document.getElementById('wasteSold').value);
+  if (!date || !ordered) { alert('Fill in date and ordered qty'); return; }
+  
+  const waste = ordered - (sold || 0);
+  const wastePct = ((waste / ordered) * 100).toFixed(1);
+  const loss = waste * 1.50;
+  
+  const logs = JSON.parse(localStorage.getItem('nl_waste') || '[]');
+  logs.push({date, ordered, sold: sold||0, waste, wastePct, loss, timestamp: Date.now()});
+  localStorage.setItem('nl_waste', JSON.stringify(logs));
+  
+  alert(`⚠️ Waste: ${waste} units (${wastePct}%) = RM${loss.toFixed(2)} loss`);
+  loadWaste();
+}
+
+function loadWaste() {
+  const logs = JSON.parse(localStorage.getItem('nl_waste') || '[]').sort((a,b) => a.date.localeCompare(b.date));
+  
+  if (logs.length > 0) {
+    const avgWaste = logs.reduce((s,l) => s + parseFloat(l.wastePct), 0) / logs.length;
+    const monthlyLoss = logs.reduce((s,l) => s + l.loss, 0) / logs.length * 30;
+    const violations = logs.filter(l => l.waste > 19).length;
+    
+    document.getElementById('w-avg').textContent = `${avgWaste.toFixed(1)}%`;
+    document.getElementById('w-loss').textContent = `RM${monthlyLoss.toFixed(0)}`;
+    document.getElementById('w-violations').textContent = violations;
+  }
+  
+  document.getElementById('wasteTable').innerHTML = logs.map(l => `<tr>
+    <td>${l.date}</td><td class="o">${l.ordered}</td><td>${l.sold}</td>
+    <td class="r">${l.waste}</td><td>${l.wastePct}%</td><td class="r">RM${l.loss.toFixed(2)}</td>
+    <td>${l.ordered > 19 ? '<span class="tag no">OVER</span>':'<span class="tag yes">OK</span>'}</td>
+  </tr>`).join('');
+}
+
+// ══════════════════════════════════════════════
+// ROUTE MAP
+// ══════════════════════════════════════════════
+let routeMap = null;
+function initMap() {
+  if (routeMap) return;
+  routeMap = L.map('mapRoute').setView([3.18, 101.70], 12);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution:'&copy; OSM, CARTO', maxZoom:19
+  }).addTo(routeMap);
+  
+  // Vendor
+  L.marker([3.1950, 101.7250], {
+    icon: L.divIcon({className:'',html:'<div style="background:#f0a500;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;border:2px solid #fff">🏪</div>',iconSize:[24,24],iconAnchor:[12,12]})
+  }).addTo(routeMap).bindPopup('Ali Maju — Pickup');
+  
+  // Locations
+  LOCATIONS.forEach((l,i) => {
+    const color = l.berlauk ? '#22c55e' : '#f0a500';
+    L.marker([l.lat, l.lon], {
+      icon: L.divIcon({className:'',html:`<div style="background:${color};width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;border:2px solid #fff">${i+1}</div>`,iconSize:[20,20],iconAnchor:[10,10]}),
+      draggable: true
+    }).addTo(routeMap).bindPopup(`${l.name}<br>${l.area}<br>${l.berlauk?'Berlauk ✅':'Telur 🚫'}<br>~${l.avg} units/day`);
+  });
+  
+  // Route
+  const coords = [[3.1950,101.7250],[3.1930,101.7180],[3.2000,101.7320],[3.2058,101.7319],[3.2020,101.7350],[3.1980,101.7280],[3.1960,101.7260],[3.1970,101.7200],[3.1950,101.7250]];
+  L.polyline(coords, {color:'#f0a500',weight:2,dashArray:'8,8',opacity:.6}).addTo(routeMap);
+  
+  // Route text
+  const routeText = LOCATIONS.map((l,i) => `${i+1}. ${l.name} (${l.area}) — ~${l.avg} units${l.berlauk?' [berlauk]':''}`).join('\n');
+  document.getElementById('routeList').innerHTML = `<b style="color:#f0a500">Pickup: Ali Maju Sri Rampai</b>\n` + routeText.split('\n').map(r => `<div>${r}</div>`).join('');
+}
+
+// ══════════════════════════════════════════════
+// GROWTH SIMULATOR
+// ══════════════════════════════════════════════
+function updateSim() {
+  const addLocs = parseInt(document.getElementById('simLocations').value) || 3;
+  const addUnits = parseInt(document.getElementById('simUnits').value) || 40;
+  const addBerlauk = document.getElementById('simBerlauk').value === 'yes';
+  
+  const currentNet = 11655;
+  const currentUnits = 292 * 30;
+  const newUnits = addLocs * addUnits * 30;
+  const newRev = newUnits * (addBerlauk ? 2.75 : 2.65);
+  const newCost = newUnits * (addBerlauk ? 1.35 : 1.30);
+  const newWaste = addBerlauk ? newUnits * 0.09 * 0.10 * 1.50 : 0;
+  const newNet = newRev - newCost - newWaste;
+  const totalNet = currentNet + newNet;
+  const growth = ((totalNet - currentNet) / currentNet * 100).toFixed(0);
+  
+  document.getElementById('sim-net').textContent = `RM${totalNet.toFixed(0)}`;
+  document.getElementById('sim-growth').textContent = `+${growth}%`;
+  document.getElementById('sim-growth').className = `v ${growth > 0 ? 'g' : 'r'}`;
+  
+  const scenarios = [
+    {name:'Current',locs:0,units:0},
+    {name:'+2 locations',locs:2,units:addUnits},
+    {name:'+3 locations',locs:3,units:addUnits},
+    {name:'+5 locations',locs:5,units:addUnits},
+    {name:'+10 locations',locs:10,units:addUnits},
+  ];
+  
+  document.getElementById('simTable').innerHTML = scenarios.map(s => {
+    const u = s.locs * s.units * 30;
+    const r = u * 2.70;
+    const c = u * 1.32;
+    const n = r - c;
+    const total = currentNet + n;
+    const pct = ((total - currentNet) / currentNet * 100).toFixed(0);
+    return `<tr>
+      <td>${s.name}</td><td>${s.locs}</td><td>${u.toLocaleString()}</td>
+      <td>RM${r.toFixed(0)}</td><td class="g">RM${total.toFixed(0)}</td>
+      <td>${s.locs===0?'—':`<span class="g">+${pct}%</span>`}</td>
+    </tr>`;
+  }).join('');
+  
+  // Capacity
+  const dailyAvg = (292 + addLocs * addUnits);
+  const capPct = (dailyAvg / 800 * 100).toFixed(0);
+  document.getElementById('simCapBar').style.width = `${Math.min(capPct, 100)}%`;
+  document.getElementById('simCapBar').style.background = capPct > 80 ? '#ef4444' : capPct > 60 ? '#f0a500' : '#22c55e';
+  document.getElementById('simCapacity').innerHTML = `Current avg: ${292}/day + ${addLocs}×${addUnits} = <b>${dailyAvg}/day</b> | Max: 800/day | <span style="color:${capPct>80?'#ef4444':'#22c55e'}">Headroom: ${800-dailyAvg}/day</span>`;
+}
+
+// ══════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════
+document.getElementById('orderDate').value = new Date().toISOString().slice(0,10);
+document.getElementById('entryDate').value = new Date().toISOString().slice(0,10);
+document.getElementById('wasteDate').value = new Date().toISOString().slice(0,10);
+initEntry();
+updateSim();
+</script>
+</body>
+</html>
