@@ -5,8 +5,7 @@ risk_tier: low
 floor_scope: [F1, F2, F4, F7]
 version: 1.0.0
 layer: substrate
-description: Intelligence without memory is stateless. Store less, recall well, forget
-  when stale. ΔS ≤ 0 on every cycle.
+description: "Use when managing persistent conversational memory, semantic code search, and memory graph operations. Use when managing persistent conversational memory, semantic code search, and memory graph operations. Intelligence without memory is stateless. Store less, recall well, forget when stale. ΔS ≤ 0 on every cycle."
 owner: F13 SOVEREIGN
 status: active
 three_axis: true
