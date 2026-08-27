@@ -4,11 +4,7 @@ id: forge-route-least-power
 owner: A-FORGE
 risk_tier: low
 floor_scope: [F1, F2, F4, F7]
-description: >
-  Route every task to the SMALLEST capability that can accomplish it.
-  Prevents over-engineering, yak-shaving, and reflexive tool escalation.
-  Enforces one-owner-per-task, idempotent actions, and strict queues.
-  Ask: "Can a simpler tool do this?" before reaching for the powerful one.
+description: "Use when task may be over-engineered. Route to the SMALLEST capability that accomplishes it. Prevent yak-shaving. Use when task may be over-engineered. Route to the SMALLEST capability that accomplishes it. Prevent yak-shaving. Route every task to the SMALLEST capability that can accomplish it. Prevents over-engineering, yak-shaving, and reflexive tool escalation. Enforces one-owner-per-task, idempotent actions, and strict queues. Ask: \"Can a simpler tool do this?\" before reaching for the powerful one."
 version: 2.0.0
 author: FORGE (000Ω) for Arif (F13 SOVEREIGN)
 forged: 2026-07-17

@@ -3,10 +3,7 @@ id: aaa-agent-invariants
 name: ASI-agent-invariants
 autonomy_tier: T1
 version: 1.0.1
-description: Compact operating constitution for every AAA agent. Load before any non-trivial
-  action. Distills 10 Agent Invariants + 12 governance rules + skills audit into portable
-  doctrine. Covers tool classification, evidence/authority separation, degradation
-  dominance, propose-before-execute, and memory atoms.
+description: "Use when initializing any agent, designing governance, or establishing compact operating constitution. Use when initializing any agent, designing governance, or establishing compact operating constitution. Compact operating constitution for every AAA agent. Load before any non-trivial action. Distills 10 Agent Invariants + 12 governance rules + skills audit into portable doctrine. Covers tool classification, evidence/authority separation, degradation dominance, propose-before-execute, and memory atoms."
 owner: AAA
 risk_tier: low
 knowledge_basis:
