@@ -66,6 +66,46 @@
       "tombstone_date": "2026-08-18",
       "reason": "Placeholder retired dir (liveness.json only).",
       "archive": "skills/.archive/2026-08-18-fitness/_retired"
+    },
+    {
+      "id": "AAA_ZEN",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-08-30",
+      "reason": "Tombstone marker; content lives in AAA-ZEN-ALIGNMENT.md + zen doctrine",
+      "archive": "archive/zen-2026-08-30-tombstones/AAA_ZEN.md"
+    },
+    {
+      "id": "asi_presence_open",
+      "type": "skill",
+      "status": "ARCHIVED",
+      "tombstone_date": "2026-08-30",
+      "reason": "Archived 2026-07-24 in-file; registry now matches",
+      "archive": "archive/zen-2026-08-30-tombstones/asi_presence_open.md"
+    },
+    {
+      "id": "INIT-PROMPT-AFGORGE",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-08-30",
+      "reason": "Tombstoned init prompt superseded by INIT.md boot ritual",
+      "archive": "archive/zen-2026-08-30-tombstones/INIT-PROMPT-AFGORGE.md"
+    },
+    {
+      "id": "QUANTUM_KERNEL_INIT",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-08-30",
+      "reason": "Orphan scaffold of registry-deprecated quantum-kernel-runtime experiment (concluded 2026-07-09)",
+      "archive": "archive/zen-2026-08-30-tombstones/QUANTUM_KERNEL_INIT.md"
+    },
+    {
+      "id": "QUBIT_INIT_v1.0",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-08-30",
+      "reason": "Orphan scaffold of concluded quantum-substrate experiment",
+      "archive": "archive/zen-2026-08-30-tombstones/QUBIT_INIT_v1.0.md"
     }
   ],
   "deprecated_tools": [
