@@ -167,6 +167,7 @@ FORBIDDEN:
   deploy
   execute
   decide
+  judge
 ```
 
 Exception: F13 sovereign override (explicit only).
