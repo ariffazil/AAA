@@ -10,8 +10,8 @@
       "executor": "A-FORGE",
       "sensors": ["HERMES"],
       "adapters": ["Telegram", "Email", "MCP", "Edge"],
-      "surface": "sense",
-      "responsibilities": ["observe", "detect", "classify", "route", "alert", "witness"]
+      "surface": "sense+model",
+      "responsibilities": ["observe", "detect", "classify", "model", "route", "alert", "witness"]
     },
     {
       "name": "Anomaly Detection",
