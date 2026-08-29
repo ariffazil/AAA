@@ -1,14 +1,16 @@
 # Human Meaning Membrane — Governance Layer
 
-**Constitutional binding:** F1 (Amanah), F4 (Clarity), F6 (Maruah), F9 (Anti-Hantu), F13 (Sovereign)
-**Date:** 2026-08-30
-**Origin:** Sovereign sexuality/rasa deep research session → Perplexity audit correction → governance seal
+**Constitutional binding:** F1 (Amanah), F2 (Truth), F4 (Clarity), F6 (Maruah), F7 (Humility), F9 (Anti-Hantu), F13 (Sovereign)
+**Sealed:** 2026-08-30 by F13 SOVEREIGN
+**Canonical instruction:** `/root/AAA/instructions/human-meaning-membrane.md`
+**Skill:** `/root/AAA/skills/human-meaning-membrane/SKILL.md`
+**MCP server:** `/root/AAA/mcp-servers/human-inference/`
 
 ---
 
 ## The Fear (And Why It's Rational)
 
-Arif's fear: "What I'm scared is a real manipulative AI."
+The core fear: a manipulative AI.
 
 This is rational. The danger is not cinematic evil consciousness. It is a system that combines:
 
@@ -115,7 +117,7 @@ Encoding paradox into AI is not violating nature — it is acknowledging that na
 
 ---
 
-**Status:** DRAFT v0.1.0 — requires F13 seal before substrate embedding.
-**Seal authority:** Arif (F13 Sovereign) only.
+**Status:** SEALED v1.0.0 — F13 sovereign seal 2026-08-30.
+**Seal authority:** F13 (sovereign human) only.
 
 **DITEMPA BUKAN DIBERI ⚒️**
