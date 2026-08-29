@@ -1119,4 +1119,5 @@ if __name__ == "__main__":
         f"   Capabilities: fed-reasoning-heavy, fed-multimodal-vision, fed-long-context, fed-agent-subagent, fed-realtime-voice"
     )
     print(f"   Tools: fed_route, fed_status, fed_probe, fed_contrast, fed_health")
-    mcp.run(transport="streamable-http", host="127.0.0.1")
+    # FI-003 2026-08-29: override hardcoded ws="websockets-sansio" (uvicorn 0.29 has no such key in WS_PROTOCOLS)
+    mcp.run(transport="streamable-http", host="127.0.0.1", port=7074, uvicorn_config={"ws": "websockets"})
