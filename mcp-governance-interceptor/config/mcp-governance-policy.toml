@@ -1,0 +1,148 @@
+[meta]
+version = "1.0.0"
+created = "2026-08-28"
+signature_algorithm = "ed25519"
+signer = "888-SOVEREIGN"
+chain_hash = "sha256:genesis"
+
+[global]
+max_tools_per_turn = 5
+intent_router_enabled = true
+interceptor_enabled = true
+audit_chain_path = "/root/AAA/governance/audit/mcp-policy-audit-chain.jsonl"
+default_unknown_tool = "UNCHECKED_BLOCK"
+
+# ── FED Tools (Pilot Phase) ──
+
+[tools.fed_route]
+arifos_is_reversible = true
+arifos_impact_radius = 1
+arifos_requires_888_hold = false
+arifos_category = "compute"
+arifos_allowed_roles = ["333-AGI", "555-ASI", "888-APEX", "A-FORGE"]
+
+[tools.fed_status]
+arifos_is_reversible = true
+arifos_impact_radius = 0
+arifos_requires_888_hold = false
+arifos_category = "read_only"
+arifos_allowed_roles = ["333-AGI", "555-ASI", "888-APEX", "A-FORGE"]
+
+[tools.fed_health]
+arifos_is_reversible = true
+arifos_impact_radius = 0
+arifos_requires_888_hold = false
+arifos_category = "read_only"
+arifos_allowed_roles = ["333-AGI", "555-ASI", "888-APEX", "A-FORGE"]
+
+# ── GEOX Tools (Pilot Phase) ──
+
+[tools.geox_basin]
+arifos_is_reversible = true
+arifos_impact_radius = 1
+arifos_requires_888_hold = false
+arifos_category = "read_only"
+arifos_allowed_roles = ["333-AGI", "555-ASI", "A-FORGE"]
+
+[tools.geox_claim]
+arifos_is_reversible = false
+arifos_impact_radius = 4
+arifos_requires_888_hold = true
+arifos_category = "high_impact_mutation"
+arifos_allowed_roles = ["333-AGI"]
+
+[tools.geox_well]
+arifos_is_reversible = true
+arifos_impact_radius = 1
+arifos_requires_888_hold = false
+arifos_category = "read_only"
+arifos_allowed_roles = ["333-AGI", "555-ASI", "A-FORGE"]
+
+[tools.geox_petrophysics]
+arifos_is_reversible = true
+arifos_impact_radius = 1
+arifos_requires_888_hold = false
+arifos_category = "compute"
+arifos_allowed_roles = ["333-AGI", "555-ASI"]
+
+# ── WEALTH Tools (Phase 2 Expansion) ──
+
+[tools.capital_indicator]
+arifos_is_reversible = true
+arifos_impact_radius = 1
+arifos_requires_888_hold = false
+arifos_category = "read_only"
+arifos_allowed_roles = ["333-AGI", "555-ASI", "A-FORGE"]
+
+[tools.capital_ledger]
+arifos_is_reversible = false
+arifos_impact_radius = 5
+arifos_requires_888_hold = true
+arifos_category = "critical_mutation"
+arifos_allowed_roles = []
+
+[tools.capital_market]
+arifos_is_reversible = true
+arifos_impact_radius = 0
+arifos_requires_888_hold = false
+arifos_category = "read_only"
+arifos_allowed_roles = ["333-AGI", "555-ASI", "A-FORGE"]
+
+# ── WELL Tools (Phase 2 Expansion) ──
+
+[tools.well_observe_machine]
+arifos_is_reversible = true
+arifos_impact_radius = 0
+arifos_requires_888_hold = false
+arifos_category = "read_only"
+arifos_allowed_roles = ["333-AGI", "555-ASI", "A-FORGE"]
+
+[tools.well_log_intake]
+arifos_is_reversible = false
+arifos_impact_radius = 3
+arifos_requires_888_hold = true
+arifos_category = "state_mutation"
+arifos_allowed_roles = ["333-AGI"]
+
+# ── Media Tools ──
+
+[tools.generate_video]
+arifos_is_reversible = true
+arifos_impact_radius = 0
+arifos_requires_888_hold = false
+arifos_category = "compute"
+arifos_allowed_roles = ["333-AGI", "A-FORGE"]
+
+[tools.text_to_audio]
+arifos_is_reversible = true
+arifos_impact_radius = 0
+arifos_requires_888_hold = false
+arifos_category = "compute"
+arifos_allowed_roles = ["333-AGI", "A-FORGE"]
+
+# ── Intent Router Domains ──
+
+[intent_router.domains.finance]
+keywords = ["trading", "gold", "xauusd", "capital", "wealth", "market", "portfolio", "backtest"]
+tools = ["fed_route", "fed_status", "capital_indicator", "capital_ledger", "capital_market"]
+priority = 1
+
+[intent_router.domains.geoscience]
+keywords = ["basin", "well", "geology", "seismic", "petrophysics", "subsurface", "geox", "prospect"]
+tools = ["geox_basin", "geox_claim", "geox_well", "geox_petrophysics"]
+priority = 1
+
+[intent_router.domains.wellness]
+keywords = ["health", "wellness", "intake", "vitality", "well", "homeostasis"]
+tools = ["well_observe_machine", "well_log_intake"]
+priority = 1
+
+[intent_router.domains.media]
+keywords = ["video", "image", "tts", "voice", "music", "generate", "media", "audio"]
+tools = ["generate_video", "text_to_audio"]
+priority = 1
+
+[intent_router.domains.system]
+keywords = ["status", "health", "federation", "mcp", "tools", "audit", "interceptor"]
+tools = ["fed_health", "fed_status"]
+priority = 2
