@@ -1,0 +1,33 @@
+{
+  "session_close": "2026-08-29T15:22:00Z",
+  "closing_agent": "hermes-asi",
+  "federation_state": {
+    "A-FORGE": {"port": 7071, "status": "healthy", "service": "a-forge.service"},
+    "WEALTH": {"port": 18082, "status": "healthy", "service": "wealth-organ.service"},
+    "GEOX": {"port": 18084, "status": "healthy", "service": "geox-mcp.service"},
+    "WELL": {"port": 18083, "status": "healthy", "service": "well-organ.service"},
+    "FED": {"port": 4000, "status": "healthy", "service": "haproxy→litellm:4011"},
+    "FRAME": {"port": 18085, "status": "healthy", "service": "frame.service"},
+    "arifFLOW": {"port": 7073, "status": "healthy", "cycle": 1839, "blocking": 2},
+    "LiteLLM": {"port": 4011, "status": "healthy"},
+    "NATS": {"status": "healthy"},
+    "Redis": {"status": "healthy"},
+    "Qdrant": {"status": "healthy"},
+    "Postgres": {"status": "healthy", "user": "arifos_admin", "db": "vault999"},
+    "MinIO": {"status": "healthy"},
+    "FalkorDB": {"status": "healthy"}
+  },
+  "fixes_applied": [
+    "hermes-real-bridge: uvicorn 0.29→0.52.4 (websockets-sansio crash loop fixed, 201 restarts resolved)",
+    "repos committed: arifOS, A-FORGE, AAA (11+1+1 dirty files cleaned)",
+    "carry_forward.json rebuilt"
+  ],
+  "pending_tasks": [
+    "HERMES AGENT UPSTREAM: v0.20.1→v2026.8.27 update available",
+    "2 local commits ready for PR: voice-state-extraction, NO_VISION_DISCLAIMER",
+    "WEALTH /metrics endpoint returns 404",
+    "skill audit: 126 skills, 1 pruned",
+    "arifFLOW blocking=2 (Hold status) — investigate"
+  ],
+  "next_session_carry": "Full federation healthy. hermes-real-bridge fixed. Ready for upstream PR work."
+}
