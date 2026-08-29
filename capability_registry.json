@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0.0",
+  "forged_at": "2026-08-29T16:12:00Z",
+  "authority": "F13 sovereign + 888-JUDGE",
+  "capabilities": [
+    {
+      "name": "Signal Collection",
+      "owner": "HERMES",
+      "judge": "AAA",
+      "executor": "A-FORGE",
+      "sensors": ["HERMES"],
+      "adapters": ["Telegram", "Email", "MCP", "Edge"],
+      "surface": "sense",
+      "responsibilities": ["observe", "detect", "classify", "route", "alert", "witness"]
+    },
+    {
+      "name": "Anomaly Detection",
+      "owner": "HERMES",
+      "judge": "AAA",
+      "executor": "A-FORGE",
+      "sensors": ["HERMES"],
+      "adapters": [],
+      "surface": "model",
+      "responsibilities": ["detect drift", "detect loops", "detect crashes", "model state"]
+    },
+    {
+      "name": "Human Substrate",
+      "owner": "WELL",
+      "judge": "AAA",
+      "executor": "A-FORGE",
+      "sensors": ["HERMES"],
+      "adapters": ["WELL MCP"],
+      "surface": "organ",
+      "responsibilities": ["energy", "recovery", "readiness", "vitality", "adaptation"]
+    },
+    {
+      "name": "Capital Substrate",
+      "owner": "WEALTH",
+      "judge": "AAA",
+      "executor": "A-FORGE",
+      "sensors": ["HERMES"],
+      "adapters": ["WEALTH MCP"],
+      "surface": "organ",
+      "responsibilities": ["cashflow", "risk", "market", "trading"]
+    },
+    {
+      "name": "Reality Substrate",
+      "owner": "GEOX",
+      "judge": "AAA",
+      "executor": "A-FORGE",
+      "sensors": ["HERMES"],
+      "adapters": ["GEOX MCP"],
+      "surface": "organ",
+      "responsibilities": ["geology", "earth", "physical systems", "evidence"]
+    },
+    {
+      "name": "Governance",
+      "owner": "AAA",
+      "judge": "AAA",
+      "executor": "A-FORGE",
+      "sensors": ["HERMES"],
+      "adapters": [],
+      "surface": "organ",
+      "responsibilities": ["priority", "tradeoff", "decision", "judgment"]
+    },
+    {
+      "name": "Execution",
+      "owner": "A-FORGE",
+      "judge": "AAA",
+      "executor": "A-FORGE",
+      "sensors": ["HERMES"],
+      "adapters": ["A-FORGE MCP"],
+      "surface": "organ",
+      "responsibilities": ["restart", "upgrade", "commit", "push", "deploy", "patch"]
+    },
+    {
+      "name": "Metabolism",
+      "owner": "arifFLOW",
+      "judge": "AAA",
+      "executor": "A-FORGE",
+      "sensors": ["HERMES"],
+      "adapters": [],
+      "surface": "organ",
+      "responsibilities": ["routing", "flow", "enforcement", "state transition"]
+    },
+    {
+      "name": "Constitutional Law",
+      "owner": "arifOS",
+      "judge": "AAA",
+      "executor": "A-FORGE",
+      "sensors": ["HERMES"],
+      "adapters": ["arifOS MCP"],
+      "surface": "organ",
+      "responsibilities": ["floors", "constitution", "governance kernel", "identity"]
+    },
+    {
+      "name": "Coding Agent Bridge",
+      "owner": "OpenClaw",
+      "judge": "AAA",
+      "executor": "A-FORGE",
+      "sensors": ["HERMES"],
+      "adapters": ["OpenCode CLI"],
+      "surface": "adapter",
+      "responsibilities": ["relay coding capabilities from OpenCode to federation"]
+    }
+  ],
+  "extractive_nodes": [
+    {
+      "name": "Hermes (pre-separation)",
+      "issue": "Hermes was executing (git commit, pip install, systemctl restart) — violates separation",
+      "status": "SEALED via G10 constitutional separation"
+    },
+    {
+      "name": "OpenClaw (pre-demotion)",
+      "issue": "OpenClaw had triage, judge, seal capabilities — should be adapter only",
+      "status": "SEALED via adapter classification"
+    },
+    {
+      "name": "Duplicate skills (119 categories)",
+      "issue": "Same capability as skill + MCP + bridge + tool + agent + server",
+      "status": "AUDITED, pending migration"
+    }
+  ],
+  "godel_locks": ["G1", "G2", "G3", "G4", "G5", "G6", "G7", "G8", "G9", "G10"]
+}
