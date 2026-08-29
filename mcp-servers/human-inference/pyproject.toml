@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "human-inference-mcp"
+version = "0.1.0"
+description = "FastMCP server implementing the Human Meaning Inference Protocol for arifOS"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+    { name = "arifOS Federation" },
+]
+keywords = ["mcp", "fastmcp", "human-inference", "arifos"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "fastmcp>=2.0.0",
+    "jsonschema>=4.0.0",
+]
+
+[project.scripts]
+human-inference = "human_inference_server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
