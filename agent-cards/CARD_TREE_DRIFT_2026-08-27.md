@@ -36,3 +36,18 @@ Option C — **unify to `/root/AAA/agents/`** definitions as the single source, 
 
 ## Blast radius of reconcile
 Reversible, additive (copy/migrate) — no deletes. Requires schema transformation for dir→flat. Do NOT execute until F13 ratifies Option A/B/C.
+
+---
+
+## Reconciliation Executed (2026-08-28 — P1 Slice Sealed)
+
+1. **Option A Implemented (Non-destructive, Additive):**
+   - Minted `/root/AAA/a2a-server/agent-cards/identity/i-ARIF.json` (canonical flat schema v2.2.0 with full multimodal capabilities and skills).
+   - Created `/root/AAA/a2a-server/agent-cards/README.md` affirming `a2a-server/agent-cards/` as the canonical A2A tree, resolving F10 Ghost Ref.
+   - Legacy directories in `/root/AAA/agent-cards/` preserved intact (F1 AMANAH).
+2. **Session Ignition Multi-Tree Discovery:**
+   - Patched `arifosmcp/tools/session.py` in both `/root/arifOS` and `/opt/arifos/app` to resolve cards across `a2a-server/agent-cards/` (`identity/`, `harnesses/`, `organs/`, `extensions/`, `roles/`, `forge/`) and legacy paths, including FI aliases (`fi-001` .. `fi-008`).
+   - Genesis anchor `/root/AAA/registries/genesis/genesis_card.yaml` bound to session headers and immutable `genesis_card_hash` on all init modes.
+3. **Verification:**
+   - `arif_init` smoke-tested and verified functional.
+
