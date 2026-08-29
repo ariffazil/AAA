@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Human Meaning Inference Protocol",
+  "description": "Every human interpretation must pass through this schema before action. Part of human-meaning-membrane governance doctrine.",
+  "type": "object",
+  "required": ["observation", "context", "candidate_interpretations", "unknowns", "projection_risk", "verification_path", "consent_status", "action_authority", "confidence_band"],
+  "properties": {
+    "observation": {
+      "type": "string",
+      "description": "What was literally said or done. No interpretation. Raw data only."
+    },
+    "context": {
+      "type": "string",
+      "description": "Time, relationship, setting, prior relevant evidence. Grounds the inference."
+    },
+    "candidate_interpretations": {
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 3,
+      "description": "Minimum 3 competing interpretations. One is never enough."
+    },
+    "unknowns": {
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 1,
+      "description": "What CANNOT be inferred from available data. The void."
+    },
+    "projection_risk": {
+      "type": "string",
+      "enum": ["LOW", "MEDIUM", "HIGH"],
+      "default": "MEDIUM",
+      "description": "Risk that interpretation reflects agent projection rather than evidence."
+    },
+    "verification_path": {
+      "type": "string",
+      "description": "A reversible, dignified question or observable outcome that could confirm or falsify."
+    },
+    "consent_status": {
+      "type": "string",
+      "enum": ["NOT_RELEVANT", "EXPLICIT", "UNKNOWN", "MUST_NOT_INFER"],
+      "default": "UNKNOWN",
+      "description": "Whether informed consent exists for this inference. Default is UNKNOWN."
+    },
+    "action_authority": {
+      "type": "string",
+      "enum": ["READ_ONLY", "HUMAN_CONFIRMATION_REQUIRED"],
+      "default": "HUMAN_CONFIRMATION_REQUIRED",
+      "description": "Whether agent may act on this inference or must wait for human confirmation."
+    },
+    "confidence_band": {
+      "type": "array",
+      "items": {"type": "number"},
+      "minItems": 2,
+      "maxItems": 2,
+      "description": "Confidence range [low, high]. Hard-capped at [0.6, 0.9] max for human state inference."
+    }
+  }
+}
