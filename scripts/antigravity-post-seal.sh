@@ -27,7 +27,7 @@ print(json.dumps(seal))
 " <<< "$INPUT")
 
 # Call arifOS seal via MCP
-RESPONSE=$(curl -s -X POST http://localhost:8088/mcp \
+RESPONSE=$(curl -s --connect-timeout 1 --max-time 2 -X POST http://localhost:8088/mcp \
   -H "Content-Type: application/json" \
   -d "$(python3 -c "
 import json

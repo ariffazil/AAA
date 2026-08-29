@@ -25,7 +25,8 @@ DSP="${IARIF_DSP:-/root/forge_work/dsp/dsp_stabilizer.py}"
 # 5-R Protocol: disable nounset during source (env file has forward-references)
 set +u
 set -a
-source /root/.secrets/kunci-root.env
+[ -f /root/.secrets/kunci-root.env ] && source /root/.secrets/kunci-root.env
+[ -f /root/.secrets/kunci-mas.env ] && source /root/.secrets/kunci-mas.env
 set +a
 set -u
 
@@ -152,13 +153,6 @@ if [ ! -s "$WORK/raw.mp3" ]; then
   exit 1
 fi
 
-# ---- Stage 2: jiwa A/f/φ stabilizer (fail-open, CPU, no GPU) ----
-if python3 "$DSP" \
-     "$WORK/raw.mp3" "$WORK/stabilized.wav" \
-     --target-f0 "$TARGET_F0" --lift "$LIFT" >&2; then
-  cp "$WORK/stabilized.wav" "$OUT_PATH"
-  echo "iarif_tts_pipeline: envelope-locked output -> $OUT_PATH" >&2
-else
-  echo "iarif_tts_pipeline: stage 2 failed -- fail-open with raw voice" >&2
-  ffmpeg -y -v error -i "$WORK/raw.mp3" -c:a pcm_s16le "$OUT_PATH"
-fi
+# ---- Stage 2: Direct output conversion (Zen Mode - Zero CPU vocoder) ----
+ffmpeg -y -v error -i "$WORK/raw.mp3" -c:a pcm_s16le "$OUT_PATH"
+echo "iarif_tts_pipeline: direct high-fidelity output -> $OUT_PATH" >&2
