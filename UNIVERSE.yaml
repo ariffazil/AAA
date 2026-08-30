@@ -237,5 +237,5 @@ seal:
   by: "ARIF (F13) — in-session directive to FI-003 (Qwen Code), executed 2026-08-30 ~23:08 MYT"
   ts: "2026-08-30T15:08:00Z"
   scope: "Atlas Layer A/B/C/D/E/F as written; Layer C runtime re-verify on next recompile"
-  signature: null  # SCT/VAULT999 receipt pending signing channel; git commit hash = interim receipt
-  commit: be094d7c # AAA repo, main branch, 2026-08-30
+  signature: null  # SCT/VAULT999 receipt pending signing channel; git commit = interim receipt
+  commit: 863bed4e # sealed-content commit (AAA main); receipt-fix commit follows — final hash in VAULT999/memory
