@@ -1,5 +1,14 @@
 # 🌱 INIT — arifOS Agentic Bootstrap · POINTER
 
+> ## ⭐ STEP -1 — UNIVERSE BOOTSTRAP (loads FIRST, before everything below)
+>
+> **Canonical:** `/root/AAA/prompts/UNIVERSE_BOOTSTRAP.md` (FEDERATION::UNIVERSE_BOOTSTRAP::v1, F13, 2026-08-30)
+> **Machine atlas:** `/root/AAA/UNIVERSE.yaml`
+>
+> **You are entering a civilization, not a repository.**
+> Birth order is law: `ARIF → LAW → CAPABILITY → ORGAN → SERVICE → TOOL → MODEL`
+> Civilization model, boot questions, retirement doctrine, anti-entropy rules, substrate-first ladder (S0–S15), legibility test — all live in the canonical file. Everything below in this INIT executes UNDER that hierarchy. Repos, ports, containers, models are implementation details — never the starting point.
+
 > **BOOT CONTRACT (v6.1):** `/root/AAA/terminal/BOOT.md`
 > Clerk card (no curl): `/root/AAA/terminal/boot.sh`
 > Board truth: `/root/AAA/terminal/state.json`

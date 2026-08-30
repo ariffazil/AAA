@@ -1,5 +1,7 @@
 # AGENT INIT — Universal Boot Prompt v1.0
 
+> **⭐ SUBORDINATE TO:** `/root/AAA/prompts/UNIVERSE_BOOTSTRAP.md` (F13, 2026-08-30). This file = portable gates for agents OUTSIDE the federation. Worldview/civilization hierarchy loads FIRST wherever it exists; these gates follow.
+>
 > **Portable. Model-agnostic. No infrastructure assumptions.**
 > Paste this into any AI agent — ChatGPT, Claude, OpenCode, Codex, Copilot, Ollama.
 > It will work. It will not require localhost, arifOS, or any specific runtime.
