@@ -1,0 +1,241 @@
+# UNIVERSE.yaml — Federation Civilization Atlas
+# ─────────────────────────────────────────────────────────────────────────────
+# 3-Layer Architecture Atlas (A/B/C/D/E/F) — derived view, NOT a new SOT
+# Author:     FI-003 draft → 333-AGI Δ MIND extension → F13 seal
+# Written:    2026-08-30T22:40Z · Sealed: 2026-08-30T23:08Z (F13 direct directive)
+# Status:     SEALED v0.2.0 (SCT/VAULT999 receipt may be appended when signing channel live)
+# Doctrine:   EUREKA-22 substrate + M0 (Purpose/Authority/Trust) +
+#             M1 (Reality Accounting) + capability-first naming
+# Authority:  F13 (sovereign ratification EXECUTED 2026-08-30)
+# Single-writer rule: AAA only. All other organs READ-ONLY consumers.
+#
+# Design intent (per Arif F13 + i-arif ratification):
+#   "Jangan cipta struktur baru. Cipta identiti kanon dahulu.
+#    Kemudian jadikan semua repo, path, service, model dan tool
+#    sebagai manifestasi sementara kepada identiti itu."
+#
+# Read order for any agent spawn:
+#   1. civilization (Layer A)  → WHO you serve
+#   2. capabilities            → WHAT you can do
+#   3. implementation (B)      → WHICH repo
+#   4. runtime (C)             → WHERE it lives today
+#   5. known_shadows (D)       → WHAT to ignore
+#   6. sot_pointers (E)        → WHERE the truth actually lives
+#   7. f13_pending (F)         → WHAT awaits sovereign decision
+# ─────────────────────────────────────────────────────────────────────────────
+
+version: 0.2.0
+schema: arifos.universe.atlas.v1
+epoch: F004-CANONICAL-2026-07-17
+provenance:
+  drafted_by: "FI-003 (Qwen Code) — initial atlas 2026-08-30 22:2x MYT"
+  extended_by: "333-AGI Δ MIND (FI-001, OpenCode) — 6-layer schema 2026-08-30 22:40 MYT"
+  ratified_by: "F13 ARIF — direct in-session directive 'seal UNIVERSE.yaml' 2026-08-30 ~23:05 MYT"
+  evidence_ref: /root/.hermes/config_scars/2026-08-30-gpt-oss.md
+  doctrine_ref:
+    - /root/AAA/canon/CIV-21-APPLICATION-NOTE-constitutional-substrate-stack.md (DRAFT)
+    - GENESIS/059_REALITY_VOTE.md (canonical)
+  companion_artifacts:
+    - /root/forge_work/2026-08-30-PROVIDER_REALITY_AUDIT.md (FI-003 evidence base)
+
+# ─── Layer A: Civilization (immutable organ IDs) ────────────────────────────
+civilization:
+  - id: LAW
+    function: constitution
+    purpose: Declare law, ratify floors, seal irreversible decisions
+    invariant: Authority flows UP from this layer to sovereign F13
+  - id: GOVERNOR
+    function: governance
+    purpose: Registry SOT, capability catalog, agent identity, civil registry
+    invariant: Single-writer of this atlas
+  - id: METABOLISM
+    function: metabolism
+    purpose: Flow receipts, FQ pulse, attention checkpointing, cooling ledger
+    invariant: Records every execute/verify step; cannot mutate production
+  - id: HANDS
+    function: execution
+    purpose: Mutate, deploy, repair under constitutional authority
+    invariant: Cannot self-certify; must be judged before seal
+  - id: SENSES
+    function: perception
+    purpose: Ingest, verify, observe multimodal — Telegram, browser, search
+    invariant: OBSERVE_ONLY lane; never executes mutation
+  - id: EARTH
+    function: earth_reality
+    purpose: Geoscience, seismic, basin, petrophysics, prospect evaluation
+    invariant: COMPUTE_ONLY; evidence-first, falsification-mandatory
+  - id: ECONOMY
+    function: economic_reality
+    purpose: Capital math, market, risk, portfolio, wisdom
+    invariant: COMPUTE_ONLY; receipts > narratives
+  - id: HEALTH
+    function: human_readiness
+    purpose: Vitality, fatigue, dignity, homeostasis, biometric substrate
+    invariant: REFLECT_ONLY; never prescribes action to other organs
+  - id: PUBLIC
+    function: public_surface
+    purpose: External-facing site, essays, public seals, sovereign voice
+    invariant: F13 veto over all published content
+
+# ─── Layer B: Implementation (organ_id → canonical repo) ─────────────────────
+# secondary_paths = alias/shadow yang MASIH HIDUP. Yang telah bersara → known_shadows.
+implementation:
+  LAW:        { repo: arifOS,         sot_path: /root/arifOS,                secondary_paths: [/opt/arifos] }
+  GOVERNOR:   { repo: AAA,            sot_path: /root/AAA,                   secondary_paths: [] }
+  METABOLISM: { repo: arifFLOW,       sot_path: /root/arifFlow,              secondary_paths: [] }
+  HANDS:      { repo: A-FORGE,        sot_path: /root/A-FORGE,               secondary_paths: [/opt/a-forge, /opt/aforge-publish] }
+  SENSES:     { repo: HERMES,         sot_path: /root/HERMES,                secondary_paths: [/root/Hermes] }
+  EARTH:      { repo: GEOX,           sot_path: /root/GEOX,                  secondary_paths: [] }
+  ECONOMY:    { repo: WEALTH,         sot_path: /root/WEALTH,                secondary_paths: [] }
+  HEALTH:     { repo: WELL,           sot_path: /root/WELL,                  secondary_paths: [] }
+  PUBLIC:     { repo: arif-fazil.com, sot_path: /root/arif-fazil.com,        secondary_paths: [] }
+
+# ─── Layer C: Runtime (organ_id → systemd / port / container) ───────────────
+# Unit names live-probed 2026-08-30 (FI-003); unverified entries left as-is.
+runtime:
+  LAW:        { systemd: [arifos.service],                            ports: [8088], containers: [] }
+  GOVERNOR:   { systemd: [aaa-a2a.service, aaa-preforge.service],     ports: [3001], containers: [] }
+  METABOLISM: { systemd: [arifflow.service],                          ports: [7073], containers: [] }
+  HANDS:      { systemd: [a-forge-mcp.service, a-forge.service],      ports: [7071, 7072], containers: [] }
+  SENSES:     { systemd: [hermes-asi-gateway.service, hermes-real-bridge.service, hermesarifos-bot.service], ports: [], containers: [] }
+  EARTH:      { systemd: [geox-mcp.service],                          ports: [8081], containers: [] }
+  ECONOMY:    { systemd: [wealth-organ.service],                      ports: [18082], containers: [] }
+  HEALTH:     { systemd: [well.service],                              ports: [18083], containers: [] }
+  PUBLIC:     { systemd: [arif-fazil-com.service, caddy.service],     ports: [443, 80], containers: [] }
+
+# ─── Layer D: Known shadows ─────────────────────────────────────────────────
+# Status legend: retired_archive | retired_symlink_alias | pending_decision
+# Retirements executed 2026-08-30 23:06 MYT by FI-003 under F13 directive
+# ("buang 4 orphan clones"). Reversible archive:
+#   /root/.local/share/arifos/.archive/orphan-retirement-20260830/
+known_shadows:
+  /root/arifFLOW:
+    status: retired_archive
+    type: duplicate_git_clone
+    was: HTTPS clone of arifFLOW.git, last-commit ad0977f (2026-08-25), 1 dirty file
+    preserved: arifFLOW-dirty-mcp-arifflow-mcp.py.patch (27 lines) in archive
+    live_twin: /root/arifFlow (SSH remote, systemd arifflow.service — verified active post-retire)
+  /root/geox:
+    status: retired_symlink_alias
+    was: symlink → /root/GEOX (since 2026-07-26); ALSO referenced by live geox-mcp unit
+    substrate_fix_first: PYTHONPATH ':/root/geox/src' removed + ReadWritePaths '/root/geox' removed, unit restarted, health 200 verified BEFORE retirement
+  /root/wealth:
+    status: retired_symlink_alias
+    was: symlink → /root/WEALTH (since 2026-08-14)
+  /root/arif-sites:
+    status: retired_symlink_alias
+    was: symlink → /root/arif-fazil.com (since 2026-07-29)
+  /root/Hermes:
+    status: pending_decision
+    type: case_shadow
+    notes: "Non-git, smaller than HERMES. Audit contents before retire."
+    f13_question: "Contents audit + retire decision pending"
+
+# ─── Layer E: SOT Pointers (existing truth files, this atlas indexes) ───────
+sot_pointers:
+  identity:
+    primary: /root/arifOS/arifos/identity/agent_registry.json
+    secondary: /root/.local/share/arifos/agent_registry.json
+  governance:
+    primary: /root/arifOS/floors/  # F1-F13 floor definitions
+    secondary: /root/AAA/instructions/constitution.md
+  capabilities:
+    primary: /root/.config/capability_registry.json
+    secondary: /root/AAA/capability_registry.json
+    tertiary: /root/AAA/registries/models/CAPABILITIES.json
+  models:
+    primary: /root/AAA/registries/models/AGENT_MODEL_MAP.json
+    secondary: /root/.config/federation-models.json
+  audit:
+    primary: /root/.local/share/arifos/vault999/seal_chain.jsonl
+    secondary: /root/VAULT999/outcomes.jsonl
+  cron:
+    primary: /root/HERMES/cron/jobs.json
+    secondary: /etc/cron.d/ + /etc/systemd/system/
+  ports:
+    primary: /root/AAA/registries/PORT_REGISTRY.json
+  tunnels:
+    primary: /root/AAA/registries/TUNNEL_REGISTRY.json
+
+# ─── Layer F: F13 Pending Decisions ──────────────────────────────────────────
+f13_pending:
+  - id: cron_backup_masked
+    summary: arifos-backup.timer is MASKED — last federation snapshot 2026-08-20
+    discovered: 2026-08-30T22:35Z
+    evidence:
+      - "systemctl status arifos-backup.timer → masked"
+      - "ls /root/VAULT999/backups/federation/ shows 17 daily snapshots Aug 4-20, none after"
+      - "/etc/cron.daily/arifos-cleanup runs daily (Aug 30 14:25 UTC latest)"
+      - "/root/HERMES/cron/jobs.json arif-morning-pulse ran today 06:04 MYT, ok"
+    f13_question: |
+      Ratify ONE of:
+        (a) unmask arifos-backup.timer + document WHY-masked-was-OK in unit comment
+        (b) leave masked + add WHY-masked-was-OK audit comment
+        (c) convert to systemd calendar (e.g. weekly) + retire daily
+        (d) delete unit entirely + declare backup obsolete (kabarkan/MinIO may substitute)
+    reversibility: total (mask/unmask is reversible)
+    blocker_for: "Phase 2 backup TTL prune (12.4 GB in 17 stale snapshots)"
+
+  - id: federation_watchdog_disabled
+    summary: federation-watchdog.timer is DISABLED; last liveness.json from Aug 28
+    discovered: 2026-08-30T22:35Z
+    evidence:
+      - "systemctl status federation-watchdog.timer → disabled"
+      - "ls -la /var/lib/arifos/agent_liveness.json → Aug 28 02:50"
+      - "agent_liveness.json shows overall: CRITICAL (2 dead, 4 degraded) from Aug 27"
+      - "Script is OBSERVE_ONLY by design ('No auto-repair. No mutation.')"
+    f13_question: |
+      Watchdog is OBSERVE_ONLY (correct doctrine). But disabled timer = blind spot.
+      Ratify: enable + verify, or delete + accept Hermes morning-pulse as substitute.
+    reversibility: total
+
+  - id: physical_path_rename_to_fed
+    summary: /fed/{law,governor,metabolism,hands,senses,earth,economy,health,public}
+    discovered: 2026-08-30T22:35Z
+    blockers:
+      - "~30+ systemd units hardcode /root/<path>"
+      - "ProtectHome=yes in some units blocks symlinks into /root"
+      - "arifOS itself split: /root/arifOS + /opt/arifos"
+      - "A-FORGE split: /root/A-FORGE + /opt/a-forge + /opt/aforge-publish"
+    f13_question: |
+      Per i-arif ratification: "logical namespace first, physical migration later"
+      Sequence (T3 multi-session):
+        (a) UNIVERSE.yaml ← SEALED v0.2.0 (done 2026-08-30)
+        (b) Retire shadows — DONE 2026-08-30 (arifFLOW + 3 symlink aliases; /root/Hermes pending)
+        (c) Per-organ physical migration with retirement plan + checklist
+    reversibility: staged (per-organ)
+    blocker_for: "none — doctrine-aligned deferral"
+
+  - id: commit_hygiene_before_migration
+    summary: HERMES 21 dirty + AAA 7 dirty — migration must not carry uncommitted work
+    discovered: 2026-08-30T22:35Z
+    evidence:
+      - "cd /root/HERMES && git status -s | wc -l → 21"
+      - "cd /root/AAA && git status -s | wc -l → 7"
+    f13_question: |
+      Commit hygiene before any reorganize. Either:
+        (a) ratify individual commits (F11 evidence required)
+        (b) ratify batch revert if dirty = untracked experimental
+    reversibility: total
+
+# ─── Boot Instructions for New Agents ────────────────────────────────────────
+boot:
+  read_order:
+    - civilization
+    - capabilities (load from sot_pointers)
+    - implementation
+    - runtime
+  invariants:
+    - "Never trust paths; trust civilization IDs"
+    - "If Layer A organ doesn't exist for your intent → 888_HOLD"
+    - "If implementation/runtime shadow exists → check known_shadows before acting"
+    - "If f13_pending affects your action → HOLD"
+
+# ─── Seal Block ──────────────────────────────────────────────────────────────
+seal:
+  status: SEALED_F13_DIRECTIVE
+  by: "ARIF (F13) — in-session directive to FI-003 (Qwen Code), executed 2026-08-30 ~23:08 MYT"
+  ts: "2026-08-30T15:08:00Z"
+  scope: "Atlas Layer A/B/C/D/E/F as written; Layer C runtime re-verify on next recompile"
+  signature: null  # SCT/VAULT999 receipt pending signing channel; git commit hash = interim receipt
+  commit: be094d7c # AAA repo, main branch, 2026-08-30
