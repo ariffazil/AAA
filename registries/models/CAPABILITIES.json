@@ -468,6 +468,16 @@
         "reasoning_tier": "high"
       }
     },
+    "deepseek-v4-flash-vision-exp": {
+      "_note": "EXPERIMENTAL vision model (2026-08-21). Image-in via user-role messages; 384 tok/image cap after ~800x800 auto-resize; JPEG/PNG/GIF/WebP; Anthropic-compat /anthropic accepts image blocks. Text parity with v4-flash. DIRECT-API-ONLY, no mirror. VERIFIED LIVE 2026-08-30: real-image probe answered correctly ('Red') on both endpoints, account $17.38. Never 666_JUDGE/999_SEAL while EXP.",
+      "modalities": {
+        "vision": true
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "high"
+      }
+    },
     "glm-5.3": {
       "_note": "Z.ai Coding Plan Pro \u2014 text-only in default. 1M ctx.",
       "modalities": {},

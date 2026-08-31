@@ -2277,8 +2277,8 @@
       "v3_name": "RSI-recursive-improvement",
       "layer": "doctrine",
       "primary_disk_name": "RSI-recursive-improvement",
-      "primary_path": "/root/.agents/skills/RSI-recursive-improvement",
-      "primary_resolved": "/root/.agents/skills/RSI-recursive-improvement",
+      "primary_path": "/root/.hermes/skills/RSI-recursive-improvement",
+      "primary_resolved": "/root/.hermes/skills/RSI-recursive-improvement",
       "primary_home": "opencode",
       "related": [
         {
