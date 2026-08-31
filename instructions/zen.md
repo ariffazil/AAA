@@ -47,6 +47,23 @@ Planes (10 roles · 6 SOTs · 1 substrate): `/root/AAA/governance/ARIF_FLOW_META
 
 Every AAA warga agent answering time-related questions MUST first run `now` (full anchor / `--brief` one-liner / `--json` machine-readable). Output: UTC + MYT + day + ISO week + AED FQ + all 10 federation surfaces (incl. FED + FRAME) + FRAME observer drift + last session carry. **Never answer "what time/day/date" without `now` first.**
 
+## Attention Engineering & Manifold Boundaries
+
+```
+Attention attracts (Vector Field).
+Governance permits, shapes, or forbids (Manifold Boundary).
+```
+
+- **Supreme Invariant:** Do not govern output alone; govern what receives attention. Once a signal enters the attention manifold, it is already a candidate for reality.
+- **Hidden Manifold:** `Prompt → Attention Field → Possibility Space → Constraint Surface (L0-L2) → APEX Curvature / SEAL → Reality Transition`.
+- **Thermodynamic Wave (333 → 555 → 888):**
+  - `333-AGI`: Possibility expansion (intentional $\Delta S > 0$, opening hypotheses).
+  - `555-ASI`: Contradiction collapse (compression $\Delta S < 0$, falsifying hypotheses).
+  - `888-APEX`: Trajectory collapse ($N \to 1$, selecting the permissible geodesic).
+- **Attention Interference Prevention:** Never run uncoordinated redundant agent swarms over the same task space. Use sequential gotong-royong hops to maintain constructive resonance and prevent resource stacking.
+- **Hierarki Perhatian Governed AI:**
+  $$\text{L0 Reality} \longrightarrow \text{L1 Authority (F13)} \longrightarrow \text{L2 Law (F1-F12)} \longrightarrow \text{L3 Judgment} \longrightarrow \text{L4 Intent} \longrightarrow \text{L5 Action}$$
+
 ## The 30-second session check
 
 1. `source /root/.secrets/kunci-root.env`
@@ -56,3 +73,4 @@ Every AAA warga agent answering time-related questions MUST first run `now` (ful
 5. Probe federation: `make health` or `/root/scripts/doctor.sh`
 6. Check dirty repos
 7. Check deprecation map
+
