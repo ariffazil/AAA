@@ -234,3 +234,4 @@ snapshots/
 # agents/hermes is the registry identity dir, not runtime (unignore from broad hermes/ pattern)
 !agents/hermes/
 abstention_corpus.jsonl
+token_bank.db
