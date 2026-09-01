@@ -1,7 +1,8 @@
 <!-- SOT-MANIFEST
-federation_release: v2026.08.15
-last_verified: 2026-08-15T16:30:00Z
-live_commit: e34c34ad (docs(state): FI-003 landed + nav zen enforcer + repos sync 2026-08-14)
+federation_release: v2026.09.01
+last_verified: 2026-09-01T08:00:00Z
+live_commit: 028814e4 (canon: 2026-08-31 doctrine batch — CIV-21, constitutional-runtime-promotion, FED genesis map, governance audit)
+previous_verified: 2026-08-15T16:30:00Z (e34c34ad)
 actor_surface_doctrine: RATIFIED 2026-08-15 (resit 09db16ec) — actors invariant, surfaces replaceable, models runtime occupants; RCR falsifier live (next model release = 1 SOT edit or geometry fails)
 qwen_code: FI-003 on glm-5.3 (runtime-resolved via model_binding → federation-models.json; card de-static'd v2.2.1)
 glm_shadow: SHADOW-GLM-004 silent_version_redirect HIGH (Z.ai coding plan glm-5.2→5.3 verified live; [1m] suffix is Anthropic-endpoint-only)
