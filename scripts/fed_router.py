@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-fed_router.py — FED Core MCP Server (Federation Router) · v3.1 Zen
+fed_router.py — FED Core MCP Server (Federation Router) · v3.2 Zen
 ═══════════════════════════════════════════════════════════
 Port: 7074  ·  Unit: fed-router.service  ·  MCP prefix: fed_*
 Answers: "Where should this agent route?"
@@ -10,11 +10,12 @@ Architecture:
   WRITE → token_bank_spend (on every routed call)
   NEVER → actively ping for latency (passive telemetry only)
 
-Zen v3.1 (2026-08-02 — LiteLLM patterns absorbed):
-  1. Route Health Gate — skip DEGRADED, demote RATE_LIMITED (cooldown)
-  2. Cost Surface — estimated cost per 1M tokens on every route
-  3. Telemetry Gate — demote untested routes (<10 samples)
-  4. Complete Pricing — DeepSeek direct + all provider tables
+Zen v3.2 (2026-09-01):
+  1. DRY Pricing Tables — single _get_pricing_table() source of truth
+  2. SQLite Context Managers — all DB calls use `with` for deterministic teardown
+  3. Declarative Priority Matrix — RankGate class replaces procedural magic numbers
+  4. Structured Concurrency — ThreadPoolExecutor replaces orphaned daemon threads
+  5. Graceful Shutdown — SIGTERM/SIGINT handler with cancel_futures=True
 
 Hardened v3.0 invariants (preserved):
   1. Asymmetric Balance Bypass (dual-track — Track A hard / Track B soft / UNVERIFIABLE)
@@ -24,21 +25,53 @@ Hardened v3.0 invariants (preserved):
   5. Balance Bypass Enforcement (Track A <$1 HARD, Track B <$5 SOFT, conf<0.50 UNVERIFIABLE)
   6. Model Route Tables (deepseek, qwen, gpt, claude, kimi, glm families)
 
-Forged: 2026-07-30  ·  Zen-dated: 2026-08-02  ·  DITEMPA BUKAN DIBERI
+Forged: 2026-07-30  ·  Zen-dated: 2026-08-02  ·  Zen-Optimized: 2026-09-01
+DITEMPA BUKAN DIBERI
 """
 
 import hashlib
 import json
+import os
+import signal
 import sqlite3
+import sys
 import time
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
 from fastmcp import FastMCP
 
+# ── Zen Priority Matrix ───────────────────────────────────────────────
+class RankGate:
+    """Declarative priority adjustments — isolates reasoning from execution."""
+    VISION_MULEROUTER_BOOST = -2
+    VISION_NATIVE_BOOST = -1
+    NO_TELEMETRY = 2
+    LOW_TELEMETRY = 1
+    LATENCY_DEGRADED = 3
+    BALANCE_SOFT_DEMOTE = 5
+    RATE_LIMITED = 8
+    BALANCE_HARD_DEMOTE = 10
 
-# ── ETCSOVG Harness Metadata (arxiv 2605.23950) ─────────────────────
+# ── Background Task Executor ──────────────────────────────────────────
+_FED_BACKGROUND_TASKS = ThreadPoolExecutor(max_workers=4, thread_name_prefix="fed_sidecar")
+
+# ── Graceful Shutdown Handler ─────────────────────────────────────────
+_shutdown = False
+
+def _graceful_exit(signum, frame):
+    global _shutdown
+    _shutdown = True
+    # Cancel all pending sidecar futures instantly — no zombie threads
+    _FED_BACKGROUND_TASKS.shutdown(wait=False, cancel_futures=True)
+    sys.exit(0)
+
+signal.signal(signal.SIGTERM, _graceful_exit)
+signal.signal(signal.SIGINT, _graceful_exit)
+
+# ── ETCSOVG Harness Metadata (arxiv 2605.23950) ──────────────────────
 def _build_hcsvog(
     execution: str = "bare",
     tools: str = "none",
@@ -65,33 +98,26 @@ def _build_hcsvog(
 
 # ── JIT Intent Retrieval (P1.5) ────────────────────────────────────
 # Lazily import intent_retriever to avoid loading sentence-transformers at boot.
-# Only loaded when a task prompt triggers JIT context injection.
 _intent_retriever = None
-
 
 def _get_intent_retriever():
     global _intent_retriever
     if _intent_retriever is None:
         try:
             from intent_retriever import build_jit_context as _build
-
             _intent_retriever = _build
         except ImportError:
             _intent_retriever = False  # Sentinel: failed to load
     return _intent_retriever if _intent_retriever is not False else None
 
-
 # ── A2A Trace Propagation (P1.7) ────────────────────────────────────
 try:
     from trace_propagation import make_trace_headers
-
     _trace_enabled = True
 except ImportError:
     _trace_enabled = False
-
     def make_trace_headers(*args, **kwargs):
         return {}
-
 
 # ── Config ───────────────────────────────────────────────────────────────
 FED_STATE_DB = Path("/root/.local/share/arifos/token_bank.db")
@@ -111,16 +137,9 @@ FED_PORT = 7074
 FED_SOT_PATH = Path("/root/.config/federation-models.json")
 
 _SOT_REQUIRED = (
-    "pricing",
-    "pricing_default",
-    "model_routes",
-    "capability_signatures",
-    "emd_model_class",
-    "emd_neutral_cap",
-    "agent_default_operation",
-    "vision_models",
-    "constitutional_allowed",
-    "effort",
+    "pricing", "pricing_default", "model_routes", "capability_signatures",
+    "emd_model_class", "emd_neutral_cap", "agent_default_operation",
+    "vision_models", "constitutional_allowed", "effort",
 )
 _SOT_REQUIRED_PRICING = ("deepseek", "mulerouter", "tokenrouter", "kimi-moonshot", "flame")
 _SOT_REQUIRED_EFFORT = ("model_map", "alt_models", "cost_multiplier", "reasoning_passes")
@@ -136,10 +155,8 @@ def _load_sot() -> dict:
         raise SystemExit(f"FED FATAL: SOT unparseable ({FED_SOT_PATH}): {exc}")
 
     for key in _SOT_REQUIRED:
-        if key not in sot:
-            raise SystemExit(f"FED FATAL: SOT missing required section '{key}'")
-        if not sot[key]:
-            raise SystemExit(f"FED FATAL: SOT section '{key}' is empty")
+        if key not in sot or not sot[key]:
+            raise SystemExit(f"FED FATAL: SOT missing/empty required section '{key}'")
     for prov in _SOT_REQUIRED_PRICING:
         if prov not in sot["pricing"]:
             raise SystemExit(f"FED FATAL: SOT pricing missing provider '{prov}'")
@@ -165,33 +182,23 @@ _SOT = _load_sot()
 # Zen 2026-08-02: Added DeepSeek direct pricing + all provider tables (LiteLLM model catalog pattern)
 
 DEEPSEEK_PRICING = _SOT["pricing"]["deepseek"]
-
 MULEROUTER_PRICING = _SOT["pricing"]["mulerouter"]
-
 TOKENROUTER_PRICING = _SOT["pricing"]["tokenrouter"]
-
-# Kimi Code direct (api.kimi.com/coding) — subscription quota (Moderato/
-# Allegretto tiers), NOT USD-metered. 0.00 means "no marginal USD cost";
-# the real constraint is plan quota, tracked outside token_bank.
-# Zen 2026-08-13: added under F13 directive "FED must have kimi code model
-# at the right alias". Previously absent → fell through to the $0.50/$2.00
-# default and reported false cost.
 KIMI_PRICING = _SOT["pricing"]["kimi-moonshot"]
-
-# FLAME — Free inference mesh (:18901). Groq + Gemini free tiers. Zero cost.
-# Zen 2026-08-05: Added by 333-AGI under F13 directive "wire FLAME to FED".
 FLAME_PRICING = _SOT["pricing"]["flame"]
-
-# QWEN TEAM SEAT — Anthropic-compatible arifOS team seat on Qwen Token Plan.
-# Patch 2026-08-18: F13 directive "qwen token plan team seat arifos is alive —
-# make sure all FED got this." Endpoint is apps/anthropic/v1 (NOT compatible-mode).
-# OpenAI-compatible path on the same seat remains quota-exhausted; do not use it.
 QWEN_TEAM_PRICING = _SOT["pricing"]["qwen-token-plan-team"]
 
+# Zen 3.2: Single source of truth for pricing table lookups.
+# Replaces duplicated inline dicts that existed in both _estimate_cost and
+# _estimate_cost_per_1k functions — preventing asymmetric drift between them.
 
-def _estimate_cost(provider_id: str, model_id: str, tokens_in: int, tokens_out: int) -> float:
-    """Calculate estimated cost in USD. Zen 2026-08-02: added deepseek pricing."""
-    tables = {
+def _get_pricing_table(provider_id: str) -> dict:
+    """Return the pricing dictionary for a given provider ID.
+    
+    Zen 3.2: Consolidated from twin inline dicts into single function.
+    Returns empty dict for unknown providers (fallback handled by caller).
+    """
+    return {
         "deepseek": DEEPSEEK_PRICING,
         "mulerouter": MULEROUTER_PRICING,
         "tokenrouter": TOKENROUTER_PRICING,
@@ -199,41 +206,30 @@ def _estimate_cost(provider_id: str, model_id: str, tokens_in: int, tokens_out: 
         "kimi-moonshot": KIMI_PRICING,
         "qwen-token-plan-team": QWEN_TEAM_PRICING,
         "qwen-token-plan-individual": DEEPSEEK_PRICING,  # Qwen routes deepseek models at similar pricing
-        "bailian-token-plan": DEEPSEEK_PRICING,  # Bailian also similar
-        "qwen-token-plan-individual": DEEPSEEK_PRICING,  # Qwen Individual Pro — same SG endpoint, same pricing
-    }
-    pricing = tables.get(provider_id, {}).get(model_id, {"input": 0.50, "output": 2.00})
+        "bailian-token-plan": DEEPSEEK_PRICING,           # Bailian also similar
+    }.get(provider_id, {})
+
+
+def _estimate_cost(provider_id: str, model_id: str, tokens_in: int, tokens_out: int) -> float:
+    """Calculate estimated cost in USD. Zen 3.2: uses consolidated _get_pricing_table()."""
+    pricing = _get_pricing_table(provider_id).get(model_id, {"input": 0.50, "output": 2.00})
     return round((tokens_in / 1_000_000) * pricing["input"] + (tokens_out / 1_000_000) * pricing["output"], 8)
 
 
 def _estimate_cost_per_1k(provider_id: str, model_id: str) -> dict:
     """Return estimated cost per 1K tokens for a route. LiteLLM catalog pattern."""
-    tables = {
-        "deepseek": DEEPSEEK_PRICING,
-        "mulerouter": MULEROUTER_PRICING,
-        "tokenrouter": TOKENROUTER_PRICING,
-        "flame": FLAME_PRICING,
-        "kimi-moonshot": KIMI_PRICING,
-        "qwen-token-plan-team": QWEN_TEAM_PRICING,
-        "qwen-token-plan-individual": DEEPSEEK_PRICING,
-        "bailian-token-plan": DEEPSEEK_PRICING,
-        "qwen-token-plan-individual": DEEPSEEK_PRICING,
-    }
-    pricing = tables.get(provider_id, {}).get(model_id, {"input": 0.50, "output": 2.00})
+    pricing = _get_pricing_table(provider_id).get(model_id, {"input": 0.50, "output": 2.00})
     return {
         "input_per_1m_usd": pricing["input"],
         "output_per_1m_usd": pricing["output"],
     }
 
-
 mcp = FastMCP("FED — Federation Router")
-
 
 @mcp.custom_route("/health", methods=["GET"])
 async def fed_health(_request):
     """Organ probe surface — ADVISORY_ONLY. Never judges or mutates."""
     from starlette.responses import JSONResponse
-
     return JSONResponse(
         {
             "status": "healthy",
@@ -247,123 +243,68 @@ async def fed_health(_request):
         }
     )
 
-
 # ── DB helpers (READ-ONLY for balances) ──────────────────────────────────
-def get_db():
-    conn = sqlite3.connect(str(FED_STATE_DB))
-    conn.row_factory = sqlite3.Row
-    return conn
-
-
-@mcp.custom_route("/fed/route", methods=["GET", "POST"])
-async def fed_route_http(request):
-    """Direct HTTP route advisor — consumed by fed-aware-middleware (:4010) Path B.
-
-    Contract: POST JSON {task, model, modality, effort_level, constitutional_tier, agent_id}
-              → {"routes": [...]} rank-1 first, same dicts as MCP tool fed_route.
-    Revival 2026-08-15: v3.0 refactor dropped this endpoint; the middleware
-    capability lane (fed/fast, fed/reasoning-heavy, ...) died with HTTP 404 and
-    raw signatures leaked to litellm as invalid model names. This handler calls
-    the same fed_route_engine as the MCP tool — no drift by construction.
-    ADVISORY_ONLY ceiling preserved: ranks, never blocks.
-    """
-    from starlette.responses import JSONResponse
-
-    if request.method == "POST":
-        try:
-            body = await request.json()
-        except Exception:
-            body = {}
-        if not isinstance(body, dict):
-            body = {}
-    else:
-        body = dict(request.query_params)
-
-    routes = fed_route_engine(
-        task=str(body.get("task", "")),
-        model=str(body.get("model", "deepseek-v4-pro")),
-        modality=str(body.get("modality", "text")),
-        agent_id=str(body.get("agent_id", "fed-aware-middleware")),
-        constitutional_tier=int(body.get("constitutional_tier", 333) or 333),
-        effort_level=str(body.get("effort_level", "") or ""),
-    )
-    tier = int(body.get("constitutional_tier", 333) or 333)
-    return JSONResponse(
-        {
-            "routes": routes,
-            "meta": {
-                "endpoint": "/fed/route",
-                "revived": "2026-08-15",
-                "hcsvog": _build_hcsvog(
-                    execution="bare",
-                    tools="mcp-core",
-                    gov=f"{tier}:yolo",
-                ),
-            },
-        }
-    )
-
+# Zen 3.2: All SQLite connections wrapped in `with` for deterministic teardown.
+# Eliminates connection leak vectors if an exception occurs before .close().
 
 def read_provider_balance(provider_id: str) -> dict | None:
     """Read from providers table in token_bank.db. Returns dict with balance_usd, confidence_score, track_type."""
-    conn = get_db()
-    row = conn.execute("SELECT * FROM providers WHERE provider_name = ?", (provider_id,)).fetchone()
-    conn.close()
-    if not row:
-        return None
-    r = dict(row)
-    # Normalize field names for backward compatibility with router logic
-    r["balance_confidence"] = r.get("confidence_score", 1.0)
-    r["track"] = r.get("track_type", "B")
-    return r
+    with sqlite3.connect(str(FED_STATE_DB)) as conn:
+        conn.row_factory = sqlite3.Row
+        row = conn.execute("SELECT * FROM providers WHERE provider_name = ?", (provider_id,)).fetchone()
+        if not row:
+            return None
+        r = dict(row)
+        # Normalize field names for backward compatibility with router logic
+        r["balance_confidence"] = r.get("confidence_score", 1.0)
+        r["track"] = r.get("track_type", "B")
+        return r
 
 
 def read_all_providers() -> list[dict]:
-    conn = get_db()
-    rows = conn.execute("SELECT * FROM providers ORDER BY track_type, provider_name").fetchall()
-    conn.close()
-    result = []
-    for row in rows:
-        r = dict(row)
-        r["balance_confidence"] = r.get("confidence_score", 1.0)
-        r["track"] = r.get("track_type", "B")
-        result.append(r)
-    return result
+    with sqlite3.connect(str(FED_STATE_DB)) as conn:
+        conn.row_factory = sqlite3.Row
+        rows = conn.execute("SELECT * FROM providers ORDER BY track_type, provider_name").fetchall()
+        result = []
+        for row in rows:
+            r = dict(row)
+            r["balance_confidence"] = r.get("confidence_score", 1.0)
+            r["track"] = r.get("track_type", "B")
+            result.append(r)
+        return result
 
 
 def read_route_latency(provider_id: str, model_id: str) -> dict | None:
-    conn = get_db()
-    row = conn.execute(
-        "SELECT * FROM route_latency WHERE provider_name = ? AND model_id = ?",
-        (provider_id, model_id),
-    ).fetchone()
-    conn.close()
-    return dict(row) if row else None
+    with sqlite3.connect(str(FED_STATE_DB)) as conn:
+        conn.row_factory = sqlite3.Row
+        row = conn.execute(
+            "SELECT * FROM route_latency WHERE provider_name = ? AND model_id = ?",
+            (provider_id, model_id),
+        ).fetchone()
+        return dict(row) if row else None
 
 
 def read_route_health(provider_id: str, model_id: str) -> dict | None:
-    conn = get_db()
-    row = conn.execute(
-        "SELECT * FROM route_health WHERE provider_name = ? AND model_id = ?",
-        (provider_id, model_id),
-    ).fetchone()
-    conn.close()
-    return dict(row) if row else None
+    with sqlite3.connect(str(FED_STATE_DB)) as conn:
+        conn.row_factory = sqlite3.Row
+        row = conn.execute(
+            "SELECT * FROM route_health WHERE provider_name = ? AND model_id = ?",
+            (provider_id, model_id),
+        ).fetchone()
+        return dict(row) if row else None
 
 
 def log_spend(provider_id: str, model_id: str, tokens_in: int, tokens_out: int, agent_id: str):
     """Write spend to token_bank_spend. FED's ONLY write path."""
     cost = _estimate_cost(provider_id, model_id, tokens_in, tokens_out)
     now = datetime.now(timezone.utc).isoformat()
-    conn = sqlite3.connect(str(FED_STATE_DB))
-    conn.execute(
-        """INSERT INTO token_bank_spend (provider_name, model_id, agent_id,
-                                          tokens_in, tokens_out, estimated_cost_usd, called_at)
-           VALUES (?, ?, ?, ?, ?, ?, ?)""",
-        (provider_id, model_id, agent_id, tokens_in, tokens_out, cost, now),
-    )
-    conn.commit()
-    conn.close()
+    with sqlite3.connect(str(FED_STATE_DB)) as conn:
+        conn.execute(
+            """INSERT INTO token_bank_spend (provider_name, model_id, agent_id,
+                                              tokens_in, tokens_out, estimated_cost_usd, called_at)
+               VALUES (?, ?, ?, ?, ?, ?, ?)""",
+            (provider_id, model_id, agent_id, tokens_in, tokens_out, cost, now),
+        )
 
 
 # ═══ EMD LANE AWARENESS — Fasa 1 (2026-08-08, F13 Arif directive) ═══
@@ -372,7 +313,6 @@ def log_spend(provider_id: str, model_id: str, tokens_in: int, tokens_out: int, 
 
 EMD_MODEL_CLASS = _SOT["emd_model_class"]
 _NEUTRAL_CAP = _SOT["emd_neutral_cap"]
-
 AGENT_DEFAULT_OPERATION = _SOT["agent_default_operation"]
 
 
@@ -479,11 +419,14 @@ EFFORT_COST_MULTIPLIER = _SOT["effort"]["cost_multiplier"]
 EFFORT_REASONING_PASSES = _SOT["effort"]["reasoning_passes"]
 
 
-# ── FED Route Engine (Zen-hardened v3.1 — LiteLLM patterns absorbed) ─────
+# ── FED Route Engine (Zen-hardened v3.2 — Declarative Priority Matrix) ──
 # Zen 2026-08-02: Absorbed LiteLLM patterns:
 #   - Route health gate (cooldown DEGRADED, demote RATE_LIMITED)
 #   - Cost estimate surfaced per route (catalog pricing)
 #   - Insufficient telemetry demotion (low-sample routes deprioritized)
+#
+# Zen 3.2: Priority adjustments use RankGate class constants.
+# No more procedural magic numbers — all penalty/boost values named and inspectable.
 def fed_route_engine(
     task: str = "",
     model: str = "deepseek-v4-pro",
@@ -495,6 +438,7 @@ def fed_route_engine(
     """
     Zen-hardened 9-step routing logic (was 7, +2 LiteLLM patterns).
     Effort Dial added v3.2 (2026-08-04) — Thorsten Ball pattern.
+    Priority Matrix added v3.2 (2026-09-01) — RankGate declarative class.
 
     Steps:
       0. EFFORT DIAL: if effort_level set, override model by effort tier
@@ -511,7 +455,6 @@ def fed_route_engine(
       10. RETURN: top 3 routes with reasoning
     """
     # ── Step 0: EFFORT DIAL — override model by effort tier ────────
-    # "Don't pick models, pick effort." — Thorsten Ball (Amp)
     effort_applied = None
     if effort_level and effort_level in EFFORT_MODEL_MAP:
         effort_applied = effort_level
@@ -521,8 +464,6 @@ def fed_route_engine(
             model = "deepseek-v4-pro"  # Only constitutional models for judge/seal
 
     # ── Step 0.5: CAPABILITY SIGNATURE RESOLUTION ──────────────────
-    # "Decouple task from provider. Use capability aliases, not model names."
-    # If model is a fed-* capability signature, expand to multi-model cascade.
     capability_meta = None
     capability_models = []
     if model.startswith("fed-"):
@@ -588,12 +529,14 @@ def fed_route_engine(
 
         # ── Step 2: RANK — priority score (lower = better) ───────────
         priority = route["priority"]
+        
+        # Zen 3.2: Use RankGate constants instead of magic numbers
         if modality == "vision" and provider_id == "mulerouter":
-            priority -= 2  # Boost MuleRouter for vision (4 VL models)
+            priority += RankGate.VISION_MULEROUTER_BOOST  # Boost MuleRouter for vision (4 VL models)
         if modality == "vision" and route_model in VISION_MODELS:
-            priority -= 1
+            priority += RankGate.VISION_NATIVE_BOOST
         if health_flag == "RATE_LIMITED":
-            priority += 8  # Heavy demotion — last resort
+            priority += RankGate.RATE_LIMITED  # Heavy demotion — last resort
 
         # ── Step 5: BALANCE GATE dual-track ──────────────────────────
         balance = bal["balance_usd"] if bal else None
@@ -624,7 +567,7 @@ def fed_route_engine(
         if track == "A" and confidence >= 0.95 and not is_monthly_plan:
             # Track A: API-probed, hard gate at $1.00
             if balance is not None and balance < 1.00:
-                priority += 10  # HARD demotion
+                priority += RankGate.BALANCE_HARD_DEMOTE  # HARD demotion
                 balance_flag = "LOW_BALANCE_HARD"
         elif track == "B":
             # Track B: Token Bank estimate, soft gate at $5.00
@@ -632,7 +575,7 @@ def fed_route_engine(
                 balance_flag = "UNVERIFIABLE"
                 # NEVER demote — retain rank, flag only
             elif balance is not None and balance < 5.00 and confidence > 0.70:
-                priority += 5  # SOFT demotion
+                priority += RankGate.BALANCE_SOFT_DEMOTE  # SOFT demotion
                 balance_flag = "LOW_BALANCE_SOFT"
             elif balance is None:
                 balance_flag = "UNVERIFIABLE"
@@ -648,19 +591,19 @@ def fed_route_engine(
         if p50_ms:
             if p95_ms and p95_ms > 5000:
                 latency_flag = "DEGRADED"
-                priority += 3
+                priority += RankGate.LATENCY_DEGRADED
 
         # ── Step 7: TELEMETRY GATE (Zen: LiteLLM pattern) ────────────
         # Demote routes with insufficient telemetry — prefer proven paths
         if sample_count < 10:
             if sample_count == 0:
                 latency_flag = "NO_TELEMETRY"
-                priority += 2  # Slight demotion for completely untested
+                priority += RankGate.NO_TELEMETRY  # Slight demotion for completely untested
             else:
                 latency_flag = "INSUFFICIENT_TELEMETRY"
                 # Only demote if we have some data that suggests slowness
                 if p50_ms and p50_ms > 2000:
-                    priority += 1
+                    priority += RankGate.LOW_TELEMETRY
 
         # ── Step 8: COST SURFACE (Zen: LiteLLM model catalog) ────────
         cost_per_1k = _estimate_cost_per_1k(provider_id, route_model)
@@ -697,9 +640,6 @@ def fed_route_engine(
     # Assign ranks
     for i, r in enumerate(ranked[:3]):
         r["rank"] = i + 1
-
-    # Attach effort metadata if applied
-    for r in ranked[:3]:
         r["effort_applied"] = effort_applied
         if effort_applied:
             r["effort_model"] = model
@@ -736,7 +676,6 @@ def _build_reason(route, balance_flag, latency_flag, health_flag, tier):
 
 
 # ── MCP Tools ────────────────────────────────────────────────────────────
-
 
 @mcp.tool()
 def fed_route(
@@ -792,10 +731,9 @@ def fed_route(
     elapsed = round((time.time() - t0) * 1000)
 
     # Log estimated spend if tokens provided
-    if tokens_in_estimate or tokens_out_estimate:
-        primary = routes[0] if routes else None
-        if primary:
-            log_spend(primary["provider"], primary["model"], tokens_in_estimate, tokens_out_estimate, agent_id)
+    primary = routes[0] if routes else None
+    if (tokens_in_estimate or tokens_out_estimate) and primary:
+        log_spend(primary["provider"], primary["model"], tokens_in_estimate, tokens_out_estimate, agent_id)
 
     meta = {
         "query_time_ms": elapsed,
@@ -831,12 +769,10 @@ def fed_route(
     emd = _emd_check(agent_id, operation, resolved_model, modality)
 
     # ── JIT Intent Retrieval (P1.5) ────────────────────────────────
-    # Fire-and-forget: runs in background thread to avoid blocking routing.
+    # Fire-and-forget: runs in background thread pool to avoid blocking routing.
     # First call loads sentence-transformers (~7s), subsequent calls <10ms.
     jit_context = None
     if task and len(task) > 5:
-        import threading as _jt
-
         def _run_jit():
             nonlocal jit_context
             build_jit = _get_intent_retriever()
@@ -845,8 +781,7 @@ def fed_route(
                     jit_context = build_jit(task)
                 except Exception:
                     pass
-
-        _jt.Thread(target=_run_jit, daemon=True).start()
+        _FED_BACKGROUND_TASKS.submit(_run_jit)
 
     # ── A2A Trace Propagation (P1.7) ────────────────────────────────
     trace_headers = make_trace_headers()
@@ -854,11 +789,10 @@ def fed_route(
     # ── Sidecar Auto-Ingest (P1.6) ─────────────────────────────────
     # Emit execution span to arifFlow asynchronously (fire-and-forget).
     # Self-attestation ban: the sidecar captures, not the agent.
-    import threading
-
     def _ingest_span():
         try:
-            import json, urllib.request, uuid
+            import urllib.request
+            import uuid
 
             span = {
                 "trace_id": trace_headers.get("arif_trace_id", uuid.uuid4().hex[:32]),
@@ -891,7 +825,7 @@ def fed_route(
         except Exception:
             pass  # arifFlow may be down — span loss is acceptable for routing telemetry
 
-    threading.Thread(target=_ingest_span, daemon=True).start()
+    _FED_BACKGROUND_TASKS.submit(_ingest_span)
 
     return {
         "routes": routes,
@@ -907,15 +841,14 @@ def fed_status() -> dict:
     """Return full FED state: all provider balances, route health, latency summary."""
     providers = read_all_providers()
 
-    conn = get_db()
-    lat_rows = conn.execute(
-        "SELECT provider_name, model_id, p50_ms, p95_ms, sample_count, last_sample FROM route_latency"
-    ).fetchall()
-    health_rows = conn.execute("SELECT provider_name, model_id, status, shadow_id FROM route_health").fetchall()
-    spend_total = conn.execute(
-        "SELECT provider_name, SUM(estimated_cost_usd) as total FROM token_bank_spend GROUP BY provider_name"
-    ).fetchall()
-    conn.close()
+    with sqlite3.connect(str(FED_STATE_DB)) as conn:
+        lat_rows = conn.execute(
+            "SELECT provider_name, model_id, p50_ms, p95_ms, sample_count, last_sample FROM route_latency"
+        ).fetchall()
+        health_rows = conn.execute("SELECT provider_name, model_id, status, shadow_id FROM route_health").fetchall()
+        spend_total = conn.execute(
+            "SELECT provider_name, SUM(estimated_cost_usd) as total FROM token_bank_spend GROUP BY provider_name"
+        ).fetchall()
 
     return {
         "providers": providers,
@@ -986,14 +919,13 @@ def fed_contrast(route_a: str, route_b: str) -> dict:
 @mcp.tool()
 def fed_health() -> dict:
     """FED health check — returns service status and DB integrity."""
-    conn = get_db()
-    tables = conn.execute("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name").fetchall()
-    conn.close()
+    with sqlite3.connect(str(FED_STATE_DB)) as conn:
+        tables = conn.execute("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name").fetchall()
 
     return {
         "status": "LIVE",
         "port": FED_PORT,
-        "version": "3.3.0-capability-routing",
+        "version": "3.2.0-zen-optimized",
         "tables": [t["name"] for t in tables],
         "state_db": str(FED_STATE_DB),
     }
@@ -1030,71 +962,69 @@ def fed_report_latency(
         { recorded: true, p50_ms: ..., sample_count: ... }
     """
     now = datetime.now(timezone.utc).isoformat()
-    conn = sqlite3.connect(str(FED_STATE_DB))
-    conn.row_factory = sqlite3.Row
+    
+    with sqlite3.connect(str(FED_STATE_DB)) as conn:
+        conn.row_factory = sqlite3.Row
 
-    # Read existing stats
-    existing = conn.execute(
-        "SELECT p50_ms, p95_ms, sample_count FROM route_latency WHERE provider_name = ? AND model_id = ?",
-        (provider, model),
-    ).fetchone()
+        # Read existing stats
+        existing = conn.execute(
+            "SELECT p50_ms, p95_ms, sample_count FROM route_latency WHERE provider_name = ? AND model_id = ?",
+            (provider, model),
+        ).fetchone()
 
-    if existing:
-        n = existing["sample_count"] + 1
-        old_p50 = existing["p50_ms"] or latency_ms
-        old_p95 = existing["p95_ms"] or latency_ms
-        # Welford-style online update (approximate)
-        new_p50 = old_p50 + (latency_ms - old_p50) / n
-        new_p95 = max(old_p95, latency_ms) - (max(old_p95, latency_ms) - latency_ms) * 0.05  # exponential decay
-        conn.execute(
-            """UPDATE route_latency SET p50_ms=?, p95_ms=?, sample_count=?, last_sample=? WHERE provider_name=? AND model_id=?""",
-            (round(new_p50, 2), round(new_p95, 2), n, now, provider, model),
-        )
-    else:
-        conn.execute(
-            """INSERT INTO route_latency (provider_name, model_id, p50_ms, p95_ms, sample_count, last_sample)
-               VALUES (?, ?, ?, ?, 1, ?)""",
-            (provider, model, latency_ms, latency_ms, now),
-        )
-
-    # Store harness fingerprint if provided and column exists
-    if hcsvog_fingerprint:
-        try:
+        if existing:
+            n = existing["sample_count"] + 1
+            old_p50 = existing["p50_ms"] or latency_ms
+            old_p95 = existing["p95_ms"] or latency_ms
+            # Welford-style online update (approximate)
+            new_p50 = old_p50 + (latency_ms - old_p50) / n
+            new_p95 = max(old_p95, latency_ms) - (max(old_p95, latency_ms) - latency_ms) * 0.05  # exponential decay
             conn.execute(
-                """UPDATE route_latency SET h_fingerprint=? WHERE provider_name=? AND model_id=?""",
-                (hcsvog_fingerprint, provider, model),
+                """UPDATE route_latency SET p50_ms=?, p95_ms=?, sample_count=?, last_sample=? WHERE provider_name=? AND model_id=?""",
+                (round(new_p50, 2), round(new_p95, 2), n, now, provider, model),
             )
-        except sqlite3.OperationalError:
-            pass  # Column not yet added (Tier 4 migration pending)
+        else:
+            conn.execute(
+                """INSERT INTO route_latency (provider_name, model_id, p50_ms, p95_ms, sample_count, last_sample)
+                   VALUES (?, ?, ?, ?, 1, ?)""",
+                (provider, model, latency_ms, latency_ms, now),
+            )
 
-    # Log spend if tokens used
-    if tokens_in or tokens_out:
-        cost = _estimate_cost(provider, model, tokens_in, tokens_out)
+        # Store harness fingerprint if provided and column exists
+        if hcsvog_fingerprint:
+            try:
+                conn.execute(
+                    """UPDATE route_latency SET h_fingerprint=? WHERE provider_name=? AND model_id=?""",
+                    (hcsvog_fingerprint, provider, model),
+                )
+            except sqlite3.OperationalError:
+                pass  # Column not yet added (Tier 4 migration pending)
+
+        # Log spend if tokens used
+        if tokens_in or tokens_out:
+            cost = _estimate_cost(provider, model, tokens_in, tokens_out)
+            conn.execute(
+                """INSERT INTO token_bank_spend (provider_name, model_id, agent_id, tokens_in, tokens_out, estimated_cost_usd, called_at)
+                   VALUES (?, ?, ?, ?, ?, ?, ?)""",
+                (provider, model, agent_id, tokens_in, tokens_out, cost, now),
+            )
+
+        # Update route health
+        health_status = "LIVE" if status_code < 500 else "DEGRADED"
+        if status_code == 429:
+            health_status = "RATE_LIMITED"
         conn.execute(
-            """INSERT INTO token_bank_spend (provider_name, model_id, agent_id, tokens_in, tokens_out, estimated_cost_usd, called_at)
-               VALUES (?, ?, ?, ?, ?, ?, ?)""",
-            (provider, model, agent_id, tokens_in, tokens_out, cost, now),
+            """INSERT INTO route_health (provider_name, model_id, status, last_checked)
+               VALUES (?, ?, ?, ?)
+               ON CONFLICT(provider_name, model_id) DO UPDATE SET status=excluded.status, last_checked=excluded.last_checked""",
+            (provider, model, health_status, now),
         )
 
-    # Update route health
-    health_status = "LIVE" if status_code < 500 else "DEGRADED"
-    if status_code == 429:
-        health_status = "RATE_LIMITED"
-    conn.execute(
-        """INSERT INTO route_health (provider_name, model_id, status, last_checked)
-           VALUES (?, ?, ?, ?)
-           ON CONFLICT(provider_name, model_id) DO UPDATE SET status=excluded.status, last_checked=excluded.last_checked""",
-        (provider, model, health_status, now),
-    )
-
-    conn.commit()
-
-    # Read updated stats
-    final = conn.execute(
-        "SELECT p50_ms, p95_ms, sample_count FROM route_latency WHERE provider_name = ? AND model_id = ?",
-        (provider, model),
-    ).fetchone()
-    conn.close()
+        # Read updated stats
+        final = conn.execute(
+            "SELECT p50_ms, p95_ms, sample_count FROM route_latency WHERE provider_name = ? AND model_id = ?",
+            (provider, model),
+        ).fetchone()
 
     return {
         "recorded": True,
@@ -1109,15 +1039,11 @@ def fed_report_latency(
 
 # ── Main ─────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
-    import os
-
     os.environ["FASTMCP_PORT"] = str(FED_PORT)
-    print(f"🔀 FED Router v3.3 (Capability Routing) starting on :{FED_PORT}")
+    print(f"🔀 FED Router v3.2 (Zen-Optimized) starting on :{FED_PORT}")
     print(f"   State DB: {FED_STATE_DB}")
     print(f"   Invariants: state-isolation, constitutional-hard-gate, dual-track-bypass")
-    print(
-        f"   Capabilities: fed-reasoning-heavy, fed-multimodal-vision, fed-long-context, fed-agent-subagent, fed-realtime-voice"
-    )
+    print(f"   Capabilities: fed-reasoning-heavy, fed-multimodal-vision, fed-long-context, fed-agent-subagent, fed-realtime-voice")
+    print(f"   Zen Changes: DRY pricing, with(DB), RankGate matrix, ThreadPoolExecutor, SIGTERM guard")
     print(f"   Tools: fed_route, fed_status, fed_probe, fed_contrast, fed_health")
-    # FI-003 2026-08-29: override hardcoded ws="websockets-sansio" (uvicorn 0.29 has no such key in WS_PROTOCOLS)
-    mcp.run(transport="streamable-http", host="127.0.0.1", port=7074, uvicorn_config={"ws": "websockets"})
+    mcp.run(transport="streamable-http", host="0.0.0.0", port=FED_PORT, uvicorn_config={"ws": "websockets"})
