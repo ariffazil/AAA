@@ -1,7 +1,7 @@
 <!-- SOT-MANIFEST
-federation_release: v2026.08.25
-last_verified: 2026-08-25T04:30:00Z
-live_commit: 0afb3db6 (boards(amanah): queue HERMES Tier-2 hardening)
+federation_release: v2026.09.01
+last_verified: 2026-09-01T08:00:00Z
+live_commit: 028814e4 (canon: 2026-08-31 doctrine batch — CIV-21, constitutional-runtime-promotion, FED genesis map, governance audit)
 actor_surface_doctrine: RATIFIED 2026-08-15 — actors invariant, surfaces replaceable, models runtime occupants
 a2a_port: 3001
 a2a_status: healthy GREEN (deployment_drift: false)
@@ -13,6 +13,7 @@ forge_instruments: 11 (opencode, grok-build, claude-code, kimi-code, codex, copi
 truth_rule: /health + agent registry beat any static count in prose
 vault: CONNECTED
 seal_chain: append-only (chattr +a) + Merkle anchor every 100 receipts
+branch_collapse: 2026-09-01 — 2 stale branches deleted (chore/2026-08-25-amanah-board squash-merged via #175; sync/local-main-20260825 zero-ahead); 3 Dependabot PRs pending rebase
 readme_note: ZEN first-fold — full technical README preserved at docs/README-FULL.md
 -->
 
@@ -40,7 +41,7 @@ It never judges. It never executes.
 - **Operator Cockpit** — organ health, HOLD queue
 - **Amanah Board** — work-order queue (open/doing/blocked/done, no execute verb)
 
-## Federation organs (witnessed 2026-08-25)
+## Federation organs (witnessed 2026-08-25; git SOT updated 2026-09-01)
 
 ```text
 arifOS  :8088   healthy
@@ -58,8 +59,8 @@ FLAME   :18901  advisory
 
 - AAA is not an MCP organ. The `/mcp` door belongs to the kernel.
 - The cockpit reads state; it does not adjudicate.
-- Amanah is a work-order board: it queues — it has no execute verb. Verified 2026-08-25 (`boards/amanah.py`: no dispatch path).
-- AAA :3001 health: healthy, 4-day-old operator sensor data feeding the panel — not a machine fault.
+- Amanah is a work-order board: it queues — it has no execute verb. Verified 2026-08-25 (`boards/amanah.py`: no dispatch path); no dispatch path added since.
+- AAA :3001 health: last witnessed healthy 2026-08-25. Re-attest via `/health` for live state.
 
 ## Architecture in one sentence
 
