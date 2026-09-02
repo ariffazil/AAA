@@ -1,0 +1,33 @@
+federation_topology:
+  sovereign: "ARIF"
+  law: "arifOS Constitutional Kernel"
+  truth_hierarchy:
+    source_truth: "GitHub"
+    runtime_truth: "KVM8 (Canonical Substrate)"
+    historical_truth: "VAULT999"
+
+  fhs_standard:
+    constitution: "/var/lib/arifos/000-constitution"
+    identity:     "/var/lib/arifos/111-identity"
+    registry:     "/var/lib/arifos/333-registry"
+    verification: "/var/lib/arifos/555-verification"
+    execution:    "/workspace/builds (KVM4 only)"
+    admission:    "/var/lib/arifos/888-admission"
+    vault:        "/var/lib/arifos/999-vault"
+
+  planes:
+    KVM8:
+      mesh_ip: "100.64.0.2"
+      authority: true
+      role: "The Court (Trust & Governance)"
+      secrets_owner: true
+    KVM4:
+      mesh_ip: "100.64.0.5"
+      authority: false
+      role: "The Workshop (Compute & Execution)"
+      secrets_owner: false
+    KVM2:
+      mesh_ip: "100.64.0.4"
+      authority: false
+      role: "The Observatory (Witness & Projection)"
+      secrets_owner: false

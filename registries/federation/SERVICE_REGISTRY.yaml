@@ -1,0 +1,86 @@
+version: "1.0.0-20260902"
+authority_owner: "KVM8"
+
+services:
+  arifos-kernel:
+    canonical_owner: "KVM8"
+    runtime_location: "KVM8"
+    constitutional_class: ["000", "888"]
+    capability: "reality_admission_control"
+    endpoint: "http://127.0.0.1:8088"
+    mesh_endpoint: "http://100.64.0.2:8088"
+    depends_on: [postgres, vault999]
+    failure_mode: "FAIL_CLOSED"
+
+  vault999-ledger:
+    canonical_owner: "KVM8"
+    runtime_location: "KVM8"
+    constitutional_class: ["999"]
+    capability: "immutable_memory_attestation"
+    storage_path: "/var/lib/arifos/999-vault/outcomes.jsonl"
+    depends_on: [filesystem]
+    failure_mode: "READ_ONLY_LOCK"
+
+  fed-gateway:
+    canonical_owner: "KVM8"
+    runtime_location: "KVM8"
+    constitutional_class: ["111", "333"]
+    capability: "auth_injection_model_routing"
+    endpoint: "http://100.64.0.2:4000"
+    litellm_backend: "http://127.0.0.1:4013"
+    depends_on: [kunci-root.env]
+    failure_mode: "DENY_ALL_CALLS"
+
+  aaa-cockpit:
+    canonical_owner: "KVM8"
+    runtime_location: "KVM8"
+    constitutional_class: ["333", "555", "888"]
+    capability: "deliberative_court_a2a_gateway"
+    endpoint: "http://127.0.0.1:3001"
+    depends_on: [arifos-kernel, postgres]
+
+  arifflow-bus:
+    canonical_owner: "KVM8"
+    runtime_location: "KVM8"
+    constitutional_class: ["333"]
+    capability: "event_routing_receipt_metabolism"
+    endpoint: "http://127.0.0.1:7073"
+    depends_on: [redis]
+
+  a-forge-workers:
+    canonical_owner: "KVM8 (Policy)"
+    runtime_location: "KVM4"
+    constitutional_class: ["777"]
+    capability: "actuator_build_compile_test"
+    dispatch_via: "/usr/local/bin/ccc-remote"
+    depends_on: [docker, fed-gateway]
+
+  antigravity-agy:
+    canonical_owner: "KVM8 (Policy)"
+    runtime_location: "KVM4"
+    constitutional_class: ["777"]
+    capability: "interactive_agentic_coding_harness"
+    binary_path: "/root/.local/bin/agy"
+    depends_on: [fed-gateway, node24, python3]
+
+  opencode-server:
+    canonical_owner: "KVM8 (Policy)"
+    runtime_location: "KVM4"
+    constitutional_class: ["777"]
+    capability: "coding_agent_worker"
+    systemd_unit: "opencode.service (KVM4)"
+    depends_on: [fed-gateway]
+
+  openclaw-gateway:
+    canonical_owner: "KVM8 (Policy)"
+    runtime_location: "KVM2"
+    constitutional_class: ["Presence"]
+    capability: "channel_presence_telegram_routing"
+    depends_on: [edge-tokens.env]
+
+  frame-observer:
+    canonical_owner: "KVM8"
+    runtime_location: "KVM2"
+    constitutional_class: ["555"]
+    capability: "independent_tri_witness_observer"
+    endpoint: "http://100.64.0.4:18085"
