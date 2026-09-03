@@ -1,4 +1,5 @@
 agents=7: ['qwen', 'opencode', 'gemini', 'grok', 'claude', 'kimi', 'codex']
+answered=4 excluded_as_error_stubs=3: ['gemini', 'grok', 'claude']
 discovery_counts: 1 variant(s) -> CONVERGENT [()]
-geox-prospect-evaluation: 2 variant(s) -> DIVERGENT ['found', 'missing']
-wealth-capital-primitives: 2 variant(s) -> DIVERGENT ['found', 'missing']
+geox-prospect-evaluation: 1 variant(s) -> CONVERGENT ['found']
+wealth-capital-primitives: 1 variant(s) -> CONVERGENT ['found']
