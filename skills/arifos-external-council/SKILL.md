@@ -166,7 +166,7 @@ MCP HTTP transport is an **unauthenticated channel**. Authority caps:
 
 | Transport | Authority | Why |
 |---|---|---|
-| MCP HTTP (this session) | OBSERVE_ONLY | No Ed25519 signature, no SCT |
+| MCP HTTP (this session) | OBSERVE_ONLY | No Ed25519 signature, no ACT |
 | MCP with session_id | LIMITED_MUTATE | Session bound but no cryptographic auth |
 | stdio (local) | FULL | Authenticated session |
 | Ed25519 signed | SOVEREIGN | Cryptographic proof |

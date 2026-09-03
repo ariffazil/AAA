@@ -171,10 +171,10 @@
       ]
     },
     "bridge_special": {
-      "description": "Federation bridge and protocol skills: SCT ingress, seal gates, T3a binding, federation manifest, governance JSON-LD, federation mesh.",
+      "description": "Federation bridge and protocol skills: ACT ingress, seal gates, T3a binding, federation manifest, governance JSON-LD, federation mesh.",
       "count": 6,
       "skills": [
-        "FORGE-sct-federation-ingress",
+        "FORGE-act-federation-ingress",
         "FORGE-seal-a-close",
         "FORGE-t3a-binding-matrix",
         "FORGE-federation-manifest",

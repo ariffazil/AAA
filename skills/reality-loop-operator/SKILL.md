@@ -59,7 +59,7 @@ aforge_forge_reality_loop(
   config='{"min_g_score":0.70,"min_witness":0.70,"max_hypotheses":5,"action_budget":10}',
   actor_id="333-AGI",
   lease_id="<lease>",
-  session_token="<sct>"
+  act="<act>"
 )
 ```
 

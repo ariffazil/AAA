@@ -1,7 +1,7 @@
 ---
 name: FORGE-seal-a-close
 description: >
-  Close remaining Seal-A gates after P0 proof/identity/SCT/T3a work.
+  Close remaining Seal-A gates after P0 proof/identity/ACT/T3a work.
   Use when: Seal-A, stage 000, SE stage engine, SOT v2, BOOT, T3a binding,
   free_nonce, constitutional_grade, remaining seal tasks.
 version: 2026.07.17b
@@ -53,9 +53,9 @@ Stabilize :8088 first if Recv-Q backlog / timeouts.
 
 Use `se_stage_engine.try_advance(proof_bundle)` — never hand-edit.
 
-### Block 3 — SCT PR4–7 (parked until SE or parallel if SE blocked)
+### Block 3 — ACT PR4–7 (parked until SE or parallel if SE blocked)
 
-trace_id × 5 organs → 65 matrix → VAULT rollup. Skill: `FORGE-sct-federation-ingress`.
+trace_id × 5 organs → 65 matrix → VAULT rollup. Skill: `FORGE-act-federation-ingress`.
 
 ## Verification contract
 
