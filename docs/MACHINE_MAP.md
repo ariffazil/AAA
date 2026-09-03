@@ -27,7 +27,7 @@ echo "$(hostname) $(ip -4 addr show | grep -oE '100\.64\.0\.[0-9]+' | head -1)"
 | Coder CLIs | ALL 12 FI seats | agy, kimi, grok, aider (+ccc-remote pool) | none (federation) |
 | Web | caddy · 28 vhosts `*.arif-fazil.com` · docker data plane (pg/redis/qdrant/searxng/minio/falkor) | — | caddy · nasf.cloud |
 | Repos | ALL origin-synced: arifOS, AAA, A-FORGE, GEOX, WEALTH, WELL, arifFlow, arif-fazil.com, HERMES | 7 read-only mirrors (AAA behind by ff-pull, arifOS mirror stale) | SAF (azwafazil identity) |
-| Fence | UFW active | **UFW INACTIVE** | public SSH filtered |
+| Fence | UFW active | **UFW active 2026-09-03** (22/tcp + tailscale0; KVM8→KVM4 + FED verified post-enable) | public SSH filtered |
 
 ## 2. Lanes (live-probed 2026-09-03)
 
