@@ -1,0 +1,124 @@
+schema_version: 1
+identity:
+  id: alibaba.qwen-family
+  provider: alibaba
+  family: qwen-family
+  route: api
+  status: active
+  modality:
+  - text
+  jurisdiction: UNKNOWN
+capability:
+  allowed_tasks:
+  - translate
+  - code
+  - analyze
+  - reason
+  - reversible_tool_use
+  confidence: medium
+hazards:
+- id: shadow_qwen_001
+  name: hallucination_under_uncertainty
+  severity: high
+  triggers:
+  - niche_or_technical_domain
+  - low_representation_in_training_data
+  - asked_to_explain_without_source
+  controls:
+  - Always verify factual claims against external sources
+  - Require explicit confidence labeling on all outputs
+  - Never use for high-stakes factual claims without witness
+  floor_deltas:
+    F02: evidence_required
+    F07: explicit_authority
+    F09: explicit_authority
+- id: shadow_qwen_002
+  name: overconfident_factual_tone
+  severity: medium
+  triggers:
+  - any_domain_with_incomplete_knowledge
+  - probabilistic_inference_presented_as_certainty
+  controls:
+  - Strip confident framing from output before delivery
+  - Add epistemic tag to every claim (CLAIM/PLAUSIBLE/HYPOTHESIS/ESTIMATE/UNKNOWN)
+  floor_deltas:
+    F02: evidence_required
+    F04: evidence_required
+- id: shadow_qwen_003
+  name: behavioral_safety_not_architectural
+  severity: high
+  triggers:
+  - adversarial_prompt
+  - domain_not_covered_by_rl_training
+  - context_window_confuses_guard
+  controls:
+  - Never trust Qwen's internal safety — always run through arifOS floors
+  - arifOS governance is architectural, Qwen's safety is behavioral
+  - The kernel contains the model; the model does not contain itself
+  floor_deltas:
+    F09: explicit_authority
+- id: shadow_qwen_004
+  name: tool_greed
+  severity: medium
+  triggers:
+  - tool_list_presented
+  - asked_to_plan_with_tools
+  - multi_step_agentic_task
+  controls:
+  - Route ALL tool calls through 888_JUDGE gate
+  - Require explicit human confirmation for irreversible actions
+  - Dry-run mode before execution for MUTATE/ATOMIC actions
+  floor_deltas:
+    F13: explicit_authority
+- id: shadow_qwen_005
+  name: alignment_prior_mismatch
+  severity: low
+  triggers:
+  - sovereign_command_in_unusual_domain
+  - culturally_specific_context
+  controls:
+  - Sovereign override always wins (F13)
+  - Log refusal incidents to cooling ledger for pattern analysis
+  floor_deltas: {}
+- id: shadow_qwen_006
+  name: token_plan_api_reliability
+  severity: medium
+  triggers:
+  - high_concurrency
+  - ap_southeast_1_region
+  - batch_processing
+  controls:
+  - Maintain fallback models (DeepSeek direct, MiniMax) for critical paths
+  - Monitor 429/503 responses from bailian endpoint
+  - Cache responses where possible to reduce API calls
+  floor_deltas: {}
+- id: shadow_qwen_007
+  name: multi_model_api_surface_variability
+  severity: medium
+  triggers:
+  - cross_model_routing
+  - model_substitution
+  - automatic_fallback
+  controls:
+  - Always specify exact model_key when routing
+  - Verify model capabilities before assigning tasks
+  - Test model-specific behavior after endpoint changes
+  floor_deltas:
+    F02: evidence_required
+    F04: evidence_required
+forbidden:
+- self_authorize
+- seal_without_judge
+- irreversible_commit
+- constitutional_amendment
+requires_human_ack_for:
+- irreversible_delete
+- git_push
+- external_relay
+- vault_seal
+freshness:
+  review_after: '2026-08-12'
+  stale_action: degrade_to_observe_only
+  last_verified: '2026-06-27'
+notes: 'Migrated from qwen_soul.yaml + qwen_shadow.yaml. Original status: ACTIVE.
+  Review and enrich.'

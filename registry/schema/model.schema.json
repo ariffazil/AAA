@@ -1,0 +1,306 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arif-fazil.com/schemas/model-record-v1.json",
+  "title": "arifOS Model Record v1",
+  "description": "Canonical machine-readable model record. One file per model. Compiler generates all views from this.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "identity",
+    "capability",
+    "hazards",
+    "freshness"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "identity": {
+      "type": "object",
+      "required": [
+        "id",
+        "provider",
+        "family",
+        "route",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+\\.[a-z0-9._-]+$",
+          "description": "Canonical dot-separated ID, e.g. openai.gpt-5.6.sol"
+        },
+        "provider": {
+          "type": "string",
+          "description": "Vendor identifier, e.g. openai, xiaomi, deepseek"
+        },
+        "family": {
+          "type": "string",
+          "description": "Model family, e.g. gpt-5.6, mimo-v2.5"
+        },
+        "variant": {
+          "type": "string",
+          "description": "Specific variant, e.g. sol, pro, flash"
+        },
+        "route": {
+          "type": "string",
+          "description": "How the model is reached, e.g. chatgpt, dashscope, bailian-token-plan, ollama"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "discovered",
+            "identified",
+            "probed",
+            "cooled",
+            "eligible",
+            "active",
+            "degraded",
+            "held",
+            "retired",
+            "blocked",
+            "observed"
+          ],
+          "description": "Lifecycle state. Transitions require evidence."
+        },
+        "context_window": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "modality": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "text",
+              "vision",
+              "audio",
+              "code",
+              "tool_call"
+            ]
+          }
+        },
+        "jurisdiction": {
+          "type": "string",
+          "description": "Legal jurisdiction, e.g. US, CN, SG, MY"
+        }
+      }
+    },
+    "capability": {
+      "type": "object",
+      "required": [
+        "allowed_tasks",
+        "confidence"
+      ],
+      "properties": {
+        "allowed_tasks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "reason",
+              "code",
+              "analyze",
+              "draft",
+              "search",
+              "plan",
+              "agentic",
+              "translate",
+              "vision",
+              "embed",
+              "constitutional_deliberation",
+              "reversible_tool_use",
+              "research",
+              "synthesis"
+            ]
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low",
+            "untested"
+          ],
+          "description": "How confident we are in the capability assessment"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^ev:"
+          },
+          "description": "References to evidence records, e.g. ev:gpt56-sol:deployment-sim:2026-07"
+        }
+      }
+    },
+    "hazards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "severity",
+          "controls"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "description": "Machine-readable hazard ID, e.g. mandate_drift_under_persistence"
+          },
+          "name": {
+            "type": "string",
+            "description": "Human-readable name"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "critical",
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^ev:"
+            }
+          },
+          "triggers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Conditions that activate this hazard"
+          },
+          "controls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Required mitigations to keep this hazard bounded"
+          },
+          "floor_deltas": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "enum": [
+                "standard",
+                "reversibility_strict",
+                "evidence_required",
+                "explicit_authority",
+                "human_hold_for_irreversible",
+                "observe_only",
+                "blocked"
+              ]
+            },
+            "description": "Constitutional floor adjustments, e.g. {F01: reversibility_strict}"
+          }
+        }
+      }
+    },
+    "forbidden": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Hard-blocked actions for this model"
+    },
+    "requires_human_ack_for": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Actions that require human acknowledgment before execution"
+    },
+    "freshness": {
+      "type": "object",
+      "required": [
+        "review_after",
+        "stale_action"
+      ],
+      "properties": {
+        "review_after": {
+          "type": "string",
+          "format": "date",
+          "description": "ISO date after which this record must be re-verified"
+        },
+        "stale_action": {
+          "type": "string",
+          "enum": [
+            "degrade_to_observe_only",
+            "hold",
+            "block",
+            "warn"
+          ],
+          "description": "What happens when review_after passes without re-verification"
+        },
+        "last_verified": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        }
+      }
+    },
+    "pricing": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "input_per_1m": {
+          "type": "number"
+        },
+        "output_per_1m": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string",
+          "default": "USD"
+        }
+      }
+    },
+    "censorship": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "confirmed",
+            "suspected",
+            "none_detected"
+          ]
+        },
+        "affected_topics": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^ev:"
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Free-text notes. Not machine-consumed."
+    }
+  }
+}

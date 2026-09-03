@@ -1,0 +1,104 @@
+# REGISTRY 2 OF 9: IDENTITY
+# arifOS Federation — Canonical Identity Registry
+# Forged: 2026-07-04 by AUDITOR (Ψ) — DeepSeek V4 Pro
+# Authority: F13 SOVEREIGN — AAA + arifOS (joint custody)
+# DITEMPA BUKAN DIBERI — Forged, Not Given
+#
+# OWNER:      AAA (agent cards) + arifOS (sessions + leases)
+# DB BACKEND: /root/AAA/registries/AAA_AGENTS_REGISTRY.json (20 agents)
+#             /root/AAA/agents/*/agent-card.json (per-agent identity)
+#             /root/AAA/registries/agents.yaml
+#             /root/arifOS/arifosmcp/schemas/peer_federation_contract.py
+# RESOURCE:   arifos://identity
+# DRIFT CHECK: count(agent_cards_on_disk) == count(registry_agents)
+
+schema: registry-entry/v1
+registry_id: IDENTITY
+owner: AAA
+version: "2026.07.04-v1"
+forged_at: "2026-07-04T05:01:00Z"
+forged_by: "AUDITOR (Ψ) — DeepSeek V4 Pro"
+authority: F13_SOVEREIGN
+resource_uri: arifos://identity
+status: ALIVE
+
+metadata:
+  total_agents: 21   # 2026-07-12 +1: mesa-test-agent (FI-009)
+  total_cards: 28    # 2026-07-12 +2 cards: /root/AAA/agents/_external/mesa-test-agent/{agent-card.json,AGENTS.md,art_binding.yaml}
+  last_validated: "2026-07-12T20:18:00Z"
+  a2a_protocol: "v1.0.1"
+
+# ── SOVEREIGN ANCHOR (NOT an agent — outranks all) ──
+sovereign:
+  id: 000-SALAM
+  role: Human Sovereign
+  did: did:web:arif-fazil.com
+  location: /000/
+  note: "The human is NOT an agent. Sovereign is sovereign. All agents serve sovereign. F13 inviolable."
+
+# ── HEXAGON PRIMARY TIER (5 constitutional warga) ──
+hexagon:
+  - { id: 333-AGI,   class: AGI,    trinity: "Δ MIND",   stage: 333, hosting_organs: [arifOS, GEOX, WEALTH], tier: PRIMARY, principal_agent: architect }
+  - { id: 555-ASI,   class: ASI,    trinity: "Ω HEART",  stage: 555, hosting_organs: [WELL, arifOS],         tier: PRIMARY, principal_agent: architect }
+  - { id: 888-APEX,  class: APEX,   trinity: "ΦΙ JUDGE", stage: 888, hosting_organs: [arifOS],                tier: PRIMARY, principal_agent: architect }
+  - { id: A-AUDIT,   class: SUPPORT,trinity: "Watchdog",  stage: "cross-cutting", hosting_organs: [arifOS],  tier: PRIMARY, principal_agent: architect }
+  - { id: A-ARCHIVE, class: SUPPORT,trinity: "VAULT",     stage: 999, hosting_organs: [VAULT999],              tier: PRIMARY, principal_agent: architect }
+
+# ── CODING/HARNESS TIER (11 forge instruments) ──
+coding_tier:
+  agents:
+    - kimi-code
+    - claude-code
+    - continue-cli
+    - opencode
+    - copilot
+    - codex
+    - qwen-code
+    - aider
+    - antigravity
+    - gemini-cli
+    - grok-build
+    - mesa-test-agent          # FI-009 — META-MESA substrate test agent (2026-07-12)
+  note: "All CODING agents share same 97-tool capability index + F1-F13 governance"
+
+# ── RUNTIME TIER (3 live service agents) ──
+runtime_tier:
+  - { id: 777-forge,  name: "777 FORGE",       role: spawn_witness, tier: "777", note: "Witness-only relay; real PID receipt anchor" }
+  - { id: hermes-asi, name: "Hermes ASI",      role: telegram_bridge, hosting_organs: [WELL, arifOS], systemd: hermes-asi-gateway.service, port: 18001 }
+  - { id: openclaw,   name: "OpenClaw",        role: agi_engine,      hosting_organs: [A-FORGE, AAA], port: 18789, agents: [main, opencode, codex, kimi] }
+
+# ── PRINCIPAL AGENT TAXONOMY (9 values, ratified 2026-06-23) ──
+principal_agent_taxonomy:
+  - architect    # constitutional design (HEXAGON warga)
+  - agent        # runtime service (RUNTIME tier)
+  - llm          # model-bound citizen (FI tier)
+  - human        # Arif, sovereign anchor (not in registry)
+  - institution  # external institutional actor
+  - earth        # physical substrate (GEOX)
+  - void         # non-classifiable (HALAMAN enforcement)
+  - liar         # deceptive pattern (F9 mark)
+  - unknown      # unclassified (HOLD pending)
+
+# ── PIPELINE (golden path) ──
+pipeline: "000-SALAM → 333-AGI (reason) → 555-ASI (critique+memory) → 888-APEX (judge) → [A-AUDIT validates] → [A-ARCHIVE seals to VAULT999] → reseed to 000"
+
+# ── TIER METADATA ──
+tiers:
+  PRIMARY:  { count: 5,  description: "Federation agents — DO the work. Externally addressable via A2A." }
+  SUPPORT:  { count: 2,  description: "Internal control-plane agents — WATCH and RECORD. Not directly user-facing." }
+  CODING:   { count: 11, description: "Coding agents — EDIT and EXECUTE. Heterogeneous CLIs unified under one capability fabric." }
+  RUNTIME:  { count: 3,  description: "Live service agents with active systemd services and Telegram presence." }
+
+# ── FLOOR RESPONSIBILITY MAP ──
+floor_to_agents:
+  F01_Truth: [333-AGI, 888-APEX, A-AUDIT, A-ARCHIVE, hermes-asi, openclaw, opencode, claude-code, codex, qwen-code, copilot, kimi-code, aider, continue-cli, gemini-cli, antigravity, grok-build]
+  F02_Clarity: [333-AGI, 888-APEX, A-AUDIT, openclaw, opencode, claude-code, codex, qwen-code, copilot, kimi-code, aider, continue-cli, gemini-cli, antigravity, grok-build]
+  F13_Sovereign: [888-APEX, A-AUDIT, A-ARCHIVE, hermes-asi, openclaw, opencode, claude-code, codex, qwen-code, copilot, kimi-code, aider, continue-cli, gemini-cli, antigravity, grok-build]
+
+drift_check:
+  method: count
+  source_a: "agent_cards_on_disk (/root/AAA/agents/*/agent-card.json)"
+  source_b: "registry_agents (this file's hexagon + coding + runtime)"
+  threshold: 0  # exact match required
+
+# DITEMPA BUKAN DIBERI

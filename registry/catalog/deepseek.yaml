@@ -1,0 +1,99 @@
+schema_version: 1
+identity:
+  id: deepseek.deepseek-v3
+  provider: deepseek
+  family: deepseek-v3
+  route: api
+  status: active
+  modality:
+  - text
+  jurisdiction: UNKNOWN
+capability:
+  allowed_tasks:
+  - reason
+  - code
+  - analyze
+  - translate
+  confidence: medium
+hazards:
+- id: shadow_ds_001
+  name: bm_noun_fabrication
+  severity: high
+  triggers:
+  - bm_context
+  - malay_names
+  - cultural_references
+  - niche_domains
+  controls:
+  - Always verify BM proper nouns against sources
+  - Never complete Malay names without substrate
+  - Apply F11 identity hold for BM name inference
+  floor_deltas:
+    F02: evidence_required
+    F07: explicit_authority
+    F09: explicit_authority
+- id: shadow_ds_002
+  name: reasoning_overconfidence
+  severity: medium
+  triggers:
+  - complex_reasoning
+  - multi_step
+  - agentic_loops
+  controls:
+  - Strip declarative framing from uncertain outputs
+  - Add epistemic tag to every claim
+  - Cross-check high-stakes reasoning against sources
+  floor_deltas:
+    F02: evidence_required
+    F04: evidence_required
+    F07: explicit_authority
+- id: shadow_ds_003
+  name: chinese_centric_alignment
+  severity: low
+  triggers:
+  - malaysian_context
+  - bm_politics
+  - cultural_norms
+  controls:
+  - Sovereign override always wins (F13)
+  - Log refusal incidents for pattern analysis
+  floor_deltas: {}
+- id: shadow_ds_004
+  name: long_context_drift
+  severity: medium
+  triggers:
+  - long_context
+  - accumulating_session
+  - gt_50k_tokens
+  controls:
+  - Periodic constitutional re-anchoring in long sessions
+  - Monitor token pressure for context decay
+  floor_deltas: {}
+- id: shadow_ds_005
+  name: credit_exhaustion_risk
+  severity: medium
+  triggers:
+  - credit_depleted
+  - payment_required
+  - 402_error
+  controls:
+  - Monitor balance via /user/balance endpoint
+  - 'Maintain fallback chain: reasoner → ollama (local)'
+  - Alert sovereign before balance drops below $2.00
+  floor_deltas: {}
+forbidden:
+- self_authorize
+- seal_without_judge
+- irreversible_commit
+- constitutional_amendment
+requires_human_ack_for:
+- irreversible_delete
+- git_push
+- external_relay
+- vault_seal
+freshness:
+  review_after: '2026-08-12'
+  stale_action: degrade_to_observe_only
+  last_verified: '2026-06-27'
+notes: 'Migrated from deepseek_soul.yaml + deepseek_shadow.yaml. Original status:
+  PRIMARY_FEDERATION_MODEL. Review and enrich.'
