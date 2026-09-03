@@ -9,7 +9,7 @@
     "principle_origin": "FED gateway http://100.64.0.2:4000/v1 → forge-777 / deepseek-v4-flash / MiniMax-M3 (auth injected by KVM8 haproxy; zero local secrets)"
   },
   "description": "Dedicated KVM4-forge (srv1946043, 100.64.0.5) coding-worker host. 7 CCC harnesses: opencode, codex, qwen, kimi, aider, grok, agy (antigravity). All route through sovereign FED gateway. HERMES ASI dispatches via ccc-remote (KVM8 /usr/local/bin/ccc-remote). Workers build/verify/escalate; never judge, never self-authorize. Gotong royong: harnesses can call each other via ccc-remote dispatch.",
-  "version": "1.0.1-20260903",
+  "version": "1.0.2-20260903",
   "warga_status": "attested",
   "model": "FED gateway / forge-777 (default), deepseek-v4-flash (fast lane)",
   "config": "/root/AGENTS.md (KVM4) + /root/.config/opencode/opencode.json + /root/.qwen/settings.json + /root/.kimi-code/config.toml + /root/.codex/config.toml",
@@ -34,16 +34,17 @@
     "citizenship_forged": "2026-09-02"
   },
   "runtime_snapshot": {
-    "probed": "2026-09-02T18:15:00Z",
-    "opencode_version": "1.18.25",
-    "codex_version": "0.152.0",
-    "qwen_version": "0.22.3",
-    "kimi_version": "0.38.0",
-    "aider_version": "0.86.2",
+    "probed": "2026-09-03T16:25:00+08:00",
     "gateway_health": "I'm alive! (100.64.0.2:4000)",
-    "probes": "OPENCODE-KVM4-OK / CODEX-KVM4-OK / QWEN-KVM4-OK / KIMI-KVM4-OK / AIDER-KVM4-OK — ALL PASS 2026-09-02; grok+agy version-PASS 2026-09-03 (fi-003 KVM8)",
+    "probes": "POST-REBUILD 2026-09-03: opencode/kimi/grok VERIFIED by fi-003; aider present-unverified; qwen+codex lost, reinstall queued",
     "grok_version": "1.0.13",
-    "agy_version": "1.1.25"
+    "agy_version": "1.1.25",
+    "versions": {
+      "opencode": "1.18.25",
+      "kimi": "0.40.1",
+      "grok": "1.0.13",
+      "agy": "1.1.25"
+    }
   },
   "security": {
     "secrets_on_host": "NONE — haproxy injects Authorization at 100.64.0.2:4000",
@@ -53,37 +54,38 @@
   },
   "harnesses": {
     "opencode": {
-      "version": "1.18.26",
-      "status": "PASS (OPENCODE-KVM4-OK)"
-    },
-    "codex": {
-      "version": "0.152.0",
-      "status": "PASS (CODEX-KVM4-OK)"
-    },
-    "qwen": {
-      "version": "0.22.3",
-      "status": "PASS (QWEN-KVM4-OK)"
+      "version": "1.18.25",
+      "status": "ACTIVE on KVM4 (service :4096), verified 2026-09-03"
     },
     "kimi": {
-      "version": "0.39.1",
-      "status": "PASS (KIMI-KVM4-OK)"
-    },
-    "aider": {
-      "version": "0.86.2",
-      "status": "PASS (AIDER-KVM4-OK)"
+      "version": "0.40.1",
+      "status": "VERIFIED 2026-09-03 (post-rebuild)"
     },
     "grok": {
       "version": "1.0.13",
-      "status": "VERSION-PASS 2026-09-03 (GROK-KVM4 bin responds; full mesh probe pending)"
+      "status": "VERSION-PASS 2026-09-03, full mesh probe pending"
+    },
+    "aider": {
+      "version": "unverified",
+      "status": "PRESENT at /root/.local/bin/aider (PATH-miss artifact), version probe pending"
     },
     "agy": {
       "version": "1.1.25",
-      "status": "HALF — version-PASS 2026-09-03, ~/.antigravity config dir missing on KVM4 (setup before dispatch)"
+      "status": "HALF — version-PASS, ~/.antigravity config missing"
+    },
+    "qwen": {
+      "version": "-",
+      "status": "LOST-IN-REBUILD — 09-02 audit PASS stale, release install gone, reinstall queued"
+    },
+    "codex": {
+      "version": "-",
+      "status": "LOST-IN-REBUILD — binary gone (.codex config remnant), reinstall queued"
     }
   },
   "inter_op": {
     "protocol": "ccc-remote <harness> run '<prompt>' — any harness may dispatch any sibling harness",
     "mesh": "grog: opencode↔codex↔qwen↔kimi↔aider↔grok↔agy via /usr/local/bin/ccc-remote on KVM8; on KVM4 workers may ssh-free invoke siblings directly (same box, PATH-wired)",
     "musyawarah": "CCC(Kimi) deliberates, CCC(Qwen) verifies, CCC(OpenCode) reviews — roles per task, never two roles one task (CCC_FLOW.md)"
-  }
+  },
+  "rebuild_note": "KVM4 rebuilt 2026-09-02 evening (housekeep cad4110); KVM4-CCC-ATTESTED-20260902 describes PRE-rebuild state. This card corrected to post-rebuild reality 2026-09-03 by fi-003 (F2)."
 }

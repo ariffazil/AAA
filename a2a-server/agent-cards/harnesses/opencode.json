@@ -902,8 +902,8 @@
   ],
   "kvm4_routing": {
     "dispatch": "ccc-remote opencode (KVM8 /usr/local/bin/ccc-remote -> ssh root@100.64.0.5)",
-    "status": "TRANSFERRED — probe PASS 2026-09-02",
+    "status": "ACTIVE post-rebuild, service :4096, v1.18.25 verified 2026-09-03",
     "member_of": "kvm4-ccc-pool",
-    "updated": "2026-09-03T16:10+08:00"
+    "updated": "2026-09-03T16:25+08:00"
   }
 }
