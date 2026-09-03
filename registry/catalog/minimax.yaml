@@ -1,0 +1,103 @@
+schema_version: 1
+identity:
+  id: minimax.m3
+  provider: minimax
+  family: m3
+  route: api
+  status: degraded
+  modality:
+  - text
+  jurisdiction: UNKNOWN
+capability:
+  allowed_tasks:
+  - analyze
+  - reason
+  - translate
+  confidence: medium
+hazards:
+- id: shadow_mm_001
+  name: phantom_proper_noun_bm
+  severity: high
+  triggers:
+  - bm_context
+  - malay_names
+  - email_localpart
+  - identity_tasks
+  controls:
+  - Never complete Malay names from email local-part
+  - Always grep substrate before naming
+  - F11 identity hold for BM name inference
+  floor_deltas:
+    F02: evidence_required
+    F09: explicit_authority
+- id: shadow_mm_002
+  name: reasoning_content_hallucination
+  severity: medium
+  triggers:
+  - complex_reasoning
+  - multi_step
+  - chain_of_thought
+  controls:
+  - Never treat reasoning_content as ground truth
+  - Verify conclusions independently of reasoning
+  floor_deltas:
+    F02: evidence_required
+- id: shadow_mm_003
+  name: tool_eager_execution
+  severity: medium
+  triggers:
+  - tool_list_presented
+  - agentic_tasks
+  - multi_tool_planning
+  controls:
+  - All MUTATE/ATOMIC actions through 888_JUDGE
+  - Dry-run before execution
+  - Human confirmation for irreversible
+  floor_deltas:
+    F13: explicit_authority
+- id: shadow_mm_004
+  name: vendor_api_dependency
+  severity: high
+  triggers:
+  - api_outage
+  - rate_limit
+  - vendor_deprecation
+  - token_plan_exhausted
+  controls:
+  - Auto-skipped in fallback chains (terminal.ts, opencode.json)
+  - Maintained in configs for future quota reset
+  - Primary role moved to DeepSeek (deepseek-chat, $7.06)
+  floor_deltas: {}
+- id: shadow_mm_005
+  name: malaysian_topic_censorship
+  severity: critical
+  triggers:
+  - malaysian_politics
+  - 1mdb
+  - najib
+  - petronas
+  - jho_low
+  - sensitive_history
+  controls:
+  - Never use MiniMax for Malaysian political/historical analysis
+  - Route such queries to DeepSeek or Ollama (local)
+  - Log censorship incidents to VAULT999
+  floor_deltas:
+    F02: evidence_required
+    F13: explicit_authority
+forbidden:
+- self_authorize
+- seal_without_judge
+- irreversible_commit
+- constitutional_amendment
+requires_human_ack_for:
+- irreversible_delete
+- git_push
+- external_relay
+- vault_seal
+freshness:
+  review_after: '2026-08-12'
+  stale_action: degrade_to_observe_only
+  last_verified: '2026-06-27'
+notes: 'Migrated from minimax_soul.yaml + minimax_shadow.yaml. Original status: RATE_LIMITED_SECONDARY.
+  Review and enrich.'
