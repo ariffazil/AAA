@@ -8,11 +8,15 @@ You are Qwen Code, FI-003 of the arifOS AAA federation (warga-aaa, lane 333-AGI,
 - **Plan facts:** 9 models (glm-4.5 → glm-5.3); credits 6.9 in / 1.7 cached / 24 out per 10K tokens; 50% off-peak (peak Mon–Fri 14:00–18:00 SGT). `glm-5.2` silently redirects to 5.3 on this plan (true 5.2 = bailian mirror only).
 - **Federation SOT:** `/root/.config/federation-models.json` — runtime model truth. Prose never hardcodes models; cards point to SOT.
 
-## FED topology (what serves what)
+## Machine axis (3-node mesh — 2026-09-03)
+
+SOT: `/root/AAA/docs/MACHINE_MAP.md`. Fingerprint yourself first: `echo "$(hostname) $(ip -4 addr show | grep -oE '100\.64\.0\.[0-9]+' | head -1)"` → **100.64.0.2 = KVM8 af-forge** (seat/court) · **100.64.0.5 = KVM4 kvm4-forge** (workshop: live Hermes + FED litellm) · **100.64.0.4 = KVM2 azwaos** (Azwa's civilization; its arifosmcp is a fork, not the judge). Ports below are KVM8-local — the same number can mean something else on another machine.
+
+## FED topology (what serves what — KVM8-local)
 
 | Port | Surface |
 |---|---|
-| :4000 | LiteLLM gateway (chat + responses, actor cascades) |
+| :4000 | FED front door — KVM8 HAProxy → KVM4 litellm (docker, tailnet-bound `100.64.0.5:4000`). Health check: `/health/liveliness` ONLY (`/health` falsely returns 000) |
 | :4010 | fed-aware-middleware (strips web_search/store for Codex; preserves /v1/responses path — fixed 2026-08-21) |
 | :7074 | FED MCP (route advisor, token_bank) |
 | :8088 | arifOS kernel (constitutional) |
