@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260622-074733",
+  "timestamp": "2026-06-22T07:47:33.411776+00:00",
+  "tool_name": "arif_explore",
+  "agent_id": "anonymous",
+  "session_id": "ARIF-INIT-2026-06-22",
+  "reason": "888_HOLD: max_same_tool_calls (2) for arif_explore",
+  "severity": "critical",
+  "count": 4,
+  "last_seen": "2026-06-22T07:54:56.126417+00:00"
+}

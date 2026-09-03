@@ -23,3 +23,10 @@ agents/*/runtime/config.yaml*
 agents/*/runtime/state.db
 .hermes-archived-*/state.db
 graph/codegraph.db
+# === CREDENTIAL RUNTIME FILES (GitHub push-protection catch 2026-09-04) ===
+agents/*/runtime/auth.json*
+agents/*/runtime/auth.lock
+agents/*/runtime/*.token
+agents/*/runtime/credentials*
+agents/*/runtime/bin/
+agents/*/runtime/sessions/

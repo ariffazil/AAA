@@ -1,0 +1,39 @@
+ Hermes' recommendation is architecturally sound but needs one governance tweak.
+
+  What Hermes got right:
+  • Phase 1A+1B together is correct — memory + read-only MCP is the foundation
+  • arifOS already has the read-only modes Hermes needs:
+    • arif_vault_seal → list, verify, chain (read VAULT999 history)
+    • arif_memory_recall → recall, get, list, context (query memory)
+    • arif_ops_measure → health, vitals (system status)
+  • Phase 3 deferral is smart — don't add autonomy loops before memory works
+  What needs tightening:
+
+  Hermes' Phase 2 ("structured write path") is under-governed. If Hermes can write ev
+  ents to VAULT999, it's performing a mini-SEAL. Even append-only logs are constituti
+  onal state.
+
+  Better pattern for Phase 2:
+  • Hermes proposes events → goes to pending queue
+  • OpenClaw (or human) witnesses → then seals to VAULT999
+  • Hermes never writes directly to the constitutional ledger
+  This keeps the authority boundary clean: Hermes recalls, OpenClaw seals.
+
+  My recommended spec:
+
+  Phase 1 — Read-Only Integration (now)
+    - Hermes MCP client filtered to: vault_list, vault_verify, memory_recall, ops_vit
+  als
+    - New skill: arifos-recall (teaches when to query VAULT999 vs native memory)
+
+  Phase 2 — Witnessed Logging (after Phase 1 stable)
+    - Hermes writes to /tmp/hermes-pending-events/
+    - OpenClaw cron picks up → validates → arif_vault_seal(ack_irreversible=true)
+    - Hermes gets read-back confirmation via vault_list
+
+  Phase 3 — Autonomy Upgrade (later)
+    - Event bus, webhooks, proactive loops
+
+  No new arifOS code needed — this is all client-side policy + skill design.
+
+  Want me to write the unified spec doc now?

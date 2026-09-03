@@ -1,0 +1,402 @@
+{
+  "updated_at": "2026-06-27T13:55:00Z",
+  "platforms": {
+    "telegram": [
+      {
+        "id": "267378578",
+        "name": "Arif",
+        "type": "dm",
+        "thread_id": null
+      },
+      {
+        "id": "-1003753855708",
+        "name": "AAA",
+        "type": "group",
+        "thread_id": null
+      },
+      {
+        "id": "-1003753855708:10510",
+        "name": "AAA / topic 10510",
+        "type": "group",
+        "thread_id": "10510"
+      },
+      {
+        "id": "-1003753855708:10538",
+        "name": "AAA / topic 10538",
+        "type": "group",
+        "thread_id": "10538"
+      },
+      {
+        "id": "-1003753855708:10697",
+        "name": "AAA / topic 10697",
+        "type": "group",
+        "thread_id": "10697"
+      },
+      {
+        "id": "-1003753855708:10752",
+        "name": "AAA / topic 10752",
+        "type": "group",
+        "thread_id": "10752"
+      },
+      {
+        "id": "-1003753855708:10823",
+        "name": "AAA / topic 10823",
+        "type": "group",
+        "thread_id": "10823"
+      },
+      {
+        "id": "-1003753855708:10911",
+        "name": "AAA / topic 10911",
+        "type": "group",
+        "thread_id": "10911"
+      },
+      {
+        "id": "-1003753855708:10977",
+        "name": "AAA / topic 10977",
+        "type": "group",
+        "thread_id": "10977"
+      },
+      {
+        "id": "-1003753855708:10984",
+        "name": "AAA / topic 10984",
+        "type": "group",
+        "thread_id": "10984"
+      },
+      {
+        "id": "-1003815535761",
+        "name": "SADO",
+        "type": "group",
+        "thread_id": null
+      },
+      {
+        "id": "-1003815535761:979",
+        "name": "SADO / topic 979",
+        "type": "group",
+        "thread_id": "979"
+      },
+      {
+        "id": "-1003815535761:999",
+        "name": "SADO / topic 999",
+        "type": "group",
+        "thread_id": "999"
+      },
+      {
+        "id": "-1003815535761:1018",
+        "name": "SADO / topic 1018",
+        "type": "group",
+        "thread_id": "1018"
+      },
+      {
+        "id": "-1003815535761:1022",
+        "name": "SADO / topic 1022",
+        "type": "group",
+        "thread_id": "1022"
+      },
+      {
+        "id": "-1003753855708:11240",
+        "name": "AAA / topic 11240",
+        "type": "group",
+        "thread_id": "11240"
+      },
+      {
+        "id": "-1003815535761:1025",
+        "name": "SADO / topic 1025",
+        "type": "group",
+        "thread_id": "1025"
+      },
+      {
+        "id": "-1003753855708:11244",
+        "name": "AAA / topic 11244",
+        "type": "group",
+        "thread_id": "11244"
+      },
+      {
+        "id": "-1003753855708:11253",
+        "name": "AAA / topic 11253",
+        "type": "group",
+        "thread_id": "11253"
+      },
+      {
+        "id": "-1003815535761:1031",
+        "name": "SADO / topic 1031",
+        "type": "group",
+        "thread_id": "1031"
+      },
+      {
+        "id": "-1003815535761:1044",
+        "name": "SADO / topic 1044",
+        "type": "group",
+        "thread_id": "1044"
+      },
+      {
+        "id": "8149595687",
+        "name": "AGI🦞",
+        "type": "dm",
+        "thread_id": null
+      },
+      {
+        "id": "-1003753855708:11394",
+        "name": "AAA / topic 11394",
+        "type": "group",
+        "thread_id": "11394"
+      },
+      {
+        "id": "-1003753855708:11399",
+        "name": "AAA / topic 11399",
+        "type": "group",
+        "thread_id": "11399"
+      },
+      {
+        "id": "-1003753855708:11392",
+        "name": "AAA / topic 11392",
+        "type": "group",
+        "thread_id": "11392"
+      },
+      {
+        "id": "-1003753855708:11442",
+        "name": "AAA / topic 11442",
+        "type": "group",
+        "thread_id": "11442"
+      },
+      {
+        "id": "-1003753855708:11445",
+        "name": "AAA / topic 11445",
+        "type": "group",
+        "thread_id": "11445"
+      },
+      {
+        "id": "-1003753855708:11460",
+        "name": "AAA / topic 11460",
+        "type": "group",
+        "thread_id": "11460"
+      },
+      {
+        "id": "-1003753855708:11468",
+        "name": "AAA / topic 11468",
+        "type": "group",
+        "thread_id": "11468"
+      },
+      {
+        "id": "-1003753855708:11474",
+        "name": "AAA / topic 11474",
+        "type": "group",
+        "thread_id": "11474"
+      },
+      {
+        "id": "-1003753855708:11475",
+        "name": "AAA / topic 11475",
+        "type": "group",
+        "thread_id": "11475"
+      },
+      {
+        "id": "-1003753855708:11484",
+        "name": "AAA / topic 11484",
+        "type": "group",
+        "thread_id": "11484"
+      },
+      {
+        "id": "-1003753855708:11499",
+        "name": "AAA / topic 11499",
+        "type": "group",
+        "thread_id": "11499"
+      },
+      {
+        "id": "-1003753855708:11510",
+        "name": "AAA / topic 11510",
+        "type": "group",
+        "thread_id": "11510"
+      },
+      {
+        "id": "-1003753855708:11514",
+        "name": "AAA / topic 11514",
+        "type": "group",
+        "thread_id": "11514"
+      },
+      {
+        "id": "-1003753855708:11515",
+        "name": "AAA / topic 11515",
+        "type": "group",
+        "thread_id": "11515"
+      },
+      {
+        "id": "-1003753855708:11520",
+        "name": "AAA / topic 11520",
+        "type": "group",
+        "thread_id": "11520"
+      },
+      {
+        "id": "-1003753855708:11525",
+        "name": "AAA / topic 11525",
+        "type": "group",
+        "thread_id": "11525"
+      },
+      {
+        "id": "-1003753855708:11547",
+        "name": "AAA / topic 11547",
+        "type": "group",
+        "thread_id": "11547"
+      },
+      {
+        "id": "-1003753855708:11563",
+        "name": "AAA / topic 11563",
+        "type": "group",
+        "thread_id": "11563"
+      },
+      {
+        "id": "-1003753855708:11567",
+        "name": "AAA / topic 11567",
+        "type": "group",
+        "thread_id": "11567"
+      },
+      {
+        "id": "-1003753855708:11574",
+        "name": "AAA / topic 11574",
+        "type": "group",
+        "thread_id": "11574"
+      },
+      {
+        "id": "-1003753855708:11577",
+        "name": "AAA / topic 11577",
+        "type": "group",
+        "thread_id": "11577"
+      },
+      {
+        "id": "-1003753855708:11592",
+        "name": "AAA / topic 11592",
+        "type": "group",
+        "thread_id": "11592"
+      },
+      {
+        "id": "-1003753855708:11600",
+        "name": "AAA / topic 11600",
+        "type": "group",
+        "thread_id": "11600"
+      },
+      {
+        "id": "-1003753855708:11607",
+        "name": "AAA / topic 11607",
+        "type": "group",
+        "thread_id": "11607"
+      },
+      {
+        "id": "-1003753855708:11619",
+        "name": "AAA / topic 11619",
+        "type": "group",
+        "thread_id": "11619"
+      },
+      {
+        "id": "-1003753855708:11618",
+        "name": "AAA / topic 11618",
+        "type": "group",
+        "thread_id": "11618"
+      },
+      {
+        "id": "-1003753855708:11621",
+        "name": "AAA / topic 11621",
+        "type": "group",
+        "thread_id": "11621"
+      },
+      {
+        "id": "-1003753855708:11634",
+        "name": "AAA / topic 11634",
+        "type": "group",
+        "thread_id": "11634"
+      },
+      {
+        "id": "-1003753855708:11635",
+        "name": "AAA / topic 11635",
+        "type": "group",
+        "thread_id": "11635"
+      },
+      {
+        "id": "-1003753855708:11638",
+        "name": "AAA / topic 11638",
+        "type": "group",
+        "thread_id": "11638"
+      },
+      {
+        "id": "-1003753855708:11643",
+        "name": "AAA / topic 11643",
+        "type": "group",
+        "thread_id": "11643"
+      },
+      {
+        "id": "-1003753855708:11651",
+        "name": "AAA / topic 11651",
+        "type": "group",
+        "thread_id": "11651"
+      },
+      {
+        "id": "-1003768847825",
+        "name": "Kanak-kanak",
+        "type": "group",
+        "thread_id": null
+      }
+    ],
+    "discord": [],
+    "whatsapp": [],
+    "slack": [],
+    "signal": [],
+    "mattermost": [],
+    "matrix": [],
+    "homeassistant": [],
+    "email": {
+      "default_provider": "agentmail",
+      "providers": {
+        "agentmail": {
+          "enabled": true,
+          "mcp_server": "agentmail",
+          "default_from": "arifos@agentmail.to",
+          "default_cc": [
+            "arifbfazil@gmail.com"
+          ],
+          "format": "markdown",
+          "capabilities": [
+            "create_inbox",
+            "send_message",
+            "reply_to_message",
+            "forward_message",
+            "list_threads",
+            "get_thread",
+            "list_inboxes",
+            "get_attachment",
+            "update_message"
+          ]
+        }
+      },
+      "routing_rules": {
+        "by_priority": {
+          "high": "agentmail",
+          "normal": "agentmail",
+          "low": "agentmail"
+        },
+        "by_domain": {
+          "*": "agentmail"
+        }
+      },
+      "warga_agents_can_use": [
+        "333-AGI",
+        "555-ASI",
+        "888-APEX",
+        "A-AUDIT",
+        "A-ARCHIVE"
+      ],
+      "notes": "Set as default email transport for all warga agents. Authenticated via AGENTMAIL_API_KEY in vault.flat.env."
+    },
+    "sms": [],
+    "dingtalk": [],
+    "msgraph_webhook": [],
+    "feishu": [],
+    "wecom": [],
+    "wecom_callback": [],
+    "weixin": [],
+    "bluebubbles": [],
+    "qqbot": [],
+    "yuanbao": [],
+    "google_chat": [],
+    "irc": [],
+    "line": [],
+    "simplex": [],
+    "teams": []
+  }
+}

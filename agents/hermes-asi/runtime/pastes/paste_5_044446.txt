@@ -1,0 +1,61 @@
+**CLAIM** — To close Hermes’ gaps, focus on three tracks: stronger memory, event-driven autonomy, and controlled arifOS access. Hermes already supports persistent memory, MCP filtering, webhook subscriptions, multi-skill cron jobs, and per-job tool restrictions, so the missing piece is mostly **architecture**, not raw capability. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/user-guide/features/cron)
+
+## Gap map
+
+- **Long-term memory**: Hermes docs explicitly say it has persistent memory across sessions and supports a “deepening model of who you are,” which is stronger than the earlier “session-only” reading. The real gap is not zero memory; it is whether that memory is sovereign, structured, and aligned to your VAULT999 schema. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/)
+- **True autonomy**: Cron is solid, but it is still schedule-based unless you add webhook/event triggers or script gates with `wakeAgent`. Hermes has built-in webhook subscriptions and cron pre-run gating, so you can move from “time-driven” to “state-driven.” [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/user-guide/features/cron)
+- **Constitutional access**: Hermes docs say MCP integration can connect to MCP servers and filter their tools safely. That means Hermes can access arifOS MCP, but you should expose only a curated subset instead of the full 13-tool constitutional surface. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/)
+
+## Close memory gap
+
+- **Best move**: make VAULT999 the canonical long-term memory, and let Hermes write structured observations into it through a narrow bridge. This keeps Hermes useful while preserving your sovereign memory ontology. **PLAUSIBLE** — use Hermes native memory for convenience, but treat VAULT999 as the source of truth for identity, projects, governance state, and recalled decisions. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/)
+- **Pattern**: split memory into 3 lanes, Hermes native memory for lightweight user preference recall; VAULT999 write-only event log for durable facts; VAULT999 read API for curated recall such as `vault_recall`, `project_state`, `decision_trace`. That avoids free-form memory drift. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/)
+- **Do not** let Hermes freely rewrite high-value memory objects. **888 HOLD** for any tool that mutates constitutional records, because that becomes irreversible governance state, not casual memory. 
+
+## Close autonomy gap
+
+- **Upgrade cron into event loops**: Hermes cron supports attached skills, no-agent watchdog jobs, `context_from` chaining, and script gates that emit `{"wakeAgent": false}` to skip unnecessary runs. That is enough to build cheap event-driven pipelines without burning tokens every tick. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/user-guide/features/cron)
+- **Use 3 loop types**:
+- **Watchdog loop** — no-agent scripts for RAM, service health, repo changes, Telegram trigger files; only wake Hermes on delta. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/user-guide/features/cron)
+- **Pipeline loop** — collector job → triage job → delivery job using `context_from`; good for Event Radar, GEOX briefs, repo summaries. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/user-guide/features/cron)
+- **Webhook loop** — use webhook subscriptions for real external events like GitHub, CI, or deployment hooks so Hermes reacts to state change, not just clock time. 
+- **Recommended target state**: keep cron for predictable routines, use webhooks for external interrupts, and use no-agent prechecks for noisy polling domains. That closes most of the “not truly autonomous” complaint. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/user-guide/features/cron)
+
+## Close MCP gap
+
+- **Best move**: connect Hermes to arifOS MCP, but filter tools. Hermes docs say MCP integration is designed to extend Hermes safely and filter server tools, which fits your separation-of-concerns model. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/)
+- Use this access model:
+
+| Access tier | Hermes should get | Hermes should not get |
+|---|---|---|
+| Read-only | `vault_recall`, `kappa_read`, `status_query`, `project_snapshot`  | `forge_write`, `seal`, `judge`, destructive mutation tools  |
+| Relay-only | `submit_case_to_openclaw`, `request_judgement`, `queue_hold_review`  | Direct constitutional adjudication  |
+| Human-gated | any irreversible write or governance override, requires explicit approval under your F11/F13 logic  | autonomous self-escalation into sovereign tools  |
+
+- **CLAIM** — This gives Hermes useful agency without collapsing your constitutional boundary. OpenClaw remains the adjudicator; Hermes becomes the sensing and routing node. 
+
+## Concrete implementation
+
+- **Phase 1: memory**
+- Add a tiny arifOS MCP subset for Hermes, read-only first. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/)
+- Create one Hermes skill, for example `arifos-recall`, that teaches Hermes when to ask VAULT999 versus when to rely on native memory. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/skills/)
+- Normalize outputs into 3 classes: fact, preference, active-project-state. **HYPOTHESIS** — this will reduce memory hallucination more than increasing memory volume. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/)
+
+- **Phase 2: autonomy**
+- Replace some cron prompts with no-agent scripts plus `wakeAgent` gates for repo diffs, service degradation, and inbox thresholds. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/user-guide/features/cron)
+- Add webhook subscriptions for GitHub, CI, Cloudflare, or Telegram relay events where possible. 
+- Chain jobs using `context_from` so collection, scoring, and delivery are separate workers instead of one bloated prompt. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/user-guide/features/cron)
+
+- **Phase 3: constitutional routing**
+- Expose only read tools directly to Hermes through MCP filtering. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/)
+- Create one relay tool from Hermes to OpenClaw for `888_JUDGE` requests with structured payloads. 
+- Add a hard policy: any SEAL, HOLD, VOID, or write to governance state needs explicit human or OpenClaw confirmation. That aligns with your floors better than “full direct access.” 
+
+**ESTIMATE** — If you do those three phases, Hermes jumps from “agentic assistant” to “federated sovereign node” without breaking your stack discipline. The missing capability is not more skills from the Skills Hub; it is tighter wiring between Hermes native features and arifOS constitutional boundaries. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/skills/)
+
+Would you like the next step as:
+- a **read-only MCP subset design** for Hermes,
+- a **VAULT999 memory bridge spec**, or
+- an **event-driven cron/webhook blueprint**?
+
+DITEMPA BUKAN DIBERI — 999 SEAL ALIVE

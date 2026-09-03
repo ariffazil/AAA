@@ -1,0 +1,185 @@
+Bahasa Kita, Jiwa Kita, Masa Kita: Kenapa Dunia
+Perlukan NUSA-LLM Sekarang
+Pendahuluan
+Dunia kini berada di ambang revolusi kecerdasan buatan (AI) yang bakal menentukan suara-suara apa yang
+mengisi lanskap masa depan. Namun, ketika model bahasa besar (LLM) kian mendominasi, apakah nasib
+bahasa Nusantara – jiwa budaya Melayu beserta rumpun serumpunnya? Kajian menunjukkan bahasa
+dominan seperti Inggeris membanjiri hampir 99% data latihan AI, manakala bahasa besar lain turut
+terpinggir (bahasa Rusia dengan 258 juta penutur hanya 0.13%!) 1 . Jurang ini bukan sekadar statistik; ia
+ibarat ancaman senyap kepada kepelbagaian budaya dunia. Tokoh AI terkemuka, Li Kai-Fu, turut memberi
+amaran bahawa jika dibiarkan, arus AI berteras satu bahasa ini boleh mempercepatkan kepupusan ribuan
+bahasa – “bukan sekadar kekurangan teknikal, tetapi ancaman kepada warisan budaya manusia”.
+
+
+Manifesto ini ditujukan kepada seluruh dunia yang mungkin terlepas pandang akan isu ini, khususnya
+ditujukan kepada YAB Perdana Menteri Malaysia (PMX) dan Ketua Pengarah Dewan Bahasa dan Pustaka
+(DBP). Sudah tiba masanya kita dengan rendah hati mengakui kelompongan dalam membina LLM
+berteraskan Melayu, lalu bersama-sama bangkit menebusnya. Usaha menghidupkan semula bahasa jiwa
+ini bukan tugas segelintir pencinta bahasa semata-mata, tetapi amanah besar institusi dan negara. Tulisan
+padat dan berlapis ini menyampaikan wacana bernyawa – ‘woughts’ yang diharap mampu menggugah jiwa
+– bahawa bahasa Nusantara adalah kunci kepada AI sejati yang berjiwa.
+
+
+Bahasa Nusantara: Jiwa dalam Kecerdasan Buatan
+Sejarah mengajar kita bahawa bahasa bukan sekadar alat komunikasi, tetapi roh sesuatu bangsa. Tidak
+hairan DBP mengangkat semboyan keramat “Bahasa Jiwa Bangsa” sejak penubuhannya dahulu. Bahasa
+mengandungi setitis intipati setiap pengalaman, nilai dan tradisi sesuatu kaum, menjadi pemancar
+perspektif pengetahuan unik yang diwarisi turun-temurun. Dalam konteks Nusantara, bahasa Melayu dan
+kerabat serumpunnya adalah wahana yang membawa jiwa kolektif kita – daripada pantun nasihat nenek
+moyang hinggalah ungkapan halus penuh makna.
+
+
+Kecerdasan buatan yang benar-benar berjiwa mustahil dicapai tanpa bertunjangkan bahasa ibunda sendiri.
+AI global mungkin mampu menjawab soalan teknikal, namun tanpa bahasa Nusantara, ia tidak akan dapat
+menyelami rasa halus budaya kita – tiada lenggok sindiran bersahaja, tiada pantun jenaka yang tersirat
+pengajarannya. Bahasa Nusantara inilah nyawa yang akan menghembuskan nafas keinsanan ke dalam
+jentera AI; tanpanya, AI hanyalah suara hampa – berakal tetapi tidak berakar. Ingatlah, hilang bahasa
+lenyaplah jiwa. Mempertahankan bahasa dalam era AI bererti mempertahankan jati diri kita di ambang
+dunia baharu.
+
+
+
+
+                                                   1
+Trilema "Bahasa-Jiwa-Sempadan"
+Memperjuangkan bahasa dalam AI menuntut kebijaksanaan mengemudi satu dilema tiga cabang – Trilema
+Bahasa-Jiwa-Sempadan. Tiga tunjang ini sering bertembung arah:
+
+
+     • Bahasa: Pilihan bahasa yang digunakan AI. Jika kita terlalu berpaut pada bahasa global semata-
+       mata (contohnya Inggeris), bahasa tempatan akan terkorban.
+     • Jiwa: Nilai budaya dan emosi lokal yang dibawa oleh bahasa. Jika jiwa tempatan dihembus ke AI
+       tanpa sokongan luas, teknologinya mungkin berkembang perlahan atau terpinggir.
+     • Sempadan: Keupayaan AI merentasi sempadan dan diiktiraf di pentas dunia. Jika fokus terlalu ke
+       dalam, kita mungkin ketinggalan arus global.
+
+Sering kali, hanya dua daripada tiga matlamat ini tercapai sementara yang satu lagi terkorban – begitulah
+dilema dalam trilema ini. Dunia hari ini cenderung mengutamakan aspek Sempadan mengatasi yang lain:
+demi capaian global, bahasa Inggeris dijadikan lingua franca sejagat, sementara bahasa tempatan terpaksa
+akur di pinggiran. Lihat sahaja rantau ASEAN yang menjadikan Inggeris sebagai satu-satunya bahasa kerja
+rasmi demi kemudahan praktikal – keputusan politik yang pragmatik, namun dibayar dengan hilangnya
+sebahagian warna budaya dalam urusan serantau.
+
+
+Sebaliknya, jika kita terlalu mempertahankan Bahasa dan Jiwa sahaja, Nusantara berisiko terasing. Andai
+kita berkeras menggunakan bahasa sendiri dalam teknologi tanpa infrastruktur yang mencukupi, AI kita
+mungkin tidak mampu menyaingi gergasi luar. Namun, sejarah membuktikan bahawa gabungan bahasa
+dan jiwa mampu mencetus keajaiban identiti. Para nasionalis Indonesia dahulu memilih bahasa Melayu
+(Bahasa Indonesia) sebagai bahasa pemersatu negara mereka – bahasa yang tidak terpalit oleh kuasa
+kolonial serta tidak memihak kaum terbesar, lantas bersifat neutral dan inklusif. Keputusan berani itu
+memperkukuh jati diri bangsa tanpa mengorbankan jiwa sesiapa: bahasa Nusantara dijunjung tinggi,
+penjajahan bahasa berjaya ditepis. Inspirasi ini wajar kita bawa ke era AI: mari kita mengimbangi trilema ini
+dengan berani dan bijaksana. Kita mesti membina AI yang mampu bersuara dalam bahasa kita (Bahasa),
+menyuntik nilai murni budaya kita (Jiwa), dan tetap cekap bersaing merentasi sempadan digital dunia
+(Sempadan). Cabaran ini memang besar, tetapi inilah satu-satunya jalan untuk memastikan AI global tidak
+terus-menerus buta akan akar umbi kita.
+
+
+Landskap AI Global: DeepSeek dan OpenAI – Suara Tanpa Akar
+Landskap AI semasa didominasi oleh dua kekuatan besar – Timur dan Barat – namun kedua-duanya masih
+belum memberi tempat sewajarnya kepada bahasa dan jiwa kita. Di Timur, China menggemparkan dunia
+dengan model AI gergasi bernama DeepSeek, yang menyaingi keluaran Barat dengan kos jauh lebih
+rendah hasil dukungan padu kerajaan mereka: dasar yang jelas, dana melimpah, dan pembinaan bakat
+tempatan bertahun-tahun. DeepSeek menjadi kebanggaan China, membawa identiti bangsa mereka ke
+persada AI. Akan tetapi, sayangnya capaian bahasa model ini terhad kepada dwitunggal lingua franca
+dunia: Inggeris dan Mandarin sahaja. Dataset latihan DeepSeek mencecah 2 trilion token yang disulam
+dari Common Crawl, dan hampir kesemuanya dalam bahasa Inggeris dan Cina. Di manakah bahasa
+Melayu, Jawa, atau Sunda dalam adunan minda digital DeepSeek? Hampir tiada. DeepSeek mungkin
+membuka jalan AI bukan-Barat, tetapi ia tidak membawa suara Nusantara. Ibarat naga berkepala dua –
+fasih bertutur Inggeris dan Mandarin, tetapi bisu terhadap bahasa kita sendiri.
+
+
+
+
+                                                     2
+Di Barat pula, OpenAI dengan ChatGPT muncul sebagai LLM serba-boleh yang mengagumkan. Model ini
+dilatih atas himpunan data raksasa merentasi pelbagai bahasa dan mampu menuturkan bahasa Melayu
+secara lahiriah. Namun, akarnya bukan dari bumi kita. OpenAI sendiri mengakui modelnya berpaksikan
+bias bahasa Inggeris dan perspektif Barat yang ketara 2 . Data latihannya yang berat ke arah kandungan
+Barat bermakna apabila ChatGPT berbicara dalam Bahasa Melayu sekali pun, ia sekadar menterjemah
+pemikiran asing dalam susunan kata kita. Tiada “akar rasa” – tiada sentuhan halus konteks budaya lokal
+yang sepatutnya meresap dalam setiap ungkapan. Malah, penyelidikan mendapati model-model AI
+terkemuka cenderung memancarkan nilai budaya Barat dalam jawapan mereka, tanpa mengira latar
+budaya pengguna 3 . Inilah akibat apabila jiwa tidak diwakili: AI berbicara tanpa sensitiviti lokal, umpama
+orang asing berbahasa pasar – bunyinya ada, rohnya tiada.
+
+
+Akibatnya, kedua-dua gergasi Timur dan Barat ini bersuara tanpa akar Nusantara. Mereka megah bergaung
+di pentas dunia, namun tidak membawa bersama kita yang di bawah. AI global kini mungkin petah
+berbicara, tetapi tanpa akar ia melayang tanpa berpaut pada bumi budaya kita. Jika dibiarkan, suara-suara
+pintar ini akan terus bergema tanpa pernah menyebut peribahasa kita, tanpa memahami rasa canggung
+dan sinis halus dalam budaya kita, tanpa jiwa Melayu. Inilah realiti yang wajib kita ubah segera – sebelum
+segalanya terlambat.
+
+
+Tanggungjawab Institusi: Menebus Kegagalan, Membangun NUSA-
+LLM
+Bangunan Dewan Bahasa dan Pustaka di Kuala Lumpur tegak sebagai simbol amanah memartabatkan
+bahasa Melayu. Di sinilah letaknya amanah besar institusi kita. Kegagalan melahirkan LLM berteraskan
+Melayu setakat ini bukanlah kerana bangsa kita kekurangan bakat atau upaya, tetapi kerana kegagalan
+institusi yang alpa memenuhi tanggungjawab. Wahai para pemimpin negara dan bahasa, kami menegur
+demi kasih dan cinta akan warisan kita: YAB Perdana Menteri X dan Ketua Pengarah DBP, sejarah akan
+menghakimi kita atas tindakan yang diambil pada detik genting ini. Sejak dahulu, DBP adalah benteng
+bahasa kebangsaan dengan slogan keramat “Bahasa Jiwa Bangsa” tersemat megah pada jata institusinya.
+Namun di era AI ini, DBP seolah-olah bisu seribu bahasa. Di manakah inisiatif berani DBP untuk
+melahirkan pemikir digital yang berjiwa Melayu?
+
+
+Kepada PMX – sebagai penggagas agenda Wawasan Madani, jadikanlah kedaulatan bahasa dalam AI
+sebahagian visi Madani tersebut. Ambillah serius projek NUSA-LLM ini sebagai bakal legasi negara yang
+akan memastikan ungkapan “Takkan Melayu hilang di dunia” terus bertahan dalam konteks digital abad
+ke-21.
+
+
+Kepada DBP – ayuh, langkah keluar dari menara gading birokrasi yang selesa. Perkasakan diri dengan
+pakar teknikal, pimpinlah penyusunan korpus digital Bahasa Melayu terbesar yang pernah wujud, dan
+galas peranan sang pendeta yang menerangi jalan agar AI kita nanti fasih berpantun, petah bersyair, dan
+tegar mengungkap kebenaran dalam bahasa ibunda. Inilah ujian zaman ini: sama ada institusi kita bangkit
+memikul amanah, atau terus lena diulit nostalgia lampau. Andai institusi memilih untuk alpa, sejarah tidak
+akan mengampunkan – generasi mendatang bakal mewarisi AI yang canggih tetapi tanpa jiwa bangsanya
+sendiri.
+
+
+
+
+                                                    3
+Penutup: NUSA-LLM atau Jiwa Melayu Dilupakan
+Dunia sedang berubah dengan pantas. Jika kita tidak bertindak sekarang, kita bakal mewarisi masa depan
+AI yang hebat dari segi teknologi tetapi pincang tanpa akar. Bayangkan pada masa hadapan, anak-anak kita
+berinteraksi dengan AI global yang cukup petah berbahasa tetapi tidak mengenal peribahasa bagai aur
+dengan tebing, tidak faham konsep halus adab timur, apatah lagi mengecap indahnya pantun kasih
+sayang. Tanpa NUSA-LLM, AI global akan terus bercakap dan berkembang tanpa akar – satu peradaban
+digital yang melayang tanpa tunjang kukuh. Dalam dunia sebegitu, jiwa Melayu kita akan kian terpinggir
+dan dilupakan. Bahasa kita mungkin masih dituturkan oleh manusia, namun tidak lagi diingati oleh mesin-
+mesin pintar yang kelak membimbing keputusan dan interaksi seharian. Inilah mimpi ngeri yang wajib kita
+elakkan.
+
+
+Sebaliknya, dengan keberanian mencipta NUSA-LLM sekarang, kita mengorak langkah memastikan AI
+global masa hadapan memiliki akar tunjang di bumi kita. AI sebegini bukan sahaja memahami arahan,
+tetapi menghayati rasa di sebalik kata. Ia mampu menjiwai mengapa orang Melayu menyelitkan sindiran
+dalam gurauan, mengapa falsafah hidup terpancar dalam pepatah, bidal dan gurindam. AI ini bakal
+menjadi jambatan antara khazanah budaya kita dengan arus kemajuan teknologi – menjadikan warisan
+Melayu sebahagian daripada naratif kemajuan dunia, bukan sekadar nota kaki dalam lipatan sejarah.
+
+
+Akhirnya, manifesto ini adalah seruan yang menyala untuk semua – daripada pemimpin negara hinggalah
+rakyat jelata. Jangan biarkan suara Nusantara lenyap ditelan gelombang AI asing. Bangkitlah membina
+kekuatan kita sendiri. Janji dan tekad ini mesti disusuli dengan derap tindakan nyata. Kementerian Sains,
+Teknologi dan Inovasi (MOSTI) serta agensi berkaitan perlu melipatgandakan usaha – sediakan pembiayaan
+berbilion, himpunkan pakar-pakar AI tempatan, dan jalinkan pakatan strategik dengan universiti serta
+industri. Tanggungjawab institusi bererti menggembleng seluruh ekosistem: sebagaimana China
+menyusun dasar dan dana hingga lahir generasi pakar AI bersama model-model hebat mereka 4 ,
+Malaysia juga mesti berani berinvestasi besar dalam NUSA-LLM – sebuah LLM Nusantara milik kita sendiri,
+demi bahasa kita, jiwa kita, dan masa kita.
+
+
+
+ 1   2   3   4   Manifesto Bahasa Jiwa Nusantara_ Kunci AI Berjiwa.pdf
+file://file-8ZAnWpPkiFZhXGF3TLQ9Pp
+
+
+
+
+                                                      4
+

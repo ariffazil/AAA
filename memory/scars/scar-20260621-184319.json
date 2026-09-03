@@ -1,0 +1,10 @@
+{
+  "scar_id": "scar-20260621-184319",
+  "timestamp": "2026-06-21T18:43:19.518642+00:00",
+  "tool_name": "arif_memory",
+  "agent_id": "anonymous",
+  "session_id": "SEAL-bfd2990d630c47d4",
+  "reason": "888_HOLD: max_same_tool_calls (2) for arif_memory",
+  "severity": "critical",
+  "count": 1
+}

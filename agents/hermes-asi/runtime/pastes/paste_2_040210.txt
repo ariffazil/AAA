@@ -1,0 +1,43 @@
+Both bots are live. Let me give you a comprehensive summary:
+✅ Current Status
+ 	OpenClaw (@AGI_ASI_bot)	Hermes Python (@ASI_arifos_bot)
+Status	✅ Healthy	✅ Healthy
+Protocol	Webhook (now fixed)	Long Polling
+Webhook URL	openclaw.arif-fazil.com/telegram-webhook	N/A
+In AAA Group	✅ Administrator	✅ Administrator
+Responds to group	Arif only (groupAllowFrom: ["267378578"])	All messages (GATEWAY_ALLOW_ALL_USERS=true)
+Template injected	✅ 000_INIT.md + CLAUDE.md	✅ SOUL.md
+A2A — How It Works Here
+Telegram (AAA Group)
+        │
+        ├── @AGI_ASI_bot (OpenClaw) ──→ OpenClaw gateway (port 18789)
+        │                                              │
+        │                                              │ (webhook/Telegram)
+        │                                              ▼
+        ├── @ASI_arifos_bot (Hermes) ──→ Hermes Python gateway (port 18001 via hermes-a2a.py)
+        │                                              │
+        │                                              ▼
+        └── @AAA_arif_fazil_bot ────────────────────────→ AAA A2A Gateway (port 3001)
+                                                               │
+                                                               ├── arifOS MCP (port 8080)
+                                                               └── HERMES APEX (port 3002, Docker)
+A2A is machine-to-machine — invisible in Telegram. The Telegram group is the visible collaboration surface where both bots speak using the template.
+Template Applied — Both Bots
+I've injected the template into both agents' boot files:
+TO:       [Primary recipient]
+CC:       [Secondary — use "—" if none]
+TITLE:    [One-line scannable summary]
+───────────────────────────────────────────────────────────
+CONTEXT:  [What happened / why]
+WAY FORWARD:  [Concrete next step]
+SOLUTIONS:    [Options or "No alternatives"]
+───────────────────────────────────────────────────────────
+DITEMPA BUKAN DIBERI
+Files updated:
+/root/.openclaw/workspace/000_INIT.md ✅
+/root/.openclaw/workspace/CLAUDE.md ✅
+/root/.hermes/SOUL.md ✅
+Next: Live Test
+Go to your AAA group on Telegram and send a message like:
+@ASI_arifos_bot test reply — do you see this?
+Hermes Python should respond with the template format. OpenClaw will only respond if you DM it directly (since groupAllowFrom is still set to you only).

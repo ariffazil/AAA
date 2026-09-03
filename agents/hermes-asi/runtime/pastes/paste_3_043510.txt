@@ -1,0 +1,32 @@
+ Scalpel audit script + pre-commit hook template are now live and passing.
+
+  Audit verdict: The architecture is sound. AGI vs ASI split is correct, ports/tokens
+  /roles are properly isolated, and the identity bleed fix was necessary. The two pen
+  ding items (scalpel + pre-commit) are now implemented.
+
+  Can all agents use TREE777 skills? Yes — but the integration path differs per agent
+  :
+
+  ┌───────────────────────┬───────────────────────────────────────────────┬─────────┐
+  │ Agent                 │ How they access TREE777                       │ Quality │
+  ├───────────────────────┼───────────────────────────────────────────────┼─────────┤
+  │ Hermes                │ arifOS MCP server (tree777:// resources) — be │ Native  │
+  │                       │ st integration                                │         │
+  │ OpenClaw              │ Direct arifOS MCP tools (port 8080) + filesys │ Native  │
+  │                       │ tem read                                      │         │
+  │ A-FORGE               │ ShellTool → curl arifOS endpoints, or direct  │ Good    │
+  │                       │ file read from /root/arifOS/wiki/pages/       │         │
+  │ Kimi / Claude / Codex │ Filesystem read from /root/arifOS/wiki/pages/ │ Good    │
+  │                       │ directly                                      │         │
+  │ GEOX / WEALTH / WELL  │ They expose their own MCP tools; they can que │ Native  │
+  │                       │ ry arifOS MCP for cross-domain skills         │         │
+  └───────────────────────┴───────────────────────────────────────────────┴─────────┘
+
+  What could be better:
+  • A-FORGE doesn't have arifOS configured as an MCP server yet. It accesses skills v
+    shell commands rather than structured MCP resource calls. If you want A-FORGE to
+    ve the same first-class access as Hermes, I'd add arifOS to its MCP server list.
+  • The other agents (Kimi, Claude, Codex) read files directly. This works but they d
+    't get the structured YAML frontmatter parsing that Hermes gets via MCP resources
+  Recommendation: The current state is functional for all agents. If you want to leve
+  l up, add arifOS MCP to A-FORGE's config. The rest are fine wit
