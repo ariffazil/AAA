@@ -5,6 +5,13 @@
 > **Workspace topology:** [`/root/AAA/federation/workspace.yaml`](/root/AAA/federation/workspace.yaml)
 > **Truth rule:** `live :port/health` beats every prose table. Re-probe before any SEAL-grade claim.
 
+> **MACHINE AXIS (3-node mesh, since 2026-09-03):** [`/root/AAA/docs/MACHINE_MAP.md`](/root/AAA/docs/MACHINE_MAP.md) is SOT.
+> **KVM8 af-forge** = Truth/seat — everything in this file is KVM8-local ·
+> **KVM4 kvm4-forge** = Execution (Hermes gateway + FED litellm `100.64.0.5:4000`; FED :4000 below is KVM8 HAProxy → KVM4) ·
+> **KVM2 azwaos** = Azwa's civilization + Witness-pending (its `arifosmcp` is a fork, NOT the judge).
+> Ports change meaning per machine (7073 = arifFlow here, arifosmcp-fork on KVM2). Fingerprint before cross-machine calls:
+> `echo "$(hostname) $(ip -4 addr show | grep -oE '100\.64\.0\.[0-9]+' | head -1)"` → .2=KVM8 · .5=KVM4 · .4=KVM2
+
 ## Core organs
 
 | Organ | Port | Class | Role | Authority ceiling |
