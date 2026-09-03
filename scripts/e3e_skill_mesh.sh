@@ -21,6 +21,7 @@ import sys, os, re, collections
 d = sys.argv[1]
 agents = [f[:-4] for f in os.listdir(d) if f.endswith(".txt")]
 print(f"agents={len(agents)}: {agents}")
+excluded = []
 # Divergence proxy: unique first-line answers per E3E-001 block
 answers = collections.defaultdict(set)
 for a in agents:
@@ -29,9 +30,19 @@ for a in agents:
     if m:
         nums = re.findall(r"(\d+)\s*(?:skills|canonical|$)", m.group(1))[:4]
         answers["discovery_counts"].add(tuple(nums))
+    # GUARD 2026-09-04 FI-008: error stubs are NOT answers. Classify corpses
+    # (billing 402/429, config errors, trust prompts, tiny outputs) as EXCLUDED
+    # so "didn't run" never counts as cognitive divergence.
+    ERR_SIGNS = ("payment required", "balance exhausted", "credits are depleted",
+                 "unrecognized_model", "not running in a trusted directory",
+                 "--skip-git-repo-check", "reached max turns", "resource_exhausted")
+    body = txt.lower()
+    if len(txt) < 1500 or any(s in body for s in ERR_SIGNS):
+        excluded.append(a); continue
     for skill in ("geox-prospect-evaluation", "wealth-capital-primitives"):
         if skill in txt: answers[skill].add("found")
         else: answers[skill].add("missing")
+print(f"answered={len(agents)-len(excluded)} excluded_as_error_stubs={len(excluded)}: {excluded}")
 for k, v in answers.items():
     print(f"{k}: {len(v)} variant(s) -> {'CONVERGENT' if len(v)==1 else 'DIVERGENT'} {sorted(v)[:3]}")
 PY
