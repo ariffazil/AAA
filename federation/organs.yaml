@@ -516,15 +516,20 @@ components:
     authority_ceiling: ADVISORY_WORKER
     port: 18901
     unit: flame-api.service
-    live_probe_2026_07_30:
-      status: live
+    status: DEPRECATED 2026-09-04
+    deprecation:
+      reason: RM0 free-tier exhausted — all free providers fail per-request; fallback burned paid qwen-max with 7 wasted retries. Zero live callers.
+      replacement: FED litellm flash lane (KVM4 :4000)
+      archive: /root/BACKUPS/FLAME-retired-20260904
+      tombstone: AAA/docs/deprecation-registry.json
     owned_domains:
-      - free_tier_tool_inference
+      - free_tier_tool_inference  # domain now served by FED flash models
     forbidden_domains:
       - constitutional_judgment
       - paid_routing_policy
     notes:
       - answers cheap tool meaning; never seals
+      - RETIRED — registry SOT is deprecation-registry.json; entry kept for history
 
   # ── EDGE ─────────────────────────────────────────────────────────
   - id: hermes
