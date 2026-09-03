@@ -765,7 +765,8 @@ def fed_route(
     )
 
     # EMD lane check — advisory flag, never blocks (F1/F4)
-    resolved_model = routes[0]["model"] if routes else model
+    # FI-008 2026-09-04: KeyError 'model' fix — capability-cascade routes carry model_id, not model
+    resolved_model = (routes[0].get("model") or routes[0].get("model_id") or model) if routes else model
     emd = _emd_check(agent_id, operation, resolved_model, modality)
 
     # ── JIT Intent Retrieval (P1.5) ────────────────────────────────
@@ -827,12 +828,30 @@ def fed_route(
 
     _FED_BACKGROUND_TASKS.submit(_ingest_span)
 
+    # ── S3-lite Invocation Contract passthrough (FI-008 2026-09-04, S1 ratification) ──
+    # Agents asked "WHICH model" and guessed "HOW to call". The contract now rides the route.
+    _modality_map = {
+        "vision": "fed-multimodal-vision",
+        "omni": "fed-multimodal-vision",
+        "image": "fed-image-generation",
+        "image-gen": "fed-image-generation",
+        "audio": "fed-realtime-voice",
+        "video": "fed-video-understanding",
+    }
+    _sig = model if model in CAPABILITY_SIGNATURES else _modality_map.get((modality or "").lower())
+    invocation_contract = None
+    if _sig and _sig in CAPABILITY_SIGNATURES:
+        _s = CAPABILITY_SIGNATURES.get(_sig, {})
+        invocation_contract = {"signature": _sig}
+        invocation_contract.update(_s.get("invocation") or {})
+
     return {
         "routes": routes,
         "meta": meta,
         "emd": emd,
         "jit": jit_context,
         "trace": trace_headers if _trace_enabled else None,
+        "invocation_contract": invocation_contract,
     }
 
 
@@ -842,6 +861,7 @@ def fed_status() -> dict:
     providers = read_all_providers()
 
     with sqlite3.connect(str(FED_STATE_DB)) as conn:
+        conn.row_factory = sqlite3.Row  # FI-008 2026-09-04: same tuple-access fix as fed_health
         lat_rows = conn.execute(
             "SELECT provider_name, model_id, p50_ms, p95_ms, sample_count, last_sample FROM route_latency"
         ).fetchall()
@@ -920,6 +940,7 @@ def fed_contrast(route_a: str, route_b: str) -> dict:
 def fed_health() -> dict:
     """FED health check — returns service status and DB integrity."""
     with sqlite3.connect(str(FED_STATE_DB)) as conn:
+        conn.row_factory = sqlite3.Row  # FI-008 2026-09-04: fix tuple-access crash (fed_health TypeError)
         tables = conn.execute("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name").fetchall()
 
     return {
