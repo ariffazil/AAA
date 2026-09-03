@@ -1,0 +1,10 @@
+{
+  "scar_id": "scar-20260621-160452",
+  "timestamp": "2026-06-21T16:04:52.943737+00:00",
+  "tool_name": "arif_vault_seal",
+  "agent_id": "anonymous",
+  "session_id": "s1",
+  "reason": "Anonymous actor cannot execute ATOMIC. Call arif_session_init with verified actor_id.",
+  "severity": "critical",
+  "count": 1
+}

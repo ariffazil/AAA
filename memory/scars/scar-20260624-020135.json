@@ -1,0 +1,10 @@
+{
+  "scar_id": "scar-20260624-020135",
+  "timestamp": "2026-06-24T02:01:35.060626+00:00",
+  "tool_name": "arif_mind_reason",
+  "agent_id": "anonymous",
+  "session_id": "test-session",
+  "reason": "ASI_FIREWALL: Detected recursive self-improvement signal. BRAIN firewall engaged. [skill=recursive self-improvement; tool=self-modification and world-simulation substrate]",
+  "severity": "critical",
+  "count": 1
+}

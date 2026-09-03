@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260621-060600",
+  "timestamp": "2026-06-21T06:06:00.130126+00:00",
+  "tool_name": "arif_judge_deliberate",
+  "agent_id": "anonymous",
+  "session_id": "sess_2a306e042a4643cb",
+  "reason": "CLAIMED identity (FORGE-000\u03a9) cannot execute IRREVERSIBLE. Requires verified or delegated authority.",
+  "severity": "critical",
+  "count": 2,
+  "last_seen": "2026-06-21T18:28:19.960736+00:00"
+}

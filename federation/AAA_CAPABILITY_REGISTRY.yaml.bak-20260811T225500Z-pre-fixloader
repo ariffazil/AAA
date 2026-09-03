@@ -1,0 +1,572 @@
+version: v1
+status: RATIFIED
+sovereign: ARIF
+ratified_by: "ARIF (F13 SOVEREIGN) \u2014 2026-08-11 musyawarah open-door"
+generated_by: import-from-cc-codex
+reviewed_by: 888_APEX
+generated_at: '2026-08-11'
+invariants:
+  one_canonical_name_per_capability: true
+  mcp_servers_must_be_stateless: true
+  cognition_owner: agent
+  authority_owner: AAA_router
+  continuity_owner: VAULT999 + arifFlow
+  write_tools_gated_by: A-FORGE_lease
+  credentials_held_by: gateway_only
+  per_session_activation: true
+  duplicate_resolution: collapse_to_canonical_capability
+  raw_mcp_bypass_forbidden: true
+  per_task_activation_only: true
+sources:
+  claude:
+    config: /root/.claude/mcp.json
+    server_count: 29
+    provenance_sealed: false
+  codex:
+    config: /root/.codex/config.toml
+    server_count: 26
+    provenance_sealed: false
+  kimi_code:
+    config: /root/.kimi-code/mcp.json
+    server_count: 8
+    server_names:
+    - arifos
+    - aforge
+    - arifflow
+    - fed
+    - geox
+    - minimax
+    - wealth
+    - well
+axes:
+  sense:
+    description: Observe the current external world.
+    authority_default: read_only
+    canonical_capabilities:
+      reality.search:
+        description: Capability-keyed web/news/image/local retrieval.
+        F_rating: REVIEW
+        backends:
+          brave-search:
+            rank: 1
+            F_rating: REVIEW
+            enabled: false
+            transport: stdio
+            note: dedup candidate
+            seal: sealed
+          exa:
+            rank: 2
+            F_rating: REVIEW
+            enabled: false
+            transport: stdio
+            note: dedup candidate
+            seal: sealed
+          perplexity:
+            rank: 3
+            F_rating: REVIEW
+            enabled: false
+            transport: stdio
+            note: dedup candidate
+            seal: sealed
+          fetch:
+            rank: 4
+            F_rating: HOLD
+            enabled: false
+            transport: stdio
+            note: duplicates forge_fetch (suppress)
+            seal: sealed
+          arifos:
+            F_rating: REVIEW
+            enabled: false
+            seal: sealed
+            transport: stdio
+            authority_mode: read_only
+            note: "arifOS constitutional kernel \u2014 F1-F13 + 888_JUDGE; routes\
+              \ reality.search via canonical kernel"
+          minimax:
+            F_rating: REVIEW
+            enabled: false
+            seal: sealed
+            transport: stdio
+            authority_mode: read_only
+            note: "MiniMax coding plan MCP (uvx) \u2014 web_search via MiniMax provider;\
+              \ canonical name = minimax"
+        dedup_resolution: collapse to top-2 by F-rating once Wave 2 unsealed
+      reality.browse:
+        description: Structured browser interaction through accessibility snapshots.
+        F_rating: HOLD
+        backends:
+          playwright:
+            F_rating: HOLD
+            enabled: false
+            transport: stdio
+            note: duplicates forge_browser_*; A-FORGE gate required
+            seal: sealed
+  know:
+    description: Retrieve authoritative documentation and operational context.
+    authority_default: read_only
+    canonical_capabilities:
+      knowledge.docs:
+        description: Library / SDK documentation lookup with version specificity.
+        F_rating: REVIEW
+        backends:
+          context7:
+            F_rating: REVIEW
+            enabled: false
+            transport: stdio
+            seal: sealed
+      knowledge.capability_index:
+        description: Compact map of available federation capabilities.
+        F_rating: REVIEW
+        backends:
+          capability-index:
+            F_rating: REVIEW
+            enabled: false
+            transport: stdio
+            note: verify not a shadow of forge_kernel
+            seal: sealed
+      knowledge.repo_map:
+        description: Repository topology and dependency maps.
+        F_rating: REVIEW
+        backends:
+          repomapper:
+            F_rating: REVIEW
+            enabled: false
+            transport: stdio
+            authority_mode: read_only
+            note: overlaps FORGE-repo-intelligence
+            seal: sealed
+  remember:
+    description: Recover durable experience across otherwise stateless calls.
+    authority_default: read_append
+    canonical_capabilities:
+      memory.recall:
+        description: Persistent relationship/temporal memory.
+        F_rating: SAFE
+        backends:
+          hindsight:
+            F_rating: SAFE
+            enabled: false
+            transport: http
+            url: http://127.0.0.1:18087/mcp
+            seal: sealed
+            source: claude+codex
+          graphiti:
+            F_rating: SAFE
+            enabled: false
+            transport: http
+            url: http://127.0.0.1:8000/mcp
+            seal: sealed
+            source: claude+codex
+      memory.vector:
+        description: Semantic vector storage and retrieval.
+        F_rating: HOLD
+        backends:
+          qdrant:
+            F_rating: HOLD
+            enabled: false
+            transport: stdio
+            note: check pgvector duplication before Wave 3
+            seal: sealed
+  understand:
+    description: Navigate symbols, dependencies, and structured systems.
+    authority_default: read_only
+    canonical_capabilities:
+      code.navigate:
+        description: Semantic code retrieval and editing.
+        F_rating: HOLD
+        backends:
+          serena:
+            F_rating: HOLD
+            enabled: false
+            transport: stdio
+            note: duplicates forge_filesystem semantics
+            seal: sealed
+          repomapper:
+            F_rating: HOLD
+            enabled: false
+            transport: stdio
+            authority_mode: read_write
+            note: edit-capable surface; cross-axis with knowledge.repo_map (read_only)
+            seal: sealed
+      db.query:
+        description: Structured relational truth retrieval.
+        F_rating: HOLD
+        backends:
+          postgres:
+            F_rating: HOLD
+            enabled: false
+            transport: stdio
+            note: duplicates forge_postgres
+            seal: sealed
+          supabase:
+            F_rating: HOLD
+            enabled: false
+            transport: stdio
+            note: wraps postgres + project-ref
+            seal: sealed
+  verify:
+    description: Test claims, code, and proposed changes.
+    authority_default: read_only_scanners
+    canonical_capabilities:
+      evidence.scan:
+        description: Static security/quality scan.
+        F_rating: HOLD
+        backends:
+          semgrep:
+            F_rating: HOLD
+            enabled: false
+            transport: stdio
+            seal: sealed
+      evidence.browser:
+        description: Browser-level behavioural evidence capture.
+        F_rating: HOLD
+        backends:
+          playwright:
+            F_rating: HOLD
+            enabled: false
+            transport: stdio
+            mode: verify_only
+            seal: sealed
+      evidence.epistemic:
+        description: Federation epistemic and contradiction checks.
+        F_rating: REVIEW
+        backends:
+          hermes:
+            F_rating: REVIEW
+            enabled: false
+            transport: stdio
+            note: "internal \u2014 must route via arifOS, not duplicate"
+            seal: sealed
+          arifos:
+            F_rating: REVIEW
+            enabled: false
+            seal: sealed
+            transport: stdio
+            authority_mode: read_only
+            note: "arifOS constitutional kernel \u2014 F1-F13 + 888_JUDGE + 888_APEX"
+          geox:
+            F_rating: REVIEW
+            enabled: false
+            seal: sealed
+            transport: http
+            url: http://127.0.0.1:8081/mcp
+            authority_mode: read_only
+            note: "GEOX earth intelligence \u2014 33 canonical tools, EVIDENCE_ONLY"
+          wealth:
+            F_rating: REVIEW
+            enabled: false
+            seal: sealed
+            transport: http
+            url: http://127.0.0.1:18082/mcp
+            authority_mode: read_only
+            note: "WEALTH capital intelligence \u2014 EVIDENCE_ONLY"
+          well:
+            F_rating: REVIEW
+            enabled: false
+            seal: sealed
+            transport: http
+            url: http://127.0.0.1:18083/mcp
+            authority_mode: reflect_only
+            note: "WELL human readiness \u2014 REFLECT_ONLY (F6 maruah)"
+      evidence.reasoning:
+        description: Structured multi-step reasoning amplification.
+        F_rating: HOLD
+        backends:
+          sequential-thinking:
+            F_rating: HOLD
+            enabled: false
+            transport: stdio
+            note: "execution amplifier \u2014 FQ risk; A-FORGE gate required"
+            seal: sealed
+          fed:
+            F_rating: REVIEW
+            enabled: false
+            seal: sealed
+            transport: http
+            url: http://127.0.0.1:7074/mcp
+            authority_mode: read_only
+            note: "FED federation router \u2014 fed_route, fed_status, fed_probe,\
+              \ fed_contrast, fed_health, fed_report_latency"
+  forge:
+    description: Mutate repositories, databases, and infrastructure.
+    authority_default: gated_write
+    canonical_capabilities:
+      forge.repository:
+        description: Repository mutation (issues, PRs, commits).
+        F_rating: HOLD
+        gate: A-FORGE_lease
+        backends:
+          github:
+            F_rating: HOLD
+            enabled: false
+            transport: stdio
+            gate: A-FORGE_lease
+            note: duplicates forge_github_*
+            seal: sealed
+          aforge:
+            F_rating: HOLD
+            enabled: false
+            seal: sealed
+            transport: stdio
+            gate: A-FORGE_lease
+            authority_mode: read_write
+            note: "A-FORGE governed engineering actuator \u2014 77 forge_* tools;\
+              \ AMANAH: MUTATE/DELETE/IRREVERSIBLE requires arifOS SEAL or 888_HOLD"
+      forge.container:
+        description: Container execution and management.
+        F_rating: HOLD
+        gate: A-FORGE_lease
+        backends:
+          docker:
+            F_rating: HOLD
+            enabled: false
+            transport: stdio
+            gate: A-FORGE_lease
+            seal: sealed
+      forge.database:
+        description: "Database mutation \u2014 single canonical = forge_postgres."
+        F_rating: HOLD
+        gate: A-FORGE_lease
+        backends:
+          postgres:
+            F_rating: HOLD
+            enabled: false
+            transport: stdio
+            gate: A-FORGE_lease
+            note: single canonical
+            seal: sealed
+          supabase:
+            F_rating: HOLD
+            enabled: false
+            transport: stdio
+            gate: A-FORGE_lease
+            note: secondary; project-pinned
+            seal: sealed
+          sqlite:
+            F_rating: HOLD
+            enabled: false
+            transport: stdio
+            gate: A-FORGE_lease
+            note: should be Postgres primitive, not side-channel
+            seal: sealed
+      forge.provider:
+        description: Third-party model provider MCP.
+        F_rating: HOLD
+        gate: A-FORGE_lease
+        backends:
+          minimax:
+            F_rating: REVIEW
+            enabled: false
+            seal: sealed
+            transport: stdio
+            authority_mode: read_only
+            note: "MiniMax coding plan MCP (uvx) \u2014 web_search via MiniMax provider;\
+              \ canonical name = minimax"
+            gate: A-FORGE_lease
+      forge.infrastructure:
+        description: VPS / bare-metal management.
+        F_rating: HOLD
+        gate: A-FORGE_lease
+        backends:
+          hostinger-vps:
+            F_rating: HOLD
+            enabled: false
+            transport: stdio
+            gate: A-FORGE_lease
+            note: "A-FORGE-only \u2014 VPS ops must never bypass federation gates"
+            seal: sealed
+  witness:
+    description: Record outcomes, evidence, and operational health.
+    authority_default: append_only
+    canonical_capabilities:
+      witness.append:
+        description: "Immutable, append-only operational witness. Authority mode =\
+          \ append_only (read references, no mutation). Same backend may serve other\
+          \ axes under different authority modes \u2014 the capability-keyed router\
+          \ enforces axis at call site."
+        F_rating: SAFE
+        backends:
+          VAULT999:
+            F_rating: SAFE
+            enabled: true
+            transport: filesystem
+            seal: sealed
+            note: primary receipt store
+          arifFlow:
+            F_rating: SAFE
+            enabled: true
+            transport: http
+            url: http://127.0.0.1:7073
+            seal: sealed
+            note: FQ metabolism + receipts
+          hindsight:
+            F_rating: SAFE
+            enabled: false
+            transport: http
+            url: http://127.0.0.1:18087/mcp
+            authority_mode: append_only
+            note: searchable operational experience
+            seal: sealed
+          graphiti:
+            F_rating: SAFE
+            enabled: false
+            transport: http
+            url: http://127.0.0.1:8000/mcp
+            authority_mode: append_only
+            note: relationships + temporal context
+            seal: sealed
+          github:
+            F_rating: SAFE
+            enabled: false
+            transport: stdio
+            authority_mode: read_only
+            note: immutable commit/PR references; cross-axis from forge.repository
+            seal: sealed
+          postgres:
+            F_rating: SAFE
+            enabled: false
+            transport: stdio
+            authority_mode: append_only
+            note: append-only receipt rows; cross-axis from forge.database/db.query
+            seal: sealed
+enablement_policy:
+  wave_1_safe_http:
+    description: HTTP-only, read/append, low blast. Auto-enabled AFTER F13 seal.
+    list:
+    - hindsight
+    - graphiti
+    auto_enable: false
+    transport_constraint: http_only
+  wave_2_review:
+    description: "Backend-pluggable. Require 333_propose \u2192 555_verify \u2192\
+      \ 888_judge \u2192 seal."
+    list:
+    - brave-search
+    - exa
+    - perplexity
+    - context7
+    - capability-index
+    - repomapper
+    - hermes
+    auto_enable: false
+    require:
+    - 333_propose
+    - 555_verify
+    - 888_judge
+    - seal
+  wave_3_hold:
+    description: Execution amplifiers / duplicates. Require full pipeline + A-FORGE
+      lease.
+    list:
+    - playwright
+    - docker
+    - semgrep
+    - github
+    - postgres
+    - qdrant
+    - supabase
+    - sqlite
+    - serena
+    - hostinger-vps
+    - fetch
+    - sequential-thinking
+    auto_enable: false
+    require:
+    - 333_propose
+    - 555_verify
+    - 888_judge
+    - seal
+    - A-FORGE_lease
+  wave_4_organs:
+    description: The 7 QMG organs. F13 ratification gates this wave. No further sub-pipeline.
+    list:
+    - arifos
+    - aforge
+    - geox
+    - wealth
+    - well
+    - fed
+    - minimax
+    auto_enable: false
+    require:
+    - F13_SOVEREIGN
+    ratified_at: '2026-08-11'
+dedup_register:
+  reality.search:
+    backends:
+    - brave-search
+    - exa
+    - perplexity
+    - fetch
+    resolution: collapse to top-2 by F-rating once Wave 2 unsealed; fetch suppressed
+      (duplicates forge_fetch)
+  forge.repository:
+    backends:
+    - github
+    resolution: suppress raw MCP; route via forge_github_*
+  db.query:
+    backends:
+    - postgres
+    - supabase
+    resolution: suppress raw MCP; route via forge_postgres
+  forge.database:
+    backends:
+    - postgres
+    - supabase
+    - sqlite
+    resolution: single canonical = forge_postgres; sqlite as Postgres primitive
+  forge.provider:
+    backends:
+    - minimax
+    resolution: Canonical = minimax (under reality.search); legacy minimax-mcp retired
+      2026-08-11
+  memory.recall:
+    backends:
+    - hindsight
+    - graphiti
+    resolution: "keep both \u2014 graph (graphiti) and bank (hindsight) are orthogonal\
+      \ surfaces"
+derives_from:
+- /root/AAA/federation/AAA_FEDERATION_CONTRACT_v0.1.md
+- /root/AAA/federation/AAA_EUREKA_DOCTRINE_v1.md
+- /root/arifOS/GENESIS/000_KERNEL_CANON.md
+- /root/arifOS/GENESIS/FLOOR_TABLE.json
+- /root/AAA/canon/GODEL_EUREKAS.md
+related_artifacts:
+- /root/AAA/federation/FEDERATED_SKILLS_REGISTRY_V3.yaml
+- /root/forge_work/_import_2026-08-11/mcp_gap_normalized.json
+architectural_ratification:
+  verdict: SEAL_ARCHITECTURE
+  issued_by: ARIF
+  issued_at: '2026-08-11'
+  scope:
+  - Seven Axes of Reality Execution (SENSE/KNOW/REMEMBER/UNDERSTAND/VERIFY/FORGE/WITNESS)
+  - "Stateless MCP principle \u2014 servers do not own cognition/authority/continuity"
+  - "Zen-Apex router pattern \u2014 agents request canonical capability names, AAA\
+    \ chooses backend"
+  - One canonical name per capability (no MCP sprawl)
+  - Per-task activation (no boot-everything)
+  - Credentials held by gateway, never agent
+  - Every mutation followed by a witnessed receipt
+  canonical_capability_names:
+  - reality.search
+  - knowledge.docs
+  - memory.recall
+  - code.navigate
+  - evidence.scan
+  - forge.repository
+  - witness.append
+  cross_axis_principle: Same backend may serve multiple axes under different authority
+    modes (read/append_only/write). The capability-keyed router enforces axis at call
+    site.
+  status: RATIFIED
+ratification:
+  required_signoff: F13_SOVEREIGN
+  architectural_verdict: SEAL_ARCHITECTURE
+  operational_status: HOLD
+  status: DRAFT
+  ratified_by: pending_F13
+  trigger_to_unseal: "Flip `status: DRAFT` \u2192 `status: RATIFIED` and `ratified_by:\
+    \ pending_F13` \u2192 sovereign sign-off. Then seal a Lane A receipt to VAULT999."
+  verdict: SEAL_ARCHITECTURE

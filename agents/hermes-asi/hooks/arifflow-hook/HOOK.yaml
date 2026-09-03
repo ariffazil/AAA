@@ -1,0 +1,5 @@
+name: arifflow-hook
+description: "FQ metabolism receipts. agent:start -> Execute receipt to arifFlow :7073 (KVM8 seat). agent:end -> Verify + Seal receipts. Fail-soft, never blocks gateway."
+events:
+  - agent:start
+  - agent:end

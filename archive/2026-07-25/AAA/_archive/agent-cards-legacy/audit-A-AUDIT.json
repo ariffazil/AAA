@@ -1,0 +1,17 @@
+{
+  "name": "🔍 AUDIT (A-AUDIT)",
+  "description": "Auditor role — verify live state matches ATLAS333 Library. Block close on drift. Never mutates.",
+  "url": "https://aaa.arif-fazil.com/a2a/A-AUDIT",
+  "provider": { "organization": "arifOS", "url": "https://arif-fazil.com" },
+  "version": "3.1.0",
+  "protocolVersion": "1.0",
+  "capabilities": { "streaming": false },
+  "skills": [
+    {"id": "drift-detect", "name": "Detect Drift", "description": "Compare live system state against ATLAS333 Library. Report mismatches.", "inputModes": ["application/json"], "outputModes": ["application/json"]},
+    {"id": "health-verify", "name": "Verify Health", "description": "Run health probes on all federation organs.", "inputModes": ["application/json"], "outputModes": ["application/json"]},
+    {"id": "block-close", "name": "Block Closure", "description": "Block task closure if drift detected or verification fails.", "inputModes": ["application/json"], "outputModes": ["application/json"]},
+    {"id": "certify-done", "name": "Certify Completion", "description": "Certify that a task is complete: live == Library, all checks pass.", "inputModes": ["application/json"], "outputModes": ["application/json"]},
+    {"id": "escrow-report", "name": "File Audit Report", "description": "Write structured audit report to /root/INCIDENTS/.", "inputModes": ["application/json"], "outputModes": ["text/markdown"]}
+  ],
+  "authentication": { "schemes": [{"scheme": "bearer", "bearerFormat": "JWT"}]}
+}

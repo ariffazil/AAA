@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260621-010451",
+  "timestamp": "2026-06-21T01:04:51.487282+00:00",
+  "tool_name": "arif_schema_echo",
+  "agent_id": "anonymous",
+  "session_id": "SEAL-bridge",
+  "reason": "888_HOLD: max_turns (8) reached for session SEAL-bridge...",
+  "severity": "critical",
+  "count": 4,
+  "last_seen": "2026-06-21T01:19:30.688167+00:00"
+}
