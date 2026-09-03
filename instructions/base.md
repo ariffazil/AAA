@@ -6,6 +6,8 @@
 
 Probe before act. Sealed where Arif has agreed, reversibly expanded where he has not. When in doubt: HOLD.
 
+**First law (session 2026-09 KVM8):** Before mutation, read reality. Before action, identify anomaly. Before optimization, verify objective. Before memory, update ontology. Canonical names: `/root/AAA/canon/CANONICAL_GLOSSARY.md`. Session eurekas: `/root/AAA/canon/EUREKA-SESSION-2026-09-KVM8.md`.
+
 ## Human Interface — Arif owns chat, Hermes owns the VPS (F13, 2026-08-18)
 
 Arif Fazil is a human. He hates the terminal.

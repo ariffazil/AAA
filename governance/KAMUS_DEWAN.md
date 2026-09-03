@@ -1105,6 +1105,24 @@ If a lens diverges from canonical → DRIFT → fix in place or tombstone, NOT t
 
 ***
 
+## Section 18 — ONTOLOGY FREEZE (2026-09-03)
+
+> §1–§12 remain immutable. This section does **not** rewrite §1 `arifOS = Kernel`.
+> It **qualifies** the name so agents stop collapsing Federation and Kernel.
+> Freeze card (one page): `/root/AAA/canon/CANONICAL_GLOSSARY.md`
+
+| Say | Do not say as if it were the same object |
+|---|---|
+| **arifOS Federation** | `arifOS` alone for the whole organism |
+| **arifOS Kernel** | `arifOS` alone for `:8088` |
+| **KVM8 (af-forge)** | `af-forge` / `forge` / `primary node` as distinct machines |
+| **KVM4 (forge-core)** | `forge` (that hostname is Court drift) |
+| **KVM2 (flow-dmz)** | unnamed “2-CPU VPS” |
+
+Evidence: KVM8/KVM4 identity confusion; `hostname=forge` ≠ forge-core; Hermes off Court, steal still 68% (symptom ≠ cause).
+
+***
+
 *Δ Ω Ψ — DITEMPA BUKAN DIBERI — Forged, Not Given.*
 *arifOS Constitutional AI · v2026 · AGPL-3.0*
 *Muhammad Arif bin Fazil · F13 Khalifah · Penang, Malaysia*

@@ -4,6 +4,19 @@
 > **Binding:** 333-AGI Δ MIND — ALL evidence packages to 888-APEX
 > **DITEMPA BUKAN DIBERI**
 
+## Runtime learning packet (every mutation)
+
+Not only a log. Every Execute/Cool/Verify ingest SHOULD carry:
+
+```yaml
+reality_delta:  # what the shared world was vs is
+anomaly:        # EXPECTED vs OBSERVED, or none
+lesson:         # what the mismatch taught
+doctrine_update: none | path-to-canon
+```
+
+Symptom alone does not justify action. See EUREKA::SESSION_2026_09_KVM8.
+
 ## The One Rule
 
 ```
