@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Penang & Kulim Weather / Flood Brief</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --page-bg: #FFFFFF;
+    --text-primary: #1A1A2E;
+    --text-secondary: #5C5C6D;
+    --text-caption: #8A8A9A;
+    --accent: #1B5E7B;
+    --accent-light: #E8F4F8;
+    --accent-border: #B8DDE8;
+    --verdict-bg: #F0F7FA;
+    --verdict-border: #1B5E7B;
+    --tag-obs: #2E7D32;
+    --tag-der: #1565C0;
+    --tag-int: #6A1B9A;
+    --tag-spec: #E65100;
+    --divider: #E8E8EE;
+    --page-number: #AAAAAA;
+    --muted-bg: #F5F5F7;
+  }
+  @page { size: A4; margin: 36px 44px 44px 44px; }
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text-primary);
+    background: var(--page-bg);
+    font-size: 9.5pt;
+    line-height: 1.55;
+  }
+  .page { page-break-after: always; position: relative; min-height: 940px; }
+  .page:last-child { page-break-after: auto; }
+
+  /* === COVER === */
+  .cover { padding-top: 70px; }
+  .meta-line { font-size: 8pt; color: var(--text-caption); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  .cover h1 { font-size: 24pt; font-weight: 300; line-height: 1.2; margin-bottom: 8px; }
+  .cover h1 strong { font-weight: 700; }
+  .subtitle { font-size: 10.5pt; color: var(--text-secondary); margin-bottom: 24px; }
+  .accent-bar { width: 56px; height: 3px; background: var(--accent); margin-bottom: 24px; }
+  .verdict-box { background: var(--verdict-bg); border-left: 3px solid var(--verdict-border); padding: 12px 16px; margin-bottom: 22px; max-width: 500px; }
+  .verdict-box .label { font-size: 7.5pt; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); font-weight: 700; margin-bottom: 4px; }
+  .verdict-box p { font-size: 10pt; line-height: 1.5; }
+
+  .metrics-row { display: flex; gap: 14px; margin-top: 18px; }
+  .metric { background: var(--muted-bg); padding: 10px 14px; border-radius: 3px; }
+  .metric .m-val { font-size: 16pt; font-weight: 700; color: var(--accent); line-height: 1.1; }
+  .metric .m-label { font-size: 7pt; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-caption); margin-top: 2px; }
+
+  .footer-meta { position: absolute; bottom: 18px; left: 0; font-size: 7pt; color: var(--text-caption); letter-spacing: 0.5px; }
+
+  /* === HEADERS === */
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; margin-top: 2px; }
+  .section-num { font-size: 9pt; font-weight: 700; color: var(--accent); }
+  .section-title { font-size: 12.5pt; font-weight: 600; }
+
+  .signal { margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--divider); }
+  .signal:last-child { border-bottom: none; padding-bottom: 0; }
+  .signal h3 { font-size: 10pt; font-weight: 600; margin-bottom: 4px; }
+  .signal p { font-size: 9pt; color: var(--text-secondary); line-height: 1.5; }
+
+  .tag { display: inline-block; font-size: 6.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; padding: 1px 5px; border-radius: 2px; margin-left: 4px; }
+  .tag-obs { color: var(--tag-obs); background: #E8F5E9; }
+  .tag-der { color: var(--tag-der); background: #E3F2FD; }
+  .tag-int { color: var(--tag-int); background: #F3E5F5; }
+  .tag-spec { color: var(--tag-spec); background: #FFF3E0; }
+  .source { font-size: 7pt; color: var(--text-caption); font-style: italic; margin-top: 2px; }
+
+  .chart-frame { text-align: center; margin: 10px 0; page-break-inside: avoid; }
+  .chart-frame img { max-width: 100%; }
+  .chart-caption { font-size: 7pt; color: var(--text-caption); margin-top: 3px; }
+
+  .two-col { display: flex; gap: 12px; }
+  .two-col > div { flex: 1; }
+
+  .data-table { width: 100%; border-collapse: collapse; font-size: 8pt; margin: 8px 0; }
+  .data-table th { text-align: left; font-weight: 700; color: var(--text-secondary); font-size: 7pt; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; border-bottom: 2px solid var(--divider); }
+  .data-table td { padding: 4px 8px; border-bottom: 1px solid var(--divider); }
+  .data-table tr:last-child td { border-bottom: none; }
+
+  .page-footer { position: absolute; bottom: 14px; left: 0; right: 0; display: flex; justify-content: space-between; font-size: 6.5pt; color: var(--page-number); }
+  .label-sm { font-size: 7.5pt; text-transform: uppercase; letter-spacing: 1px; color: var(--text-caption); font-weight: 700; margin-bottom: 3px; }
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1: COVER ============ -->
+<div class="page cover">
+  <div class="meta-line">Civic Intelligence Brief · Data Analytics Edition</div>
+  <h1><strong>Penang &amp; Kulim</strong><br>Weather / Flood Status</h1>
+  <div class="subtitle">Advisory · 25 August 2026 · 14:00 MYT</div>
+  <div class="accent-bar"></div>
+  <div class="verdict-box">
+    <div class="label">Lead Verdict</div>
+    <p>No active flood warnings for Penang or Kulim. Isolated thunderstorms clearing by evening. National haze at unhealthy levels across 30 monitoring areas — N95 masks advised for sensitive groups. Best weather window: 28–30 Aug.</p>
+  </div>
+  <div class="metrics-row">
+    <div class="metric"><div class="m-val">0</div><div class="m-label">Active flood alerts</div></div>
+    <div class="metric"><div class="m-val">30</div><div class="m-label">Haze-unhealthy stations</div></div>
+    <div class="metric"><div class="m-val">33°C</div><div class="m-label">Peak temp Thu–Fri</div></div>
+    <div class="metric"><div class="m-val">7</div><div class="m-label">Signals tracked</div></div>
+  </div>
+  <div class="footer-meta">arifOS Civic Intelligence · 7 signals · 5 pages · white theme · budget ~1,400 chars/page text + 6 analytics panels</div>
+</div>
+
+<!-- ============ PAGE 2: FLOOD STATUS ============ -->
+<div class="page">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <span class="section-title">Flood Status</span>
+  </div>
+
+  <div class="chart-frame">
+    <img src="charts/01-flood-history.png" style="width: 88%;">
+    <div class="chart-caption">FIG 1 — Monthly flood incidents. Kulim's Jul spike = Sedim flash flood (17 Jul). [OBS]</div>
+  </div>
+
+  <div class="signal">
+    <h3>Penang &amp; Kulim — No Active Flood Warning</h3>
+    <p>DOA records show zero active flood warnings for both areas as of 25 Aug. Kedah general storm advisory issued 22 Aug carries no flood-specific activation.</p>
+    <span class="tag tag-obs">OBS</span>
+    <div class="source">Source: DOA Portal + Kedah Weather Advisory — retrieved 25 Aug 2026</div>
+  </div>
+
+  <div class="signal">
+    <h3>Residual Risk: Sedim Catchment (17 Jul flash flood)</h3>
+    <p>Flash flood hit Kulim's Sedim area 17 Jul after heavy rainfall. River systems may carry elevated levels — residual downstream flood risk if new heavy rain arrives within days.</p>
+    <span class="tag tag-der">DER</span>
+    <div class="source">Source: The Malaysian Reserve &amp; Bernama via e-NewsinHub, Jul 2026</div>
+  </div>
+
+  <div class="page-footer"><span>Penang &amp; Kulim Weather / Flood Brief</span><span>Page 2 · FIG 1</span></div>
+</div>
+
+<!-- ============ PAGE 3: CURRENT WEATHER + MAP ============ -->
+<div class="page">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <span class="section-title">Current Weather &amp; Regional Map</span>
+  </div>
+
+  <div class="chart-frame">
+    <img src="charts/06-regional-map.png" style="width: 92%;">
+    <div class="chart-caption">FIG 2 — Regional context: haze plume from Sumatra open burning, storm Narra track uncertain. Stylized schematic, not GIS-accurate. [INT]</div>
+  </div>
+
+  <div class="signal">
+    <h3>National Haze: 30 Stations Unhealthy+</h3>
+    <p>Hotspots in Sumatra &amp; Kalimantan push smoke plumes toward Peninsular Malaysia via southwesterly winds. Penang stations typically 100–150 AQI (Unhealthy band). N95 masks for sensitive groups.</p>
+    <span class="tag tag-obs">OBS</span>
+    <div class="source">Source: HAPUA Portal 18 Aug; The Sun &amp; Bernama 23 Aug 2026</div>
+  </div>
+
+  <div class="signal">
+    <h3>Penang Today: Isolated Thunderstorms, Clearing by Evening</h3>
+    <p>Scattered coastal thunderstorms this afternoon clearing by evening. Wind seasonal, sea state moderate — no marine advisory north of Penang.</p>
+    <span class="tag tag-obs">OBS</span>
+    <div class="source">Source: OpenWeatherMap — retrieved 25 Aug 2026, 06:00 UTC</div>
+  </div>
+
+  <div class="page-footer"><span>Penang &amp; Kulim Weather / Flood Brief</span><span>Page 3 · FIG 2</span></div>
+</div>
+
+<!-- ============ PAGE 4: OUTLOOK + RISK ============ -->
+<div class="page">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <span class="section-title">7-Day Outlook &amp; Risk</span>
+  </div>
+
+  <div class="chart-frame">
+    <img src="charts/03-7day-forecast.png" style="width: 90%;">
+    <div class="chart-caption">FIG 3 — Temperature range &amp; precipitation. Green band = clear window 28–30 Aug. [DER]</div>
+  </div>
+
+  <div class="signal">
+    <h3>Tropical Storm Narra — Track Uncertain</h3>
+    <p>TS Narra formed over Philippine Sea 23 Aug. Models show possible typhoon intensification. Impact on South China Sea &amp; Peninsular east coast remains uncertain — monitor met.gov.my.</p>
+    <span class="tag tag-obs">OBS</span>
+    <div class="source">Source: The Star 24 Aug; Astro Awani 25 Aug 2026</div>
+  </div>
+
+  <div class="chart-frame">
+    <img src="charts/05-risk-matrix.png" style="width: 78%;">
+    <div class="chart-caption">FIG 4 — Risk matrix: likelihood × impact for 5 tracked hazards. [INT]</div>
+  </div>
+
+  <div class="page-footer"><span>Penang &amp; Kulim Weather / Flood Brief</span><span>Page 4 · FIG 3–4</span></div>
+</div>
+
+<!-- ============ PAGE 5: METHODOLOGY ============ -->
+<div class="page">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <span class="section-title">Data Pipeline &amp; Sources</span>
+  </div>
+
+  <div class="chart-frame">
+    <img src="charts/04-data-pipeline.png" style="width: 96%;">
+    <div class="chart-caption">FIG 5 — Ingestion → validation → synthesis pipeline with F1/F2 gates. [INT]</div>
+  </div>
+
+  <div class="chart-frame">
+    <img src="charts/02-haze-status.png" style="width: 90%;">
+    <div class="chart-caption">FIG 6 — National haze station distribution across AQI bands. [OBS]</div>
+  </div>
+
+  <div class="label-sm">Source Registry</div>
+  <table class="data-table">
+    <thead><tr><th>Source</th><th>Type</th><th>Retrieved</th></tr></thead>
+    <tbody>
+      <tr><td>DOA Portal (dapurtrends.doa.gov.my)</td><td>Official</td><td>25 Aug 2026</td></tr>
+      <tr><td>OpenWeatherMap API</td><td>Meteorological</td><td>25 Aug 2026</td></tr>
+      <tr><td>HAPUA Portal (hapua.doe.gov.my)</td><td>Official</td><td>18 Aug 2026</td></tr>
+      <tr><td>The Star · Bernama · Astro Awani</td><td>News</td><td>22–25 Aug 2026</td></tr>
+      <tr><td>The Malaysian Reserve · e-NewsinHub</td><td>News</td><td>Jul 2026</td></tr>
+    </tbody>
+  </table>
+
+  <div class="signal">
+    <p>Epistemic discipline: every claim tagged <span class="tag tag-obs">OBS</span> direct source · <span class="tag tag-der">DER</span> derived synthesis · <span class="tag tag-int">INT</span> interpretive · <span class="tag tag-spec">SPEC</span> speculative. No claim without attribution.</p>
+  </div>
+
+  <div class="page-footer"><span>Penang &amp; Kulim Weather / Flood Brief</span><span>Page 5 · FIG 5–6</span></div>
+</div>
+
+</body>
+</html>
