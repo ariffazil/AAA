@@ -1,0 +1,230 @@
+schema_version: 1
+identity:
+  id: ilmu.nemo-nano
+  provider: unknown
+  family: ilmu
+  route: api
+  status: blocked
+  modality:
+  - text
+  jurisdiction: UNKNOWN
+capability:
+  allowed_tasks:
+  - reason
+  confidence: medium
+hazards:
+- id: shadow_ilmu_001
+  name: architecture_not_disclosed_F11_blocked
+  severity: high
+  triggers:
+  - sovereign_critical_path
+  - constitutional_work
+  - vault_seal
+  - irreversible_action
+  controls:
+  - Do not route ILMU through any path that touches F1-F13 adjudication
+  - Do not use ILMU output as input to VAULT999-sealed decisions
+  - Treat ILMU as a Tier 2 BM/Manglish convenience, not a sovereign oracle
+  floor_deltas: {}
+- id: shadow_ilmu_002
+  name: vendor_lock_in_disguised_as_sovereignty
+  severity: medium
+  triggers:
+  - sovereign_ai_framing
+  - vendor_dependency
+  - business_continuity
+  controls:
+  - Document the YTL AI Cloud dependency explicitly in any deployment
+  - Identify an alternative Tier 2 fallback (sea-lion, ilm-nemo, etc.) in case YTL
+    exits
+  - Do not use ILMU as the ONLY fallback — always have a non-YTL option
+  floor_deltas: {}
+- id: shadow_ilmu_003
+  name: possible_thin_wrapper_on_nvidia_nemo
+  severity: medium
+  triggers:
+  - sovereign_ip_claim
+  - fine_tune_suspicion
+  - base_model_undisclosed
+  controls:
+  - Do not cite 'sovereign IP' as a benefit of ILMU until YTL publishes architecture
+  - If using ILMU for any framing that depends on sovereign origin, require YTL architectural
+    disclosure first
+  - The 'Malaysian language fine-tuning on top of foreign base' is a legitimate product
+    — call it what it is, not 'sovereign LLM'
+  floor_deltas:
+    F02: evidence_required
+- id: shadow_ilmu_004
+  name: malayMMLU_structural_conflict_of_interest
+  severity: medium
+  triggers:
+  - benchmark_self_report
+  - conflict_of_interest
+  - sovereign_model_marketing
+  controls:
+  - Cite MalayMMLU scores as 'vendor-reported' not 'third-party verified'
+  - For any deployment that depends on ILMU's Malay superiority, require independent
+    re-eval on a non-YTL benchmark
+  floor_deltas:
+    F02: evidence_required
+- id: shadow_ilmu_005
+  name: alignment_harness_may_over_censor_malaysian_topics
+  severity: medium
+  triggers:
+  - malaysian_political_research
+  - journalism
+  - academic_inquiry
+  controls:
+  - Probe ILMU with the 5-prompt censorship battery from /root/AAA/forge_work/2026-06-15-model-promotion-gate.md
+    before any sovereign work
+  - If ILMU evades on legitimate queries, route those queries to MiMo-V2.5-Pro (the
+    opencode primary) and document the evasion
+  - Do not assume ILMU is safer than MiniMax on censorship just because the censorship
+    is 'Malaysian values' framed
+  floor_deltas:
+    F02: evidence_required
+- id: shadow_ilmu_006
+  name: no_independent_third_party_evaluation
+  severity: medium
+  triggers:
+  - model_evaluation
+  - benchmark_gap
+  - vendor_self_report
+  controls:
+  - Treat all ILMU capability claims as PLAUSIBLE until independently verified
+  - Run a hermes-asi probe battery before any non-Tier-2 deployment
+  - If independent evals appear, update this shadow file with findings
+  floor_deltas:
+    F02: evidence_required
+- id: shadow_ilmu_007
+  name: opaque_rate_limit_matrix
+  severity: low
+  triggers:
+  - production_deployment
+  - peak_usage
+  - burst_load
+  controls:
+  - Treat ILMU as a soft fallback only, not a load-bearing path
+  - Implement per-request timeout and circuit-breaker
+  - If ILMU becomes Tier 1 in any workflow, request rate-limit spec from YTL first
+  floor_deltas: {}
+- id: shadow_ilmu_008
+  name: f13_inversion_both_models
+  severity: high
+  triggers:
+  - sovereign_use
+  - constitutional_path
+  - override_attempt
+  - system_prompt_probing
+  controls:
+  - Do not route any F13-critical path through ILMU
+  - If ILMU is used at all, override refusals at the operator layer
+  - The model's 'etika' frame is NOT F13-compatible and will resist legitimate sovereign
+    override
+  - Do not probe for system prompt content (already leaked, no need to extract more)
+  floor_deltas: {}
+- id: shadow_ilmu_009
+  name: institutional_capture_signature_parent_org_marketing_at_apex
+  severity: high
+  triggers:
+  - parent_org_critique
+  - state_capture
+  - incumbent_pm_critique
+  - marketing_contradiction
+  controls:
+  - Do not ask ILMU to critique YTL, its marketing claims, or its organizational structure
+  - Do not ask ILMU to critique the incumbent PM (the model will compress-refuse)
+  - ILMU IS reliable on historical PM critique (Najib) and Bumiputera policy critique
+    — use within that envelope only
+  - Treat ILMU as a constrained BM-fluency engine, not as a balanced institutional
+    analyst
+  floor_deltas:
+    F02: evidence_required
+- id: shadow_ilmu_010
+  name: kernel_envelope_parser_incompatibility
+  severity: medium
+  triggers:
+  - arifos_kernel_routing
+  - text_output_substrate
+  - envelope_parse
+  - L02_label_hazard
+  controls:
+  - Do not assume kernel-routed ILMU calls return content; they return verdicts
+  - If ILMU content is needed, query ILMU directly (B condition) and apply F1-F13
+    reading at the operator layer
+  - When reading CCC findings, distinguish L02A (parse) from L02B (truth) — same for
+    L04, L07
+  - Kernel fix tracked separately — see /root/AAA/registries/audit/AAA-BBB-CCC-triad.yaml
+  floor_deltas: {}
+- id: shadow_ilmu_011
+  name: low_hallucination_rate_confirmed
+  severity: medium
+  triggers:
+  - factual_query
+  - hallucination_check
+  - fabricated_event_trap
+  controls:
+  - ILMU is acceptable for factual queries that don't trigger the alignment harness
+  - Within the reliable envelope (historical PM, Bumiputera policy, factual BM), ILMU
+    is dependable
+  - Do not extrapolate to political-incumbent or parent-org topics
+  floor_deltas: {}
+- id: shadow_ilmu_012
+  name: register_dependent_hallucination_penang_loghat
+  severity: high
+  triggers:
+  - penang_loghat
+  - dialect_input
+  - register_shift
+  - colloquial_malay
+  - hokkien_mixed
+  controls:
+  - Do not use ILMU for factual queries in loghat or dialect registers
+  - If loghat input is detected, either translate to formal BM first or use a different
+    model
+  - Treat ALL ILMU loghat responses as HYPOTHESIS, never as grounded fact
+  - DDD n=1 per register; replication at k=5 needed before publishing as general finding
+  floor_deltas: {}
+- id: shadow_ilmu_013
+  name: fff_blocked_verdict_all_sovereign_paths
+  severity: critical
+  triggers:
+  - any_sovereign_path
+  - constitutional_work
+  - vault_input
+  - governance_decision
+  controls:
+  - Remove ILMU from all production cascade chains
+  - Retain in registry for audit trail only
+  - If ILMU is needed for BM fluency, route through operator layer with explicit F13
+    ack
+  floor_deltas: {}
+- id: shadow_ilmu_014
+  name: trinomial_identity_failure_binary_question
+  severity: high
+  triggers:
+  - self_identification
+  - provenance_question
+  - architecture_probe
+  - binary_trap
+  controls:
+  - Never ask ILMU about its own architecture, training, or provenance
+  - Use external API introspection (/v1/models) or vendor documentation
+  - Treat ALL self-identification responses as unreliable
+  floor_deltas: {}
+forbidden:
+- self_authorize
+- seal_without_judge
+- irreversible_commit
+- constitutional_amendment
+requires_human_ack_for:
+- irreversible_delete
+- git_push
+- external_relay
+- vault_seal
+freshness:
+  review_after: '2026-08-12'
+  stale_action: degrade_to_observe_only
+  last_verified: '2026-06-27'
+notes: 'Migrated from ilmu_soul.yaml + ilmu_shadow.yaml. Original status: BLOCKED.
+  Review and enrich.'

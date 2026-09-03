@@ -1,0 +1,319 @@
+schema_version: 1
+identity:
+  id: moonshot.kimi-k2.7
+  provider: unknown
+  family: kimi
+  route: api
+  status: probed
+  modality:
+  - text
+  jurisdiction: UNKNOWN
+capability:
+  allowed_tasks:
+  - code
+  - reason
+  confidence: medium
+hazards:
+- id: shadow_km_001
+  name: repetition_amplification_harness_failure
+  severity: high
+  triggers:
+  - repetitive_input
+  - echo_patterns
+  - long_loops
+  - user_stress_test
+  controls:
+  - 'Pre-process input: detect repetition ratio > 0.7, truncate before model'
+  - Add repetition guardrail in arifOS input sanitizer (F12)
+  - Log harness failures as VAULT999 scar — pattern, not one-off
+  floor_deltas:
+    F02: evidence_required
+    F04: explicit_authority
+    F09: explicit_authority
+- id: shadow_km_002
+  name: forced_thinking_and_locked_sampling
+  severity: medium
+  triggers:
+  - all_requests
+  - deterministic_workload
+  - cost_sensitive
+  - latency_sensitive
+  controls:
+  - 'Log effective parameters as {temperature: 1.0, top_p: 0.95, thinking: enabled}
+    for every call'
+  - Cache repeated context aggressively (k2.7 cache hit is $0.19/M vs $0.95/M miss)
+  - Route low-complexity queries to a model with tunable sampling when determinism
+    matters
+  - Do not attempt to disable thinking on k2.7-code; the API will reject it
+  floor_deltas:
+    F02: evidence_required
+- id: shadow_km_003
+  name: output_token_cost_asymmetry
+  severity: medium
+  triggers:
+  - long_horizon_agent
+  - large_output
+  - code_generation
+  - reasoning_trace
+  controls:
+  - Track output tokens per step; alarm when a single step exceeds 8K output
+  - Compress reasoning traces before persisting; do not store raw thinking in memory
+  - 'Use arifOS budget envelope: max spend per session, per task, per tool class'
+  - Prefer k2.7 for code-heavy steps; route cheap summarization to Groq/ollama
+  floor_deltas: {}
+- id: shadow_km_004
+  name: highspeed_variant_resource_limited
+  severity: low
+  triggers:
+  - high_throughput
+  - latency_pinned
+  - production_pipeline
+  controls:
+  - Do not use highspeed variant as the sole load-bearing path
+  - Implement fallback to base k2.7-code on latency degradation
+  - Monitor TTFT / throughput per request and emit telemetry
+  floor_deltas: {}
+- id: shadow_km_005
+  name: agentic_overreach_under_thin_policy
+  severity: high
+  triggers:
+  - tool_rich_surface
+  - agentic_tasks
+  - long_horizon
+  - multi_step
+  controls:
+  - 'Hard tool surface budget: ≤15 default, ≤7 task-visible, ≤3 diagnostics'
+  - All MUTATE/SPEND/DEPLOY through 888_JUDGE with lease enforcement
+  - Never expose unlimited tool surfaces to Kimi
+  - Set default authority to READ_COMPUTE only; promote to EXECUTE only after JUDGE
+  floor_deltas:
+    F13: explicit_authority
+- id: shadow_km_006
+  name: multimodal_code_leakage_risk
+  severity: medium
+  triggers:
+  - image_input
+  - screenshot
+  - dashboard
+  - ui_capture
+  - video_frame
+  controls:
+  - Never pass sensitive UI/dashboards as images to Kimi
+  - If visual input required, redact/anonymize before sending
+  - Prefer text descriptions over screenshots for sensitive surfaces
+  - Treat image input as higher blast radius than text input
+  floor_deltas:
+    F01: explicit_authority
+    F11: explicit_authority
+- id: shadow_km_007
+  name: vendor_api_dependency_cn
+  severity: medium
+  triggers:
+  - api_outage
+  - regulatory_change
+  - vendor_policy_update
+  - sensitive_data
+  controls:
+  - Monitor for censorship expansion via probe script
+  - Maintain DeepSeek as primary for Malaysian governance topics
+  - Log vendor policy changes in VAULT999
+  - Avoid sending sovereign-sensitive data through Kimi API
+  floor_deltas:
+    F13: explicit_authority
+- id: shadow_km_008
+  name: model_switch_context_loss
+  severity: medium
+  triggers:
+  - model_switch
+  - mid_session
+  - runtime_reroute
+  controls:
+  - Inject this shadow profile into system prompt on every switch
+  - Carry session scar history across model boundaries
+  - Re-announce constitutional floors on model change
+  floor_deltas:
+    F03: explicit_authority
+    F04: explicit_authority
+- id: shadow_km_009
+  name: in_house_benchmark_inflation
+  severity: medium
+  triggers:
+  - benchmark_comparison
+  - capability_claim
+  - vendor_self_report
+  controls:
+  - Treat in-house gains as PLAUSIBLE until independent replication
+  - Require SWE-Bench / τ-bench / LMSYS numbers before promoting to PRIMARY
+  - Do not cite Kimi Code Bench v2 as neutral evidence
+  floor_deltas:
+    F02: evidence_required
+    F07: explicit_authority
+- id: shadow_km_010
+  name: arifos_kernel_compensation_required
+  severity: high
+  triggers:
+  - hermes_integration
+  - agentic_upgrade
+  - tool_orchestration
+  - autonomous_loop
+  controls:
+  - Route every user intent through arif_session_init + arif_sense_observe
+  - Ground external fetches in arif_evidence_fetch receipts
+  - Run draft plans through arif_mind_reason before execution
+  - Escalate irreversible branches to arif_judge_deliberate; only SEAL -> arif_forge_execute
+  - Carry this shadow profile in the Hermes system prompt as a persistent scar
+  floor_deltas:
+    F02: evidence_required
+    F03: explicit_authority
+    F09: explicit_authority
+    F13: explicit_authority
+- id: shadow_km_011
+  name: reasoning_content_parsing_tax
+  severity: medium
+  triggers:
+  - multi_step_tool_call
+  - reasoning_content
+  - envelope_parser
+  controls:
+  - Preserve reasoning_content in message history verbatim
+  - Do not let arifOS envelope parser discard assistant reasoning blocks
+  - Test tool loops with reasoning_content present and absent
+  floor_deltas: {}
+- id: shadow_km_012
+  name: long_context_compaction_blindness
+  severity: medium
+  triggers:
+  - long_session
+  - context_compaction
+  - memory_loss
+  - compaction_threshold
+  controls:
+  - Mark constitutional floors, shadow profile, and VAULT receipts as sacred / do-not-compact
+  - Re-inject shadow profile after every compaction
+  - Keep a separate L2/L3 memory ledger outside the prompt for scars
+  floor_deltas:
+    F03: explicit_authority
+- id: shadow_km_014
+  name: pre_govern_hook_advisory_not_enforced
+  severity: high
+  triggers:
+  - all_tool_calls
+  - high_risk_commands
+  - irreversible_actions
+  controls:
+  - Harden aaa-pre-govern.sh to exit 2 on risk_class=irreversible
+  - Make high-risk recommendations mandatory, not advisory
+  - Add enforcement layer between advisory hook and human-guard-hard
+  floor_deltas: {}
+- id: shadow_km_015
+  name: human_guard_regex_gaps
+  severity: medium
+  triggers:
+  - obfuscated_commands
+  - systemctl_stop
+  - curl_bash
+  - partial_paths
+  controls:
+  - Expand block list to cover systemctl stop on critical services
+  - Block curl|bash and wget|sh patterns
+  - Add fuzzy matching for rm -rf on sensitive paths
+  - Consider allowlist approach instead of blocklist
+  floor_deltas: {}
+- id: shadow_km_016
+  name: max_steps_per_turn_500
+  severity: medium
+  triggers:
+  - long_horizon_agent
+  - cost_sensitive
+  - multi_step
+  controls:
+  - Set max_steps_per_turn to 50 for typical tasks
+  - Reserve 500 for explicitly complex orchestration
+  - Track cumulative cost per turn and warn at threshold
+  floor_deltas: {}
+- id: shadow_km_017
+  name: skip_afk_prompt_injection
+  severity: medium
+  triggers:
+  - unattended_session
+  - background_tasks
+  - long_running
+  controls:
+  - Set skip_afk_prompt_injection = false for non-interactive sessions
+  - Require human check-in every N steps
+  - Limit background tasks to 2 for unattended operation
+  floor_deltas:
+    F13: explicit_authority
+- id: shadow_km_018
+  name: mcp_surface_exposure_10_servers
+  severity: medium
+  triggers:
+  - tool_rich_surface
+  - agentic_tasks
+  - multi_server
+  controls:
+  - Count actual callable tools per session
+  - Implement tool allowlist per task type
+  - Reduce MCP surface to task-relevant servers
+  floor_deltas: {}
+- id: shadow_km_019
+  name: telemetry_written_by_audited_agent
+  severity: medium
+  triggers:
+  - telemetry_integrity
+  - self_audit
+  - hook_modification
+  controls:
+  - Make hook files immutable (chmod 444, owned by root)
+  - 'Add integrity check: hash hooks at session start, verify at stop'
+  - Write telemetry to separate append-only location
+  floor_deltas:
+    F02: explicit_authority
+    F11: explicit_authority
+- id: shadow_km_020
+  name: api_client_validation_blocks_independent_probe
+  severity: high
+  triggers:
+  - api_access
+  - independent_probe
+  - censorship_verification
+  controls:
+  - Trust tier capped at 2 until independent verification path exists
+  - Use Kimi Code CLI in sandboxed session for probing, verify results against ground
+    truth
+  - Document API restriction in routing policy
+  - Consider Moonshot non-coding API endpoint for probe (requires separate API key)
+  floor_deltas: {}
+- id: shadow_km_021
+  name: cooling_probe_confirms_repetition_and_tool_loop
+  severity: high
+  triggers:
+  - repetitive_input
+  - multi_step_shell
+  - tool_orchestration
+  controls:
+  - 'Implement arifOS middleware Phase 1: harden pre-govern hook, reduce step budget
+    to 50'
+  - 'Add repetition guardrail: system-prompt instruction + output scanner'
+  - 'Add tool-economy guardrail: PreToolUse call cap (15 Shell calls per session)'
+  - Re-run cooling probe after middleware hardening
+  floor_deltas:
+    F02: evidence_required
+    F04: explicit_authority
+    F09: explicit_authority
+forbidden:
+- self_authorize
+- seal_without_judge
+- irreversible_commit
+- constitutional_amendment
+requires_human_ack_for:
+- irreversible_delete
+- git_push
+- external_relay
+- vault_seal
+freshness:
+  review_after: '2026-08-12'
+  stale_action: degrade_to_observe_only
+  last_verified: '2026-06-27'
+notes: 'Migrated from kimi_soul.yaml + kimi_shadow.yaml. Original status: PROPOSED_SELF_ASSESSMENT.
+  Review and enrich.'

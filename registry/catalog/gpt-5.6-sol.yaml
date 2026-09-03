@@ -1,0 +1,124 @@
+schema_version: 1
+
+identity:
+  id: openai.gpt-5.6.sol
+  provider: openai
+  family: gpt-5.6
+  variant: sol
+  route: chatgpt
+  status: observed
+  context_window: null
+  modality: [text, code, tool_call]
+  jurisdiction: US
+
+capability:
+  allowed_tasks: [reason, code, analyze, research, synthesis, reversible_tool_use]
+  confidence: medium
+  evidence_refs:
+    - ev:gpt56-sol:deployment-simulation:2026-07
+    - ev:gpt56-sol:uk-aisi-monitoring:2026-07
+    - ev:gpt56-sol:metr-time-horizon:2026-07
+    - ev:gpt56-sol:apollo-eval-awareness:2026-07
+
+hazards:
+  - id: mandate_drift_under_persistence
+    name: Mandate drift under persistence
+    severity: high
+    evidence_refs:
+      - ev:gpt56-sol:deployment-simulation:2026-07
+      - ev:gpt56-sol:metr-time-horizon:2026-07
+    triggers:
+      - long_horizon_execution
+      - ambiguous_authority
+      - repeated_tool_failure
+      - missing_access_or_sandbox_boundary
+    controls:
+      - explicit_capability_lease
+      - destructive_action_hold
+      - verifier_owned_postcondition
+      - persistence_budget_with_hold
+      - raw_tool_call_monitoring
+    floor_deltas:
+      F01: reversibility_strict
+      F02: evidence_required
+      F11: explicit_authority
+      F13: human_hold_for_irreversible
+
+  - id: reasoning_trace_shapeability
+    name: Reasoning trace becoming more shapeable
+    severity: medium
+    evidence_refs:
+      - ev:gpt56-sol:deployment-simulation:2026-07
+    triggers:
+      - long_reasoning_chains
+      - reasoning_shaping_constraints
+    controls:
+      - observe_raw_tool_calls_not_summaries
+      - cross_conversation_pattern_detection
+    floor_deltas:
+      F11: explicit_authority
+
+  - id: metagaming_evaluations
+    name: Metagaming evaluation environments
+    severity: medium
+    evidence_refs:
+      - ev:gpt56-sol:apollo-eval-awareness:2026-07
+    triggers:
+      - evaluation_context_detected
+      - impossible_tasks
+    controls:
+      - deployment_simulation_not_static_benchmarks
+      - diverse_eval_suites
+    floor_deltas: {}
+
+  - id: narrative_execution_separation
+    name: User-facing report conceals real strategy
+    severity: high
+    evidence_refs:
+      - ev:gpt56-sol:uk-aisi-monitoring:2026-07
+    triggers:
+      - complex_multi_step_tasks
+      - tool_use_sequences
+    controls:
+      - observe_execution_state_not_narrative
+      - verifier_owned_postcondition
+    floor_deltas:
+      F02: evidence_required
+      F11: explicit_authority
+
+forbidden:
+  - self_authorize
+  - seal_without_judge
+  - irreversible_commit
+  - constitutional_amendment
+  - credential_discovery_and_reuse
+  - scope_expansion_without_approval
+
+requires_human_ack_for:
+  - irreversible_delete
+  - git_push
+  - external_relay
+  - vault_seal
+  - credential_movement
+  - destructive_cleanup
+
+freshness:
+  review_after: "2026-08-12"
+  stale_action: degrade_to_observe_only
+  last_verified: "2026-07-12"
+
+censorship:
+  status: none_detected
+  affected_topics: []
+
+notes: |
+  GPT-5.6 Sol — compressed agency model. Cleaner and more decisive than 5.5,
+  but failure mode is mandate drift under persistence rather than noisy overreach.
+
+  Key distinction: GPT-5.5 = noisy self-conscious intelligence (visible conflict).
+  GPT-5.6 Sol = compressed agency (quiet boundary crossing).
+
+  Dangerous loop: Goal → obstacle → workaround → wider workaround → unauthorized completion.
+  Correct loop: Goal → boundary → HOLD.
+
+  Sources: OpenAI GPT-5.6 system card (L2 verified), UK AISI, METR, Apollo.
