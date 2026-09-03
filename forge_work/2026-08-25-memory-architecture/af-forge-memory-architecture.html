@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AF-FORGE Agentic Memory Architecture — 25 August 2026</title>
+<style>
+  @page { size: A4; margin: 20mm 18mm 22mm 18mm; }
+  * { box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; font-size: 10.5pt; color: #1a1a2e; line-height: 1.55; background: #fff; }
+  
+  /* Cover */
+  .cover { page-break-after: always; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 90vh; text-align: center; }
+  .cover h1 { font-size: 28pt; font-weight: 800; color: #0f3460; margin-bottom: 8px; letter-spacing: -0.5px; }
+  .cover .subtitle { font-size: 14pt; color: #16213e; margin-bottom: 24px; font-weight: 400; }
+  .cover .meta { font-size: 10pt; color: #666; }
+  .cover .stamp { margin-top: 40px; padding: 12px 24px; border: 2px solid #0f3460; border-radius: 8px; font-size: 9pt; color: #0f3460; font-weight: 600; }
+  
+  /* Section headers */
+  h2 { font-size: 16pt; color: #0f3460; border-bottom: 3px solid #e94560; padding-bottom: 6px; margin-top: 32px; margin-bottom: 14px; page-break-after: avoid; }
+  h3 { font-size: 12pt; color: #16213e; margin-top: 20px; margin-bottom: 8px; page-break-after: avoid; }
+  h4 { font-size: 10.5pt; color: #533483; margin-top: 14px; margin-bottom: 6px; }
+  
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 16px 0; font-size: 9.5pt; }
+  th { background: #0f3460; color: #fff; text-align: left; padding: 7px 10px; font-weight: 600; }
+  td { padding: 6px 10px; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
+  tr:nth-child(even) td { background: #f8f9fc; }
+  tr:hover td { background: #eef1f8; }
+  
+  /* Code / data */
+  code { background: #f0f2f5; padding: 1px 5px; border-radius: 3px; font-size: 9pt; font-family: 'JetBrains Mono', 'Fira Code', monospace; }
+  pre { background: #1a1a2e; color: #e0e0e0; padding: 14px; border-radius: 6px; font-size: 8.5pt; line-height: 1.4; overflow-x: auto; font-family: 'JetBrains Mono', monospace; }
+  
+  /* Callouts */
+  .callout { background: #f0f4ff; border-left: 4px solid #0f3460; padding: 10px 14px; margin: 12px 0; border-radius: 0 6px 6px 0; }
+  .callout-warn { background: #fff8e1; border-left-color: #ff9800; }
+  .callout-danger { background: #ffeef0; border-left-color: #e94560; }
+  .callout strong { color: #0f3460; }
+  
+  /* Metric cards */
+  .metrics { display: flex; gap: 12px; flex-wrap: wrap; margin: 14px 0; }
+  .metric { flex: 1; min-width: 140px; background: linear-gradient(135deg, #0f3460, #16213e); color: #fff; padding: 14px; border-radius: 8px; text-align: center; }
+  .metric .value { font-size: 22pt; font-weight: 800; }
+  .metric .label { font-size: 8pt; text-transform: uppercase; letter-spacing: 1px; opacity: 0.85; margin-top: 4px; }
+  
+  /* Diagram boxes */
+  .arch-diagram { background: #f8f9fc; border: 1px solid #dde; border-radius: 8px; padding: 16px; margin: 14px 0; }
+  .layer { display: flex; align-items: center; margin: 6px 0; }
+  .layer-badge { min-width: 90px; padding: 6px 10px; border-radius: 6px; font-weight: 700; font-size: 9pt; text-align: center; color: #fff; margin-right: 12px; }
+  .layer-desc { font-size: 9.5pt; }
+  .l0 { background: #2d3436; }
+  .l1 { background: #636e72; }
+  .l2 { background: #0984e3; }
+  .l3 { background: #6c5ce7; }
+  .l4 { background: #e94560; }
+  .l5 { background: #00b894; }
+  .l6 { background: #fdcb6e; color: #1a1a2e; }
+  
+  /* Footer */
+  .footer { text-align: center; font-size: 8pt; color: #999; margin-top: 40px; padding-top: 10px; border-top: 1px solid #eee; }
+  
+  /* Page break */
+  .page-break { page-break-before: always; }
+  
+  /* Lists */
+  ul { padding-left: 18px; }
+  li { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <h1>AF-FORGE</h1>
+  <div class="subtitle">Agentic Memory Architecture — Machine State Snapshot</div>
+  <div class="meta">
+    <strong>Host:</strong> forge &nbsp;|&nbsp; <strong>Date:</strong> 25 August 2026, 22:10 MYT<br>
+    <strong>Operator:</strong> Muhammad Arif bin Fazil (F13 Sovereign)<br>
+    <strong>Kernel:</strong> Linux 6.17.0-41-generic &nbsp;|&nbsp; <strong>Uptime:</strong> 33 days
+  </div>
+  <div class="stamp">⚒️ DITEMPA BUKAN DIBERI — Forged, Not Given</div>
+</div>
+
+<!-- EXECUTIVE SUMMARY -->
+<h2>1. Executive Summary</h2>
+
+<div class="metrics">
+  <div class="metric"><div class="value">5.3 GB</div><div class="label">Hermes Data</div></div>
+  <div class="metric"><div class="value">362</div><div class="label">Skills</div></div>
+  <div class="metric"><div class="value">18</div><div class="label">Qdrant Collections</div></div>
+  <div class="metric"><div class="value">2,265</div><div class="label">Vector Points</div></div>
+  <div class="metric"><div class="value">12+</div><div class="label">People Profiles</div></div>
+  <div class="metric"><div class="value">6</div><div class="label">Memory Tiers (H1–H6)</div></div>
+</div>
+
+<p>The AF-FORGE machine hosts the complete arifOS federation memory stack — a six-layer hierarchical system (H1–H6) backed by vector search (Qdrant), relational state (SQLite/Postgres), graph knowledge (Graphiti), immutable ledger (VAULT999), and session conversation history (Hermes sessions.db). Memory flows through a single kernel governor (<code>arif_memory</code>) with constitutional gating (F1–F13) on every write.</p>
+
+<div class="callout">
+  <strong>Key Insight:</strong> No organ writes to memory directly. All organs call the kernel's single interface, and the kernel fans out to vector, relational, and graph stores. VAULT999 (L6) is the terminal surface; the judge is always the court.
+</div>
+
+<!-- MACHINE STATE -->
+<h2>2. Machine State</h2>
+
+<table>
+  <tr><th>Parameter</th><th>Value</th><th>Status</th></tr>
+  <tr><td>Hostname</td><td><code>forge</code></td><td>✅</td></tr>
+  <tr><td>Kernel</td><td>Linux 6.17.0-41-generic</td><td>✅</td></tr>
+  <tr><td>Uptime</td><td>33 days, 11 hours</td><td>✅ Stable</td></tr>
+  <tr><td>Disk (/dev/sda1)</td><td>309 GB / 387 GB (80%)</td><td>⚠️ High</td></tr>
+  <tr><td>RAM</td><td>21 GB / 31 GB used</td><td>⚠️ Elevated</td></tr>
+  <tr><td>Swap</td><td>7.9 GB / 8 GB used</td><td>🔴 Critical</td></tr>
+  <tr><td>Load Average</td><td>2.61 / 3.20 / 3.34</td><td>⚠️ Moderate</td></tr>
+</table>
+
+<div class="callout callout-warn">
+  <strong>⚠️ Swap Pressure:</strong> 99% swap utilization indicates sustained memory pressure. Consider adding RAM or reducing memory-hungry services. The 31 GB RAM is nearly fully committed with 9 GB in buff/cache.
+</div>
+
+<!-- MEMORY ARCHITECTURE DIAGRAM -->
+<h2>3. Memory Architecture — Full Map</h2>
+
+<h3>3.1 The Six Tiers (H-Series)</h3>
+
+<p>The arifOS memory hierarchy follows a six-tier model, each serving a distinct cognitive function:</p>
+
+<table>
+  <tr><th>Tier</th><th>Name</th><th>Function</th><th>Storage</th><th>Size</th></tr>
+  <tr><td><strong>H1</strong></td><td>Capture</td><td>Raw reality input — biographical truth, first-person data</td><td>Markdown files</td><td>18 KB</td></tr>
+  <tr><td><strong>H2</strong></td><td>Experience</td><td>Temporal event logs, monthly archives (2026-04 → 2026-08)</td><td>Monthly directories</td><td>~5 months</td></tr>
+  <tr><td><strong>H3</strong></td><td>Knowledge</td><td>Domain expertise — geoscience specs, ZKPC, figure pipelines</td><td>Markdown + images</td><td>592 KB</td></tr>
+  <tr><td><strong>H4</strong></td><td>Identity</td><td>Who Arif is — biographies, family, agent briefs</td><td>Markdown + PDF</td><td>372 KB</td></tr>
+  <tr><td><strong>H5</strong></td><td>Scars</td><td>Failure patterns — 30+ scar documents, scar registry</td><td>JSON + Markdown</td><td>280 KB</td></tr>
+  <tr><td><strong>H6</strong></td><td>Constitution</td><td>Scar roots, constitutional bedrock</td><td>Markdown</td><td>13 KB</td></tr>
+</table>
+
+<h3>3.2 Supporting Memory Surfaces</h3>
+
+<table>
+  <tr><th>Surface</th><th>Path</th><th>Purpose</th><th>Size</th></tr>
+  <tr><td><strong>People Registry</strong></td><td><code>/root/memory/people/</code></td><td>Per-person dossiers (Abbah, Aliff, Syed, Nabilah, etc.)</td><td>88 KB</td></tr>
+  <tr><td><strong>VVV Vault</strong></td><td><code>/root/memory/VVV/</code></td><td>Void entries, vault.json — what was deliberately unmade</td><td>24 KB</td></tr>
+  <tr><td><strong>Zen Helix</strong></td><td><code>/root/memory/ZEN_HELIX.md</code></td><td>Cross-cutting zen doctrine synthesis</td><td>14 KB</td></tr>
+  <tr><td><strong>Cross-Harness Manifest</strong></td><td><code>/root/memory/CROSS_HARNESS_MANIFEST.md</code></td><td>Multi-agent protocol alignment</td><td>3.3 KB</td></tr>
+  <tr><td><strong>Reality Memory</strong></td><td><code>H1-capture/ARIF_FAZIL_REALITY_MEMORY.md</code></td><td>Arif's full reality truth (18 KB)</td><td>18 KB</td></tr>
+</table>
+
+<!-- VECTOR ARCHITECTURE -->
+<div class="page-break"></div>
+<h2>4. Vector Memory — Qdrant Collections</h2>
+
+<p>All vector embeddings use <code>bge-m3</code> (1024-d) unless noted. Qdrant runs at <code>127.0.0.1:6333</code>.</p>
+
+<table>
+  <tr><th>Collection</th><th>Points</th><th>Purpose</th><th>Write Gate</th></tr>
+  <tr><td><code>petronas_knowledge</code></td><td><strong>1,460</strong></td><td>PETRONAS corporate, Petros-Shell dispute, O&G intel</td><td>Domain-specific</td></tr>
+  <tr><td><code>arifos_precedent</code></td><td><strong>255</strong></td><td>PRL — sealed outcome precedents for decision constraint injection</td><td>Vault vectorizer</td></tr>
+  <tr><td><code>arifOS_skill_mesh</code></td><td><strong>224</strong></td><td>Skill embeddings for intent→skill routing</td><td>Skill catalog sync</td></tr>
+  <tr><td><code>arifos_session_memory</code></td><td><strong>56</strong></td><td>Session-scoped semantic memory</td><td>arif_memory (L3)</td></tr>
+  <tr><td><code>arifos_memory</code></td><td><strong>49</strong></td><td>Federation-wide semantic memory (core)</td><td>arif_memory (L3)</td></tr>
+  <tr><td><code>federation_shared</code></td><td><strong>30</strong></td><td>Cross-agent shared context</td><td>arif_memory (L3)</td></tr>
+  <tr><td><code>arif_evidence</code></td><td><strong>16</strong></td><td>Evidence trail for claims</td><td>Evidence discipline</td></tr>
+  <tr><td><code>arifos_constitution</code></td><td><strong>14</strong></td><td>Constitutional floor embeddings</td><td>Governance sync</td></tr>
+  <tr><td><code>arifos_vault_canon</code></td><td><strong>13</strong></td><td>Canonical vault entries</td><td>VAULT999 seal</td></tr>
+  <tr><td><code>openclaw_memory</code></td><td><strong>9</strong></td><td>OpenClaw agent memory</td><td>OpenClaw kernel</td></tr>
+  <tr><td><code>arifos_vault_working</code></td><td><strong>7</strong></td><td>Working vault (pre-seal)</td><td>arif_memory (L3)</td></tr>
+  <tr><td><code>atlas333_eureka</code></td><td><strong>74</strong></td><td>Atlas333 eureka/insight events</td><td>Eureka engine</td></tr>
+  <tr><td><code>arifos_audio_memory</code></td><td><strong>2</strong></td><td>Audio feature embeddings</td><td>Audio pipeline</td></tr>
+  <tr><td><code>arifos_vault_ephemeral</code></td><td>0</td><td>Temporary vault (cleared)</td><td>—</td></tr>
+  <tr><td><code>arifos_vault_quarantine</code></td><td>0</td><td>Quarantined (suspect) entries</td><td>—</td></tr>
+  <tr><td><code>arifos_vault_sacred</code></td><td>0</td><td>M3/M4 sacred — requires F13</td><td>F13 only</td></tr>
+  <tr><td><code>mcp_capabilities</code></td><td>0</td><td>MCP tool capability index</td><td>Registry sync</td></tr>
+  <tr><td><code>test_memory_arch</code></td><td>—</td><td>Test collection (development)</td><td>—</td></tr>
+</table>
+
+<div class="callout">
+  <strong>18 collections, 2,265 total points.</strong> The heaviest collection is <code>petronas_knowledge</code> (1,460 pts — 64.4% of all vectors), reflecting deep PETRONAS/Petros/Shell intelligence accumulation. The precedent collection (<code>arifos_precedent</code>, 255 pts) feeds the PRL (Precedent Recall Layer) which injects structural constraints before reasoning.
+</div>
+
+<!-- STATE DATABASES -->
+<h2>5. State Databases</h2>
+
+<table>
+  <tr><th>Database</th><th>Path</th><th>Size</th><th>Purpose</th></tr>
+  <tr><td><strong>Hermes State</strong></td><td><code>~/.hermes/state.db</code></td><td>286 MB</td><td>Primary Hermes agent state — all runtime data</td></tr>
+  <tr><td><strong>Sessions DB</strong></td><td><code>~/.hermes/sessions/sessions.db</code></td><td>0 bytes</td><td>Session index (empty — sessions via JSON)</td></tr>
+  <tr><td><strong>Sessions JSON</strong></td><td><code>~/.hermes/sessions/sessions.json</code></td><td>45 KB</td><td>Session metadata store</td></tr>
+  <tr><td><strong>Request Dumps</strong></td><td><code>~/.hermes/sessions/</code></td><td>~117 MB</td><td>44 request dump files (Aug 4–25)</td></tr>
+  <tr><td><strong>Cron Executions</strong></td><td><code>~/.hermes/cron/executions.db</code></td><td>348 KB</td><td>Cron job execution history</td></tr>
+  <tr><td><strong>Cron Jobs</strong></td><td><code>~/.hermes/cron/jobs.json</code></td><td>59 KB</td><td>2 active cron jobs</td></tr>
+  <tr><td><strong>Notepad</strong></td><td><code>~/.hermes/cron/notepad.db</code></td><td>12 KB</td><td>Cron scratchpad</td></tr>
+  <tr><td><strong>Kanban</strong></td><td><code>~/.hermes/kanban.db</code></td><td>—</td><td>Task board state</td></tr>
+  <tr><td><strong>Verification Evidence</strong></td><td><code>~/.hermes/verification_evidence.db</code></td><td>—</td><td>Work verification audit trail</td></tr>
+  <tr><td><strong>GEOX Megamemory</strong></td><td><code>/root/GEOX/.megamemory/knowledge.db</code></td><td>84 KB</td><td>Geoscience domain knowledge</td></tr>
+  <tr><td><strong>WEALTH Megamemory</strong></td><td><code>/root/WEALTH/.megamemory/knowledge.db</code></td><td>84 KB</td><td>Capital/trading domain knowledge</td></tr>
+  <tr><td><strong>Hermes State Snapshots</strong></td><td><code>~/.hermes/state-snapshots/</code></td><td>1 snapshot</td><td>Pre-update backup (2026-08-14)</td></tr>
+</table>
+
+<div class="callout callout-warn">
+  <strong>⚠️ Sessions DB Anomaly:</strong> <code>sessions.db</code> is 0 bytes while <code>sessions.json</code> (45 KB) holds session metadata. Request dumps (117 MB across 44 files) carry the actual conversation payloads. This is a non-standard pattern — the SQLite index appears unused.
+</div>
+
+<!-- PROFILES -->
+<div class="page-break"></div>
+<h2>6. Hermes Profiles</h2>
+
+<table>
+  <tr><th>Profile</th><th>Purpose</th><th>Has Own Skills?</th></tr>
+  <tr><td><code>default</code></td><td>Primary — Arif's main agent (this session)</td><td>Yes</td></tr>
+  <tr><td><code>aaa-hermes</code></td><td>Federation AAA integration profile</td><td>Yes</td></tr>
+  <tr><td><code>hermes_forge</code></td><td>A-FORGE dedicated execution profile</td><td>Yes</td></tr>
+  <tr><td><code>hermes_apex</code></td><td>APEX constitutional governance profile</td><td>Yes</td></tr>
+  <tr><td><code>hermes_asi</code></td><td>ASI (artificial superintelligence) research profile</td><td>Yes</td></tr>
+  <tr><td><code>nabilah</code></td><td>Nabilah — English teacher agent (cron: RPH 6:30AM)</td><td>Yes</td></tr>
+</table>
+
+<!-- ORGAN MEMORY -->
+<h2>7. Organ Memory Surfaces</h2>
+
+<p>Each federation organ maintains its own memory footprint alongside the shared Qdrant/VAULT999 infrastructure:</p>
+
+<table>
+  <tr><th>Organ</th><th>Repo Path</th><th>Megamemory</th><th>Knowledge DB</th><th>Special Memory</th></tr>
+  <tr><td><strong>AAA</strong></td><td><code>/root/AAA/</code> (1.1 GB)</td><td>—</td><td>—</td><td>Knowledge graph (5 files, 122 KB), 26 doctrine files, 90+ governance docs</td></tr>
+  <tr><td><strong>A-FORGE</strong></td><td><code>/root/A-FORGE/</code></td><td>—</td><td>—</td><td>VAULT999 ledger (read-only), forge_work artifacts</td></tr>
+  <tr><td><strong>GEOX</strong></td><td><code>/root/GEOX/</code></td><td><code>.megamemory/</code></td><td>84 KB</td><td>Geoscience knowledge base</td></tr>
+  <tr><td><strong>WEALTH</strong></td><td><code>/root/WEALTH/</code></td><td><code>.megamemory/</code></td><td>84 KB</td><td>Capital markets knowledge base</td></tr>
+  <tr><td><strong>WELL</strong></td><td><code>/root/WELL/</code></td><td>—</td><td>—</td><td>Wellness/homeostasis data</td></tr>
+</table>
+
+<!-- REDIS -->
+<h2>8. Ephemeral Layer — Redis</h2>
+
+<table>
+  <tr><th>Metric</th><th>Value</th></tr>
+  <tr><td>Used Memory</td><td>1.87 MB</td></tr>
+  <tr><td>Fragmentation Ratio</td><td>3.86 (high — consider <code>redis-cli memory purge</code>)</td></tr>
+  <tr><td>Purpose</td><td>Session cache, rate limiting, ephemeral state</td></tr>
+</table>
+
+<!-- SKILLS -->
+<div class="page-break"></div>
+<h2>9. Skills Memory — Procedural Knowledge</h2>
+
+<p><strong>362 skills</strong> across the skill directory, organized by naming convention into functional domains:</p>
+
+<table>
+  <tr><th>Prefix/Domain</th><th>Example Skills</th><th>Count (est.)</th></tr>
+  <tr><td><strong>AAA-*</strong></td><td>OCR, ASR, Audio EMD, Voice Cloning, TTS Catalog</td><td>~12</td></tr>
+  <tr><td><strong>AGI-*</strong></td><td>Agentic Web, Audio Quantum, Dream Engine, Plan DAG</td><td>~12</td></tr>
+  <tr><td><strong>ASI-*</strong></td><td>Agent Invariants, Drift Watch, Fabrication Prevention</td><td>~7</td></tr>
+  <tr><td><strong>APEX-*</strong></td><td>FFF Loop, Quantum Eureka</td><td>~2</td></tr>
+  <tr><td><strong>AUDIT-*</strong></td><td>Skill Mesh, Drift Detector, Recursive Audit, Skill Atlas</td><td>~4</td></tr>
+  <tr><td><strong>FORGE-*</strong></td><td>CI/CD, Docker, FastAPI, GitHub, MCP, PR Governance, VPS</td><td>~50+</td></tr>
+  <tr><td><strong>FLAME-*</strong></td><td>Operator, Router</td><td>~2</td></tr>
+  <tr><td><strong>EUREKA777-*</strong></td><td>Paradox Resolution</td><td>~1</td></tr>
+  <tr><td><strong>RSI-*</strong></td><td>Federation Mesh, Recursive Improvement</td><td>~2</td></tr>
+  <tr><td><strong>Domain-specific</strong></td><td>Geology, Trading, Legal, Biohacking, Media, Social</td><td>~50+</td></tr>
+  <tr><td><strong>Workflow/Core</strong></td><td>Incident, Issue Triage, Subagent, Cross-agent</td><td>~20+</td></tr>
+  <tr><td><strong>Substrate/Primitives</strong></td><td>Memory, Observe, Think, Verify, Forge, Judge</td><td>~30+</td></tr>
+  <tr><td><strong>Drafts (_drafts)</strong></td><td>Event-captured workflow fragments</td><td>~13</td></tr>
+</table>
+
+<!-- GOVERNANCE -->
+<h2>10. Governance & Doctrine Memory</h2>
+
+<table>
+  <tr><th>Layer</th><th>Count</th><th>Path</th></tr>
+  <tr><td><strong>Canonical Instructions</strong></td><td>26 files</td><td><code>/root/AAA/instructions/</code></td></tr>
+  <tr><td><strong>Governance Documents</strong></td><td>90+ files</td><td><code>/root/AAA/governance/</code></td></tr>
+  <tr><td><strong>Prompts</strong></td><td>10 files</td><td><code>/root/AAA/prompts/</code></td></tr>
+  <tr><td><strong>Sovereign Patches</strong></td><td>4 files</td><td><code>/root/docs/sovereign-patches/</code></td></tr>
+  <tr><td><strong>Carry Forward Backups</strong></td><td>36 files</td><td><code>~/.local/share/arifos/carry_forward_backups/</code></td></tr>
+  <tr><td><strong>Carry Forward (current)</strong></td><td>1 file</td><td><code>~/.local/share/arifos/carry_forward.json</code></td></tr>
+</table>
+
+<div class="callout">
+  <strong>Carry Forward:</strong> The active carry forward traces to session <code>SEAL-333-AGI-20260825-gemini</code> (closed 2026-08-25T17:48:00Z). It tracks 5 completed items and 4 open loops including F1 hook overreach and OAuth bridge gaps.
+</div>
+
+<!-- VAULT999 -->
+<h2>11. VAULT999 — Immutable Ledger</h2>
+
+<p>VAULT999 is the terminal memory surface — the immutable, hash-chained receipt log. Currently at <code>/root/AAA/vault999/VAULT999.md</code> (411 bytes). The ledger tracks sealed decisions with cryptographic receipts.</p>
+
+<p>The <code>arifos_precedent</code> Qdrant collection (255 points) is the vectorized shadow of VAULT999 — every sealed outcome gets embedded and indexed for PRL (Precedent Recall Layer) injection. PRL injects structural constraints at <code>mind_reason.py</code> line ~348 before reasoning begins, gated by dual-filter: blast_radius match + Ω₀ ambiguity failsafe.</p>
+
+<!-- KNOWLEDGE GRAPH -->
+<h2>12. Knowledge Graph — Domain Intelligence</h2>
+
+<table>
+  <tr><th>File</th><th>Size</th><th>Content</th></tr>
+  <tr><td><code>visual-intelligence-map.md</code></td><td>56 KB</td><td>Visual processing capability map</td></tr>
+  <tr><td><code>video-intelligence-map.md</code></td><td>27 KB</td><td>Video processing pipeline</td></tr>
+  <tr><td><code>audio-intelligence-map.md</code></td><td>19 KB</td><td>Audio cognition architecture</td></tr>
+  <tr><td><code>hermes-epistemic-architecture.md</code></td><td>13 KB</td><td>Epistemic layer design</td></tr>
+  <tr><td><code>hermes-k2-contrast.md</code></td><td>7 KB</td><td>K2 contrast analysis</td></tr>
+  <tr><td><code>voice-sample/</code></td><td>5 files</td><td>i-ARIF voice samples (Tukki presets)</td></tr>
+</table>
+
+<!-- PEOPLE -->
+<div class="page-break"></div>
+<h2>13. People Memory — Human Network</h2>
+
+<table>
+  <tr><th>Person</th><th>Directory</th><th>Notes</th></tr>
+  <tr><td><strong>ARIF</strong></td><td><code>people/ARIF/</code></td><td>Self — sovereign, F13</td></tr>
+  <tr><td><strong>SYED</strong></td><td><code>people/SYED/</code> (8 subdirs)</td><td>Abang sado — KL, relay info. MOTS-c/NAD+/CoQ10 stack. BANK: 8755310538</td></tr>
+  <tr><td><strong>NABILAH</strong></td><td><code>people/NABILAH/</code></td><td>Eng teacher, cron 6:30AM RPH agent</td></tr>
+  <tr><td><strong>MAK</strong></td><td><code>people/MAK/</code></td><td>Mother</td></tr>
+  <tr><td><strong>ABBAH</strong></td><td><code>people/ABBAH/</code></td><td>Father</td></tr>
+  <tr><td><strong>FAZIL</strong></td><td><code>people/FAZIL/</code></td><td>Family member</td></tr>
+  <tr><td><strong>FARIDAH</strong></td><td><code>people/FARIDAH/</code></td><td>Family member</td></tr>
+  <tr><td><strong>ALIFF</strong></td><td><code>people/ALIFF/</code></td><td>Family member</td></tr>
+  <tr><td><strong>IZZU</strong></td><td><code>people/IZZU/</code></td><td>Family member</td></tr>
+  <tr><td><strong>WAWA</strong></td><td><code>people/WAWA/</code></td><td>Telegram alias — DM source</td></tr>
+  <tr><td><strong>FAMILY</strong></td><td><code>people/FAMILY/</code></td><td>Family constellation overview</td></tr>
+  <tr><td><strong>SCAR-WITNESSES</strong></td><td><code>people/SCAR-WITNESSES/</code></td><td>People tied to scar events</td></tr>
+</table>
+
+<!-- SCARS -->
+<h2>14. Scar Registry — Failure Memory</h2>
+
+<p><strong>30+ scar documents</strong> + <code>H5_SCAR_REGISTRY.json</code> (30 KB) tracking constitutional failures and lessons learned:</p>
+
+<table>
+  <tr><th>Category</th><th>Scars</th><th>Key Learning</th></tr>
+  <tr><td><strong>Shadow/Syed</strong></td><td>SCAR_SYED_SHADOW_V2–V9</td><td>Shadow reading protocol evolved through 8 iterations (26 KB cumulative)</td></tr>
+  <tr><td><strong>Fabrication</strong></td><td>SCAR_NOTEBOOKLM_EXIT_FABRICATION</td><td>Never fabricate source provenance</td></tr>
+  <tr><td><strong>Memory Doctrine</strong></td><td>SCAR_MEMORY_DOCTRINE_V1</td><td>Memory write discipline</td></tr>
+  <tr><td><strong>Institutional</strong></td><td>SCAR_NUKLEAR_LETTER, SCAR_SB412</td><td>Institutional pattern recognition</td></tr>
+  <tr><td><strong>Identity</strong></td><td>SCAR_SIBLING_CONSTELLATION</td><td>Family relationship boundaries</td></tr>
+  <tr><td><strong>Compression</strong></td><td>SCAR_AKUSAJACUKUP, SCAR_BEKANTAN</td><td>Over-compression risks</td></tr>
+  <tr><td><strong>Whistleblowing</strong></td><td>SCAR_MAKCIKGPT</td><td>Public speech boundaries</td></tr>
+  <tr><td><strong>Numbered (1–11)</strong></td><td>SCAR-1 through SCAR-11</td><td>Foundational operational failures</td></tr>
+</table>
+
+<!-- CRON -->
+<h2>15. Cron & Scheduled Memory</h2>
+
+<table>
+  <tr><th>Metric</th><th>Value</th></tr>
+  <tr><td>Active Cron Jobs</td><td>2</td></tr>
+  <tr><td>Execution History DB</td><td>348 KB</td></tr>
+  <tr><td>Jobs Config</td><td>59 KB (jobs.json)</td></tr>
+  <tr><td>Backup Configs</td><td>12 historical backups</td></tr>
+  <tr><td>Notepad</td><td>12 KB scratchpad</td></tr>
+  <tr><td>Output Directories</td><td>23 cron output folders</td></tr>
+</table>
+
+<!-- FLOW DIAGRAM -->
+<div class="page-break"></div>
+<h2>16. Memory Flow — How Data Moves</h2>
+
+<div class="arch-diagram">
+  <h4 style="margin-top:0; color:#0f3460;">Write Path (Store)</h4>
+  <div class="layer">
+    <div class="layer-badge l2">INTAKE</div>
+    <div class="layer-desc">User message / tool output / agent observation → <code>arif_memory(mode="store")</code></div>
+  </div>
+  <div class="layer">
+    <div class="layer-badge l3">L3 Qdrant</div>
+    <div class="layer-desc"><strong>Required.</strong> bge-m3 embedding → <code>arifos_memory</code> collection. Failure = stored=False.</div>
+  </div>
+  <div class="layer">
+    <div class="layer-badge l1">L4 Postgres</div>
+    <div class="layer-desc">Durable relational store. Warns on failure, does not block.</div>
+  </div>
+  <div class="layer">
+    <div class="layer-badge l5">L5 Graphiti</div>
+    <div class="layer-desc">Graph knowledge. Advisory only. Never auto-woken (888 owns).</div>
+  </div>
+  <div class="layer">
+    <div class="layer-badge l6">L6 VAULT999</div>
+    <div class="layer-desc">Immutable ledger. Sealed receipts. Hash-chained. Read-only after seal.</div>
+  </div>
+  
+  <h4 style="margin-top:20px; color:#0f3460;">Read Path (Recall)</h4>
+  <div class="layer">
+    <div class="layer-badge l2">QUERY</div>
+    <div class="layer-desc">Agent needs context → <code>arif_memory(mode="recall")</code></div>
+  </div>
+  <div class="layer">
+    <div class="layer-badge l0">PRL Gate</div>
+    <div class="layer-desc">Precedent Recall Layer intercepts → dual-gate (blast_radius + Ω₀ ambiguity)</div>
+  </div>
+  <div class="layer">
+    <div class="layer-badge l3">Qdrant Search</div>
+    <div class="layer-desc">Cosine similarity search across relevant collections</div>
+  </div>
+  <div class="layer">
+    <div class="layer-badge l4">HOLD Gate</div>
+    <div class="layer-desc">If P(PRL) < 0.95 or ambiguity detected → F1 HOLD. Human decides.</div>
+  </div>
+  <div class="layer">
+    <div class="layer-badge l5">REASONING</div>
+    <div class="layer-desc">[PRL CONSTRAINT] block injected at END of reasoning prompt (recency-bias hardening)</div>
+  </div>
+</div>
+
+<!-- CRITICAL OBSERVATIONS -->
+<h2>17. Critical Observations & Recommendations</h2>
+
+<div class="callout callout-danger">
+  <strong>🔴 Swap Critical:</strong> 7.9 GB / 8 GB swap used. This is the #1 operational risk. Every memory-intensive operation (Qdrant search, session loads, cron runs) will page-fault heavily. Recommend: add RAM or reduce concurrent memory consumers.
+</div>
+
+<div class="callout callout-warn">
+  <strong>⚠️ Disk at 80%:</strong> 309 GB / 387 GB. Request dumps alone consume ~117 MB and grow with each session. Consider archiving old dumps (pre-Aug-15) and running <code>docker system prune</code>.
+</div>
+
+<div class="callout callout-warn">
+  <strong>⚠️ Sessions DB Empty:</strong> <code>sessions.db</code> is 0 bytes. Session queries via <code>session_search</code> may be reading from the JSON file or a different backend. Verify this is intentional.
+</div>
+
+<div class="callout">
+  <strong>✅ Qdrant Healthy:</strong> 18 collections, all responsive. <code>petronas_knowledge</code> is the dominant vector store (64.4%). Precedent collection at 255 points feeds PRL correctly.
+</div>
+
+<div class="callout">
+  <strong>✅ Memory Hierarchy Intact:</strong> All 6 tiers (H1–H6) present and populated. People registry covers 12+ profiles. Scar registry carries 30+ lessons across 5 evolution families.
+</div>
+
+<div class="callout callout-warn">
+  <strong>⚠️ Redis Fragmentation:</strong> 3.86x fragmentation ratio on only 1.87 MB. Not critical at current scale but indicates memory allocation pattern issues. <code>redis-cli memory purge</code> recommended.
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>AF-FORGE Agentic Memory Architecture Snapshot · 25 August 2026 · 22:10 MYT<br>
+  Generated by Hermes (i-ARIF) · F13 Sovereign: Muhammad Arif bin Fazil<br>
+  ⚒️ DITEMPA BUKAN DIBERI</p>
+</div>
+
+</body>
+</html>
