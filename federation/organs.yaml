@@ -596,14 +596,15 @@ components:
     notes: "Supersedes id arif-sites / repo ariffazil/arif-sites (GitHub rename 301). Canon law: web-canon."
 
   # ── SUPPORT ──────────────────────────────────────────────────────
-  - id: well-witness
-    class: SUPPORT
-    display_name: WELL Witness
-    port: 18084
-    unit: well-witness.service
-    authority_ceiling: OBSERVE_ONLY
-    notes: independent substrate observer for WELL; never adjudicates
-
+  # [STALE-SOT 2026-09-04 FI-008 PATCH-003: unit 'well-witness' disabled/not-found at live probe; entry tombstoned — see LOOP2_ZEN_AUDIT R2/R3/R4]
+#  - id: well-witness
+#    class: SUPPORT
+#    display_name: WELL Witness
+#    port: 18084
+#    unit: well-witness.service
+#    authority_ceiling: OBSERVE_ONLY
+#    notes: independent substrate observer for WELL; never adjudicates
+#
   - id: aaa-signing
     class: SUPPORT
     display_name: AAA Signing
@@ -611,12 +612,13 @@ components:
     unit: aaa-signing.service
     authority_ceiling: CRYPTO_HELPER
 
-  - id: aaa-preforge
-    class: SUPPORT
-    display_name: AAA Pre-Forge
-    unit: aaa-preforge.service
-    authority_ceiling: GATE_HELPER
-
+  # [STALE-SOT 2026-09-04 FI-008 PATCH-003: unit 'aaa-preforge' disabled/not-found at live probe; entry tombstoned — see LOOP2_ZEN_AUDIT R2/R3/R4]
+#  - id: aaa-preforge
+#    class: SUPPORT
+#    display_name: AAA Pre-Forge
+#    unit: aaa-preforge.service
+#    authority_ceiling: GATE_HELPER
+#
   - id: surface-guard
     class: SUPPORT
     display_name: Surface Guard
@@ -647,18 +649,20 @@ components:
     authority_ceiling: ACTUATE_AFTER_LEASE
     parent: a-forge
 
-  - id: miniapp-api
-    class: SUPPORT
-    unit: miniapp-api.service
-    authority_ceiling: UI_EDGE
-
-  - id: arifosd
-    class: SUPPORT
-    unit: arifosd.service
-    authority_ceiling: KERNEL_COMPANION
-    parent: arifos
-
-  # ── DATA PLANE ───────────────────────────────────────────────────
+  # [STALE-SOT 2026-09-04 FI-008 PATCH-003: unit 'miniapp-api' disabled/not-found at live probe; entry tombstoned — see LOOP2_ZEN_AUDIT R2/R3/R4]
+#  - id: miniapp-api
+#    class: SUPPORT
+#    unit: miniapp-api.service
+#    authority_ceiling: UI_EDGE
+#
+  # [STALE-SOT 2026-09-04 FI-008 PATCH-003: unit 'arifosd' disabled/not-found at live probe; entry tombstoned — see LOOP2_ZEN_AUDIT R2/R3/R4]
+#  - id: arifosd
+#    class: SUPPORT
+#    unit: arifosd.service
+#    authority_ceiling: KERNEL_COMPANION
+#    parent: arifos
+#
+#  # ── DATA PLANE ───────────────────────────────────────────────────
   - id: postgres
     class: DATA
     port: 5432
@@ -675,10 +679,11 @@ components:
     class: DATA
     port: 6380
     role: graph
-  - id: graphiti-mcp
-    class: DATA
-    port: 8000
-    role: knowledge_graph_mcp
+  # [STALE-SOT 2026-09-04 FI-008 PATCH-003: unit 'graphiti-mcp' disabled/not-found at live probe; entry tombstoned — see LOOP2_ZEN_AUDIT R2/R3/R4]
+#  - id: graphiti-mcp
+#    class: DATA
+#    port: 8000
+#    role: knowledge_graph_mcp
   - id: minio
     class: DATA
     port: 9000
@@ -700,10 +705,11 @@ components:
     class: DATA
     port: 8080
     role: search
-  - id: mcpjam
-    class: DATA
-    port: 6274
-    role: mcp_inspector
+  # [STALE-SOT 2026-09-04 FI-008 PATCH-003: unit 'mcpjam' disabled/not-found at live probe; entry tombstoned — see LOOP2_ZEN_AUDIT R2/R3/R4]
+#  - id: mcpjam
+#    class: DATA
+#    port: 6274
+#    role: mcp_inspector
   - id: headscale
     class: DATA
     port: 8083
