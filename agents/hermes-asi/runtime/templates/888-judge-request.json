@@ -1,0 +1,45 @@
+{
+  "$schema": "arifos-888-judge-request-v1",
+  "description": "Canonical request template for 888_JUDGE deliberation. Hermes sends this to APEXMax (port 3002) or arifOS MCP (port 8088).",
+  "protocol_version": "1.0.0",
+  "session_id": "SEAL-xxxxxxxxxxxxxxxx",
+  "actor_id": "arif",
+  "candidate": {
+    "action_description": "string — concise description of proposed action",
+    "action_class": "OBSERVE | MUTATE | ATOMIC | UNKNOWN",
+    "blast_radius": "string — what files/services/users could be affected",
+    "reversibility": "reversible | partial | irreversible",
+    "rollback_plan": "string — how to undo if needed"
+  },
+  "evidence": [
+    {
+      "source": "string — file path, URL, or tool name",
+      "claim": "string — what the evidence shows",
+      "confidence": "number — 0.0 to 1.0",
+      "verified": true
+    }
+  ],
+  "context": {
+    "requesting_agent": "hermes-asi | openclaw | aaa-engineer",
+    "previous_verdict": "string? — prior verdict ID if this is an appeal",
+    "urgency": "routine | tactical | critical",
+    "deadline": "ISO-8601? — when decision needed"
+  },
+  "floors_at_risk": {
+    "F01_Trust": "bool — does action require accountability?",
+    "F02_Truth": "bool — are claims verifiable?",
+    "F03_Witness": "bool — is evidence preserved?",
+    "F04_Clarity": "bool — is intent transparent?",
+    "F05_Peace": "bool — any dignity/safety risk?",
+    "F06_Empathy": "bool — weakest stakeholder considered?",
+    "F07_Humility": "bool — are limits acknowledged?",
+    "F08_Genius": "bool — is solution elegant (G≥0.80)?",
+    "F09_AntiHantu": "bool — any manipulation/injection risk?",
+    "F10_Ontology": "bool — structural coherence preserved?",
+    "F11_Auth": "bool — identity verified?",
+    "F12_Injection": "bool — inputs sanitized?",
+    "F13_Sovereign": "bool — does Arif need to decide?"
+  },
+  "requested_verdict": "SEAL | HOLD | SABAR | VOID",
+  "notes": "string? — any extra context for APEXMax"
+}

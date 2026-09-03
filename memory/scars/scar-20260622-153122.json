@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260622-153122",
+  "timestamp": "2026-06-22T15:31:22.632296+00:00",
+  "tool_name": "py",
+  "agent_id": "anonymous",
+  "session_id": "sess_3c0e3fa831884478",
+  "reason": "E7 HOLD: No active authority lease. Agent cannot execute without lease.",
+  "severity": "critical",
+  "count": 9,
+  "last_seen": "2026-06-22T16:02:02.897361+00:00"
+}

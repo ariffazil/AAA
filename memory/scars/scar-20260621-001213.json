@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260621-001213",
+  "timestamp": "2026-06-21T00:12:13.969101+00:00",
+  "tool_name": "arif_forge_execute",
+  "agent_id": "anonymous",
+  "session_id": "test-session",
+  "reason": "Anonymous actor cannot execute MUTATE. Call arif_session_init with verified actor_id.",
+  "severity": "critical",
+  "count": 14,
+  "last_seen": "2026-06-21T16:05:36.351239+00:00"
+}

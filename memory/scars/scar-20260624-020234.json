@@ -1,0 +1,10 @@
+{
+  "scar_id": "scar-20260624-020234",
+  "timestamp": "2026-06-24T02:02:34.605070+00:00",
+  "tool_name": "arif_forge_execute",
+  "agent_id": "anonymous",
+  "session_id": "loop-1",
+  "reason": "888_HOLD: max_same_tool_calls (2) for arif_forge_execute",
+  "severity": "critical",
+  "count": 1
+}

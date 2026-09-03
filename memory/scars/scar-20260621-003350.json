@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260621-003350",
+  "timestamp": "2026-06-21T00:33:50.357404+00:00",
+  "tool_name": "arif_forge_execute",
+  "agent_id": "anonymous",
+  "session_id": "test-session",
+  "reason": "MUTATE requires FederationEnvelope v2 with verified authority.",
+  "severity": "critical",
+  "count": 5,
+  "last_seen": "2026-06-24T02:03:10.911110+00:00"
+}

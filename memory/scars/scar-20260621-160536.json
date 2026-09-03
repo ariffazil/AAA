@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260621-160536",
+  "timestamp": "2026-06-21T16:05:36.227264+00:00",
+  "tool_name": "arif_vault_seal",
+  "agent_id": "anonymous",
+  "session_id": "test-session",
+  "reason": "Vault UNKNOWN: HOLD: Vault state UNKNOWN \u2014 cannot authorize MUTATE/ATOMIC",
+  "severity": "warn",
+  "count": 2,
+  "last_seen": "2026-06-24T02:03:10.818333+00:00"
+}

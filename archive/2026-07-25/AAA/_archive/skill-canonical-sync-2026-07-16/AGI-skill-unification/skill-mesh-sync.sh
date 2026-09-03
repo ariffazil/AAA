@@ -1,0 +1,164 @@
+#!/usr/bin/env bash
+# skill-mesh-sync.sh — rebind CLI harness skill views to AAA + .agents catalog
+# Usage:
+#   skill-mesh-sync.sh              # dry-run (default)
+#   skill-mesh-sync.sh --apply      # create missing symlinks
+#   skill-mesh-sync.sh --check      # exit 1 if drift/broken links
+#
+# Canon: AAA/skills + .agents/skills. Harnesses are views.
+# Does NOT delete harness-native skills. Does NOT touch Hermes/Kimi trees.
+set -euo pipefail
+
+MODE="${1:---dry-run}"
+AAA="${AAA_SKILLS:-/root/AAA/skills}"
+AGENTS="${AGENTS_SKILLS:-/root/.agents/skills}"
+HARNESSES=(
+  "${GROK_SKILLS:-/root/.grok/skills}"
+  "${CLAUDE_SKILLS:-/root/.claude/skills}"
+  "${CODEX_SKILLS:-/root/.codex/skills}"
+)
+
+# Names that must remain real dirs on Grok (not force-overwritten)
+GROK_NATIVE_KEEP=(
+  arif-governed-autonomous-execution
+  grok-zen-aaa-substrate
+  grok-federation-skill-upgrader
+  orthogonal-skill-update
+  create-skill
+  check-work
+  help
+  imagine
+)
+
+SKIP_DIRS='^(substrate|knowledge|warga|runtime|reflective|fastmcp|scripts|knowledge|\.|\.\.|compile\.py|validate\.py|.*\.(yaml|yml|json|md|sha256))$'
+
+is_native_keep() {
+  local name="$1" h="$2"
+  [[ "$(basename "$h")" == "skills" && "$h" == *".grok"* ]] || return 1
+  for k in "${GROK_NATIVE_KEEP[@]}"; do
+    [[ "$name" == "$k" ]] && return 0
+  done
+  return 1
+}
+
+collect_sources() {
+  # print: name|abs_path for every skill body
+  local root home
+  for home in aaa agents; do
+    if [[ "$home" == aaa ]]; then root="$AAA"; else root="$AGENTS"; fi
+    [[ -d "$root" ]] || continue
+    # top-level
+    for p in "$root"/*; do
+      [[ -e "$p" ]] || continue
+      local base; base="$(basename "$p")"
+      [[ "$base" =~ $SKIP_DIRS ]] && continue
+      if [[ -d "$p" && ( -f "$p/SKILL.md" || -L "$p" ) ]]; then
+        # only real skill bodies (prefer real dirs over pure link-out for source)
+        if [[ -f "$p/SKILL.md" ]]; then
+          echo "${base}|$(readlink -f "$p" 2>/dev/null || echo "$p")"
+        elif [[ -L "$p" && -f "$(readlink -f "$p")/SKILL.md" ]]; then
+          echo "${base}|$(readlink -f "$p")"
+        fi
+      fi
+    done
+    # substrate / knowledge nested
+    for nest in substrate knowledge; do
+      [[ -d "$root/$nest" ]] || continue
+      for p in "$root/$nest"/*; do
+        [[ -d "$p" && -f "$p/SKILL.md" ]] || continue
+        echo "$(basename "$p")|$(readlink -f "$p")"
+      done
+    done
+  done
+}
+
+declare -A BEST=()
+# Prefer AAA path over agents when both exist
+while IFS='|' read -r name path; do
+  [[ -z "$name" || -z "$path" ]] && continue
+  if [[ -z "${BEST[$name]:-}" ]]; then
+    BEST[$name]="$path"
+  else
+    # keep existing if already AAA
+    if [[ "${BEST[$name]}" == "$AAA"* ]]; then
+      :
+    elif [[ "$path" == "$AAA"* ]]; then
+      BEST[$name]="$path"
+    fi
+  fi
+done < <(collect_sources | sort -u)
+
+missing=0
+broken=0
+created=0
+ok=0
+
+echo "skill-mesh-sync mode=$MODE sources=${#BEST[@]} $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+
+for h in "${HARNESSES[@]}"; do
+  [[ -d "$h" ]] || { echo "SKIP missing harness $h"; continue; }
+  echo "--- harness $h"
+  # broken links first
+  for link in "$h"/*; do
+    [[ -L "$link" ]] || continue
+    if [[ ! -e "$link" ]]; then
+      echo "BROKEN $link -> $(readlink "$link")"
+      broken=$((broken+1))
+      if [[ "$MODE" == "--apply" ]]; then
+        name="$(basename "$link")"
+        if [[ -n "${BEST[$name]:-}" ]]; then
+          rm -f "$link"
+          ln -s "${BEST[$name]}" "$link"
+          echo "  REFIXED $name -> ${BEST[$name]}"
+          created=$((created+1))
+          broken=$((broken-1))
+        fi
+      fi
+    fi
+  done
+
+  for name in "${!BEST[@]}"; do
+    target="${BEST[$name]}"
+    dest="$h/$name"
+    if is_native_keep "$name" "$h"; then
+      continue
+    fi
+    if [[ -L "$dest" ]]; then
+      cur="$(readlink -f "$dest" 2>/dev/null || true)"
+      if [[ "$cur" == "$target" ]]; then
+        ok=$((ok+1))
+      else
+        echo "DRIFT $dest -> $cur (want $target)"
+        if [[ "$MODE" == "--apply" ]]; then
+          rm -f "$dest"
+          ln -s "$target" "$dest"
+          echo "  RELINKED $name"
+          created=$((created+1))
+        else
+          missing=$((missing+1))
+        fi
+      fi
+    elif [[ -d "$dest" ]]; then
+      # real dir: leave (harness-local or vendored)
+      ok=$((ok+1))
+    else
+      echo "MISSING $dest (would link -> $target)"
+      if [[ "$MODE" == "--apply" ]]; then
+        ln -s "$target" "$dest"
+        echo "  LINKED $name"
+        created=$((created+1))
+      else
+        missing=$((missing+1))
+      fi
+    fi
+  done
+done
+
+echo "summary ok≈$ok missing_or_drift=$missing broken=$broken created=$created"
+
+if [[ "$MODE" == "--check" ]]; then
+  if [[ $missing -gt 0 || $broken -gt 0 ]]; then
+    exit 1
+  fi
+fi
+exit 0

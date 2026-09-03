@@ -1,0 +1,316 @@
+{
+  "version": "2.0.0",
+  "scope": "federation",
+  "forged": "2026-08-04",
+  "purpose": "Canonical federation-wide skill profile. Skills are SHARED behavioral instructions \u2014 not per-agent, not authority-gated. This is the single source of truth for all AAA warga agents.",
+  "supersedes": "OPENCODE_SKILL_PROFILE.json (v1.0.0, opencode-scoped, misleading name)",
+  "design_principle": "Skills \u2260 Tools. Tools = WHAT you can do (per-agent, authority-gated). Skills = HOW you should do it (shared, tier-gated, behavioral). FRAME maps tools to agents. FLAME provides free inference. FED routes models. Skills provide the playbook.",
+  "governance": {
+    "doctrine": "/root/AAA/skills/SKILL_RUNTIME_GOVERNANCE.md",
+    "rule": "A skill may exist on disk, but it is NOT valid at runtime until it passes permission, dependency, precedence, cost, and governance checks.",
+    "loading_order": "000-substrate \u2192 010-constitutional \u2192 020-bridge \u2192 ... \u2192 150-harness_specific. No domain or forge skill loads before substrate + constitutional gates.",
+    "cost_classes": "C0 (always safe) \u2192 C4 (approval-gated). Agents have budgets: lite\u2264C1, forge\u2264C3, constitutional\u2264C4.",
+    "activation": "Need-state routing, not name-first. Classify need \u2192 select tier \u2192 select skill.",
+    "collision": "DUPLICATE, OVERLAP, CHAINED, ALIAS, ORTHOGONAL. Unresolved DUPLICATE >72h \u2192 both HOLD.",
+    "verification": "6-gate pre-load: filesystem, permission, dependency, harness, model, constitutional. Post-load: no-truncation gate.",
+    "deprecation": "Weekly sweep with decay metrics. KEEP, MERGE, DEPRECATE, HOLD, VOID. Broken + no owner >30d \u2192 VOID.",
+    "no_pretending": "The registry declares intended topology. Runtime is truth. Never confuse them."
+  },
+  "total_canonical": 130,
+  "untiered_on_disk": 13,
+  "zen_note": "2026-08-04T07:30Z: TRUTH AUDIT FIX \u2014 32 archived skills moved to archived_cold_storage tier. Profile now truthful: active tiers only contain loadable skills. 2026-08-04T07:15Z: SKILL_RUNTIME_GOVERNANCE forged. 2026-08-04T06:00Z: MAJOR ZEN.",
+  "canonical_tiers": {
+    "substrate_always": {
+      "description": "Always-loaded behavioral substrate. Every agent must bind governance, observe with evidence, route correctly, manage memory, verify gates, and audit-seal.",
+      "count": 6,
+      "skills": [
+        "kernel-bind",
+        "observe-ground",
+        "route-dispatch",
+        "memory-manage",
+        "verify-gate",
+        "audit-seal"
+      ]
+    },
+    "constitutional": {
+      "description": "Constitutional and cognitive governance. Trinity-33 repo map, RSI self-improvement, ATLAS333 paradox geometry, floor checking, invariants, and paradox resolution.",
+      "count": 13,
+      "skills": [
+        "KERNEL-trinity-33",
+        "RSI-recursive-improvement",
+        "atlas333-cognitive-geometry",
+        "arifos-constitutional-judge",
+        "ASI-agent-invariants",
+        "ASI-agentic-architecture",
+        "ASI-agentic-governance",
+        "FLAME-router",
+        "AGI-explorer-intelligence",
+        "EUREKA777-paradox-resolution",
+        "AGI-decisions-reflect",
+        "APEX-humility-godel",
+        "APEX-fff-loop-protocol"
+      ]
+    },
+    "forge_on_demand": {
+      "description": "Execution and infrastructure skills. Build, deploy, monitor, triage, secure, audit. The hands of the federation.",
+      "count": 24,
+      "skills": [
+        "FORGE-verify-runtime",
+        "FORGE-incident-triage",
+        "FORGE-infra-guardian",
+        "FORGE-mcp-smoke-test",
+        "FORGE-vps-docker",
+        "FORGE-ci-diagnose",
+        "FORGE-ephemeral-genesis",
+        "FORGE-secret-hygiene",
+        "FORGE-model-monitor",
+        "FORGE-telemetry-watchdog",
+        "FORGE-telegram-audit",
+        "FORGE-symlink-audit",
+        "FORGE-readme-truth-check",
+        "FORGE-vps-runbook",
+        "FORGE-vault999-witness",
+        "FORGE-visual-qa-w3",
+        "FORGE-federation-orchestrator",
+        "FORGE-mcp-ops",
+        "FORGE-mcp-federation-ops",
+        "FORGE-mcp-lifeguard",
+        "FORGE-kimi-code",
+        "FORGE-agentic-web-builder",
+        "FORGE-document-intelligence",
+        "FORGE-code-analysis"
+      ]
+    },
+    "github_on_demand": {
+      "description": "GitHub operations and governance. PR review, issue triage, CI diagnosis, merge authority.",
+      "count": 6,
+      "skills": [
+        "FORGE-github-ops",
+        "FORGE-pr-review",
+        "FORGE-pr-governance",
+        "FORGE-issue-triage",
+        "FORGE-precommit-review",
+        "FORGE-github-workflow"
+      ]
+    },
+    "knowledge_on_demand": {
+      "description": "Foundational knowledge layers: physics, math, language. Truth constraints and epistemic discipline.",
+      "count": 3,
+      "skills": [
+        "know-physics",
+        "know-math",
+        "know-language"
+      ]
+    },
+    "agi_on_demand": {
+      "description": "AGI-tier cognitive architecture: planning DAGs, dream-engine memory consolidation, multimodal bridging, web optimization, Nusantara substrate.",
+      "count": 5,
+      "skills": [
+        "AGI-plan-dag",
+        "AGI-dream-engine",
+        "AGI-multimodal-bridge",
+        "AGI-nusantara-substrate",
+        "AGI-web-optimization"
+      ]
+    },
+    "asi_sensory": {
+      "description": "ASI-tier sensory and governance: drift detection, fabrication prevention, intent hearing, tone reading, interface adaptation, position contrast.",
+      "count": 2,
+      "skills": [
+        "ASI-drift-watch",
+        "ASI-fabrication-prevention"
+      ]
+    },
+    "a2a_handoff": {
+      "description": "Cross-agent handoff and inter-agent communication protocol.",
+      "count": 1,
+      "skills": [
+        "FORGE-cross-agent-handoff"
+      ]
+    },
+    "domain_on_demand": {
+      "description": "Domain-specific intelligence: geoscience (GEOX), capital (WEALTH), vitality (WELL), trading, publishing.",
+      "count": 7,
+      "skills": [
+        "geox-grounding",
+        "geox-production-cockpit",
+        "xauusd-trading",
+        "reality-loop-operator",
+        "aaa-pdf-voice-protocol",
+        "AAA-OCR-optical-compression",
+        "AAA-setup-help"
+      ]
+    },
+    "forge_stack_on_demand": {
+      "description": "Technology stack skills: Docker, CI/CD, FastAPI, FastMCP, Next.js, React, Tailwind, Postgres, Redis/Qdrant.",
+      "count": 3,
+      "skills": [
+        "FORGE-cicd-docker-deploy",
+        "FORGE-docker-entropy",
+        "FORGE-fastmcp"
+      ]
+    },
+    "meta_utility": {
+      "description": "Meta-skills about the skill system itself: skill creation, linting, auditing, binding, observability, context management, summarization.",
+      "count": 10,
+      "skills": [
+        "AUDIT-skill-atlas",
+        "AUDIT-drift-detector",
+        "AUDIT-recursive-audit",
+        "FORGE-skill-linter",
+        "FORGE-skill-creator",
+        "FORGE-route-least-power",
+        "FORGE-cross-repo-doc-zen",
+        "FORGE-repo-intelligence",
+        "AGI-skill-unification",
+        "ASI-skill-binding"
+      ]
+    },
+    "bridge_special": {
+      "description": "Federation bridge and protocol skills: SCT ingress, seal gates, T3a binding, federation manifest, governance JSON-LD, federation mesh.",
+      "count": 6,
+      "skills": [
+        "FORGE-sct-federation-ingress",
+        "FORGE-seal-a-close",
+        "FORGE-t3a-binding-matrix",
+        "FORGE-federation-manifest",
+        "FORGE-mcp-a2a-agentic",
+        "FORGE-subagent-spawn"
+      ]
+    },
+    "harness_specific": {
+      "description": "Harness-specific skills NOT in federation-wide tiers. Loaded only by specific harnesses (Grok, Copilot, Claude, Hermes, Codex). These are NOT constitutional \u2014 they are runtime adapters.",
+      "count": 9,
+      "skills": [
+        "AGI-claude-xml-structured-reasoning",
+        "AGI-codex-chain-of-thought",
+        "AGI-hermes-system-prompt-voice",
+        "HERMES-opencode-protocol",
+        "COPILOT-zen-router",
+        "FORGE-grok-profile",
+        "FORGE-google-workspace",
+        "FORGE-onboarding",
+        "FORGE-incident-escalation"
+      ]
+    },
+    "emd_pipeline": {
+      "description": "EMD (Encode-Metabolize-Decode) document intelligence pipeline. Sensory perception \u2192 metabolic classification \u2192 structured output.",
+      "count": 0,
+      "skills": []
+    },
+    "apex_governance": {
+      "description": "APEX constitutional governance tools: formal constitution, reversibility testing, tool approval gates.",
+      "count": 2,
+      "skills": [
+        "APEX-reversibility-test",
+        "APEX-tool-approval-gate"
+      ]
+    },
+    "federation_mesh": {
+      "description": "Federation connectivity: Headscale mesh, release attestation.",
+      "count": 0,
+      "skills": []
+    },
+    "archived_cold_storage": {
+      "description": "Skills that exist in cold storage archive (.archive-20260804/) but are NOT loadable at runtime. Declared here for truth \u2014 not for active use. Restoration requires F13 review.",
+      "count": 33,
+      "skills": [
+        "AGI-emd-decode",
+        "AGI-emd-encode",
+        "AGI-emd-metabolize",
+        "AGI-entropy-lock-prime",
+        "APEX-formal-constitution",
+        "APEX-quantum-eureka",
+        "ASI-context-window-mgr",
+        "ASI-evidence-tier-express",
+        "ASI-intent-hear",
+        "ASI-interface-adapt",
+        "ASI-mcp-governor",
+        "ASI-observability",
+        "ASI-position-contrast",
+        "ASI-summarize",
+        "ASI-tone-read",
+        "FORGE-context-compress",
+        "FORGE-data-compression",
+        "FORGE-did-web-identity",
+        "FORGE-fastapi-api-builder",
+        "FORGE-governance-jsonld",
+        "FORGE-infra-crons",
+        "FORGE-nextjs-mastery",
+        "FORGE-postgres-schema-design",
+        "FORGE-react-spa-discipline",
+        "FORGE-redis-qdrant-integration",
+        "FORGE-spatial-grounding",
+        "FORGE-tailwind-tokens",
+        "FORGE-well-boundary-repair",
+        "causal555-pywhy",
+        "delta-omega-psi-multimodal-cognition",
+        "federation-connect-headscale",
+        "federation-release-attestation",
+        "wealth-claim-state"
+      ]
+    }
+  },
+  "untiered_on_disk_breakdown": {
+    "structural_dirs": [
+      "substrate",
+      "knowledge",
+      "warga",
+      "reflective",
+      "runtime",
+      "scripts",
+      "docs",
+      "constitutional"
+    ],
+    "harness_aliases": [
+      "help (Grok)",
+      "imagine (Grok)",
+      "claude (alias)",
+      "create-skill (Grok)",
+      "token-plan-image (Qwen)"
+    ],
+    "meta_tools": [
+      "check-work",
+      "code-review",
+      "caller-trace",
+      "sovereign-recognize"
+    ],
+    "mcp_gui": [
+      "FORGE-mcp-gui"
+    ],
+    "note": "These 13 are intentionally not in tiers \u2014 they are harness aliases, structural group dirs, or experimental tools awaiting promotion review."
+  },
+  "removed_from_v1": {
+    "duplicates": [
+      "AGI-plan-dag (was listed twice)"
+    ],
+    "note": "No skills deleted \u2014 all active skills promoted into new tiers."
+  },
+  "architecture": {
+    "layers": {
+      "FRAME": "MCP tools socket \u2014 per-agent authority matrix (who can see what)",
+      "SKILLS": "Behavioral capability \u2014 tier-based, shared (how to do things) \u2014 THIS FILE",
+      "FED": "Provider router \u2014 model selection via LiteLLM proxy",
+      "FLAME": "Free inference lane \u2014 RM0 tools via Hermes gate"
+    },
+    "philosophy": "Skills are universal instructions, not authority-gated tools. Bukan perlu per-agent mapping \u2014 sebab skills are behavioral playbooks. The tier system IS the FRAME equivalent for skills."
+  },
+  "truth_audit": {
+    "timestamp": "2026-08-04T07:30:00Z",
+    "auditor": "333-AGI",
+    "session": "SEAL-55ef9a7f45644b9d",
+    "pre_fix": {
+      "declared_in_active_tiers": 129,
+      "active_on_disk": 116,
+      "archived_on_disk": 33,
+      "declared_but_archived": 32,
+      "declared_but_nowhere": 1
+    },
+    "post_fix": {
+      "active_tiers_loadable": 97,
+      "archived_tier_not_loadable": 33,
+      "alignment": "97/130 loadable (74%)"
+    },
+    "action": "Moved 32 archived skills to archived_cold_storage tier. Removed identity-invariance (ghost). Added 2 orphaned archived to tracking."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260620-223814",
+  "timestamp": "2026-06-20T22:38:14.747572+00:00",
+  "tool_name": "arif_vault_seal",
+  "agent_id": "anonymous",
+  "session_id": "SEAL-25f50b3fc5aa4311",
+  "reason": "CLAIMED identity (arif) cannot execute MUTATE. Requires verified or delegated authority.",
+  "severity": "critical",
+  "count": 6,
+  "last_seen": "2026-06-21T13:45:24.873431+00:00"
+}

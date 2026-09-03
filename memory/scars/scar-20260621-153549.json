@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260621-153549",
+  "timestamp": "2026-06-21T15:35:49.072103+00:00",
+  "tool_name": "arif_forge_execute",
+  "agent_id": "anonymous",
+  "session_id": "test-session",
+  "reason": "Constitutional floor breach: L01",
+  "severity": "critical",
+  "count": 2,
+  "last_seen": "2026-06-21T16:05:36.280145+00:00"
+}

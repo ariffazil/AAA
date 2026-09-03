@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260621-072037",
+  "timestamp": "2026-06-21T07:20:37.440405+00:00",
+  "tool_name": "arif_transport_echo",
+  "agent_id": "anonymous",
+  "session_id": "sess_9ee2de0214964642",
+  "reason": "E7 HOLD: No active authority lease. Agent cannot execute without lease.",
+  "severity": "critical",
+  "count": 3,
+  "last_seen": "2026-06-21T16:40:08.282737+00:00"
+}

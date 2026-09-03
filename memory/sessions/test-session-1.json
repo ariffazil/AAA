@@ -1,0 +1,23 @@
+{
+  "session_id": "test-session-1",
+  "agent_id": "hermes-asi",
+  "timestamp": "2026-06-14T07:01:34.112419+00:00",
+  "tools_called": [
+    "arif_ops_measure",
+    "arif_sense_observe",
+    "arif_mind_reason"
+  ],
+  "verdicts": [
+    "PASS",
+    "PASS",
+    "PASS"
+  ],
+  "holds": [],
+  "key_decisions": [
+    "Deploy mesh coordinator to AAA a2a"
+  ],
+  "open_loops": [
+    "Verify P0 NATS wiring end-to-end"
+  ],
+  "outcome": "success"
+}
