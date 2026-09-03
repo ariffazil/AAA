@@ -1,46 +1,55 @@
 ---
-name: FORGE-sct-federation-ingress
-id: forge-sct-federation-ingress
+name: FORGE-act-federation-ingress
+id: forge-act-federation-ingress
 owner: A-FORGE
 risk_tier: low
 floor_scope: [F1, F2, F4, F7]
 description: >
-  Wire, verify, and operate federation Session Capability Tokens (SCT) across
+  Wire, verify, and operate federation Arif's Capability Tokens (ACT) across
   arifOS mint/validate and organ ingress gates (A-FORGE, GEOX, WEALTH, WELL, AAA).
-  Use when: SCT gate, session_token, federation_sct, SCT_AMBIGUOUS, tool_authority,
-  FORGE_SCT_REQUIRE_MUTATE, 65-case matrix, decision event. Now also covers
-  ChatGPT App OAuth 2.1 resource-server alignment (RFC 9728 PRM, canonical
-  resource identity, per-tool securitySchemes) as the EXTERNAL host ingress
-  path alongside the INTERNAL SCT path.
-version: 2026.07.20
+  Use when: ACT gate (legacy SCT), session_token, federation_act, ACT_AMBIGUOUS
+  (legacy SCT_AMBIGUOUS), tool_authority, FORGE_SCT_REQUIRE_MUTATE (historical env
+  name, retained), 65-case matrix, decision event. Also covers ChatGPT App OAuth
+  2.1 resource-server alignment (RFC 9728 PRM, canonical resource identity,
+  per-tool securitySchemes) as the EXTERNAL host ingress path alongside the
+  INTERNAL ACT path.
+version: 2026.09.04
 floors: [F1, F2, F11, F12, F13]
 autonomy_tier: T1
 capability_tier: fed-long-context
 ecology_state: WARM
 ---
 
-# FORGE — SCT Federation Ingress
+# FORGE — ACT Federation Ingress
 
-> **Canonical:** `/root/AAA/governance/federation_sct.py`  
-> **Authority registry:** `/root/AAA/registries/tool_authority.py` (tools.yaml)  
-> **A-FORGE:** `src/infrastructure/governance/sctIngress.ts`
+> **Canonical:** `/root/AAA/governance/federation_act.py`
+> **Authority registry:** `/root/AAA/registries/tool_authority.py` (tools.yaml)
+> **A-FORGE:** `src/infrastructure/governance/actIngress.ts`
+
+## Rename lineage (2026-09-04)
+
+SCT → ACT completed. Wire format: **act_v1.\*** canonical (minted since 2026-08-07);
+legacy **sct_v1.\*** verify-only during the dual-accept migration window. Kernel
+birth path `mint_act`/`verify_act` (SCT-era aliases `mint_sct`/`verify_sct` kept
+until window close). Input keys `session_token` and `sct` remain accepted for
+compat; `act` is primary. Error code `ACT_AMBIGUOUS` (was `SCT_AMBIGUOUS`).
 
 ## SEALED foundation (do not re-implement)
 
 | PR | Law | Commit |
 |----|-----|--------|
-| **PR1** | Collect-all sources; identical→normalize; distinct→**SCT_AMBIGUOUS** | AAA `056a8c9` |
+| **PR1** | Collect-all sources; identical→normalize; distinct→**ACT_AMBIGUOUS** (was SCT_AMBIGUOUS) | AAA `056a8c9` |
 | **PR2** | action_class from **tools.yaml** only; no caller self-declare | AAA `57217da` |
-| **A-FORGE** | Same AMBIGUOUS + production `FORGE_SCT_REQUIRE_MUTATE=0` → **exit(1)** | `1f1779b` |
+| **A-FORGE** | Same AMBIGUOUS + production `FORGE_SCT_REQUIRE_MUTATE=0` → **exit(1)** (env name is a historical deployment contract — retained) | `1f1779b` |
 
 ## Law
 
 ```
-SCT present     → verify fail-closed (claims required)
-No SCT + OBSERVE → allow (registry-owned OBSERVE)
-No SCT + MUTATE → SCT_REQUIRED
-Conflicting tokens → SCT_AMBIGUOUS, execute nothing
-Log fingerprint only (sha256) — never raw SCT
+ACT present     → verify fail-closed (claims required)
+No ACT + OBSERVE → allow (registry-owned OBSERVE)
+No ACT + MUTATE → ACT_REQUIRED
+Conflicting tokens → ACT_AMBIGUOUS, execute nothing
+Log fingerprint only (sha256) — never raw ACT
 Production mutate bypass → startup FATAL
 ```
 
@@ -48,8 +57,8 @@ Production mutate bypass → startup FATAL
 
 ```python
 import sys; sys.path.insert(0, "/root/AAA")
-from governance.federation_sct import gate_tool_ingress
-# gate_tool_ingress(tool, args, organ="geox")  # registry sets require_sct
+from governance.federation_act import gate_tool_ingress
+# gate_tool_ingress(tool, args, organ="geox")  # registry sets require_act
 ```
 
 ## PARKED — next block (after T3a + R4)
@@ -66,7 +75,7 @@ from governance.federation_sct import gate_tool_ingress
 
 > Blueprint contract: `/root/forge_work/2026-07-20/GEOX-CHATGPT-MCP-GUI-BLUEPRINT.md` §8 (auth), PR `pr/geox-auth-resource-alignment`. Exit criteria: auth matrix passes; wrong-audience fails closed.
 
-ChatGPT is an EXTERNAL host. Its OAuth path is parallel to — never a replacement for — the SCT Law above.
+ChatGPT is an EXTERNAL host. Its OAuth path is parallel to — never a replacement for — the ACT Law above.
 
 ### 1. RFC 9728 protected-resource metadata (PRM)
 
@@ -127,14 +136,14 @@ Every bearer token presented to `/mcp` is validated fail-closed on all five:
 
 | Path | Principal | Mechanism | Status |
 |---|---|---|---|
-| **INTERNAL federation** | organ → organ (A-FORGE, AAA, WEALTH, WELL) | SCT mint/validate per the Law above | unchanged, authoritative |
+| **INTERNAL federation** | organ → organ (A-FORGE, AAA, WEALTH, WELL) | ACT mint/validate per the Law above | unchanged, authoritative |
 | **EXTERNAL host** | ChatGPT App | OAuth 2.1 + RFC 9728 + scopes | new, this section |
 
 Threading rules:
 
-- An external ChatGPT call authenticated by OAuth does NOT mint, imply, or bypass an SCT. If the requested action class would require SCT internally (`MUTATE`+), the OAuth scope set must independently authorize it — and `geox.seal`-class actions remain F13-gated regardless of token.
-- An SCT does NOT satisfy OAuth audience checks; internal tokens are never accepted on the external ingress path.
-- One request, one ingress path. Mixed credentials (SCT header + bearer token) are treated like conflicting tokens → reject, execute nothing (same posture as `SCT_AMBIGUOUS`).
+- An external ChatGPT call authenticated by OAuth does NOT mint, imply, or bypass an ACT. If the requested action class would require ACT internally (`MUTATE`+), the OAuth scope set must independently authorize it — and `geox.seal`-class actions remain F13-gated regardless of token.
+- An ACT does NOT satisfy OAuth audience checks; internal tokens are never accepted on the external ingress path.
+- One request, one ingress path. Mixed credentials (ACT header + bearer token) are treated like conflicting tokens → reject, execute nothing (same posture as `ACT_AMBIGUOUS`).
 - Both paths log fingerprint only (sha256) — never raw tokens.
 
 ## Do not
@@ -145,4 +154,4 @@ Threading rules:
 - Advance SE stage from this skill — T3a matrix first (`FORGE-t3a-binding-matrix`)  
 - Mix canonical resource identities across endpoint / PRM / OAuth param / audience check  
 - Expose `geox.seal` to ChatGPT v1 under any alias or wildcard scope  
-- Accept SCT on the external path, or OAuth bearer on the internal path  
+- Accept ACT on the external path, or OAuth bearer on the internal path  
