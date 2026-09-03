@@ -135,9 +135,9 @@ known_shadows:
     f13_question: "Contents audit + retire decision pending"
   /root/arifOS/VAULT999/backups/federation:
     status: pending_decision
-    type: legacy_backup_staging
-    was: "22G federation snapshots (Aug 4-20+); zero live references probed 2026-09-03; includes 0-byte vault999-20260903.sql failed run"
-    f13_question: "TTL prune / archive policy — sibling of f13_pending cron_backup_masked"
+    type: active_backup_target   # corrected 2026-09-03: disk probe beat atlas prose
+    was: "~30 daily snapshots x ~715M = 22G, growing daily. Producer = HERMES cron 'federation-state-backup' (0 3 * * *, /root/HERMES/scripts/federation-state-backup.py) — NOT the masked arifos-backup.timer (superseded; leave masked). Includes 0-byte vault999-20260903.sql failed side-run."
+    f13_question: "TTL prune policy (keep-N-days). Resolves f13_pending cron_backup_masked with corrected facts: backups NEVER stopped — the atlas Aug-20 claim was stale."
   /root/azwaOS-workspace @KVM2:
     status: foreign_lane
     type: "azwaOS sovereign copies: A-FORGE mirror, aaa_src, arifos_src fork (:7073/:8080)"
@@ -267,3 +267,4 @@ recompile:
     scope: "machine axis via sot_pointers.machines (MACHINE_MAP.md SOT); SENSES+PUBLIC runtime truth; 4 new known_shadows; no Layer A civilization change"
     evidence: "/root/.qwen/projects/-root/memory/project-kvm-contrast-audit-20260903.md + live probes in session transcript"
     seal_note: "v0.2.0 F13 seal below remains authoritative for Layers A/B/D/E/F as written; v0.3.0 amends C + pointers additively"
+    corrections: "shadow arifOS/VAULT999/backups reclassified legacy→active after disk probe (federation-20260903-0330.tar.gz exists; producer = HERMES cron, timer-masked claim stale)"
