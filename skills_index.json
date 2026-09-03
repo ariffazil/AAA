@@ -1079,18 +1079,18 @@
       "has_sk": true
     },
     {
-      "name": "FORGE-sct-federation-ingress",
+      "name": "FORGE-act-federation-ingress",
       "category": "forge",
       "path": "/root/AAA/skills/FORGE-act-federation-ingress/SKILL.md",
       "dir": "/root/AAA/skills/FORGE-act-federation-ingress",
       "frontmatter": {
-        "name": "FORGE-sct-federation-ingress",
-        "id": "forge-sct-federation-ingress",
+        "name": "FORGE-act-federation-ingress",
+        "id": "forge-act-federation-ingress",
         "owner": "A-FORGE",
         "risk_tier": "low",
         "floor_scope": "[F1, F2, F4, F7]",
         "description": ">",
-        "Use when": "SCT gate, session_token, federation_sct, SCT_AMBIGUOUS, tool_authority,",
+        "Use when": "ACT gate, act, federation_act, ACT_AMBIGUOUS, tool_authority,",
         "version": "2026.07.20",
         "floors": "[F1, F2, F11, F12, F13]",
         "autonomy_tier": "T1",

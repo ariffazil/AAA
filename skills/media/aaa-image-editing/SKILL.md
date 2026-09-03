@@ -256,7 +256,7 @@ It is NOT in `/root/AAA/skills/` (the shared federation directory). Other agents
    `federated-skill-architecture` skill — Skill Execution Gateway pattern)
 
 **RBAC consideration:** Image editing tools that call external APIs (Gemini, Qwen)
-should be gated by agent identity + SCT verification at the MCP layer before
+should be gated by agent identity + ACT verification at the MCP layer before
 exposing the tool surface. Unrestricted access = blast radius risk (F1).
 
 ## Identity Preservation — Known Limits

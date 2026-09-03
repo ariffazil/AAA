@@ -73,7 +73,7 @@ layers:
       - dev-did-identity
       - dev-t3a-matrix
       - dev-komda-law
-      - dev-sct-ingress
+      - dev-act-ingress
       - dev-seal-close
       - dev-jsonld
       ops:

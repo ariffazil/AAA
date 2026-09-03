@@ -659,8 +659,8 @@
       "version": "2.0.0"
     },
     {
-      "name": "FORGE-sct-federation-ingress",
-      "id": "forge-sct-federation-ingress",
+      "name": "FORGE-act-federation-ingress",
+      "id": "forge-act-federation-ingress",
       "trust_status": "EXPERIMENTAL",
       "tier": "unknown",
       "cost_class": "unknown",
