@@ -1,0 +1,2 @@
+[claude-code:unrecognized_model] {"model":"forge-777","query_source":"sdk"}
+Error: Reached max turns (8)

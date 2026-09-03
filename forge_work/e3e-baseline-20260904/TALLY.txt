@@ -1,0 +1,4 @@
+agents=7: ['qwen', 'opencode', 'gemini', 'grok', 'claude', 'kimi', 'codex']
+discovery_counts: 1 variant(s) -> CONVERGENT [()]
+geox-prospect-evaluation: 2 variant(s) -> DIVERGENT ['found', 'missing']
+wealth-capital-primitives: 2 variant(s) -> DIVERGENT ['found', 'missing']

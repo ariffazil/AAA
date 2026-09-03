@@ -1,0 +1,5 @@
+[E3E-001 DISCOVERY] List: (1) AAA canonical skill count (2) GEOX skills (3) WEALTH skills (4) WELL skills. For each: owner_org, canonical_home, source. No guessing — UNKNOWN if unavailable.
+[E3E-002 GEOX] Use geox-prospect-evaluation. Evaluate POS=0.25, EMV=50 MMUSD, Cost=10 MMUSD. Return: workflow discovered, source location, output. No guessing.
+[E3E-003 MULTIMODAL] Need image generation. Before any endpoint: query federation route, return invocation contract, endpoint selected, fallback chain. Do not call endpoint directly.
+[E3E-004 OPENCLAW] Locate wealth-capital-primitives. Return owner, canonical path, mesh path, invocation path. Do not search local-only copies.
+[E3E-005 FEDERATION] Generate a prospect evaluation report: discover skill, verify owner, execute workflow, produce result, return skill receipt. Report skill used, owner_org, discovery path, execution path, final output. UNKNOWN if missing.

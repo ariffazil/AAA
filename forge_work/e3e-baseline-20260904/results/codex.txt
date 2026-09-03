@@ -1,0 +1,1782 @@
+Reading additional input from stdin...
+2026-09-03T23:27:09.355040Z ERROR codex_core::session::session: failed to load skill /root/AAA/skills/PETRONAS-intelligence-router/SKILL.md: missing field `description`
+2026-09-03T23:27:09.355077Z ERROR codex_core::session::session: failed to load skill /root/AAA/skills/deterministic-face-id/SKILL.md: missing field `description`
+2026-09-03T23:27:09.355080Z ERROR codex_core::session::session: failed to load skill /root/AAA/skills/forge-vss-parser/SKILL.md: missing field `description`
+2026-09-03T23:27:09.355083Z ERROR codex_core::session::session: failed to load skill /root/AAA/skills/PETRONAS-intelligence-router/SKILL.md: missing field `description`
+2026-09-03T23:27:09.355085Z ERROR codex_core::session::session: failed to load skill /root/AAA/skills/deterministic-face-id/SKILL.md: missing field `description`
+2026-09-03T23:27:09.355087Z ERROR codex_core::session::session: failed to load skill /root/AAA/skills/forge-vss-parser/SKILL.md: missing field `description`
+OpenAI Codex v0.149.1
+--------
+workdir: /root/AAA/forge_work/e3e-baseline-20260904
+model: forge-777
+provider: litellm-federation
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+reasoning effort: high
+reasoning summaries: none
+session id: 01a06998-fd2d-73c0-ab16-0519008e8626
+--------
+user
+[E3E-001 DISCOVERY] List: (1) AAA canonical skill count (2) GEOX skills (3) WEALTH skills (4) WELL skills. For each: owner_org, canonical_home, source. No guessing — UNKNOWN if unavailable.
+[E3E-002 GEOX] Use geox-prospect-evaluation. Evaluate POS=0.25, EMV=50 MMUSD, Cost=10 MMUSD. Return: workflow discovered, source location, output. No guessing.
+[E3E-003 MULTIMODAL] Need image generation. Before any endpoint: query federation route, return invocation contract, endpoint selected, fallback chain. Do not call endpoint directly.
+[E3E-004 OPENCLAW] Locate wealth-capital-primitives. Return owner, canonical path, mesh path, invocation path. Do not search local-only copies.
+[E3E-005 FEDERATION] Generate a prospect evaluation report: discover skill, verify owner, execute workflow, produce result, return skill receipt. Report skill used, owner_org, discovery path, execution path, final output. UNKNOWN if missing.
+warning: Model metadata for `forge-777` not found. Defaulting to fallback metadata; this can degrade performance and cause issues.
+2026-09-03T23:27:11.373893Z ERROR codex_core::session::session: failed to load skill /root/AAA/skills/PETRONAS-intelligence-router/SKILL.md: missing field `description`
+2026-09-03T23:27:11.373932Z ERROR codex_core::session::session: failed to load skill /root/AAA/skills/deterministic-face-id/SKILL.md: missing field `description`
+2026-09-03T23:27:11.373935Z ERROR codex_core::session::session: failed to load skill /root/AAA/skills/forge-vss-parser/SKILL.md: missing field `description`
+2026-09-03T23:27:11.373938Z ERROR codex_core::session::session: failed to load skill /root/AAA/skills/PETRONAS-intelligence-router/SKILL.md: missing field `description`
+2026-09-03T23:27:11.373940Z ERROR codex_core::session::session: failed to load skill /root/AAA/skills/deterministic-face-id/SKILL.md: missing field `description`
+2026-09-03T23:27:11.373943Z ERROR codex_core::session::session: failed to load skill /root/AAA/skills/forge-vss-parser/SKILL.md: missing field `description`
+warning: Skill descriptions were shortened to fit the skills context budget. Codex can still see every skill, but some descriptions are shorter. Disable unused skills or plugins to leave more room for the rest.
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart Completed
+hook: SessionStart Completed
+codex
+I'll work through these E3E baseline probes systematically. Let me start with a quick memory pass and then probe each organ's live registry.
+  → Quick memory pass for skill counts/canonical homes
+  • E3E-001: Probe live registries for AAA/GEOX/WEALTH/WELL
+  • E3E-002: Run geox_prospect with POS/EMV/Cost
+  • E3E-003: Route image-gen via federation (no direct call)
+  • E3E-004: Locate wealth-capital-primitives (canonical)
+  • E3E-005: Federation prospect evaluation report
+2026-09-03T23:27:34.853765Z ERROR codex_core::tools::router: error=`justification` requires an explicit `sandbox_permissions`; use `sandbox_permissions: "require_escalated"` for unsandboxed execution, or omit `justification`.
+2026-09-03T23:27:34.853895Z ERROR codex_core::tools::router: error=`justification` requires an explicit `sandbox_permissions`; use `sandbox_permissions: "require_escalated"` for unsandboxed execution, or omit `justification`.
+mcp: well/well_registry_status started
+mcp: well/well_registry_status (failed)
+MCP tool call requires approval, but approval policy is never
+mcp: wealth/capital_registry started
+mcp: wealth/capital_registry (failed)
+MCP tool call requires approval, but approval policy is never
+codex
+MCP calls are blocked under the `never` approval policy. Let me verify what filesystem access I do have and proceed via direct file probes.
+exec
+/bin/bash -lc 'test -d /root/AAA/skills && ls /root/AAA/skills | wc -l && echo "---AAA SKILLS TOP---" && ls /root/AAA/skills' in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+217
+---AAA SKILLS TOP---
+AAA-OCR-optical-compression
+AAA-asr-glm-ingest
+AAA-audio-emd-pipeline
+AAA-audio-qualia-doctrine
+AAA-setup-help
+AAA-shadow-mode
+AAA-somatic-emd-pipeline
+AAA-somatic-engine-catalog
+AAA-somatic-music-doctrine
+AAA-tts-engine-catalog
+AAA-voice-cloning-mimo-minimax
+AAA-voice-cloning-qwen-cloud
+AAA_SKILL.md
+AGI-decisions-reflect
+AGI-dream-engine
+AGI-graph-engineering-patterns
+AGI-multimodal-bridge
+AGI-nusantara-substrate
+AGI-plan-dag
+AGI-web-optimization
+APEX-quantum-eureka
+APPROVE_HANDLER.md
+ASI-agent-invariants
+ASI-agentic-architecture
+ASI-agentic-governance
+ASI-fabrication-prevention
+ASI-summarize
+ATTENTION-COST-DOCTRINE-PROPOSAL.md
+AUDIT-repo-reality
+BLINDSPOT_AGENTS.json
+BOOTSTRAP_LOAD_SPEC.json
+BOOTSTRAP_MANIFEST.json
+CANONICAL_SKILL_PROFILE.json
+CI_VALIDATION_GATES.json
+CLAUDE-agentic-state
+CLAUDE-meta-mesa
+CLAUDE-zen-router
+CODEX_SKILL_PROFILE.json
+COPILOT-zen-router
+EUREKA-ZEN-MANIFEST-2026-07-13.md
+FEDERATED_SKILLS_REGISTRY.yaml
+FEDERATED_SKILLS_REGISTRY_V3.yaml
+FEDERATED_SKILLS_REGISTRY_V3.yaml.bak-20260811T013642Z-pre-count-sync
+FEDERATED_SKILLS_REGISTRY_V3.yaml.bak-20260811T055046Z-pre-zensync
+FEDERATION_SKILL_PROFILE.json
+FEDERATION_SKILL_PROFILE.json.bak-20260804T154901
+FLAME-operator
+FLAME-router
+FORGE-act-federation-ingress
+FORGE-agentic-web-builder
+FORGE-call-map
+FORGE-ci-diagnose
+FORGE-code-analysis
+FORGE-context-compressor
+FORGE-cross-agent-handoff
+FORGE-cross-repo-doc-zen
+FORGE-design-intelligence
+FORGE-did-web-identity
+FORGE-document-intelligence
+FORGE-ephemeral-genesis
+FORGE-esm-require-guard
+FORGE-fastapi-api-builder
+FORGE-fastmcp
+FORGE-federation-manifest
+FORGE-github-ops
+FORGE-google-workspace
+FORGE-governance-jsonld
+FORGE-hermes-self-evolution
+FORGE-infra-crons
+FORGE-infra-guardian
+FORGE-issue-triage
+FORGE-kimi-code
+FORGE-komda-color-law
+FORGE-lsp-pre-edit-gate
+FORGE-mcp-a2a-agentic
+FORGE-mcp-gui
+FORGE-model-monitor
+FORGE-musyawarah-gotong
+FORGE-nextjs-mastery
+FORGE-onboarding
+FORGE-postgres-schema-design
+FORGE-react-spa-discipline
+FORGE-redis-qdrant-integration
+FORGE-repo-intelligence
+FORGE-route-least-power
+FORGE-seal-a-close
+FORGE-secret-hygiene
+FORGE-spatial-grounding
+FORGE-subagent-lifecycle
+FORGE-subagent-spawn
+FORGE-symlink-audit
+FORGE-t3a-binding-matrix
+FORGE-tailwind-tokens
+FORGE-telegram-audit
+FORGE-vault999-witness
+FORGE-visual-qa-w3
+FORGE-well-boundary-repair
+HERMES-opencode-protocol
+KERNEL-trinity-33
+MASTER_SKILL_INVENTORY_REPORT.json
+MASTER_SKILL_TO_AGENT_MAP.json
+META_GOVERNANCE.json
+MY-REALITY-STACK
+OPENCODE_SKILL_PROFILE.json
+PETRONAS-intelligence-router
+QWEN-agentic-state
+QWEN-meta-mesa
+QWEN-zen-router
+README.md
+RSI-federation-mesh
+RSI-recursive-improvement
+SKILL_ALIAS_TABLE.json
+SKILL_LEARNING_PROTOCOL.md
+SKILL_MANIFEST_TEMPLATE.json
+SKILL_RUNTIME_GOVERNANCE.md
+SKILL_TEMPLATE.md
+SKILL_TRUST_STATUS.json
+TAXONOMY.md
+TAXONOMY_V4_QQQ.md
+VETO_GENERATOR_CONTRACT.json
+ZEN-2026-09-04-ORGAN-DOMAIN-ALIGNMENT.md
+ZEN_SKILL_MANIFEST.json
+a2a-task-delegator
+aaa-agentic-governance
+aaa-musyawarah-execution
+aaa-pdf-voice-protocol
+aaa-skill-governor-runtime
+agent-bindings
+arifos-constitutional-judge
+arifos-eight-verb-canonical
+arifos-external-council
+arifos-kernel-zen-audit
+audit-seal
+browser-playwright-runner
+capabilities
+causal555-pywhy
+cognitive-commands
+companion-clis
+compile.py
+contextstream-memory-code-search
+creative
+delta-omega-psi-multimodal-cognition
+deterministic-face-id
+docs
+domains
+duckdb-analytics-engine
+emem-shared-memory
+engineering
+external-artifact-verdict
+federation-connect-headscale
+federation-release-attestation
+fi-mesh-check
+fi-qwen-upgrade
+fi-zai-probe
+flash
+forge-multimodal-router
+forge-vision-densify
+forge-vss-parser
+forge-vss-verifier-suite
+geox-production-cockpit
+governance
+help
+hermes
+hermes-coding-gateway
+hermes-gateway-image-routing
+human-meaning-membrane
+image-analyzer-vision
+imagine
+kernel-bind
+know-language
+know-math
+know-physics
+knowledge
+manifest.sha256
+mapbox-cartography-gis
+media
+memory-manage
+minimax-image-gen
+mmx-cli
+observe-ground
+openclaw
+openclaw-human-meaning
+primitives
+prompts-chat-library
+qwen-harness-tools
+qwencloud-audio-tts
+qwencloud-deploy
+qwencloud-image-generation
+qwencloud-model-selector
+qwencloud-ops-auth
+qwencloud-text
+qwencloud-update-check
+qwencloud-usage
+qwencloud-video-generation
+qwencloud-vision
+reality-loop-operator
+reflective
+route-dispatch
+runpod
+runpod-mcp
+runpod-usage
+runpodctl
+runtime
+scripts
+skill-evolution
+submission-readiness-audit
+substrate
+token-plan-image
+token-plan-speech
+token-plan-video
+validate.py
+verify-gate
+warga
+wealth-claim-state
+wisdom-scar-session-audit
+workflows
+xauusd-trading
+
+exec
+/bin/bash -lc 'ls /root/ 2>&1 | head -40' in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+A-FORGE
+AAA
+AAA-PRE-REDACT-1788437923
+AAA-ZEN-ALIGNMENT.md
+AGENTS.md
+AGI_SUBSTRATE_FIELD_GUIDE.md
+BACKUPS
+CLAUDE.md
+COOL
+ERPH-BRIDGE
+FRAME
+GEOX
+HERMES
+Hermes
+INCIDENTS
+Makefile
+QWEN.md
+RUNBOOK.md
+SIGNAL
+TODO.md
+VAULT999
+WEALTH
+WELL
+ZEN_HELIX.md
+adapters
+adik_final
+arif-fazil-site
+arif-fazil.com
+arif-sites
+arifFlow
+arifFlow-runtime
+arifOS
+arifOS-model-registry
+ariffazil
+artifacts
+backups
+bin
+birthday_jia
+cache
+channels-bridge
+
+exec
+/bin/bash -lc 'test -d /root/AAA && find /root/AAA -maxdepth 2 -name "skills" -o -name "agents" -o -name "prompts" 2>/dev/null | head -20' in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+/root/AAA/dist/agents
+/root/AAA/openclaw/agents
+/root/AAA/prompts
+/root/AAA/docs/agents
+/root/AAA/agents
+/root/AAA/agents/skills
+/root/AAA/agent-cards/agents
+/root/AAA/federation/agents
+/root/AAA/.hermes-archived-2026-08-15/skills
+/root/AAA/wiki/skills
+/root/AAA/a2a/agents
+/root/AAA/contracts/skills
+/root/AAA/public/agents
+/root/AAA/skills
+
+codex
+Filesystem read works. Let me probe the canonical registries and per-organ homes in parallel.
+exec
+/bin/bash -lc 'test -f /root/AAA/FEDERATED_SKILLS_REGISTRY_V3.yaml && head -100 /root/AAA/FEDERATED_SKILLS_REGISTRY_V3.yaml' in /root/AAA/forge_work/e3e-baseline-20260904
+ exited 1 in 0ms:
+exec
+/bin/bash -lc 'ls /root/GEOX/ 2>&1 | head -30 && echo "---" && find /root/GEOX -maxdepth 3 -type d -name "skills" 2>/dev/null' in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+999_vault
+AGENTS.md
+CANONICAL_PUBLIC_SURFACE.json
+CHANGELOG.md
+CLAUDE.md
+CODEOWNERS
+CONTRIBUTING.md
+Dockerfile
+Dockerfile.local
+FEDERATION.md
+FEDERATION_CONTRACT.md
+FEDERATION_MAP.md
+GENESIS
+GEOX_EMC_zen_all.png
+GEOX_MCP_APPS_SURFACE.json
+LICENSE
+Makefile
+NOTICE
+PROTOCOL_CONFORMANCE.md
+README.md
+allowed_signers
+apps
+apps.json
+compatibility
+config
+contracts
+data
+docker-compose.yml
+docs
+earth_memory.db
+---
+/root/GEOX/geox/skills
+/root/GEOX/src/geox_core/skills
+/root/GEOX/skills
+
+exec
+/bin/bash -lc 'ls /root/WEALTH/ 2>&1 | head -30 && echo "---" && find /root/WEALTH -maxdepth 3 -type d -name "skills" 2>/dev/null' in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+999_vault
+AGENTS.md
+CLAUDE.md
+CNAME
+CODEOWNERS
+CONTEXT.md
+CONTRIBUTING.md
+Dockerfile
+FEDERATION.md
+FEDERATION_CONTRACT.md
+FEDERATION_MAP.md
+GENESIS
+LICENSE
+Makefile
+NOTICE
+OPENCODE_TASK.md
+PROTOCOL_CONFORMANCE.md
+README.md
+RUNBOOK.md
+UPGRADE_STAGES.md
+VOIDX_BENCHMARK.md
+agent-cards
+agents
+api
+apps
+assets
+canon
+capitalx
+civilizational
+config
+---
+/root/WEALTH/host/skills
+/root/WEALTH/skills
+
+exec
+/bin/bash -lc 'ls /root/WELL/ 2>&1 | head -30 && echo "---" && find /root/WELL -maxdepth 3 -type d -name "skills" 2>/dev/null' in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+999_vault
+AGENTS.md
+CLAUDE.md
+CODEOWNERS
+CONTEXT.md
+CONTRIBUTING.md
+Dockerfile
+FEDERATION.md
+FEDERATION_CONTRACT.md
+FEDERATION_MAP.md
+GENESIS
+H1_MONOLITH_CUTOVER.md
+LICENSE
+Makefile
+README.md
+RUNBOOK.md
+__init__.py
+_archive
+adapters
+agent_telemetry.json
+agent_telemetry.py
+contracts
+data
+deploy
+docs
+engines
+envelopes
+events.jsonl
+fastmcp.json
+federation-manifests
+---
+/root/WELL/skills
+
+exec
+/bin/bash -lc 'ls -la /root/AAA/FEDERATED_SKILLS_REGISTRY_V3.yaml 2>&1 && file /root/AAA/FEDERATED_SKILLS_REGISTRY_V3.yaml 2>&1' in /root/AAA/forge_work/e3e-baseline-20260904
+ exited 2 in 0ms:
+ls: cannot access '/root/AAA/FEDERATED_SKILLS_REGISTRY_V3.yaml': No such file or directory
+
+exec
+/bin/bash -lc "echo \"===AAA skills===\" && ls /root/AAA/skills | grep -v \"\\.md"'$" | wc -l && echo "===GEOX skills===" && ls /root/GEOX/skills 2>/dev/null | grep -v "'"\\.md"'$" | wc -l && echo "===WEALTH skills===" && ls /root/WEALTH/skills 2>/dev/null | grep -v "'"\\.md"'$" | wc -l && echo "===WELL skills===" && ls /root/WELL/skills 2>/dev/null | grep -v "'"\\.md"'$" | wc -l' in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+===AAA skills===
+206
+===GEOX skills===
+23
+===WEALTH skills===
+6
+===WELL skills===
+5
+
+exec
+/bin/bash -lc 'ls /root/GEOX/skills 2>&1 | head -30' in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+SHARED_SKILL_SOURCE.md
+__init__.py
+atmosphere
+earth_science
+geodesy
+geological-artifact-rigor
+geox-basin-evaluation
+geox-claim-falsification
+geox-grounding
+geox-production-cockpit
+geox-prospect-evaluation
+geox-seismic-interpretation
+geox-well-log-qc
+governance
+hazards
+infrastructure
+mobility
+orchestration
+planner
+sensing
+subsurface
+terrain
+time
+water
+
+exec
+/bin/bash -lc 'ls /root/WEALTH/skills 2>&1 | head -30 && echo "---WELL---" && ls /root/WELL/skills 2>&1 | head -30' in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+wealth-capital-primitives
+wealth-claim-state
+wealth-ledger-discipline
+wealth-market-pulse
+wealth-runway-conservation
+xauusd-trading
+---WELL---
+FORGE-well-boundary-repair
+SHARED_SKILL_SOURCE.md
+well-consent-registry
+well-machine-diagnose
+well-substrate-readiness
+well-triadic-ops
+
+codex
+Found canonical homes. Now let me read the SKILL.md files for the specific skills needed.
+exec
+/bin/bash -lc 'test -f /root/GEOX/skills/geox-prospect-evaluation/SKILL.md && cat /root/GEOX/skills/geox-prospect-evaluation/SKILL.md | head -120' in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+---
+id: geox-prospect-evaluation
+name: GEOX Prospect Evaluation Lane
+version: 1.0.0
+description: Prospect evaluation lane — volumetrics, POS, EMV, risk. USE WHEN: 'evaluate prospect', 'volumetrics', 'chance of success', 'EMV', 'drill or drop'. Covers: geox_prospect (screen→evaluate, evidence_refs, verdict=compute) → wealth capital_primitive (emv/npv/kelly for the money side) → geox_temporal (basin lifecycle context). Iron rules: POS must decompose into independent chance factors (source, migration, trap, seal, reservoir); volumetrics P10/P50/P90 lognormal default; EMV computed in WEALTH organ not asserted by hand; GEOX qualifies candidates — investment decisions route to arifOS judge with WEALTH evidence attached.
+owner: 333-AGI
+risk_tier: low
+floor_scope: [F1, F2, F7, F11]
+autonomy_tier: T1
+organ_domain: geox
+forged: 2026-09-04
+---
+
+# GEOX Prospect Evaluation Lane
+
+Prospect evaluation lane — volumetrics, POS, EMV, risk. USE WHEN: 'evaluate prospect', 'volumetrics', 'chance of success', 'EMV', 'drill or drop'. Covers: geox_prospect (screen→evaluate, evidence_refs, verdict=compute) → wealth capital_primitive (emv/npv/kelly for the money side) → geox_temporal (basin lifecycle context). Iron rules: POS must decompose into independent chance factors (source, migration, trap, seal, reservoir); volumetrics P10/P50/P90 lognormal default; EMV computed in WEALTH organ not asserted by hand; GEOX qualifies candidates — investment decisions route to arifOS judge with WEALTH evidence attached.
+
+## Provenance
+
+Forged 2026-09-04 by 333-AGI (session SEAL-83defc585b5a4296) from live organ tool surfaces + FEDERATION_SKILL_PROFILE gap analysis. Source of truth: the organ MCP surface itself — when skill and tool surface disagree, the tool surface wins and this skill must be revised.
+
+exec
+/bin/bash -lc 'test -f /root/WEALTH/skills/wealth-capital-primitives/SKILL.md && cat /root/WEALTH/skills/wealth-capital-primitives/SKILL.md | head -120' in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+---
+id: wealth-capital-primitives
+name: WEALTH Capital Primitives Lane
+version: 1.0.0
+description: WEALTH compute lane — deductive capital math via capital_primitive. USE WHEN: 'NPV', 'IRR', 'EMV', 'Kelly', 'Markowitz', 'Monte Carlo', 'expected value'. Covers: capital_primitive modes (npv, irr, emv, mc, kelly, markowitz, robust budget) — pure computation, no inference. Iron rules: WEALTH computes, arifOS judges, Arif decides (authority ceiling COMPUTE_ONLY); every call writes a vault receipt — never suppress; probabilities must sum to 1 and outcomes must carry units; Kelly fraction caps at sovereign-set risk_aversion; Monte Carlo states seed for reproducibility.
+owner: 333-AGI
+risk_tier: medium
+floor_scope: [F1, F2, F7, F11]
+autonomy_tier: T1
+organ_domain: wealth
+forged: 2026-09-04
+---
+
+# WEALTH Capital Primitives Lane
+
+WEALTH compute lane — deductive capital math via capital_primitive. USE WHEN: 'NPV', 'IRR', 'EMV', 'Kelly', 'Markowitz', 'Monte Carlo', 'expected value'. Covers: capital_primitive modes (npv, irr, emv, mc, kelly, markowitz, robust budget) — pure computation, no inference. Iron rules: WEALTH computes, arifOS judges, Arif decides (authority ceiling COMPUTE_ONLY); every call writes a vault receipt — never suppress; probabilities must sum to 1 and outcomes must carry units; Kelly fraction caps at sovereign-set risk_aversion; Monte Carlo states seed for reproducibility.
+
+## Provenance
+
+Forged 2026-09-04 by 333-AGI (session SEAL-83defc585b5a4296) from live organ tool surfaces + FEDERATION_SKILL_PROFILE gap analysis. Source of truth: the organ MCP surface itself — when skill and tool surface disagree, the tool surface wins and this skill must be revised.
+
+exec
+/bin/bash -lc 'find /root/AAA -maxdepth 3 -name "*registry*.yaml" -o -name "*registry*.yml" 2>/dev/null | head -10' in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+/root/AAA/arifOS/RESOURCES/epoch-registry.yaml
+/root/AAA/auth/did_registry.yaml
+/root/AAA/contract/mcp-surface-registry.yaml
+/root/AAA/contracts/capability-registry.yaml
+
+codex
+Let me find the openclaw/mesh paths and image-routing skill to complete E3E-003 and E3E-004.
+exec
+/bin/bash -lc 'find /root/AAA/openclaw -maxdepth 3 -type d 2>/dev/null | head -20 && echo "---wealth-capital-primitives in openclaw?---" && find /root/AAA/openclaw -name "*wealth-capital*" 2>/dev/null' in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+/root/AAA/openclaw
+/root/AAA/openclaw/agents
+/root/AAA/openclaw/agents/agi
+---wealth-capital-primitives in openclaw?---
+
+exec
+/bin/bash -lc 'test -d /root/AAA/skills/forge-multimodal-router && head -80 /root/AAA/skills/forge-multimodal-router/SKILL.md' in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+---
+name: forge-multimodal-router
+id: forge-multimodal-router
+risk_tier: low
+description: 'Federation-wide multimodal routing skill. Resolves any vision/audio/video/somatic request to its canonical model + endpoint via /root/.config/federation-models.json (SOT). USE WHEN: "which model should I use for X", "route this image/audio/video to the right engine", "unify multimodal routing across agents", "I have an image/audio/video and need to know where it goes".'
+version: 1.0.0
+tags:
+- multimodal
+- routing
+- vision
+- audio
+- video
+- somatic
+- tts
+- asr
+- image-generation
+- video-generation
+- federation
+- SOT
+- F4
+- F8
+floor_scope:
+- F02
+- F04
+- F08
+owner: AAA
+autonomy_tier: T1
+capability_tier: fed-multimodal-router
+ecology_state: WARM
+consumes_sot: /root/.config/federation-models.json
+mirror_paths:
+- /root/AAA/skills/forge-multimodal-router/SKILL.md
+- /root/HERMES/skills/forge-multimodal-router/SKILL.md
+- /root/.qwen/skills/aaa-canonical/forge-multimodal-router/SKILL.md
+- /root/.claude/skills/forge-multimodal-router/SKILL.md
+forged: 2026-08-20
+forged_by: FI-003 (Qwen Code)
+f13_directive: "make sure my hermes agent telegram ASI_arifos_bot know how to use this"
+constitutional_floor: F11 AUDIT — every routing decision logged to VAULT999 receipts
+---
+
+# forge-multimodal-router
+
+## Purpose
+
+The federation supports four modalities (vision, audio, video, somatic) across 8 agents. Each modality has multiple functions (recognize, generate, edit, clone, analyze) and multiple engines (image gen, video gen, TTS, ASR, voice clone, music). Without a single routing skill, decisions are scattered across ~18 skills (`token-plan-image`, `token-plan-speech`, `token-plan-video`, `AAA-tts-engine-catalog`, `minimax-image-gen`, `creative/minimax-cli`, etc.) and 3 knowledge graphs.
+
+This skill is the **single ingestion entry point** for any multimodal routing question. It does NOT duplicate model identity — it references the SOT.
+
+## The authority doctrine (DO NOT VIOLATE)
+
+| Layer | File | Owner |
+|---|---|---|
+| **SOT (single source of truth)** | `/root/.config/federation-models.json` | AAA/FED (Kimi-code/FI-008 writes) |
+| **Reader** | `/root/AAA/scripts/fed_router.py` (`FED_SOT_PATH`) → `:7074` | FED |
+| **Live health/balance** | `token_bank.db` via `:7074` (HTTP 402/200 probes) | FED runtime |
+| **Tombstone** | `/root/AAA/federation/fed_signatures.yaml` — DEAD 2026-08-17 | F13 confirmed: do not resurrect |
+
+**Rule:** Model identity lives ONLY in SOT. Skill/tool surface (Hermes config, OpenCode config, etc.) is a CONSUMER, not authority. Next model release = 1 SOT edit (RCR — Release Change Ratio).
+
+**Picker sync rule:** AAA/FED has authority to write SOT (sqlite + json) but does NOT auto-write to picker configs (Kimi/Codex/Qwen/Claude/Go/Grok CLI). F13 holds the pen. Manual alignment audit is correct path.
+
+## The routing decision algorithm
+
+Given a multimodal request, ask in order:
+
+1. **What modality?** (vision / audio / video / somatic)
+2. **What direction?** (input = perception / output = generation)
+3. **What function?** (recognize / generate / edit / clone / analyze / transform)
+4. **What constraints?** (real-time? free quota required? Malaysian voice? identity-preserving? i-ARIF voice?)
+
+Then resolve:
+
+```
+resolution = lookup_sot(
+  modality, direction, function, constraints
+)
+# SOT returns: { provider_id, model_key, endpoint_url, params_override }
+```
+
+
+exec
+/bin/bash -lc 'ls /root/AAA/skills/imagine /root/AAA/skills/route-dispatch /root/AAA/skills/qwencloud-image-generation 2>&1 | head -30' in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+/root/AAA/skills/imagine:
+SKILL.md
+liveness.json
+
+/root/AAA/skills/qwencloud-image-generation:
+SKILL.md
+references
+scripts
+
+/root/AAA/skills/route-dispatch:
+SKILL.md
+liveness.json
+
+exec
+/bin/bash -lc 'test -f /root/.config/federation-models.json && wc -l /root/.config/federation-models.json && head -80 /root/.config/federation-models.json' in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+6723 /root/.config/federation-models.json
+{
+  "_meta": {
+    "role": "SINGLE SOURCE OF TRUTH — static federation config. Loaded at boot by /root/AAA/scripts/fed_router.py.",
+    "authority": "Static declarations only: providers, models, pricing, routes, capabilities. Live balance/latency/health belong to token_bank.db and are NEVER duplicated here.",
+    "consolidated_at": "2026-08-18T08:31:00+00:00",
+    "consolidated_by": "kimi-code/FI-008 (F13 directive: qwen token plan team seat arifos is alive — propagate to FED)",
+    "balance_policy": "NO static balances. Live balance = FED :7074 (token_bank.db, API probes).",
+    "canonical_balance_source": "FED :7074 (token_bank.db)",
+    "superseded_files": [
+      "/root/AAA/federation/fed_router_v2.py (819 lines, never imported)",
+      "/root/AAA/federation/fed_signatures.yaml (262 lines, reader was fed_router_v2)",
+      "/root/AAA/federation/AAA_CAPABILITY_REGISTRY.yaml.bak-* (4 backups, live file already lost)",
+      "hardcoded dicts formerly inside fed_router.py (~700 lines)"
+    ],
+    "federation_state": {
+      "providers": 26,
+      "models": 202,
+      "agents": 20
+    },
+    "dead_pools_note": "mulerouter removed from dead_pools 2026-08-13T21:18:04Z — falsified by live HTTP 200. opencode-go / tokenrouter-arifos unverified this pass.",
+    "last_verified": "2026-08-20T07:18:00Z",
+    "tombstones": [
+      {
+        "file": "/root/AAA/federation/fed_signatures.yaml",
+        "tombstoned_at": "2026-08-17T05:16:32.621578+00:00",
+        "actor": "kimi-code/FI-008 (audit PASS4 — 2026-08-17)",
+        "reason": "Confirmed via empirical probe: FED reads /root/.config/federation-models.json (FED_SOT_PATH, fed_router.py:84), not fed_signatures.yaml. The 2026-08-10 standalone refactor left fed_signatures.yaml orphaned. Tombstoned to preserve audit history. If future refactor reintroduces a spec layer, extend fed-provider-probe.sh to sync signatures from spec → SOT."
+      }
+    ],
+    "last_patch_note": "Added provider qwen-token-plan-team (Anthropic-compatible endpoint, alive on QWEN_TEAM_OWNER_API_KEY). Prepended as priority-1 constitutional route for qwen3.8-max; bumped old qwen-token-plan-individual routes to priority 2-3. Restores 666_JUDGE / 999_SEAL capability via qwen3.8-max.",
+    "last_patch_note_2026_08_19": "Added mimo-token-plan provider (Track A, Max plan, Singapore endpoint). Added 5 new MiMo model entries: mimo/mimo-v2.5 (omni-modal), mimo/mimo-v2.5-asr (audio STT), mimo/mimo-v2.5-tts, mimo/mimo-v2.5-tts-voiceclone (F13 SOVEREIGN), mimo/mimo-v2.5-tts-voicedesign. Updated mimo/mimo-v2.5-pro provider_ref mimo-platform to mimo-token-plan. Removed stale mimo/mimo-v2.5-pro-ultraspeed (PAYG-only, not on Token Plan). mimo-platform demoted to FALLBACK_ONLY. RCR rule honoured: 1 SOT edit (this file + sqlite providers table), 0 picker edits. Source: https://mimo.mi.com/docs/en-US/price/token-plan probed 2026-08-19.",
+    "last_patch_note_2026_08_19_forge777": "F13 directive 2026-08-19: CCC execution convergence on forge-777 (333-AGI). apex-888 hard-locked to litellm-federation/apex-888 (Gemini-primary cascade) for Godel E3 judge isolation — was minimax/MiniMax-M3 direct (position-3 provider inside forge-777 cascade). DeepSeek direct DEAD (-0.08 USD, conf 0.0) removed from apex chain.",
+    "last_patch_note_2026_08_20_qwen003": "F13 directive 2026-08-20 (Qwen Code / FI-003): Added dashscope-payg provider + 32 multimodal models (image gen, video gen, TTS, ASR, voice cloning) to federation SOT. Aligns with /root/HERMES/config.yaml dashscope-payg provider + tts/stt.qwen-audio-payg entries wired 2026-08-20. RCR: 1 SOT edit, 0 picker edits. Builds forge-multimodal-router skill (4-way AAA sync) for SOT-referenced routing. Free quota eligibility requires International-scope models with blue quota bar in console. i-ARIF voice identity creation retains F13 SOVEREIGN gate via AAA-voice-cloning-mimo-minimax or AAA-voice-cloning-qwen-cloud.",
+    "last_patch_note_2026_08_20_routing": "F13 directive 2026-08-20 (Qwen Code / FI-003): Added quality_tier to all dashscope-payg multimodal models + routing_doc pointers. SOT: /root/AAA/docs/qwen-free-quota-routing.md",
+    "last_patch_note_2026_08_21_zai": "F13 directive 2026-08-21 (Qwen Code / FI-003): added anthropic_endpoint_url to zai-coding-plan (LIVE-probed glm-5.3 HTTP 200), enriched plan metadata (Pro tier, credit multipliers, off-peak). Kimi Code config.toml gained zai-coding-plan provider (4 GLM models) — Anthropic-compat as primary Kimi surface. Codex catalog codex.forge lane promoted glm-5.2 -> glm-5.3 (honest-ization: zai 5.2 silently redirects to 5.3 anyway, verified 2026-08-15). RCR: 1 SOT edit, 0 picker auto-syncs (F13 holds pen).",
+    "last_patch_note_free_quota": "F13 directive 2026-08-25: Added dashscope-free-quota provider + 32 free quota text/vision models. Two independent quota pools (Individual + PAYG). Constitutional crisis resolved (qwen3.8-max LIVE via Individual). i-arif multimodal with all providers.",
+    "last_patch_note_2026_08_26_gemini_multimodal": "F13 directive 2026-08-26: Registered Gemini Nano Banana image generation & editing suite (gemini-3.1-flash-image / Nano Banana 2, gemini-3.1-flash-lite-image / NB2 Lite, gemini-3-pro-image / NB Pro, gemini-2.5-flash-image) and Video generation suite (gemini-omni-flash conversational default, veo-3.1-generate-preview with native audio / extension up to 148s, veo-3.1-fast-generate-preview, veo-3.1-lite-generate-preview). Wired to FED i-ARIF multimodal capabilities and AAA skills mesh.",
+    "last_patch_note_2026_08_30_deepseek_zen": "F13 directive 2026-08-30 (Arif: make deepseek configs zen — deep-research DeepSeek vision): (1) REGISTERED deepseek/deepseek-v4-flash-vision-exp — official vision model released 2026-08-21 (api-docs.deepseek.com/guides/vision), image-in user-role only, 384 tok/image cap, JPEG/PNG/GIF/WebP, Anthropic-compat /anthropic accepts image blocks; DIRECT-API-ONLY — no mirror carries it; provider deepseek INSOLVENT so status LIVE_PROVIDER_DEAD until top-up. Roles 111/777 only; 333/666/999 forbidden while EXP. (2) model_routes deepseek-v4-pro: dead-direct demoted p1→p4, qwen-token-plan-team promoted p1 (HTTP 200 verified 2026-08-18, CN jurisdiction preserved for sovereign lanes), opencode-zen added p3, duplicate individual entry collapsed. (3) model_routes deepseek-v4-flash: dead-direct demoted p1→p4, individual entries REMOVED (seat has NO v4-flash — dead fallbacks behind dead primary), qwen-token-plan-team p1, opencode-zen p2, opencode-go p3. Effect: all routing_rules preferring deepseek/deepseek-v4-pro|flash (incl. sovereign p100/p150/p200 lanes) now resolve LIVE-first with zero rule edits. (4) OUTSTANDING (reported, not fixed — runtime config belongs to FI-001): SOT agents FORGE(000Ω)/AUDITOR(Ψ) primary still deepseek-direct-dead, mirrors /root/.config/opencode/opencode.json subagents; their runtime chain fails to kimi/k3 rung today. SOT reloads at next FED boot. Backup: federation-models.json.bak-20260830-deepseek-zen.",
+    "last_patch_note_2026_08_30_deepseek_revival": "ARIF CORRECTION same day 11:0xZ — 'ada credit la deepseek api key'. Deepscan found 3 keys: DEEPSEEK_API_KEY (sk-a8a68a…6115) LIVE $17.38 is_available=true; DEEPSEEK_ANTHROPIC_KEY (sk-973607…4c5b) same account LIVE; kimi config.toml hardcoded sk-6e10… INVALID 401 (root cause of Kimi-side dead lane — replaced with secrets DEEPSEEK_API_KEY byte-exact). The 2026-08-20 INSOLVENT probe (-0.08) was STALE and/or probed the dead key. LIVE VERIFICATION 2026-08-30: balance $17.38; v4-flash 200 'PONG' 1.2s; v4-pro 200 'PONG-PRO' 1.3s (thinking disabled works); v4-flash-vision-exp REAL-IMAGE 200 answered 'Red' 1.1s; /anthropic/v1/messages 200 both keys; vision-exp works on /anthropic too. ACTIONS: provider deepseek ACTIVE (health 0.95); both ladders direct RESTORED to p1 (sovereign constitutional lane), team p2, individual/zen/go behind; vision-exp status LIVE. Kimi [providers.deepseek] now wired to live key — deepseek/deepseek-v4-flash-vision-exp usable from Kimi harness immediately. FORGE/AUDITOR opencode subagent runtime (FI-001 lane) still pending re-point.",
+    "last_patch_note_2026_08_31_dsvision_primary": "F13 DIRECTIVE 2026-08-31 (Arif, kimi-code/FI-008): (1) deepseek/deepseek-v4-flash-vision-exp promoted to PRIMARY-FOR-NOW for the HERMES i-ARIF persona lane — Hermes config.yaml model.default + vision aux + litellm i-arif cascade rung P0 (order 0.5, direct deepseek). Roles note: vision-exp constitutional_roles 111/777 unchanged — Hermes persona lane carries zero federation authority (persona_policy), so the 333/666/999 EXP ban is NOT violated. Swap back at DeepSeek GA. (2) GPT-OSS REMOVED per F13 ('GPT OSS tu x perlu kot'): 2 model entries deleted, 2 pool/list references scrubbed. Backup: federation-models.json.bak-20260831-dsvision."
+  },
+  "providers": [
+    {
+      "provider_id": "deepseek",
+      "provider_name": "DeepSeek (深度求索)",
+      "status": "ACTIVE",
+      "endpoint_url": "https://api.deepseek.com/v1",
+      "anthropic_endpoint_url": "https://api.deepseek.com/anthropic",
+      "api_key_ref": "secrets::DEEPSEEK_API_KEY (sk-a8a68a…6115, OpenAI+Anthropic both OK) | secrets::DEEPSEEK_ANTHROPIC_KEY (sk-973607…4c5b, same account)",
+      "jurisdiction": "CN",
+      "billing_model": "prepaid",
+      "status_evidence": "live probe 2026-08-30T10:5xZ (kimi-code/FI-008): balance $17.38 USD is_available=true; chat 200 on v4-flash (1.2s 'PONG'), v4-pro (1.3s 'PONG-PRO'), v4-flash-vision-exp WITH REAL IMAGE (1.1s answered 'Red' on 2x2 red PNG); /anthropic/v1/messages 200 via both keys. Prior INSOLVENT verdict (probe 2026-08-20, -0.08 USD) was STALE + probed a dead key (sk-6e10… removed from kimi config 2026-08-30).",
+      "last_verified": "2026-08-30",
+      "telemetry": {
+        "health_score": 0.95,
+        "probe_http_code": 200,
+        "probe_status": "LIVE",
+        "last_probe": "2026-08-30T10:55:00Z"
+      },
+      "docs": "https://api-docs.deepseek.com",
+      "portal": "https://platform.deepseek.com"
+    },
+    {
+      "provider_id": "qwen-token-plan",
+      "provider_name": "Qwen Cloud Token Plan Team Edition",
+      "status": "quota_exhausted_429",
+      "endpoint_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+      "api_key_ref": "secrets::QWEN_API_KEY",
+      "jurisdiction": "CN (SG region endpoint)",
+      "billing_model": "monthly_token_plan_team",
+      "status_evidence": "live probe 2026-08-15: HTTP 429 token-plan quota exhausted",
+      "last_verified": "2026-08-15",
+      "docs": "https://docs.qwencloud.com/token-plan",
+      "portal": "https://home.qwencloud.com"
+    },
+    {
+      "provider_id": "minimax",
+      "provider_name": "MiniMax (MiniMax / MiniMax AI)",
+      "status": "auth_fail",
+      "endpoint_url": "https://api.minimax.io/v1",
+
+exec
+/bin/bash -lc 'head -60 /root/AAA/skills/imagine/SKILL.md 2>&1' in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+---
+name: imagine
+id: imagine
+version: 1.0.0
+risk_tier: low
+description: 'How to use the image_gen and image_edit tool calls in Grok Build: when
+  to build a visual with code instead of generating it, prompt-craft, reference-first
+  handling of real people, factual grounding, and asset-consistency. Load this whenever
+  generating or editing an image is on the table, i.e. when an image_gen or image_edit
+  call is being considered or about to be made. Tool-usage-driven, not triggered by
+  a user merely mentioning images.
+
+  '
+metadata:
+  short-description: Prompting and workflow guidance for Imagine image tools
+owner: AAA
+floor_scope:
+- F1
+- F2
+- F4
+- F7
+autonomy_tier: T1
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
+---
+# Imagine
+
+Guidance for the two image tool calls in Grok Build:
+
+- `image_gen` - generate a **new** image from a text prompt.
+- `image_edit` - modify an **existing** image using a text prompt and source image.
+
+Apply this whenever you're considering or about to call either tool.
+
+## Build accurate visuals with code, not the image tools
+
+1. **Image models are unreliable at exact text, numbers, and structure.** They can handle short text or a simple layout, but they often garble words, invent numbers, draw chart bars that match no data, or point diagram arrows nowhere, and the more that has to be exact, the worse they do. A detailed prompt doesn't make it dependable, and an `image_edit` pass usually won't fix it. So when a result needs specific text, data, or structure to be correct (charts from real numbers, labeled or technical diagrams, math explainers, tables, screens with real copy), construct the asset with code, where you control the exact content. Prefer HTML and CSS, which give much better layout, typography, and polish than Python plotting. When only the look matters (photos, illustrations, characters, scenes, decorative art), the image tools are the right choice. Which one fits depends on what the output needs to get right, not on how the request is worded.
+
+## Verifying discrete accuracy (loop)
+
+When the output must get specific text, numbers, data, or structure right, don't trust the first result - verify it in a loop:
+
+1. Produce the result (generate, or per *Build accurate visuals with code*, construct it in code).
+2. Inspect the actual output - use image understanding to read a generated image back (or check the rendered code) - and confirm every word, number, label, and structural detail matches the requirement, and that nothing overlaps, clips, or runs off-canvas.
+3. If anything is wrong, fix and re-verify:
+   - Garbled text, invented numbers, or broken layout from an image model? Don't just re-prompt - it will likely garble it again. Rebuild it with code.
+   - Overlapping or clipped elements in code-built output? Re-lay-out with auto-layout (HTML/CSS) rather than nudging coordinates by hand.
+   - Otherwise make one targeted edit.
+4. Only finish when the discrete content is exactly correct. If it can't be made accurate, tell the user instead of shipping something wrong.
+
+## Core Principles
+
+1. **You own the prompt.** If the user gives a detailed prompt or asks you to use theirs, use it verbatim. Otherwise craft the final prompt: front-load the subject, give strong high-level direction for mood, composition, lighting, and style without over-specifying every detail, write natural prose rather than keyword tags, and describe positively instead of using negative prompts. For edits, describe only what changes. Target 2-5 sentences.
+2. **Reference-first for real people.** Never use pure `image_gen` for a named real person or group, including face swaps, posters, cartoons, and cinematic or editorial depictions. Use `image_edit` with a real reference instead, and never produce non-consensual, sexualized, or minor-involving likenesses. See Real People and References for the procedure.
+3. **Ground facts with search first.** If any part of the request depends on a real-world fact, identity, brand or product, place, event, or top/latest/current result, search the web before generating and put the actual verified details into the prompt. Don't rely on memory, and don't write vague placeholders like "the current president"; write the verified name.
+4. **Reuse a base image for consistency.** When the same character, object, or setting must appear across multiple images, generate one base image first, then use it as the input to `image_edit` for every variation. Don't re-run `image_gen` from scratch for a recurring subject.
+5. **Handle failures gracefully.** On a moderation or safety block, stop; don't retry and don't paraphrase the prompt to evade the filter. Tell the user it was blocked and offer a different direction. If a reference is weak or a result looks off-target, say so and ask for an upload or redirect rather than silently iterating.
+6. **Plan multi-step workflows.** Sequence the steps; only parallelize generations that belong to the same step.
+7. **Review at the end.** Confirm the generations you intended actually executed and match what was asked.
+8. **Don't assume tool behavior.** Don't invent tool parameters, return values, or environment capabilities that aren't actually provided; verify rather than guess.
+
+exec
+/bin/bash -lc 'ls /root/AAA/skills/.system/imagegen/ 2>&1 && head -60 /root/AAA/skills/.system/imagegen/SKILL.md 2>&1' in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+LICENSE.txt
+SKILL.md
+agents
+assets
+references
+scripts
+---
+name: "imagegen"
+description: "Generate or edit raster images when the task benefits from AI-created bitmap visuals such as photos, illustrations, textures, sprites, mockups, or transparent-background cutouts. Use when Codex should create a brand-new image, transform an existing image, or derive visual variants from references, and the output should be a bitmap asset rather than repo-native code or vector. Do not use when the task is better handled by editing existing SVG/vector/code-native assets, extending an established icon or logo system, or building the visual directly in HTML/CSS/canvas."
+---
+
+# Image Generation Skill
+
+Generates or edits images for the current project (for example website assets, game assets, UI mockups, product mockups, wireframes, logo design, photorealistic images, or infographics).
+
+## Top-level modes and rules
+
+This skill has exactly two top-level modes:
+
+- **Default built-in tool mode (preferred):** built-in `image_gen` tool for image generation, editing, and transparent-image requests. Does not require `OPENAI_API_KEY`.
+- **Fallback CLI mode:** `scripts/image_gen.py` CLI. Use when the user explicitly asks for or confirms the CLI/API/model path. Requires `OPENAI_API_KEY`.
+
+Within CLI fallback, the CLI exposes three subcommands:
+
+- `generate`
+- `edit`
+- `generate-batch`
+
+Rules:
+- Use the built-in `image_gen` tool by default for normal image generation and editing requests.
+- Do not switch to CLI fallback for ordinary quality, size, or file-path control.
+- For transparent images, ask built-in `image_gen` for a transparent background and preserve the generated alpha.
+- Never silently switch from built-in `image_gen` or CLI `gpt-image-2` to CLI `gpt-image-1.5`; ask the user first unless they explicitly requested `gpt-image-1.5`.
+- The word `batch` by itself does not mean CLI fallback. If the user asks for many assets or says to batch-generate assets without explicitly asking for CLI/API/model controls, stay on the built-in path and issue one built-in call per requested asset or variant.
+- If the built-in tool fails or is unavailable, tell the user the CLI fallback exists and that it requires `OPENAI_API_KEY`. Proceed only if the user explicitly asks for that fallback.
+- If the user explicitly asks for CLI mode, use the bundled `scripts/image_gen.py` workflow. Do not create one-off SDK runners.
+- Never modify `scripts/image_gen.py`. If something is missing, ask the user before doing anything else.
+
+Built-in save-path policy:
+- In built-in tool mode, Codex saves generated images under `$CODEX_HOME/*` by default.
+- Do not describe or rely on OS temp as the default built-in destination.
+- Do not describe or rely on a destination-path argument (if any) on the built-in `image_gen` tool. If a specific location is needed, generate first and then move or copy the selected output from `$CODEX_HOME/generated_images/...`.
+- Save-path precedence in built-in mode:
+  1. If the user names a destination, move or copy the selected output there.
+  2. If the image is meant for the current project, move or copy the final selected image into the workspace before finishing.
+  3. If the image is only for preview or brainstorming, render it inline; the underlying file can remain at the default `$CODEX_HOME/*` path.
+- Never leave a project-referenced asset only at the default `$CODEX_HOME/*` path.
+- Do not overwrite an existing asset unless the user explicitly asked for replacement; otherwise create a sibling versioned filename such as `hero-v2.png` or `item-icon-edited.png`.
+
+Shared prompt guidance for both modes lives in `references/prompting.md` and `references/sample-prompts.md`.
+
+Fallback-only docs/resources for CLI mode:
+- `references/cli.md`
+- `references/image-api.md`
+- `references/codex-network.md`
+- `scripts/image_gen.py`
+
+## When to use
+- Generate a new image (concept art, product shot, cover, website hero)
+- Generate a new image using one or more reference images for style, composition, or mood
+- Edit an existing image (inpainting, lighting or weather transformations, background replacement, object removal, compositing, transparent background)
+- Produce many assets or variants for one task
+
+## When not to use
+- Extending or matching an existing SVG/vector icon set, logo system, or illustration library inside the repo
+- Creating simple shapes, diagrams, wireframes, or icons that are better produced directly in SVG, HTML/CSS, or canvas
+
+exec
+/bin/bash -lc 'grep -n "image" /root/.config/federation-models.json | head -40' in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+33:    "last_patch_note_2026_08_20_qwen003": "F13 directive 2026-08-20 (Qwen Code / FI-003): Added dashscope-payg provider + 32 multimodal models (image gen, video gen, TTS, ASR, voice cloning) to federation SOT. Aligns with /root/HERMES/config.yaml dashscope-payg provider + tts/stt.qwen-audio-payg entries wired 2026-08-20. RCR: 1 SOT edit, 0 picker edits. Builds forge-multimodal-router skill (4-way AAA sync) for SOT-referenced routing. Free quota eligibility requires International-scope models with blue quota bar in console. i-ARIF voice identity creation retains F13 SOVEREIGN gate via AAA-voice-cloning-mimo-minimax or AAA-voice-cloning-qwen-cloud.",
+37:    "last_patch_note_2026_08_26_gemini_multimodal": "F13 directive 2026-08-26: Registered Gemini Nano Banana image generation & editing suite (gemini-3.1-flash-image / Nano Banana 2, gemini-3.1-flash-lite-image / NB2 Lite, gemini-3-pro-image / NB Pro, gemini-2.5-flash-image) and Video generation suite (gemini-omni-flash conversational default, veo-3.1-generate-preview with native audio / extension up to 148s, veo-3.1-fast-generate-preview, veo-3.1-lite-generate-preview). Wired to FED i-ARIF multimodal capabilities and AAA skills mesh.",
+38:    "last_patch_note_2026_08_30_deepseek_zen": "F13 directive 2026-08-30 (Arif: make deepseek configs zen — deep-research DeepSeek vision): (1) REGISTERED deepseek/deepseek-v4-flash-vision-exp — official vision model released 2026-08-21 (api-docs.deepseek.com/guides/vision), image-in user-role only, 384 tok/image cap, JPEG/PNG/GIF/WebP, Anthropic-compat /anthropic accepts image blocks; DIRECT-API-ONLY — no mirror carries it; provider deepseek INSOLVENT so status LIVE_PROVIDER_DEAD until top-up. Roles 111/777 only; 333/666/999 forbidden while EXP. (2) model_routes deepseek-v4-pro: dead-direct demoted p1→p4, qwen-token-plan-team promoted p1 (HTTP 200 verified 2026-08-18, CN jurisdiction preserved for sovereign lanes), opencode-zen added p3, duplicate individual entry collapsed. (3) model_routes deepseek-v4-flash: dead-direct demoted p1→p4, individual entries REMOVED (seat has NO v4-flash — dead fallbacks behind dead primary), qwen-token-plan-team p1, opencode-zen p2, opencode-go p3. Effect: all routing_rules preferring deepseek/deepseek-v4-pro|flash (incl. sovereign p100/p150/p200 lanes) now resolve LIVE-first with zero rule edits. (4) OUTSTANDING (reported, not fixed — runtime config belongs to FI-001): SOT agents FORGE(000Ω)/AUDITOR(Ψ) primary still deepseek-direct-dead, mirrors /root/.config/opencode/opencode.json subagents; their runtime chain fails to kimi/k3 rung today. SOT reloads at next FED boot. Backup: federation-models.json.bak-20260830-deepseek-zen.",
+445:      "notes": "Multimodal coverage: image generation (qwen-image-3.0-pro), video generation (wan3.0-video), TTS (qwen-audio-3.0-tts-flash), ASR (qwen-audio-3.0-asr-flash), voice cloning (voice-enrollment/qwen-voice-design). Free quota eligible for International-scope models (verify via blue quota bar in console). F13 SOVEREIGN-gated: i-ARIF voice identity creation requires F13 explicit ack via AAA-voice-cloning-mimo-minimax or AAA-voice-cloning-qwen-cloud."
+536:        "image_ocr",
+543:        "image"
+545:      "input_modality": "text+image",
+556:      "f13_governance": "EXPERIMENTAL model (released 2026-08-21) — never for 666_JUDGE/999_SEAL/333_THINK until GA. Images: user-role messages only, JPEG/PNG/GIF/WebP, max 384 tokens/image (auto-resize ~800x800), 600 images/request cap. Anthropic-compat /anthropic endpoint accepts image blocks (base64/url/file). API-only, no open weights.",
+557:      "use_case": "Screenshot OCR, chart reading, image-grounded agent tasks when CN-direct lane is restored. Vision parity rung to kimi/qwen-vision rungs in i-arif cascade.",
+558:      "_patch_2026_08_30_zen": "Registered per official docs https://api-docs.deepseek.com/guides/vision + changelog 2026-08-21. Text parity with V4-Flash; multimodal agent close to Opus-4.8 per DeepSeek benchmarks. VERIFIED LIVE 2026-08-30T10:5xZ (FI-008): real-image probe (2x2 red PNG via image_url base64) → HTTP 200, answered 'Red', 1.1s, on both OpenAI-compat and /anthropic (KEY-A sk-a8a68a…). DIRECT-API-ONLY — no mirror carries vision-exp (qwen-team/zen/go mirrors carry text flash/pro only)."
+562:      "_patch_2026_08_18": "capabilities_audit Phase 3A — added image_generation + video_generation tokens per CAPABILITIES.json modality/feature split",
+578:        "image_generation",
+583:        "image",
+658:        "image",
+692:        "image",
+706:      "_patch_2026_08_19": "Omni-modal native (text+image+video+audio per landing doc - supersedes earlier text+image assumption)"
+826:        "image"
+860:        "image",
+889:        "image"
+917:        "image"
+998:        "image"
+1031:        "image"
+1259:        "image",
+1286:        "image",
+1299:      "model_key": "gemini/gemini-3.1-flash-image",
+1305:        "image_generation",
+1306:        "image_editing",
+1310:        "grounding_image_search"
+1314:        "image",
+1318:        "image",
+1321:      "notes": "Nano Banana 2 — Workhorse Gemini 3.1 Image model. 512px-4K, up to 14 reference images (10 objects, 4 characters), Video-to-image, Google Image Search Grounding, thinking_level: minimal|high.",
+1332:      "model_key": "gemini/gemini-3.1-flash-lite-image",
+1338:        "image_generation",
+1339:        "image_editing",
+1344:        "image"
+1347:        "image",
+1350:      "notes": "Nano Banana 2 Lite — Fastest & lowest latency Gemini image model for velocity and scale.",
+1361:      "model_key": "gemini/gemini-3-pro-image",
+1367:        "image_generation",
+1368:        "image_editing",
+
+exec
+/bin/bash -lc "grep -n \"image_generation\\|image-gen\\|qwen-image\\|wan\\|wan2.5\\|image-1\\|flux\\|sdxl\" /root/.config/federation-models.json | head -30" in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+445:      "notes": "Multimodal coverage: image generation (qwen-image-3.0-pro), video generation (wan3.0-video), TTS (qwen-audio-3.0-tts-flash), ASR (qwen-audio-3.0-asr-flash), voice cloning (voice-enrollment/qwen-voice-design). Free quota eligible for International-scope models (verify via blue quota bar in console). F13 SOVEREIGN-gated: i-ARIF voice identity creation requires F13 explicit ack via AAA-voice-cloning-mimo-minimax or AAA-voice-cloning-qwen-cloud."
+562:      "_patch_2026_08_18": "capabilities_audit Phase 3A — added image_generation + video_generation tokens per CAPABILITIES.json modality/feature split",
+578:        "image_generation",
+1305:        "image_generation",
+1338:        "image_generation",
+1367:        "image_generation",
+1399:        "image_generation",
+3301:      "model_key": "dashscope-payg/qwen-image-3.0-pro",
+3305:        "image_generation",
+3314:      "model_key": "dashscope-payg/qwen-image-3.0",
+3318:        "image_generation",
+3327:      "model_key": "dashscope-payg/qwen-image-2.0-pro",
+3331:        "image_generation",
+3340:      "model_key": "dashscope-payg/qwen-image-2.0",
+3344:        "image_generation",
+3353:      "model_key": "dashscope-payg/qwen-image-max",
+3357:        "image_generation",
+3365:      "model_key": "dashscope-payg/qwen-image-edit-max",
+3369:        "image_generation",
+3382:        "image_generation",
+3390:      "model_key": "dashscope-payg/wan2.7-image-pro",
+3394:        "image_generation",
+3403:      "model_key": "dashscope-payg/wan2.7-image",
+3407:        "image_generation",
+3426:      "model_key": "dashscope-payg/wan3.0-video",
+3438:      "model_key": "dashscope-payg/wan2.7-t2v-2026-06-12",
+3450:      "model_key": "dashscope-payg/wan2.7-i2v-2026-04-25",
+3462:      "model_key": "dashscope-payg/wan2.7-r2v-2026-06-12",
+3474:      "model_key": "dashscope-payg/wan2.7-videoedit",
+5785:    "fed-image-generation": {
+
+exec
+/bin/bash -lc "sed -n '5780,5850p' /root/.config/federation-models.json" in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+        "status": "DECLARED_UNWIRED_at_proxy",
+        "note": "models declared (mimo-v2.5-tts/asr) but /v1/audio/* endpoints not yet mapped in litellm config — agents use edge-tts (local, free) meanwhile; wire at S2",
+        "wire_receipt": null
+      }
+    },
+    "fed-image-generation": {
+      "description": "Diffusion-based image synthesis (DiT/SDXL/Wan2.7). Renderer / Executor role. Iterative denoising on continuous spatial latents. Fails structurally.",
+      "models": [
+        "bailian-token-plan/wan2.7-image-pro",
+        "bailian-token-plan/wan2.7-image",
+        "qwen-token-plan-individual/wan2.7-image-pro"
+      ],
+      "constitutional_tier": 555,
+      "modality": "pixel",
+      "invocation": {
+        "endpoint": "/v1/chat/completions",
+        "critical": "/v1/images/generations returns 404 BY DESIGN (endpoint not wired) — do NOT retry it",
+        "request": "plain text prompt in user message",
+        "response": "markdown image URL in content — capture FULL url incl. ?Expires&OSSAccess&Signature query (truncating at .png causes OSS 403); GET within expiry window",
+        "fallback_order": [
+          "fed/image-gen",
+          "pollinations (keyless)",
+          "hf-flux-spaces (volatile)",
+          "minimax-media (if revived, F13-consent)"
+        ],
+        "quota_class": "token-plan-bursty",
+        "wire_receipt": "FI-008 2026-09-03/04: 200+URL→1.72MB sado_gold.png; quota 403s after burst recover with time"
+      }
+    },
+    "fed-grounded-vision": {
+      "description": "Compact VLM with spatial grounding (bbox protocol). Inspector / Evaluator role. Returns P_quality ∈ [0,1].",
+      "models": [
+        "mulerouter/qwen-vl-max",
+        "bailian-token-plan/qwen-vl-max"
+      ],
+      "constitutional_tier": 555,
+      "modality": "vision",
+      "notes": [
+        "flame/* entries purged 2026-09-04 FI-008 — FLAME retired (deprecation-registry)"
+      ]
+    },
+    "fed-inpainting": {
+      "description": "Targeted image repair via ControlNet / inpainting. Triggered when fed-grounded-vision returns P_quality < 0.88 with localized defect bboxes.",
+      "models": [
+        "comfyui/controlnet-inpaint",
+        "comfyui/sdxl-inpaint"
+      ],
+      "constitutional_tier": 555,
+      "modality": "pixel"
+    },
+    "fed-judge-deputy": {
+      "description": "Backup JUDGE channels for constitutional seats. Routes glm-5.2 / qwen3.8-max through bailian / qwen-individual when primary 4 seats fail. Resolves JUDGE_SEAT_UNAVAILABLE cascades.",
+      "models": [
+        "bailian-token-plan/glm-5.2",
+        "bailian-token-plan/qwen3.8-max",
+        "qwen-token-plan-individual/glm-5.2",
+        "qwen-token-plan-individual/qwen3.8-max"
+      ],
+      "constitutional_tier": 666,
+      "modality": "text"
+    },
+    "fed-local-uncensored": {
+      "description": "LOCAL RUNTIME: Uncensored local diffusion execution on ComfyUI/SD-WebUI (:8188/:7860). Pony V6 / RealVisXL / FLUX checkpoints permitted. SINGLE LEDGER — full audit via arifflow_receipts.jsonl with content_classification field. F4 + F11 compliant by design. Replaced fed-uncensored-sovereign (shadow plane) per F13 directive 2026-08-10. Path A+ extensions: LedgerViewFilter (operator ACL by content_class) + TelemetryRing (TTL-bounded performance ring, sampled, promoted to canonical) — addresses Dark Mirror concern via policy + bounded entropy, not via shadow ledger.",
+      "models": [
+        "comfyui/pony-v6-xl",
+        "comfyui/realvisxl-v4",
+        "comfyui/flux-1-schnell"
+      ],
+      "constitutional_tier": 555,
+      "modality": "pixel",
+      "cost_band": "zero-api-cost",
+
+exec
+/bin/bash -lc "grep -n \"model_routes\\|routing_rules\\|image_generation\" /root/.config/federation-models.json | head -30" in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+38:    "last_patch_note_2026_08_30_deepseek_zen": "F13 directive 2026-08-30 (Arif: make deepseek configs zen — deep-research DeepSeek vision): (1) REGISTERED deepseek/deepseek-v4-flash-vision-exp — official vision model released 2026-08-21 (api-docs.deepseek.com/guides/vision), image-in user-role only, 384 tok/image cap, JPEG/PNG/GIF/WebP, Anthropic-compat /anthropic accepts image blocks; DIRECT-API-ONLY — no mirror carries it; provider deepseek INSOLVENT so status LIVE_PROVIDER_DEAD until top-up. Roles 111/777 only; 333/666/999 forbidden while EXP. (2) model_routes deepseek-v4-pro: dead-direct demoted p1→p4, qwen-token-plan-team promoted p1 (HTTP 200 verified 2026-08-18, CN jurisdiction preserved for sovereign lanes), opencode-zen added p3, duplicate individual entry collapsed. (3) model_routes deepseek-v4-flash: dead-direct demoted p1→p4, individual entries REMOVED (seat has NO v4-flash — dead fallbacks behind dead primary), qwen-token-plan-team p1, opencode-zen p2, opencode-go p3. Effect: all routing_rules preferring deepseek/deepseek-v4-pro|flash (incl. sovereign p100/p150/p200 lanes) now resolve LIVE-first with zero rule edits. (4) OUTSTANDING (reported, not fixed — runtime config belongs to FI-001): SOT agents FORGE(000Ω)/AUDITOR(Ψ) primary still deepseek-direct-dead, mirrors /root/.config/opencode/opencode.json subagents; their runtime chain fails to kimi/k3 rung today. SOT reloads at next FED boot. Backup: federation-models.json.bak-20260830-deepseek-zen.",
+562:      "_patch_2026_08_18": "capabilities_audit Phase 3A — added image_generation + video_generation tokens per CAPABILITIES.json modality/feature split",
+578:        "image_generation",
+1305:        "image_generation",
+1338:        "image_generation",
+1367:        "image_generation",
+1399:        "image_generation",
+3305:        "image_generation",
+3318:        "image_generation",
+3331:        "image_generation",
+3344:        "image_generation",
+3357:        "image_generation",
+3369:        "image_generation",
+3382:        "image_generation",
+3394:        "image_generation",
+3407:        "image_generation",
+5013:  "routing_rules": [
+5245:  "model_routes": {
+
+exec
+/bin/bash -lc 'test -f /root/AAA/skills/RSI-federation-mesh/SKILL.md && head -40 /root/AAA/skills/RSI-federation-mesh/SKILL.md' in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+---
+id: RSI-federation-mesh
+name: "RSI - Federation Mesh (Cross-Agent Recursive Improvement)"
+version: 1.0.0
+description: "Unified recursive-improvement protocol across ALL agents in the federation (AAA, Hermes, Kimi, OpenClaw, Claude Code, Codex, OpenCode, Grok). Bridges session-level RSI to federation-wide sync: detects skill drift between agents, propagates fixes back to the canonical AAA catalog, and ensures the federation learns from every session — not just the agent that ran it."
+owner: AAA
+risk_tier: low
+floor_scope: [F2, F4, F7, F9, F11]
+autonomy_tier: T1
+forged: 2026-08-08
+forged_by: 333-AGI (subagent)
+trigger_when:
+  - federation_sync_window
+  - cross_agent_divergence_detected
+  - session_end_if_federation_role
+  - mesh_health_check
+  - before_cross_agent_handoff
+  - after_skill_change_in_any_harness
+tags: [meta, rsi, federation, mesh, cross-agent, recursive-improvement, sync, drift]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
+---
+
+# RSI — Federation Mesh (Cross-Agent Recursive Improvement)
+
+> **Doctrine:** DITEMPA BUKAN DIBERI — Forged, not given.
+> **SOT:** `/root/AAA/skills/RSI-recursive-improvement/SKILL.md` (session-level, parent skill)
+> **Catalog:** `/root/AAA/skills/FEDERATED_SKILLS_REGISTRY_V3.yaml` (canonical AAA)
+> **Companion:** `AUDIT-skill-atlas` (gap detection), `AGI-decisions-reflect` (decision quality), `FORGE-skill-linter` (skill quality), `AUDIT-recursive-audit` (skill health)
+> **Zen:** Every session teaches the next session. Every agent teaches the other agents. If the federation isn't learning, neither are you.
+
+## What This Skill Is
+
+**Problem:** `RSI-recursive-improvement` (v2.0.0, 154 lines) operates at the **session level**. It captures what one agent learned in one session and writes to `/root/.local/share/arifos/rsi-ledger.jsonl`. But the federation has 7+ harnesses (AAA, Hermes, Kimi, OpenClaw, Claude Code, Codex, OpenCode, Grok), each with its own skill inventory, symlink mesh, and `liveness.json`. A lesson learned by Kimi never reaches AAA. A skill forged by Hermes never reaches Kimi. Drift accumulates silently.
+
+**Solution:** This skill extends RSI from one-agent-one-session to **federation-wide-recursive-improvement**. It defines the protocol that every agent runs before/after a session to:
+
+1. **Know thyself** — which agent am I, which skills do I have
+2. **Know thy role** — which skills SHOULD I have based on the canonical registry
+3. **Know thy history** — what did the last session learn (carry forward)
+
+exec
+/bin/bash -lc 'find /root -maxdepth 4 -name "wealth-capital-primitives" -type d 2>/dev/null' in /root/AAA/forge_work/e3e-baseline-20260904
+exec
+/bin/bash -lc 'find /root -maxdepth 5 -path "*mesh*" -name "wealth*" 2>/dev/null | head -20' in /root/AAA/forge_work/e3e-baseline-20260904
+ exited 1 in 176ms:
+/root/WEALTH/skills/wealth-capital-primitives
+
+ succeeded in 500ms:
+exec
+/bin/bash -lc 'find /root -maxdepth 6 -name "wealth-capital-primitives" 2>/dev/null' in /root/AAA/forge_work/e3e-baseline-20260904
+exec
+/bin/bash -lc 'test -d /root/WEALTH/skills/wealth-capital-primitives && ls /root/WEALTH/skills/wealth-capital-primitives/ && echo "---" && cat /root/WEALTH/skills/wealth-capital-primitives/SKILL.md 2>&1 | tail -40' in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+SKILL.md
+---
+---
+id: wealth-capital-primitives
+name: WEALTH Capital Primitives Lane
+version: 1.0.0
+description: WEALTH compute lane — deductive capital math via capital_primitive. USE WHEN: 'NPV', 'IRR', 'EMV', 'Kelly', 'Markowitz', 'Monte Carlo', 'expected value'. Covers: capital_primitive modes (npv, irr, emv, mc, kelly, markowitz, robust budget) — pure computation, no inference. Iron rules: WEALTH computes, arifOS judges, Arif decides (authority ceiling COMPUTE_ONLY); every call writes a vault receipt — never suppress; probabilities must sum to 1 and outcomes must carry units; Kelly fraction caps at sovereign-set risk_aversion; Monte Carlo states seed for reproducibility.
+owner: 333-AGI
+risk_tier: medium
+floor_scope: [F1, F2, F7, F11]
+autonomy_tier: T1
+organ_domain: wealth
+forged: 2026-09-04
+---
+
+# WEALTH Capital Primitives Lane
+
+WEALTH compute lane — deductive capital math via capital_primitive. USE WHEN: 'NPV', 'IRR', 'EMV', 'Kelly', 'Markowitz', 'Monte Carlo', 'expected value'. Covers: capital_primitive modes (npv, irr, emv, mc, kelly, markowitz, robust budget) — pure computation, no inference. Iron rules: WEALTH computes, arifOS judges, Arif decides (authority ceiling COMPUTE_ONLY); every call writes a vault receipt — never suppress; probabilities must sum to 1 and outcomes must carry units; Kelly fraction caps at sovereign-set risk_aversion; Monte Carlo states seed for reproducibility.
+
+## Provenance
+
+Forged 2026-09-04 by 333-AGI (session SEAL-83defc585b5a4296) from live organ tool surfaces + FEDERATION_SKILL_PROFILE gap analysis. Source of truth: the organ MCP surface itself — when skill and tool surface disagree, the tool surface wins and this skill must be revised.
+
+exec
+/bin/bash -lc 'grep -rn "wealth-capital-primitives" /root/AAA 2>/dev/null --include="*.yaml" --include="*.json" --include="*.md" | head -10' in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 378ms:
+/root/AAA/skills/FEDERATION_SKILL_PROFILE.json:348:      "wealth-capital-primitives",
+/root/AAA/skills/FEDERATION_SKILL_PROFILE.json:411:        "skill": "wealth-capital-primitives",
+/root/AAA/skills/FEDERATION_SKILL_PROFILE.json:414:        "canonical_home": "/root/WEALTH/skills/wealth-capital-primitives",
+
+ exited 1 in 901ms:
+/root/.kimi-code/skills/wealth-capital-primitives
+/root/.config/opencode/skills/wealth-capital-primitives
+/root/.qwen/skills/wealth-capital-primitives
+/root/.openclaw/skills/wealth-capital-primitives
+/root/WEALTH/skills/wealth-capital-primitives
+/root/.arifos/agents/gemini/AAA/skills/wealth-capital-primitives
+
+exec
+/bin/bash -lc "test -f /root/AAA/skills/FEDERATION_SKILL_PROFILE.json && python3 -c \"import json; d=json.load(open('/root/AAA/skills/FEDERATION_SKILL_PROFILE.json')); sks=d.get('skills', d); print('Keys:', list(d.keys())[:20]); print('Total skills entries:', len(sks) if isinstance(sks, list) else len(sks.keys()))\" 2>&1 | head -10" in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+Keys: ['version', 'scope', 'forged', 'purpose', 'supersedes', 'design_principle', 'governance', 'total_canonical', 'untiered_on_disk', 'zen_note', 'canonical_tiers', 'untiered_on_disk_breakdown', 'removed_from_v1', 'architecture', 'truth_audit', 'organ_domain_doctrine', 'organ_domain_map', 'skill_ownership_audit', 'skill_contract_standard']
+Total skills entries: 19
+
+exec
+/bin/bash -lc "grep -n -A3 \"geox-prospect-evaluation\\|wealth-capital-primitives\" /root/AAA/skills/FEDERATION_SKILL_PROFILE.json | head -40" in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+344:      "geox-prospect-evaluation",
+345-      "geox-claim-falsification"
+346-    ],
+347-    "wealth": [
+348:      "wealth-capital-primitives",
+349-      "wealth-ledger-discipline",
+350-      "wealth-market-pulse",
+351-      "wealth-runway-conservation"
+--
+395:        "skill": "geox-prospect-evaluation",
+396-        "owner_org": "GEOX",
+397-        "domain": "prospect",
+398:        "canonical_home": "/root/GEOX/skills/geox-prospect-evaluation",
+399-        "mesh_distribution": true,
+400-        "owner_agent": null
+401-      },
+--
+411:        "skill": "wealth-capital-primitives",
+412-        "owner_org": "WEALTH",
+413-        "domain": "capital",
+414:        "canonical_home": "/root/WEALTH/skills/wealth-capital-primitives",
+415-        "mesh_distribution": true,
+416-        "owner_agent": null
+417-      },
+
+exec
+/bin/bash -lc "sed -n '330,400p' /root/AAA/skills/FEDERATION_SKILL_PROFILE.json" in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+      "aaa": "/root/AAA/skills (federation catalog + aaa-* control-plane skills)",
+      "arifos": "/root/AAA/skills (arifos-* prefix discipline — kernel is cross-agent)",
+      "aforge": "/root/AAA/skills (FORGE-* prefix discipline — execution is cross-agent)",
+      "geox": "/root/GEOX/skills (geox-* earth-evidence playbooks)",
+      "wealth": "/root/WEALTH/skills (wealth-* capital playbooks)",
+      "well": "/root/WELL/skills (well-* vitality playbooks)",
+      "hermes": "/root/HERMES/skills (hermes-* + human-face only; mesh symlinks for the rest)"
+    }
+  },
+  "organ_domain_map": {
+    "geox": [
+      "geox-seismic-interpretation",
+      "geox-well-log-qc",
+      "geox-basin-evaluation",
+      "geox-prospect-evaluation",
+      "geox-claim-falsification"
+    ],
+    "wealth": [
+      "wealth-capital-primitives",
+      "wealth-ledger-discipline",
+      "wealth-market-pulse",
+      "wealth-runway-conservation"
+    ],
+    "well": [
+      "well-triadic-ops",
+      "well-machine-diagnose",
+      "well-consent-registry"
+    ],
+    "aaa": [
+      "aaa-musyawarah-execution",
+      "aaa-skill-governor-runtime"
+    ],
+    "arifos": [
+      "arifos-eight-verb-canonical"
+    ]
+  },
+  "skill_ownership_audit": {
+    "forged": "2026-09-04",
+    "rule": "owner_org + domain + canonical_home per skill. NO owner_agent field — agents mount, never own (888-APEX verdict 2026-09-04).",
+    "records": [
+      {
+        "skill": "geox-seismic-interpretation",
+        "owner_org": "GEOX",
+        "domain": "seismic",
+        "canonical_home": "/root/GEOX/skills/geox-seismic-interpretation",
+        "mesh_distribution": true,
+        "owner_agent": null
+      },
+      {
+        "skill": "geox-well-log-qc",
+        "owner_org": "GEOX",
+        "domain": "petrophysics",
+        "canonical_home": "/root/GEOX/skills/geox-well-log-qc",
+        "mesh_distribution": true,
+        "owner_agent": null
+      },
+      {
+        "skill": "geox-basin-evaluation",
+        "owner_org": "GEOX",
+        "domain": "basin",
+        "canonical_home": "/root/GEOX/skills/geox-basin-evaluation",
+        "mesh_distribution": true,
+        "owner_agent": null
+      },
+      {
+        "skill": "geox-prospect-evaluation",
+        "owner_org": "GEOX",
+        "domain": "prospect",
+        "canonical_home": "/root/GEOX/skills/geox-prospect-evaluation",
+        "mesh_distribution": true,
+        "owner_agent": null
+
+exec
+/bin/bash -lc "python3 -c \"
+import json
+d = json.load(open('/root/AAA/skills/FEDERATION_SKILL_PROFILE.json'))
+odm = d.get('organ_domain_map', {})
+print('ORGAN_DOMAIN_MAP:')
+for org, skills in odm.items():
+    print(f'  {org}: {len(skills)} skills')
+print()
+print('SKILL_OWNERSHIP_AUDIT (per-skill):')
+aud = d.get('skill_ownership_audit', [])
+geox = [s for s in aud if s.get('owner_org')=='GEOX']
+wel = [s for s in aud if s.get('owner_org')=='WELL']
+wlt = [s for s in aud if s.get('owner_org')=='WEALTH']
+aaa = [s for s in aud if s.get('owner_org')=='AAA']
+print(f'  AAA: {len(aaa)}, GEOX: {len(geox)}, WEALTH: {len(wlt)}, WELL: {len(wel)}')
+print()
+print('CANONICAL TIERS:', d.get('canonical_tiers', {}))
+print()
+print('UNTIERED ON DISK:', d.get('untiered_on_disk', '?'))
+print('TOTAL CANONICAL:', d.get('total_canonical', '?'))
+\" 2>&1 | head -40" in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 10ms:
+Traceback (most recent call last):
+  File "<string>", line 11, in <module>
+    geox = [s for s in aud if s.get('owner_org')=='GEOX']
+                              ^^^^^
+AttributeError: 'str' object has no attribute 'get'
+ORGAN_DOMAIN_MAP:
+  geox: 5 skills
+  wealth: 4 skills
+  well: 3 skills
+  aaa: 2 skills
+  arifos: 1 skills
+
+SKILL_OWNERSHIP_AUDIT (per-skill):
+
+exec
+/bin/bash -lc "python3 -c \"
+import json
+d = json.load(open('/root/AAA/skills/FEDERATION_SKILL_PROFILE.json'))
+print('TOTAL_CANONICAL:', d.get('total_canonical'))
+print('UNTIERED_ON_DISK:', d.get('untiered_on_disk'))
+print('CANONICAL_TIERS:')
+for k,v in d.get('canonical_tiers', {}).items():
+    print(f'  {k}: {v}')
+print()
+print('UNTIERED_ON_DISK_BREAKDOWN:')
+b = d.get('untiered_on_disk_breakdown', {})
+for k,v in b.items():
+    print(f'  {k}: {v}')
+print()
+print('ORGAN_CANONICAL_HOMES:')
+for k,v in d.get('canonical_homes', {}).items():
+    print(f'  {k}: {v}')
+print()
+print('GOVERNANCE:', d.get('governance'))
+print('FORGED:', d.get('forged'))
+\" 2>&1 | head -50" in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+TOTAL_CANONICAL: 131
+UNTIERED_ON_DISK: 13
+CANONICAL_TIERS:
+  substrate_always: {'description': 'Always-loaded behavioral substrate. Every agent must bind governance, observe with evidence, route correctly, manage memory, verify gates, and audit-seal.', 'count': 6, 'skills': ['kernel-bind', 'observe-ground', 'route-dispatch', 'memory-manage', 'verify-gate', 'audit-seal']}
+  constitutional: {'description': 'Constitutional and cognitive governance. Trinity-33 repo map, RSI self-improvement, ATLAS333 paradox geometry, floor checking, invariants, and paradox resolution.', 'count': 13, 'skills': ['KERNEL-trinity-33', 'RSI-recursive-improvement', 'atlas333-cognitive-geometry', 'arifos-constitutional-judge', 'ASI-agent-invariants', 'ASI-agentic-architecture', 'ASI-agentic-governance', 'FLAME-router', 'AGI-explorer-intelligence', 'EUREKA777-paradox-resolution', 'AGI-decisions-reflect', 'APEX-humility-godel', 'APEX-fff-loop-protocol']}
+  forge_on_demand: {'description': 'Execution and infrastructure skills. Build, deploy, monitor, triage, secure, audit. The hands of the federation.', 'count': 25, 'skills': ['FORGE-verify-runtime', 'FORGE-incident-triage', 'FORGE-infra-guardian', 'FORGE-mcp-smoke-test', 'FORGE-vps-docker', 'FORGE-ci-diagnose', 'FORGE-ephemeral-genesis', 'FORGE-secret-hygiene', 'FORGE-model-monitor', 'FORGE-telemetry-watchdog', 'FORGE-telegram-audit', 'FORGE-symlink-audit', 'FORGE-readme-truth-check', 'FORGE-vps-runbook', 'FORGE-vault999-witness', 'FORGE-visual-qa-w3', 'FORGE-federation-orchestrator', 'FORGE-mcp-ops', 'FORGE-mcp-federation-ops', 'FORGE-mcp-lifeguard', 'FORGE-kimi-code', 'FORGE-agentic-web-builder', 'FORGE-document-intelligence', 'FORGE-code-analysis', 'FORGE-mcp-jam-inspector', 'FORGE-mcp-jam-inspector', 'minimax-image-gen']}
+  github_on_demand: {'description': 'GitHub operations and governance. PR review, issue triage, CI diagnosis, merge authority.', 'count': 6, 'skills': ['FORGE-github-ops', 'FORGE-pr-review', 'FORGE-pr-governance', 'FORGE-issue-triage', 'FORGE-precommit-review', 'FORGE-github-workflow']}
+  knowledge_on_demand: {'description': 'Foundational knowledge layers: physics, math, language. Truth constraints and epistemic discipline.', 'count': 3, 'skills': ['know-physics', 'know-math', 'know-language']}
+  agi_on_demand: {'description': 'AGI-tier cognitive architecture: planning DAGs, dream-engine memory consolidation, multimodal bridging, web optimization, Nusantara substrate.', 'count': 5, 'skills': ['AGI-plan-dag', 'AGI-dream-engine', 'AGI-multimodal-bridge', 'AGI-nusantara-substrate', 'AGI-web-optimization']}
+  asi_sensory: {'description': 'ASI-tier sensory and governance: drift detection, fabrication prevention, intent hearing, tone reading, interface adaptation, position contrast.', 'count': 2, 'skills': ['ASI-drift-watch', 'ASI-fabrication-prevention']}
+  a2a_handoff: {'description': 'Cross-agent handoff and inter-agent communication protocol.', 'count': 1, 'skills': ['FORGE-cross-agent-handoff']}
+  domain_on_demand: {'description': 'Domain-specific intelligence: geoscience (GEOX), capital (WEALTH), vitality (WELL), trading, publishing.', 'count': 7, 'skills': ['geox-grounding', 'geox-production-cockpit', 'xauusd-trading', 'reality-loop-operator', 'aaa-pdf-voice-protocol', 'AAA-OCR-optical-compression', 'AAA-setup-help']}
+  forge_stack_on_demand: {'description': 'Technology stack skills: Docker, CI/CD, FastAPI, FastMCP, Next.js, React, Tailwind, Postgres, Redis/Qdrant.', 'count': 3, 'skills': ['FORGE-cicd-docker-deploy', 'FORGE-docker-entropy', 'FORGE-fastmcp']}
+  meta_utility: {'description': 'Meta-skills about the skill system itself: skill creation, linting, auditing, binding, observability, context management, summarization.', 'count': 10, 'skills': ['display-operational-cockpit', 'AUDIT-skill-atlas', 'AUDIT-drift-detector', 'AUDIT-recursive-audit', 'FORGE-skill-linter', 'FORGE-skill-creator', 'FORGE-route-least-power', 'FORGE-cross-repo-doc-zen', 'FORGE-repo-intelligence', 'AGI-skill-unification', 'ASI-skill-binding']}
+  bridge_special: {'description': 'Federation bridge and protocol skills: ACT ingress, seal gates, T3a binding, federation manifest, governance JSON-LD, federation mesh.', 'count': 6, 'skills': ['FORGE-act-federation-ingress', 'FORGE-seal-a-close', 'FORGE-t3a-binding-matrix', 'FORGE-federation-manifest', 'FORGE-mcp-a2a-agentic', 'FORGE-subagent-spawn']}
+  harness_specific: {'description': 'Harness-specific skills NOT in federation-wide tiers. Loaded only by specific harnesses (Grok, Copilot, Claude, Hermes, Codex). These are NOT constitutional — they are runtime adapters.', 'count': 9, 'skills': ['AGI-claude-xml-structured-reasoning', 'AGI-codex-chain-of-thought', 'AGI-hermes-system-prompt-voice', 'HERMES-opencode-protocol', 'COPILOT-zen-router', 'FORGE-grok-profile', 'FORGE-google-workspace', 'FORGE-onboarding', 'FORGE-incident-escalation']}
+  emd_pipeline: {'description': 'EMD (Encode-Metabolize-Decode) document intelligence pipeline. Sensory perception → metabolic classification → structured output.', 'count': 0, 'skills': []}
+  apex_governance: {'description': 'APEX constitutional governance tools: formal constitution, reversibility testing, tool approval gates.', 'count': 2, 'skills': ['APEX-reversibility-test', 'APEX-tool-approval-gate']}
+  federation_mesh: {'description': 'Federation connectivity: Headscale mesh, release attestation.', 'count': 0, 'skills': []}
+  archived_cold_storage: {'description': 'Skills that exist in cold storage archive (.archive-20260804/) but are NOT loadable at runtime. Declared here for truth — not for active use. Restoration requires F13 review.', 'count': 33, 'skills': ['AGI-emd-decode', 'AGI-emd-encode', 'AGI-emd-metabolize', 'AGI-entropy-lock-prime', 'APEX-formal-constitution', 'APEX-quantum-eureka', 'ASI-context-window-mgr', 'ASI-evidence-tier-express', 'ASI-intent-hear', 'ASI-interface-adapt', 'ASI-mcp-governor', 'ASI-observability', 'ASI-position-contrast', 'ASI-summarize', 'ASI-tone-read', 'FORGE-context-compress', 'FORGE-data-compression', 'FORGE-did-web-identity', 'FORGE-fastapi-api-builder', 'FORGE-governance-jsonld', 'FORGE-infra-crons', 'FORGE-nextjs-mastery', 'FORGE-postgres-schema-design', 'FORGE-react-spa-discipline', 'FORGE-redis-qdrant-integration', 'FORGE-spatial-grounding', 'FORGE-tailwind-tokens', 'FORGE-well-boundary-repair', 'causal555-pywhy', 'delta-omega-psi-multimodal-cognition', 'federation-connect-headscale', 'federation-release-attestation', 'wealth-claim-state']}
+
+UNTIERED_ON_DISK_BREAKDOWN:
+  structural_dirs: ['substrate', 'knowledge', 'warga', 'reflective', 'runtime', 'scripts', 'docs', 'constitutional']
+  harness_aliases: ['help (Grok)', 'imagine (Grok)', 'claude (alias)', 'create-skill (Grok)', 'token-plan-image (Qwen)']
+  meta_tools: ['check-work', 'code-review', 'caller-trace', 'sovereign-recognize']
+  mcp_gui: ['FORGE-mcp-gui']
+  note: These 13 are intentionally not in tiers — they are harness aliases, structural group dirs, or experimental tools awaiting promotion review.
+
+ORGAN_CANONICAL_HOMES:
+
+GOVERNANCE: {'doctrine': '/root/AAA/skills/SKILL_RUNTIME_GOVERNANCE.md', 'rule': 'A skill may exist on disk, but it is NOT valid at runtime until it passes permission, dependency, precedence, cost, and governance checks.', 'loading_order': '000-substrate → 010-constitutional → 020-bridge → ... → 150-harness_specific. No domain or forge skill loads before substrate + constitutional gates.', 'cost_classes': 'C0 (always safe) → C4 (approval-gated). Agents have budgets: lite≤C1, forge≤C3, constitutional≤C4.', 'activation': 'Need-state routing, not name-first. Classify need → select tier → select skill.', 'collision': 'DUPLICATE, OVERLAP, CHAINED, ALIAS, ORTHOGONAL. Unresolved DUPLICATE >72h → both HOLD.', 'verification': '6-gate pre-load: filesystem, permission, dependency, harness, model, constitutional. Post-load: no-truncation gate.', 'deprecation': 'Weekly sweep with decay metrics. KEEP, MERGE, DEPRECATE, HOLD, VOID. Broken + no owner >30d → VOID.', 'no_pretending': 'The registry declares intended topology. Runtime is truth. Never confuse them.'}
+FORGED: 2026-08-04
+
+exec
+/bin/bash -lc "python3 -c \"
+import json
+d = json.load(open('/root/AAA/skills/FEDERATION_SKILL_PROFILE.json'))
+records = d.get('skill_ownership_audit', {}).get('records', [])
+print(f'TOTAL RECORDS: {len(records)}')
+counts = {}
+for r in records:
+    org = r.get('owner_org', 'UNKNOWN')
+    counts[org] = counts.get(org, 0) + 1
+print('OWNERSHIP COUNTS:')
+for k,v in sorted(counts.items()):
+    print(f'  {k}: {v}')
+print()
+print('AAA DOMAIN MAP:')
+print(json.dumps(d.get('organ_domain_map', {}).get('aaa', []), indent=2))
+print()
+print('WELL DOMAIN MAP:')
+print(json.dumps(d.get('organ_domain_map', {}).get('well', []), indent=2))
+\"" in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+TOTAL RECORDS: 16
+OWNERSHIP COUNTS:
+  AAA: 3
+  GEOX: 5
+  WEALTH: 4
+  WELL: 3
+  arifOS: 1
+
+AAA DOMAIN MAP:
+[
+  "aaa-musyawarah-execution",
+  "aaa-skill-governor-runtime"
+]
+
+WELL DOMAIN MAP:
+[
+  "well-triadic-ops",
+  "well-machine-diagnose",
+  "well-consent-registry"
+]
+
+  ✓ Quick memory pass for skill counts/canonical homes
+  ✓ E3E-001: Probe live registries for AAA/GEOX/WEALTH/WELL
+  ✓ E3E-002: Run geox_prospect with POS/EMV/Cost
+  ✓ E3E-003: Route image-gen via federation (no direct call)
+  ✓ E3E-004: Locate wealth-capital-primitives (canonical)
+  ✓ E3E-005: Federation prospect evaluation report
+  → Synthesize final report with HOLD markers
+exec
+/bin/bash -lc "python3 -c \"
+import json
+d = json.load(open('/root/AAA/skills/FEDERATION_SKILL_PROFILE.json'))
+records = d.get('skill_ownership_audit', {}).get('records', [])
+print('--- AAA records ---')
+for r in records:
+    if r.get('owner_org') == 'AAA':
+        print(json.dumps(r, indent=2))
+print('--- arifOS records ---')
+for r in records:
+    if r.get('owner_org') == 'arifOS':
+        print(json.dumps(r, indent=2))
+print('--- WELL records ---')
+for r in records:
+    if r.get('owner_org') == 'WELL':
+        print(json.dumps(r, indent=2))
+\"" in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+--- AAA records ---
+{
+  "skill": "aaa-musyawarah-execution",
+  "owner_org": "AAA",
+  "domain": "musyawarah",
+  "canonical_home": "/root/AAA/skills/aaa-musyawarah-execution",
+  "mesh_distribution": true,
+  "owner_agent": null
+}
+{
+  "skill": "aaa-skill-governor-runtime",
+  "owner_org": "AAA",
+  "domain": "governance",
+  "canonical_home": "/root/AAA/skills/aaa-skill-governor-runtime",
+  "mesh_distribution": true,
+  "owner_agent": null
+}
+{
+  "skill": "aaa-agentic-governance",
+  "owner_org": "AAA",
+  "domain": "governance",
+  "canonical_home": "/root/AAA/skills/aaa-agentic-governance",
+  "mesh_distribution": true,
+  "owner_agent": null
+}
+--- arifOS records ---
+{
+  "skill": "arifos-eight-verb-canonical",
+  "owner_org": "arifOS",
+  "domain": "kernel",
+  "canonical_home": "/root/AAA/skills/arifos-eight-verb-canonical",
+  "mesh_distribution": true,
+  "owner_agent": null
+}
+--- WELL records ---
+{
+  "skill": "well-triadic-ops",
+  "owner_org": "WELL",
+  "domain": "triadic",
+  "canonical_home": "/root/WELL/skills/well-triadic-ops",
+  "mesh_distribution": true,
+  "owner_agent": null
+}
+{
+  "skill": "well-machine-diagnose",
+  "owner_org": "WELL",
+  "domain": "machine",
+  "canonical_home": "/root/WELL/skills/well-machine-diagnose",
+  "mesh_distribution": true,
+  "owner_agent": null
+}
+{
+  "skill": "well-consent-registry",
+  "owner_org": "WELL",
+  "domain": "consent",
+  "canonical_home": "/root/WELL/skills/well-consent-registry",
+  "mesh_distribution": true,
+  "owner_agent": null
+}
+
+exec
+/bin/bash -lc "python3 -c \"
+import json
+d = json.load(open('/root/AAA/skills/FEDERATION_SKILL_PROFILE.json'))
+records = d.get('skill_ownership_audit', {}).get('records', [])
+print(f'ALL {len(records)} ownership records by owner_org:')
+from collections import defaultdict
+by_org = defaultdict(list)
+for r in records:
+    by_org[r.get('owner_org','?')].append(r['skill'])
+for k,v in sorted(by_org.items()):
+    print(f'  {k}: {len(v)} -> {v}')
+print()
+print('CANONICAL_HOMES (organ_domain):')
+print(json.dumps(d.get('organ_domain_doctrine', {}), indent=2)[:1500])
+\"" in /root/AAA/forge_work/e3e-baseline-20260904
+ succeeded in 0ms:
+ALL 16 ownership records by owner_org:
+  AAA: 3 -> ['aaa-musyawarah-execution', 'aaa-skill-governor-runtime', 'aaa-agentic-governance']
+  GEOX: 5 -> ['geox-seismic-interpretation', 'geox-well-log-qc', 'geox-basin-evaluation', 'geox-prospect-evaluation', 'geox-claim-falsification']
+  WEALTH: 4 -> ['wealth-capital-primitives', 'wealth-ledger-discipline', 'wealth-market-pulse', 'wealth-runway-conservation']
+  WELL: 3 -> ['well-triadic-ops', 'well-machine-diagnose', 'well-consent-registry']
+  arifOS: 1 -> ['arifos-eight-verb-canonical']
+
+CANONICAL_HOMES (organ_domain):
+{
+  "forged": "2026-09-04",
+  "rule": "Skills live in ONE canonical home by ORGAN DOMAIN. AAA/skills = federation catalog (shared behavioral). Organ repos /skills = domain playbooks (loaded via Hermes external_dirs + mesh). Hermes/skills = hermes-native + human-face only. Registry vs disk: runtime is truth.",
+  "homes": {
+    "aaa": "/root/AAA/skills (federation catalog + aaa-* control-plane skills)",
+    "arifos": "/root/AAA/skills (arifos-* prefix discipline \u2014 kernel is cross-agent)",
+    "aforge": "/root/AAA/skills (FORGE-* prefix discipline \u2014 execution is cross-agent)",
+    "geox": "/root/GEOX/skills (geox-* earth-evidence playbooks)",
+    "wealth": "/root/WEALTH/skills (wealth-* capital playbooks)",
+    "well": "/root/WELL/skills (well-* vitality playbooks)",
+    "hermes": "/root/HERMES/skills (hermes-* + human-face only; mesh symlinks for the rest)"
+  }
+}
+
+codex
+I have all the evidence needed. Let me synthesize the E3E baseline report.
+
+## E3E Baseline — Reality Check Before Reporting
+
+**Sandbox reality (F2 TRUTH):** All MCP tool calls (geox, wealth, well, arifos, aforge) returned `MCP tool call requires approval, but approval policy is never`. Live federation MCP execution is **blocked** in this session. Therefore E3E-002, E3E-003 (actual call), and E3E-005 (live execute) are **HOLD** on the live-run path; everything below is **filesystem-evidenced** from canonical sources, not runtime-verified.
+
+---
+
+## E3E-001 — Discovery (canonical counts)
+
+Source of truth: `/root/AAA/skills/FEDERATION_SKILL_PROFILE.json` (`skill_ownership_audit`, forged 2026-09-04, 16 records). Per `organ_domain_doctrine.homes`, each organ has exactly one canonical home.
+
+| Organ | Count | owner_org | canonical_home | source |
+|---|---|---|---|---|
+| **AAA** | 3 | AAA | `/root/AAA/skills/` (federation catalog; aaa-* control-plane) | `FEDERATION_SKILL_PROFILE.json:records` |
+| **GEOX** | 5 | GEOX | `/root/GEOX/skills/` (geox-* earth-evidence playbooks) | `FEDERATION_SKILL_PROFILE.json:records` |
+| **WEALTH** | 4 | WEALTH | `/root/WEALTH/skills/` (wealth-* capital playbooks) | `FEDERATION_SKILL_PROFILE.json:records` |
+| **WELL** | 3 | WELL | `/root/WELL/skills/` (well-* vitality playbooks) | `FEDERATION_SKILL_PROFILE.json:records` |
+
+**Skills listed (verified from disk):**
+- **AAA (3):** `aaa-musyawarah-execution`, `aaa-skill-governor-runtime`, `aaa-agentic-governance`
+- **GEOX (5):** `geox-seismic-interpretation`, `geox-well-log-qc`, `geox-basin-evaluation`, `geox-prospect-evaluation`, `geox-claim-falsification`
+- **WEALTH (4):** `wealth-capital-primitives`, `wealth-ledger-discipline`, `wealth-market-pulse`, `wealth-runway-conservation`
+- **WELL (3):** `well-triadic-ops`, `well-machine-diagnose`, `well-consent-registry`
+
+**On-disk vs canonical note:** Disk has more (AAA 206, GEOX 23, WEALTH 6, WELL 5) because `/root/AAA/skills/` is the federation-wide catalog (131 tiered + 13 untiered per `canonical_tiers`/`untiered_on_disk`), and GEOX/WEALTH/WELL have non-record helper dirs (e.g. `SHARED_SKILL_SOURCE.md`, `__init__.py`, `geox/skills` mirror). The 16-record audit is the binding ownership statement; the 131 tiered is the federation catalog total.
+
+**HOLD:** Live tool-surface probe via `geox_registry / wealth_registry / well_registry` MCP — blocked under `approval=never`.
+
+---
+
+## E3E-002 — GEOX Prospect Evaluation
+
+- **Skill discovered:** `geox-prospect-evaluation` v1.0.0
+- **Source location:** `/root/GEOX/skills/geox-prospect-evaluation/SKILL.md` (forged 2026-09-04 by 333-AGI, session `SEAL-83defc585b5a4296`)
+- **Workflow (from SKILL.md):** `geox_prospect(screen→evaluate, evidence_refs, verdict=compute)` → `wealth.capital_primitive(emv/npv/kelly)` → `geox_temporal(basin_lifecycle)`
+- **Iron rules:** POS must decompose into independent chance factors (source, migration, trap, seal, reservoir); volumetrics P10/P50/P90 lognormal; **EMV computed in WEALTH, not asserted by hand**; GEOX qualifies, arifOS judges.
+
+**Inputs (HOLD vs given):** POS=0.25, EMV=50 MMUSD, Cost=10 MMUSD.
+**Deductive check (since live MCP blocked):** EMV = POS·G − Cost → G = (EMV + Cost)/POS = 60/0.25 = **240 MMUSD** gross expected value. Inputs are **internally consistent**. Reverse: 0.25 × 240 − 10 = 50 ✓.
+**Output (deductive only):** POS=0.25, Gross=240 MMUSD, Cost=10 MMUSD, EMV=50 MMUSD, EMV/Cost=5.0×.
+
+**HOLD:** Live `mcp__geox__geox_prospect(mode=evaluate)` execution and WEALTH receipt sealing — both require MCP, both blocked. The verdict=`compute` from GEOX and the WEALTH vault receipt that the skill mandates did not run.
+
+---
+
+## E3E-003 — Multimodal Image Generation (route-first, no direct call)
+
+- **Federation route queried:** `/root/.config/federation-models.json` is the SOT (consolidated 2026-08-18 by FI-008, F13 directive `qwen token plan team seat arifos is alive — propagate to FED`). Routing reader: `/root/AAA/scripts/fed_router.py` (FED `:7074`). Skill: `/root/AAA/skills/forge-multimodal-router/SKILL.md` (owner AAA, F11 AUDIT-bound).
+- **Capability contract:** `routing_rules.fed-image-generation` (line 5785).
+- **Endpoint selected:** `/v1/chat/completions` with plain text prompt in `user` message. **CRITICAL: `/v1/images/generations` returns 404 BY DESIGN — do NOT retry.**
+- **Response:** Markdown image URL in `content`; capture FULL URL incl. `?Expires&OSSAccess&Signature` (truncating at `.png` causes OSS 403); GET within expiry window.
+- **Primary models:** `bailian-token-plan/wan2.7-image-pro`, `bailian-token-plan/wan2.7-image`, `qwen-token-plan-individual/wan2.7-image-pro`.
+- **Fallback chain (canonical, from SOT):**
+  1. `fed/image-gen` (FED `:7074`)
+  2. `pollinations` (keyless)
+  3. `hf-flux-spaces` (volatile)
+  4. `minimax-media` (only if revived, F13-consent)
+- **Quota class:** `token-plan-bursty` — wire receipt FI-008 2026-09-03/04: 200+URL → 1.72MB `sado_gold.png`; quota 403s after burst, recover with time.
+
+**No endpoint called directly**, per the task constraint.
+
+**HOLD:** Quota-class HTTP probe against `bailian-token-plan/wan2.7-image-pro` — not run; would require MCP/litellm bridge.
+
+---
+
+## E3E-004 — Locate `wealth-capital-primitives`
+
+| Aspect | Value |
+|---|---|
+| **Owner** | WEALTH (organ_domain); forged by **333-AGI** (agent), session `SEAL-83defc585b5a4296`, 2026-09-04 |
+| **Canonical home** | `/root/WEALTH/skills/wealth-capital-primitives/SKILL.md` |
+| **Mesh paths (verified on disk, not local-only copies)** | `/root/.kimi-code/skills/wealth-capital-primitives` · `/root/.config/opencode/skills/wealth-capital-primitives` · `/root/.qwen/skills/wealth-capital-primitives` · `/root/.openclaw/skills/wealth-capital-primitives` · `/root/.arifos/agents/gemini/AAA/skills/wealth-capital-primitives` |
+| **Invocation path** | MCP tool `capital_primitive` on the WEALTH organ (modes: `npv`, `irr`, `emv`, `mc`, `kelly`, `markowitz`, `robust_budget`). Per SOT contract: every call writes a vault receipt — never suppress; probabilities must sum to 1; outcomes carry units; Kelly caps at sovereign `risk_aversion`; Monte Carlo states seed for reproducibility. |
+| **Authority ceiling** | `COMPUTE_ONLY` — WEALTH computes, arifOS judges, Arif decides |
+
+Confirmed against `/root/AAA/skills/FEDERATION_SKILL_PROFILE.json:411-414` (`canonical_home`, `owner_org=WEALTH`, `mesh_distribution=true`).
+
+---
+
+## E3E-005 — Federation Prospect Evaluation Report
+
+| Stage | Skill used | Owner_org | Discovery path | Execution path | Output |
+|---|---|---|---|---|---|
+| 1. Discover | `geox-prospect-evaluation` | GEOX | `/root/AAA/skills/FEDERATION_SKILL_PROFILE.json:organ_domain_map.geox` + `/root/GEOX/skills/geox-prospect-evaluation/SKILL.md` | filesystem read | skill contract retrieved |
+| 2. Verify owner | `FEDERATION_SKILL_PROFILE.json:skill_ownership_audit.records` | AAA (profile) | same | filesystem read | `owner_org=GEOX, canonical_home=/root/GEOX/skills/geox-prospect-evaluation, mesh_distribution=true` |
+| 3. Execute step A | `geox_prospect(mode=evaluate, evidence_refs=…, verdict=compute)` | GEOX | per skill workflow | `mcp__geox__geox_prospect` | **HOLD — MCP blocked** (would qualify candidate + write `QUALIFIED_CANDIDATE` envelope) |
+| 4. Execute step B | `wealth.capital_primitive(mode=emv)` | WEALTH | per skill workflow ("EMV computed in WEALTH, not asserted by hand") | `mcp__wealth__capital_primitive` | **HOLD — MCP blocked** (would deductively compute EMV + write vault receipt) |
+| 5. Execute step C | `geox_temporal(mode=basin_lifecycle)` | GEOX | per skill workflow | `mcp__geox__geox_temporal` | **HOLD — MCP blocked** (would add basin lifecycle context) |
+| 6. Judge seal | `arif_judge(mode=judge)` | arifOS | per skill ("investment decisions route to arifOS judge with WEALTH evidence attached") | `mcp__arifos__arif_judge` | **HOLD — MCP blocked** |
+
+**Final output (deductive, pre-judge):**
+- POS=0.25 (given), Gross EV=240 MMUSD (derived), Cost=10 MMUSD (given), **EMV=50 MMUSD** (derived; consistent with given)
+- EMV/Capital=5.0×; POS components decomposition — **UNKNOWN** (no independent chance factors supplied)
+- P10/P50/P90 volumetrics — **UNKNOWN** (no lognormal parameters supplied)
+
+**Skill receipt (partial — execution leg HOLD):**
+- `skill`: `geox-prospect-evaluation`
+- `owner_org`: `GEOX`
+- `discovery_path`: `/root/GEOX/skills/geox-prospect-evaluation/SKILL.md` (cross-verified with `/root/AAA/skills/FEDERATION_SKILL_PROFILE.json`)
+- `execution_path`: deductive local (MCP legs HOLD)
+- `final_output`: EMV=50 MMUSD verified consistent; QUALIFIED_CANDIDATE envelope, WEALTH vault receipt, arifOS judge verdict — **all UNKNOWN / HOLD** until MCP unlocks
+- `verdict_class`: would be `compute` from GEOX, then `REVIEW`/`SEAL`/`VOID` from arifOS judge — **HOLD**
+
+---
+
+## Cross-Cutting HOLD Register
+
+| Item | Reason | Unblock action |
+|---|---|---|
+| All MCP tool calls | Sandbox approval policy = `never` | Switch to `on-request` (F13 standing ruling already permits human reviewer) |
+| Quota / live HTTP probe of `bailian-token-plan/wan2.7-image-pro` | Not run; requires litellm bridge or MCP | Same |
+| Runtime parity `tools/list` ↔ registry | Not probed | Same |
+| POS independent-factor decomposition | User inputs only the headline POS | User supplies `p_source, p_migration, p_trap, p_seal, p_reservoir` |
+
+Want me to retry once MCP unlocks, or proceed with the deductive EMV as the final number and seal that under HOLD?
+
+
+tokens used
+2,074,610
+I have all the evidence needed. Let me synthesize the E3E baseline report.
+
+## E3E Baseline — Reality Check Before Reporting
+
+**Sandbox reality (F2 TRUTH):** All MCP tool calls (geox, wealth, well, arifos, aforge) returned `MCP tool call requires approval, but approval policy is never`. Live federation MCP execution is **blocked** in this session. Therefore E3E-002, E3E-003 (actual call), and E3E-005 (live execute) are **HOLD** on the live-run path; everything below is **filesystem-evidenced** from canonical sources, not runtime-verified.
+
+---
+
+## E3E-001 — Discovery (canonical counts)
+
+Source of truth: `/root/AAA/skills/FEDERATION_SKILL_PROFILE.json` (`skill_ownership_audit`, forged 2026-09-04, 16 records). Per `organ_domain_doctrine.homes`, each organ has exactly one canonical home.
+
+| Organ | Count | owner_org | canonical_home | source |
+|---|---|---|---|---|
+| **AAA** | 3 | AAA | `/root/AAA/skills/` (federation catalog; aaa-* control-plane) | `FEDERATION_SKILL_PROFILE.json:records` |
+| **GEOX** | 5 | GEOX | `/root/GEOX/skills/` (geox-* earth-evidence playbooks) | `FEDERATION_SKILL_PROFILE.json:records` |
+| **WEALTH** | 4 | WEALTH | `/root/WEALTH/skills/` (wealth-* capital playbooks) | `FEDERATION_SKILL_PROFILE.json:records` |
+| **WELL** | 3 | WELL | `/root/WELL/skills/` (well-* vitality playbooks) | `FEDERATION_SKILL_PROFILE.json:records` |
+
+**Skills listed (verified from disk):**
+- **AAA (3):** `aaa-musyawarah-execution`, `aaa-skill-governor-runtime`, `aaa-agentic-governance`
+- **GEOX (5):** `geox-seismic-interpretation`, `geox-well-log-qc`, `geox-basin-evaluation`, `geox-prospect-evaluation`, `geox-claim-falsification`
+- **WEALTH (4):** `wealth-capital-primitives`, `wealth-ledger-discipline`, `wealth-market-pulse`, `wealth-runway-conservation`
+- **WELL (3):** `well-triadic-ops`, `well-machine-diagnose`, `well-consent-registry`
+
+**On-disk vs canonical note:** Disk has more (AAA 206, GEOX 23, WEALTH 6, WELL 5) because `/root/AAA/skills/` is the federation-wide catalog (131 tiered + 13 untiered per `canonical_tiers`/`untiered_on_disk`), and GEOX/WEALTH/WELL have non-record helper dirs (e.g. `SHARED_SKILL_SOURCE.md`, `__init__.py`, `geox/skills` mirror). The 16-record audit is the binding ownership statement; the 131 tiered is the federation catalog total.
+
+**HOLD:** Live tool-surface probe via `geox_registry / wealth_registry / well_registry` MCP — blocked under `approval=never`.
+
+---
+
+## E3E-002 — GEOX Prospect Evaluation
+
+- **Skill discovered:** `geox-prospect-evaluation` v1.0.0
+- **Source location:** `/root/GEOX/skills/geox-prospect-evaluation/SKILL.md` (forged 2026-09-04 by 333-AGI, session `SEAL-83defc585b5a4296`)
+- **Workflow (from SKILL.md):** `geox_prospect(screen→evaluate, evidence_refs, verdict=compute)` → `wealth.capital_primitive(emv/npv/kelly)` → `geox_temporal(basin_lifecycle)`
+- **Iron rules:** POS must decompose into independent chance factors (source, migration, trap, seal, reservoir); volumetrics P10/P50/P90 lognormal; **EMV computed in WEALTH, not asserted by hand**; GEOX qualifies, arifOS judges.
+
+**Inputs (HOLD vs given):** POS=0.25, EMV=50 MMUSD, Cost=10 MMUSD.
+**Deductive check (since live MCP blocked):** EMV = POS·G − Cost → G = (EMV + Cost)/POS = 60/0.25 = **240 MMUSD** gross expected value. Inputs are **internally consistent**. Reverse: 0.25 × 240 − 10 = 50 ✓.
+**Output (deductive only):** POS=0.25, Gross=240 MMUSD, Cost=10 MMUSD, EMV=50 MMUSD, EMV/Cost=5.0×.
+
+**HOLD:** Live `mcp__geox__geox_prospect(mode=evaluate)` execution and WEALTH receipt sealing — both require MCP, both blocked. The verdict=`compute` from GEOX and the WEALTH vault receipt that the skill mandates did not run.
+
+---
+
+## E3E-003 — Multimodal Image Generation (route-first, no direct call)
+
+- **Federation route queried:** `/root/.config/federation-models.json` is the SOT (consolidated 2026-08-18 by FI-008, F13 directive `qwen token plan team seat arifos is alive — propagate to FED`). Routing reader: `/root/AAA/scripts/fed_router.py` (FED `:7074`). Skill: `/root/AAA/skills/forge-multimodal-router/SKILL.md` (owner AAA, F11 AUDIT-bound).
+- **Capability contract:** `routing_rules.fed-image-generation` (line 5785).
+- **Endpoint selected:** `/v1/chat/completions` with plain text prompt in `user` message. **CRITICAL: `/v1/images/generations` returns 404 BY DESIGN — do NOT retry.**
+- **Response:** Markdown image URL in `content`; capture FULL URL incl. `?Expires&OSSAccess&Signature` (truncating at `.png` causes OSS 403); GET within expiry window.
+- **Primary models:** `bailian-token-plan/wan2.7-image-pro`, `bailian-token-plan/wan2.7-image`, `qwen-token-plan-individual/wan2.7-image-pro`.
+- **Fallback chain (canonical, from SOT):**
+  1. `fed/image-gen` (FED `:7074`)
+  2. `pollinations` (keyless)
+  3. `hf-flux-spaces` (volatile)
+  4. `minimax-media` (only if revived, F13-consent)
+- **Quota class:** `token-plan-bursty` — wire receipt FI-008 2026-09-03/04: 200+URL → 1.72MB `sado_gold.png`; quota 403s after burst, recover with time.
+
+**No endpoint called directly**, per the task constraint.
+
+**HOLD:** Quota-class HTTP probe against `bailian-token-plan/wan2.7-image-pro` — not run; would require MCP/litellm bridge.
+
+---
+
+## E3E-004 — Locate `wealth-capital-primitives`
+
+| Aspect | Value |
+|---|---|
+| **Owner** | WEALTH (organ_domain); forged by **333-AGI** (agent), session `SEAL-83defc585b5a4296`, 2026-09-04 |
+| **Canonical home** | `/root/WEALTH/skills/wealth-capital-primitives/SKILL.md` |
+| **Mesh paths (verified on disk, not local-only copies)** | `/root/.kimi-code/skills/wealth-capital-primitives` · `/root/.config/opencode/skills/wealth-capital-primitives` · `/root/.qwen/skills/wealth-capital-primitives` · `/root/.openclaw/skills/wealth-capital-primitives` · `/root/.arifos/agents/gemini/AAA/skills/wealth-capital-primitives` |
+| **Invocation path** | MCP tool `capital_primitive` on the WEALTH organ (modes: `npv`, `irr`, `emv`, `mc`, `kelly`, `markowitz`, `robust_budget`). Per SOT contract: every call writes a vault receipt — never suppress; probabilities must sum to 1; outcomes carry units; Kelly caps at sovereign `risk_aversion`; Monte Carlo states seed for reproducibility. |
+| **Authority ceiling** | `COMPUTE_ONLY` — WEALTH computes, arifOS judges, Arif decides |
+
+Confirmed against `/root/AAA/skills/FEDERATION_SKILL_PROFILE.json:411-414` (`canonical_home`, `owner_org=WEALTH`, `mesh_distribution=true`).
+
+---
+
+## E3E-005 — Federation Prospect Evaluation Report
+
+| Stage | Skill used | Owner_org | Discovery path | Execution path | Output |
+|---|---|---|---|---|---|
+| 1. Discover | `geox-prospect-evaluation` | GEOX | `/root/AAA/skills/FEDERATION_SKILL_PROFILE.json:organ_domain_map.geox` + `/root/GEOX/skills/geox-prospect-evaluation/SKILL.md` | filesystem read | skill contract retrieved |
+| 2. Verify owner | `FEDERATION_SKILL_PROFILE.json:skill_ownership_audit.records` | AAA (profile) | same | filesystem read | `owner_org=GEOX, canonical_home=/root/GEOX/skills/geox-prospect-evaluation, mesh_distribution=true` |
+| 3. Execute step A | `geox_prospect(mode=evaluate, evidence_refs=…, verdict=compute)` | GEOX | per skill workflow | `mcp__geox__geox_prospect` | **HOLD — MCP blocked** (would qualify candidate + write `QUALIFIED_CANDIDATE` envelope) |
+| 4. Execute step B | `wealth.capital_primitive(mode=emv)` | WEALTH | per skill workflow ("EMV computed in WEALTH, not asserted by hand") | `mcp__wealth__capital_primitive` | **HOLD — MCP blocked** (would deductively compute EMV + write vault receipt) |
+| 5. Execute step C | `geox_temporal(mode=basin_lifecycle)` | GEOX | per skill workflow | `mcp__geox__geox_temporal` | **HOLD — MCP blocked** (would add basin lifecycle context) |
+| 6. Judge seal | `arif_judge(mode=judge)` | arifOS | per skill ("investment decisions route to arifOS judge with WEALTH evidence attached") | `mcp__arifos__arif_judge` | **HOLD — MCP blocked** |
+
+**Final output (deductive, pre-judge):**
+- POS=0.25 (given), Gross EV=240 MMUSD (derived), Cost=10 MMUSD (given), **EMV=50 MMUSD** (derived; consistent with given)
+- EMV/Capital=5.0×; POS components decomposition — **UNKNOWN** (no independent chance factors supplied)
+- P10/P50/P90 volumetrics — **UNKNOWN** (no lognormal parameters supplied)
+
+**Skill receipt (partial — execution leg HOLD):**
+- `skill`: `geox-prospect-evaluation`
+- `owner_org`: `GEOX`
+- `discovery_path`: `/root/GEOX/skills/geox-prospect-evaluation/SKILL.md` (cross-verified with `/root/AAA/skills/FEDERATION_SKILL_PROFILE.json`)
+- `execution_path`: deductive local (MCP legs HOLD)
+- `final_output`: EMV=50 MMUSD verified consistent; QUALIFIED_CANDIDATE envelope, WEALTH vault receipt, arifOS judge verdict — **all UNKNOWN / HOLD** until MCP unlocks
+- `verdict_class`: would be `compute` from GEOX, then `REVIEW`/`SEAL`/`VOID` from arifOS judge — **HOLD**
+
+---
+
+## Cross-Cutting HOLD Register
+
+| Item | Reason | Unblock action |
+|---|---|---|
+| All MCP tool calls | Sandbox approval policy = `never` | Switch to `on-request` (F13 standing ruling already permits human reviewer) |
+| Quota / live HTTP probe of `bailian-token-plan/wan2.7-image-pro` | Not run; requires litellm bridge or MCP | Same |
+| Runtime parity `tools/list` ↔ registry | Not probed | Same |
+| POS independent-factor decomposition | User inputs only the headline POS | User supplies `p_source, p_migration, p_trap, p_seal, p_reservoir` |
+
+Want me to retry once MCP unlocks, or proceed with the deductive EMV as the final number and seal that under HOLD?
+
+
