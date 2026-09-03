@@ -25,7 +25,7 @@
 
 ## Identifiers, leases, sessions
 
-- **SCT** (`sct_v1.*`) — Session Capability Token, Ed25519-signed; required for every federated tool call.
+- **ACT** (`act_v1.*`) — Arif's Capability Token, Ed25519-signed; required for every federated tool call. (Renamed from SCT 2026-09-04; legacy `sct_v1.*` dual-accepted during migration window.)
 - **Session ID** — minted by `arif_init` on `127.0.0.1:8088`; chain-roots every receipt.
 - **Lease** — granted by arifOS; defines `max_action_class` (OBSERVE → IRREVERSIBLE).
 - **Actor ID** — A-FORGE / hereditary worker identifier; F11 non-repudiation.
