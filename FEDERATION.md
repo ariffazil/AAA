@@ -12,7 +12,9 @@
 ## 1. Federation Identity
 The **arifOS Federation** is a governed intelligence system comprising 7 core organs and a single sovereign (Arif, F13).
 
-**Governing principle:** No organ may seal without arifOS. No organ may self-authorize mutation.
+**Governing principle:** No organ may seal without arifOS Kernel. No organ may self-authorize mutation.
+
+**Reality routing (2026-09):** FED routes models **and** must HOLD if agents disagree on the world (OpenCode on KVM8 vs KVM4). Check `reality_version` / topology / ontology before dispatch. Token route into a divergent reality is C_dark. Daemon change on Court is 888; this line is the law.
 
 ## 2. Organs — Authority Boundaries
 
