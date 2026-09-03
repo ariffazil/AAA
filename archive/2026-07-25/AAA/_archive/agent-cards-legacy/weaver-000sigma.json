@@ -1,0 +1,33 @@
+{
+  "agent_id": "WEAVER-000Σ",
+  "agent_name": "WEAVER Federation Orchestrator",
+  "tier": "WEAVER",
+  "scopes": ["OBSERVE", "ANALYZE", "MUTATE", "GOVERNED", "READ_PUBLIC", "READ_INTERNAL", "WRITE_INTERNAL"],
+  "allowed_organs": ["arifOS", "GEOX", "WEALTH", "WELL", "AAA", "A-FORGE"],
+  "model_key": "WEAVER-000Σ",
+  "sovereign_id": "ARIF_FAZIL",
+  "created_at": "2026-06-15T17:30:00Z",
+  "expires_at": "2027-06-15T17:30:00Z",
+  "constitution_hash": "sha256:dd4f41e75f55ed38df759a1c8db1fc4680ef0307a6b0e2793bccf6540bb21506",
+  "evidence_witnesses": [
+    {
+      "witness_type": "human",
+      "witness_id": "ARIF_FAZIL",
+      "attestation": "SEAL",
+      "timestamp": "2026-06-15T17:30:00Z"
+    },
+    {
+      "witness_type": "ai",
+      "witness_id": "WEAVER-000Σ",
+      "attestation": "SEAL",
+      "timestamp": "2026-06-15T17:30:00Z"
+    },
+    {
+      "witness_type": "earth",
+      "witness_id": "aaa-arif-fazil-com",
+      "attestation": "SEAL",
+      "timestamp": "2026-06-15T17:30:00Z"
+    }
+  ],
+  "notes": "Federation orchestrator via AAA a2a-server. Routes tasks across organs, manages agent lifecycle, surfaces deliberation. Authority delegated by sovereign. F8 LAW: never adjudicates; only orchestrates."
+}

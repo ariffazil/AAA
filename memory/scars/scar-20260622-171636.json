@@ -1,0 +1,10 @@
+{
+  "scar_id": "scar-20260622-171636",
+  "timestamp": "2026-06-22T17:16:36.836231+00:00",
+  "tool_name": "arif_seal",
+  "agent_id": "anonymous",
+  "session_id": "SEAL-6ce4aff9472b470f",
+  "reason": "CLAIMED identity (267378578) cannot execute MUTATE. Requires verified or delegated authority.",
+  "severity": "critical",
+  "count": 1
+}
