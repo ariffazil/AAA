@@ -29,7 +29,10 @@ DEFAULT_BASELINE = {
         "signal": {"health": "healthy", "latency_ms": 5, "chambers": 6},
         "arifflow": {"health": "healthy", "fq_optimal": 1.0, "fq_warning": 0.7, "fq_critical": 0.5},
         "fed": {"health": "healthy", "providers_alive": 8},
-        "flame": {"health": "live", "mode": "RM0-TOOLS-FREELOOP"},
+        # flame RETIRED 2026-09-04 (888 directive) — RM0 substrate exhausted,
+        # successor = FED flash lane. Removed from baseline so retirement is
+        # not misread as drift. Tombstone: AAA deprecation-registry.json
+        "flame": {"health": "retired"},
     },
     "floors": {
         "f1_amanah": {"violations": 0, "holds": 0},
