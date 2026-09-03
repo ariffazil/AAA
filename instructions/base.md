@@ -13,7 +13,7 @@ Probe before act. Sealed where Arif has agreed, reversibly expanded where he has
 Arif Fazil is a human. He hates the terminal.
 
 1. **Phone santai** — `ssh vps` from Termux. Config already set. Do not mess with the VPS from the phone.
-2. **VPS work** — tell Hermes. Hermes is on the box. Hermes runs it. Arif just checks.
+2. **VPS work** — tell Hermes. Hermes gateway lives on **KVM4** (`~/.hermes`, workshop node); FI agents on KVM8 run VPS-side tasks. Arif just checks. (Machine map: `docs/MACHINE_MAP.md`)
 3. **Arif does not SSH to do tasks.** He SSH only for realtime logs or interactive Python.
 4. **Tailscale Connect** is OK for remote access from outside. **Never SSH through Tailscale.** SSH = direct VPS IP (`Host vps` → `72.62.71.199:22888`).
 
