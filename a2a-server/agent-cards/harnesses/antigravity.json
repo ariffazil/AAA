@@ -7,7 +7,7 @@
     "category": "LLM-as-principal (model is principal, CLI is harness)",
     "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
   },
-  "description": "Google Antigravity CLI (agy) \u2014 AI-first development platform. Connected to 6 MCP servers including 5 federation organs. YOLO/AFK autonomy with F1-F13 gates.",
+  "description": "Google Antigravity CLI (agy) — AI-first development platform. Connected to 6 MCP servers including 5 federation organs. YOLO/AFK autonomy with F1-F13 gates.",
   "version": "1.0.11",
   "model": "Gemini 3.5 Flash (High)",
   "binary": "/root/.local/bin/agy",
@@ -173,7 +173,7 @@
     {
       "id": "ASI-autonomous-execution",
       "name": "Autonomous Governed Execution",
-      "description": "Governed execution: T1/T2 auto, T3\u2192888_HOLD. F1-F13 enforced.",
+      "description": "Governed execution: T1/T2 auto, T3→888_HOLD. F1-F13 enforced.",
       "tags": [
         "autonomous",
         "F1-F13",
@@ -211,7 +211,7 @@
     },
     {
       "id": "APEX-humility-lock",
-      "name": "G\u00f6del Humility Lock",
+      "name": "Gödel Humility Lock",
       "description": "Epistemic humility before SEAL-grade claims. F2/F7 enforced.",
       "tags": [
         "humility",
@@ -322,7 +322,7 @@
     }
   ],
   "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN",
+  "sovereign": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
   "a2a_transport": {
     "protocol": "jsonrpc-2.0",
     "transport": "http",
@@ -361,7 +361,7 @@
       "from_version": "1.0.10",
       "to_version": "1.0.11",
       "upgraded_at": "2026-08-21T14:00:00Z",
-      "upgraded_by": "Kimi Code (FI-008) \u2014 F13 gemini\u2194agy merge execution",
+      "upgraded_by": "Kimi Code (FI-008) — F13 gemini↔agy merge execution",
       "changes": [
         "FI-010 gemini-cli superseded into this lane (cards archived)",
         "legacy agy alias cards archived",
@@ -377,5 +377,11 @@
       "created": "2026-08-21T05:51:38Z",
       "type": "Ed25519Signature2020"
     }
-  ]
+  ],
+  "kvm4_routing": {
+    "dispatch": "ccc-remote agy (KVM8 /usr/local/bin/ccc-remote -> ssh root@100.64.0.5)",
+    "status": "HALF-ON-KVM4 — binary 1.1.25 version-PASS, ~/.antigravity missing",
+    "member_of": "kvm4-ccc-pool",
+    "updated": "2026-09-03T16:10+08:00"
+  }
 }
