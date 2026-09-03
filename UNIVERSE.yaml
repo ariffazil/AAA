@@ -24,13 +24,14 @@
 #   7. f13_pending (F)         → WHAT awaits sovereign decision
 # ─────────────────────────────────────────────────────────────────────────────
 
-version: 0.2.0
+version: 0.3.0
 schema: arifos.universe.atlas.v1
 epoch: F004-CANONICAL-2026-07-17
 provenance:
   drafted_by: "FI-003 (Qwen Code) — initial atlas 2026-08-30 22:2x MYT"
   extended_by: "333-AGI Δ MIND (FI-001, OpenCode) — 6-layer schema 2026-08-30 22:40 MYT"
   ratified_by: "F13 ARIF — direct in-session directive 'seal UNIVERSE.yaml' 2026-08-30 ~23:05 MYT"
+  recompiled_by: "FI-003 (Qwen Code) — v0.3.0 machine-axis recompile under F13 'auto execute' directive 2026-09-03; live-probed 3-node evidence"
   evidence_ref: /root/.hermes/config_scars/2026-08-30-gpt-oss.md
   doctrine_ref:
     - /root/AAA/canon/CIV-21-APPLICATION-NOTE-constitutional-substrate-stack.md (DRAFT)
@@ -78,6 +79,8 @@ civilization:
     invariant: F13 veto over all published content
 
 # ─── Layer B: Implementation (organ_id → canonical repo) ─────────────────────
+# HOST RULE (v0.3.0): all sot_paths live on KVM8 (federation seat) unless noted.
+# Machine truth: sot_pointers.machines → /root/AAA/docs/MACHINE_MAP.md (SOT).
 # secondary_paths = alias/shadow yang MASIH HIDUP. Yang telah bersara → known_shadows.
 implementation:
   LAW:        { repo: arifOS,         sot_path: /root/arifOS,                secondary_paths: [/opt/arifos] }
@@ -97,11 +100,11 @@ runtime:
   GOVERNOR:   { systemd: [aaa-a2a.service, aaa-preforge.service],     ports: [3001], containers: [] }
   METABOLISM: { systemd: [arifflow.service],                          ports: [7073], containers: [] }
   HANDS:      { systemd: [a-forge-mcp.service, a-forge.service],      ports: [7071, 7072], containers: [] }
-  SENSES:     { systemd: [hermes-asi-gateway.service, hermes-real-bridge.service, hermesarifos-bot.service], ports: [], containers: [] }
+  SENSES:     { systemd: [hermes-asi-gateway.service @KVM4 (~/.hermes LIVE)], systemd_kvm8_retired: [hermes-real-bridge, hermesarifos-bot, hermes-gateway-api, litellm-federation — disabled 2026-09-03], ports: [], containers: [] }
   EARTH:      { systemd: [geox-mcp.service],                          ports: [8081], containers: [] }
   ECONOMY:    { systemd: [wealth-organ.service],                      ports: [18082], containers: [] }
   HEALTH:     { systemd: [well.service],                              ports: [18083], containers: [] }
-  PUBLIC:     { systemd: [arif-fazil-com.service, caddy.service],     ports: [443, 80], containers: [] }
+  PUBLIC:     { systemd: [caddy.service],                            ports: [443, 80], containers: [], note: "static root /var/www/html/arif; arif-fazil-com.service never existed (v0.2.0 atlas drift, fixed v0.3.0)" }
 
 # ─── Layer D: Known shadows ─────────────────────────────────────────────────
 # Status legend: retired_archive | retired_symlink_alias | pending_decision
@@ -128,8 +131,20 @@ known_shadows:
   /root/Hermes:
     status: pending_decision
     type: case_shadow
-    notes: "Non-git, smaller than HERMES. Audit contents before retire."
+    notes: "Non-git, smaller than HERMES. Born 2026-09-03 12:15 MYT per MACHINE_MAP traps. Audit contents before retire."
     f13_question: "Contents audit + retire decision pending"
+  /root/arifOS/VAULT999/backups/federation:
+    status: pending_decision
+    type: legacy_backup_staging
+    was: "22G federation snapshots (Aug 4-20+); zero live references probed 2026-09-03; includes 0-byte vault999-20260903.sql failed run"
+    f13_question: "TTL prune / archive policy — sibling of f13_pending cron_backup_masked"
+  /root/azwaOS-workspace @KVM2:
+    status: foreign_lane
+    type: "azwaOS sovereign copies: A-FORGE mirror, aaa_src, arifos_src fork (:7073/:8080)"
+    notes: "NOT arifOS federation state. KVM2 role pending F13 (witness vs sovereign)."
+  /root/HERMES @KVM4:
+    status: heritage_gated
+    type: "repo clone 148M — NOT the live home (live = ~/.hermes). KVM8 4.6G compression gated on KVM4 carry_forward loop-proof (ratified sequence)."
 
 # ─── Layer E: SOT Pointers (existing truth files, this atlas indexes) ───────
 sot_pointers:
@@ -156,6 +171,9 @@ sot_pointers:
     primary: /root/AAA/registries/PORT_REGISTRY.json
   tunnels:
     primary: /root/AAA/registries/TUNNEL_REGISTRY.json
+  machines:
+    primary: /root/AAA/docs/MACHINE_MAP.md   # 3-node SOT: KVM8 seat / KVM4 workshop / KVM2 azwaos
+    placement_doctrine: KVM4-WORKER/FED_PLACEMENT.md   # referenced 2026-09-02; PHANTOM as of 2026-09-03 — author or strike
 
 # ─── Layer F: F13 Pending Decisions ──────────────────────────────────────────
 f13_pending:
@@ -239,3 +257,13 @@ seal:
   scope: "Atlas Layer A/B/C/D/E/F as written; Layer C runtime re-verify on next recompile"
   signature: null  # SCT/VAULT999 receipt pending signing channel; git commit = interim receipt
   commit: 863bed4e # sealed-content commit (AAA main); receipt-fix commit follows — final hash in VAULT999/memory
+
+# ─── Recompile Ledger ────────────────────────────────────────────────────────
+recompile:
+  - version: 0.3.0
+    ts: "2026-09-03T10:00:00Z"
+    by: "FI-003 (Qwen Code), KVM8"
+    authority: "F13 in-session 'auto execute all' directive 2026-09-03"
+    scope: "machine axis via sot_pointers.machines (MACHINE_MAP.md SOT); SENSES+PUBLIC runtime truth; 4 new known_shadows; no Layer A civilization change"
+    evidence: "/root/.qwen/projects/-root/memory/project-kvm-contrast-audit-20260903.md + live probes in session transcript"
+    seal_note: "v0.2.0 F13 seal below remains authoritative for Layers A/B/D/E/F as written; v0.3.0 amends C + pointers additively"
