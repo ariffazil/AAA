@@ -43,7 +43,9 @@
       "opencode": "1.18.25",
       "kimi": "0.40.1",
       "grok": "1.0.13",
-      "agy": "1.1.25"
+      "agy": "1.1.25",
+      "qwen": "0.22.3",
+      "codex": "0.153.0"
     }
   },
   "security": {
@@ -67,19 +69,19 @@
     },
     "aider": {
       "version": "unverified",
-      "status": "PRESENT at /root/.local/bin/aider (PATH-miss artifact), version probe pending"
+      "status": "PRESENT — version probe queued for mesh pass"
     },
     "agy": {
       "version": "1.1.25",
       "status": "HALF — version-PASS, ~/.antigravity config missing"
     },
     "qwen": {
-      "version": "-",
-      "status": "LOST-IN-REBUILD — 09-02 audit PASS stale, release install gone, reinstall queued"
+      "version": "0.22.3",
+      "status": "REINSTALLED 2026-09-03 (npm, node v24.15.0) — settings.json routes 100.64.0.2:4000"
     },
     "codex": {
-      "version": "-",
-      "status": "LOST-IN-REBUILD — binary gone (.codex config remnant), reinstall queued"
+      "version": "0.153.0",
+      "status": "REINSTALLED 2026-09-03 (npm, node v24.15.0)"
     }
   },
   "inter_op": {
@@ -87,5 +89,15 @@
     "mesh": "grog: opencode↔codex↔qwen↔kimi↔aider↔grok↔agy via /usr/local/bin/ccc-remote on KVM8; on KVM4 workers may ssh-free invoke siblings directly (same box, PATH-wired)",
     "musyawarah": "CCC(Kimi) deliberates, CCC(Qwen) verifies, CCC(OpenCode) reviews — roles per task, never two roles one task (CCC_FLOW.md)"
   },
-  "rebuild_note": "KVM4 rebuilt 2026-09-02 evening (housekeep cad4110); KVM4-CCC-ATTESTED-20260902 describes PRE-rebuild state. This card corrected to post-rebuild reality 2026-09-03 by fi-003 (F2)."
+  "rebuild_note": "KVM4 rebuilt 2026-09-02 evening (housekeep cad4110); KVM4-CCC-ATTESTED-20260902 describes PRE-rebuild state. This card corrected to post-rebuild reality 2026-09-03 by fi-003 (F2).",
+  "organ_repos": {
+    "transferred_2026_09_03": [
+      "arifOS@e98e85e1",
+      "A-FORGE@313a616",
+      "GEOX@cf32a885",
+      "WEALTH@de5247f",
+      "WELL@8adce4b"
+    ],
+    "method": "git push over tailnet KVM8->KVM4, main checked out clean"
+  }
 }
