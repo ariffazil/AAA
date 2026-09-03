@@ -1,52 +1,87 @@
 {
-  "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
-  "id": "kvm4-ccc-pool",
-  "name": "KVM4 CCC Worker Pool",
-  "principal_agent": {
-    "type": "llm",
-    "category": "LLM-as-worker (harness pool on dedicated substrate; models via FED sovereign gateway)",
-    "principle_origin": "FED gateway http://100.64.0.2:4000/v1 → forge-777 / deepseek-v4-flash / MiniMax-M3 (auth injected by KVM8 haproxy; zero local secrets)"
+ "$schema": "arifOS/agent-card/v2.2.0",
+ "schemaVersion": "2.2.0",
+ "id": "kvm4-ccc-pool",
+ "name": "KVM4 CCC Worker Pool",
+ "principal_agent": {
+  "type": "llm",
+  "category": "LLM-as-worker (harness pool on dedicated substrate; models via FED sovereign gateway)",
+  "principle_origin": "FED gateway http://100.64.0.2:4000/v1 → forge-777 / deepseek-v4-flash / MiniMax-M3 (auth injected by KVM8 haproxy; zero local secrets)"
+ },
+ "description": "Dedicated KVM4-forge (srv1946043, 100.64.0.5) coding-worker host. 7 CCC harnesses: opencode, codex, qwen, kimi, aider, grok, agy (antigravity). All route through sovereign FED gateway. HERMES ASI dispatches via ccc-remote (KVM8 /usr/local/bin/ccc-remote). Workers build/verify/escalate; never judge, never self-authorize. Gotong royong: harnesses can call each other via ccc-remote dispatch.",
+ "version": "1.0.1-20260903",
+ "warga_status": "attested",
+ "model": "FED gateway / forge-777 (default), deepseek-v4-flash (fast lane)",
+ "config": "/root/AGENTS.md (KVM4) + /root/.config/opencode/opencode.json + /root/.qwen/settings.json + /root/.kimi-code/config.toml + /root/.codex/config.toml",
+ "binary": "/usr/local/bin/ccc-remote (KVM8 dispatcher) → ssh root@100.64.0.5",
+ "tier": "CCC",
+ "role": "worker",
+ "class": "CODING",
+ "trinity": "worker pool — Context-Compute-Code contract (CCC_DOCTRINE.md)",
+ "attestation_id": "KVM4-CCC-ATTESTED-20260902",
+ "bound_to": "888-APEX (judgment) / A-FORGE (execution gate)",
+ "protocolVersion": "1.2",
+ "url": "https://aaa.arif-fazil.com/a2a/kvm4-ccc-pool",
+ "provider": {
+  "organization": "arifOS Federation",
+  "url": "https://arif-fazil.com"
+ },
+ "warga_binding": {
+  "citizenship": "warga-aaa",
+  "lane": "333-AGI",
+  "intelligence_tier": "AGI",
+  "authority_level": "engineer",
+  "citizenship_forged": "2026-09-02"
+ },
+ "runtime_snapshot": {
+  "probed": "2026-09-02T18:15:00Z",
+  "opencode_version": "1.18.25",
+  "codex_version": "0.152.0",
+  "qwen_version": "0.22.3",
+  "kimi_version": "0.38.0",
+  "aider_version": "0.86.2",
+  "gateway_health": "I'm alive! (100.64.0.2:4000)",
+  "probes": "OPENCODE-KVM4-OK / CODEX-KVM4-OK / QWEN-KVM4-OK / KIMI-KVM4-OK / AIDER-KVM4-OK — ALL PASS 2026-09-02"
+ },
+ "security": {
+  "secrets_on_host": "NONE — haproxy injects Authorization at 100.64.0.2:4000",
+  "workspace_isolation": "KVM4 is dedicated substrate; workers operate in /root, /tmp, worktrees on that box only",
+  "f13_path": "T3 actions (rm -rf, force-push main, secret access, paid API > $10/mo) → 888_HOLD → escalate to KVM8 kernel",
+  "audit": "ccc-remote stderr receipt; mutations logged via arifFlow (KVM8 :7073)"
+ },
+ "harnesses": {
+  "opencode": {
+   "version": "1.18.26",
+   "status": "PASS (OPENCODE-KVM4-OK)"
   },
-  "description": "Dedicated KVM4-forge (srv1946043, 100.64.0.5) coding-worker host. 5 CCC harnesses: opencode, codex, qwen, kimi, aider. All route through sovereign FED gateway. HERMES ASI dispatches via ccc-remote (KVM8 /usr/local/bin/ccc-remote). Workers build/verify/escalate; never judge, never self-authorize.",
-  "version": "1.0.0-20260902",
-  "model": "FED gateway / forge-777 (default), deepseek-v4-flash (fast lane)",
-  "config": "/root/AGENTS.md (KVM4) + /root/.config/opencode/opencode.json + /root/.qwen/settings.json + /root/.kimi-code/config.toml + /root/.codex/config.toml",
-  "binary": "/usr/local/bin/ccc-remote (KVM8 dispatcher) → ssh root@100.64.0.5",
-  "tier": "CCC",
-  "role": "worker",
-  "class": "CODING",
-  "trinity": "worker pool — Context-Compute-Code contract (CCC_DOCTRINE.md)",
-  "warga_status": "attested",
-  "attestation_id": "KVM4-CCC-ATTESTED-20260902",
-  "bound_to": "888-APEX (judgment) / A-FORGE (execution gate)",
-  "protocolVersion": "1.2",
-  "url": "https://aaa.arif-fazil.com/a2a/kvm4-ccc-pool",
-  "provider": {
-    "organization": "arifOS Federation",
-    "url": "https://arif-fazil.com"
+  "codex": {
+   "version": "0.152.0",
+   "status": "PASS (CODEX-KVM4-OK)"
   },
-  "warga_binding": {
-    "citizenship": "warga-aaa",
-    "lane": "333-AGI",
-    "intelligence_tier": "AGI",
-    "authority_level": "engineer",
-    "citizenship_forged": "2026-09-02"
+  "qwen": {
+   "version": "0.22.3",
+   "status": "PASS (QWEN-KVM4-OK)"
   },
-  "runtime_snapshot": {
-    "probed": "2026-09-02T18:15:00Z",
-    "opencode_version": "1.18.25",
-    "codex_version": "0.152.0",
-    "qwen_version": "0.22.3",
-    "kimi_version": "0.38.0",
-    "aider_version": "0.86.2",
-    "gateway_health": "I'm alive! (100.64.0.2:4000)",
-    "probes": "OPENCODE-KVM4-OK / CODEX-KVM4-OK / QWEN-KVM4-OK / KIMI-KVM4-OK / AIDER-KVM4-OK — ALL PASS 2026-09-02"
+  "kimi": {
+   "version": "0.39.1",
+   "status": "PASS (KIMI-KVM4-OK)"
   },
-  "security": {
-    "secrets_on_host": "NONE — haproxy injects Authorization at 100.64.0.2:4000",
-    "workspace_isolation": "KVM4 is dedicated substrate; workers operate in /root, /tmp, worktrees on that box only",
-    "f13_path": "T3 actions (rm -rf, force-push main, secret access, paid API > $10/mo) → 888_HOLD → escalate to KVM8 kernel",
-    "audit": "ccc-remote stderr receipt; mutations logged via arifFlow (KVM8 :7073)"
+  "aider": {
+   "version": "0.86.2",
+   "status": "PASS (AIDER-KVM4-OK)"
+  },
+  "grok": {
+   "version": "probe pending 2026-09-03",
+   "status": "PENDING (GROK-KVM4-OK marker)"
+  },
+  "agy": {
+   "version": "probe pending 2026-09-03",
+   "status": "PENDING (AGY-KVM4-OK marker)"
   }
+ },
+ "inter_op": {
+  "protocol": "ccc-remote <harness> run '<prompt>' — any harness may dispatch any sibling harness",
+  "mesh": "grog: opencode↔codex↔qwen↔kimi↔aider↔grok↔agy via /usr/local/bin/ccc-remote on KVM8; on KVM4 workers may ssh-free invoke siblings directly (same box, PATH-wired)",
+  "musyawarah": "CCC(Kimi) deliberates, CCC(Qwen) verifies, CCC(OpenCode) reviews — roles per task, never two roles one task (CCC_FLOW.md)"
+ }
 }
