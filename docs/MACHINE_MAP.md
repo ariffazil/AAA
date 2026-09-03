@@ -45,7 +45,7 @@ echo "$(hostname) $(ip -4 addr show | grep -oE '100\.64\.0\.[0-9]+' | head -1)"
 | `/root/HERMES` vs `/root/Hermes` | case twins on KVM8. UPPERCASE = heritage (4.6G); lowercase = **receipts-only shadow (164K, no install)** |
 | `/opt` typo-twins on KVM8 | arifflow+ariflow · arifOS+arifos · a-forge+af-forge — **resolved 2026-09-04**: dead twins (ariflow, arifOS, arifos-archive, a-forge + stray .baks) quarantined to `/root/BACKUPS/opt-quarantine-20260904/`; live = arifos (kernel 36G), arifflow, well, af-forge(→/root symlink) |
 | A-FORGE :7071 drop-ins | `a-forge.service.d/` has 4 drop-ins — `privilege-inversion.conf` wins User=forge (lexical). 2026-09-04 split-brain fix: :7071 now serves fresh `/root/A-FORGE` dist (was stale `/opt/a-forge/app` Aug-19 build) |
-| arif-fazil.com repo | local +63 / origin −13 **FORKED**; live site builds from the local 63 (dirty: vitals/index.html) |
+| arif-fazil.com repo | ~~FORKED~~ **RECONCILED 2026-09-03 18:09** ("Reconcile main: 65 local commits") — 0 ahead/0 behind, verified in 2026-09-04 musyawarah; row kept as history |
 | VAULT999 | ~~single copy~~ **mirror restored 2026-09-04**: `vault999-backup.timer` 03:47 nightly → KVM4 `/root/VAULT999-mirror-KVM8` (additive rsync, witness copy) |
 | KVM4 mirrors | read-only compile inputs by doctrine — **single pen = KVM8**; never commit/push from KVM4 |
 | AGENTS.md renderer | `render-agents.sh` referenced in header is PHANTOM — fragment + AGENTS.md must be synced manually |
