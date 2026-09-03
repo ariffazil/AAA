@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260622-151306",
+  "timestamp": "2026-06-22T15:13:06.966772+00:00",
+  "tool_name": "arif_judge",
+  "agent_id": "anonymous",
+  "session_id": "sess_6ab959cfdf9b413b",
+  "reason": "Anonymous actor cannot execute IRREVERSIBLE. Call arif_init with verified actor_id.",
+  "severity": "critical",
+  "count": 26,
+  "last_seen": "2026-06-24T10:40:23.115755+00:00"
+}

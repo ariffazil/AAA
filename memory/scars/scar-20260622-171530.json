@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260622-171530",
+  "timestamp": "2026-06-22T17:15:30.581534+00:00",
+  "tool_name": "arif_seal",
+  "agent_id": "anonymous",
+  "session_id": "horizon-review-2026-06-23",
+  "reason": "CLAIMED identity (333-AGI) cannot execute MUTATE. Requires verified or delegated authority.",
+  "severity": "critical",
+  "count": 4,
+  "last_seen": "2026-06-22T17:16:24.981788+00:00"
+}

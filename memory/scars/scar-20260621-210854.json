@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260621-210854",
+  "timestamp": "2026-06-21T21:08:54.460132+00:00",
+  "tool_name": "arif_conformance_report",
+  "agent_id": "anonymous",
+  "session_id": "SEAL-07c5b36e0b6f4a37",
+  "reason": "Envelope validation error: 'CanonicalEnvelope' object has no attribute 'validate_for_execution'",
+  "severity": "critical",
+  "count": 2,
+  "last_seen": "2026-06-22T13:17:52.940482+00:00"
+}
