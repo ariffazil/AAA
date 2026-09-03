@@ -138,3 +138,5 @@ Kernel :8088 → KVM4. Preconditions: I-4 live 30d clean · KVM4 stable as memor
 | "Nomad = lighter K8s, therefore OK" | Weight was never the crime. Identity dissolution is |
 
 *DITEMPA BUKAN DIBERI — forged, not given. Receipts: e9821313 · flow 23b019ff · 4cfadcff.*
+
+> **v1.2 amendment (2026-09-03, sovereign correction):** dual-forge — coding capability lives on BOTH (KVM8 fleet=primary, KVM4 workshop=hot-standby, legal per capability law). Phase 2 memory migration = OPTIONAL not mandatory. Capability SOT: `registries/CAPABILITY_GRAPH.json`.
