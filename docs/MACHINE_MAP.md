@@ -60,3 +60,4 @@ echo "$(hostname) $(ip -4 addr show | grep -oE '100\.64\.0\.[0-9]+' | head -1)"
 | 2026-09-03 17:45 | FI-003 cross-check | freeze branch pushed ✓ · re-arm units disabled ✓ · AAA KVM4 = behind-not-diverged ✓ |
 | 2026-09-04 02:50 | FI-008 | FLAME RETIRED (888 directive): free-tier dead, zero callers, fallback burned qwen-max -> FED flash lane; archive BACKUPS/FLAME-retired-20260904; organs.yaml + deprecation-registry tombstoned |
 | 2026-09-04 02:20 | FI-008 from KVM8 | 3-machine inventory OBS: KVM4 = 26 units (litellm+hermes+opencode) · KVM2 = 31 units (forks+witness) · KVM8 split-brain FIXED · /opt quarantine · VAULT999 mirror armed |
+| 2026-09-04 07:55 | FI-008 | HERMES row correction: /root/HERMES is NOT pure heritage — cron/ + logs/ are SAME INODES as ~/.hermes (live cron book lives there, orphaned since gateway moved to KVM4 Sep 3 04:15). SOUL.md forked: KVM8 twins 14436B Sep-2 vs KVM4 live 13257B Sep-3. See HERMES_FLEET_MAP.md §5 + holds.txt |
