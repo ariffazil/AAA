@@ -1,24 +1,123 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "generated": "2026-09-03T19:30Z",
   "session": "SEAL-98fd3a690b1e4cae",
   "law": "One capability, ONE authoritative owner. Primary+Hot-Standby legal. Primary+Primary forbidden. Corpses get receipts then removal.",
   "capabilities": [
-    {"name": "Constitutional Judgment", "owner": "arifOS kernel :8088", "machine": "KVM8", "class": "AUTHORITATIVE", "consumers": ["all organs", "all agents", "Hermes"]},
-    {"name": "Truth Ledger (VAULT999)", "owner": "kernel arif_seal", "machine": "KVM8 primary / KVM4 replica(6h)", "class": "AUTHORITATIVE", "note": "I-9 single pen; replicas read-only"},
-    {"name": "Inference Routing (FED)", "owner": "litellm @100.64.0.5:4000", "machine": "KVM4", "class": "AUTHORITATIVE", "consumers": ["Hermes(local)", "12 FI seats via KVM8 HAProxy", "KVM2 via tunnel+native"]},
-    {"name": "Human Telegram Bridge", "owner": "hermes-asi-gateway @ASI_arifos_bot", "machine": "KVM4", "class": "AUTHORITATIVE", "consumers": ["ARIF(267378578)", "allowlisted chats"], "status": "FIXED 2026-09-03T19:17Z — allow_from string→list; e2e pending sovereign ping"},
-    {"name": "Sister Lane Bridge (wawabot)", "owner": "hermes-agent (Azwa)", "machine": "KVM2", "class": "AUTHORITATIVE", "fence": "I-7 lane sovereignty — never merges with Arif lane"},
-    {"name": "Forge Execution — seat fleet", "owner": "12 FI CLIs + forge_work", "machine": "KVM8", "class": "AUTHORITATIVE"},
-    {"name": "Forge Execution — workshop pool", "owner": "ccc pool + agy/kimi/grok/aider + opencode:4096", "machine": "KVM4", "class": "HOT_STANDBY", "note": "dual-forge is LEGAL per Primary+Hot-Standby law"},
-    {"name": "Event Nervous System", "owner": "NATS hub :7422(leaf)/:4222(local) + JetStream", "machine": "KVM8 hub + KVM4/KVM2 leaves", "class": "AUTHORITATIVE", "status": "LIVE 2026-09-03 lid:5 x2"},
-    {"name": "Semantic Memory", "owner": "Qdrant + postgres + falkordb + minio (docker plane)", "machine": "KVM8", "class": "AUTHORITATIVE", "note": "Phase 2 migration now OPTIONAL (dual-forge amendment v1.2)"},
-    {"name": "Independent Witness", "owner": "FRAME :18085", "machine": "KVM8 (target KVM2)", "class": "DEGRADED_INDEPENDENCE", "note": "M-4 gates armed; cutover pending"},
-    {"name": "Hermes Tools (free lane MCP)", "owner": "hermes_mcp.py /root/.hermes", "machine": "KVM8", "class": "AUTHORITATIVE", "note": "stdio tool server, NOT a Telegram poller — distinct role, keep"},
-    {"name": "Heritage Corpses", "owner": "none", "machine": "KVM8", "class": "CORPSE", "targets": ["/root/HERMES 4.6G", "/root/Hermes 164K", "masked hermes-asi-gateway unit"], "disposition": "archived on KVM2 (1G tarball) — deletion gated"}
+    {
+      "name": "Capability Registry",
+      "owner": "AAA (registries/CAPABILITY_GRAPH.json + agent/skill registries)",
+      "machine": "KVM8",
+      "class": "AUTHORITATIVE",
+      "consumers": [
+        "all agents ask: who owns capability X?"
+      ],
+      "law": "agents query registry, never hardcode machines"
+    },
+    {
+      "name": "Constitutional Judgment",
+      "owner": "arifOS kernel :8088",
+      "machine": "KVM8",
+      "class": "AUTHORITATIVE",
+      "consumers": [
+        "all organs",
+        "all agents",
+        "Hermes"
+      ]
+    },
+    {
+      "name": "Truth Ledger (VAULT999)",
+      "owner": "kernel arif_seal",
+      "machine": "KVM8 primary / KVM4 replica(6h)",
+      "class": "AUTHORITATIVE",
+      "note": "I-9 single pen; replicas read-only"
+    },
+    {
+      "name": "Inference Routing (FED)",
+      "owner": "litellm @100.64.0.5:4000",
+      "machine": "KVM4",
+      "class": "AUTHORITATIVE",
+      "consumers": [
+        "Hermes(local)",
+        "12 FI seats via KVM8 HAProxy",
+        "KVM2 via tunnel+native"
+      ]
+    },
+    {
+      "name": "Human Telegram Bridge",
+      "owner": "hermes-asi-gateway @ASI_arifos_bot",
+      "machine": "KVM4",
+      "class": "AUTHORITATIVE",
+      "consumers": [
+        "ARIF(267378578)",
+        "allowlisted chats"
+      ],
+      "status": "FIXED 2026-09-03T19:17Z \u2014 allow_from string\u2192list; e2e pending sovereign ping"
+    },
+    {
+      "name": "Sister Lane Bridge (wawabot)",
+      "owner": "hermes-agent (Azwa)",
+      "machine": "KVM2",
+      "class": "AUTHORITATIVE",
+      "fence": "I-7 lane sovereignty \u2014 never merges with Arif lane"
+    },
+    {
+      "name": "Forge Execution \u2014 seat fleet",
+      "owner": "12 FI CLIs + forge_work",
+      "machine": "KVM8",
+      "class": "AUTHORITATIVE"
+    },
+    {
+      "name": "Forge Execution \u2014 workshop pool",
+      "owner": "ccc pool + agy/kimi/grok/aider + opencode:4096",
+      "machine": "KVM4",
+      "class": "HOT_STANDBY",
+      "note": "dual-forge is LEGAL per Primary+Hot-Standby law"
+    },
+    {
+      "name": "Event Nervous System",
+      "owner": "NATS hub :7422(leaf)/:4222(local) + JetStream",
+      "machine": "KVM8 hub + KVM4/KVM2 leaves",
+      "class": "AUTHORITATIVE",
+      "status": "LIVE 2026-09-03 lid:5 x2"
+    },
+    {
+      "name": "Semantic Memory",
+      "owner": "Qdrant + postgres + falkordb + minio (docker plane)",
+      "machine": "KVM8",
+      "class": "AUTHORITATIVE",
+      "note": "Phase 2 migration now OPTIONAL (dual-forge amendment v1.2)"
+    },
+    {
+      "name": "Independent Witness",
+      "owner": "FRAME :18085",
+      "machine": "KVM8 (target KVM2)",
+      "class": "DEGRADED_INDEPENDENCE",
+      "note": "M-4 gates armed; cutover pending"
+    },
+    {
+      "name": "Hermes Tools (free lane MCP)",
+      "owner": "hermes_mcp.py /root/.hermes",
+      "machine": "KVM8",
+      "class": "AUTHORITATIVE",
+      "note": "stdio tool server, NOT a Telegram poller \u2014 distinct role, keep"
+    },
+    {
+      "name": "Heritage Corpses",
+      "owner": "none",
+      "machine": "KVM8",
+      "class": "CORPSE",
+      "targets": [
+        "/root/HERMES 4.6G",
+        "/root/Hermes 164K",
+        "masked hermes-asi-gateway unit"
+      ],
+      "disposition": "archived on KVM2 (1G tarball) \u2014 deletion gated"
+    }
   ],
   "amendments": [
-    "v1.2 2026-09-03: dual-forge doctrine — KVM8=Court+SeatForge, KVM4=WorkshopForge+Bridge, KVM2=Witness+Azwa. Phase 2 data-plane migration OPTIONAL. Hardware doer!=judge deferred (cost accepted).",
-    "Coding-agent capability intentionally split: KVM8 fleet PRIMARY, KVM4 pool HOT_STANDBY."
+    "v1.2 2026-09-03: dual-forge doctrine \u2014 KVM8=Court+SeatForge, KVM4=WorkshopForge+Bridge, KVM2=Witness+Azwa. Phase 2 data-plane migration OPTIONAL. Hardware doer!=judge deferred (cost accepted).",
+    "Coding-agent capability intentionally split: KVM8 fleet PRIMARY, KVM4 pool HOT_STANDBY.",
+    "v0.3... wait v0.2 2026-09-03: Capability Registry added per external audit \u2014 agents route Agent->Capability->Authority->Machine, never Agent->Machine."
   ]
 }
