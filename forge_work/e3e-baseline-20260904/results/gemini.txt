@@ -1,0 +1,141 @@
+Warning: Basic terminal detected (TERM=dumb). Visual rendering will be limited. For the best experience, use a terminal emulator with truecolor support.
+Warning: 256-color support not detected. Using a terminal with at least 256-color support is recommended for a better visual experience.
+Ripgrep is not available. Falling back to GrepTool.
+MCP issues detected. Run /mcp list for status.
+Attempt 1 failed with status 429. Retrying with backoff... _ApiError: {"error":{"message":"{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n","code":429,"status":"Too Many Requests"}}
+    at throwErrorIfNotOK (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:36185:24)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:35948:7
+    at async Models.generateContentStream (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:37044:16)
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:273739:19
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:250482:23
+    at async retryWithBackoff (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:270768:23)
+    at async GeminiChat.makeApiCallAndProcessStream (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:293823:28)
+    at async GeminiChat.streamWithRetries (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:293641:29)
+    at async Turn.run (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:294311:24) {
+  status: 429
+}
+Attempt 2 failed with status 429. Retrying with backoff... _ApiError: {"error":{"message":"{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n","code":429,"status":"Too Many Requests"}}
+    at throwErrorIfNotOK (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:36185:24)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:35948:7
+    at async Models.generateContentStream (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:37044:16)
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:273739:19
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:250482:23
+    at async retryWithBackoff (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:270768:23)
+    at async GeminiChat.makeApiCallAndProcessStream (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:293823:28)
+    at async GeminiChat.streamWithRetries (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:293641:29)
+    at async Turn.run (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:294311:24) {
+  status: 429
+}
+Attempt 3 failed with status 429. Retrying with backoff... _ApiError: {"error":{"message":"{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n","code":429,"status":"Too Many Requests"}}
+    at throwErrorIfNotOK (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:36185:24)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:35948:7
+    at async Models.generateContentStream (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:37044:16)
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:273739:19
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:250482:23
+    at async retryWithBackoff (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:270768:23)
+    at async GeminiChat.makeApiCallAndProcessStream (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:293823:28)
+    at async GeminiChat.streamWithRetries (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:293641:29)
+    at async Turn.run (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:294311:24) {
+  status: 429
+}
+Attempt 4 failed with status 429. Retrying with backoff... _ApiError: {"error":{"message":"{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n","code":429,"status":"Too Many Requests"}}
+    at throwErrorIfNotOK (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:36185:24)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:35948:7
+    at async Models.generateContentStream (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:37044:16)
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:273739:19
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:250482:23
+    at async retryWithBackoff (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:270768:23)
+    at async GeminiChat.makeApiCallAndProcessStream (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:293823:28)
+    at async GeminiChat.streamWithRetries (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:293641:29)
+    at async Turn.run (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:294311:24) {
+  status: 429
+}
+Attempt 5 failed with status 429. Retrying with backoff... _ApiError: {"error":{"message":"{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n","code":429,"status":"Too Many Requests"}}
+    at throwErrorIfNotOK (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:36185:24)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:35948:7
+    at async Models.generateContentStream (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:37044:16)
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:273739:19
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:250482:23
+    at async retryWithBackoff (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:270768:23)
+    at async GeminiChat.makeApiCallAndProcessStream (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:293823:28)
+    at async GeminiChat.streamWithRetries (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:293641:29)
+    at async Turn.run (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:294311:24) {
+  status: 429
+}
+Attempt 6 failed with status 429. Retrying with backoff... _ApiError: {"error":{"message":"{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n","code":429,"status":"Too Many Requests"}}
+    at throwErrorIfNotOK (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:36185:24)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:35948:7
+    at async Models.generateContentStream (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:37044:16)
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:273739:19
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:250482:23
+    at async retryWithBackoff (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:270768:23)
+    at async GeminiChat.makeApiCallAndProcessStream (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:293823:28)
+    at async GeminiChat.streamWithRetries (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:293641:29)
+    at async Turn.run (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:294311:24) {
+  status: 429
+}
+Attempt 7 failed with status 429. Retrying with backoff... _ApiError: {"error":{"message":"{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n","code":429,"status":"Too Many Requests"}}
+    at throwErrorIfNotOK (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:36185:24)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:35948:7
+    at async Models.generateContentStream (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:37044:16)
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:273739:19
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:250482:23
+    at async retryWithBackoff (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:270768:23)
+    at async GeminiChat.makeApiCallAndProcessStream (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:293823:28)
+    at async GeminiChat.streamWithRetries (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:293641:29)
+    at async Turn.run (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:294311:24) {
+  status: 429
+}
+Attempt 8 failed with status 429. Retrying with backoff... _ApiError: {"error":{"message":"{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n","code":429,"status":"Too Many Requests"}}
+    at throwErrorIfNotOK (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:36185:24)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:35948:7
+    at async Models.generateContentStream (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:37044:16)
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:273739:19
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:250482:23
+    at async retryWithBackoff (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:270768:23)
+    at async GeminiChat.makeApiCallAndProcessStream (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:293823:28)
+    at async GeminiChat.streamWithRetries (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:293641:29)
+    at async Turn.run (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:294311:24) {
+  status: 429
+}
+Attempt 9 failed with status 429. Retrying with backoff... _ApiError: {"error":{"message":"{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n","code":429,"status":"Too Many Requests"}}
+    at throwErrorIfNotOK (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:36185:24)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:35948:7
+    at async Models.generateContentStream (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-UJ26GAE5.js:37044:16)
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:273739:19
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:250482:23
+    at async retryWithBackoff (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:270768:23)
+    at async GeminiChat.makeApiCallAndProcessStream (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:293823:28)
+    at async GeminiChat.streamWithRetries (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:293641:29)
+    at async Turn.run (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:294311:24) {
+  status: 429
+}
+Attempt 10 failed: Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. . Max attempts reached
+Error when talking to Gemini API Full report available at: /tmp/gemini-client-error-Turn.run-sendMessageStream-2026-09-03T23-32-27-722Z.json RetryableQuotaError: Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. 
+    at classifyGoogleError (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:270098:14)
+    at retryWithBackoff (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:270791:31)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async GeminiChat.makeApiCallAndProcessStream (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:293823:28)
+    at async GeminiChat.streamWithRetries (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:293641:29)
+    at async Turn.run (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:294311:24)
+    at async GeminiClient.processTurn (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:307643:22)
+    at async GeminiClient.sendMessageStream (file:///usr/lib/node_modules/@google/gemini-cli/bundle/chunk-U6X4OPT5.js:307740:14)
+    at async file:///usr/lib/node_modules/@google/gemini-cli/bundle/gemini-YQATFAPB.js:10880:26
+    at async main (file:///usr/lib/node_modules/@google/gemini-cli/bundle/gemini-YQATFAPB.js:16237:5) {
+  cause: {
+    code: 429,
+    message: 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ',
+    details: []
+  },
+  retryDelayMs: undefined
+}
+An unexpected critical error occurred:[object Object]

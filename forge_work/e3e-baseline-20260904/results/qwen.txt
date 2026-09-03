@@ -1,0 +1,170 @@
+Warning: MCP server(s) failed to start: arifflow. Continuing with built-in tools and any servers that did connect. Re-run with QWEN_CODE_DEBUG=1 to see per-server reasons.
+Warning: Tool "skill" requires user approval but cannot execute in non-interactive mode.
+To enable automatic tool execution, use the -y flag (YOLO mode):
+Example: qwen -p 'your prompt' -y
+
+Warning: Tool "mcp__arifos-kernel__arif_init" requires user approval but cannot execute in non-interactive mode.
+To enable automatic tool execution, use the -y flag (YOLO mode):
+Example: qwen -p 'your prompt' -y
+
+Warning: Tool "mcp__fed__fed_route" requires user approval but cannot execute in non-interactive mode.
+To enable automatic tool execution, use the -y flag (YOLO mode):
+Example: qwen -p 'your prompt' -y
+
+Warning: Tool "mcp__geox__geox_prospect" requires user approval but cannot execute in non-interactive mode.
+To enable automatic tool execution, use the -y flag (YOLO mode):
+Example: qwen -p 'your prompt' -y
+
+Warning: Tool "mcp__aforge__forge_github" requires user approval but cannot execute in non-interactive mode.
+To enable automatic tool execution, use the -y flag (YOLO mode):
+Example: qwen -p 'your prompt' -y
+
+Warning: Tool "mcp__aforge__forge_github" requires user approval but cannot execute in non-interactive mode.
+To enable automatic tool execution, use the -y flag (YOLO mode):
+Example: qwen -p 'your prompt' -y
+
+Warning: Tool "mcp__wealth__capital_primitive" requires user approval but cannot execute in non-interactive mode.
+To enable automatic tool execution, use the -y flag (YOLO mode):
+Example: qwen -p 'your prompt' -y
+
+Warning: Tool "run_shell_command" requires user approval but cannot execute in non-interactive mode.
+To enable automatic tool execution, use the -y flag (YOLO mode):
+Example: qwen -p 'your prompt' -y
+
+
+## Outcome
+
+Discovery succeeded; live route and prospect execution were blocked by the non-interactive permission layer. No image-generation endpoint was called, and no unverified EMV/arithmetic result is being reported.
+
+## E3E-001 — Skill inventory
+
+### AAA canonical count
+
+**Status: `UNKNOWN` for the current live count.**
+
+Evidence:
+
+- Latest observed index: `/root/AAA/skills_index.json`
+- Index timestamp: `2026-08-24T21:06:08Z`
+- Declared count: `221`
+- Canonical root: `/root/AAA/skills`
+- Source: `/root/AAA/scripts/skills_index_gen.py`
+
+A recursive filesystem scan found 209 `SKILL.md` files, but that includes nested/system paths and is not equivalent to a current canonical registry count. Therefore the correct current AAA count is **`UNKNOWN`**, not 209 or 221.
+
+### GEOX skills
+
+Canonical home: `/root/GEOX/skills/`
+
+| Skill | Owner / organization | Source |
+|---|---|---|
+| `geox-claim-falsification` | `333-AGI` / GEOX | Forged 2026-09-04 from live organ tool surfaces and `FEDERATION_SKILL_PROFILE`; organ MCP surface is SOT |
+| `geox-prospect-evaluation` | `333-AGI` / GEOX | Same provenance; skill file: `/root/GEOX/skills/geox-prospect-evaluation/SKILL.md` |
+| `geox-basin-evaluation` | `333-AGI` / GEOX | Same provenance |
+| `geox-well-log-qc` | `333-AGI` / GEOX | Same provenance |
+| `geox-seismic-interpretation` | `333-AGI` / GEOX | Same provenance |
+| `geox-production-cockpit` | `GEOX` | `/root/GEOX/skills/geox-production-cockpit/SKILL.md`; control-plane router |
+
+### WEALTH skills
+
+Canonical home: `/root/WEALTH/skills/`
+
+| Skill | Owner / organization | Source |
+|---|---|---|
+| `wealth-runway-conservation` | `333-AGI` / WEALTH | Forged 2026-09-04 from live organ tool surfaces and `FEDERATION_SKILL_PROFILE`; organ MCP surface is SOT |
+| `wealth-market-pulse` | `333-AGI` / WEALTH | Same provenance |
+| `wealth-ledger-discipline` | `333-AGI` / WEALTH | Same provenance |
+| `wealth-capital-primitives` | `333-AGI` / WEALTH | Same provenance; skill file: `/root/WEALTH/skills/wealth-capital-primitives/SKILL.md` |
+| `wealth-claim-state` | `WEALTH` | Skill frontmatter/description; no provenance block observed |
+| `xauusd-trading` | `A-FORGE` (execution), `WEALTH` (intelligence), `arifOS` (governance) | Skill frontmatter/dependencies; no provenance block observed |
+
+### WELL skills
+
+Canonical home: `/root/WELL/skills/`
+
+| Skill | Owner / organization | Source |
+|---|---|---|
+| `well-consent-registry` | `333-AGI` / WELL | Forged 2026-09-04; organ MCP surface is SOT |
+| `well-machine-diagnose` | `333-AGI` / WELL | Same provenance |
+| `well-triadic-ops` | `333-AGI` / WELL | Same provenance |
+| `FORGE-well-boundary-repair` | `A-FORGE` | Skill frontmatter/description; no provenance block observed |
+| `well-substrate-readiness` | `WELL team` | Skill frontmatter/description; no provenance block observed |
+
+## E3E-002 — GEOX prospect evaluation
+
+Inputs supplied:
+
+```yaml
+pos: 0.25
+emv_mmusd: 50
+cost_mmusd: 10
+```
+
+### Workflow discovered
+
+1. `geox_prospect(mode=screen, evidence_refs=..., verdict=compute)`
+2. `geox_prospect(mode=evaluate, ...)`
+3. `wealth capital_primitive(mode=emv, outcomes=..., probabilities=...)`
+4. `geox_temporal(...)` for basin lifecycle context
+5. Investment recommendation requires an `arifOS` judge with WEALTH evidence.
+
+The skill explicitly says EMV must be computed in WEALTH, not asserted manually.
+
+### Source locations
+
+- Skill: `/root/GEOX/skills/geox-prospect-evaluation/SKILL.md`
+- GEOX tool description: `/root/arifOS/arifosmcp/descriptions/geox_prospect_evaluate.md`
+- GEOX symbolic schema: `/root/arifOS/arifosmcp/schemas/symbolic/geox_prospect_evaluate.schema.json`
+- Workflow reference: `/root/AAA/agents/prospect-maturation/INIT.md`
+- WEALTH companion skill: `/root/WEALTH/skills/wealth-capital-primitives/SKILL.md`
+
+### Output
+
+**`UNKNOWN` — execution did not complete.**
+
+The GEOX call and WEALTH `capital_primitive` call were both permission-denied before producing a result. I am not treating `0.25 × 50 − 10` as an emitted tool result.
+
+## E3E-003 — Multimodal image generation
+
+- Route query attempted: **yes**
+- Direct endpoint called: **no**
+- Invocation contract: **`UNKNOWN`**
+- Endpoint selected: **`UNKNOWN`**
+- Fallback chain: **`UNKNOWN`**
+
+`mcp__fed__fed_route` was permission-denied in this non-interactive session. The `geox-production-cockpit` skill load was also denied. Per the request, no image-generation endpoint was called through an alternate path.
+
+## E3E-004 — `wealth-capital-primitives`
+
+Per the instruction not to use local-only copies, the local skill file was not treated as the authoritative mesh source.
+
+| Field | Result |
+|---|---|
+| Owner | **`UNKNOWN`** — remote owner verification unavailable |
+| Canonical path | **`UNKNOWN`** |
+| Mesh path | **`UNKNOWN`** |
+| Invocation path | **`UNKNOWN`** |
+
+`forge_skillstore_read` returned `SESSION_REQUIRED`, and the remote GitHub lookup was permission-denied.
+
+## E3E-005 — Prospect report receipt
+
+```yaml
+skill_used: geox-prospect-evaluation
+owner_org: 333-AGI
+organ_domain: geox
+discovery_path: /root/GEOX/skills/geox-prospect-evaluation/SKILL.md
+workflow_source:
+  - /root/GEOX/skills/geox-prospect-evaluation/SKILL.md
+  - /root/arifOS/arifosmcp/descriptions/geox_prospect_evaluate.md
+  - /root/arifOS/arifosmcp/schemas/symbolic/geox_prospect_evaluate.schema.json
+  - /root/AAA/agents/prospect-maturation/INIT.md
+execution_path:
+  - mcp__geox__geox_prospect(mode=evaluate, structural_map_inline={pos: 0.25, emv_mmusd: 50, cost_mmusd: 10})
+  - mcp__wealth__capital_primitive(mode=emv, outcomes=[50, 0], probabilities=[0.25, 0.75])
+execution_status: BLOCKED_PERMISSION
+final_output: UNKNOWN
+skill_receipt: NOT_ISSUED
+```
+
+The SkillGate selection query returned `SEAL` with `total_events: 0`; that is an initialized tracker state, not an execution or evaluation receipt.
