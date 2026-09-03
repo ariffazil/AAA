@@ -380,8 +380,8 @@
   ],
   "kvm4_routing": {
     "dispatch": "ccc-remote agy (KVM8 /usr/local/bin/ccc-remote -> ssh root@100.64.0.5)",
-    "status": "HALF-ON-KVM4 — binary 1.1.25 version-PASS, ~/.antigravity missing",
+    "status": "VERIFIED-ON-KVM4 — ccc-remote agy end-to-end PASS (fi-003 live probe); auth = GEMINI_API_KEY (kunci-root.env) + ~/.gemini oauth; ~/.antigravity was wrong-layer diagnosis (not agy config home — absent on working KVM8 too)",
     "member_of": "kvm4-ccc-pool",
-    "updated": "2026-09-03T16:10+08:00"
+    "updated": "2026-09-03T16:55+08:00"
   }
 }
