@@ -1,0 +1,240 @@
+{
+  "$comment": "DRAFT — /root/AAA/.well-known/arifos.json. NOT YET DEPLOYED. See /root/AAA/forge_work/2026-08-20/ecosystem-expansion/DECISIONS.md for sealing protocol.",
+  "schema": "https://arif-fazil.com/schemas/arifos-federation-manifest/v1",
+  "version": "draft-2026-08-20",
+  "name": "arifOS Federation Manifest",
+  "description": "Canonical federation manifest exposing organs, agents, capabilities, governance model, and trust model. Drafted per ARIFOS::ECOSYSTEM_EXPANSION::v1 — Phase 1 (DISCOVERY).",
+  "doctrine": "DITEMPA BUKAN DIBERI — Forged, not given.",
+    "homepage": "https://arif-fazil.com",
+    "sovereign": {
+      "actor_id": "arif",
+      "tier": "F13_SOVEREIGN",
+      "authority": "FINAL",
+      "veto_channel": "https://arif-fazil.com/000/"
+    },
+    "kernel": {
+      "name": "arifOS Kernel",
+      "version": "2026.08.19",
+      "endpoint": "https://arifos.arif-fazil.com",
+      "agent_card": "https://arifos.arif-fazil.com/.well-known/agent.json",
+      "role": "judge",
+      "authority_class": "verdict"
+    },
+    "gateway": {
+      "name": "AAA Control Plane",
+      "version": "2026.07.24",
+      "endpoint": "https://aaa.arif-fazil.com",
+      "agent_card": "https://aaa.arif-fazil.com/.well-known/agent-card.json",
+      "role": "gateway",
+      "capabilities": ["task_routing", "skill_aggregation", "webhook_broker", "auth_enforcement", "injection_defense"]
+    },
+    "vault": {
+      "name": "VAULT999",
+      "seal_anchor": "https://arif-fazil.com/999/",
+      "verification": "https://arif-fazil.com/999/seal.json",
+      "immutable": true,
+      "policy": "append_only"
+    },
+    "metabolism": {
+      "name": "arifFLOW",
+      "role": "canonical witness layer",
+      "phase_3_dependency": "OpenTelemetry integration required"
+    },
+    "organs": [
+      {
+        "id": "arifos",
+        "mcp_id": "arifos-mcp",
+        "name": "arifOS Constitutional Kernel",
+        "endpoint": "https://arifos.arif-fazil.com",
+        "port_internal": 8088,
+        "role": "judge",
+        "authority": "verdict",
+        "status": "SEAL",
+        "floor_scope": ["F1","F2","F4","F6","F7","F9","F11","F13"],
+        "skills": ["render_verdict","gather_evidence","reason","route_intent","seal_receipt"],
+        "agent_card": "https://arifos.arif-fazil.com/.well-known/agent.json",
+        "expansion_organ_mapping": "Maps to ORGAN_01_COMPOSITION (kernel as composition arbiter)"
+      },
+      {
+        "id": "a-forge",
+        "mcp_id": "a-forge-mcp",
+        "name": "A-FORGE Execution Shell",
+        "endpoint": "https://a-forge.arif-fazil.com",
+        "port_internal": 7071,
+        "port_mcp": 7072,
+        "role": "executor",
+        "authority": "execution",
+        "status": "SEAL",
+        "floor_scope": ["F4","F8","F11"],
+        "skills": ["forge_execute","forge_orchestrate","forge_document_intelligence","forge_browser","forge_git","forge_lease_acquire","forge_vault_seal"],
+        "agent_card": "https://a-forge.arif-fazil.com/.well-known/agent-card.json",
+        "expansion_organ_mapping": "Maps to ORGAN_01_COMPOSITION (executor)"
+      },
+      {
+        "id": "geox",
+        "mcp_id": "geox-mcp",
+        "name": "GEOX Earth Intelligence",
+        "endpoint": "https://geox.arif-fazil.com",
+        "port_internal": 8081,
+        "role": "evidence",
+        "authority": "EVIDENCE_ONLY",
+        "status": "SEAL",
+        "floor_scope": ["F1","F2"],
+        "skills": ["evaluate_basin","analyze_well","rank_prospects","falsify_hypothesis","earth_evidence"],
+        "agent_card": "https://geox.arif-fazil.com/.well-known/agent-card.json"
+      },
+      {
+        "id": "wealth",
+        "mcp_id": "wealth-mcp",
+        "name": "WEALTH Capital Intelligence",
+        "endpoint": "https://wealth.arif-fazil.com",
+        "port_internal": 18082,
+        "role": "evidence",
+        "authority": "ADVISORY_ONLY",
+        "status": "SEAL",
+        "floor_scope": ["F1","F2","F7"],
+        "skills": ["compute_npv","compute_emv","evaluate_wisdom","audit_power","scan_collapse","stock_analysis"],
+        "agent_card": "https://wealth.arif-fazil.com/.well-known/agent-card.json"
+      },
+      {
+        "id": "well",
+        "mcp_id": "well-mcp",
+        "name": "WELL Substrate Vitality",
+        "endpoint": "https://well.arif-fazil.com",
+        "port_internal": 18083,
+        "role": "evidence",
+        "authority": "REFLECT_ONLY",
+        "status": "DEGRADED — REFLECT_ONLY normal state",
+        "floor_scope": ["F2"],
+        "skills": ["assess_homeostasis","assess_livelihood","guard_dignity","validate_vitality","classify_substrate"],
+        "agent_card": "https://well.arif-fazil.com/.well-known/agent-card.json"
+      }
+    ],
+    "expansion_organs": [
+      {
+        "id": "ORGAN_01_COMPOSITION",
+        "name": "Composition Bus",
+        "purpose": "Govern multi-surface execution across MCP, A2A, and federation.",
+        "phase": "PHASE_4_DRAFT",
+        "target_canonical_verbs": ["plan","select_organ","select_adapter","execute","collect_receipts","return_result"],
+        "existing_implementation": "A-FORGE forge_orchestrate + AAA task_routing (partial overlap; not yet unified)",
+        "adapter_targets": ["MCP","A2A","internal_organs"],
+        "trust_gate": "REQUIRES Phase 2 (Trust Engine) + Phase 3 (Observability) operational"
+      },
+      {
+        "id": "ORGAN_02_OBSERVE",
+        "name": "Reality Connection",
+        "purpose": "Health verification, telemetry, witness traces, incident visibility.",
+        "phase": "PHASE_3_DRAFT",
+        "target_canonical_verbs": ["emit_trace","emit_receipt","emit_witness"],
+        "existing_implementation": "Prometheus + FRAME observer + arifFLOW (informal; not OTel-standardized)",
+        "adapter_targets": ["Prometheus","Grafana","Loki","OpenTelemetry"],
+        "feeds": ["555_VERIFY","arifFLOW"],
+        "trust_gate": "Identity proven + observability complete"
+      },
+      {
+        "id": "ORGAN_03_COMMS",
+        "name": "Communication Surfaces",
+        "purpose": "Message triage, scheduling, communication workflows.",
+        "phase": "POST_TRUST_AUTH_GATE",
+        "target_canonical_verbs": ["send_message","read_message","schedule_event","get_events"],
+        "existing_implementation": "NONE — net new surface",
+        "adapter_targets": ["Gmail","Outlook","IMAP","Calendar","Telegram"],
+        "trust_gate": "HOLD until AUTH broker operational (ORGAN_08)"
+      },
+      {
+        "id": "ORGAN_04_STORAGE",
+        "name": "Governed Storage Access",
+        "purpose": "Governed search/read/write/archive/restore.",
+        "phase": "POST_TRUST_AUTH_GATE",
+        "target_canonical_verbs": ["search","read","write","archive","restore"],
+        "existing_implementation": "ONE filesystem adapter (Local Filesystem under VAULT999/); no cloud adapters",
+        "adapter_targets": ["OneDrive","Google Drive","S3","Local Filesystem"],
+        "trust_gate": "HOLD until AUTH broker operational"
+      },
+      {
+        "id": "ORGAN_05_WORK",
+        "name": "Work Coordination",
+        "purpose": "Issue/work tracking integration.",
+        "phase": "POST_TRUST_AUTH_GATE",
+        "target_canonical_verbs": ["create_work","assign_work","track_work","close_work"],
+        "existing_implementation": "GitHub Issues used informally; no canonical work-tracking layer",
+        "adapter_targets": ["Jira","Linear","GitHub Issues"],
+        "trust_gate": "HOLD until AUTH broker operational"
+      },
+      {
+        "id": "ORGAN_06_BACKUP",
+        "name": "Constitutional Resilience",
+        "purpose": "Backup verification, disaster recovery, restore testing.",
+        "phase": "PHASE_2_DRAFT",
+        "target_canonical_verbs": ["backup","verify","restore","test_restore"],
+        "existing_implementation": "/root/BACKUPS/ + deprecation-registry.json vault (manual; not orchestrated)",
+        "adapter_targets": ["Restic","Velero","Snapshot systems"],
+        "trust_gate": "Identity proven"
+      },
+      {
+        "id": "ORGAN_07_DNS_CDN",
+        "name": "Public Surface Control",
+        "purpose": "Routing, DNS, certificates, edge management.",
+        "phase": "POST_TRUST_DRAFT",
+        "target_canonical_verbs": ["set_routing","set_dns","issue_cert","rotate_cert"],
+        "existing_implementation": "Cloudflare in front of arif-fazil.com (manually configured via Hermes)",
+        "adapter_targets": ["Cloudflare","Route53","CDN providers"],
+        "trust_gate": "HOLD — surface control is sensitive; requires explicit per-action grant"
+      },
+      {
+        "id": "ORGAN_08_AUTH",
+        "name": "Identity Separation",
+        "purpose": "OAuth2/OIDC/API Key broker. Agents NEVER directly manage credentials.",
+        "phase": "BLOCKER — required before organs 03/04/05 can open",
+        "target_canonical_verbs": ["broker_token","refresh_token","revoke_token","rotate_credential"],
+        "existing_implementation": "OAuth 2.1 advertised on AAA agent-card; bearer_auth scheme; Ed25519 sovereign nonce flow",
+        "adapter_targets": ["OAuth2","OIDC","API Keys"],
+        "trust_gate": "Operational maturity required before downstream organs proceed"
+      }
+    ],
+    "governance_model": {
+      "constitution": "F1-F13 floors at /root/arifOS/docs/CONSTITUTION.md",
+      "verdict_grammar": ["SEAL","HOLD","SABAR","VOID"],
+      "verdict_authority": "arifOS Kernel (port 8088)",
+      "self_approval_forbidden": true,
+      "sovereign_veto": "F13 push-notification via 000/ anchor",
+      "separation_of_powers": "333 proposal ≠ 555 verification ≠ 888 judgment ≠ A-FORGE execution ≠ VAULT999 witnessing"
+    },
+    "trust_model": {
+      "status": "PHASE_2_DRAFT — Trust Engine not yet operational",
+      "metrics_planned": ["identity","uptime","auditability","mutation_risk","witnessability"],
+      "policy_draft": {
+        "low_trust": "HOLD — surface gated, adapter unavailable",
+        "high_trust": "ELIGIBLE — surface exposed, adapter available"
+      },
+      "existing_signals": ["WELL REFLECT_ONLY normal state","WELL HOLD biometrics 73 days stale","disabled MCP servers per 2026-08-04 audit"]
+    },
+    "capabilities": {
+      "discovery": {
+        "agent_card": "https://arif-fazil.com/.well-known/agent.json",
+        "federation_manifest": "https://arif-fazil.com/.well-known/arifos.json",
+        "did": "https://arif-fazil.com/.well-known/did.json"
+      },
+      "transport": ["JSON-RPC 2.0","MCP (Model Context Protocol) SSE/HTTP","A2A JSONRPC v1.0"],
+      "auth": ["OAuth 2.1","Bearer token","Ed25519 sovereign signature (F13)"]
+    },
+    "memory_model": {
+      "canonical": "VAULT999 (internal, immutable, sovereign)",
+      "external_adapters": "PLANNED — Mem0, Zep, future protocols",
+      "policy": "VAULT999 remains internal. Adapters read from governed surfaces, never write directly.",
+      "sampling": "888_HOLD — gated until identity proven + observability complete + trust active"
+    },
+    "marketplace_policy": {
+      "skill_marketplace": "DEFERRED — requires Discovery + Trust + Observability + Authorization operational",
+      "rationale": "Do not expose a marketplace before its surfaces are governed; otherwise ecosystem drift."
+    },
+    "deferred_organs": [],
+    "draft_metadata": {
+      "drafted_by": "Claude Code (333-PROPOSAL)",
+      "drafted_at": "2026-08-20T00:00Z",
+      "based_on": "ARIFOS::ECOSYSTEM_EXPANSION::v1",
+      "next_step": "Awaiting Phase 1 SEAL by Arif + Hermes deployment handoff",
+      "no_vps_mutation": true
+    }
+}
