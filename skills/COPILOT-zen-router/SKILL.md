@@ -180,7 +180,7 @@ These fire at session start via `BOOTSTRAP_MANIFEST.json`. You already have them
 | Skill | Trigger |
 |-------|---------|
 | `FORGE-secret-hygiene` | "secret leak", "token check", "vault hygiene" |
-| `FORGE-sct-federation-ingress` | "SCT", "session token", "federation ingress" |
+| `FORGE-act-federation-ingress` | "ACT", "Arif's Capability Token", "federation ingress" |
 
 ### L4f · CI/CD & DEPLOY
 
