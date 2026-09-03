@@ -1,0 +1,198 @@
+{
+  "spec_type": "AGENT_SKILLS",
+  "version": "1.0.0",
+  "agent": "hermes",
+  "fi": "F1-HE",
+  "layer": "extensions",
+  "ring": "ASI Surface (Telegram, conversational)",
+  "role": "Conversational ASI surface — cognition, critique, research, governance",
+  "skill_count": 37,
+  "skills": [
+    {
+      "id": "cognitive-commands",
+      "source": ".hermes/skills/cognitive-commands",
+      "why": "Structured cognition verbs"
+    },
+    {
+      "id": "consult-external-llm",
+      "source": ".hermes/skills/consult-external-llm",
+      "why": "Bring external model voice"
+    },
+    {
+      "id": "deep-research",
+      "source": ".hermes/skills/research/deep-research",
+      "why": "Deep research workflow"
+    },
+    {
+      "id": "evidence-before-elegance",
+      "source": ".hermes/skills/governance/evidence-before-elegance",
+      "why": "Reality over elegance"
+    },
+    {
+      "id": "external-wisdom-integration",
+      "source": ".hermes/skills/governance/external-wisdom-integration",
+      "why": "Cross-source wisdom"
+    },
+    {
+      "id": "governed-agent-anatomy",
+      "source": ".hermes/skills/governance/governed-agent-anatomy",
+      "why": "Sovereign-aligned anatomy"
+    },
+    {
+      "id": "human-envelope-architecture",
+      "source": ".hermes/skills/governance/human-envelope-architecture",
+      "why": "Human surface contract"
+    },
+    {
+      "id": "human-sovereignty-geometry",
+      "source": ".hermes/skills/governance/human-sovereignty-geometry",
+      "why": "Sovereign geometry"
+    },
+    {
+      "id": "institutional-body-language",
+      "source": ".hermes/skills/governance/institutional-body-language",
+      "why": "Org signals reading"
+    },
+    {
+      "id": "institutional-epistemic-sink-forensics",
+      "source": ".hermes/skills/institutional-epistemic-sink-forensics",
+      "why": "Institutional forensics"
+    },
+    {
+      "id": "j-collapse-detection",
+      "source": ".hermes/skills/governance/j-collapse-detection",
+      "why": "Collapse detection"
+    },
+    {
+      "id": "meta-cognitive-blindspot-audit",
+      "source": ".hermes/skills/meta-cognitive-blindspot-audit",
+      "why": "Blind-spot scan"
+    },
+    {
+      "id": "somatic-intelligence",
+      "source": ".hermes/skills/governance/somatic-intelligence",
+      "why": "Somatic reasoning"
+    },
+    {
+      "id": "sovereign-conversation-protocol",
+      "source": ".hermes/skills/governance/sovereign-conversation-protocol",
+      "why": "F13 conversation"
+    },
+    {
+      "id": "uncertainty-routing-protocol",
+      "source": ".hermes/skills/uncertainty-routing-protocol",
+      "why": "Route on uncertainty"
+    },
+    {
+      "id": "weekly-federation-deep-brief",
+      "source": ".hermes/skills/weekly-federation-deep-brief",
+      "why": "Weekly brief"
+    },
+    {
+      "id": "wisdom-scar-session-audit",
+      "source": ".hermes/skills/wisdom-scar-session-audit",
+      "why": "Pain-as-signal audit"
+    },
+    {
+      "id": "akal-cognitive-invariants",
+      "source": ".hermes/skills/governance/akal-cognitive-invariants",
+      "why": "AKAL invariants"
+    },
+    {
+      "id": "seven-zen-organs-enforcement",
+      "source": ".hermes/skills/seven-zen-organs-enforcement",
+      "why": "Zen organ enforcement"
+    },
+    {
+      "id": "cognitive-level-assertion-protocol",
+      "source": ".hermes/skills/cognitive-level-assertion-protocol",
+      "why": "Assert cog-level"
+    },
+    {
+      "id": "hermes-naked-prior-audit",
+      "source": ".hermes/skills/hermes-naked-prior-audit",
+      "why": "Prior exposure audit"
+    },
+    {
+      "id": "submission-readiness-audit",
+      "source": ".hermes/skills/submission-readiness-audit",
+      "why": "Pre-submit audit"
+    },
+    {
+      "id": "dream-engine",
+      "source": ".hermes/skills/dream-engine",
+      "why": "Memory dream cycle"
+    },
+    {
+      "id": "meta-mesa-substrate-test",
+      "source": ".hermes/skills/meta-mesa-substrate-test",
+      "why": "Substrate-level mesa test"
+    },
+    {
+      "id": "skill-substrate-framework",
+      "source": ".hermes/skills/skill-substrate-framework",
+      "why": "Skill substrate"
+    },
+    {
+      "id": "federated-skill-architecture",
+      "source": ".hermes/skills/federated-skill-architecture",
+      "why": "Federated mesh"
+    },
+    {
+      "id": "federation-sot-inventory",
+      "source": ".hermes/skills/federation-sot-inventory",
+      "why": "SOT inventory"
+    },
+    {
+      "id": "AGI-claude-xml-structured-reasoning",
+      "source": ".aaa/skills/AGI-claude-xml-structured-reasoning",
+      "why": "XML-tagged reasoning"
+    },
+    {
+      "id": "AGI-hermes-system-prompt-voice",
+      "source": ".aaa/skills/AGI-hermes-system-prompt-voice",
+      "why": "Hermes voice"
+    },
+    {
+      "id": "institutional-forensic-analysis",
+      "source": ".hermes/skills/research/institutional-forensic-analysis",
+      "why": "Institutional forensics"
+    },
+    {
+      "id": "institutional-case-building",
+      "source": ".hermes/skills/research/institutional-case-building",
+      "why": "Case dossier"
+    },
+    {
+      "id": "summarize-pro",
+      "source": ".hermes/skills/research/summarize-pro",
+      "why": "Long-content summary"
+    },
+    {
+      "id": "executive-intelligence-briefing",
+      "source": ".hermes/skills/research/executive-intelligence-briefing",
+      "why": "Executive brief"
+    },
+    {
+      "id": "person-intelligence-dossier",
+      "source": ".hermes/skills/research/person-intelligence-dossier",
+      "why": "Person dossier"
+    },
+    {
+      "id": "news-research-briefing",
+      "source": ".hermes/skills/research/news-research-briefing",
+      "why": "News brief"
+    },
+    {
+      "id": "research-paper-writing",
+      "source": ".hermes/skills/research/research-paper-writing",
+      "why": "Paper writing"
+    },
+    {
+      "id": "text-forensics",
+      "source": ".hermes/skills/research/text-forensics",
+      "why": "Text forensic analysis"
+    }
+  ],
+  "sealed_at": "2026-07-12T23:18:03.298108+00:00"
+}

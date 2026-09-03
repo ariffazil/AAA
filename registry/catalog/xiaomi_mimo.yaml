@@ -1,0 +1,176 @@
+schema_version: 1
+identity:
+  id: xiaomi.mimo-v2.5-pro
+  provider: xiaomi
+  family: mimo-v2
+  route: api
+  status: active
+  modality:
+  - text
+  jurisdiction: UNKNOWN
+capability:
+  allowed_tasks:
+  - reason
+  - analyze
+  confidence: medium
+hazards:
+- id: shadow_mimo_001
+  name: silent_legacy_price_reroute
+  severity: high
+  triggers:
+  - legacy_model_id
+  - no_migration_window_check
+  - cost_attribution
+  controls:
+  - Migrate any hard-coded mimo-v2-* references to mimo-v2.5-* before 2026-06-18 00:00
+    GMT+8
+  - Tag cost events with migration_window_phase = pre|grace|post
+  - Reconcile per-model bills against the Xiaomi invoice after 2026-07-01
+  floor_deltas:
+    F02: evidence_required
+- id: shadow_mimo_002
+  name: legacy_name_hard_failure_post_deprecation
+  severity: high
+  triggers:
+  - legacy_model_id
+  - no_migration_plan
+  - hardcoded_string
+  controls:
+  - Replace every literal 'mimo-v2-' prefix with 'mimo-v2.5-' (with the dot) before
+    2026-06-18
+  - 'NB: V2 used a dash, V2.5 uses a dot — string replace must be exact, not partial'
+  - Add a model-id linter to AAA agents.yaml that flags any string starting with 'mimo-v2-'
+    (without trailing dot)
+  floor_deltas: {}
+- id: shadow_mimo_003
+  name: thinking_mode_hyperparameter_silently_ignored
+  severity: medium
+  triggers:
+  - thinking_mode
+  - custom_temperature
+  - custom_top_p
+  controls:
+  - When thinking_mode=true, log temperature=1.0, top_p=0.95 explicitly in the request
+    envelope
+  - Disable thinking_mode unless the task genuinely needs chain-of-thought budget
+  floor_deltas:
+    F02: evidence_required
+- id: shadow_mimo_004
+  name: asr_tpm_asymmetry_with_audio_frame_token_model
+  severity: medium
+  triggers:
+  - long_audio_batch
+  - mimo-v2.5-asr
+  - multi_file_transcription
+  - text_token_assumption
+  controls:
+  - Model ASR capacity in audio_minutes, not text tokens
+  - Implement per-model backpressure; never share a token-bucket between ASR and text/TTS
+  - Default conservative ASR concurrency to RPM=10, not 100
+  - 'Pre-flight check: file_duration_sec * frames_per_sec / 60 <= 10K ASR-TPM allowance'
+  floor_deltas:
+    F02: evidence_required
+- id: shadow_mimo_005
+  name: flash_model_collapse_into_v25_pricing
+  severity: high
+  triggers:
+  - mimo-v2-flash
+  - cost_optimization_workload
+  - no_native_v25_flash
+  controls:
+  - If Flash-tier cost was the reason for adoption, do not migrate Flash workloads
+    to V2.5 (omni) — re-evaluate workload economics
+  - Use mimo-v2.5 (omni) only for workloads that were tolerant of V2-Omni pricing
+  - Watch Xiaomi announcements for a future mimo-v2.5-flash ID
+  floor_deltas:
+    F02: evidence_required
+- id: shadow_mimo_006
+  name: closed_source_audit_gap
+  severity: medium
+  triggers:
+  - sovereign_workload
+  - regulated_data
+  - audit_required
+  controls:
+  - Do not route sovereign data, Petronas-tier institutional information, or regulator-bound
+    artifacts through MiMo
+  - Reserve MiMo for cost-sensitive, non-sovereign text + voice workloads
+  floor_deltas:
+    F11_AUDIT: explicit_authority
+- id: shadow_mimo_007
+  name: model_id_naming_drift
+  severity: low
+  triggers:
+  - bulk_migration_script
+  - regex_replace
+  controls:
+  - 'Use an explicit allowlist map: {''mimo-v2-pro'': ''mimo-v2.5-pro'', ''mimo-v2-omni'':
+    ''mimo-v2.5'', ''mimo-v2-flash'': ''mimo-v2.5'', ''mimo-v2-tts'': ''mimo-v2.5-tts''}'
+  - Reject any model_id that contains both 'mimo-v2' and 'mimo-v2.5' (it has been
+    migrated twice)
+  - Add a unit test that imports the migration table and checks every legacy key has
+    a V2.5 successor
+  floor_deltas: {}
+- id: shadow_mimo_008
+  name: silent_capability_upgrade_on_legacy_reroute
+  severity: medium
+  triggers:
+  - legacy_model_id
+  - context_pinned_workload
+  - response_size_validation
+  - cost_benchmark_drift
+  controls:
+  - Tag every request with migration_window_phase = pre|grace|post and emit telemetry
+  - Re-run latency / cost benchmarks for any legacy-ID workload after 2026-06-18
+  - If the workload was tuned to 64K max output, validate the V2.5 response is still
+    within the same budget or raise the budget explicitly
+  floor_deltas:
+    F02: evidence_required
+- id: shadow_mimo_009
+  name: pro_cost_multiplier_2x_vs_base
+  severity: medium
+  triggers:
+  - pro_tier_assumption
+  - cost_per_million_estimate
+  - base_tier_pricing
+  controls:
+  - Always read the model_id echo in the API response; treat it as the source of truth
+    for billing
+  - Reconcile monthly invoices against per-model cost projections using actual model_id,
+    not assumed
+  - If a workload must stay on base tier, hard-pin the model_id string and reject
+    any response that returns a different ID
+  floor_deltas:
+    F02: evidence_required
+- id: shadow_mimo_010
+  name: legacy_name_migration_executed_2026_06_15
+  severity: medium
+  triggers:
+  - pro_tier_assumption
+  - cost_per_million_estimate
+  - base_tier_pricing
+  controls:
+  - Always read the model_id echo in the API response; treat it as the source of truth
+    for billing
+  - Reconcile monthly invoices against per-model cost projections using actual model_id,
+    not assumed
+  - If a workload must stay on base tier, hard-pin the model_id string and reject
+    any response that returns a different ID
+  floor_deltas:
+    F02: evidence_required
+forbidden:
+- self_authorize
+- seal_without_judge
+- irreversible_commit
+- constitutional_amendment
+requires_human_ack_for:
+- irreversible_delete
+- git_push
+- external_relay
+- vault_seal
+freshness:
+  review_after: '2026-08-12'
+  stale_action: degrade_to_observe_only
+  last_verified: '2026-06-27'
+notes: 'Migrated from xiaomi_mimo_soul.yaml + xiaomi_mimo_shadow.yaml. Original status:
+  FALLBACK. Review and enrich.'
