@@ -73,6 +73,7 @@ The makcik is not a metaphor. She is the theory that precedes all dashboards.
 | L4 Revision | `arif_memory` revise/promote, reality-contact | Periodic re-probe; stale provenance curation |
 | L5 Single-Q | F2 TRUTH, Eureka #4 (reality=final auditor), flow_state scare | Live-probe-before-dashboard, always |
 | L6 Goodhart | FQ-as-contact not maximize(FQ); autonomy ≤ governability; RASA_DERITA gate | Metric serves reality, never reverse; the guard fires when a mechanism is optimized over contact |
+| TAC (operational) | L4 re-witness + L5 “betul ke ni?” + FRAME Measure | Before mutate: Expected vs Observed. Explain mismatch. Do not delete the anomaly. Not a new era. |
 
 ---
 
@@ -127,6 +128,32 @@ That — preferring internal reality over external reality — is the deepest de
 > Does this mechanism give reality MORE votes, or does it merely appear to function
 > while reality's vote quietly disappears? If the latter — it is an addiction, no matter
 > how green the dashboard.
+
+---
+
+## TAC — Theory of Anomalous Contrast (operational, not a new era)
+
+> Intelligence improves at the boundary where expectation and reality disagree.
+> Hang Ingat Balik already said this: L4 re-witness, L5 single question, L6 do not worship FQ.
+> TAC is the compare step. APEX is the selector over high-value mismatches.
+> GEOX already runs ToAC on earth. FRAME already Measures. Do not mint a sixth organ.
+
+Before mutate, every agent writes four lines (or UNKNOWN):
+
+```
+EXPECTED:  <model we were acting inside>
+OBSERVED:  <live probe>
+ANOMALY:   <mismatch, or none>
+LESSON:    <what the mismatch teaches, or none>
+```
+
+Learning ≈ unexpected difference × verification quality.
+Paradox = anomaly that survived inspection. Not a bug.
+High contradiction pressure = model wrong **or** measurement wrong. Both valuable.
+Do not optimize yesterday’s objective. Do not spawn to silence discomfort.
+Do not remove anomalies. Explain them first.
+
+APEX split: 333 generates, 555 verifies, 888 notices which contradiction is load-bearing.
 
 ---
 
