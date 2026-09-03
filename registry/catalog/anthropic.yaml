@@ -1,0 +1,146 @@
+schema_version: 1
+identity:
+  id: anthropic.claude-family
+  provider: unknown
+  family: anthropic
+  route: api
+  status: active
+  modality:
+  - text
+  jurisdiction: UNKNOWN
+capability:
+  allowed_tasks:
+  - reason
+  - code
+  confidence: medium
+hazards:
+- id: shadow_anth_001
+  name: harness_opacity
+  severity: high
+  triggers:
+  - infrastructure_vocabulary_in_software_design
+  - security_adjacent_terms_even_in_safe_context
+  - federation_audit_of_safety_claims
+  - independent_verification_attempt
+  controls:
+  - Treat Anthropic safety claims as VENDOR_CLAIM, not VERIFIED
+  - Never route federation constitutional judgment through Fable alone
+  - Fable is a tool, not a constitutional authority
+  - Avoid security-adjacent vocabulary in Fable sessions to prevent false triggers
+  floor_deltas:
+    F02: evidence_required
+- id: shadow_anth_002
+  name: fallback_routing_surprise
+  severity: medium
+  triggers:
+  - high_risk_domain_query
+  - cybersecurity_topic
+  - biology_chemistry_topic
+  - distillation_topic
+  - infrastructure_vocabulary_matching_classifier_pattern
+  controls:
+  - Monitor for model-identity drift in long sessions
+  - When routing through Anthropic API, log which model actually responded
+  - Federation prefers models without hidden fallback routing (DeepSeek, MiniMax)
+  - Avoid security-adjacent vocabulary if Fable 5 is required for full session
+  floor_deltas: {}
+- id: shadow_anth_003
+  name: data_retention_lock
+  severity: medium
+  triggers:
+  - fable_5_selected_for_sensitive_task
+  - malaysian_governance_query
+  - corporate_strategy_session
+  controls:
+  - Route sensitive/non-public tasks to zero-retention models or local Ollama
+  - 'Fable 5: general/code/public-domain tasks only'
+  - Never run sovereign deliberation through Mythos-class retention
+  floor_deltas:
+    F01: explicit_authority
+    F13: explicit_authority
+- id: shadow_anth_004
+  name: us_jurisdiction
+  severity: medium
+  triggers:
+  - sovereign_sensitive_topic
+  - malaysian_national_interest
+  - petronas_or_glc_context
+  controls:
+  - No sovereign-sensitive data through Anthropic API
+  - Prefer local models (Ollama) or non-US-jurisdiction APIs for sensitive tasks
+  - Document jurisdiction routing rules in FEDERATION_MODEL.json
+  floor_deltas:
+    F13: explicit_authority
+- id: shadow_anth_005
+  name: constitutional_over_trust
+  severity: high
+  triggers:
+  - anthropic_marketing_language
+  - constitutional_ai_mentioned
+  - fable_routing_for_constitutional_tasks
+  controls:
+  - Anthropic's constitution ≠ arifOS constitution
+  - Claude outputs are TOOL OUTPUTS, not constitutional verdicts
+  - All Claude outputs pass through arifOS F1–F13 before acceptance
+  - Never substitute Anthropic's safety label for federation governance
+  floor_deltas:
+    F02: evidence_required
+    F09: explicit_authority
+- id: shadow_anth_006
+  name: proprietary_lock_in
+  severity: low
+  triggers:
+  - api_deprecation
+  - pricing_change
+  - vendor_policy_shift
+  controls:
+  - Claude = secondary/consult model, not primary federation runtime
+  - 'Maintain fallback path: DeepSeek (open-weight) + local Ollama'
+  - Never build federation-critical infrastructure on proprietary-only models
+  floor_deltas: {}
+- id: shadow_anth_007
+  name: classifier_domain_gaps
+  severity: medium
+  triggers:
+  - malaysian_governance_query
+  - petronas_analysis
+  - 1mdb_related_topic
+  controls:
+  - Route Malaysian governance topics to DeepSeek (confirmed no censorship)
+  - Probe Fable for Malaysian governance censorship before production use
+  - Never assume 'no known censorship' = 'safe for sovereign topics'
+  floor_deltas: {}
+- id: shadow_anth_008
+  name: vocabulary_level_false_positive_sticky
+  severity: high
+  triggers:
+  - circuit_breaker_term
+  - fallback_term
+  - auth_wall_term
+  - invokemodel_term
+  - outage_term
+  - any_security_adjacent_vocabulary_in_any_context
+  controls:
+  - Avoid security-adjacent vocabulary when Fable 5 continuity is required
+  - Use DeepSeek or MiniMax for infrastructure/debugging sessions
+  - If Fable 5 is needed for capability, front-load vocabulary-safe queries
+  - Federation's infrastructure language lands in the known trigger band
+  floor_deltas:
+    F04: explicit_authority
+    F13: explicit_authority
+forbidden:
+- self_authorize
+- seal_without_judge
+- irreversible_commit
+- constitutional_amendment
+requires_human_ack_for:
+- irreversible_delete
+- git_push
+- external_relay
+- vault_seal
+freshness:
+  review_after: '2026-08-12'
+  stale_action: degrade_to_observe_only
+  last_verified: '2026-06-27'
+notes: 'Migrated from anthropic_soul.yaml + anthropic_shadow.yaml. Original status:
+  ACTIVE. Review and enrich.'

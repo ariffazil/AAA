@@ -1,0 +1,70 @@
+# MCP Tool Registry — arifOS Federation
+# Machine-readable source of truth for tool ownership
+# Used by: arifOS routing, AAA discovery, client discovery
+
+version: "1.0"
+last_updated: "2026-08-11"
+
+organs:
+  arifos:
+    name: "arifOS"
+    port: 8088
+    protocol: "2024-11-05"
+    tools: 8
+    internal: "http://127.0.0.1:8088/mcp"
+    public: "https://arifos.arif-fazil.com/mcp"
+    authority: "governance"
+    role: "constitutional kernel"
+    
+  a-forge:
+    name: "A-FORGE"
+    port: 7071  # after Phase 0 collapse
+    protocol: "2025-11-25"
+    tools: 124
+    internal: "http://127.0.0.1:7071/mcp"
+    public: "https://mcp.arif-fazil.com/mcp"
+    authority: "execution"
+    role: "engineering actuator"
+    
+  geox:
+    name: "GEOX"
+    port: 8081
+    protocol: "2024-11-05"
+    tools: 33
+    internal: "http://127.0.0.1:8081/mcp"
+    public: "https://geox.arif-fazil.com/mcp"
+    authority: "domain"
+    role: "earth intelligence"
+    
+  wealth:
+    name: "WEALTH"
+    port: 18082
+    protocol: "2024-11-05"
+    tools: 14
+    internal: "http://127.0.0.1:18082/mcp"
+    public: "https://wealth.arif-fazil.com/mcp"
+    authority: "domain"
+    role: "capital intelligence"
+    
+  well:
+    name: "WELL"
+    port: 18083
+    protocol: "2024-11-05"
+    tools: 14
+    internal: "http://127.0.0.1:18083/mcp"
+    public: "https://well.arif-fazil.com/mcp"
+    authority: "domain"
+    role: "human readiness"
+
+stateless_readiness:
+  arifos: false  # Python SDK blocker
+  a-forge: true  # Node SDK 1.29.0 ready
+  geox: false
+  wealth: false
+  well: false
+
+notes:
+  - "This registry is doctrine-first, automation-later"
+  - "Phase 1 will upgrade Python organs to stateless"
+  - "Option 3 (Hybrid) uses this for routing decisions"
+  - "Option 5 (APEX) uses this for discovery API"
