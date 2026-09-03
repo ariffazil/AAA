@@ -40,7 +40,7 @@ PROBED_ORGANS = [
     {"id": "wealth", "port": 18082, "role": "Capital Intelligence", "ceiling": "COMPUTE_ONLY", "class": "CORE"},
     {"id": "well", "port": 18083, "role": "Vitality Mirror", "ceiling": "REFLECT_ONLY", "class": "CORE"},
     {"id": "arifflow", "port": 7073, "role": "Metabolism", "ceiling": "METABOLIZE_ONLY", "class": "METABOLISM"},
-    {"id": "flame", "port": 18901, "role": "Free Inference", "ceiling": "ADVISORY_WORKER", "class": "ADVISORY"},
+    # flame RETIRED 2026-09-04 -> FED flash lane (see deprecation-registry.json)
     {"id": "fed", "port": 7074, "role": "Model Router", "ceiling": "ADVISORY_ONLY", "class": "ADVISORY"},
     {"id": "hermes", "port": 18086, "role": "Telegram Bridge", "ceiling": "RELAY_ONLY", "class": "EDGE"},
 ]
