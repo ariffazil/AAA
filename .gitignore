@@ -10,3 +10,16 @@
 **/*.pem
 !**/*_public.pem
 .env
+# === EXTENDED CONTAINMENT (2026-09-04 zen sweep) ===
+.env.*
+**/.env.*
+secrets/
+registries/token_bank.db
+**/*.pem.bak-*
+*.db-wal
+*.db-shm
+# === SECRET-BEARING RUNTIME PATHS (2026-09-04 housekeeping scan) ===
+agents/*/runtime/config.yaml*
+agents/*/runtime/state.db
+.hermes-archived-*/state.db
+graph/codegraph.db

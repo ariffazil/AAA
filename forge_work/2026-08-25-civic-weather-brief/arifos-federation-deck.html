@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>arifOS Federation — Kernel · AAA State · A-FORGE</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #FFFFFF; --t1: #1A1A2E; --t2: #5C5C6D; --t3: #8A8A9A;
+    --accent: #1B5E7B; --accent-bg: #E8F4F8; --accent-border: #B8DDE8;
+    --dark: #0D3B4F; --gold: #C9A961;
+    --divider: #E8E8EE; --muted: #F5F5F7;
+  }
+  @page { size: A4 landscape; margin: 24px 32px 28px 32px; }
+  body { font-family: 'Helvetica Neue', Arial, sans-serif; color: var(--t1); background: var(--bg); font-size: 8.5pt; line-height: 1.4; }
+  .slide { page-break-after: always; position: relative; min-height: 480px; }
+  .slide:last-child { page-break-after: auto; }
+
+  /* Cover */
+  .cover { display: flex; flex-direction: column; justify-content: center; padding-top: 60px; }
+  .cover .eyebrow { font-size: 8pt; color: var(--t3); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; }
+  .cover h1 { font-size: 32pt; font-weight: 300; line-height: 1.15; margin-bottom: 6px; }
+  .cover h1 strong { font-weight: 700; }
+  .cover .tagline { font-size: 12pt; color: var(--t2); margin-bottom: 20px; }
+  .cover .bar { width: 60px; height: 3px; background: var(--accent); margin-bottom: 20px; }
+  .cover .pill-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+  .pill { background: var(--accent-bg); border: 1px solid var(--accent-border); padding: 5px 12px; border-radius: 3px; font-size: 8.5pt; color: var(--accent); font-weight: 600; }
+  .cover .footer { position: absolute; bottom: 14px; left: 0; font-size: 7pt; color: var(--t3); }
+
+  /* Section headers */
+  .sh { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .sh .num { font-size: 10pt; font-weight: 700; color: var(--accent); }
+  .sh .title { font-size: 14pt; font-weight: 600; }
+  .sh .sub { font-size: 9pt; color: var(--t2); margin-left: 8px; }
+
+  /* Chart frame */
+  .cf { text-align: center; margin: 4px 0; page-break-inside: avoid; }
+  .cf img { max-height: 340pt; max-width: 100%; }
+  .cc { font-size: 6.5pt; color: var(--t3); margin-top: 2px; font-style: italic; }
+  .compact .signal { margin-bottom: 5px; }
+  .compact .signal p { font-size: 7.5pt; }
+
+  /* Two column */
+  .two { display: flex; gap: 16px; }
+  .two > div { flex: 1; }
+
+  .pf { position: absolute; bottom: 10px; left: 0; right: 0; display: flex; justify-content: space-between; font-size: 6.5pt; color: var(--t3); }
+  .tag { display: inline-block; font-size: 6.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; padding: 1px 5px; border-radius: 2px; }
+  .tag-obs { color: #2E7D32; background: #E8F5E9; }
+  .tag-der { color: #1565C0; background: #E3F2FD; }
+  .tag-int { color: #6A1B9A; background: #F3E5F5; }
+  .tag-spec { color: #E65100; background: #FFF3E0; }
+
+  .signal { margin-bottom: 10px; }
+  .signal h3 { font-size: 10pt; font-weight: 600; margin-bottom: 3px; }
+  .signal p { font-size: 8.5pt; color: var(--t2); line-height: 1.45; }
+  .source { font-size: 7pt; color: var(--t3); font-style: italic; margin-top: 2px; }
+
+  .data-table { width: 100%; border-collapse: collapse; font-size: 8pt; margin: 6px 0; }
+  .data-table th { text-align: left; font-weight: 700; color: var(--t2); font-size: 7pt; text-transform: uppercase; letter-spacing: 0.8px; padding: 4px 6px; border-bottom: 2px solid var(--divider); }
+  .data-table td { padding: 3px 6px; border-bottom: 1px solid var(--divider); }
+  .data-table tr:last-child td { border-bottom: none; }
+</style>
+</head>
+<body>
+
+<!-- ===== SLIDE 1: COVER ===== -->
+<div class="slide cover">
+  <div class="eyebrow">arifOS Federation · Technical Overview</div>
+  <h1><strong>arifOS</strong> Kernel</h1>
+  <div class="tagline">Constitutional AI Operating System — DITEMPA BUKAN DIBERI</div>
+  <div class="bar"></div>
+  <div class="pill-row">
+    <span class="pill">F1–F13 Constitutional Floors</span>
+    <span class="pill">AAA 333/555/888 Trinity</span>
+    <span class="pill">A-FORGE Execution Engine</span>
+    <span class="pill">7 Federation Repos</span>
+    <span class="pill">12 Docker Organs</span>
+    <span class="pill">347 Skills</span>
+    <span class="pill">MCP + A2A Protocols</span>
+  </div>
+  <div class="two" style="margin-top: 10px;">
+    <div>
+      <div class="signal">
+        <h3>What is arifOS?</h3>
+        <p>A constitutional AI operating system that wraps any LLM with governance floors, federated organs, and a self-mutating skill mesh. Built by one human (Arif Fazil, Penang) with AI agents as warga — citizens, not products.</p>
+      </div>
+    </div>
+    <div>
+      <div class="signal">
+        <h3>Why does it exist?</h3>
+        <p>Because AI without governance is drift. arifOS enforces 13 constitutional floors (safety, evidence, scope, reversibility, privacy, auditability, confidence, authority, anti-hantu, ontology, consent, witness, sovereign veto) on every agent action.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer">25 August 2026 · arifOS Federation · 9 slides</div>
+</div>
+
+<!-- ===== SLIDE 2: CONSTITUTIONAL FLOORS ===== -->
+<div class="slide">
+  <div class="sh"><span class="num">01</span><span class="title">Constitutional Floors</span><span class="sub">F1–F13 · The Non-Negotiable Layer</span></div>
+  <div class="cf"><img src="deck_charts/02-floors.png" style="width: 96%;"></div>
+  <div class="two" style="margin-top: 6px;">
+    <div>
+      <div class="signal"><h3>How it works</h3><p>Every agent action passes through constitutional gates before execution. F1 (Safety) and F2 (Evidence) are checked first. F13 (Sovereign) is Arif's final veto — no agent can override it. Floors are not suggestions; they are hard stops.</p></div>
+    </div>
+    <div>
+      <div class="signal"><h3>The Gödel Lock</h3><p>No agent can audit itself (independence paradox). DOER ≠ JUDGE. The agent that acts cannot be the agent that verifies. This prevents self-referential drift — the same failure mode Gödel proved in formal systems.</p></div>
+    </div>
+  </div>
+  <div class="pf"><span>arifOS Federation · Constitutional Floors</span><span>Slide 2</span></div>
+</div>
+
+<!-- ===== SLIDE 3: AAA STATE ===== -->
+<div class="slide">
+  <div class="sh"><span class="num">02</span><span class="title">AAA State</span><span class="sub">Three Layers of Self — 333 / 555 / 888</span></div>
+  <div class="cf"><img src="deck_charts/03-aaa-state.png" style="width: 96%;"></div>
+  <div class="two" style="margin-top: 6px;">
+    <div>
+      <div class="signal"><h3>AGI (333) — Agent Layer</h3><p>Autonomy tiers T0–T3. Skill binding. Sub-agent lifecycle. Every warga agent starts here and earns promotion through evidence, not claims.</p></div>
+      <div class="signal"><h3>ASI (555) — Symbiotic Layer</h3><p>Causal inference (PyWhy). Multimodal cognition (Δ·Ω·Ψ). A2A protocol for inter-agent communication. The layer where agents learn to think together.</p></div>
+    </div>
+    <div>
+      <div class="signal"><h3>APEX (888) — Constitutional Reflex</h3><p>ART (pre-kernel) → Kernel → ACT (post-kernel). SEAL when evidence is complete. HOLD when it isn't. ROUTE when it needs a human. The reflex arc that prevents autonomous drift.</p></div>
+      <div class="signal"><h3>F13 Sovereign</h3><p>Arif Fazil holds the final veto. No agent, no matter how advanced, can override F13. This is not a feature — it is the foundation.</p></div>
+    </div>
+  </div>
+  <div class="pf"><span>arifOS Federation · AAA State</span><span>Slide 3</span></div>
+</div>
+
+<!-- ===== SLIDE 4: A-FORGE ===== -->
+<div class="slide">
+  <div class="sh"><span class="num">03</span><span class="title">A-FORGE Execution</span><span class="sub">Perpetual Reality Loop — 000 to 999</span></div>
+  <div class="cf"><img src="deck_charts/04-aforge-loop.png" style="width: 92%;"></div>
+  <div class="two" style="margin-top: 6px;">
+    <div>
+      <div class="signal"><h3>The Loop</h3><p>Six stages: OBSERVE → THINK → ROUTE → ACT → VERIFY → LEARN. Each stage has hard gates. VERIFY uses tri-witness consensus (3 independent agents must agree). LEARN logs scars — permanent memory of what went wrong.</p></div>
+      <div class="signal"><h3>Self-Mutation</h3><p>When a scar is logged, A-FORGE drafts a new skill, runs it through tri-witness, and if approved, mutates the agent's behavior. One cycle per scar. ΔS non-increasing. The system gets smarter from its own failures.</p></div>
+    </div>
+    <div>
+      <div class="signal"><h3>Reality-First Doctrine</h3><p>Every claim must be grounded in observable evidence before action. No "I think" — only "I verified." The falsification engine tries to destroy every claim before acting on it. Bad data dies at the node, never propagates.</p></div>
+      <div class="signal"><h3>Gotong Royong</h3><p>6 FI surfaces with assigned duties: Qwen (memory), Claude (infra), Codex (debt scan), OpenCode (heavy build), Kimi (executor), AGY (researcher). Musyawarah protocol governs deliberation.</p></div>
+    </div>
+  </div>
+  <div class="pf"><span>arifOS Federation · A-FORGE</span><span>Slide 4</span></div>
+</div>
+
+<!-- ===== SLIDE 5: FEDERATION MAP ===== -->
+<div class="slide">
+  <div class="sh"><span class="num">04</span><span class="title">Federation Topology</span><span class="sub">7 Repos · 12 Docker Organs · Fractal Mesh</span></div>
+  <div class="cf"><img src="deck_charts/05-federation-map.png" style="width: 98%;"></div>
+  <div class="two" style="margin-top: 4px;">
+    <div>
+      <div class="signal"><h3>7 Repositories</h3><p><strong>arifOS</strong> (sovereign OS) · <strong>A-FORGE</strong> (execution engine) · <strong>AAA</strong> (agent stack) · <strong>GEOX</strong> (geological reasoning) · <strong>WEALTH</strong> (capital markets) · <strong>WELL</strong> (human vitality) · <strong>arif-fazil.com</strong> (public surface).</p></div>
+    </div>
+    <div>
+      <div class="signal"><h3>12 Running Organs</h3><p>Postgres · Qdrant · FalkorDB · MinIO · SearXNG · Langfuse · ClickHouse · Redis ×2 · MCPJam · Grafana · HAProxy. All bound to localhost. UFW blocks the outside.</p></div>
+    </div>
+  </div>
+  <div class="pf"><span>arifOS Federation · Topology</span><span>Slide 5</span></div>
+</div>
+
+<!-- ===== SLIDE 6: ORTHOGONAL GRID ===== -->
+<div class="slide">
+  <div class="sh"><span class="num">05</span><span class="title">Orthogonal Fractal</span><span class="sub">5 Domains × 5 Phases — Same Reflex, Every Surface</span></div>
+  <div class="cf"><img src="deck_charts/06-orthogonal-grid.png" style="width: 96%;"></div>
+  <div class="two" style="margin-top: 6px;">
+    <div>
+      <div class="signal"><h3>The Principle</h3><p>Every domain (Audio, Geology, Capital, Health, Civic) uses the same EMD reflex arc: Encode → Metabolize → Decode. The phases (Observe, Think, Act, Verify, Learn) are orthogonal to domains — you can swap any domain into any phase and the governance still holds.</p></div>
+    </div>
+    <div>
+      <div class="signal"><h3>Why Fractal?</h3><p>Because the pattern repeats at every scale. A single tool call follows the same reflex as a full research project. A voice note follows the same governance as a geological cross-section. The constitution is scale-invariant.</p></div>
+    </div>
+  </div>
+  <div class="pf"><span>arifOS Federation · Orthogonal Architecture</span><span>Slide 6</span></div>
+</div>
+
+<!-- ===== SLIDE 7: SKILL MESH ===== -->
+<div class="slide">
+  <div class="sh"><span class="num">06</span><span class="title">Skill Mesh</span><span class="sub">347 Skills · 9 Categories · Procedural Memory</span></div>
+  <div class="cf"><img src="deck_charts/07-skill-mesh.png" style="width: 96%;"></div>
+  <div class="two" style="margin-top: 6px;">
+    <div>
+      <div class="signal"><h3>What are Skills?</h3><p>Skills are procedural memory — reusable approaches for recurring task types. Each skill has trigger conditions, numbered steps, pitfalls, and verification steps. They are forged from real failures, not designed in advance.</p></div>
+    </div>
+    <div>
+      <div class="signal"><h3>How they grow</h3><p>When an agent hits an error not covered by existing skills, it logs a scar, drafts a new skill, runs it through tri-witness, and if approved, the skill enters the mesh. Skills are mutated when they become stale. 347 skills and counting.</p></div>
+    </div>
+  </div>
+  <div class="pf"><span>arifOS Federation · Skill Mesh</span><span>Slide 7</span></div>
+</div>
+
+<!-- ===== SLIDE 8: METRICS ===== -->
+<div class="slide">
+  <div class="sh"><span class="num">07</span><span class="title">By the Numbers</span><span class="sub">Federation Metrics · August 2026</span></div>
+  <div class="cf"><img src="deck_charts/08-metrics.png" style="width: 96%;"></div>
+  <div class="two" style="margin-top: 6px;">
+    <div>
+      <table class="data-table">
+        <thead><tr><th>Surface</th><th>Status</th><th>Last Commit</th></tr></thead>
+        <tbody>
+          <tr><td>arifOS</td><td>🟢 Active</td><td>Observatory fix</td></tr>
+          <tr><td>A-FORGE</td><td>🟢 Active</td><td>Bridges README</td></tr>
+          <tr><td>AAA</td><td>🟢 Active</td><td>ZEN README fold</td></tr>
+          <tr><td>GEOX</td><td>🟢 Active</td><td>ZEN fold + manifest</td></tr>
+          <tr><td>WEALTH</td><td>🟢 Active</td><td>Consequence-first</td></tr>
+          <tr><td>WELL</td><td>🟢 Active</td><td>Readiness-first</td></tr>
+          <tr><td>arif-fazil.com</td><td>🟢 Active</td><td>Taufik article merge</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="signal"><h3>Infrastructure</h3><p>12 Docker organs healthy. Postgres, Qdrant, FalkorDB for data. Langfuse + ClickHouse for observability. SearXNG for sovereign search. MinIO for object storage. All localhost-bound with UFW firewall.</p></div>
+      <div class="signal"><h3>Protocols Active</h3><p>MCP (Model Context Protocol) — 12+ MCP servers wired. A2A (Agent-to-Agent) — inter-agent communication. Musyawarah — deliberation before action. Gotong Royong — distributed duties across 6 FI surfaces.</p></div>
+    </div>
+  </div>
+  <div class="pf"><span>arifOS Federation · Metrics</span><span>Slide 8</span></div>
+</div>
+
+<!-- ===== SLIDE 9: CLOSING ===== -->
+<div class="slide" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+  <div style="font-size: 8pt; color: var(--t3); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 16px;">arifOS Federation</div>
+  <div style="font-size: 28pt; font-weight: 300; color: var(--t1); margin-bottom: 8px;">DITEMPA BUKAN DIBERI</div>
+  <div style="font-size: 11pt; color: var(--t2); margin-bottom: 24px;">Forged, not given.</div>
+  <div style="width: 60px; height: 3px; background: var(--accent); margin-bottom: 24px;"></div>
+  <div style="font-size: 9pt; color: var(--t2); max-width: 480px; line-height: 1.6;">
+    arifOS is a constitutional AI operating system. It wraps any LLM with governance floors, federated organs, and a self-mutating skill mesh. Built by one human with AI agents as warga — citizens, not products.
+  </div>
+  <div style="margin-top: 24px; font-size: 8pt; color: var(--t3);">
+    arif-fazil.com · github.com/ariffazil · 25 August 2026
+  </div>
+  <div class="pf"><span>arifOS Federation · Closing</span><span>Slide 9</span></div>
+</div>
+
+</body>
+</html>

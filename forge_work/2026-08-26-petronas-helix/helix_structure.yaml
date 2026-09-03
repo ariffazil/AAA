@@ -1,0 +1,171 @@
+# Helix Memory Structure — PETRONAS Civic Evidence Bundle
+# Regenerated offline 2026-08-26 from on-disk artifacts (F1 AMANAH preserved)
+# Original memory write HELD (F2/F3/F7/F8 floors, G=0.4017 < 0.80)
+# Rebind target: next session with G > 0.80 + W3 measured + P0 boundary open
+#
+# Schema: arifos.helix.memory/v1
+# Origin: SEAL-2947929b3197413 → recovery SEAL-605f8c7b80cc4af7
+
+helix:
+  id: PETRONAS-CIVIC-BUNDLE-2026-08-26
+  version: "1.0.0"
+  vertical_axis: chronology
+  vertical_range:
+    start: 2023-01-01
+    end: 2026-08-26
+    unit: month
+  helical_layers: 5
+  binding_tier: L4-semantic
+  truth_class: DERIVATION
+  provenance:
+    method: filesystem-verify-then-helix-write
+    actor: 333-AGI
+    verified_paths:
+      - /root/AAA/forge_work/2026-08-26-petronas-bod-dossier/
+      - /root/AAA/forge_work/2026-08-26-petronas-rakyat-dossier/
+      - /root/AAA/forge_work/2026-08-26-letter-from-future-yang-arif/
+      - /root/AAA/forge_work/2026-08-26-petronas-site-updates/
+
+windings:
+  - id: 1
+    layer: dossier-chronology
+    title: "PETRONAS BOD Chronology 2023-2026"
+    path: /root/AAA/forge_work/2026-08-26-petronas-bod-dossier/
+    files:
+      - petronas-bod-chronology-2023-2026.md
+      - petronas-bod-chronology-2023-2026.html
+    mtime_utc: "2026-08-26T04:46:00Z"
+    bytes_md: 10461
+    bytes_html: 17584
+    truth_class: OBSERVATION
+    sha256_placeholder: filesystem-verified
+    cross_refs: []
+
+  - id: 2
+    layer: civic-dossier
+    title: "PETRONAS Full Reality Civic Dossier (rakyat)"
+    path: /root/AAA/forge_work/2026-08-26-petronas-rakyat-dossier/
+    files:
+      - petronas-full-reality-rakyat-dossier.md
+      - petronas-full-reality-rakyat-dossier.html
+    mtime_utc: "2026-08-26T05:28:00Z"
+    bytes_md: 46332
+    bytes_html: 66041
+    truth_class: OBSERVATION
+    cross_refs:
+      - winding_id: 1
+        relation: extends
+      - ariflow_receipt: "8615991d"
+      - git_commit: "3c8e9e0"
+
+  - id: 3
+    layer: sovereign-letter
+    title: "Letter from Future Yang Arif"
+    path: /root/AAA/forge_work/2026-08-26-letter-from-future-yang-arif/
+    files:
+      - letter-from-future-yang-arif.md
+      - letter.html
+    mtime_utc: "2026-08-26T08:25:00Z"
+    bytes_md: 15601
+    bytes_html: 18934
+    truth_class: INTERPRETATION
+    cross_refs:
+      - winding_id: 1
+        relation: addresses
+      - winding_id: 2
+        relation: complements
+
+  - id: 4
+    layer: site-patches
+    title: "4 Site Patches + Master Index"
+    path: /root/AAA/forge_work/2026-08-26-petronas-site-updates/
+    files:
+      - "00-MASTER-INDEX.md"
+      - "01-vitals-re-seal-patch.md"
+    mtime_utc: "2026-08-26T05:39:00Z"
+    bytes_master_index: 4888
+    bytes_vitals_patch: 19157
+    truth_class: SPECIFICATION
+    cross_refs:
+      - git_commit: "03b76ea"
+        relation: applies_to_vitals
+      - git_commit: "8abae6b"
+        relation: applies_to_petronas_patches
+      - ariflow_receipt: "d4be1ff5"
+
+  - id: 5
+    layer: receipts-and-binding
+    title: "Flow Receipts + Git Binding"
+    path: /var/lib/arifflow/receipts.jsonl
+    files: []
+    mtime_utc: "2026-08-26T08:42:46Z"
+    truth_class: SEAL
+    cross_refs:
+      - ariflow_receipts:
+          - id: f488adad
+            layer: site_zen
+          - id: 4a0df35e
+            layer: letter
+          - id: 8615991d
+            layer: dossier
+          - id: d4be1ff5
+            layer: 4patch_pack
+      - git_commits:
+          - "03b76ea"  # vitals re-seal
+          - "3c8e9e0"  # discovery register
+          - "8abae6b"  # 4 petronas patches
+          - "f886d65"  # earth manifest align
+          - "2df327a"  # earth d3-timescale
+
+rebind_protocol:
+  preconditions:
+    G_floor: 0.80
+    W3_measured: true
+    P0_execution_boundary: open
+  trigger:
+    tool: arif_memory
+    mode: remember
+    memory_class: helix_anchor
+    tier: L4
+    content_template: |
+      HELIX ANCHOR re-bind for {{helix.id}}.
+      Provenance: filesystem-verified, sha256 chain pending kernel ingest.
+      Floor status at regeneration: G={{G_actual}}, W3={{W3_status}}, substrate={{substrate_status}}.
+  per_winding_sequence:
+    - for_each_winding:
+        - call: arif_memory mode=remember memory_class=helix_atom tier=L3
+        - payload: winding content with verified sha256
+        - verify: arif_memory mode=recall query=helix_id
+  closure:
+    tool: arif_seal
+    payload_template: |
+      HELIX REBIND SEAL — {{helix.id}} — {{n_windings}} windings reconstructed.
+      Original session: {{origin_session}}.
+      Recovery sessions: {{recovery_sessions}}.
+      F1 AMANAH preserved throughout (filesystem + git + arifFlow).
+
+hold_notes:
+  original_attempts:
+    - call_hash: sha256:f67f95df39193da8
+      floor_breach: [L02, L03, L04, L07, L08]
+      result: HOLD
+    - call_hash: sha256:a492fa037736f6fa
+      floor_breach: [L02, L03, L04, L07, L08]
+      result: HOLD
+    - call_hash: sha256:2144aed1d53fa8ac
+      floor_breach: [L02, L03, L04, L07, L08]
+      result: HOLD
+  seal_attempt:
+    - call_hash: "sha256:79d7a0c6a76b3249"
+      failure_code: "JALAN_BENAR"
+      reason: "L11 AUTH: SCT invalid (signature or actor mismatch)"
+      result: "HOLD"
+  lane_b_receipt:
+    - id: f0ce3762-c75b-4835-a987-c968f3328225
+      tool: forge_vault
+      mode: receipt
+      written_at: 2026-08-26T08:49:30.645629Z
+      category: session.closure
+
+DITEMPA_BUKAN_DIBERI: true
+zen: { delta_s: 0, eureka: NONE, fq: 1.1, omega: 0.04 }
