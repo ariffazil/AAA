@@ -1,0 +1,23 @@
+{
+  "session_id": "test-session-2",
+  "agent_id": "openclaw",
+  "timestamp": "2026-06-14T07:01:34.112913+00:00",
+  "tools_called": [
+    "arif_vault_seal",
+    "arif_ops_measure"
+  ],
+  "verdicts": [
+    "HOLD",
+    "PASS"
+  ],
+  "holds": [
+    "arif_vault_seal: anonymous MUTATE blocked"
+  ],
+  "key_decisions": [
+    "Switched to OBSERVE-only mode after HOLD"
+  ],
+  "open_loops": [
+    "Need Arif approval for vault seal"
+  ],
+  "outcome": "partial"
+}

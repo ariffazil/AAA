@@ -1,0 +1,20 @@
+Validated. Hermes did it right.
+
+  Status:
+
+  ┌─────────┬────────────────────────────────────────┬──────────────────────────────┐
+  │ Repo    │ Hook                                   │ Status                       │
+  ├─────────┼────────────────────────────────────────┼──────────────────────────────┤
+  │ arifOS  │ /root/.hermes/scripts/pre-commit-teleg │ ✅ Valid symlink, executable │
+  │         │ ram-token-check.sh                     │                              │
+  │ A-FORGE │ /root/.hermes/scripts/pre-commit-teleg │ ✅ Valid symlink, executable │
+  │         │ ram-token-check.sh                     │                              │
+  │ HERMES  │ /root/.hermes/scripts/pre-commit-teleg │ ✅ Valid symlink, executable │
+  │         │ ram-token-check.sh                     │                              │
+  └─────────┴────────────────────────────────────────┴──────────────────────────────┘
+
+  Functional test:
+  • ✅ No token changes staged → hook passes silently (exit 0)
+  • ✅ Token changes staged → hook runs SCALPEL audit, validates isolation, allows co
+    it if clean
+  • ✅ Would block commit on actual violation

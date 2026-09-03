@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "installed": {
+    "docker-management": {
+      "source": "official",
+      "identifier": "official/devops/docker-management",
+      "trust_level": "builtin",
+      "scan_verdict": "dangerous",
+      "content_hash": "sha256:0e362cce7c39d0d2",
+      "install_path": "devops/docker-management",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-05-18T03:38:40.006547+00:00",
+      "updated_at": "2026-05-18T03:38:40.006557+00:00"
+    },
+    "cli": {
+      "source": "official",
+      "identifier": "official/devops/cli",
+      "trust_level": "builtin",
+      "scan_verdict": "dangerous",
+      "content_hash": "sha256:8cd01743b228c445",
+      "install_path": "devops/cli",
+      "files": [
+        "SKILL.md",
+        "references/app-discovery.md",
+        "references/running-apps.md",
+        "references/authentication.md",
+        "references/cli-reference.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-05-18T03:42:47.766163+00:00",
+      "updated_at": "2026-05-18T03:42:47.766172+00:00"
+    },
+    "mcporter": {
+      "source": "official",
+      "identifier": "official/mcp/mcporter",
+      "trust_level": "builtin",
+      "scan_verdict": "caution",
+      "content_hash": "sha256:cfa853b5deabe6b1",
+      "install_path": "mcp/mcporter",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-05-18T03:49:38.665547+00:00",
+      "updated_at": "2026-05-18T03:49:38.665553+00:00"
+    },
+    "chroma": {
+      "source": "official",
+      "identifier": "official/mlops/chroma",
+      "trust_level": "builtin",
+      "scan_verdict": "caution",
+      "content_hash": "sha256:e5d5fa52682f2903",
+      "install_path": "mlops/chroma",
+      "files": [
+        "SKILL.md",
+        "references/integration.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-05-18T03:52:20.732385+00:00",
+      "updated_at": "2026-05-18T03:52:20.732398+00:00"
+    },
+    "qdrant": {
+      "source": "official",
+      "identifier": "official/mlops/qdrant",
+      "trust_level": "builtin",
+      "scan_verdict": "caution",
+      "content_hash": "sha256:303a84758a110d8d",
+      "install_path": "mlops/qdrant",
+      "files": [
+        "SKILL.md",
+        "references/troubleshooting.md",
+        "references/advanced-usage.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-05-18T03:55:45.887574+00:00",
+      "updated_at": "2026-05-18T03:55:45.887584+00:00"
+    },
+    "whisper": {
+      "source": "official",
+      "identifier": "official/mlops/whisper",
+      "trust_level": "builtin",
+      "scan_verdict": "caution",
+      "content_hash": "sha256:f2012d4f008b4289",
+      "install_path": "mlops/whisper",
+      "files": [
+        "SKILL.md",
+        "references/languages.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-05-18T03:58:15.396071+00:00",
+      "updated_at": "2026-05-18T03:58:15.396077+00:00"
+    },
+    "parallel-cli": {
+      "source": "official",
+      "identifier": "official/research/parallel-cli",
+      "trust_level": "builtin",
+      "scan_verdict": "dangerous",
+      "content_hash": "sha256:59245b30f3d9426a",
+      "install_path": "research/parallel-cli",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-05-18T04:03:47.521986+00:00",
+      "updated_at": "2026-05-18T04:03:47.521993+00:00"
+    },
+    "searxng-search": {
+      "source": "official",
+      "identifier": "official/research/searxng-search",
+      "trust_level": "builtin",
+      "scan_verdict": "caution",
+      "content_hash": "sha256:9f8fe3304fd44d5d",
+      "install_path": "research/searxng-search",
+      "files": [
+        "SKILL.md",
+        "scripts/searxng.sh"
+      ],
+      "metadata": {},
+      "installed_at": "2026-05-18T04:07:05.147821+00:00",
+      "updated_at": "2026-05-18T04:07:05.147833+00:00"
+    }
+  }
+}

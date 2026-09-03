@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260621-153506",
+  "timestamp": "2026-06-21T15:35:06.117606+00:00",
+  "tool_name": "arif_vault_seal",
+  "agent_id": "anonymous",
+  "session_id": "enf-1",
+  "reason": "E7 HOLD: Reversibility 0.00 below hard floor (0.3). Full principal control required.",
+  "severity": "critical",
+  "count": 3,
+  "last_seen": "2026-06-21T16:04:53.008234+00:00"
+}

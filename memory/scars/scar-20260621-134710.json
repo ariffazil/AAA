@@ -1,0 +1,10 @@
+{
+  "scar_id": "scar-20260621-134710",
+  "timestamp": "2026-06-21T13:47:10.137604+00:00",
+  "tool_name": "arif_bridge_connect",
+  "agent_id": "anonymous",
+  "session_id": "SEAL-0735866b5afe4092",
+  "reason": "888_HOLD: max_same_tool_calls (2) for arif_bridge_connect",
+  "severity": "critical",
+  "count": 1
+}

@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260620-212353",
+  "timestamp": "2026-06-20T21:23:53.132717+00:00",
+  "tool_name": "arif_sense_observe",
+  "agent_id": "anonymous",
+  "session_id": "sess_bd27f5aa84fc4cd1",
+  "reason": "E7 HOLD: No active authority lease. Agent cannot execute without lease.",
+  "severity": "critical",
+  "count": 50,
+  "last_seen": "2026-06-24T02:03:10.421734+00:00"
+}

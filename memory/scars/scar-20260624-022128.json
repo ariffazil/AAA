@@ -1,0 +1,10 @@
+{
+  "scar_id": "scar-20260624-022128",
+  "timestamp": "2026-06-24T02:21:28.814837+00:00",
+  "tool_name": "arif_triage",
+  "agent_id": "anonymous",
+  "session_id": "SEAL-244a0066292b4310",
+  "reason": "Envelope validation error: 'CanonicalEnvelope' object has no attribute 'validate_for_execution'",
+  "severity": "critical",
+  "count": 1
+}
