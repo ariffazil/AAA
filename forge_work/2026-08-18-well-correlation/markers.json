@@ -1,0 +1,143 @@
+{
+  "markers": [
+    {
+      "name": "Pawnee Limestone",
+      "md_w1": 2050,
+      "md_w2": 2050,
+      "md_w3": 2095,
+      "litho": "Ls",
+      "color": "#5b8a9e",
+      "thickness": 12
+    },
+    {
+      "name": "Myrick Station Limestone",
+      "md_w1": 2320,
+      "md_w2": 2320,
+      "md_w3": 2365,
+      "litho": "Ls",
+      "color": "#7da6b6",
+      "thickness": 8
+    },
+    {
+      "name": "Verdigris Limestone (top Cherokee)",
+      "md_w1": 2420,
+      "md_w2": 2420,
+      "md_w3": 2470,
+      "litho": "Ls",
+      "color": "#d4a017",
+      "thickness": 6
+    },
+    {
+      "name": "Inola Limestone",
+      "md_w1": 2590,
+      "md_w2": 2590,
+      "md_w3": 2640,
+      "litho": "Ls",
+      "color": "#e6c068",
+      "thickness": 5
+    },
+    {
+      "name": "Pink Limestone (basal Cherokee)",
+      "md_w1": 2880,
+      "md_w2": 2880,
+      "md_w3": 2930,
+      "litho": "Ls",
+      "color": "#b08868",
+      "thickness": 8
+    },
+    {
+      "name": "Mississippian Limestone",
+      "md_w1": 3420,
+      "md_w2": 3420,
+      "md_w3": 3470,
+      "litho": "Ls",
+      "color": "#5e7e9c",
+      "thickness": 80
+    }
+  ],
+  "sand_bodies": [
+    {
+      "name": "Bartlesville Sand",
+      "md_top_w1": 2620,
+      "thickness_w1": 35,
+      "motif": "bell",
+      "porosity": 0.22,
+      "sw": 0.3,
+      "hc": true,
+      "color": "#ffd54f",
+      "md_top_w3": 2670,
+      "thickness_w3": 32,
+      "md_top_w2": 2620,
+      "thickness_w2": 35
+    },
+    {
+      "name": "Burgess Sand",
+      "md_top_w1": 2720,
+      "thickness_w1": 28,
+      "motif": "funnel",
+      "porosity": 0.2,
+      "sw": 0.35,
+      "hc": true,
+      "color": "#ffb74d",
+      "md_top_w3": 2770,
+      "thickness_w3": 25,
+      "md_top_w2": 2720,
+      "thickness_w2": 28
+    },
+    {
+      "name": "Wayside Sand",
+      "md_top_w1": 2800,
+      "thickness_w1": 22,
+      "motif": "blocky",
+      "porosity": 0.18,
+      "sw": 0.45,
+      "hc": true,
+      "color": "#ff9800",
+      "md_top_w3": 2850,
+      "thickness_w3": 19,
+      "md_top_w2": 2800,
+      "thickness_w2": 22
+    }
+  ],
+  "wells_meta": [
+    {
+      "name": "Defore SWD 19-2",
+      "operator": "Toto Energy, LLC",
+      "api": "15035245980000",
+      "lat": 37.1707516,
+      "lon": -96.808727,
+      "elev_ft": 1328.0,
+      "kb_ft": 1328.0,
+      "depth_start": 295.0,
+      "depth_stop": 3770.5,
+      "location": "T33S R6E, Sec. 19,   N2 NE NE",
+      "kgs_url": "https://www.kgs.ku.edu/b_1/WebDocs/WellLogs/kcc_logs_2017/1046411110.las"
+    },
+    {
+      "name": "HOUSE RANCH V2-19",
+      "operator": "Val Energy, Inc.",
+      "api": "15035219240001",
+      "lat": 37.1641383,
+      "lon": -96.8119784,
+      "elev_ft": 1292.0,
+      "kb_ft": 1292.0,
+      "depth_start": 139.0,
+      "depth_stop": 3586.0,
+      "location": "T33S R6E, Sec. 19,  N2 NE NW SE",
+      "kgs_url": "https://www.kgs.ku.edu/b_1/WebDocs/WellLogs/kcc_logs_2020/1051708819.las"
+    },
+    {
+      "name": "PRAY 2",
+      "operator": "Raney Oil Company, LLC",
+      "api": "15035246560000",
+      "lat": 37.1313447,
+      "lon": -96.8226909,
+      "elev_ft": 1271.0,
+      "kb_ft": 1271.0,
+      "depth_start": 295.0,
+      "depth_stop": 3569.0,
+      "location": "T33S R6E, Sec. 31,  NE NW SW SW",
+      "kgs_url": "https://www.kgs.ku.edu/b_1/WebDocs/WellLogs/kcc_logs_2017/1046410328.las"
+    }
+  ]
+}

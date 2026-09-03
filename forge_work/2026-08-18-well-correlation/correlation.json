@@ -1,0 +1,14 @@
+{
+  "method": "GR cross-correlation with lag search, zone 1200-2400 ft (Cherokee)",
+  "lags_ft": {
+    "W1-W2": -36.0,
+    "W1-W3": 29.0,
+    "W2-W3": 22.0
+  },
+  "correlation": {
+    "W1-W2": 0.112,
+    "W1-W3": 0.112,
+    "W2-W3": 0.08
+  },
+  "interpretation": "Positive lag = reference well (W1) deeper, negative lag = W1 shallower"
+}

@@ -1,0 +1,59 @@
+{
+  "W1": {
+    "qc_depth_monotonic": true,
+    "qc_gr_in_range": true,
+    "qc_rhob_in_range": true,
+    "qc_nphi_in_range": true,
+    "qc_ild_positive": true,
+    "qc_null_count": 0,
+    "qc_pass": true,
+    "cherokee_zone": {
+      "depth_top_ft": 1200.0,
+      "depth_base_ft": 2400.0,
+      "gross_thickness_ft": 1200.5,
+      "net_pay_ft": 780.0,
+      "net_to_gross": 0.65,
+      "avg_sw_in_netpay": 0.05,
+      "avg_phie_in_netpay": 0.333,
+      "avg_vsh_in_netpay": 0.002
+    }
+  },
+  "W2": {
+    "qc_depth_monotonic": true,
+    "qc_gr_in_range": true,
+    "qc_rhob_in_range": true,
+    "qc_nphi_in_range": true,
+    "qc_ild_positive": true,
+    "qc_null_count": 0,
+    "qc_pass": true,
+    "cherokee_zone": {
+      "depth_top_ft": 1200.0,
+      "depth_base_ft": 2400.0,
+      "gross_thickness_ft": 1200.5,
+      "net_pay_ft": 780.0,
+      "net_to_gross": 0.65,
+      "avg_sw_in_netpay": 0.05,
+      "avg_phie_in_netpay": 0.303,
+      "avg_vsh_in_netpay": 0.003
+    }
+  },
+  "W3": {
+    "qc_depth_monotonic": true,
+    "qc_gr_in_range": true,
+    "qc_rhob_in_range": true,
+    "qc_nphi_in_range": true,
+    "qc_ild_positive": true,
+    "qc_null_count": 0,
+    "qc_pass": true,
+    "cherokee_zone": {
+      "depth_top_ft": 1200.0,
+      "depth_base_ft": 2400.0,
+      "gross_thickness_ft": 1200.5,
+      "net_pay_ft": 794.0,
+      "net_to_gross": 0.661,
+      "avg_sw_in_netpay": 0.055,
+      "avg_phie_in_netpay": 0.315,
+      "avg_vsh_in_netpay": 0.01
+    }
+  }
+}
