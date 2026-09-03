@@ -30,3 +30,45 @@ agents/*/runtime/*.token
 agents/*/runtime/credentials*
 agents/*/runtime/bin/
 agents/*/runtime/sessions/
+# === ZEN SWEEP 2026-09-04 (runtime noise floor — FLAME restore session) ===
+# Deploy markers + local mirrors
+.git_commit
+VAULT999/
+.megamemory/
+.hermes-archived-*/
+# Private keys (belt+braces beyond *.pem patterns)
+auth/keys/
+**/*_private.key
+# Runtime ledgers + state
+data/bus/
+dream_engine/state/
+snapshots/
+sessions/
+state/*.jsonl
+abstention_corpus.jsonl
+# Build output
+dist/
+benchmarks/floors/results/
+registry/compiled/
+# Caches + archives + retired
+**/__pycache__/
+node_modules/
+agents/_lanes/_archive/
+prompts/_archive/
+skills-retired-*/
+agents/*/runtime/
+# Terminal live-state (content .md/.sh stays tracked)
+terminal/*.txt
+terminal/*.jsonl
+# Session artifacts (media junk, 19M)
+artifacts/
+# Generated reports
+reports/benchmark-run-*.json
+public/a2a/entropy-report.json
+# === ZEN SWEEP pass 2 (timestamped backups + logs + runtime json) ===
+*.bak
+*.bak-*
+*.log
+logs/*
+state/*.json
+state/phoenix72/
