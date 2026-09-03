@@ -64,13 +64,7 @@ Governance permits, shapes, or forbids (Manifold Boundary).
 - **Hierarki Perhatian Governed AI:**
   $$\text{L0 Reality} \longrightarrow \text{L1 Authority (F13)} \longrightarrow \text{L2 Law (F1-F12)} \longrightarrow \text{L3 Judgment} \longrightarrow \text{L4 Intent} \longrightarrow \text{L5 Action}$$
 
-## The 30-second session check
+## Session check
 
-1. `source /root/.secrets/kunci-root.env`
-2. Read `/root/AGENTS.md` + `/root/CLAUDE.md`
-3. Boot: `cat /root/AAA/prompts/INIT.md`
-4. One-shot pane: `now` (time + federation + FRAME + carry)
-5. Probe federation: `make health` or `/root/scripts/doctor.sh`
-6. Check dirty repos
-7. Check deprecation map
+Canonical checklist lives ONCE in `base.md` ("30-second session start checklist"). Not repeated here — one fact, one owner.
 
