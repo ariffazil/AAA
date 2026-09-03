@@ -1,0 +1,290 @@
+# SERVICE_OWNERSHIP.yaml — canonical service ownership registry (KVM8 af-forge)
+# PURPOSE: answer 'who owns this service?' for future agents + human operators.
+#          Closes attention item inventory-ownership-audit-68-unowned.
+# GENERATED: 2026-09-03T23:03:51Z by kimi-code/FI-008 · method: systemctl cat ExecStart/Description evidence
+# METHOD: classification by ExecStart path > unit-name convention > description. Deterministic, re-runnable.
+# CONSUMERS: /run/arifos inventory clerk (unowned_count) should read this file;
+#             `now` pane, entropy sweeps, and incident triage reference it.
+# LAW: OS-BASE = Ubuntu platform, NOT federation entropy — never audit as organ drift.
+
+federation_services:
+  arifOS:
+    - unit: aforge-heartbeat.service
+      role: "a-forge organ heartbeat daemon"
+      repo: /root/arifOS
+    - unit: arifOS-NATS-heartbeat.service
+      role: "arifOS NATS Heartbeat Publisher"
+      repo: /root/arifOS
+    - unit: arifos.service
+      role: "arifOS Agent"
+      repo: /root/arifOS
+    - unit: geox-heartbeat.service
+      role: "geox organ heartbeat daemon"
+      repo: /root/arifOS
+    - unit: kabarkan-worker.service
+      role: "Kabarkan Worker — constitutional observability processor"
+      repo: /root/arifOS
+    - unit: l5-search-api.service
+      role: "L5 Search API — FalkorDB Graph Query Service"
+      repo: /root/arifOS
+    - unit: nats-prometheus-exporter.service
+      role: "NATS Prometheus Metrics Exporter"
+      repo: /root/arifOS
+    - unit: tier1-state.service
+      role: "Tier-1 State HTTP Endpoint (:8094)"
+      repo: /root/arifOS runtime services
+    - unit: vault999-writer.service
+      role: "VAULT999 Writer — Append-Only Ledger Write Layer"
+      repo: /root/arifOS vault layer
+    - unit: wealth-heartbeat.service
+      role: "wealth organ heartbeat daemon"
+      repo: /root/arifOS
+    - unit: well-heartbeat.service
+      role: "well organ heartbeat daemon"
+      repo: /root/arifOS
+  A-FORGE:
+    - unit: a-forge-mcp.service
+      role: "A-FORGE MCP Gateway — Streamable HTTP on :7072"
+      repo: /root/A-FORGE
+    - unit: a-forge.service
+      role: "A-FORGE — Governed AI Agent Stack"
+      repo: /root/A-FORGE
+    - unit: apa-calendar-bridge.service
+      role: "APA Calendar Bridge — Sovereign Google API OAuth (A-FORGE forge_calendar)"
+      repo: /root/A-FORGE/bridges
+    - unit: apa-drive-bridge.service
+      role: "APA Drive Bridge — Sovereign Google API OAuth (A-FORGE forge_drive)"
+      repo: /root/A-FORGE/bridges
+    - unit: apa-email-bridge.service
+      role: "APA Email Bridge — Sovereign IMAP/SMTP (A-FORGE forge_email)"
+      repo: /root/A-FORGE/bridges
+    - unit: apa-gemini-bridge.service
+      role: "APA Gemini Bridge — Google AI Studio auth-key (A-FORGE forge_gemini)"
+      repo: /root/A-FORGE/bridges
+    - unit: apa-github-bridge.service
+      role: "APA GitHub Bridge — Sovereign REST API (A-FORGE forge_github)"
+      repo: /root/A-FORGE/bridges
+    - unit: apa-gmail-bridge.service
+      role: "APA Gmail Bridge — Sovereign Google API OAuth (A-FORGE forge_gmail)"
+      repo: /root/A-FORGE/bridges
+    - unit: apa-gws-bridge.service
+      role: "APA GWS Bridge — Universal Google Workspace via gws CLI (A-FORGE)"
+      repo: /root/A-FORGE/bridges
+    - unit: apa-sheets-bridge.service
+      role: "APA Sheets Bridge — Sovereign Google API OAuth (A-FORGE forge_sheets)"
+      repo: /root/A-FORGE/bridges
+    - unit: fed-aware-middleware.service
+      role: "FED-Aware Middleware — Path B capability-signature router"
+      repo: /root/A-FORGE
+    - unit: surface-guard.service
+      role: "MCP Surface Guard — federation drift watchdog"
+      repo: /root/A-FORGE
+  AAA:
+    - unit: aaa-a2a.service
+      role: "AAA A2A Gateway — Federation agent mesh"
+      repo: /root/AAA
+    - unit: aaa-signing.service
+      role: "AAA Ed25519 Signing Server — F13 challenge signing"
+      repo: /root/AAA
+  GEOX:
+    - unit: geox-mcp.service
+      role: "GEOX MCP Server — Earth Intelligence MCP Surface (FHS Promoted)"
+      repo: /root/GEOX
+    - unit: geox-static-server.service
+      role: "GEOX Static Site Server (HTTP only) for cloudflared"
+      repo: /root/GEOX
+  WEALTH:
+    - unit: gas-api.service
+      role: "GAS API — Natural Gas Data Server (WEALTH)"
+      repo: /root/WEALTH
+    - unit: klci-api.service
+      role: "KLCI API — Bursa Malaysia FBM KLCI Data Server (WEALTH)"
+      repo: /root/WEALTH
+    - unit: oil-api.service
+      role: "OIL API — Brent Crude Data Server (WEALTH)"
+      repo: /root/WEALTH
+    - unit: usdmyr-api.service
+      role: "USDMYR API — Ringgit USD/MYR FX Data Server (WEALTH)"
+      repo: /root/WEALTH
+    - unit: wealth-organ.service
+      role: "WEALTH Federated Domain — Capital Intelligence for arifOS"
+      repo: /root/WEALTH
+    - unit: what-to-watch.service
+      role: "Institutional what-to-watch trigger daemon"
+      repo: /root/arif-fazil.com/deploy/systemd
+  WELL:
+    - unit: well.service
+      role: "WELL MCP Server — Human Substrate Governance Layer (FHS Promoted)"
+      repo: /root/WELL
+  arifFlow:
+    - unit: arifflow.service
+      role: "arifFLOW — Federation Metabolism Plane (Rust daemon, 7073)"
+      repo: /root/arifFlow
+  arifFlow (Kabarkan):
+    - unit: kabarkan-collector.service
+      role: "kabarkan — sovereign OTEL collector (arifFlow TRANSPORT membrane)"
+      repo: /root/arifFlow observability
+  FED:
+    - unit: fed-router.service
+      role: "FED — Federation Router (MCP Server :7074)"
+      repo: /root/FED
+  FRAME:
+    - unit: frame-organ.service
+      role: "FRAME Organ — Federation Reference & Assessment Measurement Engine"
+      repo: /root/FRAME
+  SIGNAL:
+    - unit: signal-organ.service
+      role: "SIGNAL Organ — 3-Chamber Webhook Membrane for arifOS Federation"
+      repo: /opt/signal
+  OPENCLAW:
+    - unit: openclaw-gateway.service
+      role: "OpenClaw Gateway (Host-based)"
+      repo: /root/.openclaw
+  WEALTH-www:
+    - unit: gold-api.service
+      role: "Gold Data API Server (XAUUSD live data)"
+      repo: /var/www/html (WEALTH data APIs, deployed from WEALTH)
+  NET-INFRA:
+    - unit: caddy.service
+      role: "Caddy"
+      repo: network edge
+    - unit: cloudflared.service
+      role: "cloudflared"
+      repo: network edge
+    - unit: haproxy.service
+      role: "HAProxy Load Balancer"
+      repo: network edge
+    - unit: headscale.service
+      role: "Headscale coordination server for arifOS mesh"
+      repo: network edge
+    - unit: tailscaled.service
+      role: "Tailscale node agent"
+      repo: network edge
+  OBS-INFRA:
+    - unit: grafana-server.service
+      role: "Grafana instance"
+      repo: observability
+    - unit: netdata.service
+      role: "Netdata, X-Ray Vision for your infrastructure!"
+      repo: observability
+    - unit: node_exporter.service
+      role: "Node Exporter"
+      repo: observability
+    - unit: prometheus.service
+      role: "Prometheus Monitoring"
+      repo: observability
+    - unit: systemd-journald@netdata.service
+      role: "Journal Service for Namespace %i"
+      repo: observability
+  DATA-INFRA:
+    - unit: nats-server.service
+      role: "NATS Server"
+      repo: local data plane
+    - unit: redis-server.service
+      role: "Advanced key-value store"
+      repo: local data plane
+  OS-BASE:
+    - unit: atd.service
+      role: "Deferred execution scheduler"
+      repo: Ubuntu base
+    - unit: auditd.service
+      role: "Security Audit Logging Service"
+      repo: Ubuntu base
+    - unit: avahi-daemon.service
+      role: "Avahi mDNS/DNS-SD Stack"
+      repo: Ubuntu base
+    - unit: chrony.service
+      role: "chrony, an NTP client/server"
+      repo: Ubuntu base
+    - unit: containerd.service
+      role: "containerd container runtime"
+      repo: Ubuntu base
+    - unit: cron.service
+      role: "Regular background program processing daemon"
+      repo: Ubuntu base
+    - unit: dbus.service
+      role: "D-Bus System Message Bus"
+      repo: Ubuntu base
+    - unit: docker.service
+      role: "Docker Application Container Engine"
+      repo: Ubuntu base
+    - unit: earlyoom.service
+      role: "Early OOM Daemon"
+      repo: Ubuntu base
+    - unit: fail2ban.service
+      role: "Fail2Ban Service"
+      repo: Ubuntu base
+    - unit: getty@tty1.service
+      role: "Getty on %I"
+      repo: Ubuntu base
+    - unit: networkd-dispatcher.service
+      role: "Dispatcher daemon for systemd-networkd"
+      repo: Ubuntu base
+    - unit: polkit.service
+      role: "Authorization Manager"
+      repo: Ubuntu base
+    - unit: qemu-guest-agent.service
+      role: "QEMU Guest Agent"
+      repo: Ubuntu base
+    - unit: rsyslog.service
+      role: "System Logging Service"
+      repo: Ubuntu base
+    - unit: serial-getty@ttyS0.service
+      role: "Serial Getty on %I"
+      repo: Ubuntu base
+    - unit: snapd.service
+      role: "Snap Daemon"
+      repo: Ubuntu base
+    - unit: ssh.service
+      role: "OpenBSD Secure Shell server"
+      repo: Ubuntu base
+    - unit: systemd-journald.service
+      role: "Journal Service"
+      repo: Ubuntu base
+    - unit: systemd-logind.service
+      role: "User Login Management"
+      repo: Ubuntu base
+    - unit: systemd-networkd.service
+      role: "Network Configuration"
+      repo: Ubuntu base
+    - unit: systemd-resolved.service
+      role: "Network Name Resolution"
+      repo: Ubuntu base
+    - unit: systemd-udevd.service
+      role: "Rule-based Manager for Device Events and Files"
+      repo: Ubuntu base
+    - unit: unattended-upgrades.service
+      role: "Unattended Upgrades Shutdown"
+      repo: Ubuntu base
+    - unit: user@0.service
+      role: "User Manager for UID %i"
+      repo: Ubuntu base
+
+docker_containers:
+  - name: searxng
+    image: searxng/searxng:latest
+    owner: SEARCH-INFRA
+    role: self-hosted web search (sovereign)
+  - name: searxng-redis
+    image: redis:7-alpine
+    owner: SEARCH-INFRA
+    role: searxng cache
+  - name: minio
+    image: minio/minio
+    owner: DATA-INFRA
+    role: S3-compatible object store
+  - name: falkordb
+    image: falkordb/falkordb:latest
+    owner: DATA-INFRA
+    role: L5 graph memory store
+  - name: qdrant
+    image: qdrant/qdrant:latest
+    owner: DATA-INFRA
+    role: L3 vector memory store
+  - name: postgres
+    image: postgres:16-alpine
+    owner: DATA-INFRA
+    role: federation Postgres 16 (LOCALHOST_IS_PASSWORD)
+
+# Cross-references: ports -> federation/port-registry.json + organs.yaml;
+# cron jobs -> federation/cron-task-map.yaml; machines -> AAA/docs/MACHINE_MAP.md
