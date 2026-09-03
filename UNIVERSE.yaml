@@ -136,7 +136,7 @@ known_shadows:
   /root/arifOS/VAULT999/backups/federation:
     status: pending_decision
     type: active_backup_target   # corrected 2026-09-03: disk probe beat atlas prose
-    was: "~30 daily snapshots x ~715M = 22G, growing daily. Producer = HERMES cron 'federation-state-backup' (0 3 * * *, /root/HERMES/scripts/federation-state-backup.py) — NOT the masked arifos-backup.timer (superseded; leave masked). Includes 0-byte vault999-20260903.sql failed side-run."
+    was: "DUAL producers, both enabled: (1) root cron /etc/cron.d/federation-backup.daily 30 3 * * * MYT → /root/scripts/federation-backup.sh → 715M tars here; (2) HERMES cron federation-state-backup 03:00 → small state tar + restic (24 snapshots, LOCAL repo /root/backups/restic-repo). arifos-backup.timer = superseded, stays masked. TTL-14 FIRED 2026-09-03: 31→14 snapshots (12.5G freed). Off-box replica = open F13 item."
     f13_question: "TTL prune policy (keep-N-days). Resolves f13_pending cron_backup_masked with corrected facts: backups NEVER stopped — the atlas Aug-20 claim was stale."
   /root/azwaOS-workspace @KVM2:
     status: foreign_lane
