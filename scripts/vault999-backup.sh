@@ -7,6 +7,6 @@ set -euo pipefail
 SRC=/root/VAULT999/
 DST=root@100.64.0.5:/root/VAULT999-mirror-KVM8/
 start=$(date -u +%FT%TZ)
-count=$(find /root/VAULT999 -type f | wc -l)
+count=$(find -L /root/VAULT999 -type f | wc -l)
 rsync -a --timeout=180 "$SRC" "$DST"
 echo "vault999-backup ok start=$start end=$(date -u +%FT%TZ) files=$count"
