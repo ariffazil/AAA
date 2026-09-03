@@ -10,6 +10,16 @@
       "tombstone_date": "2026-06-02",
       "reason": "Deterministic deliberation ported into AAA a2a-server.",
       "replacement": "AAA a2a-server"
+    },
+    {
+      "id": "flame-api.service",
+      "type": "service",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-04",
+      "reason": "RM0 free-tier substrate exhausted: every request failed all free providers (cerebras x2, groq x3, gemini x2) and fell back to qwen-max (paid Qwen plan) with 7 wasted retries latency. Zero live callers (KVM4 hermes grep clean; only 2 AAA monitor scripts). flame-recover.timer was 5-min cron noise on dead tiers.",
+      "replacement": "FED litellm flash lane (KVM4 :4000 — 10 flash/mini models: qwen3.6-flash, deepseek-v4-flash, gemini-3.6-flash, MiniMax-M2.5...)",
+      "archive": "/root/BACKUPS/FLAME-retired-20260904",
+      "ratified_by": "888 directive 2026-09-04 (distill expired FLAME into existing components)"
     }
   ],
   "deprecated_patterns": [

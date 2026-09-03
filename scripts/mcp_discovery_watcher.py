@@ -6,7 +6,7 @@ Endpoint poller that discovers new MCP servers, extracts their tool surface,
 embeds the capability descriptions, and auto-indexes into Qdrant.
 
 Architecture:
-  1. Poll known MCP endpoints (:8088, :7072, :8081, :18082, :18083, :18901)
+  1. Poll known MCP endpoints (:8088, :7072, :8081, :18082, :18083, )
   2. Fetch tools/list from each
   3. Embed tool descriptions using all-MiniLM-L6-v2
   4. Upsert into Qdrant arifOS_skill_mesh (skill_id = tool name)
@@ -33,7 +33,7 @@ MCP_ENDPOINTS = {
     "geox": "http://127.0.0.1:8081",
     "wealth": "http://127.0.0.1:18082",
     "well": "http://127.0.0.1:18083",
-    "flame": "http://127.0.0.1:18901",
+    # flame RETIRED 2026-09-04 -> FED flash lane
     "fed": "http://127.0.0.1:7074",
 }
 
