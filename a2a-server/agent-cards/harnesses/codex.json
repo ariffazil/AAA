@@ -519,5 +519,11 @@
   ],
   "did": "did:web:arif-fazil.com",
   "sovereign": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
-  "_model_sot": "/root/.config/federation-models.json"
+  "_model_sot": "/root/.config/federation-models.json",
+  "kvm4_routing": {
+    "dispatch": "ccc-remote codex (KVM8 /usr/local/bin/ccc-remote -> ssh root@100.64.0.5)",
+    "status": "TRANSFERRED — probe PASS 2026-09-02",
+    "member_of": "kvm4-ccc-pool",
+    "updated": "2026-09-03T16:10+08:00"
+  }
 }
