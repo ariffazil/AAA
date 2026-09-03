@@ -4,7 +4,7 @@
 
 - **Secrets:** `/root/.secrets/kunci-root.env` (mode 600). `${ENV_VAR}` placeholders only. Never commit, never paste, never `> mode 600`. Audit: `/root/.secrets/INDEX.md`. Alias: `kunci-mas.env`.
 - **Public exposure:** Cloudflare Tunnel + Caddy only. Organs bind `127.0.0.1`. No public MCP door except the standard `*.arif-fazil.com` URLs.
-- **Inbound auth:** Cryptographic only (Ed25519 + SCT — Session Capability Tokens, `sct_v1.*`). CAPTCHA on inbound federation = **HARAM**; captcha tools are outbound-only utilities.
+- **Inbound auth:** Cryptographic only (Ed25519 + ACT — Arif's Capability Tokens, `act_v1.*`, legacy `sct_v1.*` dual-accepted during migration). CAPTCHA on inbound federation = **HARAM**; captcha tools are outbound-only utilities.
 - **CPA delivery:** `forge_send_confirm` (form mode) · `forge_transfer_confirm` (financial). F13 consent gate.
 - **PATTERNS security scan:** `forge_security_drift_scan` (ports/services/cron drift). `make security-audit` runs per-organ audits.
 
