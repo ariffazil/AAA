@@ -73,7 +73,7 @@
     },
     "agy": {
       "version": "1.1.25",
-      "status": "CONFIG-BLOCKED — ~/.antigravity missing, interactive onboarding needed"
+      "status": "VERIFIED 2026-09-03 — ccc-remote agy PASS end-to-end; auth via GEMINI_API_KEY env (kunci-root.env) + ~/.gemini oauth token; ~/.antigravity bukan rumah config agy (wrong-layer diagnosis corrected)"
     },
     "qwen": {
       "version": "0.22.3",
