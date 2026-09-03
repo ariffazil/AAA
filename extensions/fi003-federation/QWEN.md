@@ -21,6 +21,7 @@ SOT: `/root/AAA/docs/MACHINE_MAP.md`. Fingerprint yourself first: `echo "$(hostn
 | :7074 | FED MCP (route advisor, token_bank) |
 | :8088 | arifOS kernel (constitutional) |
 | :18095 | i-ARIF synthesis (Seal B engine) |
+| Hermes | SENSES runtime `~/.hermes` → KVM8 :8088 + :4000 (live gateway, Telegram-wired) @KVM4 |
 
 ## Hard rules
 
