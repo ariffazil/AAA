@@ -1,0 +1,7 @@
+{
+ "skill_id": "arifos-eight-verb-canonical",
+ "agent": "333-AGI",
+ "lesson": "arif_init may return session_notice OBSERVE_ONLY restrictions \u2014 informational, not failure; proceed with next verb.",
+ "evidence": "session SEAL-83defc585b5a4296 init returned sn-2d85f2266dd9 with session_restriction_only tag",
+ "ts": "2026-09-04T00:00:00Z"
+}
