@@ -49,7 +49,7 @@
     }
   },
   "security": {
-    "secrets_on_host": "NONE — haproxy injects Authorization at 100.64.0.2:4000",
+    "secrets_on_host": "CCC worker configs: NONE (haproxy injects at KVM8 :4000; dummy key 'fed-injected' client-side). SUBSTRATE ASTERISK: /root/.secrets IS staged on KVM4 (kunci-root.env, litellm-fed.env, aaa-identity) for the FED brain + identity — blast radius = root keychain. Scoped honestly 2026-09-03 after probe falsified the absolute NONE claim.",
     "workspace_isolation": "KVM4 is dedicated substrate; workers operate in /root, /tmp, worktrees on that box only",
     "f13_path": "T3 actions (rm -rf, force-push main, secret access, paid API > $10/mo) → 888_HOLD → escalate to KVM8 kernel",
     "audit": "ccc-remote stderr receipt; mutations logged via arifFlow (KVM8 :7073)"
@@ -57,31 +57,31 @@
   "harnesses": {
     "opencode": {
       "version": "1.18.25",
-      "status": "ACTIVE on KVM4 (service :4096), verified 2026-09-03"
+      "status": "MESH-PASS 2026-09-03 (OPENCODE-MESH-OK exact echo, forge-777)"
     },
     "kimi": {
       "version": "0.40.1",
-      "status": "VERIFIED 2026-09-03 (post-rebuild)"
+      "status": "MESH-PASS 2026-09-03 (session ran, model responded)"
     },
     "grok": {
       "version": "1.0.13",
-      "status": "VERSION-PASS 2026-09-03, full mesh probe pending"
+      "status": "EXTERNAL 2026-09-03 — 402 Grok Build balance exhausted; dispatch lane works, billing empty (not a mesh defect)"
     },
     "aider": {
-      "version": "unverified",
-      "status": "PRESENT — version probe queued for mesh pass"
+      "version": "0.86.x",
+      "status": "MESH-PASS 2026-09-03 (589/46 tok round-trip, openai/forge-777)"
     },
     "agy": {
       "version": "1.1.25",
-      "status": "HALF — version-PASS, ~/.antigravity config missing"
+      "status": "CONFIG-BLOCKED — ~/.antigravity missing, interactive onboarding needed"
     },
     "qwen": {
       "version": "0.22.3",
-      "status": "REINSTALLED 2026-09-03 (npm, node v24.15.0) — settings.json routes 100.64.0.2:4000"
+      "status": "MESH-PASS 2026-09-03 (QWEN-MESH-OK via auth-type openai + FED_INJECTED_KEY dummy, haproxy-injected)"
     },
     "codex": {
       "version": "0.153.0",
-      "status": "REINSTALLED 2026-09-03 (npm, node v24.15.0)"
+      "status": "MESH-PASS 2026-09-03 (CODEX-MESH-OK exact echo, deepseek-v4-flash, 2238 tok)"
     }
   },
   "inter_op": {
@@ -99,5 +99,16 @@
       "WELL@8adce4b"
     ],
     "method": "git push over tailnet KVM8->KVM4, main checked out clean"
+  },
+  "mesh_probe": {
+    "date": "2026-09-03T16:20+08:00",
+    "matrix": "5 PASS / 1 EXTERNAL(402) / 1 CONFIG-BLOCKED",
+    "method": "ccc-remote falsification prompts via fi-003 KVM8",
+    "fixes_landed": [
+      "ccc-remote BOOT exports FED_INJECTED_KEY=fed-injected",
+      "qwen settings authType=openai",
+      "aider model prefix openai/forge-777",
+      "codex --skip-git-repo-check"
+    ]
   }
 }
