@@ -1,24 +1,24 @@
 {
-  "version": "2.0.0",
+  "version": "3.0.0",
   "scope": "federation",
   "forged": "2026-08-04",
-  "purpose": "Canonical federation-wide skill profile. Skills are SHARED behavioral instructions \u2014 not per-agent, not authority-gated. This is the single source of truth for all AAA warga agents.",
+  "purpose": "Canonical federation-wide skill profile. Skills are SHARED behavioral instructions — not per-agent, not authority-gated. This is the single source of truth for all AAA warga agents.",
   "supersedes": "OPENCODE_SKILL_PROFILE.json (v1.0.0, opencode-scoped, misleading name)",
-  "design_principle": "Skills \u2260 Tools. Tools = WHAT you can do (per-agent, authority-gated). Skills = HOW you should do it (shared, tier-gated, behavioral). FRAME maps tools to agents. FLAME provides free inference. FED routes models. Skills provide the playbook.",
+  "design_principle": "Skills ≠ Tools. Tools = WHAT you can do (per-agent, authority-gated). Skills = HOW you should do it (shared, tier-gated, behavioral). FRAME maps tools to agents. FLAME provides free inference. FED routes models. Skills provide the playbook.",
   "governance": {
     "doctrine": "/root/AAA/skills/SKILL_RUNTIME_GOVERNANCE.md",
     "rule": "A skill may exist on disk, but it is NOT valid at runtime until it passes permission, dependency, precedence, cost, and governance checks.",
-    "loading_order": "000-substrate \u2192 010-constitutional \u2192 020-bridge \u2192 ... \u2192 150-harness_specific. No domain or forge skill loads before substrate + constitutional gates.",
-    "cost_classes": "C0 (always safe) \u2192 C4 (approval-gated). Agents have budgets: lite\u2264C1, forge\u2264C3, constitutional\u2264C4.",
-    "activation": "Need-state routing, not name-first. Classify need \u2192 select tier \u2192 select skill.",
-    "collision": "DUPLICATE, OVERLAP, CHAINED, ALIAS, ORTHOGONAL. Unresolved DUPLICATE >72h \u2192 both HOLD.",
+    "loading_order": "000-substrate → 010-constitutional → 020-bridge → ... → 150-harness_specific. No domain or forge skill loads before substrate + constitutional gates.",
+    "cost_classes": "C0 (always safe) → C4 (approval-gated). Agents have budgets: lite≤C1, forge≤C3, constitutional≤C4.",
+    "activation": "Need-state routing, not name-first. Classify need → select tier → select skill.",
+    "collision": "DUPLICATE, OVERLAP, CHAINED, ALIAS, ORTHOGONAL. Unresolved DUPLICATE >72h → both HOLD.",
     "verification": "6-gate pre-load: filesystem, permission, dependency, harness, model, constitutional. Post-load: no-truncation gate.",
-    "deprecation": "Weekly sweep with decay metrics. KEEP, MERGE, DEPRECATE, HOLD, VOID. Broken + no owner >30d \u2192 VOID.",
+    "deprecation": "Weekly sweep with decay metrics. KEEP, MERGE, DEPRECATE, HOLD, VOID. Broken + no owner >30d → VOID.",
     "no_pretending": "The registry declares intended topology. Runtime is truth. Never confuse them."
   },
   "total_canonical": 131,
   "untiered_on_disk": 13,
-  "zen_note": "2026-08-04T07:30Z: TRUTH AUDIT FIX \u2014 32 archived skills moved to archived_cold_storage tier. Profile now truthful: active tiers only contain loadable skills. 2026-08-04T07:15Z: SKILL_RUNTIME_GOVERNANCE forged. 2026-08-04T06:00Z: MAJOR ZEN.",
+  "zen_note": "2026-08-04T07:30Z: TRUTH AUDIT FIX — 32 archived skills moved to archived_cold_storage tier. Profile now truthful: active tiers only contain loadable skills. 2026-08-04T07:15Z: SKILL_RUNTIME_GOVERNANCE forged. 2026-08-04T06:00Z: MAJOR ZEN.",
   "canonical_tiers": {
     "substrate_always": {
       "description": "Always-loaded behavioral substrate. Every agent must bind governance, observe with evidence, route correctly, manage memory, verify gates, and audit-seal.",
@@ -183,7 +183,7 @@
       ]
     },
     "harness_specific": {
-      "description": "Harness-specific skills NOT in federation-wide tiers. Loaded only by specific harnesses (Grok, Copilot, Claude, Hermes, Codex). These are NOT constitutional \u2014 they are runtime adapters.",
+      "description": "Harness-specific skills NOT in federation-wide tiers. Loaded only by specific harnesses (Grok, Copilot, Claude, Hermes, Codex). These are NOT constitutional — they are runtime adapters.",
       "count": 9,
       "skills": [
         "AGI-claude-xml-structured-reasoning",
@@ -198,7 +198,7 @@
       ]
     },
     "emd_pipeline": {
-      "description": "EMD (Encode-Metabolize-Decode) document intelligence pipeline. Sensory perception \u2192 metabolic classification \u2192 structured output.",
+      "description": "EMD (Encode-Metabolize-Decode) document intelligence pipeline. Sensory perception → metabolic classification → structured output.",
       "count": 0,
       "skills": []
     },
@@ -216,7 +216,7 @@
       "skills": []
     },
     "archived_cold_storage": {
-      "description": "Skills that exist in cold storage archive (.archive-20260804/) but are NOT loadable at runtime. Declared here for truth \u2014 not for active use. Restoration requires F13 review.",
+      "description": "Skills that exist in cold storage archive (.archive-20260804/) but are NOT loadable at runtime. Declared here for truth — not for active use. Restoration requires F13 review.",
       "count": 33,
       "skills": [
         "AGI-emd-decode",
@@ -282,22 +282,22 @@
     "mcp_gui": [
       "FORGE-mcp-gui"
     ],
-    "note": "These 13 are intentionally not in tiers \u2014 they are harness aliases, structural group dirs, or experimental tools awaiting promotion review."
+    "note": "These 13 are intentionally not in tiers — they are harness aliases, structural group dirs, or experimental tools awaiting promotion review."
   },
   "removed_from_v1": {
     "duplicates": [
       "AGI-plan-dag (was listed twice)"
     ],
-    "note": "No skills deleted \u2014 all active skills promoted into new tiers."
+    "note": "No skills deleted — all active skills promoted into new tiers."
   },
   "architecture": {
     "layers": {
-      "FRAME": "MCP tools socket \u2014 per-agent authority matrix (who can see what)",
-      "SKILLS": "Behavioral capability \u2014 tier-based, shared (how to do things) \u2014 THIS FILE",
-      "FED": "Provider router \u2014 model selection via LiteLLM proxy",
-      "FLAME": "Free inference lane \u2014 RM0 tools via Hermes gate"
+      "FRAME": "MCP tools socket — per-agent authority matrix (who can see what)",
+      "SKILLS": "Behavioral capability — tier-based, shared (how to do things) — THIS FILE",
+      "FED": "Provider router — model selection via LiteLLM proxy",
+      "FLAME": "Free inference lane — RM0 tools via Hermes gate"
     },
-    "philosophy": "Skills are universal instructions, not authority-gated tools. Bukan perlu per-agent mapping \u2014 sebab skills are behavioral playbooks. The tier system IS the FRAME equivalent for skills."
+    "philosophy": "Skills are universal instructions, not authority-gated tools. Bukan perlu per-agent mapping — sebab skills are behavioral playbooks. The tier system IS the FRAME equivalent for skills."
   },
   "truth_audit": {
     "timestamp": "2026-08-04T07:30:00Z",
@@ -315,6 +315,241 @@
       "archived_tier_not_loadable": 33,
       "alignment": "97/130 loadable (74%)"
     },
-    "action": "Moved 32 archived skills to archived_cold_storage tier. identity-invariance registry entry removed but file still present at warga/constitutional/identity-invariance/SKILL.md (zen-2026-08-07: truth correction — was NOT removed). Added 2 orphaned archived to tracking."
+    "action": "Moved 32 archived skills to archived_cold_storage tier. identity-invariance registry entry removed but file still present at warga/constitutional/identity-invariance/SKILL.md (zen-2026-08-07: truth correction — was NOT removed). Added 2 orphaned archived to tracking.",
+    "zen_2026_09_04": {
+      "session": "SEAL-83defc585b5a4296",
+      "actions": "removed 2 repo-level symlinks (capital->WEALTH, geology->GEOX) from Hermes tree; deduped 7 real-dir collisions (5 identical + 2 AAA-wins: forge-multimodal-router, token-plan-image); homed aaa-agentic-governance in AAA (was misfiled in GEOX+WELL); archived 7 strays; forged 14 organ-domain skills; added organ_domain_doctrine",
+      "backup": "/root/BACKUPS/skills-zen-20260903_195304Z",
+      "note": "Registry declares topology. Runtime is truth."
+    }
+  },
+  "organ_domain_doctrine": {
+    "forged": "2026-09-04",
+    "rule": "Skills live in ONE canonical home by ORGAN DOMAIN. AAA/skills = federation catalog (shared behavioral). Organ repos /skills = domain playbooks (loaded via Hermes external_dirs + mesh). Hermes/skills = hermes-native + human-face only. Registry vs disk: runtime is truth.",
+    "homes": {
+      "aaa": "/root/AAA/skills (federation catalog + aaa-* control-plane skills)",
+      "arifos": "/root/AAA/skills (arifos-* prefix discipline — kernel is cross-agent)",
+      "aforge": "/root/AAA/skills (FORGE-* prefix discipline — execution is cross-agent)",
+      "geox": "/root/GEOX/skills (geox-* earth-evidence playbooks)",
+      "wealth": "/root/WEALTH/skills (wealth-* capital playbooks)",
+      "well": "/root/WELL/skills (well-* vitality playbooks)",
+      "hermes": "/root/HERMES/skills (hermes-* + human-face only; mesh symlinks for the rest)"
+    }
+  },
+  "organ_domain_map": {
+    "geox": [
+      "geox-seismic-interpretation",
+      "geox-well-log-qc",
+      "geox-basin-evaluation",
+      "geox-prospect-evaluation",
+      "geox-claim-falsification"
+    ],
+    "wealth": [
+      "wealth-capital-primitives",
+      "wealth-ledger-discipline",
+      "wealth-market-pulse",
+      "wealth-runway-conservation"
+    ],
+    "well": [
+      "well-triadic-ops",
+      "well-machine-diagnose",
+      "well-consent-registry"
+    ],
+    "aaa": [
+      "aaa-musyawarah-execution",
+      "aaa-skill-governor-runtime"
+    ],
+    "arifos": [
+      "arifos-eight-verb-canonical"
+    ]
+  },
+  "skill_ownership_audit": {
+    "forged": "2026-09-04",
+    "rule": "owner_org + domain + canonical_home per skill. NO owner_agent field — agents mount, never own (888-APEX verdict 2026-09-04).",
+    "records": [
+      {
+        "skill": "geox-seismic-interpretation",
+        "owner_org": "GEOX",
+        "domain": "seismic",
+        "canonical_home": "/root/GEOX/skills/geox-seismic-interpretation",
+        "mesh_distribution": true,
+        "owner_agent": null
+      },
+      {
+        "skill": "geox-well-log-qc",
+        "owner_org": "GEOX",
+        "domain": "petrophysics",
+        "canonical_home": "/root/GEOX/skills/geox-well-log-qc",
+        "mesh_distribution": true,
+        "owner_agent": null
+      },
+      {
+        "skill": "geox-basin-evaluation",
+        "owner_org": "GEOX",
+        "domain": "basin",
+        "canonical_home": "/root/GEOX/skills/geox-basin-evaluation",
+        "mesh_distribution": true,
+        "owner_agent": null
+      },
+      {
+        "skill": "geox-prospect-evaluation",
+        "owner_org": "GEOX",
+        "domain": "prospect",
+        "canonical_home": "/root/GEOX/skills/geox-prospect-evaluation",
+        "mesh_distribution": true,
+        "owner_agent": null
+      },
+      {
+        "skill": "geox-claim-falsification",
+        "owner_org": "GEOX",
+        "domain": "claims",
+        "canonical_home": "/root/GEOX/skills/geox-claim-falsification",
+        "mesh_distribution": true,
+        "owner_agent": null
+      },
+      {
+        "skill": "wealth-capital-primitives",
+        "owner_org": "WEALTH",
+        "domain": "capital",
+        "canonical_home": "/root/WEALTH/skills/wealth-capital-primitives",
+        "mesh_distribution": true,
+        "owner_agent": null
+      },
+      {
+        "skill": "wealth-ledger-discipline",
+        "owner_org": "WEALTH",
+        "domain": "ledger",
+        "canonical_home": "/root/WEALTH/skills/wealth-ledger-discipline",
+        "mesh_distribution": true,
+        "owner_agent": null
+      },
+      {
+        "skill": "wealth-market-pulse",
+        "owner_org": "WEALTH",
+        "domain": "market",
+        "canonical_home": "/root/WEALTH/skills/wealth-market-pulse",
+        "mesh_distribution": true,
+        "owner_agent": null
+      },
+      {
+        "skill": "wealth-runway-conservation",
+        "owner_org": "WEALTH",
+        "domain": "conservation",
+        "canonical_home": "/root/WEALTH/skills/wealth-runway-conservation",
+        "mesh_distribution": true,
+        "owner_agent": null
+      },
+      {
+        "skill": "well-triadic-ops",
+        "owner_org": "WELL",
+        "domain": "triadic",
+        "canonical_home": "/root/WELL/skills/well-triadic-ops",
+        "mesh_distribution": true,
+        "owner_agent": null
+      },
+      {
+        "skill": "well-machine-diagnose",
+        "owner_org": "WELL",
+        "domain": "machine",
+        "canonical_home": "/root/WELL/skills/well-machine-diagnose",
+        "mesh_distribution": true,
+        "owner_agent": null
+      },
+      {
+        "skill": "well-consent-registry",
+        "owner_org": "WELL",
+        "domain": "consent",
+        "canonical_home": "/root/WELL/skills/well-consent-registry",
+        "mesh_distribution": true,
+        "owner_agent": null
+      },
+      {
+        "skill": "aaa-musyawarah-execution",
+        "owner_org": "AAA",
+        "domain": "musyawarah",
+        "canonical_home": "/root/AAA/skills/aaa-musyawarah-execution",
+        "mesh_distribution": true,
+        "owner_agent": null
+      },
+      {
+        "skill": "aaa-skill-governor-runtime",
+        "owner_org": "AAA",
+        "domain": "governance",
+        "canonical_home": "/root/AAA/skills/aaa-skill-governor-runtime",
+        "mesh_distribution": true,
+        "owner_agent": null
+      },
+      {
+        "skill": "arifos-eight-verb-canonical",
+        "owner_org": "arifOS",
+        "domain": "kernel",
+        "canonical_home": "/root/AAA/skills/arifos-eight-verb-canonical",
+        "mesh_distribution": true,
+        "owner_agent": null
+      },
+      {
+        "skill": "aaa-agentic-governance",
+        "owner_org": "AAA",
+        "domain": "governance",
+        "canonical_home": "/root/AAA/skills/aaa-agentic-governance",
+        "mesh_distribution": true,
+        "owner_agent": null
+      }
+    ]
+  },
+  "skill_contract_standard": {
+    "forged": "2026-09-04",
+    "purpose": "One map for AAA mesh, OpenClaw, CCC fleet, FED multimodal. No local inference.",
+    "contracts": {
+      "skill_contract": {
+        "fields": [
+          "id",
+          "name",
+          "version",
+          "description",
+          "owner_org",
+          "domain",
+          "canonical_home",
+          "risk_tier",
+          "floor_scope",
+          "autonomy_tier",
+          "organ_domain"
+        ],
+        "enforced_by": "aaa-skill-governor-runtime 6-gate pre-load"
+      },
+      "invocation_contract": {
+        "fields": [
+          "entrypoint",
+          "preconditions",
+          "cost_class",
+          "fallback"
+        ],
+        "note": "how a consumer calls the capability; tool surface is SOT — skill defers to live MCP surface on conflict"
+      },
+      "ownership_contract": {
+        "fields": [
+          "owner_org",
+          "canonical_home",
+          "mesh_distribution"
+        ],
+        "rule": "NO owner_agent. Agents mount, never own."
+      },
+      "mesh_contract": {
+        "fields": [
+          "mesh_targets",
+          "mount_type"
+        ],
+        "mount_types": {
+          "direct": "home symlinks to /root/AAA/skills (claude, codex, grok, agents, opencode)",
+          "per-skill": "symlink mounts for organ skills (kimi-code, qwen, openclaw, gemini, config-opencode)",
+          "external_dirs": "Hermes config reads organ skill dirs directly"
+        }
+      }
+    },
+    "e3e_divergence_test": {
+      "harness": "/root/AAA/scripts/e3e_skill_mesh.sh",
+      "metric": "same prompt -> all agents -> same skill/route/owner/result; target >= 90% match",
+      "verdict_rule": "below 30% match = decoration, not mesh"
+    }
   }
 }
