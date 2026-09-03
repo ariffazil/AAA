@@ -21,11 +21,11 @@ echo "$(hostname) $(ip -4 addr show | grep -oE '100\.64\.0\.[0-9]+' | head -1)"
 | | KVM8 af-forge (seat) | KVM4 kvm4-forge (workshop) | KVM2 azwaos (witness) |
 |---|---|---|---|
 | Kernel (judge) | **:8088 — THE federation kernel** | — | arifosmcp FORK (Azwa lane, NOT the judge) |
-| Organs | AAA :3001 · A-FORGE :7071/7072 · GEOX :8081 · WEALTH :18082 · WELL :18083 · arifFlow :7073 · FRAME :18085 · i-ARIF :18095 · VAULT999 · NATS | — | arifflow-internal fork :7073 · fed-router :7075 |
+| Organs | AAA :3001 · A-FORGE :7071/7072 · GEOX :8081 · WEALTH :18082 · WELL :18083 · arifFlow :7073 · FRAME :18085 · VAULT999 · NATS · i-ARIF (no port — runs via FED chains; note **:18095 = apa-github-bridge, :18092 = apa-gemini-bridge** — corrected 2026-09-04 FI-008) | — | arifflow-internal fork :7073 · fed-router :7075 |
 | FED :4000 | HAProxy front door → KVM4 | **litellm (docker, binds `100.64.0.5:4000` ONLY)** | TCP blocked (ICMP OK) |
 | Hermes | `/root/HERMES` heritage (reclaim-gated) + `/root/Hermes` case-twin shadow | **LIVE gateway** `~/.hermes` → KVM8 :8088 + :4000 | Azwa's own hermes-agent (kunci-mas vault) |
 | Coder CLIs | ALL 12 FI seats | agy, kimi, grok, aider (+ccc-remote pool) | none (federation) |
-| Web | caddy · 28 vhosts `*.arif-fazil.com` · docker data plane (pg/redis/qdrant/searxng/minio/falkor) | — | caddy · nasf.cloud |
+| Web | caddy · 25 vhost confs `/etc/caddy/vhosts/*.conf` (corrected 2026-09-04 FI-008) · docker data plane (pg/redis/qdrant/searxng/minio/falkor) | — | caddy · nasf.cloud |
 | Repos | ALL origin-synced: arifOS, AAA, A-FORGE, GEOX, WEALTH, WELL, arifFlow, arif-fazil.com, HERMES | 7 read-only mirrors (AAA behind by ff-pull, arifOS mirror stale) | SAF (azwafazil identity) |
 | Fence | UFW active | **UFW active 2026-09-03** (22/tcp + tailscale0; KVM8→KVM4 + FED verified post-enable) | public SSH filtered |
 
@@ -48,7 +48,7 @@ echo "$(hostname) $(ip -4 addr show | grep -oE '100\.64\.0\.[0-9]+' | head -1)"
 | arif-fazil.com repo | ~~FORKED~~ **RECONCILED 2026-09-03 18:09** ("Reconcile main: 65 local commits") — 0 ahead/0 behind, verified in 2026-09-04 musyawarah; row kept as history |
 | VAULT999 | ~~single copy~~ **mirror restored 2026-09-04**: `vault999-backup.timer` 03:47 nightly → KVM4 `/root/VAULT999-mirror-KVM8` (additive rsync, witness copy) |
 | KVM4 mirrors | read-only compile inputs by doctrine — **single pen = KVM8**; never commit/push from KVM4 |
-| AGENTS.md renderer | `render-agents.sh` referenced in header is PHANTOM — fragment + AGENTS.md must be synced manually |
+| AGENTS.md renderer | ~~render-agents.sh PHANTOM~~ **RESOLVED 2026-09-04 FI-008**: script exists at /root/scripts/render-agents.sh; render lag 49s — the 'phantom' claim was stale — fragment + AGENTS.md must be synced manually |
 | Machine aliases | each box answers to 3+ names across docs/memory — fingerprint (§0) is the only truth |
 | KVM2 extras | ollama :11434 (local) · :8080 public · fed-router :7074 (corrected from stale :7075 in earlier map) |
 
