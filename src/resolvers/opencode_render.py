@@ -40,7 +40,7 @@ SOT_TO_OC_PROVIDER = {
     "kimi-moonshot": "kimi",
     "minimax": "minimax",
     "groq": "groq",
-    "sea-lion": "sea-lion",
+    "sea_lion": "fed_federation",
     "gemini": "gemini",
     "cerebras": "cerebras",
     "ollama": "ollama",
@@ -95,9 +95,9 @@ MODEL_KEY_TRANSLATION = {
     "mimo/mimo-v2.5-pro-ultraspeed": "opencode-go/mimo-v2.5-pro",
     "groq/llama-3.1-8b-instant": "groq/llama-3.1-8b-instant",
     "groq/llama-3.3-70b-versatile": "groq/llama-3.3-70b-versatile",
-    "sea-lion/Qwen-SEA-LION-v4-32B-IT": "sea-lion/aisingapore/Qwen-SEA-LION-v4-32B-IT",
-    "sea-lion/Llama-SEA-LION-v3-70B-IT": "sea-lion/aisingapore/Llama-SEA-LION-v3-70B-IT",
-    "sea-lion/Gemma-SEA-LION-v4-27B-IT": "sea-lion/aisingapore/Gemma-SEA-LION-v4-27B-IT",
+    "sea-lion/Gemma-SEA-LION-v4-27B-IT": "fed_federation/aisingapore/Gemma-SEA-LION-v4-27B-IT",
+    "sea-lion/Llama-SEA-LION-v3-70B-IT": "fed_federation/aisingapore/Llama-SEA-LION-v3-70B-IT",
+    "sea-lion/Gemma-SEA-LION-v4-27B-IT": "fed_federation/aisingapore/Gemma-SEA-LION-v4-27B-IT",
     "gemini/gemini-2.5-flash": "gemini/gemini-2.5-flash",
     "cerebras/gemma-4-31b": "cerebras/gemma-4-31b",
     "openai/gpt-5.6-sol": "openrouter/kimi-k3",
@@ -435,7 +435,7 @@ def generate() -> dict:
     # Pick the lightest model from the fallback chain or deepseek-v4-flash
     fallbacks = opencode_agent.get("fallbacks", [])
     # Prefer lightweight fallbacks: ollama > groq > gemini > tokenrouter
-    lightweight_order = ["ollama/", "groq/", "gemini/", "sea-lion/", "deepseek/deepseek-v4-flash"]
+    lightweight_order = ["ollama/", "groq/", "gemini/", "fed_federation/", "deepseek/deepseek-v4-flash"]
     small_model = "deepseek/deepseek-v4-flash"
     for fb in fallbacks:
         for light in lightweight_order:
