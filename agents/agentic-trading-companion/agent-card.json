@@ -162,5 +162,14 @@
   },
   "ed25519_pubkey": "d84b489329e731d4cbc2c7ce07ad9fb4274e299ff853384594cb4cd72ddbd598",
   "identity_fingerprint": "3dd72cd7e4c180b994e42b3654d34ceb",
-  "identity_bound_at": "2026-07-29T13:55:07.268036+00:00"
+  "identity_bound_at": "2026-07-29T13:55:07.268036+00:00",
+  "signatures": [
+    {
+      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
+      "signature": "R50R9R4HNtL2rpKA-hTd6Q7N5KWVP5UP08Qy8q3IiGxO912k3An4nM-tQPFvjcKgr9Nw4IyzfU_wNlu_VHu0CA",
+      "header": {
+        "kid": "arifos-a2a-card-2026-%q"
+      }
+    }
+  ]
 }

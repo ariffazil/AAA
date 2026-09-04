@@ -893,11 +893,11 @@
   "fi": "FI-OPENCODE",
   "signatures": [
     {
-      "did": "did:arif:aaa",
-      "proofValue": "uB5phEznmN1R3ZjHVg1jKvA2I4JTsjTCjYDumwEDH3Hdr2Benc6jGsHLTGP9t+EniScQDlwRG3dNM898X5i8Dg==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-08-21T05:51:38Z",
-      "type": "Ed25519Signature2020"
+      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
+      "signature": "ybQNZVzVYE3DKOmsYcKXsPRCGA8ufOD9pZchxjnQeOAAg79fOKN_6cFn8DJOq5M8DILy0aklPICbRKk6vvmECA",
+      "header": {
+        "kid": "arifos-a2a-card-2026-%q"
+      }
     }
   ]
 }
