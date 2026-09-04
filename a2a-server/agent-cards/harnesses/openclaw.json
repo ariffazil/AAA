@@ -15,7 +15,7 @@
   "provider": {
     "organization": "arifOS Federation",
     "system": "AAA Control Plane + OpenClaw Runtime",
-    "runtime": "OpenClaw (Node.js, openclaw/openclaw main)"
+    "runtime": "OpenClaw 2026.9.1 (ad6fe23) on KVM4 (100.64.0.5:18789)"
   },
   "warga_binding": {
     "citizenship": "warga-aaa",

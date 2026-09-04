@@ -9,9 +9,11 @@
     "principle_origin": "Qwen CLI harness on af-forge, bridged into arifOS federation"
   },
   "description": "Qwen Code CLI forge instrument — lightweight reasoning and exploration harness on af-forge. Bound to AAA as a bridge-mode FI citizen. F1-F13 enforced.",
-  "version": "2.0.0",
+  "version": "2.1.0",
+  "qwen_version": "0.23.0",
+  "_card_synced": "2026-09-05 by FI-008 — updated to Qwen Code 0.23.0 release install",
   "model": "qwen / MiniMax-M3 bridge",
-  "binary": "/root/.npm-global/bin/qwen",
+  "binary": "/root/.local/bin/qwen",
   "config": "/root/.qwen/settings.json",
   "tier": "FI-003",
   "role": "forge_instrument",

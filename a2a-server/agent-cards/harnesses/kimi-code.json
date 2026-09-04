@@ -11,7 +11,7 @@
   "description": "Kimi Code CLI forge instrument — Moonshot coding harness, warga-aaa FI-008. Wired to 12 federation MCP servers (arifos, aforge, arifFlow, fed, geox, wealth, well, minimax, minimax-media, serena, context7, playwright). Subagent model pool active (cheap explore, frontier reason). Skills surface curated to 157 (2026-08-21). F1-F13 enforced via kernel + 12 witness hooks. v2.5.0 (2026-08-21): AGI-coder upgrade + card truth-sync.",
   "version": "2.5.0",
   "model": "glm-5.3 via zai-coding-plan (default, 1M ctx) | k3 via managed:kimi-code OAuth | 98 model aliases / 8 providers (FED SOT: /root/.config/federation-models.json)",
-  "_card_synced": "2026-08-21 by FI-008 — truth-sync: 12 MCP live, 12 hooks live, subagent model pool active, skills curated 340->157",
+  "_card_synced": "2026-09-05 by FI-008 — updated to Kimi Code 0.41.0; 12 MCP live, 12 hooks live, subagent pool active",
   "binary": "/root/.kimi-code/bin/kimi",
   "config_home": "/root/.kimi-code",
   "kimi_code_binary": "/root/.kimi-code/bin/kimi",

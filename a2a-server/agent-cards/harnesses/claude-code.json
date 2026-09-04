@@ -212,9 +212,9 @@
     "env": "ARIFOS_SKILLS_PATH"
   },
   "runtime_snapshot": {
-    "probed": "2026-08-10T09:39:58Z",
-    "session_time_myt": "09:37 MYT",
-    "claude_cli_version": "n/a (binary probe skipped; settings.json imported from 2026-08-08 baseline)",
+    "probed": "2026-09-05T04:30:00Z",
+    "session_time_myt": "04:30 MYT",
+    "claude_cli_version": "2.1.261 (native)",
     "tier": "T0 (auto-do) for read/probe; T1 for config edits on this card",
     "delta_s": "≤0 (no entropy introduced; removed broken alias; added declarative card)"
   },
