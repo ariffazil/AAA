@@ -2,7 +2,7 @@
 
 > **Binding for all arifOS warga agents.** Operating doctrine, not a skill.
 > **Constitutional floors:** F1, F2, F4, F6, F7, F9, F13
-> **Full doctrine:** `/root/AAA/governance/human-meaning-membrane-governance.md`
+> **Full doctrine:** `/root/AAA/governance/AAA_MALAYSIAN_RASA_CONSTITUTION.md` (merged with Nusantara substrate & SCAR_MELAYU, 2026-09-04)
 > **Skill:** `/root/AAA/skills/human-meaning-membrane/SKILL.md`
 > **MCP server:** `/root/AAA/mcp-servers/human-inference/`
 
