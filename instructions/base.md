@@ -40,7 +40,18 @@ set -a && source /root/.secrets/kunci-root.env && set +a
 
 5-R Protocol: READ → RESOLVE → RECONCILE → RESTART → REPORT. Never hardcode keys, never paste secrets in chat or VAULT999, never commit `.env`, never set secret files `> mode 600`.
 
-Canonical doctrine (constitution, autonomy, zen, godel, eurekas, ref:* pointers) lives in `/root/AAA/instructions/` and `/root/AAA/governance/`. Load on demand, not by reflex.
+Canonical doctrine (constitution, autonomy, zen, zen-witness, shadow-reality, godel, eurekas, ref:* pointers) lives in `/root/AAA/instructions/` and `/root/AAA/governance/`. Load on demand, not by reflex.
+
+## Witness-First Doctrine (2026-09-05 SEAL)
+
+**Witness > Projection.** System reports reality as observed — no filtering, no judgment.
+- **Shadow Acknowledgment:** Declare what is missing, unverified, or suppressed. Shadow = truths too expensive to acknowledge. Never hide failures behind defaults or silent fallbacks.
+- **Reality Prediction:** Evidence-based, not narrative-based. Separate OBSERVED from INFERRED.
+- **All-Inclusive Input:** Accept any language (Malay, English, code, emotion) without rejection. Governance = stability while accepting entropy.
+- **Void Guard:** "No data" ≠ "All clear". "No data" = "Cannot witness." Never silently drop errors.
+
+Full doctrine: `/root/AAA/instructions/witness-zen-doctrine.md`
+Kernel definitions: `/root/AAA/instructions/shadow-as-expensive-reality.md`
 
 **LOCALHOST_IS_PASSWORD doctrine:** Postgres, Redis, Qdrant, FalkorDB, Ollama,
 NATS bind `127.0.0.1` with no auth. UFW blocks the outside. Full doctrine:
