@@ -95,17 +95,21 @@ both.
     },
 
     # NEW: Somatic proxy (Layer 1 source — voice cadence)
+    # GUARDRAIL: epistemic_label=INT mandatory (never OBS for derived state)
     "somatic_proxy": {
         "source": "voice-cadence",       # explicit (not WELL until Layer 2)
+        "epistemic_label": "INT",        # GUARDRAIL: derived, never OBS
         "wpm": 172,                       # OBS — measured
         "pitch_mean_hz": 192,             # OBS — measured
         "hesitation_ms": 45,              # OBS — measured (low = rushed)
         "rms_variance": 0.18,             # OBS — measured (high = intense)
-        "derived_state": "elevated",      # INT — F7 cap 0.90
-        "derived_confidence": 0.71,       # F7-capped
+        "derived_state": "elevated",      # INT — F7 cap 0.75 (elevated is least certain)
+        "derived_confidence": 0.71,       # GUARDRAIL: F7-capped per state class
+        "derivation_basis": "wpm>180 + hesitation<200ms + pitch>200Hz",  # GUARDRAIL: must cite measurements
     },
 
     # NEW: Music intent (this skill's contribution)
+    # GUARDRAIL: semantic_route_audit mandatory on every emission
     "music_intent": {
         "role": "bed",                    # silence | bed | warn | none
         "bpm_target": 70,                 # derived from WPM / ~2.3
@@ -115,6 +119,10 @@ both.
         "kill_on_barge_in": true,         # mandatory on voice-mode path
         "no_vocal": true,                 # no lyric, no vocal melodic
         "no_i_arif": true,                # hard DENY for i-ARIF voice_id
+        "confidence": 0.71,               # GUARDRAIL: F7 cap, matches proxy confidence
+        "reason": "wpm=172 derived elevated → down-regulate via breath-rate match",  # GUARDRAIL: derivation chain
+        "reversible": true,               # GUARDRAIL: always reversible
+        "semantic_route_audit": "wpm→bpm direct derivation, no emotion inference",  # GUARDRAIL: audit trail
     },
 
     # Falsification gate (Layer 2 — placeholder for now)
@@ -140,14 +148,17 @@ both.
 
 ```python
 # AAA-asr-glm-ingest / AAA-audio-emd-pipeline produces these fields.
+# GUARDRAIL (2026-09-04): epistemic_label=INT, derivation_basis, confidence≤0.75
 somatic_proxy = {
     "source": "voice-cadence",
+    "epistemic_label": "INT",              # GUARDRAIL: never OBS for derived state
     "wpm": compute_wpm(last_n_utterances),         # OBS
     "pitch_mean_hz": compute_pitch_mean(waveform),  # OBS
     "hesitation_ms": compute_pause_distribution(),  # OBS
     "rms_variance": compute_rms_variance(waveform),  # OBS
-    "derived_state": derive_state_int(...),          # INT, F7 ≤ 0.90
-    "derived_confidence": F7_cap(0.90),
+    "derived_state": derive_state_int(...),          # INT, F7 ≤ 0.75
+    "derived_confidence": F7_cap(0.75),              # GUARDRAIL: lowered from 0.90
+    "derivation_basis": f"wpm={wpm},pitch={pitch},hes={hes}",  # GUARDRAIL: cite measurements
 }
 ```
 
@@ -157,17 +168,20 @@ somatic_proxy = {
 - `derived_state`, `derived_confidence` → `[INT]` (interpretation, F7 capped).
 - The whole object is labeled `somatic_proxy` — never `hang_state`, `user_stress`, `arif_mood`.
 
-**Honest derivation rules (F7 cap):**
+**Honest derivation rules (F7 cap — updated 2026-09-04):**
 
-| WPM | Hesitation | Pitch mean | Derived state (INT) | Confidence |
-|---|---|---|---|---|
-| < 100 | > 800 ms | < 150 Hz | `low_arousal` | ≤ 0.85 |
-| 100–140 | 400–800 ms | 150–200 Hz | `stable` | ≤ 0.90 |
-| 140–180 | 200–400 ms | 180–220 Hz | `focused` | ≤ 0.85 |
-| > 180 | < 200 ms | > 200 Hz | `elevated` | ≤ 0.75 |
+| WPM | Hesitation | Pitch mean | Derived state (INT) | Confidence | Required basis |
+|---|---|---|---|---|---|
+| < 100 | > 800 ms | < 150 Hz | `low_arousal` | ≤ 0.85 | wpm + pitch + hesitation |
+| 100–140 | 400–800 ms | 150–200 Hz | `stable` | ≤ 0.90 | wpm + pitch |
+| 140–180 | 200–400 ms | 180–220 Hz | `focused` | ≤ 0.85 | wpm + hesitation |
+| > 180 | < 200 ms | > 200 Hz | `elevated` | ≤ 0.75 | wpm + pitch + hesitation |
 
 **Two listeners hear two intents.** Any agent that reports derived_state
-with confidence > 0.90 has overclaimed. Return VOID.
+with confidence > cap has overclaimed. Return VOID.
+
+**GUARDRAIL (2026-09-04):** Every derived_state MUST carry `derivation_basis`
+citing which OBS measurements support the INT. No basis = VOID.
 
 ### Layer 2 source (HOLD until WELL sensors live)
 
