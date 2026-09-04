@@ -1,40 +1,49 @@
-# Contributing to AAA
+# Contributing to arifOS
 
-> **SOT:** 2026-07-25 | **DITEMPA BUKAN DIBERI**
+Thank you for your interest in contributing to the arifOS Federation.
 
-AAA is the cockpit and A2A mesh hub of the arifOS Federation. It routes, displays, and registers agents — it never judges or executes.
+## Code of Conduct
 
-## Before You Start
+We expect all contributors to uphold a culture of respect, intellectual honesty,
+and governance-first thinking. arifOS exists because ungoverned AI is a liability,
+not an asset.
 
-1. Read the [README](README.md) — understand what AAA IS and IS NOT
-2. Understand the agent lanes: 333-AGI, 555-ASI, 888-APEX, 777-forge
-3. Read [CLAUDE.md](CLAUDE.md) — agent doctrine
+## How to Contribute
 
-## Setup
+1. **Fork** the repository you want to contribute to.
+2. **Branch** from `main` — feature branches must be descriptive.
+3. **Commit** with conventional commit messages: `feat:`, `fix:`, `docs:`, `chore:`, `test:`.
+4. **Test** your changes before opening a PR. Each organ has its own test suite.
+5. **Open a Pull Request** against `main`.
 
-```bash
-git clone git@github.com:ariffazil/AAA.git && cd AAA
-npm install && npm run build
-npm run a2a:server          # dev A2A gateway
-```
+## Pull Request Requirements
 
-## Making Changes
+Every PR must include:
+- A clear description of **what** changed and **why**.
+- Reference to an issue or session discussion (if applicable).
+- Evidence that tests pass (CI must be green).
+- For structural changes: an updated README or docs file.
 
-1. **Fork → Branch → Edit → Test → PR**
-2. Run `npm test` before pushing (lint + build + security + stabilization)
-3. Run `npm run validate:aaa` for agent card validation
+## Constitutional Alignment
 
-## Boundaries
+arifOS is a governed system. Changes that affect:
+- **Constitutional floors (F1–F13)** require explicit sovereign approval.
+- **MCP tool contracts** must maintain backward compatibility or include a migration guide.
+- **VAULT999 schema** changes require a seal approval and migration script.
 
-- AAA routes and displays — never adjudicates (arifOS does that)
-- AAA registers agents — never executes (A-FORGE does that)
-- No agent self-authorization
-- Respect the Zen 99 skill cap
+## License
 
-## Federation
+Unless otherwise noted, this project is licensed under the **AGPL-3.0**.
+See [LICENSE](LICENSE) for the full text. The GEOX organ is licensed under the
+**Business Source License 1.1** (BSL-1.1); see the GEOX repository for details.
 
-AAA is one of 7 organs. See [ariffazil/ariffazil](https://github.com/ariffazil/ariffazil) for the federation map.
+By contributing, you agree that your contributions will be licensed under the
+same license as the repository.
 
----
+## Governance
 
-*Maintained under F13 SOVEREIGN by Muhammad Arif bin Fazil.*
+The arifOS Federation is governed by a constitutional kernel (F1–F13).
+External contributions are welcome but subject to constitutional review before
+merging into production branches.
+
+**DITEMPA BUKAN DIBERI** — Forged, Not Given.
