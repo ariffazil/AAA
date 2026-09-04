@@ -46,3 +46,24 @@
 
 ## Public artifacts
 - `/var/www/html/status.json` removed — stale since 2026-08-18 (generator in .hermes-cron-ban-20260904); AGENTS.md discovery table still references it (holds.txt flagged)
+
+## Judge-verdict refinements (2026-09-04, HOLD-class — NOT final retirement)
+Per 888-APEX-style review: these were removed from the crontab while already PAUSED (non-firing,
+zero behavior change), but are **HOLD pending living-consumer evidence**, restorable verbatim
+from removed-paused-lines.txt:
+- `sync-cockpit-static.sh` — HOLD: need consumer evidence
+- `claude-code-verify-flusher.sh` — HOLD: need consumer evidence
+- `qwen-free-quota-probe.sh` — HOLD: need consumer evidence
+- `gov-a007-completion-verifier` — HOLD: parked in SOT comments, unit on disk not enabled
+
+## P0 executed post-verdict (2026-09-04 ~21:45)
+- **Triadic snapshot RESURRECTED** — root cause: original hermetic cron snapshotter died 2026-08-20;
+  a parallel lane's timer (21:26 today) wrote a health digest to a path nobody reads
+  (`WELL/state/`), while consumers read `/state/` (nobody wrote). Fix: writer v2 composes the
+  full triadic assessment via the organ's own phase4 tool, writes BOTH paths, runs under organ
+  venv via triadic-snapshot.timer (60s). End-to-end proven: MCP `well_get_triadic_snapshot`
+  returned `snapshot_age_seconds: 19.2` with live planes (human 0.776 / machine 0.608 /
+  governance 0.0 — matching the live GOVERNANCE_COLLAPSE hold).
+  Rollback: `triadic_snapshot_writer.py.bak-20260904-FI008` + backup service unit.
+- **FalkorDB root cause**: intentional decommission (clean SIGTERM, RDB saved, exit 0) matching
+  same-day graphiti-falkordb registry deprecation. No restart policy. `docker rm` pending Hermes.
