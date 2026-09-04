@@ -122,16 +122,6 @@
     "action": "Converted capabilities from string array to object (arifOS/agent-card/v2.2.0 schema compliance). Added version:0.9.0.",
     "delta_S": "\u2264 0 (schema compliance, no behavior change)"
   },
-  "signatures": [
-    {
-      "did": "did:arif:prospect-maturation",
-      "proofValue": "PENDING_KIMI_INIT_2026-07-14",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-07-14T13:13:50Z",
-      "type": "Ed25519Signature2020",
-      "note": "Placeholder \u2014 sovereign signature required for live SEAL-grade operations. Pending F13 ack."
-    }
-  ],
   "covenants": [
     "AAA_SHARED_SESSION_COVENANT@v1"
   ],
@@ -152,5 +142,14 @@
   },
   "ed25519_pubkey": "b3fcde76bab5256fe91f4d8b407ce4e99fe8e62a265e18c715b6fa25656410ea",
   "identity_fingerprint": "ec0b3a3f902037e227ce302749ef5d62",
-  "identity_bound_at": "2026-07-29T13:55:07.277252+00:00"
+  "identity_bound_at": "2026-07-29T13:55:07.277252+00:00",
+  "signatures": [
+    {
+      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
+      "signature": "5zgSLEfBeJJh4b4Fqxgv-yzuGA7kNV-FNrgCsnLwzaL1eYabJA4ZhLsFp1DXqxlQoP8EHn6jalyZAdVLKYeDCw",
+      "header": {
+        "kid": "arifos-a2a-card-2026-%q"
+      }
+    }
+  ]
 }
