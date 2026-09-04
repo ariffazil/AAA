@@ -2,7 +2,7 @@
 
 > Verified live 2026-09-03 by FI-003 (from KVM8). Re-probe before acting — this map ages.
 > Placement doctrine: `KVM4-WORKER/FED_PLACEMENT.md` (2026-09-02, F13 ratification pending):
-> **KVM8 = Truth (Court) · AAA = Interface (Cockpit) · KVM4 = Execution (Workshop) · KVM2 = Witness (pending)**
+> **KVM8 = Truth (forge) · AAA = Interface (Cockpit) · KVM4 = Execution (workshop) · KVM2 = Witness — labels ratified 2026-09-04 F13**
 
 ## 0. Which machine am I on? — run FIRST, every session
 
@@ -12,13 +12,13 @@ echo "$(hostname) $(ip -4 addr show | grep -oE '100\.64\.0\.[0-9]+' | head -1)"
 
 | Fingerprint | Machine | Canonical name | Aliases (do not use as truth) |
 |---|---|---|---|
-| `forge` + 100.64.0.2 | KVM8 | **af-forge** | vps, VPS-1325122, m1 |
-| `srv1946043` + 100.64.0.5 | KVM4 | **kvm4-forge** | forge-core |
+| `forge` + 100.64.0.2 | KVM8 | **forge** | af-forge (legacy), vps, VPS-1325122, m1 |
+| `srv1946043` + 100.64.0.5 | KVM4 | **workshop** | kvm4-forge (ssh alias), forge-core (retired) |
 | `flow-edge` + 100.64.0.4 | KVM2 | **azwaos** | flow-edge, m2, wawa |
 
 ## 1. What lives where
 
-| | KVM8 af-forge (seat) | KVM4 kvm4-forge (workshop) | KVM2 azwaos (witness) |
+| | KVM8 forge (truth) | KVM4 workshop (execution) | KVM2 witness |
 |---|---|---|---|
 | Kernel (judge) | **:8088 — THE federation kernel** | — | arifosmcp FORK (Azwa lane, NOT the judge) |
 | Organs | AAA :3001 · A-FORGE :7071/7072 · GEOX :8081 · WEALTH :18082 · WELL :18083 · arifFlow :7073 · FRAME :18085 · VAULT999 · NATS · i-ARIF (no port — runs via FED chains; note **:18095 = apa-github-bridge, :18092 = apa-gemini-bridge** — corrected 2026-09-04 FI-008) | — | arifflow-internal fork :7073 · fed-router :7075 |

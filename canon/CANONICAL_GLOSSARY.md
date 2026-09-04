@@ -35,7 +35,7 @@ ARIF
         ├── WELL GEOX WEALTH  (domain reality)
         ├── HERMES            (route / sense-bridge)
         ├── FED               (route models)
-        └── FLAME             (verify cheap)
+        └── ~~FLAME~~         (RETIRED 2026-09-04 → FED flash lane)
 ```
 
 ---
@@ -44,11 +44,13 @@ ARIF
 
 | Canonical | Friendly | Node name | VPS | Plane | Never |
 |---|---|---|---|---|---|
-| **KVM8 (af-forge)** | af-forge | court-core | 1325122 | Court / survive | `forge` ≠ forge-core. `hostname=forge` is drift. |
-| **KVM4 (forge-core)** | kvm4-forge | forge-core | 1946043 | Workshop / explore | Not Court. Not “the 4-CPU kernel”. |
-| **KVM2 (flow-dmz)** | azwaos | flow-dmz | 1642546 | Witness | Live hostname `flow-edge` is an alias, not a fourth node. OpenClaw home. Do not kill Azwa Hermes (different bot). |
+| **KVM8 (forge)** | forge | forge | 1325122 | Forge / survive | A-FORGE = organ (caps+dash), never the machine. forge_work = sketchpad. |
+| **KVM4 (workshop)** | workshop | srv1946043 | 1946043 | Workshop / explore | kvm4-forge = ssh alias (kept). forge-core label retired 2026-09-04. Not forge. |
+| **KVM2 (witness)** | witness | azwaos | 1642546 | Witness | Live hostname `flow-edge` is an alias, not a fourth node. OpenClaw home. Do not kill Azwa Hermes (different bot). |
 
-Always: `KVM8 (af-forge)` not `af-forge` as if it were a second machine.
+Always: `KVM8 (forge)` — forge is the machine; A-FORGE is the organ. Never confuse.
+
+> **Disambiguation (ratified 2026-09-04, F13 "execute all"):** forge = machine KVM8 (hostname truth) · A-FORGE = execution organ (caps+dash) · forge-core = retired → workshop (KVM4) · forge_work = sketchpad (untouched) · azwaos = witness (KVM2).
 
 ---
 
@@ -65,7 +67,6 @@ Always: `KVM8 (af-forge)` not `af-forge` as if it were a second machine.
 | GEOX | Compute earth | Seal geology |
 | HERMES | Route / bridge | Judge, seal, dual-poll |
 | FED | Route models | Own truth |
-| FLAME | Verify cheap | Execute |
 | FRAME | Measure | Verdict |
 | OpenClaw | Encode / sense | Live on KVM8 as home |
 | CCC | Build on KVM4 | Spawn on KVM8 |
@@ -80,9 +81,9 @@ Always: `KVM8 (af-forge)` not `af-forge` as if it were a second machine.
 | Reality Engineering | Shared world before action. Live probe or UNKNOWN. |
 | Theory of Anomalous Contrast (TAC) | Intelligence at Expected ≠ Observed. Operational form of Hang Ingat Balik L4/L5. |
 | Hang Ingat Balik | Reality whispers before it shouts. |
-| Capability Graph | Who may do what. Court owns. |
+| Capability Graph | Who may do what. forge owns. |
 | Reality Drift | Two agents, two worlds, same names. |
-| Entropy Separation | Court survive / workshop explore. Chaos is placed, not destroyed. |
+| Entropy Separation | forge survive / workshop explore. Chaos is placed, not destroyed. |
 | SEAL HOLD VOID SABAR | Verdict grammar. Kernel only. |
 
 ---
@@ -116,8 +117,10 @@ Linux FHS (`/ /root /etc /var /usr`) · DNS IP TCP UDP HTTP HTTPS SSH · Docker 
 | Drift | Use instead |
 |---|---|
 | `arifOS` alone | arifOS Kernel **or** arifOS Federation |
-| `forge` as workshop | KVM8 hostname is Court drift. Workshop is **KVM4 (forge-core)** |
-| `af-forge` alone | **KVM8 (af-forge)** |
+| `forge-core` | **KVM4 (workshop)** |
+| `court` / `court-core` | **KVM8 (forge)** |
+| FLAME (retired 2026-09-04, RM0 exhausted, 888 directive) | FED litellm flash lane (KVM4 :4000) — see deprecation-registry |
+| `af-forge` (legacy alias) | **KVM8 (forge)** |
 | `primary node` / `the VPS` | KVM8 / KVM4 / KVM2 with canonical |
 | `arif-fs-home`, `arif-root-space` | FHS |
 | New era files for TAC | Hang Ingat Balik + this freeze |
@@ -130,7 +133,7 @@ No mutate unless answered:
 
 1. What changed?
 2. Who owns it? (canonical name)
-3. Boundary: Court / Workshop / Witness — which?
+3. Boundary: forge / workshop / witness — which?
 4. Reality delta (EXPECTED / OBSERVED / ANOMALY / LESSON)
 5. Glossary impact — new name? **Forbidden unless F13.**
 
