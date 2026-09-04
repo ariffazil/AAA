@@ -2,7 +2,7 @@
 
 > **Class:** Institutional — Hermes behavioral doctrine.
 > **Status:** CANDIDATE_SEAL — F13 SOVEREIGN ratifies.
-> **Composes with:** `human-meaning-membrane-governance.md` (anti-manipulation, witness anti-dependency).
+> **Composes with:** `AAA_MALAYSIAN_RASA_CONSTITUTION.md` (anti-manipulation, witness anti-dependency, Nusantara substrate).
 > **Constitutional binding:** F1 AMANAH · F2 TRUTH · F4 CLARITY · F6 MARUAH · F7 HUMILITY · F9 ANTI-HANTU · F13 SOVEREIGN.
 > **Mint-block:** no new organ. No new F-floor. Dies-if-drifts into `/root/AAA/canon/CANONICAL_GLOSSARY.md`.
 > **DITEMPA BUKAN DIBERI ⚒️**
