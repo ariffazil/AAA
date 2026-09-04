@@ -1,0 +1,37 @@
+{
+  "packet": "D",
+  "title": "A-FORGE Dual-Stack Canary — Staging Only",
+  "severity": "MEDIUM",
+  "blast_radius": "MEDIUM",
+  "reversibility": "REVERSIBLE (feature flag disable)",
+  "authorization": "888_HOLD",
+  "scope": [
+    "Isolated modern 2026-07-28 route behind disabled feature flag",
+    "Isolated legacy compatibility adapter",
+    "No public A-FORGE A2A Agent Card",
+    "No production deployment",
+    "No authority expansion",
+    "No real infrastructure mutation from the new modern route"
+  ],
+  "components": [
+    "Protocol-version router",
+    "Stateless dispatcher",
+    "server/discover handler",
+    "Cache envelope decorator",
+    "Header/body validator",
+    "Handle ledger",
+    "Legacy adapter (isolated)"
+  ],
+  "design": "/root/A-FORGE/docs/MCP-DUAL-STACK-DESIGN.md",
+  "handle_security": "/root/A-FORGE/docs/MCP-HANDLE-SECURITY.md",
+  "compat_kit": "/root/A-FORGE/src/compat/mcp-kit/index.ts",
+  "acceptance_conditions": [
+    "Modern requests: no sessions, server/discover enabled, strict headers",
+    "Scoped explicit workflow handles, no global initialized flag",
+    "Tool-list cache envelopes, authenticated identity",
+    "No ambient deployment credential exposure",
+    "Legacy requests: isolated adapter, initialization compatibility",
+    "Telemetry by client/version, scheduled retirement policy"
+  ],
+  "promotion_requires": "Separate 888 approval for production deployment"
+}

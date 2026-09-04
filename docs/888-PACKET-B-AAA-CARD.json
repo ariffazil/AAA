@@ -1,0 +1,27 @@
+{
+  "packet": "B",
+  "title": "AAA Public Card Correction — Remove A-FORGE + Fix protocolVersion",
+  "severity": "HIGH",
+  "blast_radius": "MEDIUM",
+  "reversibility": "REVERSIBLE (card replacement)",
+  "authorization": "888_HOLD",
+  "scope": [
+    "Remove all A-FORGE endpoint, tool, and skill references from public agent card",
+    "Remove stale top-level protocolVersion: 1.2",
+    "Retain only valid supportedInterfaces[] declarations",
+    "Keep all execution capabilities internal and arifOS-gated",
+    "No signing-key rotation, new authority, endpoint addition, or execution change"
+  ],
+  "changes": [
+    "Remove a-forge-mcp from federation_organs extension",
+    "Delete top-level protocolVersion field",
+    "Add supportedInterfaces[] with protocolVersion 1.0",
+    "Retain all other extensions unchanged"
+  ],
+  "sanitized_candidate": "/root/AAA/agents/aaa-gateway/agent-card-sanitized.json",
+  "current_card": "https://aaa.arif-fazil.com/.well-known/agent-card.json",
+  "violations": [
+    "A-FORGE URL publicly discoverable (hexagon invariant)",
+    "protocolVersion: 1.2 does not exist in A2A spec"
+  ]
+}

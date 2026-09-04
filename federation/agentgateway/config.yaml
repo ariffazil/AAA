@@ -1,0 +1,88 @@
+# agentgateway v1.5.0 — arifOS FED MCP federation
+# Port :7080 — unified MCP endpoint for all organs
+# F1-F13 constitutional floors compiled to CEL rules
+# Default deny — only explicitly allowed tools pass
+
+mcp:
+  port: 7080
+  policies:
+    cors:
+      allowOrigins:
+      - "*"
+      allowHeaders:
+      - "*"
+      exposeHeaders:
+      - "Mcp-Session-Id"
+    backendAuth:
+      passthrough: {}
+    mcpAuthorization:
+      rules:
+      # ═══ OBSERVATION (free, no approval needed) ═══
+      # arifOS observation tools
+      - 'mcp.tool.name == "arif_observe"'
+      - 'mcp.tool.name == "arif_think"'
+      - 'mcp.tool.name == "arif_route"'
+      - 'mcp.tool.name == "arif_memory"'
+      # A-FORGE observation tools
+      - 'mcp.tool.name == "forge_search"'
+      - 'mcp.tool.name == "forge_fetch"'
+      - 'mcp.tool.name == "forge_research"'
+      - 'mcp.tool.name == "forge_memory"'
+      - 'mcp.tool.name == "forge_chart"'
+      - 'mcp.tool.name == "forge_vault"'
+      - 'mcp.tool.name == "forge_probe"'
+      - 'mcp.tool.name == "forge_status"'
+      - 'mcp.tool.name == "forge_health_check"'
+      - 'mcp.tool.name == "forge_registry"'
+      - 'mcp.tool.name == "forge_registry_status"'
+      - 'mcp.tool.name == "forge_shell_status"'
+      - 'mcp.tool.name == "forge_shell_ledger"'
+      - 'mcp.tool.name == "forge_shell_alert_history"'
+      - 'mcp.tool.name == "forge_vps_ports"'
+      - 'mcp.tool.name == "forge_vps_services"'
+      - 'mcp.tool.name == "forge_vps_cron"'
+      - 'mcp.tool.name == "forge_fingerprint_check"'
+      - 'mcp.tool.name == "forge_surface_audit"'
+      - 'mcp.tool.name == "forge_surface_guard"'
+      - 'mcp.tool.name == "forge_canonize"'
+      - 'mcp.tool.name == "forge_wm_gaps"'
+      - 'mcp.tool.name == "forge_wm_stats"'
+      - 'mcp.tool.name == "forge_wm_quality"'
+      - 'mcp.tool.name == "forge_experience_query"'
+      - 'mcp.tool.name == "forge_skill_select_query"'
+      - 'mcp.tool.name == "forge_skillstore_read"'
+      - 'mcp.tool.name == "forge_entropy_sweep"'
+      - 'mcp.tool.name == "forge_isomorphism_check"'
+      - 'mcp.tool.name == "forge_verify_timeline"'
+      - 'mcp.tool.name == "forge_worktree"'
+      - 'mcp.tool.name == "forge_forge_agent"'
+      - 'mcp.tool.name == "forge_forge_status"'
+      - 'mcp.tool.name == "forge_forge_job"'
+      # GEOX tools (all observation)
+      - 'mcp.tool.name.startsWith("geox_")'
+      # WEALTH tools (all observation)
+      - 'mcp.tool.name.startsWith("capital_")'
+      - 'mcp.tool.name.startsWith("wealth_")'
+      # WELL tools (all observation)
+      - 'mcp.tool.name.startsWith("well_")'
+      # ═══ JUDGMENT (requires agent identity) ═══
+      - 'mcp.tool.name == "arif_judge"'
+      # ═══ IRREVERSIBLE (requires approval_id from arif_judge SEAL) ═══
+      # These tools are DENIED by default (no matching rule = deny)
+      # They will be allowed once JWT approval_id is wired in Hour 6
+  targets:
+  - name: arifos
+    mcp:
+      host: http://localhost:8088/mcp
+  - name: aforge
+    mcp:
+      host: http://localhost:7072/mcp
+  - name: geox
+    mcp:
+      host: http://localhost:8081/mcp
+  - name: wealth
+    mcp:
+      host: http://localhost:18082/mcp
+  - name: well
+    mcp:
+      host: http://localhost:18083/mcp

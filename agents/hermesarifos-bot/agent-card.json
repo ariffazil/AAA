@@ -1,7 +1,20 @@
 {
-  "id": "hermesarifos-bot", "name": "Hermes Archive Bot — Gateway 4",
+  "id": "hermesarifos-bot",
+  "name": "Hermes Archive Bot \u2014 Gateway 4",
   "description": "Memory/archive via @hermesarifos_bot. VAULT999 queries, federation history.",
   "url": "https://forge.arif-fazil.com/webhook/hermesarifos",
-  "gateway": 4, "bot": "@hermesarifos_bot", "port": 8092,
-  "authority": "DISPLAY_ONLY", "status": "active"
+  "gateway": 4,
+  "bot": "@hermesarifos_bot",
+  "port": 8092,
+  "authority": "DISPLAY_ONLY",
+  "status": "active",
+  "signatures": [
+    {
+      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
+      "signature": "Q_T3KQQLQrk3dgf7wiBQuOnlnWPZJ9yZxJ5iUeZLVafurGrUaG6IdMcatapJOtOTytExMaIiT9Wns9TODRrJAA",
+      "header": {
+        "kid": "arifos-a2a-card-2026-%q"
+      }
+    }
+  ]
 }

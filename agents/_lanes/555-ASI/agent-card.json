@@ -42,5 +42,14 @@
     "license": "AGPL-3.0",
     "source_repo": "AAA",
     "fingerprint_short": "2e98e75c0c5133d8"
-  }
+  },
+  "signatures": [
+    {
+      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
+      "signature": "gw8LZdsorcBdmHf0T8TgHlDWacPtDKZeBeoHIYsthVKC-7khQ_Az6p88QHDcCnpAobfTDQciPVL3bMLLjGTmAw",
+      "header": {
+        "kid": "arifos-a2a-card-2026-%q"
+      }
+    }
+  ]
 }

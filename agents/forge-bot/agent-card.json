@@ -1,6 +1,6 @@
 {
   "id": "forge-bot",
-  "name": "FORGE Bot — Gateway 3",
+  "name": "FORGE Bot \u2014 Gateway 3",
   "description": "A-FORGE execution via @arifOS_bot. /health /status /fq /deploy /who",
   "url": "https://forge.arif-fazil.com/webhook/forge",
   "gateway": 3,
@@ -11,16 +11,25 @@
   "telegram_posting": {
     "telegram_posting": {
       "bot": "@arifOS_bot",
-      "bot_name": "🔥FORGE🔥 FORGE Bot",
+      "bot_name": "\ud83d\udd25FORGE\ud83d\udd25 FORGE Bot",
       "bot_id": "8727562763",
       "token_env": "FORGE_BOT_TOKEN",
       "token_vault": "/root/.secrets/kunci-mas.env",
       "group_chat_id": "-1003753855708",
       "post_tool": "/usr/local/bin/forge-post",
-      "identity_header": "FORGE / 🔥FORGE / @arifOS_bot",
+      "identity_header": "FORGE / \ud83d\udd25FORGE / @arifOS_bot",
       "rule": "Post to AAA group via FORGE bot only. One post per session. Token from vault, never hardcode.",
       "wired_at": "2026-08-08T05:44:00Z",
-      "canon": "/root/AAA/docs/9-ATLAS-GENOME.md §7"
+      "canon": "/root/AAA/docs/9-ATLAS-GENOME.md \u00a77"
     }
-  }
+  },
+  "signatures": [
+    {
+      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
+      "signature": "CBeJ8J8BaB2RWE5rdcosttl9rtMcX7wxF-zmp0695UhUQDBHL8wJFZM71GLv8S-PAolth22kH8ZoP4wAgjB0BQ",
+      "header": {
+        "kid": "arifos-a2a-card-2026-%q"
+      }
+    }
+  ]
 }

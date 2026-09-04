@@ -107,5 +107,14 @@
   },
   "bound_to": "AAA",
   "model": "i-arif",
-  "fi": "FI-HERMES"
+  "fi": "FI-HERMES",
+  "signatures": [
+    {
+      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
+      "signature": "UMf51VCnTzSKl3DCl8jI3p0uvuRKpoU6exjZrha99OMFzBPQ9X5WtGzQHm_ksUOONgbPoVAqFhRErrfn-jvSAQ",
+      "header": {
+        "kid": "arifos-a2a-card-2026-%q"
+      }
+    }
+  ]
 }
