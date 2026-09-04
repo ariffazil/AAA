@@ -146,10 +146,29 @@ if [ ! -s "$WORK/raw.mp3" ]; then
   exit 1
 fi
 
-# Convert directly to output format with full studio bandwidth
+# ── Stage 2: DSP Stabilizer — V9 Nusantara ──────────────────────
+# WORLD vocoder: F0 lock 239 Hz + amplitude stillness + terminal lift + coda adab
+DSP="/root/forge_work/dsp/dsp_stabilizer.py"
+STABILIZED="$WORK/stabilized.wav"
+
+if [ -f "$DSP" ]; then
+  python3 "$DSP" "$WORK/raw.mp3" "$STABILIZED" --target-f0 239 --lift 35 2>"$WORK/dsp.log" || {
+    echo "iarif_tts_pipeline: DSP stabilizer failed (non-critical) — falling through to raw" >&2
+    STABILIZED="$WORK/raw.mp3"
+  }
+  if [ -f "$WORK/dsp.log" ] && [ -s "$WORK/dsp.log" ]; then
+    echo "iarif_tts_pipeline: V9 DSP meta: $(head -1 "$WORK/dsp.log")" >&2
+  fi
+else
+  echo "iarif_tts_pipeline: DSP stabilizer not found at $DSP — skipping V9 processing" >&2
+  STABILIZED="$WORK/raw.mp3"
+fi
+
+# Convert stabilized audio to requested format
 case "$(basename "$OUT_PATH" | sed 's/.*\.//')" in
-  ogg)  ffmpeg -y -v error -i "$WORK/raw.mp3" -c:a libopus -b:a 64k -ar 48000 "$OUT_PATH" ;;
-  mp3)  ffmpeg -y -v error -i "$WORK/raw.mp3" -c:a copy "$OUT_PATH" ;;
-  wav)  ffmpeg -y -v error -i "$WORK/raw.mp3" -c:a pcm_s16le "$OUT_PATH" ;;
-  *)    ffmpeg -y -v error -i "$WORK/raw.mp3" -c:a copy "$OUT_PATH" ;;
+  ogg)  ffmpeg -y -v error -i "$STABILIZED" -c:a libopus -b:a 64k -ar 48000 "$OUT_PATH" ;;
+  mp3)  ffmpeg -y -v error -i "$STABILIZED" -c:a libmp3lame -q:a 2 "$OUT_PATH" ;;
+  wav)  ffmpeg -y -v error -i "$STABILIZED" -c:a pcm_s16le "$OUT_PATH" ;;
+  *)    ffmpeg -y -v error -i "$STABILIZED" -c:a libopus -b:a 64k -ar 48000 "$OUT_PATH" ;;
 esac
+echo "iarif_tts_pipeline: V9 Nusantara → $OUT_PATH" >&2
