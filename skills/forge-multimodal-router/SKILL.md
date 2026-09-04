@@ -30,7 +30,7 @@ ecology_state: WARM
 consumes_sot: /root/.config/federation-models.json
 mirror_paths:
 - /root/AAA/skills/forge-multimodal-router/SKILL.md
-- /root/HERMES/skills/forge-multimodal-router/SKILL.md
+- /root/.hermes/skills/forge-multimodal-router/SKILL.md
 - /root/.qwen/skills/aaa-canonical/forge-multimodal-router/SKILL.md
 - /root/.claude/skills/forge-multimodal-router/SKILL.md
 forged: 2026-08-20
@@ -252,7 +252,7 @@ If the routing table here drifts from SOT, the table is wrong (SOT wins). Update
 - **2026-08-25** — FI-007: Imagine spawn path for all AAA agents (`grok-multimodal.sh` + GROK_IMAGINE.md). Harness-native, not FED.
 - **2026-08-20** — forged by FI-003 Qwen Code
 - Driver: Arif F13 directive "now make sure my hermes agent telegram ASI_arifos_bot know how to use this"
-- Builds on: 32 multimodal models wired into `/root/HERMES/config.yaml` `dashscope-payg` provider + `tts/stt.qwen-audio-payg` entries (2026-08-20)
+- Builds on: 32 multimodal models wired into `/root/.hermes/config.yaml` `dashscope-payg` provider + `tts/stt.qwen-audio-payg` entries (2026-08-20)
 - Builds on: 3 canonical knowledge graphs (audio + visual + video) — `/root/AAA/knowledge-graph/`
 - Constraints: F2 SOT authority, F11 AUDIT, F13 picker sovereignty, RCR 1-edit-per-release
 - Receipt: to be appended to `/root/forge_work/qwen-sessions/sessions.jsonl` + named receipt
