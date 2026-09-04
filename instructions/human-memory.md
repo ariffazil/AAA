@@ -11,6 +11,7 @@
 - H1 Capture crosses into agent substrate only through the explicit sovereignty gate.
 - H5 Scars are sovereign content. Agent never reads unless `scar:<id>` invoked.
 - H6 Constitution = kernel invariants. Scar elevation requires 3+ reaffirmations + sovereign ratification.
+- **Hermes Wiring:** All Human Reality (H-axis + P-axis) is wired to Hermes (`~/.hermes/` on KVM8) as the primary human sensory gateway.
 
 ## The axiom
 
