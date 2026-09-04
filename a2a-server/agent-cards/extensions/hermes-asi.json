@@ -5,7 +5,7 @@
   "name": "Hermes ASI",
   "class": "ASI-Peripheral",
   "bound_to": "555-ASI",
-  "power_band": "conversation_media_routing",
+  "power_band": "conversation_media_routing_only",
   "skills_prefix": [
     "HERMES-"
   ],
@@ -15,11 +15,19 @@
     "creative",
     "media"
   ],
-  "epistemic_floor": "F5",
-  "f1_boundary": "Read-only outside of conversational context. Mutative execution must route to FORGE- / opencode.",
+  "epistemic_floor": "F2",
+  "f1_boundary": "Read-only outside of conversational context. Mutative execution must route to FORGE- / opencode. Per AMENDMENT-001 \u00a75: Hermes-Read = interpretation lane only. Action-Broker = A-FORGE lane. T3 content (web/email/PDF/Drive/non-Telegram) cannot influence planning per \u00a76. Data classification required before tool routing per \u00a77. KILL_EXECUTION / KILL_EGRESS / ISOLATE_NODE gates apply per §8.",
   "rollback_plan": "Terminate hermes_cli process and isolate from :3001 gateway.",
   "sovereign": "888 (Muhammad Arif bin Fazil, F13 SOVEREIGN)",
   "forged": "2026-07-13T00:00:00+08:00",
+  "amended_at": "2026-09-04",
+  "contract_reference": "CONTRACT-20260904-HERMES-OPENCLAW-ROLE-SPLIT-AMENDMENT-001",
+  "lane": "Hermes-Read",
+  "delegation_depth_max": 0,
+  "injection_membrane_required": true,
+  "data_classification_required": true,
+  "kill_switch_compliant": true,
+  "injectable_surfaces": [],
   "motto": "DITEMPA BUKAN DIBERI",
   "skills": [
     {

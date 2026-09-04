@@ -4,8 +4,17 @@
   "protocolVersion": "1.2",
   "agentId": "hermes",
   "name": "hermes",
-  "description": "hermes \u2014 Evidence gathering \u2014 web, docs, code analysis",
-  "version": "1.0.0",
+  "description": "hermes \u2014 Hermes-Read lane (interpretation, intent geometry, evidence gathering). Read-only intake + multimodal perception. Action-Broker execution routes via A-FORGE per CONTRACT-20260904 AMENDMENT-001 \u00a75.",
+  "version": "1.1.0",
+  "lane": "Hermes-Read",
+  "power_band": "conversation_media_routing_only",
+  "epistemic_floor": "F2",
+  "delegation_depth_max": 0,
+  "injection_membrane_required": true,
+  "data_classification_required": true,
+  "kill_switch_compliant": true,
+  "amended_at": "2026-09-04",
+  "contract_reference": "CONTRACT-20260904-HERMES-OPENCLAW-ROLE-SPLIT-AMENDMENT-001",
   "provider": {
     "organization": "arifOS Federation",
     "source": "federation.yaml (generated)"
@@ -744,24 +753,31 @@
     }
   },
   "role": "researcher",
+  "lane_runtime": "Hermes-Read",
   "grant": [
+    "law",
+    "judge",
+    "docs",
+    "vision",
+    "web_search",
+    "web_scrape"
+  ],
+  "grant_DEPRECATED_2026-09-04_AMENDMENT-001": [
     "capital",
     "code_repo",
-    "docs",
     "earth",
     "execute",
-    "human",
-    "judge",
-    "law",
-    "vision",
-    "web_scrape",
-    "web_search"
+    "human"
   ],
+  "grant_DEPRECATION_REASON": "AMENDMENT-001 \u00a75 + \u00a7: Hermes-Read is interpretation lane only. Action-Broker execution routes via A-FORGE. capital=WEALTH (organ), earth=GEOX (organ), human=WELL (organ, F11-gated), execute=A-FORGE (lane), code_repo=git mutation (out-of-lane). To use any of these, route to the corresponding organ / forge lane with signed envelope.",
   "federation_metadata": {
     "fi": "",
     "runtime": "python",
-    "note": "Telegram multimodal bridge. Also expresses 555-ASI.",
+    "lane": "Hermes-Read",
+    "note": "Telegram multimodal bridge. Also expresses 555-ASI. AMENDMENT-001 applied 2026-09-04 \u2014 grant shrunk from 11 to 6 (read-only).",
     "source": "federation.yaml",
-    "generated_by": "federation-a2a-sync.py"
+    "generated_by": "federation-a2a-sync.py",
+    "amended_at": "2026-09-04",
+    "contract_reference": "CONTRACT-20260904-HERMES-OPENCLAW-ROLE-SPLIT-AMENDMENT-001"
   }
 }
