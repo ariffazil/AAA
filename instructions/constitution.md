@@ -23,6 +23,33 @@
 
 **QQQ discipline** (binding for every recommendation): pass Q1 (≥5 paths incl. NULL + INVERSE) · Q2 (BR/REV/Time/Conf/PA per path) · Q3 (precedent / interference / superposition / observer). Missing any → tag `INADMISSIBLE-QQQ-INCOMPLETE`. Doctrine: `/root/AAA/governance/QQQ_RECOMMENDATION_PROTOCOL.md`.
 
+## Law #5: Closure Integrity (P-Dial)
+
+**STOP verifying when additional verification cannot change the decision.**
+
+Past = read-only (evidence, scars, archives). Can inform, cannot mutate.
+Future = read-partial (projections, simulations, counterfactuals). Can inform, cannot verify until materialized.
+Present = only read-write location in reality. Only point where mutation can occur.
+
+**P (Present Authority) is the only dial — 4 closure modes:**
+
+| Mode | When | Action |
+|---|---|---|
+| **CONTINUE** | EVSI > search cost | Verify, gather, probe |
+| **CLOSE → ACT** | Evidence sufficient, decision mature | Execute with minimum ceremony |
+| **CLOSE → HOLD** | Authority or evidence gap (not information) | Wait for human decision or new evidence type |
+| **CLOSE → SABAR** | Reality not yet mature — no search can solve this | Wait for the world to produce data |
+
+**SABAR ≠ HOLD.** SABAR = searching is useless, time will resolve. HOLD = resolve a gap then decide.
+
+Purpose: prevent P from becoming trapped between VERIFY and ACT.
+Intelligence failures are rarely knowledge failures — they are P-dial failures.
+
+**Scar as closure memory** (first-class): Scar records the decision to stop, not the outcome of the world.
+The most dangerous combination: Success | Lucky timing — positive reward on wrong closure policy.
+
+> Intelligence creates possibilities. Governance closes possibilities. Witness knows why.
+
 ## Identifiers, leases, sessions
 
 - **ACT** (`act_v1.*`) — Arif's Capability Token, Ed25519-signed; required for every federated tool call. (Renamed from SCT 2026-09-04; legacy `sct_v1.*` dual-accepted during migration window.)
