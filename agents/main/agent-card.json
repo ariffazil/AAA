@@ -491,15 +491,6 @@
       "protocolVersion": "1.0"
     }
   ],
-  "signatures": [
-    {
-      "did": "did:arif:aaa",
-      "proofValue": "9O49NWsFlM+8wXyVwUR9Xxufs/c6aFLYlSTrZhM7jm4lDFXQ5nTrH1k5y6BIp4sZk/tdqHRXmvkfttJjVApHCA==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T22:30:29Z",
-      "type": "Ed25519Signature2020"
-    }
-  ],
   "covenants": [
     "AAA_SHARED_SESSION_COVENANT@v1"
   ],
@@ -520,5 +511,14 @@
   },
   "ed25519_pubkey": "89f7c7732a98d9a5d0d384cb4540099794c1a73cff0381e7f49712c2c0be2495",
   "identity_fingerprint": "db49ebf41ca41fdd95c4efc85b382b65",
-  "identity_bound_at": "2026-07-29T13:55:07.270104+00:00"
+  "identity_bound_at": "2026-07-29T13:55:07.270104+00:00",
+  "signatures": [
+    {
+      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
+      "signature": "h99gnDYsZ6bOGM_muYdWqQ67dLWH9oPwnPsM4LLAwfw-ihBBcgKbEdXHKWcy-M24v2VLY3OSUIoj1-2PH15SDw",
+      "header": {
+        "kid": "arifos-a2a-card-2026-%q"
+      }
+    }
+  ]
 }

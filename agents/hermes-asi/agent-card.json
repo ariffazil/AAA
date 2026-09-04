@@ -202,15 +202,6 @@
     "text/plain",
     "application/json"
   ],
-  "signatures": [
-    {
-      "did": "did:arif:aaa",
-      "proofValue": "H+cOBtutzEGlLTXj9Ay8FLMrbFwUAlDQDeRV4xFfPS8TXD8/ycN9U9Lbodei/WdCp6o11zdenzAHQTxw4US7Cw==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T22:30:29Z",
-      "type": "Ed25519Signature2020"
-    }
-  ],
   "covenants": [
     "AAA_SHARED_SESSION_COVENANT@v1"
   ],
@@ -254,5 +245,14 @@
       "yaml": "/root/AAA/agents/hermes-asi/art_binding.yaml"
     }
   },
-  "model": "i-arif"
+  "model": "i-arif",
+  "signatures": [
+    {
+      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
+      "signature": "btb7Z1QMurLla-rNfO4kTPoRKBLQ_8DUEqdqKxAuwRrdFXwHMx3j3jdlPwjJ7VfyDJY8ivpevSn8hUdSRSdcAA",
+      "header": {
+        "kid": "arifos-a2a-card-2026-%q"
+      }
+    }
+  ]
 }

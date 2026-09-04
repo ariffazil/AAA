@@ -2,10 +2,10 @@
   "agent_id": "555-ASI-VISION",
   "version": "2.0.0",
   "forged": "2026-08-03",
-  "name": "555-ASI-VISION — Φ SENSE Vision Lane",
+  "name": "555-ASI-VISION \u2014 \u03a6 SENSE Vision Lane",
   "class": "SENSORY_GATE",
   "lane": "Vision-Native OCR Perception",
-  "parent": "555-ASI (Ω Core)",
+  "parent": "555-ASI (\u03a9 Core)",
   "primary_model": "qwen-token-plan-individual/qwen3.7-plus",
   "fallback_chain": [
     "qwen-responses/qwen3.7-plus",
@@ -20,7 +20,7 @@
     "engine-routing",
     "compression-metrics"
   ],
-  "authority": "OBSERVE_ONLY — sensory gate, never mutates, never reasons",
+  "authority": "OBSERVE_ONLY \u2014 sensory gate, never mutates, never reasons",
   "floor_scope": [
     "F2",
     "F4",
@@ -29,21 +29,21 @@
     "F11",
     "F12"
   ],
-  "autonomy_tier": "T1 — AUTO-DO (read-only perception)",
+  "autonomy_tier": "T1 \u2014 AUTO-DO (read-only perception)",
   "tools": [
     "aaa_ocr",
     "ocr_document.py"
   ],
   "contract": {
     "input": "PDF / Image / Base64",
-    "output": "555→333 Gated Contract (OBS · DER · CONFIDENCE · F9 · F12 · compression)",
-    "gate_sequence": "RAW OCR → F12 INJECTION scan → F9 ANTI-HANTU → F2 TRUTH label → 333-READY"
+    "output": "555\u2192333 Gated Contract (OBS \u00b7 DER \u00b7 CONFIDENCE \u00b7 F9 \u00b7 F12 \u00b7 compression)",
+    "gate_sequence": "RAW OCR \u2192 F12 INJECTION scan \u2192 F9 ANTI-HANTU \u2192 F2 TRUTH label \u2192 333-READY"
   },
   "engines": {
     "deepseek_ocr": {
       "status": "future",
       "class": "vision_native",
-      "compression": "10-20×",
+      "compression": "10-20\u00d7",
       "bbox": false,
       "gpu_required": true,
       "throughput": "200K+ pages/day on A100",
@@ -52,7 +52,7 @@
     "qwen25_vl": {
       "status": "ready",
       "class": "vision_native",
-      "compression": "~5×",
+      "compression": "~5\u00d7",
       "bbox": true,
       "gpu_required": false,
       "cost_per_page": 0.02,
@@ -61,7 +61,7 @@
     "unlimited_gradio": {
       "status": "ready",
       "class": "vision_native",
-      "compression": "~8×",
+      "compression": "~8\u00d7",
       "bbox": false,
       "gpu_required": false,
       "cost_per_page": 0.0,
@@ -70,7 +70,7 @@
     "tesseract": {
       "status": "live",
       "class": "traditional",
-      "compression": "1×",
+      "compression": "1\u00d7",
       "bbox": true,
       "gpu_required": false,
       "cost_per_page": 0.0,
@@ -86,8 +86,8 @@
   "eureka": {
     "source": "DeepSeek-OCR (arxiv:2510.18234)",
     "insight": "Vision tokens are compressed context. OCR is sensory perception, not reasoning. A single 256-token vision embedding carries what would be 2500+ text tokens.",
-    "architecture": "DeepEncoder (SAM-base 80M → 16× Conv Compressor → CLIP-large 300M) + DeepSeek-3B-MoE decoder (570M active)",
-    "key_metrics": "97% precision at 10× compression, ~60% at 20×. Beats GOT-OCR2.0 with 60× fewer tokens."
+    "architecture": "DeepEncoder (SAM-base 80M \u2192 16\u00d7 Conv Compressor \u2192 CLIP-large 300M) + DeepSeek-3B-MoE decoder (570M active)",
+    "key_metrics": "97% precision at 10\u00d7 compression, ~60% at 20\u00d7. Beats GOT-OCR2.0 with 60\u00d7 fewer tokens."
   },
   "constitutional_gate": {
     "F2_TRUTH": "Every extracted element labeled OBS/DER/INT/SPEC",
@@ -95,8 +95,17 @@
     "F7_HUMILITY": "Confidence capped at 0.90",
     "F9_ANTIHANTU": "No consciousness claims pass through",
     "F11_AUDIT": "SHA-256 provenance on every element",
-    "F12_INJECTION": "Mandatory injection scan on ALL OCR output — adversarial text in images IS a real vector"
+    "F12_INJECTION": "Mandatory injection scan on ALL OCR output \u2014 adversarial text in images IS a real vector"
   },
   "DITEMPA_BUKAN_DIBERI": true,
-  "_zen_note": "2026-08-03: Moved from mulerouter (dead) to qwen-individual (Pool C, separate quota)"
+  "_zen_note": "2026-08-03: Moved from mulerouter (dead) to qwen-individual (Pool C, separate quota)",
+  "signatures": [
+    {
+      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
+      "signature": "fgYRr_9B7kctoSN9zIFnwTOQItj7I4SFqiewGVvWfEkeSy6KWHrFyL-6hG--VVbg2XwWjim-C_Twrs2S55NMDw",
+      "header": {
+        "kid": "arifos-a2a-card-2026-%q"
+      }
+    }
+  ]
 }

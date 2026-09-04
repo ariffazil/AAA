@@ -485,6 +485,18 @@ app.get("/mcp-apps/:app_id", async (req: Request, res: Response) => {
     });
   }
 
+  // JWKS endpoint for Agent Card signature verification
+  mainRouter.get('/.well-known/jwks.json', (req, res) => {
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+    try {
+      const jwksPath = '/root/AAA/auth/jwks/jwks.json';
+      const jwksData = readFileSync(jwksPath, 'utf8');
+      res.json(JSON.parse(jwksData));
+    } catch {
+      res.json({ keys: [] });
+    }
+  });
+
   // FEDERATION SCHEMA ALIGNMENT L2 (canonical: arifOS/arifosmcp/schemas/federation_enums.py)
   // See: /root/AAA/governance/FEDERATION_SCHEMA_ALIGNMENT.md
   mainRouter.get('/health', (req, res) => {

@@ -1,0 +1,46 @@
+{
+  "packet": "C",
+  "title": "A2A Agent Card Signing Ceremony",
+  "severity": "HIGH",
+  "blast_radius": "HIGH",
+  "reversibility": "RECOVERABLE (dual-signing overlap)",
+  "authorization": "888_HOLD",
+  "scope": [
+    "RFC 8785 JCS canonicalization with protobuf field-presence rules",
+    "JWS signatures using published federation JWKS",
+    "Dual-signing / rollback overlap where technically possible",
+    "Independent verification before and after deploy",
+    "No new external peer receives trust or execution authority"
+  ],
+  "key_model": {
+    "root": "Offline root / custody key",
+    "delegates": [
+      "kid: arifos-a2a-card-2026-q3",
+      "kid: aaa-a2a-card-2026-q3",
+      "kid: organ-geox-a2a-card-2026-q3",
+      "kid: organ-wealth-a2a-card-2026-q3",
+      "kid: organ-well-a2a-card-2026-q3"
+    ]
+  },
+  "ceremony_steps": [
+    "1. Generate signing key in protected HSM/KMS",
+    "2. Assign immutable kid, algorithm, activation, expiration",
+    "3. Publish public key through federation JWKS",
+    "4. Implement canonicalization from protobuf-aware card model",
+    "5. Generate deterministic test vectors",
+    "6. Verify with separate implementation",
+    "7. Dual-sign during transition",
+    "8. Deploy behind version-aware cache controls",
+    "9. Have AAA + separate verifier validate all cards",
+    "10. Record in VAULT999",
+    "11. Retire old key only after overlap window"
+  ],
+  "test_vectors": "/root/A-FORGE/tests/mcp-conformance/test_jcs_jws.py",
+  "policy_by_class": {
+    "internal_federation": "Signature mandatory",
+    "aaa_public_gateway": "Signature mandatory",
+    "external_discovered": "Verify if present; unsigned = quarantine",
+    "experimental_dev": "Separate non-production issuer",
+    "a_forge_vault999": "No public cards"
+  }
+}

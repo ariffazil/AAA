@@ -2,7 +2,7 @@
   "$schema": "arifOS/agent-card/v2.2.0",
   "schemaVersion": "2.2.0",
   "id": "777-FORGE",
-  "name": "777-FORGE — Governed Coding Bridge",
+  "name": "777-FORGE \u2014 Governed Coding Bridge",
   "description": "Autonomous code execution bridge for arifOS Federation. Receives coding tasks via A2A from Hermes ASI or OpenClaw AGI, executes through A-FORGE (:7072) under F1-F13 governance, returns build artifacts via tasks/send streaming.",
   "version": "3.0.0",
   "protocolVersion": "1.2",
@@ -117,7 +117,7 @@
   },
   "topological_role": "Executor",
   "emd_role": "DECODER",
-  "emd_lane": "EXECUTION — the ACT in SENSE→COORDINATE→ACT. All FI coding agents decode instructions into artifacts.",
+  "emd_lane": "EXECUTION \u2014 the ACT in SENSE\u2192COORDINATE\u2192ACT. All FI coding agents decode instructions into artifacts.",
   "emd_architecture": "/root/AAA/instructions/emd-architecture.md",
   "ed25519_pubkey": "ccc731bc8c93ec0192611635ea5520ea5ca96844bfe59d4fa7101278026dd987",
   "identity_fingerprint": "da0048a80249dead98942edd067b5039",
@@ -132,7 +132,16 @@
   "tombstone_note": "777-FORGE agent retired 2026-08-10 under EMD architecture. FORGE function distributed across Trinity (333-AGI/WILL, 888-APEX/GATE, 555-ASI/WITNESS) + A-FORGE organ (HANDS). Canonical identity card: /root/AAA/agent-cards/identity/777-FORGE/agent-card.json. This file preserved for provenance only.",
   "superseded_by": "/root/AAA/agent-cards/identity/777-FORGE/agent-card.json",
   "retired_date": "2026-08-10",
-  "resolution": "777-FORGE was never an agent. It was the FORGE capability substrate — now institutionalized as adat agentic in every AAA warga card.",
+  "resolution": "777-FORGE was never an agent. It was the FORGE capability substrate \u2014 now institutionalized as adat agentic in every AAA warga card.",
   "resolved_by": "F13 SOVEREIGN directive 2026-08-10",
-  "note": "This card exists for provenance only. FORGE is not a lane, not an agent, not distributed. FORGE is adat agentic — inherited by all."
+  "note": "This card exists for provenance only. FORGE is not a lane, not an agent, not distributed. FORGE is adat agentic \u2014 inherited by all.",
+  "signatures": [
+    {
+      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
+      "signature": "SDtR_nrBHafy1jvox589kn50foJ7udxWW-zz8Gdz2TLzi8bxDbH8nQnXeRkqLqC6kQZMJekwyJIBvlHPaFBjAQ",
+      "header": {
+        "kid": "arifos-a2a-card-2026-%q"
+      }
+    }
+  ]
 }

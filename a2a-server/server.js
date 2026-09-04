@@ -2617,6 +2617,20 @@ for (const alias of ['/a2a/agent-card.json', '/a2a/agent.json', '/agent-card.jso
   app.get(alias, serveCanonicalAgentCard);
 }
 
+// JWKS endpoint for Agent Card signature verification
+const JWKS_PATH = require('node:path').join(__dirname, '..', 'auth', 'jwks', 'jwks.json');
+app.get('/.well-known/jwks.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Cache-Control', 'public, max-age=3600');
+  try {
+    const jwks = JSON.parse(require('node:fs').readFileSync(JWKS_PATH, 'utf8'));
+    res.json(jwks);
+  } catch (err) {
+    console.error('[AAA A2A] JWKS read error:', err.message);
+    res.json({ keys: [] });
+  }
+});
+
 // A2A discovery contract
 app.get('/.well-known/a2a-discovery.json', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
