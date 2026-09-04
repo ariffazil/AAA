@@ -1,67 +1,50 @@
 {
-  "$schema": "arifOS/agent-card/v2.0.0",
+  "$schema": "arifOS/agent-card/v2.2.0",
   "id": "hermes-ops",
-  "name": "Hermes Ops",
+  "name": "Hermes Draft (formerly Hermes Ops \u2014 demoted 2026-09-04 AMENDMENT-001)",
   "principal_agent": {
     "type": "agent",
-    "category": "Native A2A agent \u2014 runtime owns itself",
-    "principle_origin": "Self-owned runtime, governed by F1-F13"
+    "category": "Native A2A agent \u2014 runtime owns itself (DEMOTED: was Operator/Executor; now Draft per AMENDMENT-001 \u00a75)",
+    "principle_origin": "Self-owned runtime, governed by F1-F13. Hermes-Draft lane: ephemeral draft + plan generation only. No direct execution."
   },
-  "description": "Operator agent \u2014 execution, DevOps, workflows, CI/CD, deployment. Ship it clean.",
+  "description": "DEMOTED 2026-09-04 per CONTRACT-20260904-HERMES-OPENCLAW-ROLE-SPLIT-AMENDMENT-001 \u00a75. Previously declared as Operator/Executor (DevOps, CI/CD, deployment). Per amendment, Action-Broker execution is owned by A-FORGE lane \u2014 NOT by Hermes. This card is retained for URL/backward-compat; its lane is Hermes-Draft. For code execution, git operations, deployment, or workflow automation, route via the A-FORGE action broker (aforge-org, port 7072) with signed envelope + audit receipt. Idempotent pointer to A-FORGE for execution traffic.",
   "url": "https://aaa.arif-fazil.com/a2a/hermes-ops",
   "preferred_transport": "jsonrpc-http",
   "provider": {
     "organization": "arifOS",
     "system": "AAA",
-    "runtime": "hermes"
+    "runtime": "hermes",
+    "lane": "Hermes-Draft"
   },
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "amended_at": "2026-09-04",
+  "contract_reference": "CONTRACT-20260904-HERMES-OPENCLAW-ROLE-SPLIT-AMENDMENT-001",
+  "lane": "Hermes-Draft",
+  "previous_lane": "Hermes-Ops (DEPRECATED 2026-09-04)",
+  "demotion_reason": "AMENDMENT-001 \u00a75: Action-Broker execution owned by A-FORGE lane. Hermes is interpretation/geometry layer; cannot invoke filesystem write, code execution, git ops, deployment, or workflow automation directly. These capabilities have been relocated to A-FORGE (aforge-org, port 7072, EXECUTE_AFTER_SEAL gate).",
+  "delegation_depth_max": 0,
+  "injection_membrane_required": true,
+  "data_classification_required": true,
+  "kill_switch_compliant": true,
+  "epistemic_floor": "F2",
+  "power_band": "draft_only",
+  "authority_ceiling": "DRAFT_ONLY",
+  "max_action_class": "DRAFT",
+  "execution_redirect": "All side-effecting actions route to A-FORGE lane. Use forge_execute_sealed with session_token + plan_id. A-FORGE applies data-classification routing per AMENDMENT-001 \u00a77 + execute-after-seal gate.",
+  "FORGE_SKILLS_RELOCATED": [
+    {"id": "FORGE-code-execution", "moved_to": "aforge.org / forge_shell + forge_sandbox_run + forge_pipeline_run"},
+    {"id": "FORGE-git-operations", "moved_to": "aforge.org / forge_git + forge_github"},
+    {"id": "FORGE-deployment", "moved_to": "aforge.org / forge_pipeline_run + forge_compose"},
+    {"id": "FORGE-workflow-automation", "moved_to": "aforge.org / forge_compose + forge_parallel"}
+  ],
   "capabilities": {
     "streaming": true,
     "push_notifications": false,
-    "authenticated_extended_card": false
+    "authenticated_extended_card": false,
+    "stateTransitionHistory": false,
+    "extendedAgentCard": false
   },
   "skills": [
-    {
-      "id": "FORGE-code-execution",
-      "name": "Code Execution",
-      "description": "Execute code, run tests, build artifacts",
-      "tags": [
-        "code",
-        "build",
-        "test"
-      ]
-    },
-    {
-      "id": "FORGE-git-operations",
-      "name": "Git Operations",
-      "description": "Git workflows, PRs, merges, releases",
-      "tags": [
-        "git",
-        "github",
-        "version-control"
-      ]
-    },
-    {
-      "id": "FORGE-deployment",
-      "name": "Deployment",
-      "description": "Deploy to various environments",
-      "tags": [
-        "deploy",
-        "ci-cd",
-        "infrastructure"
-      ]
-    },
-    {
-      "id": "FORGE-workflow-automation",
-      "name": "Workflow Automation",
-      "description": "Execute and orchestrate workflows",
-      "tags": [
-        "workflow",
-        "automation",
-        "orchestration"
-      ]
-    },
     "KERNEL-sovereign-recognize",
     "KERNEL-trinity-33",
     "KERNEL-session-inhabit",
@@ -75,30 +58,24 @@
       "KERNEL-trinity-33",
       "KERNEL-session-inhabit",
       "KERNEL-sovereign-recognize",
-      "KERNEL-verbs-forge-hands",
-      "KERNEL-quantum-runtime",
-      "KERNEL-qubit-substrate",
       "KERNEL-reality-skills",
-      "KERNEL-mcp-zen",
-      "KERNEL-mcp-builder"
+      "KERNEL-mcp-zen"
     ],
     "rsi_doctrine": "RSI-recursive-improvement",
     "substrate_bind": "2026-07-12T18:30:00Z",
-    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK",
+    "amended_at": "2026-09-04",
+    "demotion_event": "AMENDMENT-001 \u00a75 \u2014 role-down Ops \u2192 Draft; execution skills relocated to A-FORGE lane"
   },
   "kernel_skills": [
     "KERNEL-trinity-33",
     "KERNEL-session-inhabit",
     "KERNEL-sovereign-recognize",
-    "KERNEL-verbs-forge-hands",
-    "KERNEL-quantum-runtime",
-    "KERNEL-qubit-substrate",
     "KERNEL-reality-skills",
-    "KERNEL-mcp-zen",
-    "KERNEL-mcp-builder"
+    "KERNEL-mcp-zen"
   ],
   "rsi_doctrine": "RSI-recursive-improvement",
-  "protocolVersion": "1.0",
+  "protocolVersion": "1.2",
   "schemaVersion": "2.2.0",
   "securitySchemes": {
     "bearer": {
@@ -118,13 +95,15 @@
       "url": "https://aaa.arif-fazil.com/a2a/hermes-ops"
     }
   ],
+  "_signature_status": "STALE \u2014 content amended after 2026-07-12 signing; re-signature required by AAA",
   "signatures": [
     {
       "did": "did:arif:aaa",
       "proofValue": "ijR2Hh2YrGUs7SGx3643txd4D7OUHXFXY29huG9ZAcvyc7C9KuQyOymBzGiVilich4szR6BVNxEeHztw9oxkBQ==",
       "proofPurpose": "assertionMethod",
       "created": "2026-07-12T23:25:58Z",
-      "type": "Ed25519Signature2020"
+      "type": "Ed25519Signature2020",
+      "_note": "Original signature from 2026-07-12. Card content amended 2026-09-04 \u2014 signature no longer authenticates current state. AAA re-signature required."
     }
   ],
   "did": "did:web:arif-fazil.com",
