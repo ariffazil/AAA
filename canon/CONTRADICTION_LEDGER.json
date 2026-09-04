@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "title": "Contradiction Ledger — Living Document",
+    "created": "2026-09-04T18:30:00+08:00",
+    "source": "APEX ART probe of VPS state",
+    "principle": "Max 3 active contradictions at any time",
+    "closure_rule": "A contradiction is CLOSED only when a falsifiable receipt proves the gap reduced"
+  },
+  "contradictions": [
+    {
+      "id": "C-001",
+      "name": "Verification > Execution",
+      "compressed": "Scripts exist but don't run autonomously — verification debt accumulates",
+      "cost": "HIGH",
+      "status": "OPEN",
+      "owner": "A-AUDIT lane",
+      "evidence": {
+        "audit_scripts_found": 30,
+        "cron_jobs_scheduled": 6,
+        "gap": "80% of verification scripts exist but are not automated",
+        "pattern": "Discover → build script → never schedule → drift re-accumulates"
+      },
+      "closure_test": "What evidence shows decision cycles shortened? (e.g., audit scripts auto-running, findings auto-resolved without manual trigger)",
+      "proposed_action": "Convert top 5 audit scripts into scheduled cron jobs with auto-deliver on contradiction found",
+      "receipt_required": "Cron execution log showing N audits completed + 0 manual triggers needed"
+    },
+    {
+      "id": "C-002",
+      "name": "Doctrine ≠ Runtime",
+      "compressed": "Declared topology drifts from live state — governance on stale maps",
+      "cost": "HIGH",
+      "status": "OPEN",
+      "owner": "FORGE-spatial-grounding / ASI-drift-watch",
+      "evidence": {
+        "declared_ports": [
+          ":8088",
+          ":7071",
+          ":7073",
+          ":7074",
+          ":18082",
+          ":18083",
+          ":18087",
+          ":4000",
+          ":18085"
+        ],
+        "gap": "Doc-declared topology not continuously reconciled with live ss -tlnp",
+        "pattern": "Docs updated → containers restart/move → drift silent → decisions on stale map"
+      },
+      "closure_test": "What evidence shows drift reduced? (e.g., drift detection auto-corrects or flags within 1 hour of change)",
+      "proposed_action": "Schedule hourly drift probe: compare AAA_CAPABILITY_REGISTRY.yaml declared ports vs ss -tlnp live ports",
+      "receipt_required": "Drift report showing 0 mismatches over 7 consecutive days"
+    },
+    {
+      "id": "C-003",
+      "name": "Capability > Attention",
+      "compressed": "All 332 skills treated equally alive — no dormancy classification",
+      "cost": "MEDIUM-HIGH",
+      "status": "OPEN",
+      "owner": "Selection lane (888-APEX)",
+      "evidence": {
+        "total_skills": 332,
+        "modified_30d": 314,
+        "modified_3d": 27,
+        "stale_90d": 10,
+        "gap": "No dormancy classification — all 332 treated as equally alive",
+        "pattern": "New skill added → never classified → becomes maintenance debt"
+      },
+      "closure_test": "What evidence shows fewer priorities active? (e.g., skill count classified: <50 Alive, rest Archived/Dormant/Constitutional)",
+      "proposed_action": "Run dormancy classification on all 332 skills → bucket into Alive/Dormant/Constitutional/Vanity → prune Vanity",
+      "receipt_required": "Classification report + Arif ratification of buckets"
+    }
+  ],
+  "selection_function": {
+    "rule": "Only 3 contradictions active at any time",
+    "promotion": "A new contradiction enters only when one of the 3 is CLOSED or explicitly demoted",
+    "demotion": "Contradictions that cannot be closed within 30 days move to SCAR (pattern recorded, not actively tracked)",
+    "monthly_scan": "Auto-scan on 1st of month — probe all surfaces, compare against these 3, deliver 1-page verdict"
+  }
+}

@@ -220,3 +220,18 @@ The machine does not create the field. It names the force that was already worki
 **Do not seal before enough.**
 
 > "Cukup" bukan lawan kecerdasan. Ia deria keenam yang paling mahal.
+
+---
+
+## INSTRUMENT APPENDIX (FI-008, 2026-09-04 under F13 "seal all and 999")
+
+Live falsification harness: `/root/forge_work/closure-instrument/`
+
+- **G1 classify-ability** (<10% unclassifiable): **PASSED 7/7** on historical corpus (phase0_events_blind.jsonl + phase0_labels_fi008.jsonl)
+- **G2 blind inter-rater** (≥70% on closure_mode): **PENDING** — 555/ASI to relabel blind file per README protocol
+- **G3 lucky-timing detector**: armed — `success + evsi_call=no` → witness review (1 candidate in corpus)
+- Prospective ledger open (closure_ledger.jsonl): N=20 target, FI-008 self-labels, timing_verdict filled retrospectively by witness only
+- Co-resident: contradiction_ledger.jsonl (5 candidates) · canonical copy AAA/canon/CONTRADICTION_LEDGER.{json,md} (max-3 active, 888-owned selection)
+- Companion scar-law observation: HELIX_CODEX Q10 Calhoun Lock (verify:execute >3:1 poles) already canonizes the CONTINUE-lock pathology this doctrine names
+- Related substrate defect: forge_judge_proxy renders CLOSE→HOLD as -32010 error (client.ts:447 + policyTools.ts:524) — until Workstream C lands, the federation cannot count its own Holds. Closure without vocabulary is invisible.
+
