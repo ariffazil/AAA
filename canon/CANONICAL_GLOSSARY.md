@@ -186,3 +186,5 @@ Symptom ≠ cause. One HOT can be OpenCode workload + LiteLLM traffic + Hermes p
 - Archaeology: `/root/KVM4-WORKER/receipts/KVM8_ENTROPY_ARCHAEOLOGY.yaml`
 - Live: `arifos status` → `/run/arifos/reality.json`
 - Session eurekas: `/root/AAA/canon/EUREKA-SESSION-2026-09-KVM8.md`
+- Witness-Void & Promotion Governance: `/root/AAA/canon/WITNESS_VOID_CANON.md`
+- Paradox Coordinate Theory: `/root/AAA/canon/PARADOX_COORDINATE_THEORY.md`
