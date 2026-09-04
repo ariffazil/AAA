@@ -23,7 +23,7 @@ echo "$(hostname) $(ip -4 addr show | grep -oE '100\.64\.0\.[0-9]+' | head -1)"
 | Kernel (judge) | **:8088 — THE federation kernel** | — | arifosmcp FORK (Azwa lane, NOT the judge) |
 | Organs | AAA :3001 · A-FORGE :7071/7072 · GEOX :8081 · WEALTH :18082 · WELL :18083 · arifFlow :7073 · FRAME :18085 · VAULT999 · NATS · i-ARIF (no port — runs via FED chains; note **:18095 = apa-github-bridge, :18092 = apa-gemini-bridge** — corrected 2026-09-04 FI-008) | — | arifflow-internal fork :7073 · fed-router :7075 |
 | FED :4000 | HAProxy front door → KVM4 | **litellm (docker, binds `100.64.0.5:4000` ONLY)** | TCP blocked (ICMP OK) |
-| Hermes | `/root/HERMES` heritage (reclaim-gated) + `/root/Hermes` case-twin shadow | **LIVE gateway** `~/.hermes` → KVM8 :8088 + :4000 | Azwa's own hermes-agent (kunci-mas vault) |
+| Hermes | `/root/.hermes` (KVM8 canonical seat) + `/root/.hermes-cold/HERMES-heritage-5.3G-20260904/` (archived heritage) | **LIVE gateway** `~/.hermes` → KVM8 :8088 + :4000 | Azwa's own hermes-agent (kunci-mas vault) |
 | Coder CLIs | ALL 12 FI seats | agy, kimi, grok, aider (+ccc-remote pool) | none (federation) |
 | Web | caddy · 25 vhost confs `/etc/caddy/vhosts/*.conf` (corrected 2026-09-04 FI-008) · docker data plane (pg/redis/qdrant/searxng/minio/falkor) | — | caddy · nasf.cloud |
 | Repos | ALL origin-synced: arifOS, AAA, A-FORGE, GEOX, WEALTH, WELL, arifFlow, arif-fazil.com, HERMES | 7 read-only mirrors (AAA behind by ff-pull, arifOS mirror stale) | SAF (azwafazil identity) |
