@@ -21,7 +21,7 @@ echo "$(hostname) $(ip -4 addr show | grep -oE '100\.64\.0\.[0-9]+' | head -1)"
 | | KVM8 forge (truth) | KVM4 workshop (execution) | KVM2 witness |
 |---|---|---|---|
 | Kernel (judge) | **:8088 — THE federation kernel** | — | arifosmcp FORK (Azwa lane, NOT the judge) |
-| Organs | AAA :3001 · A-FORGE :7071/7072 · GEOX :8081 · WEALTH :18082 · WELL :18083 · arifFlow :7073 · FRAME :18085 · VAULT999 · NATS · i-ARIF (no port — runs via FED chains; note **:18095 = apa-github-bridge, :18092 = apa-gemini-bridge** — corrected 2026-09-04 FI-008) | — | arifflow-internal fork :7073 · fed-router :7075 |
+| Organs | AAA :3001 · A-FORGE :7071/7072 · GEOX :8081 · WEALTH :18082 · WELL :18083 · arifFlow :7073 · FRAME :18085 · VAULT999 · NATS · i-ARIF (no port — runs via FED chains; note **:18095 = apa-github-bridge, :18092 = apa-gemini-bridge** — corrected 2026-09-04 FI-008) | **OpenClaw edge :18789** (bind 100.64.0.5 — migrated from KVM8 2026-09-04 FI-008; caddy KVM8 vhosts claw/+openclaw.arif-fazil.com proxy here; KVM8 = state archive + CLI parity 2026.7.1-2, units disabled) | arifflow-internal fork :7073 · fed-router :7075 |
 | FED :4000 | **Capability Routing Constitution** — KVM8 hosts HAProxy (intake) + fed-aware-middleware :4010 (413 clamp) + fed-router :7074 (intent classification) | **litellm (docker, KVM4 100.64.0.5:4000 — model brain)** | **Identity-preserving: each tier answers with its declared model_name (no silent cross-tier swap). 6 constitutional alias entries wired in 2026-09-04.** |
 | Hermes | `/root/.hermes` (KVM8 canonical seat) + `/root/.hermes-cold/HERMES-heritage-5.3G-20260904/` (archived heritage) | **LIVE gateway** `~/.hermes` → KVM8 :8088 + :4000 | Azwa's own hermes-agent (kunci-mas vault) |
 | Coder CLIs | ALL 12 FI seats | agy, kimi, grok, aider (+ccc-remote pool) | none (federation) |
@@ -33,7 +33,7 @@ echo "$(hostname) $(ip -4 addr show | grep -oE '100\.64\.0\.[0-9]+' | head -1)"
 
 - KVM4 → KVM8 kernel/AAA/FED = **200**
 - KVM2 → KVM8 kernel/FED = **200**
-- KVM2 → KVM4 :4000 = **TCP blocked, ICMP OK** (mechanism UNKNOWN — docker iptables or ts ACL)
+- KVM2 → KVM4 :4000 = **TCP blocked, ICMP OK** (~~mechanism UNKNOWN~~ **SOLVED 2026-09-04 FI-008: Headscale ACL** — `/etc/headscale/acl.yaml` on KVM8, tag-based; `tag:flow-dmz` has no `tag:forge` dst grant. Same mechanism blocked KVM8→KVM4:18789 during OpenClaw cutover until ACL patch)
 - KVM4 Hermes FED path = KVM4 → KVM8 :4000 → back to KVM4 litellm (**hairpin — KVM8 is mesh SPOF**)
 
 ## 3. Traps (each one has already bitten an agent)
@@ -51,6 +51,8 @@ echo "$(hostname) $(ip -4 addr show | grep -oE '100\.64\.0\.[0-9]+' | head -1)"
 | AGENTS.md renderer | ~~render-agents.sh PHANTOM~~ **RESOLVED 2026-09-04 FI-008**: script exists at /root/scripts/render-agents.sh; render lag 49s — the 'phantom' claim was stale — fragment + AGENTS.md must be synced manually |
 | Machine aliases | each box answers to 3+ names across docs/memory — fingerprint (§0) is the only truth |
 | KVM2 extras | ollama :11434 (local) · :8080 public · fed-router :7074 (corrected from stale :7075 in earlier map) |
+| **Headscale ACL = cross-node port gate** | Node tags: KVM8=`tag:arifos` · KVM4=`tag:forge` · KVM2=`tag:flow-dmz`. Cross-node ports beyond the granted sets are silently TCP-dropped (no UFW log, no reject — looks like a cable fault). Check `/etc/headscale/acl.yaml` FIRST for any cross-node block; file-mode policy → `headscale policy check -f` + `systemctl restart headscale` to apply (2026-09-04 FI-008, during OpenClaw cutover: +18789 arifos→forge; +8081/18082/18083 forge→arifos) |
+| OpenClaw edge split-brain | ~~gateway on KVM8~~ **edge = KVM4 since 2026-09-04 13:37 MYT** (FI-008 zen mission). KVM8 keeps `~/.openclaw` state + CLI (npm beta 2026.8.1-beta.3 REMOVED — schema-v1 state unreadable by it; single truth = /usr/bin 2026.7.1-2 = KVM4 parity). KVM8 units disabled but present (archive). KVM4 loopback shim: unit drop-in `40-loopback-nat.conf` DNATs 127.0.0.1:18789→100.64.0.5:18789 (code derives loopback API URL; bind=all rejected by schema) |
 
 ## 4. Verification ledger
 
@@ -62,3 +64,4 @@ echo "$(hostname) $(ip -4 addr show | grep -oE '100\.64\.0\.[0-9]+' | head -1)"
 | 2026-09-04 02:20 | FI-008 from KVM8 | 3-machine inventory OBS: KVM4 = 26 units (litellm+hermes+opencode) · KVM2 = 31 units (forks+witness) · KVM8 split-brain FIXED · /opt quarantine · VAULT999 mirror armed |
 | 2026-09-04 07:55 | FI-008 | HERMES row correction: /root/HERMES is NOT pure heritage — cron/ + logs/ are SAME INODES as ~/.hermes (live cron book lives there, orphaned since gateway moved to KVM4 Sep 3 04:15). SOUL.md forked: KVM8 twins 14436B Sep-2 vs KVM4 live 13257B Sep-3. See HERMES_FLEET_MAP.md §5 + holds.txt |
 | 2026-09-04 08:45 | FI-008 | HAIRPIN DISPROVEN: hermes KVM4 model path is DIRECT (.5:4000, live curl + config + HAProxy backend all agree). KVM8 'hairpin' row applies only to public front-door traffic (single hop). KVM4 litellm = single model-compute node (Q6 lethality confirmed, circular claim retired). See forge_work/2026-09-04-federation-chaos-reconstruction/REALITY_MAP.md |
+| 2026-09-04 13:55 | FI-008 | OPENCLAW CUTOVER COMPLETED (P2 from EXECUTION_MAP_v2): edge live on KVM4 :18789, health `{"ok":true}` loopback+tailnet+caddy, Telegram @AGI_ASI_bot polling (queue drained 4 pending), models via .5:4000, kernel/organs via .2:* (200). Fixed: config color field · 2 missing env drop-ins · telegram token file · 6 loopback URLs · Headscale ACL (2 rules) · caddy 2 vhosts · KVM8 npm-beta split-brain removed · art-governor muted. Receipt: forge_work/2026-09-04-openclaw-zen-3machine/ |
