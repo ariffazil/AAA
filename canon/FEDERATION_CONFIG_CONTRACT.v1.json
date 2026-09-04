@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "contract_id": "FED-CONFIG-CONTRACT-2026-09-04",
-  "generated_at": "2026-09-04T06:54:30Z",
+  "generated_at": "2026-09-04T17:35:00Z",
   "source_of_truth": {
     "manifest": "/root/.config/federation-models.json",
     "manifest_sha256": "37dd6edfeb675aab6a84feec91eb5306aa8c8eae8acd3f33367b0d273c4b0a12",
@@ -33,7 +33,27 @@
       "gemini/* in active model_list",
       "direct unauthenticated external provider bypass",
       "silent cross-tier substitution"
-    ]
+    ],
+    "hermes_invariants": {
+      "runtime_home": "KVM8",
+      "lane_split": [
+        "Hermes-Read",
+        "Hermes-Draft",
+        "Hermes-Action-Broker"
+      ],
+      "action_broker_lane": "A-FORGE (NOT Hermes)",
+      "data_classification_required": true,
+      "injection_membrane_required": true,
+      "kill_switch_procedures": [
+        "KILL_EXECUTION",
+        "KILL_EGRESS",
+        "ISOLATE_NODE",
+        "ISOLATE_KVM4",
+        "RESTART_HERMES"
+      ],
+      "amendment_reference": "CONTRACT-20260904-HERMES-OPENCLAW-ROLE-SPLIT-AMENDMENT-002",
+      "amended_at": "2026-09-04"
+    }
   },
   "consumers": [
     {
@@ -50,7 +70,14 @@
       "target_file": "/root/.hermes/config.yaml",
       "projection_type": "HERMES_YAML",
       "endpoint": "http://127.0.0.1:4000/v1",
-      "model": "i-arif"
+      "model": "i-arif",
+      "runtime_home": "KVM8",
+      "lane_enforcement": "CONTRACT-20260904 AMENDMENT-001 + AMENDMENT-002",
+      "injection_membrane_required": true,
+      "data_classification_required": true,
+      "kill_switch_compliant": true,
+      "amended_at": "2026-09-04",
+      "amendment_reference": "CONTRACT-20260904-HERMES-OPENCLAW-ROLE-SPLIT-AMENDMENT-002"
     },
     {
       "consumer_id": "OPENCODE_SURFACE",
@@ -58,6 +85,33 @@
       "target_file": "/root/.config/opencode/config.json",
       "projection_type": "OPENCODE_JSON",
       "endpoint": "http://127.0.0.1:4000/v1"
+    },
+    {
+      "consumer_id": "HERMES_READ_ONLY_PROFILE",
+      "description": "Schema projection enforcing Hermes-Read lane \u2014 interpretation/intent only, no execution, no mutation. Per AMENDMENT-002 \u00a75 + \u00a76.",
+      "organ": "AAA",
+      "target_file": "/root/.hermes/config.yaml:hermes_read_profile",
+      "projection_type": "HERMES_READ_PROFILE_YAML",
+      "schema_reference": "/root/AAA/canon/HERMES_PROMPT_INJECTION_MEMBRANE_v1.md + AMENDMENT-002",
+      "invariants": {
+        "delegation_depth_max": 0,
+        "power_band": "conversation_media_routing_only",
+        "epistemic_floor": "F2",
+        "injectable_surfaces": [],
+        "data_classes_permitted": [
+          "PUBLIC",
+          "INTERNAL"
+        ],
+        "data_classes_888_hold": [
+          "CONFIDENTIAL",
+          "PERSONAL",
+          "SENSITIVE"
+        ],
+        "tier3_content_default": "SANDBOXED (per membrane \u00a76)",
+        "kill_switch_class": "KILL_EXECUTION, KILL_EGRESS"
+      },
+      "amended_at": "2026-09-04",
+      "amendment_reference": "CONTRACT-20260904-HERMES-OPENCLAW-ROLE-SPLIT-AMENDMENT-002"
     }
   ],
   "evidence_ledger": {
@@ -66,5 +120,17 @@
     "canary_verified_at": "2026-09-04T06:54:30Z",
     "canary_effective_model": "deepseek-v4-pro",
     "canary_status": 200
-  }
+  },
+  "amendment_history": [
+    {
+      "amendment": "AMENDMENT-001",
+      "date": "2026-09-04",
+      "summary": "Initial ratification per F13 directive"
+    },
+    {
+      "amendment": "AMENDMENT-002",
+      "date": "2026-09-04",
+      "summary": "KVM4 \u2194 KVM8 node-role inversion correction. Hermes runtime home = KVM8, KVM4 = workshop (OpenClaw + LiteLLM :4000 brain)"
+    }
+  ]
 }
