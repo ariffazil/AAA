@@ -15,8 +15,8 @@ import json
 import urllib.request
 import urllib.parse
 
-TOKEN_FILE = "/root/HERMES/google_token.json"
-CLIENT_FILE = "/root/HERMES/google_client_secret.json"
+TOKEN_FILE = "/root/.secrets/google_token.json"
+CLIENT_FILE = "/root/.secrets/google_client_secret.json"
 
 def get_access_token():
     with open(TOKEN_FILE) as f:

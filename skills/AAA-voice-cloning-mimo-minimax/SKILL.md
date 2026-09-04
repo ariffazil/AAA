@@ -267,7 +267,7 @@ Synthetic / phantom voice_ids (hash that doesn't exist on the provider)
 - **EMD pipeline**: `/root/AAA/skills/AAA-audio-emd-pipeline/SKILL.md`
 - **i-ARIF identity card**: `/root/AAA/agent-cards/identity/i-ARIF/identity-card.json`
 - **VAULT999 identity records**: `/root/VAULT999/identity/` (F1 immutable)
-- **Hermes config**: `/root/HERMES/config.yaml` (line 851: `tts:`)
+- **Hermes config**: `/root/.hermes/config.yaml` (line 851: `tts:`)
 - **Companion**: `/root/AAA/skills/AAA-voice-cloning-qwen-cloud/SKILL.md` (alternative provider)
 
 ## Related Skills

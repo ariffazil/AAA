@@ -209,8 +209,8 @@ Ingestion may NOT increase entropy:
 
 - **EMD pipeline (Phase 1)**: `/root/AAA/skills/AAA-audio-emd-pipeline/SKILL.md`
 - **Doctrine parent**: `/root/AAA/skills/AGI-audio-quantum-cognition/SKILL.md`
-- **Hermes SOUL**: `/root/HERMES/SOUL.md` (listening config)
-- **Edge bot wiring**: `/root/HERMES/config.yaml` (line ~870: `stt:`)
+- **Hermes SOUL**: `/root/.hermes/SOUL.md` (listening config)
+- **Edge bot wiring**: `/root/.hermes/config.yaml` (line ~870: `stt:`)
 - **OpenClaw gateway**: `/root/openclaw/SOUL.md`
 
 ## Related Skills
