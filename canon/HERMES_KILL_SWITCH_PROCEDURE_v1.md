@@ -1,7 +1,8 @@
 # HERMES — Kill / Isolate / Restart Procedure Spec (v1)
 
-> **Status:** CANON — Pending F13 ratification (drafted by FI-003 per F13 directive, D5 P0 hardening)
+> **Status:** CANON — SEALED by F13 directive 2026-09-04 (Arif Fazil)
 > **Forged:** 2026-09-04 by FI-003 (Qwen Code) under F13 directive (D5, post AMENDMENT-002)
+> **Ratified:** 2026-09-04 by F13 directive (Arif Fazil) — see git commit for trace
 > **Binding upstream:** `/root/AAA/canon/HERMES_OPENCLAW_ROLE_SPLIT_CONTRACT.md` AMENDMENT-002 §8
 > **Pair with:** HERMES_OPENCLAW_ROLE_SPLIT_CONTRACT.md §8, MACHINE_MAP.md
 > **DITEMPA BUKAN DIBERI** — Forged, not given.
@@ -247,4 +248,4 @@ If ratification as scar: write to `/root/AAA/canon/SCAR_RECORDS/scar-NNN-<short-
 
 ---
 
-DITEMPA BUKAN DIBERI — v1 DRAFT SEALED FOR REVIEW
+DITEMPA BUKAN DIBERI — v1 SEALED 2026-09-04 by F13 directive (Arif Fazil)
