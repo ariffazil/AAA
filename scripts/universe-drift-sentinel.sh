@@ -62,7 +62,7 @@ drifts=$(echo "$drifts" | xargs)
 
 # ── state assembly + transition detection ─────────────────────────────────
 prev_drift=false
-if [ -f "$OUT" ] && grep -q '"has_drift": true' "$OUT" 2>/dev/null; then
+if [ -f "$OUT" ] && grep -qE '"has_drift": ?true' "$OUT" 2>/dev/null; then
   prev_drift=true
 fi
 
