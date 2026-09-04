@@ -107,7 +107,7 @@ OpenCode's `/init` is wired through the command path at `/root/.config/opencode/
 
 ### Step 1 — Load constitutional prompt
 ```bash
-cat /root/AAA/prompts/INIT.md   # universal
+MCP '/init' prompt (arifos-kernel · 2026-09-04 supersede)   # universal
 # OpenCode: cat /root/AAA/prompts/INIT_OPENCODE.md  # if exists
 ```
 

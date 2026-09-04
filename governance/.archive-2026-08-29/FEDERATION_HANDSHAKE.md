@@ -1,1 +1,0 @@
-/root/AAA/governance/FEDERATION_SCHEMA_ALIGNMENT.md
