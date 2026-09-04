@@ -5,6 +5,11 @@ ratified_by: "ARIF (F13 SOVEREIGN) \u2014 2026-08-11 musyawarah open-door"
 generated_by: import-from-cc-codex
 reviewed_by: 888_APEX
 generated_at: '2026-08-11'
+amended_at: '2026-09-04'
+amended_by: 'FI-008 (kimi-code) under sovereign directive: MCP federation discoverability sweep.
+  Corrected sources drift only: kimi_code 8→13 (mcp.json SOT, 5 entries intentionally disabled
+  with dated reasons), codex 26→11 (live [mcp_servers.*] count after hermes dead-path removal,
+  fed added). No axes/invariants touched. Ratification of 2026-08-11 otherwise stands.'
 invariants:
   one_canonical_name_per_capability: true
   mcp_servers_must_be_stateless: true
@@ -24,11 +29,11 @@ sources:
     provenance_sealed: false
   codex:
     config: /root/.codex/config.toml
-    server_count: 26
+    server_count: 11
     provenance_sealed: false
   kimi_code:
     config: /root/.kimi-code/mcp.json
-    server_count: 8
+    server_count: 13
     server_names:
     - arifos
     - aforge
@@ -38,6 +43,11 @@ sources:
     - minimax
     - wealth
     - well
+    - minimax-media
+    - context7
+    - playwright
+    - serena
+    - human-inference
 axes:
   sense:
     description: Observe the current external world.
