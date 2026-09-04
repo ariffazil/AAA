@@ -90,3 +90,20 @@ The verified T1 + T2 work is **SEALED**. The T3 items are **HOLD** with explicit
 3. **apex-888 scar (S-4)** — judge lane potentially hijacked via relay; F13 explicit decision required
 
 Log: /tmp/agi-asi-apex-seal-20260904-131927.log
+
+---
+
+## F13 RATIFICATION — 2026-09-04T05:25Z
+
+**Ratifying sovereign**: Arif Fazil (F13)
+**Verbal directive**: "ratify the seal"
+**Surface**: Qwen Code (FI-003) session on KVM8 forge
+
+**Ratification scope**:
+- All T1 + T2 verified work is SEALED into canon
+- AGI/ASI/APEX loop closed
+- T3 HOLD items (arif_route, audio wire, apex-888 scar) deferred to next sovereign session
+
+**Note on arif_seal primitive**: Per  doctrine, the in-process arif_seal primitive cannot fire from MCP lane (clamps OBSERVE_ONLY). This ratification is via the canonical receipt (paper trail) + carry_forward.json (SOT update). For TRUE arif_seal vault append, F13 must invoke from sovereign tooling ( or equivalent in-process script).
+
+**Reversibility**:  preserves pre-ratification state.
