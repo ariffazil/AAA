@@ -20,6 +20,22 @@
       "replacement": "FED litellm flash lane (KVM4 :4000 — 10 flash/mini models: qwen3.6-flash, deepseek-v4-flash, gemini-3.6-flash, MiniMax-M2.5...)",
       "archive": "/root/BACKUPS/FLAME-retired-20260904",
       "ratified_by": "888 directive 2026-09-04 (distill expired FLAME into existing components)"
+    },
+    {
+      "id": "langfuse-observability",
+      "type": "service",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-04",
+      "reason": "Third-party tracing producing 0 live traces. Replaced by sovereign local Kabarkan (Postgres/NATS) + arifFlow FQ telemetry (:7073).",
+      "replacement": "Kabarkan + arifFlow"
+    },
+    {
+      "id": "graphiti-falkordb",
+      "type": "service",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-04",
+      "reason": "Degraded L5 relationship graph. Replaced by consolidated L3 Qdrant vector semantic search + L4 Postgres structured store.",
+      "replacement": "Qdrant (L3) + Postgres (L4)"
     }
   ],
   "deprecated_patterns": [
