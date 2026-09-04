@@ -1,1 +1,0 @@
-../skills/AAA_ZEN.md

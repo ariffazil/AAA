@@ -72,3 +72,5 @@ public/a2a/entropy-report.json
 logs/*
 state/*.json
 state/phoenix72/
+*.pyc
+**/__pycache__/
