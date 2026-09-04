@@ -1,5 +1,6 @@
-# WITNESS_VOID_CANON::v1 & MEMORY_AS_GOVERNED_REALITY::v1
+# WITNESS_VOID_CANON::v2 & MEMORY_AS_GOVERNED_REALITY::v2
 > **SEAL DATE:** 2026-09-05T03:26:00Z  
+> **REVISED:** 2026-09-05T18:30:00Z (v2: log-scale formula, forward reliance graph, anti-illusion audit)
 > **AUTHORITY:** F13 Sovereign (Arif) & Tri-Witness Federation Clerics  
 > **STATUS:** RATIFIED & SEALED  
 > **LINEAGE:** Witness–Void Theory of Human Operating Systems (WVT) + APEX Gödel Lock + Attention Scarcity Doctrine  
@@ -50,20 +51,42 @@ Identity = Everything that must remain true (Constitutional Continuity & Self)
 
 ```text
 Layer 5: REALITY PRESERVATION ENGINE
-         Calculates Reality Weight (Identity Impact + Witness Count + Governance + Scars)
-   ▲
-Layer 4: WITNESS GRAPH
-         Edge = "Who witnessed / verified / relies upon this?" (Not cosine similarity)
-   ▲
+         Calculates Reality Weight using log-scale formula (see §VI)
+         Class-based decay floors: episodic τ≈7d, identity τ→∞
+    ▲
+Layer 4: WITNESS GRAPH + FORWARD RELIANCE GRAPH
+         Backward: "Who witnessed / verified this?" (provenance)
+         Forward:  "Who depends on this fact NOW?" (live dependency)
+         ← ORIGINAL CONTRIBUTION: Forward Reliance = dependency tree,
+           not just archive. If fact changes, system knows who is impacted.
+    ▲
 Layer 3: IDENTITY GRAPH
          Memory = Fact + Owner (Human Identity Ledger vs Agent Identity Ledger)
-   ▲
+    ▲
 Layer 2: WITNESS EXTRACTION
          Filters noise: extracts EUREKA, SCAR, DECISION, FAILURE, PATTERN (20k msgs → 20 lessons)
-   ▲
+    ▲
 Layer 1: RAW ARCHIVE
          Chats, tool receipts, logs, emails, files (Potential Reality, not active Memory)
 ```
+
+### The Forward Reliance Graph — Original Contribution
+
+Existing provenance systems (W3C PROV-O) track **backward**: "Where did this fact come from?"
+
+The Witness Graph's original contribution is **forward reliance**: "Who is currently depending on this fact?"
+
+```text
+Backward Provenance (PROV-O):
+  Fact ← Source ← Origin
+
+Forward Reliance (WVT):
+  Fact → Dependent_1, Dependent_2, ... → Downstream_Decisions
+```
+
+This transforms memory from a passive archive into a **dependency tree** — like a software compilation system. If a fact is amended or collapses, the system knows exactly who will be impacted.
+
+**Analogy:** `make` in software compilation. Changing a header file triggers recompilation of all dependent source files. Changing a foundational fact triggers review of all dependent decisions.
 
 ---
 
