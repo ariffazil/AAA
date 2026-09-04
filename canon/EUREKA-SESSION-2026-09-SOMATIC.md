@@ -51,3 +51,66 @@ Signal ≠ Inference ≠ Authority
 
 ## Verdict: SEAL (Architecture)
 Architecture-level review passed. Implementation-level verification pending Layer 1 ignition.
+
+---
+
+# EUREKA — FLAME Death: Capability Metabolism Pattern
+**Date**: 2026-09-4
+**Source**: 333-AGI system boot diagnostic
+**Category**: Architecture, federation metabolism, capability lifecycle
+
+## The Eureka
+
+FLAME (Free Loop AI Model Engine) was a local CPU inference server at :18901 that
+synthesized search results using a local LLM. It was disabled on 2026-08-15 and its
+code directory was deleted. The federation worked fine for 3 weeks without it.
+
+### What FLAME Did
+- Received raw search results from Brave/DDGS
+- Used local LLM (CPU) to extract/summarize facts
+- Returned synthesis with provenance (ADVISORY authority)
+
+### Why It Died
+1. arif_observe has its own search + synthesis pipeline
+2. free-search tools do result ranking without LLM synthesis
+3. FED federation provides i-arif model for hermes (governed tokens)
+4. ollama has qwen2.5:3b locally (free alternative)
+5. **The capability was absorbed by 3+ existing organs**
+
+### The Pattern (Capability Metabolism)
+```
+CREATE → SERVE → DETECT_OVERLAP → PROVE_REPLACEMENT → KILL
+```
+
+### The Architecture Insight
+`flame_client.py` implemented the correct pattern for organ-to-organ inference:
+```python
+try:
+    result = flame_synthesize_search(query, results)
+    if result.get("ok"):
+        synthesis = result["synthesis"]
+except Exception:
+    synthesis = None  # Graceful degradation — never crash
+```
+
+This pattern (try/except, return raw context on failure) should be the standard
+for ALL inter-organ inference calls. sense.py already follows it.
+
+### Three actionable insights for the federation:
+1. **Capability Overlap Detector**: arifFlow should detect when N>=3 organs
+   provide the same function and flag the lowest-performing for retirement
+2. **Graceful Degradation Standard**: Every organ-to-organ inference call MUST
+   follow the flame_client pattern (try/except, raw context fallback)
+3. **Route-to-Smallest Enforcement**: When a capability exists in multiple
+   places, automatically route to the simplest one (FORGE-route-least-power)
+
+### Evidence
+- arif_observe PASS without FLAME (boot test 2026-09-04)
+- flame_client.py graceful degradation pattern (code review)
+- sense.py try/except around flame_client (code review)
+- free-search covers fact_check function (tool analysis)
+- FED i-arif covers hermes inference (routing analysis)
+- 3 weeks zero failures from FLAME absence (operational evidence)
+
+### F2 Label: DER (Derivation)
+### Confidence: 0.85
