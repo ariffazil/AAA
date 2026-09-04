@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0.0",
+  "contract_id": "FED-CONFIG-CONTRACT-2026-09-04",
+  "generated_at": "2026-09-04T06:54:30Z",
+  "source_of_truth": {
+    "manifest": "/root/.config/federation-models.json",
+    "manifest_sha256": "37dd6edfeb675aab6a84feec91eb5306aa8c8eae8acd3f33367b0d273c4b0a12",
+    "litellm_primary": "/root/A-FORGE/litellm-config.yaml",
+    "litellm_primary_sha256": "df40b6f7f9e92159fd6ecfe2610ac566bdf8046a4538999969e01d2fbbd2d6c0",
+    "litellm_deploy": "/root/A-FORGE/deploy/fed/litellm-config.yaml",
+    "litellm_deploy_sha256": "116eed3c4576ebfefc73f913821ee3959bb07e7ea1d78ebb407ca44fc4c4b26c"
+  },
+  "routing_invariants": {
+    "gemini_dormancy": {
+      "status": "DORMANT_IN_PLACE",
+      "parsed_active_count": 0,
+      "alias_count": 0,
+      "fallback_references_count": 0,
+      "reversibility": "UNCOMMENT_ONLY_WITH_HUMAN_888"
+    },
+    "apex_888_contract": {
+      "order_1_primary": "openai/deepseek-v4-pro",
+      "order_2_secondary": "openai/qwen3.8-max",
+      "order_99_tertiary": [
+        "openai/qwen3.7-max",
+        "openai/MiniMax-M3"
+      ],
+      "api_base": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+      "api_key_env_var": "QWEN_TEAM_OWNER_API_KEY"
+    },
+    "forbidden_patterns": [
+      "gemini/* in active model_list",
+      "direct unauthenticated external provider bypass",
+      "silent cross-tier substitution"
+    ]
+  },
+  "consumers": [
+    {
+      "consumer_id": "FED_GATEWAY",
+      "organ": "A-FORGE",
+      "target_file": "/root/A-FORGE/litellm-config.yaml",
+      "projection_type": "LITELLM_YAML",
+      "expected_sha256": "df40b6f7f9e92159fd6ecfe2610ac566bdf8046a4538999969e01d2fbbd2d6c0",
+      "health_endpoint": "http://127.0.0.1:4000/health/liveliness"
+    },
+    {
+      "consumer_id": "HERMES_ASI_GATEWAY",
+      "organ": "AAA",
+      "target_file": "/root/.hermes/config.yaml",
+      "projection_type": "HERMES_YAML",
+      "endpoint": "http://127.0.0.1:4000/v1",
+      "model": "i-arif"
+    },
+    {
+      "consumer_id": "OPENCODE_SURFACE",
+      "organ": "A-FORGE",
+      "target_file": "/root/.config/opencode/config.json",
+      "projection_type": "OPENCODE_JSON",
+      "endpoint": "http://127.0.0.1:4000/v1"
+    }
+  ],
+  "evidence_ledger": {
+    "canary_endpoint": "http://127.0.0.1:4000/v1/chat/completions",
+    "canary_model": "apex-888",
+    "canary_verified_at": "2026-09-04T06:54:30Z",
+    "canary_effective_model": "deepseek-v4-pro",
+    "canary_status": 200
+  }
+}
