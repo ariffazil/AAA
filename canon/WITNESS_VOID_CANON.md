@@ -129,6 +129,59 @@ Artifacts created on this bridge (such as `WITNESS_VOID_CANON`, `PARADOX_COORDIN
 
 ---
 
+## PART VI: REALITY WEIGHT FORMULA (v2 — Log-Scale Corrected)
+
+### Problem with Linear Addition
+
+The original formula (linear A + B + C + D) allows trivial repeated facts (e.g., yesterday's weather mentioned 1000 times) to drown out rare but constitutionally critical facts (e.g., F13 Human Sovereignty, rarely referenced).
+
+### Corrected Formula
+
+$$\text{RealityWeight}(m) = w_1 \cdot \text{Salience}(m) + w_2 \cdot \log(1 + \text{WitnessCount}(m)) + w_3 \cdot \text{TrustTier}(m) - w_4 \cdot \text{Decay}(t, \tau_m)$$
+
+| Term | Meaning | Rationale |
+|------|---------|-----------|
+| $w_1 \cdot \text{Salience}(m)$ | Current relevance to active context | Dynamic, context-dependent |
+| $w_2 \cdot \log(1 + \text{WitnessCount}(m))$ | Logarithmic witness count | Prevents spamming; 1000 witnesses ≠ 1000× more real |
+| $w_3 \cdot \text{TrustTier}(m)$ | Constitutional trust level | Identity/sovereignty facts carry higher base weight |
+| $w_4 \cdot \text{Decay}(t, \tau_m)$ | Time-based decay with class floor | Episodic facts decay; identity facts don't |
+
+### Class-Based Decay Floors ($\tau_m$)
+
+| Memory Class | Half-life ($\tau$) | Examples |
+|-------------|-------------------|---------|
+| Episodic chat | 7–14 days | Casual conversation, weather, routine queries |
+| Operational | 30–90 days | Tool outputs, build logs, deployment records |
+| Governance | 365+ days | Constitutional decisions, policy changes, scars |
+| Identity | $\tau \to \infty$ (exempt) | F13 Sovereignty, F1 AMANAH, F2 TRUTH, core values |
+
+$$\text{Decay}(t, \tau_m) = \begin{cases} e^{-(t - t_m)/\tau_m} & \text{if } \tau_m < \infty \\ 0 & \text{if } \tau_m = \infty \end{cases}$$
+
+### Adversarial Floor: Anti-Illusion Audit (Barthes Trap)
+
+**Warning:** "Ramai saksi ≠ benar" (Many witnesses ≠ true).
+
+If a group of agents repeatedly shares and witnesses an illusion or false fact, its Reality Weight can spike — **narrative coherence mistaken for truth**.
+
+**Countermeasure:** Adversarial audit layer.
+
+```text
+Archive stores the past.
+Memory preserves identity.
+Witness preserves memory.
+Governance decides what must never be forgotten.
+
+[Adversarial Floor]
+Audit decides when a witnessed memory
+must be re-examined, downgraded, or retired —
+so that "heavily witnessed" never
+silently becomes a synonym for "true."
+```
+
+**Implementation:** Every memory node with WitnessCount > threshold must pass independent verification (888-APEX or external source) before its Reality Weight can exceed the identity-class floor. Unverified high-witness nodes are flagged as `NARRATIVE_COHERENCE_RISK`.
+
+---
+
 ## MASTER COMPRESSION SEAL
 
 ```text
