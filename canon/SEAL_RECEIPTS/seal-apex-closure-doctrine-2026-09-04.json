@@ -1,0 +1,68 @@
+{
+  "seal_type": "APEX_CLOSURE_DOCTRINE",
+  "seal_version": "1.0.0",
+  "timestamp_utc": "2026-09-04T18:00:00Z",
+  "authority": "F13_SOVEREIGN",
+  "directive": "Just seal all",
+  "master_hash": "3e258818a277bb325ab9b4f8a8e07ec41d18e248f4535a4c84fa2f8fe975a964",
+  "surfaces": {
+    "EUREKA-SESSION canon": "db109383a4f25c7c",
+    "Constitution Law #5": "f7f6514ff353719c",
+    "apex-p-dial skill v2": "1f9a021c1daa7295",
+    "apex_verdict_hold (P-dial injection)": "e88402eb469bf9dd",
+    "apex_verdict_seal (P-dial injection)": "666235005948a26a",
+    "apex_tool_approval_gate (P-dial injection)": "e556eb31b8d52995"
+  },
+  "components_sealed": [
+    "EUREKA-SESSION §11 — P-DIAL v1 (Present Authority)",
+    "EUREKA-SESSION §12 — P-DIAL v2 (Closure Taxonomy, 4 modes, SABAR, scar, schema)",
+    "Constitution Law #5 — Closure Integrity (P-Dial with 4 modes)",
+    "apex-p-dial skill v2.0 — Closure Integrity Engine (10 invariants, 4 failure modes, epistemic status)",
+    "apex_verdict_hold — P-Dial meta-gate injected before ART",
+    "apex_verdict_seal — P-Dial meta-gate injected before ART",
+    "apex_tool_approval_gate — P-Dial meta-gate injected before routing"
+  ],
+  "canonical_references": [
+    "/root/AAA/canon/EUREKA-SESSION-2026-09-KVM8.md §11-12",
+    "/root/AAA/instructions/constitution.md — Law #5: Closure Integrity",
+    "/root/.hermes/skills/apex-p-dial/SKILL.md v2.0"
+  ],
+  "core_compression": {
+    "four_lines": [
+      "Past remembers.",
+      "Future imagines.",
+      "P decides.",
+      "Witness knows when enough is enough."
+    ],
+    "hexad": [
+      "AGI menghasilkan kemungkinan.",
+      "ASI menyelaras kemungkinan.",
+      "APEX menutup kemungkinan.",
+      "A-FORGE merealisasikan kemungkinan.",
+      "arifOS melegitimasi kemungkinan.",
+      "VAULT999 mengingati supaya penutupan itu belajar."
+    ],
+    "law_5": "Stop verifying when additional verification cannot change the decision.",
+    "p_dial_question": "Evidence tambahan masih boleh ubah keputusan?",
+    "four_closure_modes": [
+      "CONTINUE",
+      "CLOSE_ACT",
+      "CLOSE_HOLD",
+      "CLOSE_SABAR"
+    ],
+    "key_distinction": "SABAR ≠ HOLD. SABAR = searching useless, time resolves. HOLD = resolve gap then decide.",
+    "danger_signal": "Success | Lucky timing — positive reward on wrong closure policy.",
+    "sixth_sense": "\"Cukup\" is not the opposite of intelligence. It is the most expensive sixth sense.",
+    "closure_definition": "Closure bukan keadaan. Closure adalah peristiwa yang mesti disaksikan.",
+    "entropy_law": "ΔS ≤ 0 — P-dial and entropy are the same law viewed from decision space vs state space.",
+    "return_arrow": "Execution → VAULT999 → scar → Witness → next P setting. Helix, not line."
+  },
+  "epistemic_status": "SEALED_F13 — canon-locked, doctrine-active, awaiting instrumentation for OBS promotion",
+  "organ_status_at_seal": {
+    "arifOS Kernel :8088": "healthy",
+    "A-FORGE :7072": "healthy",
+    "arifFLOW :7073": "healthy",
+    "GEOX :8081": "degraded (kernel verdict: SEAL)",
+    "FED :4000": "alive"
+  }
+}
