@@ -36,8 +36,8 @@
   },
   "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/opencode",
   "runtime_snapshot": {
-    "probed": "2026-08-14T06:46:05Z",
-    "opencode_version": "1.18.9",
+    "probed": "2026-09-05T04:30:00Z",
+    "opencode_version": "1.18.28",
     "organ_health": {
       "arifos": {
         "verdict": "SEAL",
