@@ -371,11 +371,11 @@
   ],
   "signatures": [
     {
-      "did": "did:arif:aaa",
-      "proofValue": "QTYVf3YuYYinHwvhfx9zKyuecLC6oHBCRxp1rg18EkhFjFPPIX/7p3EIYOnpZFfXXFx/9GvzoJOJZOP/twltAA==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-08-21T05:51:38Z",
-      "type": "Ed25519Signature2020"
+      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
+      "signature": "PXAZdXLIsJR7JHUVW_l5CcxLhDNb_cDUrlw3ulUZxlcqDjJ4eBUyNFyrV3x6KmzyjqO_epG0Iz8uAkTcsBJxBg",
+      "header": {
+        "kid": "arifos-a2a-card-2026-%q"
+      }
     }
   ]
 }

@@ -1,0 +1,12 @@
+{
+  "keys": [
+    {
+      "kty": "OKP",
+      "crv": "Ed25519",
+      "kid": "arifos-a2a-card-2026-%q",
+      "use": "sig",
+      "alg": "EdDSA",
+      "x": "tUu9w-EHbZZwQ_zNpESsMv3bh9D3trwUSj1w8ArKMtY"
+    }
+  ]
+}

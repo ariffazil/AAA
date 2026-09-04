@@ -1,0 +1,24 @@
+{
+  "packet": "A",
+  "title": "GEOX P0 Containment — Block Modern-Session Minting",
+  "severity": "P0",
+  "blast_radius": "HIGH",
+  "reversibility": "REVERSIBLE (feature flag rollback)",
+  "authorization": "888_HOLD",
+  "scope": [
+    "Requests declaring MCP 2026-07-28 must use only the stateless handler",
+    "GEOX must neither create nor emit session state on modern path",
+    "Legacy clients remain on explicitly isolated legacy handling",
+    "No change to data access scope, tool authority, credential scope, or external endpoints",
+    "Canary deployment with automated rollback on conformance failure"
+  ],
+  "evidence_required": [
+    "Pre/post conformance harness results",
+    "Concurrent-client state-isolation test",
+    "No Mcp-Session-Id assertion on modern path",
+    "Service health and GEOX evidence-output regression check"
+  ],
+  "design": "/root/A-FORGE/docs/GEOX-SESSION-CONTAINMENT.md",
+  "regression_test": "/root/A-FORGE/tests/mcp-conformance/test_geox_session_invariant.py",
+  "current_violation": "Mcp-Session-Id: 664ad2834d874cd2aa6b78139e65e9ee minted on modern discover request"
+}
