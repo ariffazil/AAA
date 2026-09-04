@@ -265,8 +265,10 @@ agent:
     data_classification_required: true
     kill_switch_compliant: true
     runtime: python
+    runtime_home: KVM8  # AMENDMENT-002 — Hermes runtime IS KVM8, NOT KVM4 (KVM4 hosts OpenClaw + LiteLLM :4000 brain)
     note: "Telegram multimodal bridge. Also expresses 555-ASI."
     contract_reference: "CONTRACT-20260904-HERMES-OPENCLAW-ROLE-SPLIT-AMENDMENT-001"
+    amendment_reference: "CONTRACT-20260904-HERMES-OPENCLAW-ROLE-SPLIT-AMENDMENT-002"
     amended_at: "2026-09-04"
     # Per §5 Hermes is interpretation lane only — Action-Broker = A-FORGE
     # Per §6 T3 content cannot influence Hermes behavior
