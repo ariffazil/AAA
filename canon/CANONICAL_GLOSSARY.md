@@ -187,4 +187,5 @@ Symptom ≠ cause. One HOT can be OpenCode workload + LiteLLM traffic + Hermes p
 - Live: `arifos status` → `/run/arifos/reality.json`
 - Session eurekas: `/root/AAA/canon/EUREKA-SESSION-2026-09-KVM8.md`
 - Witness-Void & Promotion Governance: `/root/AAA/canon/WITNESS_VOID_CANON.md`
+- Governed Memory Engineering Spec: `/root/AAA/canon/MEMORY_ENGINEERING_SPEC_v1.md`
 - Paradox Coordinate Theory: `/root/AAA/canon/PARADOX_COORDINATE_THEORY.md`
