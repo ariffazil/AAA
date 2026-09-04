@@ -77,8 +77,8 @@ import json
 try:
     d = json.load(open('$REG'))
     for e in d.get('deprecated_services', []):
-        u = e.get('id', '')
-        if u.endswith('.service') and e.get('status', '').upper() == 'DEPRECATED':
+        u = e.get('unit') or (e.get('id') if e.get('id', '').endswith('.service') else '')
+        if u and e.get('status', '').upper() == 'DEPRECATED':
             print(u)
 except Exception:
     pass" 2>/dev/null)
