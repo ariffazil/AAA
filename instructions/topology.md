@@ -23,6 +23,7 @@
 | **WELL** | 18083 | CORE · VITALITY | Human readiness — homeostasis / dignity / reliability | `REFLECT_ONLY` |
 | **AAA** | 3001 | CORE · COCKPIT | Control plane + A2A gateway + registry home | `DISPLAY_ONLY` |
 | **arifFLOW** | 7073 | METABOLISM | Receipt metabolism, FQ pulse, attention checkpointing | `METABOLIZE_ONLY` |
+| **FRAME** | 18085 | CORE · MEASUREMENT | Independent drift observer — baseline, trend, probe; evidence never verdict | `ADVISORY_ONLY` |
 
 ## Memory, advisors, edges
 
@@ -70,7 +71,26 @@ MCPJam `:6274/:6277` · Headscale `:8083` · Caddy `:80/:443` · Cloudflared.
 ## Live health probe
 
 ```bash
-for p in 8088 7071 7072 7073 3001 8081 18082 18083; do
+for p in 8088 7071 7072 7073 3001 8081 18082 18083 18085; do
   curl -sf http://127.0.0.1:$p/health >/dev/null 2>&1 && echo "✅ $p" || echo "❌ $p"
 done
 ```
+
+## Dynamic awareness — when the system moves
+
+The map is alive only if it propagates. Binding protocol for ANY topology change
+(port, organ, systemd unit, path, machine):
+
+1. **Update the map sources** — `federation/organs.yaml` (machine twin) + this fragment +
+   `UNIVERSE.yaml` (additive recompile ledger entry — never edit sealed layers in place).
+2. **Re-render the root terminal** — `/root/scripts/render-agents.sh` refreshes
+   `/root/AGENTS.md` + `/root/CLAUDE.md`. Every harness (Kimi, Claude, Codex, Qwen,
+   OpenCode, Grok, Hermes) reads these at boot — this IS the awareness channel.
+3. **Commit AAA** — an uncommitted map is fiction for every machine that is not KVM8.
+4. **Sentinel verifies** — `scripts/universe-drift-sentinel.sh` (hourly,
+   `/etc/cron.d/aaa-universe-drift`) holds a line in `terminal/holds.txt` until the map
+   is re-rendered and committed; resolution deletes it. It cannot render or commit —
+   it only makes silent movement impossible.
+
+A doctrine edit without a render = the system moved and the agents weren't told.
+The sentinel exists so that cannot happen silently.
