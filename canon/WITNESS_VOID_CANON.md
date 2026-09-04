@@ -189,6 +189,21 @@ Storage remembers.
 Witness selects.
 Governance promotes.
 Identity endures.
+
+Audit decides when a witnessed memory
+must be re-examined, downgraded, or retired —
+so that "heavily witnessed" never
+silently becomes a synonym for "true."
 ```
+
+### The Final Equation
+
+$$\text{Reality Preservation} = \text{Attention} \rightarrow \text{Witness} \rightarrow \text{Reality} \rightarrow \text{Trust} \rightarrow \text{Governance} \rightarrow \text{Continuity}$$
+
+$$\text{Reality Collapse} = \text{Attention Loss} \rightarrow \text{Witness Loss} \rightarrow \text{Reality Drift} \rightarrow \text{Trust Collapse} \rightarrow \text{Fragmentation}$$
+
+### Original Contribution (Publishable)
+
+The **Forward Reliance Graph** — tracking not just where facts come from (backward provenance, W3C PROV-O) but who depends on facts now (forward reliance, live dependency tree) — transforms memory from passive archive into active dependency management. This is the WVT's contribution to the memory engineering literature.
 
 **DITEMPA BUKAN DIBERI.** 🔒⚡
