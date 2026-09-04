@@ -10,8 +10,8 @@
 |---|---|---|---|---|---|---|
 | H1 | **Hermes ASI 💃 (sovereign gateway)** | KVM4 kvm4-forge (100.64.0.5) | pid 519836 · `hermes-asi-gateway.service` **ACTIVE** | **LIVE — primary agent, all groups** | Arif (F13) | `i-arif` custom persona → FED `http://100.64.0.5:4000/v1` (litellm @ KVM4, 1M ctx), cfg `version: 35` |
 | H2 | **Hermes Azwa (witness lane)** | KVM2 azwaos (100.64.0.4) | pid 275827 · `hermes-agent.service` **ACTIVE** | **LIVE — Azwa's own agent** | Azwa (SAF identity) | `agi-333` → provider `af-forge-fed` (→ KVM8 FED) + `qwencloud-free` fallback; regional: ILMU, SEA-LION, Xiaomi MiMo |
-| H3 | **Hermes CLI seat (court)** | KVM8 af-forge (100.64.0.2) | on-demand `hermes` CLI (`/root/.local/bin/hermes`) | on-demand (interactive pts) | FI agents / Arif at terminal | seat config `~/.hermes` (identity docs) — one of the 12 FI coder seats |
-| — | **OpenClaw 🦞AGI (edge twin)** | KVM8 af-forge (100.64.0.2) | pid 123327 · `openclaw-gateway.service` :18789 **ACTIVE** | LIVE — guest bot, AAA only | AAA governance guest | Node.js OpenClaw (NOT hermes-core — identity contract P3: never claims Hermes) |
+| H3 | **Hermes CLI seat (court)** | KVM8 forge (100.64.0.2) | on-demand `hermes` CLI (`/root/.local/bin/hermes`) | on-demand (interactive pts) | FI agents / Arif at terminal | seat config `~/.hermes` (identity docs) — one of the 12 FI coder seats |
+| — | **OpenClaw 🦞AGI (edge twin)** | KVM8 forge (100.64.0.2) | pid 123327 · `openclaw-gateway.service` :18789 **ACTIVE** | LIVE — guest bot, AAA only | AAA governance guest | Node.js OpenClaw (NOT hermes-core — identity contract P3: never claims Hermes) |
 | — | **FORGE 🔥 (opencode bot)** | KVM8 | `forge-gateway.service` DISABLED (dual-token risk — see doctrine) | dormant by design | DM tool interface | opencode bot.py |
 
 KVM8 `hermes-asi-gateway.service` is **masked** — deliberate: the gateway was moved to KVM4 (workshop = EXECUTION SOT). Masked ≠ broken.
@@ -19,7 +19,7 @@ KVM8 `hermes-asi-gateway.service` is **masked** — deliberate: the gateway was 
 ## 2. Linkage graph (who talks to whom)
 
 ```
-                    ┌──────────── KVM8 af-forge (TRUTH/COURT) ────────────┐
+                    ┌──────────── KVM8 forge (TRUTH) ────────────┐
                     │ kernel :8088 · FED HAProxy :4000 · organs :7071-:18085 │
                     │ A2A :3001 (aaa-a2a) · VAULT999 · NATS · FRAME         │
                     └───────▲──────────────▲──────────────▲────────────────┘
