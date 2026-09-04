@@ -612,8 +612,8 @@
   ],
   "kvm4_routing": {
     "dispatch": "ccc-remote grok (KVM8 /usr/local/bin/ccc-remote -> ssh root@100.64.0.5)",
-    "status": "ON-KVM4 — version-PASS 1.0.13 (2026-09-03), full probe pending",
+    "status": "DUAL-NODE (KVM8 + KVM4) — version-PASS 1.0.13 (2026-09-05), CLI healthy, API external balance exhausted (402)",
     "member_of": "kvm4-ccc-pool",
-    "updated": "2026-09-03T16:10+08:00"
+    "updated": "2026-09-05T04:32+08:00"
   }
 }
