@@ -24,7 +24,7 @@
 #   7. f13_pending (F)         → WHAT awaits sovereign decision
 # ─────────────────────────────────────────────────────────────────────────────
 
-version: 0.3.0
+version: 0.3.1
 schema: arifos.universe.atlas.v1
 epoch: F004-CANONICAL-2026-07-17
 provenance:
@@ -105,6 +105,7 @@ runtime:
   ECONOMY:    { systemd: [wealth-organ.service],                      ports: [18082], containers: [] }
   HEALTH:     { systemd: [well.service],                              ports: [18083], containers: [] }
   PUBLIC:     { systemd: [caddy.service],                            ports: [443, 80], containers: [], note: "static root /var/www/html/arif; arif-fazil-com.service never existed (v0.2.0 atlas drift, fixed v0.3.0)" }
+  FRAME_OBSERVER: { systemd: [frame-organ.service], ports: [18085], containers: [], note: "evidence-only measurement organ (baseline/drift/trend) hosted in GOVERNOR repo AAA/federation/frame — NOT a Layer A civilization organ; added v0.3.1 after live probe showed it healthy on :18085 but absent from rendered topology" }
 
 # ─── Layer D: Known shadows ─────────────────────────────────────────────────
 # Status legend: retired_archive | retired_symlink_alias | pending_decision
@@ -268,3 +269,10 @@ recompile:
     evidence: "/root/.qwen/projects/-root/memory/project-kvm-contrast-audit-20260903.md + live probes in session transcript"
     seal_note: "v0.2.0 F13 seal below remains authoritative for Layers A/B/D/E/F as written; v0.3.0 amends C + pointers additively"
     corrections: "shadow arifOS/VAULT999/backups reclassified legacy→active after disk probe (federation-20260903-0330.tar.gz exists; producer = HERMES cron, timer-masked claim stale)"
+  - version: 0.3.1
+    ts: "2026-09-04T12:00:00Z"
+    by: "FI-008 (Kimi Code), KVM8"
+    authority: "F13 in-session directive 2026-09-04: 'map the entire system architecture and make sure all my agents are aware every time the system moves dynamically... commit to AAA'"
+    scope: "runtime additively gains FRAME_OBSERVER (:18085, live-probed healthy, absent from rendered topology); topology fragment gains FRAME row + Dynamic awareness protocol (change→render→commit→sentinel); universe-drift-sentinel.sh + /etc/cron.d/aaa-universe-drift close the silent-movement gap; no Layer A civilization change"
+    evidence: "live port probe 2026-09-04 (8088/7071/7072/7073/3001/8081/18082/18083/18085 ✅); organs.yaml frame block (CORE, ADVISORY_ONLY); holds.txt transition pattern per mesh-health-probe.sh"
+    seal_note: "v0.2.0/v0.3.0 seals remain authoritative; v0.3.1 is additive runtime + propagation machinery only"
