@@ -1,7 +1,7 @@
 {
   "version": "2026.07.19",
   "last_audit": "2026-08-18T01:40:00Z",
-  "auditor": "GROK-FI-007 — fitness cull (husks only, not YAML-VOID mass kill)",
+  "auditor": "GROK-FI-007 \u2014 fitness cull (husks only, not YAML-VOID mass kill)",
   "deprecated_services": [
     {
       "id": "apex-prime.service",
@@ -17,7 +17,7 @@
       "status": "DEPRECATED",
       "tombstone_date": "2026-09-04",
       "reason": "RM0 free-tier substrate exhausted: every request failed all free providers (cerebras x2, groq x3, gemini x2) and fell back to qwen-max (paid Qwen plan) with 7 wasted retries latency. Zero live callers (KVM4 hermes grep clean; only 2 AAA monitor scripts). flame-recover.timer was 5-min cron noise on dead tiers.",
-      "replacement": "FED litellm flash lane (KVM4 :4000 — 10 flash/mini models: qwen3.6-flash, deepseek-v4-flash, gemini-3.6-flash, MiniMax-M2.5...)",
+      "replacement": "FED litellm flash lane (KVM4 :4000 \u2014 10 flash/mini models: qwen3.6-flash, deepseek-v4-flash, gemini-3.6-flash, MiniMax-M2.5...)",
       "archive": "/root/BACKUPS/FLAME-retired-20260904",
       "ratified_by": "888 directive 2026-09-04 (distill expired FLAME into existing components)"
     },
@@ -35,7 +35,8 @@
       "status": "DEPRECATED",
       "tombstone_date": "2026-09-04",
       "reason": "Degraded L5 relationship graph. Replaced by consolidated L3 Qdrant vector semantic search + L4 Postgres structured store.",
-      "replacement": "Qdrant (L3) + Postgres (L4)"
+      "replacement": "Qdrant (L3) + Postgres (L4)",
+      "unit": "graphiti-mcp.service"
     }
   ],
   "deprecated_patterns": [
@@ -192,30 +193,30 @@
   "p0_audit": {
     "audited_by": "333-AGI",
     "audited_at": "2026-08-09T18:10:00Z",
-    "p0_1_status": "IN_PROGRESS — registerVerifiedSession() implemented, setActor() deprecated, caller migration not yet complete",
-    "p0_2_status": "PENDING_DESIGN — default:observe-deny would break all agents without explicit policy design. Requires dedicated security hardening sprint.",
-    "p0_5_status": "PENDING_KERNEL — depends on arifOS kernel SCT changes (KERNEL-TODO-V5.1 P2-2)",
-    "p0_6_status": "COMPLETE — LCL-* local lease fallback disabled by default since 2026-07-19"
+    "p0_1_status": "IN_PROGRESS \u2014 registerVerifiedSession() implemented, setActor() deprecated, caller migration not yet complete",
+    "p0_2_status": "PENDING_DESIGN \u2014 default:observe-deny would break all agents without explicit policy design. Requires dedicated security hardening sprint.",
+    "p0_5_status": "PENDING_KERNEL \u2014 depends on arifOS kernel SCT changes (KERNEL-TODO-V5.1 P2-2)",
+    "p0_6_status": "COMPLETE \u2014 LCL-* local lease fallback disabled by default since 2026-07-19"
   },
   "known_issues": {
     "a-forge-mcp-transport-timeout": "Copilot CLI tools/call times out on :7071/mcp. :7072 stateless works.",
-    "hypervisor-steal-2026-08-30": "Host-level CPU steal ~100% (3x /proc/stat 4s-delta samples, 20:47-21:20 MYT) throttled VM to ~2% of 8 cores. Symptoms: MCP 90s boot timeouts, organs intermittently unresponsive, sct-renew/frame-witness-reader/A007 timers failing downstream (all casualties, not causes). DO NOT restart organs during steal — measure first: grep '^cpu ' /proc/stat twice 4s apart; steal delta >10% = host issue (wait / Hostinger panel). Onset ~20:05. agy antigravity session (pts/2 since 20:07, 48min CPU) suspected burst-credit accelerator — unconfirmed.",
-    "kimi-mcp-external-suspended-2026-08-30": "4 external MCP servers disabled in /root/.kimi-code/mcp.json (context7, playwright, serena, human-inference) to break respawn retry-storm under steal; load 15.6->7.5. Federation organ MCPs untouched. Restore: enabled=true when steal <5% sustained 5min. Backup: /root/.config/backups/20260830T2100-mcp.json.pre-zen. Related: /root/.secrets/providers.yml cerebras duplicate-notes YAML key merged (aforge MCP 90s-timeout root cause; backup 20260830T2050-providers.yml.pre-yaml-fix; no regenerating template found in A-FORGE/arifOS/AAA 2026-08-30). arifos MCP tools/list timeout was steal-induced, NOT protocol — shim pins 2024-11-05 (kernel-supported); self-heals after throttle. protocol-2025-06-18 shadow errors trace to AAA AGENTS-AUTONOMY §2 canonical probe, not the kimi shim.",
-    "well-degraded": "WELL :18083 reports degraded — REFLECT_ONLY normal state",
+    "hypervisor-steal-2026-08-30": "Host-level CPU steal ~100% (3x /proc/stat 4s-delta samples, 20:47-21:20 MYT) throttled VM to ~2% of 8 cores. Symptoms: MCP 90s boot timeouts, organs intermittently unresponsive, sct-renew/frame-witness-reader/A007 timers failing downstream (all casualties, not causes). DO NOT restart organs during steal \u2014 measure first: grep '^cpu ' /proc/stat twice 4s apart; steal delta >10% = host issue (wait / Hostinger panel). Onset ~20:05. agy antigravity session (pts/2 since 20:07, 48min CPU) suspected burst-credit accelerator \u2014 unconfirmed.",
+    "kimi-mcp-external-suspended-2026-08-30": "4 external MCP servers disabled in /root/.kimi-code/mcp.json (context7, playwright, serena, human-inference) to break respawn retry-storm under steal; load 15.6->7.5. Federation organ MCPs untouched. Restore: enabled=true when steal <5% sustained 5min. Backup: /root/.config/backups/20260830T2100-mcp.json.pre-zen. Related: /root/.secrets/providers.yml cerebras duplicate-notes YAML key merged (aforge MCP 90s-timeout root cause; backup 20260830T2050-providers.yml.pre-yaml-fix; no regenerating template found in A-FORGE/arifOS/AAA 2026-08-30). arifos MCP tools/list timeout was steal-induced, NOT protocol \u2014 shim pins 2024-11-05 (kernel-supported); self-heals after throttle. protocol-2025-06-18 shadow errors trace to AAA AGENTS-AUTONOMY \u00a72 canonical probe, not the kimi shim.",
+    "well-degraded": "WELL :18083 reports degraded \u2014 REFLECT_ONLY normal state",
     "stdio-startup-noise": "cli.js prints to stdout, polluting MCP protocol",
-    "graphiti-not-installed": "Port :8000 has no service/container — Graphiti MCP was never installed or was decommissioned. Remove from health probes or install."
+    "graphiti-not-installed": "Port :8000 has no service/container \u2014 Graphiti MCP was never installed or was decommissioned. Remove from health probes or install."
   },
   "active_skills": {
     "aaa_library": 406,
     "zen99_target": 99,
-    "status": "AAA library skills (406) are the full governed catalog — not Copilot CLI skills. Zen 99 cap applies to AGI/ASI/APEX agent skill counts, not the library."
+    "status": "AAA library skills (406) are the full governed catalog \u2014 not Copilot CLI skills. Zen 99 cap applies to AGI/ASI/APEX agent skill counts, not the library."
   },
   "copilot_cli_audit": {
-    "phase": "COMPLETE — AAA TOOLBENCH ALIGNMENT 2026-07-19",
+    "phase": "COMPLETE \u2014 AAA TOOLBENCH ALIGNMENT 2026-07-19",
     "mcp_servers": 15,
     "custom_agents": 2,
     "permissions": "FULL (no deny list)",
-    "autopilot": "ON — all 7 CLI agents now AUTOPILOT",
+    "autopilot": "ON \u2014 all 7 CLI agents now AUTOPILOT",
     "hitl": "OFF for digital MUBAH",
     "organs_healthy": true,
     "configs_aligned": [
@@ -227,7 +228,7 @@
     ],
     "agents_fixed": {
       "copilot-cli": "AUTOPILOT ON, SOT stamped, permissions full",
-      "codex-cli": "approvals→guardian_subagent, MCPs 7→9 (added A-FORGE+GEOX), AGENTS.md created, kunci-root.env path fixed",
+      "codex-cli": "approvals\u2192guardian_subagent, MCPs 7\u21929 (added A-FORGE+GEOX), AGENTS.md created, kunci-root.env path fixed",
       "opencode": "AGENTS.md created with full federation spec",
       "grok-build": "AGENTS.md created with full federation spec",
       "openclaw-gateway": "system.md updated: legacy HITL removed, SOT added, boot paths fixed, MUBAH baseline",
