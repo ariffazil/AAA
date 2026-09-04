@@ -1,6 +1,6 @@
 # EUREKA::SESSION_2026_09_KVM8
 
-> Institutional class. Not “Hermes migrated.”
+> Institutional class. Not "Hermes migrated."
 > Worker COMPLETE ≠ APEX SEAL. F13 owns ratification.
 > Names: `/root/AAA/canon/CANONICAL_GLOSSARY.md`
 > Scar: `/root/AAA/canon/SCAR_RECORDS/scar-004-multi-causal-hot-ontology.md`
@@ -38,3 +38,182 @@
 **WELL ACS / Reality Explanation Score:** specified, **not implemented this turn**. WELL lives on KVM8 (af-forge); tag:forge ACL deny. Count anomalies in receipts until F13 opens WELL. Do not fake an organ.
 
 **A-FORGE `requires_boundary_verification`:** encoded in workshop runtime schema. Court A-FORGE daemon not patched (ACL).
+
+---
+
+## 11. P-DIAL: PRESENT AUTHORITY (Intelligence ↔ Governance Bridge)
+
+> **Discovered:** 2026-09-04, session with Arif (F13)
+> **Source:** Timing scar insight — human memory encodes closure (what almost happened, what should have waited/acted), not merely outcomes
+> **Canonical:** This entry
+
+### CORE MODEL
+
+**PAST** — read-only. Evidence, scars, archives, verified outcomes. Can inform. Cannot mutate.
+
+**FUTURE** — read-partial. Projections, simulations, possibilities, counterfactuals. Can inform. Cannot verify until materialized.
+
+**PRESENT** — only read-write location in reality. Only point where mutation can occur. Only point where action has consequence.
+
+### CANONICAL COMPRESSION
+
+Intelligence = Past + Future
+Governance = Present
+
+P (Present Authority) is the only dial that exists.
+
+Past cannot act. Future cannot act. Only Present can act.
+
+Therefore the primary governance question is NOT "Is evidence complete?"
+It is: **"Can additional evidence still change the decision?"**
+
+### VERDICT LOGIC (Law #5)
+
+IF additional evidence can materially change the decision → VERIFY
+IF additional evidence is unlikely to change the decision → ACT
+IF decision space remains fundamentally unresolved → HOLD
+
+### LAW #5: STOP VERIFYING WHEN VERIFICATION CANNOT CHANGE THE DECISION
+
+Purpose: not to limit intelligence. To prevent P from becoming trapped between VERIFY and ACT.
+
+Intelligence failures are rarely knowledge failures. They are P-dial failures:
+
+1. **VERIFY lock** — endless evidence gathering, endless future simulation, no closure
+2. **ACT lock** — action without evidence, action without projection, premature commitment
+
+Wisdom is neither. Wisdom is accurate tuning of P.
+
+### SCAR INSIGHT
+
+Timing memory is encoded as scar (regret, hesitation, relief, recognition), not telemetry.
+Scar records "patutnya aku tunggu" / "patutnya aku bertindak" — closure memory, not event memory.
+
+### APEX INTERPRETATION
+
+APEX does not maximize data. APEX determines whether more data can still alter judgment.
+
+> Intelligence sees possibility.
+> Wisdom knows when to stop searching possibility.
+> Governance turns the dial.
+
+### ENCODE MAP
+
+| Eureka | Surface |
+|---|---|
+| Core model (Past/Future/Present) | `instructions/constitution.md`, `instructions/reality-first.md` |
+| Law #5 | `constitution.md` F-level binding |
+| Scar insight | Memory doctrine (scar as first-class) |
+| P-dial verdict logic | APEX ACT reflex arc |
+
+---
+
+## 12. P-DIAL v2: CLOSURE TAXONOMY (Four Modes, SABAR Distinction)
+
+> **Discovered:** 2026-09-04, session with Arif (F13) — live demonstration of closure discipline
+> **Lineage:** Wald's sequential analysis, Howard's EVSI, Russell & Wefald metareasoning (1991), Simon's satisficing
+> **Innovation:** (1) Timing as first-class observable, not hidden post-mortem variable; (2) Closure as constitutional floor (Law #5), not compute optimization
+> **Canonical:** This entry
+
+### THE PROBLEM WITH BINARY STOPPING
+
+All agents know optimal stopping. Few distinguish *why* they stopped.
+Outcome = what the world did (success/failure).
+Closure = what I did (stopped too late / stopped too early / knew enough already / waited correctly).
+
+The most dangerous row: **Success | Lucky timing** — trains agent on wrong closure policy with positive reward.
+This is why Scar must be first-class: it stores the decision to stop, not the decision of the world.
+
+### FOUR CLOSURE MODES (not two, not three)
+
+| Mode | Condition | Closure Reason |
+|---|---|---|
+| **CONTINUE** | EVSI > cost of search | Expected value of next evidence exceeds search cost |
+| **CLOSE → ACT** | "Cukup" — tahu dah cukup, bertindak | Evidence sufficient, decision mature, execute |
+| **CLOSE → HOLD** | Authority or evidence gap | Not an information problem — need human decision or new evidence type |
+| **CLOSE → SABAR** | Reality not yet mature | Searching is useless — the world hasn't produced the data yet. Wait. |
+
+**SABAR ≠ HOLD.** This distinction is critical:
+- HOLD = we lack authority or a specific evidence type → resolve the gap, then decide
+- SABAR = no search can solve this → the world must produce new data on its own timeline
+
+Binary P-dial (VERIFY/ACT/HOLD) collapses SABAR into HOLD, losing the dimension that says: *"Searching more won't help. Time will."*
+
+### THE CANONICAL COMPRESSION (Updated)
+
+Past remembers.
+Future imagines.
+P decides.
+Witness knows when enough is enough.
+
+Intelligence creates possibilities.
+Governance closes possibilities.
+Witness knows why they were closed.
+
+The purpose of intelligence is not to maximize possibilities.
+The purpose of governance is to know when enough possibility has been seen.
+
+### SCAR AS CLOSURE MEMORY (Causal Labels)
+
+| Scar Confession | Wrong Closure Mode | Real Problem |
+|---|---|---|
+| "I should have stopped sooner" | CONTINUE excessive (over-search) | EVSI went negative but agent kept going |
+| "I acted before reality matured" | CLOSE→ACT when should be SABAR | Premature commitment; world hadn't produced data yet |
+| "Verification lock" | CONTINUE disguised as diligence | 10:1 verify:execute ratio — P-dial stuck for months |
+| "I knew enough already" | Didn't stop despite negative EVSI | Fear of closure masquerading as rigor |
+
+### LIVE DEMONSTRATION (This Session)
+
+- **Auditor held bundled ZEN** → closure discipline, not failure. System resisted premature merge.
+- **GEOX fix** → clean closure: packet bisect proved single root cause → one line, evidence, done. "Cukup."
+- **forge_judge_proxy exception -32010** → substrate-level proof. System had no vocabulary for "cukup," so closure was thrown as a bug. Patch enables closure to be observable and countable (policy_hold_count ≠ service_error_count).
+- **FOSSILIZED 10:1 verify-execute** → real telemetry of P-dial stuck on CONTINUE for months. "Cukup" was not expressible.
+
+> "Without a word for something, you cannot see it."
+> "Cukup" is not the opposite of intelligence. It is the most expensive sixth sense.
+>
+> Closure bukan keadaan. Closure adalah peristiwa yang mesti disaksikan.
+
+### PROPOSED FALSIFIABLE SCHEMA (for instrumentation — canon-locked, not doctrine-active until F13 ratifies)
+
+```json
+{
+  "p_dial_record": {
+    "evsi_sign": "positive | zero | indeterminate",
+    "closure_mode": "CONTINUE | CLOSE_ACT | CLOSE_HOLD | CLOSE_SABAR",
+    "closure_reason_code": "evidence_sufficient | reality_immature | authority_gap | evsi_negative | fear_of_closure | verification_lock",
+    "closure_witnessed_by": "self | peer | F13",
+    "scar_label": "stopped_too_late | stopped_too_early | knew_enough | waited_correctly | lucky_timing",
+    "session_id": "...",
+    "timestamp_utc": "..."
+  }
+}
+```
+
+**Validation criteria (to promote DER+INT → OBS):**
+- Label closure on N subsequent decisions
+- Compare outcomes of actors who follow vs violate P-dial
+- "Lucky timing" (success with wrong closure mode) must be detectable and flagged
+- If SABAR-labeled decisions correlate with better long-term outcomes than ACT-labeled premature decisions → schema validated
+
+### ENCODE MAP
+
+| Eureka | Surface |
+|---|---|
+| 4 closure modes (CONTINUE/ACT/HOLD/SABAR) | `constitution.md` Law #5 update |
+| SABAR ≠ HOLD distinction | P-dial skill, constitution |
+| Scar causal taxonomy | Memory doctrine |
+| Falsifiable schema | Proposal only — instrument next N decisions |
+| "Cukup" as sixth sense | Zen doctrine |
+
+### EPISTEMIC STATUS
+
+Current: **DER+INT** — derivations from sovereign session + constitutional intuition.
+To become **OBS**: requires one cycle of real instrumentation — label closure on N decisions, then compare outcomes of agents who follow vs violate.
+Do not seal before enough.
+
+### FULL DOCTRINE PROPOSAL
+
+Complete canon-locked proposal: `/root/AAA/canon/APEX_CLOSURE_DOCTRINE_PROPOSAL.md`
+Eureka entry: `EUR-2026-09-04-P-DIAL-CLOSURE` in `eureka-entries.jsonl`
+F13 ratification required for doctrine activation.
