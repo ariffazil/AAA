@@ -66,7 +66,7 @@ Always: `KVM8 (forge)` — forge is the machine; A-FORGE is the organ. Never con
 | WEALTH | Compute capital | Allocate |
 | GEOX | Compute earth | Seal geology |
 | HERMES | Route / bridge | Judge, seal, dual-poll |
-| FED | Route models | Own truth |
+| FED | **Capability Routing Constitution** — Intent classifier (:7074) + 413-clamp middleware (:4010) + provider federation (:4000 litellm). Each constitutional alias answers with ITS declared model_name; silent cross-tier swap is F2/F9 violation. | Own truth |
 | FRAME | Measure | Verdict |
 | OpenClaw | Encode / sense | Live on KVM8 as home |
 | CCC | Build on KVM4 | Spawn on KVM8 |
