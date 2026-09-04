@@ -293,7 +293,7 @@
 ```bash
 1. source /root/.secrets/kunci-mas.env
 2. cat /root/AGENTS.md + /root/CLAUDE.md
-3. cat /root/AAA/prompts/INIT.md
+3. MCP '/init' prompt (arifos-kernel · 2026-09-04 supersede)
 4. cat /root/.local/share/arifos/carry_forward.json
 5. make health  # or: /root/scripts/doctor.sh
 6. for d in /root/{arifOS,A-FORGE,AAA,GEOX,WEALTH,WELL}; do git -C "$d" status -s; done
