@@ -98,11 +98,16 @@ if [ -z "$drifts" ]; then
   fi
   echo "$STAMP CLEAN — universe map rendered + committed, agents see truth"
 else
+  case "$drifts" in
+    *TOMBSTONE_VIOLATION*) FIX="stop the tombstoned unit or restore it in deprecation-registry — doctrine and machine disagree";;
+    *STALE_RENDER*|*UNCOMMITTED*) FIX="/root/scripts/render-agents.sh + commit AAA — agents are reading a stale map";;
+    *) FIX="see /run/arifos/universe-drift.json";;
+  esac
   printf '{"schema":"arifos.universe-drift.v1","generated_at_utc":"%s","has_drift":true,"drift":"%s","detail":"%s"}\n' \
     "$STAMP" "$drifts" "$(echo "$detail" | sed 's/^ *//; s/; *$//')" > "$OUT"
   if ! grep -q '^UNIVERSE:' "$HOLDS" 2>/dev/null; then
-    printf 'UNIVERSE: %s since %s (fix: /root/scripts/render-agents.sh + commit AAA — agents are reading a stale map)\n' \
-      "$(echo "$drifts" | tr ' ' '/')" "$TODAY" >> "$HOLDS"
+    printf 'UNIVERSE: %s since %s (fix: %s)\n' \
+      "$(echo "$drifts" | tr ' ' '/')" "$TODAY" "$FIX" >> "$HOLDS"
   fi
   echo "$STAMP DRIFT: $drifts —$detail"
 fi
