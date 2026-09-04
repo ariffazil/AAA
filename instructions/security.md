@@ -33,9 +33,9 @@ Full recipe: `/root/RUNBOOK.md` §9.
 ## Memory landscape (6 levels)
 
 ```
-L1 Redis   — now / ephemeral              L4 Supabase  — official structured (25 domain tables)
-L2 Redis   — session thread               L5 Graphiti   — relationships (FalkorDB + Ollama)
-L3 Qdrant  — fuzzy similarity             L6 VAULT999   — immutable sealed truth
+L1 Redis   — now / ephemeral              L4 Postgres  — official structured (domain tables)
+L2 SQLite  — session thread               L5 (Pruned)  — consolidated into L3/L4
+L3 Qdrant  — fuzzy similarity             L6 VAULT999  — immutable sealed truth
 ```
 
 Rule: memory is **not truth** until it has provenance. Truth is **not final** until sealed.
