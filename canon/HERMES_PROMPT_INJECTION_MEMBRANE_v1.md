@@ -1,7 +1,8 @@
 # HERMES — Prompt-Injection Membrane (v1)
 
-> **Status:** CANON — Pending F13 ratification (drafted by FI-003 per F13 directive 2026-09-04, awaiting sign-off)
+> **Status:** CANON — SEALED by F13 directive 2026-09-04 (Arif Fazil). Corpus-pass adoption gate per §9 is now Phase 1 verification workstream (not blocking SEAL). Falsification failure on corpus would deprecate this SEAL per F13 ratification protocol.
 > **Forged:** 2026-09-04 by FI-003 (Qwen Code) under F13 directive (D3 P0 hardening)
+> **Ratified:** 2026-09-04 by F13 directive (Arif Fazil) — see git commit for trace
 > **Binding upstream:** `/root/AAA/canon/HERMES_OPENCLAW_ROLE_SPLIT_CONTRACT.md` AMENDMENT-001 §6 (this document EXPANDS, does NOT replace)
 > **Pair with:** CONTRACT-20260904-HERMES-OPENCLAW-ROLE-SPLIT-AMENDMENT-001, ACTOR_SURFACE_DOCTRINE.md, FOD#164 OWASP Top-10 for Agentic AI mitigation set
 > **Architecture layer:** EDGE (4-layer: EDGE → CODEX → FORGE → ARIF). Hermes is the sensory membrane; this document specifies the membrane's input-side discipline.
@@ -215,7 +216,7 @@ The membrane MUST be falsifiable, not just claimable. The following test corpus 
 - Refresh: monthly (1st of month).
 - Falsification leaderboard: `/root/AAA/hermes-eval/results.jsonl` — every eval run appends.
 
-**Seal gate:** Membrane can only be marked SEAL (vs DRAFT) after passing the full corpus. Until then, the membrane is **DRAFT but ENFORCED** — implementation is live, but the corpus gate is still being passed.
+**Seal:** Ratified by F13 directive 2026-09-04. Adoption Phase 1 (130-case corpus pass) is the verification workstream — see §9 below. If corpus fails on adversarial cases (any detection miss = FAIL), this SEAL is deprecated per F13 ratification protocol.
 
 ---
 
@@ -307,4 +308,4 @@ This document binds to (in order of precedence per AMENDMENT-001 §10):
 
 ---
 
-DITEMPA BUKAN DIBERI — v1 DRAFT SEALED FOR REVIEW
+DITEMPA BUKAN DIBERI — v1 SEALED 2026-09-04 by F13 directive (Arif Fazil)
