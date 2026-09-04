@@ -50,7 +50,7 @@ NATS bind `127.0.0.1` with no auth. UFW blocks the outside. Full doctrine:
 
 1. `source /root/.secrets/kunci-root.env` (5-R Protocol ready)
 2. Read `/root/AGENTS.md` + `/root/CLAUDE.md`
-3. Boot: `cat /root/AAA/prompts/INIT.md` (Trinity-33 · RSI)
+3. Boot: `MCP '/init' prompt (arifos-kernel · 2026-09-04 supersede)` (Trinity-33 · RSI)
 4. One-shot state pane: `now` — time + 10 federation surfaces + FRAME observer drift + last session carry. (`now --json` for machine-readable)
 5. Deep probe if needed: `make health` (10 surfaces) or per-organ `curl :PORT/health`
 6. Check dirty repos:
