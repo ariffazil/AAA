@@ -1,76 +1,178 @@
 <!-- SOT-MANIFEST
 federation_release: v2026.09.01
 last_verified: 2026-09-01T08:00:00Z
-live_commit: 028814e4 (canon: 2026-08-31 doctrine batch — CIV-21, constitutional-runtime-promotion, FED genesis map, governance audit)
-actor_surface_doctrine: RATIFIED 2026-08-15 — actors invariant, surfaces replaceable, models runtime occupants
+live_commit: 028814e4
 a2a_port: 3001
-a2a_status: healthy GREEN (deployment_drift: false)
+a2a_status: healthy GREEN
 protocol: A2A v1.0.0
-gateway: Express 5.2.1 (a2a-server + a2a-gateway)
 godel_lock: ACTIVE federation-wide
 agent_lanes: 4 (333-AGI, 555-ASI, 888-APEX, 777-FORGE)
-forge_instruments: 11 (opencode, grok-build, claude-code, kimi-code, codex, copilot, aider, qwen-code, antigravity, continue-cli, gemini-cli)
 truth_rule: /health + agent registry beat any static count in prose
 vault: CONNECTED
 seal_chain: append-only (chattr +a) + Merkle anchor every 100 receipts
-branch_collapse: 2026-09-01 — 2 stale branches deleted (chore/2026-08-25-amanah-board squash-merged via #175; sync/local-main-20260825 zero-ahead); 3 Dependabot PRs pending rebase
-readme_note: ZEN first-fold — full technical README preserved at docs/README-FULL.md
 -->
 
-# AAA — Institution
+# AAA — Intelligence Routing & State Plane
 
-## Display state. Never judge. Never execute.
+## The sovereign intelligence layer for the arifOS federation — routing intent to the right organ, every time.
 
-AAA is the institution's cockpit and A2A gateway: it shows state and queues messages.
-It never judges. It never executes.
+AAA is the cognitive nervous system of the arifOS federation. It classifies human and agent intent, routes tasks to the correct organ (kernel, execution, earth science, capital, health), manages the federation state plane, and provides multi-model inference routing via the FLAME router.
 
-**DITEMPA BUKAN DIBERI** — Forged, Not Given.
+**Licensed under AGPL-3.0.**
 
 ---
 
-## Ceiling
+## The Problem
 
-`DISPLAY_ONLY`. A nervous system that judges or forges is a second kernel.
+Multi-agent AI systems fail at orchestration. Without a central routing layer, agents call the wrong tools, models degrade silently, and state becomes inconsistent across organs. AAA solves this by providing:
 
-- Verdicts → arifOS. Mutations → A-FORGE. Seals → ARIF.
+- **Deterministic intent classification** — maps user language to organ capability
+- **Multi-model routing (FLAME)** — automatic fallback across providers when models fail
+- **State plane management** — single source of truth for federation health
+- **Skill catalog** — 200+ skills discoverable and composable across organs
 
-## What it operates
+---
 
-- **A2A Mesh Gateway** — agent-to-agent message broker
-- **Agent Identity Registry** — cards, lanes
-- **Operator Cockpit** — organ health, HOLD queue
-- **Amanah Board** — work-order queue (open/doing/blocked/done, no execute verb)
+## Architecture
 
-## Federation organs (witnessed 2026-08-25; git SOT updated 2026-09-01)
-
-```text
-arifOS  :8088   healthy
-A-FORGE :7071/2  healthy
-AAA     :3001   healthy
-GEOX    :8081   healthy
-WEALTH  :18082  healthy
-WELL    :18083  degraded (4-day-old operator sensor data)
-arifFlow :7073  metabolism
-FED     :7074   advisory
-FLAME   :18901  advisory
+```
+┌──────────────────────────────────────────────────────────────┐
+│                    AAA Intelligence Layer                     │
+│  Port :3001  ·  A2A Gateway  ·  State Plane                  │
+├──────────────────────────────────────────────────────────────┤
+│                                                              │
+│  ┌──────────────┐  ┌──────────────┐  ┌────────────────────┐ │
+│  │   Intent     │  │   State      │  │   Skill Catalog    │ │
+│  │ Classifier   │  │   Plane      │  │   (200+ skills)    │ │
+│  └──────┬───────┘  └──────┬───────┘  └─────────┬──────────┘ │
+│         │                 │                     │           │
+│  ┌──────▼─────────────────▼─────────────────────▼──────────┐│
+│  │              A2A Mesh Gateway                            ││
+│  │  Agent-to-agent message broker · Express 5.x            ││
+│  └──────────────────────────┬──────────────────────────────┘│
+│                             │                               │
+│  ┌──────────────┐  ┌───────▼───────┐  ┌──────────────────┐ │
+│  │  Agent       │  │ Amanah Board  │  │ Operator Cockpit │ │
+│  │  Registry    │  │ (Work Queue)  │  │ (Health/HOLDs)   │ │
+│  └──────────────┘  └───────────────┘  └──────────────────┘ │
+│                                                              │
+└──────────────────────────┬───────────────────────────────────┘
+                           │
+                    ┌──────▼──────┐
+                    │ FLAME Router │
+                    │  :18901      │
+                    └──────────────┘
 ```
 
-## Honest limits
+---
 
-- AAA is not an MCP organ. The `/mcp` door belongs to the kernel.
-- The cockpit reads state; it does not adjudicate.
-- Amanah is a work-order board: it queues — it has no execute verb. Verified 2026-08-25 (`boards/amanah.py`: no dispatch path); no dispatch path added since.
-- AAA :3001 health: last witnessed healthy 2026-08-25. Re-attest via `/health` for live state.
+## Quick Start
 
-## Architecture in one sentence
+### Docker
 
-**The cockpit displays; it never commands.**
+```bash
+git clone https://github.com/arif-fazil/AAA.git
+cd AAA
+docker compose up -d
 
-## Federation card
+# Verify
+curl http://localhost:3001/health
+curl http://localhost:18901/health/liveliness
+```
 
-ARIF = Sovereign · arifOS = Law · AAA = Institution · A-FORGE = Hands
+### Local Development
 
-**ARIF vetoes. arifOS judges. AAA routes. A-FORGE executes.**
+```bash
+cd AAA
+npm install
+npm run dev
 
-Full technical README: [docs/README-FULL.md](./docs/README-FULL.md) ·
-MCP door: [mcp.arif-fazil.com/mcp](https://mcp.arif-fazil.com/mcp)
+# Or with Docker Compose for full stack (AAA + FLAME)
+docker compose up -d
+```
+
+---
+
+## Key Components
+
+### A2A Mesh Gateway
+Agent-to-agent communication broker using the Agent-to-Agent (A2A) protocol v1.0.0. Handles message routing, session management, and inter-organ communication.
+
+### FLAME Router (Multi-Model Inference)
+Automatic model routing with fallback chains across providers:
+- **MuleRouter** (80%) — primary, multi-model with fixed pricing
+- **OpenRouter** (15%) — secondary, broad model availability
+- **Ollama** (5%) — local fallback, zero-cost
+
+When a model fails, FLAME automatically routes to the next provider — no interruption.
+
+### Intent Classification
+Deterministic mission routing that maps human language to machine states:
+- Six stable mission states (no seventh — ambiguous → HOLD)
+- Works even when the ML classifier is down
+- Phase 2: optional model-assisted intent parsing
+
+### Skill Catalog
+200+ skills across 11 categories:
+- **333-AGI** — General intelligence, web, research
+- **555-ASI** — Advanced reasoning, governance
+- **777-FORGE** — Code, infrastructure, deployment
+- **888-APEX** — Constitutional reasoning, audit
+- **warga** — Citizen agent skills
+- And more (productivity, media, smart home, social)
+
+### State Plane
+Real-time federation state monitoring:
+- Organ health across all 7 organs
+- HOLD queue management
+- Seal chain verification (append-only with Merkle anchors)
+- Deployment drift detection
+
+---
+
+## Federation Role
+
+AAA sits between the user and all other organs:
+
+```
+User → AAA (intent classification + routing) → Target Organ
+```
+
+AAA **displays state but never judges or executes**. Verdicts belong to the arifOS kernel. Mutations belong to A-FORGE.
+
+---
+
+## Health Checks
+
+| Endpoint | Description | Auth |
+|----------|-------------|------|
+| `GET /health` | AAA organ liveness | None |
+| `GET /health/skills` | Skill catalog status | None |
+| `GET /health/liveliness` | FLAME router (no auth) | None |
+| `GET /health/agents` | Agent registry | None |
+
+---
+
+## Documentation
+
+- [Full Technical README](docs/README-FULL.md)
+- [Federation Architecture](docs/FEDERATION.md)
+- [A2A Protocol Spec](docs/A2A_ORGAN_REGISTRY.md)
+- [Deployment Guide](DEPLOYMENT.md)
+- [Changelog](CHANGELOG.md)
+- [Security Policy](SECURITY.md)
+- [Contributing](CONTRIBUTING.md)
+
+---
+
+## License
+
+**GNU Affero General Public License v3.0 (AGPL-3.0)**
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU AGPL v3.0. See [LICENSE](LICENSE) for the full text.
+
+---
+
+**DITEMPA BUKAN DIBERI** — Forged, Not Given.
+
+Built by Muhammad Arif bin Fazil.
