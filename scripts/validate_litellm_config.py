@@ -6,6 +6,7 @@ import hashlib
 import json
 from pathlib import Path
 
+MANIFEST_PATH = Path("/root/.config/federation-models.json")
 PRIMARY_PATH = Path("/root/A-FORGE/litellm-config.yaml")
 DEPLOY_PATH = Path("/root/A-FORGE/deploy/fed/litellm-config.yaml")
 CONTRACT_PATH = Path("/root/AAA/canon/FEDERATION_CONFIG_CONTRACT.v1.json")
@@ -94,22 +95,38 @@ def main():
             with open(CONTRACT_PATH) as f:
                 contract = json.load(f)
             sot = contract.get("source_of_truth", {})
+            manifest_hash = sha256_file(MANIFEST_PATH)
             primary_hash = sha256_file(PRIMARY_PATH)
             deploy_hash = sha256_file(DEPLOY_PATH)
 
-            if primary_hash == sot.get("litellm_primary_sha256") and deploy_hash == sot.get("litellm_deploy_sha256"):
-                print(f"[PASS] Contract hash parity verified against {CONTRACT_PATH.name}")
+            manifest_match = manifest_hash == sot.get("manifest_sha256")
+            primary_match = primary_hash == sot.get("litellm_primary_sha256")
+            deploy_match = deploy_hash == sot.get("litellm_deploy_sha256")
+
+            if manifest_match and primary_match and deploy_match:
+                print(f"[PASS] 3/3 SOT contract hash parity verified against {CONTRACT_PATH.name}")
+                print(f"       - manifest: {manifest_hash}")
+                print(f"       - primary : {primary_hash}")
+                print(f"       - deploy  : {deploy_hash}")
             else:
-                print(f"[WARN] Contract hash mismatch: primary={primary_hash} (contract={sot.get('litellm_primary_sha256')}), deploy={deploy_hash} (contract={sot.get('litellm_deploy_sha256')})")
+                all_ok = False
+                print(f"[FAIL] Contract hash mismatch:")
+                if not manifest_match:
+                    print(f"       - manifest: {manifest_hash} != {sot.get('manifest_sha256')}")
+                if not primary_match:
+                    print(f"       - primary : {primary_hash} != {sot.get('litellm_primary_sha256')}")
+                if not deploy_match:
+                    print(f"       - deploy  : {deploy_hash} != {sot.get('litellm_deploy_sha256')}")
         except Exception as e:
             print(f"[WARN] Contract validation check error: {e}")
+            all_ok = False
 
     print("\nSummary:")
     print(json.dumps(summaries, indent=2))
 
     if not all_ok:
         sys.exit(1)
-    print("\nAll constitutional routing invariants VERIFIED.")
+    print("\nAll constitutional routing invariants and SOT hashes VERIFIED.")
     sys.exit(0)
 
 if __name__ == "__main__":
