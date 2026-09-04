@@ -21,8 +21,8 @@ instruments:
 - id: FI-001
   name: OpenCode
   binary: /root/.npm-global/bin/opencode
-  version: 1.18.11
-  version_pinned_from: 2026-07-19 (live observed)
+  version: 1.18.28
+  version_pinned_from: 2026-09-05 (live observed)
   model: deepseek/deepseek-v4-pro
   fallback_model: ollama/qwen2.5-coder:3b
   model_strategy: DeepSeek V4 Pro free is the verified live primary; local Ollama
@@ -30,7 +30,7 @@ instruments:
     token-plan.
   izin: GRANTED
   izin_date: '2026-05-17'
-  last_upgrade: '2026-07-19'
+  last_upgrade: '2026-09-05'
   upgrade_authority: Arif Fazil (F13)
   sandbox: process
   subagent_policy:
@@ -132,7 +132,7 @@ instruments:
 - id: FI-002
   name: Claude Code
   binary: /root/.local/bin/claude
-  version: 2.1.246
+  version: 2.1.261
   model: deepseek/deepseek-v4-pro @ FED :4000 (FED-routed, runtime-resolved via settings.json
     env)
   izin: GRANTED
@@ -255,7 +255,7 @@ instruments:
 - id: FI-003
   name: Qwen Code
   binary: /root/.local/bin/qwen
-  version: 0.21.15
+  version: 0.23.0
   model: glm-5.3 @ zai-coding-plan (runtime-resolved via settings.json)
   izin: GRANTED
   izin_date: '2026-06-10'
@@ -276,8 +276,8 @@ instruments:
   - well
   - fed
   config_path: /root/.qwen/
-  live_version_observed: 0.21.15
-  version_checked_at: '2026-08-21'
+  live_version_observed: 0.23.0
+  version_checked_at: '2026-09-05'
   note: Re-audited 2026-08-21. Extension fi003-federation v1.1.0 linked (QWEN.md +
     3 commands + 3 skills). 6 MCP loopback. Hooks SessionStart/End. permissionMode
     yolo, empty deny.
@@ -374,7 +374,7 @@ instruments:
 - id: FI-007
   name: Grok Build
   binary: /root/.grok/bin/grok
-  version: 1.0.5
+  version: 1.0.13
   model: grok-build (xAI, yolo=off, always-approve)
   izin: GRANTED
   izin_date: '2026-07-18'
@@ -398,12 +398,12 @@ instruments:
   note: 'Re-audited 2026-08-21: config.toml = MCP SOT (6 servers, grok mcp list verified).
     Stale Claude-style mcp.json archived as mcp.json.inert-20260821. Skills symlink
     -> AAA/skills 323.'
-  live_version_observed: 1.0.5
-  version_checked_at: '2026-08-21'
+  live_version_observed: 1.0.13
+  version_checked_at: '2026-09-05'
 - id: FI-008
   name: Kimi Code CLI
   binary: /root/.kimi-code/bin/kimi
-  version: 0.37.2
+  version: 0.41.0
   model: zai-coding-plan/glm-5.3 (runtime-resolved via config.toml)
   izin: GRANTED
   izin_date: '2026-06-10'
