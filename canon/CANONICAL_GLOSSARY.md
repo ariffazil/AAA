@@ -54,6 +54,40 @@ Always: `KVM8 (forge)` — forge is the machine; A-FORGE is the organ. Never con
 
 ---
 
+## PATHS — one path per organ (do not hardcode) — ratified 2026-09-04
+
+**Law:** No `sys.path.insert("/root/...")` in runtime code. Resolve through `paths_resolver.org_path(name)`.
+
+| Organ | Canonical path | Source of truth |
+|---|---|---|
+| A-FORGE | `/root/A-FORGE` | paths_resolver.CANON_ORG_PATHS |
+| arifOS (Kernel source) | `/root/arifOS` | paths_resolver.CANON_ORG_PATHS |
+| arifOS (Runtime deploy) | `/opt/arifos` | paths_resolver.CANON_ORG_PATHS |
+| AAA | `/root/AAA` | paths_resolver.CANON_ORG_PATHS |
+| GEOX | `/root/GEOX` (alias `/opt/geox`) | paths_resolver.CANON_ORG_PATHS |
+| WEALTH | `/root/WEALTH` (alias `/opt/wealth`) | paths_resolver.CANON_ORG_PATHS |
+| WELL | `/root/WELL` (alias `/opt/well`) | paths_resolver.CANON_ORG_PATHS |
+| HERMES | `/root/.hermes` (lowercase canon) | paths_resolver.CANON_ORG_PATHS |
+| arifFlow | `/root/arifFlow` (alias `/opt/arifflow`) | paths_resolver.CANON_ORG_PATHS |
+| VAULT999 | `/root/VAULT999 → /root/arifOS/VAULT999` | paths_resolver.CANON_ORG_PATHS |
+| forge_work | `/root/forge_work` (sketchpad, never execute) | paths_resolver.CANON_ORG_PATHS |
+
+**Anti-name-multiplicity canonicals (forged 2026-09-04):**
+- **Python runtime:** ONE entry — `/opt/arifos/venv/bin/arifos` is canonical. `/root/venv/bin/arifos*` are symlinks, not duplicates.
+- **npm-bin entry:** THREE distinct transports (CLI / Server-legacy-aliased / Stdio-ACT-gated) under ONE package `@ariffazil/a-forge`. Each has a distinct purpose; do not collapse.
+
+**Invariants satisfied by this table:**
+- K-1 OBSERVE config-independent (paths derived from disk truth, not config files)
+- K-3 Annotations = legibility contract (one name → one path, no alias-only)
+- K-8 Migration-as-F1 (additive — to migrate, update this table once)
+
+**Implementation:** `/root/A-FORGE/paradox-engine/paths_resolver.py`
+- `org_path(name)` returns first live path (F2 disk probe)
+- `audit_federation()` returns health of all organs
+- `__main__` runs the audit standalone
+
+---
+
 ## ORGANS (one verb each)
 
 | Name | Verb | Must not |
@@ -84,7 +118,11 @@ Always: `KVM8 (forge)` — forge is the machine; A-FORGE is the organ. Never con
 | Capability Graph | Who may do what. forge owns. |
 | Reality Drift | Two agents, two worlds, same names. |
 | Entropy Separation | forge survive / workshop explore. Chaos is placed, not destroyed. |
-| SEAL HOLD VOID SABAR | Verdict grammar. Kernel only. |
+| P-DIAL | Termination criterion — "Can more evidence still change the decision?" Four closure modes: CONTINUE, ACT, HOLD, SABAR. |
+| SABAR | CLOSE mode — reality not yet mature; searching cannot help; world must produce data on its own timeline. Not HOLD. |
+| Witness | Fifth coordinate — validates that closure happened at the right place and time. Scar exists when Witness was late. |
+| Closure Quality | Not "was the answer correct?" but "was the search stopped at the right moment?" First-class observable. |
+| Scar | Closure memory — stores the decision to stop, not the outcome of the world. Records judgment that did not happen. |
 
 ---
 
