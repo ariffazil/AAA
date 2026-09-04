@@ -54,6 +54,6 @@ KVM8 `hermes-asi-gateway.service` is **masked** — deliberate: the gateway was 
 ## 5. Open fleet gaps (honest)
 
 1. **H3 seat ↔ H1 gateway memory split**: CLI sessions on KVM8 and gateway conversations on KVM4 do not share conversational memory (both lean on kernel L1–L6 for federation memory — conversation-local memory is per-home).
-2. **H1 SOUL.md anchor** points at KVM8 `/root/HERMES/SOUL.md` (heritage) while H1 lives on KVM4 — identity anchor should point at the live home (KVM4 `~/.hermes`) or a canonical AAA path.
+2. ~~H1 SOUL.md anchor~~ **RESOLVED 2026-09-04**: SOUL unified to KVM4 canonical (13257B, one inode across KVM8 twins; backup cron-migration-20260904/SOUL.kvm8-preUnify.md); a2a anchor → `/root/.hermes/SOUL.md` (same path both machines).
 3. **KVM2→KVM4 :4000 TCP blocked** (ICMP OK) — H2 cannot use KVM4 litellm directly; forced through KVM8 FED. Mechanism UNKNOWN (docker iptables or ts ACL).
-4. **Cron schedulers**: H1 gateway cron stalled since Sep 3 04:15 (16/27 jobs stale — see holds.txt); H2 cron state unprobed.
+4. ~~Cron schedulers~~ **RESOLVED 2026-09-04 (F13 'go')**: 9 sovereign rituals migrated KVM8→KVM4 gateway book (validator adds[] extension, receipts 20260904-001536/001732); dream-dupe retired; scheduler live. `now` reads KVM4. REMAINS: 19 script-bound jobs orphaned on KVM8 — Phase-2 system-cron conversion decision. H2 (KVM2) cron: 1 job, disabled — witness lane, quiet by design.
