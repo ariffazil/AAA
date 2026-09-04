@@ -204,7 +204,7 @@ If any phase raises entropy → return VOID, surface to operator. The presence i
 - **Arif persona (private lane)**: `/root/.hermes/prompts/iarif_persona.md`
 - **Sado persona (group lane, sealed 2026-08-18)**: `/root/.hermes/skills/media/nusantara-voice-stack/references/syed-persona-lock.md`
 - **Hermes voice config**: `/root/.hermes/config.yaml` (section `voice:` lines 1634+, with persona_prompt_file bridge)
-- **Dormant scaffold (post-mint activation)**: `/root/HERMES/voice_filters.py` v0.1.0
+- **Dormant scaffold (post-mint activation)**: `/root/.hermes/voice_filters.py` v0.1.0
 - **TTS engine routing**: `/root/AAA/skills/AAA-tts-engine-catalog/SKILL.md`
 - **Voice cloning pipelines**: `/root/AAA/skills/AAA-voice-cloning-mimo-minimax/SKILL.md` and `/root/AAA/skills/AAA-voice-cloning-qwen-cloud/SKILL.md`
 

@@ -28,7 +28,7 @@ ecology_state: WARM
 | **SEARAH JV** | Investigation suite | `/root/ariffazil/archive/searah-forge-2026-06-07/`, `/root/AAA/memory/investigations/SEARAH-TRUTH.md` |
 | **Public articles** | MakcikGPT suite | `/root/arif-fazil.com/sites/arif-fazil.com/src/data/makcikgpt/` (12 articles) |
 | **Open letters** | Surat suite | `/root/forge_work/petronas2025/`, `/root/petronas/04-letters/` |
-| **Legal disputes** | Petros-Shell skill | `/root/HERMES/skills/research/petronas-petros-shell-dispute/` |
+| **Legal disputes** | Petros-Shell skill | `/root/.hermes/skills/research/petronas-petros-shell-dispute/` |
 | **Claims verification** | AAA Claims Ledger | `/root/AAA/artifacts/petronas-leaflet-2026-06-20/CLAIM_LEDGER.yaml` |
 | **Constitutional doctrine** | GENESIS | `/root/arifOS/GENESIS/006_PETRONAS_PARADOX.md`, `024`, `062` |
 | **VOIDX decay signals** | WEALTH VOIDX | `/root/WEALTH/VOIDX_BENCHMARK.md` |

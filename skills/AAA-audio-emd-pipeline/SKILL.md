@@ -334,7 +334,7 @@ features support, capped at F7 confidence 0.90.
 
 - **Doctrine parent**: `/root/AAA/skills/AGI-audio-quantum-cognition/SKILL.md`
 - **i-ARIF identity**: `/root/AAA/agent-cards/identity/i-ARIF/identity-card.json`
-- **Hermes TTS config**: `/root/HERMES/config.yaml` (line 851: `tts:`)
+- **Hermes TTS config**: `/root/.hermes/config.yaml` (line 851: `tts:`)
 - **FED routing**: `/root/.kimi-code/skills/AGI-agentic-web/SKILL.md`
 - **ASR binding**: `/root/AAA/skills/AAA-asr-glm-ingest/SKILL.md`
 - **TTS engine catalog**: `/root/AAA/skills/AAA-tts-engine-catalog/SKILL.md`
