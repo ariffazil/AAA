@@ -1,0 +1,9 @@
+{
+  "kid": "arifos-a2a-card-2026-%q",
+  "algorithm": "EdDSA",
+  "curve": "Ed25519",
+  "created": "2026-09-04T14:41:20.307081+00:00",
+  "purpose": "A2A Agent Card signing (staging)",
+  "public_key_b64": "tUu9w-EHbZZwQ_zNpESsMv3bh9D3trwUSj1w8ArKMtY",
+  "fingerprint": "b4565729a47b44c9"
+}
