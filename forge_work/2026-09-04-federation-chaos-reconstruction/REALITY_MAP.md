@@ -170,5 +170,19 @@ See Q8. Note the one DUAL custody: Telegram tokens (vault KVM8 = registry truth;
 6. **Memory: no new store.** Wire dream-engine (now alive on KVM4) to write session summaries → kernel L3 (ASI proposal Phase 2 — already awaiting F13).
 7. Stop: nothing else. The remaining 🟡s (NATS leaf doc, KVM2 block mechanism) are documentation-class, one probe each when next touched.
 
+## 7. EXECUTION LEDGER (2026-09-04 ~08:35–08:40 MYT, F13 'ok go')
+
+| Zen step | Outcome | Evidence |
+|---|---|---|
+| 1 circular coupling | RESOLVED-BY-PROBE (no hairpin; single-compute finding stands) | curl ×2 + HAProxy backend |
+| 2 script cron | **DONE** — 14 jobs → `/etc/cron.d/hermes-legacy-scripts` (+cron-deliver.sh wrapper for 5 telegram); book receipts 003343 | crontab file + 0 enabled on KVM8 |
+| 3 skills parity | **DONE** — 17 → **128** on KVM4 gateway home (rsync, exclusions) | live count |
+| 4 lanes | **PORTED (file ×2 layouts) + F13 FINDING**: no lane plugin in KVM4 install → per-person group isolation NOT deployed on gateway; deploy plugin or retire doctrine (needs 2-human test) | plugins listing |
+| 5 allowlists | **DONE** — union applied both env files (29/28/16/15 IDs); runtime king config.yaml untouched | diff receipts |
+| 6 memory bridge | **WIRED** — dream-engine prompt += kernel L3 write (schema-tolerant, fail-open); first L3 write at next fire 2026-09-05 00:00 MYT | receipt 003434 |
+| stragglers | +3 agent jobs to KVM4 (arifflow-digest 22:00, gdrive 02:00, reddit 09:00 today); fail-closed mixed-patch rejection proved validator discipline | receipts 003542×2 |
+
+**KVM8 book: 28 jobs / 0 enabled. KVM4 book: 14 jobs / 13 enabled, scheduler restarted 00:36:25Z.**
+
 ---
 *Witnesses: systemd units ×3 machines, hermes logs+config ×2, secrets vaults ×2 (hash-only), inode forensics, cron receipts ×2, E3E baseline, validator chain. No component was asserted from memory. UNKNOWNs stand as UNKNOWN. DITEMPA BUKAN DIBERI.*
