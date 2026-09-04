@@ -37,8 +37,8 @@
 
 ## Substrate services (data plane — Docker / local only)
 
-PostgreSQL `:5432` · Redis `:6379` · Qdrant `:6333` · FalkorDB `:6380` ·
-Graphiti MCP `:8000` · MinIO `:9000-9001` · NATS `:4222` · SearXNG `:8080` ·
+PostgreSQL `:5432` · Redis `:6379` · Qdrant `:6333` ·
+MinIO `:9000-9001` · NATS `:4222` · SearXNG `:8080` ·
 MCPJam `:6274/:6277` · Headscale `:8083` · Caddy `:80/:443` · Cloudflared.
 
 ## Public MCP doors

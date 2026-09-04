@@ -15,6 +15,8 @@
 #                  → doctrine/topology edited without re-rendering the root terminal
 #   UNCOMMITTED  — map surfaces dirty in AAA git
 #                  → moved, but invisible to every machine that is not KVM8
+#   TOMBSTONE_VIOLATION — deprecation-registry says a unit is dead but it still runs
+#                  → claim-vs-runtime gap (scar: 2026-09-04 entropy-trim half-execution)
 #
 # Behavior: writes /run/arifos/universe-drift.json (SOT). On NEW drift appends ONE
 # dated line to /root/AAA/terminal/holds.txt; deletes it on resolution (that file's law).
@@ -57,6 +59,29 @@ if [ -n "$dirty" ]; then
   n=$(echo "$dirty" | wc -l)
   drifts="$drifts UNCOMMITTED"
   detail="$detail ${n} map file(s) uncommitted in AAA;"
+fi
+# ── 3. TOMBSTONE_VIOLATION — doctrine says dead, machine says alive ──────
+# Scar 2026-09-04: entropy-trim tombstoned Graphiti in doctrine while the
+# service still ran (claim-vs-runtime gap). This class makes that impossible.
+REG="$AAA/docs/deprecation-registry.json"
+if [ -f "$REG" ]; then
+  while IFS= read -r unit; do
+    [ -n "$unit" ] || continue
+    if systemctl is-active "$unit" 2>/dev/null | grep -qE '^(active|activating)$'; then
+      drifts="$drifts TOMBSTONE_VIOLATION"
+      detail="$detail $unit tombstoned but running;"
+      break
+    fi
+  done < <(python3 -c "
+import json
+try:
+    d = json.load(open('$REG'))
+    for e in d.get('deprecated_services', []):
+        u = e.get('id', '')
+        if u.endswith('.service') and e.get('status', '').upper() == 'DEPRECATED':
+            print(u)
+except Exception:
+    pass" 2>/dev/null)
 fi
 drifts=$(echo "$drifts" | xargs)
 
