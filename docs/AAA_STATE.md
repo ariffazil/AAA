@@ -273,4 +273,4 @@ This document is the technical core. Cultural intelligence layers — such as th
 - `kampung_gadai_risk` (sovereignty-loss) warnings
 - `pantang_break` (taboo override) documentation
 
-See `docs/NUSANTARA_STATE.md` and `constitution/SCAR_MELAYU.md`.
+See `/root/AAA/governance/AAA_MALAYSIAN_RASA_CONSTITUTION.md` (merged Nusantara + SCAR_MELAYU + human-meaning-membrane, 2026-09-04).
