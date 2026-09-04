@@ -49,6 +49,16 @@ This preserves F13 Sovereign.
 
 ---
 
+## Hermes — The Human Reality Sensory Gateway
+
+All Human Reality (H-axis + P-axis) is **WIRED TO HERMES**:
+- **Nervous System of arifOS:** Hermes (`~/.hermes/` on KVM8) is the sovereign conversational edge.
+- **Sensory Intake:** Hermes directly interfaces with Arif across all chat surfaces, sensing emotional tone, relationship dynamics (ACTG / Syed / Family), fatigue, and lived events.
+- **Bi-Directional Base Pairing:** Hermes senses human reality $\rightarrow$ binds to WELL and constitutional invariants $\rightarrow$ requests A-FORGE execution $\rightarrow$ collapses agentic complexity into peaceful, direct human communication (*ΔS < 0*).
+- **L-Axis Compartmentation:** Execution agents in the L-axis may reference witnessed H-axis state, but never interrogate Arif directly on sensitive personal scars or relationships.
+
+---
+
 ## The Six Layers of Human Memory
 
 ### H6 — Constitution
