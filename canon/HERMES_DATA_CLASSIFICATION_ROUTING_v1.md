@@ -1,7 +1,8 @@
 # HERMES — Data Classification × Model Routing Matrix (v1)
 
-> **Status:** CANON — Pending F13 ratification (drafted by FI-003 per F13 directive, D4 P0 hardening)
+> **Status:** CANON — SEALED by F13 directive 2026-09-04 (Arif Fazil)
 > **Forged:** 2026-09-04 by FI-003 (Qwen Code) under F13 directive (D4, post AMENDMENT-002)
+> **Ratified:** 2026-09-04 by F13 directive (Arif Fazil) — see git commit for trace
 > **Binding upstream:** `/root/AAA/canon/HERMES_OPENCLAW_ROLE_SPLIT_CONTRACT.md` AMENDMENT-002 §7
 > **Pair with:** HERMES_PROMPT_INJECTION_MEMBRANE_v1.md, FEDERATION_CONFIG_CONTRACT.v1.json
 > **DITEMPA BUKAN DIBERI** — Forged, not given.
@@ -123,4 +124,4 @@ Every T2b egress event generates a structured log entry:
 
 ---
 
-DITEMPA BUKAN DIBERI — v1 DRAFT SEALED FOR REVIEW
+DITEMPA BUKAN DIBERI — v1 SEALED 2026-09-04 by F13 directive (Arif Fazil)
