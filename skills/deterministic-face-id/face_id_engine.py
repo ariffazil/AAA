@@ -207,9 +207,10 @@ class DeterministicFaceID:
                 "target": target_identity,
             }
 
-        hits = self.qdrant.search(
+        # qdrant-client >= 1.9: .search() → .query_points() (zen patch 2026-09-05)
+        res = self.qdrant.query_points(
             collection_name=self.collection_name,
-            query_vector=query_vec.tolist(),
+            query=query_vec.tolist(),
             query_filter=models.Filter(
                 must=[
                     models.FieldCondition(
@@ -221,6 +222,7 @@ class DeterministicFaceID:
             limit=1,
             with_payload=False,  # F1: never echo payload back
         )
+        hits = res.points if hasattr(res, "points") else res
 
         if not hits:
             return {
