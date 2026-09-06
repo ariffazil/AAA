@@ -1,0 +1,12 @@
+{
+  "fixture_id": "F06_silent_visual",
+  "asset_sha256": "sha256:669cfb22e85737e26e0c2df83c890d4ccd06adce70dc0996a5fb9a0f823f75dc",
+  "duration_s": 6.13,
+  "rights": "test-fixture-owned",
+  "languages": [
+    "en"
+  ],
+  "fixture_status": "FULL",
+  "purpose": "Vision-only competence: no audio track exists. No transcript may be fabricated; all claims cite frame intervals (V12).",
+  "regenerable": "python3 tests/generate_fixtures.py"
+}

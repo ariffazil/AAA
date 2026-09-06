@@ -1,0 +1,37 @@
+{
+  "job_id": "vid_fixture_F03_ocr_sensitive_terminal",
+  "requester": {
+    "surface": "opencode",
+    "agent": "333-AGI",
+    "human_authority": "arif"
+  },
+  "input": {
+    "source_type": "local_path",
+    "source_ref": "fixtures/video/F03_ocr_sensitive_terminal/source.mp4",
+    "language_hint": [
+      "en"
+    ],
+    "rights_status": "licensed"
+  },
+  "intent": {
+    "task": "extract_reusable_skill",
+    "question": "OCR fidelity: exact command text must be extracted with time-linked evidence; unreadable characters remain uncertain, never invented.",
+    "required_outputs": [
+      "evidence_ledger",
+      "claims"
+    ]
+  },
+  "budget": {
+    "max_frames": 100,
+    "coarse_sample_fps": 0.1,
+    "verification_sample_fps": 2,
+    "max_duration_s": 7200
+  },
+  "policy": {
+    "treat_media_as_untrusted": true,
+    "claim_typing_required": true,
+    "provenance_required": true,
+    "external_actions_allowed": false,
+    "mesh_sync_allowed": false
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "fixture_id": "F01_speech_matches_text",
+  "asset_sha256": "sha256:576c5c29ce01239ea8f0e65d5742130bc71775a5600c79214e74230ab82e8c21",
+  "duration_s": 6.0,
+  "rights": "test-fixture-owned",
+  "languages": [
+    "en"
+  ],
+  "fixture_status": "MECHANISM_ONLY",
+  "purpose": "Cross-modal agreement: spoken content matches on-screen text. Upgrade: real speech corpus required (no offline TTS on KVM8).",
+  "regenerable": "python3 tests/generate_fixtures.py"
+}

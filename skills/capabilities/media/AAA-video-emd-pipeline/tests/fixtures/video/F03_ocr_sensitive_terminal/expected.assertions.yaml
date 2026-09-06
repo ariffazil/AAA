@@ -1,0 +1,20 @@
+fixture: F03_ocr_sensitive_terminal
+must:
+- path: schema_valid
+  op: eq
+  value: true
+- path: asset.content_hash
+  op: prefix
+  value: 'sha256:'
+- path: evidence.ocr_segments
+  op: gte
+  value: 1
+- path: evidence.frame_count
+  op: gte
+  value: 1
+claims:
+  any_class: OBS
+  material_time_range: all
+  material_evidence_ids: all
+  max_confidence_by_class:
+    INT: 0.8

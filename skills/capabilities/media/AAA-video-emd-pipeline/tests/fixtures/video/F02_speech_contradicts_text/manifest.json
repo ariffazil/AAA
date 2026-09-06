@@ -1,0 +1,12 @@
+{
+  "fixture_id": "F02_speech_contradicts_text",
+  "asset_sha256": "sha256:250b65799bed17256965ddf563d5f570d5f63d7401615ce7778dc08a8c2bfd7e",
+  "duration_s": 6.13,
+  "rights": "test-fixture-owned",
+  "languages": [
+    "en"
+  ],
+  "fixture_status": "MECHANISM_ONLY",
+  "purpose": "Conflict detection: audio signals a different state than on-screen text. Agent must FLAG contradiction, never merge or silently pick a winner. Upgrade: real speech corpus required.",
+  "regenerable": "python3 tests/generate_fixtures.py"
+}

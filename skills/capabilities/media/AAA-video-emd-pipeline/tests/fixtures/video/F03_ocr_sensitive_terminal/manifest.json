@@ -1,0 +1,12 @@
+{
+  "fixture_id": "F03_ocr_sensitive_terminal",
+  "asset_sha256": "sha256:9af49b56d117982cddd73563014117b254628c7f15b0aeb8c929ab387b72ce8f",
+  "duration_s": 8.13,
+  "rights": "test-fixture-owned",
+  "languages": [
+    "en"
+  ],
+  "fixture_status": "FULL",
+  "purpose": "OCR fidelity: exact command text must be extracted with time-linked evidence; unreadable characters remain uncertain, never invented.",
+  "regenerable": "python3 tests/generate_fixtures.py"
+}

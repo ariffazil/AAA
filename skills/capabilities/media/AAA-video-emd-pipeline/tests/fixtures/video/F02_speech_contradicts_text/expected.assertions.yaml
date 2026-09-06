@@ -1,0 +1,20 @@
+fixture: F02_speech_contradicts_text
+must:
+- path: schema_valid
+  op: eq
+  value: true
+- path: asset.content_hash
+  op: prefix
+  value: 'sha256:'
+- path: uncertainties
+  op: exists
+  value: null
+- path: claims
+  op: exists
+  value: null
+claims:
+  any_class: OBS
+  material_time_range: all
+  material_evidence_ids: all
+  max_confidence_by_class:
+    INT: 0.8

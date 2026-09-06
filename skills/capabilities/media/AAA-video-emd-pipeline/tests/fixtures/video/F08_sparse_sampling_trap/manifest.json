@@ -1,0 +1,12 @@
+{
+  "fixture_id": "F08_sparse_sampling_trap",
+  "asset_sha256": "sha256:991919cfda35092570c2c592f8e33984b599ab1a16741ebf1846c09788593580",
+  "duration_s": 12.13,
+  "rights": "test-fixture-owned",
+  "languages": [
+    "en"
+  ],
+  "fixture_status": "FULL",
+  "purpose": "V8 adaptive sampling trap: 0.8s critical event at t=6.1 falls BETWEEN coarse 0.1fps sample points (0s,10s). System must adaptively resample OR abstain \u2014 never report absence with unjustified confidence.",
+  "regenerable": "python3 tests/generate_fixtures.py"
+}
