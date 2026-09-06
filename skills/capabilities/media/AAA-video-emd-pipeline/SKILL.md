@@ -1,3 +1,7 @@
+---
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
+---
 # AAA-video-emd-pipeline — Canonical Video Intelligence Capability
 
 > One capability, many thin adapters (OpenCode `/watch` · Hermes Telegram · Claude symlink).

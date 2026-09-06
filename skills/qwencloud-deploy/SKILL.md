@@ -29,6 +29,8 @@ input: >-
 output: >-
   A running cloud service with public IP (or domain + HTTPS), deployment state file
   (.qwencloud-deploy), and success card with access URL, cost summary, and next-step guidance.
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Qwen Cloud Deploy

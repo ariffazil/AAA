@@ -2,6 +2,8 @@
 name: qwencloud-audio-tts
 description: "[QwenCloud] Synthesize speech from text with Qwen TTS models. TRIGGER when: user wants to convert text to speech, create voiceovers, generate audio narration, read text aloud, build TTS applications, mentions speech synthesis/voice generation/audio output from text, or explicitly invokes this skill by name (e.g. use qwencloud-audio-tts). DO NOT TRIGGER when: user wants speech recognition/ASR, text generation without audio, non-Qwen audio tasks."
 compatibility: "Requires Python 3.9+ and curl. Cursor: auto-loaded. Claude Code: read this skill's SKILL.md before first use."
+capability_tier: fed-realtime-voice
+ecology_state: WARM
 ---
 
 > **Agent setup**: If your agent doesn't auto-load skills (e.g. Claude Code),

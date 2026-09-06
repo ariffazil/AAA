@@ -2,6 +2,8 @@
 name: qwencloud-ops-auth
 description: "[QwenCloud] Configure authentication (API keys, endpoints). TRIGGER when: setting up QWEN_API_KEY, troubleshooting 401/auth errors, when another skill reports missing credentials, or user explicitly invokes this skill by name (e.g. use qwencloud-ops-auth). DO NOT TRIGGER when: non-auth Qwen tasks, general API usage questions."
 compatibility: "Requires curl for verification. Cursor: auto-loaded. Claude Code: read this skill's SKILL.md before first use."
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 > **Agent setup**: If your agent doesn't auto-load skills (e.g. Claude Code), see [agent-compatibility.md](references/agent-compatibility.md) once per session.
