@@ -197,6 +197,78 @@
       "tombstone_date": "2026-08-30",
       "reason": "Orphan scaffold of concluded quantum-substrate experiment",
       "archive": "archive/zen-2026-08-30-tombstones/QUBIT_INIT_v1.0.md"
+    },
+    {
+      "id": "COPILOT-zen-router",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-06",
+      "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers (backups/historical logs only).",
+      "certified_by": "FI-003 under F13 auto-execute 2026-09-06 — closes disk/git/registry/index four-reality split"
+    },
+    {
+      "id": "RSI-recursive-improvement",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-06",
+      "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
+      "certified_by": "FI-003 under F13 auto-execute 2026-09-06"
+    },
+    {
+      "id": "agent-bindings/claude-code-spawn",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-06",
+      "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
+      "certified_by": "FI-003 under F13 auto-execute 2026-09-06"
+    },
+    {
+      "id": "agent-bindings/substrate-forge",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-06",
+      "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
+      "certified_by": "FI-003 under F13 auto-execute 2026-09-06"
+    },
+    {
+      "id": "agent-bindings/substrate-init",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-06",
+      "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
+      "certified_by": "FI-003 under F13 auto-execute 2026-09-06"
+    },
+    {
+      "id": "agent-bindings/substrate-propose-seal",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-06",
+      "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
+      "certified_by": "FI-003 under F13 auto-execute 2026-09-06"
+    },
+    {
+      "id": "deterministic-face-id",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-06",
+      "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
+      "certified_by": "FI-003 under F13 auto-execute 2026-09-06"
+    },
+    {
+      "id": "forge-vss-parser",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-06",
+      "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
+      "certified_by": "FI-003 under F13 auto-execute 2026-09-06"
+    },
+    {
+      "id": "skill-evolution",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-06",
+      "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
+      "certified_by": "FI-003 under F13 auto-execute 2026-09-06"
     }
   ],
   "deprecated_tools": [
