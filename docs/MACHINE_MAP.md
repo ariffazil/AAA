@@ -23,7 +23,7 @@ echo "$(hostname) $(ip -4 addr show | grep -oE '100\.64\.0\.[0-9]+' | head -1)"
 | Kernel (judge) | **:8088 — THE federation kernel** | — | arifosmcp FORK (Azwa lane, NOT the judge) |
 | Organs | AAA :3001 · A-FORGE :7071/7072 · GEOX :8081 · WEALTH :18082 · WELL :18083 · arifFlow :7073 · FRAME :18085 · VAULT999 · NATS · i-ARIF (no port — runs via FED chains; note **:18095 = apa-github-bridge, :18092 = apa-gemini-bridge** — corrected 2026-09-04 FI-008) | **OpenClaw edge :18789** (bind 100.64.0.5 — migrated from KVM8 2026-09-04 FI-008; caddy KVM8 vhosts claw/+openclaw.arif-fazil.com proxy here; KVM8 = state archive + CLI parity 2026.7.1-2, units disabled) | arifflow-internal fork :7073 · fed-router :7075 |
 | FED :4000 | **Capability Routing Constitution** — KVM8 hosts HAProxy (intake) + fed-aware-middleware :4010 (413 clamp) + fed-router :7074 (intent classification) | **litellm (docker, KVM4 100.64.0.5:4000 — model brain)** | **Identity-preserving: each tier answers with its declared model_name (no silent cross-tier swap). 6 constitutional alias entries wired in 2026-09-04.** |
-| Hermes | **LIVE gateway** `~/.hermes` (KVM8 active, `hermes-asi-gateway.service`, arifflow-hook armed 2026-09-04) + `/root/.hermes-cold/` | KVM4 dormant backup | Azwa's own hermes-agent (kunci-mas vault) |
+| Hermes | **LIVE `@ASI_arifos_bot` (♍ HERMES🪽)** `hermes-asi-gateway.service` · `~/.hermes` · **only poller of this bot** | KVM4 = OpenClaw `@AGI_ASI_bot` — not Hermes | `hermes-agent.service` = **Wawa persona, no Hermes Telegram token**. 2026-09-06 zen: wrapper unsets `TELEGRAM_BOT_TOKEN_ASI`. Wawa Telegram **HOLD** until a KVM2-only bot token exists (old `TELEGRAM_BOT_TOKEN` is 401). **Never source federation ASI token on KVM2.** |
 | Coder CLIs | ALL 12 FI seats | agy, kimi, grok, aider (+ccc-remote pool) | none (federation) |
 | Web | caddy · 25 vhost confs `/etc/caddy/vhosts/*.conf` (corrected 2026-09-04 FI-008) · docker data plane (pg/redis/qdrant/searxng/minio/falkor) | — | caddy · nasf.cloud |
 | Repos | ALL origin-synced: arifOS, AAA, A-FORGE, GEOX, WEALTH, WELL, arifFlow, arif-fazil.com, HERMES | 7 read-only mirrors (AAA behind by ff-pull, arifOS mirror stale) | SAF (azwafazil identity) |
@@ -41,7 +41,8 @@ echo "$(hostname) $(ip -4 addr show | grep -oE '100\.64\.0\.[0-9]+' | head -1)"
 | Trap | Truth |
 |---|---|
 | FED health endpoint | `/health/liveliness` ✅ — `/health` returns 000 (false-DOWN diagnosis) |
-| KVM2 `:8080` 13 tools | Azwa **arifOS-mcp fork** (legacy verbs: `arif_session_init`, `arif_sense_observe`, …). Canonical KVM8 kernel is 8 verbs (`arif_init`…`arif_seal`). Fork `vault999_health: unreachable` is by design — not a second judge. Ingesting a Verify receipt *about* azwaos from KVM8 is not KVM2 witnessing. |
+| Dual Hermes Telegram | Two processes polling `@ASI_arifos_bot` = split-brain (KVM8 + KVM2). **Hermes lives only on KVM8.** KVM2 must not have `TELEGRAM_BOT_TOKEN_ASI` in the live process. |
+| `@Azwafazil_bot` | **Unverified.** Do not put this handle in forum posts until `getMe` on a KVM2-only token returns that username. |
 | `now` WELL 🟢 | TCP open ≠ WELL healthy. Body `status=degraded` + H-WELL SELF_REPORT/AGED = 🟡. M-WELL `machine_state.json` is a different plane. |
 | Port meaning changes per machine | 7073 = arifFlow (KVM8) / arifosmcp-fork (KVM2); 4000 = HAProxy (KVM8) / litellm (KVM4); **7074 = fed-router on BOTH KVM8 (0.0.0.0, UFW-blocked off-box) + KVM2 (127.0.0.1)** — node-local agentic-loop redundancy, allowed. Always machine-prefix a port. |
 | `/root/HERMES` vs `/root/Hermes` | case twins on KVM8. UPPERCASE = heritage (4.6G); lowercase = **receipts-only shadow (164K, no install)** |
