@@ -112,3 +112,21 @@ kimi weekly 2026-09-10T14:07Z · qwen-tp-team needs subscription renewal (Oct-01
 POLICY (deliberate, not dynamic): hermes cron.model stays kimi-k3 permanently — cron burns the
 cheap lane, qwen reserves for interactive sovereignty. Sentinel alerts (<20% kimi) if that policy
 ever needs revisiting.
+
+## MINIMAX MAX CAPABILITY MATRIX (docs-verified 2026-09-06, F13 "full capabilities")
+
+| Capability | Protocol | Lane | Status |
+|---|---|---|---|
+| M3 chat (agentic/tool/1M ctx) | OpenAI-compat /chat/completions | FED ✓ | LIVE (rung in 7 chains) |
+| M3 IMAGE input | image_url parts (JPEG/PNG/GIF/WEBP ≤10MB, detail low/default/high) | FED ✓ | LIVE — supports_vision flagged, **E2E verified 2026-09-06** (image→answer 2.6s) |
+| M3 VIDEO input | video_url parts (MP4/AVI/MOV/MKV ≤50MB, ≤512MB via mm_file:// Files API, fps 0.2–5) | FED ✓ (passthrough) | LIVE same deployment; large vids → Files API upload first |
+| M3 audio input | — | NOT SUPPORTED (docs: "audio input not currently supported") | ASR stays gemini/mimo lanes |
+| M2.7/M2.5 highspeed (60→100 tps) | OpenAI-compat | FED-able on demand | available, not wired (M3 covers) |
+| TTS speech-2.8-hd/turbo | custom t2a_v2 (voice_id/emotion/pitch/pronunciation_dict; 300+ voices; mp3/flac/wav/opus; 10k sync/1M async) | SKILLS lane (minimax-mcp, mmx-cli) | ghost chat deployment EXCISED (F2: speech models don't exist on /chat/completions) |
+| Voice clone + voice design | custom APIs | SKILLS lane (AAA-voice-cloning skill; fed/audio-voiceclone-restricted = mimo lane) | LIVE |
+| Hailuo video GEN (2.3: 3 clips/day; H3: 2K, r2va w/ audio ref) | async /v1+/v2/video_generation tasks | SKILLS lane (mmx-h3-video, MiniMax MCP) | LIVE; NOT litellm-proxiable (async task API) |
+| image-01 (t2i/i2i) | custom task API | SKILLS lane (MiniMax Image Gen skill) | LIVE |
+| thinking control + reasoning_split | OpenAI-compat extras | FED ✓ passthrough | verified (thinking disabled honored) |
+
+Zen: proxiable-by-protocol goes through FED; task-shaped capabilities stay in the skills lane where
+the async loops live. Forcing custom APIs into a chat proxy creates ghost deployments — excised.
