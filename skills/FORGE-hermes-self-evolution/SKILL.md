@@ -10,6 +10,8 @@ version: 1.0.0
 owner: AAA
 floor_scope: [F1, F2, F12, F13]
 autonomy_tier: T3
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Hermes self-evolution (DSPy + GEPA) — F13 gated
