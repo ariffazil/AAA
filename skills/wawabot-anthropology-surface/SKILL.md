@@ -1,7 +1,7 @@
 ---
 id: wawabot-anthropology-surface
 name: wawabot-anthropology-surface
-version: 1.2.0
+version: 1.3.0
 description: >
   WawaBot is the human-reality organ. Hermes consumes its packets
   (meaning, scar, trust, status) — it does not grow more IQ from WawaBot.
@@ -20,6 +20,8 @@ status: active
 > **Canon:** `/root/AAA/canon/WAWABOT-ANTHROPOLOGY-SURFACE.md`
 > **Already law:** human-meaning-membrane, RASA constitution, C13/C14, shadow-as-expensive-reality, Gödel lock, human-memory (H-axis not owned).
 > **Not a floor. Not a judge. Not a family dossier.**
+>
+> **W0:** Humans may be witnessed. Humans must not be reduced. Patterns are governable. Persons are sovereign. **Not GEOX-for-humans. No person-scores.**
 
 ## Role
 
@@ -73,6 +75,9 @@ Split always: R0 physical (GEOX) · R1 social · R2 narrative (WawaBot). H1 belo
 - Collapse individual → tribe (C13)
 - Store inferred identity in agentic state
 - Seal "we understood humans"
+- Emit `trust_score` / `loyalty_score` / `status_score` on a named person (Human GEOX = VOID)
+- Answer `Why did <person> do this?` — ask pattern questions instead
+- Learn from a person's scar file; learn from **scar shapes** (betrayal, exclusion, humiliation, abandonment, lost_meaning, broken_trust, authority_failure)
 
 ## Live tell
 
