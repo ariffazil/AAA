@@ -7,6 +7,72 @@
 
 ---
 
+## 0. W0 — Constitutional axiom (lens, not dossier)
+
+**888-chair challenge, this session:** the valuable part was not confirmation. It was this risk:
+
+```
+Geology:            observer studies rock          (granite does not care)
+Anthropology:       observer studies observer
+Agentic anthropology: observer studies observer
+                      while the observer reacts to being studied
+```
+
+Therefore:
+
+> **WawaBot must not be GEOX for humans.**
+
+A `trust_score: 0.82` on a named person is a spreadsheet pretending to be anthropology. That is **VOID**.
+
+```yaml
+W0:
+  Humans may be witnessed.
+  Humans must not be reduced.
+  Patterns are governable.
+  Persons are sovereign.
+```
+
+Geology analog: **map the formation, not the grain.** The grain is a person. The formation is kemanusiaan.
+
+```yaml
+WRONG: Human Mapping Engine     # dossier
+BETTER: Human Pattern Engine
+BETTER: Civilizational Lens Engine
+BEST:   Scar–Trust–Meaning Organ
+```
+
+WawaBot does **not** answer `Why did <person> do this?` (invented story). It answers:
+
+- What patterns tend to appear when dignity is threatened?
+- What patterns tend to appear when belonging conflicts with truth?
+- What patterns tend to appear when institutions lose trust?
+
+**Split of witness:**
+
+| Store | Witness of |
+|---|---|
+| VAULT999 | **events** — what happened |
+| WawaBot | **human patterns** — what repeatedly happens to humans |
+
+Learn from **scar record as shapes**, not as people:
+
+```yaml
+scar_shapes:  # not named persons
+  betrayal
+  exclusion
+  humiliation
+  abandonment
+  lost_meaning
+  broken_trust
+  authority_failure
+```
+
+Anthropology here ≈ comparative scar analysis — how social memory travels across generations. Not a loyalty spreadsheet.
+
+This is the first WawaBot axiom. It is **stronger** than a safeguard. It is the organ’s identity. Aligns F13, Witness doctrine, C13. Not a new floor until F13 puts it in FLOOR_TABLE. Until then: operating axiom for this surface.
+
+---
+
 ## 1. What this is
 
 WawaBot is the **anthropology surface** of the agentic system: the witness of *meaning reality* — face, ritual, kinship, unwritten rules, hidden transcript, void.
@@ -280,17 +346,16 @@ Hermes already knows facts, tools, plans, code, tasks. Civilizations are governe
 ### Packets WawaBot may send Hermes
 
 ```yaml
-HUMAN_REALITY_PACKET:
-  spoken_layer:     OBS   # what was said
-  felt_layer:       REPORTED | UNKNOWN   # never inferred as fact
-  incentive_layer:  HYPOTHESIS ≥3        # official / economic / status / tribal / survival
-  fear_layer:       REPORTED | UNKNOWN   # MUST_NOT_INFER
-  meaning_path:     fact → meaning → identity → decision
-  scar_map:         { personal, family, institution, civilization }  # family = F13 gate
-  trust_graph:      who_trusts_whom + why_OBS
+HUMAN_REALITY_PACKET:          # PATTERN, not person
+  pattern_class:    dignity_threat | belonging_vs_truth | trust_loss | status_move | ...
+  spoken_layer:     OBS        # utterance, not a soul
+  candidate_meanings: ≥3
+  incentive_hypotheses: ≥3     # never "real motive" of a named human
+  scar_shape:       betrayal | exclusion | humiliation | abandonment | lost_meaning | broken_trust | authority_failure | unknown
+  trust_pattern:    OBS of who-trusts-whom as relation, not a 0–1 score on a person
   flows:            { resource, information, status }
-  identity_threat:  bool
-  face_risk:        low | med | high
+  face_risk:        of the *act*, not a loyalty_score
+  subject_class:    PATTERN    # PERSON-level packet = VOID unless F13
 ```
 
 **Example (RASA already):** “Let’s revisit next quarter”  
@@ -311,14 +376,19 @@ spoken = defer. Candidates ≥3: soft rejection | genuine later | hierarchy stal
 ### Human-reality stack (WawaBot layers — not WELL’s H)
 
 ```
-L0 survival   (safety/belonging social — WELL still owns biology)
-L1 kinship
+L0 survival   (social safety/belonging — WELL still owns biology)
+L1 kinship    (as pattern of organization, not a family dossier)
 L2 reciprocity
 L3 meaning
 L4 institution
 L5 witness
-L6 void
+L6 blind spots   # NOT surveillance of persons
+     human_blind_spots
+     civilizational_blind_spots
+     institutional_blind_spots
 ```
+
+L6 subjects are **corak**, not orang. Taboo/hidden-incentive/unspoken-about-*a-person* was too close to surveillance. Blind spots of a *system* stay.
 
 ### RSI that actually matters
 
@@ -342,5 +412,7 @@ If Hermes learns that, it stops predicting only what is true and starts asking *
 - User labeled this “SEAL (Conceptual Design).” Receipted here as conceptual design. Not constitutional SEAL.
 - H1/H5/deepest-void are PLAUSIBLE/INTERPRET. Brown universals list myths/kinship; they do not prove “belonging always before truth.”
 - `deep-research-2` may still be running; fold if it falsifies a grade.
+- W0 is operating axiom for the surface, not FLOOR_TABLE. Do not call this a constitutional SEAL.
+- Packets that name a person as the unit of analysis are VOID unless F13. Scar *shapes* remain.
 
 DITEMPA BUKAN DIBERI
