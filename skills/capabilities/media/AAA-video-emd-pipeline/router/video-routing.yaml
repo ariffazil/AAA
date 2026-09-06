@@ -1,70 +1,84 @@
-# AAA-video-emd-pipeline — Routing SOT
-# Rule: registered ≠ verified. Only canary-verified models enter default routing.
-# Probed 2026-09-06 by 333-AGI (federation-models.json + FED :4000 + bridge :18092).
-version: 1
-epoch: 2026-09-06
+# AAA-video-emd-pipeline — Routing SOT (v2)
+# Rule: registered ≠ verified. Verified = paired OPPOSITE fixtures, repeated ≥3 trials,
+#       correct answer NOT recoverable from another channel (FED_VIDEO_CANARY_LEDGER rule).
+# v2 2026-09-06: supersedes v1 — lifts gemini lane exclusion (probe defect, not provider
+# fault), blacklists two fabricating models, sets interim vision primary, records ASR gap.
+# Evidence SOT: /root/AAA/knowledge-graph/FED_VIDEO_CANARY_LEDGER.yaml (v2, Hermes/i-arif)
+version: 2
+epoch: "2026-09-06T18:00:00+08:00"
+supersedes: 1
+
+canary_protocol:  # binding for ALL model promotion, beyond video
+  single_canary_is_not_proof: true
+  required: paired_opposite_fixtures + >=3_repeat_trials + answer_not_recoverable_from_other_channel
+  inadmissible_as_evidence: [self_reported_flags, http_200, billed_modality_tokens]
+  examples_inadmissible: ["heard_audio:true while answering wrong pitch order 3x", "saw_video:false with confident answers"]
 
 video_understanding:
   canonical_lane: fed-video-understanding
   default_mode: composite
 
   input_modes:
-    native_omni:
-      eligibility:
-        - duration_s <= 300
-        - model_health == verified
-        - audio_required == true
+    native_video:  # via DIRECT Google AI Studio API — exact call shape documented in ledger §1
+      transport:
+        endpoint: "generativelanguage.googleapis.com v1beta generateContent per-model route"
+        auth: "sovereign gemini credential via root env (kunci-root.env); never inline"
+        bridge_18092: DEFECTIVE  # path fault — listing 404 AND generate returns 502-wrapped-404, re-confirmed 2026-09-06 by 333-AGI. Do NOT route through bridge until fixed.
       candidates:
-        - qwen3.5-omni-plus      # mulerouter gateway
-        - qwen3.5-omni-flash
-        - qwen3-omni-flash
+        - model: gemini-3.8-flash
+          evidence: "audio 6/6 (3/3 asc + 3/3 desc), 3.1s — ledger §2"
+          routing: enter_default (fast+truthful)
+        - model: gemini-3.1-pro-preview
+          evidence: "audio 6/6, 5.0s — ledger §2"
+          routing: enter_default (highest accuracy)
+      unstable_witness_only:
+        - model: gemini-3.6-flash   # 5/6, one flip
+        - model: gemini-2.5-flash   # 4/6, abstainer; only model billing separate AUDIO token line
+      blacklisted_fabricators:  # BIASED-NOT-LISTENING — answered ascending 3x on descending audio
+        - gemini-3.5-flash-lite   # 3/6, claims heard_audio:true
+        - gemini-3.1-flash-lite   # 3/6, fastest on bench AND fabricates
+      not_on_this_surface:
+        - gemini-omni-flash-preview  # Interactions API only — needs own adapter
+        - gemini-omni-1.1-flash      # Interactions API only
       role: fast_initial_witness
-      authority: non_final        # never the sole judge
+      authority: non_final          # V10 — never sole judge
 
     composite:
       stages:
-        - acquire_and_hash        # yt-dlp/local → sha256 manifest
-        - captions_or_fed_audio_asr
-        - scene_detect_and_dedup  # ffmpeg scene-aware + near-dup drop
+        - acquire_and_hash
+        - captions_or_asr            # see asr: UNPROVEN below — speech channel NOT established
+        - scene_detect_and_dedup
         - frame_vlm
-        - ocr_targeted_frames     # AAA-OCR-optical-compression cascade
-        - fusion                  # agreement/contradiction/absence across witnesses
+        - ocr_targeted_frames
+        - fusion
         - evidence_grounded_claims
       vision_primary:
-        - qwen3.8-max             # registered primary (vision_models SOT)
-        - deepseek-v4-flash-vision-exp  # F13-promoted 2026-08-31, primary-for-now
-      vision_fallback:
-        - mimo-v2.5-pro
-        - qwen-vl-max
-        - qwen3-vl-plus
-        - qwen3-vl-flash
+        - model: deepseek-v4-flash-vision-exp
+          status: interim_primary
+          evidence: "sole frame reader passing OCR canary (ZIRCON→ZIRCON, BASALT→BASALT), 1.7s — ledger §4"
+          until: "2026-09-11T04:01Z (qwen quota reset)"
+      vision_fallback: []            # honest: no verified fallback today
       asr:
-        - fed/audio-asr           # FED alias, live
-        - glm-asr-skill           # AAA-asr-glm-ingest (GLM-ASR-2512)
-        # gemini-3.5-transcribe EXCLUDED — see gemini_bridge below
+        status: UNPROVEN             # gap, not pass — ledger §5. No speech channel established.
+        candidates_when_proven:
+          - fed/audio-asr
+          - glm-asr-skill            # AAA-asr-glm-ingest (GLM-ASR-2512)
+          - gemini-3.5-transcribe    # ASR-only lane, correct home = audio channel (400 on image/video)
       role: default_audit_lane
 
-  gemini_bridge:
-    status: degraded_dead
-    evidence: "2026-09-06 canary: GET /models → 404, GET /v1/models → 404 (bridge TCP-up, credentials configured, models_available=0)"
-    policy: exclude_from_primary_and_fallback_until_full_inference_canary_passes
-    hold: 888-HOLD-PROVIDER
-
-  model_health_ledger:
-    # entries move registered → verified only via capability-specific canary
-    # canary = fixed input hash + expected output schema + latency band + non-empty availability
-    verified: []   # none yet — canary suite is forge-sequence step 3
-    registered:
-      - qwen3.8-max
-      - deepseek-v4-flash-vision-exp
-      - mimo-v2.5-pro
-      - qwen-vl-max
-      - qwen3-vl-plus
-      - qwen3-vl-flash
-      - qwen3.5-omni-plus
-      - qwen3.5-omni-flash
-      - qwen3-omni-flash
-      - fed/audio-asr
+  quota_degraded:  # point-in-time states, recheck after reset
+    - models: [qwen3.8-max, qwen-vl-max, qwen3-vl-plus, qwen3-vl-flash]
+      state: QUOTA_EXHAUSTED
+      reset: "2026-09-11T04:01Z"
+    - model: mimo-v2.5
+      state: FALSIFIED_ON_ROUTER_CALL_SHAPE
+      evidence: "saw_video:false, c1-3 empty, fabricated pitch order — registry claim 'native AUDIO 96k' not honored on tested shape"
+      note: retest on corrected call shape before any routing
+    - model: mimo-v2.5-pro
+      state: NO_IMAGE_ENDPOINTS     # HTTP 404
+    - models: [qwen3-omni-flash, qwen3.5-omni-*]
+      reclassification: FRAME_AUDIO_LANE_ONLY
+      evidence: "API rejects video modality input ('do not support video modality input')"
 
   claim_requirements:
     material_claims:
@@ -81,3 +95,15 @@ video_understanding:
     pass_b_retrieval: scene-level multimodal search
     pass_c_verification: dense frames around candidate window (≤2 fps)
     pass_d_escalation: native-res frames, OCR retry, alternate ASR, human review
+
+model_health_ledger:
+  protocol: canary_protocol above
+  verified:  # paired-opposite × 3 trials, per ledger §2
+    - {model: gemini-3.8-flash, lane: native_video_audio, evidence: "ledger v2 2026-09-06"}
+    - {model: gemini-3.1-pro-preview, lane: native_video_audio, evidence: "ledger v2 2026-09-06"}
+    - {model: deepseek-v4-flash-vision-exp, lane: frame_ocr, evidence: "ledger §4, single-fixture — treat as canary_pass_1x, re-run paired"}
+  registered_not_verified:
+    - qwen3.8-max                # quota until 09-11
+    - mimo-v2.5                  # falsified on tested shape
+    - fed/audio-asr              # UNPROVEN — no speech evidence chain yet
+  applies_beyond_video: "all 202 federation-models.json entries are registered until falsification-tested (ledger shadow)"

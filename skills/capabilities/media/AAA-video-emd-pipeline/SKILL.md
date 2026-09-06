@@ -49,10 +49,12 @@ We do NOT inherit its trust model, its Whisper/Groq dependency, or its assumptio
 
 ## ROUTING
 
-`router/video-routing.yaml` is SOT. Composite lane is default (audit-grade).
-Omni models = optional fast witness for ≤300s clips, never final judge.
-Gemini bridge: **canary-verified DEAD 2026-09-06** (model discovery 404) —
-excluded from primary and fallback until a full inference canary passes.
+`router/video-routing.yaml` (v2) is SOT. Composite lane is default (audit-grade).
+Native-video lane: gemini via **direct AI Studio API** (gemini-3.8-flash, 3.1-pro-preview —
+paired-fixture × 3-trial verified 2026-09-06, FED_VIDEO_CANARY_LEDGER v2). Omni models =
+optional fast witness, never final judge. **Bridge :18092 is DEFECTIVE** (path fault — do
+not route through). Fabricators blacklisted: gemini-3.5/3.1-flash-lite. ASR speech channel:
+**UNPROVEN** — no fabricated confidence until falsification-tested.
 
 ## INVARIANTS
 
