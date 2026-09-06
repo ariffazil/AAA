@@ -1,0 +1,166 @@
+#!/usr/bin/env python3
+"""One board for humans and agents. Same layout on KVM8 / KVM4 / KVM2.
+
+Captures SOT (carry_forward + node identity) and live reality (HTTP lamps).
+TCP-open is not green. WELL degraded = yellow.
+DITEMPA BUKAN DIBERI
+"""
+from __future__ import annotations
+
+import json
+import os
+import socket
+import subprocess
+import sys
+import urllib.error
+import urllib.request
+from pathlib import Path
+
+COURT = "100.64.0.2"
+MESH = (("kvm8", "100.64.0.2"), ("kvm4", "100.64.0.5"), ("kvm2", "100.64.0.4"))
+COURT_ORGANS = [
+    ("arifOS", 8088, "/health"),
+    ("FORGE", 7071, "/health"),
+    ("GEOX", 8081, "/health"),
+    ("WEALTH", 18082, "/health"),
+    ("WELL", 18083, "/health"),
+    ("FLOW", 7073, "/health"),
+    ("FRAME", 18085, "/health"),
+    ("FED", 4000, "/health/liveliness"),
+]
+EMOJI = {"UP": "🟢", "DEGRADED": "🟡", "DOWN": "🔴"}
+
+
+def _finger() -> tuple[str, str]:
+    host = socket.gethostname()
+    ip = ""
+    try:
+        ip = subprocess.check_output(["tailscale", "ip", "-4"], timeout=2, text=True).strip()
+    except Exception:
+        pass
+    if ip.endswith(".2") or host == "forge":
+        return "KVM8", "truth"
+    if ip.endswith(".5") or host.startswith("srv1946043"):
+        return "KVM4", "workshop"
+    if ip.endswith(".4") or host in ("flow-edge", "azwaos"):
+        return "KVM2", "witness"
+    return host, "unknown"
+
+
+def _lamp(host: str, port: int, path: str, timeout: float = 0.35) -> str:
+    url = f"http://{host}:{port}{path}"
+    try:
+        req = urllib.request.Request(url, method="GET")
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            text = resp.read(8000).decode("utf-8", errors="replace")
+            try:
+                body = json.loads(text)
+            except Exception:
+                body = {}
+                if '"status": "degraded"' in text or '"status":"degraded"' in text:
+                    return "DEGRADED"
+            if not isinstance(body, dict):
+                return "UP"
+            status = str(body.get("status") or body.get("health") or "").lower()
+            if status in ("degraded", "watch", "warn", "caution", "stale", "amber"):
+                return "DEGRADED"
+            if port == 18083:
+                honesty = body.get("honesty") if isinstance(body.get("honesty"), dict) else {}
+                human = body.get("human_substrate") if isinstance(body.get("human_substrate"), dict) else {}
+                if honesty.get("is_stale") or human.get("freshness_band") in ("AGED", "EXPIRED", "STALE"):
+                    return "DEGRADED"
+                if honesty.get("code") == "SELF_REPORT" and body.get("has_verified_telemetry") is False:
+                    return "DEGRADED"
+            return "UP"
+    except urllib.error.HTTPError as e:
+        if e.code in (401, 403):
+            return "UP"
+        return "DOWN"
+    except Exception:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.settimeout(timeout)
+        try:
+            s.connect((host, port))
+            s.close()
+            return "UP"
+        except Exception:
+            return "DOWN"
+
+
+def _node_strip() -> str:
+    try:
+        sys.path.insert(0, "/usr/local/lib/arifos")
+        import node_identity as ni  # type: ignore
+
+        ident = ni.resolve(ni.load_sot(), ni.live_facts())
+        pulse = ni.reality_pulse(ident)
+        return ni.emit_motd(ident, pulse).rstrip()
+    except Exception:
+        kvm, role = _finger()
+        return f"arifOS  kvm={kvm}  role={role}  (node-id unavailable)"
+
+
+def _sot_line() -> str:
+    p = Path("/root/.local/share/arifos/carry_forward.json")
+    if not p.is_file():
+        return "SOT     clerk is KVM8  |  this node does not hold carry_forward"
+    try:
+        d = json.loads(p.read_text())
+        sid = d.get("session_id", "?")
+        holds = len(d.get("open_loops_888_HOLD") or [])
+        actor = (d.get("actor") or "?")[:48]
+        return f"SOT     {sid}  holds={holds}  {actor}"
+    except Exception:
+        return "SOT     unreadable carry_forward.json"
+
+
+def _court_line() -> str:
+    bits = []
+    for name, port, path in COURT_ORGANS:
+        bits.append(f"{name}:{EMOJI[_lamp(COURT, port, path)]}")
+    return "COURT   " + " ".join(bits)
+
+
+def _here_line(kvm: str) -> str:
+    if kvm == "KVM8":
+        return "HERE    this box IS the court · organs local"
+    if kvm == "KVM4":
+        llm = EMOJI[_lamp("100.64.0.5", 4000, "/health/liveliness")]
+        claw = EMOJI[_lamp("100.64.0.5", 18789, "/health")]
+        return f"HERE    LiteLLM:{llm}  OpenClaw:{claw}  ·  inference only · not the judge"
+    if kvm == "KVM2":
+        fork = EMOJI[_lamp("127.0.0.1", 8080, "/health")]
+        return f"HERE    Azwa fork :8080 {fork}  ·  WITNESS not judge · no VAULT write"
+    return "HERE    unmapped node · HOLD"
+
+
+def _reality_line() -> str:
+    p = Path("/run/arifos/reality.banner")
+    if p.is_file():
+        first = p.read_text(errors="replace").splitlines()[:1]
+        if first:
+            return "REAL    " + first[0].strip()
+    return "REAL    (no /run/arifos/reality.banner)"
+
+
+def render() -> str:
+    kvm, role = _finger()
+    lines = [
+        _node_strip(),
+        _sot_line(),
+        _court_line(),
+        _here_line(kvm),
+        _reality_line(),
+        "MESH    kvm8 100.64.0.2 truth · kvm4 100.64.0.5 workshop · kvm2 100.64.0.4 witness",
+        "LAW     live /health beats this board · WELL yellow = human stale, not machine dead",
+    ]
+    return "\n".join(lines) + "\n"
+
+
+def main() -> int:
+    sys.stdout.write(render())
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
