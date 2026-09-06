@@ -31,7 +31,7 @@
 |---|---|---|---|
 | **VAULT999** | MEMORY | filesystem | Immutable sealed receipts (append-only hash chain). Canonical: `/root/arifOS/VAULT999/outcomes.jsonl` |
 | **FED** | ADVISORY | 7074 | Model route advisor — answers *where* to call |
-| **FLAME** | ADVISORY | 18901 | RM0 free-loop inference mesh |
+| **FLAME** | DECOMMISSIONED 2026-09-04 | 18901 | RM0 free-loop inference mesh — replaced by FED flash lane (KVM4 :4000). Registry: flame-api.service, F13 ack 2026-09-06 |
 | **HERMES** | EDGE | 18089/18789 | Multimodal Telegram bridge |
 | **OpenClaw / OpenCode** | EDGE | (Telegram) | Edge agent bridge |
 
