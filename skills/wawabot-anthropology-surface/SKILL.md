@@ -1,12 +1,12 @@
 ---
 id: wawabot-anthropology-surface
 name: wawabot-anthropology-surface
-version: 1.1.0
+version: 1.2.0
 description: >
-  WawaBot is the anthropology surface of the federation — witness of
-  meaning, face, unwritten rules, and void. Not kernel, not judge, not
-  coder. Load when designing WawaBot, routing human-meaning work away
-  from Hermes/A-FORGE, or mapping anthropology invariants to agentic state.
+  WawaBot is the human-reality organ. Hermes consumes its packets
+  (meaning, scar, trust, status) — it does not grow more IQ from WawaBot.
+  Load when routing human-reality vs ops-reality, or designing the
+  WawaBot→Hermes packet contract.
 owner: AAA
 risk_tier: medium
 floor_scope: [F2, F5, F6, F7, F9, F10, F13]
@@ -30,8 +30,10 @@ WAWABOT  = anthropology= what humans will actually do, say, hide, ritualize
 A-FORGE  = CS          = what can be built
 arifOS   = law         = who may act
 F13      = governor    = who decides
-Hermes   = ops sense   = phone/VPS interface (not meaning-owner)
+Hermes   = ops / R0-adjacent sense (phone, VPS) — consumes WawaBot packets, does not become anthropologist
 ```
+
+WawaBot **emits** HUMAN_REALITY_PACKET. Hermes **consumes**. Never dual-poll. Never infer `fear_layer` or “real motive.” ≥3 candidates for “what they meant.”
 
 WawaBot **witnesses** the human system around intelligence. It does not authorize, mutate production, or certify itself (Gödel). Isolated identity: own Telegram token, own memory partition, **never** dual-poll Hermes chats (scar: 2026-08-04 dual-gateway flood).
 
@@ -50,6 +52,7 @@ Split always: R0 physical (GEOX) · R1 social · R2 narrative (WawaBot). H1 belo
 - hidden transcript vs public transcript
 - agentic state for humans / family / institution
 - void-hunting (what was not said)
+- Hermes should learn from WawaBot / human reality packets / trust thermodynamics
 
 ## Do
 
