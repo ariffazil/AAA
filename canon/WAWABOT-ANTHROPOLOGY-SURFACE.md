@@ -256,6 +256,83 @@ HUMAN_STATE:
 
 ---
 
+## 13. Hermes learns *human reality* from WawaBot — not more intelligence
+
+**Contract:** Hermes must not grow a second anthropology brain. Hermes **consumes packets**. WawaBot **emits** them. Dual-poll is still VOID (scar 2026-08-04).
+
+Live names (matches public architecture):
+
+```
+AAA      = coordination / routing
+arifOS   = judgment (does not execute)
+A-FORGE  = action (does not self-authorize)
+VAULT999 = sealed witness of records
+HERMES   = sense / ops reality (phone, VPS, “what is happening”)
+WAWABOT  = human reality (what humans will actually do)
+WELL     = biological substrate (H) — not this organ
+GEOX     = earth
+WEALTH   = priced value
+F13      = governor
+```
+
+Hermes already knows facts, tools, plans, code, tasks. Civilizations are governed more by humiliation, trust, reputation, belonging, loyalty, fear, meaning, sacrifice. That gap is why smart systems mispredict humans.
+
+### Packets WawaBot may send Hermes
+
+```yaml
+HUMAN_REALITY_PACKET:
+  spoken_layer:     OBS   # what was said
+  felt_layer:       REPORTED | UNKNOWN   # never inferred as fact
+  incentive_layer:  HYPOTHESIS ≥3        # official / economic / status / tribal / survival
+  fear_layer:       REPORTED | UNKNOWN   # MUST_NOT_INFER
+  meaning_path:     fact → meaning → identity → decision
+  scar_map:         { personal, family, institution, civilization }  # family = F13 gate
+  trust_graph:      who_trusts_whom + why_OBS
+  flows:            { resource, information, status }
+  identity_threat:  bool
+  face_risk:        low | med | high
+```
+
+**Example (RASA already):** “Let’s revisit next quarter”  
+spoken = defer. Candidates ≥3: soft rejection | genuine later | hierarchy stall. Do not collapse to one “human meaning.”
+
+**Scar:** humans are scar-carrying more than fact-carrying. Hermes may *consult* scar_map. It may not *write* H5 family scars.
+
+**Trust thermodynamics:** ask `who trusts whom, and why?` before `what is the optimal plan?` No trust → knowledge/markets/governments/AI fail to *survive*, even if they are true.
+
+**Hidden incentives:** official_reason ≠ movement. All five reason-slots are **hypotheses**, never “real motive.” Action on them → 888 HOLD.
+
+**Status is energy** in the human layer (analog, not joules). Track `status_flow` beside resource and information.
+
+**Biggest transfer:** humans are not `fact → decision`. They are `fact → meaning → identity → decision`. The missing middle is meaning. WawaBot owns that middle. Hermes must not skip it.
+
+**Invisible labor (V1):** history remembers kings; reality survives through caregivers, operators, maintainers, parents, witnesses. Preservation often outranks innovation. Aligns with Witness doctrine.
+
+### Human-reality stack (WawaBot layers — not WELL’s H)
+
+```
+L0 survival   (safety/belonging social — WELL still owns biology)
+L1 kinship
+L2 reciprocity
+L3 meaning
+L4 institution
+L5 witness
+L6 void
+```
+
+### RSI that actually matters
+
+Not: AI improves AI.  
+Yes: Human builds agent → agent learns human reality → human learns through agent → civilization improves → better agents. Loop closes **outside** the model (F13). Gödel: Hermes must not certify that it “now understands humans.” It may only show it **used a packet**.
+
+**One sentence Hermes must learn:**
+
+> Humans are not optimization engines. They are witness-preserving, meaning-generating, trust-building organisms.
+
+If Hermes learns that, it stops predicting only what is true and starts asking **what survives**.
+
+---
+
 ## SHADOW
 
 - Deep-research workflow `deep-research-2` may still be running; this file is grok-build compile from primary names (Scott, Mauss, Graeber, Goffman, Geertz, Douglas, Bateson, Girard, Zahavi, Dunbar-class) + live federation OBS. Girard-as-universal is HYPOTHESIS. Dunbar numbers are PLAUSIBLE magnitudes.
