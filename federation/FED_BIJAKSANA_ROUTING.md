@@ -93,3 +93,22 @@ token_bank.db, alerts to `fed_alerts.log` when: kimi weekly remaining <20%, deep
 3. minimax resubscribe decision + bailian-payg "free-tier-only" console toggle (Arif).
 4. Plaintext LITELLM_MASTER_KEY in haproxy.cfg (flagged by 888; secret-hygiene task).
 5. Disk 78.1% → entropy sweep due before 80% budget line.
+
+## REFLEX ARC v2 (2026-09-06, F13 ask: "make revival dynamic")
+
+Two-layer answer:
+1. ROUTER (already automatic): qwen deployments remain i-arif PRIMARY. litellm cooldown_time=60s
+   means the first request ~1 min after quota reset re-serves qwen. No config change ever needed
+   for revival. The ladder self-heals BOTH directions.
+2. WITNESS (sentinel v2): hourly probe detects transitions (<=60 min latency). Every transition
+   appends to fed_events.jsonl. On qwen-tp-individual QUOTA_EXHAUSTED->LIVE the sentinel fires ONE
+   verification completion through FED i-arif and records WHO served — evidence of
+   SOVEREIGN_LANE_BACK_ON_QWEN vs LADDER_STILL_MASKING. Reset-time parsed from live 429 body.
+   Sentinel WITNESSES, never mutates routing (F1: policy flips stay sovereign).
+
+Reset calendar: qwen-tp-individual 2026-09-11T04:01Z (auto-detects revival ~04:17Z next cron tick) ·
+kimi weekly 2026-09-10T14:07Z · qwen-tp-team needs subscription renewal (Oct-01, auto-renew OFF).
+
+POLICY (deliberate, not dynamic): hermes cron.model stays kimi-k3 permanently — cron burns the
+cheap lane, qwen reserves for interactive sovereignty. Sentinel alerts (<20% kimi) if that policy
+ever needs revisiting.
