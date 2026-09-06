@@ -68,6 +68,8 @@ Already mapped in `visual-intelligence-map.md` §2.4. Federation has:
 
 **MCP / Endpoints:** `gemini/gemini-omni-flash`, `gemini/veo-3.1-generate-preview`, `mcp__minimax-media__generate_video` (sync + async_mode)
 
+> ⚠ **REGISTERED ≠ VERIFIED.** This table records what the federation REGISTERS as available. It is not capability evidence. Falsification-tested model truth lives in `/root/AAA/knowledge-graph/FED_VIDEO_CANARY_LEDGER.yaml` (v2, 2026-09-06). Where this map and the canary ledger disagree, the canary ledger wins — e.g. `gemini-omni-flash` rows below marked ✅ Available are registered-only; the paired-fixture canary found the omni ids require the Interactions API surface (not generateContent) and the two fast-lite gemini ids fabricate audio. The binding routing SOT is `skills/capabilities/media/AAA-video-emd-pipeline/router/video-routing.yaml` v2.
+
 ### 2.2 Video Understanding (Input — read-only)
 
 | Capability | Tool / Model | Status |
