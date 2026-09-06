@@ -10,16 +10,16 @@
 
 ## The One Rule
 
-> **`forge_fetch` is the default for URL intake. `forge_search` is the default for web search. `forge_browser_navigate` is the default for browser ops. Route through A-FORGE governance first. Use `arif_observe` for constitutional-grade evidence. Use `free-search_read_doc` for non-HTML documents. Use FLAME for free pre-flight fact-checks.**
+> **`forge_fetch` is the default for URL intake. `forge_search` is the default for web search. `forge_browser_navigate` is the default for browser ops. Route through A-FORGE governance first. Use `arif_observe` for constitutional-grade evidence. Use `free-search_read_doc` for non-HTML documents. Use the FED flash lane (:4000) for free pre-flight fact-checks — FLAME decommissioned 2026-09-04.**
 
 ---
 
 ## The Authority Ladder (choose lowest sufficient power)
 
 ```
-LEVEL 0 — FREE (RM0, FLAME :18901):
-  hermes_fact_check → hermes_epistemic_check → hermes_cross_verify
-  → Zero token cost. Pre-flight before any governed call.
+LEVEL 0 — FREE (RM0, FED flash lane :4000 — qwen3.6-flash / deepseek-v4-flash / gemini-3.6-flash):
+  Pre-flight fact-checks on flash-tier models before any governed call.
+  (FLAME :18901 decommissioned 2026-09-04 — registry: flame-api.service)
 
 LEVEL 1 — NATIVE (harness built-in):
   websearch / webfetch / web_search (native to your harness)
@@ -52,7 +52,7 @@ LEVEL 5 — BROWSER (A-FORGE :7072, MUTATE):
 |--------|------|-----|
 | "I need to read a URL" | `forge_fetch(mode=readable)` | Governed, cached, SSRF-safe |
 | "I need the raw HTML" | `forge_fetch(mode=html)` | Raw for parsing |
-| "I need to search the web" | `forge_search(query=...)` | Governed, receipt-logged, FLAME-synthesized |
+| "I need to search the web" | `forge_search(query=...)` | Governed, receipt-logged |
 | "I need a different search lens" | `free-search_search` | Provider diversity — DDG+Mojeek (Gödel E3) |
 | "I need feedback-ranked search" | `meyhem_search` | Unique feedback loop re-ranks results |
 | "I need AI-synthesized answers" | `perplexity_ask` (if available) | Answers, not links |
