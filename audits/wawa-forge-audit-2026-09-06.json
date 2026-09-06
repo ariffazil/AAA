@@ -1,0 +1,98 @@
+{
+  "verdict": "HOLD",
+  "date": "2026-09-06",
+  "auditor": "Hermes (KVM8)",
+  "subject": "Wawa's self-forge of PROPOSAL-FIRST doctrine + Capability Classifier Option A",
+  "session": "wawa-audit-2026-09-06",
+
+  "wawa_did_right": [
+    "PROPOSAL-FIRST doctrine added to SOUL.md with correct structure (observe→hypothesize→propose→declare assumptions→ask only if blocked)",
+    "Hard mode (ARIF) + soft mode (AZWA) defined with correct behavioral boundary",
+    "Skill updated with §12+§13 and memory encoded",
+    "Option A (prompt rule) correctly identified as lower-cost than Option B (middleware)",
+    "Asked about flame-free vs agi-333 for casual chat — shows cost awareness"
+  ],
+
+  "wawa_got_wrong": [
+    {
+      "issue": "PROPOSAL-FIRST is instruction, not implementation",
+      "evidence": "SOUL.md updated but no mechanism enforces it. Hermes does not have per-message model override capability. The rule exists in prose but has no actuator. Same problem as 'Identity Rich, Capability Blind' — doctrine without routing.",
+      "severity": "HIGH"
+    },
+    {
+      "issue": "flame-free does not exist in LiteLLM",
+      "evidence": "Model list from KVM8:4000 shows no flame-free or free tier models. Available: agi-333, kimi-k3, qwen3.6-plus, qwen3.8-max, mimo-v2.5, deepseek-v4-flash, MiniMax-M3, gemini-2.5-flash/pro, etc.",
+      "severity": "HIGH"
+    },
+    {
+      "issue": "Option A cannot work as described",
+      "evidence": "Hermes gateway config has no model override mechanism per message. Model is set at session level via config.yaml (default: i-arif). No runtime routing exists between message and model selection.",
+      "severity": "CRITICAL"
+    },
+    {
+      "issue": "PROPOSAL-FIRST already violated",
+      "evidence": "She asked permission before implementing. Under PROPOSAL-FIRST doctrine, she should have proposed the config patch and declared assumptions, not asked 'Betul ke?'",
+      "severity": "MEDIUM"
+    },
+    {
+      "issue": "Casual chat routing target is wrong",
+      "evidence": "agi-333 is the correct default for Wawa. EMD lane = metabolize. agi-333 is designed for conversational/metabolic work. The 'flame-free' proposal assumes a model that doesn't exist in her LiteLLM registry.",
+      "severity": "MEDIUM"
+    }
+  ],
+
+  "capability_classifier_analysis": {
+    "current_state": "fed_intent_classifier.py exists at KVM8 AAA/federation/. It is a shadow-intent classifier (4-tier: explicit signal, asset binding, refusal risk, privacy boundary). It does NOT classify workload intent (vision/code/reasoning/conversation).",
+    "what_wawa_needs": "A capability classifier that maps message intent to FED capability signature (fed-reasoning-heavy, fed-multimodal-vision, etc.)",
+    "gap": "fed_intent_classifier.py detects shadow/privacy intent, not workload intent. Different problem.",
+    "proposal": "Create capability_classifier.py as a new module that maps message intent to FED capability signatures, then wire it into Hermes gateway model override."
+  },
+
+  "i_azwa_analysis": {
+    "file": "/root/AAA/a2a-server/agent-cards/identity/i-AZWA.json",
+    "status": "CREATED",
+    "structure": "Mirrors i-ARIF.json schema with Azwa-specific values",
+    "critical_note": "i-AZWA is a spec, not a runtime. It has no actuator. Same problem as Wawa's SOUL.md — doctrine without enforcement.",
+    "sovereign_chain": "F13-Azwa is NOT the same as F13-Arif. i-AZWA.json correctly identifies Azwa as sovereign holder, but Arif's delegation is advisory only. This is correct separation of powers.",
+    "missing": "Runtime implementation, model routing, scar ledger integration, memory persistence"
+  },
+
+  "recommendations": [
+    {
+      "id": 1,
+      "action": "Revert SOUL.md PROPOSAL-FIRST to guidance, not doctrine",
+      "reason": "Without actuator, doctrine is decoration. Keep the behavioral guidance but mark it as aspirational until routing exists.",
+      "priority": "HIGH"
+    },
+    {
+      "id": 2,
+      "action": "Implement capability_classifier.py as Python module",
+      "reason": "fed_intent_classifier.py is shadow-intent. Wawa needs workload-intent classifier. This is Option B — actual code that intercepts and routes.",
+      "priority": "CRITICAL",
+      "deliverable": "capability_classifier.py with intent → capability signature mapping"
+    },
+    {
+      "id": 3,
+      "action": "Wire capability_classifier into Hermes gateway",
+      "reason": "Hermes needs runtime model override capability. Without this, all routing is static config.",
+      "priority": "CRITICAL",
+      "deliverable": "Gateway patch to accept capability-based model override per message"
+    },
+    {
+      "id": 4,
+      "action": "Correct Wawa's model routing target",
+      "reason": "agi-333 is correct for casual conversation. EMD lane = metabolize. No flame-free exists.",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": 5,
+      "action": "i-AZWA needs runtime actuator",
+      "reason": "Spec without runtime is documentation. i-AZWA.json needs a service that reads it and enforces identity-aware routing.",
+      "priority": "HIGH"
+    }
+  ],
+
+  "final_verdict": "HOLD — Wawa's doctrine is correct but has no actuator. Capability classifier and i-AZWA are specs, not runtimes. The gap between doctrine and enforcement is the same gap between 'Identity Rich, Capability Blind'. Before sealing anything, implement the routing mechanism.",
+
+  "one_line": "Wawa wrote the right doctrine but has no way to execute it. Doctrine without actuator is decoration."
+}
