@@ -411,8 +411,31 @@ If Hermes learns that, it stops predicting only what is true and starts asking *
 - No Lane A seal. Seq 45 unmoved.
 - User labeled this “SEAL (Conceptual Design).” Receipted here as conceptual design. Not constitutional SEAL.
 - H1/H5/deepest-void are PLAUSIBLE/INTERPRET. Brown universals list myths/kinship; they do not prove “belonging always before truth.”
-- `deep-research-2` may still be running; fold if it falsifies a grade.
 - W0 is operating axiom for the surface, not FLOOR_TABLE. Do not call this a constitutional SEAL.
 - Packets that name a person as the unit of analysis are VOID unless F13. Scar *shapes* remain.
+
+---
+
+## 14. Independent witness — deep-research-2 (Partial)
+
+Packet: `workflows/wf_01a0778b76f87bc09bbf26a184e3a8f0/scratch/report.md`
+
+**Converges with W0 (keep):** do not store a person as one score; do not convert kin/gift into scored transferable debt; public compliance is not consent or the hidden transcript; refuse public defacement and uncommentable double binds; do not let unanimous blame close; ethnographic “data” are constructions of constructions, not a soul.
+
+**Sharpens (adopt as type-errors):**
+
+| Type-error | CLAIM source | Agent refuse |
+|---|---|---|
+| Gift = free unobligated present | Mauss: give/receive/repay; thing still part of giver | `exchange_class: gift\|kin` vs `market` — never score generosity |
+| Face = private self-esteem / B&L autonomy-want | Goffman: face is public, on loan, traffic rules of the encounter | Face-risk of the *act*, not loyalty_score |
+| *Malu* = English shame | Goddard: broader, often a social good; clusters with maruah, nama, air muka | Do not flatten to Western face-saving |
+| Dashboard = working order | Scott: formal order parasitic on unrecognized *mētis* | KPI is a thin official slice |
+| Public yes = hidden transcript / consent | Scott 1990: without offstage or rupture, you have not witnessed the hidden | `transcript: unknown` stays unknown |
+| “Communities need a villain” | Girard: generative mechanism + misrecognition, not a moral need | Block unanimous-blame cascade |
+| Dunbar = 150 friends hard cap | 1992/93: mean ~148, CI 100–231; Hutterite split is peer-pressure fail | Trust does not scale without new evidence |
+| Thick description = extra color | Geertz: twitch vs wink — stratified public meaning | Number without story = omission |
+| Kosher = hygiene | Douglas: dirt = matter out of place; pig fails class, text silent on scavenging | Taboo as category-break, not moral dirt |
+
+**VOID remains:** no inner authentic self on file. Face is not in the body. Public line + tagged transcript + story beside a number — never a soul, never a verdict on a grain.
 
 DITEMPA BUKAN DIBERI
