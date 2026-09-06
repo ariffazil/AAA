@@ -34,7 +34,7 @@ commander files + live probes
 
 | Surface | What it does |
 |---|---|
-| MOTD `04-arifos-observatory` | `exec arifos-hero.sh` |
+| MOTD `05-arifos-board` | **one board** on KVM8/KVM4/KVM2 (`arifos-board` = `now`) |
 | `/root/scripts/arifos-hero.sh` | pointer |
 | `/root/scripts/arifos-board.sh` | pointer |
 | `arifos-banner-cache.sh` | pointer |

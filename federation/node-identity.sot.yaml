@@ -1,0 +1,131 @@
+# arifOS node identity SOT — human-facing names vs infrastructure IDs.
+# Do not rename MagicDNS / hostname from this file. Terminals consume it.
+# ART + time + truth + survival + reality are required fields.
+schema: arifos.node_identity.v1
+status: LIVE_PROJECTION
+applied_to_terminal: true
+applied_to_magicdns: false
+sovereign: ARIF
+org: arifOS
+motto: DITEMPA BUKAN DIBERI
+
+art:
+  schema: art_binding.v0
+  canonical_ref: /root/AAA/contracts/art_binding.canonical.yaml
+  floors: [F1, F3, F11, F13]
+  law: "ART is the runtime envelope. Node name is not authority."
+
+time:
+  tz: Asia/Kuala_Lumpur
+  tz_label: MYT
+  utc_offset: "+08:00"
+  dst: false
+  rule: "Declare MYT on every receipt. Survival is time-stamped or it did not happen."
+
+truth:
+  plane: court
+  owner: arifOS kernel
+  endpoint: http://100.64.0.2:8088/health
+  identity_hash_field: identity_hash
+  rule: "Truth is Court-measured. Terminals project; they do not mint identity."
+
+survival:
+  test_1_unplug: "runtime ignites from contract + code + config on another host"
+  test_2_kill_workshop: "Court still has identity, memory L3-L6, registry, vault"
+  test_3_new_agent: "new agent fills one instance yaml; no new ownership plane"
+  workshop_forbidden: [identity.key, vault_write, telegram_token_sot]
+  rule: "If the machine dies, the institution must still be reconstructable."
+
+reality:
+  rule: "Live probe beats nickname. hostname=forge is NOT forge-core."
+  never_map:
+    hostname_forge: forge-core   # Court drift
+    kvm8: forge-core
+    vps_1325122: forge-core
+
+# Lookup order (first match wins): tailscale_ip, vps_id from srvNNNNNNN, machine_id, tailscale_name
+# Never match short hostname "forge" to forge-core.
+nodes:
+  - ARIFOS_NODE_ID: "1946043"
+    ARIFOS_NODE_NAME: forge-core
+    ARIFOS_NODE_ROLE: execution-core
+    kvm_plan: KVM4
+    human_label: "KVM4 workshop"
+    plane: workshop
+    public_ip: 187.127.107.217
+    ssh: "root@100.64.0.5:22"
+    live:
+      hostname: srv1946043
+      tailscale_name: kvm4-forge
+      tailscale_ip: 100.64.0.5
+      machine_id: 35ee38653c2c4430afb8db57715754e1
+      tag: tag:forge
+    services_declared: [OpenCode, CCC, LiteLLM-runtime, OpenClaw-edge]
+    services_not: [VAULT999_SOT, identity_SOT, AAA_judgment]
+    art:
+      agent_id: kvm4-workshop
+      default_action_class: EXECUTE_BOUNDED
+      authority_ceiling: T1
+    mandate: "Build, test, sandbox, run LiteLLM + OpenClaw. Inference only."
+    bounds: "No truth ownership. No governance mutation. Zero master secrets. No arif_judge."
+
+  - ARIFOS_NODE_ID: "1325122"
+    ARIFOS_NODE_NAME: court-core
+    ARIFOS_NODE_ROLE: truth-core
+    kvm_plan: KVM8
+    human_label: "KVM8 court"
+    plane: court
+    public_ip: 72.62.71.199
+    ssh: "root@72.62.71.199 -p 22888"
+    live:
+      hostname: forge          # DRIFT: infra nickname. Do not treat as forge-core.
+      tailscale_name: af-forge
+      tailscale_ip: 100.64.0.2
+      machine_id: bee66fda3ee340878805aca2b2d4fa87
+      tag: tag:arifos
+    services_collapsed_today:
+      - arifOS
+      - AAA
+      - arifFLOW
+      - Headscale
+      - VAULT999
+      - Hermes Telegram   # still here; flow-edge is NOT this VPS yet
+      - Qdrant            # memory-core not split yet
+      - Grafana           # observability-core not split yet
+    art:
+      agent_id: arifos
+      default_action_class: GOVERN
+      authority_ceiling: SOVEREIGN
+    mandate: "Preserve continuity. Store truth. Reality admission control."
+    bounds: "Heavy builds frozen. Dispatch execution to forge-core."
+
+  - ARIFOS_NODE_ID: "1642546"
+    ARIFOS_NODE_NAME: flow-dmz
+    ARIFOS_NODE_ROLE: dmz-edge
+    kvm_plan: KVM2
+    human_label: "KVM2 witness"
+    plane: witness
+    public_ip: 72.61.126.65
+    ssh: "root@100.64.0.4:22 (mesh); public :22 firewalled"
+    live:
+      hostname: srv1642546
+      tailscale_name: azwaos
+      tailscale_ip: 100.64.0.4
+      tag: tag:flow-dmz
+    art:
+      agent_id: azwaos-witness
+      default_action_class: OBSERVE
+      authority_ceiling: T0
+    mandate: "Witness only. :8080 is an Azwa fork (13 legacy verbs), NOT the KVM8 kernel."
+    bounds: "No arif_judge. No VAULT999 write. No production mutation. Do not ingest fake Verify for other agents."
+
+proposed_not_live:
+  flow-edge: { services: [Hermes, telegram_gateway], note: "Hermes still on court-core" }
+  memory-core: { services: [Qdrant], note: "still on court-core" }
+  observability-core: { services: [Grafana, Loki], note: "still on court-core" }
+
+888_HOLD:
+  - rename MagicDNS
+  - hostnamectl set-hostname forge-core on VPS 1325122
+  - treat hostname forge as forge-core
+  - move Hermes/Qdrant/Grafana without inventory
