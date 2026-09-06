@@ -122,7 +122,7 @@ Everything else is a **pointer**, **contract**, **runbook**, or **draft** — no
 | **SOVEREIGN** | ARIF | — | human | — | — | purpose, irreversible yes | routine execution |
 | **KERNEL** | arifOS | 8088 | `arifos.service` | healthy | 8 public | identity, admit, judge, memory law, seal gate | earth/capital compute, free execution |
 | **EXECUTE** | A-FORGE | 7071 / 7072 | `a-forge` + `a-forge-mcp` | healthy | 116 API / 112 local MCP (116 public) | plan, dry-run, apply, rollback | self-authorise, seal |
-| **EARTH** | GEOX | 8081 | `geox-mcp.service` | healthy | 33 | earth evidence, physics claims | capital, judgment |
+| **EARTH** | GEOX | 8081 | `geox-mcp.service` | healthy | 26 | earth evidence, physics claims | capital, judgment |
 | **CAPITAL** | WEALTH | 18082 | `wealth-organ.service` | healthy | 14 public (9 canonical) | capital state, risk scenarios | allocation authority, earth truth |
 | **VITALITY** | WELL | 18083 | `well.service` | **degraded** | 10 | readiness, dignity signal | medical diagnosis, final verdict |
 | **COCKPIT** | AAA | 3001 | `aaa-a2a.service` | healthy | A2A | display, A2A route, registry home | judgment, execution |
@@ -203,7 +203,7 @@ Neither is an organ. Neither seals.
 | arifOS | `/root/arifOS` | `/opt/arifos/app` | deploy must keep source=built=deployed |
 | A-FORGE | `/root/A-FORGE` | `/opt/a-forge/app` (when used) | API + MCP units |
 | AAA | `/root/AAA` | `/opt/aaa/app` (when used) | A2A + registry home |
-| GEOX | `/root/GEOX` (`/root/geox` alias) | process from source common | 33 tools |
+| GEOX | `/root/GEOX` (`/root/geox` alias) | `/opt/geox` via `geox-mcp.service` | 26 tools (live 2026-09-06; 33 was a 2026-07-30 snapshot) |
 | WEALTH | `/root/WEALTH` | process from source | compute only |
 | WELL | `/root/WELL` | process from source | REFLECT_ONLY |
 | HERMES | `/root/HERMES` | gateway + MCP | edge bridge |
