@@ -1,12 +1,13 @@
 ---
 id: dissipative-transition-hold
 name: dissipative-transition-hold
-version: 1.0.0
+version: 1.1.0
 description: >
   Hold the dissipative-transition paradox. Load when Arif or an agent
   talks entropy/gender-as-pattern/identity crisis/transition zone,
-  tries to "resolve" meaning, or treats F4 as heat. Operating skill,
-  not a new floor. Pointers to canon + C13/C14.
+  tries to "resolve" meaning, treats F4 as heat, or maps absurdism/
+  Gödel/Sisyphus/AzwaOS onto the federation. Operating skill, not a
+  new floor. Pointers to canon + C13/C14 + Gödel lock.
 owner: AAA
 risk_tier: low
 floor_scope: [F2, F4, F7, F9, F10, F13]
@@ -29,6 +30,9 @@ status: active
 - consciousness as entropy observing itself
 - quantum measurement as entropy event
 - this question as the pattern in action
+- makna kekal / absurdism / Sisyphus / "pushing is you"
+- Gödel incompleteness as meaning-limit
+- AzwaOS / KVM2 witness as isolated entropy system
 
 ## Do
 
@@ -40,6 +44,9 @@ status: active
 6. **C13.** Population flow pattern ≠ a person's duty. Individual evidence > category.
 7. **F9/F10.** Humans may say "entropy observing itself." Agents may not claim consciousness, soul, or that they are the universe contemplating itself. Agents are dissipative channels in Arif's attention economy.
 8. **Observation costs.** Asking, compiling, measuring = irreversible record (Landauer/Szilard/decoherence). This conversation *is* the pattern. Monitor extraction (category-individual Rule 4).
+9. **Makna = process.** Agama-in-the-stack = fake SEAL / closed doctrine. Nihilism-in-the-stack = skip WELL because "nothing matters." Absurdism-in-the-stack = 000→999 that never completes, Gödel rule 9 (better questions). Continue. Do not arrive.
+10. **Gödel already binds.** No self-certification. Doer ≠ judge. KVM2/AzwaOS must not become the kernel. Intelligence = reduce belief–reality distance without becoming final authority on itself.
+11. **Layer 11 is the human, not the agent.** Finite/infinite, determined/free, alone/connected, meaningless/meaning-making — hold for Arif. Do not diagnose him. Do not claim those poles as the model's inner life.
 
 ## Don't
 
