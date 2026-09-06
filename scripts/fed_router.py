@@ -48,7 +48,9 @@ class RankGate:
     """Declarative priority adjustments — isolates reasoning from execution."""
     VISION_MULEROUTER_BOOST = -2
     VISION_NATIVE_BOOST = -1
-    NO_TELEMETRY = 2
+    NO_TELEMETRY = 1  # v3.3.1: was 2 — over-demoted every route while the telemetry loop
+    # was unclosed. /report ingress now live (FED v3.3); light penalty until samples
+    # accumulate. Revisit to 2 once median sample_count > 5 across live routes.
     LOW_TELEMETRY = 1
     LATENCY_DEGRADED = 3
     BALANCE_SOFT_DEMOTE = 5
@@ -292,9 +294,24 @@ async def fed_route_http(_request):
 
     try:
         body = await _request.json()
+        _model = str(body.get("model", "deepseek-v4-pro"))
+        _task = str(body.get("task", ""))
+        # v3.3.1 fix: apply the same Capability Classifier auto-swap as the
+        # fed_route MCP wrapper — the HTTP lane must not bypass classification.
+        _cls = classify_capability(_task) if _task else None
+        if (
+            _cls
+            and (
+                _cls["confidence"] >= 0.90
+                or (_cls["capability"] == "vision" and _cls["confidence"] >= 0.75)
+            )
+            and not _model.startswith("fed-")
+            and not body.get("effort_level")
+        ):
+            _model = _cls["signature"]
         routes = fed_route_engine(
-            task=str(body.get("task", "")),
-            model=str(body.get("model", "deepseek-v4-pro")),
+            task=_task,
+            model=_model,
             modality=str(body.get("modality", "text")),
             agent_id=str(body.get("agent_id", "http")),
             constitutional_tier=int(body.get("constitutional_tier", 333)),
@@ -303,6 +320,8 @@ async def fed_route_http(_request):
         return JSONResponse(
             {
                 "routes": routes,
+                "classification": _cls,
+                "model_applied": _model,
                 "advisory": "ADVISORY_ONLY — execute in rank order; on failure cascade; never retry same provider twice.",
             }
         )
@@ -1043,19 +1062,37 @@ def fed_status() -> dict:
 
 @mcp.tool()
 def fed_probe() -> dict:
-    """Run balance probe (delegates to balance_probe.py). Returns Track A + Track B status."""
-    import subprocess
+    """Probe LiteLLM gateway lanes + DB state (v3.3.1).
 
-    result = subprocess.run(
-        ["python3", "/root/AAA/scripts/balance_probe.py"],
-        capture_output=True,
-        text=True,
-        timeout=30,
-    )
+    Replaces the dead delegation to balance_probe.py (probed DeepSeek only,
+    hardcoded provider_count=6). Reads live gateway health surfaces directly
+    and reports honest DB counts. ADVISORY_ONLY — never judges.
+    """
+    import urllib.request
+
+    lanes = {
+        "litellm_local_4013": "http://127.0.0.1:4013/health/liveliness",
+        "litellm_kvm4_4000": "http://100.64.0.5:4000/health/liveliness",
+    }
+    gateways: dict = {}
+    for name, url in lanes.items():
+        try:
+            with urllib.request.urlopen(url, timeout=4) as r:
+                body = r.read(2048).decode("utf-8", errors="replace")
+                gateways[name] = {"status": "LIVE", "http": r.status, "body_head": body[:200]}
+        except Exception as e:  # noqa: BLE001 — probe must report DOWN, not crash
+            gateways[name] = {"status": "DOWN", "error": str(e)[:120]}
+    with sqlite3.connect(str(FED_STATE_DB)) as conn:
+        conn.row_factory = sqlite3.Row
+        providers = conn.execute("SELECT COUNT(*) AS n FROM providers").fetchone()["n"]
+        health_rows = conn.execute(
+            "SELECT status, COUNT(*) AS n FROM route_health GROUP BY status"
+        ).fetchall()
     return {
-        "exit_code": result.returncode,
-        "output": result.stdout[-2000:],
-        "provider_count": 6,
+        "gateways": gateways,
+        "db_providers": providers,
+        "route_health": {r["status"]: r["n"] for r in health_rows},
+        "note": "ADVISORY_ONLY — live probe over narrative (bijaksana audit discipline)",
     }
 
 
