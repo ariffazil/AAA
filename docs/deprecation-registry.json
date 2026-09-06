@@ -19,7 +19,9 @@
       "reason": "RM0 free-tier substrate exhausted: every request failed all free providers (cerebras x2, groq x3, gemini x2) and fell back to qwen-max (paid Qwen plan) with 7 wasted retries latency. Zero live callers (KVM4 hermes grep clean; only 2 AAA monitor scripts). flame-recover.timer was 5-min cron noise on dead tiers.",
       "replacement": "FED litellm flash lane (KVM4 :4000 — 10 flash/mini models: qwen3.6-flash, deepseek-v4-flash, gemini-3.6-flash, MiniMax-M2.5...)",
       "archive": "/root/BACKUPS/FLAME-retired-20260904",
-      "ratified_by": "888 directive 2026-09-04 (distill expired FLAME into existing components)"
+      "ratified_by": "888 directive 2026-09-04 (distill expired FLAME into existing components)",
+      "f13_ack": "2026-09-06 — Arif: 'A — formal decommission flame' (FI-003 executed: fed_aware_middleware :18901 ref nulled + topology/agentic-web doctrine tombstoned)",
+      "residual_refs": "gatewayTools.ts flameClient registration left dormant (removal needs dist rebuild — deferred; inert because FED :4000 advertises 0 flame routes); federation-models.json flame_* rule_ids are legacy names, their preferred_model already routes to direct groq/* providers"
     },
     {
       "id": "langfuse-observability",
