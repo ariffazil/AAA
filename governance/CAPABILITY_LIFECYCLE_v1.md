@@ -60,6 +60,38 @@ Five kinds: reality drift (world changed), usage drift (nobody calls it), outcom
 4. Governance is a capability (an organ), not an external brake.
 5. Creation without extinction is bureaucracy formation. The kill path is constitutional, not optional.
 
+## The Five Questions (audit standard — external advisor 2026-09-06)
+
+Every skill must answer:
+1. Who birthed it? (provenance)
+2. What problem birthed it? (if unknown → GHOST, even if heavily used)
+3. When did reality last pay for it? (last successful outcome, not last load)
+4. What breaks if it dies? (counterfactual — honest cheap version: archive-as-probe. Archive, wait N weeks, nobody notices = artifact, kill confirmed)
+5. Why does it still deserve to live? (legitimacy — cannot answer = history, not capability)
+
+## Witness Inflation Law
+
+Witness is EVIDENCE, not VALUE. Load counts measure attention paid, not reality paying. A skill loaded 500 times with outputs the user overrides is deader than a skill loaded twice that both succeeded. Metrics that measure witness (loads, logs, traces) must NEVER become optimization targets. Reality > witness, always. Any report citing load counts must label them "attention evidence", never "success".
+
+## Capability Genealogy
+
+Skills carry lineage in SKILL.md frontmatter:
+- origin: scar | session | F13-command | incident | eureka | external-adoption
+- parent: skill it evolved from (if any)
+- replaces: skill it supersedes (if any)
+
+A capability without genealogy cannot answer Question 2 — it is a ghost even if heavily used. Lineage is the evolution graph; witness graph and usage graph are not substitutes.
+
+## Legitimacy Promotion Chain
+
+Personal (F13 believes) → Codified (doctrine answers the 5 questions) → Mechanical (survival criteria enforce them).
+
+Founder meaning-dependence is constitutional at small scale — that is F13, not a bug. The promotion chain is how it stops being a bottleneck WITHOUT abandoning sovereignty: the mechanism proposes, the sovereign ratifies. Legitimacy starts personal and becomes observable; it never becomes ownerless.
+
+## Success Bias & Monoculture
+
+Audit must flag not only failing skills but DOMINANT ones. A skill so successful it overrides alternatives becomes dogma. Concentration check: any single skill absorbing >10% of all loads, or any single pattern routing >70% of workflows, = monoculture risk = resilience loss. Efficiency that eliminates alternatives is fragility wearing a suit.
+
 ## What this doctrine does NOT do
 
 It does not grant A-FORGE or any agent authority to delete skills unilaterally. Death penalty for Hermes skills remains F13 + auditor evidence. The auditor proposes; Arif disposes.

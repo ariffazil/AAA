@@ -1,6 +1,8 @@
 ---
 name: review-agent
 description: Perform a read-only, defect-first review of a specified code change and return every actionable finding. Use when another agent delegates review of uncommitted changes, a base-branch diff, a commit, or custom review instructions.
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Review Agent

@@ -9,6 +9,8 @@ floor_scope: [F1, F2, F7, F11]
 autonomy_tier: T1
 organ_domain: arifos
 forged: 2026-09-04
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # arifOS Eight-Verb Canonical Chain

@@ -2,6 +2,8 @@
 name: qwencloud-model-selector
 description: "[QwenCloud] Recommend the best Qwen model and parameters. TRIGGER when: choosing between Qwen models, comparing Qwen model pricing, understanding Qwen model capabilities, checking usage or billing, viewing cost history, when an execution skill needs model selection advice, or user explicitly invokes this skill by name (e.g. use qwencloud-model-selector). DO NOT TRIGGER when: non-Qwen model discussions (OpenAI, Gemini, etc.), general AI questions unrelated to Qwen."
 compatibility: "Advisory skill, no execution dependencies. Cursor: auto-loaded. Claude Code: read this skill's SKILL.md before first use."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 > **Agent setup**: If your agent doesn't auto-load skills (e.g. Claude Code),

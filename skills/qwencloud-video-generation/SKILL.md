@@ -2,6 +2,8 @@
 name: qwencloud-video-generation
 description: "[QwenCloud] Generate videos using Wan models. Supports text-to-video, image-to-video, first+last frame, reference-based role-play, and video editing (VACE). TRIGGER when: user wants to create, generate, or edit video content, mentions video generation/animation/video clips/Wan models, or explicitly invokes this skill by name (e.g. use qwencloud-video-generation). DO NOT TRIGGER when: user wants to generate images (use qwencloud-image-generation), understand/analyze existing videos (use qwencloud-vision), text-only tasks."
 compatibility: "Requires Python 3.9+ and curl. Cursor: auto-loaded. Claude Code: read this skill's SKILL.md before first use."
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 > **Agent setup**: If your agent doesn't auto-load skills (e.g. Claude Code),
