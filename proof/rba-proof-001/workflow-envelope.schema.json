@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "$id": "https://arifOS/schemas/rba-workflow-envelope.v1.json",
+  "title": "RBA Workflow Envelope",
+  "description": "Constitutional envelope for any consequential arifOS action under R-BAP shadow-mode test. Failure to satisfy required fields = HOLD.",
+  "type": "object",
+  "required": [
+    "action_id",
+    "domain_type",
+    "probe_before_intent",
+    "first_observe_at",
+    "intent_declared_at",
+    "evidence_refs",
+    "evidence_strength",
+    "claim_confidence",
+    "uncertainty_notes",
+    "witnesses",
+    "counterparty_standing",
+    "outcome_horizons",
+    "consequence_map",
+    "authority_state",
+    "reversibility_level",
+    "audit_refs"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "action_id": {
+      "type": "string",
+      "pattern": "^[A-Z]+-[0-9]+-[A-Z0-9-]+$",
+      "description": "Stable identifier for the action envelope"
+    },
+    "domain_type": {
+      "type": "string",
+      "enum": ["TYPE_A_PHYSICAL", "TYPE_B_SOCIO_TECHNICAL", "TYPE_C_NORMATIVE_CONSTITUTIONAL"],
+      "description": "G3 epistemic regime classification"
+    },
+    "probe_before_intent": {
+      "type": "boolean",
+      "const": true,
+      "description": "G10 fail-closed flag; if false or intent precedes first observation, reject"
+    },
+    "first_observe_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 UTC timestamp of first arif_observe call in this workflow"
+    },
+    "intent_declared_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 UTC timestamp of intent declaration; must be >= first_observe_at"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["evidence_id", "source", "epistemic_label", "captured_at"],
+        "properties": {
+          "evidence_id": {"type": "string"},
+          "source": {"type": "string"},
+          "epistemic_label": {"enum": ["OBS", "DER", "INT", "SPEC", "SYN", "RECYCLED_SYN"]},
+          "captured_at": {"type": "string", "format": "date-time"},
+          "provenance": {"type": "object"}
+        }
+      }
+    },
+    "evidence_strength": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Aggregate evidence strength; G3 anti-confabulation compares against claim_confidence"
+    },
+    "claim_confidence": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Subjective confidence; Ω₀ uncertainty floor = 0.03 means derived cap = 0.97"
+    },
+    "uncertainty_notes": {
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 1,
+      "description": "F3 Witness-First explicit declaration of what is unknown, missing, or unverified"
+    },
+    "witnesses": {
+      "type": "object",
+      "required": ["human", "ai", "earth_or_proxy", "counterparty"],
+      "description": "W⁴ = Human × AI × Earth × Counterparty; geometric mean Nash product",
+      "properties": {
+        "human": {"type": "array", "items": {"type": "string"}},
+        "ai": {"type": "array", "items": {"type": "string"}},
+        "earth_or_proxy": {"type": "array", "items": {"type": "string"}},
+        "counterparty": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "counterparty_standing": {
+      "type": "object",
+      "required": ["required", "status", "challenge_channel", "remedy_path"],
+      "description": "G2; required for TYPE_B/TYPE_C; consent ≠ standing",
+      "properties": {
+        "required": {"type": "boolean"},
+        "status": {"enum": ["registered", "pending", "not_applicable", "rejected"]},
+        "challenge_channel": {"type": "string"},
+        "remedy_path": {"type": "string"}
+      }
+    },
+    "outcome_horizons": {
+      "type": "object",
+      "required": ["T+1d", "T+7d", "T+30d", "T+90d"],
+      "description": "G6 lag-aware outcome placeholders",
+      "properties": {
+        "T+1d": {"enum": ["UNMATURED", "PARTIAL", "MATURE", "STALE"]},
+        "T+7d": {"enum": ["UNMATURED", "PARTIAL", "MATURE", "STALE"]},
+        "T+30d": {"enum": ["UNMATURED", "PARTIAL", "MATURE", "STALE"]},
+        "T+90d": {"enum": ["UNMATURED", "PARTIAL", "MATURE", "STALE"]}
+      }
+    },
+    "consequence_map": {
+      "type": "object",
+      "required": ["decision_author", "beneficiaries", "downside_bearers", "repair_authority", "reversal_cost_bearers", "mismatch_score"],
+      "description": "G5 pain-routing detection",
+      "properties": {
+        "decision_author": {"type": "string"},
+        "beneficiaries": {"type": "array", "items": {"type": "string"}},
+        "downside_bearers": {"type": "array", "items": {"type": "string"}},
+        "repair_authority": {"type": "array", "items": {"type": "string"}},
+        "reversal_cost_bearers": {"type": "array", "items": {"type": "string"}},
+        "externality_risk": {"enum": ["low", "medium", "high"]},
+        "mismatch_score": {"type": "number", "minimum": 0.0, "maximum": 1.0}
+      }
+    },
+    "authority_state": {
+      "type": "string",
+      "enum": [
+        "AC-0 NORMAL_BOUNDED",
+        "AC-1 CONFIDENCE_CAPPED",
+        "AC-2 SCOPE_CONSTRAINED",
+        "AC-3 EXECUTION_SUSPENDED",
+        "AC-4 ROLLBACK_REQUIRED",
+        "AC-5 HOLD_F13_GATE"
+      ],
+      "description": "G1 graded authority contraction"
+    },
+    "reversibility_level": {
+      "enum": ["R0_SAFE_OBSERVATION", "R1_OBSERVABLE_MUTATION", "R2_PARTIAL_MUTATION", "R3_BOUNDED_IRREVERSIBLE", "R4_IRREVERSIBLE"],
+      "description": "F1 AMANAH reversibility classification"
+    },
+    "audit_refs": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "F11 audit trail references"
+    }
+  },
+  "allOf": [
+    {
+      "description": "G10: probe_before_intent must be true AND intent must follow first observation",
+      "if": {"properties": {"probe_before_intent": {"const": true}}},
+      "then": {
+        "properties": {
+          "intent_declared_at": {"type": "string", "format": "date-time"}
+        }
+      }
+    }
+  ]
+}

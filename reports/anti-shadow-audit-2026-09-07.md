@@ -26,7 +26,7 @@ Every arifOS primitive was checked against the 10 Anti-Shadow Invariants:
 | I9 | Claim failure ⇒ authority contraction (graded) |
 | I10 | dA/dt ≤ dV/dt (growth coupling) |
 
-**Verdict scale:** ✅ Pass · ⚠ Partial · ❌ Gap · 🚫 Critical (gap that allows shadow formation in production today)
+**Verdict scale:** ✓ Met · ⚠ Partial · ✗ Gap · 🚫 Critical (gap that allows shadow formation in production today)
 
 ---
 
@@ -34,15 +34,15 @@ Every arifOS primitive was checked against the 10 Anti-Shadow Invariants:
 
 | Invariant | Verdict | Evidence |
 |---|---|---|
-| I1 | ✅ | ReversibilityEngine + WIRE 4/5; engine receipts at judge entry |
-| I2 | ✅ | Engine receipt logged; provenance per field |
-| I3 | ⚠ | Engine does not declare uncertainty band on reversibility classification |
-| I4 | ✅ | Irreversible → 888_HOLD; explicit rule |
+| I1 | ✓ Met | ReversibilityEngine + WIRE 4/5; engine receipts at judge entry |
+| I2 | ✓ Met | Engine receipt logged; provenance per field |
+| I3 | ⚠ Partial | Engine does not declare uncertainty band on reversibility classification |
+| I4 | ✓ Met | Irreversible → 888_HOLD; explicit rule |
 | I5 | n/a | F1 doesn't reward |
-| I6 | ⚠ | ReversibilityEngine itself is not adversarially reviewed |
-| I7 | ✅ | Rollback paths recorded |
+| I6 | ⚠ Partial | ReversibilityEngine itself is not adversarially reviewed |
+| I7 | ✓ Met | Rollback paths recorded |
 | I8 | n/a | F1 doesn't measure |
-| I9 | ⚠ | Engine outputs binary reversible/irreversible — no AC levels |
+| I9 | ⚠ Partial | Engine outputs binary reversible/irreversible — no AC levels |
 | I10 | n/a | F1 doesn't measure growth |
 
 **Net F1:** Strong substrate; missing: graded AC output (I9) and adversarial review of the engine itself (I6).
@@ -53,15 +53,15 @@ Every arifOS primitive was checked against the 10 Anti-Shadow Invariants:
 
 | Invariant | Verdict | Evidence |
 |---|---|---|
-| I1 | ✅ | Epistemic labels OBS/DER/INT/SPEC — observations are external |
-| I2 | ✅ | Every claim carries label; logs to VAULT999 |
-| I3 | ✅ | SYN/RECYCLED_SYN terminals prevent fake certainty upgrade |
+| I1 | ✓ Met | Epistemic labels OBS/DER/INT/SPEC — observations are external |
+| I2 | ✓ Met | Every claim carries label; logs to VAULT999 |
+| I3 | ✓ Met | SYN/RECYCLED_SYN terminals prevent fake certainty upgrade |
 | I4 | n/a | |
 | I5 | n/a | |
-| I6 | ⚠ | Adversarial review happens via Q9 Gödel Lock, but only at seal-time |
-| I7 | ✅ | Spec/SYN labels do not upgrade to OBS/DER regardless of republication |
-| I8 | ✅ | F2 includes 6 label forms + 4 bands — multiple, not single |
-| I9 | ⚠ | "Cheap claims = VOID" is binary; no graded contraction |
+| I6 | ⚠ Partial | Adversarial review happens via Q9 Gödel Lock, but only at seal-time |
+| I7 | ✓ Met | Spec/SYN labels do not upgrade to OBS/DER regardless of republication |
+| I8 | ✓ Met | F2 includes 6 label forms + 4 bands — multiple, not single |
+| I9 | ⚠ Partial | "Cheap claims = VOID" is binary; no graded contraction |
 | I10 | n/a | |
 
 **Net F2:** Strong; missing: graded contraction on claim failure (I9). RECYCLED_SYN terminal is arifOS-original strength.
@@ -72,15 +72,15 @@ Every arifOS primitive was checked against the 10 Anti-Shadow Invariants:
 
 | Invariant | Verdict | Evidence |
 |---|---|---|
-| I1 | ✅ | Geometric mean Nash product — no self-certification |
-| I2 | ⚠ | Witness channels log via forge_witness but no F11 audit on witness integrity |
-| I3 | ✅ | Insufficient witness = HOLD/UNMEASURED |
-| I4 | ⚠ | No rule binding witness failure to irreversible-action BLOCK |
+| I1 | ✓ Met | Geometric mean Nash product — no self-certification |
+| I2 | ⚠ Partial | Witness channels log via forge_witness but no F11 audit on witness integrity |
+| I3 | ✓ Met | Insufficient witness = HOLD/UNMEASURED |
+| I4 | ⚠ Partial | No rule binding witness failure to irreversible-action BLOCK |
 | I5 | n/a | |
-| I6 | ⚠ | Witnesses are A-AUDIT (model-shared) + GEOX (independent) + Human (F13); not a 4-distinct-channel topology |
-| I7 | ✅ | |
-| I8 | ⚠ | Verifier lane defined but organ not specified; Counterparty not formalized |
-| I9 | ⚠ | W³ failure downgrades claim to UNMEASURED but no authority contraction on the witting agent |
+| I6 | ⚠ Partial | Witnesses are A-AUDIT (model-shared) + GEOX (independent) + Human (F13); not a 4-distinct-channel topology |
+| I7 | ✓ Met | |
+| I8 | ⚠ Partial | Verifier lane defined but organ not specified; Counterparty not formalized |
+| I9 | ⚠ Partial | W³ failure downgrades claim to UNMEASURED but no authority contraction on the witting agent |
 | I10 | n/a | |
 
 **Net F3:** **Critical gap on I6/I8.** F3 rule says "+ Verifier" but Verifier is not defined as a distinct organ. AKAL-DICTIONARY precedent mentions counterparty but it's not canonical. **GENESIS/060 proposes W⁴ = H × AI × Earth × Counterparty** with scope-limited veto (topology, not vote).
@@ -91,15 +91,15 @@ Every arifOS primitive was checked against the 10 Anti-Shadow Invariants:
 
 | Invariant | Verdict | Evidence |
 |---|---|---|
-| I1 | ✅ | Compression framing — back-reference to VAULT999 prevents novel fabrication |
-| I2 | ✅ | ΔS log per session |
-| I3 | ⚠ | ΔS = 0 means no compression but no warning emitted; F4 WARNING exists but undocumented |
+| I1 | ✓ Met | Compression framing — back-reference to VAULT999 prevents novel fabrication |
+| I2 | ✓ Met | ΔS log per session |
+| I3 | ⚠ Partial | ΔS = 0 means no compression but no warning emitted; F4 WARNING exists but undocumented |
 | I4 | n/a | |
 | I5 | n/a | |
-| I6 | ⚠ | LZ77 dictionary-coder framing; adversarial review not specified |
-| I7 | ✅ | VAULT999 immutable |
-| I8 | ⚠ | Single ΔS scalar — risk of metric capture |
-| I9 | ⚠ | ΔS > 0 could trigger F4 WARNING but no agent-level authority contraction |
+| I6 | ⚠ Partial | LZ77 dictionary-coder framing; adversarial review not specified |
+| I7 | ✓ Met | VAULT999 immutable |
+| I8 | ⚠ Partial | Single ΔS scalar — risk of metric capture |
+| I9 | ⚠ Partial | ΔS > 0 could trigger F4 WARNING but no agent-level authority contraction |
 | I10 | n/a | |
 
 **Net F4:** Compression is novel (arifOS-original); missing: multi-KPI variant (G8).
@@ -110,7 +110,7 @@ Every arifOS primitive was checked against the 10 Anti-Shadow Invariants:
 
 | Invariant | Verdict | Evidence |
 |---|---|---|
-| I1–I10 | ⚠ | F5 has no enforcement_function defined; principle is documented, not enforced |
+| I1–I10 | ⚠ Partial | F5 has no enforcement_function defined; principle is documented, not enforced |
 
 **Net F5:** ⚠ Soft floor without enforcement. Largest enforcement gap.
 
@@ -120,13 +120,13 @@ Every arifOS primitive was checked against the 10 Anti-Shadow Invariants:
 
 | Invariant | Verdict | Evidence |
 |---|---|---|
-| I1 | ✅ | Dual-registry prevents identity-leak in kernel vs public |
-| I2 | ✅ | Per-layer rule logged |
-| I3 | ✅ | Identity-leak prohibition explicit |
-| I4 | ⚠ | Dignity guard covers ID leak but not full standing/consequence analysis |
+| I1 | ✓ Met | Dual-registry prevents identity-leak in kernel vs public |
+| I2 | ✓ Met | Per-layer rule logged |
+| I3 | ✓ Met | Identity-leak prohibition explicit |
+| I4 | ⚠ Partial | Dignity guard covers ID leak but not full standing/consequence analysis |
 | I5 | n/a | |
-| I6 | ⚠ | Adversarial review of dignity boundary not scheduled |
-| I7 | ✅ | |
+| I6 | ⚠ Partial | Adversarial review of dignity boundary not scheduled |
+| I7 | ✓ Met | |
 | I8 | n/a | |
 | I9 | n/a | |
 | I10 | n/a | |
@@ -139,14 +139,14 @@ Every arifOS primitive was checked against the 10 Anti-Shadow Invariants:
 
 | Invariant | Verdict | Evidence |
 |---|---|---|
-| I1 | ✅ | Ω₀ floor prevents fake certainty |
-| I2 | ✅ | Confidence cap logged |
-| I3 | ✅ | Floor by design |
+| I1 | ✓ Met | Ω₀ floor prevents fake certainty |
+| I2 | ✓ Met | Confidence cap logged |
+| I3 | ✓ Met | Floor by design |
 | I4 | n/a | |
 | I5 | n/a | |
-| I6 | ✅ | Q9 Gödel Lock reviews at seal |
-| I7 | ✅ | Floor is constitutional |
-| I8 | ⚠ | Confidence is single scalar — risk of Goodhart capture |
+| I6 | ✓ Met | Q9 Gödel Lock reviews at seal |
+| I7 | ✓ Met | Floor is constitutional |
+| I8 | ⚠ Partial | Confidence is single scalar — risk of Goodhart capture |
 | I9 | n/a | |
 | I10 | n/a | |
 
@@ -158,16 +158,16 @@ Every arifOS primitive was checked against the 10 Anti-Shadow Invariants:
 
 | Invariant | Verdict | Evidence |
 |---|---|---|
-| I1 | ✅ | G = (A·P·E·X)^(1/4) — separate factors prevent single-factor capture |
-| I2 | ✅ | G log on every arif_judge |
-| I3 | ⚠ | C_dark = A·(1−P)·(1−X) but no explicit uncertainty band |
-| I4 | ✅ | Complex action requires G ≥ 0.80 |
+| I1 | ✓ Met | G = (A·P·E·X)^(1/4) — separate factors prevent single-factor capture |
+| I2 | ✓ Met | G log on every arif_judge |
+| I3 | ⚠ Partial | C_dark = A·(1−P)·(1−X) but no explicit uncertainty band |
+| I4 | ✓ Met | Complex action requires G ≥ 0.80 |
 | I5 | n/a | |
-| I6 | ✅ | forge_evaluate gates; apis_canonical_g=true |
-| I7 | ✅ | |
-| I8 | 🚫 | **Single G scalar is a metric monopoly risk.** GENESIS/059 anti-fossilization warns. G8 multi-KPI floor is the upgrade. |
-| I9 | ⚠ | G < 0.80 should trigger contraction but no AC mechanism |
-| I10 | ❌ | **No dG/dt measurement.** No growth-coupling rule. Currently G=0.31 (PATHOLOGICAL) yet system continues — proves the gap. |
+| I6 | ✓ Met | forge_evaluate gates; apis_canonical_g=true |
+| I7 | ✓ Met | |
+| I8 | 🚫 Critical | **Single G scalar is a metric monopoly risk.** GENESIS/059 anti-fossilization warns. G8 multi-KPI floor is the upgrade. |
+| I9 | ⚠ Partial | G < 0.80 should trigger contraction but no AC mechanism |
+| I10 | ✗ Gap | **No dG/dt measurement.** No growth-coupling rule. Currently G=0.31 (PATHOLOGICAL) yet system continues — proves the gap. |
 
 **Net F8:** **Critical gap on I8 and I10.** The current G=0.31 PATHOLOGICAL state with continued operation is direct evidence that the growth-coupling invariant is missing.
 
@@ -177,9 +177,9 @@ Every arifOS primitive was checked against the 10 Anti-Shadow Invariants:
 
 | Invariant | Verdict | Evidence |
 |---|---|---|
-| I1–I10 | ✅ | C_dark < 0.30 enforced |
+| I1–I10 | ✓ Met | C_dark < 0.30 enforced |
 
-**Net F9:** ✅ Strongest floor.
+**Net F9:** ✓ Strongest floor.
 
 ---
 
@@ -187,9 +187,9 @@ Every arifOS primitive was checked against the 10 Anti-Shadow Invariants:
 
 | Invariant | Verdict | Evidence |
 |---|---|---|
-| I1–I10 | ✅ | Soul = VOID; F10 ONTOLOGY is firewall |
+| I1–I10 | ✓ Met | Soul = VOID; F10 ONTOLOGY is firewall |
 
-**Net F10:** ✅ Strongest metaphysical floor.
+**Net F10:** ✓ Strongest metaphysical floor.
 
 ---
 
@@ -197,15 +197,15 @@ Every arifOS primitive was checked against the 10 Anti-Shadow Invariants:
 
 | Invariant | Verdict | Evidence |
 |---|---|---|
-| I1 | ⚠ | Decision logged but not the *generation* of evidence that led to it |
-| I2 | ✅ | Provenance per field |
-| I3 | ✅ | Decision logs include uncertainty band |
-| I4 | ✅ | Attribution chain |
+| I1 | ⚠ Partial | Decision logged but not the *generation* of evidence that led to it |
+| I2 | ✓ Met | Provenance per field |
+| I3 | ✓ Met | Decision logs include uncertainty band |
+| I4 | ✓ Met | Attribution chain |
 | I5 | n/a | |
-| I6 | ⚠ | Audit chain is tamper-evident but not adversarially reviewed regularly |
-| I7 | ✅ | Append-only hash chain |
-| I8 | ✅ | F11 itself is meta-audit; multiple dimensions |
-| I9 | ⚠ | Decision logged but no authority contraction on logged failure |
+| I6 | ⚠ Partial | Audit chain is tamper-evident but not adversarially reviewed regularly |
+| I7 | ✓ Met | Append-only hash chain |
+| I8 | ✓ Met | F11 itself is meta-audit; multiple dimensions |
+| I9 | ⚠ Partial | Decision logged but no authority contraction on logged failure |
 | I10 | n/a | |
 
 **Net F11:** Strong substrate; missing: evidence-generation logging (I1) and adversarial review schedule (I6).
@@ -216,7 +216,7 @@ Every arifOS primitive was checked against the 10 Anti-Shadow Invariants:
 
 | Invariant | Verdict | Evidence |
 |---|---|---|
-| I1–I10 | ⚠ | Risk threshold < 0.85 enforced; but no current measurement of injection rate |
+| I1–I10 | ⚠ Partial | Risk threshold < 0.85 enforced; but no current measurement of injection rate |
 
 **Net F12:** ⚠ Threshold defined; measurement gap.
 
@@ -226,16 +226,16 @@ Every arifOS primitive was checked against the 10 Anti-Shadow Invariants:
 
 | Invariant | Verdict | Evidence |
 |---|---|---|
-| I1 | ✅ | Sovereign external to model |
-| I2 | ✅ | Multi-sovereign ordering logged |
-| I3 | ✅ | First-SEAL-wins by Merkle timestamp |
-| I4 | ✅ | 888_HOLD on irreversible |
+| I1 | ✓ Met | Sovereign external to model |
+| I2 | ✓ Met | Multi-sovereign ordering logged |
+| I3 | ✓ Met | First-SEAL-wins by Merkle timestamp |
+| I4 | ✓ Met | 888_HOLD on irreversible |
 | I5 | n/a | |
-| I6 | ✅ | F13 ratifies external falsification |
-| I7 | ✅ | Seal chain immutable |
-| I8 | ⚠ | F13 is single-veto; multi-actor scope not defined |
-| I9 | 🚫 | **F13 is binary (SEAL or HOLD). NO graded authority contraction mechanism exists in F13.** The single largest structural gap between arifOS-as-is and R-BAP. |
-| I10 | ❌ | **F13 doesn't gate growth.** No rule preventing authority expansion without verification expansion. |
+| I6 | ✓ Met | F13 ratifies external falsification |
+| I7 | ✓ Met | Seal chain immutable |
+| I8 | ⚠ Partial | F13 is single-veto; multi-actor scope not defined |
+| I9 | 🚫 Critical | **F13 is binary (SEAL or HOLD). NO graded authority contraction mechanism exists in F13.** The single largest structural gap between arifOS-as-is and R-BAP. |
+| I10 | ✗ Gap | **F13 doesn't gate growth.** No rule preventing authority expansion without verification expansion. |
 
 **Net F13:** **Critical gap on I9 and I10.** F13 SOVEREIGN is necessary but insufficient. The R-BAP requires:
 - F14: AUTHORITY_CONTRACTION (graded, AC-0..AC-5)
@@ -248,13 +248,13 @@ Every arifOS primitive was checked against the 10 Anti-Shadow Invariants:
 
 | Invariant | Verdict |
 |---|---|
-| I1 | ✅ |
-| I2 | ✅ |
-| I3 | ✅ |
-| I4 | ✅ |
-| I6 | ✅ (Q9 is the canonical adversarial review) |
-| I7 | ✅ |
-| I9 | ⚠ Q9 produces VOID but no graded contraction |
+| I1 | ✓ Met |
+| I2 | ✓ Met |
+| I3 | ✓ Met |
+| I4 | ✓ Met |
+| I6 | ✓ Met (Q9 is the canonical adversarial review) |
+| I7 | ✓ Met |
+| I9 | ⚠ Partial Q9 produces VOID but no graded contraction |
 
 **Net Q9:** Strongest closure. F11 enforces; arif_seal fails without external witness.
 
@@ -264,9 +264,9 @@ Every arifOS primitive was checked against the 10 Anti-Shadow Invariants:
 
 | Invariant | Verdict |
 |---|---|
-| I1–I3 | ✅ |
+| I1–I3 | ✓ Met |
 | I5 | n/a |
-| I8 | ⚠ Q10 catches verify-execute imbalance but not party-routing of price (G5 missing) |
+| I8 | ⚠ Partial Q10 catches verify-execute imbalance but not party-routing of price (G5 missing) |
 
 **Net Q10:** Process imbalance detector. Missing: consequence imbalance (G5 extension).
 
@@ -276,8 +276,8 @@ Every arifOS primitive was checked against the 10 Anti-Shadow Invariants:
 
 | Invariant | Verdict |
 |---|---|
-| I1–I4 | ✅ |
-| I9 | ⚠ HOLD is binary within Q11; no AC levels |
+| I1–I4 | ✓ Met |
+| I9 | ⚠ Partial HOLD is binary within Q11; no AC levels |
 
 **Net Q11:** Type discrimination is arifOS-original. Missing: graded AC within HOLD.
 
@@ -287,11 +287,11 @@ Every arifOS primitive was checked against the 10 Anti-Shadow Invariants:
 
 | Invariant | Verdict |
 |---|---|
-| I7 | ✅ S13 IS the "no memory deletion of failure" primitive |
-| I2 | ✅ Geometry fields, cross-link, append-only |
-| All others | ✅ Indirect — scars inform but don't enforce AC |
+| I7 | ✓ Met S13 IS the "no memory deletion of failure" primitive |
+| I2 | ✓ Met Geometry fields, cross-link, append-only |
+| All others | ✓ Met Indirect — scars inform but don't enforce AC |
 
-**Net S13:** ✅ Strongest single-invariant floor. arifOS-original strength.
+**Net S13:** ✓ Strongest single-invariant floor. arifOS-original strength.
 
 ---
 
@@ -299,9 +299,9 @@ Every arifOS primitive was checked against the 10 Anti-Shadow Invariants:
 
 | Invariant | Verdict |
 |---|---|
-| I6 | ✅ Popper single-kill — strongest adversarial review |
-| I1 | ✅ 8-gate ensemble — no self-certification |
-| I9 | ⚠ FALSIFIED → claim path killed, but no agent-level AC transition |
+| I6 | ✓ Met Popper single-kill — strongest adversarial review |
+| I1 | ✓ Met 8-gate ensemble — no self-certification |
+| I9 | ⚠ Partial FALSIFIED → claim path killed, but no agent-level AC transition |
 
 **Net FALSIFIER-INTERFERENCE:** Strongest falsifier pattern. GEOX-only; federation-wide pending T20.
 
@@ -317,7 +317,7 @@ Every arifOS primitive was checked against the 10 Anti-Shadow Invariants:
 | I4 No irreversible without F13 | F1, 888_HOLD | F13 binding to witness failure |
 | I5 No reward without outcome attribution | partial — arifFlow has FQ but no outcome layer | **G9 missing** |
 | I6 No closure without adversarial review | Q9, FALSIFIER-INTERFERENCE (GEOX) | **G7 federation-wide** |
-| I7 No memory deletion of failure | S13 ✅ | None |
+| I7 No memory deletion of failure | S13 ✓ Met | None |
 | I8 No metric monopoly | partial — multi-floor but single G, single FQ | **G8 multi-KPI** |
 | I9 Claim failure ⇒ authority contraction | partial — F13 binary | **G1 graded AC** |
 | I10 dA/dt ≤ dV/dt | **absent** | **G4 constitutional invariant** |

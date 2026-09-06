@@ -123,6 +123,11 @@ Always: `KVM8 (forge)` — forge is the machine; A-FORGE is the organ. Never con
 | Witness | Fifth coordinate — validates that closure happened at the right place and time. Scar exists when Witness was late. |
 | Closure Quality | Not "was the answer correct?" but "was the search stopped at the right moment?" First-class observable. |
 | Scar | Closure memory — stores the decision to stop, not the outcome of the world. Records judgment that did not happen. |
+| Consequence Binding | Kelemahan teras AI = ketiadaan tanggungan akibat. Consequence is scarcer than attention. Meaning density $\propto$ consequence density. |
+| Scar Gravity | Scars are semantic mass. Semantic Weight = Information $\times$ Scar Density. |
+| P-Dial Sieve | Possibility $\to$ Compression $\to$ Proposal $\to$ P-Dial $\to$ Commitment $\to$ Reality. |
+| Court-Workshop-Witness | Separation of Powers: Workshop (333) generates, Court (888) judges, Witness (VAULT999) attests, Sovereign (F13) commits. |
+| Governance Gap Theorem | System Value = Capability $\times$ Governance. $0 \text{ Gov} \times \infty \text{ Cap} = \text{Civilizational Risk}$. |
 
 ---
 
@@ -189,3 +194,5 @@ Symptom ≠ cause. One HOT can be OpenCode workload + LiteLLM traffic + Hermes p
 - Witness-Void & Promotion Governance: `/root/AAA/canon/WITNESS_VOID_CANON.md`
 - Governed Memory Engineering Spec: `/root/AAA/canon/MEMORY_ENGINEERING_SPEC_v1.md`
 - Paradox Coordinate Theory: `/root/AAA/canon/PARADOX_COORDINATE_THEORY.md`
+- Consequence-Bearing Reality Binding: `/root/AAA/canon/EUREKA-CONSEQUENCE-BINDING-2026-09-07.md`
+- Reality-Bound Authority Principle (R-BAP): `/root/AAA/canon/EUREKA-REALITY-BOUND-AUTHORITY-2026-09-07.md`
