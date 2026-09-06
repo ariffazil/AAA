@@ -204,6 +204,12 @@ components:
       status: healthy
       tools: 33
       surface_drift_ok: true
+    live_probe_2026_09_06:
+      status: healthy
+      tools: 26
+      runtime_path: /opt/geox
+      unit: geox-mcp.service
+      note: "33 was the 2026-07-30 snapshot. Live SOT is :8081/health tools_loaded."
     owned_domains:
       - earth
       - subsurface
