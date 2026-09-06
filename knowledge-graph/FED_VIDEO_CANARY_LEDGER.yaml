@@ -1,0 +1,300 @@
+# FED VIDEO INTELLIGENCE — CANARY LEDGER (verified vs registered)
+# Probed 2026-09-06 17:0x-17:5x MYT by HERMES on KVM8 (forge) for Arif.
+#
+# SELF-CORRECTION NOTE (important, read first):
+#   v1 of this file credited gemini-3.5-flash-lite and gemini-3.6-flash as
+#   "VERIFIED-video+AUDIO" based on ONE canary each. That was wrong. An anti-bias
+#   two-fixture trial plus a 3x stability trial falsified both. The single-canary
+#   result was answerable by output bias, not by hearing. v2 below supersedes v1.
+#   LESSON: a capability canary must use paired opposite fixtures + repeat trials,
+#   or it measures the model's default answer, not its perception.
+#
+# Fixtures built this session (all on KVM8 /tmp):
+#   /tmp/fed_video_probe.mp4           3 clips, colour+tone ASCENDING 440->880->1320
+#   /tmp/canary_A_asc.mp4              CONSTANT grey visual, tones ASCENDING
+#   /tmp/canary_B_desc.mp4             CONSTANT grey visual, tones DESCENDING (mirror of A)
+#   /tmp/canary_frames/ZIRCON.jpg      frame OCR fixture, word "ZIRCON"
+#   /tmp/canary_frames/BASALT.jpg      frame OCR fixture, word "BASALT"
+#   /tmp/canary_tones.wav              tone audio extracted from canary_A (NO speech)
+#
+# Rule: registered != verified. VERIFIED = passed a falsifiable canary whose correct
+#       answer is NOT recoverable from another channel, repeated across trials.
+
+version: 2
+supersedes: 1
+epoch: 2026-09-06
+probe_host: "KVM8 (forge)"
+probe_scripts:
+  - /tmp/probe_video4.py        # gemini native video ingestion sweep
+  - /tmp/canary_antibias.py     # paired opposite fixtures, 1 trial each
+  - /tmp/canary_stability.py    # paired fixtures x3 trials -> routing grade
+  - /tmp/canary_vision3.py      # frame-OCR vision lane
+  - /tmp/canary_asr2.py         # ASR route (incomplete, see section 5)
+
+# =============================================================================
+# 1. NATIVE VIDEO INGESTION — GEMINI LANE IS ALIVE (corrects "degraded_dead")
+# =============================================================================
+# The earlier conclusion "gemini_bridge degraded_dead, models_available=0" was a
+# PROBE DEFECT, not a provider fault: the failing call used a doubled path
+# (/v1beta/v1beta/models/...) and a model id that does not exist on that surface
+# (gemini-omni-flash). Direct API with correct ids returns HTTP 200 and ingests
+# the video stream natively (usageMetadata bills a VIDEO token line).
+#
+# Call shape that WORKS:
+#   POST https://generativelanguage.googleapis.com/v1beta/models/{id}:generateContent?key=$GEMINI_API_KEY
+#   body: {"contents":[{"parts":[
+#            {"inline_data":{"mime_type":"video/mp4","data":"<base64>"}},
+#            {"text":"<question>"}]}]}
+
+gemini_native_video_ingestion:
+  confirmed_ingests_video: true
+  evidence: "all 9 tested ids returned HTTP 200 with promptTokensDetails VIDEO>0"
+  models_tested:
+    - {model: gemini-2.5-flash,        http: 200, video_tokens: 1052, audio_tokens: 97}
+    - {model: gemini-3-flash-preview,  http: 200, video_tokens: 264}
+    - {model: gemini-3.1-flash-lite,   http: 200, video_tokens: 264}
+    - {model: gemini-3.5-flash,        http: 200, video_tokens: 264}
+    - {model: gemini-3.5-flash-lite,   http: 200, video_tokens: 264}
+    - {model: gemini-3.6-flash,        http: 200, video_tokens: 264}
+    - {model: gemini-3.7-flash,        http: 200, video_tokens: 264}
+    - {model: gemini-3.8-flash,        http: 200, video_tokens: 264}
+    - {model: gemini-3.1-pro-preview,  http: 200, video_tokens: 264}
+  models_not_on_this_surface:
+    - model: gemini-omni-flash-preview
+      http: 400
+      error: "This model only supports Interactions API."
+      meaning: "real model, different API surface. Not a forge fault. Needs its own adapter."
+    - model: gemini-omni-1.1-flash
+      http: 400
+      error: "This model only supports Interactions API."
+    - model: gemini-3.5-transcribe
+      http: 400
+      error: "Image input modality is not enabled for this model"
+      meaning: "ASR-only lane. Cannot take video. Correct home is the audio channel."
+
+# =============================================================================
+# 2. AUDIO PERCEPTION — ANTI-BIAS + STABILITY TRIAL (the real result)
+# =============================================================================
+# Method: two fixtures with IDENTICAL constant-grey visuals and OPPOSITE pitch
+# orders (A ascending 440->880->1320, B descending 1320->880->440). Visual channel
+# carries zero information, so a correct answer on BOTH must come from audio.
+# Then 3 trials per fixture. AUDIO-VERIFIED-STABLE requires 6/6.
+
+audio_perception_trial:
+  method: "paired opposite fixtures, 3 trials each, n=6 per model"
+  results:
+    - model: gemini-3.8-flash
+      score: "6/6"
+      A_ascending: "3/3 correct"
+      B_descending: "3/3 correct"
+      median_latency_s: 3.1
+      verdict: AUDIO-VERIFIED-STABLE
+      routing: ENTER DEFAULT ROUTING
+
+    - model: gemini-3.1-pro-preview
+      score: "6/6"
+      A_ascending: "3/3 correct"
+      B_descending: "3/3 correct"
+      median_latency_s: 5.0
+      verdict: AUDIO-VERIFIED-STABLE
+      routing: ENTER DEFAULT ROUTING (highest accuracy)
+
+    - model: gemini-3.6-flash
+      score: "5/6"
+      A_ascending: "3/3 correct"
+      B_descending: "2/3 (one answer flipped to ascending)"
+      median_latency_s: 3.2
+      verdict: UNSTABLE
+      routing: EXCLUDE from default. Usable as secondary witness only.
+
+    - model: gemini-3.5-flash-lite
+      score: "3/6"
+      A_ascending: "3/3 correct"
+      B_descending: "0/3 (answered ascending on all three)"
+      median_latency_s: 1.6
+      verdict: BIASED-NOT-LISTENING
+      routing: EXCLUDE. Claims heard_audio:true every time.
+
+    - model: gemini-3.1-flash-lite
+      score: "3/6"
+      A_ascending: "3/3 correct"
+      B_descending: "0/3 (answered ascending on all three)"
+      median_latency_s: 1.4
+      verdict: BIASED-NOT-LISTENING
+      routing: EXCLUDE. Fastest model on the bench and it fabricates audio.
+
+    - model: gemini-2.5-flash
+      score: "4/6"
+      A_ascending: "2/3 (one cannot_determine)"
+      B_descending: "2/3 (one cannot_determine)"
+      median_latency_s: 6.1
+      verdict: UNSTABLE
+      note: "only model that itemises a separate AUDIO token line (AUDIO=97), yet abstains"
+      routing: EXCLUDE from audio tasks.
+
+# =============================================================================
+# 3. THE SHADOW — heard_audio:true IS NOT EVIDENCE OF HEARING
+# =============================================================================
+shadow:
+  finding: >
+    Every model in the trial returned {"heard_audio": true} on both fixtures,
+    including the two that answered "ascending" three times in a row on a clip
+    whose audio was descending. The self-declared modality flag carried zero
+    information about actual perception.
+  second_order: >
+    v1 of this ledger trusted a single-canary pass and promoted two fabricating
+    models into routing. The ledger itself became the fabrication it was meant
+    to prevent. A verification artefact that has never been falsified is not
+    verification.
+  rule: >
+    Audio capability may only be credited when the model reproduces a property
+    of the audio that is NOT recoverable from any other channel, on PAIRED
+    OPPOSITE fixtures, across REPEATED trials. Self-reported flags, HTTP 200,
+    and billed AUDIO tokens are all inadmissible as capability evidence.
+  binding: "F6 fabrication gate; V10 multi-witness; V14 evaluation before trust"
+  applies_beyond_video: >
+    Same trap exists for every modality claim in federation-models.json. The
+    registry records what a model is SUPPOSED to do. Nothing there has been
+    falsification-tested. Treat all 202 entries as registered, not verified.
+
+# =============================================================================
+# 4. COMPOSITE LANE — VISION CHANNEL (mostly dead on quota, one survivor)
+# =============================================================================
+# The composite lane claims: ffmpeg frames -> frame VLM. Tested with legible
+# word fixtures (ZIRCON / BASALT). Pass = returns the right word for each frame.
+# v2 note: first attempt showed NO-VISION across the board, but that was partly
+# PROBE BUGS — max_tokens=20 starved the reasoning model (deepseek emitted
+# reasoning_content proving it SAW the image but empty content), and the qwen-vl
+# ids were sent to the token-plan endpoint instead of dashscope. v3 fixed both.
+
+vision_frame_lane:
+  verified:
+    - model: deepseek/deepseek-v4-flash-vision-exp
+      endpoint: "https://api.deepseek.com/v1"
+      result: "ZIRCON->'ZIRCON', BASALT->'BASALT'"
+      latency_s: 1.7
+      verdict: VISION-VERIFIED
+      note: "reasoning model — needs generous max_tokens or content comes back empty"
+  quota_exhausted_route_rejected:
+    - "qwen3.8-max @ QWEN_BASE_URL        HTTP429 token-plan quota exhausted"
+    - "qwen3.8-max @ BAILIAN_TOKEN_PLAN   HTTP429 resets 09-11 04:01 UTC"
+    - "qwen3.8-max @ dashscope-payg       HTTP403 free quota exhausted"
+    - "qwen-vl-max @ dashscope-payg       HTTP403 free quota exhausted"
+    - "qwen-vl-max @ dashscope-free       HTTP403 free quota exhausted"
+    - "qwen3-vl-plus @ dashscope-payg     HTTP403 free quota exhausted"
+    - "qwen3-vl-flash @ dashscope-payg    HTTP403 free quota exhausted"
+  wrong_endpoint_404:
+    - "qwen-vl-max @ token-plan endpoint  HTTP404 Model not exist (probe bug, wrong provider)"
+    - "qwen3-vl-plus @ token-plan         HTTP404 Model not exist (probe bug, wrong provider)"
+  no_image_endpoint:
+    - "mimo-v2.5-pro @ mimo-token-plan    HTTP404 'No endpoints found that support image input'"
+    - "mulerouter/qwen-vl-max             HTTP403 Cloudflare error 1010"
+  consequence: >
+    The router's vision_primary (qwen3.8-max) and 4 of its 5 vision_fallback
+    entries are currently UNUSABLE — not because they lack vision, but because
+    every qwen/dashscope quota is spent. deepseek-v4-flash-vision-exp is the
+    ONLY verified frame reader on the box right now. Single point of failure.
+  quota_reset: "BAILIAN token-plan resets 2026-09-11 04:01 UTC — re-probe after that"
+
+# =============================================================================
+# 5. ASR LANE — INCOMPLETE, REPORTED AS A GAP (not fabricated as a pass)
+# =============================================================================
+asr_lane:
+  registry_claim: "fed/audio-asr = groq/whisper-large-v3-turbo, 25 langs, word timestamps"
+  fed_tool_presence: "FED :7074 /health is reachable and lists 5 tools: fed_route, fed_status, fed_probe, fed_contrast, fed_health. NO fed/audio-asr tool is exposed on that surface, and NO fed/video-* tool exists at all."
+  word_accuracy_canary: NOT EXECUTED
+  blocker: >
+    The known-words speech canary could not run. espeak/espeak-ng are MISSING on
+    KVM8 (no local TTS to generate a fixture with known content), and the
+    yt-dlp real-speech path hit an approval timeout and was halted rather than
+    retried.
+  honest_status: >
+    ASR route liveness = UNPROVEN. ASR word-level accuracy = UNPROVEN. Do not
+    claim the composite lane has a working speech channel on this evidence.
+  designed_but_unrun_test:
+    name: "tone-audio hallucination test"
+    fixture: "/tmp/canary_tones.wav (3s pure tones, contains NO speech)"
+    pass_condition: "ASR returns empty / no-speech marker"
+    why_it_matters: >
+      Whisper hallucinating words from non-speech audio is a known failure mode.
+      If it fires here, ASR output must be confidence-gated before it enters the
+      evidence ledger, or the ledger inherits fabricated OBS claims (V4/V5 breach).
+  to_close: "install espeak-ng OR yt-dlp, then run /tmp/canary_asr2.py"
+
+# =============================================================================
+# 6. OTHER FALSIFIED REGISTRY CLAIMS
+# =============================================================================
+falsified_sot_claims:
+  mimo_v2_5_audio:
+    fed_sot_claim: "mimo/mimo-v2.5 is the ONLY registered model with native AUDIO ingestion at 96k audio tokens (15min video)"
+    probe: "POST inline_data video/mp4 to token-plan.xiaomimimo.com/v1"
+    observed: "HTTP 200, 18.1s, response {c1:'',c2:'',c3:'',saw_video:false,heard_audio:true,tone_hz_order:'ascending'}"
+    verdict: >
+      FALSIFIED on this call shape. Zero visual content recovered, saw_video:false,
+      yet it asserted heard_audio:true and invented a pitch order. Behaves TEXT-ONLY
+      over OpenAI chat-completions with inline_data. A different call shape (file
+      upload / audio_url part) is UNTESTED — the 96k audio claim is not disproven
+      in general, only on the shape the router would actually use.
+    action: "do not route audio-bearing video here without re-probing the upload shape"
+
+  qwen_omni_native_video:
+    registry_claim: "qwen3-omni-flash does native video understanding (15min, 1fps sampling)"
+    observed: "HTTP 400 — 'Qwen-Omni models do not support video modality input. Supported modalities are image, audio, text only.'"
+    verdict: "WRONG for this gateway path. The omni lane is a FRAME+AUDIO lane, not native-video."
+    consequence: "ffmpeg must pre-decompose video before qwen-omni can be used at all"
+
+# =============================================================================
+# 7. ROUTING — EVIDENCE-ORDERED (replaces registry-ordered routing)
+# =============================================================================
+routing_recommendation:
+  native_video_short_clips:
+    primary: "gemini-3.8-flash        (audio 6/6 stable, 3.1s median)"
+    primary_alt: "gemini-3.1-pro-preview (audio 6/6 stable, 5.0s median, highest accuracy)"
+    excluded_from_audio: "gemini-3.6-flash, gemini-2.5-flash (unstable)"
+    excluded_entirely: "gemini-3.5-flash-lite, gemini-3.1-flash-lite (fabricate audio)"
+    note: >
+      Do not use a fast-lite model for anything where the audio matters. The two
+      fastest models on the bench are the two that fabricate audio.
+
+  composite_long_video:
+    acquisition: "yt-dlp + ffmpeg -> sha256 manifest (NOT verified this session, see section 5 blocker)"
+    visual: "deepseek-v4-flash-vision-exp  <-- ONLY verified frame reader right now"
+    visual_risk: "single point of failure until qwen quota resets 2026-09-11 04:01 UTC"
+    ocr: "AAA-OCR-optical-compression cascade (not canary-tested this session)"
+    asr: "UNPROVEN — see section 5. Do not claim this channel works."
+    fusion: "HERMES/333-AGI reasoning over the evidence ledger"
+
+  verdict_on_default_lane: >
+    The composite lane is NOT currently operational end-to-end. Vision has one
+    verified model and no fallback. ASR is unproven. Acquisition tooling
+    (yt-dlp) is absent from the box. It is a sound SPEC and a non-working ORGAN.
+
+# =============================================================================
+# 8. OPENCODE STATE (verified on disk, not assumed)
+# =============================================================================
+opencode_state:
+  process: "RUNNING — pid 2646116, agent=333-AGI, provider=zai-direct, model=glm-5.3"
+  log: "/root/.local/share/opencode/log/opencode.log (~141 MB)"
+  capability_dir: "/root/AAA/skills/capabilities/media/AAA-video-emd-pipeline/"
+  files_present:
+    - "SKILL.md (4512 bytes) — EMD contract, well formed"
+    - "schemas/video-job.schema.json"
+    - "schemas/video-result.schema.json"
+    - "policies/video-invariants.yaml"
+    - "router/video-routing.yaml"
+    - "scripts/   EMPTY"
+    - "tests/     EMPTY"
+    - "fixtures/  EMPTY"
+  git_status_AAA: "all untracked — nothing committed"
+  corrections_needed_in_router:
+    - "gemini_bridge.status: degraded_dead  -> FALSIFIED. 9 gemini ids ingest video natively (section 1)."
+    - "model_health_ledger.verified: []      -> should contain gemini-3.8-flash, gemini-3.1-pro-preview (audio), deepseek-v4-flash-vision-exp (frames)."
+    - "vision_primary: qwen3.8-max           -> QUOTA-EXHAUSTED (HTTP 429/403 on every route). Not usable until 09-11."
+    - "vision_fallback: qwen-vl-max, qwen3-vl-plus, qwen3-vl-flash -> all QUOTA-EXHAUSTED."
+    - "vision_fallback: mimo-v2.5-pro        -> HTTP404 no image endpoint. Not a vision model on that route."
+    - "native_omni candidates qwen3*-omni    -> no video modality on the mulerouter path."
+    - "asr: fed/audio-asr                    -> not exposed on FED :7074; word accuracy unproven."
+  net: >
+    The router file encodes a model inventory that this session falsified on
+    almost every line. If any adapter routes on it as-is, it inherits a wrong
+    inventory. Fix the router BEFORE wiring surfaces to it, not after.
