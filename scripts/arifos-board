@@ -130,7 +130,7 @@ def _here_line(kvm: str) -> str:
         return f"HERE    LiteLLM:{llm}  OpenClaw:{claw}  ·  inference only · not the judge"
     if kvm == "KVM2":
         fork = EMOJI[_lamp("127.0.0.1", 8080, "/health")]
-        return f"HERE    Azwa fork :8080 {fork}  ·  WITNESS not judge · Hermes Telegram is KVM8 only"
+        return f"HERE    Wawa @Azwafazil_bot · fork :8080 {fork} · Azwa Telegram · not Hermes"
     return "HERE    unmapped node · HOLD"
 
 
