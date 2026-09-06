@@ -201,6 +201,26 @@ Do not identity-lock any of this onto Arif as a type. C13. Corrigible. Expiring.
 
 ---
 
+## 15. Geology × Economics × Anthropology — scarce pattern, not a new organ
+
+**CLAIM as energy-landscape, not as destiny.** Models and code are cheap (Jevons on tokens). Attention, judgment, and institution-design are the scarce flow. A person who only builds engines is abundant. A person who can say whether the engine should exist, where, for whom, and whether humans/institutions will hold it, is scarce. That is not “automatically more valuable than an AI expert.” It is higher leverage **when the binding constraint has already shifted** from algorithm to adoption.
+
+This stack already *is* that combination. Do not mint a fourth organ.
+
+| Question | Domain | Federation home |
+|---|---|---|
+| What is physically true? | Geology | GEOX (incomplete evidence, sparse wells, uncertainty, expensive decisions) |
+| What creates value / who pays? | Economics | WEALTH (computes; does not authorize) |
+| What humans/institutions will accept? | Anthropology | human-meaning-membrane + WELL (trust, ritual, extraction, C13) |
+| What can be built? | Computer science | A-FORGE (execution after governance) |
+| Who connects and vetoes? | Sovereign | F13 Arif — the scarce pattern, not a job title |
+
+**Session proof (OBS):** `/vitals/` mixed citizen + investor + auditor into one scroll, then ran FY2025 RM32B next to 1H2026 RM8B paid. CS built the wall. Geology would timestamp the frames. Economics would pick one `as_of`. Anthropology would put one status word first. That failure is the scarcity thesis, live.
+
+**Grade:** INTERPRET. Not a 2nd-law theorem. Not a salary forecast. PLAUSIBLE as post-automation attention economics (this federation’s own attention-graph law). C13: the combination is a *process* Arif runs, not an identity lock.
+
+---
+
 ## SHADOW
 
 - Workflow Partial: several monographs unread in full (Glansdorff–Prigogine 1971; *Order Out of Chaos*; Anderson & Stein 1987).
