@@ -217,3 +217,52 @@ Do not seal before enough.
 Complete canon-locked proposal: `/root/AAA/canon/APEX_CLOSURE_DOCTRINE_PROPOSAL.md`
 Eureka entry: `EUR-2026-09-04-P-DIAL-CLOSURE` in `eureka-entries.jsonl`
 F13 ratification required for doctrine activation.
+
+## EUREKA: Attention Graph + Identity Layer (2026-09-06)
+
+**Session:** SEAL-ebcfac0455d24dba
+**Actor:** Arif (F13 SOVEREIGN) → 333-AGI (synthesis)
+**Classification:** INT → DER (after doctrine seal)
+
+### The Eureka
+
+Three graphs govern every intelligence system:
+1. **Capability Graph** — "What can be done?" (alive)
+2. **Governance Graph** — "What should be done?" (maturing)
+3. **Attention Graph** — "What deserves consciousness first?" (frontier)
+
+### The Identity Layer Extension (Arif's contribution)
+
+After 333-AGI drafted the Attention Graph with Meaning Layer, Arif identified a deeper node:
+
+> Two humans can see the same signal. Assign the same meaning. But act differently.
+> Because identity.
+
+Example: Child crying.
+- Doctor → medical need
+- Father → paternal urgency
+- Police → legal context
+- Teacher → student welfare
+
+Same attention. Same meaning. Different identity → different action.
+
+### Extended Pipeline
+
+```
+Value → Attention (Costed) → Meaning (Sovereign) → Identity (Personal) → Intent → Action → Witness
+```
+
+Meaning + Identity = the sovereign boundary. Both are irreducibly human.
+
+### Attention Debt (future metric)
+
+```
+ACSC = Minutes of Sovereign Attention per Sealed Reality Change
+```
+
+The ultimate measure: how little of Arif's life the system needs to do its work.
+
+### Artifact
+
+`/root/AAA/instructions/attention-graph.md` — 410 lines, 16 sections
+Sealed to VAULT999: receipt 13748794-6fbb-43bd-a309-be88b0f65be1
