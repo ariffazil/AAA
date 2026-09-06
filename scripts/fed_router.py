@@ -239,9 +239,76 @@ async def fed_health(_request):
             "mcp": "/mcp",
             "class": "route_advisor",
             "ceiling": "never judges, never hard-blocks",
-            "tools": ["fed_route", "fed_status", "fed_probe", "fed_contrast", "fed_health"],
+            "tools": ["fed_route", "fed_classify", "fed_status", "fed_probe", "fed_contrast", "fed_health", "fed_report_latency"],
         }
     )
+
+
+@mcp.custom_route("/report", methods=["POST"])
+async def fed_report_http(_request):
+    """HTTP telemetry ingress (Phase 0 fix #3, 2026-09-07).
+
+    fed_report_latency existed but had ZERO callers — the telemetry loop was
+    never closed (max sample_count = 6, NO_TELEMETRY demotion everywhere).
+    This endpoint lets non-MCP callers (fed-aware middleware :4010, harness
+    post-call hooks, cron probes) report latency with a plain POST:
+
+        curl -X POST :7074/report -d '{"provider":"deepseek",
+             "model":"deepseek-v4-pro","latency_ms":740,"status_code":200}'
+
+    Same logic as the fed_report_latency MCP tool. ADVISORY data only.
+    """
+    from starlette.responses import JSONResponse
+
+    try:
+        body = await _request.json()
+        result = fed_report_latency(
+            provider=str(body["provider"]),
+            model=str(body["model"]),
+            latency_ms=float(body["latency_ms"]),
+            status_code=int(body.get("status_code", 200)),
+            tokens_in=int(body.get("tokens_in", 0)),
+            tokens_out=int(body.get("tokens_out", 0)),
+            agent_id=str(body.get("agent_id", "http")),
+            hcsvog_fingerprint=str(body.get("hcsvog_fingerprint", "")),
+        )
+        return JSONResponse(result)
+    except KeyError as e:
+        return JSONResponse({"recorded": False, "error": f"missing field {e}"}, status_code=400)
+    except Exception as e:  # noqa: BLE001 — ingress must not crash the router
+        return JSONResponse({"recorded": False, "error": str(e)}, status_code=400)
+
+
+@mcp.custom_route("/route", methods=["POST"])
+async def fed_route_http(_request):
+    """Plain-JSON advisory routing endpoint (FED v3.3, 2026-09-07).
+
+    Restores the middleware→FED direct path: fed_aware_middleware.py :4010
+    POSTed to /fed/route which never existed (HTTP 404 — every capability
+    resolution attempt died). Same engine as the fed_route MCP tool.
+    ADVISORY_ONLY — data, never verdicts.
+    """
+    from starlette.responses import JSONResponse
+
+    try:
+        body = await _request.json()
+        routes = fed_route_engine(
+            task=str(body.get("task", "")),
+            model=str(body.get("model", "deepseek-v4-pro")),
+            modality=str(body.get("modality", "text")),
+            agent_id=str(body.get("agent_id", "http")),
+            constitutional_tier=int(body.get("constitutional_tier", 333)),
+            effort_level=str(body.get("effort_level", "") or ""),
+        )
+        return JSONResponse(
+            {
+                "routes": routes,
+                "advisory": "ADVISORY_ONLY — execute in rank order; on failure cascade; never retry same provider twice.",
+            }
+        )
+    except Exception as e:  # noqa: BLE001 — ingress must not crash the router
+        return JSONResponse({"error": str(e)}, status_code=400)
+
 
 # ── DB helpers (READ-ONLY for balances) ──────────────────────────────────
 # Zen 3.2: All SQLite connections wrapped in `with` for deterministic teardown.
@@ -394,6 +461,68 @@ def get_capability_meta(capability: str) -> dict | None:
     return CAPABILITY_SIGNATURES.get(capability)
 
 
+# ── Capability Classifier v1 (Zen Card 2026-09-07 · Phase 0 fix #4) ───────
+# BenchDrift (SEALED): "FED routes by live latency + TASK FITNESS." Until now
+# the `task` param was decorative (dead JIT stub). This classifier makes it
+# load-bearing. Deterministic, identity-blind — answers ONE question:
+# "capability apa diperlukan?" Identity stays prompt-side (SOUL_STAMP/cards);
+# FED never reads identity content (separation of powers, FED spec v0.2–v0.4).
+CAPABILITY_CLASS_PATTERNS = {
+    "vision": [
+        "gambar", "gmbr", "foto", "photo", "image", "screenshot", "screen shot",
+        "lukis", "visual", "ocr", "scan ", "camera", "render",
+    ],
+    "coding": [
+        "debug", "python", "javascript", "typescript", "code", "kod", "coding",
+        "stack trace", "traceback", "compile", "refactor", "unit test", "sql",
+        "git ", "regex", "api endpoint",
+    ],
+    "long_context": [
+        "summarize", "rumusan", "ringkas", "long document", "pages", "halaman",
+        "pdf", "transcript", "whole file", "entire log", "long thread", "200 page",
+    ],
+    "reasoning": [
+        "assignment", "tugasan", "homework", "explain", "terangkan", "analyze",
+        "analisis", "essay", "compare", "argument", "derive", "prove", "study",
+        "belajar", "exam", "kuiz", "why does", "evaluate", "implication",
+    ],
+    "action": [
+        "search", "cari ", "google", "browse", "run ", "execute", "fetch",
+        "scrape", "deploy", "restart", "cron", "send message", "book ",
+    ],
+}
+CAPABILITY_CLASS_SIGNATURE = {
+    "vision": "fed-multimodal-vision",
+    "coding": "fed-coding",
+    "long_context": "fed-long-context",
+    "reasoning": "fed-reasoning-heavy",
+    "action": "fed-agent-subagent",
+    "conversation": "fed-conversational",
+}
+
+
+def classify_capability(task: str) -> dict:
+    """Deterministic capability classifier.
+
+    Returns {capability, signature, confidence, matched} — data, never verdicts.
+    Auto-apply threshold in fed_route is 0.90 (≥2 term hits); single generic
+    hits stay advisory only (prevents 'error'/'search' false reroutes).
+    """
+    text = f" {task.lower()} "
+    best, best_hits, best_terms = "conversation", 0, []
+    for _cls, _terms in CAPABILITY_CLASS_PATTERNS.items():
+        _hits = [t for t in _terms if t in text]
+        if len(_hits) > best_hits:
+            best, best_hits, best_terms = _cls, len(_hits), _hits
+    confidence = min(0.99, 0.60 + 0.15 * best_hits) if best_hits else 0.50
+    return {
+        "capability": best,
+        "signature": CAPABILITY_CLASS_SIGNATURE[best],
+        "confidence": round(confidence, 2),
+        "matched": best_terms,
+    }
+
+
 # ── Routing tables ───────────────────────────────────────────────────────
 # Model → [route] mapping. Priority: direct > gateway_clean > gateway_shadowed.
 # Fed from AGENT_MODEL_MAP.json fed_routes + provider registry.
@@ -502,11 +631,23 @@ def fed_route_engine(
         bal = read_provider_balance(provider_id)
 
         # ── Step 1: FILTER dead providers ────────────────────────────
-        if bal and bal.get("notes") and "DEAD" in str(bal["notes"]).upper():
+        # FI-008 2026-09-07 corpse-route fix: notes carry richer truth than the
+        # health table (probes historically wrote notes only). Honor hard markers.
+        _notes_u = str(bal.get("notes") or "").upper() if bal else ""
+        if any(_m in _notes_u for _m in ("DEAD", "DO NOT ROUTE", "DRAINED")):
             continue
 
         # ── Step 2: HEALTH GATE (Zen: LiteLLM cooldown pattern) ─────
         health = read_route_health(provider_id, route_model)
+        # FI-008 2026-09-07 corpse-route fix: probes record status on the generic
+        # 'probe' model row; the engine looked up per-model rows only, so a
+        # provider killed by a probe (429 quota / 401 drained) kept rendering
+        # LIVE and got ranked (witnessed: qwen-token-plan-team rank #2 while
+        # notes said quota EXHAUSTED). Fall back to the provider-level probe row.
+        if not health:
+            _probe_health = read_route_health(provider_id, "probe")
+            if _probe_health:
+                health = _probe_health
         health_status = health["status"] if health else "LIVE"
         health_flag = None
 
@@ -716,6 +857,26 @@ def fed_route(
         { routes: [...], meta: { query_time_ms, effort_applied, ... } }
     """
     t0 = time.time()
+
+    # ── Capability Classifier v1 (2026-09-07, Phase 0 fix #4) ─────────
+    # `task` graduates from decorative to load-bearing (BenchDrift SEALED:
+    # "live latency + TASK FITNESS"). Deterministic, identity-blind.
+    # Auto-apply only at confidence ≥ 0.90 (≥2 term hits) and only when the
+    # caller did NOT explicitly choose a signature or effort level — explicit
+    # caller intent always wins; classification is advisory beneath it.
+    classification = classify_capability(task) if task else None
+    if (
+        classification
+        and (
+            classification["confidence"] >= 0.90
+            or (classification["capability"] == "vision" and classification["confidence"] >= 0.75)
+        )
+        and not model.startswith("fed-")
+        and not effort_level
+    ):
+        model = classification["signature"]
+        if classification["capability"] == "vision" and modality == "text":
+            modality = "vision"
 
     # Resolve capability signature for metadata
     cap_meta = get_capability_meta(model) if model.startswith("fed-") else None
@@ -946,10 +1107,27 @@ def fed_health() -> dict:
     return {
         "status": "LIVE",
         "port": FED_PORT,
-        "version": "3.2.0-zen-optimized",
+        "version": "3.3.0-zen-classifier",
         "tables": [t["name"] for t in tables],
         "state_db": str(FED_STATE_DB),
     }
+
+
+# ── Capability Classifier verb (Zen Card 2026-09-07) ──────────────────────
+@mcp.tool()
+def fed_classify(task: str) -> dict:
+    """Classify a message into a capability lane. Deterministic, identity-blind.
+
+    Answers ONE question: "capability apa diperlukan oleh mesej ini?"
+    Never identity, never emotion, never philosophy — those live prompt-side.
+
+    Args:
+        task: The message/task text to classify.
+
+    Returns:
+        { capability, signature, confidence, matched } — data, never verdicts.
+    """
+    return classify_capability(task)
 
 
 # ── Latency telemetry ────────────────────────────────────────────────────
@@ -1061,10 +1239,11 @@ def fed_report_latency(
 # ── Main ─────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     os.environ["FASTMCP_PORT"] = str(FED_PORT)
-    print(f"🔀 FED Router v3.2 (Zen-Optimized) starting on :{FED_PORT}")
+    print(f"🔀 FED Router v3.3 (Zen-Optimized + Capability Classifier) starting on :{FED_PORT}")
     print(f"   State DB: {FED_STATE_DB}")
     print(f"   Invariants: state-isolation, constitutional-hard-gate, dual-track-bypass")
-    print(f"   Capabilities: fed-reasoning-heavy, fed-multimodal-vision, fed-long-context, fed-agent-subagent, fed-realtime-voice")
+    print(f"   Capabilities: fed-reasoning-heavy, fed-multimodal-vision, fed-long-context, fed-agent-subagent, fed-realtime-voice, fed-conversational, fed-coding")
+    print(f"   v3.3 changes: task→capability classifier (BenchDrift), probe-row health fallback (corpse fix), fed_classify verb, /report telemetry ingress, notes hard-marker filter")
     print(f"   Zen Changes: DRY pricing, with(DB), RankGate matrix, ThreadPoolExecutor, SIGTERM guard")
     print(f"   Tools: fed_route, fed_status, fed_probe, fed_contrast, fed_health")
     mcp.run(transport="streamable-http", host="0.0.0.0", port=FED_PORT, uvicorn_config={"ws": "websockets"})

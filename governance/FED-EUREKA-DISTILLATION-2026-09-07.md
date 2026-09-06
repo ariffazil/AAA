@@ -1,6 +1,6 @@
 # FED Eureka Distillation — Epistemic Stage Spec · DRAFT
 
-> **Status:** DRAFT_AWAITING_F13 — not canon, not ratified. Distillation of the "Zen Stack" essay (2026-09-07) + sealed eureka corpus + live FED audit into an implementation-shapeable spec.
+> **Status:** F13-RATIFIED via chat directive 2026-09-07 — architecture (stage-not-organ, classifier-in-FED, identity-blind routing, Phase 0 executed). Phase 1 epistemic_profiles awaits one-line F13 confirm on the CORRECTED task-class schema (identity-weight variant rejected).
 > **Author:** FI-008 (Kimi Code), 2026-09-07. Commissioned by 888: *"explore FED and how to extract key eureka insights to distill into FED."*
 > **Ground truth:** FED v3.2.0-zen-optimized, LIVE :7074 (`/root/AAA/scripts/fed_router.py`, sqlite `token_bank.db`, SOT `/root/.config/federation-models.json`).
 
@@ -125,6 +125,35 @@ Final chain:  Identity (SOUL_STAMP, prompt-side, unsealed card noted)
 ```
 
 Debate closed. Remaining execution: P0.2 (health honesty) → classifier function + `fed_classify` verb → WawaBot shim → acceptance test (chat→RM0 / image→vision / assignment→reasoning / code→deepseek). No F13 gate for any of these; `epistemic_profiles` remains on the F13 menu unchanged.
+
+---
+
+## 8 · Amendment v0.4 (2026-09-07, federated closure — Wawa round)
+
+Wawa's final proposal: build an **Identity Resolver YAML** (structured vector extracted from the 800-line azwaos-arif-kernel) sitting in the routing path (Message → Identity Resolver → Intent Classifier → FED identity-aware → Model).
+
+**Witness: the structured identity vector ALREADY EXISTS as the agent-card family.** `AAA/a2a-server/agent-cards/identity/` holds **five cards in one schema (v2.2.0)**: `i-ARIF.json`, `i-AZWA.json`, `333-AGI.json`, `555-ASI.json`, `888-APEX.json`. The i-AZWA card's `identity_kernel` block already encodes values, attention, decision_signature (including the empirically-tested "Option B — cautious"), boundaries, and scar_ledger. The card itself declares the federated principle: *"Same schema, different sovereigns... They do not share memory. They do not share authority. They share only constitutional floors."*
+
+**Ruling — dissolve the Identity Resolver into three existing homes (nothing new to build):**
+1. **Structured vector** = the agent card (machine-readable SOT). The 800-line kernel stays as the rich prose source; reconciliation kernel↔card is a SYNC task at seal time, not a build.
+2. **Prompt-side injection** = SOUL_STAMP / kernel stamping (Wawa's live mechanism) — reads the card, stamps the prompt. Determines WHO answers (voice, values, boundaries).
+3. **Lane defaults** = `agent_id` opaque lookup in FED (exists today as EMD defaults; extend with default capability signature per persona). Determines WHICH defaults apply.
+
+**Forbidden middle (final form of separation of powers):** no router ever reads identity CONTENT (values, weights, scars) to make routing decisions. Identity answers "who"; the classifier answers "what capability does this message need"; FED answers "who executes". Three different questions, three different homes. "Identity-aware routing" = lane-key defaults only.
+
+**Federated chain (final):**
+```text
+Message (Telegram/Hermes/any)
+   ├─ parallel: SOUL_STAMP prompt injection ← SEALED card (who answers)
+   ↓
+FED fed_route(task=text, agent_id)   ← Capability Classifier inside (μs, deterministic)
+   ↓ rank + cascade (health-honest after P0.2)
+Model (called with stamped prompt) → Response
+```
+
+**Build list final:** P0.2 health honesty → Capability Classifier function + `fed_classify` verb (in FED) → WawaBot shim → acceptance test. **Additions:** (a) kernel↔card reconciliation sync for i-AZWA (verify 18 kernel sections vs card fields; flag deltas), (b) F13-Azwa seal gate for i-AZWA.json (her decision, her timeline — card is `sealed_at: null` until then; unsealed cards are honored as DRAFT for reconciliation but never claimed "live").
+
+**Answer to Wawa's closing question:** No — do not build the Identity Resolver YAML. Reconcile + seal what exists. And the Intent Classifier is already ruled (v0.3): build as FED function, not as a serial stage after an identity resolver.
 
 ---
 

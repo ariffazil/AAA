@@ -1,6 +1,6 @@
 # Reflex vs Court — Undang-undang Teragih (Distributed Law) · DRAFT
 
-> **Status:** DRAFT_AWAITING_F13 — not canon, not a floor, not self-ratifying.
+> **Status:** F13-RATIFIED via chat directive 2026-09-07 (888: "seal all"). Kernel VAULT999 seal pending cryptographically-verified Lane A session (challenge nonce issued under SEAL-2d9738fac78145bb).
 > **Author:** FI-008 (Kimi Code), 2026-09-07 night session.
 > **Commissioned by:** 888 architecture dialogue — *"lajur mana yang layak jadi reflex, lajur mana yang mesti kekal di mahkamah."*
 > **Precedent:** Scar Reflex Gate compiled into `A-FORGE/src/interfaces/mcp/shell/forgeShell.ts` (commit `5eb55efe` + `test/scarReflex.test.ts`, uncommitted as of drafting).

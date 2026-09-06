@@ -29,8 +29,10 @@ For session-start probes, action-tier expansions, conflict resolution, and the a
 | S13 Scar (W³ degradation) | `/root/AAA/scars/2026-09-07-w3-degradation-during-doctrine-writing.md` | DRAFT |
 | T3 Pending F13 Hand-off | `/root/AAA/governance/T3-PENDING-F13-AUDIT-DISCIPLINE.md` | PENDING_F13 |
 | Zen-Bijaksana-Arif Runtime Map | `/root/AAA/governance/ZEN-BIJAKSANA-ARIF-RUNTIME-MAP-2026-09-07.md` | DRAFT |
-| Reflex vs Court Doctrine | `/root/AAA/governance/REFLEX-VS-COURT-DOCTRINE-2026-09-07.md` | DRAFT_AWAITING_F13 |
-| FED Eureka Distillation | `/root/AAA/governance/FED-EUREKA-DISTILLATION-2026-09-07.md` | DRAFT_AWAITING_F13 |
+| Reflex vs Court Doctrine | `/root/AAA/governance/REFLEX-VS-COURT-DOCTRINE-2026-09-07.md` | F13_RATIFIED_CHAT |
+| FED Eureka Distillation | `/root/AAA/governance/FED-EUREKA-DISTILLATION-2026-09-07.md` | F13_RATIFIED_CHAT |
+| The Zen Card | `/root/AAA/governance/ZEN-CARD-2026-09-07.md` | F13_RATIFIED_CHAT |
+| Auto-Execution Queue | `/root/AAA/governance/AUTO-EXECUTION-QUEUE-2026-09-07.md` | ACTIVE |
 | RBA-PROOF-001 Mission | `/root/AAA/proof/rba-proof-001/` (8 artifacts) | PARTIAL verdict |
 
 **To load:** read the file path above. Each fragment is independent and may be consulted separately.
