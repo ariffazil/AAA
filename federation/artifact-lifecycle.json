@@ -4,10 +4,10 @@
     "epoch": "2026-09-06T17:30:00+08:00",
     "forged_by": "333-AGI",
     "status": "PROPOSED",
-    "ratification": "F13 (Arif) pending — companion to /root/docs/REPOSITORY_BOUNDARY_SOT.md",
+    "ratification": "F13 (Arif) pending \u2014 companion to /root/docs/REPOSITORY_BOUNDARY_SOT.md",
     "schema": {
       "artifact_entry": {
-        "canonical_path": "string — one concept, one path",
+        "canonical_path": "string \u2014 one concept, one path",
         "owner_repo": "ariffazil|arifOS|AAA|A-FORGE|GEOX|WEALTH|WELL|neutral",
         "role": "constitution|contract|runtime|registry|capability|adapter|experiment|archive|ledger",
         "lifecycle": "proposed|active|deprecated_candidate|deprecated|retired|archived",
@@ -58,7 +58,7 @@
       "capability_state": "PRODUCTION",
       "authority": "authoritative",
       "last_verified": "2026-09-06",
-      "notes": "Model routing SOT. Individual model entries carry per-model states — see video-routing.yaml health ledger pattern."
+      "notes": "Model routing SOT. Individual model entries carry per-model states \u2014 see video-routing.yaml health ledger pattern."
     },
     {
       "canonical_path": "/root/docs/MACHINE_MAP.md",
@@ -78,7 +78,7 @@
       "capability_state": "RETIRED",
       "authority": "reference-only",
       "last_verified": null,
-      "notes": "Shadow-3 OBS: coexists with un-suffixed current. Dedupe required — delete or move to archives/."
+      "notes": "Shadow-3 OBS: coexists with un-suffixed current. Dedupe required \u2014 delete or move to archives/."
     },
     {
       "canonical_path": "/root/AAA/federation/AAA_FEDERATION_ENFORCEMENT_MATRIX_v0.1.md",
@@ -108,7 +108,7 @@
       "capability_state": "QUARANTINED",
       "authority": "reference-only",
       "last_verified": null,
-      "notes": "MIT substrate supply only. Read-only. Never inherits trust model. Whisper/Groq dependency forbidden — federation ASR adapter instead."
+      "notes": "MIT substrate supply only. Read-only. Never inherits trust model. Whisper/Groq dependency forbidden \u2014 federation ASR adapter instead."
     },
     {
       "canonical_path": "/root/AAA/skills/watch",
@@ -128,17 +128,27 @@
       "capability_state": "REGISTERED",
       "authority": "derived",
       "last_verified": "2026-09-06",
-      "notes": "Contract frozen + parse-verified 2026-09-06. Fixtures/canaries/live-smoke pending — see SKILL.md forge sequence. Stays uncommitted in git until 888 gates pass (honest DRAFT state)."
+      "notes": "Router v2 applied 2026-09-06: gemini lane restored (direct API), fabricators blacklisted, deepseek interim vision primary, ASR recorded UNPROVEN. Contract frozen; fixtures committed (bca9bda30); executor pending."
     },
     {
       "canonical_path": "gemini_bridge:18092",
       "owner_repo": "neutral",
       "role": "runtime",
       "lifecycle": "active",
-      "capability_state": "DEGRADED",
+      "capability_state": "DEFECTIVE",
       "authority": "reference-only",
       "last_verified": null,
-      "notes": "2026-09-06 canary: /models 404, /v1/models 404. TCP-up, capability-dead. 888-HOLD-PROVIDER. Excluded from all routing."
+      "notes": "v2 correction 2026-09-06: bridge WRAPPER defective (path fault: listing 404, generate 502-wrapped-404, reconfirmed by 333-AGI). Gemini LANE IS ALIVE via direct AI Studio API \u2014 9 ids ingest native video. See FED_VIDEO_CANARY_LEDGER v2. Do not route through bridge until path fixed."
+    },
+    {
+      "canonical_path": "/root/AAA/knowledge-graph/FED_VIDEO_CANARY_LEDGER.yaml",
+      "owner_repo": "AAA",
+      "role": "ledger",
+      "lifecycle": "active",
+      "capability_state": "PRODUCTION",
+      "authority": "authoritative",
+      "last_verified": "2026-09-06",
+      "notes": "v2 supersedes v1 \u2014 single-canary fabrication self-corrected via paired opposite fixtures x3 trials. Canary protocol SOT for all model promotion."
     }
   ]
 }
