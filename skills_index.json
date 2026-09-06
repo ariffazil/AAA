@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-08-24T21:06:08Z",
+  "generated_at": "2026-09-06T11:23:22Z",
   "root": "/root/AAA/skills",
   "schema_version": "1.0.0-orthogonal-discovery",
-  "count": 221,
+  "count": 218,
   "elapsed_ms": 20,
   "errors": [
     ".archive: no SKILL.md found",
@@ -984,31 +984,6 @@
         "updated": "2026-07-15",
         "sources": "",
         "capability_tier": "fed-reasoning-heavy",
-        "ecology_state": "WARM"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "COPILOT_ZEN_ROUTER",
-      "category": "general",
-      "path": "/root/AAA/skills/COPILOT-zen-router/SKILL.md",
-      "dir": "/root/AAA/skills/COPILOT-zen-router",
-      "frontmatter": {
-        "name": "COPILOT_ZEN_ROUTER",
-        "id": "copilot_zen_router",
-        "owner": "AAA",
-        "floor_scope": "[F1, F2, F4, F7]",
-        "description": ">",
-        "META-MESA": "Orthogonal skill taxonomy + intent→skill router for Copilot CLI.",
-        "trigger_phrases": "",
-        "harness": "copilot-cli",
-        "domain": "meta",
-        "risk_tier": "LOW",
-        "autonomy": "T1",
-        "forged": "2026-07-28",
-        "version": "1.0.0",
-        "autonomy_tier": "T1",
-        "capability_tier": "fed-long-context",
         "ecology_state": "WARM"
       },
       "has_sk": true
@@ -2827,17 +2802,6 @@
       "has_sk": true
     },
     {
-      "name": "RSI-recursive-improvement",
-      "category": "rsi",
-      "path": "/root/AAA/skills/RSI-recursive-improvement/SKILL.md",
-      "dir": "/root/AAA/skills/RSI-recursive-improvement",
-      "frontmatter": {
-        "capability_tier": "fed-long-context",
-        "ecology_state": "WARM"
-      },
-      "has_sk": true
-    },
-    {
       "name": "a2a-task-delegator",
       "category": "a2a",
       "path": "/root/AAA/skills/a2a-task-delegator/SKILL.md",
@@ -3582,24 +3546,6 @@
         "forged_by": "FI-003 (Qwen Code)",
         "f13_directive": "make sure my hermes agent telegram ASI_arifos_bot know how to use this",
         "constitutional_floor": "F11 AUDIT — every routing decision logged to VAULT999 receipts"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "forge-vss-parser",
-      "category": "forge",
-      "path": "/root/AAA/skills/forge-vss-parser/SKILL.md",
-      "dir": "/root/AAA/skills/forge-vss-parser",
-      "frontmatter": {
-        "name": "forge-vss-parser",
-        "id": "forge-vss-parser",
-        "version": "1.0.0-2026.08.18",
-        "owner": "555-ASI",
-        "risk_tier": "low",
-        "autonomy_tier": "T1",
-        "floor_scope": "",
-        "capability_tier": "fed-agent-subagent",
-        "ecology_state": "WARM"
       },
       "has_sk": true
     },
