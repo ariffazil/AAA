@@ -41,6 +41,8 @@ echo "$(hostname) $(ip -4 addr show | grep -oE '100\.64\.0\.[0-9]+' | head -1)"
 | Trap | Truth |
 |---|---|
 | FED health endpoint | `/health/liveliness` ✅ — `/health` returns 000 (false-DOWN diagnosis) |
+| KVM2 `:8080` 13 tools | Azwa **arifOS-mcp fork** (legacy verbs: `arif_session_init`, `arif_sense_observe`, …). Canonical KVM8 kernel is 8 verbs (`arif_init`…`arif_seal`). Fork `vault999_health: unreachable` is by design — not a second judge. Ingesting a Verify receipt *about* azwaos from KVM8 is not KVM2 witnessing. |
+| `now` WELL 🟢 | TCP open ≠ WELL healthy. Body `status=degraded` + H-WELL SELF_REPORT/AGED = 🟡. M-WELL `machine_state.json` is a different plane. |
 | Port meaning changes per machine | 7073 = arifFlow (KVM8) / arifosmcp-fork (KVM2); 4000 = HAProxy (KVM8) / litellm (KVM4); **7074 = fed-router on BOTH KVM8 (0.0.0.0, UFW-blocked off-box) + KVM2 (127.0.0.1)** — node-local agentic-loop redundancy, allowed. Always machine-prefix a port. |
 | `/root/HERMES` vs `/root/Hermes` | case twins on KVM8. UPPERCASE = heritage (4.6G); lowercase = **receipts-only shadow (164K, no install)** |
 | `/opt` typo-twins on KVM8 | arifflow+ariflow · arifOS+arifos · a-forge+af-forge — **resolved 2026-09-04**: dead twins (ariflow, arifOS, arifos-archive, a-forge + stray .baks) quarantined to `/root/BACKUPS/opt-quarantine-20260904/`; live = arifos (kernel 36G), arifflow, well, af-forge(→/root symlink) |
