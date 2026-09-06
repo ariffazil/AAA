@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "video_result",
+  "description": "Evidence-backed execution result. Claims without intervals/evidence IDs are contract violations.",
+  "type": "object",
+  "required": ["job_id", "asset", "routing", "evidence", "claims", "holds"],
+  "properties": {
+    "job_id": {"type": "string"},
+    "asset": {
+      "type": "object",
+      "required": ["source_url", "content_hash", "duration_s", "acquisition_mode"],
+      "properties": {
+        "source_url": {"type": "string"},
+        "content_hash": {"type": "string", "pattern": "^sha256:"},
+        "duration_s": {"type": "number"},
+        "acquisition_mode": {"enum": ["yt-dlp", "local_ingest"]},
+        "caption_mode": {"enum": ["native_captions", "asr_fallback", "none"]}
+      }
+    },
+    "routing": {
+      "type": "object",
+      "required": ["video_mode", "vision_primary", "asr"],
+      "properties": {
+        "video_mode": {"enum": ["composite", "native_omni"]},
+        "vision_primary": {"type": "string"},
+        "vision_witness": {"type": ["string", "null"]},
+        "asr": {"type": "string"},
+        "omni_used": {"type": "boolean"},
+        "router_version": {"type": "string"}
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["ledger_uri"],
+      "properties": {
+        "ledger_uri": {"type": "string"},
+        "scene_count": {"type": "integer"},
+        "frame_count": {"type": "integer"},
+        "transcript_segments": {"type": "integer"},
+        "ocr_segments": {"type": "integer"},
+        "f12_quarantined_spans": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["claim_id", "class", "text", "confidence"],
+        "properties": {
+          "claim_id": {"type": "string", "pattern": "^cl_"},
+          "class": {"enum": ["OBS", "DER", "INT"]},
+          "text": {"type": "string"},
+          "confidence": {"type": "number", "maximum": 0.95},
+          "time_range_s": {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2},
+          "evidence_ids": {"type": "array", "items": {"type": "string"}},
+          "depends_on": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "uncertainties": {"type": "array", "items": {"type": "string"}},
+    "candidate_artifact": {
+      "type": "object",
+      "properties": {
+        "type": {"enum": ["skill", "dataset", "report"]},
+        "status": {"const": "DRAFT_ONLY"},
+        "path": {"type": "string"},
+        "source_citations_complete": {"type": "boolean"}
+      }
+    },
+    "holds": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "reason"],
+        "properties": {
+          "code": {"enum": ["888-HOLD-PROVIDER", "888-HOLD-PROVENANCE", "888-HOLD-INJECTION", "888-HOLD-LOW-EVIDENCE", "888-HOLD-ARTIFACT", "888-HOLD-MESH"]},
+          "reason": {"type": "string"}
+        }
+      }
+    }
+  }
+}

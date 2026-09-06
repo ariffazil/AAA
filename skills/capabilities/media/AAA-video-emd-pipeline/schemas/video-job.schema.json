@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "video_job",
+  "description": "Canonical request envelope. Every surface (OpenCode/Hermes/Claude) submits this. No surface-specific variants.",
+  "type": "object",
+  "required": ["job_id", "requester", "input", "intent", "budget", "policy"],
+  "properties": {
+    "job_id": {"type": "string", "pattern": "^vid_"},
+    "requester": {
+      "type": "object",
+      "required": ["surface", "agent", "human_authority"],
+      "properties": {
+        "surface": {"enum": ["opencode", "telegram", "claude", "cron", "api"]},
+        "agent": {"type": "string"},
+        "human_authority": {"type": "string", "description": "F13 sovereign identity"}
+      }
+    },
+    "input": {
+      "type": "object",
+      "required": ["source_type", "source_ref"],
+      "properties": {
+        "source_type": {"enum": ["youtube_url", "url", "local_path"]},
+        "source_ref": {"type": "string"},
+        "asset_hash": {"type": ["string", "null"]},
+        "language_hint": {"type": "array", "items": {"type": "string"}},
+        "rights_status": {"enum": ["unknown", "public", "licensed", "restricted"], "default": "unknown"}
+      }
+    },
+    "intent": {
+      "type": "object",
+      "required": ["task", "required_outputs"],
+      "properties": {
+        "task": {"enum": ["answer_question", "extract_reusable_skill", "summarize_grounded", "diagnose_repro", "index_for_retrieval"]},
+        "question": {"type": "string"},
+        "required_outputs": {"type": "array", "items": {"enum": ["evidence_ledger", "claims", "candidate_skill", "answer"]}}
+      }
+    },
+    "budget": {
+      "type": "object",
+      "properties": {
+        "max_frames": {"type": "integer", "default": 100},
+        "coarse_sample_fps": {"type": "number", "default": 0.1},
+        "verification_sample_fps": {"type": "number", "default": 2},
+        "max_duration_s": {"type": "integer", "default": 7200}
+      }
+    },
+    "policy": {
+      "type": "object",
+      "properties": {
+        "treat_media_as_untrusted": {"const": true, "default": true},
+        "claim_typing_required": {"const": true, "default": true},
+        "provenance_required": {"const": true, "default": true},
+        "external_actions_allowed": {"const": false, "default": false},
+        "mesh_sync_allowed": {"const": false, "default": false}
+      }
+    }
+  }
+}

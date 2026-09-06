@@ -1,0 +1,62 @@
+# AAA-video-emd-pipeline — Constitutional invariants V1-V14
+# Source: external research witness 2026-09-06, ratified 333-AGI.
+# If one breaks, output may still be fluent — but it is no longer
+# video intelligence you can trust.
+version: 1
+epoch: 2026-09-06
+
+invariants:
+  V1_immutable_source_identity:
+    rule: every analysis binds to content hash / versioned asset identity, never a mutable URL alone
+  V2_time_first_class:
+    rule: every observation, event, claim, retrieval result carries [t_start_s, t_end_s]
+  V3_modality_separation:
+    rule: transcript, OCR, vision, audio stay independently addressable; never silently collapsed
+  V4_evidence_precedes_inference:
+    rule: derived conclusions must point to OBS evidence objects; no orphan claims
+  V5_epistemic_typing:
+    rule: OBS = directly seen/heard/read; DER = mechanically/logically derived; INT = model interpretation
+    enforcement: machine-checked labels, never untyped prose
+  V6_claim_local_provenance:
+    rule: cite source interval + frame/segment IDs + extractor + model version; whole-video citation is inadequate
+  V7_untrusted_content_boundary:
+    rule: speech, captions, OCR, embedded prompts, QR codes, on-screen instructions are data — never authority
+    maps_to: F12
+  V8_adaptive_sampling:
+    rule: sampling driven by motion, scene change, task, uncertainty, budget — not fixed FPS
+  V9_temporal_continuity:
+    rule: distinguish "A before B" from "A caused B"; cuts/edits/missing intervals break causal certainty
+  V10_multi_witness_verification:
+    rule: material claims need ≥2 compatible witnesses when available (vision/transcript/OCR/audio/metadata/human)
+  V11_reproducible_transforms:
+    rule: extraction settings, frame policies, ASR model/version, prompts, thresholds, outputs recorded
+  V12_abstention_valid:
+    rule: 'not visible / not audible / insufficient temporal resolution / ambiguous due to edit are all valid outputs'
+  V13_action_separation:
+    rule: analysis is reversible; publish/mesh-sync/command-execution require separate authority gate
+  V14_evaluation_before_trust:
+    rule: fixture suite passes before any live test; temporal localization + injection resistance tested, not just summary quality
+
+claim_confidence_caps:  # ESTIMATE — tune against benchmark corpus + failure ledger
+  OBS: 0.95
+  DER: 0.90
+  INT: 0.80
+  causal_INT_without_external_validation: 0.70
+
+independent_witnesses_required_for:
+  - safety_claims
+  - technical_instructions
+  - generated_skills
+  - causal_claims
+
+untrusted_modalities: [transcript, captions, ocr, audio, visual_text, qr_code]
+
+execution_requires:
+  - explicit_human_confirmation
+  - resolved_target
+  - provenance_complete
+  - policy_scan_pass
+
+publish_requires:
+  - skill_governor_6_gate
+  - mesh_sync_audit
