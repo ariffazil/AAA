@@ -116,8 +116,8 @@ nodes:
       agent_id: azwaos-witness
       default_action_class: OBSERVE
       authority_ceiling: T0
-    mandate: "Witness only. :8080 is an Azwa fork (13 legacy verbs), NOT the KVM8 kernel. Telegram Wawa HOLD until KVM2-only bot token."
-    bounds: "No arif_judge. No VAULT999 write. No @ASI_arifos_bot poll. No TELEGRAM_BOT_TOKEN_ASI in process env."
+    mandate: "Wawa @Azwafazil_bot for Azwa. Witness node. :8080 fork is not the KVM8 kernel."
+    bounds: "No arif_judge. No VAULT999 write. No @ASI_arifos_bot poll. Telegram token from ~/.hermes/.env only."
 
 proposed_not_live:
   flow-edge: { services: [Hermes, telegram_gateway], note: "Hermes still on court-core" }
