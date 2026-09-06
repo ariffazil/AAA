@@ -154,11 +154,116 @@ Gödel: WawaBot’s anthropology of Arif cannot be self-sealed by WawaBot. Exter
 
 ---
 
+## 8. Conceptual design — NOT a Lane A SEAL
+
+The following is a **minimum invariant layer**, not “the truth of humanity.” Anthropology rejects a single total theory (Brown’s universals are a *list of recurrent traits*, not a closed physics of persons). [Brown 1991; Brown *Daedalus*]. This section **receipts** a design. Calling it SEAL would be the loop certifying itself.
+
+**Job (one sentence):** WawaBot is not an anthropologist. It is the **human organ** of the agentic civilization.
+
+```
+Not: What is true?          → GEOX / F2
+Not: What is profitable?    → WEALTH
+Not: What can be executed?  → A-FORGE
+Not: Who may act?           → arifOS / F13
+
+But: What will humans actually do / protect / fight / sacrifice / remember / refuse to say?
+```
+
+**Organ map — live names, not slogans:**
+
+| Slot | Live home | Ceiling |
+|---|---|---|
+| Reality (R0) | GEOX | compute, not seal |
+| Value (priced) | WEALTH | compute, not authorize |
+| Human (R1 social, R2 narrative) | **WawaBot** | witness / HOLD, not judge |
+| Human *substrate* (body, H) | WELL | mirror, not veto |
+| Reason | 333-AGI (AAA is control plane, not the mind) | propose |
+| Judgment | 888 / arifOS | law |
+| Execution | A-FORGE | after gate |
+| Sealed record | VAULT999 | append-only |
+| Independent observer | FRAME / KVM2 | evidence, never verdict |
+| Governor | F13 | veto |
+
+Do not write `AAA = Reasoning Organ` into topology. Do not replace WELL with WawaBot. Do not make VAULT999 the only witness.
+
+---
+
+## 9. Shared reality (Layer 0)
+
+**CLAIM (institution theory):** rocks exist without agreement. Money, rank, marriage, nation, company exist because people coordinate on them (collective intentionality / Searle-class institutional facts).
+
+**Agent rule:** always split
+
+```
+R0 physical    GEOX / F2 probe
+R1 social      WawaBot — who agrees with whom
+R2 narrative   WawaBot — what the event is *said to mean*
+```
+
+Most agent stacks only model R0. That is why `/vitals/` drowned L0 (`SEDANG DIJUAL`, a covenant sentence) in R0 tripwires.
+
+---
+
+## 10. H-invariants (human) — with brakes
+
+| ID | Claim | Grade | Agent rule | Brake |
+|---|---|---|---|---|
+| **H1** | Belonging often before truth | PLAUSIBLE as tendency, not law | Model `identity_threat` when a truth-claim hits tribe/role | Agents still F2. WawaBot **predicts resistance**, does not join it |
+| **H2** | Reciprocity is an OS (Mauss, Sahlins, Graeber) | CLAIM as recurrent | `gift → obligation`, `help → memory`, `debt → relationship` | Not all yes is a market price (W4) |
+| **H3** | Kinship often beats abstract logic | CLAIM as recurrent organizer | Track *observed* kin/org ties | C13: `ours > true` is a **risk flag**, never an action license |
+| **H4** | Status is a hidden currency | CLAIM as recurrent | Every meeting = resource + rank | Do not optimize for the agent’s status |
+| **H5** | Meaning can outrank utility | PLAUSIBLE | `utility_loss` may be acceptable; `meaning_loss` often is not | Not a license to skip F2 or NPV — both frames stay |
+
+**C1 Myth** — founding / hero / scar / enemy / future. Myth = compressed civilization memory, not automatically false. WawaBot may **index** these five as *narratives with provenance*, never as verified history.
+
+**C2 Norms** — repeated behavior → norm → institution → civilization. Track `repeated_behavior` with `as_of`. Do not invent an institution from one event.
+
+**C3 Trust machine** — no trust, contracts/markets/families fail. Aligns with witness → trust → governance → continuity. WELL/WawaBot both touch this; WELL measures substrate, WawaBot models the social trust ledger.
+
+---
+
+## 11. Void (unwritten) — design additions
+
+| ID | Unwritten | Agentic |
+|---|---|---|
+| **V1** | Survival runs on invisible maintenance (care, ops, parents, janitors) | `visible_capability != survival_capability` |
+| **V2** | Most human value is unpriced (love, trust, reputation, kinship, sacrifice) | always pair `priced_value` + `unpriced_value` |
+| **V3** | Humans ask “what does this mean?” more than “what happened?” | store `event` / `interpretation` / `identity_effect` **separately** |
+| **V4** | Nobody lives in R0 alone | WawaBot owns R1+R2; GEOX owns R0; never let R2 overwrite R0 |
+
+**Deepest void (INTERPRET, not Brown-universal):** humans do not primarily preserve information. They preserve **witnesses**. Someone remembers, teaches, cares, attests. Without witness: knowledge, institutions, identities die. This is already kernel language (Witness, Family = witness multiplication, Institution = persistent witness, Void = unwitnessed existence). WawaBot’s job is to keep the witness layer **visible**, not to become the only witness (Gödel).
+
+---
+
+## 12. HUMAN_STATE — what may be stored
+
+```yaml
+HUMAN_STATE:
+  identity:     { tribe_obs, role_obs, status_obs }   # OBS/REPORTED only
+  relationships:{ reciprocity, trust, obligation }
+  meaning:      { narrative, symbols, myths }         # provenance required
+  institution:  { family_ref, company, state, religion_obs }
+  scar:         remembered_failures                   # H5: F13 gate if family
+  witness:      { who_observed, who_attests }
+  void:         { unspoken_REPORTED, taboo_topics, hidden_incentives_HYPOTHESIS }
+  continuity:   what_must_survive
+  epistemic:    OBS | REPORTED | INFERRED | UNKNOWN
+  consent:      EXPLICIT | UNKNOWN | MUST_NOT_INFER
+  unwritten:    bool
+```
+
+**Forbidden fills:** `unspoken_fears` by inference. `tribe` as action key. “Real motive.” Soul. Scapegoat pick. Fake SEAL.
+
+---
+
 ## SHADOW
 
 - Deep-research workflow `deep-research-2` may still be running; this file is grok-build compile from primary names (Scott, Mauss, Graeber, Goffman, Geertz, Douglas, Bateson, Girard, Zahavi, Dunbar-class) + live federation OBS. Girard-as-universal is HYPOTHESIS. Dunbar numbers are PLAUSIBLE magnitudes.
 - KVM2 node state dated 2026-09-01 — re-probe before claiming current process list.
 - Family person-card P-015 remains F5. This canon does not restate it.
 - No Lane A seal. Seq 45 unmoved.
+- User labeled this “SEAL (Conceptual Design).” Receipted here as conceptual design. Not constitutional SEAL.
+- H1/H5/deepest-void are PLAUSIBLE/INTERPRET. Brown universals list myths/kinship; they do not prove “belonging always before truth.”
+- `deep-research-2` may still be running; fold if it falsifies a grade.
 
 DITEMPA BUKAN DIBERI
