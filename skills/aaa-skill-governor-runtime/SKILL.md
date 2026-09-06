@@ -9,6 +9,8 @@ floor_scope: [F1, F2, F7, F11]
 autonomy_tier: T1
 organ_domain: aaa
 forged: 2026-09-04
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # AAA Skill Governor Runtime

@@ -2,6 +2,8 @@
 name: qwencloud-vision
 description: "[QwenCloud] Understand images and videos with Qwen vision models. TRIGGER when: user wants to analyze, describe, or extract information from images or videos, OCR text extraction, chart/table reading, visual reasoning, multi-image comparison, screenshot understanding, video comprehension, or explicitly invokes this skill by name (e.g. use qwencloud-vision). DO NOT TRIGGER when: user wants to generate/create images (use qwencloud-image-generation), generate videos (use qwencloud-video-generation), text-only tasks without visual input, or non-Qwen vision tasks."
 compatibility: "Requires Python 3.9+ and curl. Cursor: auto-loaded. Claude Code: read this skill's SKILL.md before first use."
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 > **Agent setup**: If your agent doesn't auto-load skills (e.g. Claude Code),
