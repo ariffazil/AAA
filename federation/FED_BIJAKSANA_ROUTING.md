@@ -22,7 +22,7 @@ serve — it converts a resilience system into a latency amplifier.)
 | zai-direct (GLM 5.3/5.2) | BURSTY | thin time-window; 429/1113 between bursts | subscription |
 | qwen-tp-individual | QUOTA_EXHAUSTED | resets **2026-09-11 04:01Z** (7-day window) | subscription |
 | qwen-tp-team | QUOTA_EXHAUSTED | sub ends 2026-10-01, auto-renew OFF | subscription |
-| minimax | DEAD | status 2062 "no active token plan" — resubscribe needed | lapsed |
+| minimax | LIVE | RESUBSCRIBED 2026-09-06 Token Plan Max: ~5.1B tok/mo, weekly_remains ~35.1M units, renews 2026-10-05, 4-5 concurrent, 1M ctx multimodal | subscription |
 | mimo-platform (OPEN key) | DEAD | 402 insufficient balance — do not route | lapsed |
 | opencode-go + opencode-zen | DEAD | 401 CreditsError, same workspace, drained | lapsed |
 | bailian-payg (dashscope intl) | DEAD* | free-tier-only mode; free quota gone (*revivable: disable free-tier-only in console) | payg |
@@ -90,7 +90,7 @@ token_bank.db, alerts to `fed_alerts.log` when: kimi weekly remaining <20%, deep
    hermes memory bridge) — the cognitive tuning frontier, not routing.
 2. Z.AI burst window characterization (how many requests / what reset cadence) — sentinel
    accumulates evidence; consider zai anthropic-compat endpoint for harness traffic.
-3. minimax resubscribe decision + bailian-payg "free-tier-only" console toggle (Arif).
+3. minimax RESUBSCRIBED 2026-09-06 (Token Plan Max, rung restored to 7 chains, weekly_remains ~35.1M). bailian-payg toggle still pending (Arif).
 4. Plaintext LITELLM_MASTER_KEY in haproxy.cfg (flagged by 888; secret-hygiene task).
 5. Disk 78.1% → entropy sweep due before 80% budget line.
 
