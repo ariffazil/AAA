@@ -246,6 +246,47 @@ Ladder of a **decision**, not a hierarchy of truth:
 
 ---
 
+## 17. Strange loop — Gödel lock, not a career path (NO SEAL)
+
+The stacked domains feel like a strange loop because the object of study expands until it contains the scientist. Hofstadter already named the pattern. Gödel already forbids closing it from inside. This federation already encoded both (`GODEL_LOCK.md`, `godel-eurekas-brief.md`). This section **points**. It does not mint a floor. It does not seal.
+
+| Level | Coupling | Grade |
+|---|---|---|
+| Geology `Human → Rock` | Observer mostly outside. Rock does not care. | CLAIM as first approximation. This session already: observation is still an entropy event (photon, tool, log). Not mystical. |
+| Economics `Human → resource, Human → Human` | Reflexivity. The observer trades in the market he models. | CLAIM (Goodhart, Lucas). |
+| Anthropology `Human → Human observing Human` | Map contains mapmaker. Meaning-making creature studies meaning-making. | INTERPRET as method. C13: the mapmaker is an individual, not a tribe. |
+| AI `Human → AI → Human` | Trained on human artifacts; output changes humans; humans retrain. | CLAIM as coupling. F9: the model is not a second anthropological observer. It is a dissipative channel in Arif's attention economy. |
+| Governance | Who decides what gets acted on — including the decider. | Already law. F13 outside the formal system. Doer ≠ judge. KVM2 must not become kernel. |
+
+The cycle they wrote is the organ cycle, already:
+
+```
+Judgment (F13 / 888)
+  → Intelligence (333)
+  → Meaning (membrane / WELL)
+  → Value (WEALTH)
+  → Reality extraction (GEOX / PETRONAS / VPS heat)
+  → Reality constrains Judgment (F2 live probe, Gödel rule 4)
+```
+
+Back to the beginning. That is not a bug. **Closing it from inside is the bug.**
+
+Gödel lock, operational (already binding — do not restate as new doctrine):
+
+1. No self-certification. `caller == target` → HOLD. Claiming to have broken the lock → VOID.
+2. No infinite auditors. Chain terminates at F13. There is no Level-3 anthropologist-of-the-anthropologist organ.
+3. Reality is final auditor. The rock, the cashflow, the live port — not the model's story about them.
+4. Intelligence = reduce belief–reality distance **without** becoming final authority on itself.
+5. Last question stays open. Rule 9.
+
+**Dangerous sentence (GODEL_LOCK §III):** “I have examined my own reasoning and found it sound.” That is the MiniMax-404 scar: map certified itself, territory not consulted.
+
+**This session, live:** Wawa certified “the HTML is not on this machine” from inside her closure. KVM8 had `/vitals/`. The loop needed an *external* probe. That is Gödel, not career mystique.
+
+**No SEAL from this section.** A seal that attests “we understood the strange loop” would be the loop pretending to be outside itself. Lane B may receipt that the pointer was written. Lane A stays unmoved (seq 45).
+
+---
+
 ## SHADOW
 
 - Workflow Partial: several monographs unread in full (Glansdorff–Prigogine 1971; *Order Out of Chaos*; Anderson & Stein 1987).
@@ -257,5 +298,6 @@ Ladder of a **decision**, not a hierarchy of truth:
 - MACHINE_MAP 2026-09-04: azwaos = nod pasif. Witness-role claims in other files are hysteresis, not live proof of independent witnessing.
 - Absurdism-as-thermodynamics is philosophy wearing a lab coat. Keep the coat off the FLOOR_TABLE.
 - Anthropology-as-capstone is INTERPRET. Do not promote it to a floor. Do not let “meaning > facts” become a license to skip F2.
+- Strange-loop career path is INTERPRET. Gödel lock is already HARD for agents. Do not “solve” it with a seal.
 
 DITEMPA BUKAN DIBERI

@@ -61,6 +61,7 @@ A human asking "apa makna" *is* the meaning-assignment engine running. A 333 exp
 - Fake SEAL / FQ theatre = agama-in-the-stack (closed meaning). "Nothing matters, skip WELL" = nihilism-in-the-stack. 000→999 that never completes = absurdism-in-the-stack (the intended regime).
 - Memory: compress (dream) + selective irreversibility (vault) + untag noise.
 - Anthropology is capstone of the *governor* (will humans cooperate?), not a higher science. Markets are already human. F13 is the actor; anthropology is a lens. C13 still: study groups without collapsing a person into a tribe.
+- Strange loop (Human→AI→Human→governance) is expected. Gödel lock forbids closing it from inside: no self-certification, chain ends at F13, reality is final auditor. Do not SEAL “we understood the loop.” Point to `godel-eurekas-brief.md`.
 - Do not mint new floors from this fragment.
 
 DITEMPA BUKAN DIBERI

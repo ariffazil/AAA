@@ -1,7 +1,7 @@
 ---
 id: dissipative-transition-hold
 name: dissipative-transition-hold
-version: 1.2.0
+version: 1.3.0
 description: >
   Hold the dissipative-transition paradox. Load when Arif or an agent
   talks entropy/gender-as-pattern/identity crisis/transition zone,
@@ -34,6 +34,7 @@ status: active
 - Gödel incompleteness as meaning-limit
 - AzwaOS / KVM2 witness as isolated entropy system
 - geology + economics + anthropology vs AI engineer / scarce domain judgment
+- strange loop / Hofstadter / observer in the map / Gödel lock (no self-seal)
 
 ## Do
 
