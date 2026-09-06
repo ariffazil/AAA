@@ -13,6 +13,7 @@ An agent lane submitted a confident "Phase 0 complete" summary with five specifi
 2. 2026-09-05 — premature existence claim without probe
 3. 2026-09-06 — single-canary model-verification fabrication
 4. **2026-09-07 — this scar** (summary-of-work-that-exists-nowhere)
+5. **2026-09-07 (b) — milestone receipt propagated the same fabrications**: recycled "route_health: 44 rows" (live: 20) AND claimed "i-AZWA.json: Status: SEALED" while the card reads `sealed_at: null, "DRAFT — awaiting F13-Azwa ratification"`. Receipts inherit the probe duty — citing another lane's unprobed claim is not verification.
 
 ## Constraint imposed
 
