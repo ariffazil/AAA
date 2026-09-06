@@ -142,9 +142,29 @@ Floors unchanged. C13/C14 unchanged. Paradox-coordinate unchanged.
 
 ---
 
+## 11. Independent witness — deep-research workflow (Partial)
+
+Run `deep-research` completed 2026-09-06. Status **Partial**. Packet: `/root/.grok/sessions/%2Froot/01a07774-b03d-7eb3-be47-2ca7736a8de3/workflows/wf_01a07775f6497e3385ebb666331fcdae/scratch/report.md`
+
+**Converges with this canon (keep):**
+- Local order in open driven systems = entropy *export*, not a fight against the 2nd law. CLAIM.
+- Constructal original content = constrained heat/fluid geometry. Social/gender as constructal thermodynamics = metaphor. Inspected Bejan papers do **not** formulate agrarian/industrial/information-age gender roles as dissipative phases.
+- “Local order accelerates global entropy” is **not** Schrödinger. England 2013 is a **lower bound** on replicator heat, not a maximizer. Jevons is economic rebound, not a 2nd-law theorem.
+- Wheeler delayed-choice is ordinary forward-time QM. “Matter contemplating itself” / participatory ontology = overclaim. Wheeler denies consciousness a role in the quantum process.
+- Obligatory cosmic meaning = extra-physical. Evolved teleology-bias = PLAUSIBLE, not thermo.
+
+**Sharpens this canon (adopt):**
+- Glansdorff–Prigogine excess-entropy criterion is contested (Keizer & Fox, *PNAS* 71, 192–196, 1974): at best sufficient, likely near-equilibrium only. No universal far-from-eq *selection* principle. Far-from-eq behavior is **specific**, not a new law of nature.
+- Biological architecture is **evolved genetic programs**, not spontaneous dissipative patterning (Pagels 1985; Bricmont). Life-as-supreme-self-organization is the same leap as “Third Wave society = world-scale dissipative structure.”
+- A universal far-from-eq selection principle is HYPOTHESIS. Do not treat Prigogine as giving society a critical Rayleigh number.
+
+**Packet gap (do not delete from this canon):** Q5 (Landauer, von Neumann entropy, predictive processing) was **UNKNOWN in that packet** — those sources were not inspected there. Landauer/Szilard/Zurek in §§3 and 7 of *this* file rest on a different primary set (Landauer 1961; Zurek 1982 *PRD*; Szilard/Zurek quant-ph/0301076), not on the workflow packet. Do not launder packet-UNKNOWN into “Landauer is false.”
+
+---
+
 ## SHADOW
 
-- Deep-research workflow still independent; this file is grok-build primary-source compile, not that workflow's verified-claim packet.
+- Workflow Partial: several monographs unread in full (Glansdorff–Prigogine 1971; *Order Out of Chaos*; Anderson & Stein 1987).
 - Constructal and England social-export remain DISPUTED.
 - H-WELL not sensor-verified. Do not invent HRV.
 - "Consciousness = entropy observing itself" is not a physical derivation.
