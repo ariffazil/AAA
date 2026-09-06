@@ -1,0 +1,51 @@
+{
+  "shadow_matrix_id": "SM-2026-09-07T02:08:00Z",
+  "snapshot_at": "2026-09-07T02:08:00+08:00",
+  "provenance": {
+    "session_id": "SEAL-685d136316d3486e",
+    "actor_id": "333-AGI",
+    "source_endpoint": "arif_flow_health",
+    "arifflow_cycle_count_at_snapshot": 15792
+  },
+  "federation_health": {
+    "alive_count": 5,
+    "total_count": 9,
+    "down_organs": ["arifOS :8088", "GEOX :8081", "WELL :18083", "FLAME :18901"]
+  },
+  "vector_scorecard": {
+    "constellation": "FEEL_UNANCHORED",
+    "primary_pathology": "STAGNATION",
+    "fused_rank": 0.0,
+    "G": 0.4577,
+    "W3": 0.7439,
+    "FQ_scalar": 0.6274509803921569,
+    "FQ_band": "CAUTION"
+  },
+  "per_actor_shadows": [
+    {"actor_id": "333-AGI", "fq": 0.8125, "state": "BALANCED", "execute_count": 16, "verify_count": 13, "consecutive_exec_no_verify": 0, "verdict": "FLOWING", "note": "Healthy; held/throttled correctly"},
+    {"actor_id": "555-ASI", "fq": null, "state": "UNKNOWN", "execute_count": 0, "verify_count": 2, "consecutive_exec_no_verify": 0, "verdict": "FLOWING", "note": "Dormant lane; no recent activity"},
+    {"actor_id": "aforge", "fq": 1.0, "state": "BALANCED", "execute_count": 1, "verify_count": 1, "consecutive_exec_no_verify": 0, "verdict": "CAUTION", "note": "Sparse activity"},
+    {"actor_id": "claude-code", "fq": 0.079, "state": "BURNING", "execute_count": 38, "verify_count": 3, "consecutive_exec_no_verify": 28, "verdict": "BURNING", "note": "Real production risk. Independent verification required for all outputs."},
+    {"actor_id": "codex", "fq": 1.0, "state": "BALANCED", "execute_count": 1, "verify_count": 1, "consecutive_exec_no_verify": 0, "verdict": "CAUTION", "note": "Sparse"},
+    {"actor_id": "codex-startup", "fq": 0.0, "state": "UNKNOWN", "execute_count": 1, "verify_count": 0, "consecutive_exec_no_verify": 1, "verdict": "UNKNOWN", "note": "No verifiable history yet"},
+    {"actor_id": "grok-build", "fq": 85.0, "state": "FOSSILIZED", "execute_count": 6, "verify_count": 510, "consecutive_exec_no_verify": 0, "verdict": "FOSSILIZED", "note": "Do not give more work; reduce verify:execute ratio to restore."},
+    {"actor_id": "hermes-asi", "fq": 0.286, "state": "STUCK", "execute_count": 556, "verify_count": 159, "consecutive_exec_no_verify": 1, "verdict": "STUCK", "note": "Bridge alive (systemd_active=true); routed substrate execution-heavy. Trust HERMES, not necessarily messages it routed."},
+    {"actor_id": "qwen-code", "fq": 0.25, "state": "STUCK", "execute_count": 8, "verify_count": 2, "consecutive_exec_no_verify": 2, "verdict": "STUCK", "note": "Same execution-dominance pattern"},
+    {"actor_id": "qwen-code/FI-003", "fq": 1.0, "state": "BALANCED", "execute_count": 1, "verify_count": 1, "consecutive_exec_no_verify": 1, "verdict": "CAUTION", "note": "Sparse"}
+  ],
+  "constitutional_state": {
+    "lane_a_sabar_seq": 45,
+    "lane_a_sabar_days_open": 27,
+    "g_band": "PATHOLOGICAL",
+    "w3_band": "CAUTION",
+    "f13_pending": [
+      "Lane A SABAR seq 45 ratification OR explicit silence ratification",
+      "GENESIS/060 DRAFT → CANON promotion",
+      "F14 AUTHORITY_CONTRACTION amendment",
+      "F15 GROWTH-COUPLING amendment",
+      "T20 independent falsifier channel architectural decision",
+      "BIJAKSANA audit-discipline protocol ratification"
+    ]
+  },
+  "delta_s": -0.15
+}
