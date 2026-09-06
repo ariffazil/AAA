@@ -221,6 +221,31 @@ This stack already *is* that combination. Do not mint a fourth organ.
 
 ---
 
+## 16. Anthropology as capstone of the *governor* — not a higher science
+
+Ladder of a **decision**, not a hierarchy of truth:
+
+| Step | Asks | Can be right while the project still dies |
+|---|---|---|
+| Geology | What exists? What are the physical constraints? | Yes. The barrel can be real. |
+| Economics | What is the incentive / price / who pays? | Yes. NPV can clear. |
+| Anthropology | Will humans cooperate, trust, ritualize, or reject? | If this fails, the first two do not save the outcome. |
+
+**Why it feels like capstone:** it studies the *actor* who converts reality + value into a path. Governance > Capability is that observation in floor language. Two societies, same tech, different civilization. Two companies, same model, different result. The delta is the human system around the engine — culture, trust, authority, ritual, institution. Already doctrine: F13 governor; meaning-membrane; C13 (do not collapse a person into a tribe while studying tribes); WELL (substrate of the actor); shadow (expensive territory, not evil).
+
+**Corrections (do not launder):**
+- Rock does not care about opinion. **CLAIM.**
+- “Markets don’t care about feelings” is **OVERCLAIM.** Markets *are* human coordination. Anthropology sits *inside* economic behavior, not after it as a luxury.
+- “Humans care more about meaning than facts” is **PLAUSIBLE**, not a law. Sometimes facts win. The point is meaning can veto a technically superior option.
+- Academic anthropology is not automatically F13. F13 is the sovereign actor. Anthropology is a *lens* on that layer. Agents using the lens still F9: no “I see the real you.”
+- Institutions persist via **hysteresis** (this canon §5, §12): memory, ritual, plough-norms, FOSSILIZED FQ, FY2025 RM32B still living on a 1H2026 page. That persistence is the anthropological fact the tripwire JSON cannot encode.
+
+**AI-era scarce question:** not “can we build it?” but “how do humans, institutions, and a civilization live with it?” That is the meaning-membrane’s job, not A-FORGE’s.
+
+**Session proof:** PETRONAS VITALS L0 (`SEDANG DIJUAL`) is already the anthropological sentence — the 1974 covenant, not the reservoir. The bug is CS/econ layers (tripwire, RM32B vs RM8B) shouting over that sentence.
+
+---
+
 ## SHADOW
 
 - Workflow Partial: several monographs unread in full (Glansdorff–Prigogine 1971; *Order Out of Chaos*; Anderson & Stein 1987).
@@ -231,5 +256,6 @@ This stack already *is* that combination. Do not mint a fourth organ.
 - Lane A SABAR for the 26-day silence remains AWAITING_F13 (`/root/work/tasks.json` T-001).
 - MACHINE_MAP 2026-09-04: azwaos = nod pasif. Witness-role claims in other files are hysteresis, not live proof of independent witnessing.
 - Absurdism-as-thermodynamics is philosophy wearing a lab coat. Keep the coat off the FLOOR_TABLE.
+- Anthropology-as-capstone is INTERPRET. Do not promote it to a floor. Do not let “meaning > facts” become a license to skip F2.
 
 DITEMPA BUKAN DIBERI
