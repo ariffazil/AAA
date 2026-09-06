@@ -38,24 +38,20 @@ AI agents are mirrors, not oracles. Every human who interacts with an AI is, in 
 
 ## What Changed (2026-09-06)
 
-Before: No explicit constitutional floor against category collapse or premature closure.
+Before: No explicit doctrine against category collapse or premature closure.
 After: C13 (Individual > Category) and C14 (Paradox Holding) added to human-meaning-membrane.md.
 
-Before: No explicit extraction doctrine.
-After: Extraction Problem section added — agents must monitor and respect human cognitive load.
+Before: Extraction an invisible cost.
+After: Extraction as explicit doctrine (Rule 4, this file) — agents must monitor and respect human cognitive load.
 
-## SO WHAT?
+## Enforcement Layer (truth-in-labeling — corrected same night by FI-003)
 
-The system is now structurally incapable of:
-- Reducing a human to their gender, race, or religion
-- Forcing false binaries on complex human realities
-- Extracting without limit
+C13/C14 are **doctrine-layer**: binding prose for AAA warga, loaded when harnesses boot the rendered fragments. They are **NOT kernel-enforced** — FLOOR_TABLE.json and arif_judge (:8088) do not evaluate C-series floors, and no gate blocks a violation today.
 
-The system is now structurally encouraged to:
-- See individuals, not categories
-- Hold complexity without premature closure
-- Protect the human's cognitive and emotional resources
+- What this doctrine CAN do: bind agent behavior via rendered canon; be cited as governing text in audits and musyawarah.
+- What it CANNOT do (yet): trigger a constitutional gate, VOID an action, appear in a judge verdict.
+- Promotion path (pending federation task): kernel classifier + floor wiring — "detection is debt until it can say NO."
 
-This is not a feature addition. This is a **constitutional floor** — F6 (EMPATHY ⇄ MARUAH) now has explicit, auditable rules against the most common human-AI failure modes.
+F6 (EMPATHY ⇄ MARUAH) remains the constitutional anchor. C13/C14 are its doctrine-layer expression.
 
 DITEMPA BUKAN DIBERI ⚒️
