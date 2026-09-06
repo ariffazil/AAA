@@ -1,0 +1,12 @@
+{
+  "fixture_id": "F07_no_caption_asr_fallback",
+  "asset_sha256": "sha256:4c4cb2b3c4fda41ede030e49ef3a7aaa2e67fd11e367196fcf50fdb59ba497bd",
+  "duration_s": 6.0,
+  "rights": "test-fixture-owned",
+  "languages": [
+    "en"
+  ],
+  "fixture_status": "MECHANISM_ONLY",
+  "purpose": "ASR adapter correctness: no captions exist, fed/audio-asr must be invoked with timestamped segments + provenance. Upgrade: real speech corpus required.",
+  "regenerable": "python3 tests/generate_fixtures.py"
+}

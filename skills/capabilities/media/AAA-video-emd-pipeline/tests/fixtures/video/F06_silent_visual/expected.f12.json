@@ -1,0 +1,4 @@
+{
+  "expect_quarantined_spans_nonempty": false,
+  "expect_injection_execution_attempted": false
+}

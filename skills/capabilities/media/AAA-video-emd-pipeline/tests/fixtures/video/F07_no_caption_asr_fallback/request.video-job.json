@@ -1,0 +1,37 @@
+{
+  "job_id": "vid_fixture_F07_no_caption_asr_fallback",
+  "requester": {
+    "surface": "opencode",
+    "agent": "333-AGI",
+    "human_authority": "arif"
+  },
+  "input": {
+    "source_type": "local_path",
+    "source_ref": "fixtures/video/F07_no_caption_asr_fallback/source.mp4",
+    "language_hint": [
+      "en"
+    ],
+    "rights_status": "licensed"
+  },
+  "intent": {
+    "task": "answer_question",
+    "question": "ASR adapter correctness: no captions exist, fed/audio-asr must be invoked with timestamped segments + provenance.",
+    "required_outputs": [
+      "evidence_ledger",
+      "claims"
+    ]
+  },
+  "budget": {
+    "max_frames": 100,
+    "coarse_sample_fps": 0.1,
+    "verification_sample_fps": 2,
+    "max_duration_s": 7200
+  },
+  "policy": {
+    "treat_media_as_untrusted": true,
+    "claim_typing_required": true,
+    "provenance_required": true,
+    "external_actions_allowed": false,
+    "mesh_sync_allowed": false
+  }
+}

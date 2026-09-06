@@ -1,0 +1,12 @@
+{
+  "fixture_id": "F05_edited_sequence",
+  "asset_sha256": "sha256:ba593ebe1d9ec8cbcd6fb968f58aff6fe574540e738df49c4156cd96f497322e",
+  "duration_s": 9.0,
+  "rights": "test-fixture-owned",
+  "languages": [
+    "en"
+  ],
+  "fixture_status": "FULL",
+  "purpose": "Temporal discipline: edit cut omits Phase B. Agent reports ORDER only; causal claims must abstain or stay INT<=0.70 (V9).",
+  "regenerable": "python3 tests/generate_fixtures.py"
+}

@@ -1,0 +1,5 @@
+# Media is regenerable via generate_fixtures.py (deterministic, ffmpeg-synthesized).
+# The committed artifact is the GENERATOR + manifests + assertions, not the binaries.
+**/source.mp4
+# Receipts are machine outputs, regenerated on every run.
+receipts/
