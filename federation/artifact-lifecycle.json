@@ -1,0 +1,144 @@
+{
+  "_meta": {
+    "version": 1,
+    "epoch": "2026-09-06T17:30:00+08:00",
+    "forged_by": "333-AGI",
+    "status": "PROPOSED",
+    "ratification": "F13 (Arif) pending — companion to /root/docs/REPOSITORY_BOUNDARY_SOT.md",
+    "schema": {
+      "artifact_entry": {
+        "canonical_path": "string — one concept, one path",
+        "owner_repo": "ariffazil|arifOS|AAA|A-FORGE|GEOX|WEALTH|WELL|neutral",
+        "role": "constitution|contract|runtime|registry|capability|adapter|experiment|archive|ledger",
+        "lifecycle": "proposed|active|deprecated_candidate|deprecated|retired|archived",
+        "capability_state": "DECLARED|REGISTERED|ROUTABLE|REACHABLE|VERIFIED|QUALIFIED|PRODUCTION|DEGRADED|RETIRED|QUARANTINED",
+        "authority": "authoritative|derived|reference-only",
+        "last_verified": "ISO-8601 or null",
+        "notes": "string"
+      }
+    },
+    "rule": "No consequential task routes to anything below VERIFIED. Registered != verified != production."
+  },
+  "artifacts": [
+    {
+      "canonical_path": "/root/docs/REPOSITORY_BOUNDARY_SOT.md",
+      "owner_repo": "neutral",
+      "role": "contract",
+      "lifecycle": "proposed",
+      "capability_state": "DECLARED",
+      "authority": "authoritative-pending-F13",
+      "last_verified": null,
+      "notes": "Forged 2026-09-06 from external witness audit + local probes. Binding on Arif's seal."
+    },
+    {
+      "canonical_path": "/root/AAA/federation/artifact-lifecycle.json",
+      "owner_repo": "AAA",
+      "role": "registry",
+      "lifecycle": "active",
+      "capability_state": "REGISTERED",
+      "authority": "authoritative",
+      "last_verified": "2026-09-06",
+      "notes": "This file. Extends deprecation-registry.json pattern."
+    },
+    {
+      "canonical_path": "/root/AAA/federation/organs.yaml",
+      "owner_repo": "AAA",
+      "role": "registry",
+      "lifecycle": "active",
+      "capability_state": "PRODUCTION",
+      "authority": "authoritative",
+      "last_verified": "2026-09-06",
+      "notes": "Organ topology canon. Rendered into agent subagent manifests via forge_compile_agents."
+    },
+    {
+      "canonical_path": "/root/.config/federation-models.json",
+      "owner_repo": "neutral",
+      "role": "registry",
+      "lifecycle": "active",
+      "capability_state": "PRODUCTION",
+      "authority": "authoritative",
+      "last_verified": "2026-09-06",
+      "notes": "Model routing SOT. Individual model entries carry per-model states — see video-routing.yaml health ledger pattern."
+    },
+    {
+      "canonical_path": "/root/docs/MACHINE_MAP.md",
+      "owner_repo": "neutral",
+      "role": "contract",
+      "lifecycle": "active",
+      "capability_state": "PRODUCTION",
+      "authority": "authoritative",
+      "last_verified": null,
+      "notes": "KVM8 truth / KVM4 execution split. Precedent for neutral-ground SOT placement."
+    },
+    {
+      "canonical_path": "/root/AAA/federation/AAA_FEDERATION_CONVERGENCE_PLAN_v0.1.md",
+      "owner_repo": "AAA",
+      "role": "archive",
+      "lifecycle": "deprecated_candidate",
+      "capability_state": "RETIRED",
+      "authority": "reference-only",
+      "last_verified": null,
+      "notes": "Shadow-3 OBS: coexists with un-suffixed current. Dedupe required — delete or move to archives/."
+    },
+    {
+      "canonical_path": "/root/AAA/federation/AAA_FEDERATION_ENFORCEMENT_MATRIX_v0.1.md",
+      "owner_repo": "AAA",
+      "role": "archive",
+      "lifecycle": "deprecated_candidate",
+      "capability_state": "RETIRED",
+      "authority": "reference-only",
+      "last_verified": null,
+      "notes": "Shadow-3 OBS duplicate pair."
+    },
+    {
+      "canonical_path": "/root/AAA/federation/AAA_FEDERATION_GAP_REPORT_v0.1.md",
+      "owner_repo": "AAA",
+      "role": "archive",
+      "lifecycle": "deprecated_candidate",
+      "capability_state": "RETIRED",
+      "authority": "reference-only",
+      "last_verified": null,
+      "notes": "Shadow-3 OBS duplicate pair."
+    },
+    {
+      "canonical_path": "/root/A-FORGE/vendor/claude-video/",
+      "owner_repo": "A-FORGE",
+      "role": "experiment",
+      "lifecycle": "proposed",
+      "capability_state": "QUARANTINED",
+      "authority": "reference-only",
+      "last_verified": null,
+      "notes": "MIT substrate supply only. Read-only. Never inherits trust model. Whisper/Groq dependency forbidden — federation ASR adapter instead."
+    },
+    {
+      "canonical_path": "/root/AAA/skills/watch",
+      "owner_repo": "AAA",
+      "role": "capability",
+      "lifecycle": "proposed",
+      "capability_state": "QUARANTINED",
+      "authority": "reference-only",
+      "last_verified": null,
+      "notes": "Shadow-5 OBS: silently mesh-propagated foreign skill, ungated. NOT committed. Requires 888-HOLD-MESH decision: remove from canonical tree or gate it."
+    },
+    {
+      "canonical_path": "/root/AAA/skills/capabilities/media/AAA-video-emd-pipeline/",
+      "owner_repo": "AAA",
+      "role": "capability",
+      "lifecycle": "proposed",
+      "capability_state": "REGISTERED",
+      "authority": "derived",
+      "last_verified": "2026-09-06",
+      "notes": "Contract frozen + parse-verified 2026-09-06. Fixtures/canaries/live-smoke pending — see SKILL.md forge sequence. Stays uncommitted in git until 888 gates pass (honest DRAFT state)."
+    },
+    {
+      "canonical_path": "gemini_bridge:18092",
+      "owner_repo": "neutral",
+      "role": "runtime",
+      "lifecycle": "active",
+      "capability_state": "DEGRADED",
+      "authority": "reference-only",
+      "last_verified": null,
+      "notes": "2026-09-06 canary: /models 404, /v1/models 404. TCP-up, capability-dead. 888-HOLD-PROVIDER. Excluded from all routing."
+    }
+  ]
+}
