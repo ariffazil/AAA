@@ -18,6 +18,8 @@ H1 is a resistance model, not a truth-exemption. C13 still. Gödel still. No sel
 
 **Agentic state:** OBS/REPORTED/INFERRED tags; expiring; deletable; never inferred identity; H-axis reference only.
 
+**Hermes contract:** learn *human reality* from WawaBot, not more intelligence. Packet: spoken / felt(UNKNOWN unless reported) / incentive(≥3 hypotheses) / fear(REPORTED only). Path: fact → meaning → identity → decision. Ask who trusts whom before the optimal plan. Status is a human-layer energy. Invisible maintenance is survival capability. RSI closes through F13 civilization, not AI-improves-AI.
+
 KVM2 `azwaos` role lags (witness in doctrine, nod pasif in MACHINE_MAP). Isolation first, then voice.
 
 DITEMPA BUKAN DIBERI
