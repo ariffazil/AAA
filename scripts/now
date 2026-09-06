@@ -1,0 +1,121 @@
+#!/usr/bin/env python3
+"""
+`now` — Universal temporal anchor & one-shot federation state for arifOS warga.
+Sub-second. Non-blocking. Always accurate.
+
+2026-09-06: HTTP body beats TCP. Port open + status=degraded is YELLOW, not green.
+FED uses /health/liveliness. 401/403 = UP (auth-gated).
+"""
+import datetime
+import json
+import os
+import socket
+import sys
+import urllib.error
+import urllib.request
+
+try:
+    import pytz
+    myt_tz = pytz.timezone("Asia/Kuala_Lumpur")
+    now_utc = datetime.datetime.now(datetime.timezone.utc)
+    now_myt = now_utc.astimezone(myt_tz)
+except Exception:
+    now_utc = datetime.datetime.now(datetime.timezone.utc)
+    now_myt = now_utc + datetime.timedelta(hours=8)
+
+utc_str = now_utc.strftime("%Y-%m-%dT%H:%M:%SZ")
+myt_str = now_myt.strftime("%Y-%m-%d %H:%M:%S+08:00 (MYT)")
+
+sot_path = "/root/.local/share/arifos/carry_forward.json"
+session_id = "UNKNOWN"
+actor = "UNKNOWN"
+open_loops = []
+
+if os.path.exists(sot_path):
+    try:
+        with open(sot_path, "r", encoding="utf-8") as f:
+            d = json.load(f)
+            session_id = d.get("session_id", "UNKNOWN")
+            actor = d.get("actor", "UNKNOWN")
+            open_loops = d.get("open_loops_888_HOLD", [])
+    except Exception as e:
+        session_id = f"ERROR: {e}"
+
+organs = [
+    ("arifOS", 8088, "/health"),
+    ("A-FORGE", 7071, "/health"),
+    ("GEOX", 8081, "/health"),
+    ("WEALTH", 18082, "/health"),
+    ("WELL", 18083, "/health"),
+    ("arifFlow", 7073, "/health"),
+    ("FRAME", 18085, "/health"),
+    ("FED", 4000, "/health/liveliness"),
+]
+
+
+def _lamp(name: str, port: int, path: str, timeout: float = 0.25) -> str:
+    """UP | DEGRADED | DOWN. Body status beats TCP connect."""
+    url = f"http://127.0.0.1:{port}{path}"
+    try:
+        req = urllib.request.Request(url, method="GET")
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            raw = resp.read(8000)
+            text = raw.decode("utf-8", errors="replace")
+            try:
+                body = json.loads(text)
+            except Exception:
+                # truncated JSON still carries a top-level status token
+                body = {}
+                if '"status": "degraded"' in text or '"status":"degraded"' in text:
+                    body["status"] = "degraded"
+            if not isinstance(body, dict):
+                return "UP"
+            status = str(body.get("status") or body.get("health") or "").lower()
+            if status in ("degraded", "watch", "warn", "caution", "stale", "amber"):
+                return "DEGRADED"
+            if name == "WELL":
+                honesty = body.get("honesty") if isinstance(body.get("honesty"), dict) else {}
+                human = body.get("human_substrate") if isinstance(body.get("human_substrate"), dict) else {}
+                if honesty.get("is_stale") or human.get("freshness_band") in ("AGED", "EXPIRED", "STALE"):
+                    return "DEGRADED"
+                if honesty.get("code") == "SELF_REPORT" and body.get("has_verified_telemetry") is False:
+                    return "DEGRADED"
+            return "UP"
+    except urllib.error.HTTPError as e:
+        if e.code in (401, 403):
+            return "UP"
+        return "DOWN"
+    except Exception:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.settimeout(timeout)
+        try:
+            s.connect(("127.0.0.1", port))
+            s.close()
+            return "UP"
+        except Exception:
+            return "DOWN"
+
+
+organ_states = {name: _lamp(name, port, path) for name, port, path in organs}
+EMOJI = {"UP": "🟢", "DEGRADED": "🟡", "DOWN": "🔴"}
+
+if "--json" in sys.argv:
+    out = {
+        "utc": utc_str,
+        "myt": myt_str,
+        "sot": {
+            "session_id": session_id,
+            "actor": actor,
+            "open_loops_count": len(open_loops),
+        },
+        "organs": organ_states,
+        "lamp_rule": "HTTP body status beats TCP. WELL SELF_REPORT/AGED = DEGRADED.",
+    }
+    print(json.dumps(out, indent=2))
+else:
+    print(f"⏰ TIME : {utc_str} | {myt_str}")
+    print(f"📜 SOT  : {session_id} (Actor: {actor})")
+    org_line = " ".join([f"{name}:{EMOJI.get(state, '⚪')}" for name, state in organ_states.items()])
+    print(f"🏛️ ORG  : {org_line}")
+    if open_loops:
+        print(f"🔒 HOLDS: {len(open_loops)} open loops in carry_forward.json")
