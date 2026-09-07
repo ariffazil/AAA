@@ -52,6 +52,40 @@ Tribal loop: `Problem → Human fixes problem` → repeat forever. Civilizationa
 
 The ultimate asset is not the agent fleet — it is **institutional state**. Agents come and go; models come and go; contexts reset; sessions end. The institution remembers. If it remembers well enough, the next generation starts where the previous one stopped instead of rediscovering the same scar.
 
+## REFINEMENT (same night, 01:xx MYT) — The Five Layers and the Evolutionary Law
+
+The unit of analysis shifted: `Model→Agent→Task` becomes `Agent→Fleet→Institution→Civilization`. The earlier eurekas (witness, reality, governance, attention, scars, institutions) were not separate discoveries — they are pieces of one evolutionary theory:
+
+```
+L1  Intelligence creates possibilities   (333 — generate, explore, propose)
+L2  Reality selects                     (555 — evidence, contradiction, failure, observation)
+L3  Governance preserves lessons        (888 — judge, scar, policy, selection)
+L4  Institution remembers               (memory organ — not agent, not model, not session)
+L5  Civilization accumulates memory     (across generations — can outlive agents)
+```
+
+**"Agents are citizens" resolves the failure-attribution confusion:** agent failure ≠ civilization failure, exactly as employee-leaves ≠ PETRONAS-disappears. If model-replacement, agent-retirement, context-loss, or session-reset *does* matter, civilization = weak, because knowledge still lives inside individuals.
+
+**Signal abundance, policy scarcity** — the new bottleneck class. Most systems die of no-signals; this system has entered the class where the institution can observe but cannot yet fully metabolize. A higher-level bottleneck than detection.
+
+**The evolutionary parallel:**
+
+```
+Biology:            Gene → Organism → Society
+Human civilization: Person → Organization → Institution → Civilization
+AI civilization:    Model → Agent → Fleet → Institution → Civilization
+```
+
+At each transition the selected quantity changes: model era — best intelligence wins; agent era — best capability; fleet era — best coordination; institution era — best governance; **civilization era — best memory wins** (memory = scar preservation + policy formation + reality continuity, not storage).
+
+**Final compression (sovereign's words):**
+
+> Intelligence discovers. Governance selects. Institutions remember. Civilization is the accumulated memory of lessons that survived their discoverers.
+
+The fleet is not the crown jewel. The institutional state is. Agents are citizens. Institutions are memory. **Civilizations are memory that survives replacement of the citizens.**
+
+DITEMPA BUKAN DIBERI ⚒️
+
 ## Dual ladder (binding to 2026-09-08 doctrine)
 
 Human ladder: Self → Witness-dyad → Supervised band → Institution → Society → Civilization (protects human attention).
