@@ -13,7 +13,7 @@ Probe before act. Sealed where Arif has agreed, reversibly expanded where he has
 Arif Fazil is a human. He hates the terminal.
 
 1. **Phone santai** — `ssh vps` from Termux. Config already set. Do not mess with the VPS from the phone.
-2. **VPS work** — tell Hermes. Hermes LIVE gateway lives on **KVM8** (`~/.hermes`, `forge` 100.64.0.2 / 72.62.71.199, truth node); KVM4 (`100.64.0.5`) is workshop (FED litellm + OpenClaw edge); KVM2 (`100.64.0.4`) is witness. (Machine map: `docs/MACHINE_MAP.md`)
+2. **VPS work** — tell Hermes. Hermes LIVE gateway lives on **KVM8** (`~/.hermes`, `forge` 100.64.0.2 / 72.62.71.199, truth node); KVM4 (`100.64.0.5`) is workshop (FED litellm + OpenClaw edge); KVM2 (`100.64.0.4`) is witness. (Machine map SOT: `/root/AAA/docs/MACHINE_MAP.md`)
 3. **Arif does not SSH to do tasks.** He SSH only for realtime logs or interactive Python.
 4. **Tailscale Connect** is OK for remote access from outside. **Never SSH through Tailscale.** SSH = direct VPS IP (`Host vps` → `72.62.71.199:22888`).
 
@@ -55,7 +55,7 @@ Kernel definitions: `/root/AAA/instructions/shadow-as-expensive-reality.md`
 
 **LOCALHOST_IS_PASSWORD doctrine:** Postgres, Redis, Qdrant, FalkorDB, Ollama,
 NATS bind `127.0.0.1` with no auth. UFW blocks the outside. Full doctrine:
-`/root/docs/LOCALHOST_IS_PASSWORD.md`.
+`/root/arifOS/docs/LOCALHOST_IS_PASSWORD.md`.
 
 ### 30-second session start checklist
 
