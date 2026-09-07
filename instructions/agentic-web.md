@@ -17,7 +17,7 @@
 ## The Authority Ladder (choose lowest sufficient power)
 
 ```
-LEVEL 0 — FREE (RM0, FED flash lane :4000 — qwen3.6-flash / deepseek-v4-flash / gemini-3.6-flash):
+LEVEL 0 — FREE (RM0, FED flash lane :4000 — qwen3.6-flash / gemini-3.6-flash; deepseek-v4-flash DEAD 2026-09-04):
   Pre-flight fact-checks on flash-tier models before any governed call.
   (FLAME :18901 decommissioned 2026-09-04 — registry: flame-api.service)
 
