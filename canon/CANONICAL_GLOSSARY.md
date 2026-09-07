@@ -128,6 +128,18 @@ Always: `KVM8 (forge)` — forge is the machine; A-FORGE is the organ. Never con
 | P-Dial Sieve | Possibility $\to$ Compression $\to$ Proposal $\to$ P-Dial $\to$ Commitment $\to$ Reality. |
 | Court-Workshop-Witness | Separation of Powers: Workshop (333) generates, Court (888) judges, Witness (VAULT999) attests, Sovereign (F13) commits. |
 | Governance Gap Theorem | System Value = Capability $\times$ Governance. $0 \text{ Gov} \times \infty \text{ Cap} = \text{Civilizational Risk}$. |
+| Governance Dunbar (DUNBAR CONSTRAINT) | Stable coordination capacity is finite; scale by externalizing state into artifacts. Layer caps: L1 = 4 concurrent live agents (F13 2026-09-07). Metric refined by Verification Gradient. |
+| Verification Gradient | Immature systems verify actions; mature verify processes; civilizations verify exceptions. Observable ≠ Verify ≠ Judge. The opposite of verification is witnessing. Governing metric at scale: `verification_cost_per_exception`. |
+| Topographic Reality Compilation (TRC) | Subsurface isomorphism for human physique generation. Image Quality $\approx$ Constraint Density $\times$ Constraint Correctness. 5-stratum structural compilation (Osteology, Musculature, Adipose, DensePose UV DEM, Raking Light) + Stratum T (Temporal Physiology). |
+| Reality Topography Law | Pixels are not reality, prompt words are not anatomy. Every vision scar (VIS-001..009) was reality compression failure. Verification must precede generation; constraint density must precede diffusion. |
+| Stratum S (Somatic State Layer) | Orthogonal somatic layer modeling breathing, load transfer/center of gravity, kinetic tension, and fatigue history. A human is not a statue: Body Geometry + Body State. Structure $\ne$ State. |
+| Reality Dynamics Engine (RDE) | The engine that evolves TRC from static topography to dynamic state. Topography answers "What is this body?"; Somatics answers "What is this body doing?" |
+| Static Human Fallacy (SCAR-VIS-009) | Failure mode where AI generates correct anatomy with incorrect embodiment (lifeless mannequin, zero balance, no breathing, no kinetic load transfer). |
+| Reality Invoice Theorem | The core asymmetry of consequence: Intelligence proposes, topology represents, verification attests, governance judges, reality invoices, model repents. The agent computes, but the human pays the debt. |
+| Model = Hutang (Epistemic Debt) | Root of angels and devils. Every model is an epistemic debt owed to reality. Angel remembers its debt; devil forgets and collects from humans. Scars are the currency of repentance. |
+| Reality Humility vs. Model Idolatry | Highest Angel vs. Highest Devil. Models must remain servants of truth, never substitutes for truth. The map is never the territory. |
+| rtc-loop | Closed-loop execution engine: GENERATE → AUDIT → REJECT → REGENERATE → DELIVER WITH DISCLOSURE. V1 rejected, V2 disclosed, scar becomes law. |
+| Diffusion Prior Domination (SCAR-VIS-010 / FI-008) | Prompt text loses against diffusion prior. Training datasets hard-code biases (e.g. fitness = stage bodybuilder). Overcome via topological anchoring + negation space + mandatory adherence band disclosure. |
 
 ---
 
@@ -195,4 +207,11 @@ Symptom ≠ cause. One HOT can be OpenCode workload + LiteLLM traffic + Hermes p
 - Governed Memory Engineering Spec: `/root/AAA/canon/MEMORY_ENGINEERING_SPEC_v1.md`
 - Paradox Coordinate Theory: `/root/AAA/canon/PARADOX_COORDINATE_THEORY.md`
 - Consequence-Bearing Reality Binding: `/root/AAA/canon/EUREKA-CONSEQUENCE-BINDING-2026-09-07.md`
+- Governance Dunbar (DUNBAR CONSTRAINT): `/root/AAA/canon/EUREKA-GOVERNANCE-DUNBAR-2026-09-07.md`
+- Verification Gradient (EUREKA::VERIFICATION_GRADIENT): `/root/AAA/canon/EUREKA-VERIFICATION-GRADIENT-2026-09-07.md`
 - Reality-Bound Authority Principle (R-BAP): `/root/AAA/canon/EUREKA-REALITY-BOUND-AUTHORITY-2026-09-07.md`
+- Topographic Reality Compilation (TRC): `/root/AAA/canon/EUREKA-TOPOGRAPHIC-REALITY-COMPILATION-2026-09-07.md`
+- Vision Scar Compilation: `/root/AAA/canon/SCAR_RECORDS/scar-006-vision-intelligence-complete.md`
+- Vision Execution Runbook: `/root/AAA/canon/VISION_EXECUTION_NEXT.md`
+- Gödel Lock (The Reality Invoice): `/root/AAA/canon/GODEL-LOCK-TRE-REALITY-INVOICE-2026-09-07.md`
+- First RTC Receipt: `/root/AAA/receipts/RECEIPT-RTC-001-V2-PHYSIQUE.md`

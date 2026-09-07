@@ -35,6 +35,26 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(name)s] %(message
 KEYS_DIR = Path(__file__).resolve().parent / "keys"
 ARIF_PRIVATE_KEY = KEYS_DIR / "arifos_private.key"
 ARIFOS_CHALLENGE_STORE = os.environ.get("ARIFOS_URL", "http://127.0.0.1:8088")
+def _load_challenge_from_redis(challenge_id: str) -> dict | None:
+    """Read an authoritative challenge written by arifOS crypto_auth (Redis, db0).
+
+    Read-only fallback: the signing lane never issues or mutates challenges.
+    """
+    import os
+
+    try:
+        import redis as _redis_mod
+    except Exception:
+        return None
+    try:
+        url = os.environ.get("ARIFOS_REDIS_URL", "redis://127.0.0.1:6379/0")
+        client = _redis_mod.from_url(url, decode_responses=True)
+        raw = client.get(f"arifos:challenge:{challenge_id}")
+        return json.loads(raw) if raw else None
+    except Exception:
+        return None
+
+
 ALLOWED_ORIGINS = {
     "http://localhost:5173",  # AAA dev server
     "http://127.0.0.1:5173",
@@ -139,7 +159,7 @@ class SigningHandler(BaseHTTPRequestHandler):
         # No wildcard CORS — explicit origins only
 
     def _verify_challenge(self, challenge_id: str, submitted_canonical: str) -> tuple[bool, str]:
-        """Retrieve the authoritative challenge from arifOS and verify the submitted payload matches."""
+        """Retrieve the authoritative challenge and verify the submitted payload matches."""
         import urllib.request
 
         try:
@@ -148,7 +168,11 @@ class SigningHandler(BaseHTTPRequestHandler):
             with urllib.request.urlopen(req, timeout=5) as resp:
                 authoritative = json.loads(resp.read().decode())
         except Exception as e:
-            return False, f"Cannot retrieve challenge from arifOS: {e}"
+            # Kernel HTTP surface does not expose GET /challenge/<id> (2026-09-08).
+            # Fall back to the same authoritative Redis store crypto_auth writes to.
+            authoritative = _load_challenge_from_redis(challenge_id)
+            if not authoritative:
+                return False, f"Cannot retrieve challenge (http + redis fallback failed): {e}"
 
         # Verify submitted payload matches authoritative challenge
         try:

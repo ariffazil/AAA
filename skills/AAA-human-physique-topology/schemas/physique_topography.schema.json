@@ -1,0 +1,147 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Human Physique Topography Contract",
+  "description": "5-layer biomechanical, structural, and optical topography specification for human physique image generation",
+  "type": "object",
+  "required": ["version", "subject_demographics", "somatotype", "skeletal_framework", "muscular_topography"],
+  "properties": {
+    "version": { "type": "string", "enum": ["1.0.0"] },
+    "subject_demographics": {
+      "type": "object",
+      "required": ["biological_sex", "apparent_age_range", "height_cm", "weight_kg"],
+      "properties": {
+        "biological_sex": { "type": "string", "enum": ["male", "female"] },
+        "apparent_age_range": { "type": "string" },
+        "height_cm": { "type": "number", "minimum": 120, "maximum": 240 },
+        "weight_kg": { "type": "number", "minimum": 35, "maximum": 200 },
+        "ethnicity_melanin_tone": { "type": "string" }
+      }
+    },
+    "somatotype": {
+      "type": "object",
+      "description": "Heath-Carter somatotyping and body composition parameters",
+      "required": ["endomorphy", "mesomorphy", "ectomorphy", "estimated_body_fat_pct"],
+      "properties": {
+        "endomorphy": { "type": "number", "minimum": 1.0, "maximum": 9.0, "description": "Relative adiposity (1=extremely lean, 9=high fat)" },
+        "mesomorphy": { "type": "number", "minimum": 1.0, "maximum": 9.0, "description": "Relative musculoskeletal robustness (1=minimal muscle, 9=maximum hypertrophy)" },
+        "ectomorphy": { "type": "number", "minimum": 1.0, "maximum": 9.0, "description": "Relative linearity and slimness of limbs (1=dense/stocky, 9=long/slender)" },
+        "estimated_body_fat_pct": { "type": "number", "minimum": 4.0, "maximum": 40.0 },
+        "fat_free_mass_index_ffmi": { "type": "number", "minimum": 14.0, "maximum": 30.0 },
+        "vascularity_grade": { "type": "integer", "minimum": 0, "maximum": 5, "description": "0=none, 1=forearms only, 2=biceps+forearms, 3=deltoids+arms, 4=abdominal/chest veins, 5=extreme full body vascularity" },
+        "muscular_striation_grade": { "type": "integer", "minimum": 0, "maximum": 4, "description": "0=smooth, 1=faint fiber lines on flex, 2=clear shoulder/tricep striations, 3=deep chest/quad feathering, 4=extreme competition shredded" }
+      }
+    },
+    "skeletal_framework": {
+      "type": "object",
+      "description": "Stratum 0: Osteological scaffold, joint axes, and anthropometric ratios",
+      "required": ["proportion_canon", "biacromial_to_biiliac_ratio"],
+      "properties": {
+        "proportion_canon": { "type": "string", "enum": ["7.0_heads_stocky", "7.5_heads_natural", "8.0_heads_heroic_athletic", "8.5_heads_stylized_ideal", "observed_demographic"], "default": "7.5_heads_natural" },
+        "biacromial_to_biiliac_ratio": { "type": "number", "minimum": 1.1, "maximum": 2.2, "description": "Shoulder-to-waist ratio (Adonis ideal ~1.618, Natural athletic ~1.35-1.50, Stocky ~1.20-1.30)" },
+        "torso_to_leg_ratio": { "type": "number", "minimum": 0.6, "maximum": 1.1, "default": 0.82 },
+        "ribcage_expansion_state": { "type": "string", "enum": ["neutral", "expanded_inhale", "vacuum_flexed"], "default": "neutral" },
+        "clavicle_inclination_deg": { "type": "number", "minimum": -15.0, "maximum": 25.0, "default": 5.0 },
+        "posture_alignment": { "type": "string", "enum": ["neutral_anatomical", "athletic_brace", "dynamic_torsion", "relaxed_kyphotic_neutral"], "default": "athletic_brace" }
+      }
+    },
+    "muscular_topography": {
+      "type": "object",
+      "description": "Stratum 1: Specific regional muscle contours, insertions, and tension vectors",
+      "properties": {
+        "torso_anterior": {
+          "type": "object",
+          "properties": {
+            "pectoralis_major": { "type": "string", "enum": ["flat", "athletic_square", "hypertrophic_full", "cleaved_dense"] },
+            "clavicular_head_fullness": { "type": "string", "enum": ["moderate", "prominent", "dominating"] },
+            "rectus_abdominis_quadrants": { "type": "string", "enum": ["smooth_covered", "4_pack_visible", "6_pack_distinct", "8_pack_deep_linea_transversae"] },
+            "linea_alba_depth": { "type": "string", "enum": ["faint", "well_defined", "deep_cleft"] },
+            "external_obliques": { "type": "string", "enum": ["soft", "tight_athletic", "tapered_v_lines", "hypertrophic_prominent"] },
+            "serratus_anterior_visibility": { "type": "string", "enum": ["obscured", "visible_digits_5_8", "razor_sharp_finger_slits"] }
+          }
+        },
+        "torso_posterior": {
+          "type": "object",
+          "properties": {
+            "latissimus_dorsi_spread": { "type": "string", "enum": ["moderate", "broad_v_taper", "winged_cobra_spread"] },
+            "trapezius_thickness": { "type": "string", "enum": ["subtle", "elevated_athletic", "heavy_columbian_neck"] },
+            "rhomboids_and_infraspinatus": { "type": "string", "enum": ["smooth", "sculpted_relief", "deep_valleys"] },
+            "erector_spinae_christmas_tree": { "type": "string", "enum": ["covered", "visible_lower_furrow", "striated_tree_pattern"] }
+          }
+        },
+        "upper_extremities": {
+          "type": "object",
+          "properties": {
+            "deltoids_triad": { "type": "string", "enum": ["natural_round", "capped_athletic", "cannonball_hypertrophic"] },
+            "biceps_brachii_peak": { "type": "string", "enum": ["linear_athletic", "high_peaked_short_belly", "full_elongated_belly"] },
+            "triceps_horseshoe": { "type": "string", "enum": ["faint", "clearly_demarcated_lateral_long_heads", "deep_intermuscular_groove"] },
+            "brachioradialis_and_forearm_vascularity": { "type": "string", "enum": ["lean_moderate", "thick_ropy_vascular", "sinewy_calisthenic"] }
+          }
+        },
+        "lower_extremities": {
+          "type": "object",
+          "properties": {
+            "quadriceps_sweep": { "type": "string", "enum": ["straight_lean", "athletic_flared_vastus_lateralis", "massive_bodybuilder_sweep"] },
+            "vastus_medialis_teardrop": { "type": "string", "enum": ["subtle", "sculpted_above_patella", "prominent_bulging"] },
+            "rectus_femoris_separation": { "type": "string", "enum": ["smooth", "central_groove", "cross_striated"] },
+            "gastrocnemius_calves": { "type": "string", "enum": ["high_attachment_lean", "diamond_split", "full_dense_low_attachment"] }
+          }
+        },
+        "kinetic_tension_state": {
+          "type": "string",
+          "enum": ["isometric_peak_flex", "eccentric_under_load", "dynamic_movement_flow", "anatomical_relaxed"],
+          "default": "isometric_peak_flex"
+        }
+      }
+    },
+    "dense_surface_topology": {
+      "type": "object",
+      "description": "Stratum 3: DensePose IUV patch binding and continuous surface manifold constraints",
+      "properties": {
+        "densepose_model_target": { "type": "string", "enum": ["DensePose-R50-FPN", "ContinuousSurfaceEmbeddings-CSE", "SMPL-X-UV24"], "default": "SMPL-X-UV24" },
+        "active_surface_patches": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Active body patches from the 24 standard DensePose UV segments"
+        },
+        "surface_continuity_weight": { "type": "number", "minimum": 0.0, "maximum": 1.0, "default": 0.95 }
+      }
+    },
+    "photometric_micro_topography": {
+      "type": "object",
+      "description": "Stratum 4: Optical material properties, surface normal orientation, and raking illumination",
+      "properties": {
+        "lighting_topography_angle_deg": { "type": "number", "description": "Raking cross-light angle to maximize relief of intermuscular sulci", "default": 45.0 },
+        "subsurface_scattering_strength": { "type": "string", "enum": ["low_dry", "lifelike_epidermal_scattering", "high_translucent"], "default": "lifelike_epidermal_scattering" },
+        "surface_hydration_sheen": { "type": "string", "enum": ["matte_dry", "subtle_satin_glow", "light_perspiration_sheen", "heavy_workout_sweat_droplets"], "default": "subtle_satin_glow" },
+        "skin_micro_texture": { "type": "string", "enum": ["fine_anisotropic_pores", "weathered_textured", "high_definition_dermal_ridges"], "default": "fine_anisotropic_pores" }
+      }
+    },
+    "temporal_physiology": {
+      "type": "object",
+      "description": "Stratum S: Somatic State Layer & Dynamic Biomechanical Reservoir Dynamics",
+      "properties": {
+        "respiration_phase": { "type": "string", "enum": ["deep_inhale_ribcage_flared", "full_exhale_vacuum_tight", "mid_breath_braced", "post_sprint_forced_respiration"], "default": "mid_breath_braced" },
+        "weight_distribution": { "type": "string", "enum": ["unilateral_60_40_drive", "athletic_stagger_stance", "grounded_bilateral_symmetry", "seated_compression", "dynamic_airborne"], "default": "athletic_stagger_stance" },
+        "kinetic_tension": { "type": "string", "enum": ["agonist_peak_flexion", "eccentric_under_load", "isometric_brace", "dynamic_movement_flow", "anatomical_relaxed"], "default": "isometric_brace" },
+        "fatigue_state": { "type": "string", "enum": ["fresh_recovered", "mid_workout_vascular_warmth", "post_sprint_metabolic_flush", "exhaustion_depleted"], "default": "mid_workout_vascular_warmth" },
+        "emotional_embodiment": { "type": "string", "enum": ["thoracic_open_confident", "focused_kinetic_readiness", "relaxed_grounded_natural", "stoic_grounded_brace"], "default": "focused_kinetic_readiness" },
+        "muscle_pump_state": { "type": "string", "enum": ["cold_unworked", "warm_toned", "hyperemic_full_gym_pump", "fatigued_depleted"], "default": "warm_toned" },
+        "hydration_glycogen_fullness": { "type": "string", "enum": ["depleted_flat", "hydrated_normal", "glycogen_loaded_dense"], "default": "hydrated_normal" },
+        "gravitational_loading": { "type": "string", "enum": ["standing_axial_load", "horizontal_bench_compression", "hanging_decompression", "dynamic_flight"], "default": "standing_axial_load" }
+      }
+    },
+    "somatic_state": {
+      "$ref": "#/properties/temporal_physiology"
+    },
+    "conditioning_adapters": {
+      "type": "object",
+      "description": "Conditioning controls required for rendering",
+      "properties": {
+        "controlnet_openpose_weight": { "type": "number", "minimum": 0.0, "maximum": 1.5, "default": 1.0 },
+        "controlnet_densepose_weight": { "type": "number", "minimum": 0.0, "maximum": 1.5, "default": 0.85 },
+        "controlnet_depth_weight": { "type": "number", "minimum": 0.0, "maximum": 1.5, "default": 0.75 },
+        "controlnet_normal_weight": { "type": "number", "minimum": 0.0, "maximum": 1.5, "default": 0.80 }
+      }
+    }
+  }
+}
