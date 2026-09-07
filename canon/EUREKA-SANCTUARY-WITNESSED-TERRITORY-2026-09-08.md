@@ -1,7 +1,7 @@
 # EUREKA — Sanctuary as Witnessed Territory (The Anti-Mother Doctrine)
 **Date:** 2026-09-08 (~01:0x MYT)
 **Source:** Arif F13 sovereign articulation — third articulation of the 2026-09-07/08 night chain
-**Status:** ARTICULATED_F13_PENDING_SEAL
+**Status:** F13_RATIFIED :: 2026-09-08T00:50:01+08:00 MYT · Kimi Code A1–A6 folded · Witnessed Territory instruction sealed
 **Names the law that these already pointed at without saying its name:** Reality Invoice Theorem (G11, GÖDEL_LOCKED_CANON) · consequence-binding · Human Meaning Membrane witness archetype ("never irreplaceable") · human-state-estimation intervention ceiling · Five Value Classes PRESENCE (not possession) · dissipative-transition (hold, don't resolve)
 
 ## EVIDENCE → INTERPRET (sovereign's chain)
