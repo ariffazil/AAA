@@ -1,0 +1,86 @@
+{
+  "last_session": "exp-1788806381735-12",
+  "unmetabolized": [],
+  "active_scars": [
+    {
+      "event_id": "evt_2a16bb390e66cf88",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-07T18:34:03Z"
+    },
+    {
+      "event_id": "evt_3671286213cee2ab",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-07T18:34:03Z"
+    },
+    {
+      "event_id": "evt_c1a556c941da8e0b",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-07T18:34:03Z"
+    },
+    {
+      "event_id": "evt_52e9aa294b657263",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-07T18:34:03Z"
+    },
+    {
+      "event_id": "evt_ebd353fe1c8e4118",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-07T18:34:03Z"
+    },
+    {
+      "event_id": "evt_63a8cfda8b6c501a",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-07T18:34:03Z"
+    },
+    {
+      "event_id": "evt_2aff635158f8914e",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-07T18:34:03Z"
+    },
+    {
+      "event_id": "evt_e64c3fb2596efb16",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-07T18:34:03Z"
+    },
+    {
+      "event_id": "evt_663dbf13cfa1956a",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-07T18:34:03Z"
+    },
+    {
+      "event_id": "evt_e147a0f2f1ed1fe1",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-07T18:34:03Z"
+    },
+    {
+      "event_id": "evt_4389b522a76f0527",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-07T18:45:01Z"
+    },
+    {
+      "event_id": "evt_63ad8d9aaada6488",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-07T18:45:01Z"
+    },
+    {
+      "event_id": "evt_c40e7733d995a195",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-07T18:45:01Z"
+    },
+    {
+      "event_id": "evt_3440305562fecf0b",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-07T18:45:01Z"
+    }
+  ],
+  "pending_skills": [],
+  "metrics": {
+    "map": 0.0,
+    "echo": 1.0,
+    "total_sessions": 14,
+    "direct_executions": 0,
+    "retained_improvements": 14,
+    "honest_observations": 14
+  },
+  "last_updated_utc": "2026-09-07T18:45:01Z"
+}
