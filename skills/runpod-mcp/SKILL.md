@@ -14,11 +14,11 @@ metadata:
   author: runpod
   version: "1.1.2" # x-release-please-version
 license: Apache-2.0
-capability_tier: fed-agent-subagent
-ecology_state: WARM
 ---
 
 # Runpod MCP
+
+> **Governance:** Irreversible infra ops (deploy/destroy/spend/credential changes) route via arifos-governance; irreversible actions require 888_HOLD release. (F1 AMANAH / F13 SOVEREIGN)
 
 The Runpod MCP server exposes Runpod's control plane as structured tool calls,
 so an MCP-capable agent can manage infrastructure without shelling out. It is the

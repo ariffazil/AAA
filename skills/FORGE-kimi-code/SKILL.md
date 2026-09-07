@@ -84,10 +84,10 @@ Before using this skill on any mutating, irreversible, or high-blast-radius task
 
 | Path | Purpose |
 |------|---------|
-| `/root/.kimi-code/bin/kimi` | kimi-code binary (v0.18+) |
+| `/root/.kimi-code/bin/kimi` | kimi-code binary (v0.41.0 = upstream latest, verified 2026-09-07; npm `@moonshot-ai/kimi-code`) |
 | `/usr/local/bin/kimi` | Federation wrapper (sets `KIMI_CODE_HOME`, unsets dead `KIMI_API_KEY`) |
-| `$KIMI_CODE_HOME` → `/root/.arifos/agents/kimi` | Config, MCP, hooks, credentials, skills |
-| `/root/.arifos/agents/kimi/mcp.json` | User-global MCP (13 servers, 9 active) |
+| `/root/.kimi-code` | `$KIMI_CODE_HOME` — ONE-HOME 2026-08-24 (was `.arifos/agents/kimi`, now the identity archive: hooks/launchers/agents live there, referenced by absolute path) |
+| `/root/.kimi-code/mcp.json` | User-global MCP — count = this file, do not hardcode (13 entries, 8 enabled / 5 disabled at 2026-09-07; legacy copy at `.arifos/agents/kimi/mcp.json` is archive) |
 | `/root/.mcp.json` | Project-root MCP when cwd is `/root` |
 | `/root/AAA/agents/kimi-code/WARGAAA_CARD.md` | Warga identity card |
 
@@ -101,13 +101,13 @@ Before using this skill on any mutating, irreversible, or high-blast-radius task
 ## Audit Checklist
 
 1. **Binary:** `which kimi` → `/usr/local/bin/kimi` → exec `~/.kimi-code/bin/kimi`
-2. **Home:** `echo $KIMI_CODE_HOME` → `/root/.arifos/agents/kimi`
+2. **Home:** `echo $KIMI_CODE_HOME` → `/root/.kimi-code` (ONE-HOME 2026-08-24)
 3. **Doctor:** `kimi doctor` → `OK config.toml`
 4. **Auth:** OAuth via `/login` — **never** use dead `KIMI_API_KEY` from `kunci-root.env` (causes 404)
 5. **MCP launchers:** All stdio servers use `mcp-launchers/*.sh` (bash), not inline `sh -lc` with `source`
 6. **A-FORGE:** stdio via `aforge.sh` — not HTTP for Kimi primary ingress
 7. **Serena:** `arifOS/.serena/project.yml` and `A-FORGE/.serena/project.yml` exist
-8. **Warga:** `config.toml` has `[agent_identity] citizenship = "warga-aaa"`
+8. **Warga:** identity carried by `$KIMI_CODE_HOME/SYSTEM.md` (FI-008 preamble revived 2026-08-24) — `[agent_identity]` in config.toml is DEAD-v2 scaffolding, do not resurrect
 
 ## Fix Patterns
 
