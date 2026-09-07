@@ -165,7 +165,7 @@ See: `/root/.kimi-code/skills/tts-edge-fallback/SKILL.md`.
 | Model | Modality (in / out) | Role |
 |---|---|---|
 | `mimo-v2.5-pro` | text / text | Flagship reasoning (1M ctx, ~10× cheaper than v3 at output) |
-| `mimo-v2.5` | text+image / text | Multimodal LLM (1M ctx, native image understanding) |
+| `mimo-v2.5` | text+image+audio+video / text | Omni-modal LLM (1M ctx; image/audio/video understanding — verified live 2026-09-07) |
 | `mimo-v2.5-asr` | audio / text | Speech-to-text (billed per audio-hour, not per token) |
 | `mimo-v2.5-tts` | text / audio | Base TTS |
 | `mimo-v2.5-tts-voiceclone` | text+audio / audio | Zero-shot voice clone (F13-gated identity) |
@@ -188,6 +188,8 @@ See: `/root/.kimi-code/skills/tts-edge-fallback/SKILL.md`.
 
 All TTS series (`mimo-v2.5-tts`, `...-voiceclone`, `...-voicedesign`) are
 **free for a limited time** — do not deduct package credits. Use them aggressively.
+
+**Wire contract (verified live 2026-09-07)**: MiMo TTS rides `POST /v1/chat/completions` — assistant message = text to speak, user message = style instructions, `audio{format, voice}` field; response audio in `choices[0].message.audio.data` (base64 wav; streaming = 24kHz PCM16LE mono via `delta.audio.data`). NOT `/v1/audio/speech`. Gotchas: `audio.voice` is model-specific (omit entirely for voicedesign → HTTP 400 otherwise; voiceclone needs data-URI sample); builtin voices `mimo_default/Mia/Chloe/Milo/Dean` + 4 CN voices; singing via `(唱歌)` prefix on base tts only. Full contract: SOT `mimo/mimo-v2.5-tts*.api_contract`; deep reference: Hermes KVM4 `skills/media/tts-edge-fallback/references/mimo-tts-api-quirks.md`.
 
 ### Plan tiers (monthly credits)
 
