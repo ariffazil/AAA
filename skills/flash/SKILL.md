@@ -11,11 +11,11 @@ metadata:
   author: runpod
   version: "1.1.2" # x-release-please-version
 license: Apache-2.0
-capability_tier: fed-agent-subagent
-ecology_state: WARM
 ---
 
 # Runpod Flash
+
+> **Governance:** Irreversible infra ops (deploy/destroy/spend/credential changes) route via arifos-governance; irreversible actions require 888_HOLD release. (F1 AMANAH / F13 SOVEREIGN)
 
 Write code locally, iterate with `flash dev` — it runs your functions on remote Runpod GPUs/CPUs with hot-reload and live worker logs — then `flash deploy` to ship. `Endpoint` handles provisioning.
 

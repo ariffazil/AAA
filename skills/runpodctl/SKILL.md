@@ -12,11 +12,11 @@ metadata:
   author: runpod
   version: "1.1.2" # x-release-please-version
 license: Apache-2.0
-capability_tier: fed-agent-subagent
-ecology_state: WARM
 ---
 
 # Runpodctl
+
+> **Governance:** Irreversible infra ops (deploy/destroy/spend/credential changes) route via arifos-governance; irreversible actions require 888_HOLD release. (F1 AMANAH / F13 SOVEREIGN)
 
 Manage GPU pods, serverless endpoints, templates, volumes, and models.
 

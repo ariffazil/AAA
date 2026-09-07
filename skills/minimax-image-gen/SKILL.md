@@ -7,11 +7,11 @@ owner: 333-AGI
 risk_tier: T1
 floor_scope: F2, F4, F7
 autonomy_tier: T1
-capability_tier: fed-multimodal-vision
-ecology_state: WARM
 ---
 
 # MiniMax Image Generation
+
+> **Governance:** Irreversible infra ops (deploy/destroy/spend/credential changes) route via arifos-governance; irreversible actions require 888_HOLD release. (F1 AMANAH / F13 SOVEREIGN)
 
 Generate images using MiniMax `image-01` model via MCP server.
 

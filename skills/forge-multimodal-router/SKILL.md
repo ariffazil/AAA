@@ -94,6 +94,7 @@ If SOT doesn't have a matching entry → STOP. Do NOT fallback to agent card or 
 | OCR (Latin) | `local/tesseract-5.5` | Local | Free fallback |
 | OCR (Chinese) | `local/rapidocr-3.9` | Local | Free fallback |
 | Document extraction | `dashscope/qwen3-vl-ocr` | VLM specialist | See FORGE-document-intelligence |
+| Image understanding (subscription-first) | `mimo/mimo-v2.5` | MiMo Token Plan | `image_url` ≤50MB URL/b64; SOT rule `vision_primary_mimo_subscribed` p12; verified live 2026-09-07 |
 | Face ID (deterministic) | `local/onnx-insightface-buffalo_l-512dim` | Local | READ-ONLY, see `/root/.agents/skills/deterministic-face-id/SKILL.md` |
 | Image generation (Gemini NB2 Workhorse) | `gemini/gemini-3.1-flash-image` | Nano Banana 2 | 512px–4K, 14 refs, video-in, Image Search Grounding |
 | Image generation (Gemini NB2 Lite) | `gemini/gemini-3.1-flash-lite-image` | NB2 Lite | Fastest & lowest cost Gemini image gen |
@@ -111,11 +112,14 @@ If SOT doesn't have a matching entry → STOP. Do NOT fallback to agent card or 
 
 | Request | SOT key | Engine | Notes |
 |---|---|---|---|
+| Audio understanding (in-model, subscription) | `mimo/mimo-v2.5` | MiMo Token Plan | `input_audio`; MP3/WAV/FLAC/M4A/OGG; ~6.25 tok/s; verified 2026-09-07 |
+| ASR (subscription-first) | `mimo/mimo-v2.5-asr` | MiMo Token Plan | wav/mp3 b64≤10MB; lang auto/zh/en (no `ms`); ~$0.074/audio-hr equiv |
 | ASR (short audio <5min) | `dashscope/qwen-audio-3.0-asr-flash` | DashScope PAYG | Default |
 | ASR (long offline file) | `dashscope/qwen-audio-3.0-asr-flash-filetrans` | DashScope PAYG | Meetings, calls |
 | ASR (real-time stream) | `dashscope/qwen-audio-3.0-asr-flash-streaming` | DashScope PAYG | Live meetings |
 | ASR (Penang-Besi dialect) | `dashscope/qwen-audio-3.0-asr-flash` + custom dict | DashScope PAYG | See AAA-asr-glm-ingest |
 | ASR (default) | `local/faster-whisper-base` | Local | Free fallback |
+| TTS (free window default) | `mimo/mimo-v2.5-tts` | MiMo Token Plan | 0 credits limited-time; via chat/completions `audio` field; verified live 2026-09-07 |
 | TTS (default Malaysian) | `edge-tts/ms-MY-YasminNeural` | Edge (free) | No quota |
 | TTS (multilingual) | `dashscope/qwen-audio-3.0-tts-flash` | DashScope PAYG | Free quota eligible |
 | TTS (realtime full-duplex) | `dashscope/qwen-audio-3.0-realtime-plus` | DashScope PAYG | Aug 2026 |
@@ -141,6 +145,7 @@ If SOT doesn't have a matching entry → STOP. Do NOT fallback to agent card or 
 | Video generation (R2V alternative) | `dashscope/happyhorse-1.1-r2v` | DashScope PAYG | Realistic dynamic |
 | Video generation (Grok Imagine I2V) | **harness** `grok-build/image_to_video` | spawn `grok-multimodal.sh video REF` | 6s/10s · 720p. Native Grok Build. |
 | Video editing (DashScope) | `dashscope/wan2.7-videoedit` | DashScope PAYG | Local/global edits |
+| Video understanding (subscription) | `mimo/mimo-v2.5` | MiMo Token Plan | `video_url` + fps 0.1–10 + media_resolution; ≤300MB URL / 50MB b64; MP4/MOV/AVI/WMV; only subscription video-understanding rung; verified 2026-09-07 |
 | Last-frame analysis | `dashscope/qwen-vl-max` (re-use) | PRMT | No temporal context |
 | Video INPUT (continuous) | `gemini/gemini-omni-flash` | Gemini Omni Flash | Native video input reasoning via Interactions API |
 | A-V cross-modal fusion | `gemini/gemini-omni-flash` | Gemini Omni Flash | Text + Image + Audio + Video unified input |

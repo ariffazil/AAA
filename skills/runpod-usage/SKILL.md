@@ -11,11 +11,11 @@ metadata:
   author: runpod
   version: "1.1.2" # x-release-please-version
 license: Apache-2.0
-capability_tier: fed-multimodal-vision
-ecology_state: WARM
 ---
 
 # Runpod usage (concepts)
+
+> **Governance:** Irreversible infra ops (deploy/destroy/spend/credential changes) route via arifos-governance; irreversible actions require 888_HOLD release. (F1 AMANAH / F13 SOVEREIGN)
 
 Background knowledge for making the right choice before you act. This skill runs
 nothing — once you know what to do, execute with **runpod-mcp**/**runpodctl**
