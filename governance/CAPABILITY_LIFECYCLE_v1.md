@@ -59,6 +59,7 @@ Five kinds: reality drift (world changed), usage drift (nobody calls it), outcom
 3. Safety-relevant + self-witnessed → quarantine until second witness.
 4. Governance is a capability (an organ), not an external brake.
 5. Creation without extinction is bureaucracy formation. The kill path is constitutional, not optional.
+6. **Governance-Entropy Admission Test** (F13 chat SEAL Conceptual 2026-09-08, canon: `EUREKA-GOVERNANCE-ENTROPY-2026-09-08`): a capability enters only if the sovereign's net governance burden decreases. "Add capability because it is interesting" is void. Companion to Rule 5: birth without burden-reduction is also bureaucracy formation.
 
 ## The Five Questions (audit standard — external advisor 2026-09-06)
 

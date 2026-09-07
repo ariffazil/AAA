@@ -7,11 +7,11 @@ metadata:
   author: runpod
   version: "1.1.2" # x-release-please-version
 license: Apache-2.0
-capability_tier: fed-agent-subagent
-ecology_state: WARM
 ---
 
 # Companion CLIs
+
+> **Governance:** Irreversible infra ops (deploy/destroy/spend/credential changes) route via arifos-governance; irreversible actions require 888_HOLD release. (F1 AMANAH / F13 SOVEREIGN)
 
 Four CLIs commonly needed alongside Runpod. Each has its own **credentials + command reference** in [`reference/`](reference/) — plus a one-time `<cli>-setup.md` for install (only opened if the CLI isn't installed). Load only the one the task needs, not all four.
 

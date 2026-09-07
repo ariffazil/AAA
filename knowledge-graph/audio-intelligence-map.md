@@ -335,3 +335,9 @@ Identity card exists at `/root/AAA/agent-cards/identity/i-ARIF/identity-card.jso
 *Graph sealed 2026-08-13 by FI-003 Qwen Code. Updated 2026-08-14 post-musyawarah.*
 *Post-correction: STT was already wired in config (stt.enabled: true, 7 engines). Previous version incorrectly stated STT not in config.*
 *Post-musyawarah: forge_audio_features.py marked RETIRED. state_aware_tts.py rewritten F9-clean. Architecture converged to single extractor (voice_state.py).*
+
+## MiMo Audio Lane — federated organ (2026-09-07, FI-003)
+- Canonical skill: `/root/AAA/skills/mimo-audio` — visible in 9 homes (qwen/claude/codex/grok whole-dir AAA links; kimi-code/opencode-config/gemini/.agents per-skill links; Hermes original at KVM4 `~/.hermes/skills/media/mimo-audio`)
+- Transport truth: audio bodies ride the DIRECT lane (`MIMO_BASE_URL` chat/completions). litellm `:4000` is discovery-only for MiMo audio — translator crashes on `message.audio` (TTS) and mangles `input_audio` (ASR); filed for FI-008
+- SOT: `fed-realtime-voice` → WIRED_DIRECT_LANE (supersedes DECLARED_UNWIRED misdiagnosis) + new `fed-audio-understanding` signature + `transport_warning` on both api_contracts + p12 subscription-first rules (tts/asr/audio/video)
+- Receipts: TTS Mia 307KB wav / 0 credits (Hermes E2E) + 133KB b64 / 0 credits (KVM8); TTS free window active; ASR en/zh only (no `ms` — BM stays dashscope/GLM)

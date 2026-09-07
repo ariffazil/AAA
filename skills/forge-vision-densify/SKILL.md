@@ -139,9 +139,24 @@ constraints. Detection rules:
 ControlNet/Depth/Ip-Adapter/Ip-Adapter-Face anchor. No silhouette of payload
 may be released.
 
+### Hard Gate (Human Physique Topography Gate / AAA-human-physique-topology)
+
+**Trigger:** Prompt references human physique, body composition, athletic build,
+muscularity, fitness, athletic pose, bodybuilding, calisthenics, or anatomy.
+Detection rules:
+- Musculoskeletal terms: `muscular`, `shredded`, `abs`, `biceps`, `pectoral`, `deltoid`, `quadriceps`, `vascular`, `striated`
+- Anthropometric terms: `physique`, `somatotype`, `body fat`, `V-taper`, `8-head canon`
+- Fitness/Athletic settings: `gym portrait`, `bodybuilder`, `fitness model`, `calisthenics`
+
+**Action:** System intercepts BEFORE diffusion. The prompt must be densified
+through the 5-stratum topography model (`AAA-human-physique-topology`), or bound
+with OpenPose/DensePose/Depth structural conditioning. If naive/sparse ("a muscular guy"),
+`density_lower` is strictly $< 0.20$, forcing re-densification via
+`compile_physique_prompt.py` to prevent plastic mannequin hallucination and anatomical drift.
+
 ### Soft Gate (Creative / Marketing / Illustrations / Hero shots)
 
-**Trigger:** Default. No geometric/numerical hard-gate criteria detected.
+**Trigger:** Default. No geometric/numerical or human physique hard-gate criteria detected.
 
 **Action:** Standard pipeline runs. VLM Tri-Witness evaluates output.
 If mismatch is severe (`f2_adherence < 0.70` OR residual_entropy == HIGH),
