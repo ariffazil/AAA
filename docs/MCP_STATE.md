@@ -193,7 +193,7 @@ Agent MCP Config
 | Port | Service | Status |
 |------|---------|--------|
 | 3001 | AAA a2a (control plane) | ✅ Active |
-| 3002 | APEX (legacy judge) | ✅ Active |
+| 3002 | APEX (legacy judge) | ⚠️ Decommissioned — absorbed into AAA deliberation engine (contrast audit 2026-09-07; no listener, timer disabled — see line 47) |
 | 5001 | Vault999 Writer | ✅ Active |
 | 5002 | F13 Witness Bridge | ✅ Active |
 | 7071 | **A-FORGE** (execution gateway) | ✅ Active |

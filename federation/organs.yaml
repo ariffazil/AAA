@@ -141,11 +141,11 @@ components:
     class: EDGE
     display_name: OpenClaw
     repo: openclaw/openclaw
-    source_path: /root/.openclaw
+    source_path: /root/.openclaw-cold  # 2026-09-07: /root/.openclaw no longer exists — OpenClaw cold-stored
     role: agentic_mesh_router
     authority_ceiling: DISPLAY_ONLY
-    port: 18789
-    port_web: 8787
+    port: 18789          # declared (historical) — refused as of 2026-09-07
+    port_web: 8787       # declared (historical) — refused as of 2026-09-07
     unit: openclaw-gateway.service
     runtime: node-22
     actor_id: "openclaw:ingress"
@@ -155,6 +155,9 @@ components:
       status: active
       gateway_port: 18789
       web_ui_port: 8787  # currently down — known
+    live_probe_2026_09_07:   # FI-008 contrast audit — COLD on KVM8
+      status: cold
+      evidence: "unit absent from /etc/systemd/system; :18789/:8787 refused; state at /root/.openclaw-cold; units from 2026-08-06 audit (gateway/bot/apa-bridge/restart) no longer present on this node"
     owned_domains:
       - a2a_dispatch
       - session_continuity
@@ -555,27 +558,6 @@ components:
       - constitutional_judgment
       - engineering_execution
       - sealing
-
-  - id: openclaw
-    class: EDGE
-    display_name: OpenClaw
-    role: edge_agent_telegram
-    units:
-      - openclaw-gateway.service    # ACTIVE — WebSocket gateway :18789 + Telegram webhook :8787
-      - openclaw-bot.service        # DISABLED — canon-listed worker (awaiting intentional activation)
-      - apa-telegram-bridge.service # ACTIVE — F13 veto surface via A-FORGE forge_telegram :18096
-      - openclaw-restart.service    # INACTIVE (dead trigger unit) — fires openclaw-gateway restart on path change
-    authority_ceiling: EDGE_AGENT
-    # Zen-2026-08-02 (kimi-code/FI-008): multi-unit listing after drift discovery
-    #   - 22 production secrets verified in vault.flat.env (cross-checked 2026-08-02)
-    #   - 5 orphan env files archived+deleted: _archive/2026-08-02-pre-unif/drift-env-cleanup.tar.gz
-    #   - T1.2 done; T2.a gateway-restart done; canon now matches live state
-    # Zen-2026-08-06 (AUDIT-M3): STATUS annotations + openclaw-restart trigger unit added
-    #   - Live systemctl shows 3 units (gateway ACTIVE, apa-bridge ACTIVE, restart DEAD-trigger)
-    #   - openclaw-bot remains DISABLED pending intentional activation
-    forbidden_domains:
-      - constitutional_judgment
-      - self_authorization
 
   - id: opencode
     class: EDGE

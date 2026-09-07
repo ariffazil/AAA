@@ -161,32 +161,39 @@ export class OperationBus {
   }
 
   /**
-   * P1-4: Forward receipt to arifFLOW :7073/receipt/emit.
+   * P1-4 (FIXED 2026-09-07, FI-008 contrast audit): forward receipt to
+   * arifFLOW POST /ingest (canonical FlowReceipt shape). /receipt/emit
+   * never existed on the live daemon — calls 404'd silently.
    * Fire-and-forget — failures are silent, local log is authoritative fallback.
    */
   private async _forwardToArifFlow(event: ReceiptEvent): Promise<void> {
     const ARIFLOW_URL = process.env['ARIFLOW_URL'] ?? 'http://127.0.0.1:7073';
     try {
       const body = JSON.stringify({
-        organ: event.organ,
-        producer: 'AAA-operation-bus',
-        action: 'emit_receipt',
-        scope: event.result_summary || 'aaa_operation',
-        risk: event.vault_candidate ? 'HIGH' : 'INTERNAL',
-        epistemic_label: 'OBS',
-        confidence: 0.90,
+        receipt_id: crypto.randomUUID(),
+        actor_id: 'aaa-operation-bus',
         session_id: event.session_id,
-        actor_id: 'aaa',
-        verdict: event.vault_candidate ? 'SEAL' : 'SEAL',
-        evidence_sources: event.evidence_uri ? [event.evidence_uri] : [],
-        metadata: {
+        step_type: 'Execute',
+        epistemic_label: 'Observation',
+        cost_ns: 0,
+        step_number: 1,
+        created_at: new Date().toISOString(),
+        floor_verdict: event.vault_candidate ? 'Caution' : 'Pass',
+        payload: {
+          organ: event.organ,
+          producer: 'AAA-operation-bus',
+          action: 'emit_receipt',
+          scope: event.result_summary || 'aaa_operation',
+          risk: event.vault_candidate ? 'HIGH' : 'INTERNAL',
+          verdict: 'SEAL',
+          evidence_sources: event.evidence_uri ? [event.evidence_uri] : [],
           op_id: event.op_id,
           trace_id: event.trace_id,
-          receipt_id: event.receipt_id,
+          local_receipt_id: event.receipt_id,
           source: 'AAA-operation-bus',
         },
       });
-      await fetch(`${ARIFLOW_URL}/receipt/emit`, {
+      await fetch(`${ARIFLOW_URL}/ingest`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body,
