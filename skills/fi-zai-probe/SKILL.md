@@ -6,11 +6,11 @@ description: "Probe Z.AI GLM coding plan health — models list, anthropic + ope
 owner: 333-AGI
 risk_tier: low
 floor_scope: [F2, F4]
-capability_tier: fed-reasoning-heavy
-ecology_state: WARM
 ---
 
 # Z.AI Plan Probe
+
+> **Governance:** Irreversible infra ops (deploy/destroy/spend/credential changes) route via arifos-governance; irreversible actions require 888_HOLD release. (F1 AMANAH / F13 SOVEREIGN)
 
 Verify the Z.AI GLM Coding Plan is alive and correctly wired. Key lives in env `ZAI_API_KEY` (vault: /root/.secrets/kunci-root.env; mode-600 configs only — never paste keys into chat, receipts, or configs beyond mode-600).
 
