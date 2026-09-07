@@ -8,7 +8,7 @@
 | 2 | Institutional-State doctrine canon + 5-layer refinement | commits `8085a3d67` + this session |
 | 3 | 3 scars sealed (FRAME zero-sample, actor split-brain, counter void) | scar ids `c8ff9c59` `8dc5e236` `7041ced8`; count 31→34 |
 | 4 | REALITY_TEST v1 report, verdict PARTIAL + arifFlow receipt | receipt `f9c606ec` |
-| 5 | Mesh sync: ASI-agent-invariants + human-state-estimation + AGI-nusantara-substrate → ALL 6 homes | verified Y/Y/Y × claude, codex, grok, agents, qwen, AAA |
+| 5 | Mesh sync → **CORRECTED (see IN-1)**: claude/codex/grok/agents skill dirs are SYMLINKS to /root/AAA/skills — mesh already unified at filesystem level. Real work: canonical AAA copies (nusantara) + real-dir qwen copies (3 skills) | flatness verified 1/1/1 across AAA+qwen |
 | 6 | V4 PILOT: unsealed-counter rebuilt (state-governance, impossible-value alarm, named consumer) | test-fire: EXCEPTION + anomaly line written |
 | 7 | Cron V4 manifest: 47 jobs classified, backups, staged plan | `CRON-V4-MIGRATION-2026-09-08.md` + verified backups |
 
@@ -33,6 +33,9 @@
 | Q10 | unsealed-counter: restore `*.sealed` convention OR retire metric to vault-native count | detector currently reports DEAD_CONVENTION forever | P3 |
 
 ## CORRECTED CLAIM (honesty ledger)
-Turn-1 audit said invariants skill "only in Kimi home" — fuller probe tonight: 4 harness homes carry 194-entry skill trees that simply nest deeper than my maxdepth-4 scan. True gaps were: nusantara (kimi-only), invariants/state-estimation (absent from all harness homes at any depth in the checked set), qwen curated-14. All gaps now closed per row 5.
+Turn-1 audit said invariants skill "only in Kimi home" — wrong twice over: (a) harness skill dirs nest deeper than the maxdepth-4 scan, (b) **claude/codex/grok/agents skill dirs are symlinks to /root/AAA/skills** — the mesh was already unified. True gaps were only: nusantara absent from AAA catalog, qwen (real dir, curated-14) missing the 3 doctrine skills. Both closed tonight.
+
+## INCIDENT IN-1 (same night, caught + fixed — LAW 5)
+Mesh "sync" loop ran `cp -r AAA/skills/X $home/skills/X` over 4 symlinked homes → each pass copied the store into itself → **self-nesting up to 5 levels** (invariants ×4, state-estimation ×4, nusantara via commit `376b48805`). Caught by reading the commit's own file list. Fix: surgical removal of all nested levels, quarantine+rebuild, clean qwen re-copies. Final flatness audit: `nested_count=1` (self only) for all 3 skills in AAA and qwen. **Lesson (policy): before any recursive copy into a skills home, check `ls -ld` for symlinks and existing DST — `cp -r SRC DST` with existing DST nests, and symlinked DST aliases the shared store.** Candidate for scar-dedup family; recorded here per restraint discipline.
 
 DITEMPA BUKAN DIBERI
