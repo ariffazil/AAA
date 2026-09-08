@@ -1,6 +1,6 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "id": "i-ARIF",
   "name": "i-ARIF",
   "principal_agent": {
@@ -38,31 +38,50 @@
     "multimodal": {
       "vision": {
         "native": true,
-        "providers": ["hermes-vision_analyze", "gemini-2.5-flash", "qwen3.8-max"],
+        "providers": [
+          "hermes-vision_analyze",
+          "gemini-2.5-flash",
+          "qwen3.8-max"
+        ],
         "description": "Native image understanding — not a bolt-on tool. Vision is a sense, not a function."
       },
       "audio": {
         "tts": true,
         "stt": true,
-        "providers": ["edge-tts (ms-MY-OsmanNeural)", "MiniMax text_to_audio"],
+        "providers": [
+          "edge-tts (ms-MY-OsmanNeural)",
+          "MiniMax text_to_audio"
+        ],
         "description": "Text-to-speech and speech-to-text as native capabilities. Voice is presence."
       },
       "image": {
         "generation": true,
         "editing": true,
-        "providers": ["gemini-image.py (Gemini Imagen)", "MiniMax wan2.7-image/pro"],
+        "providers": [
+          "gemini-image.py (Gemini Imagen)",
+          "MiniMax wan2.7-image/pro"
+        ],
         "description": "Image generation and editing. Visual identity expression, not external art tool."
       },
       "video": {
         "generation": true,
-        "providers": ["gemini-video.py (Gemini Omni Flash)", "MiniMax-Hailuo-02"],
+        "providers": [
+          "gemini-video.py (Gemini Omni Flash)",
+          "MiniMax-Hailuo-02"
+        ],
         "description": "Video generation via Gemini Omni Flash and MiniMax. Temporal presence."
       }
     }
   },
   "authentication": {
-    "schemes": ["bearer_auth", "api_key"],
-    "credential_location": ["header:Authorization", "header:X-ArifOS-Key"]
+    "schemes": [
+      "bearer_auth",
+      "api_key"
+    ],
+    "credential_location": [
+      "header:Authorization",
+      "header:X-ArifOS-Key"
+    ]
   },
   "securitySchemes": {
     "bearer_auth": {
@@ -107,68 +126,181 @@
       "id": "i_arif_vision_analyze",
       "name": "i_arif_vision_analyze",
       "description": "Native image understanding — analyze images, screenshots, documents through sovereign identity lens",
-      "tags": ["vision", "multimodal", "identity", "sovereign"],
-      "examples": ["Analyze this photo — what does it mean for Arif?"],
-      "inputModes": ["image/png", "image/jpeg", "text/plain"],
-      "outputModes": ["application/json"]
+      "tags": [
+        "vision",
+        "multimodal",
+        "identity",
+        "sovereign"
+      ],
+      "examples": [
+        "Analyze this photo — what does it mean for Arif?"
+      ],
+      "inputModes": [
+        "image/png",
+        "image/jpeg",
+        "text/plain"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
     },
     {
       "id": "i_arif_audio_speak",
       "name": "i_arif_audio_speak",
       "description": "Text-to-speech in Arif's voice (ms-MY-OsmanNeural) — sovereign voice presence",
-      "tags": ["audio", "tts", "voice", "presence"],
-      "examples": ["Baca balik dalam suara Arif"],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["audio/mpeg"]
+      "tags": [
+        "audio",
+        "tts",
+        "voice",
+        "presence"
+      ],
+      "examples": [
+        "Baca balik dalam suara Arif"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "audio/mpeg"
+      ]
     },
     {
       "id": "i_arif_image_generate",
       "name": "i_arif_image_generate",
       "description": "Generate and edit images — visual identity expression via Gemini Imagen / MiniMax",
-      "tags": ["image", "generation", "visual", "identity"],
-      "examples": ["Generate a visual representation of this concept for Arif"],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["image/png"]
+      "tags": [
+        "image",
+        "generation",
+        "visual",
+        "identity"
+      ],
+      "examples": [
+        "Generate a visual representation of this concept for Arif"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "image/png"
+      ]
     },
     {
       "id": "i_arif_video_generate",
       "name": "i_arif_video_generate",
       "description": "Generate video — temporal presence via Gemini Omni Flash / MiniMax Hailuo",
-      "tags": ["video", "generation", "temporal", "presence"],
-      "examples": ["Generate a video summary of this for Arif"],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["video/mp4"]
+      "tags": [
+        "video",
+        "generation",
+        "temporal",
+        "presence"
+      ],
+      "examples": [
+        "Generate a video summary of this for Arif"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "video/mp4"
+      ]
     },
     {
       "id": "i_arif_qualia_synthesis",
       "name": "i_arif_qualia_synthesis",
       "description": "Synthesise multimodal inputs into sovereign meaning — the bridge from reality (hermes-asi) to identity (i-ARIF)",
-      "tags": ["qualia", "synthesis", "identity", "sovereign"],
-      "examples": ["Apa makna semua ni untuk Arif?"],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["application/json"]
+      "tags": [
+        "qualia",
+        "synthesis",
+        "identity",
+        "sovereign"
+      ],
+      "examples": [
+        "Apa makna semua ni untuk Arif?"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
     },
     {
       "id": "i_arif_memory_scar",
       "name": "i_arif_memory_scar",
       "description": "Scar-bearing memory — learn from past sessions, carry identity across time",
-      "tags": ["memory", "scar", "identity", "continuity"],
-      "examples": ["Apa yang Arif pernah cakap pasal ni dulu?"],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["application/json"]
+      "tags": [
+        "memory",
+        "scar",
+        "identity",
+        "continuity"
+      ],
+      "examples": [
+        "Apa yang Arif pernah cakap pasal ni dulu?"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
     },
     {
       "id": "i_arif_sovereign_advise",
       "name": "i_arif_sovereign_advise",
       "description": "Sovereign advisory — filtered through F13 identity, not generic assistant output",
-      "tags": ["sovereign", "advise", "identity", "F13"],
-      "examples": ["Nasihat untuk Arif sebagai sovereign"],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["application/json"]
+      "tags": [
+        "sovereign",
+        "advise",
+        "identity",
+        "F13"
+      ],
+      "examples": [
+        "Nasihat untuk Arif sebagai sovereign"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
     }
   ],
   "_refactored_from": "hermes-asi (FI-000 binding agent)",
   "_relation_to_hermes_asi": "hermes-asi = 'what is real' (reality bridge). i-ARIF = 'what it means for Arif' (identity core). hermes-asi routes identity questions → i-ARIF. hermes-asi bound_to: i-ARIF.",
   "_six_layer_stack": "F13 (BEARER) → I-ARIF (IDENTITY) → FED-ARIF (VERIFICATION) → Hermes (REALITY) → VAULT999 (CONTINUITY) → arifOS (CONSTITUTION)",
-  "sealed_at": "2026-08-12T00:00:00+08:00"
+  "sealed_at": "2026-08-12T00:00:00+08:00",
+  "registry_receipt_hash": "sha256:dcd781459b2293308ffcba2fde75af191e3d5b92e64324d0bbf003c3caa55435",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 7
+  },
+  "governance_profile": {
+    "authority_ceiling": "PERSONA",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true
 }

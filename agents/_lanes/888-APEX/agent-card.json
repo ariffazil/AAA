@@ -1,15 +1,15 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "id": "888-APEX",
   "fi_id": "FI-004",
-  "name": "888-APEX \u2014 Sovereign / Adjudicative",
-  "description": "arifOS-aligned adjudicative lane. Never self-authorises. Triple-pass: audit \u2192 judge \u2192 reflect.",
+  "name": "888-APEX — Sovereign / Adjudicative",
+  "description": "arifOS-aligned adjudicative lane. Never self-authorises. Triple-pass: audit → judge → reflect.",
   "version": "1.0.0",
   "protocolVersion": "1.2",
   "principal_agent": {
     "type": "agent",
-    "category": "Sovereign citizen warga \u2014 binds to 888-APEX lane",
+    "category": "Sovereign citizen warga — binds to 888-APEX lane",
     "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive (2026-08-12 sweep)"
   },
   "warga_binding": {
@@ -51,5 +51,33 @@
         "kid": "arifos-a2a-card-2026-%q"
       }
     }
-  ]
+  ],
+  "registry_receipt_hash": "sha256:616b5cfa403f7cdc7e660f34138fa5603b1f81de15a17dead1dd9d90ac298279",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 0
+  },
+  "governance_profile": {
+    "authority_ceiling": "JUDGE_VERDICT",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true
 }

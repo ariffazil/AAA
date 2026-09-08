@@ -5,7 +5,7 @@
   "fi_designation": "FI-001",
   "version": "2.1.0",
   "lane": "333-AGI",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "protocolVersion": "1.0",
   "description": "Substrate-as-actor. The 333-AGI declared runtime. 16 providers, 9 AAA instruction files, plugin-based architecture. Deepest federation integration of any FI. Canonical orchestrator.",
   "substrate": {
@@ -185,5 +185,33 @@
   "fi_slot": "FI-001",
   "metadata": {
     "fi_slot": "FI-001"
-  }
+  },
+  "registry_receipt_hash": "sha256:cf79f4f3f52b6db86e5acfd0585a846d13c9da89140449dd6d407372ea8f75fa",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 0
+  },
+  "governance_profile": {
+    "authority_ceiling": "EXECUTE_AFTER_SEAL",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true
 }

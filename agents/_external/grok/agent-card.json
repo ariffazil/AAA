@@ -383,5 +383,35 @@
   "fi": "FI-GROK",
   "bound_to": "333-AGI",
   "status": "superseded_by: grok-build (naming twin; runtime registry FI-007 = Grok Build) — 2026-08-14",
-  "fi_slot": "none (superseded twin — see status)"
+  "fi_slot": "none (superseded twin — see status)",
+  "$schema": "arifOS/agent-card/v2.3.0",
+  "schemaVersion": "2.3.0",
+  "registry_receipt_hash": "sha256:aa733640eef8a60e2ac8b3c13d4ba9f88a633a4d3bf4a9c28b67cb22d88bdf4f",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 22
+  },
+  "governance_profile": {
+    "authority_ceiling": "EXECUTE_AFTER_SEAL",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true
 }

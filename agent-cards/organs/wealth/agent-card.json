@@ -1,13 +1,13 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "id": "wealth-mcp",
   "protocolVersion": "1.2",
   "agentId": "wealth",
   "name": "WEALTH",
   "principal_agent": {
     "type": "agent",
-    "category": "Capital intelligence \u2014 ADVISORY_ONLY, compute never allocate",
+    "category": "Capital intelligence — ADVISORY_ONLY, compute never allocate",
     "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive"
   },
   "warga_binding": {
@@ -17,7 +17,7 @@
     "authority_level": "ADVISORY_ONLY",
     "citizenship_forged": "2026-05-17"
   },
-  "description": "Capital intelligence \u2014 NPV/IRR, markets, institutional stress, entropy, wisdom.",
+  "description": "Capital intelligence — NPV/IRR, markets, institutional stress, entropy, wisdom.",
   "version": "1.0.0",
   "provider": {
     "organization": "arifOS",
@@ -249,5 +249,33 @@
   "default_output_modes": [
     "text/plain",
     "application/json"
-  ]
+  ],
+  "registry_receipt_hash": "sha256:72dfe80b3f51056f8bfde87ff2434051677e82284c1741a6570f26fdb6a2e110",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 12
+  },
+  "governance_profile": {
+    "authority_ceiling": "COMPUTE_ONLY",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true
 }

@@ -22,7 +22,22 @@
   "capabilities": {
     "streaming": true,
     "pushNotifications": false,
-    "opaqueExecution": true
+    "opaqueExecution": true,
+    "identityContinuityEnforcement": {
+      "active": true,
+      "ratified_at": "2026-09-08",
+      "doctrine_ref": "/root/AAA/instructions/identity-continuity.md",
+      "routing_rule": "self_reference_detection → identity_continuity_check → I2I_subject_ref (T2I FORBIDDEN on named actors)",
+      "tools_broadcast": [
+        "forge_face_embed",
+        "forge_face_match",
+        "forge_face_enroll",
+        "identity_continuity_check"
+      ],
+      "capability_graph_path": "/root/arifOS/arifosmcp/schemas/capability_graph.py",
+      "tool_registry_path": "/root/A-FORGE/src/domain/registry/forge_face_tools.ts",
+      "arifFlow_tracked_dimension": "identity_continuity"
+    }
   },
   "defaultInputModes": [
     "text"
@@ -610,6 +625,55 @@
       "name": "Well Readiness",
       "tags": [
         "well"
+      ]
+    },
+    {
+      "id": "identity-continuity",
+      "name": "Identity Continuity",
+      "tags": [
+        "arifos",
+        "identity",
+        "constitutional",
+        "witness"
+      ]
+    },
+    {
+      "id": "identity-continuity-routing",
+      "name": "Identity Continuity Routing",
+      "tags": [
+        "arifos",
+        "identity",
+        "routing",
+        "self-reference"
+      ]
+    },
+    {
+      "id": "forge-face-embed",
+      "name": "Forge Face Embed",
+      "tags": [
+        "aforge",
+        "biometric",
+        "identity",
+        "BINDING_T1"
+      ]
+    },
+    {
+      "id": "forge-face-match",
+      "name": "Forge Face Match",
+      "tags": [
+        "aforge",
+        "biometric",
+        "identity",
+        "verifier"
+      ]
+    },
+    {
+      "id": "syed-care-architecture",
+      "name": "Syed Care Architecture",
+      "tags": [
+        "identity",
+        "human-reality",
+        "f13-domain"
       ]
     }
   ],

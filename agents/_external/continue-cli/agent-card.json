@@ -1,6 +1,6 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "id": "continue-cli",
   "name": "Continue CLI",
   "principal_agent": {
@@ -551,5 +551,33 @@
   "emd_architecture": "/root/AAA/instructions/emd-architecture.md",
   "emd_forged": "2026-08-09",
   "fi": "FI-CONTINUE",
-  "bound_to": "333-AGI"
+  "bound_to": "333-AGI",
+  "registry_receipt_hash": "sha256:fb9fad141520aece273b65c9407206e23d239702797e3e6684c7dcc0d8859122",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 12
+  },
+  "governance_profile": {
+    "authority_ceiling": "EXECUTE_AFTER_SEAL",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true
 }

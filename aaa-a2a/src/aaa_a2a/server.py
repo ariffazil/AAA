@@ -149,6 +149,87 @@ def create_app() -> FastAPI:
     # Mount A2A routes
     add_a2a_routes_to_fastapi(app, jsonrpc_routes=[handler])
 
+    # ── Item 5: ONE canonical discovery surface (2026-09-08 federation-identity-zen) ──
+    # GET /a2a/agents returns the INV-11/12/13-admissible card snapshot.
+    # Replaces /api/agents, /a2a/discover POST, and any other shadow discovery.
+    # Backed by /root/AAA/agent-cards/ (CIV-33 L2/L3 source-of-truth) + /root/AAA/agents/.
+
+    @app.get("/a2a/agents")
+    async def a2a_agents(include_inadmissible: bool = False):
+        """Canonical A2A discovery surface.
+
+        Invariants enforced (federation-invariants.md #11/#12/#13):
+        - #11 Identity: one card per agent (shadowed later cards lose)
+        - #12 Schema: schemaVersion === "2.3.0" AND registry_receipt_hash present
+        - #13 Authority: governance_profile.authority_ceiling populated
+
+        By default only `admissible=true` cards are returned. Pass
+        `?include_inadmissible=true` to see the F4 violations.
+        """
+        import json as _json
+        import hashlib as _hashlib
+        from pathlib import Path as _Path
+
+        roots = [
+            _Path("/root/AAA/agent-cards"),
+            _Path("/root/AAA/agents"),
+        ]
+        seen: dict[str, dict] = {}
+        duplicates: dict[str, list[str]] = {}
+        for root in roots:
+            for p in root.rglob("agent-card.json"):
+                if any(s in str(p) for s in ("/archive/", "/_archive/", "/_retired/")):
+                    continue
+                try:
+                    card = _json.loads(p.read_text())
+                except Exception:
+                    continue
+                cid = card.get("id") or card.get("agentId")
+                if not cid:
+                    continue
+                if cid in seen:
+                    duplicates.setdefault(cid, [str(seen[cid].get("_path"))]).append(str(p))
+                    # INV-11: shadowed later path — prefer earlier (canonical tree wins)
+                    continue
+                card["_path"] = str(p)
+                seen[cid] = card
+
+        # Apply INV-12 (schema) and INV-13 (authority) checks
+        results, inadmissible = [], []
+        for cid, card in sorted(seen.items()):
+            schema_ok = card.get("schemaVersion") == "2.3.0"
+            hash_ok = bool(card.get("registry_receipt_hash"))
+            auth_ok = bool((card.get("governance_profile") or {}).get("authority_ceiling"))
+            card_admissible = bool(card.get("admissible", True)) and schema_ok and hash_ok and auth_ok
+            entry = {
+                "id": cid,
+                "name": card.get("name", cid),
+                "description": (card.get("description") or "")[:200],
+                "authority_ceiling": (card.get("governance_profile") or {}).get("authority_ceiling"),
+                "schemaVersion": card.get("schemaVersion"),
+                "admissible": card_admissible,
+                "canonical_path": card.get("_path"),
+                "skills_count": len(card.get("skills", [])),
+            }
+            if card_admissible:
+                results.append(entry)
+            else:
+                entry["inadmissible_reason"] = [
+                    k for k, ok in [("schema_version", schema_ok), ("registry_receipt_hash", hash_ok), ("authority_ceiling", auth_ok)] if not ok
+                ]
+                inadmissible.append(entry)
+
+        return {
+            "discovery_version": "2.3.0",
+            "endpoint": "/a2a/agents",
+            "invariants_enforced": ["INV-11", "INV-12", "INV-13"],
+            "total_unique_agents": len(seen),
+            "duplicates_shadowed": {k: v for k, v in duplicates.items() if len(v) > 1},
+            "admissible_count": len(results),
+            "inadmissible_count": len(inadmissible),
+            "agents": results + (inadmissible if include_inadmissible else []),
+        }
+
     # ── Health endpoint (enhanced with cockpit stats) ──────────────────
 
     @app.get("/health")

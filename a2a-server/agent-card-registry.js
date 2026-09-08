@@ -36,6 +36,8 @@ const CIV33_LAYERS = {
   pillars: 'binding',
   extensions: 'binding',
   federation: 'binding',  // federation.yaml generated cards (2026-08-19 registry zen)
+  agents: 'binding',
+  forge: 'retired',
   _retired: 'retired',
 };
 
@@ -44,12 +46,28 @@ function normaliseCard(card, sourcePath) {
   if (!card || typeof card !== 'object') return null;
 
   // Derive agentId from various possible keys
-  const agentId =
+  let agentId =
     card.agentId ||
     card.agent_id ||
     card.id ||
     (card.identity && card.identity.organId) ||
     null;
+
+  // Fallback: derive from sourcePath or card.name if standard A2A v1.0 card
+  if (!agentId && sourcePath) {
+    const parsed = path.parse(sourcePath);
+    if (parsed.name !== 'agent-card' && parsed.name !== 'agent-card-extended' && parsed.name !== 'index') {
+      agentId = parsed.name;
+    } else {
+      const dirName = path.basename(parsed.dir);
+      if (dirName && !CIV33_LAYERS[dirName] && dirName !== 'agent-cards' && dirName !== 'agents') {
+        agentId = dirName;
+      }
+    }
+  }
+  if (!agentId && card.name) {
+    agentId = card.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9_-]/g, '');
+  }
 
   if (!agentId) return null;
 
@@ -166,6 +184,13 @@ function normaliseCard(card, sourcePath) {
     if (!civLayer) {
       const base = sourcePath.replace(/\\/g, '/');
       if (
+        /777-forge/i.test(base) ||
+        /forge-bot/i.test(base)
+      ) {
+        // 777-FORGE retired (F13 directive 2026-08-10 — FORGE is adat agentic, not a lane)
+        // forge-bot = execution bot, not an identity
+        civLayer = 'retired';
+      } else if (
         /\/agents\/_lanes\//.test(base) ||
         /\/agents\/333-AGI\//.test(base) ||
         /\/agents\/555-ASI\//.test(base) ||
@@ -178,14 +203,19 @@ function normaliseCard(card, sourcePath) {
       } else if (
         /\/agents\/_external\//.test(base) ||
         /\/agents\/opencode\//.test(base) ||
-        /\/agents\/kimi-code\//.test(base)
+        /\/agents\/kimi-code\//.test(base) ||
+        /\/agents\/antigravity\//.test(base) ||
+        /\/agents\/claude-code\//.test(base)
       ) {
         civLayer = 'harness';
       } else if (
         /\/agents\/hermes/.test(base) ||
         /\/agents\/makcikgpt\//.test(base) ||
         /\/agents\/main\//.test(base) ||
-        /hermesarifos/.test(base)
+        /hermesarifos/.test(base) ||
+        /\/agents\/agent-zero\//.test(base) ||
+        /\/agents\/decisions\//.test(base) ||
+        /\/agents\/555-ASI-VISION\//.test(base)
       ) {
         civLayer = 'binding'; // edge home cards fold into L3 BINDING (3-layer final)
       } else if (
@@ -196,13 +226,6 @@ function normaliseCard(card, sourcePath) {
       ) {
         // openclaw home + domain specialists = attachment surface
         civLayer = 'binding';
-      } else if (
-        /\/agents\/777/.test(base) ||
-        /\/agents\/forge-bot\//.test(base)
-      ) {
-        // 777-FORGE retired (F13 directive 2026-08-10 — FORGE is adat agentic, not a lane)
-        // forge-bot = execution bot, not an identity
-        civLayer = 'retired';
       }
     }
   }
@@ -223,6 +246,8 @@ function normaliseCard(card, sourcePath) {
     peers,
     // Custom constitutional fields (hermes-asi, arifOS specific)
     class: card.class || null,
+    species: card.species || card.species_proxy || null,
+    species_proxy: card.species_proxy || card.species || null,
     bound_to: card.bound_to || null,
     power_band: card.power_band || null,
     skills_prefix: card.skills_prefix || [],
@@ -254,12 +279,22 @@ function register(card, sourcePath) {
     err.code = 'INVALID_CARD';
     throw err;
   }
-  // 3-layer geometry: never downgrade a classified card to unclassified.
-  // The canonical agent-cards/ tree (scanned first) sets the layer; later
-  // warga scans (agents/) may refresh fields but must not wipe civ_layer.
+  // Invariant INV-005: Canonical cards under /agent-cards/ take precedence over secondary /agents/ cards.
   const existing = cards.get(normalised.agentId);
-  if (existing && existing.civ_layer && !normalised.civ_layer) {
-    normalised.civ_layer = existing.civ_layer;
+  if (existing) {
+    const existingIsCanonical = existing.civ_source && existing.civ_source.includes('/agent-cards/');
+    const incomingIsSecondary = sourcePath && !sourcePath.includes('/agent-cards/');
+    if (existingIsCanonical && incomingIsSecondary) {
+      // Refresh non-destructive fields if missing on existing
+      if (Array.isArray(normalised.skills) && normalised.skills.length > 0 && (!existing.skills || existing.skills.length === 0)) {
+        existing.skills = normalised.skills;
+      }
+      return existing;
+    }
+    // 3-layer geometry: never downgrade a classified card to unclassified.
+    if (existing.civ_layer && !normalised.civ_layer) {
+      normalised.civ_layer = existing.civ_layer;
+    }
   }
   cards.set(normalised.agentId, normalised);
   return normalised;
@@ -285,15 +320,12 @@ function loadDirectory(dirPath) {
     try {
       const raw = fs.readFileSync(fullPath, 'utf-8');
       const card = JSON.parse(raw);
-      // Single card
-      if (card.agentId || card.id || (card.identity && card.identity.organId)) {
-        const result = register(card, fullPath);
-        loaded.push(result.agentId);
-      } else if (entry.name !== 'aaa-cockpit.json') {
-        errors.push(`${entry.name}: no identifiable agent ID in any schema`);
-      }
+      const result = register(card, fullPath);
+      loaded.push(result.agentId);
     } catch (e) {
-      errors.push(`${entry.name}: ${e.message}`);
+      if (entry.name !== 'aaa-cockpit.json' && e.code !== 'INVALID_CARD') {
+        errors.push(`${entry.name}: ${e.message}`);
+      }
     }
   }
 
@@ -306,12 +338,16 @@ function loadDirectory(dirPath) {
 const SKIP_DIRS = new Set([
   '_brief', '_docs', '_archive', '_retired', '_audit', '__pycache__',
   'node_modules', '.git', 'memories', 'profiles', 'dist', 'build',
+  '_retired-identities', 'card-backups-before-fix', 'card-backups',
+  'archive', 'backups',
 ]);
 
 function isLikelyAgentCardFile(name, rootPath) {
   if (!name.endsWith('.json')) return false;
   // Explicit non-cards
-  if (/^(identity|liveness|package|tsconfig|sessionspec)/i.test(name)) return false;
+  if (/^(identity|liveness|package|tsconfig|sessionspec|skills|inventory)/i.test(name)) return false;
+  if (name.endsWith('.skills.json') || name === 'skills.json' || name === 'inventory.json') return false;
+  if (name.includes('SEAL') || name.includes('MANIFEST')) return false;
   if (name === 'aaa-cockpit.json') return false; // control plane meta, not agent
   // Under /agents/ only accept agent-card.json (and *agent-card*.json)
   if (rootPath.includes('/agents') && !rootPath.includes('/agent-cards')) {
@@ -336,15 +372,15 @@ function loadDirectoryRecursive(rootPath) {
       try {
         const raw = fs.readFileSync(fullPath, 'utf-8');
         const card = JSON.parse(raw);
-        if (card.agentId || card.id || (card.identity && card.identity.organId)) {
-          const result = register(card, fullPath);
-          results.loaded.push(`${entry.name} → ${result.agentId}`);
-        } else {
-          results.skipped += 1; // silent skip — not an error
-        }
+        const result = register(card, fullPath);
+        results.loaded.push(`${entry.name} → ${result.agentId}`);
       } catch (e) {
-        // Parse errors only for files we intended as cards
-        results.errors.push(`${entry.name}: ${e.message}`);
+        if (e.code === 'INVALID_CARD') {
+          results.skipped += 1; // silent skip — not a card
+        } else {
+          // Parse errors only for files we intended as cards
+          results.errors.push(`${entry.name}: ${e.message}`);
+        }
       }
     }
 
