@@ -63,3 +63,20 @@ GOTONG      sequential hop                  previous output = next STATE_IN
 Authority star. Evidence = position files. Not a chatboard. See `inter-agent-protocol.md` §11.
 
 Gotong royong runs **only** after dual GO. Default is packet only (`execute=false`). Dual GO is not a SEAL.
+
+## 5. Operational 6-Organ Mapping (2026-09-08, F13 ratified)
+
+Each musyawarah role has a primary operational home in the federation:
+
+| Role | Organ | Responsibilities |
+|---|---|---|
+| Verifier (555-ASI) | FRAME | Chaos Mapper, Drift Detection, Discoverability Audit |
+| Coordinator | AAA | Coordination, Ownership Mapping, Dependency Graph |
+| Builder (333-AGI) | arifFLOW | Receipt Collection, Evidence Aggregation |
+| Executor (777-FORGE) | A-FORGE | File Analysis, Repository Scan, Entropy Metrics |
+| Judge (888-APEX) | 888 | Ranking, Prioritization, Reduction Approval |
+| Witness | VAULT999 | Witness, Baseline Preservation |
+
+**Note:** Coordinator (AAA) is operational glue, not a deliberative role. Musyawarah remains 5+1: 333/555/777/888/Witness + Coordinator.
+
+DITEMPA BUKAN DIBERI.
