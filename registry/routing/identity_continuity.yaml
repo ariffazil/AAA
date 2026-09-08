@@ -1,0 +1,285 @@
+# Identity Continuity Routing Rule
+# Ratified: 2026-09-08 (session SEAL-9964f1fa5d0849f9)
+# Authority: F13 SOVEREIGN (Arif Fazil) · 888-APEX verdict
+# Doctrine: /root/AAA/instructions/identity-continuity.md
+# Hardcoded broadcast: Hermes, A-FORGE, arifOS, arifFlow, AAA
+# DITEMPA BUKAN DIBERI ⚒️
+
+version: 1.0.0
+ratified_at: "2026-09-08T00:00:00Z"
+doctrine_ref: /root/AAA/instructions/identity-continuity.md
+eureka_ref: /root/AAA/eurekas/EUREKA-2026-09-08-IDENTITY-CONTINUITY.md
+
+# ========================================================================
+# Routing Law
+# ========================================================================
+# When user intent contains a self-reference (aku, me, saya, named actor),
+# Hermes MUST route through identity_continuity_check() before any image,
+# audio, or multimodal capability executes. T2I is FORBIDDEN on named actors.
+
+routing_law:
+  id: ICL-2.0
+  statement: "If intent names a real actor, T2I is FORBIDDEN. Identity continuity MUST resolve first."
+  fallback:
+    - on_no_identity_card: "Suggest biometric enrollment via forge_face_enroll()"
+    - on_quorum_fail: "Refuse T2I; suggest I2I subject_ref after enrollment"
+    - on_witness_mismatch: "Escalate to F13 — dignity flag, not collapse"
+
+# ========================================================================
+# Self-Reference Detection (Hermes Runtime)
+# ========================================================================
+
+self_reference_patterns:
+  bm:
+    - "\\baku\\b"
+    - "\\bsaya\\b"
+    - "\\bhang\\b"  # Arif speaking to HERMES about himself
+  en:
+    - "\\bme\\b"
+    - "\\bmyself\\b"
+    - "\\bmy face\\b"
+  named_actors:
+    - "\\bsyed\\b"
+    - "\\bsyedsado\\b"
+    - "\\babang sado\\b"
+    - "\\bsyed khairuddin\\b"
+  events:
+    - "\\bmr kl\\b"
+    - "\\bmaster open\\b"
+    - "\\bmrkl\\b"
+    - "\\b2026\\b"
+
+default_actor_resolution:
+  syed_khairuddin:
+    identity_card: /root/AAA/registry/identity_cards/syed_khairuddin.yaml
+    purpose: "Mr KL 2026 Master Open stage visualization"
+    ttl_days: 90
+    consent_required: biometric.full
+
+# ========================================================================
+# Capability Routing Matrix (when intent triggers self-reference)
+# ========================================================================
+
+routing_matrix:
+  trigger: self_reference_detected
+  flow:
+    - step: 1
+      action: identity_continuity_check()
+      args:
+        actor_handle: "{resolved_actor_handle}"
+        intent: "{original_intent}"
+        named_actor: true
+      expected_output: IdentityContinuityReceipt
+      
+    - step: 2
+      condition: "identity_check.quorum_passed == true"
+      action: route_to_capability
+      routing:
+        - if identity_check.witness_set.W1_face >= 0.65:
+            capability: aaa-image-editing
+            identity_support: REFERENCE
+            args:
+              subject_ref: identity_card.identity_card_ref
+              reference_set: identity_card.witness_set.W1_face.reference_set
+            verb: I2I_subject_reference
+        - elif identity_check.witness_set.W1_face == 0:
+            capability: forge_face_enroll
+            identity_support: BINDING_T1
+            args:
+              purpose: identity_card.purpose
+              ttl_days: identity_card.ttl_days
+            verb: enroll_first
+      
+    - step: 3
+      condition: "identity_check.quorum_passed == false AND named_actor == true"
+      action: refuse_T2I
+      rationale: "Named actor but identity continuity failed. T2I FORBIDDEN per ICL-2.0."
+
+# ========================================================================
+# Capability Identity Support Declarations (broadcast)
+# ========================================================================
+
+capabilities:
+  aaa-image-editing:
+    identity_support: REFERENCE
+    can_use_witnesses: [W1_face, W3_name]
+    forge_replacement: forge_face_match (verifier)
+  
+  forge_face_embed:
+    identity_support: BINDING_T1
+    can_write_witness: W1_face
+    required_consent: biometric.full
+    ttl_days: 90
+    forge_replacement: forge_face_enroll (full pipeline)
+  
+  forge_face_match:
+    identity_support: BINDING_T1
+    can_verify_witness: W1_face
+    threshold: 0.65
+    forge_replacement: identity_continuity_check (constitutional)
+  
+  forge_face_enroll:
+    identity_support: BINDING_T1
+    can_write_witness: W1_face
+    required_consent: biometric.full
+    dependencies: [forge_face_embed, well_consent_set_scope]
+  
+  identity_continuity_check:
+    identity_support: BINDING_T3
+    can_use_witnesses: [W1_face, W2_voice, W3_name, W4_history, W5_relations, W6_scar_ledger]
+    quorum_threshold: 0.50
+    single_witness_authority: false  # ICL-1.1
+  
+  hermes_gateway:
+    identity_support: WITNESS_COORDINATION
+    can_use_witnesses: [W3_name, W5_relations]
+    required_check: identity_continuity_check (on named actors)
+
+# ========================================================================
+# Biometric Governance (F1 AMANAH × F6 MARUAH)
+# ========================================================================
+
+biometric_governance:
+  ttl_days: 90
+  consent_scope_default: biometric.full
+  consent_default_state: OFF  # operator must opt-in
+  storage_mode: 600  # owner read/write only
+  storage_path: /root/AAA/registry/biometric/<actor>/
+  gitignore_patterns:
+    - registry/identity_cards/*.yaml  # concrete instances
+    - registry/biometric/             # raw vectors
+  audit_trail:
+    path: /root/VAULT999/biometric/<actor>/
+    policy: RECEIPT_ONLY  # fact-of-existence, not embedding
+    immutable: true
+
+# ========================================================================
+# Failure Modes (Anti-Shadow Architecture)
+# ========================================================================
+
+failure_modes:
+  F.MISSING_IDENTITY_CARD:
+    trigger: "actor_handle not in /root/AAA/registry/identity_cards/"
+    response: "Suggest identity_card scaffolding; refuse T2I"
+  
+  F.W1_UNENROLLED:
+    trigger: "identity_card.yaml exists but W1_face.status == NOT_ENROLLED"
+    response: "Offer forge_face_enroll; refuse T2I"
+  
+  F.W1_EXPIRED:
+    trigger: "identity_card.yaml W1_face.expiry < now"
+    response: "Re-enroll via forge_face_enroll; refuse T2I"
+  
+  F.FACE_MISMATCH:
+    trigger: "forge_face_match returns WEAK (similarity < 0.65)"
+    response: "Dignity flag — escalate to F13. Never collapse identity."
+  
+  F.WITNESS_MISMATCH:
+    trigger: "W1 says X, W2 says Y"
+    response: "Dignity flag — escalate to F13. Treat as inconsistency, not lie."
+
+# ========================================================================
+# Floor Alignment
+# ========================================================================
+
+floor_alignment:
+  F1_AMANAH: "Biometric data rented, not owned. Audit trail outlives data."
+  F3_WITNESS: "Identity verified by W³ across 6 channels; quorum ≥ 0.50."
+  F6_MARUAH: "Face / voice is sovereign's dignity, not system's asset."
+  F11_AUDIT: "Every identity claim logged; mismatch dignified, not collapsed."
+  F13_SOVEREIGN: "F13 ratifies identity cards; biometric consent sovereign-grant only."
+
+# ========================================================================
+# Broadcast Targets (where this rule lives)
+# ========================================================================
+
+broadcast:
+  - target: arifOS
+    path: /root/arifOS/arifosmcp/schemas/capability_graph.py
+    change: "Added IdentitySupportLevel, WitnessKind, IdentityContinuityCheck, identity_continuity_check() method"
+  
+  - target: A-FORGE
+    path: /root/A-FORGE/src/domain/registry/forge_face_tools.ts
+    change: "Declared forge_face_embed, forge_face_match, forge_face_enroll, identity_continuity_check"
+  
+  - target: HERMES
+    path: /root/AAA/a2a-server/agent-cards/federation/hermes.json
+    change: "Added 5 identity-continuity skills + identityContinuityEnforcement capability"
+  
+  - target: arifFlow
+    path: /root/arifFlow/src/ts/arifflow/state/types.ts
+    change: "Added WitnessKind, IdentitySupportLevel, IdentityWitnessSet, IdentityContinuityReceipt, IdentityContinuityState"
+  
+  - target: AAA
+    path: /root/AAA/instructions/identity-continuity.md
+    change: "Doctrine fragment (canonical)"
+  
+  - target: AAA
+    path: /root/AAA/registry/identity_cards/syed_khairuddin.yaml
+    change: "First Identity Card instance (concrete)"
+  
+  - target: AAA
+    path: /root/AAA/eurekas/EUREKA-2026-09-08-IDENTITY-CONTINUITY.md
+    change: "Eureka capture (5 eurekas)"
+  
+  - target: AAA
+    path: /root/AAA/.gitignore
+    change: "Added biometric containment rules"
+
+# ========================================================================
+# SEQUENCE — Identity Continuity Pilot (Syed)
+# ========================================================================
+
+pilot_sequence:
+  - step: 1
+    action: "Syed uploads 5 reference photos via Telegram"
+    path: /root/A-FORGE/faces/syed_khairuddin/inbox/
+    ttl: 24h
+    
+  - step: 2
+    action: "Arif grants biometric consent (F13 sovereign signal)"
+    tool: well_consent_set_scope(biometric.full, granted)
+    
+  - step: 3
+    action: "Extract face embeddings"
+    tool: forge_face_embed
+    output: /root/AAA/registry/biometric/syed_khairuddin/embed_W1.npy (mode 600)
+    
+  - step: 4
+    action: "Update identity_card.yaml"
+    field: W1_face.status = ENROLLED
+    
+  - step: 5
+    action: "Generate I2I candidate with subject reference"
+    tool: aaa-image-editing (subject_ref=identity_card.yaml)
+    routing: identity_continuity_check passed
+    
+  - step: 6
+    action: "Verify face match"
+    tool: forge_face_match
+    threshold: 0.65
+    
+  - step: 7
+    action: "W3 tri-witness"
+    tools: [forge_visual_qa, forge_face_match, sovereign]
+    
+  - step: 8
+    action: "arif_seal"
+    tool: arif_seal
+    target: /root/VAULT999/biometric/syed_khairuddin/receipt.jsonl
+    policy: RECEIPT_ONLY
+
+# ========================================================================
+# SEAL
+# ========================================================================
+
+seal:
+  seq: SEAL-9964f1fa5d0849f9
+  ratified_at: "2026-09-08T00:00:00Z"
+  ratified_by: "888-APEX verdict on F13 SOVEREIGN signal"
+  status: ACTIVE
+  review_window: 14_days  # F13 ratification deferred to 2026-09-22 verdict
+
+# DITEMPA BUKAN DIBERI ⚒️
+# Identity Continuity — Constitutional Primitive
+# The federation has learned to name.

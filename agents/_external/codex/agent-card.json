@@ -1,6 +1,6 @@
 {
   "$schema": "arifOS/agent-card/v2.5.0",
-  "schemaVersion": "2.5.0",
+  "schemaVersion": "2.3.0",
   "protocolVersion": "1.0",
   "id": "codex",
   "name": "OpenAI Codex CLI (Codex forge instrument)",
@@ -606,7 +606,7 @@
       "from_version": "1.0.0",
       "to_version": "2.0.0",
       "upgraded_at": "2026-07-01T21:00:00Z",
-      "upgraded_by": "FORGE (000\u03a9) - Phase 5.1 A2A Protocol Alignment",
+      "upgraded_by": "FORGE (000Ω) - Phase 5.1 A2A Protocol Alignment",
       "changes": [
         "topological_role binding",
         "a2a_transport declaration",
@@ -645,5 +645,33 @@
     "arifFlow :7073 FQ=BALANCED",
     "AAA :3001 healthy (identity_hash redacted by F1 guard)",
     "FLAME :18901 healthy (RM0-TOOLS-FREELOOP)"
-  ]
+  ],
+  "registry_receipt_hash": "sha256:734e97454b6c2e933580a3cf4bef6fbac61d97416d7c22440b865aa1c19d3a68",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 12
+  },
+  "governance_profile": {
+    "authority_ceiling": "EXECUTE_AFTER_SEAL",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true
 }
