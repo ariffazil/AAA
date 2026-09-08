@@ -23,6 +23,7 @@ External contrast (Semantic Scholar MCP, 2026-08-25): snapshot tests FAIL the bu
 
 1. **Supply-chain pin gate (E-2, GATE)** — external tool installs (`npx`/`uvx`) in agent configs must be version-pinned and registered in `registries/supply_chain_pins.json`. Enforced by `scripts/supply_chain_gate.py` at the AAA pre-commit boundary. Unpinned install = commit fails.
 2. **Drift-count promotion (open)** — GEOX `surface_drift.drift_count > 0` is a GATE candidate at deploy time, not a health-report line.
+3. **Musyawawah NO-gate (E-3, OBSERVE_ONLY → GATE pending)** — F13-ratified 2026-09-08 (first real musyawawah verdict since 2026-08-11 protocol-birth, 26 days ago). Sentinel scans arifFlow ledger for T2/T3 receipts without `payload.musyawawah_reference` (pre-2026-09-08 receipts exempt under migration grace). Enforced at AAA pre-commit boundary via `scripts/musyawawah_gate.py` in `/root/A-FORGE/hooks/pre-commit-lsp-gate.sh`. Tier at commit boundary: **OBSERVE_ONLY** (advisory, no block). GATE tier is the runtime forge_shell `action_class` DENY (Phase 2 step 3, pending). Per doctrine, OBSERVE_ONLY paired with GATE = no detection debt. Set `MUSYAWARAH_STRICT=1` env to escalate commit boundary to blocking (development flag). Verdict: `musyawarah/2026-09-08-no-gate-task6/CONVERGENCE.md`. 5-scenario falsification test PASS at `scripts/test_musyawawah_gate.py`.
 
 ## Promotion rule
 
