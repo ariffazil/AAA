@@ -12,6 +12,15 @@
 
 Write **canonical (alias)** never alias alone.
 
+### [CONCEPT] STANDARD NOTATION (Ratified 2026-09-08 by ARIF)
+```text
+[CONCEPT]
+Referenced concept.
+May not correspond to a physical file.
+See source lineage.
+```
+*Purpose:* Prevents agents from treating Concept Canon as File Canon (eliminates phantom file hunts).
+
 ---
 
 ## IDENTITIES (Category A — human-held)
@@ -179,6 +188,7 @@ Linux FHS (`/ /root /etc /var /usr`) · DNS IP TCP UDP HTTP HTTPS SSH · Docker 
 | `primary node` / `the VPS` | KVM8 / KVM4 / KVM2 with canonical |
 | `arif-fs-home`, `arif-root-space` | FHS |
 | New era files for TAC | Hang Ingat Balik + this freeze |
+| `docs/sovereign_key_registry.json` | `/root/.secrets/aaa-identity/sovereign_key_registry.json` (mode 0600) — see DEPRECATION_REGISTRY.yaml |
 
 ---
 
