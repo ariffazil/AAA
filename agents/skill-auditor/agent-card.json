@@ -1,6 +1,7 @@
 {
+  "id": "skill-auditor",
   "name": "SKILL-AUDITOR",
-  "description": "AAA Skill Mesh Guardian \u2014 audits, zens, and reduces entropy across the federation skill surface. 28 canonical skills, 3 tiers, 5 agents, one profile.",
+  "description": "AAA Skill Mesh Guardian — audits, zens, and reduces entropy across the federation skill surface. 28 canonical skills, 3 tiers, 5 agents, one profile.",
   "version": "1.0.0",
   "fi_id": "FI-009",
   "citizenship": "warga-aaa",
@@ -47,5 +48,35 @@
         "kid": "arifos-a2a-card-2026-%q"
       }
     }
-  ]
+  ],
+  "$schema": "arifOS/agent-card/v2.3.0",
+  "schemaVersion": "2.3.0",
+  "registry_receipt_hash": "sha256:1f55e2ef6283ae8348f5b546ae33d6f7de947dab3c59b1824c1341ae0e28446c",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 4
+  },
+  "governance_profile": {
+    "authority_ceiling": "OBSERVE_ONLY",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true
 }

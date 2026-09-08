@@ -1,6 +1,6 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "id": "claude-code",
   "name": "Claude Code CLI",
   "principal_agent": {
@@ -583,5 +583,33 @@
   "cognitive_species": "judge",
   "species_rank": 1,
   "fi": "FI-CLAUDE",
-  "bound_to": "888-APEX"
+  "bound_to": "888-APEX",
+  "registry_receipt_hash": "sha256:c5cd10c11479b125da129e34f238959b8778cc41686452cffd565a2e5845bd3d",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 13
+  },
+  "governance_profile": {
+    "authority_ceiling": "EXECUTE_AFTER_SEAL",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true
 }

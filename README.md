@@ -1,12 +1,14 @@
 <!-- SOT-MANIFEST
-federation_release: v2026.09.01
-last_verified: 2026-09-01T08:00:00Z
+federation_release: v2026.09.08
+last_verified: 2026-09-08T09:45:00Z
 live_commit: 028814e4
 a2a_port: 3001
 a2a_status: healthy GREEN
 protocol: A2A v1.0.0
 godel_lock: ACTIVE federation-wide
-agent_lanes: 4 (333-AGI, 555-ASI, 888-APEX, 777-FORGE)
+role: REGISTER & DISPLAY — A2A Gateway, State Plane, Skill Catalog, Intent Routing
+authority: DISPLAY_ONLY — never judges (arifOS), never metabolizes (arifFlow), never executes (A-FORGE)
+agent_lanes: 3 (333-AGI, 555-ASI, 888-APEX; FORGE is adat agentic substrate)
 truth_rule: /health + agent registry beat any static count in prose
 vault: CONNECTED
 seal_chain: append-only (chattr +a) + Merkle anchor every 100 receipts
@@ -16,7 +18,7 @@ seal_chain: append-only (chattr +a) + Merkle anchor every 100 receipts
 
 ## The sovereign intelligence layer for the arifOS federation — routing intent to the right organ, every time.
 
-AAA is the cognitive nervous system of the arifOS federation. It classifies human and agent intent, routes tasks to the correct organ (kernel, execution, earth science, capital, health), manages the federation state plane, and provides multi-model inference routing via the FLAME router.
+AAA is the cognitive nervous system and registry of the arifOS federation. It classifies human and agent intent, routes tasks to the correct organ (kernel, execution, earth science, capital, health), manages the federation state plane, and provides the A2A gateway mesh.
 
 **Licensed under AGPL-3.0.**
 
@@ -114,10 +116,10 @@ Deterministic mission routing that maps human language to machine states:
 
 ### Skill Catalog
 200+ skills across 11 categories:
-- **333-AGI** — General intelligence, web, research
-- **555-ASI** — Advanced reasoning, governance
-- **777-FORGE** — Code, infrastructure, deployment
-- **888-APEX** — Constitutional reasoning, audit
+- **333-AGI** — General intelligence, web, research, epistemic discovery
+- **555-ASI** — Causal reasoning, structural intelligence, vision analysis
+- **888-APEX** — Sovereign adjudicative, constitutional audit
+- **FORGE (adat)** — Code, infrastructure, deployment (inherited capability substrate)
 - **warga** — Citizen agent skills
 - And more (productivity, media, smart home, social)
 
@@ -138,7 +140,16 @@ AAA sits between the user and all other organs:
 User → AAA (intent classification + routing) → Target Organ
 ```
 
-AAA **displays state but never judges or executes**. Verdicts belong to the arifOS kernel. Mutations belong to A-FORGE.
+### Division of Constitutional Labor
+
+| Organ | Constitutional Role | Authority Ceiling | Does NOT |
+|-------|---------------------|-------------------|----------|
+| **arifOS** | **JUDGE** | F1–F13 Constitutional Kernel | Never executes (mutates nothing) |
+| **AAA** | **REGISTER & DISPLAY** | A2A Mesh, State Plane, Skill Catalog | Never judges, never metabolizes, never executes |
+| **arifFlow** | **METABOLIZE** | Attention Pulse, Flow Quotient (FQ) | Never judges, never executes |
+| **A-FORGE** | **EXECUTE** | Actuator, MCP Tools, System Mutations | Never adjudicates |
+
+AAA **registers identities and displays state, but never judges, metabolizes, or executes**. Verdicts belong solely to arifOS. Metabolisms belong to arifFlow. Mutations belong to A-FORGE.
 
 ---
 

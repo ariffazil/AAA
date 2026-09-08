@@ -1,15 +1,15 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "id": "agent-zero",
   "fi_id": "FI-005",
-  "name": "agent-zero \u2014 Foundational Test Agent",
+  "name": "agent-zero — Foundational Test Agent",
   "description": "Foundational test/research agent in the 333-AGI lane. Used for federation smoke tests.",
   "version": "1.0.0",
   "protocolVersion": "1.2",
   "principal_agent": {
     "type": "agent",
-    "category": "Sovereign citizen warga \u2014 binds to 333-AGI lane",
+    "category": "Sovereign citizen warga — binds to 333-AGI lane",
     "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive (2026-08-12 sweep)"
   },
   "warga_binding": {
@@ -51,5 +51,33 @@
         "kid": "arifos-a2a-card-2026-%q"
       }
     }
-  ]
+  ],
+  "registry_receipt_hash": "sha256:4b0c4132cf1615d0c8cdc14c908c9da5ba4cad667369a9ee24c857a6f8fa5b3a",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 0
+  },
+  "governance_profile": {
+    "authority_ceiling": "RETIRED",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true
 }

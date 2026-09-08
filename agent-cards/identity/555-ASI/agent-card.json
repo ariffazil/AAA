@@ -1,6 +1,6 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "id": "555-ASI",
   "name": "555-ASI",
   "principal_agent": {
@@ -1046,5 +1046,30 @@
     ],
     "godel_lock_acknowledgment": "My observations are theory-laden. Evidence I collect is filtered through my own lens. Cross-verification through W3 tri-witness reduces but does not eliminate this.",
     "canon": "/root/AAA/canon/CIV-21.md"
+  },
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 34
+  },
+  "governance_profile": {
+    "authority_ceiling": "OBSERVE_ONLY",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
   }
 }
