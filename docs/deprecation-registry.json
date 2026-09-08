@@ -1,7 +1,7 @@
 {
-  "version": "2026.07.19",
-  "last_audit": "2026-09-04T21:50:00+08:00",
-  "auditor": "FI-008 kimi-code — cron zen audit (888 sovereign go)",
+  "version": "2026.09.08",
+  "last_audit": "2026-09-08T09:46:00+08:00",
+  "auditor": "FI-003 qwen-code — federation identity plane entropy audit (T1 reversible, F13 sovereign go via Items 1-6+9 batch)",
   "deprecated_services": [
     {
       "id": "apex-prime.service",
@@ -101,6 +101,17 @@
       "reason": "Stale public truth since 2026-08-18 (generator banned); only .bak pages referenced it.",
       "replacement": "revive generator or drop from AGENTS.md discovery table",
       "archive": "/root/BACKUPS/cron-audit-20260904/status.json.removed"
+    },
+    {
+      "id": "AGENT_INDEX.json",
+      "type": "registry",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-08",
+      "reason": "Self-declared TOMBSTONE 2026-07-31 ('SUPERSEDED by a2a/registry/agents.yaml') but file persisted on disk; FI slot assignments (FI-001..FI-009) contradicted registry.yaml. Federation identity audit 2026-09-08: 53 cards across 3 trees, 11 duplicate identities — AGENT_INDEX added entropy instead of reducing it.",
+      "replacement": "a2a/registry/agents.yaml (canonical) + /root/AAA/agent-cards/ (CIV-33 layer-2 tree, source-of-truth) + paths_resolver.CANON_AGENT_CARD_PATHS (planned)",
+      "archive": "/root/AAA/archive/2026-09-08-identity-tombstone/AGENT_INDEX.json",
+      "reviewer": "FI-003 qwen-code (T1 reversible, 2026-09-08 F13 sovereign go)",
+      "supported_by": "INV-11 (Identity plane) — single canonical path per agent"
     }
   ],
   "deprecated_patterns": [

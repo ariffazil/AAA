@@ -30,15 +30,17 @@ function createA2AVersionMiddleware(options = {}) {
 
   return (req, res, next) => {
     // Public discovery GETs must not require A2A-Version (normative card is unauthenticated).
-    const path = (req.path || req.url || '').split('?')[0];
+    const fullPath = (req.originalUrl || (req.baseUrl || '') + (req.path || '')).split('?')[0];
     const isPublicDiscovery =
       req.method === 'GET' &&
-      (/agent-card\.json$/.test(path) ||
-        /\/agent\.json$/.test(path) ||
-        /discovery-contract\.json$/.test(path) ||
-        /routing-policy\.json$/.test(path) ||
-        /a2a-discovery\.json$/.test(path) ||
-        /peer-federation-contract\.json$/.test(path));
+      (/agent-card\.json$/.test(fullPath) ||
+        /\/agent\.json$/.test(fullPath) ||
+        /\/agents(\.json)?(\/.*)?$/.test(fullPath) ||
+        /\/discover(\/.*)?$/.test(fullPath) ||
+        /discovery-contract\.json$/.test(fullPath) ||
+        /routing-policy\.json$/.test(fullPath) ||
+        /a2a-discovery\.json$/.test(fullPath) ||
+        /peer-federation-contract\.json$/.test(fullPath));
     if (isPublicDiscovery) {
       req.a2aVersion = DEFAULT_A2A_VERSION;
       res.setHeader('A2A-Version', DEFAULT_A2A_VERSION);

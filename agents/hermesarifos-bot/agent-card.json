@@ -1,6 +1,6 @@
 {
   "id": "hermesarifos-bot",
-  "name": "Hermes Archive Bot \u2014 Gateway 4",
+  "name": "Hermes Archive Bot — Gateway 4",
   "description": "Memory/archive via @hermesarifos_bot. VAULT999 queries, federation history.",
   "url": "https://forge.arif-fazil.com/webhook/hermesarifos",
   "gateway": 4,
@@ -16,5 +16,35 @@
         "kid": "arifos-a2a-card-2026-%q"
       }
     }
-  ]
+  ],
+  "$schema": "arifOS/agent-card/v2.3.0",
+  "schemaVersion": "2.3.0",
+  "registry_receipt_hash": "sha256:114d50df72f25531933460d6a9f80131f4ae1a0ac2aaaccba6dd46ae79dce627",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 0
+  },
+  "governance_profile": {
+    "authority_ceiling": "DISPLAY_ONLY",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true
 }

@@ -1,13 +1,13 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "id": "geox-mcp",
   "protocolVersion": "1.2",
   "agentId": "geox",
   "name": "GEOX",
   "principal_agent": {
     "type": "agent",
-    "category": "Earth intelligence \u2014 EVIDENCE_ONLY, never adjudicates",
+    "category": "Earth intelligence — EVIDENCE_ONLY, never adjudicates",
     "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive"
   },
   "warga_binding": {
@@ -17,7 +17,7 @@
     "authority_level": "EVIDENCE_ONLY",
     "citizenship_forged": "2026-05-17"
   },
-  "description": "Earth intelligence \u2014 basin analysis, seismic, petrophysics, wells, geomechanics, biostratigraphy.",
+  "description": "Earth intelligence — basin analysis, seismic, petrophysics, wells, geomechanics, biostratigraphy.",
   "version": "1.0.0",
   "provider": {
     "organization": "arifOS",
@@ -529,5 +529,33 @@
   "default_output_modes": [
     "text/plain",
     "application/json"
-  ]
+  ],
+  "registry_receipt_hash": "sha256:2d7adebde4cd16de5cdd22057406d31169fbbc12996ffa936ca039400a919dc1",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 32
+  },
+  "governance_profile": {
+    "authority_ceiling": "COMPUTE_ONLY",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true
 }

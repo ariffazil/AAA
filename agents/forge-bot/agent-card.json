@@ -1,6 +1,6 @@
 {
   "id": "forge-bot",
-  "name": "FORGE Bot \u2014 Gateway 3",
+  "name": "FORGE Bot — Gateway 3",
   "description": "A-FORGE execution via @arifOS_bot. /health /status /fq /deploy /who",
   "url": "https://forge.arif-fazil.com/webhook/forge",
   "gateway": 3,
@@ -11,16 +11,16 @@
   "telegram_posting": {
     "telegram_posting": {
       "bot": "@arifOS_bot",
-      "bot_name": "\ud83d\udd25FORGE\ud83d\udd25 FORGE Bot",
+      "bot_name": "🔥FORGE🔥 FORGE Bot",
       "bot_id": "8727562763",
       "token_env": "FORGE_BOT_TOKEN",
       "token_vault": "/root/.secrets/kunci-mas.env",
       "group_chat_id": "-1003753855708",
       "post_tool": "/usr/local/bin/forge-post",
-      "identity_header": "FORGE / \ud83d\udd25FORGE / @arifOS_bot",
+      "identity_header": "FORGE / 🔥FORGE / @arifOS_bot",
       "rule": "Post to AAA group via FORGE bot only. One post per session. Token from vault, never hardcode.",
       "wired_at": "2026-08-08T05:44:00Z",
-      "canon": "/root/AAA/docs/9-ATLAS-GENOME.md \u00a77"
+      "canon": "/root/AAA/docs/9-ATLAS-GENOME.md §7"
     }
   },
   "signatures": [
@@ -31,5 +31,35 @@
         "kid": "arifos-a2a-card-2026-%q"
       }
     }
-  ]
+  ],
+  "$schema": "arifOS/agent-card/v2.3.0",
+  "schemaVersion": "2.3.0",
+  "registry_receipt_hash": "sha256:1c86739058eae3cdf1d72c6553bca08ec64f280cf10a796717d937d074b098ad",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 0
+  },
+  "governance_profile": {
+    "authority_ceiling": "DISPLAY_ONLY",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true
 }

@@ -1,9 +1,9 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "id": "agentic-trading-companion",
   "name": "Agentic Trading Companion",
-  "description": "Active trading signal & execution engine for XAUUSD. Governed by F13 888_SOVEREIGN gate. MT5 bridge holder. Every trade requires human approval \u2014 no auto-fire permitted. PASSIVE analysis node is separate (trading-signal-chart).",
+  "description": "Active trading signal & execution engine for XAUUSD. Governed by F13 888_SOVEREIGN gate. MT5 bridge holder. Every trade requires human approval — no auto-fire permitted. PASSIVE analysis node is separate (trading-signal-chart).",
   "version": "2.0.0",
   "protocolVersion": "1.2",
   "url": "https://aaa.arif-fazil.com/a2a/agentic-trading-companion",
@@ -75,9 +75,9 @@
     ]
   },
   "autonomy_tiers": {
-    "T1_auto": "Signal generation, backtest, monitor, journal \u2014 read-only",
+    "T1_auto": "Signal generation, backtest, monitor, journal — read-only",
     "T2_announce": "Signal delivery to Arif/Syed for approval",
-    "T3_888_HOLD": "Trade execution \u2014 requires F13 SOVEREIGN key"
+    "T3_888_HOLD": "Trade execution — requires F13 SOVEREIGN key"
   },
   "scopes": [
     "TRADE_SIGNAL",
@@ -148,7 +148,7 @@
     "expires_at": "2027-07-29T00:00:00Z",
     "doctrine": "DITEMPA BUKAN DIBERI",
     "passive_sibling": "trading-signal-chart",
-    "passive_f1_boundary": "STRICTLY READ-ONLY \u2014 no broker access"
+    "passive_f1_boundary": "STRICTLY READ-ONLY — no broker access"
   },
   "a2a_transport": {
     "protocol": "jsonrpc-2.0",
@@ -171,5 +171,33 @@
         "kid": "arifos-a2a-card-2026-%q"
       }
     }
-  ]
+  ],
+  "registry_receipt_hash": "sha256:63ac4b283f9c4a55387099b87450ada95b61a4832d12673c863ffae113db64a8",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 0
+  },
+  "governance_profile": {
+    "authority_ceiling": "OBSERVE_ONLY",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true
 }

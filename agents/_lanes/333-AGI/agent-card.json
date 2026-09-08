@@ -1,15 +1,15 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "id": "333-AGI",
   "fi_id": "FI-002",
-  "name": "333-AGI \u2014 Research / General Intelligence",
+  "name": "333-AGI — Research / General Intelligence",
   "description": "Open-reasoning AGI lane. Primary research agent under F13 SOVEREIGN. Bound to arifOS AAA federation.",
   "version": "1.0.0",
   "protocolVersion": "1.2",
   "principal_agent": {
     "type": "agent",
-    "category": "Sovereign citizen warga \u2014 binds to 333-AGI lane",
+    "category": "Sovereign citizen warga — binds to 333-AGI lane",
     "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive (2026-08-12 sweep)"
   },
   "warga_binding": {
@@ -51,5 +51,33 @@
         "kid": "arifos-a2a-card-2026-%q"
       }
     }
-  ]
+  ],
+  "registry_receipt_hash": "sha256:ce2a1434e3379048a62162a5f4d61dd6f9abfd81bcc3d8f7b6251942ac2a6fc8",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 0
+  },
+  "governance_profile": {
+    "authority_ceiling": "OBSERVE_ONLY",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true
 }

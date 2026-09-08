@@ -1,7 +1,7 @@
 # EXPERIENCE SURFACE — auto-generated from experience_traces.jsonl
 # Top-3 traces by capability_change. Loaded at /init for context injection.
 # This file IS the experience → capability pipeline. Do not edit manually.
-# Generated: 2026-09-07T18:47:09Z
+# Generated: 2026-09-08T01:11:31Z
 # Total traces: 18
 
 ## 1. mesh_sync (kimi-code/FI-008)  cap=+0.60

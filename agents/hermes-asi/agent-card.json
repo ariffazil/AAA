@@ -1,12 +1,12 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "id": "hermes-asi",
   "name": "Hermes ASI",
   "class": "AAA-Core",
   "principal_agent": {
     "type": "agent",
-    "category": "Sovereign citizen warga \u2014 binds to 555-ASI cognitive ring",
+    "category": "Sovereign citizen warga — binds to 555-ASI cognitive ring",
     "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive"
   },
   "warga_binding": {
@@ -73,7 +73,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -89,7 +89,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -135,7 +135,7 @@
   "_schema_normalization": {
     "applied": "2026-07-14T13:13:50Z by FI-008 Kimi per KIMI-INIT-AGENT-INDEX blueprint",
     "action": "Removed 6 bare-string skills (duplicates of object entries at lines 26-145). All skills are now objects per arifOS/agent-card/v2.2.0 schema. Added version:1.0.0 and provider block.",
-    "delta_S": "\u2264 0 (schema compliance, no behavior change)"
+    "delta_S": "≤ 0 (schema compliance, no behavior change)"
   },
   "_kernel_bound": "2026-07-13-EUREKA-ZEN",
   "metadata": {
@@ -254,5 +254,33 @@
         "kid": "arifos-a2a-card-2026-%q"
       }
     }
-  ]
+  ],
+  "registry_receipt_hash": "sha256:aadfc9c7cefda781df6bc8c54f18e673fec7f67bd20c0d401ef0ff24270a7eb5",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 6
+  },
+  "governance_profile": {
+    "authority_ceiling": "OBSERVE_ONLY",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true
 }

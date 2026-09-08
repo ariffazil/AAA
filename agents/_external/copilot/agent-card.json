@@ -1,6 +1,6 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "id": "copilot",
   "name": "GitHub Copilot CLI",
   "principal_agent": {
@@ -550,5 +550,33 @@
   "emd_forged": "2026-08-09",
   "fi": "FI-COPILOT",
   "bound_to": "333-AGI",
-  "status": "superseded_by: copilot-cli (naming twin; runtime registry FI-006 = Copilot CLI) — 2026-08-14"
+  "status": "superseded_by: copilot-cli (naming twin; runtime registry FI-006 = Copilot CLI) — 2026-08-14",
+  "registry_receipt_hash": "sha256:bf91b395a562a9943084bbd0766cd620667ac77d206f4cce8b259ba9adce7011",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 12
+  },
+  "governance_profile": {
+    "authority_ceiling": "EXECUTE_AFTER_SEAL",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true
 }

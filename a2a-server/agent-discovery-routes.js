@@ -33,50 +33,82 @@ const { AgentCardRegistry } = require('./agent-card-registry');
 function createDiscoveryRouter() {
   const router = express.Router();
 
-  // ── GET /discover — List all registered agents ──────────────────────────
-  router.get('/discover', (_req, res) => {
+  // ── GET /discover or /agents — List all registered agents ───────────────
+  router.get(['/discover', '/agents'], (req, res) => {
     const all = AgentCardRegistry.getAll();
+    const includeInadmissible = req.query.include_inadmissible === 'true';
+
+    // Compute INV-11/12/13 metadata
+    const admissible = [];
+    const inadmissible = [];
+    for (const c of all) {
+      const schemaOk = c.schemaVersion === '2.3.0' || c.protocolVersion === '1.0';
+      const hashOk = Boolean(c.registry_receipt_hash);
+      const authOk = Boolean((c.governance_profile && c.governance_profile.authority_ceiling) || c.authority_ceiling || c.authority);
+      const isAdmissible = c.admissible !== false && (schemaOk || hashOk || authOk);
+
+      if (isAdmissible) {
+        admissible.push(c);
+      } else {
+        inadmissible.push(c);
+      }
+    }
+
+    const agentsList = (includeInadmissible ? all : admissible).map((c) => ({
+      agentId: c.agentId,
+      name: c.name,
+      description: c.description,
+      version: c.version,
+      protocolVersion: c.protocolVersion,
+      schemaVersion: c.schemaVersion || '2.3.0',
+      authority_ceiling: (c.governance_profile && c.governance_profile.authority_ceiling) || c.authority_ceiling || c.authority || 'OBSERVE_ONLY',
+      admissible: c.admissible !== false,
+      provider: c.provider,
+      tags: c.tags,
+      capabilities: c.capabilities,
+      skills: (c.skills || []).map((s) => ({
+        id: s.id,
+        name: s.name,
+        description: s.description,
+        tags: s.tags,
+      })),
+      endpoints: {
+        baseUrl: (c.endpoints && c.endpoints.baseUrl) || '',
+        healthUrl: (c.endpoints && c.endpoints.healthUrl) || '',
+        cardUrl: (c.endpoints && c.endpoints.cardUrl) || '',
+      },
+      // Constitutional physics — arifOS federation
+      class: c.class,
+      species: c.species,
+      species_proxy: c.species_proxy,
+      bound_to: c.bound_to,
+      power_band: c.power_band,
+      skills_prefix: c.skills_prefix,
+      runtime_harness: c.runtime_harness,
+      identity_anchor: c.identity_anchor,
+      mcp_servers: c.mcp_servers,
+      epistemic_floor: c.epistemic_floor,
+      f1_boundary: c.f1_boundary,
+      rollback_plan: c.rollback_plan,
+    }));
+
     res.json({
       ok: true,
-      count: all.length,
-      agents: all.map((c) => ({
-        agentId: c.agentId,
-        name: c.name,
-        description: c.description,
-        version: c.version,
-        protocolVersion: c.protocolVersion,
-        provider: c.provider,
-        tags: c.tags,
-        capabilities: c.capabilities,
-        skills: (c.skills || []).map((s) => ({
-          id: s.id,
-          name: s.name,
-          description: s.description,
-          tags: s.tags,
-        })),
-        endpoints: {
-          baseUrl: c.endpoints.baseUrl || '',
-          healthUrl: c.endpoints.healthUrl || '',
-          cardUrl: c.endpoints.cardUrl || '',
-        },
-        // Constitutional physics — arifOS federation
-        class: c.class,
-        bound_to: c.bound_to,
-        power_band: c.power_band,
-        skills_prefix: c.skills_prefix,
-        runtime_harness: c.runtime_harness,
-        identity_anchor: c.identity_anchor,
-        mcp_servers: c.mcp_servers,
-        epistemic_floor: c.epistemic_floor,
-        f1_boundary: c.f1_boundary,
-        rollback_plan: c.rollback_plan,
-      })),
+      discovery_version: '2.3.0',
+      endpoint: '/a2a/agents',
+      invariants_enforced: ['INV-11', 'INV-12', 'INV-13'],
+      total_unique_agents: all.length,
+      admissible_count: admissible.length,
+      inadmissible_count: inadmissible.length,
+      duplicates_shadowed: {},
+      count: agentsList.length,
+      agents: agentsList,
       timestamp: new Date().toISOString(),
     });
   });
 
-  // ── GET /discover/stats — Registry statistics ───────────────────────────
-  router.get('/discover/stats', (_req, res) => {
+  // ── GET /discover/stats or /agents/stats — Registry statistics ───────────
+  router.get(['/discover/stats', '/agents/stats'], (_req, res) => {
     const stats = AgentCardRegistry.getStats();
     res.json({
       ok: true,
@@ -85,8 +117,8 @@ function createDiscoveryRouter() {
     });
   });
 
-  // ── GET /discover/search?q= — Full-text search ──────────────────────────
-  router.get('/discover/search', (req, res) => {
+  // ── GET /discover/search or /agents/search — Full-text search ───────────
+  router.get(['/discover/search', '/agents/search'], (req, res) => {
     const q = (req.query.q || '').trim();
     if (!q) {
       return res.status(400).json({
@@ -105,7 +137,7 @@ function createDiscoveryRouter() {
   });
 
   // ── GET /discover/capability/:capability — Find by capability ───────────
-  router.get('/discover/capability/:capability', (req, res) => {
+  router.get(['/discover/capability/:capability', '/agents/capability/:capability'], (req, res) => {
     const { capability } = req.params;
     const results = AgentCardRegistry.findByCapability(capability);
     res.json({
@@ -123,7 +155,7 @@ function createDiscoveryRouter() {
   });
 
   // ── GET /discover/tag/:tag — Find agents by tag ─────────────────────────
-  router.get('/discover/tag/:tag', (req, res) => {
+  router.get(['/discover/tag/:tag', '/agents/tag/:tag'], (req, res) => {
     const { tag } = req.params;
     const results = AgentCardRegistry.findByTag(tag);
     res.json({
@@ -141,7 +173,7 @@ function createDiscoveryRouter() {
   });
 
   // ── GET /discover/skill/:skillId — Find agents by skill ID ──────────────
-  router.get('/discover/skill/:skillId', (req, res) => {
+  router.get(['/discover/skill/:skillId', '/agents/skill/:skillId'], (req, res) => {
     const { skillId } = req.params;
     const results = AgentCardRegistry.findBySkill(skillId);
     res.json({
@@ -157,8 +189,8 @@ function createDiscoveryRouter() {
     });
   });
 
-  // ── GET /discover/:agentId — Get a specific agent card ──────────────────
-  router.get('/discover/:agentId', (req, res) => {
+  // ── GET /discover/:agentId or /agents/:agentId — Get a specific agent card ──
+  router.get(['/discover/:agentId', '/agents/:agentId'], (req, res) => {
     const { agentId } = req.params;
     const card = AgentCardRegistry.get(agentId);
     if (!card) {
@@ -175,8 +207,8 @@ function createDiscoveryRouter() {
     });
   });
 
-  // ── POST /discover/register — Dynamically register a new agent card ─────
-  router.post('/discover/register', (req, res) => {
+  // ── POST /discover/register or /agents/register — Dynamically register a new agent card ─
+  router.post(['/discover/register', '/agents/register'], (req, res) => {
     const card = req.body;
     if (!card || typeof card !== 'object') {
       return res.status(400).json({

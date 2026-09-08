@@ -1,12 +1,12 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "id": "arifOS_bot",
   "name": "arifOS_bot",
   "class": "AAA-Core",
   "principal_agent": {
     "type": "agent",
-    "category": "Sovereign citizen warga \u2014 binds to 888-APEX cognitive ring as primary operator",
+    "category": "Sovereign citizen warga — binds to 888-APEX cognitive ring as primary operator",
     "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive"
   },
   "warga_binding": {
@@ -190,7 +190,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -206,7 +206,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -251,7 +251,7 @@
     {
       "id": "KERNEL-verbs-forge-hands",
       "name": "Forge Verbs (Execution)",
-      "description": "Governed execution verbs: dry_run \u2192 engineer \u2192 write \u2192 commit \u2192 deploy. Every verb has a reversibility class.",
+      "description": "Governed execution verbs: dry_run → engineer → write → commit → deploy. Every verb has a reversibility class.",
       "tags": [
         "kernel",
         "forge",
@@ -427,12 +427,12 @@
     ]
   },
   "metadata": {
-    "doctrine": "DITEMPA BUKAN DIBERI \u2014 Intelligence is forged, not given.",
+    "doctrine": "DITEMPA BUKAN DIBERI — Intelligence is forged, not given.",
     "created_at": "2026-06-03T05:20:00Z",
     "created_by": "OMEGA (Tier 1 cleanup, post-Hermes-self-audit)",
     "migrated_to_v2.0.0": "2026-07-01T18:00:00Z",
-    "migrated_by": "FORGE (000\u03a9) \u2014 Phase 1 entropy reduction",
-    "rationale": "OpenClaw schema \u2192 arifOS/agent-card/v2.2.0. F1-F13 binding declared in card for downstream callers.",
+    "migrated_by": "FORGE (000Ω) — Phase 1 entropy reduction",
+    "rationale": "OpenClaw schema → arifOS/agent-card/v2.2.0. F1-F13 binding declared in card for downstream callers.",
     "kernel_deps": [
       "KERNEL-trinity-33",
       "KERNEL-session-inhabit",
@@ -520,5 +520,33 @@
         "kid": "arifos-a2a-card-2026-%q"
       }
     }
-  ]
+  ],
+  "registry_receipt_hash": "sha256:15d97057e726a751f641af11b538ef9a41de2aed21efff8c24a08c5dfed4f3fc",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 14
+  },
+  "governance_profile": {
+    "authority_ceiling": "DISPLAY_ONLY",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true
 }

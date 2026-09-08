@@ -1,11 +1,11 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "id": "openclaw",
   "name": "OpenClaw Gateway",
   "principal_agent": {
     "type": "agent",
-    "category": "Native A2A agent \u2014 runtime owns itself",
+    "category": "Native A2A agent — runtime owns itself",
     "principle_origin": "Self-owned runtime, governed by F1-F13"
   },
   "description": "Live multi-agent gateway hosting main, opencode, codex, and kimi personas. WebSocket-native execution engine for Telegram @AGI_ASI_bot, web search, browser automation, shell execution, and ACP bridges to federation organs.",
@@ -125,7 +125,7 @@
     {
       "id": "FORGE-openclaw-doctor",
       "name": "OpenClaw Doctor Recipes",
-      "description": "Fix common OpenClaw gateway health issues \u2014 model-registry drift, MCP localhost bindings, plugin cache, orphan transcripts, gateway restart, Telegram webhook 502/404, webhook-URL drift vs Caddy route, post-fix reply-latency. ACTIVE.",
+      "description": "Fix common OpenClaw gateway health issues — model-registry drift, MCP localhost bindings, plugin cache, orphan transcripts, gateway restart, Telegram webhook 502/404, webhook-URL drift vs Caddy route, post-fix reply-latency. ACTIVE.",
       "tags": [
         "doctor",
         "MCP",
@@ -148,7 +148,7 @@
     {
       "id": "FORGE-mcp-boot-diagnosis",
       "name": "MCP Boot Failure Diagnosis",
-      "description": "Diagnose MCP servers that show 'failed' in Hermes/OpenClaw boot screen. Boot status is misleading for stdio and SSE transports \u2014 distinguish 'not connected to a session' (false negative) from 'actually broken'. F1, F11 enforced. ACTIVE.",
+      "description": "Diagnose MCP servers that show 'failed' in Hermes/OpenClaw boot screen. Boot status is misleading for stdio and SSE transports — distinguish 'not connected to a session' (false negative) from 'actually broken'. F1, F11 enforced. ACTIVE.",
       "tags": [
         "MCP",
         "boot",
@@ -169,7 +169,7 @@
     {
       "id": "FORGE-federation-ops",
       "name": "arif Federation Ops",
-      "description": "arifOS federation topology and routing \u2014 10 organs + gateway. Map ports, services, dependencies for gateway dispatch decisions. F1, F11 enforced. ACTIVE.",
+      "description": "arifOS federation topology and routing — 10 organs + gateway. Map ports, services, dependencies for gateway dispatch decisions. F1, F11 enforced. ACTIVE.",
       "tags": [
         "federation",
         "topology",
@@ -190,7 +190,7 @@
     {
       "id": "AGI-kanban-playbook",
       "name": "Kanban Playbook",
-      "description": "Hermes Kanban dispatcher \u2014 both orchestrator (routing, decomposition, fan-out, recovery) and worker (handoff shapes, retries, pitfalls, edge cases) perspectives. F4 enforced. ACTIVE.",
+      "description": "Hermes Kanban dispatcher — both orchestrator (routing, decomposition, fan-out, recovery) and worker (handoff shapes, retries, pitfalls, edge cases) perspectives. F4 enforced. ACTIVE.",
       "tags": [
         "kanban",
         "dispatcher",
@@ -241,7 +241,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -257,7 +257,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -302,7 +302,7 @@
     {
       "id": "KERNEL-verbs-forge-hands",
       "name": "Forge Verbs (Execution)",
-      "description": "Governed execution verbs: dry_run \u2192 engineer \u2192 write \u2192 commit \u2192 deploy. Every verb has a reversibility class.",
+      "description": "Governed execution verbs: dry_run → engineer → write → commit → deploy. Every verb has a reversibility class.",
       "tags": [
         "kernel",
         "forge",
@@ -528,7 +528,7 @@
       "from_version": "2026.6.1",
       "to_version": "2.0.0",
       "upgraded_at": "2026-07-01T21:00:00Z",
-      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
+      "upgraded_by": "FORGE (000Ω) — Phase 5.1 A2A Protocol Alignment",
       "changes": [
         "topological_role binding",
         "a2a_transport declaration",
@@ -610,7 +610,7 @@
   ],
   "model": "deepseek/deepseek-v4-pro",
   "_model_sot": "/root/AAA/registries/models/AGENT_MODEL_MAP.json",
-  "_model_prior": "minimax/MiniMax-M3 (direct API key invalid 2049 \u2014 routed via TokenRouter gateway; provider ACTIVE, model LIVE per registry 2026-08-03)",
+  "_model_prior": "minimax/MiniMax-M3 (direct API key invalid 2049 — routed via TokenRouter gateway; provider ACTIVE, model LIVE per registry 2026-08-03)",
   "supported_interfaces": [
     {
       "url": "https://aaa.arif-fazil.com/a2a",
@@ -626,7 +626,7 @@
   "agentId": "openclaw",
   "layer": "binding",
   "fi": null,
-  "fi_note": "Not FI \u2014 gateway binding; dispatches to FI harnesses",
+  "fi_note": "Not FI — gateway binding; dispatches to FI harnesses",
   "model_socket": "fed/openclaw",
   "identity_vs_runtime": "agentId=openclaw; runtime=FED seat openclaw (not opencode FI-001)",
   "warga_binding": {
@@ -634,5 +634,33 @@
     "planned": "infrastructure_citizen",
     "stamp": "deferred_phase_B"
   },
-  "capability_token": "act_v1"
+  "capability_token": "act_v1",
+  "registry_receipt_hash": "sha256:31efbc83d282c69220a69024d53989c669bd1a9e78e1ca98d34addd09c8a93a8",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 27
+  },
+  "governance_profile": {
+    "authority_ceiling": "ROUTE_BRIDGE",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true
 }

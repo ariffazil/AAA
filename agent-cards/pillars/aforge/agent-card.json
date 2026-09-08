@@ -1,6 +1,6 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "protocolVersion": "1.2",
   "agentId": "a-forge-mcp",
   "name": "A-FORGE Execution Shell",
@@ -172,7 +172,7 @@
     {
       "id": "forge_evaluate",
       "name": "APEX Gate",
-      "description": "Compute G = A\u00b7P\u00b7E\u00b7X\u00b7\u03a6.",
+      "description": "Compute G = A·P·E·X·Φ.",
       "tags": [
         "actuator"
       ],
@@ -236,5 +236,33 @@
   "default_output_modes": [
     "text/plain",
     "application/json"
-  ]
+  ],
+  "registry_receipt_hash": "sha256:e04767f5923006602b3d355a84130dd38f6cc7d6401701b60c32168faa1c71ce",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 12
+  },
+  "governance_profile": {
+    "authority_ceiling": "EXECUTE_AFTER_SEAL",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true
 }
