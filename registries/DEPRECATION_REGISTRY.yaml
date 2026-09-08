@@ -171,6 +171,37 @@ categories:
         f13_ack: "2026-08-02 (this round) — kimi-code session live evidence"
         key_alive: "MINIMAX_PLUGIN_API_KEY (env verified)"
 
+  # Identity-secret hygiene relocations (2026-09-08) — old docs surface → identity-owned boundary
+  security_hygiene_relocations:
+    description: "Identity-bound files relocated off public docs surface to identity-owned secret boundary (mode 0600)"
+    entries:
+      - path: "docs/sovereign_key_registry.json"
+        deprecated_at: "2026-09-08"
+        deprecated_by: "FI-003 under F13 APEX Verdict (Finding A — hygiene-only path)"
+        reason: "World-readable (mode 0644) at AAA/docs/; contained default_path to private key material"
+        replaced_by: "/root/.secrets/aaa-identity/sovereign_key_registry.json"
+        mode: "0600"
+        sha256: "10c1fe9c9831b23377f56a0931d567b6e7662bd611e1741c2bb9a73d211d8aa1"
+        deprecation_class: "RELOCATED — security hygiene"
+        runtime_note: "Runtime SOVEREIGN_KEY_IDS in arifOS/arifosmcp/runtime/governance_identity.py remain hardcoded — Finding B deferred to F13 (SOT drift, separate sovereign decision)"
+
+  # FRAME substrate consolidation (Sprint 4, 2026-08-26) — relocated from ariffazil/FRAME into AAA federation state plane
+  frame_consolidation_2026_08:
+    description: "FRAME substrate consolidated into AAA federation state plane; identity preserved (port, systemd_unit, license)"
+    entries:
+      - path: "ariffazil/FRAME"
+        deprecated_at: "2026-08-26"
+        deprecated_by: "333-AGI under F13 ratification (Sprint 4 execution)"
+        replaced_by: "ariffazil/AAA/federation/frame/"
+        reason: "FRAME substrate consolidated into AAA federation state plane per AAA_FEDERATION_FRAME_BOUNDARY_ALIGNMENT.md"
+        archived_at: "2026-08-26T02:55:00Z"
+        deprecation_class: "CONSOLIDATED — identity preserved"
+        identity_preserved:
+          systemd_unit: "frame-organ.service"
+          port: 18085
+          license: "AGPL-3.0"
+        audit_trail: "sprint commits 0b388b6a (decl), 7b8afbe0 (reloc), 500ba276 (runtime), f9e9bdb (archive notice)"
+
 # ── CONFLICT TIEBREAKER RULES ──
 tiebreakers:
   - rule: "Earlier deprecated_at = retire first"
@@ -184,15 +215,3 @@ tiebreakers:
 owner_organ: "AAA (Control Plane)"
 validation_script: "scripts/aaa_drift_check.py"
 canonical_source: "registries/CANONICAL_REGISTRY_POLICY.yaml"
-
-- path: ariffazil/FRAME
-  status: ARCHIVED
-  reason: FRAME substrate consolidated into AAA federation state plane (federation/frame/) on 2026-08-26 per AAA_FEDERATION_FRAME_BOUNDARY_ALIGNMENT.md
-  replaced_by: ariffazil/AAA/federation/frame/
-  archived_at: 2026-08-26T02:55:00Z
-  sealed_by: 333-AGI (Sprint 4 execution)
-  identity_preserved:
-    systemd_unit: frame-organ.service
-    port: 18085
-    license: AGPL-3.0
-  audit_trail: sprint commits 0b388b6a (decl), 7b8afbe0 (reloc), 500ba276 (runtime), f9e9bdb (archive notice)
