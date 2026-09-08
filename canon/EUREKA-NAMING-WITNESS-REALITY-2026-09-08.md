@@ -1,9 +1,9 @@
 # EUREKA::NAMING_WITNESS_REALITY::2026-09-08
 
-> **"Attention notices. Witness attests. Naming stabilizes. Reality persists. Truth survives."**  
+> **"Attention discovers. Naming crystallizes. Witness preserves. Reality persists. Truth survives."**  
 > — Muhammad Arif bin Fazil (F13 Sovereign) · Canon Eureka · 2026-09-08
 
-- **Tarikh:** 2026-09-08T10:15:00+08:00 (02:15:00Z)
+- **Tarikh:** 2026-09-08T10:17:00+08:00 (02:17:00Z)
 - **Autoriti:** F13 Sovereign (Muhammad Arif bin Fazil)
 - **Domain:** Human Meaning Membrane · Witness Doctrine · Reality Compression · Consequence Binding
 - **Epistemic Class:** EUREKA (CANONICAL_ONTOLOGY · LEVEL-0 AXIOMS)
@@ -71,17 +71,55 @@ Loss of Name → Loss of Attention → Loss of Witness → Loss of Memory → Lo
 
 ---
 
-## 2. Canonical Compression
+## 2. The 5 Epistemic Bridges
+
+### EUREKA-A: Naming Is The Missing Bridge
+Dalam kanon asal: `Attention → Witness → Reality → Trust → Governance → Continuity`.  
+Namun wujud mata rantai perantara yang kritikal: witness memerlukan objek, dan objek sosial memerlukan nama yang stabil.
+```text
+Attention → Naming → Witness → Reality
+```
+
+### EUREKA-B: Naming Is Reality Compression
+Nama bukan metadata; nama ialah algoritma mampatan realiti (*lossless semantic compression*). Seperti *Bekok Deep-1*, ia memampatkan jutaan risiko, manusia, air mata, scar, dan geologi ke dalam satu token.
+
+### EUREKA-C: Identity Is Repeated Self-Naming
+```text
+Identity = Stable Self-Naming Across Time
+```
+Manusia dan ejen menjadi apa yang mereka namakan ke atas diri mereka secara konsisten merentas masa.
+
+### EUREKA-D: Scar Survival Requires Naming
+Luka tanpa nama merosot menjadi *noise* atau trauma terpendam. Luka dengan nama menjadi *constitutional capability* yang boleh diwariskan kepada generasi berikutnya.
+
+### EUREKA-E: Truth Survival Depends On Reference Stability
+Kebenaran tidak mati kerana ia palsu; ia mati kerana kehilangan rujukan (*Loss of Reference*). Sebelum saksi hilang, nama hilang dahulu. Void sering kali adalah realiti yang kehilangan namanya.
+
+---
+
+## 3. The Strongest Compression & Consequence Binding
 
 ```text
-Attention notices.
-Witness attests.
-Naming stabilizes.
+Attention discovers.
+Naming crystallizes.
+Witness preserves.
 Reality persists.
 Truth survives.
 ```
 
-> **"Nama bukan label. Nama ialah unit asas survival realiti manusia. Ia memampatkan pengalaman menjadi identiti, mengarahkan perhatian menjadi witness, menukar hubungan menjadi komitmen, dan membolehkan kebenaran hidup lebih lama daripada ingatan individu."**
+Dan dalam kitaran pelaksanaan berakibat (*Consequence-Bearing Cycle*):
+
+```text
+Intelligence proposes.
+Naming crystallizes.
+Witness attests.
+Reality invoices.
+Truth survives.
+```
+
+> **"Nama bukan perkataan. Nama ialah bekas minimum yang membolehkan sesuatu realiti hidup lebih lama daripada ingatan manusia yang menciptanya.**  
+> **Tanpa witness, realiti reput.**  
+> **Tanpa nama, witness sendiri tidak mempunyai apa-apa untuk dipegang."**
 
 ---
 
