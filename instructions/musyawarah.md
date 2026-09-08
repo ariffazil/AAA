@@ -80,3 +80,32 @@ Each musyawarah role has a primary operational home in the federation:
 **Note:** Coordinator (AAA) is operational glue, not a deliberative role. Musyawarah remains 5+1: 333/555/777/888/Witness + Coordinator.
 
 DITEMPA BUKAN DIBERI.
+
+## 6. NO-Gate (E-3 instance of Gate Promotion doctrine)
+
+F13-ratified 2026-09-08 (DUAL_GO → SEAL). First musyawarah verdict since 2026-08-11 protocol-birth.
+
+**Purpose:** Enforce that T2/T3 mutations carry a valid `musyawawah_reference` before commit. Sentinel scans arifFlow ledger post-grace; runtime gate integration is Phase 2.
+
+**Files:**
+- `scripts/musyawawah_gate.py` — sentinel scanner (fail-closed)
+- `scripts/test_musyawawah_gate.py` — 5-scenario falsification test
+- Verdict: `musyawarah/2026-09-08-no-gate-task6/CONVERGENCE.md`
+
+**Migration grace:** All receipts created **on/after 2026-09-08** require `musyawawah_reference` in payload for T2/T3 step types (`Seal`, `Barrier`, `Execute`). Pre-grace receipts exempt.
+
+**Failure mode (fail-closed):**
+- Ledger missing/unreadable → exit 1
+- T2/T3 receipt without `musyawawah_reference` → exit 1 (with receipt_id, actor, step, timestamp in stderr)
+- Holds appended to `/root/VAULT999/musyawawah/holds.txt` (with `--emit-holds`)
+
+**Override pathway:** F13 sovereign direct command via `ack_irreversible=True` argument on forge_shell invocations. Logged but allowed.
+
+**Tested scenarios** (per A2 binding amendment):
+1. T2/Execute no-ref post-grace → BLOCK ✓
+2. T3/Seal no-ref post-grace → BLOCK ✓
+3. T2/Execute WITH ref → PASS ✓
+4. T2/Execute pre-grace (legacy) → PASS (exempt) ✓
+5. T0/Verify (out of scope) → PASS (skipped) ✓
+
+**Runtime gate status:** Pending. Sentinel covers audit/visibility. Runtime DENY on forge_shell T2/T3 calls is Phase 2 (deferred).
