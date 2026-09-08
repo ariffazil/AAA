@@ -147,6 +147,9 @@ If A2A returns auth error: use **local CLI** path first (same machine = intended
 
 ## 4. Organs — MCP invoke
 
+> **Canonical SOT:** [`/root/AAA/docs/ORGAN.md`](/root/AAA/docs/ORGAN.md) · Machine twin: [`/root/AAA/federation/organs.yaml`](/root/AAA/federation/organs.yaml)  
+> *Thin projection. Live `:port/health` beats every prose table.*
+
 | Organ | Health | MCP | Ceiling | Use for |
 |-------|--------|-----|---------|---------|
 | **arifOS** | `:8088/health` | `:8088/mcp` | JUDGE_ONLY | init, route, judge, seal gate |
@@ -156,6 +159,7 @@ If A2A returns auth error: use **local CLI** path first (same machine = intended
 | **WELL** | `:18083/health` | `:18083/mcp` | REFLECT_ONLY | readiness |
 | **AAA** | `:3001/health` | A2A surface | DISPLAY_ONLY | catalog, tasks/send |
 | **arifFLOW** | `:7073/health` | — | METABOLIZE_ONLY | FQ pulse |
+| **FRAME** | `:18085/health` | — | ADVISORY_ONLY | drift observation, baseline |
 
 ### Kernel verbs (order)
 
