@@ -189,6 +189,7 @@ No step can be skipped. Each proves the one before it.
 | Registry validator | `src/gateway/registry-validator.ts` | Runtime, 12 tests |
 | Skills registry | `registries/skills.yaml` | auto-generated |
 | Memory index | `memory/_index.json` | generated |
+| Recursion compression | `docs/ZEN_RECURSION_CANON.md` | Satellite — F0, Reality Contact, operational loop (2026-09-08) |
 
 ---
 
