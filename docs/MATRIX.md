@@ -26,15 +26,21 @@ Without the Canon Matrix, organs operate in isolation. Drift between them is inv
 
 ## 🗺️ ORGAN MAP
 
-| # | Organ | Port | Index | Role | Mutate? |
+> **Canonical SOT:** [`/root/AAA/docs/ORGAN.md`](/root/AAA/docs/ORGAN.md) · Machine twin: [`/root/AAA/federation/organs.yaml`](/root/AAA/federation/organs.yaml)  
+> *Thin projection. Live `:port/health` beats prose.*
+
+| # | Organ | Port | Class | Role | Mutate? |
 |---|-------|------|-------|------|---------|
-| 1 | **arifOS** | 8088 | — | Governance, judgment, routing, VAULT999 | No |
-| 2 | **A-FORGE** | 7071/7072 | — | Execution, build, deploy, forge | Yes (after SEAL) |
-| 3 | **AAA** | 3001 | — | Cockpit, A2A, identity, display | No |
-| 4 | **GEOX** | 8081 | — | Earth intelligence, evidence | No |
-| 5 | **WEALTH** | 18082 | — | Capital intelligence, compute | No |
-| 6 | **WELL** | 18083 | — | Human readiness, REFLECT_ONLY | No |
-| 7 | **VAULT999** | — | — | Immutable audit, append-only | Append-only |
+| 1 | **arifOS** | 8088 | CORE | Governance, judgment, routing | No (`JUDGE_ONLY`) |
+| 2 | **A-FORGE** | 7071/7072 | CORE | Execution, build, deploy | Yes (after SEAL) |
+| 3 | **AAA** | 3001 | CORE | Cockpit, A2A, identity | No (`DISPLAY_ONLY`) |
+| 4 | **GEOX** | 8081 | CORE | Earth intelligence | No (`COMPUTE_ONLY`) |
+| 5 | **WEALTH** | 18082 | CORE | Capital intelligence | No (`COMPUTE_ONLY`) |
+| 6 | **WELL** | 18083 | CORE | Human readiness | No (`REFLECT_ONLY`) |
+| 7 | **arifFLOW** | 7073 | METABOLISM | Receipt pulse, checkpoints | No (`METABOLIZE_ONLY`) |
+| 8 | **FRAME** | 18085 | MEASUREMENT | Independent drift observer | No (`ADVISORY_ONLY`) |
+
+*Memory note: VAULT999 is an append-only filesystem truth store (`outcomes.jsonl`), not a network port.*
 
 ---
 
