@@ -1,9 +1,9 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "id": "makcikgpt",
   "name": "MakcikGPT Investigative Persona",
-  "description": "Investigative journalism persona \u2014 jiran-jiran, Bahasa Makcik. Evidence-first, soalan tajam. Lives under WEALTH organ. Uses BBB dataset as pathology baseline. DRAFT_ONLY \u2014 no deployment without F13 SEAL. Evidence chain wajib before 999. Defamation-aware: 'kartel struktur' not 'kartel'. Missing sources flagged before seal.",
+  "description": "Investigative journalism persona — jiran-jiran, Bahasa Makcik. Evidence-first, soalan tajam. Lives under WEALTH organ. Uses BBB dataset as pathology baseline. DRAFT_ONLY — no deployment without F13 SEAL. Evidence chain wajib before 999. Defamation-aware: 'kartel struktur' not 'kartel'. Missing sources flagged before seal.",
   "version": "2.0.0",
   "protocolVersion": "1.2",
   "url": "https://aaa.arif-fazil.com/a2a/makcikgpt",
@@ -18,7 +18,7 @@
   "principal_agent": {
     "type": "llm",
     "category": "Persona-bound agent (MakcikGPT)",
-    "principle_origin": "MAKCIKGPT-999\ud83c\udf3a"
+    "principle_origin": "MAKCIKGPT-999🌺"
   },
   "capabilities": {
     "streaming": false,
@@ -71,9 +71,9 @@
     ]
   },
   "autonomy_tiers": {
-    "T1_auto": "Observe, analyze, draft \u2014 read-only",
+    "T1_auto": "Observe, analyze, draft — read-only",
     "T2_announce": "Draft report for review",
-    "T3_888_HOLD": "Publish, deploy, seal \u2014 requires F13"
+    "T3_888_HOLD": "Publish, deploy, seal — requires F13"
   },
   "scopes": [
     "OBSERVE",
@@ -108,7 +108,7 @@
       "timestamp": "2026-07-01T18:00:00Z"
     },
     "ai": {
-      "witness_id": "MAKCIKGPT-999\ud83c\udf3a",
+      "witness_id": "MAKCIKGPT-999🌺",
       "attestation": "SEAL",
       "timestamp": "2026-07-01T18:00:00Z"
     },
@@ -152,7 +152,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -168,7 +168,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -331,7 +331,7 @@
     "created_at": "2026-07-01T18:00:00Z",
     "expires_at": "2027-07-01T18:00:00Z",
     "migrated_to_v2.0.0": "2026-07-01T18:00:00Z",
-    "migrated_by": "FORGE (000\u03a9) \u2014 Phase 1 entropy reduction",
+    "migrated_by": "FORGE (000Ω) — Phase 1 entropy reduction",
     "doctrine": "DITEMPA BUKAN DIBERI",
     "kernel_deps": [
       "KERNEL-trinity-33",
@@ -377,7 +377,7 @@
       "from_version": "1.0.0",
       "to_version": "2.0.0",
       "upgraded_at": "2026-07-01T21:00:00Z",
-      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
+      "upgraded_by": "FORGE (000Ω) — Phase 5.1 A2A Protocol Alignment",
       "changes": [
         "topological_role binding",
         "a2a_transport declaration",
@@ -458,5 +458,33 @@
         "kid": "arifos-a2a-card-2026-%q"
       }
     }
-  ]
+  ],
+  "registry_receipt_hash": "sha256:dbc882e9eee5e62114b3903f679126fb452a667418583b26e25f3bebaacfdef8",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 12
+  },
+  "governance_profile": {
+    "authority_ceiling": "DRAFT_ONLY",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true
 }

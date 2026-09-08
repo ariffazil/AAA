@@ -1,15 +1,15 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "id": "decisions",
   "fi_id": "FI-007",
-  "name": "decisions \u2014 Decision Ledger Witness",
+  "name": "decisions — Decision Ledger Witness",
   "description": "Witness agent for /root/AAA/decisions/ ledger. Read-only over decision artifacts.",
   "version": "1.0.0",
   "protocolVersion": "1.2",
   "principal_agent": {
     "type": "agent",
-    "category": "Sovereign citizen warga \u2014 binds to 888-APEX lane",
+    "category": "Sovereign citizen warga — binds to 888-APEX lane",
     "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive (2026-08-12 sweep)"
   },
   "warga_binding": {
@@ -51,5 +51,33 @@
         "kid": "arifos-a2a-card-2026-%q"
       }
     }
-  ]
+  ],
+  "registry_receipt_hash": "sha256:22126c49a802f855dfdc629cba49c8ee4956d7c8ab0708460861f5f3cee565df",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 0
+  },
+  "governance_profile": {
+    "authority_ceiling": "OBSERVE_ONLY",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true
 }

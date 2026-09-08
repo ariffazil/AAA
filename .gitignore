@@ -74,3 +74,17 @@ state/*.json
 state/phoenix72/
 *.pyc
 **/__pycache__/
+
+# === HUMAN IDENTITY CONTAINMENT (2026-09-08 SE-AL-9964f1fa5d0849f9) ===
+# Identity Continuity primitive — biometric data is RENTED, not owned.
+# Concrete human identity cards + biometric signatures NEVER commit to git.
+# Schema templates + doctrine fragments ARE tracked (constitutional law, not data).
+# Audit trail (VAULT999 receipts) outlives data (already gitignored above).
+registry/identity_cards/*.yaml
+!registry/identity_cards/_schema.yaml
+!registry/identity_cards/README.md
+registry/biometric/
+**/face_embeddings/
+**/voice_enrollments/
+**/biometric_*.npy
+**/biometric_*.pkl

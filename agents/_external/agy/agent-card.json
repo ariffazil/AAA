@@ -18,8 +18,13 @@
     "plan_mode_native": true,
     "engine_location": "google-hosted (code/prompts leave the box by design)"
   },
-  "defaultInputModes": ["text/plain"],
-  "defaultOutputModes": ["text/plain", "application/json"],
+  "defaultInputModes": [
+    "text/plain"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
   "governance": {
     "citizenship": "guest-pending",
     "fi_slot": "FI-009-candidate",
@@ -43,5 +48,34 @@
       "wire hooks to existing glue scripts before first autonomous run",
       "install vector: staged checksum-verified installer only (audited install.sh in forge_work)"
     ]
-  }
+  },
+  "schemaVersion": "2.3.0",
+  "registry_receipt_hash": "sha256:5c8bfbc2f4558e2d8682201ac2a4729c5ea5c02749fce823b00169537c071b97",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 0
+  },
+  "governance_profile": {
+    "authority_ceiling": "EXECUTE_AFTER_SEAL",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true
 }

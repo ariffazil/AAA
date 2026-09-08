@@ -1,6 +1,6 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "id": "qwen-code",
   "name": "Qwen Code CLI",
   "principal_agent": {
@@ -561,5 +561,33 @@
   "cognitive_species": "compiler",
   "species_rank": 2,
   "fi": "FI-QWEN",
-  "bound_to": "555-ASI"
+  "bound_to": "555-ASI",
+  "registry_receipt_hash": "sha256:97e4307bf465e7cd6c4cdc5dc4fa4fd53a953ad4d31b84d6dc8507c324975af3",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 12
+  },
+  "governance_profile": {
+    "authority_ceiling": "EXECUTE_AFTER_SEAL",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true
 }
