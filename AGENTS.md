@@ -36,6 +36,9 @@ For session-start probes, action-tier expansions, conflict resolution, and the a
 | Human Reality Invariants (E,O,G,M,W) | `/root/AAA/instructions/human-reality-invariants.md` | F13_RATIFIED_CHAT |
 | The Zen Card | `/root/AAA/governance/ZEN-CARD-2026-09-07.md` | F13_RATIFIED_CHAT |
 | Auto-Execution Queue | `/root/AAA/governance/AUTO-EXECUTION-QUEUE-2026-09-07.md` | ACTIVE |
+| Naming Doctrine (compression, not labeling) | `/root/AAA/instructions/naming-doctrine.md` | F13_RATIFIED_CHAT |
+| Civilizational Dependency Graph | `/root/AAA/instructions/civilizational-dependency-graph.md` | F13_RATIFIED_CHAT |
+| Consequence-Honoring Doctrine | `/root/AAA/instructions/consequence-honoring-doctrine.md` | F13_RATIFIED_CHAT |
 | RBA-PROOF-001 Mission | `/root/AAA/proof/rba-proof-001/` (8 artifacts) | PARTIAL verdict |
 
 **To load:** read the file path above. Each fragment is independent and may be consulted separately.
