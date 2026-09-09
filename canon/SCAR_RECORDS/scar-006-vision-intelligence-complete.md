@@ -18,7 +18,7 @@ This document compiles the **8 Canonical Vision Scars**, their empirical root ca
 ## The 8 Canonical Vision Scars
 
 ### 1. SCAR-VIS-001: The 413 Payload Collapse (Context Image Bloat)
-* **Incident:** 2026-07-30 (SADO group chat nasi lemak image blast).
+* **Incident:** 2026-07-30 (ALPHA - ZEN group chat nasi lemak image blast).
 * **Symptom:** Every fallback provider sequentially threw `HTTP 413 (Request Payload Too Large)`. The session crashed completely across 10+ models.
 * **Root Cause:** In group chats with `protect_last_n: 20`, raw image payloads remained uncompressed in session context. When accumulated messages exceeded provider HTTP request limits (10–50MB), the gateway attempted fallback. Because the payload size was identical for every model, all fallbacks failed identically.
 * **Immutable Law:**

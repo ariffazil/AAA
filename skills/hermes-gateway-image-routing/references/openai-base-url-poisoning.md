@@ -2,7 +2,7 @@
 
 ## Context
 
-During SADO group integration, images sent to the group produced a 413
+During ALPHA - ZEN group integration, images sent to the group produced a 413
 cascade failure through every fallback provider. Initial diagnosis
 pointed to provider mismatch, but the actual root cause was subtler.
 

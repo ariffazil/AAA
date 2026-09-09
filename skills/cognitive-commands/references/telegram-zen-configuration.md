@@ -98,7 +98,7 @@ Document in the skill under `Audience & Cognitive Load Doctrine`:
 |----------|---------|-------|
 | Arif (DM) | 267378578 | Federation-level, BM/EN, deep, governance-aware |
 | Home/AAA | -1003753855708 | Alert-driven, BM ringkas, signal over noise |
-| SADO | -1003815535761 | Abang Sado, 100% BM, zero federation, casual |
+| ALPHA - ZEN | -1003815535761 | Abang Sado, 100% BM, zero federation, casual |
 | Syed (DM) | 1042200555 | Abang Sado, direct help, BM Penang |
 | arifOS channel | -1004446358629 | Federation logs, cron deliveries, EOD seals |
 
@@ -127,7 +127,7 @@ When cleaning up cron jobs:
 | 267378578 | Arif DM | ASI💃 + 🔥FORGE | Primary sovereign channel |
 | 1042200555 | Syed DM | ASI💃 | Sado's DM |
 | -1003753855708 | AAA | ASI💃 + 🦞AGI | Home/federation group |
-| -1003815535761 | SADO | ASI💃 | Bodybuilding, trading |
+| -1003815535761 | ALPHA - ZEN | ASI💃 | Bodybuilding, trading |
 | -1003768847825 | Kanak-kanak | ASI💃 | Kids group |
 | -1003792478194 | Dear NABILAH | ASI💃 | — |
 | -1003521544074 | 🅰❗️🅰 | ASI💃 | — |
