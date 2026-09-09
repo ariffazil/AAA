@@ -39,6 +39,7 @@ For session-start probes, action-tier expansions, conflict resolution, and the a
 | Naming Doctrine (compression, not labeling) | `/root/AAA/instructions/naming-doctrine.md` | F13_RATIFIED_CHAT |
 | Civilizational Dependency Graph | `/root/AAA/instructions/civilizational-dependency-graph.md` | F13_RATIFIED_CHAT |
 | Consequence-Honoring Doctrine | `/root/AAA/instructions/consequence-honoring-doctrine.md` | F13_RATIFIED_CHAT |
+| Witness Membrane Execution Context | `/root/AAA/governance/WITNESS-MEMBRANE-EXECUTION-CONTEXT-2026-09-09.md` | F13_RATIFIED_CHAT |
 | RBA-PROOF-001 Mission | `/root/AAA/proof/rba-proof-001/` (8 artifacts) | PARTIAL verdict |
 
 **To load:** read the file path above. Each fragment is independent and may be consulted separately.
