@@ -1,5 +1,5 @@
 {
-  "last_session": "openclaw-1788978325",
+  "last_session": "fi-003-qwen-code-1788978616",
   "unmetabolized": [],
   "active_scars": [
     {
@@ -91,18 +91,28 @@
       "event_id": "evt_1c6d1b193ac964bf",
       "reason": "Failure that taught a lesson (this hurt, remember why).",
       "timestamp": "2026-09-09T18:25:36Z"
+    },
+    {
+      "event_id": "evt_cef7e11918ead088",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-09T18:30:02Z"
+    },
+    {
+      "event_id": "evt_28d93009af32f9a5",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-09T18:45:01Z"
     }
   ],
   "pending_skills": [],
   "metrics": {
     "map": 0.0,
-    "echo": 0.5,
-    "total_sessions": 18,
+    "echo": 0.53,
+    "total_sessions": 20,
     "direct_executions": 0,
-    "retained_improvements": 18,
-    "honest_observations": 36
+    "retained_improvements": 20,
+    "honest_observations": 38
   },
-  "last_updated_utc": "2026-09-09T18:25:36Z",
+  "last_updated_utc": "2026-09-09T18:45:01Z",
   "session_id": "SEAL-FEDERATION-IDENTITY-ZEN-20260908",
   "previous_session": "SEAL-bd135fdda5564d4b",
   "closed_at_utc": "2026-09-08T02:20:00Z",
