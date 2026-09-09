@@ -1,9 +1,9 @@
 /**
- * 🫀 SADO — WELL Human Readiness Bot
+ * 🫀 ALPHA-ZEN — WELL Human Readiness Bot
  * 
  * Telegram bot for the WELL organ.
  * Mini App: Readiness (vitality, biometrics, dignity)
- * Group: SADO
+ * Group: ALPHA-ZEN
  * 
  * DITEMPA BUKAN DIBERI
  */
@@ -42,7 +42,7 @@ async function configure() {
 
     await bot.api.setMyShortDescription("WELL Human Readiness — vitality, fatigue, dignity.");
     await bot.api.setMyDescription(
-      "🫀 SADO — Human Readiness\n\n" +
+      "🫀 ALPHA-ZEN — Human Readiness\n\n" +
       "• 🟢 Readiness score & status\n" +
       "• 📊 Biometric signals\n" +
       "• ⏱️ Data freshness\n\n" +
@@ -50,7 +50,7 @@ async function configure() {
       "DITEMPA BUKAN DIBERI"
     );
 
-    console.log("✅ SADO configured");
+    console.log("✅ ALPHA-ZEN configured");
   } catch (e: any) {
     console.error("⚠️ Config warning:", e.message);
   }
@@ -58,7 +58,7 @@ async function configure() {
 
 bot.command("start", async (ctx) => {
   await ctx.reply(
-    `🫀 *SADO — Human Readiness*\n\n` +
+    `🫀 *ALPHA-ZEN — Human Readiness*\n\n` +
     `WELL organ of the arifOS Federation.\n\n` +
     `Tap below to check readiness.`,
     {
@@ -87,7 +87,7 @@ bot.command("vitality", async (ctx) => {
 
 bot.command("help", async (ctx) => {
   await ctx.reply(
-    `*SADO — Human Readiness*\n\n` +
+    `*ALPHA-ZEN — Human Readiness*\n\n` +
     `/ready — Quick readiness check\n` +
     `/vitality — Full vitality assessment\n\n` +
     `Or tap the 🫀 button at the bottom.\n\n` +
@@ -96,8 +96,8 @@ bot.command("help", async (ctx) => {
   );
 });
 
-console.log("🫀 SADO bot starting...");
+console.log("🫀 ALPHA-ZEN bot starting...");
 await configure();
 bot.start({
-  onStart: (info) => console.log(`✅ SADO @${info.username} live → https://t.me/${info.username}`),
+  onStart: (info) => console.log(`✅ ALPHA-ZEN @${info.username} live → https://t.me/${info.username}`),
 });
