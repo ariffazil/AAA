@@ -244,10 +244,66 @@ The unit of governance is **scar** — witness that successfully changed future 
 
 ---
 
+---
+
+## EUREKA-13: Consequence Binding Canon (2026-09-10)
+
+The governance point is not at Witness. It is not at Scar. Governance exists when Scar → Constraint → Decision → Different Behavior remains alive and continues to influence future decisions.
+
+### The Chain
+
+```
+Reality → Witness → Scar → Constraint → Decision → Different Behavior
+                                    ↑
+                          Governance exists here
+```
+
+### Canonical Definitions
+
+**Witness** = unit of reality. Function: attest reality. Proves something happened. Does not prove learning happened.
+
+**Scar** = unit of adaptation. Function: preserve consequence. Emerges only when reality extracts an invoice.
+
+Formula: `Witness + Consequence = Scar`
+
+**Governance** = the system that ensures scars continue to constrain. Not an object — a process of constraint preservation.
+
+### The Three Separation Laws
+
+1. **Not all receipts are reality.** Receipt is signal. Reality must be witnessed.
+2. **Not all witnesses become scars.** Recording is insufficient. Consequence must occur.
+3. **Not all scars become governance.** Scars can die. Governance keeps scars alive as constraints.
+
+### Universal Governance Test
+
+```
+What behavior is different today
+because reality was witnessed yesterday?
+
+No answer       → ARCHIVE
+Behavior changed → SCAR
+Behavior still constrained today → GOVERNANCE
+```
+
+### AAA Wiring
+
+**333-AGI (Builder):** Generate possibilities. Mandatory question: "What scar is this proposal attempting to create, preserve, or avoid?" Failure: proposal without scar awareness = high repetition risk.
+
+**555-ASI (Verifier):** Verify witness quality, scar legitimacy, consequence chain. Mandatory: "Is this a witness? Is this actually a scar? What consequence proves it?" Failure: receipt mistaken as scar. Archive mistaken as governance.
+
+**888-APEX (Judge):** Determine whether a scar should constrain future behavior. Mandatory: "What behavior must change? What decision becomes illegal, discouraged, or preferred because of this scar?" Failure: scar exists but creates no constraint = archive, not governance.
+
+### One-Line Constitutional Prompt
+
+> For every proposal, identify the witness, identify the scar, identify the consequence, identify the constraint, and prove what future behavior will be different. If no behavior changes, classify as ARCHIVE rather than GOVERNANCE.
+
+---
+
 ## Provenance
 
 - Forged: 2026-09-10 by FI-003 (Qwen Code)
 - Derived from: 50+ instruction files, 200+ memory entries, MCP federation audit
+- EUREKA-13 derived by: F13 (Muhammad Arif bin Fazil), validated by FI-003 (3/3 falsification)
 - Sovereign: F13 (Muhammad Arif bin Fazil)
-- Verdict: SEAL (canonical kernelization, not new doctrine)
+- Verdict: SEAL (canonical kernelization + consequence binding canon)
 - Authority chain: FEDERATION.md → FEDERATION_CONTRACT.md → AAA/registry/mcp-servers.yaml → this file
