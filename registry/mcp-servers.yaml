@@ -136,16 +136,20 @@ organs:
   aaa:
     name: AAA
     endpoint: http://localhost:3001/mcp
-    protocol: "TBD"
-    transport: node-http
+    protocol: "2024-11-05"
+    transport: stdio
     role: discovery
     authority: DISPLAY_ONLY
-    tools_count: 0
-    description: "Intelligence routing, state plane, skill catalog, A2A gateway"
+    tools_count: 4
+    tools:
+      - aaa_health
+      - aaa_agent_card
+      - aaa_federation_manifest
+      - aaa_discovery
+    description: "Intelligence routing, agent card, federation manifest, A2A discovery. MCP bridge at /root/AAA/mcp/aaa-mcp.py"
     health_endpoint: http://localhost:3001/health
     bind: loopback
-    status: "NOT_MCP_ENABLED — Node HTTP server, no MCP surface"
-    gap: "Not wired as MCP in any agent — Discovery Plane candidate"
+    wired_to: [qwen-code, hermes]
 
   arifflow:
     name: arifFlow
