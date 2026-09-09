@@ -1,0 +1,111 @@
+# Alias Reconciliation 2026-09-08T08:38:44Z
+live=36 fixed_by_name=16 promoted_from_related=1 stale_flagged=83
+
+## Fixed by name
+
+- `ops-mcp-testing` -> `/root/.kimi-code/skills/forge-mcp/FORGE-mcp-testing`
+- `apex-audit-coverage` -> `/root/.kimi-code/skills/apex-gates/apex_audit_coverage_check`
+- `apex-authority-check` -> `/root/.kimi-code/skills/apex-gates/apex_authority_check`
+- `apex-floor-check` -> `/root/.kimi-code/skills/apex-gates/apex_floor_check`
+- `apex-reversibility` -> `/root/.kimi-code/skills/apex-gates/apex_reversibility_test`
+- `apex-scope-check` -> `/root/.kimi-code/skills/apex-gates/apex_scope_check`
+- `apex-tool-gate` -> `/root/.kimi-code/skills/apex-gates/apex_tool_approval_gate`
+- `apex-verdict-hold` -> `/root/.kimi-code/skills/apex-gates/apex_verdict_hold`
+- `apex-verdict-seal` -> `/root/.kimi-code/skills/apex-gates/apex_verdict_seal`
+- `sec-secrets` -> `/root/.arifos/agents/opencode/skills/.profile-archive/secret-hygiene`
+- `AGI-claude-xml-structured-reasoning` -> `/root/.kimi-code/skills/AGI-claude-xml-structured-reasoning`
+- `AGI-hermes-system-prompt-voice` -> `/root/.kimi-code/skills/AGI-hermes-system-prompt-voice`
+- `AGI-codex-chain-of-thought` -> `/root/.kimi-code/skills/AGI-codex-chain-of-thought`
+- `FORGE-grok-profile` -> `/root/.kimi-code/skills/FORGE-grok-profile`
+- `FORGE-context-compressor` -> `/root/AAA/skills/FORGE-context-compressor`
+- `FORGE-mcp-federation-ops` -> `/root/.kimi-code/skills/forge-mcp/FORGE-mcp-federation-ops`
+
+## Promoted from related
+
+- `ops-mcp-probe` -> `/root/AAA/skills/mcp-ops`
+
+## Stale (quarantined for curation — no body found, NOT tombstoned)
+
+- `geo-basin` (home=agents) was `/root/.agents/skills/geox-basin-engines`
+- `geo-constitution` (home=agents) was `/root/.agents/skills/geox-constitution`
+- `geo-petrophysics` (home=agents) was `/root/.agents/skills/geox-petrophysics-bounds`
+- `geo-writing` (home=agents) was `/root/.agents/skills/geox-scientific-writing`
+- `geo-well-tie` (home=agents) was `/root/.agents/skills/geox-well-tie-pipeline`
+- `geo-prospect` (home=agents) was `/root/.agents/skills/prospect-maturation-workflow`
+- `wealth-reason` (home=agents) was `/root/.agents/skills/wealth-capital-reasoning`
+- `wealth-thermo` (home=agents) was `/root/.agents/skills/wealth-capital-thermodynamics`
+- `wealth-collapse` (home=agents) was `/root/.agents/skills/wealth-collapse-signature`
+- `well-boundary` (home=agents) was `/root/.agents/skills/well-substrate-readiness`
+- `well-readiness` (home=agents) was `/root/.agents/skills/well-substrate-readiness`
+- `forge-exec` (home=agents) was `/root/.agents/skills/kernel-verbs-aforge-hands`
+- `forge-verbs` (home=agents) was `/root/.agents/skills/kernel-verbs-aforge-hands`
+- `dev-ci-diagnose` (home=aaa) was `/root/AAA/skills/github-ci-diagnose`
+- `dev-issue-triage` (home=aaa) was `/root/AAA/skills/github-issue-triage`
+- `dev-pr-review` (home=aaa) was `/root/AAA/skills/github-pr-review`
+- `dev-pr-governance` (home=aaa) was `/root/AAA/skills/pr-review-governance`
+- `dev-wiki` (home=aaa) was `/root/AAA/skills/code-wiki`
+- `dev-analysis` (home=aaa) was `/root/AAA/skills/code-analysis-skills`
+- `dev-repo-audit` (home=aaa) was `/root/AAA/skills/readme-truth-check`
+- `ops-docker` (home=aaa) was `/root/AAA/skills/docker`
+- `ops-vps` (home=aaa) was `/root/AAA/skills/vps-docker-ops`
+- `ops-mcp-builder` (home=agents) was `/root/.agents/skills/mcp-builder-doctrine`
+- `ops-infra` (home=aaa) was `/root/AAA/skills/infra-guardian`
+- `ops-incident` (home=aaa) was `/root/AAA/skills/incident-triage`
+- `ops-spatial` (home=aaa) was `/root/AAA/skills/spatial-grounding`
+- `ops-health` (home=aaa) was `/root/AAA/skills/verify-runtime`
+- `ops-mcp-lifeguard` (home=aaa) was `/root/AAA/skills/mcp-lifeguard`
+- `ops-model-monitor` (home=aaa) was `/root/AAA/skills/model-fallback-monitor`
+- `ops-compress` (home=aaa) was `/root/AAA/skills/FORGE-context-compress`
+- `ops-data-compress` (home=aaa) was `/root/AAA/skills/FORGE-data-compression`
+- `ops-google` (home=aaa) was `/root/AAA/skills/google-workspace-cli`
+- `ops-transport` (home=agents) was `/root/.agents/skills/transport-physics-intelligence`
+- `meta-skill-lint` (home=aaa) was `/root/AAA/skills/skill-trigger-linter`
+- `meta-rsi` (home=agents) was `/root/.agents/skills/recursive-self-improvement`
+- `meta-rsi-audit` (home=aaa) was `/root/AAA/skills/arifos-recursive-audit`
+- `meta-evals` (home=aaa) was `/root/AAA/skills/arifos-evals`
+- `meta-plan` (home=aaa) was `/root/AAA/skills/arifos-plan-dag`
+- `meta-atlas` (home=aaa) was `/root/AAA/skills/meta-mesa-skill-atlas`
+- `meta-rsi-cool` (home=agents) was `/root/.agents/skills/cooling-ledger-rsi`
+- `meta-trust-map` (home=agents) was `/root/.agents/skills/symbolic-order-trust-architecture`
+- `a2a-onboard` (home=aaa) was `/root/AAA/skills/agent-onboarding`
+- `a2a-kimi` (home=aaa) was `/root/AAA/skills/kimi-code-aaa`
+- `a2a-spawn` (home=aaa) was `/root/AAA/skills/subagent-spawn-template`
+- `sec-telegram` (home=aaa) was `/root/AAA/skills/telegram-security-audit`
+- `research-summarize` (home=aaa) was `/root/AAA/skills/summarize-pro`
+- `research-search` (home=agents) was `/root/.agents/skills/ask-search`
+- `research-deep` (home=aaa) was `/root/AAA/skills/explorer-intelligence-architecture`
+- `kernel-eureka` (home=aaa) was `/root/AAA/skills/quantum-eureka-doctrine`
+- `kernel-superposition` (home=agents) was `/root/.agents/skills/quantum-kernel-runtime`
+- `meta-skill-unification` (home=aaa) was `/root/AAA/skills/skill-unification`
+- `AGI-sovereign-connector` (home=opencode) was `/root/.agents/skills/AGI-sovereign-connector`
+- `AGI-prospect-maturation` (home=opencode) was `/root/.agents/skills/AGI-prospect-maturation`
+- `ASI-knowledge-writeback` (home=opencode) was `/root/.agents/skills/ASI-knowledge-writeback`
+- `ASI-cooling-ledger-rsi` (home=opencode) was `/root/.agents/skills/ASI-cooling-ledger-rsi`
+- `ASI-knowledge-graph-query` (home=opencode) was `/root/.agents/skills/ASI-knowledge-graph-query`
+- `ASI-unified-memory` (home=opencode) was `/root/.agents/skills/ASI-unified-memory`
+- `FORGE-init-intent-classify` (home=opencode) was `/root/.agents/skills/FORGE-init-intent-classify`
+- `FORGE-phase-escalation` (home=opencode) was `/root/.agents/skills/FORGE-phase-escalation`
+- `FORGE-search` (home=opencode) was `/root/.agents/skills/FORGE-search`
+- `FORGE-seek` (home=opencode) was `/root/.agents/skills/FORGE-seek`
+- `ARCHIVE-vault-seal` (home=opencode) was `/root/.agents/skills/ARCHIVE-vault-seal`
+- `AUDIT-clarity-canon` (home=opencode) was `/root/.agents/skills/AUDIT-clarity-canon`
+- `AUDIT-post-seal-sweep` (home=opencode) was `/root/.agents/skills/AUDIT-post-seal-sweep`
+- `AUDIT-symbolic-collective-bias` (home=opencode) was `/root/.agents/skills/AUDIT-symbolic-collective-bias`
+- `AUDIT-symbolic-trust` (home=opencode) was `/root/.agents/skills/AUDIT-symbolic-trust`
+- `KERNEL-verbs-forge-hands` (home=opencode) was `/root/.agents/skills/KERNEL-verbs-forge-hands`
+- `KERNEL-quantum-runtime` (home=opencode) was `/root/.agents/skills/KERNEL-quantum-runtime`
+- `KERNEL-reality-skills` (home=opencode) was `/root/.agents/skills/KERNEL-reality-skills`
+- `KERNEL-session-inhabit` (home=opencode) was `/root/.agents/skills/KERNEL-session-inhabit`
+- `KERNEL-sovereign-recognize` (home=opencode) was `/root/.agents/skills/KERNEL-sovereign-recognize`
+- `SHADOW-diagnostic` (home=opencode) was `/root/.agents/skills/SHADOW-diagnostic`
+- `MCP-transport-physics` (home=opencode) was `/root/.agents/skills/MCP-transport-physics`
+- `CLAIM-receipt-v1` (home=opencode) was `/root/.agents/skills/CLAIM-receipt-v1`
+- `CLAIM-verification-gate` (home=opencode) was `/root/.agents/skills/CLAIM-verification-gate`
+- `WELL-boundary-sense` (home=opencode) was `/root/.agents/skills/WELL-boundary-sense`
+- `WELL-somatic-kernel` (home=opencode) was `/root/.agents/skills/WELL-somatic-kernel`
+- `GEOX-artifact-rigor` (home=opencode) was `/root/.agents/skills/GEOX-artifact-rigor`
+- `KERNEL-qubit-substrate` (home=opencode) was `/root/.agents/skills/KERNEL-qubit-substrate`
+- `AGI-emd-decode` (home=aaa) was `/root/AAA/skills/AGI-emd-decode`
+- `AGI-emd-metabolize` (home=aaa) was `/root/AAA/skills/AGI-emd-metabolize`
+- `AGI-entropy-lock-prime` (home=aaa) was `/root/AAA/skills/AGI-entropy-lock-prime`
+- `trinity-design-seam` (home=None) was `None`

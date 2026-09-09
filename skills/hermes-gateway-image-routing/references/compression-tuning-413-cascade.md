@@ -2,11 +2,11 @@
 
 > **Symptom:** All fallback providers return 413 (Request Payload Too Large) in sequence.
 > The error cascades through 10+ providers because the payload is too large for ALL of them.
-> **Root cause:** High-volume group chat (e.g. SADO) with `protect_last_n: 20` keeps 20 messages
+> **Root cause:** High-volume group chat (e.g. ALPHA - ZEN) with `protect_last_n: 20` keeps 20 messages
 > fully uncompressed. Images in those messages bloat the payload past the provider's HTTP request
 > limit (~10-50MB). The 413 is an HTTP-level limit, not a model context window limit.
 >
-> **Proven:** 2026-07-30, SADO group with Syed's daily nasi lemak orders + images.
+> **Proven:** 2026-07-30, ALPHA - ZEN group with Syed's daily nasi lemak orders + images.
 
 ## Diagnostic
 

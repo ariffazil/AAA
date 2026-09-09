@@ -250,7 +250,7 @@ Hermes routes audio through FED LiteLLM :4000 → `asi-555-audio` model → MiMo
 | **Penang dialect interest** | Requested Penang voice experiments | 2026-07-08 |
 | **Quality override**: edge-tts over mimo for BM | Rejected mimo quality, accepted edge | 2026-07-11 |
 | **Language**: BM-English code-switch (Penang style) | SOUL.md canonical | Ongoing |
-| **Trading voice format**: 90s template, spell numbers | SADO daily briefing | 2026-07-18 |
+| **Trading voice format**: 90s template, spell numbers | ALPHA - ZEN daily briefing | 2026-07-18 |
 
 ### i-ARIF Audio State (LIVE — forged 2026-08-14, updated 2026-08-14 post-musyawarah)
 

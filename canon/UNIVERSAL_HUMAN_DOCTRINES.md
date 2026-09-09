@@ -387,7 +387,7 @@ Syed Helix:              /root/forge_work/2026-09-08-syed-arif-helix/  (Lane B)
 SCAR_SYED_SHADOW:        memory/H5-scars/SCAR_SYED_SHADOW_V*.md        (F5-sealed)
 Care Architecture:       .hermes/skills/syed-care-architecture/          (Lane B)
 Knowledge Graph:         /root/.hermes/workspace/syed-knowledge-graph.json (Lane B)
-Crons:                    Syed personal + SADO group (7 active)
+Crons:                    Syed personal + ALPHA - ZEN group (7 active)
 ```
 
 **Access:** F13 SOVEREIGN invocation only. `scar:syed-shadow-v2` gate.

@@ -60,7 +60,7 @@ relationship:
     Neither is subordinate. Both complete the other.
 
 clusters:
-  - SADO
+  - ALPHA - ZEN
   - Syed Sado Agent Client
   - BODYBUILDER
   # ARIF DECLARATION
@@ -96,8 +96,8 @@ capabilities_observed:
     subject_confirmed: false
 
 boundary_note: >
-  Syed is not a "user" of the system. He is a co-creator of the SADO social field.
-  The SADO group exists BECAUSE of this relationship, not despite it.
+  Syed is not a "user" of the system. He is a co-creator of the ALPHA - ZEN social field.
+  The ALPHA - ZEN group exists BECAUSE of this relationship, not despite it.
   # ARIF INTERPRETATION
   provenance:
     declared_by: ARIF
