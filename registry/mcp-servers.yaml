@@ -1,0 +1,312 @@
+# ═══════════════════════════════════════════════════════════════
+# MCP SERVERS REGISTRY — Canonical SOT
+# ═══════════════════════════════════════════════════════════════
+# This is the single source of truth for all MCP servers in the
+# arifOS federation. All other configs (mcp-surface-guard.json,
+# .claude/mcp_servers.json, contracts/mcp_surface.yaml) are
+# DERIVED from this file.
+#
+# Doctrine: Govern capabilities, not implementations.
+# Authority chain: FEDERATION.md → FEDERATION_CONTRACT.md → THIS FILE
+# Forged: 2026-09-10 by 333-AGI (SEAL-566d0d27bf594ea8)
+# Updated: 2026-09-10 by FI-003 (live probe + MCP audit)
+# F13 SOVEREIGN: Arif Fazil
+# ═══════════════════════════════════════════════════════════════
+
+version: "1.1.0"
+forged_at: "2026-09-10T03:30:00+08:00"
+updated_at: "2026-09-10T18:00:00+08:00"
+forged_by: "333-AGI"
+updated_by: "FI-003"
+sovereign: "F13-ARIF"
+verification_method: "live_mcp_initialize + tools/list probe"
+
+# ─────────────────────────────────────────────────────────────
+# ORGANS — MCP servers that constitute the federation
+# ─────────────────────────────────────────────────────────────
+organs:
+  kernel:
+    name: arifos-kernel
+    endpoint: http://localhost:8088/mcp
+    protocol: "2024-11-05"
+    transport: http-streamable
+    role: governance
+    authority: JUDGE_ONLY
+    tools_count: 8
+    description: "Constitutional kernel — F1-F13 floors, judge, vault, seal, session binding"
+    health_endpoint: http://localhost:8088/health
+    bind: loopback
+
+  aforge:
+    name: A-FORGE
+    endpoint: http://localhost:7072/mcp
+    protocol: "2025-06-18"
+    transport: http-streamable
+    role: execution
+    authority: EXECUTE_AFTER_SEAL
+    tools_count: 75
+    description: "Execution substrate — shell, filesystem, git, docker, browser, vault, postgres"
+    health_endpoint: http://localhost:7072/health
+    bind: loopback
+
+  geox:
+    name: GEOX
+    endpoint: http://localhost:8081/mcp
+    protocol: "2024-11-05"
+    transport: http-streamable
+    role: spatial
+    authority: COMPUTE_ONLY
+    tools_count: 20
+    description: "Earth intelligence — seismic, petrophysics, basin analysis, prospect evaluation"
+    health_endpoint: http://localhost:8081/health
+    bind: loopback
+
+  wealth:
+    name: WEALTH
+    endpoint: http://localhost:18082/mcp
+    protocol: "2024-11-05"
+    transport: http-streamable
+    role: economic
+    authority: COMPUTE_ONLY
+    tools_count: 12
+    description: "Capital intelligence — NPV, risk, conservation, market, ledger"
+    health_endpoint: http://localhost:18082/health
+    bind: loopback
+
+  well:
+    name: WELL
+    endpoint: http://localhost:18083/mcp
+    protocol: "2024-11-05"
+    transport: http-streamable
+    role: wellbeing
+    authority: REFLECT_ONLY
+    tools_count: 30
+    description: "Human readiness — vitality, fatigue, dignity, homeostasis"
+    health_endpoint: http://localhost:18083/health
+    bind: loopback
+
+  frame:
+    name: FRAME
+    endpoint: http://localhost:18085/mcp
+    protocol: "TBD"
+    transport: TBD
+    role: witness
+    authority: OBSERVE_ONLY
+    tools_count: 0
+    description: "Independent observer — drift, thermal, evidence, governance signals"
+    health_endpoint: http://localhost:18085/health
+    bind: loopback
+    status: "NOT_MCP_ENABLED — health endpoint only, no MCP surface"
+    gap: "Not wired as MCP in any agent config"
+
+  iarif:
+    name: i-ARIF
+    endpoint: http://localhost:18095/mcp
+    protocol: "TBD"
+    transport: rest-only
+    role: synthesis
+    authority: SYNTHESIZE
+    tools_count: 0
+    description: "Seal B synthesis engine — synthesis via fed:i-arif cascade"
+    health_endpoint: http://localhost:18095/health
+    bind: loopback
+    status: "NOT_MCP_ENABLED — REST API only, no MCP surface"
+    gap: "Not wired as MCP in any agent config"
+
+  fed:
+    name: FED
+    endpoint: http://localhost:7074/mcp
+    protocol: "2025-06-18"
+    transport: http-streamable
+    role: gateway
+    authority: ROUTING_ONLY
+    tools_count: 7
+    description: "Federation gateway — routing, classification, provider management"
+    health_endpoint: http://localhost:7074/health
+    bind: loopback
+    note: "Requires dual Accept headers: application/json, text/event-stream"
+
+  aaa:
+    name: AAA
+    endpoint: http://localhost:3001/mcp
+    protocol: "TBD"
+    transport: node-http
+    role: discovery
+    authority: DISPLAY_ONLY
+    tools_count: 0
+    description: "Intelligence routing, state plane, skill catalog, A2A gateway"
+    health_endpoint: http://localhost:3001/health
+    bind: loopback
+    status: "NOT_MCP_ENABLED — Node HTTP server, no MCP surface"
+    gap: "Not wired as MCP in any agent — Discovery Plane candidate"
+
+  arifflow:
+    name: arifFlow
+    endpoint: http://localhost:7073
+    protocol: rest
+    transport: rest-only
+    role: state_plane
+    authority: METABOLIZE_ONLY
+    tools_count: 0
+    description: "Metabolic ledger daemon — FQ monitoring, receipt ingestion, governance signals"
+    health_endpoint: http://localhost:7073/health
+    bind: loopback
+    note: "REST only — no MCP protocol. Use stdio bridge for MCP access."
+
+# ─────────────────────────────────────────────────────────────
+# ROLES — Capability visibility per agent role
+# ─────────────────────────────────────────────────────────────
+roles:
+  researcher:
+    description: "Read-only analysis and observation"
+    organs: [geox, frame, iarif]
+    capabilities: [observe, compute, analyze]
+
+  builder:
+    description: "Code and infrastructure execution"
+    organs: [geox, aforge]
+    capabilities: [observe, compute, execute]
+
+  governor:
+    description: "Governance and constitutional oversight"
+    organs: [frame, aaa, arifflow]
+    capabilities: [observe, judge, seal]
+
+  executor:
+    description: "Direct execution and mutation"
+    organs: [aforge]
+    capabilities: [execute, mutate]
+
+  sovereign:
+    description: "Full access — F13 only"
+    organs: [kernel, aforge, geox, wealth, well, frame, iarif, fed, aaa, arifflow]
+    capabilities: [observe, compute, execute, mutate, judge, seal]
+
+# ─────────────────────────────────────────────────────────────
+# FORGE INSTRUMENTS — Agent configurations
+# ─────────────────────────────────────────────────────────────
+forge_instruments:
+  opencode:
+    id: FI-001
+    name: OpenCode
+    mcp_servers: [kernel, aforge, geox, wealth, well, arifflow]
+    missing: [fed]
+    role: builder
+    note: "Most capable agent config — missing FED"
+
+  claude:
+    id: FI-002
+    name: Claude Code
+    mcp_servers: [kernel, aforge, geox, wealth, well, fed, arifflow]
+    role: builder
+    note: "Full federation +19 utility MCPs (richest utility surface)"
+
+  qwen:
+    id: FI-003
+    name: Qwen Code
+    mcp_servers: [kernel, aforge, geox, wealth, well, fed, arifflow]
+    role: builder
+    note: "Full federation access via HTTP"
+
+  kimi:
+    id: FI-008
+    name: Kimi Code
+    mcp_servers: [kernel, aforge, geox, wealth, well, fed, arifflow]
+    role: researcher
+    note: "Full federation access — uses stdio launchers"
+
+  codex:
+    id: FI-005
+    name: Codex CLI
+    mcp_servers: [kernel, aforge, geox, wealth, well, fed, arifflow]
+    role: builder
+    note: "Full federation +4 utility MCPs (fetch, context7, brave, github)"
+
+  grok:
+    id: FI-007
+    name: Grok
+    mcp_servers: [kernel, aforge, geox, wealth, well, fed, arifflow]
+    role: architect
+    note: "Full federation — cleanest config, no utility MCPs"
+
+  hermes:
+    id: hermes-prime
+    name: Hermes
+    mcp_servers: [kernel, aforge, geox, wealth, well, arifflow]
+    missing: [fed]
+    role: governor
+    note: "Telegram gateway — missing FED"
+
+  copilot:
+    id: FI-006
+    name: Copilot
+    mcp_servers: []
+    role: warga
+    note: "LLM-only via FED :4000 proxy, no MCP tools — architecturally excluded"
+
+# ─────────────────────────────────────────────────────────────
+# GAPS — Known issues requiring resolution
+# ─────────────────────────────────────────────────────────────
+gaps:
+  G1:
+    severity: CRITICAL
+    description: "MCP specification drift — 2024-11-05 vs 2025-06-18 coexist"
+    organs_2024: [arifos-kernel, geox, wealth, well]
+    organs_2025: [aforge, fed]
+    impact: "Inconsistent capability surface (tasks, extensions, registration)"
+    fix: "Upgrade GEOX/WEALTH/WELL/kernel to 2025-06-18 (SABAR — high mutation risk)"
+
+  G2:
+    severity: CRITICAL
+    description: "FRAME, i-ARIF, AAA are NOT MCP-enabled"
+    impact: "Capability exists but is invisible to MCP discovery"
+    fix: "Add MCP surface to FRAME, i-ARIF, AAA (SEAL — high leverage)"
+
+  G3:
+    severity: HIGH
+    description: "FED :7074 requires dual Accept headers"
+    impact: "Silent failure for clients not sending Accept: application/json, text/event-stream"
+    fix: "Document as mandatory or relax FED header requirement"
+
+  G4:
+    severity: HIGH
+    description: "No canonical MCP Registry SOT existed before this file"
+    impact: "Multiple partial registries (mcp-surface-guard, .claude/mcp_servers, contracts/mcp_surface)"
+    fix: "THIS FILE is the fix. Authority chain: FEDERATION.md → CONTRACT → registry SOT"
+
+  G5:
+    severity: HIGH
+    description: "Hermes missing FED :7074 MCP"
+    impact: "Primary Telegram gateway can't call fed_classify/fed_route/fed_status"
+    fix: "Add FED to Hermes config.yaml mcp_servers"
+
+  G6:
+    severity: MEDIUM
+    description: "OpenCode missing FED :7074 MCP"
+    impact: "FI-001 can't use federation routing"
+    fix: "Add FED to opencode mcp.yaml"
+
+  G7:
+    severity: MEDIUM
+    description: "arifFlow has no MCP endpoint — REST only"
+    impact: "Inconsistent access (stdio bridge vs HTTP)"
+    fix: "Add MCP wrapper or native MCP endpoint to arifFlow daemon"
+
+  G8:
+    severity: MEDIUM
+    description: "No MCP-level health monitoring"
+    impact: "Port alive ≠ MCP alive (initialize/tools/list may fail)"
+    fix: "Build MCP-level health probe (SEAL — high leverage, low risk)"
+
+# ─────────────────────────────────────────────────────────────
+# DERIVED ARTIFACTS — These files are generated from this SOT
+# ─────────────────────────────────────────────────────────────
+derived_from:
+  - path: /root/A-FORGE/contracts/mcp_surface.yaml
+    description: "A-FORGE-specific MCP surface contract"
+  - path: /root/.claude/mcp_servers.json
+    description: "Claude Code MCP configuration"
+  - path: /root/.config/opencode/opencode.json
+    description: "OpenCode MCP configuration"
+  - path: /root/AAA/mcp-surface-guard.json
+    description: "Surface guard monitoring config"
