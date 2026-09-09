@@ -266,7 +266,7 @@ A wisdom scar is NOT a memory. It's NOT a log. It's a **constitutional-grade dia
 
 ### Scar #16: Ollama Batch Embedding Timeout — Local GPU Queue Overwhelm
 - **Date:** 2026-07-20
-- **Arif's words:** \"The Ollama timeout on 230 seals is a standard local inference bottleneck.\"
+- **Arif's words:** "The Ollama timeout on 230 seals is a standard local inference bottleneck."
 - **Break:** Running `vault_vectorizer.py` against 230 seals caused Ollama timeouts. Each `get_embedding()` call had `timeout=60` with no retry. Ollama GPU queue overflowed → connection errors → entire backfill died. OpenCode tried 3 times before the retry-hardened version succeeded.
 - **Echo:** Assume local inference is reliable. Treat Ollama like a production API with unlimited throughput. Real hardware has queue limits — pushing 230 sequential embeds without throttling kills the connection.
 - **Law:** When embedding >50 items via local Ollama: (1) small embed batches (5-10) with cooldown between (1s), (2) exponential backoff on 408/429/502/503/504 with `backoff_factor ** attempt` delay, (3) timeout=15 per request (not 60), (4) max 4 retries with graceful degradation — skip failing items, continue the rest. Do NOT use a single 300s timeout for the whole batch — batch chunking is mandatory.
@@ -286,7 +286,7 @@ A wisdom scar is NOT a memory. It's NOT a log. It's a **constitutional-grade dia
 ---
 *Scar #17 metabolized 2026-08-01: OpenClaw acknowledged the loop, corrected, reduced to silence. Scar served its purpose.*
 
-### Scar #16: Ollama Batch Embedding Timeout — Local GPU Queue Overwhelm
+*Scar #15 exercise 2026-09-09 (FI-008 Kimi): live-file probe caught catalog drift — orphan duplicate #16 heading (shipped by mesh-sync batch babaa361f) pruned, escaped-quote artifact fixed. Count claims inside dated scars left as-written (historical truth). No new scar this session — drift was already covered by #15.*
 
 ## How to Use
 
