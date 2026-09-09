@@ -40,6 +40,7 @@ For session-start probes, action-tier expansions, conflict resolution, and the a
 | Civilizational Dependency Graph | `/root/AAA/instructions/civilizational-dependency-graph.md` | F13_RATIFIED_CHAT |
 | Consequence-Honoring Doctrine | `/root/AAA/instructions/consequence-honoring-doctrine.md` | F13_RATIFIED_CHAT |
 | Witness Membrane Execution Context | `/root/AAA/governance/WITNESS-MEMBRANE-EXECUTION-CONTEXT-2026-09-09.md` | F13_RATIFIED_CHAT |
+| Oath Forward — Six Pacts | `/root/AAA/governance/OATH-FORWARD-SIX-PACTS-2026-09-09.md` | F13_RATIFIED_CHAT (court SEAL cc_151748ebc79e383) |
 | RBA-PROOF-001 Mission | `/root/AAA/proof/rba-proof-001/` (8 artifacts) | PARTIAL verdict |
 
 **To load:** read the file path above. Each fragment is independent and may be consulted separately.
