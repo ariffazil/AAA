@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "origin": "CHRONUS kernel — temporal-intelligence-doctrine",
+  "ratified": "2026-09-09",
+  "description": "Minimum Viable Transition Record format for arifOS receipts",
+  "required_fields": {
+    "id": "uuid — unique transition identifier",
+    "timestamp": "ISO-8601 UTC — when the transition was recorded",
+    "before": "object — state snapshot before action (key-value pairs of measured metrics)",
+    "action": "object — what was done (tool, command, decision, human input)",
+    "after": "object — state snapshot after action (same keys as before for comparison)",
+    "delta": "object — computed change (after - before per key, or qualitative description)",
+    "confidence": "number 0.0-1.0 — how confident the system is in this transition record"
+  },
+  "optional_fields": {
+    "causes": "array of transition IDs that caused or contributed to this transition",
+    "witnesses": "array of organ/tool IDs that validated the transition",
+    "receipt_hash": "SHA-256 linking to VAULT999 receipt",
+    "scar_candidate": "boolean — whether this transition qualifies as potential scar",
+    "horizon": "ISO-8601 duration — how long this transition's effects are expected to hold"
+  },
+  "storage": {
+    "primary": "/root/VAULT999/chronus/transitions.jsonl",
+    "index": "/root/VAULT999/chronus/transition_index.json"
+  },
+  "example": {
+    "id": "tr_20260909_001",
+    "timestamp": "2026-09-09T08:38:00Z",
+    "before": {
+      "aforge_tools": 110,
+      "arifos_docs_fragments": 33
+    },
+    "action": {
+      "type": "mcp_register",
+      "tool": "forge_chronus",
+      "agent": "hermes"
+    },
+    "after": {
+      "aforge_tools": 110,
+      "arifos_docs_fragments": 34
+    },
+    "delta": {
+      "aforge_tools": 0,
+      "arifos_docs_fragments": "+1"
+    },
+    "confidence": 0.95,
+    "causes": [],
+    "witnesses": ["arifos"],
+    "scar_candidate": false,
+    "horizon": "7d"
+  }
+}

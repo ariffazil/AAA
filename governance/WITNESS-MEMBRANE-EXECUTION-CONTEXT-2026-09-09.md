@@ -182,6 +182,37 @@ VAULT999 seal ack (receipt above) · P4 queue adopt-vs-prune · M1–M4 numbers 
 SYED consent path (WELL scope before taxonomy) · dream-engine l4_supabase keys ·
 stale `~/.arifos/event_bus.jsonl` twin (prune or redirect).
 
+---
+
+## ZEN EXECUTION ADDENDUM — 2026-09-09T01:15–01:22Z (FI-008, F13 blanket "execute all remaining")
+
+Executed (all reversible, backups held):
+
+1. Digest cron TZ fix `0 14`→`0 22` MYT (system TZ +08; syslog proved 14:00-MYT firing; comment corrected) — backup `/root/crontab.bak-20260909T0905Z-preTzfix`.
+2. Stale twin `~/.arifos/event_bus.jsonl` (Jul 18; zero live refs — systemd refs point to `/var/lib/arifos/event_bus`, a different mechanism) → renamed `.ABANDONED-2026-09-09`.
+3. `SUPABASE_SERVICE_KEY` alias wired from `SUPABASE_SERVICE_ROLE_KEY` inside vault.flat.env (value never exposed; backup `.bak-20260909T0920Z`) — dream l4_supabase pass ENABLED for tonight's 19:46 run.
+4. **P4 = PRUNED**: 5 phantom streams deleted (`E7_AUTONOMY`, `FEEDBACK`, `GRADIENT`, `INTER_ORGAN`, `wake-bus` — 0 messages, 0 live references). Stream list now 4 live-only, both fresh (<40s).
+5. Morning-briefing tombstone → deprecation-registry `deprecated_services` #15 (backup `.bak-20260909T0920Z`).
+6. Cron registry re-pin → `machine-constitution/cron.json` 67 entries; **forge_vps_cron assert = PASS, zero drift** (chain_hash `92a1bd84fdc6b9bb`, 2026-09-09T01:21:56Z).
+   L7-in-the-open: jq filter mishap collapsed registry 68→2 entries; caught within the same minute, restored from `.bak-20260909T0925Z`, redone correctly. Law 7 strikes its own scribe — again.
+
+**VAULT999 seal: attempted under F13 chat ack verbatim** ("zen the system and seal all after u compile and exevute all remaining task", ARIF 888, 2026-09-09 ~01:15Z, session `SEAL-6e139bb003f64cc8`) → kernel **HOLD**: `SESSION_POLICY_CLAMP — IRREVERSIBLE (rank 6/6) exceeds session irreversibility_threshold 0.00` (F1_AMANAH · requires_lease=true · requires_human_ack=true · safe_autonomous_use=false). Call `sha256:4f879bcf…`, sesat `sesat-c57d069e6c6d`. **Not retried** — the clamp is structural for AGI-lane LIMITED_MUTATE sessions; chat ack ratifies files, not irreversible appends. Seal remains available via the proper path (888 sovereign token / authorized session).
+
+Pending sovereign (crisp): M1–M4 numbers (proposal on record: M1 ≤1% ceiling · M2 = 2/day · M3 ≥0.5 trend · M4 weekly sample) · SYED consent scope before taxonomy · arifos-organs consumer wiring (4 consumers, 0 deliveries ever).
+
+---
+
+## PENAMATAN — 2026-09-09T01:33Z (FI-008, F13 blanket "ok go buat semua bagi habis")
+
+1. **M1–M4 DITETAPKAN (default, blanket-ratified 2026-09-09; dipinda oleh 888 dengan satu kata bila-bila masa):**
+   - M1 Promotion Rate ceiling: **≤1.0%** (live 0.16% — 6× ruang kepala)
+   - M2 Human Interruption Budget: **2/hari** (07:30 readiness + 22:30 anchor; letusan ke-3 perlukan kelulusan gerbang)
+   - M3 Consumption Ratio: **≥0.5 menjelang 2026-10-09**, aliran menaik (pengukuran asas bermula malam ini melalui log penyampaian jangkar)
+   - M4 Decision Impact: **sampel mingguan** — ≥30% promosi tersampel mesti mengubah keputusan
+2. **SYED consent path (DRAF KANUN, default-DENY):** audit WELL langsung menunjukkan **sifar skop consent diberi** (konservatif betul, veto F13 utuh). Laluan yang ditetapkan: sebarang ciri reminders→thresholds untuk SYED memerlukan skop `well.consent.syed.*` diberikan secara EKSPLISIT oleh 888 melalui Hermes (pintu HERMES_HERMETIC_TOKEN, alat `well_consent_set_scope`) **SEBELUM** taksonomi dibina. Tanpa skop = tiada taksonomi. (F1 human-meaning-membrane)
+3. **Pembaca arifos-organs WIRED (item #3 selesai):** digest 22:00 kini membaca heartbeat setiap organ (Event 4). Ujian hidup: `arifos=enabled aforge=UNKNOWN geox=healthy wealth=healthy well=degraded` — UNKNOWN dipapar jujur, C-001 bersaksi setiap malam melalui sungai sedia ada (LAW 8: sifar permukaan baharu). Sandaran: `arifflow_digest.py.bak-20260909T0930Z`.
+4. **Dream l4_supabase DIBAIKI (item #5 selesai):** dua punca — (a) nama kunci tak sepadan `SERVICE_ROLE_KEY`↔`SERVICE_KEY` (dialiaskan dalam vault.flat.env, nilai tak pernah dedah), (b) query kod tanya kolum `id`/`embed_model` yang tiada (PK sebenar `memory_id`; ditampal). Ujian hidup: **`status ok, scanned 997, stale 877, dry_run true`** — lapisan L4 berfungsi kali pertama. Sandaran: `consolidate.py.bak-20260909T0932Z`.
+
 ## F13 ACK + ADJUDICATION TRAIL — 2026-09-09T01:13–01:18Z
 
 Sovereign ack (chat, verbatim — answer to the binary seal question):

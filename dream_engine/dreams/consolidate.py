@@ -225,7 +225,7 @@ def audit_supabase_dedup(dry_run: bool = True) -> dict[str, Any]:
         client = create_client(supabase_url, supabase_key)
         # Count rows in arifosmcp_memory_records
         result = client.table("arifosmcp_memory_records").select(
-            "id, created_at, embed_model"
+            "memory_id, created_at"
         ).limit(1000).execute()
 
         rows = result.data or []
