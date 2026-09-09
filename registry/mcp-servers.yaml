@@ -88,16 +88,23 @@ organs:
   frame:
     name: FRAME
     endpoint: http://localhost:18085/mcp
-    protocol: "TBD"
-    transport: TBD
+    protocol: "2024-11-05"
+    transport: stdio
     role: witness
     authority: OBSERVE_ONLY
-    tools_count: 0
-    description: "Independent observer — drift, thermal, evidence, governance signals"
+    tools_count: 7
+    tools:
+      - frame_health
+      - frame_probe
+      - frame_drift
+      - frame_baseline
+      - frame_trend
+      - frame_report
+      - frame_rsi_verify
+    description: "Independent observer — drift detection, evidence gathering. MCP bridge at /root/FRAME/mcp/frame-mcp.py"
     health_endpoint: http://localhost:18085/health
     bind: loopback
-    status: "NOT_MCP_ENABLED — health endpoint only, no MCP surface"
-    gap: "Not wired as MCP in any agent config"
+    wired_to: [qwen-code, hermes]
 
   iarif:
     name: i-ARIF
