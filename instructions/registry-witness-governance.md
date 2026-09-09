@@ -117,6 +117,133 @@ Everything else is transport.
 
 ---
 
+## Constitutional Eurekas (2026-09-10 alignment audit)
+
+Twelve invariants derived from the ZEN_ALIGNMENT_AUDIT. Not new doctrine — kernel-grade compressions of existing canon. Each survives implementation change, survives re-examination, and can influence future behavior.
+
+### E1: Witness Alone Is Not Governance
+
+```
+Reality → Witness ≠ Governance
+
+Governance exists only when:
+Reality → Witness → Adaptation → Changed Behavior
+```
+
+**Hardcode:** If witness does not change behavior, classify as ARCHIVE.
+
+### E2: Scar = Witness With Consequence
+
+```
+Witness  = Reality observed
+Scar     = Reality observed + Future behavior changed
+```
+
+**Hardcode:** Scar := witness where future_behavior ≠ previous_behavior.
+
+### E3: Governance Is Behavioral Difference
+
+Governance is not policy. Governance is not documentation. Governance is not receipt.
+
+```
+same situation + new witness = different decision
+```
+
+**Hardcode:** Governance exists only when witness changes future decisions.
+
+### E4: Not All Receipts Represent Reality
+
+```
+receipt ∈ {
+    reality_receipt,
+    synthetic_receipt,
+    daemon_receipt,
+    session_receipt
+}
+```
+
+**Hardcode:** Receipt Quality > Receipt Quantity. Not all receipts are reality.
+
+### E5: Witness Quality Precedes Judgment
+
+Before judging a witness:
+1. Who produced this witness?
+2. Did reality produce it?
+
+**Hardcode:** Reality → Witness → Judgment → Action. Never: Receipt → Assumption → Judgment.
+
+### E6: Actors Are Not Equal
+
+```
+Human Agent ≠ Interactive Session ≠ Daemon
+≠ Infrastructure Service ≠ Synthetic Generator
+```
+
+**Hardcode:** Actor Class must be known before Actor Health can be evaluated.
+
+### E7: HOLD Can Be a Measurement Error
+
+```
+Before:  Many HOLD → actors unhealthy
+After:   Many HOLD → metric may be unhealthy
+```
+
+**Hardcode:** Observe metric validity before interpreting metric output.
+
+### E8: Archive Can Pretend To Be Governance
+
+Registry ✅ · Witness ✅ · Receipts ✅ · Reports ✅ · Dashboards ✅
+
+May still be ARCHIVE.
+
+**Hardcode:** Archive can look alive. Governance must alter behavior.
+
+### E9: The Universal Test
+
+```
+Can witnessed reality change future behavior?
+
+NO       → ARCHIVE
+PARTIAL  → WITNESS
+YES      → GOVERNANCE
+```
+
+### E10: The Scar Test (5-step causality)
+
+For every witness:
+1. What reality was observed?
+2. What decision changed?
+3. What behavior changed?
+4. What reality changed?
+5. Can the chain be demonstrated?
+
+If the chain cannot be demonstrated: **THEATRE**.
+
+### E11: Living Memory
+
+```
+Static memory                                  = Storage
+Refreshing memory                              = Witness
+Refreshing memory + Adaptive behavior          = Governance
+```
+
+**Hardcode:** Memory is not alive until reality can modify it.
+
+### E12: Final Compression
+
+```
+Intelligence proposes.
+Witness attests.
+Scar constrains.
+Governance adapts.
+Reality invoices.
+```
+
+The unit of governance is not witness.
+The unit of governance is **scar** — witness that successfully changed future behavior.
+
+---
+
 ## Provenance
 
 - Forged: 2026-09-10 by FI-003 (Qwen Code)
