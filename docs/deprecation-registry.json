@@ -240,7 +240,10 @@
       "status": "DEPRECATED",
       "tombstone_date": "2026-09-06",
       "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers (backups/historical logs only).",
-      "certified_by": "FI-003 under F13 auto-execute 2026-09-06 — closes disk/git/registry/index four-reality split"
+      "certified_by": "FI-003 under F13 auto-execute 2026-09-06 — closes disk/git/registry/index four-reality split",
+      "executed": "2026-09-09",
+      "executed_by": "FI-008/333-AGI",
+      "execution_note": "disk removal complete; quarantine forge_work/deprecation-exec-20260909 (tar, reversible); .agents/skills is symlink to AAA/skills"
     },
     {
       "id": "RSI-recursive-improvement",
@@ -248,7 +251,10 @@
       "status": "DEPRECATED",
       "tombstone_date": "2026-09-06",
       "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
-      "certified_by": "FI-003 under F13 auto-execute 2026-09-06"
+      "certified_by": "FI-003 under F13 auto-execute 2026-09-06",
+      "executed": "2026-09-09",
+      "executed_by": "FI-008/333-AGI",
+      "execution_note": "disk removal complete; quarantine forge_work/deprecation-exec-20260909 (tar, reversible); .agents/skills is symlink to AAA/skills"
     },
     {
       "id": "agent-bindings/claude-code-spawn",
@@ -296,7 +302,10 @@
       "status": "DEPRECATED",
       "tombstone_date": "2026-09-06",
       "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
-      "certified_by": "FI-003 under F13 auto-execute 2026-09-06"
+      "certified_by": "FI-003 under F13 auto-execute 2026-09-06",
+      "executed": "2026-09-09",
+      "executed_by": "FI-008/333-AGI",
+      "execution_note": "disk removal complete; quarantine forge_work/deprecation-exec-20260909 (tar, reversible); .agents/skills is symlink to AAA/skills"
     },
     {
       "id": "skill-evolution",
@@ -304,7 +313,10 @@
       "status": "DEPRECATED",
       "tombstone_date": "2026-09-06",
       "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
-      "certified_by": "FI-003 under F13 auto-execute 2026-09-06"
+      "certified_by": "FI-003 under F13 auto-execute 2026-09-06",
+      "executed": "2026-09-09",
+      "executed_by": "FI-008/333-AGI",
+      "execution_note": "disk removal complete; quarantine forge_work/deprecation-exec-20260909 (tar, reversible); .agents/skills is symlink to AAA/skills"
     }
   ],
   "deprecated_tools": [
