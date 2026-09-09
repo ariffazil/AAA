@@ -1,0 +1,8 @@
+/root/AAA/governance/.archive-2026-08-29/AAA-ZEN-ALIGNMENT.md -> /root/AAA-ZEN-ALIGNMENT.md
+/root/AAA/skills/capabilities/coding/claude-code-spawn -> ../../agent-bindings/claude-code-spawn
+/root/AAA/skills/capabilities/coding/substrate-init -> ../../agent-bindings/substrate-init
+/root/AAA/skills/capabilities/coding/substrate-propose-seal -> ../../agent-bindings/substrate-propose-seal
+/root/AAA/skills/capabilities/coding/substrate-forge -> ../../agent-bindings/substrate-forge
+/root/AAA/skills/workflows/core/FLAME-operator -> ../../FLAME-operator
+/root/AAA/skills/workflows/core/COPILOT-zen-router -> ../../COPILOT-zen-router
+/root/AAA/skills/workflows/core/FLAME-router -> ../../FLAME-router

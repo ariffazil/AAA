@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "origin": "DECAY WATCHER — temporal-intelligence-doctrine",
+  "ratified": "2026-09-09",
+  "description": "Decay-aware claim format. Every factual claim in arifOS memory should eventually carry these fields.",
+  "decay_model": {
+    "formula": "confidence(t) = confidence_0 * exp(-lambda * t)",
+    "lambda": "ln(2) / half_life_days",
+    "status_bands": {
+      "KNOWN": "confidence > 0.8",
+      "LIKELY": "0.5 < confidence <= 0.8",
+      "WEAK": "0.2 < confidence <= 0.5",
+      "STALE": "confidence <= 0.2"
+    }
+  },
+  "claim_format": {
+    "text": "The factual claim content",
+    "verified_at": "ISO-8601 UTC — last time this claim was verified against reality",
+    "half_life_days": "number — days before confidence halves (default: 7)",
+    "initial_confidence": "number 0.0-1.0 — confidence at time of verification (default: 0.9)",
+    "source": "origin of the claim (observation, measurement, inference)",
+    "domain": "which organ or system this claim relates to"
+  },
+  "half_life_defaults": {
+    "runtime_state": 1,
+    "tool_count": 3,
+    "service_health": 0.5,
+    "policy_decision": 14,
+    "architectural_claim": 30,
+    "human_preference": 30,
+    "philosophical_doctrine": 90
+  },
+  "storage": "/root/VAULT999/chronus/claims.jsonl",
+  "query_modes": {
+    "stale_report": "list all claims where confidence(t) < 0.2",
+    "reverification_queue": "list claims due for re-verification (confidence approaching 0.5)",
+    "domain_health": "average confidence per domain"
+  }
+}
