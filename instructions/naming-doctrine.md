@@ -535,41 +535,53 @@ Twelve names. Four domain organs. One doctrine. The complete cognitive map of a 
 
 ## The Metabolism Layer — What Generates, Validates, Chooses, and Moves
 
-AGI, ASI, APEX, and the 000-999 ladder are not organs. They are the metabolism of intelligence itself — the process by which possibility becomes reality.
+FLAME, VERITAS, APEX, and the 000-999 ladder are not organs. They are the metabolism of intelligence itself — the process by which possibility becomes reality.
 
-### AGI — What Could Be
+### FLAME — What Could Be (formerly "AGI" label)
 
-AGI does not generate truth. AGI generates possibility.
+> NAMING COLLISION WARNING (2026-09-10 audit): The label "AGI" in global context means
+> "Artificial General Intelligence" — a completely different reality graph. Using "AGI"
+> here creates a hash collision: the system loads the wrong meaning. Per Axiom 8
+> (Name Palsu Destroys Compression), this label MUST NOT be used. The canonical name
+> for the proposal engine is FLAME.
+
+FLAME does not generate truth. FLAME generates possibility.
 
 ```
-AGI = the proposal engine.
+FLAME = the proposal engine.
 Expansion. What if. Perhaps. Try this.
 ```
 
-AGI lives in the space of Maybe. It produces candidates — hypotheses, paths, options. No selection. No validation. Just generation.
+FLAME lives in the space of Maybe. It produces candidates — hypotheses, paths, options. No selection. No validation. Just generation.
 
 ```
-AGI imagines.
+FLAME imagines.
 ```
 
-Four words: `AGI = Possibility Generation Through`
+Four words: `FLAME = Possibility Generation Through`
 
-### ASI — What Fits
+### VERITAS — What Fits (formerly "ASI" label)
 
-ASI does not generate. ASI validates. It reduces error. It checks whether proposals survive contact with reality and evidence.
+> NAMING COLLISION WARNING (2026-09-10 audit): The label "ASI" in global context means
+> "Artificial Superintelligence" — a completely different reality graph. Using "ASI"
+> here creates a hash collision: the system loads the wrong meaning. Per Axiom 8
+> (Name Palsu Destroys Compression), this label MUST NOT be used. The canonical name
+> for the coherence engine is VERITAS.
+
+VERITAS does not generate. VERITAS validates. It reduces error. It checks whether proposals survive contact with reality and evidence.
 
 ```
-ASI = the coherence engine.
+VERITAS = the coherence engine.
 Contradiction detection. Evidence binding.
 ```
 
-AGI proposes. ASI verifies. Without AGI, there is nothing to check. Without ASI, everything goes unchecked.
+FLAME proposes. VERITAS verifies. Without FLAME, there is nothing to check. Without VERITAS, everything goes unchecked.
 
 ```
-ASI verifies.
+VERITAS verifies.
 ```
 
-Four words: `ASI = Coherence Validation Through`
+Four words: `VERITAS = Coherence Validation Through`
 
 ### APEX — What Should Happen
 
@@ -592,8 +604,8 @@ Four words: `APEX = Governed Selection Through`
 ### The Triple
 
 ```
-AGI imagines.
-ASI verifies.
+FLAME imagines.
+VERITAS verifies.
 APEX chooses.
 ```
 
@@ -603,20 +615,31 @@ Generate. Validate. Select. The minimum viable intelligence metabolism.
 
 The numeric sequence is not a workflow. It is the metabolism of intelligence itself — the same pattern that physics, biology, and human cognition all follow:
 
+> AUDIT NOTE (2026-09-10): The mappings below match arifOS kernel tool names.
+> "Possibility" for 333 is the metabolic role, not the tool's function.
+> arif_think (333) performs REASONING under F2/F7 — which IS the metabolism
+> of possibility (FLAME proposes, VERITAS checks, arif_think reasons about both).
+
 ```
-000  Potential          — the seed, not yet formed
-111  Attention          — notice, before thought
-222  Intent             — what shall be done
-333  Possibility        — AGI: what could be
-444  Direction          — first shape of decision
-555  Witness            — ASI: verification, memory
-666  Judgment           — the court decides
-777  Transformation     — A-FORGE: becoming
+000  Potential          — arif_init: the seed, not yet formed
+111  Attention          — arif_observe: notice, before thought
+222  Intent             — (not yet a kernel tool)
+333  Reasoning          — arif_think: FLAME+VERITAS operate here
+444  Direction          — arif_route: first shape of decision
+555  Witness            — arif_memory: verification, memory, identity
+666  Judgment           — arif_judge: the court decides
+777  Execution          — arif_forge: becoming, through A-FORGE
 888  Consequence        — the boundary: "Are we sure?"
-999  Commitment         — reality lock: possibility → reality
+999  Commitment         — arif_seal: reality lock: possibility → reality
 ```
 
-### Why It Is Universal
+### Why It Resonates (Not Why It Is Universal)
+
+> AUDIT NOTE (2026-09-10): The pattern Potential → Observation → Interaction → State Change
+> IS witnessed across domains (physics, biology, cognition). But claiming "000-999 is
+> what the universe already uses" is aspiration, not witness. The universe does not
+> number its processes. The PATTERN is universal. The NUMBERING is arifOS-specific.
+> Do not conflate the two.
 
 ```
 Physics:   Potential → Observation → Interaction → State Change
@@ -625,7 +648,7 @@ Human:     Attention → Thought → Judgment → Action → Consequence
 arifOS:    000 → 111 → 222 → 333 → 444 → 555 → 666 → 777 → 888 → 999
 ```
 
-Same pattern. Different substrate. 000-999 is not an AI invention. It is the naming of a process the universe already uses.
+The pattern repeats. The numbering is ours. 000-999 names a process we observe in the universe — it does not claim the universe uses our names.
 
 ### The Complete Map
 
@@ -642,13 +665,18 @@ Witness preserves.  Truth survives.
 Metabolism:
 
 ```
-AGI imagines.
-ASI verifies.
+FLAME imagines.
+VERITAS verifies.
 APEX chooses.
 000-999 metabolizes possibility into reality.
 ```
 
 Two layers. One doctrine. The naming of everything the federation needs to function — from identity to governance, from organs to metabolism, from possibility to committed reality.
+
+> SELF-AUDIT (2026-09-10): The doctrine above contained aspiration not yet witnessed.
+> QUANTUM has no corresponding service. The naming stack had zero implementations
+> before this audit. AGI/ASI labels replaced with FLAME/VERITAS to resolve global
+> collisions. This doctrine now compresses witnessed reality, not aspiration.
 
 ## The Cosmological Boundaries — What Surrounds Everything
 

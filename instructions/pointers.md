@@ -22,6 +22,8 @@
 | `/root/.local/share/arifos/carry_forward.json` | **Live** session state |
 | `/root/VAULT999` | Append-only sealed receipts |
 | `/root/AAA/instructions/` | **Canonical instruction fragments** — edit these, not the generated output |
+| `/root/AAA/names/` | **Naming Layer 1** — NAME.md per named entity (2026-09-10 audit remediation) |
+| `/root/AAA/names/INDEX.md` | **Naming index** — all 20 named entities, witness status, compression anchors |
 | `/root/scripts/render-agents.sh` | **Fragment composer** — generates AGENTS.md + adapter files |
 | `/root/scripts/doctor.sh` | **Federation health dashboard** — unified probe |
 | `/root/AAA/governance/ARIF_FLOW_METABOLIC_PLANE.md` | **Plane SOT** — 10 roles · 6 SOTs · metabolism. `FLOW_GRAPH` not minted |
