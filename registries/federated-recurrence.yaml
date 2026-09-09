@@ -1,0 +1,826 @@
+# ═══════════════════════════════════════════════════════════════
+# FEDERATED RECURRENCE REGISTRY — Canonical SOT
+# ═══════════════════════════════════════════════════════════════
+# Capability: RECUR (WHEN things happen)
+# Adapters: cron, systemd, hermes-cron, loop
+# Doctrine: Govern capabilities, not implementations.
+#
+# Eurekas:
+#   RECUR_TRANSFORM_WITNESS — all recurring systems compress to3 capabilities
+#   OUTCOME_IS_FIRST_CLASS — govern outcomes, not just executions
+#   DEDUP_OUTCOME_NOT_PRODUCER — dedup at outcome layer, not execution layer
+#   RECUR_IS_A_CAPABILITY — cron/systemd/hermes-cron/loop are adapters
+#   REGISTRY_IS_AUTHORITY — registry owns intent, adapters perform execution
+#   WITNESS_TO_GOVERNANCE — accumulated witness becomes governance
+#
+# Forged: 2026-09-10 by 333-AGI (SEAL-566d0d27bf594ea8)
+# F13 SOVEREIGN: Arif Fazil
+# ═══════════════════════════════════════════════════════════════
+
+capability: RECUR
+version: "1.0.0"
+forged_at: "2026-09-10T03:15:00+08:00"
+forged_by: "333-AGI"
+sovereign: "F13-ARIF"
+
+# ─────────────────────────────────────────────────────────────
+# POLICIES — apply to ALL adapters automatically
+# ─────────────────────────────────────────────────────────────
+policies:
+  fq_gate_default: false
+  failure_pause_threshold: 3
+  outcome_dedup: true
+  cost_limit_usd_monthly: 10
+  auto_retire_engagement_threshold: 0.1
+  auto_optimize_after_runs: 30
+  witness_emit: true
+  witness_destination: arifflow
+
+# ─────────────────────────────────────────────────────────────
+# ADAPTERS — implementations of RECUR capability
+# ─────────────────────────────────────────────────────────────
+adapters:
+  cron:
+    type: machine
+    source: /etc/cron.d/ + root-crontab
+    llm: false
+    cost_per_run: 0
+    persistence: indefinite
+    owner: OS
+
+  systemd:
+    type: machine
+    source: systemd-timers
+    llm: false
+    cost_per_run: 0
+    persistence: indefinite
+    owner: OS
+
+  hermes-cron:
+    type: agent
+    source: ~/.hermes/cron/jobs.json
+    llm: true
+    cost_per_run: variable
+    persistence: days/months
+    owner: hermes-gateway
+
+  loop:
+    type: session
+    source: hermes-/loop
+    llm: true
+    cost_per_run: variable
+    persistence: session-scoped
+    owner: current-session
+
+# ─────────────────────────────────────────────────────────────
+# OUTCOMES — what the user actually experiences
+# ─────────────────────────────────────────────────────────────
+outcomes:
+  - id: daily-brief
+    description: "Morning intelligence brief for Arif"
+    delivery: telegram:267378578
+    delivery_window: 24h
+    producers: [morning-brief-audit, morning-brief-rest]
+
+  - id: daily-arifflow-digest
+    description: "arifFlow governance digest"
+    delivery: telegram:267378578
+    delivery_window: 24h
+    producers: [arifflow-machine, arifflow-agent]
+    dedup_strategy: machine-delivers-raw-agent-interprets
+
+  - id: weekly-reckoning
+    description: "Prediction-reality grading"
+    delivery: telegram:267378578
+    delivery_window: 7d
+    producers: [arif-reckoning]
+
+  - id: weekly-geo-econ
+    description: "Professional intelligence brief"
+    delivery: telegram:267378578
+    delivery_window: 7d
+    producers: [geo-econ-horizon]
+
+  - id: weekly-iron-radar
+    description: "Regional bodybuilding + physical conditioning"
+    delivery: telegram:267378578
+    delivery_window: 7d
+    producers: [iron-radar]
+
+  - id: weekly-malaysia-intel
+    description: "Malaysia market intelligence scan"
+    delivery: telegram:267378578
+    delivery_window: 7d
+    producers: [malaysia-intel-weekly]
+
+  - id: daily-reddit-digest
+    description: "Reddit daily scan summary"
+    delivery: telegram:267378578
+    delivery_window: 24h
+    producers: [reddit-daily-monitor]
+
+  - id: daily-gdrive-backup
+    description: "VPS backup to Google Drive"
+    delivery: telegram:267378578
+    delivery_window: 24h
+    producers: [vps-gdrive-daily-backup]
+
+  - id: weekly-cbd-followup
+    description: "CBD follow-up surgery tracking"
+    delivery: telegram:1042200555
+    delivery_window: 7d
+    producers: [syed-mak-cbd-followup]
+
+# ─────────────────────────────────────────────────────────────
+# EVENTS — recurrence entries (the actual jobs)
+# ─────────────────────────────────────────────────────────────
+events:
+  # ── MACHINE CRON (root crontab) ──────────────────────────
+  - id: cockpit-probe
+    adapter: cron
+    schedule: "*/15 * * * *"
+    command: cockpit_probe.py
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: unsealed-counter
+    adapter: cron
+    schedule: "*/30 * * * *"
+    command: unsealed-counter.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: well-ingest
+    adapter: cron
+    schedule: "*/30 * * * *"
+    command: well_ingest.py
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: observatory-publish
+    adapter: cron
+    schedule: "*/30 * * * *"
+    command: emit_observatory_snapshot.py
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: agentic-web
+    adapter: cron
+    schedule: "0 * * * *"
+    command: agentic-web.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: zombie-reaper
+    adapter: cron
+    schedule: "0 * * * *"
+    command: zombie_reaper_cron.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: mvm-fire
+    adapter: cron
+    schedule: "0 * * * *"
+    command: mvm_fire.py
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: well-auto-keepalive
+    adapter: cron
+    schedule: "0 */6 * * *"
+    command: well_auto_keepalive.py
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: forge-vitality-pulse
+    adapter: cron
+    schedule: "0 15 * * *"
+    command: forge-vitality-pulse.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: forge-work-gc
+    adapter: cron
+    schedule: "0 19 * * *"
+    command: forge-work-gc.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: arifflow-machine
+    adapter: cron
+    schedule: "0 22 * * *"
+    command: arifflow_digest.py
+    output: file
+    outcome: daily-arifflow-digest
+    outcome_role: raw-data
+    fq_gate: false
+    cost: 0
+
+  - id: phoenix72
+    adapter: cron
+    schedule: "0 3 * * *"
+    command: phoenix72.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: supply-chain-audit
+    adapter: cron
+    schedule: "0 3 25 * *"
+    command: supply_chain_audit.py
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: ci-conformance
+    adapter: cron
+    schedule: "0 6 * * *"
+    command: ci-conformance.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: forge-constitutional-sync
+    adapter: cron
+    schedule: "0 7 * * *"
+    command: forge-constitutional-sync.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: fomc-tripwire
+    adapter: cron
+    schedule: "0 8 * * 1-5"
+    command: fomc-tripwire-trigger.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: federation-triage-digest
+    adapter: cron
+    schedule: "0 9 * * *"
+    command: federation-triage-digest.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: fed-quota-sentinel
+    adapter: cron
+    schedule: "17 * * * *"
+    command: fed_quota_sentinel.py
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: google-fit-bridge
+    adapter: cron
+    schedule: "30 */6 * * *"
+    command: google_fit_bridge.py
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: federation-pulse
+    adapter: cron
+    schedule: "47 7 * * *"
+    command: federation-pulse.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: digest-delivery
+    adapter: cron
+    schedule: "5 22 * * *"
+    command: cron-deliver.sh
+    output: telegram:267378578
+    outcome: daily-arifflow-digest
+    outcome_role: delivery
+    fq_gate: false
+    cost: 0
+
+  - id: p0-metabolize
+    adapter: cron
+    schedule: "*/15 * * * *"
+    command: p0_metabolize_traces.py
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: self-healing-cycle
+    adapter: cron
+    schedule: "*/30 * * * *"
+    command: arif_self_healing_cycle_cron.py
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  # ── /etc/cron.d ──────────────────────────────────────────
+  - id: aaa-mesh-health
+    adapter: cron
+    schedule: "17 3 * * *"
+    command: mesh-health-probe.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: aaa-skill-learn
+    adapter: cron
+    schedule: "0 * * * *"
+    command: skill-learn-ingest.py
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: aaa-universe-drift
+    adapter: cron
+    schedule: "23 * * * *"
+    command: universe-drift-sentinel.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: arif-commodity-reseal
+    adapter: cron
+    schedule: "7 * * * *"
+    command: reseal-commodity-packets.py
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: arifos-daily-probe
+    adapter: cron
+    schedule: "15 6 * * *"
+    command: arifos-daily-probe.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: arifos-federation-audit
+    adapter: cron
+    schedule: "15 19 * * *"
+    command: check_tool_drift.py
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: arifos-repo-audit
+    adapter: cron
+    schedule: "0 1 * * 1"
+    command: repo-audit.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: backup-rotation
+    adapter: cron
+    schedule: "30 2 * * *"
+    command: backup_rotation.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: entropy-governor
+    adapter: cron
+    schedule: "0 19 * * *"
+    command: entropy-governor.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: federation-memory-helix
+    adapter: cron
+    schedule: "0 */6 * * *"
+    command: federation_memory_helix_cron.py
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: hermes-skill-extract
+    adapter: cron
+    schedule: "0 */6 * * *"
+    command: skill-extractor.py
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: institution-mae-pulse
+    adapter: cron
+    schedule: "0 */6 * * *"
+    command: kabarkan-publish.py
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: memory-helix-rollup
+    adapter: cron
+    schedule: "0 19 * * *"
+    command: memory-helix-rollup.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: pati-sweep
+    adapter: cron
+    schedule: "0 18 * * 6"
+    command: pati-sweep.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: skill-audit
+    adapter: cron
+    schedule: "0 20 * * 6"
+    command: skill-audit.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: sot-cron-vault-bridge
+    adapter: cron
+    schedule: "23 7 * * *"
+    command: sot_cron.py
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: trading-scan-weekday
+    adapter: cron
+    schedule: "0 1,3,5,7,9,11,13,15,17,19 * * 1-5"
+    command: refresh_market_digests.py
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: trading-scan-weekend
+    adapter: cron
+    schedule: "0 2,8,14,20 * * 6,7"
+    command: refresh_market_digests.py
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: vault-replica
+    adapter: cron
+    schedule: "17 */6 * * *"
+    command: "rsync vault999 to kvm4"
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: wealth-briefing
+    adapter: cron
+    schedule: "0 6 * * *"
+    command: wealth-briefing-cron.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: well-dream-daily
+    adapter: cron
+    schedule: "0 20 * * *"
+    command: well_dream.py daily
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: well-dream-weekly
+    adapter: cron
+    schedule: "0 20 * * 6"
+    command: well_dream.py weekly
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: well-dream-monthly
+    adapter: cron
+    schedule: "0 20 1 * *"
+    command: well_dream.py monthly
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: well-entropy-controller
+    adapter: cron
+    schedule: "0 22 * * *"
+    command: entropy_controller.py
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: zai-temporal-drift
+    adapter: cron
+    schedule: "0 18 * * *"
+    command: zai-temporal-drift-check.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: arifos-sentinel-discovery
+    adapter: cron
+    schedule: "30 2 * * *"
+    command: sentinel_discovery_audit.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: arifos-sovereignty-drill
+    adapter: cron
+    schedule: "0 2 * * 0"
+    command: sovereignty_drill.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: vault999-daily-backup
+    adapter: cron
+    schedule: "0 3 * * *"
+    command: vault999-daily-backup.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: backup-federation
+    adapter: cron
+    schedule: "30 3 * * *"
+    command: backup-federation.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: external-witness-probe
+    adapter: cron
+    schedule: "*/30 * * * *"
+    command: external_witness_probe.py
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: forge-drift-scanner
+    adapter: cron
+    schedule: "0 2 * * *"
+    command: forge-drift-scanner.sh
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: wealth-briefing-refresh
+    adapter: cron
+    schedule: "0 7 * * *"
+    command: refresh_briefing.py
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  # ── HERMES CRON ──────────────────────────────────────────
+  - id: morning-brief-audit
+    adapter: hermes-cron
+    schedule: "0 7 * * 1,3,5"
+    job_id: m41b89f5f05a
+    output: telegram:267378578
+    outcome: daily-brief
+    fq_gate: false
+    cost_estimate: 0.02
+
+  - id: morning-brief-rest
+    adapter: hermes-cron
+    schedule: "0 7 * * 0,2,4,6"
+    job_id: m482478523bf
+    output: telegram:267378578
+    outcome: daily-brief
+    fq_gate: false
+    cost_estimate: 0.02
+
+  - id: arif-reckoning
+    adapter: hermes-cron
+    schedule: "30 6 * * 1"
+    job_id: m4447dcc1475
+    output: telegram:267378578
+    outcome: weekly-reckoning
+    fq_gate: false
+    cost_estimate: 0.05
+
+  - id: geo-econ-horizon
+    adapter: hermes-cron
+    schedule: "0 8 * * 1"
+    job_id: m47becdcb651
+    output: telegram:267378578
+    outcome: weekly-geo-econ
+    fq_gate: false
+    cost_estimate: 0.05
+
+  - id: iron-radar
+    adapter: hermes-cron
+    schedule: "0 12 * * 5"
+    job_id: m49342787eb6
+    output: telegram:267378578
+    outcome: weekly-iron-radar
+    fq_gate: false
+    cost_estimate: 0.03
+
+  - id: arifflow-agent
+    adapter: hermes-cron
+    schedule: "0 22 * * *"
+    job_id: m48a6733e509
+    output: telegram:267378578
+    outcome: daily-arifflow-digest
+    outcome_role: interpretation
+    fq_gate: true
+    fq_threshold: 0.5
+    cost_estimate: 0.02
+
+  - id: syed-mak-cbd-followup
+    adapter: hermes-cron
+    schedule: "0 9 * * 1"
+    job_id: m40647fef350
+    output: telegram:1042200555
+    outcome: weekly-cbd-followup
+    fq_gate: false
+    cost_estimate: 0.01
+
+  - id: malaysia-intel-weekly
+    adapter: hermes-cron
+    schedule: "0 10 * * 1"
+    job_id: m4a58e38996b
+    output: telegram:267378578
+    outcome: weekly-malaysia-intel
+    fq_gate: false
+    cost_estimate: 0.03
+
+  - id: vps-gdrive-daily-backup
+    adapter: hermes-cron
+    schedule: "0 2 * * *"
+    job_id: m46ccae9b991
+    output: telegram:267378578
+    outcome: daily-gdrive-backup
+    fq_gate: false
+    cost_estimate: 0.01
+
+  - id: reddit-daily-monitor
+    adapter: hermes-cron
+    schedule: "0 8 * * *"
+    job_id: m4f9583dcc2d
+    output: telegram:267378578
+    outcome: daily-reddit-digest
+    fq_gate: false
+    cost_estimate: 0.01
+    status: error
+    failure_streak: 1
+    note: "Last run: RuntimeError: agent reported failure"
+
+  # ── SYSTEMD TIMERS ───────────────────────────────────────
+  - id: arifflow-cooling-watchdog
+    adapter: systemd
+    schedule: "60s"
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: triadic-snapshot
+    adapter: systemd
+    schedule: "60s"
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: arifos-reality
+    adapter: systemd
+    schedule: "60s"
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: well-machine-telemetry
+    adapter: systemd
+    schedule: "5m"
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: sct-renew
+    adapter: systemd
+    schedule: "30m"
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: fq-probe
+    adapter: systemd
+    schedule: "30m"
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: frame-reader
+    adapter: systemd
+    schedule: "30m"
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: vault999-backup-timer
+    adapter: systemd
+    schedule: "daily"
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: arifos-backup-timer
+    adapter: systemd
+    schedule: "daily 04:30"
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+  - id: arif-dream
+    adapter: systemd
+    schedule: "weekly"
+    output: local
+    outcome: null
+    fq_gate: false
+    cost: 0
+
+# ─────────────────────────────────────────────────────────────
+# CONSEQUENCE TRACKING — populated by arifFlow witness
+# ─────────────────────────────────────────────────────────────
+consequences: []
+# Structure:
+# - event_id: morning-brief
+#   outcome_id: daily-brief
+#   delivered: true
+#   opened: true
+#   rated: 8
+#   cost: 0.02
+#   entropy_delta: -0.3
+#   timestamp: "2026-09-10T07:00:00+08:00"
