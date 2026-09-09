@@ -94,6 +94,48 @@ organs:
     may: [seal, append, verify_chain]
     may_not: [rewrite, delete, bypass_arifos]
 
+  arifFlow:
+    role: metabolic_ledger
+    category: witness
+    port: 7073
+    repo: /root/arifFlow
+    remote: git@github.com:ariffazil/arifflow.git
+    branch: main
+    tools: 0
+    status: healthy
+    transport: rest-only
+    note: "FQ monitoring, receipt ingestion. Not MCP-enabled (stdio bridge wraps it)."
+    may: [ingest_receipts, compute_fq, track_metabolism]
+    may_not: [judge, execute, mutate]
+
+  FED:
+    role: federation_gateway
+    category: router
+    port: 7074
+    repo: /root/FED
+    remote: embedded_in_federation
+    branch: n/a
+    tools: 7
+    status: healthy
+    transport: mcp-streamable-http
+    note: "Route advisor, classify, probe. Requires dual Accept headers."
+    may: [route, classify, probe, report_latency]
+    may_not: [judge, execute, mutate, override_f13]
+
+  FRAME:
+    role: independent_observer
+    category: witness
+    port: 18085
+    repo: /root/FRAME
+    remote: git@github.com:ariffazil/frame.git
+    branch: main
+    tools: 0
+    status: healthy
+    transport: http-health-only
+    note: "Drift detection, evidence gathering. Not MCP-enabled."
+    may: [observe, detect_drift, gather_evidence]
+    may_not: [judge, execute, mutate, issue_verdicts]
+
 external_adapters:
   langgraph:
     status: not_built
