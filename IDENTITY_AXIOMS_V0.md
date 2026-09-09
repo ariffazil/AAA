@@ -187,7 +187,7 @@ The group is not the agents. The group is the density pattern.
 **Evidence from the codebase:**
 - Federation topology: 3 identity agents + 4 organ agents + harnesses
   — but no explicit "group" primitive exists. Groups EMERGE from field density.
-- Telegram groups (AIA, SADO): free-response without @mention
+- Telegram groups (AIA, ALPHA - ZEN): free-response without @mention
   — group = high-density trust + shared history + capability proximity
 - Musyawarah protocol: 333 ARCHITECT + 555 ASI deliberation
   — group = high-density authority + witness overlap

@@ -34,7 +34,7 @@ $$\text{Context}(S) = \mathcal{C}_{\text{Global}} \oplus \mathcal{C}_{\text{Spac
                                │
                                └─────────────────────────► WHERE (Space Axis)
                               ╱  - Private DM (1-on-1)
-                             ╱   - SADO Group (-1003815535761)
+                             ╱   - ALPHA - ZEN Group (-1003815535761)
                             ╱    - AIA Group (-1003521544074)
                            ▼ WHAT (Domain / Knowledge Axis)
                           - arifOS (Governance & F1-F13)
@@ -85,7 +85,7 @@ To prevent config drift and manual errors, all channel additions and memory scaf
 hermes-id-zen add-user 1042200555 --name "Syed" --username rico_ricaldo_33 --role WARGA --groups -1003815535761,-1003753855708
 
 # Registering a group room:
-hermes-id-zen add-group -1003815535761 --title "SADO Main Group"
+hermes-id-zen add-group -1003815535761 --title "ALPHA - ZEN Main Group"
 
 # Comprehensive status check:
 hermes-id-zen list
@@ -117,7 +117,7 @@ hermes-id-zen list
 | **Sin** | `5930780714` | User (DM & Group) | **WARGA** | `sin` | Casual / Technical |
 | **Faqwan** | `6041855106` | User (DM) | **WARGA** | `faqwan` | Friendly / Adab |
 | **Amir Ridzwan** | `317849404` | User (DM & Group) | **WARGA** | `amir-ridzwan` | Athletic / Advisory |
-| **SADO Group** | `-1003815535761` | Supergroup | **GROUP_ROOM** | `group-sado` | Group-safe / Banter / Community |
+| **ALPHA - ZEN Group** | `-1003815535761` | Supergroup | **GROUP_ROOM** | `group-alpha-zen` | Group-safe / Banter / Community |
 | **AIA Group** | `-1003521544074` | Supergroup | **GROUP_ROOM** | `group-aia` | Group-safe / Insurance / Work |
 
 ---

@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "origin": "CONSEQUENCE HORIZON — temporal-intelligence-doctrine",
+  "ratified": "2026-09-09",
+  "description": "Every prediction in arifOS must carry explicit horizon and confidence. System has the right to say 'signal ends here.'",
+  "prediction_format": {
+    "prediction": "text — what is being predicted",
+    "confidence": "number 0.0-1.0",
+    "horizon": "ISO-8601 duration OR 'exceeded'",
+    "horizon_basis": "evidence supporting this prediction",
+    "signal_class": "auto-computed from confidence + horizon",
+    "made_at": "ISO-8601 UTC",
+    "domain": "geox | wealth | well | arifos | general"
+  },
+  "signal_classes": {
+    "SIGNAL": "confidence > 0.7 AND horizon is within reasonable bounds",
+    "WEAK_SIGNAL": "0.4 < confidence <= 0.7",
+    "NOISE": "confidence <= 0.4",
+    "FICTION_BOUNDARY": "horizon = exceeded OR confidence > 0.7 but horizon > 90d"
+  },
+  "horizon_guidelines": {
+    "runtime_decision": "1-3 days",
+    "operational_plan": "1-4 weeks",
+    "architectural_change": "1-6 months",
+    "strategic_direction": "6-24 months",
+    "beyond_24_months": "always FICTION_BOUNDARY regardless of confidence"
+  },
+  "accountability_rules": [
+    "Predictions with horizon > 30d must be re-evaluated monthly",
+    "Predictions with confidence > 0.8 and horizon > 90d are suspicious — flag for review",
+    "Any prediction past its horizon is automatically demoted to 'historical attempt'",
+    "System must never present exceeded-horizon predictions as current guidance"
+  ],
+  "storage": "/root/VAULT999/chronus/predictions.jsonl"
+}

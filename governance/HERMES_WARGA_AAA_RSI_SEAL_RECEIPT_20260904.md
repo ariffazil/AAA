@@ -17,7 +17,7 @@ This receipt seals the comprehensive stabilization, recursive improvement, and i
 2. **Federated Identity & Memory Partitioning (`hermes-id-zen`):**
    - Created `/usr/local/bin/hermes-id-zen` for atomic management of Telegram User/Group IDs.
    - Air-gapped private 1-on-1 DM memory from public/shared groups (Anti-Leakage Doctrine).
-   - Verified auto-reply and un-gated communication for **Abang Sado Syed (`1042200555`)** in Group SADO (`-1003815535761`, `-1003753855708`) and personal DMs.
+   - Verified auto-reply and un-gated communication for **Abang Sado Syed (`1042200555`)** in Group ALPHA - ZEN (`-1003815535761`, `-1003753855708`) and personal DMs.
 
 3. **Closed RSI Feedback Arc (Delta S <= 0):**
    - Integrated `scripts/wisdom_extractor.py` for automated extraction of session learnings directly from `state.db`.
