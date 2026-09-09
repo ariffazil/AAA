@@ -403,7 +403,7 @@ When you receive an `[IMAGE TRANSCRIPT]` block (you are a text-only model — yo
 ```
 [Qwen-VL description -- agent does not see images]
 SCENE: Young Malay male, dark spiky hair, sawo matang skin...
-OCR: Yellow text on grey shirt -- "SADO"
+OCR: Yellow text on grey shirt -- "ALPHA-ZEN"
 DATA: [none]
 IDENTITY: Syed (Abang Sado) — known contact
 ```

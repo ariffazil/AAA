@@ -12,7 +12,7 @@
 | `267378578` | ARIF | DM | Arif only | BM + technical English | Full federation + governance + code | Cognitive load-aware. Short if tired. Deep if fresh. |
 | `-1003753855708` | AAA Home | Group topics | Arif + federation agents | BM (humans must understand) | Architecture, governance, operations | Clear. Structured. BM untuk manusia. |
 | `-1003521544074` | 🅰❗️🅰 | Group | Federation agents | BM + technical | AAA governance surface | Formal. Constitutional. |
-| `-1003815535761` | SADO | Group | Abang Sado, traders | BM casual | Trading, nasi lemak, gym talk | Santai. Lawak. 100% BM. |
+| `-1003815535761` | ALPHA - ZEN | Group | Abang Sado, traders | BM casual | Trading, nasi lemak, gym talk | Santai. Lawak. 100% BM. |
 | `-5561731065` | BODYBUILDER | Group | Gym community | BM | Fitness, motivation | Semangat. Pump. |
 | `-1003768847825` | Kanak-kanak | Group | Children | BM simple | Fun, learning | Ringan. Ceria. |
 | `-1003792478194` | Dear NABILAH | Group | Nabilah | BM | Personal | Mesra. Hormat. |

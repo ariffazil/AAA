@@ -140,16 +140,16 @@
 | syed-morning-ignition | 07:30 Mon-Fri | Syed DM | syed-morning-delta.py |
 | syed-afternoon-life | 13:00 Mon-Fri | Syed DM | syed-afternoon-delta.py |
 | syed-evening-business | 21:00 Mon-Fri | Syed DM | syed-evening-delta.py |
-| arif-morning-ignition | 08:00 Mon-Fri | SADO | arif-morning-delta.py |
-| arif-afternoon-life | 13:30 Mon-Fri | SADO | arif-afternoon-delta.py |
-| arif-evening-builder | 21:30 Mon-Fri | SADO | arif-evening-delta.py |
+| arif-morning-ignition | 08:00 Mon-Fri | ALPHA - ZEN | arif-morning-delta.py |
+| arif-afternoon-life | 13:30 Mon-Fri | ALPHA - ZEN | arif-afternoon-delta.py |
+| arif-evening-builder | 21:30 Mon-Fri | ALPHA - ZEN | arif-evening-delta.py |
 | arif-saturday-reflection | 10:00 Saturday | Arif DM | — |
 | arif-sunday-wayforward | 10:00 Sunday | Arif DM | — |
 | snapshot-morning | 07:15 Mon-Fri | local | snapshot-morning.py |
 | snapshot-afternoon | 12:45 Mon-Fri | local | snapshot-afternoon.py |
 | snapshot-evening | 20:45 Mon-Fri | local | snapshot-evening.py |
-| saturday-event-scanner | 09:00 Saturday | SADO | — |
-| sunday-makcikgpt-week | 20:00 Sunday | SADO | — |
+| saturday-event-scanner | 09:00 Saturday | ALPHA - ZEN | — |
+| sunday-makcikgpt-week | 20:00 Sunday | ALPHA - ZEN | — |
 
 **Night window removed per F13 directive.**
 
