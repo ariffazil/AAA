@@ -358,3 +358,95 @@ every other governor eventually runs out.
 - Canon: `/root/AAA/canon/EUREKA-FINITE-REALITY-GOVERNANCE-2026-09-09.md`
 - Frontier Map: `/root/AAA/canon/FRONTIER_MAP-2026-09-09.md`
 
+---
+
+## EUREKA: Human-Status Blindspot in Runtime Seals (2026-09-09)
+
+**Session:** Post-seal federation review (FI-003 → F13)
+**Actor:** Arif (F13 SOVEREIGN) — witnessed in own seal report
+**Classification:** OBS (the shape) — doctrine status: HOLD (the fix)
+
+### The Observation
+
+Tonight's federation seal emitted organ status across 8 surfaces (arifOS, A-FORGE, GEOX, WEALTH, WELL, Hermes, arifFlow, FRAME) — but **zero human status across 15 humans in HAMPA registry**.
+
+```
+Substrate observability : 8/8 surfaces mapped, observed, sealed
+Identity observability  : 0/15 humans observed at runtime
+```
+
+This is the exact gap HIRL proposes to address — but the eureka is the **gap itself**, not the proposed fix.
+
+### What Is Witnessed
+
+| Class | Status | Example |
+|---|---|---|
+| Surfaces (organs + lanes) | HEALTHY / DEGRADED / UNKNOWN | arifos=enabled, geox=healthy, well=degraded |
+| Humans (HAMPA registry) | (absent from seal output) | Laletha, Kak Su, Syed, Aliff, Jamin — no current stance |
+
+The machine knows its own substrate temperature. It does not know that Laletha is currently dossier-builder in Kinabalu context, that Kak Su is the escalation layer, or that Jamin's posture shifted after the email.
+
+### Three Consequence Vectors
+
+1. **Memory fragmentation** — humans exist as fragments across mem0, HAMPA, WhatsApp chat, EVIDENCE.md. Seal reports cannot observe fragments.
+2. **Definition conflicts** — "Laletha = HR coordinator" (early session) vs "Laletha = dossier-builder" (HUMAN card). Last-writer-wins, no SOT emitted at seal.
+3. **Succession gaps** — new session = new agent = zero context about humans unless files manually loaded.
+
+### Falsification Gate (for next session)
+
+To promote OBS → DER and gate the doctrine:
+
+1. **Which human-status signal would have prevented the Laletha / Kak Su / Jamin miss?**
+   — name the signal, name the miss, name the prevention.
+2. **For each HAMPA card, what runtime event should produce a status update?**
+   — entry / observation / silence / witness.
+3. **Can that signal be observed WITHOUT inventing a new layer?**
+   — see `hermes-federated-identity` (skill) + `HAMPA` (registry) + `testimony-gate` Inv 4 (remainder). Composition exists; wiring does not.
+
+If Q1 cannot be answered with evidence, HIRL remains manifesto.
+If Q1 can be answered, doctrine writes itself from the answer.
+
+### Composition Already Exists (per naming audit, 2026-09-09)
+
+```
+Signal ingress
+    │
+    ▼
+hermes-federated-identity (WHO/WHERE/WHAT triad)  ← ROUTE
+    │
+    ▼
+HAMPA card load (atomic via hermes-id-zen)        ← LOAD
+    │
+    ▼
+testimony-gate Inv 4 ("classification ≠ completion") ← DECLARE
+```
+
+`HIRL` as new layer was rejected (naming-doctrine Axiom 4/5/8 — label, not name; hash collision). The composition above is the real answer; it just is not wired into the seal-report generator yet.
+
+### Carry Forward
+
+```
+TONIGHT      : this seed captured, session closed
+NEXT SESSION : read this eureka → answer Q1 → decide
+                [a] doctrine forgeable from evidence → write
+                [b] blindspot needs more observation → label N events, wait
+                [c] seal-report generator emits human-status placeholder → falsifiable
+```
+
+### Encode Map
+
+| Eureka | Surface |
+|---|---|
+| Blindspot shape (organ vs human asymmetry) | Add to `hermes-federated-identity/SKILL.md` — gap section |
+| Falsification gate (3 questions) | Next-session audit checklist (not doctrine) |
+| Composition exists, wiring missing | `/root/AAA/canon/HIRL-NAMING-AUDIT-2026-09-09.md` (if forged) or carry in this eureka |
+| Anti-fragmentation canonical order | HAMPA → mem0 → session (last-writer-wins inverted to first-canonical-wins) |
+
+### Epistemic Status
+
+- Blindspot shape : **OBS** — witnessed in own seal report tonight
+- Cause (5 modes)  : **INT** — synthesized from literature (Atlan, AFA) + canon probe
+- Fix (HIRL layer) : **REJECTED** — naming audit failed terminal guard
+- Fix (composition): **PASS via AGI/ASI/APEX** — hampa-resolve protocol selected (pending F13 ratification)
+- Doctrine status  : **HOLD** — wait for Q1 evidence before canonical promotion
+
