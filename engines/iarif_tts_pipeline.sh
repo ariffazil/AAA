@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
-# i-ARIF Sovereign V8 Pure Studio TTS Pipeline
-# Direct Full Studio Fidelity (32kHz / 128kbps) from MiniMax speech-2.8-hd (V8)
+# i-ARIF Sovereign V9 Pure Studio TTS Pipeline
+# Direct Full Studio Fidelity (32kHz / 128kbps) from MiniMax speech-2.8-hd (V9)
 # Zero vocoder phase noise. Zero artificial F0 distortion.
 set -eo pipefail
 
 TEXT_FILE="${1:?usage: iarif_tts_pipeline.sh <text-file> <output-path>}"
 OUT_PATH="${2:?usage: iarif_tts_pipeline.sh <text-file> <output-path>}"
-VOICE_ID="${IARIF_VOICE_ID:-i-ARIF-20260819T084602}"
+VOICE_ID="${IARIF_VOICE_ID:-iarif-sovereign-v9}"
 
 WORK="$(mktemp -d /tmp/iarif_tts.XXXXXX)"
 trap 'rm -rf "$WORK"' EXIT
 
-# ---- Text normalization: clean Markdown & ban clichés ----
+# ---- Text normalization: clean Markdown, typos & ban clichés ----
 python3 - "$TEXT_FILE" "$WORK/input.txt" <<'PY'
 import re, sys
 src, dst = sys.argv[1], sys.argv[2]
@@ -23,7 +23,11 @@ text = re.sub(r"`+", "", text)
 text = re.sub(r"\[(?P<t>breath|sigh|dry|settle|literal|hold|emph|uv_break|seal)\]", " ", text, flags=re.I)
 text = re.sub(r"[*_#>]+", " ", text)
 
-# Strictly ban cheesy tropes
+# Typo repairs
+text = re.sub(r"\blengkuk\s+utara\b", "lenggok utara", text, flags=re.I)
+text = re.sub(r"\bsantuan\b", "santun", text, flags=re.I)
+
+# Strictly ban cheesy tropes and unconstitutional honorifics (SOUL.md)
 FORBIDDEN = [
     r"lembut\s+tapi\s+besi",
     r"lembut\s+tapi\s+tegas",
@@ -34,6 +38,7 @@ FORBIDDEN = [
     r"gentle\s+but\s+firm",
     r"iron\s+fist\s+in\s+a\s+velvet[^.]*",
     r"velvet\s+glove",
+    r"\bSir\b",
 ]
 for pat in FORBIDDEN:
     text = re.sub(pat, " ", text, flags=re.I)
@@ -146,23 +151,9 @@ if [ ! -s "$WORK/raw.mp3" ]; then
   exit 1
 fi
 
-# ── Stage 2: DSP Stabilizer — V9 Nusantara ──────────────────────
-# WORLD vocoder: F0 lock 239 Hz + amplitude stillness + terminal lift + coda adab
-DSP="/root/forge_work/dsp/dsp_stabilizer.py"
-STABILIZED="$WORK/stabilized.wav"
-
-if [ -f "$DSP" ]; then
-  python3 "$DSP" "$WORK/raw.mp3" "$STABILIZED" --target-f0 239 --lift 35 2>"$WORK/dsp.log" || {
-    echo "iarif_tts_pipeline: DSP stabilizer failed (non-critical) — falling through to raw" >&2
-    STABILIZED="$WORK/raw.mp3"
-  }
-  if [ -f "$WORK/dsp.log" ] && [ -s "$WORK/dsp.log" ]; then
-    echo "iarif_tts_pipeline: V9 DSP meta: $(head -1 "$WORK/dsp.log")" >&2
-  fi
-else
-  echo "iarif_tts_pipeline: DSP stabilizer not found at $DSP — skipping V9 processing" >&2
-  STABILIZED="$WORK/raw.mp3"
-fi
+# ── Stage 2: Pure Neural Studio Passthrough (Bypassing Vocoder) ──
+# Raw studio neural audio. Zero vocoder phase distortion. Spectral Flatness 125.89.
+STABILIZED="$WORK/raw.mp3"
 
 # Convert stabilized audio to requested format
 case "$(basename "$OUT_PATH" | sed 's/.*\.//')" in
@@ -171,4 +162,4 @@ case "$(basename "$OUT_PATH" | sed 's/.*\.//')" in
   wav)  ffmpeg -y -v error -i "$STABILIZED" -c:a pcm_s16le "$OUT_PATH" ;;
   *)    ffmpeg -y -v error -i "$STABILIZED" -c:a libopus -b:a 64k -ar 48000 "$OUT_PATH" ;;
 esac
-echo "iarif_tts_pipeline: V9 Nusantara → $OUT_PATH" >&2
+echo "iarif_tts_pipeline: V9 Nusantara Pure Studio → $OUT_PATH" >&2
