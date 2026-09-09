@@ -1,0 +1,65 @@
+{
+  "schema": "aaa.knowledge-graph.v1",
+  "generated": "2026-09-09T13:45:00Z",
+  "generated_by": "FI-008/333-AGI (F13 directive: 'zen this and map all human cards and memory that need to be linked')",
+  "purpose": "Association layer — connect names to anchors at decision time. Closes association gap (zen-backlog 1.11). This graph indexes POINTERS, not testimony. H1-H6 doctrine: federation references human memory, never owns it.",
+
+  "sources_of_truth": {
+    "relationships": "/root/AAA/federation/person-register.json (v2.0.0 · 6 persons · 11 edges · F7 epistemic rule)",
+    "human_cards_primary": "/root/AAA/wiki/entities/ (curated reality-prism)",
+    "human_cards_extended": "/root/ariffazil/HAMPA/ (8 cards + 2 analyses)",
+    "evidence_layer": "/root/memory/evidence/",
+    "raw_artifacts": "/root/.hermes/cache/documents/ + /root/.hermes/pastes/"
+  },
+
+  "load_policy": {
+    "operational_card": "AUTO-LOADABLE — reality-prism cards are F13-authored operational maps. Index + load on name detection.",
+    "gated_testimony": "EXISTENCE-ONLY — scars/evidence: existence may be indexed, testimony never read uninvoked (person-register boundary). Load requires scar/H1 gate.",
+    "sovereign_private": "NEVER AUTO — /root/memory/ human layers. Referenced, never owned. F13 shares, machine never echoes."
+  },
+
+  "nodes": [
+    {"id": "human:laletha", "type": "human", "label": "Laletha Jeevachandran", "epistemic": "OBSERVED_EVIDENCE", "load_policy": "operational_card", "anchors": ["/root/AAA/wiki/entities/HUMAN_LALETHA.md", "/root/ariffazil/HAMPA/human-laletha-jeevachandran.md"], "raw": ["/root/.hermes/cache/documents/doc_8c7edaf0f7eb_WhatsApp Chat with Laletha.txt", "/root/.hermes/cache/documents/doc_66074869f54c_Gmail_Fw_DSG_Workstation_Review_for_KL2_Arif_Fazil,_Kinabalu_Basin.PDF"], "tags": ["petronas", "manager", "performance-review", "kinabalu"]},
+    {"id": "human:kak_su", "type": "human", "label": "Siti Suhana Bt Che M Sukri (Kak Su)", "epistemic": "OBSERVED_EVIDENCE", "load_policy": "operational_card", "anchors": ["/root/AAA/wiki/entities/HUMAN_KAK.md", "/root/ariffazil/HAMPA/human-kak-su-siti-suhana.md"], "tags": ["petronas", "manager", "performance-review", "kinabalu"]},
+    {"id": "human:aliff", "type": "human", "label": "Aliff Husna", "epistemic": "OBSERVED_EVIDENCE", "load_policy": "operational_card", "anchors": ["/root/AAA/wiki/entities/HUMAN_ALIFF.md", "/root/ariffazil/HAMPA/human-aliff-husna.md"], "tags": ["petronas", "colleague", "friend", "confidant"]},
+    {"id": "human:atheerah", "type": "human", "load_policy": "operational_card", "anchors": ["/root/ariffazil/HAMPA/human-atheerah.md"]},
+    {"id": "human:jackie_ngu", "type": "human", "load_policy": "operational_card", "anchors": ["/root/ariffazil/HAMPA/human-jackie-ngu.md"]},
+    {"id": "human:jamin_jamil", "type": "human", "load_policy": "operational_card", "anchors": ["/root/ariffazil/HAMPA/human-jamin-jamil.md"]},
+    {"id": "human:pavenya", "type": "human", "load_policy": "operational_card", "anchors": ["/root/ariffazil/HAMPA/human-pavenya.md"]},
+    {"id": "human:tg_m_syazwan", "type": "human", "load_policy": "operational_card", "anchors": ["/root/ariffazil/HAMPA/human-tg-m-syazwan.md"]},
+    {"id": "human:arif", "type": "sovereign", "label": "Arif Fazil", "load_policy": "sovereign_private", "anchors": ["/root/AAA/wiki/ARIF_FAZIL_C.md"], "register_ref": "person-register.json:ARIF", "note": "F13 sovereign. Private layers witnessed only when shared (H1)."},
+    {"id": "event:kinabalu_scar", "type": "evidence", "label": "Kinabalu Scar — Professional Vindication (2026-06-15)", "epistemic": "OBSERVED — domain specialist confirmed, witnessed", "load_policy": "gated_testimony", "anchors": ["/root/memory/evidence/KINABALU/EVIDENCE.md"], "tags": ["critical", "permanent-evidence", "institutional-failure", "vindication"]},
+    {"id": "analysis:institutional_sink", "type": "analysis", "load_policy": "operational_card", "anchors": ["/root/ariffazil/HAMPA/eureka-institutional-epistemic-sink.md"]},
+    {"id": "analysis:calhoun_audit", "type": "analysis", "load_policy": "operational_card", "anchors": ["/root/ariffazil/HAMPA/wealth-audit-calhoun-petronas-2026-07-03.md"]},
+    {"id": "registry:hampa", "type": "registry", "load_policy": "operational_card", "anchors": ["/root/AAA/wiki/entities/HAMPA_REGISTRY.md"], "note": "canonical registry of all humans in the machine"},
+    {"id": "registry:persons", "type": "registry", "load_policy": "operational_card", "anchors": ["/root/AAA/federation/person-register.json"], "note": "relationship SOT — edges live there, not here"}
+  ],
+
+  "edges": [
+    {"from": "human:laletha", "to": "event:kinabalu_scar", "relation": "subject_of", "kind": "DER", "evidence": "card tags: performance-review + kinabalu"},
+    {"from": "human:kak_su", "to": "event:kinabalu_scar", "relation": "subject_of", "kind": "DER", "evidence": "card tags: performance-review + kinabalu"},
+    {"from": "human:laletha", "to": "human:kak_su", "relation": "colleague_of", "kind": "DER", "evidence": "shared tags: petronas, manager"},
+    {"from": "human:aliff", "to": "human:arif", "relation": "confidant_of", "kind": "DER", "evidence": "card tags: friend, confidant"},
+    {"from": "human:laletha", "to": "registry:hampa", "relation": "registered_in", "kind": "OBS"},
+    {"from": "event:kinabalu_scar", "to": "analysis:institutional_sink", "relation": "context_of", "kind": "DER", "evidence": "institutional epistemic sink pattern references vindication event"},
+    {"from": "event:kinabalu_scar", "to": "analysis:calhoun_audit", "relation": "context_of", "kind": "DER"}
+  ],
+
+  "association_index": {
+    "laletha": "human:laletha", "laletha jeevachandran": "human:laletha",
+    "kak su": "human:kak_su", "siti suhana": "human:kak_su", "che m sukri": "human:kak_su",
+    "aliff": "human:aliff", "aliff husna": "human:aliff",
+    "atheerah": "human:atheerah", "jackie ngu": "human:jackie_ngu", "jamin jamil": "human:jamin_jamil",
+    "pavenya": "human:pavenya", "syazwan": "human:tg_m_syazwan", "tg m syazwan": "human:tg_m_syazwan",
+    "kinabalu": "event:kinabalu_scar", "kinabalu scar": "event:kinabalu_scar", "vindication": "event:kinabalu_scar",
+    "hampa": "registry:hampa", "person register": "registry:persons"
+  },
+
+  "arifflow_wiring": {
+    "on_association_fire": "name detected → association_index lookup → node resolved → load_policy enforced → FlowReceipt minted (step_type=Route, epistemic_label=Observation, witness_organs=[arifos]) — attention allocated, receipt proves it",
+    "on_gate_denied": "gated_testimony blocked at load → FlowReceipt (step_type=Barrier, floor_verdict=Hold) — the refusal is also metabolism",
+    "acceptance_test_recall": "forge_memory recall '<name>' returns anchor ≠ 0",
+    "acceptance_test_runtime": "session-init with 'Laletha' in context surfaces human:laletha pointers WITHOUT loading scar testimony",
+    "failure_mode_this_prevents": "knowledge exists on disk, reasoning starts from zero — the association gap reproduced 2026-09-09 (recall count:0 vs 3 anchors)"
+  }
+}
