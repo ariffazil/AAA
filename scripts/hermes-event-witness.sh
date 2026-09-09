@@ -25,9 +25,12 @@ RATIFY_QUEUE="/tmp/hermes-ratify-queue.jsonl"
 SECRET_FILE="/root/.arifos/shared-secrets/hermes-openclaw-bridge.key"
 LOG_FILE="/var/log/hermes-event-witness.log"
 
-HERMES_BOT_TOKEN="8410138119:AAHrXysyxI8yuBM7QW6QTafKsgpqEyd19DA"
+# Load secrets (5-R Protocol: READ → RESOLVE → RECONCILE → RESTART → REPORT)
+set -a && source /root/.secrets/kunci-root.env 2>/dev/null && set +a
+
+HERMES_BOT_TOKEN="${ASI_BOT_TOKEN:-UNSET}"
 AAA_GROUP_ID="-1003753855708"
-OPENCLAW_BOT_TOKEN="8149595687:AAGycp7nzl1-D8mzZKOkUJWiWxg3Ok-wy70"
+OPENCLAW_BOT_TOKEN="${AGI_ASI_BOT_TOKEN:-UNSET}"
 
 ARIFOS_MCP_URL="http://127.0.0.1:8080/mcp"
 
