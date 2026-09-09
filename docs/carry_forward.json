@@ -1,11 +1,40 @@
 {
+  "last_session": "exp-1788974736353-19",
+  "unmetabolized": [],
+  "active_scars": [
+    {
+      "event_id": "evt_895fb8001dfe0680",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-09T17:15:01Z"
+    },
+    {
+      "event_id": "evt_a48f6b8c7c7cd18e",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-09T17:30:02Z"
+    },
+    {
+      "event_id": "evt_798a94fa2a71993d",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-09T17:30:02Z"
+    }
+  ],
+  "pending_skills": [],
+  "metrics": {
+    "map": 0.0,
+    "echo": 0.14,
+    "total_sessions": 3,
+    "direct_executions": 0,
+    "retained_improvements": 3,
+    "honest_observations": 21
+  },
+  "last_updated_utc": "2026-09-09T17:30:02Z",
   "session_id": "SEAL-FEDERATION-IDENTITY-ZEN-20260908",
   "previous_session": "SEAL-bd135fdda5564d4b",
   "closed_at_utc": "2026-09-08T02:20:00Z",
   "intent": "F13 SOVEREIGN DIRECT: compile all and execute to make the federation lebih bijaksana dan yang arif drpd sebelumnya (AAA A2A MCP arifOS A-FORGE arifFLOW FRAME.APEX)",
   "verdict_class": "SEALED",
   "filed_for": "arif (F13 sovereign)",
-  "next_main_task": "FQ metabolism restoration — Priority 1: monitor FQ recovery, emit verify receipts to arifFlow, release HELD actors",
+  "next_main_task": "FQ metabolism restoration \u2014 Priority 1: monitor FQ recovery, emit verify receipts to arifFlow, release HELD actors",
   "blocked_by_design": [
     "Item 7 Triple-identity disk file collapse (retained under 888_HOLD per sovereign decree)"
   ],
@@ -18,12 +47,12 @@
     "Metabolism Cure: Upgraded claude-code-verify-flusher.sh to multi-actor flusher (claude-code, codex, hermes-asi) to heal execution dominance",
     "Constitutional Scar filed: scar-premature-mutate-without-sovereign-signal-20260908",
     "Canonical Eureka filed: EUREKA-ACTIVATION-INERTIA-2026-09-08.md ratified",
-    "HOLD on AAA :3001 restart ratified — avoided operational disturbance without benefit",
+    "HOLD on AAA :3001 restart ratified \u2014 avoided operational disturbance without benefit",
     "Git Ledger Parity: AAA (6e5c3bf56), arifOS (31f028e55), A-FORGE (a41094c9) committed with 100% clean worktrees"
   ],
   "key_facts": [
     "Meta-pattern discovered and sealed: Activation Inertia (Capability on disk != Capability in runtime)",
-    "Post-restart audit: Zero damage, zero propagation — running processes and NATS/Redis bindings remained intact",
+    "Post-restart audit: Zero damage, zero propagation \u2014 running processes and NATS/Redis bindings remained intact",
     "Boot-parity verifier: 28/28 non-shadowed unique cards 100% admissible; 10 shadowed secondary cards properly isolated under 888_HOLD",
     "Discovery wire contract now unified on Node.js without requiring risky substrate migration",
     "Multi-actor verification flusher prepared to release held actors (claude-code, codex, hermes-asi)",
@@ -44,7 +73,7 @@
     {
       "trace_id": "exp-wire-contract-alignment-2026-09-08",
       "validated_skill": "runtime-wire-contract-alignment",
-      "capability_change": 0.90,
+      "capability_change": 0.9,
       "validated_at_utc": "2026-09-08T02:20:00Z",
       "source": "Node.js discovery routes enrichment",
       "epistemic": "OBS"
@@ -79,12 +108,11 @@
     "Item 7 Physical file collapse across agents/_lanes and agents/_external (requires F13 sovereign authorization)"
   ],
   "open_loops_pending_F13": [
-    "FQ metabolism restoration — Priority 1",
+    "FQ metabolism restoration \u2014 Priority 1",
     "Cron registration for multi-actor verify flusher",
     "Q1 SIGNAL organ registration vs uninstall",
     "Q2 ERPH-BRIDGE ownership",
     "Q3 arif-fazil-site vs arif-fazil.com consolidation"
   ],
-  "shadow": "F2 TRUTH: 10 shadowed duplicate cards remain on disk in secondary folders under 888_HOLD. Runtime discovery dedupes them cleanly. AAA :3001 daemon remains running without disruption. Machine substrate is FRESH.",
-  "last_updated_utc": "2026-09-08T02:20:00Z"
+  "shadow": "F2 TRUTH: 10 shadowed duplicate cards remain on disk in secondary folders under 888_HOLD. Runtime discovery dedupes them cleanly. AAA :3001 daemon remains running without disruption. Machine substrate is FRESH."
 }
