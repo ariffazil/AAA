@@ -11,7 +11,7 @@
 |---|---|---|---|
 | 1 | OpenClaw `2026.6.1 (2e08f0f)` | `openclaw --version` | ✅ FACT |
 | 2 | arifOS drift = False, build `6be602ad` | `curl :8088/health` + `/opt/arifos/app/.git_commit` + `git log -1` all agree | ✅ FACT |
-| 3 | 3 telegram bindings on `main` agent | `openclaw agents list --bindings` shows `Routing rules: 3`: accountId=*, group `-1003753855708` (AAA), group `-1003815535761` (SADO) | ✅ FACT |
+| 3 | 3 telegram bindings on `main` agent | `openclaw agents list --bindings` shows `Routing rules: 3`: accountId=*, group `-1003753855708` (AAA), group `-1003815535761` (ALPHA - ZEN) | ✅ FACT |
 | 4 | `openclaw-gateway` enabled + active | `systemctl is-enabled`=enabled, `is-active`=active | ✅ FACT |
 | 5 | Watchdog cron every 5 min | `crontab -l` line: `*/5 * * * * /root/.openclaw/workspace/scripts/watchdog-heartbeat.sh >> /var/log/watchdog-heartbeat.log 2>&1` | ✅ FACT |
 | 6 | agentic-loop SKILL.md 192 lines | `wc -l /root/.openclaw/workspace/agentic-loop/SKILL.md` = 192 | ✅ FACT |

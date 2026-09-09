@@ -305,3 +305,56 @@ Adjudication lives in the kernel court (brain).
 - **Spine Stress Benchmark:** `scripts/run_cognition_stress_20.py` — 20 consecutive runs executed with zero unhandled panics and 100% structured valid governance packets.
 - **A-FORGE Scar Reflex:** `test/scarReflex.test.ts` 4/4 passed (SCAR-001 & SCAR-004 reflex gates active in forgeShell dry-run).
 
+---
+
+## 12. EUREKA::FINITE_REALITY_GOVERNANCE (2026-09-09)
+
+> **Discovered:** 2026-09-09, session with Arif (F13)
+> **Source:** Compression of 19 open questions → 5 frontier classes → 1 meta-law
+> **Precursor:** Identity Metabolism, Attention Metabolism, Consequence Binding
+> **Status:** CANDIDATE (PARTIAL-SEAL analysis, HOLD canonization)
+
+### The Shift
+
+The original governance frontier was: "How do we build governance?"
+Most ratified EUREKAs already answer this.
+
+The new frontier is: **"How does governance remain legitimate when reality is scarce?"**
+
+### Five Frontiers
+
+| Class | Question | Coverage |
+|---|---|---|
+| A: Continuity | What persists when the sovereign dies? | Partial (19 artifacts) |
+| B: Plural Sovereignty | If two F13s, who determines who determines? | **ZERO** |
+| C: Epistemic Boundary | What can the system not know about itself? | **ZERO** |
+| D: Moral Economy | Governance after failure? | Thin (2 artifacts) |
+| E: Scarcity | What runs out? | Partial (8 artifacts) |
+
+### The Hidden Assumption
+
+All five frontiers are manifestations of one failure:
+```
+ASSUMED: One sovereign, infinite time, infinite attention, single ontology, perfect witness.
+REALITY: Many sovereigns, finite life, finite attention, competing ontologies, incomplete witness.
+```
+
+### Meta-Law
+
+```
+Reality is the final governor because
+every other governor eventually runs out.
+```
+
+### Resolution Order
+
+1. **B (Plural Sovereignty)** — keystone. Everything inherits.
+2. **A + E (Continuity + Scarcity)** — structural. Requires knowing "who."
+3. **C (Epistemic Boundary)** — epistemic. Requires defined "self."
+4. **D (Moral Economy)** — moral. Requires multiple agents.
+
+### Files
+
+- Canon: `/root/AAA/canon/EUREKA-FINITE-REALITY-GOVERNANCE-2026-09-09.md`
+- Frontier Map: `/root/AAA/canon/FRONTIER_MAP-2026-09-09.md`
+

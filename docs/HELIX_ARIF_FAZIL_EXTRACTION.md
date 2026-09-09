@@ -648,7 +648,7 @@ Not one person — a construction in the seeker's mind. Constructed in early chi
 - verdict: HOLD (F5-private)
 
 ### SyedOS — @rico_ricaldo_33
-Telegram persona for Syed. SADO group: -1003815535761. Health: GERD, supplements (L-arginine, Selank, Semax).
+Telegram persona for Syed. ALPHA - ZEN group: -1003815535761. Health: GERD, supplements (L-arginine, Selank, Semax).
 - source: /root/.hermes/lanes/private/syed-shadow-map.md (lines 9-18)
 - confidence: HIGH
 - verdict: HOLD (F5-private)

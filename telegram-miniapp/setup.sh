@@ -77,5 +77,5 @@ echo "╠═══════════════════════�
 echo "║  Next steps:                                 ║"
 echo "║  1. Open your bot on Telegram                ║"
 echo "║  2. Tap 🌍 Explorer button                   ║"
-echo "║  3. Create AIA/SADO/AAA bots (optional)      ║"
+echo "║  3. Create AIA/ALPHA-ZEN/AAA bots (optional)      ║"
 echo "╚══════════════════════════════════════════════╝"
