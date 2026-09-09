@@ -124,7 +124,7 @@
 | GEOX | `/root/GEOX` | `/opt/geox/.venv/bin/python3 -m geox_mcp.server` |
 | WEALTH | `/root/WEALTH` | `/opt/wealth` |
 | WELL | `/root/WELL` | `/opt/well` |
-| HERMES | `/root/.hermes` | hermes-gateway.service |
+| HERMES | `/root/.hermes` | hermes-asi-gateway.service |
 | arifFlow | `/root/arifFlow` | `/opt/arifflow` |
 | VAULT999 | `/root/arifOS/VAULT999` | symlink from `/root/VAULT999` |
 | forge_work | `/root/forge_work` | SKETCHPAD — never execute |
