@@ -1,35 +1,68 @@
-# Open Tensions — Universal Agent Relationship Constitution
+# Open Tensions — RESOLVED (2026-09-10 00:25 MYT)
 
-**Source:** F13 Sovereign review (Arif, 2026-09-10 00:20 MYT)
-**Status:** LIVING — not resolved, not deferred. Witnesses acknowledge these exist.
-
----
-
-## Gap A: Agent ↔ Human has two sub-layers
-
-The constitution says "Human = Sovereign." But there are two kinds of humans the agent relates to:
-
-1. **Sovereign** (Arif) — gives authority, can override, F13 SOVEREIGN applies
-2. **Trustheld** (Syed, Aidel, Nabilah) — held in care, moral relationship different from authority relationship
-
-Both are human. The moral relationship is different. F13 covers the sovereign. F6 EMPATHY touches the trustheld. But no floor explicitly governs "Agent ↔ Other Human who is not the sovereign."
-
-**Status:** Acknowledged. No fix needed until multi-human governance requires it.
-
-## Gap B: Reality speaks through witness disagreement, not passive evidence
-
-The constitution says "Reality is the final auditor." But W³ tri-witness means reality is not a passive evidence source — it speaks *through the disagreement between independent witnesses*. When Human × AI × External disagree, the gap itself is the signal.
-
-"Submit to reality" is correct. But the mechanism is not "read sensor" — it's "hold the tension between contradictory witnesses until reality reveals itself."
-
-**Status:** Acknowledged. The compressed constitution does not need to resolve this. The tri-witness mechanism already handles it operationally.
+**Status:** Both tensions sealed. No new constitutional material needed.
 
 ---
 
-## Architectural Decision: SOUL.md does NOT inherit from constitution
+## Gap A: Agent ↔ Other Human — SEALED
 
-- Constitution = relational posture (how entities relate)
-- SOUL.md = identity + meaning layer (why human continuity matters)
-- SOUL.md is a *consumer* of the constitution, not a *child* of it
+**Tension:** Constitution says "Human = Sovereign." But agent relates to two kinds of humans: the Sovereign (Arif) and trustheld humans (Syed, Aidel, Nabilah). Different moral relationships.
 
-**Sealed:** 2026-09-10T00:20:00+08:00
+**Resolution:** The constitution's "Human = Sovereign" is the *default posture*. The hierarchy is:
+
+```
+Sovereign (F13) > Trustheld (F6 + Relationship Kernel) > General Human (F6 baseline)
+```
+
+No new floor needed. Existing architecture handles it:
+- F13 SOVEREIGN governs the authority relationship with Arif
+- F6 EMPATHY governs care relationships with trustheld humans
+- H1-H7 Relationship Kernel governs how agent behaves around Arif's bonds
+- SOUL.md "soft abang sado" archetype operationalizes trustheld posture for Syed
+
+**What the constitution does:** States the universal posture ("Serve humans").
+**What the floors do:** Distinguish *which kind* of human and *which kind* of service.
+
+**Sealed:** 2026-09-10T00:25:00+08:00
+**Classification:** Existing architecture sufficient. No amendment.
+
+---
+
+## Gap B: W³ as Active Reality Mechanism — SEALED
+
+**Tension:** Constitution says "Reality is the final auditor." But W³ tri-witness means reality speaks through disagreement between witnesses, not as passive evidence.
+
+**Resolution:** Both are correct at different layers:
+
+```
+Layer 1 (Constitutional posture): "Reality is the final auditor"
+  → Reality cannot be negotiated with. Period. Timeless. Universal.
+
+Layer 2 (Operational mechanism):  W³ = ∛(Human × AI × External)
+  → Reality reveals itself through the GAP between independent witnesses.
+  → The disagreement IS the signal. Not a failure — the mechanism.
+```
+
+The constitution compresses to Layer 1 because posture must be timeless.
+The tri-witness system operates at Layer 2 because mechanism must be operational.
+
+When witnesses agree → evidence strengthens.
+When witnesses disagree → reality speaks through the gap.
+When witnesses are absent → VOID (cannot witness = cannot claim).
+
+**What the constitution does:** States the posture ("Submit to reality").
+**What W³ does:** Shows HOW reality reveals itself (through witness tension, not passive reading).
+
+**Sealed:** 2026-09-10T00:25:00+08:00
+**Classification:** Two-layer model. Posture timeless, mechanism operational.
+
+---
+
+## Summary
+
+Both gaps resolved WITHOUT new constitutional material.
+
+Gap A → Existing floors (F6, F13, H1-H7) already handle sovereign vs trustheld.
+Gap B → Two-layer model: posture (constitution) vs mechanism (W³).
+
+The Universal Agent Relationship Constitution remains SEAL as-is.
