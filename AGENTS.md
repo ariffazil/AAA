@@ -46,6 +46,7 @@ For session-start probes, action-tier expansions, conflict resolution, and the a
 | Testimony Gate (signal classification) | `/root/AAA/instructions/testimony-gate.md` | F13_RATIFIED_CHAT |
 | Trauma Theorem (scar-weight propagation) | `/root/AAA/instructions/trauma-theorem.md` | F13_RATIFIED_CHAT |
 | Scar-Weight Registry | `/root/AAA/scar-weight-registry.json` | F13_RATIFIED_CHAT |
+| Universal Agent Relationship Constitution | `/root/AAA/instructions/universal-agent-relationship-constitution.md` | F13_RATIFIED_CHAT |
 | CBI Doctrine Family Bridge | `/root/AAA/instructions/cbi-doctrine-bridge.md` | PENDING_F13 |
 | RBA-PROOF-001 Mission | `/root/AAA/proof/rba-proof-001/` (8 artifacts) | PARTIAL verdict |
 
