@@ -132,6 +132,7 @@ organs:
     health_endpoint: http://localhost:7074/health
     bind: loopback
     note: "Requires dual Accept headers: application/json, text/event-stream"
+    wired_to: [qwen-code, kimi-code, codex, grok, hermes]
 
   aaa:
     name: AAA
@@ -243,10 +244,10 @@ forge_instruments:
   hermes:
     id: hermes-prime
     name: Hermes
-    mcp_servers: [kernel, aforge, geox, wealth, well, arifflow]
-    missing: [fed]
+    mcp_servers: [kernel, aforge, geox, wealth, well, arifflow, frame, aaa, fed]
+    missing: []
     role: governor
-    note: "Telegram gateway — missing FED"
+    note: "Telegram gateway — full federation (9 MCP servers)"
 
   copilot:
     id: FI-006
