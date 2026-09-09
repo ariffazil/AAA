@@ -228,6 +228,40 @@
         "reasoning_tier": "mid"
       }
     },
+    "qwen-audio-3.0-tts-plus": {
+      "_note": "Qwen Token Plan Speech (Personal) — Default TTS + clone/instruct per token-plan-speech skill.",
+      "modalities": {
+        "audio_out": true
+      },
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "qwen-audio-3.0-asr-flash": {
+      "_note": "Qwen Token Plan Speech (Personal) — Speech-to-text per token-plan-speech skill.",
+      "modalities": {
+        "audio_in": true
+      },
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
+    "qwen-audio-3.0-realtime-plus": {
+      "_note": "Qwen Token Plan Speech (Personal) — Realtime conversation (S2S) per token-plan-speech skill.",
+      "modalities": {
+        "audio_in": true,
+        "audio_out": true
+      },
+      "features": {
+        "tool_calling": false,
+        "structured_output": false,
+        "reasoning_tier": "low"
+      }
+    },
     "gpt-5.5": {
       "_note": "OpenAI flagship via opencode-zen \u2014 vision + reasoning per kimi/config.",
       "modalities": {
