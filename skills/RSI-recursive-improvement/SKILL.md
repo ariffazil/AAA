@@ -1,1 +1,0 @@
-RSI session endpoint documentation
