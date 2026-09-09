@@ -16,6 +16,8 @@
 | 7 | `governance/ZEN-BIJAKSANA-ARIF-RUNTIME-MAP-2026-09-07.md` | Peta runtime zen-bijaksana |
 | 8 | `governance/AXIOMS-2026-09-08.md` | Aksiom 2026-09-08 |
 | 9 | `canon/EUREKA-DISSIPATIVE-TRANSITION-2026-09.md` | Eureka peralihan dissipatif (dalam canon, belum disahkan F13) |
+| 21 | `instructions/reality-alignment-kernel.md` (00:13) | Kernel penjajaran realiti — 2 bahagian bersih: closeout 5-soalan + tangga ELIMINATE/MERGE/SIMPLIFY/DOCUMENT/DEFER |
+| 22 | `instructions/universal-agent-relationship-constitution.md` (00:18) | Matriks 6-lapisan postur — **dengan patch dicadang sebelum tandatangan:** (a) pisah Agent↔Sovereign (autoriti) dari Agent↔Other-Human (amanah — Syed, Aidel: maruah + data dipercayakan, bukan dimiliki); (b) tambah saluran witness Bumi/Luaran (W³ sedia ada dalam canon); |
 
 ## Tier 2 — Bukti/laporan menunggu verdict
 | # | Dokumen | Status |
@@ -37,8 +39,14 @@
 | 20 | `research/nist-rmf-oecd-mapping.md` | cross-walk |
 
 ## Cadangan urutan satu-sitting
-1. Tier 1 (#1–#9) — satu bacaan, tandatangan berkelompok.
+1. Tier 1 (#1–#9, #21–#22) — satu bacaan, tandatangan berkelompok.
 2. Tier 2 (#10–#15) — verdict per-laporan (ratify / HOLD dengan sebab).
 3. Tier 3 (#16–#20) — boleh ditunda; bukan load-bearing malam ini.
+
+## Aksiom calon (BUKAN fragment baru — line-item sahaja, ikut disiplin Dunbar)
+- "Truth outranks narrative continuity" — pemampatan malam 2026-09-09/10; tiga pembetulan publik (genesis, gateway, V9) sebagai bukti amalan. Masuk sebagai baris dalam #21 jika F13 setuju, bukan fail ke-23.
+
+## Catatan proses
+- Render list dipulihkan 00:42 oleh FI-008: dua fragment baharu telah ditambah ke fail output tanpa update senarai `render-agents.sh`; render seterusnya padamkan mereka. Fixed di script (lapisan betul). Pelajaran: fragment baharu mesti didaftarkan dalam senarai render, bukan diedit ke dalam output.
 
 DITEMPA BUKAN DIBERI ⚒️
