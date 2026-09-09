@@ -1,5 +1,5 @@
 {
-  "last_session": "arrow3-c3-1788977610",
+  "last_session": "arrow2-test-1788977354",
   "unmetabolized": [],
   "active_scars": [
     {
@@ -51,53 +51,18 @@
       "event_id": "evt_31d22ea31af90325",
       "reason": "Failure that taught a lesson (this hurt, remember why).",
       "timestamp": "2026-09-09T18:09:14Z"
-    },
-    {
-      "event_id": "evt_8d8df754d7cf8d0f",
-      "reason": "Failure that taught a lesson (this hurt, remember why).",
-      "timestamp": "2026-09-09T18:10:22Z"
-    },
-    {
-      "event_id": "evt_c453b75a191c1142",
-      "reason": "Failure that taught a lesson (this hurt, remember why).",
-      "timestamp": "2026-09-09T18:11:14Z"
-    },
-    {
-      "event_id": "evt_7df1cd389496278e",
-      "reason": "Failure that taught a lesson (this hurt, remember why).",
-      "timestamp": "2026-09-09T18:13:30Z"
-    },
-    {
-      "event_id": "evt_c09479f348165d8c",
-      "reason": "Failure that taught a lesson (this hurt, remember why).",
-      "timestamp": "2026-09-09T18:13:30Z"
-    },
-    {
-      "event_id": "evt_27e711543333187f",
-      "reason": "Failure that taught a lesson (this hurt, remember why).",
-      "timestamp": "2026-09-09T18:13:30Z"
-    },
-    {
-      "event_id": "evt_a2a74075f9c4f9ca",
-      "reason": "Failure that taught a lesson (this hurt, remember why).",
-      "timestamp": "2026-09-09T18:13:30Z"
-    },
-    {
-      "event_id": "evt_54cf54ae32fd3d2e",
-      "reason": "Failure that taught a lesson (this hurt, remember why).",
-      "timestamp": "2026-09-09T18:13:30Z"
     }
   ],
   "pending_skills": [],
   "metrics": {
     "map": 0.0,
-    "echo": 0.49,
-    "total_sessions": 17,
+    "echo": 0.36,
+    "total_sessions": 10,
     "direct_executions": 0,
-    "retained_improvements": 17,
-    "honest_observations": 35
+    "retained_improvements": 10,
+    "honest_observations": 28
   },
-  "last_updated_utc": "2026-09-09T18:13:30Z",
+  "last_updated_utc": "2026-09-09T18:09:14Z",
   "session_id": "SEAL-FEDERATION-IDENTITY-ZEN-20260908",
   "previous_session": "SEAL-bd135fdda5564d4b",
   "closed_at_utc": "2026-09-08T02:20:00Z",
