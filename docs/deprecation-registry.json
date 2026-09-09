@@ -1,7 +1,7 @@
 {
-  "version": "2026.09.08",
-  "last_audit": "2026-09-08T09:46:00+08:00",
-  "auditor": "FI-003 qwen-code — federation identity plane entropy audit (T1 reversible, F13 sovereign go via Items 1-6+9 batch)",
+  "version": "2026.09.09",
+  "last_audit": "2026-09-09T08:58:00+08:00",
+  "auditor": "FI-008 kimi-code — witness-membrane execution batch (T1 reversible, F13 execution context relay)",
   "deprecated_services": [
     {
       "id": "apex-prime.service",
@@ -112,6 +112,31 @@
       "archive": "/root/AAA/archive/2026-09-08-identity-tombstone/AGENT_INDEX.json",
       "reviewer": "FI-003 qwen-code (T1 reversible, 2026-09-08 F13 sovereign go)",
       "supported_by": "INV-11 (Identity plane) — single canonical path per agent"
+    },
+    {
+      "id": "nats.service",
+      "type": "service",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-09",
+      "reason": "Superseded by distro unit nats-server.service during NATS migration; disabled, zero reverse deps, zero traffic.",
+      "replacement": "nats-server.service"
+    },
+    {
+      "id": "nats-prometheus-exporter.service",
+      "type": "service",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-09",
+      "reason": "Metrics transport absorbed by kabarkan OTEL collector (kabarkan-ingest JetStream active, ~1m freshness). Unit enabled-but-dead since 2026-09-04 SIGHUP event; intentionally not restarted.",
+      "replacement": "kabarkan-collector.service"
+    },
+    {
+      "id": "morning-briefing (root crontab 0 0 * * *)",
+      "type": "cron",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-09",
+      "reason": "Log-only morning summary overlapping readiness 07:30 delivery; removed from root crontab 2026-09-09 witness-membrane batch (LAW 8: zero new interruption channels); tombstone added during 888-directed zen pass.",
+      "replacement": "readiness 07:30 delivery + digest_inbox",
+      "witness": "FI-008 zen pass 2026-09-09, F13 blanket: execute all remaining"
     }
   ],
   "deprecated_patterns": [
@@ -335,7 +360,21 @@
       "reviewed_by": "333-AGI/Hermes"
     }
   ],
-  "deprecated_endpoints": [],
+  "deprecated_endpoints": [
+    {
+      "endpoint": "/cockpit/queue_depth",
+      "organs_probed": [
+        "arifos:8088",
+        "aaa:3001",
+        "bridge:18081"
+      ],
+      "status": "INTENTIONALLY_ABSENT",
+      "resolved": "2026-09-09",
+      "resolution": "RETIRED not built — consumer (well_observe_evidence_backlog) already degrades gracefully to missing_evidence=['no_evidence_endpoint'] (honest UNKNOWN, Void Guard compliant). Building speculative surface without a real queue behind it would violate promotion selectivity. If a real evidence queue materializes, re-open.",
+      "witness": "FI-008 execution context 2026-09-09 P4",
+      "reversible": true
+    }
+  ],
   "deprecated_conventions": [],
   "p0_audit": {
     "audited_by": "333-AGI",
