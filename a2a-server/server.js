@@ -3360,6 +3360,17 @@ app.get('/cockpit/status.json', (req, res) => {
   }
 });
 
+// Queue depth — hold queue depth (FI-008 2026-09-09 fix: /cockpit/queue_depth 404)
+app.get('/cockpit/queue_depth', async (req, res) => {
+  try {
+    const depth = parseInt(await redisClient.lLen('aaa:hold_queue') || '0', 10);
+    res.setHeader('Cache-Control', 'no-store');
+    res.json({ queue_depth: depth, timestamp: new Date().toISOString() });
+  } catch (_) {
+    res.json({ queue_depth: 0, timestamp: new Date().toISOString(), note: 'redis_unavailable' });
+  }
+});
+
 // Heartbeat receiver — organs can POST their liveness directly
 app.post('/cockpit/heartbeat', express.json(), (req, res) => {
   const { agent_id, status, load, capabilities, tools_count, latency_ms } = req.body || {};
