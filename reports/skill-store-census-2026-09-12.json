@@ -1,0 +1,152 @@
+{
+  "taken_at_local": "2026-09-12 01:18:16 +08",
+  "method": "os.walk on ABSOLUTE store roots; key = relative path from store root (collision-safe); leaf-name used ONLY for cross-store archived-only set math",
+  "v1_defect_corrected": "v1 keyed by realpath basename -> collapsed 12 distinct skills, reported 339 for hermes_live. Truth is 351.",
+  "per_store_skill_files": {
+    "hermes_live": 351,
+    "aaa_live": 213,
+    "profile_aaa": 291,
+    "hermes_archive": 246
+  },
+  "hermes_live_bundled_manifest_entries": 276,
+  "hermes_live_bundled_manifest_mtime": "2026-09-12 00:57:08",
+  "intra_store_duplicate_leaf_names": {
+    "hermes_live": {
+      "know-physics": [
+        "know-physics",
+        "knowledge/know-physics"
+      ],
+      "know-math": [
+        "know-math",
+        "knowledge/know-math"
+      ],
+      "memory-manage": [
+        "memory-manage",
+        "substrate/memory-manage"
+      ],
+      "audit-seal": [
+        "audit-seal",
+        "substrate/audit-seal"
+      ],
+      "observe-ground": [
+        "observe-ground",
+        "substrate/observe-ground"
+      ],
+      "verify-gate": [
+        "substrate/verify-gate",
+        "verify-gate"
+      ],
+      "route-dispatch": [
+        "substrate/route-dispatch",
+        "route-dispatch"
+      ],
+      "kernel-bind": [
+        "substrate/kernel-bind",
+        "kernel-bind"
+      ],
+      "hermes": [
+        "apex_verdict_hold/hermes",
+        "apex_verdict_seal/hermes"
+      ],
+      "claude": [
+        "apex_verdict_hold/claude",
+        "apex_verdict_seal/claude",
+        "FORGE-onboarding/claude"
+      ],
+      "know-language": [
+        "knowledge/know-language",
+        "know-language"
+      ]
+    },
+    "aaa_live": {
+      "skill-creator": [
+        ".system/skill-creator",
+        "engineering/skill-creator"
+      ]
+    },
+    "profile_aaa": {
+      "know-physics": [
+        "know-physics",
+        "knowledge/know-physics"
+      ],
+      "know-math": [
+        "know-math",
+        "knowledge/know-math"
+      ],
+      "memory-manage": [
+        "memory-manage",
+        "substrate/memory-manage"
+      ],
+      "audit-seal": [
+        "audit-seal",
+        "substrate/audit-seal"
+      ],
+      "observe-ground": [
+        "observe-ground",
+        "substrate/observe-ground"
+      ],
+      "verify-gate": [
+        "substrate/verify-gate",
+        "verify-gate"
+      ],
+      "route-dispatch": [
+        "substrate/route-dispatch",
+        "route-dispatch"
+      ],
+      "kernel-bind": [
+        "substrate/kernel-bind",
+        "kernel-bind"
+      ],
+      "hermes": [
+        "apex_verdict_hold/hermes",
+        "apex_verdict_seal/hermes"
+      ],
+      "claude": [
+        "apex_verdict_hold/claude",
+        "apex_verdict_seal/claude",
+        "FORGE-onboarding/claude"
+      ],
+      "know-language": [
+        "knowledge/know-language",
+        "know-language"
+      ]
+    }
+  },
+  "archive_total": 246,
+  "archived_only_count": 32,
+  "archived_only_names": [
+    "AAA-artifact-composer",
+    "apex-p-dial-closure",
+    "audio-organ-design",
+    "career-dossier-suite",
+    "chat-image-generation",
+    "correction-depth",
+    "email-federation",
+    "fed-vision-architecture",
+    "fed-zen-wiring",
+    "federation-entity-rename",
+    "federation-seal-ritual",
+    "federation-subdomain-exposure",
+    "forge-bot-pr-queue",
+    "forge-sibling-audit",
+    "forge-witness-surface",
+    "free-image-generation",
+    "gemini-image-gen",
+    "github",
+    "hermes-findings-falsified-20260904",
+    "hermes-telegram-config",
+    "human-paradox-geometry",
+    "institutional-intelligence-kernel",
+    "live-edge-continuity",
+    "media-video-intake",
+    "on-this-day-almanac",
+    "pdf-output-composer",
+    "physique-topography-prompting",
+    "professional-cv-resume",
+    "session-close-engine",
+    "vps-full-upgrade",
+    "witness-praise-gate",
+    "zen-witness-audit"
+  ],
+  "STABILITY_WARNING": "This store is NOT static. tools/skills_sync.py runs at every gateway/session startup and relocates FORGE-act-federation-ingress <-> FORGE-sct-federation-ingress (6 relocations logged 2026-09-11 11:28 -> 2026-09-12 00:57). 12 concurrent sessions touched skills tonight; 31 curator patch refusals. Any count is a timestamped snapshot, never a settled fact."
+}
