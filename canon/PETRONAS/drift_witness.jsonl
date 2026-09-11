@@ -9,3 +9,8 @@
 {"ts": "2026-09-11T23:22:40.980076Z", "check": "entities", "status": "OK", "detail": "all resolve"}
 {"ts": "2026-09-11T23:22:40.980076Z", "check": "live_vitals_anchors", "status": "OK", "detail": "anchors present"}
 {"ts": "2026-09-11T23:22:40.980076Z", "check": "qdrant_freshness", "status": "DRIFT", "detail": "STALE: 1 sampled vectors claim revenue RM{'111.9'} != RM266.1B"}
+{"ts": "2026-09-11T23:40:04.352187Z", "check": "atlas_brent_vs_engine", "status": "OK", "detail": "atlas Brent line matches engine"}
+{"ts": "2026-09-11T23:40:04.352187Z", "check": "atlas_node_paths", "status": "OK", "detail": "all resolve"}
+{"ts": "2026-09-11T23:40:04.352187Z", "check": "entities", "status": "OK", "detail": "all resolve"}
+{"ts": "2026-09-11T23:40:04.352187Z", "check": "live_vitals_anchors", "status": "OK", "detail": "anchors present"}
+{"ts": "2026-09-11T23:40:04.352187Z", "check": "qdrant_freshness", "status": "OK", "detail": "OK: 85 points, no stale revenue anchor in sample"}
