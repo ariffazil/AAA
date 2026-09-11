@@ -57,6 +57,9 @@ const { getInbox, createSIAL, validateSIAL } = require('./agent_inbox');
 // ── FQ Gate — constitutional HOLD at FQ < 0.5 (forged 2026-08-05) ─
 const { fqGateSync } = require('./fq_gate');
 
+// ── SRO Propagation — A2A Cross-Agent Reality Sharing v1 (forged 2026-09-12) ─
+const { propagateSroEvent } = require('./sro_propagation');
+
 // ── G2 Witness Gate — pre-execution tri-witness consensus (forged 2026-08-05) ─
 const { witnessGate, witnessGateSync } = require('./witness_gate');
 
@@ -4484,6 +4487,21 @@ app.post('/a2a/message/send', jsonRpcValidate, createEnvelopeValidator(), async 
   } catch (error) {
     console.error('[A2A] message/send error:', error);
     res.status(500).json(createJSONRPCError(req.body?.id || 0, ERROR_CODES.INTERNAL_ERROR, 'Internal server error'));
+  }
+});
+
+// === SRO PROPAGATION (Protocol v1) ===
+app.post('/a2a/sro/propagate', async (req, res) => {
+  try {
+    const event = req.body;
+    const result = await propagateSroEvent(event);
+    if (!result.success) {
+      return res.status(400).json({ error: 'INVALID_SRO_EVENT', message: result.error });
+    }
+    res.json(result);
+  } catch (error) {
+    console.error('[A2A] sro/propagate error:', error);
+    res.status(500).json({ error: 'INTERNAL_ERROR', message: error.message });
   }
 });
 
