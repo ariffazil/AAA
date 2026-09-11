@@ -256,6 +256,13 @@ forge_instruments:
     role: warga
     note: "LLM-only via FED :4000 proxy, no MCP tools — architecturally excluded"
 
+  antigravity:
+    id: FI-009
+    name: Antigravity CLI
+    mcp_servers: [kernel, aforge, fed, geox, wealth, well, context7]
+    role: builder
+    note: "Pair-programming harness — connected to core organs + FED + Context7"
+
 # ─────────────────────────────────────────────────────────────
 # GAPS — Known issues requiring resolution
 # ─────────────────────────────────────────────────────────────
@@ -287,10 +294,11 @@ gaps:
     fix: "THIS FILE is the fix. Authority chain: FEDERATION.md → CONTRACT → registry SOT"
 
   G5:
-    severity: HIGH
-    description: "Hermes missing FED :7074 MCP"
-    impact: "Primary Telegram gateway can't call fed_classify/fed_route/fed_status"
-    fix: "Add FED to Hermes config.yaml mcp_servers"
+    severity: RESOLVED
+    resolved_at: "2026-09-12T02:32:00+08:00"
+    resolved_by: "AGY (FI-009)"
+    description: "Hermes missing FED :7074 MCP — RESOLVED: added to Hermes config.yaml"
+    impact: "Primary Telegram gateway can now call fed_classify/fed_route/fed_status"
 
   G6:
     severity: MEDIUM

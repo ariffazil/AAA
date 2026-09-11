@@ -1,5 +1,5 @@
 {
-  "last_session": "exp-1789149811842-1789148693543",
+  "last_session": "session_7571e14c-kimi-fi008-auditverify",
   "unmetabolized": [],
   "active_scars": [
     {
@@ -26,27 +26,22 @@
       "event_id": "evt_8b159f76540681fe",
       "reason": "Failure that taught a lesson (this hurt, remember why).",
       "timestamp": "2026-09-11T17:45:01Z"
-    },
-    {
-      "event_id": "evt_4a6532db9a16122c",
-      "reason": "Failure that taught a lesson (this hurt, remember why).",
-      "timestamp": "2026-09-11T18:15:01Z"
     }
   ],
   "pending_skills": [],
   "metrics": {
     "map": 0.0,
-    "echo": 0.11,
-    "total_sessions": 6,
+    "echo": 0.09,
+    "total_sessions": 5,
     "direct_executions": 0,
-    "retained_improvements": 6,
-    "honest_observations": 54
+    "retained_improvements": 5,
+    "honest_observations": 53
   },
-  "last_updated_utc": "2026-09-11T18:15:01Z",
+  "last_updated_utc": "2026-09-11T18:03:39Z",
   "session_id": "SEAL-54cee348f64a4fc0",
   "closed_at": "2026-09-11T18:03:00Z",
   "closing_agent": "kimi-code/FI-008",
-  "verdict": "SABAR at kernel seal by design (OBSERVE_ONLY agent session, F1 irreversibility clamp) \u2014 witness-complete via git handles",
+  "verdict": "SABAR at kernel seal by design (OBSERVE_ONLY agent session, F1 irreversibility clamp) — witness-complete via git handles",
   "lane": "AUDIT-VERIFY-FIX-SEAL (repo CI hygiene + security)",
   "judge_chain_id": "cc_3f6d3176c8a7ecdfb29311676cfbf75fb0f33",
   "heavyweight_chain_status": "SABAR \u2014 seal_chain.jsonl head seq47 2026-09-07 unchanged; F3 tri-witness >=0.75 not met by session close (by design)",
@@ -70,9 +65,9 @@
     "T-3 Phase-2 read-side adaptation loop (Hermes committed)",
     "W-1 to W-7 active falsification watches in /root/AAA/canon/FALSIFICATION-REGISTER.md (first milestone 2026-10-12, upgrade decision 2026-11-12)",
     "Terminal SOT now at /root/AAA/docs/TERMINAL-SOT.md (F13 directive 2026-09-12)",
-    "F13 DIRECTIVE 2026-09-12 (FI-008 session): FED virtual key sk-xgHjv\u2026 stays functional \u2014 rotation DECLINED, risk accepted by sovereign; do not re-escalate without evidence of abuse",
-    "federation_ritual.py deployed at /root/scripts has only {init,seal} \u2014 doctrine documents a marker mode that exists only in the Hermes lane (doctrine-vs-tool drift)",
-    "Sibling kimi/FI-008 session owns UNPUSHED commits: arifOS 534d9effd (carry-forward freshest-writer), A-FORGE f43dbec1 (experience query fix) \u2014 theirs to push"
+    "F13 DIRECTIVE 2026-09-12 (FI-008 session): FED virtual key sk-xgHjv… stays functional — rotation DECLINED, risk accepted by sovereign; do not re-escalate without evidence of abuse",
+    "federation_ritual.py deployed at /root/scripts has only {init,seal} — doctrine documents a marker mode that exists only in the Hermes lane (doctrine-vs-tool drift)",
+    "Sibling kimi/FI-008 session owns UNPUSHED commits: arifOS 534d9effd (carry-forward freshest-writer), A-FORGE f43dbec1 (experience query fix) — theirs to push"
   ],
   "next_session": "Read /root/work/tasks.json + this file. Batch F13 HOLD register for one-shot confirm. Main task M-001 Musyawarah NO-gate remains.",
   "hold_register_status": "SETTLED 2026-09-12 (marker 27f19a7a): FUSE named+ratified, EUREKA 6+7 accepted, identity-lane two-lane canonical, T-6 rendered, T-7 verified, T-8 executed-absent. RETURNED: V2 ratification = UNRESOLVED-AMBIGUOUS (FI-008 to re-surface).",
@@ -93,18 +88,18 @@
   "fi008_close_20260912_auditverify": {
     "closed_at_utc": "2026-09-11T18:03:00Z",
     "deliverables": {
-      "AAA": "1f5ba112d \u2014 live FED key removed from tests (env-only + fail-fast), gate skip-widening reverted (tests/+workspace/ back in scan; frozen .hermes-archived skip justified; word-boundary kept), credential-detector fixture dynamic (pytest 1 passed), tirith binary untracked; 4 CI workflows green",
-      "WELL": "315dd53 \u2014 uv.lock synced well-mcp v2026.9.12; Build Validation green",
-      "ariffazil": "30dc7b7 \u2014 external-witness.yml markdown blockquotes converted to YAML comments (0s phantom-run cause); L0 CANON CI green",
-      "HERMES": "89d7aa9 \u2014 skills/.usage.json.lock untracked (daemon-owned)"
+      "AAA": "1f5ba112d — live FED key removed from tests (env-only + fail-fast), gate skip-widening reverted (tests/+workspace/ back in scan; frozen .hermes-archived skip justified; word-boundary kept), credential-detector fixture dynamic (pytest 1 passed), tirith binary untracked; 4 CI workflows green",
+      "WELL": "315dd53 — uv.lock synced well-mcp v2026.9.12; Build Validation green",
+      "ariffazil": "30dc7b7 — external-witness.yml markdown blockquotes converted to YAML comments (0s phantom-run cause); L0 CANON CI green",
+      "HERMES": "89d7aa9 — skills/.usage.json.lock untracked (daemon-owned)"
     },
     "audit_falsified": [
-      "actions/checkout@v7 EXISTS (tags v7.0.1) \u2014 'non-existent v7' premise false; arif-fazil.com needs no change",
+      "actions/checkout@v7 EXISTS (tags v7.0.1) — 'non-existent v7' premise false; arif-fazil.com needs no change",
       "AAA failed 3 gate checks not 1 (contract + README 189 + secret-pattern with a LIVE key)",
-      "GEOX not one-line (README 172<200 + ruff 99) \u2014 symlink itself was fixed by sibling session"
+      "GEOX not one-line (README 172<200 + ruff 99) — symlink itself was fixed by sibling session"
     ],
     "incident_contained": "unsandboxed ruff --fix at non-repo default cwd mutated 5041 files across 13 repos; full restore ~4min; zero residue; sibling commits confirmed scoped (arifOS 1-file, A-FORGE 4-file) and intact",
-    "scar": "lint tools never run on default path \u2014 always cd + project config + CI-mirrored targets",
+    "scar": "lint tools never run on default path — always cd + project config + CI-mirrored targets",
     "scoped_debt": [
       "WELL stale test imports: 5 files + conftest import bare 'server' which no longer exports those symbols; map built (well_validate_vitality -> well_mcp/tools/h_well.py, well_registry_status -> tools/federation.py)",
       "GEOX README 172 -> >=500 truth expansion + ruff via CI config only",
