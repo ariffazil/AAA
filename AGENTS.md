@@ -54,6 +54,7 @@ For session-start probes, action-tier expansions, conflict resolution, and the a
 | **Memory Promotion Gate (Witness ≠ Seal ≠ Memory)** | `/root/AAA/instructions/memory-promotion-gate.md` | **F13_RATIFIED_CHAT (2026-09-11)** |
 | **Institutional Memory Strata (S0–S3)** | `/root/AAA/instructions/institutional-memory-strata.md` | **F13_RATIFIED_CHAT (2026-09-11)** |
 | **Attention Kill Criterion (Doctrine Without Kill Is Decoration)** | `/root/AAA/instructions/attention-kill-criterion.md` | DRAFT_AWAITING_F13 |
+| **Jauhari Intelligence Doctrine (Sovereign Articulation)** | `/root/AAA/instructions/jauhari-intelligence-doctrine.md` | DRAFT_AWAITING_F13 (sovereign-articulated 2026-09-07 · propagation wired per F13 chat directive 2026-09-11: *"make it yang arif lagi bijaksana"*) |
 
 **To load:** read the file path above. Each fragment is independent and may be consulted separately.
 
