@@ -1,0 +1,11 @@
+{"ts": "2026-09-11T23:21:59.399803Z", "check": "atlas_brent_vs_engine", "status": "DRIFT", "detail": "atlas Brent line drifted from engine (auto-fixable)"}
+{"ts": "2026-09-11T23:21:59.399803Z", "check": "atlas_node_paths", "status": "OK", "detail": "all resolve"}
+{"ts": "2026-09-11T23:21:59.399803Z", "check": "entities", "status": "OK", "detail": "all resolve"}
+{"ts": "2026-09-11T23:21:59.399803Z", "check": "live_vitals_anchors", "status": "OK", "detail": "anchors present"}
+{"ts": "2026-09-11T23:21:59.399803Z", "check": "qdrant_freshness", "status": "DRIFT", "detail": "STALE: 1 sampled vectors claim revenue RM{'111.9'} != RM266.1B"}
+{"ts": "2026-09-11T23:21:59.399803Z", "check": "auto_fix_atlas_brent", "status": "COMMIT", "detail": "committed"}
+{"ts": "2026-09-11T23:22:40.980076Z", "check": "atlas_brent_vs_engine", "status": "OK", "detail": "atlas Brent line matches engine"}
+{"ts": "2026-09-11T23:22:40.980076Z", "check": "atlas_node_paths", "status": "OK", "detail": "all resolve"}
+{"ts": "2026-09-11T23:22:40.980076Z", "check": "entities", "status": "OK", "detail": "all resolve"}
+{"ts": "2026-09-11T23:22:40.980076Z", "check": "live_vitals_anchors", "status": "OK", "detail": "anchors present"}
+{"ts": "2026-09-11T23:22:40.980076Z", "check": "qdrant_freshness", "status": "DRIFT", "detail": "STALE: 1 sampled vectors claim revenue RM{'111.9'} != RM266.1B"}
