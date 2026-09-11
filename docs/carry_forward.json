@@ -62,5 +62,19 @@
     "Terminal SOT now at /root/AAA/docs/TERMINAL-SOT.md (F13 directive 2026-09-12)"
   ],
   "next_session": "Read /root/work/tasks.json + this file. Batch F13 HOLD register for one-shot confirm. Main task M-001 Musyawarah NO-gate remains.",
-  "hold_register_status": "SETTLED 2026-09-12 (marker 27f19a7a): FUSE named+ratified, EUREKA 6+7 accepted, identity-lane two-lane canonical, T-6 rendered, T-7 verified, T-8 executed-absent. RETURNED: V2 ratification = UNRESOLVED-AMBIGUOUS (FI-008 to re-surface)."
+  "hold_register_status": "SETTLED 2026-09-12 (marker 27f19a7a): FUSE named+ratified, EUREKA 6+7 accepted, identity-lane two-lane canonical, T-6 rendered, T-7 verified, T-8 executed-absent. RETURNED: V2 ratification = UNRESOLVED-AMBIGUOUS (FI-008 to re-surface).",
+  "session_final_state_20260912": {
+    "closed_at": "2026-09-11T17:24:37Z",
+    "sessions_work": "seal system (session_seal lane A-light, judge cc_3f6d) + HOLD register settled (marker 27f19a7a) + TERMINAL-SOT.md + M-001 musyawarah NO-gate Phase 1 (sentinel live, first substantive MusyawarahVerdict SABAR) + F13 9-item triage executed (HERMES 1575->0, mem0 routing canon) + 4 audits (FQ, job failures, TG delivery, cron book) + 3 fixes verified live (M-002 per-job verify, M-003 milestone escalation, M-003b token key)",
+    "cron_book": "GREEN \u2014 all witnesses done; FQ hermes-cron 0.205 rising, prediction >=0.5 in 2-3 waves, >=0.9 on window roll",
+    "hermes_core_handoffs": "voice-fallback reply_to strip (102x), bot-identity pre-session drop (LLM cost burn), stream-race RCA (44x) \u2014 T-1 precedent, unilateral edit refused",
+    "open_loops": [
+      "hermes-asi abort-rate fix (4-class taxonomy, Hermes core lane)",
+      "OpenClaw edge KVM4: stop bot-to-bot Telegram DM lane, route A2A",
+      "V2 ratification UNRESOLVED-AMBIGUOUS (FI-008 re-surface)",
+      "WELL human-plane re-arm (C-001/T-10)",
+      "T-1 Hermes boot-context injection, T-4 KVM4 silos, T-9 RSI mesh zero-invoke",
+      "musyawarah gate Phase 2 classifier when armed (3 scans or 14d)"
+    ]
+  }
 }
