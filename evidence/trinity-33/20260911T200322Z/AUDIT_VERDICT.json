@@ -1,0 +1,44 @@
+{
+  "epoch": "2026-09-12T04:06:00+08:00",
+  "verdict": "CORE_RUNTIME_VERIFIED__FEDERATION_PARTIAL__888_HOLDS_ACTIVE",
+  "confidence": 0.79,
+  "canonical_statement": "Trinity-33 constitutional reference artifacts are present and integrity-captured in the evidence ledger. MCP, A2A, and CloudEvents are declared protocol bindings; federation-wide runtime exercise remains subject to contract-test evidence. NATS, Prometheus, and Qdrant are verified as installed, running, and healthy core services. NATS shows JetStream activation and leaf connectivity; Prometheus shows successful scraping of arifos-kernel, aforge-actuator, and node-exporter; Qdrant shows a healthy endpoint and 17 loaded collections. Grafana is installed, running, and application-healthy, while its authenticated datasource-query path remains pending verification. OPA, Cosign, Act, Trivy, Gitleaks, and Terraform are verified installed CLI tools; their continuous enforcement in operational workflows is not yet certified. Seventeen Phase 2-5 components are deliberately classified as planned/deferred and are not asserted as deployed.",
+  "status_by_component": {
+    "MCP_K1":   {"embedded": true,  "installed": "spec",   "running": "spec",   "healthy": "spec",   "federated": "plausible"},
+    "A2A_C1":   {"embedded": true,  "installed": "spec",   "running": "spec",   "healthy": "spec",   "federated": "plausible"},
+    "CloudEvents_C9": {"embedded": true, "installed": "spec", "running": "spec", "healthy": "spec",  "federated": "plausible"},
+    "NATS_C2":  {"embedded": true,  "installed": "v2.10.27", "running": true,   "healthy": "ok",     "federated": "VERIFIED_CORE_RUNTIME"},
+    "Prometheus_C7": {"embedded": true, "installed": "v3.11.3", "running": true, "healthy": "ok",    "federated": "VERIFIED_CORE_RUNTIME"},
+    "Grafana_C6": {"embedded": true, "installed": "v13.2.1", "running": true,   "healthy": "ok",     "federated": "HEALTHY_FEDERATION_PARTIAL"},
+    "Qdrant_K6": {"embedded": true, "installed": "docker", "running": true,     "healthy": "ok",     "federated": "VECTOR_RUNTIME_VERIFIED"},
+    "OPA_K2":   {"embedded": true,  "installed": "v0.69.0", "running": false,   "healthy": "cli",    "federated": "INSTALLED_CLI_ON_DEMAND"},
+    "Cosign_K4": {"embedded": true, "installed": "v2.5.0",  "running": "cli",   "healthy": "cli",    "federated": "INSTALLED_CLI_ON_DEMAND"},
+    "Act_F4":   {"embedded": true,  "installed": "v0.2.75", "running": "cli",   "healthy": "cli",    "federated": "INSTALLED_CLI_ON_DEMAND"},
+    "Trivy_F6": {"embedded": true,  "installed": "v0.70.0", "running": "cli",   "healthy": "db_fresh","federated": "INSTALLED_CLI_ON_DEMAND"},
+    "Gitleaks_F7": {"embedded": true,"installed": "v8.18.4","running": "cli",   "healthy": "cli",    "federated": "INSTALLED_CLI_ON_DEMAND"},
+    "Terraform_F5": {"embedded": true,"installed": "v1.11.4","running": "cli",  "healthy": "cli",    "federated": "INSTALLED_CLI_ON_DEMAND"},
+    "Phase_2_5_backlog": {"embedded": true, "installed": false, "running": false, "healthy": false,   "federated": "PLANNED_DEFERRED"}
+  },
+  "pending_promotion_gates": [
+    "Protocol specs: per-server MCP tool discovery + request/response trace",
+    "A2A: card resolution + successful exchange receipt",
+    "NATS: authorized publish + JetStream persistence + consumer ACK",
+    "Prometheus: alert rule evaluation + retained time series + dashboard panel",
+    "Grafana: authenticated Prometheus datasource query proof",
+    "Qdrant: MCP retrieval trace tied to controlled record + access policy receipt",
+    "CLI tools: CI/pre-commit/CD logs proving enforcement"
+  ],
+  "active_888_holds": [
+    "Secret-safe evidence: no env dumps, tokens, or raw credentials in ledger",
+    "Network boundary: 100.64.0.2:7422 leaf peer trust/TLS/subjects unproven",
+    "Semantic load: artifact SHA256 proves byte integrity, not runtime loading",
+    "Qdrant auth: direct-IP/proxy boundary and authorization model needs confirmation",
+    "Terminology: 17 backlog repos are planned complements, not operational components"
+  ],
+  "evidence_dir": "/root/AAA/evidence/trinity-33/20260911T200322Z",
+  "witness": {
+    "human": "sovereign approval required for test events, credentials, changes",
+    "ai": "evidence interpretation and promotion-gate design",
+    "earth": "host-side receipts in timestamped evidence ledger"
+  }
+}

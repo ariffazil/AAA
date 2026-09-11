@@ -1,0 +1,6 @@
+NAMES           IMAGE                    STATUS                PORTS
+searxng         searxng/searxng:latest   Up 9 days (healthy)   127.0.0.1:8080->8080/tcp
+searxng-redis   redis:7-alpine           Up 9 days (healthy)   6379/tcp
+minio           minio/minio              Up 9 days (healthy)   127.0.0.1:9000-9001->9000-9001/tcp
+qdrant          qdrant/qdrant:latest     Up 9 days (healthy)   127.0.0.1:6333-6334->6333-6334/tcp
+postgres        postgres:16-alpine       Up 9 days (healthy)   127.0.0.1:5432->5432/tcp

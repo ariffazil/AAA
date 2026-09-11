@@ -1,0 +1,138 @@
+
+=== /root/GEOX ===
+origin	https://github.com/ariffazil/GEOX.git (fetch)
+origin	https://github.com/ariffazil/GEOX.git (push)
+c456858aa9586296e8bb700fffc189ca373a8783
+
+=== /root/scripts ===
+origin	https://github.com/ariffazil/scripts.git (fetch)
+origin	https://github.com/ariffazil/scripts.git (push)
+45c6d93414d918e2c843102e5e93af8b8309e5e4
+ M federation_ritual.py
+ M logs/cron_autopause.log
+ M logs/probe_health_flip.log
+?? fire-seal.py
+?? forge_dependency_probe.py
+?? mata.sh
+?? mcp-health-probe.py
+?? musyawarah_sentinel.py
+?? qdrant_restore_drill_with_receipt.py
+?? scar_pressure_runtime.py
+?? scorecard.py.bak-20260910-P0
+?? sealed_events_sweep.py
+?? sro_calibration_pipeline.py
+?? sro_expiry_checker.py
+?? sro_schema_migration.py
+?? sro_schema_migration.py.bak-20260912
+?? sro_schema_migration.py.bak-v2-20260912
+
+=== /root/ariffazil ===
+origin	git@github.com:ariffazil/ariffazil.git (fetch)
+origin	git@github.com:ariffazil/ariffazil.git (push)
+30dc7b7c2474573d5a23644a924b205d7ecceb98
+
+=== /root/.hermes ===
+89d7aa93c0ad572eabadd28afb86a90fdd01cfa7
+ D carry_forward.bak
+ M carry_forward.json
+ M cron/output/github-pr-watcher.md
+ M experience/measurement-state.json
+ M experience/metabolism-report.json
+ M gateway.pid
+ M governance/wisdom_scar_ledger.jsonl
+ M hooks/wawabot-cognitive/__pycache__/handler.cpython-313.pyc
+ M memories/MEMORY.md
+ M scripts/__pycache__/experience-metabolism.cpython-313.pyc
+ M skills/autonomous-ai-agents/arifos-federation-ops/SKILL.md
+ M skills/hermes-cron-relational/SKILL.md
+ M skills/hermes-deep-research/SKILL.md
+ M skills/relational-cron-design/SKILL.md
+ M skills/substrate/claim-handle-binding/SKILL.md
+ M skills/syed-care-architecture/SKILL.md
+ M spawn-ledger.json
+ M state/gateway.lifecycle.json
+?? cron/audit-receipt-2026-09-12-repair-bundle.json
+?? prompts/
+?? reports/
+?? scripts/adversarial_lint.py
+?? scripts/arif-bind.py
+?? scripts/cron-pdf-deliver.sh
+?? skills/substrate/epistemic-operating-rules/
+?? skills/substrate/transcript-verification-split/
+?? skills/weekly-intelligence-report/
+?? state/malaysia-intelligence-ledger.json
+
+=== /root/arifOS ===
+origin	git@github.com:ariffazil/arifOS.git (fetch)
+origin	git@github.com:ariffazil/arifOS.git (push)
+a9435217c3ae093e866fdb5d8c4a091c78feafe8
+
+=== /root/.nvm ===
+origin	https://github.com/nvm-sh/nvm.git (fetch)
+origin	https://github.com/nvm-sh/nvm.git (push)
+62387b8f92aa012d48202747fd75c40850e5e261
+ D AGENTS.md
+ D CLAUDE.md
+
+=== /root/WELL ===
+origin	https://github.com/ariffazil/WELL.git (fetch)
+origin	https://github.com/ariffazil/WELL.git (push)
+3dcda541f3af5cc3a3d827dc248884e2549394ca
+
+=== /root/arifFlow ===
+origin	git@github.com:ariffazil/arifFLOW.git (fetch)
+origin	git@github.com:ariffazil/arifFLOW.git (push)
+19674ed3ba8a2c1d33f6732916ca24980e2d4afa
+
+=== /root ===
+
+=== /root/arif-fazil.com ===
+origin	git@github.com:ariffazil/arif-fazil.com.git (fetch)
+origin	git@github.com:ariffazil/arif-fazil.com.git (push)
+9bd9c8f105f6e244a1d1de2683f7d696066a240f
+
+=== /root/WEALTH ===
+origin	https://github.com/ariffazil/WEALTH.git (fetch)
+origin	https://github.com/ariffazil/WEALTH.git (push)
+32f5ae69fb2ca1ab3f601ddea7d011d13f1ea600
+
+=== /root/AAA ===
+origin	https://github.com/ariffazil/AAA.git (fetch)
+origin	https://github.com/ariffazil/AAA.git (push)
+231a9f62fdc2e8d3a94bc7c72b1b1267897c16a0
+ M docs/carry_forward.json
+ M tools/nusantara-validator
+?? docs/carry_forward_backups/carry_forward_1789156803.json
+?? evidence/
+?? instructions/attention-scarcity-economics.md
+
+=== /root/A-FORGE ===
+origin	https://github.com/ariffazil/A-FORGE.git (fetch)
+origin	https://github.com/ariffazil/A-FORGE.git (push)
+25ad1ddf7e60282737698367e1d4fb7071bbf757
+
+=== /root/memory ===
+4ed80f14399ffd6eed25793d1178c640941454c0
+ M archive/2026-06-28/petronas-analysis/petronas_wealth_signal_pack_2026-06-26/tests/test_impact_graph.py
+ M archive/2026-06-28/petronas-analysis/petronas_wealth_signal_pack_2026-06-26/tests/test_regime_classifier.py
+ M archive/2026-06-28/petronas-analysis/petronas_wealth_signal_pack_2026-06-26/tests/test_source_weight.py
+ M archive/2026-06-28/petronas-analysis/petronas_wealth_signal_pack_2026-06-26/tests/test_stress_score.py
+ M archive/2026-06-28/petronas-analysis/petronas_wealth_signal_pack_2026-06-26/wealth_kernel_skeleton.py
+ M people/ALIFF/person-card.md
+ M people/IZZU/person-card.md
+ M people/people_registry.json
+ M people/scripts/build_paxis_cards.py
+ M scripts/arifos_graph_builder.py
+ M scripts/walk_graph.py
+?? 2026-09-07-TENGKU-TAUFIK-PETROS-KNOWLEDGE-GRAPH.md
+?? SCAR-VISION-COMPILATION.md
+?? people/ALIFF/person-card.md.bak-idfix-20260911T161727Z
+?? people/IZZU/person-card.md.bak-idfix-20260911T161727Z
+?? people/SYED/ORIGIN.md
+?? people/people_registry.json.bak-idfix-20260911T161727Z
+
+=== /root/FRAME ===
+origin	https://github.com/ariffazil/FRAME.git (fetch)
+origin	https://github.com/ariffazil/FRAME.git (push)
+f9ade120a278f7749b27a4f4fb9a7e6be36c6c96
+?? src/frame_organ/__pycache__/
