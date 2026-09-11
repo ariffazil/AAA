@@ -21,6 +21,14 @@ See source lineage.
 ```
 *Purpose:* Prevents agents from treating Concept Canon as File Canon (eliminates phantom file hunts).
 
+### [CONCEPT] Memory Promotion Gate (Ratified 2026-09-11 by ARIF)
+```text
+[CONCEPT]
+Witness ≠ Seal ≠ Memory. Seal = attestation sahaja.
+Memory hanya melalui Four Gates (A: derivation, B: deletion, C: decision, D: novelty).
+Canonical doctrine: /root/AAA/instructions/memory-promotion-gate.md
+```
+
 ---
 
 ## IDENTITIES (Category A — human-held)
