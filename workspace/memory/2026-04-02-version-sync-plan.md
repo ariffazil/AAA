@@ -185,7 +185,7 @@ Go to `https://t.me/+AQ_myWl0MFtmNmQ1` and add **@AGI_ASI_bot** to the group.
 
 **Step 2 — Once added, run this and I'll auto-detect:**
 ```bash
-curl -s "https://api.telegram.org/bot8149595687:AAHGfcPcRzCqYvXE2D_0CPxCMGYNgYr2au4/getUpdates"
+curl -s "https://api.telegram.org/bot<REDACTED_BOT_TOKEN>/getUpdates"
 ```
 
 Or alternatively, I can set `groupPolicy: "open"` temporarily which allows any group the bot is in — less secure but immediate. Your call.
@@ -209,7 +209,7 @@ Sender (untrusted metadata):
 }
 ```
 
-curl -s "https://api.telegram.org/bot8149595687:AAHGfcPcRzCqYvXE2D_0CPxCMGYNgYr2au4/getUpdates"
+curl -s "https://api.telegram.org/bot<REDACTED_BOT_TOKEN>/getUpdates"
 assistant: Empty — webhook is likely active and consuming updates. Let me clear it:
 
 assistant: Still empty — the gateway is actively polling and consuming updates. The bot needs to actually be **in the group** to receive messages. You need to:
