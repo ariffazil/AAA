@@ -73,7 +73,7 @@
     {"id": "genesis-paradox", "path": "/root/arifOS/GENESIS/006_PETRONAS_PARADOX.md", "type": "doctrine", "organ": "arifOS", "status": "live", "pillar": "governance", "summary": "Petronas paradox (GENESIS/006)"},
     {"id": "genesis-sovereign-energy", "path": "/root/arifOS/GENESIS/024_PETRONAS_SOVEREIGN_ENERGY_INTELLIGENCE.md", "type": "doctrine", "organ": "arifOS", "status": "live", "pillar": "governance", "summary": "Sovereign energy intelligence (GENESIS/024)"},
     {"id": "genesis-fourfold", "path": "/root/arifOS/GENESIS/062_FOURFOLD_AXIOM_SIGNAL_ARCHITECTURE.md", "type": "doctrine", "organ": "arifOS", "status": "live", "pillar": "governance", "summary": "Fourfold axiom (GENESIS/062)"},
-    {"id": "deepdive-quarantined", "path": "/root/.quarantine/zen-20260912/_quarantine/2026-08-29-petronas-deepdive/", "type": "bundle", "organ": "AAA", "status": "quarantined", "pillar": "financials", "summary": "Aug-2026 deepdive (00_QUANTITATIVE.md PAT RM7.0B, 08_KNOWLEDGE_GRAPH.md) — recoverable"}
+    {"id": "deepdive-restored", "path": "/root/forge_work/2026-08-29-petronas-deepdive/final_bundle/", "type": "bundle", "organ": "AAA", "status": "live", "pillar": "financials", "summary": "Aug-2026 deepdive (00_QUANTITATIVE.md PAT RM7.0B / -73.3%, 08_KNOWLEDGE_GRAPH.md P1-P7 vs R1-R18) — RESTORED 2026-09-12"}
   ],
   "edges": [
     {"from": "router-hermes", "to": "core-analytical-graph", "relation": "routes_to"},
