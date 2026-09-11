@@ -368,6 +368,22 @@ decision_packet_engine:
     sealed_at: "2026-09-12T02:46:00+08:00"
 
 # ─────────────────────────────────────────────────────────────
+# FEDERATED MEMORY ADMISSIBILITY (SRO v1 Gate)
+# ─────────────────────────────────────────────────────────────
+memory_admissibility_policy:
+  version: "1.0.0"
+  status: "ACTIVE_CANARY"
+  contract_path: /root/AAA/contracts/memory/memory-admissibility-policy.yaml
+  evaluator_path: /root/AAA/contracts/memory/admissibility_gate.py
+  test_suite: /root/AAA/contracts/memory/test_admissibility.py
+  collection: "arifos_memory"
+  query_modes: [operational_default, historical_lineage]
+  status_vocabulary: [ACTIVE, REVIEWED, STALE, EXPIRED, SUPERSEDED]
+  verified_live_points: 99
+  operational_admissible: 59
+  operational_excluded: 40
+
+# ─────────────────────────────────────────────────────────────
 # DERIVED ARTIFACTS — These files are generated from this SOT
 # ─────────────────────────────────────────────────────────────
 derived_from:
