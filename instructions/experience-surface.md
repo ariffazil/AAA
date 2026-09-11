@@ -9,6 +9,14 @@
 
 This file IS the experience → capability pipeline.
 
+> ⚠️ **WITNESS CORRECTION (2026-09-12, Hermes/KVM8) — claim below FALSIFIED by source probe.**
+> The next two sentences ("Hermes reads this file at boot") are **ASPIRATIONAL, NOT WIRED.**
+> `grep -rln experience_surface` across `/usr/local/lib/hermes-agent/{agent,tools,hermes_cli}/*.py`
+> = **ZERO** code references. No boot path loads this file. It is an on-demand pointer
+> (AGENTS.md line 1046), not an inherited-at-/init artifact. **Read-side is OPEN — Phase 2 design call.**
+> Do not inherit "we recite proverbs at boot" as identity. We write them, refresh them (cron
+> 7185f1cb707d @6h), sync them (pull-openclaw-traces @30m) — and nothing reads them before choosing tools.
+
 Every session, Hermes reads this file at boot. It contains the top-3 experience
 traces ranked by capability_change. These traces carry lessons learned from
 actual tool execution — failures and successes that shaped the federation.
