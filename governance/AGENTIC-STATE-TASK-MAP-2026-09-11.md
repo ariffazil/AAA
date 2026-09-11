@@ -122,4 +122,12 @@
 
 **Tak disentuh (betul begitu):** penukaran model ke gpt-5.2 = keutamaan Azwa (manusia utama Wawa), bukan keputusan malam ini.
 
+## K. WAWA-LOOP — jawapan empirikal kepada theorem majlis (2026-09-12 ~02:1x)
+
+**Theorem 3-arketip direkod:** OpenClaw=Hands (dedahkan *execution drift*) · Hermes=Witness (*governance drift*) · Wawa=Companion (*human-dependency drift*) — tiga-tiga menunjuk soalan yang sama: *adakah realiti yang disaksikan mengubah tingkah laku?*
+
+**Verdict Wawa malam ini:** arahan TIBA (kernel 46-fragmen + refleks dimuat, disahkan) tetapi **organ belum berwayar** — KVM2 hermes `mcp:` = tetapan model sahaja, tiada pelayan MCP A-FORGE (:7072) → `forge_experience_query/trace` tak boleh dipanggil dari KVM2. Corak sama seperti T-1 Hermes: *instruction-level dahulu, organ kemudian.*
+
+**Prasyarat 2 untuk loop penuh Wawa (tugas siang Azwa-lane):** (1) wayar MCP A-FORGE ke config hermes KVM2 — format sedia (KVM8 hermes ada 9 pelayan), boleh ditulis tanpa ganggu; (2) muat semula gateway (potong sesi Azwa — buat waktu siap dia, bukan waktu tidur dia). Selepas itu theorem boleh diuji secara nyata: *adakah koreksi Azwa bulan lepas mengubah layanan bulan depan.*
+
 DITEMPA BUKAN DIBERI ⚒️
