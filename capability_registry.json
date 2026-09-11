@@ -25,13 +25,38 @@
         "provider_independent": true,
         "survival_events": 1,
         "contradictions_survived": 1,
-        "last_tested": "2026-09-09T18:02:14.541250+00:00",
+        "last_tested": "2026-09-11T00:09:08.139365+00:00",
         "last_verdict": "STABLE"
       },
       "witnesses": [
         {
           "receipt_id": "fitness-voice_synthesis-20260909T180214",
           "checked_at": "2026-09-09T18:02:14.553140+00:00",
+          "verdict": "STABLE"
+        },
+        {
+          "receipt_id": "fitness-voice_synthesis-20260910T000339",
+          "checked_at": "2026-09-10T00:03:39.746101+00:00",
+          "verdict": "STABLE"
+        },
+        {
+          "receipt_id": "fitness-voice_synthesis-20260910T060434",
+          "checked_at": "2026-09-10T06:04:34.196575+00:00",
+          "verdict": "STABLE"
+        },
+        {
+          "receipt_id": "fitness-voice_synthesis-20260910T120557",
+          "checked_at": "2026-09-10T12:05:57.150250+00:00",
+          "verdict": "STABLE"
+        },
+        {
+          "receipt_id": "fitness-voice_synthesis-20260910T180726",
+          "checked_at": "2026-09-10T18:07:26.823296+00:00",
+          "verdict": "STABLE"
+        },
+        {
+          "receipt_id": "fitness-voice_synthesis-20260911T000908",
+          "checked_at": "2026-09-11T00:09:08.151572+00:00",
           "verdict": "STABLE"
         }
       ]
@@ -58,13 +83,38 @@
         "provider_independent": true,
         "survival_events": 1,
         "contradictions_survived": 1,
-        "last_tested": "2026-09-09T18:02:14.546581+00:00",
+        "last_tested": "2026-09-11T00:09:08.144659+00:00",
         "last_verdict": "STABLE"
       },
       "witnesses": [
         {
           "receipt_id": "fitness-text_generation-20260909T180214",
           "checked_at": "2026-09-09T18:02:14.553154+00:00",
+          "verdict": "STABLE"
+        },
+        {
+          "receipt_id": "fitness-text_generation-20260910T000339",
+          "checked_at": "2026-09-10T00:03:39.746110+00:00",
+          "verdict": "STABLE"
+        },
+        {
+          "receipt_id": "fitness-text_generation-20260910T060434",
+          "checked_at": "2026-09-10T06:04:34.196584+00:00",
+          "verdict": "STABLE"
+        },
+        {
+          "receipt_id": "fitness-text_generation-20260910T120557",
+          "checked_at": "2026-09-10T12:05:57.150258+00:00",
+          "verdict": "STABLE"
+        },
+        {
+          "receipt_id": "fitness-text_generation-20260910T180726",
+          "checked_at": "2026-09-10T18:07:26.823305+00:00",
+          "verdict": "STABLE"
+        },
+        {
+          "receipt_id": "fitness-text_generation-20260911T000908",
+          "checked_at": "2026-09-11T00:09:08.151583+00:00",
           "verdict": "STABLE"
         }
       ]
@@ -85,7 +135,7 @@
         "provider_independent": false,
         "survival_events": 0,
         "contradictions_survived": 0,
-        "last_tested": "2026-09-09T18:02:14.552798+00:00",
+        "last_tested": "2026-09-11T00:09:08.150916+00:00",
         "last_verdict": "STABLE"
       },
       "witnesses": [
@@ -93,9 +143,34 @@
           "receipt_id": "fitness-web_search-20260909T180214",
           "checked_at": "2026-09-09T18:02:14.553159+00:00",
           "verdict": "STABLE"
+        },
+        {
+          "receipt_id": "fitness-web_search-20260910T000339",
+          "checked_at": "2026-09-10T00:03:39.746115+00:00",
+          "verdict": "STABLE"
+        },
+        {
+          "receipt_id": "fitness-web_search-20260910T060434",
+          "checked_at": "2026-09-10T06:04:34.196588+00:00",
+          "verdict": "STABLE"
+        },
+        {
+          "receipt_id": "fitness-web_search-20260910T120557",
+          "checked_at": "2026-09-10T12:05:57.150262+00:00",
+          "verdict": "STABLE"
+        },
+        {
+          "receipt_id": "fitness-web_search-20260910T180726",
+          "checked_at": "2026-09-10T18:07:26.823310+00:00",
+          "verdict": "STABLE"
+        },
+        {
+          "receipt_id": "fitness-web_search-20260911T000908",
+          "checked_at": "2026-09-11T00:09:08.151587+00:00",
+          "verdict": "STABLE"
         }
       ]
     }
   },
-  "last_check": "2026-09-09T18:02:14.553163+00:00"
+  "last_check": "2026-09-11T00:09:08.151589+00:00"
 }
