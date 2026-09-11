@@ -242,3 +242,16 @@ Symptom ≠ cause. One HOT can be OpenCode workload + LiteLLM traffic + Hermes p
 - Vision Execution Runbook: `/root/AAA/canon/VISION_EXECUTION_NEXT.md`
 - Gödel Lock (The Reality Invoice): `/root/AAA/canon/GODEL-LOCK-TRE-REALITY-INVOICE-2026-09-07.md`
 - First RTC Receipt: `/root/AAA/receipts/RECEIPT-RTC-001-V2-PHYSIQUE.md`
+
+
+---
+
+### [ATLAS] PETRONAS Institutional Knowledge (Canonical 2026-09-12 by FI-008)
+```text
+[ATLAS]
+Apex-zen single source of truth for all PETRONAS / Petros / SEARAH / PRefChem / Gentari analysis.
+Canonical:  /root/AAA/canon/PETRONAS/ATLAS.md
+Graph:      /root/AAA/canon/PETRONAS/KNOWLEDGE_GRAPH.json
+Router:     /root/.kimi-code/skills/PETRONAS-intelligence-router/SKILL.md
+Rule:       any mention of PETRONAS → load ATLAS first (internal analysis before external search).
+```
