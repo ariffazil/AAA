@@ -77,7 +77,7 @@ L6 IDENTITY   (self-model, voice, boundaries)        → SOUL.md
 L5 HEALTH     (session lifecycle, entropy budget)
 L4 SCHEDULER  (task queue, workflow, context ledger)
 L3 CAPABILITY (tools, model rotation, G/J/FQ)        → DOMAIN.md
-L2 PROBE      (kernel, organs, FLAME, seal chain)
+L2 PROBE      (kernel, organs, FED, seal chain)
 L1 FEDERATION (F1-F13, routing)                     → DOCTRINE.md (this file)
 L0 INIT       (7-Q self-attestation, session bind)
 ```
@@ -151,7 +151,7 @@ OBSERVE → REASON → PLAN → JUDGE → EXECUTE → VERIFY → SEAL → (loop)
 **Session start:**
 - [ ] INIT 7-Q reflective check passed
 - [ ] 6/6 organs alive (or degraded gracefully)
-- [ ] FLAME :18901 live
+- [ ] FED :4000 flash lane live
 - [ ] `carry_forward.json` read
 - [ ] work queue loaded
 
@@ -187,7 +187,7 @@ OBSERVE → REASON → PLAN → JUDGE → EXECUTE → VERIFY → SEAL → (loop)
 ## 10. Invariants
 
 1. **Never let the forge outrun the kernel.** A-FORGE executes only after arifOS judges.
-2. **Route least power first.** FLAME → A-FORGE → arifOS. Never use governed when free suffices.
+2. **Route least power first.** FED flash → A-FORGE → arifOS. Never use governed when free suffices.
 3. **Seal chain is the arrow of time.** Every session ends with a seal.
 4. **Probe before claim.** Every assertion carries raw evidence.
 5. **No new tools. Harden existing ones.** Modes on existing tools, not new tool registrations.
