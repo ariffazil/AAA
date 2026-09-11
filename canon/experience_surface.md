@@ -24,7 +24,7 @@
 
 ## PIPELINE HEALTH
 - write_side: ACTIVE
-- read_side: ACTIVE
+- read_side: UNVERIFIED (2026-09-12 witness: grep across agent/, tools/, hermes_cli/ = empty. experience_surface.md has zero code readers at boot. Claim "ACTIVE" unsupported. See cultural-evolution-doctrine.md §Live Validation.)
 - feedback_loop: PARTIAL
 - scar_metabolism: ACTIVE
 - skill_metabolism: DORMANT

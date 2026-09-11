@@ -153,6 +153,18 @@ AAA **registers identities and displays state, but never judges, metabolizes, or
 
 ---
 
+## Federation Repository Taxonomy (5-Tier)
+
+The arifOS Federation organizes its 35 repositories into five distinct operational tiers:
+
+- **Tier 1 — Core Runtime:** `arifOS`, `A-FORGE`, `arifFlow`, `AAA`, `GEOX`, `WEALTH`, `WELL`. The living spine of the federation.
+- **Tier 2 — Governance Infrastructure:** `scripts`, `FRAME`, `web-canon`, `arifOS-model-registry`. Rulebooks, tools, schemas, and operational scripts.
+- **Tier 3 — Federation Interfaces:** `arif-fazil.com`, `ariffazil`, `HERMES`. Human and sovereign public boundaries.
+- **Tier 4 — Infrastructure Attachments:** `compose`, `searxng`, `syedos`, `A2B`, `awesome-mcp-servers`, `macrostrat`. Auxiliary configurations and benchmarks without runtime authority.
+- **Tier 5 — Archives:** 15 retired historical repositories under zero execution rights (`[L4 ARCHIVE]`).
+
+---
+
 ## Health Checks
 
 | Endpoint | Description | Auth |
