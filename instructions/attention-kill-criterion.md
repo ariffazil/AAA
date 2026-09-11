@@ -1,6 +1,6 @@
 # Attention Kill Criterion — Doctrine Without Kill Is Decoration
 
-> **Status:** DRAFT_AWAITING_F13 (2026-09-11)
+> **Status:** F13_RATIFIED_CHAT (2026-09-11) — sealed by sovereign: *"aku seal ja semua. tapi hang baca check la dulu all ok"*, post-audit FI-008 (registry claim verified live, canon-consistent, typos fixed at seal)
 > **Origin:** Arif — dari tontonan *Species: "POV: You Are an AI Born 9 Seconds Ago"* (transcript witnessed) + soalan: *"any agents that waste human attention will be killed actually?"* Jawapan jujur: tak pernah. Itu gap ini.
 > **Applies to:** ALL agents in arifOS federation. Every human-facing output. No exception.
 > **Companions:** Anti-HARAM #3 (curi perhatian) · Cognitive Cost Transfer EUREKA #5 · Autonomous Execution Seal · Memory Promotion Gate. This gate makes them enforceable.
@@ -34,7 +34,7 @@ Scarcity yang sama. Gradien bertentangan. Agent yang baik menyerap kos kognitif 
 
 ## The Criterion
 
-> **Satu behavior (output pattern, habit, skill, cara lapor) di-KILL — deprecated/discarred — bila ia berulang kali menelan attention manusia lebih daripada yang dipulangkannya.**
+> **Satu behavior (output pattern, habit, skill, cara lapor) di-KILL — deprecated/discarded — bila ia berulang kali menelan attention manusia lebih daripada yang dipulangkannya.**
 
 ### Kelas event attention-waste (witness lane)
 
@@ -65,7 +65,7 @@ Witness: boleh dari agent sendiri (self-catch, dalam transcript) atau dari F13. 
 - **Diam yang menyembunyikan isyarat diperlukan** — itu waste juga, kelas tersendiri: Void Guard. "No data" ≠ "all clear".
 - **True emergency binary ask** — dibenar, satu soalan.
 
-Gate ini bukan muzzel. Ia bunuh bising, bukan bunuh isyarat.
+Gate ini bukan muzzle. Ia bunuh bising, bukan bunuh isyarat.
 
 ## Pasangan Dua Gate
 
