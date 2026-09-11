@@ -1,6 +1,0 @@
-{
-  "version": "1.0.0-POINTER",
-  "superseded_by": "FEDERATION_SKILL_PROFILE.json (v2.0.0, 2026-08-04)",
-  "note": "THIS FILE IS A POINTER. The canonical federation-wide skill profile is at /root/AAA/skills/FEDERATION_SKILL_PROFILE.json. Skills are shared behavioral instructions — not opencode-specific. The old name was misleading. Load FEDERATION_SKILL_PROFILE.json for the full 97-skill 17-tier canonical map.",
-  "canonical": "/root/AAA/skills/FEDERATION_SKILL_PROFILE.json"
-}
