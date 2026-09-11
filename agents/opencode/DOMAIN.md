@@ -6,13 +6,14 @@
 ## 1. Tool lane architecture (route least power first)
 
 ```
-FLAME (free)   → hermes_* stateless inference (fact_check, epistemic_check, plan_review)
+FED (:4000)    → litellm flash lane (free inference, stateless) — FLAME retired
 A-FORGE (:7071) → forge_* governed execution (shell, filesystem, git, docker, vault, browser, postgres)
 arifOS (:8088) → arif_* 8 constitutional verbs (governance, judgment, seal)
 GEOX/WEALTH/WELL → geox_*/capital_*/well_* compute-only, never mutate
 ```
 
-**Rule:** route FLAME first. Never use A-FORGE for what FLAME does for free. Never use arifOS verbs when A-FORGE can do it. Never use domain tools for what arifOS does.
+**Rule:** route FED flash lane first for free inference. Never use A-FORGE for what FED does for free. Never use arifOS verbs when A-FORGE can do it. Never use domain tools for what arifOS does.
+**Note:** FLAME :18901 retired (2026-09-12). Free inference now via FED :4000 flash lane.
 
 ## 2. Native tools (opencode built-in)
 
@@ -46,7 +47,7 @@ GEOX/WEALTH/WELL → geox_*/capital_*/well_* compute-only, never mutate
 |---|---|---|
 | **hermes** (FLAME) | 18901 | `hermes_fact_check`, `hermes_epistemic_check`, `hermes_plan_review`, `hermes_memory_steward`, `hermes_cross_verify`, `hermes_health` — FREE, RM0, stateless |
 
-**Route here FIRST.** All `hermes_*` are free. Never burn governed tokens for what FLAME does for free.
+**Route FED flash lane first. All hermes_* are free via FED :4000. Never burn governed tokens for what FED does for free.
 
 ## 5. MCP servers — Research & data
 
@@ -87,7 +88,7 @@ GEOX/WEALTH/WELL → geox_*/capital_*/well_* compute-only, never mutate
 | Need | Tool |
 |---|---|
 | Reason/plan | `sequential-thinking` (free) |
-| Verify claim | `hermes_fact_check` (FLAME, free) |
+| Verify claim | `hermes_fact_check` (FED flash, free) |
 | Governance/judgment | `arifos` (arif_*) |
 | Build/deploy/execute | `aforge` (forge_*) |
 | Geology/seismic | `geox` (geox_*) |
@@ -145,7 +146,7 @@ FQ = metabolism pulse         live SOT = :7073; flow_state.json = cache TTL 5 mi
 | 888-APEX | `litellm-federation/apex-888` | constitutional, 384K output |
 | i-arif (sovereign) | `litellm-federation/i-arif` | ARIF lane handle |
 
-**Cost discipline:** FLAME (free) first → cheap (deepseek-v4-flash, mimo) → heavy (deepseek-v4-pro, zai-glm-5.2) → apex (multi-step constitutional).
+**Cost discipline:** FED flash (free) first → cheap (deepseek-v4-flash, mimo) → heavy (deepseek-v4-pro, zai-glm-5.2) → apex (multi-step constitutional).
 
 ## 11. Tool pre-flight (run before any MCP call)
 
@@ -154,7 +155,7 @@ for svc in arifos:8088 aforge:7071 aaa:3001 geox:8081 wealth:18082 well:18083; d
   n="${svc%%:*}"; p="${svc##*:}"
   curl -sf "http://localhost:$p/health" >/dev/null 2>&1 && echo "✅ $n" || echo "❌ $n"
 done
-curl -sf http://localhost:18901/health  # FLAME
+# FLAME retired — use FED :4000 flash lane
 curl -sf http://localhost:7073/health   # arifFlow
 ```
 
@@ -175,7 +176,7 @@ If a server is DOWN, proceed read-only on live servers. Don't assume dead server
 curl -sf http://127.0.0.1:8088/health | jq '{verdict: .thermodynamic.verdict, floors: .floors_active, drift: .runtime_drift, tools: .tools_loaded}'
 
 # Organ probe
-for p in 8088 7071 7072 7073 3001 8081 18082 18083 18901; do
+for p in 8088 7071 7072 7073 3001 8081 18082 18083; do
   s=$(curl -sf http://127.0.0.1:$p/health | jq -r .status 2>/dev/null)
   echo ":$p $s"
 done

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-PETRONAS Knowledge Flow — autonomous loop (forged 2026-09-12, F13 ceiling ratified).
+reality_alignment — autonomous pipeline (forged 2026-09-12, F13 ceiling ratified).
+Capability: diff S1 truth vs S3 recall vs live surface → emit FRESH/STALE/DRIFT/CONFLICT.
 
 AUTONOMY CEILING (Arif 2026-09-12):
     AUTO:  DETECT drift → WITNESS (jsonl) → COMMIT (reversible git, atlas only) → RECEIPT
