@@ -1,0 +1,147 @@
+# Federation Memory Adapter — Class Taxonomy (F13 RATIFIED 2026-09-12)
+# This file is the single source of truth for class → collection routing.
+# Every federated agent calls federation_memory_adapter with collection_class.
+# Adapter looks up the route here. Unknown classes are rejected (fail-closed).
+# Authoritative reference: /root/AAA/governance/FEDERATION_MEMORY_ALIGNMENT_DOCTRINE.md
+
+classes:
+  hermes_private:
+    collection: mem0
+    tier_default: session
+    tenant_isolated: true
+    notes: >
+      Per-user/per-group private memory. Hermes routes here with
+      tenant_id = chat_id. Substrate is mem0 (10K+ points live).
+      F6 dignity governs all writes here (no-leakage at aggregate).
+      11,114 pts observed 2026-09-12 00:14 MYT.
+
+  federation_shared:
+    collection: arifos_memory
+    tier_default: canon
+    tenant_isolated: false
+    notes: >
+      Default federation-shared semantic memory. Every agent that does
+      NOT need isolation reads/writes here. 99 pts observed 2026-09-12.
+
+  vault_canon:
+    collection: arifos_vault_canon
+    tier_default: sacred
+    tenant_isolated: false
+    notes: >
+      Immutable vault canon. 13 pts observed 2026-09-12. F6 sacred —
+      never pruned without F13.
+
+  vault_working:
+    collection: arifos_vault_working
+    tier_default: canon
+    tenant_isolated: false
+    notes: >
+      Mutable working surface for in-flight reasoning. 7 pts observed.
+      Subject to pruning per R3.
+
+  constitution:
+    collection: arifos_constitution
+    tier_default: sacred
+    tenant_isolated: false
+    notes: >
+      Constitutional floor definitions, F1-F13, sealed verdicts.
+      14 pts observed. Sacred tier — write only via seal mode.
+
+  evidence:
+    collection: arif_evidence
+    tier_default: canon
+    tenant_isolated: false
+    notes: >
+      Evidence chain. 16 pts observed. ADVISORY tier unless sealed.
+
+  judge_precedent:
+    collection: arifos_precedent
+    tier_default: canon
+    tenant_isolated: false
+    notes: >
+      888-APEX judge precedent. 255 pts observed.
+
+  eureka:
+    collection: atlas333_eureka
+    tier_default: canon
+    tenant_isolated: false
+    notes: >
+      Atlas333 eureka entries — cross-domain insight discoveries.
+      74 pts observed.
+
+  skill_mesh:
+    collection: arifOS_skill_mesh
+    tier_default: canon
+    tenant_isolated: false
+    notes: >
+      Live tool affordances mirror. 191 pts observed (384-dim).
+
+  federation_patterns:
+    collection: federation_memory_patterns
+    tier_default: canon
+    tenant_isolated: false
+    notes: >
+      SOUL.md helix-rotated pattern extraction. 103 pts observed (384-dim).
+      Helix cron writes here deterministically (no LLM).
+
+  session:
+    collection: arifos_session_memory
+    tier_default: session
+    tenant_isolated: false
+    notes: >
+      Per-session continuity, auto-pruned per R3. 56 pts observed.
+
+  audio:
+    collection: arifos_audio_memory
+    tier_default: canon
+    tenant_isolated: false
+    notes: >
+      EMD pipeline audio reflex packets. 2 pts observed.
+
+  identity:
+    collection: identity_vault
+    tier_default: sacred
+    tenant_isolated: false
+    notes: >
+      Identity bindings (Hermes Izzu=1237635275, etc.). 2 pts observed (512-dim).
+      F13 sovereign decisions write here.
+
+  domain_petronas:
+    collection: petronas_knowledge
+    tier_default: canon
+    tenant_isolated: false
+    notes: >
+      Petronas-domain corpus (energy/oil/gas). 1,460 pts observed.
+      WEALTH + GEOX writes here.
+
+  edge_oc:
+    collection: openclaw_memory
+    tier_default: canon
+    tenant_isolated: false
+    notes: >
+      OpenClaw edge agent memory. 9 pts observed.
+
+  _meta:
+    collection: mem0migrations
+    tier_default: ephemeral
+    tenant_isolated: false
+    notes: >
+      Bookkeeping only. Do NOT call from agents. Adapter rejects writes here
+      from non-arifOS kernel paths.
+
+# Substrate observability (live 2026-09-12 00:14 MYT, before migration).
+substrate_observation_date_utc: '2026-09-11T16:14:00Z'
+substrate_engine: qdrant
+substrate_url: http://127.0.0.1:6333
+total_collections: 17
+total_points_observed: 13455
+
+# Contract binding (do not edit without F13):
+# Source: /root/arifOS/docs/FEDERATION_MEMORY_CONTRACT.md
+contract_ratif_date: '2026-06-03'
+contract_status: ACTIVE
+contract_authority: arifOS MCP Kernel
+
+# Alignment doctrine binding:
+alignment_doctrine: /root/AAA/governance/FEDERATION_MEMORY_ALIGNMENT_DOCTRINE.md
+alignment_ratif_date: '2026-09-12'
