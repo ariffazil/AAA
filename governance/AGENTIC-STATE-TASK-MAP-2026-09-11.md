@@ -130,4 +130,18 @@
 
 **Prasyarat 2 untuk loop penuh Wawa (tugas siang Azwa-lane):** (1) wayar MCP A-FORGE ke config hermes KVM2 — format sedia (KVM8 hermes ada 9 pelayan), boleh ditulis tanpa ganggu; (2) muat semula gateway (potong sesi Azwa — buat waktu siap dia, bukan waktu tidur dia). Selepas itu theorem boleh diuji secara nyata: *adakah koreksi Azwa bulan lepas mengubah layanan bulan depan.*
 
+## L. PENUTUP MALAM — ringkasan majlis divalidasi + SEALED (2026-09-12 ~02:2x)
+
+**Ringkasan majlis APEX: VALID dengan 1 pembetulan.** Semua tesis utama semak lulus lawan lejar malam ini (claim-handle · correction→rule→enforcement · archive≠governance · audit-diri · experience loop · Wawa otak-tanpa-saraf). **Pembetulan:** "Identity Truth masih HOLD, Izzu=?" — **LENDAI**; F13 menjawab sendiri ("tu memang id izzu. aku dah check") dan 6/6 permukaan disahkan (Seksyen F). Majlis membaca keadaan pra-jawapan.
+
+**Keadaan akhir federation malam 11→12 Sep:**
+- Kernel **46 fragmen** seragam KVM8+KVM4+KVM2(Wawa) · 2 undang-undang baru (attention-kill, jauhari) + 2 refleks operasi (experience-metabolism, claim-receipt) — semua ber-load setiap boot
+- OpenClaw 2026.9.4/Node 24.21 stabil · manifest hidup-benar (285 hantu tersingkir) · identiti selasa · mesh 7/8 satu-kanon · P2 dipintu & diuji
+- Berat esok: organ-Wawa (wayar MCP + restart siang-Azwa) · P5 archive-gate beroperasi · T-10 telemetri manusia
+
+**INDEKS ROLLBACK (semua boleh undur, satu tempat cari):**
+KVM8: `/opt/arifos/AGENTS.md.bak-20260911-pre-sync` · `.arifos/agents/kimi/AGENTS.md.bak-20260911-stale-overlay` + `.snapshots/{SYSTEM.md.legacy-20260724, aaa-completion-check.sh.p2-20260912}` · `.hermes/skills/.bundled_manifest.archive-20260912` ×2 root+profil · `backups/_QUARANTINE_30D/syncthing-inbox-20260911/` · `/srv/arifos.stale-20260424` · `/home/ariffazil/arifOS.stale-20260619`
+KVM4: `/tmp/{node,openclaw}-symlink.bak-20260912` · `/root/quarantine-20260912/` · workspace `.bak-20260912` ×2 · rollback binari: `npm i -g openclaw@2026.9.1`
+KVM2: tiada fail backup diperlukan (cap via CLI atomic) · kernel terpulang kepada render KVM8
+
 DITEMPA BUKAN DIBERI ⚒️
