@@ -1,5 +1,5 @@
 {
-  "last_session": "session-20260912_022918_fdec01",
+  "last_session": "session-20260912_044015_4e387aaa",
   "unmetabolized": [],
   "active_scars": [
     {
@@ -36,18 +36,28 @@
       "event_id": "evt_df0e5ad40c41d09b",
       "reason": "Failure that taught a lesson (this hurt, remember why).",
       "timestamp": "2026-09-11T19:00:04Z"
+    },
+    {
+      "event_id": "evt_9e77e21dffbef4eb",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-11T20:00:03Z"
+    },
+    {
+      "event_id": "evt_e64953e1d3cdb81e",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-11T21:00:01Z"
     }
   ],
   "pending_skills": [],
   "metrics": {
     "map": 0.0,
-    "echo": 0.13,
-    "total_sessions": 7,
+    "echo": 0.16,
+    "total_sessions": 9,
     "direct_executions": 0,
-    "retained_improvements": 7,
-    "honest_observations": 55
+    "retained_improvements": 9,
+    "honest_observations": 57
   },
-  "last_updated_utc": "2026-09-11T19:00:04Z",
+  "last_updated_utc": "2026-09-11T21:00:01Z",
   "session_id": "SEAL-54cee348f64a4fc0",
   "closed_at": "2026-09-11T18:03:00Z",
   "closing_agent": "kimi-code/FI-008",
