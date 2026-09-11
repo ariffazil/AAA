@@ -55,6 +55,7 @@ For session-start probes, action-tier expansions, conflict resolution, and the a
 | **Institutional Memory Strata (S0–S3)** | `/root/AAA/instructions/institutional-memory-strata.md` | **F13_RATIFIED_CHAT (2026-09-11)** |
 | **Attention Kill Criterion (Doctrine Without Kill Is Decoration)** | `/root/AAA/instructions/attention-kill-criterion.md` | **F13_RATIFIED_CHAT (2026-09-11)** |
 | **Jauhari Intelligence Doctrine (Sovereign Articulation)** | `/root/AAA/instructions/jauhari-intelligence-doctrine.md` | **F13_RATIFIED_CHAT (2026-09-11)** — sovereign-articulated 2026-09-07 · sealed *"aku seal ja semua"* post-audit FI-008 |
+| **PETRONAS Institutional Knowledge Atlas** | `/root/AAA/canon/PETRONAS/ATLAS.md` + `KNOWLEDGE_GRAPH.json` | **CANONICAL (2026-09-12)** — apex-zen single source of truth; any PETRONAS mention → load this first (router: `PETRONAS-intelligence-router`) |
 
 **To load:** read the file path above. Each fragment is independent and may be consulted separately.
 
