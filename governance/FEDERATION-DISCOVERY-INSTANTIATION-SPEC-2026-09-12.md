@@ -29,10 +29,12 @@ OBS — 194 live tools across 8 organs; 213 canonical skills; L1–L6 memory fab
 ```yaml
 capability_id:
   owner: <organ>
-  adapters: [tool, mcp, skill, api]
-  liveness: { probed_at, status }   # mutable overlay — probed, never asserted
-  witness_surface: <receipt path>
   authority_ceiling: <JUDGE_ONLY | EXECUTE_AFTER_SEAL | COMPUTE_ONLY | ...>
+  adapters: [tool, mcp, skill, api]
+  replacement_paths: [fallback_substrate_or_adapter]   # survivability map (Arif refinement)
+  failure_mode: <degrade | HOLD | decompose>           # what resolution returns if adapters die
+  liveness: { probed_at, status }   # mutable overlay — probed, never asserted
+  witness_source: <receipt path>
 ```
 
 Consolidates the 6 fragments into ONE. Lives at `AAA/federation/` — a path owned by no single organ. Capability entries append-only; liveness is a read-time probe overlay (this is what makes a COLD owner resolvable via alternate adapter instead of a 404).
