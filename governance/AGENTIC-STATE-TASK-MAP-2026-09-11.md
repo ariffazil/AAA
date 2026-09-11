@@ -144,4 +144,12 @@ KVM8: `/opt/arifos/AGENTS.md.bak-20260911-pre-sync` · `.arifos/agents/kimi/AGEN
 KVM4: `/tmp/{node,openclaw}-symlink.bak-20260912` · `/root/quarantine-20260912/` · workspace `.bak-20260912` ×2 · rollback binari: `npm i -g openclaw@2026.9.1`
 KVM2: tiada fail backup diperlukan (cap via CLI atomic) · kernel terpulang kepada render KVM8
 
+## M. WAWA CONTEXT — punca + pembaikan (2026-09-12 ~02:4x)
+
+**"Kenapa konteks asi-555 rendah?" — JAWAPAN: penyakit isytihar-tiada.** Kebenaran litellm KVM4: setiap penempatan asi-555 (mimo-v2.5-pro primer, qwen3.8-max/3.7-max order-99) isytihar **1,048,576** — tetapi KVM2 hermes tak pernah set `context_length` → lalai 256K = **Wawa buang 75% tingkap percuma** sejak mula. (KVM8 Hermes dah 1M — penyakit KVM2-sahaja.) L662 32K = model lokal qwen2.5-coder — itu kebenarannya, dibiarkan.
+
+**Dibaiki per-model ikut kebenaran (CLI, disahkan L128/131/135):** asi-555=1,048,576 · agi-333=1,048,576 (semua penempatan qwen/glm 1M) · **forge-777=131,072** (kimi-k3 — jangan blanket). Gateway muat semula automatik pada mtime; sesi Wawa berikutnya = 1M.
+
+**Penemuan sampingan:** (1) penempatan primer `supports_image_input: true` — "tiada vision native" Wawa mungkin bendera penyedia (provider-flag) hermes, bukan had model; sahkan sebelum janji. (2) `fallback_providers` KVM2 dah ada qwencloud-free (qwen3.6-flash) — cadangan "qwen fallback" separuh berwayar; naik taraf flash→plus = satu baris, pilihan Azwa. (3) penyedia (provider) SEA-LION dah wujud dalam konfigurasi — masuk rantaian = satu baris. (4) `mcp_servers` KVM2 = arifOS+hound, **aforge tiada** — tugas organ-Wawa esok: satu entri (bentuk arifOS) + memulakan semula (restart) waktu siang Azwa.
+
 DITEMPA BUKAN DIBERI ⚒️
