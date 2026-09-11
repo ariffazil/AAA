@@ -37,6 +37,18 @@
 3. **Dramatic framing covering uncertainty** → Red flag. Uncertainty must be visible, not narrated away
 4. **Narrative coherence mistaken for truth** → Coherence ≠ evidence
 5. **Confidence based on language quality, not provenance** → Reduce confidence
+6. **"Expected to" labeled OBSERVED** → HYPOTHESIS. Separate statement from forecast.
+7. **Falsifier used on a dated observation** → Wrong tool. Use supersession trigger or correction trigger.
+8. **Scenario probabilities sum > 100%** → Redo. Use point estimates that sum to exactly 100%.
+
+## CORRECTION AND SUPERSESSION LANGUAGE
+
+For dated observations (OPR, data releases, events), do NOT use "falsifier":
+- **Supersession trigger:** "Updated when BNM next meets" — future data replaces this.
+- **Correction trigger:** "Source contradicts the claim" — this may be wrong now.
+
+For causal claims and hypotheses ONLY:
+- **Falsifier:** "The structural-absorber interpretation weakens if federal fiscal plans demonstrably reduce PETRONAS reliance while preserving targets"
 
 ---
 
