@@ -3,28 +3,33 @@
 P2.9 — MCP Auto-Discovery Watcher
 ===================================
 Endpoint poller that discovers new MCP servers, extracts their tool surface,
-embeds the capability descriptions, and auto-indexes into Qdrant.
+and auto-indexes the capability descriptions into federation memory.
 
 Architecture:
   1. Poll known MCP endpoints (:8088, :7072, :8081, :18082, :18083, )
   2. Fetch tools/list from each
-  3. Embed tool descriptions using all-MiniLM-L6-v2
-  4. Upsert into Qdrant arifOS_skill_mesh (skill_id = tool name)
-  5. Detect new/removed tools since last scan
+  3. Store tool affordances via FederationMemory adapter
+     (collection_class=skill_mesh → arifOS_skill_mesh; the kernel
+     owns embedding — agents never touch the vector store directly)
+  4. Detect new/removed tools since last scan
 
 Forged: 2026-08-10 by 333-AGI under F13 directive.
+Migrated 2026-09-12 to federation_memory_adapter (F13 SOVEREIGN
+directive — /root/AAA/governance/FEDERATION_MEMORY_ALIGNMENT_DOCTRINE.md).
 """
 
 import json
-import time
+import os
 import urllib.request
 import sys
 from pathlib import Path
 from datetime import datetime, timezone
-from typing import Optional
 
-from qdrant_client import QdrantClient
-from sentence_transformers import SentenceTransformer
+_FEDERATION_DIR = Path(__file__).resolve().parents[1] / "federation"
+if str(_FEDERATION_DIR) not in sys.path:
+    sys.path.insert(0, str(_FEDERATION_DIR))
+
+from federation_memory_adapter import FederationMemory
 
 # ── Config ────────────────────────────────────────────────────────
 MCP_ENDPOINTS = {
@@ -37,9 +42,8 @@ MCP_ENDPOINTS = {
     "fed": "http://127.0.0.1:7074",
 }
 
-QDRANT_HOST = "localhost"
-QDRANT_PORT = 6333
-COLLECTION = "arifOS_skill_mesh"
+COLLECTION_CLASS = "skill_mesh"  # → arifOS_skill_mesh (memory_classes.yaml)
+MEMORY_TIER = "canon"
 STATE_FILE = Path("/root/.local/share/arifos/mcp_discovery_state.json")
 
 
@@ -66,9 +70,11 @@ def fetch_tools(endpoint: str) -> list[dict]:
 
 
 def main():
-    print("🔍 MCP Auto-Discovery Watcher — P2.9")
-    encoder = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
-    client = QdrantClient(host=QDRANT_HOST, port=QDRANT_PORT)
+    print("🔍 MCP Auto-Discovery Watcher — P2.9 (FederationMemory)")
+    fm = FederationMemory(
+        actor_id="aaa-mcp-discovery",
+        session_id=os.getenv("ARIFOS_SESSION_ID", "system"),
+    )
 
     # Load previous state
     previous_state = {}
@@ -96,10 +102,6 @@ def main():
             if skill_id in previous_state.get("indexed_tools", {}):
                 continue  # Already indexed
 
-            # Embed tool description
-            text = f"{tool_name}: {tool_desc}" if tool_desc else tool_name
-            vector = encoder.encode(text).tolist()
-
             # Classify capability tier
             tier = "fed-agent-subagent"  # Default
             desc_lower = (tool_name + " " + tool_desc).lower()
@@ -110,26 +112,24 @@ def main():
             elif any(k in desc_lower for k in ["ingest", "document", "pdf"]):
                 tier = "fed-long-context"
 
-            point_id = abs(hash(skill_id)) % (2**63)
-            client.upsert(
-                collection_name=COLLECTION,
-                points=[
-                    {
-                        "id": point_id,
-                        "vector": vector,
-                        "payload": {
-                            "skill_id": skill_id,
-                            "name": tool_name,
-                            "description": tool_desc[:500],
-                            "capability_tier": tier,
-                            "ecology_state": "WARM",
-                            "total_invocations": 0,
-                            "success_count": 0,
-                            "avg_latency_ms": 0.0,
-                            "source": f"mcp-discovery/{organ}",
-                        },
-                    }
-                ],
+            # Store tool affordance via adapter (kernel owns embedding)
+            fm.store(
+                content={
+                    "skill_id": skill_id,
+                    "name": tool_name,
+                    "description": tool_desc[:500],
+                    "capability_tier": tier,
+                    "ecology_state": "WARM",
+                    "total_invocations": 0,
+                    "success_count": 0,
+                    "avg_latency_ms": 0.0,
+                    "source": f"mcp-discovery/{organ}",
+                },
+                tier=MEMORY_TIER,
+                collection_class=COLLECTION_CLASS,
+                tags=["skill-mesh", "mcp-discovery", f"organ:{organ}", f"capability-tier:{tier}"],
+                source_type="mcp_tool_discovery",
+                source_uri=f"{endpoint}/mcp",
             )
             indexed += 1
             new_tools += 1
