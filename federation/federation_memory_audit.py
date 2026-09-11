@@ -116,7 +116,7 @@ DIRECT_PATTERNS: list[tuple[str, re.Pattern[str]]] = [
 # File extensions to scan:
 SCAN_EXTS: set[str] = {".py", ".js", ".ts", ".tsx", ".go", ".rs"}
 
-# Skip dirs (heritage, archive, build artifacts):
+# Skip dirs (heritage, archive, build artifacts, venvs, deprecated code):
 SKIP_DIRS: set[str] = {
     "node_modules",
     ".git",
@@ -130,6 +130,10 @@ SKIP_DIRS: set[str] = {
     ".pyc",
     "__archive__",
     ".venv",
+    "venv",
+    "site-packages",
+    "skills-deprecated",  # not live; per AGENTS.md "deprecated → use new"; excluded
+    "snapshots",
     "venv",
     "site-packages",
     "snapshots",
