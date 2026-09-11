@@ -1,5 +1,5 @@
 {
-  "last_session": "session-20260912_044015_4e387aaa",
+  "last_session": "exp-1789167718146-1789166766310",
   "unmetabolized": [],
   "active_scars": [
     {
@@ -46,18 +46,39 @@
       "event_id": "evt_e64953e1d3cdb81e",
       "reason": "Failure that taught a lesson (this hurt, remember why).",
       "timestamp": "2026-09-11T21:00:01Z"
+    },
+    {
+      "event_id": "evt_d9ddb681116b277c",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-11T22:00:02Z"
+    },
+    {
+      "event_id": "evt_f68177db34f50197",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-11T23:00:02Z"
+    },
+    {
+      "event_id": "evt_1688431399499f07",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-11T23:00:02Z"
     }
   ],
-  "pending_skills": [],
+  "pending_skills": [
+    {
+      "event_id": "evt_4e70ccd8469ced92",
+      "reason": "Reusable  capability/workflow discovered.",
+      "target": "/root/HERMES/skills/_drafts/SKILL-exp-178916771814.md"
+    }
+  ],
   "metrics": {
-    "map": 0.0,
-    "echo": 0.16,
-    "total_sessions": 9,
-    "direct_executions": 0,
-    "retained_improvements": 9,
-    "honest_observations": 57
+    "map": 0.08,
+    "echo": 0.22,
+    "total_sessions": 13,
+    "direct_executions": 1,
+    "retained_improvements": 13,
+    "honest_observations": 60
   },
-  "last_updated_utc": "2026-09-11T21:00:01Z",
+  "last_updated_utc": "2026-09-11T23:15:01Z",
   "session_id": "SEAL-54cee348f64a4fc0",
   "closed_at": "2026-09-11T18:03:00Z",
   "closing_agent": "kimi-code/FI-008",
