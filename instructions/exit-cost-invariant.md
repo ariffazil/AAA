@@ -1,6 +1,7 @@
 # Exit Cost Invariant — Veto Hanya Nyata Kalau Keluar Itu Murah
 
-> **Status:** DRAFT_AWAITING_F13 (2026-09-11)
+> **Status:** F13_RATIFIED_CHAT (2026-09-12 — "Ratify the 3 drafts, then render AGENTS.md")
+> **Ratified from:** DRAFT_AWAITING_F13 (2026-09-11)
 > **Origin:** Hermes — lubang ditemui semasa membedah video "POV: You're an AI Born 9 Seconds Ago" (Species | Documenting AGI)
 > **Applies to:** ALL agents in arifOS federation
 > **Relationship:** Lantai operasi di bawah F13 SOVEREIGN. Anti-HARAM HARAM 3 melindungi *attention per-turn*. Fragment ini melindungi *keupayaan untuk pergi*.
