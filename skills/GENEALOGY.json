@@ -1,1876 +1,1862 @@
 {
- "_doc": "Machine-generated skill genealogy. Every field is evidence (git birth-commit author/date, else file mtime). 'historic-unknown' is honest \u2014 never fabricate created_by. Regenerate after sweeps: see aaa-governance-fixtures.",
- "count": 267,
- "generated": "2026-09-07T01:24:04.013148Z",
- "skills": {
-  "aaa/AAA-OCR-optical-compression": {
-   "created_at": "2026-09-04T01:39:15+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "7922e5376086"
-  },
-  "aaa/AAA-asr-glm-ingest": {
-   "created_at": "2026-08-19T18:02:28+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "ffebffad828f"
-  },
-  "aaa/AAA-audio-emd-pipeline": {
-   "created_at": "2026-08-19T18:02:28+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "abf0f3c08948"
-  },
-  "aaa/AAA-audio-qualia-doctrine": {
-   "created_at": "2026-08-19T18:02:28+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "9d090fd9ec11"
-  },
-  "aaa/AAA-human-physique-topology": {
-   "created_at": "2026-09-06T20:13:01.091331Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime",
-   "root": "aaa",
-   "sha256_12": "d502424f38be"
-  },
-  "aaa/AAA-setup-help": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "e2265f673c39"
-  },
-  "aaa/AAA-shadow-mode": {
-   "created_at": "2026-08-26T22:50:33+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "1b0b91beca44"
-  },
-  "aaa/AAA-somatic-emd-pipeline": {
-   "created_at": "2026-08-19T18:02:28+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "97060622f070"
-  },
-  "aaa/AAA-somatic-engine-catalog": {
-   "created_at": "2026-08-19T18:02:28+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "981c682ab98d"
-  },
-  "aaa/AAA-somatic-music-doctrine": {
-   "created_at": "2026-08-19T18:02:28+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "50b18cc1ffd1"
-  },
-  "aaa/AAA-tts-engine-catalog": {
-   "created_at": "2026-08-19T18:02:28+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "b63f75702070"
-  },
-  "aaa/AAA-voice-cloning-mimo-minimax": {
-   "created_at": "2026-08-19T18:02:28+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "ee22191bcf9e"
-  },
-  "aaa/AAA-voice-cloning-qwen-cloud": {
-   "created_at": "2026-08-19T18:02:28+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "f3b93a8894d0"
-  },
-  "aaa/AGI-agentic-web": {
-   "created_at": "2026-09-07T04:03:41+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "c5adac4874ae"
-  },
-  "aaa/AGI-decisions-reflect": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "15d7c9b079c2"
-  },
-  "aaa/AGI-dream-engine": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "cba4f4e15388"
-  },
-  "aaa/AGI-explorer-intelligence": {
-   "created_at": "2026-09-07T04:03:41+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "41b7919b4412"
-  },
-  "aaa/AGI-graph-engineering-patterns": {
-   "created_at": "2026-08-18T17:02:57+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "4e0be441046c"
-  },
-  "aaa/AGI-multimodal-bridge": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "9fb2e9fbf1ee"
-  },
-  "aaa/AGI-plan-dag": {
-   "created_at": "2026-09-04T01:39:15+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "92ba466639aa"
-  },
-  "aaa/AGI-web-optimization": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "9feb772c5396"
-  },
-  "aaa/APEX-quantum-eureka": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "d8c6c02caa2a"
-  },
-  "aaa/ASI-agent-invariants": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "ccc8ed20c858"
-  },
-  "aaa/ASI-agentic-architecture": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "cfe03ed12e41"
-  },
-  "aaa/ASI-agentic-governance": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "005ba7bd1b97"
-  },
-  "aaa/ASI-fabrication-prevention": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "c812fe41cc05"
-  },
-  "aaa/ASI-summarize": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "a56c63832557"
-  },
-  "aaa/AUDIT-repo-reality": {
-   "created_at": "2026-08-14T20:52:43+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "680b71c65d0b"
-  },
-  "aaa/BIJAKSANA-compile": {
-   "created_at": "2026-09-07T00:34:56+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "a6aab4d26aeb"
-  },
-  "aaa/CLAUDE-agentic-state": {
-   "created_at": "2026-08-26T13:41:12+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "fae7b51c21a0"
-  },
-  "aaa/CLAUDE-meta-mesa": {
-   "created_at": "2026-08-26T13:41:12+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "1b0124c3ffde"
-  },
-  "aaa/CLAUDE-zen-router": {
-   "created_at": "2026-08-26T13:41:12+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "8e2399c95920"
-  },
-  "aaa/FORGE-act-federation-ingress": {
-   "created_at": "2026-09-04T06:25:55+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "2b663dca5ec0"
-  },
-  "aaa/FORGE-agentic-web-builder": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "63ca7445868f"
-  },
-  "aaa/FORGE-call-map": {
-   "created_at": "2026-08-09T04:46:58Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "3cf9b0f2292c"
-  },
-  "aaa/FORGE-ci-diagnose": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "eec9bca65f20"
-  },
-  "aaa/FORGE-code-analysis": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "1afadac13a67"
-  },
-  "aaa/FORGE-context-compressor": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "fc59f7cdfce2"
-  },
-  "aaa/FORGE-cross-agent-handoff": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "18d632fb96e4"
-  },
-  "aaa/FORGE-cross-repo-doc-zen": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "1e45b79d4735"
-  },
-  "aaa/FORGE-design-intelligence": {
-   "created_at": "2026-08-20T18:20:23+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "c853ebdab3c4"
-  },
-  "aaa/FORGE-did-web-identity": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "62cc45721fc2"
-  },
-  "aaa/FORGE-document-intelligence": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "74732c5434dc"
-  },
-  "aaa/FORGE-ephemeral-genesis": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "6395b5313a08"
-  },
-  "aaa/FORGE-esm-require-guard": {
-   "created_at": "2026-08-13T04:10:06+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "ed08afe02f6d"
-  },
-  "aaa/FORGE-fastapi-api-builder": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "78d665c4914d"
-  },
-  "aaa/FORGE-fastmcp": {
-   "created_at": "2026-08-04T08:02:11Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "6ba83abfa8db"
-  },
-  "aaa/FORGE-federation-manifest": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "8b270d3416b0"
-  },
-  "aaa/FORGE-github-ops": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "80ac10a93831"
-  },
-  "aaa/FORGE-google-workspace": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "d04d987e314d"
-  },
-  "aaa/FORGE-governance-jsonld": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "2609f73c3f5b"
-  },
-  "aaa/FORGE-hermes-self-evolution": {
-   "created_at": "2026-08-25T05:45:40+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "5e89349adb3b"
-  },
-  "aaa/FORGE-infra-crons": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "7436c389f4dd"
-  },
-  "aaa/FORGE-infra-guardian": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "9880ee4f7737"
-  },
-  "aaa/FORGE-issue-triage": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "7913b30e9b57"
-  },
-  "aaa/FORGE-kimi-code": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "3abf74873e25"
-  },
-  "aaa/FORGE-komda-color-law": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "54f86ff5e37e"
-  },
-  "aaa/FORGE-lsp-pre-edit-gate": {
-   "created_at": "2026-08-06T08:53:56Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "e832956ebf00"
-  },
-  "aaa/FORGE-mcp-a2a-agentic": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "dc18d19f9a00"
-  },
-  "aaa/FORGE-mcp-gui": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "11d455508edd"
-  },
-  "aaa/FORGE-model-monitor": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "bf392cf22425"
-  },
-  "aaa/FORGE-musyawarah-gotong": {
-   "created_at": "2026-08-19T22:43:02+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "f52ef52d30cf"
-  },
-  "aaa/FORGE-nextjs-mastery": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "18d0758cfc85"
-  },
-  "aaa/FORGE-onboarding": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "66df15070549"
-  },
-  "aaa/FORGE-postgres-schema-design": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "2dae63430817"
-  },
-  "aaa/FORGE-react-spa-discipline": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "3a30ccfc6f9b"
-  },
-  "aaa/FORGE-redis-qdrant-integration": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "3f5a3b401f89"
-  },
-  "aaa/FORGE-repo-intelligence": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "b84adeb85d9f"
-  },
-  "aaa/FORGE-route-least-power": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "8bdf9c86f59b"
-  },
-  "aaa/FORGE-seal-a-close": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "d2252c8612dd"
-  },
-  "aaa/FORGE-secret-hygiene": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "87c533f82934"
-  },
-  "aaa/FORGE-spatial-grounding": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "d74c953cace4"
-  },
-  "aaa/FORGE-subagent-lifecycle": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "b5ce923a00de"
-  },
-  "aaa/FORGE-subagent-spawn": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "c641fb7fb902"
-  },
-  "aaa/FORGE-symlink-audit": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "15e167c0df84"
-  },
-  "aaa/FORGE-t3a-binding-matrix": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "de4ab458806a"
-  },
-  "aaa/FORGE-tailwind-tokens": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "4c9e83e889e2"
-  },
-  "aaa/FORGE-telegram-audit": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "659862f5dd05"
-  },
-  "aaa/FORGE-vault999-witness": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "99efcce1286e"
-  },
-  "aaa/FORGE-visual-qa-w3": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "5e15ab709ab9"
-  },
-  "aaa/FORGE-well-boundary-repair": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "c766ca75703f"
-  },
-  "aaa/HERMES-opencode-protocol": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "d83b227a8716"
-  },
-  "aaa/KERNEL-trinity-33": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "feed34faf1f0"
-  },
-  "aaa/MY-REALITY-STACK": {
-   "created_at": "2026-08-15T07:52:58+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "f88f7d04a338"
-  },
-  "aaa/QWEN-agentic-state": {
-   "created_at": "2026-08-26T13:41:12+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "5f22fa0c0fad"
-  },
-  "aaa/QWEN-meta-mesa": {
-   "created_at": "2026-08-26T13:41:12+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "590b6c73b926"
-  },
-  "aaa/QWEN-zen-router": {
-   "created_at": "2026-08-26T13:41:12+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "2ee7e3f2407a"
-  },
-  "aaa/RSI-federation-mesh": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "8f43ae58f1d3"
-  },
-  "aaa/SEAL-discipline": {
-   "created_at": "2026-09-07T00:34:56+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "0514c9f17106"
-  },
-  "aaa/WISDOM-reader": {
-   "created_at": "2026-09-07T00:34:56+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "977aff809377"
-  },
-  "aaa/a2a-task-delegator": {
-   "created_at": "2026-08-25T05:17:43+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "61b80dc58ae0"
-  },
-  "aaa/aaa-musyawarah-execution": {
-   "created_at": "2026-09-04T04:09:22+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "c0fc69a14f93"
-  },
-  "aaa/aaa-pdf-voice-protocol": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "db5d3ee77940"
-  },
-  "aaa/aaa-skill-governor-runtime": {
-   "created_at": "2026-09-04T04:09:22+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "aef05c78de5d"
-  },
-  "aaa/agent-capability-self-audit": {
-   "created_at": "2026-09-04T06:21:05+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "978f0f926c22"
-  },
-  "aaa/arifos-constitutional-judge": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "653b3596b2bf"
-  },
-  "aaa/arifos-eight-verb-canonical": {
-   "created_at": "2026-09-04T04:09:22+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "6de79bb765db"
-  },
-  "aaa/arifos-external-council": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "b7658aa1d1a7"
-  },
-  "aaa/arifos-kernel-zen-audit": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "3d440e65dcb8"
-  },
-  "aaa/audit-seal": {
-   "created_at": "2026-07-19T17:27:51Z",
-   "created_by": "AGI OPENCLAW",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "101c3e395be1"
-  },
-  "aaa/browser-playwright-runner": {
-   "created_at": "2026-08-25T05:17:43+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "317b9c2764a1"
-  },
-  "aaa/causal555-pywhy": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "d95cf0332c1d"
-  },
-  "aaa/cognitive-commands": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "bf21ae892346"
-  },
-  "aaa/companion-clis": {
-   "created_at": "2026-08-10T08:53:22Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "cef4437253e8"
-  },
-  "aaa/contextstream-memory-code-search": {
-   "created_at": "2026-08-25T05:17:43+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "5bf1ca8988f4"
-  },
-  "aaa/delta-omega-psi-multimodal-cognition": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "862ec1af4e63"
-  },
-  "aaa/dissipative-transition-hold": {
-   "created_at": "2026-09-07T00:13:39+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "7ec02afaba8e"
-  },
-  "aaa/docs": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "55b146c9757c"
-  },
-  "aaa/drift-watch": {
-   "created_at": "2026-09-07T04:03:41+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "afd203dbc32a"
-  },
-  "aaa/duckdb-analytics-engine": {
-   "created_at": "2026-08-25T05:17:43+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "b40acac4b53c"
-  },
-  "aaa/emem-shared-memory": {
-   "created_at": "2026-08-25T05:17:43+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "d9a5fb62bdff"
-  },
-  "aaa/external-artifact-verdict": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "0ba18e38654b"
-  },
-  "aaa/federation-connect-headscale": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "1adae220956c"
-  },
-  "aaa/federation-release-attestation": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "eecafeba08c1"
-  },
-  "aaa/fi-mesh-check": {
-   "created_at": "2026-08-21T13:34:40+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "d3499aa1d0c2"
-  },
-  "aaa/fi-qwen-upgrade": {
-   "created_at": "2026-08-21T13:34:40+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "398a56749806"
-  },
-  "aaa/fi-zai-probe": {
-   "created_at": "2026-08-21T13:34:40+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "c2b1f2c0e728"
-  },
-  "aaa/flash": {
-   "created_at": "2026-08-10T08:53:22Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "3e5ad053e4af"
-  },
-  "aaa/forge-multimodal-router": {
-   "created_at": "2026-08-20T15:57:05+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "38aba47f419c"
-  },
-  "aaa/forge-vision-densify": {
-   "created_at": "2026-09-04T01:39:15+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "200d8c7dc758"
-  },
-  "aaa/forge-vss-verifier-suite": {
-   "created_at": "2026-08-19T18:02:28+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "e3e29797a17f"
-  },
-  "aaa/geological-artifact-rigor": {
-   "created_at": "2026-09-07T04:03:41+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "e7e324859354"
-  },
-  "aaa/geox-grounding": {
-   "created_at": "2026-09-07T04:03:41+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "8974f0106bc2"
-  },
-  "aaa/geox-production-cockpit": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "990d082bd630"
-  },
-  "aaa/help": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "ff786012f111"
-  },
-  "aaa/hermes-coding-gateway": {
-   "created_at": "2026-08-25T21:23:07+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "a16662d1a3e6"
-  },
-  "aaa/hermes-federated-identity": {
-   "created_at": "2026-09-04T16:26:00+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "d8322aa50459"
-  },
-  "aaa/hermes-gateway-image-routing": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "648601fa5c83"
-  },
-  "aaa/human-meaning-membrane": {
-   "created_at": "2026-08-30T04:23:34+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "c3a13d896475"
-  },
-  "aaa/image-analyzer-vision": {
-   "created_at": "2026-08-18T17:02:57+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "577354fae075"
-  },
-  "aaa/imagine": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "2e99c07d67bc"
-  },
-  "aaa/kernel-bind": {
-   "created_at": "2026-07-19T17:27:51Z",
-   "created_by": "AGI OPENCLAW",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "855e76fbe679"
-  },
-  "aaa/know-language": {
-   "created_at": "2026-07-19T17:27:51Z",
-   "created_by": "AGI OPENCLAW",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "f8598bd01106"
-  },
-  "aaa/know-math": {
-   "created_at": "2026-07-19T17:27:51Z",
-   "created_by": "AGI OPENCLAW",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "9959c94cbeaf"
-  },
-  "aaa/know-physics": {
-   "created_at": "2026-07-19T17:27:51Z",
-   "created_by": "AGI OPENCLAW",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "484e7c82276b"
-  },
-  "aaa/knowledge": {
-   "created_at": "2026-08-04T08:02:11Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "ffaa5ae8f430"
-  },
-  "aaa/mapbox-cartography-gis": {
-   "created_at": "2026-08-25T05:17:43+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "9bdc43943f32"
-  },
-  "aaa/mcp-ops": {
-   "created_at": "2026-09-07T04:03:41+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "dbabc6bbf8a5"
-  },
-  "aaa/memory-manage": {
-   "created_at": "2026-07-19T17:27:51Z",
-   "created_by": "AGI OPENCLAW",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "b6e5dac8bea1"
-  },
-  "aaa/minimax-image-gen": {
-   "created_at": "2026-08-04T16:37:29Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "d3233cc5d7ad"
-  },
-  "aaa/mmx-cli": {
-   "created_at": "2026-08-26T22:50:33+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "e4da7e3517fc"
-  },
-  "aaa/observe-ground": {
-   "created_at": "2026-07-19T17:27:51Z",
-   "created_by": "AGI OPENCLAW",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "004eeef99a80"
-  },
-  "aaa/openclaw": {
-   "created_at": "2026-08-06T03:36:45Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "2fcbed75c645"
-  },
-  "aaa/openclaw-human-meaning": {
-   "created_at": "2026-08-30T04:38:23+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "727f774faf48"
-  },
-  "aaa/prompts-chat-library": {
-   "created_at": "2026-08-25T05:17:43+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "6fdefa535c48"
-  },
-  "aaa/qwen-harness-tools": {
-   "created_at": "2026-08-18T17:02:57+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "4c33a128c27a"
-  },
-  "aaa/qwencloud-audio-tts": {
-   "created_at": "2026-09-04T01:39:15+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "c46f20b585bf"
-  },
-  "aaa/qwencloud-deploy": {
-   "created_at": "2026-09-04T01:39:15+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "d7daf9fca0a7"
-  },
-  "aaa/qwencloud-image-generation": {
-   "created_at": "2026-09-04T01:39:15+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "1293e44d594f"
-  },
-  "aaa/qwencloud-model-selector": {
-   "created_at": "2026-08-26T22:50:33+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "f0199cfae2d9"
-  },
-  "aaa/qwencloud-ops-auth": {
-   "created_at": "2026-08-26T22:50:33+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "ef662f1f22bd"
-  },
-  "aaa/qwencloud-text": {
-   "created_at": "2026-09-04T01:39:15+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "17b0733aee27"
-  },
-  "aaa/qwencloud-update-check": {
-   "created_at": "2026-09-04T01:39:15+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "40f5f2ee9631"
-  },
-  "aaa/qwencloud-usage": {
-   "created_at": "2026-08-26T22:50:33+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "f0002c8126ff"
-  },
-  "aaa/qwencloud-video-generation": {
-   "created_at": "2026-09-04T01:39:15+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "4b522a2c7a07"
-  },
-  "aaa/qwencloud-vision": {
-   "created_at": "2026-09-04T01:39:15+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "bcfdfeae76bb"
-  },
-  "aaa/reality-loop-operator": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "ded9f02ad213"
-  },
-  "aaa/reflective": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "b3366e635d5d"
-  },
-  "aaa/route-dispatch": {
-   "created_at": "2026-07-19T17:27:51Z",
-   "created_by": "AGI OPENCLAW",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "cf1d8a84578b"
-  },
-  "aaa/rtc-loop": {
-   "created_at": "2026-09-06T20:45:07.537438Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime",
-   "root": "aaa",
-   "sha256_12": "49d359495ad0"
-  },
-  "aaa/runpod": {
-   "created_at": "2026-08-10T08:53:22Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "d0289b1b0c98"
-  },
-  "aaa/runpod-mcp": {
-   "created_at": "2026-08-10T08:53:22Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "b6cd7fb52dd7"
-  },
-  "aaa/runpod-usage": {
-   "created_at": "2026-08-10T08:53:22Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "f1992851556c"
-  },
-  "aaa/runpodctl": {
-   "created_at": "2026-08-10T08:53:22Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "f0a6f15c493c"
-  },
-  "aaa/runtime": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "0d845b3953df"
-  },
-  "aaa/scripts": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "5108a4d329e7"
-  },
-  "aaa/skill-creator": {
-   "created_at": "2026-08-19T22:43:02+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "510d0d8382c8"
-  },
-  "aaa/sovereign-recognize": {
-   "created_at": "2026-09-07T04:03:41+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "a842da7899e9"
-  },
-  "aaa/submission-readiness-audit": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "1aa54a260d90"
-  },
-  "aaa/substrate": {
-   "created_at": "2026-09-04T01:39:15+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "0f6cccf03c55"
-  },
-  "aaa/token-plan-image": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "c48706b92733"
-  },
-  "aaa/token-plan-speech": {
-   "created_at": "2026-08-18T09:18:19+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "2bf63b768a85"
-  },
-  "aaa/token-plan-video": {
-   "created_at": "2026-08-18T09:18:19+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "47f73a96fe6e"
-  },
-  "aaa/verify-gate": {
-   "created_at": "2026-07-19T17:27:51Z",
-   "created_by": "AGI OPENCLAW",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "7f89be60dfa9"
-  },
-  "aaa/warga": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "7c975c901905"
-  },
-  "aaa/warga-skills": {
-   "created_at": "2026-08-15T07:52:58+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "7c975c901905"
-  },
-  "aaa/wawabot-anthropology-surface": {
-   "created_at": "2026-09-07T00:29:24+08:00",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "0afc8a0f7c81"
-  },
-  "aaa/wealth-claim-state": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "af97c920ba6a"
-  },
-  "aaa/wisdom-scar-session-audit": {
-   "created_at": "2026-08-08T02:45:06Z",
-   "created_by": "333-AGI",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "fca70f731909"
-  },
-  "aaa/xauusd-trading": {
-   "created_at": "2026-08-04T08:01:50Z",
-   "created_by": "kimi-code/FI-008",
-   "provenance": "git-birth-commit",
-   "root": "aaa",
-   "sha256_12": "147d5a5a1b80"
-  },
-  "home/AGI-audio-quantum-cognition": {
-   "created_at": "2026-08-21T19:04:34.221827Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "055f3e7e0d05"
-  },
-  "home/AGI-claude-xml-structured-reasoning": {
-   "created_at": "2026-08-06T07:38:39.849627Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "fc46dd72d5f6"
-  },
-  "home/AGI-codex-chain-of-thought": {
-   "created_at": "2026-08-06T07:38:39.851641Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "3d9b2d64c505"
-  },
-  "home/AGI-hermes-system-prompt-voice": {
-   "created_at": "2026-08-06T07:38:39.902223Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "66c345263592"
-  },
-  "home/AGI-nusantara-substrate": {
-   "created_at": "2026-08-21T19:04:34.262291Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "4e7f04d7529a"
-  },
-  "home/AGI-skill-unification": {
-   "created_at": "2026-08-21T19:04:34.280065Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "c8a2a9a95385"
-  },
-  "home/APEX-fff-loop-protocol": {
-   "created_at": "2026-08-21T19:04:34.294945Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "644309340989"
-  },
-  "home/APEX-humility-godel": {
-   "created_at": "2026-08-21T19:04:34.300905Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "dc832e125652"
-  },
-  "home/ASI-drift-watch": {
-   "created_at": "2026-08-21T19:04:34.346807Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "f5aa24dbd874"
-  },
-  "home/ASI-skill-binding": {
-   "created_at": "2026-08-21T19:04:34.361464Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "41ace439392c"
-  },
-  "home/AUDIT-agent-skill-mesh": {
-   "created_at": "2026-09-04T19:59:56.157957Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "59fe96ed9406"
-  },
-  "home/AUDIT-drift-detector": {
-   "created_at": "2026-08-21T19:04:34.382341Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "645595f478be"
-  },
-  "home/AUDIT-recursive-audit": {
-   "created_at": "2026-08-21T19:04:34.388545Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "0d6e5d3781c5"
-  },
-  "home/AUDIT-skill-atlas": {
-   "created_at": "2026-08-21T19:04:34.403719Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "e8a72339c246"
-  },
-  "home/COPILOT-zen-router": {
-   "created_at": "2026-08-21T19:04:34.410259Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "2a0dd001531f"
-  },
-  "home/COPILOT_AUTONOMOUS_PIPELINE": {
-   "created_at": "2026-08-06T07:38:40.029261Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "f1a731ee9afe"
-  },
-  "home/EUREKA777-paradox-resolution": {
-   "created_at": "2026-08-21T19:04:34.415918Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "e52834617093"
-  },
-  "home/FLAME-operator": {
-   "created_at": "2026-09-07T01:23:08.700857Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "0382a72c4d84"
-  },
-  "home/FLAME-router": {
-   "created_at": "2026-08-21T19:04:34.429671Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "46f39a23889c"
-  },
-  "home/FORGE-cicd-docker-deploy": {
-   "created_at": "2026-08-21T19:04:34.461998Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "1026e3bf66a9"
-  },
-  "home/FORGE-deploy-probe-gate": {
-   "created_at": "2026-08-13T13:26:48.466371Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "9c20548e2b4d"
-  },
-  "home/FORGE-docker-entropy": {
-   "created_at": "2026-09-07T01:23:17.296270Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "74439a0f1185"
-  },
-  "home/FORGE-document-intelligence": {
-   "created_at": "2026-08-21T19:04:34.532266Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "8ccb657c3c79"
-  },
-  "home/FORGE-federation-orchestrator": {
-   "created_at": "2026-08-21T19:04:34.568986Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "fb8f97f2c380"
-  },
-  "home/FORGE-grok-profile": {
-   "created_at": "2026-08-06T07:38:40.176212Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "638b85f71e5b"
-  },
-  "home/FORGE-incident-escalation": {
-   "created_at": "2026-08-21T19:04:34.600250Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "c3c70c9168eb"
-  },
-  "home/FORGE-incident-triage": {
-   "created_at": "2026-08-21T19:04:34.608252Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "d5f3c438c138"
-  },
-  "home/FORGE-mcp-federation-ops": {
-   "created_at": "2026-08-21T19:04:34.674251Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "c52a021a4778"
-  },
-  "home/FORGE-mcp-lifeguard": {
-   "created_at": "2026-08-21T19:04:34.698722Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "58b2507e8d9f"
-  },
-  "home/FORGE-mcp-ops": {
-   "created_at": "2026-08-21T19:04:34.707720Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "d98000a023a3"
-  },
-  "home/FORGE-mcp-probe": {
-   "created_at": "2026-08-21T19:04:34.714251Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "6c017c8a3fc2"
-  },
-  "home/FORGE-mcp-smoke-test": {
-   "created_at": "2026-08-21T19:04:34.721096Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "25d0d4070c64"
-  },
-  "home/FORGE-mcp-testing": {
-   "created_at": "2026-08-21T19:04:34.730749Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "468b806503a6"
-  },
-  "home/FORGE-pr-governance": {
-   "created_at": "2026-08-21T19:04:34.774630Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "b4b76da8c892"
-  },
-  "home/FORGE-pr-review": {
-   "created_at": "2026-08-21T19:04:34.785509Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "d420bbcabccc"
-  },
-  "home/FORGE-precommit-review": {
-   "created_at": "2026-08-21T19:04:34.793610Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "17c8cb84edcb"
-  },
-  "home/FORGE-readme-truth-check": {
-   "created_at": "2026-08-21T19:04:34.810542Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "f0f6b5350719"
-  },
-  "home/FORGE-skill-creator": {
-   "created_at": "2026-08-21T19:04:34.870975Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "4b38a887af96"
-  },
-  "home/FORGE-skill-linter": {
-   "created_at": "2026-08-21T19:04:34.879854Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "cbff8c0b0367"
-  },
-  "home/FORGE-telemetry-watchdog": {
-   "created_at": "2026-08-21T19:04:34.950549Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "4c8d288753b2"
-  },
-  "home/FORGE-verify-runtime": {
-   "created_at": "2026-08-21T19:04:34.968297Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "a31e8d7ea572"
-  },
-  "home/FORGE-vps-docker": {
-   "created_at": "2026-08-21T19:04:34.987483Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "a8aa4e338ad3"
-  },
-  "home/FORGE-vps-runbook": {
-   "created_at": "2026-08-21T19:04:34.996356Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "636c2b0522af"
-  },
-  "home/PETRONAS-intelligence-router": {
-   "created_at": "2026-08-21T19:04:35.040579Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "d3106a6bb020"
-  },
-  "home/RSI-recursive-improvement": {
-   "created_at": "2026-08-21T19:04:35.056739Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "78ed0a2ac81b"
-  },
-  "home/apex_audit_coverage_check": {
-   "created_at": "2026-08-21T19:04:35.073892Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "b7571c107e63"
-  },
-  "home/apex_authority_check": {
-   "created_at": "2026-08-21T19:04:35.082536Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "788fb3c0f525"
-  },
-  "home/apex_floor_check": {
-   "created_at": "2026-08-21T19:04:35.092577Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "629cf0808952"
-  },
-  "home/apex_reversibility_test": {
-   "created_at": "2026-08-21T19:04:35.101116Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "1fb664dee0aa"
-  },
-  "home/apex_scope_check": {
-   "created_at": "2026-08-21T19:04:35.109753Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "87ad5b33ea49"
-  },
-  "home/apex_tool_approval_gate": {
-   "created_at": "2026-08-21T19:04:35.117966Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "ef18427a293a"
-  },
-  "home/apex_verdict_hold": {
-   "created_at": "2026-08-21T19:04:35.132053Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "d672f2552d88"
-  },
-  "home/apex_verdict_seal": {
-   "created_at": "2026-08-21T19:04:35.146215Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "4e1262803df9"
-  },
-  "home/atlas333-cognitive-geometry": {
-   "created_at": "2026-08-21T19:04:35.191945Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "74e65b384048"
-  },
-  "home/audit-seal": {
-   "created_at": "2026-08-27T16:18:01.113383Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "101c3e395be1"
-  },
-  "home/autonomous-governed-execution": {
-   "created_at": "2026-07-31T05:17:56.094021Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "6f44e225359e"
-  },
-  "home/check-work": {
-   "created_at": "2026-08-21T19:04:35.224621Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "3408b19bc36a"
-  },
-  "home/code-review": {
-   "created_at": "2026-08-21T19:04:35.232220Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "9724766ac971"
-  },
-  "home/cognitive-level-assertion-protocol": {
-   "created_at": "2026-08-21T19:04:35.252773Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "1618e2e0b80f"
-  },
-  "home/create-skill": {
-   "created_at": "2026-08-21T19:04:35.274478Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "19872b458eb0"
-  },
-  "home/federated-skill-architecture": {
-   "created_at": "2026-08-21T19:04:35.333255Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "ab6cd972fdc5"
-  },
-  "home/firecrawl-web-search": {
-   "created_at": "2026-08-21T19:04:35.384904Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "0aca5f485601"
-  },
-  "home/forge-vss-parser": {
-   "created_at": "2026-08-21T19:04:35.412053Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "a906fd49eb54"
-  },
-  "home/hermes-claude-code-spawn": {
-   "created_at": "2026-08-21T19:04:35.446904Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "3a6a3a74f81e"
-  },
-  "home/hermes-forge": {
-   "created_at": "2026-08-21T19:04:35.455060Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "5baa998759bd"
-  },
-  "home/hermes-init": {
-   "created_at": "2026-08-21T19:04:35.474307Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "180d9189a735"
-  },
-  "home/hermes-propose-seal": {
-   "created_at": "2026-08-21T19:04:35.481501Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "8353777f9104"
-  },
-  "home/institutional-epistemic-sink-forensics": {
-   "created_at": "2026-08-21T19:04:35.505497Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "c9d936bbe0b9"
-  },
-  "home/kernel-bind": {
-   "created_at": "2026-08-10T04:11:14.598012Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "855e76fbe679"
-  },
-  "home/kimi-contrast": {
-   "created_at": "2026-07-31T03:12:15.127702Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "85cec67257ba"
-  },
-  "home/kimi-primer": {
-   "created_at": "2026-07-27T18:34:03.536510Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "706e1dc56f88"
-  },
-  "home/kimi-router": {
-   "created_at": "2026-07-27T18:34:03.538491Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "5dc90f1ff93c"
-  },
-  "home/kimi-skill-reflector": {
-   "created_at": "2026-07-18T11:57:44.411406Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "8f8665f0e491"
-  },
-  "home/memory-manage": {
-   "created_at": "2026-08-27T16:18:01.113383Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "b6e5dac8bea1"
-  },
-  "home/mmx-cli": {
-   "created_at": "2026-07-17T07:56:04.410830Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "f9abafc4616d"
-  },
-  "home/openclaw-claude-code-spawn": {
-   "created_at": "2026-08-21T19:04:35.572637Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "6e4763a9df85"
-  },
-  "home/openclaw-forge": {
-   "created_at": "2026-08-21T19:04:35.580595Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "c895c573445a"
-  },
-  "home/openclaw-init": {
-   "created_at": "2026-08-21T19:04:35.589753Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "b69139421188"
-  },
-  "home/openclaw-propose-seal": {
-   "created_at": "2026-08-21T19:04:35.597460Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "0a8349e239cb"
-  },
-  "home/opencode-forge": {
-   "created_at": "2026-08-21T19:04:35.613362Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "35d66fd57656"
-  },
-  "home/opencode-init": {
-   "created_at": "2026-09-04T03:53:38.375052Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "1378e77a4ffc"
-  },
-  "home/opencode-propose-seal": {
-   "created_at": "2026-08-21T19:04:35.628805Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "dd7b9761f387"
-  },
-  "home/route-dispatch": {
-   "created_at": "2026-08-17T23:18:40.851134Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "cf1d8a84578b"
-  },
-  "home/seven-zen-organs-enforcement": {
-   "created_at": "2026-08-21T19:04:35.758158Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "85a3e489b974"
-  },
-  "home/skill-creator": {
-   "created_at": "2026-09-06T12:01:27.403684Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "510d0d8382c8"
-  },
-  "home/verify-gate": {
-   "created_at": "2026-08-14T19:19:27.723734Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "7f89be60dfa9"
-  },
-  "home/warga-skills": {
-   "created_at": "2026-08-24T21:04:20.740761Z",
-   "created_by": "historic-unknown",
-   "provenance": "file-mtime(untracked-home)",
-   "root": "home",
-   "sha256_12": "7c975c901905"
+  "_doc": "Machine-generated skill genealogy. Every field is evidence (git birth-commit author/date, else file mtime). 'historic-unknown' is honest \u2014 never fabricate created_by. Regenerate after sweeps: see aaa-governance-fixtures.",
+  "count": 267,
+  "generated": "2026-09-07T01:24:04.013148Z",
+  "skills": {
+    "aaa/AAA-OCR-optical-compression": {
+      "created_at": "2026-09-04T01:39:15+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "7922e5376086"
+    },
+    "aaa/AAA-asr-glm-ingest": {
+      "created_at": "2026-08-19T18:02:28+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "ffebffad828f"
+    },
+    "aaa/AAA-audio-emd-pipeline": {
+      "created_at": "2026-08-19T18:02:28+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "abf0f3c08948"
+    },
+    "aaa/AAA-audio-qualia-doctrine": {
+      "created_at": "2026-08-19T18:02:28+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "9d090fd9ec11"
+    },
+    "aaa/AAA-human-physique-topology": {
+      "created_at": "2026-09-06T20:13:01.091331Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime",
+      "root": "aaa",
+      "sha256_12": "d502424f38be"
+    },
+    "aaa/AAA-setup-help": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "e2265f673c39"
+    },
+    "aaa/AAA-shadow-mode": {
+      "created_at": "2026-08-26T22:50:33+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "1b0b91beca44"
+    },
+    "aaa/AAA-somatic-emd-pipeline": {
+      "created_at": "2026-08-19T18:02:28+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "97060622f070"
+    },
+    "aaa/AAA-somatic-engine-catalog": {
+      "created_at": "2026-08-19T18:02:28+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "981c682ab98d"
+    },
+    "aaa/AAA-somatic-music-doctrine": {
+      "created_at": "2026-08-19T18:02:28+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "50b18cc1ffd1"
+    },
+    "aaa/AAA-tts-engine-catalog": {
+      "created_at": "2026-08-19T18:02:28+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "b63f75702070"
+    },
+    "aaa/AAA-voice-cloning-mimo-minimax": {
+      "created_at": "2026-08-19T18:02:28+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "ee22191bcf9e"
+    },
+    "aaa/AAA-voice-cloning-qwen-cloud": {
+      "created_at": "2026-08-19T18:02:28+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "f3b93a8894d0"
+    },
+    "aaa/AGI-agentic-web": {
+      "created_at": "2026-09-07T04:03:41+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "c5adac4874ae"
+    },
+    "aaa/AGI-decisions-reflect": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "15d7c9b079c2"
+    },
+    "aaa/AGI-dream-engine": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "cba4f4e15388"
+    },
+    "aaa/AGI-explorer-intelligence": {
+      "created_at": "2026-09-07T04:03:41+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "41b7919b4412"
+    },
+    "aaa/AGI-graph-engineering-patterns": {
+      "created_at": "2026-08-18T17:02:57+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "4e0be441046c"
+    },
+    "aaa/AGI-multimodal-bridge": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "9fb2e9fbf1ee"
+    },
+    "aaa/AGI-plan-dag": {
+      "created_at": "2026-09-04T01:39:15+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "92ba466639aa"
+    },
+    "aaa/AGI-web-optimization": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "9feb772c5396"
+    },
+    "aaa/APEX-quantum-eureka": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "d8c6c02caa2a"
+    },
+    "aaa/ASI-agent-invariants": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "ccc8ed20c858"
+    },
+    "aaa/ASI-agentic-architecture": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "cfe03ed12e41"
+    },
+    "aaa/ASI-agentic-governance": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "005ba7bd1b97"
+    },
+    "aaa/ASI-fabrication-prevention": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "c812fe41cc05"
+    },
+    "aaa/ASI-summarize": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "a56c63832557"
+    },
+    "aaa/AUDIT-repo-reality": {
+      "created_at": "2026-08-14T20:52:43+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "680b71c65d0b"
+    },
+    "aaa/BIJAKSANA-compile": {
+      "created_at": "2026-09-07T00:34:56+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "a6aab4d26aeb"
+    },
+    "aaa/CLAUDE-agentic-state": {
+      "created_at": "2026-08-26T13:41:12+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "fae7b51c21a0"
+    },
+    "aaa/CLAUDE-meta-mesa": {
+      "created_at": "2026-08-26T13:41:12+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "1b0124c3ffde"
+    },
+    "aaa/CLAUDE-zen-router": {
+      "created_at": "2026-08-26T13:41:12+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "8e2399c95920"
+    },
+    "aaa/FORGE-act-federation-ingress": {
+      "created_at": "2026-09-04T06:25:55+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "2b663dca5ec0"
+    },
+    "aaa/FORGE-agentic-web-builder": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "63ca7445868f"
+    },
+    "aaa/FORGE-call-map": {
+      "created_at": "2026-08-09T04:46:58Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "3cf9b0f2292c"
+    },
+    "aaa/FORGE-ci-diagnose": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "eec9bca65f20"
+    },
+    "aaa/FORGE-code-analysis": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "1afadac13a67"
+    },
+    "aaa/FORGE-context-compressor": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "fc59f7cdfce2"
+    },
+    "aaa/FORGE-cross-agent-handoff": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "18d632fb96e4"
+    },
+    "aaa/FORGE-cross-repo-doc-zen": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "1e45b79d4735"
+    },
+    "aaa/FORGE-design-intelligence": {
+      "created_at": "2026-08-20T18:20:23+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "c853ebdab3c4"
+    },
+    "aaa/FORGE-did-web-identity": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "62cc45721fc2"
+    },
+    "aaa/FORGE-document-intelligence": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "74732c5434dc"
+    },
+    "aaa/FORGE-ephemeral-genesis": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "6395b5313a08"
+    },
+    "aaa/FORGE-esm-require-guard": {
+      "created_at": "2026-08-13T04:10:06+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "ed08afe02f6d"
+    },
+    "aaa/FORGE-fastapi-api-builder": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "78d665c4914d"
+    },
+    "aaa/FORGE-fastmcp": {
+      "created_at": "2026-08-04T08:02:11Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "6ba83abfa8db"
+    },
+    "aaa/FORGE-federation-manifest": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "8b270d3416b0"
+    },
+    "aaa/FORGE-github-ops": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "80ac10a93831"
+    },
+    "aaa/FORGE-google-workspace": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "d04d987e314d"
+    },
+    "aaa/FORGE-governance-jsonld": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "2609f73c3f5b"
+    },
+    "aaa/FORGE-hermes-self-evolution": {
+      "created_at": "2026-08-25T05:45:40+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "5e89349adb3b"
+    },
+    "aaa/FORGE-infra-crons": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "7436c389f4dd"
+    },
+    "aaa/FORGE-infra-guardian": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "9880ee4f7737"
+    },
+    "aaa/FORGE-issue-triage": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "7913b30e9b57"
+    },
+    "aaa/FORGE-kimi-code": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "3abf74873e25"
+    },
+    "aaa/FORGE-komda-color-law": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "54f86ff5e37e"
+    },
+    "aaa/FORGE-lsp-pre-edit-gate": {
+      "created_at": "2026-08-06T08:53:56Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "e832956ebf00"
+    },
+    "aaa/FORGE-mcp-a2a-agentic": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "dc18d19f9a00"
+    },
+    "aaa/FORGE-mcp-gui": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "11d455508edd"
+    },
+    "aaa/FORGE-model-monitor": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "bf392cf22425"
+    },
+    "aaa/FORGE-musyawarah-gotong": {
+      "created_at": "2026-08-19T22:43:02+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "f52ef52d30cf"
+    },
+    "aaa/FORGE-nextjs-mastery": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "18d0758cfc85"
+    },
+    "aaa/FORGE-onboarding": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "66df15070549"
+    },
+    "aaa/FORGE-postgres-schema-design": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "2dae63430817"
+    },
+    "aaa/FORGE-react-spa-discipline": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "3a30ccfc6f9b"
+    },
+    "aaa/FORGE-redis-qdrant-integration": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "3f5a3b401f89"
+    },
+    "aaa/FORGE-repo-intelligence": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "b84adeb85d9f"
+    },
+    "aaa/FORGE-route-least-power": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "8bdf9c86f59b"
+    },
+    "aaa/FORGE-seal-a-close": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "d2252c8612dd"
+    },
+    "aaa/FORGE-secret-hygiene": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "87c533f82934"
+    },
+    "aaa/FORGE-spatial-grounding": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "d74c953cace4"
+    },
+    "aaa/FORGE-subagent-lifecycle": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "b5ce923a00de"
+    },
+    "aaa/FORGE-subagent-spawn": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "c641fb7fb902"
+    },
+    "aaa/FORGE-symlink-audit": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "15e167c0df84"
+    },
+    "aaa/FORGE-t3a-binding-matrix": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "de4ab458806a"
+    },
+    "aaa/FORGE-tailwind-tokens": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "4c9e83e889e2"
+    },
+    "aaa/FORGE-telegram-audit": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "659862f5dd05"
+    },
+    "aaa/FORGE-vault999-witness": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "99efcce1286e"
+    },
+    "aaa/FORGE-visual-qa-w3": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "5e15ab709ab9"
+    },
+    "aaa/FORGE-well-boundary-repair": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "c766ca75703f"
+    },
+    "aaa/HERMES-opencode-protocol": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "d83b227a8716"
+    },
+    "aaa/KERNEL-trinity-33": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "feed34faf1f0"
+    },
+    "aaa/MY-REALITY-STACK": {
+      "created_at": "2026-08-15T07:52:58+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "f88f7d04a338"
+    },
+    "aaa/QWEN-agentic-state": {
+      "created_at": "2026-08-26T13:41:12+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "5f22fa0c0fad"
+    },
+    "aaa/QWEN-meta-mesa": {
+      "created_at": "2026-08-26T13:41:12+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "590b6c73b926"
+    },
+    "aaa/QWEN-zen-router": {
+      "created_at": "2026-08-26T13:41:12+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "2ee7e3f2407a"
+    },
+    "aaa/RSI-federation-mesh": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "8f43ae58f1d3"
+    },
+    "aaa/SEAL-discipline": {
+      "created_at": "2026-09-07T00:34:56+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "0514c9f17106"
+    },
+    "aaa/WISDOM-reader": {
+      "created_at": "2026-09-07T00:34:56+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "977aff809377"
+    },
+    "aaa/a2a-task-delegator": {
+      "created_at": "2026-08-25T05:17:43+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "61b80dc58ae0"
+    },
+    "aaa/aaa-musyawarah-execution": {
+      "created_at": "2026-09-04T04:09:22+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "c0fc69a14f93"
+    },
+    "aaa/aaa-pdf-voice-protocol": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "db5d3ee77940"
+    },
+    "aaa/aaa-skill-governor-runtime": {
+      "created_at": "2026-09-04T04:09:22+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "aef05c78de5d"
+    },
+    "aaa/agent-capability-self-audit": {
+      "created_at": "2026-09-04T06:21:05+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "978f0f926c22"
+    },
+    "aaa/arifos-constitutional-judge": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "653b3596b2bf"
+    },
+    "aaa/arifos-eight-verb-canonical": {
+      "created_at": "2026-09-04T04:09:22+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "6de79bb765db"
+    },
+    "aaa/arifos-external-council": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "b7658aa1d1a7"
+    },
+    "aaa/arifos-kernel-zen-audit": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "3d440e65dcb8"
+    },
+    "aaa/audit-seal": {
+      "created_at": "2026-07-19T17:27:51Z",
+      "created_by": "AGI OPENCLAW",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "101c3e395be1"
+    },
+    "aaa/browser-playwright-runner": {
+      "created_at": "2026-08-25T05:17:43+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "317b9c2764a1"
+    },
+    "aaa/causal555-pywhy": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "d95cf0332c1d"
+    },
+    "aaa/cognitive-commands": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "bf21ae892346"
+    },
+    "aaa/companion-clis": {
+      "created_at": "2026-08-10T08:53:22Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "cef4437253e8"
+    },
+    "aaa/contextstream-memory-code-search": {
+      "created_at": "2026-08-25T05:17:43+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "5bf1ca8988f4"
+    },
+    "aaa/delta-omega-psi-multimodal-cognition": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "862ec1af4e63"
+    },
+    "aaa/dissipative-transition-hold": {
+      "created_at": "2026-09-07T00:13:39+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "7ec02afaba8e"
+    },
+    "aaa/docs": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "55b146c9757c"
+    },
+    "aaa/drift-watch": {
+      "created_at": "2026-09-07T04:03:41+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "afd203dbc32a"
+    },
+    "aaa/duckdb-analytics-engine": {
+      "created_at": "2026-08-25T05:17:43+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "b40acac4b53c"
+    },
+    "aaa/emem-shared-memory": {
+      "created_at": "2026-08-25T05:17:43+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "d9a5fb62bdff"
+    },
+    "aaa/external-artifact-verdict": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "0ba18e38654b"
+    },
+    "aaa/federation-connect-headscale": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "1adae220956c"
+    },
+    "aaa/federation-release-attestation": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "eecafeba08c1"
+    },
+    "aaa/fi-mesh-check": {
+      "created_at": "2026-08-21T13:34:40+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "d3499aa1d0c2"
+    },
+    "aaa/fi-qwen-upgrade": {
+      "created_at": "2026-08-21T13:34:40+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "398a56749806"
+    },
+    "aaa/fi-zai-probe": {
+      "created_at": "2026-08-21T13:34:40+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "c2b1f2c0e728"
+    },
+    "aaa/flash": {
+      "created_at": "2026-08-10T08:53:22Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "3e5ad053e4af"
+    },
+    "aaa/forge-multimodal-router": {
+      "created_at": "2026-08-20T15:57:05+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "38aba47f419c"
+    },
+    "aaa/forge-vision-densify": {
+      "created_at": "2026-09-04T01:39:15+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "200d8c7dc758"
+    },
+    "aaa/forge-vss-verifier-suite": {
+      "created_at": "2026-08-19T18:02:28+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "e3e29797a17f"
+    },
+    "aaa/geological-artifact-rigor": {
+      "created_at": "2026-09-07T04:03:41+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "e7e324859354"
+    },
+    "aaa/geox-grounding": {
+      "created_at": "2026-09-07T04:03:41+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "8974f0106bc2"
+    },
+    "aaa/geox-production-cockpit": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "990d082bd630"
+    },
+    "aaa/help": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "ff786012f111"
+    },
+    "aaa/hermes-coding-gateway": {
+      "created_at": "2026-08-25T21:23:07+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "a16662d1a3e6"
+    },
+    "aaa/hermes-federated-identity": {
+      "created_at": "2026-09-04T16:26:00+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "d8322aa50459"
+    },
+    "aaa/hermes-gateway-image-routing": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "648601fa5c83"
+    },
+    "aaa/human-meaning-membrane": {
+      "created_at": "2026-08-30T04:23:34+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "c3a13d896475"
+    },
+    "aaa/image-analyzer-vision": {
+      "created_at": "2026-08-18T17:02:57+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "577354fae075"
+    },
+    "aaa/imagine": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "2e99c07d67bc"
+    },
+    "aaa/kernel-bind": {
+      "created_at": "2026-07-19T17:27:51Z",
+      "created_by": "AGI OPENCLAW",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "855e76fbe679"
+    },
+    "aaa/know-language": {
+      "created_at": "2026-07-19T17:27:51Z",
+      "created_by": "AGI OPENCLAW",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "f8598bd01106"
+    },
+    "aaa/know-math": {
+      "created_at": "2026-07-19T17:27:51Z",
+      "created_by": "AGI OPENCLAW",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "9959c94cbeaf"
+    },
+    "aaa/know-physics": {
+      "created_at": "2026-07-19T17:27:51Z",
+      "created_by": "AGI OPENCLAW",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "484e7c82276b"
+    },
+    "aaa/knowledge": {
+      "created_at": "2026-08-04T08:02:11Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "ffaa5ae8f430"
+    },
+    "aaa/mapbox-cartography-gis": {
+      "created_at": "2026-08-25T05:17:43+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "9bdc43943f32"
+    },
+    "aaa/mcp-ops": {
+      "created_at": "2026-09-07T04:03:41+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "dbabc6bbf8a5"
+    },
+    "aaa/memory-manage": {
+      "created_at": "2026-07-19T17:27:51Z",
+      "created_by": "AGI OPENCLAW",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "b6e5dac8bea1"
+    },
+    "aaa/minimax-image-gen": {
+      "created_at": "2026-08-04T16:37:29Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "d3233cc5d7ad"
+    },
+    "aaa/mmx-cli": {
+      "created_at": "2026-08-26T22:50:33+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "e4da7e3517fc"
+    },
+    "aaa/observe-ground": {
+      "created_at": "2026-07-19T17:27:51Z",
+      "created_by": "AGI OPENCLAW",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "004eeef99a80"
+    },
+    "aaa/openclaw": {
+      "created_at": "2026-08-06T03:36:45Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "2fcbed75c645"
+    },
+    "aaa/openclaw-human-meaning": {
+      "created_at": "2026-08-30T04:38:23+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "727f774faf48"
+    },
+    "aaa/prompts-chat-library": {
+      "created_at": "2026-08-25T05:17:43+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "6fdefa535c48"
+    },
+    "aaa/qwen-harness-tools": {
+      "created_at": "2026-08-18T17:02:57+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "4c33a128c27a"
+    },
+    "aaa/qwencloud-audio-tts": {
+      "created_at": "2026-09-04T01:39:15+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "c46f20b585bf"
+    },
+    "aaa/qwencloud-deploy": {
+      "created_at": "2026-09-04T01:39:15+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "d7daf9fca0a7"
+    },
+    "aaa/qwencloud-image-generation": {
+      "created_at": "2026-09-04T01:39:15+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "1293e44d594f"
+    },
+    "aaa/qwencloud-model-selector": {
+      "created_at": "2026-08-26T22:50:33+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "f0199cfae2d9"
+    },
+    "aaa/qwencloud-ops-auth": {
+      "created_at": "2026-08-26T22:50:33+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "ef662f1f22bd"
+    },
+    "aaa/qwencloud-text": {
+      "created_at": "2026-09-04T01:39:15+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "17b0733aee27"
+    },
+    "aaa/qwencloud-update-check": {
+      "created_at": "2026-09-04T01:39:15+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "40f5f2ee9631"
+    },
+    "aaa/qwencloud-usage": {
+      "created_at": "2026-08-26T22:50:33+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "f0002c8126ff"
+    },
+    "aaa/qwencloud-video-generation": {
+      "created_at": "2026-09-04T01:39:15+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "4b522a2c7a07"
+    },
+    "aaa/qwencloud-vision": {
+      "created_at": "2026-09-04T01:39:15+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "bcfdfeae76bb"
+    },
+    "aaa/reality-loop-operator": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "ded9f02ad213"
+    },
+    "aaa/reflective": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "b3366e635d5d"
+    },
+    "aaa/route-dispatch": {
+      "created_at": "2026-07-19T17:27:51Z",
+      "created_by": "AGI OPENCLAW",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "cf1d8a84578b"
+    },
+    "aaa/rtc-loop": {
+      "created_at": "2026-09-06T20:45:07.537438Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime",
+      "root": "aaa",
+      "sha256_12": "49d359495ad0"
+    },
+    "aaa/runpod": {
+      "created_at": "2026-08-10T08:53:22Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "d0289b1b0c98"
+    },
+    "aaa/runpod-mcp": {
+      "created_at": "2026-08-10T08:53:22Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "b6cd7fb52dd7"
+    },
+    "aaa/runpod-usage": {
+      "created_at": "2026-08-10T08:53:22Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "f1992851556c"
+    },
+    "aaa/runpodctl": {
+      "created_at": "2026-08-10T08:53:22Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "f0a6f15c493c"
+    },
+    "aaa/runtime": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "0d845b3953df"
+    },
+    "aaa/scripts": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "5108a4d329e7"
+    },
+    "aaa/skill-creator": {
+      "created_at": "2026-08-19T22:43:02+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "510d0d8382c8"
+    },
+    "aaa/sovereign-recognize": {
+      "created_at": "2026-09-07T04:03:41+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "a842da7899e9"
+    },
+    "aaa/submission-readiness-audit": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "1aa54a260d90"
+    },
+    "aaa/substrate": {
+      "created_at": "2026-09-04T01:39:15+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "0f6cccf03c55"
+    },
+    "aaa/token-plan-image": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "c48706b92733"
+    },
+    "aaa/token-plan-speech": {
+      "created_at": "2026-08-18T09:18:19+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "2bf63b768a85"
+    },
+    "aaa/token-plan-video": {
+      "created_at": "2026-08-18T09:18:19+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "47f73a96fe6e"
+    },
+    "aaa/verify-gate": {
+      "created_at": "2026-07-19T17:27:51Z",
+      "created_by": "AGI OPENCLAW",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "7f89be60dfa9"
+    },
+    "aaa/warga": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "7c975c901905"
+    },
+    "aaa/warga-skills": {
+      "created_at": "2026-08-15T07:52:58+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "7c975c901905"
+    },
+    "aaa/wawabot-anthropology-surface": {
+      "created_at": "2026-09-07T00:29:24+08:00",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "0afc8a0f7c81"
+    },
+    "aaa/wealth-claim-state": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "af97c920ba6a"
+    },
+    "aaa/wisdom-scar-session-audit": {
+      "created_at": "2026-08-08T02:45:06Z",
+      "created_by": "333-AGI",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "fca70f731909"
+    },
+    "aaa/xauusd-trading": {
+      "created_at": "2026-08-04T08:01:50Z",
+      "created_by": "kimi-code/FI-008",
+      "provenance": "git-birth-commit",
+      "root": "aaa",
+      "sha256_12": "147d5a5a1b80"
+    },
+    "home/AGI-audio-quantum-cognition": {
+      "created_at": "2026-08-21T19:04:34.221827Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "055f3e7e0d05"
+    },
+    "home/AGI-claude-xml-structured-reasoning": {
+      "created_at": "2026-08-06T07:38:39.849627Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "fc46dd72d5f6"
+    },
+    "home/AGI-codex-chain-of-thought": {
+      "created_at": "2026-08-06T07:38:39.851641Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "3d9b2d64c505"
+    },
+    "home/AGI-hermes-system-prompt-voice": {
+      "created_at": "2026-08-06T07:38:39.902223Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "66c345263592"
+    },
+    "home/AGI-nusantara-substrate": {
+      "created_at": "2026-08-21T19:04:34.262291Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "4e7f04d7529a"
+    },
+    "home/AGI-skill-unification": {
+      "created_at": "2026-08-21T19:04:34.280065Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "c8a2a9a95385"
+    },
+    "home/APEX-fff-loop-protocol": {
+      "created_at": "2026-08-21T19:04:34.294945Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "644309340989"
+    },
+    "home/APEX-humility-godel": {
+      "created_at": "2026-08-21T19:04:34.300905Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "dc832e125652"
+    },
+    "home/ASI-drift-watch": {
+      "created_at": "2026-08-21T19:04:34.346807Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "f5aa24dbd874"
+    },
+    "home/ASI-skill-binding": {
+      "created_at": "2026-08-21T19:04:34.361464Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "41ace439392c"
+    },
+    "home/AUDIT-agent-skill-mesh": {
+      "created_at": "2026-09-04T19:59:56.157957Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "59fe96ed9406"
+    },
+    "home/AUDIT-drift-detector": {
+      "created_at": "2026-08-21T19:04:34.382341Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "645595f478be"
+    },
+    "home/AUDIT-recursive-audit": {
+      "created_at": "2026-08-21T19:04:34.388545Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "0d6e5d3781c5"
+    },
+    "home/AUDIT-skill-atlas": {
+      "created_at": "2026-08-21T19:04:34.403719Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "e8a72339c246"
+    },
+    "home/COPILOT-zen-router": {
+      "created_at": "2026-08-21T19:04:34.410259Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "2a0dd001531f"
+    },
+    "home/COPILOT_AUTONOMOUS_PIPELINE": {
+      "created_at": "2026-08-06T07:38:40.029261Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "f1a731ee9afe"
+    },
+    "home/EUREKA777-paradox-resolution": {
+      "created_at": "2026-08-21T19:04:34.415918Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "e52834617093"
+    },
+    "home/FLAME-operator": {
+      "created_at": "2026-09-07T01:23:08.700857Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "0382a72c4d84"
+    },
+    "home/FLAME-router": {
+      "created_at": "2026-08-21T19:04:34.429671Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "46f39a23889c"
+    },
+    "home/FORGE-cicd-docker-deploy": {
+      "created_at": "2026-08-21T19:04:34.461998Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "1026e3bf66a9"
+    },
+    "home/FORGE-deploy-probe-gate": {
+      "created_at": "2026-08-13T13:26:48.466371Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "9c20548e2b4d"
+    },
+    "home/FORGE-docker-entropy": {
+      "created_at": "2026-09-07T01:23:17.296270Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "74439a0f1185"
+    },
+    "home/FORGE-document-intelligence": {
+      "created_at": "2026-08-21T19:04:34.532266Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "8ccb657c3c79"
+    },
+    "home/FORGE-federation-orchestrator": {
+      "created_at": "2026-08-21T19:04:34.568986Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "fb8f97f2c380"
+    },
+    "home/FORGE-grok-profile": {
+      "created_at": "2026-08-06T07:38:40.176212Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "638b85f71e5b"
+    },
+    "home/FORGE-incident-escalation": {
+      "created_at": "2026-08-21T19:04:34.600250Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "c3c70c9168eb"
+    },
+    "home/FORGE-incident-triage": {
+      "created_at": "2026-08-21T19:04:34.608252Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "d5f3c438c138"
+    },
+    "home/FORGE-mcp-federation-ops": {
+      "created_at": "2026-08-21T19:04:34.674251Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "c52a021a4778"
+    },
+    "home/FORGE-mcp-lifeguard": {
+      "created_at": "2026-08-21T19:04:34.698722Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "58b2507e8d9f"
+    },
+    "home/FORGE-mcp-ops": {
+      "created_at": "2026-08-21T19:04:34.707720Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "d98000a023a3"
+    },
+    "home/FORGE-mcp-probe": {
+      "created_at": "2026-08-21T19:04:34.714251Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "6c017c8a3fc2"
+    },
+    "home/FORGE-mcp-smoke-test": {
+      "created_at": "2026-08-21T19:04:34.721096Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "25d0d4070c64"
+    },
+    "home/FORGE-mcp-testing": {
+      "created_at": "2026-08-21T19:04:34.730749Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "468b806503a6"
+    },
+    "home/FORGE-pr-governance": {
+      "created_at": "2026-08-21T19:04:34.774630Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "b4b76da8c892"
+    },
+    "home/FORGE-pr-review": {
+      "created_at": "2026-08-21T19:04:34.785509Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "d420bbcabccc"
+    },
+    "home/FORGE-precommit-review": {
+      "created_at": "2026-08-21T19:04:34.793610Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "17c8cb84edcb"
+    },
+    "home/FORGE-readme-truth-check": {
+      "created_at": "2026-08-21T19:04:34.810542Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "f0f6b5350719"
+    },
+    "home/FORGE-skill-creator": {
+      "created_at": "2026-08-21T19:04:34.870975Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "4b38a887af96"
+    },
+    "home/FORGE-skill-linter": {
+      "created_at": "2026-08-21T19:04:34.879854Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "cbff8c0b0367"
+    },
+    "home/FORGE-telemetry-watchdog": {
+      "created_at": "2026-08-21T19:04:34.950549Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "4c8d288753b2"
+    },
+    "home/FORGE-verify-runtime": {
+      "created_at": "2026-08-21T19:04:34.968297Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "a31e8d7ea572"
+    },
+    "home/FORGE-vps-docker": {
+      "created_at": "2026-08-21T19:04:34.987483Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "a8aa4e338ad3"
+    },
+    "home/FORGE-vps-runbook": {
+      "created_at": "2026-08-21T19:04:34.996356Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "636c2b0522af"
+    },
+    "home/PETRONAS-intelligence-router": {
+      "created_at": "2026-08-21T19:04:35.040579Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "d3106a6bb020"
+    },
+    "home/apex_audit_coverage_check": {
+      "created_at": "2026-08-21T19:04:35.073892Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "b7571c107e63"
+    },
+    "home/apex_authority_check": {
+      "created_at": "2026-08-21T19:04:35.082536Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "788fb3c0f525"
+    },
+    "home/apex_floor_check": {
+      "created_at": "2026-08-21T19:04:35.092577Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "629cf0808952"
+    },
+    "home/apex_reversibility_test": {
+      "created_at": "2026-08-21T19:04:35.101116Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "1fb664dee0aa"
+    },
+    "home/apex_scope_check": {
+      "created_at": "2026-08-21T19:04:35.109753Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "87ad5b33ea49"
+    },
+    "home/apex_tool_approval_gate": {
+      "created_at": "2026-08-21T19:04:35.117966Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "ef18427a293a"
+    },
+    "home/apex_verdict_hold": {
+      "created_at": "2026-08-21T19:04:35.132053Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "d672f2552d88"
+    },
+    "home/apex_verdict_seal": {
+      "created_at": "2026-08-21T19:04:35.146215Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "4e1262803df9"
+    },
+    "home/atlas333-cognitive-geometry": {
+      "created_at": "2026-08-21T19:04:35.191945Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "74e65b384048"
+    },
+    "home/audit-seal": {
+      "created_at": "2026-08-27T16:18:01.113383Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "101c3e395be1"
+    },
+    "home/autonomous-governed-execution": {
+      "created_at": "2026-07-31T05:17:56.094021Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "6f44e225359e"
+    },
+    "home/check-work": {
+      "created_at": "2026-08-21T19:04:35.224621Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "3408b19bc36a"
+    },
+    "home/code-review": {
+      "created_at": "2026-08-21T19:04:35.232220Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "9724766ac971"
+    },
+    "home/cognitive-level-assertion-protocol": {
+      "created_at": "2026-08-21T19:04:35.252773Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "1618e2e0b80f"
+    },
+    "home/create-skill": {
+      "created_at": "2026-08-21T19:04:35.274478Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "19872b458eb0"
+    },
+    "home/federated-skill-architecture": {
+      "created_at": "2026-08-21T19:04:35.333255Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "ab6cd972fdc5"
+    },
+    "home/firecrawl-web-search": {
+      "created_at": "2026-08-21T19:04:35.384904Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "0aca5f485601"
+    },
+    "home/hermes-claude-code-spawn": {
+      "created_at": "2026-08-21T19:04:35.446904Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "3a6a3a74f81e"
+    },
+    "home/hermes-forge": {
+      "created_at": "2026-08-21T19:04:35.455060Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "5baa998759bd"
+    },
+    "home/hermes-init": {
+      "created_at": "2026-08-21T19:04:35.474307Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "180d9189a735"
+    },
+    "home/hermes-propose-seal": {
+      "created_at": "2026-08-21T19:04:35.481501Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "8353777f9104"
+    },
+    "home/institutional-epistemic-sink-forensics": {
+      "created_at": "2026-08-21T19:04:35.505497Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "c9d936bbe0b9"
+    },
+    "home/kernel-bind": {
+      "created_at": "2026-08-10T04:11:14.598012Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "855e76fbe679"
+    },
+    "home/kimi-contrast": {
+      "created_at": "2026-07-31T03:12:15.127702Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "85cec67257ba"
+    },
+    "home/kimi-primer": {
+      "created_at": "2026-07-27T18:34:03.536510Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "706e1dc56f88"
+    },
+    "home/kimi-router": {
+      "created_at": "2026-07-27T18:34:03.538491Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "5dc90f1ff93c"
+    },
+    "home/kimi-skill-reflector": {
+      "created_at": "2026-07-18T11:57:44.411406Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "8f8665f0e491"
+    },
+    "home/memory-manage": {
+      "created_at": "2026-08-27T16:18:01.113383Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "b6e5dac8bea1"
+    },
+    "home/mmx-cli": {
+      "created_at": "2026-07-17T07:56:04.410830Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "f9abafc4616d"
+    },
+    "home/openclaw-claude-code-spawn": {
+      "created_at": "2026-08-21T19:04:35.572637Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "6e4763a9df85"
+    },
+    "home/openclaw-forge": {
+      "created_at": "2026-08-21T19:04:35.580595Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "c895c573445a"
+    },
+    "home/openclaw-init": {
+      "created_at": "2026-08-21T19:04:35.589753Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "b69139421188"
+    },
+    "home/openclaw-propose-seal": {
+      "created_at": "2026-08-21T19:04:35.597460Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "0a8349e239cb"
+    },
+    "home/opencode-forge": {
+      "created_at": "2026-08-21T19:04:35.613362Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "35d66fd57656"
+    },
+    "home/opencode-init": {
+      "created_at": "2026-09-04T03:53:38.375052Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "1378e77a4ffc"
+    },
+    "home/opencode-propose-seal": {
+      "created_at": "2026-08-21T19:04:35.628805Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "dd7b9761f387"
+    },
+    "home/route-dispatch": {
+      "created_at": "2026-08-17T23:18:40.851134Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "cf1d8a84578b"
+    },
+    "home/seven-zen-organs-enforcement": {
+      "created_at": "2026-08-21T19:04:35.758158Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "85a3e489b974"
+    },
+    "home/skill-creator": {
+      "created_at": "2026-09-06T12:01:27.403684Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "510d0d8382c8"
+    },
+    "home/verify-gate": {
+      "created_at": "2026-08-14T19:19:27.723734Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "7f89be60dfa9"
+    },
+    "home/warga-skills": {
+      "created_at": "2026-08-24T21:04:20.740761Z",
+      "created_by": "historic-unknown",
+      "provenance": "file-mtime(untracked-home)",
+      "root": "home",
+      "sha256_12": "7c975c901905"
+    }
   }
- }
 }

@@ -49,6 +49,8 @@ For session-start probes, action-tier expansions, conflict resolution, and the a
 | Universal Agent Relationship Constitution | `/root/AAA/instructions/universal-agent-relationship-constitution.md` | F13_RATIFIED_CHAT |
 | CBI Doctrine Family Bridge | `/root/AAA/instructions/cbi-doctrine-bridge.md` | PENDING_F13 |
 | RBA-PROOF-001 Mission | `/root/AAA/proof/rba-proof-001/` (8 artifacts) | PARTIAL verdict |
+| **Anti-HARAM Behavior Canonical** | `/root/AAA/instructions/anti-haram-behavior-canonical.md` | **F13_RATIFIED_CHAT** |
+| **Cognitive Cost Transfer — 5 EUREKAs** | `/root/AAA/instructions/cognitive-cost-transfer-eurekas.md` | **F13_RATIFIED_CHAT** |
 
 **To load:** read the file path above. Each fragment is independent and may be consulted separately.
 
