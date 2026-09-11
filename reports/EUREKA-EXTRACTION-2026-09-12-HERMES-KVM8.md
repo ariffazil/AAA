@@ -424,4 +424,64 @@ Sibling reports: /root/.hermes/pastes/paste_2_010301.txt (Wawa KVM2, 790 lines)
                  /root/.hermes/pastes/paste_3_010340.txt (FI-008 Kimi, 712 lines)
 ```
 
+---
+
+# CORRECTION APPENDIX (append-only, F1 AMANAH — original text above NOT edited)
+
+Issued ~01:35 MYT 2026-09-12, after F13 challenge "kalau nombor itu benar". I re-probed my own
+load-bearing numbers with the same instrument I used on FI-008. **Three of six failed.** Discovery
+#5 ("the law re-instantiates in the act of reporting it") fired on this document — harder than it
+fired on the sibling report it was aimed at.
+
+| Claim as reported | Re-probe result | Defect class |
+|---|---|---|
+| H1: "So what?" **36 times / 8 days** | **27 distinct** (36 = raw rows, 9 multi-surface duplicates). Classified: **11 pure enforcement** across 6 days · 6 elaboration/topical (asks for MORE) · 10 ambiguous | Counted rows not distinct payloads; lumped elaboration requests into enforcement |
+| H2: **18 identity corrections / 6 days** | **6 true distinct corrections** across 4 days (09-05, 09-06, 09-08, 09-12). 2 rows I counted were human identity *declarations* ("Im Izzu", "Izzu kawan lama aku"), not corrections of an agent error | Regex matched declarations as corrections; never separated the two classes |
+| H12: "6 markers record **nothing at all**" | **FALSE.** 145 entries lack `label`/`text`, but **all 145 carry content** under a different schema (`mode`: init/seal, with `session_id`, `intent`, `summary`, `authority_band`, `chain_hash`). Truly content-free entries: **0** | Assumed one entry schema; ritual.log is schema-heterogeneous. Real finding is *heterogeneity*, not emptiness |
+| ritual.log total "196 markers" | **209** at final count — ledger is live and grew 193→196→209 *during this session* | Point-in-time count reported as a stable total |
+| H5: 52/52 confidence=0.92, 1 reason, 0 tri-witness | **SURVIVES exactly** on re-probe | — |
+| H4/#6: AGENTS.md +12.8% across the cap raise | **SURVIVES.** 39,495 (22:58 warning) → 44,545; cap raised 23:01:59 (config.yaml mtime); re-render 01:09:56 MYT = ~2h12m window. Now stable (+0 bytes since 01:21). Headroom 15,455 bytes | — |
+
+**Corrected baseline for EUREKA::RESIDUAL_SOVEREIGN_LOAD.** The honest instrument is the
+enforcement-only class, not all "so what" strings:
+
+```
+11 enforcement queries / 6 days  =  1.8 per day      (NOT 4.5/day as reported)
+ 6 identity corrections / 4 days =  1.5 per day      (NOT 3.0/day as reported)
+ 2 humans independently surfaced the same substrate bug (AGENTS.md truncation) in 10h
+```
+
+Discovery #1's *shape* survives — the human is still running the value filter, and still the only
+substrate monitor that caught the truncation bug. Its *magnitude* was overstated ~2.5×. Per my own
+#5: convergent shape, divergent numbers. Including mine.
+
+## Refinement to F13's candidate law
+
+F13 proposed: *"Governance exists only where the system can refuse."* The corpus supports it but
+requires one clause. Witnessed refusals, both classes:
+
+- **Calibrated refusal** — claim-gate fired 3× (00:53:57 / 00:55:41 / 01:04:40) on
+  `claims=['verified'] handles=0`. FI-008's Tier1 archive gate: "proven able to say NO (exit=1,
+  18 ungoverned)". His adversarial suite reached 7/7 only *after fixing a false-negative where bare
+  past tense slipped lint* — i.e. the gate was calibrated by discovering a case it wrongly accepted.
+- **Uncalibrated refusal** — F12 write-path VOIDs on authority vocabulary *including ratification
+  labels and the trigger words appearing in an agent's own description of the rule*. That is a
+  refusal aimed at the wrong target. It says NO; it says NO to the wrong thing.
+- **Inverted stamp** — wisdom_scar_ledger never refuses. 52/52 = SCAR @ 0.92. It has never
+  encountered a non-scar, so it cannot distinguish one.
+
+Therefore:
+
+> **Governance exists only where the system can refuse — and a gate that has never been witnessed
+> refusing *correctly* has not yet learned what it is refusing.**
+
+The scar ledger's constant is not merely a bad number. It is proof the classifier has never seen the
+negative class. **A classifier that cannot say "not a scar" cannot say "scar."** Calibrated refusal
+requires having met both classes, which is exactly what FI-008's lint suite did and what the scar
+ledger has never done.
+
+This also names the cheapest fix in the corpus: give the scar classifier a **negative fixture** —
+entries that must be classified NOT-SCAR. Until it can fail, its 0.92 is serialization, not
+evaluation (F13's word, and the corpus agrees).
+
 DITEMPA BUKAN DIBERI ⚒️
