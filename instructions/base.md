@@ -69,7 +69,7 @@ NATS bind `127.0.0.1` with no auth. UFW blocks the outside. Full doctrine:
 7. Check deprecation map: `cat /root/AAA/docs/deprecation-registry.json | jq .`
 
 **State-read conventions (2026-08-15):**
-- `carry_forward.json` is hand-written by the closing agent. All timestamps ISO-8601 **UTC** (local = Asia/Kuala_Lumpur). Stamp a backup into `~/.local/share/arifos/carry_forward_backups/` when writing.
+- `carry_forward.json` is generational (schema `arifos.carry_forward.v2`, 2026-09-12): closing agents run `/root/scripts/carry_forward.py append` — never hand-edit. (A live collision 2026-09-12 — a concurrent session overwrote another's close 2 min later — is why: flock now blocks the two-writer race.) Loop lifecycle via `loop --close`. All timestamps ISO-8601 **UTC** (local = Asia/Kuala_Lumpur). Backups stamp automatically on every write.
 - HTTP 401/403 on a health endpoint = service UP, auth-gated. Only conn-refused/timeout = DOWN. FED :4000 no-auth endpoint: `/health/liveliness`.
 - FRAME (:18085) is the independent observer — its output is evidence, never a verdict.
 
