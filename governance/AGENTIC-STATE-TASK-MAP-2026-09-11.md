@@ -25,4 +25,14 @@
 
 **Canon contrast (boot chain resolves to kernel):** kimi ✓ (injected) · hermes ✓ (context files @60000) · claude ✓ (CLAUDE.md pointer) · codex ✓ (INIT chain) · opencode ✓ (pointer) · qwen ✓ (MEMORY fresh 09-11) · grok 🟡 (overlay Aug 18 — oldest, but INIT-chain still resolves; refresh candidate) · openclaw ✓ (INIT_OPENCLAW).
 
+## C. Upgrades executed 2026-09-12 (F13: "upgrade my openclaw and the whole system agentically")
+
+| What | Result |
+|---|---|
+| **OpenClaw binary** | 2026.9.1 → **2026.9.4** on Node 24.15.0 → **24.21.0** (npm-scripts rebuilt, gateway stabil: active, 0 restart, 0 error). Rollback: `npm i -g openclaw@2026.9.1` + repoint /usr/bin symlinks to nvm v24.15.0 |
+| **KVM4 kernel** | Stale Sep-4 copy (7.5KB — the "false-negative" OpenClaw reported was a TRUE reading of stale canon) → **44→45-fragment kernel synced** (42,249B) |
+| **OpenClaw context** | workspace/AGENTS.md + MEMORY.md: canon sync + experience-metabolism reflex + F12 write rule appended (backups kept) |
+| **T-4 silos** | DONE — KVM4 dirs moved to `/root/quarantine-20260912/` |
+| **Whole system** | New kernel fragment `experience-metabolism-reflex` (read/query/trace + F12 plain-prose rule) — **inline, loads at boot for every harness**: kimi·hermes·claude·codex·opencode·qwen·grok·openclaw + KVM4. Commits `1d6c12832` + `d9c182f` |
+
 DITEMPA BUKAN DIBERI ⚒️
