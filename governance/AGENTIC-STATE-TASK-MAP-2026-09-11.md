@@ -114,4 +114,12 @@
 | Pembaikan dilaksanakan | Kanon L88 hysteresis **dibetulkan** (`WAWABOT-ANTHROPOLOGY-SURFACE.md`): "nod pasif" dicoret, disaksikan semula 2026-09-12 — lapisan peta(peta) sudah selari; MACHINE_MAP tidak diubah (barisnya memang tepat) |
 | Perlukan perhatian F13 | **Satu sahaja, bila sedia**: cetak token WawaBot melalui BotFather (telefon Arif) → kemudian laluan binaan 1 (isolation) boleh dilaksanakan oleh warga |
 
+## J. WAWA SWOT — audit + ubat (2026-09-12 ~02:0x)
+
+**Disahkan tepat (semua yang boleh diuji):** model `asi-555` berkhidmat (config L2) · memori persisten hidup (MEMORY.md+USER.md berlock) · SOUL_STAMP/Entropy-Sink/Proposal-First nyata dalam SOUL.md + skills · vision routing betul (tiada native, ada laluan K3/M3) · ancaman yang dinamakan sendiri (fluency trap, over-reliance) jujur dan selari jauhari-atrophy.
+
+**Kelemahan yang DIA tak nampak (dibaiki):** KVM2 `~/.hermes` **tiada AGENTS.md** — Wawa tertinggal seluruh kanon malam ini. **Dilaksanakan:** cap `context_file_max_chars 60000` (sebelum: default 35000 = pemotongan menanti) via `hermes config set` + kernel 46-fragmen 44,545B disegerak → `/root/.hermes/AGENTS.md` (claim-receipt + attention-kill disahkan dimuat). Boot Wawa seterusnya = kanon penuh, cara yang sama seperti yang menyembuhkan Hermes KVM8.
+
+**Tak disentuh (betul begitu):** penukaran model ke gpt-5.2 = keutamaan Azwa (manusia utama Wawa), bukan keputusan malam ini.
+
 DITEMPA BUKAN DIBERI ⚒️
