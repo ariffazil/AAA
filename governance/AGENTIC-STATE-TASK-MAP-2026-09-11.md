@@ -78,4 +78,20 @@
 
 **Tinggal 2 jawapan manusia:** #1 restore skill (P5) · #3 manifest (P4).
 
+## G. SKILL-MESH-ZEN — "mesh all into one federation agentic skills" (2026-09-12 ~00:50)
+
+**Keputusan #1 (restore) DIJAWAB: ya** — jalur Hermes #1 (13 rujukan putus, copy reversible) sedang dilaksanakan oleh Hermes. **FAKTA PENYEMBUH untuk Hermes:** kemalangan suara = hilang di PROFIL sahaja — `AAA-tts-engine-catalog` (13,734B) · `AAA-voice-cloning-mimo-minimax` (9,988B) · `AAA-somatic-emd-pipeline` (20,657B) semuanya **HIDUP di kanon `/root/AAA/skills/`** — restore dari kanon (segar), bukan arkib (lapuk). Cadangan zen: symlink profil→kanon untuk yang dirujuk (sifar-salininan), copy hanya bila perlu versi tempatan.
+
+**Topologi disaksikan (7/8 sudah SATU kanon):**
+
+| Harness | Wayar ke kanon | Kaedah |
+|---|---|---|
+| codex · grok · claude | ✅ | `skills` = symlink penuh → `/root/AAA/skills` |
+| qwen | ✅ | `skills/aaa-canonical` → kanon (203 tercapai; `QWEN_FEDERATION_HANDOFF.md` dokumen = realiti ✓) |
+| kimi | ✅ | `extra_skill_dirs=[/root/AAA/skills]` + 102 overlay lokal |
+| opencode | ✅ | 29 overlay + kanon berwayar dalam `opencode.json` |
+| **hermes** | ❌ kedai lokal 192 (113 nama berkongsi kanon) | **permukaan penyatuan terakhir** — heal-refs (#1 berjalan) + P5 gate |
+
+**"Berhenti tambah" = undang-undang malam ini** (9 workhorse buat hampir semua kerja; 46% tak pernah disentuh; tambah ke-342 = tambah permukaan hilang-senyap). Pruning 157 tak-pernah-disentuh → **P5 gate selepas jawapan #1 penuh + #3 manifest** — bukan kerja tengah malam.
+
 DITEMPA BUKAN DIBERI ⚒️
