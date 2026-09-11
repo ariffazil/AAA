@@ -1,0 +1,77 @@
+{
+  "last_session": "exp-1789139968259-1789031665582",
+  "unmetabolized": [],
+  "active_scars": [
+    {
+      "event_id": "evt_ac4db1c9fb81e59d",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-10T09:00:02Z"
+    },
+    {
+      "event_id": "evt_e04f1cb22d4bd28b",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-10T09:15:02Z"
+    },
+    {
+      "event_id": "evt_298d3c54779b69b0",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-10T09:15:02Z"
+    },
+    {
+      "event_id": "evt_0d1adf6fcf1fdced",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-10T09:15:02Z"
+    },
+    {
+      "event_id": "evt_e5e7b00fafbe1773",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-10T09:15:02Z"
+    },
+    {
+      "event_id": "evt_c846e6246c220ec7",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-10T09:15:02Z"
+    },
+    {
+      "event_id": "evt_b5f3acb53087a53a",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-10T09:15:02Z"
+    },
+    {
+      "event_id": "evt_18eb957dbe63259c",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-11T03:45:01Z"
+    },
+    {
+      "event_id": "evt_a06f876a9ab3beaf",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-11T15:30:01Z"
+    }
+  ],
+  "pending_skills": [],
+  "metrics": {
+    "map": 0.0,
+    "echo": 0.19,
+    "total_sessions": 9,
+    "direct_executions": 0,
+    "retained_improvements": 9,
+    "honest_observations": 47
+  },
+  "last_updated_utc": "2026-09-11T15:30:01Z",
+  "closed_at": "2026-09-10T04:34:49.267234+08:00",
+  "completed": [
+    "ZEN_KERNEL compression (4 principles + 1 invariant)",
+    "12 governance eurekas canonized",
+    "ZEN_ALIGNMENT_AUDIT run + corrected (EUREKA-7 live)",
+    "scar_enforce.py wired (PostToolUse)",
+    "session_context.py wired (SessionStart)",
+    "scripts repo created + pushed to GitHub",
+    "3 instruction files created (alignment audit, bijaksana, zen checkpoint)"
+  ],
+  "open_loops": [
+    "Metabolism cron NO_NEW_TRACES \u2014 pipeline has no new input",
+    "Probe \u2192 routing \u2014 latency data flows but no routing update",
+    "Constitutional kernel seal (arif_seal) blocked from MCP \u2014 needs in-process lane"
+  ],
+  "next_session_should_know": "All 4 initial ARCHIVE findings were measurement errors. EUREKA-7 validated: check path/field before classifying. Carry forward + scars now GOVERNANCE via wired hooks."
+}
