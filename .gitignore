@@ -88,3 +88,4 @@ registry/biometric/
 **/voice_enrollments/
 **/biometric_*.npy
 **/biometric_*.pkl
+.hermes-archived-2026-08-15/bin/
