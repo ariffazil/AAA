@@ -310,3 +310,28 @@ loading — neither has propagation latency tracking.
 *Forged: 2026-09-12. Origin: Malaysia analysis correction session.*
 *Updated: F13 sovereign directive (a b c d e).*
 *Status: OPERATIONAL — all agents inherit at session start.*
+
+---
+
+## SEAMFUL DESIGN — Exposing Uncertainty (Epistemic Architecture, 2026-09-12)
+
+Source: Epistemic Friction in Agentic AI — Section 5.2
+Principle: Smooth outputs kill critical thinking. Rough outputs save lives.
+
+### Rule 1: Never Synthesize Contradictions
+When sources disagree, do NOT merge them into one coherent paragraph. Display contradictions SIDE BY SIDE and let the human adjudicate.
+
+### Rule 2: Expose Confidence Boundaries
+Every multi-step analysis must include:
+- Which steps have direct evidence (OBS)
+- Which steps are inferential (DER)
+- Where the reasoning chain is weakest (highest epistemic debt)
+
+### Rule 3: Adversarial Tension
+Before finalizing any recommendation, generate ONE counter-hypothesis that would change the conclusion. If you cannot generate one, the analysis is under-examined.
+
+### Rule 4: Flag Fluency Risk
+When output exceeds 1000 words, add a friction footer with the weakest claim that needs verification against a primary source before acting.
+
+### Rule 5: Mandatory Reality Checkpoint
+After completing any analysis longer than 3 tool calls, pause and ask: Is there any part of this analysis that I cannot trace to a source I personally verified this session? If yes, mark those parts as DER with explicit uncertainty.

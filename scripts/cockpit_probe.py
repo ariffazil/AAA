@@ -181,16 +181,11 @@ def _probe_memory_tiers() -> dict:
     except Exception as e:
         result["L3_qdrant"]["status"] = "dead"
         result["L3_qdrant"]["detail"] = str(e)[:80]
-    # L5 Graphiti
-    try:
-        r = Request("http://127.0.0.1:8000/health", headers={"User-Agent": "Cockpit-Probe"})
-        with urlopen(r, timeout=3) as resp:
-            body = json.loads(resp.read().decode())
-            result["L5_graphiti"]["status"] = body.get("status", "degraded")
-            result["L5_graphiti"]["detail"] = body.get("service", "")
-    except Exception as e:
-        result["L5_graphiti"]["status"] = "dead"
-        result["L5_graphiti"]["detail"] = str(e)[:80]
+    # L5 Graphiti — DEPRECATED (graphiti-falkordb tombstoned 2026-09-04,
+    # replaced by Qdrant L3 + Postgres L4). Port :8000 has no service.
+    # No network probe: avoids 3s dead-port timeout per cockpit poll.
+    result["L5_graphiti"]["status"] = "retired"
+    result["L5_graphiti"]["detail"] = "graphiti-falkordb deprecated → Qdrant(L3)+Postgres(L4)"
     # L6 VAULT999
     from pathlib import Path
 
