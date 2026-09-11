@@ -1,15 +1,15 @@
 {
   "_meta": {
     "schema": "arifos.dependency_tier.v1",
-    "origin": "SCAR-RESEARCH::2026-09-10::FREE-IS-TEMPORARY (EUREKA 6 — Economics is Substrate)",
+    "origin": "SCAR-RESEARCH::2026-09-10::FREE-IS-TEMPORARY (EUREKA 6 \u2014 Economics is Substrate)",
     "created_utc": "2026-09-11T03:45:00Z",
     "created_by": "FI-008-kimi (333-AGI autonomous session, F13-directed compile)",
     "law": "A system without runtime economics cannot distinguish foundation from subsidy, and dies when the subsidy ends.",
     "tiers": {
-      "LOCAL_CPU_RAM": "T1 FOUNDATION — dies only when hardware dies",
-      "PAID_API_BOUNDED": "T2 FOUNDATION — dies only when budget empties",
-      "FREE_API_LUXURY": "T3 LUXURY — dies when provider decides",
-      "PROMO_CREDIT": "T4 LUXURY — dies on a date"
+      "LOCAL_CPU_RAM": "T1 FOUNDATION \u2014 dies only when hardware dies",
+      "PAID_API_BOUNDED": "T2 FOUNDATION \u2014 dies only when budget empties",
+      "FREE_API_LUXURY": "T3 LUXURY \u2014 dies when provider decides",
+      "PROMO_CREDIT": "T4 LUXURY \u2014 dies on a date"
     },
     "load_bearing": [
       "LOCAL_CPU_RAM",
@@ -22,7 +22,8 @@
       "death_events": "/root/.local/share/arifos/dependency_death_events.jsonl",
       "rule": "Cheap checks early, expensive checks late. Daily cron = port checks + SOT freshness + expiry dates. API canaries (--canary) are manual/on-demand only."
     },
-    "sot_status_source": "/root/.config/federation-models.json (providers[].status, refreshed by fi-zai-probe / fi-mesh-check skills)"
+    "sot_status_source": "/root/.config/federation-models.json (providers[].status, refreshed by fi-zai-probe / fi-mesh-check skills)",
+    "fuse_settled": "2026-09-12T00:20+08:00 F13 directive, marker 27f19a7a"
   },
   "deps": {
     "ollama": {
@@ -161,7 +162,7 @@
       "sot_id": "qwen-token-plan",
       "survival_hypothesis": "dies_when=monthly_plan_lapses; quota windows reset monthly",
       "observed_status": "quota_exhausted_429",
-      "note": "paid plan but currently quota-exhausted — not dead, window-bound",
+      "note": "paid plan but currently quota-exhausted \u2014 not dead, window-bound",
       "last_probe_utc": "2026-09-11T03:38:00Z"
     },
     "bailian-token-plan": {
@@ -210,7 +211,7 @@
       "sot_id": "opencode-zen",
       "survival_hypothesis": "dies_when=payg_budget_empties",
       "observed_status": "active",
-      "note": "balance historical: credits exhausted 2026-09-04 — treat as bounded-payg, watch",
+      "note": "balance historical: credits exhausted 2026-09-04 \u2014 treat as bounded-payg, watch",
       "last_probe_utc": "2026-09-11T03:38:00Z"
     },
     "openrouter": {
@@ -236,7 +237,7 @@
       "sot_id": "azure-openai",
       "survival_hypothesis": "dies_when=payg_budget_empties OR deprecation completes",
       "observed_status": "deprecating",
-      "note": "scheduled removal — do not build on it",
+      "note": "scheduled removal \u2014 do not build on it",
       "last_probe_utc": "2026-09-11T03:38:00Z"
     },
     "groq": {
@@ -283,9 +284,9 @@
       "tier": "PROMO_CREDIT",
       "kind": "sot",
       "sot_id": "sea-lion",
-      "survival_hypothesis": "dies_when=free_trial_ends (date unknown — TRIAL, dated death)",
+      "survival_hypothesis": "dies_when=free_trial_ends (date unknown \u2014 TRIAL, dated death)",
       "observed_status": "active",
-      "warning": "PROMO_CREDIT on unknown date — surface expiry date to F13 when known",
+      "warning": "PROMO_CREDIT on unknown date \u2014 surface expiry date to F13 when known",
       "last_probe_utc": "2026-09-11T03:38:00Z"
     },
     "cerebras-flame": {
@@ -305,11 +306,29 @@
       "probe": {
         "unit": "falkordb.service"
       },
-      "survival_hypothesis": "dies_when=hardware_dies OR deliberately_disabled; unit maps 127.0.0.1:6379 — SHARES PORT WITH REDIS, port probe false-positives via Redis",
+      "survival_hypothesis": "dies_when=hardware_dies OR deliberately_disabled; unit maps 127.0.0.1:6379 \u2014 SHARES PORT WITH REDIS, port probe false-positives via Redis",
       "observed_status": "dead",
       "evidence": "systemctl inactive+disabled 2026-09-11 FI-008; unit file changed-on-disk (daemon-reload pending); referenced in organs.yaml topology; sibling witness: port_up_but_service_down (333-AGI session ec463b839d7543b9)",
-      "note": "disabled manually — restart requires intent check (arif_memory graph_first lane affected); NOT auto-restarted by FI-008",
+      "note": "disabled manually \u2014 restart requires intent check (arif_memory graph_first lane affected); NOT auto-restarted by FI-008",
       "last_probe_utc": "2026-09-11T04:50:00Z"
     }
+  },
+  "fuse_promotion_triggers": {
+    "name": "FUSE",
+    "name_ratified_by": "F13 sovereign chat directive 2026-09-12 'settle the HOLD register' (ritual marker 27f19a7a)",
+    "semantics": "a fuse protects the circuit and dies so the system lives \u2014 free-tier dependency death semantics",
+    "promote_module_to_organ_when_any_one": [
+      "module_loc > 1500",
+      "daily_probe_volume > 100_deps",
+      "free_tier_deaths_count_90d >= 3",
+      "federation_spans_multi_region"
+    ],
+    "thresholds_ratified": true,
+    "current_module_loc": 0,
+    "current_dep_count": 22,
+    "current_90d_free_tier_deaths": 1,
+    "federation_regions": 1,
+    "promotion_now_eligible": false,
+    "module_build_path": "TBD on first promotion trigger"
   }
 }
