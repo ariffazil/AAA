@@ -141,10 +141,6 @@ def is_approved(path: str) -> bool:
     for prefix in APPROVED_DIRECT_PREFIX:
         if abs_p.startswith(prefix):
             return True
-    # legacy single-path check (kept for any exact-path entries if added later)
-    for allow in APPROVED_DIRECT:  # type: ignore[name-defined]
-        if abs_p.startswith(allow):
-            return True
     return False
 
 
