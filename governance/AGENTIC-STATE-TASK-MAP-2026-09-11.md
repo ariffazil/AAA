@@ -66,4 +66,16 @@
 
 **Beratur:** P3 identity-SOT (menunggu jawapan #2 identiti Izzu) · P4 manifest-liveness (menunggu jawapan #3) · P5 archive-gate (menunggu jawapan #1 restore). Semua reka bentuk sedia, keputusan manusia 3 baris sahaja.
 
+## F. Decision #2 ANSWERED — Identity SOT (2026-09-12 ~00:35 MYT)
+
+**F13 sahkan: Izzu = 1237635275** ("tu memang id izzu. aku dah check").
+
+**P3 data layer: VERIFIED CLEAN — tiada data salah untuk dibetulkan.** Semua 6 permukaan identiti di disk satu suara dengannya: `lanes.yaml` · `lanes/social-graph.yaml` · `channel_directory.json` ("Mohd") · `memories/lane-izzu.json` + profile copy (1237635275) · `memories/lane-aliff.json` + profile copy (1024343313).
+
+**Registry mistri selesai:** `people_registry.json` TIADA di mana-mana — ia artefak terjana oleh `/usr/local/lib/hermes-agent/profiles/aaa-hermes/skills/note-taking/human-memory-organization/scripts/build_people_registry.py` (output tidak wujud di disk). Kontradiksi yang Hermes laporkan = artefak sesi terhadap fail yang tak lagi/di mana wujud, bukan drift data hidup.
+
+**P3-architecture (beratur, lane Hermes):** jadikan registry TERJANA daripada sumber disahkan (lanes.yaml) — generator sudah wujud; tambah cross-check fail-closed setiap load. Design sedia, bukan kerja tengah malam.
+
+**Tinggal 2 jawapan manusia:** #1 restore skill (P5) · #3 manifest (P4).
+
 DITEMPA BUKAN DIBERI ⚒️
