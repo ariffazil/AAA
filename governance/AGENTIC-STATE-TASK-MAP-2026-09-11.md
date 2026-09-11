@@ -159,3 +159,23 @@ KVM2: tiada fail backup diperlukan (cap via CLI atomic) · kernel terpulang kepa
 **Malam tutup definitif:** Tiada lagi item menunggu F13. Berat esok semuanya berpemilik: organ-Wawa (Azwa siang) · P5 gate kini beroperasi (curator disabled + gate armed) · retirement-accounting (susunan #3 majlis) · T-10 telemetri manusia.
 
 DITEMPA BUKAN DIBERI ⚒️
+
+## O. FED LITELLM OVERHAUL & EUREKA RATIFICATION — F13 "jalan and auto go all" (2026-09-12 ~01:05 MYT)
+
+**Dilaksanakan + Disahkan Bit-demi-Bit:**
+1. **Promosi Kunci Hidup:** `QWEN_INDIVIDUAL_API_KEY` (satu-satunya kunci Qwen hidup, 12 model aktif) dipromosikan ke Order 1/2 merentasi `apex-888`, `asi-555`, `agi-333`, `forge-777`, `i-arif`, `openclaw`, `opencode`. Kunci-kunci kuota habis (`DASHSCOPE`, `TEAM_OWNER`, `ARIFOS`, `HERMES`) didemosikan ke Order 99.
+2. **Pembersihan Perangkap Latensi Kimi:** `kimi-k3` (kuota bulanan habis) disingkirkan daripada kedudukan #1 fallback. Fallback disusun mengikut model laju & hidup: `mimo-v2.5` ➔ `MiniMax-M3` ➔ `deepseek-v4-flash` ➔ `gemini-3.6-flash` ➔ `glm-5.3`.
+3. **Z.AI GLM Coding Plan Disembuhkan:** `api_base` untuk `glm-5.2` dan `glm-5.3` diubah dari endpoint baki kosong ke `os.environ/ZAI_API_BASE` (`https://api.z.ai/api/coding/paas/v4`) — ralat 429 terhapus serta-merta, latensi 1.41s.
+4. **Penyakit Isytihar-Tiada Dihapuskan (100% Selesai):** Kesemua 92 penempatan model kini mempunyai deklarasi konteks eksplisit (`max_input_tokens: 1048576` bagi 1M model, `131072` bagi DeepSeek Pro/Kimi, `65536` bagi DeepSeek Chat). Sifar `None`. Klien tidak lagi membuang 75% tingkap konteks percuma.
+5. **Kedaulatan Nusantara (SEA-LION):** `fed/sealion` (`aisingapore/Qwen-SEA-LION-v4-32B-IT`) diaktifkan dalam katalog FED LiteLLM KVM4 dan berwayar ke `fallback_providers` KVM2 Wawa.
+6. **Wan Image Shim Dipulihkan:** `/docker/wan-shim/env` dikemas kini dengan `QWEN_INDIVIDUAL_API_KEY`, servis dihidupkan semula, ujian penjanaan imej WAN 2.7 berjaya memulangkan URL imej sah.
+7. **Organ Wawa KVM2 Berwayar:** A-FORGE MCP (`http://100.64.0.2:7072/mcp`) dimasukkan ke `mcp_servers` KVM2 `/root/.hermes/config.yaml`.
+8. **Inskripsi Eureka:** `EUREKA::CAPABILITY_DISCOVERY_OUTRUNS_DECAY` diabadikan ke dalam kanon `/root/AAA/canon/EUREKA-CAPABILITY-DISCOVERY-OUTRUNS-DECAY-2026-09-12.md` dan didaftarkan dalam `eureka-entries.jsonl`.
+9. **Hasil Empirikal Disaksikan (Latensi):**
+   - `agi-333`: 10.37s ➔ **2.14s**
+   - `apex-888`: 15.20s ➔ **1.98s**
+   - `forge-777`: 5.82s ➔ **3.09s**
+   - `i-arif`: 1.68s ➔ **1.14s**
+   - `glm-5.3`: 429 ➔ **1.41s (200 OK)**
+   - `deepseek-v4-flash`: 1.00s ➔ **0.44s**
+   - Komit: `A-FORGE@b2a0a039`, `A-FORGE@c6cceb88`, `AAA@b4912cfb8`.
