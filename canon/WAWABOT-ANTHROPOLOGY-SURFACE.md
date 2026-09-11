@@ -85,7 +85,7 @@ It is **not**:
 - a second consciousness
 - a dossier on Azwa the human
 
-**OBS live:** hostname `flow-edge`, Tailscale tag `azwaos`, `100.64.0.4`. `wawa-pulse.sh` every 30m. `hermes-agent` active on KVM2. Historical scar: WawaBot + ASI dual-responding the same Telegram DM (2026-08-04). MACHINE_MAP 2026-09-04: **nod pasif**. Doctrine still says witness. Hysteresis — same class as plough-norms and FY2025 RM32B on a 1H2026 page.
+**OBS live:** hostname `flow-edge`, Tailscale tag `azwaos`, `100.64.0.4`. `wawa-pulse.sh` every 30m. `hermes-agent` active on KVM2. Historical scar: WawaBot + ASI dual-responding the same Telegram DM (2026-08-04). ~~MACHINE_MAP 2026-09-04: nod pasif.~~ **Re-witnessed 2026-09-12 FI-008:** KVM2 = azwaos ACTIVE — hermes-agent (Azwa gateway) + arifosmcp (Azwa Federation) + arifflow-internal :7073 + fed-router :7074 all running; `wawa-pulse` 5/5 latest runs HEALTHY (on-cadence 30m, alerts quiet 3+ days). MACHINE_MAP current rows agree (witness = azwaos). Hysteresis resolved at the map layer; organ build-state remains: isolation-before-voice, own token NOT yet minted (0 WAWA keys in vault — BotFather action is sovereign-lane).
 
 **Build order:** isolation (own token, own memory, no judge verbs, no dual-poll) **before** voice. A talking anthropology bot that shares Hermes’s chat stream is not a surface. It is contamination.
 

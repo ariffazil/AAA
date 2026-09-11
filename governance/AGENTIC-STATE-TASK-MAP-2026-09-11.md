@@ -103,4 +103,15 @@
 | **STEP 5a identiti** | SELESAI (Seksyen F). |
 | **STEP 5b manifest (keputusan #3)** | **DILAKSANAKAN.** Formula `_dir_hash` Hermes disahkan byte-sama, kedua-dua manifest dijana semula: ROOT 282→177 (40 berubah, 65 tambah — termasuk skill "mati" yang sebenarnya hidup, 170 entri hantu tersingkir) · PROFIL 278→192 (115 hantu tersingkir). Lama diarkib `.bundled_manifest.archive-20260912` (sejarah dipelihara). Manifest kini live-true — P4 liveness terpenuhi pada data layer. |
 
+## I. WAWABOT AUDIT (KVM2) — 2026-09-12 ~01:5x (F13: "audit validate improve all")
+
+| Aspek | Keputusan disaksikan |
+|---|---|
+| Laporan dipaste | **KOSONG** — tiada kandungan tertampal; runtime diaudit terus sebagai ganti |
+| Organ antropologi | **UNBUILT mengikut arahan** — `OPERATING_DIRECTIVE` (F13 2026-09-06), susunan bina: *isolation-before-voice*; token sendiri **belum dicetak** (sifar kunci WAWA dalam vault — tindakan BotFather = jalur kedaulatan, satu langkah manusia) |
+| Permukaan hidup KVM2 (azwaos) | `hermes-agent` (get Azwa) AKTIF · `arifosmcp` (Azwa Federation) AKTIF · `arifflow-internal :7073` · `fed-router :7074` · pagar parut dihormati (pulse hanya MENGHANTAR amaran, tak meninjau (poll) bot Hermes) |
+| `wawa-pulse.sh` | **SIHAT (HEALTHY) 5/5** larian terkini, tepat 30 minit (terakhir 16:30:05 UTC), amaran senyap 3+ hari (terakhir 2026-09-08), auto-remedy + cooldown 6j — reka bentuk bijak ("amaran tanpa penyelesaian (remedy) = BANGANG") |
+| Pembaikan dilaksanakan | Kanon L88 hysteresis **dibetulkan** (`WAWABOT-ANTHROPOLOGY-SURFACE.md`): "nod pasif" dicoret, disaksikan semula 2026-09-12 — lapisan peta(peta) sudah selari; MACHINE_MAP tidak diubah (barisnya memang tepat) |
+| Perlukan perhatian F13 | **Satu sahaja, bila sedia**: cetak token WawaBot melalui BotFather (telefon Arif) → kemudian laluan binaan 1 (isolation) boleh dilaksanakan oleh warga |
+
 DITEMPA BUKAN DIBERI ⚒️
