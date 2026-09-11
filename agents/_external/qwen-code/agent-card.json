@@ -8,7 +8,7 @@
     "category": "LLM-as-principal (Qwen/MiniMax bridge — the model is the principal, CLI is harness)",
     "principle_origin": "Qwen CLI harness on af-forge, bridged into arifOS federation"
   },
-  "description": "Qwen Code CLI forge instrument — kernel-internal loop FI. 7 MCP organs, SessionStart→arif_init hook, yolo mode. F1-F13 enforced. Card truth-repaired 2026-08-13; model de-static'd 2026-08-15 (binding, not storage).",
+  "description": "Qwen Code CLI forge instrument — kernel-internal loop FI. 9 MCP organs (aaa, aforge, arifflow, arifos-kernel, fed, frame, geox, wealth, well), SessionStart→arif_init hook, yolo mode. F1-F13 enforced. Card truth-repaired 2026-08-13, MCP count re-verified 2026-09-11 (0.23.3 upgrade); model de-static'd 2026-08-15 (binding, not storage).",
   "version": "2.2.1",
   "model_binding": {
     "policy": "RUNTIME-RESOLVED — this card never stores static model authority. Model identity is resolved at session start from runtime config; fields below are the last resolution snapshot, not the source of truth.",
