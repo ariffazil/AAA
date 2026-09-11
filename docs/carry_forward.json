@@ -1,4 +1,23 @@
 {
+  "last_session": "exp-1789141713130-1789141433699",
+  "unmetabolized": [],
+  "active_scars": [
+    {
+      "event_id": "evt_595d5f1677c9bcbd",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-11T16:00:03Z"
+    }
+  ],
+  "pending_skills": [],
+  "metrics": {
+    "map": 0.0,
+    "echo": 0.02,
+    "total_sessions": 1,
+    "direct_executions": 0,
+    "retained_improvements": 1,
+    "honest_observations": 49
+  },
+  "last_updated_utc": "2026-09-11T16:00:03Z",
   "session_id": "SEAL-e5019233623a4559",
   "closed_at": "2026-09-11T15:59:50Z",
   "closing_agent": "fi003_qwen_code",
