@@ -1,0 +1,86 @@
+{
+  "server_id": "NA2BPOSG4KP6JWVCNV2NDXU3NV6VXGR4GRSXU2AP2B6TTY3HZC3Z5WTC",
+  "server_name": "af-forge-nats",
+  "version": "2.10.27",
+  "proto": 1,
+  "go": "go1.24.2",
+  "host": "127.0.0.1",
+  "port": 4222,
+  "max_connections": 65536,
+  "ping_interval": 120000000000,
+  "ping_max": 2,
+  "http_host": "127.0.0.1",
+  "http_port": 8222,
+  "http_base_path": "",
+  "https_port": 0,
+  "auth_timeout": 2,
+  "max_control_line": 4096,
+  "max_payload": 1048576,
+  "max_pending": 67108864,
+  "cluster": {},
+  "gateway": {},
+  "leaf": {
+    "host": "100.64.0.2",
+    "port": 7422,
+    "auth_timeout": 2,
+    "tls_timeout": 2
+  },
+  "mqtt": {},
+  "websocket": {},
+  "jetstream": {
+    "config": {
+      "max_memory": 268435456,
+      "max_storage": 1073741824,
+      "store_dir": "/var/lib/nats/jetstream/jetstream",
+      "sync_interval": 120000000000,
+      "domain": "arifos",
+      "compress_ok": true
+    },
+    "stats": {
+      "memory": 0,
+      "storage": 230259955,
+      "reserved_memory": 0,
+      "reserved_storage": 671088640,
+      "accounts": 1,
+      "ha_assets": 0,
+      "api": {
+        "total": 96,
+        "errors": 9
+      }
+    }
+  },
+  "tls_timeout": 2,
+  "write_deadline": 10000000000,
+  "start": "2026-09-03T19:00:48.860757556Z",
+  "now": "2026-09-11T20:03:22.875503856Z",
+  "uptime": "8d1h2m34s",
+  "mem": 87097344,
+  "cores": 8,
+  "gomaxprocs": 8,
+  "cpu": 0,
+  "connections": 8,
+  "total_connections": 28380,
+  "routes": 0,
+  "remotes": 0,
+  "leafnodes": 2,
+  "in_msgs": 353181,
+  "out_msgs": 271684,
+  "in_bytes": 223398395,
+  "out_bytes": 247077170,
+  "slow_consumers": 0,
+  "subscriptions": 118,
+  "http_req_stats": {
+    "/connz": 1,
+    "/healthz": 2,
+    "/jsz": 3450,
+    "/varz": 3454
+  },
+  "config_load_time": "2026-09-03T19:00:48.860757556Z",
+  "system_account": "$SYS",
+  "slow_consumer_stats": {
+    "clients": 0,
+    "routes": 0,
+    "gateways": 0,
+    "leafs": 0
+  }
+}
