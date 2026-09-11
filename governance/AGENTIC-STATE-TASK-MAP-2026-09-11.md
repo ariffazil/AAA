@@ -94,4 +94,13 @@
 
 **"Berhenti tambah" = undang-undang malam ini** (9 workhorse buat hampir semua kerja; 46% tak pernah disentuh; tambah ke-342 = tambah permukaan hilang-senyap). Pruning 157 tak-pernah-disentuh → **P5 gate selepas jawapan #1 penuh + #3 manifest** — bukan kerja tengah malam.
 
+## H. SEAL-ALL EXECUTION — audit melaksanakan roadmap (2026-09-12 ~01:1x MYT)
+
+| Langkah | Hasil disaksikan |
+|---|---|
+| **STEP 1-2 restore 13** | **NO-OP — tiada kerosakan sebenar.** Matriks kewujudan 24 sasaran `dead_refs.json` × 3 akar: **22/24 HIDUP** di `/root/.hermes/skills/` (seluruh voice-stack co-located dengan pemanggil — `i-arif-voice-pipeline` juga di sana). 2 "tiada" = `analysis`/`audit` = folder kategori kosong, bukan skill. Artifak dead_refs dikira lawan SATU akar sahaja — **inversion #3 malam ini** (ollama→hidup, sync→wujud, skills→hidup; semua = peta kewujudan tak lengkap). Matrix = bukti STEP 2. |
+| **STEP 3-4 polisi P5** | KELAS A (dirujuk hidup): sembuh-secara-semula-jadi — tiada tindakan. KELAS B (23 guna-tapi-tiada-rujukan): **HOLD** sehingga saksi baru. KELAS C (26 tak-pernah): kekal mati. Gate: `use>0 ATAU patch>0 → archive perlukan F13` — kini polisi aktif berarma rank F13 seal-all 2026-09-12. |
+| **STEP 5a identiti** | SELESAI (Seksyen F). |
+| **STEP 5b manifest (keputusan #3)** | **DILAKSANAKAN.** Formula `_dir_hash` Hermes disahkan byte-sama, kedua-dua manifest dijana semula: ROOT 282→177 (40 berubah, 65 tambah — termasuk skill "mati" yang sebenarnya hidup, 170 entri hantu tersingkir) · PROFIL 278→192 (115 hantu tersingkir). Lama diarkib `.bundled_manifest.archive-20260912` (sejarah dipelihara). Manifest kini live-true — P4 liveness terpenuhi pada data layer. |
+
 DITEMPA BUKAN DIBERI ⚒️
