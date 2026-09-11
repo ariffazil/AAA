@@ -86,6 +86,33 @@ Before using this skill on any mutating, irreversible, or high-blast-radius task
 
 ---
 
+## Section 0: Layer 0 — Economics Probe (dependency liveness, EUREKA 6)
+
+> **Law:** A system without runtime economics cannot distinguish foundation from subsidy, and dies when the subsidy ends.
+> **Origin:** SCAR-RESEARCH::2026-09-10::FREE-IS-TEMPORARY (FLAME/Cerebras death, predicted on schedule, response failed to propagate).
+> **Wired:** 2026-09-11 (FI-008, 888-directed autonomous session).
+
+Before diagnosing any provider/model/gateway as "down", read Layer 0 — dependency death is observed, not narrated:
+
+```bash
+# One-line Layer 0 status (exit 1 = load-bearing foundation dead)
+python3 /root/scripts/forge_dependency_probe.py --status
+
+# Full JSON state
+cat /root/.local/share/arifos/dependency_probe_state.json
+
+# Death events feed (tier-3/4 deaths → scar 'free_tier_expiry')
+cat /root/.local/share/arifos/dependency_death_events.jsonl
+```
+
+- **Registry:** `/root/AAA/federation/DEPENDENCY_TIER.json` — every dep declared with tier + survival_hypothesis + observed_status.
+- **Tiers:** T1 LOCAL_CPU_RAM (foundation) · T2 PAID_API_BOUNDED (foundation) · T3 FREE_API_LUXURY · T4 PROMO_CREDIT.
+- **Cron:** daily 07:17 UTC → `/var/log/arifos/dependency_probe.log`.
+- **Display rule:** retired deps show `TIER-4 RETIRED <date>` — never "DOWN". A retired subsidy is not an incident.
+- **Sick ≠ dead:** `quota_exhausted_429` = window-bound paid plan; `degraded`/`deprecating` = bounded sickness; only `dead` on T3/T4 writes a scar event.
+
+---
+
 ## Section 1: Federation Orchestrator
 
 ### Commands

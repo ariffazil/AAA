@@ -1,5 +1,5 @@
 {
-  "last_session": "session-cron_ad35c4e6711f_20260911_234235",
+  "last_session": "session-cron_ad35c4e6711f_20260910_163306",
   "unmetabolized": [],
   "active_scars": [
     {
@@ -36,33 +36,18 @@
       "event_id": "evt_b5f3acb53087a53a",
       "reason": "Failure that taught a lesson (this hurt, remember why).",
       "timestamp": "2026-09-10T09:15:02Z"
-    },
-    {
-      "event_id": "evt_18eb957dbe63259c",
-      "reason": "Failure that taught a lesson (this hurt, remember why).",
-      "timestamp": "2026-09-11T03:45:01Z"
-    },
-    {
-      "event_id": "evt_a06f876a9ab3beaf",
-      "reason": "Failure that taught a lesson (this hurt, remember why).",
-      "timestamp": "2026-09-11T15:30:01Z"
-    },
-    {
-      "event_id": "evt_038d3f6baa668d01",
-      "reason": "Failure that taught a lesson (this hurt, remember why).",
-      "timestamp": "2026-09-11T15:45:01Z"
     }
   ],
   "pending_skills": [],
   "metrics": {
     "map": 0.0,
-    "echo": 0.21,
-    "total_sessions": 10,
+    "echo": 0.16,
+    "total_sessions": 7,
     "direct_executions": 0,
-    "retained_improvements": 10,
-    "honest_observations": 48
+    "retained_improvements": 7,
+    "honest_observations": 45
   },
-  "last_updated_utc": "2026-09-11T15:45:01Z",
+  "last_updated_utc": "2026-09-10T09:15:02Z",
   "closed_at": "2026-09-10T04:34:49.267234+08:00",
   "completed": [
     "ZEN_KERNEL compression (4 principles + 1 invariant)",
