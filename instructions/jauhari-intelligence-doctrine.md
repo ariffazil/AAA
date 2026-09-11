@@ -1,4 +1,4 @@
-# Jauhari Intelligence Doctrine — Sovereign Articulation (DRAFT)
+# Jauhari Intelligence Doctrine — Sovereign Articulation
 
 > **Status:** F13_RATIFIED_CHAT (2026-09-11) — articulated by Muhammad Arif bin Fazil (888/F13), 2026-09-07 ~03:30 MYT; sealed *"aku seal ja semua"* post-audit FI-008 (zero floor conflict; seal-ID anchor footnote unverified in quick probe — not load-bearing)
 > **Empirical anchor:** session SEAL-ff45077c07894615 → SEAL-1059a996d90542b7 (this night's four refusals)
