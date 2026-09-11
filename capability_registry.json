@@ -25,7 +25,7 @@
         "provider_independent": true,
         "survival_events": 1,
         "contradictions_survived": 1,
-        "last_tested": "2026-09-11T00:09:08.139365+00:00",
+        "last_tested": "2026-09-11T12:10:33.003579+00:00",
         "last_verdict": "STABLE"
       },
       "witnesses": [
@@ -58,6 +58,16 @@
           "receipt_id": "fitness-voice_synthesis-20260911T000908",
           "checked_at": "2026-09-11T00:09:08.151572+00:00",
           "verdict": "STABLE"
+        },
+        {
+          "receipt_id": "fitness-voice_synthesis-20260911T060942",
+          "checked_at": "2026-09-11T06:09:42.396952+00:00",
+          "verdict": "STABLE"
+        },
+        {
+          "receipt_id": "fitness-voice_synthesis-20260911T121033",
+          "checked_at": "2026-09-11T12:10:33.017775+00:00",
+          "verdict": "STABLE"
         }
       ]
     },
@@ -83,7 +93,7 @@
         "provider_independent": true,
         "survival_events": 1,
         "contradictions_survived": 1,
-        "last_tested": "2026-09-11T00:09:08.144659+00:00",
+        "last_tested": "2026-09-11T12:10:33.009574+00:00",
         "last_verdict": "STABLE"
       },
       "witnesses": [
@@ -116,6 +126,16 @@
           "receipt_id": "fitness-text_generation-20260911T000908",
           "checked_at": "2026-09-11T00:09:08.151583+00:00",
           "verdict": "STABLE"
+        },
+        {
+          "receipt_id": "fitness-text_generation-20260911T060942",
+          "checked_at": "2026-09-11T06:09:42.396966+00:00",
+          "verdict": "STABLE"
+        },
+        {
+          "receipt_id": "fitness-text_generation-20260911T121033",
+          "checked_at": "2026-09-11T12:10:33.017788+00:00",
+          "verdict": "STABLE"
         }
       ]
     },
@@ -135,7 +155,7 @@
         "provider_independent": false,
         "survival_events": 0,
         "contradictions_survived": 0,
-        "last_tested": "2026-09-11T00:09:08.150916+00:00",
+        "last_tested": "2026-09-11T12:10:33.017352+00:00",
         "last_verdict": "STABLE"
       },
       "witnesses": [
@@ -168,9 +188,19 @@
           "receipt_id": "fitness-web_search-20260911T000908",
           "checked_at": "2026-09-11T00:09:08.151587+00:00",
           "verdict": "STABLE"
+        },
+        {
+          "receipt_id": "fitness-web_search-20260911T060942",
+          "checked_at": "2026-09-11T06:09:42.396971+00:00",
+          "verdict": "STABLE"
+        },
+        {
+          "receipt_id": "fitness-web_search-20260911T121033",
+          "checked_at": "2026-09-11T12:10:33.017794+00:00",
+          "verdict": "STABLE"
         }
       ]
     }
   },
-  "last_check": "2026-09-11T00:09:08.151589+00:00"
+  "last_check": "2026-09-11T12:10:33.017797+00:00"
 }
