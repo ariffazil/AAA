@@ -49,11 +49,11 @@ Two LiteLLM instances:
 | arifOS | 8088 | ✅ healthy | Constitutional kernel, F1-F13 |
 | A-FORGE | 7071/7072 | ✅ healthy | Execution/mutation gate |
 | arifFlow | 7073 | ✅ healthy | Metabolism, receipts |
-| WEALTH | 18082 | ⚠️ degraded | Capital domain |
-| WELL | 18083 | ⚠️ degraded | Human wellness |
-| GEOX | 8081 | ⚠️ degraded | Geoscience |
+| WEALTH | 18082 | ✅ healthy | Capital domain |
+| WELL | 18083 | ⚠️ degraded | Human wellness (no biometric source) |
+| GEOX | 8081 | ✅ healthy | Geoscience |
 | AAA | 3001 | ✅ alive | A2A gateway |
-| OpenClaw | 18789 | ✅ alive | AGI gateway |
+| OpenClaw | 18789 | ❌ COLD | AGI gateway (edge mesh, cold-stored 2026-09-07) |
 
 ## Memory Architecture
 
@@ -115,7 +115,7 @@ bash /root/AAA/scripts/federation-health.sh
 # → GREEN/YELLOW/RED | organs:N | vvv:N | apex_replicated:N/5 | reasons
 ```
 
-Last result: `YELLOW | organs:6 | vvv:6 | apex_replicated:5/5 | DEGRADED:GEOX,WELL,arifOS`
+Last result: `GREEN | organs:7 | vvv:6 | apex_replicated:5/5 | DEGRADED:WELL`
 
 ## Repos (GitHub sync state as of 2026-08-14 19:10 MYT)
 
