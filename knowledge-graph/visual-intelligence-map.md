@@ -1,3 +1,7 @@
+# ⚰️ SUPERSEDED 2026-09-10 → /root/AAA/knowledge-graph/MATA.md
+
+> Stale map preserved as history. Canonical visual truth = **MATA.md** + live pane `/root/scripts/mata.sh`. Do not route from here.
+
 # Visual Intelligence Knowledge Graph — arifOS Federation
 
 **DITEMPA BUKAN DIBERI** · Forged 2026-08-18 · 333-AGI / Hermes-prime

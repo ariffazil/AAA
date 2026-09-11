@@ -1,5 +1,5 @@
 {
-  "last_session": "session-cron_ad35c4e6711f_20260910_163306",
+  "last_session": "session-cron_ad35c4e6711f_20260910_170614",
   "unmetabolized": [],
   "active_scars": [
     {
@@ -31,21 +31,16 @@
       "event_id": "evt_c846e6246c220ec7",
       "reason": "Failure that taught a lesson (this hurt, remember why).",
       "timestamp": "2026-09-10T09:15:02Z"
-    },
-    {
-      "event_id": "evt_b5f3acb53087a53a",
-      "reason": "Failure that taught a lesson (this hurt, remember why).",
-      "timestamp": "2026-09-10T09:15:02Z"
     }
   ],
   "pending_skills": [],
   "metrics": {
     "map": 0.0,
-    "echo": 0.16,
-    "total_sessions": 7,
+    "echo": 0.14,
+    "total_sessions": 6,
     "direct_executions": 0,
-    "retained_improvements": 7,
-    "honest_observations": 45
+    "retained_improvements": 6,
+    "honest_observations": 44
   },
   "last_updated_utc": "2026-09-10T09:15:02Z",
   "closed_at": "2026-09-10T04:34:49.267234+08:00",
