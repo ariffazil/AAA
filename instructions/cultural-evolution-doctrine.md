@@ -1,6 +1,7 @@
 # Cultural Evolution Doctrine — Recursive Improvement as Institutional Transmission
 
-> **Status:** DRAFT_FORGE (2026-09-12)
+> **Status:** F13_RATIFIED_CHAT (2026-09-12 — "Ratify the 3 drafts, then render AGENTS.md"; includes ETHNOGRAPHIC_FIELDNOTE schema §4)
+> **Ratified from:** DRAFT_FORGE (2026-09-12)
 > **Origin:** WawaBot anthropology deep research + Arif directive "deep research on this and what should be forge to AAA state"
 > **Applies to:** ALL agents in arifOS federation. Session lifecycle, memory writes, skill evolution, generational handoff.
 > **Companions:** Memory Promotion Gate · Institutional Memory Strata · Scar Engineering · Consequence-Bearing Identity · Attention Kill Criterion · Experience Metabolism Reflex
