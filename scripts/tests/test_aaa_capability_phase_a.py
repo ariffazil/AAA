@@ -226,7 +226,7 @@ class ValidatorTests(unittest.TestCase):
         # Inject a token-like literal into a backend note
         bad_yaml = VALID_REGISTRY_YAML.replace(
             "brave-search: { F_rating: REVIEW, enabled: false, seal: pending, transport: stdio }",
-            "brave-search: { F_rating: REVIEW, enabled: false, seal: pending, transport: stdio, note: 'token ghp_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' }"
+            "brave-search: { F_rating: REVIEW, enabled: false, seal: pending, transport: stdio, note: 'token ghp_" + "a" * 36 + "' }"
         )
         with tempfile.NamedTemporaryFile("w", suffix=".yaml", delete=False) as f:
             f.write(bad_yaml)
