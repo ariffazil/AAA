@@ -1,0 +1,43 @@
+{
+  "emitted_at": "2026-09-12T01:49:41+08:00",
+  "emitted_by": "experience-metabolism.compute_surface_verification",
+  "metrics": [
+    {
+      "evidence": "TRACE_LOG mtime age=4.8min, ok if <60 (file=/root/.local/share/arifos/world-model/experience_traces.jsonl)",
+      "metric": "write_side",
+      "verdict": "OK"
+    },
+    {
+      "evidence": "grep across hermes-agent runtime => 0 reader file(s): []",
+      "metric": "read_side",
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "evidence": "skill_candidates count=2, OK if >0",
+      "metric": "feedback_loop",
+      "verdict": "OK"
+    },
+    {
+      "evidence": "last-7d scars across both ledgers=53; ledger emits constant confidence=0.92 (1 distinct value across n=52); verdict UNVERIFIED pending calibration via negative fixture",
+      "metric": "scar_metabolism",
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "evidence": "HONEST default per scar-ledger classifier state; no live probe wired",
+      "metric": "skill_metabolism",
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "evidence": "measurement-state.json snapshots=22; OK if \u22652",
+      "metric": "measurement",
+      "verdict": "OK"
+    }
+  ],
+  "ok_count": 3,
+  "overall": "PARTIAL",
+  "schema": "experience_surface_verification.v1",
+  "schema_note": "Separate object from canon/experience_surface.md. The transcript ships literals; this sidecar carries measured verdicts and is permitted to disagree. See /root/AAA/reports/EUREKA-EXTRACTION-2026-09-12-HERMES-KVM8.md and live-witness log marker HERMES-VERIFY-FINAL-SEAL-20260912.",
+  "transcript_class": "experience_surface.md \u2014 cron-regenerated every 360m",
+  "transcript_path": "/root/AAA/canon/experience_surface.md",
+  "unverified_count": 3
+}
