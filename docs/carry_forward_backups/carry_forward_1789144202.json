@@ -1,0 +1,46 @@
+{
+  "last_session": "exp-1789141713130-1789141433699",
+  "unmetabolized": [],
+  "active_scars": [
+    {
+      "event_id": "evt_595d5f1677c9bcbd",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-11T16:00:03Z"
+    }
+  ],
+  "pending_skills": [],
+  "metrics": {
+    "map": 0.0,
+    "echo": 0.02,
+    "total_sessions": 1,
+    "direct_executions": 0,
+    "retained_improvements": 1,
+    "honest_observations": 49
+  },
+  "last_updated_utc": "2026-09-11T16:00:03Z",
+  "session_id": "SEAL-e5019233623a4559",
+  "closed_at": "2026-09-11T15:59:50Z",
+  "closing_agent": "fi003_qwen_code",
+  "verdict": "SEAL",
+  "lane": "A-lightweight (session_lifecycle, L01/F11S/F13S PASS, in-kernel blake3 ledger)",
+  "judge_chain_id": "cc_3f6d3176c8a7ecdfb29311676cfbf75fb0f33",
+  "heavyweight_chain_status": "SABAR \u2014 seal_chain.jsonl head seq47 2026-09-07 unchanged; F3 tri-witness >=0.75 not met by session close (by design)",
+  "f13_directives_executed": [
+    "WELL C-001 WAIVED machine-plane (ritual marker 6a83f7be)",
+    "SEALED_EVENTS.jsonl plaintext migration 12 lines -> 1337 pure JSONL (marker 6b12b6c8, tombstone, backups)",
+    "AAA commit e6a00a530 (17 files canon batch)",
+    "arifOS commit 5f4613bd8 (isolation-guard tests)"
+  ],
+  "open_loops": [
+    "V2 ratification \u2014 UNRESOLVED-AMBIGUOUS (origin marker 1345, FI-008 Layer-0 session; no artifact found in 4 probes; FI-008 re-surface)",
+    "WELL human-plane re-arm (C-001/T-10, sensors stalled; machine-plane waived 2026-09-11)",
+    "T-1 Hermes boot-context injection (design in flight: config vs skill)",
+    "T-3 Phase-2 read-side adaptation loop (Hermes committed)",
+    "T-4 KVM4 redundant silo cleanup",
+    "T-9 RSI-federation-mesh zero invocations",
+    "HERMES repo 1574 dirty runtime files \u2014 .gitignore hygiene (Hermes lane)",
+    "Terminal SOT now at /root/AAA/docs/TERMINAL-SOT.md (F13 directive 2026-09-12)"
+  ],
+  "next_session": "Read /root/work/tasks.json + this file. Batch F13 HOLD register for one-shot confirm. Main task M-001 Musyawarah NO-gate remains.",
+  "hold_register_status": "SETTLED 2026-09-12 (marker 27f19a7a): FUSE named+ratified, EUREKA 6+7 accepted, identity-lane two-lane canonical, T-6 rendered, T-7 verified, T-8 executed-absent. RETURNED: V2 ratification = UNRESOLVED-AMBIGUOUS (FI-008 to re-surface)."
+}
