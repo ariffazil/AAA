@@ -50,7 +50,7 @@ PETRONAS is **not dying** — it is a state-owned cash generator running a **hol
 - **H1 2026:** PAT RM27.2B (+4%, LNG-driven) · Revenue RM152.4B (+15%) · LNG 20.29 MMT (+17%) · Upstream production 2.34 MMboed (↓ from 2.4) · CFFO RM47.5B (↓RM600M)
 - **Dividend:** RM20B declared (down from RM32B FY2025) — government floor. v3 model's "MOF dividend ≤RM25B" tripwire **already FIRED**.
 - **Extraction ratio:** 70.5% (FY2025 audited, RM32B/RM45.4B). At RM20B ÷ RM45.4B = 44.1% (below 55% threshold).
-- **Brent sensitivity (war-driven, not structural):** $100 → FY26 PAT est. RM55–65B, extraction 31–36%; de-escalation to $70–80 → PAT RM30–35B, extraction 57–67%.
+- **Brent sensitivity (WEALTH `compute_brent_sensitivity()`, engine-calibrated):** $100.60 → PAT RM54.3B, extraction 36.8% (exit ✅) · $84.10 → RM45.4B, 44.0% (✅) · **$67.34 → RM36.4B, 55.0% (⚠️ threshold)** · $50 → RM27.0B, 74.1% (❌). Exit threshold: **Brent > $67.34 sustained.** War-driven, not structural.
 - **Signal:** LNG up, everything else flat-to-declining. LNG masks the cliff.
 
 ### 2 · Petros / Sarawak (unresolved, structurally asymmetric)
@@ -176,9 +176,9 @@ PETRONAS is **not dying** — it is a state-owned cash generator running a **hol
 - `/root/.kimi-code/skills/PETRONAS-intelligence-router/SKILL.md` — SECONDARY (fixed 2026-09-12)
 - `[ARCHIVED] AAA/governance/.archive-rasa-20260904/PETRONAS-intelligence-router/SKILL.md`
 
-### Deepdive bundle (2026-08-29) — QUARANTINED, recoverable
-- **Not deleted.** Quarantined at `.quarantine/zen-20260912/_quarantine/2026-08-29-petronas-deepdive/` (final_bundle, charts, data, generate.py, human_briefing*.py, pass4_charts.py)
-- Contains `00_QUANTITATIVE.md` (underlying PAT RM7.0B, i.e. −73.3% when PRefChem-adjusted) and `08_KNOWLEDGE_GRAPH.md` (P1–P7 propaganda vs R1–R10 realities). Recover/restore from quarantine when needed.
+### Deepdive bundle (2026-08-29) — RESTORED (2026-09-12)
+- Restored to `/root/forge_work/2026-08-29-petronas-deepdive/final_bundle/` (20 files: 00_QUANTITATIVE.md, 08_KNOWLEDGE_GRAPH.md, 10 PNG charts, briefing.pdf, petronas_facts.csv)
+- `00_QUANTITATIVE.md`: PAT ex-PRefChem RM7.0B / −73.3% · `08_KNOWLEDGE_GRAPH.md`: P1–P7 propaganda vs R1–R18 realities
 
 ## Constitutional Warnings
 
@@ -193,5 +193,5 @@ PETRONAS is **not dying** — it is a state-owned cash generator running a **hol
 
 - `/root/petronas/ATLAS.md` — directory gone (quarantined 2026-09-12)
 - `/root/forge_work/petronas-collapse-2026/` — moved
-- `/root/forge_work/2026-08-29-petronas-deepdive/` — quarantined (see inventory above), not live
+- `/root/.quarantine/zen-20260912/_quarantine/2026-08-29-petronas-deepdive/` — quarantined duplicate (restored copy now live at `/root/forge_work/2026-08-29-petronas-deepdive/`)
 - `megamemory_understand("PETRONAS")` — not verified live
