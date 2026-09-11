@@ -29,6 +29,15 @@ Memory hanya melalui Four Gates (A: derivation, B: deletion, C: decision, D: nov
 Canonical doctrine: /root/AAA/instructions/memory-promotion-gate.md
 ```
 
+### [CONCEPT] Institutional Memory Strata (Ratified 2026-09-11 by ARIF)
+```text
+[CONCEPT]
+Memory lives in governed artifacts, bukan model.
+S0 Context (mati: session) · S1 Repository (reconstruct) · S2 Witness (attest) · S3 Semantic Recall (arif_memory/Qdrant).
+Harness swap = substrate test: yang mati selepas swap ialah narrative, bukan institution.
+Canonical doctrine: /root/AAA/instructions/institutional-memory-strata.md
+```
+
 ---
 
 ## IDENTITIES (Category A — human-held)
