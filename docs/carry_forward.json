@@ -32,12 +32,15 @@
     "arifOS commit 5f4613bd8 (isolation-guard tests)"
   ],
   "open_loops": [
-    "F13 HOLD register: identity-lane design (per-agent keys vs local-append), FUSE name+thresholds, V2 ratification (unblocks SOUL.md migration), EUREKA 6+7 acceptance, T-6 attention-kill ratification, T-7 Jauhari ratification, T-8 clone deletion 888_HOLD, WELL human-plane re-arm (sensors stalled)",
+    "V2 ratification \u2014 UNRESOLVED-AMBIGUOUS (origin marker 1345, FI-008 Layer-0 session; no artifact found in 4 probes; FI-008 re-surface)",
+    "WELL human-plane re-arm (C-001/T-10, sensors stalled; machine-plane waived 2026-09-11)",
     "T-1 Hermes boot-context injection (design in flight: config vs skill)",
-    "T-3 Phase-2 read-side adaptation loop (Hermes committed 'Aku buat kerja')",
+    "T-3 Phase-2 read-side adaptation loop (Hermes committed)",
     "T-4 KVM4 redundant silo cleanup",
     "T-9 RSI-federation-mesh zero invocations",
-    "HERMES repo 1574 dirty runtime files \u2014 needs .gitignore hygiene (Hermes lane)"
+    "HERMES repo 1574 dirty runtime files \u2014 .gitignore hygiene (Hermes lane)",
+    "Terminal SOT now at /root/AAA/docs/TERMINAL-SOT.md (F13 directive 2026-09-12)"
   ],
-  "next_session": "Read /root/work/tasks.json + this file. Batch F13 HOLD register for one-shot confirm. Main task M-001 Musyawarah NO-gate remains."
+  "next_session": "Read /root/work/tasks.json + this file. Batch F13 HOLD register for one-shot confirm. Main task M-001 Musyawarah NO-gate remains.",
+  "hold_register_status": "SETTLED 2026-09-12 (marker 27f19a7a): FUSE named+ratified, EUREKA 6+7 accepted, identity-lane two-lane canonical, T-6 rendered, T-7 verified, T-8 executed-absent. RETURNED: V2 ratification = UNRESOLVED-AMBIGUOUS (FI-008 to re-surface)."
 }
