@@ -32,12 +32,12 @@
     "retained_improvements": 6,
     "honest_observations": 64
   },
-  "last_updated_utc": "2026-09-11T17:09:44Z",
+  "last_updated_utc": "2026-09-11T17:24:00Z",
   "session_id": "SEAL-e5019233623a4559",
-  "closed_at": "2026-09-11T15:59:50Z",
+  "closed_at": "2026-09-11T17:24:00Z",
   "closing_agent": "antigravity",
   "verdict": "SEAL",
-  "lane": "A-FORGE / FED-LITELLM / EUREKA-CANON",
+  "lane": "A-FORGE / FED-LITELLM / EUREKA-CANON / FALSIFICATION-SEAL",
   "judge_chain_id": "cc_3f6d3176c8a7ecdfb29311676cfbf75fb0f33",
   "heavyweight_chain_status": "SABAR \u2014 seal_chain.jsonl head seq47 2026-09-07 unchanged; F3 tri-witness >=0.75 not met by session close (by design)",
   "f13_directives_executed": [
@@ -48,13 +48,17 @@
     "FED LiteLLM Full Overhaul: QWEN_INDIVIDUAL_API_KEY promoted, fallback latency trap purged, 1M context declared across 92 models, ZAI coding plan base healed, SEA-LION wired (A-FORGE b2a0a039, c6cceb88)",
     "Wan 2.7 image-shim revived on port 4020 with live individual plan key (image verified)",
     "KVM2 Wawa organ wired: A-FORGE MCP (:7072) and SEA-LION fallback wired into /root/.hermes/config.yaml",
-    "EUREKA::CAPABILITY_DISCOVERY_OUTRUNS_DECAY inscribed to /root/AAA/canon/ (AAA b4912cfb8)"
+    "EUREKA::CAPABILITY_DISCOVERY_OUTRUNS_DECAY inscribed to /root/AAA/canon/ (AAA b4912cfb8)",
+    "FALSIFICATION-REGISTER.md inscribed with 7 watches, failure signals, checks, and 2026-11-12 decision gate (AAA eed5fe5e)",
+    "DOCKET-EUREKA-EVIDENCE-HORIZON-2026-09-12 candidate cold docket recorded (HELIX format, waiting baseline clean)",
+    "HERMES repo clean: mem0-promotion-ledger synced and runtime tracking aligned",
+    "Housekeeping: federation repos audited, gitwrap synchronized"
   ],
   "open_loops": [
     "V2 ratification \u2014 UNRESOLVED-AMBIGUOUS (origin marker 1345, FI-008 Layer-0 session; no artifact found in 4 probes; FI-008 re-surface)",
     "WELL human-plane re-arm (C-001/T-10, sensors stalled; machine-plane waived 2026-09-11)",
     "T-3 Phase-2 read-side adaptation loop (Hermes committed)",
-    "HERMES repo 1574 dirty runtime files \u2014 .gitignore hygiene (Hermes lane)",
+    "W-1 to W-7 active falsification watches in /root/AAA/canon/FALSIFICATION-REGISTER.md (first milestone 2026-10-12, upgrade decision 2026-11-12)",
     "Terminal SOT now at /root/AAA/docs/TERMINAL-SOT.md (F13 directive 2026-09-12)"
   ],
   "next_session": "Read /root/work/tasks.json + this file. Batch F13 HOLD register for one-shot confirm. Main task M-001 Musyawarah NO-gate remains.",
