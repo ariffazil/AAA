@@ -1,0 +1,315 @@
+{
+  "_meta": {
+    "schema": "arifos.dependency_tier.v1",
+    "origin": "SCAR-RESEARCH::2026-09-10::FREE-IS-TEMPORARY (EUREKA 6 — Economics is Substrate)",
+    "created_utc": "2026-09-11T03:45:00Z",
+    "created_by": "FI-008-kimi (333-AGI autonomous session, F13-directed compile)",
+    "law": "A system without runtime economics cannot distinguish foundation from subsidy, and dies when the subsidy ends.",
+    "tiers": {
+      "LOCAL_CPU_RAM": "T1 FOUNDATION — dies only when hardware dies",
+      "PAID_API_BOUNDED": "T2 FOUNDATION — dies only when budget empties",
+      "FREE_API_LUXURY": "T3 LUXURY — dies when provider decides",
+      "PROMO_CREDIT": "T4 LUXURY — dies on a date"
+    },
+    "load_bearing": [
+      "LOCAL_CPU_RAM",
+      "PAID_API_BOUNDED"
+    ],
+    "probe": {
+      "script": "/root/scripts/forge_dependency_probe.py",
+      "cron": "17 7 * * * (daily, anti-herd offset)",
+      "state_file": "/root/.local/share/arifos/dependency_probe_state.json",
+      "death_events": "/root/.local/share/arifos/dependency_death_events.jsonl",
+      "rule": "Cheap checks early, expensive checks late. Daily cron = port checks + SOT freshness + expiry dates. API canaries (--canary) are manual/on-demand only."
+    },
+    "sot_status_source": "/root/.config/federation-models.json (providers[].status, refreshed by fi-zai-probe / fi-mesh-check skills)"
+  },
+  "deps": {
+    "ollama": {
+      "tier": "LOCAL_CPU_RAM",
+      "kind": "port",
+      "probe": {
+        "host": "127.0.0.1",
+        "port": 11434
+      },
+      "survival_hypothesis": "dies_when=hardware_dies",
+      "observed_status": "live",
+      "last_probe_utc": "2026-09-11T03:35:00Z"
+    },
+    "postgres": {
+      "tier": "LOCAL_CPU_RAM",
+      "kind": "port",
+      "probe": {
+        "host": "127.0.0.1",
+        "port": 5432
+      },
+      "survival_hypothesis": "dies_when=hardware_dies",
+      "observed_status": "live",
+      "last_probe_utc": "2026-09-11T03:35:00Z"
+    },
+    "redis": {
+      "tier": "LOCAL_CPU_RAM",
+      "kind": "port",
+      "probe": {
+        "host": "127.0.0.1",
+        "port": 6379
+      },
+      "survival_hypothesis": "dies_when=hardware_dies",
+      "observed_status": "live",
+      "last_probe_utc": "2026-09-11T03:35:00Z"
+    },
+    "qdrant": {
+      "tier": "LOCAL_CPU_RAM",
+      "kind": "port",
+      "probe": {
+        "host": "127.0.0.1",
+        "port": 6333
+      },
+      "survival_hypothesis": "dies_when=hardware_dies",
+      "observed_status": "live",
+      "last_probe_utc": "2026-09-11T03:35:00Z"
+    },
+    "nats": {
+      "tier": "LOCAL_CPU_RAM",
+      "kind": "port",
+      "probe": {
+        "host": "127.0.0.1",
+        "port": 4222
+      },
+      "survival_hypothesis": "dies_when=hardware_dies",
+      "observed_status": "live",
+      "last_probe_utc": "2026-09-11T03:35:00Z"
+    },
+    "litellm-local-kvm8": {
+      "tier": "LOCAL_CPU_RAM",
+      "kind": "port",
+      "probe": {
+        "host": "127.0.0.1",
+        "port": 4013
+      },
+      "survival_hypothesis": "dies_when=hardware_dies (gateway process on KVM8)",
+      "observed_status": "live",
+      "evidence": "fed_probe 2026-09-11: http 200 I'm alive",
+      "last_probe_utc": "2026-09-11T03:36:00Z"
+    },
+    "litellm-kvm4": {
+      "tier": "LOCAL_CPU_RAM",
+      "kind": "http",
+      "probe": {
+        "url": "http://100.64.0.5:4000/health/liveliness",
+        "expect_http": 200
+      },
+      "survival_hypothesis": "dies_when=KVM4_hardware_dies (workshop node)",
+      "observed_status": "live",
+      "evidence": "fed_probe 2026-09-11: http 200 I'm alive",
+      "last_probe_utc": "2026-09-11T03:36:00Z"
+    },
+    "deepseek": {
+      "tier": "PAID_API_BOUNDED",
+      "kind": "sot",
+      "sot_id": "deepseek",
+      "survival_hypothesis": "dies_when=prepaid_balance_empties (was $17.38 @ 2026-08-30)",
+      "observed_status": "active",
+      "last_probe_utc": "2026-09-11T03:38:00Z"
+    },
+    "zai-coding-plan": {
+      "tier": "PAID_API_BOUNDED",
+      "kind": "sot",
+      "sot_id": "zai-coding-plan",
+      "survival_hypothesis": "dies_when=monthly_plan_lapses (GLM coding plan credits)",
+      "observed_status": "active",
+      "note": "default routing lane for FI harnesses",
+      "last_probe_utc": "2026-09-11T03:38:00Z"
+    },
+    "kimi-moonshot": {
+      "tier": "PAID_API_BOUNDED",
+      "kind": "sot",
+      "sot_id": "kimi-moonshot",
+      "survival_hypothesis": "dies_when=monthly_plan_lapses",
+      "observed_status": "active",
+      "last_probe_utc": "2026-09-11T03:38:00Z"
+    },
+    "minimax": {
+      "tier": "PAID_API_BOUNDED",
+      "kind": "sot",
+      "sot_id": "minimax",
+      "survival_hypothesis": "dies_when=monthly_token_plan_exhausts_or_lapses",
+      "observed_status": "active",
+      "evidence": "SOT verified 2026-09-10",
+      "last_probe_utc": "2026-09-11T03:38:00Z"
+    },
+    "qwen-token-plan-team": {
+      "tier": "PAID_API_BOUNDED",
+      "kind": "sot",
+      "sot_id": "qwen-token-plan-team",
+      "survival_hypothesis": "dies_when=monthly_plan_lapses",
+      "observed_status": "active",
+      "last_probe_utc": "2026-09-11T03:38:00Z"
+    },
+    "qwen-token-plan-individual": {
+      "tier": "PAID_API_BOUNDED",
+      "kind": "sot",
+      "sot_id": "qwen-token-plan-individual",
+      "survival_hypothesis": "dies_when=monthly_plan_lapses",
+      "observed_status": "active",
+      "evidence": "SOT verified 2026-09-04",
+      "last_probe_utc": "2026-09-11T03:38:00Z"
+    },
+    "qwen-token-plan-primary": {
+      "tier": "PAID_API_BOUNDED",
+      "kind": "sot",
+      "sot_id": "qwen-token-plan",
+      "survival_hypothesis": "dies_when=monthly_plan_lapses; quota windows reset monthly",
+      "observed_status": "quota_exhausted_429",
+      "note": "paid plan but currently quota-exhausted — not dead, window-bound",
+      "last_probe_utc": "2026-09-11T03:38:00Z"
+    },
+    "bailian-token-plan": {
+      "tier": "PAID_API_BOUNDED",
+      "kind": "sot",
+      "sot_id": "bailian-token-plan",
+      "survival_hypothesis": "dies_when=monthly_plan_lapses",
+      "observed_status": "active",
+      "last_probe_utc": "2026-09-11T03:38:00Z"
+    },
+    "mimo-token-plan": {
+      "tier": "PAID_API_BOUNDED",
+      "kind": "sot",
+      "sot_id": "mimo-token-plan",
+      "survival_hypothesis": "dies_when=monthly_plan_max_exhausts",
+      "observed_status": "active",
+      "last_probe_utc": "2026-09-11T03:38:00Z"
+    },
+    "dashscope-payg": {
+      "tier": "PAID_API_BOUNDED",
+      "kind": "sot",
+      "sot_id": "dashscope-payg",
+      "survival_hypothesis": "dies_when=payg_budget_empties",
+      "observed_status": "active",
+      "last_probe_utc": "2026-09-11T03:38:00Z"
+    },
+    "xai": {
+      "tier": "PAID_API_BOUNDED",
+      "kind": "sot",
+      "sot_id": "xai",
+      "survival_hypothesis": "dies_when=pay_per_token_budget_empties",
+      "observed_status": "active",
+      "last_probe_utc": "2026-09-11T03:38:00Z"
+    },
+    "mulerouter": {
+      "tier": "PAID_API_BOUNDED",
+      "kind": "sot",
+      "sot_id": "mulerouter",
+      "survival_hypothesis": "dies_when=payg_budget_empties",
+      "observed_status": "active",
+      "last_probe_utc": "2026-09-11T03:38:00Z"
+    },
+    "opencode-zen": {
+      "tier": "PAID_API_BOUNDED",
+      "kind": "sot",
+      "sot_id": "opencode-zen",
+      "survival_hypothesis": "dies_when=payg_budget_empties",
+      "observed_status": "active",
+      "note": "balance historical: credits exhausted 2026-09-04 — treat as bounded-payg, watch",
+      "last_probe_utc": "2026-09-11T03:38:00Z"
+    },
+    "openrouter": {
+      "tier": "PAID_API_BOUNDED",
+      "kind": "sot",
+      "sot_id": "openrouter",
+      "survival_hypothesis": "dies_when=pay_per_token_budget_empties",
+      "observed_status": "degraded",
+      "last_probe_utc": "2026-09-11T03:38:00Z"
+    },
+    "tokenrouter": {
+      "tier": "PAID_API_BOUNDED",
+      "kind": "sot",
+      "sot_id": "tokenrouter",
+      "survival_hypothesis": "dies_when=prepaid_budget_empties",
+      "observed_status": "parked",
+      "note": "retained, not load-bearing",
+      "last_probe_utc": "2026-09-11T03:38:00Z"
+    },
+    "azure-openai": {
+      "tier": "PAID_API_BOUNDED",
+      "kind": "sot",
+      "sot_id": "azure-openai",
+      "survival_hypothesis": "dies_when=payg_budget_empties OR deprecation completes",
+      "observed_status": "deprecating",
+      "note": "scheduled removal — do not build on it",
+      "last_probe_utc": "2026-09-11T03:38:00Z"
+    },
+    "groq": {
+      "tier": "FREE_API_LUXURY",
+      "kind": "sot",
+      "sot_id": "groq",
+      "survival_hypothesis": "dies_when=provider_decides (free tier, unknown date)",
+      "observed_status": "active",
+      "last_probe_utc": "2026-09-11T03:38:00Z"
+    },
+    "gemini": {
+      "tier": "FREE_API_LUXURY",
+      "kind": "sot",
+      "sot_id": "gemini",
+      "survival_hypothesis": "dies_when=provider_decides (free tier AI Studio)",
+      "observed_status": "active",
+      "last_probe_utc": "2026-09-11T03:38:00Z"
+    },
+    "opencode-go": {
+      "tier": "FREE_API_LUXURY",
+      "kind": "sot",
+      "sot_id": "opencode-go",
+      "survival_hypothesis": "dies_when=provider_decides (free tier)",
+      "observed_status": "active",
+      "last_probe_utc": "2026-09-11T03:38:00Z"
+    },
+    "dashscope-free-quota": {
+      "tier": "FREE_API_LUXURY",
+      "kind": "sot",
+      "sot_id": "dashscope-free-quota",
+      "survival_hypothesis": "dies_when=provider_revokes_free_quota_per_model",
+      "observed_status": "active",
+      "last_probe_utc": "2026-09-11T03:38:00Z"
+    },
+    "mimo-platform-free": {
+      "tier": "FREE_API_LUXURY",
+      "kind": "sot",
+      "sot_id": "mimo-platform",
+      "survival_hypothesis": "dies_when=free_window_closes (0-credit window)",
+      "observed_status": "fallback_only",
+      "last_probe_utc": "2026-09-11T03:38:00Z"
+    },
+    "sea-lion": {
+      "tier": "PROMO_CREDIT",
+      "kind": "sot",
+      "sot_id": "sea-lion",
+      "survival_hypothesis": "dies_when=free_trial_ends (date unknown — TRIAL, dated death)",
+      "observed_status": "active",
+      "warning": "PROMO_CREDIT on unknown date — surface expiry date to F13 when known",
+      "last_probe_utc": "2026-09-11T03:38:00Z"
+    },
+    "cerebras-flame": {
+      "tier": "PROMO_CREDIT",
+      "kind": "expiry",
+      "expiry_utc": "2026-08-20T00:00:00Z",
+      "survival_hypothesis": "dies_when=2026-08-20T00:00:00Z (PREDICTED CORRECT, died on schedule)",
+      "observed_status": "retired",
+      "retired_at_utc": "2026-09-04T00:00:00Z",
+      "evidence": "/root/backups/_CANONICAL/FLAME-retired-20260904/ (24 files preserved); port 18901 no listener",
+      "display_rule": "federation surfaces must show 'TIER-4 RETIRED 2026-09-04', never 'DOWN'",
+      "last_probe_utc": "2026-09-11T03:38:00Z"
+    },
+    "falkordb": {
+      "tier": "LOCAL_CPU_RAM",
+      "kind": "service",
+      "probe": {
+        "unit": "falkordb.service"
+      },
+      "survival_hypothesis": "dies_when=hardware_dies OR deliberately_disabled; unit maps 127.0.0.1:6379 — SHARES PORT WITH REDIS, port probe false-positives via Redis",
+      "observed_status": "dead",
+      "evidence": "systemctl inactive+disabled 2026-09-11 FI-008; unit file changed-on-disk (daemon-reload pending); referenced in organs.yaml topology; sibling witness: port_up_but_service_down (333-AGI session ec463b839d7543b9)",
+      "note": "disabled manually — restart requires intent check (arif_memory graph_first lane affected); NOT auto-restarted by FI-008",
+      "last_probe_utc": "2026-09-11T04:50:00Z"
+    }
+  }
+}
