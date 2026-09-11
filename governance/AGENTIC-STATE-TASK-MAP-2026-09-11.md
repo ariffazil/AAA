@@ -35,4 +35,19 @@
 | **T-4 silos** | DONE — KVM4 dirs moved to `/root/quarantine-20260912/` |
 | **Whole system** | New kernel fragment `experience-metabolism-reflex` (read/query/trace + F12 plain-prose rule) — **inline, loads at boot for every harness**: kimi·hermes·claude·codex·opencode·qwen·grok·openclaw + KVM4. Commits `1d6c12832` + `d9c182f` |
 
+## D. Hermes Izzu/Syed report — FI-008 witness verdicts (2026-09-12 ~00:4x)
+
+| Claim Hermes | Disaksikan | Pembetulan |
+|---|---|---|
+| izzu-kpj-dashboard revived, SKILL.md 8,340B | ✅ tepat (8,340B @ 23:52:18) | — |
+| Lane override marker + chain 46a1493b00cd | ✅ wujud di ritual.log | — |
+| 50 skill hilang dari load path | 🟡 | **40** hilang dari load path hermes; tapi termasuk mesh AAA → **mati sebenar 117** (lihat bawah) |
+| usage.json: 44 active-tapi-mati | ❌ | **138 active-tidak-wujud-di-load**; ditapis mesh AAA → **117 mati sebenar** dari 228 entri active |
+| Identiti: lanes+social-graph vs registry bercanggah | 🟡 | **lanes.yaml + lanes/social-graph.yaml + channel_directory.json SEMUA bersetuju**: Izzu=1237635275 ("Mohd"), Aliff=1024343313. people_registry.json TIDAK DITEMUI dalam probe — kontradiksi tak dapat disaksikan; sokongan buat masa ini condong kepada Izzu=1237635275 (3 fail hidup vs 1 fail tak jumpa) |
+| Manifest baseline Sep-4, 490 entri hantu | 🟡 tak disahkan penuh | .bundled_manifest dijumpai ber-tarikh **Aug-15** (lebih lapuk); manifest hash-829 Hermes tak ditemui dalam probe cepat — keputusan F13 tetap sama |
+
+**Mayat paling mahal (use+patch tinggi, tiada di mana-mana load surface):** syed-care-architecture (use=78 patch=23) · human-paradox-geometry (34/39) · arifos-federation-health (29/32) · arif-syed-cron-doctrine (22/25) · AAA-malaysian-rasa (43/0).
+
+**4 keputusan menunggu F13 (soalan Hermes, angka kini disaksikan):** (1) restore berapa banyak dari 117 · (2) identiti Izzu=1237635275 sah? · (3) manifest: baseline baru vs rekod niat · (4) susunan bina hardening — cadangan majlis APEX: **atomic-receipt + claim-without-handle sebagai Tier-0 bergabung**, kemudian identity-SOT → manifest-liveness → archive-gate.
+
 DITEMPA BUKAN DIBERI ⚒️
