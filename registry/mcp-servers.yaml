@@ -319,6 +319,55 @@ gaps:
     fix: "Build MCP-level health probe (SEAL — high leverage, low risk)"
 
 # ─────────────────────────────────────────────────────────────
+# CANARY ENCLAVES — Controlled analytical layers
+# ─────────────────────────────────────────────────────────────
+canary_enclaves:
+  duckdb_enclave:
+    id: ENCLAVE-DUCKDB-01
+    name: "DuckDB Analytical Enclave"
+    state: canary
+    transport: stdio
+    launcher: /root/AAA/mcp/duckdb_enclave/duckdb_enclave_launcher.sh
+    code_path: /root/AAA/mcp/duckdb_enclave/server.py
+    code_sha256: 1d18da2242c65a325ebd487e7967b8a1f60cadc39806970de1090e5942def98f
+    policy_sha256: 3e5edcebfce73deac32cd2c5774278e50bea8cfa05f41b37f3748d65ec667634
+    audience: [geox, audit-research, antigravity]
+    access_mode: read_only
+    approved_roots:
+      - /data/aaa/audit
+      - /data/aaa/ledgers
+      - /data/geox/derived
+      - /data/aaa/log-exports
+    denied_roots: [/root, /home, /etc, /proc, /sys, /var/run/docker.sock, /run/secrets]
+    limits: { max_rows: 500, max_bytes: 1048576, timeout_s: 30 }
+    audit_file: /data/aaa/audit/duckdb_enclave_audit.jsonl
+    deployed_at: "2026-09-12T02:42:00+08:00"
+
+# ─────────────────────────────────────────────────────────────
+# DECISION PACKET PIPELINE (S3 Substrate)
+# ─────────────────────────────────────────────────────────────
+decision_packet_engine:
+  version: "1.0.0"
+  status: "ACTIVE_CANARY"
+  contract_dir: /root/AAA/contracts/decision-packet
+  schema_path: /root/AAA/contracts/decision-packet/schema.json
+  engine_path: /root/AAA/contracts/decision-packet/engine.py
+  canonicalization: "RFC8785-JCS"
+  ledger_chain_path: /data/aaa/ledgers/decision_packets/chain.jsonl
+  emitters:
+    - id: duckdb_adapter
+      path: /root/AAA/contracts/decision-packet/duckdb_adapter.py
+      domain: geoscience_data_qa
+    - id: aforge_patch_adapter
+      path: "TBD_PHASE_2"
+      domain: code_engineering
+  genesis_packet:
+    packet_id: dp_20260911_e36f94f9
+    packet_hash: ea89e01f5fa9f69851071b2e288554e5fbe71aa7a83f4582f2d74f0acf02611c
+    domain: GEOX_Malay_Basin_B_Sands
+    sealed_at: "2026-09-12T02:46:00+08:00"
+
+# ─────────────────────────────────────────────────────────────
 # DERIVED ARTIFACTS — These files are generated from this SOT
 # ─────────────────────────────────────────────────────────────
 derived_from:
