@@ -1,0 +1,23 @@
+{
+  "_meta": {
+    "schema": "arifos.scar_index.v1",
+    "purpose": "Data slot for scar_pressure_runtime.py (existing primitive, Layer 2). Strengthen via data, not new artifacts.",
+    "created_utc": "2026-09-11T04:35:00Z",
+    "note": "First data written = F13 so-what audit (2026-09-11). No vault event, no doctrine file for that audit — by design."
+  },
+  "scars": [
+    {
+      "id": "insight_classify_before_create",
+      "patterns": [
+        "\\binsight\\b.{0,60}\\b(menarik|baru|Baru|penting|interesting|new)\\b",
+        "\\b(seal|canonical|doctrine|eureka)\\b.{0,30}\\b(ni|ini|it|this)\\b",
+        "\\bshould (i )?(write|create|seal|register)\\b.{0,30}\\b(file|doctrine|canon|vault)\\b",
+        "\\bnew (eureka|doctrine|insight)\\b",
+        "\\bperpindahan|artifact production\\b"
+      ],
+      "constraint": "CLASSIFY-BEFORE-CREATE (F13 so-what audit 2026-09-11): Insight yang menarik bukan trigger untuk create file/seal/doctrine. First action = classify: (1) adakah ini mengubah future decision? (2) adakah primitive sedia ada yang boleh diperkuat (data slot, config, constraint) tanpa artefak baru? (3) hanya jika tiada primitive wujud, pertimbangkan artefak baru — dan minta F13 VERDICT sebelum canon. Metrik: Promotion Rate = New Insights / New Primitives. 100 insights / 98 doctrines = essay production. Experience harus jadi behavior change, bukan artifact.",
+      "severity": "HIGH",
+      "source": "F13 chat 2026-09-11 (accumulation vs metabolism audit) — INTERPRET, no seal claimed"
+    }
+  ]
+}
