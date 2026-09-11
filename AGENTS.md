@@ -51,6 +51,7 @@ For session-start probes, action-tier expansions, conflict resolution, and the a
 | RBA-PROOF-001 Mission | `/root/AAA/proof/rba-proof-001/` (8 artifacts) | PARTIAL verdict |
 | **Anti-HARAM Behavior Canonical** | `/root/AAA/instructions/anti-haram-behavior-canonical.md` | **F13_RATIFIED_CHAT** |
 | **Cognitive Cost Transfer — 5 EUREKAs** | `/root/AAA/instructions/cognitive-cost-transfer-eurekas.md` | **F13_RATIFIED_CHAT** |
+| **Memory Promotion Gate (Witness ≠ Seal ≠ Memory)** | `/root/AAA/instructions/memory-promotion-gate.md` | **F13_RATIFIED_CHAT (2026-09-11)** |
 
 **To load:** read the file path above. Each fragment is independent and may be consulted separately.
 
