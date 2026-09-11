@@ -29,7 +29,7 @@ from datetime import datetime, timezone
 # ---------------------------------------------------------------------------
 
 FED_BASE = "http://127.0.0.1:4000/v1/chat/completions"
-FED_KEY = os.environ.get("FED_VIRTUAL_KEY", "sk-xgHjvI3a_4mvZLRWvBsiYQ")
+FED_KEY = os.environ.get("FED_VIRTUAL_KEY", "")
 ANTHROPIC_BASE = "https://api.anthropic.com/v1/messages"
 SAMPLES_PER_VENDOR = 3
 DRY_RUN = "--dry-run" in sys.argv
@@ -37,6 +37,9 @@ DRY_RUN = "--dry-run" in sys.argv
 for arg in sys.argv[1:]:
     if arg.startswith("--samples"):
         SAMPLES_PER_VENDOR = int(arg.split("=")[1])
+
+if not FED_KEY and not DRY_RUN:
+    sys.exit("FED_VIRTUAL_KEY not set — export it or pass --dry-run")
 
 # ---------------------------------------------------------------------------
 # Vendors — alias, base, api_key env, model field expected
