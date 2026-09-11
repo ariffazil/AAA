@@ -1885,31 +1885,6 @@
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
     {
-      "v3_name": "kernel-superposition",
-      "layer": "domain",
-      "primary_disk_name": "quantum-kernel-runtime",
-      "primary_path": "/root/.agents/skills/quantum-kernel-runtime",
-      "primary_resolved": "/root/.agents/skills/quantum-kernel-runtime",
-      "primary_home": "agents",
-      "related": [
-        {
-          "name": "quantum-kernel-runtime",
-          "path": "/root/.agents/skills/quantum-kernel-runtime",
-          "home": "agents"
-        },
-        {
-          "name": "\ud83d\udf02-qubit-substrate",
-          "path": "/root/.agents/skills/\ud83d\udf02-qubit-substrate",
-          "home": "agents"
-        }
-      ],
-      "status": "RESOLVED",
-      "tombstone": false,
-      "restored_live": false,
-      "path_stale": true,
-      "stale_flagged": "2026-09-08T08:38:44Z"
-    },
-    {
       "v3_name": "meta-skill-unification",
       "layer": "domain",
       "primary_disk_name": "skill-unification",
@@ -2309,27 +2284,6 @@
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
     {
-      "v3_name": "KERNEL-quantum-runtime",
-      "layer": "doctrine",
-      "primary_disk_name": "KERNEL-quantum-runtime",
-      "primary_path": "/root/.agents/skills/KERNEL-quantum-runtime",
-      "primary_resolved": "/root/.agents/skills/KERNEL-quantum-runtime",
-      "primary_home": "opencode",
-      "related": [
-        {
-          "name": "KERNEL-quantum-runtime",
-          "path": "/root/.agents/skills/KERNEL-quantum-runtime",
-          "home": "opencode"
-        }
-      ],
-      "status": "RESOLVED",
-      "tombstone": false,
-      "restored_live": false,
-      "renamed_from": "quantum-kernel-runtime",
-      "path_stale": true,
-      "stale_flagged": "2026-09-08T08:38:44Z"
-    },
-    {
       "v3_name": "KERNEL-reality-skills",
       "layer": "doctrine",
       "primary_disk_name": "KERNEL-reality-skills",
@@ -2431,25 +2385,6 @@
       "renamed_from": "shadow-diagnostic",
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
-    },
-    {
-      "v3_name": "RSI-recursive-improvement",
-      "layer": "doctrine",
-      "primary_disk_name": "RSI-recursive-improvement",
-      "primary_path": "/root/.agents/skills/RSI-recursive-improvement",
-      "primary_resolved": "/root/.agents/skills/RSI-recursive-improvement",
-      "primary_home": "opencode",
-      "related": [
-        {
-          "name": "RSI-recursive-improvement",
-          "path": "/root/.agents/skills/RSI-recursive-improvement",
-          "home": "opencode"
-        }
-      ],
-      "status": "RESOLVED",
-      "tombstone": false,
-      "restored_live": false,
-      "renamed_from": "recursive-self-improvement"
     },
     {
       "v3_name": "MCP-transport-physics",
@@ -3232,7 +3167,6 @@
     "explorer-intelligence-architecture": "AGI-explorer-intelligence",
     "multi-discipline-critique": "ASI-multi-discipline-critique",
     "quantum-eureka-doctrine": "APEX-quantum-eureka",
-    "quantum-kernel-runtime": "kernel-superposition",
     "\ud83d\udf02-qubit-substrate": "kernel-superposition",
     "skill-unification": "AGI-skill-unification",
     "agentic-dream-engine": "AGI-dream-engine",
