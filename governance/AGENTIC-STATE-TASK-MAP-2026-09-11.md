@@ -50,4 +50,6 @@
 
 **4 keputusan menunggu F13 (soalan Hermes, angka kini disaksikan):** (1) restore berapa banyak dari 117 · (2) identiti Izzu=1237635275 sah? · (3) manifest: baseline baru vs rekod niat · (4) susunan bina hardening — cadangan majlis APEX: **atomic-receipt + claim-without-handle sebagai Tier-0 bergabung**, kemudian identity-SOT → manifest-liveness → archive-gate.
 
+| **Insiden 16:05 UTC** | Watchdog alert "edge unhealthy" = **TRUE pada masanya** — 90 saat tetingkung symlink semasa upgrade (bin lama dipadam sebelum baru dipasang). Recovered 16:07 via allow-scripts rebuild. Verified 16:12: active, 0 restart, 0 error, @AGI_ASI_bot polling. UNKNOWN tersisa: tiada ujian end-to-end mesej (tak boleh tanpa spam F13) — mesej pertama Arif ke bot = ujian langsung |
+
 DITEMPA BUKAN DIBERI ⚒️
