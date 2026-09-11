@@ -1,8 +1,36 @@
 {
   "liveness_status": "ALIVE",
-  "last_invoked": null,
-  "invocation_count": 0,
+  "last_invoked": "2026-09-11T16:15:58.296308+00:00",
+  "invocation_count": 1,
   "outcome_delta_total": 0.0,
-  "sessions_since_invoked": 1,
-  "sessions_with_zero_outcome": 0
+  "sessions_since_invoked": 0,
+  "sessions_with_zero_outcome": 0,
+  "last_result": {
+    "type": "skill-mesh drift check (invocation #1)",
+    "canonical_aaa_skills": 208,
+    "per_harness": {
+      "kimi": {
+        "own_count": 102,
+        "shared_with_canon": 25,
+        "unique": 77
+      },
+      "hermes": {
+        "own_count": 193,
+        "shared_with_canon": 113,
+        "unique": 80
+      },
+      "codex": {
+        "own_count": 208,
+        "shared_with_canon": 208,
+        "unique": 0
+      },
+      "opencode": {
+        "own_count": 29,
+        "shared_with_canon": 8,
+        "unique": 21
+      }
+    },
+    "drift": true,
+    "note": "mesh is pointer-first: harness homes carry overlays + subsets by design; canonical superset lives in AAA. No propagation needed this run."
+  }
 }
