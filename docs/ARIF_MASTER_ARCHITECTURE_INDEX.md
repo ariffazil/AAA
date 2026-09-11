@@ -240,6 +240,7 @@
 | **INIT-ZEN** | `/root/AAA/prompts/INIT-ZEN.md` | Zen alignment |
 | **SEAL.md** | `/root/AAA/prompts/SEAL.md` | Exit (Lane A/B) |
 | **AAA-ZEN-ALIGNMENT** | `/root/AAA/prompts/AAA-ZEN-ALIGNMENT.md` | Federation-wide Zen |
+| **A-Z-APEX-ZEN-DOCTRINE** | `/root/AAA/canon/A-Z-APEX-ZEN-DOCTRINE.md` | APEX×ZEN fusion (DRAFT_AWAITING_F13) |
 | **APEX_JUDGE_SUBAGENT** | `/root/AAA/prompts/APEX_JUDGE_SUBAGENT.md` | Isolated judgment |
 | **ADVERSARIAL_BOOT** | `/root/AAA/prompts/ADVERSARIAL_BOOT.md` | Adversarial testing |
 | **FORGE_HERMES** | `/root/AAA/prompts/FORGE_HERMES.md` | Hermes forge |
