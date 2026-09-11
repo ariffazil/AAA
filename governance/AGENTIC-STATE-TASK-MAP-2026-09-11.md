@@ -52,4 +52,18 @@
 
 | **Insiden 16:05 UTC** | Watchdog alert "edge unhealthy" = **TRUE pada masanya** — 90 saat tetingkung symlink semasa upgrade (bin lama dipadam sebelum baru dipasang). Recovered 16:07 via allow-scripts rebuild. Verified 16:12: active, 0 restart, 0 error, @AGI_ASI_bot polling. UNKNOWN tersisa: tiada ujian end-to-end mesej (tak boleh tanpa spam F13) — mesej pertama Arif ke bot = ujian langsung |
 
+## E. Decision #4 ANSWERED + P1/P2 BUILT (2026-09-12 ~00:20 MYT)
+
+**Keputusan #4 (susunan hardening) diJAWAB oleh F13** — forwarding APEX ranking = adopsi: P1 atomic-receipt + P2 claim-without-handle digabung Tier-0, kemudian P3 identity-SOT → P4 manifest-liveness → P5 archive-gate.
+
+**P1+P2 EXECUTED same night:**
+| Artefak | Handle |
+|---|---|
+| Doktrin kernel (inline, semua agen boot) | `/root/AAA/instructions/claim-receipt-binding.md` · commit `2a562df64` · render list commit `f81a25f` |
+| Kernel render | 46 fragmen, 44,545 bait · `/root/AGENTS.md` + KVM4 synced |
+| Enforcement FI-008 (pola untuk adik-beradik) | `/root/.arifos/agents/kimi/hooks/aaa-completion-check.sh` — strong-handle gate (path/SHA/chain_hash/PID/probe), word-evidence tak lulus lagi; DIUJI: BLOCK exit-2 kata-sahaja, ALLOW exit-0 ber-handle; rollback `.snapshots/aaa-completion-check.sh.p2-20260912`; telemetri `completion-check.jsonl` kelas baharu `claim_without_handle` |
+| Kill criterion | 7 hari — mana-mana tuntutan tanpa handle yang terselamat = wiring gagal (audit dalam RSI mesh mingguan) |
+
+**Beratur:** P3 identity-SOT (menunggu jawapan #2 identiti Izzu) · P4 manifest-liveness (menunggu jawapan #3) · P5 archive-gate (menunggu jawapan #1 restore). Semua reka bentuk sedia, keputusan manusia 3 baris sahaja.
+
 DITEMPA BUKAN DIBERI ⚒️
