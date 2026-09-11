@@ -1,5 +1,7 @@
 # Experience Surface — Canonical Pointer
 
+> **Status:** F13_RATIFIED_CHAT (2026-09-12 — "Ratify the 3 drafts, then render AGENTS.md")
+
 > **Generated:** 2026-09-08 (Metabolism Investigation)
 > **File:** `/root/AAA/canon/experience_surface.md`
 > **Generator:** `/root/AAA/canon/experience-surface-gen.sh`
