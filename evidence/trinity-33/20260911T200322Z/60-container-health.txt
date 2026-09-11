@@ -1,0 +1,5 @@
+/searxng healthy running
+/searxng-redis healthy running
+/minio healthy running
+/qdrant healthy running
+/postgres healthy running
