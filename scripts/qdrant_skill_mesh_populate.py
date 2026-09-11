@@ -1,39 +1,41 @@
 #!/usr/bin/env python3
 """
-P0.3/P0.4 — Qdrant Skill Mesh Population & Capability Tagging
-=============================================================
-Reads all 184 SKILL.md files under /root/AAA/skills/, classifies each into
+P0.3/P0.4 — Skill Mesh Population & Capability Tagging
+=======================================================
+Reads all SKILL.md files under /root/AAA/skills/, classifies each into
 a capability tier (fed-reasoning-heavy, fed-multimodal-vision, etc.),
-creates the arifOS_skill_mesh collection in Qdrant (:6333), and indexes
-every skill using all-MiniLM-L6-v2 embeddings.
+and indexes every skill into the skill_mesh memory class via the
+FederationMemory adapter. The arifOS kernel owns the substrate:
+collection lifecycle and embedding are kernel-side (alignment
+doctrine §1 — agents never touch the vector store directly).
 
 Also injects capability_tier + ecology_state metadata frontmatter into
 each SKILL.md file for future reference.
 
 Forged: 2026-08-10 by 333-AGI under F13 directive.
+Migrated 2026-09-12 to federation_memory_adapter (F13 SOVEREIGN
+directive — /root/AAA/governance/FEDERATION_MEMORY_ALIGNMENT_DOCTRINE.md).
 """
 
 import os
 import re
-import hashlib
-import time
 import sys
 import json
 from pathlib import Path
-from typing import Optional
 
 import yaml
-from qdrant_client import QdrantClient
-from qdrant_client.models import Distance, VectorParams, PointStruct
-from sentence_transformers import SentenceTransformer
+
+_FEDERATION_DIR = Path(__file__).resolve().parents[1] / "federation"
+if str(_FEDERATION_DIR) not in sys.path:
+    sys.path.insert(0, str(_FEDERATION_DIR))
+
+from federation_memory_adapter import FederationMemory
 
 # ── Config ────────────────────────────────────────────────────────
 SKILLS_ROOT = Path("/root/AAA/skills")
-QDRANT_HOST = "localhost"
-QDRANT_PORT = 6333
-COLLECTION_NAME = "arifOS_skill_mesh"
-VECTOR_SIZE = 384  # all-MiniLM-L6-v2 output dim
-BATCH_SIZE = 32
+COLLECTION_CLASS = "skill_mesh"  # → arifOS_skill_mesh (memory_classes.yaml)
+MEMORY_TIER = "canon"
+PROGRESS_EVERY = 32  # print cadence (adapter stores one record per call)
 
 # ── Capability tier classification ────────────────────────────────
 # Keyword-based heuristic: scan skill name + description for capability signals.
@@ -235,9 +237,14 @@ def inject_metadata(filepath: Path, capability_tier: str, ecology_state: str = "
 
 # ── Main ────────────────────────────────────────────────────────────
 def main():
-    print("🔍 Qdrant Skill Mesh Population — P0.3/P0.4")
+    print("🔍 Skill Mesh Population — P0.3/P0.4 (FederationMemory)")
     print(f"   Skills root: {SKILLS_ROOT}")
-    print(f"   Qdrant: {QDRANT_HOST}:{QDRANT_PORT}")
+    print(f"   Memory class: {COLLECTION_CLASS} (via federation_memory_adapter)")
+
+    fm = FederationMemory(
+        actor_id="aaa-skill-mesh-populate",
+        session_id=os.getenv("ARIFOS_SESSION_ID", "system"),
+    )
 
     # ── Discover all SKILL.md files ─────────────────────────────────
     skill_files = sorted(SKILLS_ROOT.rglob("SKILL.md"))
@@ -245,33 +252,13 @@ def main():
     skill_files = [f for f in skill_files if "_retired" not in str(f)]
     print(f"   Found {len(skill_files)} SKILL.md files (excluding _retired)")
 
-    # ── Load encoder ────────────────────────────────────────────────
-    print("   Loading encoder (all-MiniLM-L6-v2)...")
-    encoder = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
-    print("   Encoder ready.")
-
-    # ── Create/Recreate Qdrant collection ────────────────────────────
-    client = QdrantClient(host=QDRANT_HOST, port=QDRANT_PORT)
-
-    # Check if collection exists
-    collections = [c.name for c in client.get_collections().collections]
-    if COLLECTION_NAME in collections:
-        print(f"   Dropping existing collection '{COLLECTION_NAME}'...")
-        client.delete_collection(COLLECTION_NAME)
-
-    print(f"   Creating collection '{COLLECTION_NAME}' (vectors={VECTOR_SIZE})...")
-    client.create_collection(
-        collection_name=COLLECTION_NAME,
-        vectors_config=VectorParams(size=VECTOR_SIZE, distance=Distance.COSINE),
-    )
-    print("   Collection created.")
-
-    # ── Parse, classify, embed, index ────────────────────────────────
+    # ── Parse, classify, store via adapter ──────────────────────────
+    # Collection lifecycle and embedding are kernel-owned (alignment
+    # doctrine §1); each skill becomes one fm.store receipt.
     tagged_count = 0
-    indexed_count = 0
-    points_batch = []
+    stored_count = 0
 
-    for i, filepath in enumerate(skill_files):
+    for filepath in skill_files:
         skill = read_skill_md(filepath)
         name = skill["name"]
         desc = skill["description"]
@@ -284,11 +271,6 @@ def main():
         if inject_metadata(filepath, tier):
             tagged_count += 1
 
-        # Embed
-        text = f"{name}: {desc}" if desc else name
-        vector = encoder.encode(text).tolist()
-
-        # Build payload
         payload = {
             "skill_id": skill_id,
             "name": name,
@@ -301,26 +283,23 @@ def main():
             "filepath": str(filepath),
         }
 
-        # Use hash-based ID
-        point_id = abs(hash(skill_id)) % (2**63)
-        points_batch.append(PointStruct(id=point_id, vector=vector, payload=payload))
+        fm.store(
+            content=payload,
+            tier=MEMORY_TIER,
+            collection_class=COLLECTION_CLASS,
+            tags=["skill-mesh", "populate", f"capability-tier:{tier}"],
+            source_type="skill_index",
+            source_uri=str(filepath),
+        )
+        stored_count += 1
 
-        # Batch upsert
-        if len(points_batch) >= BATCH_SIZE:
-            client.upsert(collection_name=COLLECTION_NAME, points=points_batch)
-            indexed_count += len(points_batch)
-            print(f"   Indexed {indexed_count}/{len(skill_files)} skills...")
-            points_batch = []
+        if stored_count % PROGRESS_EVERY == 0:
+            print(f"   Stored {stored_count}/{len(skill_files)} skills...")
 
-    # Flush remaining
-    if points_batch:
-        client.upsert(collection_name=COLLECTION_NAME, points=points_batch)
-        indexed_count += len(points_batch)
-        print(f"   Indexed {indexed_count}/{len(skill_files)} skills.")
-
-    # ── Verify ───────────────────────────────────────────────────────
-    count = client.count(collection_name=COLLECTION_NAME).count
-    print(f"\n✅ DONE: {count} skills indexed in '{COLLECTION_NAME}'")
+    # ── Verify via adapter stats ────────────────────────────────────
+    stats = fm.stats(collection_class=COLLECTION_CLASS)
+    print(f"\n✅ DONE: {stored_count} skills stored via class '{COLLECTION_CLASS}'")
+    print(f"   Adapter stats: {json.dumps(stats, default=str)[:300]}")
     print(f"   Metadata injected into {tagged_count} SKILL.md files")
 
     # ── Capability distribution ──────────────────────────────────────
@@ -334,7 +313,7 @@ def main():
     print(f"   Capability distribution: {json.dumps(tiers, indent=2)}")
 
     return {
-        "skills_indexed": count,
+        "skills_stored": stored_count,
         "skills_tagged": tagged_count,
         "capability_distribution": tiers,
     }
