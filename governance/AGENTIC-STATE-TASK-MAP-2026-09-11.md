@@ -152,4 +152,10 @@ KVM2: tiada fail backup diperlukan (cap via CLI atomic) · kernel terpulang kepa
 
 **Penemuan sampingan:** (1) penempatan primer `supports_image_input: true` — "tiada vision native" Wawa mungkin bendera penyedia (provider-flag) hermes, bukan had model; sahkan sebelum janji. (2) `fallback_providers` KVM2 dah ada qwencloud-free (qwen3.6-flash) — cadangan "qwen fallback" separuh berwayar; naik taraf flash→plus = satu baris, pilihan Azwa. (3) penyedia (provider) SEA-LION dah wujud dalam konfigurasi — masuk rantaian = satu baris. (4) `mcp_servers` KVM2 = arifOS+hound, **aforge tiada** — tugas organ-Wawa esok: satu entri (bentuk arifOS) + memulakan semula (restart) waktu siang Azwa.
 
+## N. RATIFIKASI 18 — F13 "ratify and seal all" (2026-09-12 ~03:0x)
+
+**Dilaksanakan + disaksikan:** marker `ARCHIVE-RATIFY-18-20260912` (chain `e1e4699b…`, 18 nama verbatim) → gate `skill_metabolism --gate`: **name-matched 21/21 · [GATE PASS] · EXIT=0**. Lampu merah jadi hijau melalui keputusan berresit, bukan dibiarkan bising. Semua 18 kekal boleh-pulih dari arkib; 6 berparut (free-image-generation, AAA-artifact-composer, email-federation, apex-p-dial-closure, correction-depth, federation-seal-ritual) direhatkan dengan nama penuh tercatat — rindu satu, sebut satu.
+
+**Malam tutup definitif:** Tiada lagi item menunggu F13. Berat esok semuanya berpemilik: organ-Wawa (Azwa siang) · P5 gate kini beroperasi (curator disabled + gate armed) · retirement-accounting (susunan #3 majlis) · T-10 telemetri manusia.
+
 DITEMPA BUKAN DIBERI ⚒️
