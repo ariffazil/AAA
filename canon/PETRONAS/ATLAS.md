@@ -50,7 +50,7 @@ PETRONAS is **not dying** — it is a state-owned cash generator running a **hol
 - **H1 2026:** PAT RM27.2B (+4%, LNG-driven) · Revenue RM152.4B (+15%) · LNG 20.29 MMT (+17%) · Upstream production 2.34 MMboed (↓ from 2.4) · CFFO RM47.5B (↓RM600M)
 - **Dividend:** RM20B declared (down from RM32B FY2025) — government floor. v3 model's "MOF dividend ≤RM25B" tripwire **already FIRED**.
 - **Extraction ratio:** 70.5% (FY2025 audited, RM32B/RM45.4B). At RM20B ÷ RM45.4B = 44.1% (below 55% threshold).
-- **Brent sensitivity (WEALTH `compute_brent_sensitivity()`, engine-calibrated):** $100.60 → PAT RM54.3B, extraction 36.8% (exit ✅) · $84.10 → RM45.4B, 44.0% (✅) · **$67.34 → RM36.4B, 55.0% (⚠️ threshold)** · $50 → RM27.0B, 74.1% (❌). Exit threshold: **Brent > $67.34 sustained.** War-driven, not structural.
+- **Brent sensitivity (WEALTH `compute_brent_sensitivity()`, engine-calibrated):** $100.60 → PAT RM54.3B, extraction 36.8% (exit ✅) · $84.10 → RM45.4B, 44.0% (✅) · **$67.34 → RM36.4B, 55.0% (⚠️ threshold)** · $50.00 → RM27.0B, 74.1% (❌). Exit threshold: **Brent > $67.34 sustained.** War-driven, not structural.
 - **Signal:** LNG up, everything else flat-to-declining. LNG masks the cliff.
 
 ### 2 · Petros / Sarawak (unresolved, structurally asymmetric)
