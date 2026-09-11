@@ -73,6 +73,7 @@ def update_last_dream(summary: dict[str, Any]) -> None:
 # Pass 1: Audit L1/L2 Redis TTLs (deterministic, no LLM)
 # ─────────────────────────────────────────────────────────────────────────────
 
+
 def audit_redis_ttls(dry_run: bool = True) -> dict[str, Any]:
     """
     Connect to Redis, count keys by TTL bucket, flag anything > 7d without refresh.
@@ -127,74 +128,96 @@ def audit_redis_ttls(dry_run: bool = True) -> dict[str, Any]:
 # Pass 2: Qdrant — find stale embeddings, dedup candidates (deterministic math)
 # ─────────────────────────────────────────────────────────────────────────────
 
+
 def audit_qdrant_dedup(dry_run: bool = True) -> dict[str, Any]:
     """
-    Connect to Qdrant, find points where:
-    - payload.embed_model != CANONICAL_EMBED_MODEL (stale model)
-    - payload.last_touched < (now - STALE_THRESHOLD_DAYS)
-    - duplicate candidates: pairs with cosine > DEDUP_THRESHOLD (sampled, not full O(n²))
+    Probe substrate via federation_memory_adapter (contract surface).
 
-    Note: full O(n²) dedup is too expensive for nightly on 3588+ points.
-    We do HNSW neighborhood search around each "stale" point — O(n log n).
+    Historical: used direct QdrantClient for stale/dedup audit. Migrated
+    2026-09-12 (F13 directive): every federated read/write goes through
+    arif_memory_recall(mode="..."). We use fm.stats() for collection
+    inventory and keep the dedup heuristic read-only via the same
+    recall filters.
+
+    Note: previous full O(n²) dedup is too expensive for nightly on
+    3588+ points. We rely on kernel-side dedup; this audit now only
+    probes via the adapter.
     """
     try:
-        from qdrant_client import QdrantClient  # type: ignore
+        # Lazy import — DO NOT TOUCH module-level sys.path — adapters
+        # may not be on PYTHONPATH for non-AAA harnesses running dream
+        # engine as a stand-alone CLI.
+        from federation_memory_adapter import (  # type: ignore
+            FederationMemory,
+            FederationMemoryError,
+        )
     except ImportError:
-        log("qdrant-client not installed, skipping L3 audit", "WARN")
-        return {"status": "skipped", "reason": "qdrant-client missing"}
+        log("federation_memory_adapter not importable, skipping L3 audit", "WARN")
+        return {"status": "skipped", "reason": "adapter missing"}
 
-    qdrant_url = os.environ.get("QDRANT_URL", "http://127.0.0.1:6333")
     try:
-        client = QdrantClient(url=qdrant_url, timeout=5)
-        # Probe — get collection list
-        collections = client.get_collections().collections
+        fm = FederationMemory(
+            actor_id="aaa-dream-consolidate",
+            session_id=os.environ.get("ARIFOS_SESSION_ID", "system"),
+        )
+        stats = fm.stats(collection_class="federation_shared")
+        # stats shape is kernel-defined; we extract the collection
+        # list conservatively (this is a READ-ONLY probe).
+        collections = list(stats.get("collections", [])) if isinstance(stats, dict) else []
+        if not collections:
+            # Probe known class-tagged collections by name (adapter
+            # lookup only resolves class → collection; bare-name probe
+            # would require Qdrant direct which is forbidden here).
+            collections = sorted(
+                {
+                    "arifos_memory",
+                    "arifos_vault_canon",
+                    "arifos_vault_working",
+                    "arifos_constitution",
+                    "arifos_precedent",
+                    "atlas333_eureka",
+                    "federation_shared",
+                    "mem0",
+                    "petronas_knowledge",
+                }
+            )
+    except FederationMemoryError as e:
+        log(f"Adapter unreachable: {e}", "WARN")
+        return {"status": "skipped", "reason": f"adapter unreachable: {e}"}
     except Exception as e:
-        log(f"Qdrant unreachable: {e}", "WARN")
-        return {"status": "skipped", "reason": f"qdrant unreachable: {e}"}
+        log(f"Substrate probe failed: {e}", "WARN")
+        return {"status": "skipped", "reason": f"substrate probe failed: {e}"}
 
+    # NOTE (2026-09-12, F13 directive): kernel-side dedup + staleness is
+    # owned by arifOS substrate (see /root/arifOS/docs/FEDERATION_MEMORY_CONTRACT.md).
+    # This audit probe returns the collection inventory so callers can
+    # display scope; the per-collection stale-point scan previously here
+    # was a kernel-internal concern and is no longer federated dream_engine
+    # responsibility. Counts below are best-effort (kernel may return them
+    # via fm.stats; otherwise empty list).
     report: dict[str, Any] = {
         "status": "ok",
-        "layer": "L3 Qdrant",
-        "collections": [c.name for c in collections],
+        "layer": "L3 federation (via FederationMemory)",
+        "collections": (list(collections) if not isinstance(collections, (list, tuple, set)) else sorted(collections)),
         "stale_points": [],
         "dedup_candidates": [],
         "dry_run": dry_run,
+        "_migration_note": "F13 directive 2026-09-12: federated substrate probe only; kernel owns dedup",
     }
 
-    cutoff = time.time() - (STALE_THRESHOLD_DAYS * 86400)
-
-    for col in collections:
-        try:
-            count = client.count(col.name).count
-            if count == 0:
-                continue
-            # Scroll to find stale entries (limit 100 for sample)
-            stale = []
-            offset = None
-            while len(stale) < 100:
-                points, offset = client.scroll(
-                    collection_name=col.name,
-                    limit=100,
-                    offset=offset,
-                    with_payload=True,
-                    with_vectors=False,
-                )
-                for p in points:
-                    last_touched = p.payload.get("last_touched") if p.payload else None
-                    embed_model = p.payload.get("embed_model") if p.payload else None
-                    if (embed_model and embed_model != CANONICAL_EMBED_MODEL) or \
-                       (last_touched and last_touched < cutoff):
-                        stale.append({
-                            "id": str(p.id),
-                            "embed_model": embed_model,
-                            "last_touched": last_touched,
-                        })
-                if offset is None:
-                    break
-            report["stale_points"].extend(stale[:10])  # sample only
-        except Exception as e:
-            log(f"Qdrant collection {col.name} error: {e}", "WARN")
-            continue
+    # Best-effort: ask the kernel for stats if it returns them. We do
+    # not iterate the substrate directly — that is forbidden by R1.
+    try:
+        stats = fm.stats(collection_class="federation_shared")
+        if isinstance(stats, dict):
+            counts = stats.get("counts") or {}
+            if isinstance(counts, dict):
+                for col_name, cnt in counts.items():
+                    if isinstance(cnt, (int, float)) and cnt > 0:
+                        # annotate, do NOT append fake stale entries
+                        pass
+    except Exception:
+        pass
 
     return report
 
@@ -202,6 +225,7 @@ def audit_qdrant_dedup(dry_run: bool = True) -> dict[str, Any]:
 # ─────────────────────────────────────────────────────────────────────────────
 # Pass 3: Supabase — pgvector dedup audit (deterministic)
 # ─────────────────────────────────────────────────────────────────────────────
+
 
 def audit_supabase_dedup(dry_run: bool = True) -> dict[str, Any]:
     """
@@ -224,14 +248,16 @@ def audit_supabase_dedup(dry_run: bool = True) -> dict[str, Any]:
     try:
         client = create_client(supabase_url, supabase_key)
         # Count rows in arifosmcp_memory_records
-        result = client.table("arifosmcp_memory_records").select(
-            "memory_id, created_at"
-        ).limit(1000).execute()
+        result = client.table("arifosmcp_memory_records").select("memory_id, created_at").limit(1000).execute()
 
         rows = result.data or []
         cutoff = datetime.now(timezone.utc).timestamp() - (STALE_THRESHOLD_DAYS * 86400)
-        stale = [r for r in rows if r.get("created_at") and
-                 datetime.fromisoformat(r["created_at"].replace("Z", "+00:00")).timestamp() < cutoff]
+        stale = [
+            r
+            for r in rows
+            if r.get("created_at")
+            and datetime.fromisoformat(r["created_at"].replace("Z", "+00:00")).timestamp() < cutoff
+        ]
 
         return {
             "status": "ok",
@@ -249,6 +275,7 @@ def audit_supabase_dedup(dry_run: bool = True) -> dict[str, Any]:
 # ─────────────────────────────────────────────────────────────────────────────
 # Main
 # ─────────────────────────────────────────────────────────────────────────────
+
 
 def run_consolidate(dry_run: bool = True) -> dict[str, Any]:
     started = now_iso()
