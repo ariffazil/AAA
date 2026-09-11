@@ -25,7 +25,7 @@
         "provider_independent": true,
         "survival_events": 1,
         "contradictions_survived": 1,
-        "last_tested": "2026-09-11T12:10:33.003579+00:00",
+        "last_tested": "2026-09-11T18:11:03.546111+00:00",
         "last_verdict": "STABLE"
       },
       "witnesses": [
@@ -68,6 +68,11 @@
           "receipt_id": "fitness-voice_synthesis-20260911T121033",
           "checked_at": "2026-09-11T12:10:33.017775+00:00",
           "verdict": "STABLE"
+        },
+        {
+          "receipt_id": "fitness-voice_synthesis-20260911T181103",
+          "checked_at": "2026-09-11T18:11:03.560887+00:00",
+          "verdict": "STABLE"
         }
       ]
     },
@@ -93,7 +98,7 @@
         "provider_independent": true,
         "survival_events": 1,
         "contradictions_survived": 1,
-        "last_tested": "2026-09-11T12:10:33.009574+00:00",
+        "last_tested": "2026-09-11T18:11:03.551960+00:00",
         "last_verdict": "STABLE"
       },
       "witnesses": [
@@ -136,6 +141,11 @@
           "receipt_id": "fitness-text_generation-20260911T121033",
           "checked_at": "2026-09-11T12:10:33.017788+00:00",
           "verdict": "STABLE"
+        },
+        {
+          "receipt_id": "fitness-text_generation-20260911T181103",
+          "checked_at": "2026-09-11T18:11:03.560896+00:00",
+          "verdict": "STABLE"
         }
       ]
     },
@@ -155,7 +165,7 @@
         "provider_independent": false,
         "survival_events": 0,
         "contradictions_survived": 0,
-        "last_tested": "2026-09-11T12:10:33.017352+00:00",
+        "last_tested": "2026-09-11T18:11:03.560543+00:00",
         "last_verdict": "STABLE"
       },
       "witnesses": [
@@ -198,9 +208,14 @@
           "receipt_id": "fitness-web_search-20260911T121033",
           "checked_at": "2026-09-11T12:10:33.017794+00:00",
           "verdict": "STABLE"
+        },
+        {
+          "receipt_id": "fitness-web_search-20260911T181103",
+          "checked_at": "2026-09-11T18:11:03.560900+00:00",
+          "verdict": "STABLE"
         }
       ]
     }
   },
-  "last_check": "2026-09-11T12:10:33.017797+00:00"
+  "last_check": "2026-09-11T18:11:03.560902+00:00"
 }
