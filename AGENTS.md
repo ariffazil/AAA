@@ -53,6 +53,7 @@ For session-start probes, action-tier expansions, conflict resolution, and the a
 | **Cognitive Cost Transfer — 5 EUREKAs** | `/root/AAA/instructions/cognitive-cost-transfer-eurekas.md` | **F13_RATIFIED_CHAT** |
 | **Memory Promotion Gate (Witness ≠ Seal ≠ Memory)** | `/root/AAA/instructions/memory-promotion-gate.md` | **F13_RATIFIED_CHAT (2026-09-11)** |
 | **Institutional Memory Strata (S0–S3)** | `/root/AAA/instructions/institutional-memory-strata.md` | **F13_RATIFIED_CHAT (2026-09-11)** |
+| **Attention Kill Criterion (Doctrine Without Kill Is Decoration)** | `/root/AAA/instructions/attention-kill-criterion.md` | DRAFT_AWAITING_F13 |
 
 **To load:** read the file path above. Each fragment is independent and may be consulted separately.
 
