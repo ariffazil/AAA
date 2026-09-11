@@ -1,0 +1,61 @@
+● nats-server.service - NATS Server
+     Loaded: loaded (/usr/lib/systemd/system/nats-server.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2026-09-04 03:00:48 +08; 1 week 1 day ago
+ Invocation: 70f15636e72649dbb947b8b1fd7ffd34
+   Main PID: 2119082 (nats-server)
+      Tasks: 14 (limit: 38428)
+     Memory: 96.4M (peak: 257.9M, swap: 8.3M, swap peak: 12.2M)
+        CPU: 15min 55.870s
+     CGroup: /system.slice/nats-server.service
+             └─2119082 /usr/sbin/nats-server -c /etc/nats-server.conf
+
+Notice: journal has been rotated since unit was started, output may be incomplete.
+
+● prometheus.service - Prometheus Monitoring
+     Loaded: loaded (/etc/systemd/system/prometheus.service; enabled; preset: enabled)
+     Active: active (running) since Wed 2026-09-02 08:07:59 +08; 1 week 2 days ago
+ Invocation: 06076c6b96f34b6b8f8404cd375c6629
+   Main PID: 1126 (prometheus)
+      Tasks: 15 (limit: 38428)
+     Memory: 55.5M (peak: 214.9M, swap: 3.6M, swap peak: 10.4M)
+        CPU: 41min 12.111s
+     CGroup: /system.slice/prometheus.service
+             └─1126 /usr/local/bin/prometheus --config.file=/etc/prometheus/prometheus.yml --storage.tsdb.path=/var/lib/prometheus --web.console.libraries=/usr/local/share/prometheus/console_libraries --web.console.templates=/usr/local/share/prometheus/consoles --web.listen-address=127.0.0.1:9090 --storage.tsdb.retention.time=15d
+
+Notice: journal has been rotated since unit was started, output may be incomplete.
+
+● grafana-server.service - Grafana instance
+     Loaded: loaded (/usr/lib/systemd/system/grafana-server.service; enabled; preset: enabled)
+     Active: active (running) since Wed 2026-09-09 23:14:45 +08; 2 days ago
+ Invocation: 28e1bbc138a04d33b5d790785549b44c
+       Docs: http://docs.grafana.org
+   Main PID: 3915091 (grafana)
+      Tasks: 155 (limit: 38428)
+     Memory: 353.7M (peak: 505M, swap: 39.1M, swap peak: 42.1M)
+        CPU: 48min 8.287s
+     CGroup: /system.slice/grafana-server.service
+             ├─3915091 /usr/share/grafana/bin/grafana server --config=/etc/grafana/grafana.ini --pidfile=/run/grafana/grafana-server.pid --packaging=deb cfg:default.paths.logs=/var/log/grafana cfg:default.paths.data=/var/lib/grafana cfg:default.paths.plugins=/var/lib/grafana/plugins cfg:default.paths.provisioning=/etc/grafana/provisioning cfg:default.paths.bundled_plugins=/var/lib/grafana/plugins-bundled
+             ├─3915193 /var/lib/grafana/plugins/zipkin/gpx_grafana-zipkin-datasource_linux_amd64
+             ├─3915214 /var/lib/grafana/plugins-bundled/grafana-pyroscope-datasource/gpx_grafana-pyroscope-datasource_linux_amd64
+             ├─3915226 /var/lib/grafana/plugins-bundled/influxdb/gpx_grafana_influxdb_datasource_linux_amd64
+             ├─3915237 /var/lib/grafana/plugins-bundled/jaeger/gpx_grafana-jaeger-datasource_linux_amd64
+             ├─3915250 /var/lib/grafana/plugins-bundled/loki/gpx_grafana-loki-datasource_linux_amd64
+             ├─3915300 /var/lib/grafana/plugins-bundled/opentsdb/gpx_grafana-opentsdb-datasource_linux_amd64
+             ├─3915315 /var/lib/grafana/plugins-bundled/prometheus/gpx_grafana-prometheus-datasource_linux_amd64
+             ├─3915325 /var/lib/grafana/plugins-bundled/stackdriver/gpx_grafana_cloudmonitoring_datasource_linux_amd64
+             ├─3915338 /var/lib/grafana/plugins-bundled/tempo/gpx_grafana-tempo-datasource_linux_amd64
+             ├─3915607 /var/lib/grafana/plugins/mysql/gpx_grafana-mysql-datasource_linux_amd64
+             ├─3915730 /var/lib/grafana/plugins/mssql/gpx_grafana-mssql-datasource_linux_amd64
+             ├─3915935 /var/lib/grafana/plugins/elasticsearch/gpx_grafana_elasticsearch_datasource_linux_amd64
+             └─3916079 /var/lib/grafana/plugins/grafana-postgresql-datasource/gpx_grafana_postgresql_datasource_linux_amd64
+
+Sep 12 03:54:49 forge grafana[3915091]: logger=plugins.update.checker t=2026-09-12T03:54:49.60137392+08:00 level=info msg="flag evaluation succeeded" flag="{Value:false EvaluationDetails:{FlagKey:pluginsAutoUpdate FlagType:bool ResolutionDetail:{Variant:default Reason:STATIC ErrorCode: ErrorMessage: FlagMetadata:map[]}}}" details="{Value:false EvaluationDetails:{FlagKey:pluginsAutoUpdate FlagType:bool ResolutionDetail:{Variant:default Reason:STATIC ErrorCode: ErrorMessage: FlagMetadata:map[]}}}"
+Sep 12 03:54:49 forge grafana[3915091]: logger=plugins.update.checker t=2026-09-12T03:54:49.601410065+08:00 level=info msg="Update check succeeded" duration=445.476087ms
+Sep 12 03:54:49 forge grafana[3915091]: logger=plugins.update.checker t=2026-09-12T03:54:49.601424957+08:00 level=info msg="flag evaluation succeeded" flag="{Value:false EvaluationDetails:{FlagKey:pluginsAutoUpdate FlagType:bool ResolutionDetail:{Variant:default Reason:STATIC ErrorCode: ErrorMessage: FlagMetadata:map[]}}}" details="{Value:false EvaluationDetails:{FlagKey:pluginsAutoUpdate FlagType:bool ResolutionDetail:{Variant:default Reason:STATIC ErrorCode: ErrorMessage: FlagMetadata:map[]}}}"
+Sep 12 03:56:47 forge grafana[3915091]: logger=bleve-backend t=2026-09-12T03:56:47.845103515+08:00 level=info msg="index evicted from cache" reason=expired key="{Namespace:default Group:playlist.grafana.app Resource:playlists}" storage=memory
+Sep 12 03:56:47 forge grafana[3915091]: logger=bleve-backend t=2026-09-12T03:56:47.845261553+08:00 level=info msg="index evicted from cache" reason=expired key="{Namespace:default Group:folder.grafana.app Resource:folders}" storage=memory
+Sep 12 03:56:47 forge grafana[3915091]: logger=bleve-backend t=2026-09-12T03:56:47.845282084+08:00 level=info msg="index evicted from cache" reason=expired key="{Namespace:default Group:provisioning.grafana.app Resource:repositories}" storage=memory
+Sep 12 04:02:47 forge grafana[3915091]: logger=bleve-backend t=2026-09-12T04:02:47.84497305+08:00 level=info msg="index evicted from cache" reason=expired key="{Namespace:default Group:dashboard.grafana.app Resource:dashboards}" storage=memory
+Sep 12 04:02:48 forge grafana[3915091]: logger=bleve-backend namespace=default group=dashboard.grafana.app resource=dashboards reason=search t=2026-09-12T04:02:48.903474319+08:00 level=info msg="Building index using memory"
+Sep 12 04:02:48 forge grafana[3915091]: logger=bleve-backend namespace=default group=dashboard.grafana.app resource=dashboards reason=search t=2026-09-12T04:02:48.906603888+08:00 level=info msg="Finished building index" elapsed=2.968115ms listRV=1784470763607985
+Sep 12 04:02:48 forge grafana[3915091]: logger=bleve-backend namespace=default group=dashboard.grafana.app resource=dashboards reason=search t=2026-09-12T04:02:48.906670909+08:00 level=info msg="Storing index in cache" key="{Namespace:default Group:dashboard.grafana.app Resource:dashboards}" expiration=2026-09-12T04:12:48.906669266+08:00
