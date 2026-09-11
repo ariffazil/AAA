@@ -217,6 +217,89 @@ check_file_exists("a2a/A2A_ALIGNMENT_SPEC.md", "A2A alignment spec")
 check_file_exists("a2a/taskstate_verdict_map.json", "TaskState→Verdict map")
 check_file_exists(".well-known/agent-card.json", "Public agent card")
 
+# ── 11. HARNESS WIRE-YIELD (EUREKA-2026-09-11-HARNESS-COMMODITY-BOUNDARY-001) ──
+# Engine vs steering. arifOS may RENT model inference; it must NEVER rent the
+# orchestration loop. Any organ pointing its session state / sub-agent routing at
+# an external hosted harness (OpenAI Agents API) has yielded the cognitive wire,
+# which breaks F13 SOVEREIGN + the Substrate Swap Test. Detection is debt until
+# it can say NO -> this emits HOLD, not a note.
+# Doctrine: /root/AAA/instructions/harness-commoditization-boundary.md
+import re as _re
+from pathlib import Path as _Path
+
+_WIRE_PATTERNS = [
+    # ── OpenAI (Agents API / hosted Codex harness) ──
+    r"codex-cloud-environments",        # hosted-harness WebSocket endpoint
+    r"agents\.sessions\.create",        # Agents API session creation (state machine)
+    r"client\.beta\.agents",            # SDK handle
+    r"codex\s+exec-server",             # remote-environment executor registration
+    # ── Anthropic (hosted agents SDK, witnessed in vendor tree 2026-09-11) ──
+    r"\.beta\.agents\.(?:create|sessions)",
+    r"anthropic[\w.]*\.beta\.agents",
+    # ── Google (genai GAOS hosted agents) ──
+    # NOTE: bare `base_agent:` is a MODEL/HARNESS identifier key, legitimately
+    # present in local agent cards (e.g. AAA/agents/antigravity/agent.yaml).
+    # Flagging it false-HOLDs a sovereign local agent every run. The genuine
+    # hosted signal is the remote environment declaration or the hosted endpoint.
+    r"""base_environment["']?\s*[:=]\s*["']?remote""",
+    r"generativelanguage\.googleapis\.com/[\w/]*agents",
+]
+_wire_re = _re.compile("|".join(_WIRE_PATTERNS))
+# Source-of-truth organs only. Vendor trees, caches, docs and session logs are
+# not the federation's own wiring and must not produce false holds.
+_ORGAN_ROOTS = [
+    _Path("/root/arifOS"), _Path("/root/A-FORGE"), _Path("/root/GEOX"),
+    _Path("/root/WEALTH"), _Path("/root/WELL"), _Path("/root/AAA"),
+]
+_SKIP_DIRS = {".git", "node_modules", ".venv", "venv", "__pycache__", "build",
+              "dist", "deploy", "cache", "sessions", ".hermes", "runtime"}
+_SKIP_SUFFIX = {".log", ".jsonl", ".cache", ".md", ".lock", ".min.js", ".map"}
+_SRC_SUFFIX = {".py", ".js", ".ts", ".mjs", ".cjs", ".yaml", ".yml", ".toml",
+               ".json", ".sh", ".env", ".conf", ".service"}
+
+_SELF = _Path(__file__).resolve()
+
+def _scan_wire_yield():
+    hits = []
+    scanned = 0
+    for root in _ORGAN_ROOTS:
+        if not root.exists():
+            continue
+        for p in root.rglob("*"):
+            try:
+                if not p.is_file():
+                    continue
+                # Self-exclusion: this scanner necessarily carries the wire
+                # literals it hunts. Without it the detector flags itself and
+                # every run is a false HOLD (witnessed 2026-09-11).
+                if p.resolve() == _SELF:
+                    continue
+                if any(part in _SKIP_DIRS for part in p.parts):
+                    continue
+                if p.suffix not in _SRC_SUFFIX or p.suffix in _SKIP_SUFFIX:
+                    continue
+                if p.stat().st_size > 2_000_000:
+                    continue
+                scanned += 1
+                txt = p.read_text(errors="ignore")
+                if _wire_re.search(txt):
+                    hits.append(str(p))
+            except Exception:
+                continue
+    return hits, scanned
+
+_wire_hits, _wire_scanned = _scan_wire_yield()
+if _wire_hits:
+    finding("CRITICAL", "Harness wire-yield (F13/Substrate Swap)",
+            f"EXTERNAL ORCHESTRATION WIRE in {len(_wire_hits)} organ source file(s): "
+            + "; ".join(_wire_hits[:4])
+            + " — session state/routing delegated to hosted harness; leash no longer local",
+            "HOLD")
+else:
+    finding("OK", "Harness wire-yield (F13/Substrate Swap)",
+            f"No Agents-API orchestration wire in organ source ({_wire_scanned} files scanned) — "
+            f"engine local, leash held by arifOS", "SEAL")
+
 # ── SUMMARY ──
 print(f"\n{'='*60}")
 print(f"AAA DRIFT CHECK — {NOW}")

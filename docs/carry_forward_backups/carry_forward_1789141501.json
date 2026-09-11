@@ -1,5 +1,5 @@
 {
-  "last_session": "session-cron_ad35c4e6711f_20260911_234235",
+  "last_session": "exp-1789139968259-1789031665582",
   "unmetabolized": [],
   "active_scars": [
     {
@@ -46,23 +46,18 @@
       "event_id": "evt_a06f876a9ab3beaf",
       "reason": "Failure that taught a lesson (this hurt, remember why).",
       "timestamp": "2026-09-11T15:30:01Z"
-    },
-    {
-      "event_id": "evt_038d3f6baa668d01",
-      "reason": "Failure that taught a lesson (this hurt, remember why).",
-      "timestamp": "2026-09-11T15:45:01Z"
     }
   ],
   "pending_skills": [],
   "metrics": {
     "map": 0.0,
-    "echo": 0.21,
-    "total_sessions": 10,
+    "echo": 0.19,
+    "total_sessions": 9,
     "direct_executions": 0,
-    "retained_improvements": 10,
-    "honest_observations": 48
+    "retained_improvements": 9,
+    "honest_observations": 47
   },
-  "last_updated_utc": "2026-09-11T15:45:01Z",
+  "last_updated_utc": "2026-09-11T15:30:01Z",
   "closed_at": "2026-09-10T04:34:49.267234+08:00",
   "completed": [
     "ZEN_KERNEL compression (4 principles + 1 invariant)",
