@@ -1,5 +1,5 @@
 {
-  "last_session": "exp-1789167718146-1789166766310",
+  "last_session": "session-20260912_073238_2c31c7",
   "unmetabolized": [],
   "active_scars": [
     {
@@ -61,6 +61,11 @@
       "event_id": "evt_1688431399499f07",
       "reason": "Failure that taught a lesson (this hurt, remember why).",
       "timestamp": "2026-09-11T23:00:02Z"
+    },
+    {
+      "event_id": "evt_61cc67784febea7d",
+      "reason": "Failure that taught a lesson (this hurt, remember why).",
+      "timestamp": "2026-09-12T00:00:04Z"
     }
   ],
   "pending_skills": [
@@ -71,14 +76,14 @@
     }
   ],
   "metrics": {
-    "map": 0.08,
-    "echo": 0.22,
-    "total_sessions": 13,
+    "map": 0.07,
+    "echo": 0.23,
+    "total_sessions": 14,
     "direct_executions": 1,
-    "retained_improvements": 13,
-    "honest_observations": 60
+    "retained_improvements": 14,
+    "honest_observations": 61
   },
-  "last_updated_utc": "2026-09-11T23:15:01Z",
+  "last_updated_utc": "2026-09-12T00:00:04Z",
   "session_id": "SEAL-54cee348f64a4fc0",
   "closed_at": "2026-09-11T18:03:00Z",
   "closing_agent": "kimi-code/FI-008",
