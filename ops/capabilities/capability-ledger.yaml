@@ -50,7 +50,7 @@ capabilities:
       endpoint: "https://api.open-meteo.com/v1/forecast"
       endpoint_class: "open-meteo.forecast"
       trigger: "cron: 07:30 Asia/Kuala_Lumpur"
-      last_probe_at: "2026-09-12T09:49:01.552410+08:00"
+      last_probe_at: "2026-09-12T09:59:01.795973+08:00"
       last_probe_status: "reachable"
       latency_ms: null
       probe_mode: read_only
