@@ -1,0 +1,94 @@
+{
+  "packet_type": "a2a-version-drift-evidence",
+  "generated_at_utc": "2026-09-12T07:03:40Z",
+  "generated_by": "333-AGI (verification pass — AAA working tree, branch feat/acd-federated-unification)",
+  "purpose": "Machine-readable evidence for HOLD_VERSION_DRIFT decision. No conformance claim is made or implied.",
+  "classification": "HOLD_VERSION_DRIFT",
+  "protocol_versions_observed": {
+    "root_readme_sot_manifest": {
+      "path": "README.md",
+      "field": "protocol",
+      "value": "A2A v1.0.0"
+    },
+    "agent_card": {
+      "path": "dist/.well-known/agent-card.json",
+      "field": "protocolVersion",
+      "value": "1.2",
+      "schema_reference": "https://a2a-protocol.org/schemas/agent-card/v1.0",
+      "note": "drift exists within the card itself: protocolVersion 1.2 vs schema reference v1.0",
+      "sha256": "70f483c908aa07d8472573322b33606c5cb0ef0f516381bfb202c47722effa4c"
+    },
+    "wire_manifest": {
+      "path": "a2a-server/A2A_LIVE_WIRE_MANIFEST.json",
+      "field": "meta.protocol",
+      "value": "A2A v1.2",
+      "sha256": "2056e059ea8135dc882ce3ccb2f5e86850a32aa13ef533b7618a551b65652b35"
+    },
+    "server_header": {
+      "path": "a2a-server/server.js",
+      "field": "res.setHeader('A2A-Version', '1.0')",
+      "value": "1.0",
+      "note": "server.js:2613; version middleware comment references 'A2A Protocol v1.0.0 §9.2' (server.js:285)",
+      "sha256": "8434ee031c1fdc3ed90946ae2c12239a6dc07aef776f763ebb62dac997cbe0fe"
+    }
+  },
+  "normative_source": {
+    "path": "/root/arifOS/a2a_downloaded.proto",
+    "sha256": "e195bf96ab630c69797851970203e1b2b6b19528f2e9803b7d904b91a5104016",
+    "task_states_observed": ["SUBMITTED=1", "WORKING=2", "COMPLETED=3", "FAILED=4(implied)", "CANCELED=5", "INPUT_REQUIRED=6", "REJECTED=7", "AUTH_REQUIRED=8"],
+    "tenant": "path-level interface selector (e.g. '/{tenant}/message:send')"
+  },
+  "conformance": {
+    "command": "npm run a2a:conformance",
+    "result": "exit 1",
+    "failure_class": "REGISTRY_DEGRADATION",
+    "classification": "UNKNOWN — TEST_ENVIRONMENT_OR_REGISTRY_BLOCKED",
+    "observed_failures": [
+      "duplicate agentId 'a-forge-mcp' found in agent-cards/organs/aforge + agent-cards/pillars/aforge — registry hard-fail (boot blocked)",
+      "gemini-cli: missing local A2A card (agents/_external/gemini-cli/agent-card.json)",
+      "openclaw-edge-2026-08: missing local A2A card",
+      "geox: 1 phantom, 22 missing",
+      "arifOS dashboard not present — marked failed-optional (not false-green)"
+    ],
+    "tested_at_utc": "2026-09-12T06:51Z",
+    "tested_on": ["main@cb86b7298", "PR#178 head@23c7db96"],
+    "note": "Exit 1 is an unavailable/failed test surface, not evidence of noncompliance."
+  },
+  "related_artifacts": {
+    "research_document": {
+      "path": "docs/A2A-AAA-ALIGNMENT-RESEARCH-2026-09-12.md",
+      "sha256": "0979ee7fb83a5d36daf2ad04e15ce81737e3407b56476a450e50f1f48dbbf7f8",
+      "status": "888 HOLD"
+    },
+    "proposed_readme": {
+      "path": "docs/AAA-README-PROPOSED-2026-09-12.md",
+      "sha256": "f759a08208527f4b3e27afee5bb7ac0b69ace8c0ddf288691ff6ed729adee169",
+      "status": "PROPOSE_WITH_HOLD — F13 scoped review pending"
+    },
+    "baseline_patch": {
+      "path": "/root/work/patches/aaa-fix-seed-agent-fixture-sync-20260912.diff",
+      "sha256": "6dbef51c1055d0ed0bb3a2d22b5300f8f516fe78da56635b1b4f66ab183a03ba",
+      "purpose": "seed-agents fixture drift repair — baseline debt blocking the PR #178 dependency-verification gate",
+      "verification": "fails-before: 25 passed · 9 failed (main, local) / 21·7 (CI run 33346749036); passes-after: 35 passed · 0 failed, EXIT=0 (main worktree, 2026-09-12T07:03Z)",
+      "status": "verified local — NOT committed, not pushed"
+    },
+    "federation_component_map": {
+      "path": "docs/AAA-FEDERATION-COMPONENT-MAP-2026-09-12.md",
+      "sha256": "6d0591c1b6853480815375e0e6db2fb79edac475e9c35a39e2be27df41051e79",
+      "status": "PROPOSE — staged local, untracked; not canonical until ratified"
+    }
+  },
+  "pr_178": {
+    "head_sha": "23c7db965dfd3184767c5ac9cd2d5fb9d8285f2a",
+    "base_ref": "main",
+    "github_base_sha": "02f182dcdc7c172772912cb0357efd00eb1dbb83",
+    "main_tip_at_probe": "cb86b7298eb16843ed405174729667015442b7db",
+    "merge_commit_sha": "1427b84b969f0a676e286bff10080df6d0f5d3dc",
+    "state": "open",
+    "mergeable_state": "unstable",
+    "labels": ["deploy-risk", "needs-human-arif"],
+    "note": "github_base_sha = branch point; main tip is ahead; branch is stale and requires rebase before the final evidence cycle"
+  },
+  "decision_options": ["pin_v1.0.0", "upgrade_v1.2", "dual_support", "hold_external_claims"],
+  "decision": "PENDING — F13/workstream. Do not resolve by string change alone; a protocol version is a behavioral compatibility promise."
+}

@@ -1,0 +1,38 @@
+{
+  "receipt_id": "AIO-20260912-002",
+  "cycle_id": "AIO-GEOX-PARITY-001",
+  "creator_agent": "fi-003",
+  "authority_scope": "F13_AUTHORIZED",
+  "created_at": "2026-09-12T06:40:00Z",
+  "ontology": "OBSERVED",
+  "status": "RETAINED_LEARNING",
+  "decision": "RETAIN_LEARNING",
+  "learning_claim": {
+    "narrow_statement": "Under KVM8 GEOX environment and manifest/stamp predicates, two one-line deltas (public_count_target update + infer_mode tool-name addition) changed two parity indicators from FAIL/UNKNOWN to PASS/DERIVED on 2026-09-12, subject to: metadata-only scope, no authority change, no production deployment.",
+    "what_was_retained": [
+      "tools_manifest.yaml public_count_target must match actual public tool count — stale target causes boot-time SURFACE_COUNT_DRIFT attestation failure",
+      "ext_witness_stamp.py infer_mode() tool-name heuristic list must include ALL tool names that compute derived evidence — omission causes data_mode='unknown' on success path"
+    ],
+    "what_was_NOT_retained": [
+      "This does NOT permanently fix all GEOX parity",
+      "This does NOT prove ACD found the correct solution",
+      "This does NOT mean the federation now learns",
+      "This does NOT constitute institutional birth"
+    ],
+    "falsifier": "If either metric reverts without code change, the learning is invalid"
+  },
+  "lineage": {
+    "mission_witness": "00_mission_witness.json",
+    "state_witness": "01_state_witness.json",
+    "baseline": "02_baseline_measurement.json",
+    "causal_analysis": "03_causal_analysis.json",
+    "acd_dream": "04_acd_dream_receipt.json",
+    "delta": "05_candidate_delta.json",
+    "governance": "06_governance_challenge.json",
+    "authorization": "07_arif_authorization.json",
+    "enforcement": "08_enforcement_witness.json",
+    "measurement": "09_post_change_measurement.json",
+    "consequence": "10_consequence_witness.json"
+  },
+  "content_hash": "aio-002-retained-learning"
+}
