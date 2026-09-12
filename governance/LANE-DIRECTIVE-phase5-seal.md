@@ -1,6 +1,6 @@
 # LANE DIRECTIVE — Phase 5 seal-for-real + session close
 
-> **Status:** ACTIVE directive (2026-09-12 ~22:35 +0800) — F13 sovereign instruction relayed by FI-003
+> **Status:** COMPLETED 2026-09-12 22:32:51 +0800 — Lane-A seal FIRED under F13 ack "seal phase 5 A": seal_chain **seq 36**, verdict SEAL, vault receipt `63b17e49-54fc-4ae5-bdb0-cae9a1d47d7e` (hash `20f548b5…f0ab`). Payload carries the lane's truthful state incl. L11-held attempt, 188-drift surfacing, rollback partial-coverage, and the two-ledger topology flag. Original directive below retained for the record.
 > **Instrument:** F13 chat, verbatim: **"suruh lane seal betul-betul pastu tutup session"**
 > **To:** Phase-5 migration lane (commits 32fa8f126…fb3041c11, .hermes/skills restructure)
 
