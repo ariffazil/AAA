@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "arifos-cell-manifest-v1",
+  "title": "arifOS Cell Manifest",
+  "description": "Defines what a registered warga-aaa cell is allowed to be. Used for admission, audit, and revocation.",
+  "type": "object",
+  "required": [
+    "apiVersion",
+    "kind",
+    "metadata",
+    "runtime",
+    "identity",
+    "network",
+    "mcp",
+    "telemetry",
+    "admission"
+  ],
+  "properties": {
+    "apiVersion": {
+      "type": "string",
+      "const": "warga-aaa.arifos/v1"
+    },
+    "kind": {
+      "type": "string",
+      "const": "CellManifest"
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["cell_id", "owner", "lifecycle", "purpose"],
+      "properties": {
+        "cell_id": { "type": "string" },
+        "owner": { "type": "string" },
+        "lifecycle": {
+          "type": "string",
+          "enum": ["ephemeral", "persistent"]
+        },
+        "purpose": {
+          "type": "string",
+          "enum": ["qwen-code-builder", "reviewer", "test-runner", "researcher"]
+        }
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "required": ["engine", "engine_version", "image", "user", "privileged", "sandbox"],
+      "properties": {
+        "engine": { "type": "string" },
+        "engine_version": { "type": "string" },
+        "image": { "type": "string" },
+        "user": { "type": "string" },
+        "privileged": { "type": "boolean", "const": false },
+        "root_filesystem": { "type": "string", "const": "read_only" },
+        "sandbox": {
+          "type": "object",
+          "required": ["provider", "network_profile", "docker_socket"],
+          "properties": {
+            "provider": { "type": "string", "enum": ["docker", "podman"] },
+            "network_profile": { "type": "string", "enum": ["egress_allowlist", "isolated"] },
+            "docker_socket": { "type": "boolean", "const": false }
+          }
+        }
+      }
+    },
+    "identity": {
+      "type": "object",
+      "required": ["workload_identity", "token_ttl_seconds", "credential_source", "raw_secret_access"],
+      "properties": {
+        "workload_identity": { "type": "string", "format": "uri" },
+        "token_ttl_seconds": { "type": "integer", "minimum": 60, "maximum": 3600 },
+        "credential_source": { "type": "string", "const": "arifos-secret-broker" },
+        "raw_secret_access": { "type": "boolean", "const": false }
+      }
+    },
+    "network": {
+      "type": "object",
+      "required": ["inbound", "outbound", "public_ingress"],
+      "properties": {
+        "inbound": {
+          "type": "object",
+          "properties": {
+            "allowed": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "outbound": {
+          "type": "object",
+          "properties": {
+            "allowed": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "public_ingress": { "type": "boolean", "const": false }
+      }
+    },
+    "mcp": {
+      "type": "object",
+      "required": ["allow", "deny"],
+      "properties": {
+        "allow": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "deny": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "telemetry": {
+      "type": "object",
+      "required": ["mandatory", "sinks", "required_events"],
+      "properties": {
+        "mandatory": { "type": "boolean", "const": true },
+        "sinks": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "required_events": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "task_started",
+              "tool_requested",
+              "tool_allowed_or_denied",
+              "artifact_created",
+              "task_completed",
+              "task_failed",
+              "task_cancelled"
+            ]
+          }
+        }
+      }
+    },
+    "admission": {
+      "type": "object",
+      "required": ["required"],
+      "properties": {
+        "required": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "valid_image_digest",
+              "valid_workload_identity",
+              "active_policy_profile",
+              "active_receipt_sink",
+              "sandbox_attestation",
+              "egress_policy_attestation",
+              "no_critical_tool_bindings"
+            ]
+          },
+          "minItems": 1
+        }
+      }
+    }
+  }
+}
