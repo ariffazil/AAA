@@ -21,6 +21,14 @@
 1. **Every unnecessary request for Arif's attention is an implicit request for authority.** Human-as-scheduler is not an annoyance — it is upward transfer of orchestration labor to the most expensive node.
 2. **Availability ≠ relevance.** A skill may exist, a tool may be registered, a doctrine may be ratified — none occupies active context unless the present task activates it. The pointer pattern ("this file is a pointer; load on demand") is the attention-economy mechanism. It is the mechanical equivalent of the human-side SILENT lane.
 
+### 2b. Governor Rules (absorbed from attention-routing.md at seal)
+
+- Route by intent, not by capability — the question is *what does this moment require?*
+- Canonical flow: Identity - Intent - Capability - Tool
+- First-turn classification narrows the live surface; session-sticky thereafter
+- Monotonic recovery: a pruned tool that becomes needed is re-added permanently
+- Fail-open: uncertainty = full surface (SABAR at infrastructure level)
+
 ## 3. Boot Contract (machine-side extraction)
 
 | Surface | Loads at INIT | Deferred |
