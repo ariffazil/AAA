@@ -1,6 +1,6 @@
 # Agentic Dream Engine — Federation Memory Consolidation — OpenCode Adapter
 
-> **Canonical:** `skills/agentic-dream-engine/SKILL.md` | **Risk:** medium
+> **Canonical:** `skills/AGI-dream-engine/SKILL.md` | **Risk:** medium
 
 Extend the arifOS dream-engine so every AAA warga (333-AGI, 555-ASI, 888-APEX, A-AUDIT, A-ARCHIVE), OpenCode, and OpenClaw can autonomously consolidate memory without violating F1-F13.
 
@@ -12,7 +12,7 @@ Extend the arifOS dream-engine so every AAA warga (333-AGI, 555-ASI, 888-APEX, A
     "agentic-dream-engine": {
       "description": "Extend the arifOS dream-engine so every AAA warga (333-AGI, 555-ASI, 888-APEX, A-AUDIT, A-ARCHIVE), OpenCode, and OpenClaw can autonomously consolidate memory without violating F1-F13.",
       "risk_tier": "medium",
-      "canonical_skill": "skills/agentic-dream-engine/SKILL.md"
+      "canonical_skill": "skills/AGI-dream-engine/SKILL.md"
     }
   }
 }

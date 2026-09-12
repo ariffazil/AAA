@@ -25,13 +25,13 @@ The OpenClaw sleep-time manager and L3_shadow schema remain as reversible protot
 
 ```bash
 psql -h 127.0.0.1 -U arifos_admin -d vault999 \
-  -f /root/AAA/skills/agentic-dream-engine/prototype/l3_shadow_schema.sql
+  -f /root/AAA/skills/AGI-dream-engine/prototype/l3_shadow_schema.sql
 ```
 
 ### 2. Dry-run the daemon
 
 ```bash
-cd /root/AAA/skills/agentic-dream-engine/prototype
+cd /root/AAA/skills/AGI-dream-engine/prototype
 python3 openclaw_sleep_manager.py --dry-run
 ```
 
