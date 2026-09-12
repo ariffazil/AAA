@@ -1,0 +1,143 @@
+version: 1
+authority: ARIF
+capabilities:
+  RESEARCH:
+    owner: HERMES
+    organ: A2H
+    class: EXCLUSIVE
+    description: Sense, literature review, deep research, retrieval, fact checking
+    execution_rights: false
+    human_facing: true
+  DISCOVERY:
+    owner: HERMES
+    organ: A2H
+    class: EXCLUSIVE
+    description: Web search, source discovery, document retrieval
+    execution_rights: false
+    human_facing: true
+  EVIDENCE_GATHERING:
+    owner: HERMES
+    organ: A2H
+    class: EXCLUSIVE
+    description: Witness generation, evidence audit, factual citations
+    execution_rights: false
+    human_facing: true
+  REALITY_VERIFICATION:
+    owner: HERMES
+    organ: A2H
+    class: SHARED
+    description: Grounding claims against empirical sources and physical constraints
+    execution_rights: false
+    human_facing: true
+  MULTIMODAL_PERCEPTION:
+    owner: HERMES
+    organ: A2H
+    class: EXCLUSIVE
+    description: Vision, audio/speech synthesis, voice cloning, document OCR perception
+    execution_rights: false
+    human_facing: true
+  HUMAN_INTERACTION:
+    owner: HERMES
+    organ: A2H
+    class: EXCLUSIVE
+    description: User dialogue, explanation, tone modulation, persona continuity
+    execution_rights: false
+    human_facing: true
+  ROUTING:
+    owner: OPENCLAW
+    organ: A2A
+    class: EXCLUSIVE
+    description: Agent routing, message passing, federation gateway dispatch
+    execution_rights: false
+    human_facing: false
+  HANDOFF:
+    owner: OPENCLAW
+    organ: A2A
+    class: EXCLUSIVE
+    description: Context transfer, cross-agent handoff, workflow chaining
+    execution_rights: false
+    human_facing: false
+  FEDERATION_DISCOVERY:
+    owner: OPENCLAW
+    organ: A2A
+    class: EXCLUSIVE
+    description: Agent registries, topology discovery, capability lookup
+    execution_rights: false
+    human_facing: false
+  WORKFLOW_ORCHESTRATION:
+    owner: OPENCLAW
+    organ: A2A
+    class: SHARED
+    description: DAG plan execution, multi-agent synchronization, dependency resolution
+    execution_rights: false
+    human_facing: false
+  CAPABILITY_RESOLUTION:
+    owner: OPENCLAW
+    organ: A2A
+    class: EXCLUSIVE
+    description: Dynamic capability resolution and tool-binding brokering
+    execution_rights: false
+    human_facing: false
+  CODING:
+    owner: A2M
+    organ: A2M
+    class: EXCLUSIVE
+    description: Code generation, refactoring, linting, language semantics, AST ops
+    execution_rights: true
+    human_facing: false
+  BUILD:
+    owner: A2M
+    organ: A2M
+    class: EXCLUSIVE
+    description: Package building, compilation, dependency management, bundling
+    execution_rights: true
+    human_facing: false
+  TESTING:
+    owner: A2M
+    organ: A2M
+    class: EXCLUSIVE
+    description: Unit tests, integration tests, Playwright browser test runners
+    execution_rights: true
+    human_facing: false
+  GIT_OPERATIONS:
+    owner: A2M
+    organ: A2M
+    class: EXCLUSIVE
+    description: Commits, branch management, PR triage, worktree recovery
+    execution_rights: true
+    human_facing: false
+  DEPLOYMENT:
+    owner: A-FORGE
+    organ: EXECUTION
+    class: EXCLUSIVE
+    description: Container deployment, Caddy reload, systemd services, release attestation
+    execution_rights: true
+    human_facing: false
+  INFRASTRUCTURE:
+    owner: A-FORGE
+    organ: EXECUTION
+    class: EXCLUSIVE
+    description: VPS provisioning, RunPod GPU lifecycle, UFW security, crontabs
+    execution_rights: true
+    human_facing: false
+  GOVERNANCE:
+    owner: AAA
+    organ: GOVERNANCE
+    class: EXCLUSIVE
+    description: Constitutional gates, policy enforcement, sovereign veto protocol
+    execution_rights: false
+    human_facing: false
+  JUDGMENT:
+    owner: AAA
+    organ: GOVERNANCE
+    class: EXCLUSIVE
+    description: "Apex judge, G\xF6del lock, tri-witness consensus, seal verification"
+    execution_rights: false
+    human_facing: false
+  MEMORY_WITNESS:
+    owner: VAULT999
+    organ: MEMORY
+    class: EXCLUSIVE
+    description: Immutable ledger receipts, seal chain witness, long-term carry forward
+    execution_rights: false
+    human_facing: false
