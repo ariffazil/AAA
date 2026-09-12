@@ -64,11 +64,11 @@ curl -sf http://127.0.0.1:18089/health       # Hermes A2A listener
 
 | Agent | Card Says | Runtime Truth | Status |
 |-------|-----------|---------------|--------|
-| **Hermes ASI** | gateway:18086, a2a:18089 | gateway:8444+8445 (Caddy /telegram/webhook) | Card FIXED — gateway port synced to 8444 |
+| **Hermes ASI** | gateway:18086, a2a:18089 | **2026-09-12 re-probe: NO TCP listener** — 18086/18089/18090/8444/8445 all dead; hermes-a2a unit absent (MainPID=0); gateway = Telegram long-poll + stdio MCP children | STALE — card port claims AND prior 8444 webhook surface both dead; see organs.yaml live_probe_2026_09_12 |
 | **OpenClaw AGI** | gateway:8787 | gateway:8787+18789 (Caddy /telegram-webhook*) | Card ≈ Runtime |
 | **FORGE Bot** | exec:7071, mcp:7072 | exec:7071 (Caddy /forge/webhook) | Card ≈ Runtime |
 | ~~Hindsight~~ | :18087→8888 | :18087 was Hindsight KB, NOT Hermes A2A | **RETIRED 2026-08-05** |
-| Hermes A2A | :18089 per card | ✅ **LIVE** | `python3` pid 3760673, 2 tasks stored, MCP connected, uptime ~4.2h |
+| Hermes A2A | :18089 per card | ❌ **DOWN at 2026-09-12 probe** | No listener :18089/:18090; `hermes-a2a` unit absent (MainPID=0). Earlier LIVE row was a prior epoch — treat card A2A claims as unverified until re-deployed. |
 
 ## Known Issues
 

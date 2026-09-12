@@ -47,10 +47,10 @@
       "citizenship": "sovereign-citizen",
       "intelligence_tier": "ASI",
       "role": "autonomous-agent",
-      "host_binding": "hermes-agent",
+      "host_binding": "hermes-asi-gateway.service",
       "a2a_exposure": "authenticated",
       "risk_tier": "autonomous",
-      "agent_doc": "",
+      "agent_doc": "/root/AAA/agents/hermes-asi/IDENTITY.md",
       "status": "active"
     },
     {

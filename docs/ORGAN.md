@@ -162,7 +162,7 @@ These run live and must appear on the map, but they are **not** constitutional o
 | **Hermes ASI GW** | (Tg) | `hermes-asi-gateway.service` | Telegram MIND relay | relay — never seals |
 | **OpenClaw bot** | — | `openclaw-bot.service` | Telegram HANDS (777) | edge agent |
 | **OpenCode bot** | — | `opencode-bot.service` | Telegram forge hands | edge agent |
-| **Hermes MCP** | 18086 | process | Hermes local MCP surface | bridge |
+| **Hermes MCP** | — | process | Hermes MCP = stdio children, no TCP (18086 phantom tombstoned 2026-09-12) | bridge |
 | **APA bridges** | — | `apa-{email,calendar,github,telegram}-bridge` | External actuators under A-FORGE | execute only after lease |
 | **Mini App API** | — | `miniapp-api.service` | Telegram mini-app API | UI edge |
 | **arifosd** | — | `arifosd.service` | control-plane daemon (kernel companion) | kernel support |
