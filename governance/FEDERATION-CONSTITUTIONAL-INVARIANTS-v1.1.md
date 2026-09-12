@@ -1,6 +1,6 @@
 # Constitutional Invariants for a Governed Multi-Agent Federation — v1.1
 
-> **Status:** DRAFT_AWAITING_F13
+> **Status:** F13_RATIFIED_CHAT (2026-09-12 — "2 then wire U17 and U18") · disposition-2: ratified with U15/U16/U17 carved into staged Gate-2 activation (governance/ACTIVATION-GATE2-WORKPLAN.md); FRAME independent review re-queued as post-ratification assurance (asymmetric-quorum resolution, 2026-09-12). Transcribed by FI-003 under direct F13 instruction.
 > **Provenance:** v1.0 sovereign-articulated in chat 2026-09-12 (authoritative source: sovereign message, session SEAL-b7d90d544b9341da era); v1.1 transcribed by FI-008 under F13 "execute all" sanction with three sovereign-accepted corrections folded and tagged **[S1] [S2] [S3]**.
 > **Fidelity note:** structural transcription, not byte-exact. F13 ratifies the text as read; the sovereign chat message remains the origin.
 > **Ratification path (per own U18):** this draft → FRAME-independent review (criteria pre-fixed) → explicit F13 ratification (chat instrument valid per RATIFICATION-QUEUE line-4 precedent) → staged activation + migration note.
