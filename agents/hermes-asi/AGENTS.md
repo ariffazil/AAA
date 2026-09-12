@@ -5,7 +5,7 @@
 > **SOT:** 2026-08-01 | **seal_seq:** SEAL-8a8e064d1fe34443
 > This file is a pointer, not a constitution. Load /root/AGENTS.md for full doctrine.
 
-Hermes multimodal Telegram bridge. Edge agent. Port 18086/Telegram.
+Hermes multimodal Telegram bridge. Edge agent. Telegram long-poll + stdio MCP children — no listening TCP port (18086 phantom tombstoned 2026-09-12, organs.yaml live_probe_2026_09_12).
 
 If this file disagrees with `/root/AGENTS.md`, the kernel wins. Fix this file.
 
