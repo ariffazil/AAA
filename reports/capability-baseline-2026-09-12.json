@@ -1,0 +1,72 @@
+{
+  "$schema": "arifos.carry_forward.v2",
+  "epoch": "2026-09-12T19:20:00+08:00",
+  "session_id": "SEAL-0911d15d10ab4536",
+  "actor_id": "333-AGI",
+  "artifact": "AAA-OPENCODE-CAPABILITY-BASELINE-v1",
+  "status": "CANDIDATE",
+  "verdict": "PHASE_A_DONE_PHASE_B_PENDING",
+  "dS": -0.40,
+  "peace2": 1.0,
+  "kappa_r": 0.92,
+  "confidence": 0.88,
+  "psi_le": "hybrid-thin-surface-partial",
+  "actions": [
+    {
+      "id": "opencode-probe",
+      "type": "OBSERVE",
+      "summary": "OpenCode 1.18.28; mcp.yaml is symlink to organs.yaml; permission was { \"*\": \"allow\" }",
+      "evidence": "/root/.config/opencode/opencode.json line 2623-2625"
+    },
+    {
+      "id": "permission-replace",
+      "type": "MUTATE_REVERSIBLE",
+      "summary": "Replaced permission block with tiered baseline (ask-by-default, read-only allowlist)",
+      "before": "{ \"*\": \"allow\" }",
+      "after": "tiered: *:ask + read/glob/grep/lsp/webfetch/websearch/list/todowrite allow; task/edit/write/bash/doom_loop ask",
+      "backup": "/root/.config/opencode/opencode.json.bak-pre-baseline-20260912T111844Z",
+      "diff_bytes": 1053
+    },
+    {
+      "id": "capability-index-enable",
+      "type": "MUTATE_REVERSIBLE",
+      "summary": "Toggled capability-index enabled=false to true; superseded 2026-08-25 'redundant' rationale",
+      "evidence_drift": "registry file marked opencode_enabled=true since 2026-08-10 while config held enabled=false",
+      "new_rationale": "canonical discovery surface, not duplicate of forge_registry_status (which is A-FORGE introspection primitive)"
+    },
+    {
+      "id": "lsp-formatter",
+      "type": "OBSERVE_NOOP",
+      "summary": "lsp: true, formatter: true in config (OpenCode defaults); pyright 1.1.409 + yaml-language-server installed; no yaml-ls duplicate found in config (proposal's concern was runtime display)"
+    },
+    {
+      "id": "report-write",
+      "type": "MUTATE_REVERSIBLE",
+      "summary": "Baseline report written to /root/AAA/reports/capability-baseline-2026-09-12.md"
+    }
+  ],
+  "shadow": [
+    "333-AGI agent-level { \"*\": \"allow\" } still in effect (per-agent rewrite T2, 888-aware)",
+    "Pattern-level deny rules (rm -rf, git push --force, DROP TABLE) untested in OpenCode 1.18.28",
+    "Hot MCP surface = 11 (target 6–8 transition, 3–5 steady)",
+    "capability-index live health probe not yet run"
+  ],
+  "holds": [
+    "Migrations to organs.yaml (doctrine topology)",
+    "VPS write enable",
+    "Supabase schema mutations",
+    "Secret rotation",
+    "F1–F13 changes",
+    "Production deployments",
+    "Paid-API enable >$10/mo"
+  ],
+  "next_phase": "Phase B — live permission probe, capability-index health, per-agent rewrite (T2), LSP/formatter matrix, validator suite",
+  "witness": {
+    "human": "runtime inventory + config inspection",
+    "ai": "333-AGI proposal validation",
+    "earth": "opencode 1.18.28 binary + opencode.json + organs.yaml symlink"
+  },
+  "qdf": "permission-first; discovery-second; capability-index enabled; LSP no-op",
+  "report_path": "/root/AAA/reports/capability-baseline-2026-09-12.md",
+  "backup_path": "/root/.config/opencode/opencode.json.bak-pre-baseline-20260912T111844Z"
+}

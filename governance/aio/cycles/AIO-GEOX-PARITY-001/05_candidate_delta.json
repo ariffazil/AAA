@@ -1,0 +1,43 @@
+{
+  "witness_id": "W-DELTA-AIO-GEOX-PARITY-001",
+  "cycle_id": "AIO-GEOX-PARITY-001",
+  "creator_agent": "hermes",
+  "authority_scope": "PROPOSED",
+  "created_at": "2026-09-12T06:38:08.982372+00:00",
+  "ontology": "NORMATIVE",
+  "evidence_refs": [
+    "01_state_witness.json",
+    "02_baseline_measurement.json",
+    "03_causal_analysis.json"
+  ],
+  "provenance": "AIO candidate delta from causal analysis",
+  "confidence_band": "HIGH",
+  "unknowns": [],
+  "contradictions": [],
+  "content_hash": "17892e07dbacbb1c",
+  "delta": {
+    "id": "DELTA-INFER-MODE-PATTERN-COVERAGE",
+    "type": "pattern_list_update",
+    "file": "/root/GEOX/src/geox_mcp/ext_witness_stamp.py",
+    "section": "lines 207-238 (derived-category pattern list)",
+    "change": "Add 8 pattern strings to the derived-category list: 'contrast', 'glof', 'map', 'model', 'paleobiodb', 'spatial', 'temporal', 'well'",
+    "current_patterns_count": 30,
+    "proposed_patterns_count": 38,
+    "expected_effect": "14 tools that currently return 'unknown' will return 'derived' when infer_mode receives empty result",
+    "reversible": true,
+    "rollback": "Remove the 8 added pattern strings",
+    "test_plan": {
+      "command": "cd /root/GEOX && python3 -c \"import sys; sys.path.insert(0,'src'); from geox_mcp.ext_witness_stamp import infer_mode; tools=['geox_basin','geox_claim','geox_contrast_metabolize','geox_deep_time','geox_geomechanics','geox_glof_cascade_initialize','geox_glof_cascade_inverse','geox_glof_cascade_mcmc_inverse','geox_glof_cascade_metabolize','geox_glof_cascade_phase','geox_glof_cascade_propagate','geox_glof_cascade_step','geox_map','geox_model','geox_paleobiodb_query','geox_petrophysics','geox_prospect','geox_seismic_compute','geox_seismic_ingest','geox_seismic_interpret','geox_source','geox_spatial','geox_temporal','geox_well','geox_well_ingest','geox_well_qc']; unknowns=[t for t in tools if infer_mode(t,{})=='unknown']; print(f'unknown_count={len(unknowns)}')\"",
+      "expected_before": "unknown_count=14",
+      "expected_after": "unknown_count=0"
+    },
+    "blast_radius": "SINGLE_FILE \u2014 ext_witness_stamp.py pattern list only",
+    "non_goals": [
+      "Does not change tool schemas or behavior",
+      "Does not affect which tools are callable",
+      "Does not modify the MCP server runtime",
+      "Does not deploy, enable, or schedule anything",
+      "Does not change the manifest or surface count"
+    ]
+  }
+}

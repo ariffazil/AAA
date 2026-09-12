@@ -1,0 +1,34 @@
+{
+  "witness_id": "W-ENFORCE-AIO-GEOX-PARITY-001",
+  "cycle_id": "AIO-GEOX-PARITY-001",
+  "creator_agent": "fi-003",
+  "authority_scope": "F13_AUTHORIZED",
+  "created_at": "2026-09-12T06:37:00Z",
+  "ontology": "OBSERVED",
+  "evidence_refs": ["07_arif_authorization.json"],
+  "provenance": "FI-003 enforcement under F13 authorization",
+  "confidence_band": "CERTAIN",
+  "enforcement": {
+    "fix_a": {
+      "file_edited": "/root/GEOX/src/geox_mcp/tools_manifest.yaml",
+      "line": 4,
+      "before": "public_count_target: 20",
+      "after": "public_count_target: 26",
+      "synced_to": "/opt/geox/src/geox_mcp/tools_manifest.yaml",
+      "sync_verified": true,
+      "service_restarted": "geox-mcp.service",
+      "restart_verified": true
+    },
+    "fix_b": {
+      "file_edited": "/root/GEOX/src/geox_mcp/ext_witness_stamp.py",
+      "line": "~225 (tool-name pattern list in infer_mode())",
+      "before": "pattern list did not include 'source'",
+      "after": "added 'source' between 'sequence' and 'subsurface'",
+      "synced_to": "/opt/geox/src/geox_mcp/ext_witness_stamp.py",
+      "sync_verified": true,
+      "service_restarted": "geox-mcp.service (same restart as fix_a)"
+    },
+    "unintended_effects": "none detected"
+  },
+  "content_hash": "enforce-001-both-applied"
+}

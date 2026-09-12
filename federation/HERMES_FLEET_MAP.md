@@ -1,6 +1,7 @@
 # HERMES FLEET MAP — all Hermes agents across KVM2 / KVM4 / KVM8
 
 > **Live-probed 2026-09-04 ~07:30 MYT by kimi-code/FI-008 from KVM8 (mesh SSH, BatchMode).**
+> **RE-PROBED 2026-09-12 ~17:10 MYT by kimi-code/FI-008 (live systemd/ss/git + KVM4 mesh probe) — §1 corrected to post-2026-09-04-13:58 topology. Cross-model verification: arifFlow receipt 8560a4f8.**
 > SOT family: `MACHINE_MAP.md` (machines) · `SERVICE_OWNERSHIP.yaml` (units) · `TELEGRAM_BOT_ROUTING_DOCTRINE.md` (bots/chats) — this file maps the HERMES LAYER and links them.
 > Re-probe before acting. Fleet version at probe: **hermes-agent 0.20.1 on ALL three nodes** (consistent).
 
@@ -11,8 +12,8 @@
 | H1 | **Hermes ASI 💃 (sovereign gateway)** | KVM8 forge (100.64.0.2) | pid 3244719 · `hermes-asi-gateway.service` **ACTIVE** | **LIVE — primary agent, all groups** | Arif (F13) | `i-arif` custom persona → FED `http://100.64.0.5:4000/v1` (litellm brain on KVM4, body on KVM8), cfg `version: 35` |
 | H2 | **Hermes Azwa (witness lane)** | KVM2 azwaos (100.64.0.4) | pid 275827 · `hermes-agent.service` **ACTIVE** | **LIVE — Azwa's own agent** | Azwa (SAF identity) | `agi-333` → provider `af-forge-fed` (→ KVM8 FED) + `qwencloud-free` fallback; regional: ILMU, SEA-LION, Xiaomi MiMo |
 | H3 | **Hermes CLI seat (court)** | KVM8 forge (100.64.0.2) | on-demand `hermes` CLI (`/root/.local/bin/hermes`) | on-demand (interactive pts) | FI agents / Arif at terminal | seat config `~/.hermes` (identity docs) — one of the 12 FI coder seats |
-| — | **OpenClaw 🦞AGI (edge twin)** | KVM8 forge (100.64.0.2) | pid 123327 · `openclaw-gateway.service` :18789 **ACTIVE** | LIVE — guest bot, AAA only | AAA governance guest | Node.js OpenClaw (NOT hermes-core — identity contract P3: never claims Hermes) |
-| — | **FORGE 🔥 (opencode bot)** | KVM8 | `forge-gateway.service` DISABLED (dual-token risk — see doctrine) | dormant by design | DM tool interface | opencode bot.py |
+| — | **OpenClaw 🦞AGI (edge twin)** | KVM4 kvm4-forge (100.64.0.5) | `openclaw-gateway.service` :18789 — health `{"ok":true,"status":"live"}` (re-probed 2026-09-12) | LIVE — guest bot, AAA only | AAA governance guest | Node.js OpenClaw (NOT hermes-core — identity contract P3: never claims Hermes). Cutover 2026-09-04 13:55; KVM8 extracted 14:22, state cold at `/root/.openclaw-cold` |
+| — | **FORGE 🔥 (opencode bot)** | KVM8 | `forge-gateway.service` **masked** (inactive at 2026-09-12 probe; dual-token risk — see doctrine) | dormant by design | DM tool interface | opencode bot.py |
 
 KVM8 `hermes-asi-gateway.service` is **canonical and ACTIVE** (pid 3244719, since 2026-09-12 03:30 MYT). The KVM4-active claim (originally from 2026-09-04 ~07:30 probe) was a same-day fossil — topology resolved to KVM8 by 2026-09-04 13:58 (MACHINE_MAP §TOPOLOGY RESOLUTION). FLEET_MAP §1 H1 corrected 2026-09-12 by FI-003. Brain (i-arif via FED litellm) remains on KVM4.
 
@@ -36,7 +37,7 @@ KVM8 `hermes-asi-gateway.service` is **canonical and ACTIVE** (pid 3244719, sinc
 ```
 
 - **H1 → organs**: MCP wired to `arifos` (kernel :8088 + public), `aforge`, `geox`, `wealth` (+ more in cfg) — full federation reach from the sovereign gateway.
-- **H1 model path trap** (fixed 2026-09-03, cfg note): local `127.0.0.1:4000` retired → now `http://100.64.0.5:4000/v1`; but the CHAT path still hairpins KVM4→KVM8:4000→KVM4 litellm — **KVM8 is mesh SPOF for H1's brain** (MACHINE_MAP §2).
+- **H1 model path trap** (fixed 2026-09-03, cfg note): local `127.0.0.1:4000` retired → now `http://100.64.0.5:4000/v1`; but the CHAT path still hairpins KVM4→KVM8:4000→KVM4 litellm — **KVM8 is mesh SPOF for H1's brain** (MACHINE_MAP §2). **(2026-09-04 08:45 correction, MACHINE_MAP: chat-path hairpin DISPROVEN for direct paths — config points `100.64.0.5:4000` directly; hairpin applied only to public front-door traffic.)**
 - **H2 isolation is deliberate**: KVM2's `arifOS` MCP = `127.0.0.1:8080` = the arifosmcp **FORK** (Azwa lane), NOT the KVM8 judge. H2 reaches KVM8 only through FED (model tokens) — no kernel authority. Witness-lane doctrine.
 - **H2 Nusantara substrate**: ILMU AI + SEA-LION AI + Xiaomi MiMo (SG) — the only instance with regional-model grounding.
 
@@ -55,5 +56,5 @@ KVM8 `hermes-asi-gateway.service` is **canonical and ACTIVE** (pid 3244719, sinc
 
 1. **H3 seat ↔ H1 gateway memory split**: CLI sessions on KVM8 and gateway conversations on KVM4 do not share conversational memory (both lean on kernel L1–L6 for federation memory — conversation-local memory is per-home).
 2. ~~H1 SOUL.md anchor~~ **RESOLVED 2026-09-04**: SOUL unified to KVM4 canonical (13257B, one inode across KVM8 twins; backup cron-migration-20260904/SOUL.kvm8-preUnify.md); a2a anchor → `/root/.hermes/SOUL.md` (same path both machines).
-3. **KVM2→KVM4 :4000 TCP blocked** (ICMP OK) — H2 cannot use KVM4 litellm directly; forced through KVM8 FED. Mechanism UNKNOWN (docker iptables or ts ACL).
+3. ~~**KVM2→KVM4 :4000 TCP blocked**~~ **RESOLVED 2026-09-04 10:56** (MACHINE_MAP FI-003 canon correction): live probe HTTP 200 / 3.4 ms; ACL rule 7 added 13:49 MYT; lane OPEN.
 4. ~~Cron schedulers~~ **RESOLVED 2026-09-04 (F13 'go')**: 9 sovereign rituals migrated KVM8→KVM4 gateway book (validator adds[] extension, receipts 20260904-001536/001732); dream-dupe retired; scheduler live. `now` reads KVM4. REMAINS: 19 script-bound jobs orphaned on KVM8 — Phase-2 system-cron conversion decision. H2 (KVM2) cron: 1 job, disabled — witness lane, quiet by design.

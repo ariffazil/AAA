@@ -1,0 +1,40 @@
+{
+  "cycle_id": "AIO-GEOX-PARITY-001",
+  "mission": "AAA::APEX_ZEN_ACD_INIT::v1",
+  "authority": "ARIF (Human Sovereign)",
+  "created_by": "333-AGI",
+  "created_at": "2026-09-12T06:34:00Z",
+  "ontology": "NORMATIVE",
+  "evidence_refs": [
+    "F13 directive transcript",
+    "session SEAL-a6a3f17c877b45fb / rebirth SEAL-799ad3aeeb614b24"
+  ],
+  "provenance": {},
+  "confidence_band": "1.0 (directive text)",
+  "unknowns": [],
+  "contradictions": [],
+  "content_hash": "45ec05b870b68c12",
+  "witness_id": "W00-MISSION",
+  "scope": "One observed GEOX parity defect -> bounded delta -> ARIF authorization -> exact reversible enforcement -> before/after measurement -> consequence classification -> retained/rejected learning",
+  "expiry": "2026-09-13T06:30:00Z",
+  "environment": "KVM8 forge / root+GEOX repo + :8081",
+  "prohibited": [
+    "production deployment",
+    "schedule/cadence change",
+    "threshold change",
+    "memory schema redesign",
+    "new daemon",
+    "deletion of legacy assets",
+    "automatic promotion",
+    "constitutional amendment"
+  ],
+  "stop_conditions": [
+    "no reproducible baseline",
+    "no safe isolated environment",
+    "no explicit ARIF confirmation",
+    "scope wider than one reversible change"
+  ],
+  "rollback_conditions": [
+    "git restore of 4 tracked files on any failure"
+  ]
+}

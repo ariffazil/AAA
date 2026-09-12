@@ -1,0 +1,42 @@
+{
+  "cycle_id": "AIO-GEOX-PARITY-001",
+  "mission": "AAA::APEX_ZEN_ACD_INIT::v1",
+  "authority": "ARIF (Human Sovereign)",
+  "created_by": "333-AGI",
+  "created_at": "2026-09-12T06:34:00Z",
+  "ontology": "OBSERVED",
+  "evidence_refs": [],
+  "provenance": {},
+  "confidence_band": null,
+  "unknowns": [],
+  "contradictions": [],
+  "content_hash": null,
+  "witness_id": "W12-ARCHIVE",
+  "geoX_head": "c456858aa9586296e8bb700fffc189ca373a8783",
+  "packet_files_hash_prefix": {
+    "00_mission_witness.json": "34d73b8590f68aa8",
+    "01_state_witness.json": "3aa99f6bb276c350",
+    "02_baseline_measurement.json": "d3c0c836575e7576",
+    "03_causal_analysis.json": "d65f00c00aac1cb8",
+    "04_acd_dream_receipt.json": "308f068220a50467",
+    "05_candidate_delta.json": "ffd0b3a66c1ec557",
+    "06_governance_challenge.json": "387f3ad6383a3f54",
+    "07_arif_authorization.json": "440b7973115ec841",
+    "08_enforcement_witness.json": "1e105dc55f78b474",
+    "09_post_change_measurement.json": "1b2b3198c69f4dc9",
+    "10_consequence_witness.json": "16303cde29a7d506",
+    "11_aio_adaptation_receipt.json": "8cd6ecd760196da0"
+  },
+  "raw_evidence": {
+    "geox_health.json": "574fd7bbe3890897",
+    "manifest_public.json": "303e30a79b815051",
+    "names_CANONICAL_PUBLIC_SURFACE.json": "314c4ae67a60496e",
+    "names_GEOX_MCP_APPS_SURFACE.json": "38e8bc434e87d83c",
+    "names_tools.json": "a902ecab7d766d64",
+    "parity_check_baseline.txt": "3f201e93b827d07b",
+    "runtime_tools_list.json": "45ec05b870b68c12",
+    "set_diffs.json": "f93ca7fcead8d8d1"
+  },
+  "acd_receipt": "ACD/receipts/2026-09-12_0a1720ac.json (receipt_id 184cfa97-8a47-4679-9bfb-83b93808ec30)",
+  "uncommitted_by_design": true
+}

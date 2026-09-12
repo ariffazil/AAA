@@ -1,0 +1,57 @@
+{
+  "witness_id": "W-MISSION-AIO-GEOX-PARITY-001",
+  "cycle_id": "AIO-GEOX-PARITY-001",
+  "creator_agent": "hermes",
+  "authority_scope": "F13_HUMAN_SOVEREIGN",
+  "created_at": "2026-09-12T06:30:52.326267+00:00",
+  "ontology": "NORMATIVE",
+  "evidence_refs": [],
+  "provenance": "ARIF constitutional mission directive 2026-09-12",
+  "confidence_band": "BOUNDDED",
+  "unknowns": [
+    "Whether the delta will be authorized by ARIF",
+    "Whether the consequence measurement will be conclusive"
+  ],
+  "contradictions": [],
+  "content_hash": "16d6895a21997a50",
+  "mission": {
+    "name": "AIO-GEOX-PARITY-001",
+    "question": "Can one observed GEOX parity defect produce one authorized, reversible, measurable change whose consequence lawfully changes a future governed behaviour?",
+    "scope": {
+      "in": [
+        "One identified GEOX parity mismatch: public_count_target vs actual public tool count",
+        "Source path: tools_manifest.yaml line 4",
+        "Computation path: surface_manifest.py surface_attestation()",
+        "Consumer path: boot-time health attestation",
+        "One smallest reversible delta: update public_count_target from 20 to 26",
+        "One before/after measurement: surface_attestation().ok"
+      ],
+      "out": [
+        "Federation-wide refactor",
+        "Production deployment",
+        "New agents or daemons",
+        "Constitutional amendment",
+        "Automatic scheduling",
+        "Memory schema redesign"
+      ]
+    },
+    "expiry": "2026-09-13T00:00:00+08:00",
+    "prohibited_actions": [
+      "Merge to main branch",
+      "Enable services",
+      "Change thresholds or cadence",
+      "Self-authorize mutations"
+    ],
+    "stop_conditions": [
+      "ARIF authority absent",
+      "Defect not reproducible",
+      "Delta broader than one line change",
+      "No isolated test environment"
+    ],
+    "rollback_conditions": [
+      "Post-change measurement shows WORSENED",
+      "ARIF revokes authorization",
+      "Regression detected in related surfaces"
+    ]
+  }
+}

@@ -1,0 +1,2 @@
+manifest public tools: 26
+FAIL: CANONICAL_PUBLIC_SURFACE.json public_count=20 != manifest public=26
