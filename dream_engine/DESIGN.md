@@ -95,8 +95,8 @@ No rehearsal. No recombine. No monthly. Prove the loop works on the smallest uni
 ## Reversal
 
 ```bash
-systemctl disable --now dream_cron.timer
-rm -rf /root/.openclaw/workspace/dream_engine/
+systemctl disable --now arif-dream.timer
+# Engine code: git-tracked at /root/AAA/dream_engine/ · runtime state/ regenerates
 ```
 
 No state outside the directory. No L6 touch. Fully reversible.
