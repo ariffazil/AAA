@@ -1,6 +1,6 @@
 # AAA–HERMES TOPOLOGY v2 — The A2H/A2A/A2M Constitution
 
-> **Status:** DRAFT_PENDING_F13 · persisted 2026-09-12 by 333-AGI (chat→disk, anti-silent-canon)
+> **Status:** **F13_RATIFIED_CHAT 2026-09-12** · persisted 2026-09-12 by 333-AGI (chat→disk, anti-silent-canon) · flag dispositions recorded §Part II-Flags
 > **Origin:** Sovereign articulation (Arif), 2026-09-12 chat session
 > **Supersedes:** `governance/FEDERATION-TOPOLOGY.md` · `governance/HERMES_WARGA_AAA_RSI_SEAL_RECEIPT_20260904.md` (V1) · `..._V2_20260904.md` · `federation/AAA_FEDERATION_CONTRACT_v1.0.md` (absorbs; predecessors retained as audit strata — F1, stamp at seal)
 > **First invariant test:** the 2026-09-12 carry-forward writer collision (see Part II §Memory)
@@ -155,7 +155,13 @@ Any missing term → HOLD
 | Policy+Lease engine | PARTIAL — ACT/SCT tokens live (act_v1, this session), forge_lease exists | EXTEND to typed leases with expiry+stop-conditions |
 | Incident/HOLD register | PARTIAL — risk-register claims unlocated (provenance flag from mission verify); AAA registry holds holds | CONSOLIDATE |
 
-## Flags for F13 (three decisions inside the ratification)
+## Flags for F13 — **DECIDED 2026-09-12 (F13_RATIFIED_CHAT)**
+
+1. **Judge identity — DECIDED:** `888-APEX` is the federation judge. `APEXMax` marked **alias/retired** — one name, one governed identity.
+2. **Topology scope — DECIDED: split-channel.** A2H-mandatory for remote/ambiguous/external ingress (Telegram, web, untrusted). Sovereign-authenticated local ACT/SCT sessions keep direct `arifOS → A-FORGE` path. Hermes is NOT a universal hub.
+3. **WARGA retroactivity — DECIDED:** all currently registered agents grandfathered to **WARGA_PROBATION** with 14-day CWS attestation window. No silent ACTIVE, no production interruption.
+
+Ratified-as: CWS + Delegation Witness Graph = **pending build** · A2A conformance + Forge boundary = **implemented in part** · OpenClaw = not running on KVM8 (tool-reported) · APEX-ZEN v1.1 = **RATIFIED (active, open implementation debt)** · Typed Memory Registry = concept ratified, formal build pending P0 closeout.
 
 1. **`APEXMax` naming** — federation judge is **888-APEX** (registry, model map, this session's live usage). Design says "APEXMax". Unify to 888-APEX or declare alias (naming-doctrine: one name, one referent).
 2. **Topology scope** — diagram routes ALL work orders through HERMES. Current reality: sovereign-authenticated local sessions (SCT/ACT, CLI, this one) execute directly via arifOS→A-FORGE, and Hermes' lane produced today's false-absence + backup pollution. **Recommended scoping:** A2H-mandatory for remote/ambiguous channels (Telegram, external); sovereign-channel-bound local sessions keep direct path. Hub-and-spoke-everything would make one runtime the single point of failure for all execution.
