@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * A2A Agent Seed — registers all 8 forge instruments at AAA boot.
+ * A2A Agent Seed — registers all 9 forge instruments at AAA boot.
  * Called after agent-card-registry auto-loads CIV-33 cards.
  *
  * Lifecycle contract:

@@ -17,6 +17,7 @@ from typing import Any
 
 import httpx
 import pytest
+import pytest_asyncio
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
@@ -29,47 +30,14 @@ KERNEL_TIMEOUT = float(os.environ.get("ARIFOS_TIMEOUT", "10.0"))
 
 # ── Kernel Liveness Check (synchronous — runs at module load) ──────────────
 def check_kernel_alive_sync() -> bool:
-    """Probe arifOS kernel with a synchronous ping. Returns True if reachable."""
+    """Probe arifOS kernel health endpoint. Returns True if reachable."""
     try:
-        with httpx.Client(
-            base_url=KERNEL_URL, timeout=KERNEL_TIMEOUT
-        ) as client:
-            resp = client.post(
-                "/mcp",
-                headers={"Accept": "application/json"},
-                json={
-                    "jsonrpc": "2.0",
-                    "id": "liveness",
-                    "method": "tools/call",
-                    "params": {
-                        "name": "arif_ping",
-                        "arguments": {"mode": "probe"},
-                    },
-                },
-            )
+        with httpx.Client(timeout=KERNEL_TIMEOUT) as client:
+            resp = client.get(f"{KERNEL_URL}/health")
             if resp.status_code != 200:
                 return False
             body = resp.json()
-            # MCP returns content wrapped in text blocks
-            result = body.get("result") or {}
-            is_error = result.get("isError", False)
-            if is_error:
-                return False
-            # Try structuredContent if present (arifOS native)
-            sc = result.get("structuredContent") or {}
-            if sc.get("verdict") in ("SEAL", "OK"):
-                return True
-            if sc.get("status") in ("OK", "SEAL"):
-                return True
-            # Fallback: try text content parsing
-            content = result.get("content") or []
-            for item in content:
-                if isinstance(item, dict) and item.get("type") == "text":
-                    text = item.get("text", "")
-                    if '"verdict": "SEAL"' in text or '"status": "OK"' in text:
-                        return True
-            # If we got here and the tool responded without error, kernel is alive
-            return True
+            return body.get("status") == "healthy"
     except Exception:
         return False
 
@@ -88,6 +56,7 @@ async def call_tool(
     arguments: dict[str, Any] | None = None,
     session_id: str | None = None,
     actor_id: str = "forge-bench",
+    session_token: str | None = None,
 ) -> dict[str, Any]:
     """Call an arifOS MCP tool and return the parsed response envelope.
 
@@ -102,6 +71,10 @@ async def call_tool(
         params["arguments"]["session_id"] = session_id
     if actor_id:
         params["arguments"]["actor_id"] = actor_id
+    if not session_token:
+        session_token = _bench_state.get("session_token", "")
+    if session_token:
+        params["arguments"]["session_token"] = session_token
 
     try:
         async with httpx.AsyncClient(
@@ -232,19 +205,26 @@ def anyio_backend():
     return "asyncio"
 
 
-@pytest.fixture(scope="module")
+_bench_state: dict[str, str] = {}
+
+
+@pytest_asyncio.fixture(scope="module")
 async def kernel_session():
-    """Create a light session for the test module. Yields session_id."""
+    """Initialize a session via arif_init. Yields session_id, stores token in _bench_state."""
     resp = await call_tool(
-        "arif_session_init",
+        "arif_init",
         {"mode": "light", "actor_id": "forge-bench"},
     )
-    sid = resp.get("result", {}).get("session_id")
-    if not sid:
-        sid = resp.get("session_id")
-    if not sid and resp.get("status") == "OK":
-        sid = "SEAL-bench-default"
-    yield sid or "SEAL-bench-default"
+    sid = resp.get("session_id") or resp.get("result", {}).get("session_id") or "SEAL-bench-default"
+    token = resp.get("session_token") or resp.get("result", {}).get("session_token") or ""
+    _bench_state["session_token"] = token
+    yield sid
+
+
+@pytest.fixture(scope="module")
+def kernel_token():
+    """Yield the ACT session_token from the kernel_session init."""
+    return _bench_state.get("session_token", "")
 
 
 @pytest.fixture(scope="module")
