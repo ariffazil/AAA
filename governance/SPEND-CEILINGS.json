@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "note": "U14 sovereign-curated spend ceilings. VALUES ARE F13 POLICY — set by sovereign directive only; an agent editing values commits with an F13 instrument or the edit is invalid. Empty agents + null default = observe-only mode; spend_ceiling.py meters and reports but blocks nothing.",
+  "default_daily_usd_cap": null,
+  "agents": {}
+}
