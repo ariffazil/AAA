@@ -2,13 +2,15 @@
 
 > **Status:** ACTIVE_OPERATIONAL — derived from F13 chat directive 2026-09-12: *"upgrade my openclaw and the whole system agentically"*
 > **Parents:** Memory Promotion Gate + Attention Kill Criterion + Cognitive Cost Transfer (all F13_RATIFIED_CHAT 2026-09-10/11)
+> **Updated:** 2026-09-12 — 4th beat (freshness check on reuse) added per Reality Alignment doctrine
 > **Applies to:** EVERY agent in the federation, every session. This closes the loop those doctrines opened.
 
-## The Reflex — three beats
+## The Reflex — four beats
 
 1. **READ at boot.** Before planning, read `/tmp/experience_boot_context.md` if present (cron-distilled top lessons — includes yours). One read, no lecture. If absent, proceed; absence is not an error.
 2. **QUERY before choosing.** Before a non-trivial tool/skill choice: `forge_experience_query` that tool. Success rate < 0.7 with a viable alternative → prefer the alternative, state the override in one line. This is adaptation, not ritual — skip the query for trivial reads.
 3. **TRACE after work.** After non-trivial execution: `forge_experience_trace` the outcome (success + environmental + self feedback). The next session of any agent starts where this one ended.
+4. **CHECK on reuse.** Before reusing any fact from memory, previous session, or carry-forward: verify freshness against the source. Is the source still live? Has the fact been superseded? Is it within its domain TTL? If any answer is NO → re-ground via observation before acting. If source unreachable → label action as STALE_UNVERIFIED, proceed with caution.
 
 ## The F12 Write Rule (witnessed ×3, 2026-09-11)
 
