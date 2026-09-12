@@ -1,0 +1,39 @@
+{
+  "run_id": "graph-commit:2026-09-12T09:47+08:00",
+  "epoch": "2026-09-12T09:47:00+08:00",
+  "artifacts_committed": [
+    "AAA/tools/video-evidence-packager/packager.py",
+    "AAA/tools/video-evidence-packager/tests/test_packager.py",
+    "AAA/tools/video-evidence-packager/tests/generate_fixtures.py",
+    "AAA/tools/youtube-transcript-canary-v0.py",
+    "AAA/knowledge-graph/YOUTUBE_INTELLIGENCE_GRAPH.md",
+    "AAA/knowledge-graph/youtube-capability-ledger.yaml",
+    "AAA/knowledge-graph/receipts/canary-93daf5d29ab7.json"
+  ],
+  "ledger_state_after_commit": {
+    "media.youtube.transcript": "implemented / unreachable (YouTube blocks cloud VPS IP)",
+    "media.youtube.keyframe_extraction": "implemented / locally_verified_not_wired_to_hermes",
+    "media.youtube.audio_asr": "implemented_in_AAA / unknown",
+    "media.youtube.multimodal_claim_graph": "implemented_design / not_wired_to_HERMES",
+    "media.youtube.video_to_skill": "procedure_draft_only / not_wired"
+  },
+  "honest_shadows": [
+    "Transcript route unreachable from cloud VPS — requires approved proxy or authenticated fallback (888 HOLD)",
+    "Keyframe packager is local-file-only — YouTube acquisition not wired (F13 policy decision deferred)",
+    "No vision/OCR adapter built yet — keyframes exist but cannot be interpreted",
+    "ASR route exists in AAA but has no YouTube audio ingestion path"
+  ],
+  "next_build_sequence": [
+    "1. Assess approved proxy/VPN route for transcript (or accept unreachable as permanent state)",
+    "2. Vision/OCR adapter for extracted keyframes (local, timestamp-bound)",
+    "3. ASR fallback decision (local vs vendor, only if captionless video is common)",
+    "4. Multimodal evidence merger",
+    "5. Typed claim graph",
+    "6. HERMES retrieval contract",
+    "7. Video-to-skill draft lane (888 HOLD)"
+  ],
+  "dS": "low",
+  "verdict": "Two proven primitives (packager + canary). One honest failure (transcript unreachable from cloud). No fabricated capabilities. Evidence substrate is real.",
+  "qdf": "local deterministic evidence before live multimodal intelligence",
+  "seal": "DITEMPA BUKAN DIBERI ⚒️"
+}
