@@ -43,6 +43,13 @@ Any one being false means the capability is not ready for autonomous action.
 ### lifecycle
 `active` | `partial` | `deferred` | `retired` | `blocked`
 
+> **Vocabulary drift — F13 pending.** The enum sets above extend 888's canonical
+> "State rules" table by 5 values. `external_institutional_api` and
+> `wire_only_when_concrete_workflow_exists` were 888's own seed values; the other
+> three (`implemented_or_claimed`, `unknown_by_governed_probe`, `valid_SCT_required`)
+> were added by the concurrent build session. None are F13-ratified. Normalize to
+> the canonical table or ratify — do not treat the extension as canonical silently.
+
 ## Usage
 
 ```bash

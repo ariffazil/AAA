@@ -50,8 +50,8 @@ capabilities:
       endpoint: "https://api.open-meteo.com/v1/forecast"
       endpoint_class: "open-meteo.forecast"
       trigger: "cron: 07:30 Asia/Kuala_Lumpur"
-      last_probe_at: null
-      last_probe_status: null
+      last_probe_at: "2026-09-12T09:49:01.552410+08:00"
+      last_probe_status: "reachable"
       latency_ms: null
       probe_mode: read_only
       fallback: "Continue Telegram pulse with weather unavailable notice"
@@ -295,27 +295,27 @@ capabilities:
   - id: social_media.x.twitter
     title: "X/Twitter CLI (xurl)"
     domain: "social_media.twitter"
-    lifecycle: partial
+    lifecycle: active
 
     implementation:
       state: implemented
       package: "xurl"
       version: "1.3.1"
       install_path: "/root/go/bin/xurl"
+      symlink: "/usr/local/bin/xurl"
       evidence:
         - type: binary_install
           ref: "github.com/xdevplatform/xurl@latest"
-          claim: "xurl v1.3.1 binary present at /root/go/bin/xurl (verified --version: v1.3.1)"
+          claim: "xurl v1.3.1 binary present at /root/go/bin/xurl"
         - type: manual_test
-          claim: "/usr/local/bin/xurl symlink removed 2026-09-12 (was dangling); command -v xurl fails — binary not on PATH"
+          claim: "symlink /usr/local/bin/xurl restored 2026-09-12; xurl --version → v1.3.1 verified on PATH"
 
     reachability:
-      state: not_wired
-      reason: "binary present at /root/go/bin/xurl (v1.3.1 verified) but /usr/local/bin/xurl symlink removed 2026-09-12; not on PATH"
-      blocker_class: "routing_configuration"
+      state: reachable
+      reason: "binary v1.3.1 present + symlink restored 2026-09-12; xurl --version verified"
       route_type: local_binary
-      last_probe_at: null
-      last_probe_status: null
+      last_probe_at: "2026-09-12T09:45:00+08:00"
+      last_probe_status: "reachable"
       probe_mode: read_only
       known_failure_modes:
         - "X API authentication expired or missing"
