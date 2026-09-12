@@ -35,7 +35,7 @@ KNOWN_OPTIONAL = {
     "kernel_warts", "onchain", "origin_scar", "durable_record_prior", "disk_witness",
     "collateral", "supersedes", "severity", "next_action", "resolves", "still_open",
     "traffic_wiring", "live_confirmations_tonight", "sharpenings_accepted_for_fold",
-    "instrument", "fold_target", "close_condition", "note", "scar_ref",
+    "instrument", "fold_target", "close_condition", "note", "scar_ref", "refs",
 }
 
 
@@ -122,6 +122,15 @@ def append_entry(args):
         entry["instrument"] = args.instrument
     if args.scar_ref:
         entry["scar_ref"] = args.scar_ref
+    if args.refs:
+        refs = []
+        for pair in args.refs.split(","):
+            if ":" not in pair:
+                print(f"ERR refs entry '{pair.strip()}' must be kind:ref (see CAUSAL-REF-CONVENTION-v1)", file=sys.stderr)
+                sys.exit(1)
+            kind, ref = pair.split(":", 1)
+            refs.append({"kind": kind.strip(), "ref": ref.strip()})
+        entry["refs"] = refs
     with open(LANE_PATH, "a") as f:
         fcntl.flock(f, fcntl.LOCK_EX)
         f.write(json.dumps(entry, ensure_ascii=False) + "\n")
@@ -154,6 +163,7 @@ def main():
     lp.add_argument("--scopes", help="semicolon-separated onchain refs")
     lp.add_argument("--instrument")
     lp.add_argument("--scar-ref", dest="scar_ref")
+    lp.add_argument("--refs", help="comma-separated kind:ref cross-artifact refs (CAUSAL-REF-CONVENTION-v1)")
     args = p.parse_args()
 
     if args.cmd == "validate":
