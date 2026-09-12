@@ -163,9 +163,7 @@ Any missing term → HOLD
 
 Ratified-as: CWS + Delegation Witness Graph = **pending build** · A2A conformance + Forge boundary = **implemented in part** · OpenClaw = not running on KVM8 (tool-reported) · APEX-ZEN v1.1 = **RATIFIED (active, open implementation debt)** · Typed Memory Registry = concept ratified, formal build pending P0 closeout.
 
-1. **`APEXMax` naming** — federation judge is **888-APEX** (registry, model map, this session's live usage). Design says "APEXMax". Unify to 888-APEX or declare alias (naming-doctrine: one name, one referent).
-2. **Topology scope** — diagram routes ALL work orders through HERMES. Current reality: sovereign-authenticated local sessions (SCT/ACT, CLI, this one) execute directly via arifOS→A-FORGE, and Hermes' lane produced today's false-absence + backup pollution. **Recommended scoping:** A2H-mandatory for remote/ambiguous channels (Telegram, external); sovereign-channel-bound local sessions keep direct path. Hub-and-spoke-everything would make one runtime the single point of failure for all execution.
-3. **WARGA retroactivity** — current agents were locally/self-registered. **Recommended:** grandfather to WARGA_PROBATION with a 14-day attestation window (CWS witnesses; no production interruption), rather than mass-demotion or silent grandfathering to ACTIVE.
+*(Original open-flag questions 1–3 preserved in git history — superseded by the DECIDED dispositions above. Removed 2026-09-12 to honor the one-question-one-answer rule this constitution exists to enforce.)*
 
 ## Provenance
 
