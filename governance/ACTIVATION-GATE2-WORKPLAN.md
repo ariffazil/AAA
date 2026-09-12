@@ -9,7 +9,7 @@
 
 | # | Invariant | Work item | Owner lane | State |
 |---|---|---|---|---|
-| 0 | U2 assurance | FRAME independent review of the RATIFIED text (criteria pre-fixed per crosswalk §3; post-ratification assurance per asymmetric-quorum resolution) | FRAME | QUEUED |
+| 0 | U2 assurance | FRAME independent review of the RATIFIED text (criteria pre-fixed per crosswalk §3; post-ratification assurance per asymmetric-quorum resolution) | FRAME | **DONE 2026-09-12** — LIMITED-ASSURANCE via context-clean adversarial isolate (criteria GATE1-CRITERIA-v2 + sovereign supplement "Claim Layer = Evidence Layer") + FRAME organ substrate attestation (7 chambers active, 13:37:50Z). Zero falsified claims; U17/U15 independently reproduced from raw evidence; 5 HOLD items (see /root/forge_work/2026-09-12-INDEP-gate1-review.md); item 7b precedes Gate-2 closure |
 | 1 | U17 | chain_walk `--gaps` into cockpit 15-min probe + status.json `vault_chain` field | FI-003 | **DONE 2026-09-12** (cockpit_probe.py) |
 | 2 | U18 | doctrine-status pre-commit gate (R1 instrument, R2 annex-block, R3 new-file label) | FI-003 | **DONE 2026-09-12** (doctrine_status_gate.py + hook) |
 | 3 | U20 | UL-lane append triggers (rollback / HOLD escalation / peer-caught bypass MUST append) + UL→scar promotion rule | FI-008 + kernel | OPEN |
