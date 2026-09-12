@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "acd.dream-request.v1",
+  "title": "ACD Dream Request",
+  "description": "Minimum fields for a bounded dream cycle request",
+  "type": "object",
+  "required": ["request_id", "cycle_id", "requested_by", "requesting_agent", "command", "mode", "shadow", "created_at", "contract_version"],
+  "properties": {
+    "request_id": { "type": "string", "format": "uuid" },
+    "cycle_id": { "type": "string", "format": "uuid" },
+    "requested_by": { "type": "string" },
+    "requesting_agent": { "type": "string" },
+    "authority_scope": { "type": "string", "enum": ["OBSERVE", "PROPOSE", "EXECUTE"], "default": "OBSERVE" },
+    "command": { "type": "string", "enum": ["dream", "dream/status", "dream/once", "dream/inspect", "dream/audit", "dream/propose"] },
+    "mode": { "type": "string", "enum": ["shadow", "observe", "propose"], "default": "shadow" },
+    "shadow": { "type": "boolean", "default": true },
+    "purpose": { "type": "string", "maxLength": 500 },
+    "scope": { "type": "string", "maxLength": 200 },
+    "horizon": { "type": "string", "enum": ["immediate", "short", "medium", "long"], "default": "short" },
+    "evidence_refs": { "type": "array", "items": { "type": "string" } },
+    "constraints": { "type": "array", "items": { "type": "string" } },
+    "compute_budget": { "type": "integer", "default": 10 },
+    "created_at": { "type": "string", "format": "date-time" },
+    "expires_at": { "type": "string", "format": "date-time" },
+    "contract_version": { "type": "string", "const": "acd.dream.v1" }
+  }
+}

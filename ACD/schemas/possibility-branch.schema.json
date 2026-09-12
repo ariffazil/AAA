@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "acd.possibility-branch.v1",
+  "title": "ACD Possibility Branch",
+  "description": "A single possibility branch within a dream cycle",
+  "type": "object",
+  "required": ["branch_id", "parent_id", "divergence_point", "actions", "simulated_states", "ontology"],
+  "properties": {
+    "branch_id": { "type": "string", "format": "uuid" },
+    "parent_id": { "type": "string", "format": "uuid", "description": "root branch has parent_id = cycle_id" },
+    "divergence_point": { "type": "string", "description": "Where this branch diverges from parent" },
+    "actions": { "type": "array", "items": { "type": "string" } },
+    "exogenous_events": { "type": "array", "items": { "type": "string" } },
+    "simulated_states": { "type": "array", "items": { "type": "string" } },
+    "branch_probability": { "type": "number", "minimum": 0, "maximum": 1 },
+    "contradictions": { "type": "array", "items": { "type": "string" } },
+    "adversarial_challenges": { "type": "array", "items": { "type": "string" } },
+    "evaluation_scores": { "type": "object" },
+    "ontology": { "type": "string", "enum": ["OBSERVED", "INFERRED", "SIMULATED", "NORMATIVE", "UNKNOWN"], "default": "SIMULATED" },
+    "assumptions": { "type": "array", "items": { "type": "string" } },
+    "model_witness": { "type": "object" },
+    "evidence_links": { "type": "array", "items": { "type": "string" } }
+  }
+}
