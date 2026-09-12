@@ -169,6 +169,18 @@ Always: `KVM8 (forge)` — forge is the machine; A-FORGE is the organ. Never con
 
 ---
 
+## SYMBOL IDENTITIES (D-05 — bare Φ retired, 2026-09-12)
+
+| Symbol | Canonical meaning | Qualified name |
+|---|---|---|
+| `scarPressure` | APEX verdict-policy modifier — historical caution raising τ_eff | scarPressure / phiScar |
+| `triWitness` (W³) | Tri-witness consensus ∛(H·AI·Ext) — verdict gate, not a G dial | triWitness / w3 |
+| `textToGPV` | ATLAS text→GPV transform | textToGPV |
+| `entropyBuffer` | thermodynamic/entropy state | entropyBuffer |
+| `paradoxConductance` | TPCP resolution-convergence Φ_P | paradoxConductance |
+
+Bare `Φ` is prohibited in cross-organ governance interfaces. `φ` = porosity (GEOX) and `φ` = free-energy latent (K777) are bounded-domain symbols, not governance Φ.
+
 ## COMPRESSIONS
 
 | Token | Meaning |

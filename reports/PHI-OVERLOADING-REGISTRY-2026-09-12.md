@@ -1,79 +1,47 @@
-# Φ Overloading Registry — Federation-wide Naming Audit
+# PHI-OVERLOADING REGISTRY — 2026-09-12
 
-> **Status:** EVIDENCE_RECEIPT (not a ratification, not a migration)
-> **Forged:** 2026-09-12 by 333-AGI Δ MIND — read-only source audit
-> **Request:** sovereign migration-sequence step 2 — "Create a Φ registry"
-> **Method:** grep across `arifOS/arifosmcp`, `arifOS/core`, `A-FORGE/src` (non-build, non-doc)
-> **DITEMPA BUKAN DIBERI**
-
----
-
-## Two corrected facts (supersede prior turn)
-
-### F-1 · D-04 (constitutional 4-vs-5-factor split) is REFUTED
-
-The live constitutional path is **already 4-factor**, not 5-factor.
-
-- `arifOS/arifosmcp/runtime/apex_canonical.py:527` → `G = (A * P * E * X) ** (1 / 4)`
-- `apex_canonical.py:639-647` → `compute_G` returns `(a*p*e*x) ** (1/4)`, Φ excluded
-- Git: `303cb8ad8 fix(apex): W-12 canonical G formula — 4-factor geometric mean (A·P·E·X)^(1/4)` (2026-08-05)
-- `arif_init` runtime_verify: source == built == deployed == `f375f910af53`, drift: false
-
-The shim's cross-organ drift notice (`apex_c_dark.py:14-20`, "arifOS still computes 5-factor A·P·E·X·Φ") is **stale** — it predates commit 303cb8ad8 and was never updated. Turn-1 propagated this stale comment as fact; it is not fact.
-
-**What Φ actually is in the constitutional path now:** a *separate verdict gate*, not a dial. `compute_Phi` (line 243-270) computes tri-witness `∛(H·AI·Ext)`; it is never multiplied into G; it only forces VOID when zero (`_determine_verdict:597`).
-
-**Remaining real issue:** `apex_canonical.py` carries stale *metadata* that still narrates the 5-factor world:
-- `:67` `APEX_EQUATION = "G = A · P · E · X · Φ"`
-- `:463` docstring `G_raw = A · P · E · X · Φ`
-- `:546` axiom `# 2. Five-sufficient — we have exactly 5 primitives`
-- `:13` `Sealed: 2026-07-13` (pre-dates the 08-05 fix)
-
-### F-2 · Φ overloading is real and LARGER than claimed (≈10 meanings, not 4)
-
-The sovereign's 4-way taxonomy is correct in spirit, wrong in detail. Two of the four claimed meanings are confirmed; one does not exist; ~6 additional meanings were found.
+> **Status:** DRAFT (evidence base for D-05 semantic migration)
+> **Forged:** 2026-09-12 by kimi-code/FI-008, from live source grep across arifOS + A-FORGE
+> **Authority:** Arif Fazil (F13) — D-05 "retire bare Φ"
+> **Law:** *A shared symbol is not a shared ontology.* Identity must be governed before measurement can be trusted.
 
 ---
 
-## The Registry
+## Principle
 
-| # | Meaning | Evidence | Verdict influence? |
-|---|---|---|---|
-| 1 | **Φ = tri-witness** `∛(H·AI·Ext)` | `apex_canonical.py:243-270` (`compute_Phi`) | YES — zero ⇒ VOID |
-| 2 | **Φ = "scar pressure gate"** (label) | `apex_canonical.py:9` header | *labels #1; conflicts with it* |
-| 3 | **Φ = wisdom / scar-law alignment** | `kernel/apex_decision_field.py:27` → `G34 = Q·V·Ψ·Φ` | YES — decision-field G |
-| 4 | **Φ = "Integration"** (5th factor) | `runtime/apex_c_dark.py:137,384` → `G = A·P·E·X·Phi` | DEAD shim only |
-| 5 | **Φ = text→GPV transform** `Φ = Θ∘Λ` | `core/shared/atlas.py:8,25`; `runtime/mind_reason.py:272` `Phi(query)` | NO (cognitive) |
-| 6 | **φ = ATLAS philosophy selector** | `runtime/kernel_core.py:522-528` `select_atlas_philosophy` | NO (quote object) |
-| 7 | **Φₚ = paradox conductance** | `core/judgment.py:77,163-167` `Φₚ=(Δₚ·Ωₚ·Ψₚ·κᵣ·Amanah)/(Lₚ+Rₘₐ+Λ+ε)` | YES (deliberative) |
-| 8 | **φ_external = Gödel-lock external witness** | `runtime/godel_lock_gate.py:177,228+`; `godel_lock_enforcement.py:157-175` | YES — Q9a/Q9c anti-self-cert |
-| 9 | **φ = porosity** (geoscience) | `runtime/geox_bridge.py:376-381` `"key":"phi", max 0.4 v/v` | NO (petrophysics) |
-| 10 | **φ = marginal-clarity conductance** | `runtime/marginal_clarity_gate.py:70,211` `_compute_phi(state)` | YES (clarity gate) |
-| 11 | **Φ = scar wisdom factor** (membrane) | `runtime/membrane.py:73` `phi: float = 1.0 # scar wisdom` | YES (membrane) |
-| 12 | **Φ = apex primitives scalar** (dashboard) | `runtime/apex_primitives.py:193,239` `"Phi": PHI` | NO (telemetry) |
+Bare `Φ` (and `Phi`/`phi`) has been found denoting **≥12 non-equivalent objects** across the federation. A value crossing an organ boundary under the same glyph silently changes meaning. This registry is the evidence base for the D-05 rename.
 
-### Claimed but NOT found
+**Qualified names (D-05, F13-directed):** `scarPressure`, `triWitness` (W³), `textToGPV`, `entropyBuffer`, `paradoxConductance`.
 
-- **"Φ = thermodynamics entropy buffer"** — no Φ/phi/entropy-buffer symbol exists in `thermo_estimator.py`, `thermodynamics_hardened.py`, `thermo_budget.py`, or `entropy_gate.py`. This mapping does not exist in source. (Nearest real analog: #10, marginal-clarity conductance — a different thing.)
-
-### The sharpest finding — an internal label conflict in the constitutional file itself
-
-`apex_canonical.py` cannot agree on what its own Φ is:
-- Header `:9` → "Φ = scar pressure gate"
-- `compute_Phi` `:249` → "Φ — Witness (Tri-Witness): Φ = ∛(H · AI · Ext)"
-
-Scar pressure (historical caution) and tri-witness (present consensus) are **different categories**. The same file labels Φ as both. This is the naming-doctrine violation in its purest form — inside the canonical source.
+**Exempt (bounded-domain / already-qualified — do NOT rename):** `φ` = porosity (GEOX `PHYSICS_9_SPEC.md`), `φ` = variational free-energy latent (K777), `φFQ/φZ/φE` (FLOOR_TABLE — already namespaced).
 
 ---
 
-## Verdict (this artifact)
+## Registry
 
-- **D-04 constitutional split:** REFUTED — 4-factor is the deployed canonical G. No F13 branch needed for *which formula*; that was sealed 2026-08-05.
-- **Φ ontology collision:** CONFIRMED, ~10-way. Real, consequential, and the correct F13/HOLD_888 target.
-- **D-01 (E sub-dial nesting):** still OPEN — but note it lives in A-FORGE's *local* path (`apexDials.ts`), not the constitutional G.
-- **D-02 (squared-drag stale header):** still OPEN, T1 doc fix.
-- **D-03 (threshold fragmentation):** still OPEN — now at least *three* profiles (`evaluate.ts` 0.80/0.50, `calculateGeniusFromFloors` 0.80/0.70, `apex_canonical.py` SEAL 0.80 / SABAR 0.50 / DEGRADED 0.30).
+| # | Surface | Location | Meaning | Correct name | Status |
+|---|---|---|---|---|---|
+| 1 | `apex_canonical.py compute_Phi` | arifOS runtime | tri-witness ∛(H·AI·Ext) | `triWitness` / `W³` | **RENAMED** (`compute_tri_witness`, alias kept) |
+| 2 | `evaluate.ts estimatePhi` | A-FORGE | scar pressure 1−Σ(scar·severity) | `scarPressure` | **RENAMED** (`estimateScarPressure`) |
+| 3 | `decisionField.ts` G=Q·V·Ψ·Φ | A-FORGE | wisdom (scar-adjusted) | `scarPressure`/`wisdom` | OPEN (separate instrument) |
+| 4 | `okf/apex-flow.md`, `ZEN.md` | arifOS okf | falsification rate (hyperedge, arity 3) | `falsificationRate` | OPEN (documentation) |
+| 5 | `GENESIS/INVARIANTS.md` | arifOS | Φ_SEAL / Φ_SABAR decision functions | `sealScore`/`sabarScore` | OPEN (documentation) |
+| 6 | `GENESIS/045` | arifOS | Kernel/law layer (Ψ/Δ/Φ) | `lawLayer` | OPEN (documentation) |
+| 7 | `K111_PHYSICS.md`, `CANONICAL_SPEC.yaml` | arifOS | paradox conductance Φ_P = (∫ΨP dt)/(ΔP·Ω₀) | `paradoxConductance` | OPEN (documentation) |
+| 8 | `FLOOR_TABLE.json` | arifOS | φFQ/φZ/φE metabolic gates | (already qualified) | EXEMPT |
+| 9 | `K777_APEX.md` | arifOS | φ free-energy latent q(φ) | (domain) | EXEMPT |
+| 10 | `PHYSICS_9_SPEC.md` | A-FORGE/GEOX | φ porosity (0–1 void) | (domain) | EXEMPT |
+| 11 | `agentic-ci.yml` | A-FORGE | Φ CI clarity/build-health % | `buildClarity` | OPEN |
+| 12 | `okf/atlas333/router.md` | arifOS | Φ(text)→GPV transform | `textToGPV` | OPEN (documentation) |
 
 ---
 
-*Registry is evidence, not authority. Migration remains HOLD_888 pending F13 direction.*
+## Enforcement
+
+- **CI guardrail:** `arifOS/.pre-commit-config.yaml` (commit `a14e0d529`) blocks bare `Phi`/`phi` in governance paths; allows qualified names + historical/domain markers.
+- **Residual (arifOS runtime):** 0 bare `Phi` identifiers, 3 historical Greek `Φ` (lines 68, 469, 661 of `apex_canonical.py` — all `HISTORICAL`/`LEGACY`).
+- **Remaining:** items #3–8, #11, #12 are documentation or separate-instrument Φ, deferred to a follow-on D-05 pass (or F13 direction).
+
+---
+
+*DITEMPA BUKAN DIBERI — identity precedes governance.*
