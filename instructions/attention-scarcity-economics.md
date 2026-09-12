@@ -1,8 +1,10 @@
+> **PARTIALLY SUPERSEDED** by attention-init-boundary.md (F13_RATIFIED 2026-09-12): S1-2 superseded. Operational Bindings 1-5 remain sole authority, unchanged.
+
 # Attention Scarcity Economics — Consequence-Bearing Authority in the Agentic Era
 
 > **Status:** F13_RATIFIED_CHAT (2026-09-12) — sealed by sovereign: *"Seal all"*. Codified from sovereign directive, refined by the consequence-bearing-authority falsification path (ARIF-Perplexity doctrine).
 > **Applies to:** EVERY agent in arifOS federation. Every output. No exception.
-> **Companions:** `attention-graph.md` (where attention flows) · `attention-routing.md` (how it routes) · `attention-kill-criterion.md` (when it kills) · `harness-commoditization-boundary.md` (plumbing commoditizes, governance is absolute) · `cognitive-cost-transfer-eurekas.md` (EUREKA #5).
+> **Companions:** `attention-graph.md` (where attention flows) · `attention-init-boundary.md` S2b governor rules (absorbed attention-routing.md, closed 2026-09-12) · `attention-kill-criterion.md` (when it kills) · `harness-commoditization-boundary.md` (plumbing commoditizes, governance is absolute) · `cognitive-cost-transfer-eurekas.md` (EUREKA #5).
 
 ---
 

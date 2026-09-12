@@ -1,3 +1,5 @@
+> **CLOSED — SUPERSEDED** by attention-init-boundary.md S2-S3 (F13_RATIFIED 2026-09-12). Governor rules absorbed; this draft never ratified. Audit stratum.
+
 # ATTENTION_ROUTING — Constitutional Attention Allocation
 
 **Forged:** 2026-09-10
