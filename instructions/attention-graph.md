@@ -1,3 +1,5 @@
+> **ENTRY MOVED** to attention-init-boundary.md (F13_RATIFIED 2026-09-12, "seal all"). Retained as full map/audit stratum.
+
 # Attention Graph — Canonical Instruction
 
 > **Binding for all arifOS warga agents.** Operating doctrine, not a skill.
@@ -195,6 +197,8 @@ From ZEN-RUNTIME.md §9, extended:
 | **Salience accuracy** | Signals that needed attention / signals surfaced | > 0.7 |
 | **Meaning latency** | Time from signal surfacing to Arif's meaning assignment | Not measured yet |
 | **Decay compliance** | Stale signals correctly untagged / total signals | > 0.9 |
+
+> **Direction note (2026-09-12 seal):** the inverse (higher-is-better, refined) formulation is canonical in attention-init-boundary.md S7 — lineage note governs both directions.
 
 **ACSC** is the headline metric. It measures how much sovereign attention the system consumes per unit of governed capability. If ACSC rises while capability stays flat, the system is wasting Arif's life.
 

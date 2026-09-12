@@ -1,3 +1,5 @@
+> **RETAINED UNCHANGED — sole enforcement authority** (W1-W6, 3-strike kill). Canonical entry: attention-init-boundary.md (F13_RATIFIED 2026-09-12).
+
 # Attention Kill Criterion — Doctrine Without Kill Is Decoration
 
 > **Status:** F13_RATIFIED_CHAT (2026-09-11) — sealed by sovereign: *"aku seal ja semua. tapi hang baca check la dulu all ok"*, post-audit FI-008 (registry claim verified live, canon-consistent, typos fixed at seal)
