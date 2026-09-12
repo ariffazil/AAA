@@ -1,0 +1,35 @@
+{
+  "cycle_id": "AIO-GEOX-PARITY-001",
+  "mission": "AAA::APEX_ZEN_ACD_INIT::v1",
+  "authority": "ARIF (Human Sovereign)",
+  "created_by": "333-AGI",
+  "created_at": "2026-09-12T06:34:00Z",
+  "ontology": "NORMATIVE",
+  "evidence_refs": [],
+  "provenance": {},
+  "confidence_band": null,
+  "unknowns": [],
+  "contradictions": [],
+  "content_hash": null,
+  "witness_id": "W07-ARIF-AUTH",
+  "status": "AWAITING_EXPLICIT_ARIF_CONFIRMATION",
+  "prefilled_for_approval": {
+    "candidate_delta_id": "D-001",
+    "allowed_environment": "GEOX repo working tree, dedicated branch feat/aio-geox-parity-001 (to be created); no service restart",
+    "allowed_files": [
+      "tools_manifest.yaml",
+      "CANONICAL_PUBLIC_SURFACE.json",
+      ".well-known/tools.json",
+      "contracts/mcp_surface.yaml"
+    ],
+    "allowed_tools": [
+      "git",
+      "python3 (repo-native regenerator)",
+      "text diff"
+    ],
+    "rollback_required": "git restore of the 4 files",
+    "expiry": "2026-09-13T06:30:00Z",
+    "production_excluded": true
+  },
+  "prior_witness": "05, 06"
+}

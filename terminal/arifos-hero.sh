@@ -588,7 +588,23 @@ def render_rich(state):
     fl = state.get("floors")
     session_text.append(f"{fl}/13", style="green" if fl == 13 else "yellow")
     session_text.append("  BLOCKERS ", style="dim")
-    session_text.append("H-WELL / FQ=7.3 / G<0.80", style="yellow")
+    _age = state_age_s()
+    if _age is None or _age > TTL_S:
+        session_text.append(
+            f"STATE STALE — age={_age if _age is not None else '?'}s",
+            style="red")
+    else:
+        _blk = []
+        if not well_ok:
+            _blk.append("H-WELL")
+        if isinstance(fq_raw, (int, float)) and fq_raw > 3.0:
+            _blk.append(f"FQ={fq_s}")
+        if g is not None and not g_ok:
+            _blk.append(f"G={fmt_num(g)}<0.80")
+        if w3 is not None and not w3_ok:
+            _blk.append(f"W3={fmt_num(w3)}<0.75")
+        session_text.append(" / ".join(_blk) if _blk else "none",
+                            style="yellow" if _blk else "green")
 
     # Print agentic loop + FQ bar + session
     console.print(Panel(
