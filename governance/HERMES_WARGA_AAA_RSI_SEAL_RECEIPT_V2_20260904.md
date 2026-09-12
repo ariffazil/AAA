@@ -1,3 +1,5 @@
+> **SUPERSEDED** by governance/AAA-HERMES-TOPOLOGY-v2.md (F13_RATIFIED_CHAT 2026-09-12). Retained as audit stratum — do not load.
+
 # HERMES WARGA AAA RSI SEAL RECEIPT — V2 (Corrected)
 
 > **DITEMPA BUKAN DIBERI** — Forged, not given. Arif owns F13.

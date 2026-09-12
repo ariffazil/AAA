@@ -1,3 +1,5 @@
+> **SUPERSEDED** by governance/AAA-HERMES-TOPOLOGY-v2.md (F13_RATIFIED_CHAT 2026-09-12). Retained as audit stratum — do not load.
+
 # Federation Topology Invariants
 
 > **Forged:** 2026-09-04 · From ARIF-Perplexity adversarial design
