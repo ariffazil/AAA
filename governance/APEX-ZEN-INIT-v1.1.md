@@ -3,7 +3,7 @@
 > Epoch: APEX-ZEN v1.1
 > Author: Arif (refinements) + Hermes (integration)
 > Date: 2026-09-12
-> Status: DRAFT — awaits F13 sovereign ratification
+> Status: F13_RATIFIED_CHAT 2026-09-12 — ACTIVE (open implementation debt: chaos-threshold harness wiring, CWS ledger integration)
 > Supersedes: APEX-ZEN v1.0 (initial prompt, 2026-09-12)
 
 ---
