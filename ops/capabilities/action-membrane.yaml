@@ -1,0 +1,98 @@
+policy_version: "0.1.0"
+updated_at: "2026-09-12T09:30:00+08:00"
+description: >
+  Action membrane v0 — centralizes action classes and gate logic.
+  Every tool invocation passes through this membrane before execution.
+  Implements: Implemented ≠ Reachable ≠ Governed.
+
+default:
+  deny_unknown_capability: true
+  deny_unknown_action: true
+  require_capability_ledger_entry: true
+  require_reachability_state: "reachable"
+
+rules:
+  observe:
+    description: "Read-only operations. No external side effects."
+    allowed_without_confirmation: true
+    require_receipt: true
+    allow_external_network: true
+    examples:
+      - "Web search"
+      - "Weather fetch"
+      - "YouTube transcript"
+      - "Email read"
+      - "Calendar list"
+      - "Social listening query"
+
+  draft:
+    description: "Local generation. No external delivery."
+    allowed_without_confirmation: true
+    require_receipt: true
+    external_delivery_allowed: false
+    examples:
+      - "Generate report locally"
+      - "Draft email (not sent)"
+      - "Create proposal text"
+
+  external_write:
+    description: "External delivery or modification. Requires confirmation."
+    allowed_without_confirmation: false
+    require_confirmation: true
+    confirmation_gate: "888_HOLD"
+    require_receipt: true
+    examples:
+      - "Send email"
+      - "Create calendar event"
+      - "Post to social media"
+      - "Send Telegram message (outside authorized cron path)"
+
+  financial_write:
+    description: "Financial operations. Requires sovereign human approval."
+    allowed_without_confirmation: false
+    require_confirmation: true
+    confirmation_gate: "F13_888_HOLD"
+    require_receipt: true
+    require_human_operator: true
+    autonomous_execution: false
+    examples:
+      - "Initiate payment"
+      - "Transfer funds"
+      - "Create invoice"
+      - "Access banking credentials"
+
+  admin_write:
+    description: "System administration. Requires explicit approval."
+    allowed_without_confirmation: false
+    require_confirmation: true
+    confirmation_gate: "888_HOLD"
+    require_receipt: true
+    examples:
+      - "Modify system configuration"
+      - "Install packages"
+      - "Change user accounts"
+
+# ── Preflight Rule ──────────────────────────────────────────
+#
+# Every action must pass this check BEFORE execution:
+#
+#   ALLOW only if:
+#     1. capability exists in capability-ledger.yaml
+#     2. lifecycle is 'active' or explicitly approved 'partial'
+#     3. reachability is 'reachable' or 'degraded' with approved fallback
+#     4. requested action is within governance.authority
+#     5. required gate/confirmation is satisfied
+#     6. receipts can be emitted
+#
+#   ELSE:
+#     return structured HOLD or DENY
+#     NEVER improvise a fallback write
+#
+# ── Emergency Override ──────────────────────────────────────
+#
+# The only path that bypasses the membrane:
+#   F13 SOVEREIGN human explicitly commanding a specific action
+#   in real-time, in a verified channel, with awareness of consequences.
+#
+# "Override" does not mean "skip receipt."
+# Override means: human accepts full consequence-bearing.
