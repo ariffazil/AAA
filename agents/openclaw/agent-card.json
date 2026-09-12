@@ -336,6 +336,98 @@
         "F1",
         "F4"
       ]
+    },
+    {
+      "id": "AGI-semantic-router",
+      "name": "Semantic Intent Router",
+      "description": "LLM-based intent classification via FED flash lane. Fallback when regex confidence < 0.7. Multi-intent detection with fan-out routing to federation organs. OBSERVE_ONLY.",
+      "tags": [
+        "orchestrator",
+        "routing",
+        "semantic",
+        "AGI"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4",
+        "F7"
+      ],
+      "approval_policy": "auto",
+      "reversibility_class": "reversible"
+    },
+    {
+      "id": "AGI-dag-workflow-engine",
+      "name": "DAG Workflow Engine",
+      "description": "Declarative JSON DAG workflow execution with fan-out/fan-in, dependency ordering, checkpoint/resume, and 3 pre-built templates (research_and_report, multi_domain_synthesis, code_review_pipeline). OBSERVE_ONLY for define/dry-run; MUTATE for live execution.",
+      "tags": [
+        "orchestrator",
+        "dag",
+        "workflow",
+        "fan-out",
+        "AGI"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ],
+      "approval_policy": "auto (define/dry-run) + 888 for live execution",
+      "reversibility_class": "reversible (define/dry-run) | partial (live)"
+    },
+    {
+      "id": "AGI-cross-session-state",
+      "name": "Cross-Session State Manager",
+      "description": "Per-person state persistence: conversation history, routing stats, preferences, FQ-aware state. Redis L1 + JSON L2. OBSERVE_ONLY.",
+      "tags": [
+        "orchestrator",
+        "state",
+        "memory",
+        "AGI"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ],
+      "approval_policy": "auto",
+      "reversibility_class": "reversible"
+    },
+    {
+      "id": "AGI-orchestrator-observability",
+      "name": "Orchestrator Observability",
+      "description": "Trace trees, token budget tracking per conversation, FQ correlation with routing decisions, structured JSONL event logging, latency stats per agent. OBSERVE_ONLY.",
+      "tags": [
+        "orchestrator",
+        "observability",
+        "tracing",
+        "AGI"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ],
+      "approval_policy": "auto",
+      "reversibility_class": "reversible"
+    },
+    {
+      "id": "AGI-subprocess-adapter",
+      "name": "Node→Python Subprocess Adapter",
+      "description": "Allowlisted subprocess bridge: 7 capability IDs, JSON stdin→stdout, 30s timeout, 2MB output cap, URL/shell-char/path-traversal rejection. OBSERVE_ONLY. No generic spawn.",
+      "tags": [
+        "orchestrator",
+        "adapter",
+        "subprocess",
+        "security",
+        "AGI"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F11",
+        "F12"
+      ],
+      "approval_policy": "auto (read-only capabilities) + 888 for mutate",
+      "reversibility_class": "reversible"
     }
   ],
   "mcp_surface": {
