@@ -18,6 +18,7 @@
 | 9 | `canon/EUREKA-DISSIPATIVE-TRANSITION-2026-09.md` | Eureka peralihan dissipatif (dalam canon, belum disahkan F13) |
 | 21 | `instructions/reality-alignment-kernel.md` (00:13) | Kernel penjajaran realiti — 2 bahagian bersih: closeout 5-soalan + tangga ELIMINATE/MERGE/SIMPLIFY/DOCUMENT/DEFER |
 | 22 | `instructions/universal-agent-relationship-constitution.md` (00:18) | Matriks 6-lapisan postur — **dengan patch dicadang sebelum tandatangan:** (a) pisah Agent↔Sovereign (autoriti) dari Agent↔Other-Human (amanah — Syed, Aidel: maruah + data dipercayakan, bukan dimiliki); (b) tambah saluran witness Bumi/Luaran (W³ sedia ada dalam canon); |
+| 23 | `governance/FEDERATION-CONSTITUTIONAL-INVARIANTS-v1.1.md` (2026-09-12) | **Perlembagaan 20-invarian + organ-invarian + geometri kuasa** — v1.0 kedaulatan-artikulasi, v1.1 FI-008 dengan 3 pembetulan diterima F13: [S1] peringkat Sovereign di atas AAA, [S2] A4 aspirational-on-substrate (kerja: sandbox/A-FORGE-only-write), [S3] lorong UNRATIFIED-LESSONS-LEDGER. Menunggu: semakan FRAME bebas (kriteria pra-tetap) → lafaz F13. Disaksikan hidup malam 2026-09-12: 7 lantai pegang, 4 jurang dinamakan. |
 
 ## Tier 2 — Bukti/laporan menunggu verdict
 | # | Dokumen | Status |
