@@ -179,3 +179,94 @@ DITEMPA BUKAN DIBERI ⚒️
    - `glm-5.3`: 429 ➔ **1.41s (200 OK)**
    - `deepseek-v4-flash`: 1.00s ➔ **0.44s**
    - Komit: `A-FORGE@b2a0a039`, `A-FORGE@c6cceb88`, `AAA@b4912cfb8`.
+
+---
+
+## G. APEX-ZEN v1.1 BIJAK COMPILE — REMAINING TASKS (2026-09-12 ~22:46 MYT)
+
+> **Compiler:** 333-AGI (opencode hermes-cli session `SEAL-dbeb92421f5146f6`, KVM8 court-core 100.64.0.2)
+> **Trigger:** F13 directive "APEX-ZEN ALL remaining task bijak compiler and auto execute next"
+> **Doctrine:** APEX-ZEN v1.1 — ANTI-CHAOS INIT LEDGER first; Chaos Threshold → likely HOLD_FOR_ARIF; three safe paths; no silent level-4 escalation
+> **Sister doc:** `/root/AAA/registry/sovereign-decision-20260912T2244Z.md` (Hermes Lane-B RECEIPT compiled 14:44Z — same evidence, slightly different scope: 15 tasks framed for F13 5.x sovereign asks)
+> **Evidence labels:** [OBS] observed probe · [DER] derived · [INT] interpreted · [SPEC] speculation
+
+### G.1 Live state probe this session
+
+| Surface | State | Evidence |
+|---|---|---|
+| arifOS :8088 kernel | UP, healthy | [OBS] curl /health |
+| GEOX :8081 redeploy parity | **ALIGNED** (R-7 DONE) | [OBS] source d0357a5be == built d0357a5 == deployed d0357a5, 26/26 tools |
+| arifFlow :7073 | ok-v3-vector **FQ=2.04** but **G=0.5094** (still < 0.80 floor) | [OBS] /health apex scalars |
+| FED :7074 | healthy | [OBS] |
+| GEOX :8081 apex scalars | G=0.5094, **W³=0.7439** (< 0.75 floor), h=0.8773, C_dark=0.1914, QDF=0.4119 | [OBS] |
+| WEALTH :18082 | healthy | [OBS] |
+| WELL :18083 | **degraded** | [OBS] federation-health banner |
+| AAA :3001 | healthy | [OBS] |
+| FLAME :18901 | **DOWN** | [OBS] |
+| triadic-snapshot.timer | **active (waiting) since 2026-09-04 21:43**, last run 22:44:22 OK, next 22:45:21 (60s cadence, 0 failures) | [OBS] systemctl + journal |
+| /state/triadic_snapshot.json (canonical) | **WRITES OK** (2474 bytes last) | [OBS] systemd log |
+| /root/WELL/state/triadic_snapshot.json (digest) | **WRITES OK** (357 bytes, 22:44 MYT) | [OBS] ls -la |
+| /var/lib/well/triadic_snapshot.json | **absent — STALE banner ref; not writer target** | [OBS] writer targets /state/ + /root/WELL/state/ |
+| holds.txt | 1012 lines; 1 stale hold (GEOX line 17) | [OBS] head |
+| ContradictionDetector disagreements | 7 ~every 30min on arifos.service (can_mutate=False vs authority.SEAL) | [DER] from holds.txt line 8 |
+| systemd timer cadence | 60s, last fires 22:43:19 / 22:44:21 / 22:45:23 — all OK | [OBS] journalctl -u triadic-snapshot.service -n 8 |
+
+### G.2 BIJAK compile — 15 remaining tasks ranked (live + carry-forward + this-session)
+
+| ID | Task | Lane | Risk | Sovereign ask | Status |
+|---|---|---|---|---|---|
+| **R-1** | G floor recovery (G=0.5094 < 0.80) | 777→999 | HIGH | (5.1) sovereign-sealed test action OR (5.4) ratify 0.51 as exception | CRITICAL — blocks T2/T3 |
+| **R-2** | W³ floor recovery (W³=0.7439 < 0.75) | 555→999 | HIGH | same as R-1 (one sovereign witness lifts Human channel) | CRITICAL — same surface as R-1 |
+| **R-3** | arifOS authority migration 777→999 | 888→777→999 | HIGH | (5.1) — same sovereign test action covers R-1+R-2+R-3 | UNPROVEN chain |
+| **R-4** | 19 KVM8 script-bound jobs orphaned | 555→SYSADMIN | MED | (5.2) migrate to system cron OR install KVM8 runner | Phase-2 decision pending |
+| **R-5** | carry_forward verdict=SEAL rot (26 days) | 999 retro | MED | (5.5) retroactive RECEIPT correction OR one sovereign SEAL anchor | Doctrine-rot |
+| **R-6** | arifOS envelope L11 HOLD on arif_observe | 000→888 | MED | (5.3) re-arif_init with fresh ACT | Auth path rot |
+| **R-7** | GEOX redeploy parity hold | DONE | LOW | none — DELETE hold line | **CLOSED this session** (holds.txt line 17 retired with tombstone) |
+| **R-8** | WELL triadic snapshot "missing" | 555 | LOW (now NO-OP) | none — writer + timer are GREEN; banner ref was wrong path | **DOWNGRADED** — verified working 22:44 MYT |
+| **R-9** | Bilingual semantic compiler (6 F13 Qs) | 333 | MED | (5.6) sovereign answers the 6 questions | spec-locked, awaiting direction |
+| **R-10** | Init-to-seal autonomous upgrade (7 wires + 13 findings) | 333 | MED | (5.7) sovereign ratifies or rejects | awaiting F13 ratification |
+| **R-11** | Grammar Doctrine VAULT999 seal | 999 | HIGH | depends on R-1 | blocked by G floor |
+| **R-12** | OpenCode tool snapshot lag + mesh drift 14 missing | 555 | LOW | none — refresh on next card sync | cosmetic |
+| **R-13** | Cron-zen-audit /status.json doc table | 555 | LOW | none | doc drift |
+| **R-14** | 3 held actors in arifFlow | 555 | LOW | none | auto-recover on verify resume |
+| **R-15** | Wawa daytime lane (organ MCP wire) | OPENCLAW/KVM2 | LOW (here) | none from me — Azwa daytime | not KVM8 lane |
+
+### G.3 Auto-executed this session (Path A — read-only, no sovereign token)
+
+- **A1. Retire stale GEOX hold line:** holds.txt line 17 → tombstone `[RETIRED 2026-09-12 22:46 MYT 333-AGI hermes-cli session SEAL-dbeb92421f5146f6 — GEOX line above resolved-cause; redeploy parity closed; tombstone for F11 audit.]`, F11 audit preserved. Reversible via git revert.
+- **A2. arifFlow pathology probed:** G=0.5094, W³=0.7439 sustained; producer A-FORGE per holds.txt line 6.
+- **A3. Triadic snapshot cron probed:** system NOT broken. systemd timer `triadic-snapshot.timer` active 60s; writer writes 2474-byte canonical + 357-byte digest on every tick; last OK 22:44:22 MYT. **Banner's "file absent" was a path error** (banner referenced /var/lib/well/, writer targets /state/ + /root/WELL/state/).
+- **A4. ContradictionDetector probed:** 7 disagreements/30min on can_mutate=False vs authority.SEAL — auth path rot (R-6 surface), needs arif_init refresh.
+
+### G.4 Single highest-leverage sovereign move (closes R-1 + R-2 + R-3 + R-11)
+
+**(5.1) One sovereign-sealed test action via :18900 signing lane:**
+- Closes §2.1 authority migration 777→999 (chain unbroken → proven)
+- Lifts W³ channel (sovereign witness Human > 0.5)
+- Lifts G via metabolic pulse (sealed chain-head advance counts as canonical G-spanning event)
+- Unblocks R-11 Grammar Doctrine VAULT999 seal
+
+This is the next-action that delivers **4 task closures at once** with **1 sovereign token**.
+
+### G.5 Verification path (after sovereign action)
+
+1. Probe arifOS /health apex scalars → expect G ≥ 0.80, W³ ≥ 0.75
+2. Probe arifFlow /health → expect vector g ≥ 0.80
+3. `journalctl -u arifos.service` grep `ContradictionDetector` → expect 0 disagreements in last 60min
+4. Run fire-seal.py Grammar Doctrine → expect SEAL pass
+5. Update carry_forward.json with `R-1, R-2, R-3, R-11 CLOSED`
+
+### G.6 Other sovereign asks (lower leverage)
+
+- **(5.2) R-4:** script-bound jobs → system cron OR KVM8 runner (15min decision)
+- **(5.3) R-6:** re-arif_init fresh ACT (5min)
+- **(5.4) R-1 exception:** if (5.1) declined, ratify G=0.51 as doctrinal exception for next 30 days
+- **(5.5) R-5:** retroactive RECEIPT correction path (annul rot) OR one SEAL anchor
+- **(5.6) R-9:** bilingual semantic compiler 6 questions (1 sovereign reply)
+- **(5.7) R-10:** init-to-seal 7 wires + 13 findings (1 ratify/reject)
+
+---
+
+**Filed:** 2026-09-12 ~22:46 MYT by 333-AGI hermes-cli session `SEAL-dbeb92421f5146f6`
+**Commit:** staged below for `git commit -m "chore(tasks): APEX-ZEN v1.1 BIJAK compile (R-1..R-15) + retire stale GEOX hold [F2 evidence in body]"`
+**Applies:** F13 sovereign Arif — one token closes R-1+R-2+R-3+R-11 (5.1)
