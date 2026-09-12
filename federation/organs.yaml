@@ -546,11 +546,12 @@ components:
     display_name: HERMES
     repo: ariffazil/HERMES
     source_path: /root/HERMES
+    runtime_home: /root/.hermes  # 2026-09-12: canonical runtime path (live git repo)
     role: multimodal_telegram_bridge
     authority_ceiling: RELAY_ONLY
     units:
       - hermes-asi-gateway.service
-    mcp_port: 18086
+    mcp_port: null  # 2026-09-12: 18086 PHANTOM — ss probe confirms no listener. Gateway uses stdio MCP children, not TCP.
     owned_domains:
       - telegram_relay
       - multimodal_bridge
@@ -558,6 +559,11 @@ components:
       - constitutional_judgment
       - engineering_execution
       - sealing
+    live_probe_2026_09_12:
+      status: active
+      pid: 3244719
+      machine: KVM8
+      note: "Gateway on KVM8, brain (i-arif) via FED litellm on KVM4 :4000"
 
   - id: opencode
     class: EDGE
