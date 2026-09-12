@@ -1,6 +1,6 @@
 # ATTENTION-INIT-BOUNDARY — Canonical Attention Doctrine (Consolidation)
 
-> **Status:** DRAFT_PENDING_F13 · 888 verdict: pending
+> **Status:** F13_RATIFIED · 888 verdict: RATIFIED 2026-09-12
 > **Origin:** Sovereign articulation 2026-09-12 — *"INIT is an attention-conversion boundary"* + agent synthesis
 > **Canonicalizes:** attention-graph.md (map) · attention-scarcity-economics.md (economics) · attention-kill-criterion.md (enforcement) · attention-routing.md (governor)
 > **Pattern:** This file becomes the single active-context entry point for attention doctrine. The four predecessors remain on disk as audit strata with supersede pointers (F1 AMANAH — nothing destroyed).
@@ -76,7 +76,7 @@ Waste classes W1–W6 and the 3-strike kill path live in `attention-kill-criteri
 
 | File | Disposition |
 |---|---|
-| attention-graph.md (DOCTRINE, 411 ln) | Retained as full map / audit stratum; active-context entry point becomes this file |
+| attention-graph.md (DOCTRINE, 411 ln) | Retained as full map / audit stratum (status becomes RETIRED_AUDIT_STRATUM on ratification); active-context entry point becomes this file. **Explicit delegations retained in predecessor:** escalation YAML rules (§6), organ mapping (§9), implementation phases (§12b), frontier gaps (§12), attention manifold (§10), graph structure (§3), ΔS formula (§15). |
 | attention-scarcity-economics.md (F13_RATIFIED 2026-09-12) | Retained; its §Definition/§Shift superseded by this file §1–2 |
 | attention-kill-criterion.md (F13_RATIFIED 2026-09-11) | Retained unchanged — sole enforcement authority |
 | attention-routing.md (DRAFT_AWAITING_F13, 36 ln) | Absorbed by §2–3; closed as superseded |
