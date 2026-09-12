@@ -1,0 +1,75 @@
+name: Qwen Dispatch
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  dispatch:
+    if: contains(github.event.comment.body, '@qwencoder')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extract command
+        id: cmd
+        run: |
+          BODY="${{ github.event.comment.body }}"
+          if echo "$BODY" | grep -q '/review'; then
+            echo "workflow=review" >> $GITHUB_OUTPUT
+          elif echo "$BODY" | grep -q '/triage'; then
+            echo "workflow=triage" >> $GITHUB_OUTPUT
+          else
+            echo "workflow=assistant" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Trigger PR Review
+        if: steps.cmd.outputs.workflow == 'review' && github.event.issue.pull_request
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'qwen-review.yml',
+              ref: context.ref,
+              inputs: {
+                pr_number: '${{ github.event.issue.number }}',
+                comment: '${{ github.event.comment.body }}'
+              }
+            });
+
+      - name: Trigger Issue Triage
+        if: steps.cmd.outputs.workflow == 'triage' && !github.event.issue.pull_request
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'qwen-triage.yml',
+              ref: context.ref,
+              inputs: {
+                issue_number: '${{ github.event.issue.number }}',
+                comment: '${{ github.event.comment.body }}'
+              }
+            });
+
+      - name: Trigger Assistant
+        if: steps.cmd.outputs.workflow == 'assistant'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'qwen-assistant.yml',
+              ref: context.ref,
+              inputs: {
+                target: '${{ github.event.issue.number }}',
+                is_pr: '${{ github.event.issue.pull_request && true || false }}',
+                comment: '${{ github.event.comment.body }}'
+              }
+            });
