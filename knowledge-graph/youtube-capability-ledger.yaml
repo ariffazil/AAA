@@ -3,9 +3,9 @@
 # DITEMPA BUKAN DIBERI.
 
 # Canonical State (2026-09-12)
-# The only YouTube route evidenced as directly available to HERMES is the transcript lane.
-# The full multimodal lane consists of implemented/proposed components
-# with unproven end-to-end reachability.
+# The transcript lane is unreachable from the cloud-VPS egress route.
+# This is route-specific, not a capability-global claim.
+# No workaround (cookies/proxy) is silently activated.
 
 media.youtube.transcript:
   lifecycle: active
@@ -14,23 +14,31 @@ media.youtube.transcript:
     assets:
       - youtube-content
       - youtube-transcript-api
-    evidence:
-      - type: test_receipt
-        run_id: "canary-93daf5d29ab7"
-        timestamp: "2026-09-12T01:47:39+00:00"
-        result: "unreachable — YouTube blocks cloud VPS IP"
+
   reachability:
     state: unreachable
-    verification_method: "transcript_canary_v0"
-    last_probed_at: "2026-09-12T09:47:39+08:00"
-    failure_class: "ip_blocked_by_youtube"
-    error_class: "request_blocked"
-    receipt_ref: "receipts/canary-93daf5d29ab7.json"
-    remediation: "requires approved proxy/VPN route or authenticated cookie-based fallback (888 HOLD)"
+    scope: cloud_vps_egress_route
+    last_probe:
+      run_id: "transcript-canary:c82aec682523"
+      result: "blocked"
+      failure_class: "ip_blocked_by_youtube"
+      target_invocation_reached: true
+      timestamp: "2026-09-12T09:47:55+08:00"
+
+  remediation:
+    status: deferred
+    options:
+      - "approved residential/local-device execution route"
+      - "approved proxy route"
+      - "official/provider-supported transcript access route"
+    activation_gate: "F13_888_HOLD"
+
   governance:
     authority: observe
     receipt_required: true
-    failure_policy: structured_unavailable
+    external_write: false
+    cookies_permitted: false
+    yt_dlp_permitted: false
 
 media.youtube.keyframe_extraction:
   lifecycle: partial
@@ -95,13 +103,13 @@ media.youtube.video_to_skill:
     human_review_required: true
 
 # Priority Sequence (post keyframe extraction proof)
-# 1. Transcript lane live probe and receipt.
-# 2. Local keyframe extraction + evidence manifest.
-# 3. OCR/vision per extracted keyframe, with timestamped outputs.
-# 4. ASR fallback for captionless video.
-# 5. Typed claim graph and HERMES retrieval contract.
-# 6. Video-to-skill draft generator.
-# 7. Only then assess a bounded, pinned, reviewed adaptation of claude-video.
+# 1. Transcript lane live probe and receipt.        DONE (unreachable — cloud IP blocked)
+# 2. Local keyframe extraction + evidence manifest.  DONE (18/18 green)
+# 3. Vision/OCR per extracted keyframe, with timestamped outputs.  NEXT BUILD
+# 4. ASR fallback for captionless video.             DEFERRED
+# 5. Typed claim graph and HERMES retrieval contract. DEFERRED
+# 6. Video-to-skill draft generator.                DEFERRED
+# 7. Only then assess a bounded, pinned, reviewed adaptation of claude-video. DEFERRED
 
 # Scope Boundary
 # - Generation tools sit on a SEPARATE branch after evidence/research synthesis.
