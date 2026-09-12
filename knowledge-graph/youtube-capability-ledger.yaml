@@ -1,0 +1,120 @@
+# YouTube Intelligence Capability Ledger
+# Source: Arif Fazil, 2026-09-12 (F13 sovereign correction of earlier map)
+# DITEMPA BUKAN DIBERI.
+
+# Canonical State (2026-09-12)
+# The only YouTube route evidenced as directly available to HERMES is the transcript lane.
+# The full multimodal lane consists of implemented/proposed components
+# with unproven end-to-end reachability.
+
+media.youtube.transcript:
+  lifecycle: active
+  implementation:
+    state: implemented
+    assets:
+      - youtube-content
+      - youtube-transcript-api
+    evidence:
+      - type: test_receipt
+        run_id: "canary-93daf5d29ab7"
+        timestamp: "2026-09-12T01:47:39+00:00"
+        result: "unreachable — YouTube blocks cloud VPS IP"
+  reachability:
+    state: unreachable
+    verification_method: "transcript_canary_v0"
+    last_probed_at: "2026-09-12T09:47:39+08:00"
+    failure_class: "ip_blocked_by_youtube"
+    error_class: "request_blocked"
+    receipt_ref: "receipts/canary-93daf5d29ab7.json"
+    remediation: "requires approved proxy/VPN route or authenticated cookie-based fallback (888 HOLD)"
+  governance:
+    authority: observe
+    receipt_required: true
+    failure_policy: structured_unavailable
+
+media.youtube.keyframe_extraction:
+  lifecycle: partial
+  implementation:
+    state: implemented
+    version: "0.1.0"
+    asset: "/root/AAA/tools/video-evidence-packager/packager.py"
+    evidence:
+      - type: test_receipt
+        run_id: "video-packager:e22ccf1b662e"
+        timestamp: "2026-09-12T09:44:00+08:00"
+        result: "18/18 acceptance tests green"
+  reachability:
+    state: locally_verified_not_wired_to_hermes
+    verification_method: "deterministic local-file fixture suite"
+    external_network_calls: 0
+    next_required_step: "define Hermes invocation contract and run a bounded read-only probe"
+  governance:
+    authority: observe
+    input_scope: "approved local media only"
+    external_acquisition: prohibited
+    input_mutation: prohibited
+    receipt_required: true
+    artifact_hashing: sha256
+    activation_gate: local_artifact_only_v0
+
+media.youtube.audio_asr:
+  lifecycle: partial
+  implementation:
+    state: implemented_in_AAA
+    assets:
+      - AAA-asr-glm-ingest
+      - AAA-audio-emd-pipeline
+  reachability:
+    state: unknown
+  governance:
+    authority: observe
+    data_policy: local_or_explicitly_approved_vendor_route
+
+media.youtube.multimodal_claim_graph:
+  lifecycle: proposed
+  implementation:
+    state: implemented_design
+    asset: AAA-video-emd-pipeline
+  reachability:
+    state: not_wired_to_HERMES
+  verification:
+    standard: paired_opposite_fixtures_x3
+  governance:
+    authority: observe
+    receipt_required: true
+
+media.youtube.video_to_skill:
+  lifecycle: proposed
+  implementation:
+    state: procedure_draft_only
+  reachability:
+    state: not_wired
+  governance:
+    authority: admin_write
+    activation_gate: "888_HOLD"
+    human_review_required: true
+
+# Priority Sequence (post keyframe extraction proof)
+# 1. Transcript lane live probe and receipt.
+# 2. Local keyframe extraction + evidence manifest.
+# 3. OCR/vision per extracted keyframe, with timestamped outputs.
+# 4. ASR fallback for captionless video.
+# 5. Typed claim graph and HERMES retrieval contract.
+# 6. Video-to-skill draft generator.
+# 7. Only then assess a bounded, pinned, reviewed adaptation of claude-video.
+
+# Scope Boundary
+# - Generation tools sit on a SEPARATE branch after evidence/research synthesis.
+# - claude-video is an external candidate. NOT integrated. NOT approved for wholesale import.
+# - social-video-intelligence is a fallback policy layer. Effectiveness unproven.
+
+# Reachability Vocabulary (canonical)
+# not_applicable          - No execution route is intended
+# intentionally_unreachable - Human/governance decision prevents invocation
+# not_wired               - Component exists, but no agent invocation route exists
+# unknown_by_governed_probe - A probe was correctly blocked before target invocation
+# implemented_unprobed    - Code/skill exists, but no execution evidence
+# reachable               - A bounded canonical probe succeeded and emitted evidence
+# degraded                - Route works through approved fallback or partial mode
+# unreachable             - A valid authorized probe reached the route and failed
+# retired                 - Route deliberately removed or superseded
