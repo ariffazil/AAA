@@ -2,21 +2,27 @@
 """
 arifOS Session Title Generator — FLAME-powered, RM0 free.
 Generates a 5-8 word title from the first user message of a session.
-Stores in Redis + updates carry_forward.json.
+Stores in Redis + sidecar file.
 
 Usage:
   python3 session-title.py "what is the user's first message about?"
-  
+
 Output: JSON with generated title
+
+P2 WRITER GOVERNANCE (2026-09-12):
+- Writes to sidecar /root/.local/share/arifos/session_titles.json
+- NEVER writes to carry_forward.json (ownership = carry_forward.py)
+- Flock + atomic write enforced
 """
-import json, sys, os, hashlib, time
+import fcntl, json, sys, os, hashlib, time
+from pathlib import Path
 from urllib.request import Request, urlopen
 from urllib.error import URLError
 
 FLAME_URL = "http://localhost:18901/v1/chat/completions"
 REDIS_HOST = "localhost"
 REDIS_PORT = 6379
-CARRY_FORWARD_PATH = "/root/.local/share/arifos/carry_forward.json"
+TITLES_SIDECAR = Path("/root/.local/share/arifos/session_titles.json")
 
 SYSTEM_PROMPT = """Generate a short 4-7 word title for this AI agent conversation.
 Rules:
@@ -50,8 +56,33 @@ def generate_title(user_message: str) -> str:
         print(f"FLAME error: {e}", file=sys.stderr)
         return None
 
+def _atomic_write(path: Path, data: dict) -> None:
+    """Flock + atomic write — P2 writer governance."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(".tmp")
+    try:
+        fd = os.open(str(tmp), os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
+        try:
+            fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except OSError:
+            os.close(fd)
+            raise RuntimeError("session-title: flock failed")
+        try:
+            os.write(fd, json.dumps(data, indent=2, ensure_ascii=False).encode("utf-8"))
+        finally:
+            fcntl.flock(fd, fcntl.LOCK_UN)
+            os.close(fd)
+        os.replace(str(tmp), str(path))
+    except Exception:
+        try:
+            tmp.unlink(missing_ok=True)
+        except Exception:
+            pass
+        raise
+
+
 def store_title(title: str, source_message: str):
-    """Store generated title in Redis and carry_forward.json."""
+    """Store generated title in Redis and sidecar file."""
     # Store in Redis
     try:
         import redis
@@ -70,15 +101,23 @@ def store_title(title: str, source_message: str):
     except Exception as e:
         print(f"Redis error: {e}", file=sys.stderr)
 
-    # Update carry_forward.json
+    # P2: write to sidecar, NOT carry_forward.json
     try:
-        cf = json.load(open(CARRY_FORWARD_PATH))
-        cf["session_title"] = title
-        cf["session_title_generated_at"] = time.strftime("%Y-%m-%dT%H:%M:%SZ")
-        json.dump(cf, open(CARRY_FORWARD_PATH, "w"), indent=2, ensure_ascii=False)
-        print(f"carry_forward.json: title stored", file=sys.stderr)
+        titles = {}
+        if TITLES_SIDECAR.exists():
+            try:
+                titles = json.loads(TITLES_SIDECAR.read_text())
+                if not isinstance(titles, dict):
+                    titles = {}
+            except Exception:
+                titles = {}
+        titles["session_title"] = title
+        titles["session_title_generated_at"] = time.strftime("%Y-%m-%dT%H:%M:%SZ")
+        titles["source_message"] = source_message[:200]
+        _atomic_write(TITLES_SIDECAR, titles)
+        print(f"sidecar: title stored at {TITLES_SIDECAR}", file=sys.stderr)
     except Exception as e:
-        print(f"carry_forward error: {e}", file=sys.stderr)
+        print(f"sidecar write error: {e}", file=sys.stderr)
 
 def main():
     if len(sys.argv) < 2:
