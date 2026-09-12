@@ -155,3 +155,7 @@ deploy-local: verify
 verify:
 	@echo "verifying authority_ceiling on AAA..."
 	@curl -sf http://127.0.0.1:3001/health | python3 -c "import json,sys;h=json.load(sys.stdin);assert h.get('authority_ceiling'),'authority_ceiling ABSENT';print(f'✅ authority_ceiling={h[\"authority_ceiling\"]}')" || echo "❌ verify failed"
+
+click-depth-audit:
+	@bash /root/scripts/audit_click_depth.sh
+
