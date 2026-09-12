@@ -3,11 +3,11 @@
 # ═══════════════════════════════════════════════════════════════════
 # HUMAN TWIN: /root/AAA/docs/ORGAN.md  (topology SOT — this file is machine SOT)
 # Truth rule: live :port/health beats these numbers. Re-probe before SEAL claims.
-# Stabilized: 2026-07-30
+# Stabilized: 2026-07-30 · reconciled: 2026-09-12 (truth-reconciliation C2)
 # ═══════════════════════════════════════════════════════════════════
 
 schema_version: 2
-generated: "2026-07-30"
+generated: "2026-09-12 (entries re-probed 2026-09-12; header refreshed under F13 execute-all)"
 maintainer: "AAA Control Plane"
 human_map: /root/AAA/docs/ORGAN.md
 truth_rule: live_health_beats_file
@@ -810,7 +810,7 @@ port_observability:
   sub_process_out_of_scope:
     description: "a-forge sub-workers, debug ports, litellm 4000, hermes 8444, dev tools — not registered as SOT components (no authority claim)"
     examples: [4000, 4096, 4173, 4329, 5001, 7099, 8090, 8091, 8092, 8094, 8100, 8444, 8931, 9222, 39570, 46590]
-  hermes_observability_note: "HERMES binds :8444 publicly but listed out_of_scope above — Hermes is an EDGE organ without explicit port SOT entry (organ registry has hermes.mcp_port=18086 only)"
+  hermes_observability_note: "2026-09-12 re-probe (FI-008): HERMES binds NO TCP port — historic :8444 public bind and mcp_port 18086 are both dead (tombstoned in hermes entry above). Gateway = Telegram long-poll outbound + stdio MCP children. The 8444 example in sub_process_out_of_scope is retained as 2026-08-06 audit history."
 
 # Explicit non-components (naming traps — do not register as organs)
 non_components:
