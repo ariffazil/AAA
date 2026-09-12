@@ -65,6 +65,36 @@ media.youtube.keyframe_extraction:
     artifact_hashing: sha256
     activation_gate: local_artifact_only_v0
 
+media.youtube.visual_ocr:
+  lifecycle: partial
+  implementation:
+    state: implemented
+    version: "0.1.0"
+    asset: "/root/AAA/tools/video-ocr-adapter/ocr_adapter.py"
+    engine: tesseract 5.5.0
+    evidence:
+      - type: test_receipt
+        run_id: "ocr-adapter:test-suite"
+        timestamp: "2026-09-12T09:56:00+08:00"
+        result: "11/11 acceptance tests green"
+  reachability:
+    state: locally_verified_not_wired_to_hermes
+    verification_method: "acceptance test suite with packager keyframes"
+    external_network_calls: 0
+    input_requires: "keyframe from video-evidence-packager v0.1.0"
+    next_required_step: "wire to Hermes runtime or use in manual evidence workflow"
+  governance:
+    authority: observe
+    input_scope: "approved local keyframes only"
+    external_acquisition: prohibited
+    narrative_output: prohibited
+    cross_frame_synthesis: prohibited
+    receipt_required: true
+    artifact_hashing: sha256
+    content_label: OBS
+    epistemic_cap: 0.90
+    activation_gate: local_artifact_only_v0
+
 media.youtube.audio_asr:
   lifecycle: partial
   implementation:
@@ -105,7 +135,7 @@ media.youtube.video_to_skill:
 # Priority Sequence (post keyframe extraction proof)
 # 1. Transcript lane live probe and receipt.        DONE (unreachable — cloud IP blocked)
 # 2. Local keyframe extraction + evidence manifest.  DONE (18/18 green)
-# 3. Vision/OCR per extracted keyframe, with timestamped outputs.  NEXT BUILD
+# 3. Vision/OCR per extracted keyframe, with timestamped outputs.  DONE (11/11 green)
 # 4. ASR fallback for captionless video.             DEFERRED
 # 5. Typed claim graph and HERMES retrieval contract. DEFERRED
 # 6. Video-to-skill draft generator.                DEFERRED
