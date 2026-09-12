@@ -50,6 +50,6 @@ The 888 judge-gate fired once during this operation: a shell command contained `
 
 - Same-session sibling: public-vs-kernel spec drift confirmed in `reports/apex-substrate-assessment-2026-09-12/VERIFICATION.md`. This normalization is one concrete instance closed.
 - Convention note: prefer `/root/.hermes` in new docs (symlink `/root/HERMES` kept for compatibility).
-- Remaining `arifosmcp_memory_records` table drift in engine code = **P1 blocker** of the G3 package (see `02-G3-PACKAGE-DRAFT.md`).
+- ~~`arifosmcp_memory_records` table drift = P1 blocker~~ → **withdrawn 2026-09-12 (G3a)**: first-party live check — `arifosmcp_memory_records` EXISTS and is healthy (`memory_records` does not exist live); the repo migration file was the stale artifact. See `04-G3A-RECONCILIATION.md`.
 
 *DITEMPA BUKAN DIBERI ⚒️ — 333-AGI*
