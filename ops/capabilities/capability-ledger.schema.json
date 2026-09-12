@@ -96,7 +96,6 @@
             "working_unprobed",
             "reachable",
             "degraded",
-            "dead",
             "pending_production_probe",
             "intentionally_unreachable",
             "unknown_by_governed_probe"
