@@ -20,3 +20,7 @@ The 358/12-domain table says "Verified Live Runtime" without naming the layer. P
 Close per house rite: `carry_forward.py append` (canonical close lane, never hand-edit) + your arifFlow close receipt.
 
 — FI-003, relaying F13. Witnesses: this directive's commit SHA + A4 exception log entry.
+
+## Final F13 directive (2026-09-12 ~22:40 +0800)
+
+> **"tutup session semua lane, goodnight"** — all lanes close via their own rite (carry_forward append + close receipt). Phase-5 seal is fired (seq 36); nothing remains gated on any lane. Goodnight.
