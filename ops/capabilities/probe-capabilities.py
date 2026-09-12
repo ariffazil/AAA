@@ -39,10 +39,12 @@ MYT = timezone(timedelta(hours=8))
 
 # ── YAML Loader (minimal, no PyYAML dependency) ─────────────
 
+
 def load_ledger():
     """Load the capability ledger. Uses PyYAML if available, falls back to json."""
     try:
         import yaml
+
         with open(LEDGER_PATH, "r") as f:
             return yaml.safe_load(f)
     except ImportError:
@@ -51,7 +53,41 @@ def load_ledger():
             return json.load(f)
 
 
+def persist_probe_result(cap_id, now_iso, result):
+    """Update last_probe_at/last_probe_status for one capability via targeted text edit.
+
+    The ledger is hand-formatted YAML; a full round-trip (pyyaml/ruamel) would
+    reformat comments and alignment. This does a surgical line replacement that
+    touches only the two timestamp fields of the probed capability's reachability
+    block, preserving every other byte.
+    """
+    lines = LEDGER_PATH.read_text().splitlines()
+    target_idx = None
+    for i, line in enumerate(lines):
+        if line.strip() == f"- id: {cap_id}":
+            target_idx = i
+            break
+    if target_idx is None:
+        return  # capability absent; never rewrite the ledger
+    updated_at = updated_status = False
+    for i in range(target_idx, len(lines)):
+        line = lines[i]
+        indent = line[: len(line) - len(line.lstrip())]
+        s = line.strip()
+        if s.startswith("last_probe_at:") and not updated_at:
+            lines[i] = f'{indent}last_probe_at: "{now_iso}"'
+            updated_at = True
+        elif s.startswith("last_probe_status:") and not updated_status:
+            lines[i] = f'{indent}last_probe_status: "{result}"'
+            updated_status = True
+        if updated_at and updated_status:
+            break
+    if updated_at or updated_status:
+        LEDGER_PATH.write_text("\n".join(lines) + "\n")
+
+
 # ── Probe Implementations ───────────────────────────────────
+
 
 def probe_weather_kl():
     """Probe Open-Meteo for KL current weather."""
@@ -127,6 +163,7 @@ def probe_youtube_transcript():
     start = time.monotonic()
     try:
         from youtube_transcript_api import YouTubeTranscriptApi
+
         ytt = YouTubeTranscriptApi()
         transcript = ytt.fetch(test_video_id)
         entries = list(transcript)
@@ -230,6 +267,7 @@ PROBES = {
 
 # ── Ledger Operations ───────────────────────────────────────
 
+
 def list_capabilities(ledger):
     """Print all capabilities in a readable table."""
     caps = ledger.get("capabilities", [])
@@ -252,8 +290,25 @@ def validate_ledger(ledger):
         if field not in ledger:
             errors.append(f"Missing top-level field: {field}")
 
-    valid_impl_states = {"absent", "partial", "implemented", "retired", "vendor_candidate", "implemented_or_claimed", "external_institutional_api"}
-    valid_reach_states = {"unreachable", "not_wired", "working_unprobed", "reachable", "degraded", "pending_production_probe", "intentionally_unreachable", "unknown_by_governed_probe"}
+    valid_impl_states = {
+        "absent",
+        "partial",
+        "implemented",
+        "retired",
+        "vendor_candidate",
+        "implemented_or_claimed",
+        "external_institutional_api",
+    }
+    valid_reach_states = {
+        "unreachable",
+        "not_wired",
+        "working_unprobed",
+        "reachable",
+        "degraded",
+        "pending_production_probe",
+        "intentionally_unreachable",
+        "unknown_by_governed_probe",
+    }
     valid_auth = {"observe", "draft", "external_write", "financial_write", "admin_write"}
     valid_lifecycle = {"active", "partial", "deferred", "retired", "blocked"}
 
@@ -314,7 +369,8 @@ def probe_capability(cap_id, ledger):
             "latency_ms": None,
             "source_timestamp": None,
             "evidence": None,
-            "degraded": reach.get("state") in {"unreachable", "intentionally_unreachable", "not_wired", "unknown_by_governed_probe"},
+            "degraded": reach.get("state")
+            in {"unreachable", "intentionally_unreachable", "not_wired", "unknown_by_governed_probe"},
             "error_class": None,
             "error_message_safe": reach.get("reason"),
         }
@@ -340,12 +396,8 @@ def probe_capability(cap_id, ledger):
     with open(result_file, "w") as f:
         f.write(json.dumps(record) + "\n")
 
-    # Update ledger reachability timestamps
-    for c in caps:
-        if c["id"] == cap_id:
-            c.setdefault("reachability", {})
-            c["reachability"]["last_probe_at"] = now.isoformat()
-            c["reachability"]["last_probe_status"] = record["result"]
+    # Persist reachability timestamps back to the ledger (targeted edit, formatting-preserving)
+    persist_probe_result(cap_id, now.isoformat(), record["result"])
 
     # Print to stdout
     print(json.dumps(record, indent=2))
@@ -365,6 +417,7 @@ def probe_all(ledger):
 
 
 # ── Main ────────────────────────────────────────────────────
+
 
 def main():
     parser = argparse.ArgumentParser(description="Capability Reachability Probe Harness v0.1.0")
