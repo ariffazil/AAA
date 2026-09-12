@@ -12,7 +12,7 @@
 ```json
 {
   "rg_1": "WITNESSED — edges survive daemon → JSONL → VAULT999 seal chain",
-  "rg_1c_binding": "STRUCTURALLY CLOSED (code-verified; runtime recompute audit pending, 1 cmd)",
+  "rg_1c_binding": "CLOSED — runtime recompute 2026-09-12: 3/3 receipts PASS, chain continuity PASS",
   "rg_2": "NEXT FORGE — lineage reconstruction from sealed receipts only",
   "rg_3": "HOLD until RG-2 passes + F13 authorization (converged verdict, 3 independent analyses + F13 SEAL quote)",
   "controlled_cycle": "CODE_PRESENT / TESTED (28) — runtime witness PENDING (no real CycleSummary yet)",
@@ -52,7 +52,7 @@ Roadmap: **RG-1** edge persistence ✅ → **RG-2** reality lineage → **RG-3**
 | Rust core fields | `src/receipt.rs:509–515` `routed_organ` + `parent_receipt_ids`; builders `:741–755`; tests `:1564+` | **OBS** |
 | Runtime receipts with edges | `/var/lib/arifflow/receipts.jsonl` — `c07ef983` (rg1-test, `routed_organ:"WELL"`), `2e220b6b` (parents `[RCP-TEST-PARENT-001]`), `6b7b0dae` | **OBS** |
 | VAULT999 seal chain | `/root/arifOS/VAULT999/arifflow_sealed.jsonl` — 29,351 entries; all 3 RG-1 receipts sealed (positions 3/6/10) | **OBS** |
-| **RG-1C binding (payload↔seal)** | `src/main.rs:602–621`: seal checkpoint = `receipt.hash()` = SHA3-256 canonical receipt **incl. edge fields when set**; `chain_entry_hash = SHA3(prev_hash‖position‖checkpoint)` (`governance/vault999.rs:9,58`) | **DER (code-verified mechanism; runtime recompute not executed)** |
+| **RG-1C binding (payload↔seal)** | `src/main.rs:602–621`: seal checkpoint = `receipt.hash()` = SHA3-256 canonical receipt **incl. edge fields when set**; `chain_entry_hash = SHA3(prev_hash‖position‖checkpoint)` (`governance/vault999.rs:9,58`) | **OBS — RUNTIME VERIFIED 2026-09-12: recompute 3/3 PASS (incl. edge-bearing receipt B), chain continuity PASS** |
 | Spec documentation | `spec/FLOW_RECEIPT_v1.md` §3.3 + §7b (DAG fan-out merge semantics) | **OBS** |
 | 4th topology | `src/topology/controlled_cycle.rs` (1039 lines, 28 tests) + `TopologyKind::ControlledCycle` + `ExecutionMode::ConvergentLoop` | **OBS** |
 | Daemon live | `:7073` FQ **BALANCED**, `qg.v0.3.1-vector`, actors incl. `rg1-test` | **OBS** |
@@ -124,10 +124,11 @@ Also ratified and load-bearing: `attention-kill-criterion.md` (3-strike rule **r
 ```text
 RG-1A  Full receipt edges in JSONL                    ✅ WITNESSED (3 receipts, OBS)
 RG-1B  Seal reference in VAULT999 chain               ✅ WITNESSED (positions 3/6/10, OBS)
-RG-1C  Payload↔seal cryptographic binding             ✅ STRUCTURALLY CLOSED (code: main.rs:607
-                                                          checkpoint=SHA3-256(full receipt incl. edges);
-                                                          vault999.rs:58 chain formula) — runtime
-                                                          recompute audit NOT yet executed (1 command)
+RG-1C  Payload↔seal cryptographic binding             ✅ CLOSED — runtime recompute 2026-09-12:
+                                                          3/3 receipts PASS (checkpoint = SHA3-256 of
+                                                          exact JSONL line incl. edges; chain_entry =
+                                                          SHA3(prev‖pos_u64be‖checkpoint)); chain
+                                                          continuity PASS. RG-1 fully closed (A+B+C).
 RG-2   Reality lineage                                ⏳ NEXT FORGE
 RG-3   Genesis Bridge                                  🔒 HOLD (until RG-2 + F13; genesis_anchor
                                                           code already drafted in dirty worktree)
@@ -149,9 +150,9 @@ Hard rule (RG-2): no missing or unsealed ancestor may be silently treated as a r
 
 1. **Roadmap is chat-only.** No `REALITY_GRAPH_ROADMAP` doc in any repo — re-derivation risk per agent. Fix: `spec/REALITY_GRAPH_ROADMAP_v0.1.md` (CANDIDATE status, F13 required for ratification). *Owner: the forge session (kimi-code), not this map.*
 2. **Dirty worktree = RG-3 prep uncommitted.** `src/receipt.rs` carries `genesis_anchor` + builder + tests past `c041984`. Handling: do NOT bundle with RG-1 claims; do NOT discard (it is drafted work). Recommended: move to branch `rg3-genesis-prep` once the forge session is idle — **do not touch a live session's worktree** (two-writer collision precedent 2026-09-12, carry_forward flock fix).
-3. **Runtime recompute audit** for RG-1C not executed: retrieve receipt by ID from JSONL → recompute SHA3-256 → compare to chain checkpoint. One command; closes RG-1 fully.
+3. **RESOLVED 2026-09-12 (same session):** RG-1C runtime recompute executed — 3/3 receipts PASS, chain continuity PASS. Exact formula witnessed: `checkpoint = SHA3-256(exact JSONL line bytes)`; `chain_entry = SHA3-256(prev_hash ‖ position_u64be ‖ checkpoint)`. A receipt that once carried edges is now *provably* intact, not merely recoverable.
 4. **Two-parallel-store hazards:** (a) `VAULT999/reality_ledger/` vs future RG-6 consequence graph; (b) organ ledgers (wealth/well/frame) vs `routed_organ`-tagged receipts. Precedent: mem0 open loop in institutional-memory-strata. Bridge or fold, don't duplicate.
-5. **Fail-soft seal:** VAULT999 write failure = WARN + in-memory seal; ingest survives, chain continuity in the file can lag. Monitor via seal-file mtime/line-count vs receipts.jsonl.
+5. **Fail-soft seal:** VAULT999 write failure = WARN + in-memory seal; ingest survives, chain continuity in the file can lag. Measured 2026-09-12: `receipts.jsonl` 30,639 vs sealed 29,354 (Δ≈1,285 = pre-seal-era historical backlog; live ingests seal immediately — the 333-AGI audit receipt sealed same-cycle at position 10).
 6. **`chain_position` semantics** observed as small numbers near tail (3/6/10) of a 29,351-line file — per-batch/window position, not global. Document before RG-2 traversal code assumes either.
 7. **FED/FRAME silence:** the two observers touch the graph only as advisor/monitor. Cheapest federation win after RG-2: hermes cron bridge tags `routed_organ` (known targets).
 8. **EXT-CLAIMs not independently witnessed:** K000→K999 K-series naming; 5-stage metabolic-loop compression; metabolic_loop.py/pre_execution_gate.py paths. GENESIS 000–018 series IS observed.
@@ -171,6 +172,8 @@ GraphStatus { Valid, PartialMissingParent, PartialUnsealedAncestor,
 ```
 
 Acceptance (12-test floor): single+multi-parent reconstruction · deterministic root order · missing-parent → PARTIAL (never fake root) · self-parent reject · direct+indirect cycle detection · seal required for all ancestors · **receipt-to-seal binding verified** · classification-boundary non-crossing · forward consequence tracing · machine-readable proof output.
+
+**Converged ReceiptStore surface (2026-09-12, cross-session — BLUEPRINT×12-patterns synthesis):** `get_receipt(id)` · `get_parents(id)` · `get_children(id)` · `build_lineage(id)` · `build_proof(id)` — pure hash traversals on the sealed ledger (Pattern-2 node contract). **No model call, no narrative. If lineage reconstruction needs a model, the graph is PARTIAL.** Falsifiability criterion (Arif's): *"if lineage cannot be reconstructed from sealed evidence without narrative repair, the graph remains PARTIAL."*
 
 Then, and only then, RG-3 with F13 authorization (`authority: SOVEREIGN_F13, human_approval: REQUIRED, payload_access: METADATA_ONLY`).
 
