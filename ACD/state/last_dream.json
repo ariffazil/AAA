@@ -1,0 +1,543 @@
+[
+  {
+    "pass": "consolidate",
+    "started": "2026-08-21T08:47:11.197470+00:00",
+    "dry_run": false,
+    "config": {
+      "embed_model": "bge-m3",
+      "embed_dims": 1024,
+      "dedup_threshold": 0.9,
+      "stale_threshold_days": 30,
+      "shadow_retention_days": 7
+    },
+    "passes": {
+      "l1_l2_redis": {
+        "status": "ok",
+        "layer": "L1/L2 Redis",
+        "scanned": 21,
+        "ttl_buckets": {
+          "<1h": 0,
+          "1h-1d": 5,
+          "1d-7d": 0,
+          ">7d": 0,
+          "no_ttl": 16
+        },
+        "flagged_no_ttl_count": 16,
+        "dry_run": false
+      },
+      "l3_qdrant": {
+        "status": "ok",
+        "layer": "L3 Qdrant",
+        "collections": [
+          "arifOS_skill_mesh",
+          "arif_evidence",
+          "arifos_audio_memory",
+          "arifos_constitution",
+          "arifos_memory",
+          "arifos_precedent",
+          "arifos_session_memory",
+          "arifos_skill_mesh",
+          "arifos_vault_canon",
+          "arifos_vault_ephemeral",
+          "arifos_vault_quarantine",
+          "arifos_vault_sacred",
+          "arifos_vault_working",
+          "atlas333_eureka",
+          "federation_shared",
+          "mcp_capabilities",
+          "openclaw_memory",
+          "petronas_knowledge",
+          "test_memory_arch"
+        ],
+        "stale_points": [],
+        "dedup_candidates": [],
+        "dry_run": false
+      },
+      "l4_supabase": {
+        "status": "skipped",
+        "reason": "SUPABASE_URL or SUPABASE_SERVICE_KEY missing"
+      }
+    },
+    "ended": "2026-08-21T08:47:14.345151+00:00"
+  },
+  {
+    "pass": "consolidate",
+    "started": "2026-08-24T08:50:47.335941+00:00",
+    "dry_run": false,
+    "config": {
+      "embed_model": "bge-m3",
+      "embed_dims": 1024,
+      "dedup_threshold": 0.9,
+      "stale_threshold_days": 30,
+      "shadow_retention_days": 7
+    },
+    "passes": {
+      "l1_l2_redis": {
+        "status": "ok",
+        "layer": "L1/L2 Redis",
+        "scanned": 21,
+        "ttl_buckets": {
+          "<1h": 0,
+          "1h-1d": 6,
+          "1d-7d": 0,
+          ">7d": 0,
+          "no_ttl": 15
+        },
+        "flagged_no_ttl_count": 15,
+        "dry_run": false
+      },
+      "l3_qdrant": {
+        "status": "ok",
+        "layer": "L3 Qdrant",
+        "collections": [
+          "arifOS_skill_mesh",
+          "arif_evidence",
+          "arifos_audio_memory",
+          "arifos_constitution",
+          "arifos_memory",
+          "arifos_precedent",
+          "arifos_session_memory",
+          "arifos_skill_mesh",
+          "arifos_vault_canon",
+          "arifos_vault_ephemeral",
+          "arifos_vault_quarantine",
+          "arifos_vault_sacred",
+          "arifos_vault_working",
+          "atlas333_eureka",
+          "federation_shared",
+          "mcp_capabilities",
+          "openclaw_memory",
+          "petronas_knowledge",
+          "test_memory_arch"
+        ],
+        "stale_points": [],
+        "dedup_candidates": [],
+        "dry_run": false
+      },
+      "l4_supabase": {
+        "status": "skipped",
+        "reason": "SUPABASE_URL or SUPABASE_SERVICE_KEY missing"
+      }
+    },
+    "ended": "2026-08-24T08:50:49.534663+00:00"
+  },
+  {
+    "pass": "consolidate",
+    "started": "2026-08-27T00:59:47.415672+00:00",
+    "dry_run": false,
+    "config": {
+      "embed_model": "bge-m3",
+      "embed_dims": 1024,
+      "dedup_threshold": 0.9,
+      "stale_threshold_days": 30,
+      "shadow_retention_days": 7
+    },
+    "passes": {
+      "l1_l2_redis": {
+        "status": "ok",
+        "layer": "L1/L2 Redis",
+        "scanned": 45,
+        "ttl_buckets": {
+          "<1h": 0,
+          "1h-1d": 21,
+          "1d-7d": 8,
+          ">7d": 0,
+          "no_ttl": 16
+        },
+        "flagged_no_ttl_count": 16,
+        "dry_run": false
+      },
+      "l3_qdrant": {
+        "status": "skipped",
+        "reason": "qdrant unreachable: [Errno 104] Connection reset by peer"
+      },
+      "l4_supabase": {
+        "status": "skipped",
+        "reason": "SUPABASE_URL or SUPABASE_SERVICE_KEY missing"
+      }
+    },
+    "ended": "2026-08-27T01:06:24.014383+00:00"
+  },
+  {
+    "pass": "consolidate",
+    "started": "2026-08-30T01:04:30.014916+00:00",
+    "dry_run": false,
+    "config": {
+      "embed_model": "bge-m3",
+      "embed_dims": 1024,
+      "dedup_threshold": 0.9,
+      "stale_threshold_days": 30,
+      "shadow_retention_days": 7
+    },
+    "passes": {
+      "l1_l2_redis": {
+        "status": "ok",
+        "layer": "L1/L2 Redis",
+        "scanned": 100,
+        "ttl_buckets": {
+          "<1h": 0,
+          "1h-1d": 23,
+          "1d-7d": 0,
+          ">7d": 0,
+          "no_ttl": 77
+        },
+        "flagged_no_ttl_count": 77,
+        "dry_run": false
+      },
+      "l3_qdrant": {
+        "status": "ok",
+        "layer": "L3 Qdrant",
+        "collections": [
+          "arifOS_skill_mesh",
+          "arif_evidence",
+          "arifos_audio_memory",
+          "arifos_constitution",
+          "arifos_memory",
+          "arifos_precedent",
+          "arifos_session_memory",
+          "arifos_vault_canon",
+          "arifos_vault_ephemeral",
+          "arifos_vault_quarantine",
+          "arifos_vault_sacred",
+          "arifos_vault_working",
+          "atlas333_eureka",
+          "federation_shared",
+          "mcp_capabilities",
+          "openclaw_memory",
+          "petronas_knowledge",
+          "test_memory_arch"
+        ],
+        "stale_points": [],
+        "dedup_candidates": [],
+        "dry_run": false
+      },
+      "l4_supabase": {
+        "status": "skipped",
+        "reason": "SUPABASE_URL or SUPABASE_SERVICE_KEY missing"
+      }
+    },
+    "ended": "2026-08-30T01:05:06.012123+00:00"
+  },
+  {
+    "pass": "consolidate",
+    "started": "2026-08-31T20:24:56.125779+00:00",
+    "dry_run": false,
+    "config": {
+      "embed_model": "bge-m3",
+      "embed_dims": 1024,
+      "dedup_threshold": 0.9,
+      "stale_threshold_days": 30,
+      "shadow_retention_days": 7
+    },
+    "passes": {
+      "l1_l2_redis": {
+        "status": "ok",
+        "layer": "L1/L2 Redis",
+        "scanned": 98,
+        "ttl_buckets": {
+          "<1h": 0,
+          "1h-1d": 23,
+          "1d-7d": 0,
+          ">7d": 0,
+          "no_ttl": 75
+        },
+        "flagged_no_ttl_count": 75,
+        "dry_run": false
+      },
+      "l3_qdrant": {
+        "status": "ok",
+        "layer": "L3 Qdrant",
+        "collections": [
+          "arifOS_skill_mesh",
+          "arif_evidence",
+          "arifos_audio_memory",
+          "arifos_constitution",
+          "arifos_memory",
+          "arifos_precedent",
+          "arifos_session_memory",
+          "arifos_vault_canon",
+          "arifos_vault_ephemeral",
+          "arifos_vault_quarantine",
+          "arifos_vault_sacred",
+          "arifos_vault_working",
+          "atlas333_eureka",
+          "federation_shared",
+          "mcp_capabilities",
+          "openclaw_memory",
+          "petronas_knowledge",
+          "test_memory_arch"
+        ],
+        "stale_points": [],
+        "dedup_candidates": [],
+        "dry_run": false
+      },
+      "l4_supabase": {
+        "status": "skipped",
+        "reason": "SUPABASE_URL or SUPABASE_SERVICE_KEY missing"
+      }
+    },
+    "ended": "2026-08-31T20:27:16.424258+00:00"
+  },
+  {
+    "pass": "consolidate",
+    "started": "2026-09-06T11:44:52.624136+00:00",
+    "dry_run": false,
+    "config": {
+      "embed_model": "bge-m3",
+      "embed_dims": 1024,
+      "dedup_threshold": 0.9,
+      "stale_threshold_days": 30,
+      "shadow_retention_days": 7
+    },
+    "passes": {
+      "l1_l2_redis": {
+        "status": "ok",
+        "layer": "L1/L2 Redis",
+        "scanned": 246,
+        "ttl_buckets": {
+          "<1h": 0,
+          "1h-1d": 3,
+          "1d-7d": 0,
+          ">7d": 0,
+          "no_ttl": 243
+        },
+        "flagged_no_ttl_count": 243,
+        "dry_run": false
+      },
+      "l3_qdrant": {
+        "status": "ok",
+        "layer": "L3 Qdrant",
+        "collections": [
+          "arifOS_skill_mesh",
+          "arif_evidence",
+          "arifos_audio_memory",
+          "arifos_constitution",
+          "arifos_memory",
+          "arifos_precedent",
+          "arifos_session_memory",
+          "arifos_vault_canon",
+          "arifos_vault_ephemeral",
+          "arifos_vault_quarantine",
+          "arifos_vault_sacred",
+          "arifos_vault_working",
+          "atlas333_eureka",
+          "federation_shared",
+          "identity_vault",
+          "mcp_capabilities",
+          "mem0",
+          "mem0migrations",
+          "openclaw_memory",
+          "petronas_knowledge",
+          "test_memory_arch"
+        ],
+        "stale_points": [],
+        "dedup_candidates": [],
+        "dry_run": false
+      },
+      "l4_supabase": {
+        "status": "skipped",
+        "reason": "SUPABASE_URL or SUPABASE_SERVICE_KEY missing"
+      }
+    },
+    "ended": "2026-09-06T11:44:54.976897+00:00"
+  },
+  {
+    "pass": "consolidate",
+    "started": "2026-09-09T00:56:50.190061+00:00",
+    "dry_run": true,
+    "config": {
+      "embed_model": "bge-m3",
+      "embed_dims": 1024,
+      "dedup_threshold": 0.9,
+      "stale_threshold_days": 30,
+      "shadow_retention_days": 7
+    },
+    "passes": {
+      "l1_l2_redis": {
+        "status": "ok",
+        "layer": "L1/L2 Redis",
+        "scanned": 263,
+        "ttl_buckets": {
+          "<1h": 13,
+          "1h-1d": 1,
+          "1d-7d": 6,
+          ">7d": 0,
+          "no_ttl": 243
+        },
+        "flagged_no_ttl_count": 243,
+        "dry_run": true
+      },
+      "l3_qdrant": {
+        "status": "ok",
+        "layer": "L3 Qdrant",
+        "collections": [
+          "arifOS_skill_mesh",
+          "arif_evidence",
+          "arifos_audio_memory",
+          "arifos_constitution",
+          "arifos_memory",
+          "arifos_precedent",
+          "arifos_session_memory",
+          "arifos_vault_canon",
+          "arifos_vault_working",
+          "atlas333_eureka",
+          "federation_shared",
+          "identity_vault",
+          "mem0",
+          "mem0migrations",
+          "openclaw_memory",
+          "petronas_knowledge"
+        ],
+        "stale_points": [],
+        "dedup_candidates": [],
+        "dry_run": true
+      },
+      "l4_supabase": {
+        "status": "skipped",
+        "reason": "SUPABASE_URL or SUPABASE_SERVICE_KEY missing"
+      }
+    },
+    "ended": "2026-09-09T00:56:52.831150+00:00"
+  },
+  {
+    "pass": "consolidate",
+    "started": "2026-09-09T00:56:53.398856+00:00",
+    "dry_run": false,
+    "config": {
+      "embed_model": "bge-m3",
+      "embed_dims": 1024,
+      "dedup_threshold": 0.9,
+      "stale_threshold_days": 30,
+      "shadow_retention_days": 7
+    },
+    "passes": {
+      "l1_l2_redis": {
+        "status": "ok",
+        "layer": "L1/L2 Redis",
+        "scanned": 263,
+        "ttl_buckets": {
+          "<1h": 13,
+          "1h-1d": 1,
+          "1d-7d": 6,
+          ">7d": 0,
+          "no_ttl": 243
+        },
+        "flagged_no_ttl_count": 243,
+        "dry_run": false
+      },
+      "l3_qdrant": {
+        "status": "ok",
+        "layer": "L3 Qdrant",
+        "collections": [
+          "arifOS_skill_mesh",
+          "arif_evidence",
+          "arifos_audio_memory",
+          "arifos_constitution",
+          "arifos_memory",
+          "arifos_precedent",
+          "arifos_session_memory",
+          "arifos_vault_canon",
+          "arifos_vault_working",
+          "atlas333_eureka",
+          "federation_shared",
+          "identity_vault",
+          "mem0",
+          "mem0migrations",
+          "openclaw_memory",
+          "petronas_knowledge"
+        ],
+        "stale_points": [],
+        "dedup_candidates": [],
+        "dry_run": false
+      },
+      "l4_supabase": {
+        "status": "skipped",
+        "reason": "SUPABASE_URL or SUPABASE_SERVICE_KEY missing"
+      }
+    },
+    "ended": "2026-09-09T00:56:55.545096+00:00"
+  },
+  {
+    "pass": "consolidate",
+    "started": "2026-09-09T11:45:43.065840+00:00",
+    "dry_run": false,
+    "config": {
+      "embed_model": "bge-m3",
+      "embed_dims": 1024,
+      "dedup_threshold": 0.9,
+      "stale_threshold_days": 30,
+      "shadow_retention_days": 7
+    },
+    "passes": {
+      "l1_l2_redis": {
+        "status": "ok",
+        "layer": "L1/L2 Redis",
+        "scanned": 250,
+        "ttl_buckets": {
+          "<1h": 0,
+          "1h-1d": 1,
+          "1d-7d": 6,
+          ">7d": 0,
+          "no_ttl": 243
+        },
+        "flagged_no_ttl_count": 243,
+        "dry_run": false
+      },
+      "l3_qdrant": {
+        "status": "ok",
+        "layer": "L3 Qdrant",
+        "collections": [
+          "arifOS_skill_mesh",
+          "arif_evidence",
+          "arifos_audio_memory",
+          "arifos_constitution",
+          "arifos_memory",
+          "arifos_precedent",
+          "arifos_session_memory",
+          "arifos_vault_canon",
+          "arifos_vault_working",
+          "atlas333_eureka",
+          "federation_shared",
+          "identity_vault",
+          "mem0",
+          "mem0migrations",
+          "openclaw_memory",
+          "petronas_knowledge"
+        ],
+        "stale_points": [],
+        "dedup_candidates": [],
+        "dry_run": false
+      },
+      "l4_supabase": {
+        "status": "ok",
+        "layer": "L4 Supabase",
+        "scanned": 997,
+        "stale_count": 882,
+        "stale_sample": [
+          {
+            "memory_id": "2de57520-b984-4f80-8495-ac909599a5fd",
+            "created_at": "2026-05-27T03:28:26.127477+00:00"
+          },
+          {
+            "memory_id": "412947d8-627b-4e5b-a723-d692c1328b71",
+            "created_at": "2026-05-27T03:33:05.190577+00:00"
+          },
+          {
+            "memory_id": "6e62290f-118b-4488-8e8c-5481430e7ac5",
+            "created_at": "2026-06-24T19:15:43.37075+00:00"
+          },
+          {
+            "memory_id": "88632eb0-ce7c-45b1-b5dc-7223afda43b0",
+            "created_at": "2026-06-24T19:15:52.414875+00:00"
+          },
+          {
+            "memory_id": "daf0164d-e9da-4bcb-b512-f99f3a3c1757",
+            "created_at": "2026-06-24T19:16:25.910069+00:00"
+          }
+        ],
+        "dry_run": false
+      }
+    },
+    "ended": "2026-09-09T11:45:47.203984+00:00"
+  }
+]
