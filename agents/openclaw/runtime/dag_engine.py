@@ -120,6 +120,7 @@ class DAGEngine:
         self._flows: dict[str, FlowDef] = {}
         self._task_executor: Callable | None = None
         os.makedirs(CHECKPOINT_DIR, exist_ok=True)
+        self._load_all_checkpoints()
 
     # ─── Public API ──────────────────────────────────────────────────
 
@@ -190,6 +191,7 @@ class DAGEngine:
         self._validate_dag(flow)
 
         self._flows[flow_id] = flow
+        self._save_checkpoint(flow)  # Persist to disk for cross-subprocess access
         return flow
 
     def execute(
@@ -493,6 +495,46 @@ class DAGEngine:
                 task.result = saved.get("result")
                 task.error = saved.get("error", "")
                 task.attempts = saved.get("attempts", 0)
+
+    def _load_all_checkpoints(self) -> None:
+        """Load all persisted flow definitions from checkpoint directory."""
+        if not os.path.exists(CHECKPOINT_DIR):
+            return
+        for fname in os.listdir(CHECKPOINT_DIR):
+            if not fname.endswith(".json"):
+                continue
+            path = os.path.join(CHECKPOINT_DIR, fname)
+            try:
+                with open(path) as f:
+                    data = json.load(f)
+                flow_id = data.get("flow_id", "")
+                if not flow_id:
+                    continue
+                # Reconstruct FlowDef from checkpoint
+                tasks = []
+                for t in data.get("tasks", []):
+                    task = TaskDef(
+                        id=t.get("id", ""),
+                        agent=t.get("agent", "unknown"),
+                        skill=t.get("skill", "agent-dispatch"),
+                        query=t.get("query", ""),
+                        depends_on=t.get("depends_on", []),
+                        state=t.get("state", TaskState.PENDING),
+                        result=t.get("result"),
+                        error=t.get("error", ""),
+                        attempts=t.get("attempts", 0),
+                    )
+                    tasks.append(task)
+                flow = FlowDef(
+                    id=flow_id,
+                    name=data.get("name", flow_id),
+                    tasks=tasks,
+                    state=data.get("state", FlowState.PENDING),
+                    checkpoint_path=path,
+                )
+                self._flows[flow_id] = flow
+            except Exception:
+                continue  # Skip corrupted checkpoints
 
     # ─── Validation ──────────────────────────────────────────────────
 
