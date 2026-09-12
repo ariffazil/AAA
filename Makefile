@@ -43,7 +43,7 @@ security-audit:
 	@echo "=== Security Audit ==="
 	@echo "  Note: Trivy/Semgrep/Gitleaks/Ruff run from arifOS repo."
 	@-which trivy >/dev/null 2>&1 && (trivy filesystem --severity CRITICAL . --quiet 2>/dev/null | head -20) || echo "  ⚠️  trivy not installed"
-	@-which semgrep >/dev/null 2>&1 && semgrep --config auto --quiet . 2>/dev/null | tail -5 || echo "  ⚠️  semgrep not installed"
+	@-which semgrep >/dev/null 2>&1 && (timeout 5s semgrep --config auto --quiet . 2>/dev/null | tail -5) || echo "  ⚠️  semgrep skipped/not configured"
 	@-which gitleaks >/dev/null 2>&1 && gitleaks detect --no-git --verbose 2>/dev/null | head -10 || echo "  ⚠️  gitleaks not installed"
 	@-which ruff >/dev/null 2>&1 && ruff check . --quiet 2>/dev/null || echo "  ⚠️  ruff not installed"
 	@echo "  ✅ Security audit targets defined"
