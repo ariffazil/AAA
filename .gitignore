@@ -56,7 +56,18 @@ node_modules/
 agents/_lanes/_archive/
 prompts/_archive/
 skills-retired-*/
-agents/*/runtime/
+agents/*/runtime/*
+# OpenClaw AGI orchestrator (tracked, reviewed contract)
+!agents/openclaw/runtime/__init__.py
+!agents/openclaw/runtime/semantic_router.py
+!agents/openclaw/runtime/dag_engine.py
+!agents/openclaw/runtime/state_manager.py
+!agents/openclaw/runtime/observability.py
+!agents/openclaw/runtime/channel_manager.py
+!agents/openclaw/runtime/orchestrator.py
+!agents/openclaw/runtime/orchestrator_cli.py
+!agents/openclaw/runtime/node_adapter.ts
+!agents/openclaw/runtime/test_orchestrator.py
 # Terminal live-state (content .md/.sh stays tracked)
 terminal/*.txt
 terminal/*.jsonl
