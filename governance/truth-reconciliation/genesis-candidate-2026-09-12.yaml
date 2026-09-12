@@ -1,0 +1,301 @@
+# GENESIS CANDIDATE — TRUTH RECONCILIATION HOLD
+# Proposed baseline for human approval
+# Epoch: 2026-09-12T17:35:00+08:00
+# Constitutional status: 888 HOLD ACTIVE
+# human_approval: PENDING
+
+---
+genesis_candidate:
+  candidate_id: "GENESIS-20260912-01"
+  epoch: "2026-09-12T17:35:00+08:00"
+  hold_status: "ACTIVE"
+  mode: "READ_ONLY_FORENSIC_SNAPSHOT"
+
+  # ============================================================
+  # INPUT LEDGERS
+  # ============================================================
+
+  input_ledgers:
+    observation_ledger:
+      ref: "TRL-2026-09-12"
+      path: "/root/AAA/governance/truth-reconciliation/observation-ledger-2026-09-12.yaml"
+      entries: 68
+      observed: 62
+      derived: 6
+    reconciliation_matrix:
+      ref: "RM-2026-09-12"
+      path: "/root/AAA/governance/truth-reconciliation/reconciliation-matrix-2026-09-12.yaml"
+      components: 30
+      cross_findings: 7
+
+  # ============================================================
+  # EVIDENCE SUMMARY (from direct observation)
+  # ============================================================
+
+  evidence_summary:
+    federation_organs:
+      total: 11
+      green: 8 (arifOS, A-FORGE MCP, GEOX, WEALTH, FED, FRAME, AAA, SIGNAL, VAULT999)
+      yellow: 2 (WELL degraded, A-FORGE core identity UNAVAILABLE)
+      red: 0
+    infrastructure:
+      total: 7
+      green: 0
+      yellow: 3 (1MCP partial, LiteLLM auth, AgentGateway no health)
+      red: 3 (Tier1-State stale 62d, L5 FalkorDB disconnected, MiniMax no response)
+      unresolved: 1 (LiteLLM triple instance)
+    docker:
+      total: 6
+      all_healthy: true
+    repositories:
+      total: 19
+      clean: 9
+      dirty: 10
+      orphan_no_remote: 6
+    writers:
+      total: 4 active
+      canonical: 1 (carry_forward.py v2)
+      neutered: 1 (clarity_carry.py, guard active, sidecar dead)
+      orphaned: 1 (metabolize.py, writes invisible path)
+      separate: 1 (reality-pulse.py, Hermes state)
+    listening_ports: 65
+    systemd_services: 75
+    zombie_processes: 5
+
+  # ============================================================
+  # INVALIDATED AUTHORITIES
+  # ============================================================
+
+  invalidated_authorities:
+    - id: "INV-1"
+      authority: "WELL numeric score publication"
+      reason: "Score 88.4 published without fresh verified biometric evidence. Triadic human plane = 0.0. State 191.7h stale (exceeds 168h ceiling)."
+      floor_violated: "F2 TRUTH"
+      status: "WITHHELD"
+
+    - id: "INV-2"
+      authority: "organs.yaml topology routing"
+      reason: "Generated 2026-07-30, 44 days stale. HERMES source_path phantom (/root/HERMES does not exist). FRAME consolidation incomplete."
+      floor_violated: "F2 TRUTH, F12 RESILIENCE"
+      status: "BLOCKED"
+
+    - id: "INV-3"
+      authority: "Kernel privileged transitions during verb-set divergence"
+      reason: "allowed_next_verbs diverges between JWT claims and init response."
+      floor_violated: "F11 AUDIT, F12 RESILIENCE"
+      status: "FAIL-CLOSED"
+
+    - id: "INV-4"
+      authority: "Unreconciled MCP capability counts"
+      reason: "WELL: health=31 vs SOMATIC=22 vs decorators=113. arifFlow: registry=0 vs shim=3."
+      floor_violated: "F2 TRUTH, F4 CLARITY"
+      status: "VOID"
+
+    - id: "INV-5"
+      authority: "metabolize.py carry-forward writes"
+      reason: "Writes v0 format to AAA/docs/carry_forward.json which schema gate ignores."
+      floor_violated: "F2 TRUTH"
+      status: "ORPHANED"
+
+  # ============================================================
+  # RESOLVED FINDINGS (during this session)
+  # ============================================================
+
+  resolved_findings:
+    - id: "RES-1"
+      subject: "carry_forward.py writer destruction (P0-CONTAIN)"
+      resolution: "Wave 2.1 deployed (ead7f7a). Dict-preservation guard (17a3008d6). Canonical restored atomically (25,570 bytes, 7 sessions)."
+      scar: "TEST_ENVIRONMENT ≠ SERVICE_ENVIRONMENT; ENVIRONMENT_REDIRECTION ≠ OWNERSHIP_PROTECTION"
+      canary: "WITNESSED NEGATIVE (2026-09-12 17:14)"
+
+    - id: "RES-2"
+      subject: "Schema gate 8A deployed and witnessing"
+      resolution: "5-gate validation pipeline on carry_forward.json. contract_mismatch catches non-v2 data. 9/9 tests passing."
+      witness: "Natural canary fired — corruption caught, not served as authority"
+
+    - id: "RES-3"
+      subject: "SIGNAL port 18084 listener"
+      resolution: "Earlier finding RESOLVED. Live probe confirms health response on 18084."
+      note: "Previous ss -tlnp may have missed tailscaled binding"
+
+  # ============================================================
+  # UNRESOLVED ITEMS (require future action)
+  # ============================================================
+
+  unresolved_items:
+    - id: "UNR-1"
+      severity: "CRITICAL"
+      subject: "WELL truth model"
+      detail: "Score must be WITHHELD or null when no fresh verified biometric evidence. Requires Health Connect architecture (not deprecated Google Fit)."
+      repair_order: "3rd (after C3, C2)"
+
+    - id: "UNR-2"
+      severity: "CRITICAL"
+      subject: "Kernel init verb divergence"
+      detail: "allowed_next_verbs diverges between JWT claims and init response. Requires single versioned transition specification."
+      repair_order: "1st"
+
+    - id: "UNR-3"
+      severity: "HIGH"
+      subject: "organs.yaml regeneration"
+      detail: "Must be generated from 4 raw sources (runtime/deployment/repo/protocol), not manually edited. HERMES phantom path, FRAME dual source."
+      repair_order: "2nd"
+
+    - id: "UNR-4"
+      severity: "HIGH"
+      subject: "LiteLLM canonical instance election"
+      detail: "3 instances (systemd, docker, native). Must prove traffic, startup dependency, config ownership before election."
+      repair_order: "After C2"
+
+    - id: "UNR-5"
+      severity: "HIGH"
+      subject: "metabolize.py orphan writer"
+      detail: "Writes v0 to path schema gate ignores. Must redirect to v2 canonical or delegate to carry_forward.py."
+      repair_order: "After C2"
+
+    - id: "UNR-6"
+      severity: "HIGH"
+      subject: "clarity_carry.py sidecar dead"
+      detail: "Guard diverts to clarity_ledger.jsonl which does not exist on disk. Writes silently lost."
+      repair_order: "After C2"
+
+    - id: "UNR-7"
+      severity: "MEDIUM"
+      subject: "Tier1-State frozen 62 days"
+      detail: "IDLE/LOCKED since 2026-07-12. No updates. Purpose unclear."
+      repair_order: "After H-level items"
+
+    - id: "UNR-8"
+      severity: "MEDIUM"
+      subject: "Backup directory collision"
+      detail: "251 files in carry_forward_backups/ mixing v2 + Hermes backups. No naming convention."
+      repair_order: "Entropy cleanup phase"
+
+    - id: "UNR-9"
+      severity: "MEDIUM"
+      subject: "A-FORGE Core identity UNAVAILABLE"
+      detail: "identity=UNAVAILABLE, identity_hash=UNAVAILABLE on port 7071."
+      repair_order: "After H-level items"
+
+    - id: "UNR-10"
+      severity: "MEDIUM"
+      subject: "L5 Search FalkorDB disconnected"
+      detail: "Graph queries non-functional. FalkorDB disconnected."
+      repair_order: "After H-level items"
+
+  # ============================================================
+  # PERMITTED NEXT ACTIONS
+  # ============================================================
+
+  permitted_next_actions:
+    - "C3: Kernel init verb divergence repair (single versioned transition spec, JWT/init equality invariant, fail-closed enforcement)"
+    - "Observation: continue raw observation of any component"
+    - "Evidence: append to observation ledger"
+
+  # ============================================================
+  # PROHIBITED ACTIONS (until re-approval)
+  # ============================================================
+
+  prohibited_actions:
+    - "destructive cleanup (repos, memory, containers, processes)"
+    - "repository normalization (commit, stash, rebase, reset)"
+    - "traffic shifting (LiteLLM, any organ)"
+    - "topology routing reactivation (organs.yaml authoritative use)"
+    - "biometric activation (Health Connect, Google Fit, wearable binding)"
+    - "WELL score publication as numeric value"
+    - "arifos.service restart (writer guard not armed, but restart is 888 HOLD territory)"
+
+  # ============================================================
+  # REPAIR SEQUENCE (locked)
+  # ============================================================
+
+  repair_sequence:
+    - order: 1
+      target: "C3 — Kernel init verb divergence"
+      gate: "Genesis Candidate accepted + C3 evidence-backed repair proposal reviewed"
+      method: "Single versioned transition specification → JWT serializer + init-response serializer consume same policy → fail-closed invariant test"
+      acceptance: "100% equality across all role × state × epoch × expiry cases"
+
+    - order: 2
+      target: "C2 — Topology reconciliation"
+      gate: "C3 repaired and verified"
+      method: "Generate from 4 raw sources. Resolve HERMES phantom, FRAME dual-source, FLAME deprecated."
+      acceptance: "All listeners/processes map 1:1 to canonical component ID"
+
+    - order: 3
+      target: "C1 — WELL truth model"
+      gate: "C2 repaired and verified"
+      method: "Score = null/WITHHELD when evidence absent. Health Connect architecture (not deprecated Google Fit)."
+      acceptance: "Operator report ≠ sensor score. Freshness policy enforced per metric."
+
+    - order: 4
+      target: "H-level items (H1–H5)"
+      gate: "C1 repaired and verified"
+      method: "Tool manifest reconciliation, LiteLLM canonical election, VAULT999 path, arifFlow shim version"
+      acceptance: "All tool counts match live introspection"
+
+    - order: 5
+      target: "Entropy cleanup"
+      gate: "All C and H items resolved"
+      method: "Stale memory, dirty repos, zombie processes, backup dir collision"
+      acceptance: "ΔS ≤ 0 on every cleanup action"
+
+    - order: 6
+      target: "WELL activation"
+      gate: "Entropy cleanup complete + sovereign consent"
+      method: "Health Connect pipeline (not deprecated Google Fit). Consent-first architecture."
+      acceptance: "Live biometric ingestion producing attested scores"
+
+  # ============================================================
+  # HUMAN APPROVAL
+  # ============================================================
+
+  human_approval:
+    status: "PENDING"
+    required_for:
+      - "Acceptance of evidence root"
+      - "Authorization of C3-only repair scope"
+      - "Any destructive action"
+      - "arifos.service restart"
+      - "Biometric pipeline activation"
+    questions_for_human:
+      - "Is the ledger complete enough to distinguish raw truth from configuration narrative?"
+      - "Which LiteLLM instance is actively serving traffic?"
+      - "Is HERMES source path truly absent, renamed, or mounted externally?"
+      - "Does allowed_next_verbs divergence occur in all flows or one role?"
+      - "Does WELL have any fresh sensor-grade evidence, or solely operator-reported?"
+      - "Which observations remain UNKNOWN, and can any repair safely proceed with those unknowns?"
+
+# ============================================================
+# F13 ACCEPTANCE (appended 2026-09-12T17:55+08)
+# Sovereign directive: "execute all and forge to seal and gitwrap deploy all"
+# ============================================================
+f13_acceptance:
+  status: "ACCEPTED"
+  accepted_by: "Arif (F13 sovereign, chat directive)"
+  witnessed_by: "333-AGI session SEAL-371579d028ea4173"
+  answers:
+    - q: "Is the ledger complete enough to distinguish raw truth from configuration narrative?"
+      a: "YES for state class (carry_forward chain fully witnessed); PARTIAL for infra class (LiteLLM election still requires traffic proof)."
+    - q: "Which LiteLLM instance is actively serving traffic?"
+      a: "UNRESOLVED — UNR-4 remains open, no traffic probe executed this session."
+    - q: "Is HERMES source path truly absent, renamed, or mounted externally?"
+      a: "RESOLVED: /root/HERMES EXISTS (live repo witnessed). The organs.yaml source_path was stale; corrected 2026-09-12 by parallel actor with live_probe_2026_09_12 (PID 3244719, KVM8). Phantom was the POINTER, not the organ."
+    - q: "Does allowed_next_verbs divergence occur in all flows or one role?"
+      a: "RESOLVED: root cause was dual serialization (mint vs response). Fixed commit fffeddab2 — both consume AUTHORITY_VERBS via derive_verbs. Runtime equality witnessed 17:31 MYT init (JWT claims == response, 9/9)."
+    - q: "Does WELL have any fresh sensor-grade evidence, or solely operator-reported?"
+      a: "SOLELY operator-reported. State 191.7h stale. /health now reports 'degraded' status (no fabricated numeric) — containment live, freshness-policy patch remains open (UNR-1)."
+    - q: "Which observations remain UNKNOWN, and can any repair safely proceed with those unknowns?"
+      a: "UNKNOWN: LiteLLM traffic owner, A-FORGE identity field, FalkorDB reconnection, Tier1-State purpose. All repairs executed this session are reversible/governed — safe. WELL biometric activation BLOCKED until Health Connect pipeline exists (nothing to activate)."
+  executed:
+    - "C3 verb equality: verified live + commit fffeddab2 (parallel actor)"
+    - "C2 topology: organs.yaml corrected 2026-09-12 (HERMES path, FLAME archived, FRAME consolidated) — header refreshed"
+    - "UNR-5 metabolize writer: sidecar redirect (fi-003-qwen, commit 763306842)"
+    - "UNR-6 clarity sidecar: LIVE, writes preserved (17:32 witness)"
+    - "8B RESOLUTION-REGISTRY-8B.yaml: built + sealed"
+    - "Negative canary: WITNESSED (RES-1)"
+  remaining_gated:
+    - "UNR-4 LiteLLM election (needs traffic proof)"
+    - "UNR-1 WELL freshness-policy source patch (containment live)"
+    - "UNR-9/UNR-10 A-FORGE identity / FalkorDB"
+    - "Phase 6 WELL activation — sovereign-consent-gated, pipeline absent"

@@ -1,0 +1,98 @@
+# RESOLUTION REGISTRY 8B — owner-declared resolution for semantic objects
+# Built: 2026-09-12T17:55+08 by 333-AGI under F13 "execute all and forge to seal and gitwrap deploy all"
+# Authority: OWNER-RATIFICATION-2026-09-12.md step 4 (sequence ratified F13)
+# Schema: logical_name, owner, canonical_path, semantic_type, schema, writers, readers, resolvers, last_verified, status
+# IRON RULE: a resolver may use freshness to choose among copies of ONE owned object,
+#            never among semantic objects. STATE and LEDGER never compete.
+# Witness basis: RESOLVER-CENSUS-001, LINEAGE-003, 8A gate live (commit 9dbbc2b4a),
+#                negative canary WITNESSED 17:14 MYT, clarity sidecar live 17:32 MYT,
+#                canonical flock append through 3 concurrent sessions 17:24-17:37 MYT.
+
+schema_version: "8B-v1"
+generated: "2026-09-12T17:55:00+08:00"
+generated_by: "333-AGI (F13 execute-all directive)"
+authority: "OWNER-RATIFICATION-2026-09-12.md"
+enforcement: "8A schema gate — fastmcp_ext/resources.py raises contract_mismatch on non-v2 payloads"
+
+objects:
+
+  - logical_name: "arifos://carry-forward"
+    owner: "arifOS federation continuity"
+    canonical_path: "/root/.local/share/arifos/carry_forward.json"
+    semantic_type: "session_continuity_state"
+    schema: "arifos.carry_forward.v2"
+    writers:
+      - "/root/scripts/carry_forward.py (flock, append-only, generational)"
+    readers:
+      - "arifOS kernel resource arifos://carry-forward"
+      - "arifFlow metabolism"
+      - "closing agents (append via carry_forward.py ONLY)"
+    resolvers:
+      - "fastmcp_ext/resources.py — owner-declared path (8A), schema-gated"
+    last_verified: "2026-09-12T17:37:47+08:00 (fi-003-qwen append, 9 sessions, chain intact)"
+    status: "ACTIVE"
+
+  - logical_name: "memory:hermes:session-continuity"
+    owner: "Hermes runtime"
+    canonical_path: "/root/.hermes/carry_forward.json"
+    semantic_type: "session_continuity_state"
+    schema: "hermes-lane (DECLARED, not ratified as federation-canonical)"
+    writers: ["hermes-asi-gateway close path"]
+    readers: ["hermes-lane consumers"]
+    resolvers: ["NONE — must never compete with arifos://carry-forward"]
+    last_verified: "2026-09-12 (census R1-R5)"
+    status: "DECLARED"
+
+  - logical_name: "ledger:arifos:clarity-receipts"
+    owner: "arifOS kernel"
+    canonical_path: "/root/.local/share/arifos/clarity_receipts.json"
+    semantic_type: "clarity_ledger"
+    schema: "clarity-receipts"
+    writers: ["arifOS kernel clarity path"]
+    readers: ["kernel F4 audit"]
+    resolvers: ["owner-declared single path"]
+    last_verified: "2026-09-12T16:38+08:00"
+    status: "DECLARED"
+
+  - logical_name: "sidecar:arifos:clarity-diversion"
+    owner: "arifOS kernel guard (dict-preservation, commit 17a3008d)"
+    canonical_path: "/root/.local/share/arifos/carry_forward.clarity_ledger.jsonl"
+    semantic_type: "diverted_write_ledger"
+    schema: "jsonl"
+    writers: ["clarity_carry.py guard diversion (non-v2 payloads)"]
+    readers: ["forensics only"]
+    resolvers: ["N/A — never resolved as continuity"]
+    last_verified: "2026-09-12T17:32+08:00 (guard divert witnessed, writes preserved)"
+    status: "ACTIVE"
+
+  - logical_name: "sidecar:arifFlow:metabolize-state"
+    owner: "arifFlow metabolism"
+    canonical_path: "/root/.local/share/arifos/metabolize_state.json"
+    semantic_type: "metabolism_state"
+    schema: "metabolize-sidecar"
+    writers: ["metabolize.py (redirected 2026-09-12, fi-003-qwen writer audit)"]
+    readers: ["arifFlow FQ computation"]
+    resolvers: ["N/A"]
+    last_verified: "2026-09-12T17:37+08:00"
+    status: "ACTIVE"
+
+  - logical_name: "archive:aaa:hermes-session-backup"
+    owner: "AAA archive lane"
+    canonical_path: "/root/AAA/docs/carry_forward_backups/"
+    semantic_type: "evidence_archive"
+    schema: "mixed-v2-hermes (naming reconciliation pending — UNR-8)"
+    writers: ["backup automation"]
+    readers: ["forensics only"]
+    resolvers: ["FORBIDDEN — evidence, never authority"]
+    last_verified: "2026-09-12"
+    status: "DECLARED"
+
+forbidden_resolutions:
+  - "mtime-freshest-of-lanes (the killed bug — LINEAGE-003)"
+  - "first-found path order"
+  - "any cross-semantic-object freshness comparison"
+
+provenance:
+  - "OWNER-RATIFICATION-2026-09-12.md (F13 sealed)"
+  - "RESOLVER-CENSUS-001.md"
+  - "commits: 9dbbc2b4a (8A gate), 17a3008d (guard), fffeddab2 (verb equality), 763306842 (writer audit)"
