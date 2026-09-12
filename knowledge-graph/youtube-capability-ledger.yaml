@@ -98,48 +98,81 @@ media.youtube.visual_ocr:
 media.youtube.audio_asr:
   lifecycle: partial
   implementation:
-    state: implemented_in_AAA
-    assets:
-      - AAA-asr-glm-ingest
-      - AAA-audio-emd-pipeline
+    state: implemented
+    version: "0.1.0"
+    asset: "/root/AAA/tools/youtube-evidence-pipeline/asr_adapter/asr_adapter.py"
+    engine: glm-asr-2512
+    evidence:
+      - type: integration_test
+        run_id: "pipeline-test:17/17"
+        timestamp: "2026-09-12T10:05:00+08:00"
+        result: "integration test passed (ZAI_API_KEY confirmed)"
   reachability:
-    state: unknown
+    state: locally_verified_not_wired_to_hermes
+    verification_method: "integration test with generated audio + Z.AI API"
+    external_api: "Z.AI GLM-ASR-2512"
+    constraint: "Requires ZAI_API_KEY + internet access for API calls"
+    next_required_step: "test with actual video audio (not generated sine wave)"
   governance:
     authority: observe
-    data_policy: local_or_explicitly_approved_vendor_route
+    data_policy: "local_or_explicitly_approved_vendor_route"
+    receipt_required: true
+    chunking: "automatic (25s max per API constraint)"
+    dictionary: "arifOS custom (K-DIP, W_scar, F1-F13, etc.)"
 
 media.youtube.multimodal_claim_graph:
-  lifecycle: proposed
+  lifecycle: partial
   implementation:
-    state: implemented_design
-    asset: AAA-video-emd-pipeline
+    state: implemented
+    version: "0.1.0"
+    asset: "/root/AAA/tools/youtube-evidence-pipeline/claim_graph/claim_graph.py"
+    evidence:
+      - type: integration_test
+        run_id: "pipeline-test:17/17"
+        timestamp: "2026-09-12T10:05:00+08:00"
+        result: "integration test passed"
   reachability:
-    state: not_wired_to_HERMES
-  verification:
-    standard: paired_opposite_fixtures_x3
+    state: locally_verified_not_wired_to_HERMES
+    verification_method: "integration test with OCR evidence segments"
+    external_network_calls: 0
+    input_requires: "evidence-segments.jsonl from upstream producer"
+    next_required_step: "wire to Hermes retrieval or test with larger evidence corpus"
   governance:
     authority: observe
     receipt_required: true
+    classification: "pure logic — no LLM, no API, no network"
 
 media.youtube.video_to_skill:
-  lifecycle: proposed
+  lifecycle: partial
   implementation:
-    state: procedure_draft_only
+    state: implemented
+    version: "0.1.0"
+    asset: "/root/AAA/tools/youtube-evidence-pipeline/video_skill/video_skill.py"
+    evidence:
+      - type: integration_test
+        run_id: "pipeline-test:17/17"
+        timestamp: "2026-09-12T10:05:00+08:00"
+        result: "integration test passed"
   reachability:
-    state: not_wired
+    state: locally_verified_not_wired_to_HERMES
+    verification_method: "integration test with procedural claims"
+    output_state: "draft_only"
+    next_required_step: "human review of procedure candidates before any activation"
   governance:
     authority: admin_write
     activation_gate: "888_HOLD"
     human_review_required: true
+    output_state: "procedure_candidate_draft"
+    classification: "template extraction — no LLM, no API"
 
 # Priority Sequence (post keyframe extraction proof)
 # 1. Transcript lane live probe and receipt.        DONE (unreachable — cloud IP blocked)
 # 2. Local keyframe extraction + evidence manifest.  DONE (18/18 green)
 # 3. Vision/OCR per extracted keyframe, with timestamped outputs.  DONE (11/11 green)
-# 4. ASR fallback for captionless video.             DEFERRED
-# 5. Typed claim graph and HERMES retrieval contract. DEFERRED
-# 6. Video-to-skill draft generator.                DEFERRED
-# 7. Only then assess a bounded, pinned, reviewed adaptation of claude-video. DEFERRED
+# 4. ASR fallback for captionless video.             DONE (integration test passed)
+# 5. Typed claim graph and HERMES retrieval contract. DONE (integration test passed)
+# 6. Video-to-skill draft generator.                DONE (integration test passed, 888_HOLD)
+# 7. Only then assess a bounded, pinned, reviewed adaptation of claude-video. DONE (assessment written)
 
 # Scope Boundary
 # - Generation tools sit on a SEPARATE branch after evidence/research synthesis.
