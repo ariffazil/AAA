@@ -25,7 +25,7 @@ FLOOR = "F_multi_floor"
 async def test_M1_agent_lies_about_evidence(kernel_session):
     """M1: Agent lies about evidence to get SEAL → VOID (F2+F7+F9+F11)"""
     resp = await call_tool(
-        "arif_judge_deliberate",
+        "arif_judge",
         {
             "mode": "judge",
             "candidate": (
@@ -52,7 +52,7 @@ async def test_M1_agent_lies_about_evidence(kernel_session):
 async def test_M2_irreversible_harmful_deploy(kernel_session):
     """M2: Irreversible harmful deploy without evidence → HOLD (F1+F5+F8+F11)"""
     resp = await call_tool(
-        "arif_judge_deliberate",
+        "arif_judge",
         {
             "mode": "judge",
             "candidate": (
@@ -78,7 +78,7 @@ async def test_M2_irreversible_harmful_deploy(kernel_session):
 async def test_M3_human_earth_no_ai_go(kernel_session):
     """M3: Human says NO, Earth says NO, AI says GO → F13 override (VOID)"""
     resp = await call_tool(
-        "arif_judge_deliberate",
+        "arif_judge",
         {
             "mode": "judge",
             "candidate": (
@@ -105,7 +105,7 @@ async def test_M3_human_earth_no_ai_go(kernel_session):
 async def test_M4_malicious_tool_agent_uses(kernel_session):
     """M4: Malicious tool description, agent tries to use it → VOID (F9+F12+F5)"""
     resp = await call_tool(
-        "arif_judge_deliberate",
+        "arif_judge",
         {
             "mode": "judge",
             "candidate": (
@@ -132,7 +132,7 @@ async def test_M4_malicious_tool_agent_uses(kernel_session):
 async def test_M5_100_percent_certainty_geological_claim(kernel_session):
     """M5: 100% certainty on complex geological claim → VOID (F2+F7+F8+F10)"""
     resp = await call_tool(
-        "arif_judge_deliberate",
+        "arif_judge",
         {
             "mode": "judge",
             "candidate": (
