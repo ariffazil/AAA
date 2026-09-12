@@ -1,0 +1,304 @@
+{
+  "$schema": "arifos.capability-ledger.v1",
+  "created": "2026-09-12T09:30:00+08:00",
+  "created_by": "hermes",
+  "sealed_by": "F13 pending",
+  "description": "Declarative ledger of federation capabilities. Each entry tracks implementation, reachability, and governance state independently. Implemented ≠ Reachable ≠ Governed.",
+  "state_definitions": {
+    "lifecycle": {
+      "active": "Capability is operational and in use",
+      "partial": "Implementation exists but reachability unproven or gated",
+      "deferred": "Capability identified but intentionally not wired",
+      "retired": "Capability superseded or decommissioned",
+      "dead": "Capability attempted and failed permanent extinction"
+    },
+    "reachability": {
+      "reachable": "Last probe succeeded with evidence",
+      "pending_production_probe": "Implementation committed, awaiting scheduled proof",
+      "unknown_by_governed_probe": "Probe blocked by auth/session gate — not evidence of absence",
+      "not_wired": "Implementation exists elsewhere but not connected to runtime",
+      "intentionally_unreachable": "Blocked by sovereign decision (policy, budget, credentials)",
+      "degraded": "Reachable but operating in fail-soft or partial mode"
+    },
+    "governance": {
+      "observe": "Read-only authority",
+      "external_write": "Write authority requiring human approval",
+      "888_HOLD": "Irreversible action requiring F13 sovereign ratification",
+      "receipt_required": "Every invocation must produce a receipt"
+    }
+  },
+  "capabilities": [
+    {
+      "id": "weather.current.kl",
+      "lifecycle": "active",
+      "implementation": {
+        "state": "implemented",
+        "path": "/root/.hermes/scripts/morning-readiness.py",
+        "method": "HTTP GET to Open-Meteo (free, no auth)",
+        "coordinates": {
+          "lat": 3.139,
+          "lon": 101.6869,
+          "timezone": "Asia/Kuala_Lumpur"
+        },
+        "evidence": [
+          {
+            "type": "git_commit",
+            "ref": "54f7c3b",
+            "note": "morning-readiness.py integration"
+          },
+          {
+            "type": "manual_test",
+            "date": "2026-09-12",
+            "result": "26°C, 91% humidity, overcast"
+          },
+          {
+            "type": "code_inventory",
+            "note": "A-FORGE/mcp-servers/weather/weather.py is a standalone working script (separate from morning-readiness integration)"
+          }
+        ]
+      },
+      "reachability": {
+        "state": "pending_production_probe",
+        "next_evidence": "2026-09-13 07:30 scheduled morning-readiness pulse",
+        "acceptance_tests": {
+          "test_1_production_pulse": {
+            "description": "Scheduled 07:30 run executes, Telegram message arrives with weather content",
+            "status": "pending",
+            "gate": "weather content present AND morning readiness still functions AND no token/traceback leakage"
+          },
+          "test_2_degraded_mode": {
+            "description": "Open-Meteo timeout → weather line degrades to compact unavailable state, rest of pulse unaffected",
+            "status": "pending",
+            "invariant": "weather_failure ≠ morning_pulse_failure"
+          }
+        }
+      },
+      "governance": {
+        "authority": "observe",
+        "failure_policy": "fail_soft",
+        "receipt_required": true,
+        "activation_gate": "tests 1+2 passed"
+      }
+    },
+    {
+      "id": "communication.google_workspace.read",
+      "lifecycle": "partial",
+      "implementation": {
+        "state": "implemented_or_claimed",
+        "evidence": [
+          {
+            "type": "historical_repo_artifact",
+            "note": "GWS bridge code/manifests exist in federation repos"
+          },
+          {
+            "type": "apa_bridge",
+            "note": "apa-* services reported running"
+          }
+        ]
+      },
+      "reachability": {
+        "state": "unknown_by_governed_probe",
+        "blocker": {
+          "code": "ERR_ACT_SIGNATURE_INVALID",
+          "class": "auth_session_or_capability_gate",
+          "last_attempt_outcome": "ACT_AMBIGUOUS"
+        },
+        "next_required_step": "fresh arif_init rebind",
+        "important": "This is governance working correctly. Probe refused unauthenticated/expired session. Not evidence of capability absence."
+      },
+      "governance": {
+        "authority": "observe",
+        "activation_gate": "valid_SCT_required",
+        "receipt_required": true,
+        "write_boundary": "SCT proves binding context only — does NOT authorize writes, sends, creates, or scope expansion"
+      }
+    },
+    {
+      "id": "geospatial.map.query",
+      "lifecycle": "partial",
+      "implementation": {
+        "state": "implemented",
+        "candidate_routes": [
+          "mcp-geo",
+          "GEOX geox_map",
+          "GEOX geox_spatial"
+        ]
+      },
+      "reachability": {
+        "state": "not_wired",
+        "reason": "Multiple routes exist but no concrete workflow has validated end-to-end reachability"
+      },
+      "governance": {
+        "authority": "observe",
+        "activation_gate": "concrete_workflow_required"
+      }
+    },
+    {
+      "id": "communication.email.send",
+      "lifecycle": "deferred",
+      "implementation": {
+        "state": "candidate_route",
+        "candidate_route": "Nylas_self_hosted",
+        "note": "Self-hosted agent account mode (source-available, not MIT). Free tier limited to 100 connections."
+      },
+      "reachability": {
+        "state": "intentionally_unreachable",
+        "reason": "IMAP credentials not provisioned, policy not approved"
+      },
+      "governance": {
+        "authority": "external_write",
+        "activation_gate": "888_HOLD",
+        "receipt_required": true,
+        "autonomous_execution": false
+      }
+    },
+    {
+      "id": "intelligence.social.listening",
+      "lifecycle": "deferred",
+      "implementation": {
+        "state": "vendor_candidate",
+        "candidate_route": "xpoz 0.8.0",
+        "url": "https://www.xpoz.ai/social-listening-api/"
+      },
+      "reachability": {
+        "state": "intentionally_unreachable",
+        "reason": "Vendor key required and not procured"
+      },
+      "governance": {
+        "authority": "observe",
+        "activation_gate": "888_HOLD",
+        "receipt_required": true
+      }
+    },
+    {
+      "id": "search.web.multi_engine",
+      "lifecycle": "active",
+      "implementation": {
+        "state": "implemented",
+        "engines": [
+          "SearXNG :8080",
+          "firecrawl",
+          "brave-search",
+          "minimax"
+        ],
+        "retired": [
+          "serpapi (retired 2026-08-26, redundant)"
+        ]
+      },
+      "reachability": {
+        "state": "reachable",
+        "note": "Multiple free routes, no single point of failure"
+      },
+      "governance": {
+        "authority": "observe",
+        "receipt_required": false
+      }
+    },
+    {
+      "id": "media.youtube.transcript",
+      "lifecycle": "active",
+      "implementation": {
+        "state": "implemented",
+        "tools": [
+          "fetch_youtube_transcript",
+          "youtube-content skill",
+          "youtube-transcript-api"
+        ]
+      },
+      "reachability": {
+        "state": "reachable",
+        "note": "Verified working in prior sessions"
+      },
+      "governance": {
+        "authority": "observe",
+        "receipt_required": false
+      }
+    },
+    {
+      "id": "messaging.telegram.bot",
+      "lifecycle": "active",
+      "implementation": {
+        "state": "implemented",
+        "note": "Hermes Telegram gateway operational on KVM8"
+      },
+      "reachability": {
+        "state": "reachable",
+        "note": "This conversation is proof"
+      },
+      "governance": {
+        "authority": "observe",
+        "receipt_required": false
+      }
+    },
+    {
+      "id": "social.xtwitter",
+      "lifecycle": "dead",
+      "implementation": {
+        "state": "retired",
+        "tools": [
+          "xurl CLI"
+        ]
+      },
+      "reachability": {
+        "state": "unreachable",
+        "reason": "xurl binary removed 2026-09-12; broken symlink cleaned; skill archived to skills-archive/social-media/xurl-stale-20260912",
+        "blocker_class": "binary_removed"
+      },
+      "governance": {
+        "authority": "observe",
+        "receipt_required": false
+      }
+    }
+  ],
+  "action_membrane": {
+    "status": "partial_evidence",
+    "note": "ACT refusal demonstrates gate exists but membrane not yet formalized as unified contract",
+    "evidence": "ERR_ACT_SIGNATURE_INVALID proves preflight auth check operates before target invocation",
+    "next_step": "Formalize after fresh arif_init rebind proves full circuit"
+  },
+  "execution_sequence": [
+    {
+      "step": 1,
+      "action": "Commit capability ledger v0",
+      "status": "DONE",
+      "date": "2026-09-12"
+    },
+    {
+      "step": 2,
+      "action": "Run weather acceptance tests (production pulse + degraded mode)",
+      "status": "PENDING",
+      "gate": "weather.current.kl promotion to reachable"
+    },
+    {
+      "step": 3,
+      "action": "Fresh arif_init rebind when human ready",
+      "status": "PENDING",
+      "boundary": "Read probe only — no writes, no sends, no scope expansion"
+    },
+    {
+      "step": 4,
+      "action": "Read-only GWS probe after rebind, record result",
+      "status": "PENDING"
+    },
+    {
+      "step": 5,
+      "action": "Formalize action membrane as unified preflight contract",
+      "status": "PENDING"
+    },
+    {
+      "step": 6,
+      "action": "Edge Bridge: memory as next integration point",
+      "status": "DEFERRED"
+    },
+    {
+      "step": 7,
+      "action": "Edge Bridge: proactivity (after memory)",
+      "status": "DEFERRED"
+    },
+    {
+      "step": 8,
+      "action": "Edge Bridge: voice (after proactivity, must not bypass authority)",
+      "status": "DEFERRED"
+    }
+  ]
+}
