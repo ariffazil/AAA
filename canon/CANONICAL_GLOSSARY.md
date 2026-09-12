@@ -137,7 +137,7 @@ Always: `KVM8 (forge)` — forge is the machine; A-FORGE is the organ. Never con
 
 | Name | One line |
 |---|---|
-| APEX Theory | G=A·P·E·X·Φ. Intelligence = work on contradiction under law. |
+| APEX Theory | G=(A·P·E·X)^(1/4), Φ is a separate verdict gate. Intelligence = work on contradiction under law. |
 | Reality Engineering | Shared world before action. Live probe or UNKNOWN. |
 | Theory of Anomalous Contrast (TAC) | Intelligence at Expected ≠ Observed. Operational form of Hang Ingat Balik L4/L5. |
 | Hang Ingat Balik | Reality whispers before it shouts. |
