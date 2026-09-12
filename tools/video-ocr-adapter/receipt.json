@@ -1,0 +1,23 @@
+{
+  "run_id": "ocr-adapter:65e3b1bd0a26",
+  "capability_id": "media.youtube.visual_ocr",
+  "tool_version": "0.1.0",
+  "status": "failed",
+  "retrieved_at": "2026-09-12T01:58:39.929755+00:00",
+  "input": {
+    "frame_id": "frame:9999",
+    "timestamp_seconds": 0.0
+  },
+  "evidence": null,
+  "network": {
+    "allowed": true,
+    "media_downloaded": false,
+    "cookies_used": false,
+    "external_write": false
+  },
+  "error": {
+    "stage": "input_validation",
+    "class": "file_not_found",
+    "message": "Frame file does not exist: /nonexistent/frame.jpg"
+  }
+}
