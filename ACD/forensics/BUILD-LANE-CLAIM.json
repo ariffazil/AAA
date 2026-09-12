@@ -1,0 +1,8 @@
+{
+  "lane_claim": "333-AGI completion lane for ACD",
+  "issued_at": "2026-09-12T06:21:39Z",
+  "co_lane": "FI-003 probe/build (14:14-14:19 UTC+8) \u2014 credited",
+  "snapshot": "component hashes in acd-component-inventory.json",
+  "policy": "build on committed branch state feat/acd-federated-unification; re-verify before overwriting; deletions/repoints require F13",
+  "production": "888_HOLD"
+}

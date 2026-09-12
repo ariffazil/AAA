@@ -1,0 +1,140 @@
+{
+  "receipt_id": "e81e45fa-dffc-4165-915d-24e438fd3472",
+  "cycle_id": "9abae51f-2ce1-40df-99ca-1fbe170778f1",
+  "request_id": "10b57e17-8614-4f9b-8cf4-7a09f4b14c21",
+  "core_version": "acd.dream.v1",
+  "adapter_id": "acd_cli",
+  "requesting_agent": "acd_cli",
+  "started_at": "2026-09-12T06:19:25.633500+00:00",
+  "completed_at": "2026-09-12T06:19:25.633542+00:00",
+  "runtime_status": "COMPLETED",
+  "shadow": true,
+  "input_evidence": [],
+  "assumptions": [
+    "failure is possible",
+    "current detection is adequate",
+    "optimization target is correctly identified",
+    "no external disruption",
+    "current capabilities sufficient",
+    "no hidden constraints"
+  ],
+  "model_witness": {
+    "model": "acd_core_v1_deterministic",
+    "domain": "counterfactual_search",
+    "validity_envelope": "bounded_shadow",
+    "blind_spots": [
+      "no_world_model",
+      "no_llm",
+      "deterministic_only"
+    ]
+  },
+  "possibility_branches": 3,
+  "branches": [
+    {
+      "branch_id": "9dcd3966-8d4c-414c-9409-352f4910cc2b",
+      "parent_id": "9abae51f-2ce1-40df-99ca-1fbe170778f1",
+      "divergence_point": "baseline",
+      "actions": [
+        "continue current trajectory"
+      ],
+      "simulated_states": [
+        "Current state persists over short horizon"
+      ],
+      "assumptions": [
+        "no external disruption",
+        "current capabilities sufficient"
+      ],
+      "ontology": "SIMULATED",
+      "evaluation_scores": {
+        "feasibility": 0.5,
+        "risk": 0.1,
+        "evidence_support": 0.0,
+        "constraint_satisfaction": 0.5
+      }
+    },
+    {
+      "branch_id": "ebbc8eb9-1825-4c3d-a052-3c01fd7ac977",
+      "parent_id": "9abae51f-2ce1-40df-99ca-1fbe170778f1",
+      "divergence_point": "optimization",
+      "actions": [
+        "optimize for: general exploration"
+      ],
+      "simulated_states": [
+        "Improved state under bounded_shadow scope"
+      ],
+      "assumptions": [
+        "optimization target is correctly identified",
+        "no hidden constraints"
+      ],
+      "ontology": "SIMULATED",
+      "evaluation_scores": {
+        "feasibility": 0.5,
+        "risk": 0.1,
+        "evidence_support": 0.0,
+        "constraint_satisfaction": 0.5
+      }
+    },
+    {
+      "branch_id": "2054e3d3-5cb1-42ff-b7f2-ed96c52a026d",
+      "parent_id": "9abae51f-2ce1-40df-99ca-1fbe170778f1",
+      "divergence_point": "failure",
+      "actions": [
+        "identify failure modes"
+      ],
+      "simulated_states": [
+        "Degraded state under bounded_shadow failure"
+      ],
+      "assumptions": [
+        "failure is possible",
+        "current detection is adequate"
+      ],
+      "contradictions": [
+        "failure assumption contradicts branch 1 baseline"
+      ],
+      "ontology": "SIMULATED",
+      "evaluation_scores": {
+        "feasibility": 0.5,
+        "risk": 0.3,
+        "evidence_support": 0.0,
+        "constraint_satisfaction": 0.5
+      }
+    }
+  ],
+  "memory_zone": "AAA.POSSIBILITY",
+  "memory_class": "ACD_DREAM_RECEIPT",
+  "recall_visibility": "SCENARIO_ONLY",
+  "contradictions": [
+    "failure assumption contradicts branch 1 baseline"
+  ],
+  "dissent": [
+    "minority_branch=ebbc8eb9-1825-4c3d-a052-3c01fd7ac977 divergence=optimization preserved_for_review"
+  ],
+  "uncertainty": {
+    "aleatoric": "low \u2014 deterministic search",
+    "epistemic": "high \u2014 no world model, no LLM, no calibration",
+    "unknown": "significant \u2014 open-world unknowns not modeled",
+    "method": "deterministic_scoring",
+    "out_of_distribution_flags": [
+      "no_distribution_model"
+    ]
+  },
+  "compression_witness": {
+    "inputs_retained": 3,
+    "abstractions_created": 1,
+    "discarded_detail": 0,
+    "estimated_loss": "unknown"
+  },
+  "promotion_status": "NONE",
+  "external_actions_attempted": 0,
+  "external_actions_executed": 0,
+  "errors": [],
+  "provenance": {
+    "branch": "feat/acd-federated-unification",
+    "commit": "cb86b7298",
+    "contract_version": "acd.dream.v1"
+  },
+  "constitutional_verdict": "PASS",
+  "ontology": "SIMULATED",
+  "content_hash": "5278b7e2c53d8016",
+  "contract_version": "acd.dream.v1"
+}

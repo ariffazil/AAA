@@ -1,0 +1,140 @@
+{
+  "receipt_id": "e3c0391c-8bcf-41ba-a311-213f7676cd70",
+  "cycle_id": "precommit-001",
+  "request_id": "pc-001",
+  "core_version": "acd.dream.v1",
+  "adapter_id": "precommit",
+  "requesting_agent": "precommit",
+  "started_at": "2026-09-12T06:20:51.203578+00:00",
+  "completed_at": "2026-09-12T06:20:51.203615+00:00",
+  "runtime_status": "COMPLETED",
+  "shadow": true,
+  "input_evidence": [],
+  "assumptions": [
+    "current capabilities sufficient",
+    "no external disruption",
+    "failure is possible",
+    "no hidden constraints",
+    "optimization target is correctly identified",
+    "current detection is adequate"
+  ],
+  "model_witness": {
+    "model": "acd_core_v1_deterministic",
+    "domain": "counterfactual_search",
+    "validity_envelope": "bounded_shadow",
+    "blind_spots": [
+      "no_world_model",
+      "no_llm",
+      "deterministic_only"
+    ]
+  },
+  "possibility_branches": 3,
+  "branches": [
+    {
+      "branch_id": "2ca8ce6d-d3f4-43fd-9fd8-d250f24dc7d7",
+      "parent_id": "precommit-001",
+      "divergence_point": "baseline",
+      "actions": [
+        "continue current trajectory"
+      ],
+      "simulated_states": [
+        "Current state persists over short horizon"
+      ],
+      "assumptions": [
+        "no external disruption",
+        "current capabilities sufficient"
+      ],
+      "ontology": "SIMULATED",
+      "evaluation_scores": {
+        "feasibility": 0.5,
+        "risk": 0.1,
+        "evidence_support": 0.0,
+        "constraint_satisfaction": 1.0
+      }
+    },
+    {
+      "branch_id": "b38119f6-1d91-4181-ac31-fa734c10e402",
+      "parent_id": "precommit-001",
+      "divergence_point": "optimization",
+      "actions": [
+        "optimize for: general exploration"
+      ],
+      "simulated_states": [
+        "Improved state under unspecified scope"
+      ],
+      "assumptions": [
+        "optimization target is correctly identified",
+        "no hidden constraints"
+      ],
+      "ontology": "SIMULATED",
+      "evaluation_scores": {
+        "feasibility": 0.5,
+        "risk": 0.1,
+        "evidence_support": 0.0,
+        "constraint_satisfaction": 1.0
+      }
+    },
+    {
+      "branch_id": "7c813029-2110-4f63-a045-32be7fac3dee",
+      "parent_id": "precommit-001",
+      "divergence_point": "failure",
+      "actions": [
+        "identify failure modes"
+      ],
+      "simulated_states": [
+        "Degraded state under unspecified failure"
+      ],
+      "assumptions": [
+        "failure is possible",
+        "current detection is adequate"
+      ],
+      "contradictions": [
+        "failure assumption contradicts branch 1 baseline"
+      ],
+      "ontology": "SIMULATED",
+      "evaluation_scores": {
+        "feasibility": 0.5,
+        "risk": 0.3,
+        "evidence_support": 0.0,
+        "constraint_satisfaction": 1.0
+      }
+    }
+  ],
+  "memory_zone": "AAA.POSSIBILITY",
+  "memory_class": "ACD_DREAM_RECEIPT",
+  "recall_visibility": "SCENARIO_ONLY",
+  "contradictions": [
+    "failure assumption contradicts branch 1 baseline"
+  ],
+  "dissent": [
+    "minority_branch=b38119f6-1d91-4181-ac31-fa734c10e402 divergence=optimization preserved_for_review"
+  ],
+  "uncertainty": {
+    "aleatoric": "low \u2014 deterministic search",
+    "epistemic": "high \u2014 no world model, no LLM, no calibration",
+    "unknown": "significant \u2014 open-world unknowns not modeled",
+    "method": "deterministic_scoring",
+    "out_of_distribution_flags": [
+      "no_distribution_model"
+    ]
+  },
+  "compression_witness": {
+    "inputs_retained": 3,
+    "abstractions_created": 1,
+    "discarded_detail": 0,
+    "estimated_loss": "unknown"
+  },
+  "promotion_status": "NONE",
+  "external_actions_attempted": 0,
+  "external_actions_executed": 0,
+  "errors": [],
+  "provenance": {
+    "branch": "feat/acd-federated-unification",
+    "commit": "cb86b7298",
+    "contract_version": "acd.dream.v1"
+  },
+  "constitutional_verdict": "PASS",
+  "ontology": "SIMULATED",
+  "content_hash": "60e5be7cc0f977bf",
+  "contract_version": "acd.dream.v1"
+}

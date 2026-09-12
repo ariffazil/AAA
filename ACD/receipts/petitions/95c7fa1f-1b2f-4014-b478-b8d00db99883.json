@@ -1,0 +1,16 @@
+{
+  "petition_id": "95c7fa1f-1b2f-4014-b478-b8d00db99883",
+  "cycle_id": "test-001",
+  "branch_id": "unknown",
+  "current_status": "CHALLENGED",
+  "requested_status": "DECISION_CANDIDATE",
+  "burden_of_proof": "Independent review of branch counterfactuals and retained contradictions required before consideration.",
+  "supporting_witnesses": [
+    "receipt:a18cbe22-14d3-4f35-92bf-3cc70b479372"
+  ],
+  "residual_risk": "UNKNOWN \u2014 bounded deterministic shadow only; no world model",
+  "adjudicator": "HUMAN_SOVEREIGN",
+  "created_at": "2026-09-12T06:19:25.736411+00:00",
+  "held": true,
+  "route": "arif_judge -> AIO -> F13 (not applied by ACD)"
+}

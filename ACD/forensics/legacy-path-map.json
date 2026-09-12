@@ -1,0 +1,89 @@
+{
+  "generated_at": "2026-09-12T06:21:39Z",
+  "mappings": [
+    {
+      "legacy": "/root/HERMES/skills/dream-engine/",
+      "status": "DEAD (path never existed under symlinked .hermes)",
+      "canonical": "/root/AAA/dream_engine/",
+      "action": "repointed (2026-09-12 normalize)",
+      "authority": "judge sequence"
+    },
+    {
+      "legacy": "/root/.openclaw/workspace/dream_engine/",
+      "status": "ARCHIVED 2026-08-14",
+      "canonical": "/root/AAA/dream_engine/",
+      "action": "documented",
+      "authority": "systemd drop-in"
+    },
+    {
+      "legacy": "skills/agentic-dream-engine/",
+      "status": "never existed",
+      "canonical": "skills/AGI-dream-engine/",
+      "action": "repointed (32 refs)",
+      "authority": "judge sequence"
+    },
+    {
+      "legacy": "/root/AAA/dreams/consolidate.py",
+      "status": "symlink (shim reverted)",
+      "canonical": "/root/AAA/engines/dream_engine.py",
+      "action": "restored via git",
+      "authority": "F13 directive / reconcile"
+    },
+    {
+      "legacy": "dream-engine",
+      "status": "ALIAS",
+      "canonical": "ACD",
+      "action": "alias registry",
+      "authority": "F13 naming boundary"
+    },
+    {
+      "legacy": "AGI-dream-engine",
+      "status": "ALIAS",
+      "canonical": "ACD",
+      "action": "alias registry",
+      "authority": "F13 naming boundary"
+    },
+    {
+      "legacy": "auto-dream",
+      "status": "STUB",
+      "canonical": "ACD adapter (future)",
+      "action": "DEPRECATE_WITH_SHIM",
+      "authority": "G3 package"
+    },
+    {
+      "legacy": "/dream (hermes interactive)",
+      "status": "cognitive-command layer",
+      "canonical": "/dream -> ACD (target)",
+      "action": "adapter plan (hermes/README)",
+      "authority": "this build"
+    },
+    {
+      "legacy": "dream-engine*.timer",
+      "status": "DANGLING (disabled)",
+      "canonical": "arif-dream.timer (separate concern)",
+      "action": "recorded; deprecation requires F13",
+      "authority": "F13 hold"
+    },
+    {
+      "legacy": "/var/spool/arifos/dream-proposals/",
+      "status": "EMPTY",
+      "canonical": "ACD/inbox (future)",
+      "action": "untouched",
+      "authority": "G3"
+    },
+    {
+      "legacy": "docs/DREAM_ENGINE_SPEC.md",
+      "status": "MISSING",
+      "canonical": "/root/AAA/dream_engine/DESIGN.md",
+      "action": "repointed",
+      "authority": "normalize"
+    },
+    {
+      "legacy": "arif-dream.service path /opt/arifos/venv/bin/python3",
+      "status": "OK",
+      "canonical": "symlink -> /usr/bin/python3",
+      "action": "none",
+      "authority": "ops"
+    }
+  ]
+}

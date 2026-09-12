@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "acd.promotion-petition.v1",
+  "title": "ACD Promotion Petition",
+  "description": "Typed request to promote a possibility to a higher status",
+  "type": "object",
+  "required": ["petition_id", "cycle_id", "branch_id", "current_status", "requested_status", "burden_of_proof", "adjudicator", "created_at"],
+  "properties": {
+    "petition_id": { "type": "string", "format": "uuid" },
+    "cycle_id": { "type": "string", "format": "uuid" },
+    "branch_id": { "type": "string", "format": "uuid" },
+    "current_status": { "type": "string", "enum": ["SEED", "GENERATED", "EXPLORED", "CHALLENGED", "DECISION_CANDIDATE", "RECOMMENDATION", "AUTHORIZED", "EXECUTABLE", "WITNESSED", "RATIFIED"] },
+    "requested_status": { "type": "string", "enum": ["SEED", "GENERATED", "EXPLORED", "CHALLENGED", "DECISION_CANDIDATE", "RECOMMENDATION", "AUTHORIZED", "EXECUTABLE", "WITNESSED", "RATIFIED"] },
+    "burden_of_proof": { "type": "string" },
+    "supporting_witnesses": { "type": "array", "items": { "type": "string" } },
+    "residual_risk": { "type": "string" },
+    "adjudicator": { "type": "string", "description": "Who has standing to adjudicate — for ACD, always 'HUMAN_SOVEREIGN'" },
+    "authorized_by": { "type": "string", "description": "Populated only after human ratification" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "ratified_at": { "type": "string", "format": "date-time" },
+    "rejection_reason": { "type": "string" }
+  }
+}
