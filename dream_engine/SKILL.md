@@ -39,13 +39,13 @@ The dream engine is a **substrate process**, not an LLM loop.
 
 ```bash
 # Run a single pass manually
-python3 /root/.openclaw/workspace/dream_engine/dreams/consolidate.py --dry-run
+python3 /root/AAA/dream_engine/dreams/consolidate.py --dry-run
 
 # Run the full nightly cycle
-/root/.openclaw/workspace/dream_engine/scheduler/dream_cron.sh nightly
+systemctl start arif-dream.service   # nightly cycle (timer: arif-dream.timer)
 
 # Inspect last run
-cat /root/.openclaw/workspace/dream_engine/state/last_dream.json
+cat /root/AAA/dream_engine/state/last_dream.json
 ```
 
 ## Reversibility
@@ -54,6 +54,6 @@ All writes go to shadow namespaces first. 7-day dual-write. Atomic cutover.
 If a dream fails: shadow is discarded, live untouched.
 
 ```bash
-systemctl disable --now dream_cron.timer
-rm -rf /root/.openclaw/workspace/dream_engine/
+systemctl disable --now arif-dream.timer
+# Engine code: git-tracked at /root/AAA/dream_engine/ · runtime state/ regenerates
 ```

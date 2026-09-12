@@ -71,7 +71,7 @@ Before using this skill on any mutating, irreversible, or high-blast-radius task
 4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
 
 
-The existing dream-engine (`/root/HERMES/skills/dream-engine/`) is a **single-organ**, **single-cadence** nightly batch that consolidates the last 24 hours of `memory_records` into canon. It is an entropy pump, not a phenomenology claim (F9).
+The existing dream-engine (`/root/AAA/dream_engine/`; systemd `arif-dream.timer`) is a **single-organ**, **single-cadence** nightly batch that consolidates the last 24 hours of `memory_records` into canon. It is an entropy pump, not a phenomenology claim (F9).
 
 This skill extends that engine into a **federation protocol**: every AAA warga agent, plus OpenCode and OpenClaw, can run its own dream cycle, but all canon promotions route through the same constitutional gates:
 
@@ -199,7 +199,7 @@ OpenClaw is the AGI gateway; its dream cycle is a **sleep-time compute daemon** 
 | **A — Chronological** | Fixed nightly window (e.g., 03:00 MYT) | Predictable cost; guaranteed morning briefing | Wasted compute on light days; may clash with late sessions | **Prototype** |
 | **B — Saturation** | Trigger when L2 token/complexity threshold crossed | Compute-efficient; dreams only when material exists | Unpredictable timing; may miss briefings | Phase 2 |
 
-Prototype files: see `/root/AAA/skills/agentic-dream-engine/prototype/`.
+Prototype files: see `/root/AAA/skills/AGI-dream-engine/prototype/`.
 
 ## Mapping to AAA Warga
 
@@ -299,7 +299,7 @@ Prototype files: see `/root/AAA/skills/agentic-dream-engine/prototype/`.
 One-paragraph summary of the federation dream design.
 
 ### Evidence
-- Current dream-engine path: /root/HERMES/skills/dream-engine/
+- Current dream-engine path: /root/AAA/dream_engine/ (runs via `arif-dream.timer`)
 - OpenCode auto-dream: # ARCHIVED: auto-dream.ts (mimocode never built)
 - Memory schema: /root/arifOS/arifosmcp/migrations/001_memory_schema.sql
 
@@ -313,8 +313,8 @@ One-paragraph summary of the federation dream design.
 
 ## References
 
-- `/root/.agents/skills/AGI-dream-engine/SKILL.md` — existing nightly engine
-- `/root/docs/DREAM_ENGINE_SPEC.md` — entropy proxy spec
+- `/root/AAA/dream_engine/SKILL.md` — engine operating skill (canonical)
+- `/root/AAA/dream_engine/DESIGN.md` — engine design
 - `/root/arifOS/arifosmcp/migrations/001_memory_schema.sql` — canonical memory schema
 - `arXiv:2606.03979` — Behrouz et al., *Language Models Need Sleep*
 - `PMC3079906` — Wamsley & Stickgold, *Memory, Sleep and Dreaming: Experiencing Consolidation*
