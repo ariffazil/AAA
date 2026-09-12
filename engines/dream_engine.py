@@ -279,17 +279,63 @@ def main():
     
     # Step 4: Write
     print("\n[4/4] Writing wisdom.md...")
-    metadata = distilled.get('metadata', {
-        'window_start': traces['window_start'],
-        'window_end': traces['window_end'],
-        'total_sessions': traces['total_sessions'],
-        'total_reasoning_tokens': traces['total_reasoning_tokens']
-    })
+    # FI-008 fix 2026-09-13: per-field fallback — the LLM may return an empty or
+    # partial metadata dict, in which case .get('metadata', {...}) never fires the
+    # default and surfaces printed "Sessions: 0". Merge traces as the base layer.
+    llm_meta = distilled.get('metadata') or {}
+    metadata = {
+        'window_start': llm_meta.get('window_start', traces['window_start']),
+        'window_end': llm_meta.get('window_end', traces['window_end']),
+        'total_sessions': llm_meta.get('total_sessions', llm_meta.get('total_sessions_analyzed', traces['total_sessions'])),
+        'total_reasoning_tokens': llm_meta.get('total_reasoning_tokens', traces['total_reasoning_tokens']),
+    }
     write_wisdom_md(axioms, metadata)
-    
+
+    # Step 5: Deliver to AAA group
+    print("\n[5/5] Delivering to AAA group...")
+    summary_lines = [
+        "🧠 *Dream Engine — Wisdom Distilled*",
+        f"Window: {metadata['window_start']} → {metadata['window_end']}",
+        f"Sessions: {metadata['total_sessions']} · Axioms: {len(axioms)}",
+        ""
+    ]
+    if axioms:
+        for i, ax in enumerate(axioms, 1):
+            summary_lines.append(f"{i}. {ax.get('pattern','')} _(p={ax.get('confidence',0):.2f})_")
+    else:
+        summary_lines.append("_No patterns met threshold._")
+    summary_lines.append("\n`DITEMPA BUKAN DIBERI ⚒️`")
+    post_text = "\n".join(summary_lines)
+    delivered = telegram_post_aaa(post_text)
+    print(f"Delivery: {'OK' if delivered else 'SKIPPED/FAIL'}")
+
     print("\n" + "=" * 60)
     print("COMPLETE. Review wisdom.md before kernel injection.")
     print("=" * 60)
+
+def telegram_post_aaa(text):
+    """Post wisdom summary to AAA group (chat_id -1003753855708)."""
+    import os
+    import requests
+    bot_token = os.environ.get('TELEGRAM_BOT_TOKEN_ASI') or os.environ.get('TELEGRAM_BOT_TOKEN')
+    chat_id = os.environ.get('TELEGRAM_HOME_CHANNEL', '-1003753855708')  # fixed 2026-09-13 FI-008: was -1003753755708 (digit swap typo) — docstring + TELEGRAM_HOME_CHANNEL both say ...3855708
+    if not bot_token:
+        print("Telegram token not in env; skipping delivery.")
+        return False
+    url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+    # Telegram cap: 4096 chars
+    payload = {
+        "chat_id": chat_id,
+        "text": text[:4000],
+        "parse_mode": "Markdown",
+        "disable_web_page_preview": True,
+    }
+    try:
+        r = requests.post(url, json=payload, timeout=15)
+        return r.status_code == 200
+    except Exception as e:
+        print(f"Telegram post failed: {e}")
+        return False
 
 if __name__ == "__main__":
     main()
