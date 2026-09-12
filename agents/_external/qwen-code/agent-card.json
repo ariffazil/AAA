@@ -623,10 +623,10 @@
     "schema_version": "1.0.0",
 
     "source_substrate": {
-      "repository_path": "/root/arifos-lab",
-      "repository_role": "independent-experimental-substrate",
-      "baseline_commit": "8a50bb9",
-      "baseline_label": "APEX-ZEN Phase 0 + Phase 1 governance scaffold"
+      "repository_path": "/root/AAA",
+      "repository_role": "canonical-federation-registry",
+      "baseline_commit": "254352c79",
+      "baseline_label": "APEX-ZEN Phase 0 + Phase 1 governance scaffold (absorbed from arifos-lab 2026-09-12)"
     },
 
     "laboratory_identity": {
