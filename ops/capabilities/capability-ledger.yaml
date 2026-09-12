@@ -1,0 +1,453 @@
+ledger_version: "0.1.0"
+updated_at: "2026-09-12T09:30:00+08:00"
+timezone: "Asia/Kuala_Lumpur"
+maintained_by: "Hermes (arifOS edge bridge)"
+
+# STATE VOCABULARY
+# ================
+# implementation.state:  absent | partial | implemented | retired | vendor_candidate
+# reachability.state:    unreachable | not_wired | working_unprobed | reachable | degraded
+#                         pending_production_probe | intentionally_unreachable | unknown_by_governed_probe
+# governance.authority:  observe | draft | external_write | financial_write | admin_write
+# governance.activation_gate: none | 888_HOLD | F13_888_HOLD
+# lifecycle:             active | partial | deferred | retired | blocked
+
+# CORE RULE
+# =========
+# implemented = there is code/route/package
+# reachable   = Hermes can invoke it RIGHT NOW with evidence
+# governed    = invocation has auth, receipts, rate limits, holds
+#
+# implemented AND reachable AND governed = operational capability
+# implemented AND NOT reachable = route or auth gap
+# implemented AND reachable AND NOT governed = uncontrolled action risk
+# All three states are independent dimensions, not a single "status" field.
+
+capabilities:
+
+  # ────────────────────────────────────────────────────────
+  # ENVIRONMENT
+  # ────────────────────────────────────────────────────────
+  - id: weather.current.kl
+    title: "Kuala Lumpur current weather"
+    domain: "environment.weather"
+    lifecycle: active
+
+    implementation:
+      state: implemented
+      repo_path: "morning-readiness.py"
+      commit: "54f7c3b"
+      evidence:
+        - type: git_commit
+          ref: "54f7c3b"
+          claim: "Direct Open-Meteo GET added to morning readiness pulse"
+        - type: manual_test
+          claim: "KL 26C 91% humidity returned from Open-Meteo API"
+
+    reachability:
+      state: pending_production_probe
+      route_type: direct_https
+      endpoint: "https://api.open-meteo.com/v1/forecast"
+      endpoint_class: "open-meteo.forecast"
+      trigger: "cron: 07:30 Asia/Kuala_Lumpur"
+      last_probe_at: null
+      last_probe_status: null
+      latency_ms: null
+      probe_mode: read_only
+      fallback: "Continue Telegram pulse with weather unavailable notice"
+      known_failure_modes:
+        - "Open-Meteo API timeout or 5xx"
+        - "Network unreachable"
+        - "Response schema change upstream"
+
+    governance:
+      authority: observe
+      side_effects:
+        - "Telegram notification after data retrieval"
+      confirmation_required: false
+      receipt_required: true
+      rate_limit:
+        budget_per_run: 1
+        retry_max: 1
+      failure_policy: fail_soft
+      data_retention: "Derived weather summary only; no raw response persistence by default"
+
+    owner:
+      runtime: "Hermes morning readiness"
+      human_accountable: "Arif"
+      review_interval_days: 30
+
+  # ────────────────────────────────────────────────────────
+  # KNOWLEDGE
+  # ────────────────────────────────────────────────────────
+  - id: content.youtube.transcript
+    title: "YouTube transcript retrieval"
+    domain: "knowledge.video"
+    lifecycle: active
+
+    implementation:
+      state: implemented
+      package: "youtube-transcript-api"
+      version: "1.2.4"
+      evidence:
+        - type: package_install
+          claim: "youtube-transcript-api 1.2.4 installed via pipx"
+
+    reachability:
+      state: working_unprobed
+      route_type: local_python_package
+      last_probe_at: null
+      last_probe_status: null
+      latency_ms: null
+      probe_mode: read_only
+      known_failure_modes:
+        - "No transcript available"
+        - "Auto-generated captions unavailable"
+        - "Video blocked, private, deleted, or region-restricted"
+        - "Upstream request blocking or rate limiting"
+
+    governance:
+      authority: observe
+      confirmation_required: false
+      receipt_required: true
+      rate_limit:
+        retry_max: 1
+      failure_policy: "return structured unavailable result"
+
+    owner:
+      runtime: "Hermes agent sessions"
+      human_accountable: "Arif"
+      review_interval_days: 90
+
+  # ────────────────────────────────────────────────────────
+  # COMMUNICATION — EMAIL
+  # ────────────────────────────────────────────────────────
+  - id: communication.email.read
+    title: "Email read/search"
+    domain: "communication.email"
+    lifecycle: deferred
+
+    implementation:
+      state: partial
+      candidate_route: "Nylas self-hosted"
+      evidence:
+        - type: code_inventory
+          note: "forge_email bridge code exists in repo; swept off live MCP surface 17 Aug 2026"
+      prerequisites:
+        - "Approved IMAP credentials"
+        - "Mailbox scope decision"
+        - "Retention and logging policy"
+        - "Outbound-action membrane"
+
+    reachability:
+      state: unreachable
+      reason: "No approved configured credential path"
+      blocker_class: "credential_and_policy_prerequisite"
+
+    governance:
+      authority: observe
+      confirmation_required: false
+      receipt_required: true
+      credential_class: "sensitive_personal_or_work_data"
+      activation_gate: 888_HOLD
+
+    owner:
+      human_accountable: "Arif"
+      review_interval_days: 90
+
+  - id: communication.email.send
+    title: "Email draft/send"
+    domain: "communication.email"
+    lifecycle: deferred
+
+    implementation:
+      state: partial
+      candidate_route: "Nylas self-hosted"
+
+    reachability:
+      state: unreachable
+      reason: "No approved configured credential path"
+      blocker_class: "credential_and_policy_prerequisite"
+
+    governance:
+      authority: external_write
+      confirmation_required: true
+      receipt_required: true
+      activation_gate: 888_HOLD
+      non_autonomous: true
+      required_receipt_fields:
+        - "resolved_recipient"
+        - "subject"
+        - "body_hash"
+        - "approval_reference"
+        - "send_timestamp"
+
+    owner:
+      human_accountable: "Arif"
+      review_interval_days: 90
+
+  # ────────────────────────────────────────────────────────
+  # COMMUNICATION — GOOGLE WORKSPACE
+  # ────────────────────────────────────────────────────────
+  - id: communication.google_workspace.read
+    title: "Google Workspace read (Calendar, Drive, Sheets)"
+    domain: "communication.google_workspace"
+    lifecycle: partial
+
+    implementation:
+      state: implemented_or_claimed
+      evidence:
+        - type: code_inventory
+          note: "GWS bridge code and manifests exist in A-FORGE repo"
+        - type: surface_sweep
+          note: "Tools swept off live MCP surface 17 Aug 2026 per audit"
+
+    reachability:
+      state: unknown_by_governed_probe
+      blocker:
+        code: "ERR_ACT_SIGNATURE_INVALID"
+        class: "auth_session_or_capability_gate"
+      next_required_step: "fresh arif_init rebind"
+      last_probe_at: null
+      last_probe_status: null
+
+    governance:
+      authority: observe
+      activation_gate: "valid_SCT_required"
+      confirmation_required: false
+      receipt_required: true
+
+    owner:
+      human_accountable: "Arif"
+      review_interval_days: 30
+
+  # ────────────────────────────────────────────────────────
+  # INTELLIGENCE — SOCIAL LISTENING
+  # ────────────────────────────────────────────────────────
+  - id: intelligence.social.listening
+    title: "Cross-platform social listening"
+    domain: "intelligence.social"
+    lifecycle: deferred
+
+    implementation:
+      state: vendor_candidate
+      candidate_route: "xpoz"
+      evidence:
+        - type: package_availability
+          claim: "xpoz 0.8.0 available on PyPI"
+      prerequisites:
+        - "Vendor evaluation"
+        - "API key procurement"
+        - "Cost and quota approval"
+        - "Retention policy"
+        - "Platform and legal review"
+
+    reachability:
+      state: intentionally_unreachable
+      reason: "No vendor key or approved evaluation"
+      blocker_class: "vendor_prerequisite"
+
+    governance:
+      authority: observe
+      confirmation_required: true
+      receipt_required: true
+      activation_gate: 888_HOLD
+      data_classification: "third_party_public_social_content"
+      persistence_default: "derived claims and provenance only"
+
+    owner:
+      human_accountable: "Arif"
+      review_interval_days: 60
+
+  # ────────────────────────────────────────────────────────
+  # GEOSPATIAL
+  # ────────────────────────────────────────────────────────
+  - id: geospatial.map.query
+    title: "Geospatial map query"
+    domain: "geospatial.location"
+    lifecycle: partial
+
+    implementation:
+      state: implemented
+      candidate_route: "mcp-geo"
+      evidence:
+        - type: package_availability
+          claim: "mcp-geo 0.3.0 available on PyPI"
+
+    reachability:
+      state: not_wired
+      reason: "Tool exists but Hermes invocation route is not configured"
+      blocker_class: "routing_configuration"
+
+    governance:
+      authority: observe
+      confirmation_required: false
+      receipt_required: true
+      activation_gate: "wire_only_when_concrete_workflow_exists"
+
+    owner:
+      human_accountable: "Arif"
+      review_interval_days: 90
+
+  # ────────────────────────────────────────────────────────
+  # SOCIAL MEDIA — X/TWITTER
+  # ────────────────────────────────────────────────────────
+  - id: social_media.x.twitter
+    title: "X/Twitter CLI (xurl)"
+    domain: "social_media.twitter"
+    lifecycle: partial
+
+    implementation:
+      state: implemented
+      package: "xurl"
+      version: "1.3.1"
+      install_path: "/root/go/bin/xurl"
+      evidence:
+        - type: binary_install
+          ref: "github.com/xdevplatform/xurl@latest"
+          claim: "xurl v1.3.1 binary present at /root/go/bin/xurl (verified --version: v1.3.1)"
+        - type: manual_test
+          claim: "/usr/local/bin/xurl symlink removed 2026-09-12 (was dangling); command -v xurl fails — binary not on PATH"
+
+    reachability:
+      state: not_wired
+      reason: "binary present at /root/go/bin/xurl (v1.3.1 verified) but /usr/local/bin/xurl symlink removed 2026-09-12; not on PATH"
+      blocker_class: "routing_configuration"
+      route_type: local_binary
+      last_probe_at: null
+      last_probe_status: null
+      probe_mode: read_only
+      known_failure_modes:
+        - "X API authentication expired or missing"
+        - "Rate limiting"
+        - "Account suspended or restricted"
+
+    governance:
+      authority: observe
+      confirmation_required: false
+      receipt_required: true
+      rate_limit:
+        retry_max: 1
+      failure_policy: "return structured error"
+
+    owner:
+      runtime: "Hermes agent sessions"
+      human_accountable: "Arif"
+      review_interval_days: 90
+
+  # ────────────────────────────────────────────────────────
+  # MESSAGING
+  # ────────────────────────────────────────────────────────
+  - id: messaging.telegram.notify
+    title: "Telegram message delivery"
+    domain: "messaging.telegram"
+    lifecycle: active
+
+    implementation:
+      state: implemented
+      evidence:
+        - type: operational_use
+          claim: "24 active cron jobs delivering via Telegram"
+        - type: config
+          note: "Hermes Telegram gateway running on KVM8"
+
+    reachability:
+      state: reachable
+      route_type: "hermes_telegram_gateway"
+      last_probe_at: null
+      last_probe_status: null
+      probe_mode: "config_validation_only"
+      fallback: "Messages logged locally if gateway unreachable"
+      known_failure_modes:
+        - "Telegram API rate limiting"
+        - "Bot token revoked"
+        - "Gateway process down"
+
+    governance:
+      authority: observe
+      side_effects:
+        - "External notification to Telegram users"
+      confirmation_required: false
+      receipt_required: true
+      failure_policy: "log locally; retry on next scheduled pulse"
+
+    owner:
+      runtime: "Hermes gateway"
+      human_accountable: "Arif"
+      review_interval_days: 30
+
+  # ────────────────────────────────────────────────────────
+  # FINANCE — PAYMENTS
+  # ────────────────────────────────────────────────────────
+  - id: payments.duitnow_fpx
+    title: "DuitNow / FPX payment operations"
+    domain: "finance.payments"
+    lifecycle: blocked
+
+    implementation:
+      state: external_institutional_api
+      candidate_route: "PayNet"
+      evidence:
+        - type: documentation
+          note: "PayNet multi-stage onboarding: registration, project, implementation, production"
+
+    reachability:
+      state: intentionally_unreachable
+      reason: "Merchant onboarding, certificates, financial authority, reconciliation and liability are unresolved"
+      blocker_class: "institutional_prerequisite"
+
+    governance:
+      authority: financial_write
+      confirmation_required: true
+      receipt_required: true
+      activation_gate: F13_888_HOLD
+      non_autonomous: true
+      sovereign_human_veto: true
+
+    owner:
+      human_accountable: "Arif"
+      review_interval_days: 90
+
+  # ────────────────────────────────────────────────────────
+  # SEARCH
+  # ────────────────────────────────────────────────────────
+  - id: search.web.multi_engine
+    title: "Web search (multi-engine)"
+    domain: "search.web"
+    lifecycle: active
+
+    implementation:
+      state: implemented
+      routes:
+        - name: "SearXNG"
+          type: self_hosted
+          endpoint: "http://localhost:8080"
+        - name: "Brave Search"
+          type: api_key_required
+        - name: "MiniMax Search"
+          type: api_key_required
+      evidence:
+        - type: operational_use
+          claim: "Multiple search routes active and used in agent sessions"
+
+    reachability:
+      state: reachable
+      route_type: "multi_engine_fallback"
+      last_probe_at: null
+      last_probe_status: null
+      probe_mode: read_only
+      known_failure_modes:
+        - "All engines rate-limited simultaneously"
+        - "SearXNG instance down"
+        - "API key expired"
+
+    governance:
+      authority: observe
+      confirmation_required: false
+      receipt_required: true
+      failure_policy: "try next engine in fallback chain"
+
+    owner:
+      runtime: "Hermes agent sessions"
+      human_accountable: "Arif"
+      review_interval_days: 30

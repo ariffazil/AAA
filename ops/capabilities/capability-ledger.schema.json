@@ -1,0 +1,187 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "arifOS Capability Ledger",
+  "description": "Schema for the capability ledger — the single source of truth for implemented, reachable, and governed capabilities.",
+  "type": "object",
+  "required": ["ledger_version", "capabilities"],
+  "properties": {
+    "ledger_version": {
+      "type": "string",
+      "description": "Semantic version of the ledger schema"
+    },
+    "updated_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "ISO-8601 timestamp of last ledger update"
+    },
+    "timezone": {
+      "type": "string",
+      "description": "Default timezone for the ledger"
+    },
+    "maintained_by": {
+      "type": "string",
+      "description": "Agent or human maintaining this ledger"
+    },
+    "capabilities": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/Capability" },
+      "description": "List of all tracked capabilities"
+    }
+  },
+  "definitions": {
+    "Capability": {
+      "type": "object",
+      "required": ["id", "title", "domain", "lifecycle", "implementation", "reachability", "governance"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*(\\.[a-z][a-z0-9_]*)*$",
+          "description": "Unique capability identifier (dot-separated namespace)"
+        },
+        "title": {
+          "type": "string",
+          "description": "Human-readable capability name"
+        },
+        "domain": {
+          "type": "string",
+          "description": "Functional domain (e.g. environment.weather, communication.email)"
+        },
+        "lifecycle": {
+          "type": "string",
+          "enum": ["active", "partial", "deferred", "retired", "blocked"],
+          "description": "Human strategic decision about this capability"
+        },
+        "implementation": { "$ref": "#/definitions/Implementation" },
+        "reachability": { "$ref": "#/definitions/Reachability" },
+        "governance": { "$ref": "#/definitions/Governance" },
+        "owner": { "$ref": "#/definitions/Owner" }
+      }
+    },
+    "Implementation": {
+      "type": "object",
+      "required": ["state"],
+      "properties": {
+        "state": {
+          "type": "string",
+          "enum": ["absent", "partial", "implemented", "retired", "vendor_candidate", "implemented_or_claimed", "external_institutional_api"],
+          "description": "Is there code, a package, manifest, or defined route?"
+        },
+        "package": { "type": "string" },
+        "version": { "type": "string" },
+        "repo_path": { "type": "string" },
+        "commit": { "type": "string" },
+        "install_path": { "type": "string" },
+        "symlink": { "type": "string" },
+        "candidate_route": { "type": "string" },
+        "routes": { "type": "array", "items": { "type": "object" } },
+        "evidence": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Evidence" }
+        },
+        "prerequisites": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "Reachability": {
+      "type": "object",
+      "required": ["state"],
+      "properties": {
+        "state": {
+          "type": "string",
+          "enum": [
+            "unreachable",
+            "not_wired",
+            "working_unprobed",
+            "reachable",
+            "degraded",
+            "dead",
+            "pending_production_probe",
+            "intentionally_unreachable",
+            "unknown_by_governed_probe"
+          ],
+          "description": "Can Hermes invoke it at this moment?"
+        },
+        "route_type": { "type": "string" },
+        "endpoint": { "type": "string" },
+        "endpoint_class": { "type": "string" },
+        "trigger": { "type": "string" },
+        "last_probe_at": { "type": ["string", "null"], "format": "date-time" },
+        "last_probe_status": { "type": ["string", "null"] },
+        "latency_ms": { "type": ["number", "null"] },
+        "probe_mode": { "type": "string" },
+        "fallback": { "type": "string" },
+        "reason": { "type": "string" },
+        "blocker_class": { "type": "string" },
+        "blocker": { "type": "object" },
+        "next_required_step": { "type": "string" },
+        "known_failure_modes": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "Governance": {
+      "type": "object",
+      "required": ["authority"],
+      "properties": {
+        "authority": {
+          "type": "string",
+          "enum": ["observe", "draft", "external_write", "financial_write", "admin_write"],
+          "description": "What kind of action is this capability?"
+        },
+        "side_effects": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "confirmation_required": { "type": "boolean" },
+        "receipt_required": { "type": "boolean" },
+        "activation_gate": {
+          "type": "string",
+          "enum": ["none", "888_HOLD", "F13_888_HOLD", "valid_SCT_required", "wire_only_when_concrete_workflow_exists"]
+        },
+        "non_autonomous": { "type": "boolean" },
+        "sovereign_human_veto": { "type": "boolean" },
+        "credential_class": { "type": "string" },
+        "data_classification": { "type": "string" },
+        "persistence_default": { "type": "string" },
+        "rate_limit": { "$ref": "#/definitions/RateLimit" },
+        "failure_policy": { "type": "string" },
+        "data_retention": { "type": "string" },
+        "required_receipt_fields": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "RateLimit": {
+      "type": "object",
+      "properties": {
+        "budget_per_run": { "type": "integer" },
+        "retry_max": { "type": "integer" }
+      }
+    },
+    "Evidence": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["git_commit", "package_install", "manual_test", "code_inventory", "surface_sweep", "package_availability", "binary_install", "operational_use", "config", "documentation", "probe_result"]
+        },
+        "ref": { "type": "string" },
+        "claim": { "type": "string" },
+        "note": { "type": "string" }
+      }
+    },
+    "Owner": {
+      "type": "object",
+      "properties": {
+        "runtime": { "type": "string" },
+        "human_accountable": { "type": "string" },
+        "review_interval_days": { "type": "integer" }
+      }
+    }
+  }
+}
