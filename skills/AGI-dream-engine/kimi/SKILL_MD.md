@@ -1,5 +1,5 @@
 ---
-canonical_source: skills/agentic-dream-engine/SKILL.md
+canonical_source: skills/AGI-dream-engine/SKILL.md
 description: Extend the arifOS dream-engine so every AAA warga (333-AGI, 555-ASI,
   888-APEX, A-AUDIT, A-ARCHIVE), OpenCode, and OpenClaw can autonomously consolidate
   memory without violating F1-F13.
@@ -16,7 +16,7 @@ Extend the arifOS dream-engine so every AAA warga (333-AGI, 555-ASI, 888-APEX, A
 
 ## When to Invoke
 
-Follow the canonical playbook at `skills/agentic-dream-engine/SKILL.md` → *When to Use*.
+Follow the canonical playbook at `skills/AGI-dream-engine/SKILL.md` → *When to Use*.
 
 ---
 *DITEMPA BUKAN DIBERI — arifOS Federation*
