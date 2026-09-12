@@ -23,6 +23,7 @@ Results written to: probe-results/<capability_id>_<timestamp>.jsonl
 """
 
 import argparse
+import fcntl
 import json
 import os
 import sys
@@ -33,6 +34,7 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 LEDGER_PATH = Path(__file__).parent / "capability-ledger.yaml"
+LEDGER_LOCK_PATH = Path(__file__).parent / "capability-ledger.lock"
 RESULTS_DIR = Path(__file__).parent / "probe-results"
 MYT = timezone(timedelta(hours=8))
 
@@ -53,6 +55,33 @@ def load_ledger():
             return json.load(f)
 
 
+class LedgerLock:
+    """Exclusive writer lock for the capability ledger.
+
+    The two-writer race (2026-09-12): a concurrent writer — Hermes's full-file
+    re-dump or a second probe — could clobber a surgical edit between this
+    function's read_text() and write_text(). flock serializes the read-modify-write
+    so the source-of-truth cannot silently revert to falsehood under concurrent
+    access. Same pattern as carry_forward.py's CarryLock.
+    """
+
+    def __init__(self):
+        self.lock_path = LEDGER_LOCK_PATH
+        self.fd = None
+
+    def __enter__(self):
+        self.lock_path.parent.mkdir(parents=True, exist_ok=True)
+        self.fd = open(self.lock_path, "a+")
+        fcntl.flock(self.fd, fcntl.LOCK_EX)
+        return self
+
+    def __exit__(self, *exc):
+        if self.fd is not None:
+            fcntl.flock(self.fd, fcntl.LOCK_UN)
+            self.fd.close()
+        return False
+
+
 def persist_probe_result(cap_id, now_iso, result):
     """Update last_probe_at/last_probe_status for one capability via targeted text edit.
 
@@ -60,30 +89,38 @@ def persist_probe_result(cap_id, now_iso, result):
     reformat comments and alignment. This does a surgical line replacement that
     touches only the two timestamp fields of the probed capability's reachability
     block, preserving every other byte.
+
+    The read-modify-write runs under an exclusive flock so no concurrent writer
+    (probe harness or Hermes write-back) can clobber the edit mid-flight. The
+    file is written atomically (tmp + os.replace) so a crash never leaves a
+    half-written ledger.
     """
-    lines = LEDGER_PATH.read_text().splitlines()
-    target_idx = None
-    for i, line in enumerate(lines):
-        if line.strip() == f"- id: {cap_id}":
-            target_idx = i
-            break
-    if target_idx is None:
-        return  # capability absent; never rewrite the ledger
-    updated_at = updated_status = False
-    for i in range(target_idx, len(lines)):
-        line = lines[i]
-        indent = line[: len(line) - len(line.lstrip())]
-        s = line.strip()
-        if s.startswith("last_probe_at:") and not updated_at:
-            lines[i] = f'{indent}last_probe_at: "{now_iso}"'
-            updated_at = True
-        elif s.startswith("last_probe_status:") and not updated_status:
-            lines[i] = f'{indent}last_probe_status: "{result}"'
-            updated_status = True
-        if updated_at and updated_status:
-            break
-    if updated_at or updated_status:
-        LEDGER_PATH.write_text("\n".join(lines) + "\n")
+    with LedgerLock():
+        lines = LEDGER_PATH.read_text().splitlines()
+        target_idx = None
+        for i, line in enumerate(lines):
+            if line.strip() == f"- id: {cap_id}":
+                target_idx = i
+                break
+        if target_idx is None:
+            return  # capability absent; never rewrite the ledger
+        updated_at = updated_status = False
+        for i in range(target_idx, len(lines)):
+            line = lines[i]
+            indent = line[: len(line) - len(line.lstrip())]
+            s = line.strip()
+            if s.startswith("last_probe_at:") and not updated_at:
+                lines[i] = f'{indent}last_probe_at: "{now_iso}"'
+                updated_at = True
+            elif s.startswith("last_probe_status:") and not updated_status:
+                lines[i] = f'{indent}last_probe_status: "{result}"'
+                updated_status = True
+            if updated_at and updated_status:
+                break
+        if updated_at or updated_status:
+            tmp = LEDGER_PATH.with_suffix(".tmp")
+            tmp.write_text("\n".join(lines) + "\n")
+            os.replace(tmp, LEDGER_PATH)
 
 
 # ── Probe Implementations ───────────────────────────────────
