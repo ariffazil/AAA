@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "arifos-task-contract-v1",
+  "title": "arifOS Task Contract",
+  "description": "Machine-verifiable permission envelope for a bounded execution cell task. Signed by arifFLOW, validated by AAA gateway.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "task_id",
+    "issued_at",
+    "expires_at",
+    "issuer",
+    "subject",
+    "intent",
+    "workspace",
+    "capabilities",
+    "prohibitions",
+    "budgets",
+    "receipt_sink",
+    "approval_policy"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^af-\\d{4}-\\d{2}-\\d{2}-[a-z0-9-]+$",
+      "description": "Unique task identifier: af-YYYY-MM-DD-<slug>"
+    },
+    "issued_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 UTC issue timestamp"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 UTC expiry timestamp; cell is destroyed after this"
+    },
+    "issuer": {
+      "type": "string",
+      "enum": ["arifflow-control-plane"],
+      "description": "Only arifFLOW may issue task contracts"
+    },
+    "subject": {
+      "type": "object",
+      "required": ["agent_id", "cell_id", "service_identity"],
+      "properties": {
+        "agent_id": {
+          "type": "string",
+          "description": "Registered agent identifier"
+        },
+        "cell_id": {
+          "type": "string",
+          "description": "Registered cell identifier"
+        },
+        "service_identity": {
+          "type": "string",
+          "format": "uri",
+          "description": "SPIFFE or equivalent workload identity URI"
+        }
+      }
+    },
+    "intent": {
+      "type": "object",
+      "required": ["summary", "risk_class", "allowed_outcome"],
+      "properties": {
+        "summary": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "risk_class": {
+          "type": "string",
+          "enum": ["read", "bounded_write", "external", "critical"],
+          "description": "Highest risk class the task may touch"
+        },
+        "allowed_outcome": {
+          "type": "string",
+          "enum": ["candidate_patch_only", "report_only", "analysis_only"],
+          "description": "What the cell may produce"
+        }
+      }
+    },
+    "workspace": {
+      "type": "object",
+      "required": ["repository", "base_commit", "worktree_ref", "write_paths", "deny_paths"],
+      "properties": {
+        "repository": {
+          "type": "string",
+          "description": "Repository identifier (e.g. arifos/geoint)"
+        },
+        "base_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$",
+          "description": "Pinned commit SHA (full 40-char)"
+        },
+        "worktree_ref": {
+          "type": "string",
+          "description": "Candidate worktree branch name"
+        },
+        "write_paths": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1,
+          "description": "Glob patterns the cell may write to"
+        },
+        "deny_paths": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Glob patterns the cell may never write to"
+        }
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["service", "tools", "effect"],
+        "properties": {
+          "service": {
+            "type": "string",
+            "description": "MCP service name"
+          },
+          "tools": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 1
+          },
+          "effect": {
+            "type": "string",
+            "enum": ["read", "bounded_execute", "append"]
+          }
+        }
+      },
+      "minItems": 1
+    },
+    "prohibitions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Explicit prohibitions; gateway denies if attempted"
+    },
+    "budgets": {
+      "type": "object",
+      "required": ["wall_clock_seconds", "tool_calls"],
+      "properties": {
+        "wall_clock_seconds": { "type": "integer", "minimum": 60, "maximum": 3600 },
+        "tool_calls": { "type": "integer", "minimum": 1, "maximum": 1000 },
+        "ci_runs": { "type": "integer", "minimum": 1, "maximum": 50 },
+        "model_tokens": { "type": "integer", "minimum": 1000 },
+        "max_cost_usd": { "type": "number", "minimum": 0.01 }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "properties": {
+        "required_tests": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "independent_review": { "type": "boolean" },
+        "security_scan": { "type": "boolean" }
+      }
+    },
+    "receipt_sink": {
+      "type": "object",
+      "required": ["type", "task_prefix"],
+      "properties": {
+        "type": { "type": "string", "const": "append_only_ledger" },
+        "task_prefix": { "type": "string" }
+      }
+    },
+    "approval_policy": {
+      "type": "object",
+      "required": ["candidate_patch", "merge", "deploy"],
+      "properties": {
+        "candidate_patch": { "type": "string" },
+        "merge": { "type": "string" },
+        "deploy": { "type": "string" }
+      }
+    }
+  }
+}

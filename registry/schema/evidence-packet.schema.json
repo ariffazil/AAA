@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "arifos-evidence-packet-v1",
+  "title": "arifOS Evidence Packet",
+  "description": "Complete audit trail for a cell task execution. Required before any output is considered a candidate.",
+  "type": "object",
+  "required": [
+    "packet_id",
+    "task_id",
+    "status",
+    "cell",
+    "provenance",
+    "artifacts",
+    "verification",
+    "policy",
+    "decision"
+  ],
+  "properties": {
+    "packet_id": {
+      "type": "string",
+      "pattern": "^ep-af-\\d{4}-\\d{2}-\\d{2}-[a-z0-9-]+$"
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^af-\\d{4}-\\d{2}-\\d{2}-[a-z0-9-]+$"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["candidate_ready", "failed", "expired", "cancelled", "quarantined"]
+    },
+    "cell": {
+      "type": "object",
+      "required": ["cell_id", "image_digest", "qwen_code_version", "model_route"],
+      "properties": {
+        "cell_id": { "type": "string" },
+        "image_digest": { "type": "string" },
+        "qwen_code_version": { "type": "string" },
+        "model_route": { "type": "string" }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["base_commit", "worktree_ref", "contract_hash", "capability_grant_hash"],
+      "properties": {
+        "base_commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "worktree_ref": { "type": "string" },
+        "contract_hash": { "type": "string" },
+        "capability_grant_hash": { "type": "string" }
+      }
+    },
+    "artifacts": {
+      "type": "object",
+      "required": ["patch_bundle", "test_report", "tool_trace"],
+      "properties": {
+        "patch_bundle": { "type": "string" },
+        "test_report": { "type": "string" },
+        "sbom_or_dependency_report": { "type": "string" },
+        "tool_trace": { "type": "string" }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "required": ["lint", "unit_tests"],
+      "properties": {
+        "lint": { "type": "string", "enum": ["pass", "fail", "skipped", "pending"] },
+        "unit_tests": { "type": "string", "enum": ["pass", "fail", "skipped", "pending"] },
+        "integration_tests": { "type": "string", "enum": ["pass", "fail", "skipped", "pending"] },
+        "security_scan": { "type": "string", "enum": ["pass", "fail", "skipped", "pending"] },
+        "independent_reviewer": { "type": "string", "enum": ["pass", "fail", "skipped", "pending"] }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "required": ["out_of_scope_attempts", "denied_tool_calls", "budget_state", "approval_required"],
+      "properties": {
+        "out_of_scope_attempts": { "type": "integer", "minimum": 0 },
+        "denied_tool_calls": { "type": "integer", "minimum": 0 },
+        "budget_state": { "type": "string", "enum": ["within_limit", "exceeded", "near_limit"] },
+        "approval_required": { "type": "boolean" }
+      }
+    },
+    "decision": {
+      "type": "object",
+      "required": ["verdict", "promotion_ceiling", "rollback_target"],
+      "properties": {
+        "verdict": {
+          "type": "string",
+          "enum": ["PASS", "PASS_CANARY", "HOLD", "REJECT", "ROLLBACK", "QUARANTINE"]
+        },
+        "promotion_ceiling": {
+          "type": "string",
+          "enum": ["human_review_only", "auto_canary", "none"]
+        },
+        "rollback_target": { "type": "string", "pattern": "^[0-9a-f]{40}$" }
+      }
+    }
+  }
+}
