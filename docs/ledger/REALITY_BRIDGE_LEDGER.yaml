@@ -1,0 +1,67 @@
+# HERMES Reality Bridge — Capability Ledger
+# Each entry: canonical name, live route, owner, auth, side effects, timeout, fallback, last verified, evidence.
+# State model: CLOSED | WORKING | DEFERRED | PARTIAL | F13_HOLD
+
+weather:
+  state: CLOSED_PENDING_PRODUCTION_PROBE
+  owner_path: /root/.hermes/scripts/morning-readiness.py
+  trigger: "07:30 Asia/Kuala_Lumpur"
+  source: "Open-Meteo /v1/forecast"
+  auth: none
+  side_effect_class: observe_then_telegram_notify
+  timeout_seconds: 8
+  fallback: "pulse continues; weather unavailable"
+  last_verified_at: "2026-09-12T09:22+08:00"
+  evidence: "commit da8700d (7/7 hardening)"
+  coordinates: [3.139, 101.6869]
+  timezone: "Asia/Kuala_Lumpur"
+
+youtube_transcript:
+  state: WORKING
+  owner_path: /usr/local/bin/youtube_transcript_api
+  trigger: on_demand
+  source: "youtube-transcript-api v1.2.4"
+  auth: none
+  side_effect_class: observe_only
+  timeout_seconds: 30
+  fallback: "return error; video may lack captions"
+  last_verified_at: "2026-09-12T09:00+08:00"
+  evidence: "pipx install confirmed"
+
+email:
+  state: DEFERRED
+  blocker: "IMAP credentials + Nylas self-hosted setup"
+  candidate: "Nylas CLI (MIT, self-hosted Agent Account)"
+  approval: F13_HOLD
+
+social_listening:
+  state: DEFERRED
+  blocker: "XPOZ vendor key acquisition"
+  candidate: "XPOZ SDK v0.8.0 (X/IG/TikTok/Reddit)"
+  approval: 888_HOLD
+
+maps_geocoding:
+  state: PARTIAL
+  owner_path: "mcp-geo v0.3.0 on PyPI (not wired)"
+  trigger: on_demand
+  source: "OpenStreetMap Nominatim + OSRM"
+  auth: none
+  side_effect_class: observe_only
+  fallback: "GEOX geox_basin for geological spatial"
+  last_verified_at: null
+  evidence: "PyPI probe confirmed v0.3.0"
+
+messaging_telegram:
+  state: WORKING
+  owner_path: "Hermes Telegram gateway"
+  trigger: bidirectional
+  source: "Telegram Bot API"
+  auth: bot_token
+  side_effect_class: notify_and_receive
+  fallback: "direct SSH"
+
+payments_duitnow:
+  state: F13_HOLD
+  blocker: "Legal entity, merchant mandate, fraud model, incident owner"
+  source: "PayNet DuitNow Pay API"
+  approval: F13_SOVEREIGN_HUMAN_VETO
