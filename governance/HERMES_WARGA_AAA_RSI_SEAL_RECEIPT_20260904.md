@@ -1,3 +1,5 @@
+> **SUPERSEDED** by governance/AAA-HERMES-TOPOLOGY-v2.md (F13_RATIFIED_CHAT 2026-09-12). Retained as audit stratum — do not load.
+
 # HERMES WARGA AAA — RECURSIVE SELF-IMPROVEMENT (RSI) SEAL RECEIPT
 **Canonical Seal for Hermes Edge Intelligence & Warga AAA Institutional Integration**
 *Timestamp: 2026-09-04T16:26:00+08:00 (MYT) · Authority: F13 SOVEREIGN (Muhammad Arif bin Fazil)*

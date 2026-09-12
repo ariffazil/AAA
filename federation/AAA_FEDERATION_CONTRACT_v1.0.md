@@ -1,3 +1,5 @@
+> **SUPERSEDED** by governance/AAA-HERMES-TOPOLOGY-v2.md (F13_RATIFIED_CHAT 2026-09-12). Retained as audit stratum — do not load.
+
 # AAA_FEDERATION_CONTRACT v1.0 — RATIFIED
 
 > **Status:** ✅ **RATIFIED** (F13 SOVEREIGN DIRECTIVE — 2026-09-08)
