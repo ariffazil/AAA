@@ -1,0 +1,25 @@
+{
+  "batch": true,
+  "video_count": 2,
+  "results": {
+    "7UOWhSMtX4E": {
+      "status": "unreachable",
+      "video_id": "7UOWhSMtX4E",
+      "error_class": "request_blocked",
+      "safe_message": "\nCould not retrieve a transcript for the video https://www.youtube.com/watch?v=7UOWhSMtX4E! This is most likely caused by:\n\nYouTube is blocking requests from your IP. This usually is due to one of the following reasons:\n- You have done too many requests and your IP has been blocked by YouTube\n- You are doing requests from an IP belonging to a cloud provider (like AWS, Google Cloud Platform, Azure, etc.). Unfortunately, most IPs from cloud providers are blocked by YouTube.\n\nThere are two things y",
+      "test_description": "Chinese bodybuilding video (no English expected)"
+    },
+    "9XlOaVItUgI": {
+      "status": "unreachable",
+      "video_id": "9XlOaVItUgI",
+      "error_class": "request_blocked",
+      "safe_message": "\nCould not retrieve a transcript for the video https://www.youtube.com/watch?v=9XlOaVItUgI! This is most likely caused by:\n\nYouTube is blocking requests from your IP. This usually is due to one of the following reasons:\n- You have done too many requests and your IP has been blocked by YouTube\n- You are doing requests from an IP belonging to a cloud provider (like AWS, Google Cloud Platform, Azure, etc.). Unfortunately, most IPs from cloud providers are blocked by YouTube.\n\nThere are two things y",
+      "test_description": "Species AGI Drew (English expected)"
+    }
+  },
+  "overall_status": "unreachable",
+  "run_id": "canary-672628fe358a",
+  "timestamp": "2026-09-12T01:45:34.748696+00:00",
+  "tool": "youtube-transcript-canary-v0",
+  "sha256": "b6246188a2ed0eb0ef60fad2c04ba2c1fb5f9ef7f3e31c9e8c370c9d12d53a40"
+}

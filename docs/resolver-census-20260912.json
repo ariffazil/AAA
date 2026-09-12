@@ -1,0 +1,235 @@
+{
+  "meta": {
+    "artifact": "resolver-census",
+    "version": "1.0.0",
+    "created_utc": "2026-09-12T08:50:00Z",
+    "created_by": "FI-003",
+    "f13_status": "DRAFT — awaiting sovereign ratification",
+    "doctrine": "mtime is recency evidence, not authority. Authority comes from ownership + contract + schema."
+  },
+
+  "resources": [
+    {
+      "resource_id": "arifos://carry-forward",
+      "semantic_type": "session_continuity",
+      "semantic_owner": "UNKNOWN",
+      "owner_status": "RED — no declared owner",
+
+      "candidates": [
+        {
+          "path": "/root/.local/share/arifos/carry_forward.json",
+          "exists": true,
+          "size_bytes": 22852,
+          "schema": "arifos.carry_forward.v2",
+          "format": "dict",
+          "semantic": "v2 generational state — session lineage, open loops, carried_v1",
+          "writers": ["carry_forward.py", "clarity_carry.py", "mvm.py"],
+          "flock": true,
+          "backup_on_write": true,
+          "declared_by": "carry_forward.py (canonical)",
+          "note": "OBJ-2 — P0 monitoring target"
+        },
+        {
+          "path": "/root/.hermes/carry_forward.json",
+          "exists": true,
+          "size_bytes": 10339,
+          "schema": null,
+          "format": "flat_dict",
+          "semantic": "Hermes local session state — 8 keys, no schema_version",
+          "writers": ["Hermes gateway (KVM4)"],
+          "flock": false,
+          "backup_on_write": false,
+          "declared_by": "Hermes runtime",
+          "note": "Separate lane — not federation SOT. Different semantic type."
+        },
+        {
+          "path": "/root/HERMES/carry_forward.json",
+          "exists": true,
+          "size_bytes": 10339,
+          "schema": null,
+          "format": "symlink → /root/.hermes/carry_forward.json",
+          "semantic": "Same object as .hermes/ — /root/HERMES is symlink to /root/.hermes",
+          "writers": [],
+          "flock": false,
+          "backup_on_write": false,
+          "declared_by": "legacy symlink",
+          "note": "PHANTOM CANDIDATE — not a separate object"
+        },
+        {
+          "path": "/root/AAA/docs/carry_forward.json",
+          "exists": true,
+          "size_bytes": 11479,
+          "schema": null,
+          "format": "flat_dict",
+          "semantic": "Archive snapshot — older copy, different session keys",
+          "writers": [],
+          "flock": false,
+          "backup_on_write": false,
+          "declared_by": "AAA docs archive",
+          "note": "STALE — mtime 15:15, older than both other lanes"
+        },
+        {
+          "path": "/root/carry_forward.json",
+          "exists": false,
+          "schema": null,
+          "format": null,
+          "semantic": "PHANTOM — zero declarers, zero consumers",
+          "writers": [],
+          "flock": false,
+          "backup_on_write": false,
+          "declared_by": "resource.py line 171 (phantom path)",
+          "note": "TOMBSTONED — still referenced in resource.py REST resolver"
+        }
+      ],
+
+      "resolvers": [
+        {
+          "surface": "fastmcp_ext/resources.py",
+          "line": "167-205",
+          "transport": "MCP in-process",
+          "candidates": [
+            "/root/.local/share/arifos/carry_forward.json",
+            "/root/.hermes/carry_forward.json",
+            "/root/AAA/docs/carry_forward.json"
+          ],
+          "selection": "mtime_max",
+          "stamps": true,
+          "note": "Serves freshest file + _served_from + _served_mtime_utc. Added 2026-09-12 flow audit."
+        },
+        {
+          "surface": "resource.py",
+          "line": "166-175",
+          "transport": "REST/CLI",
+          "candidates": [
+            "/root/.local/share/arifos/carry_forward.json",
+            "/root/carry_forward.json"
+          ],
+          "selection": "first_found",
+          "stamps": false,
+          "note": "PHANTOM PATH at line 171 (/root/carry_forward.json = ABSENT). Does NOT include .hermes/ lane."
+        },
+        {
+          "surface": "session_context.py",
+          "line": "28-30",
+          "transport": "shell script",
+          "candidates": [
+            "/root/.local/share/arifos/carry_forward.json",
+            "/root/AAA/docs/carry_forward.json",
+            "/root/HERMES/carry_forward.json"
+          ],
+          "selection": "mtime_max",
+          "stamps": false,
+          "note": "Script-level reader. Uses HERMES/ (symlink) not .hermes/ directly."
+        }
+      ],
+
+      "writers": [
+        {
+          "script": "carry_forward.py",
+          "path": "/root/scripts/carry_forward.py",
+          "target": "/root/.local/share/arifos/carry_forward.json",
+          "schema": "arifos.carry_forward.v2",
+          "lock": "flock (exclusive)",
+          "backup": true,
+          "atomic_write": false,
+          "role": "canonical v2 generational writer",
+          "status": "ACTIVE"
+        },
+        {
+          "script": "clarity_carry.py",
+          "path": "/root/arifOS/arifosmcp/runtime/clarity_carry.py",
+          "target": "ARIFOS_CARRY_FORWARD env (defaults to .local/share/arifos/)",
+          "deployed_target": "/root/.local/share/arifos/clarity_receipts.json (drop-in repointed)",
+          "schema": "receipt_array",
+          "lock": "none",
+          "backup": true,
+          "atomic_write": true,
+          "role": "receipt stream writer — REPOINTED 2026-09-12",
+          "status": "ACTIVE — drop-in 50-carry-forward-repoint.conf"
+        },
+        {
+          "script": "mvm.py",
+          "path": "/root/scripts/mvm.py",
+          "target": "/root/.local/share/arifos/carry_forward.json",
+          "schema": "v1 freeform (reads existing, patches, writes back)",
+          "lock": "none (backup only)",
+          "backup": true,
+          "atomic_write": false,
+          "role": "mutation utility — reads v2, patches, writes back",
+          "status": "ACTIVE — no flock, potential race with carry_forward.py"
+        }
+      ],
+
+      "readers": [
+        {
+          "consumer": "resource.py (REST/CLI)",
+          "resolution": "first_found (.local/share/ → root/phantom)",
+          "note": "PHANTOM PATH in candidates"
+        },
+        {
+          "consumer": "fastmcp_ext/resources.py (MCP)",
+          "resolution": "mtime_max across 3 lanes",
+          "note": "Stamps provenance. Newest wins — semantically wrong."
+        },
+        {
+          "consumer": "session_context.py (shell)",
+          "resolution": "mtime_max across 3 lanes",
+          "note": "Script-level reader"
+        },
+        {
+          "consumer": "generate-session-briefing.sh",
+          "resolution": "hardcoded .local/share/arifos/",
+          "note": "Correct path, no mtime race"
+        },
+        {
+          "consumer": "Hermes gateway (KVM4)",
+          "resolution": ".hermes/carry_forward.json (separate lane)",
+          "note": "LOCAL to KVM4 — does NOT read .local/share/arifos/"
+        }
+      ],
+
+      "violations": [
+        {
+          "id": "V1",
+          "type": "phantom_path",
+          "severity": "YELLOW",
+          "location": "resource.py line 171",
+          "description": "Candidate /root/carry_forward.json is ABSENT. resource.py iterates it as first_found.",
+          "fix": "Remove /root/carry_forward.json from resource.py candidates list"
+        },
+        {
+          "id": "V2",
+          "type": "mtime_as_authority",
+          "severity": "RED",
+          "location": "fastmcp_ext/resources.py, session_context.py",
+          "description": "mtime_max selection picks .hermes/ (Hermes state, no schema) over .local/share/ (v2 generational, schema, flock). Recency used as authority.",
+          "fix": "Owner-declared path first, mtime only as tiebreaker between same-schema objects"
+        },
+        {
+          "id": "V3",
+          "type": "triple_resolver",
+          "severity": "YELLOW",
+          "location": "resource.py + fastmcp_ext + session_context.py",
+          "description": "Three independent resolvers with different candidate lists for the same resource. No shared resolution contract.",
+          "fix": "Single resolution function imported by all three surfaces. Candidate list defined once."
+        },
+        {
+          "id": "V4",
+          "type": "unowned_writers",
+          "severity": "YELLOW",
+          "location": "carry_forward.py + clarity_carry.py + mvm.py",
+          "description": "Three writers to the same object. Only carry_forward.py has flock. mvm.py has no lock.",
+          "fix": "mvm.py must acquire flock or use carry_forward.py's append API"
+        },
+        {
+          "id": "V5",
+          "type": "semantic_collision",
+          "severity": "RED",
+          "location": "arifos://carry-forward resource",
+          "description": "Three different semantic objects (v2 generational / Hermes session state / archive snapshot) compete for one resource URI. Different schemas, different writers, different purposes.",
+          "fix": "Split into typed resources: arifos://carry-forward (v2 generational), arifos://hermes-state (Hermes session), arifos://archive/carry-forward (stale copies)"
+        }
+      ]
+    }
+  ]
+}

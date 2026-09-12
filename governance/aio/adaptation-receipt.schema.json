@@ -1,0 +1,248 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arifos-aio-adaptation-receipt-v1",
+  "title": "Adaptation Receipt — AIO v1",
+  "description": "A single bounded learning delta produced by the Adaptation & Institutional Learning Organ. Append-only. Every receipt traces a witnessed reality to a proposed behavioral change.",
+  "type": "object",
+  "required": ["adaptation_id", "status", "created_at", "observation", "learning_claim", "proposed_delta", "authorization", "consequence_test"],
+  "properties": {
+    "adaptation_id": {
+      "type": "string",
+      "pattern": "^AIO-\\d{8}-\\d{3}$",
+      "description": "Unique receipt ID. Format: AIO-YYYYMMDD-NNN"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["PROPOSED", "AUTHORIZED", "REJECTED", "FORGED", "MEASURED", "RETAINED", "AMENDED", "REVERTED", "EXPIRED"],
+      "description": "Lifecycle status. No skip-forward allowed."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 UTC timestamp of receipt creation"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Optional expiry. After this, status becomes EXPIRED if not progressed."
+    },
+    "observation": {
+      "type": "object",
+      "required": ["id", "statement", "freshness", "confidence"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Traceable observation ID from witness layer"
+        },
+        "statement": {
+          "type": "string",
+          "description": "Plain-language description of the witnessed reality"
+        },
+        "source_receipts": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "IDs of receipts or evidence that support this observation"
+        },
+        "freshness": {
+          "type": "string",
+          "enum": ["VALID", "STALE", "UNKNOWN"],
+          "description": "Whether the observation is temporally fresh"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Confidence in the observation (0-1)"
+        },
+        "epistemic_label": {
+          "type": "string",
+          "enum": ["OBS", "DER", "INT", "SPEC"],
+          "description": "Epistemic class: OBS=observed, DER=derived, INT=interpreted, SPEC=specified"
+        }
+      }
+    },
+    "learning_claim": {
+      "type": "object",
+      "required": ["id", "statement", "falsifier", "risk_class"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique learning claim ID"
+        },
+        "statement": {
+          "type": "string",
+          "description": "Falsifiable claim: 'Because X under conditions Y, future behavior should change from A to B.'"
+        },
+        "falsifier": {
+          "type": "string",
+          "description": "A specific condition under which this claim is wrong"
+        },
+        "risk_class": {
+          "type": "string",
+          "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"],
+          "description": "Risk classification of the proposed delta"
+        },
+        "recurrence": {
+          "type": "object",
+          "properties": {
+            "count": { "type": "integer", "minimum": 1 },
+            "first_seen": { "type": "string", "format": "date-time" },
+            "last_seen": { "type": "string", "format": "date-time" }
+          },
+          "description": "Optional: evidence this is a recurring pattern"
+        }
+      }
+    },
+    "proposed_delta": {
+      "type": "object",
+      "required": ["id", "type", "change", "behavior_before", "behavior_after", "reversible"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique delta ID"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "policy_rule",
+            "threshold_change",
+            "registry_schema",
+            "runtime_guard",
+            "tool_contract",
+            "runbook_update",
+            "capability_lifecycle",
+            "memory_schema",
+            "governance_parameter"
+          ],
+          "description": "Type of institutional change"
+        },
+        "change": {
+          "type": "string",
+          "description": "Plain-language description of what changes"
+        },
+        "behavior_before": {
+          "type": "string",
+          "description": "System behavior before the delta"
+        },
+        "behavior_after": {
+          "type": "string",
+          "description": "Expected system behavior after the delta"
+        },
+        "reversible": {
+          "type": "boolean",
+          "description": "Whether this change can be cleanly rolled back"
+        },
+        "rollback": {
+          "type": "string",
+          "description": "How to reverse this change"
+        },
+        "implementation": {
+          "type": "object",
+          "properties": {
+            "target_file": { "type": "string" },
+            "target_service": { "type": "string" },
+            "target_registry": { "type": "string" }
+          },
+          "description": "Specific implementation targets (filled at FORGE time)"
+        }
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "required": ["required", "state"],
+      "properties": {
+        "required": {
+          "type": "string",
+          "enum": ["AUTO", "HUMAN_F13", "HUMAN_F13_PLUS_555", "SOVEREIGN_ONLY"],
+          "description": "Authorization level required"
+        },
+        "state": {
+          "type": "string",
+          "enum": ["PENDING", "GRANTED", "DENIED", "EXPIRED"],
+          "description": "Current authorization state"
+        },
+        "authorized_by": {
+          "type": "string",
+          "description": "Who authorized (human ID or 'AUTO')"
+        },
+        "authorized_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "denial_reason": {
+          "type": "string"
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "properties": {
+        "state": {
+          "type": "string",
+          "enum": ["NOT_STARTED", "IN_PROGRESS", "COMPLETED", "FAILED"],
+          "default": "NOT_STARTED"
+        },
+        "executed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "executed_by": {
+          "type": "string"
+        },
+        "artifact_hash": {
+          "type": ["string", "null"],
+          "description": "SHA-256 of the implemented change"
+        },
+        "receipt_id": {
+          "type": "string",
+          "description": "VAULT999 receipt for the execution"
+        }
+      }
+    },
+    "consequence_test": {
+      "type": "object",
+      "required": ["metric", "baseline", "target"],
+      "properties": {
+        "metric": {
+          "type": "string",
+          "description": "Measurable metric that validates the learning"
+        },
+        "baseline": {
+          "description": "Value before the delta (string 'UNKNOWN' or number)"
+        },
+        "target": {
+          "description": "Expected value after the delta"
+        },
+        "measured_value": {
+          "description": "Actual measured value (null until MEASURED)"
+        },
+        "review_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When to measure consequence"
+        },
+        "verdict": {
+          "type": "string",
+          "enum": ["RETAINED", "AMENDED", "REVERTED", "PENDING"],
+          "description": "Outcome of the consequence test"
+        }
+      }
+    },
+    "lineage": {
+      "type": "object",
+      "description": "Full traceability chain linking this receipt to its causal ancestors",
+      "properties": {
+        "observation_id": { "type": "string" },
+        "evidence_ids": { "type": "array", "items": { "type": "string" } },
+        "learning_claim_id": { "type": "string" },
+        "delta_id": { "type": "string" },
+        "execution_receipt_id": { "type": "string" },
+        "consequence_receipt_id": { "type": "string" },
+        "parent_adaptation_id": {
+          "type": "string",
+          "description": "If this delta amends a prior adaptation"
+        }
+      }
+    }
+  }
+}

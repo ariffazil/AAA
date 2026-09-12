@@ -1,0 +1,130 @@
+{
+  "$schema": "arifos.carry_forward.v2",
+  "epoch": "2026-09-12T19:30:00+08:00",
+  "session_id": "SEAL-0911d15d10ab4536",
+  "actor_id": "333-AGI",
+  "artifact": "AAA-OPENCODE-CAPABILITY-BASELINE-v2",
+  "supersedes": "AAA-OPENCODE-CAPABILITY-BASELINE-v1 (capability-baseline-2026-09-12.md)",
+  "status": "CANDIDATE_PARTIAL",
+  "verdict": "RETAK_PENDING_EFFECTIVE_POLICY_PROBE",
+  "dS": -0.32,
+  "peace2": 1.0,
+  "kappa_r": 0.86,
+  "confidence": 0.82,
+  "psi_le": "phase-a-partial",
+  "corrections_from_v1": [
+    "F8 vs F13 distinction: G=0.5097 blocked at F8 GENIUS, NOT F13 SOVEREIGN. F13 escalation not proven.",
+    "Status downgraded from PHASE_A_DONE to PHASE_A_PARTIAL",
+    "Confidence band reduced 0.88 → 0.82",
+    "κ_r reduced 0.92 → 0.86",
+    "ΔS reduced -0.40 → -0.32 (some 'entropy reduction' was layering illusion)"
+  ],
+  "actions": [
+    {
+      "id": "permission-baseline-replace",
+      "type": "MUTATE_REVERSIBLE",
+      "status": "DONE",
+      "summary": "Global permission replaced with tiered baseline; JSON valid; backup retained"
+    },
+    {
+      "id": "capability-index-config-enable",
+      "type": "MUTATE_REVERSIBLE",
+      "status": "DONE",
+      "summary": "enabled false → true; superseded 2026-08-25 'redundant' note; DRIFT signal reconciled"
+    },
+    {
+      "id": "capability-index-runtime-probe",
+      "type": "OBSERVE",
+      "status": "VERIFIED",
+      "summary": "FastMCP server live, list_tools() returns 3 tools (capability_search, capability_select, capability_reindex); module imports cleanly",
+      "evidence": "asyncio.run probe; tool enumeration confirmed; invocation attempt returned TypeError on kwargs (server alive, call-signature bug in probe script)"
+    },
+    {
+      "id": "capability-index-store-probe",
+      "type": "OBSERVE",
+      "status": "RETAK",
+      "summary": "Qdrant at localhost:6333 alive (17 collections); no 'capability_index' collection exists. Store layer cannot serve vector retrieval until seed/reindex runs.",
+      "evidence": "GET /collections returned 17 arifOS-related collections; none matching capability_index"
+    },
+    {
+      "id": "333-AGI-agent-permission-audit",
+      "type": "OBSERVE",
+      "status": "RETAK_CONFIRMED",
+      "summary": "Agent-level permission is {\"*\":\"allow\",\"doom_loop\":\"ask\"}; per OpenCode docs agent rules take precedence over global. Global tiered baseline does NOT restrict 333-AGI."
+    },
+    {
+      "id": "other-agent-permission-audit",
+      "type": "OBSERVE",
+      "status": "PARTIAL_TIGHTER_ALREADY",
+      "summary": "555-ASI, 888-APEX, dispatch already have read-only baselines (task/edit/write/bash/todowrite/question = deny). Global mutation does not loosen them; baseline already safer."
+    },
+    {
+      "id": "project-layer-config-discovery",
+      "type": "OBSERVE",
+      "status": "NEW_FINDING",
+      "summary": "Found 4 project-layer opencode.json files outside /root/.config/opencode/",
+      "files": [
+        "/root/arifOS/.opencode.json (16KB, string 'permission:allow', 8 MCPs, 2 agents, model=claude-sonnet-4-5)",
+        "/root/WEALTH/.opencode.json (1.7KB, null mcp key)",
+        "/root/arif-fazil.com/infra/vps_root/opencode-config/.opencode.json (5.9KB, CRITICAL: edit/bash/write=allow, single MCP, deployer profile)",
+        "/root/arifOS/docs/reference/spec/.opencode-mcp.json (501B, null structure, likely spec reference)"
+      ]
+    },
+    {
+      "id": "capability-index-registry-staleness",
+      "type": "OBSERVE",
+      "status": "NEW_FINDING",
+      "summary": "/root/AAA/registries/mcp_servers/capability-index.json claims tools_count:0, status:ONLINE, last_reconciled 2026-08-10. Reality: 3 tools exposed, store unindexed. Registry is stale shadow."
+    },
+    {
+      "id": "v2-report-write",
+      "type": "MUTATE_REVERSIBLE",
+      "status": "DONE",
+      "summary": "Corrected v2 report at /root/AAA/reports/capability-baseline-2026-09-12-v2.md"
+    },
+    {
+      "id": "seal-not-attempted-v2",
+      "type": "OBSERVE",
+      "status": "HELD",
+      "summary": "Per operator 'no blind retry loop'; new evidence decreases confidence (capability-index store unindexed, 333-AGI RETAK, project-layer VPS permissive); recomputed G would not clear F8 floor. Seal not retried."
+    }
+  ],
+  "shadow": [
+    "333-AGI agent-level { *:allow } overrides global tiered baseline",
+    "capability-index store layer unindexed (no Qdrant collection)",
+    "Project-layer VPS deployer profile exists with edit/bash/write=allow",
+    "arifOS project config has suspicious string permission",
+    "Permission canaries not run (cannot run 'as 333-AGI' in same session)",
+    "Pattern-level deny rules untested in 1.18.28",
+    "arifFlow receipt not independently inspected by external witness",
+    "F13 requirement was overclaimed in v1 (corrected to F8)"
+  ],
+  "holds": [
+    "organs.yaml migrations (doctrine topology)",
+    "VPS write enable (hostinger-vps MCP)",
+    "Supabase schema mutations",
+    "Secret rotation",
+    "F1–F13 changes",
+    "Production deployments",
+    "Paid-API enable >$10/mo",
+    "333-AGI agent-level permission rewrite (held per operator Gate 4: after canary)",
+    "capability-index reindex invocation (touches memory topology)"
+  ],
+  "next_phase_gates": [
+    "G1: Live permission-syntax probe with isolated test agent (1.18.28 pattern support)",
+    "G2: capability-index seed/reindex invocation to create Qdrant collection",
+    "G3: 333-AGI agent-level permission rewrite (after canary validates tiered shape)",
+    "G4: Pattern-level deny rules for destructive ops",
+    "G5: LSP/formatter matrix explicit override",
+    "G6: Project-layer VPS config audit (separate governance path)"
+  ],
+  "witness": {
+    "human": "operator report (F8 vs F13 correction, gate sequencing)",
+    "ai": "configuration semantics audit + re-probe (this document)",
+    "earth": "opencode 1.18.28 binary + capability-index FastMCP live probe + Qdrant /collections enumeration"
+  },
+  "qdf": "verify merged permissions before seal",
+  "report_path": "/root/AAA/reports/capability-baseline-2026-09-12-v2.md",
+  "backup_path": "/root/.config/opencode/opencode.json.bak-pre-baseline-20260912T111844Z",
+  "supersedes_path": "/root/AAA/reports/capability-baseline-2026-09-12.md"
+}

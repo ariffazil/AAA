@@ -4,6 +4,11 @@
 /llms.txt    /llms.txt    200
 /llms.json   /llms.json   200
 
+# Canonical AAA aliases → federation cockpit (one-name-one-path, 2026-09-12)
+# Must precede the SPA catch-all: first match wins.
+/AAA/*    https://aaa.arif-fazil.com/:splat    301
+/aaa/*    https://aaa.arif-fazil.com/:splat    301
+
 # SPA fallback for React Router
 /*    /index.html   200
 

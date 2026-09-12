@@ -1,0 +1,42 @@
+{
+  "witness_id": "W-BASELINE-AIO-GEOX-PARITY-001",
+  "cycle_id": "AIO-GEOX-PARITY-001",
+  "creator_agent": "hermes",
+  "authority_scope": "OBSERVE",
+  "created_at": "2026-09-12T06:37:41.448478+00:00",
+  "ontology": "OBSERVED",
+  "evidence_refs": [
+    "infer_mode() execution against all 26 public tools with empty result"
+  ],
+  "provenance": "Runtime execution 2026-09-12",
+  "confidence_band": "HIGH",
+  "unknowns": [],
+  "contradictions": [],
+  "content_hash": "20e323ead3ce1319",
+  "predicate": {
+    "description": "All 26 public GEOX tools classify as non-'unknown' when infer_mode() receives empty result",
+    "reproducible_command": "cd /root/GEOX && python3 -c \"import sys; sys.path.insert(0,'src'); from geox_mcp.ext_witness_stamp import infer_mode; tools=['geox_basin','geox_claim','geox_contrast_metabolize','geox_deep_time','geox_geomechanics','geox_glof_cascade_initialize','geox_glof_cascade_inverse','geox_glof_cascade_mcmc_inverse','geox_glof_cascade_metabolize','geox_glof_cascade_phase','geox_glof_cascade_propagate','geox_glof_cascade_step','geox_map','geox_model','geox_paleobiodb_query','geox_petrophysics','geox_prospect','geox_seismic_compute','geox_seismic_ingest','geox_seismic_interpret','geox_source','geox_spatial','geox_temporal','geox_well','geox_well_ingest','geox_well_qc']; unknowns=[t for t in tools if infer_mode(t,{})=='unknown']; print(f'unknown_count={len(unknowns)} tools={unknowns}')\"",
+    "expected_before_change": "unknown_count=14",
+    "expected_after_change": "unknown_count=0",
+    "actual_pre_change": {
+      "unknown_count": 14,
+      "unknown_tools": [
+        "geox_contrast_metabolize",
+        "geox_glof_cascade_initialize",
+        "geox_glof_cascade_inverse",
+        "geox_glof_cascade_mcmc_inverse",
+        "geox_glof_cascade_metabolize",
+        "geox_glof_cascade_phase",
+        "geox_glof_cascade_propagate",
+        "geox_glof_cascade_step",
+        "geox_map",
+        "geox_model",
+        "geox_paleobiodb_query",
+        "geox_spatial",
+        "geox_temporal",
+        "geox_well"
+      ]
+    },
+    "timestamp": "2026-09-12T06:37:41.448478+00:00"
+  }
+}
