@@ -203,6 +203,49 @@ def _probe_memory_tiers() -> dict:
     return result
 
 
+def _vault_chain_integrity() -> dict:
+    """U17 wire (2026-09-12, Gate-2 item 1): run the V-layer verifier on cadence.
+
+    chain_walk.py --gaps is READ-ONLY on VAULT999 outcomes. Verifier itself
+    broken/unresolvable/timeout -> unknown (Void Guard: cannot-witness is not
+    all-clear). Prior gap: the verifier sat dead-at-HEAD ~2.5 days (4a44293
+    -> 2026-09-12) with zero alerts — nothing watched the watchers.
+    """
+    import subprocess
+
+    out = {
+        "verifier": "/root/scripts/chain_walk.py",
+        "status": "unknown",
+        "chain_breaks": None,
+        "detail": "",
+        "doctrine_ref": "FEDERATION-CONSTITUTIONAL-INVARIANTS-v1.1 U17",
+    }
+    try:
+        r = subprocess.run(
+            ["python3", "/root/scripts/chain_walk.py", "--gaps"],
+            capture_output=True,
+            text=True,
+            timeout=60,
+        )
+        stdout = (r.stdout or "").strip()
+        out["detail"] = " | ".join(stdout.splitlines()[:2])[:200]
+        if r.returncode != 0:
+            out["status"] = "verifier_error"
+            out["detail"] = (stdout + " " + (r.stderr or "").strip())[:200]
+        elif "No chain breaks" in stdout:
+            out["status"] = "healthy"
+            out["chain_breaks"] = 0
+        else:
+            out["status"] = "broken"
+    except subprocess.TimeoutExpired:
+        out["status"] = "unknown"
+        out["detail"] = "verifier timeout 60s"
+    except Exception as e:
+        out["status"] = "unknown"
+        out["detail"] = str(e)[:120]
+    return out
+
+
 def _closure_slo() -> dict:
     """P3B — Closure SLO metrics for cockpit.
 
@@ -389,6 +432,7 @@ def main():
             "dead": dead_count,
         },
         "memory_tiers": _probe_memory_tiers(),
+        "vault_chain": _vault_chain_integrity(),
         "closure_slo": _closure_slo(),
         "agent_list": agent_list,
         "_probe_count": probe_count,
@@ -402,7 +446,10 @@ def main():
     tmp.rename(STATUS_JSON_PATH)
 
     # Summary to stdout (for journal)
-    print(f"COCKPIT: {alive_count}/{len(PROBED_ORGANS)} alive, {dead_count} dead ({status['probe_duration_ms']}ms)")
+    print(
+        f"COCKPIT: {alive_count}/{len(PROBED_ORGANS)} alive, {dead_count} dead "
+        f"({status['probe_duration_ms']}ms) vault_chain={status['vault_chain']['status']}"
+    )
     return 0
 
 
