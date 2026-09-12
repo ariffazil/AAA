@@ -1,5 +1,5 @@
 -- L3 Shadow Partition Schema
--- Location: /root/AAA/skills/agentic-dream-engine/prototype/l3_shadow_schema.sql
+-- Location: /root/AAA/skills/AGI-dream-engine/prototype/l3_shadow_schema.sql
 -- Purpose: Reversible staging area for sleep-time compute output before F1/F2 validation.
 -- Doctrine: never write directly to primary memory_records/memory_embeddings during unsupervised dream state.
 
