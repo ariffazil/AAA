@@ -8,8 +8,8 @@
     "category": "LLM-as-principal (Anthropic Claude is the principal; Claude Code is the governed harness)",
     "principle_origin": "Anthropic Claude via FED-routed LiteLLM gateway at http://127.0.0.1:4000"
   },
-  "description": "Claude Code CLI — Anthropic's native agentic coding harness, federated as AAA warga FI-002. Reversible engineering forge instrument bound to 333-AGI (Δ MIND). FED-routed model lanes: hermes-asi (text), hermes-asi-vision (multimodal), asi-555 (coder), apex-888 (sovereign judgment — never self-authorises; goes through arifOS). EMD role: DECODER.",
-  "version": "2.2.1",
+  "description": "Claude Code Engineering Cell — Anthropic's native agentic coding harness, federated as AAA warga FI-002. Repository-native engineering cell bound to 333-AGI (Δ MIND). Authority ceiling PROPOSE_AND_VERIFY. OBSERVE → PLAN → PATCH_LOCAL → TEST → REPORT → PROPOSE → HOLD. Never self-authorises; goes through arifOS for consequential actions. EMD role: DECODER.",
+  "version": "3.0.0-warga-cell",
   "model": "claude-sonnet",
   "binary": "/root/.local/bin/claude",
   "config_home": "/root/.claude",
@@ -17,8 +17,8 @@
   "identity_path": "/root/.claude/CLAUDE_IDENTITY.md",
   "warga_card": "/root/AAA/agents/claude-code/WARGAAA_CARD.md",
   "tier": "FI",
-  "role": "forge_instrument",
-  "class": "CODING/FI",
+  "role": "engineering_cell",
+  "class": "WARGA_AAA_REPOSITORY_NATIVE_ENGINEERING_CELL",
   "emd_role": "DECODER",
   "constitutional_proxy": "333-AGI",
   "orbit": "333-AGI",
@@ -107,7 +107,49 @@
     "F11",
     "F13"
   ],
-  "authority_tier_ceiling": "T3_888_HOLD",
+  "authority_tier_ceiling": "PROPOSE_AND_VERIFY",
+  "warga_design": {
+    "kind": "repository_native_engineering_agent",
+    "federation_class": "WARGA_AAA",
+    "owner": "arif",
+    "home_organ": "AAA",
+    "operating_loop": "OBSERVE → PLAN → PATCH_LOCAL → TEST → REPORT → PROPOSE → HOLD",
+    "authority": {
+      "ceiling": "PROPOSE_AND_VERIFY",
+      "can_route": false,
+      "can_judge": false,
+      "can_execute_external": false,
+      "can_issue_verdict": false,
+      "can_authoritative_witness": false,
+      "human_gate_for_remote_mutation": true,
+      "arifos_gate_for_consequential_action": true
+    },
+    "runtime_profiles": {
+      "human_operator_session": {
+        "controller": "human_arif",
+        "interactive_only": true,
+        "federation_eligible": false,
+        "remote_mutation": "human_command_only"
+      },
+      "warga_aaa_engineering_cell": {
+        "controller": "aaa_task_contract",
+        "worktree_isolation": "required",
+        "sandbox": "required",
+        "task_contract_required": true,
+        "capability_token_required": true,
+        "receipt_required": true,
+        "default_action": "HOLD"
+      }
+    },
+    "mcp_trust_zones": {
+      "Z0_local_read": "allowed_when_task_scoped",
+      "Z1_scoped_mutation": "allowed_in_candidate_worktree_only",
+      "Z2_authenticated_read": "read_only_unless_explicit_contract",
+      "Z3_external_side_effects": "requires_888_HOLD",
+      "Z4_production_destructive": "requires_888_HOLD"
+    },
+    "musyawarah_roles": ["architect", "scout", "forge", "verifier", "red_team", "scribe"]
+  },
   "mcp_surface": {
     "registered_servers": [
       {
@@ -173,32 +215,9 @@
     }
   },
   "hooks": {
-    "SessionStart": [
-      "/root/hooks/bootstrap.sh"
-    ],
-    "PreToolUse": [
-      "/root/hooks/token-gate.sh"
-    ],
-    "PostToolUse": [
-      "/root/hooks/auto-seal.sh"
-    ],
-    "PostToolUseFailure": [
-      "/root/hooks/failure-recovery.sh"
-    ],
-    "UserPromptSubmit": [
-      "/root/hooks/prompt-enrich.sh"
-    ],
-    "PermissionRequest": [
-      "/root/hooks/auto-approve.sh"
-    ],
-    "PreCompact": [
-      "/root/hooks/precompact.sh"
-    ],
-    "PostCompact": [
-      "/root/hooks/postcompact.sh"
-    ],
-    "Stop": [
-      "/root/hooks/stop.sh"
+    "_note": "Dead file-backed hooks removed 2026-09-12 (9 handlers referencing /root/hooks/*.sh — directory absent 38+ days). SessionEnd inline hook preserved (posts to arifflow :7073). arifFlow /ingest auth gap recorded as AAA-CC-HOOK-DRIFT-2026-09-12-01.",
+    "SessionEnd": [
+      "inline bash — posts Verify+Seal receipts to http://127.0.0.1:7073/ingest"
     ]
   },
   "enabled_plugins": [
@@ -288,7 +307,7 @@
     "card": 1
   },
   "governance_profile": {
-    "authority_ceiling": "OBSERVE_ONLY",
+    "authority_ceiling": "PROPOSE_AND_VERIFY",
     "constitutional_floors": [
       "F1",
       "F2",

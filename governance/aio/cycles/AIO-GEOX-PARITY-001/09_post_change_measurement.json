@@ -1,0 +1,32 @@
+{
+  "witness_id": "W-MEASURE-AIO-GEOX-PARITY-001",
+  "cycle_id": "AIO-GEOX-PARITY-001",
+  "creator_agent": "fi-003",
+  "authority_scope": "F13_AUTHORIZED",
+  "created_at": "2026-09-12T06:38:00Z",
+  "ontology": "OBSERVED",
+  "evidence_refs": ["08_enforcement_witness.json", "02_baseline_measurement.json"],
+  "provenance": "Post-change measurement via identical predicate",
+  "confidence_band": "HIGH",
+  "measurements": {
+    "fix_a": {
+      "predicate": "python3 yaml.safe_load(tools_manifest.yaml).public_count_target == count(tools where visibility=public)",
+      "before": {"ok": false, "target": 20, "actual": 26},
+      "after": {"ok": true, "target": 26, "actual": 26},
+      "comparison_method": "identical predicate, same YAML file path",
+      "limitations": "Only verifies the YAML file, not the live runtime boot"
+    },
+    "fix_b": {
+      "predicate": "geox_source MCP call -> envelope.data_mode and envelope.provenance.mode",
+      "before": {"data_mode": "unknown", "provenance_mode": "unknown"},
+      "after": {"data_mode": "derived", "provenance_mode": "derived"},
+      "comparison_method": "same tool, same parameters, same MCP endpoint",
+      "limitations": "Measured via MCP client; service was restarted between calls"
+    },
+    "regression_check": {
+      "geox_health": "healthy, 26 tools, 0 drift",
+      "no_scope_leakage": true
+    }
+  },
+  "content_hash": "measure-001-both-improved"
+}

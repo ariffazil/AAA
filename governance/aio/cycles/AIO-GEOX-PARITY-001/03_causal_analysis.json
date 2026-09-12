@@ -1,0 +1,49 @@
+{
+  "witness_id": "W-CAUSAL-AIO-GEOX-PARITY-001",
+  "cycle_id": "AIO-GEOX-PARITY-001",
+  "creator_agent": "hermes",
+  "authority_scope": "OBSERVE",
+  "created_at": "2026-09-12T06:38:08.982372+00:00",
+  "ontology": "INFERRED",
+  "evidence_refs": [
+    "ext_witness_stamp.py lines 207-238 (pattern list)",
+    "inspect.getsource(infer_mode) \u2014 runtime code verification",
+    "14/26 tools return 'unknown' with empty result"
+  ],
+  "provenance": "Code analysis + execution 2026-09-12",
+  "confidence_band": "HIGH",
+  "unknowns": [
+    "Whether production tools set data_mode explicitly (bypassing infer_mode)",
+    "When the 14 tools were added to the public surface without updating the pattern list"
+  ],
+  "contradictions": [
+    "geox_source was reported as defective \u2014 already fixed at line 228",
+    "The pattern list covers 12 tools but 14 were added to public surface later"
+  ],
+  "content_hash": "fd089869e1201140",
+  "candidate_explanations": [
+    {
+      "id": "E1_PATTERN_STALENESS",
+      "explanation": "14 tools were promoted to public visibility after the pattern list was written. The list was not updated to cover them.",
+      "evidence_for": "GLOF cascade tools (7), geox_map, geox_model, geox_spatial, geox_temporal, geox_well, geox_paleobiodb_query, geox_contrast_metabolize were added in later commits",
+      "confidence": "HIGH",
+      "ontology": "INFERRED"
+    },
+    {
+      "id": "E2_INTENTIONAL_UNKNOWN",
+      "explanation": "The 14 tools intentionally return 'unknown' because they haven't been vetted for ext_witness classification.",
+      "evidence_for": "The function comment says 'unknown = truly indeterminate (should be rare)'",
+      "evidence_against": "14/26 is not 'rare' \u2014 it's 54% of the public surface",
+      "confidence": "LOW",
+      "ontology": "INFERRED"
+    }
+  ],
+  "selected_explanation": "E1_PATTERN_STALENESS",
+  "causal_chain": [
+    "Pattern list written covering initial tool set",
+    "14 additional tools promoted to public in later development phases",
+    "Pattern list not updated to cover new tools",
+    "infer_mode() returns 'unknown' for 14 tools when no explicit data_mode",
+    "ext_witness stamp non-deterministic for 54% of public surface"
+  ]
+}

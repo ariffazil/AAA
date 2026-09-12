@@ -1,0 +1,63 @@
+{
+  "cycle_id": "AIO-GEOX-PARITY-001",
+  "mission": "AAA::APEX_ZEN_ACD_INIT::v1",
+  "authority": "ARIF (Human Sovereign)",
+  "created_by": "333-AGI",
+  "created_at": "2026-09-12T06:34:00Z",
+  "ontology": "OBSERVED",
+  "evidence_refs": [],
+  "provenance": {},
+  "confidence_band": "0.97",
+  "unknowns": [
+    "Hermes-discovered count 30 methodology not reproducible first-party"
+  ],
+  "contradictions": [],
+  "content_hash": "f93ca7fcead8d8d1",
+  "witness_id": "W01-STATE",
+  "repo": {
+    "path": "/root/GEOX",
+    "branch": "main",
+    "head": "c456858aa9586296e8bb700fffc189ca373a8783",
+    "clean": true
+  },
+  "runtime": {
+    "endpoint": "http://127.0.0.1:8081/mcp",
+    "method": "initialize + tools/list",
+    "tool_count": 26,
+    "names_evidence": "raw/runtime_tools_list.json"
+  },
+  "service": {
+    "version": "v2026.08.26",
+    "identity": "geox-939781bb",
+    "health": "healthy/kernel_verdict SEAL",
+    "evidence": "raw/geox_health.json"
+  },
+  "declared_surfaces": {
+    "tools_manifest.yaml": {
+      "public_entries": 26,
+      "total_entries": 80,
+      "public_count_target_header": 20,
+      "generated_from_header": "MASTER FORGE W8 restore 32-tool public surface"
+    },
+    "CANONICAL_PUBLIC_SURFACE.json": {
+      "public_count": 20,
+      "phantom": [
+        "geox_workspace"
+      ]
+    },
+    ".well-known/tools.json": {
+      "canonical_tools": 73,
+      "missing": 8
+    },
+    "contracts/mcp_surface.yaml": {
+      "canonical_tool_count": 39
+    },
+    "GEOX_MCP_APPS_SURFACE.json": {
+      "total_canonical_tools": 32
+    },
+    "static/index.html": {
+      "hardcoded_copy": "all 33 tools"
+    }
+  },
+  "parity_history": "git: cff6f617 / 8a5c3055 / 99ec278f \u2014 4x revert/reapply of 'paleobiodb + surface regeneration'"
+}

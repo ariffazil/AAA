@@ -1,0 +1,62 @@
+{
+  "cycle_id": "AIO-GEOX-PARITY-001",
+  "mission": "AAA::APEX_ZEN_ACD_INIT::v1",
+  "authority": "ARIF (Human Sovereign)",
+  "created_by": "333-AGI",
+  "created_at": "2026-09-12T06:34:00Z",
+  "ontology": "INFERRED",
+  "evidence_refs": [],
+  "provenance": {},
+  "confidence_band": "0.9 (C1), 0.75 (C2/C3)",
+  "unknowns": [],
+  "contradictions": [],
+  "content_hash": null,
+  "witness_id": "W03-CAUSAL",
+  "candidate_causes": [
+    {
+      "id": "C1",
+      "claim": "Generated surface artifacts are stale because the 'paleobiodb + surface regeneration' commit survived a 4x revert/reapply war; code/runtime won, regeneration lost.",
+      "evidence": [
+        "git cff6f617/8a5c3055/99ec278f",
+        "regenerator header: 'must be idempotent; public count must match manifest exactly'",
+        "--check FAIL 20!=26",
+        "manifest(26)==runtime(26)"
+      ],
+      "weight": "PRIMARY"
+    },
+    {
+      "id": "C2",
+      "claim": "Count proliferation across 6+ carriers (20/26/39/32/33/73) reflects incompatible scopes, causing the 26/27/30 narrative.",
+      "evidence": [
+        "five declared numbers in four files + hardcoded copy"
+      ],
+      "weight": "CONTRIBUTING"
+    },
+    {
+      "id": "C3",
+      "claim": "CI parity gate is count-equality-only and evidently non-blocking; set-level drift undetected.",
+      "evidence": [
+        "--check checks only public_count field",
+        "drift persisted to HEAD"
+      ],
+      "weight": "CONTRIBUTING"
+    }
+  ],
+  "alternatives": [
+    {
+      "claim": "geox_workspace intentionally retired; declaration lagged.",
+      "status": "SUBSUMED by C1 (regen removes phantom)"
+    },
+    {
+      "claim": "Runtime under-serving vs manifest.",
+      "status": "REJECTED \u2014 manifest==runtime zero diff"
+    }
+  ],
+  "disconfirming_evidence": [
+    "Hermes=30 unexplained by C1-C3"
+  ],
+  "unresolved_unknowns": [
+    "Hermes 30 methodology",
+    "exact dashboard '27 canonical' source"
+  ]
+}

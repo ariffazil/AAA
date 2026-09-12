@@ -1,0 +1,146 @@
+{
+  "receipt_id": "184cfa97-8a47-4679-9bfb-83b93808ec30",
+  "cycle_id": "0a1720ac-de2c-43db-bb18-1c9767dc00a2",
+  "request_id": "ace6e379-b5fe-4983-acdd-468a66b12135",
+  "core_version": "acd.dream.v1",
+  "adapter_id": "AIO-GEOX-PARITY-001",
+  "requesting_agent": "AIO-GEOX-PARITY-001",
+  "started_at": "2026-09-12T06:32:02.211218+00:00",
+  "completed_at": "2026-09-12T06:32:02.211256+00:00",
+  "runtime_status": "COMPLETED",
+  "shadow": true,
+  "input_evidence": [
+    "raw/runtime_tools_list.json",
+    "raw/set_diffs.json",
+    "GEOX:CANONICAL_PUBLIC_SURFACE.json@public_count=20",
+    "GEOX:.well-known/tools.json@73",
+    "git:cff6f617 revert/reapply war"
+  ],
+  "assumptions": [
+    "optimization target is correctly identified",
+    "current capabilities sufficient",
+    "failure is possible",
+    "current detection is adequate",
+    "no external disruption",
+    "no hidden constraints"
+  ],
+  "model_witness": {
+    "model": "acd_core_v1_deterministic",
+    "domain": "counterfactual_search",
+    "validity_envelope": "bounded_shadow",
+    "blind_spots": [
+      "no_world_model",
+      "no_llm",
+      "deterministic_only"
+    ]
+  },
+  "possibility_branches": 3,
+  "branches": [
+    {
+      "branch_id": "b1c314c4-e01f-45d0-ba97-29db4baa7cb7",
+      "parent_id": "0a1720ac-de2c-43db-bb18-1c9767dc00a2",
+      "divergence_point": "baseline",
+      "actions": [
+        "continue current trajectory"
+      ],
+      "simulated_states": [
+        "Current state persists over short horizon"
+      ],
+      "assumptions": [
+        "no external disruption",
+        "current capabilities sufficient"
+      ],
+      "ontology": "SIMULATED",
+      "evaluation_scores": {
+        "feasibility": 0.5,
+        "risk": 0.1,
+        "evidence_support": 1.0,
+        "constraint_satisfaction": 0.5
+      }
+    },
+    {
+      "branch_id": "bc809891-e0c7-4163-9eaa-35dc0c92ca3e",
+      "parent_id": "0a1720ac-de2c-43db-bb18-1c9767dc00a2",
+      "divergence_point": "optimization",
+      "actions": [
+        "optimize for: AIO-GEOX-PARITY-001 parity surface drift: candidate causes, counter-branches, failure modes"
+      ],
+      "simulated_states": [
+        "Improved state under geox surface declaration vs runtime (26/20/73 drift) scope"
+      ],
+      "assumptions": [
+        "optimization target is correctly identified",
+        "no hidden constraints"
+      ],
+      "ontology": "SIMULATED",
+      "evaluation_scores": {
+        "feasibility": 0.5,
+        "risk": 0.1,
+        "evidence_support": 1.0,
+        "constraint_satisfaction": 0.5
+      }
+    },
+    {
+      "branch_id": "7e3956e0-6fd6-4667-aec7-b66c9bb50b78",
+      "parent_id": "0a1720ac-de2c-43db-bb18-1c9767dc00a2",
+      "divergence_point": "failure",
+      "actions": [
+        "identify failure modes"
+      ],
+      "simulated_states": [
+        "Degraded state under geox surface declaration vs runtime (26/20/73 drift) failure"
+      ],
+      "assumptions": [
+        "failure is possible",
+        "current detection is adequate"
+      ],
+      "contradictions": [
+        "failure assumption contradicts branch 1 baseline"
+      ],
+      "ontology": "SIMULATED",
+      "evaluation_scores": {
+        "feasibility": 0.5,
+        "risk": 0.3,
+        "evidence_support": 1.0,
+        "constraint_satisfaction": 0.5
+      }
+    }
+  ],
+  "memory_zone": "AAA.POSSIBILITY",
+  "memory_class": "ACD_DREAM_RECEIPT",
+  "recall_visibility": "SCENARIO_ONLY",
+  "contradictions": [
+    "failure assumption contradicts branch 1 baseline"
+  ],
+  "dissent": [
+    "minority_branch=bc809891-e0c7-4163-9eaa-35dc0c92ca3e divergence=optimization preserved_for_review"
+  ],
+  "uncertainty": {
+    "aleatoric": "low \u2014 deterministic search",
+    "epistemic": "high \u2014 no world model, no LLM, no calibration",
+    "unknown": "significant \u2014 open-world unknowns not modeled",
+    "method": "deterministic_scoring",
+    "out_of_distribution_flags": [
+      "no_distribution_model"
+    ]
+  },
+  "compression_witness": {
+    "inputs_retained": 3,
+    "abstractions_created": 1,
+    "discarded_detail": 0,
+    "estimated_loss": "unknown"
+  },
+  "promotion_status": "NONE",
+  "external_actions_attempted": 0,
+  "external_actions_executed": 0,
+  "errors": [],
+  "provenance": {
+    "branch": "feat/acd-federated-unification",
+    "commit": "cb86b7298",
+    "contract_version": "acd.dream.v1"
+  },
+  "constitutional_verdict": "PASS",
+  "ontology": "SIMULATED",
+  "content_hash": "95464cf371bbeec7",
+  "contract_version": "acd.dream.v1"
+}

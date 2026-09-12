@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Genesis Witness — arifOS</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace;
+      background: #0a0a0f; color: #d4d4d8;
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 2rem;
+    }
+    main {
+      max-width: 42rem; width: 100%;
+      border: 1px solid #27272a; border-radius: 8px;
+      padding: 2.5rem; background: #101014;
+    }
+    h1 {
+      font-size: 1.25rem; font-weight: 600; color: #fafafa;
+      letter-spacing: 0.02em; margin-bottom: 1.5rem;
+      padding-bottom: 1rem; border-bottom: 1px solid #27272a;
+    }
+    h1 .sig { color: #a1a1aa; font-weight: 400; }
+    p { margin-bottom: 1rem; line-height: 1.7; font-size: 0.925rem; }
+    .record { color: #fafafa; }
+    .muted { color: #71717a; }
+    .status {
+      margin-top: 2rem; padding-top: 1.25rem; border-top: 1px solid #27272a;
+      font-size: 0.8rem; color: #71717a; line-height: 1.8;
+    }
+    .status .ok { color: #4ade80; }
+    .status .hold { color: #fbbf24; }
+    .badge {
+      display: inline-block; font-size: 0.7rem; letter-spacing: 0.08em;
+      border: 1px solid #3f3f46; border-radius: 4px; padding: 0.15rem 0.5rem;
+      margin-right: 0.5rem; vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Genesis Witness <span class="sig">/999/genesis</span></h1>
+    <p class="record">GENESIS-001 is a sealed constitutional record.</p>
+    <p>This surface is a public witness, not the record itself.</p>
+    <p>Protected content is not published on this route.</p>
+    <p>ROOTKEY-gated cryptographic access is intended; the cryptographic decrypt boundary is not yet implemented.</p>
+    <div class="status">
+      <p><span class="badge">CANONICAL SEAL</span> sealed 2026-06-14 — <span class="ok">unchanged</span></p>
+      <p><span class="badge">CANDIDATE</span> GENESIS-20260912-01 — <span class="hold">888 HOLD active</span></p>
+      <p><span class="badge">DECRYPT</span> not implemented — no decrypt control exists on this page, by design</p>
+      <p class="muted">Evidence spine: /999 — Proof Chamber · arifOS</p>
+      <p class="muted">DITEMPA BUKAN DIBERI — forged, not given</p>
+    </div>
+  </main>
+</body>
+</html>

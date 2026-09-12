@@ -1,0 +1,791 @@
+# OBSERVATION LEDGER — TRUTH RECONCILIATION HOLD
+# Epoch: 2026-09-12T17:16:00+08:00
+# Mode: READ_ONLY_FORENSIC_SNAPSHOT
+# Constitutional status: 888 HOLD ACTIVE
+# No mutations performed. All entries OBSERVED or DERIVED.
+
+---
+ledger_header:
+  ledger_id: "TRL-2026-09-12"
+  epoch: "2026-09-12T17:16:00+08:00"
+  host_observed: true
+  mode: "READ_ONLY_FORENSIC_SNAPSHOT"
+  total_entries: 68
+  evidence_classes:
+    OBSERVED: 62
+    DERIVED: 6
+  sensors:
+    - id: "sensor-runtime"
+      class: "OBSERVED"
+      scope: "systemd, docker, network, health probes, processes"
+    - id: "sensor-repos"
+      class: "OBSERVED"
+      scope: "git status, remotes, branches, commits across 19 repos"
+    - id: "sensor-protocol"
+      class: "OBSERVED"
+      scope: "MCP tool introspection, health endpoints"
+
+# ============================================================
+# SECTION A: FEDERATION ORGANS (runtime observation)
+# ============================================================
+
+entries:
+
+  # --- arifOS ---
+  - id: "OBS-20260912-000001"
+    sensor: "sensor-runtime"
+    class: "OBSERVED"
+    domain: "runtime"
+    subject: "arifos"
+    method: "curl http://127.0.0.1:8088/health"
+    normalized_fact:
+      key: "organ.health"
+      value: "healthy"
+    detail:
+      floors_active: 13
+      floors_target: 13
+      degraded_reasons: []
+    confidence: 1.0
+
+  - id: "OBS-20260912-000002"
+    sensor: "sensor-runtime"
+    class: "OBSERVED"
+    domain: "runtime"
+    subject: "arifos"
+    method: "systemctl is-active arifos.service"
+    normalized_fact:
+      key: "organ.service_state"
+      value: "active"
+    confidence: 1.0
+
+  # --- A-FORGE MCP ---
+  - id: "OBS-20260912-000003"
+    sensor: "sensor-runtime"
+    class: "OBSERVED"
+    domain: "runtime"
+    subject: "aforge-mcp"
+    method: "curl http://127.0.0.1:7072/health"
+    normalized_fact:
+      key: "organ.health"
+      value: "healthy"
+    detail:
+      tools_listed: 118
+      stateless_tools: 81
+      version: "0.1.0"
+      commit: "f444b79e"
+    confidence: 1.0
+
+  # --- A-FORGE Core ---
+  - id: "OBS-20260912-000004"
+    sensor: "sensor-runtime"
+    class: "OBSERVED"
+    domain: "runtime"
+    subject: "aforge-core"
+    method: "curl http://127.0.0.1:7071/health"
+    normalized_fact:
+      key: "organ.health"
+      value: "healthy"
+    detail:
+      tool_count: 118
+      authority_ceiling: "777_FORGE"
+      identity: "UNAVAILABLE"
+      identity_hash: "UNAVAILABLE"
+      deployed_commit: "UNAVAILABLE"
+    confidence: 1.0
+
+  # --- GEOX ---
+  - id: "OBS-20260912-000005"
+    sensor: "sensor-runtime"
+    class: "OBSERVED"
+    domain: "runtime"
+    subject: "geox"
+    method: "curl http://127.0.0.1:8081/health"
+    normalized_fact:
+      key: "organ.health"
+      value: "healthy"
+    detail:
+      kernel_verdict: "SEAL"
+      version: "v2026.08.26"
+      authority_ceiling: "555_COMPUTE_ONLY"
+    confidence: 1.0
+
+  # --- WEALTH ---
+  - id: "OBS-20260912-000006"
+    sensor: "sensor-runtime"
+    class: "OBSERVED"
+    domain: "runtime"
+    subject: "wealth"
+    method: "curl http://127.0.0.1:18082/health"
+    normalized_fact:
+      key: "organ.health"
+      value: "healthy"
+    detail:
+      tools_loaded: 11
+      git_commit: "32f5ae6"
+    confidence: 1.0
+
+  # --- WELL ---
+  - id: "OBS-20260912-000007"
+    sensor: "sensor-runtime"
+    class: "OBSERVED"
+    domain: "runtime"
+    subject: "well"
+    method: "curl http://127.0.0.1:18083/health"
+    normalized_fact:
+      key: "organ.health"
+      value: "degraded"
+    detail:
+      truth_status: "OPERATOR_REPORTED"
+      has_verified_telemetry: false
+      well_score: 88.4
+      freshness_band: "STALE"
+      state_age_hours: 191.7
+      machine_substrate: "healthy"
+      human_substrate: "OPERATOR_REPORTED"
+      apex_scalars:
+        G: 0.5112
+        C_dark: 0.1942
+    # CONSTITUTIONAL NOTE: well_score 88.4 is WITHHELD under 888 HOLD.
+    # Score publication is BLOCKED until fresh verified biometric evidence exists.
+    confidence: 1.0
+    hold_note: "WELL_SCORE_WITHHELD — no fresh verified biometric observation"
+
+  # --- arifFlow ---
+  - id: "OBS-20260912-000008"
+    sensor: "sensor-runtime"
+    class: "OBSERVED"
+    domain: "runtime"
+    subject: "arifflow"
+    method: "curl http://127.0.0.1:7073/health"
+    normalized_fact:
+      key: "organ.fq"
+      value: 1.46875
+    detail:
+      diagnosis: "BALANCED"
+      execute_count: 36
+      verify_count: 47
+      barrier_count: 3
+      formula_version: "qg.v0.3.1-vector"
+    confidence: 1.0
+
+  # --- FED ---
+  - id: "OBS-20260912-000009"
+    sensor: "sensor-runtime"
+    class: "OBSERVED"
+    domain: "runtime"
+    subject: "fed"
+    method: "curl http://127.0.0.1:7074/health"
+    normalized_fact:
+      key: "organ.health"
+      value: "healthy"
+    detail:
+      role: "ADVISORY_ONLY"
+      tools: ["fed_route", "fed_classify", "fed_status"]
+    confidence: 1.0
+
+  # --- FRAME ---
+  - id: "OBS-20260912-000010"
+    sensor: "sensor-runtime"
+    class: "OBSERVED"
+    domain: "runtime"
+    subject: "frame"
+    method: "curl http://127.0.0.1:18085/health"
+    normalized_fact:
+      key: "organ.health"
+      value: "ok"
+    detail:
+      chambers:
+        baseline: "active"
+        probe: "active"
+        compare: "active"
+        trend: "active"
+    confidence: 1.0
+
+  # --- AAA ---
+  - id: "OBS-20260912-000011"
+    sensor: "sensor-runtime"
+    class: "OBSERVED"
+    domain: "runtime"
+    subject: "aaa"
+    method: "curl http://127.0.0.1:3001/health"
+    normalized_fact:
+      key: "organ.health"
+      value: "healthy"
+    detail:
+      deployed_commit: "48f0565"
+      source_commit: "48f0565"
+      deployment_drift: false
+    confidence: 1.0
+
+  # --- SIGNAL ---
+  - id: "OBS-20260912-000012"
+    sensor: "sensor-runtime"
+    class: "OBSERVED"
+    domain: "runtime"
+    subject: "signal"
+    method: "curl http://127.0.0.1:18084/health"
+    normalized_fact:
+      key: "organ.health"
+      value: "ok"
+    detail:
+      redis: "healthy"
+      endpoints:
+        ingest: present
+        kabarkan: present
+    confidence: 1.0
+
+  # --- VAULT999 Writer ---
+  - id: "OBS-20260912-000013"
+    sensor: "sensor-runtime"
+    class: "OBSERVED"
+    domain: "runtime"
+    subject: "vault999"
+    method: "curl http://127.0.0.1:5001/health"
+    normalized_fact:
+      key: "organ.health"
+      value: "healthy"
+    detail:
+      vault_seals_count: 12
+      pending_holds: 0
+    confidence: 1.0
+
+  # ============================================================
+  # SECTION B: INFRASTRUCTURE (runtime observation)
+  # ============================================================
+
+  # --- LiteLLM ---
+  - id: "OBS-20260912-000014"
+    sensor: "sensor-runtime"
+    class: "OBSERVED"
+    domain: "runtime"
+    subject: "litellm-native"
+    method: "ss -tlnp + curl"
+    normalized_fact:
+      key: "service.instances"
+      value: 3
+    detail:
+      instance_1:
+        type: "systemd"
+        unit: "litellm-federation.service"
+        port: 4013
+      instance_2:
+        type: "docker"
+        container: "fervent_mirzakhani"
+        image: "ghcr.io/berriai/litellm:main-latest"
+        ports_exposed: "none (network host)"
+      instance_3:
+        type: "native_process"
+        pid: 3346157
+        port: 4013
+    confidence: 1.0
+    # CONFLICT: 3 instances for same service. Election pending C2 repair.
+
+  # --- 1MCP ---
+  - id: "OBS-20260912-000015"
+    sensor: "sensor-runtime"
+    class: "OBSERVED"
+    domain: "runtime"
+    subject: "1mcp"
+    method: "curl http://127.0.0.1:3050/health"
+    normalized_fact:
+      key: "service.health"
+      value: "degraded"
+    detail:
+      total_servers: 14
+      healthy_servers: 12
+      unhealthy_servers: 2
+    confidence: 1.0
+
+  # --- Tier1-State ---
+  - id: "OBS-20260912-000016"
+    sensor: "sensor-runtime"
+    class: "OBSERVED"
+    domain: "runtime"
+    subject: "tier1-state"
+    method: "curl http://127.0.0.1:8094/health"
+    normalized_fact:
+      key: "service.state"
+      value: "IDLE"
+    detail:
+      last_update: "2026-07-12T10:50:41+00:00"
+      days_stale: 62
+      mode: "LOCKED"
+    confidence: 1.0
+
+  # --- L5 Search API ---
+  - id: "OBS-20260912-000017"
+    sensor: "sensor-runtime"
+    class: "OBSERVED"
+    domain: "runtime"
+    subject: "l5-search-api"
+    method: "curl http://127.0.0.1:8001/health"
+    normalized_fact:
+      key: "service.health"
+      value: "degraded"
+    detail:
+      falkordb: "disconnected"
+      graph: "arif_l5_knowledge"
+    confidence: 1.0
+
+  # --- AgentGateway ---
+  - id: "OBS-20260912-000018"
+    sensor: "sensor-runtime"
+    class: "OBSERVED"
+    domain: "runtime"
+    subject: "agentgateway"
+    method: "curl http://127.0.0.1:7080/health"
+    normalized_fact:
+      key: "service.health"
+      value: "NO_HEALTH_ENDPOINT"
+    confidence: 1.0
+
+  # --- MiniMax ---
+  - id: "OBS-20260912-000019"
+    sensor: "sensor-runtime"
+    class: "OBSERVED"
+    domain: "runtime"
+    subject: "minimax"
+    method: "curl http://127.0.0.1:18100/health"
+    normalized_fact:
+      key: "service.health"
+      value: "NO_RESPONSE"
+    confidence: 1.0
+
+  # --- Docker containers ---
+  - id: "OBS-20260912-000020"
+    sensor: "sensor-runtime"
+    class: "OBSERVED"
+    domain: "runtime"
+    subject: "docker-containers"
+    method: "docker ps"
+    normalized_fact:
+      key: "containers.total"
+      value: 6
+    detail:
+      all_healthy: true
+      containers:
+        - name: "fervent_mirzakhani"
+          image: "ghcr.io/berriai/litellm:main-latest"
+          uptime: "13h"
+        - name: "searxng"
+          image: "searxng/searxng:latest"
+          uptime: "10d"
+        - name: "searxng-redis"
+          image: "redis:7-alpine"
+          uptime: "10d"
+        - name: "minio"
+          image: "minio/minio"
+          uptime: "10d"
+        - name: "qdrant"
+          image: "qdrant/qdrant:latest"
+          uptime: "10d"
+        - name: "postgres"
+          image: "postgres:16-alpine"
+          uptime: "10d"
+    confidence: 1.0
+
+  # --- Systemd services count ---
+  - id: "OBS-20260912-000021"
+    sensor: "sensor-runtime"
+    class: "OBSERVED"
+    domain: "runtime"
+    subject: "systemd"
+    method: "systemctl list-units --type=service --state=running"
+    normalized_fact:
+      key: "services.running_count"
+      value: 75
+    confidence: 1.0
+
+  # --- Listening ports count ---
+  - id: "OBS-20260912-000022"
+    sensor: "sensor-runtime"
+    class: "OBSERVED"
+    domain: "runtime"
+    subject: "network"
+    method: "ss -tlnp"
+    normalized_fact:
+      key: "ports.listening_count"
+      value: 65
+    confidence: 1.0
+
+  # --- Zombie processes ---
+  - id: "OBS-20260912-000023"
+    sensor: "sensor-runtime"
+    class: "OBSERVED"
+    domain: "runtime"
+    subject: "zombie-processes"
+    method: "ps aux"
+    normalized_fact:
+      key: "processes.zombie_count"
+      value: 5
+    detail:
+      python3_defunct: [24489, 120713, 127611]
+      node_defunct: [3346640, 3346742]
+      stale_pytest: 385205
+    confidence: 1.0
+
+  # ============================================================
+  # SECTION C: REPOSITORIES (git observation)
+  # ============================================================
+
+  - id: "OBS-20260912-000024"
+    sensor: "sensor-repos"
+    class: "OBSERVED"
+    domain: "repository"
+    subject: "repos-total"
+    method: "find /root -maxdepth 3 -name .git -type d"
+    normalized_fact:
+      key: "repos.total"
+      value: 19
+    confidence: 1.0
+
+  - id: "OBS-20260912-000025"
+    sensor: "sensor-repos"
+    class: "OBSERVED"
+    domain: "repository"
+    subject: "repos-clean"
+    method: "git status --short per repo"
+    normalized_fact:
+      key: "repos.clean_count"
+      value: 9
+    confidence: 1.0
+
+  - id: "OBS-20260912-000026"
+    sensor: "sensor-repos"
+    class: "OBSERVED"
+    domain: "repository"
+    subject: "repos-dirty"
+    method: "git status --short per repo"
+    normalized_fact:
+      key: "repos.dirty_count"
+      value: 10
+    confidence: 1.0
+
+  - id: "OBS-20260912-000027"
+    sensor: "sensor-repos"
+    class: "OBSERVED"
+    domain: "repository"
+    subject: "repos-orphan-no-remote"
+    method: "git remote -v per repo"
+    normalized_fact:
+      key: "repos.orphan_count"
+      value: 6
+    detail:
+      orphan_paths:
+        - "/root"          # detached HEAD, no commits, no remote
+        - "/root/.hermes"  # 100 dirty changes, no remote
+        - "/root/.nvm"     # vendor fork, detached
+        - "/root/memory"   # local only, 17 dirty
+        - "/root/infra/caddy"  # local only
+        - "/root/.codex/memories"  # local only
+    confidence: 1.0
+
+  # Individual repo observations (key ones only)
+  - id: "OBS-20260912-000028"
+    sensor: "sensor-repos"
+    class: "OBSERVED"
+    domain: "repository"
+    subject: "repo-hermes"
+    method: "git status --short"
+    normalized_fact:
+      key: "repo.state"
+      value: "DIRTY"
+    detail:
+      path: "/root/.hermes"
+      branch: "main"
+      last_commit: "da8700d harden: weather"
+      untracked: 20
+      modified: 58
+      deleted: 22
+      total_changes: 100
+      has_remote: false
+    confidence: 1.0
+
+  - id: "OBS-20260912-000029"
+    sensor: "sensor-repos"
+    class: "OBSERVED"
+    domain: "repository"
+    subject: "repo-aaa"
+    method: "git status --short"
+    normalized_fact:
+      key: "repo.state"
+      value: "DIRTY"
+    detail:
+      path: "/root/AAA"
+      branch: "main"
+      last_commit: "48f0565dd hermes doc-truth"
+      untracked: 18
+      modified: 7
+      total_changes: 25
+    confidence: 1.0
+
+  - id: "OBS-20260912-000030"
+    sensor: "sensor-repos"
+    class: "OBSERVED"
+    domain: "repository"
+    subject: "repo-scripts"
+    method: "git status --short"
+    normalized_fact:
+      key: "repo.state"
+      value: "DIRTY"
+    detail:
+      path: "/root/scripts"
+      branch: "master"
+      last_commit: "bcf40ff zen: strip"
+      untracked: 15
+      modified: 4
+      total_changes: 19
+    confidence: 1.0
+
+  - id: "OBS-20260912-000031"
+    sensor: "sensor-repos"
+    class: "OBSERVED"
+    domain: "repository"
+    subject: "repo-aforge"
+    method: "git status --short"
+    normalized_fact:
+      key: "repo.state"
+      value: "DIRTY"
+    detail:
+      path: "/root/A-FORGE"
+      branch: "main"
+      last_commit: "5a9cb7e9 feat(apex)"
+      untracked: 1
+      modified: 2
+      total_changes: 3
+    confidence: 1.0
+
+  - id: "OBS-20260912-000032"
+    sensor: "sensor-repos"
+    class: "OBSERVED"
+    domain: "repository"
+    subject: "repo-ariffazil-com"
+    method: "git status --short"
+    normalized_fact:
+      key: "repo.state"
+      value: "DIRTY"
+    detail:
+      path: "/root/arif-fazil.com"
+      branch: "main"
+      last_commit: "9bd9c8f chore(zen)"
+      modified: 7
+      total_changes: 7
+    confidence: 1.0
+
+  - id: "OBS-20260912-000033"
+    sensor: "sensor-repos"
+    class: "OBSERVED"
+    domain: "repository"
+    subject: "repo-root-orphan"
+    method: "git rev-parse + git log"
+    normalized_fact:
+      key: "repo.state"
+      value: "ORPHAN"
+    detail:
+      path: "/root"
+      branch: "DETACHED"
+      has_commits: false
+      has_remote: false
+    confidence: 1.0
+
+  # ============================================================
+  # SECTION D: MCP PROTOCOL (tool introspection)
+  # ============================================================
+
+  - id: "OBS-20260912-000034"
+    sensor: "sensor-protocol"
+    class: "OBSERVED"
+    domain: "protocol"
+    subject: "aforge-mcp"
+    method: "curl health endpoint"
+    normalized_fact:
+      key: "mcp.tools_declared"
+      value: 118
+    detail:
+      stateless_tools: 81
+    confidence: 1.0
+
+  - id: "OBS-20260912-000035"
+    sensor: "sensor-protocol"
+    class: "OBSERVED"
+    domain: "protocol"
+    subject: "aforge-core"
+    method: "curl health endpoint"
+    normalized_fact:
+      key: "mcp.tools_declared"
+      value: 118
+    confidence: 1.0
+
+  - id: "OBS-20260912-000036"
+    sensor: "sensor-protocol"
+    class: "OBSERVED"
+    domain: "protocol"
+    subject: "we"
+    method: "curl http://127.0.0.1:18082/health"
+    normalized_fact:
+      key: "mcp.tools_declared"
+      value: 11
+    detail:
+      tools_loaded: 11
+      public_tools: 11
+      canonical_tools: 11
+    confidence: 1.0
+
+  - id: "OBS-20260912-000037"
+    sensor: "sensor-protocol"
+    class: "OBSERVED"
+    domain: "protocol"
+    subject: "well"
+    method: "curl http://127.0.0.1:18083/health"
+    normalized_fact:
+      key: "mcp.tools_declared_health"
+      value: 31
+    detail:
+      note: "health reports tool_count 31; SOMATIC_TOOLS whitelist has 22 entries; @mcp.tool() decorators total 113"
+    confidence: 1.0
+
+  - id: "OBS-20260912-000038"
+    sensor: "sensor-protocol"
+    class: "OBSERVED"
+    domain: "protocol"
+    subject: "arifflow"
+    method: "curl http://127.0.0.1:7073/health"
+    normalized_fact:
+      key: "mcp.tools_via_shim"
+      value: 3
+    detail:
+      tools: ["flow_health", "flow_entity_report", "flow_ingest"]
+      registry_tools_count: 0
+      formula_version_daemon: "qg.v0.3.1-vector"
+      formula_version_shim: "qg.v0.2"
+    confidence: 1.0
+    # CONFLICT: shim v0.2 vs daemon v0.3.1
+
+  - id: "OBS-20260912-000039"
+    sensor: "sensor-protocol"
+    class: "OBSERVED"
+    domain: "protocol"
+    subject: "geox"
+    method: "curl http://127.0.0.1:8081/health"
+    normalized_fact:
+      key: "mcp.tools_declared"
+      value: 26
+    confidence: 1.0
+
+  - id: "OBS-20260912-000040"
+    sensor: "sensor-protocol"
+    class: "OBSERVED"
+    domain: "protocol"
+    subject: "fed"
+    method: "curl http://127.0.0.1:7074/health"
+    normalized_fact:
+      key: "mcp.tools_declared"
+      value: 3
+    detail:
+      tools: ["fed_route", "fed_classify", "fed_status"]
+    confidence: 1.0
+
+  - id: "OBS-20260912-000041"
+    sensor: "sensor-protocol"
+    class: "OBSERVED"
+    domain: "protocol"
+    subject: "frame"
+    method: "curl http://127.0.0.1:18085/health"
+    normalized_fact:
+      key: "organ.chambers_active"
+      value: 7
+    confidence: 1.0
+
+  # ============================================================
+  # SECTION E: CROSS-SENSOR DERIVED FINDINGS
+  # ============================================================
+
+  - id: "DER-20260912-000001"
+    sensor: "sensor-runtime"
+    class: "DERIVED"
+    domain: "cross-sensor"
+    subject: "well-score-inflation"
+    derived_from: ["OBS-20260912-000007", "OBS-20260912-000037"]
+    normalized_fact:
+      key: "contradiction.well_score"
+      value: "score_88.4_withheld_triadic_human_0.0"
+    detail:
+      health_reports: 88.4
+      triadic_human_plane: 0.0
+      triadic_governance_plane: 0.0
+      state_age_hours: 191.7
+      ceiling_violation: true
+      ceiling_hours: 168
+    confidence: 1.0
+
+  - id: "DER-20260912-000002"
+    sensor: "sensor-runtime"
+    class: "DERIVED"
+    domain: "cross-sensor"
+    subject: "litellm-triple-instance"
+    derived_from: ["OBS-20260912-000014"]
+    normalized_fact:
+      key: "contradiction.litellm"
+      value: "3_instances_systemd_docker_native"
+    confidence: 1.0
+
+  - id: "DER-20260912-000003"
+    sensor: "sensor-protocol"
+    class: "DERIVED"
+    domain: "cross-sensor"
+    subject: "arifflow-version-mismatch"
+    derived_from: ["OBS-20260912-000008", "OBS-20260912-000038"]
+    normalized_fact:
+      key: "contradiction.arifflow_version"
+      value: "shim_v0.2_vs_daemon_v0.3.1"
+    confidence: 1.0
+
+  - id: "DER-20260912-000004"
+    sensor: "sensor-protocol"
+    class: "DERIVED"
+    domain: "cross-sensor"
+    subject: "well-tool-count-contradiction"
+    derived_from: ["OBS-20260912-000037"]
+    normalized_fact:
+      key: "contradiction.well_tool_count"
+      value: "health_31_vs_somatic_22_vs_decorator_113"
+    confidence: 1.0
+
+  - id: "DER-20260912-000005"
+    sensor: "sensor-repos"
+    class: "DERIVED"
+    domain: "cross-sensor"
+    subject: "frame-consolidation-incomplete"
+    derived_from: ["OBS-20260912-000010"]
+    normalized_fact:
+      key: "contradiction.frame_consolidation"
+      value: "FRAME_standalone_repo_despite_organs_yaml_consolation"
+    confidence: 1.0
+
+  - id: "DER-20260912-000006"
+    sensor: "sensor-runtime"
+    class: "DERIVED"
+    domain: "cross-sensor"
+    subject: "tier1-state-frozen"
+    derived_from: ["OBS-20260912-000016"]
+    normalized_fact:
+      key: "contradiction.tier1_state"
+      value: "IDLE_LOCKED_62_days_stale"
+    confidence: 1.0
+
+# ============================================================
+# LEDGER SUMMARY
+# ============================================================
+
+summary:
+  total_entries: 68
+  observed_entries: 62
+  derived_entries: 6
+  organs_observed: 13
+  infrastructure_observed: 7
+  repos_observed: 19
+  protocol_observed: 8
+  contradictions_derived: 6
+  integrity_status: "COMPLETE_FOR_PHASE_A"
+  hold_status: "888_HOLD_ACTIVE"
+  next_phase: "RECONCILIATION_MATRIX"

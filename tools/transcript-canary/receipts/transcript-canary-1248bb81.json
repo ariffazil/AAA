@@ -1,0 +1,50 @@
+{
+  "run_id": "transcript-canary:v0:1248bb81",
+  "capability_id": "media.youtube.transcript",
+  "epoch": "2026-09-12T01:49:27.224276+00:00",
+  "status": "reachable",
+  "input": {
+    "canary_video_id": "dQw4w9WgXcQ",
+    "canary_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "normalization": {
+    "all_pass": true,
+    "cases_tested": 7,
+    "summary": "watch, youtu.be, shorts, embed, watch+params, raw_id, underscore_id — all normalize correctly"
+  },
+  "evidence": {
+    "attempted": true,
+    "video_id": "dQw4w9WgXcQ",
+    "segment_count": 61,
+    "duration_seconds_estimate": 211.3,
+    "languages_available": ["en", "de-DE", "ja", "pt-BR", "es-419", "en"],
+    "language_selected": "en",
+    "has_timestamps": true,
+    "content_class": "transcript_observation",
+    "fetch_error": null,
+    "fetch_duration_ms": 1956,
+    "manifest_sha256": "3795afacb0977cacf3d6ef745e382905f0be5bdd7540e9f0e5776888a2af9152"
+  },
+  "network": {
+    "allowed": true,
+    "media_downloaded": false,
+    "cookies_used": false,
+    "external_write": false
+  },
+  "failure_cases": [
+    {
+      "label": "missing_video",
+      "video_id": "MISSING_VIDEO_ID",
+      "has_structured_error": true,
+      "error_type": "video_unavailable"
+    },
+    {
+      "label": "empty_id",
+      "video_id": "",
+      "has_structured_error": true,
+      "error_type": "video_unavailable"
+    }
+  ],
+  "error": null,
+  "receipt_sha256": "f2e91d13b9c537ea639828976fb9fdc0b1c14ea07037573c062fdb9134d55920"
+}

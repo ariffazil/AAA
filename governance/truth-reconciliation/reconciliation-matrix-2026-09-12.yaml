@@ -1,0 +1,601 @@
+# RECONCILIATION MATRIX — TRUTH RECONCILIATION HOLD
+# Epoch: 2026-09-12T17:30:00+08:00
+# Input: observation-ledger-2026-09-12.yaml (68 entries)
+# Constitutional status: 888 HOLD ACTIVE
+
+---
+matrix_header:
+  matrix_id: "RM-2026-09-12"
+  epoch: "2026-09-12T17:30:00+08:00"
+  ledger_ref: "TRL-2026-09-12"
+  total_components: 30
+  risk_breakdown:
+    CRITICAL: 2
+    HIGH: 5
+    MEDIUM: 8
+    LOW: 10
+    GREEN: 5
+
+# ============================================================
+# FEDERATION ORGANS
+# ============================================================
+
+components:
+
+  - component_id: "RC-ARIFOS"
+    class: "organ"
+    runtime_status: "OBSERVED"
+    deployment_status: "DECLARED"
+    repository_status: "SOURCE_PRESENT"
+    protocol_status: "LIVE"
+    authority_owner: "arifOS kernel"
+    version_vector:
+      runtime: "arifos.service active"
+      deployment: "systemd unit"
+      source: "github/ariffazil/arifOS@9dbbc2b4a"
+      protocol: "health 200, 13 floors active"
+    risk: "MEDIUM"
+    repair_eligibility: "READY_FOR_C3"
+    ledger_refs: ["OBS-20260912-000001", "OBS-20260912-000002"]
+    notes: "C3 kernel init bug pending. JWT/init verb divergence unresolved."
+
+  - component_id: "RC-AFORGE-MCP"
+    class: "organ"
+    runtime_status: "OBSERVED"
+    deployment_status: "DECLARED"
+    repository_status: "SOURCE_PRESENT"
+    protocol_status: "LIVE"
+    authority_owner: "A-FORGE"
+    version_vector:
+      runtime: "a-forge-mcp.service active"
+      deployment: "systemd unit"
+      source: "github/ariffazil/A-FORGE@5a9cb7e9"
+      protocol: "health 200, 118 tools listed"
+    risk: "LOW"
+    repair_eligibility: "READY"
+    ledger_refs: ["OBS-20260912-000003"]
+    notes: "Identity UNAVAILABLE on core (:7071) but MCP healthy."
+
+  - component_id: "RC-AFORGE-CORE"
+    class: "organ"
+    runtime_status: "OBSERVED"
+    deployment_status: "DECLARED"
+    repository_status: "SOURCE_PRESENT"
+    protocol_status: "LIVE"
+    authority_owner: "A-FORGE"
+    version_vector:
+      runtime: "port 7071 responding"
+      deployment: "systemd unit"
+      source: "github/ariffazil/A-FORGE@5a9cb7e9"
+      protocol: "health 200, tool_count 118, identity UNAVAILABLE"
+    risk: "MEDIUM"
+    repair_eligibility: "READY"
+    ledger_refs: ["OBS-20260912-000004"]
+    notes: "identity=UNAVAILABLE, identity_hash=UNAVAILABLE, deployed_commit=UNAVAILABLE. Identity attestation missing."
+
+  - component_id: "RC-GEOX"
+    class: "organ"
+    runtime_status: "OBSERVED"
+    deployment_status: "DECLARED"
+    repository_status: "SOURCE_PRESENT"
+    protocol_status: "LIVE"
+    authority_owner: "GEOX"
+    version_vector:
+      runtime: "geox-mcp.service active"
+      deployment: "systemd unit"
+      source: "github/ariffazil/GEOX@9bd2b127"
+      protocol: "health 200, 26 tools, kernel_verdict SEAL"
+    risk: "LOW"
+    repair_eligibility: "READY"
+    ledger_refs: ["OBS-20260912-000005", "OBS-20260912-000039"]
+    notes: "Clean. Version v2026.08.26."
+
+  - component_id: "RC-WEALTH"
+    class: "organ"
+    runtime_status: "OBSERVED"
+    deployment_status: "DECLARED"
+    repository_status: "SOURCE_PRESENT"
+    protocol_status: "LIVE"
+    authority_owner: "WEALTH"
+    version_vector:
+      runtime: "wealth-organ.service active"
+      deployment: "systemd unit"
+      source: "github/ariffazil/WEALTH@32f5ae6"
+      protocol: "health 200, 11 tools loaded"
+    risk: "LOW"
+    repair_eligibility: "READY"
+    ledger_refs: ["OBS-20260912-000006", "OBS-20260912-000036"]
+    notes: "Clean. 5 commodity APIs (gold, oil, gas, klci, usdmyr) on 3456-3460."
+
+  - component_id: "RC-WELL"
+    class: "organ"
+    runtime_status: "OBSERVED"
+    deployment_status: "DECLARED"
+    repository_status: "SOURCE_PRESENT"
+    protocol_status: "LIVE"
+    authority_owner: "WELL"
+    version_vector:
+      runtime: "well.service active, PID 3197672, 207h uptime"
+      deployment: "systemd unit"
+      source: "github/ariffazil/WELL@3dcda54"
+      protocol: "health 200, status DEGRADED, score WITHHELD"
+    risk: "CRITICAL"
+    repair_eligibility: "BLOCKED"
+    ledger_refs: ["OBS-20260912-000007", "OBS-20260912-000037", "DER-20260912-000001", "DER-20260912-000004"]
+    notes: |
+      C1: Score 88.4 WITHHELD under 888 HOLD.
+      triadic human_plane=0.0, governance_plane=0.0.
+      state_age_hours=191.7 exceeds 168h ceiling.
+      truth_status=OPERATOR_REPORTED, no verified telemetry.
+      Tool count CONFLICTED: health=31, SOMATIC_TOOLS=22, decorators=113.
+      BLOCKED for repair until truth chain proven.
+
+  - component_id: "RC-ARIFFLOW"
+    class: "organ"
+    runtime_status: "OBSERVED"
+    deployment_status: "DECLARED"
+    repository_status: "SOURCE_PRESENT"
+    protocol_status: "LIVE"
+    authority_owner: "arifFlow"
+    version_vector:
+      runtime: "arifflow.service active, PID 99062, 26.2MB"
+      deployment: "systemd unit, /opt/ariflow/bin/arifflow --daemon"
+      source: "github/ariffazil/arifFLOW@19674ed"
+      protocol: "health 200, FQ 1.46875 OPTIMAL, formula qg.v0.3.1-vector"
+    risk: "LOW"
+    repair_eligibility: "READY"
+    ledger_refs: ["OBS-20260912-000008", "OBS-20260912-000038"]
+    notes: |
+      FQ OPTIMAL, diagnosis BALANCED.
+      MCP shim reports v0.2 (stale) vs daemon v0.3.1.
+      Registry says tools_count=0 vs 3 live (flow_health, flow_entity_report, flow_ingest).
+      2 actors held: hermes-asi (FQ=0.00), kimi-code (FQ=0.50).
+
+  - component_id: "RC-FED"
+    class: "organ"
+    runtime_status: "OBSERVED"
+    deployment_status: "DECLARED"
+    repository_status: "UNKNOWN"
+    protocol_status: "LIVE"
+    authority_owner: "FED"
+    version_vector:
+      runtime: "fed-router.service active, PID 379711"
+      deployment: "systemd unit"
+      source: "UNKNOWN (no git repo match)"
+      protocol: "health 200, 3 tools (fed_route, fed_classify, fed_status)"
+    risk: "LOW"
+    repair_eligibility: "READY"
+    ledger_refs: ["OBS-20260912-000009", "OBS-20260912-000040"]
+    notes: "Role: ADVISORY_ONLY. SSE format on some endpoints."
+
+  - component_id: "RC-FRAME"
+    class: "organ"
+    runtime_status: "OBSERVED"
+    deployment_status: "DECLARED"
+    repository_status: "SOURCE_PRESENT"
+    protocol_status: "LIVE"
+    authority_owner: "FRAME"
+    version_vector:
+      runtime: "frame-organ.service active, PID 3761307"
+      deployment: "systemd unit"
+      source: "github/ariffazil/FRAME (standalone repo) + /root/AAA/federation/frame/"
+      protocol: "health 200, 7 chambers active"
+    risk: "MEDIUM"
+    repair_eligibility: "BLOCKED"
+    ledger_refs: ["OBS-20260912-000010", "OBS-20260912-000041"]
+    notes: |
+      CONSOLIDATION INCOMPLETE: organs.yaml says source_path=/root/AAA/federation/frame/
+      but /root/FRAME is standalone repo with own git history AND frame-organ.service unit.
+      Two source candidates, unclear which is canonical.
+
+  - component_id: "RC-AAA"
+    class: "organ"
+    runtime_status: "OBSERVED"
+    deployment_status: "DECLARED"
+    repository_status: "SOURCE_PRESENT"
+    protocol_status: "LIVE"
+    authority_owner: "AAA"
+    version_vector:
+      runtime: "aaa-a2a.service + aaa-signing.service active"
+      deployment: "systemd units"
+      source: "github/ariffazil/AAA@48f0565dd"
+      protocol: "health 200, deployed_commit matches source_commit, no drift"
+    risk: "LOW"
+    repair_eligibility: "READY"
+    ledger_refs: ["OBS-20260912-000011"]
+    notes: "25 dirty files (18 untracked, 7 modified). Active development."
+
+  - component_id: "RC-SIGNAL"
+    class: "organ"
+    runtime_status: "OBSERVED"
+    deployment_status: "DECLARED"
+    repository_status: "UNKNOWN"
+    protocol_status: "LIVE"
+    authority_owner: "SIGNAL"
+    version_vector:
+      runtime: "signal-organ.service active"
+      deployment: "systemd unit"
+      source: "UNKNOWN (no standalone repo)"
+      protocol: "health 200, redis=healthy, ingest+kabarkan endpoints present"
+    risk: "LOW"
+    repair_eligibility: "READY"
+    ledger_refs: ["OBS-20260912-000012"]
+    notes: "Earlier scan showed no listener on 18084, but live probe confirms response. Previous finding RESOLVED."
+
+  - component_id: "RC-VAULT999"
+    class: "organ"
+    runtime_status: "OBSERVED"
+    deployment_status: "DECLARED"
+    repository_status: "UNKNOWN"
+    protocol_status: "LIVE"
+    authority_owner: "VAULT999"
+    version_vector:
+      runtime: "vault999-writer.service active, PID 1171341"
+      deployment: "systemd unit"
+      source: "UNKNOWN (part of arifOS)"
+      protocol: "health 200, vault_seals_count=12, pending_holds=0"
+    risk: "LOW"
+    repair_eligibility: "READY"
+    ledger_refs: ["OBS-20260912-000013"]
+    notes: "Earlier P1 (wrong store path) needs verification against current state."
+
+# ============================================================
+# INFRASTRUCTURE SERVICES
+# ============================================================
+
+  - component_id: "RC-LITELLM"
+    class: "infrastructure"
+    runtime_status: "OBSERVED"
+    deployment_status: "CONFLICTED"
+    repository_status: "NOT_APPLICABLE"
+    protocol_status: "AUTH_REQUIRED"
+    authority_owner: "UNRESOLVED"
+    version_vector:
+      runtime: "3 instances: systemd(:4013) + docker(fervent_mirzakhani) + native(PID 3346157)"
+      deployment: "litellm-federation.service + docker-compose + manual"
+      source: "ghcr.io/berriai/litellm:main-latest"
+      protocol: "/health returns 401 auth_error"
+    risk: "HIGH"
+    repair_eligibility: "BLOCKED"
+    ledger_refs: ["OBS-20260912-000014"]
+    notes: |
+      3 CONFLICTING INSTANCES for same service.
+      Election needed after HOLD. No traffic shift until canonical owner proven.
+
+  - component_id: "RC-1MCP"
+    class: "infrastructure"
+    runtime_status: "OBSERVED"
+    deployment_status: "DECLARED"
+    repository_status: "UNKNOWN"
+    protocol_status: "LIVE"
+    authority_owner: "1MCP"
+    version_vector:
+      runtime: "port 3050 responding"
+      deployment: "systemd unit"
+      source: "UNKNOWN"
+      protocol: "health 200, 12/14 healthy, 2 unhealthy"
+    risk: "MEDIUM"
+    repair_eligibility: "READY"
+    ledger_refs: ["OBS-20260912-000015"]
+    notes: "2 unhealthy servers in 1MCP pool."
+
+  - component_id: "RC-TIER1-STATE"
+    class: "infrastructure"
+    runtime_status: "OBSERVED"
+    deployment_status: "DECLARED"
+    repository_status: "UNKNOWN"
+    protocol_status: "LIVE"
+    authority_owner: "UNKNOWN"
+    version_vector:
+      runtime: "port 8094 responding"
+      deployment: "systemd unit"
+      source: "UNKNOWN"
+      protocol: "health 200, state=IDLE, mode=LOCKED, last_update=2026-07-12"
+    risk: "HIGH"
+    repair_eligibility: "BLOCKED"
+    ledger_refs: ["OBS-20260912-000016"]
+    notes: "62 DAYS STALE. state=IDLE, mode=LOCKED since 2026-07-12. FROZEN."
+
+  - component_id: "RC-L5-SEARCH"
+    class: "infrastructure"
+    runtime_status: "OBSERVED"
+    deployment_status: "DECLARED"
+    repository_status: "UNKNOWN"
+    protocol_status: "LIVE"
+    authority_owner: "UNKNOWN"
+    version_vector:
+      runtime: "port 8001 responding"
+      deployment: "systemd unit"
+      source: "UNKNOWN"
+      protocol: "health 200, status=degraded, falkordb=disconnected"
+    risk: "MEDIUM"
+    repair_eligibility: "READY"
+    ledger_refs: ["OBS-20260912-000017"]
+    notes: "FalkorDB disconnected. Graph queries non-functional."
+
+  - component_id: "RC-AGENTGATEWAY"
+    class: "infrastructure"
+    runtime_status: "OBSERVED"
+    deployment_status: "DECLARED"
+    repository_status: "UNKNOWN"
+    protocol_status: "UNREACHABLE"
+    authority_owner: "UNKNOWN"
+    version_vector:
+      runtime: "port 7080 responding"
+      deployment: "systemd unit"
+      source: "UNKNOWN"
+      protocol: "/health returns 'route not found'"
+    risk: "MEDIUM"
+    repair_eligibility: "READY"
+    ledger_refs: ["OBS-20260912-000018"]
+    notes: "No /health endpoint. May require different path."
+
+  - component_id: "RC-MINIMAX"
+    class: "infrastructure"
+    runtime_status: "OBSERVED"
+    deployment_status: "DECLARED"
+    repository_status: "UNKNOWN"
+    protocol_status: "UNREACHABLE"
+    authority_owner: "UNKNOWN"
+    version_vector:
+      runtime: "port 18100 via tailscaled"
+      deployment: "systemd unit"
+      source: "UNKNOWN"
+      protocol: "No response from /health"
+    risk: "MEDIUM"
+    repair_eligibility: "READY"
+    ledger_refs: ["OBS-20260912-000019"]
+    notes: "Health endpoint not wired or service degraded."
+
+# ============================================================
+# REPOSITORIES (orphan candidates)
+# ============================================================
+
+  - component_id: "RC-ROOT-ORPHAN"
+    class: "repository"
+    runtime_status: "NOT_OBSERVED"
+    deployment_status: "NOT_DECLARED"
+    repository_status: "SOURCE_PRESENT"
+    protocol_status: "NOT_APPLICABLE"
+    authority_owner: "NONE"
+    version_vector:
+      runtime: "N/A"
+      deployment: "N/A"
+      source: "/root/.git (no commits, no remote, detached HEAD)"
+      protocol: "N/A"
+    risk: "LOW"
+    repair_eligibility: "READY"
+    ledger_refs: ["OBS-20260912-000033"]
+    notes: "Accidental git init at home directory. No commits. Safe to remove .git."
+
+  - component_id: "RC-HERMES-LOCAL"
+    class: "repository"
+    runtime_status: "OBSERVED"
+    deployment_status: "DECLARED"
+    repository_status: "SOURCE_PRESENT"
+    protocol_status: "NOT_APPLICABLE"
+    authority_owner: "HERMES"
+    version_vector:
+      runtime: "hermes-asi-gateway.service active, PID 23064"
+      deployment: "systemd unit, /root/.hermes"
+      source: "/root/.hermes (100 dirty changes, NO remote)"
+      protocol: "N/A"
+    risk: "HIGH"
+    repair_eligibility: "BLOCKED"
+    ledger_refs: ["OBS-20260912-000028"]
+    notes: |
+      ORPHAN_REPOSITORY: no remote, 100 changes (20 untracked, 58 modified, 22 deleted).
+      organs.yaml says source_path=/root/HERMES which DOES NOT EXIST.
+      Live runtime is at /root/.hermes. Source path is PHANTOM_DECLARATION.
+
+  - component_id: "RC-NVM-VENDOR"
+    class: "repository"
+    runtime_status: "NOT_OBSERVED"
+    deployment_status: "NOT_DECLARED"
+    repository_status: "SOURCE_PRESENT"
+    protocol_status: "NOT_APPLICABLE"
+    authority_owner: "NONE"
+    version_vector:
+      runtime: "N/A"
+      deployment: "N/A"
+      source: "/root/.nvm (vendor fork, detached at v0.40.4)"
+      protocol: "N/A"
+    risk: "LOW"
+    repair_eligibility: "READY"
+    ledger_refs: []
+    notes: "Vendor repo with deleted federation artifacts. Cosmetic."
+
+  - component_id: "RC-MEMORY-LOCAL"
+    class: "repository"
+    runtime_status: "NOT_OBSERVED"
+    deployment_status: "NOT_DECLARED"
+    repository_status: "SOURCE_PRESENT"
+    protocol_status: "NOT_APPLICABLE"
+    authority_owner: "NONE"
+    version_vector:
+      runtime: "N/A"
+      deployment: "N/A"
+      source: "/root/memory (17 dirty, no remote)"
+      protocol: "N/A"
+    risk: "LOW"
+    repair_eligibility: "READY"
+    ledger_refs: ["OBS-20260912-000007"]
+    notes: "Local-only knowledge base. 6 untracked, 11 modified."
+
+  - component_id: "RC-CADDY-LOCAL"
+    class: "repository"
+    runtime_status: "NOT_OBSERVED"
+    deployment_status: "NOT_DECLARED"
+    repository_status: "SOURCE_PRESENT"
+    protocol_status: "NOT_APPLICABLE"
+    authority_owner: "NONE"
+    version_vector:
+      runtime: "caddy.service active"
+      deployment: "systemd unit"
+      source: "/root/infra/caddy (local only)"
+      protocol: "N/A"
+    risk: "LOW"
+    repair_eligibility: "READY"
+    ledger_refs: []
+    notes: "Dispatcher Caddyfile. Clean."
+
+  - component_id: "RC-CODEX-MEMORIES"
+    class: "repository"
+    runtime_status: "NOT_OBSERVED"
+    deployment_status: "NOT_DECLARED"
+    repository_status: "SOURCE_PRESENT"
+    protocol_status: "NOT_APPLICABLE"
+    authority_owner: "NONE"
+    version_vector:
+      runtime: "N/A"
+      deployment: "N/A"
+      source: "/root/.codex/memories (local only)"
+      protocol: "N/A"
+    risk: "LOW"
+    repair_eligibility: "READY"
+    ledger_refs: []
+    notes: "Codex memory store. Clean."
+
+# ============================================================
+# WRITER PATHS (carry-forward)
+# ============================================================
+
+  - component_id: "WRITER-CARRY-V2"
+    class: "writer"
+    runtime_status: "OBSERVED"
+    deployment_status: "DECLARED"
+    repository_status: "SOURCE_PRESENT"
+    protocol_status: "LIVE"
+    authority_owner: "carry_forward.py"
+    version_vector:
+      runtime: "carry_forward.json 25,570 bytes, v2 schema"
+      deployment: "agent sessions + CLI"
+      source: "/root/scripts/carry_forward.py (360 lines)"
+      protocol: "arifos://carry-forward resource served via schema gate"
+    risk: "LOW"
+    repair_eligibility: "READY"
+    ledger_refs: []
+    notes: "CANONICAL WRITER. Atomic writes, fcntl.flock, backup-on-write. HEALTHY."
+
+  - component_id: "WRITER-CLARITY"
+    class: "writer"
+    runtime_status: "OBSERVED"
+    deployment_status: "DECLARED"
+    repository_status: "SOURCE_PRESENT"
+    protocol_status: "LIVE"
+    authority_owner: "clarity_carry.py"
+    version_vector:
+      runtime: "guard active, diverts to sidecar"
+      deployment: "called from tools.py:20591 during arif_vault_seal"
+      source: "/root/arifOS/arifosmcp/runtime/clarity_carry.py (119 lines)"
+      protocol: "sidecar JSONL does NOT exist on disk"
+    risk: "HIGH"
+    repair_eligibility: "BLOCKED"
+    ledger_refs: []
+    notes: |
+      PREVIOUSLY DESTRUCTIVE (destroyed v2 twice on 2026-09-12).
+      2026-09-12 guard diverts v2 dict → JSONL sidecar.
+      Sidecar file does not exist → writes silently lost.
+      NEUTERED but writes are orphaned.
+
+  - component_id: "WRITER-METABOLIZE"
+    class: "writer"
+    runtime_status: "OBSERVED"
+    deployment_status: "DECLARED"
+    repository_status: "SOURCE_PRESENT"
+    protocol_status: "LIVE"
+    authority_owner: "metabolize.py"
+    version_vector:
+      runtime: "writes to AAA/docs/carry_forward.json (v0 format)"
+      deployment: "called by memory_handlers_v5.py on metabolize action"
+      source: "/root/scripts/metabolize.py"
+      protocol: "schema gate NEVER reads this path"
+    risk: "HIGH"
+    repair_eligibility: "BLOCKED"
+    ledger_refs: []
+    notes: |
+      ORPHAN WRITER. Writes v0 format to path the schema gate ignores.
+      Every arif_memory(mode='metabolize', action='carry') writes invisible data.
+      Also mirrors to /root/HERMES/carry_forward.json.
+
+  - component_id: "WRITER-REALITY-PULSE"
+    class: "writer"
+    runtime_status: "OBSERVED"
+    deployment_status: "DECLARED"
+    repository_status: "SOURCE_PRESENT"
+    protocol_status: "LIVE"
+    authority_owner: "reality-pulse.py"
+    version_vector:
+      runtime: "writes to /root/.hermes/carry_forward.json (Hermes state)"
+      deployment: "cron */15 * * * *"
+      source: "reality-pulse.py"
+      protocol: "separate document, same backup dir"
+    risk: "MEDIUM"
+    repair_eligibility: "READY"
+    ledger_refs: []
+    notes: |
+      SEPARATE CONCERN. Different document (Hermes session state, not v2 generational).
+      Backs up to SAME carry_forward_backups/ dir → naming collisions.
+      251 files in backup dir mixing v2 + Hermes backups.
+
+# ============================================================
+# CRITICAL CROSS-COMPONENT FINDINGS
+# ============================================================
+
+cross_findings:
+
+  - finding_id: "CF-1"
+    severity: "CRITICAL"
+    subject: "WELL score fabrication"
+    affected: ["RC-WELL"]
+    description: "/health reports 88.4, triadic composition is 0.0. Score WITHHELD under 888 HOLD."
+    floors_violated: ["F2", "F3", "F11"]
+    status: "ACTIVE"
+
+  - finding_id: "CF-2"
+    severity: "CRITICAL"
+    subject: "Kernel init verb divergence"
+    affected: ["RC-ARIFOS"]
+    description: "allowed_next_verbs diverges between JWT claims and init response."
+    floors_violated: ["F11", "F12"]
+    status: "ACTIVE"
+
+  - finding_id: "CF-3"
+    severity: "HIGH"
+    subject: "LiteLLM triple instance"
+    affected: ["RC-LITELLM"]
+    description: "3 conflicting instances: systemd + docker + native. No canonical owner."
+    floors_violated: ["F4", "F12"]
+    status: "ACTIVE"
+
+  - finding_id: "CF-4"
+    severity: "HIGH"
+    subject: "metabolize.py orphan writer"
+    affected: ["WRITER-METABOLIZE", "RC-ARIFOS"]
+    description: "Writes v0 to path schema gate ignores. Invisible data."
+    floors_violated: ["F2", "F4"]
+    status: "ACTIVE"
+
+  - finding_id: "CF-5"
+    severity: "HIGH"
+    subject: "FRAME consolidation incomplete"
+    affected: ["RC-FRAME"]
+    description: "Two source candidates: /root/FRAME (standalone) vs /root/AAA/federation/frame/"
+    floors_violated: ["F2", "F4"]
+    status: "ACTIVE"
+
+  - finding_id: "CF-6"
+    severity: "HIGH"
+    subject: "HERMES source path phantom"
+    affected: ["RC-HERMES-LOCAL"]
+    description: "organs.yaml says /root/HERMES (does not exist). Live at /root/.hermes."
+    floors_violated: ["F2", "F11"]
+    status: "ACTIVE"
+
+  - finding_id: "CF-7"
+    severity: "MEDIUM"
+    subject: "Tier1-State frozen 62 days"
+    affected: ["RC-TIER1-STATE"]
+    description: "IDLE/LOCKED since 2026-07-12. No updates in 62 days."
+    floors_violated: ["F2", "F12"]
+    status: "ACTIVE"

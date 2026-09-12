@@ -1,0 +1,42 @@
+{
+  "cycle_id": "AIO-GEOX-PARITY-001",
+  "mission": "AAA::APEX_ZEN_ACD_INIT::v1",
+  "authority": "ARIF (Human Sovereign)",
+  "created_by": "333-AGI",
+  "created_at": "2026-09-12T06:34:00Z",
+  "ontology": "INFERRED",
+  "evidence_refs": [],
+  "provenance": {},
+  "confidence_band": null,
+  "unknowns": [],
+  "contradictions": [],
+  "content_hash": null,
+  "witness_id": "W05-DELTA",
+  "delta_id": "D-001",
+  "title": "Align GEOX surface declarations to tools_manifest.yaml via repo-native regeneration",
+  "steps": [
+    "1. tools_manifest.yaml: public_count_target 20 -> 26",
+    "2. run `python3 scripts/regenerate_surface.py` (idempotent) -> rewrites CANONICAL_PUBLIC_SURFACE.json, .well-known/tools.json, contracts/mcp_surface.yaml"
+  ],
+  "changed_surface": [
+    "GEOX/tools_manifest.yaml",
+    "GEOX/CANONICAL_PUBLIC_SURFACE.json",
+    "GEOX/.well-known/tools.json",
+    "GEOX/contracts/mcp_surface.yaml"
+  ],
+  "expected_effect": "declared surface == manifest == runtime (26); removes phantom geox_workspace; declares glof7+paleo; counts 20->26, 73->80, 39->26",
+  "blast_radius": "LOW (declarations only; runtime untouched)",
+  "rollback": "git restore CANONICAL_PUBLIC_SURFACE.json .well-known/tools.json contracts/mcp_surface.yaml tools_manifest.yaml",
+  "test_plan": [
+    "--check exit 0",
+    "set equality declared==manifest==runtime == 26",
+    "git diff review = expected additions/removals only"
+  ],
+  "non_goals": [
+    "no runtime/service change",
+    "no CI change",
+    "no workspace re-exposure decision",
+    "no Hermes-30 resolution"
+  ],
+  "minimal_variant": "regen only (3 files; header cosmetic excluded)"
+}
