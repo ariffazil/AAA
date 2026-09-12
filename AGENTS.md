@@ -56,6 +56,7 @@ For session-start probes, action-tier expansions, conflict resolution, and the a
 | **Attention Kill Criterion (Doctrine Without Kill Is Decoration)** | `/root/AAA/instructions/attention-kill-criterion.md` | **F13_RATIFIED_CHAT (2026-09-11)** |
 | **Jauhari Intelligence Doctrine (Sovereign Articulation)** | `/root/AAA/instructions/jauhari-intelligence-doctrine.md` | **F13_RATIFIED_CHAT (2026-09-11)** — sovereign-articulated 2026-09-07 · sealed *"aku seal ja semua"* post-audit FI-008 |
 | **PETRONAS Institutional Knowledge Atlas** | `/root/AAA/canon/PETRONAS/ATLAS.md` + `KNOWLEDGE_GRAPH.json` | **CANONICAL (2026-09-12)** — apex-zen single source of truth; any PETRONAS mention → load this first (router: `PETRONAS-intelligence-router`) |
+| **Human Attention Membrane (Question Routing Law)** | `/root/AAA/instructions/human-attention-membrane.md` | **F13_RATIFIED_CHAT (2026-09-13)** — technical questions → musyawarah with AAA agents, NEVER to sovereign; F13-class binaries only reach Arif |
 
 **To load:** read the file path above. Each fragment is independent and may be consulted separately.
 
