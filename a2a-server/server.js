@@ -4995,7 +4995,7 @@ app.get('/.well-known/agent-card-extended.json', authMiddleware, (req, res) => {
         .map(o => o.id),
       trust_hierarchy: EXTENDED_AGENT_CARD.organ_routing_topology?.trust_hierarchy,
       constitutional_floors: Object.keys(EXTENDED_AGENT_CARD.constitutional_floors || {}),
-      governance_kernel: 'arifOS (port 8088)',
+      governance_kernel: 'arifOS',
       peer_contracts: [...PEER_CONTRACTS.keys()],
     };
     baseCard.extended_card = EXTENDED_AGENT_CARD;
@@ -5013,7 +5013,7 @@ app.get('/.well-known/agent-card-extended.json', authMiddleware, (req, res) => {
       organs: ['arifOS', 'A-FORGE', 'GEOX', 'WEALTH', 'WELL'],
       trust_hierarchy: 'Human (Arif) > arifOS > AAA > A-FORGE > Specialists',
       constitutional_floors: ['F1', 'F2', 'F4', 'F7', 'F9', 'F10', 'F11', 'F12', 'F13'],
-      governance_kernel: 'arifOS (port 8088)',
+      governance_kernel: 'arifOS',
       peer_contracts: [...PEER_CONTRACTS.keys()],
     };
   }
