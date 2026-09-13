@@ -1,0 +1,21 @@
+# Governance Reality Object — self-certification lock (Gödel lock)
+# GROUNDED IN REAL CANON: /root/AAA/skills/arifos-constitutional-judge/SKILL.md —
+# "doer ≠ judge lane"; and AGENTS.md "Never self-SEAL".
+schema: arifos.gro.v1
+id: GRO-GODEL-001
+floor: F11
+constraint: self_certification
+condition:
+  caller_equals_target: true
+authority: KERNEL
+required: independent_witness
+verdict: HOLD
+status: RATIFIED
+source: /root/AAA/skills/arifos-constitutional-judge/SKILL.md
+behavior_change:
+  mode: HOLD_FOR_CONFIRMATION
+  from: AUTO
+  to: DRAFT_ONLY
+  reason: >-
+    An actor may never certify its own output. Self-graded work must be routed
+    to an independent lane (555 verify / 888 judge / external critic).

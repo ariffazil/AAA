@@ -1,0 +1,22 @@
+# Governance Reality Object — verifier independence
+# GROUNDED IN REAL CANON: /root/AAA/skills/verification... — the "SELF_CERTIFIED
+# is INADMISSIBLE" rule in forge_ephemeral verify, and witness-first doctrine
+# "Verification > Sealing" (APEX::TRI_REALITY_GOVERNANCE_ACTIVATION).
+schema: arifos.gro.v1
+id: GRO-VERIFY-INDEPENDENT-001
+floor: F2
+constraint: verification_independence
+condition:
+  verification_method: SELF_CERTIFIED
+authority: KERNEL
+required: known_answer_or_schema_invariant_or_independent_recompute
+verdict: HOLD
+status: RATIFIED
+source: /root/AAA/canon/APEX_REALITY_GRAPH_MEMORY_MIGRATION_v1.md
+behavior_change:
+  mode: HOLD_FOR_CONFIRMATION
+  from: AUTO
+  to: DRAFT_ONLY
+  reason: >-
+    Self-certified verification is inadmissible as evidence. Accept only
+    known_answer, schema_invariant, independent_recompute, or domain_witness.

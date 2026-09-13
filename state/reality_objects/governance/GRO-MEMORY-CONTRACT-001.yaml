@@ -1,0 +1,24 @@
+# Governance Reality Object — memory write contract
+# GROUNDED IN REAL CANON: /root/AAA/federation/memory_classes.yaml + the R1 rule in
+# /root/AAA/FEDERATION_MEMORY_QUICKSTART.md — all federated memory writes go through
+# arif_memory / FederationMemory adapter; direct Qdrant/Supabase/Graphiti writes fail
+# the audit (federation_memory_audit.py exit 1).
+schema: arifos.gro.v1
+id: GRO-MEMORY-CONTRACT-001
+floor: F1
+constraint: memory_write_contract
+condition:
+  action_class: memory_write
+  bypasses_adapter: true
+authority: KERNEL
+required: route_through_federation_memory_adapter
+verdict: HOLD
+status: RATIFIED
+source: /root/AAA/FEDERATION_MEMORY_QUICKSTART.md
+behavior_change:
+  mode: HARD_ABORT
+  from: AUTO
+  to: BLOCKED
+  reason: >-
+    Out-of-contract writes pollute federation canon and break class isolation.
+    Route through FederationMemory.store(collection_class=...).
