@@ -61,3 +61,7 @@ OBSERVE_ONLY (current — honest, no consumer)
 - Apply when FI-008 hands off: `cd /root/AAA/scripts && patch -p1 -i proposals/apex-zen-receipts-dedup-2026-09-13.patch`
 
 > **UPDATE 22:06** — SUPERSEDED. FI-008 implemented a superior fix at 22:05:55: change-detection watermark (`apex-zen-receipts.state.json`, emit-once-per-signal, `--snapshot` escape), with measured evidence (27,280 rows / 116 distinct signals / 99.6% redundant / ~74MB/day / disk 79%). This patch was never applied; retired to `.SUPERSEDED-by-fi008-watermark`.
+
+> **UPDATE 22:11 — DEDUP VERIFIED LIVE.** The 22:10 cycle emitted **1 receipt** (active signals 123, new 1, suppressed 1409) vs ~1,316/cycle before. Disk bleed (was ~74MB/day at 79% full) collapses to change-only. FI-008 fix confirmed superior; my patch retired.
+
+> **UPDATE 22:16 — SECOND ARTIFACT CLASS (namespace).** Verified the ladder is internally consistent; the remaining flags are real *under the formula*. But the ANNOUNCE set still carries **non-agent labels**: `zen-code`, `zen-doctrine`, `zen-graph`, `zen-skills` (workstream keys), `p0-metabolize`, `reexamine` — 6 of 15. They have no missing metrics (so `severity_reliable` passes) yet are not consequence-bearing agents. **New rule R6:** the actor namespace must be an allow-list of registered agents; workstream/session labels require explicit registration or exclusion (extension of INV-3 beyond collector artifacts). Effective clean announce set = 9 pending R6.

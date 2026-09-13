@@ -24,4 +24,9 @@ python3 /root/AAA/scripts/apex-zen-reality-binder.py --latest 5 >> "$LOG" 2>&1 |
 python3 /root/AAA/scripts/apex-zen-consequence-router.py >> "$LOG" 2>&1 || \
     echo "[$(date -Iseconds)] router failed" >> "$LOG"
 
+# Phase 2b: ANNOUNCE-tier consumer (log-only, watermark semantics; never blocks)
+# Added 333-AGI 2026-09-13. Rollback: restore apex-zen-run-loop.sh.bak-333agi-*.
+python3 /root/AAA/scripts/apex-zen-announce-consumer.py --emit >> "$LOG" 2>&1 || \
+    echo "[$(date -Iseconds)] announce-consumer failed" >> "$LOG"
+
 echo "[$(date -Iseconds)] APEX-ZEN loop end" >> "$LOG"

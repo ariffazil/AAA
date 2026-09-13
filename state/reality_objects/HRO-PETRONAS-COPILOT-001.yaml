@@ -1,0 +1,30 @@
+# Human Reality Object — seed 1
+# Source intent: F13 (Arif) via three-consequence-domains session, 2026-09-13
+# CORRECTED to the ratified schema arifos.hro.v1 (REALITY_CONSEQUENCE_OBJECTS_SPEC_v1.md §3).
+#   Drift fixed vs the draft example:
+#     - `expiry`        -> `expires_at`
+#     - `scar_precedent`-> `scar_links` (list, spec field name) and set to [] because
+#       the cited id SCAR-PROBE-BEFORE-SEAL-20260913 DOES NOT EXIST in /root/AAA/scars
+#       or /root/memory (verified by grep, 0 hits). An unresolvable scar reference
+#       must stay empty, never fabricated (F2).
+#     - consequence_class REPUTATIONAL_AND_STRATEGIC -> REPUTATIONAL (enum has no
+#       compound value; STRATEGIC is carried by what_matters_rationale instead)
+#     - added required `title`, `authority_level`, `what_matters_rationale`
+schema: arifos.hro.v1
+id: HRO-PETRONAS-COPILOT-001
+type: commitment
+title: "Copilot Studio Operator Sheet"
+owner: ARIF
+stakeholders:
+  - corporate_governance
+  - operations_team
+attention_cost: HIGH
+consequence_class: REPUTATIONAL
+authority_level: DELEGATED_DRAFT
+what_matters_rationale: >-
+  Board/management-visible deliverable. Cost of error is not a revertible file
+  but human reputation at corporate level; strategic as well as reputational.
+scar_links: []
+admissibility: ACTIVE
+expires_at: 2026-10-01T00:00:00Z
+next_physical_action: "Validate operator schema against live tenant"
