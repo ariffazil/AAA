@@ -69,6 +69,19 @@ Canonical doctrine: /root/AAA/canon/REALITY_GRAPH.md
 Sovereign declaration: "REALITY GRAPH IS REAL AND ITS YANG ARIF" — F13 chat, 2026-09-13.
 Naming sovereign-ratified; evidence claims SPEC-grade (v2 correction, same day).
 
+### [CONCEPT] Constraint > Intelligence (Four-Layer Separation) (Ratified 2026-09-13 by ARIF)
+```text
+[CONCEPT]
+Constraint > Intelligence.
+Intelligence searches possibility space; constraints select viable trajectories.
+Four-layer separation of powers:
+- AAA explains why (Meaning / Constitution)
+- Kernel decides if (Physics / Constraints)
+- A-FORGE decides how (Actuator / Performance)
+- VAULT999 proves it happened (Witness / Immutability)
+Canonical doctrine: /root/AAA/canon/EUREKA-2026-09-13-CONSTRAINT-OVER-INTELLIGENCE.md
+```
+
 ---
 
 ## IDENTITIES (Category A — human-held)

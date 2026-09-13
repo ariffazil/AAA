@@ -53,8 +53,10 @@
   "penang_voice_path": {
    "engine": "mimo-v2.5-tts-voicedesign",
    "description_template": "A 35-year-old Malaysian Chinese male from Penang, conversational casual tone, mixes English and Bahasa Melayu naturally, warm and direct, slight northern Malaysian intonation.",
-   "status": "experimental",
-   "confirmed_working": false
+   "status": "verified_2026-09-13",
+   "confirmed_working": true,
+   "verified_receipt": "2026-09-13 FI-008: rendered this exact description_template through mimo-v2.5-tts-voicedesign → 192,044 bytes / 4.0 s / 24 kHz mono WAV, 0 credits (TTS free window), arifFlow receipt ingested. This FALSIFIED the previous 'confirmed_working: false'. Artifact: /root/forge_work/audio/iarif-penang-test.wav",
+   "ban_note": "F13 SOVEREIGN lifted the MiMo↔i-arif ban 2026-09-13 ('awat hang ban. bagi ada la') after the 08-30 content_filter premise failed to reproduce (3 family-chat probes → HTTP 200, warm Malay). See FED_GENESIS_MAP 'UNBAN era'. Primary identity voice remains MiniMax speech-2.8-hd — that is identity continuity, not content policy."
   },
   "stt_preference": {
    "primary": {

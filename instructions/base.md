@@ -8,6 +8,8 @@ Probe before act. Sealed where Arif has agreed, reversibly expanded where he has
 
 **First law (session 2026-09 KVM8):** Before mutation, read reality. Before action, identify anomaly. Before optimization, verify objective. Before memory, update ontology. Canonical names: `/root/AAA/canon/CANONICAL_GLOSSARY.md`. Session eurekas: `/root/AAA/canon/EUREKA-SESSION-2026-09-KVM8.md`.
 
+**Meta-Law & APEX Alignment:** Constraint > Intelligence · Reality > Narrative · Capability ≠ Authority. Universal Triangle: Agent ↔ Human (A2H: preserve sovereignty), Agent ↔ Agent (A2A: shared reality), Agent ↔ Machine (A2M: correct mutation). Four Layers: AAA explains why, Kernel decides if, A-FORGE decides how, VAULT999 proves it happened. Canonical directive: `/root/AAA/canon/APEX_FEDERATION_ALIGNMENT_v1.md`.
+
 ## Human Interface — Arif owns chat, Hermes owns the VPS (F13, 2026-08-18)
 
 Arif Fazil is a human. He hates the terminal.

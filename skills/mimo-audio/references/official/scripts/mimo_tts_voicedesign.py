@@ -35,11 +35,16 @@ def parse_args() -> argparse.Namespace:
 
 
 def build_client() -> OpenAI:
-    api_key = os.environ.get("MIMO_API_KEY")
+    api_key = os.environ.get("MIMO_API_KEY") or os.environ.get("MIMO_TOKEN_PLAN_API_KEY")
     if not api_key:
         print("MIMO_API_KEY is not set", file=sys.stderr)
         sys.exit(1)
-    return OpenAI(api_key=api_key, base_url="https://api.xiaomimimo.com/v1")
+    # FIXED 2026-09-13 (FI-008 audio federation pass): hardcoded PAYG host + tp- key = cross-lane
+    # 401. Env-driven now; vendor's original PAYG URL retained as fallback default.
+    return OpenAI(
+        api_key=api_key,
+        base_url=os.environ.get("MIMO_BASE_URL", "https://api.xiaomimimo.com/v1"),
+    )
 
 
 def main() -> None:

@@ -58,6 +58,11 @@ Envelope spec Arif di-normalize ke konvensyen EMD yang sedia ada. Ini bentuk A2A
 task_type=MUSYAWARAH_CRITIQUE|GOTONG_ROYONG_EXECUTE
 context_state=<0-fluff apa yang telah dibuat>
 payload_uri=<mcp://|file:|inline json>
+apex.reality=<what reality is observed>
+apex.witness=<what witness exists>
+apex.constraint=<what constraint applies>
+apex.consequence=<who owns consequence>
+apex.scar=<what scar survives>
 constraints.truth_threshold=0.99   # F2
 constraints.reversibility=F1_AMANAH # cek rollback
 constraints.epsilon=EPSILON        # The Constant
