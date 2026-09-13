@@ -252,8 +252,25 @@ If the routing table here drifts from SOT, the table is wrong (SOT wins). Update
 | Hermes config drift from SOT | Hermes config is consumer; SOT is authority. Patch Hermes config to match SOT, NOT vice versa. |
 | Cross-agent picker drift | F13 holds the pen. AAA writes SOT only, does NOT auto-sync to pickers. Manual alignment audit. |
 
+## Hermes Telegram live lock (2026-09-13 F13)
+
+Do not delete skills. Harden routing. Quarantine manifests stay evidence.
+
+| Lane | Live consumer (`@ASI_arifos_bot` KVM8) | Engine |
+|---|---|---|
+| Vision in | MCP `zai_vision` (GLM-5.3-Flash, MATA LIVE) | understand |
+| Audio in | Groq Whisper `ms` + `whisper-large-v3`; faster-whisper local fallback | ASR |
+| Audio out | MiniMax `speech-2.8-hd` `iarif-sovereign-v9` via `hermes-voice` | TTS Siti-jiwa |
+| Video gen | MATA: Hailuo-2.3 LIVE; Gemini family LIVE | generate |
+| Somatic | `AAA-somatic-emd-pipeline` | music |
+| Auto-speak | `voice.auto_tts: false` | on-demand |
+
+Siti Nurhaliza = **jiwa** (humble genius Melayu). Not a celebrity clone. F9.
+Meta-mesa: classify modality → this skill → SOT `federation-models.json` → organ MCP.
+
 ## Audit trail
 
+- **2026-09-13** — FI-007: Hermes live lock + V9 jiwa default. No skill deletion.
 - **2026-08-25** — FI-007: Imagine spawn path for all AAA agents (`grok-multimodal.sh` + GROK_IMAGINE.md). Harness-native, not FED.
 - **2026-08-20** — forged by FI-003 Qwen Code
 - Driver: Arif F13 directive "now make sure my hermes agent telegram ASI_arifos_bot know how to use this"
