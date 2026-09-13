@@ -1,0 +1,55 @@
+{
+  "schema_version": "apex-federation-witness/v1",
+  "timestamp_utc": "2026-09-13T05:14:00Z",
+  "witness_node": "kvm2 (azwaos - 100.64.0.4)",
+  "target_nodes": {
+    "truth_core": "kvm8 (100.64.0.2)",
+    "execution_workshop": "kvm4 (100.64.0.5)"
+  },
+  "git_parity": {
+    "arifOS": {"head": "4e054fc", "clean": true, "remote_sync": "confirmed"},
+    "A-FORGE": {"head": "a4ef6b9b", "clean": true, "remote_sync": "confirmed"},
+    "AAA": {"head": "fae51eea3", "clean": true, "remote_sync": "confirmed"},
+    "GEOX": {"head": "c1ad2812", "clean": true, "remote_sync": "confirmed"},
+    "WEALTH": {"head": "9ba4583", "clean": true, "remote_sync": "confirmed"},
+    "WELL": {"head": "4e4e04c", "clean": true, "remote_sync": "confirmed"}
+  },
+  "deployment_probes_from_kvm2": {
+    "kvm8_kernel_8088": {"status": "healthy", "probed_from": "kvm2"},
+    "kvm8_fed_4000": {"liveliness": "alive", "probed_from": "kvm2"},
+    "kvm8_well_18083": {
+      "status": "degraded",
+      "source_commit": "4e4e04c",
+      "domain_data_readiness": "OPERATOR_REPORTED",
+      "freshness_band": "STALE",
+      "state_age_hours": 211.8,
+      "stale_guard": "ACTIVE"
+    },
+    "kvm4_openclaw_gateway": {"telegram": "@AGI_ASI_bot", "model": "fed/agi-333", "status": "active"},
+    "kvm2_wawabot_service": {"service": "hermes-agent", "telegram": "@Azwafazil_bot", "backend": "kvm8:4012", "status": "active"}
+  },
+  "sovereign_root": {
+    "status": "ROOT_UNKNOWN_888_HOLD",
+    "key_present": false,
+    "continuity_claim": "UNAUTHORIZED_DO_NOT_FABRICATE",
+    "note": "Private key arifos_sovereign.key not found in .secrets. Must not simulate continuity; holds for sovereign ratification."
+  },
+  "well_truth_boundary": {
+    "source_class": "OPERATOR_REPORTED",
+    "freshness_state": "STALE (211.8h / 8.8d)",
+    "current_readiness": "UNKNOWN (Not wearable sensor telemetry)",
+    "stale_guard": "ACTIVE",
+    "boundary_rule": "Stale operator report must never be inferred as current human readiness."
+  },
+  "disk_and_metabolism": {
+    "kvm8_disk": "304G/387G (79% used, 84G avail)",
+    "kvm2_disk": "29G/96G (30% used, 68G avail)",
+    "open_loops": 0,
+    "agent_metabolism_status": "L1_L2_FUNCTIONAL_L3_FALSIFICATION_PENDING"
+  },
+  "authority": {
+    "irreversible_actions_executed": false,
+    "f13_mutation": false,
+    "human_sovereignty_membrane": "ACTIVE (Arif pays consequence; digital repairs autonomous; root/cost actions hold)"
+  }
+}
