@@ -1,7 +1,7 @@
 ---
 id: FORGE-agentic-web-builder
 name: FORGE-agentic-web-builder
-version: 1.1.0-2026.07.30
+version: 1.2.0-2026.09.13
 description: "Use when building, deploying, auditing, or repairing arif-fazil.com constellation and federation agentic web apps. Use when building, deploying, auditing, or repairing arif-fazil.com constellation and federation agentic web apps. Build, deploy, audit, and repair arif-fazil.com constellation sites autonomously. Class-level umbrella: DOCTOR (web_zen CLI), DEPLOY, AUDIT, REPAIR, SEAL, EPHEMERAL. Humans use six missions — not tool menus. USE WHEN: \"deploy site\", \"site down\", \"audit all pages\", \"404 on arif-fazil.com\", \"deploy-vps.sh\", \"makcikgpt broken\", \"web zen\", \"missions 404\", \"vitals proxies\", \"rsync --delete\", \"ephemeral tool\". DO NOT USE FOR: Caddy SSL/DNS/tunnel (FORGE-infra-guardian), LLM SEO (AGI-web-optimization), generic CI/CD (FORGE-cicd-docker-deploy)."
 owner: FORGE (000Ω)
 risk_tier: T2
@@ -22,6 +22,16 @@ ecology_state: WARM
 > **2026-07-30:** Stop inventory cosplay. Humans → `/missions`. Agents →
 > `web_zen.py doctor` before inventing a new deploy path.
 
+## Fabric (2026-09-13)
+
+Load **`AGI-agentic-web-delivery`** with this skill.
+SOT: `/root/arif-fazil.com/docs/agentic-web/README.md`
+Canonical source is **`/root/arif-fazil.com`**, not `/root/arif-sites`.
+Caddy reload is **T3 HOLD** unless Arif names it. `make deploy` includes reload — do not run the whole target.
+Oil/gas doctor 500 is missing `/root/venv/bin/python3` (gold uses WEALTH venv + `PYTHON_PATH`). Units active ≠ ticker 200.
+`web_zen.py audit` is documented here and **not in the CLI**. Use doctor + Playwright.
+`SITE_CONSTITUTION.md` / `SITE_IDENTITY.md` are cited below and **do not exist** (public 404). Use `docs/agentic-web/` instead.
+
 ## The One Law
 
 ```
@@ -29,6 +39,7 @@ VERSION CONTROL FIRST. LIVE TREE SECOND.
 If a file must exist on a public site, it must exist in git first.
 rsync --delete is an executioner — anything not in source is sentenced.
 Capability ≠ authority. Ephemeral tools die. Permission stays with arifOS/Arif.
+Caddy reload ≠ deploy. Public /a2a stays unmatched.
 ```
 
 ---
@@ -58,7 +69,7 @@ Caddy reload: `systemctl reload caddy` (PrivateTmp=false fixed 2026-07-30)
 |---------|-------|-----|
 | `/missions` 404 | not in Caddy `@spa_routes` | add `/missions*`; `caddy validate`; `/usr/bin/caddy reload --config /etc/caddy/Caddyfile --force` |
 | `/missions.json` 404 | not in `@root_static` | add path; reload as above |
-| VITALS proxies UNAVAILABLE | gold/oil/gas API down | `systemctl start gold-api oil-api gas-api` (not API keys) |
+| VITALS proxies UNAVAILABLE | gold/oil/gas API down | units may already be active; oil/gas spawn `/root/venv/bin/python3` ENOENT — set `PYTHON_PATH` like gold (WEALTH venv). Not API keys. |
 | `systemctl reload caddy` fail NAMESPACE | host /tmp mount bug | in-process caddy reload (above) |
 | Doctor fails SPA markers | checking HTML shell only | web_zen reads live `/assets/index-*.js` |
 
