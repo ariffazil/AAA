@@ -61,18 +61,18 @@ def save_state(state: dict):
     STATE_FILE.write_text(json.dumps(state, indent=2))
 
 
-def emit_verify(session_id: str, summary: str) -> bool:
-    """Emit a Verify receipt to arifFlow."""
+def emit_abort(session_id: str, summary: str) -> bool:
+    """Emit an honest Abort receipt to arifFlow (never synthesize Verify!)."""
     payload = {
         "receipt_id": str(uuid.uuid4()),
         "created_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S") + ".000000Z",
         "actor_id": ACTOR_ID,
         "session_id": session_id,
-        "step_type": "Verify",
+        "step_type": "Abort",
         "step_number": 1,
         "cost_ns": 0,
         "epistemic_label": "Observation",
-        "floor_verdict": "Pass",
+        "floor_verdict": "Hold",
         "cooling_decision": "None",
         "summary": summary,
     }
@@ -125,7 +125,7 @@ def main():
         if i < prev_gap:
             continue
         session_id = f"abort-{ACTOR_ID}-{now.strftime('%Y%m%d')}-{i:04d}"
-        ok = emit_verify(session_id, f"abort:orphan_session gap={gap} index={i}")
+        ok = emit_abort(session_id, f"abort:orphan_session gap={gap} index={i}")
         if ok:
             emitted += 1
         else:
@@ -137,7 +137,7 @@ def main():
     save_state(state)
 
     if emitted > 0:
-        print(f"[abort-watcher] emitted {emitted} abort Verify receipts (total: {state['abort_receipts_emitted']})")
+        print(f"[abort-watcher] emitted {emitted} Abort receipts (total: {state['abort_receipts_emitted']})")
     else:
         print(f"[abort-watcher] gap={gap} but no new orphans (all previously counted)")
 

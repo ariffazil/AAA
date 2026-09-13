@@ -3,6 +3,10 @@
 # Cron entry: see /root/AAA/scripts/apex-zen-cron.txt
 set -e
 
+# Mutual exclusion lock: prevent overlapping runs across ticks
+exec 200>"/tmp/apex-zen-loop.lock"
+flock -n 200 || { echo "[$(date -Iseconds)] APEX-ZEN loop skipped — lock held" >> "/root/VAULT999/apex-zen-loop.log" 2>/dev/null; exit 0; }
+
 LOG="/root/VAULT999/apex-zen-loop.log"
 mkdir -p "$(dirname "$LOG")"
 
@@ -20,9 +24,8 @@ python3 /root/AAA/scripts/apex-zen-ariflow-source.py >> "$LOG" 2>&1 || \
 python3 /root/AAA/scripts/apex-zen-reality-binder.py --latest 5 >> "$LOG" 2>&1 || \
     echo "[$(date -Iseconds)] reality-binder failed" >> "$LOG"
 
-# Phase 1d: emit abort Verify receipts for orphan hermes-asi sessions
-python3 /root/AAA/scripts/apex-zen-abort-watcher.py >> "$LOG" 2>&1 || \
-    echo "[$(date -Iseconds)] abort-watcher failed" >> "$LOG"
+# Phase 1d REMOVED: abort-watcher was emitting synthetic Verify receipts,
+# falsifying FQ. Aborted sessions must never be reported as Verify.
 
 # Phase 2: route consequences
 python3 /root/AAA/scripts/apex-zen-consequence-router.py >> "$LOG" 2>&1 || \
