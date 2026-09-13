@@ -1,4 +1,11 @@
 #!/bin/bash
+# ⚠️ STALE COPY — DO NOT RESURRECT (annotated 2026-09-13, FI-008 session)
+# The LIVE watchdog runs on KVM4 via /etc/cron.d/openclaw-watchdog (*/5),
+# script /root/scripts/openclaw-watchdog.sh ON KVM4. Proven working:
+# 2026-09-11 16:05 UTC REPAIR → REPAIR_FAILED → 888_HOLD → Telegram alert to Arif (msg 110069).
+# Creating a KVM8 watchdog for the KVM4 edge = dual restart authority = split-brain.
+# If the edge needs watching from KVM8, it must be OBSERVE-ONLY (no restart), and that is an F13 decision.
+
 # arifOS Gateway watchdog — runs inside OpenClaw cron agent
 # Action-based. Silent on healthy. Telegram only on recovery or 888_HOLD.
 # Uses curl direct to gateway /health (shell HTTP, no model call).
