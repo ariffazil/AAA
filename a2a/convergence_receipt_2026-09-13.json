@@ -1,0 +1,130 @@
+{
+  "apex_zen_convergence_receipt": {
+    "generated_at": "2026-09-13T06:37:48Z",
+    "substrate": "KVM8 truth-node (forge 100.64.0.2 / 72.62.71.199)",
+    "sovereign": "Arif Fazil (F13)",
+    "agent": "Antigravity / Claude Sonnet",
+    "repositories": {
+      "AAA": {
+        "branch": "main",
+        "head_sha": "7cc04991e42b777b145d2ba31459b13e9b489b0c",
+        "worktree_clean": false
+      },
+      "arifOS": {
+        "branch": "main",
+        "head_sha": "3b22982a8cf18bbddbdfaf24d2065aa316906a23",
+        "worktree_clean": true
+      },
+      "A-FORGE": {
+        "branch": "main",
+        "head_sha": "bd228c7b6fbcb633ddb0b8da4bd99e41973b55d7",
+        "worktree_clean": true
+      },
+      "arifFlow": {
+        "branch": "forge/rg2-lineage-reconcile",
+        "head_sha": "06fe0c8b5e156f7abbd56a8ae8c3f829c81b0c4b",
+        "worktree_clean": true
+      }
+    },
+    "supply_chain": {
+      "z_ai_mcp_server_pinned": true,
+      "pinned_version": "0.1.4",
+      "gate_result": "PASS (7 configs, 11 pins)",
+      "unpinned_installs_found": false
+    },
+    "a2a": {
+      "canonical_endpoint": "https://aaa.arif-fazil.com/a2a/",
+      "gateway_health_status": "healthy",
+      "gateway_runtime_sha": "7cc0499",
+      "gateway_source_sha": "7cc0499",
+      "deployment_drift": false,
+      "authority_ceiling": "DISPLAY_ONLY",
+      "final_authority": "ARIF",
+      "vault_chain_seq": 54,
+      "vault_chain_hash": "sha256:04b3bfd6f115a49157f47593c36222adc5d7006c841f8d0ea8db1be22bb259a1",
+      "last_verdict": "SEAL",
+      "public_card": {
+        "source": "Caddy file_server /var/www/html/aaa",
+        "sha256": "70f483c908aa07d8472573322b33606c5cb0ef0f516381bfb202c47722effa4c",
+        "bytes": 14839,
+        "protocol_version": "1.2",
+        "DRIFT_NOTE": "Disk card says 1.2; A2A spec canonical is 1.0. Drift = T3 888_HOLD."
+      },
+      "canon_card": {
+        "source": "/root/AAA/.well-known/agent-card.json",
+        "sha256": "3a5edd090cd2c2e357079d91cc8278face0d1511bf9e820a6c651548871078e7",
+        "protocol_version": "1.0",
+        "status": "CORRECT but NOT YET deployed to Caddy root"
+      },
+      "known_gaps": {
+        "caddy_exact_path_a2a": "POST /a2a = 405 (Caddy SPA wins). /a2a/ = 200. Fix = T3 888_HOLD.",
+        "protocol_version_drift": "Live public card = 1.2, canon = 1.0. Deploy T3 888_HOLD.",
+        "legacy_verbs_live": "tasks/send, agent/getCard, agent/listSkills still dispatched",
+        "_membrane_in_envelope": "Injected into JSON-RPC core; should be A2A-Extensions negotiated",
+        "task_state_auth_required": "Missing from schema.ts and schema-v1.ts wire",
+        "organ_cards": "GEOX=404, WEALTH=HTML, WELL=HTML, a-forge=404"
+      },
+      "holds": {
+        "caddy_reload": "T3 888_HOLD \u2014 not auto-executed",
+        "merkle_signing_keys": "F13 HOLD",
+        "open_ledger_items": 68
+      }
+    },
+    "memory_sanctuary": {
+      "canonical_sot": "/root/arifOS/arifosmcp/memory/admissibility.py",
+      "denylist_path": "/root/arifOS/config/memory-sanctuary-denylist.json",
+      "denylist_sha256": "dd8e1d582a299163e55a1b4b9f958f82895ec78a69cdc183b26e3eeefc582d50",
+      "denylist_symlink_aaa": "/root/AAA/contracts/memory/memory-sanctuary-denylist.json",
+      "denylist_symlink_sha256": "dd8e1d582a299163e55a1b4b9f958f82895ec78a69cdc183b26e3eeefc582d50",
+      "hashes_match": true,
+      "policy_path": "/root/arifOS/config/memory-admissibility-policy.yaml",
+      "policy_sha256": "597d24bc8b868c654e6e8bf07311edd54dcf897442ffc7f6de64ea6510950580",
+      "aaa_adapter_thin": true,
+      "sanctuary_ids_blocked": [
+        "652231558 (Qdrant)",
+        "f7dfeac5-0fb5-4d74-bbf1-2966ba6ac7f6 (Postgres)"
+      ],
+      "quarantine_posture": "Pilihan A \u2014 isolated, not deleted",
+      "tests": {
+        "arifOS_constitutional": "20/20 PASSED (env: WELL_STATE_PATH=/tmp, SKIP_SENTINEL=1)",
+        "AAA_contracts": "8/8 PASSED (all previously-skipped test now passes: Qdrant reachable from KVM8)",
+        "skip_contract": {
+          "skip_trigger": "Qdrant unreachable from test environment (sandbox)",
+          "is_safe": true,
+          "reason": "Skip is connectivity-gated not logic-gated. KVM8 passes same test 8/8. No sanctuary bypass occurs when skip fires.",
+          "status": "DOCUMENTED HERE (needs commit to repo as test_skip_contract.md)"
+        }
+      }
+    },
+    "runtime": {
+      "hermes_service": "active",
+      "service_unit": "hermes-asi-gateway.service",
+      "aaa_gateway_port": 3001,
+      "aaa_gateway_health": "healthy",
+      "well_state": "DEGRADED \u2014 biometric telemetry unverified (SELF_REPORT, human stale)",
+      "cron_count": "NOT_PROBED_FROM_SANDBOX",
+      "vault999_total_entries": 264,
+      "vault_seq": 54
+    },
+    "verdict": {
+      "converged": false,
+      "reason": "Three gaps remain open \u2014 not because remediation failed but because they are T3/F13 HOLD:",
+      "open_gaps": [
+        "G1: Live public card (protocolVersion 1.2) diverges from canon (1.0). Needs Caddy deploy \u2014 T3 888_HOLD.",
+        "G2: Caddy exact-path /a2a = 405. Trailing-slash workaround in place. Fix = T3 888_HOLD.",
+        "G3: test_skip_contract.md not yet committed to repo (documentation debt)."
+      ],
+      "converged_items": [
+        "Supply-chain gate: PASS",
+        "arifOS canonical admissibility engine: SEALED (commit 4f4554597)",
+        "AAA adapter \u2192 arifOS thin delegate: SEALED (commit a7a4a0044)",
+        "Denylist SHA256 parity (arifOS == AAA symlink): MATCH",
+        "Gateway deployed_sha == source_sha: MATCH (7cc0499, no deployment drift)",
+        "Vault chain last verdict: SEAL",
+        "Hermes service: active",
+        "arifOS tests: 20/20 PASSED",
+        "AAA tests: 8/8 PASSED (KVM8 native)"
+      ]
+    }
+  }
+}
