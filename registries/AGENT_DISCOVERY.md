@@ -4,6 +4,12 @@
 > **Principle:** No agent boot without governed contract. No capability without attestation.
 > **Authority:** F13 SOVEREIGN — Arif remains final judge.
 > **Last Forged:** 2026-06-20 | **Forged by:** Kimi Constitutional Clerk
+>
+> ⚠️ **STALE — FI numbering in this document is HISTORICAL (2026-06-20 schema).** Current FI registry SOT:
+> `/root/AAA/registries/forge_instruments.yaml` (live version re-probe 2026-09-13, session SEAL-42dad7d3d9334310).
+> Known deltas vs this doc: FI-004 slot retired/renumbered → FI-009 (Antigravity, `agy`); FI-007 here = Aider
+> (NOT INSTALLED) but current FI-007 = Grok Build; FI-010 Gemini CLI DECEASED per F13 2026-09-13
+> ("gemini cli is dead"). Do not use the init blocks below as runtime truth without re-probe.
 
 ---
 
@@ -92,7 +98,9 @@ Risk:      LOW — no MCP access, no federation connection
 ```
 **Upgrade path:** Add arifOS MCP to Qwen config, then use `mode="boot_safe"` first.
 
-### FI-004 — Gemini CLI
+### FI-004 — Gemini CLI ❌ DECEASED (F13: "gemini cli is dead", 2026-09-13)
+
+> **DO NOT WIRE.** Superseded 2026-08-21 (lane folded into FI-009 agy/antigravity); declared dead 2026-09-13 by F13. Historical block below retained for audit only.
 ```
 Binary:    /usr/bin/gemini
 MCP:       13 servers including arifOS:8088, geox:8081, wealth:18082, well:18083, aforge:7071
