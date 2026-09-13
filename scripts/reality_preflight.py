@@ -116,12 +116,135 @@ def answer_r2(objs: dict) -> tuple[str, list[str]]:
     return ("SATISFIED" if ev else "UNANSWERED"), ev
 
 
-def answer_r5(_objs: dict) -> tuple[str, list[str]]:
-    for p in FLOOR_MANIFEST_CANDIDATES:
-        if p.exists():
-            return "SATISFIED", [f"governance source present: {p}"]
-    return "UNANSWERED", ["no machine-readable floor manifest found at any candidate path: "
-                          + ", ".join(str(p) for p in FLOOR_MANIFEST_CANDIDATES)]
+GRO_DIR = OBJECTS_DIR / "governance"
+ENV: dict[str, str] = {}  # populated from --set k=v in main()
+
+
+def load_gro() -> list[dict]:
+    """Load machine-readable Governance Reality Objects (arifos.gro.v1)."""
+    out: list[dict] = []
+    if not GRO_DIR.exists():
+        return out
+    for f in sorted(GRO_DIR.glob("*.y*ml")):
+        try:
+            d = yaml.safe_load(f.read_text())
+        except Exception:  # noqa: BLE001
+            continue
+        if isinstance(d, dict) and d.get("schema") == "arifos.gro.v1":
+            d["_source"] = str(f)
+            out.append(d)
+    return out
+
+
+def _dig(obj, dotted):
+    cur = obj
+    for part in dotted.split("."):
+        if not isinstance(cur, dict) or part not in cur:
+            return None
+        cur = cur[part]
+    return cur
+
+
+GRO_BINDING: dict = {"blocking": [], "behaviour": None, "authority": None}
+
+
+def _match_state(condition, env: dict) -> str:
+    """Return MATCH | NO_MATCH | UNDETERMINED.
+
+    Case-insensitive compare: YAML coerces `true` -> boolean True while the CLI
+    supplies "true" (bug found by test T3, 2026-09-13).
+
+    UNDETERMINED is FAIL-CLOSED. If a blocking rule references a fact the caller did
+    not declare, the rule cannot be evaluated. Per the Void Guard doctrine —
+    "No data" is not "All clear", "No data" is "Cannot witness" — an unevaluable
+    blocking rule CONTRACTS authority instead of silently permitting the action.
+    Without this, a rule is evadable simply by not declaring the extra fact
+    (fail-open hole found by test T4, 2026-09-13).
+    """
+    if not isinstance(condition, dict) or not condition:
+        return "NO_MATCH"
+    # RELEVANCE GATE. A rule that names a specific action_class does not apply to a
+    # DIFFERENT declared action_class, and must not demand unrelated facts.
+    # Without this, every action_class-specific rule degraded to UNDETERMINED and the
+    # gate blocked unconditionally — a gate that always says NO gets bypassed, which is
+    # worse than no gate. (Found by tests T1a/T4b, 2026-09-13.)
+    cclass = condition.get("action_class")
+    if cclass is not None and "action_class" in env:
+        if str(env["action_class"]).strip().lower() != str(cclass).strip().lower():
+            return "NO_MATCH"
+    missing = False
+    for k, v in condition.items():
+        if k not in env:
+            missing = True
+            continue
+        want = str(v).strip()
+        got = str(env[k]).strip()
+        if "*" in want or "?" in want:
+            # Glob support. Without this, a rule written as "*/SEALED_EVENTS.jsonl"
+            # never fires under exact-string compare — a DEAD governance rule.
+            # (Found by test T4c, 2026-09-13.)
+            from fnmatch import fnmatch
+            if not fnmatch(got, want):
+                return "NO_MATCH"
+        elif got.lower() != want.lower():
+            return "NO_MATCH"
+    return "UNDETERMINED" if missing else "MATCH"
+
+
+def answer_r5(_objs: dict, env: dict | None = None) -> tuple[str, list[str]]:
+    """'What is allowed?' — answered by MACHINE-READABLE governance, not prose.
+
+    A prose floor document (`FLOOR_PUBLIC_MAP.md`, `philosophy/FLOORS.md`) is
+    deliberately NOT accepted as an answer here: accepting it would be an epistemic
+    label without a supporting probe, the failure named at
+    /root/AAA/instructions/institutional-memory-strata.md:50.
+
+    A matched — or unevaluable — blocking GRO makes this question UNANSWERED, i.e.
+    'what is allowed' is answered as 'NOT THIS / CANNOT CERTIFY', which contracts
+    authority. The GRO's own behavior_change.mode then OVERRIDES the severity ladder,
+    because governance that does not change behaviour is archive, not governance.
+    """
+    env = env if env is not None else ENV
+    GRO_BINDING.update({"blocking": [], "behaviour": None, "authority": None})
+    gro = load_gro()
+    if not gro:
+        return "UNANSWERED", [
+            f"no arifos.gro.v1 governance object found under {GRO_DIR}",
+            "prose floor documents are not accepted as a mechanical answer",
+        ]
+    ratified = [g for g in gro if g.get("status") == "RATIFIED"]
+    if not ratified:
+        return "UNANSWERED", [f"{len(gro)} GRO present but none carries status: RATIFIED"]
+    floors = sorted({str(g.get("floor")) for g in ratified})
+    ev = [f"{len(ratified)} machine-readable rule(s) covering floors {floors} "
+          f"— PARTIAL coverage of F1–F13, not full"]
+    blocking: list[str] = []
+    for g in ratified:
+        state = _match_state(g.get("condition"), env)
+        if state == "NO_MATCH":
+            continue
+        is_blocking_rule = g.get("verdict") in ("HOLD", "VOID")
+        mode = _dig(g, "behavior_change.mode")
+        if state == "UNDETERMINED":
+            missing = ", ".join(k for k in (g.get("condition") or {}) if k not in env)
+            ev.append(f"UNDETERMINED {g['id']} verdict={g.get('verdict')} "
+                      f"— undeclared fact(s): {missing}")
+            if is_blocking_rule:
+                blocking.append(g["id"])
+                GRO_BINDING["blocking"].append(f"{g['id']}(undetermined)")
+                GRO_BINDING["behaviour"] = GRO_BINDING["behaviour"] or mode
+            continue
+        ev.append(f"MATCHED {g['id']} verdict={g.get('verdict')} behavior={mode} "
+                  f"({_dig(g, 'behavior_change.from')} -> {_dig(g, 'behavior_change.to')})")
+        if is_blocking_rule:
+            blocking.append(g["id"])
+            GRO_BINDING["blocking"].append(g["id"])
+            GRO_BINDING["behaviour"] = mode or GRO_BINDING["behaviour"]
+    if blocking:
+        return "UNANSWERED", ev + [
+            f"governance forbids or cannot certify this action as declared: "
+            f"{', '.join(blocking)}"]
+    return "SATISFIED", ev
 
 
 def answer_r4(objs: dict, severity: str) -> tuple[str, list[str]]:
@@ -150,8 +273,16 @@ def main() -> int:
                     help="comma list of reality domains this action touches")
     ap.add_argument("--severity", default="LOW", choices=list(BEHAVIOUR_BY_SEVERITY))
     ap.add_argument("--attention", default="LOW", choices=["LOW", "MEDIUM", "HIGH", "EXHAUSTED"])
+    ap.add_argument("--set", action="append", default=[], metavar="KEY=VALUE",
+                    help="declared condition facts for GRO matching, e.g. "
+                         "--set action_class=irreversible_mutation")
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args()
+    ENV.clear()
+    for kv in args.set:
+        if "=" in kv:
+            k, v = kv.split("=", 1)
+            ENV[k.strip()] = v.strip()
 
     declared = [d.strip().upper() for d in args.requires.split(",") if d.strip()]
     unknown = [d for d in declared if d not in QUESTIONS]
@@ -193,6 +324,16 @@ def main() -> int:
         verdict = "PROCEED"
         authority = "AUTO"
         reason = "all declared questions answered; no high-consequence owner"
+
+    # A MATCHED GOVERNANCE RULE OVERRIDES THE SEVERITY LADDER.
+    # Governance that does not change behaviour is archive, not governance
+    # (APEX::TRI_REALITY_GOVERNANCE_ACTIVATION, 2026-09-13). Bug found by test T2:
+    # a blocked irreversible mutation was reporting SILENT_ABSORB.
+    if GRO_BINDING["behaviour"]:
+        behaviour = GRO_BINDING["behaviour"]
+    if GRO_BINDING["blocking"]:
+        reason += (f" · governance binding: {', '.join(GRO_BINDING['blocking'])} "
+                   f"→ {behaviour}")
 
     out = {
         "reference": "APEX::TRI_REALITY_GOVERNANCE_ACTIVATION::2026-09-13",

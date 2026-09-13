@@ -1,0 +1,21 @@
+# Governance Reality Object — requires F13 explicit approval
+# GROUNDED IN REAL CANON: /root/AGENTS.md — "888_HOLD for irreversible infra ·
+# canonical records · external ports · money · VAULT999 seal" and F13 SOVEREIGN.
+schema: arifos.gro.v1
+id: GRO-F13-001
+floor: F13
+constraint: human_sovereignty
+condition:
+  action_class: irreversible_mutation
+authority: SOVEREIGN
+required: explicit_approval
+verdict: HOLD
+status: RATIFIED
+source: /root/AGENTS.md
+behavior_change:
+  mode: HOLD_FOR_CONFIRMATION
+  from: AUTO
+  to: DRAFT_ONLY
+  reason: >-
+    Irreversible mutations can never be self-authorized. The agent must emit a
+    reversible draft and await the human. Authority contracts to DRAFT_ONLY.
