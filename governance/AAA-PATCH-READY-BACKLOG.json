@@ -1,0 +1,152 @@
+{
+  "_meta": {
+    "schema": "AAA-PATCH-READY-BACKLOG/v1",
+    "generated": "2026-09-14",
+    "session": "SEAL-ae987612647948b1",
+    "operator": "333-AGI (architect lane; verifier lane separate)",
+    "constitutional_separation_maintained": true,
+    "no_runtime_mutation": true,
+    "no_commit_attempted": true,
+    "status": "DRAFT_PROPOSAL (PATCH_READY; awaiting governed commit path)"
+  },
+  "campaigns": {
+    "wp01_identity_convergence": {
+      "owner": "AAA registration engineer",
+      "verifier": "APEX/888 or FRAME identity-measure lane",
+      "deliverables_doc": "/root/AAA/governance/WP-01-IDENTITY-CONVERGENCE-DELIVERABLES.md",
+      "handoff_doc": "/root/AAA/governance/WP-01-HANDOFF-PACKET.md",
+      "status": "DRAFT_PROPOSAL",
+      "blocking_items": ["arifOS engineer lane", "sovereign ack for alias tombstone"],
+      "f13_surface": "ALIAS tombstone; forge-bot retire",
+      "next_action": "AWAITING_GOVERNED_COMMIT_PATH"
+    },
+    "housekeeping_AAA_init": {
+      "owner": "AAA model-init normalization agent",
+      "verifier": "APEX/888",
+      "deliverables_docs": [
+        "/root/AAA/governance/AAA-MODEL-INIT-v1.md",
+        "/root/AAA/governance/AAA-DUPLICATION-AND-ALIAS-MATRIX.md",
+        "/root/AAA/governance/AAA-AGENT-ROLE-AND-AUTHORITY-MATRIX.md",
+        "/root/AAA/governance/AAA-FEDERATION-ENTROPY-INVENTORY.md",
+        "/root/AAA/governance/AAA-CONTEXT-AND-MEMORY-HYGIENE-MATRIX.md",
+        "/root/AAA/governance/AAA-NOISE-AND-ATTENTION-ECONOMY-AUDIT.md",
+        "/root/AAA/governance/AAA-DEPRECATION-TOMBSTONE-PLAN.md",
+        "/root/AAA/governance/AAA-PATCH-READY-BACKLOG.json",
+        "/root/AAA/governance/AAA-ROLLBACK-AND-VERIFICATION-PLAN.md"
+      ],
+      "status": "DRAFT_PROPOSAL",
+      "blocking_items": ["read-only probes for full entropy counts", "APEX/888 review"],
+      "f13_surface": "333-AGI sovereign-witness band ratification; alias tombstone final retire",
+      "next_action": "AWAITING_GOVERNED_COMMIT_PATH"
+    }
+  },
+  "patches": [
+    {
+      "id": "WP-01-DOC-COMMIT",
+      "description": "Commit WP-01 design + handoff docs to AAA repo",
+      "files": [
+        "governance/WP-01-IDENTITY-CONVERGENCE-DELIVERABLES.md",
+        "governance/WP-01-HANDOFF-PACKET.md"
+      ],
+      "tier": "T1",
+      "reversibility": "FULL",
+      "authority_needed": "valid governed session",
+      "verifier_required": true,
+      "f13_surface": false,
+      "ready": true
+    },
+    {
+      "id": "WP-01-AAA-COMMIT",
+      "description": "Commit AAA housekeeping drafts to AAA repo",
+      "files": [
+        "governance/AAA-MODEL-INIT-v1.md",
+        "governance/AAA-DUPLICATION-AND-ALIAS-MATRIX.md",
+        "governance/AAA-AGENT-ROLE-AND-AUTHORITY-MATRIX.md",
+        "governance/AAA-FEDERATION-ENTROPY-INVENTORY.md",
+        "governance/AAA-CONTEXT-AND-MEMORY-HYGIENE-MATRIX.md",
+        "governance/AAA-NOISE-AND-ATTENTION-ECONOMY-AUDIT.md",
+        "governance/AAA-DEPRECATION-TOMBSTONE-PLAN.md",
+        "governance/AAA-PATCH-READY-BACKLOG.json",
+        "governance/AAA-ROLLBACK-AND-VERIFICATION-PLAN.md"
+      ],
+      "tier": "T1",
+      "reversibility": "FULL",
+      "authority_needed": "valid governed session",
+      "verifier_required": true,
+      "f13_surface": false,
+      "ready": true
+    },
+    {
+      "id": "BIND-KIMI-CODE",
+      "description": "Bind kimi-code into arifOS kernel registry",
+      "files": ["/root/arifOS/arifos/identity/agent_registry.json"],
+      "tier": "T2",
+      "reversibility": "FULL",
+      "authority_needed": "arifOS engineer lane + sovereign ack",
+      "verifier_required": true,
+      "f13_surface": true,
+      "ready": false,
+      "blocking": ["call-site audit for kimi-code-fi008, FI-008 aliases"]
+    },
+    {
+      "id": "TOMBSTONE-KIMI-ALIASES",
+      "description": "Tombstone kimi-code-fi008, FI-008 → kimi-code",
+      "files": ["new tombstone markers (no original deletion)"],
+      "tier": "T2",
+      "reversibility": "FULL",
+      "authority_needed": "AAA + sovereign ack",
+      "verifier_required": true,
+      "f13_surface": true,
+      "ready": false,
+      "blocking": ["call-site audit", "tombstone schema ratification"]
+    },
+    {
+      "id": "RETIRE-FORGE-BOT",
+      "description": "RETIRED-TBD classification for forge-bot per WARGA STATUS injection",
+      "files": ["agents/forge-bot/AGENTS.md (already written, awaiting commit)"],
+      "tier": "T2",
+      "reversibility": "FULL",
+      "authority_needed": "AAA + sovereign ack",
+      "verifier_required": true,
+      "f13_surface": true,
+      "ready": false
+    },
+    {
+      "id": "FINGERPRINT-SYNC-JOB",
+      "description": "Wire fingerprint sync job (WP-01 §4 design)",
+      "files": ["new scheduler entry"],
+      "tier": "T2",
+      "reversibility": "FULL",
+      "authority_needed": "arifOS engineer lane",
+      "verifier_required": true,
+      "f13_surface": false,
+      "ready": false,
+      "blocking": ["kernel engineer availability"]
+    },
+    {
+      "id": "WP-02-F9-F12",
+      "description": "Restore F9 ANTI-HANTU + strengthen F12 INJECTION (WP-02 design)",
+      "files": ["arifOS constitutional code"],
+      "tier": "T2",
+      "reversibility": "FULL",
+      "authority_needed": "arifOS engineer lane",
+      "verifier_required": true,
+      "f13_surface": true,
+      "ready": false
+    }
+  ],
+  "do_not_do": [
+    "no file deletion",
+    "no alias deletion",
+    "no arifOS kernel mutation",
+    "no capability grant",
+    "no F13 invocation",
+    "no readiness declaration",
+    "no bypass of governance denial",
+    "no fabrication of evidence/hashes/receipts",
+    "no memory promotion",
+    "no service restart"
+  ],
+  "next_lane": "governed commit verifier (read-only)",
+  "verifier_prompt_template": "WP-01 Governed Commit Verifier — see AAA-ROLLBACK-AND-VERIFICATION-PLAN.md"
+}
