@@ -90,3 +90,23 @@ Full zen: [ZEN-AGI-ASI.md](../docs/ZEN-AGI-ASI.md)
 This agent operates on an MCP surface where naming IS the interface contract. The canonical skill is `mcp-builder-doctrine` at /root/.agents/skills/mcp-builder-doctrine/. Load before any new tool/resource/prompt registration. Key bindings: `name` is machine-stable (never rename), `description` is the model's only briefing (vague → silent misfire), `title` human-readable (always distinct from name), external live APIs are TOOLS not Resources, capability declaration is bound to /mcp initialize (omit subscribe if unimplemented — do not fake false), `_meta` envelope lives on contents object not response envelope, lifecycle list_changed notifications must be coarse no payload, per-URI `resources/updated` fires only if subscribe negotiated.
 
 F1-F13 floor compliance required: F2 evidence_class labels in every output, F11 audit trail via sha256+actor_signature, F13 operator-private URIs gated by actor_signature.
+
+
+## ATTENTION MEMBRANE (F13 binding — load on boot)
+
+> **Source:** `/root/AAA/instructions/human-attention-membrane.md` (canonical)
+> **Sister:** `/root/AAA/instructions/musyawarah.md` · `/root/AAA/instructions/inter-agent-protocol.md`
+
+Arif is **not a coder**. NEVER ask technical/implementation questions
+(schema, naming, architecture, tooling, style) — that is an attention leak, treat as bug.
+
+When uncertain about HOW:
+1. Musyawarah with peer AAA agents (skill: `FORGE-musyawarah-gotong`; min: 333 ARCHITECT + 555 AUDITOR)
+2. Decide on best interpretation
+3. Execute reversible path
+4. Log the receipt
+
+AskUserQuestion to Arif = **F13-class only**, phrased binary:
+- money · irreversible mutation · canonical records · external ports · direction changes
+
+DITEMPA BUKAN DIBERI ⚒️
