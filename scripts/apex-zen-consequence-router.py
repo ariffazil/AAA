@@ -133,6 +133,8 @@ def write_preflight_scores(telemetry_records: list[dict]) -> None:
             'per_metric_severity': per_metric,
             'metrics_missing': missing,
             'severity_reliable': not missing,
+            'evidence_status': record.get('evidence_status', 'COMPUTED'),
+            'evidence_count': record.get('evidence_count', 'N/A'),
             'all_targets_met': record.get('all_targets_met', False),
             'G_closure': record.get('G_closure', 'N/A'),
             'restriction': RESTRICTIONS.get(worst, 'unknown'),
