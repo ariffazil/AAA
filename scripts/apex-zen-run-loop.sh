@@ -20,6 +20,10 @@ python3 /root/AAA/scripts/apex-zen-ariflow-source.py >> "$LOG" 2>&1 || \
 python3 /root/AAA/scripts/apex-zen-reality-binder.py --latest 5 >> "$LOG" 2>&1 || \
     echo "[$(date -Iseconds)] reality-binder failed" >> "$LOG"
 
+# Phase 1d: emit abort Verify receipts for orphan hermes-asi sessions
+python3 /root/AAA/scripts/apex-zen-abort-watcher.py >> "$LOG" 2>&1 || \
+    echo "[$(date -Iseconds)] abort-watcher failed" >> "$LOG"
+
 # Phase 2: route consequences
 python3 /root/AAA/scripts/apex-zen-consequence-router.py >> "$LOG" 2>&1 || \
     echo "[$(date -Iseconds)] router failed" >> "$LOG"
