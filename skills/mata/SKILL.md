@@ -28,8 +28,8 @@ Agents without shell: read `~/.local/share/arifos/mata_last.json` (check `probed
 
 - **Image gen:** bailian wan2.7-image(-pro) → pollinations fallback → ComfyUI local (start if down) → qwen-indiv (check reset)
 - **Video gen:** MiniMax-Hailuo-2.3 (3/day, 6s|10s; POST /v1/video_generation → poll query → files/retrieve) → happyhorse-1.1 t2v/i2v/r2v on qwen-indiv → Veo (needs gemini prepay top-up = F13 decision)
-- **Understanding (img/video in):** mimo-v2.5 omni → MiniMax-M3 → k3 (resolve 401 first) → gemini family (video-native, canary-verified)
-- **OCR:** M3 / mimo-v2.5 (dashscope VL fleet = 403 dead until payment-info wall resolved)
+- **Understanding (img/video in):** mimo-v2.5 omni → zai-vision (GLM-5.3-Flash / @z_ai/mcp-server) → MiniMax-M3 → k3 (resolve 401 first) → gemini family (video-native, canary-verified)
+- **OCR:** zai-vision (extract_text_from_screenshot / GLM-5.3-Flash) / M3 / mimo-v2.5 (dashscope VL fleet = 403 dead until payment-info wall resolved)
 
 ## Scars baked in (read MATA.md §Scars before extending)
 
