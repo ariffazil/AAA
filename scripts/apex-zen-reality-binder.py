@@ -18,7 +18,7 @@ Usage:
   python3 apex-zen-reality-binder.py --latest N
 """
 
-import json, argparse, hashlib, subprocess, glob
+import json, argparse, hashlib, subprocess, glob, fcntl
 from pathlib import Path
 from datetime import datetime, timezone
 
@@ -154,16 +154,20 @@ def main():
         ap.error("need --session or --latest")
     OUT.parent.mkdir(parents=True, exist_ok=True)
     with OUT.open("a") as f:
-        for t in targets:
-            wo = build_witness(t)
-            f.write(json.dumps(wo) + "\n")
-            L = wo["levels"]
-            print(
-                f"{t.parent.parent.name[:26]:26}  "
-                f"L2={L['L2_execution']['mutations']:3} muts/{L['L2_execution']['unique_paths']:2} paths  "
-                f"L3={L['L3_persistence']['files_existing']:2}/{L['L3_persistence']['files_checked']:2} exist  "
-                f"L4={L['L4_consequence']['files_with_commit']:2} committed  [{L['L2_execution']['status']}/{L['L3_persistence']['status']}/{L['L4_consequence']['status']}]"
-            )
+        fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+        try:
+            for t in targets:
+                wo = build_witness(t)
+                f.write(json.dumps(wo) + "\n")
+                L = wo["levels"]
+                print(
+                    f"{t.parent.parent.name[:26]:26}  "
+                    f"L2={L['L2_execution']['mutations']:3} muts/{L['L2_execution']['unique_paths']:2} paths  "
+                    f"L3={L['L3_persistence']['files_existing']:2}/{L['L3_persistence']['files_checked']:2} exist  "
+                    f"L4={L['L4_consequence']['files_with_commit']:2} committed  [{L['L2_execution']['status']}/{L['L3_persistence']['status']}/{L['L4_consequence']['status']}]"
+                )
+        finally:
+            fcntl.flock(f.fileno(), fcntl.LOCK_UN)
     print("witness stream →", OUT)
 
 
