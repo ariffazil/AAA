@@ -1,0 +1,24 @@
+# World Reality Object — seed 1
+# Source intent: F13 (Arif) via three-consequence-domains session, 2026-09-13
+# CORRECTED to the ratified schema arifos.wro.v1 (REALITY_CONSEQUENCE_OBJECTS_SPEC_v1.md §2).
+#   Drift fixed vs the draft example: `source_provenance`+`witnessed_at` ->
+#   `source.{type,uri,observed_at,observed_by}` so INV-3 (Witness Invariance) can bind.
+schema: arifos.wro.v1
+id: WRO-INDUSTRY-ENERGY-001
+type: external_constraint
+domain: energy
+observed_fact: >-
+  PETRONAS upstream direction enforces capital discipline and verified
+  operational AI adoption; vanity metrics are being eliminated.
+source:
+  type: primary_source
+  uri: "Internal Board/Corporate Directives 2026 (no public URL; internal document set)"
+  observed_at: 2026-09-13T00:00:00Z
+  observed_by: "ARIF (F13, direct institutional knowledge)"
+constraint_type: economic_regime
+verification_class: WITNESSED
+impact_on_agents: >-
+  All automation proposals touching PETRONAS context must carry audit trails and
+  must not optimise for vanity metrics; drift from this is a reportable violation.
+status: ACTIVE
+review_by: 2026-10-13T00:00:00Z

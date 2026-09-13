@@ -63,3 +63,16 @@ Recommended: **(1)** with the bridge ONLY reading the announce stream (never blo
 - Announce writer fails → no writes, no side effects (fail-soft, log-only).
 - False precision risk → mitigated by R1/R4 dependency declared above.
 - Rollback: delete announce file + remove consumer wiring; zero effect on other surfaces.
+
+---
+
+## 8. UPDATE 22:14 — contract v2 (FI-008's real field) + READY
+
+- **Live contract uses `severity_reliable = not metrics_missing`** (router line 135), added by FI-008 22:06 (`02af0c5a9`). It supersedes the hypothesised `cd_basis` field.
+- **All 6 artifact actors carry `severity_reliable: false`** → automatically excluded from announcements. Artifact risk: **0**.
+- **Validator v2 result: READY (ANNOUNCE tier)** — 24/24 verdict + reliability; announce set = 15; `consecutive_flags` absent (now scoped to GATE tier only).
+- **Consumer built + tested** (`apex-zen-announce-consumer.py`):
+  - preview: 15 flagged+reliable, restrictions visible (`tier0_restricted_5_turns` / `observe_only` / `f13_advisory`)
+  - idempotency: emit 15 → second run emit 0 (skipped 15) ✓
+- **Wiring on handoff (one line, do NOT add while FI-008 is mid-wave):**
+  `python3 /root/AAA/scripts/proposals/apex-zen-announce-consumer.py --emit` after the router phase in `apex-zen-run-loop.sh` — or the bridge reads the announce stream (log-only, never blocking).
