@@ -206,6 +206,52 @@ def answer_r5(_objs: dict, env: dict | None = None) -> tuple[str, list[str]]:
     """
     env = env if env is not None else ENV
     GRO_BINDING.update({"blocking": [], "behaviour": None, "authority": None})
+
+    # ── CLOSURE-001: derive sanctuary status from the CANONICAL REGISTRY ──────────
+    # The caller must never be able to clear this fact by asserting it, otherwise
+    # GRO-SANCTUARY-001 is evadable with `--set entity_sanctuary_protected=false`.
+    # Sanctuary membership is resolved HERE, from people_registry.json. An entity
+    # that cannot be resolved stays UNDECLARED, so the rule goes UNDETERMINED and
+    # authority contracts — fail-closed, not fail-open.
+    derived: list[str] = []
+    if "entity" in env:
+        ent = env["entity"].strip().upper()
+        sanct: set[str] = {"ABBAH", "MAK", "FAMILY"}  # grounded: people/ABBAH=P-002,
+        known: set[str] = set()                       #           people/MAK=P-003
+        reg = Path("/root/memory/people/people_registry.json")
+        if reg.exists():
+            try:
+                for p in json.loads(reg.read_text()).get("people", []):
+                    nm = str(p.get("name", "")).upper()
+                    cat = str(p.get("category", "")).lower()
+                    is_family = cat.startswith("family")
+                    for variant in (nm, nm.split(" ")[0]):
+                        known.add(variant)
+                        if is_family:
+                            sanct.add(variant)
+                    if "(" in nm and ")" in nm:
+                        alias = nm[nm.index("(") + 1:nm.index(")")].strip()
+                        known.add(alias)
+                        if is_family:
+                            sanct.add(alias)
+            except Exception:  # noqa: BLE001
+                derived.append("UNDETERMINED registry unreadable — sanctuary status "
+                               "cannot be resolved")
+        if ent in sanct:
+            if str(env.get("entity_sanctuary_protected", "")).strip().lower() != "true":
+                derived.append(f"DERIVED entity_sanctuary_protected=true for {ent} "
+                               f"(caller value "
+                               f"{env.get('entity_sanctuary_protected')!r} overridden "
+                               f"by canonical registry)")
+            env["entity_sanctuary_protected"] = "true"
+        elif ent in known:
+            env["entity_sanctuary_protected"] = "false"
+            derived.append(f"DERIVED entity_sanctuary_protected=false for {ent} "
+                           f"(registered, not family)")
+        else:
+            derived.append(f"UNDETERMINED entity {ent!r} — absent from canonical "
+                           f"registry; sanctuary status unresolvable")
+
     gro = load_gro()
     if not gro:
         return "UNANSWERED", [
@@ -217,7 +263,7 @@ def answer_r5(_objs: dict, env: dict | None = None) -> tuple[str, list[str]]:
         return "UNANSWERED", [f"{len(gro)} GRO present but none carries status: RATIFIED"]
     floors = sorted({str(g.get("floor")) for g in ratified})
     ev = [f"{len(ratified)} machine-readable rule(s) covering floors {floors} "
-          f"— PARTIAL coverage of F1–F13, not full"]
+          f"— PARTIAL coverage of F1–F13, not full"] + derived
     blocking: list[str] = []
     for g in ratified:
         state = _match_state(g.get("condition"), env)
