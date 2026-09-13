@@ -15,6 +15,7 @@ id: HRO-PETRONAS-COPILOT-001
 type: commitment
 title: "Copilot Studio Operator Sheet"
 owner: ARIF
+subject_person: ARIF
 stakeholders:
   - corporate_governance
   - operations_team
