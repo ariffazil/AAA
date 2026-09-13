@@ -1,6 +1,6 @@
 {
   "schema": "arifos.human_manifest.v2",
-  "generated_at": "2026-09-13T14:38:05.207615+00:00",
+  "generated_at": "2026-09-13T14:38:13.668865+00:00",
   "source_of_truth": "/root/memory/people/people_registry.json",
   "registry_error": null,
   "total_registry_entries": 17,
