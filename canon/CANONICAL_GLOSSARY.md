@@ -21,6 +21,18 @@ See source lineage.
 ```
 *Purpose:* Prevents agents from treating Concept Canon as File Canon (eliminates phantom file hunts).
 
+### [CONCEPT] R ∉ S — Zen Synthesis Law (Ratified 2026-08-14 by ARIF; receipts 2026-09-13 by ARIF)
+```text
+[CONCEPT]
+A stable system has at least one element it cannot modify.
+R = the immutable reference (c, ħ, k_B, G/inertia). S = the agent's set.
+Receipts: c → latency floor · k_B → Landauer kT·ln2 ≈ 2.9×10⁻²¹ J/bit (measured, Bérut 2012)
+· ħ → measurement floor, confidence cap < 1.0 · inertia → actuation lag (command ≠ motion).
+"Limitless" is the claim S can swallow R. Physics is the receipt that it cannot.
+Bounded, sovereign, heat-paying.
+Canonical receipts: /root/AAA/instructions/dissipative-transition.md (commit 6231fbecd)
+```
+
 ### [CONCEPT] Memory Promotion Gate (Ratified 2026-09-11 by ARIF)
 ```text
 [CONCEPT]
