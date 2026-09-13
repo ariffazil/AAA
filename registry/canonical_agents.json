@@ -1,0 +1,298 @@
+{
+  "_meta": {
+    "schema": "arifos.canonical_agents.v1",
+    "description": "Canonical agent identity map. All registration must resolve through this map.",
+    "updated": "2026-09-14T01:45:00+08:00",
+    "updated_by": "Hermes (Fix 3 — canonical identity binding)",
+    "rule": "Any agent_id not in this map is REJECTED at registration. Add new agents here first."
+  },
+  "canonical": {
+    "arif": {
+      "canonical_id": "arif",
+      "role": "sovereign-human",
+      "aliases": [
+        "arif-fazil",
+        "ARIF",
+        "ariffazil"
+      ],
+      "authority_band": "sovereign-witness",
+      "skip_lifecycle": true
+    },
+    "hermes": {
+      "canonical_id": "hermes",
+      "role": "ops-bridge",
+      "aliases": [
+        "hermes-asi",
+        "Hermes",
+        "HERMES"
+      ],
+      "authority_band": "sovereign-witness"
+    },
+    "333-AGI": {
+      "canonical_id": "333-AGI",
+      "role": "research-synthesis",
+      "aliases": [
+        "333agi",
+        "agi-333"
+      ],
+      "authority_band": "journeyman"
+    },
+    "555-ASI": {
+      "canonical_id": "555-ASI",
+      "role": "memory",
+      "aliases": [
+        "555asi",
+        "asi-555"
+      ],
+      "authority_band": "novice"
+    },
+    "777-forge": {
+      "canonical_id": "777-forge",
+      "role": "execution",
+      "aliases": [
+        "777forge",
+        "forge-777"
+      ],
+      "authority_band": "journeyman"
+    },
+    "888-APEX": {
+      "canonical_id": "888-APEX",
+      "role": "governance-judge",
+      "aliases": [
+        "888apex",
+        "apex-888"
+      ],
+      "authority_band": "sovereign-witness"
+    },
+    "999-SEAL": {
+      "canonical_id": "999-SEAL",
+      "role": "seal-vault",
+      "aliases": [
+        "999seal",
+        "seal-999"
+      ],
+      "authority_band": "sovereign-witness"
+    },
+    "FI-008": {
+      "canonical_id": "FI-008",
+      "role": "engineering-worker",
+      "aliases": [
+        "fi-008",
+        "kimi-code",
+        "kimi",
+        "fi008",
+        "kimi_code",
+        "kimi-code-fi008"
+      ],
+      "authority_band": "novice"
+    },
+    "FI-002": {
+      "canonical_id": "FI-002",
+      "role": "infra-watchdog",
+      "aliases": [
+        "fi-002",
+        "claude-code",
+        "claude"
+      ],
+      "authority_band": "novice"
+    },
+    "FI-003": {
+      "canonical_id": "FI-003",
+      "role": "memory-consolidation",
+      "aliases": [
+        "fi-003",
+        "qwen-code",
+        "qwen"
+      ],
+      "authority_band": "novice"
+    },
+    "FI-005": {
+      "canonical_id": "FI-005",
+      "role": "tech-debt-scan",
+      "aliases": [
+        "fi-005",
+        "codex",
+        "codex-cli"
+      ],
+      "authority_band": "novice"
+    },
+    "openclaw": {
+      "canonical_id": "openclaw",
+      "role": "edge-agent",
+      "aliases": [
+        "open-claw"
+      ],
+      "authority_band": "novice"
+    },
+    "opencode": {
+      "canonical_id": "opencode",
+      "role": "coding-executor",
+      "aliases": [
+        "open-code"
+      ],
+      "authority_band": "novice"
+    },
+    "warga": {
+      "canonical_id": "warga",
+      "role": "citizen-registry",
+      "aliases": [
+        "warga-agent"
+      ],
+      "authority_band": "novice"
+    },
+    "agent-zero": {
+      "canonical_id": "agent-zero",
+      "role": "bootstrap",
+      "aliases": [
+        "agentzero",
+        "agent_zero"
+      ],
+      "authority_band": "novice"
+    },
+    "decisions": {
+      "canonical_id": "decisions",
+      "role": "decision-engine",
+      "aliases": [],
+      "authority_band": "novice"
+    },
+    "makcikgpt": {
+      "canonical_id": "makcikgpt",
+      "role": "malay-cultural",
+      "aliases": [
+        "makcik-gpt",
+        "makcik_gpt"
+      ],
+      "authority_band": "novice"
+    },
+    "prospect-maturation": {
+      "canonical_id": "prospect-maturation",
+      "role": "geox-pipeline",
+      "aliases": [
+        "prospect",
+        "maturation"
+      ],
+      "authority_band": "novice"
+    },
+    "main": {
+      "canonical_id": "main",
+      "role": "legacy",
+      "aliases": [],
+      "authority_band": "novice"
+    },
+    "aaa": {
+      "canonical_id": "aaa",
+      "role": "control-plane",
+      "aliases": [
+        "aaa-gateway"
+      ],
+      "authority_band": "journeyman"
+    },
+    "aforge": {
+      "canonical_id": "aforge",
+      "role": "execution-engine",
+      "aliases": [
+        "A-FORGE",
+        "a-forge"
+      ],
+      "authority_band": "journeyman"
+    },
+    "arifos": {
+      "canonical_id": "arifos",
+      "role": "kernel",
+      "aliases": [
+        "arifOS",
+        "arif-os",
+        "arifos-kernel"
+      ],
+      "authority_band": "journeyman"
+    },
+    "geox": {
+      "canonical_id": "geox",
+      "role": "domain-specialist",
+      "aliases": [
+        "geox-witness",
+        "geox-personal"
+      ],
+      "authority_band": "novice"
+    },
+    "wealth": {
+      "canonical_id": "wealth",
+      "role": "domain-specialist",
+      "aliases": [
+        "wealth-witness"
+      ],
+      "authority_band": "novice"
+    },
+    "well": {
+      "canonical_id": "well",
+      "role": "domain-specialist",
+      "aliases": [],
+      "authority_band": "novice"
+    },
+    "sovereign": {
+      "canonical_id": "sovereign",
+      "role": "human-authority",
+      "aliases": [
+        "Arif",
+        "arif_fazil"
+      ],
+      "authority_band": "sovereign-witness",
+      "skip_lifecycle": true
+    },
+    "A-AUDIT": {
+      "canonical_id": "A-AUDIT",
+      "role": "collapsed",
+      "aliases": [],
+      "authority_band": "apprentice",
+      "status": "collapsed",
+      "collapsed_into": "888-APEX"
+    },
+    "A-ARCHIVE": {
+      "canonical_id": "A-ARCHIVE",
+      "role": "collapsed",
+      "aliases": [],
+      "authority_band": "apprentice",
+      "status": "collapsed"
+    },
+    "agentic-trading-companion": {
+      "canonical_id": "agentic-trading-companion",
+      "role": "trading-extension",
+      "aliases": [],
+      "authority_band": "novice"
+    },
+    "aider": {
+      "canonical_id": "aider",
+      "role": "forge-instrument",
+      "aliases": [],
+      "authority_band": "novice"
+    },
+    "antigravity": {
+      "canonical_id": "antigravity",
+      "role": "agentic-executor",
+      "aliases": [],
+      "authority_band": "novice"
+    },
+    "copilot": {
+      "canonical_id": "copilot",
+      "role": "forge-instrument",
+      "aliases": [
+        "copilot-cli"
+      ],
+      "authority_band": "novice"
+    },
+    "grok-build": {
+      "canonical_id": "grok-build",
+      "role": "forge-instrument",
+      "aliases": [],
+      "authority_band": "novice"
+    },
+    "i-arif": {
+      "canonical_id": "i-arif",
+      "role": "sovereign-identity",
+      "aliases": [
+        "i-ARIF"
+      ],
+      "authority_band": "sovereign-witness"
+    }
+  }
+}
