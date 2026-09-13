@@ -25,6 +25,14 @@ AAA is the cognitive nervous system and registry of the arifOS federation. It cl
 
 **Licensed under AGPL-3.0.**
 
+| Audience | What you get |
+|---|---|
+| **Human** | One switchboard. Intent in, the right organ out. No terminal dump in your pocket |
+| **Agent / A2A** | Public card `/.well-known/agent-card.json`. JSON-RPC at `/a2a/` with `A2A-Version: 1.0`. Extended card is authenticated, not a topology dump |
+| **Institution** | DISPLAY_ONLY edge: routes and shows state. Judgment is [arifOS](https://github.com/ariffazil/arifOS). Hands are [A-FORGE](https://github.com/ariffazil/A-FORGE) |
+
+Canonical live surface: [`a2a/CANONICAL_SURFACE.md`](./a2a/CANONICAL_SURFACE.md)
+
 ---
 
 ## The Problem
