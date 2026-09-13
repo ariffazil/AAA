@@ -2,6 +2,7 @@
 
 > **Status:** OBSERVE RECEIPT · 2026-09-13 · session `SEAL-7ee1801260d74b43`
 > **Not a kernel SEAL.** `seal_allowed=false`. Public interoperability is **not** claimed.
+> **Architecture synthesis:** [`APEX-ZEN-A2A-MASTER-SPEC.md`](./APEX-ZEN-A2A-MASTER-SPEC.md) (DRAFT_RECEIPT; kernel HOLD on the pasted “RATIFIED/SEALED” claim).
 > **Supersedes the “all 7 gaps closed” line** in `A2A_ALIGNMENT_SPEC.md` (epoch 2026-07-17).
 > **DITEMPA BUKAN DIBERI**
 
@@ -17,9 +18,11 @@
 | Bindings | JSON-RPC 2.0, gRPC, HTTP+JSON/REST | Spec §1.3 / §9–11 |
 | Companion protocol | **MCP = vertical tools**; **A2A = horizontal agents** | [A2A and MCP](https://a2a-protocol.org/latest/topics/a2a-and-mcp/) |
 
-Do **not** advertise `protocolVersion: "1.2"` as an upstream A2A version. That string is a federation-private leak. Upstream A2A is 1.0 / 1.0.1.
+Do **not** advertise `protocolVersion: "1.2"` as an upstream A2A version. That string is a federation-private leak.
 
-v1.0.1 bugfixes (OBS, release notes): prefer `application/a2a+json` in HTTP binding; transcoding errors; TaskStatus values in the spec.
+**Wire version is Major.Minor only (`1.0`).** Spec §3.6: patch numbers (v1.0.1) do **not** affect compatibility and **SHOULD NOT** appear in requests, responses, or Agent Cards. Cards pin `"1.0"`. Tag v1.0.1 is a spec-doc bugfix (HTTP `application/a2a+json`, transcoding, TaskStatus wording), not a new wire version.
+
+Deep-research workflow (2026-09-13, status Partial, 24 cited sources): TCK is `a2aproject/a2a-tck`; official SDKs are PyPI `a2a-sdk` and npm `@a2a-js/sdk`. Credentials travel in transport headers, never in A2A payloads.
 
 ## 2. Two different “A2A”s (do not mix)
 
@@ -97,9 +100,19 @@ Official TaskState (spec §4.1.3): `UNSPECIFIED`, `SUBMITTED`, `WORKING`, `COMPL
 
 ## 6. Official JSON-RPC verbs vs live dispatcher
 
-Official (spec operations → JSON-RPC): `message/send`, `message/stream`, `tasks/get`, `tasks/list`, `tasks/cancel`, `tasks/resubscribe`, `tasks/pushNotificationConfig/{set,get,list,delete}`, `agent/getAuthenticatedExtendedCard`.
+**A2A v1.0 JSON-RPC method names are PascalCase** (spec §5.3 / §9.1), matching gRPC. Slash names (`message/send`, `tasks/get`) are **v0.3**.
 
-Live `:3001` still answers a **legacy set** (`tasks/send`, `agent/getCard`, `agent/listSkills`) while a second path accepts `message/send` (then EMD-blocks). Dual dispatcher = dual truth.
+| Function | JSON-RPC v1.0 | REST | v0.3 slash (legacy) |
+|---|---|---|---|
+| Send message | `SendMessage` | `POST /message:send` | `message/send` |
+| Stream | `SendStreamingMessage` | `POST /message:stream` | `message/stream` |
+| Get task | `GetTask` | `GET /tasks/{id}` | `tasks/get` |
+| List tasks | `ListTasks` | `GET /tasks` | `tasks/list` |
+| Cancel | `CancelTask` | `POST /tasks/{id}:cancel` | `tasks/cancel` |
+| Subscribe | `SubscribeToTask` | `POST /tasks/{id}:subscribe` | `tasks/resubscribe` |
+| Extended card | `GetExtendedAgentCard` | `GET /extendedAgentCard` | `agent/getAuthenticatedExtendedCard` |
+
+Live `:3001` still answers a **legacy set** (`tasks/send`, `agent/getCard`, `agent/listSkills`) while a second path accepts `message/send` (then EMD-blocks). Dual dispatcher = dual truth. That is **v0.3-era naming**, not v1.0 PascalCase.
 
 `tasks/list` result shape `{tasks, total}` is **not** `{tasks, nextPageToken, pageSize, totalSize}`. Extra `_membrane` on every JSON-RPC body is a private extension; it must be negotiated via `A2A-Extensions`, not injected into the core envelope.
 
