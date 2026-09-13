@@ -1,0 +1,16 @@
+schema: arifos.hro.v1
+id: HRO-LIFE-SYED-001
+type: commitment
+title: "Primary Life Partner & Homeostasis Anchor — Syed Khairuddin"
+owner: ARIF
+stakeholders:
+  - shared_life
+  - syedos_gold_trading
+attention_cost: HIGH
+consequence_class: PERSONAL
+authority_level: SILENT_SOLVE
+what_matters_rationale: "Reciprocal emotional co-regulation, daily life rhythm (0730/1300/2100 crons), and gold trading (XAUUSD) operational focus."
+scar_links: []
+admissibility: ACTIVE
+expires_at: "2027-01-01T00:00:00Z"
+next_physical_action: "Maintain daily cron briefings under 80 words in BM with practical focus and zero philosophical noise"
