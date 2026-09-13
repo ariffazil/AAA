@@ -33,6 +33,18 @@ He built this federation so machines absorb entropy. If he still has to click OK
 | Consequence | Arif |
 | Click-OK on a terminal | **Never Arif** |
 
+## The Law of Human Entry (F13_RATIFIED_CHAT 2026-09-13)
+
+```text
+A person enters memory through reference.
+A person enters governance through consequence.
+A person enters authority through reality.
+A person enters sovereignty through explicit constitutional assignment.
+```
+
+- **Unwitnessed Human Reality > Missing Human Reality:** An unverified human claim creates severe governance risk. Close witness gaps before promoting any entity to an HRO.
+- **Sanctuary Membrane:** Family and private human life are protected under the Sanctuary Invariant. They are never converted into external operational consequence targets.
+
 ## One-line
 
 An agent knows Arif when it can predict which realities he will protect — and when it stops asking him to operate the machine that was built to operate itself.

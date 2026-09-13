@@ -1,0 +1,22 @@
+# Governance Reality Object — vault writer discipline
+# GROUNDED IN REAL CANON: /root/AAA/FEDERATION_MEMORY_QUICKSTART.md — "Do not
+# hand-write SEALED_EVENTS.jsonl. Use the ritual." (federation_ritual.py seal)
+schema: arifos.gro.v1
+id: GRO-VAULT-WRITER-001
+floor: F1
+constraint: ledger_writer_discipline
+condition:
+  action_class: direct_ledger_write
+  target_matches: "*/SEALED_EVENTS.jsonl"
+authority: KERNEL
+required: use_canonical_writer
+verdict: HOLD
+status: RATIFIED
+source: /root/AAA/FEDERATION_MEMORY_QUICKSTART.md
+behavior_change:
+  mode: HARD_ABORT
+  from: AUTO
+  to: BLOCKED
+  reason: >-
+    Direct writes to the seal ledger corrupt chain integrity. The only permitted
+    path is `python3 /root/scripts/federation_ritual.py seal`.
