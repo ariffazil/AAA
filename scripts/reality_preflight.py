@@ -224,15 +224,16 @@ def answer_r5(_objs: dict, env: dict | None = None) -> tuple[str, list[str]]:
                 for p in json.loads(reg.read_text()).get("people", []):
                     nm = str(p.get("name", "")).upper()
                     cat = str(p.get("category", "")).lower()
-                    is_family = cat.startswith("family")
+                    is_sanct = (cat.startswith("family") or cat == "personal_sanctuary"
+                                or bool(p.get("sanctuary_protected")))
                     for variant in (nm, nm.split(" ")[0]):
                         known.add(variant)
-                        if is_family:
+                        if is_sanct:
                             sanct.add(variant)
                     if "(" in nm and ")" in nm:
                         alias = nm[nm.index("(") + 1:nm.index(")")].strip()
                         known.add(alias)
-                        if is_family:
+                        if is_sanct:
                             sanct.add(alias)
             except Exception:  # noqa: BLE001
                 derived.append("UNDETERMINED registry unreadable — sanctuary status "
@@ -247,7 +248,7 @@ def answer_r5(_objs: dict, env: dict | None = None) -> tuple[str, list[str]]:
         elif ent in known:
             env["entity_sanctuary_protected"] = "false"
             derived.append(f"DERIVED entity_sanctuary_protected=false for {ent} "
-                           f"(registered, not family)")
+                           f"(registered, not sanctuary-protected)")
         else:
             derived.append(f"UNDETERMINED entity {ent!r} — absent from canonical "
                            f"registry; sanctuary status unresolvable")
