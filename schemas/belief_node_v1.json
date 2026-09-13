@@ -1,0 +1,99 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BeliefNodeV1",
+  "description": "Reality Graph Belief Node Spec v1.0 — Governed Agency & Telemetry Separation",
+  "type": "object",
+  "required": [
+    "id",
+    "label",
+    "tier",
+    "mass_control",
+    "genealogy",
+    "ledger"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique UUID for the belief node"
+    },
+    "label": {
+      "type": "string",
+      "description": "Human/machine readable intent or belief statement"
+    },
+    "tier": {
+      "type": "string",
+      "enum": ["L1_Transient", "L2_Hypothesis", "L3_Recipe", "L4_Policy", "L5_Floor", "L6_Seal"],
+      "description": "Tiered mass classification"
+    },
+    "mass_control": {
+      "type": "object",
+      "required": ["tier_level", "decay_mode", "disposal_authority"],
+      "properties": {
+        "tier_level": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 6
+        },
+        "decay_mode": {
+          "type": "string",
+          "enum": ["ttl_ephemeral", "witness_decay", "immune"]
+        },
+        "ttl_seconds": {
+          "type": "integer",
+          "default": 3600,
+          "description": "Lifetime in seconds for L1/L2 nodes"
+        },
+        "ttl_type": {
+          "type": "string",
+          "enum": ["sliding", "absolute"],
+          "default": "sliding",
+          "description": "Sliding resets TTL upon new evidence attach; absolute hard-expires."
+        },
+        "disposal_authority": {
+          "type": "string",
+          "enum": ["SYSTEM_TTL", "WITNESS_TRIO", "F13_SOVEREIGN"]
+        }
+      }
+    },
+    "genealogy": {
+      "type": "object",
+      "required": ["birth_provenance", "living_condition", "death_condition"],
+      "properties": {
+        "birth_provenance": {
+          "type": "string",
+          "description": "Scar reference, context, or trace that spawned this belief"
+        },
+        "living_condition": {
+          "type": "string",
+          "description": "Reality boundaries/criteria where this belief remains valid"
+        },
+        "death_condition": {
+          "type": "string",
+          "description": "Evidence threshold that forces the death of this belief"
+        }
+      }
+    },
+    "ledger": {
+      "type": "object",
+      "required": ["evidence_nodes", "read_only"],
+      "properties": {
+        "evidence_nodes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Immutable Evidence Node IDs (Append-Only)"
+        },
+        "last_drift_delta": {
+          "type": "number",
+          "default": 0.0,
+          "description": "Delta between prediction and observed evidence"
+        },
+        "read_only": {
+          "type": "boolean",
+          "const": true,
+          "description": "Ensures telemetry ledger cannot be mutated by belief"
+        }
+      }
+    }
+  }
+}
