@@ -85,7 +85,9 @@ Map of proposed IDs → existing skills: `docs/agentic-web/SKILL-FABRIC.yaml`
 
 Failed this session (do not pretend): firecrawl, openrouter, sentry.
 
-Live doors (Caddy already serves): `/`, `/about`, `/earth`, `/arifos/`, `/institution/` (briefing), `/human` (agent start). `/engage` and `/agent` are 404 until Caddy is named.
+Live doors (Caddy already serves): `/`, `/about`, `/earth`, `/arifos/`, `/institution/` (briefing), `/human` (agent start — **static** `index.html` at split-root `/var/www/html/human` **and** `/var/www/html/arif/human`). `/engage` and `/agent` are 404 until Caddy is named.
+
+Doctor: `web_zen.py doctor` must not crash if `/root/forge_work` is EROFS (A-FORGE MCP sandbox). Ephemeral falls back to `/tmp`. Oil/gas HTTP 500 is PYTHON_PATH, not “organ down.”
 
 ## Untrusted content
 
