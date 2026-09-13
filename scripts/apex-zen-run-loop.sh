@@ -29,4 +29,8 @@ python3 /root/AAA/scripts/apex-zen-consequence-router.py >> "$LOG" 2>&1 || \
 python3 /root/AAA/scripts/apex-zen-announce-consumer.py --emit >> "$LOG" 2>&1 || \
     echo "[$(date -Iseconds)] announce-consumer failed" >> "$LOG"
 
+# Phase 3: compact ledgers (retention + dedup, archives old receipts)
+python3 /root/AAA/scripts/apex-zen-compact.py >> "$LOG" 2>&1 || \
+    echo "[$(date -Iseconds)] compact failed" >> "$LOG"
+
 echo "[$(date -Iseconds)] APEX-ZEN loop end" >> "$LOG"
