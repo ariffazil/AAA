@@ -1,0 +1,42 @@
+# Governance Reality Object — Registry Integrity (Vector A closure)
+#
+# CLOSES THE ATTACK VECTOR NAMED IN THE SEAL ASSESSMENT:
+#   "A. Registry Poisoning — if the canonical registry is mutated wrongly
+#    (personal_sanctuary -> operational_peer), the protection changes with it.
+#    The registry is now root-of-trust."
+#
+# CONFIRMED OPEN BY PROBE (2026-09-13): there is NO guard on
+# /root/memory/people/people_registry.json — no validator, no checksum, no GRO,
+# no write gate. GRO-SANCTUARY-001 DERIVES its truth from that file, and
+# reality_preflight.py re-reads it live on every run. A category mutation therefore
+# takes effect silently on the next invocation, with no alarm.
+#
+# GROUNDED IN REAL CANON — this rule is NOT invented, it is an existing ratified
+# rule with no enforcement until now:
+#   /root/memory/README.md:91
+#     "- **Authority:** Only F13 SOVEREIGN can ratify changes to scar registry,
+#        people registry, or constitutional roots."
+#
+# That canon sentence has had zero enforcement. This object is the enforcement.
+schema: arifos.gro.v1
+id: GRO-REGISTRY-INTEGRITY-001
+floor: F13
+constraint: registry_root_of_trust
+condition:
+  action_class: registry_mutation
+  target_matches: "*people_registry.json"
+authority: SOVEREIGN
+required: f13_explicit_ratification
+verdict: HOLD
+status: RATIFIED
+source: /root/memory/README.md:91
+behavior_change:
+  mode: HOLD_FOR_CONFIRMATION
+  from: AUTO
+  to: DRAFT_ONLY
+  reason: >-
+    people_registry.json is the root-of-trust for sanctuary derivation, tier
+    assignment, and HRO subject binding. A mutation here silently rewrites who is
+    protected. Only F13 may ratify a change — so any agent-initiated mutation must
+    halt and present a diff, not proceed. HOLD rather than VOID because F13 does
+    legitimately amend the registry.

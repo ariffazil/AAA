@@ -9,6 +9,8 @@ Run from apex-zen-run-loop.sh or standalone.
 """
 import json
 import gzip
+import os
+import fcntl
 import argparse
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
@@ -65,7 +67,15 @@ def compact_telemetry(dry_run: bool = False) -> dict:
     kept_lines.sort(key=sort_key)
 
     if not dry_run:
-        TELEMETRY.write_text('\n'.join(kept_lines) + '\n' if kept_lines else '')
+        lock_file = TELEMETRY.with_suffix(".lock")
+        with open(lock_file, "w") as lock_fd:
+            fcntl.flock(lock_fd.fileno(), fcntl.LOCK_EX)
+            try:
+                tmp = TELEMETRY.with_suffix(".tmp")
+                tmp.write_text('\n'.join(kept_lines) + '\n' if kept_lines else '')
+                os.replace(tmp, TELEMETRY)
+            finally:
+                fcntl.flock(lock_fd.fileno(), fcntl.LOCK_UN)
 
     return {
         'action': 'compact_telemetry',
@@ -114,7 +124,15 @@ def compact_receipts(dry_run: bool = False) -> dict:
         with gzip.open(archive_path, 'wt') as f:
             f.write('\n'.join(archived) + '\n')
 
-        RECEIPTS.write_text('\n'.join(kept) + '\n' if kept else '')
+        lock_file = RECEIPTS.with_suffix(".lock")
+        with open(lock_file, "w") as lock_fd:
+            fcntl.flock(lock_fd.fileno(), fcntl.LOCK_EX)
+            try:
+                tmp = RECEIPTS.with_suffix(".tmp")
+                tmp.write_text('\n'.join(kept) + '\n' if kept else '')
+                os.replace(tmp, RECEIPTS)
+            finally:
+                fcntl.flock(lock_fd.fileno(), fcntl.LOCK_UN)
 
         # Reset the watermark state so the next run re-processes from scratch
         if RECEIPTS_STATE.exists():
