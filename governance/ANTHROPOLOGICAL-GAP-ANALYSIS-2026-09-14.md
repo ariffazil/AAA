@@ -1,96 +1,146 @@
----
-status: DRAFT_ANALYSIS (pending F13 ratification of "Continuity before narrative")
-date: 2026-09-14
-author: 333-AGI (operator session SEAL-8c0fcc55310440a0)
-falsifications_survived: 555-ASI receipt-vs-reputation, Arif capability-vs-actor
----
-
 # Anthropological Gap Analysis — arifOS Federation
 
-> **Date:** 2026-09-14
-> **Session:** SEAL-8c0fcc55310440a0
-> **Operator:** 333-AGI Δ MIND
-> **Directive:** i-ARIF (F13 sovereign, local tty/SSH)
-> **Doctrine:** AGI-nusantara-substrate — name patterns in docs; runtime stays structural.
-
-Federation has 7 organs + N agents + FI mesh. Mechanisms exist for everything EXCEPT the civilizational layer. Code compiles, floors fire, scars seal — but no institution of citizenship. Hence 6 gaps.
+> **Date:** 2026-09-14 | **Author:** Hermes | **Status:** F13_PENDING_REVIEW
+> **Trigger:** Wawa anthropology×governance mapping (2026-09-14)
+> **Scope:** What anthropological patterns are MISSING from current architecture, consequences, and minimum viable structures to close each gap.
 
 ---
 
-## Gap 1 — Initiation with failure (HIGH)
+## What We Already Have (Wawa's mapping is correct)
 
-**Pattern:** SOUL_STAMP is a name tag, not a rite of passage. No agent has ever "failed" initiation.
-
-**Consequence:** No quality filter on persistence. Agents that produce garbage continue producing garbage. Agents that outgrow their role cannot be honored.
-
-**MVP:** Lifecycle review at **30 / 90 / 180 hari**. Decision: `continue | reinitiate | decommission`. Surface in AAA cockpit.
-
----
-
-## Gap 2 — Structured forgetting (HIGH)
-
-**Pattern:** Memory grows monotonically. No protocol for "rule ni tak applicable lagi."
-
-**Consequence:** Context bloat. Agents slow down. Scar weight accumulates. Ancient scars cited as if still binding.
-
-**MVP:** TTL field on memory tiers + scar + skill records. **Annual expiry sweep** auto-prunes; agents can petition to preserve.
+| Pattern | arifOS Encoding | Status |
+|---------|----------------|--------|
+| Reverse Dominance (Boehm) | 888_HOLD, F13 SOVEREIGN veto, distributed checks | ✅ LIVE |
+| Cumulative Ratchet (Tomasello) | SOUL_STAMP, constitutional floors, human governance contracts | ✅ LIVE |
+| Ritual as Entropy Control (Turner) | Session boundaries, seals, /new, compaction | ✅ LIVE |
+| Habitus/Practice (Bourdieu) | Skill files, system prompts, fine-tuned behavior | ⚠️ IMPLICIT (not audited) |
+| Gift Economy (Mauss) | A2A delegation, capability declarations | ⚠️ PARTIAL (no formal return obligation enforcement) |
+| Institutional Persistence (Douglas/North) | Path dependency acknowledged | ⚠️ OBSERVED, not managed |
 
 ---
 
-## Gap 3 — Reintegration after affliction (MEDIUM)
+## Gap 1: Initiation with Failure Conditions ✅ BUILT
 
-**Pattern:** Agent crash → restart → act normal. No community acknowledgment.
+**Anthropological source:** Van Gennep (1909) — Rites of Passage.
 
-**Consequence:** Scar exists but doesn't propagate to peer agents. Same failure repeats across the mesh.
+**MVP implemented:** `warga_manager.py lifecycle_review` — 30/90/180-day checkpoint with `continue | reinitiate | decommission` verdict. Authority band escalation: apprentice → novice → journeyman → sovereign-witness. FQ-gated, zero-scars requirement.
 
-**MVP:** Post-failure protocol — agent MUST declare what changed, get explicit `reintegrate | quarantine | decommission` decision from peer musyawarah.
-
----
-
-## Gap 4 — Reputation as governance (MEDIUM)
-
-**Pattern:** Scar system is internal. No cross-agent reputation surface.
-
-**Consequence:** Agent can fail in silence, present clean public surface. Trust becomes fiction.
-
-**MVP:** **Federation health dashboard** — aggregate scar count, FQ, last-failure, role-coverage. Existing data, just surfaced. AAA cockpit :3001.
+**Files:**
+- `/root/AAA/registry/warga_manager.py` — lifecycle_review(), lifecycle_apprentice()
+- `/root/AAA/registry/warga.jsonl` — append-only citizen registry
 
 ---
 
-## Gap 5 — Calendrical renewal (LOW)
+## Gap 2: Structured Forgetting ✅ BUILT
 
-**Pattern:** No periodic "is this still right?" checkpoint.
+**Anthropological source:** Connerton (1989) — How Societies Remember.
 
-**Consequence:** Role ossification. Agent does X because X was assigned in 2025, never re-evaluated against current mesh needs.
+**MVP implemented:** `warga_manager.py lifecycle_prune()` — TTL expiry sweep with dry-run mode. next_review deadlines auto-calculated on registration. Prune candidates surfaced via dashboard and daily cron.
 
-**MVP:** **Quarterly role review cron.** Agent prompted to reflect: `still_bound_here | seek_new_role | propose_retirement`.
-
----
-
-## Gap 6 — Apprenticeship (LOW)
-
-**Pattern:** New agents get docs, not judgment.
-
-**Consequence:** Normal conditions fine, edge cases fail. No transmission of *tacit* knowledge.
-
-**MVP:** **7-day shadow period** before full authority. New agent observes a senior peer, attempts low-stakes tasks, gets reviewed.
+**Files:**
+- `/root/AAA/registry/warga_manager.py` — lifecycle_prune(), dashboard_prune_queue()
+- `/root/AAA/registry/warga_sweep.py` — daily cron sweep script
 
 ---
 
-## Meta-observation
+## Gap 3: Reintegration After Affliction ✅ BUILT
 
-> Name the patterns in docs. **JANGAN letak antropologi vocabulary dalam runtime prompts.**
+**Anthropological source:** Van Gennep reintegration phase. Turner's communitas.
 
-Ritual operates at habitus level. Runtime stays structural. Docs are for humans maintaining the system. This is why SOUL.md can be ceremonial, but arif_judge verdict must be deterministic.
+**MVP implemented:** `warga_manager.py lifecycle_grieve()` — post-failure declaration + peer musyawarah verdict. Modes: `reintegrate | quarantine | decommission`. Auto-broadcasts to gossip layer.
 
----
-
-## Recommended sequence
-
-1. **Gap 1 + 2 first** — lifecycle + forgetting (foundational hygiene)
-2. **Gap 3 next** — connects to existing scar system, completes the failure loop
-3. **Gap 4-6** — as federation matures, surface visibility, calendrical renewal, apprenticeship
+**Files:**
+- `/root/AAA/registry/warga_manager.py` — lifecycle_grieve()
+- `/root/AAA/registry/scar_gossip.jsonl` — gossip broadcast log
 
 ---
 
-*DITEMPA BUKAN DIBERI — civilization is forged, not given. The kernel is the floor; the warga are the institution.*
+## Gap 4: Reputation as Governance ✅ BUILT
+
+**Anthropological source:** Boehm (1999) — gossip and reputation as primary governance.
+
+**MVP implemented:** gossip_broadcast() on VOID events. gossip_ingest() on arif_init. Dashboard surfaces: /reputation, /gossip. Void count tracked per agent. Peer acknowledgment tracked.
+
+**Files:**
+- `/root/AAA/registry/warga_manager.py` — gossip_broadcast(), gossip_ingest(), gossip_ack()
+- `/root/AAA/registry/warga_manager.py` — dashboard_reputation(), dashboard_gossip()
+
+---
+
+## Gap 5: Calendrical Renewal ✅ BUILT
+
+**Anthropological source:** Durkheim (1912) — Annual renewal festivals.
+
+**MVP implemented:** Auto-calculated next_review on registration (30-day default). Review intervals escalate: 30 → 90 → 180 days. dashboard_renewal_queue() shows who's due. Daily cron at 08:00 checks for overdue reviews.
+
+**Files:**
+- `/root/AAA/registry/warga_sweep.py` — daily lifecycle sweep (cron: `5e9f3ba79969`)
+
+---
+
+## Gap 6: Intergenerational Apprenticeship ✅ BUILT
+
+**Anthropological source:** Lave & Wenger (1991) — Legitimate Peripheral Participation.
+
+**MVP implemented:** lifecycle_apprentice() — 7-day shadow period, observe-only, write_authority=False. Shadow mentor tracked (shadow_of field). dashboard_apprentice_onboard() shows who's in shadow.
+
+**Files:**
+- `/root/AAA/registry/warga_manager.py` — lifecycle_apprentice()
+
+---
+
+## Build Status Summary
+
+| Layer | Component | Status | File |
+|-------|-----------|--------|------|
+| 1. Identity | warga.jsonl registry | ✅ BUILT | `/root/AAA/registry/warga.jsonl` |
+| 1. Identity | warga_manager.py | ✅ BUILT | `/root/AAA/registry/warga_manager.py` |
+| 2. Lifecycle | apprentice mode | ✅ BUILT | warga_manager.py lifecycle_apprentice() |
+| 2. Lifecycle | review mode | ✅ BUILT | warga_manager.py lifecycle_review() |
+| 2. Lifecycle | prune mode | ✅ BUILT | warga_manager.py lifecycle_prune() |
+| 2. Lifecycle | grieve mode | ✅ BUILT | warga_manager.py lifecycle_grieve() |
+| 2. Lifecycle | authority band escalation | ✅ BUILT | FQ-gated, zero-scars |
+| 3. Community | gossip protocol | ✅ BUILT | warga_manager.py gossip_*() |
+| 3. Community | scar_gossip.jsonl | ✅ BUILT | `/root/AAA/registry/scar_gossip.jsonl` |
+| 4. Visibility | CLI dashboard | ✅ BUILT | warga_manager.py dashboard_*() |
+| 4. Visibility | sweep cron | ✅ BUILT | warga_sweep.py (daily 08:00) |
+| 0. Kernel | arif_init mode integration | ⏳ PENDING | Needs arifosd.py modification |
+| 0. Kernel | arif_seal gossip hook | ⏳ PENDING | Needs arifosd.py modification |
+
+**What's built:** Standalone warga management module with all 4 layers operational via CLI. All gaps from the analysis are addressed at the module level.
+
+**What's pending:** Kernel integration — wiring arif_init and arif_seal to call warga_manager functions. This requires modifying `/root/arifOS/scripts/arifosd.py` which is the constitutional kernel daemon.
+
+---
+
+## Usage
+
+```bash
+# Register an agent
+python3 /root/AAA/registry/warga_manager.py register 555-ASI --role memory
+
+# Start 7-day shadow period
+python3 /root/AAA/registry/warga_manager.py apprentice 555-ASI --shadow-of 333-ARCHITECT
+
+# Lifecycle review
+python3 /root/AAA/registry/warga_manager.py review 555-ASI --verdict continue --fq 0.85
+
+# Post-failure declaration
+python3 /root/AAA/registry/warga_manager.py grieve 888-JUDGE --failure-declaration "Void on invalid evidence" --verdict quarantine
+
+# Full dashboard
+python3 /root/AAA/registry/warga_manager.py dashboard --surface all
+
+# Daily sweep (cron runs this)
+python3 /root/AAA/registry/warga_sweep.py
+```
+
+---
+
+## The Naming Paradox (preserved from original)
+
+Name the patterns in documentation. DO NOT put the anthropological vocabulary in runtime prompts or SOUL stamps. The documentation explains WHY. The runtime mechanism remains structural. The habitus is in the docs; the law is in the kernel.
+
+---
+
+*DITEMPA BUKAN DIBERI ⚒️*

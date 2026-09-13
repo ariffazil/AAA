@@ -19,3 +19,17 @@ If Agent-Zero is reactivated:
 ## Decision
 
 Archived 2026-06-30 by FORGE (000Ω) because no active process/service and source exists only inside `/root/oo0-STATE/`.
+
+---
+
+## WARGA STATUS (per i-ARIF directive 2026-09-14)
+
+actor_id: `agent-zero`
+authority_band: `apprentice` (was — pre-archive)
+current_stage: `prune` (decommissioned)
+status: ARCHIVED (see recommission path above)
+
+Last active session: prior to entropy-reduction backup 2026-06-30
+**No new WARGA STATUS injected into archived agent** — ARCHIVE.md IS the witness.
+
+Decision required: reinitiate | remain-archived | deprecate-and-remove-from-A2A-manifest.
