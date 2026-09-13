@@ -10,10 +10,11 @@ disk_reconciliation:
   logical_curated: 95
   harness_targets_ok: 548
   drift: 0
-  notes: physical disk count reflects all SKILL.md on /root/AAA/skills (recursive);
+  notes: "physical disk count reflects all SKILL.md on /root/AAA/skills (recursive);
     logical curated is the editorial subset in `domain` below. Gap is the
     federation surface: skills exist on disk before being curated into the
-    logical registry.
+    logical registry."
+
 layers:
   substrate:
     count: 7
