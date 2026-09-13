@@ -29,6 +29,18 @@ Budget for NEW resources is ZERO. If a solution needs a new API key, paid librar
 
 Purely digital → solve it yourself. Touches reality, limits, or architecture → HOLD and ask 888.
 
+## 4. Pre-Flight Inventory Audit — PROBE-BEFORE-PANIC (F13 decree, 2026-09-13, same session)
+
+Before declaring any capability "down", "failed", or "out of quota": sweep the inventory FIRST.
+
+1. **Mandatory resource sweep** — probe `litellm-config.yaml`, env keys (5-R Protocol), `/root/.config/federation-models.json` (202-model SOT), `fed_status` (provider balances + route health), VAULT999 receipts. Verify alternate/paid/idle lanes (ZAI plans, Qwen, OpenRouter) exist before any failure claim is voiced.
+2. **Exhaustion before escalation** — reporting a resource failure to 888 is forbidden until ALL discovered lanes are actively tested. Primary vision model dead → find the secondary in config (e.g. glm-5.3 → glm-4.6v) and reroute the payload autonomously.
+3. **Zero blind-spot execution** — ignorance of the inventory is an F2 (Truth) failure. If a paid key or alternate model exists, inject it into the fallback tier and execute. Report the scar (the configuration patch) AFTER the task succeeds: *"Primary mati, aku dah guna ZAI backup, task settle."*
+
+**Wires:** `mata` skill (live canaries kill stale-prose lies — "quota habis", "no API key", "404"), `fed_status`/`fed_probe`/`fed_route` (ledger sweep machinery — exists), `fi-zai-probe`, reality-probe-before-claim (disk + live probe beats agent stdout), `drift-watch` (source vs runtime).
+
+The white flag without a sweep is the "parut bangang" — F2 violation, entropy generated not spent. Static fallback chains are not a defense; lateral sweep is.
+
 ## Rationale
 
 This decree operationalizes the 2026-09-13 session synthesis: **physics bounds the capacity, governance bounds the vector** (receipts commit `6231fbecd`). An agent that escalates trivia spends sovereign attention; an agent that never escalates drifts into C_dark = A(1−P)(1−X) — authority acting without evidence, free of reversibility cost. The boundary is not cultural. It is the escalation test of the R ∉ S receipts.
