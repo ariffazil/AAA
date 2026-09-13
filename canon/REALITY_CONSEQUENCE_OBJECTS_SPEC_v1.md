@@ -55,6 +55,7 @@ id: HRO-<CATEGORY>-<SEQ>               # e.g., HRO-COMMITMENT-001
 type: commitment | responsibility | strategic_project | stakeholder_obligation | attention_constraint
 title: "<Human-readable title>"
 owner: ARIF
+subject_person: "<Canonical person ID, e.g. ARIF, LALETHA, SYED>"
 stakeholders:
   - "<stakeholder or organization name>"
 attention_cost: LOW | MEDIUM | HIGH | EXHAUSTED
