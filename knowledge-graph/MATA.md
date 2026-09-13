@@ -28,13 +28,14 @@ set -a; source /root/.secrets/kunci-root.env; set +a
 | comfyui :8188 | **DOWN** | local zero-cost pixel lane needs manual start (no systemd unit on KVM8) |
 | fed :4000 | LIVE | HAProxy→KVM4 litellm |
 | pollinations | LIVE | keyless T2I fallback |
+| zai-vision | **LIVE** | `GLM-5.3-Flash` (1M ctx, 3x quota) + `@z_ai/mcp-server@latest` (8 visual tools: ui_to_artifact, extract_text, error diag, diagram/data viz, diff, video). 5h rolling credit bucket. |
 
 ## Routing recipes (what to use NOW)
 
 - **Image generation:** `bailian-token-plan/wan2.7-image(-pro)` via `/compatible-mode/v1/chat/completions` (plain-text prompt → markdown image URL in content; capture FULL signed URL incl. query, GET within expiry). Fallback: pollinations (keyless). Tomorrow+: qwen-indiv resets. Local: start ComfyUI for zero-cost.
 - **Video generation:** `MiniMax-Hailuo-2.3` (3/day, 6s or 10s) — schema in table above. Tomorrow: `happyhorse-1.1-t2v/i2v/r2v` on qwen-indiv. Veo 3.1 listed on gemini but gen-blocked by depleted prepay (needs top-up = F13 decision).
-- **Image/video understanding:** `mimo-v2.5` (omni, img+video+audio), `MiniMax-M3` (native multimodal), `k3` (img+video) once the 401 is resolved, `gemini-*` family (video canary-verified ingestion — SEE `FED_VIDEO_CANARY_LEDGER.yaml`) for understanding if prepay restored.
-- **OCR:** MiniMax-M3 / mimo-v2.5 (VL fleet is 403-dead).
+- **Image/video understanding:** `mimo-v2.5` (omni, img+video+audio), `zai-vision` (GLM-5.3-Flash / @z_ai/mcp-server@latest, video ≤8MB), `MiniMax-M3` (native multimodal), `k3` (img+video) once the 401 is resolved, `gemini-*` family (video canary-verified ingestion — SEE `FED_VIDEO_CANARY_LEDGER.yaml`) for understanding if prepay restored.
+- **OCR:** `zai-vision` (`extract_text_from_screenshot` tool / GLM-5.3-Flash) / MiniMax-M3 / mimo-v2.5 (VL fleet is 403-dead).
 
 ## Scars that made MATA (do not repeat)
 
