@@ -8,6 +8,7 @@
 >   - `SEAL_ARCHITECTURE` — the seven-axis + stateless-MCP + Zen-Apex pattern (already sealed 2026-08-11)
 >   - `SEAL_EXPECTATION` — every fresh spawn must emit `READY_READONLY` indicators and zero tools
 > **Operational verdict (2026-08-11):** `SEAL_PHASE_A_ONLY` — Phase A code authorized; Phases B/C/D remain HOLD.
+**Inventory execution (2026-09-13):** `/root/AAA/design/CAPABILITY_INVENTORY_EXECUTION-2026-09-13.md`. Public `/a2a` refused. Oil/gas compute ENOENT. Do not promote Phase B on narrative.
 > **Scope (authorized by F13 directive, 2026-08-11):** Plan file + Phase A scripts only.
 > **NOT authorized:** Phase B/C/D, harness/config modification, MCP activation, service restart, A-FORGE lease wiring, backend enablement.
 
