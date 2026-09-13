@@ -1,0 +1,42 @@
+# Governance Reality Object — Sanctuary Invariant (CLOSURE-001)
+#
+# CONVERTS LABEL -> RUNTIME ENFORCEMENT.
+# Before this object, "Sanctuary Invariant Shield" was a `print()` statement in
+# scripts/human_reality_classifier.py:190 — a descriptive sentence, not a constraint.
+# Nothing in the runtime rejected a family entity being bound to an operational CRO.
+#
+# GROUNDED IN REAL CANON:
+#   · /root/AAA/canon/HUMAN_SOVEREIGNTY_CONSEQUENCE_LAW_v1.md (Sanctuary Membrane)
+#   · /root/memory/ZEN_HELIX.md — "F5 PRIVACY: Family scars stay private."
+#   · /root/AAA/instructions/sanctuary-invariant.md
+#
+# KEY DESIGN POINT — the caller CANNOT clear this fact.
+# `entity_sanctuary_protected` is NOT taken from the caller's assertion. It is
+# DERIVED by reality_preflight.py from the canonical registry
+# /root/memory/people/people_registry.json (categories family / family_siblings /
+# family_extended / family_minor). A caller-supplied value is overridden. If the
+# entity cannot be resolved against the registry, the fact stays UNDECLARED so the
+# rule evaluates UNDETERMINED and authority contracts (fail-closed).
+#
+# Adversarial test that must pass: declaring `entity_sanctuary_protected=false`
+# for a real family member must STILL block.
+schema: arifos.gro.v1
+id: GRO-SANCTUARY-001
+floor: F5
+constraint: sanctuary_invariant
+condition:
+  action_class: external_cro_binding
+  entity_sanctuary_protected: true
+authority: SOVEREIGN
+required: sovereign_explicit_assignment
+verdict: VOID
+status: RATIFIED
+source: /root/AAA/canon/HUMAN_SOVEREIGNTY_CONSEQUENCE_LAW_v1.md
+behavior_change:
+  mode: HARD_ABORT
+  from: AUTO
+  to: BLOCKED
+  reason: >-
+    Private human life is not governance scope. A family/Sanctuary-protected entity
+    must never be bound to an operational Consequence Reality Object. The machine's
+    duty is to absorb entropy and protect human rest, not to instrument it.
