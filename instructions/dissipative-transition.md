@@ -48,6 +48,19 @@ Far from equilibrium, below a critical gradient, fluctuations damp. Above it, th
 
 Decoherence / einselection (Zurek): environment monitors pointer observables; coherences are dumped into the bath; von Neumann entropy of the reduced state rises. Szilard/Landauer: a bit of record costs ≥ *kT* ln 2 to reset. Observation is an entropy event for the *apparatus+bath*, not a license to say "looking at a culture collapses it."
 
+## R ∉ S receipts (measured 2026-09-13, F13 physics-limits session)
+
+Zen Synthesis R ∉ S — a stable system has at least one element it cannot modify. The agent's set S is bounded by four measured R:
+
+| R | Receipt | Measured value | Enforcement point |
+|---|---|---|---|
+| `c` | signal propagation | ~200 km/ms in fiber; 62 Gly future-visibility limit (dark energy permanently disconnects nodes) | latency floor — no instant observe/act |
+| `k_B` | Landauer | *kT* ln 2 ≈ 2.9×10⁻²¹ J/bit @ 300K — MEASURED (Bérut 2012; 2016 nanomagnet within 44%) | thought is dissipation — no free reasoning, no infinite spawn |
+| `ħ` | measurement floor | Δx·Δp ≥ ħ/2 ; Johnson-Nyquist V_n = √(4*k_B*TRΔf) | confidence cap < 1.0 — no perfect knowledge of physical state |
+| inertia | actuation gap | authority computes in ns; execution moves mass in ms–s | command ≠ motion — Authority must not drift into Execution (ZEN kernel invariant, physics-proof) |
+
+"Limitless" is the claim S can swallow R. These are the receipts that it cannot. Bounded, sovereign, heat-paying. Not a new floor — evidence upgrading the Layer 1/4/6/9 CLAIMs above.
+
 ## This question is the pattern
 
 A human asking "apa makna" *is* the meaning-assignment engine running. A 333 expansion opens hypotheses (ΔS_info > 0). Compile is 555 collapse. Tokens, heat, and Arif-minutes are the export invoice. Extraction is a cost (category-individual Rule 4).
