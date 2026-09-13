@@ -1,0 +1,318 @@
+{
+  "333-agi": {
+    "collapsed_into": "",
+    "fi_slot": "",
+    "name": "333-AGI (\u0394 MIND)",
+    "role": "Primary reasoning, planning, execution",
+    "source": "identity_lanes",
+    "species": "\u0394-MIND",
+    "status": "active"
+  },
+  "555-asi": {
+    "collapsed_into": "",
+    "fi_slot": "",
+    "name": "555-ASI (\u03a9 CORE)",
+    "role": "Memory, telemetry, drift, research",
+    "source": "identity_lanes",
+    "species": "\u03a9-CORE",
+    "status": "active"
+  },
+  "777-FORGE": {
+    "fi_slot": "",
+    "name": "777 FORGE \ud83d\udd25\ud83e\udde0\u2692\ufe0f\ud83c\udf0e\ud83d\udc8e",
+    "role": "witness-agent",
+    "source": "frozen_registry",
+    "status": "active"
+  },
+  "777-forge": {
+    "collapsed_into": "333-AGI",
+    "fi_slot": "",
+    "name": "777-forge",
+    "role": "collapsed",
+    "source": "collapsed",
+    "species": "",
+    "status": "collapsed"
+  },
+  "888-apex": {
+    "collapsed_into": "",
+    "fi_slot": "",
+    "name": "888-APEX (\u03a8 SOUL)",
+    "role": "Constitutional verdict, SEAL/HOLD/VOID",
+    "source": "identity_lanes",
+    "species": null,
+    "status": "active"
+  },
+  "a-archive": {
+    "collapsed_into": "888-APEX",
+    "fi_slot": "",
+    "name": "A-ARCHIVE",
+    "role": "collapsed",
+    "source": "collapsed",
+    "species": "",
+    "status": "collapsed"
+  },
+  "a-audit": {
+    "collapsed_into": "888-APEX",
+    "fi_slot": "",
+    "name": "A-AUDIT",
+    "role": "collapsed",
+    "source": "collapsed",
+    "species": "",
+    "status": "collapsed"
+  },
+  "aaa": {
+    "collapsed_into": "",
+    "fi_slot": "",
+    "name": "AAA Control Plane",
+    "role": "Control plane \u2014 A2A gateway, cockpit",
+    "source": "organs",
+    "species": "",
+    "status": "active"
+  },
+  "aaa-gateway": {
+    "fi_slot": "",
+    "name": "AAA Gateway",
+    "role": "operator",
+    "source": "frozen_registry",
+    "status": "active"
+  },
+  "aforge": {
+    "collapsed_into": "",
+    "fi_slot": "",
+    "name": "A-FORGE",
+    "role": "Execution \u2014 build, deploy, forge",
+    "source": "organs",
+    "species": "",
+    "status": "active"
+  },
+  "agentic-trading-companion": {
+    "collapsed_into": "",
+    "fi_slot": "",
+    "name": "Agentic Trading Companion",
+    "role": "WEALTH domain specialist",
+    "source": "extensions",
+    "species": "",
+    "status": "active"
+  },
+  "aider": {
+    "collapsed_into": "",
+    "fi_slot": "",
+    "name": "aider",
+    "role": "collapsed",
+    "source": "collapsed",
+    "species": "",
+    "status": "collapsed"
+  },
+  "antigravity": {
+    "collapsed_into": "",
+    "fi_slot": "FI-004",
+    "name": "Antigravity CLI",
+    "role": "forge-instrument",
+    "source": "forge_instruments",
+    "species": "",
+    "status": "active"
+  },
+  "arifos": {
+    "collapsed_into": "",
+    "fi_slot": "",
+    "name": "arifOS Kernel",
+    "role": "Constitutional kernel \u2014 judge, seal, F1-F13",
+    "source": "organs",
+    "species": "",
+    "status": "active"
+  },
+  "arifos-kernel": {
+    "fi_slot": "",
+    "name": "arifOS Kernel",
+    "role": "governance",
+    "source": "frozen_registry",
+    "status": "active"
+  },
+  "claude-code": {
+    "fi_slot": "",
+    "name": "Claude Code \u2014 Warga AAA",
+    "role": "governed-agent",
+    "source": "frozen_registry",
+    "status": "active"
+  },
+  "codex": {
+    "fi_slot": "",
+    "name": "Codex CLI \u2014 Warga AAA (FI-005)",
+    "role": "forge-instrument",
+    "source": "frozen_registry",
+    "status": "active"
+  },
+  "codex-cli": {
+    "fi_slot": "",
+    "name": "Codex CLI \u2014 Warga AAA (FI-005)",
+    "role": "forge-instrument",
+    "source": "frozen_registry",
+    "status": "active"
+  },
+  "copilot": {
+    "collapsed_into": "",
+    "fi_slot": "FI-006",
+    "name": "Copilot CLI",
+    "role": "forge-instrument",
+    "source": "forge_instruments",
+    "species": "",
+    "status": "active"
+  },
+  "copilot-cli": {
+    "fi_slot": "",
+    "name": "GitHub Copilot CLI \u2014 Warga AAA",
+    "role": "governed-executor",
+    "source": "frozen_registry",
+    "status": "active"
+  },
+  "geox": {
+    "collapsed_into": "",
+    "fi_slot": "",
+    "name": "GEOX",
+    "role": "Earth intelligence",
+    "source": "organs",
+    "species": "",
+    "status": "active"
+  },
+  "geox-personal": {
+    "fi_slot": "",
+    "name": "GEOX Personal Agent",
+    "role": "analyst",
+    "source": "frozen_registry",
+    "status": "active"
+  },
+  "geox-witness": {
+    "fi_slot": "",
+    "name": "GEOX Witness",
+    "role": "domain-specialist",
+    "source": "frozen_registry",
+    "status": "active"
+  },
+  "grok-build": {
+    "collapsed_into": "",
+    "fi_slot": "FI-007",
+    "name": "Grok Build",
+    "role": "forge-instrument",
+    "source": "forge_instruments",
+    "species": "",
+    "status": "active"
+  },
+  "hermes-asi": {
+    "fi_slot": "",
+    "name": "Hermes ASI \u2014 Sovereign Citizen",
+    "role": "autonomous-agent",
+    "source": "frozen_registry",
+    "status": "active"
+  },
+  "i-arif": {
+    "collapsed_into": "",
+    "fi_slot": "FI-000",
+    "name": "i-ARIF (sovereign identity core)",
+    "role": "forge-instrument",
+    "source": "forge_instruments",
+    "species": "",
+    "status": "active"
+  },
+  "kimi-code": {
+    "fi_slot": "",
+    "name": "Kimi Code CLI \u2014 Warga AAA (FI-008)",
+    "role": "forge-instrument",
+    "source": "frozen_registry",
+    "status": "active"
+  },
+  "main": {
+    "collapsed_into": "",
+    "fi_slot": "",
+    "name": "arifOS Telegram Bot",
+    "role": "Sovereign-facing Telegram interface",
+    "source": "extensions",
+    "species": "",
+    "status": "active"
+  },
+  "makcikgpt": {
+    "collapsed_into": "",
+    "fi_slot": "",
+    "name": "MakcikGPT",
+    "role": "Investigative persona",
+    "source": "extensions",
+    "species": "",
+    "status": "active"
+  },
+  "mesa-test-agent": {
+    "fi_slot": "",
+    "name": "META-MESA Test Agent",
+    "role": "test-agent",
+    "source": "frozen_registry",
+    "status": "active"
+  },
+  "opencode": {
+    "collapsed_into": "",
+    "fi_slot": "FI-001",
+    "name": "OpenCode CLI",
+    "role": "forge-instrument",
+    "source": "forge_instruments",
+    "species": "",
+    "status": "active"
+  },
+  "prospect-maturation": {
+    "collapsed_into": "",
+    "fi_slot": "",
+    "name": "Prospect Maturation Agent",
+    "role": "GEOX domain specialist",
+    "source": "extensions",
+    "species": "",
+    "status": "active"
+  },
+  "qwen-code": {
+    "collapsed_into": "",
+    "fi_slot": "FI-003",
+    "name": "Qwen Code CLI",
+    "role": "forge-instrument",
+    "source": "forge_instruments",
+    "species": "",
+    "status": "active"
+  },
+  "sovereign": {
+    "collapsed_into": "",
+    "fi_slot": "",
+    "name": "SOVEREIGN (Arif)",
+    "role": "F13 absolute veto",
+    "source": "organs",
+    "species": "",
+    "status": "active"
+  },
+  "unknown": {
+    "collapsed_into": "",
+    "fi_slot": "FI-009",
+    "name": "[VACANT]",
+    "role": "forge-instrument",
+    "source": "forge_instruments",
+    "species": "",
+    "status": "active"
+  },
+  "wealth": {
+    "collapsed_into": "",
+    "fi_slot": "",
+    "name": "WEALTH",
+    "role": "Capital intelligence",
+    "source": "organs",
+    "species": "",
+    "status": "active"
+  },
+  "wealth-witness": {
+    "fi_slot": "",
+    "name": "WEALTH Witness",
+    "role": "domain-specialist",
+    "source": "frozen_registry",
+    "status": "active"
+  },
+  "well": {
+    "collapsed_into": "",
+    "fi_slot": "",
+    "name": "WELL",
+    "role": "Human readiness",
+    "source": "organs",
+    "species": "",
+    "status": "active"
+  }
+}

@@ -40,3 +40,21 @@ authority:
 2. **Reality-State Verification:** Enforces the triad reality check: `declared_at` (registry intent) ≠ `observed_at` (witnessed probe) ≠ `attested_at` (tri-witness confirmed).
 3. **Dynamic Authority Contraction:** If a tool, API, or model output fails empirical falsification, reduce autonomy tier immediately to `OBSERVE_ONLY` or `888_HOLD`.
 4. **F13 Sovereign Binding:** All irreversible mutations require explicit sovereign human authorization traceable to independent physical receipts.
+
+## Kill-Test for Governance Proposals
+
+When assessing any governance proposal, apply the kill-test methodology:
+
+**Core principle:** A governance proposal passes ONLY if it changes what actually runs.
+
+Assessment pipeline (detailed): `references/GOVERNANCE_KILL_TEST.md`
+
+Quick version:
+1. **Credit first** — acknowledge what's genuinely novel
+2. **Claim falsification** — extract every operational claim, verify with `wc -l`, `crontab -l`, `grep`, live execution
+3. **Isolation check** — does it read/write any existing system?
+4. **Identity crux** — free-form IDs with no canonicalization = sixth spelling site
+5. **Kill-test** — what dies because of this? If nothing existing dies, it's registry #N, not governance
+6. **Sharpest finding** — the one thing the proposal got right but aimed wrong
+7. **Minimum fix** — re-aim the verb, bind identity, consume don't create, install cron or remove claim, seed before claiming
+8. **Delta-S** — 0 records + 0 writers + 0 readers + 0 cron = entropy-neutral, not civilization
