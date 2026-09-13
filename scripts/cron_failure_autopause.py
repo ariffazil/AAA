@@ -153,6 +153,22 @@ def main():
 
     default_threshold = policies.get("failure_pause_threshold", 3)
     paused_count = 0
+    drift_count = 0
+
+    # Load live jobs for existence check (Void Guard: don't report "healthy" if jobs don't exist)
+    jobs_file = HERMES_CRON_DIR / "jobs.json"
+    live_job_ids = set()
+    if jobs_file.exists():
+        try:
+            with open(jobs_file) as f:
+                jobs = json.load(f)
+            jl = jobs if isinstance(jobs, list) else jobs.get("jobs", [])
+            for j in jl:
+                for k in ("id", "job_id"):
+                    if j.get(k):
+                        live_job_ids.add(str(j[k]))
+        except Exception as e:
+            log(f"WARNING: Could not load jobs.json for drift check: {e}")
 
     for event in events:
         entry_id = event.get("id", "unknown")
@@ -164,6 +180,14 @@ def main():
         # Check if already paused
         if event.get("paused"):
             continue
+
+        # Drift check: declared job doesn't exist in live registry
+        if adapter == "hermes-cron":
+            job_id = event.get("job_id")
+            if job_id and str(job_id) not in live_job_ids:
+                log(f"DRIFT: {entry_id} job_id={job_id} declared in YAML but missing from jobs.json")
+                drift_count += 1
+                continue
 
         # Check if failure_streak exceeds threshold
         if failure_streak >= threshold and status == "error":
@@ -185,6 +209,8 @@ def main():
 
     if paused_count > 0:
         log(f"ACTION: Paused {paused_count} jobs. Reality has authority.")
+    elif drift_count > 0:
+        log(f"DRIFT: {drift_count} declared jobs missing from live registry. Not healthy.")
     else:
         log("OK: No jobs exceed failure threshold. All healthy.")
 
