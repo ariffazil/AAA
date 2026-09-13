@@ -1,0 +1,50 @@
+{
+  "report_version": "1.0.0",
+  "generated_at": "2026-09-13T06:04:27.628104+00:00",
+  "audit_class": "T0_OBSERVE_READ_ONLY",
+  "artifact_evaluated": {
+    "path": "/root/forge_work/memory-remediation-backup-20260912.json",
+    "sha256": "1f12e67106b8889d357ae2684c008cab559108f4798a8c65858f629a8212ea62",
+    "size_bytes": 77742,
+    "mode_octal": "0o644",
+    "uid": 0,
+    "gid": 0,
+    "last_modified_utc": "2026-09-11T21:59:26.632359+00:00"
+  },
+  "encryption_state": {
+    "is_encrypted": false,
+    "risk_level": "HIGH_LOCAL_PLAINTEXT",
+    "mitigation_recommendation": "GPG / SOPS encryption if retained off-node, or quarantine access permissions to 0600"
+  },
+  "schema_integrity": {
+    "top_level_keys": [
+      "remediated_at",
+      "by",
+      "redacted_ids",
+      "deleted_ids",
+      "deleted_points",
+      "redacted_points"
+    ],
+    "actor": "333-AGI",
+    "remediated_at": "2026-09-12T05:50:00Z",
+    "deleted_ids_count": 59,
+    "deleted_points_count": 59,
+    "deleted_ids_match_points": true,
+    "redacted_ids_count": 2,
+    "redacted_points_count": 2,
+    "redacted_ids_match_points": true
+  },
+  "vector_data_assessment": {
+    "vectors_in_json_backup": false,
+    "impact": "JSON backup contains payload and metadata only. Direct ingestion into Qdrant without re-embedding will fail or require an embedding pipeline.",
+    "native_snapshot_alternative": {
+      "snapshot_name": "arifos_memory-3764529591357986-2026-09-11-20-30-51.snapshot",
+      "size_bytes": 1244160,
+      "sha256": "8e9475973c8456bc2a9c1845fe18655e0d51a1ff8acaace164d8d0444703f7f7",
+      "contains_full_vectors": true,
+      "vector_dimension": 1024,
+      "distance_metric": "Cosine"
+    }
+  },
+  "integrity_verdict": "INTEGRITY_VERIFIED_PAYLOAD_ONLY_VECTORS_HELD_IN_QDRANT_SNAPSHOT"
+}

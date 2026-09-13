@@ -1,8 +1,9 @@
 # ⚖️ A2A Alignment Spec — AAA Federation
 
 > **DITEMPA BUKAN DIBERI** — Aligned by trace, not by claim.
-> **Upstream:** https://github.com/a2aproject/A2A — spec version 1.0.0
-> **Epoch:** 2026-07-17 · **Zen:** All 7 A2A gaps closed
+> **Upstream:** https://github.com/a2aproject/A2A — spec version 1.0.0 (latest tag v1.0.1)
+> **Epoch:** 2026-07-17 · **Live canonical surface (2026-09-13):** [`CANONICAL_SURFACE.md`](./CANONICAL_SURFACE.md)
+> **Shadow:** the 2026-07-17 line “All 7 A2A gaps closed” is **historical intent, not live interoperability**. Public `POST /a2a` is 405; runtime still mixes legacy verbs; `protocolVersion: "1.2"` is not upstream A2A.
 
 ---
 

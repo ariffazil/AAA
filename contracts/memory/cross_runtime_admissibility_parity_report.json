@@ -1,0 +1,24 @@
+{
+  "report_version": "1.0.0",
+  "generated_at": "2026-09-13T06:05:33.776673+00:00",
+  "audit_class": "T0_OBSERVE_TEST_VERIFICATION",
+  "arifos_constitutional_suite": {
+    "path": "/root/arifOS/tests/constitutional/test_memory_sro_admissibility.py",
+    "exit_code": 0,
+    "output_summary": "20 passed, 3 warnings in 3.14s",
+    "passed": true
+  },
+  "aaa_contracts_suite": {
+    "path": "/root/AAA/contracts/memory/test_admissibility.py",
+    "exit_code": 0,
+    "output_summary": "8 passed, 3 warnings in 2.16s",
+    "passed": true
+  },
+  "runtime_gate_parity": {
+    "module_source": "/opt/arifos/app/arifosmcp/memory/admissibility.py",
+    "clean_import_success": true,
+    "sys_path_clean": true,
+    "sanctuary_denylist_active": true
+  },
+  "verdict": "CROSS_RUNTIME_PARITY_PASSED"
+}
