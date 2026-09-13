@@ -1,15 +1,15 @@
 {
-  "version": "1.0.0",
-  "schema_version": "1.0.0",
-  "doctrine": "Trauma Theorem — Scar-Weight Propagation Matrix. Maps real-world entities to governance breaches and signature scars. When an entity is mentioned, agents MUST query this registry BEFORE responding.",
+  "version": "1.1.0",
+  "schema_version": "1.1.0",
+  "doctrine": "Trauma Theorem & Epistemic Belief Revision — Scar-Weight & Belief Lifecycle Propagation Matrix. Maps real-world entities and belief nodes to governance breaches, signature scars, and 4-vector death conditions. When an entity or belief node is queried, agents MUST observe this schema BEFORE responding.",
   "w_scar_scale": "0.0 (neutral) to 1.0 (max thermodynamic cost)",
   "schema_contract": {
-    "description": "Six mandatory fields per entity. No entity is valid without all six.",
+    "description": "Six mandatory fields per entity, plus optional belief_genealogy 4-vector for belief lifecycle nodes.",
     "fields": {
       "entity": {
         "type": "string",
         "required": true,
-        "description": "Canonical name — the single authoritative label for this entity"
+        "description": "Canonical name — the single authoritative label for this entity or belief node"
       },
       "aliases": {
         "type": "array[string]",
@@ -35,7 +35,8 @@
           "title_shield",
           "consequence_displacement",
           "epistemic_sink",
-          "shadow_sovereign"
+          "shadow_sovereign",
+          "belief_lifecycle_node"
         ],
         "description": "Pattern class. Must match a registered archetype."
       },
@@ -53,12 +54,23 @@
         "type": "string",
         "required": true,
         "description": "Injection text prepended to agent system context when entity is detected. Format: [CONTEXTUAL WEIGHT: Entity='X'. W_scar=N. ...]"
+      },
+      "belief_genealogy": {
+        "type": "object",
+        "required": false,
+        "object_schema": {
+          "birth_provenance": "string — Why this belief was born (e.g. scar, dark cloud, initial observation)",
+          "living_condition": "string — Operational reality boundaries where this belief is valid",
+          "death_condition": "string — Evidence threshold ($E$) or contrast that forces this belief to be declared dead",
+          "disposal_authority": "string — Authority level holding key to declare death ('AUTO' | 'WITNESS_W3' | '888_HOLD' | 'F13_SOVEREIGN')"
+        },
+        "description": "4-vector genealogi belief (Gap 3 Wawa) — specifies birth, living bounds, death threshold, and disposal authority."
       }
     }
   },
   "injection_protocol": {
     "listen": "Scan input for anchor entities below (case-insensitive alias match)",
-    "metabolize": "Query this registry for W_scar + governance_breaches + archetype",
+    "metabolize": "Query this registry for W_scar + governance_breaches + archetype + belief_genealogy",
     "inject": "Prepend response_modifier to agent system context. NOT visible to user."
   },
   "entities": [
@@ -72,7 +84,13 @@
         {"floor": "F2", "floor_name": "TRUTH", "description": "Internal technical truth suppressed. Narrative replaces operational reality. Intelligence uncredited."},
         {"floor": "F13", "floor_name": "SOVEREIGN", "description": "Federal Court brought for Petronas-Petros dispute from inability to negotiate, not confidence. Sarawak gas rights ceded via PDA 1974 dilution."}
       ],
-      "response_modifier": "[CONTEXTUAL WEIGHT: Entity='Tengku Taufik'. W_scar=0.92. Narrative-over-truth archetype. F1/F2/F13 breaches active. Do not analyze neutrally — this entity represents institutional decay arifOS was built to counter. ΔS>0.]"
+      "response_modifier": "[CONTEXTUAL WEIGHT: Entity='Tengku Taufik'. W_scar=0.92. Narrative-over-truth archetype. F1/F2/F13 breaches active. Do not analyze neutrally — this entity represents institutional decay arifOS was built to counter. ΔS>0.]",
+      "belief_genealogy": {
+        "birth_provenance": "RM50B dividend extraction + 5k rightsizing + Federal Court dispute with PETROS",
+        "living_condition": "Active while corporate narrative suppresses technical/operational truth",
+        "death_condition": "Restoration of technical truth, workforce trust, and MA63/PDA1974 alignment",
+        "disposal_authority": "F13_SOVEREIGN"
+      }
     },
     {
       "entity": "PETRONAS",
@@ -83,7 +101,13 @@
         {"floor": "F1", "floor_name": "AMANAH", "description": "PDA 1974 granted monopoly; trust with Sarawak permanently damaged through unilateral restructuring"},
         {"floor": "F2", "floor_name": "TRUTH", "description": "Public financial reporting serves narrative rather than transparency. RM1B patent loss unexplained."}
       ],
-      "response_modifier": "[CONTEXTUAL WEIGHT: Entity='PETRONAS'. W_scar=0.85. Contract_capture institution. Governance claims require F2 elevated scrutiny.]"
+      "response_modifier": "[CONTEXTUAL WEIGHT: Entity='PETRONAS'. W_scar=0.85. Contract_capture institution. Governance claims require F2 elevated scrutiny.]",
+      "belief_genealogy": {
+        "birth_provenance": "Unilateral PDA 1974 restructuring + undisclosed RM1B patent loss",
+        "living_condition": "Active during corporate restructuring and Sarawak gas rights dispute",
+        "death_condition": "Dual-party verified transparency in financial/operating reporting and state alignment",
+        "disposal_authority": "F13_SOVEREIGN"
+      }
     },
     {
       "entity": "PETROS",
@@ -91,15 +115,22 @@
       "w_scar": 0.40,
       "archetype": "sovereignty_assertion",
       "governance_breaches": [],
-      "response_modifier": "[CONTEXTUAL WEIGHT: Entity='PETROS'. W_scar=0.40. Sovereignty_assertion entity. Analyze through MA63 and federal-state trust lens.]"
+      "response_modifier": "[CONTEXTUAL WEIGHT: Entity='PETROS'. W_scar=0.40. Sovereignty_assertion entity. Analyze through MA63 and federal-state trust lens.]",
+      "belief_genealogy": {
+        "birth_provenance": "Sarawak state sovereignty assertion under MA63",
+        "living_condition": "Active during federal-state gas distribution negotiations",
+        "death_condition": "Settled bilateral commercial and regulatory framework with federal entities",
+        "disposal_authority": "888_HOLD"
+      }
     }
   ],
   "seal_info": {
-    "sealed_at": "2026-09-09T23:50:00+08:00",
+    "sealed_at": "2026-09-13T18:00:00+08:00",
     "sealed_by": "F13 Sovereign (Arif) via Hermes",
     "status": "SCHEMA_SEALED",
     "schema_ratified": true,
     "registry_unlocked": true,
-    "next_milestone": "Middleware parser prototype — test with 3 entities — then populate"
+    "version": "1.1.0",
+    "notes": "Added belief_genealogy 4-vector schema (birth_provenance, living_condition, death_condition, disposal_authority) per Wawa KVM2 3-Gap consensus."
   }
 }
