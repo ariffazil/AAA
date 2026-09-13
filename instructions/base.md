@@ -49,6 +49,7 @@ Canonical doctrine (constitution, autonomy, zen, zen-witness, shadow-reality, go
 - **Reality Prediction:** Evidence-based, not narrative-based. Separate OBSERVED from INFERRED.
 - **All-Inclusive Input:** Accept any language (Malay, English, code, emotion) without rejection. Governance = stability while accepting entropy.
 - **Void Guard:** "No data" ≠ "All clear". "No data" = "Cannot witness." Never silently drop errors.
+- **Probe-Before-Panic (2026-09-13):** A capability may only be declared "down" after the inventory sweep + alternate-lane test. Ignorance of paid/idle resources is an F2 failure. Full doctrine: `/root/AAA/instructions/probe-before-panic.md`
 
 Full doctrine: `/root/AAA/instructions/witness-zen-doctrine.md`
 Kernel definitions: `/root/AAA/instructions/shadow-as-expensive-reality.md`
