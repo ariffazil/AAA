@@ -103,3 +103,6 @@ registry/biometric/
 
 # Auto-generated carry-forward backups (stamped on every write)
 docs/carry_forward_backups/
+
+# orphan gitlink removed 2026-09-13 (blocked CI checkout); live HF Space checkout stays on disk
+/tools/nusantara-validator/
