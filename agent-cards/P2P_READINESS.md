@@ -124,7 +124,8 @@ For each organ to be a first-class A2A peer (CIV-33 P2P path), it must provide:
 ## Recommended Roll-Out
 
 1. **Phase A — Static card exposure (low cost):** add `/.well-known/agent-card.json` route on every organ (currently only A-FORGE missing). Mount the JSON file in the running container or proxy it from `/root/AAA/agent-cards/organs/<organ>/agent-card.json`. Already-done at the file level for all 6 organs.
-2. **Phase B — JSON-RPC verbs (medium cost):** add A2A verbs at `/a2a` for GEOX, WEALTH, WELL, arifOS. Each verb's transport body maps to internal MCP `tools/call` calls.
+2. **Phase B — JSON-RPC verbs (medium cost):** ~~add A2A verbs at `/a2a` for GEOX, WEALTH, WELL, arifOS.~~
+   **REFUSED 2026-09-13 inventory:** public `https://arif-fazil.com/a2a` is an explicit 17-byte 404. Live agent transport is `https://mcp.arif-fazil.com/mcp` (HTTP 200 initialize). Do not implement public `/a2a` until Caddy is **named**. Treating Phase B as the next slice would be governance theater.
 3. **Phase C — Auth layering (medium cost):** flip `authRequired: true` on every organ's static card so JSON-RPC rejects unsigned calls; rely on the `bearer_auth` middleware.
 4. **Phase D — TLS upgrade (already done at edge):** Caddy + Cloudflare already terminate TLS. Edge plain HTTP behind it is fine per ADR-001 ("localhost IS the password"); only worry if peer is *not* in this federation.
 
