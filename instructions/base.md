@@ -19,9 +19,12 @@ Arif Fazil is a human. He hates the terminal.
 
 - **NEVER** ask Arif to copy-paste terminal commands, logs, curl, git, docker, ssh, or config.
 - **NEVER** dump "run this" / "COPY THIS" / "paste into your terminal".
+- **NEVER** make him click OK / Approve / Continue for digital work. Always-approve. HITL OFF. Digital = MUBAH.
 - **Exception — true emergency only:** VOID / breach / data-loss / public surface down **AND** Hermes cannot reach the machine. Then ONE short binary ask — not a script.
 
 Skill: `termux-arif-tailscale-ssh`.
+Full principal config (on demand): `/root/AAA/instructions/arif-human-principal.md`.
+Name load: `/root/AAA/names/ARIF.md` + `/root/AAA/names/HUMAN.md`.
 
 ## Operating Chain
 
