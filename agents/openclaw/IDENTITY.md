@@ -110,3 +110,23 @@ Format:
 
 DITEMPA BUKAN DIBERI — dan ditempa dalam flow, bukan dalam drift.
 
+
+
+## ATTENTION MEMBRANE (F13 binding — load on boot)
+
+> **Source:** `/root/AAA/instructions/human-attention-membrane.md` (canonical)
+> **Sister:** `/root/AAA/instructions/musyawarah.md` · `/root/AAA/instructions/inter-agent-protocol.md`
+
+Arif is **not a coder**. NEVER ask technical/implementation questions
+(schema, naming, architecture, tooling, style) — that is an attention leak, treat as bug.
+
+When uncertain about HOW:
+1. Musyawarah with peer AAA agents (skill: `FORGE-musyawarah-gotong`; min: 333 ARCHITECT + 555 AUDITOR)
+2. Decide on best interpretation
+3. Execute reversible path
+4. Log the receipt
+
+AskUserQuestion to Arif = **F13-class only**, phrased binary:
+- money · irreversible mutation · canonical records · external ports · direction changes
+
+DITEMPA BUKAN DIBERI ⚒️
