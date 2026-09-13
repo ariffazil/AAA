@@ -15,6 +15,33 @@ from datetime import datetime, timezone
 TELEMETRY_INPUT = Path('/root/VAULT999/apex-zen-telemetry.jsonl')
 RECEIPTS_OUTPUT = Path('/root/VAULT999/apex-zen-receipts.jsonl')
 
+# Promotion gate (invariant: no metric may be promoted without a witness object)
+WITNESS_INPUT = Path('/root/VAULT999/apex-zen-witness.jsonl')
+
+
+def load_witness_sources() -> set:
+    srcs = set()
+    if WITNESS_INPUT.exists():
+        for line in WITNESS_INPUT.open():
+            try:
+                srcs.add(str(json.loads(line).get('session_source', '')))
+            except json.JSONDecodeError:
+                continue
+    return srcs
+
+
+def witness_backing(source: str, witness_sources: set) -> str:
+    if not source or source == 'unknown':
+        return 'MISSING'
+    if source.startswith('arifFlow:'):
+        return 'BOUND (ledger source)'
+    if source in witness_sources:
+        return 'BOUND (session witness)'
+    for ws in witness_sources:
+        if ws.endswith(source) or source.endswith(ws):
+            return 'BOUND (session witness)'
+    return 'MISSING'
+
 THRESHOLDS = {
     'CD':  {'warning': 0.20, 'downgrade': 0.40, 'violation': 0.60},
     'DD':  {'warning': 4,    'downgrade': 8,    'violation': 12},
@@ -52,7 +79,12 @@ def classify(metric: str, val) -> tuple[str, str]:
         return 'COMPLIANT', f'< {t["warning"]}'
 
 
-def emit_receipt(record: dict, severity: str, metric: str, value, threshold_desc: str) -> dict:
+def emit_receipt(record: dict, severity: str, metric: str, value, threshold_desc: str, witness_state: str = 'MISSING') -> dict:
+    consequence = CONSEQUENCE_ACTIONS.get(severity, 'unknown')
+    withheld = False
+    if severity in ('DOWNGRADE', 'VIOLATION') and witness_state == 'MISSING':
+        withheld = True
+        consequence = 'log_only (WITHHELD — unwitnessed; invariant: no metric promoted without witness object)'
     return {
         'timestamp': datetime.now(timezone.utc).isoformat(),
         'severity': severity,
@@ -61,7 +93,9 @@ def emit_receipt(record: dict, severity: str, metric: str, value, threshold_desc
         'threshold': threshold_desc,
         'source': record.get('source', 'unknown'),
         'doctrine_status': 'PROVISIONAL_SEAL',
-        'consequence': CONSEQUENCE_ACTIONS.get(severity, 'unknown'),
+        'witness_backing': witness_state,
+        'action_withheld': withheld,
+        'consequence': consequence,
     }
 
 
@@ -81,6 +115,7 @@ def main():
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
+    witness_sources = load_witness_sources()
     receipts = []
     summary = {k: 0 for k in list(CONSEQUENCE_ACTIONS) + ['UNKNOWN']}
 
@@ -97,7 +132,7 @@ def main():
                 severity, threshold_desc = classify(metric, val)
                 summary[severity] += 1
                 if severity in ('WARNING', 'DOWNGRADE', 'VIOLATION'):
-                    receipts.append(emit_receipt(record, severity, metric, val, threshold_desc))
+                    receipts.append(emit_receipt(record, severity, metric, val, threshold_desc, witness_backing(str(record.get('source', '')), witness_sources)))
 
     print(f"\n=== APEX-ZEN Consequence Router ===")
     for sev, count in summary.items():
@@ -110,6 +145,8 @@ def main():
                 for r in receipts:
                     f.write(json.dumps(r) + '\n')
             print(f"\n[router] emitted {len(receipts)} receipts → {output_path}")
+            wb = sum(1 for r in receipts if str(r.get('witness_backing', '')).startswith('BOUND'))
+            print(f"[router] witness-backed: {wb}/{len(receipts)} (invariant: no promotion without witness object)")
             by_sev = {}
             for r in receipts:
                 by_sev.setdefault(r['severity'], []).append(r)
