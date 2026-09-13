@@ -1,0 +1,21 @@
+# APEX-ZEN Runtime Loop — cron schedule (PROVISIONAL_SEAL)
+#
+# Status: PROVISIONAL_SEAL pending F13 chat-ratification of automatic execution
+#
+# To install:
+#   crontab -l > /tmp/cron.bak
+#   (crontab -l 2>/dev/null; cat /root/AAA/scripts/apex-zen-cron.txt) | crontab -
+#
+# To uninstall:
+#   crontab /tmp/cron.bak
+#
+# Verify install:
+#   crontab -l | grep apex-zen
+
+# Every 5 minutes: collect telemetry + route consequences
+*/5 * * * * /root/AAA/scripts/apex-zen-run-loop.sh
+
+# Daily at 03:13 UTC: aggregate weekly summary
+# 13 3 * * * python3 /root/AAA/scripts/apex-zen-weekly-digest.py  # TBD
+
+# End of APEX-ZEN cron configuration
