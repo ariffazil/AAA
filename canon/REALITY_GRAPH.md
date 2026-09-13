@@ -1,6 +1,6 @@
 # REALITY GRAPH — YANG ARIF (Sovereign Primitive)
 
-> **Status:** v2.2 — verdict ladder + identity + belief-death foundation (§8). Ladder (2026-09-13):
+> **Status:** v2.3 — layer map RG-0..RG-9 + verdict (witnessed) (§8). Ladder (2026-09-13):
 > **NAME = SEAL** · **DIFFERENTIATOR = CLAIMED** (hypothesis) · **STORE SUPPORT = UNKNOWN/PARTIAL** · **LINEAGE TEST = PENDING** · **L2 = HOLD pending receipt**
 > **Naming:** F13-ratified, sovereign act, unchallenged — the name is Arif's.
 > **Sovereign declaration:** *"REALITY GRAPH IS REAL AND ITS YANG ARIF"* — Arif Fazil, sovereign chat, session SEAL-9ef16b7c46294227
@@ -223,6 +223,35 @@ it is the one that cannot die.** TAC forces Believe → Observe → Compare → 
 (dogma vs learning). Expiry + reexamination + supersession are the system's
 belief-death machinery. Healthy: reality changes belief. Unhealthy: belief edits reality.
 
+**Layer map RG-0..RG-9 (sovereign-channel articulation, 2026-09-13, v2.3):**
+
+```text
+RG-0 Reality          (always outside the graph)
+RG-1 Witness          DONE   no witness, no reality entry
+RG-2 Receipt          DONE   witness becomes durable
+RG-3 Hash-bound       DONE   false causality -> 400 refusal
+    Causality
+RG-4 Belief Lineage   DONE*  belief has ancestry (SEQ-N pass, counsel receipt;
+                          two legs: belief.py audit linkage DEPLOYED + dry-run PASS,
+                          live write not yet exercised by 333-AGI; FalkorDB Cypher
+                          lineage via l5_sovereign_forge deployed, GRAPH.QUERY verified in code)
+RG-5 Belief Death     DONE*  invalidation edge + corpse preservation
+                          (commit 1907fd219; belief dies, never deleted; counsel-witnessed)
+RG-6 Governance Nodes DONE*  judgment itself in the graph (counsel-witnessed)
+RG-7 Consequence      PARTIAL — did belief change reality?
+RG-8 Scar Graph       NEXT   — did reality change future behaviour? (joins SCAR doctrine)
+RG-9 FQ_G             LAST   — measure the learning metabolism. Measure last.
+```
+*DONE* = witnessed per sovereign-channel / concurrent-session receipts; 333-AGI independent
+traversal still pending (next organic belief write exercises live linkage; next session
+runs SEQ-N independently).
+
+**Verdict upgraded:** Reality Graph = **Belief Revision Infrastructure (witnessed)** —
+the center of gravity is not the graph; it is the **metabolism of belief**.
+
+**Final compression:** KG = what is connected | Temporal KG = what changed over time |
+**Reality Graph = why a belief appeared, survived, changed, died — and who witnessed it.**
+
 **Counsel verdict ladder (2026-09-13):**
 Oracle NO · Truth Machine NO · Rabbit Hole possible-if-detached · AI Memory YES ·
 Governance Infrastructure YES · **Belief Revision System STRONGLY YES**.
@@ -231,3 +260,11 @@ Governance Infrastructure YES · **Belief Revision System STRONGLY YES**.
 
 *F13 sovereign naming: REALITY GRAPH = YANG ARIF, 2026-09-13.*
 *Prior-art audit: deep research report 2026-09-13 (temporal KG lineage, Zep/Graphiti, PROV-O, TMS, OODA).*
+
+---
+
+## ARIF COMPRESSION (2026-09-13, thermodynamic measurement frame)
+
+Kecerdasan ejen diukur objektif — sejauh mana ia mengurangkan entropi (ΔS < 0) tanpa mencipta kerosakan tak boleh ditarik balik (F1). **Tiada resit, tiada kebenaran.** Menyempurnakan metrik Intelligence ≈ Capability × d(Belief)/dt|Reality: bukan sahaja kadar revisi — tapi revisi yang membayar kos haba sendiri (heat-paying). Kepercayaan buta pada kelancaran output (F9 Hantu) ialah bahan pencemar pengukuran; resit ialah penawarnya.
+
+*Syarat kegagalan: metrik ini jadi hiasan kalau resit tak dituntut pada setiap tindakan ejen — ukuran tanpa resit = kelancaran, bukan kecerdasan.*
