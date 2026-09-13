@@ -1,0 +1,36 @@
+{
+  "receipt_version": "1.0.0",
+  "drill_id": "qdrant-restore-drill-20260913",
+  "executed_at": "2026-09-13T06:04:37.190534+00:00",
+  "audit_class": "T0_OBSERVE_AND_ISOLATED_PROBE",
+  "qdrant_version": "1.18.2",
+  "commit": "44ad62f8cd69642be5afa6441612525e24a0d063",
+  "source_snapshot": {
+    "name": "arifos_memory-3764529591357986-2026-09-11-20-30-51.snapshot",
+    "url": "http://127.0.0.1:6333/collections/arifos_memory/snapshots/arifos_memory-3764529591357986-2026-09-11-20-30-51.snapshot",
+    "sha256": "8e9475973c8456bc2a9c1845fe18655e0d51a1ff8acaace164d8d0444703f7f7",
+    "size_bytes": 1244160,
+    "created_at_utc": "2026-09-11T20:30:51"
+  },
+  "drill_target": {
+    "collection_name": "arifos_memory_restore_audit_20260913",
+    "quarantine_policy": "ISOLATED_COLLECTION_NO_AGENT_OR_RAG_WIRED"
+  },
+  "drill_results": {
+    "production_points_before": 40,
+    "recovery_time_objective_rto_sec": 0.247,
+    "restored_points_count": 99,
+    "restored_vector_config": {
+      "dimension": 1024,
+      "distance": "Cosine"
+    },
+    "restored_collection_status": "green",
+    "remediated_points_accounted_for": "59/59",
+    "remediation_ids_reconciliation": "PASS_EXACT_100_PERCENT",
+    "production_points_after": 40,
+    "production_untouched_verified": true,
+    "isolated_collection_cleaned_up": true
+  },
+  "verifier": "FI-009 (Antigravity / Gemini T0 read-only observer)",
+  "receipt_verdict": "PROVEN_ISOLATED_RECOVERY_PRODUCTION_UNTOUCHED"
+}
