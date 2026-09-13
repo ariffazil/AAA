@@ -18,8 +18,9 @@
       "lane": "MAIN",
       "agent": "FORGECODE (OpenCode)",
       "model": "MiMo V2.5 Pro",
-      "provider": "Xiaomi / bailian-token-plan",
-      "api_key_ref": "secrets::bailian",
+      "provider": "Xiaomi / mimo-token-plan",
+      "api_key_ref": "secrets::MIMO_TOKEN_PLAN_API_KEY",
+      "provider_correction_2026_09_13": "Was mis-attributed to 'Xiaomi / bailian-token-plan' with secrets::bailian. mimo-v2.5-pro is NOT an Aliyun/bailian model — it is the Xiaomi MiMo Token Plan (token-plan-sgp.xiaomimimo.com/v1). Fixed under FI-008 embed audit.",
       "context": 1000000,
       "status": "ACTIVE",
       "soul_file": "xiaomi_mimo_soul.yaml"
@@ -89,7 +90,15 @@
     "bailian": {
       "name": "bailian-token-plan",
       "endpoint": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
-      "models": ["MiMo V2.5 Pro", "GLM-5.2", "DeepSeek V4 Pro", "Kimi K2.7 Code", "Qwen 3.6 Flash"]
+      "models": ["GLM-5.2", "DeepSeek V4 Pro", "Kimi K2.7 Code", "Qwen 3.6 Flash"]
+    },
+    "mimo-token-plan": {
+      "name": "Xiaomi MiMo Token Plan (Singapore, Max monthly)",
+      "endpoint": "https://token-plan-sgp.xiaomimimo.com/v1",
+      "anthropic_endpoint": "https://token-plan-sgp.xiaomimimo.com/anthropic",
+      "api_key_ref": "secrets::MIMO_TOKEN_PLAN_API_KEY",
+      "models": ["mimo-v2.5-pro", "mimo-v2.5", "mimo-v2.5-asr", "mimo-v2.5-tts", "mimo-v2.5-tts-voiceclone", "mimo-v2.5-tts-voicedesign"],
+      "note": "Added 2026-09-13 (FI-008 embed audit). MiMo had been wrongly listed under bailian (Aliyun) — it is a Xiaomi-hosted plan whose tp- key is cluster-scoped to the SGP endpoint. TTS series free (limited window); ASR 30M credits per audio-hour."
     },
     "minimax": {
       "name": "MiniMax",

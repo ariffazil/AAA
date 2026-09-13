@@ -20,7 +20,10 @@ set -a; source /root/.secrets/kunci-root.env; set +a
 | gemini | auth-LIVE / **gen 429** | 55 models, 11 visual — but prepay credits DEPLETED. Models-list was a trap. |
 | minimax-video | **LIVE** | `MiniMax-Hailuo-2.3`, durations 6s\|10s, **3 clips/day** in Monthly Max. Endpoint `POST /v1/video_generation`, poll `/v1/query/video_generation?task_id=`, fetch `/v1/files/retrieve?file_id=` |
 | minimax-chat | **LIVE** | 8 models, M3 has native image+video input |
-| mimo-tp | **LIVE** | 6 models; mimo-v2.5 omni (img+video+audio in). Renewal 2026-09-17 |
+| mimo-tp | **LIVE** | 6 models; mimo-v2.5 omni (img+video+audio in). **LIST ONLY** — proves auth, not capability (SCAR #1). Renewal 2026-09-17 |
+| mimo-tp-vision | **LIVE** | **REAL vision canary** — 1px PNG `image_url` data-URI → 200 with `image_tokens=9`. Added 2026-09-13 (FI-008) so the lane can no longer reach a LIVE verdict on a models-list alone. Lane id `mimo-tp` retained unchanged for `mata_last.json` consumers. |
+| mimo-tp-video | **LIVE** | **PAIRED-fixture perception canary** — identical grey visuals, audio ASCENDING in fixture A vs DESCENDING in B; the model answered **RISE / FALL** → `PERCEPTION_VERIFIED`. Correct answers are *opposite*, so output bias is falsified. Run on demand: `mimo-vision vcanary` (NOT in the cheap pane — video tokens cost). Methodology per `FED_VIDEO_CANARY_LEDGER.yaml` (single-canary = bias). |
+| mimo-tp-audio | **LIVE** | TTS (free window) + ASR + audio-understanding. Primitive: `mimo-audio` (`tts·design·clone·asr·understand`). Full contract: `audio-intelligence-map.md`. |
 | kimi | **401** | key/endpoint mismatch on `api.moonshot.ai` — FED says kimi-moonshot LIVE 79% weekly. Investigate before claiming dead |
 | dsq-free-vl | **403 ALL** | 13 SOT-"LIVE" VL models: free quota EXHAUSTED (was predicted Sep-29; came early). Key also in free-tier-only mode → PAYG image gen blocked behind payment-info wall |
 | bailian-tp | **LIVE** | 12 models incl. `wan2.7-image`, `wan2.7-image-pro` — Hermes's "BAILIAN exhausted" falsified at auth level |
@@ -34,7 +37,7 @@ set -a; source /root/.secrets/kunci-root.env; set +a
 
 - **Image generation:** `bailian-token-plan/wan2.7-image(-pro)` via `/compatible-mode/v1/chat/completions` (plain-text prompt → markdown image URL in content; capture FULL signed URL incl. query, GET within expiry). Fallback: pollinations (keyless). Tomorrow+: qwen-indiv resets. Local: start ComfyUI for zero-cost.
 - **Video generation:** `MiniMax-Hailuo-2.3` (3/day, 6s or 10s) — schema in table above. Tomorrow: `happyhorse-1.1-t2v/i2v/r2v` on qwen-indiv. Veo 3.1 listed on gemini but gen-blocked by depleted prepay (needs top-up = F13 decision).
-- **Image/video understanding:** `mimo-v2.5` (omni, img+video+audio), `zai-vision` (GLM-5.3-Flash / @z_ai/mcp-server@latest, video ≤8MB), `MiniMax-M3` (native multimodal), `k3` (img+video) once the 401 is resolved, `gemini-*` family (video canary-verified ingestion — SEE `FED_VIDEO_CANARY_LEDGER.yaml`) for understanding if prepay restored.
+- **Image/video understanding:** `mimo-v2.5` (omni, img+video+audio). **Federation primitive:** `mimo-vision` (on PATH) — `see` for OpenAI **and** Anthropic wires, `tokens` for the vendor image-token formula, `doctor` for a real canary. Contract: JPEG/PNG/GIF/WebP/BMP, URL ≤50 MB or base64 ≤50 MB per image, multi-image ok, **no multipart upload**. Also available: `zai-vision` (GLM-5.3-Flash / @z_ai/mcp-server@latest, video ≤8MB), `MiniMax-M3` (native multimodal), `k3` (img+video) once the 401 is resolved, `gemini-*` family (video canary-verified ingestion — SEE `FED_VIDEO_CANARY_LEDGER.yaml`).
 - **OCR:** `zai-vision` (`extract_text_from_screenshot` tool / GLM-5.3-Flash) / MiniMax-M3 / mimo-v2.5 (VL fleet is 403-dead).
 
 ## Scars that made MATA (do not repeat)
@@ -43,6 +46,7 @@ set -a; source /root/.secrets/kunci-root.env; set +a
 2. **Console-redaction stub** — `MINIMAX_PLUGIN_API_KEY` held a 13-char `sk-cp-…UgO4` redaction artifact while the real 125-char key sat one variable over. Fixed in kunci-root.env + HERMES/.env (KVM8) + ~/.hermes/.env (KVM4) 2026-09-10; gateway restarted, key verified in process env.
 3. **Wrong-path diagnosis** — "MiniMax video 404" came from probing wrong endpoints. The right one existed all along. Probe the documented path variants (empty-body POST: 400/200 = EXISTS, 404 = absent) before declaring a lane dead.
 4. **SOT staleness class** — 6 lanes drifted between `/root/.config/federation-models.json` and live reality in one audit. SOT entries carry `last_verified`; anything older than 7 days is STALE by definition.
+5. **Reasoning-budget blank-success (2026-09-13, FI-008)** — `mimo-v2.5` is a *reasoning* model: `max_tokens` is shared by the reasoning channel and the answer. A budget too small returns **HTTP 200 with EMPTY content** — a blank "success" that reads as a broken lane. `mimo-vision see` now detects it, retries at a wider budget, and stamps `retry_note`. General rule: on any reasoning model, **empty content with non-empty reasoning means budget exhaustion, not capability failure.**
 
 ## Lineage
 
