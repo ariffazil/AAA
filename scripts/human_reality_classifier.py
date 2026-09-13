@@ -39,7 +39,9 @@ registry) — never as the source of identity.
 from __future__ import annotations
 
 import argparse
+import fcntl
 import json
+import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -320,8 +322,16 @@ def main() -> int:
 
     m = build_manifest()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    with open(MANIFEST_PATH, "w") as f:
-        json.dump(m, f, indent=2)
+    lock_file = MANIFEST_PATH.with_suffix(".lock")
+    with open(lock_file, "w") as lock_fd:
+        fcntl.flock(lock_fd.fileno(), fcntl.LOCK_EX)
+        try:
+            tmp = MANIFEST_PATH.with_suffix(".tmp")
+            with open(tmp, "w") as f:
+                json.dump(m, f, indent=2)
+            os.replace(tmp, MANIFEST_PATH)
+        finally:
+            fcntl.flock(lock_fd.fileno(), fcntl.LOCK_UN)
 
     print(f"Human Reality Classifier — registry-driven ({m['source_of_truth']})")
     if m["registry_error"]:
