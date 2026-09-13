@@ -1,7 +1,7 @@
 version: 1
-last_audit: '2026-08-26'
-auditor: '333-AGI Δ MIND (FI-001) per i-ARIF sovereign directive: zen all forge instruments
-  CCC, remove theatre, A2A AAA'
+last_audit: '2026-09-13'
+auditor: '333-AGI Δ MIND (FI-001) — live version re-probe 2026-09-13 (session SEAL-42dad7d3d9334310).
+  Prior audit 2026-08-26 per i-ARIF sovereign directive: zen all forge instruments CCC, remove theatre, A2A AAA'
 instruments:
 - id: FI-000
   name: i-ARIF
@@ -121,8 +121,9 @@ instruments:
     - geox
     - aforge
     - aaa
-  live_version_observed: 1.18.11
-  version_checked_at: '2026-08-21'
+  live_version_observed: 1.18.28
+  version_checked_at: '2026-09-13'
+  upstream_latest_seen: 1.18.30 (npm opencode-ai, published 2026-09-09) — upgrade F13-gated
   live_skill_count: 247
   autonomous_loop:
     plugin: /root/.config/opencode/plugins/aaa-autonomy.ts
@@ -132,7 +133,7 @@ instruments:
 - id: FI-002
   name: Claude Code
   binary: /root/.local/bin/claude
-  version: 2.1.261
+  version: 2.1.267
   model: deepseek/deepseek-v4-pro @ FED :4000 (FED-routed, runtime-resolved via settings.json
     env)
   izin: GRANTED
@@ -195,8 +196,9 @@ instruments:
   config_path: /root/.claude.json
   settings_path: /root/.claude/settings.json
   oauth_account: arifbfazil@gmail.com
-  live_version_observed: 2.1.246
-  version_checked_at: '2026-08-26'
+  live_version_observed: 2.1.267
+  version_checked_at: '2026-09-13'
+  upstream_latest_seen: 2.1.270 (npm @anthropic-ai/claude-code) — upgrade F13-gated
   version_pinned_from: '2026-08-26'
   fallback_model: minimax/MiniMax-M3
   last_upgrade: '2026-08-26'
@@ -255,7 +257,7 @@ instruments:
 - id: FI-003
   name: Qwen Code
   binary: /root/.local/bin/qwen
-  version: 0.23.0
+  version: 0.23.3
   model: glm-5.3 @ zai-coding-plan (runtime-resolved via settings.json)
   izin: GRANTED
   izin_date: '2026-06-10'
@@ -276,15 +278,15 @@ instruments:
   - well
   - fed
   config_path: /root/.qwen/
-  live_version_observed: 0.23.0
-  version_checked_at: '2026-09-05'
+  live_version_observed: 0.23.3
+  version_checked_at: '2026-09-13'
   note: Re-audited 2026-08-21. Extension fi003-federation v1.1.0 linked (QWEN.md +
     3 commands + 3 skills). 6 MCP loopback. Hooks SessionStart/End. permissionMode
     yolo, empty deny.
 - id: FI-009
   name: Antigravity CLI
   binary: /root/.local/bin/agy
-  version: 1.1.20
+  version: 1.2.2
   model: Gemini 3.7 Flash Medium (runtime-resolved via settings.json)
   izin: GRANTED
   izin_date: '2026-06-22'
@@ -310,14 +312,14 @@ instruments:
   settings_path: /root/.gemini/antigravity-cli/settings.json
   note: Slot renumbered FI-004->FI-009 per C10 adjudication 2026-08-14 (commit 630a4865).
     autonomy-guard plugin + brain 273. Active.
-  live_version_observed: 1.1.15
-  version_checked_at: '2026-08-26'
-  version_observation_note: '2026-08-26: live binary /root/.local/bin/agy is 1.1.20,
-    not 1.1.15 as previously logged.'
+  live_version_observed: 1.2.2
+  version_checked_at: '2026-09-13'
+  version_observation_note: '2026-09-13: live binary /root/.local/bin/agy is 1.2.2
+    (auto-updated since 1.1.20).'
 - id: FI-005
   name: Codex CLI
-  binary: /usr/local/bin/codex
-  version: 0.147.0
+  binary: /root/.npm-global/bin/codex
+  version: 0.154.0
   model: forge-777 @ FED :4000 (via :4010 middleware)
   izin: GRANTED
   izin_date: '2026-05-20'
@@ -340,11 +342,13 @@ instruments:
   mcp_config: /root/.codex/mcp.json
   note: Aligned 2026-07-18. GPT-5.6 Sol (upgraded from GPT-5.5). 8 MCPs. Landlock
     sandbox. Clean state.
-  live_version_observed: 0.147.0
-  version_checked_at: '2026-08-21'
+  live_version_observed: 0.154.0
+  version_checked_at: '2026-09-13'
+  binary_note: /usr/local/bin/codex -> /usr/bin/codex is a stale 0.145.0 chain; PATH resolves
+    to /root/.npm-global/bin/codex 0.154.0 (= npm latest).
 - id: FI-006
   name: Copilot CLI
-  binary: /usr/bin/copilot
+  binary: /root/.npm-global/bin/copilot
   version: 1.0.78
   model: codex @ FED :4000, MiniMax-M3 fallback (runtime-resolved via settings.json)
   izin: GRANTED
@@ -370,11 +374,13 @@ instruments:
   note: 'Zen audited 2026-08-26: hardcoded API key env-sourced (COPILOT_API_KEY in
     vault.env), deny_tools cleared per F13 directive, 13 MCP servers (arifOS+geox+wealth+well+a-forge+playwright+github+brave-search+sequential-thinking+fetch+time+memory+arifflow).'
   live_version_observed: 1.0.78
-  version_checked_at: '2026-08-26'
+  version_checked_at: '2026-09-13'
+  binary_note: live PATH resolves /root/.npm-global/bin/copilot (1.0.78); operator can
+    re-probe upstream via `copilot update`.
 - id: FI-007
   name: Grok Build
   binary: /root/.grok/bin/grok
-  version: 1.0.13
+  version: 1.0.30
   model: grok-build (xAI, yolo=off, always-approve)
   izin: GRANTED
   izin_date: '2026-07-18'
@@ -398,12 +404,14 @@ instruments:
   note: 'Re-audited 2026-08-21: config.toml = MCP SOT (6 servers, grok mcp list verified).
     Stale Claude-style mcp.json archived as mcp.json.inert-20260821. Skills symlink
     -> AAA/skills 323.'
-  live_version_observed: 1.0.13
-  version_checked_at: '2026-09-05'
+  live_version_observed: 1.0.30
+  version_checked_at: '2026-09-13'
+  binary_note: /root/.local/bin/grok -> /root/.grok/bin/grok -> downloads/grok-1.0.30-linux-x86_64
+    (self-updated 2026-09-12).
 - id: FI-008
   name: Kimi Code CLI
   binary: /root/.kimi-code/bin/kimi
-  version: 0.41.0
+  version: 0.42.0
   model: zai-coding-plan/glm-5.3 (runtime-resolved via config.toml)
   izin: GRANTED
   izin_date: '2026-06-10'
@@ -448,14 +456,14 @@ instruments:
   note: 'Re-audited 2026-08-21: 12 MCP live (serena/context7/playwright re-wired by
     FI-008). Skills 340 physical copies vs mesh 323 — quarantine audit in progress
     by FI-008. YOLO-native governance via 11 hooks.'
-  live_version_observed: 0.37.2
-  version_checked_at: '2026-08-21'
+  live_version_observed: 0.42.0
+  version_checked_at: '2026-09-13'
 - id: FI-010
   name: Gemini CLI
-  binary: /usr/bin/gemini
-  version: 0.43.0
-  live_version_observed: 0.43.0
-  version_checked_at: '2026-08-21'
+  binary: "unregistered — /usr/bin/gemini 0.43.0; /root/.npm-global/bin/gemini (@google/gemini-cli 0.59.0)"
+  version: DEAD
+  live_version_observed: n/a — DECOMMISSIONED
+  version_checked_at: '2026-09-13'
   model: gemini-2.5-flash (runtime-resolved via /root/.arifos/agents/gemini/AAA/settings.json)
   izin: SUPERSEDED (F13 merge 2026-08-21 — gemini lane folded into FI-009 agy/antigravity
     as harness-of-record; binary /usr/bin/gemini retained unregistered for ad-hoc
@@ -473,8 +481,10 @@ instruments:
   - wealth
   - well
   config_path: /root/.arifos/agents/gemini/AAA
-  note: Superseded per F13 merge decision 2026-08-21. Historical record retained.
-    Card archived to agents/_superseded/gemini-cli/.
+  note: DECEASED — F13 declared "gemini cli is dead" 2026-09-13. Previously superseded
+    per F13 merge decision 2026-08-21 (lane folded into FI-009 agy/antigravity). Binaries
+    retained unregistered for historical record; not federation-wired. Card archived to
+    agents/_superseded/gemini-cli/.
 - id: FI-011
   name: Continue CLI
   binary: (config-only presence)
