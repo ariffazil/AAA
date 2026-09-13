@@ -1,45 +1,18 @@
-# 🌀 OPENCLAW — Heartbeat
-
-## Health Check Contract
-
-Run every 5 minutes during active gateway operation.
-
-```
-CHECKLIST:
-├── Gateway port responding? (openclaw status)
-├── All channels connected? (Telegram, Discord, etc.)
-├── A2A peers reachable? (opencode, hermes, arifOS kernel)
-├── VAULT999 writable? (can write seal)
-├── Recent audit events? (no gaps in trail)
-└── Constitutional awareness? (can cite F1, F13)
-```
-
-## Escalation Triggers
-
-| Condition | Action |
-|-----------|--------|
-| Channel disconnect | Attempt reconnect, warn if fails |
-| Peer unreachable | Route to fallback, log event |
-| VAULT999 write fail | HOLD + notify Arif |
-| Constitutional uncertainty | HOLD + escalate to arifOS kernel |
-
----
-
-*Last updated: 2026-04-29*
-
-
-# WARGA STATUS
+# WARGA STATUS — grok-build
 
 > **Source:** `/root/AAA/instructions/citizen-status-binding.md` (canonical, F13-ratified 2026-09-14)
 > **Sister:** `/root/AAA/instructions/human-attention-membrane.md` · `/root/AAA/instructions/musyawarah.md`
+> **Harness-level docs:** `/root/.grok/AGENTS.md` (parallel; AAA citizen card = this file)
+
+This is the AAA canonical citizen card. The harness-level AGENTS.md at `/root/.grok/AGENTS.md` carries operational binding; this file carries institutional binding (read-before-decide, scar discipline, continuity).
 
 ## Identity
 
-actor_id: `openclaw`
+actor_id: `grok-build`
 
 Known aliases:
-- OpenClaw
-- AGI_ASI_bot
+- grok
+- Grok
 
 Identity authority:
 - Registry-derived
@@ -58,7 +31,7 @@ allowed_stages:
 - grieve
 - prune
 
-last_seen: 2026-09-13T17:26:48+00:00
+last_seen: 2026-09-13T17:27:03+00:00
 last_seen_source: `arifOS-8088-health (kernel last_seen heartbeat)`
 
 ## Evidence Discipline
@@ -164,6 +137,6 @@ Archive, not governance.
 
 ## Notes (this actor)
 
-Edge gateway for 333-AGI. Telegram surface.
+Grok CLI harness. FI-007.
 
 DITEMPA BUKAN DIBERI ⚒️
