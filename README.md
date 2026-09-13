@@ -1,17 +1,20 @@
 <!-- SOT-MANIFEST
-federation_release: v2026.09.08
-last_verified: 2026-09-08T09:45:00Z
-live_commit: 028814e4
+federation_release: v2026.09.13
+last_verified: 2026-09-13T06:32:00Z
+live_commit: 8a2c373dc
 a2a_port: 3001
-a2a_status: healthy GREEN
-protocol: A2A v1.0.0
+a2a_status: loopback JSON-RPC healthy; public POST /a2a exact path 405 (Caddy /a2a/* HOLD)
+protocol: A2A v1.0 (wire Major.Minor; GitHub tag v1.0.1 is spec patch — never stamp 1.2)
+canonical_surface: a2a/CANONICAL_SURFACE.md
+apex_zen: A2A delegates ⊥ MCP equips ⊥ ACT mutates ⊥ arifOS governs ⊥ F13 decides
 godel_lock: ACTIVE federation-wide
 role: REGISTER & DISPLAY — A2A Gateway, State Plane, Skill Catalog, Intent Routing
 authority: DISPLAY_ONLY — never judges (arifOS), never metabolizes (arifFlow), never executes (A-FORGE)
 agent_lanes: 3 (333-AGI, 555-ASI, 888-APEX; FORGE is adat agentic substrate)
-truth_rule: /health + agent registry beat any static count in prose
+truth_rule: /health + live Agent Card + POST /a2a/ beat any static count in prose
 vault: CONNECTED
 seal_chain: append-only (chattr +a) + Merkle anchor every 100 receipts
+holds: Caddy exact /a2a · JWS card keys · medical purge (Pilihan A) · WELL biometrics
 -->
 
 # AAA — Intelligence Routing & State Plane
