@@ -131,7 +131,11 @@ class TestMemoryAdmissibility(unittest.TestCase):
         self.assertIn("RETRIEVED_UNDER_HISTORICAL_AUDIT_MODE", res["historical_banner"])
 
     def test_live_qdrant_collection_admissibility(self):
-        """Verify the 99 live points in arifos_memory against the gate."""
+        """Verify the live points in arifos_memory against the gate.
+        Note: On 2026-09-12T05:50Z, 333-AGI remediated arifos_memory, archiving 59
+        points into forge_work/memory-remediation-backup-20260912.json.
+        Live collection holds 40 points (9 ACTIVE / 31 EXPIRED).
+        """
         try:
             req = urllib.request.Request(
                 "http://127.0.0.1:6333/collections/arifos_memory/points/scroll",
@@ -143,7 +147,8 @@ class TestMemoryAdmissibility(unittest.TestCase):
         except Exception as e:
             self.skipTest(f"Qdrant not reachable: {e}")
 
-        self.assertEqual(len(points), 99)
+        # Post-remediation reality check (40 points remain in active collection)
+        self.assertEqual(len(points), 40)
 
         operational_admissible = 0
         operational_excluded = 0
@@ -155,18 +160,18 @@ class TestMemoryAdmissibility(unittest.TestCase):
                 operational_admissible += 1
             else:
                 operational_excluded += 1
-                self.assertIn(op_eval["code"], ("EXCLUDED_EXPIRED", "EXCLUDED_LOW_CONFIDENCE", "EXCLUDED_SUPERSEDED"))
+                self.assertIn(op_eval["code"], ("EXCLUDED_EXPIRED", "EXCLUDED_LOW_CONFIDENCE", "EXCLUDED_SUPERSEDED", "EXCLUDED_SANCTUARY"))
 
             hist_eval = self.gate.evaluate(p, mode="historical_lineage")
             if hist_eval["admissible"]:
                 historical_admissible += 1
 
-        print(f"\n[LIVE QDRANT AUDIT] Total: 99 | Operational Admissible: {operational_admissible} | Operational Excluded: {operational_excluded} | Historical Admissible: {historical_admissible}")
-        # The 40 legacy points must be excluded from operational mode
-        self.assertEqual(operational_excluded, 40)
-        self.assertEqual(operational_admissible, 59)
-        # All 99 are admissible in historical mode
-        self.assertEqual(historical_admissible, 99)
+        # 31 expired legacy points must be excluded from operational mode; 9 active admitted
+        # 31 EXPIRED + 2 sanctuary denylist (F9) = 33 excluded operationally
+        self.assertEqual(operational_excluded, 33)
+        self.assertEqual(operational_admissible, 7)
+        # Sanctuary IDs are denied in historical mode too
+        self.assertEqual(historical_admissible, 38)
 
 
 if __name__ == "__main__":
