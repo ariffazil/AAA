@@ -1,0 +1,67 @@
+{
+  "report_version": "1.0.0",
+  "generated_at": "2026-09-13T06:05:19.149107+00:00",
+  "audit_class": "T0_OBSERVE_READ_ONLY",
+  "policy_locations": {
+    "canonical_source": {
+      "exists": true,
+      "is_symlink": false,
+      "symlink_target": null,
+      "canonical_realpath": "/root/arifOS/config/memory-admissibility-policy.yaml",
+      "sha256": "597d24bc8b868c654e6e8bf07311edd54dcf897442ffc7f6de64ea6510950580",
+      "size_bytes": 4201
+    },
+    "aaa_contract": {
+      "exists": true,
+      "is_symlink": true,
+      "symlink_target": "/root/arifOS/config/memory-admissibility-policy.yaml",
+      "canonical_realpath": "/root/arifOS/config/memory-admissibility-policy.yaml",
+      "sha256": "597d24bc8b868c654e6e8bf07311edd54dcf897442ffc7f6de64ea6510950580",
+      "size_bytes": 4201
+    },
+    "deployed_runtime": {
+      "exists": true,
+      "is_symlink": false,
+      "symlink_target": null,
+      "canonical_realpath": "/opt/arifos/app/config/memory-admissibility-policy.yaml",
+      "sha256": "597d24bc8b868c654e6e8bf07311edd54dcf897442ffc7f6de64ea6510950580",
+      "size_bytes": 4201
+    }
+  },
+  "sanctuary_denylist_locations": {
+    "canonical_source": {
+      "exists": true,
+      "is_symlink": false,
+      "symlink_target": null,
+      "canonical_realpath": "/root/arifOS/config/memory-sanctuary-denylist.json",
+      "sha256": "dd8e1d582a299163e55a1b4b9f958f82895ec78a69cdc183b26e3eeefc582d50",
+      "size_bytes": 478
+    },
+    "aaa_contract": {
+      "exists": true,
+      "is_symlink": true,
+      "symlink_target": "/root/arifOS/config/memory-sanctuary-denylist.json",
+      "canonical_realpath": "/root/arifOS/config/memory-sanctuary-denylist.json",
+      "sha256": "dd8e1d582a299163e55a1b4b9f958f82895ec78a69cdc183b26e3eeefc582d50",
+      "size_bytes": 478
+    },
+    "deployed_runtime": {
+      "exists": true,
+      "is_symlink": true,
+      "symlink_target": "/root/arifOS/config/memory-sanctuary-denylist.json",
+      "canonical_realpath": "/root/arifOS/config/memory-sanctuary-denylist.json",
+      "sha256": "dd8e1d582a299163e55a1b4b9f958f82895ec78a69cdc183b26e3eeefc582d50",
+      "size_bytes": 478
+    }
+  },
+  "environment_overrides": {
+    "MEMORY_ADMISSIBILITY_POLICY": null,
+    "MEMORY_SANCTUARY_DENYLIST": null
+  },
+  "parity_verification": {
+    "policy_hashes_identical": true,
+    "denylist_hashes_identical": true,
+    "failsafe_fallback_available": true
+  },
+  "verdict": "POLICY_AND_DENYLIST_PARITY_VERIFIED_100_PERCENT"
+}
