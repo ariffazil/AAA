@@ -9,12 +9,25 @@ Doctrine ref: /root/AAA/governance/APEX-ZEN-CONSEQUENCE-LADDER.md
 """
 import json
 import argparse
+import hashlib
 from pathlib import Path
 from datetime import datetime, timezone
 
 TELEMETRY_INPUT = Path('/root/VAULT999/apex-zen-telemetry.jsonl')
 RECEIPTS_OUTPUT = Path('/root/VAULT999/apex-zen-receipts.jsonl')
 PREFLIGHT_OUTPUT = Path('/root/VAULT999/apex-zen-preflight.json')
+
+# Change-detection watermark (added 2026-09-13, FI-008).
+# Without it the router re-dumps the entire backlog every cycle: main() reads the
+# whole telemetry log and appends a receipt for every WARNING+ signal on every run.
+# `timestamp` is stamped with now(), so each re-emission LOOKS unique while being
+# content-identical — there is no dedup key to detect it.
+# Measured 2026-09-13T14:00Z: 27,280 rows carrying only 116 distinct signals
+# (sev,metric,source,value) = 99.6% redundant, ~74 MB/day appended to a disk at 79%.
+# Fix: emit a signal once on appearance; re-emit only if it clears and recurs.
+# Semantics therefore change from full-snapshot-log to change-log.
+# Use --snapshot to restore the old full-emission behaviour.
+EMITTED_STATE = Path('/root/VAULT999/apex-zen-receipts.state.json')
 
 # Promotion gate (invariant: no metric may be promoted without a witness object)
 WITNESS_INPUT = Path('/root/VAULT999/apex-zen-witness.jsonl')
@@ -160,7 +173,9 @@ def emit_receipt(record: dict, severity: str, metric: str, value, threshold_desc
     if severity in ('DOWNGRADE', 'VIOLATION') and witness_state == 'MISSING':
         withheld = True
         consequence = 'log_only (WITHHELD — unwitnessed; invariant: no metric promoted without witness object)'
+    source = record.get('source', 'unknown')
     return {
+        'receipt_id': receipt_id(severity, metric, source, value),
         'timestamp': datetime.now(timezone.utc).isoformat(),
         'severity': severity,
         'metric': metric,
@@ -174,11 +189,34 @@ def emit_receipt(record: dict, severity: str, metric: str, value, threshold_desc
     }
 
 
+def receipt_id(severity: str, metric: str, source: str, value) -> str:
+    """Deterministic signal identity — stable across runs, so re-emission is detectable.
+
+    Before 2026-09-13 receipts carried only a now() timestamp, which made every
+    re-emission of an identical signal look like a new event. This id is the dedup
+    key that was missing.
+    """
+    raw = f"{severity}|{metric}|{source}|{value}"
+    return hashlib.sha256(raw.encode()).hexdigest()[:16]
+
+
+def load_active_ids(path: Path) -> set:
+    """Signals emitted on the previous run, or empty if the state file is absent/corrupt."""
+    if not path.exists():
+        return set()
+    try:
+        return set(json.loads(path.read_text()).get('active_ids', []))
+    except (json.JSONDecodeError, OSError):
+        return set()
+
+
 def main():
     parser = argparse.ArgumentParser(description='APEX-ZEN Consequence Router')
     parser.add_argument('--input',  default=str(TELEMETRY_INPUT))
     parser.add_argument('--output', default=str(RECEIPTS_OUTPUT))
     parser.add_argument('--dry-run', action='store_true')
+    parser.add_argument('--snapshot', action='store_true',
+                        help='Emit the full backlog (pre-2026-09-13 behaviour) instead of change-log')
     args = parser.parse_args()
 
     input_path  = Path(args.input)
@@ -216,6 +254,19 @@ def main():
         if count > 0:
             print(f"  {sev:10s}: {count}")
 
+    # Change-detection: reduce the full backlog to signals not already active.
+    active_ids = {r['receipt_id'] for r in receipts}
+    if args.snapshot:
+        suppressed = 0
+    else:
+        prior_ids = load_active_ids(EMITTED_STATE)
+        before = len(receipts)
+        receipts = [r for r in receipts if r['receipt_id'] not in prior_ids]
+        suppressed = before - len(receipts)
+    print(f"[router] active signals: {len(active_ids)}  new: {len(receipts)}  suppressed (already active): {suppressed}")
+    if args.snapshot:
+        print("[router] --snapshot: full backlog emission, change-detection disabled")
+
     if receipts:
         if not args.dry_run:
             with output_path.open('a') as f:
@@ -229,6 +280,12 @@ def main():
                 by_sev.setdefault(r['severity'], []).append(r)
             for sev, items in by_sev.items():
                 print(f"  {sev}: {len(items)} (sample: {items[0]['metric']}={items[0]['value']})")
+            EMITTED_STATE.write_text(json.dumps({
+                'active_ids': sorted(active_ids),
+                'updated': datetime.now(timezone.utc).isoformat(),
+                'count': len(active_ids),
+            }))
+            print(f"[router] watermark → {EMITTED_STATE} ({len(active_ids)} active signals)")
 
         else:
             print(f"\n[DRY RUN] would emit {len(receipts)} receipts")
