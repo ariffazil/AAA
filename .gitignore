@@ -80,6 +80,7 @@ public/a2a/entropy-report.json
 *.bak
 *.bak-*
 *.log
+*.lock
 logs/*
 state/*.json
 state/phoenix72/
