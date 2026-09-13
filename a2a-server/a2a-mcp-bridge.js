@@ -19,6 +19,53 @@
 const { writeSeal } = require('./vault');
 const HTTP = require('http');
 const HTTPS = require('https');
+const FS = require('fs');
+const PATH = require('path');
+
+// ── APEX-ZEN Compliance Gate ────────────────────────────────────────
+const PREFLIGHT_FILE = '/root/VAULT999/apex-zen-preflight.json';
+
+/**
+ * Check APEX-ZEN compliance for an actor before routing.
+ * Returns { allowed, severity, restriction, reason }.
+ * Blocks MUTATE actions for DOWNGRADE/VIOLATION actors.
+ */
+function checkApexZenCompliance(sourceActor, actionType = 'OBSERVE') {
+  try {
+    if (!FS.existsSync(PREFLIGHT_FILE)) {
+      return { allowed: true, severity: 'UNKNOWN', restriction: 'none', reason: 'no_preflight_data' };
+    }
+    const data = JSON.parse(FS.readFileSync(PREFLIGHT_FILE, 'utf8'));
+    // Fuzzy match: try exact, then suffix
+    let actorData = data[sourceActor];
+    if (!actorData && sourceActor) {
+      const stripped = sourceActor.replace(/^arifFlow:/, '');
+      for (const [key, val] of Object.entries(data)) {
+        if (key.endsWith(stripped) || stripped.endsWith(key.split(':').pop())) {
+          actorData = val;
+          break;
+        }
+      }
+    }
+    if (!actorData) {
+      return { allowed: true, severity: 'UNKNOWN', restriction: 'none', reason: 'actor_not_tracked' };
+    }
+    const severity = actorData.worst_severity || 'UNKNOWN';
+    const restriction = actorData.restriction || 'unknown';
+    // Block MUTATE for DOWNGRADE/VIOLATION
+    if (actionType === 'MUTATE' && (severity === 'DOWNGRADE' || severity === 'VIOLATION')) {
+      return {
+        allowed: false,
+        severity,
+        restriction,
+        reason: `APEX-ZEN ${severity}: actor ${sourceActor} restricted to ${restriction}. CD=${actorData.CD} DCR=${actorData.DCR}`,
+      };
+    }
+    return { allowed: true, severity, restriction, reason: severity === 'COMPLIANT' ? 'compliant' : `${severity}_but_${actionType}_permitted` };
+  } catch (err) {
+    return { allowed: true, severity: 'UNKNOWN', restriction: 'none', reason: `preflight_read_error: ${err.message}` };
+  }
+}
 
 // ── Canonical Organ Map ──────────────────────────────────────────────
 const ORGAN_MAP = {
@@ -217,6 +264,30 @@ async function bridgeTask(task, options = {}) {
 
   // Mark as WORKING in task store
   const taskId = params.id || `bridge-${Date.now()}`;
+
+  // APEX-ZEN compliance gate (Mutation 3 — federation-wide enforcement)
+  const sourceActor = metadata.source || metadata.actor || params.contextId || 'unknown';
+  const actionType = metadata.action_type || (toolName.includes('seal') || toolName.includes('execute') || toolName.includes('write') || toolName.includes('commit') || toolName.includes('deploy') ? 'MUTATE' : 'OBSERVE');
+  const zenCheck = checkApexZenCompliance(sourceActor, actionType);
+  if (!zenCheck.allowed) {
+    try {
+      await writeSeal(
+        { id: taskId, contextId: params.contextId || taskId, status: { state: 'FAILED' }, metadata },
+        'aaa-bridge',
+        `mcp.call.${resolvedOrgan}.${toolName}.apex_zen_blocked`,
+        { zen_severity: zenCheck.severity, zen_restriction: zenCheck.restriction, organ: resolvedOrgan, tool: toolName }
+      );
+    } catch { /* best effort */ }
+
+    return buildA2AResponse(task, {
+      status: 'FAILED',
+      error: {
+        code: -32003,
+        message: zenCheck.reason,
+        data: { organ: resolvedOrgan, tool: toolName, apex_zen: zenCheck },
+      },
+    });
+  }
 
   // Enforce explorer dependency rules
   const depCheck = validateExplorerDependencies(resolvedOrgan, toolName, args);
@@ -429,4 +500,5 @@ module.exports = {
   getOrganMap,
   ORGAN_MAP,
   validateExplorerDependencies,
+  checkApexZenCompliance,
 };
