@@ -503,7 +503,17 @@
       }
     },
     "deepseek-v4-flash-vision-exp": {
-      "_note": "EXPERIMENTAL vision model (2026-08-21). Image-in via user-role messages; 384 tok/image cap after ~800x800 auto-resize; JPEG/PNG/GIF/WebP; Anthropic-compat /anthropic accepts image blocks. Text parity with v4-flash. DIRECT-API-ONLY, no mirror. VERIFIED LIVE 2026-08-30: real-image probe answered correctly ('Red') on both endpoints, account $17.38. Never 666_JUDGE/999_SEAL while EXP.",
+      "_note": "EXPERIMENTAL vision model (2026-08-21). Image-in via user-role messages; 384 tok/image cap after ~800x800 auto-resize; JPEG/PNG/GIF/WebP; Anthropic-compat /anthropic accepts image blocks. Text parity with v4-flash. DIRECT-API-ONLY, no mirror. VERIFIED LIVE 2026-08-30: real-image probe answered correctly ('Red') on both endpoints, account $17.38. Never 666_JUDGE/999_SEAL while EXP. CORRECTION 2026-09-13 (FI-008, HK.8R.2): RETIRED — requests for this model name are served by DeepSeek-V4.1-Flash (deepseek/deepseek-flash). The 384-token image figure is HISTORICAL and does NOT describe traffic served today; the current Flash upper bound is 1024 image tokens per image after automatic resize (api-docs.deepseek.com/guides/vision, witnessed live 2026-09-13). Historical text intentionally not rewritten (F1 AMANAH).",
+      "modalities": {
+        "vision": true
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "high"
+      }
+    },
+    "deepseek-flash": {
+      "_note": "V4.1-Flash — CANONICAL current Flash model (registered HK.7 2026-09-13; entry ADDED here by HK.8R.2 because the registry was missing the current canonical model, leaving it false-by-default under this file's 'absent flag = does not have it' doctrine). Image-in via user-role messages ONLY (images in system/assistant messages return 400); JPEG/PNG/GIF/WebP; UPPER BOUND 1024 image tokens per image after automatic resize (auto-resize targets ~1300x1300 total pixels); 600 images/request. Anthropic-compat /anthropic accepts image blocks. Provider output maximum = 384K / 393216 max_tokens — the federation's 131072 max_output_tokens is a FED operational GUARD, NOT a provider limit. Legacy names deepseek-v4-flash and deepseek-v4-flash-vision-exp are still accepted but retired and served by this model. Federation SOT role fence: 111/333/444/555/777 allowed; 666_JUDGE + 999_SEAL forbidden until GA-stable + sovereign verification. Source: api-docs.deepseek.com — pricing / api/create-chat-completion / guides/vision, witnessed live 2026-09-13 (kimi-code/FI-008, HK.8R.2). SOT: /root/.config/federation-models.json → models[deepseek/deepseek-flash].",
       "modalities": {
         "vision": true
       },
