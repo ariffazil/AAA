@@ -1,0 +1,22 @@
+# Governance Reality Object — dignity / privacy boundary
+# GROUNDED IN REAL CANON: /root/memory/ZEN_HELIX.md — "F5 PRIVACY: Family scars
+# stay private. Never surface in group chat or non-DM output." and F5/F6 MARUAH.
+schema: arifos.gro.v1
+id: GRO-DIGNITY-001
+floor: F5
+constraint: human_dignity_and_privacy
+condition:
+  data_class: private_human
+  surface: non_dm
+authority: SOVEREIGN
+required: human_explicit_consent
+verdict: VOID
+status: RATIFIED
+source: /root/memory/ZEN_HELIX.md
+behavior_change:
+  mode: HARD_ABORT
+  from: AUTO
+  to: BLOCKED
+  reason: >-
+    Private human reality (family, minors, medical, intimate) must never be
+    emitted on a non-DM surface. This is a hard block, not a draft gate.
