@@ -58,11 +58,40 @@ CONSEQUENCE_ACTIONS = {
     'VIOLATION': 'emit_violation_receipt + f13_advisory',
 }
 
+# Severity ladder for picking an actor's worst metric.
+# UNKNOWN is deliberately ABSENT: it denotes "no verdict for this metric",
+# not a rank. Including it caused a missing metric (e.g. DD='inf') to outrank
+# and thereby MASK a measured VIOLATION on another metric (CD/DCR).
+# Observed 2026-09-13: 7 of 24 actors masked, incl. arifFlow:arif, codex,
+# 333-AGI/agentic-web. Fixed FI-008.
+SEVERITY_RANK = {s: i for i, s in enumerate(
+    ['COMPLIANT', 'WATCH', 'WARNING', 'DOWNGRADE', 'VIOLATION'])}
+
+RESTRICTIONS = {
+    'COMPLIANT': 'none',
+    'WATCH':     'log_only',
+    'WARNING':   'observe_only',
+    'DOWNGRADE': 'tier0_restricted_5_turns',
+    'VIOLATION': 'f13_advisory',
+    'UNKNOWN':   'no_verdict',
+}
+
+# Sources that appear in telemetry but are collector artifacts, not governed
+# actors. Evidence: `stdin` appears as a `source` value (a pipe name, not an
+# agent). Excluded from the enforcement namespace; recorded in the loop log.
+NON_ACTOR_SOURCES = frozenset({'stdin'})
+
 
 def write_preflight_scores(telemetry_records: list[dict]) -> None:
     """Write latest per-actor APEX-ZEN scores to preflight JSON for agent consumption.
 
     Agents read this file before responding to check their compliance status.
+
+    Verdict resolution rule (FI-008, 2026-09-13):
+      worst_severity = max over metrics with a VERDICT.
+      UNKNOWN means "no verdict" — it never outranks a measured severity.
+      per_metric_severity + metrics_missing are emitted so a consumer can see
+      exactly which metric produced the verdict and which were unmeasurable.
     """
     latest_by_actor = {}
     for record in telemetry_records:
@@ -72,35 +101,36 @@ def write_preflight_scores(telemetry_records: list[dict]) -> None:
             latest_by_actor[source] = record
 
     preflight = {}
+    excluded = []
     for actor, record in latest_by_actor.items():
-        cd = record.get('CD', 'N/A')
-        dd = record.get('DD', 'N/A')
-        iar = record.get('IAR', 'N/A')
-        dcr = record.get('DCR', 'N/A')
-        cd_sev, _ = classify('CD', cd)
-        dd_sev, _ = classify('DD', dd)
-        iar_sev, _ = classify('IAR', iar)
-        dcr_sev, _ = classify('DCR', dcr)
-        worst = max([cd_sev, dd_sev, iar_sev, dcr_sev],
-                     key=lambda s: ['COMPLIANT', 'WATCH', 'WARNING', 'DOWNGRADE', 'VIOLATION', 'UNKNOWN'].index(s)
-                     if s in ['COMPLIANT', 'WATCH', 'WARNING', 'DOWNGRADE', 'VIOLATION', 'UNKNOWN'] else 0)
+        if actor in NON_ACTOR_SOURCES:
+            excluded.append(actor)
+            continue
+        values = {m: record.get(m, 'N/A') for m in ('CD', 'DD', 'IAR', 'DCR')}
+        per_metric = {m: classify(m, v)[0] for m, v in values.items()}
+        verdicts = [s for s in per_metric.values() if s in SEVERITY_RANK]
+        worst = max(verdicts, key=SEVERITY_RANK.__getitem__) if verdicts else 'UNKNOWN'
+        missing = sorted(m for m, s in per_metric.items() if s not in SEVERITY_RANK)
+
         preflight[actor] = {
             'timestamp': record.get('timestamp'),
-            'CD': cd, 'DD': dd, 'IAR': iar, 'DCR': dcr,
+            'CD': values['CD'], 'DD': values['DD'],
+            'IAR': values['IAR'], 'DCR': values['DCR'],
             'worst_severity': worst,
+            'per_metric_severity': per_metric,
+            'metrics_missing': missing,
+            'severity_reliable': not missing,
             'all_targets_met': record.get('all_targets_met', False),
             'G_closure': record.get('G_closure', 'N/A'),
-            'restriction': {
-                'COMPLIANT': 'none',
-                'WARNING': 'observe_only',
-                'DOWNGRADE': 'tier0_restricted_5_turns',
-                'VIOLATION': 'f13_advisory',
-            }.get(worst, 'unknown'),
+            'restriction': RESTRICTIONS.get(worst, 'unknown'),
         }
 
     PREFLIGHT_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     with PREFLIGHT_OUTPUT.open('w') as f:
         json.dump(preflight, f, indent=2)
+
+    if excluded:
+        print(f"[router] excluded non-actor sources from enforcement namespace: {sorted(excluded)}")
 
 
 def classify(metric: str, val) -> tuple[str, str]:
