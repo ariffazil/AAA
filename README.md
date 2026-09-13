@@ -40,7 +40,7 @@ Canonical live surface: [`a2a/CANONICAL_SURFACE.md`](./a2a/CANONICAL_SURFACE.md)
 Multi-agent AI systems fail at orchestration. Without a central routing layer, agents call the wrong tools, models degrade silently, and state becomes inconsistent across organs. AAA solves this by providing:
 
 - **Deterministic intent classification** — maps user language to organ capability
-- **Multi-model routing (FLAME)** — automatic fallback across providers when models fail
+- **Multi-model routing (FED)** — automatic fallback across providers when models fail
 - **State plane management** — single source of truth for federation health
 - **Skill catalog** — 200+ skills discoverable and composable across organs
 
@@ -72,8 +72,8 @@ Multi-agent AI systems fail at orchestration. Without a central routing layer, a
 └──────────────────────────┬───────────────────────────────────┘
                            │
                     ┌──────▼──────┐
-                    │ FLAME Router │
-                    │  :18901      │
+                    │ FED Gateway  │
+                    │  :4000       │
                     └──────────────┘
 ```
 
@@ -90,7 +90,7 @@ docker compose up -d
 
 # Verify
 curl http://localhost:3001/health
-curl http://localhost:18901/health/liveliness
+curl http://localhost:4000/health/liveliness
 ```
 
 ### Local Development
@@ -100,7 +100,7 @@ cd AAA
 npm install
 npm run dev
 
-# Or with Docker Compose for full stack (AAA + FLAME)
+# Or with Docker Compose for full stack (AAA + FED)
 docker compose up -d
 ```
 
@@ -111,13 +111,13 @@ docker compose up -d
 ### A2A Mesh Gateway
 Agent-to-agent communication broker using the Agent-to-Agent (A2A) protocol v1.0.0. Handles message routing, session management, and inter-organ communication.
 
-### FLAME Router (Multi-Model Inference)
-Automatic model routing with fallback chains across providers:
-- **MuleRouter** (80%) — primary, multi-model with fixed pricing
-- **OpenRouter** (15%) — secondary, broad model availability
-- **Ollama** (5%) — local fallback, zero-cost
+### FED Gateway (Multi-Model Inference)
+Federation model gateway with fallback chains across providers (FLAME Router retired 2026-09-04):
+- **FED** `:4000` — HAProxy intake into the federation model lanes (LiteLLM)
+- **Fallback chains** — retry with backoff; position 3+ on a different provider/route
+- **Local fallback** — Ollama, zero-cost
 
-When a model fails, FLAME automatically routes to the next provider — no interruption.
+When a model fails, FED routes to the next provider — no interruption.
 
 ### Intent Classification
 Deterministic mission routing that maps human language to machine states:
@@ -182,7 +182,7 @@ The arifOS Federation organizes its 35 repositories into five distinct operation
 |----------|-------------|------|
 | `GET /health` | AAA organ liveness | None |
 | `GET /health/skills` | Skill catalog status | None |
-| `GET /health/liveliness` | FLAME router (no auth) | None |
+| `GET /health/liveliness` | FED gateway liveliness (no auth) | None |
 | `GET /health/agents` | Agent registry | None |
 
 ---
