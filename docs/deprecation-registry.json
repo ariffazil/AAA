@@ -21,7 +21,18 @@
       "archive": "/root/BACKUPS/FLAME-retired-20260904",
       "ratified_by": "888 directive 2026-09-04 (distill expired FLAME into existing components)",
       "f13_ack": "2026-09-06 — Arif: 'A — formal decommission flame' (FI-003 executed: fed_aware_middleware :18901 ref nulled + topology/agentic-web doctrine tombstoned)",
-      "residual_refs": "gatewayTools.ts flameClient registration left dormant (removal needs dist rebuild — deferred; inert because FED :4000 advertises 0 flame routes); federation-models.json flame_* rule_ids are legacy names, their preferred_model already routes to direct groq/* providers"
+      "residual_refs": "gatewayTools.ts:389-421 imports ../../tools/flameClient.js and INVOKES flameSynthesizeSearch whenever forge_search is called with synthesize=true. ACTIVE, not dormant. Functionally harmless only because flameClient.ts:15 hardcodes FLAME_API_BASE=http://127.0.0.1:18901 — the port whose ref was nulled 2026-09-04 — so the fetch fails and gatewayTools' try/catch logs a warning. Consequence: every synthesize=true call pays a failed connect plus a warn. CORRECTION of prior text: the earlier 'left dormant' and 'inert because FED :4000 advertises 0 flame routes' statements were inaccurate — flameClient does not call FED :4000 at all. Closure: delete the flame import and synth block from gatewayTools.ts, rebuild dist; or repoint to the FED flash lane.",
+      "reality_check": {
+        "checked": "2026-09-13",
+        "by": "FI-008 kimi-code (AUDIT_FIX_VERIFY_SEAL::2026-09-13)",
+        "method": "dist module load + source inspection + port probe",
+        "flameClient_dist_present": true,
+        "flameClient_module_loads": true,
+        "flame_api_base": "http://127.0.0.1:18901 (nulled port)",
+        "live_caller": "/root/A-FORGE/src/interfaces/mcp/gatewayTools.ts:393 via A-FORGE MCP :7072 (pid 1287666)",
+        "verdict": "STRUCTURALLY_LIVE / FUNCTIONALLY_INERT_FAIL_SAFE — seal condition 'zero active FLAME execution paths' NOT MET",
+        "federation_models_flame_rule_ids": "routing_rules: 24 flame mentions; also model_routes, capability_signatures, pricing, emd_model_class, effort"
+      }
     },
     {
       "id": "langfuse-observability",
