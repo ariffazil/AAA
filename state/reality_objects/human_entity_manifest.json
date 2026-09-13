@@ -1,11 +1,11 @@
 {
   "schema": "arifos.human_manifest.v2",
-  "generated_at": "2026-09-13T14:38:13.668865+00:00",
+  "generated_at": "2026-09-13T14:51:12.593940+00:00",
   "source_of_truth": "/root/memory/people/people_registry.json",
   "registry_error": null,
-  "total_registry_entries": 17,
-  "total_classified": 18,
-  "total_persons": 14,
+  "total_registry_entries": 25,
+  "total_classified": 25,
+  "total_persons": 21,
   "total_non_person_rows": 4,
   "tiers": {
     "H0": [
@@ -15,13 +15,17 @@
       "THE UNHEARD COLLECTIVE"
     ],
     "H1": [
+      "AIDEL",
       "ALIFF",
+      "ANIS AZMANI AZMAN",
       "AZWA FAZIL",
+      "CHE ROHAYU",
       "FAHIM",
       "FARIDAH BINTI OTHMAN (MAK)",
       "FATTAH",
       "FAZIL BIN KHAMIS (FAZIL SR.)",
       "IZZU",
+      "JAMIN JAMIL",
       "NAAZIRA FAZIL (JIA)",
       "NABILAH FAZIL (AKAK)",
       "WAWA"
@@ -30,10 +34,13 @@
       "SYED"
     ],
     "H3": [
-      "AHMAD FAISAL BAKAR"
+      "AHMAD FAISAL BAKAR",
+      "LALETHA JEEVACHANDRAN",
+      "MOHD JUKRIS BIN ABDUL WAHAB (JUKHRIS)",
+      "SITI SUHANA BT CHE M SUKRI (KAK SU)"
     ],
     "H4": [
-      "TENGKU TAUFIK"
+      "TENGKU MUHAMMAD TAUFIK (TMT)"
     ],
     "H5": [
       "MUHAMMAD ARIF BIN FAZIL"
@@ -41,16 +48,17 @@
   },
   "tier_counts": {
     "H0": 4,
-    "H1": 10,
+    "H1": 14,
     "H2": 1,
-    "H3": 1,
+    "H3": 4,
     "H4": 1,
     "H5": 1
   },
   "empty_tiers": [],
-  "hro_candidates_count": 4,
-  "sanctuary_protected_count": 7,
+  "hro_candidates_count": 5,
+  "sanctuary_protected_count": 8,
   "sanctuary_protected_ids": [
+    "ANIS AZMANI AZMAN",
     "AZWA FAZIL",
     "FAHIM",
     "FARIDAH BINTI OTHMAN (MAK)",
@@ -63,28 +71,13 @@
     "family",
     "family_extended",
     "family_minor",
-    "family_siblings"
+    "family_parents",
+    "family_siblings",
+    "personal_sanctuary"
   ],
-  "registry_gaps_on_disk": [
-    {
-      "dir": "/root/memory/people/JUKHRIS",
-      "name": "JUKHRIS",
-      "note": "present on disk, ABSENT from people_registry.json \u2014 add to the registry or archive; not a human reality object yet"
-    }
-  ],
-  "unregistered_actors": [
-    {
-      "name": "TENGKU TAUFIK",
-      "tier": "H4",
-      "category": "ABSENT_FROM_REGISTRY",
-      "sanctuary_protected": false,
-      "is_person": true,
-      "role": "President & Group CEO, PETRONAS",
-      "is_hro_candidate": true,
-      "source": "canonical_override",
-      "note": "tier assigned from canon but entity is NOT in people_registry.json \u2014 registry gap"
-    }
-  ],
+  "registry_gaps_on_disk": [],
+  "hro_without_registry": [],
+  "unregistered_actors": [],
   "entities": [
     {
       "name": "MUHAMMAD ARIF BIN FAZIL",
@@ -401,15 +394,154 @@
       "source": "registry"
     },
     {
-      "name": "TENGKU TAUFIK",
+      "name": "LALETHA JEEVACHANDRAN",
+      "display_name": "Laletha Jeevachandran",
+      "aliases": [],
+      "registry_category": "named_institutional_person",
+      "registry_memory_authority": "OPERATIONAL_SUPERVISOR",
+      "registry_relation": null,
+      "registry_status": "ALIVE",
+      "tier": "H3",
+      "category": "CANONICAL",
+      "sanctuary_protected": false,
+      "is_person": true,
+      "role": "PETRONAS Supervisor / Line Manager",
+      "attention_cost": "MEDIUM",
+      "consequence_class": "OPERATIONAL",
+      "is_hro_candidate": true,
+      "source": "registry"
+    },
+    {
+      "name": "SITI SUHANA BT CHE M SUKRI (KAK SU)",
+      "display_name": "Siti Suhana Bt Che M Sukri (Kak Su)",
+      "aliases": [
+        "KAK SU"
+      ],
+      "registry_category": "named_institutional_person",
+      "registry_memory_authority": "INSTITUTIONAL_WITNESS",
+      "registry_relation": null,
+      "registry_status": "ALIVE",
+      "tier": "H3",
+      "category": "CANONICAL",
+      "sanctuary_protected": false,
+      "is_person": true,
+      "role": null,
+      "attention_cost": null,
+      "consequence_class": null,
+      "is_hro_candidate": false,
+      "source": "registry"
+    },
+    {
+      "name": "ANIS AZMANI AZMAN",
+      "display_name": "Anis Azmani Azman",
+      "aliases": [],
+      "registry_category": "personal_sanctuary",
+      "registry_memory_authority": "SANCTUARY_PROTECTED_NO_CRO",
+      "registry_relation": "Relational Anchor (Past) / EDOTCO",
+      "registry_status": "ALIVE",
+      "tier": "H1",
+      "category": "FAMILY_SANCTUARY",
+      "sanctuary_protected": true,
+      "is_person": true,
+      "role": null,
+      "attention_cost": null,
+      "consequence_class": null,
+      "is_hro_candidate": false,
+      "source": "registry"
+    },
+    {
+      "name": "CHE ROHAYU",
+      "display_name": "Che Rohayu",
+      "aliases": [],
+      "registry_category": "professional_peer",
+      "registry_memory_authority": "CULTURAL_WITNESS",
+      "registry_relation": null,
+      "registry_status": "ALIVE",
+      "tier": "H1",
+      "category": "CANONICAL",
+      "sanctuary_protected": false,
+      "is_person": true,
+      "role": null,
+      "attention_cost": null,
+      "consequence_class": null,
+      "is_hro_candidate": false,
+      "source": "registry"
+    },
+    {
+      "name": "JAMIN JAMIL",
+      "display_name": "Jamin Jamil",
+      "aliases": [],
+      "registry_category": "professional_peer",
+      "registry_memory_authority": "OPERATIONAL_PEER",
+      "registry_relation": null,
+      "registry_status": "ALIVE",
+      "tier": "H1",
+      "category": "CANONICAL",
+      "sanctuary_protected": false,
+      "is_person": true,
+      "role": null,
+      "attention_cost": null,
+      "consequence_class": null,
+      "is_hro_candidate": false,
+      "source": "registry"
+    },
+    {
+      "name": "TENGKU MUHAMMAD TAUFIK (TMT)",
+      "display_name": "Tengku Muhammad Taufik (TMT)",
+      "aliases": [
+        "TMT"
+      ],
+      "registry_category": "strategic_leadership",
+      "registry_memory_authority": "STRATEGIC_ACTOR_WRO_BOUND",
+      "registry_relation": null,
+      "registry_status": "ALIVE",
       "tier": "H4",
-      "category": "ABSENT_FROM_REGISTRY",
+      "category": "CANONICAL",
       "sanctuary_protected": false,
       "is_person": true,
       "role": "President & Group CEO, PETRONAS",
+      "attention_cost": "MEDIUM",
+      "consequence_class": "STRATEGIC",
       "is_hro_candidate": true,
-      "source": "canonical_override",
-      "note": "tier assigned from canon but entity is NOT in people_registry.json \u2014 registry gap"
+      "source": "registry"
+    },
+    {
+      "name": "AIDEL",
+      "display_name": "Aidel",
+      "aliases": [],
+      "registry_category": "institutional_witness",
+      "registry_memory_authority": "PRECEDENT_WITNESS",
+      "registry_relation": null,
+      "registry_status": "ALIVE",
+      "tier": "H1",
+      "category": "CANONICAL",
+      "sanctuary_protected": false,
+      "is_person": true,
+      "role": null,
+      "attention_cost": null,
+      "consequence_class": null,
+      "is_hro_candidate": false,
+      "source": "registry"
+    },
+    {
+      "name": "MOHD JUKRIS BIN ABDUL WAHAB (JUKHRIS)",
+      "display_name": "Mohd Jukris bin Abdul Wahab (Jukhris)",
+      "aliases": [
+        "JUKHRIS"
+      ],
+      "registry_category": "named_institutional_person",
+      "registry_memory_authority": "NAMED_PUBLIC_PROFILE",
+      "registry_relation": null,
+      "registry_status": "ALIVE",
+      "tier": "H3",
+      "category": "CANONICAL",
+      "sanctuary_protected": false,
+      "is_person": true,
+      "role": null,
+      "attention_cost": null,
+      "consequence_class": null,
+      "is_hro_candidate": false,
+      "source": "registry"
     }
   ]
 }

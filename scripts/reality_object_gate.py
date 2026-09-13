@@ -61,7 +61,7 @@ SCHEMAS: dict[str, dict] = {
                           ("observed_at", "source.observed_at")],
     },
     "arifos.hro.v1": {
-        "required": ["schema", "id", "type", "title", "owner", "stakeholders",
+        "required": ["schema", "id", "type", "title", "owner", "subject_person", "stakeholders",
                      "attention_cost", "consequence_class", "authority_level",
                      "what_matters_rationale", "scar_links", "admissibility",
                      "expires_at", "next_physical_action"],

@@ -61,14 +61,21 @@ NON_PERSON_CATEGORIES = {
 }
 NON_PERSON_DIR_NAMES = {"SCRIPTS", "SCAR-WITNESSES", "FAMILY", "__PYCACHE__", "ARCHIVE"}
 
-# Sanctuary = family life. These categories are protected by GRO-SANCTUARY-001.
-SANCTUARY_CATEGORIES = {"family", "family_siblings", "family_extended", "family_minor"}
+# Sanctuary = family life & personal sanctuary. These categories are protected by GRO-SANCTUARY-001.
+SANCTUARY_CATEGORIES = {
+    "family", "family_parents", "family_siblings", "family_extended",
+    "family_minor", "personal_sanctuary",
+}
 
 # Category -> tier. Individual overrides applied separately.
 CATEGORY_TIER = {
     "sovereign": "H5",
-    "family": "H1", "family_siblings": "H1", "family_extended": "H1", "family_minor": "H1",
+    "family": "H1", "family_parents": "H1", "family_siblings": "H1",
+    "family_extended": "H1", "family_minor": "H1", "personal_sanctuary": "H1",
     "named_institutional_person": "H3",
+    "professional_peer": "H1",
+    "institutional_witness": "H1",
+    "strategic_leadership": "H4",
     "telegram_network": "H1",
     "institutional_archetype": "H0", "conceptual_archetype": "H0",
 }
@@ -84,13 +91,23 @@ CANONICAL_PEOPLE: dict[str, dict] = {
     "TENGKU TAUFIK": {"tier": "H4", "role": "President & Group CEO, PETRONAS",
                       "has_active_consequence": True, "attention_cost": "MEDIUM",
                       "consequence_class": "STRATEGIC"},
+    "TENGKU MUHAMMAD TAUFIK": {"tier": "H4", "role": "President & Group CEO, PETRONAS",
+                               "has_active_consequence": True, "attention_cost": "MEDIUM",
+                               "consequence_class": "STRATEGIC"},
+    "LALETHA": {"tier": "H3", "role": "PETRONAS Supervisor / Line Manager",
+                "has_active_consequence": True, "attention_cost": "MEDIUM",
+                "consequence_class": "OPERATIONAL"},
     "SYED": {"tier": "H2", "role": "Collaborator / Technical Partner",
              "has_active_consequence": True, "attention_cost": "MEDIUM",
              "consequence_class": "OPERATIONAL"},
 }
 
-# Grounded aliases: people/ABBAH = P-002 Fazil bin Khamis; people/MAK = P-003 Faridah.
-DIR_ALIASES = {"ABBAH": "FAZIL BIN KHAMIS", "MAK": "FARIDAH BINTI OTHMAN"}
+# Grounded aliases: people/ABBAH = P-002 Fazil bin Khamis; people/MAK = P-003 Faridah; JUKHRIS = P-025 Mohd Jukris.
+DIR_ALIASES = {
+    "ABBAH": "FAZIL BIN KHAMIS",
+    "MAK": "FARIDAH BINTI OTHMAN",
+    "JUKHRIS": "MOHD JUKRIS BIN ABDUL WAHAB",
+}
 
 
 def _alias(name_upper: str) -> str | None:
@@ -128,7 +145,7 @@ def classify_from_registry(people: list[dict]) -> list[dict]:
         alias = _alias(up)
         over = _override_for(up)
         is_non_person = cat in NON_PERSON_CATEGORIES
-        is_sanctuary = cat in SANCTUARY_CATEGORIES
+        is_sanctuary = (cat in SANCTUARY_CATEGORIES) or bool(p.get("sanctuary_protected"))
         tier = (over or {}).get("tier") or CATEGORY_TIER.get(cat, "H0")
         out.append({
             "name": up,
@@ -226,6 +243,46 @@ def build_manifest() -> dict:
     all_rows = entities + unregistered
     gaps = detect_registry_gaps(entities)
 
+    # HRO objects exist for people who are NOT in the canonical registry (e.g.
+    # Laletha, Syed Khairuddin). Registry-first classification would silently drop
+    # them from the manifest — the same silent-loss class we just fixed for
+    # directories. Detect and REPORT; never silently lose a governed human.
+    hro_no_reg: list[dict] = []
+    known_tokens = {e["name"] for e in entities} | _registry_tokens(entities)
+    # SCHEMA GAP DISCOVERED 2026-09-13: arifos.hro.v1 declares `owner` and
+    # `stakeholders` but NO `subject_person`. The human a HRO is about is therefore
+    # only recoverable from the human-readable id/title. `owner` is ARIF for every
+    # HRO (he owns the obligation), so scanning `owner` found nothing — the first
+    # revision of this detector was a no-op. Parsing the id is a HEURISTIC, flagged
+    # as such; the correct fix is a `subject_person` field on the ratified schema.
+    NON_PERSON_TOKENS = {"HRO", "CRO", "WRO", "MRO", "GRO", "PETRONAS", "ARIFOS",
+                         "AFFORGE", "GEOX", "WEALTH", "WELL", "AAA", "COPILOT",
+                         "SERVICE", "ENERGY", "INDUSTRY", "LIFE", "SHEET",
+                         "OPERATOR", "GOLD", "TRADING", "MEMORY", "VAULT"}
+    obj_dir = Path("/root/AAA/state/reality_objects")
+    if obj_dir.exists():
+        for hro in sorted(obj_dir.glob("HRO-*.yaml")):
+            try:
+                d = yaml.safe_load(hro.read_text()) or {}
+            except Exception:  # noqa: BLE001
+                continue
+            subj = str(d.get("subject_person", "")).strip().upper()
+            hid = str(d.get("id", hro.stem)).upper()
+            cands = [subj] if subj else [t for t in hid.split("-")
+                     if t.isalpha() and t not in NON_PERSON_TOKENS]
+            unresolved = [t for t in cands if t not in known_tokens]
+            if cands and unresolved:
+                hro_no_reg.append({
+                    "hro": hro.name,
+                    "subject_candidates": cands,
+                    "unresolved_in_registry": unresolved,
+                    "schema_gap": ("none (subject_person present)" if subj
+                                  else "arifos.hro.v1 has no subject_person field; subject recovered heuristically from id"),
+                    "note": "an HRO exists for a subject absent from "
+                            "people_registry.json — register the person, or archive the "
+                            "object; today it exists in governance but not in memory",
+                })
+
     tiers = {f"H{i}": [] for i in range(6)}
     for e in all_rows:
         tiers.setdefault(e["tier"], []).append(e["name"])
@@ -250,6 +307,7 @@ def build_manifest() -> dict:
         "sanctuary_protected_ids": sorted(e["name"] for e in sanctuary),
         "sanctuary_categories": sorted(SANCTUARY_CATEGORIES),
         "registry_gaps_on_disk": gaps,
+        "hro_without_registry": hro_no_reg,
         "unregistered_actors": unregistered,
         "entities": all_rows,
     }
@@ -285,6 +343,11 @@ def main() -> int:
         print(f"\n  REGISTRY GAPS (on disk, not in registry):")
         for g in m["registry_gaps_on_disk"]:
             print(f"    - {g['name']}")
+    if m.get("hro_without_registry"):
+        print(f"\n  HRO WITHOUT REGISTRY (governance exists, memory does not):")
+        for h in m["hro_without_registry"]:
+            print(f"    - {', '.join(h['unresolved_in_registry'])}  ({h['hro']}) "
+                  f"[subject from id — schema gap]")
     if m["unregistered_actors"]:
         print(f"\n  UNREGISTERED TIER ACTORS (canon-only):")
         for u in m["unregistered_actors"]:
