@@ -1,0 +1,15 @@
+# Machine Reality Object — seed 1
+# Grounded in a live probe 2026-09-13: curl 127.0.0.1:8088/health -> HTTP 200 HEALTHY
+# Registry source of truth: /root/AAA/federation/organs.yaml (arifos · CORE ·
+# governance_kernel · authority_ceiling JUDGE_ONLY · unit arifos.service)
+schema: arifos.mro.v1
+id: MRO-ARIFOS-SERVICE-001
+type: systemd_service
+name: arifos.service
+organ: arifos
+state: HEALTHY
+mutation_surface: SSH
+verification_method: CURL_PROBE
+rollback_path: "systemctl restart arifos.service (reversible; kernel is stateless between seals)"
+owner: "A-FORGE"
+observed_at: 2026-09-13T14:25:00Z

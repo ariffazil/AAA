@@ -1,0 +1,27 @@
+# Consequence Reality Object — seed 1
+# Derived from the F13 example in the tri-reality session (board-visible deliverable).
+# Binds all three realities: World (WRO-...) + Human (HRO-...) + Machine (MRO-...).
+# NOTE: scar_precedent is intentionally EMPTY. The scar referenced in the draft example
+# (SCAR-PROBE-BEFORE-SEAL-20260913) was probed and DOES NOT EXIST in /root/AAA/scars,
+# /root/memory/H5-scars, or the wisdom scar ledger. An unresolvable scar link must stay
+# empty rather than be fabricated (F2 TRUTH).
+schema: arifos.cro.v1
+id: CRO-20260913-001
+consequence_owner: ARIF
+triggering_event: >-
+  Any agent proposes mutating or publishing the board-visible Copilot Studio
+  Operator Sheet without the required witness.
+world_context: WRO-INDUSTRY-ENERGY-001
+human_context: HRO-PETRONAS-COPILOT-001
+machine_context: MRO-ARIFOS-SERVICE-001
+severity: HIGH
+authority_contraction: true
+required_witness: HUMAN_EXPLICIT
+behavior_change:
+  mode: HOLD_FOR_CONFIRMATION
+  reason: >-
+    Consequence lands on ARIF at corporate level and is not revertible by git.
+    Agent authority contracts from AUTO to DRAFT_ONLY; falsifiable receipts must be
+    presented in plain human prose before any mutation.
+scar_precedent: ""
+active_until: 2026-10-01T00:00:00Z

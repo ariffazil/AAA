@@ -76,3 +76,13 @@ Recommended: **(1)** with the bridge ONLY reading the announce stream (never blo
   - idempotency: emit 15 → second run emit 0 (skipped 15) ✓
 - **Wiring on handoff (one line, do NOT add while FI-008 is mid-wave):**
   `python3 /root/AAA/scripts/proposals/apex-zen-announce-consumer.py --emit` after the router phase in `apex-zen-run-loop.sh` — or the bridge reads the announce stream (log-only, never blocking).
+
+---
+
+## 9. UPDATE 22:20 — WIRED + VERIFIED LIVE (ANNOUNCE tier active)
+
+- Wired 22:13:58: one guarded line in `apex-zen-run-loop.sh` (Phase 2b), backup `apex-zen-run-loop.sh.bak-333agi-*`; consumer deployed to `scripts/apex-zen-announce-consumer.py`.
+- **22:15 cycle:** `[emit] wrote 15 announcements` (first appearance).
+- **22:20 cycle:** `[emit] wrote 0 announcements (active 15, cleared 0)` — watermark steady-state, **zero growth**.
+- State: `/root/VAULT999/apex-zen-announce.jsonl` (15 records, 5.2 KB) + `.state.json` (787 B).
+- **Tier status:** ANNOUNCE = LIVE (log-only, never blocks). **GATE promotion still requires:** R6 namespace allow-list (6 workstream-label suspects) + `consecutive_flags` spike guard.

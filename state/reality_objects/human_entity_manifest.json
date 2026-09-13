@@ -1,0 +1,185 @@
+{
+  "schema": "arifos.human_manifest.v1",
+  "generated_at": "2026-09-13T14:30:28.065360+00:00",
+  "total_entities_discovered": 14,
+  "tiers": {
+    "H5_SOVEREIGN": [
+      "ARIF"
+    ],
+    "H4_STRATEGIC": [],
+    "H3_CONSEQUENCE_OWNER": [],
+    "H2_DECISION_OWNER": [
+      "SYED"
+    ],
+    "H1_STAKEHOLDER": [
+      "NABILAH",
+      "ABBAH",
+      "JUKHRIS",
+      "MAK",
+      "FAMILY",
+      "ALIFF",
+      "FAZIL",
+      "FARIDAH",
+      "IZZU"
+    ],
+    "H0_REFERENCE_ONLY": [
+      "SCRIPTS",
+      "WAWA",
+      "SCAR-WITNESSES"
+    ]
+  },
+  "hro_candidates_count": 2,
+  "sanctuary_protected_count": 6,
+  "entities": [
+    {
+      "name": "NABILAH",
+      "tier": "H1",
+      "category": "FAMILY_SANCTUARY",
+      "note": "Sanctuary Invariant protected \u2014 no external operational CRO",
+      "is_hro_candidate": false
+    },
+    {
+      "name": "SCRIPTS",
+      "tier": "H0",
+      "category": "REFERENCE_ONLY",
+      "note": "Mentioned entity without active consequence chain",
+      "is_hro_candidate": false
+    },
+    {
+      "name": "SYED",
+      "tier": "H2",
+      "category": "CANONICAL",
+      "meta": {
+        "tier": "H2",
+        "role": "Collaborator / Technical Partner",
+        "stakeholders": [
+          "shared_initiatives"
+        ],
+        "has_active_consequence": true,
+        "what_matters": "Symmetric technical collaboration; avoid unilateral epistemic drift.",
+        "attention_cost": "MEDIUM",
+        "consequence_class": "OPERATIONAL"
+      },
+      "is_hro_candidate": true
+    },
+    {
+      "name": "ABBAH",
+      "tier": "H1",
+      "category": "FAMILY_SANCTUARY",
+      "note": "Sanctuary Invariant protected \u2014 no external operational CRO",
+      "is_hro_candidate": false
+    },
+    {
+      "name": "JUKHRIS",
+      "tier": "H1",
+      "category": "CANONICAL",
+      "meta": {
+        "tier": "H1",
+        "role": "Domain Stakeholder",
+        "stakeholders": [
+          "domain_team"
+        ],
+        "has_active_consequence": false,
+        "what_matters": "Technical interaction; no direct governance consequence.",
+        "attention_cost": "LOW",
+        "consequence_class": "PERSONAL"
+      },
+      "is_hro_candidate": false
+    },
+    {
+      "name": "MAK",
+      "tier": "H1",
+      "category": "FAMILY_SANCTUARY",
+      "note": "Sanctuary Invariant protected \u2014 no external operational CRO",
+      "is_hro_candidate": false
+    },
+    {
+      "name": "FAMILY",
+      "tier": "H1",
+      "category": "FAMILY_SANCTUARY",
+      "note": "Sanctuary Invariant protected \u2014 no external operational CRO",
+      "is_hro_candidate": false
+    },
+    {
+      "name": "WAWA",
+      "tier": "H0",
+      "category": "REFERENCE_ONLY",
+      "note": "Mentioned entity without active consequence chain",
+      "is_hro_candidate": false
+    },
+    {
+      "name": "ARIF",
+      "tier": "H5",
+      "category": "CANONICAL",
+      "meta": {
+        "tier": "H5",
+        "role": "Sovereign Principal & Architect",
+        "stakeholders": [
+          "board",
+          "corporate_governance",
+          "federation"
+        ],
+        "has_active_consequence": true,
+        "what_matters": "Preserve human sovereignty, family wellbeing, corporate career standing, and operational AI integrity.",
+        "attention_cost": "HIGH",
+        "consequence_class": "STRATEGIC"
+      },
+      "is_hro_candidate": true
+    },
+    {
+      "name": "ALIFF",
+      "tier": "H1",
+      "category": "CANONICAL",
+      "meta": {
+        "tier": "H1",
+        "role": "Professional Stakeholder",
+        "stakeholders": [
+          "colleagues"
+        ],
+        "has_active_consequence": false,
+        "what_matters": "Peer collaboration context.",
+        "attention_cost": "LOW",
+        "consequence_class": "PERSONAL"
+      },
+      "is_hro_candidate": false
+    },
+    {
+      "name": "FAZIL",
+      "tier": "H1",
+      "category": "FAMILY_SANCTUARY",
+      "note": "Sanctuary Invariant protected \u2014 no external operational CRO",
+      "is_hro_candidate": false
+    },
+    {
+      "name": "FARIDAH",
+      "tier": "H1",
+      "category": "FAMILY_SANCTUARY",
+      "note": "Sanctuary Invariant protected \u2014 no external operational CRO",
+      "is_hro_candidate": false
+    },
+    {
+      "name": "IZZU",
+      "tier": "H1",
+      "category": "CANONICAL",
+      "meta": {
+        "tier": "H1",
+        "role": "Professional Stakeholder",
+        "stakeholders": [
+          "colleagues"
+        ],
+        "has_active_consequence": false,
+        "what_matters": "Peer collaboration context.",
+        "attention_cost": "LOW",
+        "consequence_class": "PERSONAL"
+      },
+      "is_hro_candidate": false
+    },
+    {
+      "name": "SCAR-WITNESSES",
+      "tier": "H0",
+      "category": "REFERENCE_ONLY",
+      "note": "Mentioned entity without active consequence chain",
+      "is_hro_candidate": false
+    }
+  ]
+}
