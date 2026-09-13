@@ -1,6 +1,19 @@
 # A-Z Doctrine — APEX × ZEN Fusion
 
-> **Status:** DRAFT_AWAITING_F13 (per AGENTS.md doctrine hierarchy)
+> **Status:** F13_SEAL 2026-09-13 — ACTIVE (canonical-constitutional)
+>
+> **Ratification trail:**
+> - `F13_RATIFIED_CHAT` 2026-09-13 08:14 MYT — sovereign directive *"Seal and make it live"* (Telegram DM chat 267378578 — corrected from 8410138119, see attribution correction below), issued in reply to a two-path conflict report offering (A) follow-rules vs (B) explicit override. Sovereign chose B. Satisfies Ratification Path step 3 (sovereign confirmation of the breath-loop framing).
+> - `F13_SEAL` 2026-09-13 — **F13 SOVEREIGN OVERRIDE.** The 3-session survival requirement and the F1–F13 integration demonstration (Ratification Path lines 100–102) are **waived by explicit sovereign directive, not satisfied by evidence.** Recorded so the precedent stays visible: F13 may override F13-authored rules — explicitly, and on the record. Never silently.
+> - Kernel `arif_seal` was **NOT** used. Attempted and correctly HELD (`verdict=HOLD`, `seal_allowed=false`, `reason_code=actor_not_verified`, session `SEAL-9f45231d84324a49`); escalation blocked by the F13 signing lane key drift at `/root/AAA/registry/signing-lane-key-drift-20260912T1535Z.md`. This is a sovereign-chat + ritual-marker seal, **not** a kernel merkle seal. `SEALED_EVENTS.jsonl` holds no entry for this doctrine.
+> - Ritual marker: `A-Z-APEX-ZEN-F13-SEAL` · chain `9932e51830072cb3` · band `F13_OVERRIDE` · `/root/.arifos/ritual.log`
+>
+> - **Attribution correction (2026-09-13 08:26 MYT, hermes-prime):** this trail originally recorded the sovereign directive as arriving in Telegram DM chat `8410138119`. That id resolves to **"ASI🪽" (dm)** per `/root/.hermes/channel_directory.json`. The directive actually arrived in **`267378578` = "ARIF" (dm)** — the F13 sovereign DM per SOUL.md. Evidence: Telegram gateway origin metadata for the directive message (`chat_id=267378578, user_id=267378578, message_id=142609`), which only the gateway-connected session holds; the sealing session did not have it. Corrected in place with this note rather than rewritten silently, per F11 (an audit record must show its own corrections). The seal itself is unaffected — it rests on the sovereign directive, not on the chat id. Whether the same directive was also sent in `8410138119` is UNKNOWN and not claimed either way.
+>
+> **Open debt at seal time (not hidden by the override):**
+> - Chaos-threshold harness wiring — NOT_IMPLEMENTED (zero executable under `/root` implements `chaos_threshold`)
+> - CWS ledger integration — BLOCKED_DEPENDENCY (CWS itself `NOT BUILT`, see `AAA-HERMES-TOPOLOGY-v2.md:150`)
+> - Witness audit verdict was `SABAR` — semantic classification incomplete, refactor DEFERRED (`/root/AAA/reports/witness-apex-zen-audit-2026-09-11.md`)
 > **Forged:** 2026-09-11 by 333-AGI Δ MIND under F13 SOVEREIGN directive
 > **Path:** `/root/AAA/canon/A-Z-APEX-ZEN-DOCTRINE.md`
 > **Supersedes:** the August 2026 quarantined `apex-zen-ffff/` 4-FFFF trial (see `/root/AAA/docs/deprecation-registry.json`)
