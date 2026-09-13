@@ -34,7 +34,7 @@
           "seal_anchor": "https://arif-fazil.com/999/",
           "seal_verification": "https://arif-fazil.com/999/seal.json",
           "authentication_protocol": "Ed25519-challenge-response",
-          "nonce_flow": "arif_init(nonce) \u2192 sign(nonce) \u2192 verify(signature) \u2192 FULL authority",
+          "nonce_flow": "arif_init(nonce) → sign(nonce) → verify(signature) → FULL authority",
           "sovereign_key_fingerprint": "sha256:17d9f11ad0d43563513bbf10c9206812b32063d1f01e88bb1cd624d8788bf449",
           "aaa_ceiling": "DISPLAY_ONLY"
         }
@@ -84,6 +84,23 @@
                 "seal_receipt"
               ],
               "card_url": "https://arifos.arif-fazil.com/.well-known/agent-card.json"
+            },
+            {
+              "id": "a-forge-mcp",
+              "name": "A-FORGE Execution Shell",
+              "url": "https://a-forge.arif-fazil.com",
+              "role": "executor",
+              "authority": "execution",
+              "skills": [
+                "forge_execute",
+                "forge_orchestrate",
+                "forge_document_intelligence",
+                "forge_browser",
+                "forge_git",
+                "forge_lease_acquire",
+                "forge_vault_seal"
+              ],
+              "card_url": "https://a-forge.arif-fazil.com/.well-known/agent-card.json"
             },
             {
               "id": "geox-mcp",
@@ -145,7 +162,7 @@
       },
       {
         "uri": "https://arif-fazil.com/a2a/extensions/governance/v1",
-        "description": "arifOS constitutional governance \u2014 F1-F13 floors, verdict authority, injection defense",
+        "description": "arifOS constitutional governance — F1-F13 floors, verdict authority, injection defense",
         "required": false,
         "params": {
           "governance": {
@@ -158,7 +175,7 @@
               "F12",
               "F13"
             ],
-            "verdict_authority": "arifOS (port 8088)",
+            "verdict_authority": "arifOS",
             "self_approval_forbidden": true,
             "authority_class": "gateway",
             "injection_defense": "active",
@@ -174,8 +191,8 @@
               "F12",
               "F13"
             ],
-            "governance_kernel": "arifOS (port 8088)",
-            "execution_shell": "A-FORGE (port 7071)",
+            "governance_kernel": "arifOS",
+            "execution_shell": "A-FORGE",
             "vault": "VAULT999"
           }
         }
@@ -185,10 +202,10 @@
         "description": "Card provenance and federation metadata",
         "required": false,
         "params": {
-          "doctrine": "DITEMPA BUKAN DIBERI \u2014 Control is forged, not given.",
+          "doctrine": "DITEMPA BUKAN DIBERI — Control is forged, not given.",
           "created": "2026-07-02T04:50:00Z",
-          "created_by": "FORGE (000\u03a9) \u2014 A2A Gateway pattern",
-          "rationale": "Copilot A2A analysis \u2014 blindspot #9: AAA should be A2A Gateway. One edge, N organs discoverable. Verdict grammar extension for sovereignty.",
+          "created_by": "FORGE (000Ω) — A2A Gateway pattern",
+          "rationale": "Copilot A2A analysis — blindspot #9: AAA should be A2A Gateway. One edge, N organs discoverable. Verdict grammar extension for sovereignty.",
           "gateway_pattern": "https://www.glukhov.org/ai-systems/architecture/a2a-protocol-explained/",
           "kernel_deps": [
             "KERNEL-trinity-33",
@@ -211,26 +228,26 @@
       },
       {
         "uri": "https://arif-fazil.com/a2a/extensions/federation-prompts/v1",
-        "description": "arifOS federation prompt catalog \u2014 zen-md single-sigil format",
+        "description": "arifOS federation prompt catalog — zen-md single-sigil format",
         "required": false,
         "params": {
           "version": "2026.07.16",
           "doctrine": "DITEMPA BUKAN DIBERI",
           "zen_format": "single-sigil + single-lexical per zen-md",
           "all_prompts": [
-            "\ud83c\udf31 BOOT",
-            "\ud83c\udf0a WITNESS",
-            "\ud83e\udde0 REASON",
-            "\u2696 MARUAH",
-            "\ud83d\udd0d PREFLIGHT",
-            "\ud83d\udd12 JUDGE",
-            "\ud83d\udd25 FORGE",
-            "\ud83d\udc8e SEAL",
-            "\ud83c\udf00 SABAR",
-            "\ud83d\udcdc REPLY"
+            "🌱 BOOT",
+            "🌊 WITNESS",
+            "🧠 REASON",
+            "⚖ MARUAH",
+            "🔍 PREFLIGHT",
+            "🔒 JUDGE",
+            "🔥 FORGE",
+            "💎 SEAL",
+            "🌀 SABAR",
+            "📜 REPLY"
           ],
-          "reality_loop_orchestrator": "\ud83c\udf00 SABAR",
-          "human_role": "init + seal only \u2014 autonomous 6-stage loop"
+          "reality_loop_orchestrator": "🌀 SABAR",
+          "human_role": "init + seal only — autonomous 6-stage loop"
         }
       },
       {
@@ -380,7 +397,7 @@
     {
       "id": "arifos.session.init",
       "name": "Federation Session Init",
-      "description": "Queue session init to arifOS kernel arif_init (:8088). AAA does not mint SCTs itself. Returns whatever the kernel returns.",
+      "description": "Queue session init to arifOS kernel arif_init. AAA does not mint SCTs itself. Returns whatever the kernel returns.",
       "tags": [
         "init",
         "session",
@@ -398,7 +415,7 @@
     {
       "id": "arifos.session.seal",
       "name": "Queue kernel session seal",
-      "description": "Queue a session-close to arifOS kernel arif_seal (:8088). AAA does not write VAULT999. DISPLAY_ONLY \u2014 kernel + Arif seal.",
+      "description": "Queue a session-close to arifOS kernel arif_seal. AAA does not write VAULT999. DISPLAY_ONLY — kernel + Arif seal.",
       "tags": [
         "seal",
         "session",
@@ -414,6 +431,7 @@
       ]
     }
   ],
+  "protocolVersion": "1.0",
   "schema": "https://a2a-protocol.org/schemas/agent-card/v1.0",
   "signatures": [
     {
@@ -426,8 +444,8 @@
       "canonical_form": "JCS-sorted-keys-no-whitespace",
       "canonical_sha256": "3f0840e0465b0f7dae470b9a571c4aab244da1ef4d558855fa4b1906103bde08",
       "did_resolves_to": "https://arif-fazil.com/.well-known/did.json",
-      "nonce_flow": "arif_init(nonce) \u2192 sign(nonce) \u2192 verify \u2192 FULL",
-      "signed_by": "ARIF F13 \u2014 DITEMPA BUKAN DIBERI \u2014 YANG ARIF LAGI BIJAKSANA",
+      "nonce_flow": "arif_init(nonce) → sign(nonce) → verify → FULL",
+      "signed_by": "ARIF F13 — DITEMPA BUKAN DIBERI — YANG ARIF LAGI BIJAKSANA",
       "actor": "arif"
     }
   ]

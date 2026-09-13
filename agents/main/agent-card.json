@@ -77,7 +77,7 @@
     {
       "id": "APEX-kernel-bridge",
       "name": "arifOS Kernel Bridge",
-      "description": "Routes governed actions to arifOS MCP (port 8088) for F1-F13 verification. Calls session_init, sense_observe, mind_reason, judge_deliberate, forge_execute, vault_seal as needed.",
+      "description": "Routes governed actions to arifOS MCP for F1-F13 verification. Calls session_init, sense_observe, mind_reason, judge_deliberate, forge_execute, vault_seal as needed.",
       "tags": [
         "arifOS",
         "MCP",
@@ -402,7 +402,7 @@
       "F12",
       "F13"
     ],
-    "governance_kernel": "arifOS (port 8088)",
+    "governance_kernel": "arifOS",
     "control_plane": "AAA (ariffazil/AAA)",
     "execution_shell": "A-FORGE (ariffazil/A-FORGE)",
     "identity_root": "ariffazil/ariffazil"

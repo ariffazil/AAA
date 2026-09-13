@@ -265,7 +265,7 @@
   "modalities": [
     "text",
     "structured JSON (JSON-RPC 2.0)",
-    "MCP (Model Context Protocol) SSE transport on :8088/mcp"
+    "MCP (Model Context Protocol) SSE transport on /mcp"
   ],
   "authentication": {
     "type": "session-bound",
