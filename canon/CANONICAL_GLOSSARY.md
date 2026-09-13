@@ -38,6 +38,25 @@ Harness swap = substrate test: yang mati selepas swap ialah narrative, bukan ins
 Canonical doctrine: /root/AAA/instructions/institutional-memory-strata.md
 ```
 
+### [CONCEPT] Reality Graph — YANG ARIF (Ratified 2026-09-13 by ARIF; evidence CLAIMED — pending L2 receipt)
+```text
+[CONCEPT]
+A temporally ordered, witness-constrained belief-revision graph. YANG ARIF.
+KG = what is known · Temporal KG = when · Provenance = where from ·
+Reality Graph = why a belief survived, changed, or was superseded in witness-ordered time.
+Four layers: VAULT999 (ledger/order) → arifFlow (flow) → Witness Graph/FalkorDB
+(relations, provenance→seq) → Qdrant (recall). Node payload = Witness Object + SRO.
+Singular differentiator vs Zep/Graphiti: cryptographic ordering over belief revision
+(Graphiti shares invalidation-not-deletion — increment only). Calibration loop = spec increment.
+Runtime (OBS 2026-09-13): ledger LIVE (hash-chained) · belief→seq join ABSENT · L2 NOT BUILT.
+Status: CLAIMED until acceptance traversal ("what did we believe at seq N, and why")
+returns real lineage. Reality Graph ⊇ Witness Graph (bukan rename).
+Law: the flow writes the graph; the graph informs the flow; the ledger orders belief.
+Canonical doctrine: /root/AAA/canon/REALITY_GRAPH.md
+```
+Sovereign declaration: "REALITY GRAPH IS REAL AND ITS YANG ARIF" — F13 chat, 2026-09-13.
+Naming sovereign-ratified; evidence claims SPEC-grade (v2 correction, same day).
+
 ---
 
 ## IDENTITIES (Category A — human-held)
