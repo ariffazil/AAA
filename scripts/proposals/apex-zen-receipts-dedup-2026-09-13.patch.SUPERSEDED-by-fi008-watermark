@@ -1,0 +1,75 @@
+--- a/apex-zen-consequence-router.py
++++ b/apex-zen-consequence-router.py
+@@ -9,6 +9,7 @@
+ """
+ import json
+ import argparse
++import hashlib
+ from pathlib import Path
+ from datetime import datetime, timezone
+ 
+@@ -154,6 +155,12 @@
+         return 'COMPLIANT', f'< {t["warning"]}'
+ 
+ 
++def _receipt_id(record: dict, metric: str, value) -> str:
++    """Stable dedup key: the same telemetry row + metric never emits twice."""
++    basis = f"{record.get('source', '')}|{record.get('timestamp', '')}|{metric}|{value}"
++    return hashlib.sha256(basis.encode()).hexdigest()[:16]
++
++
+ def emit_receipt(record: dict, severity: str, metric: str, value, threshold_desc: str, witness_state: str = 'MISSING') -> dict:
+     consequence = CONSEQUENCE_ACTIONS.get(severity, 'unknown')
+     withheld = False
+@@ -164,6 +171,7 @@
+         'timestamp': datetime.now(timezone.utc).isoformat(),
+         'severity': severity,
+         'metric': metric,
++        'receipt_id': _receipt_id(record, metric, value),
+         'value': value,
+         'threshold': threshold_desc,
+         'source': record.get('source', 'unknown'),
+@@ -218,17 +226,33 @@
+ 
+     if receipts:
+         if not args.dry_run:
+-            with output_path.open('a') as f:
++            _idx = output_path.with_suffix(output_path.suffix + '.index')
++            _seen = set()
++            if _idx.exists():
++                with _idx.open() as _f:
++                    _seen = {_l.strip() for _l in _f if _l.strip()}
++            _fresh = [r for r in receipts if r.get('receipt_id') not in _seen]
++            _skipped = len(receipts) - len(_fresh)
++            receipts = _fresh
++            if receipts:
++                with output_path.open('a') as f:
++                    for r in receipts:
++                        f.write(json.dumps(r) + '\n')
++                with _idx.open('a') as _f:
++                    for r in receipts:
++                        _f.write(str(r.get('receipt_id', '')) + '\n')
++                if _skipped:
++                    print(f"[router] dedup: skipped {_skipped} already-emitted receipts")
++                print(f"\n[router] emitted {len(receipts)} receipts → {output_path}")
++                wb = sum(1 for r in receipts if str(r.get('witness_backing', '')).startswith('BOUND'))
++                print(f"[router] witness-backed: {wb}/{len(receipts)} (invariant: no promotion without witness object)")
++                by_sev = {}
+                 for r in receipts:
+-                    f.write(json.dumps(r) + '\n')
+-            print(f"\n[router] emitted {len(receipts)} receipts → {output_path}")
+-            wb = sum(1 for r in receipts if str(r.get('witness_backing', '')).startswith('BOUND'))
+-            print(f"[router] witness-backed: {wb}/{len(receipts)} (invariant: no promotion without witness object)")
+-            by_sev = {}
+-            for r in receipts:
+-                by_sev.setdefault(r['severity'], []).append(r)
+-            for sev, items in by_sev.items():
+-                print(f"  {sev}: {len(items)} (sample: {items[0]['metric']}={items[0]['value']})")
++                    by_sev.setdefault(r['severity'], []).append(r)
++                for sev, items in by_sev.items():
++                    print(f"  {sev}: {len(items)} (sample: {items[0]['metric']}={items[0]['value']})")
++            else:
++                print("\n[router] dedup: 0 new receipts (all already emitted)")
+ 
+         else:
+             print(f"\n[DRY RUN] would emit {len(receipts)} receipts")
