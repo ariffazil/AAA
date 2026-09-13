@@ -26,7 +26,7 @@ function writeJson(relativePath, value) {
 
 const sources = {
   registries: {
-    agents: readYaml("registries/agents.yaml"),
+    agents: readYaml("registries/AGENTS_UNIFIED.yaml"),
     bundles: readYaml("registries/bundles.yaml"),
     domains: readYaml("registries/domains.yaml"),
     hosts: readYaml("registries/hosts.yaml"),
