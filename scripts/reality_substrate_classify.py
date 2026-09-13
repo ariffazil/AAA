@@ -199,8 +199,24 @@ def classify_fs() -> list[dict]:
                      {"rows": 16, "all_draft": True}, ["R0"],
                      "world reality store, 16 rows all approval_state=draft, last write 2026-08-04",
                      witness="PARTIAL"))
-    rows.append(_row("carry-forward /root/.arifos", "json_state",
-                     {"keys": 10}, ["R2", "R1"], "agent continuity + sovereign-discretion pickup"))
+    # CANONICAL carry_forward — corrected 2026-09-13 after witness verification:
+    # the live generational store is /root/.local/share/arifos/carry_forward.json
+    # (120,839 B, written by canonical carry_forward.py). The /root/.arifos/ and
+    # /root/.hermes/ copies are flat legacy siblings (933 B / 2,303 B) recorded in
+    # loop-3ff2585c. An earlier revision of this classifier measured ONLY the legacy
+    # siblings and understated the live store by ~129x. Measurement corrected here.
+    cf_main = Path("/root/.local/share/arifos/carry_forward.json")
+    cf_legacy = [Path("/root/.arifos/carry_forward.json"),
+                 Path("/root/.hermes/carry_forward.json")]
+    rows.append(_row("carry-forward (canonical)", "json_state",
+                     {"path": str(cf_main),
+                      "bytes": cf_main.stat().st_size if cf_main.exists() else None,
+                      "exists": cf_main.exists(),
+                      "legacy_siblings": [{"path": str(p), "bytes": p.stat().st_size,
+                                           "exists": p.exists()} for p in cf_legacy]},
+                     ["R2", "R1"],
+                     "canonical generational continuity store; legacy flat siblings are not SOT",
+                     witness="PARTIAL"))
     return rows
 
 
