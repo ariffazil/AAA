@@ -1,0 +1,16 @@
+schema: arifos.hro.v1
+id: HRO-PETRONAS-LALETHA-001
+type: stakeholder_obligation
+title: "PETRONAS Supervisory Alignment — Kinabalu Basin & Performance Review"
+owner: ARIF
+stakeholders:
+  - petronas_exploration
+  - basin_evaluation_team
+attention_cost: MEDIUM
+consequence_class: REPUTATIONAL
+authority_level: DELEGATED_DRAFT
+what_matters_rationale: "Line management accountability; ensures Kinabalu basin interpretation and DSG workstation reviews are auditable."
+scar_links: []
+admissibility: ACTIVE
+expires_at: "2026-12-31T23:59:59Z"
+next_physical_action: "Ensure all DSG workstation tasks and basin interpretation receipts are auditable and grounded"
