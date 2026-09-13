@@ -34,10 +34,72 @@ GOSSIP_FILE = REGISTRY_DIR / "scar_gossip.jsonl"
 
 # ── Schema constants ─────────────────────────────────────────────────────────
 SCHEMA_VERSION = "arifos.warga.v1"
+CANONICAL_AGENTS_FILE = REGISTRY_DIR / "canonical_agents.json"
 AUTHORITY_BANDS = ["apprentice", "novice", "journeyman", "sovereign-witness"]
 LIFECYCLE_STAGES = ["apprentice", "active", "review", "quarantine", "decommissioned"]
 REVIEW_INTERVALS_DAYS = [30, 90, 180]
 GOSSIP_RETENTION_DAYS = 90
+
+
+# ── Canonical identity binding ───────────────────────────────────────────────
+# FIX 3 (FI-008 assessment): agent_id must resolve through canonical map.
+# Free-form strings are rejected. No sixth spelling site.
+
+_canonical_map: dict | None = None
+_alias_to_canonical: dict | None = None
+
+
+def _load_canonical_map() -> dict:
+    """Load canonical_agents.json. Returns {canonical_id: agent_entry}."""
+    global _canonical_map
+    if _canonical_map is not None:
+        return _canonical_map
+    if not CANONICAL_AGENTS_FILE.exists():
+        print(f"ERROR: Canonical agent map not found: {CANONICAL_AGENTS_FILE}", file=sys.stderr)
+        print("Register agents in canonical_agents.json FIRST. No free-form IDs.", file=sys.stderr)
+        sys.exit(1)
+    with open(CANONICAL_AGENTS_FILE) as f:
+        data = json.load(f)
+    _canonical_map = data.get("canonical", {})
+    return _canonical_map  # type: ignore[return-value]
+
+
+def _build_alias_index() -> dict:
+    """Build reverse index: alias -> canonical_id. Loaded once."""
+    global _alias_to_canonical
+    if _alias_to_canonical is not None:
+        return _alias_to_canonical
+    canonical = _load_canonical_map()
+    _alias_to_canonical = {}
+    for cid, entry in canonical.items():
+        _alias_to_canonical[cid.lower()] = cid  # canonical itself is an alias
+        for alias in entry.get("aliases", []):
+            _alias_to_canonical[alias.lower()] = cid
+    return _alias_to_canonical
+
+
+def resolve_agent_id(raw_id: str) -> str:
+    """
+    Resolve any alias or canonical form to the canonical agent ID.
+    Raises ValueError if not found in canonical map.
+    """
+    idx = _build_alias_index()
+    key = raw_id.strip().lower()
+    if key in idx:
+        return idx[key]
+    # Fuzzy: check if input is a substring of any canonical ID or alias
+    candidates = [cid for cid in idx if key in cid.lower()]
+    if len(candidates) == 1:
+        return idx[candidates[0]]
+    if len(candidates) > 1:
+        raise ValueError(
+            f"Ambiguous agent_id '{raw_id}' matches: {candidates[:5]}. "
+            f"Use exact canonical ID."
+        )
+    raise ValueError(
+        f"Unknown agent_id '{raw_id}'. Not in canonical_agents.json. "
+        f"Register in {CANONICAL_AGENTS_FILE} first."
+    )
 
 
 # ── Utility ──────────────────────────────────────────────────────────────────
@@ -85,8 +147,8 @@ def _compute_record_hash(record: dict) -> str:
 
 def register_agent(
     agent_id: str,
-    role: str,
-    authority_band: str = "apprentice",
+    role: str = "agent",
+    authority_band: str | None = None,
     stage: str = "apprentice",
     metadata: dict | None = None,
 ) -> dict:
@@ -94,16 +156,43 @@ def register_agent(
     Register a new agent in the warga registry (Layer 1).
     Append-only: one record per agent, ever. Re-registration = new record with
     the old one marked superseded.
+
+    FIX 3 (FI-008 assessment): agent_id resolves through canonical_agents.json.
+    Free-form strings rejected. No sixth spelling site.
     """
+    # ── Canonical identity binding ────────────────────────────────────────
+    canonical_id = resolve_agent_id(agent_id)
+
+    # ── Duplicate detection ───────────────────────────────────────────────
+    existing = get_agent(canonical_id)
+    if existing and not existing.get("superseded", False):
+        raise ValueError(
+            f"Agent '{canonical_id}' already registered "
+            f"(band={existing.get('authority_band')}, "
+            f"stage={existing.get('stage')}). "
+            f"Use re-registration to supersede."
+        )
+
+    # ── Authority band from canonical map if not specified ─────────────────
+    if authority_band is None:
+        canonical = _load_canonical_map()
+        entry = canonical.get(canonical_id, {})
+        authority_band = entry.get("authority_band", "apprentice")
+
     if authority_band not in AUTHORITY_BANDS:
         raise ValueError(f"Invalid authority_band: {authority_band}. Must be one of {AUTHORITY_BANDS}")
     if stage not in LIFECYCLE_STAGES:
         raise ValueError(f"Invalid stage: {stage}. Must be one of {LIFECYCLE_STAGES}")
 
+    # ── Supersede existing record if present ──────────────────────────────
+    if existing:
+        _supersede_record(existing)
+
     now = _now_iso()
     record = {
         "schema": SCHEMA_VERSION,
-        "id": agent_id,
+        "id": canonical_id,
+        "raw_input": agent_id,
         "role": role,
         "created_at": now,
         "authority_band": authority_band,
@@ -122,7 +211,7 @@ def register_agent(
     record["record_hash"] = _compute_record_hash(record)
 
     _append_jsonl(WARGA_FILE, record)
-    return {"status": "registered", "record": record}
+    return {"status": "registered", "canonical_id": canonical_id, "record": record}
 
 
 def get_agent(agent_id: str) -> dict | None:
@@ -162,6 +251,22 @@ def list_agents(stage: str | None = None, authority_band: str | None = None) -> 
     if authority_band:
         result = [r for r in result if r.get("authority_band") == authority_band]
     return result
+
+
+def _supersede_record(record: dict, superseded_by: str = "re-registration") -> None:
+    """Internal: mark an existing record as superseded by appending a tombstone."""
+    tombstone = {
+        "schema": SCHEMA_VERSION,
+        "id": record["id"],
+        "role": record.get("role", "unknown"),
+        "created_at": record.get("created_at"),
+        "superseded": True,
+        "superseded_by": superseded_by,
+        "superseded_at": _now_iso(),
+        "record_hash": "",  # will be computed below
+    }
+    tombstone["record_hash"] = _compute_record_hash(tombstone)
+    _append_jsonl(WARGA_FILE, tombstone)
 
 
 def supersede_agent(agent_id: str, reason: str, superseded_by: str | None = None) -> dict:
@@ -741,10 +846,18 @@ def main():
         parser.print_help()
         return
 
+    # ── Canonical resolution for all agent_id inputs ──────────────────────
+    def _resolve(raw: str) -> str:
+        try:
+            return resolve_agent_id(raw)
+        except ValueError as e:
+            print(f"ERROR: {e}", file=sys.stderr)
+            sys.exit(1)
+
     if args.command == "register":
-        result = register_agent(args.agent_id, role=args.role, authority_band=args.band)
+        result = register_agent(args.agent_id, role=args.role)
     elif args.command == "get":
-        result = get_agent(args.agent_id)
+        result = get_agent(_resolve(args.agent_id))
         if result:
             print(json.dumps(result, indent=2))
             return
@@ -757,18 +870,18 @@ def main():
             print(json.dumps(a, indent=2))
         return
     elif args.command == "apprentice":
-        result = lifecycle_apprentice(args.agent_id, shadow_of=args.shadow_of)
+        result = lifecycle_apprentice(_resolve(args.agent_id), shadow_of=args.shadow_of)
     elif args.command == "review":
-        result = lifecycle_review(args.agent_id, verdict=args.verdict, fq_score=args.fq, reviewer=args.reviewer)
+        result = lifecycle_review(_resolve(args.agent_id), verdict=args.verdict, fq_score=args.fq, reviewer=args.reviewer)
     elif args.command == "prune":
         result = lifecycle_prune(dry_run=not args.execute)
     elif args.command == "grieve":
-        result = lifecycle_grieve(args.agent_id, failure_declaration=args.failure_declaration, peer_verdict=args.verdict)
+        result = lifecycle_grieve(_resolve(args.agent_id), failure_declaration=args.failure_declaration, peer_verdict=args.verdict)
     elif args.command == "gossip":
         print(dashboard_gossip())
         return
     elif args.command == "broadcast":
-        result = gossip_broadcast(args.agent_id, event_type=args.type, detail=args.detail, source="manual")
+        result = gossip_broadcast(_resolve(args.agent_id), event_type=args.type, detail=args.detail, source="manual")
     elif args.command == "dashboard":
         if args.surface == "all":
             print(dashboard_all())
