@@ -14,6 +14,7 @@ from datetime import datetime, timezone
 
 TELEMETRY_INPUT = Path('/root/VAULT999/apex-zen-telemetry.jsonl')
 RECEIPTS_OUTPUT = Path('/root/VAULT999/apex-zen-receipts.jsonl')
+PREFLIGHT_OUTPUT = Path('/root/VAULT999/apex-zen-preflight.json')
 
 # Promotion gate (invariant: no metric may be promoted without a witness object)
 WITNESS_INPUT = Path('/root/VAULT999/apex-zen-witness.jsonl')
@@ -56,6 +57,50 @@ CONSEQUENCE_ACTIONS = {
     'DOWNGRADE': 'emit_downgrade_receipt + restrict_runtime_5_turns',
     'VIOLATION': 'emit_violation_receipt + f13_advisory',
 }
+
+
+def write_preflight_scores(telemetry_records: list[dict]) -> None:
+    """Write latest per-actor APEX-ZEN scores to preflight JSON for agent consumption.
+
+    Agents read this file before responding to check their compliance status.
+    """
+    latest_by_actor = {}
+    for record in telemetry_records:
+        source = record.get('source', 'unknown')
+        ts = record.get('timestamp', '')
+        if source not in latest_by_actor or ts > latest_by_actor[source].get('timestamp', ''):
+            latest_by_actor[source] = record
+
+    preflight = {}
+    for actor, record in latest_by_actor.items():
+        cd = record.get('CD', 'N/A')
+        dd = record.get('DD', 'N/A')
+        iar = record.get('IAR', 'N/A')
+        dcr = record.get('DCR', 'N/A')
+        cd_sev, _ = classify('CD', cd)
+        dd_sev, _ = classify('DD', dd)
+        iar_sev, _ = classify('IAR', iar)
+        dcr_sev, _ = classify('DCR', dcr)
+        worst = max([cd_sev, dd_sev, iar_sev, dcr_sev],
+                     key=lambda s: ['COMPLIANT', 'WATCH', 'WARNING', 'DOWNGRADE', 'VIOLATION', 'UNKNOWN'].index(s)
+                     if s in ['COMPLIANT', 'WATCH', 'WARNING', 'DOWNGRADE', 'VIOLATION', 'UNKNOWN'] else 0)
+        preflight[actor] = {
+            'timestamp': record.get('timestamp'),
+            'CD': cd, 'DD': dd, 'IAR': iar, 'DCR': dcr,
+            'worst_severity': worst,
+            'all_targets_met': record.get('all_targets_met', False),
+            'G_closure': record.get('G_closure', 'N/A'),
+            'restriction': {
+                'COMPLIANT': 'none',
+                'WARNING': 'observe_only',
+                'DOWNGRADE': 'tier0_restricted_5_turns',
+                'VIOLATION': 'f13_advisory',
+            }.get(worst, 'unknown'),
+        }
+
+    PREFLIGHT_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    with PREFLIGHT_OUTPUT.open('w') as f:
+        json.dump(preflight, f, indent=2)
 
 
 def classify(metric: str, val) -> tuple[str, str]:
@@ -117,6 +162,7 @@ def main():
 
     witness_sources = load_witness_sources()
     receipts = []
+    telemetry_records = []
     summary = {k: 0 for k in list(CONSEQUENCE_ACTIONS) + ['UNKNOWN']}
 
     with input_path.open() as f:
@@ -127,6 +173,7 @@ def main():
                 record = json.loads(line)
             except json.JSONDecodeError:
                 continue
+            telemetry_records.append(record)
             for metric in ('CD', 'DD', 'IAR', 'DCR'):
                 val = record.get(metric)
                 severity, threshold_desc = classify(metric, val)
@@ -152,12 +199,18 @@ def main():
                 by_sev.setdefault(r['severity'], []).append(r)
             for sev, items in by_sev.items():
                 print(f"  {sev}: {len(items)} (sample: {items[0]['metric']}={items[0]['value']})")
+
         else:
             print(f"\n[DRY RUN] would emit {len(receipts)} receipts")
             for r in receipts[:3]:
                 print(f"  {r['severity']}: {r['metric']}={r['value']} ({r['threshold']})")
     else:
         print("\n[router] all metrics compliant (no warnings).")
+
+    # Mutation 2: write preflight scores for agent consumption
+    if not args.dry_run and telemetry_records:
+        write_preflight_scores(telemetry_records)
+        print(f"[router] preflight scores → {PREFLIGHT_OUTPUT}")
 
 
 if __name__ == '__main__':
