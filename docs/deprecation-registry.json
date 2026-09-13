@@ -1,7 +1,71 @@
 {
-  "version": "2026.09.11",
-  "last_audit": "2026-09-11T00:00:00+08:00",
-  "auditor": "FI-008 kimi-code — witness-membrane execution batch (T1 reversible, F13 execution context relay)",
+  "version": "2026.09.13",
+  "last_audit": "2026-09-13T22:18:00+08:00",
+  "auditor": "FI-008 kimi-code — AUDIT_FIX_VERIFY_SEAL::2026-09-13 reality sweep (FLAME residue, systemd alignment, Hermes memory)",
+  "open_divergences": [
+    {
+      "id": "DIV-HERMES-BACKUP-GAP",
+      "status": "OPEN",
+      "owner": "/root/.hermes",
+      "reality": "1.6 GB of sovereign state (auth.json, IDENTITY_LOCK.json, SOUL.md, config.yaml, .env, carry_forward.json, state.db 369 MB) has no off-box backup. arifos-backup.service runs /root/scripts/direct-backup.sh, which references only /root/VAULT999 and /root/arifOS/VAULT999. /etc/cron.d/vault-replica rsyncs /root/.local/share/arifos/vault999/ to kvm4-forge every 6 h. Neither covers /root/.hermes.",
+      "consequence": "Loss of sovereign identity, credentials and session lineage on disk failure. Demonstrated overwrite risk: a concurrent session overwrote carry_forward.json on 2026-09-12.",
+      "stopgap_taken": "local tar snapshot under /root/BACKUPS/, mode 600. Same failure domain — protects against overwrite, NOT against disk loss.",
+      "closure": "extend the existing rsync pattern to kvm4-forge (reachable; /root/vault-replica exists), EXCLUDING credentials (.env, auth.json, *.bak) so secrets are not replicated off-box. Requires F13 — off-box replication of sovereign state is an exposure decision, not a backup decision.",
+      "classification": "OPEN (F13)"
+    },
+    {
+      "id": "DIV-SYSTEMD-ORPHAN-UNITS",
+      "status": "OPEN",
+      "owner": "systemd",
+      "reality": "6 units are active AND enabled while their ExecStart substrate is deleted: agentgateway-shadow.service (/root/forge_work/agw/agentgateway-linux-amd64, dir ABSENT) and apa-calendar|drive|gmail|gws|sheets-bridge.service (/root/venvs/composio/bin/python3, /root/venvs ABSENT). Processes still alive (started 2026-09-08) because deletion happened after start. systemctl --failed = 0, so the drift is invisible to a health check.",
+      "consequence": "All six fail on next reboot. The current 'active' state is a fossil of a deleted interpreter.",
+      "closure_blocked": "systemctl disable is a HARD DENY in ArifJudge: 'F9 ANTI-HANTU: matched \\bsystemctl\\s+(disable|mask|unmask|set-default)\\b' — blocked even in dry-run. The governance gate refused agent execution; this is a POWER-DRIFT pass. Correct closure is F13-sanctioned disable, or rebuild /root/venvs.",
+      "classification": "OPEN (F13) — gate-protected"
+    },
+    {
+      "id": "DIV-HERMES-MEMORY-SUBSTRATE",
+      "status": "OPEN",
+      "owner": "Hermes gateway (hermes-asi-gateway.service)",
+      "reality": "config.yaml sets memory.provider=mem0. Qdrant collection mem0 holds 14,319 points; federation collections arifos_memory (40), federation_shared (30), arifos_session_memory (56) total 128. SRO admissibility is implemented in A-FORGE (/root/A-FORGE/src/interfaces/mcp/sroAdmissibility.ts) and referenced 0 times in the Hermes mem0 plugin.",
+      "consequence": "99.1% of memory sits outside the witness substrate and bypasses the admissibility/expiry gate. No shared witness substrate.",
+      "closure": "either wire the mem0 path through SRO and the federation collections, or formally sanction the mem0 partition as a separate universe. Architectural — F13.",
+      "classification": "OPEN (architectural)"
+    },
+    {
+      "id": "DIV-SECRET-IN-WORLD-READABLE-LOG",
+      "status": "PARTIALLY_CLOSED",
+      "owner": "Hermes delegation logger",
+      "reality": "AZURE_OPENAI_KEY was present in 5 locations; one was /root/.hermes/cache/delegation/live/deleg_da0908e3/task-0.log at mode 644 (world-readable). The four .env copies were already mode 600.",
+      "action_taken": "chmod 600 applied to all five. The exposure also reached a session transcript via a failed redaction filter.",
+      "consequence": "A live provider credential was world-readable on disk. Mechanism unfixed — delegation logs regenerate with default permissions.",
+      "closure": "rotation review by F13 (needs provider console); add redaction/umask to the delegation writer so a key cannot be logged again.",
+      "classification": "PARTIALLY_CLOSED (rotation = F13)"
+    },
+    {
+      "id": "DIV-FLAME-RULE-IDS-RESIDUAL",
+      "status": "OPEN",
+      "owner": "/root/.config/federation-models.json",
+      "reality": "24 flame_* rule_ids remain in routing_rules, plus flame references in model_routes, capability_signatures, pricing, emd_model_class and effort. Not addressed by A-FORGE 802e0c8d, which fixed the code path only.",
+      "consequence": "A retired capability persists as named routing authority — ONTOLOGY_DRIFT.",
+      "closure": "purge or rename the flame_* rules after confirming no consumer resolves them.",
+      "classification": "OPEN"
+    },
+    {
+      "id": "DIV-VERIFICATION-LANE-OUTAGE",
+      "status": "OPEN",
+      "owner": "federation LLM lanes",
+      "reality": "Z.AI coding plan 429 (exhausted, resets 2026-09-15 16:13). Kimi plan 403 (monthly limit). Gemini 429 (prepayment credits depleted). opencode zen known dead. qwen lane alive but its shell is DENIED by permission policy — 8 of 12 verification commands refused. FRAME (:18085) is UP and reports total_drifts=0 / STABLE / baseline_age_days=38.",
+      "consequence": "No second agent can independently attest. FRAME is the designated independent observer yet is blind to all three divergence classes measured on 2026-09-13. The Reality Graph breaks at WITNESS.",
+      "closure": "re-run the attestation pass after 2026-09-15 16:13; widen FRAME baseline coverage to substrate-deletion and secret-exposure classes.",
+      "classification": "OPEN"
+    }
+  ],
+  "recent_closures": [
+    {"id": "MASKED-SEVERITY", "commit": "b20018017", "date": "2026-09-13", "detail": "UNKNOWN outranked VIOLATION in worst_severity, masking measured violations for 7 of 24 actors."},
+    {"id": "FLAME-DORMANT-FALSE-CLAIM", "commit": "3367aa7d3 + a10f43d50", "date": "2026-09-13", "detail": "Registry claimed the flameClient path was dormant; it was live. Corrected, then amended when A-FORGE 802e0c8d severed the dependency 4 minutes later."},
+    {"id": "RECEIPTS-REEMISSION-BLOAT", "commit": "02af0c5a9", "date": "2026-09-13", "detail": "99.6% redundant (27,280 rows / 116 distinct signals). receipt_id + watermark added; now 0 rows per cycle. --snapshot preserves legacy behaviour."},
+    {"id": "DEAD-APEX-ZEN-GATE", "commit": "243addcbb", "date": "2026-09-13", "detail": "Gate added by 85c89d7e8 into a module no production process loads, then removed by 243addcbb. Net zero."}
+  ],
   "deprecated_services": [
     {
       "id": "apex-prime.service",
