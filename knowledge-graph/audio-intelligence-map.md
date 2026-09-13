@@ -341,3 +341,103 @@ Identity card exists at `/root/AAA/agent-cards/identity/i-ARIF/identity-card.jso
 - Transport truth: audio bodies ride the DIRECT lane (`MIMO_BASE_URL` chat/completions). litellm `:4000` is discovery-only for MiMo audio — translator crashes on `message.audio` (TTS) and mangles `input_audio` (ASR); filed for FI-008
 - SOT: `fed-realtime-voice` → WIRED_DIRECT_LANE (supersedes DECLARED_UNWIRED misdiagnosis) + new `fed-audio-understanding` signature + `transport_warning` on both api_contracts + p12 subscription-first rules (tts/asr/audio/video)
 - Receipts: TTS Mia 307KB wav / 0 credits (Hermes E2E) + 133KB b64 / 0 credits (KVM8); TTS free window active; ASR en/zh only (no `ms` — BM stays dashscope/GLM)
+
+---
+
+# Audio lane — federation wiring & Reality Graph position (2026-09-13)
+
+**Added by** kimi-code / FI-008 under F13 directive: *"apex-zen all audio with somatic intelligence
+and make sure its arifFlow and reality graph to all"*.
+
+## 1. The lane in the four-layer substrate
+
+```
+L0 LEDGER   VAULT999 seal chain          — not written by the audio tool
+L1 FLOW     arifFlow :7073 receipts      — ✅ WRITTEN on every audio step
+L2 GRAPH    Witness Graph (FalkorDB)     — ⛔ NOT written (see §3 — F2 guard)
+L3 RECALL   Qdrant                       — not written by the audio tool
+```
+
+Per `REALITY_GRAPH.md` §3/§4: *"arifFLOW executes → the flow writes the graph → VAULT999 seals
+the delta."* The audio lane now participates at **L1**. Nothing more is claimed.
+
+## 2. What was wired (verified 2026-09-13)
+
+**Primitive:** `/root/scripts/mimo-audio` → `/usr/local/bin/mimo-audio` (on PATH for every process).
+Stdlib only. Verbs: `tts · design · clone · asr · understand · voices · doctor`.
+
+**L1 metabolism — arifFlow receipt on every step.** Schema-conformant to
+`/root/arifFlow/spec/FLOW_RECEIPT_v1.md`:
+
+| Receipt field | Value emitted |
+|---|---|
+| `step_type` | `Execute` (tts/design/clone — writes artifacts) · `Verify` (asr/understand — read-only senses) |
+| `risk_class` | `T1Mutate` for Execute · `T0Observe` for Verify (enum: `T0Observe·T1Mutate·T2Deploy·T3Irreversible`) |
+| `epistemic_label` | `Interpretation` / `Observation` per the F2 label rules |
+| `floor_verdict` | `Pass` |
+| `cooling_decision` | `None` |
+| `cost_ns` | measured wall-clock |
+| `payload` | tool, verb, bytes, seconds, audio_tokens |
+
+Verified end-to-end: TTS → `{"status":"ingested","http":200,"step_type":"Execute","risk_class":"T1Mutate"}`;
+understand → `{"status":"ingested","http":200,"step_type":"Verify","risk_class":"T0Observe"}`.
+
+**Honest failure mode:** if arifFlow is down the verb still runs and the receipt is reported as
+`rejected` / `unavailable` **inside the artifact** — never silently dropped (witness-first doctrine).
+
+## 3. Why L2 is NOT written (the F2 guard)
+
+`REALITY_GRAPH.md` §6 guardrail 4 is binding: **"No hallucinated edges (F2) — every edge cites
+`vault_seq` or it does not exist."** The audio tool has no `vault_seq`; it is not a
+VAULT999 writer, and the belief-object→seq linkage patch is **STAGED, not deployed** (§7).
+Projecting audio receipts into FalkorDB today would inject edges with no ledger anchor —
+i.e. exactly the failure the doctrine names. **So it is not done.**
+
+The audio lane therefore stops at L1: it contributes receipts that the (already-live) F-004
+allocator *can* later project once the staged linkage patch lands. Claimed ≠ running.
+
+## 4. Somatic intelligence — the honest seam
+
+Per `/root/AAA/skills/AAA-somatic-emd-pipeline/SKILL.md`, `somatic_proxy` requires
+**OBS cadence measurements**: `wpm · pitch_mean_hz · hesitation_ms · rms_variance`.
+Those need **DSP**, which this tool does not perform. `understand --somatic` therefore emits:
+
+```json
+"somatic_proxy": {
+  "source": "mimo-audio-understanding",
+  "epistemic_label": "INT",
+  "derived_state": null,
+  "derived_confidence": null,
+  "derivation_basis": "model description only — no DSP; wpm/pitch/hesitation/rms NOT measured",
+  "NOT_MEASURED": ["wpm", "pitch_mean_hz", "hesitation_ms", "rms_variance"],
+  "duration_sec_OBS": 3.36,
+  "sample_rate_OBS": 24000,
+  "model_reading_INT": "…",
+  "confidence_cap": 0.75,
+  "note": "INCOMPLETE by design (F1 fail-closed) — feed a real DSP pass before music_intent routing"
+}
+```
+
+**Empty is reported empty.** `derived_state` is `null`, not a plausible guess — because a
+fabricated somatic state would flow straight into `music_intent` routing and then into audio the
+sovereign hears. F1 fail-closed beats a confident guess. The observable constraint: **no DSP pass
+⇒ no `music_intent` emission.**
+
+## 5. APEX-ZEN labels on every result
+
+| Label | Applied to |
+|---|---|
+| **OBS** | bytes, duration_sec, sample_rate, channels, API usage counters, `audio_tokens`, source_bytes |
+| **DER** | `token_estimate_DER` = duration_s × 6.25 (vendor formula, estimate), `cost_DER_credits` = seconds × 30M/3600 |
+| **INT** | `transcript_INT` (model output, not ground truth), `content_INT`, `model_reading_INT` — F7 capped ≤ 0.75 |
+
+Token formula cross-check, live: 1.92 s → estimate **12.0**, actual `audio_tokens` **13**.
+3.36 s → estimate **21.0**, actual **22**. Formula holds.
+
+## 6. Open item (recorded, not hidden)
+
+`arifFlow/AGENTS.md` states ALL agents must `POST /check` **before** execute and
+`POST /release` after verify. The CLI implements `gate()` against `/check` but runs it
+**advisory** (reported, non-blocking). Rationale: a blocking gate could silently refuse a
+sovereign-directed audio call while the FQ hold state is being tuned. Flip to blocking when the
+FED owner confirms the hold semantics — a one-line change, deliberately not taken unilaterally.
