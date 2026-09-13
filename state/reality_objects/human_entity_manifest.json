@@ -1,185 +1,415 @@
 {
-  "schema": "arifos.human_manifest.v1",
-  "generated_at": "2026-09-13T14:30:28.065360+00:00",
-  "total_entities_discovered": 14,
+  "schema": "arifos.human_manifest.v2",
+  "generated_at": "2026-09-13T14:38:05.207615+00:00",
+  "source_of_truth": "/root/memory/people/people_registry.json",
+  "registry_error": null,
+  "total_registry_entries": 17,
+  "total_classified": 18,
+  "total_persons": 14,
+  "total_non_person_rows": 4,
   "tiers": {
-    "H5_SOVEREIGN": [
-      "ARIF"
+    "H0": [
+      "THE BEKANTAN EXTRACTION REGIME",
+      "THE SB412 MANAGEMENT",
+      "THE TRICIPTA INSTITUTION",
+      "THE UNHEARD COLLECTIVE"
     ],
-    "H4_STRATEGIC": [],
-    "H3_CONSEQUENCE_OWNER": [],
-    "H2_DECISION_OWNER": [
+    "H1": [
+      "ALIFF",
+      "AZWA FAZIL",
+      "FAHIM",
+      "FARIDAH BINTI OTHMAN (MAK)",
+      "FATTAH",
+      "FAZIL BIN KHAMIS (FAZIL SR.)",
+      "IZZU",
+      "NAAZIRA FAZIL (JIA)",
+      "NABILAH FAZIL (AKAK)",
+      "WAWA"
+    ],
+    "H2": [
       "SYED"
     ],
-    "H1_STAKEHOLDER": [
-      "NABILAH",
-      "ABBAH",
-      "JUKHRIS",
-      "MAK",
-      "FAMILY",
-      "ALIFF",
-      "FAZIL",
-      "FARIDAH",
-      "IZZU"
+    "H3": [
+      "AHMAD FAISAL BAKAR"
     ],
-    "H0_REFERENCE_ONLY": [
-      "SCRIPTS",
-      "WAWA",
-      "SCAR-WITNESSES"
+    "H4": [
+      "TENGKU TAUFIK"
+    ],
+    "H5": [
+      "MUHAMMAD ARIF BIN FAZIL"
     ]
   },
-  "hro_candidates_count": 2,
-  "sanctuary_protected_count": 6,
+  "tier_counts": {
+    "H0": 4,
+    "H1": 10,
+    "H2": 1,
+    "H3": 1,
+    "H4": 1,
+    "H5": 1
+  },
+  "empty_tiers": [],
+  "hro_candidates_count": 4,
+  "sanctuary_protected_count": 7,
+  "sanctuary_protected_ids": [
+    "AZWA FAZIL",
+    "FAHIM",
+    "FARIDAH BINTI OTHMAN (MAK)",
+    "FATTAH",
+    "FAZIL BIN KHAMIS (FAZIL SR.)",
+    "NAAZIRA FAZIL (JIA)",
+    "NABILAH FAZIL (AKAK)"
+  ],
+  "sanctuary_categories": [
+    "family",
+    "family_extended",
+    "family_minor",
+    "family_siblings"
+  ],
+  "registry_gaps_on_disk": [
+    {
+      "dir": "/root/memory/people/JUKHRIS",
+      "name": "JUKHRIS",
+      "note": "present on disk, ABSENT from people_registry.json \u2014 add to the registry or archive; not a human reality object yet"
+    }
+  ],
+  "unregistered_actors": [
+    {
+      "name": "TENGKU TAUFIK",
+      "tier": "H4",
+      "category": "ABSENT_FROM_REGISTRY",
+      "sanctuary_protected": false,
+      "is_person": true,
+      "role": "President & Group CEO, PETRONAS",
+      "is_hro_candidate": true,
+      "source": "canonical_override",
+      "note": "tier assigned from canon but entity is NOT in people_registry.json \u2014 registry gap"
+    }
+  ],
   "entities": [
     {
-      "name": "NABILAH",
-      "tier": "H1",
-      "category": "FAMILY_SANCTUARY",
-      "note": "Sanctuary Invariant protected \u2014 no external operational CRO",
-      "is_hro_candidate": false
+      "name": "MUHAMMAD ARIF BIN FAZIL",
+      "display_name": "Muhammad Arif bin Fazil",
+      "aliases": [],
+      "registry_category": "sovereign",
+      "registry_memory_authority": "FULL_H_AXIS",
+      "registry_relation": null,
+      "registry_status": "ALIVE",
+      "tier": "H5",
+      "category": "CANONICAL",
+      "sanctuary_protected": false,
+      "is_person": true,
+      "role": "Sovereign Principal & Architect",
+      "attention_cost": "HIGH",
+      "consequence_class": "STRATEGIC",
+      "is_hro_candidate": true,
+      "source": "registry"
     },
     {
-      "name": "SCRIPTS",
-      "tier": "H0",
-      "category": "REFERENCE_ONLY",
-      "note": "Mentioned entity without active consequence chain",
-      "is_hro_candidate": false
+      "name": "FAZIL BIN KHAMIS (FAZIL SR.)",
+      "display_name": "Fazil bin Khamis (Fazil Sr.)",
+      "aliases": [
+        "FAZIL SR."
+      ],
+      "registry_category": "family",
+      "registry_memory_authority": "SCAR_REFERENCED_AND_DOCTRINE_AUTHOR",
+      "registry_relation": "ARIF's late father",
+      "registry_status": "DECEASED",
+      "tier": "H1",
+      "category": "FAMILY_SANCTUARY",
+      "sanctuary_protected": true,
+      "is_person": true,
+      "role": null,
+      "attention_cost": null,
+      "consequence_class": null,
+      "is_hro_candidate": false,
+      "source": "registry"
+    },
+    {
+      "name": "FARIDAH BINTI OTHMAN (MAK)",
+      "display_name": "Faridah binti Othman (Mak)",
+      "aliases": [
+        "MAK"
+      ],
+      "registry_category": "family",
+      "registry_memory_authority": "DOCTRINE_AUTHOR",
+      "registry_relation": "ARIF's mother",
+      "registry_status": "ALIVE (confirmed 2026-08, Kepala Batas)",
+      "tier": "H1",
+      "category": "FAMILY_SANCTUARY",
+      "sanctuary_protected": true,
+      "is_person": true,
+      "role": null,
+      "attention_cost": null,
+      "consequence_class": null,
+      "is_hro_candidate": false,
+      "source": "registry"
     },
     {
       "name": "SYED",
+      "display_name": "Syed",
+      "aliases": [],
+      "registry_category": "telegram_network",
+      "registry_memory_authority": "PROFILE_ONLY",
+      "registry_relation": null,
+      "registry_status": null,
       "tier": "H2",
       "category": "CANONICAL",
-      "meta": {
-        "tier": "H2",
-        "role": "Collaborator / Technical Partner",
-        "stakeholders": [
-          "shared_initiatives"
-        ],
-        "has_active_consequence": true,
-        "what_matters": "Symmetric technical collaboration; avoid unilateral epistemic drift.",
-        "attention_cost": "MEDIUM",
-        "consequence_class": "OPERATIONAL"
-      },
-      "is_hro_candidate": true
-    },
-    {
-      "name": "ABBAH",
-      "tier": "H1",
-      "category": "FAMILY_SANCTUARY",
-      "note": "Sanctuary Invariant protected \u2014 no external operational CRO",
-      "is_hro_candidate": false
-    },
-    {
-      "name": "JUKHRIS",
-      "tier": "H1",
-      "category": "CANONICAL",
-      "meta": {
-        "tier": "H1",
-        "role": "Domain Stakeholder",
-        "stakeholders": [
-          "domain_team"
-        ],
-        "has_active_consequence": false,
-        "what_matters": "Technical interaction; no direct governance consequence.",
-        "attention_cost": "LOW",
-        "consequence_class": "PERSONAL"
-      },
-      "is_hro_candidate": false
-    },
-    {
-      "name": "MAK",
-      "tier": "H1",
-      "category": "FAMILY_SANCTUARY",
-      "note": "Sanctuary Invariant protected \u2014 no external operational CRO",
-      "is_hro_candidate": false
-    },
-    {
-      "name": "FAMILY",
-      "tier": "H1",
-      "category": "FAMILY_SANCTUARY",
-      "note": "Sanctuary Invariant protected \u2014 no external operational CRO",
-      "is_hro_candidate": false
-    },
-    {
-      "name": "WAWA",
-      "tier": "H0",
-      "category": "REFERENCE_ONLY",
-      "note": "Mentioned entity without active consequence chain",
-      "is_hro_candidate": false
-    },
-    {
-      "name": "ARIF",
-      "tier": "H5",
-      "category": "CANONICAL",
-      "meta": {
-        "tier": "H5",
-        "role": "Sovereign Principal & Architect",
-        "stakeholders": [
-          "board",
-          "corporate_governance",
-          "federation"
-        ],
-        "has_active_consequence": true,
-        "what_matters": "Preserve human sovereignty, family wellbeing, corporate career standing, and operational AI integrity.",
-        "attention_cost": "HIGH",
-        "consequence_class": "STRATEGIC"
-      },
-      "is_hro_candidate": true
+      "sanctuary_protected": false,
+      "is_person": true,
+      "role": "Collaborator / Technical Partner",
+      "attention_cost": "MEDIUM",
+      "consequence_class": "OPERATIONAL",
+      "is_hro_candidate": true,
+      "source": "registry"
     },
     {
       "name": "ALIFF",
+      "display_name": "Aliff",
+      "aliases": [],
+      "registry_category": "telegram_network",
+      "registry_memory_authority": "PROFILE_ONLY",
+      "registry_relation": null,
+      "registry_status": null,
       "tier": "H1",
       "category": "CANONICAL",
-      "meta": {
-        "tier": "H1",
-        "role": "Professional Stakeholder",
-        "stakeholders": [
-          "colleagues"
-        ],
-        "has_active_consequence": false,
-        "what_matters": "Peer collaboration context.",
-        "attention_cost": "LOW",
-        "consequence_class": "PERSONAL"
-      },
-      "is_hro_candidate": false
-    },
-    {
-      "name": "FAZIL",
-      "tier": "H1",
-      "category": "FAMILY_SANCTUARY",
-      "note": "Sanctuary Invariant protected \u2014 no external operational CRO",
-      "is_hro_candidate": false
-    },
-    {
-      "name": "FARIDAH",
-      "tier": "H1",
-      "category": "FAMILY_SANCTUARY",
-      "note": "Sanctuary Invariant protected \u2014 no external operational CRO",
-      "is_hro_candidate": false
+      "sanctuary_protected": false,
+      "is_person": true,
+      "role": null,
+      "attention_cost": null,
+      "consequence_class": null,
+      "is_hro_candidate": false,
+      "source": "registry"
     },
     {
       "name": "IZZU",
+      "display_name": "Izzu",
+      "aliases": [],
+      "registry_category": "telegram_network",
+      "registry_memory_authority": "PROFILE_PLUS_ACTIVE_WORKER",
+      "registry_relation": null,
+      "registry_status": null,
       "tier": "H1",
       "category": "CANONICAL",
-      "meta": {
-        "tier": "H1",
-        "role": "Professional Stakeholder",
-        "stakeholders": [
-          "colleagues"
-        ],
-        "has_active_consequence": false,
-        "what_matters": "Peer collaboration context.",
-        "attention_cost": "LOW",
-        "consequence_class": "PERSONAL"
-      },
-      "is_hro_candidate": false
+      "sanctuary_protected": false,
+      "is_person": true,
+      "role": null,
+      "attention_cost": null,
+      "consequence_class": null,
+      "is_hro_candidate": false,
+      "source": "registry"
     },
     {
-      "name": "SCAR-WITNESSES",
+      "name": "WAWA",
+      "display_name": "Wawa",
+      "aliases": [],
+      "registry_category": "telegram_network",
+      "registry_memory_authority": "PROFILE_ONLY",
+      "registry_relation": null,
+      "registry_status": null,
+      "tier": "H1",
+      "category": "CANONICAL",
+      "sanctuary_protected": false,
+      "is_person": true,
+      "role": null,
+      "attention_cost": null,
+      "consequence_class": null,
+      "is_hro_candidate": false,
+      "source": "registry"
+    },
+    {
+      "name": "THE TRICIPTA INSTITUTION",
+      "display_name": "The TriCipta Institution",
+      "aliases": [],
+      "registry_category": "institutional_archetype",
+      "registry_memory_authority": "SCAR_WITNESS_ONLY",
+      "registry_relation": null,
+      "registry_status": null,
       "tier": "H0",
-      "category": "REFERENCE_ONLY",
-      "note": "Mentioned entity without active consequence chain",
-      "is_hro_candidate": false
+      "category": "NON_PERSON_ARCHETYPE",
+      "sanctuary_protected": false,
+      "is_person": false,
+      "role": null,
+      "attention_cost": null,
+      "consequence_class": null,
+      "is_hro_candidate": false,
+      "source": "registry"
+    },
+    {
+      "name": "THE SB412 MANAGEMENT",
+      "display_name": "The SB412 Management",
+      "aliases": [],
+      "registry_category": "institutional_archetype",
+      "registry_memory_authority": "SCAR_WITNESS_ONLY",
+      "registry_relation": null,
+      "registry_status": null,
+      "tier": "H0",
+      "category": "NON_PERSON_ARCHETYPE",
+      "sanctuary_protected": false,
+      "is_person": false,
+      "role": null,
+      "attention_cost": null,
+      "consequence_class": null,
+      "is_hro_candidate": false,
+      "source": "registry"
+    },
+    {
+      "name": "THE BEKANTAN EXTRACTION REGIME",
+      "display_name": "The Bekantan Extraction Regime",
+      "aliases": [],
+      "registry_category": "institutional_archetype",
+      "registry_memory_authority": "SCAR_WITNESS_ONLY",
+      "registry_relation": null,
+      "registry_status": null,
+      "tier": "H0",
+      "category": "NON_PERSON_ARCHETYPE",
+      "sanctuary_protected": false,
+      "is_person": false,
+      "role": null,
+      "attention_cost": null,
+      "consequence_class": null,
+      "is_hro_candidate": false,
+      "source": "registry"
+    },
+    {
+      "name": "THE UNHEARD COLLECTIVE",
+      "display_name": "The Unheard Collective",
+      "aliases": [],
+      "registry_category": "conceptual_archetype",
+      "registry_memory_authority": "SCAR_WITNESS_ONLY",
+      "registry_relation": null,
+      "registry_status": null,
+      "tier": "H0",
+      "category": "NON_PERSON_ARCHETYPE",
+      "sanctuary_protected": false,
+      "is_person": false,
+      "role": null,
+      "attention_cost": null,
+      "consequence_class": null,
+      "is_hro_candidate": false,
+      "source": "registry"
+    },
+    {
+      "name": "AHMAD FAISAL BAKAR",
+      "display_name": "Ahmad Faisal Bakar",
+      "aliases": [],
+      "registry_category": "named_institutional_person",
+      "registry_memory_authority": "NAMED_SCAR_WITNESS_RESTRICTED",
+      "registry_relation": null,
+      "registry_status": "ALIVE_PRESUMED",
+      "tier": "H3",
+      "category": "CANONICAL",
+      "sanctuary_protected": false,
+      "is_person": true,
+      "role": "Former VP Exploration (PETRONAS Carigali)",
+      "attention_cost": "LOW",
+      "consequence_class": "REPUTATIONAL",
+      "is_hro_candidate": true,
+      "source": "registry"
+    },
+    {
+      "name": "NABILAH FAZIL (AKAK)",
+      "display_name": "Nabilah Fazil (Akak)",
+      "aliases": [
+        "AKAK"
+      ],
+      "registry_category": "family_siblings",
+      "registry_memory_authority": "SOVEREIGN_REFERENCED_ONLY",
+      "registry_relation": "ARIF's younger sister (2nd of 4) \u00b7 cikgu \u00b7 divorced (talak Jan 2026) \u00b7 mother of Fattah",
+      "registry_status": "ALIVE",
+      "tier": "H1",
+      "category": "FAMILY_SANCTUARY",
+      "sanctuary_protected": true,
+      "is_person": true,
+      "role": null,
+      "attention_cost": null,
+      "consequence_class": null,
+      "is_hro_candidate": false,
+      "source": "registry"
+    },
+    {
+      "name": "NAAZIRA FAZIL (JIA)",
+      "display_name": "Naazira Fazil (Jia)",
+      "aliases": [
+        "JIA"
+      ],
+      "registry_category": "family_siblings",
+      "registry_memory_authority": "SOVEREIGN_REFERENCED_ONLY",
+      "registry_relation": "Younger sister of ARIF",
+      "registry_status": "ALIVE",
+      "tier": "H1",
+      "category": "FAMILY_SANCTUARY",
+      "sanctuary_protected": true,
+      "is_person": true,
+      "role": null,
+      "attention_cost": null,
+      "consequence_class": null,
+      "is_hro_candidate": false,
+      "source": "registry"
+    },
+    {
+      "name": "AZWA FAZIL",
+      "display_name": "Azwa Fazil",
+      "aliases": [],
+      "registry_category": "family_siblings",
+      "registry_memory_authority": "SOVEREIGN_REFERENCED_ONLY",
+      "registry_relation": "Youngest sister of ARIF",
+      "registry_status": "ALIVE_PRESUMED",
+      "tier": "H1",
+      "category": "FAMILY_SANCTUARY",
+      "sanctuary_protected": true,
+      "is_person": true,
+      "role": null,
+      "attention_cost": null,
+      "consequence_class": null,
+      "is_hro_candidate": false,
+      "source": "registry"
+    },
+    {
+      "name": "FAHIM",
+      "display_name": "Fahim",
+      "aliases": [],
+      "registry_category": "family_extended",
+      "registry_memory_authority": "SOVEREIGN_REFERENCED_ONLY",
+      "registry_relation": "Nabilah's ex-husband \u00b7 IC 941119026027 \u00b7 b. 19-11-1994 Baling Kedah \u00b7 CTOS 300, RM123k hutang",
+      "registry_status": "ALIVE",
+      "tier": "H1",
+      "category": "FAMILY_SANCTUARY",
+      "sanctuary_protected": true,
+      "is_person": true,
+      "role": null,
+      "attention_cost": null,
+      "consequence_class": null,
+      "is_hro_candidate": false,
+      "source": "registry"
+    },
+    {
+      "name": "FATTAH",
+      "display_name": "Fattah",
+      "aliases": [],
+      "registry_category": "family_minor",
+      "registry_memory_authority": "SOVEREIGN_REFERENCED_ONLY",
+      "registry_relation": "Child of Nabilah \u00d7 Fahim \u00b7 age 3 (b. ~2023)",
+      "registry_status": "MINOR",
+      "tier": "H1",
+      "category": "FAMILY_SANCTUARY",
+      "sanctuary_protected": true,
+      "is_person": true,
+      "role": null,
+      "attention_cost": null,
+      "consequence_class": null,
+      "is_hro_candidate": false,
+      "source": "registry"
+    },
+    {
+      "name": "TENGKU TAUFIK",
+      "tier": "H4",
+      "category": "ABSENT_FROM_REGISTRY",
+      "sanctuary_protected": false,
+      "is_person": true,
+      "role": "President & Group CEO, PETRONAS",
+      "is_hro_candidate": true,
+      "source": "canonical_override",
+      "note": "tier assigned from canon but entity is NOT in people_registry.json \u2014 registry gap"
     }
   ]
 }
