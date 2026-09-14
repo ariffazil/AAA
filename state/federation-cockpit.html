@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AAA Federation State Plane</title>
+<style>
+  :root {
+    --bg: #0a0b0d; --card: #0e1117; --border: #222733;
+    --text: #eae6df; --muted: #8e95a5; --accent: #e27d60;
+    --ok: #4eccca3; --warn: #f59e0b; --err: #ef4444; --info: #38bdf8;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:'Inter',system-ui,sans-serif; font-size:14px; min-height:100vh; }
+  .header { border-bottom:1px solid var(--border); padding:12px 20px; display:flex; align-items:center; justify-content:space-between; }
+  .header h1 { font-size:16px; font-weight:600; letter-spacing:0.05em; }
+  .header .ts { font-size:11px; color:var(--muted); font-family:monospace; }
+  .status-line { font-family:monospace; font-size:13px; padding:16px 20px; border-bottom:1px solid var(--border); background:#0c0d10; }
+  .status-line .verdict { font-weight:700; font-size:15px; }
+  .status-line .verdict.seal { color:var(--ok); }
+  .status-line .verdict.degraded { color:var(--warn); }
+  .status-line .verdict.critical { color:var(--err); }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:12px; padding:16px 20px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:16px; }
+  .card-title { font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); margin-bottom:10px; display:flex; align-items:center; justify-content:space-between; }
+  .card-title .badge { font-size:10px; padding:2px 6px; border-radius:4px; font-weight:600; }
+  .badge.ok { background:#0f1e19; color:var(--ok); border:1px solid #204e3f; }
+  .badge.warn { background:#1e1a0f; color:var(--warn); border:1px solid #4e3f20; }
+  .badge.err { background:#1e0f0f; color:var(--err); border:1px solid #4e2020; }
+  .row { display:flex; justify-content:space-between; align-items:center; padding:4px 0; font-family:monospace; font-size:13px; }
+  .row .label { color:var(--muted); }
+  .row .value { font-weight:600; }
+  .organ-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:8px; }
+  .organ { display:flex; align-items:center; gap:6px; font-family:monospace; font-size:12px; padding:6px 8px; border-radius:6px; background:#0c0d10; }
+  .organ .dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+  .organ .dot.up { background:var(--ok); box-shadow:0 0 6px var(--ok); }
+  .organ .dot.down { background:var(--err); box-shadow:0 0 6px var(--err); }
+  .actor-list { list-style:none; }
+  .actor-list li { font-family:monospace; font-size:12px; padding:4px 0; display:flex; align-items:center; gap:6px; }
+  .actor-list .tag { font-size:10px; padding:1px 4px; border-radius:3px; }
+  .tag.stuck { background:#1e0f0f; color:var(--err); }
+  .tag.held { background:#1e1a0f; color:var(--warn); }
+  .tag.flowing { background:#0f1e19; color:var(--ok); }
+  .bottleneck-box { padding:12px; border-radius:6px; font-family:monospace; font-size:13px; }
+  .bottleneck-box.none { background:#0f1e19; border:1px solid #204e3f; color:var(--ok); }
+  .bottleneck-box.infrastructure { background:#1e0f0f; border:1px solid #4e2020; color:var(--err); }
+  .bottleneck-box.authority { background:#1e1a0f; border:1px solid #4e3f20; color:var(--warn); }
+  .bottleneck-box.metabolism { background:#0f0f1e; border:1px solid #20204e; color:var(--info); }
+  .loading { text-align:center; padding:60px 20px; color:var(--muted); font-family:monospace; }
+  .error { text-align:center; padding:60px 20px; color:var(--err); font-family:monospace; }
+  .footer { border-top:1px solid var(--border); padding:8px 20px; font-size:10px; color:var(--muted); text-align:center; font-family:monospace; }
+  @media (max-width:640px) {
+    .grid { grid-template-columns:1fr; padding:12px; }
+    .organ-grid { grid-template-columns:repeat(2,1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🏛️ AAA FEDERATION STATE PLANE</h1>
+  <span class="ts" id="ts">loading...</span>
+</div>
+<div class="status-line" id="status-line">
+  <span class="loading">Probing federation...</span>
+</div>
+<div class="grid" id="grid"></div>
+<div class="footer">federation_state.py v1.0 · Read-only · No mutation · DITEMPA BUKAN DIBERI</div>
+
+<script>
+const API = '/state.json';
+const REFRESH_MS = 15000;
+
+function cls(verdict) {
+  if (!verdict) return '';
+  const v = verdict.toLowerCase();
+  if (v === 'seal' || v === 'optimal' || v === 'flowing' || v === 'none') return 'ok';
+  if (v === 'critical' || v === 'infrastructure' || v === 'stuck') return 'err';
+  return 'warn';
+}
+
+function render(data) {
+  // Header timestamp + staleness
+  const ts = data.generated_at ? new Date(data.generated_at).toLocaleString('en-MY', { timeZone:'Asia/Kuala_Lumpur' }) : '?';
+  const ageSec = data.generated_at ? Math.round((Date.now() - new Date(data.generated_at).getTime()) / 1000) : null;
+  const stale = ageSec !== null && ageSec > 120;
+  const ageStr = ageSec !== null ? (ageSec < 60 ? `${ageSec}s ago` : `${Math.round(ageSec/60)}m ago`) : '';
+  document.getElementById('ts').innerHTML = `Updated: ${ts} · ${data.probe_ms}ms · <span style="color:${stale ? 'var(--warn)' : 'var(--muted)'}">${ageStr}${stale ? ' ⚠ STALE' : ''}</span>`;
+
+  // Status line
+  const fed = data.federation || {};
+  const meta = data.metabolism || {};
+  const auth = data.authority || {};
+  const bn = data.bottleneck || {};
+
+  const vCls = cls(fed.status);
+  const organStr = `${fed.organs_alive}/${fed.organs_total}`;
+  const fqStr = meta.quotient != null ? meta.quotient.toFixed(2) : '?';
+  const holdStr = auth.holds > 0 ? ` · HOLDS: ${auth.holds}` : '';
+
+  let statusHtml = `<span class="verdict ${vCls}">${fed.status || '?'}</span>`;
+  statusHtml += ` &nbsp;Organs: ${organStr} &nbsp;·&nbsp; FQ: ${fqStr} (${meta.verdict || '?'})${holdStr}`;
+
+  if (bn.type && bn.type !== 'NONE') {
+    statusHtml += ` &nbsp;·&nbsp; BOTTLENECK: <strong style="color:var(--${cls(bn.type)})">${bn.type}</strong>`;
+  }
+
+  document.getElementById('status-line').innerHTML = statusHtml;
+
+  // Cards
+  let html = '';
+
+  // 1. Organs
+  html += `<div class="card">
+    <div class="card-title"><span>Organs</span><span class="badge ${fed.organs_alive === fed.organs_total ? 'ok' : 'err'}">${organStr}</span></div>
+    <div class="organ-grid">`;
+  for (const o of (fed.organs || [])) {
+    const dotCls = o.status === 'UP' ? 'up' : 'down';
+    const failHint = o.failure ? `<br><span style="color:var(--err);font-size:10px">${o.failure}</span>` : '';
+    html += `<div class="organ"><span class="dot ${dotCls}"></span><div>${o.id} <span style="color:var(--muted);font-size:10px">${o.latency_ms}ms</span>${failHint}</div></div>`;
+  }
+  html += `</div></div>`;
+
+  // 2. Metabolism
+  html += `<div class="card">
+    <div class="card-title"><span>Metabolism (FQ)</span><span class="badge ${cls(meta.verdict)}">${meta.verdict || '?'}</span></div>
+    <div class="row"><span class="label">Quotient</span><span class="value">${fqStr}</span></div>
+    <div class="row"><span class="label">Diagnosis</span><span class="value">${meta.diagnosis || '?'}</span></div>
+    <div class="row"><span class="label">Execute / Verify</span><span class="value">${meta.execute_count || 0} / ${meta.verify_count || 0}</span></div>
+    <div class="row"><span class="label">Held / Throttled</span><span class="value">${meta.held_count || 0} / ${meta.throttled_count || 0}</span></div>`;
+  if (meta.stuck_actors && meta.stuck_actors.length) {
+    html += `<div style="margin-top:8px"><span style="color:var(--err);font-size:11px">STUCK: ${meta.stuck_actors.join(', ')}</span></div>`;
+  }
+  html += `</div>`;
+
+  // 3. Authority
+  html += `<div class="card">
+    <div class="card-title"><span>Authority</span><span class="badge ${auth.holds > 0 ? 'warn' : 'ok'}">${auth.holds} holds</span></div>
+    <div class="row"><span class="label">Holds</span><span class="value" style="color:${auth.holds > 0 ? 'var(--warn)' : 'var(--ok)'}">${auth.holds}</span></div>
+    <div class="row"><span class="label">Seals</span><span class="value">${auth.seals || 0}</span></div>`;
+  if (auth.oldest_hold) {
+    html += `<div class="row"><span class="label">Oldest</span><span class="value">${auth.oldest_hold.age_hours || '?'}h</span></div>`;
+    if (auth.oldest_hold.intent) {
+      html += `<div style="margin-top:4px;font-size:11px;color:var(--muted)">${auth.oldest_hold.intent}</div>`;
+    }
+  }
+  if (auth.held_actors && auth.held_actors.length) {
+    html += `<div style="margin-top:8px"><ul class="actor-list">`;
+    for (const a of auth.held_actors) {
+      html += `<li><span class="tag held">HELD</span> ${a}</li>`;
+    }
+    html += `</ul></div>`;
+  }
+  html += `</div>`;
+
+  // 4. Bottleneck
+  const bnCls = cls(bn.type);
+  html += `<div class="card">
+    <div class="card-title"><span>Bottleneck</span></div>
+    <div class="bottleneck-box ${bn.type ? bn.type.toLowerCase() : 'none'}">
+      <strong>${bn.type || 'NONE'}</strong><br>
+      ${bn.reason || 'Federation flowing'}
+      ${bn.impact_flows ? `<br><span style="font-size:11px">Impact: ${bn.impact_flows} flows</span>` : ''}
+    </div>
+  </div>`;
+
+  // 5. Per-actor FQ detail (if stuck/interesting actors)
+  const actors = meta.per_actor || {};
+  const interestingActors = Object.entries(actors).filter(([,a]) =>
+    a.verdict === 'STUCK' || a.held || a.throttled || a.verdict === 'FOSSILIZED'
+  );
+  if (interestingActors.length) {
+    html += `<div class="card">
+      <div class="card-title"><span>Actor FQ Detail</span></div>
+      <ul class="actor-list">`;
+    for (const [id, a] of interestingActors) {
+      const tag = a.verdict === 'STUCK' ? 'stuck' : a.held ? 'held' : 'flowing';
+      const fq = a.quotient != null ? a.quotient.toFixed(2) : '-';
+      html += `<li><span class="tag ${tag}">${a.verdict}</span> ${id} <span style="color:var(--muted);margin-left:auto">FQ=${fq} E=${a.execute} V=${a.verify}</span></li>`;
+    }
+    html += `</ul></div>`;
+  }
+
+  document.getElementById('grid').innerHTML = html;
+}
+
+async function poll() {
+  try {
+    const res = await fetch(API, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    render(data);
+  } catch (err) {
+    document.getElementById('status-line').innerHTML = `<span class="error">Failed to fetch: ${err.message}. Retrying in ${REFRESH_MS/1000}s...</span>`;
+  }
+}
+
+poll();
+setInterval(poll, REFRESH_MS);
+</script>
+</body>
+</html>
