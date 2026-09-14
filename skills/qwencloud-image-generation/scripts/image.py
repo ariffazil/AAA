@@ -314,7 +314,6 @@ examples:
     parser.add_argument("--print-response", action="store_true", help="Print result JSON to stdout")
     args = parser.parse_args()
 
-    api_key = require_api_key(script_file=__file__, domain="Image")
     req = load_request(args)
 
     if args.model:
@@ -327,6 +326,36 @@ examples:
     is_i2i = is_i2i_model(model)
     is_qwen_t2i = is_qwen_t2i_model(model)
     enable_interleave = req.get("enable_interleave", False)
+
+    # ── Identity Interceptor Gate (SCAR-2026-09-15-001) ───────────────────
+    # A kata nama am ("abang sado") must never bind to an identity; T2I on a
+    # kata nama khas is forbidden (ICL-2.0 → use I2I subject_ref). The gate is
+    # loaded before any API call. If it cannot load, HOLD — never pass (F1 > F2).
+    _gate_subject = " ".join(
+        [str(req.get("prompt", ""))]
+        + [str(x) for x in (req.get("reference_images") or [])]
+        + ([str(req["reference_image"])] if req.get("reference_image") else [])
+    )
+    _gate_capability = "subject_ref" if (is_edit or is_i2i) else "t2i"
+    try:
+        sys.path.insert(0, "/root/arifOS")
+        from arifos.identity.identity_resolver import guard as _identity_guard
+    except Exception as _exc:  # the gate must exist; absence is a HOLD condition
+        print(f"Error: identity gate unavailable ({_exc}) — HOLD (F1 > F2).",
+              file=sys.stderr)
+        sys.exit(3)
+
+    _gate = _identity_guard(_gate_subject, capability=_gate_capability)
+    if _gate.blocked:
+        print(f"Error: identity gate {_gate.verdict.value} — {_gate.reason}",
+              file=sys.stderr)
+        print("Refusing to call the model. Disambiguate the subject, then retry.",
+              file=sys.stderr)
+        sys.exit(3)
+
+    # Credentials are resolved only after the gate clears — the choke point sits
+    # ahead of provider/auth work, so an ambiguous subject never reaches the API.
+    api_key = require_api_key(script_file=__file__, domain="Image")
 
     if is_i2i and not args.async_mode:
         print("wan2.5-i2i-preview is async-only. Enabling --async automatically.", file=sys.stderr)
