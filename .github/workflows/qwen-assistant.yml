@@ -22,7 +22,7 @@ jobs:
   assist:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Setup Qwen Code
         uses: qwenlm/qwen-code-action@main
@@ -41,7 +41,7 @@ jobs:
 
       - name: Post Response
         if: always()
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const target = parseInt('${{ inputs.target }}');
