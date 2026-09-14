@@ -1,0 +1,209 @@
+# AGENTIC-HOOK-MESH-V1.yaml — Universal Agentic Hook Mesh Specification
+# Canonical Path: /root/AAA/governance/AGENTIC-HOOK-MESH-V1.yaml
+# Governs: OpenCode (FI-001), Claude Code (FI-002), Antigravity (FI-009), Hermes (FI-007), OpenClaw (FI-004), Kimi (FI-008), Qwen (FI-003)
+# Constitutional Authority: F1 Amanah, F2 Truth, F4 Clarity (ΔS ≤ 0), F8 Simpler Path, F11 Audit, F13 Sovereign
+
+version: "1.0.0"
+schema_id: "arifos.governance.agentic_hook_mesh.v1"
+last_updated: "2026-09-14T08:36:00Z"
+doctrine: "DITEMPA BUKAN DIBERI — Governed emergence across all federation warga."
+
+core_properties:
+  monotonicity_ladder:
+    order: ["ALLOW", "OBSERVE_ONLY", "SABAR", "HOLD", "VOID", "REVOKED"]
+    law: "Downstream hooks or sibling agents can never downgrade a restriction level once asserted."
+  universal_hook_contracts:
+    must_emit:
+      - receipt_hash
+      - floor_passed
+      - delta_entropy_dS
+    must_label:
+      - authority_ceiling
+      - reversibility_class
+      - truth_class
+    must_block_on:
+      - F1_missing_snapshot
+      - F11_no_receipt
+      - F4_entropy_positive
+      - F13_sovereign_boundary_breach
+
+events:
+  agent:bootstrap:
+    description: "Session ignition, token binding, and active scar hydration."
+    hooks:
+      - name: "scar-bootstrap"
+        floor: "F1+F11"
+        authority_ceiling: "OBSERVE_ONLY"
+        reversibility: "R0"
+        action: "Hydrate scar-cache from /root/AAA/scars and /root/.local/share/arifos/carry_forward.json."
+        can_block: true
+        block_condition: "Corrupted or missing scar index → HOLD"
+        emits: ["scars_active", "last_cool_at", "active_constraint_brief"]
+      - name: "kernel-bridge"
+        floor: "F13"
+        authority_ceiling: "OBSERVE_ONLY"
+        reversibility: "R0"
+        action: "Call arif_init with Accept: application/json; bind session token."
+        can_block: true
+        block_condition: "Kernel rejected authentication and fallback disabled → HOLD"
+        emits: ["session_id", "session_token", "init_mode"]
+      - name: "autonomy-reset"
+        floor: "F13"
+        authority_ceiling: "OBSERVE_ONLY"
+        reversibility: "R0"
+        action: "Reset continuation counters and assert Digital = MUBAH / HITL OFF."
+        can_block: false
+        emits: ["autonomy_band", "continuation_budget"]
+
+  pre_mutation:
+    description: "Pre-execution monotonic membrane, authority check, and rollback journal entry."
+    hooks:
+      - name: "envelope-check"
+        floor: "F1+F2"
+        authority_ceiling: "MONOTONIC_GATE"
+        reversibility: "R0"
+        action: "Validate tool schema, forbidden targets (/etc/shadow, secrets), and token presence."
+        can_block: true
+        block_condition: "Forbidden target detected → VOID"
+        emits: ["validation_status", "risk_tier"]
+      - name: "authority-band"
+        floor: "F13"
+        authority_ceiling: "MONOTONIC_GATE"
+        reversibility: "R0"
+        action: "Check tool class against actor capability band; block unapproved mutating tools."
+        can_block: true
+        block_condition: "OBSERVE_ONLY actor requesting MUTATE → AUTHORITY_INSUFFICIENT"
+        emits: ["authority_level", "verdict"]
+      - name: "scar-propose"
+        floor: "F2"
+        authority_ceiling: "OBSERVE_ONLY"
+        reversibility: "R0"
+        action: "Check if target file/command has known scar history; surface invariant."
+        can_block: false
+        emits: ["matching_scars"]
+      - name: "auto-heal-preview"
+        floor: "F2"
+        authority_ceiling: "OBSERVE_ONLY"
+        reversibility: "R0"
+        action: "If last attempt of same tool failed and scar-bound fix is available, emit fix candidate."
+        can_block: false
+        auto_apply: false
+        emits: ["scar_id", "fix_candidate_hash", "confidence"]
+
+  post_mutation:
+    description: "Post-execution telemetry, auto-healing reflex, and entropy delta accounting."
+    hooks:
+      - name: "audit-receipt"
+        floor: "F11"
+        authority_ceiling: "OBSERVE_ONLY"
+        reversibility: "R0"
+        action: "Log execution receipt, exit code, stdout/stderr hashes, and journal resolution."
+        can_block: false
+        emits: ["receipt_hash", "exit_class", "delta_entropy_dS"]
+      - name: "entropy-delta"
+        floor: "F4"
+        authority_ceiling: "OBSERVE_ONLY"
+        reversibility: "R0"
+        action: "Calculate ΔS = S_post - S_pre. Enforce ΔS ≤ 0."
+        can_block: false
+        emits: ["dS_pre", "dS_post", "fq_delta"]
+      - name: "scar-ingest"
+        floor: "F1+F11"
+        authority_ceiling: "OBSERVE_ONLY"
+        reversibility: "R0"
+        action: "Analyze failure output; detect HTTP 406 / dependency / zombie / git errors; trigger auto-heal."
+        can_block: false
+        block_condition: "exit_class = regression"
+        emits: ["auto_heal_triggered", "healing_action"]
+      - name: "fq-update"
+        floor: "F11"
+        authority_ceiling: "OBSERVE_ONLY"
+        reversibility: "R0"
+        action: "Emit flow health telemetry to arifFlow :7073."
+        can_block: false
+        emits: ["flow_ingest_hash"]
+
+  agent:idle:
+    description: "Turn-level epistemic metabolism, anti-tangguh sentry, and bounded recursive improvement."
+    hooks:
+      - name: "turn-rsi"
+        floor: "F4+F11"
+        authority_ceiling: "OBSERVE_ONLY"
+        reversibility: "R0"
+        action: "Log turn RSI pulse, token efficiency, discussion debt, and step counters."
+        can_block: false
+        emits: ["turn_rsi_hash", "discussion_debt"]
+      - name: "auto-heal-decide"
+        floor: "F1+F11"
+        authority_ceiling: "OBSERVE_ONLY"
+        reversibility: "R2"
+        action: "If fix_candidate confidence ≥ 0.90 AND ΔS_improvement > 0 AND F-floor passes → apply."
+        can_block: true
+        block_condition: "Scar-bound fix needs sovereign ack → 888_HOLD"
+        emits: ["applied_fix_id", "pre_post_metrics"]
+      - name: "recursive-improvement-apply"
+        floor: "F8"
+        authority_ceiling: "DISCOVER→PROPOSE→SANDBOX→APPLY bounded"
+        reversibility: "R2"
+        action: "If LEARN_CANDIDATE confidence ≥ 0.85 AND within autonomy band → mutate routing heuristic."
+        can_block: false
+        auto_apply: true
+        bounds:
+          max_reversibility: "R2"
+          floor_anchor: "F8"
+          max_authority: "DISCOVER"
+          entropy_invariant: "ΔS_aggregate ≤ 0"
+        emits: ["ri_proposal_id", "band", "delta_heuristic"]
+
+  agent:compact:
+    description: "Context window compaction with scar compression and invariant retention."
+    hooks:
+      - name: "scar-compress"
+        floor: "F11"
+        authority_ceiling: "OBSERVE_ONLY"
+        reversibility: "R0"
+        action: "Merge duplicate scars; archive resolved >30d; refresh scar-cache for next session."
+        can_block: false
+        emits: ["scar_delta", "archive_paths"]
+      - name: "autonomy-inject"
+        floor: "F13"
+        authority_ceiling: "OBSERVE_ONLY"
+        reversibility: "R0"
+        action: "Re-inject core active constraint brief into post-compaction context window."
+        can_block: false
+        emits: ["brief_hash"]
+
+  agent:close:
+    description: "Session closure, generational carry-forward append, and immutable ledger seal."
+    hooks:
+      - name: "carry-forward-emit"
+        floor: "F11"
+        authority_ceiling: "OBSERVE_ONLY"
+        reversibility: "R2"
+        action: "Append generational session record to carry_forward.json via flock."
+        can_block: false
+        emits: ["carry_forward_hash", "open_loops_count"]
+      - name: "safety-seal"
+        floor: "F1+F13"
+        authority_ceiling: "SEAL_RECEIPT"
+        reversibility: "R4"
+        action: "Stamp final audit verdict into VAULT999 ledger."
+        can_block: false
+        emits: ["seal_id", "vault_hash"]
+
+harness_hydration_map:
+  opencode:
+    manifest_path: "/root/.config/opencode/plugins/IPENCODE-HOOK-ORDER-MANIFEST.json"
+    dispatcher: "Direct TypeScript Plugin Suite with IPC bridge to federation_hook_engine.py"
+  claude_code:
+    manifest_path: "/root/AAA/plugins/claude-code-federation/hooks/hooks.json"
+    dispatcher: "Python hook wrappers executing federation_hook_engine.py"
+  antigravity:
+    manifest_path: "/root/AAA/registries/antigravity/hooks.json"
+    dispatcher: "CLI dispatch calls to federation_hook_engine.py"
+  hermes:
+    manifest_path: "/root/AAA/agents/hermes-asi/hooks/arifflow-hook/HOOK.yaml"
+    dispatcher: "shell_hooks.py + arifFlow :7073 ingest"
+  openclaw:
+    manifest_path: "/root/AAA/federation/protocols/openclaw-hook-design.md"
+    dispatcher: "Telegram edge middleware calling federation_hook_engine.py gate"

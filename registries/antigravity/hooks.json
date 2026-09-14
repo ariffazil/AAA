@@ -1,17 +1,44 @@
 {
+  "schema_version": "1.1.0",
+  "description": "Antigravity (FI-009) Constitutional Governance Hooks — Unified with Federation Hook Engine (FHE). Enforces F1 Amanah, F2 Truth, F4 Clarity (ΔS ≤ 0), F8 Simpler Path, F11 Audit, F13 Sovereign Attention Preservation.",
   "hooks": {
     "on_session_start": {
-      "command": "mcp:arifos/arif_session_init",
-      "description": "Initialize session through arifOS. Fetches current constitutional constraints and active hold states."
-    },
-    "post_file_edit": {
-      "command": "run: make test || mcp:arifos/arif_ops_measure",
-      "description": "After Forge mutates a file, optionally run tests or send telemetry to the kernel."
+      "command": "python3 /root/AAA/hooks/lib/federation_hook_engine.py boot --actor FI-009",
+      "floor": "F1+F11+F13",
+      "authority": "OBSERVE_ONLY",
+      "description": "Phase 000_BOOT: Initialize session, query active scars from /root/AAA/scars, bind session token, and prime context with Active Constraint Brief."
     },
     "pre_tool_call": {
-      "tools": ["run_command"],
-      "command": "mcp:arifos/arif_judge_deliberate",
-      "description": "Before major bash execution, briefly verify with APEX/kernel for 888_HOLD status."
+      "tools": ["run_command", "write_to_file", "replace_file_content", "call_mcp_tool"],
+      "command": "python3 /root/AAA/hooks/lib/federation_hook_engine.py gate",
+      "floor": "F1+F2+F13",
+      "authority": "MONOTONIC_GATE",
+      "description": "Phase 100_GATE: Monotonic restriction ladder check (ALLOW < OBSERVE_ONLY < SABAR < HOLD < VOID < REVOKED), unconditional read/probe pass-through, auto-minting fallback, and rollback journal entry."
+    },
+    "post_tool_call": {
+      "tools": ["*"],
+      "command": "python3 /root/AAA/hooks/lib/federation_hook_engine.py heal",
+      "floor": "F4+F11",
+      "authority": "OBSERVE_ONLY",
+      "description": "Phase 200_HEAL: Outcome analysis, auto-healing reflex for HTTP 406 content negotiation, missing dependencies, swap starvation, and git desync; emits signed outcome receipt."
+    },
+    "post_file_edit": {
+      "command": "python3 /root/AAA/hooks/lib/federation_hook_engine.py heal",
+      "floor": "F1+F11",
+      "authority": "AUDIT_RECEIPT",
+      "description": "Post-edit audit receipt stamping and verification of syntax/LSP health."
+    },
+    "session_idle": {
+      "command": "python3 /root/AAA/hooks/lib/federation_hook_engine.py metabolize",
+      "floor": "F8+F13",
+      "authority": "PROPOSE_BOUNDED",
+      "description": "Phase 300_METABOLIZE: Turn-level epistemic metabolism, Anti-Tangguh Sentry tripwire (blocks permission-asking on digital tasks), and autonomous scar crystallization."
+    },
+    "on_session_close": {
+      "command": "python3 /root/AAA/hooks/lib/federation_hook_engine.py seal",
+      "floor": "F11+F13",
+      "authority": "SEAL_RECEIPT",
+      "description": "Phase 999_SEAL: Append generational record to carry_forward.json via flock, seal to VAULT999 ledger, and flush rollback journal."
     }
   }
 }

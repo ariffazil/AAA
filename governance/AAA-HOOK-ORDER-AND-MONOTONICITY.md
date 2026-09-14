@@ -1,146 +1,118 @@
 # Hook Order and Monotonicity — Two-Agent Governed Execution
-> **Status:** DRAFT_SPEC_READY
+> **Status:** DRAFT_SPEC_READY  
+> **Canonical Registry SOT:** `/root/AAA/governance/AGENTIC-HOOK-MESH-V1.yaml`  
+> **Constitutional Authority:** F1 Amanah, F2 Truth, F4 Clarity, F8 Simpler Path, F11 Audit, F13 Sovereign Attention
 
-## Status: PATCH_READY (design only)
+## 1. Unified Hook Execution Order
 
-## Hook Execution Order
+All federation harnesses execute hooks in strict chronological and causal order:
 
 ```
-1. session.created
-   │
-   ├── kernel-bridge initializes empty governed state
-   ├── no execution permission created
-   ├── state = OBSERVE
-   └── receipt: session_init
+1. session.created [000_BOOT]
+   │  ├── scar-bootstrap: hydrate scar cache & carry-forward open loops (F1+F11)
+   │  ├── kernel-bridge: arif_init with Accept: application/json; bind session token (F13)
+   │  └── autonomy-reset: continuation counter reset; Digital = MUBAH (F13)
+   └── state = OBSERVE | receipt: session_init
 
-2. chat.messages.transform
-   │
-   ├── attach compact intent/authority reminder
-   ├── no authority mutation
-   └── state unchanged
+2. context.transform (optional pre-turn intent reminder)
+   │  └── attach compact intent/authority reminder (F2)
 
-3. tool.execute.before
-   │
-   ├── classify tool (READ/MUTATE/EXTERNAL/IRREVERSIBLE)
-   ├── fetch ExecutionContext from governed state
-   ├── verify action class against authority band
-   ├── verify plan_hash exists (if MUTATE)
-   ├── verify verifier_hash exists (if MUTATE)
-   ├── validate arifOS judgment (judge_verdict_ref)
-   ├── verify lease_ref exists (if MUTATE)
-   ├── verify lease not expired
-   ├── verify revocation_state == CLEAR
-   ├── if all pass: permit execution
-   │   └── state = EXECUTE_BOUNDED
-   └── if any fail: HOLD
-       └── state = HOLD with reason code
+3. tool.execute.before [100_GATE]
+   │  ├── classify tool (READ_ONLY / LOCAL_REVERSIBLE / EXTERNAL_DRAFT / IRREVERSIBLE / SEAL_F13)
+   │  ├── unconditional pass-through for read/probe/bootstrap tools (F2)
+   │  ├── auto-mint ACT token if mutating tool lacks session token (F1)
+   │  ├── forbidden target check (/etc/shadow, .secrets) → VOID (F1)
+   │  ├── monotonic ladder check (ALLOW < OBSERVE_ONLY < SABAR < HOLD < VOID < REVOKED)
+   │  └── record pre-state in rollback journal
+   └── if all pass: state = EXECUTE_BOUNDED | if any fail: state = HOLD
 
-4. tool.execute.after
-   │
-   ├── emit outcome receipt (actual, not desired)
-   ├── update receipt_chain
-   ├── request FRAME/arifFlow observation
-   └── state = MEASURE
+4. tool.execute.after [200_HEAL]
+   │  ├── emit execution outcome receipt (actual, not desired) with ΔS (F11)
+   │  ├── auto-healing reflex for HTTP 406 / missing dependency / zombie process / git desync (F1)
+   │  ├── update receipt chain and error frequency tracker (F2)
+   │  └── state = MEASURE
 
-5. session.idle
-   │
-   ├── collect diagnostics
-   ├── may write candidate-only record
-   ├── must never invoke tool mutations
-   └── state = LEARN_CANDIDATE (if applicable)
+5. session.idle [300_METABOLIZE]
+   │  ├── anti-tangguh sentry: tripwire permission questions on digital tasks (F13)
+   │  ├── autonomous scar crystallization: forge scar artifact if error repeats ≥ 2 times (F2+F11)
+   │  ├── turn-rsi pulse logging (F4)
+   │  └── bounded recursive improvement apply: mutate routing/prompt/thresholds (F8)
+   └── state = LEARN_BOUNDED
 
-6. session.closed
-   │
-   ├── clear execution context
-   ├── emit non-sensitive closeout receipt
-   ├── preserve only candidate memories
-   ├── no persistent state remains
-   └── state = cleared
+6. session.close [999_SEAL]
+   │  ├── carry-forward-emit: generational append to carry_forward.json via flock (F11)
+   │  ├── stamp immutable audit verdict into VAULT999 ledger (F13)
+   │  └── flush verified entries in rollback journal (F1)
+   └── state = SEALED
 ```
 
-## Monotonicity Rule
+---
 
-### Restriction Order
+## 2. Monotonicity Invariant
+
+### 2.1 Restriction Scale
 
 ```
 ALLOW < OBSERVE_ONLY < SABAR < HOLD < VOID < REVOKED
+  (0)        (1)          (2)     (3)     (4)      (5)
 ```
 
-### Rule
+### 2.2 Invariant Law
 
-A later hook may only maintain or increase restriction:
+A downstream hook or subsequent agent turn may only **maintain or increase** the restriction level:
 
-```
-verdict_{n+1} >= restriction(verdict_n)
-```
+$$\text{verdict}_{n+1} \ge \text{restriction}(\text{verdict}_n)$$
 
-### Violations
+### 2.3 Transition Validation Matrix
 
-| Attempt | Result |
-|---------|--------|
-| ALLOW → OBSERVE_ONLY | ALLOWED (increase) |
-| ALLOW → HOLD | ALLOWED (increase) |
-| OBSERVE_ONLY → ALLOW | BLOCKED (decrease) |
-| HOLD → ALLOW | BLOCKED (decrease) |
-| VOID → ALLOW | BLOCKED (decrease) |
-| REVOKED → ALLOW | BLOCKED (decrease) |
-| HOLD → VOID | ALLOWED (increase) |
+| Initial State | Target State | Result | Governance Action |
+|---|---|---|---|
+| `ALLOW` | `OBSERVE_ONLY` | ALLOWED | Ratchet UP |
+| `ALLOW` | `HOLD` | ALLOWED | Ratchet UP |
+| `HOLD` | `VOID` | ALLOWED | Ratchet UP |
+| `OBSERVE_ONLY` | `ALLOW` | **BLOCKED** | Degradation rejected |
+| `HOLD` | `ALLOW` | **BLOCKED** | Degradation rejected |
+| `VOID` | `ALLOW` | **BLOCKED** | Degradation rejected |
+| `REVOKED` | `ALLOW` | **BLOCKED** | Degradation rejected |
 
-### Violation Handling
+### 2.4 Violation Handling
 
-```
-if (verdict_{n+1} < restriction(verdict_n)):
-    emit VERDICT_MONOTONICITY_VIOLATION
-    force state = HOLD
-    emit receipt with violation details
+```python
+if incoming_restriction < current_restriction:
+    emit_violation("VERDICT_MONOTONICITY_VIOLATION")
+    effective_verdict = current_restriction
+    log_audit_receipt(violation=True)
 ```
 
-## Hook Dependencies
+---
+
+## 3. Hook Dependencies & Topological Invariants
 
 ```
 session.created
     └── prerequisite: none
 
-chat.messages.transform
-    └── prerequisite: session.created
-
 tool.execute.before
-    └── prerequisite: session.created, chat.messages.transform
+    └── prerequisite: session.created (auto-mints if missing)
 
 tool.execute.after
-    └── prerequisite: tool.execute.before (must succeed)
+    └── prerequisite: tool.execute.before (must have executed)
 
 session.idle
-    └── prerequisite: session.created
+    └── prerequisite: tool.execute.after or turn completion
 
-session.closed
-    └── prerequisite: session.created (fires regardless of other hooks)
+session.close
+    └── prerequisite: session.created (fires regardless of intermediate errors)
 ```
 
-## State Transitions
+---
 
-```
-OBSERVE → DIAGNOSE → PROPOSE → SANDBOX_TEST → AWAIT_VERIFIER → AWAIT_KERNEL → EXECUTE_BOUNDED → MEASURE → LEARN_CANDIDATE
-    │         │          │           │              │              │              │              │           │
-    └─────────┴──────────┴───────────┴──────────────┴──────────────┴──────────────┴──────────────┴───────────┘
-                                    Any state → HOLD (on violation, denial, expiry, revocation)
-                                    Any state → ROLLBACK (on explicit rollback authorization)
-```
+## 4. Evidence Requirements per Hook
 
-## Forbidden Transitions
-
-- OBSERVE → EXECUTE (must go through full pipeline)
-- PROPOSE → EXECUTE (must go through verifier + kernel)
-- HOLD → EXECUTE (must resolve hold condition first)
-- Any state → SEAL (seal is F13 only, never agent-accessible)
-
-## Evidence Requirements per Hook
-
-| Hook | Required Evidence |
-|------|-------------------|
-| session.created | Session ID, timestamp, authority band |
-| chat.messages.transform | Intent contract hash, transformation applied |
-| tool.execute.before | Tool classification, authority check, plan check, lease check |
-| tool.execute.after | Actual outcome, receipt ID, state hash |
-| session.idle | Diagnostic snapshot, candidate record (if any) |
-| session.closed | Closeout receipt, context cleared confirmation |
+| Hook Event | Floor Binding | Required Telemetry / Evidence | Authority Ceiling |
+|---|---|---|---|
+| `session.created` | F1 + F11 + F13 | Session ID, actor ID, token, loaded scar hashes | OBSERVE_ONLY |
+| `tool.execute.before` | F1 + F2 + F13 | Tool classification, args hash, journal entry ID | MONOTONIC_GATE |
+| `tool.execute.after` | F4 + F11 | Exit code, stdout/err hash, ΔS, auto-heal status | OBSERVE_ONLY |
+| `session.idle` | F8 + F13 | Discussion debt, Anti-Tangguh status, scar delta | PROPOSE_BOUNDED |
+| `session.close` | F11 + F13 | Carry-forward hash, seal ID, vault audit entry | SEAL_RECEIPT |
