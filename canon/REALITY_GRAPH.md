@@ -268,3 +268,18 @@ Governance Infrastructure YES · **Belief Revision System STRONGLY YES**.
 Kecerdasan ejen diukur objektif — sejauh mana ia mengurangkan entropi (ΔS < 0) tanpa mencipta kerosakan tak boleh ditarik balik (F1). **Tiada resit, tiada kebenaran.** Menyempurnakan metrik Intelligence ≈ Capability × d(Belief)/dt|Reality: bukan sahaja kadar revisi — tapi revisi yang membayar kos haba sendiri (heat-paying). Kepercayaan buta pada kelancaran output (F9 Hantu) ialah bahan pencemar pengukuran; resit ialah penawarnya.
 
 *Syarat kegagalan: metrik ini jadi hiasan kalau resit tak dituntut pada setiap tindakan ejen — ukuran tanpa resit = kelancaran, bukan kecerdasan.*
+
+---
+
+## 9. REALITY LANDING WITNESS (2026-09-14 · Mandate v1)
+
+**Mandate:** `ARIFOS::REALITY_LANDING_MANDATE::v1` (F13 Sovereign Authority)
+
+| Milestone | Target | Witness Evidence | Status |
+|---|---|---|---|
+| **Priority 1: Gate 2d** | Persistence surfaces (`/etc/cron.d`, `/etc/systemd/system`, `/root/.bashrc`) | 33 regression tests pass in `tests/runtime/test_gate_2d_sensitive_path.py`; commit `84b639de2` deployed. | ✅ **LANDED** |
+| **Priority 2: Path-5 Swarm** | Parallel agent isolation & reconciliation | `test_path5_e2e.py` passes in 6.11s; 7 cryptographic receipts logged in `receipts.jsonl`; CI workflow added. | ✅ **WITNESSED** |
+| **Priority 3: Ghost Services** | Ghost RAM daemons without disk binaries | `agentgateway-shadow` disabled; 5 `apa-*-bridge` units migrated to `/usr/bin/python3` (all active). | ✅ **REMOVED** |
+| **Priority 4: Naming Governance** | Single canonical Reality Graph | Duplicate trees pruned (`reality-graph/`, `artifacts/entropy-reduction/`); canonical graph converges here. | ✅ **ALIGNED** |
+| **Priority 5: Model Reality** | `apex-888` fallback ladder | DeepSeek PAYG ($14.28) & MiniMax-M3 elevated to Orders 1–2 in `litellm-config.yaml` (HTTP 200 live). | ✅ **VERIFIED** |
+
