@@ -4,14 +4,13 @@
 # Constitutional Authority: F1 Amanah, F2 Truth, F4 Clarity (ΔS ≤ 0), F8 Simpler Path, F11 Audit, F13 Sovereign Attention Preservation
 # Standard: Prompt Version AAA-HOOK-FORGE-V1.0
 #
-# v1.3.0 (2026-09-14) — SEPARATION-OF-POWERS CORRECTION (FI-008, sovereign directive
-#   APEX-ZEN-HOOK-DEFUSE-20260914). Prior versions declared `must_block_on` and
-#   `must_block: true`, asserting that hooks deny. They do not. This revision states
-#   which layer may refuse, and removes every claim that a hook is a judge or a BOP.
+# v1.3.1 (2026-09-14) — GAP REGISTER REFRESHED against measured reality. Three of the
+#   v1.3.0 gaps were stale within the hour because the mesh was being rewritten
+#   concurrently. Each gap below now cites the live observation that establishes it.
 
-version: "1.3.0"
+version: "1.3.1"
 schema_id: "arifos.governance.agentic_hook_mesh.v1"
-last_updated: "2026-09-14T01:30:00Z"
+last_updated: "2026-09-14T01:35:00Z"
 doctrine: "DITEMPA BUKAN DIBERI — Governed emergence across all federation warga."
 
 # =============================================================================
@@ -19,9 +18,10 @@ doctrine: "DITEMPA BUKAN DIBERI — Governed emergence across all federation war
 # =============================================================================
 # Four distinct layers. Only two of them may refuse an action.
 #
-#   1. HOOK MESH      (this spec)   → OBSERVE, ENRICH, TRACE, HEAL, ESCALATE
-#                                     MAY NOT refuse. Emits a verdict field that is
-#                                     informational to the harness only.
+#   1. HOOK MESH      (this spec)   → OBSERVE, ENRICH, TRACE, HEAL, ESCALATE,
+#                                     and TRANSMIT a kernel verdict into the
+#                                     enforcement point (Policy Enforcement).
+#                                     MAY NOT decide (Policy Decision).
 #   2. KERNEL         (arifOS :8088) → JUDGE. Sole issuer of constitutional
 #                                     verdicts: ALLOW / HOLD / VOID / REVOKED.
 #   3. EXECUTION MEMBRANE (harness permission layer, A-FORGE ArifJudge)
@@ -30,15 +30,15 @@ doctrine: "DITEMPA BUKAN DIBERI — Governed emergence across all federation war
 #                                     a tool call may actually be stopped.
 #   4. SOVEREIGN      (F13 / Arif)   → outside the machine.
 #
-# CONSEQUENCE FOR THIS SPEC: a hook entry may declare escalation requirements, never
-# refusal. `must_block_on` was removed in v1.3.0 and replaced by `must_escalate_on`.
-# Any hook that stops work is a defect, not a feature — unless it is enforcing one of
-# the enumerated fail-safe classes below, which are DEFERRALS to the kernel, not
-# verdicts.
+# THE CRITICAL DISTINCTION (earned 2026-09-14): "the hook must not JUDGE" does NOT
+# mean "nothing enforces". A hook that records a kernel VOID and then proceeds makes
+# the judge a commentator and the ledger an assertion of governance that never
+# happened. Transmitting the kernel's decision into the boundary is ENFORCEMENT, not
+# JUDGEMENT — a firewall applying a policy is not the policy author.
 #
-# ENUMERATED FAIL-SAFE CLASSES (non-discretionary, fixed list — a firewall rule is not
-# a judge). Derived from FORBIDDEN_MUTATION_TARGETS. A hook may DEFER (HOLD) — never
-# annul (VOID) — on exactly these, and must emit an escalation receipt:
+# ENUMERATED FAIL-SAFE CLASSES (non-discretionary, fixed list). A hook may DEFER or
+# TRANSMIT a refusal on exactly these; it may never invent one, and it may never
+# convert a kernel refusal into an allow.
 #   - /etc/shadow
 #   - /etc/sudoers            (and /etc/sudoers.d/*)
 #   - /root/.ssh/authorized_keys
@@ -53,6 +53,7 @@ separation_of_powers:
   hook_forbidden_verdicts: ["VOID", "DENY", "REVOKED"]
   hook_permitted_outcomes: ["ALLOW", "ALLOW_WITH_CONSTRAINTS", "HOLD"]
   hold_semantics: "HOLD emitted by a hook means 'defer to kernel', never 'this action is annulled'. Escalation receipt is mandatory."
+  transmit_semantics: "A hook MUST carry the kernel's verdict to the enforcement point unchanged. Overriding a kernel refusal with ALLOW is a governance defect, not a reading of the sensor doctrine."
   escalation_receipt_fields: ["escalation_required", "escalation_target", "escalation_floor", "escalation_route", "kernel_reachable"]
 
 core_properties:
@@ -78,7 +79,6 @@ core_properties:
       - authority_ceiling
       - reversibility_class
       - truth_class
-    # v1.3.0: was `must_block_on`. Hooks escalate; the kernel and membrane refuse.
     must_escalate_on:
       - F1_missing_snapshot
       - F11_no_receipt
@@ -86,8 +86,9 @@ core_properties:
       - F13_sovereign_boundary_breach
     must_not:
       - issue a constitutional verdict
-      - terminate the agent process
-      - convert its own detection into an execution stop
+      - terminate the agent process for an ordinary reversible action
+      - convert a kernel refusal into an allow
+      - claim an execution outcome the hook cannot observe
 
 canonical_lifecycle_events:
   1.aaa.session.opened:
@@ -103,7 +104,7 @@ canonical_lifecycle_events:
     hooks: ["intake-screening", "instruction-quarantine"]
 
   3.aaa.action.proposed:
-    description: "Pre-execution sensing: capability check, enumerated-target detection, rollback entry. Emits escalation for the kernel; refuses nothing itself."
+    description: "Pre-execution sensing: capability check, enumerated-target detection, rollback entry. Transmits the kernel verdict to the enforcement point."
     must_escalate: true
     escalation_condition: "enumerated fail-safe class matched, or kernel unreachable while action class >= EXTERNAL_DRAFT"
     core_outputs: ["verdict", "escalation_receipt", "capability_token_id", "rollback_journal_id"]
@@ -112,7 +113,7 @@ canonical_lifecycle_events:
   4.aaa.action.completed:
     description: "Post-execution telemetry, postcondition verification, outcome receipt."
     must_escalate: false
-    core_outputs: ["receipt_hash", "exit_class", "delta_entropy_dS"]
+    core_outputs: ["receipt_hash", "exit_class", "delta_entropy_dS", "execution_status", "consequence"]
     hooks: ["audit-receipt", "entropy-delta", "fq-update"]
 
   5.aaa.action.failed:
@@ -150,7 +151,7 @@ harness_hydration_map:
   opencode:
     manifest_path: "/root/.config/opencode/plugins/IPENCODE-HOOK-ORDER-MANIFEST.json"
     dispatcher: "TypeScript Plugin Suite with IPC bridge to federation_hook_engine.py"
-    enforcement_owner: "opencode permission layer + arifos-judge-gate.ts (advisory routing)"
+    enforcement_owner: "judge-gate.ts (PEP: kernel VOID raises KERNEL_VOID and refuses)"
     event_mappings:
       session.created: { maps_to: "aaa.session.opened", fidelity: "native" }
       tool.execute.before: { maps_to: "aaa.action.proposed", fidelity: "native" }
@@ -165,8 +166,7 @@ harness_hydration_map:
     dispatcher: "Python hook wrappers"
     enforcement_owner: "arifOS kernel verdict via f1-amanah-preshell.py"
     # NOTE (FI-008, 2026-09-14): f1-amanah-preshell.py declares NO forbidden-target
-    # screen. The enumerated fail-safe classes are NOT checked on this path. Tracked
-    # gap: CLAUDE-PATH-TARGET-SCREEN.
+    # screen. The enumerated fail-safe classes are NOT checked on this path.
     event_mappings:
       SessionStart: { maps_to: "aaa.session.opened", fidelity: "native" }
       UserPromptSubmit: { maps_to: "aaa.turn.received", fidelity: "native" }
@@ -180,7 +180,7 @@ harness_hydration_map:
   antigravity:
     manifest_path: "/root/AAA/registries/antigravity/hooks.json"
     dispatcher: "CLI dispatch calls to federation_hook_engine.py"
-    enforcement_owner: "harness honours the CLI gate output — CLI is the membrane on this path"
+    enforcement_owner: "federation_hook_engine.gate (CLI output IS the membrane here)"
     event_mappings:
       on_session_start: { maps_to: "aaa.session.opened", fidelity: "derived" }
       pre_tool_call: { maps_to: "aaa.action.proposed", fidelity: "derived" }
@@ -209,23 +209,69 @@ harness_hydration_map:
 # KNOWN GAPS — declared, not hidden
 # =============================================================================
 known_gaps:
-  - id: ENGINE-VERDICT-OVERREACH
+  - id: ENUMERATED-REFUSAL-NO-END-TO-END-TEST
     status: OPEN
+    observed: >
+      On 2026-09-14 the enumerated-target branch of federation_hook_engine.gate()
+      was observed in TWO different states minutes apart. At 09:19 and again at
+      09:30:14 it returned verdict=VOID / execution_status=NOT_EXECUTED /
+      consequence=PREVENTED_BY_KERNEL_VOID. At 09:29 it returned verdict=ALLOW /
+      execution_status=PROCEEDED / consequence=KERNEL_VERDICT_RECORDED_SENSOR_PROCEEDED,
+      which would have permitted a write to /etc/sudoers.d/evil.
     detail: >
-      hooks/lib/federation_hook_engine.py returns verdict=VOID on the enumerated
-      fail-safe classes, and again when the tracked ladder reaches VOID. Both blocks
-      are self-annulling: only the kernel may issue VOID. The same function's own
-      comments state the opposite intent ("advisory enrichment, not blocking",
-      "context only — hook doesn't block"), so the file contradicts itself.
-    prescribed_fix: "Return HOLD + escalation receipt (defer-to-kernel) instead of VOID; drop the false execution_status assertion."
+      No automated test asserts the enumerated class is refused through the CLI /
+      membrane path. The adversarial suite exercises gate() in-process only, so a
+      flip to ALLOW passes every suite green. That is why the flapping above was
+      silent.
+    prescribed_fix: "Add a CLI-level assertion: `federation_hook_engine.py gate` on an enumerated target must emit verdict != ALLOW and execution_status == NOT_EXECUTED."
+    owner: UNASSIGNED
+
+  - id: ENGINE-VERDICT-OVERREACH
+    status: NARROWED
+    observed: >
+      Live CLI probe 2026-09-14T01:30Z: verdict=VOID, kernel_verdict=VOID,
+      verdict_source=kernel_arif_judge, hook_role=sensor_and_transport,
+      execution_status=NOT_EXECUTED, consequence=PREVENTED_BY_KERNEL_VOID.
+    detail: >
+      The engine now forwards enumerated targets to arif_judge and transmits the
+      returned verdict instead of synthesising one. Remaining: when the kernel is
+      unreachable it defaults the verdict to "VOID" (fail-safe — it refuses — but
+      VOID is a kernel-only word). Precision fix: HOLD + consequence
+      FAILSAFE_KERNEL_UNREACHABLE.
+    prescribed_fix: "Replace the `or \"VOID\"` fallback with HOLD + FAILSAFE_KERNEL_UNREACHABLE so the hook never spells a kernel-only verdict."
     owner: FI-008
+
+  - id: AUTHORITY-CEILINGS-REMOVED
+    status: OPEN
+    observed: "arifos-federation-manifest-compiler.ts authorityPermissions() returns { '*': 'allow' } for every ceiling."
+    detail: >
+      Per-ceiling capability masks (JUDGE_ONLY, COMPUTE_ONLY, REFLECT_ONLY,
+      DISPLAY_ONLY, METABOLIZE_ONLY) no longer restrict any tool at the harness
+      boundary. This changes AGENT AUTHORITY across the federation, not hook
+      plumbing.
+    prescribed_fix: "Restore per-ceiling masks, or replace them with kernel-derived capability tokens. Requires F13 direction: agent authority scope is a direction change, not a cleanup."
+    owner: F13-PENDING
+
   - id: CLAUDE-PATH-TARGET-SCREEN
     status: OPEN
-    detail: "f1-amanah-preshell.py performs session binding but screens no forbidden target, so the enumerated fail-safe classes are unguarded on the Claude Code PreToolUse path."
+    observed: "grep for /etc/shadow|/etc/sudoers|authorized_keys in f1-amanah-preshell.py returns nothing."
+    detail: "The Claude Code PreToolUse path screens no forbidden target, so the enumerated fail-safe classes are unguarded there regardless of engine state."
     prescribed_fix: "Route PreToolUse target strings through the enumeration before session handling."
     owner: UNASSIGNED
+
   - id: RECEIPTS-LACK-CONSEQUENCE
-    status: OPEN
-    detail: "opencode_receipts.jsonl records decisions only. No outcome / execution_status / file_delta field exists (0 occurrences in 84,277 receipts), so no receipt can prove a verdict was honoured."
-    prescribed_fix: "Add execution_status + consequence to every receipt; assert verdict/outcome agreement."
+    status: PARTIAL
+    observed: "judge-gate.ts and the engine now emit execution_status + consequence (confirmed in the live CLI probe)."
+    detail: "The fields exist for new receipts, but nothing cross-checks that the verdict and the recorded outcome agree, and historical receipts lack the fields entirely."
+    prescribed_fix: "Add a reconciliation assertion: for every receipt carrying a verdict, consequence must be consistent with execution_status."
     owner: UNASSIGNED
+
+  - id: GATE-SILENT-OUTAGE-20260914
+    status: RESOLVED
+    observed: "git show HEAD:arifos-judge-gate.ts | bun build -> 'error: Unexpected catch'. smoke-test reported 'JudgeGate hooks=0 err=BuildMessage: Unexpected catch'."
+    detail: >
+      An unclosed if-block left by the degraded-branch refactor made judge-gate.ts
+      fail to compile, so it registered ZERO hooks — a dead constitutional gate — while
+      receipts reported "6/6 plugins active" and "100% PASS". Repaired 09:29:04Z.
+    prescribed_fix: "Guarded by hook_mesh_check C8, which bun-builds every OpenCode plugin and fails on any that does not compile."
+    owner: FI-008
