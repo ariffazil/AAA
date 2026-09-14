@@ -3374,6 +3374,19 @@ app.get('/cockpit/queue_depth', async (req, res) => {
   }
 });
 
+// ── Federation State Plane — canonical single-source-of-truth (forged 2026-09-14)
+// Reads from federation_state.json written by /root/AAA/scripts/federation_state.py
+// Surfaces: CRF terminal, web cockpit, machine API — all from one object.
+app.get('/api/state', (req, res) => {
+  try {
+    const data = JSON.parse(fs.readFileSync('/root/AAA/state/federation_state.json', 'utf8'));
+    res.setHeader('Cache-Control', 'no-store');
+    res.json(data);
+  } catch (_) {
+    res.status(503).json({ error: 'state_not_ready', hint: 'run: python3 /root/AAA/scripts/federation_state.py write' });
+  }
+});
+
 // Heartbeat receiver — organs can POST their liveness directly
 app.post('/cockpit/heartbeat', express.json(), (req, res) => {
   const { agent_id, status, load, capabilities, tools_count, latency_ms } = req.body || {};
