@@ -106,7 +106,6 @@ No backup system exists for:
 | Tool | reversibility_score |
 |------|--------------------|
 | arif_judge | 0.0 |
-| arif_judge_deliberate | 0.0 |
 | arif_seal | 0.0 |
 | arif_forge | 0.2 |
 | arif_act | 0.2 |
