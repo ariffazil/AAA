@@ -195,7 +195,7 @@ def check_declared_defects(sot_text: str) -> None:
             fail("C5 UNDECLARED: Claude PreToolUse screens no forbidden target and no known_gap records it")
 
     # C6 — every gap must be triaged
-    for block in re.finditer(r"-\s*id:\s*([A-Z0-9\-_]+)([\s\S]{0,700}?)(?=\n\s*-\s*id:|\Z)", sot_text):
+    for block in re.finditer(r"-\s*id:\s*([A-Z0-9\-_]+)([\s\S]{0,3000}?)(?=\n\s*-\s*id:|\Z)", sot_text):
         gid, body_text = block.group(1), block.group(2)
         for field in ("status", "owner", "prescribed_fix"):
             if field not in body_text:
