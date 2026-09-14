@@ -1,0 +1,189 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aaa.governed_execution_state.v1",
+  "title": "AAA Governed Execution State",
+  "description": "Shared state object for two-agent governed execution loop. Read by builder and verifier. Written only by kernel-bridge and execution receipts.",
+
+  "type": "object",
+  "required": [
+    "schema",
+    "trace_id",
+    "session_id",
+    "actor_id",
+    "primary_human_id",
+    "authority_band",
+    "action_class",
+    "state",
+    "issued_at",
+    "expires_at"
+  ],
+
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "aaa.governed_execution_state.v1"
+    },
+    "trace_id": {
+      "type": "string",
+      "pattern": "^trc_[a-f0-9]{16}$",
+      "description": "Unique trace identifier for this execution cycle"
+    },
+    "session_id": {
+      "type": "string",
+      "pattern": "^sess_[a-f0-9]{16}$",
+      "description": "Hermes session identifier"
+    },
+    "actor_id": {
+      "type": "string",
+      "enum": ["AAA-GEA-01", "AAA-GEV-01"],
+      "description": "Agent performing the current action"
+    },
+    "primary_human_id": {
+      "type": "string",
+      "const": "arif",
+      "description": "Sovereign human identifier"
+    },
+    "authority_band": {
+      "type": "string",
+      "enum": ["OBSERVE_ONLY", "LIMITED_MUTATE", "BOUNDED_EXECUTE", "EXTERNAL_IRREVERSIBLE"],
+      "description": "Current authority level for this execution cycle"
+    },
+    "intent_contract_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "Hash of the primary human intent contract"
+    },
+    "action_class": {
+      "type": "string",
+      "enum": ["READ", "MUTATE", "EXTERNAL", "IRREVERSIBLE"],
+      "description": "Classification of the proposed action"
+    },
+    "plan_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "Hash of the builder's proposed plan"
+    },
+    "verifier_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "Hash of the verifier's evidence report"
+    },
+    "judge_verdict_ref": {
+      "type": "string",
+      "description": "Opaque reference to arifOS judgment (empty string = not yet judged)"
+    },
+    "lease_ref": {
+      "type": "string",
+      "description": "Opaque reference to execution lease (empty string = no lease)"
+    },
+    "lease_expiry": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Lease expiration timestamp (ISO 8601)"
+    },
+    "revocation_state": {
+      "type": "string",
+      "enum": ["CLEAR", "REVOKED", "UNKNOWN"],
+      "description": "Current revocation status"
+    },
+    "policy_version": {
+      "type": "string",
+      "description": "arifOS policy version in effect"
+    },
+    "runtime_surface_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "Hash of the current runtime surface state"
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "OBSERVE",
+        "DIAGNOSE",
+        "PROPOSE",
+        "SANDBOX_TEST",
+        "AWAIT_VERIFIER",
+        "AWAIT_KERNEL",
+        "AWAIT_HUMAN",
+        "EXECUTE_BOUNDED",
+        "MEASURE",
+        "LEARN_CANDIDATE",
+        "HOLD",
+        "ROLLBACK"
+      ],
+      "description": "Current execution state"
+    },
+    "issued_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "State creation timestamp"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "State expiration timestamp"
+    },
+    "receipt_chain": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["receipt_id", "timestamp", "actor", "action", "result"],
+        "properties": {
+          "receipt_id": {
+            "type": "string",
+            "pattern": "^rcpt_[a-f0-9]{16}$"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "actor": {
+            "type": "string",
+            "enum": ["AAA-GEA-01", "AAA-GEV-01", "arifos", "aforge", "ariflow", "frame"]
+          },
+          "action": {
+            "type": "string"
+          },
+          "result": {
+            "type": "string",
+            "enum": ["SUCCESS", "FAILURE", "HOLD", "DENIED", "REVOKED"]
+          }
+        }
+      },
+      "description": "Chain of receipts for this execution cycle"
+    }
+  },
+
+  "allOf": [
+    {
+      "if": {
+        "properties": { "action_class": { "const": "EXTERNAL" } }
+      },
+      "then": {
+        "properties": {
+          "state": { "enum": ["OBSERVE", "DIAGNOSE", "PROPOSE", "HOLD", "AWAIT_HUMAN"] }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "action_class": { "const": "IRREVERSIBLE" } }
+      },
+      "then": {
+        "properties": {
+          "state": { "const": "HOLD" }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "revocation_state": { "const": "UNKNOWN" } }
+      },
+      "then": {
+        "properties": {
+          "state": { "const": "HOLD" }
+        }
+      }
+    }
+  ]
+}
