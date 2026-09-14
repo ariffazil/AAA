@@ -281,6 +281,14 @@ def derive_health_verdict(organs: list[dict]) -> str:
         return "CRITICAL"
 
 
+# ── Helpers ────────────────────────────────────────────────────────────
+
+def _safe_add(*vals):
+    """Sum optional numeric values. Returns None if no numeric value present."""
+    nums = [v for v in vals if isinstance(v, (int, float))]
+    return sum(nums) if nums else None
+
+
 # ── Main ───────────────────────────────────────────────────────────────
 
 def federation_state() -> dict:
