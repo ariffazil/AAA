@@ -1,0 +1,146 @@
+# AAA-REPAIR-ALLOWLIST-V1.yaml
+# Bounded Reversible Self-Healing Playbooks
+# Governed by F1 AMANAH, F2 TRUTH, F4 REVERSIBILITY, F8 JAUHARI
+version: "1.0.0"
+schema: "aaa.repair.allowlist.v1"
+doctrine_ref: "AAA-HOOK-FORGE-V1.0"
+authority: "Autonomous for R0-R2 reversible local recovery only. R3+ requires Arif/888."
+
+playbooks:
+  - playbook_id: "PB-406-ACCEPT-HEADER-RECONCILIATION"
+    name: "HTTP 406 Content Negotiation / Header Drift Repair"
+    description: "Resolves Accept/Content-Type mismatches between client plugins and local kernel/service APIs"
+    trigger_signature:
+      error_type: "HTTP_STATUS"
+      status_code: 406
+      pattern: "arifOS validation HTTP 406"
+    preconditions:
+      - "Target service is local (127.0.0.1 or unix socket)"
+      - "Request payload is syntactically valid JSON"
+    max_attempts: 2
+    timeout_sec: 10
+    reversibility: "REVERSIBLE_LOCAL"
+    risk_class: "R1"
+    blast_radius: "client_request_headers_only"
+    required_evidence:
+      - "original_request_headers"
+      - "server_accepted_mime_types"
+      - "reconciled_request_headers"
+      - "post_repair_http_status"
+    forbidden_actions:
+      - "modifying_server_authentication_logic"
+      - "bypassing_policy_gates"
+      - "altering_remote_request_headers"
+    action_sequence:
+      - step: 1
+        action: "probe_options"
+        target: "service_endpoint"
+      - step: 2
+        action: "normalize_headers"
+        set:
+          Accept: "application/json, text/plain, */*"
+          Content-Type: "application/json"
+      - step: 3
+        action: "replay_request"
+
+  - playbook_id: "PB-VENV-MISSING-DEV-DEPENDENCY"
+    name: "Virtualenv / Dev Dependency Drift Repair"
+    description: "Installs missing declared local dev/test dependencies in project virtual environment"
+    trigger_signature:
+      error_type: "MODULE_NOT_FOUND"
+      pattern: "ModuleNotFoundError: No module named '([^']+)'"
+    preconditions:
+      - "Active environment is a virtualenv or local dev environment"
+      - "Target package is present in pyproject.toml / requirements-dev.txt"
+      - "Network access is allowed or package is cached locally"
+    max_attempts: 1
+    timeout_sec: 60
+    reversibility: "REVERSIBLE_LOCAL"
+    risk_class: "R2"
+    blast_radius: "local_venv_site_packages"
+    required_evidence:
+      - "missing_module_name"
+      - "matched_requirement_spec"
+      - "pip_install_log_summary"
+      - "import_verification_result"
+    forbidden_actions:
+      - "installing_unvetted_remote_packages"
+      - "mutating_global_system_python"
+      - "running_as_root_outside_isolated_venv"
+      - "bypassing_hash_verification_when_pinned"
+    action_sequence:
+      - step: 1
+        action: "verify_in_manifest"
+        files: ["pyproject.toml", "requirements.txt", "requirements-dev.txt"]
+      - step: 2
+        action: "install_dependency"
+        command: "python3 -m pip install {module_spec}"
+      - step: 3
+        action: "verify_import"
+        command: "python3 -c 'import {module}'"
+
+  - playbook_id: "PB-ZOMBIE-PROCESS-LOCAL-CLEANUP"
+    name: "Zombie / Stale Local Process Pruning"
+    description: "Cleans up orphaned or dead background task runner processes on 127.0.0.1"
+    trigger_signature:
+      error_type: "RESOURCE_BUSY"
+      pattern: "Address already in use|lock file exists and process is dead"
+    preconditions:
+      - "Process is owned by the current user or dev harness"
+      - "PID in lockfile does not exist or is in defunct state"
+      - "Target port is in dev range (e.g. 18000-19999) or local test harness"
+    max_attempts: 2
+    timeout_sec: 15
+    reversibility: "REVERSIBLE_LOCAL"
+    risk_class: "R2"
+    blast_radius: "orphan_child_process_only"
+    required_evidence:
+      - "orphan_pid"
+      - "orphan_command_line"
+      - "dead_lock_file_path"
+      - "post_cleanup_port_status"
+    forbidden_actions:
+      - "killing_core_federation_daemons (caddy, postgres, redis, qdrant, litellm)"
+      - "killing_parent_agent_or_ssh_session"
+      - "recursive_kill_on_root_processes"
+    action_sequence:
+      - step: 1
+        action: "verify_orphan_status"
+      - step: 2
+        action: "graceful_term"
+        signal: "SIGTERM"
+        grace_period_sec: 5
+      - step: 3
+        action: "cleanup_stale_lockfile"
+
+  - playbook_id: "PB-GIT-CONFLICT-AUTO-ARTIFACTS"
+    name: "Clean Git Conflict Recovery for Auto-Generated Artifacts"
+    description: "Reconciles git merge/rebase conflicts in auto-generated machine logs, timestamps, and indexes"
+    trigger_signature:
+      error_type: "GIT_CONFLICT"
+      pattern: "CONFLICT \\(content\\): Merge conflict in (.*)"
+    preconditions:
+      - "Conflicted files are strictly in auto-generated paths (e.g. logs/, artifacts/auto/, .cache/)"
+      - "No manual source code or constitutional markdown is conflicted"
+      - "Git working directory clean prior to merge/rebase attempt"
+    max_attempts: 1
+    timeout_sec: 30
+    reversibility: "REVERSIBLE_WITH_CHECKPOINT"
+    risk_class: "R2"
+    blast_radius: "transient_artifact_files_only"
+    required_evidence:
+      - "conflicted_file_paths"
+      - "pre_reconcile_git_sha"
+      - "reconciliation_strategy_applied"
+      - "git_status_clean_verification"
+    forbidden_actions:
+      - "force_pushing_to_origin"
+      - "dropping_uncommitted_human_changes"
+      - "overwriting_canonical_governance_specs"
+    action_sequence:
+      - step: 1
+        action: "filter_artifact_paths"
+      - step: 2
+        action: "recompute_or_checkout_union"
+      - step: 3
+        action: "git_add_and_verify"
