@@ -1,0 +1,36 @@
+name: "Path-5 Swarm Witness CI"
+
+on:
+  push:
+    paths:
+      - "path5/**"
+      - ".github/workflows/path5-witness.yml"
+  pull_request:
+    paths:
+      - "path5/**"
+  workflow_dispatch:
+
+concurrency:
+  group: path5-witness-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  path5-e2e-witness:
+    if: github.actor != 'dependabot[bot]' && github.actor != 'app/dependabot'
+    name: "Path-5 Swarm Witness (Parallel Isolation + Reconciler)"
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install pytest
+
+      - name: Execute Path-5 E2E Swarm Proof
+        run: |
+          pytest path5/test_path5_e2e.py -v
