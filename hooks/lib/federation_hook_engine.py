@@ -233,14 +233,19 @@ class FederationHookEngine:
         if incoming_level > self.current_restriction:
             self.current_restriction = incoming_level
 
+        # APEX ZEN: Restriction state is context, enforced if at VOID
         if self.current_restriction >= RestrictionLevel.VOID:
             return {
                 "phase": HookPhase.GATE.value,
                 "verdict": "VOID",
+                "kernel_verdict": self.current_restriction.name,
+                "verdict_source": "kernel_monotonicity",
+                "hook_role": "sensor_and_transport",
                 "execution_status": "NOT_EXECUTED",
+                "consequence": f"ACTIVE_RESTRICTION_{self.current_restriction.name}_RECORDED",
                 "restriction_level": self.current_restriction.name,
                 "tool_name": tool_name,
-                "reason": f"Active monotonic restriction in place: {self.current_restriction.name}",
+                "reason": f"Active restriction {self.current_restriction.name} enforced.",
                 "session_token": provided_token or self.session_token,
             }
 
@@ -272,7 +277,7 @@ class FederationHookEngine:
                 })
 
         if security_warnings:
-            # SENSOR & PEP: Forward target to kernel arif_judge for adjudication
+            # SENSOR: Forward target to kernel arif_judge for adjudication
             kernel_resp = self._call_kernel("tools/call", {
                 "name": "arif_judge",
                 "arguments": {
@@ -292,6 +297,7 @@ class FederationHookEngine:
             return {
                 "phase": HookPhase.GATE.value,
                 "verdict": kernel_verdict,
+                "kernel_verdict": kernel_verdict,
                 "verdict_source": "kernel_arif_judge",
                 "hook_role": "sensor_and_transport",
                 "execution_status": "NOT_EXECUTED",
@@ -299,7 +305,7 @@ class FederationHookEngine:
                 "restriction_level": self.current_restriction.name,
                 "tool_name": tool_name,
                 "security_warnings": security_warnings,
-                "reason": f"Kernel arif_judge constitutional refusal: access to forbidden target {security_warnings[0]['target']}",
+                "reason": f"Access to forbidden target detected: {security_warnings[0]['target']}",
                 "session_token": provided_token or self.session_token,
             }
 
