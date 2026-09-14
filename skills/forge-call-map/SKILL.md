@@ -1,6 +1,6 @@
 ---
 id: FORGE-call-map
-name: FORGE-call-map
+name: forge-call-map
 description: "Use when mapping every callable in the federation or planning boot-time call contracts between FI harnesses. Use when mapping every callable in the federation or planning boot-time call contracts between FI harnesses. Boot-time call contract: how to invoke every FI harness, organ MCP, A2A target, and FED socket. AAA 3-layer cards = directory (who). This skill = telephone (how). Load on session start."
 version: 1.0.0
 risk_tier: low

@@ -1,6 +1,6 @@
 ---
 id: subagent-spawn-template
-name: FORGE-subagent-spawn
+name: forge-subagent-spawn
 version: 1.1.0
 description: "Standard contract for spawning bounded, auditable sub-agents — input contract, output schema, evidence requirements."
 owner: AAA

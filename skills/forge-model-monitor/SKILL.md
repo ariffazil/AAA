@@ -1,5 +1,5 @@
 ---
-name: FORGE-model-monitor
+name: forge-model-monitor
 id: forge-model-monitor
 version: 1.1.0
 risk_tier: low

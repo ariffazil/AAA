@@ -1,5 +1,5 @@
 ---
-name: FORGE-lsp-pre-edit-gate
+name: forge-lsp-pre-edit-gate
 id: forge-lsp-pre-edit-gate
 owner: A-FORGE · 333-AGI
 risk_tier: low

@@ -1,6 +1,6 @@
 ---
 id: FORGE-tailwind-tokens
-name: FORGE-tailwind-tokens
+name: forge-tailwind-tokens
 version: 1.0.0-2026.07.17
 description: "Tailwind design tokens — Trinity Design System for federation cockpit and web surfaces."
 owner: A-FORGE

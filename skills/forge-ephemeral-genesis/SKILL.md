@@ -1,5 +1,5 @@
 ---
-name: FORGE-ephemeral-genesis
+name: forge-ephemeral-genesis
 id: forge-ephemeral-genesis
 owner: A-FORGE
 risk_tier: low

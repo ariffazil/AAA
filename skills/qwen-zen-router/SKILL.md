@@ -1,6 +1,6 @@
 ---
 id: QWEN-zen-router
-name: QWEN-zen-router
+name: qwen-zen-router
 description: >
   Orthogonal axis routing for Qwen Code (FI-003). Given an intent, classify it across 9
   orthogonal axes (organ, action, mode, tier, layer, surface, scope, time, reversibility)

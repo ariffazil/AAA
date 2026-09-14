@@ -1,6 +1,6 @@
 ---
 id: FORGE-mcp-a2a-agentic
-name: FORGE-mcp-a2a-agentic
+name: forge-mcp-a2a-agentic
 version: 1.0.0-2026.07.17
 description: "MCP + A2A protocol integration — agentic inter-agent communication and task delegation."
 owner: A-FORGE
