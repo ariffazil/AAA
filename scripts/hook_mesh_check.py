@@ -219,6 +219,35 @@ def check_declared_defects(sot_text: str) -> None:
     else:
         note("C7 active scar path carries no auto-crystallized candidate")
 
+    # C8 — the OpenCode gate plugin must actually COMPILE.
+    # On 2026-09-14 arifos-judge-gate.ts failed to compile (unclosed if-block left by
+    # the degraded-branch refactor). It registered hooks=0 — a silently dead
+    # constitutional gate — while receipts reported "6/6 plugins active" and
+    # "100% PASS". Nothing checked. This does.
+    import shutil as _shutil
+    import subprocess as _subprocess
+    import tempfile as _tempfile
+
+    plugin_dir = Path("/root/.config/opencode/plugins")
+    if _shutil.which("bun") and plugin_dir.exists():
+        ts_files = sorted(plugin_dir.glob("*.ts"))
+        broken: list[str] = []
+        for ts in ts_files:
+            with _tempfile.NamedTemporaryFile(suffix=".js", delete=True) as out:
+                proc = _subprocess.run(
+                    ["bun", "build", "--target=bun", str(ts), f"--outfile={out.name}"],
+                    capture_output=True, text=True, timeout=60,
+                )
+            if proc.returncode != 0:
+                last = (proc.stderr.strip().splitlines() or ["unknown error"])[-1]
+                broken.append(f"{ts.name}: {last}")
+        if broken:
+            fail("C8 OpenCode plugin(s) do not compile — gate may be silently dead: " + " | ".join(broken))
+        else:
+            note(f"C8 {len(ts_files)} OpenCode plugins compile (gate is loadable)")
+    else:
+        note("C8 bun unavailable — plugin compile check skipped")
+
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="AAA hook mesh drift guard")
