@@ -440,6 +440,7 @@ async function dispatchToOrgan(taskId, message, skill, params) {
 const ARIFOS_JUDGE_URL = process.env.ARIFOS_JUDGE_URL || 'http://127.0.0.1:8088';
 const ARIFOS_API_KEY = process.env.ARIFOS_API_KEY || '';
 const REDIS_URL = process.env.REDIS_URL || 'redis://127.0.0.1:6379';
+const REDIS_PASSWORD = process.env.REDIS_PASSWORD || '';
 const NATS_URL = process.env.NATS_URL || 'nats://127.0.0.1:4222';
 
 // === GRAFANA WEBHOOK + ORGAN MONITOR + TELEGRAM NOTIFIER ===
@@ -5692,7 +5693,10 @@ const sc = StringCodec();
 
 async function initAsyncBackbone() {
   try {
-    redisClient = createClient({ url: REDIS_URL });
+    redisClient = createClient({
+      url: REDIS_URL,
+      ...(REDIS_PASSWORD ? { password: REDIS_PASSWORD } : {}),
+    });
     redisClient.on('error', err => console.error('[redis] error:', err.message));
     await redisClient.connect();
     console.log('[redis] connected');
