@@ -9,9 +9,9 @@
  *   2. Payload contract: actor_id is null; FI is stored on policy.fi_slot.
  *   3. Configurable port: seed({ port }) targets the requested base URL.
  *   4. Repeated/idempotent seeding: a second seed() over the same dataset
- *      yields zero `registered` and all 8 in `existing` (HTTP 409).
+ *      yields zero `registered` and all 9 in `existing` (HTTP 409).
  *   5. Timeout/failure accounting: a server that never responds counts all
- *      agents under `failed` and the totals still sum to 8.
+ *      agents under `failed` and the totals still sum to 9.
  *
  * Run: node tests/seed-agents.test.js
  * Exit code: 0 on success, 1 on any assertion failure.
@@ -61,17 +61,18 @@ const EXPECTED_IDS = [
   'copilot-cli',
   'grok-build',
   'kimi-code',
+  'continue-cli',
 ];
 
 const EXPECTED_FIS = [
-  'FI-001', 'FI-002', 'FI-003', 'FI-004',
-  'FI-005', 'FI-006', 'FI-007', 'FI-008',
+  'FI-001', 'FI-002', 'FI-003', 'FI-009',
+  'FI-005', 'FI-006', 'FI-007', 'FI-008', 'FI-011',
 ];
 
-function expectEightAgents() {
+function expectNineAgents() {
   const loaded = loadAgents();
   record(Array.isArray(AGENTS), 'AGENTS is exported as an array');
-  record(AGENTS.length === 8, 'AGENTS.length === 8', `got ${AGENTS.length}`);
+  record(AGENTS.length === 9, 'AGENTS.length === 9', `got ${AGENTS.length}`);
   record(
     AGENTS.every((a, i) => a.id === EXPECTED_IDS[i]),
     'AGENTS ids match canonical order',
@@ -238,8 +239,8 @@ async function expectIdempotentSeeding() {
   try {
     const first = await seed({ port: server.port, timeoutMs: 2000, log: () => {} });
     record(
-      first.registered === 8 && first.existing === 0 && first.failed === 0,
-      'first seed() registers all 8 agents',
+      first.registered === 9 && first.existing === 0 && first.failed === 0,
+      'first seed() registers all 9 agents',
       JSON.stringify(first),
     );
     record(
@@ -250,13 +251,13 @@ async function expectIdempotentSeeding() {
 
     const second = await seed({ port: server.port, timeoutMs: 2000, log: () => {} });
     record(
-      second.registered === 0 && second.existing === 8 && second.failed === 0,
-      'second seed() over same dataset yields 0 registered / 8 existing (idempotent)',
+      second.registered === 0 && second.existing === 9 && second.failed === 0,
+      'second seed() over same dataset yields 0 registered / 9 existing (idempotent)',
       JSON.stringify(second),
     );
     record(
-      state.requests === 16,
-      'server saw 16 total POSTs across both seed() runs (8 + 8)',
+      state.requests === 18,
+      'server saw 18 total POSTs across both seed() runs (9 + 9)',
       `requests=${state.requests}`,
     );
 
@@ -279,8 +280,8 @@ async function expectTimeoutAccounting() {
   try {
     const counts = await seed({ port: server.port, timeoutMs: 250, log: () => {} });
     record(
-      counts.failed === 8 && counts.registered === 0 && counts.existing === 0,
-      'timeout server → all 8 in `failed`, none in registered/existing',
+      counts.failed === 9 && counts.registered === 0 && counts.existing === 0,
+      'timeout server → all 9 in `failed`, none in registered/existing',
       JSON.stringify(counts),
     );
     record(
@@ -330,8 +331,8 @@ async function expectAutoRegisterAwaitsSeed() {
       JSON.stringify(first.organs),
     );
     record(
-      first.agents.registered === 8 && first.agents.failed === 0,
-      'all eight agents register after organ registration completes',
+      first.agents.registered === 9 && first.agents.failed === 0,
+      'all nine agents register after organ registration completes',
       JSON.stringify(first.agents),
     );
     record(first.ok === true && first.seedError === null, 'first bootstrap reports ok=true');
@@ -341,7 +342,7 @@ async function expectAutoRegisterAwaitsSeed() {
       log: () => {},
     });
     record(
-      second.organs.existing === 6 && second.agents.existing === 8 && second.ok,
+      second.organs.existing === 6 && second.agents.existing === 9 && second.ok,
       'repeated bootstrap is idempotent for organs and agents',
       JSON.stringify(second),
     );
@@ -356,7 +357,7 @@ async function run() {
   console.log('\n🔬 seed-agents lifecycle contract tests\n');
   console.log('─'.repeat(60));
 
-  expectEightAgents();
+  expectNineAgents();
   expectPayloadContract();
   expectConfigurablePort();
   expectNoImportSideEffect();
