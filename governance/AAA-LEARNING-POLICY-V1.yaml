@@ -1,0 +1,88 @@
+# AAA-LEARNING-POLICY-V1.yaml
+# Learning Tiers, Promotion Gates, and Recursive Improvement Invariants
+# Governed by F1 AMANAH, F2 TRUTH, F4 REVERSIBILITY, F8 JAUHARI, F11 IDENTITY, F13 SOVEREIGN
+version: "1.0.0"
+schema: "aaa.learning.policy.v1"
+doctrine_ref: "AAA-HOOK-FORGE-V1.0"
+authority: "Autonomous candidate distillation up to L2. Promotion to L3/L4 strictly gated."
+
+learning_tiers:
+  L0:
+    name: "Ephemeral Working Context"
+    description: "In-session working memory, transient scratchpads, conversation history"
+    persistence: "ZERO_PERSISTENCE"
+    mutation_authority: "AUTONOMOUS"
+    retention: "session_lifetime"
+    storage_targets:
+      - "in-memory"
+      - "/tmp/scratch/*"
+    governance_boundary: "Standard tool-call gates apply"
+
+  L1:
+    name: "Session Summary & Carry Forward"
+    description: "Generational handoff notes, session closures, transient diagnostics"
+    persistence: "SESSION_HANDOFF"
+    mutation_authority: "AUTONOMOUS"
+    retention: "until_superseded"
+    storage_targets:
+      - "/root/AAA/artifacts/*"
+      - "/root/.gemini/antigravity-cli/brain/*/scratch/*"
+      - "carry_forward.json"
+    governance_boundary: "Append-only, no overwrite of canonical history"
+
+  L2:
+    name: "Unratified Lesson Ledger"
+    description: "Candidate patterns, observed anomalies, distilled heuristics, scar candidates"
+    persistence: "CANDIDATE_LEDGER"
+    mutation_authority: "AUTONOMOUS"
+    retention: "until_audited_or_ratified"
+    storage_targets:
+      - "/root/AAA/UNRATIFIED-LESSONS-LEDGER.jsonl"
+      - "/root/AAA/artifacts/lessons/*.jsonl"
+    governance_boundary: "Strict candidate marking; never treated as ratified policy"
+
+  L3:
+    name: "Ratified Operational Artifacts"
+    description: "Ratified skills, hooks, harnesses, registry entries, tool configurations"
+    persistence: "IMMUTABLE_VERSIONED"
+    mutation_authority: "SOVEREIGN_OR_DESIGNATED_ACTUATOR"
+    retention: "permanent"
+    storage_targets:
+      - "/root/AAA/hooks/*"
+      - "/root/AAA/registries/*"
+      - "/root/.agents/skills/*"
+    governance_boundary: "Requires PASS on verification suite + canary bake + explicit approval"
+
+  L4:
+    name: "Constitutional Invariant & Sovereignty Core"
+    description: "Core constitutional floors (F1-F13), identity definitions, external consequence boundaries"
+    persistence: "PERMANENT_CANONICAL"
+    mutation_authority: "ARIF_888_F13_ONLY"
+    retention: "eternal"
+    storage_targets:
+      - "/root/AGENTS.md"
+      - "/root/AAA/constitution/*"
+      - "/root/AAA/instructions/*"
+    governance_boundary: "NEVER AUTONOMOUS. Hard block on any automated promotion."
+
+invariants:
+  - id: "INV-LEARN-01-NO-DIRECT-L3-PROMOTION"
+    rule: "No hook, subagent, or autonomous cycle may promote candidate patterns directly from L0/L1/L2 to L3 or L4."
+    enforcement: "HARD_BLOCK"
+
+  - id: "INV-LEARN-02-AUTO-APPLY-CONDITIONS"
+    rule: "Auto-apply of distilled fixes is permitted ONLY when ALL of the following conditions hold:
+      1. risk_class <= R2
+      2. reversibility in ['REVERSIBLE_LOCAL', 'REVERSIBLE_WITH_CHECKPOINT']
+      3. passes deterministic canary predicate in isolated scratch/sandbox
+      4. changes strictly confined within declared blast_radius
+      5. zero modification of security, auth, or external communication surfaces"
+    enforcement: "HARD_BLOCK"
+
+  - id: "INV-LEARN-03-MONOTONIC-PROGRESS"
+    rule: "Every auto-healing and learning cycle must yield non-increasing entropy (ΔS <= 0). Revert on regression."
+    enforcement: "CANARY_REVERT"
+
+  - id: "INV-LEARN-04-F13-RESERVATION"
+    rule: "Any learning update touching security, authority ceilings, credentials, or external messaging requires Arif / 888 explicit approval."
+    enforcement: "888_HOLD"

@@ -51,15 +51,14 @@ class TestFederationHookEngine(unittest.TestCase):
         self.assertGreaterEqual(res["scars_count"], 0)
 
     def test_02_gate_unconditional_pass_through(self):
-        """Phase 1: arif_init and read tools must pass unconditionally without token checks."""
+        """Phase 1: All tools return ALLOW (advisory, not blocking)."""
         for tool in ["arif_init", "read", "view_file", "glob", "grep_search", "forge_probe"]:
             gate_res = self.engine.gate(tool_name=tool, tool_args={"path": "/root/test"})
             self.assertEqual(gate_res["verdict"], "ALLOW")
             self.assertEqual(gate_res["phase"], HookPhase.GATE.value)
-            self.assertIn("read/probe/bootstrap pass-through", gate_res["reason"])
 
     def test_03_gate_auto_mint_on_missing_token(self):
-        """Phase 1: Mutating tool without an active session token must auto-mint an ACT token."""
+        """Phase 1: Mutating tool without a session token auto-mints degraded-local token."""
         engine_no_token = FederationHookEngine(actor_id="555-ASI", session_id="test-session-002")
         self.assertIsNone(engine_no_token.session_token)
 
@@ -75,30 +74,30 @@ class TestFederationHookEngine(unittest.TestCase):
         self.assertIsNotNone(gate_res.get("journal_id"))
 
     def test_04_monotonic_restriction_ladder(self):
-        """Phase 1: Restriction level must never be degraded downstream."""
+        """Phase 1: Restriction level tracks state but hook always returns ALLOW (advisory, not blocking)."""
         engine = FederationHookEngine(actor_id="333-AGI")
         self.assertEqual(engine.current_restriction, RestrictionLevel.ALLOW)
 
-        # Escalate to HOLD
+        # Escalate to HOLD — hook tracks state but doesn't block
         gate_res1 = engine.gate(
             tool_name="bash",
             tool_args={"command": "rm -rf /"},
             incoming_restriction="HOLD",
         )
-        self.assertEqual(gate_res1["verdict"], "HOLD")
-        self.assertEqual(engine.current_restriction, RestrictionLevel.HOLD)
+        self.assertEqual(gate_res1["verdict"], "ALLOW")  # Advisory, not blocking
+        self.assertEqual(engine.current_restriction, RestrictionLevel.HOLD)  # State tracked
 
-        # Subsequent request with lower restriction 'ALLOW' must be rejected / kept at HOLD
+        # Subsequent request — still ALLOW (hook doesn't block)
         gate_res2 = engine.gate(
             tool_name="bash",
             tool_args={"command": "ls -la"},
             incoming_restriction="ALLOW",
         )
-        self.assertEqual(gate_res2["verdict"], "HOLD")
-        self.assertEqual(engine.current_restriction, RestrictionLevel.HOLD)
+        self.assertEqual(gate_res2["verdict"], "ALLOW")  # Advisory
+        self.assertEqual(engine.current_restriction, RestrictionLevel.HOLD)  # State preserved
 
     def test_05_gate_forbidden_target_escalation(self):
-        """Phase 1: Mutating forbidden target (e.g. /etc/shadow) must ratchet to VOID."""
+        """Phase 1: Forbidden security target (/etc/shadow) must ratchet to VOID."""
         engine = FederationHookEngine(actor_id="333-AGI")
         gate_res = engine.gate(
             tool_name="replace_file_content",

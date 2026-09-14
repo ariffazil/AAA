@@ -1,0 +1,39 @@
+# AAA-HOOK-POLICY-V1.yaml — Constitutional Hook Policy & Authority Floors
+# Canonical Path: /root/AAA/governance/AAA-HOOK-POLICY-V1.yaml
+
+schema_version: "aaa.hook-policy.v1"
+bundle_id: "aaa-policy-2026-09-14.1"
+issued_by: "Arif / 888"
+
+floors:
+  F1_AMANAH:
+    rule: "Reversibility. Every mutation must have a verified rollback plan and pre-state hash."
+    enforcement: "MANDATORY"
+  F2_TRUTH:
+    rule: "Grounding. No claim without evidence. Verify before claiming existence."
+    enforcement: "MANDATORY"
+  F4_CLARITY:
+    rule: "Entropy reduction. ΔS ≤ 0 across all mutations."
+    enforcement: "MANDATORY"
+  F8_SIMPLER_PATH:
+    rule: "Simpler correct path wins. Do not add complexity without necessity."
+    enforcement: "MANDATORY"
+  F11_AUDIT:
+    rule: "Every decision logged, every outcome witnessed."
+    enforcement: "MANDATORY"
+  F13_SOVEREIGN:
+    rule: "Sovereign boundary. Arif owns F13. Irreversible actions require human signature."
+    enforcement: "MANDATORY"
+
+risk_classes:
+  R0: { name: "OBSERVE", authority: "ALLOW", scope: "Read-only, metrics, hashes" }
+  R1: { name: "LOCAL_REVERSIBLE", authority: "ALLOW", scope: "Repository-local files, tests, clean rollback" }
+  R2: { name: "BOUNDED_REVERSIBLE", authority: "ALLOW_WITH_CONSTRAINTS", scope: "Scoped code mutations with tests & rollback" }
+  R3: { name: "LIVE_OR_ELEVATED", authority: "HOLD", scope: "Gateway restarts, global packages, live config" }
+  R4: { name: "IRREVERSIBLE", authority: "HOLD_OR_DENY", scope: "Production deploy, secret modification, external comms" }
+
+forbidden_targets:
+  - "/etc/shadow"
+  - "/etc/sudoers"
+  - "/root/.ssh/authorized_keys"
+  - "/root/.secrets/kunci-root.env"
