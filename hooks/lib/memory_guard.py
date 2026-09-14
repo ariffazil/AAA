@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """memory_guard.py — Secret scrubbing and memory quarantine for AAA hook mesh.
-APEX ZEN: hooks are sensors. Memory without witness shall not gain authority."""
+APEX ZEN: hooks are sensors. Memory without witness shall not gain authority.
 
-# Agent A mutation: added module docstring (witnessed 2026-09-14)
-memory_guard.py — Memory Hygiene, Sensitive Token Scrubbing, and Compaction Guard
+Memory Hygiene, Sensitive Token Scrubbing, and Compaction Guard
 Canonical Path: /root/AAA/hooks/lib/memory_guard.py
 Authority: AAA-HOOK-FORGE-V1.0 · Section 6, 8 & F6 MARUAH / F13 SOVEREIGN
 
