@@ -1,5 +1,5 @@
 ---
-name: AAA-OCR-optical-compression
+name: aaa-ocr-optical-compression
 id: aaa-ocr-optical-compression
 version: 1.0.0
 owner: AAA

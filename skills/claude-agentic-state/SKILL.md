@@ -1,6 +1,6 @@
 ---
 id: CLAUDE-agentic-state
-name: CLAUDE-agentic-state
+name: claude-agentic-state
 description: >
   Persistent agentic state doctrine for Claude Code (FI-002). Survive across sessions by
   writing to /root/.claude/agent_state/. Auto-memory (CLAUDE_IDENTITY.md + memory/)

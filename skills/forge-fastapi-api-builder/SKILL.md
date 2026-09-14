@@ -1,6 +1,6 @@
 ---
 id: FORGE-fastapi-api-builder
-name: FORGE-fastapi-api-builder
+name: forge-fastapi-api-builder
 version: 1.0.0-2026.07.17
 description: "FastAPI API builder for organ bridge middleware and federation REST endpoints."
 owner: A-FORGE

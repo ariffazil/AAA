@@ -1,5 +1,5 @@
 ---
-name: FORGE-route-least-power
+name: forge-route-least-power
 id: forge-route-least-power
 owner: A-FORGE
 risk_tier: low

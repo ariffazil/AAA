@@ -1,5 +1,5 @@
 ---
-name: SEAL-discipline
+name: seal-discipline
 description: Distinguish SEAL (Lane A constitutional) from RECEIPT (Lane B autonomous) from SABAR (Lane A honest sub-threshold) BEFORE emitting any verdict. USE WHEN: 'verdict=SEAL', 'sesi termeterai', 'session sealed', 'verdict=SABAR', 'constitutional silence', 'seal the chain', 'close the session'.
 ---
 
