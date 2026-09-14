@@ -1,6 +1,6 @@
 <!-- SOT-MANIFEST
 federation_release: v2026.09.13
-last_verified: 2026-09-13T06:32:00Z
+last_verified: 2026-09-14T08:30:00Z
 live_commit: 8a2c373dc
 a2a_port: 3001
 a2a_status: loopback JSON-RPC healthy; public POST /a2a exact path 405 (Caddy /a2a/* HOLD)
@@ -8,7 +8,7 @@ protocol: A2A v1.0 (wire Major.Minor; GitHub tag v1.0.1 is spec patch — never 
 canonical_surface: a2a/CANONICAL_SURFACE.md
 apex_zen: A2A delegates ⊥ MCP equips ⊥ ACT mutates ⊥ arifOS governs ⊥ F13 decides
 godel_lock: ACTIVE federation-wide
-role: REGISTER & DISPLAY — A2A Gateway, State Plane, Skill Catalog, Intent Routing
+role: ATTENTION PLANE — Federation State, A2A Gateway, Skill Catalog, Intent Routing, Verification
 authority: DISPLAY_ONLY — never judges (arifOS), never metabolizes (arifFlow), never executes (A-FORGE)
 agent_lanes: 3 (333-AGI, 555-ASI, 888-APEX; FORGE is adat agentic substrate)
 truth_rule: /health + live Agent Card + POST /a2a/ beat any static count in prose
@@ -17,11 +17,13 @@ seal_chain: append-only (chattr +a) + Merkle anchor every 100 receipts
 holds: Caddy exact /a2a · JWS card keys · medical purge (Pilihan A) · WELL biometrics
 -->
 
-# AAA — Intelligence Routing & State Plane
+# AAA — Attention Plane & Federation Registry
 
-## The sovereign intelligence layer for the arifOS federation — routing intent to the right organ, every time.
+## The attention plane of the arifOS federation — compressing reality into sovereign attention.
 
-AAA is the cognitive nervous system and registry of the arifOS federation. It classifies human and agent intent, routes tasks to the correct organ (kernel, execution, earth science, capital, health), manages the federation state plane, and provides the A2A gateway mesh.
+AAA converts federated reality into actionable sovereign attention through observation, verification, registration, and routing. It does not judge (arifOS), execute (A-FORGE), or witness (arifFlow). It makes reality visible, trustworthy, and actionable.
+
+In a world where intelligence is abundant, attention is the scarce resource. AAA exists to ensure the right reality reaches the right authority at the right time.
 
 **Licensed under AGPL-3.0.**
 
@@ -37,11 +39,14 @@ Canonical live surface: [`a2a/CANONICAL_SURFACE.md`](./a2a/CANONICAL_SURFACE.md)
 
 ## The Problem
 
-Multi-agent AI systems fail at orchestration. Without a central routing layer, agents call the wrong tools, models degrade silently, and state becomes inconsistent across organs. AAA solves this by providing:
+As federations grow, intelligence becomes abundant but human attention becomes scarce. The challenge is no longer generating answers — it is determining what matters, what requires attention now, and what can safely wait. Without an attention layer, operators drown in logs, dashboards, metrics, and agent chatter.
 
-- **Deterministic intent classification** — maps user language to organ capability
-- **Multi-model routing (FED)** — automatic fallback across providers when models fail
-- **State plane management** — single source of truth for federation health
+AAA solves this by providing:
+
+- **Attention compression** — converts complex federated reality into actionable sovereign attention
+- **Federation state** — canonical `federation_state()` object with organ health, FQ, holds, bottlenecks
+- **Verification** — cross-checks observed state against live federation reality
+- **Intent routing** — deterministic classification that maps intent to the correct organ
 - **Skill catalog** — 200+ skills discoverable and composable across organs
 
 ---
@@ -49,32 +54,38 @@ Multi-agent AI systems fail at orchestration. Without a central routing layer, a
 ## Architecture
 
 ```
-┌──────────────────────────────────────────────────────────────┐
-│                    AAA Intelligence Layer                     │
-│  Port :3001  ·  A2A Gateway  ·  State Plane                  │
-├──────────────────────────────────────────────────────────────┤
-│                                                              │
-│  ┌──────────────┐  ┌──────────────┐  ┌────────────────────┐ │
-│  │   Intent     │  │   State      │  │   Skill Catalog    │ │
-│  │ Classifier   │  │   Plane      │  │   (200+ skills)    │ │
-│  └──────┬───────┘  └──────┬───────┘  └─────────┬──────────┘ │
-│         │                 │                     │           │
-│  ┌──────▼─────────────────▼─────────────────────▼──────────┐│
-│  │              A2A Mesh Gateway                            ││
-│  │  Agent-to-agent message broker · Express 5.x            ││
-│  └──────────────────────────┬──────────────────────────────┘│
-│                             │                               │
-│  ┌──────────────┐  ┌───────▼───────┐  ┌──────────────────┐ │
-│  │  Agent       │  │ Amanah Board  │  │ Operator Cockpit │ │
-│  │  Registry    │  │ (Work Queue)  │  │ (Health/HOLDs)   │ │
-│  └──────────────┘  └───────────────┘  └──────────────────┘ │
-│                                                              │
-└──────────────────────────┬───────────────────────────────────┘
-                           │
-                    ┌──────▼──────┐
-                    │ FED Gateway  │
-                    │  :4000       │
-                    └──────────────┘
+                    ┌─────────────────┐
+                    │    Sovereign    │
+                    └────────┬────────┘
+                             │
+                    ┌────────▼────────┐
+                    │  AAA Attention  │
+                    │     Plane       │
+                    │   Port :3001    │
+                    └────────┬────────┘
+                             │
+         ┌───────────────────┼───────────────────┐
+         │                   │                   │
+         ▼                   ▼                   ▼
+    ┌─────────┐      ┌─────────────┐     ┌─────────────┐
+    │ Observe │      │   Verify    │     │    Route    │
+    │ (State) │      │ (aaastate   │     │ (Intent     │
+    │         │      │  verify)    │     │  Classify)  │
+    └────┬────┘      └──────┬──────┘     └──────┬──────┘
+         │                  │                    │
+         └──────────────────┼────────────────────┘
+                            ▼
+                   ┌─────────────────┐
+                   │ Federation State │
+                   │  (canonical)    │
+                   └────────┬────────┘
+                            │
+    ┌──────────┬────────────┼────────────┬──────────┐
+    │          │            │            │          │
+    ▼          ▼            ▼            ▼          ▼
+ arifOS     A-FORGE     arifFlow     WEALTH    GEOX/WELL
+ Authority  Execution   Witness     Capital   Domain
+  Plane      Plane       Plane      Plane      Organs
 ```
 
 ---
@@ -134,33 +145,46 @@ Deterministic mission routing that maps human language to machine states:
 - **warga** — Citizen agent skills
 - And more (productivity, media, smart home, social)
 
-### State Plane
-Real-time federation state monitoring:
-- Organ health across all 7 organs
-- HOLD queue management
-- Seal chain verification (append-only with Merkle anchors)
-- Deployment drift detection
+### Federation State & Attention Plane
+Canonical `federation_state()` object — the keystone. Every surface projects from the same state:
+
+- **Organ health** — 8 organs, latency, failure reasons
+- **Flow Quotient (FQ)** — per-actor metabolism, diagnosis, stuck actors
+- **Authority debt** — holds, seals, oldest hold, held actors
+- **Bottleneck detection** — infrastructure, authority, metabolism, or none
+- **Verification** — `aaa_state_verify.py` cross-checks state against live sources
+
+Surfaces: [Web Cockpit](https://aaa.arif-fazil.com) · [Static API](https://aaa.arif-fazil.com/state.json) · Terminal (`python3 federation_state.py crf`) · Verification (`python3 aaa_state_verify.py`)
 
 ---
 
 ## Federation Role
 
-AAA sits between the user and all other organs:
+AAA sits between reality and the sovereign:
 
 ```
-User → AAA (intent classification + routing) → Target Organ
+Reality → AAA (observe + verify + compress) → Sovereign Attention
 ```
 
 ### Division of Constitutional Labor
 
-| Organ | Constitutional Role | Authority Ceiling | Does NOT |
-|-------|---------------------|-------------------|----------|
-| **arifOS** | **JUDGE** | F1–F13 Constitutional Kernel | Never executes (mutates nothing) |
-| **AAA** | **REGISTER & DISPLAY** | A2A Mesh, State Plane, Skill Catalog | Never judges, never metabolizes, never executes |
-| **arifFlow** | **METABOLIZE** | Attention Pulse, Flow Quotient (FQ) | Never judges, never executes |
-| **A-FORGE** | **EXECUTE** | Actuator, MCP Tools, System Mutations | Never adjudicates |
+| Organ | Constitutional Role | Scarcity | Does NOT |
+|-------|---------------------|----------|----------|
+| **arifOS** | **Authority Plane** — constitutional judgment | Authority | Never executes, never witnesses |
+| **AAA** | **Attention Plane** — reality compression + routing | Attention | Never judges, never executes, never mutates |
+| **arifFlow** | **Witness Plane** — metabolic recording | Reality | Never judges, never executes |
+| **A-FORGE** | **Execution Plane** — bounded mutation | Execution | Never adjudicates, never witnesses |
+| **GEOX** | **Earth Intelligence** | Domain | Never judges, never routes |
+| **WEALTH** | **Capital Intelligence** | Capital | Never judges, never executes |
+| **WELL** | **Human Readiness** | Substrate | Never judges, never executes |
 
-AAA **registers identities and displays state, but never judges, metabolizes, or executes**. Verdicts belong solely to arifOS. Metabolisms belong to arifFlow. Mutations belong to A-FORGE.
+AAA **observes, verifies, compresses, and routes — but never judges, executes, or mutates.** Verdicts belong to arifOS. Mutations belong to A-FORGE. Reality recording belongs to arifFlow.
+
+### What AAA Is Not
+
+AAA is not an orchestrator. AAA is not a workflow engine. AAA is not a judge. AAA is not an executor. AAA is not an agent manager.
+
+AAA does not decide truth. AAA does not mutate reality. AAA only ensures that reality reaches attention.
 
 ---
 
