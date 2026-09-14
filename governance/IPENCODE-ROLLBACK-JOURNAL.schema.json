@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "opencode.rollback_journal.v1",
+  "title": "Rollback Journal Entry",
+  "description": "Tracks reversible local actions with pre/post state and rollback plan",
+  "type": "object",
+  "required": [
+    "action_id",
+    "trace_id",
+    "sandbox_root",
+    "pre_state_hash",
+    "effect_plan",
+    "allowed_paths",
+    "rollback_action",
+    "rollback_deadline",
+    "idempotency_key",
+    "status",
+    "created_at"
+  ],
+  "properties": {
+    "action_id": {
+      "type": "string",
+      "description": "Unique action identifier"
+    },
+    "trace_id": {
+      "type": "string",
+      "description": "Links to governing trace"
+    },
+    "sandbox_root": {
+      "type": "string",
+      "pattern": "^/",
+      "description": "Absolute path to sandbox root (only files under this path may be modified)"
+    },
+    "pre_state_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "Hash of sandbox state before action"
+    },
+    "effect_plan": {
+      "type": "string",
+      "description": "Human-readable description of planned effect"
+    },
+    "allowed_paths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Exact file paths that may be modified"
+    },
+    "post_state_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "Hash of sandbox state after action (set on completion)"
+    },
+    "rollback_action": {
+      "type": "object",
+      "required": [
+        "method",
+        "description"
+      ],
+      "properties": {
+        "method": {
+          "type": "string",
+          "enum": [
+            "delete_created",
+            "restore_backup",
+            "manual"
+          ],
+          "description": "How to undo the action. In degraded sandbox mode, only sandbox-contained methods allowed."
+        },
+        "description": {
+          "type": "string",
+          "description": "Exact rollback steps"
+        },
+        "backup_path": {
+          "type": "string",
+          "description": "Path to backup file if method=restore_backup"
+        }
+      }
+    },
+    "rollback_deadline": {
+      "type": "string",
+      "format": "date-time",
+      "description": "After this time, action is considered permanent (no rollback)"
+    },
+    "idempotency_key": {
+      "type": "string",
+      "description": "Prevents duplicate execution"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "PREPARED",
+        "EXECUTING",
+        "SUCCEEDED",
+        "ROLLBACK_PENDING",
+        "ROLLED_BACK",
+        "ROLLBACK_FAILED",
+        "DEADLINE_PASSED"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "receipt_ref": {
+      "type": "string",
+      "description": "Reference to execution receipt"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "SUCCEEDED"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "post_state_hash"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "ROLLBACK_FAILED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "next_action": {
+            "const": "HOLD_AND_ESCALATE"
+          }
+        }
+      }
+    }
+  ]
+}
