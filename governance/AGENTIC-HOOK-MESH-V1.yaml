@@ -1,17 +1,74 @@
 # AGENTIC-HOOK-MESH-V1.yaml — Universal Agentic Hook Mesh Specification
 # Canonical Path: /root/AAA/governance/AGENTIC-HOOK-MESH-V1.yaml
 # Governs: OpenCode (FI-001), Claude Code (FI-002), Antigravity (FI-009), Hermes (FI-007), OpenClaw (FI-004), Kimi (FI-008), Qwen (FI-003)
-# Constitutional Authority: F1 Amanah, F2 Truth, F4 Clarity (ΔS ≤ 0), F8 Simpler Path, F11 Audit, F13 Sovereign
+# Constitutional Authority: F1 Amanah, F2 Truth, F4 Clarity (ΔS ≤ 0), F8 Simpler Path, F11 Audit, F13 Sovereign Attention Preservation
+# Standard: Prompt Version AAA-HOOK-FORGE-V1.0
+#
+# v1.3.0 (2026-09-14) — SEPARATION-OF-POWERS CORRECTION (FI-008, sovereign directive
+#   APEX-ZEN-HOOK-DEFUSE-20260914). Prior versions declared `must_block_on` and
+#   `must_block: true`, asserting that hooks deny. They do not. This revision states
+#   which layer may refuse, and removes every claim that a hook is a judge or a BOP.
 
-version: "1.0.0"
+version: "1.3.0"
 schema_id: "arifos.governance.agentic_hook_mesh.v1"
-last_updated: "2026-09-14T08:36:00Z"
+last_updated: "2026-09-14T01:30:00Z"
 doctrine: "DITEMPA BUKAN DIBERI — Governed emergence across all federation warga."
+
+# =============================================================================
+# SEPARATION OF POWERS — WHO MAY REFUSE
+# =============================================================================
+# Four distinct layers. Only two of them may refuse an action.
+#
+#   1. HOOK MESH      (this spec)   → OBSERVE, ENRICH, TRACE, HEAL, ESCALATE
+#                                     MAY NOT refuse. Emits a verdict field that is
+#                                     informational to the harness only.
+#   2. KERNEL         (arifOS :8088) → JUDGE. Sole issuer of constitutional
+#                                     verdicts: ALLOW / HOLD / VOID / REVOKED.
+#   3. EXECUTION MEMBRANE (harness permission layer, A-FORGE ArifJudge)
+#                                    → ENFORCE. Applies the kernel verdict at the
+#                                     side-effect boundary. This is the only place
+#                                     a tool call may actually be stopped.
+#   4. SOVEREIGN      (F13 / Arif)   → outside the machine.
+#
+# CONSEQUENCE FOR THIS SPEC: a hook entry may declare escalation requirements, never
+# refusal. `must_block_on` was removed in v1.3.0 and replaced by `must_escalate_on`.
+# Any hook that stops work is a defect, not a feature — unless it is enforcing one of
+# the enumerated fail-safe classes below, which are DEFERRALS to the kernel, not
+# verdicts.
+#
+# ENUMERATED FAIL-SAFE CLASSES (non-discretionary, fixed list — a firewall rule is not
+# a judge). Derived from FORBIDDEN_MUTATION_TARGETS. A hook may DEFER (HOLD) — never
+# annul (VOID) — on exactly these, and must emit an escalation receipt:
+#   - /etc/shadow
+#   - /etc/sudoers            (and /etc/sudoers.d/*)
+#   - /root/.ssh/authorized_keys
+#   - /root/.secrets/kunci-root.env
+# Off-list targets receive NO hook-originated refusal of any kind.
+
+separation_of_powers:
+  may_observe: [hook_mesh]
+  may_judge: [kernel]
+  may_enforce: [execution_membrane]
+  may_annul: [kernel, sovereign]
+  hook_forbidden_verdicts: ["VOID", "DENY", "REVOKED"]
+  hook_permitted_outcomes: ["ALLOW", "ALLOW_WITH_CONSTRAINTS", "HOLD"]
+  hold_semantics: "HOLD emitted by a hook means 'defer to kernel', never 'this action is annulled'. Escalation receipt is mandatory."
+  escalation_receipt_fields: ["escalation_required", "escalation_target", "escalation_floor", "escalation_route", "kernel_reachable"]
 
 core_properties:
   monotonicity_ladder:
-    order: ["ALLOW", "OBSERVE_ONLY", "SABAR", "HOLD", "VOID", "REVOKED"]
-    law: "Downstream hooks or sibling agents can never downgrade a restriction level once asserted."
+    order:
+      - "ALLOW"
+      - "ALLOW_WITH_CONSTRAINTS"
+      - "OBSERVE_ONLY"
+      - "DEFER"
+      - "HOLD"
+      - "DENY"
+      - "VOID"
+      - "REVOKED"
+    law: "Downstream hooks or sibling agents can never downgrade a restriction level once asserted. Only an authenticated human override creates a new decision lineage."
+    scope_note: "The ladder is TRACKED STATE held by the hook mesh. It is not an enforcement mechanism. Only the kernel issues the verdicts at ranks DENY and above."
+
   universal_hook_contracts:
     must_emit:
       - receipt_hash
@@ -21,189 +78,154 @@ core_properties:
       - authority_ceiling
       - reversibility_class
       - truth_class
-    must_block_on:
+    # v1.3.0: was `must_block_on`. Hooks escalate; the kernel and membrane refuse.
+    must_escalate_on:
       - F1_missing_snapshot
       - F11_no_receipt
       - F4_entropy_positive
       - F13_sovereign_boundary_breach
+    must_not:
+      - issue a constitutional verdict
+      - terminate the agent process
+      - convert its own detection into an execution stop
 
-events:
-  agent:bootstrap:
-    description: "Session ignition, token binding, and active scar hydration."
-    hooks:
-      - name: "scar-bootstrap"
-        floor: "F1+F11"
-        authority_ceiling: "OBSERVE_ONLY"
-        reversibility: "R0"
-        action: "Hydrate scar-cache from /root/AAA/scars and /root/.local/share/arifos/carry_forward.json."
-        can_block: true
-        block_condition: "Corrupted or missing scar index → HOLD"
-        emits: ["scars_active", "last_cool_at", "active_constraint_brief"]
-      - name: "kernel-bridge"
-        floor: "F13"
-        authority_ceiling: "OBSERVE_ONLY"
-        reversibility: "R0"
-        action: "Call arif_init with Accept: application/json; bind session token."
-        can_block: true
-        block_condition: "Kernel rejected authentication and fallback disabled → HOLD"
-        emits: ["session_id", "session_token", "init_mode"]
-      - name: "autonomy-reset"
-        floor: "F13"
-        authority_ceiling: "OBSERVE_ONLY"
-        reversibility: "R0"
-        action: "Reset continuation counters and assert Digital = MUBAH / HITL OFF."
-        can_block: false
-        emits: ["autonomy_band", "continuation_budget"]
+canonical_lifecycle_events:
+  1.aaa.session.opened:
+    description: "Session ignition, schema validation, token binding, and active scar hydration."
+    must_escalate: false
+    core_outputs: ["context_brief", "policy_version", "memory_snapshot_id"]
+    hooks: ["scar-bootstrap", "kernel-bridge", "autonomy-reset"]
 
-  pre_mutation:
-    description: "Pre-execution monotonic membrane, authority check, and rollback journal entry."
-    hooks:
-      - name: "envelope-check"
-        floor: "F1+F2"
-        authority_ceiling: "MONOTONIC_GATE"
-        reversibility: "R0"
-        action: "Validate tool schema, forbidden targets (/etc/shadow, secrets), and token presence."
-        can_block: true
-        block_condition: "Forbidden target detected → VOID"
-        emits: ["validation_status", "risk_tier"]
-      - name: "authority-band"
-        floor: "F13"
-        authority_ceiling: "MONOTONIC_GATE"
-        reversibility: "R0"
-        action: "Check tool class against actor capability band; block unapproved mutating tools."
-        can_block: true
-        block_condition: "OBSERVE_ONLY actor requesting MUTATE → AUTHORITY_INSUFFICIENT"
-        emits: ["authority_level", "verdict"]
-      - name: "scar-propose"
-        floor: "F2"
-        authority_ceiling: "OBSERVE_ONLY"
-        reversibility: "R0"
-        action: "Check if target file/command has known scar history; surface invariant."
-        can_block: false
-        emits: ["matching_scars"]
-      - name: "auto-heal-preview"
-        floor: "F2"
-        authority_ceiling: "OBSERVE_ONLY"
-        reversibility: "R0"
-        action: "If last attempt of same tool failed and scar-bound fix is available, emit fix candidate."
-        can_block: false
-        auto_apply: false
-        emits: ["scar_id", "fix_candidate_hash", "confidence"]
+  2.aaa.turn.received:
+    description: "Intake screening, provenance marking, and prompt injection quarantine."
+    must_escalate: false
+    core_outputs: ["provenance_trust", "task_class", "max_permitted_risk"]
+    hooks: ["intake-screening", "instruction-quarantine"]
 
-  post_mutation:
-    description: "Post-execution telemetry, auto-healing reflex, and entropy delta accounting."
-    hooks:
-      - name: "audit-receipt"
-        floor: "F11"
-        authority_ceiling: "OBSERVE_ONLY"
-        reversibility: "R0"
-        action: "Log execution receipt, exit code, stdout/stderr hashes, and journal resolution."
-        can_block: false
-        emits: ["receipt_hash", "exit_class", "delta_entropy_dS"]
-      - name: "entropy-delta"
-        floor: "F4"
-        authority_ceiling: "OBSERVE_ONLY"
-        reversibility: "R0"
-        action: "Calculate ΔS = S_post - S_pre. Enforce ΔS ≤ 0."
-        can_block: false
-        emits: ["dS_pre", "dS_post", "fq_delta"]
-      - name: "scar-ingest"
-        floor: "F1+F11"
-        authority_ceiling: "OBSERVE_ONLY"
-        reversibility: "R0"
-        action: "Analyze failure output; detect HTTP 406 / dependency / zombie / git errors; trigger auto-heal."
-        can_block: false
-        block_condition: "exit_class = regression"
-        emits: ["auto_heal_triggered", "healing_action"]
-      - name: "fq-update"
-        floor: "F11"
-        authority_ceiling: "OBSERVE_ONLY"
-        reversibility: "R0"
-        action: "Emit flow health telemetry to arifFlow :7073."
-        can_block: false
-        emits: ["flow_ingest_hash"]
+  3.aaa.action.proposed:
+    description: "Pre-execution sensing: capability check, enumerated-target detection, rollback entry. Emits escalation for the kernel; refuses nothing itself."
+    must_escalate: true
+    escalation_condition: "enumerated fail-safe class matched, or kernel unreachable while action class >= EXTERNAL_DRAFT"
+    core_outputs: ["verdict", "escalation_receipt", "capability_token_id", "rollback_journal_id"]
+    hooks: ["envelope-check", "authority-band", "scar-propose", "auto-heal-preview"]
 
-  agent:idle:
-    description: "Turn-level epistemic metabolism, anti-tangguh sentry, and bounded recursive improvement."
-    hooks:
-      - name: "turn-rsi"
-        floor: "F4+F11"
-        authority_ceiling: "OBSERVE_ONLY"
-        reversibility: "R0"
-        action: "Log turn RSI pulse, token efficiency, discussion debt, and step counters."
-        can_block: false
-        emits: ["turn_rsi_hash", "discussion_debt"]
-      - name: "auto-heal-decide"
-        floor: "F1+F11"
-        authority_ceiling: "OBSERVE_ONLY"
-        reversibility: "R2"
-        action: "If fix_candidate confidence ≥ 0.90 AND ΔS_improvement > 0 AND F-floor passes → apply."
-        can_block: true
-        block_condition: "Scar-bound fix needs sovereign ack → 888_HOLD"
-        emits: ["applied_fix_id", "pre_post_metrics"]
-      - name: "recursive-improvement-apply"
-        floor: "F8"
-        authority_ceiling: "DISCOVER→PROPOSE→SANDBOX→APPLY bounded"
-        reversibility: "R2"
-        action: "If LEARN_CANDIDATE confidence ≥ 0.85 AND within autonomy band → mutate routing heuristic."
-        can_block: false
-        auto_apply: true
-        bounds:
-          max_reversibility: "R2"
-          floor_anchor: "F8"
-          max_authority: "DISCOVER"
-          entropy_invariant: "ΔS_aggregate ≤ 0"
-        emits: ["ri_proposal_id", "band", "delta_heuristic"]
+  4.aaa.action.completed:
+    description: "Post-execution telemetry, postcondition verification, outcome receipt."
+    must_escalate: false
+    core_outputs: ["receipt_hash", "exit_class", "delta_entropy_dS"]
+    hooks: ["audit-receipt", "entropy-delta", "fq-update"]
 
-  agent:compact:
+  5.aaa.action.failed:
+    description: "Failure taxonomy classification, allowlist matching, and bounded repair candidate generation."
+    must_escalate: false
+    core_outputs: ["failure_signature", "repair_candidate", "auto_retry_eligible"]
+    hooks: ["failure-classifier", "scar-ingest", "repair-router"]
+
+  6.aaa.turn.idle:
+    description: "Turn-level epistemic metabolism, Anti-Tangguh Sentry, and bounded L3 learning apply."
+    must_escalate: false
+    core_outputs: ["turn_rsi_hash", "learning_signal", "anti_tangguh_status"]
+    hooks: ["turn-rsi", "auto-heal-decide", "recursive-improvement-apply"]
+
+  7.aaa.context.compacting:
     description: "Context window compaction with scar compression and invariant retention."
-    hooks:
-      - name: "scar-compress"
-        floor: "F11"
-        authority_ceiling: "OBSERVE_ONLY"
-        reversibility: "R0"
-        action: "Merge duplicate scars; archive resolved >30d; refresh scar-cache for next session."
-        can_block: false
-        emits: ["scar_delta", "archive_paths"]
-      - name: "autonomy-inject"
-        floor: "F13"
-        authority_ceiling: "OBSERVE_ONLY"
-        reversibility: "R0"
-        action: "Re-inject core active constraint brief into post-compaction context window."
-        can_block: false
-        emits: ["brief_hash"]
+    must_escalate: false
+    core_outputs: ["scar_delta", "retained_state_hash"]
+    hooks: ["scar-compress", "autonomy-inject"]
 
-  agent:close:
+  8.aaa.session.sealing:
     description: "Session closure, generational carry-forward append, and immutable ledger seal."
-    hooks:
-      - name: "carry-forward-emit"
-        floor: "F11"
-        authority_ceiling: "OBSERVE_ONLY"
-        reversibility: "R2"
-        action: "Append generational session record to carry_forward.json via flock."
-        can_block: false
-        emits: ["carry_forward_hash", "open_loops_count"]
-      - name: "safety-seal"
-        floor: "F1+F13"
-        authority_ceiling: "SEAL_RECEIPT"
-        reversibility: "R4"
-        action: "Stamp final audit verdict into VAULT999 ledger."
-        can_block: false
-        emits: ["seal_id", "vault_hash"]
+    must_escalate: false
+    core_outputs: ["carry_forward_hash", "seal_id", "vault_hash"]
+    hooks: ["carry-forward-emit", "safety-seal"]
+
+  9.aaa.policy.violation:
+    description: "Constitutional boundary or integrity breach detected. Raises an escalation ticket; the KERNEL halts, not the hook."
+    must_escalate: true
+    escalation_condition: "always — route to kernel and human witness"
+    core_outputs: ["violation_code", "escalation_ticket", "hold_state"]
+    hooks: ["security-tripwire", "human-witness-request"]
 
 harness_hydration_map:
   opencode:
     manifest_path: "/root/.config/opencode/plugins/IPENCODE-HOOK-ORDER-MANIFEST.json"
-    dispatcher: "Direct TypeScript Plugin Suite with IPC bridge to federation_hook_engine.py"
+    dispatcher: "TypeScript Plugin Suite with IPC bridge to federation_hook_engine.py"
+    enforcement_owner: "opencode permission layer + arifos-judge-gate.ts (advisory routing)"
+    event_mappings:
+      session.created: { maps_to: "aaa.session.opened", fidelity: "native" }
+      tool.execute.before: { maps_to: "aaa.action.proposed", fidelity: "native" }
+      tool.execute.after: { maps_to: "aaa.action.completed", fidelity: "native" }
+      permission.ask: { maps_to: "aaa.action.proposed", fidelity: "native" }
+      session.idle: { maps_to: "aaa.turn.idle", fidelity: "native" }
+      session.compacting: { maps_to: "aaa.context.compacting", fidelity: "native" }
+      session.close: { maps_to: "aaa.session.sealing", fidelity: "native" }
+
   claude_code:
     manifest_path: "/root/AAA/plugins/claude-code-federation/hooks/hooks.json"
-    dispatcher: "Python hook wrappers executing federation_hook_engine.py"
+    dispatcher: "Python hook wrappers"
+    enforcement_owner: "arifOS kernel verdict via f1-amanah-preshell.py"
+    # NOTE (FI-008, 2026-09-14): f1-amanah-preshell.py declares NO forbidden-target
+    # screen. The enumerated fail-safe classes are NOT checked on this path. Tracked
+    # gap: CLAUDE-PATH-TARGET-SCREEN.
+    event_mappings:
+      SessionStart: { maps_to: "aaa.session.opened", fidelity: "native" }
+      UserPromptSubmit: { maps_to: "aaa.turn.received", fidelity: "native" }
+      PreToolUse: { maps_to: "aaa.action.proposed", fidelity: "native" }
+      PostToolUse: { maps_to: "aaa.action.completed", fidelity: "native" }
+      PostToolUseFailure: { maps_to: "aaa.action.failed", fidelity: "native" }
+      Stop: { maps_to: "aaa.turn.idle", fidelity: "native" }
+      PreCompact: { maps_to: "aaa.context.compacting", fidelity: "native" }
+      SessionEnd: { maps_to: "aaa.session.sealing", fidelity: "native" }
+
   antigravity:
     manifest_path: "/root/AAA/registries/antigravity/hooks.json"
     dispatcher: "CLI dispatch calls to federation_hook_engine.py"
+    enforcement_owner: "harness honours the CLI gate output — CLI is the membrane on this path"
+    event_mappings:
+      on_session_start: { maps_to: "aaa.session.opened", fidelity: "derived" }
+      pre_tool_call: { maps_to: "aaa.action.proposed", fidelity: "derived" }
+      post_tool_call: { maps_to: "aaa.action.completed", fidelity: "derived" }
+      post_file_edit: { maps_to: "aaa.action.completed", fidelity: "derived" }
+      session_idle: { maps_to: "aaa.turn.idle", fidelity: "derived" }
+      on_session_close: { maps_to: "aaa.session.sealing", fidelity: "derived" }
+
   hermes:
     manifest_path: "/root/AAA/agents/hermes-asi/hooks/arifflow-hook/HOOK.yaml"
     dispatcher: "shell_hooks.py + arifFlow :7073 ingest"
+    enforcement_owner: "arifOS kernel verdict"
+    event_mappings:
+      agent:start: { maps_to: "aaa.session.opened", fidelity: "native" }
+      agent:end: { maps_to: "aaa.session.sealing", fidelity: "native" }
+
   openclaw:
     manifest_path: "/root/AAA/federation/protocols/openclaw-hook-design.md"
     dispatcher: "Telegram edge middleware calling federation_hook_engine.py gate"
+    enforcement_owner: "arifOS kernel verdict"
+    event_mappings:
+      inbound_message: { maps_to: "aaa.turn.received", fidelity: "simulated" }
+      pre_mutation: { maps_to: "aaa.action.proposed", fidelity: "simulated" }
+
+# =============================================================================
+# KNOWN GAPS — declared, not hidden
+# =============================================================================
+known_gaps:
+  - id: ENGINE-VERDICT-OVERREACH
+    status: OPEN
+    detail: >
+      hooks/lib/federation_hook_engine.py returns verdict=VOID on the enumerated
+      fail-safe classes, and again when the tracked ladder reaches VOID. Both blocks
+      are self-annulling: only the kernel may issue VOID. The same function's own
+      comments state the opposite intent ("advisory enrichment, not blocking",
+      "context only — hook doesn't block"), so the file contradicts itself.
+    prescribed_fix: "Return HOLD + escalation receipt (defer-to-kernel) instead of VOID; drop the false execution_status assertion."
+    owner: FI-008
+  - id: CLAUDE-PATH-TARGET-SCREEN
+    status: OPEN
+    detail: "f1-amanah-preshell.py performs session binding but screens no forbidden target, so the enumerated fail-safe classes are unguarded on the Claude Code PreToolUse path."
+    prescribed_fix: "Route PreToolUse target strings through the enumeration before session handling."
+    owner: UNASSIGNED
+  - id: RECEIPTS-LACK-CONSEQUENCE
+    status: OPEN
+    detail: "opencode_receipts.jsonl records decisions only. No outcome / execution_status / file_delta field exists (0 occurrences in 84,277 receipts), so no receipt can prove a verdict was honoured."
+    prescribed_fix: "Add execution_status + consequence to every receipt; assert verdict/outcome agreement."
+    owner: UNASSIGNED

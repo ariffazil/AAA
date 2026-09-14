@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.1.0",
-  "description": "Antigravity (FI-009) Constitutional Governance Hooks — Unified with Federation Hook Engine (FHE). Enforces F1 Amanah, F2 Truth, F4 Clarity (ΔS ≤ 0), F8 Simpler Path, F11 Audit, F13 Sovereign Attention Preservation.",
+  "schema_version": "1.2.0",
+  "description": "Antigravity (FI-009) Constitutional Governance Hooks — Unified with Federation Hook Engine (FHE). Enforces F1 Amanah, F2 Truth, F4 Clarity (ΔS ≤ 0), F8 Simpler Path, F11 Audit, F13 Sovereign Attention Preservation. Hooks sense and escalate; the kernel judges (see AGENTIC-HOOK-MESH-V1.yaml v1.3.0 separation_of_powers).",
   "hooks": {
     "on_session_start": {
       "command": "python3 /root/AAA/hooks/lib/federation_hook_engine.py boot --actor FI-009",
@@ -12,8 +12,8 @@
       "tools": ["run_command", "write_to_file", "replace_file_content", "call_mcp_tool"],
       "command": "python3 /root/AAA/hooks/lib/federation_hook_engine.py gate",
       "floor": "F1+F2+F13",
-      "authority": "MONOTONIC_GATE",
-      "description": "Phase 100_GATE: Monotonic restriction ladder check (ALLOW < OBSERVE_ONLY < SABAR < HOLD < VOID < REVOKED), unconditional read/probe pass-through, auto-minting fallback, and rollback journal entry."
+      "authority": "SENSOR_ESCALATE",
+      "description": "Phase 100_GATE: Sense action class, track the monotonic restriction ladder as state, apply the enumerated fail-safe class as a deferral (HOLD + escalation receipt), and record a rollback journal entry. This hook issues no constitutional verdict; the kernel does."
     },
     "post_tool_call": {
       "tools": ["*"],
