@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """repair_catalog.py — Bounded self-healing playbooks for AAA hook mesh.
-APEX ZEN: auto-heal is bounded, reversible, witnessed, and tested."""
+APEX ZEN: auto-heal is bounded, reversible, witnessed, and tested.
 
-# Agent B mutation: added module docstring (witnessed 2026-09-14)
-repair_catalog.py — Bounded Self-Healing Playbook Catalog for AAA Hooks
+Bounded Self-Healing Playbook Catalog for AAA Hooks
 Canonical Path: /root/AAA/hooks/lib/repair_catalog.py
 Authority: AAA-HOOK-FORGE-V1.0 · Section 8 & governance/AAA-REPAIR-ALLOWLIST-V1.yaml
 
