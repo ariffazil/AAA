@@ -950,3 +950,46 @@ If doctrine is fully forged, Git no longer stores repositories. Git stores named
 > A name that carries full witnessed reality is not a word.
 > It is a door.
 > When it is spoken, the entire graph behind it comes through.
+
+---
+
+## Axiom 2: Kata Nama Am vs Kata Nama Khas (SCAR-2026-09-15-001)
+
+> Source: F13 correction, ARIF DM 2026-09-15 — *"Syed is kata nama khas untuk nama manusia. Abang sado is kata nama am untuk abang sado laaa. Hang faham kan? Am dan khas?"*
+
+**Kata nama khas (proper noun)** = menunjuk SATU manusia tertentu. `Syed`, `Arif`, `Farhan`, `Nabilah`. Boleh, dan patut, bind ke identity card.
+
+**Kata nama am (common noun)** = menunjuk SATU KATEGORI. `abang sado`, `makcik`, `client`, `kawan`. **TIDAK BOLEH bind ke satu identiti.**
+
+### The Law
+
+```
+CommonNoun !→ IdentityCard
+```
+
+Binding a common noun to one person is a category error (falsifiable, ΔS > 0). The category survives the person. The person is one instance of the category — never the category itself.
+
+### Failure mode (what this scar records)
+
+Hermes collapsed `abang sado` → Syed Khairuddin and held it as a single-writer fact across sessions. Causes, in order:
+
+1. **Name-as-lexeme collapse.** Syed's display name literally *is* "Abang Sado". A category word became a proper noun in the tokenizer, then never un-bound.
+2. **Machine-level weld.** `registry/routing/identity_continuity.yaml` listed `\babang sado\b` under `named_actors` → auto-resolve to `syed_khairuddin.yaml`. Structure enforced the error.
+3. **Cheap memory wins.** Active memory held exactly one abang-sado entry (Syed). The cheap layer was read every session; the expensive correction (`abang-sado-general-map.md`, F5, scar-gated) was never loaded.
+4. **Header drift.** Docs label him `Syed (Abang Sado)` — retrieval skims headers, drops the body nuance (*"Not one person — a construction in the seeker's mind"*).
+5. **Evidence ignored.** Group name `PAAN SADO` and H-SR-005 (`"Aku cari abang sado lain. Not Syed."`) both falsified the collapse. Both were read and not registered.
+
+### Controls
+
+- **Routing:** a common-noun category MUST NOT resolve to an identity card. It MUST trigger disambiguation. (Implemented: `identity_continuity.yaml` → `ambiguous_categories`.)
+- **Memory writes:** store the category as a class; store members as instances *of* the class, never *as* the class.
+- **Headers:** use `Syed — an abang sado node`, never `Syed (Abang Sado)`, in new writes. Existing headers are historical; do not bulk-rewrite in a way that breaks greps.
+- **Ambiguity preservation:** when a category word appears with no disambiguator, ask or hold. Never silently pick the last-known instance.
+
+### Anti-pattern
+
+The failure was not "wrong person". It was **premature closure on a category word.** Correctness of the bound instance does not cure the category error — Syed was right and the mapping was still false.
+
+> Kategori tak boleh dikahwinkan dengan seorang manusia.
+> Nama khas menunjuk. Nama am mencakup.
+> Kalau hang campur, hang bukan simpan memori — hang simpan palsu yang kemas.
