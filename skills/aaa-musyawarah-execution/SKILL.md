@@ -1,6 +1,6 @@
 ---
 id: aaa-musyawarah-execution
-name: AAA Musyawarah Execution Runtime
+name: aaa-musyawarah-execution
 version: 1.0.0
 description: Runtime for musyawarah-then-gotong-royong — independent deliberation followed by sequential execution. USE WHEN: 'musyawarah', 'deliberate then build', 'independent architect + auditor', '333 ARCHITECT + 555 AUDITOR'. Protocol: (1) SPAWN independent positions — 333-AGI drafts ARCHITECT position file, 555-ASI drafts AUDITOR position file, no cross-reading before seal; (2) CONVERGE — evidence files compared point-by-point, disagreements surfaced not averaged; (3) GOTONG-ROYONG — sequential execute hop where each agent builds its ratified part; (4) F13 gates surface honestly. Iron rules: positions are FILES (position/*.md with OBS/DER/INT labels), not chat turns; authority star — no agent both proposes and executes the same irreversible step; disagreement is recorded, never hidden; artifacts exist at FORGE-musyawarah-gotong — this skill supplies the missing BEHAVIOR.
 owner: 333-AGI
