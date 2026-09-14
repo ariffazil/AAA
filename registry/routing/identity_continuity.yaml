@@ -61,6 +61,33 @@ self_reference_patterns:
     - "\\bmrkl\\b"
     - "\\b2026\\b"
 
+# ========================================================================
+# Legacy Handling — pre-SCAR document strings (F13 HOLD, 2026-09-15)
+# ========================================================================
+# Policy: do NOT rewrite old rock layers. Bulk refactor of historical headers
+# risks breaking live grep pipelines and retrieval hooks (F1 > aesthetic
+# consistency). Map the boundary instead of re-depositing it.
+# Effect: even where a document still carries the collapsed form, this registry
+# intercepts the string at parse time and forces the class/instance split, so a
+# blind resolve to Syed is structurally impossible.
+
+legacy_handling:
+  policy: ARCHIVE_UNCONFORMITY   # stratigraphic unconformity — map, never re-deposit
+  bulk_rewrite: FORBIDDEN        # F13 order 2026-09-15; applies to all pre-SCAR docs
+  entries:
+    - string: "Syed (Abang Sado)"
+      applies_to: "Pre-commit b4611c141 documents (incl. HELIX_MEMORY_STRUCTURE.md H-REL-001 header)"
+      resolution: "Evaluate as Syed [INSTANCE] AND Abang Sado [CLASS]. Do not route exclusively to Syed."
+      on_parse: "Apply ambiguous_categories.resolution = REQUIRE_DISAMBIGUATION"
+    - string: "Syed Khairuddin (Abang Sado)"
+      applies_to: "Pre-commit b4611c141 documents"
+      resolution: "Header names the instance; the parenthetical names the class. Two facts, not one."
+      on_parse: "Apply ambiguous_categories.resolution = REQUIRE_DISAMBIGUATION"
+    - string: "Display: Abang Sado"
+      applies_to: "Evidence quotes — Telegram profile display name chosen by the human"
+      resolution: "Self-chosen display label. A string, not an identity binding. Never resolves an actor on its own."
+      on_parse: "Treat as WEAK evidence; require a kata nama khas before identity-bound capability"
+
 default_actor_resolution:
   syed_khairuddin:
     identity_card: /root/AAA/registry/identity_cards/syed_khairuddin.yaml
