@@ -1,0 +1,2 @@
+{"ts":"2026-09-13T18:55:08Z","event_id":"evt_20260914_0255_43e93ace","source":"drift_scanner","severity":"P1","type":"VERIFIED","hash":"43e93aceb27973ef","host":"forge"}
+{"ts":"2026-09-13T23:48:02Z","event_id":"evt_20260914_0748_a6a73150","source":"federation_pulse","severity":"P2","type":"STATE_CHANGED","hash":"a6a731504b3635b2","host":"forge"}
