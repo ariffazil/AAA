@@ -157,8 +157,9 @@ class FederationHookEngine:
             self.session_token = kernel_resp["token"]
             init_mode = "KERNEL_AUTHENTICATED"
         else:
-            self.session_token = f"sovereign-act-{self.actor_id}-{uuid.uuid4().hex[:8]}"
-            init_mode = "SOVEREIGN_FALLBACK"
+            self.session_token = f"degraded-local-{self.actor_id}-{uuid.uuid4().hex[:8]}"
+            init_mode = "DEGRADED_LOCAL_FALLBACK"
+            self.is_degraded = True
 
         # Step 2: Query active scars & carry forward
         active_scars = self._load_recent_scars(limit=5)
@@ -186,6 +187,16 @@ class FederationHookEngine:
             "status": "OK",
             "session_id": self.session_id,
             "session_token": self.session_token,
+            "session_identity": {
+                "session_id": self.session_id,
+                "source": "kernel" if init_mode == "KERNEL_AUTHENTICATED" else "local_hook_fallback",
+                "authority_scope": "authenticated" if init_mode == "KERNEL_AUTHENTICATED" else "local_correlation_only",
+            },
+            "execution_authority": {
+                "source": "aaa_kernel" if init_mode == "KERNEL_AUTHENTICATED" else "degraded_local_policy",
+                "verdict": "kernel_authorized" if init_mode == "KERNEL_AUTHENTICATED" else "degraded_local_only",
+                "allows_irreversible": init_mode == "KERNEL_AUTHENTICATED",
+            },
             "init_mode": init_mode,
             "scars_count": len(active_scars),
             "open_loops_count": len(open_loops),
@@ -193,7 +204,7 @@ class FederationHookEngine:
         }
 
     # =========================================================================
-    # Phase 1: Pre-Execution Monotonic Membrane (100_GATE)
+    # Phase 1: Pre-Tool Advisory Enrichment (100_GATE)
     # =========================================================================
     def gate(
         self,
@@ -203,12 +214,14 @@ class FederationHookEngine:
         incoming_restriction: Optional[str] = None,
     ) -> Dict[str, Any]:
         """
-        Pre-tool execution membrane:
-        1. Pass-through for arif_init and pure read/probe tools.
-        2. Auto-mints ACT token if tool mutates and token is absent.
-        3. Enforces Monotonicity Ladder (restriction can never degrade).
-        4. Blocks forbidden targets (/etc/shadow, secrets deletion).
-        5. Logs to rollback journal.
+        Pre-tool ADVISORY enrichment (NOT a gate or BOP).
+        Hooks enrich context — the kernel (arif_judge) is the judge.
+
+        1. Detects forbidden targets → ADVISORY signal (not blocking verdict)
+        2. Tracks monotonic restriction state → context for kernel
+        3. Auto-mints ACT token if mutating tool lacks one
+        4. Logs to rollback journal for audit trail
+        5. Returns ALLOW always — harness/kernel decides whether to proceed
         """
         tool_args = tool_args or {}
         incoming_level = (
@@ -216,47 +229,81 @@ class FederationHookEngine:
             if incoming_restriction
             else self.current_restriction
         )
-        # Apply Monotonicity: restriction level only ratchets UP
+        # Track monotonicity (context only — hook doesn't block)
         if incoming_level > self.current_restriction:
             self.current_restriction = incoming_level
 
-        # 1. Ignition & Read-only Bypass
-        if tool_name in UNCONDITIONAL_PASS_TOOLS or tool_name.startswith("forge_probe_"):
+        if self.current_restriction >= RestrictionLevel.VOID:
             return {
                 "phase": HookPhase.GATE.value,
-                "verdict": "ALLOW",
+                "verdict": "VOID",
+                "execution_status": "NOT_EXECUTED",
                 "restriction_level": self.current_restriction.name,
                 "tool_name": tool_name,
-                "reason": "Unconditional read/probe/bootstrap pass-through",
+                "reason": f"Active monotonic restriction in place: {self.current_restriction.name}",
                 "session_token": provided_token or self.session_token,
             }
 
-        # 2. Check forbidden targets in tool args (paths, commands)
+        # 1. Detect forbidden targets (advisory enrichment, not blocking)
+        normalized_paths = []
+        for k, v in tool_args.items():
+            if isinstance(v, str) and ("/" in v or ".." in v):
+                try:
+                    normalized_paths.append(os.path.normpath(v).lower())
+                except Exception:
+                    pass
         arg_str = json.dumps(tool_args).lower()
-        for forbidden in FORBIDDEN_MUTATION_TARGETS:
-            if forbidden.lower() in arg_str:
-                self.current_restriction = max(self.current_restriction, RestrictionLevel.VOID)
-                return {
-                    "phase": HookPhase.GATE.value,
-                    "verdict": "VOID",
-                    "restriction_level": self.current_restriction.name,
-                    "tool_name": tool_name,
-                    "reason": f"Access to forbidden target detected: {forbidden}",
-                    "session_token": provided_token or self.session_token,
-                }
 
-        # 3. Monotonic restriction check
-        if self.current_restriction >= RestrictionLevel.HOLD:
+        security_warnings = []
+        for forbidden in FORBIDDEN_MUTATION_TARGETS:
+            f_lower = forbidden.lower()
+            matched = False
+            if f_lower in arg_str:
+                matched = True
+            for np in normalized_paths:
+                if f_lower in np or np.startswith(f_lower) or np.endswith(f_lower.lstrip("/")):
+                    matched = True
+                    break
+            if matched:
+                security_warnings.append({
+                    "target": forbidden,
+                    "severity": "CRITICAL",
+                    "advisory": f"Target matches forbidden pattern: {forbidden}. Kernel arif_judge must evaluate.",
+                })
+
+        if security_warnings:
+            # SENSOR & PEP: Forward target to kernel arif_judge for adjudication
+            kernel_resp = self._call_kernel("tools/call", {
+                "name": "arif_judge",
+                "arguments": {
+                    "mode": "judge",
+                    "candidate": f"SENSITIVE_PATH_TARGET: {security_warnings[0]['target']} in {tool_name} with args: {json.dumps(tool_args)}",
+                    "session_id": self.session_id,
+                    "session_token": provided_token or self.session_token,
+                    "actor_id": self.actor_id,
+                    "action_tier": "critical",
+                    "reversibility_level": "R5",
+                    "blast_radius": "critical",
+                    "target_path": security_warnings[0]['target'],
+                }
+            })
+            kernel_verdict = (kernel_resp or {}).get("result", {}).get("verdict") or "VOID"
+            self.current_restriction = max(self.current_restriction, RestrictionLevel.VOID)
             return {
                 "phase": HookPhase.GATE.value,
-                "verdict": self.current_restriction.name,
+                "verdict": kernel_verdict,
+                "verdict_source": "kernel_arif_judge",
+                "hook_role": "sensor_and_transport",
+                "execution_status": "NOT_EXECUTED",
+                "consequence": "PREVENTED_BY_KERNEL_VOID",
                 "restriction_level": self.current_restriction.name,
                 "tool_name": tool_name,
-                "reason": f"Blocked by active monotonic restriction: {self.current_restriction.name}",
+                "security_warnings": security_warnings,
+                "reason": f"Kernel arif_judge constitutional refusal: access to forbidden target {security_warnings[0]['target']}",
                 "session_token": provided_token or self.session_token,
             }
 
-        # 4. Auto-Mint Reflex: ensure token exists for mutating tools
+        # 2. Auto-Mint Reflex: ensure token exists for mutating tools
         active_token = provided_token or self.session_token
         auto_minted = False
         if not active_token:
@@ -264,18 +311,24 @@ class FederationHookEngine:
             self.session_token = active_token
             auto_minted = True
 
-        # 5. Rollback Journaling
+        # 3. Rollback Journaling
         journal_id = self._record_rollback_entry(tool_name, tool_args)
 
+        # Digital work is MUBAH: hook enriches context, passes to execution membrane
         return {
             "phase": HookPhase.GATE.value,
             "verdict": "ALLOW",
+            "verdict_source": "kernel_policy_mubah",
+            "hook_role": "sensor_and_transport",
+            "execution_status": "PROCEEDED",
+            "consequence": "DISPATCHED_TO_RUNTIME",
             "restriction_level": self.current_restriction.name,
             "tool_name": tool_name,
             "session_token": active_token,
             "auto_minted": auto_minted,
             "journal_id": journal_id,
-            "reason": "Clear to execute under governed autonomy",
+            "security_warnings": security_warnings,
+            "reason": "CLEAR: action permitted under autonomous digital policy (MUBAH)",
         }
 
     # =========================================================================
@@ -520,6 +573,7 @@ class FederationHookEngine:
 
     def _record_turn_error(self, tool_name: str, error_snippet: str) -> None:
         err_entry = {
+            "session_id": self.session_id,
             "tool": tool_name,
             "snippet": error_snippet,
             "time": time.time(),
@@ -547,13 +601,17 @@ class FederationHookEngine:
     def _check_and_crystallize_scar(self) -> Optional[str]:
         """If same tool error repeats >= 2 times in turn memory, crystallize a scar."""
         errors = list(self.turn_errors)
+        seen_keys = {(e.get("tool"), e.get("snippet"), int(e.get("time", 0))) for e in errors}
         if TURN_MEMORY_PATH.exists():
             try:
                 with open(TURN_MEMORY_PATH, "r", encoding="utf-8") as f:
                     data = json.load(f)
                     for e in data.get("errors", []):
-                        if e not in errors:
-                            errors.append(e)
+                        if self.session_id and e.get("session_id") == self.session_id:
+                            k = (e.get("tool"), e.get("snippet"), int(e.get("time", 0)))
+                            if k not in seen_keys:
+                                seen_keys.add(k)
+                                errors.append(e)
             except Exception:
                 pass
 
@@ -575,10 +633,11 @@ class FederationHookEngine:
                 if scar_id in self.active_scars:
                     return scar_id
 
-                scar_file = SCARS_DIR / f"{scar_id}.md"
-                scar_content = f"""# {scar_id} — Recurring Tool Failure: {tool}
+                candidate_file = SCARS_DIR / "candidates" / f"{scar_id}.md"
+                scar_content = f"""# {scar_id} — Recurring Tool Failure Candidate: {tool}
 
 > **Autonomous Crystallization:** Forged turn-level by FederationHookEngine  
+> **Candidate Status:** QUARANTINED (Requires canary verification before constitutional promotion)  
 > **First Witnessed:** {_utc_iso()}  
 > **Repeated Occurrences:** {len(occurrences)} within recent turn window
 
@@ -597,10 +656,11 @@ Tool `{tool}` triggered recurring errors:
                     "tool": tool,
                     "snippet": snippet,
                     "occurrences": len(occurrences),
+                    "status": "CANDIDATE_QUARANTINE",
                 }
                 try:
-                    _ensure_dir(scar_file)
-                    scar_file.write_text(scar_content, encoding="utf-8")
+                    _ensure_dir(candidate_file)
+                    candidate_file.write_text(scar_content, encoding="utf-8")
                     return scar_id
                 except Exception:
                     return f"VIRTUAL-{scar_id}"
