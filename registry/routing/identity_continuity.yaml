@@ -38,11 +38,23 @@ self_reference_patterns:
     - "\\bme\\b"
     - "\\bmyself\\b"
     - "\\bmy face\\b"
-  named_actors:
+  named_actors:            # KATA NAMA KHAS ONLY - binds to one identity card
     - "\\bsyed\\b"
     - "\\bsyedsado\\b"
-    - "\\babang sado\\b"
     - "\\bsyed khairuddin\\b"
+
+  # KATA NAMA AM (common nouns / categories) - MUST NOT bind to any identity card.
+  # SCAR-2026-09-15-001: "abang sado" was mis-registered under named_actors and
+  # auto-resolved to syed_khairuddin.yaml. A category survives the person; the
+  # person is one instance of the category, never the category itself.
+  # Correct behaviour: DISAMBIGUATE - never silently pick the last-known instance.
+  ambiguous_categories:
+    resolution: "REQUIRE_DISAMBIGUATION"
+    on_unresolved: "Refuse identity-bound capability (T2I/biometric). Ask which person, or hold."
+    rationale: "/root/AAA/instructions/naming-doctrine.md - Axiom 2 (kata nama am vs khas)"
+    patterns:
+      - "\\babang sado\\b"
+      - "\\bsado\\b"
   events:
     - "\\bmr kl\\b"
     - "\\bmaster open\\b"
