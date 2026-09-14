@@ -1,5 +1,5 @@
 ---
-name: AAA-human-physique-topology
+name: aaa-human-physique-topology
 id: AAA-human-physique-topology
 risk_tier: low
 description: "Operational doctrine and computational architecture for mapping human physique topography and anatomical topology for image generation. Eliminates anatomical hallucinations and bridges the dimensionality deficit via the 5-layer topography hierarchy (Osteological Rigging, Musculoskeletal Contours, Adipose/Vascularity, DensePose UV Surface Manifold, Photometric/Normal Micro-relief). Enforces multi-modal ControlNet conditioning, prompt densification, and closed-loop VLM tri-witness quality gating across HERMES, FED, and AAA."

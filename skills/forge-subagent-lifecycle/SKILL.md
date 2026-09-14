@@ -1,6 +1,6 @@
 ---
 capability_tier: fed-agent-subagent
-name: FORGE-subagent-lifecycle
+name: forge-subagent-lifecycle
 description: "Unified sub-agent lifecycle manager — 9-stage orchestration pattern from spawn to retire with constitutional gates"
 ecology_state: WARM
 ---

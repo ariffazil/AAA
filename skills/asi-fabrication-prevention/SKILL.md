@@ -1,6 +1,6 @@
 ---
 id: ASI-fabrication-prevention
-name: ASI-fabrication-prevention
+name: asi-fabrication-prevention
 risk_tier: low
 version: 2.0.0
 description: 'Artifact fabrication prevention — verify before claiming existence.

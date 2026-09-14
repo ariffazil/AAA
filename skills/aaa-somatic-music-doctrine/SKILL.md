@@ -1,5 +1,5 @@
 ---
-name: AAA-somatic-music-doctrine
+name: aaa-somatic-music-doctrine
 description: "F10 ONTOLOGY + F9 ANTI-HANTU + F1 SAFETY/REVERSIBILITY constitution for Somatic Music Intelligence in arifOS. Music as acoustic_intent without words — cognitive prosthetic, NOT shaman, NOT healer. Three-layer maturity model: Layer 0 untouched, Layer 1 reversible, Layer 2 holds for WELL sensors, Layer 3 = F13 territory."
 version: 1.0.0
 author: ARIF doctrine, zenned by kimi-code (FI-008)

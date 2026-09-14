@@ -1,6 +1,6 @@
 ---
 id: FORGE-visual-qa-w3
-name: FORGE-visual-qa-w3
+name: forge-visual-qa-w3
 version: 1.1.0-2026.07.20
 description: "Closed-loop visual governance with W3 tri-witness consensus — render, screenshot, validate, iterate, seal. Includes MCP App / ChatGPT host-surface QA."
 owner: A-FORGE

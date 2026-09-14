@@ -1,6 +1,6 @@
 ---
 id: AGI-agentic-web-delivery
-name: AGI-agentic-web-delivery
+name: agi-agentic-web-delivery
 version: 1.0.0-2026.09.13
 description: >
   Governed agentic-web delivery fabric for AAA agents working arif-fazil.com.

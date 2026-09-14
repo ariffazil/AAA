@@ -1,6 +1,6 @@
 ---
 id: quantum-eureka-doctrine
-name: APEX-quantum-eureka
+name: apex-quantum-eureka
 version: 1.1.0-2026.07.09
 description: Eureka, contradiction, insight generation, and cross-domain synthesis for AAA warga
 owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
