@@ -1,6 +1,6 @@
 ---
 id: agi-graph-engineering-patterns
-name: AGI-graph-engineering-patterns
+name: agi-graph-engineering-patterns
 autonomy_tier: T1
 version: 1.0.0
 description: >

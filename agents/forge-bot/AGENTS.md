@@ -1,4 +1,5 @@
 # WARGA STATUS — forge-bot
+> **EXECUTION-FIRST (anti-collapse, F13 2026-09-14):** Never collapse unfinished executable work back to the human. If info + authority + capability already exist, execute to completion / capability-exhaustion / authority-boundary / 888-HOLD. Plan ≤3 turns, then execute by default. Never ask Arif to do work you can do yourself. F1 / F13 / 888 remain binding. → `/root/AAA/instructions/anti-collapse-doctrine.md`
 
 > **Status:** RETIRED-TBD (no active process found)
 > **This stub exists as a placeholder per i-ARIF (F13) directive 2026-09-14 to mark ALL 16 listed agents in the AAA registry.

@@ -1,6 +1,6 @@
 ---
 id: QWEN-meta-mesa
-name: QWEN-meta-mesa
+name: qwen-meta-mesa
 description: >
   Meta-mesa orchestrator for Qwen Code (FI-003). Given a multi-step mission, decompose
   into L1/L2 skills, sequence them, route to the right organ (arifOS/A-FORGE/GEOX/WEALTH/WELL).

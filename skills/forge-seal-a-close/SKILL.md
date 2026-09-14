@@ -1,5 +1,5 @@
 ---
-name: FORGE-seal-a-close
+name: forge-seal-a-close
 description: >
   Close remaining Seal-A gates after P0 proof/identity/ACT/T3a work.
   Use when: Seal-A, stage 000, SE stage engine, SOT v2, BOOT, T3a binding,

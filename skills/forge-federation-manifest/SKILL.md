@@ -1,6 +1,6 @@
 ---
 id: FORGE-federation-manifest
-name: FORGE-federation-manifest
+name: forge-federation-manifest
 version: 1.0.0-2026.07.17
 description: "Federation topology manifest — arifOS organ registry and inter-organ contract specification."
 owner: A-FORGE

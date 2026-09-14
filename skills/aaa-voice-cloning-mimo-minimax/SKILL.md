@@ -1,5 +1,5 @@
 ---
-name: AAA-voice-cloning-mimo-minimax
+name: aaa-voice-cloning-mimo-minimax
 description: "Operational binding for the MiniMax voice cloning pipeline (mimo-v2.5-tts-voiceclone + speech-2.8-hd). Four-phase protocol: Ingestion → Calibration → Execution → Deployment. F13 SOVEREIGN-gated identity creation. i-ARIF voice profile lives here."
 version: 1.1.0
 author: kimi-code (FI-008) for ARIF

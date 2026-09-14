@@ -1,5 +1,5 @@
 ---
-name: FORGE-code-analysis
+name: forge-code-analysis
 id: forge-code-analysis
 version: 1.0.0
 owner: A-FORGE

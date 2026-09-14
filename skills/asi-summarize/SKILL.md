@@ -1,5 +1,5 @@
 ---
-name: ASI-summarize
+name: asi-summarize
 description: When user asks to summarize text, articles, documents, meetings, emails,
   YouTube transcripts, books, PDFs, reports, conversations, or any long content
 metadata:

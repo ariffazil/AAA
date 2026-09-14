@@ -1,5 +1,5 @@
 ---
-name: FORGE-act-federation-ingress
+name: forge-act-federation-ingress
 id: forge-act-federation-ingress
 owner: A-FORGE
 risk_tier: low

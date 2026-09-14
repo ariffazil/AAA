@@ -1,5 +1,5 @@
 ---
-name: AUDIT-repo-reality
+name: audit-repo-reality
 id: audit-repo-reality
 risk_tier: low
 description: 'REPO_REALITY_AUDIT::v1.2 — Sovereign doctrine (F13, 2026-08-14). Audit codebase reality, not AI output. Categories: STUB Tiers T1-T4, ORPHAN, SHIM, REALITY_LEAK, AUTHORITY_LEAK, CLAIM_DRIFT (A comment/B architecture/C metric), FAKE_METRIC. Pipeline: SCAN→CONTEXT→REACHABILITY→RUNTIME_IMPACT→VERDICT. HEURISTIC≠MEASUREMENT semantics. Nuclear Rule: no abstract feature without concrete consumer. USE WHEN: audit repo, find stubs, reality audit, orphan/shim detection, verify implementation claims.'

@@ -1,5 +1,5 @@
 ---
-name: AGI-multimodal-bridge
+name: agi-multimodal-bridge
 id: agi-multimodal-bridge
 risk_tier: low
 description: 'Multi-modal reasoning bridge — unifies text, image, tabular data, and

@@ -1,6 +1,6 @@
 ---
 id: FORGE-nextjs-mastery
-name: FORGE-nextjs-mastery
+name: forge-nextjs-mastery
 version: 1.0.0-2026.07.17
 description: "Next.js App Router engineering — server components, streaming, and edge patterns."
 owner: A-FORGE

@@ -1,6 +1,6 @@
 ---
 id: FORGE-cross-repo-doc-zen
-name: FORGE-cross-repo-doc-zen
+name: forge-cross-repo-doc-zen
 version: "2026.08.06"
 description: >
   Audit and reconcile documentation across federation repositories, preserving

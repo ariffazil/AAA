@@ -1,6 +1,6 @@
 ---
 id: RSI-federation-mesh
-name: "RSI - Federation Mesh (Cross-Agent Recursive Improvement)"
+name: rsi-federation-mesh
 version: 1.0.0
 description: "Unified recursive-improvement protocol across ALL agents in the federation (AAA, Hermes, Kimi, OpenClaw, Claude Code, Codex, OpenCode, Grok). Bridges session-level RSI to federation-wide sync: detects skill drift between agents, propagates fixes back to the canonical AAA catalog, and ensures the federation learns from every session — not just the agent that ran it."
 owner: AAA

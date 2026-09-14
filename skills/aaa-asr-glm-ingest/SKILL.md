@@ -1,5 +1,5 @@
 ---
-name: AAA-asr-glm-ingest
+name: aaa-asr-glm-ingest
 description: "ASR (Automatic Speech Recognition) ingestion layer using GLM-ASR-2512 (Z.AI). Decode phase of AAA-audio-emd-pipeline. Custom dictionary for arifOS-specific terms, audio chunking for ≤30 s/≤25 MB constraint, stream mode for realtime. Penang-Besi dialect and code-switching support."
 version: 1.0.0
 author: kimi-code (FI-008) for ARIF

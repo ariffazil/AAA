@@ -1,6 +1,6 @@
 ---
 id: FORGE-postgres-schema-design
-name: FORGE-postgres-schema-design
+name: forge-postgres-schema-design
 version: 1.0.0-2026.07.17
 description: "PostgreSQL schema design for the federation data layer — migrations, indexing, and entity modeling."
 owner: A-FORGE

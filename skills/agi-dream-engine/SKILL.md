@@ -1,6 +1,6 @@
 ---
 id: agentic-dream-engine
-name: AGI-dream-engine
+name: agi-dream-engine
 autonomy_tier: T1
 version: 1.0.0
 description: Extend the arifOS dream-engine so every AAA warga (333-AGI, 555-ASI,

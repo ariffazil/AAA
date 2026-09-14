@@ -1,6 +1,6 @@
 ---
 id: arifos-plan-dag
-name: AGI-plan-dag
+name: agi-plan-dag
 autonomy_tier: T1
 version: 1.0.0
 description: Build multi-step execution graphs, dependency-aware subtasks, checkpoints,

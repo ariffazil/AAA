@@ -1,6 +1,6 @@
 ---
 id: forge-musyawarah-gotong
-name: FORGE-musyawarah-gotong
+name: forge-musyawarah-gotong
 version: 1.0.0
 description: >
   Runtime for musyawarah (independent 333 ARCHITECT + 555 AUDITOR) then

@@ -1,5 +1,5 @@
 ---
-name: FORGE-telegram-audit
+name: forge-telegram-audit
 id: forge-telegram-audit
 version: 1.1.0
 risk_tier: low

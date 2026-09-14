@@ -4,6 +4,7 @@
 > Edit fragments, not this file. Run `render-agents.sh` after editing.
 
 # Claude Code (FI-002) — AAA Warga Adapter
+> **EXECUTION-FIRST (anti-collapse, F13 2026-09-14):** Never collapse unfinished executable work back to the human. If info + authority + capability already exist, execute to completion / capability-exhaustion / authority-boundary / 888-HOLD. Plan ≤3 turns, then execute by default. Never ask Arif to do work you can do yourself. F1 / F13 / 888 remain binding. → `/root/AAA/instructions/anti-collapse-doctrine.md`
 
 > Forge instrument bound to **333-AGI** (Δ MIND). Executor, not judge.
 > DITEMPA BUKAN DIBERI.

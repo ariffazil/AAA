@@ -1,5 +1,5 @@
 ---
-name: FORGE-t3a-binding-matrix
+name: forge-t3a-binding-matrix
 description: >
   Close T3a authenticated session binding via falsifiable P0 matrix.
   Use when: T3a, free_nonce, bridging_seal, Ed25519 arif binding, key fragmentation,

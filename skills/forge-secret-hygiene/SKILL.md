@@ -1,5 +1,5 @@
 ---
-name: FORGE-secret-hygiene
+name: forge-secret-hygiene
 id: forge-secret-hygiene
 version: 1.0.0
 risk_tier: low
