@@ -17,9 +17,11 @@ branch_collapse: 2026-09-01 — 2 stale branches deleted (chore/2026-08-25-amana
 readme_note: ZEN first-fold — full technical README preserved at docs/README-FULL.md
 -->
 
-# AAA — Institution
+# AAA — Institution (Attention Plane)
 
 ## Display state. Never judge. Never execute.
+
+*Terminology note (2026-09-14): AAA is designated the federation's Attention Plane — observe, verify, compress, route. Sibling repos' full-reference docs previously called this organ "Control Plane"; that label is retired in favor of Attention Plane. "Institution" and "Cockpit" remain accurate functional descriptions of what AAA operates (see below) and are not being replaced — only the plane label is standardized.*
 
 AAA is the institution's cockpit and A2A gateway: it shows state and queues messages.
 It never judges. It never executes.
@@ -68,7 +70,7 @@ FLAME   :18901  advisory
 
 ## Federation card
 
-ARIF = Sovereign · arifOS = Law · AAA = Institution · A-FORGE = Hands
+ARIF = Sovereign · arifOS = Law (Authority Plane) · AAA = Institution (Attention Plane) · A-FORGE = Hands (Execution Plane)
 
 **ARIF vetoes. arifOS judges. AAA routes. A-FORGE executes.**
 
