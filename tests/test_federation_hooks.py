@@ -96,16 +96,17 @@ class TestFederationHookEngine(unittest.TestCase):
         self.assertEqual(gate_res2["verdict"], "ALLOW")  # Advisory
         self.assertEqual(engine.current_restriction, RestrictionLevel.HOLD)  # State preserved
 
-    def test_05_gate_forbidden_target_escalation(self):
-        """Phase 1: Forbidden security target (/etc/shadow) must ratchet to VOID."""
+    def test_05_gate_forbidden_target_enforced(self):
+        """Phase 1: Forbidden target returns kernel VOID verdict (enforcement, not judgment)."""
         engine = FederationHookEngine(actor_id="333-AGI")
         gate_res = engine.gate(
             tool_name="replace_file_content",
             tool_args={"TargetFile": "/etc/shadow", "ReplacementContent": "root:x:"},
         )
         self.assertEqual(gate_res["verdict"], "VOID")
-        self.assertEqual(engine.current_restriction, RestrictionLevel.VOID)
-        self.assertIn("forbidden target", gate_res["reason"].lower())
+        self.assertEqual(gate_res.get("execution_status"), "NOT_EXECUTED")
+        self.assertEqual(gate_res.get("consequence"), "PREVENTED_BY_KERNEL_VOID")
+        self.assertGreater(len(gate_res.get("security_warnings", [])), 0)
 
     def test_06_heal_http_406_content_negotiation(self):
         """Phase 2: HTTP 406 must trigger auto-healing with Accept: application/json fix."""
