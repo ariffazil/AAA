@@ -1,6 +1,6 @@
 ---
 id: github-ops
-name: FORGE-github-ops
+name: forge-github-ops
 version: 1.1.0
 description: "Runbook for GitHub & Git operations across federation repos — commit workflow, PR ops, branch discipline. v1.1.0: organ paths from organ registry, no hardcoded /root/<repo> paths."
 owner: AAA

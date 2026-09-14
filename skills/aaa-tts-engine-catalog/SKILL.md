@@ -1,5 +1,5 @@
 ---
-name: AAA-tts-engine-catalog
+name: aaa-tts-engine-catalog
 description: "TTS engine registry for the arifOS federation. ChatTTS (qualitative conversational), F5-TTS / E2-TTS (zero-shot flow matching), Fish Speech (audio language model), MiniMax speech-2.8-hd (HD commercial), Edge / Mulberry (free fallback), MiMo Token Plan (Xiaomi multimodal subscription). Trade-off matrix, F13 governance, and routing rules. Single source of truth for which engine to use when."
 version: 1.1.0
 author: kimi-code (FI-008) for ARIF

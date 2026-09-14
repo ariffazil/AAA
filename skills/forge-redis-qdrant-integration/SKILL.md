@@ -1,6 +1,6 @@
 ---
 id: FORGE-redis-qdrant-integration
-name: FORGE-redis-qdrant-integration
+name: forge-redis-qdrant-integration
 version: 1.0.0-2026.07.17
 description: "Redis + Qdrant integration — caching layer and vector memory for federation semantic search."
 owner: A-FORGE

@@ -1,5 +1,5 @@
 ---
-name: AGY-scar-hardening
+name: agy-scar-hardening
 description: >
   Operating hardening doctrine for Antigravity CLI (FI-009 / agy) derived
   from 7 sealed AGY-specific scars (SCAR-AGY-001 through SCAR-AGY-007).

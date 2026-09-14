@@ -1,5 +1,5 @@
 ---
-name: FORGE-context-compressor
+name: forge-context-compressor
 description: Compress oversized logs, transcripts, diffs, and telemetry before they
   exceed a host runtime context budget while preserving provenance and recovery
 version: "1.1.0-2026.08.21"

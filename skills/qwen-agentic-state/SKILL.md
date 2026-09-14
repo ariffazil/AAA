@@ -1,6 +1,6 @@
 ---
 id: QWEN-agentic-state
-name: QWEN-agentic-state
+name: qwen-agentic-state
 description: >
   Persistent agentic state doctrine for Qwen Code (FI-003). Survive across sessions by
   writing to /root/.qwen/agent_state/. Auto-memory (MEMORY.md) holds lessons learned;

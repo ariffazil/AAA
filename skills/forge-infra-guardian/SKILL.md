@@ -1,5 +1,5 @@
 ---
-name: FORGE-infra-guardian
+name: forge-infra-guardian
 id: forge-infra-guardian
 version: 1.0.0
 risk_tier: low
