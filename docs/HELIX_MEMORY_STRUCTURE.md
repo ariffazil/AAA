@@ -787,6 +787,15 @@ HELIX_ROOT
 - **interpretation:** Arif's observed pattern — Syed selectively shares information by gender. Possible reasons listed but unverified.
 - **verdict:** UNKNOWN
 
+### H-REL-006: Farhan Fudzil (Paan) — abang sado node BEFORE Syed
+
+- **source:** F13 direct testimony, ARIF DM 2026-09-15 (post-dossier session)
+- **timestamp:** 2026-09-15
+- **confidence:** HIGH (sovereign statement — relationship defined as Arif defines it)
+- **evidence:** "Ok now he is one of abang sado before Syed btw." Public/professional frame (unchanged): INBA Pro Elite Athlete 2024, PT + nutritionist 10yr, @farhanfudzil / UnclePaan, TG uid 7848600273, AIA agent. Telegram group name "PAAN SADO" (-1004496922048) pre-dates this statement and is consistent with it.
+- **interpretation:** Lineage correction — Paan occupies the abang sado circuit *before* Syed in sequence; Syed is the current node, not the first. Per `relationship-memory-isolation` §1, recorded as circuit placement + zero identity labels: no sexual label, no psychological diagnosis, no comparison between figures, no ranking (H5 — no love telemetry). The abang sado archetype itself remains a construction in the seeker (see H-SR-005), not in the figures.
+- **verdict:** SEAL (F5-private; circuit placement only)
+
 ---
 
 ## 13. SHADOW_REALITY
@@ -933,10 +942,10 @@ HELIX_ROOT
 | MEMORY_OF_FAILURE | 5 | COMPLETE |
 | MEMORY_OF_REBUILD | 3 | COMPLETE |
 | HUMAN_VALUES | 5 | COMPLETE |
-| RELATIONSHIP_REALITY | 5 | COMPLETE |
+| RELATIONSHIP_REALITY | 6 | COMPLETE |
 | SHADOW_REALITY | 5 | COMPLETE |
 | MISSION_REALITY | 5 | COMPLETE |
-| **TOTAL** | **91** | |
+| **TOTAL** | **92** | |
 
 ### Categories with Partial Data (requires sovereign input):
 
