@@ -1,5 +1,5 @@
 ---
-name: FORGE-cross-agent-handoff
+name: forge-cross-agent-handoff
 id: forge-cross-agent-handoff
 owner: A-FORGE
 risk_tier: low

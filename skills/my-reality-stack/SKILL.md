@@ -1,6 +1,6 @@
 ---
 id: MY-REALITY-STACK
-name: Malaysia Reality Stack — Primary-Source Routing
+name: my-reality-stack
 version: 1.0.0-2026.08.15
 description: Route all Malaysia macro/policy/energy/corporate claims through primary government/financial sources using EXISTING federation tools. NO new MCP servers. Hard F2 provenance law for any MY figure.
 owner: F13 SOVEREIGN (directive 2026-08-15, external proposal adapted)

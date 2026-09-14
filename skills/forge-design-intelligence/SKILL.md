@@ -1,6 +1,6 @@
 ---
 id: FORGE-design-intelligence
-name: FORGE-design-intelligence
+name: forge-design-intelligence
 version: 1.0.0-2026-08-20
 description: >
   Design intelligence for building professional UI/UX across platforms.

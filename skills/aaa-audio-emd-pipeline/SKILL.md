@@ -1,5 +1,5 @@
 ---
-name: AAA-audio-emd-pipeline
+name: aaa-audio-emd-pipeline
 description: "EMD (Encode → Metabolize → Decode) orchestration doctrine for audio in the arifOS federation. The constitutional loop that binds ASR → LLM reasoning → TTS into a single governed pipeline. Every audio exchange in arifOS flows through this reflex arc."
 version: 1.1.0
 author: kimi-code (FI-008) for ARIF

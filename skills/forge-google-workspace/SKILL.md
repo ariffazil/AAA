@@ -1,5 +1,5 @@
 ---
-name: FORGE-google-workspace
+name: forge-google-workspace
 id: forge-google-workspace
 owner: A-FORGE
 risk_tier: low

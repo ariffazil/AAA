@@ -1,6 +1,6 @@
 ---
 id: agentic-web-optimization
-name: AGI-web-optimization
+name: agi-web-optimization
 version: 1.0.0
 description: "Make web content maximally extractable by LLMs, Agentic RAG systems, and search indexers."
 owner: AAA

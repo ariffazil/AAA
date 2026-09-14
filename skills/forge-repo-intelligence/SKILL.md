@@ -1,6 +1,6 @@
 ---
 id: repo-intelligence
-name: FORGE-repo-intelligence
+name: forge-repo-intelligence
 autonomy_tier: T1
 version: 1.0.0
 description: 'SOLE controller skill for repository intelligence across the arifOS Federation. Exposes 12'

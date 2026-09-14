@@ -1,6 +1,6 @@
 ---
 id: FORGE-governance-jsonld
-name: FORGE-governance-jsonld
+name: forge-governance-jsonld
 version: 1.0.0-2026.07.17
 description: "Governance JSON-LD — constitutional ontology and semantic governance context definitions."
 owner: A-FORGE

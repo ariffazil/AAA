@@ -1,6 +1,6 @@
 ---
 id: HERMES-opencode-protocol
-name: HERMES-opencode-protocol
+name: hermes-opencode-protocol
 owner: Hermes-Prime
 risk_tier: low
 version: 2.0.0

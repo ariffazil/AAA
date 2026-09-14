@@ -1,6 +1,6 @@
 ---
 id: github-ci-diagnose
-name: FORGE-ci-diagnose
+name: forge-ci-diagnose
 autonomy_tier: T1
 version: 1.1.0
 description: 'Parse failing GitHub Actions logs, identify root cause patterns, and

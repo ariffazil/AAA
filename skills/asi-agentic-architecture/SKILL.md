@@ -1,6 +1,6 @@
 ---
 id: ASI-agentic-architecture
-name: ASI-agentic-architecture
+name: asi-agentic-architecture
 owner: 555-ASI
 risk_tier: low
 version: 3.0.0

@@ -1,5 +1,5 @@
 ---
-name: FORGE-well-boundary-repair
+name: forge-well-boundary-repair
 description: 'Repair WELL organ boundary violations — fix substrate readiness drift,
   biometric staleness, and dignity floor gaps. Engineering actuator for WELL organ
   health restoration. F1 AMANAH: reversible fixes only.'

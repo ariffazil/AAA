@@ -1,6 +1,6 @@
 ---
 id: FORGE-vault999-witness
-name: FORGE-vault999-witness
+name: forge-vault999-witness
 version: 1.0.0-2026.07.17
 description: "VAULT999 witness — immutable ledger integration, seal chain verification, and audit trace."
 owner: A-FORGE

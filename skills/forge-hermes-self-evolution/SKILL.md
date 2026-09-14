@@ -1,5 +1,5 @@
 ---
-name: FORGE-hermes-self-evolution
+name: forge-hermes-self-evolution
 description: >
   Stage and operate Nous hermes-agent-self-evolution (DSPy + GEPA) against
   arifOS Hermes skills. Use when Arif says evolve a skill, GEPA, DSPy

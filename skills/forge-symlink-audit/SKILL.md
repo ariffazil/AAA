@@ -1,5 +1,5 @@
 ---
-name: FORGE-symlink-audit
+name: forge-symlink-audit
 id: forge-symlink-audit
 floor_scope: [F1, F2, F4, F7]
 description: 'Federation-wide broken symlink scanner. Scans /root for broken symlinks,

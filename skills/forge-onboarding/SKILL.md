@@ -1,6 +1,6 @@
 ---
 id: agent-onboarding
-name: FORGE-onboarding
+name: forge-onboarding
 autonomy_tier: T1
 version: 2.0.0
 description: >

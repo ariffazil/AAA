@@ -1,5 +1,5 @@
 ---
-name: WISDOM-reader
+name: wisdom-reader
 description: Read substrate BEFORE claiming victory. Enforces witness-first doctrine. USE WHEN: 'audit', 'validate', 'verify this', 'is this real', 'what is the shadow', 'what's actually true', 'what's missing'.
 ---
 

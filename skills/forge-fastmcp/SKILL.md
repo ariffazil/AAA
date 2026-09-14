@@ -1,5 +1,5 @@
 ---
-name: FORGE-fastmcp
+name: forge-fastmcp
 id: forge-fastmcp
 owner: A-FORGE
 risk_tier: low

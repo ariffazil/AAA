@@ -1,6 +1,6 @@
 ---
 id: github-issue-triage
-name: FORGE-issue-triage
+name: forge-issue-triage
 autonomy_tier: T1
 version: 1.1.0
 description: 'Governed triage workflow for GitHub issues across the arifOS federation
