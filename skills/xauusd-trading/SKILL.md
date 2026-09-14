@@ -1,6 +1,6 @@
 ---
 id: xauusd-trading-stack
-name: XAUUSD-trading-stack
+name: xauusd-trading
 version: 1.0.0-2026.07.14
 description: >
   Federation-wide gold (XAUUSD) trading capability. Python stack, OANDA broker,
