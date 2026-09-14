@@ -982,6 +982,7 @@ Hermes collapsed `abang sado` → Syed Khairuddin and held it as a single-writer
 ### Controls
 
 - **Routing:** a common-noun category MUST NOT resolve to an identity card. It MUST trigger disambiguation. (Implemented: `identity_continuity.yaml` → `ambiguous_categories`.)
+- **Enforcement (the pagar):** `arifOS/arifos/identity/identity_resolver.py` — an interceptor gate that loads this registry and chokes the path before any T2I / biometric / identity-bound capability executes. `guard()` → verdict; `@identity_bound` decorator → `IdentityHold`; registry unreadable → `HOLD_REGISTRY_UNREADABLE` (F1 > F2). Wired at the T2I entry point (`skills/qwencloud-image-generation/scripts/image.py`) ahead of provider/key resolution. Receipts: `/root/AAA/registry/routing/intercept_log.jsonl`. Tests: `tests/constitutional/test_identity_resolver.py`.
 - **Memory writes:** store the category as a class; store members as instances *of* the class, never *as* the class.
 - **Headers:** use `Syed — an abang sado node`, never `Syed (Abang Sado)`, in new writes. Existing headers are historical; do not bulk-rewrite in a way that breaks greps.
 - **Ambiguity preservation:** when a category word appears with no disambiguator, ask or hold. Never silently pick the last-known instance.
