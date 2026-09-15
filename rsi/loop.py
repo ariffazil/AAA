@@ -21,6 +21,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import sys
@@ -224,7 +225,16 @@ def _run_locked(window_days: int, dry_run: bool) -> dict:
 
 
 def _notify(record: dict, promoted: list, held: list) -> None:
-    """Delta-gated. Silent when nothing changed — the AAA group is a ledger, not a feed.
+    """Delta-gated on SUBSTANCE, not on run text.
+
+    The bridge's own delta gate hashes the whole message, so volatile fields —
+    counts, per-atom frequency — made every repeated run look like a new event and
+    the loop posted 5 EXHALE messages to the execution ledger in four minutes
+    during testing. The AAA group is a ledger, not a feed.
+
+    So the gate here is on substance: the set of promotions, holds, and consequence
+    verdict CHANGES. Identical substance keeps the previous notifications, and the
+    message body carries no run-volatile counts.
 
     Consequence verdicts that CHANGED (PENDING → PERSISTED / NO_EFFECT / REGRESSED)
     are state changes and are reported. Unchanged PENDING is not news.
@@ -234,12 +244,20 @@ def _notify(record: dict, promoted: list, held: list) -> None:
     regressed = [c for c in cons if c.get("verdict") == "REGRESSED"]
     if not promoted and not held and not changed_cons:
         return
+
+    substance = json.dumps({
+        "promoted": sorted(f"{p['pattern_type']}->{p.get('target')}" for p in promoted),
+        "held": sorted(f"{h['pattern_type']}:{h.get('reason')}" for h in held),
+        "consequence": sorted(f"{c['capability']}={c['verdict']}" for c in changed_cons),
+    }, sort_keys=True)
+    digest = hashlib.sha256(substance.encode()).hexdigest()[:16]
+    marker = os.path.join(A.STATE, ".last_notify")
+    if os.path.exists(marker) and open(marker).read().strip() == digest:
+        return  # same substance already reported — stay silent
+
     try:
         import subprocess, tempfile
-        c = record["counts"]
-        lines = [f"RSI EXHALE — {record['ts'][:16]}",
-                 f"promoted={c['promoted']} proposed={c['proposed']} "
-                 f"withheld={c['withheld']} hold={c['hold_forbidden']}"]
+        lines = ["RSI EXHALE"]
         for p in promoted[:8]:
             lines.append(f"  + {p['pattern_type']} → {p.get('target')}")
         for h in held[:5]:
@@ -252,6 +270,10 @@ def _notify(record: dict, promoted: list, held: list) -> None:
         subprocess.run(["/root/scripts/event-bridge.sh", "rsi_exhale", tmp,
                         "P1" if (held or regressed) else "P2"], timeout=60, check=False)
         os.unlink(tmp)
+        # Only record the substance AFTER the bridge accepted it, so a delivery
+        # failure is retried on the next cycle instead of being silently swallowed.
+        with open(marker, "w") as fh:
+            fh.write(digest)
     except Exception:
         pass  # delivery is never allowed to fail the loop
 
