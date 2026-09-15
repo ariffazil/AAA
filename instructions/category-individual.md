@@ -46,6 +46,7 @@ After: Extraction as explicit doctrine (Rule 4, this file) — agents must monit
 
 ## Enforcement Layer (truth-in-labeling — corrected same night by FI-003)
 
+
 C13/C14 are **doctrine-layer**: binding prose for AAA warga, loaded when harnesses boot the rendered fragments. They are **NOT kernel-enforced** — FLOOR_TABLE.json and arif_judge (:8088) do not evaluate C-series floors, and no gate blocks a violation today.
 
 - What this doctrine CAN do: bind agent behavior via rendered canon; be cited as governing text in audits and musyawarah.
@@ -53,5 +54,11 @@ C13/C14 are **doctrine-layer**: binding prose for AAA warga, loaded when harness
 - Promotion path (pending federation task): kernel classifier + floor wiring — "detection is debt until it can say NO."
 
 F6 (EMPATHY ⇄ MARUAH) remains the constitutional anchor. C13/C14 are its doctrine-layer expression.
+
+## Lineage Forward (2026-09-15)
+
+C13/C14 were the doctrine layer. `register-as-channel.md` is the *mechanism* layer: it explains
+**why** category collapse is not merely impolite but a systematic measurement error — and adds
+C15 (CAUSAL CLAUSE) and C16 (CORPUS != WORLD) to the membrane. Read together.
 
 DITEMPA BUKAN DIBERI ⚒️
