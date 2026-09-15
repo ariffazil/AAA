@@ -32,6 +32,7 @@ import atoms as A          # noqa: E402
 import connectors as C     # noqa: E402
 import consequence as CONS  # noqa: E402
 import extract             # noqa: E402
+import lock as LK          # noqa: E402
 import promote as P        # noqa: E402
 import verify as V         # noqa: E402
 
@@ -47,6 +48,13 @@ def _recurrence(store: dict) -> dict:
 
 
 def run(window_days: int = 7, dry_run: bool = False) -> dict:
+    """One cycle. Holds the state lock — two writers against one state is how
+    baselines get silently moved and a consequence verdict gets invalidated."""
+    with LK.LoopLock():
+        return _run_locked(window_days, dry_run)
+
+
+def _run_locked(window_days: int, dry_run: bool) -> dict:
     A.ensure_state()
     started = A.now_iso()
 
@@ -292,7 +300,13 @@ def main() -> int:
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args()
 
-    out = run(args.window, args.dry_run)
+    try:
+        out = run(args.window, args.dry_run)
+    except LK.AlreadyRunning as exc:
+        # Exit 4 = "another cycle in flight". Distinct from 3 (a real miss) so
+        # cron triage never mistakes a skip for a failure.
+        print(f"RSI LOOP — SKIPPED: {exc}")
+        return 4
     if args.json:
         print(json.dumps(out["record"], indent=2, ensure_ascii=False))
     else:
