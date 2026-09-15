@@ -1,0 +1,14 @@
+[tool.importlinter]
+root_packages = ["arifosmcp"]
+
+[[tool.importlinter.contracts]]
+name = "ARIFOS-BOUNDARY-001: constitutional law must not import serving runtime"
+type = "forbidden"
+source_modules = ["arifosmcp.constitution"]
+forbidden_modules = ["arifosmcp.runtime"]
+
+[[tool.importlinter.contracts]]
+name = "ARIFOS-BOUNDARY-002: transport airlock must not import runtime internals"
+type = "forbidden"
+source_modules = ["arifosmcp.transport"]
+forbidden_modules = ["arifosmcp.runtime"]
