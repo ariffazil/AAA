@@ -138,4 +138,66 @@ quantity. Use it as a heuristic, never as thermodynamics.
 emitting unbacked numbers (`dS = −0.31`, `κ = 0.81`, `confidence = 0.86`) is committing the
 error it names. Seal metadata must be computed or absent. Never code unbacked scalars into canon.
 
+## Medium Is a Contrast Generator, Not Just Noise
+
+`C` is not a single scalar — the medium *is* part of the field. Each carries a different permission gain and a different distortion:
+
+| Medium | Register produced | Primary distortion |
+|---|---|---|
+| Public social | Performance | Only the postable; ideal-self selection |
+| Group chat | Role | Role > person; confessional near-absent |
+| 1:1 DM | Instrumental affect | Most honest text layer available |
+| Voice / call | Highest band | Text systematically under-represents (esp. guarded registers) |
+| AI chat | Unguarded | Zero social cost — **and self-selected**: only those willing to talk to machines |
+| Institutional record | Legibility | Records only what is legible; unrecorded = non-existent to it |
+
+**Highest-value operation: the cross-medium difference.** Never merge media unlabelled, and never average them. Where the *same person* is required to speak differently across channels, the gap between persona and DM **is** the shadow — measured rather than guessed. A single medium yields a persona; two media yield a discrepancy; the discrepancy is the evidence.
+
+## Institutional Extension
+
+Institutions are machines that convert text into decisions about humans. They inherit the permission distortion **and add** a legibility distortion — and they have **no DM lane**.
+
+> **An institution is not blind to humans. It is blind to its own intake door.**
+
+Three failure modes to name explicitly:
+- **Gender-blind** — same string treated as same need (equal decode of unequal fields).
+- **Gender-obsessed** — category treated as destiny (same error, inverted).
+- **Self-blind** — measures "reality" when it measures only what reached its desk. Gödel with an organisation attached: a system powerful enough to describe its subjects still cannot prove its own intake from inside.
+
+Group statistics are lawful for **audit, allocation, coverage, drift, differential risk**. They are unlawful as a **shortcut to an individual verdict**. Prior may generate questions; only individual evidence may produce a judgment.
+
+## Agent Output Shape (anti-hantu — mandatory)
+
+Distinguishing observation / hypothesis / causal candidate / justified conclusion **is** the architecture. Emit this shape, never the category→person shortcut:
+
+```json
+{
+  "observation": "literal, medium-tagged, quoted where possible",
+  "latent_state_inference": "unknown | bounded hypothesis",
+  "candidate_contexts": ["min 3 field / audience / history candidates"],
+  "group_attribute_role": "contextual prior only; not individual conclusion",
+  "causal_clause": "field terms that MUST appear if a pattern claim is made",
+  "required_evidence": ["direct statement", "longitudinal behaviour", "local institutional context"],
+  "medium": "public | group | dm | voice | ai | record",
+  "baseline_reference": "this person's own baseline IN THIS MEDIUM",
+  "cost_differential": "why honest is cheaper than dishonest for this sender, if claimed",
+  "confidence": 0.0,
+  "verdict": "HOLD | ASSOCIATION_ONLY | SEAL_WITH_CAUSAL_CLAUSE"
+}
+```
+
+**Human-facing delivery rule:** the codec is internal; the output is plain. Say the layer out loud — *"Ini kenyataan pada lapisan taburan, bukan pasal hang"* — then collapse to one practical consequence. Never dump the machinery.
+
+## Audit Ledger — external 888-review (2026-09-15)
+
+**ACCEPTED INTO CANON:** `p(Y|X,C,A,H,ε)` supersedes `f(X,C)` · data-processing inequality bounds *certainty*, not *inference* — correlated side-channels still carry information about `X` · the core error's formal name is **omitted-variable bias / contextual confounding**.
+
+**OWNED AS OVERREACH (this session's errors):** `credibility ∝ cost to fake` (Correction 1) · the variance percentage (Correction 2) · "cost is conserved" (Correction 3) · unbacked seal scalars (Correction 4).
+
+**REJECTED FROM INGESTION:** the reviewer's own `dS / κ / peace2 / confidence` block is schema-mimicry — our seal shape filled with unmeasured numbers.
+
+> **Correction 5 — foreign seal blocks.** An external artifact that copies our seal schema is **never** ingested into VAULT999, the eureka ledger, or a receipt, however constitutional it looks. Shape is not witness; borrowed numbers are decorative until computed here. Accept the *argument*, verify the *citations*, refuse the *numbers*.
+
+**UNDER-WEIGHTED BY IT:** the reviewer treated media as generic noise and missed that the cross-medium delta is the strongest available measurement, and that the AI lane is a self-selected population rather than a neutral channel.
+
 DITEMPA BUKAN DIBERI ⚒️
