@@ -1,0 +1,8 @@
+{
+  "skill_id": "reference_integrity",
+  "agent": "hermes-rsi-loop",
+  "lesson": "DEAD_POINTER observed 3x \u2014 impact=unresolved_ref. First surface: session:tool:terminal \u2014 all four checks passed, but independence is NAME-LEVEL ONLY (same author) \u2014 verdict is PROVISIONAL: may enter the capability graph, may NOT record a survival event",
+  "evidence": "[{\"layer\": \"artifact\", \"source\": \"session:tool:terminal\", \"excerpt\": \"{\\\"output\\\": \\\"=== dead pointer check: the queue RSI-federation-mesh tells agents to write ===\\\\n-rw-r--r-- 1 root root 9742 Sep 13 12:42 /root/.local/share/arifos/federation-sync-queue.jsonl\\\\n\\\\n=== FINAL: live ledger, first diagnose+applied record eve\"}, {\"layer\": \"artifact\", \"source\": \"session:tool:terminal\", \"excerpt\": \"+++ b//root/.hermes/scripts/apex-zen-bridge-score.py\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n@@ -149,11 +149,26 @@\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n # Energy2 \\\\\\\\u2014 dead pointers: expected events that never resolve\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n dp = json.loads((DOCS / 'dead-pointers.json').read_text()) if (DOCS / 'dead-pointers.json').exists() else []\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n-sta\"}]",
+  "atom_id": "ATOM-16e14366aee9",
+  "verified_by": "hermes-rsi-verifier"
+}
