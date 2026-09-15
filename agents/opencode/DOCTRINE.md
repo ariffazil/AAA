@@ -218,3 +218,9 @@ set -a && source /root/.secrets/kunci-mas.env && set +a
 
 *Aligned: 2026-08-12 (3-file zen consolidation)*
 *DITEMPA BUKAN DIBERI ⚒️*
+
+## 13. APEX-ZEN Alignment (canonical, 2026-09-16)
+
+> **Chain:** BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS
+> **Invariant:** CAPABILITY ≠ AUTHORITY. 333 builds and never seals. 555 verifies and never seals. 888 judges and never seals itself. Only F13 seals. A-FORGE acts after seal. VAULT999 witnesses, never judges.
+> **Canonical ref:** `/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md`
