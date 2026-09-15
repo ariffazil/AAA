@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "name": "arifOS Federation Observability Dependency Graph",
+  "timestamp": "2026-09-15T05:39:50Z",
+  "doctrine": "Witness Before Mutation · Map Reality As Observed",
+  "dataflows": {
+    "live_flows": [
+      {
+        "flow_id": "FLOW-01-TELEMETRY-NATS",
+        "source": "arifosmcp/runtime/telemetry.py (arifOS & A-FORGE)",
+        "destination": "NATS JetStream (kabarkan.ingest.span.<trace_id>)",
+        "protocol": "NATS CLI subprocess publish (fire-and-forget)",
+        "health": "HEALTHY",
+        "throughput": "193,134 msgs total, sub-second latency",
+        "coupling": "LOOSE (non-blocking)"
+      },
+      {
+        "flow_id": "FLOW-02-NATS-TO-POSTGRES",
+        "source": "NATS JetStream stream 'kabarkan-ingest'",
+        "destination": "Kabarkan Worker (kabarkan-worker-fresh consumer)",
+        "downstream": "Postgres vault999: observability.observations",
+        "protocol": "JetStream Pull Subscriber -> asyncpg batch insert",
+        "health": "HEALTHY",
+        "lag": "0 messages (caught up)",
+        "total_persisted": "201,438 records"
+      },
+      {
+        "flow_id": "FLOW-03-ACTOR-TO-ARIFFLOW",
+        "source": "arifosmcp/runtime/telemetry.py",
+        "destination": "arifFLOW (:7073/telemetry/log)",
+        "protocol": "HTTP POST (fire-and-forget)",
+        "health": "HEALTHY",
+        "purpose": "Updates actor execution/verify tallies in arifFlow memory"
+      },
+      {
+        "flow_id": "FLOW-04-FRAME-FEDERATION-PROBE",
+        "source": "frame-probe.timer (every 15 min)",
+        "destination": "FRAME (:18085/frame/probe)",
+        "sub_probes": [
+          "arifos:8088", "aforge:7071", "geox:8081",
+          "wealth:18082", "well:18083", "aaa:3001",
+          "signal:18084", "arifflow:7073", "fed:7074"
+        ],
+        "output": "/var/lib/frame/trends.jsonl",
+        "health": "RESTORED (active as of 2026-09-15 13:35)"
+      }
+    ],
+    "disconnected_or_stale_flows": [
+      {
+        "flow_id": "STALE-01-OTEL-COLLECTOR",
+        "source": "None (no active clients configured to port 4318/4319)",
+        "destination": "otelcol-contrib (PID 1113)",
+        "status": "STANDBY",
+        "authority": "HOLD",
+        "finding": "Organs bypass OTel collector and write directly to NATS JetStream."
+      },
+      {
+        "flow_id": "MISSING-01-FRAME-OBSERVES-KABARKAN",
+        "source": "FRAME (:18085)",
+        "destination": "Kabarkan Worker (:18902)",
+        "status": "DISCONNECTED",
+        "root_cause": "Kabarkan worker in arifOS does not listen on HTTP port 18902. FRAME config omits Kabarkan."
+      },
+      {
+        "flow_id": "MISSING-02-FRAME-VECTOR-FQ",
+        "source": "FRAME (:18085)",
+        "destination": "arifFLOW vector.dimensions (:7073)",
+        "status": "PARTIAL",
+        "root_cause": "FRAME extracts scalar FQ only, dropping 7D vector diagnosis (c_dark, ds, g, j, omega, w3)."
+      },
+      {
+        "flow_id": "MISSING-03-ARIFFLOW-KABARKAN-FEEDBACK",
+        "source": "Kabarkan (Postgres)",
+        "destination": "arifFLOW rate calculator",
+        "status": "DISCONNECTED",
+        "root_cause": "arifFlow calculates FQ based solely on in-memory receipts; does not read historic trace telemetry."
+      }
+    ]
+  }
+}

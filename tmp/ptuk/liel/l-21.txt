@@ -1,0 +1,40 @@
+Docusign Envelope ID: BCBF091A-82F5-40AD-846A-E840C6C56334
+LNG INVESTMENTS EUROPE LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+2. MATERIAL ACCOUNTING POLICIES (CONTINUED)
+2.5 Taxation
+Tax on the profit or loss for the year comprises current and deferred tax. Income tax is recognised in the profit or loss except
+to the extent it relates to items recognised directly in equity, in which case it is recognised in equity.
+Current tax
+Current tax expense is the expected tax payable on the taxable income for the year, using the statutory tax rates at the reporting
+date, and any adjustment to tax payable in respect of previous years.
+Deferred tax
+Deferred tax is provided for, using the liability method, on temporary differences at the reporting date between the tax bases
+of assets and liabilities and their carrying amounts in the financial statements. In principle, deferred tax liabilities are
+recognised for all taxable temporary differences and deferred tax assets are recognised for all deductible temporary differences,
+unabsorbed capital allowances, unused reinvestment allowances, unused investment tax allowances, unused tax losses and
+other unused tax credits to the extent that it is probable that future taxable profit will be available against which the deductible
+temporary differences, unabsorbed capital allowances, unused reinvestment allowances, unused investment tax allowances,
+unused tax losses and other unused tax credits can be utilised.
+Deferred tax is not recognised for the following temporary differences: the initial recognition of goodwill and the initial
+recognition of an asset or liability in a transaction which is not a business combination and that affects neither accounting nor
+taxable profit nor loss.
+Deferred tax is measured at the tax rates that are expected to apply in the period when the asset is realised or the liability is
+settled, based on the laws that have been enacted or substantively enacted by the end of the reporting period. Deferred tax
+assets and liabilities are offset if there is a legally enforceable right to offset current tax liabilities and assets, and they relate
+to income taxes levied by the same tax authority on the same taxable entity, or on different tax entities where they intend to
+settle current tax liabilities and assets on a net basis or their tax assets and liabilities will be realised simultaneously.
+Deferred tax asset is reviewed at each reporting date and is reduced to the extent that it is no longer probable that the future
+taxable profit will be available against which the related tax benefit can be realised. The tax expense represents the sum of the
+tax currently payable and deferred tax.
+Global minimum top-up tax
+The Company has adopted International Tax Reform — Pillar Two Model Rules —- Amendment to IAS 12 upon its release
+on 23 May 2023. The amendments introduce a mandatory temporary exception to the accounting for deferred taxes arising
+from the jurisdictional implementation of the Pillar Two Model Rules as well as disclosure requirements on the exposure to
+Pillar Two income taxes upon adoption. The application by the respective entity is subject to when the law is being
+enacted or substantively enacted in the respective country jurisdiction.
+The PETRONAS Group has performed a provisional Pillar Two assessment and concluded that the Company’s jurisdiction
+has passed a transitional Country by Country Safe Harbour Test. As such, there will be no adjustment required in the financial
+statements.
+21

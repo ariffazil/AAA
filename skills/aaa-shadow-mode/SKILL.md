@@ -2,7 +2,7 @@
 name: aaa-shadow-mode
 id: AAA-shadow-mode
 risk_tier: low
-description: 'Shadow mode multimodal compute & generation doctrine for sovereign human needs. Governs out-of-band GPU execution (A100/Hostinger/RunPod), asynchronous batch processing, privacy isolation, and zero-clutter offloading.'
+description: 'Shadow mode multimodal compute & generation doctrine for sovereign human needs. Governs out-of-band GPU execution (A100/Hostinger/RunPod), asynchronous batch processing, privacy isolation, and zero-clutter offloading. [fed: tier=fed-shadow-compute, auto=T1, risk=low]'
 version: 1.0.0
 tags:
 - shadow-mode

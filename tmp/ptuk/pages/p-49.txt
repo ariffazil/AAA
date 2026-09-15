@@ -1,0 +1,49 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF11912A8BAS
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+12. DERIVATIVES
+31.12.2025 31.12.2024
+Note USD’000 USD’000
+Derivative assets
+Non-current
+Related party - Commodity derivative 22 697 -
+Current
+Commodity derivative contracts : 1,724 2,179
+Related party - Commodity derivative 7,523 20,376
+22 9,247 22,555
+9,944 22,555
+Derivative Liabilities
+Non-current
+Related party — Commodity derivative 22 697 -
+Current
+Commodity derivative contracts 3,812 24,286
+Related party - Commodity derivative 3,756 -
+22 7,568 24,286
+8,265 24,286
+‘Derivative assets are set off against the derivative liabilities on same currency and financial
+instrument basis (see Note 22 and Note 23) as contractual arrangements include the right to offset
+and settlement is intended to occur on a net basis for each currency.
+In the normal course of business, the Company enters into derivative financial instruments to manage
+its normal business exposures in relation to commodity prices, consistent with risk management
+policies and objectives. The mark to market position of crude oil, fuel oil, petroleum products and
+gas forwards and futures is based on the fair value difference between forward market price at the
+date of measurement and the contracted price.
+The commodity derivative contracts entered on behalf of LNG Investment Europe Limited (“LIEL’)
+are disclosed separately under related party.
+13. PROVISION AND OTHER PAYABLES
+31.12.2025 31.12.2024
+USD’000 USD’000
+Non-current
+Financial guarantee 180 -
+Other payables 460 -
+640
+Current
+Financial guarantee 60 ot
+700 -
+The financial guarantee provided relates to a four-year Sale and Purchase Agreement (SPA) entered
+into during the financial year, under which the Company is the Buyer for a committed volume of
+crude oil from a third-party Seller. Under this SPA, a bank will make a prepayment directly to the
+Seller, and the Company has assumed on an unfunded risk participation basis 30% of the risk
+associated with the Seller’s potential default.
+48 .

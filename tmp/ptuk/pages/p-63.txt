@@ -1,0 +1,44 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF 11912A8BA9
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+22. FINANCIAL INSTRUMENTS (CONTINUED)
+Liquidity Risk
+Liquidity risk is the risk that the Company will not be able to meet its financial obligations as they
+fall due. The Company’s exposure to liquidity risk arises principally from its trade and other
+payables, and borrowings. In managing its liquidity risk, the Company maintains sufficient cash and
+liquid marketable assets. The Company’s current credit rating enables it to access banking facilities
+in excess of current and future requirements of the Company.
+During the year ended 31 December 2025, the Company drew trade loans of USD106 million (2024:
+USD 311 million). The Company repaid USD103 million (2024: USD311 million) of trade loans
+during the period. Remaining amount of trade loans as at 31 December 2025 was USD2.6 million
+(2024: Nil).
+The Company’s borrowing powers are not limited by its Articles of Association.
+, Maturity analysis
+The table below summarises the maturity profile of the Company’s financial liabilities based on
+contractual undiscounted payments:
+Contractual cash flow
+Carrying Total Within 1-2 years 2-5 years More
+amount one year than 5
+years
+USD’000 USD’000 USD’000 USD’000 USD’000 USD’000
+2025
+Trade and 413,609 413,609 413,609 - - -
+other payables
+Derivative 8,265 8,265 8,265 - - -
+liabilities
+Short-term 2,645 2,645 2,645 - - -
+borrowings
+Lease 20,060 20,060 10,436 1,126 5,124 3,374
+liabilities
+Provisions 700 735 60 225 450 :
+445,279 445,314 435,015 1,351 5,574 3,374
+2024
+Trade and 374,463 374,463 374,463 - - -
+other payables
+. Derivative 24,286 24,286 24,286 - - -
+liabilities
+Lease 28,414 28,414 19,167 9,247 - -
+liabilities
+427,163 427,163 417,916 9,247 : -
+62

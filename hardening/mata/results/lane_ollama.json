@@ -1,0 +1,29 @@
+{
+  "lane": "ollama-local",
+  "transport": "local daemon",
+  "probes": [
+    {
+      "probe": "ollama list",
+      "command": "ollama list",
+      "exit_code": 0,
+      "raw_stdout": "NAME                       ID              SIZE      MODIFIED   \nbge-m3:latest              790764642607    1.2 GB    3 days ago    \nqwen2.5:7b                 845dbda0ea48    4.7 GB    4 days ago    \nqwen2.5:3b                 357c53fb659c    1.9 GB    4 days ago    \nnomic-embed-text:latest    0a109f422b47    274 MB    4 days ago    \n",
+      "local_models": [
+        "bge-m3:latest",
+        "qwen2.5:7b",
+        "qwen2.5:3b",
+        "nomic-embed-text:latest"
+      ],
+      "vision_capable_models": [],
+      "verdict": "BLIND",
+      "note": "NO local vision model installed; only text/embedding models"
+    },
+    {
+      "probe": "ollama blobs",
+      "command": "ls -la /root/.ollama/models/blobs/",
+      "exit_code": 0,
+      "raw_stdout": "\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n               ARIFOS FEDERATION REALITY FRAME (CRF)\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n SOVEREIGN : ARIF\n NODE      : KVM8 | ROLE: institutional_substrate | AUTHORITY: canonical\n LAW       : arifOS Constitutional Kernel (000)\n TRUTH SOT : KVM8 (Court & Registry) | EXECUTION SOT : KVM4 (The Workshop)\n\n INVARIANTS:\n \u00b7 Identity Before Action \u00b7 Inventory Before Mutation\n \u00b7 Executor Never Certifies \u00b7 Witness Never Governs\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\ntotal 16\ndrwxr-xr-x 2 root root 4096 May  4 22:31 .\ndrwxr-xr-x 4 root root 4096 Apr 23 13:11 ..\n-rw-r--r-- 1 root root  337 Apr 23 13:12 sha256-0c4c9c2a325fb1cdafec606e6809cb745f1cb26a6d919994400d27372303e276\n-rw-r--r-- 1 root root 1068 Apr 23 13:12 sha256-a406579cd136771c705c521db86ca7d60a6f3de7c9b5460e6193a2df27861bde\n",
+      "verdict": "BLIND",
+      "note": "no mmproj/vision projector blob present (blobs are tiny metadata files)"
+    }
+  ]
+}

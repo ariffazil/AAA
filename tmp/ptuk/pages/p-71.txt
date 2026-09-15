@@ -1,0 +1,32 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF 11912A8BA9
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+23. OFFSETTING OF FINANCIAL ASSETS AND LIABILITIES (CONTINUED)
+Gross amounts Net amount
+recognised presented in the
+financial assets Amounts Statement of
+(liabilities) set off Financial Position
+Financial liabilities
+Trade payables (257,084) 107,809 (149,275)
+Amounts due to related parties (267,899) 60,612 (207,287)
+Lease liabilities (28,414) - (28,414)
+Other payables (17,901) - (17,901)
+Derivative liabilities (34,464) 10,178 (24,286)
+31 December 2024 (605,762) 178,599 (427,163)
+24. CAPITAL MANAGEMENT
+The Company define capital as total equity and debt of the Company. The objective of the
+Company’s capital management is to maintain an optimal capital structure and ensuring availability
+of funds in order to meet financial obligations and support business growth. As a subsidiary of
+Petroliam Nasional Berhad (““PETRONAS”), the Company’s approach in managing capital is
+outlined in the PETRONAS Financial Policy.
+There were no changes in the Company’s approach to capital management during the year.
+25. ADOPTION OF NEW AND REVISED PRONOUNCEMENT
+As of 1 January 2025, the Company adopted the following pronouncements that have been issued
+by the IASB and are applicable as listed below:
+Effective for annual periods beginning on or after 1 January 2025
+Amendments to IAS 21 The Effects of Changes in Foreign Exchange Rates — Lack of
+Exchangeability.
+The initial application of the above mentioned pronouncements did not have any material impact to
+the financial statements of the Company.
+70

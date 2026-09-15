@@ -3,7 +3,7 @@ id: github-ci-diagnose
 name: forge-ci-diagnose
 autonomy_tier: T1
 version: 1.1.0
-description: 'Parse failing GitHub Actions logs, identify root cause patterns, and
+description: 'Parse failing GitHub Actions logs, identify root cause patterns, and [fed: tier=fed-agent-subagent, auto=T1, risk=medium]
   propose fixes without executing irreversible changes. Use this skill whenever a
   federation repo shows a red CI status, a workflow fails, or a build/test/lint gate
   breaks. This skill reads logs, classifies failure modes, and outputs a diagnostic

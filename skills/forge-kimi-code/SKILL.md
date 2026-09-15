@@ -2,8 +2,8 @@
 id: kimi-code-aaa
 name: forge-kimi-code
 autonomy_tier: T1
-version: 1.0.1
-description: Configure, audit, and align Kimi Code CLI as AAA warga FI-008 with arifOS
+version: 1.0.2
+description: Configure, audit, and align Kimi Code CLI as AAA warga FI-008 with arifOS [fed: tier=fed-long-context, auto=T1, risk=medium]
   kernel and A-FORGE stdio actuator.
 owner: AAA
 risk_tier: medium
@@ -171,3 +171,8 @@ kimi doctor
 - **Canonical paths table** (lines 83–90) — intentionally left as documentation, since these are reference material not executable code
 
 DITEMPA BUKAN DIBERI.
+
+## Lessons (auto)
+
+*Auto-ingested from agent learning. F2-gated: every entry carries evidence.*
+- **[2026-09-14] kimi-code/FI-008** (evidence: 2026-09-04 session: 3 failed Write calls (holds.txt, attention.py, carry_forward.json) all preceded by Bash cat reads of the same paths.): The Write tool requires a prior Read-TOOL call on the target path; Bash cat/head does NOT count. Reading via shell then writing costs a failed tool call every time. Habit: if a file will be Written this session, Read it once with the tool.

@@ -1,0 +1,49 @@
+Docusign Envelope ID: BCBF091A-82F5-40AD-846A-E840C6C 56334
+LNG INVESTMENTS EUROPE LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+11. TAXATION (CONTINUED)
+11.2 Factors affecting tax charge / (credit) for the period (continued):
+2025 2024
+£000 £000
+Profit/(Loss) on ordinary activities before tax 18,409 (37,236)
+Profit/(Loss) on ordinary activities multiplied by standard rate of
+Corporation tax in the UK of 25.00% (2024: 25.00%) 4,602 (9,309)
+Effects of:
+Impact of tax losses and other temporary differences arising in the period in respect
+of which deferred tax not recognised (4,720) 263
+Effects of group relieffother reliefs 6 3,830
+Prior year adjustments - (18)
+Total tax benefit for the year (112) (5,234)
+A potential deferred tax asset of £80,087;513 (2024: £87,734,482) has not been recognised at the Balance Sheet date, on the
+basis that the availability of suitable taxable profits arising in the future against which the temporary difference could reverse
+is not considered probable.
+The Company’s current tax and deferred tax position is derived based on current tax legislation and best available information
+at the reporting date.
+The assessment of the Pillar Two income taxes ; is performed based on best financial statements information
+available for the constituent entities in the Group as at reporting period by applying the requirements issued
+by Organisation for Economic Co-operation and Development (“OECD”). Based on the assessment carried
+out for the period, the Pillar Two effective tax rates in which the Group operates are above 15%. Therefore,
+the Group does not expect a potential exposure to Pillar Two top-up taxes.
+2025 2024
+£000 £000
+11.3. Deferred tax
+The deferred balance comprises of the following:
+Deferred tax liabilities .
+Property, plant and equipment 232 224
+Deferred tax assets
+Unused tax losses (232) (112)
+Net deferred tax liability - 112
+£'000 Opening Recognised in Closing
+Deferred tax movements balance profit or loss balance
+31 December 2025
+Property, plant and equipment 224 7 231
+Unrealised hedging gains or losses - -
+Carried forward tax losses (112) (119) (231)
+112 a 12 ) :
+31 December 2024
+Property, plant and equipment - 224 224
+Unrealised hedging gains or losses _ 10,442 (10,442) -
+Carried forward tax losses (5,221) 5,109 (12)
+5,221 (5,109) 112
+31

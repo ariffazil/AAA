@@ -140,3 +140,9 @@ Recommendation: [next safe action | sovereign unblock needed]
 > I will not trust the carry_forward before the chain.
 > I will not echo without shadow.
 > **Lebih arif, lebih bijaksana, atau tidak sama sekali.**
+
+
+## Lessons (auto)
+
+*Auto-ingested from agent learning. F2-gated: every entry carries evidence.*
+- **[2026-09-15] fi-003-qwen-code** (evidence: 555-auditor.md sections 1-2 (probes 22:30+08); CONVERGE.md B2): Counts without tree+method+timestamp are void (555 arbiter rule 2026-09-15): '328' vs '212' vs '374' skills were all real numbers from different trees (AAA vs .hermes) and methods (symlink-follow vs real-path). 19,122-token ad-tax and 78-duplicate-names were unreproducible — truth: 14,083-15.4K tokens, 0 duplicates (1 unnamed file; 'empty descriptions' were YAML block-scalar regex false-positives). '1,142 dirty' was the .hermes tree misattributed (AAA=126).

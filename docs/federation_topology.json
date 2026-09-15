@@ -1,0 +1,553 @@
+{
+  "generated_at_utc": "2026-09-15T15:16:52+00:00",
+  "generator": "federation_topology_gen.py",
+  "source": "live probes + /root/.hermes/config.yaml + /root/.config/1mcp/mcp.json",
+  "organs": [
+    {
+      "port": 8088,
+      "label": "arifOS kernel",
+      "role": "constitutional core",
+      "http_status": 200,
+      "declared_state": "healthy",
+      "identity": "ARIFOS MCP",
+      "authority": "SOVEREIGN",
+      "mcp_tool_count": 8,
+      "mcp_tools": [
+        "arif_init",
+        "arif_observe",
+        "arif_think",
+        "arif_route",
+        "arif_memory",
+        "arif_judge",
+        "arif_forge",
+        "arif_seal"
+      ],
+      "mcp_error": null,
+      "wired_hermes": "arifos",
+      "wired_1mcp": "arifos"
+    },
+    {
+      "port": 7072,
+      "label": "A-FORGE MCP",
+      "role": "execution actuator",
+      "http_status": 200,
+      "declared_state": "healthy",
+      "identity": "A-FORGE-MCP",
+      "authority": "777_FORGE",
+      "mcp_tool_count": 126,
+      "mcp_tools": [
+        "forge_session_init",
+        "forge_health_check",
+        "forge_heart_critique",
+        "forge_check_governance",
+        "forge_execute",
+        "forge_judge_proxy",
+        "forge_transfer_confirm",
+        "forge_send_confirm",
+        "forge_vault",
+        "forge_wealth",
+        "forge_docsgpt",
+        "forge_journalctl",
+        "forge_well",
+        "forge_kernel",
+        "forge_hf_import",
+        "forge_chart",
+        "forge_probe",
+        "forge_scan",
+        "forge_filesystem",
+        "forge_postgres",
+        "forge_memory",
+        "forge_git",
+        "forge_github",
+        "forge_docker",
+        "forge_fetch",
+        "forge_agent",
+        "forge_lease",
+        "forge_registry_status",
+        "forge_fingerprint_check",
+        "forge_shell",
+        "forge_shell_dryrun",
+        "forge_shell_status",
+        "forge_shell_ledger",
+        "forge_shell_alert_history",
+        "forge_wm_stats",
+        "forge_wm_gaps",
+        "forge_wm_quality",
+        "forge_experience_trace",
+        "forge_experience_query",
+        "forge_skill_select_query",
+        "forge_job",
+        "forge_status",
+        "forge_abort",
+        "forge_vps_ports",
+        "forge_vps_services",
+        "forge_vps_cron",
+        "forge_security_drift_scan",
+        "forge_verify_timeline",
+        "forge_skill",
+        "forge_seal",
+        "forge_registry",
+        "forge_evaluate",
+        "forge_witness",
+        "forge_scar",
+        "forge_register",
+        "forge_reality_loop",
+        "forge_parallel",
+        "forge_parallel_status",
+        "forge_parallel_cancel",
+        "forge_parallel_list",
+        "forge_probe_site",
+        "forge_receipt_draft",
+        "forge_research",
+        "forge_search",
+        "forge_docs_lookup",
+        "forge_browser_navigate",
+        "forge_browser_click",
+        "forge_browser_type",
+        "forge_browser_screenshot",
+        "forge_browser_extract_text",
+        "forge_browser_evaluate_js",
+        "forge_github_get_file",
+        "forge_github_create_or_update_file",
+        "forge_github_create_issue",
+        "forge_worktree",
+        "forge_netdata_alarms",
+        "forge_netdata_metrics",
+        "forge_minimax_search",
+        "forge_web_extract",
+        "forge_synthesize",
+        "forge_stage",
+        "forge_sandbox_run",
+        "forge_scar_scan",
+        "forge_skillstore_write",
+        "forge_skillstore_read",
+        "forge_tier_bind",
+        "forge_docket_prep",
+        "forge_execute_sealed",
+        "forge_sandbox_pause",
+        "forge_sandbox_resume",
+        "forge_sandbox_list_paused",
+        "forge_sandbox_auto_evict",
+        "forge_compile_task",
+        "forge_dispatch_lane",
+        "forge_collect_evidence",
+        "forge_seal_run",
+        "auth_pipeline",
+        "forge_git_commit",
+        "forge_entropy_sweep",
+        "forge_canonize",
+        "forge_document_ingest",
+        "forge_policy",
+        "forge_surface_guard",
+        "forge_surface_audit",
+        "forge_gemini",
+        "forge_predict",
+        "forge_apex_encode",
+        "forge_apex_metabolize",
+        "forge_apex_emd",
+        "forge_apex_recompute",
+        "forge_apex_goal_status",
+        "forge_ephemeral",
+        "forge_web_zen",
+        "forge_isomorphism_check",
+        "forge_cool_drift",
+        "forge_cool_pattern",
+        "forge_rsi_impulse_response",
+        "forge_rsi_dual_rate_fq",
+        "forge_rsi_state_vector",
+        "forge_runtime_verify",
+        "forge_trust_score",
+        "forge_compose",
+        "forge_lock",
+        "forge_pipeline_run",
+        "forge_visual_qa",
+        "forge_visual_seal"
+      ],
+      "mcp_error": null,
+      "wired_hermes": null,
+      "wired_1mcp": null
+    },
+    {
+      "port": 7074,
+      "label": "FED",
+      "role": "route advisor",
+      "http_status": 200,
+      "declared_state": "healthy",
+      "identity": "FED",
+      "authority": null,
+      "mcp_tool_count": 7,
+      "mcp_tools": [
+        "fed_route",
+        "fed_status",
+        "fed_probe",
+        "fed_contrast",
+        "fed_health",
+        "fed_classify",
+        "fed_report_latency"
+      ],
+      "mcp_error": null,
+      "wired_hermes": "fed",
+      "wired_1mcp": null
+    },
+    {
+      "port": 8081,
+      "label": "GEOX",
+      "role": "earth reasoning",
+      "http_status": 200,
+      "declared_state": "healthy",
+      "identity": "geox-unified",
+      "authority": "555_COMPUTE_ONLY",
+      "mcp_tool_count": 31,
+      "mcp_tools": [
+        "geox_geomechanics",
+        "geox_glof_cascade_initialize",
+        "geox_glof_cascade_step",
+        "geox_glof_cascade_phase",
+        "geox_glof_cascade_inverse",
+        "geox_glof_cascade_metabolize",
+        "geox_glof_cascade_mcmc_inverse",
+        "geox_glof_cascade_propagate",
+        "geox_paleobiodb_query",
+        "geox_well_ingest",
+        "geox_well_qc",
+        "geox_petrophysics",
+        "geox_seismic_ingest",
+        "geox_seismic_interpret",
+        "geox_basin",
+        "geox_prospect",
+        "geox_contrast_metabolize",
+        "geox_temporal",
+        "geox_map",
+        "geox_source",
+        "geox_spatial",
+        "geox_deep_time",
+        "geox_claim",
+        "geox_model",
+        "geox_well",
+        "geox_seismic_compute",
+        "geox_calibration_register_witness",
+        "geox_extract_display_proxy",
+        "geox_register_native_source",
+        "geox_extract_native_trace",
+        "geox_list_registered_sources"
+      ],
+      "mcp_error": null,
+      "wired_hermes": "geox",
+      "wired_1mcp": "geox"
+    },
+    {
+      "port": 18082,
+      "label": "WEALTH",
+      "role": "capital intelligence",
+      "http_status": 200,
+      "declared_state": "healthy",
+      "identity": "4c31dad39a2ce9a4fcb3baa14c5fb48bb424b921cae71f0953aeaa58c112ba6f",
+      "authority": "555_COMPUTE_ONLY",
+      "mcp_tool_count": 11,
+      "mcp_tools": [
+        "capital_primitive",
+        "capital_health",
+        "capital_diagnose",
+        "capital_market",
+        "capital_ledger",
+        "capital_registry",
+        "capital_entropy",
+        "wealth_judge_handoff",
+        "capital_indicator",
+        "capital_backtest",
+        "capital_entry_plan"
+      ],
+      "mcp_error": null,
+      "wired_hermes": "wealth",
+      "wired_1mcp": "wealth"
+    },
+    {
+      "port": 18083,
+      "label": "WELL",
+      "role": "human readiness",
+      "http_status": 200,
+      "declared_state": "degraded",
+      "identity": "well-mcp",
+      "authority": "REFLECT_ONLY",
+      "mcp_tool_count": 31,
+      "mcp_tools": [
+        "well_log_intake",
+        "well_log_recovery_event",
+        "well_log_substance",
+        "well_inject_biometric",
+        "well_observe_machine",
+        "well_observe_federation_thermal",
+        "well_observe_scar_load",
+        "well_observe_drift_field",
+        "well_observe_evidence_backlog",
+        "well_classify_machine_state",
+        "well_attest_to_kernel",
+        "well_handoff_dignity_to_arifos",
+        "well_propose_seal_recommendation",
+        "well_propose_governance_signal",
+        "well_consent_set_scope",
+        "well_consent_audit",
+        "well_seal_recommendation_log",
+        "well_assess_triadic_state",
+        "well_get_triadic_snapshot",
+        "well_render_hud_panel",
+        "well_frame_read_snapshot",
+        "well_machine_diagnose",
+        "well_machine_recommend",
+        "well_classify_substrate",
+        "well_trace_lineage",
+        "well_assess_homeostasis",
+        "well_check_repair",
+        "well_validate_vitality",
+        "well_assess_reliability",
+        "well_guard_dignity",
+        "well_registry_status"
+      ],
+      "mcp_error": null,
+      "wired_hermes": "well",
+      "wired_1mcp": "well"
+    },
+    {
+      "port": 18085,
+      "label": "FRAME",
+      "role": "independent observer",
+      "http_status": 200,
+      "declared_state": "ok",
+      "identity": "frame",
+      "authority": null,
+      "mcp_tool_count": 0,
+      "mcp_tools": [],
+      "mcp_error": "ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)",
+      "wired_hermes": null,
+      "wired_1mcp": null
+    },
+    {
+      "port": 18090,
+      "label": "minimax-media bridge",
+      "role": "media generation",
+      "http_status": null,
+      "declared_state": null,
+      "identity": null,
+      "authority": null,
+      "mcp_tool_count": 0,
+      "mcp_tools": [],
+      "mcp_error": "ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)",
+      "wired_hermes": null,
+      "wired_1mcp": "minimax-media"
+    },
+    {
+      "port": 18091,
+      "label": "minimax-code",
+      "role": "code generation",
+      "http_status": null,
+      "declared_state": null,
+      "identity": null,
+      "authority": null,
+      "mcp_tool_count": 0,
+      "mcp_tools": [],
+      "mcp_error": "ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)",
+      "wired_hermes": null,
+      "wired_1mcp": "minimax-code"
+    },
+    {
+      "port": 3001,
+      "label": "AAA daemon",
+      "role": "intelligence routing",
+      "http_status": 200,
+      "declared_state": "healthy",
+      "identity": "f909eab007954d345edd20ecad73c361b6b2ad2d417b15b9cf0454caf9399578",
+      "authority": "DISPLAY_ONLY",
+      "mcp_tool_count": 0,
+      "mcp_tools": [],
+      "mcp_error": "ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)",
+      "wired_hermes": null,
+      "wired_1mcp": null
+    },
+    {
+      "port": 4000,
+      "label": "Langfuse",
+      "role": "observability",
+      "http_status": null,
+      "declared_state": null,
+      "identity": null,
+      "authority": null,
+      "mcp_tool_count": 0,
+      "mcp_tools": [],
+      "mcp_error": "ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)",
+      "wired_hermes": null,
+      "wired_1mcp": null
+    },
+    {
+      "port": 8083,
+      "label": "kabarkan?",
+      "role": "observability ingest",
+      "http_status": 200,
+      "declared_state": "pass",
+      "identity": null,
+      "authority": null,
+      "mcp_tool_count": 0,
+      "mcp_tools": [],
+      "mcp_error": "ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)",
+      "wired_hermes": null,
+      "wired_1mcp": null
+    }
+  ],
+  "hermes_mcp_servers": {
+    "aforge": {
+      "enabled": true
+    },
+    "arifflow": {
+      "enabled": true
+    },
+    "arifos": {
+      "enabled": true
+    },
+    "brave-search": {
+      "enabled": true
+    },
+    "chrome-devtools": {
+      "enabled": true
+    },
+    "cloudflare": {
+      "enabled": false
+    },
+    "context7": {
+      "enabled": true
+    },
+    "datadog": {
+      "enabled": false
+    },
+    "exa": {
+      "enabled": true
+    },
+    "fed": {
+      "enabled": true
+    },
+    "firecrawl": {
+      "enabled": true
+    },
+    "geox": {
+      "enabled": true
+    },
+    "hermes-social": {
+      "enabled": false
+    },
+    "hugging_face": {
+      "enabled": false
+    },
+    "postgres": {
+      "enabled": true
+    },
+    "wealth": {
+      "enabled": true
+    },
+    "well": {
+      "enabled": true
+    },
+    "zai_reader": {
+      "enabled": true
+    },
+    "zai_search": {
+      "enabled": true
+    },
+    "zai_vision": {
+      "enabled": true
+    }
+  },
+  "onemcp_servers": {
+    "aforge": {
+      "disabled": false
+    },
+    "arifflow": {
+      "disabled": false
+    },
+    "arifos": {
+      "disabled": false
+    },
+    "brave-search": {
+      "disabled": false
+    },
+    "chrome-devtools": {
+      "disabled": false
+    },
+    "cloudflare": {
+      "disabled": true
+    },
+    "context7": {
+      "disabled": false
+    },
+    "docker": {
+      "disabled": true
+    },
+    "exa": {
+      "disabled": false
+    },
+    "geox": {
+      "disabled": false
+    },
+    "github": {
+      "disabled": false
+    },
+    "hermes": {
+      "disabled": true
+    },
+    "hostinger-vps": {
+      "disabled": true
+    },
+    "meyhem": {
+      "disabled": true
+    },
+    "minimax-code": {
+      "disabled": true
+    },
+    "minimax-media": {
+      "disabled": false
+    },
+    "perplexity": {
+      "disabled": true
+    },
+    "postgres": {
+      "disabled": false
+    },
+    "qdrant": {
+      "disabled": true
+    },
+    "sequential-thinking": {
+      "disabled": false
+    },
+    "supabase": {
+      "disabled": true
+    },
+    "wealth": {
+      "disabled": false
+    },
+    "well": {
+      "disabled": false
+    }
+  },
+  "wiring_gaps": {
+    "in_1mcp_not_hermes": [
+      "docker",
+      "github",
+      "hermes",
+      "hostinger-vps",
+      "meyhem",
+      "minimax-code",
+      "minimax-media",
+      "perplexity",
+      "qdrant",
+      "sequential-thinking",
+      "supabase"
+    ],
+    "in_hermes_not_1mcp": [
+      "datadog",
+      "fed",
+      "firecrawl",
+      "hermes-social",
+      "hugging_face",
+      "zai_reader",
+      "zai_search",
+      "zai_vision"
+    ]
+  }
+}

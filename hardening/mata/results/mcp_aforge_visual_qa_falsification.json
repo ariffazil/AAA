@@ -1,0 +1,59 @@
+{
+  "lane": "aforge forge_visual_qa (hash falsification battery)",
+  "claim": "screenshot_hash == sha256(abs_path_string), NOT sha256(file bytes)",
+  "calls": [
+    {
+      "screenshot_path": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+      "screenshot_hash_returned": "87c729e7b2cf235543dc9e744751bb29e39db68d98fac21b690792ae93af779e",
+      "actual_file_sha256": "f90ada036b2d7d19a52ea9463992fe91d2a49ddc8a9a11c7448ade23c1826340",
+      "actual_path_sha256": "87c729e7b2cf235543dc9e744751bb29e39db68d98fac21b690792ae93af779e",
+      "w1_status": "CONFIRMED",
+      "w1_deviations": [],
+      "w1_confidence": 0.5
+    },
+    {
+      "screenshot_path": "/root/AAA/hardening/mata/testdata/img_b_number_caption.png",
+      "screenshot_hash_returned": "07ea4654a096c18029c379f94d74117dd486e975a088c22b711d1141f990ad4c",
+      "actual_file_sha256": "f6d15fc74895996827bdeddbfa66db76cd6d6ba6f2f17aa2e5c90043f7b90ed4",
+      "actual_path_sha256": "07ea4654a096c18029c379f94d74117dd486e975a088c22b711d1141f990ad4c",
+      "w1_status": "CONFIRMED",
+      "w1_deviations": [],
+      "w1_confidence": 0.5
+    },
+    {
+      "screenshot_path": "/root/AAA/hardening/mata/testdata/img_d_control_zero_red.png",
+      "screenshot_hash_returned": "a5d6d954f73c99ecc5365b31cd0369f280192f420745c2cbd2723e99127ab0c4",
+      "actual_file_sha256": "2a5d4307c072ed20341a6896837c353ca392523d61a1787a97d8eb76b8534be4",
+      "actual_path_sha256": "a5d6d954f73c99ecc5365b31cd0369f280192f420745c2cbd2723e99127ab0c4",
+      "w1_status": "CONFIRMED",
+      "w1_deviations": [],
+      "w1_confidence": 0.5
+    },
+    {
+      "screenshot_path": "/root/AAA/hardening/mata/testdata/THIS_FILE_DOES_NOT_EXIST.png",
+      "screenshot_hash_returned": "e6d0ddd5ae4e4c0167a5d6c3455f83074c358e08f0762c4f6ccb00b26d4f0e60",
+      "actual_file_sha256": "ENOENT (file does not exist on disk)",
+      "actual_path_sha256": "e6d0ddd5ae4e4c0167a5d6c3455f83074c358e08f0762c4f6ccb00b26d4f0e60",
+      "w1_status": "REJECTED",
+      "w1_deviations": [
+        {
+          "type": "SCREENSHOT_LOAD_FAILED",
+          "severity": "CRITICAL"
+        }
+      ],
+      "w1_confidence": 0.0,
+      "note": "file was absent; W1 correctly REJECTED \u2014 but the hash it returned is still sha256(path), proving the hash is path-based, not pixel-based"
+    },
+    {
+      "screenshot_path": "/tmp/mata_same_path.png",
+      "screenshot_hash_returned": "bc719da7f9eea89e801ea6501824f7c312c89037fc33b4164c47d25d80ade848",
+      "actual_file_sha256": "f90ada036b2d7d19a52ea9463992fe91d2a49ddc8a9a11c7448ade23c1826340",
+      "actual_path_sha256": "bc719da7f9eea89e801ea6501824f7c312c89037fc33b4164c47d25d80ade848",
+      "w1_status": "CONFIRMED",
+      "w1_deviations": [],
+      "w1_confidence": 0.5,
+      "note": "file at /tmp/mata_same_path.png is a byte-identical copy of img_a_shapes_text.png, but the hash returned differs because the path differs. PROVES hash = sha256(abs_path)."
+    }
+  ],
+  "verdict": "BLIND \u2014 vision witness is a hash-of-path oracle"
+}

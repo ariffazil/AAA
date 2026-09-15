@@ -1,0 +1,52 @@
+Docusign Envelope ID: BCBF091A-82F5-40AD-846A-E840C6C56334
+LNG INVESTMENTS EUROPE LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+25. FINANCIAL INSTRUMENTS (CONTINUED)
+Financial liabilities
+Trade and other payables (9,715) - (9,715)
+Derivative liabilities : (18,120) (18,120)
+(9,715) (18,120) (27,835)
+
+Financial risk management
+The Company is exposed to various risks that are particular to its core business. These risks, which arise in the normal course
+of the Company’s business, comprise credit risk, liquidity risk and market risk relating to interest rates, foreign currency
+exchange rates, and commodity prices. The Company has policies and guidelines in place that are based on a consistent
+approach in line with the established financial risk management across the PETRONAS. Risk taking activities are undertaken
+within acceptable level of risk or risk appetite, whereby the risk appetite level reflects business considerations and capacity to
+assume such risks. The risk appetite is established at Board level, where relevant, based on defined methodology and translated
+into operational thresholds.
+The Company’s goal in risk management is to ensure that the management understands, measures and monitors the various
+risks that arise in connection with their operations. Policies and guidelines have been developed to identify, analyse, appraise
+and monitor the dynamic risks facing the Company. Based on this assessment, the Company adopts appropriate measures to
+mitigate these risks in accordance with the Company’s view of the balance between risk and reward.
+Credit Risk
+Credit risk is the potential exposure of the Company to losses in the event of non-performance by counterparties. The
+Company’s exposures to credit risk arise principally from their receivables from customers. Credit risks are controlled in line
+with the PETRONAS Group policies and guidelines
+The Company minimises credit risk by ensuring that all potential counterparties are assessed prior to registration and entering
+new contracts. Existing counterparties are also subject to regular reviews, including re-appraisal and approval of granted limits.
+The creditworthiness of counterparties is assessed based on an analysis of all available quantitative and qualitative data
+regarding business risks and financial standing, together with the review of any relevant third party and market information.
+Management has taken reasonable steps to ensure that receivables that are neither past due nor impaired are stated at their
+realisable values. A significant portion of these receivables are regular customers that have been transacting with the Company.
+At each reporting date, the Company assesses whether any of the trade receivables are credit impaired. The gross carrying
+amounts of credit impaired trade receivables are written off (either partially or full) when there is no realistic prospect of
+recovery. This is generally the case when the Company determines that the debtor does not have assets or sources of income
+that could generate sufficient cash flows to repay the amounts subject to the write-off. Nevertheless, trade receivables that are
+written off could still be subject to enforcement activities.
+Reports are prepared and presented to the management that cover the Company’s overall credit exposure against limits and
+securities, exposure by segment and overall quality of the portfolio. Depending on the types of transactions and counterparty
+creditworthiness, the Company further mitigates, and limits risks related to credit by requiring collateral or other credit
+enhancements such as bank guarantees.
+No collateral is required as most of the amounts are due from related companies.
+The maximum exposure to credit risk is represented by the carrying amounts of each financial asset in the Statement of
+
+: Financial Position. Exposure to losses increases with concentration of credit risk which may exist when a number of
+counterparties are involved in similar activities or operate in the same industry sector or geographical area, which may result
+in their ability to meet contractual obligations being impacted by changes in economic, political or other conditions. From
+2022 onwards, the Company’s principal customer is a related party as all its trade will go through the same related party. The
+creditworthiness of whom is assessed based on the analysis of all available quantitative and qualitative data regarding their
+business risks and financial standing. Refer to Note 14 for the gross carrying amounts of the financial assets.
+
+37

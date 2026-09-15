@@ -2,7 +2,7 @@
 id: scripts
 name: scripts
 version: 1.0.0-2026.07.17
-description: "Utility scripts for AAA skill management. Not an executable skill."
+description: "Utility scripts for AAA skill management. Not an executable skill. [fed: tier=fed-agent-subagent, floors=[, auto=T0, risk=low]"
 owner: AAA
 risk_tier: low
 floor_scope: ['F1']

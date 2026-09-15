@@ -1,0 +1,168 @@
+# .understandignore — patterns for files/dirs to exclude from analysis
+# Syntax: same as .gitignore (globs, # comments, ! negation, trailing / for dirs)
+# Lines below are suggestions — uncomment to activate.
+# Use ! prefix to force-include something excluded by defaults.
+#
+# Built-in defaults (always excluded unless negated):
+#   node_modules/, .git/, dist/, build/, obj/, *.lock, *.min.js, etc.
+#
+
+# --- From .gitignore (uncomment to exclude) ---
+
+# **/identity.key
+# **/identity.json
+# **/*_private.pem
+# **/*_private_key.pem
+# **/identity_pkcs8.pem
+# **/id_rsa
+# **/id_ed25519
+# **/*.pem
+# !**/*_public.pem
+# .env
+# .env.*
+# **/.env.*
+# secrets/
+# registries/token_bank.db
+# **/*.pem.bak-*
+# *.db-wal
+# *.db-shm
+# agents/*/runtime/config.yaml*
+# agents/*/runtime/state.db
+# .hermes-archived-*/state.db
+# graph/codegraph.db
+# agents/*/runtime/auth.json*
+# agents/*/runtime/auth.lock
+# agents/*/runtime/*.token
+# agents/*/runtime/credentials*
+# agents/*/runtime/bin/
+# agents/*/runtime/sessions/
+# .git_commit
+# VAULT999/
+# .megamemory/
+# .hermes-archived-*/
+# auth/keys/
+# **/*_private.key
+# data/bus/
+# dream_engine/state/
+# snapshots/
+# sessions/
+# state/*.jsonl
+# abstention_corpus.jsonl
+# benchmarks/floors/results/
+# registry/compiled/
+# **/__pycache__/
+# agents/_lanes/_archive/
+# prompts/_archive/
+# skills-retired-*/
+# agents/*/runtime/*
+# !agents/openclaw/runtime/__init__.py
+# !agents/openclaw/runtime/semantic_router.py
+# !agents/openclaw/runtime/dag_engine.py
+# !agents/openclaw/runtime/state_manager.py
+# !agents/openclaw/runtime/observability.py
+# !agents/openclaw/runtime/channel_manager.py
+# !agents/openclaw/runtime/orchestrator.py
+# !agents/openclaw/runtime/orchestrator_cli.py
+# !agents/openclaw/runtime/node_adapter.ts
+# !agents/openclaw/runtime/test_orchestrator.py
+# terminal/*.txt
+# terminal/*.jsonl
+# artifacts/
+# reports/benchmark-run-*.json
+# public/a2a/entropy-report.json
+# *.bak
+# *.bak-*
+# logs/*
+# state/*.json
+# state/phoenix72/
+# *.pyc
+# **/__pycache__/
+# registry/identity_cards/*.yaml
+# !registry/identity_cards/_schema.yaml
+# !registry/identity_cards/README.md
+# registry/biometric/
+# **/face_embeddings/
+# **/voice_enrollments/
+# **/biometric_*.npy
+# **/biometric_*.pkl
+# .hermes-archived-2026-08-15/bin/
+# docs/carry_forward_backups/
+# /tools/nusantara-validator/
+
+# --- Detected directories (uncomment to exclude) ---
+
+# benchmarks/
+# docs/
+# fixtures/
+# scripts/
+# specs/
+# tests/
+
+# --- Test file patterns (uncomment to exclude) ---
+
+# JS / TS
+# *.test.*
+# *.spec.*
+# *.snap
+# C# / .NET
+# **/*Tests.cs
+# **/*Test.cs
+# **/*Fixture.cs
+# **/*.Tests.csproj
+# Java / Kotlin
+# **/src/test/**
+# **/*Test.java
+# **/*IT.java
+# **/*Spec.kt
+# Go
+# **/*_test.go
+# C++
+# **/*_test.cc
+# **/*_test.cpp
+# **/*_test.cxx
+# **/*Test.cc
+# **/*Test.cpp
+# **/*_unittest.cc
+# **/*_unittest.cpp
+# **/*_browsertest.cc
+# **/*_benchmark.cc
+# **/*Benchmark.cpp
+# Python
+# **/test_*.py
+# **/*_test.py
+# **/tests.py
+# **/conftest.py
+# Rust
+# **/tests.rs
+# **/test_*.rs
+# **/*_test.rs
+# **/bench_*.rs
+# **/*_bench.rs
+# Ruby
+# **/*_spec.rb
+# **/*_test.rb
+# **/test_*.rb
+# **/spec_helper.rb
+# **/test_helper.rb
+# **/rails_helper.rb
+# Swift
+# **/Tests/**/*.swift
+# **/Specs/**/*.swift
+
+# --- 333-AGI entropy patterns (2026-09-14, Q2 SEAL pre-populate) ---
+# AAA's 97 detected languages include timestamped filename extensions
+# (pre-forged-*, pre-helix-*) that won't match .gitignore. ACTIVE.
+**/pre-forged-*
+**/pre-helix-*
+**/.bak-*
+**/.quarantine-*
+**/.superseded-*
+**/.tombstoned-*
+**/.zen-archived-*
+**/.archive-*
+**/.hermes-archived-*
+
+# --- AAA-specific (registry + agent schema files are signal-diluting) ---
+# NOTE: agents/* + registry/* are excluded via --exclude flag in batch 4
+# command, NOT here. .understandignore is for filename noise; --exclude is
+# for semantic scope.

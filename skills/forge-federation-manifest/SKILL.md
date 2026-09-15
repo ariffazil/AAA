@@ -2,7 +2,7 @@
 id: FORGE-federation-manifest
 name: forge-federation-manifest
 version: 1.0.0-2026.07.17
-description: "Federation topology manifest — arifOS organ registry and inter-organ contract specification."
+description: "Federation topology manifest — arifOS organ registry and inter-organ contract specification. [fed: tier=fed-agent-subagent, floors=[, auto=T2, risk=high]"
 owner: A-FORGE
 risk_tier: high
 floor_scope: ['F1', 'F2', 'F11', 'F13']

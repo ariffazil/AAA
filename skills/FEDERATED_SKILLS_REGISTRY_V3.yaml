@@ -59,6 +59,7 @@ layers:
       forge:
       - forge-exec
       - forge-verbs
+      - forge-artifact-publisher
       dev:
       - dev-github
       - dev-ci-diagnose

@@ -1,7 +1,7 @@
 ---
 name: qwencloud-deploy
 version: "2.2"
-description: >-
+description: >- [fed: tier=fed-multimodal-vision]
   One-click deploy, publish, and update a local project or Git repository to Alibaba Cloud
   International (alibabacloud.com), producing an accessible online service with a public IP.
   Supports full-stack ROS orchestration, automatic cloud-resource provisioning, pre-deployment

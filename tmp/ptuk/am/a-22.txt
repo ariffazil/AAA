@@ -1,0 +1,43 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF 11912A8BA9
+PETCO TRADING (UK) LIMITED
+STATEMENT OF CASH FLOWS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+2025 2024
+Note USD’000 USD’000
+CASH FLOWS FROM OPERATING ACTIVITIES
+(Loss)/Profit before taxation (277) 18,264
+Adjustments for:
+Depreciation 3 10,866 1,743
+Net impairment losses on trade and other receivables 17 310 -
+Finance income (1,239) (2,953)
+Finance costs 17 1,466 4,227
+Unrealised gain on foreign exchange 17 (1,064) (410)
+Unrealised(gain)/loss on derivatives 17 (3,409) 16,878
+Operating profit before changes in working capital: 6,653 37,749
+Decrease/(Increase) in trade and other receivables 10,264 (36,737)
+Increase in trade and other payables 39,100 114,078
+(Increase) in inventories (56,001) (11,957)
+Cash generated from operations 16 103,133
+Tax refunded 190 -
+Net cash flows generated from operating activities 206 103,133
+CASH FLOWS FROM INVESTING ACTIVITIES
+Capital expenditure 3 (419) (il)
+Finance income received 1,239 2,953
+Net cash flows generated from investing activities 820 2,942
+CASH FLOWS FROM FINANCING ACTIVITIES
+Drawdown of trade loans 11 106,048 311,258
+Repayment of trade loans 11 (103,403) (311,258)
+Interest paid on trade loans (55) (3,234)
+Repayment of lease liability 5 (18,540) (11,229)
+Interest paid on lease liability 5 (411) (993)
+Issuance of financial guarantee 13 240 -
+Net cash flows used in financing activities (17,121) (15,456)
+NET (DECREASE)/INCREASE IN CASH AND CASH
+EQUIVALENTS (16,095) 90,619
+Net foreign exchange difference on cash and cash equivalents 866 1,128
+CASH AND CASH EQUIVALENTS AT BEGINNING OF
+THE YEAR 112,687 20,940
+CASH AND CASH EQUIVALENTS AT END OF THE
+YEAR Q 8 97,458 112,687
+The notes set out on pages 22 to 71 are an integral part of these financial statements.
+21

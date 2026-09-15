@@ -1,6 +1,6 @@
 ---
 name: mimo-vision
-description: "FEDERATED Xiaomi MiMo vision lane — image AND video understanding via mimo-v2.5, plus token estimators and a PAIRED-fixture perception canary. Use for image description/classification/OCR-adjacent reading, video analysis, multi-image comparison, or before claiming a visual lane dead. MATA-aligned. NOT image generation. Trigger phrases: 'look at this image', 'what is in this picture', 'describe this video', 'video understanding', 'image understanding', 'how many tokens for this video'."
+description: "FEDERATED Xiaomi MiMo vision lane — image AND video understanding via mimo-v2.5, plus token estimators and a PAIRED-fixture perception canary. Use for image description/classification/OCR-adjacent reading, video analysis, multi-image comparison, or before claiming a visual lane dead. MATA-aligned. NOT image generation. Trigger phrases: 'look at this image', 'what is in this picture', 'describe this video', 'video understanding', 'image understanding', 'how many tokens for this video'. [fed: tier=fed-multimodal-vision]"
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
 ---

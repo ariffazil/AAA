@@ -1,0 +1,58 @@
+{
+  "lane": "qwen-vl discovery",
+  "transport": "HTTPS",
+  "probes": [
+    {
+      "probe": "models@https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
+      "http_status": 401,
+      "raw_response_body": "{\"error\":{\"message\":\"Incorrect API key provided. For details, see: https://www.alibabacloud.com/help/en/model-studio/error-code#apikey-error\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_api_key\"},\"request_id\":\"1e2564d2-a38f-93b9-bbc8-e0c7042c0a34\"}",
+      "model_ids": [],
+      "vision_capable_ids": [],
+      "verdict": "BLOCKED",
+      "note": "model discovery only"
+    },
+    {
+      "probe": "models@https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+      "http_status": 200,
+      "raw_response_body": "{\"first_id\":\"model-id-0\",\"data\":[{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"qwen3.6-plus\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"qwen-image-2.0\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"qwen-image-2.0-pro\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"wan2.7-image\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"wan2.7-image-pro\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"deepseek-v3.2\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"glm-5\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"MiniMax-M2.5\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"kimi-k2.5\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"kimi-k2.6\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"glm-5.1\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"qwen3.6-flash\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"deepseek-v4-flash\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"deepseek-v4-pro\",\"object\":\"model\"},{\"created\":1779367398,\"owned_by\":\"system\",\"id\":\"qwen3.7-max\",\"object\":\"model\"},{\"created\":1780806507,\"owned_by\":\"system\",\"id\":\"qwen3.7-plus\",\"object\":\"model\"},{\"created\":1781664051,\"owned_by\":\"system\",\"id\":\"glm-5.2\",\"object\":\"model\"},{\"created\":1781842195,\"owned_by\":\"system\",\"id\":\"kimi-k2.7-code\",\"object\":\"model\"},{\"created\":1785248243,\"owne",
+      "model_ids": [
+        "qwen3.6-plus",
+        "qwen-image-2.0",
+        "qwen-image-2.0-pro",
+        "wan2.7-image",
+        "wan2.7-image-pro",
+        "deepseek-v3.2",
+        "glm-5",
+        "MiniMax-M2.5",
+        "kimi-k2.5",
+        "kimi-k2.6",
+        "glm-5.1",
+        "qwen3.6-flash",
+        "deepseek-v4-flash",
+        "deepseek-v4-pro",
+        "qwen3.7-max",
+        "qwen3.7-plus",
+        "glm-5.2",
+        "kimi-k2.7-code",
+        "qwen-audio-3.0-tts-plus",
+        "deepseek-v4-flash-0731",
+        "qwen3.8-max",
+        "qwen-audio-3.0-realtime-plus",
+        "qwen3.8-flash",
+        "deepseek-v4.1-flash"
+      ],
+      "vision_capable_ids": [],
+      "verdict": "BLIND",
+      "note": "model discovery only"
+    },
+    {
+      "probe": "models@https://token-plan.ap-southeast-1.maas.aliyuncs.com/api/v1",
+      "http_status": 404,
+      "raw_response_body": "",
+      "model_ids": [],
+      "vision_capable_ids": [],
+      "verdict": "BLOCKED",
+      "note": "model discovery only"
+    }
+  ]
+}

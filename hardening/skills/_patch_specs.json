@@ -1,0 +1,268 @@
+[
+ {
+  "skill": "ASI-agentic-governance",
+  "path": "/root/.hermes/skills/ASI-agentic-governance/SKILL.md",
+  "old": "- `references/agentic-WORKFLOWS_MD.md` for reusable response templates and task patterns.\n- `references/repo-working-RULES_MD.md` for safe repo edits, tests, and mutation guardrails.",
+  "nlines": 2,
+  "start": 105
+ },
+ {
+  "skill": "arifos-memory-architecture",
+  "path": "/root/.hermes/skills/arifos/arifos-memory-architecture/SKILL.md",
+  "old": "- `references/memory-architecture.md` \u2014 fuller archived copy of this knowledge.",
+  "nlines": 1,
+  "start": 92
+ },
+ {
+  "skill": "minimax-cli",
+  "path": "/root/.hermes/skills/creative/minimax-cli/SKILL.md",
+  "old": "- **`scripts/akal_somatic_scoring.py`** \u2014 ffmpeg-only audio scoring. Three checks: PULSE (temporal fidelity), SOUL (cultural alignment), FLOW (entropy equilibrium). No librosa needed. Returns JSON verdict (SEAL/SABAR/HOLD).\n- **`templates/cultural_manifold.json`** \u2014 Reusable schema for culturally-grounded music generation. Defines identity, structural priors, harmonic constraints, timbre palette, lyric constraints, and evaluation thresholds. Copy and modify for other traditions (Zapin, Asli, Dondang Sayang, etc.).",
+  "nlines": 2,
+  "start": 487
+ },
+ {
+  "skill": "minimax-cli",
+  "path": "/root/.hermes/skills/creative/minimax-cli/SKILL.md",
+  "old": "- `references/jina-reader-medium.md` \u2014 Reading Medium/Cloudflare-protected articles via Jina Reader\n- `references/cross-organ-wiring-pattern.md` \u2014 Wiring external engines into arifOS kernel (enforcement gates)",
+  "nlines": 2,
+  "start": 497
+ },
+ {
+  "skill": "open-slide-integration",
+  "path": "/root/.hermes/skills/creative/open-slide-integration/SKILL.md",
+  "old": "- Morph transitions in open-slide have 7 hard rules (opacity-only enter/exit, deterministic geometry, no transform on morph node, useIsActivePage gating). Violating any produces visibly broken morphs. Read `references/morph.md` before implementing.",
+  "nlines": 1,
+  "start": 169
+ },
+ {
+  "skill": "arif-sites-content-ops",
+  "path": "/root/.hermes/skills/devops/arif-sites-content-ops/SKILL.md",
+  "old": "- `scripts/verify-design-canon.cjs` \u2014 the lint gate (66 checks: token-vs-PRIMER_SPEC alignment, red rationing, radii, contrast, instruments registry, rules self-consistency); wired into site package.json prebuild chain as F4 gate",
+  "nlines": 1,
+  "start": 251
+ },
+ {
+  "skill": "forge-pdf-delivery",
+  "path": "/root/.hermes/skills/devops/forge-pdf-delivery/SKILL.md",
+  "old": "   - Wrap markdown manually with a styled HTML template (recommended for design control \u2014 see `templates/document-html-template.html`).",
+  "nlines": 1,
+  "start": 18
+ },
+ {
+  "skill": "forge-phased-delivery",
+  "path": "/root/.hermes/skills/devops/forge-phased-delivery/SKILL.md",
+  "old": "- `templates/intelligence_forge_reportlab.py` \u2014 proven 17-page PDF template",
+  "nlines": 1,
+  "start": 179
+ },
+ {
+  "skill": "forge-phased-delivery",
+  "path": "/root/.hermes/skills/devops/forge-phased-delivery/SKILL.md",
+  "old": "- `templates/entanglement_matrix_bubble.png` \u2014 generation recipe",
+  "nlines": 1,
+  "start": 181
+ },
+ {
+  "skill": "opencode-config-zen",
+  "path": "/root/.hermes/skills/devops/opencode-config-zen/SKILL.md",
+  "old": "- `scripts/federation-model-sync.sh` \u2014 at `/root/AAA/registries/federation-model-sync.sh` (not in skill dir, registered separately)",
+  "nlines": 1,
+  "start": 560
+ },
+ {
+  "skill": "telegram-bot-routing-doctrine",
+  "path": "/root/.hermes/skills/federation/telegram-bot-routing-doctrine/SKILL.md",
+  "old": "- **`scripts/federation-health.sh`** \u2014 cannonical no_agent watchdog script. Silent on green, alert on red. Copy and modify `ORGANS` list for any multi-service health check.",
+  "nlines": 1,
+  "start": 116
+ },
+ {
+  "skill": "forge-execution-governance",
+  "path": "/root/.hermes/skills/governance-audit/forge-execution-governance/SKILL.md",
+  "old": "- Hermes context loading: hermes-agent skill, references/project-context-files.md",
+  "nlines": 1,
+  "start": 97
+ },
+ {
+  "skill": "arif-style-zen-audit",
+  "path": "/root/.hermes/skills/governance/arif-style-zen-audit/SKILL.md",
+  "old": "- `references/orientation-layer-architecture.md` \u2014 canonical recipe for machine-readable agent orientation substrate (5-file JSON + banner) extracted from the 2026-09-03 KVM8 build",
+  "nlines": 1,
+  "start": 310
+ },
+ {
+  "skill": "claim-receipt-discipline",
+  "path": "/root/.hermes/skills/governance/claim-receipt-discipline/SKILL.md",
+  "old": "- `references/three-layer-count-source-tracing-2026-08-10.md` \u2014 Full recipe for resolving count",
+  "nlines": 1,
+  "start": 665
+ },
+ {
+  "skill": "claim-receipt-discipline",
+  "path": "/root/.hermes/skills/governance/claim-receipt-discipline/SKILL.md",
+  "old": "- `references/bangang-5class-classifier-2026-08-10.md` \u2014 Strict 5-class BANGANG pattern classifier",
+  "nlines": 1,
+  "start": 675
+ },
+ {
+  "skill": "claim-receipt-discipline",
+  "path": "/root/.hermes/skills/governance/claim-receipt-discipline/SKILL.md",
+  "old": "- `references/corpus-denominator-reconciliation-2026-08-10.md` \u2014 When two counting methods produce",
+  "nlines": 1,
+  "start": 679
+ },
+ {
+  "skill": "claim-receipt-discipline",
+  "path": "/root/.hermes/skills/governance/claim-receipt-discipline/SKILL.md",
+  "old": "- `references/sovereign-pressure-protocol-2026-08-17.md` \u2014 Full worked example from 2026-08-17",
+  "nlines": 1,
+  "start": 1581
+ },
+ {
+  "skill": "constitutional-floors",
+  "path": "/root/.hermes/skills/governance/constitutional-floors/SKILL.md",
+  "old": "| 99 DERITA vectors | `skill_view(name='rasa-derita', file_path='references/99-derita-vectors.md')` | Full 99-vector topology |\n| Mechanics of Utterance | `skill_view(name='rasa-derita', file_path='references/mechanics-of-utterance.md')` | Words as geometric constraints |",
+  "nlines": 2,
+  "start": 542
+ },
+ {
+  "skill": "institutional-epistemic-sink-forensics",
+  "path": "/root/.hermes/skills/institutional-epistemic-sink-forensics/SKILL.md",
+  "old": "- `scripts/run_wealth_audit.sh` \u2014 bash wrapper that probes WEALTH liveness, activates GEOX venv, and runs the audit Python script",
+  "nlines": 1,
+  "start": 369
+ },
+ {
+  "skill": "intelligence-brief-forge",
+  "path": "/root/.hermes/skills/intelligence-brief-forge/SKILL.md",
+  "old": "- `references/void-analysis-methodology.md` \u2014 Deep dive on the void layer pattern\n- `references/grammar-of-silence-framework.md` \u2014 5-part disclosure grammar pattern\n- `references/petronas-1hfy26-case-study.md` \u2014 First proven application (Aug 2026)",
+  "nlines": 3,
+  "start": 149
+ },
+ {
+  "skill": "intelligence-brief-forge",
+  "path": "/root/.hermes/skills/intelligence-brief-forge/SKILL.md",
+  "old": "- `templates/void-keywords-checklist.md` \u2014 60-keyword institutional disclosure checklist\n- `templates/tersurat-tersirat-quantum-template.md` \u2014 Analytical structure template",
+  "nlines": 2,
+  "start": 155
+ },
+ {
+  "skill": "malaysian-family-law",
+  "path": "/root/.hermes/skills/legal/malaysian-family-law/SKILL.md",
+  "old": "- `references/borang-ms-series.md` \u2014 Form catalogue and filing guide\n- `references/nafkah-precedent-ranges.md` \u2014 Typical claim and order ranges by state\n- `references/fasakh-procedure.md` \u2014 Step-by-step fasakh application guide",
+  "nlines": 3,
+  "start": 147
+ },
+ {
+  "skill": "malaysian-family-law",
+  "path": "/root/.hermes/skills/legal/malaysian-family-law/SKILL.md",
+  "old": "- `references/ctos-forensics.md` \u2014 reading a CTOS/CCRIS report as the falsifiable object in a family-law case: first-trade-line timeline arbitration, borrower-pattern typology, what a chat-transcribed brief can and cannot prove",
+  "nlines": 1,
+  "start": 152
+ },
+ {
+  "skill": "happyhorse-video-api",
+  "path": "/root/.hermes/skills/media/happyhorse-video-api/SKILL.md",
+  "old": "- `references/dashscope-media-wrapper.md` \u2014 **PREFERRED** unified `dashscope_media.py` wrapper (all DashScope models, one CLI)\n- `references/mm-cli-fallback.md` \u2014 MiniMax CLI fallback lane\n- `references/first-frame-voice-ladder.md` \u2014 first-frame/voice chain\n- `references/seat-quota-field-log.md` \u2014 per-seat quota probe recipe + daily rotation log\n- `references/malay-archetype-prompt-patterns.md` \u2014 Malay sado archetype prompt kit (4/4 field hits, pose menu, QC gate)\n- `references/ig-story-composition.md` \u2014 IG story / platform-capped vertical video: fit TTS to 60s, palindrome loop, timed captions, mux + QC (PROVEN 2026-08-30)",
+  "nlines": 6,
+  "start": 15
+ },
+ {
+  "skill": "happyhorse-video-api",
+  "path": "/root/.hermes/skills/media/happyhorse-video-api/SKILL.md",
+  "old": "- **TTS engine paces itself \u2014 shortening text barely shortens audio.** Cutting ~100 chars from the letter shrank MiMo output by only ~1.3s. For platform caps (IG story = 60s), time-compress with ffmpeg `atempo=1.15\u20131.25` instead of regenerating. Full composition recipe (palindrome loop, timed captions, mux, QC): `references/ig-story-composition.md`.",
+  "nlines": 1,
+  "start": 124
+ },
+ {
+  "skill": "music-generation",
+  "path": "/root/.hermes/skills/media/music-generation/SKILL.md",
+  "old": "- `references/engine-comparison.md` \u2014 Quality comparison across engines for different genres",
+  "nlines": 1,
+  "start": 430
+ },
+ {
+  "skill": "social-video-intelligence",
+  "path": "/root/.hermes/skills/media/social-video-intelligence/SKILL.md",
+  "old": "- **Multi-attachment batch (4+ videos in one Telegram message):** ffprobe-first triage \u2014 ~25% of Telegram uploads may have incomplete `moov atom`. Process only valid files. See [references/telegram-video-multi-attachment.md](references/telegram-video-multi-attachment.md) for the full multi-video recipe including crop-zoom pattern for reading tiny on-screen numbers (competitor stickers, captions, watermarks) that are unreadable in raw 548px-wide phone footage.",
+  "nlines": 1,
+  "start": 29
+ },
+ {
+  "skill": "social-video-intelligence",
+  "path": "/root/.hermes/skills/media/social-video-intelligence/SKILL.md",
+  "old": "- Detailed Firecrawl fallback recipe: [references/youtube-firecrawl-fallback.md](references/youtube-firecrawl-fallback.md)",
+  "nlines": 1,
+  "start": 166
+ },
+ {
+  "skill": "tts-edge-fallback",
+  "path": "/root/.hermes/skills/media/tts-edge-fallback/SKILL.md",
+  "old": "- `scripts/nusantara_tts.py` \u2014 the prosody contour engine itself (runnable)",
+  "nlines": 1,
+  "start": 292
+ },
+ {
+  "skill": "medical-document-interpretation",
+  "path": "/root/.hermes/skills/research/medical-document-interpretation/SKILL.md",
+  "old": "- `references/caregiver-support-dossier.md` \u2014 9-section dossier pattern for hospitalized family support: cover, timeline, status, recovery roadmap, doctor questions, danger signs, caregiver survival, underlying issues, hospital logistics. Evidence-first, action-oriented, tone-matched to user.",
+  "nlines": 1,
+  "start": 233
+ },
+ {
+  "skill": "seven-zen-organs-enforcement",
+  "path": "/root/.hermes/skills/seven-zen-organs-enforcement/SKILL.md",
+  "old": "| **(a) System-internal** | \"Is this organ/process/state drift typical across sessions?\" | Reality + Civilization check against `references/port-process-map.md` |",
+  "nlines": 1,
+  "start": 371
+ },
+ {
+  "skill": "seven-zen-organs-enforcement",
+  "path": "/root/.hermes/skills/seven-zen-organs-enforcement/SKILL.md",
+  "old": "- `templates/reflex-arc-trace.md` \u2014 append-only per-turn log of which organs passed/failed (for debugging reflex drift)",
+  "nlines": 1,
+  "start": 880
+ },
+ {
+  "skill": "seven-zen-organs-enforcement",
+  "path": "/root/.hermes/skills/seven-zen-organs-enforcement/SKILL.md",
+  "old": "- `scripts/organ_reflex_self_test.py` \u2014 re-runnable smoke test: simulate 10 inputs (5 clean, 5 contaminated), assert the reflex arc catches the right failures",
+  "nlines": 1,
+  "start": 887
+ },
+ {
+  "skill": "live-probe-audit-pattern",
+  "path": "/root/.hermes/skills/software-development/live-probe-audit-pattern/SKILL.md",
+  "old": "- `references/cross-organ-claim-audit.md` \u2014 pattern for probing prose claims about cross-organ changes\n- `references/caddy-routing-cross-root.md` \u2014 Caddy handler order bug pattern with verified fix recipe\n- `references/asset-path-drift-detection.md` \u2014 when `/assets/` and `/_shared/` both claim real assets\n- `references/deepseek-byok-anthropic-endpoint.md` \u2014 full env var recipe + per-agent compatibility table",
+  "nlines": 4,
+  "start": 1036
+ },
+ {
+  "skill": "agentic-trading-companion",
+  "path": "/root/.hermes/skills/trading/agentic-trading-companion/SKILL.md",
+  "old": "- `references/backtest-methodology.md`\n- `references/gold-session-volatility.md`\n- `references/plain-language-translator.md`\n- `references/trade-review-chart.md`\n- `references/governed-trading-engine.md`\n- `references/red-blue-team-analysis.md`",
+  "nlines": 6,
+  "start": 551
+ },
+ {
+  "skill": "mt5-ai-trading-agent",
+  "path": "/root/.hermes/skills/trading/mt5-ai-trading-agent/SKILL.md",
+  "old": "- `references/mt5-python-setup.md` \u2014 step-by-step MT5 + Python setup guide",
+  "nlines": 1,
+  "start": 465
+ },
+ {
+  "skill": "trading-signal-chart",
+  "path": "/root/.hermes/skills/trading/trading-signal-chart/SKILL.md",
+  "old": "- `references/gold-api-extension-pattern.md`\n- `references/proven-data-pipeline.md`\n- `references/red-news-impact.md`\n- `references/chart-fallback-yfinance.md`\n- `references/exit-strategy-framework.md`\n- `references/paper-trading-workflow.md`\n- `references/session-2026-07-14-xauusd.md`",
+  "nlines": 7,
+  "start": 370
+ },
+ {
+  "skill": "trading-signal-chart",
+  "path": "/root/.hermes/skills/trading/trading-signal-chart/SKILL.md",
+  "old": "- `templates/gold_mtf_chart.py`",
+  "nlines": 1,
+  "start": 380
+ }
+]

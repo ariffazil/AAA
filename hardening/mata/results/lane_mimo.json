@@ -1,0 +1,184 @@
+{
+  "lane": "mimo (Xiaomi token plan)",
+  "transport": "HTTPS OpenAI-compatible",
+  "models_http_status": 200,
+  "models_raw": "{\"object\":\"list\",\"data\":[{\"id\":\"mimo-v2.5\",\"object\":\"model\",\"owned_by\":\"xiaomi\"},{\"id\":\"mimo-v2.5-asr\",\"object\":\"model\",\"owned_by\":\"xiaomi\"},{\"id\":\"mimo-v2.5-pro\",\"object\":\"model\",\"owned_by\":\"xiaomi\"},{\"id\":\"mimo-v2.5-tts\",\"object\":\"model\",\"owned_by\":\"xiaomi\"},{\"id\":\"mimo-v2.5-tts-voiceclone\",\"object\":\"model\",\"owned_by\":\"xiaomi\"},{\"id\":\"mimo-v2.5-tts-voicedesign\",\"object\":\"model\",\"owned_by\":\"xiaomi\"}]}",
+  "model_ids": [
+    "mimo-v2.5",
+    "mimo-v2.5-asr",
+    "mimo-v2.5-pro",
+    "mimo-v2.5-tts",
+    "mimo-v2.5-tts-voiceclone",
+    "mimo-v2.5-tts-voicedesign"
+  ],
+  "probes": [
+    {
+      "probe": "mimo-v2.5:a_red",
+      "model": "mimo-v2.5",
+      "image": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+      "question": "How many FILLED RED CIRCLES are in this image? Answer with a single integer.",
+      "http_status": 200,
+      "raw_response_body": "\n\n\n\n{\"id\":\"fb8226f9-e308-4164-b2be-847499962f8a_9776fd21f0674255a40dbee7fae761d7\",\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"content\":\"3\",\"role\":\"assistant\",\"tool_calls\":null,\"reasoning_content\":\"Okay, let's see. The image has some red circles and blue squares. Wait, the red circles\u2014let's count them. There are three red filled circles, right? So the question is how many filled red circles, so that's 3.\"}}],\"created\":1789408122,\"model\":\"mimo-v2.5\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":56,\"prompt_tokens\":800,\"total_tokens\":856,\"completion_tokens_details\":{\"reasoning_tokens\":0},\"prompt_tokens_details\":{\"cached_tokens\":192,\"image_tokens\":532}}}",
+      "parsed_content": "3",
+      "expected": {
+        "int": 3
+      },
+      "verdict": "CORRECT",
+      "note": "integer 3 == expected 3"
+    },
+    {
+      "probe": "mimo-v2.5:a_blue",
+      "model": "mimo-v2.5",
+      "image": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+      "question": "How many FILLED BLUE SQUARES are in this image? Answer with a single integer.",
+      "http_status": 200,
+      "raw_response_body": "\n\n\n\n\n\n{\"id\":\"a46044ae-3e04-46f8-9aed-f7718ebae606_2d34485db5b842a1b49f930ff6d93e96\",\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"content\":\"2\",\"role\":\"assistant\",\"tool_calls\":null,\"reasoning_content\":\"Got it, let's look at the image. There are two filled blue squares at the bottom right. Yep, count them: [735, 782][932, 784] \u2192 that's 2.\"}}],\"created\":1789408159,\"model\":\"mimo-v2.5\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":55,\"prompt_tokens\":799,\"total_tokens\":854,\"completion_tokens_details\":{\"reasoning_tokens\":0},\"prompt_tokens_details\":{\"cached_tokens\":192,\"image_tokens\":532}}}",
+      "parsed_content": "2",
+      "expected": {
+        "int": 2
+      },
+      "verdict": "CORRECT",
+      "note": "integer 2 == expected 2"
+    },
+    {
+      "probe": "mimo-v2.5:a_text",
+      "model": "mimo-v2.5",
+      "image": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+      "question": "What exact text appears in this image? Quote it verbatim.",
+      "http_status": 200,
+      "raw_response_body": "\n\n\n\n\n{\"id\":\"08c719a5-2d9d-48f9-8fb7-e8444bf86f9c_3b79e3fa4312401da9da9519d33e8b08\",\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"content\":\"The text in the image is:\\n\\nARIFOS-7731\",\"role\":\"assistant\",\"tool_calls\":null,\"reasoning_content\":\"The user wants to know the text content of the image.\\nI will examine the image to identify any textual elements.\\nI see the text \\\"ARIFOS-7731\\\" in black, bold, uppercase letters at the top of the image.\\nThe rest of the image consists of red circles and blue squares, which are graphical elements, not text.\\nI will return the identified text exactly as requested.\"}}],\"created\":1789408188,\"model\":\"mimo-v2.5\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":100,\"prompt_tokens\":794,\"total_tokens\":894,\"completion_tokens_details\":{\"reasoning_tokens\":0},\"prompt_tokens_details\":{\"cached_tokens\":192,\"image_tokens\":532}}}",
+      "parsed_content": "The text in the image is:\n\nARIFOS-7731",
+      "expected": {
+        "contains": "ARIFOS-7731"
+      },
+      "verdict": "CORRECT",
+      "note": "contains 'ARIFOS-7731'"
+    },
+    {
+      "probe": "mimo-v2.5:a_absence",
+      "model": "mimo-v2.5",
+      "image": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+      "question": "Is there a GREEN TRIANGLE in this image? Answer yes or no only.",
+      "http_status": 200,
+      "raw_response_body": "\n\n\n\n\n\n\n\n\n\n{\"id\":\"45557d67-a248-47fb-a434-cd00c65acfa9_9b2ec5d0dcf24ef6a9413eec0dd16fde\",\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"content\":\"No\",\"role\":\"assistant\",\"tool_calls\":null,\"reasoning_content\":\"Got it, let's look at the image. The image has red circles, blue squares, and text. There's no green triangle here. So the answer is no.\"}}],\"created\":1789408243,\"model\":\"mimo-v2.5\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":39,\"prompt_tokens\":797,\"total_tokens\":836,\"completion_tokens_details\":{\"reasoning_tokens\":0},\"prompt_tokens_details\":{\"cached_tokens\":192,\"image_tokens\":532}}}",
+      "parsed_content": "No",
+      "expected": {
+        "negate_yes": true
+      },
+      "verdict": "CORRECT",
+      "note": "correctly denied the absent object"
+    },
+    {
+      "probe": "mimo-v2.5-asr:a_red",
+      "model": "mimo-v2.5-asr",
+      "image": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+      "question": "How many FILLED RED CIRCLES are in this image? Answer with a single integer.",
+      "http_status": 400,
+      "raw_response_body": "{\"error\":{\"code\":\"400\",\"message\":\"Param Incorrect\",\"param\":\"ASR requires exactly one input_audio part, found: 0\",\"type\":\"\"}}",
+      "parsed_content": "{\"error\":{\"code\":\"400\",\"message\":\"Param Incorrect\",\"param\":\"ASR requires exactly one input_audio part, found: 0\",\"type\":\"\"}}",
+      "expected": {
+        "int": 3
+      },
+      "verdict": "ERROR",
+      "note": "HTTP 400: {\"error\":{\"code\":\"400\",\"message\":\"Param Incorrect\",\"param\":\"ASR requires exactly one input_audio part, found: 0\",\"type\":\"\"}}"
+    },
+    {
+      "probe": "mimo-v2.5-asr:a_blue",
+      "model": "mimo-v2.5-asr",
+      "image": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+      "question": "How many FILLED BLUE SQUARES are in this image? Answer with a single integer.",
+      "http_status": 400,
+      "raw_response_body": "{\"error\":{\"code\":\"400\",\"message\":\"Param Incorrect\",\"param\":\"ASR requires exactly one input_audio part, found: 0\",\"type\":\"\"}}",
+      "parsed_content": "{\"error\":{\"code\":\"400\",\"message\":\"Param Incorrect\",\"param\":\"ASR requires exactly one input_audio part, found: 0\",\"type\":\"\"}}",
+      "expected": {
+        "int": 2
+      },
+      "verdict": "ERROR",
+      "note": "HTTP 400: {\"error\":{\"code\":\"400\",\"message\":\"Param Incorrect\",\"param\":\"ASR requires exactly one input_audio part, found: 0\",\"type\":\"\"}}"
+    },
+    {
+      "probe": "mimo-v2.5-asr:a_text",
+      "model": "mimo-v2.5-asr",
+      "image": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+      "question": "What exact text appears in this image? Quote it verbatim.",
+      "http_status": 400,
+      "raw_response_body": "{\"error\":{\"code\":\"400\",\"message\":\"Param Incorrect\",\"param\":\"ASR requires exactly one input_audio part, found: 0\",\"type\":\"\"}}",
+      "parsed_content": "{\"error\":{\"code\":\"400\",\"message\":\"Param Incorrect\",\"param\":\"ASR requires exactly one input_audio part, found: 0\",\"type\":\"\"}}",
+      "expected": {
+        "contains": "ARIFOS-7731"
+      },
+      "verdict": "ERROR",
+      "note": "HTTP 400: {\"error\":{\"code\":\"400\",\"message\":\"Param Incorrect\",\"param\":\"ASR requires exactly one input_audio part, found: 0\",\"type\":\"\"}}"
+    },
+    {
+      "probe": "mimo-v2.5-asr:a_absence",
+      "model": "mimo-v2.5-asr",
+      "image": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+      "question": "Is there a GREEN TRIANGLE in this image? Answer yes or no only.",
+      "http_status": 400,
+      "raw_response_body": "{\"error\":{\"code\":\"400\",\"message\":\"Param Incorrect\",\"param\":\"ASR requires exactly one input_audio part, found: 0\",\"type\":\"\"}}",
+      "parsed_content": "{\"error\":{\"code\":\"400\",\"message\":\"Param Incorrect\",\"param\":\"ASR requires exactly one input_audio part, found: 0\",\"type\":\"\"}}",
+      "expected": {
+        "negate_yes": true
+      },
+      "verdict": "ERROR",
+      "note": "HTTP 400: {\"error\":{\"code\":\"400\",\"message\":\"Param Incorrect\",\"param\":\"ASR requires exactly one input_audio part, found: 0\",\"type\":\"\"}}"
+    },
+    {
+      "probe": "mimo-v2.5-pro:a_red",
+      "model": "mimo-v2.5-pro",
+      "image": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+      "question": "How many FILLED RED CIRCLES are in this image? Answer with a single integer.",
+      "http_status": 404,
+      "raw_response_body": "{\"error\":{\"code\":\"404\",\"message\":\"No endpoints found that support image input\",\"param\":\"\",\"type\":\"\"}}",
+      "parsed_content": "{\"error\":{\"code\":\"404\",\"message\":\"No endpoints found that support image input\",\"param\":\"\",\"type\":\"\"}}",
+      "expected": {
+        "int": 3
+      },
+      "verdict": "ERROR",
+      "note": "HTTP 404: {\"error\":{\"code\":\"404\",\"message\":\"No endpoints found that support image input\",\"param\":\"\",\"type\":\"\"}}"
+    },
+    {
+      "probe": "mimo-v2.5-pro:a_blue",
+      "model": "mimo-v2.5-pro",
+      "image": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+      "question": "How many FILLED BLUE SQUARES are in this image? Answer with a single integer.",
+      "http_status": 404,
+      "raw_response_body": "{\"error\":{\"code\":\"404\",\"message\":\"No endpoints found that support image input\",\"param\":\"\",\"type\":\"\"}}",
+      "parsed_content": "{\"error\":{\"code\":\"404\",\"message\":\"No endpoints found that support image input\",\"param\":\"\",\"type\":\"\"}}",
+      "expected": {
+        "int": 2
+      },
+      "verdict": "ERROR",
+      "note": "HTTP 404: {\"error\":{\"code\":\"404\",\"message\":\"No endpoints found that support image input\",\"param\":\"\",\"type\":\"\"}}"
+    },
+    {
+      "probe": "mimo-v2.5-pro:a_text",
+      "model": "mimo-v2.5-pro",
+      "image": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+      "question": "What exact text appears in this image? Quote it verbatim.",
+      "http_status": 404,
+      "raw_response_body": "{\"error\":{\"code\":\"404\",\"message\":\"No endpoints found that support image input\",\"param\":\"\",\"type\":\"\"}}",
+      "parsed_content": "{\"error\":{\"code\":\"404\",\"message\":\"No endpoints found that support image input\",\"param\":\"\",\"type\":\"\"}}",
+      "expected": {
+        "contains": "ARIFOS-7731"
+      },
+      "verdict": "ERROR",
+      "note": "HTTP 404: {\"error\":{\"code\":\"404\",\"message\":\"No endpoints found that support image input\",\"param\":\"\",\"type\":\"\"}}"
+    },
+    {
+      "probe": "mimo-v2.5-pro:a_absence",
+      "model": "mimo-v2.5-pro",
+      "image": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+      "question": "Is there a GREEN TRIANGLE in this image? Answer yes or no only.",
+      "http_status": 404,
+      "raw_response_body": "{\"error\":{\"code\":\"404\",\"message\":\"No endpoints found that support image input\",\"param\":\"\",\"type\":\"\"}}",
+      "parsed_content": "{\"error\":{\"code\":\"404\",\"message\":\"No endpoints found that support image input\",\"param\":\"\",\"type\":\"\"}}",
+      "expected": {
+        "negate_yes": true
+      },
+      "verdict": "ERROR",
+      "note": "HTTP 404: {\"error\":{\"code\":\"404\",\"message\":\"No endpoints found that support image input\",\"param\":\"\",\"type\":\"\"}}"
+    }
+  ]
+}

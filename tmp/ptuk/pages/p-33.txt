@@ -1,0 +1,43 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF 11912A8BAQ
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+2. MATERIAL ACCOUNTING POLICIES (CONTINUED)
+2.3. Financial instruments (continued)
+Classification and subsequent measurement (continued)
+(ii) Financial liabilities
+The categories of financial liabilities at initial recognition are as follows:
+Financial liabilities at fair value through profit or loss
+Fair value through profit or loss category comprises financial liabilities that are derivatives
+(except for a derivative that is a financial guarantee contract or a designated and effective hedging
+instrument), liabilities that are classified as held-for trading and financial liabilities that are
+specifically designated into this category upon initial recognition. On initial recognition, the
+Company may irrevocably designate a financial liability that otherwise meets the requirements
+to be measured at amortised cost as at fair value through profit or loss:
+a) if doing so eliminates or significantly reduces an accounting mismatch that would otherwise
+arise; :
+b) agroup of financial liabilities or assets and financial liabilities is managed, and its performance
+is evaluated on a fair value basis, in accordance with a documented risk management or
+investment strategy, and information about the group is provided internally on that basis to
+the Company’s key management personnel; or
+c) if acontract contains one or more embedded derivatives and the host is not a financial asset in
+the scope of IFRS 9, where the embedded derivative significantly modifies the cash flows and
+separation is not prohibited.
+Financial liabilities categorised as fair value through profit or loss are subsequently measured at
+their fair value with gains or losses, including any interest expense are recognised in the profit or
+loss.
+For financial liabilities where it is designated as fair value through profit or loss upon initial
+recognition, the Company recognises the amount of change in fair value of the financial liability
+that is attributable to change in credit risk in the other comprehensive income and remaining
+amount of the change in fair value in the profit or loss, unless the treatment of the effects of
+changes in the liability’s credit risk would create or enlarge an accounting mismatch.
+Amortised cost
+Subsequent to initial recognition, other financial liabilities are subsequently measured at
+amortised cost using the effective interest method (see Note 2.3. (iv)). Gains and losses are
+recognised in the profit or loss when the liabilities are derecognised as well as through the
+amortisation process.
+(iii) Financial guarantee contracts
+A financial guarantee contract is a contract that requires the issuer to make specified payments
+to reimburse the holder for a loss it incurs because a specified debtor fails to make payment
+when due in accordance with the terms of a debt instrument.
+32

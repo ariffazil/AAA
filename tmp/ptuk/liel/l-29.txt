@@ -1,0 +1,48 @@
+Docusign Envelope ID: BCBF091A-82F5-40AD-846A-E840C6C56334
+LNG INVESTMENTS EUROPE LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+3. ACCOUNTING ESTIMATES, JUDGEMENTS AND ASSUMPTIONS (CONTINUED)
+3.2 Significant estimates and assumptions (continucd)
+Classification of Financial Instruments
+A contract to buy or sell commodities is not in the scope of IFRS 9 unless it can be settled net in cash or another financial
+instrument, or by exchanging financial instruments, include the following ways:
+(i) when the terms of the contract permit either party to settle it net in cash or another financial instrument or by exchanging
+financial instruments;
+(ii) when the Company has a practice of settling similar contracts net in cash or another financial instrument or by exchanging
+financial instruments (whether with the counterparty, by entering into offsetting contracts or by selling the contract before its
+exercise or lapse);
+(iii) when, for similar contracts, the Company has a practice of taking delivery of the underlying and selling it within a short
+period after delivery for the purpose of generating a profit from short term fluctuations in price or dealer’s margin; and
+(iv) when the underlying commodity is readily convertible to cash.
+The Company applies judgment to determine whether contracts to buy or sell commodities meet the definition of a derivative
+and to determine appropriate presentation and classification of transactions.
+The level of uncertainty in the key estimates and assumptions to determine expected future revenues and costs can vary with
+the complexity of each contract and with the form of service delivery. The sensitivity analysis for the key assumptions is in
+Note 22.
+2025 2024
+4 REVENUE FROM CONTRACTS WITH CUSTOMERS £'000 £000
+Sales of LNG 96,645 -
+Cancellation income and option fees - 1,467
+Operating margin 2,433 2,816
+99,078 4,283
+| incoterms —_| Timing of recognition or method used to Significant payment terms
+recognise revenue
+Revenue is recognised when the Company Standard payment term for LNG shall be made within
+. FOB delivers the LNG on board the vessel 7 to 10 days of the invoice date, unless the contract
+nominated by the customer at loading port stipulates different payment terms.
+specified in the contract
+Revenue is recognised when the Company Standard payment term for the LNG supplied shall be
+delivers the LNG at a made within 7 to 10 days, unless the contract
+destination point specified in the contract stipulates different payment terms.
+Nature of goods and services Method used to recognise revenue
+Cancellation income, options fees} Revenue is recognised when the Company's right} Various payment terms as per
+and Operating margin to receive payment is established. invoiced.
+The Company does not have any contract balances. There are no variable elements in consideration, obligation for returns or
+rcfunds nor warranty in the provision of goods and services by the Company.
+2025 2024
+5 OTHER (EXPENSE)/INCOME - NET £000 £000
+Recovery charges 1,377 1,199
+Net (Loss)/Gain on foreign exchange G,191) 1,849
+G,814) 3,048
+29

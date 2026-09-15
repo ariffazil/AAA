@@ -1,6 +1,6 @@
 ---
 name: forge-context-compressor
-description: Compress oversized logs, transcripts, diffs, and telemetry before they
+description: Compress oversized logs, transcripts, diffs, and telemetry before they [fed: tier=fed-long-context]
   exceed a host runtime context budget while preserving provenance and recovery
 version: "1.1.0-2026.08.21"
 merged_from: [FORGE-context-compress, FORGE-data-compression]

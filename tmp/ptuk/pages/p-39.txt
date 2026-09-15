@@ -1,0 +1,42 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF 11912A8BAQ
+PETCO TRADING (UK) LIMITED .
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+2. MATERIAL ACCOUNTING POLICIES (CONTINUED)
+2.10 Foreign currency transactions
+In preparing the financial statements of the Company, transactions in currencies other than the
+Company’s functional currency (foreign currencies) are translated to the functional currency at rates
+of exchange ruling on the transaction dates.
+Monetary assets and liabilities denominated in foreign currencies at the reporting date have been
+retranslated to the functional currency at rates ruling on the reporting date.
+Non-monetary assets and liabilities denominated in foreign currencies, which are measured at fair
+value, are retranslated to the functional currency at the foreign exchange rates ruling at the date when
+the fair value was determined. Non-monetary items that are measured in terms of historical cost in
+foreign currency are not retranslated.
+Gains and losses on exchange arising from retranslation are recognised under other income or
+expense in the profit or loss. Foreign currency gains and losses are reported on a net basis.
+2.11 Revenue
+Revenue from contracts with customers is measured based on the consideration specified in a contract
+with a customer and exclude amounts collected on behalf of other parties. The Company recognises
+revenue when or as it transfers control over a product or service to customer. An asset is transferred
+when (or as) the customer obtains control of the asset.
+Revenue arising from shipping activities is mainly from freight income and charter income. Freight
+income and the relevant discharged costs of cargoes loaded onto vessels up to the reporting date are
+accrued for in the profit or loss based on percentage of completion method. Charter income is accrued
+on straight-line basis over the firm period of the contract, as service is performed.
+An entity transfers control of a good or service at point in time and, therefore, satisfies a performance
+obligation and recognises revenue at point in time, if one of the following criteria is met:
+(a) the customer simultaneously receives and consumes the benefits provided by the entity’s
+performance as the entity performs;
+(b) the entity’s performance creates or enhances an asset (for example, work in progress) that the
+customer controls as the asset is created or enhanced; or
+(c) the entity’s performance does not create an asset with an alternative use to the entity and the
+entity has an enforceable right to payment for performance completed to date.
+When the Company enters into a physical commodity contract to purchase from a producer and sells
+the physical commodity to an end user, the Company has deemed that the own use exemption applies
+and the purchases and sales of these commodities are accounted for under IFRS 15 and presented on
+a gross basis in Revenue and Cost of sales respectively.
+Where the Company acts as agent on behalf of a third party to procure or market energy commodities,
+any associated fee income is recognised at the point of time as explained in Note 14, but no purchase or
+sale is recorded.
+38

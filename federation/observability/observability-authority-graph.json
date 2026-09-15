@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "name": "arifOS Federation Observability Authority Graph",
+  "timestamp": "2026-09-15T05:39:40Z",
+  "doctrine": "Four-Layer Separation of Power & Reality-Bound Authority",
+  "authority_tiers": {
+    "Sovereign": {
+      "principal": "ARIF",
+      "power": "ABSOLUTE_VETO_F13",
+      "scope": "All federation organs, schemas, deployments, financial boundaries, and constitutional ratifications.",
+      "cannot_delegate_to": "Autonomous agents without explicit protocol seal"
+    },
+    "Independent_Witness": {
+      "organ": "FRAME",
+      "port": 18085,
+      "authority_ceiling": "OBSERVE_ONLY",
+      "powers": [
+        "Probe organ health via HTTP GET",
+        "Record time-series drift in trends.jsonl",
+        "Publish alerts to SIGNAL or Hermes when blindness/drift occurs"
+      ],
+      "forbidden_actions": [
+        "Never execute code or system mutations",
+        "Never block or throttle traffic (no gatekeeper role)",
+        "Never act as judge of agent intent (only reports observed delta against baseline)"
+      ],
+      "independence_guarantee": "OIR=0 (Zero Operational Interference Risk)"
+    },
+    "Metabolic_Governor": {
+      "organ": "arifFLOW",
+      "port": 7073,
+      "authority_ceiling": "FLOW_RATE_LIMITER_AND_HOLD",
+      "powers": [
+        "Compute Flow Quotient (FQ) vector",
+        "Enforce HOLD on actors with execution dominance or FQ divergence",
+        "Maintain 1000-receipt circular ledger"
+      ],
+      "forbidden_actions": [
+        "Cannot mutate file system or deployment configurations",
+        "Cannot alter constitutional floors (only enforces thresholds)",
+        "Cannot suppress observer probes"
+      ]
+    },
+    "Telemetry_Plane": {
+      "organ": "Kabarkan",
+      "components": ["NATS kabarkan-ingest", "kabarkan-worker", "Postgres observability"],
+      "authority_ceiling": "INGEST_AND_PERSIST_ONLY",
+      "powers": [
+        "Buffer high-throughput observation streams",
+        "Persist structured observation records to Postgres",
+        "Expose read-only stream and database queries"
+      ],
+      "forbidden_actions": [
+        "Cannot reject valid payloads based on narrative",
+        "Cannot alter payload contents during ingestion",
+        "Cannot execute downstream actions based on telemetry content"
+      ]
+    },
+    "Constitutional_Judge": {
+      "organ": "arifOS",
+      "port": 8088,
+      "authority_ceiling": "CONSTITUTIONAL_EVALUATION",
+      "powers": [
+        "Evaluate action proposals against F1-F13 floors",
+        "Issue effective verdicts (SEAL, HOLD, VOID)",
+        "Emit signed telemetry receipts"
+      ],
+      "forbidden_actions": [
+        "Cannot bypass sovereign veto (F13)",
+        "Cannot execute mutations directly (delegates to A-FORGE)"
+      ]
+    },
+    "Execution_Actor": {
+      "organ": "A-FORGE",
+      "port": 7071,
+      "authority_ceiling": "CONTROLLED_MUTATION",
+      "powers": [
+        "Execute authorized shell and deployment scripts",
+        "Manage workspace state",
+        "Emit execution telemetry"
+      ],
+      "forbidden_actions": [
+        "Cannot execute unsealed actions",
+        "Cannot bypass arifFLOW rate limits when held"
+      ]
+    }
+  },
+  "invariants": {
+    "SEPARATION_1": "Observer (FRAME) != Governor (arifFLOW)",
+    "SEPARATION_2": "Governor (arifFLOW) != Ingestion (Kabarkan)",
+    "SEPARATION_3": "Ingestion (Kabarkan) != Judge (arifOS)",
+    "SEPARATION_4": "Judge (arifOS) != Executor (A-FORGE)"
+  }
+}

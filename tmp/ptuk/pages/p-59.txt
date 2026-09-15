@@ -1,0 +1,36 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF11912A8BA9
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+22. FINANCIAL INSTRUMENTS (CONTINUED) .
+Credit Risk (continued)
+With respect to credit risk arising from the other financial assets of the Company, which comprise
+cash, and derivative financial assets, the Company’s exposure to credit risk arises from default of the
+counterparty, with a maximum exposure equal to the carrying amount of these instruments. The
+Company limits its counterparty credit risk by performing know your client process by PETRONAS
+risk team.
+i) Receivables
+Risk management objectives, policies, and processes for managing the risk
+The Company minimises credit risk by ensuring that all potential third-party counterparties are
+_ assessed prior to registration and entering new contracts. Existing third-party counterparties are
+. also subject to regular reviews, including re-appraisal and approval of granted limits. The
+creditworthiness of counterparties is assessed based on analysis of all available quantitative and
+qualitative data regarding business risks and financial standing, together with the review of any
+relevant third party and market information. Reports are prepared and presented to the
+management that cover the Company’s overall credit exposure against limits and securities,
+exposure by segment and overall quality of the portfolio.
+Depending on the types of transactions and creditworthiness of the counterparty, the Company
+. further mitigates and limits risks related to credit by requiring collateral or other credit
+enhancements such as cash deposits, letter of credit and bank guarantees.
+As at 31 December 2025, the Company had nil receivables (2024: Nil) secured by letter of credit.
+Management has taken reasonable steps to ensure that receivables that are neither past due nor
+impaired are stated at their realisable values. A significant portion of these receivables are regular
+customers that have been transacting with the Company.
+At each reporting date, the Company assesses whether any of the trade receivables and contract
+assets are credit impaired. The gross carrying amounts of credit impaired trade receivables are
+written off (either partially or full) when there is no realistic prospect of recovery. This is
+generally the case when the Company determines that the debtor does not have assets or sources
+. of income that could generate sufficient cash flows to repay the amounts subject to the write-off.
+Nevertheless, trade receivables and contract assets that are written off could still be subject to
+enforcement activities.
+. 58

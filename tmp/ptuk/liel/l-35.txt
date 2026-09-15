@@ -1,0 +1,45 @@
+Dacusign Envelope ID: BCBF091A-82F5-40AD-846A-E840C6C56334
+LNG INVESTMENTS EUROPE LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+2025 2024
+22 ONEROUS CONTRACT PROVISION £'000° £'000
+Balance at 1 January 212,734 244,564
+Utilisation of provision (51,809) (45,587)
+Unwinding cost 8,786 11,005
+(Reversal)/addition arising from change or assumptions (173) 2,752
+Balance at 31 December 169,538 212,734
+An onerous contract provision under IAS 37 continues to be recognised in FY2025S in relation to the SLA Agreement between
+LIEL and PTUK whereby, the latter recharges to the former all costs in relation to Throughput Agreement on Dragon plant
+management between PTUK, Dragon LNG Ltd and Shell. An amendment to this SLA clarifying PTUK’s right to recharge the
+throughput costs was signed in January 2026 and has been factored in the onerous contract assessment.
+As aresult, management of the Company prepared discounted cash flow which resulted in a provision of £170 million (2024:
+213 million) as at 31st December 2025. This is due to high fixed maintenance cost of the plant which is approximately on
+average £41.6 million per year until the expiry of the Throughput Agreement in August 2029.
+Non-current liabilities amount to £124.2 million (2024: £163.0 million) and current liabilities amount to £45.3 million (2024:
+£49.7 million).
+Sensitivity analysis for a given market variable provided in this Note, discloses the effect on the onerous contract provision
+and consequently on the profit or loss and equity as at 31 December 2025 assuming that a reasonable possible change in the
+relevant market variable had occurred as at 31 December 2025. Reasonable possible changes in market variables used in the
+sensitivity analysis are based on implied volatilities and based on management judgment.
+With all other variables held constant, changes in the assumptions could result in the following changes in the onerous contract
+provision respectively:
+[Assumption st Increase =| smpact—increase/(decrease) |
+Market prices (NBP and TTF £3.3 million
+£2.8 million
+£2.5 million
+Foreign exchange rate (USD and EUR £2.9 million
+Diversion margin (USD/mmbtu £3.4 million
+23 RELATED PARTIES DISCLOSURES
+For the purposes of these financial statements, parties are considered to be related to the Company if the Company has the
+ability, directly or indirectly, to control or jointly control the party or exercise significant influence over the party in making
+financial and operating decisions, or vice versa, or where the Company and the party are subject to common control. Related
+parties may be individuals or other entities.
+Related parties also include key management personnel defined as those persons having authority and responsibility for
+planning, directing and controlling the activities of the Company either directly or indirectly and an entity that provides key
+management personnel services to the Company. The key management personnel include all the Directors of the Company.
+Key management personnel compensation:
+2025 2024
+£7000 £7000
+Emoluments 19 17
+35

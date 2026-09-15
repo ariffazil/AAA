@@ -1,0 +1,40 @@
+Docusign Envelope ID: BCBF091A-82F5-40AD-846A-E840C6C56334
+LNG INVESTMENTS EUROPE LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+2025 2024
+6 OPERATING PROFIT/(LOSS) £7000 £7000
+Operating profit is stated after (crediting)/charging:
+Gain/(Loss) on foreign exchange (Note 5) 3,191 (1,849)
+Movement in inventory (within net trading income) 17,173 (27,093)
+Utilisation of provision (Note 22) (within Cost of LNG regasification) (51,809) (45,587)
+Addition of provision (Note 22) (within Cost of LNG regasification) (173) 2,752
+2025 2024
+7 FINANCE INCOME £000 £7000
+Interest on bank balance 3,974 7,324
+2025 2024
+8 FINANCE COST £000 £7000
+Unwinding of onerous contract provision (Note 22) . 8,786 11,005
+8,786 11,005
+9 EMPLOYEE BENEFITS EXPENSE .
+The Company did not have employees during the period (2024: nil)
+. 2025 2024
+10 AUDITORS’ REMUNERATION £7000 £7000
+Audit of the financial statements , 200 294
+Non-audit services - taxation compliance services 9 30
+209 324
+11. TAXATION 2025 2024
+£7000 £7000
+11.1. The taxation charge/(credit) is made up as follows:
+Current tax:
+Adjustment in respect of prior periods - (125)
+- (125)
+Deferred tax:
+Origination and reversal of temporary differences (112) (5,216)
+Under/(over)-provision relating to prior years : 107
+(112) (5,109)
+Total Income tax benefit (112) (5,234)
+11.2. Factors affecting tax charge / (credit) for the period:
+The tax assessed for the period is lower than the standard rate of corporation tax in the UK (25.00%) (2024: 25.00%). The
+differences are explained below:
+30

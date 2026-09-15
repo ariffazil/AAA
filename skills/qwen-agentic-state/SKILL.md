@@ -1,7 +1,7 @@
 ---
 id: QWEN-agentic-state
 name: qwen-agentic-state
-description: >
+description: > [fed: tier=meta-mesa, auto=T1, risk=low]
   Persistent agentic state doctrine for Qwen Code (FI-003). Survive across sessions by
   writing to /root/.qwen/agent_state/. Auto-memory (MEMORY.md) holds lessons learned;
   this holds session-overlapping capability + mission history. Load when you want to

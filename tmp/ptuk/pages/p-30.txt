@@ -1,0 +1,39 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF11912A8BA9
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS .
+FOR THE YEAR ENDED 31 DECEMBER 2025
+2. MATERIAL ACCOUNTING POLICIES (CONTINUED)
+2.2 Leases (continued)
+(iii) Subsequent measurement (continued)
+(b) As a lessor
+When there is lease modification due to increase in the scope of lease by adding the right-to-
+use one or more underlying assets, the Company assesses whether the lease modification shall
+be accounted for as a separate lease or similar to reassessment of lease liability. The Company
+accounts for lease modification as a separate lease when the consideration for the lease
+increases by an amount commensurate with the stand-alone price for the increase in scope
+and any appropriate adjustments.
+When there is lease modification due to decrease in scope, the Company decreases the
+: carrying amount of the right-of-use asset and remeasure the lease liability to reflect the partial
+or full termination of the lease. The corresponding gain or loss shall be recognised in profit
+or loss. Lease liabilities are remeasured for all other lease modifications with corresponding
+adjustments to the right-of-use asset.
+The Company recognises lease payments received under operating leases as income on a
+straight-line basis over the lease term as part of “revenue”. The Company recognises finance
+income over the lease term, based on a pattern reflecting a constant periodic rate of return on
+the Company’s net investment in the lease. The Company aims to allocate finance income
+over the lease term on a systematic and rational basis. The Company applies the lease
+payments relating to the period against the gross investment in the lease to reduce both the
+principal and the unearned finance income. The net investment in the lease is subject to
+impairment requirements in IFRS 9 Financial Instruments.
+2.3 Financial instruments
+Recognition and initial measurement
+A financial asset or a financial liability is recognised in the statement of financial position when, and
+only when, the Company becomes a party to the contractual provisions of the instrument.
+Regular way purchases or sales were recognised on the trade date i.e. the date that the Company
+commits to purchase or sell the financial asset.
+A financial asset (unless it is a receivable without a significant financing component) or a financial
+liability is initially measured at fair value plus or minus, in the case of a financial instrument not at
+fair value through profit or loss, any directly attributable transaction costs incurred at the acquisition
+or issuance of the financial instrument. A trade receivable that does not contain a significant
+financing component is initially measured at the transaction price.
+29

@@ -3,7 +3,7 @@ name: forge-model-monitor
 id: forge-model-monitor
 version: 1.1.0
 risk_tier: low
-description: 'Monitor the model fallback chain. Track latency, billing failures (402),
+description: 'Monitor the model fallback chain. Track latency, billing failures (402), [fed: tier=fed-agent-subagent, auto=T0, risk=low]
   cold-start failures, and auto-pause dead models. USE WHEN: "model health", "check
   fallback chain", "model latency", "billing alert".'
 owner: A-FORGE

@@ -2,7 +2,7 @@
 id: FORGE-design-intelligence
 name: forge-design-intelligence
 version: 1.0.0-2026-08-20
-description: >
+description: > [fed: tier=fed-reasoning-heavy, floors=[, auto=T1, risk=low]
   Design intelligence for building professional UI/UX across platforms.
   Industry-specific reasoning rules, UI style taxonomy, color palettes,
   typography pairing, accessibility guidelines, and anti-patterns.

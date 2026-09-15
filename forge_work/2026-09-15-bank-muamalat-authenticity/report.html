@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>From Compliance to Conviction — Bank Muamalat and the Shariah-Authenticity Question</title>
+<style>
+  @page {
+    size: A4; margin: 16mm 14mm 15mm 14mm;
+    @bottom-left { content: "FROM COMPLIANCE TO CONVICTION · BANK MUAMALAT · 15 SEP 2026"; font-size: 6.8pt; color: #8a94a0; }
+    @bottom-right { content: "PAGE " counter(page) " / " counter(pages); font-size: 6.8pt; color: #8a94a0; }
+  }
+  @page :first { @bottom-left { content: ""; } @bottom-right { content: ""; } }
+  :root { --navy:#0d2b45; --teal:#1b7f79; --amber:#d98324; --red:#b3402f; --grey:#6b7280; --line:#dfe4e9; --bg:#f4f7f9; }
+  * { box-sizing: border-box; }
+  body { font-family:"DejaVu Sans",sans-serif; font-size:9.4pt; line-height:1.53; color:#1d2733; margin:0; }
+  h1 { font-size:24pt; line-height:1.14; color:var(--navy); margin:0 0 6px 0; letter-spacing:-0.4px; }
+  h2 { font-size:13.2pt; color:var(--navy); margin:21px 0 7px 0; padding-bottom:4px; border-bottom:2px solid var(--navy); }
+  h3 { font-size:10.8pt; color:var(--teal); margin:14px 0 5px 0; }
+  h4 { font-size:9.8pt; color:var(--navy); margin:11px 0 4px 0; }
+  p { margin:0 0 8px 0; }
+  ul,ol { margin:0 0 9px 0; padding-left:17px; }
+  li { margin-bottom:4px; }
+  table { width:100%; border-collapse:collapse; margin:8px 0 12px 0; font-size:8.4pt; }
+  th { background:var(--navy); color:#fff; text-align:left; padding:5.5px 7px; font-weight:600; vertical-align:top; }
+  td { padding:5px 7px; border-bottom:1px solid var(--line); vertical-align:top; }
+  tr:nth-child(even) td { background:#fafcfd; }
+  .cover { height:252mm; page-break-after:always; }
+  .cover-rule { height:5px; background:linear-gradient(90deg,var(--navy) 0%,var(--teal) 55%,var(--amber) 100%); margin-bottom:22px; }
+  .kicker { font-size:8.1pt; letter-spacing:2.5px; color:var(--red); font-weight:700; text-transform:uppercase; margin-bottom:14px; }
+  .subtitle { font-size:12pt; color:var(--grey); margin:2px 0 24px 0; line-height:1.45; }
+  .cover-meta { font-size:8.3pt; color:var(--grey); border-top:1px solid var(--line); padding-top:9px; margin-top:22px; }
+  .cover-meta strong { color:var(--navy); }
+  .keybox { background:var(--bg); border-left:4px solid var(--amber); padding:12px 15px; margin:14px 0; }
+  .keybox h3 { margin-top:0; color:var(--navy); }
+  .callout { background:#fff8ef; border:1px solid #f0dcbe; border-left:4px solid var(--amber); padding:10px 13px; margin:12px 0; font-size:8.9pt; }
+  .verdict { background:#eef6f5; border-left:4px solid var(--teal); padding:10px 13px; margin:12px 0; font-size:9pt; }
+  .danger { background:#fdf1ee; border-left:4px solid var(--red); padding:10px 13px; margin:12px 0; font-size:8.9pt; }
+  .fiqh { background:#f2f0f7; border-left:4px solid #5d4a7a; padding:10px 13px; margin:12px 0; font-size:8.9pt; }
+  .tag { display:inline-block; font-size:6.8pt; font-weight:700; letter-spacing:0.5px; padding:1px 5px; border-radius:3px; vertical-align:1.5px; }
+  .obs{background:#0d2b45;color:#fff;} .der{background:#1b7f79;color:#fff;} .int{background:#d98324;color:#fff;}
+  .spec{background:#8a94a0;color:#fff;} .void{background:#b3402f;color:#fff;} .fqh{background:#5d4a7a;color:#fff;}
+  figure { margin:11px 0 15px 0; page-break-inside:avoid; }
+  figure img { width:100%; border:1px solid var(--line); }
+  .pagenote { font-size:8.3pt; color:var(--grey); font-style:italic; }
+  .small { font-size:8.1pt; color:var(--grey); }
+  .two-col { display:flex; gap:14px; }
+  .two-col > div { flex:1; }
+  .pagebreak { page-break-before:always; }
+  .stat-strip { display:flex; gap:9px; margin:12px 0 16px 0; }
+  .stat { flex:1; background:var(--bg); border-top:3px solid var(--teal); padding:8px 9px; }
+  .stat .n { font-size:14.5pt; font-weight:700; color:var(--navy); line-height:1.1; }
+  .stat .l { font-size:7.4pt; color:var(--grey); line-height:1.3; }
+  figure,table,.callout,.verdict,.danger,.fiqh,.keybox,.stat-strip { page-break-inside:avoid; }
+  h2,h3,h4 { page-break-after:avoid; } tr { page-break-inside:avoid; }
+  p { orphans:2; widows:2; }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<div class="cover">
+  <div class="cover-rule"></div>
+  <div class="kicker">Sovereign Intelligence Brief · Deep Dive · Companion to the Consolidation Brief</div>
+  <h1>From Compliance<br>to Conviction</h1>
+  <div class="subtitle">Bank Muamalat and the Shariah-authenticity question — what would actually have to change
+  for an Islamic mega-bank to be built on risk-sharing rather than on replicated debt, in what order, at what
+  capital cost, and how anyone could tell the difference.</div>
+
+  <div class="keybox">
+    <h3>The one-paragraph version</h3>
+    <p style="margin-bottom:0">The industry that would be consolidated is roughly 90% debt-based in structure. Genuine
+    risk-sharing — mushārakah and muḍārabah — is a rounding error on the Malaysian book by narrow measure, and a
+    minority position by any measure. Scale will not fix that; scale entrenches it. The work is therefore not a
+    merger. It is a conversion, and the conversion has to start on the <em>funding</em> side, where deposit money is
+    a debt contract and investment-account money is not — because that is simultaneously the economically rational
+    fix for Bank Muamalat's own weakness (12% retail funding, 47% top-twenty depositor concentration). The capital
+    arithmetic is unforgiving: risk-sharing exposures attract materially higher regulatory risk weights, so each
+    RM1bn converted costs roughly RM450m of new equity at a 15% CET1 target. And the sequencing instruction matters
+    more than any product decision: <strong>convert first, scale second</strong>, because a debt-based balance sheet
+    gets harder to convert the larger it becomes.</p>
+  </div>
+
+  <div class="stat-strip">
+    <div class="stat"><div class="n">~90%+</div><div class="l">Debt-based structures share of the Islamic banking sector</div></div>
+    <div class="stat"><div class="n">&lt;1%</div><div class="l">Malaysian PLS financing, narrow measure (broad: 10–15%)</div></div>
+    <div class="stat"><div class="n">RM450m</div><div class="l">New CET1 required per RM1bn of risk-sharing assets added, at 15%</div></div>
+    <div class="stat"><div class="n">0</div><div class="l">Banks in Malaysia publishing maqasid impact indicators</div></div>
+  </div>
+
+  <div class="cover-meta">
+    <p><strong>Prepared:</strong> 15 September 2026 (UTC) &nbsp;·&nbsp; <strong>Classification:</strong> F13 sovereign intelligence product &nbsp;·&nbsp; <strong>Subject entity:</strong> Bank Muamalat Malaysia Bhd and the Malaysian Islamic banking sector</p>
+    <p><strong>Produced by:</strong> i-ARIF (Hermes edge bridge) — computational output under F13 sovereign direction.</p>
+    <p><strong>Standing qualification:</strong> This document is a structural, financial and institutional analysis of a
+    question that is partly doctrinal. It issues no fatwa and carries no religious authority. Where matters of
+    juristic ruling arise they are identified as such <span class="tag fqh">FIQH</span> and referred to qualified
+    scholars. Nothing here is investment advice, a rating, or a price target.</p>
+  </div>
+</div>
+
+<!-- ============ EXEC READ ============ -->
+<h2>The Executive Read</h2>
+<p class="pagenote">Ten findings, ordered by how much they should change the plan.</p>
+<ol>
+  <li><strong>"Largest" and "authentic" pull in opposite directions under the current model.</strong> The industry
+  reached USD4.4 trillion and RM1.3 trillion domestically by replicating debt at scale. If a merged bank simply does
+  more of what made the sector big, it becomes the largest expression of the thing the question is trying to
+  escape. <span class="tag obs">OBS</span></li>
+
+  <li><strong>The gap is not rhetorical — it is measurable, and it is extreme.</strong> Commodity murabahah and
+  tawarruq are reported at "almost 90% or more" of the Islamic banking sector. Malaysian risk-sharing financing
+  measures between roughly 0.36% and 0.87% on narrow definitions, or up to 10–15% on broad ones.
+  <span class="tag obs">OBS</span></li>
+
+  <li><strong>Bank Muamalat's founding book is debt-based by construction.</strong> Home financing 33.51% and
+  personal financing 28.6% of gross financing — home financing and Ar Rahnu both structured on tawarruq. Nothing in
+  the current mix is a genuine profit-and-loss-sharing exposure of scale. <span class="tag obs">OBS</span></li>
+
+  <li><strong>The single most important move is on the funding side, not the asset side.</strong> 90.2% deposit
+  funding means the bank carries the loss; investment accounts place it where the contract puts it. Converting
+  funding from deposit-led to investment-account-led is <em>simultaneously</em> the doctrinally coherent move and the
+  commercially rational fix for the 12%-retail / 47%-top-twenty-concentration problem. Doctrine and economics
+  converge here — and almost nowhere else. <span class="tag int">INT</span></li>
+
+  <li><strong>The regulator is already moving in this direction, publicly.</strong> BNM's 2025 annual report states
+  that long-horizon, cashflow-uncertain activities "cannot rely on traditional debt alone", and in September 2025 it
+  launched i-CITA with RM100 million of matching funds specifically to promote wider use of muḍārabah and
+  mushārakah. This is not a fringe position. <span class="tag obs">OBS</span></li>
+
+  <li><strong>The global standard-setter has named the problem in 2026.</strong> The IFSB's 2026 stability report
+  (May 2026) is titled around "hybrid risks" — products and balance-sheet configurations that "increasingly mimic
+  conventional banking characteristics". A bank claiming authenticity is claiming to solve something the regulator's
+  own research arm says is unsolved. <span class="tag obs">OBS</span></li>
+
+  <li><strong>Capital is the real constraint, and the risk weights are why.</strong> Mushārakah and muḍārabah
+  exposures are reported in the literature as attracting capital risk weights up to 400%, against far lower
+  treatment for debt-based financing. Each RM1bn shifted adds roughly RM3bn of RWA and, at a 15% CET1 target, about
+  RM450m of new equity. From CET1 of 12.02% and equity of RM3.23bn, this is a RM1.5–4.5bn question depending on
+  scale and calibration. <span class="tag der">DER</span></li>
+
+  <li><strong>Choose the standard, and accept the bill.</strong> Malaysia's Shariah Advisory Council accepts
+  organised tawarruq and bay' al-'inah; the OIC Fiqh Academy (2003) and AAOIFI reject them. Both positions are
+  legitimate scholarly positions. A bank that claims to be built on "real Islamic teaching" must state which
+  standard it holds — and if the stricter one, must accept the commercial cost of that choice openly.
+  <span class="tag fqh">FIQH</span></li>
+
+  <li><strong>Sequence beats sincerity.</strong> Three of the four most likely failure modes are capital and
+  marketing failures, not doctrinal ones. The instruction that matters most is to convert before scaling: a larger
+  debt-based book is harder to convert, not easier. <span class="tag int">INT</span></li>
+
+  <li><strong>Bank Muamalat already owns three assets most banks would have to buy.</strong> Automatic zakat
+  deduction on the Gold-i account at haul and nisab, first-in-the-world GABV membership for an Islamic bank, and
+  Shariah training capability in waqf, zakat and sadaqah. The social-finance engine is cheaper here than
+  anywhere else in the market. <span class="tag obs">OBS</span></li>
+</ol>
+
+<div class="fiqh">
+  <strong>Read this before the analysis.</strong> This brief separates two things that are usually blurred.
+  <em>Doctrinal questions</em> — which contracts are permissible, which are preferred, what a given ruling should be —
+  belong to qualified scholars and Shariah committees. This document takes no position on them and issues no fatwa.
+  <em>Structural questions</em> — what share of a balance sheet is risk-sharing, what it costs in capital, what the
+  funding mix is, what governance can be verified, what social infrastructure exists — are observable and
+  measurable, and this document answers those. The value here is that the second set of questions determines whether
+  the first set can ever be expressed in an institution rather than in a statement.
+</div>
+
+<!-- ============ METHOD ============ -->
+<h2>§0 &nbsp;Scope, Method, Limits</h2>
+<div class="two-col">
+  <div>
+    <h4>What this answers</h4>
+    <p>Given the stated ambition — the largest Islamic bank, fully Shariah-compliant, built on authentic Islamic
+    teaching — what would Bank Muamalat actually have to do? In what order? At what cost? And how would anyone,
+    inside or outside, be able to tell whether it was real?</p>
+    <h4>What this refuses to do</h4>
+    <ul>
+      <li>Not issue religious rulings. Contract permissibility is marked <span class="tag fqh">FIQH</span> and left to
+      scholars; the Shariah Advisory Council framework is treated as the governing authority in Malaysia, which it is
+      in law.</li>
+      <li>Not characterise the Malaysian SAC position as illegitimate. The divergence from AAOIFI and Gulf bodies is
+      a documented juristic difference of long standing, and both are defensible within their own methodology.
+      What matters for this brief is that the difference <em>exists</em>, because a claim of authenticity has to
+      locate itself relative to it.</li>
+      <li>Not attribute motive to any shareholder, board or management. Outcomes and disclosed positions only.</li>
+      <li>Not give investment advice.</li>
+    </ul>
+  </div>
+  <div>
+    <h4>Method</h4>
+    <ul>
+      <li>Primary: Bank Negara Malaysia Annual Report 2025 (Islamic finance chapter); BNM Tawarruq policy document
+      (reissued December 2018); BNM Shariah Resolutions; BNM Investment Account discussion papers; IFSB Islamic
+      Financial Stability Report 2026; Bank Muamalat Pillar 3 disclosures (1H June 2026) and Annual Report FY2024;
+      MARC and RAM rating actions.</li>
+      <li>Secondary: peer-reviewed and working-paper literature on profit-and-loss-sharing proportions in Malaysia
+      and globally; OIC Fiqh Academy 17th session (2003); AAOIFI standards; Kuala Lumpur Declaration.</li>
+      <li>The capital sensitivity is derived from disclosed BMMB figures (equity, CET1 ratio) combined with the
+      risk-weight treatment reported in the literature, and is presented as a sensitivity rather than a forecast.</li>
+    </ul>
+    <h4>Limits acknowledged</h4>
+    <p class="small">Bank Muamalat does not publish a contract-level breakdown of its financing book, so the
+    current risk-sharing share is estimated from book composition and product structure rather than read directly.
+    Where an estimate is used it is marked as such. The risk-weight treatment of equity-based financing varies by
+    framework and calibration; the 400% figure is drawn from the literature and used to show direction and magnitude,
+    not as a claim about the current exact regulatory schedule.</p>
+  </div>
+</div>
+
+<!-- ============ TERSURAT ============ -->
+<h2 class="pagebreak">§1 &nbsp;Tersurat — The Gap, Stated Plainly</h2>
+
+<h3>1.1 The industry's structural profile</h3>
+<figure><img src="charts/c01_authenticity_gap.png" alt="The authenticity gap"></figure>
+<p>The number to hold in mind is ninety per cent. The Islamic banking industry globally and in Malaysia is
+overwhelmingly composed of structures whose economic substance is a fixed obligation — commodity murabahah and
+organised tawarruq. Profit-and-loss-sharing, the contractual form that distinguishes Islamic finance in theory,
+is a small minority in practice. <span class="tag obs">OBS</span></p>
+<p>This is not a secret and it is not a conspiracy. It is the outcome of three decades of choices made for
+defensible reasons: risk-sharing is capital-expensive, legally complex, harder to originate, harder to securitise
+and harder to regulate. It is also, in the literature's own words, "statistically indistinguishable" in return
+profile from conventional lending. <span class="tag obs">OBS</span> The industry solved for scale and paid for it
+with distinctiveness.</p>
+
+<h3>1.2 Bank Muamalat's own book</h3>
+<figure><img src="charts/c02_book_target.png" alt="Book composition and destination"></figure>
+<table>
+  <tr><th style="width:30%">Book segment</th><th style="width:14%">Share</th><th>Contract structure today</th></tr>
+  <tr><td>Home financing</td><td>33.51%</td><td>Debt-based (tawarruq-family structures). The largest single block of the book and the clearest symbolic conversion target. <span class="tag obs">OBS</span></td></tr>
+  <tr><td>Personal financing</td><td>28.6%</td><td>Debt-based. Where tawarruq adds least economic value and attracts the most criticism. <span class="tag obs">OBS</span></td></tr>
+  <tr><td>Other (auto, Ar Rahnu, revolving credit, acceptance credits)</td><td>≈37.9%</td><td>Ar Rahnu is explicitly structured on tawarruq; acceptance credits and revolving credit are debt-form by nature. <span class="tag obs">OBS</span></td></tr>
+  <tr><td>Real-asset offerings</td><td>small</td><td>The Gold-i account is genuine real-asset exposure, but the wrapper is an investment account rather than a risk-sharing exposure. Its distinctive feature — automatic zakat deduction at haul and nisab — is governance, not structure. <span class="tag obs">OBS</span></td></tr>
+</table>
+
+<div class="danger">
+  <strong>The uncomfortable reading.</strong> Roughly 62% of Bank Muamalat's gross financing sits in the two
+  segments where the contract form is least distinguishable from conventional lending, and a meaningful further slice
+  is debt-form by nature. If authenticity is the objective, the honest starting position is that the bank is
+  structurally a conventional lender in Islamic legal clothing for the bulk of its book. That statement is
+  uncomfortable, and it is also the only starting position from which a real programme can be built — because a
+  baseline that flatters the institution produces a programme that never has to change anything.
+  <span class="tag int">INT</span>
+</div>
+
+<!-- ============ DOCTRINE ============ -->
+<h2>§2 &nbsp;What "Authentic" Means Structurally</h2>
+<p>The word authentic is unusable in a plan until it is translated into properties that can be counted. This section
+does that translation — not theologically, but institutionally. Four properties recur across the scholarly and
+regulatory literature as the distinguishing marks of an Islamic financial institution rather than an Islamic
+labelled one.</p>
+
+<table>
+  <tr><th style="width:24%">Property</th><th>What it means institutionally</th><th style="width:22%">How it is observed</th></tr>
+  <tr>
+    <td><strong>Risk-sharing</strong></td>
+    <td>The principle asserted in the Kuala Lumpur Declaration — that risk-sharing is a salient characteristic of
+    Islamic financial transactions, and that liability is inseparable from the right to profit. Institutionally:
+    a material share of the book where the funder can lose capital.</td>
+    <td>Share of financing in mushārakah / muḍārabah forms; published contract-level breakdown.</td>
+  </tr>
+  <tr>
+    <td><strong>Real-asset linkage</strong></td>
+    <td>Finance attached to identifiable assets, goods, services or usufruct rather than to money creating money.
+    Institutionally: the bank's exposure is traceable to something that exists.</td>
+    <td>Asset-linkage ratio; composition of exposures by underlying asset class.</td>
+  </tr>
+  <tr>
+    <td><strong>Loss-bearing funding</strong></td>
+    <td>The party supplying funds accepts loss. Deposit money cannot do this; investment-account money can.
+    Institutionally: the funding base is investment-led, not deposit-led.</td>
+    <td>Investment accounts as a share of total funding; profit-sharing ratio disclosure.</td>
+  </tr>
+  <tr>
+    <td><strong>Maqasid consequence</strong></td>
+    <td>Whether the institution's activity demonstrably serves the objectives of Shariah — equitable distribution,
+    real economic participation, protection of the vulnerable. This is the property the industry measures least.</td>
+    <td>Published, third-party-verified maqasid indicators; social-finance volumes; qardhul hasan book.</td>
+  </tr>
+</table>
+
+<div class="fiqh">
+  <strong>Where the juristic divergence sits.</strong> Malaysian practice accepts organised tawarruq where the
+  Shariah Advisory Council has permitted it under specific rules and parameters (policy document reissued December
+  2018), and accepts bay' al-'inah. The OIC Fiqh Academy's 17th session (2003) regarded organised and reverse
+  tawarruq as impermissible, and AAOIFI's standards are more restrictive than Malaysian practice. Both frameworks
+  are internally coherent; they differ on method and on how strictly form must track substance.
+  <span class="tag fqh">FIQH</span>
+  <br><br>
+  The structural consequence for this brief is narrow and does not require taking a side: an institution that
+  describes itself as built on "real Islamic teaching" is describing itself against the stricter reading, whether or
+  not it says so. It should say so, and it should publish what it costs. That is transparency, not a ruling.
+</div>
+
+<!-- ============ REGULATORY ============ -->
+<h2 class="pagebreak">§3 &nbsp;The Regulatory Reality in 2026</h2>
+<p>The most important thing to understand about this question is that the regulator and the global standard-setter
+moved first. A bank pursuing authenticity in 2026 is not fighting the framework; it is moving with it, and can say
+so.</p>
+
+<table>
+  <tr><th style="width:26%">Actor</th><th>Position as of 2026</th><th style="width:14%">Status</th></tr>
+  <tr><td><strong>Bank Negara Malaysia</strong></td>
+    <td>Islamic financing rose to 48% of total financing and takaful participation to 24.5%. BNM states plainly that
+    activities with longer horizons and unpredictable cashflows "cannot rely on traditional debt alone", and that
+    equity-based contracts may be a better fit. In September 2025 it launched i-CITA with RM100 million of matching
+    funds specifically to promote wider use of muḍārabah and mushārakah, aimed at food security and climate
+    resilience. In 2024, institutions intermediated RM148.6bn into value-based-intermediation activities.</td>
+    <td>Actively promoting <span class="tag obs">OBS</span></td></tr>
+  <tr><td><strong>IFSB</strong></td>
+    <td>Its 2026 stability report (26 May 2026) is devoted to "hybrid risks" — new products and balance-sheet
+    configurations that "increasingly mimic conventional banking characteristics" in ways that reshape risk profiles
+    and are not always captured by existing prudential frameworks. It calls for capital frameworks that adequately
+    capture these risks.</td>
+    <td>Naming the problem <span class="tag obs">OBS</span></td></tr>
+  <tr><td><strong>Investment Account framework</strong></td>
+    <td>Malaysia has an established investment-account framework and platform, and BNM is currently reviewing
+    industry feedback on the Shariah Contract Framework and Investment Account discussion papers to give clearer,
+    more practical guidance.</td>
+    <td>Framework exists, being refined <span class="tag obs">OBS</span></td></tr>
+  <tr><td><strong>Shariah Advisory Council</strong></td>
+    <td>Publishes Shariah resolutions and a tawarruq policy document with mandatory requirements ensuring validity.
+    In law, the SAC's rulings are the binding reference for Islamic financial business in Malaysia.</td>
+    <td>Governing authority <span class="tag obs">OBS</span></td></tr>
+  <tr><td><strong>OIC Fiqh Academy / AAOIFI</strong></td>
+    <td>Stricter on organised tawarruq and related structures; AAOIFI standards are not the primary reference in
+    Malaysian practice, where SAC rulings prevail.</td>
+    <td>Divergent but authoritative elsewhere <span class="tag fqh">FIQH</span></td></tr>
+</table>
+
+<figure><img src="charts/c07_divergence.png" alt="Juristic divergence"></figure>
+
+<div class="verdict">
+  <strong>The strategic implication.</strong> There is a genuine policy tailwind here, and it is unusual. BNM has
+  put money behind risk-sharing promotion; the IFSB has published a flagship report naming the imitation problem.
+  That means a bank that launches a serious conversion programme in 2026 is not proposing something eccentric — it
+  is answering a call the framework has already made, with its own money, and can cite its regulator doing so.
+  Very few institutional transformations get that cover. If the ambition is real, this is the window in which to
+  make it, because the cover will not be there indefinitely. <span class="tag int">INT</span>
+</div>
+
+<!-- ============ THE FIVE MOVES ============ -->
+<h2>§4 &nbsp;What Bank Muamalat Would Have To Do — Five Moves, In Order</h2>
+
+<h3>Move 1 — Doctrine lock: establish the baseline before touching anything</h3>
+<p>The first deliverable is not a product, a partner or a capital raise. It is a published baseline. Four items:</p>
+<ul>
+  <li><strong>The contract-level breakdown of the existing book.</strong> What percentage of gross financing is in
+  risk-sharing forms, what is debt-based, and what is by nature debt-form. Bank Muamalat does not currently publish
+  this. Publishing it is uncomfortable and it is the only honest starting line.</li>
+  <li><strong>A stated standard.</strong> Which framework the bank holds itself to — Malaysian SAC practice, AAOIFI,
+  or a documented hybrid — and what that choice costs in forgone product range. Naming the cost is the credibility
+  test; a standard with no cost attached is not a standard.</li>
+  <li><strong>A maqasid statement with indicators.</strong> Which objectives the bank will be measured against
+  (equitable participation, real-asset ownership, access for the excluded), and how each will be measured. On the
+  evidence of this research, no Malaysian bank publishes this today. <span class="tag void">VOID</span></li>
+  <li><strong>A Shariah audit charter</strong> naming an external auditor, the reference standard, the audit scope,
+  and the reporting line. Not an internal review.</li>
+</ul>
+<div class="callout">
+  <strong>Why this comes first.</strong> Every subsequent move is a claim about improvement, and improvement is
+  unmeasurable without a baseline. More practically: publishing a bad number costs less at the start, when the
+  institution is small and the programme is new, than at the end, when the whole claim rests on it. The banks that
+  avoid this step are the ones that end up with a programme nobody can audit.
+</div>
+
+<h3>Move 2 — Funding side first, and this is the whole game</h3>
+<figure><img src="charts/c03_funding_side.png" alt="Funding structure"></figure>
+<p>This is the move that almost every commentary gets wrong, because commentary is fixated on lending products.
+The structurally Islamic side of a bank is not what it lends — it is <em>who bears the loss on the money it lends
+with.</em></p>
+<p>A customer deposit is a guarantee of principal. The bank carries the risk; the depositor does not. That is a debt
+contract, and at 90.2% of total funding it defines Bank Muamalat's structure regardless of what happens on the asset
+side. <span class="tag obs">OBS</span> An investment account is different in kind: the account holder is rab
+al-māl, shares in the profit under an agreed ratio, and — this is the point — absorbs loss. Converting the funding
+base from deposit-led to investment-led is the single change that alters what the institution fundamentally is.</p>
+
+<div class="verdict">
+  <strong>And here the doctrine and the spreadsheet agree, which almost never happens.</strong> Recall the commercial
+  problem identified in the companion consolidation brief: Bank Muamalat has only 12% retail funding, a 47%
+  concentration in its top twenty depositors, and 90.2% deposit dependence — an expensive, fragile, wholesale-weighted
+  funding base that compresses margin. Investment accounts sourced through retail channels are granular, longer-dated
+  and cheaper, because the holder is paid a share of actual profit rather than a promised rate.
+  <br><br>
+  So the most doctrinally coherent action available is also the most commercially valuable one. A bank that converts
+  its funding base is doing the right thing by the contract and fixing its cost of funds in the same transaction.
+  There is no tension to manage here. That is rare enough to be worth building a strategy on.
+  <span class="tag int">INT</span>
+</div>
+
+<p><strong>Target:</strong> investment accounts from a side product to the primary funding instrument — above 40% of
+total funding within five to seven years. <span class="tag int">INT</span> Three conditions have to be built for
+this to work rather than to backfire:</p>
+<ul>
+  <li><strong>Investors must understand they can lose capital.</strong> This is a disclosure and conduct obligation,
+  not a marketing line. Mislabelling investment accounts to retail customers to grow the number faster would be the
+  worst possible outcome — it converts a doctrinal improvement into a consumer-protection failure.</li>
+  <li><strong>Profit-sharing ratios must be disclosed honestly</strong>, not smoothed to look like a deposit rate.
+  Smoothing defeats the purpose and is detectable in the ratio history.</li>
+  <li><strong>Maturity and liquidity must suit the assets.</strong> Investment accounts funding long-dated
+  risk-sharing assets is coherent; using them to fund short-cycle lending reintroduces a mismatch that the
+  framework is not designed for.</li>
+</ul>
+
+<h3>Move 3 — The asset glide, flagship first</h3>
+<figure><img src="charts/c06_sector_map.png" alt="Sector selection"></figure>
+<p>Convert where the risk-sharing contract is also the better commercial contract. Converting where risk-sharing is
+economically inferior produces a subsidy, and subsidies get cut the first time earnings disappoint.</p>
+<ul>
+  <li><strong>Home financing — the flagship.</strong> One-third of the book, and the most visible single product a
+  household ever signs. The shift from tawarruq structures to <em>mushārakah mutanāqisah</em> — diminishing
+  partnership — is the clearest possible public statement that the model has changed, because the customer can see
+  it: the bank owns part of the house and gradually sells its share. The reasons Islamic banks are reluctant are
+  well documented and real: higher capital weight, legal and valuation complexity, and difficulty in a default.
+  Those are costs to be paid deliberately, not obstacles to be avoided.</li>
+  <li><strong>Sectors where uncertainty makes partnership superior.</strong> Halal industry and food security, and
+  waqf property development. Both have long horizons and cashflows that are genuinely unpredictable — precisely the
+  condition under which BNM itself says debt is unsuitable and equity-based contracts are a better fit. Climate
+  transition exposure belongs in the same list. i-CITA exists for exactly this purpose and should be used as a
+  funding and signalling channel.</li>
+  <li><strong>Where to leave as-is, and say so.</strong> Short-cycle working capital and predictable-cashflow
+  lending is where debt-form contracts perform a legitimate function. The disciplined position is to convert there
+  last, disclose that choice, and defend it — rather than attempting a wholesale migration that would either fail or
+  be faked.</li>
+</ul>
+<div class="callout">
+  <strong>Target:</strong> risk-sharing at 20–30% of financing over seven years, with a majority of <em>new</em>
+  home originations on mushārakah mutanāqisah by year five. Stated as a target, reported quarterly, audited
+  externally. <span class="tag int">INT</span>
+</div>
+
+<h3>Move 4 — Governance: the part that decides whether any of it is real</h3>
+<p>Everything above can be performed convincingly for a period without being true. Governance is the property that
+makes performance falsifiable. Four requirements:</p>
+<table>
+  <tr><th style="width:28%">Requirement</th><th>Current position</th><th>What has to change</th></tr>
+  <tr><td><strong>Shariah Committee independence</strong></td><td>Six members, board-appointed and renewed, chaired by Dr. Yusri Mohamad. <span class="tag obs">OBS</span></td><td>Fixed non-renewable terms for a portion of members; appointment process not controlled by management; explicit, exercised power to veto or withdraw a product line.</td></tr>
+  <tr><td><strong>Published fatwa rationale</strong></td><td>Resolutions not published with reasoning. <span class="tag void">VOID</span></td><td>Every material product approval published with the reasoning and any dissent. This is the cheapest credibility purchase available and nobody in the market makes it.</td></tr>
+  <tr><td><strong>External Shariah audit against a named standard</strong></td><td>Malaysian practice relies on SAC rulings as the governing reference. <span class="tag obs">OBS</span></td><td>Engage an external auditor against AAOIFI or an equivalently strict standard, publish the report, and accept the uncomfortable findings in it.</td></tr>
+  <tr><td><strong>Non-compliance income routing</strong></td><td>Disclosed in aggregate under Pillar 3. <span class="tag obs">OBS</span></td><td>Full disclosure of amount, source and destination — channelled to qardhul hasan, charity or social programmes, with a published annual reconciliation.</td></tr>
+</table>
+
+<div class="danger">
+  <strong>The ownership-concentration warning, and it is a warning from the regulator's own research.</strong>
+  The IFSB's 2026 stability report documents an Islamic banking crisis in which, in its own words, a single business
+  group acquired controlling stakes in five of ten full-fledged Islamic banks through multiple entities under common
+  control. That is a governance failure, not a doctrinal one, and it happened at scale.
+  <span class="tag obs">OBS</span>
+  <br><br>
+  Any consolidation that increases family or single-group control over an Islamic bank moves along the same axis.
+  The buffer is governance that does not depend on the owner's good judgement — independent committee terms,
+  published reasoning, external audit, published non-compliance routing. Those four things are what make an
+  institution able to say no to its own controlling shareholder, and that is the only sense in which governance here
+  is real rather than decorative.
+</div>
+
+<h3>Move 5 — Social finance as infrastructure, not as CSR</h3>
+<figure><img src="charts/c09_social_engine.png" alt="Social finance engine"></figure>
+<p>This is where Bank Muamalat has a genuine and under-used head start, and where the cheapest differentiation
+lives. It is already the first Islamic bank in the world and the first bank in Southeast Asia to join the Global
+Alliance for Banking on Values. Its Gold-i account automatically deducts zakat once the holding reaches haul and
+nisab and remits to the Islamic authorities. It has existing Shariah training capability spanning waqf, zakat and
+sadaqah. <span class="tag obs">OBS</span></p>
+<p>The move is to take the pieces it already owns and scale them into core infrastructure:</p>
+<ul>
+  <li><strong>A waqf engine.</strong> Permanent capital, waqf property development, asset-backed by construction.
+  This is the structural answer to the criticism that Islamic banks hold no real assets — build the book that
+  does.</li>
+  <li><strong>Zakat routing at regional scale</strong>, which the Gold-i account already demonstrates at small
+  scale, extended to the whole retail base.</li>
+  <li><strong>Qardhul hasan</strong> — benevolent loans without return — funded from Shariah non-compliance income
+  plus a fixed share of profit, and sized visibly enough that it is a number, not a gesture.</li>
+  <li><strong>Microfinance</strong> on the iTEKAD model, including protection takaful for micro-entrepreneurs.</li>
+  <li><strong>Maqasid reporting</strong>, third-party verified, covering wealth distribution, real-asset ownership
+  and social reach.</li>
+</ul>
+<p>A bank that publishes verified maqasid indicators alongside its financial statements is making a claim no
+competitor currently makes, and it is a claim that gets harder to fake every year it is repeated.</p>
+
+<!-- ============ CAPITAL ============ -->
+<h2 class="pagebreak">§5 &nbsp;The Capital Arithmetic — What Authenticity Costs</h2>
+<figure><img src="charts/c04_capital_sensitivity.png" alt="Capital sensitivity"></figure>
+<p>This is the section that turns an aspiration into a decision. Risk-sharing is not merely harder to operate than
+debt-based financing. It consumes far more regulatory capital, because the bank is holding an equity-type exposure
+rather than a receivable.</p>
+<p>The literature reports mushārakah and muḍārabah exposures attracting capital risk weights up to 400%, against
+substantially lower treatment for debt-based financing. <span class="tag obs">OBS</span> Applying that to Bank
+Muamalat's disclosed position — CET1 of 12.02%, shareholders' equity of RM3.23bn, implying risk-weighted assets of
+roughly RM26.9bn <span class="tag der">DER</span> — gives a simple and uncomfortable relationship:
+<strong>each RM1bn of financing converted to risk-sharing adds approximately RM3bn of risk-weighted assets and, at a
+15% CET1 target, roughly RM450m of new equity.</strong> <span class="tag der">DER</span></p>
+
+<table>
+  <tr><th style="width:30%">Conversion scale</th><th style="width:22%">Implied RWA</th><th>New CET1 needed at 15%</th></tr>
+  <tr><td>RM2bn risk-sharing added</td><td>≈RM32.9bn</td><td>≈RM1.7bn (from RM3.23bn equity → RM4.9bn)</td></tr>
+  <tr><td>RM5bn added</td><td>≈RM41.9bn</td><td>≈RM3.0bn</td></tr>
+  <tr><td>RM8bn added</td><td>≈RM50.9bn</td><td>≈RM4.4bn</td></tr>
+  <tr><td>RM10bn added</td><td>≈RM56.9bn</td><td>≈RM5.3bn</td></tr>
+</table>
+<p class="small">Derived. Illustrative sensitivity, not a forecast: it holds the asset base constant, assumes a flat
+400% risk weight on converted exposures, and takes 15% CET1 as the target. Actual required capital depends on the
+prevailing regulatory schedule, the portion of the exposure the bank retains, and collateral and guarantee
+mitigants.</p>
+
+<div class="verdict">
+  <strong>Three honest conclusions from this arithmetic.</strong>
+  <br><br>
+  <strong>First, the capital penalty is the single largest structural reason Islamic banks avoid risk-sharing</strong>
+  — larger than product complexity, larger than legal risk, larger than customer demand. Any serious conversion
+  programme is therefore partly a <em>regulatory</em> programme: arguing, with the IFSB's own 2026 findings as
+  support, for a capital treatment that recognises that equity-based financing is being penalised relative to the
+  debt-based structures the standard-setter has publicly described as hybrid-risk imitations.
+  <br><br>
+  <strong>Second, this is the price of the claim, and it should be stated as a price.</strong> A RM1.5–4.5bn capital
+  requirement is the difference between an authenticity strategy and an authenticity campaign. A bank that will not
+  find the equity has not decided to convert; it has decided to talk.
+  <br><br>
+  <strong>Third, it is affordable once, not twice.</strong> The capital has to be raised while the institution is
+  small. Attempting it after a merger at RM110bn scale multiplies both the amount and the political difficulty.
+  <span class="tag int">INT</span>
+</div>
+
+<!-- ============ SEQUENCE ============ -->
+<h2>§6 &nbsp;Sequence, and the Merger Question</h2>
+<figure><img src="charts/c05_glidepath.png" alt="Glide path"></figure>
+<figure><img src="charts/c12_sequence.png" alt="Sequence contrast"></figure>
+
+<div class="danger">
+  <strong>The most important instruction in this document: convert first, scale second.</strong>
+  <br><br>
+  Every instinct in a consolidation story says the opposite — get big, then reform from strength. On this specific
+  question the instinct is backwards, for three concrete reasons.
+  <br><br>
+  <strong>One.</strong> A larger debt-based book is a larger conversion problem, not a better-funded one. After a
+  merger the legacy mix is roughly what it was, weighted toward whichever partner's book was bigger, and the
+  conversion now has to be done across two underwriting cultures, two legacy systems and a combined branch network.
+  <br><br>
+  <strong>Two.</strong> Scale entrenches the incentive structure that produced the mix. A RM110bn bank is measured by
+  volume, ROE and market share, quarterly. Every one of those measures rewards the debt-based engine and penalises
+  a risk-sharing book that earns less, consumes more capital and takes longer to season. Once that measurement
+  regime is in place, the conversion programme is competing against the institution's own performance management.
+  <br><br>
+  <strong>Three.</strong> A merger is a political event, and after it every doctrinal tightening becomes politically
+  expensive. "You are shrinking the national champion" is a harder sentence to answer than "you are shaping a bank".
+  <span class="tag int">INT</span>
+</div>
+
+<h3>6.1 The paradox worth holding</h3>
+<p>The companion brief found that Bank Muamalat is unsellable in practice — 18 years of an unmet pare-down condition,
+10 failed attempts, one closed transaction in the entire lineage. It also found that the bank is 32.1% of its
+parent's pre-tax profit and worth more than the parent's entire market capitalisation, which is the reason the
+pare-down never happens.</p>
+<p>For this question, that deadlock reads differently. <strong>The only structural feature that makes a
+risk-sharing conversion survivable is precisely the feature that makes the bank unsellable: a controlling owner who
+can accept a lower return for ten years.</strong> A listed bank answering to quarterly expectations cannot run this
+programme. An EPF-controlled institution with a statutory annual distribution obligation cannot run it. A
+state-owned vehicle exposed to political cycles cannot run it easily. A family holding company that has already
+demonstrated, across eighteen years, a willingness to hold an underperforming banking asset rather than sell it at
+a price it dislikes, can. <span class="tag int">INT</span></p>
+<p>That is a genuinely counter-intuitive finding, and it cuts against the instinct to read the deadlock purely as a
+failure. It may be the one condition under which the conversion is possible at all.</p>
+
+<h3>6.2 If a merger proceeds anyway — three conditions</h3>
+<ol>
+  <li><strong>Control must sit with the party that can hold a long horizon and pay for it.</strong> That means
+  accepting a lower near-term ROE explicitly, in the transaction documents, not in a press release.</li>
+  <li><strong>The partner's book must not be predominantly tawarruq</strong>, or the exercise consolidates the
+  replica rather than converting it. This should be a due-diligence criterion, stated publicly, not an afterthought.</li>
+  <li><strong>Capital must be committed at announcement</strong>, not at some later point conditional on
+  performance. A risk-sharing balance sheet needs loss-absorbing equity from day one; a conversion funded on the
+  promise of future capital is a conversion that will be reversed in the first bad quarter.</li>
+</ol>
+
+<!-- ============ FAILURE ============ -->
+<h2 class="pagebreak">§7 &nbsp;Failure Modes — How This Usually Ends</h2>
+<figure><img src="charts/c10_failure_modes.png" alt="Failure modes"></figure>
+<table>
+  <tr><th style="width:22%">Failure mode</th><th style="width:9%">Prob.</th><th>Mechanism and the tell that would reveal it early</th></tr>
+  <tr><td><strong>Replica at scale</strong></td><td>45%</td><td>Announced as an Islamic mega-bank; the book stays debt-based; the label grows and the substance does not. <em>Tell:</em> no published contract-level baseline within the first year — because publishing it would expose the starting position. <span class="tag int">INT</span></td></tr>
+  <tr><td><strong>Doctrine as marketing</strong></td><td>25%</td><td>Risk-sharing launched as flagship products while the balance sheet mix is unchanged. <em>Tell:</em> targets expressed in products launched and awards won rather than in share of financing, and no third-party audit. <span class="tag int">INT</span></td></tr>
+  <tr><td><strong>Capital strangle</strong></td><td>18%</td><td>The mix genuinely shifts, but equity is not raised to match. Growth stalls, ROE disappoints, the programme is reversed on financial grounds within two years. <em>Tell:</em> risk-sharing share rising while the capital plan is unchanged. <span class="tag int">INT</span></td></tr>
+  <tr><td><strong>Governance capture</strong></td><td>7%</td><td>Committee becomes advisory in form: rationale unpublished, independent members not renewed, product veto theoretical. <em>Tell:</em> a product launched against a minority committee view with no disclosure of the dissent. <span class="tag int">INT</span></td></tr>
+  <tr><td><strong>Genuine conversion</strong></td><td>5%</td><td>Funding converted, home financing migrated, maqasid verified — a genuinely different institution, earning less, measuring differently, and able to prove it. <span class="tag int">INT</span></td></tr>
+</table>
+
+<div class="callout">
+  <strong>The highest-value observation in this table.</strong> Three of the four likely failure modes are capital
+  and marketing failures, not doctrinal ones. That means the scarce inputs are not sincerity, scholarly support, or
+  even demand — they are <em>sequencing discipline, capital, and the willingness to publish unflattering numbers.</em>
+  This is an execution problem wearing religious clothing, and it should be planned as one.
+</div>
+
+<!-- ============ METRICS ============ -->
+<h2>§8 &nbsp;How Anyone Would Know It Is Real</h2>
+<figure><img src="charts/c11_dashboard.png" alt="Metric dashboard"></figure>
+<p>An authenticity claim that cannot be measured, and is not verified by someone with the standing to say no, is
+marketing. Each measure below is chosen because it is externally auditable, comparable over time, and would be
+genuinely uncomfortable to publish if the answer were bad. That last property is what makes it a measure rather
+than a metric.</p>
+<table>
+  <tr><th style="width:24%">Measure</th><th style="width:15%">Today</th><th style="width:19%">Destination</th><th>Why it survives audit</th></tr>
+  <tr><td>Risk-sharing share of financing</td><td>~1–3% (estimated)</td><td>20–30%</td><td>Computable from the financing note in the accounts. Hard to manipulate without misclassifying contracts, which an external Shariah auditor would catch.</td></tr>
+  <tr><td>Investment accounts as share of funding</td><td>Minor</td><td>&gt;40%</td><td>Already a Pillar 3 line item. The directional change is unambiguous and visible quarter to quarter.</td></tr>
+  <tr><td>Maqasid impact indicators</td><td>None published <span class="tag void">VOID</span></td><td>Annual, third-party verified</td><td>The indicator set and methodology are published in advance, so the result cannot be chosen after the fact.</td></tr>
+  <tr><td>Shariah Committee independence</td><td>6 members, board-appointed</td><td>Fixed terms, published rationale, exercised veto</td><td>Observable from governance disclosures and the record of products withdrawn or declined.</td></tr>
+  <tr><td>Shariah non-compliance income routing</td><td>Aggregate disclosure</td><td>Amount, source, destination, reconciled annually</td><td>Traceable to receiving institutions. An aggregate line cannot hide a routing decision.</td></tr>
+  <tr><td>Real-asset linkage ratio</td><td>Not disclosed <span class="tag void">VOID</span></td><td>Published</td><td>Directly addresses the substantive criticism of the industry and is independently verifiable from the exposure notes.</td></tr>
+  <tr><td>Qardhul hasan book</td><td>Not material</td><td>Funded from non-compliance income + fixed profit share</td><td>A balance sheet number with a disclosed funding source. Gestures do not produce balances.</td></tr>
+</table>
+
+<!-- ============ FALSIFICATION ============ -->
+<h2>§9 &nbsp;Falsification and Monitoring</h2>
+<table>
+  <tr><th style="width:40%">Claim in this brief</th><th>What would disprove it</th></tr>
+  <tr><td>The binding constraint on risk-sharing is capital treatment, not demand</td><td>Evidence of substantial unmet retail or corporate demand for mushārakah-based products at prevailing pricing, or a bank converting successfully without additional equity. If demand is the real constraint, the sequencing changes materially.</td></tr>
+  <tr><td>Deposit-to-investment-account conversion is the highest-leverage single move</td><td>A bank that converts its asset book to risk-sharing while leaving funding deposit-led, and sustains it. That would show the funding side is less decisive than argued here.</td></tr>
+  <tr><td>Converting before scaling is materially easier than after</td><td>A post-merger conversion executed successfully at scale with the legacy mix intact. There is no recent example; if one appears, this instruction should be revisited.</td></tr>
+  <tr><td>No Malaysian bank publishes maqasid indicators</td><td>A published, third-party-verified maqasid report from any licensed Malaysian Islamic bank. This is a factual claim with a short shelf life and should be re-tested annually.</td></tr>
+  <tr><td>Family control is a comparative advantage for a long-horizon conversion</td><td>A listed or EPF-controlled Islamic bank executing a sustained multi-year risk-sharing conversion. That would show the horizon argument is not binding.</td></tr>
+</table>
+<h4>Monitoring list</h4>
+<ol>
+  <li><strong>BNM Annual Report and Financial Stability Review</strong> — any change to risk weights or capital treatment for equity-based financing. This is the single most important watch item. <span class="tag obs">OBS</span></li>
+  <li><strong>BNM Investment Account and Shariah Contract Framework policy documents</strong> — the ongoing review outcome will define the space available. <span class="tag obs">OBS</span></li>
+  <li><strong>i-CITA deployment</strong> — how much of the RM100m matching facility is actually drawn, and by whom. Deployment is the evidence that risk-sharing demand exists at scale. <span class="tag obs">OBS</span></li>
+  <li><strong>Bank Muamalat's annual report and Pillar 3</strong> — investment accounts as a share of funding; any published contract-level breakdown; Shariah Committee terms and composition. <span class="tag obs">OBS</span></li>
+  <li><strong>IFSB publications</strong> — whether the 2026 hybrid-risk finding converts into standards or guidance. <span class="tag obs">OBS</span></li>
+  <li><strong>The single best tell:</strong> whether Bank Muamalat ever publishes the contract-level breakdown of its own book. Nothing else in this document is as diagnostic. A bank serious about authenticity will publish it early and at its worst. <span class="tag int">INT</span></li>
+</ol>
+
+<!-- ============ COUNTER ============ -->
+<h2>§10 &nbsp;The Counter-Narrative — The Case for Tawarruq Pragmatism</h2>
+<p>Mandatory falsification of my own framing. Here is the strongest version of the opposing case, stated properly.</p>
+<ul>
+  <li><strong>"The Malaysian SAC position is a legitimate scholarly position, and this brief is smuggling a
+  preference in as an analysis."</strong> Partly fair. This brief takes no fatwa position, but it does treat
+  risk-sharing share as the measure of authenticity, which is itself a choice. A scholar could reasonably argue
+  that a bank fully compliant with the SAC framework — including tawarruq under its published parameters — is fully
+  Shariah-compliant, full stop, and that measuring "authenticity" by contract mix is a modern and arguably
+  economistic framework imposed on a juristic question. <span class="tag fqh">FIQH</span>
+  <br><em>Response:</em> accepted, and that is why the brief frames this as <em>the institution's stated ambition</em>
+  rather than as an objective ranking. If the ambition is stated as "the largest Islamic bank, fully compliant", the
+  tawarruq-heavy path closes it. If the ambition is "risk-sharing", the path above is required. The brief is honest
+  about which ambition it is serving.</li>
+
+  <li><strong>"Customers don't want it."</strong> Retail customers overwhelmingly want predictable monthly payments.
+  Investment accounts redistribute risk to households that may be less able to bear it than a bank with capital
+  buffers. Selling loss-bearing products to retail savers is arguably a consumer-protection regression dressed as
+  doctrinal purity.
+  <br><em>Response:</em> this is the strongest objection in the list, and it is why Move 2 names disclosure and
+  conduct as conditions rather than afterthoughts. The answer is not to hide the risk but to segment honestly:
+  investment accounts for those who can bear loss, deposit products for those who cannot, with clear disclosure of
+  which is which. Any programme that blurs that line should be stopped.</li>
+
+  <li><strong>"Scale requires homogenised, standardised, low-friction products"</strong> — the exact properties
+  risk-sharing lacks. The Malaysian economy has 3.5% financing growth and thin margins; a bank that deliberately
+  earns less is a bank that will be out-competed and eventually acquired or wound down.
+  <br><em>Response:</em> partly true, and it is precisely why the family-control structure matters — it is the only
+  ownership form that can absorb a lower return for a decade. If that structure is removed, this programme becomes
+  materially less viable and the brief's sequencing recommendation weakens with it.</li>
+
+  <li><strong>"The social-finance emphasis is mission drift, not retail banking."</strong> Waqf, zakat and qardhul
+  hasan are religious institutions, not bank products; a bank that builds its identity on them is competing on
+  something other than banking.
+  <br><em>Response:</em> arguably correct as a banking strategy and irrelevant to the stated ambition — an
+  institution claiming maqasid consequence must be able to show consequence. Bank Muamalat already operates these
+  functions. The question is whether they scale or remain decoration.</li>
+
+  <li><strong>"BNM's i-CITA and the IFSB report are about financial stability and market development, not about
+  doctrinal authenticity."</strong> They are being read here as support for a theological ambition they were not
+  written to serve.
+  <br><em>Response:</em> correct as a caution, and the brief cites them narrowly — as evidence that the direction of
+  travel has regulatory backing and money attached, not as doctrinal endorsement. That citation is defensible and
+  should not be stretched further than it goes.</li>
+</ul>
+
+<!-- ============ CONCLUSIONS ============ -->
+<h2 class="pagebreak">§11 &nbsp;Conclusions</h2>
+<ol>
+  <li><strong>The ambition is coherent but the industry's current form is not a template for it.</strong> A merger
+  executed now would scale a structure that is roughly 90% debt-based. It would make the largest version of what the
+  question is trying to move away from. <span class="tag obs">OBS</span></li>
+
+  <li><strong>Authenticity translates into four observable properties:</strong> risk-sharing share, real-asset
+  linkage, loss-bearing funding, and verified maqasid consequence. Anything not expressed in those terms is a
+  statement, not a programme. <span class="tag int">INT</span></li>
+
+  <li><strong>The funding side comes first and it is the whole game.</strong> Deposit money is a debt contract; the
+  bank bears the loss. Investment-account money is not. Moving from one to the other changes what the institution is,
+  and simultaneously fixes the 12%-retail / 47%-top-twenty-concentration weakness. Doctrine and economics point the
+  same way. <span class="tag int">INT</span></li>
+
+  <li><strong>Home financing is the flagship and the hardest migration.</strong> One-third of the book, the most
+  visible household contract, and the clearest visible proof of change — which is why it must be undertaken rather
+  than piloted indefinitely. <span class="tag obs">OBS</span></li>
+
+  <li><strong>Then convert by sector, choosing where risk-sharing is also the better commercial contract:</strong>
+  halal and food security, waqf property, climate transition. Defend debt-form lending in short-cycle working capital
+  openly rather than pretending it will be converted. <span class="tag int">INT</span></li>
+
+  <li><strong>Governance decides whether any of it is real:</strong> independent committee terms, published fatwa
+  reasoning, external audit against a named standard, full non-compliance income routing. Four items, all cheap, and
+  none of them currently in place across the market. <span class="tag int">INT</span></li>
+
+  <li><strong>Capital is the binding constraint, at roughly RM450m of new CET1 per RM1bn converted.</strong> This
+  makes the programme partly a regulatory argument for recalibrating risk weights on equity-based financing — an
+  argument the IFSB's own 2026 findings support. <span class="tag der">DER</span></li>
+
+  <li><strong>Sequence matters more than sincerity.</strong> Three of the four likely failure modes are capital and
+  marketing failures. Convert before scaling, and commit the capital at announcement rather than on performance.
+  <span class="tag int">INT</span></li>
+
+  <li><strong>The pare-down deadlock may be a precondition rather than a problem.</strong> The ownership structure
+  that makes the bank unsellable — a family holding company that has demonstrated an eighteen-year willingness to
+  hold an underperforming asset — is the only structure that can absorb a decade of lower returns. That is the most
+  counter-intuitive finding here and worth sitting with. <span class="tag int">INT</span></li>
+
+  <li><strong>The single most diagnostic act available is to publish the contract-level baseline.</strong> Not the
+  ambition, not the committee, not the products — the number. If that number is published early and it is bad, the
+  programme is real. If it is not published, nothing else in the programme can be verified, and the honest
+  expectation is a bigger replica. <span class="tag int">INT</span></li>
+</ol>
+
+<!-- ============ GAPS ============ -->
+<h2>§12 &nbsp;What This Brief Does Not Know</h2>
+<table>
+  <tr><th style="width:34%">Gap</th><th>Effect on the analysis</th></tr>
+  <tr><td>Bank Muamalat does not publish a contract-level breakdown of its financing book</td><td>Material. The 1–3% risk-sharing estimate is derived from book composition and product structure, not read from a disclosure. It could be somewhat lower or higher. This gap is itself the subject of Move 1.</td></tr>
+  <tr><td>The exact current risk-weight schedule applied to mushārakah and muḍārabah under BNM's capital framework</td><td>Moderate. The 400% figure comes from the literature and is used for direction and magnitude. If the prevailing schedule is materially lower, the capital requirement falls and the programme is easier — but the qualitative conclusion (risk-sharing is capital-penalised relative to debt) is robust across the range.</td></tr>
+  <tr><td>Whether retail demand exists for loss-bearing investment products at scale in Malaysia</td><td>Material and genuinely uncertain. i-CITA deployment data, once available, will be the first real evidence. This is the strongest open question in the document.</td></tr>
+  <tr><td>Private positions of shareholders, board and management on any of this</td><td>Unknown and unknowable. The brief substitutes disclosed governance structure and an eighteen-year outcome record for private information.</td></tr>
+  <tr><td>The financial-stability consequences of a larger risk-sharing book in a downturn</td><td>Under-examined here. The IFSB's own framing of hybrid risks cuts both ways: a genuinely risk-sharing book passes losses to funders in a stress event, which is the point, but it also means investment-account holders absorb losses in a system where they may not expect to.</td></tr>
+  <tr><td>Whether the social-finance engine can scale without becoming a compliance burden</td><td>Not assessed. Waqf and zakat administration involve state religious authorities and vary by state; scale may be legally complex.</td></tr>
+</table>
+
+<h3>Appendix A — Source ledger</h3>
+<ul class="small">
+  <li><strong>Bank Negara Malaysia</strong> — Annual Report 2025, chapter on promoting a progressive and inclusive
+  Islamic financial system (Islamic financing 48% of total financing; takaful participation 24.5%; RM148.6bn VBI
+  intermediation in 2024; i-CITA launch September 2025 with RM100m matching funds; Investment Account and Shariah
+  Contract Framework discussion paper review; iTEKAD and iTEKAD Protection). Tawarruq policy document (reissued
+  December 2018). Shariah Resolutions in Islamic Finance (2nd edition). Financial Sector Participants Directory.</li>
+  <li><strong>IFSB</strong> — Islamic Financial Stability Report 2026, "Emergence of Hybrid Risks in Islamic Banking"
+  (released 26 May 2026); press release; global IFSI assets approximately USD4.4tn in 2025; documented ownership-
+  concentration crisis in Islamic banking.</li>
+  <li><strong>Bank Muamalat Malaysia</strong> — Pillar 3 Disclosures, half year ended 30 June 2026 (CET1 12.020%,
+  total capital 17.867%, capital structure); Annual Report FY2024 (home financing 33.51% of gross financing;
+  Shariah Committee composition and chair); product disclosures (Ar Rahnu structured on tawarruq; Gold-i account with
+  automatic zakat on haul and nisab); GABV membership.</li>
+  <li><strong>MARC Ratings / RAM Ratings</strong> — Bank Muamalat rating affirmations and funding, liquidity and
+  asset-quality commentary (2026).</li>
+  <li><strong>Juristic sources</strong> — OIC Fiqh Academy, 17th session (2003), on organised and reverse tawarruq;
+  AAOIFI Shariah standards and governance standards; Kuala Lumpur Declaration on risk-sharing and the principle that
+  liability is inseparable from the right to profit.</li>
+  <li><strong>Academic and working-paper literature</strong> — commodity murabahah / tawarruq share of the Islamic
+  banking sector ("almost 90% or more"); Malaysian PLS financing proportions (mushārakah 0.23–0.71%, muḍārabah
+  0.12–0.40%, total 0.36–0.87%); Chong &amp; Liu (2009) and Nor &amp; Ismail (2020) on PLS at approximately 0.5% of
+  total financing; comparative study placing Malaysian PLS at up to 10–15% on a broader definition; literature on
+  the risk-weight treatment of equity-based financing and on the reluctance of Islamic banks to offer mushārakah
+  mutanāqisah; studies finding returns on Islamic banking products statistically indistinguishable from
+  conventional.</li>
+  <li><strong>Talent and capability</strong> — industry-association projections of 136 active Shariah Committee
+  members against an imminent requirement of 196, and projected practitioner deficits in the thousands.</li>
+  <li><strong>Other</strong> — The Edge Malaysia; The Star; Bernama; Bank Muamalat Atlas platform launch coverage.</li>
+</ul>
+
+<h3>Appendix B — Provenance and standing qualification</h3>
+<p class="small">Charts rendered from a single structured dataset; dataset, chart script and PDF hashes recorded in
+<strong>SHA256SUMS.txt</strong> alongside this document. Fetch timestamp: 15 September 2026 (UTC). All figures are as
+reported at their source dates and are not adjusted for subsequent events.</p>
+<div class="fiqh" style="margin-top:14px">
+  <strong>Standing qualification, restated.</strong> This document issues no fatwa and carries no religious
+  authority. Questions of contract permissibility, preference between contracts, and the correct ruling in any
+  particular case are matters for qualified scholars and for the Shariah Advisory Council, whose rulings are binding
+  in Malaysian law. Where this document identifies juristic divergence it does so as a documented fact of the
+  literature and the standards landscape, and expresses no view on which position is correct. Nothing here is
+  investment advice, a recommendation, a rating or a price target.
+</div>
+<div class="danger" style="margin-top:10px">
+  <strong>Constitutional frame.</strong> F2 (truth — every claim sourced or derived, estimates marked), F7 (humility —
+  limits and the standing qualification stated plainly), F9 (no intent attribution — outcomes and disclosed
+  positions only), F11 (auditability — full source ledger and hashes), F13 (sovereign product — an intelligence
+  artifact, not a policy directive).
+</div>
+
+</body>
+</html>

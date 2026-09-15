@@ -4,7 +4,7 @@ name: hermes-opencode-protocol
 owner: Hermes-Prime
 risk_tier: low
 version: 2.0.0
-description: >
+description: > [fed: tier=fed-agent-subagent, floors=[F01, F02, F04, F08, F11, F13], auto=T1, risk=low]
   Unified Hermes/OpenCode/OpenClaw governed intelligence protocol. Stage 777 FORGE
   execution under F1-F13 with 888_HOLD gates. Reversible-first, evidence-cite-or-UNKNOWN.
   BIJAKSANA: XML-tagged for Claude, numbered steps for Codex, imperative for Hermes.

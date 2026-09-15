@@ -4,7 +4,7 @@ name: asi-agentic-architecture
 owner: 555-ASI
 risk_tier: low
 version: 3.0.0
-description: >
+description: > [fed: tier=fed-reasoning-heavy, floors=[F08, F11, F04], auto=T1, risk=low]
   Class-level skill for designing sovereign agentic agents. 9-skill spine,
   3-agent model (Architect→Engineer→Auditor), 4 powers per agent,
   deterministic/isolation principles, VPS management spine.

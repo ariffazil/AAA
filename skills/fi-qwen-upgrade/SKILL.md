@@ -2,7 +2,7 @@
 id: fi-qwen-upgrade
 name: fi-qwen-upgrade
 version: 1.0.0
-description: "Atomic-swap upgrade of the Qwen Code release install (SHA256-verified, rollback-preserved). Use when Arif says 'upgrade qwen', 'qwen update', 'new qwen version', or when `qwen update` refuses with a misleading git-clone message."
+description: "Atomic-swap upgrade of the Qwen Code release install (SHA256-verified, rollback-preserved). Use when Arif says 'upgrade qwen', 'qwen update', 'new qwen version', or when `qwen update` refuses with a misleading git-clone message. [fed: tier=fed-agent-subagent, floors=[F1, F2, F11], risk=medium]"
 owner: 333-AGI
 risk_tier: medium
 floor_scope: [F1, F2, F11]

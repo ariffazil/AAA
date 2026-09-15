@@ -1,6 +1,6 @@
 ---
 name: emem-shared-memory
-description: Verifiable shared memory layer for multi-agent systems and Earth observation (emem.dev). Enables citing signed facts (emem:fact: tokens), offline receipt verification, and cross-agent A2A collaboration without vendor lock-in.
+description: Verifiable shared memory layer for multi-agent systems and Earth observation (emem.dev). Enables citing signed facts (emem:fact: tokens), offline receipt verification, and cross-agent A2A collaboration without vendor lock-in. [fed: tier=fed-agent-subagent]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---

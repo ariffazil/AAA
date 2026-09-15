@@ -1,0 +1,161 @@
+{
+  "$schema": "arifos.observability.dependency-graph.v1",
+  "ref": "ARIFOS::OBSERVABILITY_CONVERGENCE::P1",
+  "phase": 0,
+  "generated_by": "Hermes ASI (i-arif)",
+  "generated_at": "2026-09-15T05:45:00Z",
+  "mutations_performed": "none",
+  "live_edges": [
+    {
+      "id": "E1",
+      "from": "arifOS MCP runtime (arifosmcp/runtime/telemetry.py)",
+      "to": "NATS kabarkan-ingest",
+      "mechanism": "_get_nats() -> publishes via `nats` CLI subprocess (sync bridge; nats-py v2 is async-only)",
+      "subject": "kabarkan.ingest.<type>",
+      "verified": true,
+      "evidence": "stream kabarkan-ingest last_ts 2026-09-15T05:37:03Z"
+    },
+    {
+      "id": "E2",
+      "from": "NATS kabarkan-ingest",
+      "to": "kabarkan-worker (arifosmcp.runtime.observability.worker)",
+      "mechanism": "JetStream consumer kabarkan-worker-fresh",
+      "verified": true,
+      "evidence": "pending=0, delivered=193,128, ack=193,128"
+    },
+    {
+      "id": "E3",
+      "from": "kabarkan-worker",
+      "to": "PostgreSQL vault999 / observability.observations",
+      "mechanism": "batch merge (batch_max 50, poll 30s per systemd drop-in)",
+      "verified": true,
+      "evidence": "201,495 rows; 448/hr; newest span age < 5 min"
+    },
+    {
+      "id": "E4",
+      "from": "arifOS kernel :8088 /metrics",
+      "to": "Prometheus",
+      "mechanism": "scrape",
+      "verified": true,
+      "evidence": "Prometheus datasource configured in Grafana"
+    },
+    {
+      "id": "E5",
+      "from": "Prometheus",
+      "to": "Grafana :3000",
+      "mechanism": "datasource",
+      "verified": true,
+      "evidence": "1 dashboard: arifOS Nine-Signal Overview"
+    },
+    {
+      "id": "E6",
+      "from": "frame-organ :18085",
+      "to": "federation organs (9)",
+      "mechanism": "GET /health over HTTP, 3s timeout",
+      "verified": true,
+      "evidence": "ORGAN_PORTS has 9 entries; trend organs_total=9"
+    },
+    {
+      "id": "E7",
+      "from": "frame-probe.timer",
+      "to": "frame-organ GET /frame/probe",
+      "mechanism": "systemd timer, 15 min",
+      "verified": true,
+      "evidence": "installed 2026-09-15T13:32; trend 22 -> 24 lines, 3 points in last 30 min"
+    },
+    {
+      "id": "E8",
+      "from": "frame-organ",
+      "to": "/var/lib/frame/trends.jsonl",
+      "mechanism": "append_trend() — ONLY code path that writes the series",
+      "verified": true,
+      "evidence": "main.py line 113 inside the /frame/probe handler"
+    },
+    {
+      "id": "E9",
+      "from": "arifOS organ_heartbeat_daemon.py",
+      "to": "NATS arifos-organs",
+      "mechanism": "publish subject arifos.organ.>",
+      "verified": true,
+      "evidence": "stream last_ts 2026-09-15T05:37:13Z"
+    },
+    {
+      "id": "E10",
+      "from": "/root/scripts/zen/kabarkan-publish.py",
+      "to": "NATS kabarkan.ingest.metrics",
+      "mechanism": "consumes /root/scripts/map-atlas-echo.py state JSON, publishes institution metrics (no parallel computation)",
+      "verified": true,
+      "evidence": "subject constant NATS_SUBJECT = 'kabarkan.ingest.metrics'; corresponds to the 225 rows with model_name='deterministic' and verdict_class='METRICS_READING'"
+    },
+    {
+      "id": "E11",
+      "from": "kabarkan-health.service (127.0.0.1:18902)",
+      "to": "Postgres observability.observations + NATS",
+      "mechanism": "read-only aggregate query; exposes ingestion rate, worker lag, queue depth, DB latency, last span age",
+      "verified": true,
+      "evidence": "started 2026-09-15T13:41:48+08; reports total_observations=201,554"
+    },
+    {
+      "id": "E12",
+      "from": "FRAME probe chamber :18085",
+      "to": "kabarkan :18902",
+      "mechanism": "ORGAN_PORTS['kabarkan'] = 18902, GET /health",
+      "verified": true,
+      "evidence": "trend point 2026-09-15T05:42:13Z reports organs_up=10, organs_total=10"
+    }
+  ],
+  "edges_added_after_initial_audit": {
+    "note": "E10-E12 were discovered in a second pass at 13:44 (+08) after finding the kabarkan-observability skill and a filesystem sweep. E11/E12 were created by a CONCURRENT SESSION at 13:41:48, after this graph's first measurement pass.",
+    "concurrency_event": "two sessions mutated the same observability plane within nine minutes with no lock or claim — see failure graph F-013"
+  },
+  "declared_but_absent_edges": [
+    {
+      "id": "X1",
+      "declared": "A-FORGE -> NATS (kabarkan.ingest.span.<tool>)",
+      "artifact": "/root/A-FORGE/kabarkan/patch_telemetry.py",
+      "status": "NEVER_WIRED",
+      "evidence": "_publish_to_nats occurrence count = 0 in every A-FORGE telemetry.py; patch authored 2026-09-12 and unapplied"
+    },
+    {
+      "id": "X2",
+      "declared": "arifFlow -> Kabarkan",
+      "artifact": "arifFlow/src/governance/kabarkan.rs (KabarkanTracer)",
+      "status": "DEAD_CODE",
+      "evidence": "referenced only from scheduler.rs; arifFlow AGENTS.md states the BSP scheduler is 'compiled but not invoked from daemon'. No arifflow actor in observations."
+    },
+    {
+      "id": "X3",
+      "declared": "Senders -> otelcol OTLP :4318/:4319 -> Langfuse",
+      "artifact": "/root/forge_work/kabarkan/kabarkan-collector.yaml",
+      "status": "ZERO_TRAFFIC",
+      "evidence": "no otelcol_receiver_accepted_* and no otelcol_exporter_sent_* families exposed on :8888; uptime 13.2 d before 2026-09-15 restart"
+    },
+    {
+      "id": "X4",
+      "declared": "kabarkan-worker -> MinIO cold archive (>90 days)",
+      "artifact": "arifosmcp/runtime/observability/worker.py _archive_to_s3()",
+      "status": "STUB",
+      "evidence": "docstring: 'Not yet implemented — requires aioboto3 or minio-py'"
+    },
+    {
+      "id": "X5",
+      "declared": "observability.observations -> Grafana",
+      "artifact": "Grafana datasources",
+      "status": "ABSENT",
+      "evidence": "datasources = Prometheus, Infinity(url=http://169.254.169.254). Nothing reads observations."
+    },
+    {
+      "id": "X6",
+      "declared": "NATS arifos-organs -> verifier",
+      "artifact": "consumers probe / verifier",
+      "status": "ORPHAN_CONSUMER",
+      "evidence": "both pending=29,327 delivered=0 ack=0; no systemd unit named verifier exists"
+    }
+  ],
+  "critical_path": "arifOS telemetry -> NATS kabarkan-ingest -> worker -> Postgres observations -> [NO CONSUMER]",
+  "single_points_of_failure": [
+    "NATS :4222 (all ingest funnels here; no fallback publisher)",
+    "kabarkan-worker (no health surface on :18902; failure is silent except by ledger staleness)",
+    "arifos-organs stream byte ceiling reached (discard=old actively destroying history)"
+  ]
+}

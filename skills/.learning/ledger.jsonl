@@ -3,3 +3,14 @@
 {"ts": "2026-09-14", "atom": "20260903T234234Z_FI-008_forge-subagent-spawn.json", "skill": "forge-subagent-spawn", "agent": "kimi-code/FI-008", "lesson_hash": "2c849af4ab25"}
 {"ts": "2026-09-15", "atom": "20260903T234234Z_FI-008_forge-verify-runtime.json", "skill": "forge-verify-runtime", "agent": "kimi-code/FI-008", "lesson_hash": "cee37fe0ecb2"}
 {"ts": "2026-09-15", "atom": "20260915T222520+0800_ATOM-16e14366aee9.json", "skill": "FORGE-verify-runtime", "agent": "hermes-rsi-loop", "lesson_hash": "5feee61c8f72"}
+{"ts": "2026-09-15", "atom": "20260915T222949+0800_ATOM-16e14366aee9.json", "skill": "FORGE-verify-runtime", "agent": "hermes-rsi-loop", "lesson_hash": "5feee61c8f72"}
+{"ts": "2026-09-15", "atom": "20260915T222955+0800_ATOM-16e14366aee9.json", "skill": "FORGE-verify-runtime", "agent": "hermes-rsi-loop", "lesson_hash": "5feee61c8f72"}
+{"ts": "2026-09-15", "atom": "20260915T224924+0800_ATOM-1de6bad74f91.json", "skill": "federation-organ-recovery", "agent": "hermes-rsi-loop", "lesson_hash": "586afed3f2ba"}
+{"ts": "2026-09-15", "atom": "20260915T224925+0800_ATOM-e9ee15301832.json", "skill": "federation-organ-recovery", "agent": "hermes-rsi-loop", "lesson_hash": "a50bf4ac4368"}
+{"ts": "2026-09-15", "atom": "20260915T224925+0800_ATOM-2e21ffeb3639.json", "skill": "federation-organ-recovery", "agent": "hermes-rsi-loop", "lesson_hash": "8f22bf87be06"}
+{"ts": "2026-09-15", "atom": "20260915T224925+0800_ATOM-cb807dfe4320.json", "skill": "federation-organ-recovery", "agent": "hermes-rsi-loop", "lesson_hash": "7b19f6b144c6"}
+{"ts": "2026-09-15", "atom": "20260916T005300Z_FI-003_aaa-musyawarah-execution.json", "skill": "aaa-musyawarah-execution", "agent": "fi-003-qwen-code", "lesson_hash": "0c37a247af92"}
+{"ts": "2026-09-15", "atom": "20260916T005300Z_FI-003_rsi-federation-mesh.json", "skill": "rsi-federation-mesh", "agent": "fi-003-qwen-code", "lesson_hash": "b4bd3dc9681c"}
+{"ts": "2026-09-15", "atom": "20260916T005300Z_FI-003_wisdom-reader.json", "skill": "wisdom-reader", "agent": "fi-003-qwen-code", "lesson_hash": "cc2a574c1433"}
+{"ts": "2026-09-15", "atom": "20260916T000708+0800_ATOM-b3dafde3cf14.json", "skill": "FORGE-verify-runtime", "agent": "hermes-rsi-loop", "lesson_hash": "3e4ba078549b"}
+{"ts": "2026-09-15", "atom": "20260916T000708+0800_ATOM-1f0fe44efe0a.json", "skill": "FORGE-verify-runtime", "agent": "hermes-rsi-loop", "lesson_hash": "d96a493ca44b"}

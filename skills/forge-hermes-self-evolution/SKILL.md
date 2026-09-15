@@ -1,6 +1,6 @@
 ---
 name: forge-hermes-self-evolution
-description: >
+description: > [fed: tier=fed-agent-subagent, floors=[F1, F2, F12, F13], auto=T3]
   Stage and operate Nous hermes-agent-self-evolution (DSPy + GEPA) against
   arifOS Hermes skills. Use when Arif says evolve a skill, GEPA, DSPy
   self-evolution, or hermes-agent-self-evolution. Never auto-writes live

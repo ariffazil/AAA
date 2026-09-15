@@ -1,0 +1,134 @@
+[smoke] server up pid=1910340  tools=7
+[smoke] ['numeric_audit_brief', 'numeric_audit_claim', 'numeric_check_units_scale', 'numeric_recompute_sensitivity', 'numeric_replay_derivation', 'numeric_rule_lookup', 'numeric_scope_check']
+
+==============================================================================
+T1  numeric_rule_lookup(figure_pct='400')  ->  what 400% actually covers
+    cafib.s2.86.diminishing_musyarakah.share_equity
+      scope : Diminishing Musharakah where the exposure consists of SHARE EQUITY IN AN ENTERPRISE - equity risk treatment (s
+      basis : category_dependent
+      cite  : BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21 §2.86(d) (2015-07-15) /root/AAA/numeric_audit/refs/cafib.txt:2154
+    cafib.s3.166.equity_position.simple_rw.other
+      scope : EQUITY POSITION RISK - simple risk weight method applied to ALL OTHER (non-publicly-traded) EQUITY HOLDINGS. T
+      basis : category_dependent
+      cite  : BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21 §3.166 (2015-07-15) /root/AAA/numeric_audit/refs/cafib.txt:6790
+    cafib.appV.specialised_financing.slotting
+      scope : SPECIALISED FINANCING - supervisory slotting criteria. Weights by supervisory category: Strong 70%, Good 90%, 
+      basis : category_dependent
+      cite  : BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21, Appendix V §App V para 8 (2015-07-15) /root/AAA/numeric_audit/refs/cafib.txt:18024
+    discriminator: Is the exposure an EQUITY HOLDING (non-publicly traded equity security in the banking book)? If yes -> 400% is in scope (simple risk weight method). If instead it is a specialised-...
+    matched=3
+
+==============================================================================
+T2  numeric_replay_derivation  ->  implied RWA + net-of-replacement step
+    implied_rwa_rm         rwa_from_ratio     ['3.23', '12.02']  =  26.87188
+    added_rwa_rm           rwa_from           ['1', '300']  =  3
+    added_rwa_check_rm     mul                ['1', '300']  =  300
+    total_rwa_rm           add                ['26.87188', '3']  =  29.87188
+    required_capital_rm    capital_from_rwa   ['29.87188', '15']  =  4.480782
+    new_capital_rm         sub                ['4.480782', '3.23']  =  1.250782
+    implied RWA from equity 3.23 / 12.02% = RM 26.87188 bn
+    RM1bn @ +300pp (net basis)            = RM 3 bn   [the raw product 'mul' gives 300 — unitless, not currency]
+
+==============================================================================
+T3  numeric_check_units_scale  ->  verdict=SCALE_ERROR
+    [P1] unit.percent_range: declared percent with value 400 > 100; check for a 100x scale error
+    [P0] unit.identity_conflict: same quantity_key 'bank.cet1_ratio' carries different values across claims: ['12.02', '0.1202'] (relative spread 99 > tol 0.005)
+    [P0] unit.identity_conflict: same quantity_key 'bank.equity' carries different values across claims: ['3.23', '3230'] (relative spread 999 > tol 0.005)
+    [P0] unit.thousand_fold: quantity_key 'bank.equity' differs by ~1000x: 3.23 vs 3230 — million/billion scale drift
+    [P0] unit.identity_conflict: same quantity_key 'rw.musyarakah' carries different values across claims: ['400', '40000'] (relative spread 99 > tol 0.005)
+    [P1] unit.basis_undeclared: ratio has no declared basis. A CET1 ratio divides CET1 CAPITAL; if it was derived from shareholders' equity the numerator is a different quantity and 
+    [P1] unit.basis_undeclared: ratio has no declared basis. A CET1 ratio divides CET1 CAPITAL; if it was derived from shareholders' equity the numerator is a different quantity and 
+    [P1] unit.basis_undeclared: ratio has no declared basis. A CET1 ratio divides CET1 CAPITAL; if it was derived from shareholders' equity the numerator is a different quantity and 
+    [P1] unit.basis_undeclared: ratio has no declared basis. A CET1 ratio divides CET1 CAPITAL; if it was derived from shareholders' equity the numerator is a different quantity and 
+
+==============================================================================
+T4a numeric_recompute_sensitivity @400% (brief's method) -> internal_consistency=MATCH
+    inc    added_RWA   implied_RWA   required_cap   new_capital   claimed(new_cap)
+    RM2     6           32.9          4.935          1.705         1.7
+    RM5     15          41.9          6.285          3.055         3.0
+    RM8     24          50.9          7.635          4.405         4.4
+    RM10    30          56.9          8.535          5.305         5.3
+    mismatches: []
+
+T4b numeric_recompute_sensitivity @IN-SCOPE weights (musyarakah §2.87: 100% public / 150% non-public equity holding)
+    weight 100%: marginal new CET1 per RM1bn = RM 0 bn   | new capital rows: ['0.805', '0.805', '0.805', '0.805']
+    weight 150%: marginal new CET1 per RM1bn = RM 0.075 bn   | new capital rows: ['0.955', '1.18', '1.405', '1.555']
+    marginal cost per RM1bn converted:  400% -> RM0.45bn  |  150% -> RM0.075bn  |  100% -> RM0bn
+
+==============================================================================
+T5  numeric_scope_check  ->  is 400% being applied inside its scope?
+
+    case: flat 400% on ALL converted risk-sharing financing (the brief's §5 claim)
+      verdict            : OUT_OF_SCOPE_FIGURE  (confidence DER)
+      in-scope weights   : ['20', '90']  ['20', '25', '30', '35', '40', '45', '60', '90']
+      overstatement      : 4.4444x vs max in-scope weight
+      reason             : 400% is a prescribed figure, but only under a scope the declared exposure does not satisfy. It has been borrowed from: Diminishing Musharakah where the exposure consists of SHARE EQUITY IN AN ENTERPRISE - equity risk treatment (see the simple risk weight method). / EQUITY POSITION RISK - simple risk
+      citation           : BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21 §2.86(d), 2015-07-15
+
+    case: flat 400% on generic converted musharakah/mudarabah FINANCING
+      verdict            : OUT_OF_SCOPE_FIGURE  (confidence DER)
+      in-scope weights   : ['100', '150']  ['100', '150']
+      overstatement      : 2.6667x vs max in-scope weight
+      reason             : 400% is a prescribed figure, but only under a scope the declared exposure does not satisfy. It has been borrowed from: Diminishing Musharakah where the exposure consists of SHARE EQUITY IN AN ENTERPRISE - equity risk treatment (see the simple risk weight method). / EQUITY POSITION RISK - simple risk
+      citation           : BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21 §2.86(d), 2015-07-15
+
+    case: 400% on a non-publicly-traded EQUITY HOLDING (legit use)
+      verdict            : IN_SCOPE_CONDITIONAL  (confidence DER)
+      in-scope weights   : ['400', '400']  ['400']
+      reason             : figure is in scope; conditions must be shown to be met.
+      citation           : BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21 §3.166, 2015-07-15
+
+    case: 150% on musyarakah project financing (the prescribed number)
+      verdict            : IN_SCOPE_CONDITIONAL  (confidence DER)
+      in-scope weights   : ['70', '400']  ['70', '90', '115', '150', '250', '400']
+      reason             : the figure is in scope for this exposure class, but the declared application basis discards the schedule the rule requires. Applying it flatly is a scope error even though the number itself is correct.
+      citation           : BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21 §2.87 fn41, 2015-07-15
+
+    case: 70% lowest slotting category applied flatly to specialised financing
+      verdict            : IN_SCOPE_CONDITIONAL  (confidence DER)
+      in-scope weights   : ['70', '400']  ['70', '90', '115', '250', '400']
+      reason             : the figure is in scope for this exposure class, but the declared application basis discards the schedule the rule requires. Applying it flatly is a scope error even though the number itself is correct.
+      citation           : BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21, Appendix V §App V para 8, 2015-07-15
+
+    case: 400% for a number that is in no registry clause at all
+      verdict            : FIGURE_NOT_IN_REGISTRY  (confidence UNVERIFIED)
+      in-scope weights   : ['100', '150']  ['100', '150']
+      reason             : figure is not a prescribed figure in the registry. An unregistered figure cannot be blessed by silence — it must be traced to a clause before use.
+
+==============================================================================
+T6  numeric_audit_claim  ->  brief figure vs corrected recomputation
+    new CET1 per RM1bn:  claimed RM450m  recomputed RM75m  rel_diff=5  -> ARITHMETIC_AND_SCOPE_FAIL
+    brief RWA row RM32.9bn vs recomputed RM32.87bn: rel_diff=0.000913 -> ARITHMETIC_OK_SCOPE_FAIL
+    (the brief's ARITHMETIC reproduces; the INPUT it consumed is out of scope.)
+
+==============================================================================
+T7  numeric_audit_brief  ->  VERDICT = NOT_ZERO_BLOCKER
+    BLOCKER SCOPE_OUT_OF_RANGE: {'label': 'all converted financing, flat 400%', 'figure_pct': '400', 'in_scope_weight_range_pct': ['20', '90'], 'overstatement_factor': '4.4444'}
+    BLOCKER ARITHMETIC_AND_SCOPE_FAIL: {'claimed': '0.45', 'recomputed': '0.075', 'unit': 'RM_bn'}
+
+==============================================================================
+REAL RECOMPUTATION — brief claim vs corrected range
+==============================================================================
+  claim   : risk-sharing exposures attract capital risk weights UP TO 400%,
+            applied FLATLY to all converted financing
+            -> ~RM3bn added RWA per RM1bn; ~RM450m new CET1 per RM1bn (15% target)
+  scope   : 400% is a prescribed figure, but CAFIB §3.166 defines it for
+            'all other EQUITY HOLDINGS' (simple risk weight method). For
+            musharakah the operative clause is §2.87:
+              100% publicly traded equity holding / 150% non-publicly traded
+              / 150% funds advanced to a joint venture (project financing)
+              / else supervisory slotting 70-400% (App V: 70/90/115/250/400,
+                where 400% is the DEFAULT category and needs a default finding)
+            A diminishing musharakah home financing post-wa'd is a CREDIT exposure
+            (CAFIB §2.86(c)) -> counterparty weights, SA2024 §23.12: 20/25/30/40/90%.
+
+  recomputed with the SAME brief inputs (base RWA 26.87, capital 3.23, target 15%):
+    @400% flat (claimed) : new CET1 per RM1bn = RM0.45bn
+    @150% (in scope)     : new CET1 per RM1bn = RM0.075bn
+    @100% (in scope)     : new CET1 per RM1bn = RM0bn
+
+  margin of error on the headline: the brief's flat 400% is 2.6667x the largest in-scope weight (150%) for generic risk-sharing financing, and 4.4444x the largest in-scope weight (90%) for diminishing-musharakah retail financing.
+  composite verdict: NOT_ZERO_BLOCKER
+==============================================================================
+
+[smoke] full result packet -> /root/AAA/numeric_audit/smoke_output.json

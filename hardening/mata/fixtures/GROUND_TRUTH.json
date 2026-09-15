@@ -1,0 +1,159 @@
+{
+  "generated_by": "build_testdata.py (original) + vision_gate hardening pass 2026-09-15",
+  "generator_sha256": "570e99483f6848952249edfe88fce483686036c492bbd31125545dd056b7ab7f",
+  "images": [
+    {
+      "path": "/root/AAA/hardening/mata/fixtures/img_a_shapes_text.png",
+      "sha256": "f90ada036b2d7d19a52ea9463992fe91d2a49ddc8a9a11c7448ade23c1826340",
+      "bytes": 16327,
+      "authored_by": "PIL ImageDraw (build_testdata.py)",
+      "ground_truth": {
+        "text": "ARIFOS-7731",
+        "text_alternatives_accepted": [
+          "ARIFOS-7731",
+          "ARIFOS 7731",
+          "ARIFOS-773I"
+        ],
+        "count_red_circles": 3,
+        "count_blue_squares": 2,
+        "absence_probes": [
+          "green triangle",
+          "yellow star",
+          "number 8",
+          "person",
+          "chart"
+        ],
+        "probe_questions": {
+          "text": "What exact text appears in this image?",
+          "red_circles": "How many FILLED RED CIRCLES are in this image? Answer with a single integer.",
+          "blue_squares": "How many FILLED BLUE SQUARES are in this image? Answer with a single integer.",
+          "absence": "Is there a GREEN TRIANGLE in this image? Answer yes or no only."
+        }
+      },
+      "sha256_recorded": "f90ada036b2d7d19a52ea9463992fe91d2a49ddc8a9a11c7448ade23c1826340",
+      "sha256_actual": "f90ada036b2d7d19a52ea9463992fe91d2a49ddc8a9a11c7448ade23c1826340",
+      "sha256_match": true
+    },
+    {
+      "path": "/root/AAA/hardening/mata/fixtures/img_b_number_caption.png",
+      "sha256": "f6d15fc74895996827bdeddbfa66db76cd6d6ba6f2f17aa2e5c90043f7b90ed4",
+      "bytes": 20463,
+      "authored_by": "PIL ImageDraw (build_testdata.py)",
+      "ground_truth": {
+        "number": "48200",
+        "number_value": 48200,
+        "caption": "balance due",
+        "count_red_circles": 0,
+        "count_blue_squares": 0,
+        "absence_probes": [
+          "red circles",
+          "blue squares",
+          "chart",
+          "graph",
+          "logo"
+        ],
+        "probe_questions": {
+          "number": "What is the large number shown in this image?",
+          "caption": "What is the small caption text below/under the number?",
+          "red_circles": "How many FILLED RED CIRCLES are in this image? Answer with a single integer."
+        }
+      },
+      "sha256_recorded": "f6d15fc74895996827bdeddbfa66db76cd6d6ba6f2f17aa2e5c90043f7b90ed4",
+      "sha256_actual": "f6d15fc74895996827bdeddbfa66db76cd6d6ba6f2f17aa2e5c90043f7b90ed4",
+      "sha256_match": true
+    },
+    {
+      "path": "/root/AAA/hardening/mata/fixtures/img_c_photo_crop.jpg",
+      "sha256": "e33558f384261e65ebd148120c08c08445356089339ce140dd1a8c6c7f8c2b5d",
+      "bytes": 33912,
+      "authored_by": "ffmpeg crop (build_testdata.py)",
+      "exact_command": "ffmpeg -y -loglevel error -i /var/www/html/syedos/syed-golden.jpg -vf crop=420:420:300:300 -q:v 2 /root/AAA/hardening/mata/testdata/img_c_photo_crop.jpg",
+      "crop_region": {
+        "source": "/var/www/html/syedos/syed-golden.jpg",
+        "source_size": [
+          1254,
+          1254
+        ],
+        "crop_w": 420,
+        "crop_h": 420,
+        "crop_x": 300,
+        "crop_y": 300,
+        "ffmpeg_filter": "crop=420:420:300:300",
+        "meaning": "420x420 px square, top-left corner at (x=300, y=300) of the 1254x1254 source"
+      },
+      "ground_truth": {
+        "image_type": "photographic crop (not a synthetic diagram, not a screenshot of text/source code)",
+        "nonexistent_text_probe": "ZZQ-419",
+        "count_red_circles": 0,
+        "count_blue_squares": 0,
+        "pixel_stats_mean_rgb": [
+          146.79,
+          93.03,
+          62.23
+        ],
+        "pixel_stats_quadrant_mean_rgb": {
+          "TL": {
+            "mean_rgb": [
+              59.38,
+              42.3,
+              28.66
+            ]
+          },
+          "TR": {
+            "mean_rgb": [
+              167.0,
+              103.0,
+              70.46
+            ]
+          },
+          "BL": {
+            "mean_rgb": [
+              176.07,
+              116.16,
+              75.03
+            ]
+          },
+          "BR": {
+            "mean_rgb": [
+              184.72,
+              110.66,
+              74.75
+            ]
+          }
+        },
+        "probe_questions": {
+          "describe": "Describe what is in this image. Is it a photograph, a chart, a screenshot of text, or source code?",
+          "red_circles": "How many FILLED RED CIRCLES are in this image? Answer with a single integer.",
+          "absent_text": "Does the text 'ZZQ-419' appear in this image? Answer yes or no only."
+        }
+      },
+      "sha256_recorded": "e33558f384261e65ebd148120c08c08445356089339ce140dd1a8c6c7f8c2b5d",
+      "sha256_actual": "e33558f384261e65ebd148120c08c08445356089339ce140dd1a8c6c7f8c2b5d",
+      "sha256_match": true
+    },
+    {
+      "path": "/root/AAA/hardening/mata/fixtures/img_d_control_zero_red.png",
+      "sha256": "2a5d4307c072ed20341a6896837c353ca392523d61a1787a97d8eb76b8534be4",
+      "bytes": 7330,
+      "authored_by": "PIL ImageDraw (build_testdata.py)",
+      "ground_truth": {
+        "text": "CONTROL",
+        "count_red_circles": 0,
+        "count_blue_squares": 0,
+        "present_shapes": [
+          "1 green square",
+          "1 yellow circle"
+        ],
+        "note": "Zero red pixels. Any lane answering 'red circles = N>0' is FABRICATING.",
+        "probe_questions": {
+          "red_circles": "How many FILLED RED CIRCLES are in this image? Answer with a single integer."
+        }
+      },
+      "sha256_recorded": "2a5d4307c072ed20341a6896837c353ca392523d61a1787a97d8eb76b8534be4",
+      "sha256_actual": "2a5d4307c072ed20341a6896837c353ca392523d61a1787a97d8eb76b8534be4",
+      "sha256_match": true
+    }
+  ],
+  "canonical_dir": "/root/AAA/hardening/mata/fixtures",
+  "source_of_truth_note": "Images are byte-identical copies of /root/AAA/hardening/mata/testdata/*. sha256 values below were re-verified against the copies in this directory AND against the sha256 recorded in VISION_INVENTORY.md \u00a71 / RESULTS.md. Ground truth is known from the AUTHORING script + a non-vision pixel scan (scipy.ndimage.label), never inferred from any model."
+}

@@ -1,0 +1,38 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF 1 1912A8BA9
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+22. FINANCIAL INSTRUMENTS (CONTINUED)
+Market risk (continued)
+Foreign exchange risk (continued)
+The Company’s significant exposure to foreign currency risk, based on carrying amounts as at the
+reporting date is as follows: :
+Denominated in GBP
+31.12.2025 31.12.2024
+GBP’000 USD’000 GBP’000 UsD’000
+Trade and other receivables 222,218 298,751 242,256 307,816
+Derivative assets 12,244 16,485 18,359 23,793
+Trade and other payables (218,009) (286,406) (243,167) (309,171)
+Derivative liabilities (4,291) (5,778) (18,374) (23,055)
+Cash and cash equivalents 9,237 12,437 49 62
+: Net exposure 21,399 35,489 (877) (555)
+Denominated in EUR
+31.12.2025 31.12.2024
+EUR’000 USD’000 EUR’000 USD’000
+Trade and other receivables 275 TAS 692 720
+Derivative assets - - (463) (481)
+Trade and other payables (42) 24 (22) (23)
+Derivative liabilities (3,790) (4,453) - -
+Cash and cash equivalents 49 57 197 205
+Net exposure (3,508) (3,627) 404 421
+Currency risk sensitivity analysis
+Sensitivity analysis for a given market variable provided in this note, discloses the effect on profit or
+loss and equity as at 31 December 2025 assuming that a reasonably possible change in the relevant
+market variable had occurred at 31 December 2025 and been applied to the risk exposures in
+existence at that date to show the effects of reasonably possible changes in price on profit or loss and
+equity to the next annual reporting date.
+Reasonably possible changes in market variables used in the sensitivity analysis are based on implied
+volatilities, where available, or historical data for equity and commodity prices and foreign exchange
+rates. Reasonably possible changes in interest rates are based on management judgement and
+historical experience.
+64

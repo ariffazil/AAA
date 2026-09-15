@@ -1,0 +1,43 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF 11912A8BA9
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+21. RELATED PARTIES DISCLOSURES (CONTINUED)
+Amount owed by at year end Amount owed to at year end
+2025 2024 2025 2024
+USD’000 USD’000 USD’000 USD’000
+Ultimate holding 6,248 5,255 435 632
+company
+Related companies 117,106 104,703 156,840 206,655
+Sales and purchase of goods includes sales and purchases of crude oil, petroleum products, LNG and
+natural gas. The sales and purchase of natural gas, third party trading of crude oil, petroleum products
+and fuel oil are included within the net trading income. Sales and purchase of services includes
+administration, marketing and sourcing fee, volume fee, optimisation fee, support service charges,
+management related fee and recharge of expenses. The Directors of the Company have the opinion
+that all transactions have been entered into in the normal course of business and have been established
+. on a commercial basis. Amounts owed by/to at year end includes derivative assets / liabilities
+positions with an associated company. Information regarding outstanding balance arising from
+. related transactions as at 31 December 2025 are disclosed in Note 7.1, 7.2, 10 and 12. The balances
+are not secured and usually settled by cash with payment terms of 30 days.
+22. FINAN CIAL INSTRUMENTS
+Categories of financial instruments
+The table below provides an analysis of financial instruments categorised as follows:
+(i) Fair value through profit or loss (‘FVTPL”)
+(ii) Amortised Cost (“AC”)
+31.12.2025 FVTPL AC Total
+Carrying
+Amount
+Note USD’000 USD’000 USD’000
+Financial assets
+Trade and other receivables* 7A - 298,251 298,251
+Derivative assets 12 9,944 - 9,944
+Cash and cash equivalents 8 - 97,458 97,458
+9,944 395,709 405,653
+Financial liabilities
+Trade and other payables 10 - 413,609 413,609
+Borrowings 11 - 2,645 2,645
+Lease liabilities 5 - 20,060 20,060
+Derivative liabilities 12 8,265 - 8,265
+Provisions 13 700 - 700
+8,965 436,314 445,279
+56

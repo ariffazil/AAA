@@ -1,0 +1,8 @@
+{
+  "skill_id": "federation-organ-recovery",
+  "agent": "hermes-rsi-loop",
+  "lesson": "SILENT_FAIL observed 3x \u2014 impact=session_error. First surface: session-trace:cron:cron_5a8cdae52298_20 \u2014 all four checks passed, but independence is NAME-LEVEL ONLY (same author) \u2014 verdict is PROVISIONAL: may enter the capability graph, may NOT record a survival event",
+  "evidence": "[{\"layer\": \"runtime\", \"source\": \"session-trace:cron:cron_5a8cdae52298_20\", \"excerpt\": \"Auto-traced session cron_5a8cdae52298_20260914_090032. 25 tool calls, 36% success. Errors: 16.\"}, {\"layer\": \"runtime\", \"source\": \"session-trace:cron:cron_5e9f3ba79969_20\", \"excerpt\": \"Auto-traced session cron_5e9f3ba79969_20260914_080030. 5 tool calls, 60% success. Errors: 2.\"}]",
+  "atom_id": "ATOM-cb807dfe4320",
+  "verified_by": "hermes-rsi-verifier"
+}

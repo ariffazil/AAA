@@ -1,0 +1,93 @@
+{
+ "https://api.bnm.gov.my/public/base-rate": {
+  "bytes": 5952,
+  "fetched_at_epoch": 1789484848.6877642,
+  "fetched_at_utc": "2026-09-15T15:07:28Z",
+  "http_status": 200,
+  "sha256": "f3678670fd5e8af538a1d8fda7da8123ad21838b54ccc4f1e0eb2b91f5de1a4f"
+ },
+ "https://api.bnm.gov.my/public/exchange-rate": {
+  "bytes": 4220,
+  "fetched_at_epoch": 1789484847.6703477,
+  "fetched_at_utc": "2026-09-15T15:07:27Z",
+  "http_status": 200,
+  "sha256": "0f9ee6e92455ce04f1e6c322af1a6e39c5c5a8912497b9d365e17e11c164f5f5"
+ },
+ "https://api.bnm.gov.my/public/opr": {
+  "bytes": 144,
+  "fetched_at_epoch": 1789484847.5205383,
+  "fetched_at_utc": "2026-09-15T15:07:27Z",
+  "http_status": 200,
+  "sha256": "bb7a2dc69bbd3ba33fc73cba24db65d981d8035cdb9f8101146acfa82a36c666"
+ },
+ "https://api.data.gov.my/data-catalogue?id=fuelprice&limit=1": {
+  "bytes": 203,
+  "fetched_at_epoch": 1789484848.7967992,
+  "fetched_at_utc": "2026-09-15T15:07:29Z",
+  "http_status": 200,
+  "sha256": "6a4ac555395ec37409af951367d5a9c2625ac39d874bda908ce7d86b73c7db89"
+ },
+ "https://api.data.gov.my/data-catalogue?id=fuelprice&limit=2": {
+  "bytes": 406,
+  "fetched_at_epoch": 1789484847.9123626,
+  "fetched_at_utc": "2026-09-15T15:07:28Z",
+  "http_status": 200,
+  "sha256": "92153ef586ab9e31a9e7e52af7b0f53bff938e5602d544390ad9900e3b63ebc2"
+ },
+ "https://api.data.gov.my/data-catalogue?id=ssm_company&limit=1": {
+  "bytes": 95,
+  "fetched_at_epoch": 1789484905.1296542,
+  "fetched_at_utc": "2026-09-15T15:08:25Z",
+  "http_status": 404,
+  "sha256": "dbbe4b3cc1a6bc08f3146f95b551a86534525573d1c017cea8a022e9db42f740"
+ },
+ "https://data.sec.gov/api/xbrl/companyfacts/CIK0000320193.json": {
+  "bytes": 3789099,
+  "fetched_at_epoch": 1789484847.2319689,
+  "fetched_at_utc": "2026-09-15T15:07:27Z",
+  "http_status": 200,
+  "sha256": "73a86c6aedc31f77cac2ea4df5f80f0b3bd7e6eb58bb4e01444fbedf3afb9c43"
+ },
+ "https://data.sec.gov/submissions/CIK0000320193.json": {
+  "bytes": 164091,
+  "fetched_at_epoch": 1789484847.1137474,
+  "fetched_at_utc": "2026-09-15T15:07:27Z",
+  "http_status": 200,
+  "sha256": "cb90ffafc5b6f997b60aa109e07008223ad35abe896ec7918fd43652b4057329"
+ },
+ "https://efts.sec.gov/LATEST/search-index?q=%22going+concern%22&forms=8-K": {
+  "bytes": 62038,
+  "fetched_at_epoch": 1789484848.2656205,
+  "fetched_at_utc": "2026-09-15T15:07:28Z",
+  "http_status": 200,
+  "sha256": "702c1693f52963001a1490ff15c42861385c48b34e6538986556be4ed1acf82f"
+ },
+ "https://efts.sec.gov/LATEST/search-index?q=%22material+weakness%22&forms=10-K": {
+  "bytes": 59157,
+  "fetched_at_epoch": 1789484846.49172,
+  "fetched_at_utc": "2026-09-15T15:07:26Z",
+  "http_status": 200,
+  "sha256": "0ab40dfafdeece29f214b5429ef1b5a7fbef41f86d1ef8c1ec4513ccf6e07b30"
+ },
+ "https://www.bursamalaysia.com/api/v1/announcements/announcements?ann_type=company&per_page=1&page=1": {
+  "bytes": 5834,
+  "fetched_at_epoch": 1789484849.167018,
+  "fetched_at_utc": "2026-09-15T15:07:29Z",
+  "http_status": 403,
+  "sha256": "2d5ff59282e70310a2ec98737e94de1075f4fb3d77c18a9cccd2498993418497"
+ },
+ "https://www.sec.gov/Archives/edgar/data/1386570/000165495420005725/cdxc10ka_12312019.htm": {
+  "bytes": 111993,
+  "fetched_at_epoch": 1789484849.2427177,
+  "fetched_at_utc": "2026-09-15T15:07:29Z",
+  "http_status": 200,
+  "sha256": "1b868b4ae9568a6cdacabb28ee01cb16f78853266a5c87a042b618fe8e4239dc"
+ },
+ "https://www.sec.gov/files/company_tickers.json": {
+  "bytes": 797759,
+  "fetched_at_epoch": 1789484846.9454463,
+  "fetched_at_utc": "2026-09-15T15:07:27Z",
+  "http_status": 200,
+  "sha256": "82cd5fd9ccffda811b93ba76070460dd41429c02c00e726f83deb71f553c6cff"
+ }
+}

@@ -1,12 +1,86 @@
 ---
 name: mimo-audio
-description: "FEDERATED Xiaomi MiMo v2.5 audio intelligence — TTS (0-credit free window), ASR (en/zh), voice design, voice clone (F13-gated). Available to ALL AAA agents via this canonical skill. Use when generating speech/voice notes, designing voices, or transcribing wav/mp3 (en/zh). BM/dialect stays on GLM/dashscope lanes. TRANSPORT: direct lane (litellm cannot carry audio bodies)."
+description: "FEDERATED Xiaomi MiMo v2.5 audio intelligence — TTS, ASR, voice design, voice clone (F13-gated). Use when generating speech/voice notes, designing voices, or transcribing audio. ⚠️ LANGUAGES: BM/MS TTS is BROKEN on the raw tts and voicedesign lanes — use voiceclone (or edge-tts / MiniMax) for Bahasa Malaysia. ASR is en/zh only. TRANSPORT: direct lane (litellm cannot carry audio bodies)."
 ---
 
 # MiMo Audio — federated organ (AAA canonical, 2026-09-07)
 
-**Status:** LIVE — re-verified end-to-end 2026-09-13 (FI-008 embed audit). TTS = 0 credits while the free window lasts.
+## 🛑 READ THIS FIRST — LANGUAGE CAPABILITY (hard-verified 2026-09-15, KVM8 af-forge)
+
+**Raw MiMo TTS does NOT speak Bahasa Malaysia. It produces fluent-sounding garbage.**
+Do not route BM/MS text to `mimo-v2.5-tts` or `mimo-v2.5-tts-voicedesign`. There is no
+style prompt, no voice choice, and no `--style` value that fixes it.
+
+Test phrase (all five lanes generated live, then transcribed by the **independent** gate
+`groq-stt --lang ms`, i.e. Groq whisper-large-v3-turbo — never by MiMo's own ASR):
+
+> TARGET: `Sini. Dekat sikit. Jangan malu. Aku dah nampak kau dari tadi.`
+
+| lane | independent Groq transcript | verdict |
+|---|---|---|
+| `mimo-audio tts --voice Milo` | `Sini, teka tsikit. Jangan malu. Akuda nam pak kaudari dadi.` | ❌ BROKEN |
+| `mimo-audio tts --voice Dean` | `Sini, dekat sekit. Jangan malu. Aku dah nampak kot dari tadi.` | ❌ BROKEN |
+| `mimo-audio tts --voice Mia` | `Sini, dekat sakit. Jangan malu. Aku ta nampak kodari tadi.` | ❌ BROKEN |
+| `mimo-audio tts --voice 苏打` | `Semi, dekat cik, zangga malu, aku, da, na, pa, kau, day, teh.` | ❌ BROKEN |
+| `mimo-audio tts --voice 白桦` | `Tehya da katsite dan gaung malu akuta nampa kaudiyati.` | ❌ BROKEN |
+| `mimo-audio design` (the "Penang path") | `Jadi, saya akan menghubungi saya untuk menghubungi saya.` | ❌ HALLUCINATED |
+| `mimo-audio clone --sample <Malay ref>` | `Sini dekat si kecil. Jangan malu. Aku dah nampak kau dari tadi.` | ✅ USABLE |
+| `edge-tts --voice ms-MY-YasminNeural` | `Sini. Dekat sikit. Jangan malu. Aku dah nampak kau dari tadi.` | ✅ EXACT |
+| `edge-tts --voice ms-MY-OsmanNeural` | `Sini. Dekat sikit. Jangan malu. Aku dah nampak kau dari tadi.` | ✅ EXACT |
+| `mmx speech synthesize --voice Indonesian_BossyLeader` | `Sini. Dekat sikit. Jangan malu. Aku dah nampak kau dari tadi.` | ✅ EXACT |
+
+**Rules that follow, and they are binding:**
+1. **BM text → `clone` (with a Malay reference sample), or `edge-tts` ms-MY, or MiniMax
+   `Indonesian_*` voices.** The MiMo **base TTS and voicedesign lanes are English/Mandarin
+   instruments** — treat raising them at BM as a known-wrong action.
+2. **`voicedesign` is the WORST BM lane**, not the best. It does not merely mispronounce —
+   it invents unrelated Malay. Any doc that recommends voicedesign for Penang/Malay dialect
+   is wrong; see the correction recorded in `references/` and in
+   `media/tts-edge-fallback/references/mimo-tts-api-quirks.md`.
+3. **`clone` is good but not guaranteed exact.** The 2026-09-15 run rendered "Dekat sikit"
+   as "dekat si kecil" — one word off, while the sentence stayed intact. Re-generate and
+   re-gate if a word matters. Do not advertise clone as verbatim.
+4. **NEVER use `mimo-audio asr` to judge BM audio quality.** It supports `auto|zh|en` only —
+   **no `ms`**. It garbled the edge-tts ms-MY control (`Sini, dekat sikit, jangan manu. Akhu
+   dah nampak kau dari tadi.`) that Groq Whisper transcribed **exactly**. A vendor ASR cannot
+   be the witness for the vendor's own TTS anyway: that is circular. Use `groq-stt --lang ms`.
+5. `mimo-audio asr` now emits a `language_caveat_INT` field on every `auto` run saying this.
+
+**The independent gate lives at `/root/scripts/groq-stt`** (also `/usr/local/bin/groq-stt`) —
+stdlib-only, no `requests` dependency, `--lang ms`. Keep ASR test clips under ~15 s; Groq is
+free but MiMo ASR bills 30 M credits/audio-hour.
+
+## ⚠️ Content filter on the clone lane — status CORRECTED 2026-09-15
+
+`mimo-v2.5-tts-voiceclone` has been observed returning, with **no audio**:
+
+```json
+{"finish_reason": "content_filter",
+ "message": {"content": "The request was rejected because it was considered high risk"}}
+```
+
+**Honest status: UNRESOLVED — not a settled "no" and not a settled "yes."** An earlier note in
+this skill claimed the filter "did not reproduce"; a later report held it live. On 2026-09-15 an
+explicitly flirty Malay line was sent to **both** the clone lane and the base TTS lane: both
+returned **HTTP 200 with full audio**, so the filter did **not** reproduce on that input. The
+trigger condition is therefore **unknown**, and the honest label is *intermittent / input-dependent*.
+
+What was actually fixed is the **failure mode**, which was worse than the filter: a refusal used
+to surface as a generic `no audio in response` truncated to 300 characters and exit code 2 —
+indistinguishable from a transport bug, so agents retried the same rejected text in a loop. The
+CLI now emits a distinct, greppable, **non-retryable** condition:
+
+```json
+{"ok": false, "error": "CONTENT_FILTER", "finish_reason": "content_filter",
+ "vendor_message": "The request was rejected because it was considered high risk",
+ "guidance": "The vendor refused this text on the audio lane. Do NOT retry the same text ..."}
+```
+exit code **3**. Handle it: rewrite the text, or route to edge-tts / MiniMax. Do not retry.
+
+Status: LIVE — re-verified end-to-end 2026-09-13 (FI-008 embed audit). TTS = 0 credits while the free window lasts.
+**Hardened 2026-09-15** — see "CLI defects fixed 2026-09-15" at the end of this file.
 **Env (every FI home + Hermes):** `MIMO_TOKEN_PLAN_API_KEY` + `MIMO_BASE_URL` (https://token-plan-sgp.xiaomimimo.com/v1); alias `MIMO_API_KEY`.
+
 **Anthropic wire:** `https://token-plan-sgp.xiaomimimo.com/anthropic` → `POST /v1/messages` (verified 2026-09-13: HTTP 200, real text + thinking block; auth accepted as either `x-api-key` or `Authorization: Bearer`).
 **Clusters:** sgp / cn / ams. The tp- key is **cluster-scoped** — the SGP key returns **401** on `-cn` and `-ams` (verified 2026-09-13). Never repoint a lane at another cluster without a key for that cluster.
 **Contracts SOT:** `/root/.config/federation-models.json` → `mimo/mimo-v2.5-*` (`api_contract`, `credit_model`, `cluster_endpoints`) + signatures `fed-realtime-voice` (WIRED_DIRECT_LANE) / `fed-audio-understanding`.
@@ -277,3 +351,38 @@ either repair the HAProxy↔`:4013` path, or replicate `pass_through_endpoints` 
 F13 lifted the MiMo↔i-arif ban 2026-09-13 (*"awat hang ban. bagi ada la"*). **Root cause corrected by
 the sovereign:** the 08-30 failure was **not the model** — it was the federation's own **MD files /
 system prompts (shadow)**. See `FED_GENESIS_MAP.md` → "UNBAN era".
+
+---
+
+## CLI defects fixed 2026-09-15 (KVM8 af-forge, `TELINGA` hardening)
+
+Every defect below was **reproduced live, patched in `/root/scripts/mimo-audio`, and
+re-verified by re-running the failing command**. `mimo-audio` is the single command every AAA
+agent uses; each of these was silently costing receipts, credits, or trust.
+
+| # | defect (reproduced) | fix | re-verify |
+|---|---|---|---|
+| 1 | **ASR cost meter blind.** `cost_DER_credits: null`, `audio_seconds_OBS: null` on *every* ASR call. The CLI read `usage.prompt_tokens_details.seconds`; the API returns `seconds` at the **top level** of `usage`. | read `usage["seconds"]`, keep the old path as fallback | 8 s clip → `cost_DER_credits: 66667`, `audio_seconds_OBS: 8` |
+| 2 | **`--out` with a subdirectory crashed.** `--out probes/x` joined onto `$MIMO_AUDIO_OUT` without creating the dir → `FileNotFoundError`; `--out /abs/x` silently escaped `OUT_DIR`. | `out_path()` honours absolute and separator-bearing paths and creates the parent | `--out verify/sub/dir_test` → `.../verify/sub/dir_test.wav` (69 164 B) |
+| 3 | **`--no-flow` was dead.** Every subparser did `set_defaults(no_flow=False)`, and argparse applies subparser defaults *last* — so the global flag was overwritten and never took effect. | subparsers no longer touch `no_flow` | `--no-flow` → no `arifflow` key; control → `ingested` |
+| 4 | **arifFlow receipts silently lost under load.** Daemon returns `HTTP 400 {"error":"EOF while parsing a value at line 1 column 0"}`. Isolated live: **20/20 sequential → 200**, **27/30 concurrent (8 workers) → 400 EOF**. Daemon-side concurrency defect; a *body shape* bug is ruled out (sequential is perfect). | 3 attempts with 0.25/0.7/1.5 s backoff on the 400-EOF signature only | 40 concurrent → **40 `ingested`, 0 lost** (11 recovered by retry) |
+| 5 | **`clone` had no `--text-file`** — long-form text had to be shell-quoted from a file (the classic silent-truncation pattern). `mmx` has the flag; this CLI did not. | `--text-file` added to `tts`/`design`/`clone`; `-` reads stdin | `clone --text-file /tmp/bm_short.txt` → 138 284 B WAV; `--text-file -` piped → works |
+| 6 | **`content_filter` was indistinguishable from a transport bug.** Generic `no audio in response`, 300-char truncation, exit 2 → agents retried a deliberate refusal. | dedicated `error: "CONTENT_FILTER"` receipt + exit code **3** + do-not-retry guidance | handler executed against the exact captured vendor body → exit 3, `error=CONTENT_FILTER` |
+| 7 | **`understand` returned `ok: true` with an EMPTY answer** while billing. With the default `--max-tokens 1024` the reasoning channel consumed the whole budget: `completion_tokens=1024`, `content_len=0`, `reasoning_len 3632–4038`, reproduced **3/3 runs**. | default `--max-tokens` → **4096**; empty `content` now recovers from `reasoning_content` labelled `content_INT_source: RECOVERED_FROM_REASONING_INT`; a truly empty answer sets `ok: false` | `understand` → `content_len 1578`, `finish_reason stop`, `content_INT_source message.content`, `completion_tokens 1960` |
+| 8 | **`clone` accepted `flac/m4a/ogg` reference samples** (`TTS_MIME \| UND_MIME`), formats the vendor lane rejects. | reference sample restricted to `wav\|mp3` (`ASR_MIME`) | lane-level; no regression on the wav path |
+
+### Not reproduced — do not repeat the claim
+
+- **`mmx speech synthesize` does NOT require `--base-url`.** It succeeded **without** it, in a
+  clean `env -i` shell with only `MINIMAX_API_KEY` set, and with `MINIMAX_API_HOST`/
+  `MINIMAX_BASE_URL` present. `--base-url` is a **global** `mmx` flag (documented in `mmx --help`,
+  *not* in `mmx speech synthesize --help`) and it parses fine both before and after the subcommand.
+  If an `mmx` call 404s, the cause is elsewhere — check the key and the model id.
+- **The voiceclone `content_filter`** — see the corrected section above. Intermittent; the
+  failure *mode* is what got fixed.
+
+### Repro harness
+
+`/root/forge_work/harden-20260915/audio/selftest-audio-stack.sh` re-runs the whole `TELINGA`
+sweep (all lanes, the BM pronunciation gate, the CLI defect regressions). Run it after any
+change to `mimo-audio`, `groq-stt`, the TTS skills, or the arifFlow daemon.

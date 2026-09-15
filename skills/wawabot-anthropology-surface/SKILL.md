@@ -2,7 +2,7 @@
 id: wawabot-anthropology-surface
 name: wawabot-anthropology-surface
 version: 1.4.0
-description: >
+description: > [fed: floors=[F2, F5, F6, F7, F9, F10, F13], auto=T1, risk=medium]
   WawaBot is the human-reality organ. Hermes consumes its packets
   (meaning, scar, trust, status) — it does not grow more IQ from WawaBot.
   Load when routing human-reality vs ops-reality, or designing the

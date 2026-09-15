@@ -1,7 +1,7 @@
 {
-  "version": "2026.09.13",
-  "last_audit": "2026-09-13T22:18:00+08:00",
-  "auditor": "FI-008 kimi-code — AUDIT_FIX_VERIFY_SEAL::2026-09-13 reality sweep (FLAME residue, systemd alignment, Hermes memory)",
+  "version": "2026.09.15",
+  "last_audit": "2026-09-15T15:14:00+08:00",
+  "auditor": "Hermes ASI subagent (VAULT999-SOT-RECONCILIATION::2026-09-15) — reconciled every path/env var that reads or writes VAULT999 seals on KVM8; fixed 4 stale consumers; 1 F13 proposal raised (lane + store consolidation)",
   "open_divergences": [
     {
       "id": "DIV-HERMES-BACKUP-GAP",
@@ -58,13 +58,43 @@
       "consequence": "No second agent can independently attest. FRAME is the designated independent observer yet is blind to all three divergence classes measured on 2026-09-13. The Reality Graph breaks at WITNESS.",
       "closure": "re-run the attestation pass after 2026-09-15 16:13; widen FRAME baseline coverage to substrate-deletion and secret-exposure classes.",
       "classification": "OPEN"
+    },
+    {
+      "id": "DIV-VAULT999-MULTIPATH-SOT",
+      "status": "OPEN",
+      "owner": "/root/VAULT999 + /root/.local/share/arifos/vault999 + /agent/vault999 + /root/.secrets/*.env",
+      "reality": "Four distinct VAULT999 path families coexist and consumers disagree about which is authoritative. LIVE: (1) Supabase vault_seals via VAULT999_DB, fronted by the only seal writer, vault999-writer.service on http://127.0.0.1:5001 -> 10492 seals, chain_integrity INTACT, chain_gaps 0; (2) /root/VAULT999/outcomes.jsonl, the live event log (28,413,925 bytes, 89,896+ lines, growing), identical inode to /root/arifOS/VAULT999/outcomes.jsonl. STALE: (3) /root/.local/share/arifos/vault999/outcomes.jsonl, FROZEN 2026-08-25 16:45, 1,894,697 bytes, 2,953 lines — still the read target of A-FORGE aed.py L6 and memory_promotion_smoke.py L6, and the WRITE target of arifOS auto_remediate.py; (4) /agent/vault999/receipts/outcomes.jsonl, 11,401,151 bytes, mtime 2026-08-26, the default VAULT_OUTCOMES in memory_promotion_smoke.py. Separately the local docker postgres 127.0.0.1:5432 db vault999.vault_seals holds only 12 rows — it is NOT the live seal store; the writer defaults away from it and its schema is stale.",
+      "consequence": "Consumers reading the frozen path report a dead file as a healthy seal store (permanent false-green liveness), and auto_remediate.py appends real receipts into a file the federation stopped advancing on 2026-08-25. Freshness/health claims about VAULT999 derived from those paths are unverifiable.",
+      "stopgap_taken": "2026-09-15: 4 stale consumers corrected with timestamped .bak (arifflow_digest.py, A-FORGE/duties/aed.py, A-FORGE/duties/memory_promotion_smoke.py, arifOS/scripts/auto_remediate.py). VAULT_WRITER_URL/VAULT_API_URL held at :8100 in /root/.secrets/{kunci-root,kunci-mas}.env while nothing listens on :8100 -> left UNTOUCHED and raised as a proposal instead.",
+      "closure": "F13 decision required: (a) retire or formally tombstone the two frozen outcomes.jsonl paths and the three broken /agent/vault999 symlinks under /root/VAULT999, and (b) collapse the :8100 compose lane vs :5001 systemd lane onto one declared writer. See /root/AAA/registry/PROPOSAL-2026-09-15-vault999-lane-store-consolidation.md and /root/AAA/registry/VAULT999-SOT-RECONCILIATION-2026-09-15.md",
+      "classification": "OPEN (F13)"
     }
   ],
   "recent_closures": [
-    {"id": "MASKED-SEVERITY", "commit": "b20018017", "date": "2026-09-13", "detail": "UNKNOWN outranked VIOLATION in worst_severity, masking measured violations for 7 of 24 actors."},
-    {"id": "FLAME-DORMANT-FALSE-CLAIM", "commit": "3367aa7d3 + a10f43d50", "date": "2026-09-13", "detail": "Registry claimed the flameClient path was dormant; it was live. Corrected, then amended when A-FORGE 802e0c8d severed the dependency 4 minutes later."},
-    {"id": "RECEIPTS-REEMISSION-BLOAT", "commit": "02af0c5a9", "date": "2026-09-13", "detail": "99.6% redundant (27,280 rows / 116 distinct signals). receipt_id + watermark added; now 0 rows per cycle. --snapshot preserves legacy behaviour."},
-    {"id": "DEAD-APEX-ZEN-GATE", "commit": "243addcbb", "date": "2026-09-13", "detail": "Gate added by 85c89d7e8 into a module no production process loads, then removed by 243addcbb. Net zero."}
+    {
+      "id": "MASKED-SEVERITY",
+      "commit": "b20018017",
+      "date": "2026-09-13",
+      "detail": "UNKNOWN outranked VIOLATION in worst_severity, masking measured violations for 7 of 24 actors."
+    },
+    {
+      "id": "FLAME-DORMANT-FALSE-CLAIM",
+      "commit": "3367aa7d3 + a10f43d50",
+      "date": "2026-09-13",
+      "detail": "Registry claimed the flameClient path was dormant; it was live. Corrected, then amended when A-FORGE 802e0c8d severed the dependency 4 minutes later."
+    },
+    {
+      "id": "RECEIPTS-REEMISSION-BLOAT",
+      "commit": "02af0c5a9",
+      "date": "2026-09-13",
+      "detail": "99.6% redundant (27,280 rows / 116 distinct signals). receipt_id + watermark added; now 0 rows per cycle. --snapshot preserves legacy behaviour."
+    },
+    {
+      "id": "DEAD-APEX-ZEN-GATE",
+      "commit": "243addcbb",
+      "date": "2026-09-13",
+      "detail": "Gate added by 85c89d7e8 into a module no production process loads, then removed by 243addcbb. Net zero."
+    }
   ],
   "deprecated_services": [
     {
@@ -460,6 +490,28 @@
       "reviewed": true,
       "reviewed_date": "2026-09-11",
       "reviewed_by": "333-AGI Δ MIND (witness-apex-zen-audit-2026-09-11)"
+    },
+    {
+      "id": "/root/.local/share/arifos/vault999/outcomes.jsonl",
+      "type": "file",
+      "status": "SUPERSEDED_READONLY",
+      "tombstone_date": "2026-08-25",
+      "reason": "Frozen 2026-08-25 16:45 (2,953 lines, 1,894,697 bytes). Not the live seal ledger. Consumers still reading it were corrected 2026-09-15; file retained (deletion blocked by prior session — retirement is an F13 decision).",
+      "replacement": "/root/VAULT999/outcomes.jsonl (live) + http://127.0.0.1:5001/vault/status for seal truth (Supabase vault_seals via VAULT999_DB)",
+      "reviewed": true,
+      "reviewed_date": "2026-09-15",
+      "reviewed_by": "Hermes ASI subagent / VAULT999-SOT-RECONCILIATION"
+    },
+    {
+      "id": "/agent/vault999/receipts/outcomes.jsonl",
+      "type": "file",
+      "status": "SUPERSEDED_READONLY",
+      "tombstone_date": "2026-08-26",
+      "reason": "Legacy container-era path, 11,401,151 bytes, mtime 2026-08-26 05:44. Default VAULT_OUTCOMES in A-FORGE/duties/memory_promotion_smoke.py; /root/VAULT999 also carries three broken symlinks pointing into /agent/vault999 (.gz, _manual.jsonl, SESSION_SEAL_*.json). Retained; retirement F13-gated.",
+      "replacement": "/root/VAULT999/outcomes.jsonl",
+      "reviewed": true,
+      "reviewed_date": "2026-09-15",
+      "reviewed_by": "Hermes ASI subagent / VAULT999-SOT-RECONCILIATION"
     }
   ],
   "deprecated_endpoints": [
@@ -474,6 +526,17 @@
       "resolved": "2026-09-09",
       "resolution": "RETIRED not built — consumer (well_observe_evidence_backlog) already degrades gracefully to missing_evidence=['no_evidence_endpoint'] (honest UNKNOWN, Void Guard compliant). Building speculative surface without a real queue behind it would violate promotion selectivity. If a real evidence queue materializes, re-open.",
       "witness": "FI-008 execution context 2026-09-09 P4",
+      "reversible": true
+    },
+    {
+      "endpoint": "http://127.0.0.1:8100 (+ http://vault999:8100 in arifOS/deploy/docker-compose.yml)",
+      "organs_probed": [
+        "127.0.0.1:8100 (vault999-api / compose vault999 service)"
+      ],
+      "status": "DEAD_UNLISTENED",
+      "resolved": "2026-09-15",
+      "resolution": "Nothing listens on :8100 (ss -ltnp shows no :8100 listener; curl -> HTTP 000). The live seal writer is vault999-writer.service on :5001. Yet /root/.secrets/kunci-root.env:298 and kunci-mas.env:299 still export VAULT_WRITER_URL=http://127.0.0.1:8100, and lines 296/297 export VAULT_API_URL=http://localhost:8100, which overrides the correct :5001 defaults in AAA/a2a-server/vault.js:12, AAA/a2a-server/seal_chain.js:96, arifOS/arifosmcp/cli/check.py:99 and cli/seal.py:37. NOT edited — shared secrets file + compose-vs-systemd lane duplication is an F13 architecture decision. Proposal raised.",
+      "witness": "Hermes ASI subagent, VAULT999-SOT-RECONCILIATION 2026-09-15 (ss -ltnp, curl :8100 -> 000, curl :5001 -> 200)",
       "reversible": true
     }
   ],

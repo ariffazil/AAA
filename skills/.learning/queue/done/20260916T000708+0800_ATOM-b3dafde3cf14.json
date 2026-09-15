@@ -1,0 +1,8 @@
+{
+  "skill_id": "FORGE-verify-runtime",
+  "agent": "hermes-rsi-loop",
+  "lesson": "DEAD_POINTER observed 1x \u2014 impact=unresolved_ref. First surface: session:assistant \u2014 all four checks passed, but independence is NAME-LEVEL ONLY (same author) \u2014 verdict is PROVISIONAL: may enter the capability graph, may NOT record a survival event",
+  "evidence": "[{\"layer\": \"artifact\", \"source\": \"session:assistant\", \"excerpt\": \"ib/arifos/vault/outcomes.jsonl.DEPRECATED (2026-05-14); /root/VAULT999/vault999_legacy.jsonl (read-only, 2026-05-27); 3 broken symlinks under /root/VAULT999 into /agent/vault999.\\\",\\n    \\\"/root/.hermes/cron/jobs.json \u2014 contains 1 occurrence of the dead path, only in the DISABLED job arif-morning-pulse\"}]",
+  "atom_id": "ATOM-b3dafde3cf14",
+  "verified_by": "hermes-rsi-verifier"
+}

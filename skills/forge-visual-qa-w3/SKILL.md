@@ -2,7 +2,7 @@
 id: FORGE-visual-qa-w3
 name: forge-visual-qa-w3
 version: 1.1.0-2026.07.20
-description: "Closed-loop visual governance with W3 tri-witness consensus — render, screenshot, validate, iterate, seal. Includes MCP App / ChatGPT host-surface QA."
+description: "Closed-loop visual governance with W3 tri-witness consensus — render, screenshot, validate, iterate, seal. Includes MCP App / ChatGPT host-surface QA. [fed: tier=fed-multimodal-vision, floors=[, auto=T2, risk=high]"
 owner: A-FORGE
 risk_tier: high
 floor_scope: ['F1', 'F2', 'F3', 'F4', 'F7', 'F11']

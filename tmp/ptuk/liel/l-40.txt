@@ -1,0 +1,42 @@
+Docusign Envelope ID: BCBF091A-82F5-40AD-846A-E840C6C56334
+LNG INVESTMENTS EUROPE LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+25 FINANCIAL INSTRUMENTS (CONTINUED)
+Fair Value information (Continued)
+Financial instruments carried at fair value
+31.12.2024 Level 1 Level 2 Level 3 Total
+£7000 £7000 £7000 £7000
+Financial Assets:
+Commodity derivative contracts - 1,880 - 1,880
+Foreign exchange derivative contracts 43 - - 43
+43 1,880 - 1,923
+Financial instruments carried at fair value
+31.12.2024 Level t Level 2 Level 3 Total
+£000 £7000 £7000 £7000
+Financial Liabilities: .
+Commodity derivative contracts - 18,120 - 18,120
+Foreign exchange derivative contracts - - : -
+- 18,120 - 18,120
+Derivatives
+The calculation of fair value for derivative financial instruments depends on the type of instruments. The fair value of
+commodity forward contracts and foreign exchange contracts are based on the fair value difference between market price
+at the date of measurement and the contracted price. The Company uses industry pricing services and exchange provided
+quotes for its positions valuation.
+There have been no transfers between Level 1 and Level 2 fair values during the financial year (2024: No transfer in either
+direction).
+Changes in value of financial instruments at fair value
+Financial instruments carried at fair
+value
+Asatl Net As at 31
+Jan 2025 Credit Dec 2025
+: £°000 £000 £7000
+Net Derivative financial position held at fair value through profit or loss (16,197) 13,409 (2,788)
+Financial instruments carried at fair
+value
+As atl Net As at 31
+Jan 2024 debit Dec 2024
+£7000 £7000 £7000
+Net Derivative financial position held at fair value through profit or loss 42,521 (58,718) (16,197)
+»
+40

@@ -2,7 +2,7 @@
 id: forge_card_migrate
 name: forge_card_migrate
 version: 1.0.0
-description: "Migrate agent-cards to schema v2.3.0 with INV-11/12/13 invariants applied. Single canonical migration path — no card ever mutated by more than one tool. USE WHEN: 'card migration', 'agent-card upgrade', 'authority_ceiling populate', 'INV-12 enforcement', 'registry_receipt_hash fix'. Reversible (.bak-20260908-pre-migration companions) under F1 AMANAH."
+description: "Migrate agent-cards to schema v2.3.0 with INV-11/12/13 invariants applied. Single canonical migration path — no card ever mutated by more than one tool. USE WHEN: 'card migration', 'agent-card upgrade', 'authority_ceiling populate', 'INV-12 enforcement', 'registry_receipt_hash fix'. Reversible (.bak-20260908-pre-migration companions) under F1 AMANAH. [fed: tier=fed-agent-subagent, floors=[F1, F2, F4, F11, F13], auto=T1 (edits commit-prep; never push), risk=medium]"
 owner: 333-AGI
 risk_tier: medium
 floor_scope: [F1, F2, F4, F11, F13]

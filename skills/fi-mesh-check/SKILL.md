@@ -2,7 +2,7 @@
 id: fi-mesh-check
 name: fi-mesh-check
 version: 1.0.0
-description: "Probe all FI coder CLIs live (qwen/kimi/opencode/codex/claude/grok/gemini) with a minimal falsification prompt and report the mesh matrix. Use when Arif says 'mesh check', 'test all coder CLIs', 'FI mesh health', 'are all harnesses alive', or before/after cross-FI plumbing work."
+description: "Probe all FI coder CLIs live (qwen/kimi/opencode/codex/claude/grok/gemini) with a minimal falsification prompt and report the mesh matrix. Use when Arif says 'mesh check', 'test all coder CLIs', 'FI mesh health', 'are all harnesses alive', or before/after cross-FI plumbing work. [fed: tier=fed-long-context, floors=[F2, F4], risk=low]"
 owner: 333-AGI
 risk_tier: low
 floor_scope: [F2, F4]

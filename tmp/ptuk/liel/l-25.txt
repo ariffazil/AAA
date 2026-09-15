@@ -1,0 +1,38 @@
+Docusign Envelope ID: BCBF091A-82F5-40AD-846A-E840C6C56334
+LNG INVESTMENTS EUROPE LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+2. MATERIAL ACCOUNTING POLICIES (CONTINUED)
+2.9 Financial instruments (continued)
+iii) Derivative financial instruments (continued)
+An embedded derivative is recognised separately from the host contract where the host contract is not a financial asset, and
+accounted for separately if, and only if, the derivative is not closely related to the economic characteristics and risks of the
+host contract and the host contract is not measured at fair value through profit or loss. The host contract, in the event an
+embedded derivative is recognised separately, is accounted for in accordance with policy applicable to the nature of the host
+contract.
+iv) Offsetting of financial instruments
+Financial assets and financial liabilities are offset and the net amount reported in the statement of financial position if, and
+only if, there is a currently enforceable legal right to offset the recognised amounts and there is an intention to settle on a net
+basis, or to realise the assets and settle the liabilities simultaneously.
+2.10 Impairment
+i) Financial assets
+The Company recognises loss allowances for expected credit losses on financial assets measured at amortised cost.
+The Company measures allowances on cash and cash equivalent at an amount equal to lifetime expected credit loss, that are
+determined to have low credit risk at the reporting date for which credit risk has not increased significantly since initial
+recognition and finance lease receivables, which are measured as 12-month expected credit loss.
+Loss allowances for trade receivables are always measured at an amount equal to lifetime expected credit loss.
+When determining whether the credit risk of a financial asset has increased significantly since initial recognition and when
+estimating expected credit loss, the Company considers reasonable and supportable information that is relevant and available
+without undue cost or effort. This includes both quantitative and qualitative information and analysis, based on the Companies
+historical experience and informed credit assessment and including forward-looking information, where available.
+The Company assumes that the credit risk on a financial asset has increased significantly if it is past due.
+The Company considers a financial asset to be in default when the borrower is unlikely to pay its credit obligations to the
+Company in full, without recourse by the Company to actions such as realising security.
+Lifetime expected credit losses are the expected credit losses that result from all possible default events over the expected life
+of a financial instrument, while 12-month expected credit losses are the portion of expected credit losses that result from
+default events that are possible within the 12-months after the reporting date.
+The maximum period considered when estimating expected credit losses is the maximum contractual period over which the
+Company is exposed to credit risk.
+An impairment loss in respect of financial assets measured at amortised cost is recognised in profit or loss and the carrying
+amount of the asset is reduced through the use of an allowance account. ‘
+25

@@ -1,0 +1,52 @@
+{
+  "lane": "zai-direct",
+  "transport": "HTTPS api.z.ai",
+  "probes": [
+    {
+      "probe": "GET /models",
+      "http_status": 200,
+      "model_ids": [
+        "glm-4.5",
+        "glm-4.5-air",
+        "glm-4.6",
+        "glm-4.7",
+        "glm-5",
+        "glm-5-turbo",
+        "glm-5.1",
+        "glm-5.2",
+        "glm-5.3",
+        "glm-5.3-flash"
+      ],
+      "raw_response_body": "{\"object\":\"list\",\"data\":[{\"id\":\"glm-4.5\",\"object\":\"model\",\"created\":1753632000,\"owned_by\":\"z-ai\"},{\"id\":\"glm-4.5-air\",\"object\":\"model\",\"created\":1753632000,\"owned_by\":\"z-ai\"},{\"id\":\"glm-4.6\",\"object\":\"model\",\"created\":1759276800,\"owned_by\":\"z-ai\"},{\"id\":\"glm-4.7\",\"object\":\"model\",\"created\":1766332800,\"owned_by\":\"z-ai\"},{\"id\":\"glm-5\",\"object\":\"model\",\"created\":1770739200,\"owned_by\":\"z-ai\"},{\"id\":\"glm-5-turbo\",\"object\":\"model\",\"created\":1773504000,\"owned_by\":\"z-ai\"},{\"id\":\"glm-5.1\",\"object\":\"model\",\"created\":1774620000,\"owned_by\":\"z-ai\"},{\"id\":\"glm-5.2\",\"object\":\"model\",\"created\":1781625600,\"owned_by\":\"z-ai\"},{\"id\":\"glm-5.3\",\"object\":\"model\",\"created\":1786636800,\"owned_by\":\"z-ai\"},{\"id\":\"glm-5.3-flash\",\"object\":\"model\",\"created\":1786636800,\"owned_by\":\"z-ai\"}]}",
+      "vision_capable_ids": [
+        "glm-5.3-flash"
+      ],
+      "verdict": "BLIND",
+      "note": "ID-regex heuristic only \u2014 native-multimodal ids (e.g. glm-5.3-flash) are proven by live canary below, not by id pattern"
+    },
+    {
+      "probe": "red_circles@glm-5.3-flash",
+      "model": "glm-5.3-flash",
+      "http_status": 200,
+      "raw_response_body": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"content\":\"3\",\"reasoning_content\":\"The user is asking about the number of filled red circles in the image. Looking at the image description, I can see there are three red circles on the left side, and two blue squares on the right side.\",\"role\":\"assistant\"}}],\"created\":1789464116,\"id\":\"202609151721550e82cd0290fc4fc9\",\"model\":\"glm-5.3-flash\",\"object\":\"chat.completion\",\"request_id\":\"202609151721550e82cd0290fc4fc9\",\"usage\":{\"completion_tokens\":46,\"completion_tokens_details\":{\"reasoning_tokens\":43},\"prompt_tokens\":759,\"prompt_tokens_details\":{\"cached_tokens\":0},\"total_tokens\":805}}",
+      "answer": "3",
+      "expected": {
+        "int": 3
+      },
+      "verdict": "PASS",
+      "note": "coding-plan lane (flash) vs PAYG tombstone (4.5v)"
+    },
+    {
+      "probe": "red_circles@glm-4.5v",
+      "model": "glm-4.5v",
+      "http_status": 429,
+      "raw_response_body": "{\"error\":{\"code\":\"1113\",\"message\":\"Insufficient balance or no resource package. Please recharge.\"}}",
+      "answer": "",
+      "expected": {
+        "int": 3
+      },
+      "verdict": "BLOCKED",
+      "note": "coding-plan lane (flash) vs PAYG tombstone (4.5v)"
+    }
+  ]
+}

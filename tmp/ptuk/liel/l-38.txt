@@ -1,0 +1,57 @@
+)
+Dacusign Envelope ID: BCBF091A-82F5-40AD-846A-E840C6C56334 .
+LNG INVESTMENTS EUROPE LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+25 FINANCIAL INSTRUMENTS (CONTINUED)
+Liquidity risk
+Liquidity risk is the risk that the Company will not be able to meet its financial obtigations as they fall due. The Company’s
+exposure to liquidity risk arises principally from its trade and other payables, borrowings and derivative liabilities. In
+managing its liquidity risk, the Company maintain sufficient cash and access to credit facilities. The financial liabilities are
+payable within 12 months.
+Interest Rate risk
+Interest rate risk is the risk that the fair value of future cash flows of a financial instrument will fluctuate because of change
+in market interest rates. The Company’s exposure to the risk of changes in market interest rates relates primarily to the
+Company’s short-term obligations with floating interest rates. All interest rate exposures are monitored and managed in line :
+with PETRONAS’s policies and guidelines. The Company had no exposure related to interest rate risk.
+Foreign currency exchange risk
+The Company is exposed to varying levels of foreign exchange risk when it enters into transactions that are not denominated
+in the Company’s functional currencies and/or when foreign currency monetary assets and liabilities are translated at the
+reporting date. The main underlying economic currencies of the Company’s cash flows are GBP Sterling and US Dollars. The
+Company’s foreign exchange management policy is to minimise economic and significant transactional exposures arising from
+currency movements. When deemed necessary and appropriate, the Company will enter into derivative financial instruments
+to hedge and minimise its exposures to the foreign currency movements.
+Denominated in USD
+31.12.2025 31.12.2024
+
+USD’000 £7000 USD’000 £7000
+Trade and other payables (76,740) (57,018) (4,994) (3,959)
+Cash and cash equivalents 138 103 2,394 1,908
+Net exposure (76,602) (56,915) (2,600) (2,051)
+
+Denominated in EUR
+31.12.2025 31.12.2024
+
+EUR’000 £°000 EUR’000 £7000
+Trade and other payables (6,717) (5,865)
+Derivative assets 5,951 5,196
+Derivative liabilities (2,161) (1,886) - -
+Cash and cash equivalents 4,384 3,822 57 47
+Net exposure 1,457 1,267 57 47
+Sensitivity analysis for a given market variable provided in this Note, discloses the effect on profit or loss and equity as at 31
+December 2025 and 2024 assuming that a reasonably possible change in the relevant market variable had occurred at 31
+December 2025 and 2024 and been applied to the risk exposures in existence at that date. Reasonably possible changes in
+market variables used in the sensitivity analysis are based on implied volatilities, where available, or historical data for equity
+and commodity prices and foreign exchange rates. Reasonably possible changes in foreign exchange rates are based on
+management judgment and historical experience.
+The sensitivity analysis is hypothetical and should not be considered to be predictive of future performance because the
+Company’s actual exposure to market prices is constantly changing with changes in the Company’s portfolio of among others,
+commodity, debt and foreign currency contracts. Changes in fair values or cash flows based on a variation in a market variable
+cannot be extrapolated because the relationship between the change in market variable and the change in fair value or cash
+flows may not be linear. In addition, the effect of a change in a given market variable is calculated independently of any change
+in another assumption and mitigating actions that would be taken by the Company. In reality, changes in one factor may
+contribute to changes in another, which may magnify or counteract the sensitivities. :
+The following table demonstrates the indicative pre-tax effects on the profit or loss and equity of applying reasonably
+foreseeable market movements in the following currency exchange rates.
+
+38

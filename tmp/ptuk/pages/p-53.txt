@@ -1,0 +1,42 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF 11912A8BA9
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+15. NET TRADING INCOME
+2025 2024
+USD’000 USD’000
+Net trading income on derivatives measured at FVTPL 9,246 17,978
+Net trading income on physically settled commodity contracts 21,283 21,214
+30,529 39,192
+Reconciliation of invoiced amounts for crude, fuel oil, product and LNG with the Financial
+Statements:
+Invoice Netting Statement of :
+Amount adjustment Profit or Loss
+: (non GAAP and Other
+measure) Comprehensi
+ve Income
+USD’000 USD’000 USD’000
+For the year ended 31 December 2025
+"Revenue 2,779,180 1,761,882 1,017,298
+Cost of sales (2,769,578) (1,740,599) (1,028,979)
+Net trading income crude oil, petroleum 21,283
+product and fuel oil
+: Invoice Netting Statement of
+Amount adjustment Profit or Loss
+(non GAAP and Other
+measure) Comprehensi
+ve Income
+USD’000 USD’000 USD’000
+For the year ended 31 December 2024
+Revenue 3,483,249 1,321,775 2,161,474
+Cost of sales (3,460,329) (1,300,561) (2,159,768)
+Net trading income crude oil, petroleum 21,214
+product and fuel oil
+The Company enters into third party trading transactions as defined in Note 2.12. Business
+performance related to trading transactions in crude, fuel oil and petroleum products is measured by
+management based on invoiced amounts as they occur, as presented in column Invoice Amount.
+16. OTHER INCOME
+2025 2024
+USD’000 USD’000
+Service level agreement fees and others 6,174 7,848
+52

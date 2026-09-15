@@ -1,7 +1,7 @@
 ---
 id: QWEN-zen-router
 name: qwen-zen-router
-description: >
+description: > [fed: tier=meta-mesa, auto=T1, risk=low]
   Orthogonal axis routing for Qwen Code (FI-003). Given an intent, classify it across 9
   orthogonal axes (organ, action, mode, tier, layer, surface, scope, time, reversibility)
   and route to the right organ MCP server. Load when you must pick between equally-valid

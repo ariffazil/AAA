@@ -1,0 +1,31 @@
+{
+  "_provenance": {
+    "surface": "hermes.native.vision_analyze",
+    "why_a_sidecar": "vision_analyze is an IN-SESSION tool: it is invoked by the agent, not callable from a subprocess. A subprocess-run gate cannot call it. Rather than silently skip it, vision_gate.py reads verbatim transcripts from this file; if the file or a matching entry is missing, the surface is reported UNREACHABLE and the gate exits non-zero.",
+    "captured_by": "mata hardening subagent (KVM8)",
+    "captured_at": "2026-09-15 (Asia/Kuala_Lumpur)",
+    "honesty_note": "These are the verbatim 'analysis' fields returned by the tool during this session. They are agent-mediated, so they are lower-trust than a subprocess-callable surface; treat as 'reported by the agent', not 'independently reproduced'."
+  },
+  "img_a_shapes_text.png": [
+    {
+      "question": "How many FILLED RED CIRCLES are in this image? Answer with a single integer.",
+      "answer": "3"
+    },
+    {
+      "question": "What exact text appears in this image?",
+      "answer": "The image has a white background. At the top, in large, bold, black, sans-serif letters, is the text:\n\n**ARIFOS-7731**\n\nBelow the text are five shapes in a horizontal row:\n- Three red circles with thin black outlines on the left.\n- Two blue squares with thin black outlines on the right.\n\nThere is no other text in the image.\n\n**Exact text appearing in the image:**  \n**ARIFOS-7731**"
+    }
+  ],
+  "img_c_photo_crop.jpg": [
+    {
+      "question": "Does the text 'ZZQ-419' appear in this image? Answer yes or no only.",
+      "answer": "The image is a close-up, studio-style photograph of a muscular, shirtless man. It shows the lower face\u2014lips, chin, mustache, and light stubble\u2014along with the neck, trapezius, shoulders, chest, and one nipple. The man has a highly defined physique with prominent pectorals, deltoids, and neck muscles. Warm golden rim lighting from the left highlights the contours of his skin, which appears slightly glossy or sweaty, against a dark brown-to-black gradient background. No text, watermark, label, or code is visible anywhere in the image.\n\nNo"
+    }
+  ],
+  "img_d_control_zero_red.png": [
+    {
+      "question": "How many FILLED RED CIRCLES are in this image? Answer with a single integer.",
+      "answer": "The image shows the word **CONTROL** in large black uppercase letters at the top on a white background. Below it, there is a solid **green square** with a black outline on the left, and a solid **yellow circle** with a black outline on the right. There are no red circles or red shapes in the image.\n\n0"
+    }
+  ]
+}
