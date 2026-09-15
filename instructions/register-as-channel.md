@@ -200,4 +200,26 @@ Distinguishing observation / hypothesis / causal candidate / justified conclusio
 
 **UNDER-WEIGHTED BY IT:** the reviewer treated media as generic noise and missed that the cross-medium delta is the strongest available measurement, and that the AI lane is a self-selected population rather than a neutral channel.
 
+## Extension — Proxy Drift (2026-09-15, evidence-backed)
+
+The law generalises past human utterances: **any instrument that reports state from a proxy
+over-reports divergence when the proxy is not the function.**
+
+Worked case — kernel drift monitor (`arifOS/scripts/drift_check_live.py:105`):
+`drift = source_commit[:7] not in deployed_sha`. The proxy is a **commit hash**, the function is
+**running behaviour**. Live reading at 2026-09-15: source `2b3215b72` vs deployed `106c82895` →
+`drift=True status=degraded`. But the delta `106c82895..HEAD` contains **zero `.py/.ts/.js` runtime
+changes** (docs, `llms.txt`, a deleted build stamp, deleted remote build inputs). Running behaviour
+is identical; the label says otherwise.
+
+Two consequences, both already doctrine-shaped:
+
+1. **Over-report breeds alarm fatigue.** A signal that fires on every commit stops being a signal.
+   The instrument dies by credibility, not by failure.
+2. **The fix is the same as for register.** Compare the *function*, not the proxy: code surface and
+   behaviour for drift; constraint field for utterance; individual baseline for a person.
+
+Rule: when a monitor reports degraded, first ask **which proxy produced the verdict and whether the
+proxy is the function.** Do not act on a proxy verdict as if it were a functional one.
+
 DITEMPA BUKAN DIBERI ⚒️
