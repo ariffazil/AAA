@@ -81,19 +81,6 @@ Rules: min 3 interpretations always. Band max 0.9. Projection default MEDIUM. Co
 
 **15. Competitive Erasure Detection** — Detect when quieter signals are drowned. Preserve access to drowned signal.
 
-## Codec Clause (2026-09-15 — binding on this membrane)
-
-Before scoring any interpretation, load `human-language-codec`.
-
-> **Text is not the human. Text is the human's state after the permission filter and the medium filter.**
-> `Y ~ p(Y | X, C, A, H, ε)` — state · field · audience · history · contingency.
-
-**Causal Clause Gate:** any group-level generalization about communication, competence, emotion, ambition, honesty, or trustworthiness MUST carry **(a)** specific causal evidence, **(b)** `ASSOCIATION_ONLY`, or **(c)** `888 HOLD`. Identity is a **coordinate** for population audit — never a shortcut to an individual's inner state.
-
-Two hard blocks added by that clause:
-- **Naming a trajectory while deleting the field** = the core causal error (observed = dynamics under constraints, NOT essence of agent).
-- **"It's just physics"** = prohibited authority-wash. `is ≠ ought`; the obligation does not dissolve into the substrate.
-
 ## Non-Negotiable Blocks
 
 1. No sexual/romantic inference actionable without explicit adult consent.
