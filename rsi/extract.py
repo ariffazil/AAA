@@ -29,6 +29,8 @@ STATE_DB = "/root/.hermes/state.db"
 SCAR_CANDIDATES = "/root/AAA/scars/candidates"
 CANON = "/root/AAA/canon"
 RSI_LEDGER = "/root/.local/share/arifos/rsi-ledger.jsonl"
+EXPERIENCE_TRACES = "/root/.local/share/arifos/world-model/experience_traces.jsonl"
+HERMES_SESSION_TRACES = "/root/.hermes/experience/session-traces/"
 
 MARKERS = {
     # marker → (pattern_type, layer, impact)
@@ -313,11 +315,156 @@ def _falsifier(g: dict) -> str:
     }.get(g["pattern_type"], "A live probe contradicts the observation.")
 
 
+def extract_from_traces(days: int) -> list[dict]:
+    """Read cross-agent session traces. THE FEDERATION WIRE.
+
+    Hermes writes per-session traces to HERMES_SESSION_TRACES with real content:
+    action, observation (tool_metrics, success_rate), feedback (self-critique).
+    These carry cross-session evidence that state.db messages don't aggregate.
+
+    Also reads experience_traces.jsonl (forge_experience_trace output) which
+    covers fi-008, openclaw, and other agents — but only if they carry content.
+    Skeleton entries (no tool, no feedback) are skipped.
+
+    This is the ingestion half of the federation mesh: agents produce traces,
+    the RSI loop consumes them as atoms. Without this, the loop only sees
+    raw session messages, not aggregated session quality signals.
+    """
+    cands = []
+    since = time.time() - days * 86400
+
+    # Source 1: Hermes session traces (structured, rich, 48+ files)
+    if os.path.isdir(HERMES_SESSION_TRACES):
+        try:
+            for fname in sorted(os.listdir(HERMES_SESSION_TRACES)):
+                if not fname.endswith(".json"):
+                    continue
+                fpath = os.path.join(HERMES_SESSION_TRACES, fname)
+                try:
+                    t = json.load(open(fpath, encoding="utf-8"))
+                except Exception:
+                    continue
+                ts_str = t.get("ts", "")
+                try:
+                    ts_dt = datetime.fromisoformat(ts_str.replace("Z", "+00:00"))
+                    if ts_dt.timestamp() < since:
+                        continue
+                except Exception:
+                    continue
+
+                obs = t.get("observation", {})
+                fb = t.get("feedback", {})
+                fb_self = (fb.get("self") or "").strip()
+                success = obs.get("success", True)
+                error_count = obs.get("tool_metrics", {}).get("error_count", 0)
+                task_completion = obs.get("task_completion", "")
+                session_id = obs.get("session_id", "")
+                source = obs.get("source", "unknown")
+
+                has_signal = (
+                    not success
+                    or error_count > 0
+                    or task_completion == "UNVERIFIED"
+                    or (fb_self and any(kw in fb_self.lower() for kw in
+                        ("fail", "error", "stale", "unverified", "miss", "wrong", "broken")))
+                )
+                if not has_signal:
+                    continue
+
+                ptype, layer, impact = "UNCLASSIFIED", "capability", "session_quality"
+                if not success or error_count > 0:
+                    ptype, layer, impact = "SILENT_FAIL", "skill", "session_error"
+                elif task_completion == "UNVERIFIED":
+                    ptype, layer, impact = "PROXY_REALITY", "policy", "unverified_completion"
+                elif fb_self:
+                    ptype, layer, impact = "PROXY_REALITY", "policy", "self_critique"
+
+                snippet = fb_self or f"session={session_id} errors={error_count} completion={task_completion}"
+                sig = _normalise(f"{ptype}|session-trace|{source}")
+                cands.append({
+                    "source": f"session-trace:{source}:{session_id[:20]}",
+                    "session_id": session_id,
+                    "pattern_type": ptype,
+                    "layer": layer,
+                    "impact": impact,
+                    "snippet": snippet[:300],
+                    "signature": sig,
+                })
+        except Exception:
+            pass
+
+    # Source 2: Cross-agent experience traces (forge_experience_trace output)
+    # Only if they carry real content (not skeleton entries)
+    if os.path.exists(EXPERIENCE_TRACES):
+        try:
+            with open(EXPERIENCE_TRACES, encoding="utf-8") as fh:
+                for line in fh:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        t = json.loads(line)
+                    except Exception:
+                        continue
+                    ts_str = t.get("ts", "")
+                    try:
+                        ts_dt = datetime.fromisoformat(ts_str.replace("Z", "+00:00"))
+                        if ts_dt.timestamp() < since:
+                            continue
+                    except Exception:
+                        continue
+
+                    agent = t.get("agent_id", "unknown")
+                    tool = t.get("tool")
+                    fb_self = (t.get("feedback_self") or "").strip()
+                    fb_const = (t.get("feedback_constitutional") or "").strip()
+                    new_scar = t.get("new_scar")
+                    success = t.get("success", True)
+
+                    # Skip skeleton entries (no tool, no feedback)
+                    if not tool and not fb_self and not fb_const and not new_scar:
+                        continue
+
+                    has_signal = (
+                        not success
+                        or new_scar
+                        or (fb_const and fb_const.upper() not in ("PASS", ""))
+                        or (fb_self and len(fb_self) > 20)
+                    )
+                    if not has_signal:
+                        continue
+
+                    ptype, layer, impact = "UNCLASSIFIED", "capability", "trace_signal"
+                    if not success:
+                        ptype, layer, impact = "SILENT_FAIL", "skill", "tool_failure"
+                    elif new_scar:
+                        ptype, layer, impact = "PROXY_REALITY", "policy", "scar_from_trace"
+                    elif fb_const and "FAIL" in fb_const.upper():
+                        ptype, layer, impact = "PERMISSION_DRIFT", "capability", "constitutional_fail"
+
+                    snippet = (fb_self or fb_const or t.get("input_summary", ""))[:300]
+                    sig = _normalise(f"{ptype}|{tool or 'unknown'}|{agent}")
+                    cands.append({
+                        "source": f"trace:{agent}:{tool or 'unknown'}",
+                        "session_id": None,
+                        "pattern_type": ptype,
+                        "layer": layer,
+                        "impact": impact,
+                        "snippet": snippet,
+                        "signature": sig,
+                    })
+        except Exception:
+            pass
+
+    return cands
+
+
 def run(days: int = 7) -> list[dict]:
     rows = read_sessions(days)
     cands = extract_from_sessions(rows)
     cands += extract_from_scars()
     cands += extract_from_eurekas()
+    cands += extract_from_traces(days)
     return classify(cands)
 
 
