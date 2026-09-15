@@ -1,0 +1,49 @@
+{
+  "schema": "arifos.code-intel.baseline-snapshot.v1",
+  "purpose": "Ratchet baseline for fail-on-NEW boundary enforcement. Existing violations below are inherited debt — CI (when activated via 888) fails only on violations NOT in this snapshot. Exceptions ledger (ledger/exceptions-ledger.json) grants timed permissions on top of this baseline.",
+  "captured": "2026-09-16T04:40:00+08:00",
+  "witnesses": ["333-AGI (commit 6313d43e6, lint-imports)", "FI-003 (depcruise/madge, positive control)"],
+  "repos": {
+    "arifOS": {
+      "git_sha": "cf966a98aa3d",
+      "violations": [
+        {"rule": "ARIFOS-BOUNDARY-002 transport ↛ runtime", "paths": [
+          "arifosmcp.transport.conformance_spine -> runtime.ingress_middleware._ARIFOS_INGRESS_INSTANCE (l.1026, lazy import)",
+          "arifosmcp.transport.http -> server (l.14) -> runtime.sovereign_verify (l.3765)",
+          "arifosmcp.transport.stdio -> server (l.9) -> runtime.geox_bridge (l.2160)"
+        ]}
+      ],
+      "notes": "server.py is the breach chokepoint (fan-out 124); runtime/tools.py fan-out 179 = hotspot (not a violation, change-planning hazard)"
+    },
+    "GEOX": {
+      "git_sha": "1c9b31ef928f (NON-CANONICAL branch feat/mcp-dual-era-2026-07-28 — refresh on merge)",
+      "violations": [
+        {"rule": "GEOX-DATA-003 core ↛ mcp", "paths": [
+          "benchmarks.geox_001_orthogonal_route -> tools.well_ingest, tools.well_qc",
+          "core.welltie -> tools._helpers (l.43, l.580)",
+          "well.tools.sensing -> tools.kernel._petrophysics (l.49)"
+        ]}
+      ]
+    },
+    "WEALTH": {
+      "git_sha": "4dbaec1c75b4",
+      "violations": [
+        {"rule": "WEALTH-CONTRACT-001 contracts ↛ {mcp,core,internal}", "paths": [
+          "contracts.envelope -> wealth_core.math (l.524)"
+        ]}
+      ]
+    },
+    "A-FORGE": {
+      "git_sha": "f17009dbba3d",
+      "violations": [
+        {"rule": "cycles (madge census, not yet a depcruise rule)", "paths": [
+          "infrastructure/vault/index.ts <-> MerkleV3Service.ts",
+          "domain/governance/GovernanceClient.ts <-> domain/governance/index.ts",
+          "interfaces/mcp/shell/forgeShell.ts (3rd cycle — full list gates/madge-circular-aforge.txt)"
+        ]}
+      ],
+      "notes": "domain-purity rule CLEAN at baseline (446 modules, 1025 deps)"
+    }
+  },
+  "activation_gate": "CI fail-on-NEW enforcement requires explicit 888 authorization + comparator proven against representative diffs (moved/modified/new distinction) + negative tests"
+}
