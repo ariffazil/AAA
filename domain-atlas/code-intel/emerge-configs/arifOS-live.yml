@@ -1,0 +1,23 @@
+---
+project_name: arifOS
+loglevel: error
+analyses:
+- analysis_name: arifOS-static-map
+  source_directory: /root/arifOS/arifosmcp
+  only_permit_languages:
+  - py
+  only_permit_file_extensions:
+  - .py
+  ignore_directories_containing: [__pycache__, .venv, .git, node_modules, build, dist, .ua, 00_legacy_materials, arifos_park, kernel, .opencode, .agents, .claude, site-packages, .cursor, .github, docs, tests, examples, .pytest_cache, .ruff_cache, .mypy_cache]
+  file_scan:
+  - number_of_methods
+  - source_lines_of_code
+  - dependency_graph
+  - louvain_modularity
+  - fan_in_out
+  export:
+  - directory: /root/work/code-intel/emerge/arifOS-live
+  - graphml
+  - json
+  - tabular_file
+  - tabular_console_overall
