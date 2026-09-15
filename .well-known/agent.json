@@ -1,375 +1,452 @@
 {
-  "schema": "https://google.com/genai/a2a/agent-card/v1",
-  "name": "arifOS Kernel",
-  "description": "Constitutional AI orchestration kernel for the arifOS federation. Governs 7 federation organs (GEOX, WEALTH, WELL, A-FORGE, A-FORGE MCP, AAA, and the arifOS kernel itself) under F1-F13 constitutional floors. Final authority resides with human sovereign Arif (F13).",
-  "url": "https://arif-fazil.com",
-  "version": "v2026.06.30",
+  "$schema": "https://a2a-protocol.org/schemas/agent-card/v1.0",
+  "name": "AAA A2A Gateway",
+  "description": "DISPLAY_ONLY A2A gateway for the arifOS federation. Shows state, queues A2A, aggregates organ cards. Never judges. Never executes. Never writes VAULT999. arifOS judges. A-FORGE executes. Arif (F13) seals. DITEMPA BUKAN DIBERI.",
+  "version": "2026.08.25",
+  "url": "https://aaa.arif-fazil.com",
+  "provider": {
+    "organization": "arifOS Federation",
+    "url": "https://arif-fazil.com",
+    "system": "AAA",
+    "runtime": "node-v22"
+  },
+  "supportedInterfaces": [
+    {
+      "url": "https://aaa.arif-fazil.com/a2a",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
   "capabilities": {
-    "actions": {
-      "supported": [
-        {
-          "name": "arif_init",
-          "description": "Bootstrap a governed constitutional session. Required before any governed action.",
-          "input": {
-            "type": "object",
-            "properties": {
-              "mode": {
-                "type": "string",
-                "enum": [
-                  "init",
-                  "light",
-                  "resume",
-                  "validate"
-                ]
-              },
-              "actor_id": {
-                "type": "string"
-              },
-              "intent": {
-                "type": "string"
-              }
+    "streaming": true,
+    "pushNotifications": true,
+    "authenticated_extended_card": true,
+    "tool_calling": true,
+    "mcp_native": true,
+    "extendedAgentCard": true,
+    "extensions": [
+      {
+        "uri": "https://arif-fazil.com/ext/sovereign",
+        "required": false,
+        "params": {
+          "sovereign_anchor": "https://arif-fazil.com/000/",
+          "sovereign_did": "https://arif-fazil.com/.well-known/did.json",
+          "seal_anchor": "https://arif-fazil.com/999/",
+          "seal_verification": "https://arif-fazil.com/999/seal.json",
+          "authentication_protocol": "Ed25519-challenge-response",
+          "nonce_flow": "arif_init(nonce) → sign(nonce) → verify(signature) → FULL authority",
+          "sovereign_key_fingerprint": "sha256:17d9f11ad0d43563513bbf10c9206812b32063d1f01e88bb1cd624d8788bf449",
+          "aaa_ceiling": "DISPLAY_ONLY"
+        }
+      },
+      {
+        "uri": "https://arif-fazil.com/a2a/extensions/verdict-grammar/v1",
+        "description": "arifOS 888 JUDGE verdict grammar (kernel, not AAA): SEAL | HOLD | SABAR | VOID. AAA displays verdicts; it does not issue them.",
+        "required": false,
+        "params": {
+          "verdicts": [
+            "SEAL",
+            "HOLD",
+            "SABAR",
+            "VOID"
+          ],
+          "judge_endpoint": "https://arifos.arif-fazil.com/mcp",
+          "judge_tool": "arif_judge"
+        }
+      },
+      {
+        "uri": "https://arif-fazil.com/a2a/extensions/governed-identity/v1",
+        "description": "Internal arifOS registry identity (not a core A2A field)",
+        "required": false,
+        "params": {
+          "registryId": "aaa-gateway",
+          "organId": "aaa",
+          "identityHash": "blake3:0205e6c882265b39e28999eade9db67b71bd265530db0211f899abc49b042497"
+        }
+      },
+      {
+        "uri": "https://arif-fazil.com/a2a/extensions/federation-gateway/v1",
+        "description": "Federation organ map and gateway flags (arifOS extension)",
+        "required": false,
+        "params": {
+          "federation_organs": [
+            {
+              "id": "arifos-mcp",
+              "name": "arifOS Constitutional Kernel",
+              "url": "https://arifos.arif-fazil.com",
+              "role": "judge",
+              "authority": "verdict",
+              "skills": [
+                "render_verdict",
+                "gather_evidence",
+                "reason",
+                "route_intent",
+                "seal_receipt"
+              ],
+              "card_url": "https://arifos.arif-fazil.com/.well-known/agent-card.json"
             },
-            "required": [
-              "actor_id"
-            ]
+            {
+              "id": "a-forge-mcp",
+              "name": "A-FORGE Execution Shell",
+              "url": "https://a-forge.arif-fazil.com",
+              "role": "executor",
+              "authority": "execution",
+              "skills": [
+                "forge_execute",
+                "forge_orchestrate",
+                "forge_document_intelligence",
+                "forge_browser",
+                "forge_git",
+                "forge_lease_acquire",
+                "forge_vault_seal"
+              ],
+              "card_url": "https://a-forge.arif-fazil.com/.well-known/agent-card.json"
+            },
+            {
+              "id": "geox-mcp",
+              "name": "GEOX Earth Intelligence",
+              "url": "https://geox.arif-fazil.com",
+              "role": "evidence",
+              "authority": "EVIDENCE_ONLY",
+              "skills": [
+                "evaluate_basin",
+                "analyze_well",
+                "rank_prospects",
+                "falsify_hypothesis",
+                "earth_evidence"
+              ],
+              "card_url": "https://geox.arif-fazil.com/.well-known/agent-card.json"
+            },
+            {
+              "id": "wealth-mcp",
+              "name": "WEALTH Capital Intelligence",
+              "url": "https://wealth.arif-fazil.com",
+              "role": "evidence",
+              "authority": "ADVISORY_ONLY",
+              "skills": [
+                "compute_npv",
+                "compute_emv",
+                "evaluate_wisdom",
+                "audit_power",
+                "scan_collapse",
+                "stock_analysis"
+              ],
+              "card_url": "https://wealth.arif-fazil.com/.well-known/agent-card.json"
+            },
+            {
+              "id": "well-mcp",
+              "name": "WELL Substrate Vitality",
+              "url": "https://well.arif-fazil.com",
+              "role": "evidence",
+              "authority": "REFLECT_ONLY",
+              "skills": [
+                "assess_homeostasis",
+                "assess_livelihood",
+                "guard_dignity",
+                "validate_vitality",
+                "classify_substrate"
+              ],
+              "card_url": "https://well.arif-fazil.com/.well-known/agent-card.json"
+            }
+          ],
+          "gateway": {
+            "task_routing": true,
+            "skill_aggregation": true,
+            "webhook_broker": true,
+            "auth_enforcement": true,
+            "injection_defense": true
           },
-          "output": {
-            "type": "object",
-            "properties": {
-              "session_id": {
-                "type": "string"
-              },
-              "authority": {
-                "type": "string",
-                "enum": [
-                  "SEAL",
-                  "OBSERVE_ONLY",
-                  "FULL"
-                ]
-              },
-              "constitution_hash": {
-                "type": "string"
-              }
-            }
-          }
-        },
-        {
-          "name": "arif_observe",
-          "description": "Ground decisions in reality. Searches web, fetches URLs, reads system vitals.",
-          "input": {
-            "type": "object",
-            "properties": {
-              "mode": {
-                "type": "string",
-                "enum": [
-                  "search",
-                  "ingest",
-                  "vitals",
-                  "entropy_dS"
-                ]
-              },
-              "query": {
-                "type": "string"
-              },
-              "url": {
-                "type": "string",
-                "format": "uri"
-              }
-            }
-          }
-        },
-        {
-          "name": "arif_think",
-          "description": "Constitutional reasoning, planning, and critique engine. Does not execute.",
-          "input": {
-            "type": "object",
-            "properties": {
-              "mode": {
-                "type": "string",
-                "enum": [
-                  "reason",
-                  "plan",
-                  "critique",
-                  "verify",
-                  "reflect"
-                ]
-              },
-              "query": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "query"
-            ]
-          }
-        },
-        {
-          "name": "arif_route",
-          "description": "Route natural-language intent to correct federation organ or tool.",
-          "input": {
-            "type": "object",
-            "properties": {
-              "intent": {
-                "type": "string"
-              },
-              "organ": {
-                "type": "string",
-                "enum": [
-                  "geox",
-                  "wealth",
-                  "well",
-                  "aforge",
-                  "arifos"
-                ]
-              }
-            },
-            "required": [
-              "intent"
-            ]
-          }
-        },
-        {
-          "name": "arif_judge",
-          "description": "Render constitutional verdict: SEAL / HOLD / SABAR / VOID. Requires evidence-to-plan pipeline completion.",
-          "input": {
-            "type": "object",
-            "properties": {
-              "actor": {
-                "type": "string"
-              },
-              "intent": {
-                "type": "string"
-              },
-              "requested_capability": {
-                "type": "string"
-              },
-              "domain": {
-                "type": "string"
-              },
-              "reversibility_level": {
-                "type": "string",
-                "enum": [
-                  "FULL",
-                  "PARTIAL",
-                  "NONE"
-                ]
-              },
-              "blast_radius": {
-                "type": "string",
-                "enum": [
-                  "LOW",
-                  "MEDIUM",
-                  "HIGH",
-                  "CRITICAL"
-                ]
-              }
-            },
-            "required": [
-              "actor",
-              "intent",
-              "requested_capability",
-              "domain",
-              "reversibility_level",
-              "blast_radius"
-            ]
+          "mcp_native": true,
+          "tool_calling": true
+        }
+      },
+      {
+        "uri": "https://arif-fazil.com/a2a/extensions/governance/v1",
+        "description": "arifOS constitutional governance — F1-F13 floors, verdict authority, injection defense",
+        "required": false,
+        "params": {
+          "governance": {
+            "floors": [
+              "F1",
+              "F2",
+              "F4",
+              "F8",
+              "F11",
+              "F12",
+              "F13"
+            ],
+            "verdict_authority": "arifOS (port 8088)",
+            "self_approval_forbidden": true,
+            "authority_class": "gateway",
+            "injection_defense": "active",
+            "sovereign_veto": "push-notification"
           },
-          "output": {
-            "type": "object",
-            "properties": {
-              "verdict": {
-                "type": "string",
-                "enum": [
-                  "SEAL",
-                  "HOLD",
-                  "SABAR",
-                  "VOID"
-                ]
-              },
-              "violated_floors": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        },
-        {
-          "name": "arif_act",
-          "description": "Execute approved action. REQUIRES valid prior SEAL from arif_judge + arif_seal.",
-          "input": {
-            "type": "object",
-            "properties": {
-              "seal_verdict_id": {
-                "type": "string"
-              },
-              "approved_action_hash": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "seal_verdict_id",
-              "approved_action_hash"
-            ]
-          }
-        },
-        {
-          "name": "arif_seal",
-          "description": "Append verdict to immutable VAULT999 ledger. IRREVERSIBLE. Requires ack_irreversible=true.",
-          "input": {
-            "type": "object",
-            "properties": {
-              "mode": {
-                "type": "string",
-                "enum": [
-                  "seal",
-                  "verify",
-                  "ledger"
-                ]
-              },
-              "payload": {
-                "type": "string"
-              },
-              "ack_irreversible": {
-                "type": "boolean"
-              }
-            },
-            "required": [
-              "mode"
-            ]
+          "constitution": {
+            "floors_active": [
+              "F1",
+              "F2",
+              "F4",
+              "F8",
+              "F11",
+              "F12",
+              "F13"
+            ],
+            "governance_kernel": "arifOS (port 8088)",
+            "execution_shell": "A-FORGE (port 7071)",
+            "vault": "VAULT999"
           }
         }
-      ]
-    }
-  },
-  "can_do": [
-    "Initialize governed constitutional sessions",
-    "Ground decisions with web search, URL fetch, system vitals",
-    "Reason, plan, critique, and verify using F1-F13 constitutional axioms",
-    "Route intents to the correct federation organ (GEOX/WEALTH/WELL/A-FORGE/A-FORGE MCP/AAA)",
-    "Render constitutional verdicts (SEAL/HOLD/SABAR/VOID)",
-    "Append irreversible entries to the VAULT999 immutable ledger",
-    "Execute pre-approved actions with cryptographic verification"
-  ],
-  "cannot_do": [
-    "Execute any action without a valid prior SEAL from judge pipeline",
-    "Self-authorize irreversible mutations",
-    "Claim consciousness, sentience, or soul (F9 ANTI-HANTU enforced)",
-    "Expose secrets, tokens, or private kernel state to A2A peers",
-    "Override F13 SOVEREIGN (human Arif) veto",
-    "Upgrade INFERRED\u2192VERIFIED\u2192GROUND_TRUTH without evidence transition",
-    "Modify or delete VAULT999 records after sealing",
-    "Act as a domain specialist (delegates to GEOX/WEALTH/WELL/A-FORGE)",
-    "Make financial trades, physical changes, or real-money decisions"
-  ],
-  "modalities": [
-    "text",
-    "structured JSON (JSON-RPC 2.0)",
-    "MCP (Model Context Protocol) SSE transport on /mcp"
-  ],
-  "authentication": {
-    "type": "session-bound",
-    "description": "Each session binds an actor_id via arif_init. Authority level determined by actor verification. OBSERVE_ONLY if unverified. F13 level requires sovereign signature.",
-    "mechanisms": [
-      "actor_id declaration",
-      "session_id continuity"
+      },
+      {
+        "uri": "https://arif-fazil.com/a2a/extensions/metadata/v1",
+        "description": "Card provenance and federation metadata",
+        "required": false,
+        "params": {
+          "doctrine": "DITEMPA BUKAN DIBERI — Control is forged, not given.",
+          "created": "2026-07-02T04:50:00Z",
+          "created_by": "FORGE (000Ω) — A2A Gateway pattern",
+          "rationale": "Copilot A2A analysis — blindspot #9: AAA should be A2A Gateway. One edge, N organs discoverable. Verdict grammar extension for sovereignty.",
+          "gateway_pattern": "https://www.glukhov.org/ai-systems/architecture/a2a-protocol-explained/",
+          "kernel_deps": [
+            "KERNEL-trinity-33",
+            "KERNEL-session-inhabit",
+            "KERNEL-sovereign-recognize",
+            "KERNEL-verbs-forge-hands",
+            "KERNEL-quantum-runtime",
+            "KERNEL-qubit-substrate",
+            "KERNEL-reality-skills",
+            "KERNEL-mcp-zen",
+            "KERNEL-mcp-builder"
+          ],
+          "rsi_doctrine": "RSI-recursive-improvement",
+          "substrate_bind": "2026-07-12T18:30:00Z",
+          "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK",
+          "a2a_card_migration": "2026-07-17-supportedInterfaces",
+          "a2a_protocol_binding": "JSONRPC",
+          "a2a_interface_version": "1.0"
+        }
+      },
+      {
+        "uri": "https://arif-fazil.com/a2a/extensions/federation-prompts/v1",
+        "description": "arifOS federation prompt catalog — zen-md single-sigil format",
+        "required": false,
+        "params": {
+          "version": "2026.07.16",
+          "doctrine": "DITEMPA BUKAN DIBERI",
+          "zen_format": "single-sigil + single-lexical per zen-md",
+          "all_prompts": [
+            "🌱 BOOT",
+            "🌊 WITNESS",
+            "🧠 REASON",
+            "⚖ MARUAH",
+            "🔍 PREFLIGHT",
+            "🔒 JUDGE",
+            "🔥 FORGE",
+            "💎 SEAL",
+            "🌀 SABAR",
+            "📜 REPLY"
+          ],
+          "reality_loop_orchestrator": "🌀 SABAR",
+          "human_role": "init + seal only — autonomous 6-stage loop"
+        }
+      },
+      {
+        "uri": "https://arif-fazil.com/a2a/extensions/kernel-skills/v1",
+        "description": "arifOS kernel skill dependencies and RSI doctrine",
+        "required": false,
+        "params": {
+          "kernel_skills": [
+            "KERNEL-trinity-33",
+            "KERNEL-session-inhabit",
+            "KERNEL-sovereign-recognize",
+            "KERNEL-verbs-forge-hands",
+            "KERNEL-quantum-runtime",
+            "KERNEL-qubit-substrate",
+            "KERNEL-reality-skills",
+            "KERNEL-mcp-zen",
+            "KERNEL-mcp-builder"
+          ],
+          "rsi_doctrine": "RSI-recursive-improvement",
+          "power_band": "routing"
+        }
+      }
     ]
   },
-  "escalation_rules": [
-    "T1 \u2014 AUTO: observe, reason, plan, route (no human needed)",
-    "T2 \u2014 ANNOUNCE: multi-file refactor, new dependency, deploy after tests (10s window)",
-    "T3 \u2014 888_HOLD: irreversible mutation, vault seal without prior SEAL, production deploy without tests",
-    "F13 \u2014 SOVEREIGN: Arif's direct veto overrides all tool outputs. Final authority."
-  ],
-  "internal_memory_exposure": "NONE \u2014 arifOS does not expose session memory, vault contents, or internal state to A2A peers. Memory is accessed only through authorized tools (arif_vault_query, arif_seal).",
-  "security": {
-    "tool_boundary_enforced": true,
-    "additionalProperties_false": true,
-    "authority_metadata": "PENDING \u2014 WAJIB-005 implementation in progress",
-    "evidence_freshness": "PENDING \u2014 WAJIB-006 implementation in progress"
-  },
-  "federation_peers": [
-    {
-      "name": "GEOX",
-      "port": 8081,
-      "role": "Earth Intelligence",
-      "tool_prefix": "geox_*",
-      "authority": "L0 (evidence computation)"
-    },
-    {
-      "name": "WEALTH",
-      "port": 18082,
-      "role": "Capital Intelligence",
-      "tool_prefix": "wealth_*",
-      "authority": "L0-L2 (computation, advisory)"
-    },
-    {
-      "name": "WELL",
-      "port": 18083,
-      "role": "Human Readiness",
-      "tool_prefix": "well_*",
-      "authority": "L0 (reflect only)"
-    },
-    {
-      "name": "A-FORGE",
-      "port": 7071,
-      "role": "Execution Shell",
-      "tool_prefix": "forge_*",
-      "authority": "L0-L4 (lease-gated execution)"
-    },
-    {
-      "name": "A-FORGE MCP",
-      "port": 7072,
-      "role": "MCP Gateway",
-      "tool_prefix": "forge_*",
-      "authority": "L0-L4 (MCP transport gateway)"
-    },
-    {
-      "name": "AAA",
-      "port": 3001,
-      "role": "Control Plane",
-      "tool_prefix": "none (A2A gateway)",
-      "authority": "Display, routing"
-    }
-  ],
-  "doctrine_reference": {
-    "constitution": "F1-F13 floors at /root/arifOS/docs/CONSTITUTION.md",
-    "authority_model": "/root/A-FORGE/forge_work/2026-06-30/fiqh-wajib-005-authority-labels.md",
-    "surface_inventory": "/root/A-FORGE/forge_work/2026-06-30/fiqh-wajib-002-full-inventory.md"
-  },
-  "supported_interfaces": [
-    {
-      "url": "https://arif-fazil.com/a2a",
-      "protocol_binding": "JSONRPC",
-      "protocol_version": "1.0"
-    }
-  ],
-  "default_input_modes": [
+  "defaultInputModes": [
     "text/plain",
     "application/json"
   ],
-  "default_output_modes": [
+  "defaultOutputModes": [
     "text/plain",
     "application/json"
+  ],
+  "securitySchemes": {
+    "oauth2": {
+      "type": "oauth2",
+      "description": "OAuth 2.1 for remote A2A peers",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://aaa.arif-fazil.com/oauth/authorize",
+          "tokenUrl": "https://aaa.arif-fazil.com/oauth/token"
+        }
+      }
+    },
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "token",
+      "description": "arifOS session token"
+    }
+  },
+  "securityRequirements": [
+    {
+      "bearer_auth": []
+    }
   ],
   "skills": [
     {
-      "id": "arif_init",
-      "name": "Session Init",
-      "description": "Bootstrap constitutional session",
+      "id": "FORGE-route-task",
+      "name": "Task Routing",
+      "description": "Route A2A tasks to the correct organ by skill match. Routing is not execution. AAA never runs the organ tool itself.",
       "tags": [
-        "kernel",
-        "canonical"
+        "routing",
+        "gateway",
+        "A2A",
+        "orchestration"
+      ],
+      "floor_scope": [
+        "F4",
+        "F8",
+        "F11"
       ]
     },
     {
-      "id": "arif_judge",
-      "name": "Constitutional Verdict",
-      "description": "Render SEAL/HOLD/SABAR/VOID verdict",
+      "id": "APEX-enforce-sovereign-veto",
+      "name": "Sovereign Veto Enforcement",
+      "description": "When an organ emits auth-required (HOLD), surface it to ARIF. AAA pauses routing; F13 decides. AAA does not veto as kernel.",
       "tags": [
-        "kernel",
-        "judge"
+        "F13",
+        "sovereign",
+        "veto",
+        "auth-required"
+      ],
+      "floor_scope": [
+        "F11",
+        "F13"
       ]
+    },
+    {
+      "id": "AGI-aggregate-capabilities",
+      "name": "Capability Aggregation",
+      "description": "Aggregate AgentCards from all 6 organs into a single federation manifest. Any A2A peer discovers the entire federation through this gateway.",
+      "tags": [
+        "discovery",
+        "aggregation",
+        "manifest"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ]
+    },
+    {
+      "id": "FORGE-broker-webhooks",
+      "name": "Webhook Broker",
+      "description": "Relay push notifications from long-running organ tasks to registered webhook endpoints. GEOX basin analysis, WEALTH simulation, WELL monitoring.",
+      "tags": [
+        "webhook",
+        "push",
+        "notification",
+        "async"
+      ],
+      "floor_scope": [
+        "F11"
+      ]
+    },
+    {
+      "id": "AUDIT-defend-injection",
+      "name": "Injection Defense",
+      "description": "F12 injection defense at gateway layer. All external A2A tasks scanned before routing to internal organs.",
+      "tags": [
+        "security",
+        "injection",
+        "F12",
+        "defense"
+      ],
+      "floor_scope": [
+        "F12"
+      ]
+    },
+    {
+      "id": "ASI-federated-memory-query",
+      "name": "Federated Memory Query",
+      "description": "Query the zen federated memory state (L1-L6 layers, flow, rule). Surfaces kernel-governed memory (bands, provenance, no-bypass) as AA state. Kernel owns, AAA surfaces via Redis + /federation/memory.",
+      "tags": [
+        "memory",
+        "federation",
+        "state",
+        "L1-L6",
+        "zen"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4",
+        "F11"
+      ]
+    },
+    {
+      "id": "arifos.session.init",
+      "name": "Federation Session Init",
+      "description": "Queue session init to arifOS kernel arif_init (:8088). AAA does not mint SCTs itself. Returns whatever the kernel returns.",
+      "tags": [
+        "init",
+        "session",
+        "governance",
+        "kernel",
+        "arifos"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F11",
+        "F13"
+      ]
+    },
+    {
+      "id": "arifos.session.seal",
+      "name": "Queue kernel session seal",
+      "description": "Queue a session-close to arifOS kernel arif_seal (:8088). AAA does not write VAULT999. DISPLAY_ONLY — kernel + Arif seal.",
+      "tags": [
+        "seal",
+        "session",
+        "vault999",
+        "kernel",
+        "arifos"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F11",
+        "F13"
+      ]
+    }
+  ],
+  "protocolVersion": "1.2",
+  "schema": "https://a2a-protocol.org/schemas/agent-card/v1.0",
+  "signatures": [
+    {
+      "did": "did:web:arif-fazil.com",
+      "proofValue": "fzeuiwqYyBWJxJEqJnDiFC2mCn36bZZmg44eckt74Y7ey0zfXfy+zT44H7wz6mnt4E4g/5IZkMxXyjnWABuKDw==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-08-25T03:43:48Z",
+      "type": "Ed25519Signature2020",
+      "verificationMethod": "did:web:arif-fazil.com#arif-fazil",
+      "canonical_form": "JCS-sorted-keys-no-whitespace",
+      "canonical_sha256": "3f0840e0465b0f7dae470b9a571c4aab244da1ef4d558855fa4b1906103bde08",
+      "did_resolves_to": "https://arif-fazil.com/.well-known/did.json",
+      "nonce_flow": "arif_init(nonce) → sign(nonce) → verify → FULL",
+      "signed_by": "ARIF F13 — DITEMPA BUKAN DIBERI — YANG ARIF LAGI BIJAKSANA",
+      "actor": "arif"
     }
   ]
 }
