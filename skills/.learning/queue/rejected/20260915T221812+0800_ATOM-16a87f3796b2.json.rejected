@@ -1,0 +1,8 @@
+{
+  "skill_id": "failure_surfacing",
+  "agent": "hermes-rsi-loop",
+  "lesson": "SILENT_FAIL observed 2x \u2014 impact=runtime_error. First surface: session:tool:terminal \u2014 all four checks passed, but independence is NAME-LEVEL ONLY (same author) \u2014 verdict is PROVISIONAL: may enter the capability graph, may NOT record a survival event",
+  "evidence": "[{\"layer\": \"runtime\", \"source\": \"session:tool:terminal\", \"excerpt\": \"STRY_MISMATCH=9\\\\n  receipt \u2192 /root/AAA/rsi/state/receipts/loop-2026-09-15T221752+0800.json\\\\n\\\\n=== graph status now ===\\\\nTraceback (most recent call last):\\\\n  File \\\\\\\"<string>\\\\\\\", line 2, in <module>\\\\n    import json; g=json.load(open('state/capability-graph.json'))\\\\n                             ~~~~^^\"}, {\"layer\": \"runtime\", \"source\": \"session:tool:terminal\", \"excerpt\": \"/AAA/rsi/config.yaml\\\\n  blocked  /root/AAA/rsi/verify.py\\\\n  blocked  /root/.hermes/SOUL.md\\\\n\\\\n=== end-to-end state ===\\\\nTraceback (most recent call last):\\\\n  File \\\\\\\"<stdin>\\\\\\\", line 2, in <module>\\\\n  File \\\\\\\"/usr/lib/python3.13/json/__init__.py\\\\\\\", line 346, in loads\\\\n    return _default_decoder.decode\"}]",
+  "atom_id": "ATOM-16a87f3796b2",
+  "verified_by": "hermes-rsi-verifier"
+}
