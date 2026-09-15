@@ -13,7 +13,7 @@ total_prompts_probed: 43
 # ═══════════════════════════════════════════════════════════════
 # WAJIB-004 COMPLIANCE: Every tool has owner prefix
 # Status: ✅ ALL organs already owner-prefixed
-#   arifos_*  — arifOS kernel (7 tools, public 7-verb surface)
+#   arifos_*  — arifOS kernel (8 tools, canonical 8-verb surface = wire truth, F13 2026-09-15)
 #   forge_*   — A-FORGE execution shell (70 tools)
 #   geox_*    — GEOX earth intelligence (~29 tools, SSE transport)
 #   wealth_*  — WEALTH capital intelligence (28 tools)
@@ -26,7 +26,7 @@ organs:
   arifos:
     port: 8088
     transport: HTTP (MCP Streamable)
-    tools_count: 7
+    tools_count: 8
     tools:
       - name: arif_init
         layer: L0
@@ -48,16 +48,21 @@ organs:
         authority: OBSERVE_ONLY
         schema: strict
         description: Route intent to correct federation organ.
+      - name: arif_memory
+        layer: L1
+        authority: OBSERVE_ONLY
+        schema: strict
+        description: Governed semantic recall and storage (L1-L6 memory governor).
       - name: arif_judge
         layer: L2
         authority: EXECUTE
         schema: strict
         description: Render final constitutional verdict (SEAL/HOLD/SABAR/VOID).
-      - name: arif_act
-        layer: L3
-        authority: F13_REQUIRED
+      - name: arif_forge
+        layer: L2
+        authority: EXECUTE_AFTER_SEAL
         schema: strict
-        description: Execute approved action — requires prior SEAL from judge→seal pipeline.
+        description: Governed execution gate — mutates only after SEAL verdict.
       - name: arif_seal
         layer: L3
         authority: F13_REQUIRED
