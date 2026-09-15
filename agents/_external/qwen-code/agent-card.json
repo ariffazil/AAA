@@ -590,13 +590,14 @@
     "vault": "VAULT999"
   },
   "admissible": true,
-
   "runtime_profiles": {
     "operator_sovereign_session": {
       "profile_id": "FI-003-OPERATOR",
       "controller": "human_arif",
       "permission_mode": "yolo",
-      "allow": ["*"],
+      "allow": [
+        "*"
+      ],
       "deny": [],
       "federation_use": "human-directed-only",
       "delegation_to_warga_cells": false,
@@ -617,18 +618,15 @@
       "remote_mutation": "forbidden_without_human_and_arifos_gate"
     }
   },
-
   "governed_lab": {
     "enabled": true,
     "schema_version": "1.0.0",
-
     "source_substrate": {
       "repository_path": "/root/AAA",
       "repository_role": "canonical-federation-registry",
       "baseline_commit": "254352c79",
       "baseline_label": "APEX-ZEN Phase 0 + Phase 1 governance scaffold (absorbed from arifos-lab 2026-09-12)"
     },
-
     "laboratory_identity": {
       "lab_id": "LAB-ARIFOS-001",
       "cell_id": "LAB-FI-003-QWEN-BUILDER",
@@ -636,7 +634,6 @@
       "production_authority": "none",
       "inherits_operator_yolo_permissions": false
     },
-
     "lifecycle": {
       "current_stage": "S0_OFFLINE_VALIDATED",
       "stages": [
@@ -661,7 +658,6 @@
         "fallback_stage": "S0_OFFLINE_VALIDATED"
       }
     },
-
     "evidence": {
       "governance_test_suite": {
         "source": "/root/arifos-lab/tests/test_governance.py",
@@ -709,7 +705,6 @@
         "cross_cell_token_binding"
       ]
     },
-
     "containment": {
       "status": "NOT_ATTESTED",
       "required_for_live_admission": [
@@ -725,14 +720,12 @@
       ],
       "verified_controls": []
     },
-
     "contracts": {
       "task_contract_schema": "AAA/registry/schema/task-contract.schema.json",
       "cell_manifest_schema": "AAA/registry/schema/cell-manifest.schema.json",
       "evidence_packet_schema": "AAA/registry/schema/evidence-packet.schema.json",
       "enforcement_rule": "effective_authority_is_intersection_of_existing_card_boundary_active_task_contract_runtime_attestation_and_approval"
     },
-
     "authority_overlay": {
       "default": "deny",
       "risk_ceiling": "bounded_write",
@@ -756,7 +749,6 @@
         "external_message"
       ]
     },
-
     "admission": {
       "state": "NOT_ADMITTED",
       "mode": "read_only_registry_visibility",
@@ -768,68 +760,130 @@
         "automatic_promotion"
       ]
     },
-
     "qdf": "888_HOLD: Lab evidence valid for offline governance logic only. Runtime and production authority remain unadmitted."
   },
-
   "warga_collective": {
     "enabled": true,
     "federation_class": "WARGA_AAA_CODING_CELL",
     "collective_id": "FI-003-QWEN-COLLECTIVE",
     "protocol": "MUSYAWARAH_GOTONG_ROYONG_V1",
     "authority_ceiling": "PROPOSE_AND_VERIFY",
-
     "roles": [
       {
         "id": "architect",
         "purpose": "Frame problem, invariants, options, acceptance criteria",
-        "may": ["repo.read", "evidence.read", "plan.draft"],
-        "must_not": ["patch.local", "tests.certify", "remote.write"]
+        "may": [
+          "repo.read",
+          "evidence.read",
+          "plan.draft"
+        ],
+        "must_not": [
+          "patch.local",
+          "tests.certify",
+          "remote.write"
+        ]
       },
       {
         "id": "scout",
         "purpose": "Repository, dependency, runtime, test, and receipt reconnaissance",
-        "may": ["repo.read", "evidence.read", "trace.read"],
-        "must_not": ["patch.local", "policy.change", "remote.write"]
+        "may": [
+          "repo.read",
+          "evidence.read",
+          "trace.read"
+        ],
+        "must_not": [
+          "patch.local",
+          "policy.change",
+          "remote.write"
+        ]
       },
       {
         "id": "forge",
         "purpose": "Implement minimal scoped local change",
-        "may": ["worktree.write", "patch.local", "named_ci.request"],
-        "must_not": ["merge", "push", "deploy", "self_verify", "policy.change"]
+        "may": [
+          "worktree.write",
+          "patch.local",
+          "named_ci.request"
+        ],
+        "must_not": [
+          "merge",
+          "push",
+          "deploy",
+          "self_verify",
+          "policy.change"
+        ]
       },
       {
         "id": "refractor",
         "purpose": "Assess complexity, coupling, interface drift, and simplification",
-        "may": ["repo.read", "diff.review", "review.report"],
-        "must_not": ["scope.expand", "policy.change", "remote.write"]
+        "may": [
+          "repo.read",
+          "diff.review",
+          "review.report"
+        ],
+        "must_not": [
+          "scope.expand",
+          "policy.change",
+          "remote.write"
+        ]
       },
       {
         "id": "integrator",
         "purpose": "Check cross-module compatibility and assemble reviewed patch set",
-        "may": ["repo.read", "diff.review", "candidate.bundle"],
-        "must_not": ["erase_dissent", "merge", "deploy", "self_verify"]
+        "may": [
+          "repo.read",
+          "diff.review",
+          "candidate.bundle"
+        ],
+        "must_not": [
+          "erase_dissent",
+          "merge",
+          "deploy",
+          "self_verify"
+        ]
       },
       {
         "id": "verifier",
         "purpose": "Run baseline/candidate comparison and classify results",
-        "may": ["named_ci.request", "test.report", "evidence.report"],
-        "must_not": ["product_code.write", "test_weakening", "merge"]
+        "may": [
+          "named_ci.request",
+          "test.report",
+          "evidence.report"
+        ],
+        "must_not": [
+          "product_code.write",
+          "test_weakening",
+          "merge"
+        ]
       },
       {
         "id": "red_team",
         "purpose": "Find counterexamples, bypasses, authority expansion, regressions",
-        "may": ["repo.read", "adversarial_test.request", "dissent.record"],
-        "must_not": ["indefinite_block_without_evidence", "product_code.write"]
+        "may": [
+          "repo.read",
+          "adversarial_test.request",
+          "dissent.record"
+        ],
+        "must_not": [
+          "indefinite_block_without_evidence",
+          "product_code.write"
+        ]
       },
       {
         "id": "scribe",
         "purpose": "Produce musyawarah log, evidence packet, rollback and handoff",
-        "may": ["receipt.draft", "artifact.append", "evidence.report"],
-        "must_not": ["evidence.alter", "verdict.issue", "remote.write"]
+        "may": [
+          "receipt.draft",
+          "artifact.append",
+          "evidence.report"
+        ],
+        "must_not": [
+          "evidence.alter",
+          "verdict.issue",
+          "remote.write"
+        ]
       }
     ],
-
     "separation_rules": [
       "forge_cannot_be_sole_verifier",
       "verifier_cannot_modify_product_code_under_test",
@@ -838,20 +892,56 @@
       "child_authority_must_be_subset_of_parent_task",
       "parallel_agents_must_have_explicit_file_or_artifact_ownership"
     ],
-
     "delegation": {
       "max_depth": 2,
       "task_lineage_required": true,
       "capability_monotonicity": "child_authority_subset_of_parent",
       "default_child_status": "888_HOLD_UNTIL_TASK_BOUND"
     },
-
     "complexity_gate": {
-      "tiny_fix": ["scout", "forge", "verifier", "scribe"],
-      "normal_feature": ["architect", "scout", "forge", "verifier", "red_team", "scribe"],
-      "cross_module": ["architect", "scout", "forge", "refractor", "integrator", "verifier", "red_team", "scribe"],
-      "authority_security_change": ["architect", "scout", "red_team", "verifier", "scribe"],
-      "remote_impact": ["evidence_only_then_888_HOLD"]
+      "tiny_fix": [
+        "scout",
+        "forge",
+        "verifier",
+        "scribe"
+      ],
+      "normal_feature": [
+        "architect",
+        "scout",
+        "forge",
+        "verifier",
+        "red_team",
+        "scribe"
+      ],
+      "cross_module": [
+        "architect",
+        "scout",
+        "forge",
+        "refractor",
+        "integrator",
+        "verifier",
+        "red_team",
+        "scribe"
+      ],
+      "authority_security_change": [
+        "architect",
+        "scout",
+        "red_team",
+        "verifier",
+        "scribe"
+      ],
+      "remote_impact": [
+        "evidence_only_then_888_HOLD"
+      ]
     }
+  },
+  "apex_zen": {
+    "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
+    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
+    "invariant": "CAPABILITY ≠ AUTHORITY",
+    "doctrine": "Govern capabilities, not implementations.",
+    "motto": "DITEMPA BUKAN DIBERI",
+    "capability": "BUILD",
+    "lane": "333-AGI"
   }
 }
