@@ -299,6 +299,23 @@ Symptom ≠ cause. One HOT can be OpenCode workload + LiteLLM traffic + Hermes p
 - Gödel Lock (The Reality Invoice): `/root/AAA/canon/GODEL-LOCK-TRE-REALITY-INVOICE-2026-09-07.md`
 - First RTC Receipt: `/root/AAA/receipts/RECEIPT-RTC-001-V2-PHYSIQUE.md`
 
+### [CONCEPT] CODE-REALITY Naming Triad (Ratified 2026-09-16 by ARIF — "D2 yes")
+```text
+[CONCEPT]
+FRAME                  — general constitutional/system envelope. FRAME organ (:18085,
+                         OBSERVE_ONLY) untouched and primary. Nothing else renamed.
+CodeRealityEnvelope    — bounded task-INPUT specialization for codebase-reality work:
+                         repo, SHA, purpose, authority, policy snapshot, adapters,
+                         evidence window. Draft: forge_work/2026-09-16-code-intel-phase0/schema/code-reality-envelope.v1.json
+CodeRealityEvidencePacket — completed OUTPUT artifact: graph, source/policy/receipt
+                         evidence, test results, uncertainty register, verdict.
+                         Draft: forge_work/2026-09-16-code-intel-phase0/schema/code-reality-reconciliation.v1.json
+Lifecycle: task → FRAME bounds → Envelope binds → skill chain investigates →
+arifFlow witnesses → EvidencePacket records → human ratifies consequence.
+Law: no CREF/CREP/CodeRealityFrame variants. Clarity over cleverness.
+Ratification record: /root/AAA/domain-atlas/code-intel/RATIFICATION-2026-09-16.md
+```
+
 
 ---
 

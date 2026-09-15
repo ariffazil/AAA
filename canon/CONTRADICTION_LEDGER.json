@@ -48,7 +48,27 @@
       },
       "closure_test": "What evidence shows drift reduced? (e.g., drift detection auto-corrects or flags within 1 hour of change)",
       "proposed_action": "Schedule hourly drift probe: compare AAA_CAPABILITY_REGISTRY.yaml declared ports vs ss -tlnp live ports",
-      "receipt_required": "Drift report showing 0 mismatches over 7 consecutive days"
+      "receipt_required": "Drift report showing 0 mismatches over 7 consecutive days",
+      "instances": [
+        {
+          "id": "C-002-e1",
+          "name": "Graphiti resurrection (retired-but-recommended)",
+          "filed": "2026-09-16T04:50:00+08:00",
+          "authority": "F13 'D1 file' (2026-09-16)",
+          "compressed": "888 retirement order (2026-09-04) vs mcp-shopping-list 'correct add' recommendation (2026-09-16) both governed; an agent executed the newer one — fresh manual container 2026-09-15T17:10Z, 11 days post-retirement",
+          "classification": "GOVERNANCE_CONTRADICTION",
+          "evidence": {
+            "intended": "888 retirement 2026-09-04 (FEDERATION_MEMORY_CONTRACT.md): worker neutralized, do-not-auto-wake",
+            "conflicting_guidance": "mcp-shopping-list-2026-09 item #1 'Graphiti — correct add'",
+            "observed": "docker inspect 2026-09-16: created fresh 2026-09-15T17:10:21Z, RestartCount=0, no compose, group=arifos, live FalkorDB backend, healthy, no ports",
+            "full_record": "/root/forge_work/2026-09-16-code-intel-phase0/graphiti-drift-evidence.md + contradiction-entry-draft.json"
+          },
+          "operational_status": "EVIDENCE_ONLY — no container action (888)",
+          "open_decision": "A ratify reactivation / B reaffirm retirement — F13 pending",
+          "root_corrective_action": "Retirement orders become machine-readable constraints queryable by every recommendation/provisioning skill; no agent may recommend or reintroduce a retired component without explicit human reactivation decision (deprecation-registry linkage)",
+          "note": "Filed as instance of C-002 (max-3-active rule respected — this is evidence enrichment, not a 4th contradiction)"
+        }
+      ]
     },
     {
       "id": "C-003",

@@ -58,3 +58,12 @@ REJECT   Kuzu (FalkorDB live) · Neo4j · new arifos-code-intel-mcp (CGC exists)
 ## Standing 888 HOLD
 
 Structural mutations derived from these maps (module moves, boundary-rule removal, canonical graph writes, CI blocking activation, promotion/PR/push beyond T1 commits of THIS record set) require explicit F13 authorization. Static evidence ≠ institutional intent.
+
+## DECIDED by F13 (2026-09-16, "D1 file, D2 yes, D3 yes no deploy, D4a ratify")
+
+| Decision | Outcome | Execution |
+|---|---|---|
+| **D1** — Graphiti contradiction | **FILED** | canon/CONTRADICTION_LEDGER.json → C-002 instance `C-002-e1` (max-3-active rule respected — filed as evidence instance of Doctrine≠Runtime, not a 4th contradiction). Container untouched. A/B reactivation-vs-retirement remains open under the instance. Root fix queued: retirement orders → machine-readable recommendation constraints. |
+| **D2** — Naming triad | **CANONIZED** | canon/CANONICAL_GLOSSARY.md → [CONCEPT] CODE-REALITY Naming Triad: FRAME / CodeRealityEnvelope / CodeRealityEvidencePacket. No variant abbreviations permitted. |
+| **D3** — arifFlow evidence-origin | **APPROVED: design + test only** | Proposal: forge_work/.../arifflow-evidence-origin-proposal.md (two-axis: EvidenceOrigin × EpistemicLabel, additive Rust field, golden fixtures, round-trip tests). **NO daemon rebuild/deploy/restart — outside this approval.** Implementation = next focused lane. |
+| **D4a** — CI ratchet | **RATIFIED, NARROW** | arifOS@ac94be1ef exactly as implemented: grimp-direct, path-scoped (arifosmcp/**+boundary/**), fail-on-NEW + expired-exception only, in-repo ledger, 2026-12-15 expiry auto-tighten. NOT ratified: expansion to other repos, whole-repo scope, legacy-debt failing, expiry/bypass changes, any broader CI enforcement. Cross-lane authority ambiguity preserved as regression finding: **future sovereign directives crossing an 888 boundary must name the exact fence, action, target, consequence class.** |
