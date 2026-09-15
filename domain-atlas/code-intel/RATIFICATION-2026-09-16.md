@@ -50,9 +50,10 @@ REJECT   Kuzu (FalkorDB live) · Neo4j · new arifos-code-intel-mcp (CGC exists)
 
 ## Open decisions (F13 pen)
 
-- Envelope naming: "CodeRealityFrame" (external spec) vs rename — FRAME organ (:18085) collision.
-- arifFlow CODE_REALITY_RECONCILIATION wiring: must extend live epistemic_label enum (silent-400 scar).
-- Graphiti-mcp container up despite 888 retirement (2026-09-04) — 9-step read-only investigation queued.
+- Envelope naming — RECOMMENDATION RECORDED (external witness #8, 2026-09-16): general construct stays **FRAME** (organ); task input = **CodeRealityEnvelope**; completed output = **CodeRealityEvidencePacket**. Drafts already match; awaiting F13 word to canonize.
+- arifFlow CODE_REALITY_RECONCILIATION wiring — PREP COMPLETE: live enum is Rust `EpistemicLabel` (receipt.rs:91) = OBS/DER/INT/SPEC/SEAL — a confidence axis. Reconciliation classes are a SOURCE axis (intended/static/observed/verified/unknown) — additive extension (new variants + `evidence_source` field), NOT redefinition. Cost: Rust rebuild + arifflow daemon redeploy (/opt/arifflow/bin). Backward-compatible by design.
+- Graphiti drift — CLASSIFIED (evidence: forge_work/2026-09-16-code-intel-phase0/graphiti-drift-evidence.md): container CREATED FRESH 2026-09-15T17:10Z, 11 days AFTER 888 retirement (Sep 4); no restart, no compose, manual run, group=arifos, backed by live FalkorDB. Suspected cause: a session executed mcp-shopping-list item #1 ("Graphiti — correct add") without the retirement order being marked in that guidance → **canonical guidance contradiction** (retirement order vs shopping list). CONTRADICTION_LEDGER filing candidate. F13 picks one: (a) ratify reactivation, (b) reaffirm retirement + orderly removal, (c) file contradiction first.
+- Ratchet baseline — CAPTURED: `baseline-snapshot-2026-09-16.json` (this dir) — all machine-verified debt from both witnesses. CI fail-on-NEW activation still requires explicit 888 + comparator proof (moved/modified/new distinction + negative tests).
 
 ## Standing 888 HOLD
 
