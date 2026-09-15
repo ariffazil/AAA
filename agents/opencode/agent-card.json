@@ -891,15 +891,6 @@
     }
   },
   "fi": "FI-OPENCODE",
-  "signatures": [
-    {
-      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
-      "signature": "ybQNZVzVYE3DKOmsYcKXsPRCGA8ufOD9pZchxjnQeOAAg79fOKN_6cFn8DJOq5M8DILy0aklPICbRKk6vvmECA",
-      "header": {
-        "kid": "arifos-a2a-card-2026-%q"
-      }
-    }
-  ],
   "registry_receipt_hash": "sha256:9e23882746df4acd2fabbe47e73d403c70ef82d9d48fb2d6cdd03513c6257961",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
   "registry_source": [
@@ -936,5 +927,24 @@
     "motto": "DITEMPA BUKAN DIBERI",
     "capability": "BUILD",
     "lane": "333-AGI"
+  },
+  "signature_legacy": [
+    {
+      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
+      "signature": "ybQNZVzVYE3DKOmsYcKXsPRCGA8ufOD9pZchxjnQeOAAg79fOKN_6cFn8DJOq5M8DILy0aklPICbRKk6vvmECA",
+      "header": {
+        "kid": "arifos-a2a-card-2026-%q"
+      }
+    }
+  ],
+  "signature_status": {
+    "state": "ABSENT",
+    "detail": "JWS-shaped; genuine 64-byte Ed25519 signature present, but the protected header carries an unsubstituted template specifier (kid='arifos-a2a-card-2026-%q') so the key id is corrupt and the signature cannot be attributed to a key; body also modified after signing",
+    "conforms_to": "Ed25519Signature2020 — see /root/AAA/scripts/sign-agent-card.sh",
+    "verifier": "none — no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
+    "detected_by": "/root/scripts/agent-card-drift-detector.py",
+    "detected_at": "2026-09-16T07:00:00Z",
+    "material_preserved_under": "signature_legacy",
+    "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
   }
 }

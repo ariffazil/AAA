@@ -135,15 +135,6 @@
   "resolution": "777-FORGE was never an agent. It was the FORGE capability substrate — now institutionalized as adat agentic in every AAA warga card.",
   "resolved_by": "F13 SOVEREIGN directive 2026-08-10",
   "note": "This card exists for provenance only. FORGE is not a lane, not an agent, not distributed. FORGE is adat agentic — inherited by all.",
-  "signatures": [
-    {
-      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
-      "signature": "SDtR_nrBHafy1jvox589kn50foJ7udxWW-zz8Gdz2TLzi8bxDbH8nQnXeRkqLqC6kQZMJekwyJIBvlHPaFBjAQ",
-      "header": {
-        "kid": "arifos-a2a-card-2026-%q"
-      }
-    }
-  ],
   "registry_receipt_hash": "sha256:881eddd9d5dad010349c216330edbe2e22ed9b945da7ae5ba4f917d9256dba4b",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
   "registry_source": [
@@ -180,5 +171,24 @@
     "motto": "DITEMPA BUKAN DIBERI",
     "capability": "ACT",
     "lane": "777-forge"
+  },
+  "signature_legacy": [
+    {
+      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
+      "signature": "SDtR_nrBHafy1jvox589kn50foJ7udxWW-zz8Gdz2TLzi8bxDbH8nQnXeRkqLqC6kQZMJekwyJIBvlHPaFBjAQ",
+      "header": {
+        "kid": "arifos-a2a-card-2026-%q"
+      }
+    }
+  ],
+  "signature_status": {
+    "state": "ABSENT",
+    "detail": "JWS-shaped; genuine 64-byte Ed25519 signature present, but the protected header carries an unsubstituted template specifier (kid='arifos-a2a-card-2026-%q') so the key id is corrupt and the signature cannot be attributed to a key; body also modified after signing",
+    "conforms_to": "Ed25519Signature2020 — see /root/AAA/scripts/sign-agent-card.sh",
+    "verifier": "none — no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
+    "detected_by": "/root/scripts/agent-card-drift-detector.py",
+    "detected_at": "2026-09-16T07:00:00Z",
+    "material_preserved_under": "signature_legacy",
+    "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
   }
 }

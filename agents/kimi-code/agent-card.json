@@ -1079,15 +1079,6 @@
     "quarantine": "/root/.kimi-code/quarantine-20260821",
     "note": "185 byte-identical mirror dupes of AAA canonical removed; 44 retired + 11 archives + 2 stubs quarantined; manifest kept; count = visible top-level (hidden dotdirs excluded, not skill-scanned); 4 taxonomy symlink trees (136 broken) removed — AAA intact = SOT"
   },
-  "signatures": [
-    {
-      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
-      "signature": "izSCMRFYfqk2HAeZRjwPQrgJxYhklfCLnzwy3xtSj9iYL5Pgh27LeIMI7qWtwoIcXKf4vAPmu7xp6EAs6PdSDw",
-      "header": {
-        "kid": "arifos-a2a-card-2026-%q"
-      }
-    }
-  ],
   "registry_receipt_hash": "sha256:c631f8ace53ed6b0f284256e2b0393a9e0a8d3dc3289aaf78166b89d4ef22b7a",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
   "registry_source": [
@@ -1115,5 +1106,24 @@
     ],
     "vault": "VAULT999"
   },
-  "admissible": true
+  "admissible": true,
+  "signature_legacy": [
+    {
+      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
+      "signature": "izSCMRFYfqk2HAeZRjwPQrgJxYhklfCLnzwy3xtSj9iYL5Pgh27LeIMI7qWtwoIcXKf4vAPmu7xp6EAs6PdSDw",
+      "header": {
+        "kid": "arifos-a2a-card-2026-%q"
+      }
+    }
+  ],
+  "signature_status": {
+    "state": "ABSENT",
+    "detail": "JWS-shaped; genuine 64-byte Ed25519 signature present, but the protected header carries an unsubstituted template specifier (kid='arifos-a2a-card-2026-%q') so the key id is corrupt and the signature cannot be attributed to a key; body also modified after signing",
+    "conforms_to": "Ed25519Signature2020 — see /root/AAA/scripts/sign-agent-card.sh",
+    "verifier": "none — no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
+    "detected_by": "/root/scripts/agent-card-drift-detector.py",
+    "detected_at": "2026-09-16T07:00:00Z",
+    "material_preserved_under": "signature_legacy",
+    "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
+  }
 }
