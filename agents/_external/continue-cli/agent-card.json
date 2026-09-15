@@ -516,15 +516,6 @@
       "protocolVersion": "1.0"
     }
   ],
-  "signatures": [
-    {
-      "did": "did:arif:aaa",
-      "proofValue": "Jmrls5v5rgI/Y9m91h5rIAFP6srIP6zpzfhgw4G0c85T75AuH6mBUVSLYzsvch8wtNRdm6Sjh6y2bEpkSKRKCw==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T22:30:29Z",
-      "type": "Ed25519Signature2020"
-    }
-  ],
   "_model_sot": "/root/.config/federation-models.json",
   "supported_interfaces": [
     {
@@ -588,5 +579,24 @@
     "motto": "DITEMPA BUKAN DIBERI",
     "capability": "BUILD",
     "lane": "333-AGI"
+  },
+  "signature_legacy": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "Jmrls5v5rgI/Y9m91h5rIAFP6srIP6zpzfhgw4G0c85T75AuH6mBUVSLYzsvch8wtNRdm6Sjh6y2bEpkSKRKCw==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T22:30:29Z",
+      "type": "Ed25519Signature2020"
+    }
+  ],
+  "signature_status": {
+    "state": "ABSENT",
+    "detail": "hollow block — empty kid/signature/protected; contains no cryptographic material",
+    "conforms_to": "Ed25519Signature2020 — see /root/AAA/scripts/sign-agent-card.sh",
+    "verifier": "none — no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
+    "detected_by": "/root/scripts/agent-card-drift-detector.py",
+    "detected_at": "2026-09-16T07:00:00Z",
+    "material_preserved_under": "signature_legacy",
+    "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
   }
 }

@@ -40,15 +40,6 @@
     "F13"
   ],
   "doctrine": "DITEMPA BUKAN DIBERI",
-  "signatures": [
-    {
-      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
-      "signature": "5p0f0Sr7M8QOcX_-w0WPau6HGcUgKWamWuPuopLks3JdROMqxmOHGxknjJKaarGl5WZnWVteKxTFKyzAeE_XBw",
-      "header": {
-        "kid": "arifos-a2a-card-2026-%q"
-      }
-    }
-  ],
   "$schema": "arifOS/agent-card/v2.3.0",
   "schemaVersion": "2.3.0",
   "registry_receipt_hash": "sha256:1f55e2ef6283ae8348f5b546ae33d6f7de947dab3c59b1824c1341ae0e28446c",
@@ -85,7 +76,38 @@
     "invariant": "CAPABILITY ≠ AUTHORITY",
     "doctrine": "Govern capabilities, not implementations.",
     "motto": "DITEMPA BUKAN DIBERI",
-    "capability": "BUILD",
-    "lane": "unassigned"
+    "capability": "VERIFY",
+    "lane": "555-ASI",
+    "derivation": {
+      "basis": "evidence-derived from the card's own declared fields",
+      "evidence": [
+        "authority_ceiling=OBSERVE_ONLY",
+        "function: audits, zens, reduces entropy across the skill surface"
+      ],
+      "method": "not a bulk default",
+      "stamped_by": "hermes (F13 authorisation 2026-09-16)",
+      "stamped_at": "2026-09-16T07:00:00Z",
+      "note": "Auditing is the VERIFY verb. Verifies; never approves.",
+      "conflict": "authority=\"888\" — an APEX LANE label used where an authority CLASS belongs (expected OBSERVE_ONLY / EXECUTE_AFTER_SEAL). Flagged."
+    }
+  },
+  "signature_legacy": [
+    {
+      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
+      "signature": "5p0f0Sr7M8QOcX_-w0WPau6HGcUgKWamWuPuopLks3JdROMqxmOHGxknjJKaarGl5WZnWVteKxTFKyzAeE_XBw",
+      "header": {
+        "kid": "arifos-a2a-card-2026-%q"
+      }
+    }
+  ],
+  "signature_status": {
+    "state": "ABSENT",
+    "detail": "JWS-shaped; genuine 64-byte Ed25519 signature present, but the protected header carries an unsubstituted template specifier (kid='arifos-a2a-card-2026-%q') so the key id is corrupt and the signature cannot be attributed to a key; body also modified after signing",
+    "conforms_to": "Ed25519Signature2020 — see /root/AAA/scripts/sign-agent-card.sh",
+    "verifier": "none — no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
+    "detected_by": "/root/scripts/agent-card-drift-detector.py",
+    "detected_at": "2026-09-16T07:00:00Z",
+    "material_preserved_under": "signature_legacy",
+    "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
   }
 }

@@ -572,17 +572,6 @@
     "ratifiedAt": "2026-07-01T20:22:00Z",
     "doctrine": "DITEMPA BUKAN DIBERI"
   },
-  "signatures": [
-    {
-      "did": "did:arif:aaa",
-      "proofPurpose": "assertionMethod",
-      "proofValue": "<PENDING_REISSUE_2026-08-26>",
-      "proofValue_note": "Original 2026-07-12 Ed25519Signature2020 proof attached to v2.4.0; re-issuance required after v2.5.0 truth-repair.",
-      "created": "2026-07-12T22:30:29Z",
-      "type": "Ed25519Signature2020",
-      "status": "QUARANTINED_PENDING_REISSUE"
-    }
-  ],
   "metadata": {
     "fi_slot": "FI-005",
     "kernel_deps": [
@@ -682,5 +671,26 @@
     "motto": "DITEMPA BUKAN DIBERI",
     "capability": "BUILD",
     "lane": "333-AGI"
+  },
+  "signature_legacy": [
+    {
+      "did": "did:arif:aaa",
+      "proofPurpose": "assertionMethod",
+      "proofValue": "<PENDING_REISSUE_2026-08-26>",
+      "proofValue_note": "Original 2026-07-12 Ed25519Signature2020 proof attached to v2.4.0; re-issuance required after v2.5.0 truth-repair.",
+      "created": "2026-07-12T22:30:29Z",
+      "type": "Ed25519Signature2020",
+      "status": "QUARANTINED_PENDING_REISSUE"
+    }
+  ],
+  "signature_status": {
+    "state": "ABSENT",
+    "detail": "hollow block — empty kid/signature/protected; contains no cryptographic material",
+    "conforms_to": "Ed25519Signature2020 — see /root/AAA/scripts/sign-agent-card.sh",
+    "verifier": "none — no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
+    "detected_by": "/root/scripts/agent-card-drift-detector.py",
+    "detected_at": "2026-09-16T07:00:00Z",
+    "material_preserved_under": "signature_legacy",
+    "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
   }
 }

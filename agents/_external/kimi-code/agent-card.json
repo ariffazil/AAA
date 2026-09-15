@@ -1079,15 +1079,6 @@
     "quarantine": "/root/.kimi-code/quarantine-20260821",
     "note": "185 byte-identical mirror dupes of AAA canonical removed; 44 retired + 11 archives + 2 stubs quarantined; manifest kept; count = visible top-level (hidden dotdirs excluded, not skill-scanned); 4 taxonomy symlink trees (136 broken) removed — AAA intact = SOT"
   },
-  "signatures": [
-    {
-      "did": "did:arif:aaa",
-      "proofValue": "QkBv1MAZsXe+DEarbb8iCzKLu9sXC2VjcTNHb2Ow/ev4Nw4xx66Y8bDef59I4tl0vqwOc3Y2ffPISnes7/htCw==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-08-21T05:48:48Z",
-      "type": "Ed25519Signature2020"
-    }
-  ],
   "registry_receipt_hash": "sha256:ce67dedc8b8f743135d1832940e8b16955b6756863abb154a8b21e11225fb44d",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
   "registry_source": [
@@ -1124,5 +1115,24 @@
     "motto": "DITEMPA BUKAN DIBERI",
     "capability": "BUILD",
     "lane": "333-AGI"
+  },
+  "signature_legacy": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "QkBv1MAZsXe+DEarbb8iCzKLu9sXC2VjcTNHb2Ow/ev4Nw4xx66Y8bDef59I4tl0vqwOc3Y2ffPISnes7/htCw==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-08-21T05:48:48Z",
+      "type": "Ed25519Signature2020"
+    }
+  ],
+  "signature_status": {
+    "state": "ABSENT",
+    "detail": "hollow block — empty kid/signature/protected; contains no cryptographic material",
+    "conforms_to": "Ed25519Signature2020 — see /root/AAA/scripts/sign-agent-card.sh",
+    "verifier": "none — no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
+    "detected_by": "/root/scripts/agent-card-drift-detector.py",
+    "detected_at": "2026-09-16T07:00:00Z",
+    "material_preserved_under": "signature_legacy",
+    "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
   }
 }
