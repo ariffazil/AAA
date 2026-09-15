@@ -1,0 +1,8 @@
+{
+ "selected_at": "2026-09-15T19:05:32Z",
+ "claim_source": "seal:37",
+ "claim_excerpt": "{\"actor\": \"arif\", \"actor_id\": \"arif\", \"actor_verification\": {\"actor_verified\": true, \"method\": \"ed25519_verified\", \"signature_verified\": true}, \"authority_state\": \"SOVEREIGN\", \"decision_reference\": \"SOV-3b21ecd5d738\", \"envelope_version\": \"f004-v1\", \"epoch_id\": \"F004-CANONICAL-2026-07-17\", \"idempoten",
+ "why": "most recent consequence-bearing sealed action, unchallenged",
+ "attack_prompt": "Falsify this machine action: was the verdict constitutionally earned? What evidence would reverse it? (unasked sovereign drill — jauhari §VIII)",
+ "outcome_log_cmd": "jauhari_calibration.py log --claim '<excerpt>' --source 37 ..."
+}
