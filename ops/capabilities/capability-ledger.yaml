@@ -451,3 +451,133 @@ capabilities:
       runtime: "Hermes agent sessions"
       human_accountable: "Arif"
       review_interval_days: 30
+
+  # ── ingested by RSI loop 2026-09-15T22:22:02+08:00 ──────────────────────────────
+  - id: capability.authority_binding
+    title: "Authority Binding"
+    domain: "capability"
+    lifecycle: active
+    _ingested_by: hermes-rsi-loop
+    _independence: NOMINAL
+    _provisional: true
+
+    implementation:
+      state: implemented
+      evidence:
+        - type: rsi_atom
+          ref: "ATOM-afd9914a5836"
+          claim: "PERMISSION_DRIFT observed 9x — impact=auth_gap. First surface: session:tool:terminal"
+
+    reachability:
+      state: working_unprobed
+      trigger: "cron: aaa-rsi-loop (7 */6 * * *)"
+      last_probe_at: null
+      last_probe_status: "never_probed"
+
+    governance:
+      authority: observe
+      activation_gate: 888_HOLD
+
+  # ── ingested by RSI loop 2026-09-15T22:22:02+08:00 ──────────────────────────────
+  - id: capability.failure_surfacing
+    title: "Failure Surfacing"
+    domain: "capability"
+    lifecycle: active
+    _ingested_by: hermes-rsi-loop
+    _independence: NOMINAL
+    _provisional: true
+
+    implementation:
+      state: implemented
+      evidence:
+        - type: rsi_atom
+          ref: "ATOM-ea219ef597ba"
+          claim: "SILENT_FAIL observed 7x — impact=transport. First surface: session:tool:terminal"
+
+    reachability:
+      state: working_unprobed
+      trigger: "cron: aaa-rsi-loop (7 */6 * * *)"
+      last_probe_at: null
+      last_probe_status: "never_probed"
+
+    governance:
+      authority: observe
+      activation_gate: 888_HOLD
+
+  # ── ingested by RSI loop 2026-09-15T22:22:02+08:00 ──────────────────────────────
+  - id: capability.registry_truth
+    title: "Registry Truth"
+    domain: "capability"
+    lifecycle: active
+    _ingested_by: hermes-rsi-loop
+    _independence: NOMINAL
+    _provisional: true
+
+    implementation:
+      state: implemented
+      evidence:
+        - type: rsi_atom
+          ref: "ATOM-e2a412411952"
+          claim: "REGISTRY_MISMATCH observed 4x — impact=surface_gap. First surface: session:tool:read_file"
+
+    reachability:
+      state: working_unprobed
+      trigger: "cron: aaa-rsi-loop (7 */6 * * *)"
+      last_probe_at: null
+      last_probe_status: "never_probed"
+
+    governance:
+      authority: observe
+      activation_gate: 888_HOLD
+
+  # ── ingested by RSI loop 2026-09-15T22:22:02+08:00 ──────────────────────────────
+  - id: capability.path_discovery
+    title: "Path Discovery"
+    domain: "capability"
+    lifecycle: active
+    _ingested_by: hermes-rsi-loop
+    _independence: NOMINAL
+    _provisional: true
+
+    implementation:
+      state: implemented
+      evidence:
+        - type: rsi_atom
+          ref: "ATOM-6c1f3339266a"
+          claim: "PATH_DRIFT observed 2x — impact=path_unresolved. First surface: session:tool:terminal"
+
+    reachability:
+      state: working_unprobed
+      trigger: "cron: aaa-rsi-loop (7 */6 * * *)"
+      last_probe_at: null
+      last_probe_status: "never_probed"
+
+    governance:
+      authority: observe
+      activation_gate: 888_HOLD
+
+  # ── ingested by RSI loop 2026-09-15T22:22:02+08:00 ──────────────────────────────
+  - id: capability.loop_exhale
+    title: "Loop Exhale"
+    domain: "capability"
+    lifecycle: active
+    _ingested_by: hermes-rsi-loop
+    _independence: NOMINAL
+    _provisional: true
+
+    implementation:
+      state: implemented
+      evidence:
+        - type: rsi_atom
+          ref: "ATOM-88a946f6ac8f"
+          claim: "QUEUE_BLOCKED observed 2x — impact=stuck_retry. First surface: session:tool:terminal"
+
+    reachability:
+      state: working_unprobed
+      trigger: "cron: aaa-rsi-loop (7 */6 * * *)"
+      last_probe_at: null
+      last_probe_status: "never_probed"
+
+    governance:
+      authority: observe
+      activation_gate: 888_HOLD
