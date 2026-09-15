@@ -1,0 +1,47 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF 1 1912A8BA9
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+2. MATERIAL ACCOUNTING POLICIES (CONTINUED)
+2.2 Leases (continued)
+(iii) Recognition and initial measurement (continued)
+(a) Asa lessee (continued)
+Lease payments included in the measurement of the lease liability comprise the following:
+. e fixed payments, including in-substance fixed payments;
+
+e variable lease payments that depend on an index or a rate, initially measured using
+
+the index or rate as at the commencement date;
+¢ amounts expected to be payable under a residual value guarantee;
+e the exercise price under a purchase option that the Company are reasonably certain
+
+to exercise; and
+e penalties for early termination of a lease unless the Company are reasonably certain .
+
+not to early terminate the contract.
+The Company excludes variable lease payments that linked to future performance or usage
+of the underlying asset from the lease liability. Instead, these payments are recognised in
+profit or loss in the period in which the performance or use occurs. The Company assesses
+at lease commencement whether it is reasonably certain to exercise the extension options
+in determining the lease term. The Company has elected not to recognise right-of-use
+
+. assets and lease liabilities for short-term leases that have a lease term of 12 months or less
+and leases of low-value assets. The Company recognises the lease payments associated
+with these leases as an expense on a straight-line basis over the lease term.
+(b) Asa lessor
+When the Company acts as a lessor, it determines at lease inception whether each lease is
+a finance lease or an operating lease. To classify each lease, the Company makes an overall
+assessment of whether the lease transfers substantially all of the risks and rewards
+incidental to ownership of the underlying asset. If this is the case, then the lease is a finance
+lease; if not, then it is an operating lease. If an arrangement contains lease and non-lease
+components, the Company applies IFRS 15 Revenue from Contracts with Customers to
+allocate the consideration in the contract based on the stand-alone selling price. The
+Company recognises assets held under a finance lease in its statement of financial position
+and presents them as a receivable at an amount equal to the net investment in the lease.
+The Company uses the interest rate implicit in the lease to measure the net investment in
+the lease. When the Company is an intermediate lessor, it accounts for its interests in the
+head lease and the sub-lease separately. It assesses the lease classification of a sub-lease
+with reference to the right-of-use asset arising from the head lease, not with reference to
+the underlying asset. If a head lease is a short-term lease to which the Company applies
+the exemption described above, then it classifies the sub-lease as an operating lease.
+27

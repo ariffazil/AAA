@@ -1,0 +1,232 @@
+{
+  "registry_id": "numeric-audit.bnm-capital-rwa",
+  "version": "2026.09.15",
+  "description": "Scope-tagged risk-weight rule registry. Every figure carries its CANONICAL SCOPE so that a number lifted from secondary literature and applied outside that scope is machine-detectable. Scope vocabulary is closed and enumerable; predicates are pure data.",
+  "scope_vocabulary": {
+    "contract": ["musyarakah", "musyarakah_mutanaqisah", "mudarabah", "murabahah", "tawarruq", "ijarah", "unspecified"],
+    "exposure_basis": ["profit_and_loss_sharing_financing", "equity_holding", "project_financing", "sub_contract", "real_estate_residential", "real_estate_commercial", "specialised_financing", "retail_other", "corporate"],
+    "position": ["banking_book", "trading_book"],
+    "listing": ["publicly_traded", "non_publicly_traded", "not_applicable"],
+    "counterparty": ["retail", "corporate", "sme", "fi", "sovereign", "not_applicable"]
+  },
+  "basis_vocabulary": {
+    "flat_all": "Single weight applied uniformly to every exposure in the class, no discrimination.",
+    "category_dependent": "Weight selected from a schedule by an assessed supervisory category / FTV band / rating. Applying any single value flatly discards the schedule.",
+    "counterparty_dependent": "Weight follows the obligor / counterparty class, not the contract label.",
+    "pass_through": "Weight is that of the underlying sub-contract or ultimate obligor.",
+    "discretionary_increase": "Prescribed base weight that the supervisor may increase if the risk profile is deemed higher."
+  },
+  "rules": [
+    {
+      "rule_id": "cafib.s2.87.musyarakah.equity_holding.public",
+      "figures_pct": ["100"],
+      "figure_kind": "risk_weight",
+      "canonical_scope": "Musharakah for equity holding in the banking book - publicly traded equity.",
+      "applies_to": [
+        {"contract": ["musyarakah"], "exposure_basis": ["equity_holding"], "listing": ["publicly_traded"], "position": ["banking_book"]}
+      ],
+      "basis": "category_dependent",
+      "conditions": ["Alternative treatment available: supervisory slotting criteria method subject to fulfilling minimum requirements as per Appendix V."],
+      "source": {"doc": "BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21", "clause": "2.87", "issued": "2015-07-15", "file": "/root/AAA/numeric_audit/refs/cafib.txt", "line": 2148, "quote": "Musharakah for equity holding in banking book: Holding of equity -> 100% risk weight for publicly traded equity and 150% risk weight for non-publicly traded equity; or Supervisory slotting criteria method subject to fulfilling minimum requirements as per Appendix V."},
+      "evidence_state": "OBS"
+    },
+    {
+      "rule_id": "cafib.s2.87.musyarakah.equity_holding.nonpublic",
+      "figures_pct": ["150"],
+      "figure_kind": "risk_weight",
+      "canonical_scope": "Musharakah for equity holding in the banking book - non-publicly traded equity.",
+      "applies_to": [
+        {"contract": ["musyarakah"], "exposure_basis": ["equity_holding"], "listing": ["non_publicly_traded"], "position": ["banking_book"]}
+      ],
+      "basis": "category_dependent",
+      "conditions": ["Or supervisory slotting criteria method subject to Appendix V minimum requirements."],
+      "source": {"doc": "BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21", "clause": "2.87", "issued": "2015-07-15", "file": "/root/AAA/numeric_audit/refs/cafib.txt", "line": 2148, "quote": "...150% risk weight for non-publicly traded equity..."},
+      "evidence_state": "OBS"
+    },
+    {
+      "rule_id": "cafib.s2.87.musyarakah.project_financing",
+      "figures_pct": ["150"],
+      "figure_kind": "risk_weight",
+      "canonical_scope": "Musharakah for project financing - funds advanced to joint venture.",
+      "applies_to": [
+        {"contract": ["musyarakah"], "exposure_basis": ["project_financing"]}
+      ],
+      "basis": "discretionary_increase",
+      "conditions": ["150% risk weight (footnote 41) or supervisory slotting criteria method subject to Appendix V.", "Footnote 41: the Bank reserves the right to increase the risk weight if the risk profile of the exposure is deemed higher."],
+      "source": {"doc": "BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21", "clause": "2.87 fn41", "issued": "2015-07-15", "file": "/root/AAA/numeric_audit/refs/cafib.txt", "line": 2155, "quote": "Musharakah for project financing: Funds advanced to joint venture -> 150% risk weight41; or Supervisory slotting criteria method subject to fulfilling minimum requirements as per Appendix V."},
+      "evidence_state": "OBS"
+    },
+    {
+      "rule_id": "cafib.s2.87.musyarakah.with_sub_contract",
+      "figures_pct": [],
+      "figure_kind": "risk_weight",
+      "canonical_scope": "Musharakah with sub-contract - exposure to credit risk is weighted as set out under the sub-contract.",
+      "applies_to": [
+        {"contract": ["musyarakah"], "exposure_basis": ["sub_contract"]}
+      ],
+      "basis": "pass_through",
+      "conditions": ["Weight is not a musyarakah-specific number at all; it is inherited from the sub-contract."],
+      "source": {"doc": "BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21", "clause": "2.87", "issued": "2015-07-15", "file": "/root/AAA/numeric_audit/refs/cafib.txt", "line": 2166, "quote": "Musharakah with sub-contract: Exposure to credit risk -> As set out under the sub-contract."},
+      "evidence_state": "OBS"
+    },
+    {
+      "rule_id": "cafib.s2.86.diminishing_musyarakah.asset_based",
+      "figures_pct": [],
+      "figure_kind": "risk_weight",
+      "canonical_scope": "Diminishing Musharakah (Musharakah Mutanaqisah) where the exposure is an asset/rental receivable: exposure to credit risk similar to Musharakah with Ijarah. Weight follows the counterparty, NOT 400%.",
+      "applies_to": [
+        {"contract": ["musyarakah_mutanaqisah"], "exposure_basis": ["profit_and_loss_sharing_financing", "real_estate_residential", "real_estate_commercial"]}
+      ],
+      "resolves_via": ["bnm.sa2024.s23.12.rre.not_materially_dependent", "bnm.sa2024.s23.13.rre.materially_dependent"],
+      "basis": "counterparty_dependent",
+      "conditions": ["If and only if the exposure under the Diminishing Musharakah contract consists of share equity in an enterprise, the equity risk treatment applies instead (see cafib.s2.86.diminishing_musyarakah.share_equity). After the wa'd / progressive acquisition completes, the exposure is a credit exposure to the obligor."],
+      "source": {"doc": "BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21", "clause": "2.86(c)-(d)", "issued": "2015-07-15", "file": "/root/AAA/numeric_audit/refs/cafib.txt", "line": 2140, "quote": "...the Islamic banking institution is exposed to credit risk similar to an exposure under the Musharakah with Ijarah contract. (d) However, if the exposure under the Diminishing Musharakah contract consists of share equity in an enterprise, the Islamic banking institution shall measure its risk exposure using the treatment for equity risk."},
+      "evidence_state": "OBS"
+    },
+    {
+      "rule_id": "cafib.s2.86.diminishing_musyarakah.share_equity",
+      "figures_pct": ["300", "400"],
+      "figure_kind": "risk_weight",
+      "canonical_scope": "Diminishing Musharakah where the exposure consists of SHARE EQUITY IN AN ENTERPRISE - equity risk treatment (see the simple risk weight method).",
+      "applies_to": [
+        {"contract": ["musyarakah_mutanaqisah"], "exposure_basis": ["equity_holding"]}
+      ],
+      "basis": "category_dependent",
+      "conditions": ["Only reached when the exposure is share equity in an enterprise. Asset-based diminishing musharakah (home financing) does NOT reach this rule."],
+      "source": {"doc": "BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21", "clause": "2.86(d)", "issued": "2015-07-15", "file": "/root/AAA/numeric_audit/refs/cafib.txt", "line": 2154, "quote": "if the exposure under the Diminishing Musharakah contract consists of share equity in an enterprise, the Islamic banking institution shall measure its risk exposure using the treatment for equity risk."},
+      "evidence_state": "OBS"
+    },
+    {
+      "rule_id": "cafib.s2.94.mudarabah.equity_holding.public",
+      "figures_pct": ["100"],
+      "figure_kind": "risk_weight",
+      "canonical_scope": "Mudarabah for equity holding in the banking book - publicly traded equity.",
+      "applies_to": [
+        {"contract": ["mudarabah"], "exposure_basis": ["equity_holding"], "listing": ["publicly_traded"], "position": ["banking_book"]}
+      ],
+      "basis": "category_dependent",
+      "conditions": ["Or supervisory slotting criteria method subject to Appendix V minimum requirements."],
+      "source": {"doc": "BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21", "clause": "2.94", "issued": "2015-07-15", "file": "/root/AAA/numeric_audit/refs/cafib.txt", "line": 2282, "quote": "Mudarabah for equity holding in banking book: Holding of equity -> 100% risk weight for publicly traded equity and 150% risk weight for non-publicly traded equity; or Supervisory slotting criteria method subject to fulfilling minimum requirements as per Appendix V."},
+      "evidence_state": "OBS"
+    },
+    {
+      "rule_id": "cafib.s2.94.mudarabah.equity_holding.nonpublic",
+      "figures_pct": ["150"],
+      "figure_kind": "risk_weight",
+      "canonical_scope": "Mudarabah for equity holding in the banking book - non-publicly traded equity.",
+      "applies_to": [
+        {"contract": ["mudarabah"], "exposure_basis": ["equity_holding"], "listing": ["non_publicly_traded"], "position": ["banking_book"]}
+      ],
+      "basis": "category_dependent",
+      "conditions": ["Or supervisory slotting criteria method subject to Appendix V minimum requirements."],
+      "source": {"doc": "BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21", "clause": "2.94", "issued": "2015-07-15", "file": "/root/AAA/numeric_audit/refs/cafib.txt", "line": 2282, "quote": "...150% risk weight for non-publicly traded equity..."},
+      "evidence_state": "OBS"
+    },
+    {
+      "rule_id": "cafib.s2.93.mudarabah.money_market",
+      "figures_pct": [],
+      "figure_kind": "risk_weight",
+      "canonical_scope": "Mudarabah interbank / money-market investments: attract the CREDIT risk of the Islamic banking institution, NOT equity risk, despite contractual similarity to equity.",
+      "applies_to": [
+        {"contract": ["mudarabah"], "exposure_basis": ["equity_holding"], "counterparty": ["fi"]}
+      ],
+      "basis": "counterparty_dependent",
+      "conditions": ["Explicit carve-out: contractual structure resembling equity does not imply equity treatment."],
+      "source": {"doc": "BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21", "clause": "2.93", "issued": "2015-07-15", "file": "/root/AAA/numeric_audit/refs/cafib.txt", "line": 2270, "quote": "There may be situations where the risk profile of money market instruments based on Mudarabah contracts may not be similar to an equity exposure given the market structure and regulatory infrastructure... Mudarabah interbank investments in the domestic Islamic money market would attract the credit risk of the Islamic banking institution instead of equity risk despite having similarities in the contractual structure."},
+      "evidence_state": "OBS"
+    },
+    {
+      "rule_id": "cafib.s3.166.equity_position.simple_rw.public",
+      "figures_pct": ["300"],
+      "figure_kind": "risk_weight",
+      "canonical_scope": "EQUITY POSITION RISK - simple risk weight method (market-based approach) applied to EQUITY HOLDINGS held in the banking book that are publicly traded.",
+      "applies_to": [
+        {"exposure_basis": ["equity_holding"], "listing": ["publicly_traded"]}
+      ],
+      "basis": "category_dependent",
+      "conditions": ["Requires an equity holding (an equity security). Not a weight for profit-and-loss-sharing FINANCING to a counterparty."],
+      "source": {"doc": "BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21", "clause": "3.166", "issued": "2015-07-15", "file": "/root/AAA/numeric_audit/refs/cafib.txt", "line": 6790, "quote": "3.166 Under the simple risk weight method, a 300% risk weight is applied to equity holdings that are publicly traded and a 400% risk weight to all other equity holdings."},
+      "evidence_state": "OBS"
+    },
+    {
+      "rule_id": "cafib.s3.166.equity_position.simple_rw.other",
+      "figures_pct": ["400"],
+      "figure_kind": "risk_weight",
+      "canonical_scope": "EQUITY POSITION RISK - simple risk weight method applied to ALL OTHER (non-publicly-traded) EQUITY HOLDINGS. This is the canonical home of the 400% figure.",
+      "applies_to": [
+        {"exposure_basis": ["equity_holding"], "listing": ["non_publicly_traded"]}
+      ],
+      "basis": "category_dependent",
+      "conditions": ["Entry condition: the exposure must BE an equity holding (an equity security in the banking book). A musyarakah HOME FINANCING (diminishing musharakah over a house) is not an equity holding. Applying 400% to converted risk-sharing FINANCING is out of scope."],
+      "source": {"doc": "BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21", "clause": "3.166", "issued": "2015-07-15", "file": "/root/AAA/numeric_audit/refs/cafib.txt", "line": 6790, "quote": "3.166 Under the simple risk weight method, a 300% risk weight is applied to equity holdings that are publicly traded and a 400% risk weight to all other equity holdings."},
+      "evidence_state": "OBS"
+    },
+    {
+      "rule_id": "cafib.appV.specialised_financing.slotting",
+      "figures_pct": ["70", "90", "115", "250", "400"],
+      "figure_kind": "risk_weight",
+      "canonical_scope": "SPECIALISED FINANCING - supervisory slotting criteria. Weights by supervisory category: Strong 70%, Good 90%, Satisfactory 115%, Weak 250%, Default 400%.",
+      "applies_to": [
+        {"exposure_basis": ["specialised_financing", "project_financing"]}
+      ],
+      "basis": "category_dependent",
+      "conditions": ["400% here is the DEFAULT supervisory category only - it requires a determination that the exposure IS in default. It is not a generic risk-sharing weight.", "Entry requires meeting the minimum requirements in Appendix V."],
+      "source": {"doc": "BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21, Appendix V", "clause": "App V para 8", "issued": "2015-07-15", "file": "/root/AAA/numeric_audit/refs/cafib.txt", "line": 18024, "quote": "Risk weights under Supervisory Categories ... Strong 70% | Good 90% | Satisfactory 115% | Weak 250% | Default 400%"},
+      "evidence_state": "OBS"
+    },
+    {
+      "rule_id": "cafib.s2.87.musyarakah.financing.operative_range",
+      "figures_pct": ["100", "150"],
+      "figures_are_range": true,
+      "figure_kind": "risk_weight",
+      "canonical_scope": "Musharakah financing that is NOT a discrete equity holding: the operative prescription is clause 2.87 - 100%/150% for equity holdings in the banking book, 150% for funds advanced to a joint venture (project financing), the sub-contract's own weight for a musharakah with sub-contract, and the counterparty weight for a diminishing musharakah that is an asset receivable. NO clause of CAFIB prescribes 400% for musharakah financing.",
+      "applies_to": [
+        {"contract": ["musyarakah", "mudarabah"], "exposure_basis": ["profit_and_loss_sharing_financing"]}
+      ],
+      "basis": "category_dependent",
+      "conditions": ["This is the operative range across clause 2.87 / 2.94, not a single number. Selecting one value flatly for the whole class discards the schedule."],
+      "source": {"doc": "BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21", "clause": "2.87, 2.94", "issued": "2015-07-15", "file": "/root/AAA/numeric_audit/refs/cafib.txt", "line": 2148, "quote": "Musharakah for equity holding in banking book -> 100% publicly traded / 150% non-publicly traded equity; Musharakah for project financing -> 150%; Musharakah with sub-contract -> as set out under the sub-contract. (Mudarabah, clause 2.94, mirrors this.)"},
+      "evidence_state": "DER"
+    },
+    {
+      "rule_id": "bnm.sa2024.s23.12.rre.not_materially_dependent",
+      "figures_pct": ["20", "25", "30", "40", "90"],
+      "figure_kind": "risk_weight",
+      "canonical_scope": "Residential real estate exposures NOT materially dependent on cash flows generated by the property - weights by FTV band: x<=50% -> 20%, 50<x<=60 -> 25%, 60<x<=80 -> 30%, 80<x<=90 -> 40%, x>90 -> 90%.",
+      "applies_to": [
+        {"exposure_basis": ["real_estate_residential"], "counterparty": ["retail"]}
+      ],
+      "basis": "category_dependent",
+      "conditions": ["Counterparty-based credit risk treatment. Compatible with diminishing musharakah home financing post-wa'd (cafib.s2.86.diminishing_musyarakah.asset_based)."],
+      "source": {"doc": "BNM SA for Credit Risk (BPN policy document)", "clause": "23.12", "issued": "2024-11-20", "file": "/root/AAA/numeric_audit/refs/sa2024.txt", "line": 1177, "quote": "S 23.12 An FI shall risk weight its exposures to residential real estate that are not materially dependent on cash flows generated by the property as follows: ... 20% / 25% / 30% / 40% / 90%"},
+      "evidence_state": "OBS"
+    },
+    {
+      "rule_id": "bnm.sa2024.s23.13.rre.materially_dependent",
+      "figures_pct": ["30", "35", "45", "60", "90"],
+      "figure_kind": "risk_weight",
+      "canonical_scope": "Residential real estate exposures materially dependent on cash flows generated by the property - weights by FTV band: x<=50% -> 30%, 50<x<=60 -> 35%, 60<x<=80 -> 45%, 80<x<=90 -> 60%, x>90 -> 90%.",
+      "applies_to": [
+        {"exposure_basis": ["real_estate_residential"], "counterparty": ["corporate", "sme"]}
+      ],
+      "basis": "category_dependent",
+      "conditions": ["Section 23.9-23.10 determine material dependency (e.g. >50% of obligor income from the property)."],
+      "source": {"doc": "BNM SA for Credit Risk (BPN policy document)", "clause": "23.13", "issued": "2024-11-20", "file": "/root/AAA/numeric_audit/refs/sa2024.txt", "line": 1189, "quote": "S 23.13 An FI shall risk weight its exposures to residential real estate that are materially dependent on cash flows generated by the property as follows: ... 30% / 35% / 45% / 60% / 90%"},
+      "evidence_state": "OBS"
+    }
+  ],
+  "confusable_figures": {
+    "400": {
+      "carriers": ["cafib.s3.166.equity_position.simple_rw.other", "cafib.appV.specialised_financing.slotting"],
+      "discriminator": "Is the exposure an EQUITY HOLDING (non-publicly traded equity security in the banking book)? If yes -> 400% is in scope (simple risk weight method). If instead it is a specialised-financing exposure, 400% is reachable ONLY as the Default supervisory category, which requires a default determination. If it is neither, 400% has been borrowed from outside its scope."
+    },
+    "150": {
+      "carriers": ["cafib.s2.87.musyarakah.equity_holding.nonpublic", "cafib.s2.87.musyarakah.project_financing", "cafib.s2.94.mudarabah.equity_holding.nonpublic"],
+      "discriminator": "Equity holding vs funds advanced to a joint venture. Both are 150%, but the conditions differ; project-financing carries a discretionary-increase footnote."
+    },
+    "300": {
+      "carriers": ["cafib.s3.166.equity_position.simple_rw.public", "cafib.s2.86.diminishing_musyarakah.share_equity"],
+      "discriminator": "300% is an equity-position-risk number (publicly traded equity holding), never a financing weight."
+    }
+  }
+}

@@ -1,0 +1,43 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF 11912A8BAQ
+PETCO TRADING (UK) LEMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+22. FINANCIAL INSTRUMENTS (CONTINUED)
+Credit Risk (continued)
+i) Receivables (continued) :
+Recognition and measurement of impairment loss
+In managing credit risk of trade receivables, the Company manages its debtors and takes
+appropriate actions (including but not limited to legal actions) to recover long overdue balances.
+The Company performs credit rating assessment of all its counterparties in order to measure ECL
+of trade receivables for all segments using the PETRONAS Credit Risk Rating System. This
+credit rating assessment considers quantitative assessment using the counterparties’ financial
+statements or a qualitative assessment of the counterparties, which includes but is not limited to
+their reputation, competitive position, industry and geopolitical outlook.
+In determining the ECL, the probability of default assigned to each counterparty is based on their
+. individual credit rating. This probability of default is derived by benchmarking against available
+third party and market information, which also incorporates forward looking information.
+
+. Loss given default is the assumption of the proportion of financial asset that cannot be recovered
+by conversion of collateral to cash or by legal process and is assessed based on the Company’s
+historical experience.
+
+As at the end of the reporting period, the maximum exposure to credit risk arising from
+receivables is equal to the carrying amount.
+The ageing of receivables net of impairment amount as at the end of the reporting period is
+analysed below:
+31.12.2025 31.12.2024
+USD’000 USD’000
+Current 265,393 262,072
+Within one year 2,860 2,904
+Over one year 1,340 1,583
+269,593 266,559
+The Company has not recognised any loss allowance for trade receivables that are secured by
+collateral and/or other credit enhancements such as letter of credit and bank guarantees.
+The movements in the allowance for impairment losses of receivables during the year are as
+follows:
+31.12.2025 31.12.2024
+USD’000 USD’000
+Opening balance - -
+Impairment loss recognised 310 :
+Closing balance 310 -
+60

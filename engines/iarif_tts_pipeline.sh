@@ -8,6 +8,26 @@ TEXT_FILE="${1:?usage: iarif_tts_pipeline.sh <text-file> <output-path>}"
 OUT_PATH="${2:?usage: iarif_tts_pipeline.sh <text-file> <output-path>}"
 VOICE_ID="${IARIF_VOICE_ID:-iarif-sovereign-v9}"
 
+# ---- V8/V9 registry resolution — FAIL CLOSED on REVOKED voices (F1 AMANAH) ----
+# The voice-registry.json is canonical. Any REVOKED or unknown id aborts before
+# synthesis. This closes the V8 contamination hole: even an env override to the
+# V8 checkpoint id (i-ARIF-20260819T084602) is refused here, not passed upstream.
+VOICE_ID="$(python3 - "$VOICE_ID" <<'PYREG'
+import sys, json
+vid = sys.argv[1]
+r = json.load(open("/root/AAA/audio/voice-registry.json"))
+canon = r.get("aliases", {}).get(vid, vid)
+v = r.get("voices", {}).get(canon)
+if v is None:
+    sys.stderr.write(f"UNKNOWN voice id {vid} (canonical {canon}) — not in registry\n")
+    sys.exit(1)
+if v.get("status") == "REVOKED":
+    sys.stderr.write(f"REVOKED voice id {vid} — refused by registry ({v.get('reason','')})\n")
+    sys.exit(1)
+print(v.get("provider_voice_id", vid))
+PYREG
+)" || { echo "iarif_tts_pipeline: voice id $VOICE_ID refused by registry — abort (fail closed)" >&2; exit 1; }
+
 WORK="$(mktemp -d /tmp/iarif_tts.XXXXXX)"
 trap 'rm -rf "$WORK"' EXIT
 
@@ -52,7 +72,18 @@ PY
 
 export IARIF_TEXT_FILE="$(realpath "$WORK/input.txt")"
 
-# ---- Stage 1: MiniMax synthesis (Pure V8 Studio HD) ----
+# ---- Duration guard + auto re-render (max 3 attempts) ----
+# BM pacing 8–12 chars/s. A render far below the floor (e.g. the 0.216s transient
+# drop) is a SILENT failure: returning success would feed Whisper truncated noise
+# and produce a hallucinated transcript. Fail CLOSED, re-render up to 2 extra
+# attempts, and if still below floor, abort so downstream ASR never sees it.
+_DUR="0"
+_DUR_OK=0
+set +e
+for _ATTEMPT in 1 2 3; do
+  rm -f "$WORK/raw.mp3"
+
+# ---- Stage 1: MiniMax synthesis (Pure V9 Studio HD) ----
 python3 - "$WORK" "$VOICE_ID" <<'PYEOF'
 import sys, os, json, urllib.request
 work, voice_id = sys.argv[1], sys.argv[2]
@@ -147,7 +178,24 @@ PYEDGE
 fi
 
 if [ ! -s "$WORK/raw.mp3" ]; then
-  echo "iarif_tts_pipeline: all synthesis lanes failed" >&2
+  echo "iarif_tts_pipeline: attempt $_ATTEMPT produced no audio — retry" >&2
+  continue
+fi
+
+# ---- Duration check (fail closed on truncated/silent render) ----
+_chars=$(python3 -c "print(len(open('$WORK/input.txt', encoding='utf-8').read()))")
+_floor=$(python3 -c "print(max(0.4 * (float('$_chars')/12.0), 2.0))")
+_DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$WORK/raw.mp3" 2>/dev/null || echo 0)
+_DUR_OK=$(python3 -c "print(1 if float('$_DUR') >= float('$_floor') else 0)")
+if [ "$_DUR_OK" = "1" ]; then
+  break
+fi
+echo "iarif_tts_pipeline: attempt $_ATTEMPT duration ${_DUR}s < floor ${_floor}s (chars=$_chars) — re-render" >&2
+done
+set -e
+
+if [ "$_DUR_OK" != "1" ]; then
+  echo "iarif_tts_pipeline: duration guard FAILED after 3 attempts (last ${_DUR}s < floor ${_floor}s) — abort, do NOT return success" >&2
   exit 1
 fi
 

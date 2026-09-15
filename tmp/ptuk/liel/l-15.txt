@@ -1,0 +1,27 @@
+Docusign Envelope iD: BCBF091A-82F5-40AD-846A-E840C6C56334
+LNG INVESTMENTS EUROPE LIMITED
+STATEMENT OF PROFIT OR LOSS AND OTHER COMPREHENSIVE INCOME
+FOR THE YEAR ENDED 31 DECEMBER 2025
+
+2025 2024
+Notes £000 £000
+Net trading income/(expense) 30 37,328 (17,866)
+Cost of LNG regasification (11,060) (20,887)
+Net gas trading income/(expense) 26,268 (38,753)
+Revenue from contracts with customers 4 99,078 4,283
+LNG cost of revenue (93,467) -
+Gross profit/(loss) 31,879 (34,470)
+Other (expense)/ income — net 5 (1,814) 3,048
+Administrative expenses (6,844) (2,133)
+Operating profit/(loss) 6 23,221 (33,555)
+Finance income 7 3,974 7,324
+Finance cost 8 (8,786) (11,005)
+Profit/(Loss) before taxation 18,409 (37,236)
+Income tax benefit 11.2 112 5,234
+PROFIT/LOSS) FOR THE YEAR 18,521 (32,002)
+Other comprehensive income net of tax - -
+TOTAL COMPREHENSIVE PROFIT/(LOSS) FOR THE YEAR 18,521 (32,002)
+
+The notes set out on pages 19 to 42 are an integral part of these financial statements.
+
+15

@@ -1,0 +1,36 @@
+Docusign Envelope ID: BCBF091A-82F5-40AD-846A-E840C6C56334
+LNG INVESTMENTS EUROPE LIMITED
+. STATEMENT OF FINANCIAL POSITION
+AS AT 31 DECEMBER 2025
+2025 2024
+Notes £°000 £7000
+ASSETS
+Property, plant and equipment 12 1,069 1,069
+Derivative assets 16 518 -
+TOTAL NON-CURRENT ASSETS 1,587 1,069
+Inventories 13 11,628 28,802
+Trade and other receivables 15 97,796 153,592
+Derivative assets 16 11,967 1,923
+Cash and cash equivalents 17 121,476 23,955
+TOTAL CURRENT ASSETS 242,867 208,272
+TOTAL ASSETS , 244,454 209,341
+EQUITY
+Share capital . a . 18 361,700 361,700
+Retained deficit (374,519) (393,040)
+TOTAL EQUITY (12,819) (31,340)
+LIABILITIES
+Onerous contract provision 22 124,223 162,979
+Derivative liabilities 20 - 100
+Deferred tax provision 11 - 112
+TOTAL NON-CURRENT LIABILITIES 124,223 163,191
+Trade and other payables 19 72,462 9,715
+Onerous contract provision 22 45,315 49,755
+Derivative liabilities 20 15,273 18,020
+TOTAL CURRENT LIABILITIES . 133,050 77,490
+TOTAL LIABILITIES 257,273 240,681
+TOTAL EQUITY AND LIABILITIES 244,454 . 209,341
+The financial statements were approved by the Board of Directors on 02 March 2026 and signed on its behalf by:
+Shamsairi Bin Mohd Ibrahim
+Director
+The notes set out on pages 19 to 42 are an integral part of these financial statements.
+17

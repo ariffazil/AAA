@@ -1,0 +1,218 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "name": "arifOS Federation Observability Capability Graph",
+  "timestamp": "2026-09-15T05:39:30Z",
+  "doctrine": "DITEMPA BUKAN DIBERI",
+  "witness_node": "KVM8 (truth-core)",
+  "components": {
+    "FRAME": {
+      "role": "INDEPENDENT_WITNESS",
+      "port": 18085,
+      "protocol": "HTTP",
+      "systemd_unit": "frame-organ.service",
+      "status": "ACTIVE",
+      "oir_rating": 0,
+      "declared_capabilities": [
+        "CHAMBER_1_BASELINE",
+        "CHAMBER_2_PROBE",
+        "CHAMBER_3_COMPARE",
+        "CHAMBER_4_TREND",
+        "CHAMBER_5_ALERT",
+        "CHAMBER_6_REPORT",
+        "CHAMBER_7_RSI_VERIFY"
+      ],
+      "live_capabilities": [
+        "BASELINE_VERIFIED",
+        "PROBE_15M_TIMER",
+        "TREND_JSONL_WRITER",
+        "FEDERATION_DRIFT_COMPUTE"
+      ],
+      "risk_class": "T0_SAFE_READ_ONLY",
+      "endpoint_health": "http://127.0.0.1:18085/health"
+    },
+    "arifFLOW": {
+      "role": "METABOLIC_GOVERNOR",
+      "port": 7073,
+      "protocol": "HTTP",
+      "systemd_unit": "arifflow.service",
+      "status": "ACTIVE",
+      "oir_rating": 2,
+      "declared_capabilities": [
+        "FQ_CALCULATION",
+        "ACTOR_THROTTLING",
+        "CONSECUTIVE_EXECUTION_BARRIER",
+        "VECTOR_QG_DIAGNOSIS_V3",
+        "RING_BUFFER_RECEIPTS_1000",
+        "INVARIANT_MONITORING_INV1_INV12"
+      ],
+      "live_capabilities": [
+        "VECTOR_QG_DIAGNOSIS_V3",
+        "ACTOR_HOLD_ENFORCEMENT",
+        "FLOW_RECEIPTS_1000",
+        "TELEMETRY_LOG_INGRESS"
+      ],
+      "risk_class": "T1_OPERATIONAL_GOVERNOR",
+      "endpoint_health": "http://127.0.0.1:7073/health"
+    },
+    "Kabarkan_Worker": {
+      "role": "TELEMETRY_PROCESSOR",
+      "port": null,
+      "protocol": "NATS_JETSTREAM_SUBSCRIBER",
+      "systemd_unit": "kabarkan-worker.service",
+      "status": "ACTIVE",
+      "oir_rating": 1,
+      "declared_capabilities": [
+        "JETSTREAM_PULL_CONSUMER",
+        "POSTGRES_ASYNC_BATCH_WRITER",
+        "MINIO_OPTIONAL_ARCHIVER",
+        "HEALTH_PROBE_18902"
+      ],
+      "live_capabilities": [
+        "JETSTREAM_PULL_CONSUMER",
+        "POSTGRES_ASYNC_BATCH_WRITER"
+      ],
+      "dormant_capabilities": [
+        "HEALTH_PROBE_18902_HTTP_MISSING_IN_ARIFOS_WORKER",
+        "MINIO_ARCHIVE"
+      ],
+      "risk_class": "T1_DATA_PIPELINE",
+      "consumer_name": "kabarkan-worker-fresh",
+      "stream": "kabarkan-ingest"
+    },
+    "Kabarkan_Collector": {
+      "role": "FUTURE_INGESTION_CANDIDATE",
+      "port": 4318,
+      "alt_port": 4319,
+      "protocol": "OTLP_HTTP_GRPC",
+      "systemd_unit": "kabarkan-collector.service",
+      "status": "STANDBY",
+      "authority": "HOLD",
+      "oir_rating": 0,
+      "declared_capabilities": [
+        "OTLP_SPAN_RECEIVER",
+        "PII_REDACTION_PROCESSOR",
+        "BATCH_PROCESSOR",
+        "VAULT999_JSONL_EXPORTER",
+        "LANGFUSE_OTLP_EXPORTER"
+      ],
+      "live_capabilities": [
+        "OTLP_RECEIVER_LISTENING_4318_4319",
+        "METRICS_PROMETHEUS_8888"
+      ],
+      "dormant_capabilities": [
+        "ACTIVE_INGESTION_PATH_UNUSED_BY_ORGANS"
+      ],
+      "risk_class": "T0_STANDBY",
+      "config_file": "/root/forge_work/kabarkan/kabarkan-collector.yaml"
+    },
+    "NATS": {
+      "role": "TELEMETRY_TRANSPORT_BUS",
+      "port": 4222,
+      "protocol": "NATS_TCP",
+      "systemd_unit": "nats-server.service",
+      "status": "ACTIVE",
+      "oir_rating": 1,
+      "declared_capabilities": [
+        "JETSTREAM_PERSISTENCE",
+        "SUBJECT_ROUTING_KABARKAN_INGEST",
+        "DUPLICATE_WINDOW_2M"
+      ],
+      "live_capabilities": [
+        "STREAM_KABARKAN_INGEST_193K_MSGS",
+        "SUB_SECOND_DELIVERY"
+      ],
+      "risk_class": "T1_INFRASTRUCTURE"
+    },
+    "Postgres": {
+      "role": "IMMUTABLE_OBSERVABILITY_STORE",
+      "port": 5432,
+      "protocol": "POSTGRESQL",
+      "container": "postgres",
+      "status": "ACTIVE",
+      "oir_rating": 2,
+      "declared_capabilities": [
+        "TABLE_OBSERVABILITY_OBSERVATIONS",
+        "INDEXED_LOOKUP_ACTOR_SESSION_TRACE",
+        "JSONB_REASONS_METADATA"
+      ],
+      "live_capabilities": [
+        "STORED_201K_ROWS",
+        "PRIMARY_SINK_FOR_VERDICT_LOGS"
+      ],
+      "risk_class": "T2_DATA_INTEGRITY"
+    },
+    "A-FORGE": {
+      "role": "ACTOR_EXECUTION",
+      "port": 7071,
+      "protocol": "HTTP_MCP",
+      "systemd_unit": "aforge.service",
+      "status": "ACTIVE",
+      "oir_rating": 3,
+      "declared_capabilities": [
+        "MUTATION_ACTUATOR",
+        "SHELL_LEDGER",
+        "TELEMETRY_NATS_EMITTER"
+      ],
+      "live_capabilities": [
+        "EXECUTES_TOOLS",
+        "EMITS_SPANS_TO_NATS_AND_POSTGRES"
+      ],
+      "risk_class": "T2_MUTATING_ENGINE"
+    },
+    "AAA": {
+      "role": "COCKPIT_MIND",
+      "port": 3001,
+      "protocol": "HTTP",
+      "systemd_unit": "aaa.service",
+      "status": "ACTIVE",
+      "oir_rating": 1,
+      "declared_capabilities": [
+        "DASHBOARD_UI",
+        "COCKPIT_AGGREGATOR",
+        "APEX_SCALARS_VIEW"
+      ],
+      "live_capabilities": [
+        "HEALTH_REPORTING",
+        "FEDERATION_GEOMETRY"
+      ],
+      "risk_class": "T0_DISPLAY"
+    },
+    "FED": {
+      "role": "ADVISORY_ROUTER",
+      "port": 7074,
+      "protocol": "HTTP_MCP",
+      "systemd_unit": "fed.service",
+      "status": "ACTIVE",
+      "oir_rating": 0,
+      "declared_capabilities": [
+        "ROUTE_ADVICE",
+        "PROVIDER_HEALTH_PROBE",
+        "CONTRAST_LATENCY"
+      ],
+      "live_capabilities": [
+        "ROUTE_PROBES_8_PROVIDERS"
+      ],
+      "risk_class": "T0_ADVISORY"
+    },
+    "arifOS": {
+      "role": "CONSTITUTIONAL_JUDGE",
+      "port": 8088,
+      "protocol": "HTTP_MCP",
+      "systemd_unit": "arifos.service",
+      "status": "ACTIVE",
+      "oir_rating": 3,
+      "declared_capabilities": [
+        "FLOOR_ADJUDICATION_F1_F13",
+        "ARIF_JUDGE_VERDICT",
+        "TELEMETRY_PRODUCER",
+        "FLOW_FORWARDING"
+      ],
+      "live_capabilities": [
+        "CONSTITUTIONAL_EVALUATIONS",
+        "TELEMETRY_EMISSION_FIRE_AND_FORGET"
+      ],
+      "risk_class": "T2_JUDICIAL_CORE"
+    }
+  }
+}

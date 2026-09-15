@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "name": "arifOS Federation Observability Failure Graph",
+  "timestamp": "2026-09-15T05:40:00Z",
+  "doctrine": "Void Guard · Honest Failure Modes · Blast Radius Containment",
+  "failure_modes": [
+    {
+      "id": "FAIL-01-COLLECTOR-DOWN",
+      "component": "Kabarkan OTel Collector (:4318/:4319)",
+      "trigger": "Reboot, OOM, or missing config file on disk",
+      "observed_reality": "Config was missing from disk for 13 days while process ran in RAM. Now restored.",
+      "blast_radius": "ZERO for production ingestion (organs publish directly to NATS, bypassing collector).",
+      "severity": "LOW (Dormant/Standby capability)",
+      "fail_mode": "FAIL_SILENT_STANDBY",
+      "remediation": "Reconstructed yaml on disk; marked STATUS=STANDBY, AUTHORITY=HOLD."
+    },
+    {
+      "id": "FAIL-02-NATS-OUTAGE",
+      "component": "NATS JetStream (nats-server :4222)",
+      "trigger": "Daemon crash, port conflict, disk full",
+      "blast_radius": "Telemetry stream halts. Producers fall back silently to avoid blocking agent execution.",
+      "severity": "HIGH (Telemetry loss)",
+      "fail_mode": "FAIL_OPEN (Actors continue executing, telemetry dropped)",
+      "remediation": "Systemd auto-restart (nats-server.service). JetStream persistence on NVMe."
+    },
+    {
+      "id": "FAIL-03-POSTGRES-OUTAGE",
+      "component": "PostgreSQL (Docker :5432 / vault999)",
+      "trigger": "Container crash, connection saturation, disk volume full",
+      "blast_radius": "Kabarkan Worker fails asyncpg connection. Messages back up in JetStream.",
+      "severity": "HIGH (Telemetry backlog, no query capability)",
+      "fail_mode": "QUEUE_BUFFERING (NATS holds messages until Postgres resumes)",
+      "remediation": "Docker restart policy 'always'. Worker retries with exponential backoff."
+    },
+    {
+      "id": "FAIL-04-KABARKAN-WORKER-CRASH",
+      "component": "Kabarkan Worker (systemd kabarkan-worker.service)",
+      "trigger": "Python unhandled exception, syntax error in payload",
+      "blast_radius": "Postgres writes pause. NATS JetStream consumer lag increases.",
+      "severity": "MEDIUM (Zero data loss within retention limits)",
+      "fail_mode": "SAFE_ACCUMULATION",
+      "remediation": "systemd Restart=always, RestartSec=5. Replay from JetStream ack floor."
+    },
+    {
+      "id": "FAIL-05-FRAME-BLINDNESS",
+      "component": "FRAME Observer (trends.jsonl / frame-probe.timer)",
+      "trigger": "Timer disabled/inactive, unhandled exception in probe loop",
+      "observed_reality": "Frozen for 48 hours (Sep 13-15) because frame-probe.timer was not active.",
+      "blast_radius": "Silent blindness. Execution proceeds normally, but drift and FQ trends are unrecorded.",
+      "severity": "MEDIUM (Degrades institutional memory)",
+      "fail_mode": "FAIL_BLIND",
+      "remediation": "Enable and verify frame-probe.timer. Monitor trends.jsonl modification mtime."
+    },
+    {
+      "id": "FAIL-06-TRIAGE-DIGEST-BLACKHOLE",
+      "component": "Daily Triage Delivery (cron / digest_inbox)",
+      "trigger": "Missing target directory (/root/.hermes/cron/state/digest_inbox)",
+      "observed_reality": "Reports generated in forge_work but failed to copy into digest_inbox.",
+      "blast_radius": "Sovereign visibility gap. Digest is produced but not displayed to Hermes briefing.",
+      "severity": "LOW-MEDIUM",
+      "fail_mode": "PRODUCER_HEALTHY_DELIVERY_BROKEN",
+      "remediation": "mkdir -p digest_inbox (completed 2026-09-15 13:31)."
+    },
+    {
+      "id": "FAIL-07-ARIFFLOW-THROTTLE-LOCKOUT",
+      "component": "arifFLOW Metabolic Governor (:7073)",
+      "trigger": "Actor FQ divergence, verification deficit, runaway consecutive execution",
+      "observed_reality": "333-AGI held due to FQ=5.00 (FOSSILIZED); qwen-code held due to FQ=0.67.",
+      "blast_radius": "Restricted actors cannot execute tools until verification barrier clears.",
+      "severity": "GOVERNANCE_WORKING_AS_DESIGNED",
+      "fail_mode": "FAIL_SAFE_HOLD",
+      "remediation": "Execute verify cycles; arifFlow cooling watchdog automatically checks cooldown."
+    }
+  ]
+}

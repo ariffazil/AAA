@@ -3,7 +3,7 @@ id: ASI-fabrication-prevention
 name: asi-fabrication-prevention
 risk_tier: low
 version: 2.0.0
-description: 'Artifact fabrication prevention — verify before claiming existence.
+description: 'Artifact fabrication prevention — verify before claiming existence. [fed: tier=fed-agent-subagent, auto=T0, risk=low]
   Triggered when agent claims file/database/API/artifact existence without external
   validation. BIJAKSANA: XML-tagged for Claude, numbered steps for Codex, imperative
   for Hermes.

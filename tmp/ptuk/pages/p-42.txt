@@ -1,0 +1,32 @@
+Docusign Envelope 1D: 021C6E53-9699-4EEA-B728-AF11912ABBAQ ;
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+3. PROPERTY, PLANT AND EQUIPMENT
+2025 As at As at
+: 1.1.2025 Additions Disposal 31.12.2025
+USD’000 USD’000 USD’000 USD’000
+At Cost:
+Own use
+Office equipment, furniture & fittings 229 419 - 648
+Computer software and hardware 23 - - 23
+252 419 - 671
+Right-of-use .
+Lease vessel 19,662 - - 19,662
+Lease properties 3,928 10,691 (3,928) 10,691
+23,590 10,691 (3,928) 30,353
+; 23,842 11,110 (3,928) 31,024
+2025 . Asat Charge for As at
+1.1.2025 the year Disposal 31.12.2025
+USD’ 000 USD’000 USD’000 USD’000
+Accumulated Depreciation:
+Own use
+Office equipment, furniture & fittings 198 31 - 229
+Computer software and hardware 23 - - 23
+221 31 - 252
+Right-of-use
+Lease vessel 819 9,831 - 10,650
+Lease properties 3,637 1,004 (3,928) 713
+4,456 10,835 (3,928) 11,363
+4,677 10,866 (3,928) 11,615
+41

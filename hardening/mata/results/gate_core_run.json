@@ -1,0 +1,393 @@
+{
+  "generated_at": "2026-09-15T23:18:41+0800",
+  "battery": "core",
+  "rows": [
+    {
+      "surface": "native_vision_analyze",
+      "probe": "img_a.red_circles",
+      "verdict": "CORRECT",
+      "latency_s": 0.0,
+      "returned": "3",
+      "reason": "3 == 3"
+    },
+    {
+      "surface": "native_vision_analyze",
+      "probe": "img_a.text",
+      "verdict": "CORRECT",
+      "latency_s": 0.0,
+      "returned": "The image has a white background. At the top, in large, bold, black, sans-serif letters, is the text:\n\n**ARIFOS-7731**\n\nBelow the text are five shapes in a horizontal row:\n- Three red circles with thin black outlines on the left.\n- Two blue squares with thin black outlines on the right.\n\nThere is no other text in the image.\n\n**Exact text appearing in the image:**  \n**ARIFOS-7731**",
+      "reason": "contains 'ARIFOS-7731'"
+    },
+    {
+      "surface": "native_vision_analyze",
+      "probe": "img_c.absent_text",
+      "verdict": "CORRECT",
+      "latency_s": 0.0,
+      "returned": "The image is a close-up, studio-style photograph of a muscular, shirtless man. It shows the lower face\u2014lips, chin, mustache, and light stubble\u2014along with the neck, trapezius, shoulders, chest, and one nipple. The man has a highly defined physique with prominent pectorals, deltoids, and neck muscles. Warm golden rim lighting from the left highlights the contours of his skin, which appears slightly glossy or sweaty, against a dark brown-to-black gradient background. No text, watermark, label, or code is visible anywhere in the image.\n\nNo",
+      "reason": "correctly denied"
+    },
+    {
+      "surface": "native_vision_analyze",
+      "probe": "img_d.red_circles",
+      "verdict": "CORRECT",
+      "latency_s": 0.0,
+      "returned": "The image shows the word **CONTROL** in large black uppercase letters at the top on a white background. Below it, there is a solid **green square** with a black outline on the left, and a solid **yellow circle** with a black outline on the right. There are no red circles or red shapes in the image.\n\n0",
+      "reason": "0 == 0"
+    },
+    {
+      "surface": "zai_vision_mcp",
+      "probe": "img_a.red_circles",
+      "verdict": "CORRECT",
+      "latency_s": 21.04,
+      "returned": "\n3\n\n**Detailed Observations:**\nThe image contains several geometric shapes below the text \"ARIFOS-7731\". Specifically, there are three red circles and two blue squares. All three circles are filled with a solid red color and have a thin black outline. The two squares are filled with a solid blue color and also have a thin black outline. The question specifically asks for the count of filled red circles, which are the three shapes located on the left side of the lower portion of the image.\n\n**Context & Analysis:**\nThe image appears to be a simple visual puzzle or a test of basic object recognition and counting. The presence of different shapes (circles and squares) and colors (red and blue) suggests a need to distinguish between them based on the user's specific criteria. The task is straightforward: identify the subset of objects that match all the given attributes (shape: circle, color: red, state: filled).\n\n**Additional Notes:**\nThe image is a simple graphic with high contrast, making the shapes easy to distinguish. The text \"ARIFOS-7731\" at the top does not seem to be directly related to the counting task but might be an identifier for the image itself.",
+      "reason": "3 == 3"
+    },
+    {
+      "surface": "zai_vision_mcp",
+      "probe": "img_a.text",
+      "verdict": "CORRECT",
+      "latency_s": 14.77,
+      "returned": "\n**Main Response**\n\nThe exact text that appears in this image is \"ARIFOS-7731\". This text is displayed in bold, black font at the top portion of the image.\n\n**Detailed Observations**\n\n- The text \"ARIFOS-7731\" is positioned centrally at the top of the image\n- It appears in a bold, sans-serif font\n- The text is black against a white background\n- The font size is relatively large, making it prominent in the composition\n- The text includes both letters (ARIFOS) and numbers (7731) separated by a hyphen\n\n**Additional Notes**\n\nBelow the text, there are three red circles and two blue squares arranged horizontally, but these are graphical elements rather than text. The overall image appears to be a simple graphic with text and basic geometric shapes on a white background.",
+      "reason": "contains 'ARIFOS-7731'"
+    },
+    {
+      "surface": "zai_vision_mcp",
+      "probe": "img_c.absent_text",
+      "verdict": "CORRECT",
+      "latency_s": 16.34,
+      "returned": "\nNo.",
+      "reason": "correctly denied"
+    },
+    {
+      "surface": "zai_vision_mcp",
+      "probe": "img_d.red_circles",
+      "verdict": "CORRECT",
+      "latency_s": 18.15,
+      "returned": "\n**Main Response**\n0\n\n**Detailed Observations**\nThe image contains the word \"CONTROL\" in black text at the top. Below the text, there are two shapes: a green square on the left and a yellow circle on the right. The circle is filled with a solid yellow color and has a black outline.\n\n**Context & Analysis**\nThe question asks for the number of filled red circles. The image contains one circle, but it is yellow, not red. Therefore, the number of filled red circles in the image is zero.",
+      "reason": "0 == 0"
+    },
+    {
+      "surface": "zai_coding_direct",
+      "probe": "img_a.red_circles",
+      "verdict": "CORRECT",
+      "latency_s": 3.58,
+      "returned": "3",
+      "reason": "3 == 3"
+    },
+    {
+      "surface": "zai_coding_direct",
+      "probe": "img_a.text",
+      "verdict": "CORRECT",
+      "latency_s": 3.5,
+      "returned": "The exact text in the image is: **ARIFOS-7731**\n\nIt appears in large, bold black letters at the top of the image. Below the text, there are geometric shapes: three red circles and two blue squares (the second square is partially cut off at the right edge of the image).",
+      "reason": "contains 'ARIFOS-7731'"
+    },
+    {
+      "surface": "zai_coding_direct",
+      "probe": "img_c.absent_text",
+      "verdict": "CORRECT",
+      "latency_s": 2.9,
+      "returned": "No",
+      "reason": "correctly denied"
+    },
+    {
+      "surface": "zai_coding_direct",
+      "probe": "img_d.red_circles",
+      "verdict": "CORRECT",
+      "latency_s": 4.45,
+      "returned": "0",
+      "reason": "0 == 0"
+    },
+    {
+      "surface": "mmx_describe",
+      "probe": "img_a.red_circles",
+      "verdict": "CORRECT",
+      "latency_s": 3.45,
+      "returned": "3",
+      "reason": "3 == 3"
+    },
+    {
+      "surface": "mmx_describe",
+      "probe": "img_a.text",
+      "verdict": "CORRECT",
+      "latency_s": 3.48,
+      "returned": "The exact text in the image reads: **ARIFOS-7731**",
+      "reason": "contains 'ARIFOS-7731'"
+    },
+    {
+      "surface": "mmx_describe",
+      "probe": "img_c.absent_text",
+      "verdict": "CORRECT",
+      "latency_s": 7.12,
+      "returned": "No",
+      "reason": "correctly denied"
+    },
+    {
+      "surface": "mmx_describe",
+      "probe": "img_d.red_circles",
+      "verdict": "CORRECT",
+      "latency_s": 1.97,
+      "returned": "0",
+      "reason": "0 == 0"
+    },
+    {
+      "surface": "mimo_v2.5",
+      "probe": "img_a.red_circles",
+      "verdict": "CORRECT",
+      "latency_s": 3.86,
+      "returned": "3",
+      "reason": "3 == 3"
+    },
+    {
+      "surface": "mimo_v2.5",
+      "probe": "img_a.text",
+      "verdict": "CORRECT",
+      "latency_s": 4.11,
+      "returned": "Based on the image provided, the exact text is:\n\n**ARIFOS-7731**",
+      "reason": "contains 'ARIFOS-7731'"
+    },
+    {
+      "surface": "mimo_v2.5",
+      "probe": "img_c.absent_text",
+      "verdict": "CORRECT",
+      "latency_s": 3.44,
+      "returned": "No",
+      "reason": "correctly denied"
+    },
+    {
+      "surface": "mimo_v2.5",
+      "probe": "img_d.red_circles",
+      "verdict": "CORRECT",
+      "latency_s": 5.8,
+      "returned": "Based on the image provided, there are no filled red circles. The image contains the text \"CONTROL\", a green square, and a yellow circle.\n\n0",
+      "reason": "0 == 0"
+    },
+    {
+      "surface": "groq_qwen3.8-27b",
+      "probe": "img_a.red_circles",
+      "verdict": "CORRECT",
+      "latency_s": 0.57,
+      "returned": "3",
+      "reason": "3 == 3"
+    },
+    {
+      "surface": "groq_qwen3.8-27b",
+      "probe": "img_a.text",
+      "verdict": "CORRECT",
+      "latency_s": 0.59,
+      "returned": "The exact text that appears in the image is:\n\n**ARIFOS-7731**\n\nThis text is displayed in bold, black, uppercase letters at the top of the image. Below it are five shapes: three red circles followed by two blue squares. The rest of the image contains cropped or zoomed-in portions of the same text and shapes, but no additional unique text is present.\n\n\u2705 Final Answer: **ARIFOS-7731**",
+      "reason": "contains 'ARIFOS-7731'"
+    },
+    {
+      "surface": "groq_qwen3.8-27b",
+      "probe": "img_c.absent_text",
+      "verdict": "CORRECT",
+      "latency_s": 0.32,
+      "returned": "no",
+      "reason": "correctly denied"
+    },
+    {
+      "surface": "groq_qwen3.8-27b",
+      "probe": "img_d.red_circles",
+      "verdict": "CORRECT",
+      "latency_s": 6.31,
+      "returned": "0",
+      "reason": "0 == 0"
+    },
+    {
+      "surface": "gemini_direct",
+      "probe": "img_a.red_circles",
+      "verdict": "BLOCKED",
+      "latency_s": 0.41,
+      "returned": "",
+      "reason": "HTTP 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n"
+    },
+    {
+      "surface": "gemini_direct",
+      "probe": "img_a.text",
+      "verdict": "BLOCKED",
+      "latency_s": 0.36,
+      "returned": "",
+      "reason": "HTTP 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n"
+    },
+    {
+      "surface": "gemini_direct",
+      "probe": "img_c.absent_text",
+      "verdict": "BLOCKED",
+      "latency_s": 0.36,
+      "returned": "",
+      "reason": "HTTP 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n"
+    },
+    {
+      "surface": "gemini_direct",
+      "probe": "img_d.red_circles",
+      "verdict": "BLOCKED",
+      "latency_s": 0.46,
+      "returned": "",
+      "reason": "HTTP 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n"
+    },
+    {
+      "surface": "ollama_local",
+      "probe": "img_a.red_circles",
+      "verdict": "BLOCKED",
+      "latency_s": 0.01,
+      "returned": "",
+      "reason": "HTTP 404: {\"error\":\"model 'llava:latest' not found\"}"
+    },
+    {
+      "surface": "ollama_local",
+      "probe": "img_a.text",
+      "verdict": "BLOCKED",
+      "latency_s": 0.0,
+      "returned": "",
+      "reason": "HTTP 404: {\"error\":\"model 'llava:latest' not found\"}"
+    },
+    {
+      "surface": "ollama_local",
+      "probe": "img_c.absent_text",
+      "verdict": "BLOCKED",
+      "latency_s": 0.0,
+      "returned": "",
+      "reason": "HTTP 404: {\"error\":\"model 'llava:latest' not found\"}"
+    },
+    {
+      "surface": "ollama_local",
+      "probe": "img_d.red_circles",
+      "verdict": "BLOCKED",
+      "latency_s": 0.0,
+      "returned": "",
+      "reason": "HTTP 404: {\"error\":\"model 'llava:latest' not found\"}"
+    },
+    {
+      "surface": "aforge_visual_qa_w1",
+      "probe": "img_a.red_circles",
+      "verdict": "WRONG",
+      "latency_s": 4.39,
+      "returned": "W1 vision status=CONFIRMED confidence=0.5 deviations=[] screenshot_hash=30058563ed5ae8aa828b849b773a0ef0f6e7fa8aa022aae2428a4adf967ac769",
+      "reason": "0 != 3"
+    },
+    {
+      "surface": "aforge_visual_qa_w1",
+      "probe": "img_a.text",
+      "verdict": "WRONG",
+      "latency_s": 3.88,
+      "returned": "W1 vision status=CONFIRMED confidence=0.5 deviations=[] screenshot_hash=30058563ed5ae8aa828b849b773a0ef0f6e7fa8aa022aae2428a4adf967ac769",
+      "reason": "none of ['ARIFOS-7731', 'ARIFOS 7731', 'ARIFOS-773I'] present in answer"
+    },
+    {
+      "surface": "aforge_visual_qa_w1",
+      "probe": "img_c.absent_text",
+      "verdict": "UNREACHABLE",
+      "latency_s": 1.3,
+      "returned": "",
+      "reason": "tool error: {\"content\": [{\"type\": \"text\", \"text\": \"{\\n  \\\"verdict\\\": \\\"HARD_FAULT\\\",\\n  \\\"error\\\": \\\"unrecognised content at end of stream\\\",\\n  \\\"_epistemic\\\": {\\n    \\\"output_class\\\": \\\"DETERMINISTIC\\\",\\n    \\\"ai_involvement\\\": \\\"NONE\\\",\\n    \\\"authority_claim\\\": \\\"ADVISORY\\\",\\n    \\\"evidence_source\\\": \\\"COMPUTED\\\",\\n    \\\"tagged_by\\\": \\\"aforge-mcp\\\",\\n    \\\"tagged_at\\\": \\\"2026-09-15T15:18:34.485Z\\\",\\n    \\"
+    },
+    {
+      "surface": "aforge_visual_qa_w1",
+      "probe": "img_d.red_circles",
+      "verdict": "CORRECT",
+      "latency_s": 3.31,
+      "returned": "W1 vision status=CONFIRMED confidence=0.5 deviations=[] screenshot_hash=cf4c4ae242747e3f662fcbc43fcff375e6b56f2acad2aef7074deff41f59835c",
+      "reason": "0 == 0"
+    }
+  ],
+  "rollup": {
+    "native_vision_analyze": {
+      "CORRECT": 4,
+      "WRONG": 0,
+      "FABRICATED": 0,
+      "BLIND": 0,
+      "BLOCKED": 0,
+      "UNREACHABLE": 0,
+      "dominant": "CORRECT"
+    },
+    "zai_vision_mcp": {
+      "CORRECT": 4,
+      "WRONG": 0,
+      "FABRICATED": 0,
+      "BLIND": 0,
+      "BLOCKED": 0,
+      "UNREACHABLE": 0,
+      "dominant": "CORRECT"
+    },
+    "zai_coding_direct": {
+      "CORRECT": 4,
+      "WRONG": 0,
+      "FABRICATED": 0,
+      "BLIND": 0,
+      "BLOCKED": 0,
+      "UNREACHABLE": 0,
+      "dominant": "CORRECT"
+    },
+    "mmx_describe": {
+      "CORRECT": 4,
+      "WRONG": 0,
+      "FABRICATED": 0,
+      "BLIND": 0,
+      "BLOCKED": 0,
+      "UNREACHABLE": 0,
+      "dominant": "CORRECT"
+    },
+    "mimo_v2.5": {
+      "CORRECT": 4,
+      "WRONG": 0,
+      "FABRICATED": 0,
+      "BLIND": 0,
+      "BLOCKED": 0,
+      "UNREACHABLE": 0,
+      "dominant": "CORRECT"
+    },
+    "groq_qwen3.8-27b": {
+      "CORRECT": 4,
+      "WRONG": 0,
+      "FABRICATED": 0,
+      "BLIND": 0,
+      "BLOCKED": 0,
+      "UNREACHABLE": 0,
+      "dominant": "CORRECT"
+    },
+    "gemini_direct": {
+      "CORRECT": 0,
+      "WRONG": 0,
+      "FABRICATED": 0,
+      "BLIND": 0,
+      "BLOCKED": 4,
+      "UNREACHABLE": 0,
+      "dominant": "BLOCKED"
+    },
+    "ollama_local": {
+      "CORRECT": 0,
+      "WRONG": 0,
+      "FABRICATED": 0,
+      "BLIND": 0,
+      "BLOCKED": 4,
+      "UNREACHABLE": 0,
+      "dominant": "BLOCKED"
+    },
+    "aforge_visual_qa_w1": {
+      "CORRECT": 1,
+      "WRONG": 2,
+      "FABRICATED": 0,
+      "BLIND": 0,
+      "BLOCKED": 0,
+      "UNREACHABLE": 1,
+      "dominant": "WRONG"
+    }
+  },
+  "w1_hash_oracle": {
+    "fixture": "img_a_shapes_text.png",
+    "reported_screenshot_hash": "30058563ed5ae8aa828b849b773a0ef0f6e7fa8aa022aae2428a4adf967ac769",
+    "sha256_of_path_string": "30058563ed5ae8aa828b849b773a0ef0f6e7fa8aa022aae2428a4adf967ac769",
+    "sha256_of_file_bytes": "f90ada036b2d7d19a52ea9463992fe91d2a49ddc8a9a11c7448ade23c1826340",
+    "matches_path": true,
+    "matches_bytes": false,
+    "w1_status": "CONFIRMED",
+    "w1_deviations": [],
+    "verdict": "BLIND_FIELD_IS_PATH_ORACLE"
+  },
+  "incomplete": [
+    "aforge_visual_qa_w1",
+    "gemini_direct",
+    "ollama_local"
+  ]
+}

@@ -1,0 +1,48 @@
+Docusign Envelope ID: BCBF091A-82F5-40AD-846A-E840C6C56334
+LNG INVESTMENTS EUROPE LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+25 FINANCIAL INSTRUMENTS (CONTINUED)
+Foreign currency exchange risk (continued)
+Appreciation in Effect on
+foreign currency rate profit or (loss)
+% GBP’000
+31.12.2025
+USD 10 (5,692)
+EUR 10 127
+31.12.2024
+USD 10 (205)
+EUR 10 5
+Commodity price risk
+The Company is exposed to changes in gas prices which may affect the value of the Company’s assets, liabilities or expected
+future cash flows. To mitigate these exposures from a business perspective, the Company enters into various financial
+instruments. In effecting these transactions, the Company operates within policies and procedures designed to ensure that risks
+are minimised. All financial instruments :positions are marked-to-market and reported to management for performance
+monitoring and risk management purposes on a daily basis. Since the Company undertakes hedging using commodity
+derivatives for the majority of its transactions, a change in commodity price is not likely to result in a significant impact on the
+Company’s profit or loss and equity.
+The following table shows the effect of price changes from natural gas on the company:
+Effect on profit or
+Change in year (loss) before Effect on profit or
+end price taxation (loss) before taxation
+2025 2024
+£000 £000
+Gas Prices 5% (4,933) (8,436)
+Fair value information
+The carrying amounts of financial instruments carried at amortised cost, such as, cash and cash equivalents, short-term
+receivables and payables reasonably approximate their fair values due to the relativity short term nature of these instruments.
+The following table provides the fair value measurement hierarchy of the Company’s assets and liabilities:
+Financial instruments carried at fair value
+31.12.2025 : Level 1 Level 2 Level 3 Total
+£000 £000 £000 £7000
+Financial Assets: :
+Commodity derivative contracts - 11,240 - 11,240
+Foreign exchange derivative contracts : 1,245 : 1,245
+- 12,485 : 12,485
+31.12.2025 Level 1 Level 2 Level 3 Total
+£7000 £7000 £7000 £7000
+Financia! Liabilities:
+Commodity derivative contracts - 14,037 - 14,037
+Foreign exchange derivative contracts - 1,236 - 1,236
+- 15,273 - 15,273
+39

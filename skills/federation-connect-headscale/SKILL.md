@@ -2,7 +2,7 @@
 id: federation-connect-headscale
 name: federation-connect-headscale
 version: 1.0.0-2026.07.17
-description: "Provision nodes into the arifOS sovereign Headscale mesh and federate MCP clients to remote organs."
+description: "Provision nodes into the arifOS sovereign Headscale mesh and federate MCP clients to remote organs. [fed: tier=fed-agent-subagent, floors=[, auto=T2, risk=high]"
 owner: AAA
 risk_tier: high
 floor_scope: ['F1', 'F12', 'F13']

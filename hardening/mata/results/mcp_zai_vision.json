@@ -1,0 +1,54 @@
+{
+  "lane": "zai_vision MCP (4 tools)",
+  "probes": [
+    {
+      "probe": "zai_vision_analyze_image",
+      "args": {
+        "image_source": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+        "prompt": "How many FILLED RED CIRCLES..."
+      },
+      "raw_response": {
+        "error": "Error: Unexpected error: analyze-image analysis failed: HTTP 429: {\"error\":{\"code\":\"1310\",\"message\":\"Weekly/Monthly Limit Exhausted. Your limit will reset at 2026-09-15 16:13:25\"}}"
+      },
+      "verdict": "BLOCKED",
+      "note": "quota exhausted; reset 2026-09-15 16:13:25 UTC; MCP wrapper returns this verbatim to the agent"
+    },
+    {
+      "probe": "zai_vision_extract_text_from_screenshot",
+      "args": {
+        "image_source": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+        "prompt": "Extract ALL text verbatim."
+      },
+      "raw_response": {
+        "error": "MCP server 'zai_vision' rejected the last 3 calls (it is reachable; see the error text those calls returned). Paused for ~59s."
+      },
+      "verdict": "BLOCKED",
+      "note": "MCP silent-cooldown fallback after 3 consecutive 429s"
+    },
+    {
+      "probe": "zai_vision_analyze_data_visualization",
+      "args": {
+        "image_source": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+        "prompt": "How many FILLED RED CIRCLES..."
+      },
+      "raw_response": {
+        "error": "MCP server 'zai_vision' rejected the last 3 calls ... Paused for ~59s."
+      },
+      "verdict": "BLOCKED",
+      "note": "same as extract_text_from_screenshot"
+    },
+    {
+      "probe": "zai_vision_diagnose_error_screenshot",
+      "args": {
+        "image_source": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+        "prompt": "How many FILLED RED CIRCLES...",
+        "context": "probing whether this tool sees the image at all"
+      },
+      "raw_response": {
+        "error": "MCP server 'zai_vision' rejected the last 4 calls ... Paused for ~49s."
+      },
+      "verdict": "BLOCKED",
+      "note": "same as above, ~49s cooldown after 4th attempt"
+    }
+  ]
+}

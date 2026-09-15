@@ -1,0 +1,65 @@
+{
+  "captured_at_myt": "2026-09-15T17:05:48+08:00",
+  "window": "-24h on service hermes-asi-gateway",
+  "attempts_refused_in_window": 16,
+  "attempts_by_reason": {
+    "bundled": 6,
+    "user_owned": 10
+  },
+  "attempted_targets_journal": {
+    "kabarkan-observability": 3,
+    "ASI-fabrication-prevention": 2,
+    "ASI-agentic-architecture": 1,
+    "BIOHACK-PEPTIDES": 1,
+    "live-probe-audit-pattern": 1,
+    "geological-figure-production": 1,
+    "hermes-response-format-fit": 1,
+    "forge-pdf-delivery": 1,
+    "FORGE-visual-qa-w3": 1,
+    "social-video-intelligence": 1,
+    "FORGE-artifact-publisher": 1,
+    "forge-multimodal-router": 1,
+    "hermes-gateway-image-routing": 1
+  },
+  "reviews_landed_in_window": 14,
+  "reviews_by_skill_journal": {
+    "human-advisory-discipline": 1,
+    "agent-exploration-discipline": 1,
+    "agent-finding-verification": 1,
+    "observability-completeness-audit": 1,
+    "deploy-drift-verification": 1,
+    "fed-model-chain-editing": 1,
+    "visual-artifact-delivery": 1,
+    "rendered-document-audit": 1,
+    "social-media-content-ingestion": 1,
+    "human-logistics-advisory": 1,
+    "link-to-evidence": 1,
+    "seismic-interpretation-alignment": 1,
+    "human-facing-artifact-design": 1,
+    "media-link-ingest": 1
+  },
+  "blocked_targets_ledger_all_time": {},
+  "landed_skills_ledger_all_time": {
+    "memory-forensics": 35,
+    "arifos-federation-health": 23,
+    "hermes-federated-identity": 18,
+    "nusantara-voice-stack": 17,
+    "skill-taxonomy-reclassification": 17,
+    "litellm-proxy-triage": 16,
+    "hermes-deep-research": 14,
+    "aaa-litellm-ops": 14,
+    "syed-care-architecture": 13,
+    "canonize-eureka": 12
+  },
+  "ledger_actions": {
+    "patch": 380,
+    "write_file": 68,
+    "create": 93,
+    "delete": 1
+  },
+  "repeating_targets": {
+    "ASI-fabrication-prevention": 2,
+    "kabarkan-observability": 3
+  },
+  "verdict": "POSING \u2014 a blocked target repeated in the window; fix the boundary declaration, not the counter"
+}

@@ -1,0 +1,68 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF11912A8BA9
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+2. MATERIAL ACCOUNTING POLICIES (CONTINUED)
+2.14 Fair value measurements (continued)
+
+(iii) Non-financial assets (continued) :
+When measuring the fair value of an asset or a liability, the Company uses observable market
+data as far as possible. Fair value is categorised into different levels in a fair value hierarchy based
+on the input used in the valuation technique as follows:
+¢ Level 1 — Quoted prices (unadjusted) in active markets for identifiable assets or liabilities.
+
++ Level 2 —Inputs other than quoted prices included within Level | that are observable for the
+
+: asset or liability, either directly (i.e. as prices) or indirectly (i.e. derived from prices).
+
++ Level 3 — Inputs for the asset or liability that are not based on observable market data
+(unobservable input).
+
+The fair value of an asset to be transferred between levels is determined as of the date of the event
+or change in circumstances that caused the transfer. The Company recognises transfers between
+levels of the fair value hierarchy as of the date of the event or change in circumstances that caused
+the transfers.
+
+2.15 Current versus non-current classification
+
+The Company presents assets and liabilities in the statement of financial position based on
+
+current/non-current classification. An asset is current when it is:
+
++ Expected to be realised or intended to be sold or consumed in the normal operating cycle
+
+* Held primarily for the purpose of trading
+
+¢ Expected to be realised within twelve months after the reporting period
+
+Or
+
+¢ Cash or cash equivalent unless restricted from being exchanged or used to settle a liability for at
+
+least twelve months after the reporting period
+
+All other assets are classified as non-current.
+
+A liability is current when:
+
++ It is expected to be settled in the normal operating cycle
+
+* It is held primarily for the purpose of trading
+
+¢ It is due to be settled within twelve months after the reporting period
+
+Or
+
+* There is no unconditional right to defer the settlement of the liability for at least twelve months
+
+after the reporting period
+
+The terms of the liability that could, at the option of the counterparty, result in its settlement by the
+
+issue of equity instruments do not affect its classification.
+
+The Company classifies all other liabilities as non-current.
+
+Deferred tax assets and liabilities are classified as non-current assets and liabilities.
+
+40

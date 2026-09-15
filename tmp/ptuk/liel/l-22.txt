@@ -1,0 +1,46 @@
+Docusign Envelope ID: BCBF091A-82F5-40AD-846A-E840C6C56334
+LNG INVESTMENTS EUROPE LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+2. MATERIAL ACCOUNTING POLICIES (CONTINUED)
+In preparing the financial statements transactions in currencies other than the entity’s functional currency (foreign currencies)
+are translated to the functional currencies at rates of exchange ruling on the transaction dates.
+Monetary assets and liabilities denominated in foreign currencies at the reporting date have been retranslated to the functional
+currency at rates ruling on the reporting date.
+Non-monetary assets and liabilities denominated in foreign currencies, which are measured at fair value, are retranslated to
+the functional currency at the foreign exchange rates ruling at the date when the fair value was determined. Non-monetary
+items that are measured in terms of historical cost in foreign currency are not retranslated.
+Gains and losses on exchange arising from retranslation are recognised in the profit or loss, except for differences arising on
+the retranslation of equity instruments at FVOCI, which are recognised in equity and are never reclassified to profit or loss.
+2.7 Property, plant and equipment
+Property, plant and equipment is stated at cost, net of accumulated depreciation and/or accumulated impairment losses, if any.
+Tank heel has an indefinite useful life and therefore is not depreciated. Tank heel is the minimum level of LNG that is needed
+to maintain the operations at the Dragon LNG terminal.
+2.8 Inventories
+LNG is stated at the lower of cost and net realisable value. Net realisable value is the estimated selling price in the ordinary
+course of business, less the estimated costs of completion and the estimated costs necessary to make the sale. ;
+2.9 Financial instruments
+A financial instrument is recognised in the statement of financial position when, and only when the Company becomes a party
+to the contractual provisions of the instrument.
+Regular way purchases or sales were recognised on the trade date i.e., the date that the Company commit to purchase or sell
+the financial asset.
+A financial asset (unless it is a receivable without a significant financing component) and a financial liability is measured at
+fair value plus or minus, in the case of a financial instrument not at fair value through profit or loss, any directly attributable
+transaction cost incurred at the acquisition or issuance of the financial instrument.
+i) Financial assets
+Financial assets are classified as measured at amortised cost (“AC”), FVOCI or fair value through profit or loss (““FWVTPL”),
+as appropriate.
+The Company determines the classification of financial assets at initial recognition and are not reclassified subsequent to their
+initial recognition unless the Company changes its business model for managing financial assets in which case all affected
+financial assets are reclassified on the first day of the first reporting period following the change in the business model.
+Financial assets at fair value through profit or loss
+All financial assets not classified as measured at amortised cost or fair value through other comprehensive income as described
+below, are measured at fair value through profit or loss. This includes derivative financial assets (except for a derivative that
+is a financial guarantee contract or a designated and effective hedging instrument). On initial recognition, the Company may
+irrevocably designate a financial asset that otherwise meets the requirements to be measured at amortised cost or at fair value
+through other comprehensive income as at fair value through profit or loss if doing so eliminates or significantly reduces an
+. ~accounting mismatch that would otherwise arise.
+Subsequent measurement
+Financial assets categorised as fair value through profit or loss are subsequently measured at their fair value with gains or
+losses recognised in the profit or loss.
+22

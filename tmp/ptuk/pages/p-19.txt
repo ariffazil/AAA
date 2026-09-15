@@ -1,0 +1,45 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF 11912A8BA9 :
+PETCO TRADING (UK) LIMITED
+STATEMENT OF FINANCIAL POSITION
+AS AT 31 DECEMBER 2025
+31.12.2025 31.12.2024
+Note USD’000 USD’000
+ASSETS
+Property, plant and equipment 3 19,409 19,165
+Deferred tax assets 4 468 -
+Derivative assets 12 697 -
+TOTAL NON-CURRENT ASSETS 20,574 19,165
+Inventories 6 67,958 11,957
+Trade and other receivables Al 302,134 303,056
+Net investment in lease 72 - 9,454
+Tax recoverable 274 596
+Derivative assets 12 9,247 22,555
+Cash and cash equivalents 8 97,458 112,687
+TOTAL CURRENT ASSETS 477,071 460,305
+TOTAL ASSETS 497,645 479,470
+EQUITY
+Share capital 9 146 146
+Merger reserve 9 76 76
+Retained earnings 52,144 52,085
+TOTAL EQUITY 52,366 52,307
+LIABILITIES
+Lease liabilities 5 9,624 9,247
+Derivative liabilities 12 697 -
+, Provision and other payables 13 640 :
+TOTAL NON-CURRENT LIABILITIES 10,961 9,247
+Trade and other payables 10 413,609 374,463
+Lease liabilities 5 10,436 19,167
+Borrowings 11 2,645 -
+Derivative liabilities 12 7,568 ; 24,286
+Provision and other payables 13 60 -
+TOTAL CURRENT LIABILITIES 434,318 417,916
+TOTAL LIABILITIES 445,279 427,163
+TOTAL EQUITY AND LIABILITIES 497,645 479,470
+The financial statements were approved by the Board of Directors on and signed on its
+behalf by:
+aC
+SHAMSUL BAHARI BIN SALLEH
+CHAIRMAN
+PETCO TRADING (UK) LIMITED (Registered No. 06695912)
+The notes set out on pages 22 to 71 are an integral part of these financial statements.
+18

@@ -2,7 +2,7 @@
 id: FORGE-nextjs-mastery
 name: forge-nextjs-mastery
 version: 1.0.0-2026.07.17
-description: "Next.js App Router engineering — server components, streaming, and edge patterns."
+description: "Next.js App Router engineering — server components, streaming, and edge patterns. [fed: tier=fed-agent-subagent, floors=[, auto=T1, risk=medium]"
 owner: A-FORGE
 risk_tier: medium
 floor_scope: ['F1', 'F4', 'F12']

@@ -4,7 +4,7 @@ name: agent-capability-self-audit
 owner: Hermes ASI
 risk_tier: low
 version: 1.0.0
-description: "Capability self-audit: reflect, contrast, and near-ASI gap."
+description: "Capability self-audit: reflect, contrast, and near-ASI gap. [fed: tier=fed-reasoning-heavy, floors=[F02, F04, F07, F09, F11], auto=T0 (read-only audit), risk=low]"
 floor_scope: [F02, F04, F07, F09, F11]
 autonomy_tier: T0 (read-only audit)
 capability_tier: fed-reasoning-heavy

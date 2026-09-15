@@ -1,0 +1,47 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF11912A8BA9
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS .
+FOR THE YEAR ENDED 31 DECEMBER 2025
+2. MATERIAL ACCOUNTING POLICIES (CONTINUED)
+2.3. Financial instruments (continued)
+(viii) Derecognition of financial instruments (continued)
+A financial asset is derecognised when the rights to receive cash flows from the asset have
+expired or, the Company has transferred their rights to receive cash flows from the asset or has
+assumed an obligation to pay the received cash flows in full without material delay to a third
+party under a “pass-through” arrangement without retaining control of the asset or substantially
+all the risks and rewards of the asset. On derecognition of a financial asset, the difference
+between the carrying amount and the sum of the consideration received (including any new
+asset obtained less any new liability assumed) and any cumulative gain or loss that had been
+recognised in equity is recognised in the profit or loss, except for equity investments at fair
+value through other comprehensive income where the gain or loss are recognised in other
+comprehensive income.
+A financial liability is derecognised when the obligation under the liability is discharged or
+cancelled or expired. On derecognition of a financial liability, the difference between the
+carrying amount of the financial liabilities extinguished or transferred to another party and the
+consideration paid, including any non-cash assets transferred or liabilities assumed, is
+recognised in the profit or loss. In the case of waiver of debt from owners, the gain is recognised
+in equity as capital reserve.
+2.4 Impairment
+(i) Financial assets
+The Company recognises loss allowances for expected credit losses (“ECL”) on financial assets
+measured at amortised cost and contract assets using the simplified approach permitted by IFRS
+9. The Company measures loss allowances at an amount equal to lifetime ECL, except for debt
+securities that are determined to have low credit risk at the reporting date, other debt securities
+for which credit risk has not increased significantly since initial recognition and finance lease
+receivables, which are measured as 12-month ECL. Loss allowances for trade receivables and
+contract assets are always measured at an amount equal to lifetime ECL.
+When determining whether the credit risk of a financial asset has increased significantly since
+initial recognition and when estimating ECL, the Company considers reasonable and supportable
+information that is relevant and available without undue cost or effort. This includes both
+quantitative and qualitative information and analysis, based on the Company’s historical
+experience and informed credit assessment and including forward-looking information, where
+available.
+The Company assumes that the credit risk on a financial asset has increased significantly if it is
+past due.
+The Company considers a financial asset to be in default when the borrower is unlikely to pay its
+credit obligations to the Company in full, without recourse by the Company to actions such as
+realising security.
+Lifetime ECL are the ECL that result from all possible default events over the expected life of a
+financial instrument, while 12-month ECL are the portion of ECL that result from default events
+that are possible within the 12 months after the reporting date.
+34

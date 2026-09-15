@@ -3,7 +3,7 @@ name: openclaw
 id: openclaw
 version: 1.0.0
 risk_tier: medium
-description: 'OpenClaw edge agent bridge — operational triage, doctor, restart, and A2A bridge routing for the federation edge (Telegram surface). USE WHEN: "openclaw unhealthy", "gateway down", "edge bot not responding", "a2a bridge disconnected", "watchdog tripped", "openclaw doctor", "openclaw restart". NOT for token/security audit — use FORGE-telegram-audit.'
+description: 'OpenClaw edge agent bridge — operational triage, doctor, restart, and A2A bridge routing for the federation edge (Telegram surface). USE WHEN: "openclaw unhealthy", "gateway down", "edge bot not responding", "a2a bridge disconnected", "watchdog tripped", "openclaw doctor", "openclaw restart". NOT for token/security audit — use FORGE-telegram-audit. [fed: tier=fed-agent-subagent, auto=T2, risk=medium]'
 owner: A-FORGE
 floor_scope:
 - F1

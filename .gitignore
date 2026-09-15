@@ -107,3 +107,9 @@ docs/carry_forward_backups/
 
 # orphan gitlink removed 2026-09-13 (blocked CI checkout); live HF Space checkout stays on disk
 /tools/nusantara-validator/
+
+# ── 2026-09-15: personal memory lane data → VAULT999/memory-lane (private) ──
+registries/memory-pending-archive-*
+registries/memory-redemption-ledger-*
+state/event-bridge/rsi_exhale.last_hash
+state/kvm4-mutations-*.txt

@@ -1,6 +1,6 @@
 ---
 name: qwencloud-usage
-description: "[QwenCloud] Manage account auth and query usage/billing. Use for: login, logout, check usage, view billing, free tier quota, coding plan status, pay-as-you-go costs. Skip for: model browsing, non-account tasks."
+description: "[QwenCloud] Manage account auth and query usage/billing. Use for: login, logout, check usage, view billing, free tier quota, coding plan status, pay-as-you-go costs. Skip for: model browsing, non-account tasks. [fed: tier=fed-reasoning-heavy]"
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
 ---
