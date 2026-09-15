@@ -1,0 +1,50 @@
+{
+  "skill_id": "forge-artifact-publisher",
+  "version": "1.1.0",
+  "status": "WARM",
+  "last_forged": "2026-09-15T06:30:00Z",
+  "last_tested": "2026-09-15T06:30:00Z",
+  "last_audit": "2026-09-15T10:00:00Z",
+  "last_wired": "2026-09-15T15:45:00Z",
+  "tested_by": "FI-003",
+  "audited_by": "FI-008 (Kimi Code)",
+  "test_result": "PASS",
+  "audit_result": "PASS_WITH_FIXES",
+  "wire_result": "FULL_MESH",
+  "artifacts_produced": 3,
+  "wiring": {
+    "reality_graph": {
+      "source": "geox_claim",
+      "pipeline": "claim scan → epistemic map → SVG → PDF",
+      "status": "WIRED"
+    },
+    "arifflow": {
+      "integration": "flow_ingest per forge step",
+      "step_types": ["Execute", "Verify", "Seal"],
+      "status": "WIRED"
+    },
+    "skill_mesh": {
+      "surfaces": ["AAA filesystem", "AAA federated registry", "AAA alias table", "Hermes registry", "arifFlow receipts"],
+      "cross_refs": 10,
+      "status": "WIRED"
+    }
+  },
+  "audit_fixes": [
+    "R1: Replaced regex slide extraction with HTML parser (SlideExtractor class)",
+    "R2: Added Chrome fallback chain (google-chrome → chromium → chromium-browser)",
+    "R3: Delivery script now validates env vars before curl",
+    "R4: Added structured error taxonomy (ERR_* codes)",
+    "R5: Fixed voice protocol violation in SVG pattern comments ([OBS]/[DER] → natural language)",
+    "R6: Added orientation flag (--portrait) for dossier support",
+    "R7: Added pdfinfo availability check before verification",
+    "R8: Added WEALTH/WELL image discovery paths",
+    "R9: Size thresholds now warn instead of silently passing"
+  ],
+  "mesh_wiring": [
+    "§13: Reality Graph pipeline from GEOX claim engine",
+    "§14: arifFlow metabolic integration (FlowReceipt emission)",
+    "§15: Skill mesh wiring map with cross-references and trigger routing",
+    "§12: Updated skill relationships (6 new wire types)"
+  ],
+  "notes": "Forged FI-003. Apex-zen audit FI-008. Reality graph + arifFlow + skill mesh wired FI-008."
+}

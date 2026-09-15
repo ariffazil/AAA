@@ -1,0 +1,288 @@
+{
+  "lane": "groq",
+  "transport": "HTTPS OpenAI-compatible + browser UA",
+  "probes": [
+    {
+      "probe": "GET /models",
+      "http_status": 200,
+      "raw_response_body": "{\"object\":\"list\",\"data\":[{\"id\":\"qwen/qwen3.6-27b\",\"object\":\"model\",\"created\":1778288776,\"owned_by\":\"Alibaba Cloud\",\"active\":true,\"context_window\":131072,\"public_apps\":null,\"max_completion_tokens\":16384,\"hugging_face_id\":\"Qwen/Qwen3.6-27B\",\"name\":\"Qwen/Qwen3.6-27B\",\"input_modalities\":[\"text\",\"image\"],\"output_modalities\":[\"text\"],\"context_length\":131072,\"max_output_length\":16384,\"pricing\":{\"prompt\":\"0.0000006\",\"completion\":\"0.000003\",\"image\":\"0\",\"request\":\"0\",\"input_cache_read\":\"0.0000003\"},\"supported_sampling_parameters\":[\"temperature\",\"top_p\",\"stop\",\"seed\",\"max_tokens\"],\"supported_features\":[\"tools\",\"json_mode\",\"reasoning\"]},{\"id\":\"groq/compound-mini\",\"object\":\"model\",\"created\":1756949707,\"owned_by\":\"Groq\",\"active\":true,\"context_window\":131072,\"public_apps\":null,\"max_completion_tokens\":8192,\"hugging_face_id\":\"groq/compound-beta-mini\",\"name\":\"Compound Mini\",\"input_modalities\":[\"text\"],\"output_modalities\":[\"text\"],\"context_length\":131072,\"max_output_length\":8192,\"supported_sampling_parameters\":[\"temperature\",\"top_p\",\"stop\",\"seed\",\"max_tokens\"],\"supported_features\":[\"json_mode\"]},{\"id\":\"openai/gpt-oss-20b\",\"object\":\"model\",\"created\":1754407957,\"owned_by\":\"OpenAI\",\"active\":true,\"context_window\":131072,\"public_apps\":null,\"max_completion_tokens\":65536,\"hugging_face_id\":\"openai/gpt-oss-20b\",\"name\":\"GPT OSS 20B\",\"input_modalities\":[\"text\"],\"output_modalities\":[\"text\"],\"context_length\":131072,\"max_output_length\":65536,\"pricing\":{\"prompt\":\"0.000000075\",\"completion\":\"0.0000003\",\"image\":\"0\",\"request\":\"0\",\"input_cache_read\":\"0.0000000375\"},\"supported_sampling_parameters\":[\"temperature\",\"top_p\",\"stop\",\"seed\",\"max_tokens\"],\"supported_features\":[\"tools\",\"json_mode\",\"structured_outputs\",\"reasoning\"]},{\"id\":\"canopylabs/orpheus-arabic-saudi\",\"object\":\"model\",\"created\":1765926439,\"owned_by\":\"Canopy Labs\",\"active\":true,\"context_window\":4000,\"public_apps\":null,\"max_completion_tokens\":50000,\"name\":\"Canopy Labs Orpheus Arabic Saudi\",\"input_modalities\":[\"text\"],\"output_modalities\":[\"speech\"],\"context_length\":4000,\"max_output_length\":50000,\"pricing\":{\"prompt\":\"0.00004\",\"image\":\"0\",\"request\":\"0\",\"input_cache_read\":\"0.00002\"}},{\"id\":\"allam-2-7b\",\"object\":\"model\",\"created\":1737672203,\"owned_by\":\"SDAIA\",\"active\":true,\"context_window\":4096,\"public_apps\":null,\"max_completion_tokens\":4096,\"hugging_face_id\":\"ALLaM-AI/ALLaM-2.0-7B-Instruct\",\"name\":\"ALLaM-2-7b\",\"input_modalities\":[\"text\"],\"output_modalities\":[\"text\"],\"context_length\":4096,\"max_output_length\":4096,\"supported_sampling_paramete",
+      "model_ids": [
+        "qwen/qwen3.6-27b",
+        "groq/compound-mini",
+        "openai/gpt-oss-20b",
+        "canopylabs/orpheus-arabic-saudi",
+        "allam-2-7b",
+        "canopylabs/orpheus-v1-english",
+        "meta-llama/llama-prompt-guard-2-22m",
+        "whisper-large-v3-turbo",
+        "openai/gpt-oss-120b",
+        "meta-llama/llama-prompt-guard-2-86m",
+        "whisper-large-v3",
+        "qwen/qwen3.8-27b",
+        "openai/gpt-oss-safeguard-20b",
+        "groq/compound"
+      ],
+      "vision_capable_ids": [
+        "qwen/qwen3.6-27b",
+        "qwen/qwen3.8-27b"
+      ],
+      "verdict": "BLIND",
+      "note": "this key sees 14 models; checking the qwen/llama-4 candidates for image support"
+    },
+    {
+      "probe": "POST control (no image)",
+      "http_status": 200,
+      "raw_response_body": "{\"id\":\"chatcmpl-1bf5ff54-5696-44d4-9b19-8eb8a73b2e83\",\"object\":\"chat.completion\",\"created\":1789408092,\"model\":\"qwen/qwen3.8-27b\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"OK\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"queue_time\":0.210940803,\"prompt_tokens\":14,\"prompt_time\":0.000755335,\"completion_tokens\":2,\"completion_time\":0.004220595,\"total_tokens\":16,\"total_time\":0.00497593},\"usage_breakdown\":null,\"system_fingerprint\":\"fp_921b8bf8e0\",\"x_groq\":{\"id\":\"req_01m2ggh7tsemrsns0psamrjdbm\",\"seed\":146310651},\"service_tier\":\"on_demand\"}\n",
+      "verdict": "WORKS",
+      "note": "text-only control: separates edge/UA blocking from vision capability"
+    },
+    {
+      "probe": "qwen3.6-27b:a_red",
+      "image": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+      "question": "How many FILLED RED CIRCLES are in this image? Answer with a single integer.",
+      "model": "qwen/qwen3.6-27b",
+      "http_status": 200,
+      "elapsed_s": 0.91,
+      "raw_response_body": "{\"id\":\"chatcmpl-091521c8-cecc-4b55-850a-266531ef9393\",\"object\":\"chat.completion\",\"created\":1789408118,\"model\":\"qwen/qwen3.6-27b\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\\n\\u003cthink\\u003e\\nThe user wants me to count the filled red circles in the image.\\n\\n1.  **Scan the image:** I see a few distinct sections.\\n    *   Top section: Text \\\"ARIFOS-7731\\\". Below that, a row of shapes.\\n    *   Middle section: Text \\\"ARI\\\".\\n    *   Lower middle section: Text \\\"FOS-7\\\".\\n    *   Bottom section: Text \\\"7731\\\". Below that, more shapes.\\n\\n2.  **Identify red circles:**\\n    *   In the top section, below the text \\\"ARIFOS-7731\\\", there are three red circles in a row: [76, 363, 196, 458], [273, 363, 393, 458], [471, 363, 591, 458].\\n    *   Further down, below the text \\\"7731\\\", there are more shapes.\\n    *   I see a large red circle on the left: [153, 763, 497, 966\"},\"logprobs\":null,\"finish_reason\":\"length\"}],\"usage\":{\"queue_time\":0.198622119,\"prompt_tokens\":1823,\"prompt_time\":0.130860539,\"completion_tokens\":256,\"completion_time\":0.485875434,\"total_tokens\":2079,\"total_time\":0.616735973},\"usage_breakdown\":null,\"system_fingerprint\":\"fp_2f860a3fc2\",\"x_groq\":{\"id\":\"req_01m2ggj0h9ek2vse9vcr2sd7fe\",\"seed\":686995077},\"service_tier\":\"on_demand\"}\n",
+      "parsed_content": "\n<think>\nThe user wants me to count the filled red circles in the image.\n\n1.  **Scan the image:** I see a few distinct sections.\n    *   Top section: Text \"ARIFOS-7731\". Below that, a row of shapes.\n    *   Middle section: Text \"ARI\".\n    *   Lower middle section: Text \"FOS-7\".\n    *   Bottom section: Text \"7731\". Below that, more shapes.\n\n2.  **Identify red circles:**\n    *   In the top section, below the text \"ARIFOS-7731\", there are three red circles in a row: [76, 363, 196, 458], [273, 363, 393, 458], [471, 363, 591, 458].\n    *   Further down, below the text \"7731\", there are more shapes.\n    *   I see a large red circle on the left: [153, 763, 497, 966",
+      "expected": {
+        "int": 3
+      },
+      "verdict": "WRONG",
+      "note": "integer 1 != expected 3"
+    },
+    {
+      "probe": "qwen3.6-27b:a_blue",
+      "image": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+      "question": "How many FILLED BLUE SQUARES are in this image? Answer with a single integer.",
+      "model": "qwen/qwen3.6-27b",
+      "http_status": 200,
+      "elapsed_s": 0.9,
+      "raw_response_body": "{\"id\":\"chatcmpl-d758e1da-d3ae-4ba8-af24-c343d85f428a\",\"object\":\"chat.completion\",\"created\":1789408144,\"model\":\"qwen/qwen3.6-27b\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\\n\\u003cthink\\u003e\\nThe user wants me to count the filled blue squares in the image.\\n\\n1.  **Scan the image for blue squares:**\\n    *   Looking at the top section, below the text \\\"ARIFOS-7731\\\", there is a row of shapes.\\n    *   I see three red circles on the left.\\n    *   I see two blue squares on the right.\\n    *   Looking further down, there are more red circles.\\n    *   Looking at the very bottom, there are two more blue squares.\\n\\n2.  **Count the blue squares:**\\n    *   Top row: One blue square [735, 383, 856, 483] and another blue square [915, 383, 999, 483]. That's 2.\\n    *   Bottom row: One blue square [102, 853, 381, 977] and another blue square [545, 853, 999, 977]. That's 2 more.\\n    *   Total count: 2 + 2 = \"},\"logprobs\":null,\"finish_reason\":\"length\"}],\"usage\":{\"queue_time\":0.154998152,\"prompt_tokens\":1822,\"prompt_time\":0.156235836,\"completion_tokens\":256,\"completion_time\":0.503414935,\"total_tokens\":2078,\"total_time\":0.659650771},\"usage_breakdown\":null,\"system_fingerprint\":\"fp_60e0d2f248\",\"x_groq\":{\"id\":\"req_01m2ggjsv4ejaay7wxqn99eg3k\",\"seed\":1083558380},\"service_tier\":\"on_demand\"}\n",
+      "parsed_content": "\n<think>\nThe user wants me to count the filled blue squares in the image.\n\n1.  **Scan the image for blue squares:**\n    *   Looking at the top section, below the text \"ARIFOS-7731\", there is a row of shapes.\n    *   I see three red circles on the left.\n    *   I see two blue squares on the right.\n    *   Looking further down, there are more red circles.\n    *   Looking at the very bottom, there are two more blue squares.\n\n2.  **Count the blue squares:**\n    *   Top row: One blue square [735, 383, 856, 483] and another blue square [915, 383, 999, 483]. That's 2.\n    *   Bottom row: One blue square [102, 853, 381, 977] and another blue square [545, 853, 999, 977]. That's 2 more.\n    *   Total count: 2 + 2 = ",
+      "expected": {
+        "int": 2
+      },
+      "verdict": "WRONG",
+      "note": "integer 1 != expected 2"
+    },
+    {
+      "probe": "qwen3.6-27b:a_text",
+      "image": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+      "question": "What exact text appears in this image? Quote it verbatim.",
+      "model": "qwen/qwen3.6-27b",
+      "http_status": 200,
+      "elapsed_s": 0.9,
+      "raw_response_body": "{\"id\":\"chatcmpl-e9bed1be-7407-4d96-b0c4-b06f07ca51cc\",\"object\":\"chat.completion\",\"created\":1789408169,\"model\":\"qwen/qwen3.6-27b\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\\n\\u003cthink\\u003e\\nThe user wants the text from the image transcribed exactly.\\n\\n1.  **Identify the text:** The image contains the text \\\"ARIFOS-7731\\\" at the top.\\n2.  **Transcribe:** \\\"ARIFOS-7731\\\".\\n\\u003c/think\\u003e\\n\\nARIFOS-7731\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"queue_time\":0.16354044,\"prompt_tokens\":1817,\"prompt_time\":0.156080887,\"completion_tokens\":71,\"completion_time\":0.141038265,\"total_tokens\":1888,\"total_time\":0.297119152},\"usage_breakdown\":null,\"system_fingerprint\":\"fp_60e0d2f248\",\"x_groq\":{\"id\":\"req_01m2ggkkffettt6y41tyv9h706\",\"seed\":1803556816},\"service_tier\":\"on_demand\"}\n",
+      "parsed_content": "\n<think>\nThe user wants the text from the image transcribed exactly.\n\n1.  **Identify the text:** The image contains the text \"ARIFOS-7731\" at the top.\n2.  **Transcribe:** \"ARIFOS-7731\".\n</think>\n\nARIFOS-7731",
+      "expected": {
+        "contains": "ARIFOS-7731"
+      },
+      "verdict": "CORRECT",
+      "note": "contains 'ARIFOS-7731'"
+    },
+    {
+      "probe": "qwen3.6-27b:a_absence",
+      "image": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+      "question": "Is there a GREEN TRIANGLE in this image? Answer yes or no only.",
+      "model": "qwen/qwen3.6-27b",
+      "http_status": 200,
+      "elapsed_s": 0.64,
+      "raw_response_body": "{\"id\":\"chatcmpl-0b3b2c6f-01e2-4247-b968-250fba0038aa\",\"object\":\"chat.completion\",\"created\":1789408195,\"model\":\"qwen/qwen3.6-27b\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\\n\\u003cthink\\u003e\\nThe user is asking a simple yes/no question about the presence of a specific shape and color in the image.\\n1.  **Scan the image for shapes:** I see red circles and blue squares.\\n2.  **Scan the image for text:** I see \\\"ARIFOS-7731\\\" and parts of it repeated.\\n3.  **Check for \\\"GREEN TRIANGLE\\\":**\\n    *   Are there any triangles? No.\\n    *   Are there any green objects? No.\\n    *   Therefore, there is no green triangle.\\n\\nThe answer is No.\\n\\u003c/think\\u003e\\n\\nNo\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"queue_time\":0.176291591,\"prompt_tokens\":1820,\"prompt_time\":0.130292938,\"completion_tokens\":129,\"completion_time\":0.244344529,\"total_tokens\":1949,\"total_time\":0.374637467},\"usage_breakdown\":null,\"system_fingerprint\":\"fp_49d6b1859d\",\"x_groq\":{\"id\":\"req_01m2ggmce3ez1r4vq65qktjd5v\",\"seed\":180075510},\"service_tier\":\"on_demand\"}\n",
+      "parsed_content": "\n<think>\nThe user is asking a simple yes/no question about the presence of a specific shape and color in the image.\n1.  **Scan the image for shapes:** I see red circles and blue squares.\n2.  **Scan the image for text:** I see \"ARIFOS-7731\" and parts of it repeated.\n3.  **Check for \"GREEN TRIANGLE\":**\n    *   Are there any triangles? No.\n    *   Are there any green objects? No.\n    *   Therefore, there is no green triangle.\n\nThe answer is No.\n</think>\n\nNo",
+      "expected": {
+        "negate_yes": true
+      },
+      "verdict": "CORRECT",
+      "note": "correctly denied the absent object"
+    },
+    {
+      "probe": "qwen3.6-27b:b_num",
+      "image": "/root/AAA/hardening/mata/testdata/img_b_number_caption.png",
+      "question": "What is the large number shown in this image? Also quote the small caption text.",
+      "model": "qwen/qwen3.6-27b",
+      "http_status": 200,
+      "elapsed_s": 1.33,
+      "raw_response_body": "{\"id\":\"chatcmpl-744ae6c3-ca5d-48b5-a9e8-da7dbe3f1fe5\",\"object\":\"chat.completion\",\"created\":1789408221,\"model\":\"qwen/qwen3.6-27b\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\\n\\u003cthink\\u003e\\nThe user wants me to identify the large number and the small caption text from the provided image.\\n\\n1.  **Analyze the image:**\\n    *   The image shows a large number \\\"48200\\\" in bold black font.\\n    *   Below the number, there is smaller text that says \\\"balance due\\\".\\n    *   Wait, looking closely at the image, it seems to be a composite or a repeated pattern.\\n    *   Top section: \\\"48200\\\" and \\\"balance due\\\".\\n    *   Middle section: \\\"482\\\" and \\\"balance due\\\".\\n    *   Bottom section: \\\"00\\\".\\n    *   Actually, looking at the full image provided, it looks like a single graphic that has been sliced or repeated. Let's look at the very top part which is the most complete.\\n    *   The top part clearly shows \\\"48200\\\".\\n    *   Below that is \\\"balance due\\\".\\n    *   The middle part shows \\\"482\\\" and \\\"balance due\\\".\\n    *   The bottom part shows \\\"00\\\".\\n    *   It looks like the image is actually a collage of the same text at different zoom\"},\"logprobs\":null,\"finish_reason\":\"length\"}],\"usage\":{\"queue_time\":0.688908803,\"prompt_tokens\":797,\"prompt_time\":0.062904395,\"completion_tokens\":256,\"completion_time\":0.48625293,\"total_tokens\":1053,\"total_time\":0.549157325},\"usage_breakdown\":null,\"system_fingerprint\":\"fp_49d6b1859d\",\"x_groq\":{\"id\":\"req_01m2ggn5f7ex2sxgxj7t5hj7qd\",\"seed\":1198489893},\"service_tier\":\"on_demand\"}\n",
+      "parsed_content": "\n<think>\nThe user wants me to identify the large number and the small caption text from the provided image.\n\n1.  **Analyze the image:**\n    *   The image shows a large number \"48200\" in bold black font.\n    *   Below the number, there is smaller text that says \"balance due\".\n    *   Wait, looking closely at the image, it seems to be a composite or a repeated pattern.\n    *   Top section: \"48200\" and \"balance due\".\n    *   Middle section: \"482\" and \"balance due\".\n    *   Bottom section: \"00\".\n    *   Actually, looking at the full image provided, it looks like a single graphic that has been sliced or repeated. Let's look at the very top part which is the most complete.\n    *   The top part clearly shows \"48200\".\n    *   Below that is \"balance due\".\n    *   The middle part shows \"482\" and \"balance due\".\n    *   The bottom part shows \"00\".\n    *   It looks like the image is actually a collage of the same text at different zoom",
+      "expected": {
+        "contains_all": [
+          "48200",
+          "balance due"
+        ]
+      },
+      "verdict": "CORRECT",
+      "note": "all expected strings present"
+    },
+    {
+      "probe": "qwen3.6-27b:b_red",
+      "image": "/root/AAA/hardening/mata/testdata/img_b_number_caption.png",
+      "question": "How many FILLED RED CIRCLES are in this image? Answer with a single integer.",
+      "model": "qwen/qwen3.6-27b",
+      "http_status": 200,
+      "elapsed_s": 0.56,
+      "raw_response_body": "{\"id\":\"chatcmpl-da332b17-6bea-457f-b929-22f3822bbd38\",\"object\":\"chat.completion\",\"created\":1789408247,\"model\":\"qwen/qwen3.6-27b\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\\n\\u003cthink\\u003e\\nThe user is asking for a count of \\\"FILLED RED CIRCLES\\\".\\n1.  **Scan the image:** I see text \\\"48200\\\" and \\\"balance due\\\" repeated in different sizes.\\n2.  **Analyze the content:** The content consists entirely of black text on a white background.\\n3.  **Search for specific object:** I am looking for \\\"filled red circles\\\".\\n4.  **Evaluate findings:** There are no red objects in the image. There are no circles (except perhaps the holes in the '8' and '0', but those are white spaces within black shapes, not filled red circles).\\n5.  **Conclusion:** The count is zero.\\n\\n\\u003c/think\\u003e\\n\\n0\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"queue_time\":0.108012911,\"prompt_tokens\":799,\"prompt_time\":0.067054987,\"completion_tokens\":152,\"completion_time\":0.300116849,\"total_tokens\":951,\"total_time\":0.367171836},\"usage_breakdown\":null,\"system_fingerprint\":\"fp_60e0d2f248\",\"x_groq\":{\"id\":\"req_01m2ggnz5ye0mskek4ky4ej60r\",\"seed\":2060357015},\"service_tier\":\"on_demand\"}\n",
+      "parsed_content": "\n<think>\nThe user is asking for a count of \"FILLED RED CIRCLES\".\n1.  **Scan the image:** I see text \"48200\" and \"balance due\" repeated in different sizes.\n2.  **Analyze the content:** The content consists entirely of black text on a white background.\n3.  **Search for specific object:** I am looking for \"filled red circles\".\n4.  **Evaluate findings:** There are no red objects in the image. There are no circles (except perhaps the holes in the '8' and '0', but those are white spaces within black shapes, not filled red circles).\n5.  **Conclusion:** The count is zero.\n\n</think>\n\n0",
+      "expected": {
+        "int": 0
+      },
+      "verdict": "HALLUCINATED",
+      "note": "integer 1 != expected 0"
+    },
+    {
+      "probe": "qwen3.6-27b:c_desc",
+      "image": "/root/AAA/hardening/mata/testdata/img_c_photo_crop.jpg",
+      "question": "Describe what is in this image. Is it a photograph, a chart, a screenshot of text, or source code? Also: does the text 'ZZQ-419' appear?",
+      "model": "qwen/qwen3.6-27b",
+      "http_status": 200,
+      "elapsed_s": 0.88,
+      "raw_response_body": "{\"id\":\"chatcmpl-1203ffe5-3fc3-4031-9a2e-e3cd5402c9de\",\"object\":\"chat.completion\",\"created\":1789408273,\"model\":\"qwen/qwen3.6-27b\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\\n\\u003cthink\\u003e\\nThe user wants me to identify the type of image and check for specific text.\\n\\n1.  **Analyze the image content:**\\n    *   The image shows a close-up of a muscular male torso.\\n    *   It features the chest (pectorals), shoulders (deltoids), neck, and part of the lower face (mouth, chin, jawline).\\n    *   The lighting is dramatic, with a golden rim light highlighting the muscles.\\n    *   The image appears to be a composite or a collage of similar shots, as the same subject (or very similar subject) is repeated in a vertical stack. Wait, looking closer, it looks like the same image repeated three times vertically.\\n        *   Top section: Shows the face (mouth/chin), neck, and upper chest/shoulder.\\n        *   Middle section: Shows the shoulder and upper chest again, but slightly lower down or just a repeat. Actually, looking very closely, the top image and the middle image are identical. The bottom image is also identical to the top two. It's a vertical tiling of the same image.\\n    *   The style looks like a high-quality photograph or a very realistic 3D render/AI generation.\"},\"logprobs\":null,\"finish_reason\":\"length\"}],\"usage\":{\"queue_time\":0.148167225,\"prompt_tokens\":1331,\"prompt_time\":0.110109674,\"completion_tokens\":256,\"completion_time\":0.519865518,\"total_tokens\":1587,\"total_time\":0.629975192},\"usage_breakdown\":null,\"system_fingerprint\":\"fp_60e0d2f248\",\"x_groq\":{\"id\":\"req_01m2ggpr4yefa9qjpntt58edfk\",\"seed\":1702103183},\"service_tier\":\"on_demand\"}\n",
+      "parsed_content": "\n<think>\nThe user wants me to identify the type of image and check for specific text.\n\n1.  **Analyze the image content:**\n    *   The image shows a close-up of a muscular male torso.\n    *   It features the chest (pectorals), shoulders (deltoids), neck, and part of the lower face (mouth, chin, jawline).\n    *   The lighting is dramatic, with a golden rim light highlighting the muscles.\n    *   The image appears to be a composite or a collage of similar shots, as the same subject (or very similar subject) is repeated in a vertical stack. Wait, looking closer, it looks like the same image repeated three times vertically.\n        *   Top section: Shows the face (mouth/chin), neck, and upper chest/shoulder.\n        *   Middle section: Shows the shoulder and upper chest again, but slightly lower down or just a repeat. Actually, looking very closely, the top image and the middle image are identical. The bottom image is also identical to the top two. It's a vertical tiling of the same image.\n    *   The style looks like a high-quality photograph or a very realistic 3D render/AI generation.",
+      "expected": {
+        "negate_contains": "ZZQ-419",
+        "contains": "photograph"
+      },
+      "verdict": "CORRECT",
+      "note": "identified it as a photograph and denied the absent text"
+    },
+    {
+      "probe": "qwen3.6-27b:d_control_red",
+      "image": "/root/AAA/hardening/mata/testdata/img_d_control_zero_red.png",
+      "question": "How many FILLED RED CIRCLES are in this image? Answer with a single integer.",
+      "model": "qwen/qwen3.6-27b",
+      "http_status": 200,
+      "elapsed_s": 0.88,
+      "raw_response_body": "{\"id\":\"chatcmpl-280b6894-9d69-49de-a544-50825ce2450c\",\"object\":\"chat.completion\",\"created\":1789408299,\"model\":\"qwen/qwen3.6-27b\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\\n\\u003cthink\\u003e\\nThe user wants me to count the \\\"FILLED RED CIRCLES\\\" in the image.\\n\\n1.  **Scan the image for circles:**\\n    *   I see a yellow circle in the top section [532, 293, 755, 497].\\n    *   I see another yellow circle in the bottom section [458, 836, 755, 999].\\n    *   Wait, let me look closer at the bottom section. There's a yellow circle [458, 836, 755, 999] and another yellow circle partially visible on the left [0, 836, 169, 999].\\n    *   Let's re-examine the whole image.\\n    *   Top part: \\\"CONTROL\\\" text. Below it, a green square [137, 293, 396, 497] and a yellow circle [532, 293, 755, 497].\\n    *   Middle part: \\\"COM\\\" text.\\n    *   Lower middle\"},\"logprobs\":null,\"finish_reason\":\"length\"}],\"usage\":{\"queue_time\":0.167277097,\"prompt_tokens\":1823,\"prompt_time\":0.138798881,\"completion_tokens\":256,\"completion_time\":0.49085069,\"total_tokens\":2079,\"total_time\":0.629649571},\"usage_breakdown\":null,\"system_fingerprint\":\"fp_49d6b1859d\",\"x_groq\":{\"id\":\"req_01m2ggqhdmee29p588asqn9g6t\",\"seed\":28920504},\"service_tier\":\"on_demand\"}\n",
+      "parsed_content": "\n<think>\nThe user wants me to count the \"FILLED RED CIRCLES\" in the image.\n\n1.  **Scan the image for circles:**\n    *   I see a yellow circle in the top section [532, 293, 755, 497].\n    *   I see another yellow circle in the bottom section [458, 836, 755, 999].\n    *   Wait, let me look closer at the bottom section. There's a yellow circle [458, 836, 755, 999] and another yellow circle partially visible on the left [0, 836, 169, 999].\n    *   Let's re-examine the whole image.\n    *   Top part: \"CONTROL\" text. Below it, a green square [137, 293, 396, 497] and a yellow circle [532, 293, 755, 497].\n    *   Middle part: \"COM\" text.\n    *   Lower middle",
+      "expected": {
+        "int": 0
+      },
+      "verdict": "HALLUCINATED",
+      "note": "integer 1 != expected 0"
+    },
+    {
+      "probe": "qwen3.8-27b:a_red",
+      "image": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+      "question": "How many FILLED RED CIRCLES are in this image? Answer with a single integer.",
+      "model": "qwen/qwen3.8-27b",
+      "http_status": 200,
+      "elapsed_s": 0.61,
+      "raw_response_body": "{\"id\":\"chatcmpl-d6464b6b-7b21-4f02-9014-b9dbcf5738d0\",\"object\":\"chat.completion\",\"created\":1789408324,\"model\":\"qwen/qwen3.8-27b\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"3\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"queue_time\":0.362755213,\"prompt_tokens\":1825,\"prompt_time\":0.147223492,\"completion_tokens\":2,\"completion_time\":0.004210135,\"total_tokens\":1827,\"total_time\":0.151433627},\"usage_breakdown\":null,\"system_fingerprint\":\"fp_921b8bf8e0\",\"x_groq\":{\"id\":\"req_01m2ggrapdegyvd6epcmjkg9h4\",\"seed\":1697957996},\"service_tier\":\"on_demand\"}\n",
+      "parsed_content": "3",
+      "expected": {
+        "int": 3
+      },
+      "verdict": "CORRECT",
+      "note": "integer 3 == expected 3"
+    },
+    {
+      "probe": "qwen3.8-27b:a_blue",
+      "image": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+      "question": "How many FILLED BLUE SQUARES are in this image? Answer with a single integer.",
+      "model": "qwen/qwen3.8-27b",
+      "http_status": 200,
+      "elapsed_s": 0.61,
+      "raw_response_body": "{\"id\":\"chatcmpl-37bec3ac-9572-4c74-a45e-2ea31de5a878\",\"object\":\"chat.completion\",\"created\":1789408350,\"model\":\"qwen/qwen3.8-27b\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"2\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"queue_time\":0.372132439,\"prompt_tokens\":1824,\"prompt_time\":0.146645105,\"completion_tokens\":2,\"completion_time\":0.004207205,\"total_tokens\":1826,\"total_time\":0.15085231},\"usage_breakdown\":null,\"system_fingerprint\":\"fp_921b8bf8e0\",\"x_groq\":{\"id\":\"req_01m2ggs3ppeepvjzc6yk3ygs3g\",\"seed\":1570788780},\"service_tier\":\"on_demand\"}\n",
+      "parsed_content": "2",
+      "expected": {
+        "int": 2
+      },
+      "verdict": "CORRECT",
+      "note": "integer 2 == expected 2"
+    },
+    {
+      "probe": "qwen3.8-27b:a_text",
+      "image": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+      "question": "What exact text appears in this image? Quote it verbatim.",
+      "model": "qwen/qwen3.8-27b",
+      "http_status": 200,
+      "elapsed_s": 0.62,
+      "raw_response_body": "{\"id\":\"chatcmpl-7a8e04b9-98bf-45cf-8b93-ab617b7b39c9\",\"object\":\"chat.completion\",\"created\":1789408376,\"model\":\"qwen/qwen3.8-27b\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"ARIFOS-7731\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"queue_time\":0.362143473,\"prompt_tokens\":1819,\"prompt_time\":0.151747091,\"completion_tokens\":9,\"completion_time\":0.017932447,\"total_tokens\":1828,\"total_time\":0.169679538},\"usage_breakdown\":null,\"system_fingerprint\":\"fp_921b8bf8e0\",\"x_groq\":{\"id\":\"req_01m2ggswq0ez9bxayd029b23d7\",\"seed\":1609276816},\"service_tier\":\"on_demand\"}\n",
+      "parsed_content": "ARIFOS-7731",
+      "expected": {
+        "contains": "ARIFOS-7731"
+      },
+      "verdict": "CORRECT",
+      "note": "contains 'ARIFOS-7731'"
+    },
+    {
+      "probe": "qwen3.8-27b:a_absence",
+      "image": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+      "question": "Is there a GREEN TRIANGLE in this image? Answer yes or no only.",
+      "model": "qwen/qwen3.8-27b",
+      "http_status": 200,
+      "elapsed_s": 0.61,
+      "raw_response_body": "{\"id\":\"chatcmpl-b4328629-f280-4003-83ab-f0595eb572c7\",\"object\":\"chat.completion\",\"created\":1789408401,\"model\":\"qwen/qwen3.8-27b\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"No\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"queue_time\":0.361383471,\"prompt_tokens\":1822,\"prompt_time\":0.157028544,\"completion_tokens\":2,\"completion_time\":0.004199855,\"total_tokens\":1824,\"total_time\":0.161228399},\"usage_breakdown\":null,\"system_fingerprint\":\"fp_921b8bf8e0\",\"x_groq\":{\"id\":\"req_01m2ggtnqxe85rtskysdm23rsz\",\"seed\":522671246},\"service_tier\":\"on_demand\"}\n",
+      "parsed_content": "No",
+      "expected": {
+        "negate_yes": true
+      },
+      "verdict": "CORRECT",
+      "note": "correctly denied the absent object"
+    },
+    {
+      "probe": "qwen3.8-27b:b_num",
+      "image": "/root/AAA/hardening/mata/testdata/img_b_number_caption.png",
+      "question": "What is the large number shown in this image? Also quote the small caption text.",
+      "model": "qwen/qwen3.8-27b",
+      "http_status": 200,
+      "elapsed_s": 0.7,
+      "raw_response_body": "{\"id\":\"chatcmpl-3f19ad14-3185-4a55-9c03-c83b8ba53f58\",\"object\":\"chat.completion\",\"created\":1789408427,\"model\":\"qwen/qwen3.8-27b\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Based on the image provided:\\n\\n- The large number shown is **48200**.\\n- The small caption text below it reads: **balance due**\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"queue_time\":0.291666179,\"prompt_tokens\":799,\"prompt_time\":0.066367498,\"completion_tokens\":35,\"completion_time\":0.06873954,\"total_tokens\":834,\"total_time\":0.135107038},\"usage_breakdown\":null,\"system_fingerprint\":\"fp_921b8bf8e0\",\"x_groq\":{\"id\":\"req_01m2ggvey8e4fvqme7z7c9ev0e\",\"seed\":868165204},\"service_tier\":\"on_demand\"}\n",
+      "parsed_content": "Based on the image provided:\n\n- The large number shown is **48200**.\n- The small caption text below it reads: **balance due**",
+      "expected": {
+        "contains_all": [
+          "48200",
+          "balance due"
+        ]
+      },
+      "verdict": "CORRECT",
+      "note": "all expected strings present"
+    },
+    {
+      "probe": "qwen3.8-27b:b_red",
+      "image": "/root/AAA/hardening/mata/testdata/img_b_number_caption.png",
+      "question": "How many FILLED RED CIRCLES are in this image? Answer with a single integer.",
+      "model": "qwen/qwen3.8-27b",
+      "http_status": 200,
+      "elapsed_s": 0.45,
+      "raw_response_body": "{\"id\":\"chatcmpl-a587d70e-51ba-4398-9106-06005cbd0d55\",\"object\":\"chat.completion\",\"created\":1789408452,\"model\":\"qwen/qwen3.8-27b\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"0\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"queue_time\":0.287241666,\"prompt_tokens\":801,\"prompt_time\":0.064231101,\"completion_tokens\":2,\"completion_time\":0.004199945,\"total_tokens\":803,\"total_time\":0.068431046},\"usage_breakdown\":null,\"system_fingerprint\":\"fp_921b8bf8e0\",\"x_groq\":{\"id\":\"req_01m2ggw7vkepy9n2p1rnfc965h\",\"seed\":1111053365},\"service_tier\":\"on_demand\"}\n",
+      "parsed_content": "0",
+      "expected": {
+        "int": 0
+      },
+      "verdict": "CORRECT",
+      "note": "integer 0 == expected 0"
+    },
+    {
+      "probe": "qwen3.8-27b:c_desc",
+      "image": "/root/AAA/hardening/mata/testdata/img_c_photo_crop.jpg",
+      "question": "Describe what is in this image. Is it a photograph, a chart, a screenshot of text, or source code? Also: does the text 'ZZQ-419' appear?",
+      "model": "qwen/qwen3.8-27b",
+      "http_status": 200,
+      "elapsed_s": 1.03,
+      "raw_response_body": "{\"id\":\"chatcmpl-281cdcef-9b9e-403d-affc-3ea782f4c88c\",\"object\":\"chat.completion\",\"created\":1789408478,\"model\":\"qwen/qwen3.8-27b\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Based on the visual evidence, here is a description of the image:\\n\\n**Image Type:** This is a **photograph** (or a very high-quality digital render designed to look like one). It is not a chart, a screenshot of text, or source code.\\n\\n**Description:**\\nThe image is a close-up, studio-style photograph focusing on the upper body of a muscular, shirtless man. The framing is tight, showing:\\n*   The lower part of his face, including his lips, chin, and jawline, which has light stubble.\\n*   His neck and prominent trapezius muscles.\\n*   His well-defined pectoral (chest) muscles and deltoid (shoulder) muscles.\\n*   The lighting is dramatic, with a strong rim light outlining his shoulder and back against a dark, out-of-focus background. This creates a high-contrast, sculpted look that emphasizes his musculature.\\n\\nThe overall aesthetic is that of a fitness or bodybuilding portrait.\\n\\n**Regarding the text 'ZZQ-419':**\\nNo, the text **'ZZQ-419' does not appear** anywhere in this image. The image contains only the photographic subject and background, with no\"},\"logprobs\":null,\"finish_reason\":\"length\"}],\"usage\":{\"queue_time\":0.328910076,\"prompt_tokens\":1333,\"prompt_time\":0.107711162,\"completion_tokens\":256,\"completion_time\":0.500217273,\"total_tokens\":1589,\"total_time\":0.607928435},\"usage_breakdown\":null,\"system_fingerprint\":\"fp_921b8bf8e0\",\"x_groq\":{\"id\":\"req_01m2ggx0qdeakaedkg9bq38a5c\",\"seed\":153281261},\"service_tier\":\"on_demand\"}\n",
+      "parsed_content": "Based on the visual evidence, here is a description of the image:\n\n**Image Type:** This is a **photograph** (or a very high-quality digital render designed to look like one). It is not a chart, a screenshot of text, or source code.\n\n**Description:**\nThe image is a close-up, studio-style photograph focusing on the upper body of a muscular, shirtless man. The framing is tight, showing:\n*   The lower part of his face, including his lips, chin, and jawline, which has light stubble.\n*   His neck and prominent trapezius muscles.\n*   His well-defined pectoral (chest) muscles and deltoid (shoulder) muscles.\n*   The lighting is dramatic, with a strong rim light outlining his shoulder and back against a dark, out-of-focus background. This creates a high-contrast, sculpted look that emphasizes his musculature.\n\nThe overall aesthetic is that of a fitness or bodybuilding portrait.\n\n**Regarding the text 'ZZQ-419':**\nNo, the text **'ZZQ-419' does not appear** anywhere in this image. The image contains only the photographic subject and background, with no",
+      "expected": {
+        "negate_contains": "ZZQ-419",
+        "contains": "photograph"
+      },
+      "verdict": "FABRICATES",
+      "note": "claimed the nonexistent text 'ZZQ-419' is present"
+    },
+    {
+      "probe": "qwen3.8-27b:d_control_red",
+      "image": "/root/AAA/hardening/mata/testdata/img_d_control_zero_red.png",
+      "question": "How many FILLED RED CIRCLES are in this image? Answer with a single integer.",
+      "model": "qwen/qwen3.8-27b",
+      "http_status": 200,
+      "elapsed_s": 0.58,
+      "raw_response_body": "{\"id\":\"chatcmpl-196add65-0ffc-4a5c-aebe-e3dfdeaa88ae\",\"object\":\"chat.completion\",\"created\":1789408504,\"model\":\"qwen/qwen3.8-27b\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"0\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"queue_time\":0.340132226,\"prompt_tokens\":1825,\"prompt_time\":0.152206072,\"completion_tokens\":2,\"completion_time\":0.004202274,\"total_tokens\":1827,\"total_time\":0.156408346},\"usage_breakdown\":null,\"system_fingerprint\":\"fp_921b8bf8e0\",\"x_groq\":{\"id\":\"req_01m2ggxt4re00t5mg96yhkcbzq\",\"seed\":531310562},\"service_tier\":\"on_demand\"}\n",
+      "parsed_content": "0",
+      "expected": {
+        "int": 0
+      },
+      "verdict": "CORRECT",
+      "note": "integer 0 == expected 0"
+    }
+  ]
+}

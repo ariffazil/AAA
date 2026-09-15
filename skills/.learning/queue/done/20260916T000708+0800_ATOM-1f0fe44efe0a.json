@@ -1,0 +1,8 @@
+{
+  "skill_id": "FORGE-verify-runtime",
+  "agent": "hermes-rsi-loop",
+  "lesson": "DEAD_POINTER observed 1x \u2014 impact=unresolved_ref. First surface: session:tool:terminal \u2014 all four checks passed, but independence is NAME-LEVEL ONLY (same author) \u2014 verdict is PROVISIONAL: may enter the capability graph, may NOT record a survival event",
+  "evidence": "[{\"layer\": \"artifact\", \"source\": \"session:tool:terminal\", \"excerpt\": \"/forge_work/ and /root/forge_work/ for items from this week that never got resolved\\\\\\\\n4. SYSTEM EVOLUTION \u2014 disk trend, broken symlink trend, organ health trend\\\\\\\\n5. PATTERNS \u2014 what time of day was most active? What themes emerged in commits?\\\\\\\\n6. AUTONOMY LEDGER \u2014 what did Hermes/the system self-co\"}]",
+  "atom_id": "ATOM-1f0fe44efe0a",
+  "verified_by": "hermes-rsi-verifier"
+}

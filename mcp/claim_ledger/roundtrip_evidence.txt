@@ -1,0 +1,103 @@
+### client.py stats
+{
+  "ok": true,
+  "db_path": "/root/AAA/claim_ledger/claims.db",
+  "claims_total": 11,
+  "claims_verified": 6,
+  "claims_unverified": 5,
+  "artifacts": 2,
+  "verifications": 6,
+  "by_type": {
+    "DER": 2,
+    "FIQH": 1,
+    "INT": 1,
+    "OBS": 6,
+    "VOID": 1
+  },
+  "by_brief": {
+    "2026-09-15-bank-muamalat-authenticity": 5,
+    "2026-09-15-syed-mokhtar-bank-consolidation": 6
+  },
+  "by_verdict": {
+    "CONFIRMED": 3,
+    "PARTIAL": 2,
+    "REFUTED": 1
+  }
+}
+
+### client.py trace 2026-09-15-syed-mokhtar-bank-consolidation-c01
+{
+  "ok": true,
+  "claim_id": "2026-09-15-syed-mokhtar-bank-consolidation-c01",
+  "brief_id": "2026-09-15-syed-mokhtar-bank-consolidation",
+  "claim_text": "Bank Muamalat's retail funding is 12% of deposits plus investment accounts with 47% top-20 depositor concentration and 90.2% deposit funding.",
+  "claim_type": "OBS",
+  "recorded_at": "2026-09-15T15:08:25Z",
+  "recorded_by": "i-ARIF",
+  "source_quote": "The real strategic driver is funding, not size. Bank Muamalat's retail funding is 12% of deposits plus investment accounts, with a 47% top-20 depositor concentration and 90.2% deposit funding.",
+  "source_ref": "forged brief on disk (see artifact path)",
+  "locator": "p.2 Executive Read, finding 5",
+  "artifact": {
+    "artifact_id": "art-7342084b77bdace0",
+    "path": "/root/AAA/forge_work/2026-09-15-syed-mokhtar-bank-consolidation/Bank-Muamalat-Consolidation-Brief-2026-09-15.pdf",
+    "sha256_recorded": "7342084b77bdace0dcd30e606e6a6ed1fd5b919221cf99ba8c82588f9d7616f0",
+    "sha256_live": "7342084b77bdace0dcd30e606e6a6ed1fd5b919221cf99ba8c82588f9d7616f0",
+    "disk_state": "match"
+  },
+  "chain": [
+    {
+      "seq": 3,
+      "event_type": "claim_recorded",
+      "prev_hash": "63e4f1c04d8bdbf73d3e35fc98c57089dee4a8e6783288923ae9f312f7d8ea47",
+      "row_hash": "4de468ba1e972188caca3edb52f4bd150fb62bc9442c223aef876b2c11eb69a4",
+      "written_at": "2026-09-15T15:08:25Z"
+    }
+  ],
+  "verifications": [
+    {
+      "verification_id": "vrf-8f580de9c7d7f9f0",
+      "verdict": "CONFIRMED",
+      "method": "source document re-read at cited page",
+      "verifier": "i-ARIF",
+      "verified_at": "2026-09-15T15:08:26Z",
+      "artifact_recheck": "match"
+    }
+  ],
+  "latest_verdict": "CONFIRMED",
+  "traceable": true,
+  "trace_gaps": []
+}
+
+### client.py verify
+{
+  "ok": true,
+  "db_path": "/root/AAA/claim_ledger/claims.db",
+  "chain_ok": true,
+  "chain_length": 19,
+  "broken_links": [],
+  "payload_ok": true,
+  "payload_mismatches": [],
+  "record_chain_mismatches": 0,
+  "records_checked": 19,
+  "artifacts_ok": true,
+  "artifacts": [
+    {
+      "artifact_id": "art-7342084b77bdace0",
+      "state": "match",
+      "sha256": "7342084b77bdace0dcd30e606e6a6ed1fd5b919221cf99ba8c82588f9d7616f0",
+      "live": "7342084b77bdace0dcd30e606e6a6ed1fd5b919221cf99ba8c82588f9d7616f0"
+    },
+    {
+      "artifact_id": "art-c23df37d93222f80",
+      "state": "match",
+      "sha256": "c23df37d93222f80ceca2e7bb04e96870a455c22c7ba6e11e4901b19086838a0",
+      "live": "c23df37d93222f80ceca2e7bb04e96870a455c22c7ba6e11e4901b19086838a0"
+    }
+  ],
+  "head": {
+    "seq": 19,
+    "row_hash": "01e145d03c4be281a627aa7a53ef3b9f332f2344306304b61a9b168ec0ed3691",
+    "written_at": "2026-09-15T15:08:26Z"
+  },
+  "ledger_verified": true
+}

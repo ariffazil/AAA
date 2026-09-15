@@ -1,0 +1,113 @@
+{
+  "$schema": "arifos.observability.capability-graph.v1",
+  "ref": "ARIFOS::OBSERVABILITY_CONVERGENCE::P1",
+  "phase": 0,
+  "generated_by": "Hermes ASI (i-arif)",
+  "generated_at": "2026-09-15T05:45:00Z",
+  "node": "KVM8 (forge, 100.64.0.2)",
+  "method": "live probe + filesystem + systemd + NATS/JetStream + PostgreSQL",
+  "mutations_performed": "none",
+  "capabilities": [
+    {
+      "id": "arifos-kernel",
+      "role": "law",
+      "endpoint": "127.0.0.1:8088",
+      "observed": "HTTP 200, status=healthy, degraded_reasons=[]",
+      "capability": "constitutional judgement, floors F1-F13",
+      "status": "LIVE"
+    },
+    {
+      "id": "arifflow",
+      "role": "metabolic-governor",
+      "endpoint": "127.0.0.1:7073",
+      "observed": "HTTP 200, status=ok-v3-vector, receipts=1000, cycle_count=1249, hold_count=4708",
+      "capability": "FQ vector v3 (7 dimensions), invariant enforcement, HOLD/THROTTLE",
+      "status": "LIVE"
+    },
+    {
+      "id": "frame",
+      "role": "independent-witness",
+      "endpoint": "127.0.0.1:18085",
+      "observed": "HTTP 200, 7 chambers active, baseline_organs=10, probes=9",
+      "capability": "probe, baseline, compare, trend, alert, report, rsi_verify",
+      "status": "LIVE",
+      "defect": "baseline/observation count mismatch (10 declared vs 9 probed); trend had no scheduled writer before 2026-09-15"
+    },
+    {
+      "id": "kabarkan",
+      "role": "telemetry-ingestion-plane",
+      "endpoint": "NATS kabarkan-ingest -> worker -> postgres",
+      "observed": "stream 193,122 msgs; consumer kabarkan-worker-fresh pending=0 ack=193,128; observations=201,495 rows, newest <5 min",
+      "capability": "span ingest, batch merge, durable ledger write",
+      "status": "LIVE",
+      "defect": "no health surface (18902 refuses); single-organ attribution; write-only (no consumer)"
+    },
+    {
+      "id": "a-forge",
+      "role": "executor",
+      "endpoint": "127.0.0.1:7071",
+      "observed": "HTTP 200, ok=true, degraded_mode=false, 114 tools",
+      "capability": "tool execution, forge_* MCP surface",
+      "status": "LIVE"
+    },
+    {
+      "id": "aaa",
+      "role": "display",
+      "endpoint": "127.0.0.1:3001",
+      "observed": "HTTP 200, final_authority=ARIF, authority_ceiling=DISPLAY_ONLY, vault=CONNECTED, chain seq=54",
+      "capability": "federation status display",
+      "status": "LIVE"
+    },
+    {
+      "id": "fed",
+      "role": "advisory-router",
+      "endpoint": "127.0.0.1:7074",
+      "observed": "HTTP 200, role=ADVISORY_ONLY, providers_alive=8",
+      "capability": "model routing/advisory",
+      "status": "LIVE"
+    },
+    {
+      "id": "nats",
+      "role": "transport",
+      "endpoint": "127.0.0.1:4222 (mgmt 8222)",
+      "observed": "5 streams, 5 consumers, 224,9xx msgs total",
+      "capability": "JetStream durable pub/sub",
+      "status": "LIVE",
+      "defect": "stream arifos-organs at 99.99% byte ceiling, discard=old, 2 orphan zero-ack consumers"
+    },
+    {
+      "id": "postgres",
+      "role": "store",
+      "endpoint": "127.0.0.1:5432 (vault999)",
+      "observed": "schema observability.observations, 201,495 rows",
+      "capability": "durable ledger",
+      "status": "LIVE"
+    },
+    {
+      "id": "grafana",
+      "role": "visualiser",
+      "endpoint": "127.0.0.1:3000",
+      "observed": "HTTP 200; datasources = Prometheus + Infinity(169.254.169.254); 1 dashboard (arifOS Nine-Signal Overview)",
+      "capability": "dashboard",
+      "status": "LIVE",
+      "defect": "does NOT read observability.observations"
+    },
+    {
+      "id": "otelcol-collector",
+      "role": "otel-receiver",
+      "endpoint": "0.0.0.0:4318/4319, metrics 127.0.0.1:8888",
+      "observed": "uptime 13.2d pre-restart, ZERO receiver_accepted / exporter_sent; sole exporter otlphttp/langfuse",
+      "capability": "declared OTLP intake",
+      "status": "DECORATIVE",
+      "defect": "carried zero traffic since boot; Langfuse sink targets a service decommissioned 2026-07-26"
+    },
+    {
+      "id": "flame",
+      "role": "inference-mesh",
+      "endpoint": "18901",
+      "observed": "no listener; unit disabled at /etc/systemd/system/flame.service.disabled-20260815",
+      "capability": "retired 2026-09-04, successor FED flash lane",
+      "status": "RETIRED"
+    }
+  ]
+}

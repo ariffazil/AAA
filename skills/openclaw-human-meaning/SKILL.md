@@ -3,7 +3,7 @@ name: openclaw-human-meaning
 id: openclaw-human-meaning
 version: 1.0.0
 risk_tier: low
-description: 'OpenClaw integration for the human-meaning-membrane doctrine — apply the inference protocol when reviewing human-facing code (chatbots, UIs, social features). USE WHEN: "review this chatbot PR", "audit user-facing copy", "check consent logic", "message tone analysis code", "social feature review", "human-interaction code review". NOT for OpenClaw ops/health — use openclaw skill. NOT for token audit — use FORGE-telegram-audit.'
+description: 'OpenClaw integration for the human-meaning-membrane doctrine — apply the inference protocol when reviewing human-facing code (chatbots, UIs, social features). USE WHEN: "review this chatbot PR", "audit user-facing copy", "check consent logic", "message tone analysis code", "social feature review", "human-interaction code review". NOT for OpenClaw ops/health — use openclaw skill. NOT for token audit — use FORGE-telegram-audit. [fed: tier=fed-agent-subagent, auto=T1, risk=low]'
 owner: A-FORGE
 floor_scope:
 - F4

@@ -1,0 +1,41 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF11912A8BAQ
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+14. REVENUE (CONTINUED)
+2025 2024
+USD’000 USD’000
+Timing of revenue recognition
+- Products transferred at a point in time 1,006,192 2,161,474
+- Services fully rendered overtime 11,106 -
+1,017,298 2,161,474
+Contract balances
+The following table provides information about receivables from contracts with customers:
+31.12.2025 31.12.2024
+USD’000 USD’000
+Receivables 265,255 266,558
+Nature of goods and services
+Revenue is measured based on the consideration specified in a contract with a customer. The
+Company recognises the revenue at a time when it transfers the control over a good or service to a
+customer. This revenue recognition criteria applies to sales of crude oil, petroleum products, fuel oil
+and LNG of the Company. Control over a product or service is passed to a customer according to the
+contract terms (based on Incoterms):
+Timing of recognition or method used | Significant payment terms
+to recognise revenue
+=FOB Revenue is recognised when the Standard payment term for the crude oil
+=CFR Company delivers the crude oil, and products supplied shall be made
+= CIF petroleum product or fuel oil on board within 30 days of the Bill of Lading
+the vessel nominated by the customer at | date, unless the contract stipulates
+loading port specified in the different payment terms.
+contract/bill of lading.
+"DES Revenue is recognised when the Standard payment term for the crude oil,
+= DAP Company delivers the crude oil, products and LNG supplied shall be
+petroleum products, fuel oil or LNG at a | made within 5 to 10 days of the Notice
+destination point specified in the of Readiness date at a destination point,
+contract/bill of lading. unless the contract stipulates different
+payment terms.
+For shipping and storage related services, revenue is recognised when the service to the customers
+is fully rendered. Credit period of 30 days from invoice date.
+There are no variable elements in consideration, obligation for returns or refunds, nor warranty in
+the provision of goods and services by the Company.
+51

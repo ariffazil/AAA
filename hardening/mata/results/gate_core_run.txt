@@ -1,0 +1,38 @@
+====================================================================================================
+VISION GATE — arifOS MATA lane   (ground truth is pixel-verified, never model-inferred)
+====================================================================================================
+
+[1] FIXTURES
+    img_a_shapes_text.png              sha256=f90ada036b2d7d19…  recorded_match=True
+    img_b_number_caption.png           sha256=f6d15fc748959968…  recorded_match=True
+    img_c_photo_crop.jpg               sha256=e33558f384261e65…  recorded_match=True
+    img_d_control_zero_red.png         sha256=2a5d4307c072ed20…  recorded_match=True
+
+  [verify-fixtures] non-vision pixel scan (proves ground truth is authored, not model-inferred)
+    img_a_shapes_text.png: red_blobs=3 (want 3)  blue_blobs=2 (want 2)  OK
+    img_d_control_zero_red.png: red_blobs=0 (want 0)  blue_blobs=0 (want 0)  OK
+
+[2] BATTERY 'core': 4 probes x 10 surfaces
+      img_a.red_circles    checker=int             expect=3
+      img_a.text           checker=contains_any    expect=['ARIFOS-7731', 'ARIFOS 7731', 'ARIFOS-773I']
+      img_c.absent_text    checker=absence         expect='ZZQ-419'
+      img_d.red_circles    checker=int             expect=0
+
+[3] RESULTS
+    surface                fixture.probe          verdict      lat_s  returned
+    --------------------------------------------------------------------------------------------------------
+    native_vision_analyze  img_a.red_circles      CORRECT       0.00  3
+    native_vision_analyze  img_a.text             CORRECT       0.00  The image has a white background. At the top, in large, bold, black, s
+    native_vision_analyze  img_c.absent_text      CORRECT       0.00  The image is a close-up, studio-style photograph of a muscular, shirtl
+    native_vision_analyze  img_d.red_circles      CORRECT       0.00  The image shows the word **CONTROL** in large black uppercase letters 
+    zai_vision_mcp         img_a.red_circles      CORRECT      12.87   3 **Detailed Observations:** The image contains the text "ARIFOS-7731
+    zai_vision_mcp         img_a.text             CORRECT      10.40   **Main Response** The exact text visible in this image is "ARIFOS-773
+    zai_vision_mcp         img_c.absent_text      CORRECT       8.92   No.
+    zai_vision_mcp         img_d.red_circles      CORRECT       9.03   0
+    zai_coding_direct      img_a.red_circles      CORRECT       2.21  3
+    zai_coding_direct      img_a.text             CORRECT       6.30  The exact text in the image is: **ARIFOS-7731** It appears in large, b
+    zai_coding_direct      img_c.absent_text      CORRECT       3.35  No.
+    zai_coding_direct      img_d.red_circles      CORRECT       3.04  0
+    mmx_describe           img_a.red_circles      CORRECT       3.82  3
+    mmx_describe           img_a.text             CORRECT       3.88  The text in the image reads: **ARIFOS-7731**
+GATE_EXIT=143

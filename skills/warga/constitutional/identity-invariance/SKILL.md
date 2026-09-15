@@ -2,7 +2,7 @@
 id: identity-invariance
 name: identity-invariance
 version: 1.0.0
-description: "HEXAGON identity invariance test — prove the institution survives the substrate change. RSI Gate Item 1/5."
+description: "HEXAGON identity invariance test — prove the institution survives the substrate change. RSI Gate Item 1/5. [fed: tier=fed-agent-subagent, floors=[F1, F2, F9, F13], auto=T1, risk=high]"
 owner: F13
 risk_tier: high
 floor_scope: [F1, F2, F9, F13]

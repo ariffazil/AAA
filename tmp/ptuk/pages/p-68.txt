@@ -1,0 +1,39 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF 11912A8BA9
+, PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+22, FINANCIAL INSTRUMENTS (CONTINUED)
+Fair value information (continued)
+Financial instruments carried at fair value
+31.12.2024 Level 1 Level 2 Level 3 Total
+USD’000 USD’000 USD’000 USD’000
+Financial assets:
+Commodity swaps and futures 2,179 - - 2,179
+Commodity physical contracts - 20,376 : 20,376
+2,179 20,376 - 22,555
+. Financial instruments carried at fair value
+31.12.2024 Level 1 Level 2 Level 3 Total
+USD’000 USD’000 USD’000 USD’000
+Financial liabilities:
+Commodity physical contracts - 24,286 - 24,286
+: 24,286 - 24,286
+Derivatives :
+The calculation of fair value for derivative financial instruments depends on the type of instruments.
+The fair value of commodity swaps and futures is based on the fair value difference between market
+price at the date of measurement and the contracted price.
+Transfer between Level 1 and Level 2 fair values :
+There have been no transfers between Level 1 and Level 2 fair values during the financial year (2024:
+No transfer in either direction).
+Financial instruments carried at fair value
+Asati As at 31
+Jan 2025 Net credit Dec 2025
+USD’000 USD’000 USD’000
+Net Derivative financial position held at fair value
+through profit or loss (1,731) 3,409 1,678
+Financial instruments carried at fair value
+As at1 As at 31
+Jan 2024 Net credit Dec 2024
+USD’000 USD’000 USD’000
+Net Derivative financial position held at fair value
+through profit or loss 15,147 (16,878) (1,731)
+67

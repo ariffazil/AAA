@@ -3,7 +3,7 @@ id: aaa-agentic-governance
 name: asi-agentic-governance
 autonomy_tier: T1
 version: 3.0.1
-description: Governed intelligence skill for AAA as the abstraction, attestation,
+description: Governed intelligence skill for AAA as the abstraction, attestation, [fed: tier=fed-reasoning-heavy, auto=T1, risk=medium]
   and abduction control plane across arifOS, APEX, A-FORGE, GEOX, WEALTH, WELL, and
   the ariffazil profile repository. Use when the user asks to explain or design AAA,
   route agentic work, reduce chaos/entropy in an arifOS federation task, create AREP/task

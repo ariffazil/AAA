@@ -1,0 +1,50 @@
+Docusign Envelope ID: BCBF091A-82F5-40AD-846A-E840C6C 56334
+LNG INVESTMENTS EUROPE LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+23. RELATED PARTIES DISCLOSURES (CONTINUED)
+Directors’ remuneration
+The directors of this Company (other than the CEO) are remunerated by the ultimate parent company, PETRONAS. The
+aggregate remuneration paid to directors in respect of their services as a Director of this Company amounted to GBP 19,618
+(2024: GBP 17,292), this also included the accrued retirement benefits of one of the directors. The emolument paid to the
+highest paid director was GBP 13,444 (2024: GBP 11,726).
+In addition to the transactions detailed elsewhere in the financial statements, the Company had the following transactions
+with related parties during the year
+Sales of goods Purchases of Amount Amount
+and services goods and owed by at owed to
+services year end year end
+£'000 £'000 £'000 £'000
+PETCO Trading (UK) Limited
+Wholly-owned by PETCOSB ‘
+As at 31 December 2025 (direct charges) 627,553 633,569 101,112 78,358
+As at 31 December 2024 (direct charges) 382,091 459,226 151,398 25,656
+Sales and purchase of goods includes sales and purchases of LNG and natural gas at the prevailing market rate which are
+included within the net trading income. Sales and purchase of services includes administration and management related fee
+and recharge of expenses. Amount owed by at year end includes derivative asset position, collateral related to derivative
+liability position and accrued income with PTUK. Besides, amount owed to includes derivatives liability and accrued expense
+on delivered gas. The outstanding balances are unsecured and settled by bank payment in the respective currencies.
+24 IMMEDIATE AND ULTIMATE PARENT UNDERTAKING
+The immediate parent undertaking of the Company is PETRONAS LNG Sdn Bhd, a Company incorporated in Kuala Lumpur,
+Malaysia. The ultimate parent undertaking of the Company is Petroliam Nasional Berhad (“PETRONAS”), a Company
+incorporated in Malaysia. Copies of PETRONAS's financial statements can be obtained from Tower 1, PETRONAS Twin
+Towers, Kuala Lumpur City Centre, 50088, Kuala Lumpur Malaysia.
+25 FINANCIAL INSTRUMENTS
+As at 31 December 2025 AC FVTPL Total
+£000 £000 £'000
+Financial assets
+Receivables from related parties 97,796 - 97,796
+Derivative assets - 12,485 12,485
+Cash and cash equivalents 121,476 : 121,476
+219,272 12,485 231,757
+Financial liabilities
+Trade and other payables (72,462) - (72,462)
+Derivative liabilities : (15,273) (15,273)
+(72,462) (15,273) (87,735)
+As at 31 December 2024 AC FVTPL Total
+£7000 £7000 £'000
+Financial assets
+Trade and other receivables 151,398 - 151,398
+Derivative assets - 1,923 1,923
+Cash and cash equivalents 23,955 - 23,955
+175,353 1,923 177,276
+36

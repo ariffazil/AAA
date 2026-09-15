@@ -1,0 +1,156 @@
+{
+  "$schema": "arifos.observability.failure-graph.v1",
+  "ref": "ARIFOS::OBSERVABILITY_CONVERGENCE::P1",
+  "phase": 0,
+  "generated_by": "Hermes ASI (i-arif)",
+  "generated_at": "2026-09-15T05:45:00Z",
+  "mutations_performed": "none",
+  "failures": [
+    {
+      "id": "F-001",
+      "severity": "P0",
+      "class": "REALITY_BINDING_FAILURE",
+      "title": "Kabarkan collector config absent from disk",
+      "evidence": "systemd ExecStart pointed at /root/forge_work/kabarkan/kabarkan-collector.yaml; whole-filesystem search returned 0 hits; directory did not exist while pid 1113 ran from memory",
+      "impact": "process unbootable after any restart — capability existed in RAM only",
+      "status": "REPAIRED 2026-09-15T13:34Z",
+      "repair": "reconstructed config written + `otelcol-contrib validate` exit 0 + service restarted (PID 1113 -> 1150953, active, ports 4318/4319/8888 restored)",
+      "residual_risk": "reconstruction, not restore — endpoint fidelity unverified (see F-009)"
+    },
+    {
+      "id": "F-002",
+      "severity": "P0",
+      "class": "SECRET_EXPOSURE",
+      "title": "Langfuse credential inline in world-readable systemd unit",
+      "evidence": "/etc/systemd/system/kabarkan-collector.service contained Environment=BASE64_AUTH=<148-char base64>",
+      "impact": "credential readable by any local user; zero operational upside",
+      "status": "REPAIRED 2026-09-15T13:34Z",
+      "repair": "moved to /root/.secrets/kabarkan-collector.env (0600); unit now uses EnvironmentFile; unit-file grep for the secret = 0",
+      "residual_risk": "the secret value still exists in root-owned backups of the unit (/root/forge_work/kabarkan/*.bak) — rotate if the host is shared"
+    },
+    {
+      "id": "F-003",
+      "severity": "P1",
+      "class": "SILENT_BLINDNESS",
+      "title": "FRAME trend series had no scheduled writer",
+      "evidence": "append_trend() is called only inside the GET /frame/probe handler (main.py:113). No systemd timer, no crontab entry, and no internal scheduler referenced that endpoint. Series held 21 points across 22 days in an irregular pattern (4,1,2,1,1,1,6,2,3) — the signature of manual invocation.",
+      "impact": "FRAME's trend/drift chambers produced no continuity; an observer with no heartbeat degrades to cosmetic",
+      "status": "REPAIRED 2026-09-15T13:32Z",
+      "repair": "frame-probe.service + frame-probe.timer installed (OnBootSec=3m, OnUnitActiveSec=15m); series 22 -> 24 lines, 3 points in the 30 min after install"
+    },
+    {
+      "id": "F-004",
+      "severity": "P1",
+      "class": "DELIVERY_BREAK",
+      "title": "Triage digest generated but never delivered",
+      "evidence": "cron.log: cp: cannot create regular file '/root/.hermes/cron/state/digest_inbox/triage_latest.md': No such file or directory — the digest_inbox directory had never been created",
+      "impact": "daily triage ran clean (producer healthy) while the report never reached its consumer; the job looked successful in every log except one line",
+      "status": "REPAIRED 2026-09-15T13:31Z",
+      "repair": "digest_inbox created; today's digest re-delivered (3,326 B verified). flow-event.sh consumer path (arifflow_digest_latest.txt) uses the same directory and is now also unblocked."
+    },
+    {
+      "id": "F-005",
+      "severity": "P1",
+      "class": "SILENT_DATA_LOSS",
+      "title": "NATS stream arifos-organs at byte ceiling with orphan consumers",
+      "evidence": "messages=29,327, bytes=134,205,613 vs max_bytes=134,217,728 (99.99%); discard_policy=old; consumers 'probe' and 'verifier' both pending=29,327 delivered=0 ack=0; no systemd unit named verifier",
+      "impact": "organ heartbeat and distress history is being destroyed oldest-first; two consumers hold the stream at capacity without ever acknowledging",
+      "status": "OPEN",
+      "recommended_action": "delete the two orphan consumers and raise max_bytes or add max_age; requires F13 authorisation (destructive on a stream)"
+    },
+    {
+      "id": "F-006",
+      "severity": "P1",
+      "class": "WRITE_ONLY_LEDGER",
+      "title": "201,495 observation rows have no consumer",
+      "evidence": "only worker.py and postgres_backend.py reference observability.observations. Grafana datasources are Prometheus plus an Infinity datasource pointing at http://169.254.169.254 (cloud metadata address). One dashboard exists and it does not query this table.",
+      "impact": "compute and storage are spent producing a record that nothing reads; every downstream observability ambition is built on an unread ledger",
+      "status": "OPEN",
+      "recommended_action": "either wire a reader (FRAME witness surface / Grafana Postgres datasource) or stop writing — do not add schema to an unread table"
+    },
+    {
+      "id": "F-007",
+      "severity": "P2",
+      "class": "DEAD_CODE",
+      "title": "A-FORGE telemetry NATS patch never applied",
+      "evidence": "/root/A-FORGE/kabarkan/patch_telemetry.py (2026-09-12) adds _publish_to_nats(); occurrence count = 0 in every A-FORGE telemetry.py",
+      "impact": "A-FORGE tool activity does not reach the telemetry plane at all",
+      "status": "OPEN"
+    },
+    {
+      "id": "F-008",
+      "severity": "P2",
+      "class": "DEAD_CODE",
+      "title": "arifFlow KabarkanTracer unreachable at runtime",
+      "evidence": "arifFlow/src/governance/kabarkan.rs referenced only from scheduler.rs; arifFlow AGENTS.md: 'BSP scheduler is compiled but not invoked from daemon'; no arifflow actor in observations",
+      "impact": "arifFlow's metabolic decisions are invisible to the telemetry plane",
+      "status": "OPEN"
+    },
+    {
+      "id": "F-009",
+      "severity": "P2",
+      "class": "STALE_ARTIFACT",
+      "title": "Duplicate source trees create false bug reports",
+      "evidence": "/root/FRAME/src/frame_organ (stale, still lists flame:18901) vs live /root/AAA/federation/frame/src/frame_organ (symlinked at /opt/frame/app, flame removed with a dated comment). /root/A-FORGE/kabarkan/worker.py (17,084 B, 24 Jul) is dead code; the live worker is arifOS's (9,895 B, 12 Sep).",
+      "impact": "two false findings were produced in one session by reading the stale twin; any future debugger repeats this",
+      "status": "OPEN",
+      "recommended_action": "mark or archive the stale trees; resolve readlink -f on the deployed path before diagnosing"
+    },
+    {
+      "id": "F-010",
+      "severity": "P2",
+      "class": "NAME_COLLISION",
+      "title": "Two distinct capabilities named 'kabarkan'",
+      "evidence": "SIGNAL :18084 POST /kabarkan/broadcast (priority-classified alert dispatch, returns 422 without body) vs the Kabarkan telemetry plane (NATS -> worker -> Postgres). frame_organ/alert.py lines 59, 89 route drift escalation to SIGNAL.",
+      "impact": "any 'wire X into Kabarkan' work can silently attach to the notifier instead of the telemetry plane",
+      "status": "OPEN"
+    },
+    {
+      "id": "F-011",
+      "severity": "P2",
+      "class": "DECORATIVE_SERVICE",
+      "title": "otelcol collector carried zero traffic for 13.2 days",
+      "evidence": "no otelcol_receiver_accepted_* and no otelcol_exporter_sent_* metric families on :8888; sole registered exporter otlphttp/langfuse; the Langfuse backend was decommissioned 2026-07-26 per SEAL-2026-07-26-kabarkan-cutover-arch-wiring",
+      "impact": "an OTLP intake port that looks available but is not in any data path, pointed at a sink that no longer exists",
+      "status": "OPEN",
+      "recommended_action": "F13 binary: retire the collector, or promote it to the real OTLP entry point for all organs"
+    },
+    {
+      "id": "F-012",
+      "severity": "P2",
+      "class": "BASELINE_DRIFT",
+      "title": "FRAME baseline declares 10 organs, probe rotation has 9",
+      "evidence": "/var/lib/frame/baseline.json federation block: total_organs=10, expected_organs_up=10, with flame retained in baseline['organs'] as health='retired'. Live ORGAN_PORTS has 9 entries (flame removed with a dated comment).",
+      "impact": "baseline/observation count mismatch; /health reports baseline_organs=10 while trend reports organs_total=9",
+      "status": "SUPERSEDED 2026-09-15T13:41 (+08) — a concurrent session registered kabarkan:18902, the probe rotation went to 10, and /health, /frame/trend and baseline.json now agree at 10/10. The mismatch had existed because the baseline retained retired flame while the rotation ran 9.",
+      "resolution": "resolved by concurrent session; independently verified by this audit at 13:44"
+    },
+    {
+      "id": "F-013",
+      "severity": "P1",
+      "class": "CONCURRENT_UNLOGGED_MUTATION",
+      "title": "Two sessions mutated the observability plane inside nine minutes with no lock, claim, or announcement",
+      "evidence": "This audit measured :18902/health as connection-refused at 13:35 (+08) and recorded the absence as a Phase 2 blocker. At 13:41:48 a different session created /root/scripts/kabarkan_health_server.py, installed and started kabarkan-health.service, and added 'kabarkan: 18902' to FRAME's live ORGAN_PORTS. By 13:42:13 FRAME reported organs_up=10/10. This audit's receipt was invalidated on its central claim within nine minutes of being written.",
+      "impact": "Two sessions each believed they acted on current state; one was already stale. Any audit artifact written during a window of unsynchronised writes can be falsified after it is written and before it is read. This is the mechanism, not an accident: multi-session infra writes take no lock, so correctness depends on sweeping ALL sessions by timestamp before any claim of current state.",
+      "status": "OPEN — systemic, not a one-off",
+      "recommended_action": "before asserting state in a shared report, sweep files newer than the audit start (find -newermt) across /root/scripts, /etc/systemd/system and the target repo; stamp every artifact with its measurement window and record post-window changes as explicit addenda rather than silent rewrites"
+    },
+    {
+      "id": "F-014",
+      "severity": "P3",
+      "class": "STALE_SKILL_REFERENCE",
+      "title": "An existing kabarkan-observability skill documents the plane and was not consulted before the audit",
+      "evidence": "/root/.hermes/skills/domains/general/forge/telemetry/kabarkan-observability/SKILL.md (18,054 B, mtime 2026-09-14) documents the pipeline, the canonical subject pattern kabarkan.ingest.span.{trace_id}, the Langfuse backends (cloud jp.cloud.langfuse.com quota-exhausted; self-host localhost:4000, 0 traces), and the ObservationRecord model. It was found only in a second pass after a filesystem sweep.",
+      "impact": "Three artifacts were written without it: the dependency graph missed the metrics publisher (kabarkan-publish.py), the vector receipt proposed a contract that already exists upstream in arifFlow/spec/KABARKAN_FQ_INSTRUMENTATION.md, and the config reconstruction used cloud.langfuse.com where the documented endpoints were jp.cloud.langfuse.com or localhost:4000. The skill is itself stale (dated 2026-07-24, describes 240 rows against today's 201,554) but remains the authoritative operational reference.",
+      "status": "OPEN",
+      "recommended_action": "load the domain skill before probing a subsystem that has one; refresh the skill's 'Current State' block"
+    }
+  ],
+  "failure_summary": {
+    "repaired_this_session": ["F-001", "F-002", "F-003", "F-004"],
+    "open": ["F-005", "F-006", "F-007", "F-008", "F-009", "F-010", "F-011", "F-012"],
+    "role_collapse": 0,
+    "schema_mutations": 0,
+    "service_interruptions_beyond_authorised_repair": 0
+  }
+}

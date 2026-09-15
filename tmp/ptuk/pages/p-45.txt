@@ -1,0 +1,30 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF 11912A8BA9
+, PETCO TRADING (UK) LIMITED
+. NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+§. LEASE LIABILITIES
+During the year, the Company entered into a lease contract for the lease of an office building used in
+its operations which runs up to 2035. The Company’s obligations under its lease are secured by the
+lessor’s title to the leased assets. Generally, is restricted from assigning and subleasing the leased assets.
+The lease was discounted at an incremental borrowing rate of 5.09%.
+The Company also entered a two-year lease contract a vessel with third party, which runs up to
+November 2026 with the lease was discounted at an incremental borrowing rate of 5.21%.
+31.12.2025 31.12.2024
+USD’000 USD’000
+As at 1 January 28,414 19,981
+Additions 10,186 19,662
+Accretion of interest 1,411 993
+Payments (19,951) (12,222)
+As at 31 December 20,060 28,414
+Current 10,436 19,167
+Non-current 9,624 9,247
+6. INVENTORIES
+31.12.2025 31.12.2024
+USD’000 USD’000
+Goods in transit 53,316 11,494
+Finished goods - 463
+Raw material 14,642 -
+67,958 11,957
+Recognised in profit or loss:
+Inventories recognised as cost of sales 987,642 2,095,556
+44
