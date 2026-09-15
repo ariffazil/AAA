@@ -2,7 +2,7 @@
 name: web-search
 id: web-search
 version: 1.0.0
-description: >
+description: > [fed: tier=fed-long-context, floors=[F1, F2, F4, F7, F12], auto=T1, risk=low]
   Self-hosted + commercial web search with routing logic. Private SearXNG search,
   multi-engine SerpApi extraction, and Firecrawl web search + scrape + interact +
   parse + monitor + research. Routes to the right search backend based on task.

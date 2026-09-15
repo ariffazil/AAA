@@ -1,0 +1,28 @@
+Docusign Envelope !D: 021C6E53-9699-4EEA-B728-AF11912A8BAQ .
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+3. PROPERTY, PLANT AND EQUIPMENT (CONTINUED)
+3.1. As a lessee
+Right-of-use assets
+Depreciation of right-of-use asset
+2025 2024
+USD’000 USD’000
+Recognised in profit and loss 10,835 1,692
+4. DEFERRED TAX
+: The components and movements of deferred tax assets and liabilities during the year are as follows:
+Charged to
+As at profit or As at
+1.1.2025 loss 31.12.2025
+USD’000 uspD’000 USD’000
+Deferred tax asset
+Unrealised derivatives loss (Note 20) - 468 468
+TOTAL - 468 468
+Charged to
+As at profit or As at
+1.1.2024 loss 31.12.2024
+USD’000 USD’000 USD’000
+Deferred tax liability
+Unrealised derivatives gain (Note 20) (1,407) 1,407 -
+TOTAL (1,407) 1,407 -
+43

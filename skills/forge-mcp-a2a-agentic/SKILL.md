@@ -2,7 +2,7 @@
 id: FORGE-mcp-a2a-agentic
 name: forge-mcp-a2a-agentic
 version: 1.0.0-2026.07.17
-description: "MCP + A2A protocol integration — agentic inter-agent communication and task delegation."
+description: "MCP + A2A protocol integration — agentic inter-agent communication and task delegation. [fed: tier=fed-agent-subagent, floors=[, auto=T2, risk=high]"
 owner: A-FORGE
 risk_tier: high
 floor_scope: ['F1', 'F2', 'F4', 'F8', 'F11', 'F12', 'F13']

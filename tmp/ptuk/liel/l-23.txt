@@ -1,0 +1,39 @@
+Docusign Envelope ID: BCBF091A-82F5-40AD-846A-E840C6C56334
+LNG INVESTMENTS EUROPE LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+2. MATERIAL ACCOUNTING POLICIES (CONTINUED)
+2.9 Financial instruments (continued)
+Amortised cost
+Amortised cost category comprises financial assets that are held within a business model whose objective is to hold assets to
+collect contractual cash flows and its contractual terms give rise on specified dates to cash flows that are solely payments of
+principal and interest on the principal amount outstanding. The financial assets are not designated as fair value through profit
+or loss.
+Subsequent measurement
+Effective interest method
+Amortised cost was computed using the effective interest method. This method used effective interest rate that exactly
+discounts estimated future cash receipts or payments through the expected life of the financial instrument to the net carrying
+amount of the financial instrument. Amortised cost takes into account any transaction costs and any discount or premium on
+settlement. .
+Amortised cost of financial instruments
+Interest income is recognised by applying effective interest rate to the gross carrying amount except for credit impaired
+financial assets where effective interest rate is applied to the amortised cost.
+Fair value through other comprehensive income .
+Debt instruments
+This category comprises debt instruments where it is held within a business model whose objective is achieved by both
+collecting contractual cash flows and selling financial assets, and its contractual terms give rise on specified dates to cash
+flows that are solely payments of principal and interest on the principal amount outstanding. The debt instruments are not
+designated as at fair value through profit or loss.
+Equity instruments
+Fair value through other comprehensive income category also comprises investment in equity that are not held for trading, and
+the Company irrevocably elects to present subsequent changes in the investment’s fair value in other comprehensive income.
+This election is made on an investment-by-investment basis.
+Subsequent measurement
+Financial assets categorised as fair value through other comprehensive income are subsequently measured at fair value with
+unrealised gains and losses recognised directly in other comprehensive income and accumulated under fair value through other
+comprehensive income reserve in equity. For debt instruments, when the investment is derecognised or determined to be
+impaired, the cumulative gain or loss previously recorded in equity is reclassified to the profit or loss. For equity instruments,
+the gains or losses accumulated in other comprehensive income are never reclassified to profit or loss.
+Financial assets categorised as fair value through profit or loss are subsequently measured at their fair value with gains or
+losses recognised in the profit or loss. The methods used to measure fair value are stated in Note 2.12
+23

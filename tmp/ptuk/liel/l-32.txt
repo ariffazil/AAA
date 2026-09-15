@@ -1,0 +1,50 @@
+Docusign Envelope ID: BCBF091A-82F5-40AD-846A-E840C6C56334
+LNG INVESTMENTS EUROPE LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+: FOR THE YEAR ENDED 31 DECEMBER 2025
+2025 2024
+12. PROPERTY, PLANT AND EQUIPMENT £000 £000
+Tank Heel 1,069 1,069
+1,069 1,069
+Given the nature of the asset there is no depreciation charged in the financial statements. At 31 December 2025 its fair value
+less cost to sell represents the recoverable amount at year end. At year end, the recoverable amount is greater than the cost of
+the asset, thus no impairment is recognised during the year.
+2025 2024
+13. INVENTORIES £000 £°000
+Liquefied natural gas held for regasification 11,628 28,802
+14. OFFSETTING OF FINANCIAL ASSETS AND LIABILITIES
+The following tables shows the amounts recognised for financial assets and liabilities, which are subject to offsetting
+arrangements, on a gross basis and the amounts offset in the Statement of Financial Position.
+Net amount
+Gross amounts presented in the
+recognised financial Amounts set Statement of
+31 December 2025 assets (liabilities) off Financial Position
+£'000 £'000 £'000
+Trade and Other Receivables
+Receivables from related parties 106,073 (8,277) 97,796
+106,073 (8,277) 97,796
+Trade and Other Payables
+Payable to related parties (80,529) 8,277 (72,252)
+Other Payables (210) - (210)
+(80,739) 8,277 (74,462)
+Derivative Assets 19,946 (7,461) 12,485
+Derivative Liabilities (22,734) 7,461 (15,273)
+(2,788) - (2,788)
+Gross amounts Net amount
+nr un Amounts set presented in the
+recognised financial ff S f
+assets (liabilities) ° tatement 0
+31 December 2024 Financial Position
+£'000 £'000 £'000
+Trade and Other Receivables
+Receivables from related parties 201,590 (50,192) 151,398
+Receivables from related parties 201,590 (50,192) 151,398
+Trade and Other Payables
+Payable to related parties (59,608) 50,192 (9,416)
+Other Payables (299) - (299)
+(59,907) 50,192 (9,715)
+Derivative Assets 14,298 (12,375) 1,923
+Derivative Liabilities (30,495) 12,375 (18,120)
+(16,197) - (16,197)
+The amounts set off above relate to receivable from and payable to PTUK which are subject to netting arrangements.
+32

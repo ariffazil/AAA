@@ -1,0 +1,49 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF 11912A8BA9
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025 _~-
+20. TAX CREDIT
+2025 2024
+USD’000 USD’000
+Current tax expense
+United Kingdom corporation tax charge for the current year - 1,161
+Adjustments in respect of prior year (135) -
+Foreign tax suffered 80 -
+Foreign tax suffered in respect of prior year 187 :
+132 1,161
+. Deferred tax credit
+Origination and reversal of temporary differences (468) | 1,407
+(468) (1,407)
+Tax credit (336) (246)
+Corporation tax is calculated at 25% (2024: 25%) of the estimated assessable (loss)/profit for the
+year.
+The tax assessed for the period is lower than the standard rate of corporation tax in the UK (2025:
+25%) (2024: 25%). The differences are explained below: ~
+2025 2024
+USD’000 USD’000
+(Loss)/Profit before taxation : (277) 18,264
+Profit multiplied by standard rate of Corporation tax in
+the UK of 25% (2024:25%) (69) 4,566
+Effects of:
+Adjustments in respect of prior year 52 -
+Other expenses not deductible for tax purposes 169 68
+Income not taxable (4) -
+Effect of group relief in prior year - (4,817)
+Effect of overseas tax rates 51 -
+Losses not recognised (535) (63)
+Tax credit (336) (246)
+The assessment of the Pillar Two income taxes is performed based on best financial statements
+information available for the constituent entities in the Group as at reporting period by applying the
+requirements issued by Organisation for Economic Co-operation and Development (“OECD”).
+Based on the assessment carried out for the period, the Pillar Two effective tax rates in which the
+Company operates are above 15%. Therefore, the Company does not expect a potential exposure to
+Pillar Two top-up taxes.
+Deferred tax not recognised
+‘A potential deferred tax asset of USD58.5 million (2024: USD58.9 million) has not been recognised
+at the Balance Sheet date, on the basis that the availability of suitable taxable profits arising in the
+future against which the temporary difference could reverse is not considered probable. The
+unrecognised deferred tax asset is in relation to tax losses of USD233 million (2024: USD231
+million), USD1.1 million (2024: USD3.3 million) is in relation to property, plant and equipment and
+Nil (2024: USD1.8 million) is in relation to unrealised hedging gains and other timing differences
+arise from unpaid pensions.
+54

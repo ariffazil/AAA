@@ -2,7 +2,7 @@
 id: agentic-web-optimization
 name: agi-web-optimization
 version: 1.0.0
-description: "Make web content maximally extractable by LLMs, Agentic RAG systems, and search indexers."
+description: "Make web content maximally extractable by LLMs, Agentic RAG systems, and search indexers. [fed: tier=fed-long-context, floors=[F2, F4], auto=T1, risk=low]"
 owner: AAA
 risk_tier: low
 floor_scope: [F2, F4]

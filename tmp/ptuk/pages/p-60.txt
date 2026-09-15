@@ -1,0 +1,36 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF 11912A8BAQ
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+22. FINANCIAL INSTRUMENTS (CONTINUED)
+Credit Risk (continued)
+i) Receivables (continued)
+Exposure to credit risk, credit quality and collateral
+As at the end of the reporting period, the maximum exposure to credit risk arising from trade
+receivables and contract assets are represented by the carrying amounts in the statement of
+financial position.
+At each reporting date, the Company assesses whether financial assets carried at amortised cost
+are credit-impaired. A financial asset is ‘credit-impaired’ when one or more events that have a
+detrimental impact on the estimated future cash flows of the financial asset have occurred.
+Evidence that a financial asset is credit-impaired includes the following observable data:
+- significant financial difficulty of the customer;
+- abreach of contract such as a default;
+- itis probable that the customer will enter bankruptcy or other financial reorganisation;
+Concentration of credit risk
+Exposure to losses increases with concentrations of credit risk which may exist when several
+counterparties are involved in similar activities or operate in the same industry sector or
+geographical area, which may result in their ability to meet contractual obligations being
+impacted by changes in economic, political or other conditions. The Company’s principal
+customers with which it conducts business are located globally and there is no significant
+concentration of credit risk at reporting date.
+The exposure of credit risk for trade receivables at the reporting date by product is as follow:
+31.12.2025 31.12.2024
+USD’000 USD’000
+Crude Oil 20,371 86,605
+Fuel Oil 18,575 177
+LNG and gas 218,605 176,001
+Others 12,042 3,776
+269,593 266,559
+Above balances only include trade receivables and exclude balances such as prepayments, input
+VAT and closing year-end balance with SocGen.
+59

@@ -1,0 +1,51 @@
+{
+  "lane": "qwen token-plan image route (skill: token-plan-image)",
+  "transport": "HTTPS aliyun maas",
+  "probes": [
+    {
+      "probe": "gen_text_to_image",
+      "command": "POST https://token-plan.ap-southeast-1.maas.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation",
+      "request_model": "qwen-image-3.0-pro",
+      "http_status": 429,
+      "raw_response_body": "{\"code\":\"Throttling.AllocationQuota\",\"message\":\"Your token-plan quota has been exhausted.\",\"request_id\":\"d0c139f9-d455-48f2-bbb6-81aa50bf362a\"}",
+      "verdict": "BLOCKED",
+      "note": "outbound image generation, not a vision (inbound) capability"
+    },
+    {
+      "probe": "vision_attempt:a_red",
+      "image": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+      "question": "How many FILLED RED CIRCLES are in this image? Answer with a single integer.",
+      "http_status": 429,
+      "raw_response_body": "(not attempted \u2014 route already returned HTTP 429 on the generation probe)",
+      "expected": {
+        "int": 3
+      },
+      "verdict": "BLOCKED",
+      "note": "route credit/quota-blocked; no credits spent on edit probes"
+    },
+    {
+      "probe": "vision_attempt:a_blue",
+      "image": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+      "question": "How many FILLED BLUE SQUARES are in this image? Answer with a single integer.",
+      "http_status": 429,
+      "raw_response_body": "(not attempted \u2014 route already returned HTTP 429 on the generation probe)",
+      "expected": {
+        "int": 2
+      },
+      "verdict": "BLOCKED",
+      "note": "route credit/quota-blocked; no credits spent on edit probes"
+    },
+    {
+      "probe": "vision_attempt:a_text",
+      "image": "/root/AAA/hardening/mata/testdata/img_a_shapes_text.png",
+      "question": "What exact text appears in this image? Quote it verbatim.",
+      "http_status": 429,
+      "raw_response_body": "(not attempted \u2014 route already returned HTTP 429 on the generation probe)",
+      "expected": {
+        "contains": "ARIFOS-7731"
+      },
+      "verdict": "BLOCKED",
+      "note": "route credit/quota-blocked; no credits spent on edit probes"
+    }
+  ]
+}

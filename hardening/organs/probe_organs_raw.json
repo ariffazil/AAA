@@ -1,0 +1,1674 @@
+{
+  "probe_started_utc": "2026-09-14T17:50:17.217439+00:00",
+  "host": "forge",
+  "host_tailscale_ip": "100.64.0.2 (from ss bind addresses)",
+  "organs": [
+    {
+      "label": "arifOS kernel (judge)",
+      "host": "127.0.0.1",
+      "port": 8088,
+      "declared_by": "registry mcp-servers.yaml organs.kernel",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 10,
+          "body_excerpt": "{\"status\":\"healthy\",\"degraded_reasons\":[],\"layer_health\":{\"constitutional\":{\"status\":\"healthy\",\"floors_active\":13,\"floors_target\":13,\"vault999\":\"healthy\"},\"runtime\":{\"status\":\"healthy\",\"source_commit\":null,\"built_commit\":null,\"runtime_matches_build\":true,\"deployment_attestation\":\"aligned\"},\"registry\":{\"status\":\"healthy\",\"registry_size\":62,\"declared_tools\":48,\"exposed_tools\":8,\"note\":\"registry_size"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:8088/health -> 200"
+    },
+    {
+      "label": "A-FORGE exec server",
+      "host": "127.0.0.1",
+      "port": 7071,
+      "declared_by": "MACHINE_MAP \u00a71 A-FORGE :7071",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 8,
+          "body_excerpt": "{\"ok\":true,\"degraded_mode\":false,\"service\":\"A-FORGE-sense\",\"version\":\"v2026.07.24\",\"federation_schema_version\":\"2.0.0\",\"tool_count\":120,\"tools_loaded\":120,\"profile\":\"enterprise\",\"authority_ceiling\":\"777_FORGE\",\"identity\":\"UNAVAILABLE\",\"identity_hash\":\"UNAVAILABLE\",\"deployed_commit\":\"UNAVAILABLE\",\"source_commit\":\"f444b79\",\"deployment_drift\":false,\"status\":\"healthy\",\"apex_scalars\":{\"G\":{\"value\":0.49"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:7071/health -> 200"
+    },
+    {
+      "label": "A-FORGE MCP",
+      "host": "127.0.0.1",
+      "port": 7072,
+      "declared_by": "registry organs.aforge",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 1,
+          "body_excerpt": "{\"ok\":true,\"service\":\"A-FORGE-MCP\",\"status\":\"healthy\",\"version\":\"0.1.0\",\"commit\":\"f444b79e\",\"transport\":\"streamable-http\",\"authority_ceiling\":\"777_FORGE\",\"sessions\":\"active\",\"tools_listed\":120,\"stateless_tools\":82,\"session\":{\"idle_seconds\":10,\"age_seconds\":10}}"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:7072/health -> 200"
+    },
+    {
+      "label": "arifFlow daemon (REST)",
+      "host": "127.0.0.1",
+      "port": 7073,
+      "declared_by": "registry organs.arifflow",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 0,
+          "body_excerpt": "{\"fq\":{\"barrier_count\":0,\"diagnosis\":\"BALANCED\",\"execute_count\":23,\"metric_frame\":{\"actors_tracked\":5,\"formula_version\":\"qg.v0.3.1-vector\",\"sample_size\":100,\"window_size\":100},\"per_actor\":{\"a-forge\":{\"consecutive_exec_no_verify\":0,\"diagnosis\":\"VERIFICATION DOMINANCE\",\"execute\":0,\"fq_required\":0.1,\"held\":false,\"quotient\":null,\"risk_class\":\"T0\",\"throttled\":false,\"verdict\":\"FLOWING\",\"verify\":6},\"grok"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:7073/health -> 200"
+    },
+    {
+      "label": "FED fed-router",
+      "host": "0.0.0.0",
+      "port": 7074,
+      "declared_by": "registry organs.fed (MCP http)",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 0,
+          "body_excerpt": "{\"status\":\"healthy\",\"service\":\"FED\",\"role\":\"ADVISORY_ONLY\",\"port\":7074,\"mcp\":\"/mcp\",\"class\":\"route_advisor\",\"ceiling\":\"never judges, never hard-blocks\",\"tools\":[\"fed_route\",\"fed_classify\",\"fed_status\",\"fed_probe\",\"fed_contrast\",\"fed_health\",\"fed_report_latency\"]}"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://0.0.0.0:7074/health -> 200"
+    },
+    {
+      "label": "arifFlow MCP (fastmcp)",
+      "host": "127.0.0.1",
+      "port": 7075,
+      "declared_by": "live ss: arifflow_mcp_fastmcp.py",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 404,
+          "error": null,
+          "elapsed_ms": 1,
+          "body_excerpt": "Not Found"
+        }
+      ],
+      "verdict": "UP-OPEN(path-404)",
+      "evidence": "curl http://127.0.0.1:7075/health -> 404"
+    },
+    {
+      "label": "GEOX MCP",
+      "host": "127.0.0.1",
+      "port": 8081,
+      "declared_by": "registry organs.geox",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 59,
+          "body_excerpt": "{\"status\":\"healthy\",\"kernel_verdict\":\"SEAL\",\"service\":\"geox-unified\",\"version\":\"v2026.08.26\",\"federation_schema_version\":\"2.0.0\",\"profile\":\"full\",\"identity\":{\"algorithm\":\"sha256\",\"value\":\"geox-8c6c7f2d\",\"git_version\":\"geox-8c6c7f2d\",\"verified\":true,\"source\":\"git_version\"},\"git_version\":\"geox-8c6c7f2d\",\"domain_law\":\"NATURAL_LAW\",\"physics_manifest_hash\":\"sha256:c905aef8e16b2d2085ffe869eb11751e5a6da5"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:8081/health -> 200"
+    },
+    {
+      "label": "WEALTH MCP",
+      "host": "127.0.0.1",
+      "port": 18082,
+      "declared_by": "registry organs.wealth",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 5,
+          "body_excerpt": "{\"status\":\"healthy\",\"identity\":\"4c31dad39a2ce9a4fcb3baa14c5fb48bb424b921cae71f0953aeaa58c112ba6f\",\"identity_hash\":\"4c31dad39a2ce9a4fcb3baa14c5fb48bb424b921cae71f0953aeaa58c112ba6f\",\"git_commit\":\"25c7e24\",\"git_commit_source\":\"git\",\"source_sha_available\":true,\"git_commit_fallback\":null,\"git_commit_fallback_trusted\":false,\"tools_loaded\":11,\"public_tools\":11,\"public_tools_declared\":11,\"canonical_tools"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:18082/health -> 200"
+    },
+    {
+      "label": "WELL organ",
+      "host": "127.0.0.1",
+      "port": 18083,
+      "declared_by": "registry organs.well",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 20,
+          "body_excerpt": "{\"status\":\"degraded\",\"source_commit\":\"3f52312\",\"final_authority\":\"ARIF\",\"identity\":\"WELL\",\"role\":\"Body / Human Intelligence\",\"authority\":\"REFLECT_ONLY\",\"authority_ceiling\":\"REFLECT_ONLY\",\"identity_hash\":\"cab94b160b9c0d1a33fbc259de27759dc30e157788747a2ddcfbd3cafe46b065\",\"apex_scalars\":{\"G\":{\"value\":0.495,\"status\":\"MEASURED\"},\"C_dark\":{\"value\":0.1717,\"status\":\"MEASURED\"},\"W3\":{\"value\":0.7439,\"status"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:18083/health -> 200"
+    },
+    {
+      "label": "SIGNAL organ",
+      "host": "127.0.0.1",
+      "port": 18084,
+      "declared_by": "live ss: signal_organ.main",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 2,
+          "body_excerpt": "{\"status\":\"ok\",\"organ\":\"signal\",\"port\":18084,\"version\":\"1.0.0\",\"redis\":\"healthy\",\"ingest\":{\"crypto_gate\":\"active\",\"idempotency_buffer\":\"active\",\"tcoa_ingestion\":\"active\"},\"kabarkan\":{\"priority_classify\":\"active\",\"channel_route\":\"active\",\"governed_send\":\"active\",\"quiet_hours\":true,\"quiet_hours_window\":\"23:00-07:00 MYT\"},\"endpoints\":{\"ingest\":[\"/signal/github\",\"/signal/tradingview\",\"/signal/generic\""
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:18084/health -> 200"
+    },
+    {
+      "label": "FRAME organ",
+      "host": "127.0.0.1",
+      "port": 18085,
+      "declared_by": "registry organs.frame",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 1,
+          "body_excerpt": "{\"status\":\"ok\",\"organ\":\"frame\",\"port\":18085,\"version\":\"1.0.0\",\"baseline_organs\":10,\"baseline_established\":\"2026-08-06T09:57:02Z\",\"chambers\":{\"baseline\":\"active\",\"probe\":\"active\",\"compare\":\"active\",\"trend\":\"active\",\"alert\":\"active\",\"report\":\"active\",\"rsi_verify\":\"active\"},\"timestamp\":\"2026-09-14T17:50:17Z\"}"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:18085/health -> 200"
+    },
+    {
+      "label": "FRAME MCP (fastmcp)",
+      "host": "127.0.0.1",
+      "port": 18086,
+      "declared_by": "live ss: frame_mcp_fastmcp.py",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 404,
+          "error": null,
+          "elapsed_ms": 1,
+          "body_excerpt": "Not Found"
+        }
+      ],
+      "verdict": "UP-OPEN(path-404)",
+      "evidence": "curl http://127.0.0.1:18086/health -> 404"
+    },
+    {
+      "label": "AAA a2a-server",
+      "host": "127.0.0.1",
+      "port": 3001,
+      "declared_by": "registry organs.aaa / MACHINE_MAP AAA :3001",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 21,
+          "body_excerpt": "{\"status\":\"healthy\",\"identity\":\"f909eab007954d345edd20ecad73c361b6b2ad2d417b15b9cf0454caf9399578\",\"identity_hash\":\"f909eab007954d345edd20ecad73c361b6b2ad2d417b15b9cf0454caf9399578\",\"deployed_commit\":\"2d49af6\",\"source_commit\":\"2d49af6\",\"deployment_drift\":false,\"apex_scalars\":{\"G\":{\"value\":0.875,\"status\":\"HEALTHY\"},\"C_dark\":{\"value\":0.008,\"status\":\"SAFE\"},\"W3\":{\"value\":0.879,\"status\":\"CONSENSUS\"},\"h"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:3001/health -> 200"
+    },
+    {
+      "label": "AAA MCP (fastmcp)",
+      "host": "127.0.0.1",
+      "port": 3002,
+      "declared_by": "live ss: aaa_mcp_fastmcp.py",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 404,
+          "error": null,
+          "elapsed_ms": 1,
+          "body_excerpt": "Not Found"
+        }
+      ],
+      "verdict": "UP-OPEN(path-404)",
+      "evidence": "curl http://127.0.0.1:3002/health -> 404"
+    },
+    {
+      "label": "1mcp aggregator",
+      "host": "127.0.0.1",
+      "port": 3050,
+      "declared_by": "live ss: 1mcp serve",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 5,
+          "body_excerpt": "{\"status\":\"degraded\",\"timestamp\":\"2026-09-14T17:50:17.360Z\",\"version\":\"0.34.0\",\"system\":{\"uptime\":28879,\"memory\":{\"used\":0,\"total\":0,\"percentage\":0},\"process\":{\"pid\":0,\"nodeVersion\":\"\",\"platform\":\"\",\"arch\":\"\"}},\"servers\":{\"total\":14,\"healthy\":12,\"unhealthy\":2,\"details\":[]},\"configuration\":{\"loaded\":true,\"serverCount\":0,\"enabledCount\":0,\"disabledCount\":0,\"authEnabled\":false,\"transport\":\"http\"}}"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:3050/health -> 200"
+    },
+    {
+      "label": "playwright-mcp",
+      "host": "127.0.0.1",
+      "port": 8931,
+      "declared_by": "live ss: playwright-mcp",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 400,
+          "error": null,
+          "elapsed_ms": 0,
+          "body_excerpt": "Invalid request"
+        }
+      ],
+      "verdict": "UP-OPEN(HTTP 400)",
+      "evidence": "curl http://127.0.0.1:8931/health -> 400"
+    },
+    {
+      "label": "FED intake (HAProxy)",
+      "host": "127.0.0.1",
+      "port": 4000,
+      "declared_by": "MACHINE_MAP \u00a73 trap: /health = 000",
+      "attempts": [
+        {
+          "path": "/health/liveliness",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 4,
+          "body_excerpt": "\"I'm alive!\""
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:4000/health/liveliness -> 200"
+    },
+    {
+      "label": "FED clamp (HAProxy)",
+      "host": "127.0.0.1",
+      "port": 4012,
+      "declared_by": "MACHINE_MAP \u00a71 :4012",
+      "attempts": [
+        {
+          "path": "/health/liveliness",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 382,
+          "body_excerpt": "\"I'm alive!\""
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:4012/health/liveliness -> 200"
+    },
+    {
+      "label": "litellm (model brain)",
+      "host": "127.0.0.1",
+      "port": 4013,
+      "declared_by": "live ss: litellm --port 4013",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 401,
+          "error": null,
+          "elapsed_ms": 31,
+          "body_excerpt": "{\"error\":{\"message\":\"Authentication Error, No api key passed in.\",\"type\":\"auth_error\",\"param\":\"None\",\"code\":\"401\"}}"
+        }
+      ],
+      "verdict": "UP-AUTH",
+      "evidence": "curl http://127.0.0.1:4013/health -> 401"
+    },
+    {
+      "label": "fed-aware-middleware",
+      "host": "127.0.0.1",
+      "port": 4010,
+      "declared_by": "MACHINE_MAP \u00a71 :4010",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 1,
+          "body_excerpt": "{\"status\": \"healthy\", \"service\": \"fed-aware-middleware\", \"version\": \"1.0.0\", \"federation_url\": \"http://127.0.0.1:7074\", \"capabilities\": [\"fed/reasoning-heavy\", \"fed/reasoning-standard\", \"fed/fast\", \"fed/vision\", \"fed/multimodal\", \"fed/long-context\", \"fed/agent-subagent\", \"fed-reasoning-heavy\", \"fed-reasoning-standard\", \"fed-fast\", \"fed-vision\", \"fed-multimodal-vision\", \"fed-long-context\", \"fed-age"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:4010/health -> 200"
+    },
+    {
+      "label": "i-ARIF (REST claim)",
+      "host": "127.0.0.1",
+      "port": 18095,
+      "declared_by": "registry organs.iarif claims 18095",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 4,
+          "body_excerpt": "{\"ok\": true, \"bridge\": \"github_bridge\", \"protocol\": \"rest_api\", \"apa_version\": \"1.0\", \"auth_configured\": true, \"status\": \"READY\"}"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:18095/health -> 200"
+    },
+    {
+      "label": "apa-github-bridge",
+      "host": "127.0.0.1",
+      "port": 18095,
+      "declared_by": "MACHINE_MAP \u00a71 corrected :18095 = apa-github-bridge",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 1,
+          "body_excerpt": "{\"ok\": true, \"bridge\": \"github_bridge\", \"protocol\": \"rest_api\", \"apa_version\": \"1.0\", \"auth_configured\": true, \"status\": \"READY\"}"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:18095/health -> 200"
+    },
+    {
+      "label": "gmail_bridge",
+      "host": "127.0.0.1",
+      "port": 18097,
+      "declared_by": "live ss: gmail_bridge.py",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 1,
+          "body_excerpt": "{\"ok\": true, \"bridge\": \"gmail_bridge\", \"protocol\": \"google-api-oauth\", \"apa_version\": \"2.0\", \"scopes\": [\"https://www.googleapis.com/auth/gmail.readonly\"], \"verbs\": [\"draft_create\", \"draft_delete\", \"draft_send\", \"draft_update\", \"modify_labels\", \"read\", \"read_unread\", \"search\", \"send\"], \"google_libs_installed\": true, \"credentials_configured\": false, \"status\": \"AWAITING_CREDENTIALS\", \"port\": 18097}"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:18097/health -> 200"
+    },
+    {
+      "label": "gws_bridge",
+      "host": "127.0.0.1",
+      "port": 18098,
+      "declared_by": "live ss: gws_bridge.py",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 55,
+          "body_excerpt": "{\"ok\": true, \"bridge\": \"gws_bridge\", \"protocol\": \"gws-cli\", \"apa_version\": \"3.0\", \"port\": 18098, \"scopes_granted\": [], \"services\": {\"drive\": {\"in_scope\": false, \"verbs\": [\"list_files\", \"get_file\", \"search\", \"read\", \"download\"]}, \"gmail\": {\"in_scope\": false, \"verbs\": [\"search\", \"read\", \"read_unread\", \"draft_create\", \"draft_send\", \"send\"]}, \"calendar\": {\"in_scope\": false, \"verbs\": [\"list_events\", \"g"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:18098/health -> 200"
+    },
+    {
+      "label": "drive_bridge",
+      "host": "127.0.0.1",
+      "port": 18099,
+      "declared_by": "live ss: drive_bridge.py",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 1,
+          "body_excerpt": "{\"ok\": true, \"bridge\": \"drive_bridge\", \"protocol\": \"google-api-oauth\", \"apa_version\": \"2.0\", \"scopes\": [\"https://www.googleapis.com/auth/drive\"], \"verbs\": [\"download\", \"get_metadata\", \"list_files\", \"read\", \"search\"], \"google_libs_installed\": true, \"credentials_configured\": false, \"status\": \"AWAITING_CREDENTIALS\", \"port\": 18095}"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:18099/health -> 200"
+    },
+    {
+      "label": "gemini_bridge",
+      "host": "127.0.0.1",
+      "port": 18092,
+      "declared_by": "live ss: gemini_bridge.py",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 181,
+          "body_excerpt": "{\"ok\": true, \"bridge\": \"gemini_bridge\", \"protocol\": \"google-ai-studio\", \"apa_version\": \"2.0\", \"scopes\": [\"generativelanguage.googleapis.com\"], \"verbs\": [\"chat\", \"generate\", \"health\", \"models\"], \"credentials_configured\": true, \"models_available\": 50, \"status\": \"READY\", \"port\": 18092}"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:18092/health -> 200"
+    },
+    {
+      "label": "email_bridge",
+      "host": "127.0.0.1",
+      "port": 18093,
+      "declared_by": "live ss: email_bridge.py",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 1,
+          "body_excerpt": "{\"ok\": true, \"bridge\": \"email_bridge\", \"apa_version\": \"2.0\", \"backends\": [\"brevo-send\"], \"verbs\": [\"list_labels\", \"read\", \"search\", \"send\"], \"brevo_configured\": true, \"gmail_configured\": false, \"sender\": \"arifbfazil@gmail.com\", \"status\": \"READY\"}"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:18093/health -> 200"
+    },
+    {
+      "label": "calendar_bridge",
+      "host": "127.0.0.1",
+      "port": 18094,
+      "declared_by": "live ss: calendar_bridge.py",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 75,
+          "body_excerpt": "{\"ok\": true, \"bridge\": \"calendar_bridge\", \"protocol\": \"google-api-oauth\", \"apa_version\": \"2.0\", \"scopes\": [\"https://www.googleapis.com/auth/calendar\"], \"verbs\": [\"create_event\", \"delete_event\", \"find_free_slots\", \"get_event\", \"list_events\", \"update_event\"], \"google_libs_installed\": true, \"credentials_configured\": false, \"status\": \"AWAITING_CREDENTIALS\", \"port\": 18094}"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:18094/health -> 200"
+    },
+    {
+      "label": "sheets_bridge",
+      "host": "127.0.0.1",
+      "port": 18075,
+      "declared_by": "live ss: sheets_bridge.py",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 0,
+          "body_excerpt": "{\"ok\": true, \"bridge\": \"sheets_bridge\", \"protocol\": \"google-api-oauth\", \"apa_version\": \"2.0\", \"scopes\": [\"https://www.googleapis.com/auth/spreadsheets\"], \"verbs\": [\"append\", \"read\", \"update\"], \"google_libs_installed\": true, \"credentials_configured\": false, \"status\": \"AWAITING_CREDENTIALS\", \"port\": 18096}"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:18075/health -> 200"
+    },
+    {
+      "label": "signing_server",
+      "host": "127.0.0.1",
+      "port": 18900,
+      "declared_by": "live ss: AAA/auth/signing_server.py",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 2,
+          "body_excerpt": "{\"status\": \"ok\", \"service\": \"aaa-signing\", \"key_loaded\": true}"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:18900/health -> 200"
+    },
+    {
+      "label": "vault999-writer",
+      "host": "127.0.0.1",
+      "port": 5001,
+      "declared_by": "live ss: vault999-writer/main.py",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 2,
+          "body_excerpt": "{\"status\":\"healthy\",\"vault_seals_count\":12,\"pending_holds\":0,\"timestamp\":\"2026-09-14T17:50:18.115196+00:00\"}"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:5001/health -> 200"
+    },
+    {
+      "label": "l5_search_api",
+      "host": "127.0.0.1",
+      "port": 8001,
+      "declared_by": "live ss: arifosmcp.runtime.l5_search_api",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 11,
+          "body_excerpt": "{\"status\":\"healthy\",\"service\":\"l5-search-api\",\"falkordb\":\"connected\",\"graph\":\"arif_l5_knowledge\"}"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:8001/health -> 200"
+    },
+    {
+      "label": "hermes-prod health",
+      "host": "127.0.0.1",
+      "port": 18791,
+      "declared_by": "live ss: hermes-health.py",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 135,
+          "body_excerpt": "{\n  \"overall_ok\": true,\n  \"service\": \"hermes-asi-gateway\",\n  \"started_at\": \"2026-09-14T15:47:01.369310+00:00\",\n  \"now\": \"2026-09-14T17:50:18.263073+00:00\",\n  \"checks\": [\n    {\n      \"name\": \"systemd_active\",\n      \"ok\": true,\n      \"value\": \"active\",\n      \"ms\": 7.6\n    },\n    {\n      \"name\": \"systemd_restarts\",\n      \"ok\": true,\n      \"value\": 0,\n      \"ms\": 25.9\n    },\n    {\n      \"name\": \"syste"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:18791/health -> 200"
+    },
+    {
+      "label": "forge-bot",
+      "host": "127.0.0.1",
+      "port": 8091,
+      "declared_by": "live ss: /opt/forge-bot/bot.py",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 1,
+          "body_excerpt": "{\"ok\":true,\"status\":\"live\",\"bot\":\"@arifOS_bot\",\"gateway\":3}"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:8091/health -> 200"
+    },
+    {
+      "label": "headscale (mesh)",
+      "host": "127.0.0.1",
+      "port": 50443,
+      "declared_by": "live ss: headscale serve",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": null,
+          "error": "ConnectionResetError: [Errno 104] Connection reset by peer",
+          "elapsed_ms": 0,
+          "body_excerpt": null
+        }
+      ],
+      "verdict": "ERROR:ConnectionResetError: [Errno 104] Connection reset by peer",
+      "evidence": "curl http://127.0.0.1:50443/health -> ERR ConnectionResetError: [Errno 104] Connection reset by peer"
+    },
+    {
+      "label": "hermes a2a platform",
+      "host": "127.0.0.1",
+      "port": 9900,
+      "declared_by": "~/.hermes/config.yaml platforms.a2a",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 1,
+          "body_excerpt": "{\"status\": \"ok\", \"agent\": \"hermes-forge\", \"served_agents\": [{\"slug\": \"default\", \"name\": \"hermes-forge\", \"url\": \"http://127.0.0.1:9900/\", \"tenant\": null, \"profile\": \"default\", \"local\": true}]}"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:9900/health -> 200"
+    },
+    {
+      "label": "netdata",
+      "host": "127.0.0.1",
+      "port": 19999,
+      "declared_by": "live ss: netdata",
+      "attempts": [
+        {
+          "path": "/api/v1/info",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 214,
+          "body_excerpt": "{\n    \"version\":\"v2.11.0\",\n    \"uid\":\"6f358768-94c3-433e-b246-66b66ddabdbf\",\n    \"hosts-available\":1,\n    \"mirrored_hosts\":[\"forge\"],\n    \"mirrored_hosts_status\":[{\n            \"hostname\":\"forge\",\n            \"hops\":0,\n            \"reachable\":true,\n            \"guid\":\"6f358768-94c3-433e-b246-66b66ddabdbf\",\n            \"node_id\":null,\n            \"claim_id\":null\n        }],\n    \"alarms\":{\n        \""
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:19999/api/v1/info -> 200"
+    },
+    {
+      "label": "prometheus",
+      "host": "127.0.0.1",
+      "port": 9090,
+      "declared_by": "live ss: prometheus",
+      "attempts": [
+        {
+          "path": "/-/healthy",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 1,
+          "body_excerpt": "Prometheus Server is Healthy.\n"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:9090/-/healthy -> 200"
+    },
+    {
+      "label": "grafana",
+      "host": "127.0.0.1",
+      "port": 3000,
+      "declared_by": "live ss: grafana",
+      "attempts": [
+        {
+          "path": "/api/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 1,
+          "body_excerpt": "{\n  \"database\": \"ok\",\n  \"version\": \"13.2.1\",\n  \"commit\": \"56cd3e9288d8255fecebe5d05b48d191f50674b5\"\n}"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:3000/api/health -> 200"
+    },
+    {
+      "label": "ollama",
+      "host": "127.0.0.1",
+      "port": 11434,
+      "declared_by": "live ss: ollama serve",
+      "attempts": [
+        {
+          "path": "/api/tags",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 1,
+          "body_excerpt": "{\"models\":[{\"name\":\"bge-m3:latest\",\"model\":\"bge-m3:latest\",\"modified_at\":\"2026-09-11T11:16:06.224080075+08:00\",\"size\":1157672605,\"digest\":\"7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab\",\"details\":{\"parent_model\":\"\",\"format\":\"gguf\",\"family\":\"bert\",\"families\":[\"bert\"],\"parameter_size\":\"566.70M\",\"quantization_level\":\"F16\",\"context_length\":8192,\"embedding_length\":1024},\"capabilities"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:11434/api/tags -> 200"
+    },
+    {
+      "label": "qwen/llama-server",
+      "host": "127.0.0.1",
+      "port": 42555,
+      "declared_by": "live ss: llama-server",
+      "attempts": [
+        {
+          "path": "/health",
+          "status": 200,
+          "error": null,
+          "elapsed_ms": 0,
+          "body_excerpt": "{\"status\":\"ok\"}"
+        }
+      ],
+      "verdict": "UP-OPEN",
+      "evidence": "curl http://127.0.0.1:42555/health -> 200"
+    }
+  ],
+  "mcp_endpoints": [
+    {
+      "endpoint": "http://127.0.0.1:8088/mcp",
+      "initialize_status": 200,
+      "initialize_error": null,
+      "tool_count": 8,
+      "tools": [
+        "arif_init",
+        "arif_observe",
+        "arif_think",
+        "arif_route",
+        "arif_memory",
+        "arif_judge",
+        "arif_forge",
+        "arif_seal"
+      ],
+      "error": null,
+      "protocol_version": "2025-06-18",
+      "server_info": {
+        "name": "ARIFOS MCP",
+        "version": "kanon-2026.09.14+5635ffe",
+        "websiteUrl": "https://mcp.arif-fazil.com"
+      },
+      "verdict": "UP-MCP",
+      "evidence": "initialize HTTP 200 proto=2025-06-18; tools/list -> 8 tools",
+      "server": "arifos",
+      "declared_by": "registry organs.kernel + hermes config: url http://127.0.0.1:8088/mcp"
+    },
+    {
+      "endpoint": "http://127.0.0.1:7072/mcp",
+      "initialize_status": 200,
+      "initialize_error": null,
+      "tool_count": 120,
+      "tools": [
+        "forge_session_init",
+        "forge_health_check",
+        "forge_heart_critique",
+        "forge_check_governance",
+        "forge_execute",
+        "forge_judge_proxy",
+        "forge_transfer_confirm",
+        "forge_send_confirm",
+        "forge_vault",
+        "forge_seal_lane_a",
+        "forge_wealth",
+        "forge_docsgpt",
+        "forge_journalctl",
+        "forge_well",
+        "forge_kernel",
+        "forge_hf_import",
+        "forge_chart",
+        "forge_probe",
+        "forge_scan",
+        "forge_filesystem",
+        "forge_postgres",
+        "forge_memory",
+        "forge_git",
+        "forge_github",
+        "forge_docker",
+        "forge_fetch",
+        "forge_agent",
+        "forge_lease",
+        "forge_registry_status",
+        "forge_fingerprint_check",
+        "forge_shell",
+        "forge_shell_dryrun",
+        "forge_shell_status",
+        "forge_shell_ledger",
+        "forge_shell_alert_history",
+        "forge_wm_stats",
+        "forge_wm_gaps",
+        "forge_wm_quality",
+        "forge_experience_trace",
+        "forge_experience_query",
+        "forge_skill_select_query",
+        "forge_job",
+        "forge_status",
+        "forge_abort",
+        "forge_vps_ports",
+        "forge_vps_services",
+        "forge_vps_cron",
+        "forge_security_drift_scan",
+        "forge_verify_timeline",
+        "forge_skill",
+        "forge_seal",
+        "forge_registry",
+        "forge_evaluate",
+        "forge_witness",
+        "forge_scar",
+        "forge_register",
+        "forge_reality_loop",
+        "forge_parallel",
+        "forge_parallel_status",
+        "forge_parallel_cancel",
+        "forge_parallel_list",
+        "forge_probe_site",
+        "forge_receipt_draft",
+        "forge_research",
+        "forge_search",
+        "forge_docs_lookup",
+        "forge_browser_navigate",
+        "forge_browser_click",
+        "forge_browser_type",
+        "forge_browser_screenshot",
+        "forge_browser_extract_text",
+        "forge_browser_evaluate_js",
+        "forge_github_get_file",
+        "forge_github_create_or_update_file",
+        "forge_github_create_issue",
+        "forge_worktree",
+        "forge_netdata_alarms",
+        "forge_netdata_metrics",
+        "forge_minimax_search",
+        "forge_web_extract",
+        "forge_synthesize",
+        "forge_stage",
+        "forge_sandbox_run",
+        "forge_scar_scan",
+        "forge_skillstore_write",
+        "forge_skillstore_read",
+        "forge_tier_bind",
+        "forge_docket_prep",
+        "forge_execute_sealed",
+        "forge_sandbox_pause",
+        "forge_sandbox_resume",
+        "forge_sandbox_list_paused",
+        "forge_sandbox_auto_evict",
+        "auth_pipeline",
+        "forge_git_commit",
+        "forge_entropy_sweep",
+        "forge_canonize",
+        "forge_document_ingest",
+        "forge_policy",
+        "forge_surface_guard",
+        "forge_surface_audit",
+        "forge_gemini",
+        "forge_predict",
+        "forge_apex_encode",
+        "forge_apex_metabolize",
+        "forge_apex_emd",
+        "forge_apex_recompute",
+        "forge_apex_goal_status",
+        "forge_ephemeral",
+        "forge_web_zen",
+        "forge_isomorphism_check",
+        "forge_cool_drift",
+        "forge_cool_pattern",
+        "forge_runtime_verify",
+        "forge_trust_score",
+        "forge_compose",
+        "forge_lock",
+        "forge_pipeline_run",
+        "forge_visual_qa",
+        "forge_visual_seal"
+      ],
+      "error": null,
+      "protocol_version": "2025-06-18",
+      "server_info": {
+        "name": "A-FORGE-MCP",
+        "version": "0.1.0"
+      },
+      "verdict": "UP-MCP",
+      "evidence": "initialize HTTP 200 proto=2025-06-18; tools/list -> 120 tools",
+      "server": "aforge",
+      "declared_by": "registry organs.aforge (hermes uses stdio, not this http)"
+    },
+    {
+      "endpoint": "http://127.0.0.1:7074/mcp",
+      "initialize_status": 200,
+      "initialize_error": null,
+      "tool_count": 7,
+      "tools": [
+        "fed_route",
+        "fed_status",
+        "fed_probe",
+        "fed_contrast",
+        "fed_health",
+        "fed_classify",
+        "fed_report_latency"
+      ],
+      "error": null,
+      "protocol_version": "2025-06-18",
+      "server_info": {
+        "name": "FED \u2014 Federation Router",
+        "version": "3.4.6"
+      },
+      "verdict": "UP-MCP",
+      "evidence": "initialize HTTP 200 proto=2025-06-18; tools/list -> 7 tools",
+      "server": "fed",
+      "declared_by": "registry organs.fed + hermes config: url http://127.0.0.1:7074/mcp"
+    },
+    {
+      "endpoint": "http://127.0.0.1:8081/mcp",
+      "initialize_status": 200,
+      "initialize_error": null,
+      "tool_count": null,
+      "tools": [],
+      "error": "tools/list parse: Expecting value: line 1 column 1 (char 0) | raw= (status=200)",
+      "protocol_version": "2025-06-18",
+      "server_info": {
+        "name": "GEOX",
+        "version": "v2026.08.26"
+      },
+      "retry_note": "retried once; first attempt error: tools/list parse: Expecting value: line 1 column 1 (char 0) | raw= (status=200)",
+      "verdict": "UP-MCP-HANDSHAKE-OK/LIST-EMPTY",
+      "evidence": "initialize HTTP 200 proto=2025-06-18 serverInfo={'name': 'GEOX', 'version': 'v2026.08.26'}; tools/list EMPTY/UNPARSEABLE on both attempts (tools/list parse: Expecting value: line 1 column 1 (char 0) | raw= (status=200))",
+      "server": "geox",
+      "declared_by": "registry organs.geox + hermes config: url http://127.0.0.1:8081/mcp"
+    },
+    {
+      "endpoint": "http://127.0.0.1:18082/mcp",
+      "initialize_status": 200,
+      "initialize_error": null,
+      "tool_count": 11,
+      "tools": [
+        "capital_primitive",
+        "capital_health",
+        "capital_diagnose",
+        "capital_market",
+        "capital_ledger",
+        "capital_registry",
+        "capital_entropy",
+        "wealth_judge_handoff",
+        "capital_indicator",
+        "capital_backtest",
+        "capital_entry_plan"
+      ],
+      "error": null,
+      "protocol_version": "2025-06-18",
+      "server_info": {
+        "name": "WEALTH Federated Domain",
+        "version": "v2026.07.24"
+      },
+      "verdict": "UP-MCP",
+      "evidence": "initialize HTTP 200 proto=2025-06-18; tools/list -> 11 tools",
+      "server": "wealth",
+      "declared_by": "registry organs.wealth + hermes config 18082"
+    },
+    {
+      "endpoint": "http://127.0.0.1:18083/mcp",
+      "initialize_status": 200,
+      "initialize_error": null,
+      "tool_count": 31,
+      "tools": [
+        "well_log_intake",
+        "well_log_recovery_event",
+        "well_log_substance",
+        "well_inject_biometric",
+        "well_observe_machine",
+        "well_observe_federation_thermal",
+        "well_observe_scar_load",
+        "well_observe_drift_field",
+        "well_observe_evidence_backlog",
+        "well_classify_machine_state",
+        "well_attest_to_kernel",
+        "well_handoff_dignity_to_arifos",
+        "well_propose_seal_recommendation",
+        "well_propose_governance_signal",
+        "well_consent_set_scope",
+        "well_consent_audit",
+        "well_seal_recommendation_log",
+        "well_assess_triadic_state",
+        "well_get_triadic_snapshot",
+        "well_render_hud_panel",
+        "well_frame_read_snapshot",
+        "well_machine_diagnose",
+        "well_machine_recommend",
+        "well_classify_substrate",
+        "well_trace_lineage",
+        "well_assess_homeostasis",
+        "well_check_repair",
+        "well_validate_vitality",
+        "well_assess_reliability",
+        "well_guard_dignity",
+        "well_registry_status"
+      ],
+      "error": null,
+      "protocol_version": "2025-06-18",
+      "server_info": {
+        "name": "WELL",
+        "version": "v2026.07.24",
+        "websiteUrl": "https://well.arif-fazil.com"
+      },
+      "verdict": "UP-MCP",
+      "evidence": "initialize HTTP 200 proto=2025-06-18; tools/list -> 31 tools",
+      "server": "well",
+      "declared_by": "registry organs.well + hermes config 18083"
+    },
+    {
+      "endpoint": "http://127.0.0.1:7075/mcp",
+      "initialize_status": 200,
+      "initialize_error": null,
+      "tool_count": 3,
+      "tools": [
+        "flow_health",
+        "flow_entity_report",
+        "flow_ingest"
+      ],
+      "error": null,
+      "protocol_version": "2025-06-18",
+      "server_info": {
+        "name": "arifflow-mcp",
+        "version": "2026.09.14"
+      },
+      "verdict": "UP-MCP",
+      "evidence": "initialize HTTP 200 proto=2025-06-18; tools/list -> 3 tools",
+      "server": "arifflow",
+      "declared_by": "live fastmcp arifflow_mcp_fastmcp.py (hermes uses stdio)"
+    },
+    {
+      "endpoint": "http://127.0.0.1:18086/mcp",
+      "initialize_status": 200,
+      "initialize_error": null,
+      "tool_count": 7,
+      "tools": [
+        "frame_health",
+        "frame_probe",
+        "frame_drift",
+        "frame_baseline",
+        "frame_trend",
+        "frame_report",
+        "frame_rsi_verify"
+      ],
+      "error": null,
+      "protocol_version": "2025-06-18",
+      "server_info": {
+        "name": "frame-mcp",
+        "version": "2026.09.14"
+      },
+      "verdict": "UP-MCP",
+      "evidence": "initialize HTTP 200 proto=2025-06-18; tools/list -> 7 tools",
+      "server": "frame",
+      "declared_by": "live fastmcp frame_mcp_fastmcp.py (NOT in hermes config)"
+    },
+    {
+      "endpoint": "http://127.0.0.1:3002/mcp",
+      "initialize_status": 200,
+      "initialize_error": null,
+      "tool_count": 4,
+      "tools": [
+        "aaa_health",
+        "aaa_agent_card",
+        "aaa_federation_manifest",
+        "aaa_discovery"
+      ],
+      "error": null,
+      "protocol_version": "2025-06-18",
+      "server_info": {
+        "name": "aaa-mcp",
+        "version": "2026.09.14"
+      },
+      "verdict": "UP-MCP",
+      "evidence": "initialize HTTP 200 proto=2025-06-18; tools/list -> 4 tools",
+      "server": "aaa",
+      "declared_by": "live fastmcp aaa_mcp_fastmcp.py (NOT in hermes config)"
+    },
+    {
+      "endpoint": "http://127.0.0.1:3050/mcp",
+      "initialize_status": 200,
+      "initialize_error": null,
+      "tool_count": 0,
+      "tools": [],
+      "error": null,
+      "protocol_version": "2025-06-18",
+      "server_info": {
+        "name": "1mcp",
+        "version": "0.34.0"
+      },
+      "verdict": "UP-MCP",
+      "evidence": "initialize HTTP 200 proto=2025-06-18; tools/list -> 0 tools",
+      "server": "1mcp-agg",
+      "declared_by": "live 1mcp aggregator"
+    },
+    {
+      "endpoint": "http://127.0.0.1:8931/mcp",
+      "initialize_status": 200,
+      "initialize_error": null,
+      "tool_count": 23,
+      "tools": [
+        "browser_close",
+        "browser_resize",
+        "browser_console_messages",
+        "browser_handle_dialog",
+        "browser_evaluate",
+        "browser_file_upload",
+        "browser_drop",
+        "browser_fill_form",
+        "browser_press_key",
+        "browser_type",
+        "browser_navigate",
+        "browser_navigate_back",
+        "browser_network_requests",
+        "browser_network_request",
+        "browser_run_code_unsafe",
+        "browser_take_screenshot",
+        "browser_snapshot",
+        "browser_click",
+        "browser_drag",
+        "browser_hover",
+        "browser_select_option",
+        "browser_tabs",
+        "browser_wait_for"
+      ],
+      "error": null,
+      "protocol_version": "2025-06-18",
+      "server_info": {
+        "name": "Playwright",
+        "version": "1.61.0-alpha-1778188671000"
+      },
+      "verdict": "UP-MCP",
+      "evidence": "initialize HTTP 200 proto=2025-06-18; tools/list -> 23 tools",
+      "server": "playwright",
+      "declared_by": "live playwright-mcp"
+    }
+  ],
+  "listening_sockets": [
+    {
+      "local": "127.0.0.1:11434",
+      "pid": 3810678,
+      "cmdline": "/usr/local/bin/ollama serve"
+    },
+    {
+      "local": "127.0.0.1:44197",
+      "pid": 83338,
+      "cmdline": "/opt/prisma/binaries/node_modules/prisma/query-engine-debian-openssl-3.0.x -p 44197 --enable-metrics --enable-raw-queries"
+    },
+    {
+      "local": "100.64.0.2:4010",
+      "pid": 3914885,
+      "cmdline": "/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock"
+    },
+    {
+      "local": "100.64.0.2:3001",
+      "pid": 3914885,
+      "cmdline": "/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock"
+    },
+    {
+      "local": "127.0.0.53%lo:53",
+      "pid": 455,
+      "cmdline": "/usr/lib/systemd/systemd-resolved"
+    },
+    {
+      "local": "100.64.0.2:18085",
+      "pid": 3914885,
+      "cmdline": "/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock"
+    },
+    {
+      "local": "100.64.0.2:18082",
+      "pid": 3914885,
+      "cmdline": "/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock"
+    },
+    {
+      "local": "100.64.0.2:18083",
+      "pid": 3914885,
+      "cmdline": "/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock"
+    },
+    {
+      "local": "100.64.0.2:18100",
+      "pid": 3914885,
+      "cmdline": "/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock"
+    },
+    {
+      "local": "127.0.0.1:9900",
+      "pid": 159355,
+      "cmdline": "/usr/local/lib/hermes-agent/venv/bin/python -m hermes_cli.main gateway run --replace"
+    },
+    {
+      "local": "127.0.0.1:42555",
+      "pid": 277637,
+      "cmdline": "/usr/local/lib/ollama/llama-server --model /usr/share/ollama/.ollama/models/blobs/sha256-daec91ffb5dd0c27411bd71f29932917c49cf529a641d0168496c3a501e3062c --port 42555 --host 127.0.0.1 --no-webui --offline -c 8192 -np 1 --log-verbosity 4 --no-log-prefix --no-log-timestamps --load-mode none --cache-type-k q8_0 --cache-type-v q8_0 --flash-attn on --embedding -b 2048 -ub 2048 --context-shift --keep 4"
+    },
+    {
+      "local": "0.0.0.0:4000",
+      "pid": 1051665,
+      "cmdline": "/usr/sbin/haproxy -sf 1008141 -x sockpair@5 -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock"
+    },
+    {
+      "local": "0.0.0.0:4012",
+      "pid": 1051665,
+      "cmdline": "/usr/sbin/haproxy -sf 1008141 -x sockpair@5 -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock"
+    },
+    {
+      "local": "0.0.0.0:4013",
+      "pid": 82578,
+      "cmdline": "/app/.venv/bin/python3 /app/.venv/bin/litellm --config /app/config.yaml --port 4013 --num_workers 1"
+    },
+    {
+      "local": "127.0.0.1:8222",
+      "pid": 2119082,
+      "cmdline": "/usr/sbin/nats-server -c /etc/nats-server.conf"
+    },
+    {
+      "local": "127.0.0.1:8888",
+      "pid": 1113,
+      "cmdline": "/usr/local/bin/otelcol-contrib --config=/root/forge_work/kabarkan/kabarkan-collector.yaml"
+    },
+    {
+      "local": "127.0.0.1:8931",
+      "pid": 3657434,
+      "cmdline": "node /usr/bin/playwright-mcp --port 8931 --headless --no-sandbox --isolated --browser chromium --executable-path /root/.cache/ms-playwright/chromium-1232/chrome-linux64/chrome --console-level error --snapshot-mode none --output-mode stdout --output-dir /tmp/playwright-artifacts --timeout-navigation 30000 --timeout-action 10000 --block-service-workers --allowed-hosts *"
+    },
+    {
+      "local": "127.0.0.1:41497",
+      "pid": 226236,
+      "cmdline": "agy"
+    },
+    {
+      "local": "127.0.0.1:9100",
+      "pid": 1124,
+      "cmdline": "/usr/local/bin/node_exporter --web.listen-address=127.0.0.1:9100"
+    },
+    {
+      "local": "127.0.0.1:9090",
+      "pid": 1126,
+      "cmdline": "/usr/local/bin/prometheus --config.file=/etc/prometheus/prometheus.yml --storage.tsdb.path=/var/lib/prometheus --web.console.libraries=/usr/local/share/prometheus/console_libraries --web.console.templates=/usr/local/share/prometheus/consoles --web.listen-address=127.0.0.1:9090 --storage.tsdb.retention.time=15d"
+    },
+    {
+      "local": "127.0.0.1:9000",
+      "pid": 6517,
+      "cmdline": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 9000 -container-ip 172.21.0.3 -container-port 9000 -use-listen-fd"
+    },
+    {
+      "local": "127.0.0.1:9001",
+      "pid": 6605,
+      "cmdline": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 9001 -container-ip 172.21.0.3 -container-port 9001 -use-listen-fd"
+    },
+    {
+      "local": "100.64.0.2:8088",
+      "pid": 3914885,
+      "cmdline": "/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock"
+    },
+    {
+      "local": "100.64.0.2:8080",
+      "pid": 1051665,
+      "cmdline": "/usr/sbin/haproxy -sf 1008141 -x sockpair@5 -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock"
+    },
+    {
+      "local": "100.64.0.2:8081",
+      "pid": 3914885,
+      "cmdline": "/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock"
+    },
+    {
+      "local": "100.64.0.2:7422",
+      "pid": 2119082,
+      "cmdline": "/usr/sbin/nats-server -c /etc/nats-server.conf"
+    },
+    {
+      "local": "100.64.0.2:7072",
+      "pid": 3914885,
+      "cmdline": "/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock"
+    },
+    {
+      "local": "100.64.0.2:7073",
+      "pid": 3914885,
+      "cmdline": "/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock"
+    },
+    {
+      "local": "100.64.0.2:7071",
+      "pid": 3914885,
+      "cmdline": "/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock"
+    },
+    {
+      "local": "100.64.0.2:6379",
+      "pid": 3892624,
+      "cmdline": "/usr/bin/redis-server 127.0.0.1:6379"
+    },
+    {
+      "local": "127.0.0.54:53",
+      "pid": 455,
+      "cmdline": "/usr/lib/systemd/systemd-resolved"
+    },
+    {
+      "local": "0.0.0.0:22888",
+      "pid": 1193,
+      "cmdline": "sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups"
+    },
+    {
+      "local": "0.0.0.0:7074",
+      "pid": 379711,
+      "cmdline": "python3 /root/AAA/scripts/fed_router.py"
+    },
+    {
+      "local": "127.0.0.1:3460",
+      "pid": 1298,
+      "cmdline": "/usr/bin/node /var/www/html/arif/usdmyr/api/server.js"
+    },
+    {
+      "local": "127.0.0.1:3456",
+      "pid": 3903158,
+      "cmdline": "/usr/bin/node /var/www/html/gold/api/server.js"
+    },
+    {
+      "local": "127.0.0.1:3457",
+      "pid": 1291,
+      "cmdline": "/usr/bin/node /var/www/html/oil/api/server.js"
+    },
+    {
+      "local": "127.0.0.1:3458",
+      "pid": 1232,
+      "cmdline": "/usr/bin/node /var/www/html/gas/api/server.js"
+    },
+    {
+      "local": "127.0.0.1:3459",
+      "pid": 1246,
+      "cmdline": "/usr/bin/node /var/www/html/arif/klci/api/server.js"
+    },
+    {
+      "local": "127.0.0.1:19999",
+      "pid": 2217165,
+      "cmdline": "/usr/sbin/netdata -P /run/netdata/netdata.pid -D -i 127.0.0.1"
+    },
+    {
+      "local": "127.0.0.1:4010",
+      "pid": 1401404,
+      "cmdline": "/usr/bin/python3 /root/A-FORGE/fed_aware_middleware.py"
+    },
+    {
+      "local": "127.0.0.1:20241",
+      "pid": 2481,
+      "cmdline": "/usr/bin/cloudflared --no-autoupdate --config /etc/cloudflared/config.yml tunnel run"
+    },
+    {
+      "local": "127.0.0.1:18900",
+      "pid": 1401401,
+      "cmdline": "/usr/bin/python3 /root/AAA/auth/signing_server.py"
+    },
+    {
+      "local": "127.0.0.1:18791",
+      "pid": 159356,
+      "cmdline": "/usr/bin/python3 /root/scripts/hermes-prod/hermes-health.py"
+    },
+    {
+      "local": "127.0.0.1:3000",
+      "pid": 3915091,
+      "cmdline": "/usr/share/grafana/bin/grafana server --config=/etc/grafana/grafana.ini --pidfile=/run/grafana/grafana-server.pid --packaging=deb cfg:default.paths.logs=/var/log/grafana cfg:default.paths.data=/var/lib/grafana cfg:default.paths.plugins=/var/lib/grafana/plugins cfg:default.paths.provisioning=/etc/grafana/provisioning cfg:default.paths.bundled_plugins=/var/lib/grafana/plugins-bundled"
+    },
+    {
+      "local": "127.0.0.1:3001",
+      "pid": 128771,
+      "cmdline": "/usr/bin/node /root/AAA/a2a-server/server.js"
+    },
+    {
+      "local": "127.0.0.1:3002",
+      "pid": 187474,
+      "cmdline": "/usr/bin/python3 /root/AAA/mcp/aaa_mcp_fastmcp.py"
+    },
+    {
+      "local": "127.0.0.1:3050",
+      "pid": 3959015,
+      "cmdline": "node /root/.npm-global/bin/1mcp serve --transport=http --port 3050 --host 127.0.0.1 --enable-async-loading --async-min-servers=3"
+    },
+    {
+      "local": "127.0.0.1:50443",
+      "pid": 3896627,
+      "cmdline": "/usr/local/bin/headscale serve -c /etc/headscale/config.yaml"
+    },
+    {
+      "local": "127.0.0.1:18075",
+      "pid": 3318617,
+      "cmdline": "/usr/bin/python3 /root/A-FORGE/bridges/sheets_bridge.py"
+    },
+    {
+      "local": "127.0.0.1:18097",
+      "pid": 3318593,
+      "cmdline": "/usr/bin/python3 /root/A-FORGE/bridges/gmail_bridge.py"
+    },
+    {
+      "local": "127.0.0.1:18098",
+      "pid": 3318601,
+      "cmdline": "/usr/bin/python3 /root/A-FORGE/bridges/gws_bridge.py"
+    },
+    {
+      "local": "127.0.0.1:18099",
+      "pid": 3318581,
+      "cmdline": "/usr/bin/python3 /root/A-FORGE/bridges/drive_bridge.py"
+    },
+    {
+      "local": "127.0.0.1:18092",
+      "pid": 3829923,
+      "cmdline": "/usr/bin/python3 /root/A-FORGE/bridges/gemini_bridge.py"
+    },
+    {
+      "local": "127.0.0.1:18093",
+      "pid": 1401402,
+      "cmdline": "/usr/bin/python3 /root/A-FORGE/bridges/email_bridge.py"
+    },
+    {
+      "local": "127.0.0.1:18094",
+      "pid": 3318569,
+      "cmdline": "/usr/bin/python3 /root/A-FORGE/bridges/calendar_bridge.py"
+    },
+    {
+      "local": "127.0.0.1:18095",
+      "pid": 1401415,
+      "cmdline": "/usr/bin/python3 /root/A-FORGE/bridges/github_bridge.py"
+    },
+    {
+      "local": "127.0.0.1:18084",
+      "pid": 151575,
+      "cmdline": "/opt/signal/venv/bin/python -m uvicorn signal_organ.main:app --host 127.0.0.1 --port 18084 --log-level info"
+    },
+    {
+      "local": "127.0.0.1:18085",
+      "pid": 3761307,
+      "cmdline": "/opt/frame/venv/bin/python -m uvicorn frame_organ.main:app --host 127.0.0.1 --port 18085 --log-level info"
+    },
+    {
+      "local": "127.0.0.1:18086",
+      "pid": 193289,
+      "cmdline": "/usr/bin/python3 /root/FRAME/mcp/frame_mcp_fastmcp.py"
+    },
+    {
+      "local": "127.0.0.1:18082",
+      "pid": 4062341,
+      "cmdline": "/root/WEALTH/.venv/bin/python3 server_federated.py"
+    },
+    {
+      "local": "127.0.0.1:18083",
+      "pid": 300381,
+      "cmdline": "/opt/well/.venv/bin/python3 /opt/well/server.py"
+    },
+    {
+      "local": "127.0.0.1:8094",
+      "pid": 1138,
+      "cmdline": "/usr/bin/python3 /usr/local/bin/tier1-serve.py 8094"
+    },
+    {
+      "local": "127.0.0.1:8088",
+      "pid": 305139,
+      "cmdline": "/opt/arifos/venv/bin/python -c from arifosmcp.runtime.__main__ import main; main()"
+    },
+    {
+      "local": "127.0.0.1:8090",
+      "pid": 1374,
+      "cmdline": "/usr/bin/python3 -m http.server 8090 --bind 127.0.0.1"
+    },
+    {
+      "local": "127.0.0.1:8091",
+      "pid": 1676941,
+      "cmdline": "/opt/forge-bot/venv/bin/python3 /opt/forge-bot/bot.py"
+    },
+    {
+      "local": "127.0.0.1:8080",
+      "pid": 6795,
+      "cmdline": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8080 -container-ip 172.18.0.3 -container-port 8080 -use-listen-fd"
+    },
+    {
+      "local": "127.0.0.1:8081",
+      "pid": 3166667,
+      "cmdline": "/opt/geox/.venv/bin/python3 -m geox_mcp.server --host 127.0.0.1 --port 8081"
+    },
+    {
+      "local": "127.0.0.1:8125",
+      "pid": 2217165,
+      "cmdline": "/usr/sbin/netdata -P /run/netdata/netdata.pid -D -i 127.0.0.1"
+    },
+    {
+      "local": "127.0.0.1:8001",
+      "pid": 1350318,
+      "cmdline": "/usr/bin/python3 -m arifosmcp.runtime.l5_search_api"
+    },
+    {
+      "local": "127.0.0.1:6333",
+      "pid": 6371,
+      "cmdline": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 6333 -container-ip 172.21.0.2 -container-port 6333 -use-listen-fd"
+    },
+    {
+      "local": "127.0.0.1:6334",
+      "pid": 6414,
+      "cmdline": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 6334 -container-ip 172.21.0.2 -container-port 6334 -use-listen-fd"
+    },
+    {
+      "local": "127.0.0.1:6380",
+      "pid": 1321364,
+      "cmdline": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 6380 -container-ip 172.17.0.2 -container-port 6379 -use-listen-fd"
+    },
+    {
+      "local": "127.0.0.1:6379",
+      "pid": 3892624,
+      "cmdline": "/usr/bin/redis-server 127.0.0.1:6379"
+    },
+    {
+      "local": "127.0.0.1:39451",
+      "pid": 226236,
+      "cmdline": "agy"
+    },
+    {
+      "local": "127.0.0.1:7071",
+      "pid": 314032,
+      "cmdline": "/usr/bin/node /root/A-FORGE/dist/src/interfaces/server.js"
+    },
+    {
+      "local": "127.0.0.1:7072",
+      "pid": 313937,
+      "cmdline": "/usr/bin/node /root/A-FORGE/dist/src/interfaces/mcp/cli.js serve --transport http --port 7072"
+    },
+    {
+      "local": "127.0.0.1:7073",
+      "pid": 305148,
+      "cmdline": "/opt/arifflow/bin/arifflow --daemon"
+    },
+    {
+      "local": "127.0.0.1:7075",
+      "pid": 305149,
+      "cmdline": "/usr/bin/python3 /root/arifFlow/mcp/arifflow_mcp_fastmcp.py"
+    },
+    {
+      "local": "127.0.0.1:5432",
+      "pid": 6688,
+      "cmdline": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 5432 -container-ip 172.21.0.5 -container-port 5432 -use-listen-fd"
+    },
+    {
+      "local": "100.64.0.2:46590",
+      "pid": 3914885,
+      "cmdline": "/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock"
+    },
+    {
+      "local": "127.0.0.1:4317",
+      "pid": 2218081,
+      "cmdline": "/usr/libexec/netdata/plugins.d/otel-plugin worker ingestor --socket /run/netdata/otel-plugin/ingestor-2217967.sock"
+    },
+    {
+      "local": "127.0.0.1:4222",
+      "pid": 2119082,
+      "cmdline": "/usr/sbin/nats-server -c /etc/nats-server.conf"
+    },
+    {
+      "local": "127.0.0.1:5001",
+      "pid": 1171341,
+      "cmdline": "python3 /root/arifOS/deploy/vault999-writer/main.py"
+    },
+    {
+      "local": "*:80",
+      "pid": 51465,
+      "cmdline": "/usr/bin/caddy run --config /etc/caddy/Caddyfile"
+    },
+    {
+      "local": "*:443",
+      "pid": 51465,
+      "cmdline": "/usr/bin/caddy run --config /etc/caddy/Caddyfile"
+    },
+    {
+      "local": "[fd7a:115c:a1e0::2]:18100",
+      "pid": 3914885,
+      "cmdline": "/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock"
+    },
+    {
+      "local": "[fd7a:115c:a1e0::2]:18085",
+      "pid": 3914885,
+      "cmdline": "/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock"
+    },
+    {
+      "local": "[fd7a:115c:a1e0::2]:18082",
+      "pid": 3914885,
+      "cmdline": "/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock"
+    },
+    {
+      "local": "[fd7a:115c:a1e0::2]:18083",
+      "pid": 3914885,
+      "cmdline": "/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock"
+    },
+    {
+      "local": "[fd7a:115c:a1e0::2]:3001",
+      "pid": 3914885,
+      "cmdline": "/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock"
+    },
+    {
+      "local": "[fd7a:115c:a1e0::2]:4010",
+      "pid": 3914885,
+      "cmdline": "/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock"
+    },
+    {
+      "local": "[::1]:8125",
+      "pid": 2217165,
+      "cmdline": "/usr/sbin/netdata -P /run/netdata/netdata.pid -D -i 127.0.0.1"
+    },
+    {
+      "local": "*:4318",
+      "pid": 1113,
+      "cmdline": "/usr/local/bin/otelcol-contrib --config=/root/forge_work/kabarkan/kabarkan-collector.yaml"
+    },
+    {
+      "local": "*:4319",
+      "pid": 1113,
+      "cmdline": "/usr/local/bin/otelcol-contrib --config=/root/forge_work/kabarkan/kabarkan-collector.yaml"
+    },
+    {
+      "local": "[::1]:6379",
+      "pid": 3892624,
+      "cmdline": "/usr/bin/redis-server 127.0.0.1:6379"
+    },
+    {
+      "local": "*:8083",
+      "pid": 3896627,
+      "cmdline": "/usr/local/bin/headscale serve -c /etc/headscale/config.yaml"
+    },
+    {
+      "local": "[fd7a:115c:a1e0::2]:7071",
+      "pid": 3914885,
+      "cmdline": "/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock"
+    },
+    {
+      "local": "[fd7a:115c:a1e0::2]:7072",
+      "pid": 3914885,
+      "cmdline": "/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock"
+    },
+    {
+      "local": "[fd7a:115c:a1e0::2]:7073",
+      "pid": 3914885,
+      "cmdline": "/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock"
+    },
+    {
+      "local": "[::]:22888",
+      "pid": 1193,
+      "cmdline": "sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups"
+    },
+    {
+      "local": "[fd7a:115c:a1e0::2]:8088",
+      "pid": 3914885,
+      "cmdline": "/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock"
+    },
+    {
+      "local": "[fd7a:115c:a1e0::2]:8081",
+      "pid": 3914885,
+      "cmdline": "/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock"
+    },
+    {
+      "local": "[fd7a:115c:a1e0::2]:47166",
+      "pid": 3914885,
+      "cmdline": "/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock"
+    }
+  ],
+  "mcp_inventory": {
+    "hermes_config_mcp_servers": [
+      "aforge",
+      "arifflow",
+      "arifos",
+      "cloudflare",
+      "context7",
+      "datadog",
+      "fed",
+      "geox",
+      "hermes-social",
+      "hugging_face",
+      "wealth",
+      "well",
+      "zai_reader",
+      "zai_search",
+      "zai_vision"
+    ],
+    "config_path": "/root/.hermes/config.yaml",
+    "other_mcp_json_files": [
+      "/root/.hermes/cache/mcp_schema_cache.json",
+      "/root/AAA/registries/antigravity/mcp_config.template.json",
+      "/root/AAA/registries/discovery/mcp-server-card.json",
+      "/root/AAA/mcp.json",
+      "/root/AAA/federation/antigravity/mcp.json",
+      "/root/AAA/federation/kimi/mcp-lite.json",
+      "/root/AAA/federation/kimi/mcp.json",
+      "/root/AAA/federation/kimi/mcp-arifos.json",
+      "/root/AAA/federation/kimi/mcp-full.json",
+      "/root/AAA/contracts/generated/mcp_annotations.json",
+      "/root/.config/mcporter.json",
+      "/root/.config/1mcp/mcp.json"
+    ],
+    "minimax_media_mcp_present": false,
+    "grep_evidence": [
+      "15:    base_url: https://api.minimax.io/v1"
+    ]
+  }
+}
