@@ -5,6 +5,15 @@ F13-ratified 2026-09-08 (DUAL_GO → SEAL via direct implementation directive).
 Scans arifFlow ledger for T2/T3 receipts lacking musyawawah_reference.
 Pre-MIGRATION_GRACE receipts are exempt.
 
+AMENDMENT 2026-09-15 (F13 decision, musyawarah-gotong/2026-09-15-rsi-exhale/
+decision-gate-classifier.md): a receipt carrying a DECLARED risk_class of
+T0/T1 is honored for Execute steps (verified-observe writes, e.g. RSI loop
+state appends). Without this, 6,084 routine metabolic receipts (hermes-asi,
+hermes-cron, a-forge, qwen-code, 333-AGI) would block on enforce. Seal/Barrier
+stay gated regardless (inherently irreversible); T2/T3 declarations stay
+gated; absent declarations fall back to the conservative step_type mapping.
+Exemptions are counted in output, never silent (F11 AUDIT).
+
 Fails closed: ledger missing/unreadable OR violations found → exit 1.
 
 Usage:
@@ -45,8 +54,13 @@ def action_class_of(step_type: str) -> str:
     return "T0/T1"
 
 
-def scan_ledger(ledger: Path, grace_date: str) -> list:
-    """Return list of violation tuples: (receipt_id, actor_id, step_type, created_at).
+def scan_ledger(ledger: Path, grace_date: str) -> tuple:
+    """Return (violations, declared_exempt) lists/tally.
+
+    F13 AMENDMENT 2026-09-15: Execute-step receipts carrying a declared
+    risk_class of T0/T1 (top-level or payload) are exempt — declaration
+    honored over step_type heuristic. Seal/Barrier never exempt; T2/T3
+    declarations never exempt; no declaration → conservative step_type rule.
 
     Fails closed: missing/unreadable ledger → sys.exit(1) before returning.
     """
@@ -54,6 +68,7 @@ def scan_ledger(ledger: Path, grace_date: str) -> list:
         print(f"MUSYAWARAH GATE [FAIL-CLOSED]: ledger missing: {ledger}", file=sys.stderr)
         sys.exit(1)
     violations = []
+    declared_exempt = 0
     try:
         with ledger.open() as f:
             for line in f:
@@ -73,6 +88,10 @@ def scan_ledger(ledger: Path, grace_date: str) -> list:
                 payload = r.get("payload") or {}
                 if "musyawawah_reference" in payload:
                     continue  # has reference, OK
+                risk_class = r.get("risk_class") or payload.get("risk_class")
+                if risk_class and step_type == "Execute" and str(risk_class).upper().startswith(("T0", "T1")):
+                    declared_exempt += 1
+                    continue  # honored declaration (F13 2026-09-15)
                 violations.append((
                     r.get("receipt_id", "?"),
                     r.get("actor_id", "?"),
@@ -82,7 +101,7 @@ def scan_ledger(ledger: Path, grace_date: str) -> list:
     except OSError as exc:
         print(f"MUSYAWARAH GATE [FAIL-CLOSED]: ledger unreadable: {exc}", file=sys.stderr)
         sys.exit(1)
-    return violations
+    return violations, declared_exempt
 
 
 def emit_holds(violations: list, grace_date: str) -> None:
@@ -111,7 +130,8 @@ def main() -> None:
     dry_run = "--dry-run" in args
     emit = "--emit-holds" in args
 
-    violations = scan_ledger(ledger, grace_date)
+    violations, declared_exempt = scan_ledger(ledger, grace_date)
+    exempt_note = f" + {declared_exempt} exempt by declared risk_class (F13 2026-09-15)" if declared_exempt else ""
 
     if violations:
         if emit:
@@ -125,9 +145,9 @@ def main() -> None:
             )
         if not dry_run:
             sys.exit(1)
-        print(f"MUSYAWARAH GATE [DRY-RUN]: {len(violations)} violation(s) (would have blocked)", file=sys.stderr)
+        print(f"MUSYAWARAH GATE [DRY-RUN]: {len(violations)} violation(s) (would have blocked){exempt_note}", file=sys.stderr)
     else:
-        print(f"MUSYAWARAH GATE [PASS]: all T2/T3 receipts since {grace_date} carry musyawawah_reference")
+        print(f"MUSYAWARAH GATE [PASS]: all T2/T3 receipts since {grace_date} carry musyawawah_reference{exempt_note}")
 
 
 if __name__ == "__main__":
