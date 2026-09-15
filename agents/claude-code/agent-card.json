@@ -148,7 +148,14 @@
       "Z3_external_side_effects": "requires_888_HOLD",
       "Z4_production_destructive": "requires_888_HOLD"
     },
-    "musyawarah_roles": ["architect", "scout", "forge", "verifier", "red_team", "scribe"]
+    "musyawarah_roles": [
+      "architect",
+      "scout",
+      "forge",
+      "verifier",
+      "red_team",
+      "scribe"
+    ]
   },
   "mcp_surface": {
     "registered_servers": [
@@ -321,5 +328,14 @@
     ],
     "vault": "VAULT999"
   },
-  "admissible": true
+  "admissible": true,
+  "apex_zen": {
+    "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
+    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
+    "invariant": "CAPABILITY ≠ AUTHORITY",
+    "doctrine": "Govern capabilities, not implementations.",
+    "motto": "DITEMPA BUKAN DIBERI",
+    "capability": "BUILD",
+    "lane": "333-AGI"
+  }
 }
