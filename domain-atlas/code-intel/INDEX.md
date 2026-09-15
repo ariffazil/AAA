@@ -56,6 +56,23 @@ debt; CI HOLD on NEW violations only. Exceptions ledger needs expiry dates
 repo; arifOS must not become organ monorepo). Boundary contracts above are the
 intra-repo complement, not a replacement.
 
+## Staged (Phase 2 — LANDED 2026-09-16 same day)
+- **Git change-coupling** (direct git-log co-change, 500 commits): arifOS hidden
+  hub `core/physics/economic_invariants.py` co-changes with boot/constitution/
+  core/kernel modules — **classification correction: core/physics is LIVE shared
+  code, not archive**. GEOX coupling = healthy test↔source only. WEALTH
+  `contracts/envelope ⇄ mcp/server` 15× — WEALTH layering is aspirational (INT).
+- **Cycles** (networkx on emerge graphml): arifOS 1 mutual (bridge⇄tools_internal);
+  GEOX 6 mutual + 3 longer (wiring⇄server⇄registry trinity — worst); WEALTH 2;
+  WELL 1; A-FORGE **0 (cleanest)**. Cycle-breaking = refactor = 888_HOLD.
+- **CI ratchet LIVE** (arifOS pilot, commit ac94be1ef): `boundary/` dir with
+  `.importlinter` (INI) + `EXCEPTIONS-LEDGER.json` (expiry 2026-12-15) +
+  `boundary_ratchet.py` (grimp-direct, exit 0/1/2) + workflow
+  `09-boundary-ratchet.yml`. Verified locally BOTH paths before push.
+  GEOX/WEALTH rollout = copy pattern after arifOS pilot proves in CI.
+- emerge `git_directory` pass: computed but exports git metrics to HTML/d3 only
+  (not JSON) — superseded by direct git-log coupling script (transparent).
+
 ## Staged (NOT done — requires separate build sessions + 888_HOLD where marked)
 - Phase 2: git change-coupling pass (emerge git_directory param); cycles via
   grimp; CI wiring (fail-on-new).
