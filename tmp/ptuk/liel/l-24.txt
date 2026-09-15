@@ -1,0 +1,42 @@
+Docusign Envelope 1D: BCBF091A-82F 5-40AD-846A-E840C6C56334
+LNG INVESTMENTS EUROPE LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+2. MATERIAL ACCOUNTING POLICIES (CONTINUED)
+2.9 Financial instruments (continued)
+ii) Financial liabilities
+The categories of financial liabilities at initial recognition are as follows:
+Financial liabilities at fair value through profit or loss
+Fair value through profit or loss category comprises financial liabilities that are derivatives (except for a derivative that is a
+financial guarantee contract or a designated and effective hedging instrument), contingent consideration in a business
+combination and financial liabilities that are specifically designated into this category upon initial recognition.
+On initial recognition, the Company may irrevocably designate a financial liability that otherwise meets the requirements to
+be measured at amortised cost as at fair value through profit or loss:
+a) if doing so eliminates or significantly reduces an accounting mismatch that would otherwise arise;
+b) a group of financial liabilities or financial assets and financial liabilities is managed and its performance is evaluated on a
+fair value basis, in accordance with a documented risk management or investment strategy, and information about the Company
+is provided internally on that basis to the Company’s key management personnel; or
+c) if a contract contains one or more embedded derivatives and the host is not a financial asset in the scope of IFRS 9, where
+the embedded derivative significantly modifies the cash flows and separation is not prohibited.
+Financial liabilities categorised as fair value through profit or loss are subsequently measured at their fair value with gains or
+losses, including any interest expense are recognised in the profit or loss.
+For financial liabilities where it is designated as fair value through profit or loss upon initial recognition, the Company
+recognises the amount of change in fair value of the financial liability that is attributable to change in credit risk in the other
+comprehensive income and remaining amount of the change in fair value in the profit or loss, unless the treatment of the effects
+of changes in the liability’s credit risk would create or enlarge an accounting mismatch.
+Amortised cost
+Subsequent to initial recognition, other financial liabilities are subsequently measured at amortised cost using the effective
+interest method.
+Gains and losses are recognised in the profit or loss when the liabilities are derecognised as well as through the amortisation
+process.
+iii) Derivative financial instruments
+The Company use derivative financial instruments such as foreign currency swaps, forward contracts and futures and to
+manage certain exposures to fluctuations in foreign currency exchange rates and commodity prices.
+Derivative financial instruments are initially recognised at fair value on the date on which a derivative contract is entered into
+and are subsequently remeasured at fair value. Derivatives are carried as financial assets when the fair value is positive and as
+financial liabilities when the fair value is negative.
+Any gains and losses arising from changes in fair value on derivatives during the year are recognised in the profit or loss.
+In general, contracts to sell or purchase non-financial items to meet expected own use requirements are not accounted for as
+financial instruments. However, contracts to sell or purchase commodities that can be net settled or which contain written
+options are required to be recognised at fair value, with gains and losses recognised in the profit or loss.
+24

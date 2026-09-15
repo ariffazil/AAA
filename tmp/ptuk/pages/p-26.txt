@@ -1,0 +1,35 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF11912A8BAQ
+; PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+2. MATERIAL ACCOUNTING POLICIES (CONTINUED)
+2.1. Property, plant and equipment and depreciation (continued)
+Subsequent costs
+The cost of replacing a component of an item of property, plant and equipment is recognised in the
+carrying amount of the item if it is probable that the future economic benefits embodied within the
+component will flow to the Company and its cost can be measured reliably. The carrying amount of
+the replaced item of property, plant and equipment is derecognised with any corresponding gain or
+loss recognised in the profit or loss accordingly. The costs of the day-to-day servicing of property,
+plant and equipment are recognised in the profit or loss as incurred.
+Depreciation
+Depreciation for property, plant and equipment is recognised in the profit or loss on a straight-line
+basis over the estimated useful lives of each component of an item of property, plant and equipment.
+: Property, plant and equipment are not depreciated until the assets are ready for their intended use.
+The estimated useful lives of the other property, plant and equipment are as follows:
+¢ Office equipment, furniture, and fittings 1 - 10 years
+e Computer software and hardware 1-3 years
+, e Lease properties (right-of-use) 10 years
+© = Vessels (right-of-use) 2 years
+The depreciable amount is determined after deducting residual value. The residual value, useful life
+and depreciation method are reviewed at each financial year end to ensure that the amount, period
+and method of depreciation are consistent with previous estimates and the expected pattern of
+consumption of the future economic benefits embodied in the items of property, plant and
+equipment.
+The right-of-use asset is subsequently depreciated using the straight-line method from the
+commencement date to the earlier of the end of the useful life of the right-of-use asset or the end of
+the lease term.
+Derecognition
+An item of property, plant and equipment is derecognised upon disposal or when no future economic
+benefits are expected from its use or disposal. The difference between the net disposal proceeds, if
+any, and the net carrying amount is recognised in the profit or loss.
+25

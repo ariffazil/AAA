@@ -1,6 +1,6 @@
 ---
 name: human-meaning-membrane
-description: "Use when modeling human behavior or intent."
+description: "Use when modeling human behavior or intent. [fed: tier=fed-agent-subagent]"
 capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---

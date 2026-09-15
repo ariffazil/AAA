@@ -1,0 +1,82 @@
+{
+  "$schema": "arifos.observability.authority-graph.v1",
+  "ref": "ARIFOS::OBSERVABILITY_CONVERGENCE::P1",
+  "phase": 0,
+  "generated_by": "Hermes ASI (i-arif)",
+  "generated_at": "2026-09-15T05:45:00Z",
+  "mutations_performed": "none",
+  "final_authority": "ARIF (F13)",
+  "separation_of_powers_doctrine": "/root/AAA/instructions/four-layer-separation.md",
+  "role_boundaries": [
+    {
+      "organ": "FRAME",
+      "authority": "OBSERVE",
+      "may_decide": false,
+      "may_mutate": false,
+      "may_judge": false,
+      "evidence": "/health reports 7 chambers, all read-only; only write is own state /var/lib/frame/{baseline.json,trends.jsonl,alert_state.json}",
+      "violation_detected": false
+    },
+    {
+      "organ": "arifFLOW",
+      "authority": "GOVERN (metabolic)",
+      "may_decide": true,
+      "may_mutate": "own FQ state + actor HOLD flags only",
+      "may_judge": false,
+      "evidence": "invariants.restricted_actors holds 333-AGI, 333-AGI/agentic-web, 333-AGI/dynamic-gate, qwen-code; F2 in ARIFLOW_KERNEL_CANON: 'Checkpoint, never judge'",
+      "violation_detected": false
+    },
+    {
+      "organ": "Kabarkan",
+      "authority": "RECORD",
+      "may_decide": false,
+      "may_mutate": false,
+      "may_judge": false,
+      "evidence": "worker performs no judgement; observations table carries verdict_class as an INPUT field, not a computed one",
+      "violation_detected": false,
+      "note": "RECORD authority only — but see failure graph: it records 201,495 rows that no consumer reads"
+    },
+    {
+      "organ": "arifOS kernel",
+      "authority": "JUDGE (888) + SEAL (999)",
+      "may_decide": true,
+      "may_mutate": true,
+      "may_judge": true,
+      "evidence": "arif_judge / arif_seal present in observations tool_name histogram (28,811 + 1,162 calls)",
+      "violation_detected": false
+    },
+    {
+      "organ": "A-FORGE",
+      "authority": "EXECUTE",
+      "may_decide": false,
+      "may_mutate": true,
+      "may_judge": false,
+      "evidence": "F4 Route-never-execute inverse; A-FORGE is the hands",
+      "violation_detected": false
+    },
+    {
+      "organ": "AAA",
+      "authority": "DISPLAY_ONLY",
+      "may_decide": false,
+      "may_mutate": false,
+      "may_judge": false,
+      "evidence": "/health self-declares authority_ceiling=DISPLAY_ONLY, final_authority=ARIF",
+      "violation_detected": false
+    }
+  ],
+  "authority_gaps": [
+    {
+      "id": "AUTH-GAP-001",
+      "description": "Kabarkan has no declared owner organ in the observability plane. DESIRED_STATE.yaml assigns kabarkan-collector and kabarkan-worker owner_organ=app, which is not a federation organ id.",
+      "severity": "P2",
+      "evidence": "/root/forge_work/DESIRED_STATE.yaml lines 428-439"
+    },
+    {
+      "id": "AUTH-GAP-002",
+      "description": "Two distinct capabilities share the name 'kabarkan'. Ambiguous naming creates an authority-collision surface: FRAME's drift escalation targets SIGNAL :18084 /kabarkan/broadcast (a notifier), not the telemetry plane.",
+      "severity": "P1",
+      "evidence": "frame_organ/alert.py lines 59, 89; observed HTTP 422 from SIGNAL /kabarkan/broadcast"
+    }
+  ],
+  "role_collapse_violations": []
+}

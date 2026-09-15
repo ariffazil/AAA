@@ -2,7 +2,7 @@
 id: FORGE-react-spa-discipline
 name: forge-react-spa-discipline
 version: 1.0.0-2026.07.17
-description: "React SPA discipline — component architecture, state management, and rendering patterns."
+description: "React SPA discipline — component architecture, state management, and rendering patterns. [fed: tier=fed-reasoning-heavy, floors=[, auto=T1, risk=medium]"
 owner: A-FORGE
 risk_tier: medium
 floor_scope: ['F1', 'F4', 'F12']

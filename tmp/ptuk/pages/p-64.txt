@@ -1,0 +1,34 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF 11912ABBAQ
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+22. FINANCIAL INSTRUMENTS (CONTINUED)
+Market risk
+Market risk is the risk or uncertainty arising from changes in market prices and their impact on the
+performance of the business.
+The market price changes that the Company is exposed to include interest rates, foreign currency
+exchange rates, commodity price, equity prices and other indices that could adversely affect the value
+of the Company’s financial assets, liabilities or expected future cash flows.
+Interest rate risk
+Interest rate risk is the risk that the fair value or future cash flows of a financial instrument will
+fluctuate because of changes in market interest rates. Short term receivables and payables are not
+significantly exposed to interest rate risk.
+Since most’of the Company’s financial assets and liabilities are fixed rate instruments measured at
+amortised cost, a change in interest rate is not expected to have material impact on the Company’s
+profit or loss.
+The Company’s borrowings comprise unsecured term loans with a maximum maturity of 120 days
+and incur interest ranging from SOFR + 0.40% to SOFR + 0.75%per annum (See Note 11). All these
+loans were repaid in less than 120 days and therefore the exposure to interest rate risk is immaterial.
+Foreign exchange risk
+The Company is exposed to varying levels of foreign exchange risk when they enter transactions that
+are not denominated in the respective companies’ functional currencies and when foreign currency
+monetary assets and liabilities are translated at the reporting date. The main underlying economic
+currency of the Company’s cash flow is USD.
+The Company’s foreign exchange management policy is to minimise economic and significant
+transactional exposures arising from currency movements. The Company coordinates the handling
+of foreign exchange risks typically by matching receipts and payments for the same currency.
+Residual net positions are actively managed and monitored against prescribed policies and control
+procedures.
+The Company’s exposure to foreign currency risk is primarily from Pound Sterling (GBP). The
+Company’s exposure to foreign currency changes for all other currencies is not material.
+63

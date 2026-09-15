@@ -1,0 +1,4 @@
+c23df37d93222f80ceca2e7bb04e96870a455c22c7ba6e11e4901b19086838a0  Bank-Muamalat-Shariah-Authenticity-Report-2026-09-15.pdf
+aa33fe26f32d3125a8a14df9346f8a8bd91cb035703f786cd20f553c1c3297f5  report.html
+eeebb60b34a52ae28e9d9d5e3a14c80f7adafd2c8c30b7b0e1978617d34a860a  data/dataset.json
+590e24d2c18bb72e653281c22a9433e88e7f462d0dda975dc1c8da253eb3100f  render_charts.py

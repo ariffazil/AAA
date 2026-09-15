@@ -2,7 +2,7 @@
 id: fi-zai-probe
 name: fi-zai-probe
 version: 1.0.0
-description: "Probe Z.AI GLM coding plan health — models list, anthropic + openai endpoints, credit reality, cross-check 5 wired surfaces. Use when Arif says 'zai probe', 'check Z.AI plan', 'is GLM alive', 'zai health', or when any zai-backed harness (Qwen/Kimi/OpenCode/Claude) behaves oddly."
+description: "Probe Z.AI GLM coding plan health — models list, anthropic + openai endpoints, credit reality, cross-check 5 wired surfaces. Use when Arif says 'zai probe', 'check Z.AI plan', 'is GLM alive', 'zai health', or when any zai-backed harness (Qwen/Kimi/OpenCode/Claude) behaves oddly. [fed: floors=[F2, F4], risk=low]"
 owner: 333-AGI
 risk_tier: low
 floor_scope: [F2, F4]

@@ -2,7 +2,7 @@
 id: FORGE-governance-jsonld
 name: forge-governance-jsonld
 version: 1.0.0-2026.07.17
-description: "Governance JSON-LD — constitutional ontology and semantic governance context definitions."
+description: "Governance JSON-LD — constitutional ontology and semantic governance context definitions. [fed: tier=fed-reasoning-heavy, floors=[, auto=T1, risk=medium]"
 owner: A-FORGE
 risk_tier: medium
 floor_scope: ['F1', 'F2', 'F4', 'F11']

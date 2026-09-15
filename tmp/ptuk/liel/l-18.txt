@@ -1,0 +1,29 @@
+Docusign Envelope ID: BCBF091A-82F5-40AD-846A-E840C6C56334
+LNG INVESTMENTS EUROPE LIMITED
+STATEMENT OF CASH FLOWS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+2025 2024
+Notes £000 £°000
+CASH FLOWS FROM OPERATING ACTIVITIES
+Profit/(Loss) before taxation 18,409 (37,236)
+Adjustments for:
+Interest income 7 (3,974) (7,324)
+Unwinding of discount 22 8,786 11,005
+Utilisation of onerous contract provision 22 (51,983) (42,835)
+Net foreign exchange gain (2,203) (8,554)
+Operating loss before changes in working capital (30,965) (84,944)
+Change in trade and other receivables 53,603 (59,853)
+Change in trade and other payables 62,747 (33,459)
+Change in derivatives (13,408) 58,718
+Change in inventories 17,173 (27,093)
+89,150 (146,631)
+Interest received 3,974 7,324
+Interest paid . .
+Tax received , 2,194 914
+Net cash generated/(used) in operating activities 95,318 (138,393)
+NET INCREASEDECREASE) IN CASH AND CASH EQUIVALENTS 95,318 (138,393)
+Net foreign exchange difference on cash and cash equivalents 2,203 8,554
+CASH AND CASH EQUIVALENTS AT BEGINNING OF THE YEAR 23,955 153,794
+CASH AND CASH EQUIVALENTS AT THE END OF THE YEAR 17 121,476 23,955
+The notes set out on pages 19 to 42 are an integral part of these financial statements.
+18

@@ -1,0 +1,53 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF 11912A8BA9
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+2. MATERIAL ACCOUNTING POLICIES (CONTINUED)
+2.3 Financial instruments (continued)
+
+(iii) Financial guarantee contracts (continued)
+
+Financial guarantees issued are initially measured at fair value. Subsequently, they are measured
+
+at higher of:
+
+. the amount of the loss allowance; and
+
+. the amount initially recognised less, when appropriate, the cumulative amount of income
+recognised in accordance to the principles of IFRS 15 Revenue from Contracts with
+Customers.
+
+Liabilities arising from financial guarantees are presented together with other provisions.
+
+(iv) Derivative financial instruments .
+The Company uses derivative financial instruments such as swaps, forward and futures to :
+manage certain exposures to fluctuations in commodity prices.
+
+Derivative financial instruments are initially recognised at fair value on the date on which a
+derivative contract is entered into and are subsequently remeasured at fair value. Derivatives
+are carried as financial assets when the fair value is positive and as financial liabilities when the
+: fair value is negative. Any gains or losses arising from changes in fair value on derivatives
+during the year are recognised in the profit or loss.
+In general, contracts to sell or purchase non-financial items to meet expected own use
+requirements are not accounted for as financial instruments. However, contracts to sell or
+purchase commodities that can be net settled or which contain written options are required to
+be recognised at fair value, with gains and losses recognised in the profit or loss.
+
+(v) Effective interest method
+Amortised cost was computed using the effective interest method. This method used effective
+interest rate that exactly discounts estimated future cash receipts or payments through the
+expected life of the financial instrument to the net carrying amount of the financial instrument.
+Amortised cost considers any transaction costs and any discount or premium on settlement.
+
+(vi) Offsetting of financial instruments
+Financial assets and financial liabilities are offset, and the net amount is reported in the
+statement of financial position if, and only if, there is a currently enforceable legal right to offset
+the recognised amounts and there is an intention to settle on a net basis, or to realise the assets
+and settle the liabilities simultaneously.
+
+(vii) Amortised cost of financial instruments
+Interest income is recognised by applying effective interest rate to the gross carrying amount
+except for credit impaired financial assets (see Note 2.3 (v)) where effective interest rate is
+applied to the amortised cost.
+
+33

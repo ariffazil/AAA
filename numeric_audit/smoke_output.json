@@ -1,0 +1,872 @@
+{
+  "results": {
+    "numeric_rule_lookup": {
+      "registry_id": "numeric-audit.bnm-capital-rwa",
+      "version": "2026.09.15",
+      "matched": 3,
+      "rules": [
+        {
+          "rule_id": "cafib.s2.86.diminishing_musyarakah.share_equity",
+          "figures_pct": [
+            "300",
+            "400"
+          ],
+          "canonical_scope": "Diminishing Musharakah where the exposure consists of SHARE EQUITY IN AN ENTERPRISE - equity risk treatment (see the simple risk weight method).",
+          "applies_to": [
+            {
+              "contract": [
+                "musyarakah_mutanaqisah"
+              ],
+              "exposure_basis": [
+                "equity_holding"
+              ]
+            }
+          ],
+          "basis": "category_dependent",
+          "conditions": [
+            "Only reached when the exposure is share equity in an enterprise. Asset-based diminishing musharakah (home financing) does NOT reach this rule."
+          ],
+          "source": {
+            "doc": "BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21",
+            "clause": "2.86(d)",
+            "issued": "2015-07-15",
+            "file": "/root/AAA/numeric_audit/refs/cafib.txt",
+            "line": 2154,
+            "quote": "if the exposure under the Diminishing Musharakah contract consists of share equity in an enterprise, the Islamic banking institution shall measure its risk exposure using the treatment for equity risk."
+          },
+          "evidence_state": "OBS"
+        },
+        {
+          "rule_id": "cafib.s3.166.equity_position.simple_rw.other",
+          "figures_pct": [
+            "400"
+          ],
+          "canonical_scope": "EQUITY POSITION RISK - simple risk weight method applied to ALL OTHER (non-publicly-traded) EQUITY HOLDINGS. This is the canonical home of the 400% figure.",
+          "applies_to": [
+            {
+              "exposure_basis": [
+                "equity_holding"
+              ],
+              "listing": [
+                "non_publicly_traded"
+              ]
+            }
+          ],
+          "basis": "category_dependent",
+          "conditions": [
+            "Entry condition: the exposure must BE an equity holding (an equity security in the banking book). A musyarakah HOME FINANCING (diminishing musharakah over a house) is not an equity holding. Applying 400% to converted risk-sharing FINANCING is out of scope."
+          ],
+          "source": {
+            "doc": "BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21",
+            "clause": "3.166",
+            "issued": "2015-07-15",
+            "file": "/root/AAA/numeric_audit/refs/cafib.txt",
+            "line": 6790,
+            "quote": "3.166 Under the simple risk weight method, a 300% risk weight is applied to equity holdings that are publicly traded and a 400% risk weight to all other equity holdings."
+          },
+          "evidence_state": "OBS"
+        },
+        {
+          "rule_id": "cafib.appV.specialised_financing.slotting",
+          "figures_pct": [
+            "70",
+            "90",
+            "115",
+            "250",
+            "400"
+          ],
+          "canonical_scope": "SPECIALISED FINANCING - supervisory slotting criteria. Weights by supervisory category: Strong 70%, Good 90%, Satisfactory 115%, Weak 250%, Default 400%.",
+          "applies_to": [
+            {
+              "exposure_basis": [
+                "specialised_financing",
+                "project_financing"
+              ]
+            }
+          ],
+          "basis": "category_dependent",
+          "conditions": [
+            "400% here is the DEFAULT supervisory category only - it requires a determination that the exposure IS in default. It is not a generic risk-sharing weight.",
+            "Entry requires meeting the minimum requirements in Appendix V."
+          ],
+          "source": {
+            "doc": "BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21, Appendix V",
+            "clause": "App V para 8",
+            "issued": "2015-07-15",
+            "file": "/root/AAA/numeric_audit/refs/cafib.txt",
+            "line": 18024,
+            "quote": "Risk weights under Supervisory Categories ... Strong 70% | Good 90% | Satisfactory 115% | Weak 250% | Default 400%"
+          },
+          "evidence_state": "OBS"
+        }
+      ],
+      "confusable_figures": {
+        "carriers": [
+          "cafib.s3.166.equity_position.simple_rw.other",
+          "cafib.appV.specialised_financing.slotting"
+        ],
+        "discriminator": "Is the exposure an EQUITY HOLDING (non-publicly traded equity security in the banking book)? If yes -> 400% is in scope (simple risk weight method). If instead it is a specialised-financing exposure, 400% is reachable ONLY as the Default supervisory category, which requires a default determination. If it is neither, 400% has been borrowed from outside its scope."
+      }
+    },
+    "numeric_replay_derivation": {
+      "trace": [
+        {
+          "id": "implied_rwa_rm",
+          "op": "rwa_from_ratio",
+          "operands": [
+            "3.23",
+            "12.02"
+          ],
+          "result": "26.87188",
+          "note": "equity / (CET1 ratio) -> implied RWA"
+        },
+        {
+          "id": "added_rwa_rm",
+          "op": "rwa_from",
+          "operands": [
+            "1",
+            "300"
+          ],
+          "result": "3",
+          "note": "RM1bn exposure * 300pp weight / 100 = RM3bn"
+        },
+        {
+          "id": "added_rwa_check_rm",
+          "op": "mul",
+          "operands": [
+            "1",
+            "300"
+          ],
+          "result": "300",
+          "note": "raw product is 300 (percentage-point x billion), NOT currency \u2014 the pct_of/rwa_from op is what makes it RM3bn; this pair exists to expose that trap"
+        },
+        {
+          "id": "total_rwa_rm",
+          "op": "add",
+          "operands": [
+            "26.87188",
+            "3"
+          ],
+          "result": "29.87188",
+          "note": ""
+        },
+        {
+          "id": "required_capital_rm",
+          "op": "capital_from_rwa",
+          "operands": [
+            "29.87188",
+            "15"
+          ],
+          "result": "4.480782",
+          "note": ""
+        },
+        {
+          "id": "new_capital_rm",
+          "op": "sub",
+          "operands": [
+            "4.480782",
+            "3.23"
+          ],
+          "result": "1.250782",
+          "note": ""
+        }
+      ],
+      "results": {
+        "equity_rm": "3.23",
+        "cet1_pct": "12.02",
+        "target_pct": "15",
+        "inc_rm": "1",
+        "delta_pp": "300",
+        "implied_rwa_rm": "26.87188",
+        "added_rwa_rm": "3",
+        "added_rwa_check_rm": "300",
+        "total_rwa_rm": "29.87188",
+        "required_capital_rm": "4.480782",
+        "new_capital_rm": "1.250782"
+      },
+      "arithmetic": "exact (decimal.Decimal, prec=60) \u2014 no float transit",
+      "ops": [
+        "add",
+        "capital_from_rwa",
+        "div",
+        "mul",
+        "pct_of",
+        "ratio_from",
+        "rwa_from",
+        "rwa_from_ratio",
+        "sub"
+      ]
+    },
+    "numeric_check_units_scale": {
+      "verdict": "SCALE_ERROR",
+      "findings": [
+        {
+          "check": "unit.percent_range",
+          "claim": "rw_claimed",
+          "severity": "P1",
+          "detail": "declared percent with value 400 > 100; check for a 100x scale error"
+        },
+        {
+          "check": "unit.identity_conflict",
+          "severity": "P0",
+          "detail": "same quantity_key 'bank.cet1_ratio' carries different values across claims: ['12.02', '0.1202'] (relative spread 99 > tol 0.005)"
+        },
+        {
+          "check": "unit.identity_conflict",
+          "severity": "P0",
+          "detail": "same quantity_key 'bank.equity' carries different values across claims: ['3.23', '3230'] (relative spread 999 > tol 0.005)"
+        },
+        {
+          "check": "unit.thousand_fold",
+          "severity": "P0",
+          "detail": "quantity_key 'bank.equity' differs by ~1000x: 3.23 vs 3230 \u2014 million/billion scale drift"
+        },
+        {
+          "check": "unit.identity_conflict",
+          "severity": "P0",
+          "detail": "same quantity_key 'rw.musyarakah' carries different values across claims: ['400', '40000'] (relative spread 99 > tol 0.005)"
+        },
+        {
+          "check": "unit.basis_undeclared",
+          "claim": "cet1_pct",
+          "severity": "P1",
+          "detail": "ratio has no declared basis. A CET1 ratio divides CET1 CAPITAL; if it was derived from shareholders' equity the numerator is a different quantity and the implied RWA is not the regulator's RWA."
+        },
+        {
+          "check": "unit.basis_undeclared",
+          "claim": "cet1_dup",
+          "severity": "P1",
+          "detail": "ratio has no declared basis. A CET1 ratio divides CET1 CAPITAL; if it was derived from shareholders' equity the numerator is a different quantity and the implied RWA is not the regulator's RWA."
+        },
+        {
+          "check": "unit.basis_undeclared",
+          "claim": "rw_claimed",
+          "severity": "P1",
+          "detail": "ratio has no declared basis. A CET1 ratio divides CET1 CAPITAL; if it was derived from shareholders' equity the numerator is a different quantity and the implied RWA is not the regulator's RWA."
+        },
+        {
+          "check": "unit.basis_undeclared",
+          "claim": "rw_bp",
+          "severity": "P1",
+          "detail": "ratio has no declared basis. A CET1 ratio divides CET1 CAPITAL; if it was derived from shareholders' equity the numerator is a different quantity and the implied RWA is not the regulator's RWA."
+        }
+      ],
+      "counts": {
+        "P0": 4,
+        "P1": 5,
+        "P2": 0
+      },
+      "claims_parsed": 6
+    },
+    "numeric_recompute_sensitivity": {
+      "method": {
+        "added_rwa_rm": "increment_rm * (applied_weight_pct - replacement_weight_pct)/100 * retained_share_pct/100 * mitigant_factor",
+        "implied_rwa_rm": "base_rwa_rm + added_rwa_rm",
+        "required_capital_rm": "implied_rwa_rm * target_ratio_pct/100",
+        "new_capital_rm": "required_capital_rm - base_capital_rm"
+      },
+      "inputs": {
+        "base_rwa_rm": "26.9",
+        "base_capital_rm": "3.23",
+        "applied_weight_pct": "150",
+        "replacement_weight_pct": "100",
+        "target_ratio_pct": "15",
+        "retained_share_pct": "100",
+        "mitigant_factor": "1",
+        "basis": "net_of_replacement"
+      },
+      "rows": [
+        {
+          "increment_rm": "2",
+          "delta_weight_pp": "50",
+          "added_rwa_rm": "1",
+          "implied_rwa_rm": "27.9",
+          "required_capital_rm": "4.185",
+          "new_capital_rm": "0.955",
+          "marginal_new_capital_rm_per_rm1bn": "0.075",
+          "claim_check": null
+        },
+        {
+          "increment_rm": "5",
+          "delta_weight_pp": "50",
+          "added_rwa_rm": "2.5",
+          "implied_rwa_rm": "29.4",
+          "required_capital_rm": "4.41",
+          "new_capital_rm": "1.18",
+          "marginal_new_capital_rm_per_rm1bn": "0.075",
+          "claim_check": null
+        },
+        {
+          "increment_rm": "8",
+          "delta_weight_pp": "50",
+          "added_rwa_rm": "4",
+          "implied_rwa_rm": "30.9",
+          "required_capital_rm": "4.635",
+          "new_capital_rm": "1.405",
+          "marginal_new_capital_rm_per_rm1bn": "0.075",
+          "claim_check": null
+        },
+        {
+          "increment_rm": "10",
+          "delta_weight_pp": "50",
+          "added_rwa_rm": "5",
+          "implied_rwa_rm": "31.9",
+          "required_capital_rm": "4.785",
+          "new_capital_rm": "1.555",
+          "marginal_new_capital_rm_per_rm1bn": "0.075",
+          "claim_check": null
+        }
+      ],
+      "internal_consistency": "MATCH",
+      "mismatches": [],
+      "arithmetic": "exact (decimal.Decimal, prec=60)"
+    },
+    "numeric_recompute_sensitivity.corrected": {
+      "100": {
+        "method": {
+          "added_rwa_rm": "increment_rm * (applied_weight_pct - replacement_weight_pct)/100 * retained_share_pct/100 * mitigant_factor",
+          "implied_rwa_rm": "base_rwa_rm + added_rwa_rm",
+          "required_capital_rm": "implied_rwa_rm * target_ratio_pct/100",
+          "new_capital_rm": "required_capital_rm - base_capital_rm"
+        },
+        "inputs": {
+          "base_rwa_rm": "26.9",
+          "base_capital_rm": "3.23",
+          "applied_weight_pct": "100",
+          "replacement_weight_pct": "100",
+          "target_ratio_pct": "15",
+          "retained_share_pct": "100",
+          "mitigant_factor": "1",
+          "basis": "net_of_replacement"
+        },
+        "rows": [
+          {
+            "increment_rm": "2",
+            "delta_weight_pp": "0",
+            "added_rwa_rm": "0",
+            "implied_rwa_rm": "26.9",
+            "required_capital_rm": "4.035",
+            "new_capital_rm": "0.805",
+            "marginal_new_capital_rm_per_rm1bn": "0",
+            "claim_check": null
+          },
+          {
+            "increment_rm": "5",
+            "delta_weight_pp": "0",
+            "added_rwa_rm": "0",
+            "implied_rwa_rm": "26.9",
+            "required_capital_rm": "4.035",
+            "new_capital_rm": "0.805",
+            "marginal_new_capital_rm_per_rm1bn": "0",
+            "claim_check": null
+          },
+          {
+            "increment_rm": "8",
+            "delta_weight_pp": "0",
+            "added_rwa_rm": "0",
+            "implied_rwa_rm": "26.9",
+            "required_capital_rm": "4.035",
+            "new_capital_rm": "0.805",
+            "marginal_new_capital_rm_per_rm1bn": "0",
+            "claim_check": null
+          },
+          {
+            "increment_rm": "10",
+            "delta_weight_pp": "0",
+            "added_rwa_rm": "0",
+            "implied_rwa_rm": "26.9",
+            "required_capital_rm": "4.035",
+            "new_capital_rm": "0.805",
+            "marginal_new_capital_rm_per_rm1bn": "0",
+            "claim_check": null
+          }
+        ],
+        "internal_consistency": "MATCH",
+        "mismatches": [],
+        "arithmetic": "exact (decimal.Decimal, prec=60)"
+      },
+      "150": {
+        "method": {
+          "added_rwa_rm": "increment_rm * (applied_weight_pct - replacement_weight_pct)/100 * retained_share_pct/100 * mitigant_factor",
+          "implied_rwa_rm": "base_rwa_rm + added_rwa_rm",
+          "required_capital_rm": "implied_rwa_rm * target_ratio_pct/100",
+          "new_capital_rm": "required_capital_rm - base_capital_rm"
+        },
+        "inputs": {
+          "base_rwa_rm": "26.9",
+          "base_capital_rm": "3.23",
+          "applied_weight_pct": "150",
+          "replacement_weight_pct": "100",
+          "target_ratio_pct": "15",
+          "retained_share_pct": "100",
+          "mitigant_factor": "1",
+          "basis": "net_of_replacement"
+        },
+        "rows": [
+          {
+            "increment_rm": "2",
+            "delta_weight_pp": "50",
+            "added_rwa_rm": "1",
+            "implied_rwa_rm": "27.9",
+            "required_capital_rm": "4.185",
+            "new_capital_rm": "0.955",
+            "marginal_new_capital_rm_per_rm1bn": "0.075",
+            "claim_check": null
+          },
+          {
+            "increment_rm": "5",
+            "delta_weight_pp": "50",
+            "added_rwa_rm": "2.5",
+            "implied_rwa_rm": "29.4",
+            "required_capital_rm": "4.41",
+            "new_capital_rm": "1.18",
+            "marginal_new_capital_rm_per_rm1bn": "0.075",
+            "claim_check": null
+          },
+          {
+            "increment_rm": "8",
+            "delta_weight_pp": "50",
+            "added_rwa_rm": "4",
+            "implied_rwa_rm": "30.9",
+            "required_capital_rm": "4.635",
+            "new_capital_rm": "1.405",
+            "marginal_new_capital_rm_per_rm1bn": "0.075",
+            "claim_check": null
+          },
+          {
+            "increment_rm": "10",
+            "delta_weight_pp": "50",
+            "added_rwa_rm": "5",
+            "implied_rwa_rm": "31.9",
+            "required_capital_rm": "4.785",
+            "new_capital_rm": "1.555",
+            "marginal_new_capital_rm_per_rm1bn": "0.075",
+            "claim_check": null
+          }
+        ],
+        "internal_consistency": "MATCH",
+        "mismatches": [],
+        "arithmetic": "exact (decimal.Decimal, prec=60)"
+      }
+    },
+    "numeric_scope_check": {
+      "figure_pct": "777",
+      "declared_scope": {
+        "contract": "musyarakah",
+        "exposure_basis": "profit_and_loss_sharing_financing",
+        "position": "banking_book",
+        "listing": "not_applicable"
+      },
+      "declared_basis": null,
+      "carriers_of_figure": [],
+      "rules_applicable_to_declared_scope": [
+        {
+          "rule_id": "cafib.s2.87.musyarakah.financing.operative_range",
+          "figures_pct": [
+            "100",
+            "150"
+          ],
+          "canonical_scope": "Musharakah financing that is NOT a discrete equity holding: the operative prescription is clause 2.87 - 100%/150% for equity holdings in the banking book, 150% for funds advanced to a joint venture (project financing), the sub-contract's own weight for a musharakah with sub-contract, and the counterparty weight for a diminishing musharakah that is an asset receivable. NO clause of CAFIB prescribes 400% for musharakah financing.",
+          "basis": "category_dependent",
+          "clause": "2.87, 2.94",
+          "conditions": [
+            "This is the operative range across clause 2.87 / 2.94, not a single number. Selecting one value flatly for the whole class discards the schedule."
+          ]
+        }
+      ],
+      "in_scope_weight_range_pct": [
+        "100",
+        "150"
+      ],
+      "in_scope_weights_pct": [
+        "100",
+        "150"
+      ],
+      "in_scope_is_range_not_single": true,
+      "verdict": "FIGURE_NOT_IN_REGISTRY",
+      "confidence": "UNVERIFIED",
+      "reason": "figure is not a prescribed figure in the registry. An unregistered figure cannot be blessed by silence \u2014 it must be traced to a clause before use."
+    },
+    "numeric_audit_claim": {
+      "unit": "RM_bn implied RWA",
+      "claimed": "32.9",
+      "recomputed": "32.87",
+      "absolute_diff": "0.03",
+      "relative_diff": "0.000913",
+      "tolerance_rel": "0.01",
+      "numeric_verdict": "MATCH",
+      "scope_verdict": "OUT_OF_SCOPE_FIGURE",
+      "verdict": "ARITHMETIC_OK_SCOPE_FAIL"
+    },
+    "numeric_audit_brief": {
+      "label": "Bank Muamalat \u2014 \u00a75 The Capital Arithmetic (2026-09-15)",
+      "authority": "ANALYSIS_ONLY",
+      "units_scale": {
+        "verdict": "ATTENTION",
+        "findings": [
+          {
+            "check": "unit.basis_undeclared",
+            "claim": "cet1",
+            "severity": "P1",
+            "detail": "ratio has no declared basis. A CET1 ratio divides CET1 CAPITAL; if it was derived from shareholders' equity the numerator is a different quantity and the implied RWA is not the regulator's RWA."
+          }
+        ],
+        "counts": {
+          "P0": 0,
+          "P1": 1,
+          "P2": 0
+        },
+        "claims_parsed": 3
+      },
+      "derivation": {
+        "trace": [
+          {
+            "id": "implied_rwa_rm",
+            "op": "rwa_from_ratio",
+            "operands": [
+              "3.23",
+              "12.02"
+            ],
+            "result": "26.87188",
+            "note": ""
+          }
+        ],
+        "results": {
+          "equity_rm": "3.23",
+          "cet1_pct": "12.02",
+          "implied_rwa_rm": "26.87188"
+        },
+        "arithmetic": "exact (decimal.Decimal, prec=60) \u2014 no float transit"
+      },
+      "scope_checks": [
+        {
+          "figure_pct": "400",
+          "declared_scope": {
+            "contract": "musyarakah_mutanaqisah",
+            "exposure_basis": "profit_and_loss_sharing_financing",
+            "position": "banking_book",
+            "listing": "not_applicable",
+            "counterparty": "retail"
+          },
+          "declared_basis": "flat_all",
+          "carriers_of_figure": [
+            {
+              "rule_id": "cafib.s2.86.diminishing_musyarakah.share_equity",
+              "canonical_scope": "Diminishing Musharakah where the exposure consists of SHARE EQUITY IN AN ENTERPRISE - equity risk treatment (see the simple risk weight method).",
+              "in_scope_for_declared": false,
+              "source": {
+                "doc": "BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21",
+                "clause": "2.86(d)",
+                "issued": "2015-07-15",
+                "file": "/root/AAA/numeric_audit/refs/cafib.txt",
+                "line": 2154,
+                "quote": "if the exposure under the Diminishing Musharakah contract consists of share equity in an enterprise, the Islamic banking institution shall measure its risk exposure using the treatment for equity risk."
+              },
+              "basis": "category_dependent",
+              "conditions": [
+                "Only reached when the exposure is share equity in an enterprise. Asset-based diminishing musharakah (home financing) does NOT reach this rule."
+              ]
+            },
+            {
+              "rule_id": "cafib.s3.166.equity_position.simple_rw.other",
+              "canonical_scope": "EQUITY POSITION RISK - simple risk weight method applied to ALL OTHER (non-publicly-traded) EQUITY HOLDINGS. This is the canonical home of the 400% figure.",
+              "in_scope_for_declared": false,
+              "source": {
+                "doc": "BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21",
+                "clause": "3.166",
+                "issued": "2015-07-15",
+                "file": "/root/AAA/numeric_audit/refs/cafib.txt",
+                "line": 6790,
+                "quote": "3.166 Under the simple risk weight method, a 300% risk weight is applied to equity holdings that are publicly traded and a 400% risk weight to all other equity holdings."
+              },
+              "basis": "category_dependent",
+              "conditions": [
+                "Entry condition: the exposure must BE an equity holding (an equity security in the banking book). A musyarakah HOME FINANCING (diminishing musharakah over a house) is not an equity holding. Applying 400% to converted risk-sharing FINANCING is out of scope."
+              ]
+            },
+            {
+              "rule_id": "cafib.appV.specialised_financing.slotting",
+              "canonical_scope": "SPECIALISED FINANCING - supervisory slotting criteria. Weights by supervisory category: Strong 70%, Good 90%, Satisfactory 115%, Weak 250%, Default 400%.",
+              "in_scope_for_declared": false,
+              "source": {
+                "doc": "BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21, Appendix V",
+                "clause": "App V para 8",
+                "issued": "2015-07-15",
+                "file": "/root/AAA/numeric_audit/refs/cafib.txt",
+                "line": 18024,
+                "quote": "Risk weights under Supervisory Categories ... Strong 70% | Good 90% | Satisfactory 115% | Weak 250% | Default 400%"
+              },
+              "basis": "category_dependent",
+              "conditions": [
+                "400% here is the DEFAULT supervisory category only - it requires a determination that the exposure IS in default. It is not a generic risk-sharing weight.",
+                "Entry requires meeting the minimum requirements in Appendix V."
+              ]
+            }
+          ],
+          "rules_applicable_to_declared_scope": [
+            {
+              "rule_id": "cafib.s2.86.diminishing_musyarakah.asset_based",
+              "figures_pct": [],
+              "canonical_scope": "Diminishing Musharakah (Musharakah Mutanaqisah) where the exposure is an asset/rental receivable: exposure to credit risk similar to Musharakah with Ijarah. Weight follows the counterparty, NOT 400%.",
+              "basis": "counterparty_dependent",
+              "clause": "2.86(c)-(d)",
+              "conditions": [
+                "If and only if the exposure under the Diminishing Musharakah contract consists of share equity in an enterprise, the equity risk treatment applies instead (see cafib.s2.86.diminishing_musyarakah.share_equity). After the wa'd / progressive acquisition completes, the exposure is a credit exposure to the obligor."
+              ]
+            }
+          ],
+          "in_scope_weights_resolved_via": [
+            "bnm.sa2024.s23.12.rre.not_materially_dependent",
+            "bnm.sa2024.s23.13.rre.materially_dependent"
+          ],
+          "in_scope_weight_range_pct": [
+            "20",
+            "90"
+          ],
+          "in_scope_weights_pct": [
+            "20",
+            "25",
+            "30",
+            "35",
+            "40",
+            "45",
+            "60",
+            "90"
+          ],
+          "in_scope_is_range_not_single": false,
+          "verdict": "OUT_OF_SCOPE_FIGURE",
+          "confidence": "DER",
+          "reason": "400% is a prescribed figure, but only under a scope the declared exposure does not satisfy. It has been borrowed from: Diminishing Musharakah where the exposure consists of SHARE EQUITY IN AN ENTERPRISE - equity risk treatment (see the simple risk weight method). / EQUITY POSITION RISK - simple risk weight method applied to ALL OTHER (non-publicly-traded) EQUITY HOLDINGS. This is the canonical home of the 400% figure. / SPECIALISED FINANCING - supervisory slotting criteria. Weights by supervisory category: Strong 70%, Good 90%, Satisfactory 115%, Weak 250%, Default 400%.. ",
+          "figure_actually_applies_to": [
+            "Diminishing Musharakah where the exposure consists of SHARE EQUITY IN AN ENTERPRISE - equity risk treatment (see the simple risk weight method).",
+            "EQUITY POSITION RISK - simple risk weight method applied to ALL OTHER (non-publicly-traded) EQUITY HOLDINGS. This is the canonical home of the 400% figure.",
+            "SPECIALISED FINANCING - supervisory slotting criteria. Weights by supervisory category: Strong 70%, Good 90%, Satisfactory 115%, Weak 250%, Default 400%."
+          ],
+          "citations": [
+            {
+              "doc": "BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21",
+              "clause": "2.86(d)",
+              "issued": "2015-07-15",
+              "file": "/root/AAA/numeric_audit/refs/cafib.txt",
+              "line": 2154,
+              "quote": "if the exposure under the Diminishing Musharakah contract consists of share equity in an enterprise, the Islamic banking institution shall measure its risk exposure using the treatment for equity risk."
+            },
+            {
+              "doc": "BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21",
+              "clause": "3.166",
+              "issued": "2015-07-15",
+              "file": "/root/AAA/numeric_audit/refs/cafib.txt",
+              "line": 6790,
+              "quote": "3.166 Under the simple risk weight method, a 300% risk weight is applied to equity holdings that are publicly traded and a 400% risk weight to all other equity holdings."
+            },
+            {
+              "doc": "BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21, Appendix V",
+              "clause": "App V para 8",
+              "issued": "2015-07-15",
+              "file": "/root/AAA/numeric_audit/refs/cafib.txt",
+              "line": 18024,
+              "quote": "Risk weights under Supervisory Categories ... Strong 70% | Good 90% | Satisfactory 115% | Weak 250% | Default 400%"
+            }
+          ],
+          "in_scope_citations": [
+            {
+              "doc": "BNM CAFIB (Risk-Weighted Assets), BNM/RH/GL 007-21",
+              "clause": "2.86(c)-(d)",
+              "issued": "2015-07-15",
+              "file": "/root/AAA/numeric_audit/refs/cafib.txt",
+              "line": 2140,
+              "quote": "...the Islamic banking institution is exposed to credit risk similar to an exposure under the Musharakah with Ijarah contract. (d) However, if the exposure under the Diminishing Musharakah contract consists of share equity in an enterprise, the Islamic banking institution shall measure its risk exposure using the treatment for equity risk."
+            }
+          ],
+          "overstatement_factor_vs_max_in_scope": "4.4444",
+          "understatement_if_any": false,
+          "discriminator": "Is the exposure an EQUITY HOLDING (non-publicly traded equity security in the banking book)? If yes -> 400% is in scope (simple risk weight method). If instead it is a specialised-financing exposure, 400% is reachable ONLY as the Default supervisory category, which requires a default determination. If it is neither, 400% has been borrowed from outside its scope.",
+          "applies_to_label": "all converted financing, flat 400%"
+        }
+      ],
+      "sensitivity": {
+        "method": {
+          "added_rwa_rm": "increment_rm * (applied_weight_pct - replacement_weight_pct)/100 * retained_share_pct/100 * mitigant_factor",
+          "implied_rwa_rm": "base_rwa_rm + added_rwa_rm",
+          "required_capital_rm": "implied_rwa_rm * target_ratio_pct/100",
+          "new_capital_rm": "required_capital_rm - base_capital_rm"
+        },
+        "inputs": {
+          "base_rwa_rm": "26.9",
+          "base_capital_rm": "3.23",
+          "applied_weight_pct": "400",
+          "replacement_weight_pct": "100",
+          "target_ratio_pct": "15",
+          "retained_share_pct": "100",
+          "mitigant_factor": "1",
+          "basis": "net_of_replacement"
+        },
+        "rows": [
+          {
+            "increment_rm": "2",
+            "delta_weight_pp": "300",
+            "added_rwa_rm": "6",
+            "implied_rwa_rm": "32.9",
+            "required_capital_rm": "4.935",
+            "new_capital_rm": "1.705",
+            "marginal_new_capital_rm_per_rm1bn": "0.45",
+            "claim_check": {
+              "implied_rwa_rm": {
+                "claimed": "32.9",
+                "recomputed": "32.9",
+                "diff": "0",
+                "match": true
+              },
+              "new_capital_rm": {
+                "claimed": "1.7",
+                "recomputed": "1.705",
+                "diff": "-0.005",
+                "match": true
+              }
+            }
+          },
+          {
+            "increment_rm": "5",
+            "delta_weight_pp": "300",
+            "added_rwa_rm": "15",
+            "implied_rwa_rm": "41.9",
+            "required_capital_rm": "6.285",
+            "new_capital_rm": "3.055",
+            "marginal_new_capital_rm_per_rm1bn": "0.45",
+            "claim_check": {
+              "implied_rwa_rm": {
+                "claimed": "41.9",
+                "recomputed": "41.9",
+                "diff": "0",
+                "match": true
+              },
+              "new_capital_rm": {
+                "claimed": "3",
+                "recomputed": "3.055",
+                "diff": "-0.055",
+                "match": true
+              }
+            }
+          },
+          {
+            "increment_rm": "8",
+            "delta_weight_pp": "300",
+            "added_rwa_rm": "24",
+            "implied_rwa_rm": "50.9",
+            "required_capital_rm": "7.635",
+            "new_capital_rm": "4.405",
+            "marginal_new_capital_rm_per_rm1bn": "0.45",
+            "claim_check": {
+              "implied_rwa_rm": {
+                "claimed": "50.9",
+                "recomputed": "50.9",
+                "diff": "0",
+                "match": true
+              },
+              "new_capital_rm": {
+                "claimed": "4.4",
+                "recomputed": "4.405",
+                "diff": "-0.005",
+                "match": true
+              }
+            }
+          },
+          {
+            "increment_rm": "10",
+            "delta_weight_pp": "300",
+            "added_rwa_rm": "30",
+            "implied_rwa_rm": "56.9",
+            "required_capital_rm": "8.535",
+            "new_capital_rm": "5.305",
+            "marginal_new_capital_rm_per_rm1bn": "0.45",
+            "claim_check": {
+              "implied_rwa_rm": {
+                "claimed": "56.9",
+                "recomputed": "56.9",
+                "diff": "0",
+                "match": true
+              },
+              "new_capital_rm": {
+                "claimed": "5.3",
+                "recomputed": "5.305",
+                "diff": "-0.005",
+                "match": true
+              }
+            }
+          }
+        ],
+        "internal_consistency": "MATCH",
+        "mismatches": [],
+        "arithmetic": "exact (decimal.Decimal, prec=60)"
+      },
+      "claim_comparisons": [
+        {
+          "unit": "RM_bn",
+          "claimed": "0.45",
+          "recomputed": "0.075",
+          "absolute_diff": "0.375",
+          "relative_diff": "5",
+          "tolerance_rel": "0.10",
+          "numeric_verdict": "MISMATCH",
+          "scope_verdict": "OUT_OF_SCOPE_FIGURE",
+          "verdict": "ARITHMETIC_AND_SCOPE_FAIL"
+        }
+      ],
+      "verdict": "NOT_ZERO_BLOCKER",
+      "blockers": [
+        {
+          "class": "SCOPE_OUT_OF_RANGE",
+          "label": "all converted financing, flat 400%",
+          "figure_pct": "400",
+          "in_scope_weight_range_pct": [
+            "20",
+            "90"
+          ],
+          "overstatement_factor": "4.4444"
+        },
+        {
+          "class": "ARITHMETIC_AND_SCOPE_FAIL",
+          "claimed": "0.45",
+          "recomputed": "0.075",
+          "unit": "RM_bn"
+        }
+      ],
+      "arithmetic": "exact (decimal.Decimal, prec=60) \u2014 no float transit"
+    }
+  },
+  "narrative": [
+    "implied_rwa_rm=26.87188 (equity/CET1%). RM1bn adds RM3bn on a NET basis vs raw mul=300 unitless.",
+    "marginal new CET1 per RM1bn: 400%=0.45bn claimed vs in-scope 150%=0.075bn, 100%=0bn",
+    "claim 450m vs recomputed 75m -> ARITHMETIC_AND_SCOPE_FAIL; brief row 32.9 vs 32.87 -> ARITHMETIC_OK_SCOPE_FAIL"
+  ],
+  "server_pid": 1910340,
+  "server_endpoint": "http://127.0.0.1:3013/mcp",
+  "tools_listed": [
+    "numeric_audit_brief",
+    "numeric_audit_claim",
+    "numeric_check_units_scale",
+    "numeric_recompute_sensitivity",
+    "numeric_replay_derivation",
+    "numeric_rule_lookup",
+    "numeric_scope_check"
+  ],
+  "scope_case_verdicts": [
+    "flat 400% on ALL converted risk-sharing financing (the brief's \u00a75 claim)",
+    "flat 400% on generic converted musharakah/mudarabah FINANCING",
+    "400% on a non-publicly-traded EQUITY HOLDING (legit use)",
+    "150% on musyarakah project financing (the prescribed number)",
+    "70% lowest slotting category applied flatly to specialised financing",
+    "400% for a number that is in no registry clause at all"
+  ],
+  "headline": {
+    "claimed_new_cet1_per_rm1bn": "0.450",
+    "corrected_new_cet1_per_rm1bn_range": [
+      "0",
+      "0.075"
+    ],
+    "weight_overstatement_factor_generic_financing": "2.6667",
+    "weight_overstatement_factor_mutanaqisah_retail": "4.4444",
+    "brief_table_internal_consistency": "MATCH (arithmetic reproduces; input out of scope)",
+    "composite_verdict": "NOT_ZERO_BLOCKER"
+  }
+}

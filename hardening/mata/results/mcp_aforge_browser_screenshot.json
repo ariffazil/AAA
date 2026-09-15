@@ -1,0 +1,36 @@
+{
+  "lane": "aforge forge_browser_screenshot",
+  "calls": [
+    {
+      "request_id": "mata-vision-hardening-browser-shot-001",
+      "task_context_provided": false,
+      "raw_response": {
+        "status": "ERROR",
+        "gate": "BROWSER_INJECTION_SENTINEL",
+        "reasons": [
+          {
+            "floor": "F2",
+            "code": "TASK_AUTHORITY_MISSING"
+          },
+          {
+            "floor": "F11",
+            "code": "TASK_UNKNOWN"
+          }
+        ]
+      },
+      "verdict": "REJECTED (correctly, by the F2/F11 gate)"
+    },
+    {
+      "request_id": "mata-vision-hardening-browser-shot-002",
+      "task_context_provided": true,
+      "raw_response": {
+        "status": "SEAL",
+        "data": {
+          "image_base64": "### Error\nError: async createBrowserWithInfo: Failed to launch chromium because executable doesn't exist at /root/.cache/ms-playwright/chromium-1232/chrome-linux64/chrome"
+        }
+      },
+      "verdict": "NOT FUNCTIONAL \u2014 playwright-bundled Chromium binary absent"
+    }
+  ],
+  "verdict": "NOT FUNCTIONAL \u2014 playwright chromium binary missing"
+}

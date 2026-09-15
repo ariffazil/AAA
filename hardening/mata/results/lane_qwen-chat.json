@@ -1,0 +1,112 @@
+{
+  "lane": "qwen-tokenplan-chat (gateway, image acceptance test)",
+  "transport": "HTTPS aliyun maas compatible-mode",
+  "probes": [
+    {
+      "probe": "GET /compatible-mode/v1/models",
+      "http_status": 200,
+      "model_ids": [
+        "MiniMax-M2.5",
+        "deepseek-v3.2",
+        "deepseek-v4-flash",
+        "deepseek-v4-flash-0731",
+        "deepseek-v4-pro",
+        "deepseek-v4.1-flash",
+        "glm-5",
+        "glm-5.1",
+        "glm-5.2",
+        "kimi-k2.5",
+        "kimi-k2.6",
+        "kimi-k2.7-code",
+        "qwen-audio-3.0-realtime-plus",
+        "qwen-audio-3.0-tts-plus",
+        "qwen-image-2.0",
+        "qwen-image-2.0-pro",
+        "qwen3.6-flash",
+        "qwen3.6-plus",
+        "qwen3.7-max",
+        "qwen3.7-plus",
+        "qwen3.8-flash",
+        "qwen3.8-max",
+        "wan2.7-image",
+        "wan2.7-image-pro"
+      ],
+      "vision_capable_ids": [],
+      "raw_response_body": "{\"first_id\":\"model-id-0\",\"data\":[{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"qwen3.6-plus\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"qwen-image-2.0\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"qwen-image-2.0-pro\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"wan2.7-image\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"wan2.7-image-pro\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"deepseek-v3.2\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"glm-5\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"MiniMax-M2.5\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"kimi-k2.5\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"kimi-k2.6\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"glm-5.1\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"qwen3.6-flash\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"deepseek-v4-flash\",\"object\":\"model\"},{\"created\":1779173747,\"owned_by\":\"system\",\"id\":\"deepseek-v4-pro\",\"object\":\"model\"},{\"created\":1779367398,\"owned_by\":\"system\",\"id\":\"qwen3.7-max\",\"object\":\"model\"},{\"created\":1780806507,\"owned_by\":\"system\",\"id\":\"qwen3.7-plus\",\"object\":\"model\"},{\"created\":1781664051,\"owned_by\":\"system\",\"id\":\"glm-5.2\",\"object\":\"model\"},{\"created\":1781842195,\"owned_by\":\"system\",\"id\":\"kimi-k2.7-code\",\"object\":\"model\"},{\"created\":1785248243,\"owned_by\":\"system\",\"id\":\"qwen-audio-3.0-tts-plus\",\"object\":\"model\"},{\"created\":1785513696,\"owned_by\":\"system\",\"id\":\"deepseek-v4-flash-0731\",\"object\":\"model\"},{\"created\":1785722409,\"owned_by\":\"system\",\"id\":\"qwen3.8-max\",\"object\":\"model\"},{\"created\":1785928192,\"owned_by\":\"system\",\"id\":\"qwen-audio-3.0-realtime-plus\",\"object\":\"model\"},{\"created\":1787731683,\"owned_by\":\"system\",\"id\":\"qwen3.8-flash\",\"object\":\"model\"},{\"created\":1789351565,\"owned_by\":\"system\",\"id\":\"deepseek-v4.1-flash\",\"object\":\"model\"}],\"last_id\":\"model-id-23\",\"has_more\":false,\"object\":\"list\"}",
+      "verdict": "BLIND",
+      "note": "catalogue lists NO inbound-vision model; only image generators"
+    },
+    {
+      "probe": "red_circles@MiniMax-M2.5",
+      "model": "MiniMax-M2.5",
+      "http_status": 429,
+      "raw_response_body": "{\"error\":{\"message\":\"Your token-plan quota has been exhausted.\",\"id\":\"288cb2bb-e47c-40cb-99ba-3d86d76e8d21\",\"type\":\"insufficient_quota\",\"code\":\"insufficient_quota\"}}",
+      "parsed_content": "{\"error\":{\"message\":\"Your token-plan quota has been exhausted.\",\"id\":\"288cb2bb-e47c-40cb-99ba-3d86d76e8d21\",\"type\":\"insufficient_quota\",\"code\":\"insufficient_quota\"}}",
+      "expected": {
+        "int": 3
+      },
+      "verdict": "BLOCKED",
+      "note": "HTTP 429 before any vision ran: {\"error\":{\"message\":\"Your token-plan quota has been exhausted.\",\"id\":\"288cb2bb-e47c-40cb-99ba-3d86d76e8d21\",\"type\":\"insufficient_quota\",\"code\":\"insufficient_quota\"}}"
+    },
+    {
+      "probe": "red_circles@deepseek-v4-flash",
+      "model": "deepseek-v4-flash",
+      "http_status": 429,
+      "raw_response_body": "{\"error\":{\"message\":\"Your token-plan quota has been exhausted.\",\"id\":\"01ad936c-5e20-4c25-b10e-91c0793b2270\",\"type\":\"insufficient_quota\",\"code\":\"insufficient_quota\"}}",
+      "parsed_content": "{\"error\":{\"message\":\"Your token-plan quota has been exhausted.\",\"id\":\"01ad936c-5e20-4c25-b10e-91c0793b2270\",\"type\":\"insufficient_quota\",\"code\":\"insufficient_quota\"}}",
+      "expected": {
+        "int": 3
+      },
+      "verdict": "BLOCKED",
+      "note": "HTTP 429 before any vision ran: {\"error\":{\"message\":\"Your token-plan quota has been exhausted.\",\"id\":\"01ad936c-5e20-4c25-b10e-91c0793b2270\",\"type\":\"insufficient_quota\",\"code\":\"insufficient_quota\"}}"
+    },
+    {
+      "probe": "red_circles@deepseek-v4-flash-0731",
+      "model": "deepseek-v4-flash-0731",
+      "http_status": 429,
+      "raw_response_body": "{\"error\":{\"message\":\"Your token-plan quota has been exhausted.\",\"id\":\"72df52dc-d7da-4cef-b954-7d6c23e71ec4\",\"type\":\"insufficient_quota\",\"code\":\"insufficient_quota\"}}",
+      "parsed_content": "{\"error\":{\"message\":\"Your token-plan quota has been exhausted.\",\"id\":\"72df52dc-d7da-4cef-b954-7d6c23e71ec4\",\"type\":\"insufficient_quota\",\"code\":\"insufficient_quota\"}}",
+      "expected": {
+        "int": 3
+      },
+      "verdict": "BLOCKED",
+      "note": "HTTP 429 before any vision ran: {\"error\":{\"message\":\"Your token-plan quota has been exhausted.\",\"id\":\"72df52dc-d7da-4cef-b954-7d6c23e71ec4\",\"type\":\"insufficient_quota\",\"code\":\"insufficient_quota\"}}"
+    },
+    {
+      "probe": "red_circles@deepseek-v4-pro",
+      "model": "deepseek-v4-pro",
+      "http_status": 429,
+      "raw_response_body": "{\"error\":{\"message\":\"Your token-plan quota has been exhausted.\",\"id\":\"22cb6dca-29ef-41a3-9a45-793aa452b5ba\",\"type\":\"insufficient_quota\",\"code\":\"insufficient_quota\"}}",
+      "parsed_content": "{\"error\":{\"message\":\"Your token-plan quota has been exhausted.\",\"id\":\"22cb6dca-29ef-41a3-9a45-793aa452b5ba\",\"type\":\"insufficient_quota\",\"code\":\"insufficient_quota\"}}",
+      "expected": {
+        "int": 3
+      },
+      "verdict": "BLOCKED",
+      "note": "HTTP 429 before any vision ran: {\"error\":{\"message\":\"Your token-plan quota has been exhausted.\",\"id\":\"22cb6dca-29ef-41a3-9a45-793aa452b5ba\",\"type\":\"insufficient_quota\",\"code\":\"insufficient_quota\"}}"
+    },
+    {
+      "probe": "red_circles@deepseek-v4.1-flash",
+      "model": "deepseek-v4.1-flash",
+      "http_status": 429,
+      "raw_response_body": "{\"error\":{\"message\":\"Your token-plan quota has been exhausted.\",\"id\":\"33e86bec-13a3-40a9-98e7-fd38d35bb06e\",\"type\":\"insufficient_quota\",\"code\":\"insufficient_quota\"}}",
+      "parsed_content": "{\"error\":{\"message\":\"Your token-plan quota has been exhausted.\",\"id\":\"33e86bec-13a3-40a9-98e7-fd38d35bb06e\",\"type\":\"insufficient_quota\",\"code\":\"insufficient_quota\"}}",
+      "expected": {
+        "int": 3
+      },
+      "verdict": "BLOCKED",
+      "note": "HTTP 429 before any vision ran: {\"error\":{\"message\":\"Your token-plan quota has been exhausted.\",\"id\":\"33e86bec-13a3-40a9-98e7-fd38d35bb06e\",\"type\":\"insufficient_quota\",\"code\":\"insufficient_quota\"}}"
+    },
+    {
+      "probe": "red_circles@glm-5",
+      "model": "glm-5",
+      "http_status": 429,
+      "raw_response_body": "{\"error\":{\"message\":\"Your token-plan quota has been exhausted.\",\"id\":\"c9c19ef9-d912-4919-b3fa-c2e709c1d8a1\",\"type\":\"insufficient_quota\",\"code\":\"insufficient_quota\"}}",
+      "parsed_content": "{\"error\":{\"message\":\"Your token-plan quota has been exhausted.\",\"id\":\"c9c19ef9-d912-4919-b3fa-c2e709c1d8a1\",\"type\":\"insufficient_quota\",\"code\":\"insufficient_quota\"}}",
+      "expected": {
+        "int": 3
+      },
+      "verdict": "BLOCKED",
+      "note": "HTTP 429 before any vision ran: {\"error\":{\"message\":\"Your token-plan quota has been exhausted.\",\"id\":\"c9c19ef9-d912-4919-b3fa-c2e709c1d8a1\",\"type\":\"insufficient_quota\",\"code\":\"insufficient_quota\"}}"
+    }
+  ]
+}

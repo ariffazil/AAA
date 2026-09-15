@@ -1,0 +1,37 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF 11912A8BA9
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+2. MATERIAL ACCOUNTING POLICIES (CONTINUED)
+2.3 Financial instruments (continued)
+Classification and subsequent measurement (continued) .
+(i) Financial assets (continued)
+Financial assets are classified as measured at: amortised cost, fair value through other
+comprehensive income (“FVOCI’) and fair value through profit or loss (“FVTPL”), as
+appropriate.
+The Company determines the classification of financial assets at initial recognition and are not
+reclassified subsequently to their initial recognition unless the Company changes its business
+model for managing financial assets in which case all affected financial assets are reclassified on
+the first day of the next reporting period after the change of the business model.
+Amortised cost
+Amortised cost category comprises financial assets that are held within a business model whose
+objective is to hold assets to collect contractual cash flows and its contractual terms give rise on
+specified dates to cash flows that are solely payments of principal and interest on the principal
+amount outstanding. The financial assets are not designated as fair value through profit or loss.
+Subsequent measurement
+Subsequent to initial recognition, these financial assets are measured at amortised cost using the
+effective interest method (Note 2.3.(v)). Interest income and foreign exchange gains and losses
+are recognised in profit or loss.
+Fair value through other comprehensive income
+Debt instruments
+This category comprises debt instruments where it is held within a business model whose
+objective is achieved by both collecting contractual cash flows and selling financial assets, and
+its contractual terms give rise on specified dates to cash flows that are solely payments of
+principal and interest on the principal amount outstanding. The debt instruments are not
+designated as at fair value through profit or loss.
+Equity instruments
+Fair value through other comprehensive income category also comprises investment in equity
+that are not held for trading, and the Company irrevocably elects to present subsequent changes
+in the investment’s fair value in other comprehensive income. This election is made on an
+investment-by-investment basis.
+30

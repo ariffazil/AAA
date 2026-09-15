@@ -1,0 +1,43 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF 11912A8BAQ
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+7. RECEIVABLES
+7.1 TRADE AND OTHER RECEIVABLES
+31.12.2025 31.12.2024
+USD'000 USD'000
+Trade
+Trade receivables 166,120 174,116
+Amount due from related companies 116,407 92,443
+Other receivables 12,970 28,436
+Less: Allowance of impairment losses (310) -
+295,187 294,995
+Non-trade
+Amount due from:
+- Ultimate holding company 6,248 5,255
+- Related companies 699 2,806
+6,947 8,061
+302,134 303,056
+Other receivables of USD 13 million (2024: USD28 million) mainly include a collateral balance with
+broker of USD9 million (2024: USD23 million) and VAT receivables of USD4 million (2024: USD4
+million).
+
+: Total amount of trade receivables balances is USD295 million (2024: USD295 million). Information
+about the Company’s exposure to credit and market risk, and impairment losses for trade receivables
+is included in Note 22. Amount due from ultimate holding company, immediate holding company
+and related companies arose in the normal course of business.
+
+7.2 NET INVESTMENT IN LEASE
+31.12.2025 31.12.2024
+USD'000 _ _USspD'000
+As at 1 January 9,454 18,885
+Accretion of interest 301 889
+Payments : (9,755) (10,320)
+As at 31 December - 9,454
+Current - 9,454
+8. CASH AND CASH EQUIVALENTS
+31.12.2025 31.12.2024
+Note USD’000 USD’000
+Cash and bank balances 22 97,458 112,687
+All cash and bank balances are interest bearing.
+45

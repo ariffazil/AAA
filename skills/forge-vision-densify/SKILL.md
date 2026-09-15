@@ -2,7 +2,7 @@
 name: forge-vision-densify
 id: forge-vision-densify
 risk_tier: medium
-description: 'Governance layer for image generation that bridges the dimensionality deficit between sparse human prompts and high-dimensional pixel output. USE WHEN: "generate image from text prompt", "T2I dispatch", "diffusion call", "image generation", "vision tool call". Implements the immutable JSON receipt contract (f1_safe, f2_adherence, prompt_density, hallucinated_elements, anchor_required, anchor_suggestion) with hard/soft ΔS gate thresholds (0.20, 0.50) and the Hybrid heuristic-plus-VLM density estimator.'
+description: 'Governance layer for image generation that bridges the dimensionality deficit between sparse human prompts and high-dimensional pixel output. USE WHEN: "generate image from text prompt", "T2I dispatch", "diffusion call", "image generation", "vision tool call". Implements the immutable JSON receipt contract (f1_safe, f2_adherence, prompt_density, hallucinated_elements, anchor_required, anchor_suggestion) with hard/soft ΔS gate thresholds (0.20, 0.50) and the Hybrid heuristic-plus-VLM density estimator. [fed: tier=fed-vision-governance, auto=T1, risk=medium]'
 version: 1.0.0
 tags:
 - vision

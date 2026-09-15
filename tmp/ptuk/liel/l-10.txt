@@ -1,0 +1,42 @@
+Docusign Envelope ID: BCBF091A-82F5-40AD-846A-E840C6C56334
+LNG INVESTMENTS EUROPE LIMITED
+DIRECTORS’ REPORT
+FOR THE YEAR ENDED 31 DECEMBER 2025
+Financial Risk Management
+The Company uses financial instruments to achieve financial risk management objectives and mitigate price risk, credit risk,
+liquidity risk and cash flow risk as mentioned in Note 25.
+Engagement with suppliers and customers and future developments
+Directors have disclosed their engagement with suppliers and customers and future developments related to the Company in the
+Strategic Report.
+Auditors
+Pursuant to Section 487 of the Companies Act 2006, In the absence of a notice proposing that the appointment be terminated,
+Emst & Young LLP will be deemed to be re-appointed as the Company’s auditor for the next year. Refer to Note 10 for Auditors
+Remuneration.
+Directors' Statement as to the Disclosure of Information to the Auditor
+The Directors who held office at the date of approval of this Directors’ Report confirm that, so far that they are aware, there is no
+relevant audit information (as defined by Section 418(3) of the Companies Act 2006) of which the Company’s auditor is unaware;
+and each Director has taken all steps that he or she ought to have taken as a Director to make himself or herself aware of any
+relevant audit information and to establish that the Company’s auditor is aware of that information.
+Directors' Energy and Carbon Report
+The directors report the Company’s sources of UK energy use as required by the Streamlined Energy and Carbon Reporting
+(SECR) frameworks. The report presents the company’s UK energy use between | January to 31 December 2025, the Company’s
+financial year.
+The Company has identified all sources of energy consumption and associated greenhouse gas (GHG) emissions. The categories
+are outlined as follows:
+Scope 1: energy consumption and GHG emissions from activities owned or directly controlled by the Company.
+Scope 2: energy consumption and GHG emissions associated with consumption of purchased electricity, heat, steam and cooling,
+which are a consequence of the Company’s activities, but which occur at sources that the Company does not own or control.
+Scope 3: emissions from sources controlled by external enterprises in the Company’s supply chain that are a consequence of the
+Company’s actions, which occur at sources which the Company does not own or control and which are not classed as Scope 2
+emissions.
+The Company’s energy consumption is primarily linked to its UK-based activities, specifically involving the transportation of
+liquefied natural gas (LNG) for regasification in the UK. In 2025, the Company utilises transport fuel with total energy
+consumption of 854,374.11 kWh for journeys that conclude within the UK (2024: nil). This consumption falls under Scope 3
+emissions as the Company does not own or directly control the vehicle.
+For the reporting period, the Company’s energy use is derived solely from the fuel used in the transportation of LNG. The Company
+does not incur Scope 1 or Scope 2 emissions, as it does not purchase electricity and does not employ any personnel.
+By Order of the Board ,
+Shamsairi Bin Mohd Ibrahim
+Director
+Date: 02 Ce 2026
+10

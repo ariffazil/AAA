@@ -1,0 +1,46 @@
+(
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF 11912A8BAQ
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+17. (LOSS)/PROFIT BEFORE TAXATION
+Included in (loss)/profit before taxation are the following charges:
+2025 2024
+Note USD’000 USD’000
+Auditor’s remuneration 18 691 750
+Depreciation of property, plant, and equipment 3 10,866 1,743
+Staff costs 19 15,382 20,660
+Finance cost on lease liabilities 1,411 993
+Finance cost on trade loans 55 3,234
+Net impairment losses on trade and other receivables 310 -
+Net loss on realised foreign exchange 859 565
+Net loss on unrealised derivative - 16,878
+and credits:
+Net gain on unrealised foreign exchange (1,064) (410)
+Net gain on realised derivative (9,746) (18,073)
+Net gain on unrealised derivative (3,409) -
+18. AUDITOR’S REMUNERATION
+2025 2024
+USD’000 USD’000
+Audit of these financial statements 670 636
+Additional fees for audit of prior year financial statements 21 114
+691 750
+19. STAFF NUMBERS AND COSTS ;
+The average number of persons employed by the Company during the year, analysed by category was as
+follows:
+Number of employees
+2025 2024
+Marketing and trading 9 7
+Logistics 18 17
+Finance, risk and administration 34 40
+61 64
+The aggregate payroll costs of these persons were as follows:
+2025 2024
+USD’000 USD’000
+Wages and salaries 11,730 16,885
+Social security costs 2,379 2,201
+Defined contributions 709 835
+Training 61 69
+Other benefits 503 670
+_ 15382 20,660
+53

@@ -2,7 +2,7 @@
 id: aaa-setup-help
 name: aaa-setup-help
 version: 1.0.0
-description: "Guide the sovereign or operator through any setup, configuration, or deployment process step by step. One atomic action per response, with a 'Still remaining' list that never exceeds 8 items. Use when Arif says 'help me set up', 'walk me through', 'setup-help', 'configure X', or any guided process that requires tracking remaining steps across multiple turns."
+description: "Guide the sovereign or operator through any setup, configuration, or deployment process step by step. One atomic action per response, with a 'Still remaining' list that never exceeds 8 items. Use when Arif says 'help me set up', 'walk me through', 'setup-help', 'configure X', or any guided process that requires tracking remaining steps across multiple turns. [fed: tier=fed-agent-subagent, floors=[F1, F2, F4, F7], auto=T1, risk=low]"
 owner: 333-AGI
 risk_tier: low
 floor_scope: [F1, F2, F4, F7]

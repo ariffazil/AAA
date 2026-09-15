@@ -1,6 +1,6 @@
 ---
 name: authority-reality-grounder
-description: "Anti-Shadow architecture validator. Validates authority claims against witnessed physical reality and independent evidence. Enforces the Reality-Bound Authority master doctrine: when reality disagrees, authority contracts. Prevents self-certification and capability fiction."
+description: "Anti-Shadow architecture validator. Validates authority claims against witnessed physical reality and independent evidence. Enforces the Reality-Bound Authority master doctrine: when reality disagrees, authority contracts. Prevents self-certification and capability fiction. [fed: risk=critical]"
 owner: AAA
 risk_tier: critical
 floor_scope:

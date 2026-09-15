@@ -113,6 +113,14 @@ graph TB
 
 **Fallback graph (post-hardening 08-30)**: `i-arif → [apex-888]` (family-safe ONLY) · `forge-777 → [i-arif, agi-333, apex-888]` · `agi-333 → [i-arif, forge-777, apex-888]` · `asi-555 → [i-arif, agi-333, apex-888]` · `apex-888 → [agi-333]`. **Xiaomi mimo unreachable from any persona lane** — only agi-333/asi-555 text + speech endpoints.
 
+> ⚠️ **STALE AS OF 2026-09-15 — DO NOT READ THE LINE ABOVE AS CURRENT ROUTING.** The live
+> `fallbacks:` map in `/root/A-FORGE/litellm-config.yaml` is
+> `i-arif → [deepseek-v4-flash-vision, MiniMax-M3, mimo-v2.5, glm-5.3-flash, qwen3.8-max, gemini-3.6-flash]`,
+> `agi-333 → [deepseek-v4-flash, MiniMax-M3, mimo-v2.5, glm-5.3-flash, qwen3.8-max, gemini-3.6-flash]`,
+> `forge-777 → [deepseek-v4-flash, MiniMax-M3, mimo-v2.5, glm-5.3-flash, qwen3.8-max, gemini-3.6-flash]`
+> — the "post-hardening 08-30" graph and the "mimo unreachable" clause are both superseded
+> (see the UNBAN-era row above and `fallbacks:` in the config, which is the sole routing SOT).
+
 > **SUPERSEDED 2026-09-13 by F13 SOVEREIGN.** The *"Xiaomi mimo unreachable from any persona lane"* sentence above is **no longer binding**. F13 lifted the ban — *"awat hang ban. bagi ada la"* (Arif, 2026-09-13) — after the 08-30 `content_filter` premise **failed to reproduce**: three family-chat probes (kanak2-group shape · child-fever parenting · mixed BM/EN Penang register) all returned **HTTP 200 with normal warm Malay**, no refusal, no filter field. Live reality already agreed with the lift: `litellm-config.yaml:1637` carries `mimo-v2.5` in the i-arif fallback chain. Doctrine and config now align. See the **UNBAN era** row in the table above.
 
 ---
@@ -167,6 +175,21 @@ fed/vision 21→4 (qwen3-vl-plus · qwen-vl-max · gemini-3.6-flash · qwen3-vl-
 - F4: 272k unattributed calls (attribution hole, pre-08-26) — schema fresh now, watch for recurrence
 - fed/audio MiniMax speech rungs reference a MiMo env var name variant (ghost drift) — verify before next touch
 - Qwen Team seats exhausted (0/150k, reset 09-01) · MiniMax weekly 2056 resets rolling · Individual seat ~2d runway on current window (renews 09-01)
+  - ⚠️ **CORRECTED 2026-09-15 — the line above is stale by two weeks; do not reuse its dates.**
+    Live 1-token probes against `token-plan.ap-southeast-1.maas.aliyuncs.com`: all four seats
+    return `429 insufficient_quota` ("Your token-plan quota has been exhausted.").
+    `QWEN_INDIVIDUAL` returns `"1-week quota … reset at 09-18 04:10:00 UTC"`, **but flaps —
+    the same key/model answered `200 qwen3.8-max` ten minutes later, then 3 of 4 follow-up
+    calls timed out at 30 s.** Also live: Z.ai `429 code 1310` (reset 2026-09-15 16:13:25)
+    and `/api/paas/v4` `429 code 1113`; DashScope + `QWEN_PAYG` `403 AllocationQuota.FreeTierOnly`;
+    Gemini `429 prepayment credits are depleted`; Kimi `/coding/v1` `403` monthly cycle;
+    OpenCode Go `/zen/go/v1` `429` weekly (resets in 6 days).
+    **Only four upstreams answered 200: DeepSeek · MiniMax · Xiaomi MiMo (SGP) · SEA-LION.**
+    MiniMax has **two separate pools** — `general` 57 % of its interval vs `video` **0 %**
+    (weekly 85 %); and `MiniMax-H3` is plan-ineligible (`error 2013`) while `Hailuo-2.3` is admitted.
+    Consequence: lane `i-arif` (Hermes's declared primary) answered **`deepseek-flash`** on 7/7
+    cache-defeated probes. Probes + full sweep:
+    `/root/forge_work/harden-20260915/model/{probe-providers.sh,probe-model-layer.sh,REPORT.md}`.
 - organ-health-sentinel cron needs model pin · Hermes 0.20.6 upgrade = separate session · corrupt-state-20260830/ archive (550MB)
 
 ---

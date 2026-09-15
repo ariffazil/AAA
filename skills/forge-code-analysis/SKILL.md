@@ -5,7 +5,7 @@ version: 1.0.0
 owner: A-FORGE
 risk_tier: low
 license: MIT
-description: This skill should be used when the user needs to analyze Git repositories,
+description: This skill should be used when the user needs to analyze Git repositories, [fed: tier=fed-reasoning-heavy, auto=T1, risk=low]
   compare developer commit patterns, work habits, development efficiency, code style,
   code quality, and slacking behaviors. It generates honest, direct developer evaluations
   with scores, grades, strengths, weaknesses, and actionable suggestions. Trigger

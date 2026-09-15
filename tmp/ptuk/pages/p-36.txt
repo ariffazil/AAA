@@ -1,0 +1,40 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF 11912A8BA9
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+2. MATERIAL ACCOUNTING POLICIES (CONTINUED)
+2.4 Impairment (continued)
+(i) Financial assets (continued)
+The maximum period considered when estimating ECL is the maximum contractual period over
+which the Company is exposed to credit risk.
+An impairment loss in respect of financial assets measured at amortised cost is recognised in
+profit or loss and the carrying amount of the asset is reduced using an allowance account.
+All financial assets, except for those measured at fair value through profit or loss and equity
+investments measured at fair value through other comprehensive income, are subject to
+impairment (see Note 2.3. (i)).
+(ii) Other assets
+The carrying amounts of other assets, other than inventories, deferred tax assets and non-current
+assets or disposal groups classifies as held for sale, are reviewed at each reporting date to
+determine whether there is any indication of impairment. If any such indication exists, the asset’s
+recoverable amount is estimated. An impairment loss is recognised if the carrying amount of an
+asset or the cash-generating unit to which it belongs exceeds its recoverable amount. Impairment
+losses are recognised in the profit or loss.
+A cash-generating unit is the smallest identifiable asset group that generates cash flows from
+continuing use that are largely independent from other assets and groups. An impairment loss
+recognised in respect of a cash-generating unit is allocated first to reduce the carrying amount of
+any goodwill allocated to the unit and then to reduce the carrying amount of the other assets in
+the unit on a pro-rata basis.
+The recoverable amount is the greater of the asset’s fair value less cost to sell and its value-in-
+use. In assessing value-in-use, the estimated future cash flows are discounted to their present
+value using a pre-tax discount rate that reflects current market assessments of the time value of
+money and the risks specific to the asset. For an asset that does not generate largely independent
+cash inflows, the recoverable amount is determined for the cash-generating unit to which the asset
+belongs.
+Reversals of impairment losses are credited to the profit or loss in the year in which the reversals
+are recognised.
+2.5 Cash and cash equivalents
+Cash and cash equivalents consist of cash on hand and bank balances which have an insignificant
+risk of changes in fair value and are used by the Company in the management of their short-term
+commitments. For the purpose of the statement of cash flows, cash and cash equivalents are presented
+net of bank overdrafts and restricted deposits, if any.
+35

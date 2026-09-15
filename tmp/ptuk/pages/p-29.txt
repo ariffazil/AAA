@@ -1,0 +1,27 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF 11912A8BA9
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+2. MATERIAL ACCOUNTING POLICIES (CONTINUED)
+2.2 Leases (continued)
+(iii) Subsequent measurement
+(a) As a lessee
+The right-of-use asset is subsequently depreciated using the straight-line method from the
+commencement date to the earlier of the end of the useful life of the right-of-use asset or the
+end of the lease term. The estimated useful lives of right-of-use assets are determined on the
+same basis as those of property, plant and equipment. Depreciation of certain right-of-use
+assets are subsequently capitalised into carrying amount of other assets whenever they meet
+the criteria for capitalisation. In addition, the right-of-use asset is periodically reduced by
+impairment losses, if any, and adjusted for certain remeasurements of the lease liability.
+The lease liability is measured at amortised cost using the effective interest method. It is
+remeasured when there is a change in future lease payments arising from a change in an index
+or rate, if there is a revision of in-substance fixed lease payments, or if there is a change in
+the Company’s estimate of the amount expected to be payable under a residual value
+guarantee, or if the Company changes its assessment of whether it will exercise a purchase,
+extension or termination option. The Company will reassess whether it is reasonably certain
+to exercise the extension option if there is a significant change in circumstances within its
+control. .
+When the lease liability is remeasured as described in the above paragraph, a corresponding
+adjustment is made to the carrying amount of the right-of-use asset or is recorded in profit or
+loss if the carrying amount of the right-of-use asset has been reduced to zero.
+28

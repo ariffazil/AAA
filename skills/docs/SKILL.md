@@ -2,7 +2,7 @@
 id: docs
 name: docs
 version: 1.0.0-2026.07.17
-description: "Reference documentation for AAA skill system. Not an executable skill."
+description: "Reference documentation for AAA skill system. Not an executable skill. [fed: tier=fed-long-context, floors=[, auto=T0, risk=low]"
 owner: AAA
 risk_tier: low
 floor_scope: ['F1', 'F4']

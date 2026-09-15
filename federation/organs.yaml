@@ -563,7 +563,7 @@ components:
       status: active
       pid: 3244719
       machine: KVM8
-      note: "Gateway on KVM8, brain (i-arif) via FED litellm on KVM4 :4000"
+      note: "Gateway + brain (i-ARIF) on KVM8 (2026-09-15 swap: HAProxy primary KVM8 :4013, KVM4 cold LD backup only at :4000)"
 
   - id: opencode
     class: EDGE

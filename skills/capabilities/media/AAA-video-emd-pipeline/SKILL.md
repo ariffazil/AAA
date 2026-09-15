@@ -1,6 +1,8 @@
 ---
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
+name: AAA-video-emd-pipeline
+description: "USE WHEN: Video URL (YouTube/Loom/TikTok/X/local path) + any of: question about content; extract-reusable-skill intent, summarize-with-grounding intent, bug-repro diagnosis [fed: tier=fed-multimodal-vision]"
 ---
 # AAA-video-emd-pipeline — Canonical Video Intelligence Capability
 
@@ -59,6 +61,33 @@ paired-fixture × 3-trial verified 2026-09-06, FED_VIDEO_CANARY_LEDGER v2). Omni
 optional fast witness, never final judge. **Bridge :18092 is DEFECTIVE** (path fault — do
 not route through). Fabricators blacklisted: gemini-3.5/3.1-flash-lite. ASR speech channel:
 **UNPROVEN** — no fabricated confidence until falsification-tested.
+
+## NON-BYPASSABLE YOUTUBE FALLBACK LADDER
+
+> **SCAR-HERMES-VIDEO-001 (2026-09-15):** Hermes failed to extract YouTube content because it tried ONE method (youtube-transcript-api), hit cloud IP block, and gave up — falling back to manual knowledge presented as video content. This is FORBIDDEN.
+
+**For YouTube URLs on cloud-hosted servers (VPS, AWS, GCP, Azure):**
+
+```
+STEP 1: youtube-transcript-api     → if RequestBlocked → STEP 2
+STEP 2: yt-dlp subtitle extract    → if "sign in" bot  → STEP 3
+STEP 3: Firecrawl MCP (firecrawl_scrape) → if dead     → STEP 4
+STEP 4: Exa MCP semantic search    → if no results     → STEP 5
+STEP 5: ZAI Web Search             → if no results     → STEP 6
+STEP 6: Gemini AI (forge_gemini)   → if fails          → STEP 7
+STEP 7: LABEL AS INFERRED — never claim observation
+```
+
+**Automated script:** `/root/.hermes/profiles/aaa-hermes/skills/media/youtube-content/scripts/youtube_ingest.py`
+
+**Failure protocol (STEP 7):**
+- Tell user: "YouTube blocked server-side extraction."
+- Label ALL output: `[INFERRED — not observed from video]`
+- State what was NOT verified: "Transcript not obtained."
+- NEVER present manual knowledge as video content.
+- Suggest: "Watch directly and share key points."
+
+**Reference:** `/root/.hermes/skills/domains/general/forge/mcp-ops/external-platform-mcp/references/firecrawl-youtube-fallback.md`
 
 ## INVARIANTS
 

@@ -1,0 +1,42 @@
+Docusign Envelope ID: BCBF091A-82F 5-40AD-846A-E840C6C56334
+LNG INVESTMENTS EUROPE LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+2. MATERIAL ACCOUNTING POLICIES
+The following are the material accounting policies applied by the Company in preparing its financial statements:
+2.1 Net trading income
+Net trading income is attributable to the Company’s main business activities. The Company undertakes significant activities
+which, for the purposes of disclosure in the financial statements of the Company have been classified as ‘trading’.
+All commodity contracts and derivative financial instruments entered into by the Company as part of its gas trading activities
+are recognised in the financial statements on the date of trade. Net trading income includes realised gains/(losses) on all
+commodity physical contracts and financial derivatives. All open gas forward and gas futures contracts are carried at their
+mark-to-market value on balance sheet date and unrealised gains and losses are recognised within the net trading
+income/(losses).
+Costs incurred by the Company arising from the use of Dragon LNG import storage and regasification terminal are presented
+within Cost of LNG regasification, which are attributed to both net trading income and cancellation income/option fees and
+operating margin income which are presented within revenue from contracts with customer (Note 4).
+2.2 Trade and other receivables
+A receivable is recognised if an amount of consideration that is unconditional is due from the customer (i.e., only the passage
+of time is required before payment of the consideration is due). Refer to accounting policies of financial assets in section 2.9
+i) Financial instruments — initial recognition and subsequent measurement. This also includes a tax receivable and a collateral
+balance.
+2.3. Revenue recognition ,
+A breakdown of revenue is disclosed in Note 4 to the financial statements. Revenue is measured based on the consideration
+specified in a contract with a customer and exclude amounts collected on behalf of third parties. The Company recognises
+revenue when or as it transfers control over a product or service to customer. An asset is transferred when (or as) the customer
+obtains control of the asset. An entity transfers control of a good or service over time and, therefore, satisfies a performance
+obligation and recognises revenue over time, if one of the following criteria is met:
+(a) the customer simultaneously receives and consumes the benefits provided by the entity’s performance as the entity
+performs;
+(b) the entity’s performance creates or enhances an asset (for example, work in progress) that the customer controls as
+the asset is created or enhanced, or
+(c) the entity’s performance does not create an asset with an alternative use to the entity and the entity has an enforceable
+right to payment for performance completed to date.
+Ifa performance obligation is not satisfied over time in accordance with the above criteria, an entity satisfies the performance
+obligation and recognises revenue at a point in time.
+Revenue from cancellation and option fees and recovery charges are recognised based on consideration specified the contracts
+with customers.
+2.4. Finance costs
+All financing costs are expensed in the period they occur. Financing costs consist of interest and other costs that the Company
+incurs in connection with the borrowing of funds as well as the unwinding of Onerous contract provision.
+20

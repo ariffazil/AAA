@@ -11,7 +11,7 @@ floor_scope:
   - F7
   - F9
   - F11
-description: >
+description: > [fed: tier=fed-multimodal-vision, auto=T1, risk=low]
   VSS-2 Lightweight Verifier Suite — independent post-generation verifiers for
   Verified Scene Synthesis. Wraps vision_analyze with three focused checks
   (Count/Containment, Perspective/Depth, Shadow/Light Direction) producing

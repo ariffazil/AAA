@@ -1,0 +1,47 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF 11912A8BAQ
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+23. OFFSETTING OF FINANCIAL ASSETS AND LIABILITIES
+The following tables shows the amounts recognised for financial assets and liabilities, which are
+subject to offsetting arrangements, on a gross basis and the amounts offset in the Statement of .
+Financial Position.
+The amounts set off below relate to receivables from and payables to various Counterparties which
+are subject to European Federation of Energy Traders (“EFET”) arrangements, where the Company
+currently has an enforceable legal right to offset and the intention to settle on a net basis. Net
+settlement is made on 20th of every month.
+Gross
+amounts
+recognised Net amount
+financial presented in the
+assets Amounts Statement of
+. (liabilities) set off Financial Position
+USD’000 USsD’000 USD’000
+Financial assets
+Other trade receivables 316,803 (150,993) 165,810
+Trade and other receivables from related 276,731 (153,377) 123,354
+parties
+Other receivables 12,970 - 12,970
+Derivative assets 46,656 (36,712) 9,944
+31 December 2025 653,160 (341,082) 312,078
+Financial liabilities
+Trade payables (395,434) 150,993 (244,441)
+Amounts due to related parties (310,652) 153,377 (157,275)
+Lease liabilities (20,060) - (20,060)
+Other payables (12,353) - (12,353)
+Derivative liabilities (44,977) 36,712 (8,265)
+31 December 2025 (783,476) 341,082 (442,394)
+Gross amounts Net amount
+recognised presented in the
+financial assets Amounts Statement of
+(liabilities) set off Financial Position
+USD’000 USD’000 USD’000
+Financial assets
+Other trade receivables 281,925 (107,809) 174,116
+Trade and other receivables from related 161,116 (60,612) 100,504
+parties
+Lease receivables 9,454 - 9,454
+Other receivables 28,436 - 28,436
+Derivative assets 32,733 (10,178) 22,555
+31 December 2024 513,664 (178,599) 335,065
+69
