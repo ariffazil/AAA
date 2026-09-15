@@ -1,5 +1,7 @@
 # Code Intelligence — Layered Maps (Phase 1, 2026-09-16)
 
+**RATIFIED 2026-09-16 (F13: "go and make it work") — see `RATIFICATION-2026-09-16.md` for the binding decision inventory + both-witness landed state.**
+
 Forged by 333-AGI per sovereign directive. Layered system: static maps (Emerge) +
 boundary contracts (import-linter). SCIP + code-intel MCP + OTel merge = Phase 2/3.
 
@@ -56,9 +58,17 @@ intra-repo complement, not a replacement.
 
 ## Staged (NOT done — requires separate build sessions + 888_HOLD where marked)
 - Phase 2: git change-coupling pass (emerge git_directory param); cycles via
-  grimp; exceptions ledger with expiry; CI wiring (fail-on-new).
-- Phase 3: code-intel MCP (Kuzu-backed, read-only, per-worktree F1).
+  grimp; CI wiring (fail-on-new).
+  — PARTIALLY LANDED (FI-003, 2026-09-16): exceptions ledger v1 with expiry schema
+  (forge_work/2026-09-16-code-intel-phase0/ledger/); A-FORGE TS gate (depcruise,
+  domain-purity CLEAN baseline) + madge cycle census (3 cycles); semantic layer
+  via CodeGraphContext 0.6.13 embedded FalkorDB Lite (arifOS indexed, 108K CALLS
+  edges, CLI-queryable); envelope + reconciliation schemas v1 (drafts, unwired);
+  Journey-1 reconciliation bundle (arif_seal→vault_receipt, PLAUSIBLE).
+- Phase 3: code-intel MCP (**CORRECTED at ratification: CGC 0.6.13 + embedded
+  FalkorDB Lite per-worktree — Kuzu REJECTED**, see RATIFICATION). Read-only.
 - Phase 4: pre-PR constitutional gate (changed-subgraph + rule eval).
+- Skill surface: `skills/codebase-reality/` (CLI-first evidence contract, 7 modes).
 - 888_HOLD: any structural mutation derived from these maps (moving shared
   modules, boundary rule removal) — static evidence ≠ institutional intent.
 
