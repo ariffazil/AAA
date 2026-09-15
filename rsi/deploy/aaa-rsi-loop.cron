@@ -1,0 +1,32 @@
+# /etc/cron.d/aaa-rsi-loop
+# AAA RSI Loop — capability evolution (the EXHALE half of the learning loop).
+#
+# Ratified: F13 SOVEREIGN (Arif Fazil) 2026-09-15, verdict PARTIAL-SEAL.
+#   A skill=SEAL · B capability=SEAL(verifier) · C intelligence=PARTIAL · D governance=HOLD
+#
+# Problem it closes: measured 2026-09-15, the RSI ledger held 26 proposals and
+# 0 applied over 5 days — the loop inhaled (observed, proposed) but never
+# exhaled (applied, re-tested, updated h). This job writes the exhale.
+#
+# Doctrine: /root/AAA/rsi/README.md
+# Boundary: the loop may not write F1-F13, kernel, canon, judge, verifier, or its
+#   own promotion threshold. Enforced in promote.py::FORBIDDEN_PATHS (hardcoded).
+#   promote.py self-tests the boundary on every run; a leak is reported as HOLD.
+#
+# F1 AMANAH    — all writes are append-only or atomic-replace; skill edits are backed up.
+# F2 TRUTH     — frequency is a measured count; a heartbeat is not a diagnosis.
+# F11 AUDIT    — every atom gets a verification receipt; every run gets a loop receipt.
+# F13 SOVEREIGN— Layer 3/4 proposals queue for F13; never auto-applied.
+#
+# Rollback: rm /etc/cron.d/aaa-rsi-loop
+# Verify:   tail -20 /var/log/arifos/rsi-loop.log
+
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+# Every 6 hours. 6h sits above the session-close cadence (the signal it governs)
+# and below the governance cadence it must not alias.
+7 */6 * * * root /usr/bin/python3 /root/AAA/rsi/loop.py --window 7 >> /var/log/arifos/rsi-loop.log 2>&1; tail -n 3000 /var/log/arifos/rsi-loop.log > /tmp/rsi-loop.tmp && mv /tmp/rsi-loop.tmp /var/log/arifos/rsi-loop.log
+
+# Daily boundary self-test — proves Layer 5 still holds even on quiet cycles.
+43 4 * * * root /usr/bin/python3 /root/AAA/rsi/promote.py >> /var/log/arifos/rsi-boundary.log 2>&1; tail -n 1000 /var/log/arifos/rsi-boundary.log > /tmp/rsi-b.tmp && mv /tmp/rsi-b.tmp /var/log/arifos/rsi-boundary.log

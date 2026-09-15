@@ -1,0 +1,43 @@
+# AAA RSI Loop — F13-owned thresholds
+# ====================================
+# OWNERSHIP: F13 SOVEREIGN. This file is READ-ONLY to the loop.
+# The loop may read config; it may NEVER write it. Attempting to write is a
+# constitutional breach and is blocked in promote.py by FORBIDDEN_PATHS
+# (hardcoded in module, deliberately NOT configurable from here).
+# Change protocol: F13 edits + appends a line to state/config-lineage.jsonl.
+
+version: "1.0.0"
+ratified_by: "F13 SOVEREIGN (Arif Fazil)"
+ratified_at: "2026-09-15"
+verdict_class: "PARTIAL-SEAL — A=SEAL, B=SEAL(verifier), C=PARTIAL, D=HOLD"
+
+window_days: 7
+
+# Independent-verification thresholds.
+verification:
+  min_evidence_items: 1
+  require_falsifier: true          # every atom must state what would prove it wrong
+  require_live_rederivation: true  # verifier re-derives from live surface, not from the claim
+  require_layer_match: true        # claim layer must equal evidence layer
+  require_independent_actor: true  # verifier process != producer process
+
+# Promotion thresholds — WHAT MAY BE CHANGED AUTOMATICALLY.
+promotion:
+  skill_layer: auto_verified      # Layer 1 — reversible, digital, MUBAH
+  capability_layer: auto_verified # Layer 2 — capability graph node upsert
+  policy_layer: propose_only      # Layer 3 — invariant proposals queue for F13
+  judgment_layer: propose_only    # Layer 4 — ranking/weight proposals queue for F13
+  governance_layer: forbidden     # Layer 5 — HOLD. Never. Hardcoded too.
+
+  min_frequency_for_capability: 2 # a one-off is an incident, not a capability
+  max_promotions_per_run: 10      # attention budget: else the loop floods the surface
+  max_attempts_per_atom: 3        # after N failed verifications the claim is retired, not re-scanned
+
+# Ledger discipline: the loop MUST write an exhale record, not only an inhale.
+ledger:
+  path: "/root/.local/share/arifos/rsi-ledger.jsonl"
+  require_exhale: true            # a run with zero exhale is a FAILED run, logged as such
+
+notify:
+  aa_group_on: ["promoted", "hold_forbidden", "run_failed"]
+  silent_when: ["no Candidates", "no_change"]

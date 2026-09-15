@@ -1,0 +1,8 @@
+# RSI loop — running state is EVIDENCE, not source.
+# The append-only stores and receipts grow with every cycle; they are not code and
+# not hand-authored, so they stay out of version control. The CODE, config, and
+# README are what get sealed. Rebuildable state (capability-graph.json) is derived
+# from the SOT at /root/AAA/ops/capabilities/capability-ledger.yaml plus atoms.jsonl.
+state/
+__pycache__/
+*.pyc

@@ -1,0 +1,8 @@
+{
+  "skill_id": "reference_integrity",
+  "agent": "hermes-rsi-loop",
+  "lesson": "DEAD_POINTER observed 3x \u2014 impact=unresolved_ref. First surface: session:tool:patch \u2014 all four independent checks passed",
+  "evidence": "[{\"layer\": \"artifact\", \"source\": \"session:tool:patch\", \"excerpt\": \"/apex-zen-bridge-score.py\\\\n+++ b//root/.hermes/scripts/apex-zen-bridge-score.py\\\\n@@ -149,11 +149,26 @@\\\\n \\\\n # Energy2 \u2014 dead pointers: expected events that never resolve\\\\n dp = json.loads((DOCS / 'dead-pointers.json').read_text()) if (DOCS / 'dead-pointers.json').exists() else []\\\\n-stale = sum(1 for\"}, {\"layer\": \"artifact\", \"source\": \"session:tool:terminal\", \"excerpt\": \"r['operational'])\\\\n155:e2 = max(0.0, 1.0 - op_stale / op_total) if op_total else 0.0\\\\n156:ev('Energy2', e2, f'{len(dp)} dead pointers; {op_stale}/{op_total} operational citations unresolved -> events_expected but not produced')\\\", \\\"exit_code\\\": 0, \\\"error\\\": null}\"}]",
+  "atom_id": "ATOM-16e14366aee9",
+  "verified_by": "hermes-rsi-verifier"
+}
