@@ -19,6 +19,14 @@ holds: Caddy exact /a2a · JWS card keys · medical purge (Pilihan A) · WELL bi
 
 # AAA — Attention Plane & Federation Registry
 
+[![🧠 Agentic CI](https://github.com/ariffazil/AAA/actions/workflows/agentic-ci.yml/badge.svg)](https://github.com/ariffazil/AAA/actions/workflows/agentic-ci.yml)
+[![🛡️ Governance Gate](https://github.com/ariffazil/AAA/actions/workflows/governance-gate.yml/badge.svg)](https://github.com/ariffazil/AAA/actions/workflows/governance-gate.yml)
+[![🔐 Gitleaks](https://github.com/ariffazil/AAA/actions/workflows/gitleaks.yml/badge.svg)](https://github.com/ariffazil/AAA/actions/workflows/gitleaks.yml)
+[![Docker Image](https://img.shields.io/badge/ghcr.io-ariffazil%2Faaa--a2a-2496ED?logo=docker)](https://github.com/ariffazil/AAA/pkgs/container/aaa-a2a)
+[![A2A Protocol](https://img.shields.io/badge/A2A-1.0-6C47FF)](./a2a/CANONICAL_SURFACE.md)
+[![Node](https://img.shields.io/badge/node-%E2%89%A522-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org)
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](./LICENSE)
+
 ## The attention plane of the arifOS federation — compressing reality into sovereign attention.
 
 AAA converts federated reality into actionable sovereign attention through observation, verification, registration, and routing. It does not judge (arifOS), execute (A-FORGE), or witness (arifFlow). It makes reality visible, trustworthy, and actionable.
@@ -211,11 +219,34 @@ The arifOS Federation organizes its 35 repositories into five distinct operation
 
 ---
 
+## A2A Compliance (v1.0)
+
+| Required Element | Status | Where |
+|------------------|--------|-------|
+| Agent card discovery at `/.well-known/agent-card.json` | ✅ | [`public/.well-known/`](./public/.well-known/) · live: <https://aaa.arif-fazil.com/.well-known/agent-card.json> |
+| Required card fields (`name`, `description`, `url`, `version`, `capabilities`, `defaultInputModes`, `defaultOutputModes`, `skills`, `securitySchemes`) | ✅ | `.well-known/agent-card.json` (8 skills) |
+| JSON-RPC transport at `/a2a/` with `A2A-Version: 1.0` | ✅ | [a2a/](./a2a/) · JSON-RPC 2.0 wire |
+| Protocol binding declaration (`protocolBinding: JSONRPC`) | ✅ | `supportedInterfaces` |
+| Authenticated extended card | ✅ | `capabilities.authenticated_extended_card: true` |
+| Agent metadata card (`agent.json`) | ✅ | `.well-known/agent.json` |
+| Protocol conformance evidence | ✅ | [`PROTOCOL_CONFORMANCE.md`](./PROTOCOL_CONFORMANCE.md) |
+| Canonical live surface doc | ✅ | [`a2a/CANONICAL_SURFACE.md`](./a2a/CANONICAL_SURFACE.md) |
+
+Fetch the card from any A2A client:
+
+```bash
+curl -s https://aaa.arif-fazil.com/.well-known/agent-card.json | jq '{name, version, protocolVersion}'
+```
+
+---
+
 ## Documentation
 
 - [Full Technical README](docs/README-FULL.md)
 - [Federation Architecture](docs/FEDERATION.md)
 - [A2A Protocol Spec](docs/A2A_ORGAN_REGISTRY.md)
+- [Protocol Conformance](PROTOCOL_CONFORMANCE.md)
+- [Agent Card (live)](https://aaa.arif-fazil.com/.well-known/agent-card.json)
 - [Deployment Guide](DEPLOYMENT.md)
 - [Changelog](CHANGELOG.md)
 - [Security Policy](SECURITY.md)
