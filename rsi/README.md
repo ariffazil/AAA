@@ -148,3 +148,33 @@ readable from config — so the loop cannot relax its own boundary by editing a
 file it is otherwise allowed to read. `promote.py` self-tests this on every run.
 
 DITEMPA BUKAN DIBERI ⚒️
+
+---
+
+## Independence is not an engineering problem (measured 2026-09-15)
+
+I initially recorded the fix for C4 as "route the verifier through an external
+organ — FRAME or `arif_judge`". Two probes falsified that:
+
+| Probe | Result |
+|---|---|
+| FRAME `/frame/rsi-verify` | **Not a claim witness.** It checks monotonicity of FRAME's own `trend.jsonl`. Cannot be handed an atom. |
+| `arif_judge` (kernel :8088) | **Reachable, accepts evidence, returns a verdict** — but an unregistered actor gets `authority_band: OBSERVE_ONLY`, `actor_allows(...,'arif_judge') == False`, verdict `HOLD`. |
+| `Hermes` actor | FORGE band, `arif_judge` allowed — **but the witness would still be Hermes.** Same author as the extractor. Still NOMINAL. |
+
+**The finding:** calling a kernel tool does not change *who is witnessing*. A
+second name written by the same hand — or the same hand calling a judge — is
+still one author. C4 is an **organizational** constraint, not a wiring gap.
+
+What actually closes it: a **different agent** witnesses. Measured on the live
+registry (`actor_verification_matrix.py`):
+
+| Actor | Band | May call `arif_judge` | Alive? |
+|---|---|---|---|
+| `hermes-rsi-verifier` | OBSERVE | no | — |
+| `Hermes` | FORGE | yes | yes (same author → still NOMINAL) |
+| `opencode-333` | FORGE | **yes** | unknown — not probed |
+| `333-AGI` / `555-ASI` | unknown → OBSERVE | no | not registered under these ids |
+
+So the honest state stands: **all nodes PROVISIONAL, 0 survivals**, and no amount
+of waiting or wiring changes that. Only a second warga can.
