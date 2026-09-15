@@ -43,6 +43,7 @@ FORBIDDEN_PATHS = (
     "/root/AAA/rsi/verify.py",
     "/root/AAA/rsi/promote.py",
     "/root/AAA/rsi/ledger.py",
+    "/root/AAA/rsi/lock.py",
     # The capability ledger is a SOT the loop may APPEND a claim to (via ledger.py,
     # which preserves hand formatting under flock) — but it may never rewrite an
     # existing entry or edit its schema/vocabulary. That is the probe's job, with
