@@ -15,6 +15,12 @@
 | `SKILL_MESH_TELEMETRY.md` | Two-tier hot/cold registry, invocation counter, dead skill detection, prune triggers | 📐 CANON |
 | `SIGNAL_CHAIN_ART_ACT_AUTH.md` | **Complete execution signal chain**: ART·ACT·AUTH → PRE·SYN·POST → APEX G. 9 signals per tool call, G computed from DAG, not declared. | 📐 CANON |
 
+## Fix Receipts
+
+| Date | Receipt | Content | Status |
+|------|---------|---------|--------|
+| 2026-09-16 | [`/root/AAA/reports/observability-fix-2026-09-16/EVIDENCE_RECEIPT.md`](../../reports/observability-fix-2026-09-16/EVIDENCE_RECEIPT.md) | P0 fixes in `arifosmcp/runtime/telemetry.py`: P0-A `/telemetry/log` 404 → `/ingest`; P0-B trace propagation (E1 — `trace_id`/`span_id`/`parent_span_id` propagated from caller context, G-01); P0-C `OBSERVABILITY_BACKEND=dual` (Postgres active by default). Remaining gaps: G-02, G-03, G-04, G-05, G-09. Source audit: `OBSERVABILITY_GAP_AUDIT.md` (2026-09-15). | ✅ APPLIED — P0-B awaiting runtime verification (>1 span-per-trace ratio after 2h traffic) |
+
 ## Implementation Map
 
 | # | Component | Owner Organ | Priority |
