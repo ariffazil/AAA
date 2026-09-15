@@ -13,7 +13,9 @@
     "f0_error_pct": 4.1,
     "voiced_frames_pct": 82,
     "spectral_centroid_hz": 1356,
-    "pitch_setting": 6
+    "pitch_setting": 6,
+    "f0_measured_runtime_hz": 179.4,
+    "f0_note": "f0_median_hz 246.9 is synthetic design spec (does NOT reproduce); f0_measured_runtime_hz 179.4 is measured runtime truth on real BM text."
   },
   "audio_files": [
     "/tmp/i-arif-v9-sopi-pitch6-test.ogg",

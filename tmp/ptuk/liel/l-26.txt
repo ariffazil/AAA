@@ -1,0 +1,34 @@
+Docusign Envelope ID: BCBF091A-82F5-40AD-846A-E840C6C56334
+LNG INVESTMENTS EUROPE LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+2. MATERIAL ACCOUNTING POLICIES (CONTINUED)
+2.10 Impairment (continued)
+ii) Financial assets (continued)
+An impairment loss in respect of debt investments measured at fair value through other comprehensive income is recognised
+in profit or loss and the allowance account is recognised in other comprehensive income.
+All financial assets, except for those measured at fair value through profit or loss and equity investments measured at fair value
+through other comprehensive income, are subject to impairment. ,
+iii) Other assets
+The carrying amounts of other assets, other than inventories and deferred tax assets are reviewed at each reporting date to
+determine whether there is any indication of impairment.
+If any such indication exists, the asset’s recoverable amount is estimated, An impairment loss is recognised if the carrying
+amount of an asset or the cash-generating unit to which it belongs exceeds its recoverable amount. Impairment losses are
+recognised in the profit or loss.
+In respect of other assets, impairment losses are reversed if there has been a change in the estimates used to determine the
+recoverable amount. An impairment loss is reversed only to the extent that the asset’s carrying amount does not exceed the
+carrying amount that would have been determined, net of depreciation or amortisation, if no impairment loss had been
+recognised.
+A cash-generating unit is the smallest identifiable asset group that generates cash flows from continuing use that are largely
+independent from other assets and groups. An impairment loss recognised in respect of a cash-generating unit is allocated.
+The recoverable amount is the greater of the asset’s fair value less cost to sell and its value-in-use. In assessing value-in-use,
+the estimated future cash flows are discounted to their present value using a pre-tax discount rate that reflects current market
+assessments of the time value of money and the risks specific to the asset. For an asset that does not generate largely
+independent cash inflows, the recoverable amount is determined for the cash-generating unit to which the asset belongs.
+Reversals of impairment losses are credited to the profit or loss in the year in which the reversals are recognised.
+2.11 Cash and cash equivalents
+Cash and cash equivalents in the statement of financial position comprise of cash at banks, deposits with licensed financial
+institutions and highly liquid investments which have an insignificant risk of changes in fair value and are used by the
+Company in the management of their short-term commitments. For the purpose of the statements of cash flows, cash and cash
+equivalents are presented net of bank overdrafts and deposits restricted, if any.
+26

@@ -1,0 +1,206 @@
+{
+  "schema": "organ_taxonomy.v2",
+  "generated": "2026-09-15",
+  "source_sot": "/root/AAA/federation/organs.yaml",
+  "status": "DRAFT-awaiting-F13-ratification",
+  "organs": [
+    {
+      "organ_id": "arifos",
+      "display_name": "arifOS",
+      "class": "CORE",
+      "authority_ceiling": "JUDGE_ONLY"
+    },
+    {
+      "organ_id": "a-forge",
+      "display_name": "A-FORGE",
+      "class": "CORE",
+      "authority_ceiling": "EXECUTE_AFTER_SEAL"
+    },
+    {
+      "organ_id": "aaa",
+      "display_name": "AAA",
+      "class": "CORE",
+      "authority_ceiling": "DISPLAY_ONLY"
+    },
+    {
+      "organ_id": "openclaw",
+      "display_name": "OpenClaw",
+      "class": "EDGE",
+      "authority_ceiling": "DISPLAY_ONLY"
+    },
+    {
+      "organ_id": "geox",
+      "display_name": "GEOX",
+      "class": "CORE",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "organ_id": "wealth",
+      "display_name": "WEALTH",
+      "class": "CORE",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "organ_id": "well",
+      "display_name": "WELL",
+      "class": "CORE",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "organ_id": "arifflow",
+      "display_name": "arifFLOW",
+      "class": "METABOLISM",
+      "authority_ceiling": "METABOLIZE_ONLY"
+    },
+    {
+      "organ_id": "signal",
+      "display_name": "SIGNAL",
+      "class": "CORE",
+      "authority_ceiling": "OBSERVE_ONLY"
+    },
+    {
+      "organ_id": "frame",
+      "display_name": "FRAME",
+      "class": "CORE",
+      "authority_ceiling": "ADVISORY_ONLY"
+    },
+    {
+      "organ_id": "minimax-media",
+      "display_name": "MiniMax Media MCP",
+      "class": "SUPPORT",
+      "authority_ceiling": "OBSERVE_AND_GENERATE"
+    },
+    {
+      "organ_id": "vault999",
+      "display_name": "VAULT999",
+      "class": "MEMORY",
+      "authority_ceiling": "APPEND_ONLY"
+    },
+    {
+      "organ_id": "fed",
+      "display_name": "FED",
+      "class": "ADVISORY",
+      "authority_ceiling": "ADVISORY_ONLY"
+    },
+    {
+      "organ_id": "flame",
+      "display_name": "FLAME",
+      "class": "ADVISORY",
+      "authority_ceiling": "ADVISORY_WORKER"
+    },
+    {
+      "organ_id": "hermes",
+      "display_name": "HERMES",
+      "class": "EDGE",
+      "authority_ceiling": "RELAY_ONLY"
+    },
+    {
+      "organ_id": "opencode",
+      "display_name": "OpenCode",
+      "class": "EDGE",
+      "authority_ceiling": "EDGE_AGENT"
+    },
+    {
+      "organ_id": "arif-fazil-com",
+      "display_name": "arif-fazil.com",
+      "class": "EDGE",
+      "authority_ceiling": "DISPLAY_ONLY"
+    },
+    {
+      "organ_id": "aaa-signing",
+      "display_name": "AAA Signing",
+      "class": "SUPPORT",
+      "authority_ceiling": "CRYPTO_HELPER"
+    },
+    {
+      "organ_id": "surface-guard",
+      "display_name": "Surface Guard",
+      "class": "SUPPORT",
+      "authority_ceiling": "OBSERVE_ALERT"
+    },
+    {
+      "organ_id": "apa-email-bridge",
+      "display_name": "apa-email-bridge",
+      "class": "SUPPORT",
+      "authority_ceiling": "ACTUATE_AFTER_LEASE"
+    },
+    {
+      "organ_id": "apa-calendar-bridge",
+      "display_name": "apa-calendar-bridge",
+      "class": "SUPPORT",
+      "authority_ceiling": "ACTUATE_AFTER_LEASE"
+    },
+    {
+      "organ_id": "apa-github-bridge",
+      "display_name": "apa-github-bridge",
+      "class": "SUPPORT",
+      "authority_ceiling": "ACTUATE_AFTER_LEASE"
+    },
+    {
+      "organ_id": "apa-telegram-bridge",
+      "display_name": "apa-telegram-bridge",
+      "class": "SUPPORT",
+      "authority_ceiling": "ACTUATE_AFTER_LEASE"
+    },
+    {
+      "organ_id": "postgres",
+      "display_name": "postgres",
+      "class": "DATA",
+      "authority_ceiling": "unspecified"
+    },
+    {
+      "organ_id": "redis",
+      "display_name": "redis",
+      "class": "DATA",
+      "authority_ceiling": "unspecified"
+    },
+    {
+      "organ_id": "qdrant",
+      "display_name": "qdrant",
+      "class": "DATA",
+      "authority_ceiling": "unspecified"
+    },
+    {
+      "organ_id": "falkordb",
+      "display_name": "falkordb",
+      "class": "DATA",
+      "authority_ceiling": "unspecified"
+    },
+    {
+      "organ_id": "minio",
+      "display_name": "minio",
+      "class": "DATA",
+      "authority_ceiling": "unspecified"
+    },
+    {
+      "organ_id": "nats",
+      "display_name": "nats",
+      "class": "DATA",
+      "authority_ceiling": "unspecified"
+    },
+    {
+      "organ_id": "searxng",
+      "display_name": "searxng",
+      "class": "DATA",
+      "authority_ceiling": "unspecified"
+    },
+    {
+      "organ_id": "headscale",
+      "display_name": "headscale",
+      "class": "DATA",
+      "authority_ceiling": "unspecified"
+    },
+    {
+      "organ_id": "caddy",
+      "display_name": "caddy",
+      "class": "DATA",
+      "authority_ceiling": "unspecified"
+    },
+    {
+      "organ_id": "i-arif",
+      "display_name": "i-ARIF",
+      "class": "IDENTITY",
+      "authority_ceiling": "IDENTITY_SOVEREIGN"
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "title": "Syed Mokhtar Banking Consolidation — Bank Muamalat & the Islamic Mega-Bank Question",
+    "brief_date_utc": "2026-09-15",
+    "analyst": "i-ARIF (Hermes edge bridge) — computational output under F13 sovereign direction",
+    "epistemic_key": {
+      "OBS": "directly observed in a cited primary/secondary source",
+      "DER": "derived arithmetically from observed figures",
+      "INT": "interpretation / pattern recognition",
+      "SPEC": "speculation, labelled as such",
+      "VOID": "absence in the record"
+    }
+  },
+  "ownership": {
+    "syed_mokhtar_drb_hicom_pct": 55.92,
+    "syed_mokhtar_vehicle": "Etika Strategi Sdn Bhd",
+    "drb_hicom_bank_muamalat_pct": 70.0,
+    "khazanah_bank_muamalat_pct": 30.0,
+    "bank_muamalat_purchase_2008_rm_m": 1069.0,
+    "bank_muamalat_purchase_price_book": 1.2,
+    "pare_down_condition_pct": 40.0,
+    "pare_down_condition_year": 2008,
+    "pare_down_years_unmet": 18,
+    "forbes_2026_rank_malaysia": 10,
+    "forbes_2026_networth_usd_bn": 3.5
+  },
+  "bank_muamalat": {
+    "assets_rm_bn": {"FY2017": 22.89, "FY2022": 31.53, "Mar-2024": 39.40, "Dec-2025": 45.70},
+    "financing_growth_pct": {"FY2022": 18.0, "FY2023": 17.7, "FY2024": 14.1, "FY2025": 4.6, "sector_FY2025": 7.9},
+    "gif_pct": {"FY2018": 1.43, "FY2022": 0.85, "FY2023": 0.93, "FY2024": 1.05, "FY2025": 1.43, "1Q2026": 1.52, "industry_FY2023": 1.69},
+    "pbt_rm_m": {"FY2022": 306.7, "FY2024": 129.3, "FY2025": 307.1, "1H2026": 109.4},
+    "net_profit_rm_m": {"FY2023": 211.81},
+    "capital_pct": {
+      "CET1_Jun2026": 12.020, "CET1_Dec2025": 12.273,
+      "Tier1_Jun2026": 13.439, "Tier1_Dec2025": 13.694,
+      "Total_Jun2026": 17.867, "Total_Dec2025": 18.134
+    },
+    "shareholders_equity_rm_bn_jun2026": 3.23,
+    "share_capital_rm_bn": 1.195,
+    "funding": {"deposits_pct_of_funding": 90.2, "casa_pct": 31.3, "retail_pct_of_deposits_and_IA": 12.0, "top20_depositor_pct": 47.0, "lcr_pct": 160.3, "nsfr_pct": 108.3},
+    "ratings": {"MARC": "A+/MARC-1/Stable (affirmed 18 Aug 2026)", "RAM": "A2/Stable/P1"},
+    "akpk_accounts_rm_m": 100.0,
+    "branches": ">60"
+  },
+  "market_structure": {
+    "islamic_bank_assets_comparison_rm_bn": {
+      "Maybank Islamic (subsidiary)": 390.0,
+      "Bank Rakyat (cooperative/DFI)": 131.0,
+      "Bank Islam (largest standalone)": 106.7,
+      "MBSB Bank": 64.4,
+      "Bank Muamalat": 45.7,
+      "Al Rajhi Malaysia": 20.9
+    },
+    "mbsb_group_total_assets_rm_bn_1Q2026": 67.96,
+    "affin_bank_total_assets_rm_bn_Jun2026": 129.40,
+    "affin_islamic_total_assets_rm_bn_1Q2026": 51.39,
+    "islamic_system_assets_rm_tn_jan2026": 1.3,
+    "islamic_share_of_banking_assets_pct_jan2026": 34.3,
+    "islamic_financing_share_of_system_loans_pct": 44.0,
+    "government_target_pct": 50.0,
+    "share_2007_pct": 13.7,
+    "top7_islamic_share_of_islamic_system_pct": 76.5,
+    "licences_2026": {"islamic_banks": 16, "international_islamic_bank": 1, "islamic_DFIs": 2}
+  },
+  "peers": {
+    "bank_islam": {"net_profit_2Q26_rm_m": 139.12, "net_profit_1H26_rm_m": 254.15, "assets_rm_bn": 106.7, "gif_pct": 0.98, "cet1_pct": 13.11, "market_cap_rm_bn": 4.78},
+    "mbsb": {"net_profit_2Q26_rm_m": 44.22, "net_profit_2Q25_rm_m": 95.56, "net_profit_1H26_rm_m": 74.36, "roe_2Q26_pct": 1.5, "guidance_roe_cut": "5-6% -> 2-3%", "nim_guidance": "2.0% -> 1.6%", "market_cap_rm_bn": 5.02}
+  },
+  "drb_hicom": {
+    "pbt_1Q2026_rm_m": 192.40, "pbt_2Q2026_rm_m": 148.12, "pbt_1H2026_rm_m": 340.52,
+    "net_profit_1H2026_rm_m": 75.56, "revenue_1H2026_rm_bn": 10.26,
+    "market_cap_rm_bn": 1.87, "share_price_rm": 0.97, "hlib_sotp_rm": 1.64,
+    "bank_muamalat_pbt_share_of_group_1H26_pct": 32.1
+  },
+  "valuation_triangulation": {
+    "equity_rm_bn": 3.23,
+    "bands": {"0.85x (MBSB-MIDF 2023 precedent)": 0.85, "1.00x book": 1.0, "1.20x (2008 DRB-HICOM purchase)": 1.2, "1.80x (BIMB-Bank Islam 2013)": 1.8}
+  },
+  "combinations_rm_bn": {
+    "MBSB Bank + Bank Muamalat": 110.1,
+    "Affin Islamic + Bank Muamalat": 97.1,
+    "Bank Islam + Bank Muamalat": 152.4,
+    "Bank Rakyat + Bank Muamalat": 176.7,
+    "MBSB Group + Bank Muamalat": 113.7
+  },
+  "scenarios": [
+    {"id": "S1", "label": "Status quo — no deal by end-2026", "prob": 0.50},
+    {"id": "S2", "label": "MBSB Bank + Bank Muamalat (EPF control)", "prob": 0.18},
+    {"id": "S3", "label": "Partial sell-down / strategic minority (Gulf or local)", "prob": 0.15},
+    {"id": "S4", "label": "Sarawak / Affin Islamic absorbs Bank Muamalat", "prob": 0.09},
+    {"id": "S5", "label": "IPO / listing of Bank Muamalat (Bursa)", "prob": 0.05},
+    {"id": "S6", "label": "Orderly three-way (foreign partner + local)", "prob": 0.03}
+  ],
+  "timeline": [
+    {"year": "2008", "event": "DRB-HICOM buys 70% of Bank Muamalat from Bukhary Capital for RM1.069bn; BNM condition: pare down to 40%", "outcome": "CONDITION UNMET"},
+    {"year": "2010", "event": "Talks with Bahrain's Al Baraka Banking Group for up to 49%", "outcome": "ABORTED"},
+    {"year": "2012-13", "event": "Talks with Affin Holdings for a stake sale", "outcome": "CEASED"},
+    {"year": "2013", "event": "BIMB Holdings receives offer notice for Khazanah's 30%", "outcome": "ABORTED"},
+    {"year": "2014-15", "event": "CIMB + RHB Capital + MBSB three-way mega Islamic bank (RM62bn-class)", "outcome": "ABORTED"},
+    {"year": "2015-16", "event": "MBSB + Bank Muamalat — BNM-approved talks, valuation & control deadlock", "outcome": "ABORTED Feb 2016"},
+    {"year": "2017", "event": "BNM go-ahead for a second MBSB–Bank Muamalat round", "outcome": "DID NOT CONCLUDE"},
+    {"year": "2019-20", "event": "Third MBSB–Bank Muamalat round (control: EPF vs DRB-HICOM)", "outcome": "CEASED Feb 2020"},
+    {"year": "2023", "event": "MBSB acquires MIDF from PNB (RM1.01bn, 0.85x book)", "outcome": "COMPLETED"},
+    {"year": "2024", "event": "DRB-HICOM explores Bank Muamalat IPO (RFP to banks)", "outcome": "NO DEFINITE PLAN"},
+    {"year": "2025", "event": "Sarawak hunts for a bank to merge with Affin; looks at Bank Muamalat, KFH, AmBank", "outcome": "NOT PURSUED ('not quite its cup of tea')"},
+    {"year": "2026", "event": "June: Sarawak completes Affin takeover; Aug: MARC affirms BMMB; KFH winding down", "outcome": "STATUS QUO — 70% intact"}
+  ],
+  "void_vocabulary": {
+    "Governance & shareholder": ["shareholder approval", "BNM approval in 2026", "extension granted 2026", "waiver", "single-tier consolidation"],
+    "Transaction mechanics": ["valuation", "share swap ratio", "due diligence", "adviser mandate", "binding agreement"],
+    "Regulatory & capital": ["capital injection", "rights issue", "sukuk issuance for M&A", "Basel III impact", "systemic designation"],
+    "Islamic finance specifics": ["Shariah committee opinion", "sukuk structure", "takaful integration", "waqf/zakat impact"],
+    "People & governance": ["CEO succession", "board renewal", "succession plan", "key-man",
+                            "Khazanah exit timetable"],
+    "Numbers": ["goodwill figure", "synergy target", "cost-to-income post-merger", "integration cost", "branch overlap count"],
+    "Forward guidance": ["IPO timetable", "listing venue", "dividend policy", "target ROE", "capital plan"],
+    "Political economy": ["federal-state negotiation", "GLC mandate", "Bumiputera equity policy", "Sarawak rights"]
+  },
+  "sources": [
+    "MARC Ratings — affirms Bank Muamalat A+/MARC-1/Stable (18 Aug 2026)",
+    "Bank Muamalat Pillar 3 Disclosures, 1H ended 30 June 2026",
+    "The Edge Malaysia — Al Rajhi Malaysia chooses growth over exit (15 Sep 2026)",
+    "The Edge Malaysia — Sarawak on the prowl for a bank to merge with Affin (Edge Weekly Apr 2025)",
+    "The Edge Malaysia — Syed Mokhtar's MMC tells bankers to drop port listing (11 Sep 2026)",
+    "The Edge Malaysia — MBSB cuts guidance after 2Q (27 Aug 2026)",
+    "The Edge Malaysia — Bank Islam 2Q profit rises 10% (26 Aug 2026)",
+    "The Edge Malaysia — Tax swing weighs on DRB-Hicom 2Q (18 Aug 2026)",
+    "The Edge Malaysia — EPF and DRB-Hicom jostle for control (Edge Weekly 2015) / End of the road (2016)",
+    "The Edge Malaysia — Bank Muamalat looking at listing (Feb 2024); no definite plans for listing (Jul 2024)",
+    "The Star — Sound prospects for DRB-Hicom (26 Aug 2026); MBSB 2Q net profit (27 Aug 2026)",
+    "Fitch Ratings — Malaysian Islamic Banks to Continue Outpacing Conventional Banks (3 Feb 2026)",
+    "Bernama — Islamic banking assets RM1.3tn / 34.3% (Jan 2026)",
+    "Bank Negara Malaysia — mega Islamic bank licence terms (USD1bn paid-up capital)",
+    "Affin Bank / Affin Islamic Bank quarterly reports (1Q26, 2Q26)",
+    "MBSB Berhad / MBSB Bank interim financial statements; Kenanga & Public Invest research notes (2026)",
+    "Christopher & Lee Ong — Malaysian banking landscape count (March 2026)",
+    "Forbes — Syed Mokhtar AlBukhary profile (Sep 2026)"
+  ]
+}

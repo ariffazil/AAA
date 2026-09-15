@@ -1,0 +1,41 @@
+Docusign Envelope ID: 021C6E53-9699-4EEA-B728-AF11912A8BA9
+PETCO TRADING (UK) LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+22. FINANCIAL INSTRUMENTS (CONTINUED)
+Market risk (continued)
+Currency risk sensitivity analysis (continued)
+The sensitivity analysis is hypothetical and should not be considered to be predictive of future
+performance because the Company’s actual exposure to market prices is constantly changing with
+changes in the Company’s portfolio of among others, commodity, debt and foreign currency
+contracts. Changes in fair values or cash flows based on a variation in a market variable cannot be
+extrapolated because the relationship between the change in market variable and the change in fair
+value or cash flows may not be linear.
+In addition, the effect of a change in a given market variable is calculated independently of any
+change in another assumption and mitigating actions that would be taken by the Company. In reality,
+changes in one factor may contribute to changes in another, which may magnify or counteract the
+sensitivities.
+The following table demonstrates the indicative pre-tax effects on the profit or loss and equity of
+applying reasonably foreseeable market movements in the following currency exchange rates:
+Appreciation in Effect on
+foreign currency rate profit or loss
+% USD’000
+31.12.2025 .
+GBP 10 3,549
+EUR 5 181
+31.12.2024
+GBP 10 56
+EUR 5 21
+This analysis assumes all other variables, in particular interest rates, remain constant. A depreciation
+in foreign currency rate above would have had equal but opposite effect, on the basis that all other
+variables remain constant.
+Commodity price risk
+The Company is exposed to changes in crude oil, petroleum products and gas prices which may
+affect the value of the Company’s assets, liabilities or expected future cash flows. To mitigate these
+exposures from a business perspective, the Company enters various financial instruments. In
+effecting these transactions, the Company operates within policies and procedures designed to ensure
+risks are minimised.
+All financial instruments positions are marked-to-market by independent risk management
+department and reported to management for performance monitoring and risk management purposes
+on a daily basis.
+65

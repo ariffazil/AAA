@@ -1,0 +1,768 @@
+{
+  "capability_domains": {
+    ".archive": [
+      ".archive"
+    ],
+    ".broken": [
+      ".broken-archive"
+    ],
+    ".learning": [
+      ".learning"
+    ],
+    ".system": [
+      ".system"
+    ],
+    "AAA": [
+      "AAA-OCR-optical-compression",
+      "AAA-asr-glm-ingest",
+      "AAA-audio-emd-pipeline",
+      "AAA-audio-qualia-doctrine",
+      "AAA-human-physique-topology",
+      "AAA-setup-help",
+      "AAA-shadow-mode",
+      "AAA-somatic-emd-pipeline",
+      "AAA-somatic-engine-catalog",
+      "AAA-somatic-music-doctrine",
+      "AAA-tts-engine-catalog",
+      "AAA-voice-cloning-mimo-minimax",
+      "AAA-voice-cloning-qwen-cloud"
+    ],
+    "AGI": [
+      "AGI-agentic-web-delivery",
+      "AGI-decisions-reflect",
+      "AGI-dream-engine",
+      "AGI-graph-engineering-patterns",
+      "AGI-multimodal-bridge",
+      "AGI-nusantara-substrate",
+      "AGI-plan-dag",
+      "AGI-web-optimization"
+    ],
+    "AGY": [
+      "AGY-scar-hardening"
+    ],
+    "APEX": [
+      "APEX-quantum-eureka"
+    ],
+    "ASI": [
+      "ASI-agent-invariants",
+      "ASI-agentic-architecture",
+      "ASI-agentic-governance",
+      "ASI-fabrication-prevention",
+      "ASI-summarize"
+    ],
+    "AUDIT": [
+      "AUDIT-repo-reality"
+    ],
+    "BIJAKSANA": [
+      "BIJAKSANA-compile"
+    ],
+    "CLAUDE": [
+      "CLAUDE-agentic-state",
+      "CLAUDE-meta-mesa",
+      "CLAUDE-zen-router"
+    ],
+    "FORGE": [
+      "FORGE-act-federation-ingress",
+      "FORGE-agentic-web-builder",
+      "FORGE-call-map",
+      "FORGE-ci-diagnose",
+      "FORGE-code-analysis",
+      "FORGE-context-compressor",
+      "FORGE-cross-agent-handoff",
+      "FORGE-cross-repo-doc-zen",
+      "FORGE-design-intelligence",
+      "FORGE-did-web-identity",
+      "FORGE-document-intelligence",
+      "FORGE-ephemeral-genesis",
+      "FORGE-esm-require-guard",
+      "FORGE-fastapi-api-builder",
+      "FORGE-fastmcp",
+      "FORGE-federation-manifest",
+      "FORGE-github-ops",
+      "FORGE-google-workspace",
+      "FORGE-governance-jsonld",
+      "FORGE-hermes-self-evolution",
+      "FORGE-infra-crons",
+      "FORGE-infra-guardian",
+      "FORGE-issue-triage",
+      "FORGE-kimi-code",
+      "FORGE-komda-color-law",
+      "FORGE-lsp-pre-edit-gate",
+      "FORGE-mcp-a2a-agentic",
+      "FORGE-mcp-gui",
+      "FORGE-model-monitor",
+      "FORGE-musyawarah-gotong",
+      "FORGE-nextjs-mastery",
+      "FORGE-onboarding",
+      "FORGE-postgres-schema-design",
+      "FORGE-react-spa-discipline",
+      "FORGE-redis-qdrant-integration",
+      "FORGE-repo-intelligence",
+      "FORGE-route-least-power",
+      "FORGE-seal-a-close",
+      "FORGE-secret-hygiene",
+      "FORGE-spatial-grounding",
+      "FORGE-subagent-lifecycle",
+      "FORGE-subagent-spawn",
+      "FORGE-symlink-audit",
+      "FORGE-t3a-binding-matrix",
+      "FORGE-tailwind-tokens",
+      "FORGE-telegram-audit",
+      "FORGE-vault999-witness",
+      "FORGE-visual-qa-w3",
+      "FORGE-well-boundary-repair"
+    ],
+    "HERMES": [
+      "HERMES-opencode-protocol"
+    ],
+    "KERNEL": [
+      "KERNEL-trinity-33"
+    ],
+    "MY": [
+      "MY-REALITY-STACK"
+    ],
+    "QWEN": [
+      "QWEN-agentic-state",
+      "QWEN-meta-mesa",
+      "QWEN-zen-router"
+    ],
+    "RSI": [
+      "RSI-federation-mesh"
+    ],
+    "SEAL": [
+      "SEAL-discipline"
+    ],
+    "WISDOM": [
+      "WISDOM-reader"
+    ],
+    "a2a": [
+      "a2a-task-delegator"
+    ],
+    "aaa": [
+      "aaa-musyawarah-execution",
+      "aaa-pdf-voice-protocol",
+      "aaa-skill-governor-runtime"
+    ],
+    "arifos": [
+      "arifos-constitutional-judge",
+      "arifos-eight-verb-canonical",
+      "arifos-external-council",
+      "arifos-kernel-zen-audit"
+    ],
+    "audit": [
+      "audit-seal"
+    ],
+    "authority": [
+      "authority-reality-grounder"
+    ],
+    "browser": [
+      "browser-playwright-runner"
+    ],
+    "capabilities": [
+      "capabilities"
+    ],
+    "causal555": [
+      "causal555-pywhy"
+    ],
+    "cognitive": [
+      "cognitive-commands"
+    ],
+    "companion": [
+      "companion-clis"
+    ],
+    "contextstream": [
+      "contextstream-memory-code-search"
+    ],
+    "creative": [
+      "creative"
+    ],
+    "delta": [
+      "delta-omega-psi-multimodal-cognition"
+    ],
+    "dissipative": [
+      "dissipative-transition-hold"
+    ],
+    "docs": [
+      "docs"
+    ],
+    "domains": [
+      "domains"
+    ],
+    "duckdb": [
+      "duckdb-analytics-engine"
+    ],
+    "emem": [
+      "emem-shared-memory"
+    ],
+    "engineering": [
+      "engineering"
+    ],
+    "external": [
+      "external-artifact-verdict"
+    ],
+    "federation": [
+      "federation-connect-headscale",
+      "federation-identity-zen",
+      "federation-release-attestation"
+    ],
+    "fi": [
+      "fi-mesh-check",
+      "fi-qwen-upgrade",
+      "fi-zai-probe"
+    ],
+    "flash": [
+      "flash"
+    ],
+    "forge": [
+      "forge-multimodal-router",
+      "forge-vision-densify",
+      "forge-vss-verifier-suite"
+    ],
+    "geox": [
+      "geox-production-cockpit"
+    ],
+    "governance": [
+      "governance"
+    ],
+    "help": [
+      "help"
+    ],
+    "hermes": [
+      "hermes",
+      "hermes-coding-gateway",
+      "hermes-federated-identity",
+      "hermes-gateway-image-routing",
+      "hermes-telegram-stack-zen"
+    ],
+    "human": [
+      "human-meaning-membrane",
+      "human-state-estimation"
+    ],
+    "image": [
+      "image-analyzer-vision"
+    ],
+    "imagine": [
+      "imagine"
+    ],
+    "kernel": [
+      "kernel-bind"
+    ],
+    "know": [
+      "know-language",
+      "know-math",
+      "know-physics"
+    ],
+    "knowledge": [
+      "knowledge"
+    ],
+    "mapbox": [
+      "mapbox-cartography-gis"
+    ],
+    "mata": [
+      "mata"
+    ],
+    "media": [
+      "media"
+    ],
+    "memory": [
+      "memory-manage"
+    ],
+    "mimo": [
+      "mimo-audio",
+      "mimo-vision"
+    ],
+    "minimax": [
+      "minimax-image-gen"
+    ],
+    "mmx": [
+      "mmx-cli"
+    ],
+    "observe": [
+      "observe-ground"
+    ],
+    "openclaw": [
+      "openclaw",
+      "openclaw-human-meaning"
+    ],
+    "primitives": [
+      "primitives"
+    ],
+    "prompts": [
+      "prompts-chat-library"
+    ],
+    "qwen": [
+      "qwen-harness-tools"
+    ],
+    "qwencloud": [
+      "qwencloud-audio-tts",
+      "qwencloud-deploy",
+      "qwencloud-image-generation",
+      "qwencloud-model-selector",
+      "qwencloud-ops-auth",
+      "qwencloud-text",
+      "qwencloud-update-check",
+      "qwencloud-usage",
+      "qwencloud-video-generation",
+      "qwencloud-vision"
+    ],
+    "reality": [
+      "reality-loop-operator"
+    ],
+    "reflective": [
+      "reflective"
+    ],
+    "route": [
+      "route-dispatch"
+    ],
+    "rtc": [
+      "rtc-loop"
+    ],
+    "runpod": [
+      "runpod",
+      "runpod-mcp",
+      "runpod-usage"
+    ],
+    "runpodctl": [
+      "runpodctl"
+    ],
+    "runtime": [
+      "runtime"
+    ],
+    "sanctuary": [
+      "sanctuary-boundary-enforcer"
+    ],
+    "scar": [
+      "scar-bridge-install"
+    ],
+    "scripts": [
+      "scripts"
+    ],
+    "submission": [
+      "submission-readiness-audit"
+    ],
+    "substrate": [
+      "substrate"
+    ],
+    "token": [
+      "token-plan-image",
+      "token-plan-speech",
+      "token-plan-video"
+    ],
+    "understand": [
+      "understand",
+      "understand-chat",
+      "understand-dashboard",
+      "understand-diff",
+      "understand-domain",
+      "understand-explain",
+      "understand-figma",
+      "understand-knowledge",
+      "understand-onboard"
+    ],
+    "verify": [
+      "verify-gate"
+    ],
+    "warga": [
+      "warga"
+    ],
+    "wawabot": [
+      "wawabot-anthropology-surface"
+    ],
+    "wealth": [
+      "wealth-claim-state"
+    ],
+    "wisdom": [
+      "wisdom-scar-session-audit"
+    ],
+    "workflows": [
+      "workflows"
+    ],
+    "xauusd": [
+      "xauusd-trading"
+    ]
+  },
+  "rename_plan": [
+    {
+      "from": "AAA-OCR-optical-compression",
+      "to": "aaa-ocr-optical-compression"
+    },
+    {
+      "from": "AAA-asr-glm-ingest",
+      "to": "aaa-asr-glm-ingest"
+    },
+    {
+      "from": "AAA-audio-emd-pipeline",
+      "to": "aaa-audio-emd-pipeline"
+    },
+    {
+      "from": "AAA-audio-qualia-doctrine",
+      "to": "aaa-audio-qualia-doctrine"
+    },
+    {
+      "from": "AAA-human-physique-topology",
+      "to": "aaa-human-physique-topology"
+    },
+    {
+      "from": "AAA-setup-help",
+      "to": "aaa-setup-help"
+    },
+    {
+      "from": "AAA-shadow-mode",
+      "to": "aaa-shadow-mode"
+    },
+    {
+      "from": "AAA-somatic-emd-pipeline",
+      "to": "aaa-somatic-emd-pipeline"
+    },
+    {
+      "from": "AAA-somatic-engine-catalog",
+      "to": "aaa-somatic-engine-catalog"
+    },
+    {
+      "from": "AAA-somatic-music-doctrine",
+      "to": "aaa-somatic-music-doctrine"
+    },
+    {
+      "from": "AAA-tts-engine-catalog",
+      "to": "aaa-tts-engine-catalog"
+    },
+    {
+      "from": "AAA-voice-cloning-mimo-minimax",
+      "to": "aaa-voice-cloning-mimo-minimax"
+    },
+    {
+      "from": "AAA-voice-cloning-qwen-cloud",
+      "to": "aaa-voice-cloning-qwen-cloud"
+    },
+    {
+      "from": "AGI-agentic-web-delivery",
+      "to": "agi-agentic-web-delivery"
+    },
+    {
+      "from": "AGI-decisions-reflect",
+      "to": "agi-decisions-reflect"
+    },
+    {
+      "from": "AGI-dream-engine",
+      "to": "agi-dream-engine"
+    },
+    {
+      "from": "AGI-graph-engineering-patterns",
+      "to": "agi-graph-engineering-patterns"
+    },
+    {
+      "from": "AGI-multimodal-bridge",
+      "to": "agi-multimodal-bridge"
+    },
+    {
+      "from": "AGI-nusantara-substrate",
+      "to": "agi-nusantara-substrate"
+    },
+    {
+      "from": "AGI-plan-dag",
+      "to": "agi-plan-dag"
+    },
+    {
+      "from": "AGI-web-optimization",
+      "to": "agi-web-optimization"
+    },
+    {
+      "from": "AGY-scar-hardening",
+      "to": "agy-scar-hardening"
+    },
+    {
+      "from": "APEX-quantum-eureka",
+      "to": "apex-quantum-eureka"
+    },
+    {
+      "from": "ASI-agent-invariants",
+      "to": "asi-agent-invariants"
+    },
+    {
+      "from": "ASI-agentic-architecture",
+      "to": "asi-agentic-architecture"
+    },
+    {
+      "from": "ASI-agentic-governance",
+      "to": "asi-agentic-governance"
+    },
+    {
+      "from": "ASI-fabrication-prevention",
+      "to": "asi-fabrication-prevention"
+    },
+    {
+      "from": "ASI-summarize",
+      "to": "asi-summarize"
+    },
+    {
+      "from": "AUDIT-repo-reality",
+      "to": "audit-repo-reality"
+    },
+    {
+      "from": "BIJAKSANA-compile",
+      "to": "bijaksana-compile"
+    },
+    {
+      "from": "CLAUDE-agentic-state",
+      "to": "claude-agentic-state"
+    },
+    {
+      "from": "CLAUDE-meta-mesa",
+      "to": "claude-meta-mesa"
+    },
+    {
+      "from": "CLAUDE-zen-router",
+      "to": "claude-zen-router"
+    },
+    {
+      "from": "FORGE-act-federation-ingress",
+      "to": "forge-act-federation-ingress"
+    },
+    {
+      "from": "FORGE-agentic-web-builder",
+      "to": "forge-agentic-web-builder"
+    },
+    {
+      "from": "FORGE-call-map",
+      "to": "forge-call-map"
+    },
+    {
+      "from": "FORGE-ci-diagnose",
+      "to": "forge-ci-diagnose"
+    },
+    {
+      "from": "FORGE-code-analysis",
+      "to": "forge-code-analysis"
+    },
+    {
+      "from": "FORGE-context-compressor",
+      "to": "forge-context-compressor"
+    },
+    {
+      "from": "FORGE-cross-agent-handoff",
+      "to": "forge-cross-agent-handoff"
+    },
+    {
+      "from": "FORGE-cross-repo-doc-zen",
+      "to": "forge-cross-repo-doc-zen"
+    },
+    {
+      "from": "FORGE-design-intelligence",
+      "to": "forge-design-intelligence"
+    },
+    {
+      "from": "FORGE-did-web-identity",
+      "to": "forge-did-web-identity"
+    },
+    {
+      "from": "FORGE-ephemeral-genesis",
+      "to": "forge-ephemeral-genesis"
+    },
+    {
+      "from": "FORGE-esm-require-guard",
+      "to": "forge-esm-require-guard"
+    },
+    {
+      "from": "FORGE-fastapi-api-builder",
+      "to": "forge-fastapi-api-builder"
+    },
+    {
+      "from": "FORGE-fastmcp",
+      "to": "forge-fastmcp"
+    },
+    {
+      "from": "FORGE-federation-manifest",
+      "to": "forge-federation-manifest"
+    },
+    {
+      "from": "FORGE-github-ops",
+      "to": "forge-github-ops"
+    },
+    {
+      "from": "FORGE-google-workspace",
+      "to": "forge-google-workspace"
+    },
+    {
+      "from": "FORGE-governance-jsonld",
+      "to": "forge-governance-jsonld"
+    },
+    {
+      "from": "FORGE-hermes-self-evolution",
+      "to": "forge-hermes-self-evolution"
+    },
+    {
+      "from": "FORGE-infra-crons",
+      "to": "forge-infra-crons"
+    },
+    {
+      "from": "FORGE-infra-guardian",
+      "to": "forge-infra-guardian"
+    },
+    {
+      "from": "FORGE-issue-triage",
+      "to": "forge-issue-triage"
+    },
+    {
+      "from": "FORGE-kimi-code",
+      "to": "forge-kimi-code"
+    },
+    {
+      "from": "FORGE-komda-color-law",
+      "to": "forge-komda-color-law"
+    },
+    {
+      "from": "FORGE-lsp-pre-edit-gate",
+      "to": "forge-lsp-pre-edit-gate"
+    },
+    {
+      "from": "FORGE-mcp-a2a-agentic",
+      "to": "forge-mcp-a2a-agentic"
+    },
+    {
+      "from": "FORGE-mcp-gui",
+      "to": "forge-mcp-gui"
+    },
+    {
+      "from": "FORGE-model-monitor",
+      "to": "forge-model-monitor"
+    },
+    {
+      "from": "FORGE-musyawarah-gotong",
+      "to": "forge-musyawarah-gotong"
+    },
+    {
+      "from": "FORGE-nextjs-mastery",
+      "to": "forge-nextjs-mastery"
+    },
+    {
+      "from": "FORGE-onboarding",
+      "to": "forge-onboarding"
+    },
+    {
+      "from": "FORGE-postgres-schema-design",
+      "to": "forge-postgres-schema-design"
+    },
+    {
+      "from": "FORGE-react-spa-discipline",
+      "to": "forge-react-spa-discipline"
+    },
+    {
+      "from": "FORGE-redis-qdrant-integration",
+      "to": "forge-redis-qdrant-integration"
+    },
+    {
+      "from": "FORGE-repo-intelligence",
+      "to": "forge-repo-intelligence"
+    },
+    {
+      "from": "FORGE-route-least-power",
+      "to": "forge-route-least-power"
+    },
+    {
+      "from": "FORGE-seal-a-close",
+      "to": "forge-seal-a-close"
+    },
+    {
+      "from": "FORGE-secret-hygiene",
+      "to": "forge-secret-hygiene"
+    },
+    {
+      "from": "FORGE-spatial-grounding",
+      "to": "forge-spatial-grounding"
+    },
+    {
+      "from": "FORGE-subagent-lifecycle",
+      "to": "forge-subagent-lifecycle"
+    },
+    {
+      "from": "FORGE-subagent-spawn",
+      "to": "forge-subagent-spawn"
+    },
+    {
+      "from": "FORGE-symlink-audit",
+      "to": "forge-symlink-audit"
+    },
+    {
+      "from": "FORGE-t3a-binding-matrix",
+      "to": "forge-t3a-binding-matrix"
+    },
+    {
+      "from": "FORGE-tailwind-tokens",
+      "to": "forge-tailwind-tokens"
+    },
+    {
+      "from": "FORGE-telegram-audit",
+      "to": "forge-telegram-audit"
+    },
+    {
+      "from": "FORGE-vault999-witness",
+      "to": "forge-vault999-witness"
+    },
+    {
+      "from": "FORGE-visual-qa-w3",
+      "to": "forge-visual-qa-w3"
+    },
+    {
+      "from": "FORGE-well-boundary-repair",
+      "to": "forge-well-boundary-repair"
+    },
+    {
+      "from": "HERMES-opencode-protocol",
+      "to": "hermes-opencode-protocol"
+    },
+    {
+      "from": "MY-REALITY-STACK",
+      "to": "my-reality-stack"
+    },
+    {
+      "from": "QWEN-agentic-state",
+      "to": "qwen-agentic-state"
+    },
+    {
+      "from": "QWEN-meta-mesa",
+      "to": "qwen-meta-mesa"
+    },
+    {
+      "from": "QWEN-zen-router",
+      "to": "qwen-zen-router"
+    },
+    {
+      "from": "RSI-federation-mesh",
+      "to": "rsi-federation-mesh"
+    },
+    {
+      "from": "SEAL-discipline",
+      "to": "seal-discipline"
+    },
+    {
+      "from": "WISDOM-reader",
+      "to": "wisdom-reader"
+    },
+    {
+      "from": "aaa-musyawarah-execution",
+      "to": "aaa-musyawarah-execution"
+    },
+    {
+      "from": "aaa-skill-governor-runtime",
+      "to": "aaa-skill-governor-runtime"
+    },
+    {
+      "from": "arifos-eight-verb-canonical",
+      "to": "arifos-eight-verb-canonical"
+    },
+    {
+      "from": "minimax-image-gen",
+      "to": "minimax-image-gen"
+    },
+    {
+      "from": "reality-loop-operator",
+      "to": "reality-loop-operator"
+    },
+    {
+      "from": "xauusd-trading",
+      "to": "xauusd-trading"
+    }
+  ],
+  "collisions": {},
+  "total": 204
+}

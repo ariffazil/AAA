@@ -1,0 +1,101 @@
+{
+ "schema": "aaa.voice-registry.v1",
+ "owner": "AAA",
+ "updated_at": "2026-09-14T18:28:50Z",
+ "updated_by": "Hermes ASI (harden-20260915) under F13 SOVEREIGN directive 2026-09-15",
+ "source_of_truth": "THIS FILE is the canonical voice-id registry. Resolvers (pipeline, identity card, routers) MUST resolve here; no component may hardcode a separate provider id.",
+ "revocation_policy": [
+  "A REVOKED voice id must never be selectable as a default, an explicit id, or a fallback rung.",
+  "The pipeline fails CLOSED: an unresolved or revoked id aborts before synthesis.",
+  "Revocation is append-only and never deleted (F1 AMANAH).",
+  "Provider-side checkpoints are NOT removable by us, so revocation is enforced at every resolver we own."
+ ],
+ "aliases": {
+  "iarif-sovereign-v9": "i-arif-sovereign",
+  "iarif-sovereign-v8": "i-arif-v8-deprecated"
+ },
+ "voices": {
+  "i-arif-sovereign": {
+   "status": "LIVE",
+   "display_version": "V9",
+   "provider": "minimax",
+   "provider_voice_id": "ttv-voice-2026082515384726-njTJ5yOR",
+   "model": "speech-2.8-hd",
+   "endpoint": "https://api.minimax.io/v1/t2a_v2",
+   "archetype": "alpha_sopan_penang",
+   "provenance": "parametric_voice_design — original voice from qualia description; NOT derived from any public figure's audio",
+   "consent": "original_voice_from_qualia_description",
+   "f9_compliance": "no_public_figure_audio",
+   "sealed_by": "F13 SOVEREIGN 2026-08-25T15:41:56Z (manifest vault_seal F13_APPROVED)",
+   "runtime_measured_2026_09_15": {
+    "note": "field measurements taken this session with /root/scripts/rasa_somatic_dsp.py (CALIBRATED). Declared design-spec numbers are recorded separately under design_spec_declared — they do NOT reproduce.",
+    "artifact": "/root/artifact... (see REPORT)",
+    "f0_median_hz_pipeline_render": 199.4,
+    "f0_median_hz_raw_minimax_speed0.9": 175.6,
+    "f0_median_hz_raw_minimax_speed1.0": 174.6,
+    "f0_range_hz": [
+     175.6,
+     233.1
+    ],
+    "voiced_ratio": 0.865,
+    "spread_across_renders_hz": [
+     174.6,
+     199.4,
+     251.2,
+     261.6
+    ],
+    "spread_note": "same voice id across four renders spans ~87 Hz — the declared single figure is a snapshot, not an invariant",
+    "estimator_agreement": "pyin vs autocorrelation ratio 1.013, octave_flag AGREE",
+    "f0_measured_runtime_hz_canonical": 179.4,
+    "f0_note": "179.4 Hz is the canonical measured runtime truth (F13 sovereign directive 2026-09-15). The declared 246.9 Hz is synthetic design spec only."
+   },
+   "design_spec_declared": {
+    "f0_median_hz": 246.9,
+    "spectral_centroid_hz": 1356,
+    "voiced_frames_pct": 82,
+    "reproduced_on_2026_09_15": false,
+    "verdict": "SYNTHETIC DESIGN SPEC, not a runtime measurement. Retained for provenance only."
+   }
+  },
+  "i-arif-v8-deprecated": {
+   "status": "REVOKED",
+   "display_version": "V8",
+   "provider": "minimax",
+   "provider_voice_id": "i-ARIF-20260819T084602",
+   "revoked_at": "2026-09-14T18:28:50Z",
+   "revoked_by": "F13 SOVEREIGN directive, 2026-09-15",
+   "reason": "voice-checkpoint contamination — the model injects unrequested clauses at render time. Input sanitization cannot catch this: the sanitizer is upstream of synthesis, the contamination originates in the checkpoint.",
+   "evidence": [
+    "Rendered the SAME input text as V9. V8 inserted the clause 'Salam Arif, lembut tapi besi' which is absent from the input.",
+    "Localised to a real utterance, not an ASR artifact: two overlapping transcription windows at the same timestamps both carry it; duration delta 1.908 s matches the ~1.9 s expected for that clause at speed 0.9.",
+    "No non-speech region exists to host a hallucinated insertion: max interior pause 743 ms vs ~1900 ms required; silencedetect reports 0 silence runs in the delivered artifact.",
+    "The inserted phrase is on the pipeline's OWN FORBIDDEN list (iarif_tts_pipeline.sh) — banned by the 888 seal as an 'X tapi Y' contradiction trope. The checkpoint emits what our constitution killed.",
+    "A second contamination on the head: an unrequested non-word ('Arusuk') before the opening greeting, persisting after silence trim."
+   ],
+   "action_taken": "Locked in this registry as REVOKED; removed as the pipeline default; refused by the pipeline resolver; V9 promoted to canonical.",
+   "note": "The provider-side checkpoint may still exist on MiniMax's servers. We cannot delete it; we refuse it at every resolver we own."
+  }
+ },
+ "fallback_chain_canonical": [
+  {
+   "lane": "minimax-v9",
+   "voice_id": "ttv-voice-2026082515384726-njTJ5yOR",
+   "status": "PREFFERED"
+  },
+  {
+   "lane": "edge-tts",
+   "voice_id": "ms-MY-YasminNeural",
+   "status": "ALLOWED — synthetic, no checkpoint to contaminate"
+  },
+  {
+   "lane": "mimo-tts",
+   "voice_id": "mimo-v2.5-tts:冰糖",
+   "status": "GAP-FILLER ONLY — BM pronunciation falsified 2026-09-15 (nusantara-voice-stack §3); must be declared on delivery"
+  },
+  {
+   "lane": "v8-checkpoint",
+   "voice_id": "i-ARIF-20260819T084602",
+   "status": "REVOKED — unreachable"
+  }
+ ]
+}

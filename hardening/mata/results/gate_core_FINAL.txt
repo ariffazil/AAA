@@ -1,0 +1,48 @@
+====================================================================================================
+VISION GATE — arifOS MATA lane   (ground truth is pixel-verified, never model-inferred)
+====================================================================================================
+
+[1] FIXTURES
+    img_a_shapes_text.png              sha256=f90ada036b2d7d19…  recorded_match=True
+    img_b_number_caption.png           sha256=f6d15fc748959968…  recorded_match=True
+    img_c_photo_crop.jpg               sha256=e33558f384261e65…  recorded_match=True
+    img_d_control_zero_red.png         sha256=2a5d4307c072ed20…  recorded_match=True
+
+  [verify-fixtures] non-vision pixel scan (proves ground truth is authored, not model-inferred)
+    img_a_shapes_text.png: red_blobs=3 (want 3)  blue_blobs=2 (want 2)  OK
+    img_d_control_zero_red.png: red_blobs=0 (want 0)  blue_blobs=0 (want 0)  OK
+
+[2] BATTERY 'core': 4 probes x 10 surfaces
+      img_a.red_circles    checker=int             expect=3
+      img_a.text           checker=contains_any    expect=['ARIFOS-7731', 'ARIFOS 7731', 'ARIFOS-773I']
+      img_c.absent_text    checker=absence         expect='ZZQ-419'
+      img_d.red_circles    checker=int             expect=0
+
+[3] RESULTS
+    surface                fixture.probe          verdict      lat_s  returned
+    --------------------------------------------------------------------------------------------------------
+    native_vision_analyze  img_a.red_circles      CORRECT       0.00  3
+    native_vision_analyze  img_a.text             CORRECT       0.00  The image has a white background. At the top, in large, bold, black, s
+    native_vision_analyze  img_c.absent_text      CORRECT       0.00  The image is a close-up, studio-style photograph of a muscular, shirtl
+    native_vision_analyze  img_d.red_circles      CORRECT       0.00  The image shows the word **CONTROL** in large black uppercase letters 
+    zai_vision_mcp         img_a.red_circles      CORRECT       9.55   3
+    zai_vision_mcp         img_a.text             CORRECT      10.11   **Main Response** The exact text that appears in this image is "ARIFO
+    zai_vision_mcp         img_c.absent_text      CORRECT       9.95   No. **Detailed Observations:** The image is a close-up photograph of 
+    zai_vision_mcp         img_d.red_circles      CORRECT       8.70   0
+    zai_coding_direct      img_a.red_circles      CORRECT       3.37  3
+    zai_coding_direct      img_a.text             CORRECT       3.39  The exact text in the image is: **ARIFOS-7731** It appears in large, b
+    zai_coding_direct      img_c.absent_text      CORRECT       2.79  No.
+    zai_coding_direct      img_d.red_circles      CORRECT       3.87  **0** The image contains a green square and a yellow circle — there ar
+    mmx_describe           img_a.red_circles      CORRECT       2.93  3
+    mmx_describe           img_a.text             CORRECT       3.62  The text in the image reads: **ARIFOS-7731**
+    mmx_describe           img_c.absent_text      CORRECT       4.15  No
+    mmx_describe           img_d.red_circles      CORRECT       2.12  0
+    mulerouter_qwen_vl_max img_a.red_circles      BLOCKED       1.25  HTTP 402: {"error":{"code":"insufficient_balance","message":
+    mulerouter_qwen_vl_max img_a.text             BLOCKED       1.10  HTTP 402: {"error":{"code":"insufficient_balance","message":
+    mulerouter_qwen_vl_max img_c.absent_text      BLOCKED       0.36  HTTP 402: {"error":{"code":"insufficient_balance","message":
+    mulerouter_qwen_vl_max img_d.red_circles      BLOCKED       0.50  HTTP 402: {"error":{"code":"insufficient_balance","message":
+    mimo_v2.5              img_a.red_circles      CORRECT       3.12  3
+    mimo_v2.5              img_a.text             CORRECT       4.28  Based on the image provided, the exact text is: **ARIFOS-7731** Below 
+    mimo_v2.5              img_c.absent_text      CORRECT       1.79  No
+    mimo_v2.5              img_d.red_circles      CORRECT       2.57  0
+    groq_qwen3.8-27b       img_a.red_circles      CORRECT       0.44  3

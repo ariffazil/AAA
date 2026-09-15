@@ -1,0 +1,49 @@
+Docusign Envelope ID: BCBF091A-82F5-40AD-846A-E840C6C56334
+LNG INVESTMENTS EUROPE LIMITED
+NOTES TO THE FINANCIAL STATEMENTS
+FOR THE YEAR ENDED 31 DECEMBER 2025
+2. MATERIAL ACCOUNTING POLICIES (CONTINUED)
+2.13 Provision (Continued)
+For subsequent measurement of the Onerous Contract Provision, the Company has adopted the PETRONAS Group A
+Principles & Guidelines. The Company reassesses the onerous provision on an annual basis to reflect any changes in key
+assumptions. Increase in provision and/or additional provision is recognised in financial statements when it is identified. If
+reassessed provision is lower than the carrying amount, management obtains sufficient evidence that indicators of provision
+has decreased or no longer exists. Management shall perform additional test to ensure that the reversal of provision is not
+sensitive to changes in parameters, by applying more prudent assumptions, before recognising the reversal amount in the
+financial statements.
+2.14 Cost of LNG regasification
+
+Cost of LNG regasification mainly includes the capacity costs related to the regasification facility at Dragon as well as the
+National grid capacity and send out costs. Also included is the utilisation in relation to the Onerous provision.
+
+3. ACCOUNTING ESTIMATES, JUDGEMENTS AND ASSUMPTIONS
+The preparation of financial statements in conformity with IFRS requires the Company to make judgements, estimates and
+assumptions that affect the application of the Company’s accounting policies with respect to the carrying amounts of assets
+and liabilities and the disclosure of contingent assets and liabilities at the date of the financial statements and the reported
+amounts of income and expenses during the reporting period. Actual results may differ from these estimates.
+
+3.1. Significant judgments
+Significant judgements are those made by the company when applying its accounting policies that are considered to have the
+most significant impact on amount recognised in financial statement.
+Those judgements that are considered to have most significant impact on amounts recognised in the financial statements are
+described in Note 3.2.
+
+3.2 Significant estimates and assumptions
+Significant estimates and associated assumptions are those that have a significant risk of resulting in a material adjustment to
+carrying amounts of assets and liabilities within the next financial year. Estimates and underlying assumptions reviewed on an
+on-going basis. Revisions to accounting estimates are recognised in the period in which the estimates are revised and any
+future periods affected.
+Onerous Contract
+The oncrous contract under IAS 37 has been reassessed in 2025 and 2024 based mainly on two contracts:
+i) Throughput Agreement on Dragon plan management between PTUK, Dragon LNG Ltd and Shell Energy Europe Limited
+(“Throughput Agreement”); and
+ii) SLA between LIEL and PTUK, whereby the latter recharges to the former all costs in relation to the Throughput Agreement.
+In view of the high fixed maintenance costs of the plant (indexed as per the Throughput agreement) which are approximately
+£41.7 million (2024: £41.3 million) per year on average, over and above the variable costs for gas send-out and marine
+services, the total unavoidable costs are fairly high and exceed the economic benefits to the Company leading to negative
+forecasted cash flows of £170 million (2024: £213 million) from 2026 to expiry of the Throughput Agreement in August
+2029. As a result, the Company continues to recognise an onerous contract provision in 2025 and 2024.
+The Company uses a range of long-term assumptions including prices, volume, margins and costs based on past performance
+and management expectations of market development in the estimation of the present value of the provision.
+
+28

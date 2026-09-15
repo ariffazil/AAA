@@ -1,0 +1,110 @@
+{
+  "meta": {
+    "title": "From Compliance to Conviction — Bank Muamalat and the Shariah-Authenticity Question",
+    "brief_date_utc": "2026-09-15",
+    "analyst": "i-ARIF (Hermes edge bridge) — computational output under F13 sovereign direction",
+    "epistemic_key": {
+      "OBS": "directly observed in a cited primary/secondary source",
+      "DER": "derived arithmetically from observed figures",
+      "INT": "interpretation / pattern recognition",
+      "SPEC": "speculation, labelled as such",
+      "VOID": "absence in the record",
+      "FIQH": "a matter of religious ruling — authority rests with qualified scholars, not with this analysis"
+    }
+  },
+  "authenticity_gap": {
+    "global_industry_assets_usd_tn_2025": 4.4,
+    "debt_based_share_pct": 90.0,
+    "debt_based_note": "commodity murabahah / tawarruq estimated at 'almost 90% or more' of the Islamic banking sector",
+    "pls_share_narrow_estimate_pct": [0.36, 0.87],
+    "pls_share_narrow_note": "musharakah 0.23-0.71% + mudharabah 0.12-0.40% of total financing (Malaysia, working-paper series)",
+    "pls_share_alt_estimate_pct": [0.5, 0.5],
+    "pls_share_alt_note": "PLS financing ~0.5% of total financing in Malaysia (Chong & Liu 2009; Nor & Ismail 2020)",
+    "pls_share_broad_estimate_pct": [10.0, 15.0],
+    "pls_share_broad_note": "broader definition: PLS contributes up to 10-15% of total Islamic financing in Malaysia"
+  },
+  "malaysia_system": {
+    "islamic_banking_assets_rm_tn_jan2026": 1.3,
+    "share_of_banking_assets_pct_jan2026": 34.3,
+    "islamic_financing_share_of_total_financing_pct": 48.0,
+    "takaful_participation_pct": 24.5,
+    "vbi_intermediated_rm_bn_2024": 148.6,
+    "icita_matching_funds_rm_m": 100.0,
+    "icita_launch": "September 2025",
+    "licences": {"islamic_banks": 16, "international_islamic_bank": 1, "islamic_dfis": 2}
+  },
+  "bmmb": {
+    "assets_rm_bn_dec2025": 45.7,
+    "book_composition_pct": {"home_financing": 33.51, "personal_financing": 28.6, "other": 37.89},
+    "book_composition_note": "FY2024 home financing 33.51% of gross financing; personal financing 28.6% (Mar 2024 disclosure). Home and Ar Rahnu both structured on tawarruq.",
+    "funding": {"deposits_pct_of_funding": 90.2, "casa_pct": 31.3, "retail_pct": 12.0, "top20_depositor_pct": 47.0, "lcr_pct": 160.3, "nsfr_pct": 108.3},
+    "cet1_pct_jun2026": 12.020,
+    "cet1_pct_dec2025": 12.273,
+    "total_capital_pct_jun2026": 17.867,
+    "shareholders_equity_rm_bn_jun2026": 3.2307,
+    "rwa_rm_bn_implied": 26.88,
+    "financing_growth_pct_2025": 4.6,
+    "gif_pct_1q2026": 1.52,
+    "pbt_rm_m_1h2026": 109.4,
+    "shariah_committee_members": 6,
+    "shariah_committee_chair": "Dr. Yusri Mohamad",
+    "gabv_member": true,
+    "gabv_note": "First Islamic bank in the world and first bank in Southeast Asia to join the Global Alliance for Banking on Values",
+    "gold_i_account": "Gold-i account with automatic zakat deduction on haul and nisab",
+    "arrahnu_structure": "tawarruq",
+    "atlas_digital": "Atlas — digital-only Islamic banking platform launched 2026"
+  },
+  "targets": {
+    "ia_share_of_funding_pct": 40.0,
+    "cet1_target_pct": [15.0, 16.0],
+    "pls_share_of_financing_pct": [20.0, 30.0],
+    "mma_home_financing_share_pct": 60.0,
+    "phase_horizon_years": [5, 7]
+  },
+  "capital_sensitivity": {
+    "rwa_today_rm_bn": 26.88,
+    "pls_risk_weight_reported_pct": 400.0,
+    "pls_rw_note": "Literature reports musharakah and mudarabah exposures attracting materially higher capital risk weights (up to 400%) than debt-based financing — the structural capital penalty on risk-sharing.",
+    "per_rm1bn_pls_shift_rwa_rm_bn": 3.0,
+    "per_rm1bn_pls_shift_capital_at_15pct_rm_m": 450.0
+  },
+  "talent": {
+    "active_shariah_committee_members_my": 136,
+    "required_soon": 196,
+    "gap": 60,
+    "projected_practitioner_deficit": 1400
+  },
+  "regulatory": {
+    "bnm_ar2025": "Islamic financing rose to 48% of total financing; takaful participation 24.5%. BNM states activities with longer horizons and unpredictable cashflows 'cannot rely on traditional debt alone' and launched i-CITA to promote wider use of mudarabah and musyarakah.",
+    "ifsb_ifsr_2026": "Released 26 May 2026 — 'Emergence of Hybrid Risks in Islamic Banking'. Notes new products and balance-sheet configurations 'increasingly mimic conventional banking characteristics' and may not be captured by existing prudential frameworks.",
+    "ifsb_bangladesh": "The IFSB 2026 report documents an Islamic banking crisis rooted in 'systematic concentration of ownership: a single business group acquired controlling stakes in five of ten full-fledged Islamic banks through multiple entities under common control.'",
+    "kl_declaration": "The Kuala Lumpur Declaration holds risk-sharing to be a salient characteristic of Islamic financial transactions, and asserts the principle that liability is inseparable from the right to profit.",
+    "oic_fiqh_academy_2003": "17th session — organised and reverse tawarruq regarded as impermissible.",
+    "bnm_sac": "BNM's Shariah Advisory Council accepts organised tawarruq subject to specific rules and parameters (Tawarruq policy document, reissued December 2018).",
+    "divergence_note": "The Malaysian SAC framework accepts structures that AAOIFI and Gulf scholarly bodies reject. This is a real and documented juristic divergence, not a compliance failure in either direction."
+  },
+  "phases": [
+    {"id": "P0", "name": "Doktrin lock", "years": "0-1", "deliverable": "Published baseline: current PLS share, tawarruq share, maqasid statement, third-party Shariah audit charter"},
+    {"id": "P1", "name": "Funding side first", "years": "1-3", "deliverable": "Investment accounts (mudarabah/musyarakah) from fringe product to primary funding instrument"},
+    {"id": "P2", "name": "Asset glide — flagship", "years": "2-5", "deliverable": "Home financing: tawarruq to musharakah mutanaqisah on new originations"},
+    {"id": "P3", "name": "Sector concentration", "years": "3-7", "deliverable": "Risk-sharing in long-horizon sectors: halal/food security, waqf property, climate transition"},
+    {"id": "P4", "name": "Social finance engine", "years": "2-6", "deliverable": "Waqf, zakat routing, qardhul hasan, microfinance at regional scale"},
+    {"id": "P5", "name": "Scale", "years": "5+", "deliverable": "Only now: merger / consolidation on top of a converted model"}
+  ],
+  "metrics": {
+    "PLS share of financing": {"current": "~1-3% (est.)", "target": "20-30%", "audit": "Third-party, AAOIFI-referenced"},
+    "Investment account share of funding": {"current": "minor", "target": ">40%", "audit": "Pillar 3 disclosure"},
+    "Maqasid impact indicators": {"current": "none published", "target": "annual, verified", "audit": "Independent assessor"},
+    "Shariah committee independence": {"current": "6 members, board-appointed", "target": "fixed terms, published fatwa rationale, product veto", "audit": "Governance review"},
+    "Shariah non-compliance income": {"current": "disclosed in aggregate", "target": "disclosed with full routing to qardhul hasan/charity", "audit": "Annual report line item"},
+    "Real-asset linkage ratio": {"current": "not disclosed", "target": "published", "audit": "Third-party"},
+    "Qardhul hasan book": {"current": "not material", "target": "funded from non-compliance income + fixed profit share", "audit": "Audited"}
+  },
+  "failure_modes": [
+    {"mode": "Replica at scale", "prob": 0.45, "desc": "Announced as an Islamic mega-bank; book stays ~90% tawarruq; the label grows and the substance does not."},
+    {"mode": "Doctrine as marketing", "prob": 0.25, "desc": "PLS pilots launched as flagship products while the balance sheet mix is unchanged; no measurable target, no third-party audit."},
+    {"mode": "Capital strangle", "prob": 0.18, "desc": "PLS share rises but capital is not raised; growth stalls and the programme is reversed within two years on ROE grounds."},
+    {"mode": "Governance capture", "prob": 0.07, "desc": "Shariah committee becomes advisory in form; fatwa rationale unpublished; independent members not renewed."},
+    {"mode": "Genuine conversion", "prob": 0.05, "desc": "Funding side converted, home financing migrated, maqasid verified — the bank becomes genuinely different, and smaller-margin."}
+  ]
+}

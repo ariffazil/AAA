@@ -1,0 +1,8 @@
+{
+  "skill_id": "FORGE-verify-runtime",
+  "agent": "hermes-rsi-loop",
+  "lesson": "DEAD_POINTER observed 3x \u2014 impact=unresolved_ref. First surface: session:tool:terminal \u2014 all four checks passed, but independence is NAME-LEVEL ONLY (same author) \u2014 verdict is PROVISIONAL: may enter the capability graph, may NOT record a survival event",
+  "evidence": "[{\"layer\": \"artifact\", \"source\": \"session:tool:terminal\", \"excerpt\": \"+++ b//root/.hermes/scripts/apex-zen-bridge-score.py\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n@@ -149,11 +149,26 @@\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n # Energy2 \\\\\\\\u2014 dead pointers: expected events that never resolve\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n dp = json.loads((DOCS / 'dead-pointers.json').read_text()) if (DOCS / 'dead-pointers.json').exists() else []\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n-sta\"}, {\"layer\": \"artifact\", \"source\": \"session:tool:terminal\", \"excerpt\": \"mi-code/sessions/` + `session_index.jsonl` (auto). Don't ask paths. (0-byte `state.db` stub removed 2026-09-10 FI-008 \u2014 dead pointer since 2026-08-01.)\\n\\n**Slash commands:** native skills load by name (e.g. kimi-router, kimi-primer); `/plugins`, `/secondary-model`, `/tower` are native 0.40+ surfaces.\"}]",
+  "atom_id": "ATOM-16e14366aee9",
+  "verified_by": "hermes-rsi-verifier"
+}

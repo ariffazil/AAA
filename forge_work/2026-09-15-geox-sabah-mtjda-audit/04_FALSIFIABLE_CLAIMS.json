@@ -1,0 +1,111 @@
+{
+  "bundle": "GEOX_SABAH_DEEP_CRUSTAL_HYPOTHESES",
+  "version": "v1.0",
+  "compiled": "2026-09-15",
+  "authority": "F13 ARIF — approved registration",
+  "provenance": "Kinabalu Basin Geologist Dossier Fig. 8 + pp. 19, 25; forensic audit forge_work/2026-09-15-geox-sabah-mtjda-audit",
+  "purpose": "Register the four competing deep-crustal hypotheses as falsifiable claims so a KT-7 depth-conversion result or an OBS refraction line lands against live claim records instead of prose.",
+  "test_status": "ZERO TESTS RUN — all four hypotheses standing",
+  "truth_class": "INTERPRETATION",
+  "claim_type": "structure",
+  "claims": [
+    {
+      "id": "SABAH_DEEP_H1_OCEANIC",
+      "title": "H1 — Deep crust beneath the Sabah accretionary wedge is Proto-SCS oceanic crust (ophiolitic remnant)",
+      "statement": "The deep crust beneath the NW Sabah accretionary wedge is a remnant of Proto-South China Sea oceanic lithosphere.",
+      "supporting": [
+        "Lahad Datu ophiolites: N-MORB, low-K tholeiite (Barremian-Aptian)",
+        "Tomographic high-velocity anomaly in western Sabah upper mantle (Pilia et al., Gondwana Research 2023)",
+        "KT-6: Moho beneath NW Sabah 26-33 km — NON-KILL",
+        "Prior PSCS scorecard: 3 DIRECT + 4 CONSISTENT, 0 CONTRADICTED"
+      ],
+      "falsifier": "Depth-converted KT-7 reflector with Vp OUTSIDE 5.0-6.5 km/s, or OBS line showing no ophiolitic Vp through the wedge.",
+      "uncertainty_p10": 0.25,
+      "uncertainty_p50": 0.45,
+      "uncertainty_p90": 0.70,
+      "uncertainty_basis": "Dossier published value INT 0.45 (p. 25, marked UNTESTED). Bands are C13-style brackets around a published point value, not a posterior.",
+      "alignment": "STRONGEST of the four (dossier)",
+      "residual_ambiguity": "Ophiolite Vp 5.0-6.5 km/s overlaps lower-crustal continental velocities at 12-21 km depth. KT-7 alone narrows H1-vs-H2; it does not kill H2."
+    },
+    {
+      "id": "SABAH_DEEP_H2_THRUST_DETACH",
+      "title": "H2 — Deep crust is continental margin succeeded by a thrust detachment",
+      "statement": "The deep structure is a thrust detachment emplaced over a continental margin, with no significant oceanic crust in place.",
+      "supporting": [
+        "Franke et al. 2008: 6-8 km reflector interpreted as a thrust detachment in the fold-thrust belt triangle zone",
+        "KT-6: Moho beneath NW Sabah is continental (26-33 km) — NON-KILL for a continental substrate"
+      ],
+      "falsifier": "Depth-converted KT-7 or OBS Vp profile showing ophiolitic velocities through the wedge (Vp 5.0-6.5 km/s) with no detachment surface.",
+      "uncertainty_p10": 0.15,
+      "uncertainty_p50": 0.33,
+      "uncertainty_p90": 0.55,
+      "uncertainty_basis": "QUALITATIVE_ONLY. Dossier ranks H2 'moderate alignment' with no numeric value published. p50 is an a-priori bracket, NOT a derived estimate. Flagged for correction when a numeric ranking exists.",
+      "alignment": "MODERATE (dossier)",
+      "residual_ambiguity": "Shares its falsifier window with H1 — velocity overlap means one test may not separate them."
+    },
+    {
+      "id": "SABAH_DEEP_H3_RIFTED_VOLCANIC",
+      "title": "H3 — Deep crust is rifted / volcanic continental basement",
+      "statement": "The deep crust is rifted continental basement with a significant volcanic (magmatic) addition.",
+      "supporting": [
+        "No direct supporting dataset identified in the dossier evidence base"
+      ],
+      "falsifier": "Reprocessed public magnetic and gravity data for offshore Sabah. A volcanic-continental signature can be killed or strengthened at near-zero cost. This was named the 6-month, modest-budget test.",
+      "uncertainty_p10": 0.05,
+      "uncertainty_p50": 0.18,
+      "uncertainty_p90": 0.38,
+      "uncertainty_basis": "QUALITATIVE_ONLY. Dossier ranks H3 'weakest alignment' with no numeric value published. p50 is an a-priori bracket, NOT a derived estimate.",
+      "alignment": "WEAKEST (dossier)",
+      "residual_ambiguity": "Cheapest hypothesis to kill (public gravity/magnetics). Should be sequenced before any acquisition spend."
+    },
+    {
+      "id": "SABAH_DEEP_H4_SHALE_TECTONIC",
+      "title": "H4 — Deep structure is shale-tectonic / gravity-driven collapse",
+      "statement": "The deep structure reflects shale tectonics and gravity-driven collapse rather than a primary crustal architecture.",
+      "supporting": [
+        "NSPW is a mobile-shale-dominated wedge, 8-9 km thick over 75,000 km2 (Morley 2024)",
+        "Mobile shale overpressure documented across the wedge; mud canopy 1,900 km2 from ~50 centres"
+      ],
+      "falsifier": "OBS refraction Vp profile penetrating below the mobile-shale interval to image primary crustal structure and Moho.",
+      "uncertainty_p10": 0.15,
+      "uncertainty_p50": 0.32,
+      "uncertainty_p90": 0.55,
+      "uncertainty_basis": "QUALITATIVE_ONLY. Dossier ranks H4 'moderate alignment' with no numeric value published. p50 is an a-priori bracket, NOT a derived estimate.",
+      "alignment": "MODERATE (dossier)",
+      "residual_ambiguity": "Mobile-shale low-velocity zones (Vp 1.5-2.0 km/s) will themselves contaminate any velocity-based discriminator. This hypothesis is the hardest to falsify with seismic velocity alone."
+    }
+  ],
+  "decision_tests": [
+    {
+      "id": "TEST_KT7",
+      "description": "Depth-convert KT-7 reflector using existing velocity data",
+      "cost": "Claimed zero; CONTESTED — federation code (sabah_prospect_discriminator.py) holds pscs_velocity_available=False and kt7_result=PENDING",
+      "geometry_dispute": "Dossier: 12-21 km. Federation code (Franke et al. 2008): 6-8 km. UNRECONCILED.",
+      "discriminates": "H1 vs H2 (partial). NOT all four — dossier overclaims.",
+      "status": "BLOCKED_PENDING_VELOCITY_RECONCILIATION"
+    },
+    {
+      "id": "TEST_MAG_GRAV",
+      "description": "Reprocess public magnetic + gravity datasets for offshore Sabah",
+      "cost": "Modest, near-zero",
+      "calendar": "~6 months",
+      "discriminates": "H3 (kill or strengthen)",
+      "status": "NOT_STARTED"
+    },
+    {
+      "id": "TEST_OBS_LINE",
+      "description": "~150 km wide-angle refraction line across the Sabah Trough with ocean-bottom seismometers",
+      "cost": "USD 5-10 million",
+      "calendar": "~2 years",
+      "discriminates": "Kills 3 of 4 simultaneously (dossier); cleanest stated discriminator",
+      "status": "NOT_STARTED"
+    }
+  ],
+  "sequencing_doctrine": "Information per dollar. Free first (KT-7, once velocity reconciled), then low cost (mag/grav reprocessing), then the USD 5-10M OBS line. Do NOT commission new deep-crustal 3D seismic before the free test has been run.",
+  "known_defects_attached": [
+    "KT-7 geometry contradiction: 12-21 km (dossier) vs 6-8 km (federation code).",
+    "KT-7 velocity availability contradiction: dossier 'existing' vs code 'not published'.",
+    "H2/H3/H4 numeric bands are a-priori brackets, not published estimates — flagged in uncertainty_basis per claim.",
+    "Dossier citation metadata errors: Pilia journal (Nature Geoscience vs Gondwana Research); Madon DOI (230589 vs 230916)."
+  ]
+}

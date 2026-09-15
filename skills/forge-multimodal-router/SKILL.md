@@ -2,7 +2,7 @@
 name: forge-multimodal-router
 id: forge-multimodal-router
 risk_tier: low
-description: 'Federation-wide multimodal routing skill. Resolves any vision/audio/video/somatic request to its canonical model + endpoint via /root/.config/federation-models.json (SOT). USE WHEN: "which model should I use for X", "route this image/audio/video to the right engine", "unify multimodal routing across agents", "I have an image/audio/video and need to know where it goes".'
+description: 'Federation-wide multimodal routing skill. Resolves any vision/audio/video/somatic request to its canonical model + endpoint via /root/.config/federation-models.json (SOT). USE WHEN: "which model should I use for X", "route this image/audio/video to the right engine", "unify multimodal routing across agents", "I have an image/audio/video and need to know where it goes". [fed: tier=fed-multimodal-router, auto=T1, risk=low]'
 version: 1.0.0
 tags:
 - multimodal

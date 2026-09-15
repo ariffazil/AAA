@@ -1,0 +1,181 @@
+2026-09-03T07:51:34 b1aa760d  cat > /root/forge_work/SEAL_RECEIPT_STATE_BELOW_WORDS_20260903.md << 'EOF'
+# SEAL RECEIPT — STATE_BELOW_WORDS v1.0 RATIFICATION (file-receipt lane)
+Date: 2026-09-03 ~15:5
+2026-09-03T07:52:17 b1aa760d  cat > /root/.qwen/projects/-root/memory/project-fed-relay-20260829.md << 'EOF'
+---
+name: FED Gateway topology — KVM4 is the live brain (since 2026-09-03)
+description: Liv
+2026-09-03T07:58:11 b1aa760d  ssh -o BatchMode=yes root@100.64.0.5 'ls /root/AAA/skills' | sort > /tmp/kvm4_skills.txt; ls /root/AAA/skills | sort > /tmp/kvm8_skills.txt; echo ---KVM8-ONLY---; comm -2
+2026-09-03T08:02:52 b1aa760d  sed -i 's|KVM4 (forge-core) local FED — litellm + redis, loopback bind, 62 models projected|KVM4 (forge-core) fed-litellm docker — binds 100.64.0.5:4000 ONLY (loopback 12
+2026-09-03T08:41:47 b1aa760d  bash /root/.qwen/hooks/musyawarah.sh "C-1 DECISION: disable litellm-federation.service on boot on KVM8? (stopped-but-enabled orphan, contained 2026-09-03 NRestarts=140, :
+2026-09-03T08:42:11 b1aa760d  python3 << 'PYEOF'
+import pathlib
+p = pathlib.Path("/root/.qwen/hooks/musyawarah.sh")
+t = p.read_text()
+old = 'intent:"musyawarah session mint",mode:"light"'
+assert old i
+2026-09-03T08:42:29 b1aa760d  python3 << 'PYEOF'
+import pathlib
+p = pathlib.Path("/root/.qwen/hooks/musyawarah.sh")
+t = p.read_text()
+old = 'arguments:{session_token:$act,mode:"musyawarah",lane:"888-A
+2026-09-03T09:19:50 4e00230b  cat > /root/.qwen/projects/-root/memory/project-kvm-contrast-audit-20260903.md <<'EOF'
+---
+name: KVM2/4/8 contrast audit 2026-09-03 — topology truth + contradictions
+desc
+2026-09-03T10:06:16 27c9669b  which restic && restic version | head -1; ssh -o BatchMode=yes root@100.64.0.5 'which restic || apt-cache policy restic 2>/dev/null | head -3'; echo ===SCRIPT===; cat /ro
+2026-09-03T10:06:44 27c9669b  ssh -o BatchMode=yes -o ConnectTimeout=10 root@100.64.0.5 'export DEBIAN_FRONTEND=noninteractive; apt-get install -y restic 2>&1 | tail -1; restic version | head -1; mkdi
+2026-09-03T10:09:31 27c9669b  ssh -o BatchMode=yes -o ConnectTimeout=8 root@100.64.0.5 'which sqlite3 || (export DEBIAN_FRONTEND=noninteractive; apt-get install -y sqlite3 2>&1 | tail -1); cat > /root
+2026-09-03T17:04:56 f41cfb3d  ssh -o BatchMode=yes -o ConnectTimeout=5 root@100.64.0.5 'mkdir -p /root/HERMES/hooks/arifflow-hook && cat > /root/HERMES/hooks/arifflow-hook/HOOK.yaml << "EOF"
+name: ari
+2026-09-03T17:06:37 f41cfb3d  ssh -o BatchMode=yes -o ConnectTimeout=5 root@100.64.0.5 'sed -i "s/_post(\"Verify\", \"Verify\"/_post(\"Verify\", \"Observation\"/" /root/HERMES/hooks/arifflow-hook/hand
+2026-09-03T18:03:43 7ef4c8a8  ssh -o BatchMode=yes root@100.64.0.5 'set -e; cp /docker/litellm/config.yaml /docker/litellm/config.yaml.bak-20260904-imagegen && sed -i "s/    max_input_tokens: 0/    ma
+2026-09-03T18:07:24 7ef4c8a8  ssh -o BatchMode=yes root@100.64.0.5 'mkdir -p /docker/wan-shim && cat > /docker/wan-shim/shim.py << "SHIMEOF"
+#!/usr/bin/env python3
+# wan-image-shim: OpenAI chat/comple
+2026-09-03T18:08:17 7ef4c8a8  ssh -o BatchMode=yes root@100.64.0.5 'set -e; KEY=$(docker inspect litellm --format "{{range .Config.Env}}{{println .}}{{end}}" | grep "^QWEN_TEAM_OWNER_API_KEY=<redacted> | cut -
+2026-09-03T18:08:45 7ef4c8a8  ssh -o BatchMode=yes root@100.64.0.5 'set -e; sed -i "788s|.*|    api_base: http://100.64.0.5:4020/v1|; 822s|.*|    api_base: http://100.64.0.5:4020/v1|" /docker/litellm/
+2026-09-03T18:15:02 7ef4c8a8  ssh -o BatchMode=yes root@100.64.0.5 'set -e; NET=$(docker inspect litellm --format "{{range \$k,\$v := .NetworkSettings.Networks}}{{\$k}}={{\$v.Gateway}}/{{\$v.IPPrefixL
+2026-09-03T18:15:21 7ef4c8a8  ssh -o BatchMode=yes root@100.64.0.5 'set -e; sed -i "789s|.*|    request_timeout: 180|; 823s|.*|    request_timeout: 180|" /docker/litellm/config.yaml 2>/dev/null || tru
+2026-09-03T18:16:13 7ef4c8a8  ssh -o BatchMode=yes root@100.64.0.5 'python3 - << "PYEOF"
+import yaml
+p = "/docker/litellm/config.yaml"
+d = yaml.safe_load(open(p))
+n = 0
+for m in d["model_list"]:
+    i
+2026-09-04T00:39:08 99077b94  echo '=== DRAFT RULE (zero cost, written to forge_work) ==='; mkdir -p /root/forge_work/2026-09-04-isolation-rule; cat > /root/forge_work/2026-09-04-isolation-rule/draft-
+2026-09-04T00:48:54 99077b94  ssh -o StrictHostKeyChecking=no -o ConnectTimeout=5 -o BatchMode=yes root@100.64.0.5 'echo "=== STEP 1: BACKUP lanes.yaml ==="; cp /root/HERMES/lanes/lanes.yaml /root/HER
+2026-09-04T00:52:02 99077b94  ssh -o StrictHostKeyChecking=no -o ConnectTimeout=5 -o BatchMode=yes root@100.64.0.5 'echo "=== Did script actually write? ==="; ls -la /tmp/lanes-kvm4-cleaned.yaml 2>&1;
+2026-09-04T00:52:19 99077b94  ssh -o StrictHostKeyChecking=no -o ConnectTimeout=5 -o BatchMode=yes root@100.64.0.5 'cat > /tmp/patch-lanes.awk << "AWKEOF"
+BEGIN { in_lane=0; in_mf=0 }
+
+# Detect lane s
+2026-09-04T00:52:58 99077b94  ssh -o StrictHostKeyChecking=no -o ConnectTimeout=5 -o BatchMode=yes root@100.64.0.5 'cat > /tmp/patch-lanes-v3.awk << "AWKEOF"
+BEGIN { in_lane=0 }
+
+/^  [a-z][a-z0-9-]*:$
+2026-09-04T00:53:27 99077b94  ssh -o StrictHostKeyChecking=no -o ConnectTimeout=5 -o BatchMode=yes root@100.64.0.5 'echo "=== STEP 4: RESTART hermes-asi-gateway (briefly interrupts 69 sessions) ==="; 
+2026-09-04T00:53:59 99077b94  ssh -o StrictHostKeyChecking=no -o ConnectTimeout=5 -o BatchMode=yes root@100.64.0.5 'echo "=== STEP 0: Check actual YAML around line 104 ==="; sed -n "100,108p" /root/HE
+2026-09-04T00:54:24 99077b94  ssh -o StrictHostKeyChecking=no -o ConnectTimeout=5 -o BatchMode=yes root@100.64.0.5 'cat > /tmp/patch-lanes-v4.awk << "AWKEOF"
+BEGIN { in_lane=0 }
+
+/^  [a-z][a-z0-9-]*:$
+2026-09-04T00:54:38 99077b94  ssh -o StrictHostKeyChecking=no -o ConnectTimeout=5 -o BatchMode=yes root@100.64.0.5 'echo "=== DEPLOY v4 cleaned YAML ==="; cp /tmp/lanes-kvm4-cleaned-v4.yaml /root/HERM
+2026-09-04T03:27:56 99077b94  ssh -o StrictHostKeyChecking=no -o ConnectTimeout=5 -o BatchMode=yes root@100.64.0.5 'echo "=== STEP 1: Backup config.yaml ==="; cp /root/.hermes/config.yaml /root/.herme
+2026-09-04T03:29:05 99077b94  ssh -o StrictHostKeyChecking=no -o ConnectTimeout=5 -o BatchMode=yes root@100.64.0.5 'echo "=== RESTORE config.yaml from backup ==="; cp /root/.hermes/config.yaml.bak-pro
+2026-09-04T04:54:38 3bf62723  set -e
+TS=$(date +%Y%m%d-%H%M%S)
+LOG=/tmp/kvm8-swap-final-$TS.log
+
+echo "=== KVM8 DAEMON SWAP + ASI_BOT IDENTITY FIX $(date -u +%Y-%m-%dT%H:%M:%SZ) ===" | tee $LOG
+echo "
+2026-09-04T04:56:15 3bf62723  set -e
+TS=$(date +%Y%m%d-%H%M%S)
+LOG=/tmp/kvm8-swap-recovery-$TS.log
+
+echo "=== KVM8 SWAP RECOVERY $(date -u +%Y-%m-%dT%H:%M:%SZ) ===" | tee $LOG
+echo "Host: $(hostname)"
+2026-09-04T05:01:33 3bf62723  set -e
+TS=$(date +%Y%m%d-%H%M%S)
+LOG=/tmp/hermes-e2e-validate-$TS.log
+
+echo "════════════════════════════════════════════════════════════" | tee $LOG
+echo "  HERMES END-T
+2026-09-04T05:04:06 3bf62723  set -e
+TS=$(date +%Y%m%d-%H%M%S)
+LOG=/tmp/zen-all-$TS.log
+
+echo "════════════════════════════════════════════════════════════" | tee $LOG
+echo "  ZEN ALL — Comprehensive 
+2026-09-04T05:19:27 3bf62723  set -e
+TS=$(date +%Y%m%d-%H%M%S)
+LOG=/tmp/agi-asi-apex-seal-$TS.log
+
+echo "════════════════════════════════════════════════════════════" | tee $LOG
+echo "  AGI-ASI-APEX L
+2026-09-04T06:24:59 c2724b34  echo '=== VERIFY edited file has 5 new hermes-asi entries ===' && grep -c "hermes-asi P" /tmp/litellm-config-edited-20260904.yaml 2>&1 && echo '--- new entries preview --
+2026-09-04T06:25:51 c2724b34  echo '=== STEP 5b: scp edited config from KVM8 → KVM4 /tmp/ ===' && timeout 15 scp -o StrictHostKeyChecking=no -o ConnectTimeout=3 /tmp/litellm-config-edited-20260904.yam
+2026-09-04T09:42:42 d9b07ee5  echo "=== HERMES_DATA_CLASSIFICATION_ROUTING_v1.md write (D4) ===" && cat > /root/AAA/canon/HERMES_DATA_CLASSIFICATION_ROUTING_v1.md << 'EOF'
+# HERMES — Data Classificati
+2026-09-04T10:47:53 26221644  echo "════════════════════════════════════════════════════════════════════"
+echo " FED PROCESS INVENTORY on KVM8 (af-forge)"
+echo "═══════════════════════════════════════
+2026-09-04T10:48:57 26221644  echo "── Clean retry: roundtrip through FED :4000 with body in file (no shell escaping) ──"
+cat > /tmp/qwen-probe-20260904/roundtrip-body.json <<'EOF'
+{"model":"qwen3.7-m
+2026-09-04T10:55:12 26221644  echo "════════════════════════════════════════════════════════════════════"
+echo " (a cont.) KVM2 → KVM8 lane re-probe (clean, no head truncation)"
+echo "════════════════
+2026-09-07T06:17:11 10215b0b  ssh -o BatchMode=yes -o ConnectTimeout=5 root@100.64.0.5 'bash -s' <<'EOF'
+set -e
+C=/docker/litellm/config.yaml
+cp -p "$C" "$C.bak-20260907-mimo"
+echo "== anchors =="
+gre
+2026-09-07T06:21:46 10215b0b  ssh -o BatchMode=yes -o ConnectTimeout=5 root@100.64.0.5 'bash -s' <<'EOF'
+set -e
+C=/docker/litellm/config.yaml
+B=$C.bak-20260907-mimo
+[ -f "$B" ] || cp -p "$C" "$B"
+echo
+2026-09-07T06:23:27 10215b0b  ssh -o BatchMode=yes -o ConnectTimeout=5 root@100.64.0.5 'bash -s' <<'EOF'
+set -e
+C=/docker/litellm/config.yaml
+B=$C.bak-20260907-mimo
+RS=$(grep -n '^router_settings:' "$
+2026-09-07T06:24:37 10215b0b  ssh -o BatchMode=yes -o ConnectTimeout=5 root@100.64.0.5 'bash -s' <<'EOF'
+set -e
+C=/docker/litellm/config.yaml
+B=$C.bak-20260907-mimo
+NEXT=$(awk 'NR>1 && /^[A-Za-z_][A-Z
+2026-09-07T06:26:10 10215b0b  ssh -o BatchMode=yes -o ConnectTimeout=5 root@100.64.0.5 'bash -s' <<'EOF'
+set -e
+echo "=== container state + port publish ==="
+docker ps --filter name=litellm --format "
+2026-09-07T06:49:11 10215b0b  command -v openclaw-send-telegram && echo "telegram sender OK" || echo "TELEGRAM SENDER MISSING"; jq --version; mkdir -p /var/lib/mimo-doctor && cat > /var/lib/mimo-docto
+2026-09-07T07:55:16 10215b0b  MK=$(ssh -o BatchMode=yes root@100.64.0.5 'docker exec litellm printenv LITELLM_MASTER_KEY' 2>/dev/null | tr -d '\r\n'); [ -n "$MK" ] || { echo "no master key"; exit 1; }
+2026-09-09T15:04:02 b8457505  set +e
+echo "=== PROBE: iptables-persistent? ==="; dpkg -l 2>/dev/null | grep -i iptables-persistent; which iptables-save; which netfilter-persistent; echo; ls /etc/iptab
+2026-09-09T15:04:39 b8457505  set +e
+echo "=== DIAGNOSE: verbose curl ==="
+curl -sv --max-time 5 http://127.0.0.1:18789/health 2>&1 | tail -25
+echo
+echo "=== ADD MASQUERADE (for reply routing via tail
+2026-09-10T00:16:59 ea3a85d5  ssh -o ConnectTimeout=8 root@100.64.0.5 'systemctl is-active openclaw-gateway && systemctl restart openclaw-gateway && sleep 8 && systemctl is-active openclaw-gateway && 
+2026-09-10T00:20:01 ea3a85d5  scp -o ConnectTimeout=8 /root/AAA/instructions/human-zero-visibility-invariant.md root@100.64.0.5:/tmp/hzvi.md && ssh -o ConnectTimeout=8 root@100.64.0.5 'cp /root/.herme
+2026-09-10T00:20:17 ea3a85d5  ssh -o ConnectTimeout=8 root@100.64.0.5 'systemctl restart openclaw-gateway && sleep 6 && systemctl is-active openclaw-gateway && echo RELOADED' 2>&1 | tail -2
+2026-09-10T00:21:42 ea3a85d5  bash /root/scripts/render-agents.sh 2>&1 | grep -E "AGENTS|Done" && grep -c "HARAM-3" /root/AGENTS.md && scp -o ConnectTimeout=8 /root/AAA/instructions/human-zero-visibil
+2026-09-10T00:23:34 ea3a85d5  bash /root/scripts/render-agents.sh 2>&1 | grep -cE "AGENTS.md: rendered" && grep -c "Reality > Narrative" /root/AGENTS.md && scp -o ConnectTimeout=8 /root/AAA/instructio
+2026-09-10T00:25:46 ea3a85d5  bash /root/scripts/render-agents.sh 2>&1 | grep -cE "AGENTS.md: rendered" && grep -c "Witness dahulu" /root/AGENTS.md && scp -o ConnectTimeout=8 /root/AAA/instructions/hu
+2026-09-10T00:26:34 ea3a85d5  bash /root/scripts/render-agents.sh 2>&1 | grep -cE "AGENTS.md: rendered" && grep -c "Anti-HARAM Spine" /root/AGENTS.md && scp -o ConnectTimeout=8 /root/AAA/instructions/
+2026-09-10T00:28:58 ea3a85d5  cat >> /root/arifOS/memory/identity/SOUL.md <<'EOF'
+
+---
+
+## SCAR-2026-09-10-002 — RECEIPT-FIRST, BUKAN NARRATIVE (HARAM-3 style floor)
+
+**Trigger:** Status reply 500+ pe
+2026-09-10T00:29:08 ea3a85d5  scp -o ConnectTimeout=8 /root/arifOS/memory/identity/SOUL.md root@100.64.0.5:/root/.hermes/SOUL.md && ssh -o ConnectTimeout=8 root@100.64.0.5 'grep -c "RECEIPT-FIRST" /ro
+2026-09-10T00:30:28 ea3a85d5  sed -i 's/rev\.5)/rev.6 — +floor SEMBANG)/' /root/AAA/instructions/human-zero-visibility-invariant.md && bash /root/scripts/render-agents.sh 2>&1 | grep -cE "rendered" &&
+2026-09-10T00:33:20 ea3a85d5  python3 - <<'EOF'
+p='/root/AAA/instructions/human-zero-visibility-invariant.md'
+s=open(p).read()
+anchor='> Ringkas: *Witness dahulu. Buat kerja. Jangan menyusahkan manusi
+2026-09-10T00:36:02 ea3a85d5  scp -o ConnectTimeout=8 /root/AAA/instructions/human-zero-visibility-invariant.md root@100.64.0.5:/tmp/h8.md && ssh -o ConnectTimeout=8 root@100.64.0.5 'B=$(grep -n "^# A
+2026-09-12T15:25:34 c890d67e  timeout 15 ssh -o ConnectTimeout=5 -o BatchMode=yes root@100.64.0.5 'cp ~/.hermes/config.yaml ~/.hermes/config.yaml.bak-20260912-zai-rung && sed -i "s|^fallback_providers
+2026-09-12T15:26:47 c890d67e  timeout 15 ssh -o ConnectTimeout=5 -o BatchMode=yes root@100.64.0.5 'pgrep -af "gateway run" | head -3; for P in $(pgrep -f "gateway run"); do echo "PID $P zai=$(tr "\0" 
+2026-09-13T07:20:37 5a1cbaeb  ssh -o ConnectTimeout=10 root@100.64.0.5 'f=/root/.secrets/litellm-fed.env; echo "pre → exact-line: $(grep -c "^MINIMAX_API_KEY=<redacted> $f)"; if ! grep -q "^MINIMAX_API_KEY=<redacted> $
+2026-09-13T07:21:27 5a1cbaeb  ssh -o ConnectTimeout=10 root@100.64.0.5 'docker restart litellm && echo restarted'
+2026-09-14T06:57:58 5a621132  ssh -o ConnectTimeout=5 -o StrictHostKeyChecking=no 100.64.0.5 "systemctl restart litellm 2>/dev/null; sleep 2; systemctl is-active litellm 2>/dev/null"
+2026-09-14T06:58:32 5a621132  ssh -o ConnectTimeout=5 -o StrictHostKeyChecking=no 100.64.0.5 "systemctl restart fed-litellm && sleep 5 && systemctl is-active fed-litellm && curl -s http://127.0.0.1:40
+2026-09-14T07:06:15 5a621132  cat /root/A-FORGE/litellm-config.yaml | ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no 100.64.0.5 "cat > /docker/litellm/config.yaml && echo 'config synced'"
+2026-09-14T07:25:16 5a621132  cat /root/A-FORGE/litellm-config.yaml | ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no 100.64.0.5 "cat > /docker/litellm/config.yaml && echo 'config synced'" && cp 
+2026-09-14T07:25:28 5a621132  ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no 100.64.0.5 "systemctl restart fed-litellm && sleep 8 && systemctl is-active fed-litellm && curl -s http://100.64.0.5:
+2026-09-14T07:29:25 5a621132  cat /root/A-FORGE/litellm-config.yaml | ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no 100.64.0.5 "cat > /docker/litellm/config.yaml && echo 'synced'" && cp /root/A
+2026-09-14T07:39:12 5a621132  cat /root/A-FORGE/litellm-config.yaml | ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no 100.64.0.5 "cat > /docker/litellm/config.yaml && echo 'synced'" && cp /root/A
+2026-09-14T07:43:32 5a621132  cat /root/A-FORGE/litellm-config.yaml | ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no 100.64.0.5 "cat > /docker/litellm/config.yaml && echo 'synced'" && cp /root/A
+2026-09-14T08:04:44 5a621132  cat /root/A-FORGE/litellm-config.yaml | ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no 100.64.0.5 "cat > /docker/litellm/config.yaml && echo 'synced'" && cp /root/A
+2026-09-14T09:01:31 59690d2a  ssh root@100.64.0.5 "echo 'REDIS_FED_PASSWORD=<redacted> >> /root/.secrets/litellm-fed.env && echo 'Added'; cd /docker/litellm && docker compose re
+
+REAL cross-node mutations to KVM4: 77
