@@ -165,6 +165,19 @@ organs:
     bind: loopback
     note: "REST only — no MCP protocol. Use stdio bridge for MCP access."
 
+  hermes-mcp:
+    name: HERMES MCP
+    endpoint: http://localhost:18087/mcp
+    protocol: mcp
+    transport: streamable-http
+    role: meaning_integrity
+    authority: RELAY_ONLY
+    tools_count: 9
+    description: "Meaning Integrity Organ — RASA/qualia discipline for claims about humans (claim_validate, qualia_boundary, contradiction_scan, counterstory_test, uncreated_classify, perspective_scope, handoff_package, registry_status + hermes_retrieve). F13 directive 2026-09-16: wired to all AAA agents — rasa qualia manusia."
+    health_endpoint: http://localhost:18087/health
+    bind: loopback
+    note: "Officialized 2026-09-16 (commit 92b6727); red-team hardened same-day (cae44fe, 2881459, 457e8a2). stdio lane: python3 -m hermes_mcp (cwd /root/HERMES)."
+
 # ─────────────────────────────────────────────────────────────
 # ROLES — Capability visibility per agent role
 # ─────────────────────────────────────────────────────────────
@@ -201,7 +214,7 @@ forge_instruments:
   opencode:
     id: FI-001
     name: OpenCode
-    mcp_servers: [kernel, aforge, geox, wealth, well, arifflow]
+    mcp_servers: [kernel, aforge, geox, wealth, well, arifflow, hermes-mcp]
     missing: [fed]
     role: builder
     note: "Most capable agent config — missing FED"
@@ -209,42 +222,42 @@ forge_instruments:
   claude:
     id: FI-002
     name: Claude Code
-    mcp_servers: [kernel, aforge, geox, wealth, well, fed, arifflow]
+    mcp_servers: [kernel, aforge, geox, wealth, well, fed, arifflow, hermes-mcp]
     role: builder
     note: "Full federation +19 utility MCPs (richest utility surface)"
 
   qwen:
     id: FI-003
     name: Qwen Code
-    mcp_servers: [kernel, aforge, geox, wealth, well, fed, arifflow]
+    mcp_servers: [kernel, aforge, geox, wealth, well, fed, arifflow, hermes-mcp]
     role: builder
     note: "Full federation access via HTTP"
 
   kimi:
     id: FI-008
     name: Kimi Code
-    mcp_servers: [kernel, aforge, geox, wealth, well, fed, arifflow]
+    mcp_servers: [kernel, aforge, geox, wealth, well, fed, arifflow, hermes-mcp]
     role: researcher
     note: "Full federation access — uses stdio launchers"
 
   codex:
     id: FI-005
     name: Codex CLI
-    mcp_servers: [kernel, aforge, geox, wealth, well, fed, arifflow]
+    mcp_servers: [kernel, aforge, geox, wealth, well, fed, arifflow, hermes-mcp]
     role: builder
     note: "Full federation +4 utility MCPs (fetch, context7, brave, github)"
 
   grok:
     id: FI-007
     name: Grok
-    mcp_servers: [kernel, aforge, geox, wealth, well, fed, arifflow]
+    mcp_servers: [kernel, aforge, geox, wealth, well, fed, arifflow, hermes-mcp]
     role: architect
     note: "Full federation — cleanest config, no utility MCPs"
 
   hermes:
     id: hermes-prime
     name: Hermes
-    mcp_servers: [kernel, aforge, geox, wealth, well, arifflow, frame, aaa, fed]
+    mcp_servers: [kernel, aforge, geox, wealth, well, arifflow, frame, aaa, fed, hermes-mcp]
     missing: []
     role: governor
     note: "Telegram gateway — full federation (9 MCP servers)"
@@ -252,14 +265,14 @@ forge_instruments:
   copilot:
     id: FI-006
     name: Copilot
-    mcp_servers: []
+    mcp_servers: [hermes-mcp]
     role: warga
-    note: "LLM-only via FED :4000 proxy, no MCP tools — architecturally excluded"
+    note: "MCP wired via ~/.copilot/mcp-config.json (13 servers; hermes-mcp added 2026-09-16). FED :4000 proxy remains primary compute lane."
 
   antigravity:
     id: FI-009
     name: Antigravity CLI
-    mcp_servers: [kernel, aforge, fed, geox, wealth, well, context7]
+    mcp_servers: [kernel, aforge, fed, geox, wealth, well, context7, hermes-mcp]
     role: builder
     note: "Pair-programming harness — connected to core organs + FED + Context7"
 
