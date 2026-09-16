@@ -1,6 +1,6 @@
 ---
 name: skill-library-integrity
-description: "Use when a skill won't load or a capability vanished silently —, a capability vanished silently, or trees diverge — one-writer/many-views consolidation with a live entropy sensor."
+description: "Use when a skill won't load, a capability vanished silently, or trees diverge — one-writer/many-views consolidation with a live entropy sensor."
 version: 1.0.0
 owner: AAA
 category: governance
@@ -264,6 +264,18 @@ git -C /root/AAA status --porcelain        # must show no deletions before movin
   `SKILL.md` may be a container of sub-skills, and a directory whose only children are
   `references/`, `__pycache__`, or fixtures is a live skill whose body sits one level up. Decide
   with a recursive body check plus an inbound-link check, never from one directory level.
+
+- **One census, many consumers — never fork a second counter.** A checker that re-derives its own count
+  beside the canonical one guarantees the two will disagree eventually, and nothing reconciles them:
+  a registry carried `drift: 0` for weeks precisely because a hand-era counter sat beside the real one
+  with no reconciliation path. Every gate, report, and doc must **read the single census** (its
+  `--json` output) rather than count the tree itself; two independent counters is the mechanism by
+  which a stale claim survives every audit.
+- **Severity: FAIL means a capability is broken right now; debt is WARN.** Reserve the failing verdict
+  for a structural break (a link resolving to nothing — a capability deleted silently). Carried debt
+  (shells, diverged twins, case drift, name collisions) is real but was already true before the run, so
+  failing on it makes the gate permanently red and therefore ignored. A gate that cannot go green on a
+  healthy system stops being read.
 
 ## Support files
 

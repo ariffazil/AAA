@@ -1,0 +1,79 @@
+{
+  "_doc": "Live symbol namespace for the arifOS federation. A symbol here is BINDING — it carries enforcement, history and floors. Never redefine one; never mint a new axis over it. Written by hand for ratified canon (floors, ratified fragments); machine-derived counts live in the registry, not here. Probe BEFORE importing any external notation: /root/scripts/symbol-probe.py",
+  "_rule": "C20 SYMBOL TRUTH — do not import or invent notation before namespace verification.",
+  "version": "1.0.0",
+  "generated": "2026-09-16",
+  "reserved_never_reuse": {
+    "F1-F13": {
+      "means": "kernel constitutional floors",
+      "owner": "/root/arifOS/GENESIS/FLOOR_TABLE.json",
+      "status": "RATIFIED",
+      "collision_class": "FATAL"
+    },
+    "C1-C19": {
+      "means": "doctrine-layer constitutional floors (bind via rendered canon; do not gate a verdict)",
+      "owner": "/root/AAA/instructions/human-meaning-membrane.md",
+      "status": "C1-C16 RATIFIED · C17-C19 PROPOSED IN AMENDMENTS",
+      "collision_class": "FATAL"
+    },
+    "R0-R5": {
+      "means": "CONSEQUENCE DOMAINS — R0 World Reality · R1 Human Reality · R2 Machine Reality · R3 Witness Layer · R4 Consequence/Who-pays · R5 Governance Layer",
+      "owner": "/root/AAA/instructions/three-consequence-domains.md",
+      "status": "F13_RATIFIED_CHAT 2026-09-13",
+      "collision_class": "FATAL",
+      "known_bad_imports": [
+        "R0-R5 as authority tiers (external artifact 2026-09-16 — REJECTED)"
+      ]
+    },
+    "T0-T3": {
+      "means": "AUTHORITY/AUTONOMY TIER — T0 read/probe (auto, no narration) · T1 edit/test/commit/restart-one-service (AUTO-DO) · T1.5 proposals-only · T2 service restart on prod / deploy after green tests (ANNOUNCE, 10s veto) · T3 rm -rf / DROP TABLE / force-push / secret rotation / external comms / F1-F13 changes (888_HOLD)",
+      "owner": "/root/AAA/instructions/autonomy.md + /root/AAA/AGENTS-AUTONOMY.md",
+      "status": "RATIFIED",
+      "collision_class": "FATAL",
+      "in_use_by": "67 skills carry autonomy_tier: T1 · 13 T0 · 12 T2",
+      "known_bad_imports": [
+        "T0-T3 as read/analyze/dry-run/write (external artifact 2026-09-16 — REJECTED; would relabel 67 skills from auto-do to read-only)"
+      ]
+    },
+    "W1-W6": {
+      "means": "ATTENTION-WASTE CLASSES — W1 status theater · W2 text wall · ... with a 3-strike kill path. 'Sole enforcement authority.'",
+      "owner": "/root/AAA/instructions/attention-kill-criterion.md",
+      "status": "F13_RATIFIED_CHAT 2026-09-11 (retained unchanged)",
+      "collision_class": "FATAL",
+      "known_bad_imports": [
+        "W0-W4 as witness state (external artifact 2026-09-16 — REJECTED)"
+      ]
+    },
+    "W888": {
+      "means": "sovereign attention cost — the scarcest resource",
+      "owner": "/root/AAA/instructions/sovereign-attention-preservation.md",
+      "status": "F13_RATIFIED_CHAT 2026-09-13",
+      "collision_class": "FATAL"
+    },
+    "Φ": {
+      "means": "governance phi — bare Φ PROHIBITED in cross-organ governance interfaces (φ = porosity in GEOX, φ = free-energy latent in K777 are bounded-domain symbols)",
+      "owner": "/root/AAA/canon/CANONICAL_GLOSSARY.md",
+      "status": "RATIFIED",
+      "collision_class": "FATAL"
+    },
+    "K3/K4": {
+      "means": "K3 = a model name · K4 = a node, in existing federation text",
+      "owner": "/root/AAA/instructions/inter-agent-protocol.md + canon/HERMES_OPENCLAW_ROLE_SPLIT_CONTRACT.md",
+      "status": "IN USE (informal)",
+      "collision_class": "AMBIGUOUS — avoid a K0-K4 scale; spell it out instead"
+    }
+  },
+  "neutral_composition": {
+    "_rule": "Classify by COMPOSING these neutral dimensions. Never rebrand a dimension as a new scale.",
+    "dimensions": {
+      "consequence_domain": ["world", "human", "machine", "witness", "who-pays", "governance"],
+      "authority_tier": ["T0", "T1", "T1.5", "T2", "T3"],
+      "witness_state": ["none", "self-check", "tool-log", "independent", "human"],
+      "kill_state": ["no-undo-needed", "reversible", "retractable-with-cost", "irreversible"],
+      "constitutional_floor": "F1-F13 (kernel) and C1-C19 (doctrine-layer)",
+      "attention_cost": "W888 (sovereign attention) — the only attention symbol in use",
+      "capability_truth": "resolved / phantom-absence / ghost-capability"
+    },
+    "note": "Spell out witness_state and kill_state in words until a prefix is formally assigned. Do not assume W or K are free."
+  }
+}

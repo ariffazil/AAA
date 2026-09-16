@@ -319,6 +319,36 @@ kill state         : no-undo-needed | reversible | retractable-with-cost | irrev
 Its *notation* was not — and notation is the thing that silently corrupts a multi-agent system,
 because every agent reads the symbol, and none of them re-derive it.
 
+**Enforcement (C20 SYMBOL TRUTH).** The register is executable, not advisory:
+
+```bash
+python3 /root/scripts/symbol-probe.py <artifact>     # exit 1 = FATAL collision
+python3 /root/scripts/symbol-probe.py --text "R0-R5 tier table ..."
+cat artifact.txt | python3 /root/scripts/symbol-probe.py -
+```
+
+Machine-readable namespace: `/root/AAA/canon/SYMBOL_TABLE.json`. Verified against both intake artifacts
+of 2026-09-16 — artifact #1 → `FATAL (R0-R5)`; artifact #2 → `FATAL (R0-R5, T0-T3, W1-W4)` +
+`NEW_AXIS (K)`; a clean document → `CLEAR`.
+
+**Seven-step intake law (run before encoding any part of an outside artifact):**
+
+```
+1. extract every symbol, axis, tier, band, label, acronym, numeric scale
+2. probe each against the live symbol table
+3. symbol exists                -> do not redefine it
+4. concept valid, symbol collides -> import the CONCEPT, drop the NOTATION
+5. existing owner found          -> patch the owner; never mint a duplicate skill
+6. layout conflicts with the derived index -> reject the layout
+7. record accepted delta, rejected collision, reason
+```
+
+**Self-correction is not verification.** Artifact #2 fixed `R0–R5` and introduced three fresh collisions.
+Run the probe on **every revision**, not only the first — responsiveness is not the same as correctness.
+
+**Fail mode this catches that lint cannot.** A normal linter asks *"does T1 exist?"* — yes, so it passes.
+The probe asks the only question that protects meaning: *"does T1 mean the same thing to every agent?"*
+
 ## Correction Log
 
 - **Not a prompt library.** Skills were treated as documentation and drifted to 82.8% divergence across four writers. They are actuators.
@@ -349,6 +379,7 @@ because every agent reads the symbol, and none of them re-derive it.
   owned here — and at a *higher* layer. Moving an always-on rule into an on-demand skill is a
   governance **downgrade**: a fragment rendered into `base.md` binds every turn; a skill fires only if
   the agent loads it. Never trade a floor for a document.
+- **C20 SYMBOL TRUTH staged (2026-09-16).** Proposed as `/root/arifOS/GENESIS/FLOOR_TABLE_AMENDMENTS.md` Amendment 17; `FLOOR_TABLE.json` (13 floors) left untouched. Executable form: `symbol-probe.py` + `SYMBOL_TABLE.json`. Concept from an external artifact; the notation (`C20`) is this federation's own sequence, mapped to the existing C-series — not imported.
 - **Notation is a governance surface (2026-09-16, second external intake).** An artifact that
   corrected `R0–R5` then proposed `T0–T3`/`W0–W4`/`K0–K4` — re-colliding with the live autonomy
   tiers, the attention-waste classes, and existing node/model names. The artifact was *conceptually
