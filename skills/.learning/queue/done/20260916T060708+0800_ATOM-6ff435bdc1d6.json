@@ -1,0 +1,8 @@
+{
+  "skill_id": "FORGE-context-compressor",
+  "agent": "hermes-rsi-loop",
+  "lesson": "TRUNCATION_LOSS observed 1x \u2014 impact=evidence_loss. First surface: session:tool:search_files \u2014 all four checks passed, but independence is NAME-LEVEL ONLY (same author) \u2014 verdict is PROVISIONAL: may enter the capability graph, may NOT record a survival event",
+  "evidence": "[{\"layer\": \"runtime\", \"source\": \"session:tool:search_files\", \"excerpt\": \"rminal)\\\\\\\\b.{0,80}\\\\\\\\b(arif|sovereign|hang)\\\\\\\\b\\\\\\\": (\\\\\\\"HUMAN_BURDEN\\\\\\\", \\\\\\\"policy\\\\\\\", \\\\\\\"sovereign_burden\\\\\\\"),\\\\n  50:     r\\\\\\\"\\\\\\\\b(truncat|head \\\\\\\\+ tail|silently cut|omitted middle)\\\\\\\\b\\\\\\\": (\\\\\\\"TRUNCATION_LOSS\\\\\\\", \\\\\\\"skill\\\\\\\", \\\\\\\"evidence_loss\\\\\\\"),\\\\n  261: \\\\n  262: def _evidence_layer(pattern_type: str, source: str) -\"}]",
+  "atom_id": "ATOM-6ff435bdc1d6",
+  "verified_by": "hermes-rsi-verifier"
+}

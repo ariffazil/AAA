@@ -31,6 +31,12 @@ model routing, provenance format, or publication path.
 - Decompose to independent streams: visual (scene-aware frames, dedup) · text
   (native captions first) · audio (events, silence) · OCR (slides/terminals/charts)
   · structural (shot boundaries, dup clusters) · semantic (embeddings, never sole evidence).
+- **Working acquisition adapter:** `media-ingest` MCP (`media_ingest_url`) — fills
+  `media_path` (MP4), `frames/` (whole-timeline sampling, 4x4 average-hash dedup) and
+  `contact_sheet.jpg` (one image = one vision call). Do not re-implement frame sampling
+  per surface; the sampler lives in `/root/.hermes/tools/media_ingest/media_ingest.py`.
+  Receipts come back as `truth_state` + `content_read` + `transcript_state`; a degenerate
+  transcript is refused, never promoted to OBSERVED.
 
 **METABOLIZE** — evidence ledger → typed claims:
 - Every observation → evidence object with t_start/t_end, modality, locator
@@ -69,14 +75,25 @@ not route through). Fabricators blacklisted: gemini-3.5/3.1-flash-lite. ASR spee
 **For YouTube URLs on cloud-hosted servers (VPS, AWS, GCP, Azure):**
 
 ```
-STEP 1: youtube-transcript-api     → if RequestBlocked → STEP 2
-STEP 2: yt-dlp subtitle extract    → if "sign in" bot  → STEP 3
-STEP 3: Firecrawl MCP (firecrawl_scrape) → if dead     → STEP 4
-STEP 4: Exa MCP semantic search    → if no results     → STEP 5
-STEP 5: ZAI Web Search             → if no results     → STEP 6
-STEP 6: Gemini AI (forge_gemini)   → if fails          → STEP 7
-STEP 7: LABEL AS INFERRED — never claim observation
+STEP 1: media-ingest MCP  (media_ingest_url — walks the whole ladder itself)   [COMPOSED]
+        ├─ SerpApi captions → Firecrawl formats:["video"] → MP4 (frames + audio)
+        ├─ Firecrawl audio → yt-dlp → Groq whisper-large-v3 (degeneracy-gated)
+        └─ ffmpeg whole-timeline frames + contact_sheet.jpg
+STEP 2: raw Firecrawl scrape       → if denied (transient) retry/backoff → then mark
+STEP 3: Exa MCP semantic search    → if no results     → STEP 4
+STEP 4: ZAI Web Search             → if no results     → STEP 5
+STEP 5: Gemini AI (forge_gemini)   → if fails          → STEP 6
+STEP 6: LABEL AS INFERRED — never claim observation
 ```
+
+**Verified reality of the ladders (2026-09-16, KVM8):** yt-dlp vs YouTube is an
+*intermittent per-request* bot check (same host passed and failed on different IDs minutes
+apart) — re-probe the URL, do not declare the lane dead. `formats:["video"]` is the lane
+that works for media bytes and is the ONLY one that yields frames; `["audio"]` returns
+transient `SCRAPE_MEDIA_ACCESS_DENIED` and must be retried, never reported as BLOCKED.
+`content_read` + `transcript_state` from the composed lane are the honest receipt:
+`SUSPECT_DEGENERATE` means Whisper invented speech on music/silence — treat the speech
+channel as ABSENT (V12 abstention) and read the pixels instead.
 
 **Automated script:** `/root/.hermes/profiles/aaa-hermes/skills/media/youtube-content/scripts/youtube_ingest.py`
 
