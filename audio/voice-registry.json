@@ -1,8 +1,8 @@
 {
  "schema": "aaa.voice-registry.v1",
  "owner": "AAA",
- "updated_at": "2026-09-15T22:27:05Z",
- "updated_by": "Hermes — sealed abang-sado-clone-ref01 (sovereign-chat seal, chain entry #19) under F13 DM 2026-09-16",
+ "updated_at": "2026-09-16T04:02:34Z",
+ "updated_by": "Hermes — F13 DM 2026-09-16: lane_precedence recorded after a wrong-voice pick (Ref01 shipped where the arbiter was live-v1)",
  "source_of_truth": "THIS FILE is the canonical voice-id registry. Resolvers (pipeline, identity card, routers) MUST resolve here; no component may hardcode a separate provider id.",
  "revocation_policy": [
   "A REVOKED voice id must never be selectable as a default, an explicit id, or a fallback rung.",
@@ -213,5 +213,20 @@
    "voice_id": "i-ARIF-20260819T084602",
    "status": "REVOKED — unreachable"
   }
- ]
+ ],
+ "lane_precedence": {
+  "abang-sado persona register (shadow mode, F13 DM lane)": {
+   "precedent_voice": "abang-sado-live-v1",
+   "effective_from": "2026-09-16",
+   "basis": "F13 DM 2026-09-16 — sovereign identified the alpha-arc take (alpha10 of the alpha01-10 arc, 04:04-04:08) as the voice the persona lane runs on. Precedent set by the arc's own artifacts, not by agent preference.",
+   "scope": "F13 DM / shadow-mode persona lane ONLY. NOT a Hermes assistant default. Other lanes unaffected.",
+   "alternates": [
+    "abang-sado-alpha",
+    "abang-sado-clone-ref01"
+   ],
+   "unregistered_legacy": "ttv-voice-2026081808404926-BdoQh6ec (renders, not in registry — D1 open)",
+   "why_this_one": "only live sado voice whose chain carries the principal's own voice (own Telegram voice notes). The other two are fully synthetic archetypes.",
+   "pick_rule_for_agents": "On a bare 'abang sado voice' request in this lane, use precedent_voice. Do NOT select an alternate without an explicit id or a timbre A/B by the sovereign."
+  }
+ }
 }

@@ -340,6 +340,18 @@ git -C /root/AAA status --porcelain        # must show no deletions before movin
 - **A symlink mirror must be excluded from collision counting.** Counting a mirror as a second
   root doubles every skill it serves and manufactures collisions that do not exist, which then
   bury the real ones. Exclude mirror roots before comparing names or content.
+- **A collision COUNT and a collision CLASS are different findings, and a quoted overlap rate must be
+  re-measured before it is repeated.** Two classes carry opposite remedies: an **identity collision**
+  is one capability duplicated across roots or aliases (the mirror farm above inflates it; remove the
+  duplicate, no content merge); a **trigger collision** is two different, valid capabilities matching
+  the same intent — a routing/selector problem that must never be resolved by merging bodies. Measure
+  description-token Jaccard and **state the cutoff you used**; on a 500+ skill corpus genuine semantic
+  overlap sits in the **tenths of a percent** at Jaccard >= 0.5, so a quoted figure an order of
+  magnitude above your own measurement is identity duplication or a looser metric, not hidden
+  redundancy. Report your number, name the difference, and never canonise an arbitrary "optimal N
+  skills" target that no measured selector produced — order selection `Consequence/Tier -> canonical
+  owner -> authority compatibility -> health -> minimal sufficient set -> semantic last mile`, with
+  the semantic step LAST.
 - **Two trees sharing a skill name are not in sync.** Names agree while bodies diverge —
   compare content hashes per shared name, and report the diverged fraction, not the shared
   count. A high shared count reads as health and hides the drift completely.
@@ -515,6 +527,13 @@ git -C /root/AAA status --porcelain        # must show no deletions before movin
   predicate with no reachable failing branch is not a check. Widen the scope in the same pass — a
   detector watching one root cannot catch a false claim about another, so measure every root from a
   single enumerated table on every cycle rather than adding paths ad hoc.
+
+- **An advertised skill index is a claim, not existence.** The prompt-injected catalog (and any
+  registry, README or report listing) can name a skill that no longer resolves: `skills_list` shows
+  it while `skill_view` returns `not found`. Resolve a skill with `skill_view` before loading it,
+  citing it, or concluding it is merely off-limits — a name that cannot be opened is a broken
+  pointer to report, and until it is fixed the loader re-derives the procedure from priors while
+  every surface looks healthy.
 
 ## Support files
 

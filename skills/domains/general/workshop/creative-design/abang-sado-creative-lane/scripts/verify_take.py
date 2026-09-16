@@ -96,7 +96,9 @@ def f0(path: str):
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("take")
-    ap.add_argument("--text", required=True, help="the input line, as rendered")
+    ap.add_argument("--text", required=True,
+                    help="PATH to the input line file as rendered (NOT the line text itself — "
+                         "passing the raw line raises OSError: File name too long)")
     ap.add_argument("--source", help="clone source audio -- enables the f0 family check")
     ap.add_argument("--alias", action="append", default=[],
                     metavar="HEARD=WRITTEN",
