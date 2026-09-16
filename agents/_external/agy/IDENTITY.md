@@ -1,4 +1,4 @@
-# IDENTITY — Antigravity CLI (agy) · FI-009-candidate
+# IDENTITY — Antigravity CLI (agy) · FI-009
 
 > **Status: PROPOSED — HOLD pending F13.** Not installed. No authority. This file
 > exists so the federation remembers what was decided and why.
