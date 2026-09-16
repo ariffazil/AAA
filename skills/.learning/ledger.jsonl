@@ -14,3 +14,4 @@
 {"ts": "2026-09-15", "atom": "20260916T005300Z_FI-003_wisdom-reader.json", "skill": "wisdom-reader", "agent": "fi-003-qwen-code", "lesson_hash": "cc2a574c1433"}
 {"ts": "2026-09-15", "atom": "20260916T000708+0800_ATOM-b3dafde3cf14.json", "skill": "FORGE-verify-runtime", "agent": "hermes-rsi-loop", "lesson_hash": "3e4ba078549b"}
 {"ts": "2026-09-15", "atom": "20260916T000708+0800_ATOM-1f0fe44efe0a.json", "skill": "FORGE-verify-runtime", "agent": "hermes-rsi-loop", "lesson_hash": "d96a493ca44b"}
+{"ts": "2026-09-15", "atom": "20260916T060708+0800_ATOM-6ff435bdc1d6.json", "skill": "FORGE-context-compressor", "agent": "hermes-rsi-loop", "lesson_hash": "89169734abee"}
