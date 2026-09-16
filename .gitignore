@@ -113,3 +113,6 @@ registries/memory-pending-archive-*
 registries/memory-redemption-ledger-*
 state/event-bridge/rsi_exhale.last_hash
 state/kvm4-mutations-*.txt
+
+# ── 2026-09-16: F5-private human memory lane — never versioned (Arif directive) ──
+human-paradox/
