@@ -33,6 +33,39 @@ curl -s -X POST http://127.0.0.1:<port>/ -H 'Content-Type: application/json' \
 
 **Assert the credential file's shape, not just its path.** `stat` for mode, then check the secret's length and first characters in Python without printing it — an 11-char stub and a 100-char token are identical from `systemctl status`.
 
+## Rule 1b — four rungs: DECLARED → REACHABLE → FUNCTIONAL → EFFECTIVE
+
+Score every surface on all four rungs before calling it up, and **say which rung you measured**.
+
+| Rung | Question | Evidence |
+|---|---|---|
+| DECLARED | is it in the config, catalog, or registry? | the file that lists it |
+| REACHABLE | does it answer on its port at all? | `curl` returns **any** HTTP status, or a TCP connect succeeds |
+| FUNCTIONAL | does one real verb return real data? | the verb call below, parsed |
+| EFFECTIVE | did a consumer act on its output and close? | a receipt, a closed incident, a downstream delta |
+
+```bash
+# rung 2, cheapest discriminator — separates "nothing listening" from "up, wrong route"
+for p in <port> <port>; do
+  printf "%s -> %s\n" "$p" "$(curl -s -o /dev/null -w '%{http_code}' --max-time 4 http://127.0.0.1:$p/health)"
+done
+```
+
+**Never merge `000` with `404`.** `000` (curl exit 7, connection refused) means nothing is
+listening — an ops problem. `404` means the HTTP server is up and the path is absent — a
+routing/config problem with a different fix. A unit can be `active (running)` while its port
+refuses connections: unit-live, **not reachable**. Both of those are as far from EFFECTIVE as a
+catalog entry is.
+
+**A catalog, manifest, or "exposed surfaces" list is DECLARED by definition.** Answering "is X
+available?" by reading the catalog is the most common way an agent reports a phantom capability.
+An entry that exists in a loader (a tool list, an MCP schema cache, a plugin manifest) is not
+reachable — reachability is a live call, and functionality is a live call that returned real data.
+
+When one rung fails, check whether the capability exists somewhere else before declaring it
+absent: a whole search path can be dead while a working implementation sits one host away, and
+"capability present + route broken" needs a re-point, not a rebuild.
+
 ## Rule 2 — the encrypted store and the plaintext store are different lanes
 
 Do not write "no plaintext credentials on disk" while a plaintext token file exists in the secrets tree. On KVM8 both exist for Google: `~/.config/gws/credentials.enc` + `.encryption_key` (mode 0600, encrypted, unpacked via keyring — this one works) and `/root/.secrets/google_token.json` (plaintext, dead). A doc that conflates them, or that labels the `GOOGLE_TOKEN_PATH` bridges as "app-password" consumers when they are OAuth-token consumers, is wrong in a way an outside reviewer will find.
@@ -72,3 +105,6 @@ Sweep: `grep -rn "<old-version>\|<old-claim>" README.md SECURITY.md docs/` and c
 - **Never `git add -A` while a sibling session is editing.** Add explicit paths; a bare `add -A` sweeps their half-finished work into your commit.
 - **A stale `sys_health` probe failure is not automatically a real fault.** When two tools read the same artifact and disagree (a probe reporting `chain_integrity: BROKEN, chain_gaps: 1` while the ledger's own verifier reports `overall: INTACT` with the break annotated `frozen-historical`), the finding is that **your witnessing is broken**, not necessarily the artifact. Report the disagreement; do not pick a side.
 - **Metrics that only appear in another agent's cache are not verifiable.** If a reported score (e.g. an FQ reading) is not in a shared store you can read, say "cannot verify from here" rather than relaying it.
+- **A headline board is not a probe.** A summary line claiming coverage 100% / debt 0 while an independent store shows enabled jobs that never fired, dead deliveries, and unjoinable receipts is a false all-clear — worse than silence, because it launders trust and suppresses the search for the real fault. Re-read the store the headline summarises before relaying the number. A green board sitting on top of a genuine fix is the most dangerous case: it makes the fix look like proof that everything else is healthy.
+- **Verify a claim at the moment you relay it, not the moment it was written.** A parity check that passed when it ran can be invalidated by the very same session's next action — a certified `source == deployed` is stale the moment anyone commits again. Re-probe before repeating it.
+- **Difference is not inconsistency until ownership says they should be equal.** Two components differing (an index at 768 dims beside collections at 1024, two model IDs, two agents disagreeing) is not drift until a shared contract says they must match. Find the owner and read its declared contract before alerting — otherwise you manufacture false positives that cost more attention than the real fault.
