@@ -1,0 +1,26 @@
+{
+  "registry_id": "malaysia-reality-interface-v1",
+  "created": "2026-09-16",
+  "authority": "AAA sovereign policy plane; F13 gates Ring 2-3",
+  "evidence_base": "/root/docs/malaysia-reality-interface.md",
+  "capabilities": [
+    {"id": "malaysia.weather.get_forecast", "provider": "data.gov.my", "ring": 0, "mode": "read", "default_verdict": "ALLOW", "organs": ["well", "hermes"], "verified_live": true, "rate_limit": "responsible-use", "notes": "BM+EN dual language; feeds Morning Briefing hazard line"},
+    {"id": "malaysia.weather.get_warnings", "provider": "data.gov.my/METMalaysia", "ring": 0, "mode": "read", "default_verdict": "ALLOW", "organs": ["well", "hermes"], "verified_live": true, "freshness_required": true, "notes": "LIVE receipt 2026-09-16: rough-seas warning"},
+    {"id": "malaysia.data.search_catalogue", "provider": "data.gov.my", "ring": 0, "mode": "read", "default_verdict": "ALLOW", "organs": ["aaa", "hermes"], "verified_live": true, "notes": "id param required; enumerate then typed query"},
+    {"id": "malaysia.data.query_dataset", "provider": "data.gov.my", "ring": 0, "mode": "read", "default_verdict": "ALLOW_RATE_LIMITED", "organs": ["aaa", "hermes", "geox"]},
+    {"id": "malaysia.statistics.query_indicator", "provider": "OpenDOSM", "ring": 0, "mode": "read", "default_verdict": "ALLOW", "organs": ["wealth", "hermes"], "notes": "CSV/Parquet download+cache; no live REST verified"},
+    {"id": "malaysia.geo.search_metadata", "provider": "MyGDI/MyGeoportal", "ring": 0, "mode": "read", "default_verdict": "ALLOW", "organs": ["geox"], "notes": "metadata_only data_status mandatory"},
+    {"id": "malaysia.geo.retrieve_restricted_data", "provider": "provider-specific", "ring": 2, "mode": "read", "default_verdict": "DENY_PENDING_ENTITLEMENT", "organs": ["geox"]},
+    {"id": "malaysia.finance.get_fx_opr_gold", "provider": "api.bnm.gov.my/public", "ring": 0, "mode": "read", "default_verdict": "ALLOW", "organs": ["wealth"], "verified_live": "base+categories", "notes": "exact paths revalidate at build; Exchange Rates + Base Rates categories confirmed"},
+    {"id": "malaysia.gov.discover_api", "provider": "MyGDX", "ring": 0, "mode": "read", "default_verdict": "ALLOW", "organs": ["aaa", "hermes"]},
+    {"id": "malaysia.gov.call_subscribed_api", "provider": "MyGDX", "ring": 3, "mode": "read/write", "default_verdict": "DENY_UNTIL_REGISTERED_POLICY", "organs": ["aaa"]},
+    {"id": "malaysia.identity.begin_auth", "provider": "MyDigital ID", "ring": 2, "mode": "auth", "default_verdict": "USER_INITIATED_ONLY", "organs": ["aaa"], "notes": "OIDC broker isolated; no tokens in context"},
+    {"id": "malaysia.tax.validate_tin", "provider": "MyInvois", "ring": 2, "mode": "read", "default_verdict": "CONSENT_PLUS_TAXPAYER_AUTHORITY", "organs": ["hermes"]},
+    {"id": "malaysia.tax.submit_invoice", "provider": "MyInvois", "ring": 3, "mode": "write", "default_verdict": "HOLD_888", "organs": ["hermes"], "notes": "payload-bound, idempotency_key, human confirmation"},
+    {"id": "malaysia.payments.execute", "provider": "PayNet/DuitNow", "ring": 3, "mode": "write", "default_verdict": "HOLD_888", "organs": ["aaa"], "notes": "never ambient"}
+  ],
+  "policy_object_shape": {
+    "required_fields": ["capability", "classification", "required_auth", "confirmation_stage", "required_payload_fields", "logs", "default_verdict"],
+    "invariants": ["provenance_before_prose", "freshness_labels", "no_credential_in_context", "purpose_bound_access", "semantic_firewall", "schema_firewall", "idempotency_receipts", "shadow_mode_before_first_execution"]
+  }
+}
