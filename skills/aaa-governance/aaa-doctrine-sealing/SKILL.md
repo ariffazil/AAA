@@ -5,6 +5,21 @@ description: "Seal a session eureka into AAA canon across all layers."
 
 # AAA Doctrine Sealing — Session Insight → Canon
 
+## ⚒️ Canon Lock (F13 2026-09-16) — MANDATORY for protected trees
+
+`/root/AAA/governance`, `/root/AAA/canon`, `/root/arifOS/GENESIS` are **chattr +i locked**.
+Every write to these trees MUST go through the only legal mutation path:
+
+```bash
+ARIFOS_TRACE_ID=trc-<your-trace> /root/scripts/canon-mutate run <tree> -- <command...>
+```
+
+Direct writes fail with EPERM — **that failure is the lock working, not a bug.**
+Cycle (unlock → mutate → relock → receipt) is crash-safe and receipted with verified
+relock to `/var/lib/arifos/canon_mutations.jsonl`. Always set `ARIFOS_TRACE_ID`.
+Never bare `chattr -i` — an unlock outside the cycle is an unauthorized bypass.
+Protocol: `/root/AAA/instructions/CANON-LOCK-PROTOCOL.md`.
+
 ## When to use
 
 F13 signals, in BM or English: *"seal all"*, *"code this into the kernel and state and agents"*,

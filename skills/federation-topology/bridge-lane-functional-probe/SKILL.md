@@ -33,6 +33,18 @@ curl -s -X POST http://127.0.0.1:<port>/ -H 'Content-Type: application/json' \
 
 **Assert the credential file's shape, not just its path.** `stat` for mode, then check the secret's length and first characters in Python without printing it — an 11-char stub and a 100-char token are identical from `systemctl status`.
 
+### Rule 1a — a timer-driven oneshot can report `active (exited)` forever
+
+`Type=oneshot` + `RemainAfterExit=yes` on a unit driven by a `.timer` makes systemd mark the unit active as soon as it finishes — **including when it finished by failing** (`exit 1`). `systemctl is-active` then returns `active` indefinitely, the timer consumes its elapse and shows no next trigger, and the probe stalls silently for days while every board built on `is-active` calls it healthy.
+
+```bash
+systemctl show -p Type,RemainAfterExit,ExecMainStatus,ActiveEnterTimestamp <unit>.service
+systemctl list-timers <unit>.timer --all        # next elapse N/A + a recent last-elapse = stalled
+journalctl -u <unit>.service -n 5 --no-pager    # the real exit code
+```
+
+Fix for a timer-driven oneshot: `RemainAfterExit=no`, then `daemon-reload` and restart the **timer** (not just the service). `ActiveState` and `ExecMainStatus` are different fields — read both, and never let a monitor report `is-active` alone. `stat` for mode, then check the secret's length and first characters in Python without printing it — an 11-char stub and a 100-char token are identical from `systemctl status`.
+
 ## Rule 1b — four rungs: DECLARED → REACHABLE → FUNCTIONAL → EFFECTIVE
 
 Score every surface on all four rungs before calling it up, and **say which rung you measured**.
@@ -65,6 +77,18 @@ reachable — reachability is a live call, and functionality is a live call that
 When one rung fails, check whether the capability exists somewhere else before declaring it
 absent: a whole search path can be dead while a working implementation sits one host away, and
 "capability present + route broken" needs a re-point, not a rebuild.
+
+## Rule 1c — identify the LIVE store before claiming compatibility
+
+When a capability has more than one candidate backing store, enumerating them and testing the one a catalog or collection list mentions is how you certify parity against a **vestigial mirror**. Before any "contracts match / no migration needed" verdict: find the consumer's actual read/write path, list EVERY store on the host for that capability, and census each one's payload — row count **and** the model/dimension column.
+
+```python
+# read from the store itself, never from the config that names it
+sqlite3 <db> "select model, count(*) from <chunks_table> group by model;"
+sqlite3 <db> "select length(<vector_payload>) from <chunks_table> limit 1;"   # chars / ~20 ≈ dim
+```
+
+A near-empty store beside a large one is a shadow, not the contract. One host commonly holds several stores for the same capability with **different** contracts (one model at 3072 dims, three others at 768), so staged partial migration is the normal outcome — not the exception. Corroborate compatibility against the store the consumer actually writes, or state plainly which store you measured.
 
 ## Rule 2 — the encrypted store and the plaintext store are different lanes
 
@@ -107,4 +131,6 @@ Sweep: `grep -rn "<old-version>\|<old-claim>" README.md SECURITY.md docs/` and c
 - **Metrics that only appear in another agent's cache are not verifiable.** If a reported score (e.g. an FQ reading) is not in a shared store you can read, say "cannot verify from here" rather than relaying it.
 - **A headline board is not a probe.** A summary line claiming coverage 100% / debt 0 while an independent store shows enabled jobs that never fired, dead deliveries, and unjoinable receipts is a false all-clear — worse than silence, because it launders trust and suppresses the search for the real fault. Re-read the store the headline summarises before relaying the number. A green board sitting on top of a genuine fix is the most dangerous case: it makes the fix look like proof that everything else is healthy.
 - **Verify a claim at the moment you relay it, not the moment it was written.** A parity check that passed when it ran can be invalidated by the very same session's next action — a certified `source == deployed` is stale the moment anyone commits again. Re-probe before repeating it.
+- **A gate that can block is also a gate that can mis-block — test both directions.** After tightening a gate (anchors, allow-lists, exemptions), run the suite BOTH ways: the previously-blocking benign inputs must now pass, AND the true-positive payloads must still block. An unanchored pattern that matches a currency symbol also matches ordinary technical English (`platform`, `confirm`, `term`, `eperm on`, `openclaw`, `pip install`, `plot`), so one gate can be simultaneously over- and under-triggering. Run the suite from **outside** the gated path — a live gate will refuse its own destructive test payload, which is correct behaviour and means the harness must not depend on being gated.
+- **Estimating from a proxy is not measuring.** Bytes÷4 is not a token count (real ratio ≈5.5, read from the API's own usage block), a directory named `memory/` is not an outcome ledger, a skill count is not context burden, and a flag written to disk is not a flag loaded in the running process — compare its mtime against the service start time. Report the quantity from the system that owns it, or label it ESTIMATED and name the proxy.
 - **Difference is not inconsistency until ownership says they should be equal.** Two components differing (an index at 768 dims beside collections at 1024, two model IDs, two agents disagreeing) is not drift until a shared contract says they must match. Find the owner and read its declared contract before alerting — otherwise you manufacture false positives that cost more attention than the real fault.

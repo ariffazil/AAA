@@ -201,6 +201,22 @@ for r in c.execute("select job_id, count(*), max(finished_at) from executions "
 PY
 ```
 
+**Run a positive control before trusting any zero.** Pick two or three jobs whose `last_run_at` is
+recent and confirm the ledger returns ≥1 row for each. If a job that demonstrably ran also has no
+row, the join itself is broken (wrong key, wrong store) and every zero you are about to report is an
+artifact of the probe. Only once the control passes does a zero row count carry information.
+
+**Group by `source` before calling anything an orphan.** The executions store is not exclusively the
+gateway book's ledger — its `source` column also carries scheduler-internal fires (`builtin`,
+`direct`) that have no `jobs.json` entry by design. So a set difference (N job ids present in the
+ledger and absent from the book) is normally that second population, **not** registry drift. Run both
+directions of the census and keep them separate, with the `source` breakdown attached:
+
+```sql
+select source, count(distinct job_id) from executions group by source;   -- populations, first
+select count(*) from executions where job_id='<recent-job-id>';          -- positive control
+```
+
 Then test **staleness**, not status. Derive the expected period from the 5-field expression —
 day-of-week restricted → 7d, day-of-month restricted → 31d, else 1d — and flag
 `now - last_run_at > max(2 × period, period + 2d)` as SILENT regardless of `last_status`.
