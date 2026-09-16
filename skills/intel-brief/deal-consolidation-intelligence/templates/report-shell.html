@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<!--
+  Long-form A4 report shell. Copy and modify — do not rebuild the CSS each time.
+
+  Render with weasyprint (resolve the binary first: `command -v weasyprint`):
+      weasyprint report.html "Title-YYYY-MM-DD.pdf"
+  Then gate it (page count, section order, ink coverage, embedded figure count):
+      file out.pdf && pdfinfo out.pdf | grep -E 'Pages|Page size'
+      pdftotext -f N -l N out.pdf - | head
+      pdfimages -list out.pdf | tail -n +3 | wc -l
+      pdftoppm -png -r 100 out.pdf /tmp/qa/p   # flag any page under ~2.5% dark pixels
+
+  LAYOUT DISCIPLINE (this is what keeps thin pages out of a long report):
+    - Do NOT put page-break-before: always on content sections. A forced break landing
+      mid-figure manufactures a near-empty runt page. Keep a forced break for the cover only.
+    - Constrain tall blocks so the engine relocates a whole unit instead of splitting it.
+      Both are already wired below — leave them.
+    - Every <figure> must carry its own source line inside the image or immediately beneath it.
+      Fetch every exhibit from a single structured dataset so hashes stay verifiable.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>REPORT TITLE</title>
+<style>
+  /* ---- page box + running footers ---------------------------------- */
+  @page {
+    size: A4; margin: 16mm 14mm 15mm 14mm;
+    @bottom-left  { content: "SHORT DOC CODE · YYYY-MM-DD"; font-size: 6.8pt; color: #8a94a0; }
+    @bottom-right { content: "PAGE " counter(page) " / " counter(pages); font-size: 6.8pt; color: #8a94a0; }
+  }
+  @page :first {            /* no furniture on the cover */
+    @bottom-left { content: ""; }
+    @bottom-right { content: ""; }
+  }
+
+  :root {
+    --navy:#0d2b45; --teal:#1b7f79; --amber:#d98324; --red:#b3402f;
+    --grey:#6b7280; --line:#dfe4e9; --bg:#f4f7f9; --purple:#5d4a7a;
+  }
+
+  * { box-sizing: border-box; }
+  body { font-family:"DejaVu Sans",sans-serif; font-size:9.4pt; line-height:1.53; color:#1d2733; margin:0; }
+
+  h1 { font-size:24pt; line-height:1.14; color:var(--navy); margin:0 0 6px 0; letter-spacing:-0.4px; }
+  h2 { font-size:13.2pt; color:var(--navy); margin:21px 0 7px 0; padding-bottom:4px; border-bottom:2px solid var(--navy); }
+  h3 { font-size:10.8pt; color:var(--teal); margin:14px 0 5px 0; }
+  h4 { font-size:9.8pt; color:var(--navy); margin:11px 0 4px 0; }
+  p  { margin:0 0 8px 0; }
+  ul, ol { margin:0 0 9px 0; padding-left:17px; }
+  li { margin-bottom:4px; }
+
+  /* ---- tables ------------------------------------------------------ */
+  table { width:100%; border-collapse:collapse; margin:8px 0 12px 0; font-size:8.4pt; }
+  th { background:var(--navy); color:#fff; text-align:left; padding:5.5px 7px; font-weight:600; vertical-align:top; }
+  td { padding:5px 7px; border-bottom:1px solid var(--line); vertical-align:top; }
+  tr:nth-child(even) td { background:#fafcfd; }
+
+  /* ---- cover ------------------------------------------------------- */
+  .cover { height:252mm; page-break-after:always; }
+  .cover-rule { height:5px; background:linear-gradient(90deg,var(--navy) 0%,var(--teal) 55%,var(--amber) 100%); margin-bottom:22px; }
+  .kicker { font-size:8.1pt; letter-spacing:2.5px; color:var(--red); font-weight:700; text-transform:uppercase; margin-bottom:14px; }
+  .subtitle { font-size:12pt; color:var(--grey); margin:2px 0 24px 0; line-height:1.45; }
+  .cover-meta { font-size:8.3pt; color:var(--grey); border-top:1px solid var(--line); padding-top:9px; margin-top:22px; }
+  .cover-meta strong { color:var(--navy); }
+
+  /* ---- components -------------------------------------------------- */
+  .keybox  { background:var(--bg); border-left:4px solid var(--amber); padding:12px 15px; margin:14px 0; }
+  .keybox h3 { margin-top:0; color:var(--navy); }
+  .callout { background:#fff8ef; border:1px solid #f0dcbe; border-left:4px solid var(--amber); padding:10px 13px; margin:12px 0; font-size:8.9pt; }
+  .verdict { background:#eef6f5; border-left:4px solid var(--teal);  padding:10px 13px; margin:12px 0; font-size:9pt; }
+  .danger  { background:#fdf1ee; border-left:4px solid var(--red);   padding:10px 13px; margin:12px 0; font-size:8.9pt; }
+  .fiqh    { background:#f2f0f7; border-left:4px solid var(--purple);padding:10px 13px; margin:12px 0; font-size:8.9pt; }
+
+  /* epistemic tags — one per claim class. Add a new class colour rather than reusing one. */
+  .tag { display:inline-block; font-size:6.8pt; font-weight:700; letter-spacing:0.5px; padding:1px 5px; border-radius:3px; vertical-align:1.5px; }
+  .obs{background:#0d2b45;color:#fff;} .der{background:#1b7f79;color:#fff;} .int{background:#d98324;color:#fff;}
+  .spec{background:#8a94a0;color:#fff;} .void{background:#b3402f;color:#fff;} .fqh{background:#5d4a7a;color:#fff;}
+
+  .stat-strip { display:flex; gap:9px; margin:12px 0 16px 0; }
+  .stat { flex:1; background:var(--bg); border-top:3px solid var(--teal); padding:8px 9px; }
+  .stat .n { font-size:14.5pt; font-weight:700; color:var(--navy); line-height:1.1; }
+  .stat .l { font-size:7.4pt; color:var(--grey); line-height:1.3; }
+
+  figure { margin:11px 0 15px 0; }
+  figure img { width:100%; border:1px solid var(--line); }
+
+  .two-col { display:flex; gap:14px; }
+  .two-col > div { flex:1; }
+  .pagenote { font-size:8.3pt; color:var(--grey); font-style:italic; }
+  .small { font-size:8.1pt; color:var(--grey); }
+  .pagebreak { page-break-before:always; }   /* cover + deliberate section starts ONLY */
+
+  /* ---- page-break discipline: the part that prevents runt pages ---- */
+  figure, table, .callout, .verdict, .danger, .fiqh, .keybox, .stat-strip { page-break-inside: avoid; }
+  h2, h3, h4 { page-break-after: avoid; }
+  tr { page-break-inside: avoid; }
+  p { orphans: 2; widows: 2; }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER (page 1) ============ -->
+<div class="cover">
+  <div class="cover-rule"></div>
+  <div class="kicker">CLASSIFICATION · DOC TYPE · COMPANION TO X (if any)</div>
+  <h1>REPORT TITLE<br>SECOND LINE</h1>
+  <div class="subtitle">One-sentence statement of what this document resolves, in the reader's terms.</div>
+
+  <div class="keybox">
+    <h3>The one-paragraph version</h3>
+    <p style="margin-bottom:0">The entire report compressed to a paragraph a busy reader can act on. Lead with the
+    correction, the number, or the inversion — not with background.</p>
+  </div>
+
+  <div class="stat-strip">
+    <div class="stat"><div class="n">N</div><div class="l">What this number decides</div></div>
+    <div class="stat"><div class="n">N</div><div class="l">What this number decides</div></div>
+    <div class="stat"><div class="n">N</div><div class="l">What this number decides</div></div>
+    <div class="stat"><div class="n">N</div><div class="l">What this number decides</div></div>
+  </div>
+
+  <div class="cover-meta">
+    <p><strong>Prepared:</strong> DATE (UTC) · <strong>Classification:</strong> sovereign intelligence product · <strong>Subject:</strong> entities in scope</p>
+    <p><strong>Produced by:</strong> i-ARIF (Hermes edge bridge) — computational output under F13 sovereign direction.</p>
+    <p><strong>Integrity:</strong> every numerical claim sourced or derived and tagged OBS / DER / INT / SPEC / VOID.
+    No investment recommendation, rating or price target is given or implied.</p>
+    <p><strong>Standing qualification (include whenever part of the subject is normative):</strong> no ruling issued,
+    no authority claimed, matters of juristic ruling reserved to the competent body and marked with their own tag.</p>
+  </div>
+</div>
+
+<!-- ============ BODY ============ -->
+<h2>The Executive Read</h2>
+<p class="pagenote">N findings, ordered by how much they should change the reader's position.</p>
+<ol>
+  <li><strong>The premise correction, first.</strong> If the question was framed wrongly, say so before anything
+  else. <span class="tag obs">OBS</span></li>
+  <li><strong>The single most decisive number.</strong> <span class="tag der">DER</span></li>
+  <li><strong>The finding that inverts the obvious reading.</strong> <span class="tag int">INT</span></li>
+</ol>
+
+<div class="callout">
+  <strong>Base case:</strong> state it as an explicit scenario with a probability and the anchor the probability
+  rests on. Never a percentage without its anchor. <span class="tag int">INT</span>
+</div>
+
+<h2>§1 Methodology and Limits</h2>
+<div class="two-col">
+  <div>
+    <h4>What this answers</h4>
+    <p>Scope in one paragraph.</p>
+    <h4>What this refuses to do</h4>
+    <ul>
+      <li>No intent attribution — outcomes and disclosed positions only.</li>
+      <li>No investment advice, rating or price target.</li>
+      <li>No smoothing of undisclosed variables.</li>
+    </ul>
+  </div>
+  <div>
+    <h4>Method</h4>
+    <ul>
+      <li>Primary anchors: filings, regulator pages, rating-agency releases.</li>
+      <li>Secondary: credible press, exchange announcements, research notes.</li>
+      <li>Fetch timestamp recorded; figures not adjusted for later events.</li>
+    </ul>
+    <h4>Limits acknowledged</h4>
+    <p class="small">Say what could not be verified and what that does to the conclusion. This paragraph protects
+    every other claim in the document.</p>
+  </div>
+</div>
+
+<h2>§2 Analysis</h2>
+<figure><img src="charts/c01_example.png" alt="Describe what the exhibit shows"></figure>
+<p>Body text. Anchor each paragraph to a sourced or derived number. <span class="tag obs">OBS</span></p>
+
+<table>
+  <tr><th style="width:30%">Dimension</th><th style="width:20%">Value</th><th>Reading</th></tr>
+  <tr><td>Row</td><td>Value</td><td>What it means, tagged. <span class="tag der">DER</span></td></tr>
+</table>
+
+<div class="verdict"><strong>A judgement</strong> — clearly separated from the facts above it.</div>
+<div class="danger"><strong>A warning</strong> — the thing that would make the analysis wrong.</div>
+<div class="fiqh"><strong>A normative matter</strong> — flagged, not adjudicated.</div>
+
+<h2>§3 Falsification and Monitoring</h2>
+<table>
+  <tr><th style="width:40%">Claim in this document</th><th>What would disprove it</th></tr>
+  <tr><td>The load-bearing conclusion</td><td>The specific, findable evidence that would overturn it.</td></tr>
+</table>
+<h4>Monitoring list</h4>
+<ol>
+  <li><strong>Primary source that moves first</strong> — the single filing, notice or release to watch. <span class="tag obs">OBS</span></li>
+</ol>
+
+<h2>§4 Counter-Narrative</h2>
+<p>Mandatory. The strongest case against this document's conclusion, stated properly, with an honest response to
+ each point.</p>
+
+<h2>§5 Conclusions</h2>
+<ol>
+  <li>Numbered, sharp, no new evidence introduced here.</li>
+</ol>
+
+<h2>§6 What This Document Does Not Know</h2>
+<table>
+  <tr><th style="width:34%">Gap</th><th>Effect on the analysis</th></tr>
+  <tr><td>The unverifiable variable</td><td>How the answer changes if it resolves the other way.</td></tr>
+</table>
+
+<h3>Appendix A — Source ledger</h3>
+<ul class="small">
+  <li>Every source, grouped by issuer, with what it supplied.</li>
+</ul>
+
+<h3>Appendix B — Provenance</h3>
+<p class="small">Charts rendered from a single structured dataset; dataset, chart script and PDF hashes recorded in
+<strong>SHA256SUMS.txt</strong> alongside this document. Fetch timestamp: DATE (UTC).</p>
+<div class="danger">
+  <strong>Constitutional frame.</strong> F2 (truth — every claim sourced or derived), F7 (humility — limits and
+  standing qualification stated), F9 (no intent attribution), F11 (auditability — source ledger and hashes),
+  F13 (sovereign product — an intelligence artifact, not a policy directive).
+</div>
+
+</body>
+</html>

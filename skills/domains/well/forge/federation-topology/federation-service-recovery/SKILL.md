@@ -1,0 +1,123 @@
+---
+name: federation-service-recovery
+description: "Use when a federation service is slow or crash-looping."
+owner: AAA
+category: devops
+tags: [systemd, service-recovery, kernel, d-state, cgroup, redis, health-probe, hermes-config]
+triggers:
+  - service slow or unresponsive
+  - health endpoint times out
+  - activating auto-restart
+  - systemctl failed unit
+  - mem_cgroup_handle_over_high
+  - process in D state
+  - NOAUTH Authentication required
+  - WRONGPASS redis
+  - MemoryHigh MemoryMax
+  - arifos kernel not responding
+  - hermes gateway slow
+  - hermes config not sticking
+  - federation organ down
+source: hermes-only
+synthesized: 2026-09-14
+floor_scope: [F1, F2, F4, F9, F11]
+autonomy_tier: T1
+---
+
+# Federation Service Recovery
+
+> **Reality lives in `/proc` and `systemctl show`, not in the unit files.**
+
+Applies to every systemd-managed service on the federation nodes: `hermes-asi-gateway`, `arifos`, `aaa-a2a`, `federation-state`, `arifflow`, and MCP sidecars.
+
+## Triage order (cheapest first)
+
+1. `systemctl is-active <svc>` and `systemctl status <svc> --no-pager | head -12` — note which of three states: `active`, `failed`, or **`activating (auto-restart)`** (crash loop).
+2. `journalctl -u <svc> --since "10 min ago" -p warning --no-pager | tail -30` — the last real error usually names the cause: a missing env var, a bad credential, or a plain code defect.
+3. `uptime`, `free -h`, `cat /proc/pressure/cpu`, `ps aux --sort=-%cpu | head` — is the box saturated, or is one service hot? Distinguish host pressure from a single wedged process.
+4. `curl -s -o /dev/null -w '%{http_code} %{time_total}s' http://127.0.0.1:<port>/health` — separates "port closed" from "process up but wedged" (the second times out while the process is alive).
+
+## Wedged process that is still listening (D-state)
+
+Symptom: the health port times out, `ps` shows the process alive, and `ss -tnp` shows the socket with a growing `Send-Q` / CLOSE-WAIT backlog.
+
+```bash
+ps -p <pid> -o pid,stat,%cpu,%mem,rss,etime,wchan --no-headers
+cat /proc/<pid>/wchan          # the kernel function it is blocked in
+```
+
+- `stat` containing **D** = uninterruptible sleep (blocked on I/O or cgroup reclaim). **D-state processes do not handle signals promptly** — plan a restart, not a graceful reload.
+- `wchan` = **`mem_cgroup_handle_over_high`** → the process is being throttled by its memory cgroup. It hit `MemoryHigh` and the kernel forces reclaim on every allocation. This presents as a **dead event loop**, not an OOM kill, so nothing in the logs says "out of memory".
+
+## Effective limits: read them from systemd, never from the unit file
+
+```bash
+systemctl show <svc> --property=MemoryCurrent,MemoryHigh,MemoryMax,CPUQuotaPerSecUSec
+```
+
+Drop-ins live in more than one directory and **conflict silently**:
+
+- `/etc/systemd/system/<svc>.service.d/*.conf` — authored drop-ins
+- `/etc/systemd/system.control/<svc>.service.d/*.conf` — written by `systemctl set-property`
+
+A unit file that reads `MemoryHigh=2.5G` can still be running at `1.5G` because another drop-in set a lower value at higher precedence. **The value `systemctl show` reports is the only truth.** Compare `MemoryCurrent` against `MemoryHigh`: if current ≈ high, the service is riding the throttle ceiling and every allocation stalls.
+
+**Fix — one drop-in, then confirm:**
+
+```bash
+cp /etc/systemd/system/<svc>.service.d/resource-limits.conf{,.bak-$(date +%Y%m%d-%H%M%S)}
+# edit MemoryHigh / MemoryMax / CPUQuota / TasksMax to fit the host
+systemctl daemon-reload && systemctl restart <svc>
+systemctl show <svc> --property=MemoryHigh,MemoryMax   # confirm, never assume
+```
+
+Rule of thumb: set the ceiling above observed peak (peak + ~50%), and check `free -h` first — the host's own headroom is the real constraint, and `daemon-reload` alone does not re-apply an already-running unit.
+
+## Credential drift: compare against the RUNNING service, not the vault
+
+A service that authenticates (Redis, Postgres, NATS) fails with `NOAUTH` or `WRONGPASS` when the env file it loads is stale relative to the running daemon's own config.
+
+```bash
+grep -n '^requirepass' /etc/redis/redis.conf            # what the daemon actually enforces
+grep -n 'REDIS_PASSWORD\|REDIS_URL' /root/.secrets/<env>.flat.env
+```
+
+- **`NOAUTH Authentication required`** = the client sent *no* credential → the code reads only the URL and ignores the `*_PASSWORD` env var. Fix the **code path**, not the env.
+- **`WRONGPASS`** = a credential was sent but does not match → the env value is **stale**. Align the env file to the running config, then prove it with a direct client call (`redis-cli -a "$REDIS_PASSWORD" ping` → `PONG`).
+
+Never echo secret values: compare lengths, or test-auth and report only `PONG` / `WRONGPASS`.
+
+Also check the systemd unit: an `Environment=` line in the unit **overrides** the same key from `EnvironmentFile=`, so a hand-set `Environment=REDIS_URL=...` can silently shadow a correct value in the env file.
+
+## Crash loop (`activating (auto-restart)`)
+
+The unit starts, exits non-zero, and systemd retries. The cause is in the last stderr block, not in the unit file. Two shapes seen repeatedly:
+
+- **Missing or ignored env var** — the process needs a value the unit never passes (see credential drift above).
+- **Plain code defect** — e.g. `NameError: name '<helper>' is not defined` from a call site that was never given a definition. Fix the code; do not restart harder.
+
+## Config that rewrites itself (Hermes `config.yaml`)
+
+Hermes normalises and rewrites `~/.hermes/config.yaml` at gateway start — it reindents, reorders provider/fallback lists, and drops keys it does not recognise. A hand-added provider entry, or a hand-set fallback order, can vanish or reorder on the next restart.
+
+- Write config through the CLI: `hermes config set <key> <value> [--force]`, read it back with `hermes config get <key>`.
+- **After a restart, re-read the key** — the effective value Hermes reports, not the file you wrote, is the truth.
+- `hermes gateway restart` can hang (prints nothing, same PID minutes later). Kill it and use `systemctl restart hermes-asi-gateway`, which returns a new PID.
+- Restart from a shell **outside** the gateway conversation, or the SIGTERM propagates and kills the restart command itself.
+
+## Verify with the federation doctor
+
+```bash
+bash /root/scripts/doctor.sh          # NOTE: /root/scripts/, not /root/AAA/scripts/
+```
+
+Ends with `PASS: N  WARN: N  FAIL: N` and a `VERDICT:`. Organs appear as `name :port (UP+LOADED)`. A `WARN` on a slow-but-serving organ is not a failure; only `FAIL` is.
+
+## Pitfalls
+
+- **Do not declare a service "down" from a single timeout.** Check `systemctl show <svc> --property=ActiveState` and `ss -tlnp` first. An HTTP 401/403 on `/health` means **UP but auth-gated** — not down.
+- **Do not read limits by grepping unit files.** `systemctl set-property` drop-ins live in `/etc/systemd/system.control/` and can win over the authored `.service.d/` values.
+- **A crash loop plus a stale credential is usually two independent faults.** Fix the code path AND the env, then verify both once — restarting alone will not clear either.
+- **After raising a limit, confirm with `systemctl show`.** Editing the drop-in without `daemon-reload` + restart changes nothing at runtime.
+- **Record the before/after**: `uptime`, `free -h`, and the service's `curl %{time_total}` before and after — the receipt proves the fix, not the restart.
+- A wedged service that fronts every user turn (a gateway, a kernel) shows up as *user-facing latency*, not as an outage. Trace the user-visible symptom to the slowest hop before optimising anything else.
