@@ -21,10 +21,21 @@ probe() { # name marker cmd...
   if ! command -v "$1" >/dev/null 2>&1; then echo "$name|DOWN|0|binary missing" >> "$TMP"; return; fi
   out=$(timeout 90 "$@" 2>&1); rc=$?
   local lat=$(( $(date +%s) - t0 ))
-  local low=$(echo "$out" | tail -40 | tr '[:upper:]' '[:lower:]')
-  if echo "$out" | grep -q "$marker"; then
+  # SCAR 2026-09-16T03:30Z: verbose harnesses echo the PROMPT into their own log. Matching the
+  # marker against raw output lets a harness PASS on its request echo — grok did exactly that
+  # (sentinel: PASS 03:25:14Z) while every real call returned 402 balance-exhausted.
+  # SCAR 2026-09-16T03:35Z: the FIRST fix reordered billing BEFORE the marker and immediately
+  # produced a false EXTERNAL on codex — codex echoes the prompt, prints an incidental 402 from
+  # its own telemetry/usage endpoint, and then answers correctly. Both scars point the same way:
+  #   1. drop echo lines (any line still carrying the prompt phrase is not an answer)
+  #   2. marker check FIRST on what remains — real cognition beats incidental noise
+  #   3. billing only when no marker survived
+  local resp
+  resp=$(printf '%s\n' "$out" | grep -v 'Reply with exactly')
+  local low=$(printf '%s\n' "$resp" | tr '[:upper:]' '[:lower:]')
+  if printf '%s\n' "$resp" | grep -q -- "$marker"; then
     echo "$name|PASS|$lat|" >> "$TMP"
-  elif echo "$low" | grep -qE "payment required|balance exhausted|credits are depleted|resource_exhausted|quota"; then
+  elif printf '%s\n' "$low" | grep -qE "payment required|balance exhausted|credits are depleted|resource_exhausted|status_code=402|status 402|http_status\"?: *402|quota"; then
     echo "$name|EXTERNAL|$lat|billing/quota wall" >> "$TMP"
   elif [ $rc -eq 124 ]; then
     echo "$name|FAIL|$lat|timeout 90s" >> "$TMP"

@@ -34,3 +34,12 @@ SOT: `/root/AAA/docs/MACHINE_MAP.md`. Fingerprint yourself first: `echo "$(hostn
 
 - **Seal C (live):** `arif_memory` single-writer CQRS — labor writes → proposal buffer `~/.local/share/arifos/memory_proposals/`, i-ARIF drains via `mode=consolidate`. Writer allowlist: `ARIF_MEMORY_WRITERS` env.
 - **Seal B (engine live):** `POST :18095/synthesize` — synthesis via fed:i-arif cascade, `typing_required` at >3s; bypass needs durable receipt. Gateway wire-in spec: `/root/forge_work/2026-08-21-FI-003-seal-b-c-implementation.md`.
+
+## APEX-ZEN alignment (canonical 2026-09-16)
+
+Chain: `BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS`
+Invariant: `CAPABILITY ≠ AUTHORITY` — can build ≠ can approve.
+
+FI-003 position: **A2M plane, BUILD-capability cell.** Qwen engineers (patches, tests, receipts); 555 verifies; 888 judges; **F13 seals**; A-FORGE acts; VAULT999 witnesses. Never self-approve, never self-witness. The session arc `init→observe→think→route→memory→judge→forge→seal` is this chain in kernel verbs.
+
+Canonical ref: `/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md`
