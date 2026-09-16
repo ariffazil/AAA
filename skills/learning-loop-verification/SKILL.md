@@ -12,6 +12,8 @@ triggers:
   - "capability evolution audit"
   - "auto-update skills from sessions"
   - "is the system actually learning"
+  - "the rule is ratified but nothing enforces it"
+  - "doctrine exists with no executor"
 ---
 
 # Learning Loop Verification
@@ -88,6 +90,21 @@ findings with three separate owners.
 - **Skill count is not capability.** Learning that only ever appends artifacts grows the
   surface without changing behaviour. Ask what the *next* decision does differently; with
   no answer, the loop recorded experience without compressing it.
+- **Check the closure ledger's own recency, not merely its existence.** Count the rows at
+  each hop (decision → contract → mutation → observation) and take `max(timestamp)` per hop.
+  An apparatus with rows whose newest is weeks old is a loop that stopped, and it is
+  indistinguishable from a working one in any inventory that only asks whether the file is
+  there. Report the newest row per hop, not the row count.
+- **A proof field carrying a self-assertion is testimony, not observation.** When a mutation
+  row's proof reads like an expectation (`SIMULATED_*`, `expected_*`, a bare `OK`), that hop
+  never asked reality — precisely the defect the loop exists to prevent. The string IS the
+  finding: the schema has a slot for the observation and the writer is filling it with the
+  intent.
+- **A ratified rule with no executor is a write-only ledger in prose.** Before describing a
+  doctrine, invariant, or threshold as "in place", resolve it to the thing that enforces it —
+  a script, a unit, a cron line, an import, a gate on the write path. Named-but-unenforced is
+  the same defect class as a table nobody reads, and it is worse to leave unreported because
+  it gets quoted as authority.
 
 ## Output contract
 

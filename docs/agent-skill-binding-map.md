@@ -61,6 +61,14 @@
 
 ---
 
+> ⚠️ **STALE — FI numbering in the table above is the 2026-08 schema, superseded.**
+> Live FI registry SOT: `/root/AAA/registries/forge_instruments.yaml` (re-probe 2026-09-13,
+> SEAL-42dad7d3d9334310). Known deltas: **FI-007 = Grok Build** (this table says Aider — Aider
+> was replaced *by* grok-build on its FI-007 slot, 2026-07-18); **FI-010 = Gemini CLI, DECEASED**
+> per F13 2026-09-13, superseded into the FI-009 lane 2026-08-21 — this table wrongly gives
+> grok-build FI-010 and double-assigns FI-009 to both copilot-cli and gemini-cli.
+> Resolution receipt: `/root/AAA/docs/FI_CODING_MESH_2026-09-16.md` §9. Do not route from this table.
+
 ## Skill-to-Agent Binding Matrix
 
 ### Governance / Constitutional Skills

@@ -63,6 +63,9 @@ OBSERVED:
 INFERRED:
 - [interpretation + assumptions]
 
+UNKNOWN:                              ← added 2026-09-16 (anti-bangang distill)
+- [what I do not know / missing evidence / could falsify the plan]
+
 ALTERNATIVES:
 - [option A]
 - [option B]
@@ -268,32 +271,36 @@ without dismantling the institution. State probability order explicitly.
 ## OPEN LOOPS — Unresolved Architecture
 
 > Arif identified four gaps in the current epistemic architecture.
-> These are UNRESOLVED. Future agents: do not claim these are solved.
-> Do not add new precedents until these are wired.
+> Loops 1–3 have REFERENCE IMPLEMENTATIONS (2026-09-16, anti-bangang
+> distill) — kernel/agent wiring pending. Loop 4 remains open.
+> Future agents: do not claim loops are SOLVED until wired.
 
 ### 1. Supersession Chain
 
 When claim A is replaced by claim B (more accurate), claim A MUST be
 marked SUPERSEDED with pointer to B and reason. NOT deleted. Status changes.
 
-**Current state:** Not implemented. Corrections append, old claims persist.
-Contradictory beliefs can coexist in the same context.
+**Current state:** Reference implementation live — `MemoryGate.supersede()`
+in `/root/forge_work/anti_bangang/anti_bangang.py` (2026-09-16). Kernel
+wiring pending forge dispatch.
 
 ### 2. Expiry Fields
 
 Every claim MUST carry `expires_at` or `review_by`. Claims without
 dates persist forever, including wrong ones.
 
-**Current state:** SRO has `expires_at: 2027-03-31` but no mechanism
-to enforce or trigger review. The field exists in format only.
+**Current state:** Reference enforcement live — `MemoryGate.admissible()`
+enforces TTL per reality-alignment-kernel.md taxonomy (same module).
+Stale = STALE_UNVERIFIED, non-premise.
 
 ### 3. Calibration Tracking
 
 How often is agent confidence 0.8+ actually wrong? If >20%, the agent
 is systematically overconfident. This is NOT measured.
 
-**Current state:** No calibration data. Confidence scores are asserted,
-never audited against outcomes.
+**Current state:** Reference instrument live — `CalibrationTracker`
+(Brier score + overconfidence bias). NOT yet fed by any agent's live
+confidence emissions; wiring = next forge step.
 
 ### 4. Correction Propagation Time
 
@@ -303,6 +310,25 @@ related topics? If >3 sessions, propagation is too slow.
 **Current state:** Not measured. Corrections apply to the current
 conversation. Cross-session propagation depends on memory and skill
 loading — neither has propagation latency tracking.
+
+> **Anti-bangang distill (2026-09-16, sovereign-directed).** The master
+> coupling `uncertainty ↑ ⇒ authority ↓` is executable law, not prose:
+> `authority_ceiling()` / `gate()` in the same reference module. The
+> uncertainty ledger (what is NOT known) is now a mandatory decision-packet
+> field (UNKNOWN, above). External proposal contrast (ChatGPT 2026-09-16):
+> R0–R5 authority gradient = re-derivation of existing T0–T3 tiers —
+> rejected as duplicate; six-ledger framing = already covered by F2 tags +
+> SCT + tiers + VAULT999 + tri-witness + receipts. Full contrast:
+> `/root/forge_work/2026-09-16-FI-003-anti-bangang-deep-research.md`.
+>
+> **Authority-laundering invariant (external review #2, accepted):**
+> `Authority_out ≤ Authority_in + Evidence_new`. No transformation —
+> summarization, retrieval, consensus, tool echo, claimant-controlled
+> verification, repeated assertion — may increase epistemic authority
+> merely because information passed through an intelligent component.
+> TEXT ≠ EVIDENCE; TEXT + authenticated provenance → may TRANSPORT evidence.
+> "The system is allowed to be wrong. It is not allowed to become more
+> powerful merely by believing itself."
 
 ---
 

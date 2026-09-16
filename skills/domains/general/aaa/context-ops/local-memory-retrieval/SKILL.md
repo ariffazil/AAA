@@ -120,6 +120,19 @@ Command-level detail for each store: `references/store-command-catalogue.md`.
 
 ## Precedence & Staleness
 
+- **A ledger's size is not its coverage — compare members, never totals.** Several JSONL ledgers
+  often claim the same content class (eureka / doctrine / seal records). Entry counts across them
+  look like a redundancy problem and are not one: measured 2026-09-16, the declared SOT ledger held
+  **104** entries while a 6-entry ledger under `/root/.local/share/arifos/` held ratified laws the
+  104-entry one did not contain at all. Pick the specific items you care about (here: the L5/L6/L7
+  completion, abandonment and admission laws, plus the self-proving-page invariant) and grep each
+  ledger for *those*; a keyword test over the whole blob answers "is this class of record here",
+  which a count can never do.
+- **A schema divergence is the tell that two ledgers were never one store.** If their key sets do not
+  intersect (`id,title,summary,status` vs `ts,actor,session,paradox,law_forged,delta_s`), no merge
+  was ever possible without a translation layer, and neither is a stale copy of the other. Report it
+  as two producers writing two shapes, and treat consolidation as a canon decision (F13), not a
+  cleanup — merging touches the record of what was ratified.
 - **Pending-memory consolidations outrank live MEMORY.md for facts that change.** When two stores disagree, report BOTH with their `created_at` / file mtime and name which is newer. Never silently pick a side and present it as fact.
 - When the disagreement is about a person's or system's *current* state and neither store is authoritative, say so explicitly ("dua-dua version ada dalam nota aku") and let the user settle it. Stated uncertainty beats a clean wrong answer.
 - A fact sourced only from a session dump or a cached grep of an older probe is a lead, not evidence — verify before asserting.

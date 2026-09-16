@@ -85,4 +85,39 @@ added. Capability went **up** with the file count flat — because what grew was
 **Kernel note (unchanged):** `OBSERVE_ONLY` token, `arif_judge` → **SABAR**, `seal_allowed=false`.
 Witness record, not a VAULT999 entry.
 
-DITEMPA BUKAN DIBERI ⚒️
+## 7. CORRECTION — second reader probed the 4 WARN names (appended 2026-09-16)
+
+This receipt, and `v2 §4`, describe the sweep WARN as *"4 skill names have two live owners → merge
+decision, HOLD."* Re-probed at source; the label is wrong in a way that changes the **remedy**, so it
+is corrected here rather than left standing (a witness that mislabels its own warning is the failure
+this session is about).
+
+```
+FORGE-mcp-testing          profile 51101f5b59c4  /root/.hermes/profiles/aaa-hermes/skills/FORGE-mcp-testing/SKILL.md
+                           live    53dd7c0ffd83  /root/.hermes/skills/domains/general/forge/mcp-ops/FORGE-mcp-testing/SKILL.md
+RSI-recursive-improvement  profile bbb5b812632b  /root/.hermes/profiles/aaa-hermes/skills/RSI-recursive-improvement/SKILL.md
+                           live    2018d3ac0f85  /root/.hermes/skills/domains/general/apex/recursive-audit/RSI-recursive-improvement/SKILL.md
+KERNEL-trinity-33          profile 2c45f189966d  /root/.hermes/profiles/aaa-hermes/skills/KERNEL-trinity-33/SKILL.md
+                           live    ebbcb4b4fa2d  /root/.hermes/skills/domains/general/aaa/catalog-ops/KERNEL-trinity-33/SKILL.md
+sovereign-recognize        profile 0cef1ae06497  /root/.hermes/profiles/aaa-hermes/skills/reflective/sovereign-recognize/SKILL.md
+                           live    dd92bbf721eb  /root/.hermes/skills/domains/general/aaa/substrate/reflective/sovereign-recognize/SKILL.md
+```
+
+All four share one shape: the `aaa-hermes` profile holds a **flat-layout** copy (`skills/<name>/SKILL.md`)
+predating the domain reorg, while the live copy sits at `skills/domains/<domain>/<organ>/<name>/SKILL.md`.
+Each name has **one authored owner**, not two. Same shape visible in the canon tree
+(`/root/AAA/skills/FORGE-mcp-testing` mtime 2026-08-13 vs `…/domains/general/forge/mcp-ops/FORGE-mcp-testing`
+2026-09-15).
+
+**Correction:** C7 here is **mirror drift (migration leftover)**, not split sovereignty. The remedy is a
+re-sync of the stale flat copies against the live owner — mechanical, reversible, agent-executable —
+**not** a human merge decision. The HOLD therefore stands on **timing only** (a second Hermes session was
+writing the same trees, `state.db-wal` mtime inside the same minute — two writers, one shared tree), not
+on authority.
+
+Re-verified unchanged by the second reader: census 504 on disk · 482 canonical · 409 loadable · 45 shells ·
+30 diverged · 0 broken · `witness_hash 72a0e4764ea03d9f`; sweep `fail=0 warn=1`; symbol-probe regression
+**7/7 pass** (cases A1·A2·A2B·A3·A5·AXIS_K·PROSE_MENTION re-run independently); eureka SOT 104 entries with
+the new entry `PROVISIONAL`; kernel `FLOOR_TABLE` untouched; no VAULT999 entry.
+
+DITEMPA BUKAN DIBERI ⚒️ 

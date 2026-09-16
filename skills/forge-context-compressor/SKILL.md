@@ -11,7 +11,7 @@ rationale: Directive OPERATION EUREKA ZEN explicitly named "missing context-comp
   for long logs" as a Phase 3 forge candidate. Long-context runtimes (Grok 4.3 256K,
   Claude 1M variants) need a compression gate so they don't trip context-window boundaries
   mid-session. Phase 3 gap fill.
-binding: FORGE-* skills (cross-CLI), particularly for Grok (FI-010) and long-context
+binding: FORGE-* skills (cross-CLI), particularly for Grok (FI-007) and long-context
   adapters
 floor_scope:
 - F1
@@ -79,7 +79,7 @@ If the compressor's output raises ΔS on re-decode:
 
 ## Grok 256K boundary
 
-Grok Build 4.3 (FI-010) has 256K context. Pre-flight:
+Grok Build 4.3 (FI-007) has 256K context. Pre-flight:
 - Read raw ingest size via `forge_filesystem_stat`.
 - If > 240K tokens (≈960KB text), enter compression gate.
 - If > 256K tokens, emit `rsi_reason: "would_exceed_context"` and HOLD.

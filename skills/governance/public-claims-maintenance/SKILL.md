@@ -11,6 +11,10 @@ triggers:
   - "who maintains this"
   - "our public claims disagree with reality"
   - "a fact changed and the docs did not"
+  - "two documents disagree on the number"
+  - "which one is right"
+  - "the slot number conflicts"
+  - "the registry says X, this table says Y"
 ---
 
 # Public Claims Maintenance
@@ -62,6 +66,33 @@ When a project is built by agents under a human maintainer, the readership canno
 2. cut the sentence back to what the cited evidence actually shows.
 
 Verify the artefacts before writing the sentence — `git log -1 --format='%an <%ae>'` on the fix commits, plus the built package's `Author` / `Maintainer` METADATA — then state **who is accountable**, not merely who ran what. "The design and the judgment are mine, the implementation is theirs, and the bug is mine to answer for" carries the claim; "built by agents under my rules" is invisible to the reader it is meant to inform.
+
+## Identifier claims — slot numbers, ids, versions of record
+
+A roster table, an agent registry, or an identity map states *which* thing owns *which* identifier (a slot number, an agent id, a repo name, a version of record). These drift harder than status rows because identifiers get **renumbered**, and a renumber leaves every narrative copy of the old scheme reading as authority.
+
+**Never hand the conflict to the human.** "Which one is right — you pick?" converts a provenance problem into sovereign attention that the estate can already answer. Run the trace, return a verdict. Escalate only if two equally authoritative **live** contracts still disagree after the whole trace — and name that outcome `GENUINELY_AMBIGUOUS`: it is a verdict, not a question.
+
+1. **Find the named SOT.** A registry that declares itself canonical beats prose. Look for an explicit `SOT: <path>` line, a `_meta.rule` clause, or the file the others point back to.
+2. **Probe the runtime registration path.** A seeder or id-map consumed by a running service is reality; a narrative table is commentary. `grep` the seeder's map before reading any prose.
+3. **Read the commit history for the RENUMBER.** `git log -1 --format="%h %an %ad %s" -- <file>` on each contender. A renumber leaves a commit that says so and names the decision behind it. Age is evidence, not authority — a *newer* narrative doc can carry an *older* numbering if it was written from memory rather than from the registry.
+4. **Classify the OUTLIER, not the winner.** Name the lone dissenter, who authored it, which era's scheme it encodes, and what superseded it. "Three live sources agree, one narrative is stale" is `RESOLVED` — not ambiguity.
+5. **Conform the outlier in place and mark the SOT.** Add a header line to the narrative doc naming the registry as SOT and forbidding local renumbering, then commit with the evidence chain in the message. Reversible; no round-trip required.
+
+```
+VERDICT:  RESOLVED | GENUINELY_AMBIGUOUS
+SOT:      <path> (why it wins)
+AGREEING: <n> live sources — <paths>
+OUTLIER:  <path>, authored <how>, era <scheme>, superseded by <commit>
+MUTATION: <what was conformed> — reversible, committed <sha>
+```
+
+### Pitfalls for identifier claims
+
+- **A stale DERIVED artifact outranks nobody but still lies.** A compiled or generated view (a bundle JSON, a generated `*_identity.json`) produced by a loader can lag the hand-edited law file. Do NOT hand-edit the generated view to match — that is the same disease one level down, and it will be regenerated. Fix the writer, or leave it and flag it; always name the writer in the report.
+- **An identifier can be a ROLE, not a seat.** A duty can sit in a roster table looking exactly like a numbered slot. Before treating a row as a second owner, check whether the underlying contract assigns that duty to an existing owner. Two rows for one agent = a phantom seat: delete the row, don't renumber it.
+- **"Three agree" is not a quorum unless the sources are independent.** Two copies of one document plus a derived view of it is one source wearing three hats. Count independent *registration* paths, not file paths.
+- **The root cause is rarely the wrong number — it is that no sweep happens when the number changes.** A renumber landing without a repository-wide grep leaves three eras of numbering alive in one tree. Sweep the identifier, not just the file you were shown.
 
 ## Pitfalls
 

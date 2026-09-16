@@ -152,4 +152,69 @@ the index pattern exists but is not skill-aware and not smart even on tools yet.
 that changes Arif's daily experience: a skill selection layer fed by DERIVED audience data
 (census derives audience from brand-prefix/path — never 586 hand edits).
 
+## 9 · Identity + collision audit (Hermes, 2026-09-16T03:2xZ — falsification pass)
+
+Triggered by an external review that raised two claims. Both were tested against the machine.
+
+### 9a · FI-007 vs FI-010 — **RESOLVED** (no sovereign input needed)
+
+| Source | Class | Says | Dated |
+|---|---|---|---|
+| `registries/forge_instruments.yaml` | **self-declared live SOT** | FI-007 = Grok Build (izin GRANTED); FI-010 = Gemini CLI, `version: DEAD` | re-probe 2026-09-13 |
+| `a2a-server/agent-cards/harnesses/grok-build.json` | runtime card | `fi_slot: FI-007` ×3 + "FI-007 canonical" | live |
+| `a2a-server/scripts/seed-agents.js` | runtime seeder | `'FI-007': 'grok-build'`; FI-010 **never seeded** — "superseded into FI-009 lane (F13 merge 2026-08-21)" | 2026-08-21 |
+| `registries/AGENTS_UNIFIED.yaml` | invariant list | "No agent claims FI-009 or FI-010 (vacant/collapsed)"; FI-001–008 LOCKED | 2026-08 |
+| `registries/AGENT_DISCOVERY.md` | carries explicit STALE banner | "current FI-007 = Grok Build; FI-010 Gemini CLI DECEASED per F13 2026-09-13" | 2026-09-13 |
+| `docs/agent-skill-binding-map.md` | **stale satellite** | grok-build = FI-010, aider = FI-007 | last git touch 2026-08-09 |
+
+**Verdict: RESOLVED.** Grok Build = FI-007. FI-010 = Gemini CLI, decommissioned; slot vacant.
+The contradicting document is stale by ~5 weeks and is internally inconsistent (aider was replaced
+*by* grok-build on 2026-07-18; it also double-assigns FI-009 to two agents). **Not two equally
+authoritative sources → not a sovereign question.** Banner added to the stale table.
+
+### 9b · "28% trigger collision" — **DOES NOT REPRODUCE**
+
+Fresh census, read-only, `find -L`/realpath-dereferenced, 5 real surfaces, 698 distinct skills:
+
+- **TRIGGER collision** (distinct capabilities, same request): **26 pairs · 22 skills · 3.2%** —
+  and even that is inflated: after document-frequency filtering, the top pairs still share only
+  metadata vocabulary ("auto low risk"). Genuine semantic overlaps are few and nameable:
+  `openclaw-propose-seal ↔ opencode-propose-seal`, `qwencloud-mesh ↔ mmx-mesh`,
+  `web-search ↔ web-scrape`, `forge-onboarding ↔ agent-onboarding`.
+- **IDENTITY duplication** (one claimed capability, >1 real directory): **115 groups · 260 skills ·
+  37%.** This is the real number, and it was hidden behind the trigger framing.
+  Dominant pattern: `~/AAA/skills/<cap>` (canonical) **plus** a real harness-local copy in
+  `~/.hermes/skills`, `~/.kimi-code/skills`, `~/.qwen/skills`, `~/.config/opencode/skills`
+  (`agi-nusantara-substrate` ↔ `AGI-nusantara-substrate`, `forge-ci-diagnose` ↔ `FORGE-ci-diagnose`, …).
+  Genuine intra-canonical pairs also exist: `aaa-shadow-mode` ↔ `domains/.../shadow-mode`;
+  `forge-onboarding/agent-onboarding` ↔ `forge-onboarding/claude` (both declare "Agent Onboarding").
+- Method is deterministic and re-runnable: `/root/forge_work/skill_collision_{census,pass2,pass3}.py`,
+  artifacts `skill_census_pass2.json`, `identity_final.json`.
+- **Pass-1 self-correction (on the record):** the first pass measured 40.3% identity / 5.4% trigger
+  and its top "trigger collisions" were pure `[fed: …]` annotation leakage. Fixed by stripping
+  annotations and DF-filtering. A metric that reads its own metadata is the same sensor-scar class
+  as `find` vs `find -L` — fourth occurrence in 48h.
+
+### 9c · "Qwen (FI-003) lacks the minimal authority kernel" — **FALSIFIED by probe**
+
+- `/root/.qwen/instructions.md` carries the full kernel: identity (FI-003, 333-AGI lane),
+  explicit lane boundary ("NOT 888-APEX, NOT A-FORGE, NOT F13"), boot sequence with `arif_init`,
+  F1–F13 summary, organ map.
+- `/root/.qwen/skills/aaa-canonical -> /root/AAA/skills` (since 2026-08-13) → Qwen **does** see the
+  canonical mesh; only 9 skills are its own.
+- It runs a `555-verifier` subagent with `approvalMode: default` — i.e. verify separation is present.
+- Residual real risk (not a symmetry violation): `permissionMode: yolo` + `approvalMode: yolo` +
+  `permissions.deny: []`. Documented as sovereign default, so it is policy — but FI-003 is the one
+  seat where a bad call has no seatbelt. Flagged, not changed.
+
+### 9d · Does an owner already exist for skill selection? — **NO, and that is now proven**
+
+`/root/arifOS/core/capability_index/` (indexer.py) ingests exactly three sources: `CAPABILITY_INDEX.json`
+(164 tools), `mcp_inventory.json`, and the Antigravity MCP schema dir. **Zero skill ingestion**
+(`grep -c skill` on the federation capability-index output = 0). The federation has a tool selector
+and no skill selector. Therefore the gap is real and unowned — **and the correct fix is to extend
+this one index with a skills source, not to mint a "Skill Router Agent".** One routing principle
+applied hierarchically (skill → agent → model → machine → witness); the model resolves the last mile,
+not the routing universe.
+
 *DITEMPA BUKAN DIBERI ⚒️*

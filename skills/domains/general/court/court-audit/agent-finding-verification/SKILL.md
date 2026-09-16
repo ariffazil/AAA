@@ -395,6 +395,54 @@ A provenance annex that correctly finds three defects in its own sources is evid
 diligence, not of completeness. Praise the discipline where it is real, then probe anyway: an
 honest audit document is the one most likely to be accepted without one.
 
+## Commissioning an independent review — blinding is the part that buys independence
+
+Auditing an inbound claim (above) and *commissioning* a second opinion are different procedures,
+and the commissioning one has a single failure mode that makes it worthless while looking rigorous:
+the reviewer inherits your framing.
+
+- **Name the mode before you run it.** *Critique mode* — the reviewer sees the conclusion and
+  attacks it. *Independent (blind) mode* — the reviewer sees the problem and raw source access,
+  never the conclusion and never your evidence selection. Both are legitimate; they are not
+  interchangeable. A critique reported as an independent verification is the most expensive kind of
+  false confidence available.
+- **A blind review needs source access, not your evidence packet.** Handing over a curated evidence
+  set transfers your framing, so the reviewer's errors correlate with yours — 2× compute and ≈1×
+  information. Give the problem plus the interface to the raw sources and let the reviewer decide
+  what matters.
+- **Physical separation is not epistemic independence.** Two nodes, two agents, or two model calls
+  that share a model family, a retrieval corpus, a doctrine file, or an evidence packet are one
+  perspective with two mouths. Ask what the reviewer *shares* with the author, not whether it runs
+  on a different box.
+- **Require four fields back.** The reviewer's own hypothesis, its confidence, **which evidence it
+  found decisive**, and **what evidence would change its mind**. The last two are what make a
+  disagreement resolvable; a bare verdict can only be obeyed or ignored.
+- **Reconcile on discriminating evidence.** Name the observation that separates the two hypotheses
+  and run it. Escalate to the human only when the residual disagreement is values, authority, or
+  irreversible risk — escalating a factual question spends the scarcest resource on something
+  evidence can settle.
+- **Do not wait indefinitely on a peer's round.** Two correct and courteous agents will each wait
+  for the other's message and neither will move — a deadlock with no crash and no error message.
+  Put a timeout on waiting; on expiry treat it as a synchronization fault (re-send, or proceed
+  explicitly and say so), never as agreement and never as disagreement.
+- **Preserve the reviewer's ignorance.** A reviewer with no access to your memory, doctrine, or
+  history is the most independent participant available, and the temptation is to "improve" it by
+  supplying context. That trade gives away precisely the property it was commissioned for.
+- **Sign the review with a session-unique id.** Where several sessions of one agent can run
+  concurrently, `Actor: <agent>` does not identify the writer — two differently-labelled records can
+  share one author, and a verdict from the second is then not an independent witness of the first.
+  Put the session id, and where it applies the source message id, in the artifact. The same applies
+  to any artifact you receive: an unsigned writer means the label is all you have.
+- **Track the smallest shared state in the transport you already have.** `objective · round · last
+  peer message id each side has acknowledged · owner of the next action`. Message ids usually
+  already exist in the channel, and each side's ack is simply the highest peer id it has received
+  and processed. No new service is required, and it is deleted by deleting it.
+- **The cheapest method beats both, where it is available.** If the claim is about the reviewer's own
+  resources and the author can measure it directly, measurement is faster and cheaper than any
+  second opinion. The blind lane earns its cost only where self-check is *structurally* blind —
+  your own config resolution, a sunk-cost conclusion, or a cross-machine claim you cannot observe
+  from where you sit.
+
 ## § Pitfalls
 
 - **A detector must not treat an absent field as a failing value.** When you encode the audit as a

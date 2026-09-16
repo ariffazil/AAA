@@ -89,6 +89,31 @@ source does not read this table, however healthy it looks.
 **This finding outranks every coverage gap.** Compute and storage are being spent
 producing a record nobody opens, and every downstream ambition is built on top of it.
 
+Then quantify the stream — volume plus zero readers is the whole finding:
+
+```bash
+wc -l <the-stream>; tail -1 <the-stream>          # how much, and how recently
+grep -rl "<stream-name>" /root --include="*.py" --include="*.sh" --include="*.service"
+```
+
+Two signals live inside a write-only stream and must be read before recommending anything
+else:
+
+- **An emitter that declares its own instrument broken.** A counter or detector whose last
+  row carries a status like `BROKEN` / `DEAD_CONVENTION` is the loudest coverage defect there
+  is: the oracle cannot see, it said so, and it said so into a channel nobody reads. Lead the
+  report with it rather than filing it as a curiosity.
+- **Exceptions with no triage.** Count exception/severity-class rows and check whether any was
+  ever actioned — a fix, a closed incident, a change in the next row. A stream that has
+  emitted for weeks without a single action is not monitoring; it is a log with a severity
+  field.
+
+**Apply the same gate to governance artifacts, not just tables.** A doctrine, invariant or
+threshold that is named and ratified but resolves to no executor anywhere on disk is a
+write-only ledger in prose: it costs context every session and changes no behaviour. Grep for
+whatever mechanism its name implies — a script, a unit, a cron line, an import, a gate on the
+write path — before describing it as "in place".
+
 ### Step 7 — report per layer, with the spread
 
 Score coverage per observability layer (execution/ingest, causal trace, token &

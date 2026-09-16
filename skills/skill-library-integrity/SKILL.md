@@ -55,6 +55,8 @@ N harness views     -> /root/.hermes/skills,       (symlinks; /root/AAA/skills i
                        · /root/scripts/mcp-health-census.py feeds it the MCP truth table
                        · /root/scripts/skill-owner-lookup.py is the creation gate
                        · /root/scripts/symbol-probe.py guards notation (C20) before intake
+                       · /root/scripts/skill-store-converge.py converges intra-store duplicate
+                         bodies (dry-run default; mv to quarantine + relative symlink)
 ```
 
 **Census and gate are not the same instrument, and neither is optional.** The census says what
@@ -80,6 +82,73 @@ python3 /root/scripts/skill-entropy-gate.py                       # must show br
 tree collapsed. This mistake has already been made once.
 
 **Never auto-merge diverged twins.** A diverged pair is a judgement call; HOLD it and report.
+
+**Intra-store convergence (one body, many paths).** Consolidation stops the harness trees holding
+copies; it does not stop the store holding two bodies for one skill. Measure, then converge:
+
+```bash
+python3 /root/scripts/skill-store-converge.py            # dry-run: SYMLINK / HOLD per family
+python3 /root/scripts/skill-store-converge.py --apply    # mv to quarantine + relative symlink
+```
+
+Converge a pair only when BOTH hold — derive them at run time, never hardcode a family list:
+
+1. **no file exists in the loser that is absent from the survivor** — compare whole directories, not
+   just `SKILL.md`; a run-only script or a `references/` file lost here is a silent capability loss;
+2. **removing the loser changes no routing** — normally that means the routing `name:` is identical
+   on both sides. **The exception is a rename the federation already recorded**: if the alias
+   registry (`SKILL_ALIAS_TABLE.json`) says the loser's routing name was retired in favour of the
+   survivor's (`renamed_from` → `v3_name`, or a tombstoned `related[].note` of the form
+   "LEGACY — renamed A→B", applied as a token substitution), then the routing question is already
+   answered and converging it is executing a recorded decision, not making one.
+
+Anything else is HELD with the reason named, and the two reasons are always one of: *routing would
+change* (a rename with no registry record, so it is a live naming decision) or *content exists only
+in the loser* (a merge).
+
+**Check the registry before escalating a HOLD.** "Name choice is routing is agent behaviour, so a
+human must decide" is true only while the decision is unmade on disk. Read the alias table first —
+several HOLDs are renames that were recorded months ago and never executed, and reporting those as
+pending human decisions is the same class of error as the false cause above: the label picks the
+wrong remedy. What genuinely remains for a human is a pair of *live* routing names with no registry
+record, or content that exists on only one side. See `references/multi-root-entropy-audit.md` §8 for
+the recorded-decision table and the overlay-promotion rule.
+
+**The action is always the same shape** — `mv` to quarantine plus a **relative** symlink: path count
+is preserved so mutators resolve wherever they did before, the body count becomes one, and nothing is
+deleted.
+
+Verify with two invariants, and ignore the third number:
+
+```
+find -L <store> -name SKILL.md | wc -l     # MUST be unchanged — no path was lost
+<loader> _find_all_skills()                # MUST be unchanged — no capability was lost
+find <store> -name SKILL.md | wc -l        # WILL drop — the converged paths are views now
+```
+
+The third number dropping is expected, not damage — it is the harness-root trap, newly created
+*inside* the store. Record it explicitly, because the next agent measuring the store without `-L`
+will read a smaller total than yesterday and conclude that content was deleted. Commit the
+convergence to the store's own repo and confirm git recorded the paths as symlinks (mode `120000`),
+so a fresh checkout reproduces the shape rather than resurrecting the duplicate bodies.
+
+**Run the dry-run until the plan stops changing.** A converge tool built this session planned three
+wrong operations in three successive dry-runs before converging (two of them merges of unrelated
+skills, one a merge of two skills' harness variants). Every one was caught by reading the plan; none
+reached disk. A destructive tool that has never been dry-run has not been tested.
+
+**Then diff the applied count against the plan count — that comparison is the test.** The plan is the
+spec: an `--apply` whose summary disagrees with the dry-run it was built from has failed partially and
+silently, because the per-operation handler swallows exceptions into a manifest nobody reads. This is
+how a whole class of API misuse is caught — `shutil.copy2` is **files-only** and raises `Is a directory`
+on every directory, so a promotion pass reports `applied=1` against a plan of `4` while the three
+failures sit in the manifest as `ERROR` entries. Use `shutil.copytree` for directories, and treat any
+applied/plan mismatch as a failed run, not a partial success.
+
+**A rollback manifest must accumulate, never be rewritten.** Open the existing manifest and append
+before writing; a tool that truncates it on each run silently discards the reverse operation for every
+earlier pass, and the earlier pass is the one a rollback would need. Same reason a verify step is part
+of the mutation rather than a follow-up.
 
 Keep every skill **loadable**, and keep the tree from silently accumulating skills that look
 present but cannot be opened. Two failure classes live here: name resolution (a name that
@@ -307,11 +376,23 @@ git -C /root/AAA status --porcelain        # must show no deletions before movin
   with no reconciliation path. Every gate, report, and doc must **read the single census** (its
   `--json` output) rather than count the tree itself; two independent counters is the mechanism by
   which a stale claim survives every audit.
-- **Severity: FAIL means a capability is broken right now; debt is WARN.** Reserve the failing verdict
-  for a structural break (a link resolving to nothing — a capability deleted silently). Carried debt
-  (shells, diverged twins, case drift, name collisions) is real but was already true before the run, so
-  failing on it makes the gate permanently red and therefore ignored. A gate that cannot go green on a
-  healthy system stops being read.
+- **Severity is a three-tier ladder, and the third tier is the one that keeps a sensor honest.**
+  **FAIL** = a capability is broken right now (a link resolving to nothing — a capability deleted
+  silently). **WARN** = carried debt that was already true before the run (shells, diverged twins, case
+  drift, name collisions): real, but failing on it makes the gate permanently red and therefore ignored.
+  **INFO** = debt measured for the record with **no gate attached**, for a property so pervasive that a
+  warning would fire on every run and teach nothing — a declared field covering 0 of ~480 skills, for
+  instance. A gate that cannot go green on a healthy system stops being read; the honest response is to
+  keep measuring it and let the number move, not to drop the check. Never promote an INFO finding into a
+  bulk retro-fit on the strength of the measurement alone: covering hundreds of files is a migration with
+  its own blast radius, and it needs its own decision. A **newly added check is calibrated on its first
+ run, not shipped red**: FAIL stays reserved for a capability broken right now, and a gate that
+ fires on a healthy tree is read once and then ignored. A **by-design property belongs at INFO,
+ never WARN** — WARN is for debt that can be paid off, and a deliberate permanent property (a
+ harness root that is a symlink farm, reading empty under a plain walk) can never clear, so
+ warning on it every cycle is the same decay by a slower route. Keep the instruction text and its
+ reason; drop only the level. The verdict line then means something, and every surviving WARN is a
+ real decision nobody has taken yet.
 - **A bundled skill's directory casing is owned by the updater — never normalise it.** Case-drift
   detection must exclude every name listed in `~/.hermes/skills/.bundled_manifest`, or it reports a
   large false-positive set (53 in one measurement) and invites a "fix" that renames files the next
@@ -337,12 +418,103 @@ git -C /root/AAA status --porcelain        # must show no deletions before movin
   real collision walks through.
 - **Per-harness variant directories are not duplicate owners.** `<skill>/<harness>/SKILL.md` (claude,
   kimi, opencode, openai) are variants of the *parent* skill; keying collision detection on the
-  directory basename reported 2 false name collisions. Key on the declared frontmatter identity, or
-  keep a variant-dir exclude list, and identity = `name:`, not the folder.
+  directory basename reported 2 false name collisions. Exclude the variant shape, and key identity on
+  frontmatter — never on the folder.
+- **But two DIFFERENT skills' variant dirs can share one folder name, and a basename-keyed Grouper
+  will merge them.** `<skill>/hermes/` under two different parents puts two unrelated bodies in one
+  bucket; a converge tool built that way planned to replace the hold skill's body with a link to the
+  seal skill's body. A plain harness-name exclude is the correct test *only if* no real namespace
+  directory bears that name — probe for it (`find <store> -type d -name <harness>` and check whether
+  the candidate holds a `SKILL.md`) before trusting the name test. Two "smarter" shape tests were
+  tried and both leaked on a stale container that held only the variant child and no `SKILL.md`.
+- **A basename-keyed index cannot see a case-twin.** On a case-sensitive filesystem `Foo/` and `foo/`
+  are two different keys, so a check that groups by `os.path.basename` reports nothing while both
+  paths load and carry different bodies. Group case-insensitively *in addition to* the exact key, and
+  report the family — this class appeared as 7 families in one store, 5 of them divergent.
+- **Identity is TWO fields, and a check must say which one it keys on.** `id:` is the canonical /
+  namespace identity; `name:` is the **routing** identity — the field the loader reads
+  (`frontmatter.get("name", <folder>)`) and dedupes on. They are legitimately different strings
+  (`id: aaa-agent-invariants` vs `name: ASI-agent-invariants`), so a single-field helper is a silent
+  mis-key: a parser that returns the FIRST of `id:`/`name:` it sees is keyed on the id whenever `id:`
+  comes first, i.e. always, while its message claims to be keyed on the name. **Detector of this bug:
+  two implementations of the same check disagreeing on the count** (one said 7, the other 4) — never
+  ship a sensor that fails its own cross-check. Return both fields; key each check explicitly.
+- **Same `name:`, two bodies = one is dropped in SILENCE.** The loader dedupes FIRST-WINS
+  (`if name in seen_names: continue`), so a divergent body that shares a routing name can never load,
+  chosen by directory-walk order, with no error on any surface. This is worse than the visible
+  duplicate-name case, because a visible duplicate makes an agent hesitate while this one just serves
+  whatever the walk reached first. Report it as its own finding, keyed on `name:`.
+- **Prove "this is a copy" by inode before calling anything drift.** A path that *resolves into the
+  store* through a symlink carries no independent copy: `os.stat(a).st_ino == os.stat(b).st_ino`.
+  A comparison that reads such a path and prints "mirror/stale copy differs from the live owner" is
+  publishing a false **cause** — and the remedy that cause implies (copy the owner over the mirror
+  path) writes *through* the link onto a body inside the store, silencing the warning by overwriting
+  canon. Classify by whether the path is a link: a linked view → the divergence is a store defect; a
+  real file → mirror drift. Print the inode pair before deciding.
 - **A sensor that cannot fail is decoration — but a sensor that fails on purpose must be regression
   tested.** `symbol-probe.py` carries a case file (`/root/scripts/tests/symbol-probe-cases.txt`) and
   the chaos sweep re-runs it (`C12 sensor_regression`), so a future edit that softens the probe is
-  caught by the sweep instead of by the next corrupted import.
+  caught by the sweep instead of by the next corrupted import. The fix for a false positive is
+  precisely the edit that creates a false negative — in one session a probe fix silently cleared two
+  genuine symbol redefinitions as "cites canon" until the case file caught them.
+- **A capability census must cover every surface, not just the skill tree.** MCP servers have the same
+  failure mode as skills: `configured` is not `capable`, and a server listed but unreachable is a
+  phantom capability. Derive a `routable` flag from a live probe, keep an explicit
+  `disabled_intentional` class with a declared owner so a later agent does not "fix" a server that
+  was switched off on purpose, and let the sweep FAIL on any enabled-but-unreachable entry.
+- **A bundle that loads more than a dozen skills is a library, not a cockpit.** Measure each bundle's
+  member count and approximate token weight; a bundle pulling ~49k tokens into every trigger defeats
+  progressive disclosure, which is the reason bundles exist. Split by mission, and keep domain
+  verticals out of cross-cutting bundles — they load on their own triggers.
+- **A profile copy that is a real file rather than a symlink is drift, not a view.** Relink it to the
+  live owner from a script that takes a backup tarball first; never delete the copy, and skip names
+  whose owner is ambiguous rather than guessing which body is newer.
+- **A drift WARN is routinely summarised as "duplicate owners", and the label picks the wrong remedy.**
+  Sweep findings (`profile_stale_mirror`, name collisions) get written up in receipts as *"two live
+  owners → merge decision, HOLD for the human"*. Those are different defects with different owners:
+  stale mirror = mechanical re-sync the agent may do; duplicate owner = a human judgement. Classify by
+  **path shape**, never by the label in the report:
+  ```
+  flat    …/skills/<name>/SKILL.md                        <- migration leftover (pre-reorg layout)
+  authored …/skills/<domain>/<organ>/<name>/SKILL.md      <- a real owner
+  one flat + one authored, same name   -> MIRROR_DRIFT    -> re-sync the flat copy
+  two authored, differing hashes       -> DUPLICATE_OWNER -> HOLD, human decides
+  ```
+  Print the pair (`path + sha256 prefix` for both) before deciding — the reading takes seconds, and the
+  cost of skipping it is double: a machine task escalated to the sovereign as a decision, while the
+  genuine split-sovereignty case sitting beside it goes unnoticed because the whole class was filed as
+  "needs a human". `scripts/mirror_or_duplicate.py` does this for every colliding name at once.
+- **Re-probe a sibling's receipt before either repeating it or absorbing it.** When another session has
+  already written a receipt for the same input, the remaining work is not "do it again" and not "trust
+  it" — it is to re-derive its load-bearing numbers yourself (census, regression suite, `witness_hash`,
+  `git log -1` times against the artifact's arrival time). Cheapest proof that nothing was duplicated:
+  the witness hash and the loadable count are unchanged from before the pass. When the re-probe
+  contradicts the receipt, keep the receipt's original sentence standing and append a dated
+  **CORRECTION** section — a correction in place, not a new report file, or the correction becomes the
+  accumulation the pass was auditing.
+- **Before concluding that an artifact or commit does not exist, enumerate the repos that could hold
+  it.** Each organ is its own git repository, and the scripts that run a sensor often live outside the
+  organ they describe, so `git -C <organ> cat-file -t <sha>` returning `no-such-object` proves only
+  that *that* repo lacks it — probe every candidate (`/root/scripts` is a repository of its own)
+  before reporting a receipt as fabricated. A "phantom commit" verdict produced from the wrong search
+  root is the same class of error as a sensor scoped to the wrong tree.
+- **Hold a repair when a second session is writing the same tree.** Two writers on one tree make any
+  re-sync unsafe regardless of authority: check for other live kernel runners (`ps -eo pid,etimes,cmd`)
+  and for a shared store whose `-wal`/mtime moved inside the last few minutes, then name the hold as
+  *timing*, not as a blocked authority. "Authorized but racy" and "not authorized" are different
+  verdicts; reporting the second when it is the first teaches the next agent to wait for a human who
+  was never needed.
+
+- **A new check must be proven able to fire before its verdict is trusted.** Two shapes of
+  decoration pass every code review. The check that *reads* a value it never compares — a loader
+  index loaded into a variable that no branch ever uses — announces an invariant that nothing tests,
+  and still emits a verdict, so the missing comparison is invisible. And the check whose two sides
+  are computed from the **same expression**, differing only by `isfile` vs `exists` on the same
+  realpath: no input can ever make them disagree. Extract the predicate verbatim into a throwaway
+  script, enumerate the inputs that would take the failing branch, and require at least one; a
+  predicate with no reachable failing branch is not a check. Widen the scope in the same pass — a
+  detector watching one root cannot catch a false claim about another, so measure every root from a
+  single enumerated table on every cycle rather than adding paths ad hoc.
 
 ## Support files
 
@@ -350,6 +522,10 @@ git -C /root/AAA status --porcelain        # must show no deletions before movin
   >1 distinct file and (b) directories whose basename disagrees with the frontmatter `name:`.
   Skips `.archive-*`/backup trees; treats symlink mirrors of one physical file as one copy.
   Exit 1 when anything is unreachable.
+- `scripts/mirror_or_duplicate.py` — classifies every colliding skill name as `MIRROR_DRIFT`
+  (one authored path + flat migration leftover → re-sync) or `DUPLICATE_OWNER` (two authored
+  paths with differing hashes → HOLD for the human), read-only, exit 1 on any real duplicate
+  owner. Run it before acting on any "duplicate owner" line in a report.
 - `references/multi-root-entropy-audit.md` — the multi-root model, the always-on entropy gate
   and its check table, the divergence/index-cost measurements, the source-of-truth decision, and
   §7 the consolidation procedure (census buckets, writer-first ordering, bundled-skill rule, the
