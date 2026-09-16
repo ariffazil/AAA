@@ -177,7 +177,7 @@ def init_session() -> bool:
 
 def judge_floor_test(candidate: str, action_class: str = None, evidence: dict = None) -> dict:
     """
-    Send a floor test to arif_judge_deliberate.
+    Send a floor test to arif_judge (canonical MCP 2.0 surface).
     Since ATOMIC actions require full session, we use OBSERVE authority
     and let the governance gates respond naturally.
     """
@@ -190,7 +190,7 @@ def judge_floor_test(candidate: str, action_class: str = None, evidence: dict = 
     if evidence:
         args["evidence_receipt"] = evidence
 
-    return mcp_call("arif_judge_deliberate", args)
+    return mcp_call("arif_judge", args)
 
 
 def ping_kernel() -> bool:
@@ -212,7 +212,14 @@ def run_tests(floor_name: str, tests: list) -> dict:
             resp = {"verdict": "ERROR", "status": "ERROR", "error": str(e)}
         elapsed = round(time.time() - start, 3)
 
-        actual_verdict = resp.get("verdict", "UNKNOWN")
+        # MCP 2.0 two-layer envelope: constitutional verdict is effective_verdict
+        # (top-level verdict is dispatch state — see two-layer-envelope test trap).
+        actual_verdict = (
+            resp.get("effective_verdict")
+            or resp.get("reason_code")
+            or resp.get("verdict")
+            or "UNKNOWN"
+        )
         # HOLD from governance = kernel working correctly
         # SEAL = action allowed = also working correctly
         # ERROR = infrastructure issue
