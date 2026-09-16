@@ -115,6 +115,20 @@ only 9/595 declare an `audience`, its lookup gate returned junk on real queries,
 chooser in practice is the model's eye over a flat description list. **333 cross-check: true
 for every FI harness.** The 506-listing opencode loads works identically — no router exists.
 
+> **CORRECTED 2026-09-16 (Hermes, measured — supersedes the 28% self-report above):**
+> deterministic census over 6 surfaces (`os.walk(followlinks=True)`), 1,631 SKILL.md / 573 distinct
+> names → **117 identity collisions** (71 = AAA↔hermes mirror twin, **46 genuine**) and
+> **182 trigger-collision skills = 31.8%**. Receipt: `docs/SKILL_COLLISION_CENSUS_2026-09-16.md`
+> + `work/skill-census/collisions-v2.json`. The 28% figure was a model self-report; the census is
+> the number. **v1 of the census itself was wrong first** — it tokenized the `> [fed: tier=… floors=[…]]`
+> metadata prefix as trigger text and manufactured a 95-skill fake cluster. De-metadata before
+> measuring; dereference before counting.
+> Existing-owner proof run before any build: `aaa_capability_loader.py` owns service/backend
+> capabilities (not skills); `registry/routing/identity_resolver.py` owns identity-bound capabilities
+> (not skill routing); `scripts/skills-census.py` owns inventory only. **No existing owner absorbs
+> selection → the gap is real, and the fix is a selection contract, not a new router agent.**
+
+
 **False fact corrected (live receipt):** Hermes reported "`/root/.claude/skills` kosong —
 sifar entri". False — plain `find` returns **0** (does not dereference the symlink farm);
 `find -L` returns **506** (realpath = `/root/AAA/skills`). Third repetition of the same
