@@ -6,16 +6,29 @@
 
 ## The Roster
 
+> **FI SOT:** `/root/AAA/registries/forge_instruments.yaml` — canonical one-owner-per-slot map
+> (C10 adjudication, commit `630a4865`, 2026-08-14; gemini lane merged into FI-009 by `ce491419e`, 2026-08-21).
+> Numbers below are conformed to that registry 2026-09-16. Do not renumber here — patch the registry.
+
 | FI | Agent | Lane | Specialty | Cron Cadence |
 |---|---|---|---|---|
 | FI-003 | Qwen Code | 333-AGI | Memory clerk, session receipts, fed health | Every 6h |
 | FI-001 | OpenCode | 333-AGI | Heavy builder, multi-file refactor, code audit | On-demand |
 | FI-002 | Claude Code | 333-AGI | Governed execution, infra watchdog, visual QA | Every 4h |
 | FI-005 | Codex CLI | 333-AGI | Code analysis, tech debt tracking, security scan | Every 8h |
+| FI-006 | Copilot CLI | 333-AGI | LLM-only warga — no MCP surface (architecturally excluded) | — |
+| FI-007 | Grok Build | 333-AGI | Architecture, DAG planning, design system, media generation | On-demand |
 | FI-008 | Kimi Code | 333-AGI | Executor, lint/test coverage, skill alignment | On-demand |
-| FI-009 | AGY | 333-AGI | Web research, doc freshness, external API health | On-demand |
-| FI-010 | Grok Build | 333-AGI | Architecture, DAG planning, media generation | On-demand |
-| FI-011 | Kimi Code | 333-AGI | Context-prune clerk — graph-driven pre-LLM context sizing, hooks delegation_envelope | On-demand |
+| FI-009 | Antigravity (agy) | 333-AGI | Web research, doc freshness, external API health | On-demand |
+| FI-011 | Continue CLI | 333-AGI | Config-only presence, provider-agnostic | On-demand |
+
+**Retired slots:** FI-004 (= FI-009 pre-renumber) · FI-010 = Gemini CLI, DECEASED
+(F13 "gemini cli is dead", 2026-09-13; superseded into FI-009 lane 2026-08-21; never seeded).
+
+**Role note (not a slot):** FI-008 additionally carries the *context-prune clerk* duty
+(graph-driven pre-LLM context sizing). That duty previously appeared as a phantom "FI-011
+Kimi Code" row — it is not a second seat.
+
 
 ## Gotong Royong Tasks
 
@@ -71,7 +84,7 @@ Arif gates apply). Hook module lives at `/root/AAA/graph/fi011_hook.py`.
 2. **Documentation freshness** — check if docs match deployed state
 3. **Web intelligence** — research tasks from musyawarah deliberations
 
-### FI-010 Grok Build — The Architect (on-demand)
+### FI-007 Grok Build — The Architect (on-demand)
 1. **Architecture review** — DAG analysis, dependency graph health
 2. **Design system** — visual consistency, token alignment
 3. **Media generation** — image/video/audio tasks for federation surfaces
