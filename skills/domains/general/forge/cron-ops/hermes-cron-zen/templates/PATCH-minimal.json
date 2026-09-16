@@ -1,0 +1,21 @@
+{
+  "_meta": {
+    "patch_id": "PATCH-EXAMPLE-single-edit",
+    "patched_at_utc": "2026-08-05T18:00:00Z",
+    "reversible": true,
+    "blast_radius": "1 cron job, 0 services, 0 humans",
+    "see_sidecar_for_narrative": "README.md",
+    "explicitly_not_patched": []
+  },
+  "updates": [
+    {
+      "id": "abc123def456",
+      "name": "example-job-name",
+      "search_field": "id",
+      "fields": {
+        "deliver": "local"
+      }
+    }
+  ],
+  "to_resolve_before_apply": []
+}
