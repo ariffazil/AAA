@@ -1,6 +1,6 @@
 ---
 name: skill-library-integrity
-description: "Use when skills won't load, duplicate, or diverge."
+description: "Use when a skill won't load, a capability vanished silently, or trees diverge — one-writer/many-views consolidation with a live entropy sensor."
 version: 1.0.0
 owner: AAA
 category: governance
@@ -10,6 +10,40 @@ autonomy_tier: T1
 ---
 
 # Skill Library Integrity
+
+> **Canon:** `/root/AAA/instructions/agi-asi-skills-fundamentals.md` (F13_RATIFIED_CHAT 2026-09-16 — the Seven Laws; C17–C19)
+> **One line:** a skill library is an **actuator**, not documentation. Many may read a capability; few may write it; someone must judge it.
+
+## LAW 3 — one writer, many views, live sensor
+
+This is the doctrine this skill enforces. Breaking it deletes capabilities silently:
+
+```
+1 canonical writer  -> /root/AAA/skills            (content, provenance, genealogy)
+N harness views     -> /root/.hermes/skills,       (symlinks; /root/AAA/skills is the
+                       profiles/*/skills            `skills.create_dir` target so new
+                                                    agent-created skills land canonical)
+1 live sensor       -> /root/scripts/skill-entropy-gate.py
+                       cron 23 4,10,16,22 · exit 1 on FAIL · log /var/log/arifos/skill-entropy.log
+```
+
+**Do not let an upstream-bundled skill move.** Skills named in `~/.hermes/skills/.bundled_manifest`
+belong to `hermes update` and must stay harness-native — relocating them breaks the sync.
+
+**Repair procedure (reversible, verified):**
+
+```bash
+python3 /root/scripts/federation-skill-consolidate.py             # dry-run census
+python3 /root/scripts/federation-skill-consolidate.py --apply     # promote + symlink + fill
+# git-tag both trees BEFORE applying; rollback manifest -> /root/skill-audit/rollback-manifest.json
+python3 /root/scripts/skill-entropy-gate.py                       # must show broken_symlinks: 0
+```
+
+**Never measure the view tree with plain `os.walk`/`find`.** Views are symlinks — you must use
+`followlinks=True` / `find -L`, or you will count 124 when the true figure is 409 and conclude the
+tree collapsed. This mistake has already been made once.
+
+**Never auto-merge diverged twins.** A diverged pair is a judgement call; HOLD it and report.
 
 Keep every skill **loadable**, and keep the tree from silently accumulating skills that look
 present but cannot be opened. Two failure classes live here: name resolution (a name that
@@ -91,6 +125,7 @@ index-cost measurements.
 | Case-drifted harness link | symlink present but `os.path.exists()` is false; target differs from a real path only in letter case | Repoint to the case-correct real path. Do NOT lowercase the harness entry name — the name is the trigger |
 | Headless store directory | dir in the authoritative store with no `SKILL.md`, live copy only in a harness/profile tree | Copy the live copy back into the authoritative store; until then the store is a shell and its own canonical claim is false |
 | Stale count witness | a registry states a skill total that disagrees with disk | Fix the number from measurement, or record the disagreement; never re-publish the claim |
+| Declared store smaller than the runtime tree | store claims `canonical_home` but holds fewer bodies than the harness tree, and shared names are all diverged | Execute the consolidation (references §7): promote what the store lacks, symlink what is identical, HOLD what diverged. Set `skills.create_dir` to the store **first**, or every newly written skill respawns the drift |
 
 **Never rename the skill to match a typo'd directory.** The name is the trigger the agent
 matches on; the directory name is only the index key. Rename the key, keep the trigger.
@@ -133,6 +168,16 @@ git -C /root/AAA status --porcelain        # must show no deletions before movin
 
 ## Pitfalls
 
+- **Renaming a directory in the canonical tree silently deletes the capability in every harness.**
+  Measured 2026-09-16: 1,568 rename events, zero propagated, 7 skills dead with no error. A rename
+  is a migration — re-resolve every reference and run the gate afterwards.
+- **A registry that reports `drift: 0` from a stale method is worse than no registry.** If a sensor
+  cannot fail, it is decoration; the next agent trusts it. Never re-stamp a witness with a method
+  you did not run — that is fabrication, not witness.
+- **Over-eager shell eviction.** Directories that hold no SKILL.md of their own may still be the live
+  body for a view symlink. Check what references a shell before moving it; moving one breaks every
+  link pointing at it.
+
 - **"Ambiguous skill name" is a filesystem fault, not a frontmatter fault.** Frontmatter
   linting cannot see it, so a skill passes every trigger/quality check and is still
   unloadable. Audit resolution with the script, not by reading the description.
@@ -159,6 +204,30 @@ git -C /root/AAA status --porcelain        # must show no deletions before movin
   count. A high shared count reads as health and hides the drift completely.
 - **Never fork a second copy of the detector.** Run the installed gate by path. A forked copy
   in a skill directory drifts from the wired one and re-creates the exact defect being hunted.
+- **A symlink-aware walk is mandatory once views are links.** `os.walk` and `find` do not
+  descend into symlinked directories, so after a tree becomes symlink views the resolvable-skill
+  count appears to collapse and an intact tree reads as destroyed. Use `os.walk(root,
+  followlinks=True)` / `find -L` for anything describing what the agent can actually load;
+  reserve the default non-following form for counting real bytes on disk. Mismatched walk flags
+  are the most common way a correct repair gets reported as a catastrophe.
+- **Never evict a store directory on store-side evidence alone.** A directory with no `SKILL.md`
+  of its own can still be load-bearing, because a harness view may symlink to it. Before
+  archiving or removing any such directory, resolve inbound links (`find -L <harness roots>
+  -maxdepth N -type l -name '<name>'`, then `realpath` each) and refuse the move when one lands
+  there. "Empty" has to be decided from the dependents, not from the store.
+- **Snapshot the worktree and write a rollback manifest BEFORE the first bulk mutation.** Bulk
+  consolidation is reversible only if both exist: a commit in every tree you will touch, and a
+  per-operation manifest recording the inverse. The verification step that can trigger that
+  rollback is part of the mutation, not a follow-up — the over-reach is *discovered* by the
+  verify, and by then the manifest is the only recovery path.
+- **Never write a governance stamp with a method you did not run.** When a registry's count or
+  refresh stamp is wrong, either recompute it by actually running the producing process, or
+  leave the check failing and name it as debt. Hand-editing the number or timestamp to make the
+  gate green is fabrication, and it destroys the only signal that would have caught the drift.
+- **Classify emptiness structurally, not from a top-level listing.** A store directory holding no
+  `SKILL.md` may be a container of sub-skills, and a directory whose only children are
+  `references/`, `__pycache__`, or fixtures is a live skill whose body sits one level up. Decide
+  with a recursive body check plus an inbound-link check, never from one directory level.
 
 ## Support files
 
@@ -167,9 +236,10 @@ git -C /root/AAA status --porcelain        # must show no deletions before movin
   Skips `.archive-*`/backup trees; treats symlink mirrors of one physical file as one copy.
   Exit 1 when anything is unreachable.
 - `references/multi-root-entropy-audit.md` — the multi-root model, the always-on entropy gate
-  and its check table, the divergence/index-cost measurements, and the source-of-truth
-  decision. Read when the symptom is stale, missing, or divergent content across trees rather
-  than an unloadable name.
+  and its check table, the divergence/index-cost measurements, the source-of-truth decision, and
+  §7 the consolidation procedure (census buckets, writer-first ordering, bundled-skill rule, the
+  counting and verify rules). Read when the symptom is stale, missing, or divergent content
+  across trees rather than an unloadable name.
 
 ## Adjacent skills
 
