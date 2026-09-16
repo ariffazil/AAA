@@ -145,8 +145,24 @@ def extract_structured(response: dict[str, Any]) -> dict[str, Any]:
 
 
 def get_verdict(response: dict[str, Any]) -> str:
-    """Safely extract verdict string from any response."""
-    return response.get("verdict", "UNKNOWN") or "UNKNOWN"
+    """Safely extract verdict string from any response.
+
+    MCP 2.0 (2026-09-15): top-level ``verdict`` is the DISPATCH state
+    (e.g. ``completed``); the constitutional verdict lives in
+    ``effective_verdict`` / ``reason_code`` / ``hold_required``. Reading the
+    top-level key alone false-failed the whole suite post-migration
+    (see project-mcp2-two-layer-envelope-test-trap).
+    """
+    for key in ("effective_verdict", "verdict"):
+        value = response.get(key)
+        if value:
+            return str(value)
+    reason = response.get("reason_code")
+    if reason:
+        return str(reason)
+    if response.get("hold_required") is True:
+        return "HOLD"
+    return "UNKNOWN"
 
 
 def get_status(response: dict[str, Any]) -> str:
