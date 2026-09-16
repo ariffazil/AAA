@@ -14,6 +14,31 @@ autonomy_tier: T1
 > **Canon:** `/root/AAA/instructions/agi-asi-skills-fundamentals.md` (F13_RATIFIED_CHAT 2026-09-16 — the Seven Laws; C17–C19)
 > **One line:** a skill library is an **actuator**, not documentation. Many may read a capability; few may write it; someone must judge it.
 
+## LAW 1 — negative proof before creating a skill (anti-redundancy gate)
+
+**No new skill may be created while an owner exists.** Run the gate first:
+
+```bash
+python3 /root/scripts/skill-owner-lookup.py "the capability in plain words"
+# OWNER_EXISTS -> patch the owner.  NO_OWNER -> creation permitted.  WEAK_MATCH -> inspect the hits.
+```
+
+Order of preference when a capability is missing (the cheapest home wins):
+
+```
+owner skill exists   -> patch it (procedure step, pitfall, verification check, kill criterion)
+similar exists       -> add an alias, example or pitfall to that owner
+repeated workflow    -> patch the owning procedure
+one-time fact        -> memory, not a skill
+governance rule      -> floor / base / intake, not a skill
+new external API     -> tool or MCP contract, not a skill alone
+genuinely new domain -> proposal skill, quarantined
+```
+
+A duplicate owner is worse than a missing one: both load, both sound right, and they drift apart
+where nobody is looking. The gate is a keyword+IDF lookup, so it over-fires on common words by
+design — a single shared word is never enough for `OWNER_EXISTS`.
+
 ## LAW 3 — one writer, many views, live sensor
 
 This is the doctrine this skill enforces. Breaking it deletes capabilities silently:
@@ -25,7 +50,18 @@ N harness views     -> /root/.hermes/skills,       (symlinks; /root/AAA/skills i
                                                     agent-created skills land canonical)
 1 live sensor       -> /root/scripts/skill-entropy-gate.py
                        cron 23 4,10,16,22 · exit 1 on FAIL · log /var/log/arifos/skill-entropy.log
+1 chaos sensor      -> /root/scripts/hermes-chaos-sweep.py
+                       cron 40 4,10,16,22 · skills + bundles + MCPs + capabilities in one verdict
+                       · /root/scripts/mcp-health-census.py feeds it the MCP truth table
+                       · /root/scripts/skill-owner-lookup.py is the creation gate
+                       · /root/scripts/symbol-probe.py guards notation (C20) before intake
 ```
+
+**Census and gate are not the same instrument, and neither is optional.** The census says what
+exists; the sweep says what is broken, stale or duplicated. A profile copy that is an old *copy*
+rather than a symlink is drift, not a view: `/root/scripts/hermes-profile-detach.py` relinks them
+(backup first) instead of deleting content.
+
 
 **Do not let an upstream-bundled skill move.** Skills named in `~/.hermes/skills/.bundled_manifest`
 belong to `hermes update` and must stay harness-native — relocating them breaks the sync.
@@ -276,6 +312,37 @@ git -C /root/AAA status --porcelain        # must show no deletions before movin
   (shells, diverged twins, case drift, name collisions) is real but was already true before the run, so
   failing on it makes the gate permanently red and therefore ignored. A gate that cannot go green on a
   healthy system stops being read.
+- **A bundled skill's directory casing is owned by the updater — never normalise it.** Case-drift
+  detection must exclude every name listed in `~/.hermes/skills/.bundled_manifest`, or it reports a
+  large false-positive set (53 in one measurement) and invites a "fix" that renames files the next
+  `hermes update` will overwrite or re-seed. Casing is drift **only** when the entry is
+  federation-authored. Read the manifest before accusing the tree.
+- **Resolve a bundle's members against every root before judging it broken — or new.** Bundle files
+  live in `/root/.hermes/skill-bundles/*.yaml` and each member name resolves through *any* root the
+  loader reads, including nested category paths — a shallow (top-level or two-deep) glob reports most
+  members of a fully-live bundle as phantom, inventing a gap that then gets "filled". Collect candidate
+  names with a recursive `**/SKILL.md` walk across all roots, then diff. The same check decides whether a
+  proposed bundle is genuinely new: one whose members already belong to existing bundles is a **rename**,
+  and adopting it multiplies the decision surfaces it claims to reduce.
+- **Verify a detector's finding against disk before acting on it.** A gate that reports drift, a
+  collision, or a shell is making a claim, not observing one — the finding itself must be probed
+  (is this entry bundled? does the target actually differ? is the body really absent?) before any
+  repair runs. Acting on a detector's output without re-deriving it turns one wrong predicate into
+  dozens of destructive edits.
+- **A collision sensor must distinguish CITING a symbol from REDEFINING it.** A probe that fires on
+  every mention of `T1`/`C20` flags the documents that agree with canon — measured 2026-09-16: an
+  intake artifact that quoted our own floors was reported as a FATAL notation collision. Verdicts now
+  depend on what the artifact does with the symbol (assignment markers → redefined; context agreeing
+  with the canonical meaning → reference). A sensor that cries wolf gets switched off, and then the
+  real collision walks through.
+- **Per-harness variant directories are not duplicate owners.** `<skill>/<harness>/SKILL.md` (claude,
+  kimi, opencode, openai) are variants of the *parent* skill; keying collision detection on the
+  directory basename reported 2 false name collisions. Key on the declared frontmatter identity, or
+  keep a variant-dir exclude list, and identity = `name:`, not the folder.
+- **A sensor that cannot fail is decoration — but a sensor that fails on purpose must be regression
+  tested.** `symbol-probe.py` carries a case file (`/root/scripts/tests/symbol-probe-cases.txt`) and
+  the chaos sweep re-runs it (`C12 sensor_regression`), so a future edit that softens the probe is
+  caught by the sweep instead of by the next corrupted import.
 
 ## Support files
 
