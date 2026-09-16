@@ -354,6 +354,16 @@ below. Read that section before minting; this heading exists only to point at it
 
 ### System voices
 
+**Pick the voice by LANE PRECEDENT before you synthesise anything.** On a bare "abang sado voice"
+request, read `lane_precedence` in `/root/AAA/audio/voice-registry.json` and use `precedent_voice` —
+never choose between the live sado ids by name symmetry, by file recency, or by whichever renders
+first. Three sado voices are LIVE at once (`abang-sado-live-v1` = clone of the principal's own voice
+notes; `abang-sado-alpha` and `abang-sado-clone-ref01` = fully synthetic archetypes), and they are
+different timbres, not versions of one thing. Shipping the synthetic one where the lane runs on the
+principal's own clone is a pick-error, and the render hides it: the take passes every QC gate because
+the TEXT is right — only the timbre is wrong, and the agent cannot hear the difference. The registry's
+precedent field is the arbiter; do not substitute judgement for it.
+
 ```bash
 export PATH=$PATH:/root/.npm-global/bin
 mmx speech synthesize --base-url https://api.minimax.io --model speech-2.8-hd \

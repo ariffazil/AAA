@@ -185,6 +185,19 @@ complete claim; "federation-wide" requires federation-wide evidence.
    signed artifacts is itself an unauthorized mutation; describing a system as "aligned" while
    false attestations stand is worse than either.
 
+21. **A claim repeated is not a claim re-measured — evidence expires.** Process state, open ports,
+   counts, queue depths, health bodies, registry `routable`/`drift` stamps and bytes on disk all age.
+   Before re-asserting a figure that you, a peer, or an earlier session already stated, either re-run
+   the probe or carry it as `UNPROVEN`; agreement between two recitals of one unchallenged claim is
+   one observation, not two. When a fresh measurement contradicts the old claim, the correction goes
+   into the record **by name** — `RETRACTED — <old claim>, superseded by <probe + value>` — and not
+   as a quietly different number further down. Three habits hide the failure: repeating a figure
+   because the thread already contains it; re-deriving it from a document that derived it from the
+   original; and borrowing the earlier version's evidence class for the new recital. Stale negatives
+   and stale positives are equally wrong — a cached `routable: false` while the surface answers a
+   live call is the same defect as a phantom "healthy", and a registry flag is a claim about a
+   measurement somebody else ran.
+
 ## Why this exists
 
 Fluent, complete-feeling output is most dangerous exactly when it feels finished. That ease
