@@ -39,12 +39,12 @@ T3_PATTERNS = [
     r"DROP\s+(TABLE|DATABASE)",
 ]
 
-# W_scar: critical-variable claims that need source evidence
+# W_scar: critical-variable claims that need source evidence (anchored to word boundaries)
 W_SCAR_CRITICAL = [
-    r"(duit|money|bayar|transfer|rm[\s\d]|price|cost|budget)",
-    r"(nyawa|health|ubat|dosis|medical|hospital|doktor|sakit)",
-    r"(reputasi|legal|law|saman|polis|court|undang)",
-    r"(invest|trading|xauusd|lot|pip|position)",
+    r"\b(duit|money|bayar|bayaran|transfer|rm\s*\d+|price|prices|cost|costs|budget|budgets)\b",
+    r"\b(nyawa|health|ubat|dosis|medical|hospital|doktor|sakit)\b",
+    r"\b(reputasi|legal|law|laws|saman|polis|court|undang)\b",
+    r"\b(invest|investment|trading|xauusd|forex|leverage)\b",
 ]
 
 METRICS_PATH = "/root/.local/share/arifos/hermes_falsification_metrics.jsonl"
@@ -53,11 +53,20 @@ TELEMETRY_PATH = "/root/.local/share/arifos/wscar_telemetry.json"
 # W_scar: text_to_speech and image_gen are exempt (creative output, not claims)
 W_SCAR_EXEMPT_TOOLS = {"text_to_speech", "image_gen", "video_gen", "vision_analyze", "browser_snapshot"}
 
+READONLY_PROBE_RE = re.compile(
+    r"^\s*(ls|lsattr|cat|head|tail|grep|egrep|fgrep|find|stat|file|which|whereis|type|echo|date|ps|top|uptime|free|df|du|wc|diff|git\s+(status|log|diff|show|branch)|systemctl\s+(status|is-active)|curl|jq|sqlite3)\b"
+)
+
 
 def has_critical_claim(tool_name: str, tool_input: dict) -> bool:
     """W_scar: detect if the tool call touches critical human-consequence variables."""
     if tool_name in W_SCAR_EXEMPT_TOOLS:
         return False
+    # Read-only inspection commands in terminal/bash are probes, not claims
+    if tool_name in {"terminal", "bash", "shell"}:
+        cmd = (tool_input.get("command") or tool_input.get("cmd") or "").strip()
+        if READONLY_PROBE_RE.search(cmd):
+            return False
     arg_str = json.dumps(tool_input).lower()
     for pattern in W_SCAR_CRITICAL:
         if re.search(pattern, arg_str):
