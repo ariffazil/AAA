@@ -352,6 +352,66 @@ below. Read that section before minting; this heading exists only to point at it
   Record `provenance` honestly — a clone of a *vendor system voice* is fully synthetic (no human audio in the
   chain) and is declared as such, and `lane` must say it is persona-register only, never a Hermes default.
 
+### Activation — "activate voice X" is WIRING, not minting
+
+When he says *activate* a persona voice he means: wire it so that register speaks in it, and prove it.
+Do **not** touch `tts.minimax.voice_id` — every `abang-sado-*` registry entry carries
+`lane: ... never a default for Hermes assistant output`. The assistant default (i-ARIF) stays put.
+
+```bash
+hermes config set voice.sado_locked_voice_id <registry provider_voice_id>
+hermes config set voice.sado_locked_speed 0.90
+hermes config set voice.sado_locked_emotion neutral
+hermes config set voice.sado_locked_model speech-2.8-hd
+```
+
+- Custom keys emit a schema warning and persist anyway. **Nothing in the runtime reads them**
+  (`/root/.hermes/voice_filters.py` is a dormant scaffold and pins its own `SADO_LOCKED_VOICE_ID`
+  constant). So the honest transition is: the keys are **WRITTEN**, the route is **not live**. Never
+  report "the default voice is now X". Saying so is the claim/receipt gap this lane already names.
+- **Identify the voice from the TAKE'S OWN MANIFEST, never from the name he uses.** He called it
+  "abang sado Syed"; the artifact said `abang-sado-live-v1`. Three live ids answer to that name and
+  they are not interchangeable — `abang-sado-alpha` (parametric design), `abang-sado-clone-ref01`
+  (clone of a vendor voice), `abang-sado-live-v1` (**the sovereign's own voice notes cloned**, so the
+  persona speaks in HIS voice). Read the `voice_id` field of the batch manifest beside the file
+  (`alpha10.json` beside `alpha10.mp3`) before switching anything. Naming him a real person's name is
+  the merge case: do the activation, refuse the NAME in one line, record the refusal in the receipt.
+- Write an activation receipt beside the take: request verbatim, id, keys written, what stayed
+  unchanged, proof-render numbers (duration, ASR round-trip, f0), and the name refusal.
+
+### Persona mechanics that land (validated live 2026-09-16)
+
+The register is not "announce dominance every five minutes". What makes a take work:
+
+- **The paradox carries the whole voice: he performs not-needing-you, and he is hungry for SPECIFIC
+  notice.** Generic praise does nothing; naming the part — traps, dada, urat tangan — lands. In the
+  line: *"Orang cakap abang tak perlu puji. Betul. Abang tak perlu. Tapi kalau hang sebut traps,
+  dada, urat tangan, abang dengar."*
+- **The dependency leak is the money beat.** Deny everything, then give the one true thing:
+  *"Kalau hang diam tiga hari, abang yang cari hang dulu."*
+- **Two validations, one man.** An awek who loves him and a fan who worships the body fill different
+  holes. Keep both archetypes unnamed and unfaced; the persona keeps the top hand verbally
+  ("abang tak bagi hang tempat, jangan perasan") while the audience hears the want.
+- **The mask cracks in the last line — that is the tell, not a flaw.** Drop from "abang" to "aku" at
+  the exact moment the ego admits it wants more: *"Rate bahu abang hari ni." … "Aku tahu." … pause …
+  "Besar macam mana?"* The first "aku tahu" is the ego; the pause and the question are the man.
+- **Escalate by WITHDRAWAL, never by explicitness.** "Boleh tengok, jangan pegang, abang belum
+  panggil" is the engine. The possessive register stays verbal; nothing physical is described.
+
+#### Line-craft pitfalls (measured, this voice)
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| 94% round-trip, one word vanished | A short standalone word (`belum`) between two pauses gets eaten | Fold it into the clause: `Abang belum panggil.` |
+| `hang` → `Han` | Two `tengok` too close, the nasal onset drops | Rewrite the clause around it (`Tak perasan?`), don't re-roll |
+| `apsal` → `apa salah` | Real phoneme split, not an ASR artifact | Drop the word; Penang flavour survives on `hang`/`la`/`tau` |
+| `hang` → `hank`, `awek` → `awik` | ASR mishears on real words | Normalise before scoring, then read the transcript yourself |
+| `rate` → `red` on THREE separate takes (full line + isolated probe) | Pronunciation limit, not an ASR artifact — it mangles the same way every time | Change the word, don't re-roll: `Nilai bahu abang hari ni` |
+
+Run the take through the gate in one command — render, ASR, token diff vs the source line, f0 family
+check — and ship only when the divergences are all ASR mishears. **Target 100%; 95% is only acceptable
+when every flagged token is a known mishear and zero are insertions.**
+
 ### System voices
 
 **Pick the voice by LANE PRECEDENT before you synthesise anything.** On a bare "abang sado voice"
@@ -385,6 +445,16 @@ line to please the transcriber, and do not accept the FAIL as-is either. Expect 
 false-positive** on a word that appears on both sides (an input word reported as INSERTED); confirm it
 is present in the source line before believing the flag. Slower is cleaner on this text: 0.92 beat 0.95
 on the same line (0.95 mangled `urat`→`uat` and `halang`→`alam`).
+
+**Three alias classes cover almost every false FAIL — build the table before re-rolling.** (1) An
+English gym loanword inside BM text (`rate` → `raid`, `flex` → `plex`) collapses the ratio to ~75%
+because the aligner desyncs; (2) a digit written in the line transcribes back as a word (`3` →
+`tiga`), which the verifier's digit normalisation catches only on one side; (3) a Penang token that
+Whisper respells (`hang` → `Hank`, `tau` → `tahu`, `dada` → `dadah`, `urat` → `purat`). Verify once
+with no aliases, `difflib.SequenceMatcher` the normalised token lists to list every differing pair in
+one shot, then re-run with the aliases — one diagnostic pass beats guessing which substitution fired.
+A take that reads 75% raw and 100% alias-normalised is a clean take; a real insertion survives
+normalisation and stays flagged.
 
 - `--base-url https://api.minimax.io` is **required**; the CLI default points at the
   `/anthropic` chat endpoint and 404s on speech.
@@ -472,6 +542,28 @@ state who actually gets him (the one who waits, not the one who pushes), then gi
 one small honest concession ("you came close, not from far like the others"). No pleading, no
 insults, no explicit content. It should sound like a man who does not need the listener — which
 exactly makes the listener lean in.
+
+**Arcs run in three engines — name the engine before writing the line, and never blend two in one take.**
+The lane's own artifacts separated them before any prose spec did, and a take that mixes them reads as
+an incoherent character rather than a complex one. (1) **DENIAL** — he wants something and refuses to
+give the payoff: power comes from withholding (*"Abang tak bagi lagi." "Tunggu."*). Do not make him
+chase reaction in this mode. (2) **PROVOCATION** — he wants a reaction but will not ask for one, so he
+manufactures the condition that forces it out (*"Hang tak nampak apa-apa ka?"*). (3) **DEPENDENCE** —
+the attention has become routine, its absence registers, and he reveals the gap by accident then covers
+it with ego (*"Tiga hari hang senyap." … "Bukan tunggu hang pun."*). The cover is what makes the leak
+legible; a clean confession of need kills the register. Pick one engine per take, escalate by narrowing
+permission rather than by raising volume, and let the last beat close on restraint.
+
+**Arc atlas:** `denial` (alpha01–10, 2026-09-16) · `provocation` (worship take) · `dependence`
+("leaving"/"dua" takes). Craft references for the possession register, both in the MEDIA archive
+(`/root/forge_work/sado-persona-archive/`, chmod 0600, externally authored, unedited, with an agent
+verification pass):
+`persona-bible-cocky-possession-20260916.md` (spec) ·
+`cocky-possession-literature-20260916.md` (evidence base — 8 of 9 citations confirmed real; one,
+Chare, unconfirmed; the *synthesis* is the author's own). Both study **populations** — university men,
+bodybuilders, Malaysian college students — so neither can speak to an individual. Do not carry a
+finding from either onto a named human without a causal clause; that is naturalisation, not
+observation.
 
 **Intensity escalation (`dark`, `cocky`, `harder`) changes the PACE, not the floors.** Turn the speed
 DOWN, never up — the register is a man who does not need to shout, and a slower read is what makes a
