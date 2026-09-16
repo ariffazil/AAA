@@ -1,6 +1,6 @@
 ---
 name: skill-library-integrity
-description: "Use when a skill won't load, a capability vanished silently, or trees diverge — one-writer/many-views consolidation with a live entropy sensor."
+description: "Use when a skill won't load or a capability vanished silently —, a capability vanished silently, or trees diverge — one-writer/many-views consolidation with a live entropy sensor."
 version: 1.0.0
 owner: AAA
 category: governance
@@ -69,6 +69,42 @@ procedure is available and re-derives it from priors, which is worse than a miss
 1. The task is linting trigger clauses or descriptions (use `FORGE-skill-linter`).
 2. The task is content redundancy, quality scoring, or prune planning (use `skill-audit-methodology`).
 3. The task is scanning the whole federation for broken symlinks outside the skills tree (use `FORGE-symlink-audit`, but read the deletion rules below first).
+
+
+## LAW 2 — never evict on appearance (shell/symlink dependency lint)
+
+A directory that *looks* empty is **visual truth, not system truth**. Measured 2026-09-16: 52
+canonical directories held no `SKILL.md` of their own and were moved to an archive — 26 of them were
+the live body behind view symlinks, and eviction broke **82 links**. The mistake was reasoning from
+appearance instead of from dependents.
+
+**Before removing or moving ANY directory in a skill tree, resolve all six dependents:**
+
+```
+1. symlink dependents   find -L <roots> -type l | xargs -I{} sh -c 'readlink {} | grep <dir>'
+2. AGENTS.md refs       grep -rn "<name>" /root/AGENTS.md /root/AAA/AGENTS.md
+3. bundle refs          grep -rn "<name>" /root/.hermes/skill-bundles/
+4. registry refs        grep -rn "<name>" /root/AAA/skills/*.yaml /root/AAA/skills/*.json
+5. alias refs           grep -rn "<name>" /root/AAA/skills/SKILL_ALIAS_TABLE.json
+6. loader path refs     grep -rn "<name>" /root/.hermes/skills/.matrix-index.json
+```
+
+Any hit = the directory is live. Move it only after re-pointing every dependent, and verify with the
+census (`broken_symlinks` must stay 0).
+
+**Corollary — moving is a migration, not a cleanup.** A remove that succeeds visually can still delete
+a capability. Re-resolve, then move, then re-run the census.
+
+## The one census command (never hand-write a skill count)
+
+```bash
+python3 /root/scripts/skills-census.py            # report (+ exit 1 on a structural break)
+python3 /root/scripts/skills-census.py --write    # also refresh the registry's witness block
+```
+
+It emits `witness_hash` over the claim. The registry's `disk_reconciliation` block is written **only**
+by this command — hand-editing it is the defect it exists to prevent. A count quoted from anywhere
+else (a doc, a memory, a previous session, an external artifact) is stale by definition.
 
 ## Procedure
 
