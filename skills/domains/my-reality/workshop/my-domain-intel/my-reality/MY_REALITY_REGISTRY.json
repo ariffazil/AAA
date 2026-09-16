@@ -1,0 +1,36 @@
+{
+  "registry": "MY_REALITY_REGISTRY",
+  "version": "1.1.0",
+  "updated": "2026-08-15",
+  "rule": "Candidate = belum verified. No abstract feature without concrete consumer — build only when a real consumer demands it.",
+  "p0_verified": [
+    {"adapter_id": "my-prayer-times", "source": "aladhan method=17 (JAKIM calc)", "auth": "none", "update": "daily", "consumer": "arif-morning-pulse cron", "status": "live"},
+    {"adapter_id": "my-weather", "source": "api.data.gov.my/weather/forecast+warning (MET)", "auth": "none", "update": "daily/event", "consumer": "arif-morning-pulse cron", "status": "live"},
+    {"adapter_id": "my-flood-watch", "source": "api.data.gov.my/flood-warning (JPS/DID)", "auth": "none", "update": "15m", "consumer": "arif-morning-pulse + world-reality-intel crons", "status": "live"},
+    {"adapter_id": "my-fx-rates", "source": "api.bnm.gov.my/public/exchange-rate", "auth": "none", "update": "daily", "consumer": "arif-morning-pulse cron", "status": "live"},
+    {"adapter_id": "my-gold-kijang", "source": "api.bnm.gov.my/public/kijang-emas", "auth": "none", "update": "daily", "consumer": "arif-morning-pulse cron", "status": "live"},
+    {"adapter_id": "my-quake", "source": "api.data.gov.my/weather/warning/earthquake", "auth": "none", "update": "event", "consumer": "world-reality-intel (black-swan watch)", "status": "live"},
+    {"adapter_id": "my-opr", "source": "api.bnm.gov.my/public/opr", "auth": "none (Accept: vnd.BNM.API.v1+json wajib)", "update": "MPC 6x/year", "consumer": "world-reality-intel (macro BNM)", "status": "live"},
+    {"adapter_id": "my-base-rate", "source": "api.bnm.gov.my/public/base-rate", "auth": "none (Accept: vnd.BNM.API.v1+json wajib)", "update": "monthly", "consumer": "on-demand (Ampang/SK property context)", "status": "live"}
+  ],
+  "p1_candidates_unverified": [
+    {"adapter_id": "my-fuel-watch", "source": "KPDN weekly announcement", "why_not_built": "scrape needed, no official API verified"},
+    {"adapter_id": "my-holiday-calendar", "source": "data.gov.my catalogue / OpenDOSM", "why_not_built": "dataset endpoint not yet verified"},
+    {"adapter_id": "my-news-brief", "source": "mixed official feeds", "why_not_built": "existing web_search flow serves current need"}
+  ],
+  "p2_parked": [
+    {"adapter_id": "my-transit-static", "source": "api.data.gov.my/gtfs-static?category=rapid-bus-penang", "note": "endpoint verified 200 but no consumer — parked sampai travel/route need real"},
+    {"adapter_id": "my-transit-live", "source": "GTFS-R rolling out", "note": "wait"},
+    {"adapter_id": "my-aqi", "note": "MOH/APIMS endpoint unverified"},
+    {"adapter_id": "my-dengue-watch", "note": "MOH data unclear"},
+    {"adapter_id": "my-school-calendar", "note": "no consumer"},
+    {"adapter_id": "my-electricity-watch", "note": "TNB no public API"},
+    {"adapter_id": "my-water-watch", "note": "no public API verified"}
+  ],
+  "scars": [
+    "2026-08-15 #1: ASI lane reported 'adapters forged, all live' with zero code on disk. F2 violation, caught by independent audit before F13 commit. This registry only lists artifacts that exist.",
+    "2026-08-15 #2: invented-path false negative (/weather/1.0/current.json — 404 disalahkan pada server; docs-verified path hidup). Rule: path mesti dari dokumentasi rasmi.",
+    "2026-08-15 #3: BNM contract false negative — endpoint betul tapi Accept: application/json → 404. Mesti Accept: application/vnd.BNM.API.v1+json. Rule: header contract adalah sebahagian daripada path verification.",
+    "2026-08-15 #4: authority API lag — /public/opr/ returned date 2026-05-07 while latest MPC decision was 2026-07-09 (verified via BNM press release + Edge/FMT). Level betul, tarikh stale (100 hari). Rule: authority API ≠ real-time; adapter expose age_days + stale_warning >75d (MPC meets ~6x/year)."
+  ]
+}
