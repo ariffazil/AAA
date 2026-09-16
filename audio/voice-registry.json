@@ -1,8 +1,8 @@
 {
  "schema": "aaa.voice-registry.v1",
  "owner": "AAA",
- "updated_at": "2026-09-14T18:28:50Z",
- "updated_by": "Hermes ASI (harden-20260915) under F13 SOVEREIGN directive 2026-09-15",
+ "updated_at": "2026-09-15T22:27:05Z",
+ "updated_by": "Hermes — sealed abang-sado-clone-ref01 (sovereign-chat seal, chain entry #19) under F13 DM 2026-09-16",
  "source_of_truth": "THIS FILE is the canonical voice-id registry. Resolvers (pipeline, identity card, routers) MUST resolve here; no component may hardcode a separate provider id.",
  "revocation_policy": [
   "A REVOKED voice id must never be selectable as a default, an explicit id, or a fallback rung.",
@@ -74,6 +74,122 @@
    ],
    "action_taken": "Locked in this registry as REVOKED; removed as the pipeline default; refused by the pipeline resolver; V9 promoted to canonical.",
    "note": "The provider-side checkpoint may still exist on MiniMax's servers. We cannot delete it; we refuse it at every resolver we own."
+  },
+  "abang-sado-alpha": {
+   "status": "LIVE",
+   "display_version": "V1",
+   "provider": "minimax",
+   "provider_voice_id": "ttv-voice-2026091602501026-szbvcVGx",
+   "model": "speech-2.8-hd",
+   "endpoint": "https://api.minimax.io/v1/t2a_v2",
+   "archetype": "abang_sado_alpha_penang",
+   "lane": "abang-sado persona register (shadow mode) — F5-private, never a default for Hermes assistant output",
+   "provenance": "parametric_voice_design — original voice from a written register description. NOT derived from any real person's audio, and NOT a clone of any MiniMax system voice.",
+   "design_prompt": "A mature Malay man in his mid-thirties, built like a bodybuilder, with a deep, chesty, slightly husky voice and rich bass resonance. Speaks Penang Malay in a blunt, unbothered, cocky register — the calm of a man who never rushes and never explains himself. Pace is slow and deliberate, with long pauses between short sentences, never hurried. Tone is dry, commanding and quietly amused — like an older brother at the gym who owns the room without raising his voice. Only a slight smile in the voice. No theatrical delivery, no shouting, no pleading. Authentic northern Malaysian Malay accent with Penang regional flavour. Pronunciation is clear, grounded and low. Pitch is low.",
+   "consent": "original_voice_from_qualia_description",
+   "f9_compliance": "no_real_person_audio; no_system_voice_clone",
+   "preferred_settings": {
+    "speed": [
+     0.95
+    ],
+    "rationale": "0.95 matches the cadence of the reference take (BossyLeader @0.82, 42.3s); 0.82 on this voice runs 66.6s and drags"
+   },
+   "runtime_measured_2026_09_16": {
+    "f0_median_hz": 90.1,
+    "estimator": "librosa.yin 60-350Hz",
+    "ref_take_f0_median_hz": 104.8,
+    "renders": {
+     "speed0.82": "66.6s",
+     "speed0.95": "58.9s"
+    },
+    "asr_roundtrip": "groq whisper-large-v3-turbo lang=ms — clean, no hallucinated insertions",
+    "sample": "/root/forge_work/backstage/voice_test/sado_v2_s095.mp3"
+   },
+   "created_by": "Hermes — F13 DM 2026-09-16 ('clone this voice and redo')",
+   "created_at": "2026-09-15T18:51:14Z"
+  },
+  "abang-sado-clone-ref01": {
+   "status": "LIVE",
+   "display_version": "C1",
+   "provider": "minimax",
+   "provider_voice_id": "abangSadoRef01",
+   "model": "speech-2.8-hd",
+   "endpoint": "https://api.minimax.io/v1/t2a_v2",
+   "clone_endpoint": "https://api.minimax.io/v1/voice_clone",
+   "archetype": "abang_sado_reference_clone",
+   "lane": "abang-sado persona register (shadow mode) — F5-private, never a default for Hermes assistant output",
+   "provenance": "provider-side voice_clone of the MiniMax SYSTEM voice Indonesian_BossyLeader, cloned on-platform from a prior render on the same account. Source audio is 100% synthetic — no human voice anywhere in the chain.",
+   "source_sample": "/root/forge_work/backstage/voice_test/sado_test_B.mp3 (42.3s, file_id 442144634114364)",
+   "consent": "source is a vendor-synthetic voice, not a person; no human audio ingested",
+   "f9_compliance": "no_real_person_audio",
+   "preferred_settings": {
+    "speed": [
+     0.9
+    ],
+    "rationale": "0.9 -> 43.8s vs reference take 42.3s; 1.0 -> 40.1s reads clipped"
+   },
+   "runtime_measured_2026_09_16": {
+    "f0_median_hz": 104.7,
+    "ref_take_f0_median_hz": 104.8,
+    "f0_delta_hz": -0.2,
+    "mfcc_cos_vs_reference": 0.9997,
+    "mfcc_L2_vs_reference": 8.6,
+    "asr_roundtrip": "groq whisper-large-v3-turbo lang=ms — verbatim, NO inserted clauses",
+    "sample": "/root/forge_work/backstage/voice_test/clone_v1_s0.9.mp3"
+   },
+   "caveat": "cloned checkpoint — same contamination risk class as the REVOKED V8 (checkpoint injected an unrequested clause at render time). An ASR round-trip is MANDATORY before any delivery on this voice.",
+   "created_by": "Hermes — F13 DM 2026-09-16 ('clone this voice and redo')",
+   "created_at": "2026-09-15T18:57:20Z",
+   "sealed": {
+    "seal_class": "SOVEREIGN_CHAT_SEAL",
+    "seal_type": "PERSONA_VOICE_REGISTRATION",
+    "date": "2026-09-16",
+    "authority": "F13_SOVEREIGN_DIRECTIVE_2026-09-16_DM",
+    "chain": "/root/arifOS/VAULT999/local_seals.jsonl",
+    "log_sha256": "0ce1e9557caa287b89039f51da68f942f4fd77c4968004aa24520bbc853cc12a",
+    "payload": "/root/forge_work/backstage/voice_test/voice_seal_payload.json",
+    "kernel_seal": false,
+    "kernel_note": "Sovereign-chat + ritual-marker seal only. seal_to_vault999.py is broken (v2_epoch.py no longer exports read_v2_seals), so no kernel arif_seal and no SEALED_EVENTS.jsonl entry.",
+    "naming_ruling": "Voices are named by REGISTER, never by person. A request to register this artifact under a real human's name was refused and the refusal is recorded in the seal payload."
+   }
+  },
+  "abang-sado-live-v1": {
+   "status": "LIVE",
+   "display_version": "L1",
+   "provider": "minimax",
+   "provider_voice_id": "abang-sado-live-v1",
+   "model": "speech-2.8-hd",
+   "endpoint": "https://api.minimax.io/v1/t2a_v2",
+   "clone_endpoint": "https://api.minimax.io/v1/voice_clone",
+   "provider_file_id": 442145552838935,
+   "archetype": "abang_sado_alpha_penang",
+   "lane": "abang-sado persona register (shadow mode) — F5-private, never a default for Hermes assistant output",
+   "provenance": "provider-side voice_clone of a 46.9s concatenation of the SOVEREIGN'S OWN Telegram voice notes, loudnorm I=-18 TP=-2 + highpass 70Hz. No third party audio in the chain. Voice identity is the principal's.",
+   "source_sample": "/root/forge_work/backstage/voice-src/clone_source.mp3",
+   "consent": "F13 SOVEREIGN, in-chat DM 2026-09-16 ('Dah ada. Buat ja laaaaa') — principal's own voice, principal's own lane. NOTE: no entry exists in /root/WELL/envelopes/_consent/ for a voice stream; the direction is recorded here as sovereign-chat authority, not as a registry consent artefact.",
+   "f9_compliance": "no_third_party_audio",
+   "verification_2026_09_16": {
+    "takes": 14,
+    "asr_roundtrip": "groq whisper-large-v3-turbo lang=ms — 14/14 clean, INSERTED-clause diff none",
+    "f0_median_band_hz": [
+     92.0,
+     101.5
+    ],
+    "estimator": "librosa.yin 60-400Hz"
+   },
+   "preferred_settings": {
+    "speed": [
+     0.9,
+     0.92,
+     0.95,
+     0.98
+    ],
+    "rationale": "0.90 for the dark/cocky arc, 0.95-0.98 for the alpha arc; 14 takes verified across the band"
+   },
+   "caveat": "cloned checkpoint — same contamination risk class as the REVOKED i-arif-v8-deprecated (checkpoint injected an unrequested clause at render time). ASR round-trip MANDATORY before every delivery on this voice.",
+   "created_by": "Hermes — F13 DM 2026-09-16",
+   "created_at": "2026-09-15T22:24:05Z",
+   "sealed_by": "F13 SOVEREIGN 2026-09-16 (chat directive, 'voice in this session I seal')"
   }
  },
  "fallback_chain_canonical": [

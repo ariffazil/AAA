@@ -205,6 +205,25 @@ afterwards.
   keep landing after you move on and their stdout reads like the present. Before
   reading any captured output, check state freshness — mtime of the state file, `ts`
   of the last record — and re-run once per fix rather than spraying runs.
+- **A measurement of the human's burden is report-only, and must never acquire a gate.**
+  A metric whose subject is human attention, interruption, effort or cost has a degenerate
+  optimum: placed beside a doctrine of *"silence is a valid successful action"*, the cheapest
+  way to improve it is to stop reporting, stop escalating, stop asking, and let unobserved
+  failures score as successes. Emit such numbers at `INFO`, trend them over time, and say in
+  the module itself why no scored objective may be added there. The authority-bearing and
+  irreversible classes must bypass any such optimisation entirely — they are not a term an
+  optimiser is allowed to trade away — because a constraint list in prose below an objective
+  does not bind it. Same test for any external metric proposal: ask what its optimum is, and
+  whether that optimum violates a standing rule.
+- **Extract the classification into a pure function, then wire its suite into the periodic
+  sweep.** A decision buried inside a scan loop cannot be shown to fail, and a loop's own
+  "is it healthy" logic is the last place worth trusting unverified. A branch table that
+  resolves every input to a benign state is decoration wearing a verdict — enumerate the
+  inputs that take each branch and require the failing one to be reachable. A test that is
+  not wired to run every cycle is prose in a file, so it will be the edit that softens the
+  check that goes unnoticed. After any change, plant one wrong assertion, confirm the sweep
+  returns a failing verdict with a non-zero exit, then restore: a suite that cannot be made
+  red is not evidence of anything.
 
 ---
 
@@ -222,6 +241,10 @@ afterwards.
 ❌ Occurrences folded into the fitness denom → everything looks like it is failing.
 ❌ "Independent" by name only                → same author, same blind spots.
 ❌ Reporting PENDING as success              → unfalsifiable and self-congratulatory.
+❌ Gating a human-burden metric              → its optimum is to stop reporting.
+❌ Classifier logic inline in a scan loop    → cannot be shown to fail; untestable.
+❌ A regression suite never wired to a sweep → it will not run on the edit that matters.
+❌ A branch that absorbs every input         → decoration wearing a verdict.
 ```
 
 ---

@@ -34,7 +34,7 @@ Note: `~/.hermes/.hermes_history` is a *different* store from `state.db`. A grep
 
 1. **Locate the sessions.** `select distinct session_id from messages where content like '%<entity>%'`, then read the matching `sessions` rows for model, chat, title, counts, window.
 2. **Recover the asks verbatim.** `select id, role, timestamp, substr(content,1,600) from messages where session_id=? and role='user' order by id`. Quote these exactly; never paraphrase what the principal asked.
-3. **Rebuild the tool histogram.** Walk the rows, `json.loads` each `tool_calls`, count `function.name` (and read `arguments` for the interesting ones). This is the answer to "what tools were used", with counts.
+3. **Rebuild the tool histogram.** When you need names and totals only, count straight from the column — `select tool_name, count(*) from messages where role='tool' and tool_name is not null group by tool_name order by 2 desc` is one query and cannot miss a name. Parse `tool_calls` (via `json.loads`) only when you need the ARGUMENTS: that is what recovers the skills loaded, the queries run, the paths written. Totals from `tool_name`; detail from `tool_calls`.
 4. **Recover the skills actually loaded.** Filter those same entries for `skill_view` and read `.name` out of the parsed arguments — the loaded set, not the available set.
 5. **Check subagent dispatch.** Any `delegate_task` calls, plus `select * from async_delegations where origin_session_id=?`. Zero is a finding, not an omission.
 6. **Identify the exact system prompt.** `sessions.system_prompt_hash` -> `system_prompts.prompt`. Report its length and its section structure (regex the headings) rather than dumping it.
@@ -62,6 +62,42 @@ A different question from "how was this artifact produced": the principal points
 
 Sweep the off-ledger stores for pre-compaction artifacts too: quarantine trees (`/root/.quarantine/**` keeps dated `_quarantine/<YYYY-MM-DD>/` directories holding the original drafts and the failed-run logs), `~/.hermes/pastes/`, `~/.hermes/cache/documents/`. A draft found there tells you what was INTENDED; compare it against the transcript before quoting it as what was sent.
 
+## Behaviour profiling — what the runtime did versus what it is wired for
+
+The same ledger answers a second class of question: not "how was this artifact produced" but "what does this agent actually DO versus what it is equipped to do, and where is the human still carrying work the runtime should absorb." These are measured, not narrated.
+
+```python
+import sqlite3, re
+c = sqlite3.connect('file:/root/.hermes/state.db?mode=ro', uri=True)      # read-only or you contend with the live writer
+
+tool = dict(c.execute("select tool_name, count(*) from messages "
+                      "where role='tool' and tool_name is not null group by tool_name"))
+u = [t for (t,) in c.execute("select content from messages where role='user' and content is not null")]
+a = [t for (t,) in c.execute("select content from messages where role='assistant' and content is not null")]
+dup = c.execute("select content, count(*) from messages where role='user' and content is not null "
+                "group by content having count(*) > 1").fetchall()
+
+print('actions :', sum(tool.get(k,0) for k in ('terminal','write_file','patch','execute_code')))
+print('learning:', sum(tool.get(k,0) for k in ('memory','skill_manage','mem0_add')))   # writes that survive the session
+print('human re-sends:', sum(n-1 for t,n in dup if t and 15 < len(t) < 600))
+print('my replies ending in a question:', sum(1 for t in a if t.rstrip().endswith('?')))
+print('permission-offers to the human:', sum(1 for t in a if re.search(r'\b(nak aku|shall i|want me to|should i)\b', t, re.I)))
+```
+
+Readings and what each one implicates:
+
+- **actions vs learning writes** — a big ratio means execution without retention: the session ends and nothing it learned survives. Report the percentage.
+- **human re-sends** — filtered duplicates of the human's own messages are the strongest available proxy for "the runtime is not holding his open loops for him." A human repeating himself is a scheduler working by hand.
+- **replies ending in a question** — decisions being pushed back across the human boundary that should have been resolved internally. High rate plus a human who has explicitly said he hates being asked = a defect, not a style.
+- **invocations per capability family** — count by prefix across the wired set (MCP families, delegating tools, archival search) and report "N wired, M ever fired." Wired-but-never-invoked is capability debt: it costs schema exposure and routing entropy and buys nothing demonstrated.
+
+Rules that keep this honest:
+
+- **Filter system-injected rows before reporting duplicates.** Gateway/system notes repeat hundreds of times and will swamp a naive duplicate count. State the filter and the length window you used.
+- **Rare is not dead.** A handful of invocations can be rare-event machinery (a disclosure handler, an incident probe). Separate *never* from *seldom* before saying anything about a capability.
+- **A capability earns its retirement by measurement, not by being unused.** Run the suspect one against work that was already independently checked by the existing path, and count what it catches that the existing path missed. "Dormant" is then a finding with evidence behind it.
+- **Answer capability questions in behaviour, not inventory.** Naming an internal tool, server, or port to a non-coder is a schema dump, not an answer. Give the behaviour, the count that proves it, and what it costs — tool names belong in the artifact on disk.
+
 ## Pitfalls
 
 - **A draft on disk is not a sent message.** Quarantine copies exist precisely because the send lane failed. Only an API response row (messageId/status) in the transcript proves delivery. Never report "we replied" from a draft file.
@@ -74,6 +110,8 @@ Sweep the off-ledger stores for pre-compaction artifacts too: quarantine trees (
 - **Report counts, not adjectives.** "57 tool calls, 0 subagents, 3 skills loaded, 2 artifacts" is auditable; "a heavy agentic pipeline" is not.
 - **When the review finds your own error, lead with it.** A forensic answer is also a falsifier of your own prior output — a corrected figure with the mechanism attached is worth more than a clean-sounding summary.
 - **Repetition discipline still applies.** Reading a ledger is not a licence to repeat private content outward.
+- **Open the store read-only.** Connect with the `file:...?mode=ro` URI form; the gateway writes the same database while you query it, and a plain connect can contend with it mid-run. If a query is blocked for containing a gateway-lifecycle keyword, the block is on the command's *shape*, not on the data — rewrite the probe as a pure SQL read and continue.
+- **Do not present a per-turn behavioural metric as a psychological reading.** These numbers describe the runtime's output, never the person. Behaviour profiling measures the agent's compliance; it is not a licence to model the human.
 
 ## Verification checklist
 

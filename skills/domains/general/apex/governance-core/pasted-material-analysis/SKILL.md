@@ -11,11 +11,46 @@ Arif often hands over material written by someone else — a song lyric, a news 
 ## Procedure
 
 1. **Read the material to the end, and check what is missing.** Pasted blocks are often truncated, machine-translated, or copied mid-conversation. Say so if the material is cut off rather than filling the gap from imagination.
-2. **Verify the material's anchors before building a reading on them.** Who actually wrote/composed it, when it was published, the numbers, the place names. These are the cheapest facts to check and the most embarrassing to get wrong — one wrong anchor discredits the whole reading even when the interpretation is sound.
+2. **Verify the material's anchors before building a reading on them.** Who actually wrote/composed it, when it was published, the numbers, the place names. These are the cheapest facts to check and the most embarrassing to get wrong — one wrong anchor discredits the whole reading even when the interpretation is sound. When the material carries **citations**, fetch each one and check the figure, the direction and the year before assessing the argument at all: a fabricated piece and a properly cited one read identically in prose, and only the fetch separates them.
 3. **Separate three things:** what the material literally says · what the material claims about him · what he himself has said. Only the third is ground truth about him.
 4. **Compose in his register, not the material's.** See below.
 5. **Hand back the one thing only he can answer.** If the material contains a personal claim you cannot place in your record, ask it once, plainly, and let it stand open. Do not build on it and do not silently drop it.
 6. **Close short.** One or two things that matter, in his voice. No summary of what was already said.
+
+## When the material proposes doctrine, a framework, or a metric
+
+A long argumentative essay is the shape that most tempts a summary, and a summary is the one thing
+it does not need. Three moves, in this order.
+
+**Diff its concepts against our own canon and report the overlap as a fraction.** Grep each concept
+name across the instruction, governance and canon trees, and name the file that already holds each:
+
+```bash
+for kw in "<concept 1>" "<concept 2>" …; do
+  printf '%-30s %s file(s)\n' "$kw" \
+    "$(grep -ril "$kw" /root/AAA/instructions /root/AAA/governance /root/AAA/canon /root/AGENTS.md | wc -l)"
+  done
+```
+
+An essay presenting a thesis as discovery has often re-derived doctrine that was ratified months
+ahead of it — measured on one artifact, roughly 28 of its 35 sections already existed here. So the
+question is never "is this good?" but **"what is left?"** The residue is the only part with import
+value, and it is frequently **instrumentation** rather than philosophy: the principles were sealed,
+and never once measured.
+
+**Test any objective function or metric it proposes for degeneracy.** Ask what the optimum is, and
+whether that optimum violates a standing rule. A ratio like *verified outcomes ÷ human attention*,
+placed beside "silence is a valid action", optimises by never reporting and never escalating — every
+unmeasured failure scores as a success because the denominator cannot see it. A constraint list in
+prose below the objective does not bind it; only constraints *inside* the objective do. Name the
+stronger form rather than rejecting the whole essay: the authority-bearing and irreversible classes
+must bypass the optimisation entirely, not be balanced within it. And if its proposed new mechanism
+is a **measurement of his burden**, wire it to report and trend, never as a gate — a gate makes
+"stop reporting" the cheapest way to improve the number.
+
+**Report three buckets, never a verdict on the essay as a whole:** what is already ratified here
+(with the file), what is genuinely new, and what is rejected with the mechanism named. A mostly-true
+essay carrying one degenerate mechanism is neither good nor bad — it is a diff.
 
 ## Register follows the human, never the material
 
@@ -62,6 +97,9 @@ Rules:
 - **Cantik bukan bukti betul.** An elegant reading of someone's life is not evidence about their life. Beautiful coherence is what a mirror produces; it is not a finding.
 - **Do not correct a person's life story with the material's frame.** The material's narrative is a lens, not a verdict on him.
 - **A fluent correction beats a fabricated reading, always.** State plainly which parts of the input you could not verify — a short honest note costs nothing and protects the whole reply.
+- **Honest citations do not license the conclusion.** "The numbers check out" is a statement about the references, not about the argument. Verify the citations, then still diff the concepts and still test the objective — the two steps are independent, and a well-sourced essay can carry a degenerate mechanism.
+- **Do not stage a re-derivation as new doctrine.** Staging restatements of what we already hold as floors inflates canon with what already exists, which is exactly the accumulation the diff was run to prevent. A capability or sensor that falls out of the residue can be built; a floor is not yours to add.
+- **Say plainly when nothing was fabricated.** A verified citation record is a real finding and the opposite of the routine outcome for this material class — recording it lets the next session calibrate rather than re-fetch the same four studies.
 
 ## When the material is about someone he loves
 
