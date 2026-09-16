@@ -30,6 +30,32 @@ words** (`consequence_domain`, `authority_tier`, `witness_state`, `kill_state`) 
 **Self-correction is not verification.** An artifact that fixes one collision may introduce three more;
 run the probe on every revision, not only the first.
 
+**Probe the artifact's own words — never a file you wrapped around them.** Saving the artifact to a
+scratch file with a header of your own devising (a session note, the source line, a floor token like
+`F13`) makes the probe return a FATAL collision the artifact never made: the hit is on your annotation.
+Store the body verbatim, or strip your wrapper before probing. When a FATAL appears on an artifact you
+expected to be clean, the first suspect is your own framing text; only re-probe the author after you
+have ruled that out.
+
+**CLEAR is a notation verdict, not a truth verdict.** A clean probe licenses importing the *vocabulary*;
+it says nothing about the artifact's claims, counts, or citations — those still go through §1 and §7.
+An artifact that invents no notation can still carry wrong numbers, and an artifact that collides badly
+can still be conceptually right. Report the two verdicts separately, or a clean probe reads as
+endorsement of the whole document.
+
+**A verdict of AMBIGUOUS can be a true finding about your own canon — record it, do not tune it away.**
+When a reserved token genuinely carries two live meanings (a floor token that is also the name of the
+sovereign, say), the probe is right and the *table* is incomplete: add the ambiguity to the register so
+later readers spell it out, and leave the sensor reporting it. Adjusting a probe to stop flagging a real
+ambiguity converts the one instrument that could catch it into a rubber stamp.
+
+**Calibrate the sensor against known cases before trusting a verdict.** A probe that has never been
+shown to fail is decoration, and a probe whose false positives were never repaired gets switched off by
+the next agent — after which the real collision walks through. Keep a case file of past artifacts with
+the verdict each must produce, including the cases the probe once got wrong, and have the routine sweep
+re-run it. Every false positive becomes a permanent case: the edit that fixes one is exactly the edit
+that can silently create a false negative.
+
 ## 1. Citation check
 
 A claim is only as good as the citation behind it. Open the cited sources and confirm they say what the
@@ -91,6 +117,14 @@ to *strengthen the fragment*, and cite it from the skill — not to mint a paral
 **Verify proposed skill names resolve before building anything from them.** A bundle or wiring built on
 names that exist nowhere loads silently as nothing. Resolve each name against the live index first; if
 the names are phantom, build the artifact's *intent* from skills that actually exist.
+
+**Resolve names with a recursive walk of every skill root before calling one phantom.** A shallow scan
+(top-level only, or two directories deep) misses members living in nested category paths and reports a
+**false phantom** — the identical F2 error running in the opposite direction, and just as costly, because
+it invents a gap that then gets "filled". Collect candidates with `**/SKILL.md` under each root the loader
+actually reads, then diff. Run the same resolution check over a proposed *structure* (bundle, group,
+index): a proposed grouping whose members already exist under other names is a **rename, not an
+addition** — adopting it multiplies the decision surfaces it claims to reduce.
 
 ## 6. Vocabulary collision — grep canon for the artifact's tokens
 
@@ -172,6 +206,34 @@ A recommended write target that the runtime cannot read makes every future auton
 — worse than no recommendation, because it looks like progress. And if the session has just consolidated
 or deduplicated the very tree the artifact proposes to redirect, adopting the advice **undoes that work**.
 
+### Counts, units and status vocabularies
+
+An artifact's figures are claims about a machine it cannot see, and a wrong number leads to a wrong
+conclusion even when every word around it is sound. Verify each figure as a **triple — value, unit, and
+source of record** — against live state:
+
+```bash
+# value AND whether the unit is a thing this runtime even has
+python3 -c "import yaml;m=yaml.safe_load(open('/root/.hermes/config.yaml')).get('mcp_servers',{});print('configured',len(m),'active',sum(1 for v in m.values() if (v or {}).get('enabled') is not False))"
+```
+
+Two failures surface this way, and the second is the worse one:
+
+- **A count matching no live quantity** — a server/number claim absent from the config. Correct the
+  figure; do not restate the artifact's number with a caveat.
+- **A unit that exists only inside the artifact** — a category the runtime never reports, or a
+  lifecycle **status** no probe can return (an invented "connecting" state beside real
+  enabled/disabled). A proposal to organise work around an invented dimension, or to key a registry on
+  an unobserved status, builds real structures on a fiction, and every downstream rule inherits it.
+  Before adopting a status or health vocabulary, list the states the system actually emits; adopt the
+  intent in the existing vocabulary instead.
+
+Cheap high-yield check first: **test the artifact against its own named failure classes.** When a document
+warns about a class of error and then commits that class — warning that an unverified status is not
+capability while citing statuses it never probed, or that duplicates should be aliased while proposing
+renamed duplicates — the finding is the artifact's own rule, so it cannot be argued away. Look for the
+warning/conduct gap before auditing anything the artifact did not flag itself.
+
 For any recommended config key:
 
 - Confirm the key **exists in this build** (`hermes config get <key>` / read the live config), and that the
@@ -212,3 +274,21 @@ Structure the record so the four outcomes are distinguishable:
 
 State the shadow explicitly: which parts of the artifact were NOT adopted, and why. An intake report that
 lists only adoptions reads as endorsement of the whole.
+
+### An artifact that hands you a list of things to "seal" has not issued a seal order
+
+Long artifacts end with a summary list — twenty eurekas, ten laws, eight items "to implement". Treat it
+as a proposal to audit, never as a queue to execute. Sort every item before touching any:
+
+1. **Already executed** — the session did this; the item is a *restatement*, and re-sealing it as new
+   canon is pure accumulation. Record it as already-owned and move on.
+2. **Owner exists** — fold the delta into that owner (fragment, floor, or skill) instead of minting a
+   parallel file; see §5 for the layer check.
+3. **No owner, but a real gap** — write it as a *proposal* with an explicit awaiting-status label. A
+   governance rule authored by the agent in the same turn it noticed the gap is exactly the failure the
+   rule is meant to prevent.
+4. **Rejected** — notation, count, or claim that does not survive §0, §1, §6 or §7.
+
+Sealing a list wholesale because it arrived with an instruction is how one turn mints a dozen files,
+splits owners, and calls it progress. The number of items adopted should usually be small, and each one
+should be defensible on its own.

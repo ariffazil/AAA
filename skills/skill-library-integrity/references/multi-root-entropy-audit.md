@@ -160,3 +160,47 @@ survive as explicit debt; it is a merge queue, not a failure.
   without a human in the loop.
 - Confirm the live index agrees: the harness's own skill listing must still enumerate the moved
   skills by name. A tree that resolves on disk but vanishes from the index is not consolidated.
+
+## 8. Honouring recorded decisions, and promoting from a harness overlay
+
+### 8a. A HOLD is only real while the decision is unmade on disk
+
+Every convergence rule produces a `HOLD` for "the routing name would change". Before escalating that to
+the sovereign, read `SKILL_ALIAS_TABLE.json`: a rename the federation already wrote down is not a
+pending decision. Three shapes, in order of strength:
+
+| Evidence in the alias table | Verdict |
+|---|---|
+| `renamed_from: X` on the entry whose `v3_name: Y` | X was retired in favour of Y → converge X → Y |
+| tombstoned entry whose `related[].note` reads `LEGACY — renamed A→B` | token substitution: `forge-sct-` → `forge-act-` maps the loser's name exactly onto the survivor's → converge |
+| loser and survivor differ only in case/spelling, and the survivor's spelling equals a recorded `v3_name` or `primary_disk_name` | converge onto the recorded spelling |
+| two live routing names, **no** record anywhere (alias table, V3 registry, genealogy, manifest) | genuine HOLD — nothing on disk can arbitrate |
+
+Parse the tombstone note as a **token pair applied as a substitution**, not as full names: the note is
+shorthand (`"renamed SCT→ACT"`) while the routing names are `forge-sct-federation-ingress` and
+`forge-act-federation-ingress`. Take the last token before the arrow and the first after it.
+
+What is left for a human is narrower than it first looks, and worth stating precisely: a pair of live
+routing names with no record, or content that exists on only one side (a merge, not a dedupe). Both
+were measured in one pass — the first with a registry that was silent on the name, the second whose
+recorded `primary_disk_name` matched *neither* body.
+
+### 8b. A harness overlay holds real dirs too — classify before promoting
+
+A cross-tool overlay (`/root/.config/opencode/skills` and friends) is usually a mix: a few symlinks
+onto the store, plus real directories. Only the real ones are yours to act on, and they split three ways:
+
+| Shape | Action |
+|---|---|
+| real dir, skill **already** exists in the store | converge by the ordinary rule (content-subset + routing unchanged) — it is a stale duplicate |
+| real dir, skill exists **nowhere** in the store, name is in the harness's bundled manifest | **never touch** — it belongs to the upstream updater |
+| real dir, skill exists **nowhere** in the store, federation-authored | promote **only** when the corpus already fixed the placement — see below |
+
+Derive placement instead of choosing it: if the same stem already sits in the store under **two or
+more** other harness prefixes (`claude-<stem>`, `qwen-<stem>`, `kimi-<stem>`), then the store-root home
+with this harness's prefix is the established shape and promoting it is mechanical. Fewer than two
+siblings means the placement *is* a naming decision — report it and leave the directory alone.
+
+Promotion is copy-then-link: back up the directory to quarantine, copy it into the store root, remove
+the original, and leave a symlink so the overlay path still resolves. Never `move` alone — an overlay
+path that stops resolving is a capability the harness loses silently.
