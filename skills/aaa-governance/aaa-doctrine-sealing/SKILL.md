@@ -23,6 +23,14 @@ not happen.
 
 ## The layers — encode in this order
 
+**Choose the layer by binding frequency, not by importance.** A rule that must bind every turn belongs
+in `base.md` (rendered inline) or a floor; a rule that fires only when an agent chooses to load it
+belongs in a skill. Getting this backwards is the quiet failure: writing an always-on rule as a skill
+makes it fire *less* often while looking like an addition, because the agent must remember to load the
+governance that was supposed to bind it. Before writing anything, ask "at what frequency must this
+bind?" and let the answer pick the layer. Doctrine and skill have different owners; a rule that governs
+every external write is law, not a skill.
+
 **1. Fragment** — `/root/AAA/instructions/<topic>.md`
 One topic per file; name by class, never by incident. Header carries `> **` lines, one per field:
 forged/trigger line, `**Supersedes**` (which earlier shorthand it corrects), `**Binding**` (which
@@ -80,6 +88,15 @@ SKILL.md as well. Otherwise skip; doctrine and skill have different owners.
   `hermes curator adopt <name>`. Do not silently skip the skill layer — say which layer you could not seal.
 - **Push is a gate, not a formality.** `git -C /root/AAA push` runs the F1–F13 governance check;
   arifOS pushes also run the drift check and print source vs deployed.
+- **"Seal all" authorises the layers of the rules in play — never a wholesale adoption.** When the same
+  instruction also carries an outside artifact, the artifact's *items* are not automatically in scope:
+  audit each one, fold the deltas into their owners, and leave the rest recorded as already-owned,
+  rejected, or held. Sealing a list because it was attached to the order is how restatements become
+  canon and how a dozen unnecessary files get minted in one turn.
+- **Check what a push publishes before running it.** A repo with a publish workflow on the default
+  branch turns `git push` into an external release, not a save: land the work on a named branch (or
+  hold it) until the commits in that push have been read. Dirty trees also drag unrelated commits
+  along — scope the push to the branch that carries the work and say so in the receipt.
 
 ## Verify before reporting
 
@@ -97,6 +114,9 @@ seal whose gaps are hidden is worse than no seal — the next agent trusts it.
 
 - `references/commit-gates.md` — the exact gates, labels and the two-ledger layout.
 - `references/external-artifact-intake.md` — auditing a pasted external AI artifact before any of it
-  reaches canon: citation and foreign-seal checks, the duplicate-owner **and layer** sweep, vocabulary
-  collision against tokens canon already binds, address/config verification before adopting a path or a
-  key, gate-direction conflicts with a ratified stance, and how to record accept / reject / HOLD.
+  reaches canon: the symbol probe run on the artifact's own words (and why CLEAR is a notation verdict,
+  not a truth verdict), probe calibration against past cases, citation and foreign-seal checks, the
+  duplicate-owner **and layer** sweep, name resolution across every skill root, vocabulary collision
+  against tokens canon already binds, path / config-key / count-unit-and-status verification, gate
+  direction conflicts with a ratified stance, the item-by-item triage of an artifact's "here is what to
+  seal" list, and how to record accept / reject / HOLD.

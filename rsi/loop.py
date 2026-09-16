@@ -257,9 +257,39 @@ def _notify(record: dict, promoted: list, held: list) -> None:
 
     try:
         import subprocess, tempfile
+        def _alive(t):
+            # State existence AT EMIT TIME in the message itself. Readers were
+            # twice forced into forensic probing to answer "is that path dead?"
+            # because an existence check done in _existing_skill() never reached
+            # the reader. Negative case stays visible, not swallowed.
+            #
+            # TWO target shapes reach here, and they are not checked the same way
+            # (measured 2026-09-16 — the first version of this helper reported
+            # capability-graph entries as UNRESOLVED because `exists()` was run on
+            # the whole string including its `#fragment`, i.e. value right, relation
+            # wrong, the exact failure this label exists to prevent):
+            #   skill dir              /root/.hermes/skills/<name>
+            #   graph entry            /root/AAA/rsi/state/capability-graph.json#capability.x
+            # A fragment is a JSON pointer inside the container, not a path segment.
+            try:
+                if not t:
+                    return "  [no target]"
+                path, _, frag = str(t).partition("#")
+                if not os.path.exists(path):
+                    return "  [UNRESOLVED at emit]"
+                if frag:
+                    return "  [container exists; #fragment not path-checked]"
+                return ""
+            except Exception as exc:
+                return f"  [check failed: {type(exc).__name__}]"
         lines = ["RSI EXHALE"]
         for p in promoted[:8]:
-            lines.append(f"  + {p['pattern_type']} → {p.get('target')}")
+            # The arrow is a LESSON DESTINATION, not a defect location. On
+            # 2026-09-15 two readers misread "PATTERN → /path" as "a dead
+            # pointer at /path" and spent a day chasing false P0s; one of
+            # them proposed re-pointing the registry at a path that does not
+            # exist. Label the direction explicitly.
+            lines.append(f"  + {p['pattern_type']}  lesson→owner_skill: {p.get('target')}" + _alive(p.get('target')))
         for h in held[:5]:
             lines.append(f"  HOLD {h['pattern_type']}: {h.get('reason')}")
         for k in changed_cons[:6]:

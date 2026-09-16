@@ -120,21 +120,31 @@ done
 
 ## 7. Secret modes
 
+Report by MODE only. Never enumerate secret filenames and never read their contents — a mode sweep
+answers the question and an inventory creates one.
+
 ```bash
 for f in $(grep -rlE '(API_KEY|TOKEN|SECRET|PASSWORD|_KEY)=[^$]' /etc/systemd/system/ 2>/dev/null); do
   p=$(stat -c '%a' "$f"); [ "$p" != "600" ] && echo "OPEN $p $f"
 done
-ls -la ~/.hermes/.env*
+
+# any group/world-accessible file in the harness home — mode audit, not a secret inventory
+find ~/.hermes -maxdepth 1 -type f -perm /077 -printf '%m %f\n' 2>/dev/null | head
+
 chmod 600 <each flagged file>        # fix, then re-run the sweep to prove it
 ```
+
+Confirm a credential is present without printing it by checking the process environment key set rather
+than the file: `tr '\0' '\n' < /proc/<pid>/environ | grep -oE '^[A-Z_]+=' | sort`.
 
 ## 8. Process-layer sprawl
 
 ```
-ls /etc/systemd/system/<unit>.service.d/
 systemctl cat <unit>.service | head -60      # base unit + every drop-in, in load order
 systemctl show <unit> -p ActiveEnterTimestamp -p NRestarts
 ```
+
+Count the drop-in layers rather than listing the directory: `systemctl cat <unit>.service | grep -c '^# /etc/systemd'`.
 
 ## 9. Re-measure
 

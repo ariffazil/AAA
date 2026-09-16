@@ -212,6 +212,67 @@ alarmed on a satisfied correspondent.
 - Same rule for any "does a reply exist?" probe: identity is the conversation, the id is
   a hint.
 
+## Silence must be witnessable, or it is indistinguishable from death
+
+The counter-rule "a silent job is not a broken job" holds only while the job is *capable* of
+speaking. A job that exits early with no output when it finds nothing to do cannot be witnessed at
+all: over any window its log is byte-identical whether it ran cleanly every tick or died weeks ago.
+
+Measured on one host: a `*/30` entry whose log had not grown in 11.6h, while the scheduler fired it
+at 09:00, 09:30, 10:00, 10:30 and 11:00. The job's empty-queue branch exited silently by design, so
+the log had never been the schedule's output — its only two records came from manual runs, and
+grepping the emitted status string across every owning repo returned **zero writers**. A stale log is
+not evidence of death until you prove the job writes that log.
+
+Two steps before raising (or dismissing) a silence finding:
+
+```bash
+# 1. Does the job write this log at all?  Zero writers = decoy log, wrong alarm.
+grep -rl "<the emitted marker>" <owning repos> --include='*.py' --include='*.sh'
+
+# 2. Does the schedule actually fire?  Ask the scheduler, not the file.
+journalctl -u cron --since "12 hours ago" | grep "<script>"
+```
+
+3. Then decide. Cron firing + a stale log is the signature of an **unwitnessable** job, not a dead
+   one. A job that cannot be probed at all reports `UNMEASURED`, never "healthy".
+
+**Rule: the idle path must still emit a marker.** One line per tick (~4 KB/day) on the
+nothing-to-do branch — the value is not the content, it is that the *absence* of the line becomes
+evidence. Make it distinguishable from real work so a later reader can tell idleness from activity:
+
+```json
+{"tool": "…", "ts": "…", "status": "NO_INTAKE", "state_written": false,
+ "note": "queue empty — heartbeat; state NOT advanced"}
+```
+
+Keep the genuinely-absent case silent — a directory not yet provisioned or a missing dependency IS
+a provisioning signal, and a heartbeat there is noise. Heartbeat the *idle* branch, not the
+*broken* branch.
+
+**Then a silence check can be honest.** Compare each job's *own* firing cadence (derived from its
+cron expression, per job) against its log mtime, and report three states — `SILENT` (used to grow,
+stopped), `UNWITNESSED` (0-byte log: no data is not all-clear), `UNMEASURED` (no redirect, so the
+job cannot be judged). A two-state healthy/broken checker reports a job as healthy precisely because
+nothing could look at it, which is the failure the monitor exists to prevent.
+
+### Parsing a crontab is where this check goes wrong
+
+Two false-positive generators, each caught only by reading the output count:
+
+- **`2>&1` is not a destination.** A regex like `>>?\s*(\S+)` captures `&1` from every line that
+  closes stderr and then reports the whole crontab against a path named `/root/&1` — 39 false
+  `NEVER_WROTE` findings in one run. Match `(?:>>?|1>|2>)\s*([^\s&|;)]+)` and drop `&1`, `&2`,
+  `/dev/null`, and anything starting with `&`.
+- **A trailing `#` comment can contain an arrow.** An operator note ending `… gate -> STALE …`
+  yielded the target `gate` — a comment parsed as a log path. Split on `\s#` before scanning the line.
+- **Derive the expected cadence per job** from its own five fields: `*/N`, lists, ranges, and the
+  vixie-cron rule that a day matches when *either* day-of-month or day-of-week is restricted. Allow
+  roughly one missed cycle. A single global tolerance fires on monthly jobs and stays quiet on `*/5`.
+
+**Count the findings before believing them.** A first run reporting every job broken is a parser bug,
+not a systemic outage; the tell is that the finding count equals the crontab length.
+
 ## Counter-rules
 
 - A clean run is P3. "X succeeded" is not news.
@@ -219,6 +280,14 @@ alarmed on a satisfied correspondent.
 - Repeating an unchanged condition on a schedule is escalation policy or nothing.
 - A silent job is not a broken job. Silence is the designed state for P3.
 - Do not notify on the mechanism working as intended; notify on the world changing.
+- **A metric whose subject is a human's burden is INFO, never a gate.** Interruptions per completed
+  objective, decisions per hour of human attention, questions per unit of machine work — measure it,
+  trend it, and never let it fail a build. Gating such a number creates a gradient toward the failure
+  mode it measures, because the cheapest way to improve the ratio is to stop reporting. Keep the
+  irreversible / authority-bearing class outside the metric's reach entirely (constitutional lanes
+  must reach the human regardless of any attention calculus), so the ratio can never be optimised by
+  suppressing an escalation. The number is also only a proxy — a turn count is not attention — so it
+  is a baseline to compare against, never a verdict about a human.
 
 ## Probe the function, not the health endpoint
 
@@ -260,6 +329,16 @@ One more timer for a genuinely distinct failure is cheaper than a corrupted heal
   content-hash dedupe, append-only event log. Set `NOTIFY` and `STATE_DIR` at the top;
   wire as a separate cron entry one minute *after* the job producing the content so the
   two never race.
+
+**Installed, not forked:** the silence/cadence probe described above already runs as
+`/root/scripts/attention-metrics.py` (cron 4×/day, and wired into `hermes-chaos-sweep.py` as C21).
+Run it by path — never copy it into another skill, which re-creates the drift the probe exists to
+detect.
+
+```bash
+python3 /root/scripts/attention-metrics.py          # human report; exit 1 on any SILENT job
+python3 /root/scripts/attention-metrics.py --json   # machine report
+```
 
 ---
 *DITEMPA BUKAN DIBERI*
