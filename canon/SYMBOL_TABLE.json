@@ -10,10 +10,10 @@
       "status": "RATIFIED",
       "collision_class": "FATAL"
     },
-    "C1-C19": {
+    "C1-C20": {
       "means": "doctrine-layer constitutional floors (bind via rendered canon; do not gate a verdict)",
       "owner": "/root/AAA/instructions/human-meaning-membrane.md",
-      "status": "C1-C16 RATIFIED · C17-C19 PROPOSED IN AMENDMENTS",
+      "status": "C1-C20 RATIFIED (F13 chat seal 2026-09-16 · C17-C20 via Amendments 14-17)",
       "collision_class": "FATAL"
     },
     "R0-R5": {
@@ -70,7 +70,7 @@
       "authority_tier": ["T0", "T1", "T1.5", "T2", "T3"],
       "witness_state": ["none", "self-check", "tool-log", "independent", "human"],
       "kill_state": ["no-undo-needed", "reversible", "retractable-with-cost", "irreversible"],
-      "constitutional_floor": "F1-F13 (kernel) and C1-C19 (doctrine-layer)",
+      "constitutional_floor": "F1-F13 (kernel) and C1-C20 (doctrine-layer)",
       "attention_cost": "W888 (sovereign attention) — the only attention symbol in use",
       "capability_truth": "resolved / phantom-absence / ghost-capability"
     },
