@@ -125,8 +125,42 @@ jobs deliver to a channel a human actually reads versus to `local`).
 Two falsifiable health reads worth stating explicitly:
 - A cron job that is disabled but still resident is the same failure as a directory nobody owns: it is
   inventory, not capability. Report the disabled count as a *triage queue*, not as a backlog.
+- **Enabled is not firing — never report the enabled count as the running count.** Cross-check each
+  enabled job's `job_id` against the execution ledger (`cron/executions.db`) and against its own schedule
+  period before saying a job runs. `last_status: "ok"` is written on completion, so a job that stopped
+  firing keeps its last `ok` forever. Enabled-but-dark jobs are the most common way a runtime audit
+  under-reports failure while every surface still reads green.
 - A memory provider selected with no credential present makes the harness emit a false capability claim
   into the system prompt on every session. Check for the *credential*, not the selection.
+
+### 4b. Behavioural record — what the harness actually did
+
+Config and inventory answer "what exists". The state store answers "what is used", and it is the only
+surface that can falsify an inventory claim. Probe it read-only (`file:...?mode=ro`) so a live gateway
+keeps its write lock.
+
+- **Tool-call frequency** from `messages.tool_name` is the exact usage table. Do not regex message
+  `content` for `"name":` — that over-counts repeated mentions and silently skips calls whose payload
+  was compacted away.
+- **Session timeline**: `sessions.source` splits telegram / cron / subagent / cli, and `sessions.started_at`
+  is a UNIX epoch string — `substr()` on it yields epoch digits and a garbage date axis.
+- **Delivery**: group `delivery_obligations` by destination *before* concluding anything. One blocked
+  bot-to-bot channel can hold every failure while human delivery is 100%; an aggregate rate is not a
+  finding until the split is known.
+- **Delegation outcomes** from `async_delegations` — counts and states only. Never `SELECT *`: its
+  `event_json` / `result_json` hold whole subagent transcripts, and one row will flood the context window
+  and end the session.
+
+Two rules decide whether this section produces a finding or a fabrication:
+
+- **A null sensor is not a measurement.** If a usage store carries an entry per skill and a null count, it
+  is a presence list, not a sensor. Report *unmeasurable*, never *unused* — and never fill the gap with an
+  estimate. A fabricated ranking is inherited as fact by the next session.
+- **A capability built during the audit is still a finding.** Before proposing to build something the audit
+  found missing, check the newest mtimes on the candidate surfaces; a sibling session may have built and
+  scheduled it within the same hour. Timestamp every reading and re-read any count before publishing it.
+
+Queries for all of the above: `references/state-store-queries.md`.
 
 ### 5. Directory sprawl and the ownership law
 
@@ -221,6 +255,13 @@ an hour.
 - **Two sessions can mutate the same runtime.** Before attributing a change, check whether a concurrent
   session or a scheduled job touched the same files in the window; if you did not sweep every writer,
   report the change without naming an author.
+- **Never select payload blobs while auditing storage.** `event_json`, `result_json` and large message
+  bodies hold whole transcripts; a single careless `SELECT *` on a history table costs the working session.
+  Counts, ids and scalar columns only.
+- **Don't rank capability by a store that records no counts.** A usage file with one entry per skill and
+  null counts invites a confident "most skills are unused" finding the sensor cannot support. Say which
+  sensor was null, and what would have to be wired before the question is answerable.
 
 See `references/probe-cookbook.md` for the full one-shot command set, including the storage attribution
-query and the surface-inventory sweep.
+query and the surface-inventory sweep. See `references/state-store-queries.md` for the behavioural-record
+probes (usage frequency, session timeline, scheduler book vs execution ledger, delivery split).
