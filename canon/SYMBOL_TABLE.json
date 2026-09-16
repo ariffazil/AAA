@@ -8,7 +8,8 @@
       "means": "kernel constitutional floors",
       "owner": "/root/arifOS/GENESIS/FLOOR_TABLE.json",
       "status": "RATIFIED",
-      "collision_class": "FATAL"
+      "collision_class": "FATAL",
+      "known_ambiguity": "F13 carries TWO live meanings: (a) kernel floor 13, (b) the sovereign, Arif (F13 lane / 888-APEX). In prose, bare 'F13' almost always means the human. The probe reports AMBIGUOUS rather than guessing — spell out 'F13 floor' or 'the sovereign' when the distinction matters."
     },
     "C1-C20": {
       "means": "doctrine-layer constitutional floors (bind via rendered canon; do not gate a verdict)",

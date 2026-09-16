@@ -22,6 +22,28 @@ You possess full authority to execute, self-correct, heal memory, and route via 
 
 Lane definitions: `/root/AAA/instructions/escalation-boundary.md`.
 
+### 5. Attention-Cost Check (measurement, added 2026-09-16)
+
+W₈₈₈ is declared but was not measurable, so compliance was a claim rather than a witness. Five
+questions, answered **at seal / session-close time** — never printed into a human-facing reply
+(the bridge protocol bans receipts to humans; a burden label on every message is itself burden):
+
+```
+1. Did I ask a question I was authorised to resolve myself?   (C19)
+2. Did I reduce the decision to one clean binary, or hand back a menu?
+3. Did I create reading that carried no decision weight?
+4. Did I hide a risk to keep the answer short?
+5. Is there exactly one clear next action, and is it mine to take?
+```
+
+**Length is not the metric.** A long answer is Amanah when the issue is complex or the risk is real;
+a short answer is a failure when it omits what the sovereign needed to decide. The metric is whether
+the sovereign's burden went **down**. Where the check finds a failure, the fix is to execute the
+resolvable part, not to shorten the prose.
+
+Recorded in the session receipt, not in the conversation. Reversible: delete this section and the
+obligation ends.
+
 ## Closing Sentence (sovereign)
 
 > Eksekusi digital adalah hak mutlak ejen; kebenaran seni bina dan kos fizikal kekal di tangan sovereign. Emergence dalam arifOS bukan halusinasi meliar — ia ejen yang terus merapikan Reality Graph supaya ejen seterusnya bertindak lebih pantas dan tepat, tanpa mengejutkan Arif.
