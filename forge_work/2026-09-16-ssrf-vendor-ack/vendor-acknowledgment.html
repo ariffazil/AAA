@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>arifOS — Vendor Acknowledgment of Security Report</title>
+<style>
+  @page { size: A4; margin: 12mm 15mm 10mm 15mm; }
+  body { font-family: "DejaVu Sans", "Noto Sans", sans-serif; font-size: 8.5pt; line-height: 1.33; color: #16181d; margin: 0; }
+  .rule { height: 3px; background: #16181d; margin-bottom: 7px; }
+  h1 { font-size: 13.5pt; margin: 0 0 2px 0; letter-spacing: -0.2px; }
+  .sub { font-size: 9pt; color: #444; margin-bottom: 8px; }
+  .meta { width: 100%; border-collapse: collapse; margin-bottom: 8px; }
+  .meta td { padding: 2.5px 5px; border-bottom: 0.6px solid #d9dde3; vertical-align: top; }
+  .meta td.k { width: 32%; color: #4a4f57; font-size: 7.8pt; text-transform: uppercase; letter-spacing: 0.4px; }
+  h2 { font-size: 9.2pt; margin: 8px 0 3px 0; padding-bottom: 1.5px; border-bottom: 1px solid #16181d; }
+  ul { margin: 2px 0 2px 0; padding-left: 14px; }
+  li { margin-bottom: 2px; }
+  p { margin: 3px 0; }
+  code { font-family: "DejaVu Sans Mono", monospace; font-size: 7.6pt; background: #f2f4f7; padding: 0.5px 2.5px; border-radius: 2px; }
+  .flag { background: #ecf6ee; border-left: 3px solid #2e7d43; padding: 5px 8px; margin: 6px 0; }
+  .foot { margin-top: 7px; padding-top: 5px; border-top: 0.6px solid #d9dde3; font-size: 7.3pt; color: #5a6068; }
+</style>
+</head>
+<body>
+
+<div class="rule"></div>
+<h1>Vendor Acknowledgment of Security Report</h1>
+<div class="sub">arifOS — SSRF in <code>arif_fetch</code> (private-IP check fails open)</div>
+
+<table class="meta">
+  <tr><td class="k">Reporter</td><td>Syed Anas Mohiuddin</td></tr>
+  <tr><td class="k">Vendor / project</td><td>arifOS — github.com/ariffazil/arifOS · arifos.arif-fazil.com</td></tr>
+  <tr><td class="k">Maintainer contact</td><td>Muhammad Arif bin Fazil &lt;arifbfazil@gmail.com&gt;</td></tr>
+  <tr><td class="k">Date reported</td><td>25 August 2026 (private disclosure; no public detail at any point)</td></tr>
+  <tr><td class="k">Date fixed in source</td><td>25 August 2026 — commits <code>285a956d8</code>, <code>e2759cf4b</code>, <code>22586943f</code></td></tr>
+  <tr><td class="k">Date released publicly</td><td>15 September 2026, 16:23 UTC — PyPI <code>arifos 1!2026.9.1</code></td></tr>
+  <tr><td class="k">Affected versions</td><td>all published builds <code>&le; 1!2026.8.2</code></td></tr>
+  <tr><td class="k">Fixed versions</td><td><code>1!2026.9.1</code> and later — <code>pip install arifos</code></td></tr>
+  <tr><td class="k">Vendor position</td><td>Report confirmed as a true positive. Fix shipped and independently re-tested.</td></tr>
+</table>
+
+<h2>1. What was reported</h2>
+<ul>
+  <li><b>Primary path.</b> <code>arif_fetch</code> validated the target URL by string inspection only. A URL such as <code>http://0.0.0.0:PORT/</code> was not recognised as private; the request was made and the response body was returned to the caller.</li>
+  <li><b>Fallback path.</b> On a primary fetch error, the handler re-fetched the same URL through a second code path that performed no equivalent validation — i.e. the check failed open rather than closed.</li>
+  <li><b>Adjacent surfaces.</b> The reporter also identified a peer-contract URL passed to <code>urlopen</code> without validation, and an unwired fetch helper carrying the same weakness.</li>
+</ul>
+
+<h2>2. Fix shipped</h2>
+<p>A single shared guard now mediates every fetch path: <code>arifosmcp/runtime/ssrf_guard.py</code>. It applies a scheme allowlist, blocks local names, classifies literal IPs with <code>ipaddress</code> (including non-dotted notations such as <code>2130706433</code> and <code>0x7f000001</code>, and IPv4-mapped IPv6), and performs full DNS resolution with <i>every</i> returned address checked against private, loopback, link-local (including <code>169.254.169.254</code>), reserved, multicast and unspecified ranges. Any risk flag is fail-closed: no fetch path — primary, fallback, render or redirect — proceeds. Redirects are followed by a bounded hop loop that re-runs the guard on each hop.</p>
+
+<h2>3. Verification after the fix</h2>
+<p>Re-tested against both the source tree and the published PyPI artifact (<code>arifos 1!2026.9.1</code>), with identical results. Blocked as <code>private_ip_access</code> or <code>scheme_blocked</code>: <code>0.0.0.0</code>, <code>127.0.0.1</code>, <code>2130706433</code>, <code>0x7f000001</code>, <code>[::1]</code>, <code>[::ffff:127.0.0.1]</code>, <code>localhost</code>, <code>10.0.0.5</code>, <code>192.168.1.1</code>, the cloud metadata address <code>169.254.169.254</code>, and the <code>file://</code> / <code>gopher://</code> schemes. Public URLs (<code>example.com</code>, <code>api.github.com</code>, <code>pypi.org</code>) continue to resolve as permitted.</p>
+<div class="flag"><b>Note on availability.</b> Until 15 September 2026 the fix existed on the repository's main branch but the published PyPI artifact was still the pre-fix build — <code>pip install arifos</code> would have installed <code>1!2026.8.2</code>. The release pipeline has since been repaired and <code>1!2026.9.1</code> is live, so the fixed code is now what the package index serves.</div>
+
+<h2>4. Residual risk (documented, accepted)</h2>
+<p>Validation resolves the hostname at check time, not at connect time, so a DNS-rebinding time-of-check/time-of-use window remains in principle. This is documented in the guard module, accepted for the current release because the MCP surface binds to localhost by default, and the planned remediation is pinning the resolved IPs into the transport.</p>
+
+<h2>5. Disclosure route and credit</h2>
+<p>arifOS is not a CNA and does not maintain a bug-bounty programme. The vendor supports the reporter filing this finding directly with MITRE as the reporter of record. This document is issued as the vendor's written confirmation for that submission. The finding is credited to Syed Anas Mohiuddin, and the fix commits carry an external-report reference.</p>
+
+<div class="foot">
+<b>Provenance.</b> arifOS is maintained by one human maintainer who directs AI engineering agents; the code and the verification described above were produced by those agents under the maintainer's accountability. This statement is the maintainer's.<br>
+Issued 16 September 2026 · Muhammad Arif bin Fazil · arifbfazil@gmail.com
+</div>
+
+</body>
+</html>
