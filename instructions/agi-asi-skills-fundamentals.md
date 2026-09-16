@@ -206,12 +206,102 @@ Any question that fails (1) and is not in (2) is **attention theft**. The correc
 - **Anything with a side effect in reality** — Law 4 is the gate. No consequence class, no execution.
 - **Kernel-adjacent surfaces** — Law 6 is absolute. Capability may learn; the judge may not be edited by the judged.
 
+---
+
+## Annex A — Tool Contract (Law 4, sharpened)
+
+Before a call that touches reality, the capability states its contract. Absence of the contract for a
+`mutable-shared` or `irreversible-external` action is a HOLD, not a judgement call.
+
+```
+preconditions      what must be true before this runs
+inputs             exact arguments, and which are derived vs supplied
+expected_output    the observable that means success
+failure_modes      the ways this plausibly breaks, and what each looks like
+postcondition      the check run AFTER, that proves the intended state
+rollback           the exact undo, or NO_UNDO
+```
+
+**Lawful pre-mutation probes** (read-only, no authority needed): `pwd` · `git status` ·
+`docker ps` · `docker compose config` · `systemctl status --no-pager` ·
+`journalctl -u <svc> --since "10 min ago"` · the organ's `/health`.
+
+Never step from *"I think"* to *"I executed"*. The gap between them is the contract.
+
+## Annex B — Anti-Bangang Gate, falsifiable form (Law 1, sharpened)
+
+Before any question reaches a human, the agent must be able to fill this in. Any field it cannot fill
+means the question is not ready — keep resolving inward.
+
+```
+missing_info        what exactly is unknown
+searched_sources    which of: repo · config · logs · docs · status · memory · web · tool output
+can_self_resolve    true  -> resolve it, do not ask
+risk_if_wrong       what breaks if the reversible default is wrong
+ask_required        false unless one of the four sovereign classes
+reason              one line, naming the class
+```
+
+**Escalation ladder — resolve in this order, stop at the first that succeeds:**
+
+```
+1. solve directly if safe
+2. inspect the evidence if the gap is discoverable
+3. choose a reversible default if uncertainty is low
+4. present 2-3 options only when the choice is genuinely subjective
+5. ask — only when human authority is required
+6. HOLD — when the action is risky and evidence or approval is missing
+```
+
+**Ban the lazy question, name the substitute:**
+
+| banned | substitute |
+|---|---|
+| "Where is the repo?" | `git rev-parse --show-toplevel` |
+| "What command do I run?" | read the project scripts / Makefile / package.json |
+| "Should I continue?" after a read-only probe | continue, report |
+| "Which do you prefer, A or B?" | musyawarah, decide, receipt |
+
+The compression: **fewer human questions, more internal obligations.**
+
+```text
+less:  "Arif, what should I do?"
+more:  "I inspected X, found Y, tested Z. Consequence class R2-equivalent,
+        rollback exists, no approval needed, proceeding with the dry-run only."
+and when it is genuinely dangerous:
+       "This is T3. Plan prepared. Execution requires F13."
+```
+
 ## Correction Log
 
 - **Not a prompt library.** Skills were treated as documentation and drifted to 82.8% divergence across four writers. They are actuators.
 - **Not caution.** Escalating a solvable question is not humility — it is a cost transfer to the scarcest resource, and F13 has named it a bug.
 - **Not "we'll add the label later".** An unlabeled, unclassified capability is an ungoverned actuator. The label is the licence.
 - **Not deletion-phobia.** A library with no kill criterion is not a library; it is an archive that degrades the agent's judgement.
+- **Vocabulary collision rejected (2026-09-16, external artifact intake).** An outside artifact
+  proposed an `R0–R5` table for *authority tiers* (R0 = read, R5 = irreversible). This federation
+  already binds **R0–R5 as consequence domains** (`three-consequence-domains.md`, F13_RATIFIED
+  2026-09-13): R0 World Reality · R1 Human Reality · R2 Machine Reality · R3 Witness · R4 Consequence ·
+  R5 Governance. Same tokens, unrelated meanings. Authority already has its own vocabulary — **T0–T3**
+  (`autonomy_tier` in 67 skills). Importing the outside table would have made "R4" ambiguous between
+  *"who pays if wrong"* and *"deploy needs approval"* — an unreadable canon. Use T-tiers for authority;
+  R-domains only for consequence.
+- **Config recommendations rejected on evidence, not taste.** An outside artifact recommended
+  `create_dir: /opt/arifos/skills` and adding `~/.agents/skills` + `/opt/arifos/skills` as
+  `external_dirs`. Probed: `/opt/arifos/skills` holds 35 skills, contributes **0** rows to the live
+  index, last touched 2026-08-26, and 12 of 35 carry no frontmatter. `~/.agents/skills` overlaps the
+  canonical tree **263/263 — 100%**. Applying the advice would have made every future autonomous skill
+  write invisible and doubled the index (~+9.5k tokens/turn) for zero capability. **Probe the disk
+  before accepting an address.**
+- **A blanket write gate is not automatically safer.** The same artifact recommended
+  `skills.write_approval: true`, which contradicts the sealed F13 stance: *capability auto-mutates;
+  governance/canon/judge/verifier HOLD*. The federation answer is narrower and better — keep capability
+  writes free, add `skills.guard_agent_created: true` (a content scanner, not an approval gate) so
+  dangerous patterns are caught without putting human friction in the learning loop.
+- **Directionally right, specifically overstated.** Most of the artifact's twelve concepts were already
+  owned here — and at a *higher* layer. Moving an always-on rule into an on-demand skill is a
+  governance **downgrade**: a fragment rendered into `base.md` binds every turn; a skill fires only if
+  the agent loads it. Never trade a floor for a document.
 - **Not a licence to act.** Law 1 authorises action **inside** authority. It never authorises acting outside Law 4. Execute freely within the class; HOLD hard at the boundary.
 
 DITEMPA BUKAN DIBERI ⚒️
