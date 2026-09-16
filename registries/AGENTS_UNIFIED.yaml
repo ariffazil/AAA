@@ -178,13 +178,13 @@ forge_instruments:
   _identity_binding_note: auto-bound to 555-ASI per F11 auditability (2026-08-12T02:45Z)
   _synced_at: '2026-08-13T13:22:00Z'
 - fi_slot: FI-009
-  id: null
-  name: '[VACANT]'
+  id: agy
+  name: AGY (Antigravity CLI)
   previous: A-AUDIT (collapsed into 888-APEX per Zen 99 doctrine, 2026-07-15)
-  status: vacant
-  canonical_card: null
-  species_proxy: null
-  description: FI-009 is VACANT. A-AUDIT was absorbed into 888-APEX. Reserved for future forge instrument.
+  status: active  # F13 'seal all' 2026-09-16 — promotion receipted in seal commit
+  canonical_card: /root/AAA/agents/_external/agy/agent-card.json
+  species_proxy: zai-coding-plan
+  description: "FI-009 candidate = AGY (Antigravity CLI, agy 1.2.3). Role: researcher (Z.AI endpoint probe, doc freshness, external API health). Gemini Flash backend. Assigned by GOTONG_ROYONG roster 2026-09-16 + commit 7b4a228ce; agent-card still says FI-009-candidate. Promoted to ACTIVE per sovereign 'seal all' 2026-09-16."
 extensions:
 - id: hermes-asi
   name: Hermes ASI
@@ -297,7 +297,8 @@ invariants:
 - Identity lanes (333-AGI, 555-ASI, 888-APEX) do NOT claim FI slots
 - Every canonical_card path resolves to an existing agent-card.json
 - No collapsed agent retains an active FI slot
-- No agent claims FI-009 or FI-010 (vacant/collapsed)
+- FI-009 is in CANDIDATE state (agy) — promotion to ACTIVE requires explicit F13 ack; until then it is not counted in "active owner" audits
+- FI-010 was vacated on 2026-07-15 (A-ARCHIVE collapse) and is reserved for future assignment; per commit 7b4a228ce (2026-09-16) it was referenced for deceased Gemini CLI — treated as tombstone note, not active claim
 - FI-000 is sovereign-bound to F13 (i-arif) — not reassignable
 - FI-001 through FI-008 are LOCKED — reassignment requires F13 ratification
 fi_slot_summary:
