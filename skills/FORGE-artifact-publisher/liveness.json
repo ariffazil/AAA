@@ -1,0 +1,9 @@
+{
+  "liveness_status": "ALIVE",
+  "last_invoked": "2026-09-15T06:30:00Z",
+  "invocation_count": 3,
+  "outcome_delta_total": 0.0,
+  "sessions_since_invoked": 0,
+  "sessions_with_zero_outcome": 0,
+  "notes": "Forged and tested 2026-09-15. Produced 3 PDFs (dossier, geologist briefing, visual pack) for Kinabalu Basin session. Verified 12-page landscape A4 output."
+}
