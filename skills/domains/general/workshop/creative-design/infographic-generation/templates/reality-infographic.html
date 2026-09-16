@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    width:1080px; margin:0 auto; background:#fafbfc;
+    font-family:'DejaVu Sans',Arial,sans-serif; color:#1a1a1a;
+    padding:0 0 20px 0;
+  }
+  .wrap { padding:0 38px; }
+
+  /* HEADER */
+  .header { background:#1e293b; color:#fff; padding:26px 38px; }
+  .header h1 { font-size:30px; font-weight:800; letter-spacing:-.5px; }
+  .header p { font-size:13.5px; color:#cbd5e1; margin-top:6px; }
+
+  /* SECTIONS */
+  .section-label { font-size:19px; font-weight:800; margin:24px 0 12px 0; }
+  .propa { color:#dc2626; }
+  .reality { color:#16a34a; }
+
+  /* PROPAGANDA card */
+  .propa-card {
+    background:#fef2f2; border:2px solid #dc2626; border-radius:10px;
+    padding:20px 24px; margin-bottom:12px;
+  }
+  .propa-card .big { font-size:22px; font-weight:800; color:#c62828; }
+  .propa-card .line { font-size:15px; color:#1a1a1a; margin-top:8px; }
+
+  .propa-note {
+    background:#f1f5f9; border:1px solid #cbd5e1; border-radius:8px;
+    padding:14px 18px; font-size:13.5px; color:#475569; margin-bottom:6px;
+  }
+  .propa-note b { color:#dc2626; }
+
+  /* GRID for reality cards */
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:4px; }
+  .rcard { border-radius:10px; padding:18px 20px; border-left:7px solid; }
+  .rcard h3 { font-size:16px; font-weight:800; margin-bottom:8px; }
+  .rcard p { font-size:13.5px; line-height:1.5; color:#334155; }
+
+  .rcard.a { background:#fffbeb; border-left-color:#d97706; }
+  .rcard.a h3 { color:#92400e; }
+  .rcard.b { background:#eff6ff; border-left-color:#2563eb; }
+  .rcard.b h3 { color:#1e40af; }
+  .rcard.c { background:#fef2f2; border-left-color:#dc2626; }
+  .rcard.c h3 { color:#991b1b; }
+
+  /* CHART card */
+  .chart-card {
+    background:#fff; border:1px solid #e2e8f0; border-radius:12px;
+    padding:22px 26px; margin-top:20px;
+  }
+  .chart-card h2 { font-size:20px; font-weight:800; color:#1e293b; }
+  .chart-card .sub { font-size:13px; color:#64748b; margin-top:4px; margin-bottom:14px; }
+  .chart-card .sub b { color:#16a34a; }
+
+  /* TRUTH banner */
+  .truth {
+    background:#1e293b; color:#fff; border-radius:12px; padding:24px 30px; margin-top:20px;
+    border-left:8px solid #c49500;
+  }
+  .truth .lbl { font-size:13px; font-weight:800; color:#c49500; text-transform:uppercase; letter-spacing:1px;}
+  .truth p { font-size:19px; font-weight:700; line-height:1.4; margin-top:8px; }
+  .truth .sig { font-size:12px; color:#9aa4b2; margin-top:10px; }
+
+  /* SOURCES */
+  .sources { background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:20px 26px; margin-top:20px; font-size:13px; color:#475569; line-height:1.7; }
+  .sources h2 { font-size:16px; font-weight:800; color:#1e293b; margin-bottom:8px; }
+  .sources ul { padding-left:20px; }
+
+  .footer { text-align:center; color:#64748b; font-size:11px; margin-top:20px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>TITLE — APA HANG NAMPAK vs APA REALITI</h1>
+  <p>Satu gambar untuk rakyat. Angka disahkan dari rekod audited &amp; data awam. Tanpa hiasan.</p>
+</div>
+
+<div class="wrap">
+
+  <div class="section-label propa">❌ APA HANG NAMPAK (PROPA)</div>
+  <div class="propa-card">
+    <div class="big">"THE STORY THEY TELL"</div>
+    <div class="line">Claim line 1.</div>
+    <div class="line">Claim line 2.</div>
+  </div>
+  <div class="propa-note">
+    <b>Graf mula skala kat 100, bukan 0.</b> From X to Y looks huge but the real trend is modest.
+    Nombor betul, cerita dipilih.
+  </div>
+
+  <div class="section-label reality">✅ APA REALITI (FAKTA)</div>
+  <div class="grid2">
+    <div class="rcard a">
+      <h3>Fact 1 headline</h3>
+      <p>Body text — one to two sentences. <b>Highlight</b> the operative number.</p>
+    </div>
+    <div class="rcard b">
+      <h3>Fact 2 headline</h3>
+      <p>Body text.</p>
+    </div>
+    <div class="rcard c">
+      <h3>Fact 3 headline</h3>
+      <p>Body text.</p>
+    </div>
+    <div class="rcard b">
+      <h3>Fact 4 headline</h3>
+      <p>Body text — reveal the number the story omits.</p>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <h2>CHART TITLE (RM unit) — skala HONEST dari 0</h2>
+    <div class="sub">Graf propa mula dari <b>100</b>. Ini dari <b>0</b>. Data sama, cerita lain.</div>
+    <img src="file:///ABSOLUTE/PATH/TO/honest_chart.png" style="width:100%; border-radius:6px;" alt="chart">
+  </div>
+
+  <div class="truth">
+    <div class="lbl">Inti cerita</div>
+    <p>The one-line truth — what the story is actually about.</p>
+    <div class="sig">Fakta kunci: · Fact1 · Fact2 · Fact3</div>
+  </div>
+
+  <div class="sources">
+    <h2>Sumber (bukan propa)</h2>
+    <ul>
+      <li>Source 1</li>
+      <li>Source 2</li>
+      <li>Source 3</li>
+    </ul>
+  </div>
+
+  <div class="footer">Tempaan i-ARIF · DITEMPA BUKAN DIBERI · Angka disahkan, tanpa hiasan</div>
+
+</div>
+</body>
+</html>

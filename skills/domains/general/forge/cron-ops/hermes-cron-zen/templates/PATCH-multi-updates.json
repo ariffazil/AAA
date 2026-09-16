@@ -1,0 +1,48 @@
+{
+  "_meta": {
+    "patch_id": "PATCH-EXAMPLE-multi-migration",
+    "patched_at_utc": "2026-08-05T18:00:00Z",
+    "reversible": true,
+    "blast_radius": "15 cron jobs, 0 services, 0 humans",
+    "see_sidecar_for_narrative": "README.md",
+    "explicitly_not_patched": [
+      {
+        "item": "audit-freshness watchdog",
+        "reason": "T3 — new cron primitive. Out of scope per phased serial."
+      },
+      {
+        "item": "telegram token-strip root cause",
+        "reason": "Hermes cron runner bug. Out of scope — needs source edit in Hermes, not jobs.json."
+      }
+    ]
+  },
+  "updates": [
+    {
+      "id": "job_id_1",
+      "name": "job-name-1",
+      "search_field": "id",
+      "fields": {
+        "provider": "qwen-token-plan-individual",
+        "model": "qwen3.7-plus"
+      }
+    },
+    {
+      "id": "job_id_2",
+      "name": "job-name-2",
+      "search_field": "id",
+      "fields": {
+        "provider": "qwen-token-plan-individual",
+        "model": "qwen3.7-plus"
+      }
+    },
+    {
+      "id": "job_id_3",
+      "name": "job-name-3",
+      "search_field": "id",
+      "fields": {
+        "deliver": "local"
+      }
+    }
+  ],
+  "to_resolve_before_apply": []
+}
