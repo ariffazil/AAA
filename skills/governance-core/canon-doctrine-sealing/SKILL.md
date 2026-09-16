@@ -9,6 +9,21 @@ floor_scope: [F1, F2, F11, F13]
 
 # Canon Doctrine Sealing — Where A Finding Actually Lands
 
+## ⚒️ Canon Lock (F13 2026-09-16) — MANDATORY for protected trees
+
+`/root/AAA/governance`, `/root/AAA/canon`, `/root/arifOS/GENESIS` are **chattr +i locked**.
+Every write to these trees MUST go through the only legal mutation path:
+
+```bash
+ARIFOS_TRACE_ID=trc-<your-trace> /root/scripts/canon-mutate run <tree> -- <command...>
+```
+
+Direct writes fail with EPERM — **that failure is the lock working, not a bug.**
+Cycle (unlock → mutate → relock → receipt) is crash-safe and receipted with verified
+relock to `/var/lib/arifos/canon_mutations.jsonl`. Always set `ARIFOS_TRACE_ID`.
+Never bare `chattr -i` — an unlock outside the cycle is an unauthorized bypass.
+Protocol: `/root/AAA/instructions/CANON-LOCK-PROTOCOL.md`.
+
 Trigger: F13 gives a directive of the form *"seal it"*, *"seal all"*, *"code this into the kernel and state and agents"*, or *"make it live"* — usually after a session that produced a doctrine-shaped finding, often following an audit of an external AI critique. The eureka packet is NOT the deliverable. The surface edits are.
 
 ## One Rule
