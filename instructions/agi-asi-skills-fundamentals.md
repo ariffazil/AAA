@@ -272,6 +272,53 @@ and when it is genuinely dangerous:
        "This is T3. Plan prepared. Execution requires F13."
 ```
 
+---
+
+## Annex C — Symbol Namespace (collision register)
+
+**The failure this register exists to stop.** An external artifact proposed `R0–R5` for authority
+tiers. This federation already binds `R0–R5` as **consequence domains**. The artifact then
+*self-corrected* to `T0–T3` / `W0–W4` / `K0–K4` — and **all three collided again**, with symbols this
+federation had already calibrated:
+
+| symbol | federation meaning (binding) | outside proposal | verdict |
+|---|---|---|---|
+| **R0–R5** | Consequence domains — R0 World · R1 Human · R2 Machine · R3 Witness · R4 Who-pays · R5 Governance (`three-consequence-domains.md`, F13_RATIFIED 2026-09-13) | authority tiers | **REJECT** |
+| **T0–T3** | Authority/autonomy tier — T0 read/probe · **T1 edit/test/commit/restart-one-service (AUTO-DO)** · T1.5 proposals-only · T2 announce-then-act · T3 888_HOLD (`autonomy.md`) | T1 = "analyze only" | **REJECT** — would relabel **67 skills** already tagged `autonomy_tier: T1` from *auto-do writes* to *read-only*, a silent authority downgrade |
+| **W1–W6** | Attention-waste classes (W1 status theater · W2 text wall …) with a 3-strike kill path (`attention-kill-criterion.md`, F13_RATIFIED 2026-09-11 — *sole enforcement authority*) | W0–W4 witness state | **REJECT** |
+| **W₈₈₈** | Sovereign attention cost — the scarcest resource (`sovereign-attention-preservation.md`) | — | **DO NOT OVERLOAD** |
+| **K0–K4** | `K3`/`K4` already name a model and a node in federation text | kill/rollback state | **AVOID** — pick an unclaimed prefix or spell it out |
+| **C1–C19** | Constitutional floors (doctrine-layer) | — | **RESERVED** |
+| **F1–F13** | Kernel floors | — | **RESERVED — never reuse** |
+| **Φ** | Bare `Φ` prohibited in cross-organ governance interfaces (`CANONICAL_GLOSSARY.md`) | — | **RESERVED** |
+
+**The rule — Symbol Hygiene (Law 1 extended):**
+
+> An artifact that proposes **notation** must be treated as a **vocabulary mutation**, not a concept
+> proposal. Probe the live symbol table *before* accepting a single symbol. A concept can be right
+> while its notation is catastrophic: `T1` meaning *"analyze"* instead of *"edit and commit"* would
+> silently de-authorise 67 capabilities without changing a single sentence of doctrine.
+
+**Composition rule — never overload, always compose.** A capability's full classification is the
+**product**, not a new scale:
+
+```
+(R-domain) × (T-tier) × (W-witness) × (K-kill) × (C-floor)
+```
+
+Spelled out, never rebranded:
+
+```
+consequence domain : world | human | machine | witness | who-pays | governance
+authority tier     : T0 | T1 | T1.5 | T2 | T3
+witness state      : none | self-check | tool-log | independent | human
+kill state         : no-undo-needed | reversible | retractable-with-cost | irreversible
+```
+
+**Why this register is the real delta.** The outside artifact's twelve skills were already owned here.
+Its *notation* was not — and notation is the thing that silently corrupts a multi-agent system,
+because every agent reads the symbol, and none of them re-derive it.
+
 ## Correction Log
 
 - **Not a prompt library.** Skills were treated as documentation and drifted to 82.8% divergence across four writers. They are actuators.
@@ -302,6 +349,24 @@ and when it is genuinely dangerous:
   owned here — and at a *higher* layer. Moving an always-on rule into an on-demand skill is a
   governance **downgrade**: a fragment rendered into `base.md` binds every turn; a skill fires only if
   the agent loads it. Never trade a floor for a document.
+- **Notation is a governance surface (2026-09-16, second external intake).** An artifact that
+  corrected `R0–R5` then proposed `T0–T3`/`W0–W4`/`K0–K4` — re-colliding with the live autonomy
+  tiers, the attention-waste classes, and existing node/model names. The artifact was *conceptually
+  right and notationally destructive*. Intake therefore includes a **symbol probe**, not just a
+  concept probe. See Annex C.
+- **A "corrected" artifact is not thereby safe.** Self-correction proves the author is responsive, not
+  that the replacement symbols were verified. Verify the new notation against the same table as the
+  old; the second pass failed the same test as the first.
+- **Do not import a taxonomy that competes with a derived one.** An outside proposal offered a fresh
+  `00-core/ … 90-automation/` top-level layout. This federation already runs a **derived 3-axis
+  coordinate index** (`skill-matrix.py`: domain × organ × capability) over the live tree, recomputed
+  from storage rather than stored in it. A third hand-maintained taxonomy would have to be kept in
+  sync by hand and would fight the derived view. Structure proposals must beat the derived index on
+  evidence, not on neatness.
+- **A sensor that is machine-derived cannot lie about its own method.** The registry's
+  `disk_reconciliation` block claimed `drift: 0` for 35 days because a human-era stamp was never
+  recomputed. It is now written only by `skills-census.py` and carries a `witness_hash`, so the claim
+  is checkable rather than asserted. **Never hand-edit it.**
 - **Not a licence to act.** Law 1 authorises action **inside** authority. It never authorises acting outside Law 4. Execute freely within the class; HOLD hard at the boundary.
 
 DITEMPA BUKAN DIBERI ⚒️

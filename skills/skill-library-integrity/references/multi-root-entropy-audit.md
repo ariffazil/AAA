@@ -118,3 +118,45 @@ Recommend the first when a write gate exists, because its failure mode is "the s
 rather than "production lost it silently". Whichever is chosen, the registry's own count and
 refresh stamp must be repairable by running something real — a witness whose method is not
 reproducible is the defect, not the number.
+
+## 7. Executing the consolidation (store becomes the writer, harnesses become views)
+
+Run this only after a git commit in **every** tree you will touch, and emit a rollback manifest
+before the first move. Classify every skill into exactly one bucket, then act per bucket:
+
+| Bucket | Condition | Action |
+|---|---|---|
+| `NATIVE_KEEP` | name is in the harness's bundled manifest | leave real; it belongs to the upstream updater |
+| `PROMOTE` | harness copy has no store counterpart | move into the store, leave a symlink at the old path |
+| `FILL` | store has a shell with no `SKILL.md` | move the live copy in, symlink back |
+| `SYMLINK` | store copy exists and content hash matches | replace the harness dir with a symlink |
+| `HOLD` | store copy exists and content differs | **do not auto-merge** — record and escalate |
+
+Preserve the path *relative to the skills root* when moving. Taxonomy placement
+(`domain/organ/capability` nesting) is part of the skill's identity, and flattening it on the way
+in is a second, quieter rename.
+
+Order matters, and three steps are load-bearing:
+
+1. **Set the writer first.** Point the agent's skill-creation config at the store
+   (`skills.create_dir`) *before* moving anything. Without it the library is consolidated and
+   then immediately re-drifts the first time the agent authors a skill.
+2. **Never move a bundled skill.** A name present in the harness's bundled manifest is owned by
+   the upstream updater; relocating it breaks that updater and can resurrect the old copy on the
+   next update — producing a genuine duplicate where before there was only drift.
+3. **Re-point, do not relocate, when content is identical.** A symlink into the store makes
+   future drift structurally impossible for that skill; a copied file only resets the clock.
+
+Afterwards, re-measure with the gate and compare the **diverged fraction**, not the shared count —
+the shared count rises simply because the store is now larger. Expect the residual `HOLD` set to
+survive as explicit debt; it is a merge queue, not a failure.
+
+### Counting rules that decide whether the result is readable
+
+- Count resolvable skills with a following walk (`find -L`, `followlinks=True`). The store grows
+  while the harness tree becomes links, so a non-following count shows the harness tree
+  collapsing — an artifact, not damage.
+- A verify step that auto-rolls-back on failure is mandatory; wire it to the manifest so it fires
+  without a human in the loop.
+- Confirm the live index agrees: the harness's own skill listing must still enumerate the moved
+  skills by name. A tree that resolves on disk but vanishes from the index is not consolidated.
