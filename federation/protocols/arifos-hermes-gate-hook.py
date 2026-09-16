@@ -226,6 +226,15 @@ def write_receipt(
         pass  # Never block
 
 
+def t3_pattern_hit(tool_input: dict):
+    """Return the first T3 pattern that matched, for actionable block reasons."""
+    arg_str = json.dumps(tool_input).lower()
+    for p in T3_PATTERNS:
+        if re.search(p, arg_str, re.IGNORECASE):
+            return p
+    return None
+
+
 def main():
     try:
         raw = sys.stdin.read()
@@ -282,14 +291,22 @@ def main():
 
     if classification == "T3":
         # T3 ALWAYS DENY at gate level (defer to arif_judge if available)
-        reason = f"T3 pattern detected in '{tool_name}' args"
+        hit = t3_pattern_hit(tool_input) or "unknown-pattern"
+        reason = f"T3 pattern [{hit}] matched in '{tool_name}' args"
         write_receipt(tool_name, classification, "BLOCKED", reason, trace_id=trace_id, session_id=session_id)
         write_falsification_metric("falsify_reject", {"tool": tool_name, "classification": "T3", "reason": reason})
         update_telemetry("hold")
-        # Output the block decision
+        # Output the block decision — the reason IS the constitutional lane instruction.
+        # Anti-collapse: the blocked agent must route, never fall back to the human.
         result = {
             "decision": "block",
-            "reason": f"🚫 K-02 GATE BLOCKED: {reason}. T3 actions require arif_judge SEAL. Session: {session_id[:16]}",
+            "reason": (
+                f"🚫 K-02 GATE (T3 BLOCK): {reason}. This block is constitutional, not an error — do not retry as-is. "
+                f"LANE: (1) package the exact mutation (command + target + why) and request arif_judge SEAL via kernel :8088, or "
+                "(2) delegate to A-FORGE forge_execute / a coding FI with the same package. "
+                "F13 RULES: never hand Arif shell commands or ask him to apply anything; never claim 'staged/applied/done' — "
+                "report the true state (BLOCKED_AT_GATE + exact blocked operation) and take the lane above."
+            ),
         }
         print(json.dumps(result))
         sys.exit(2)  # Exit 2 = constitutional block
