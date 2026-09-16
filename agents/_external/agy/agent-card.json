@@ -27,7 +27,7 @@
   ],
   "governance": {
     "citizenship": "guest-pending",
-    "fi_slot": "FI-009-candidate",
+    "fi_slot": "FI-009",
     "emd_role": "decoder-candidate",
     "constitutional_proxy": "333-AGI",
     "can_seal": false,
