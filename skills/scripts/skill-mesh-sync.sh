@@ -6,7 +6,9 @@
 #   skill-mesh-sync.sh --check      # exit 1 if drift/broken links
 #
 # Canon: AAA/skills + .agents/skills. Harnesses are views.
-# Does NOT delete harness-native skills. Does NOT touch Hermes/Kimi trees.
+# Does NOT delete harness-native skills. DO NOT remove Hermes from HARNESSES:
+# it was skipped historically, so canonical renames produced ZERO propagation and
+# deleted 7 capabilities silently (2026-09-16). Hermes is now symlink views -> sync it.
 set -euo pipefail
 
 MODE="${1:---dry-run}"
@@ -15,6 +17,7 @@ AGENTS="${AGENTS_SKILLS:-/root/.agents/skills}"
 CODEX_PROFILE="${CODEX_SKILL_PROFILE:-/root/AAA/skills/CODEX_SKILL_PROFILE.json}"
 OPENCODE_PROFILE="${OPENCODE_SKILL_PROFILE:-/root/AAA/skills/OPENCODE_SKILL_PROFILE.json}"
 HARNESSES=(
+  "${HERMES_SKILLS:-/root/.hermes/skills}"
   "${GROK_SKILLS:-/root/.grok/skills}"
   "${CLAUDE_SKILLS:-/root/.claude/skills}"
   "${CODEX_SKILLS:-/root/.codex/skills}"
