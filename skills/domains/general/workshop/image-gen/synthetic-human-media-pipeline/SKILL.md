@@ -18,6 +18,8 @@ End-to-end production of photorealistic human media (still → video → voice) 
 
 **Reference files.** `references/backstage-physique-scene.md` — the physique-competition backstage as a physical place, the admirer's point of view, unwritten etiquette, the one honest check to hold, and the scene recipe for rendering it. Load it for any backstage / ringside / admirer request.
 
+**Scripts.** `scripts/identify_take.py <incoming audio> <candidate dirs>` — ranks which previously rendered take the file is (mel sliding-window cosine + the verdict bands). Run it before re-rendering anything a requester points at.
+
 ## When to load
 
 - User asks for an image, video, or voice piece featuring people (muscle/admirer scenes, portraits, backstage sets, character shots).
@@ -146,6 +148,51 @@ ffmpeg -v error -y -i line.mp3 -c:a libopus -b:a 64k -ar 48000 -ac 1 line.opus
 MP3 and M4A arrive as audio files, not voice bubbles. Trim leading/trailing silence before conversion to tighten delivery.
 
 - **Write the script like speech.** Conversational prose only: no markdown, no tables, short sentences, numbers spelled out in BM, technical jargon left in English. A voice note that reads like a document sounds like a document.
+
+### Which voice id — the registry holds more than one, and they are not versions of one thing
+
+A voice fleet splits by the KIND of identity the artifact carries, and the ids are not interchangeable:
+
+- **Cloned from the requester's own recordings** — the persona speaks *in his voice*. Still persona-register only.
+- **Fully synthetic** — parametric design, or a clone of a vendor *system* voice. Zero human audio anywhere in the chain.
+
+Same register, same speed band, genuinely different artifact: on one identical line the two landed
+26.1 s and 31.9 s. Read the voice registry before choosing (it is the live authority and carries the
+per-voice `preferred_settings.speed`), then **pick the id an earlier take used whenever the requester
+points at that take** — not the id that looks newest.
+
+### Resolving a take the requester points at ("you generated this before")
+
+When the ask is about an artifact that already exists — a reply to an old clip, a forwarded take, a
+voice note answering a line you half-recognise — **resolve it before rendering**. A fresh render on a
+guessed voice spends a take and answers a different question.
+
+1. **Locate by line, not by ear.** `grep -rl "<first few words>" <work dir> <audio cache>` returns the
+   take and its whole batch at once; the session log confirms which run produced it.
+2. **Dedupe the audio cache by md5.** A gateway cache names the same bytes several ways — a replied-to
+   clip and a re-forwarded copy are one artifact under three filenames. Count files instead of hashes
+   and one send reads as three.
+3. **Confirm acoustically and read the GAP.** Run `scripts/identify_take.py <input> <candidate dirs>`:
+   64-band mel spectrogram, mean-removed, sliding-window cosine. Measured bands — same take re-encoded
+   0.998–1.000 at offset 0 · same line, same voice, different take 0.85–0.95 · **different voice id in
+   the same register 0.53–0.80**. The score separates "same take" from "same register" cleanly, so the
+   top two rows and the distance between them carry the verdict — never the single number.
+4. **Answer with what the artifact IS** — line, voice id, speed — then deliver on the voice it was made
+   with. Naming the artifact is the answer he asked for; a re-render is not.
+
+**Write a sidecar manifest when you build a batch.** A run of numbered line files does not record which
+voice rendered them, so a later "which one was that" becomes an acoustic hunt. One JSON beside the batch
+carrying `voice_id`, `speed`, and the text of every take makes the whole run addressable by title.
+
+### An activation phrase is a request, not a mode switch
+
+"Activate voice <persona> <name>" asks for a take. The persona's *register* has its own activation gate
+and that gate is doctrine — do not widen it to fit the phrasing, and do not refuse the artifact for want
+of an exact phrase. Deliver the take.
+
+When the phrase attaches a real person's name to the voice, the artifact ships and the **name** does not:
+a registry entry is a provenance record, and a real name in one becomes citable evidence for every later
+session. Name by register, one clause, move on.
 
 ---
 

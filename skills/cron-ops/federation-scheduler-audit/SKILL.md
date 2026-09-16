@@ -337,6 +337,66 @@ whatever is consumed downstream: a classification omitted from the machine-reada
 classification that was never published, and the consumer will read the next field as a healthy
 total.
 
+## Step 3i — Fired ≠ Delivered: read the obligation ledger
+
+The ladder does not stop at execution:
+
+```
+Scheduled ≠ Ran ≠ Delivered ≠ Effective
+```
+
+Execution proves the job started. It says nothing about whether the output reached anyone, and a job
+can run cleanly for weeks while every message it produces dies. Delivery has its own store:
+
+```bash
+sqlite3 /root/.hermes/state.db \
+  "select state, count(*) from delivery_obligations group by state;"
+```
+
+`delivered` / `failed` / `abandoned` / `attempting` are the real delivery states. Any standing
+`failed` or `abandoned` volume is delivery debt that no scheduler view surfaces — the job shows
+`last_status: ok` because the *turn* succeeded.
+
+**The self-addressed origin trap.** A job's `origin.chat_id` is the address it replies to. When it
+holds the **bot's own Telegram user id** — commonly copied from the session origin when the job was
+created from inside a self-DM — every reply becomes a bot-to-bot DM, which Telegram refuses with
+`Forbidden: the bot can't send messages to the bot`. Nothing in `is-active`, `last_status`, or
+`hermes cron doctor` reveals it; the only trace is the obligation ledger.
+
+```bash
+grep -o '"id": [0-9]*' /root/.hermes/IDENTITY_LOCK.json        # the bot's own uid, read live
+sqlite3 /root/.hermes/state.db \
+  "select state, count(*) from delivery_obligations where chat_id='<bot_uid>' group by state;"
+```
+
+Repair a mis-seeded origin with a backup first (`cp -a cron/jobs.json cron/jobs.json.bak-<ts>`):
+
+1. Repoint every `origin.chat_id` equal to the bot uid at the human's id, recording why in the entry.
+2. Drop the self-DM entry from `channel_directory.json` so it cannot be re-selected as a target.
+3. Re-grep both files to prove none remains, then confirm the terminal count stops growing.
+
+Existing obligation rows are terminal history — do not attempt to re-deliver them. If the count keeps
+rising after the fix, the writer is elsewhere: sweep every live session bound to the same store
+before attributing the loop to one process. A second CLI bound to the same DB writes to it too.
+
+## Step 3j — An incident ledger without `closed_by` is a cemetery, not a metric engine
+
+`cron_incidents` records `first_seen_at` / `last_seen_at` / `closed_at` and an error string. It does
+NOT record who closed an incident or what verified the fix — so "closed" means someone stopped
+looking, not that the fault was repaired:
+
+- **Rows sharing one identical `closed_at` were swept in a batch.** Read that as one walk-past, not N
+  resolutions; a single batch close can carry incidents that had been open for days each.
+- **Check the timestamp columns' offsets before computing any duration.** One column can hold a local
+  offset while another holds UTC in the same table, silently corrupting every MTTR figure derived
+  from it.
+- **"Effectively closed" needs its own probe.** Re-run the exact call the incident recorded failing.
+  A close with no re-run is an administrative close, and the original fault may still be live on
+  another host.
+
+Add `closed_by` + `verified_by`, normalise to UTC, and treat the ledger as the seed of a closure
+metric rather than a status feed.
+
 ## Step 4 — Snapshot before any resume
 
 `cp jobs.json jobs.json.bak-<ts>` first. A resume batch is reversible only while the prior book
@@ -418,6 +478,9 @@ inside a 24h window — a migrated expression is rarely re-validated by whoever 
   timers run unmeasured on the same machine — the count looked healthy precisely because the missing
   half was invisible. Name your substrates in the verdict, and extend to a new scheduler the moment
   you learn one exists rather than treating its absence from your report as its absence.
+- **Fired is not delivered.** A job can run green while every message it produces dies: read the
+  `delivery_obligations` states, never the job's `last_status`. Non-zero `failed`/`abandoned` against
+  the **bot's own uid** means the job's `origin.chat_id` was mis-seeded (Step 3i).
 - **`is-active` on a oneshot service is not a liveness check.** Oneshot units are `inactive` between
   firings, so the word is identical for healthy-idle and dead. Ask the timer (Step 3g).
 

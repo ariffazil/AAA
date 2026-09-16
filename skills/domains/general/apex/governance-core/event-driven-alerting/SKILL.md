@@ -273,6 +273,78 @@ Two false-positive generators, each caught only by reading the output count:
 **Count the findings before believing them.** A first run reporting every job broken is a parser bug,
 not a systemic outage; the tell is that the finding count equals the crontab length.
 
+### Resolve absence in a fixed order, and let positive evidence win first
+
+A single 0-byte log corresponds to several different worlds, so one "unwitnessed" bucket is not
+enough. Use explicit states and a fixed resolution order:
+
+```
+ALIVE          log grew, or a declared witness artifact is fresh
+SILENT         log used to grow and stopped
+NOT_YET_DUE    no scheduled firing has happened since the log was created
+NOOP_UNPROVEN  0-byte log, a firing has passed, and no witness is declared
+NEVER_WROTE    the redirect target has never existed
+UNMEASURED     no redirect, or the source itself could not be read — the job cannot be judged
+MASKED         deliberately retired by the operator
+```
+
+**Order matters, and the wrong order produces a check that cannot fail.** Measured 2026-09-16: a first
+version tested `NOT_YET_DUE` before the declared witness, so four jobs that were demonstrably alive
+(a fresh artifact each) were all reported "not due yet" — a classifier resolving every absence to a
+benign state is decoration. Resolve: **declared witness first** (a fresh artifact proves the job ran,
+regardless of whether the log could have shown it), then absence-of-opportunity, and only then report
+the ambiguity by name.
+
+**Declare the witness, do not infer it.** A job whose output is a side effect rather than stdout is
+not unwitnessed — it has an artifact, and the artifact's mtime is the evidence. Keep a small reviewed
+map of `job -> witness artifact` (the same shape as a declared-shells list): a `*/15` job writing no
+stdout is ALIVE if its declared output file is fresh. Everything not on that map and logging 0 bytes
+is `NOOP_UNPROVEN` — "ran and correctly did nothing" and "never ran" are observationally identical,
+and asserting either one is the defect. Every `UNMEASURED`/`NOOP_UNPROVEN` line must be printed, never
+dropped: a job silently absent from the report reads as healthy.
+
+### A timer needs its own taxonomy, and `is-active` lies for oneshot units
+
+`systemctl is-active <service>` cannot separate healthy-idle from dead when the unit is `Type=oneshot`:
+it is `inactive` between firings by design. Ask the **timer**, and classify:
+
+```
+ARMED            active, next elapse set, last firing recorded
+STALLED          active, NO next elapse, last firing old  -> fired once and never rescheduled
+UNARMED          no next elapse and no firing ever recorded
+MASKED           symlinked to /dev/null: an operator decision, not a defect
+NO_FIRE_RECORDED armed but never fired
+```
+
+- **`MASKED` and `UNARMED` must not share a level.** Parse `systemctl list-unit-files --state=masked`
+  by column: the line reads `NAME.timer  masked  enabled`, so the state is the *second* field. Testing
+  `.endswith("masked")` matches nothing and dresses every retired unit as a defect.
+- **A timer whose `NextElapseUSecRealtime` is briefly empty right after firing is not stalled** — that
+  is systemd recomputing. Without a grace window (order of minutes), every frequently-firing timer
+  reads as stalled on some % of runs: a flapping false alarm.
+- **`STALLED` is the one worth having.** A timer that fired once and never rescheduled reports
+  `ActiveState=active` and looks identical to a healthy one in every status surface, while the unit it
+  activates has not run for days. Check the unit's exit status before calling the schedule healthy.
+- Reuse this taxonomy wherever a oneshot unit is monitored; a "dead daemon" claim about a
+  timer-driven unit is usually just a service resting between runs.
+
+### Extract the classifier, then run it against a known-broken input
+
+A sensor whose logic lives inline in a scan loop cannot be shown to fail, and a check that cannot
+fail is decoration. Three levels, all needed:
+
+1. **Pure decision function** — `classify(size, log_mtime, fires, witness_exists, witness_mtime,
+   expected, now) -> (status, why)`, so every branch including the negative ones is testable.
+2. **Env override for the input source** — e.g. `CRONTAB_FILE=<path>` so the *production* path
+   (parse spec -> derive cadence -> resolve log -> classify -> exit code) runs as a subprocess against
+   a synthetic fixture, touching no real log and no real crontab.
+3. **Unit cases prove the function; a harness test proves the runner; NEITHER proves end-to-end.** Run
+   the tool against a fixture containing a known-DEAD job and assert it reports `SILENT` and exits
+   non-zero. Unit tests and the harness are both upstream of the thing that matters.
+
+And prove failability directly: plant one wrong assertion in the suite, confirm the runner returns
+FAIL with a non-zero code, restore it. A suite that has never been seen to fail has not been tested.
+
 ## Counter-rules
 
 - A clean run is P3. "X succeeded" is not news.
