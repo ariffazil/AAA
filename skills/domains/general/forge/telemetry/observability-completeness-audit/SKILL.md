@@ -1,0 +1,138 @@
+---
+name: observability-completeness-audit
+description: "Use when asked if observability coverage is complete."
+tags: [observability, telemetry, tracing, coverage, audit, ledger, spans]
+triggers:
+  - "do we have full observability"
+  - "is observability complete"
+  - "observability coverage"
+  - "full-stack observability"
+  - "we have N million spans"
+  - "do we have tracing"
+  - "can we trace a request end to end"
+  - "how much observability do we have"
+---
+
+# Observability Completeness Audit
+
+Answering "do we have full observability?" with liveness checks is the standard
+failure. A pipeline can be perfectly healthy — worker active, consumer drained at
+zero pending, rows arriving seconds ago — and still be a flat event log that nothing
+reads. **Liveness and completeness are different questions.** This skill is the
+second one.
+
+High row counts are the most common false positive. "We have 200k observations"
+is not a coverage claim; it is a row count. Coverage is per field, per layer, and
+conditional on someone reading the result.
+
+## Procedure
+
+### Step 0 — find the live writer before reading any code
+
+A service may execute a symlinked or module-invoked path that differs from the
+worker/config file you find first. Read the unit's `ExecStart` and resolve
+`readlink -f` on the deployed path. A stale twin will show you a bug the live code
+already fixed, and the resulting false finding costs the whole audit its credibility.
+
+### Step 1 — column census
+
+`count(<col>)/count(*)` for every column in one query. Turns "we have N rows" into a
+shape. See `references/coverage-census.md` for the full statement.
+
+### Step 2 — the correlation test (the sharpest single measurement)
+
+Compare `count(DISTINCT trace_id)` against the row count.
+
+**Equal means every row is its own trace and nothing is correlated with anything** —
+not parent to child, not request to retry, not agent to subagent. Combined with a
+NULL `parent_span_id`, the store is a flat event log wearing trace-shaped column
+names, not a trace store with missing links. No backfill creates the missing
+hierarchy afterwards.
+
+Related: **a column that is always NULL is a schema promise nobody kept.** Presence
+of the column is not capability. Say what cannot be queried, not what exists.
+
+### Step 3 — constant-field check
+
+Group by any attribution field (`organ_id`, `service`, `tenant`). **A field that is
+100% one value is a constant, not an attribution** — it looks populated in a census
+and carries no information.
+
+### Step 4 — grammar / vocabulary purity
+
+For any field that is supposed to carry a closed vocabulary (a verdict, a status, an
+enum), print the value distribution before quoting it in a statistic. When execution
+status codes leak into a governance or semantic field, every aggregate over that
+field is silently contaminated. **Count how many distinct tokens are valid members
+of the declared vocabulary** and report that share.
+
+### Step 5 — does the store have a health surface at all?
+
+A telemetry plane with no health endpoint can die completely with the only symptom
+being a stale `max(timestamp)` in the table. Check for a listener rather than
+trusting a docstring or config value that declares a health port — declared is not
+deployed. If the surface is missing, it is a blocker for any "monitor the monitoring"
+work and it outranks schema improvements.
+
+### Step 6 — THE GATE: find the consumer before proposing anything
+
+Grep for readers of the table/store, excluding the writer:
+
+```bash
+grep -rl "<schema>.<table>" /root --include="*.py" --include="*.sql" --include="*.yaml"
+```
+
+If only the writer appears, it is a **write-only ledger**. Also check the visualiser:
+a dashboard stack whose datasources are a metrics endpoint plus an unrelated status
+source does not read this table, however healthy it looks.
+
+**This finding outranks every coverage gap.** Compute and storage are being spent
+producing a record nobody opens, and every downstream ambition is built on top of it.
+
+### Step 7 — report per layer, with the spread
+
+Score coverage per observability layer (execution/ingest, causal trace, token &
+cost economics, governance decisions, retrieval, agentic metabolism, outcome). State
+the fields each layer was held to, and show any weighting.
+
+**"Two layers carry the system and five are empty" is actionable; one averaged
+percentage hides the thing worth fixing.** Equal weighting across layers is a
+defensible default — say so, and show the weights so the reader can recompute.
+
+## Ordering the remediation
+
+When you are asked what to fix, this order beats severity-ranked lists:
+
+1. **Consumer first.** Establish a reader, or a decision to stop writing.
+2. **No-DDL structural fixes.** Trace-context propagation usually needs *no schema
+   change* — the column already exists and the **producer** is what is broken (it
+   mints a fresh trace per emit instead of propagating caller context).
+3. **Additive, non-destructive splits.** A vocabulary fix is best expressed as a
+   view mapping legacy values plus a write-side change, leaving history verbatim.
+4. **New columns last.** Three more columns in an unread table is not progress.
+
+## Pitfalls
+
+- **Do not quote a row count from any document, including your own earlier report.**
+  Re-measure. Ingest counters move by orders of magnitude within days.
+- **A process that runs is not a process that works.** A daemon receiving nothing
+  will still report healthy. Check its own traffic counters before concluding
+  anything about the pipeline, and trace where data actually enters rather than
+  assuming the declared receiver is the entry point.
+- **An observer with an unscheduled write path is not observing.** If the only code
+  that advances a series is an HTTP endpoint, nothing happens without a caller.
+  Check for a timer before diagnosing a "writer failure" — the writer was never
+  broken, it was never called. An irregular historical series (clustered, gappy) is
+  the signature of manual invocation, not of a failing writer.
+- **Distinguish `NULL` from JSON `null` in a census.** In JSON/JSONB columns these
+  are different states and lumping them misreports coverage.
+- **Beware name collisions between a telemetry plane and a notifier/alert endpoint
+  sharing a name.** Confirm which one a caller means before wiring anything in.
+- **Do not let the audit mutate.** A completeness audit is read-only. Producing
+  graphs and receipts is the deliverable; schema work needs its own authorisation
+  and its own reversibility plan.
+
+## Reference
+
+- `references/coverage-census.md` — the full SQL set (census, correlation, constants,
+  vocabulary, liveness) and a worked report shape. Load it when running the audit.
