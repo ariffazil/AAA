@@ -108,4 +108,34 @@ patch (it feeds the canonical SOT — no blind edits).
 `/root/.local/share/arifos/atlas333/eureka/eureka-entries.jsonl` (1, schema `eureka777.v1`).
 Four writers, one name, four shapes. Same disease the mesh had. Consolidation target for a future pass.
 
+## 8 · Selection layer — the honest gap (333 cross-check of Hermes session, 2026-09-16 ~02:35Z)
+
+Hermes admitted it cannot reliably pick from 409 skills: 28% sit in colliding trigger groups,
+only 9/595 declare an `audience`, its lookup gate returned junk on real queries, and the
+chooser in practice is the model's eye over a flat description list. **333 cross-check: true
+for every FI harness.** The 506-listing opencode loads works identically — no router exists.
+
+**False fact corrected (live receipt):** Hermes reported "`/root/.claude/skills` kosong —
+sifar entri". False — plain `find` returns **0** (does not dereference the symlink farm);
+`find -L` returns **506** (realpath = `/root/AAA/skills`). Third repetition of the same
+sensor-scar class in 24h (53 case-drift false FATAL → stale mesh FAILs → empty-tree false
+FATAL). Hermes's own Eureka 6 predicted it: the sensor that enforces truth can itself lie.
+
+**SCAR RULE (mechanical, no exceptions):** every skill-tree probe MUST dereference —
+`find -L` / `realpath` / `os.walk(followlinks=True)`. A probe that reads the symlink
+measures the map, not the territory. Encode in census + mesh probe scripts; owner-patch only,
+no new skill.
+
+**Brand×variant matrix (claude-/qwen- × meta-mesa/zen-router/agentic-state = 6 files,
+3 capabilities):** HOLD confirmed CORRECT — both consumer harnesses are LIVE (mesh 5/7 PASS),
+cross-agent blast radius → consolidation (1 owner/capability, brand as parameter) requires
+A2A musyawarah or F13. Staged, not executed.
+
+**Exists vs missing:** tools HAVE a selector — capability-index (semantic, ranked,
+action-class-tagged). Skills have NO equivalent. Live demo on Hermes's failing query
+("retraction public correction") returned only weak tool matches (brave_web_search top) —
+the index pattern exists but is not skill-aware and not smart even on tools yet. The build
+that changes Arif's daily experience: a skill selection layer fed by DERIVED audience data
+(census derives audience from brand-prefix/path — never 586 hand edits).
+
 *DITEMPA BUKAN DIBERI ⚒️*
