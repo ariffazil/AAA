@@ -1,0 +1,17 @@
+[Unit]
+Description=arifOS Dream Engine — Nightly Memory Consolidation
+After=network.target postgresql.service
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+WorkingDirectory=/root/.hermes/skills/dream-engine
+ExecStart=/bin/bash /root/.hermes/skills/dream-engine/scripts/dream_engine.sh
+StandardOutput=journal
+StandardError=journal
+# F1 Kill Switch
+TimeoutStartSec=3600
+
+[Install]
+WantedBy=multi-user.target
