@@ -2,17 +2,17 @@
  "generated_note": "S1 residue manifest \u2014 address vs storage (2026-09-18)",
  "storage_root": "/root/AAA/skills",
  "view_root": "/root/.hermes/skills",
- "storage_skills": 547,
- "view_addresses": 435,
+ "storage_skills": 549,
+ "view_addresses": 445,
  "generations": {
-  "bucket": 125,
+  "bucket": 127,
   "taxonomy": 212,
   "flat-root": 210
  },
  "bundled_in_manifest": 50,
- "authored_not_in_bundled_manifest": 497,
- "symlinked_out_of_AAA": 37,
- "no_view_address": 227,
+ "authored_not_in_bundled_manifest": 499,
+ "symlinked_out_of_AAA": 0,
+ "no_view_address": 186,
  "broken_links": [],
  "self_referential_links": [],
  "no_address": [
@@ -28,14 +28,6 @@
    "name": "APEX-humility-godel",
    "rel": "domains/general/apex/recursive-audit/APEX-humility-godel",
    "kind": "taxonomy",
-   "bundled": true,
-   "is_link": false,
-   "target": null
-  },
-  {
-   "name": "FORGE-federation-manifest",
-   "rel": "FORGE-federation-manifest",
-   "kind": "flat-root",
    "bundled": true,
    "is_link": false,
    "target": null
@@ -177,14 +169,6 @@
    "target": null
   },
   {
-   "name": "audit-seal",
-   "rel": "audit-seal",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": false,
-   "target": null
-  },
-  {
    "name": "auditable-numeric-artifacts",
    "rel": "audit/auditable-numeric-artifacts",
    "kind": "bucket:audit",
@@ -297,22 +281,6 @@
    "target": null
   },
   {
-   "name": "companion-clis",
-   "rel": "companion-clis",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": false,
-   "target": null
-  },
-  {
-   "name": "constitutional",
-   "rel": "warga/constitutional",
-   "kind": "bucket:warga",
-   "bundled": false,
-   "is_link": false,
-   "target": null
-  },
-  {
    "name": "contextstream-memory-code-search",
    "rel": "contextstream-memory-code-search",
    "kind": "flat-root",
@@ -353,34 +321,10 @@
    "target": null
   },
   {
-   "name": "delta-omega-psi-multimodal-cognition",
-   "rel": "delta-omega-psi-multimodal-cognition",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": false,
-   "target": null
-  },
-  {
-   "name": "dignity-substrate",
-   "rel": "core/governance/dignity-substrate",
-   "kind": "bucket:core",
-   "bundled": false,
-   "is_link": false,
-   "target": null
-  },
-  {
    "name": "dissipative-transition-hold",
    "rel": "dissipative-transition-hold",
    "kind": "flat-root",
    "bundled": false,
-   "is_link": false,
-   "target": null
-  },
-  {
-   "name": "docs",
-   "rel": "docs",
-   "kind": "flat-root",
-   "bundled": true,
    "is_link": false,
    "target": null
   },
@@ -433,14 +377,6 @@
    "target": null
   },
   {
-   "name": "federation-connect-headscale",
-   "rel": "federation-connect-headscale",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": false,
-   "target": null
-  },
-  {
    "name": "federation-memory-writeback",
    "rel": "governance/federation-memory-writeback",
    "kind": "bucket:governance",
@@ -451,22 +387,6 @@
   {
    "name": "fi-mesh-check",
    "rel": "fi-mesh-check",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": false,
-   "target": null
-  },
-  {
-   "name": "fi-qwen-upgrade",
-   "rel": "fi-qwen-upgrade",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": false,
-   "target": null
-  },
-  {
-   "name": "fi-zai-probe",
-   "rel": "fi-zai-probe",
    "kind": "flat-root",
    "bundled": true,
    "is_link": false,
@@ -485,14 +405,6 @@
    "rel": "first-party-evidence-audit",
    "kind": "flat-root",
    "bundled": false,
-   "is_link": false,
-   "target": null
-  },
-  {
-   "name": "flash",
-   "rel": "flash",
-   "kind": "flat-root",
-   "bundled": true,
    "is_link": false,
    "target": null
   },
@@ -541,8 +453,8 @@
    "rel": "forge-cross-agent-handoff",
    "kind": "flat-root",
    "bundled": false,
-   "is_link": true,
-   "target": "/root/.hermes/profiles/aaa-hermes/skills/FORGE-cross-agent-handoff"
+   "is_link": false,
+   "target": null
   },
   {
    "name": "forge-design-intelligence",
@@ -793,14 +705,6 @@
    "target": null
   },
   {
-   "name": "forge-vss-verifier-suite",
-   "rel": "forge-vss-verifier-suite",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": false,
-   "target": null
-  },
-  {
    "name": "forge_card_migrate",
    "rel": "federation-identity-zen/forge_card_migrate",
    "kind": "bucket:federation-identity-zen",
@@ -873,14 +777,6 @@
    "target": null
   },
   {
-   "name": "handoff-contract",
-   "rel": "core/federation/handoff-contract",
-   "kind": "bucket:core",
-   "bundled": false,
-   "is_link": false,
-   "target": null
-  },
-  {
    "name": "hermes-coding-gateway",
    "rel": "hermes-coding-gateway",
    "kind": "flat-root",
@@ -893,14 +789,6 @@
    "rel": "hermes-federated-identity",
    "kind": "flat-root",
    "bundled": false,
-   "is_link": false,
-   "target": null
-  },
-  {
-   "name": "hermes-gateway-image-routing",
-   "rel": "hermes-gateway-image-routing",
-   "kind": "flat-root",
-   "bundled": true,
    "is_link": false,
    "target": null
   },
@@ -961,26 +849,10 @@
    "target": null
   },
   {
-   "name": "identity-invariance",
-   "rel": "warga/constitutional/identity-invariance",
-   "kind": "bucket:warga",
-   "bundled": true,
-   "is_link": false,
-   "target": null
-  },
-  {
    "name": "image-text-editing",
    "rel": "creative/image-text-editing",
    "kind": "bucket:creative",
    "bundled": false,
-   "is_link": false,
-   "target": null
-  },
-  {
-   "name": "imagine",
-   "rel": "imagine",
-   "kind": "flat-root",
-   "bundled": true,
    "is_link": false,
    "target": null
   },
@@ -1009,14 +881,6 @@
    "target": null
   },
   {
-   "name": "kernel-bind",
-   "rel": "kernel-bind",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": false,
-   "target": null
-  },
-  {
    "name": "kernel-trinity-33",
    "rel": "kernel-trinity-33",
    "kind": "flat-root",
@@ -1029,30 +893,6 @@
    "rel": "kimi-agentic-state",
    "kind": "flat-root",
    "bundled": false,
-   "is_link": false,
-   "target": null
-  },
-  {
-   "name": "know-language",
-   "rel": "know-language",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": false,
-   "target": null
-  },
-  {
-   "name": "know-math",
-   "rel": "know-math",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": false,
-   "target": null
-  },
-  {
-   "name": "know-physics",
-   "rel": "know-physics",
-   "kind": "flat-root",
-   "bundled": true,
    "is_link": false,
    "target": null
   },
@@ -1121,14 +961,6 @@
    "target": null
   },
   {
-   "name": "memory-manage",
-   "rel": "memory-manage",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": false,
-   "target": null
-  },
-  {
    "name": "merge-reconciler",
    "rel": "autonomous-ai-agents/merge-reconciler",
    "kind": "bucket:autonomous-ai-agents",
@@ -1153,22 +985,6 @@
    "target": null
   },
   {
-   "name": "minimax-image-gen",
-   "rel": "minimax-image-gen",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": false,
-   "target": null
-  },
-  {
-   "name": "multi-harness-sync",
-   "rel": "core/federation/multi-harness-sync",
-   "kind": "bucket:core",
-   "bundled": false,
-   "is_link": false,
-   "target": null
-  },
-  {
    "name": "multi-period-cashflow-analysis",
    "rel": "finance/multi-period-cashflow-analysis",
    "kind": "bucket:finance",
@@ -1185,26 +1001,10 @@
    "target": null
   },
   {
-   "name": "observe-ground",
-   "rel": "observe-ground",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": false,
-   "target": null
-  },
-  {
    "name": "ocr-and-documents",
    "rel": "productivity/ocr-and-documents",
    "kind": "bucket:productivity",
    "bundled": false,
-   "is_link": false,
-   "target": null
-  },
-  {
-   "name": "openclaw",
-   "rel": "openclaw",
-   "kind": "flat-root",
-   "bundled": true,
    "is_link": false,
    "target": null
   },
@@ -1345,14 +1145,6 @@
    "target": null
   },
   {
-   "name": "qwen-harness-tools",
-   "rel": "qwen-harness-tools",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": false,
-   "target": null
-  },
-  {
    "name": "qwen-meta-mesa",
    "rel": "qwen-meta-mesa",
    "kind": "flat-root",
@@ -1449,22 +1241,6 @@
    "target": null
   },
   {
-   "name": "reality-loop-operator",
-   "rel": "reality-loop-operator",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": false,
-   "target": null
-  },
-  {
-   "name": "recursive-audit",
-   "rel": "core/governance/recursive-audit",
-   "kind": "bucket:core",
-   "bundled": false,
-   "is_link": false,
-   "target": null
-  },
-  {
    "name": "relationship-evidence-audit",
    "rel": "audit/relationship-evidence-audit",
    "kind": "bucket:audit",
@@ -1481,26 +1257,10 @@
    "target": null
   },
   {
-   "name": "repo-cleanup",
-   "rel": "core/forge/repo-cleanup",
-   "kind": "bucket:core",
-   "bundled": false,
-   "is_link": false,
-   "target": null
-  },
-  {
    "name": "research-paper-writing",
    "rel": "research/research-paper-writing",
    "kind": "bucket:research",
    "bundled": false,
-   "is_link": false,
-   "target": null
-  },
-  {
-   "name": "route-dispatch",
-   "rel": "route-dispatch",
-   "kind": "flat-root",
-   "bundled": true,
    "is_link": false,
    "target": null
   },
@@ -1521,54 +1281,6 @@
    "target": null
   },
   {
-   "name": "runpod",
-   "rel": "runpod",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": false,
-   "target": null
-  },
-  {
-   "name": "runpod-mcp",
-   "rel": "runpod-mcp",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": false,
-   "target": null
-  },
-  {
-   "name": "runpod-usage",
-   "rel": "runpod-usage",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": false,
-   "target": null
-  },
-  {
-   "name": "runpodctl",
-   "rel": "runpodctl",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": false,
-   "target": null
-  },
-  {
-   "name": "runtime",
-   "rel": "runtime",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": false,
-   "target": null
-  },
-  {
-   "name": "runtime-probe",
-   "rel": "core/mcp/runtime-probe",
-   "kind": "bucket:core",
-   "bundled": false,
-   "is_link": false,
-   "target": null
-  },
-  {
    "name": "sanctuary-boundary-enforcer",
    "rel": "sanctuary-boundary-enforcer",
    "kind": "flat-root",
@@ -1580,14 +1292,6 @@
    "name": "scar-bridge-install",
    "rel": "scar-bridge-install",
    "kind": "flat-root",
-   "bundled": false,
-   "is_link": false,
-   "target": null
-  },
-  {
-   "name": "scar-integration",
-   "rel": "core/governance/scar-integration",
-   "kind": "bucket:core",
    "bundled": false,
    "is_link": false,
    "target": null
@@ -1617,17 +1321,17 @@
    "target": null
   },
   {
-   "name": "session-federation-discovery",
-   "rel": "substrate/session-federation-discovery",
-   "kind": "bucket:substrate",
+   "name": "session-librarian",
+   "rel": "productivity/session-librarian",
+   "kind": "bucket:productivity",
    "bundled": false,
    "is_link": false,
    "target": null
   },
   {
-   "name": "session-librarian",
-   "rel": "productivity/session-librarian",
-   "kind": "bucket:productivity",
+   "name": "site-traffic-reality",
+   "rel": "governance/site-traffic-reality",
+   "kind": "bucket:governance",
    "bundled": false,
    "is_link": false,
    "target": null
@@ -1649,14 +1353,6 @@
    "target": null
   },
   {
-   "name": "skill-portfolio-audit",
-   "rel": "core/governance/skill-portfolio-audit",
-   "kind": "bucket:core",
-   "bundled": false,
-   "is_link": false,
-   "target": null
-  },
-  {
    "name": "sovereign-recognize",
    "rel": "reflective/sovereign-recognize",
    "kind": "bucket:reflective",
@@ -1665,17 +1361,17 @@
    "target": null
   },
   {
-   "name": "substrate",
-   "rel": "substrate",
-   "kind": "flat-root",
-   "bundled": true,
+   "name": "symbol-namespace-integrity",
+   "rel": "governance/symbol-namespace-integrity",
+   "kind": "bucket:governance",
+   "bundled": false,
    "is_link": false,
    "target": null
   },
   {
-   "name": "symbol-namespace-integrity",
-   "rel": "governance/symbol-namespace-integrity",
-   "kind": "bucket:governance",
+   "name": "third-party-audit-intake",
+   "rel": "audit/third-party-audit-intake",
+   "kind": "bucket:audit",
    "bundled": false,
    "is_link": false,
    "target": null
@@ -1693,94 +1389,70 @@
    "rel": "understand",
    "kind": "flat-root",
    "bundled": false,
-   "is_link": true,
-   "target": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand"
+   "is_link": false,
+   "target": null
   },
   {
    "name": "understand-chat",
    "rel": "understand-chat",
    "kind": "flat-root",
    "bundled": false,
-   "is_link": true,
-   "target": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand-chat"
+   "is_link": false,
+   "target": null
   },
   {
    "name": "understand-dashboard",
    "rel": "understand-dashboard",
    "kind": "flat-root",
    "bundled": false,
-   "is_link": true,
-   "target": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand-dashboard"
+   "is_link": false,
+   "target": null
   },
   {
    "name": "understand-diff",
    "rel": "understand-diff",
    "kind": "flat-root",
    "bundled": false,
-   "is_link": true,
-   "target": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand-diff"
+   "is_link": false,
+   "target": null
   },
   {
    "name": "understand-domain",
    "rel": "understand-domain",
    "kind": "flat-root",
    "bundled": false,
-   "is_link": true,
-   "target": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand-domain"
+   "is_link": false,
+   "target": null
   },
   {
    "name": "understand-explain",
    "rel": "understand-explain",
    "kind": "flat-root",
    "bundled": false,
-   "is_link": true,
-   "target": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand-explain"
+   "is_link": false,
+   "target": null
   },
   {
    "name": "understand-figma",
    "rel": "understand-figma",
    "kind": "flat-root",
    "bundled": false,
-   "is_link": true,
-   "target": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand-figma"
+   "is_link": false,
+   "target": null
   },
   {
    "name": "understand-knowledge",
    "rel": "understand-knowledge",
    "kind": "flat-root",
    "bundled": false,
-   "is_link": true,
-   "target": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand-knowledge"
+   "is_link": false,
+   "target": null
   },
   {
    "name": "understand-onboard",
    "rel": "understand-onboard",
    "kind": "flat-root",
    "bundled": false,
-   "is_link": true,
-   "target": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand-onboard"
-  },
-  {
-   "name": "verify-gate",
-   "rel": "verify-gate",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": false,
-   "target": null
-  },
-  {
-   "name": "verify-runtime",
-   "rel": "core/governance/verify-runtime",
-   "kind": "bucket:core",
-   "bundled": false,
-   "is_link": false,
-   "target": null
-  },
-  {
-   "name": "warga",
-   "rel": "warga",
-   "kind": "flat-root",
-   "bundled": true,
    "is_link": false,
    "target": null
   },
@@ -3479,6 +3151,13 @@
    "is_link": false,
    "target": null
   },
+  "understand-dashboard": {
+   "rel": "understand-dashboard",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
   "agi-decisions-reflect": {
    "rel": "agi-decisions-reflect",
    "kind": "flat-root",
@@ -3514,6 +3193,13 @@
    "is_link": false,
    "target": null
   },
+  "forge-well-boundary-repair": {
+   "rel": "forge-well-boundary-repair",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
   "forge-google-workspace": {
    "rel": "forge-google-workspace",
    "kind": "flat-root",
@@ -3523,6 +3209,13 @@
   },
   "geox-grounding": {
    "rel": "geox-grounding",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "aaa-ocr-optical-compression": {
+   "rel": "aaa-ocr-optical-compression",
    "kind": "flat-root",
    "bundled": false,
    "is_link": false,
@@ -3584,6 +3277,20 @@
    "is_link": false,
    "target": null
   },
+  "understand-onboard": {
+   "rel": "understand-onboard",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "arifos-external-council": {
+   "rel": "arifos-external-council",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
   "forge-github-ops": {
    "rel": "forge-github-ops",
    "kind": "flat-root",
@@ -3602,6 +3309,20 @@
    "rel": "forge-mcp-ops/mcp-dual-era-transport",
    "kind": "bucket:forge-mcp-ops",
    "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "agi-plan-dag": {
+   "rel": "agi-plan-dag",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "help": {
+   "rel": "help",
+   "kind": "flat-root",
+   "bundled": true,
    "is_link": false,
    "target": null
   },
@@ -3710,6 +3431,13 @@
    "is_link": false,
    "target": null
   },
+  "wisdom-scar-session-audit": {
+   "rel": "wisdom-scar-session-audit",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
   "forge-ci-diagnose": {
    "rel": "forge-ci-diagnose",
    "kind": "flat-root",
@@ -3731,6 +3459,13 @@
    "is_link": false,
    "target": null
   },
+  "wealth-claim-state": {
+   "rel": "wealth-claim-state",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
   "proxy-verification-audit": {
    "rel": "court-audit/proxy-verification-audit",
    "kind": "bucket:court-audit",
@@ -3742,13 +3477,6 @@
    "rel": "court-audit/inherited-claim-audit",
    "kind": "bucket:court-audit",
    "bundled": false,
-   "is_link": false,
-   "target": null
-  },
-  "memory-manage": {
-   "rel": "memory-manage",
-   "kind": "flat-root",
-   "bundled": true,
    "is_link": false,
    "target": null
   },
@@ -3815,10 +3543,10 @@
    "is_link": false,
    "target": null
   },
-  "audit-seal": {
-   "rel": "audit-seal",
+  "forge-issue-triage": {
+   "rel": "forge-issue-triage",
    "kind": "flat-root",
-   "bundled": true,
+   "bundled": false,
    "is_link": false,
    "target": null
   },
@@ -3838,13 +3566,6 @@
   },
   "forge-multimodal-router": {
    "rel": "forge-multimodal-router",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": false,
-   "target": null
-  },
-  "observe-ground": {
-   "rel": "observe-ground",
    "kind": "flat-root",
    "bundled": true,
    "is_link": false,
@@ -4004,12 +3725,54 @@
    "is_link": false,
    "target": null
   },
+  "memory-manage": {
+   "rel": "memory-manage",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": true,
+   "target": "/root/AAA/skills/substrate/memory-manage"
+  },
+  "audit-seal": {
+   "rel": "audit-seal",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": true,
+   "target": "/root/AAA/skills/substrate/audit-seal"
+  },
+  "observe-ground": {
+   "rel": "observe-ground",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": true,
+   "target": "/root/AAA/skills/substrate/observe-ground"
+  },
+  "verify-gate": {
+   "rel": "verify-gate",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": true,
+   "target": "/root/AAA/skills/substrate/verify-gate"
+  },
+  "route-dispatch": {
+   "rel": "route-dispatch",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": true,
+   "target": "/root/AAA/skills/substrate/route-dispatch"
+  },
   "session-federation-discovery": {
    "rel": "substrate/session-federation-discovery",
    "kind": "bucket:substrate",
    "bundled": false,
    "is_link": false,
    "target": null
+  },
+  "kernel-bind": {
+   "rel": "kernel-bind",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": true,
+   "target": "/root/AAA/skills/substrate/kernel-bind"
   },
   "outbound-message-delivery": {
    "rel": "telegram-ops/outbound-message-delivery",
@@ -4137,6 +3900,13 @@
    "is_link": false,
    "target": null
   },
+  "cognitive-commands": {
+   "rel": "cognitive-commands",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
   "youtube-extraction-datacenter-ip": {
    "rel": "youtube-extraction-datacenter-ip",
    "kind": "flat-root",
@@ -4146,6 +3916,13 @@
   },
   "opencode-meta-mesa": {
    "rel": "opencode-meta-mesa",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-subagent-spawn": {
+   "rel": "forge-subagent-spawn",
    "kind": "flat-root",
    "bundled": false,
    "is_link": false,
@@ -4172,10 +3949,10 @@
    "is_link": false,
    "target": null
   },
-  "verify-gate": {
-   "rel": "verify-gate",
+  "forge-cross-agent-handoff": {
+   "rel": "forge-cross-agent-handoff",
    "kind": "flat-root",
-   "bundled": true,
+   "bundled": false,
    "is_link": false,
    "target": null
   },
@@ -4312,17 +4089,17 @@
    "is_link": false,
    "target": null
   },
-  "forge-mcp-gui": {
-   "rel": "forge-mcp-gui",
+  "understand-explain": {
+   "rel": "understand-explain",
    "kind": "flat-root",
    "bundled": false,
    "is_link": false,
    "target": null
   },
-  "route-dispatch": {
-   "rel": "route-dispatch",
+  "forge-mcp-gui": {
+   "rel": "forge-mcp-gui",
    "kind": "flat-root",
-   "bundled": true,
+   "bundled": false,
    "is_link": false,
    "target": null
   },
@@ -4480,9 +4257,23 @@
    "is_link": false,
    "target": null
   },
+  "forge-vault999-witness": {
+   "rel": "forge-vault999-witness",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
   "aaa-doctrine-sealing": {
    "rel": "aaa-governance/aaa-doctrine-sealing",
    "kind": "bucket:aaa-governance",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-subagent-lifecycle": {
+   "rel": "forge-subagent-lifecycle",
+   "kind": "flat-root",
    "bundled": false,
    "is_link": false,
    "target": null
@@ -4508,6 +4299,13 @@
    "is_link": false,
    "target": null
   },
+  "arifos-constitutional-judge": {
+   "rel": "arifos-constitutional-judge",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
   "mcp-shopping-list-2026-09": {
    "rel": "mcp-shopping-list-2026-09",
    "kind": "flat-root",
@@ -4524,6 +4322,13 @@
   },
   "forge-visual-qa-w3": {
    "rel": "forge-visual-qa-w3",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-lsp-pre-edit-gate": {
+   "rel": "forge-lsp-pre-edit-gate",
    "kind": "flat-root",
    "bundled": false,
    "is_link": false,
@@ -4557,8 +4362,36 @@
    "is_link": false,
    "target": null
   },
+  "federation-release-attestation": {
+   "rel": "federation-release-attestation",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
   "human-apps-roadmap-2026": {
    "rel": "human-apps-roadmap-2026",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "arifos-kernel-zen-audit": {
+   "rel": "arifos-kernel-zen-audit",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "understand": {
+   "rel": "understand",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "understand-diff": {
+   "rel": "understand-diff",
    "kind": "flat-root",
    "bundled": false,
    "is_link": false,
@@ -4568,6 +4401,13 @@
    "rel": "aaa-musyawarah-execution",
    "kind": "flat-root",
    "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "aaa-pdf-voice-protocol": {
+   "rel": "aaa-pdf-voice-protocol",
+   "kind": "flat-root",
+   "bundled": true,
    "is_link": false,
    "target": null
   },
@@ -4601,6 +4441,13 @@
   },
   "graphiti-temporal-memory-ops": {
    "rel": "graphiti-temporal-memory-ops",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "agi-multimodal-bridge": {
+   "rel": "agi-multimodal-bridge",
    "kind": "flat-root",
    "bundled": false,
    "is_link": false,
@@ -4746,6 +4593,13 @@
    "is_link": false,
    "target": null
   },
+  "third-party-audit-intake": {
+   "rel": "audit/third-party-audit-intake",
+   "kind": "bucket:audit",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
   "corpus-evidence-discipline": {
    "rel": "audit/corpus-evidence-discipline",
    "kind": "bucket:audit",
@@ -4844,6 +4698,13 @@
    "is_link": false,
    "target": null
   },
+  "understand-domain": {
+   "rel": "understand-domain",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
   "public-column-publishing": {
    "rel": "public-column-publishing",
    "kind": "flat-root",
@@ -4935,6 +4796,13 @@
    "is_link": false,
    "target": null
   },
+  "aaa-audio-qualia-doctrine": {
+   "rel": "aaa-audio-qualia-doctrine",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
   "human-relationship-audit": {
    "rel": "research/human-relationship-audit",
    "kind": "bucket:research",
@@ -4998,6 +4866,13 @@
    "is_link": false,
    "target": null
   },
+  "external-artifact-verdict": {
+   "rel": "external-artifact-verdict",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
   "federation-memory-writeback": {
    "rel": "governance/federation-memory-writeback",
    "kind": "bucket:governance",
@@ -5040,6 +4915,13 @@
    "is_link": false,
    "target": null
   },
+  "site-traffic-reality": {
+   "rel": "governance/site-traffic-reality",
+   "kind": "bucket:governance",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
   "public-claims-maintenance": {
    "rel": "governance/public-claims-maintenance",
    "kind": "bucket:governance",
@@ -5075,6 +4957,13 @@
    "is_link": false,
    "target": null
   },
+  "token-plan-image": {
+   "rel": "token-plan-image",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
   "runpod-mcp": {
    "rel": "runpod-mcp",
    "kind": "flat-root",
@@ -5098,6 +4987,13 @@
   },
   "forge-federation-manifest": {
    "rel": "forge-federation-manifest",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-ephemeral-genesis": {
+   "rel": "forge-ephemeral-genesis",
    "kind": "flat-root",
    "bundled": false,
    "is_link": false,
@@ -5222,6 +5118,27 @@
    "is_link": false,
    "target": null
   },
+  "forge-seal-a-close": {
+   "rel": "forge-seal-a-close",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "causal555-pywhy": {
+   "rel": "causal555-pywhy",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "understand-figma": {
+   "rel": "understand-figma",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
   "mapbox-cartography-gis": {
    "rel": "mapbox-cartography-gis",
    "kind": "flat-root",
@@ -5257,13 +5174,6 @@
    "is_link": false,
    "target": null
   },
-  "kernel-bind": {
-   "rel": "kernel-bind",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": false,
-   "target": null
-  },
   "qwencloud-audio-tts": {
    "rel": "qwencloud-audio-tts",
    "kind": "flat-root",
@@ -5278,8 +5188,22 @@
    "is_link": false,
    "target": null
   },
+  "submission-readiness-audit": {
+   "rel": "submission-readiness-audit",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
   "forge-agentic-web-builder": {
    "rel": "forge-agentic-web-builder",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "understand-chat": {
+   "rel": "understand-chat",
    "kind": "flat-root",
    "bundled": false,
    "is_link": false,
@@ -5334,6 +5258,20 @@
    "is_link": false,
    "target": null
   },
+  "understand-knowledge": {
+   "rel": "understand-knowledge",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-cross-repo-doc-zen": {
+   "rel": "forge-cross-repo-doc-zen",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
   "forge-komda-color-law": {
    "rel": "forge-komda-color-law",
    "kind": "flat-root",
@@ -5369,6 +5307,13 @@
    "is_link": false,
    "target": null
   },
+  "forge-t3a-binding-matrix": {
+   "rel": "forge-t3a-binding-matrix",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
   "runpodctl": {
    "rel": "runpodctl",
    "kind": "flat-root",
@@ -5397,271 +5342,12 @@
    "is_link": false,
    "target": null
   },
-  "aaa-audio-qualia-doctrine": {
-   "rel": "aaa-audio-qualia-doctrine",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": true,
-   "target": "/root/.hermes/profiles/aaa-hermes/skills/AAA-audio-qualia-doctrine"
-  },
-  "aaa-ocr-optical-compression": {
-   "rel": "aaa-ocr-optical-compression",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": true,
-   "target": "/root/.hermes/profiles/aaa-hermes/skills/AAA-OCR-optical-compression"
-  },
-  "aaa-pdf-voice-protocol": {
-   "rel": "aaa-pdf-voice-protocol",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": true,
-   "target": "/root/.hermes/profiles/aaa-hermes/skills/aaa-pdf-voice-protocol"
-  },
-  "agi-multimodal-bridge": {
-   "rel": "agi-multimodal-bridge",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": true,
-   "target": "/root/.hermes/profiles/aaa-hermes/skills/AGI-multimodal-bridge"
-  },
-  "agi-plan-dag": {
-   "rel": "agi-plan-dag",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": true,
-   "target": "/root/.hermes/profiles/aaa-hermes/skills/AGI-plan-dag"
-  },
-  "arifos-constitutional-judge": {
-   "rel": "arifos-constitutional-judge",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": true,
-   "target": "/root/.hermes/profiles/aaa-hermes/skills/arifos-constitutional-judge"
-  },
-  "arifos-external-council": {
-   "rel": "arifos-external-council",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": true,
-   "target": "/root/.hermes/profiles/aaa-hermes/skills/arifos-external-council"
-  },
-  "arifos-kernel-zen-audit": {
-   "rel": "arifos-kernel-zen-audit",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": true,
-   "target": "/root/.hermes/profiles/aaa-hermes/skills/arifos-kernel-zen-audit"
-  },
-  "causal555-pywhy": {
-   "rel": "causal555-pywhy",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": true,
-   "target": "/root/.hermes/skills/causal555-pywhy"
-  },
-  "cognitive-commands": {
-   "rel": "cognitive-commands",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": true,
-   "target": "/root/.hermes/skills/cognitive-commands"
-  },
-  "external-artifact-verdict": {
-   "rel": "external-artifact-verdict",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": true,
-   "target": "/root/.hermes/skills/external-artifact-verdict"
-  },
-  "federation-release-attestation": {
-   "rel": "federation-release-attestation",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": true,
-   "target": "/root/.hermes/skills/federation-release-attestation"
-  },
-  "forge-cross-agent-handoff": {
-   "rel": "forge-cross-agent-handoff",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": true,
-   "target": "/root/.hermes/profiles/aaa-hermes/skills/FORGE-cross-agent-handoff"
-  },
-  "forge-cross-repo-doc-zen": {
-   "rel": "forge-cross-repo-doc-zen",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": true,
-   "target": "/root/.hermes/skills/FORGE-cross-repo-doc-zen"
-  },
-  "forge-ephemeral-genesis": {
-   "rel": "forge-ephemeral-genesis",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": true,
-   "target": "/root/.hermes/skills/FORGE-ephemeral-genesis"
-  },
-  "forge-issue-triage": {
-   "rel": "forge-issue-triage",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": true,
-   "target": "/root/.hermes/skills/FORGE-issue-triage"
-  },
-  "forge-lsp-pre-edit-gate": {
-   "rel": "forge-lsp-pre-edit-gate",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": true,
-   "target": "/root/.hermes/skills/FORGE-lsp-pre-edit-gate"
-  },
-  "forge-seal-a-close": {
-   "rel": "forge-seal-a-close",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": true,
-   "target": "/root/.hermes/skills/FORGE-seal-a-close"
-  },
-  "forge-subagent-lifecycle": {
-   "rel": "forge-subagent-lifecycle",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": true,
-   "target": "/root/.hermes/skills/domains/general/aaa/subagent/FORGE-subagent-lifecycle"
-  },
-  "forge-subagent-spawn": {
-   "rel": "forge-subagent-spawn",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": true,
-   "target": "/root/.hermes/skills/FORGE-subagent-spawn"
-  },
-  "forge-t3a-binding-matrix": {
-   "rel": "forge-t3a-binding-matrix",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": true,
-   "target": "/root/.hermes/skills/FORGE-t3a-binding-matrix"
-  },
-  "forge-vault999-witness": {
-   "rel": "forge-vault999-witness",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": true,
-   "target": "/root/.hermes/skills/FORGE-vault999-witness"
-  },
-  "forge-well-boundary-repair": {
-   "rel": "forge-well-boundary-repair",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": true,
-   "target": "/root/.hermes/profiles/aaa-hermes/skills/FORGE-well-boundary-repair"
-  },
-  "help": {
-   "rel": "help",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": true,
-   "target": "/root/.hermes/skills/help"
-  },
   "my-reality-stack": {
    "rel": "my-reality-stack",
    "kind": "flat-root",
    "bundled": false,
    "is_link": true,
    "target": "/root/AAA/skills/MY-REALITY-STACK"
-  },
-  "submission-readiness-audit": {
-   "rel": "submission-readiness-audit",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": true,
-   "target": "/root/.hermes/skills/submission-readiness-audit"
-  },
-  "token-plan-image": {
-   "rel": "token-plan-image",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": true,
-   "target": "/root/.hermes/profiles/aaa-hermes/skills/token-plan-image"
-  },
-  "understand": {
-   "rel": "understand",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": true,
-   "target": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand"
-  },
-  "understand-chat": {
-   "rel": "understand-chat",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": true,
-   "target": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand-chat"
-  },
-  "understand-dashboard": {
-   "rel": "understand-dashboard",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": true,
-   "target": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand-dashboard"
-  },
-  "understand-diff": {
-   "rel": "understand-diff",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": true,
-   "target": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand-diff"
-  },
-  "understand-domain": {
-   "rel": "understand-domain",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": true,
-   "target": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand-domain"
-  },
-  "understand-explain": {
-   "rel": "understand-explain",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": true,
-   "target": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand-explain"
-  },
-  "understand-figma": {
-   "rel": "understand-figma",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": true,
-   "target": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand-figma"
-  },
-  "understand-knowledge": {
-   "rel": "understand-knowledge",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": true,
-   "target": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand-knowledge"
-  },
-  "understand-onboard": {
-   "rel": "understand-onboard",
-   "kind": "flat-root",
-   "bundled": false,
-   "is_link": true,
-   "target": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand-onboard"
-  },
-  "wealth-claim-state": {
-   "rel": "wealth-claim-state",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": true,
-   "target": "/root/.hermes/profiles/aaa-hermes/skills/wealth-claim-state"
-  },
-  "wisdom-scar-session-audit": {
-   "rel": "wisdom-scar-session-audit",
-   "kind": "flat-root",
-   "bundled": true,
-   "is_link": true,
-   "target": "/root/.hermes/skills/wisdom-scar-session-audit"
   }
  }
 }
