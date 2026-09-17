@@ -100,6 +100,23 @@ Dark-theme checklist: every style has an explicit light `textColor`; every divid
 light `color`; the callback fills the rect before drawing the page number; and the normal §3
 density check still applies unchanged (`page.get_text()` is unaffected by background colour).
 
+**A style `parent` must be a style object, not a style name.** If a string reaches the paragraph
+parser where a style is expected, ReportLab fails with `'str' object has no attribute 'fontName'`
+(and a follow-on `'str' object has no attribute 'name'`) from `paraparser._initial_frag` — an error
+that names neither your variable nor your paragraph, so it reads as a ReportLab bug rather than a
+bad argument. Build styles through a small factory that always receives `parent=<style object>`, and
+keep one helper per document so every style is constructed the same way:
+
+```python
+def mk(name, **kw):
+    base = dict(fontName=body_font, fontSize=9, textColor=GOLD, leading=14, spaceAfter=3*mm)
+    base.update(kw)
+    return ParagraphStyle(name, **base)   # name is a label, never a parent
+```
+
+When a build fails with an attribute error inside `paraparser`, check the style arguments before
+touching the content.
+
 ### Section header band
 
 Wrap each title in a one-cell Table with a background colour. Gives a coloured band without drawing primitives or measuring text:

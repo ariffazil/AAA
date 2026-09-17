@@ -55,6 +55,48 @@ Do not answer a request for clarity with volume. When a person asks for confiden
 
 When asked to say something *as* the user to another human, match his register: plain Malay/English code-switch, short sentences, no headers-as-therapy, no bullet list of feelings, no numbered framework where one sentence will do. Ground it in specific shared history rather than general encouragement — a named moment he witnessed lands; a generic pep talk does not.
 
+- **Offer the shortest true form, then expect it to get shorter still.** He will cut a list down to one item. Give the short version first and name the longer one as available; never make him edit your draft down before he can send it.
+- **Adopt his phrasing verbatim.** When he supplies his own line, it is better than any rewrite — it is his voice. Build around it, and never polish it back toward formal.
+- **No strategy inside the message.** Positioning, visibility requests, risk hedging and leverage do not belong in text a human will read as coming from him; he strips them. If a point has to be made indirectly, say it to him as counsel outside the draft.
+- **The strongest drafts are questions and plain statements.** A line that asks after the person, or states one plain fact about them, outperforms any structured argument — because it is the only thing he would actually say.
+- **Match the form's language, but offer his.** If the form is in English, provide English and offer Malay. For anything personal or emotional he will usually want his own register.
+- **Leave one slot for a real event, never invent the event.** Say where a concrete moment of his belongs; fabricating an anecdote in his voice is the one unrecoverable error here.
+
+### Personal letters to a colleague, mentor or superior
+
+A letter the sovereign sends to someone in his working life is a short, narrow artifact: it says
+one thing he has wanted to say to that person. Do not build it like a reflective letter to family.
+
+- **One to two pages.** The reader is a working adult who will read it once. A four-to-six page
+  wisdom piece is the wrong form here.
+- **Anchor on observed conduct, not adjectives.** There is no person-card and no shared family
+  history to draw on, so the only usable material is conduct the writer personally witnessed,
+  ideally repeated — how the person runs a meeting, how they treat people under pressure, what they
+  do when someone is struggling. A named behaviour lands; "you are a great leader" does not.
+- **Keep the sender's own business out of it unless he asks.** Not the restructuring, not the
+  package, not the numbers, not the plan to leave. If a transition has to be signalled, the whole
+  of it is one soft first-person line near the close — never analysis, never a status update.
+- **Honorific and pronoun register.** Address by honorific ("Encik"/"Puan"), first person as the
+  sovereign actually speaks, and none of the formal-correspondence furniture that turns a letter
+  into HR correspondence.
+- **Page furniture is: address line, body, signature, date. Nothing else.** No federation motto,
+  no house sign-off, no footer credit. The motto is internal punctuation; on a letter to a real
+  human it is a leak — the same rule that keeps organ names out of the body keeps the motto out of
+  the footer.
+- **When he hands over content as terse numbered fragments, fold them in — do not query them.**
+  Mid-task shorthand is body copy he has already decided, not a spec to be clarified. Asking him to
+  expand it spends the attention the artifact exists to protect.
+
+### When the goal is to reach a person, hand over the primary source
+
+If the artifact exists to move, thank or persuade a human, prefer the authentic original over a synthesis. Produce the real page, the real document, the real record.
+
+A sourced original is evidence and cannot be accused of spin; a graphic built to persuade is visibly built to persuade. Sourcing also surfaces things nobody was looking for — an original page can carry a fact that changes the message.
+
+**Rendering a true page from a source PDF:** locate the page from extracted text first, confirm the page number, then rasterise that page at 300 dpi so it is legible on a phone. Verify the rendered text against the extracted text before sending — a screenshot of the wrong page is worse than no artifact at all.
+
+**Send one page, not a bundle.** If a comparison is worth making, send the authentic source first and hold the comparison back until he asks. A drift exhibit aimed at a person converts recognition into accusation.
+
 ### Zero system references in personal reflection artifacts
 
 When the artifact is a personal reflection, life document, or wisdom piece — anything addressed to the human about his own life — the rendered text must contain ZERO references to any technical system: no MCP, no organs, no federation, no agents, no tools, no code, no architecture, no federation nodes. The human reads this, not the machine. 'No coding stuff' is the rule, not a suggestion. If the underlying work used 14 MCP tools and 3 subagents to produce it, the human never sees that. The artifact reads as if it was written by someone who sat with him and thought deeply — because that is exactly what happened, the tools are just the cognitive infrastructure.
@@ -67,9 +109,31 @@ Market, salary, price and status figures must come from a live probe in the same
 
 Where a domain convention differs from the obvious metric, report the convention rather than the raw metric. Example: Malaysian oil-and-gas compensation is quoted as a **total package** (base + bonus + allowances + rotation). Base alone is systematically low, and quoting it alone materially understates an offer — quote the package and say which components are in it.
 
+**Read a figure off its row label, not its position.** Stacked tables put the prior-year cell of one series directly beneath the current-year cell of the next, so proximity is not identity. Match the number to its row label, then re-verify against both cells of that row. A cross-row misread is the first thing a checking reader finds, because they go straight to that page.
+
+**When a release and a report give different values for the same metric, find the definitional reason before calling it a contradiction.** Two documents routinely define one metric differently and both are correct. Name which definition the artifact cites; never present the difference as a discrepancy, and never quietly pick one.
+
+**Decompose an aggregate before it carries an argument.** State its composition, especially the cash/non-cash split. A number whose parts have not been separated cannot support a claim about money moving, and a large figure whose non-cash share is high collapses the argument built on it.
+
+**Never annualise a positional delta into a rate.** A movement in a balance-sheet position can come from new borrowings, FX translation or declared distributions — none of which are operating burn. Check borrowings before using any cash delta as a run-rate.
+
+**Assumed inputs stay visible.** A comparison built on an assumed unit cost reads as precise and cannot be checked. Label it an assumption inside the artifact or drop it — one unverifiable number contaminates the verifiable ones beside it.
+
+**Never write an unattributable attribution.** "Analysts say", "sources indicate", "it is understood" — a claim with no named owner. If the source cannot be named, the claim does not ship; a checking reader finds that gap before they find the argument.
+
+**When the reader returns corrections:** reopen the primary source — do not reconstruct your reasoning from memory. Do not defend; verify and report. Separate *I was wrong* from *the figure was right but the definition differs*. Correct even when it hurts your own conclusion, and say so. Move claims the reader independently verified out of the unverified column. Then issue a **new version with a change table** (previous value | corrected value | why) and a count of corrections — never a silent edit, because a reader already holding the earlier number cannot otherwise tell which document they are reading.
+
 ## 6. Iterate one file, then send once
 
 Build and refine a single output path; do not generate v2/v3/v4 side by side and ask the user to choose. Each intermediate is noise in their inbox. Send the artifact when it passes the checklist, then iterate if rejected, and offer to remove superseded drafts rather than leaving several near-identical files behind.
+
+**Distinction — drafts iterate in place, delivered artifacts version.** The rule above governs
+*drafts*: several unshipped near-identical files are noise. It does not apply once an artifact has
+been delivered and the reader returns corrections. A corrected artifact gets a **new version plus a
+short table of what changed and why** — because a reader who already holds the earlier number
+cannot otherwise tell which document they are reading, and because a visible correction is what
+makes the surviving claims trustworthy. See `auditable-numeric-artifacts` for the full
+receiving-an-audit procedure.
 
 ## 7. Pre-send checklist
 
@@ -80,6 +144,9 @@ Build and refine a single output path; do not generate v2/v3/v4 side by side and
 [ ] No number appears without a source and a date (§5)
 [ ] No internal vocabulary in the rendered text (floor IDs, tags, tool names, PASS/FAIL)
 [ ] No system references in personal reflection artifacts (§4)
+[ ] Personal letters: no motto, no house sign-off, no sender's business unless asked (§4)
+[ ] If reaching a person: authentic source used, not a synthesis; one page sent, comparison held back (§4)
+[ ] Every number traceable to a primary source; anything secondary is labelled (§5)
 [ ] Page count matches the limit, verified from the file
 [ ] Text extracts cleanly (pymupdf / pdftotext returns real text, not empty)
 [ ] One file sent, not several drafts (§6)
