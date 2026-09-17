@@ -43,6 +43,12 @@ If you cannot name the one thing the reader must retain, the layout is not finis
 
 A page limit is a density target, not permission to ship whitespace. A sparse two-page document reads worse than a packed one. When told "max N pages", produce N full pages of signal and verify by counting characters per page from the built PDF — never by eyeballing. Snippet in `references/pdf-and-image-toolchain.md`.
 
+**Count ink, not just characters, when a document ends in a short block.** A closing epigraph, dedication, signature block or footer carrying a generous top margin will commonly overflow onto a page of its own. That page is genuinely sparse — on the order of one percent ink coverage — and reads to the recipient as a defect, because a near-empty final page looks like something failed to render.
+
+Detect it by rasterising the built pages and computing dark-pixel share per page rather than trusting the page count; a spread where one page sits an order of magnitude below its neighbours is the signature of a stranded fragment, not of intentional design.
+
+The fix is layout, not content: tighten the trailing block's top margin and line spacing so it joins the preceding page, and shorten its line lengths if that is what makes it fit. Do **not** delete the block, and do not pad it with filler to earn its page — filler on a closing page is more visible than the whitespace it replaced.
+
 ## 4. Care artifacts are not information transfer
 
 When the artifact exists to steady a person — interview preparation, encouragement, hard news — the body is: their proven record stated plainly, what is actually at stake, what they control, and three or fewer instructions. Not a curriculum.
@@ -141,6 +147,7 @@ receiving-an-audit procedure.
 [ ] Reader named, and the layout matches that reader (§1)
 [ ] The one thing they must retain is the most visually weighted element (§2)
 [ ] Every page is dense — chars/page counted from the built PDF, not eyeballed (§3)
+[ ] No stranded near-empty final page — ink coverage measured per page (§3)
 [ ] No number appears without a source and a date (§5)
 [ ] No internal vocabulary in the rendered text (floor IDs, tags, tool names, PASS/FAIL)
 [ ] No system references in personal reflection artifacts (§4)
