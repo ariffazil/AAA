@@ -54,6 +54,15 @@ else: -> HEALTHY
 **Collision verdict: DISJOINT.** Package edit at ~3045 (substrate); staged `cb2411928` at
 ~24340 / ~24496 / ~27775 (memory routing + registration guard). Both land in either order.
 
+## Package thesis (pass 4, cycle 12) — what the 5 files say together
+A coherent **status-plane / verdict-vocabulary** fix attempt (labels C1/C3/C4 suggest a numbered audit list):
+- **C1** (`runtime/tools.py`, ~3045): tool-degradation ≠ substrate-degradation — removes the branch that forced substrate DEGRADED on any tool-level degradation.
+- **C3** (`runtime/verdict.py`): `_LEGACY_VERDICT_MAP["DEGRADED"]` → **HOLD** (fail-closed), not SABAR — "health state leaked as verdict".
+- **C4** (`runtime/tools_internal.py`, `apex_judge_dispatch_impl`): annotates synthetic `system_status="HEALTHY"` / `judge_readiness="READY"` — "must be derived from substrate_readiness in production".
+- **Vocabulary canonicalization** (`abi/amanah_gate.py`, `schemas/budget_contract.py`): `HOLD = "888_HOLD"` → `"HOLD"`, both citing `runtime/verdict.py:57` as canonical.
+
+=> Same defect family as the STEP 4 register (dual truth / status planes). **C3 is a semantic change** (verdict mapping) → 888/F13 class — consistent with 333 not patching it.
+
 ## Recommendation (F13)
 Treat the clone as an **in-flight workspace, not a stale artifact**:
 1. Identify the author session (Sep 17 ~03:00–03:04) or decide to adopt/abandon deliberately — do **not** blind-sync and do **not** discard.
