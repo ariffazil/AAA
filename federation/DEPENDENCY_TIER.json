@@ -9,7 +9,8 @@
       "LOCAL_CPU_RAM": "T1 FOUNDATION \u2014 dies only when hardware dies",
       "PAID_API_BOUNDED": "T2 FOUNDATION \u2014 dies only when budget empties",
       "FREE_API_LUXURY": "T3 LUXURY \u2014 dies when provider decides",
-      "PROMO_CREDIT": "T4 LUXURY \u2014 dies on a date"
+      "PROMO_CREDIT": "T4 LUXURY \u2014 dies on a date",
+      "LOCAL_PARKED": "T1-PARKED \u2014 local capability deliberately parked; not load-bearing while parked; revive = F13 decision"
     },
     "load_bearing": [
       "LOCAL_CPU_RAM",
@@ -27,15 +28,23 @@
   },
   "deps": {
     "ollama": {
-      "tier": "LOCAL_CPU_RAM",
+      "tier": "LOCAL_PARKED",
       "kind": "port",
       "probe": {
         "host": "127.0.0.1",
         "port": 11434
       },
       "survival_hypothesis": "dies_when=hardware_dies",
-      "observed_status": "live",
-      "last_probe_utc": "2026-09-11T03:35:00Z"
+      "observed_status": "dead",
+      "last_probe_utc": "2026-09-16T16:20:00Z",
+      "parked": {
+        "recorded_at": "2026-09-16T16:20:58.571475+00:00",
+        "recorded_by": "333-AGI P1 dependency ruling (APEX-ZEN cron program)",
+        "reason": "service disabled + port dead since observe; RAM-constrained KVM8; FED :4000 sovereign gateway covers inference; revive recreates memory pressure that likely caused original disable",
+        "evidence": "systemctl status ollama (disabled/inactive); 127.0.0.1:11434 dead; 12 drop-in configs remain",
+        "review": "F13 revive decision; revisit if FED provider coverage fails",
+        "prior_tier": "LOCAL_CPU_RAM"
+      }
     },
     "postgres": {
       "tier": "LOCAL_CPU_RAM",
