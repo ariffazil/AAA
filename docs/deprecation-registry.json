@@ -1,7 +1,7 @@
 {
-  "version": "2026.09.15",
-  "last_audit": "2026-09-15T15:14:00+08:00",
-  "auditor": "Hermes ASI subagent (VAULT999-SOT-RECONCILIATION::2026-09-15) — reconciled every path/env var that reads or writes VAULT999 seals on KVM8; fixed 4 stale consumers; 1 F13 proposal raised (lane + store consolidation)",
+  "version": "2026.09.16",
+  "last_audit": "2026-09-16T14:55:00+08:00",
+  "auditor": "333-AGI session SEAL-386cc71901e64263 (surface-entropy chain #1+#4, Arif-directed order #5A->#4->#1->#5B->#2->#3->#6)",
   "open_divergences": [
     {
       "id": "DIV-HERMES-BACKUP-GAP",
@@ -443,6 +443,54 @@
       "tombstone_date": "2026-06-02",
       "reason": "Internal deliberation surface for AAA a2a-server. Absorbed into arif_judge.",
       "replacement": "arif_judge"
+    },
+    {
+      "id": "well_readiness",
+      "type": "tool",
+      "status": "REMOVED",
+      "tombstone_date": "2026-09-16",
+      "reason": "removal_date 2026-09-01 lapsed; 30d call count=0 (VAULT999 audit); handler unregistered 2026-08-04; registry advertising removed 2026-09-16 (server.py date-aware tombstone filter + v2 surface)",
+      "replacement": "well_validate_vitality(mode=readiness)"
+    },
+    {
+      "id": "well_get_health",
+      "type": "tool",
+      "status": "REMOVED",
+      "tombstone_date": "2026-09-16",
+      "reason": "removal_date 2026-09-01 lapsed; 30d call count=0 (VAULT999 audit); handler unregistered 2026-08-04; registry advertising removed 2026-09-16 (server.py date-aware tombstone filter + v2 surface)",
+      "replacement": "well_assess_reliability(mode=health)"
+    },
+    {
+      "id": "well_state",
+      "type": "tool",
+      "status": "REMOVED",
+      "tombstone_date": "2026-09-16",
+      "reason": "removal_date 2026-09-01 lapsed; 30d call count=0 (VAULT999 audit); handler unregistered 2026-08-04; registry advertising removed 2026-09-16 (server.py date-aware tombstone filter + v2 surface)",
+      "replacement": "well_validate_vitality(mode=state)"
+    },
+    {
+      "id": "well_init",
+      "type": "tool",
+      "status": "REMOVED",
+      "tombstone_date": "2026-09-16",
+      "reason": "removal_date 2026-09-01 lapsed; 30d call count=0 (VAULT999 audit); handler unregistered 2026-08-04; registry advertising removed 2026-09-16 (server.py date-aware tombstone filter + v2 surface)",
+      "replacement": "well_000_init"
+    },
+    {
+      "id": "well_machine_state",
+      "type": "tool",
+      "status": "REMOVED",
+      "tombstone_date": "2026-09-16",
+      "reason": "removal_date 2026-09-01 lapsed; 30d call count=0 (VAULT999 audit); handler unregistered 2026-08-04; registry advertising removed 2026-09-16 (server.py date-aware tombstone filter + v2 surface)",
+      "replacement": "well_assess_reliability"
+    },
+    {
+      "id": "well_assess_governance",
+      "type": "tool",
+      "status": "REMOVED",
+      "tombstone_date": "2026-09-16",
+      "reason": "removal_date 2026-09-01 lapsed; 30d call count=0 (VAULT999 audit); handler unregistered 2026-08-04; registry advertising removed 2026-09-16 (server.py date-aware tombstone filter + v2 surface)",
+      "replacement": "well_detect_boundary"
     }
   ],
   "deprecated_files": [
@@ -588,5 +636,48 @@
     "agents_total": 15,
     "agents_with_agents_md": 7,
     "agents_autopilot": "ALL 7 CLI agents now declare AUTOPILOT ON"
-  }
+  },
+  "declared_aliases": [
+    {
+      "id": "hermes_fact_check",
+      "surface_class": "convenience_alias",
+      "alias_of": "arif_think",
+      "canonical_mode": "verify",
+      "lane": "FED free",
+      "declared": "2026-09-16"
+    },
+    {
+      "id": "hermes_cross_verify",
+      "surface_class": "convenience_alias",
+      "alias_of": "arif_think",
+      "canonical_mode": "verify",
+      "lane": "FED free",
+      "declared": "2026-09-16"
+    },
+    {
+      "id": "hermes_plan_review",
+      "surface_class": "convenience_alias",
+      "alias_of": "arif_think",
+      "canonical_mode": "plan_review",
+      "lane": "FED free",
+      "declared": "2026-09-16"
+    },
+    {
+      "id": "hermes_memory_steward",
+      "surface_class": "convenience_alias",
+      "alias_of": "arif_memory",
+      "canonical_mode": "recall",
+      "lane": "FED free",
+      "declared": "2026-09-16"
+    },
+    {
+      "id": "hermes_health",
+      "surface_class": "convenience_alias",
+      "alias_of": "arif_observe",
+      "canonical_mode": "vitals",
+      "lane": "FED free",
+      "declared": "2026-09-16"
+    }
+  ],
+  "alias_law": "AliasExists => AliasDoesNotIncreaseCapabilityCount. Declared alias carries alias_of + canonical_mode. Invariant: Discoverable(x) => Callable(x) OR ExplicitAlias(x); Canonical(x) => DiscoverableExactlyOnce(x)."
 }
