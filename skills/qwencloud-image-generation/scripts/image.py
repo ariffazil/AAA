@@ -7,13 +7,16 @@ text-image output. Qwen Image series supports text rendering, image editing,
 and text-to-image with fixed resolutions.
 Self-contained, stdlib only.
 """
+
 from __future__ import annotations
 
 import sys
 
 if sys.version_info < (3, 9):
-    print(f"Error: Python 3.9+ required (found {sys.version}). "
-          "Install: https://www.python.org/downloads/", file=sys.stderr)
+    print(
+        f"Error: Python 3.9+ required (found {sys.version}). Install: https://www.python.org/downloads/",
+        file=sys.stderr,
+    )
     sys.exit(1)
 
 import argparse
@@ -57,6 +60,7 @@ from image_lib import (  # noqa: E402
 # Generation calls (sync / async)
 # ---------------------------------------------------------------------------
 
+
 def _call_generate_sync(req: dict[str, Any], api_key: str) -> dict[str, Any]:
     model = req.get("model", DEFAULT_MODEL)
     url = f"{native_base_url().rstrip('/')}{SYNC_PATH}"
@@ -78,14 +82,19 @@ def _call_generate_sync(req: dict[str, Any], api_key: str) -> dict[str, Any]:
     if is_edit:
         image_urls = extract_image_urls(resp)
         return {
-            "image_urls": image_urls, "image_url": image_urls[0],
-            "image_count": len(image_urls), "width": width, "height": height,
+            "image_urls": image_urls,
+            "image_url": image_urls[0],
+            "image_count": len(image_urls),
+            "width": width,
+            "height": height,
             "seed": req.get("seed"),
         }
 
     image_urls = extract_image_urls(resp)
     return {
-        "image_url": image_urls[0], "width": width, "height": height,
+        "image_url": image_urls[0],
+        "width": width,
+        "height": height,
         "seed": req.get("seed"),
     }
 
@@ -97,15 +106,20 @@ def _call_generate_async(req: dict[str, Any], api_key: str) -> dict[str, Any]:
     model = req.get("model", model)
 
     resp = http_request(
-        "POST", url, api_key, payload,
-        extra_headers={"X-DashScope-Async": "enable"}, timeout=60,
+        "POST",
+        url,
+        api_key,
+        payload,
+        extra_headers={"X-DashScope-Async": "enable"},
+        timeout=60,
     )
     task_id = (resp.get("output") or {}).get("task_id")
     if not task_id:
         raise RuntimeError("No task_id in async response")
 
     result = poll_task(
-        task_id, api_key,
+        task_id,
+        api_key,
         timeout_s=int(req.get("timeout_s", 600)),
         interval=int(req.get("poll_interval_s", 10)),
     )
@@ -118,21 +132,29 @@ def _call_generate_async(req: dict[str, Any], api_key: str) -> dict[str, Any]:
         interleaved = extract_interleaved_content(result)
         image_urls = [item["image"] for item in interleaved if item["type"] == "image"]
         return {
-            "interleaved_content": interleaved, "image_urls": image_urls,
+            "interleaved_content": interleaved,
+            "image_urls": image_urls,
             "image_url": image_urls[0] if image_urls else None,
-            "image_count": len(image_urls), "width": width, "height": height,
+            "image_count": len(image_urls),
+            "width": width,
+            "height": height,
         }
     if is_edit:
         image_urls = extract_image_urls(result)
         return {
-            "image_urls": image_urls, "image_url": image_urls[0],
-            "image_count": len(image_urls), "width": width, "height": height,
+            "image_urls": image_urls,
+            "image_url": image_urls[0],
+            "image_count": len(image_urls),
+            "width": width,
+            "height": height,
             "seed": req.get("seed"),
         }
 
     image_urls = extract_image_urls(result)
     return {
-        "image_url": image_urls[0], "width": width, "height": height,
+        "image_url": image_urls[0],
+        "width": width,
+        "height": height,
         "seed": req.get("seed"),
     }
 
@@ -143,15 +165,20 @@ def _call_i2i_async(req: dict[str, Any], api_key: str) -> dict[str, Any]:
     payload = build_i2i_payload(req, model, api_key)
 
     resp = http_request(
-        "POST", url, api_key, payload,
-        extra_headers={"X-DashScope-Async": "enable"}, timeout=60,
+        "POST",
+        url,
+        api_key,
+        payload,
+        extra_headers={"X-DashScope-Async": "enable"},
+        timeout=60,
     )
     task_id = (resp.get("output") or {}).get("task_id")
     if not task_id:
         raise RuntimeError("No task_id in i2i async response")
 
     result = poll_task(
-        task_id, api_key,
+        task_id,
+        api_key,
         timeout_s=int(req.get("timeout_s", 600)),
         interval=int(req.get("poll_interval_s", 10)),
     )
@@ -163,7 +190,8 @@ def _call_i2i_async(req: dict[str, Any], api_key: str) -> dict[str, Any]:
     image_urls = extract_i2i_urls(result)
     usage = result.get("usage") or {}
     return {
-        "image_urls": image_urls, "image_url": image_urls[0],
+        "image_urls": image_urls,
+        "image_url": image_urls[0],
         "image_count": usage.get("image_count", len(image_urls)),
         "seed": req.get("seed"),
     }
@@ -175,15 +203,20 @@ def _call_t2i_async(req: dict[str, Any], api_key: str) -> dict[str, Any]:
     payload = build_t2i_payload(req, model)
 
     resp = http_request(
-        "POST", url, api_key, payload,
-        extra_headers={"X-DashScope-Async": "enable"}, timeout=60,
+        "POST",
+        url,
+        api_key,
+        payload,
+        extra_headers={"X-DashScope-Async": "enable"},
+        timeout=60,
     )
     task_id = (resp.get("output") or {}).get("task_id")
     if not task_id:
         raise RuntimeError("No task_id in text2image async response")
 
     result = poll_task(
-        task_id, api_key,
+        task_id,
+        api_key,
         timeout_s=int(req.get("timeout_s", 600)),
         interval=int(req.get("poll_interval_s", 10)),
     )
@@ -195,7 +228,8 @@ def _call_t2i_async(req: dict[str, Any], api_key: str) -> dict[str, Any]:
     image_urls = extract_i2i_urls(result)
     usage = result.get("usage") or {}
     return {
-        "image_urls": image_urls, "image_url": image_urls[0],
+        "image_urls": image_urls,
+        "image_url": image_urls[0],
         "image_count": usage.get("image_count", len(image_urls)),
         "seed": req.get("seed"),
     }
@@ -204,6 +238,7 @@ def _call_t2i_async(req: dict[str, Any], api_key: str) -> dict[str, Any]:
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
+
 
 def main() -> None:
     run_update_signal(caller=__file__)
@@ -300,15 +335,19 @@ examples:
     )
     parser.add_argument("--request", help="Inline JSON: must contain 'prompt'")
     parser.add_argument("--file", help="Path to JSON file containing request body")
-    parser.add_argument("--model", default=None,
-                        help="Model name (overrides value in request file; default: wan2.6-t2i)")
     parser.add_argument(
-        "--async", dest="async_mode", action="store_true",
+        "--model", default=None, help="Model name (overrides value in request file; default: wan2.6-t2i)"
+    )
+    parser.add_argument(
+        "--async",
+        dest="async_mode",
+        action="store_true",
         help="Use async mode (auto-enabled for wan2.5-i2i, qwen-image-plus/max, and interleaved output)",
     )
     default_output = Path("output/qwencloud-image-generation/images/output.png")
     parser.add_argument(
-        "--output", default=str(default_output),
+        "--output",
+        default=str(default_output),
         help="Output image path, or directory for multi-image (default: %(default)s)",
     )
     parser.add_argument("--print-response", action="store_true", help="Print result JSON to stdout")
@@ -338,19 +377,16 @@ examples:
     )
     _gate_capability = "subject_ref" if (is_edit or is_i2i) else "t2i"
     try:
-        sys.path.insert(0, "/root/arifOS")
-        from arifos.identity.identity_resolver import guard as _identity_guard
+        sys.path.insert(0, "/root/AAA/registry/routing")
+        from identity_resolver import guard as _identity_guard
     except Exception as _exc:  # the gate must exist; absence is a HOLD condition
-        print(f"Error: identity gate unavailable ({_exc}) — HOLD (F1 > F2).",
-              file=sys.stderr)
+        print(f"Error: identity gate unavailable ({_exc}) — HOLD (F1 > F2).", file=sys.stderr)
         sys.exit(3)
 
     _gate = _identity_guard(_gate_subject, capability=_gate_capability)
     if _gate.blocked:
-        print(f"Error: identity gate {_gate.verdict.value} — {_gate.reason}",
-              file=sys.stderr)
-        print("Refusing to call the model. Disambiguate the subject, then retry.",
-              file=sys.stderr)
+        print(f"Error: identity gate {_gate.verdict.value} — {_gate.reason}", file=sys.stderr)
+        print("Refusing to call the model. Disambiguate the subject, then retry.", file=sys.stderr)
         sys.exit(3)
 
     # Credentials are resolved only after the gate clears — the choke point sits
@@ -370,8 +406,10 @@ examples:
         args.async_mode = True
 
     if is_qwen_image_edit_model(model) and enable_interleave:
-        print(f"Error: {model} does not support enable_interleave. "
-              "Use wan2.6-image for interleaved text-image output.", file=sys.stderr)
+        print(
+            f"Error: {model} does not support enable_interleave. Use wan2.6-image for interleaved text-image output.",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
     if is_i2i:
