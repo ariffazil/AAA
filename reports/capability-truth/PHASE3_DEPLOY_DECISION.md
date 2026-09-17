@@ -24,6 +24,11 @@ bash /root/arifOS/scripts/deploy-memory-mode-fix.sh             # deploy (requir
 ```
 Script is guarded: marker checks, idempotent (refuses if already deployed), backs up live+app, py_compile, restart, health check, universe verify, **auto-rollback** on compile/verify failure. Syncs only the live venv + app copy.
 
+## Pre-deploy test evidence (2026-09-18, repo tree with staged patch)
+- Patch-relevant suite (public registry · alias check · capability map gate · tool surface): **all PASS**.
+- `27 passed` on core files; wider run: `test_registry.py` failures = environment class (needs model-registry stub / `ARIFOS_REGISTRY_ROOT`, the CI pattern); `test_surface_lock` fastmcp import failure = **pre-existing** (fails in the live venv too — `fastmcp.tools.tool` absent in 4.0.x).
+- `test_legacy_modes_are_non_destructive_aliases` — **verified pre-existing on a clean worktree at `6491a4ab0`** (`'arif_init' == 'arif_session_init'` stale expectation; runtime shape is canonical). Not a patch regression.
+
 ## Risk / blast radius
 **Low.** One file. Reversible (`.bak-333-20260918-deploy` + git revert). Affects only `arif_memory` mode routing + a dormant registration guard. No schema or verdict-semantics change. Restart ≈5 s.
 
