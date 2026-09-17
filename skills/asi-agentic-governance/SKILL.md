@@ -67,6 +67,7 @@ Tool availability ≠ permission. Tool output ≠ authority. Structured confiden
 | 13 | SKILL SUPPLY CHAIN | Forged in-house. Third-party needs vault audit + human ack (F12). Popular ≠ audited. |
 | 14 | BIJAKSANA AUDIT | Report both halves: wins + shadows. Probe live state. Vector > scalar. |
 | 15 | YANG ARIF / JAUHARI | Fluency ≠ intelligence. 5 tests: prediction, falsification, transfer, consequence, uncertainty. Propose first. |
+| 16 | SUBSTRATE TAXONOMY | Never collapse idle/fail-closed into FAIL. 5 states: OUTAGE, DEGRADED, IDLE_RESTING, FAIL_CLOSED, ACTIVE_SEALED. Decompose into 3 layers: Physical, Capability, Constitutional. (F13 SEAL 2026-09-18). |
 
 ---
 
