@@ -17,7 +17,7 @@ A signal that is always load-bearing but can never veto is **detection debt**: i
 
 ## Why (the contradiction that forged it)
 
-External contrast (Semantic Scholar MCP, 2026-08-25): snapshot tests FAIL the build on accidental tool-surface changes; SLSA attestation FAILS the release; the rate limiter BLOCKS the call. Their enforcement lives inside the artifact lifecycle, not in dashboards. Our `forge_surface_audit`, drift counts in health endpoints, and `AUDIT-drift-detector` report but cannot block — the same civilization that fails closed constitutionally fails open operationally.
+External contrast (Semantic Scholar MCP, 2026-08-25): snapshot tests FAIL the build on accidental tool-surface changes; SLSA attestation FAILS the release; the rate limiter BLOCKS the call. Their enforcement lives inside the artifact lifecycle, not in dashboards. Our `forge_surface_audit`, drift counts in health endpoints, and `skill-portfolio-audit (absorbed AUDIT-drift-detector, Wave 2)` report but cannot block — the same civilization that fails closed constitutionally fails open operationally.
 
 ## First instances
 

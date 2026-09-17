@@ -367,6 +367,31 @@ checkout then reproduces the shape instead of resurrecting the duplicate bodies.
 **branch** the commit landed on — a store whose worktree sits on a long-lived proposal branch has a
 repair that a later `git checkout main` will revert, and that is a fact the next agent needs.
 
+**Resolution must consult the tombstone registry, or a repair undoes a recorded merge.** The rule
+ladder above resolves a dead link by name. A name whose skill was *retired* also fails to resolve —
+so the ladder happily re-links it to the surviving body and resurrects a merged skill. Measured
+2026-09-17: `forge-cross-agent-handoff` was tombstoned (moved to `handoff-contract`) and the ladder
+re-pointed the canonical name at the old body. Read `/root/.hermes/.archive_skills_wave2/**/TOMBSTONE-*.json`
+before repointing: if the name is tombstoned, the correct action is to point the *pointer* at the
+recorded successor and leave the retired name retired — never to re-mint the routing name.
+
+**A TOMBSTONE IS A CLAIM, NOT A MOVE — verify the content arrived.** A tombstone records
+`moved_to`, `sha256_before`, a rollback command and a deprecation window. None of that is evidence the
+body moved. Measured 2026-09-17: **14 Wave-2 tombstones, 0 of 14 targets carrying their source's
+content** — every target shorter than its source, source headings and schema keys absent (largest:
+567 lines → 103). The retirement is silent in one direction (a retired name leaves the index and
+nothing errors), so the loss is invisible until an agent re-derives the procedure from priors. The
+gate check `merge_completeness` now proves it per tombstone: recover the pre-merge body from the tag
+the tombstone itself names, then require its H2 headings to appear in the **package** — SKILL.md *or*
+`references/`. Testing only SKILL.md reports a correct merge as defective, because the absorbed body
+belongs in a reference (progressive disclosure), not in index tax.
+
+Recovery, when content is missing: write the pre-merge body into the target package as
+`references/absorbed-<source>.md` with a provenance header (what was retired, when, by which tombstone,
+the original `sha256_before`, and the recovery hash), add one pointer line under a stable heading, and
+record the inverse operation. The retirement stands; the content returns. Measured: 14/14 completed,
+147,531 bytes recovered, SKILL.md growth 0-3 lines each.
+
 ### 5. Deleting anything — the safe rules
 
 Deleting on the same pass you use to *enumerate* destroys your ability to inspect the
@@ -474,6 +499,29 @@ git -C /root/AAA status --porcelain        # must show no deletions before movin
 - **Verify every mutation from its own log, not from the tool's summary.** Re-read the apply manifest
   after the run and stat each destination; a partial apply that reports success is the normal failure
   shape here. The check is `defects == 0`, computed from disk.
+- **A new check that reports `0` on an empty input space is the most dangerous shape of decoration.**
+  The `merge_completeness` check first shipped reading `/root/.hermes/skills/.archive_skills_wave2` —
+  the tombstone registry is at `/root/.hermes/.archive_skills_wave2` (a sibling of the skills root,
+  not a child). It found no tombstones and printed a clean `0`. Diagnosis rule: when a check reports
+  success, read its **input count** too — `tombstones: 0` beside `count: 0` is a broken path, not a
+  healthy library. Make the empty case an explicit FAIL (`cannot witness`), never an implicit pass.
+- **Fix the coverage key before trusting the count.** The same check deduped candidates by *target*
+  file, and four Wave-2 tombstones share one target (`skill-portfolio-audit`) — so three were never
+  examined and the check could not have found their loss. A dedupe key is a coverage decision; when
+  several inputs collapse to one key, prove each is still individually checked.
+- **A partial apply is the normal failure shape — isolate every operation.** A pointer-repair pass
+  wrote 5 of 8 planned edits and then aborted on an `EPERM`, because one edit had no per-item error
+  handler; the second run reported the rest as "already applied", which reads like success. Wrap each
+  operation, keep going, and report `applied / skipped / failed` as three separate numbers. Compare
+  them against the dry-run plan — a mismatch is a failed run, not a partial success.
+- **`EPERM` on write is not a permissions bug — check `lsattr`.** `/root/AAA/governance` carries the
+  **immutable** attribute (`i`), which refuses writes even for root and by design. Editing a file there
+  is a governance mutation, not a cleanup: report it as locked debt and leave the flag alone. Clearing
+  an immutability flag to make a pointer edit land inverts the authority order.
+- **A `.bak` written beside the file it backs up pollutes the tree it is meant to protect.** Backups
+  belong outside every scanned root — the same rule as the mirror backups. A stray `.bak-<ts>` inside
+  a skills or instructions tree is counted by the next census and, in a package, can register as a
+  dead internal pointer.
 - **Classify emptiness structurally, not from a top-level listing.** A store directory holding no
   `SKILL.md` may be a container of sub-skills, and a directory whose only children are
   `references/`, `__pycache__`, or fixtures is a live skill whose body sits one level up. Decide
