@@ -88,8 +88,9 @@ WELL  4  already addressed (consent-registry · substrate-readiness · machine-d
 
 One new capability bucket was created (`geo/workshop/geox-intel`) because that organ had no bucket of
 its own, and filing basin/seismic interpretation under `my-domain-intel` would be a category error —
-category is an address, not a keyword. Reversal: one `rm` per address; the full link map before and
-after is in `reports/organ-view-addresses-20260918.json`.
+category is an address, not a keyword. Reversal is exact and needs no guessing: nine `rm`s (the newly minted), two re-points back to the
+copies they previously named, six untouched. All three lists, plus the full post-state link map
+and every address’s readlink, are in `reports/organ-view-addresses-20260918.json`.
 
 Verified after regeneration: all 13 report `source=tree` with their real coordinate.
 
