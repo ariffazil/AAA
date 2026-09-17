@@ -370,8 +370,13 @@ write, verdict shape) in `references/memory-claim-audit.md`.
 
 ### Correction discipline
 
-- Record accepted corrections in the target document's **Correction Log by name**
-  (`Correction 1 — …`), never by silent rewrite. The trail is the evidence the audit landed.
+**When the principal audits your own artifact against the primary source, their reading wins — revise, never defend.** They hold the document; you held a digest of it. Expect more than one pass, and expect the second pass to *retract your own caution*: a figure you marked unverified because only a summary was to hand may be confirmed by the person reading the full report — promote it, and re-derive whatever it unlocks, rather than leaving the hedge standing. Do not treat "the user checked and corrected me" as a failure of the artifact; it is the artifact working.
+
+- **Reissue as a numbered revision carrying a visible delta table** — what changed, and the reason each change was right. Name anything you withdrew rather than dropping it silently; a vanished claim reads as concealment and costs more than the claim did.
+- **Classify each defect by the DIRECTION of the error, not only its size.** A number that is wrong in the direction that *weakens your own argument* is a different class from one that flatters it — it proves the error was not advocacy, and saying so explicitly is worth more than the correction alone. Errors that moved a figure *toward* your thesis, even harmlessly, are the ones to flag and audit hardest.
+- **Watch for a metric collision inside one document.** Adjacent rows of a source table (a benchmark price beside a settlement price, a headline beside a variant) are the commonest cross-wire: the figure is real, correctly cited, and attached to the wrong label. When two series sit near each other, cite both with their labels rather than picking one.
+- **Re-anchor on the claims that never depended on a number.** These survive every correction, and they are what to point at once the arithmetic is repaired — stating that the structural argument is unchanged, and why, is the part that keeps a corrected artifact usable.
+- **Record accepted corrections in the target document's Correction Log by name** (`Correction 1 — …`), never by silent rewrite. The trail is the evidence the audit landed.
 - Own your own overreach in that same log. "Owned as overreach" is a status, not a defeat.
 - Never cite the reviewer as authority — cite the underlying source, after verifying it exists.
 - If the corrected document already exists, **merge the delta and delete your duplicate**

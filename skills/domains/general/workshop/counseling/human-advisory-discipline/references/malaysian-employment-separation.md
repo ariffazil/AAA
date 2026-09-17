@@ -151,9 +151,13 @@ and figures: latest full-year profit and revenue direction, dividend paid to the
 prior year, announced hiring and promotion freezes, leadership contract extensions, restructuring
 windows already closed, and any litigation that threatens the business itself.
 
-- **Separate the framing from the accounting.** A survival narrative published alongside a
-  multi-billion profit is a communication choice, not a financial fact. Report both, name the
-  framing as framing, and let the person weigh it.
+- **Separate the framing from the accounting, and prefer the institution's own audited layer.**
+  A survival narrative published alongside a multi-billion profit is a communication choice, not
+  a financial fact. Report both, name the framing as framing, and let the person weigh it. Where
+  the employer publishes both a results announcement and a fuller financial report, the sharpest
+  form of the critique quotes the audited document against the announcement: a disproof sourced
+  from the institution's own filing cannot be dismissed as an outsider's opinion, which is what
+  makes it the version that survives being shown to the employer.
 - **Quote the leadership's own words, then stop.** Do not praise or attack the person's boss; they
   work there and the advice has to survive Monday morning.
 - **Surface what the instrument omits.** A questionnaire that asks about intent while saying
@@ -165,7 +169,7 @@ windows already closed, and any litigation that threatens the business itself.
 
 ### Adjudicating a "the employer will fail" thesis
 
-A principal who fears collapse arrives with a chain of premises. Three moves settle it:
+A principal who fears collapse arrives with a chain of premises. Four moves settle it:
 
 - **Separate solvency from trajectory.** "Will it go bust?" and "is it contracting?" are different
   questions with different answers, and an entity can be comfortably solvent while shrinking fast.
@@ -185,6 +189,15 @@ A principal who fears collapse arrives with a chain of premises. Three moves set
   settlement — and the internal instrument is silent on it, that variable governs the decision and
   the instrument does not. Name it as the first-order question and the personal terms as
   second-order. Surfacing it is often the single most useful thing in the whole reply.
+- **Date the instrument, not the collapse.** A separation scheme is a one-shot instrument: it
+  exists *because* a transition is under way, and it is funded to move people out in an orderly
+  way before a new structure locks. So the useful question is not "when will this employer
+  fail" — an entity can stagnate for a decade while paying everyone — but "when does this option
+  close, and what is it worth after that?" Restating the timing question this way converts a
+  forecast nobody can make into a window somebody can observe. It also gives the person a reason
+  to act that does not depend on the collapse thesis being true, and it is the one version that
+  survives the employer recovering: a solvent employer that has finished restructuring has no
+  reason to pay a young specialist to leave.
 
 ## 10. Settling a small mortgage first
 
