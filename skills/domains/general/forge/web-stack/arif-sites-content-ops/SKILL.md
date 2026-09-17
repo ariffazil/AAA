@@ -45,6 +45,25 @@ This includes: landing pages, index pages, Caddy config, any file under `/var/ww
 - Editing React components (footer, header, pages) — not just essays
 - Building and deploying the site after changes
 - Fixing governance/canonical claims (seals, pseudo-metrics, stale version strings) that appear in the UI
+- Adding or upgrading visual assets, GIS cartography, or media payloads (see OP 7 & `references/asset-hash-and-multimodal-fidelity.md`)
+
+## 🗺️ OP 7 — Multimodal Vision, Cartographic Grounding & Asset-First Law (F13 SEAL 2026-09-18)
+
+> *"map buat la betul2 gambar render la guna ai image generator etc"* — Arif Fazil (F13 Sovereign).  
+> Full doctrine, incident mechanics, and verification checklist: `references/asset-hash-and-multimodal-fidelity.md`.
+
+1. **Physical Geography Demands Real Cartography (F2 TRUTH):**
+   - NEVER use crude placeholder SVG polygons for national/regional infrastructure claims.
+   - Use interactive **Leaflet.js** with CartoDB Dark Matter tiles (`https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png`), pre-approved in Caddy CSP (`connect-src *.basemaps.cartocdn.com`).
+   - Every site marker must have authentic coordinates, operator, capacity (MW/GW), and environmental parameters.
+   - Interactive layer controls (`[All Layers] [Data Centres] [Power Grid] [Water Moratorium] [Interconnects]`).
+
+2. **Cloudflare Cache Edge Poisoning Defect & Asset-First Rule (SCAR-2026-09-18):**
+   - **Asset First, Reference Second:** NEVER write `<img src="...">` or `<link href="...">` in HTML before the physical file exists on disk, in dist, and in webroot. Cloudflare edge will cache the initial 404 with long TTL (`max-age=31536000`), breaking subsequent valid requests.
+   - **Contaminated-URL Rule:** If an asset URL was ever requested while non-existent (receiving a 404), DO NOT retry the same URL. Re-key the filename with a content hash (e.g. `hero-five-engines.c797f5c9.webp`). Fresh URLs bypass contaminated edge caches immediately.
+
+3. **Epistemic Metric Truth (Anti-Hallucinatory Standard):**
+   - Report measured reality: actual bytes, actual dimensions (`1376x768`, never inflated "8K"), actual WebP quality/sizes (≤200KB).
 
 ## Site architecture
 
@@ -347,6 +366,77 @@ Arif's doctrine: *"Same directive ≠ same execution. Same mission ≠ same file
 **Where it lives in practice:** the fail-closed header is embedded in `sites/arif-fazil.com/public/AGENTS.md` (and served at `/AGENTS.md`). Site canon files (App.tsx, AtlasGate.tsx, ns_results.json) are CANON — agents edit only with Arif's explicit go. Generated outputs (dist/, compare/index.html, navCanon.ts, ns_live_telemetry.json) are DERIVED. The `canon/` mirror in `/var/www/html/canon/` is DERIVED (synced by canon-sync.sh).
 
 **Pitfall — canon-sync required-files list:** `scripts/canon-sync.sh` has a hardcoded array of files it syncs. Any NEW canon file (atlas.yaml, file-authority.yaml) must be added to that array or the live mirror 404s. Check with `curl -s -o /dev/null -w '%{http_code}' https://arif-fazil.com/canon/<new-file>` after sync.
+
+## Partial rsync = built-but-not-served bundle (PROVEN 2026-09-18)
+
+A full `npm run build` writes `dist/index.html` pointing at a NEW hashed bundle
+(`assets/index-<hash>.js`). If only `assets/` reaches the webroot and `index.html` does not,
+the new bundle sits in `/var/www/html/arif/assets/` while the live HTML still points at the
+PREVIOUS hash. The site keeps serving old content indefinitely — and the new file's presence
+on disk makes it look deployed.
+
+**Symptom:** `grep -c '<marker>' /var/www/html/arif/assets/index-<new>.js` > 0 (the file is
+there) but `curl -s https://arif-fazil.com/ | grep -oE 'assets/index-[A-Za-z0-9_-]+\.js'`
+names a DIFFERENT, older hash. Verify by fetching the LIVE html and checking which hash it
+references, never by grepping the newest file in the webroot.
+
+**Audit (run after every deploy):**
+```bash
+DIST=/root/arif-fazil.com/sites/arif-fazil.com/dist
+WEB=/var/www/html/arif
+D=$(grep -oE 'assets/index-[A-Za-z0-9_-]+\.js' $DIST/index.html | head -1)
+W=$(grep -oE 'assets/index-[A-Za-z0-9_-]+\.js' $WEB/index.html | head -1)
+L=$(curl -s -m 10 https://arif-fazil.com/ | grep -oE 'assets/index-[A-Za-z0-9_-]+\.js' | head -1)
+[ "$D" = "$W" ] && [ "$W" = "$L" ] && echo "IN SYNC: $D" || echo "DRIFT dist=$D web=$W live=$L"
+```
+
+**Fix:** copy every HTML file that carries the bundle pointer, not just assets. `grep -rl`
+the new hash across `dist/` (the SPA route shells under `dist/<route>/index.html` carry it too)
+and `cp -p` each to the matching webroot path. Additive, no `--delete`, no Caddy reload.
+
+**Rule:** PRODUCED ≠ DEPLOYED ≠ SERVED. Grepping an artifact proves it exists; grepping the
+LIVE response proves it is served. Only the second one counts.
+
+## Build-regenerated caches read from staleness, not from canon (PROVEN 2026-09-18)
+
+`scripts/generate-md-mirrors.cjs` emits the agent-facing markdown mirror under
+`public/makcikgpt-md/`. Its `convertBody(slug)` reads a CACHED `public/makcikgpt-md/{slug}.html`
+— NOT the canonical `src/data/makcikgpt/{slug}.ts`. Edit the `.ts`, rebuild, and every `.md`
+regenerates with a fresh timestamp containing the OLD body: the mirror looks updated (new mtime)
+and is wrong (old content). Measured: 16 `.html` stale, 7 missing entirely.
+
+This is the worst possible lane to leave stale — the bot lane is what AI crawlers and link
+previews read, so unpatched text gets archived and ingested. Any `.html`-as-source cache in
+this repo is a staleness trap: check `stat -c '%y'` on the cache against its `.ts` before
+trusting any generated output.
+
+`essays.json` cannot supply the body (it carries only id/title/date/series/dest/seal/
+claim_register/source_ledger), so `scripts/lib/makcik-source.cjs` cannot route around it — the
+fix is to read the `.ts` directly and mind the backslash-escape parsing of its template literal.
+
+## PUBLISH ORDER: asset first, reference second (PROVEN, twice-burned 2026-09-18)
+
+Cloudflare caches a 404 for a hashed asset URL under `max-age=31536000, immutable`.
+The `CLOUDFLARE_API_TOKEN` on this box has **no cache-purge permission** (`purge_cache`
+returns `Authentication error`), so a poisoned URL stays broken for a year.
+
+**Consequence for deploy order — never violate:**
+1. Copy assets (js/css/images/pdf) to the webroot FIRST and confirm each resolves on disk.
+2. THEN copy the HTML that references them.
+
+Publishing the reference first is the trap. Caddy's `try_files {path} {path}/index.html
+... =404` falls through to the SPA shell, the request 404s-then-serves-HTML, and CF stores
+that HTML for the asset URL. Symptom: `curl -sI <asset-url>` shows
+`content-type: text/html`, `cf-cache-status: HIT`. The file on disk is correct and complete —
+it is only the cached response that is wrong.
+
+**Recovery without purge permission — re-key the filename.** Give identical bytes a fresh
+content-addressed name (`hero.c797f5c9.webp`), point the HTML at it, republish. A URL CF has
+never seen cannot be poisoned. Do NOT retry the original URL and expect it to heal.
+
+**This bit twice in one night:** once diagnosing another agent's build, once committing the
+same mistake with WebP conversion. The `publish.sh` helper enforces the order; use it rather
+than hand-rolling copies.
 
 ## Dual-lane UA routing — probe BOTH lanes (2026-09-17)
 
