@@ -518,6 +518,36 @@ signature… FALSIFIED"* while the bidirectional version printed `CODE-ONLY`. **
   it says nothing about enums. Annotation-derived type notes are INFO, because Python annotations are
   optional and their absence proves nothing. Report strictness only where a type note fired.
 
+### A working fix is not yet an explained one — falsify the mechanism, not just the outcome
+
+When a remedy tests green, ask *why it worked* before writing it down. A procedure recorded from a
+single passing observation encodes whatever else was true at the time, and the passing test cannot
+tell the two apart.
+
+Measured: a delivery skill prescribed exporting a specific credential alias to clear a "missing
+token" error, and recorded that alias as the fix. The alias did work. It also set a name the code
+**still** does not read on that path — the send path resolves the platform's hardcoded name first,
+then the name `config.yaml` declares for the lane, and the prescribed alias was neither. It passed
+because that alias happened to hold the *same* credential as the declared one — a coincidence, not a
+mechanism. The source carried the real root cause in its own comment, two commits old.
+
+- **The remedy's success is one observation; the mechanism needs a second source.** Read the code
+  path, the config field, or the error string's own origin (grep the message text to find who raises
+  it) before sealing a cause into a skill.
+- **Name the counterfactual.** If the fix is real, some input must *fail without it* and pass with
+  it, for the stated reason. If you cannot name that input, you have not identified a mechanism —
+  you have identified a correlation.
+- **Suspect coincidence when the fix is an alias, a duplicate, or a second name for the same thing.**
+  Aliases make wrong explanations test green, because the wrong name and the right name resolve to
+  the same value.
+- **A "never rely on X" rule decays.** It describes the code at the time it was written. Measured
+  the same day the fix landed: a corpus rule said the adapter "hardcodes env vars, not config keys",
+  and the newly-honoured config key was now the only thing that resolved at all. **Re-read the rule
+  against the code, not against the anecdote.**
+- **The error message is evidence about *where*, not about *what*.** A library-raised "you must pass
+  a token" means the value was empty *at the caller*; it does not mean the credential is missing, and
+  it does not name which lookup failed. Trace to the raiser before concluding.
+
 ### A citation is falsified by grepping its own target
 
 Before accepting "X is advertised in file Y", grep Y for X. Naming the wrong file for a real defect
