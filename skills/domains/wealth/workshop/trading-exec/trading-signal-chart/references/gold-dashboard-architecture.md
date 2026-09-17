@@ -1,0 +1,1 @@
+../../agentic-trading-companion/references/gold-dashboard-architecture.md
