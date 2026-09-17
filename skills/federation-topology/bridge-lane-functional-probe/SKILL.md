@@ -69,6 +69,21 @@ routing/config problem with a different fix. A unit can be `active (running)` wh
 refuses connections: unit-live, **not reachable**. Both of those are as far from EFFECTIVE as a
 catalog entry is.
 
+**Resolve the loopback address explicitly — `127.0.0.1`, never `localhost`.** On a dual-stack
+host `localhost` may resolve to `::1` first while the organ binds IPv4 only (or the reverse), and
+curl then returns `000` for a perfectly healthy service. This is the most expensive probe error in
+the whole table, because a false `000` reads exactly like the genuine ops problem above and sends
+you to restart a working unit. Before believing a refusal, re-run against **both**
+`http://127.0.0.1:<port>/health` and, if the host is dual-stack, `http://[::1]:<port>/health`; the
+listener census tells you which family is actually bound:
+
+```bash
+ss -tlnp | grep -E '<port>'          # shows 127.0.0.1:x vs [::]:x vs *:x
+```
+
+Use the address form the listener actually bound, and state which one you probed when you report a
+down verdict.
+
 **A catalog, manifest, or "exposed surfaces" list is DECLARED by definition.** Answering "is X
 available?" by reading the catalog is the most common way an agent reports a phantom capability.
 An entry that exists in a loader (a tool list, an MCP schema cache, a plugin manifest) is not
@@ -77,6 +92,66 @@ reachable — reachability is a live call, and functionality is a live call that
 When one rung fails, check whether the capability exists somewhere else before declaring it
 absent: a whole search path can be dead while a working implementation sits one host away, and
 "capability present + route broken" needs a re-point, not a rebuild.
+
+### Rule 1b-i — a gated lane that returns data has not proven its gate
+
+On a credential/session-gated surface, a successful call is ambiguous between "my identity was
+validated" and "the gate only checked that *something* credential-shaped arrived". Separate them
+with two probes before reporting a gate as working:
+
+```bash
+# 1. genuinely absent credential  -> expect refusal
+# 2. fabricated-but-plausible credential (well-formed id, wrong/never-issued value) -> expect refusal
+```
+
+If (2) succeeds, the control enforces **presence/reachability, not identity**. Read the validator's
+success payload for the tell: a returned `actor_verified: false`, an `*_OBSERVE` / `*_UNBOUND`
+code, or a reason string about connectivity means the handshake succeeded because the auth service
+answered, not because the token matched.
+
+Two follow-on rules:
+
+- **Class-dependent gates cannot be certified from one class.** If the gate branches on tool/verb
+  class or on an allowlist, a report of "every call was refused" or "the gate is fixed" is a
+  sample of one branch. Call one surface per branch, and say which classes you covered.
+- **Never demonstrate a gate fix on a surface the gate does not govern.** Read-only,
+  allowlisted, or observe-class surfaces pass by construction; a green result there is the
+  commonest false-confirmation available. Prove the fix on a surface the gate is supposed to stop.
+
+### Rule 1b-ii — the live tool count comes from the server's SOT, not the client's schema
+
+A remote connector's exposed schema, a compat/alias map, or a legacy monolith's decorator list all
+over-count. Query the server's own registry export (`registry`-style status call, or the
+`PUBLIC_*_NAMES` constant the registrar reads) and report live-registered vs alias-only names
+separately. An inflated count from an alias map is contract drift, not fabrication — name it as
+such rather than accusing the reporter of inventing the list.
+
+### Rule 1b-iii — an MCP/tool bridge can be dead while its daemon is healthy
+
+An MCP server is a **bridge** (stdio launcher or HTTP endpoint) in front of a separate
+**daemon**. The daemon answering `/health` with 200 says nothing about the bridge, and a dead
+bridge reaches the agent as *silent absence of tools* — not as an error, not as a failed call.
+The most common cause is the launcher script failing to parse at all (left-over git conflict
+markers, a syntax error), which makes the gateway respawn it in a tight crash loop while every
+external health check stays green.
+
+Full probe procedure — census, stderr log, handshake proof, delta verification, and the repair
+authority boundary for a tree with another agent's uncommitted work — is in
+`references/mcp-lane-probe.md`. Reusable handshake probe: `scripts/mcp_stdio_probe.py`
+(`initialize` → `tools/list`, prints server version and every tool name, non-zero exit on
+failure). For HTTP MCP servers that answer a legacy handshake but 400 a modern probe, see the
+`mcp-dual-era-transport` skill instead — that is a protocol-era fault, not a dead lane.
+
+Two rules that generalise beyond MCP:
+
+- **Count the sets, never the rows.** A derived census file can lag its own config; diff the
+  name lists in both directions before reporting coverage. A server that handshakes fine but is
+  missing from the census is *monitor drift* — report the drift, do not relay the census as the
+  verdict.
+- **Fix a broken launcher in the tree; leave the commit to its owner.** Repairing the file is
+  reversible capability work. Committing it is not, when the same file carries another session's
+  uncommitted work. Back up, apply the minimal fix, `diff` backup-vs-now so the report proves the
+  exact delta, then state plainly that the fix is uncommitted and why.
 
 ## Rule 1c — identify the LIVE store before claiming compatibility
 

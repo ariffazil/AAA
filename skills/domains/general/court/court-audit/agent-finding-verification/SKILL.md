@@ -73,6 +73,69 @@ The last bucket is the strongest signal available: **what did the reviewer miss?
 review reliably mirrors the argument's shape while omitting the operational layer both sides
 share. Reporting that gap is what proves the audit was substance-checked rather than relayed.
 
+### Conceptual / doctrine reviews — three discriminators the infra probes miss
+
+When the review targets a synthesis, a doctrine, or an argument rather than a running service,
+the port probes, git checks, and count re-derivations above have nothing to grip. These three do:
+
+- **Grep canon before crediting a "this should become explicit protocol."** A reviewer audits the
+  prose you showed it, not the doctrine standing behind it, so its most emphatic recommendations
+  are frequently invariants you already enforce under a different name. Search the doctrine tree
+  for the concept before counting it as a delta — crediting a rediscovery inflates the review's
+  apparent contribution and hides that its real yield was smaller.
+- **Check the reviewer's own schema for the governance fields it demands of you.** A review that
+  objects to narrative being promoted to canon, then ships a state object with no issuer, no
+  revision authority, and no kill condition, is making the same move in reverse: promoting a
+  *schema* to authority. `Schema ≠ authority` — an object definition that cannot answer *who may
+  revise this, and on what evidence* is decoration with field names. Reject the schema, keep the
+  argument it was offered in support of; the two are separable and separating them is the reply.
+- **Endorsement that skips your stated failure mode is not corroboration.** If you flagged the
+  degradation path of your own claim and the reviewer agreed with the claim without touching that
+  path, nothing was independently checked — it inherited your framing, including the part you
+  warned about. Name the omission instead of counting the agreement as a second witness.
+- **Deltas can hide in tables you skimmed.** When a review restates an existing canon table with
+  extra rows or extra caveats per row, diff row-by-row before treating it as a restatement — the
+  genuinely new content is often one added category plus one added prohibition on a row that
+  already existed.
+
+### What a conceptual review catches in YOUR prose — five shapes to fix before it is asked
+
+A review of a philosophical or doctrinal passage has no ports to probe; it attacks epistemic shape.
+These five recur, and all are wording defects in the original, never something to defend:
+
+- **Metaphor emitted as causal genealogy.** "X is born from Y", "A is just rasa directed outward",
+  "moral is a price the body feels" each name ONE contested account among several
+  (simulation-theory vs theory-theory; affect-first vs dual-process). Fluency is what makes them
+  read as settled. Either name the competing accounts or label the line a design metaphor. In
+  doctrine a **workflow order** is admissible where an **ontological birth order** is not — and any
+  fragment quotable as proof of an origin needs a kill criterion saying it is not.
+- **Absolute reduction riding on one influential study.** `X = Y` is never licensed by a single
+  paper whose interpretation is still debated. Substitute the narrower claim that still does the
+  operational work — it survives every objection that kills the absolute form.
+- **Precise figure with no scope note.** Developmental or population numbers quoted to a month vary
+  with task, language, culture and executive demand. Carry as rough shorthand with the variance
+  named, never as a universal schedule.
+- **Clinical illustration the design rule does not need.** If the rule stands without the diagnostic
+  category, drop the category — it adds stigma risk and zero enforcement value.
+- **Citation unresolvable on this machine.** Tag it population-prior and say so; restating it
+  confidently is the move that promotes it to observed fact.
+
+### Three probes cheaper than arguing the review
+
+- **A doctrine with a kill criterion: read its enforcement log.** "This is decorative prose" is
+  settled by the size and mtime of the log its gate writes — one `ls -la` decides it, and it cuts
+  both ways: a gate that has never fired means the prose really is decoration.
+- **A quote canonized under the sovereign's name may be co-authored.** Before citing "the user said
+  X", grep the memory/session export for the line's first appearance and its `attributed_to` field.
+  Assistant-introduced then user-adopted is Class C, not Class S — record that provenance in the
+  fragment rather than laundering it into a first-person quotation.
+- **A pasted artifact ending mid-word is truncated.** Never complete the sentence. Rebuild the
+  missing section from existing canon, label it a reconstruction, and ask for the remainder.
+
+**Landing:** write the accepted delta into a `DRAFT_AWAITING_F13` instruction fragment carrying its
+own kill criteria, leave canon/seal/render untouched, and close with ONE binary — ratify to canon,
+or leave as draft. Governance-class deltas are HOLD territory however clean the audit reads.
+
 ### Its premises about our own system are claims — probe them before adopting the plan
 
 An external review can be *internally coherent* and *factually wrong about our infrastructure*,
@@ -126,6 +189,40 @@ feels like agreeing with the cure. Test the remedy against the same ground truth
   Correct the classification and HOLD: the mutation needs signing authority, which is precisely what
   the reviewing agent does not have.
 
+### A control's reported behaviour is class-dependent — read its branches before believing the denial
+
+A review or peer reporting "the gate refused every call" has usually hit one class of surface and
+generalized. Read the gate's own branch structure before accepting either a denial or a fix:
+
+```bash
+grep -n "REQUIRED\|ALLOW\|UNBOUND\|allowlist\|_OBSERVE\|verdict =" <gate-module> | head -30
+```
+
+- **A gate with an allowlist cannot refuse uniformly.** If the code branches on tool class, verb, or
+  path, a report of identical denials across heterogeneous surfaces means the reporter sampled one
+  branch. Ask which surfaces it actually called, then call one from each branch yourself.
+- **A pass on a surface the gate never governed proves nothing.** This is the commonest
+  false-confirmation of a "gate fixed" claim: the fix is demonstrated on a read-only, allowlisted, or
+  observe-class surface while the governed surface stays untested. Verify on a surface the gate is
+  supposed to stop.
+- **Absence is the easy case; presence-but-invalid is the test.** A denial triggered by a genuinely
+  missing credential establishes only that the gate fires on empty input.
+
+### An authentication gate is only proven by a token that should FAIL
+
+Probe with (a) a syntactically plausible fabricated token and (b) obvious garbage. If both pass, the
+control is checking **reachability or presence, not identity**.
+
+- **Read what the validator returns on success.** A success payload carrying `actor_verified: false`,
+  a `*_OBSERVE` code, or a reason string about connectivity is the gate telling you it verified
+  nothing. A handshake that succeeds because the *auth service answered* — not because the *token
+  matched* — is a presence check wearing an auth check's name.
+- **The question is enforcement coverage, not block count.** Not "how many attempts did it refuse?"
+  but "does every path that can reach protected state pass a check that can actually say no?" One
+  unvalidated branch makes the whole property advisory.
+- **Report it as a measured property plus the probe that produced it**, never as "the gate is
+  broken" — the next session must be able to re-run the same two calls and see whether it still holds.
+
 ### Re-derive the population before accepting any count in the review
 
 Enumeration is the one thing a reviewer cannot fake and the thing they most often get wrong. Recompute
@@ -140,6 +237,12 @@ A review reporting "25 of 30" against a tree holding 43 artifacts with 34 carryi
 invented both numbers — and the invented denominator is the more damaging half, because it makes the
 ratio look like a majority of a population that does not exist. Report your counts as ground truth and
 the review's as unsourced; do not average them.
+
+For a **tool/API surface** the denominator is the server's own SOT export (a registry-status call, or
+the `PUBLIC_*_NAMES` constant the registrar reads) — never the client-facing connector schema the
+reviewer happened to see. A compat/alias map keeps retired names resolvable-looking, and that map is
+the usual explanation for an inflated count; report live-registered and alias-only names separately
+rather than calling the reviewer's list invented.
 
 ### A "missing file" claim must be re-probed at every DECLARED path
 

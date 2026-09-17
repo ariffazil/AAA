@@ -1,0 +1,4997 @@
+{
+  "$schema": "arifOS/AAA-capability-index/v2.0.0",
+  "protocol": "MCP",
+  "protocolVersion": "2026-07-28",
+  "forgedAt": "2026-09-16T16:08:32+00:00",
+  "total_tools": 322,
+  "digest": "79acce8d63f10ce7e36b4f2e392bea337596520974128309052f4a174d3b886e",
+  "servers": [
+    {
+      "name": "aforge",
+      "tools": 121
+    },
+    {
+      "name": "arifos",
+      "tools": 24
+    },
+    {
+      "name": "brave-search",
+      "tools": 6
+    },
+    {
+      "name": "context7",
+      "tools": 2
+    },
+    {
+      "name": "duckdb",
+      "tools": 3
+    },
+    {
+      "name": "fed",
+      "tools": 7
+    },
+    {
+      "name": "geox",
+      "tools": 31
+    },
+    {
+      "name": "github",
+      "tools": 26
+    },
+    {
+      "name": "memory",
+      "tools": 9
+    },
+    {
+      "name": "meyhem",
+      "tools": 5
+    },
+    {
+      "name": "minimax",
+      "tools": 2
+    },
+    {
+      "name": "postgres",
+      "tools": 1
+    },
+    {
+      "name": "wealth",
+      "tools": 37
+    },
+    {
+      "name": "well",
+      "tools": 48
+    }
+  ],
+  "tools": [
+    {
+      "tool_name": "auth_pipeline",
+      "server": "aforge",
+      "description": "AUTH INSTITUTIONAL PROTOCOL \u2014 the non-bypassable workflow that governs transitions from OBSERVE to MUTATE to DEPLOY.\n\nTHE THREE LAWS:\n  OBSERVE is free. (no contract needed)\n  MUTATE is governed. (contract + lease + evidence + receipt)\n  DEPLOY is sealed. (full pipeline + 555 verify + 888 judge + Lane A seal)\n\nPIPELINE:\n  DECLARE \u2192 FQ_GATE \u2192 LEASE \u2192 LOCK \u2192 EXECUTE \u2192 EVIDENCE \u2192 VERIFY \u2192 JUDGE \u2192 MERGE \u2192 SEAL \u2192 INGEST\n\nAUTH governs transitions, not agents. Claude Code + OBSERVE needs no contract.\nKimi + MUTATE needs the same contract as any other agent.\nThe institution does not care WHO holds the scalpel \u2014 only whether the cut requires a contract.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "auth"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_abort",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 execute \u00b7 MUTATE. Safe stop + rollback for running execution. Requires lease or session auth. P2.3 canonical gap fill.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_agent",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE. Agent identity management. Modes: register, status, list, kill. F11 AUTH.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_apex_emd",
+      "server": "aforge",
+      "description": "Run EMD (Encode\u2192Metabolize\u2192Decode) validation gate on a goal. Detects drift, scope creep, anomalies. Returns C_dark and ToAC verdict.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "GOVERN",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_apex_encode",
+      "server": "aforge",
+      "description": "J-SPACE (NOT G-space). Encode goal \u2192 task vector T=[t1..tm] with Jacobian J=\u2202T/\u2202G. Returns G_local (is_canonical_g=false) \u2014 local actuator estimate only. HARAM: treating G_local as forge_evaluate constitutional G \u2192 VOID. Use forge_evaluate for F8 GENIUS gate. High |J|>0.6 tasks recompute on field change (forge_apex_recompute).",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "GOVERN",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_apex_goal_status",
+      "server": "aforge",
+      "description": "Inspect current state of a goal: tasks, G, C_dark, Jacobian, and metabolic history.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_apex_metabolize",
+      "server": "aforge",
+      "description": "Run metabolic cycle on a goal: adjust risk/constraint weights based on task outcomes. Failed tasks \u2192 risk \u00d71.2, constraint \u00d71.2. Returns updated G and C_dark.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_apex_recompute",
+      "server": "aforge",
+      "description": "Recompute task plan when a governance field changes (risk, scope, authority, etc.). Only high-sensitivity tasks (>0.6) are recalculated \u2014 stable tasks retain. Returns which tasks need recompute.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "GOVERN",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_browser_click",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 browser \u00b7 MUTATE. Click a browser element. Use when: Click a browser element. OBSERVE-class.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_browser_evaluate_js",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 browser \u00b7 MUTATE. Evaluate JS in browser context.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "GOVERN",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_browser_extract_text",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 browser \u00b7 OBSERVE. Extract text from browser page.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_browser_navigate",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 browser \u00b7 OBSERVE. Navigate browser to URL.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_browser_screenshot",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 browser \u00b7 OBSERVE. Take a browser screenshot. Use when: Take a browser screenshot. OBSERVE-class.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_browser_type",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 browser \u00b7 MUTATE. Type text into a browser element.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_canonize",
+      "server": "aforge",
+      "description": "Promote a draft artifact to canonical state. Copies from source to forge_work/CANON/, computes SHA256, records provenance receipt. Does NOT delete source (F1 AMANAH). Classification: EXECUTE_REVERSIBLE.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_chart",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 meta \u00b7 OBSERVE. Agentic charting + quantum eureka discovery margin patterns. Input data series or records; returns SVG + summary + eureka_candidates (reversals, high-z, curvature). Types support line/bar/scatter/pie/area/histogram. Use after postgres/wealth/well queries for visualization and pattern discovery. All organs share this surface.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_check_governance",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE. Constitutional governance check \u2014 delegates to arifOS. A-FORGE NEVER adjudicates constitutional floors.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "GOVERN",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_collect_evidence",
+      "server": "aforge",
+      "description": "Collect runtime reality (diffs + tests + cost) into a typed evidence packet. F1: refuses payload containing secret-like patterns.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_compile_task",
+      "server": "aforge",
+      "description": "Compile a coding intent into an immutable TaskIR (over arif_route.444). Returns task_id and sha256 hash. TaskIR is frozen at creation time.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_compose",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 execute \u00b7 MUTATE. Composition Bus \u2014 orchestrate multi-tool execution across MCP servers. 4 patterns: sequential, parallel, conditional, loop. Each step produces a receipt. DAG-based resolution with cycle detection. Modes: execute, status, cancel, analyze. Constitutional: F1 AMANAH, F2 TRUTH, F4 CLARITY, F11 AUDIT. Use when: ACTUATOR [execute/MUTATE] Composition Bus \u2014 orchestrate multi-tool execution across MCP servers. 4 patterns: sequential, parallel, conditional, loop. Each step produces a receipt. DAG-based resolution with cycle detection. Modes: execute, status, cancel, analyze. Constitutional: F1 AMANAH, F2 TRUTH, F4 CLARITY, F11 AUDIT.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_cool",
+      "server": "aforge",
+      "description": "Emit a COOLING_RECEIPT. verb=drift for single convergence signal; verb=pattern for observed failure recurrence. Routes through seal_chain.js validateCooling() \u2192 VAULT999 append. INV-C1: OBSERVE-only. INV-C2: no forge caller. INV-C3: COLD_LINK. INV-C4: explicit governance.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_dispatch_lane",
+      "server": "aforge",
+      "description": "Dispatch a frozen TaskIR to one bounded lane (forge-scout / forge-builder / etc.). Returns run_id + lane envelope. One-dispatch-per-TaskIR enforced via task_ir_hash.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_docker",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 docker \u00b7 MUTATE. Canonical Docker primitive \u2014 ps, logs, exec, and images. Use when: Canonical Docker primitive. Modes: ps, logs, exec, images. Destructive operations stay out of this r. Use when: Canonical Docker primitive. Modes: ps, logs, exec, images. Destructive operations stay out of this r.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_docket_prep",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 meta \u00b7 OBSERVE. Package all evidence and hand off to arifOS. A-FORGE RELINQUISHES CONTROL \u2014 docket is read-only.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_docsgpt",
+      "server": "aforge",
+      "description": "Governed DocsGPT knowledge query. Routes through constitutional membrane: F2 epistemic tags, F7 confidence cap, receipt-wrapped. Modes: query (OpenAI-compatible), native (DocsGPT /api/answer).",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_document_ingest",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 meta \u00b7 OBSERVE. Document intelligence engine \u2014 layout-first parsing with bounding-box provenance.\n\nModes:\n  analyze  \u2014 Layout analysis only. Return structure tree with element types and positions.\n  extract  \u2014 Full pipeline: layout + text extraction + structured JSON with bbox coordinates.\n  chunk    \u2014 Extract then semantic chunk for RAG consumption (strategies: semantic, section, page).\n  compare  \u2014 Diff two documents (structural + text similarity).\n\nFormats: PDF + images (pymupdf/OCR) AND text/json/md/yaml/source (native text pipeline).\nPaths: prefer /root or /root/A-FORGE. Host /tmp is PrivateTmp-isolated \u2014 use content_base64 or stage under A-FORGE data.\n\nBlast radius: LOW (read-only). Reversibility: FULL.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_entropy_sweep",
+      "server": "aforge",
+      "description": "Measure workspace entropy (\u0394S) across the federation. Reports file count, uncommitted changes, temp files, dead processes, and entropy hotspots. Classification: OBSERVE (read-only).",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_ephemeral",
+      "server": "aforge",
+      "description": "Ephemeral Tool Genesis \u2014 the capability metabolism engine.\nGenerates TEMPORARY tools from templates for one mission, then dissolves.\n\n9 MODES (default lifecycle: inspect_gap \u2192 generate \u2192 sandbox_test \u2192 invoke \u2192 verify \u2192 retire):\n  \u2022 inspect_gap        \u2014 Detect what capability is missing (use first).\n  \u2022 generate           \u2014 Create ephemeral tool from a template.\n  \u2022 sandbox_test       \u2014 Verify in bwrap-backed sandbox (fail-closed if no backend).\n  \u2022 invoke             \u2014 Execute the ephemeral tool (sandboxed).\n  \u2022 verify             \u2014 Independent verification. SELF_CERTIFIED is INADMISSIBLE.\n                         Accepted methods: known_answer | schema_invariant |\n                         independent_recompute | domain_witness.\n  \u2022 retire             \u2014 Cleanup. Temporary capability is REMOVED unless promoted.\n  \u2022 list_templates     \u2014 Browse the template registry.\n  \u2022 list_active        \u2014 List currently-active ephemeral tools + cleanup expired.\n  \u2022 propose_promotion  \u2014 Mark a template as recommended (after threshold + F13).\n\nEVIDENCE & PROMOTION (P0.3 + F13):\n  \u2022 A tool becomes permanent ONLY if: it survives sandbox_test, invoke, AND\n    an independent verify, AND the template reaches promotionThreshold, AND\n    F13 SOVEREIGN ratifies the proposal.\n  \u2022 SELF_CERTIFIED verification is REJECTED as inadmissible for promotion.\n\nCONTAINMENT (P0.4 \u2014 fail-closed):\n  \u2022 sandbox_test / invoke use the bwrap-backed ExecutionSandbox.\n  \u2022 No backend \u2192 tool state becomes 'failed' (NOT a green skip).\n\nUSE WHEN: 'I need to do X but no tool exists' \u2014 the federation synthesizes\ncapability on demand. After the mission, retire it. Capability was metabolized,\nnot accumulated.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_evaluate",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE. APEX v36\u03a9 evaluation gate (G-SPACE CANONICAL). Computes G = (A\u00b7P\u00b7E\u00b7X)^(1/4) with is_canonical_g=true. P=Physics (not Purpose). \u03a6 is scar pressure, not a 5th dial. Returns SEAL/REVIEW/VOID. Does NOT generate code. HARAM: do not confuse with forge_apex_encode Jacobian G_local (is_canonical_g=false). Use when: APEX v36\u03a9 evaluation gate. Computes G = A\u00b7P\u00b7E\u00b7X\u00b7\u03a6 (Nash bargaining product) and C_dark = A\u00b7(1-P)\u00b7(1-.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "GOVERN",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_execute",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 execute \u00b7 MUTATE. Execution and motor cortex (Stage 777 FORGE). Use this to execute an action plan. Requires cc_id for mutations (INV-4).",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_execute_sealed",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 execute \u00b7 MUTATE. Execute with VAULT999 seal or governance stage (stage_id + human_seal_token). FAILS HARD without valid authorization. Use when: Execute with VAULT999 seal. FAILS HARD without valid seal \u2014 no self-authorization possible.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "SEAL",
+      "effective_class": "SEAL",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_experience_query",
+      "server": "aforge",
+      "description": "Query experience traces. Returns traces filtered by agent, tool, or feedback type. Read-only. Use to analyze experience patterns and identify improvement opportunities.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_experience_trace",
+      "server": "aforge",
+      "description": "Record an experience trace (Chain-of-Experience). Captures action\u2192observation\u2192feedback\u2192delta after every non-trivial forge tool execution. Three feedback channels: self (model critique), environmental (test/lint/build), constitutional (floor check). Append-only hash-chained ledger. Returns the sealed trace with hash chain link.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_fetch",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 research \u00b7 OBSERVE. Governed URL evidence intake and self-hosted web search \u2014 fetch URLs as markdown, text, JSON, or article extraction, or search via SearxNG. Use when: Governed URL evidence intake + self-hosted web search. Modes: html, markdown, text, json, readable,. Use when: Governed URL evidence intake + self-hosted web search. Modes: html, markdown, text, json, readable,.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_filesystem",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 fs \u00b7 OBSERVE. Canonical governed filesystem primitive \u2014 read, write, patch, delete, and search files.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_fingerprint_check",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE. Compute and verify tool fingerprints. Detects duplicate tools (same name + schema) and schema drift.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_gemini",
+      "server": "aforge",
+      "description": "Direct bridge to Google AI Studio Gemini. 4 verbs: generate, chat, models, health. Default model: gemini-3.6-flash. Bridge listens 127.0.0.1:18092. Auth via bearer-style HTTP header from env.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_git",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 git \u00b7 MUTATE. Canonical git primitive \u2014 status, diff, log, and commit. Use when: Canonical git primitive. Modes: status, diff, log, commit. Mutating modes are floor-gated by A-FORGE. Use when: Canonical git primitive. Modes: status, diff, log, commit. Mutating modes are floor-gated by A-FORGE.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_git_commit",
+      "server": "aforge",
+      "description": "Governed git commit with optional pre-commit checks. Delegates to forge_git(mode=commit) under a constitutional gate. F1 AMANAH: verifies working tree before commit. Classification: EXECUTE_HIGH_IMPACT in actionClassifier.ts.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_github",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 git \u00b7 OBSERVE. Canonical GitHub primitive \u2014 search and pull requests. Use when: Canonical GitHub primitive. Modes: search, pr. Use type for search variants instead of separate tool. Use when: Canonical GitHub primitive. Modes: search, pr. Use type for search variants instead of separate tool.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_github_create_issue",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 git \u00b7 MUTATE. Create a GitHub issue. Use when: Create a GitHub issue. MUTATE \u2014 lease required.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_github_create_or_update_file",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 git \u00b7 MUTATE. Create or update a file on GitHub.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_github_get_file",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 git \u00b7 OBSERVE. Read a file from GitHub. Use when: Read a file from GitHub. OBSERVE-class.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_health_check",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 health \u00b7 OBSERVE. Return A-FORGE server health and constitutional genome (v2.0) status.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_heart_critique",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE. Risk assessment and ethical review \u2014 delegates to arifOS 666 HEART pipeline. A-FORGE does NOT adjudicate floors locally.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_hf_import",
+      "server": "aforge",
+      "description": "Governed Hugging Face import gate. Validate and import models/datasets through constitutional floors F1-F13. Returns verdict (SEAL/HOLD/VOID) with G-score, kappa-r, entropy pathway, and floor-by-floor results. The gate validates \u2014 the kernel seals. Uses arifOS hf_import_gate under constitutional governance.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_isomorphism_check",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE. J\u2011space manifold stability check. Verifies GEOX \u2194 arifOS isomorphism pairs (Identity, Authority, Irreversibility) through runtime witness functions.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_job",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 job \u00b7 OBSERVE. Background job system. Modes: submit, status.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_journalctl",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 vps \u00b7 OBSERVE. Query systemd journal logs (read-only, PII-redacted). Modes: logs, errors, tail, grep.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_judge_proxy",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE. Proxy forwarder to canonical arifOS constitutional judge.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "GOVERN",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_kernel",
+      "server": "aforge",
+      "description": "Constitutional kernel proxy. Routes to arifOS at :8088/mcp. Modes: init | observe | think | route | memory | judge | forge | seal. This is the LEGAL constitutional path \u2014 not a governance bypass. Requires session ownership for seal/judge/forge modes.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_lease",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE. Lease lifecycle. Modes: request, status, revoke. A-FORGE does not self-issue leases \u2014 arifOS mints them.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "GOVERN",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_lock",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE. Amanah/F1 lock primitive. Modes: acquire (reversible F1 gate before mutation), release (free lock).",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "GOVERN",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_memory",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 memory \u00b7 OBSERVE. Canonical memory primitive \u2014 recall from L3 semantic layer (Qdrant vectors + capability registry) with Supabase vault fallback. SRO v1 admissibility gate: arifos_memory results are filtered by the federation policy (default = currently-valid only; include_historical=true admits EXPIRED/SUPERSEDED, each labelled HISTORICAL). Use when: Canonical memory primitive. Modes: recall. Reads VAULT999 local files, then vault999-api fallback. Use when: Canonical memory primitive. Modes: recall. Reads VAULT999 local files, then vault999-api fallback.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_netdata_alarms",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 health \u00b7 OBSERVE. Read Netdata alarms. Use when: Read Netdata alarms. OBSERVE-class.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_netdata_metrics",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 health \u00b7 OBSERVE. Read Netdata chart data. Use when: Read Netdata chart data. OBSERVE-class.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_parallel",
+      "server": "aforge",
+      "description": "Spawn N concurrent A2A tasks and collect results. Thin orchestration over existing A2A verbs (message/send, tasks/get, tasks/cancel). Supports fan-out with bounded concurrency, failure policies (collect_all, fail_fast, majority_wins), timeout, and cancellation propagation. Each agent runs isolated. Root agent synthesizes.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_parallel_cancel",
+      "server": "aforge",
+      "description": "Cancel all running agents in a parallel task group. Propagates tasks/cancel to each non-terminal member.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_parallel_list",
+      "server": "aforge",
+      "description": "List all task groups with their status. For monitoring and debugging.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_parallel_status",
+      "server": "aforge",
+      "description": "Query the status of a parallel task group by group_id. Returns member states, outputs, and \u0394 anchors.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_pipeline_run",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 execute \u00b7 MUTATE. Autonomous intelligence pipeline (canonical). Routes organs, evidence\u2192compute\u2192(optional judge+seal). Requires cc_id/hold for mutate.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_policy",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE. Governed MCP Policy Engine. Modes: check (simulate call), set (add/update policy, sovereign-only), remove (delete policy, sovereign-only), list (show loaded policies), save (persist policies to disk, sovereign-only). F1 AMANAH + F8 LAW + F11 AUDIT + F13 SOVEREIGN.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "GOVERN",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_postgres",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 db \u00b7 MUTATE. Canonical Postgres primitive \u2014 query and schema inspection. Use when: Canonical Postgres primitive. Modes: query, schema. Writes require mutate=true and remain floor-gate. Use when: Canonical Postgres primitive. Modes: query, schema. Writes require mutate=true and remain floor-gate.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_predict",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE. Pre-action simulation layer (prediction bridge). GEOX/WEALTH forward models run BEFORE forge_execute. Result attached as evidence to arif_judge via forge_judge_proxy. Build prediction bridge first, then formalize. Domain auto-detects geox vs wealth from proposed_action.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_probe",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE. Federation organ liveness. Probes all 5 organs + latency. OBSERVE-class. P2.1 canonical gap fill.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_probe_site",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE. Probe a web site or cockpit surface for federation resilience and compliance checks. Returns status, static fallbacks, and metadata.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_reality_loop",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE. Intent compiler: 7-stage state-tracking ledger (MEANING\u2192OBSERVE\u2192ENCODE\u2192IMPROVE\u2192VERIFY\u2192SEAL\u2192RETURN). Modes: start | advance | record | seal | report | metrics | list | destroy. Constitutional F1\u2013F13 at every stage. \u0394S \u2264 0 per iteration. Heuristic thresholds (G\u2265config.min_g_score, W\u00b3\u2265config.min_witness) are PHASE 1 HEURISTIC \u2014 both surfaced in seal output with calibration_required: true. Default 0.70 each; override via config JSON; out-of-range values are clamped to [0,1], non-finite falls back to default. W\u00b3 check: seal mode warns if min_witness > 0 and no tri_witness recorded. RETURN is terminal \u2014 human must decide.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_receipt_draft",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 vault \u00b7 OBSERVE. Draft a structured compliance receipt for a deployment or change. Output is standard markdown formatted for arifOS VAULT999 verification.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_register",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE. APEX v36\u03a9 gated registration gate. Registers a tool ONLY after all gates pass: SEAL verdict from forge_evaluate, CONSENSUS from forge_witness, HARAM scan pass, and scar consultation pass. Non-compensatory: any single gate failure blocks registration. 24h TTL expiry. Backward compatible with forge_skill registry.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "GOVERN",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_registry",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE. Dynamic skill and tool registry. Modes: status (live MCP server & tools overview), list (all generated tools + Decision Field), get (one tool manifest), scars (Scar Law history), fingerprint (registry integrity hash), scan (HARAM scan arbitrary code). Use when: Dynamic skill registry. Modes: list (all generated tools + Decision Field), get (one tool manifest),.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_registry_status",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE. Full A-FORGE tool registry: callable, blocked, degraded, and drift status for all registered tools. Includes tool fingerprinting for dedupe detection.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_rsi_dual_rate_fq",
+      "server": "aforge",
+      "description": "RSI dual-rate FQ signal. Returns both daily FQ (cockpit telemetry, observational) and 7-day rolling FQ (governance decisions, constitutional). Daily FQ is aliased for weekly governance cycles \u2014 use governance_fq for constitutional decisions. OBS-class. Use when: 'FQ governance', 'dual rate', 'aliased FQ', '7-day FQ', 'governance signal'.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_rsi_impulse_response",
+      "server": "aforge",
+      "description": "RSI P0 measurement \u2014 impulse response h(t). Measures how long 888_HOLD, scar seal, and tool failure events remain causally active in subsequent routing, tool selection, and budget allocation. Returns causal half-life in sessions. OBS-class. Use when: 'impulse response', 'HOLD influence', 'how long does a HOLD last', 'causal half-life', 'h(t)', 'RSI measurement'.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_rsi_state_vector",
+      "server": "aforge",
+      "description": "RSI state vector snapshot. Returns current s_t = (identity, plant, memory, controller) for the active session. Read-only \u2014 state vector is computed from live traces, not stored. OBS-class. Use when: 'state vector', 'RSI snapshot', 's_t', 'controller state', 'Imp state'.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_runtime_verify",
+      "server": "aforge",
+      "description": "Verify runtime consistency: compares git source commit vs installed wheel vs import path. Returns MATCH|DRIFT|UNKNOWN. Fail-closed: blocks execution on DRIFT. Read-only (OBSERVE class).",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_sandbox_auto_evict",
+      "server": "aforge",
+      "description": "Auto-evict sandbox snapshots older than 24h (MAX_PAUSE_AGE_HOURS). Purges expired snapshots from cold storage.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_sandbox_list_paused",
+      "server": "aforge",
+      "description": "List all paused sandboxes. Filter by actorId. Returns snapshot metadata with age.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_sandbox_pause",
+      "server": "aforge",
+      "description": "PAUSE a persistent sandbox \u2014 tar upperdir, SHA256 integrity, unmount overlay, cold storage. F1 reversible. F13 lease-gated on resume.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_sandbox_resume",
+      "server": "aforge",
+      "description": "RESUME a paused sandbox \u2014 extract tarball, re-mount overlay, lease re-verify gate. F13 HOLD if lease mismatch or >24h age.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_sandbox_run",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 execute \u00b7 MUTATE. Execute staged artifact in isolated sandbox. ABSOLUTE timeout \u2014 cannot be overridden.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_scan",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE. Security scan a file or directory before code execution. Detects dangerous patterns. OBSERVE-class. P2.5 canonical gap fill.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_scar",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 vault \u00b7 OBSERVE. APEX v36\u03a9 scar metabolization gate. Seals failures as permanent constitutional constraints. Modes: seal (record failure), list (enumerate scars), consult (check fingerprint for matching scars). SCAR LAW: errors are metabolized into constitutional constraints. Pain = \u0394S spike. Learning = cooling. F1 AMANAH: scars are immutable once sealed.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_seal",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 vault \u00b7 MUTATE. Seal a Tri-Witness validated skill into permanent VAULT999 memory. Irreversible. Sealed skills cannot be deleted, demoted below TRUSTED, or expired. Requires REVIEWED tier + Tri-Witness PASS + F13 approval token.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "SEAL",
+      "effective_class": "SEAL",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_seal_run",
+      "server": "aforge",
+      "description": "Submit completed TaskIR + evidence to constitutional judgment. Returns AWAITING_VERIFICATION. Only arif_judge.666 with verified identity may upgrade to SEAL.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "SEAL",
+      "effective_class": "SEAL",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_search",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 research \u00b7 OBSERVE. Unified governed search across web (Brave), documentation (Context7), and deep research with provenance and epistemic labels. Use when: Governed web search via Brave. OBSERVE-class.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_security_drift_scan",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE. Production security telemetry. Scans live ports/services/cron against Machine Constitution registry \u2014 flags unknown public ports, new systemd services, new cron jobs, rogue containers. OBSERVE-class; does not mutate. (Renamed from forge_boundaries_assert 2026-07-09.) Use when: Production security telemetry (renamed from forge_boundaries_assert).",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_send_confirm",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 confirm \u00b7 MUTATE. Send data with human confirmation via elicitation. Supports form mode (standard) and URL mode (sensitive credentials). F13 consent gate.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_session_init",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE. Constitutional session ignition. Proxies to arifOS kernel \u2014 A-FORGE no longer mints independent sessions. (Stage 000 INIT)",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "GOVERN",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_shell",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 shell \u00b7 MUTATE. Canonical governed shell execution. Executes commands through constitutional gate (ArifJudge) + hash-chain audit (ArifSeal). DENY patterns are hard-blocked. GATE patterns require human approval. Every execution is sealed to VAULT999 hash chain. REQUIRES arifOS authority envelope for executing mutable shell commands: call arif_init() first, pass the returned session_id. Read-only probes may omit session_id when they are clearly observation-only. Use forge_shell_dryrun for preview without side effects.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_shell_alert_history",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 shell \u00b7 OBSERVE. View recent ArifJudge alert history (DENY/GATE/self-modification events). Read-only.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_shell_dryrun",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 shell \u00b7 OBSERVE. Preview a shell command's output WITHOUT executing it. Returns what WOULD happen. F1 AMANAH: no mutation, pure dry-run. For actual execution, use forge_shell.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_shell_ledger",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 shell \u00b7 OBSERVE. Query recent ArifSeal hash-chain ledger entries. Read-only, paged. Returns last N records with chain integrity status.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_shell_status",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 shell \u00b7 OBSERVE. Check forge_shell subsystem health: ledger state, judge pattern count, defaults.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_skill",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 skill \u00b7 MUTATE. Dynamic tool forge (APEX Epoch 34\u03a9). Generates a new MCP tool via LLM, gated by HARAM scan + Decision Field (G=Q\u00b7V\u00b7\u03a8\u00b7\u03a6), sealed to VAULT999. Phase 1: human approval per generation, 24h expiry, max 1 generation depth. F13 SOVEREIGN: arifOS domains require seal_verdict_id.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_skill_select_query",
+      "server": "aforge",
+      "description": "Query skill selection events (SkillGate preparation). Returns which skills were selected, by what method (keyword/learned/manual/routed/fallback), and outcomes. Read-only. Prepares for Phase 2 SkillGate credit separation (selection credit vs execution credit).",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_skillstore_read",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 skill \u00b7 OBSERVE. Query artifact store. Semantic search with tag filtering.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_skillstore_write",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 skill \u00b7 MUTATE. Store artifact with provenance. WRITE mode only. Two-layer retention with SCAR immunization.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_stage",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 vault \u00b7 MUTATE. Stage an artifact (mode=artifact) or governance preview (mode=governance). Governance mode returns ui://aforge/preview/<stage_id> for human review. Use when: Move artifact to quarantine staging. Spec becomes IMMUTABLE after staging.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_status",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE. Active execution state: jobs, leases, agents. INFRA-class. P2.2 canonical gap fill.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_surface_audit",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE. Audit MCP tool surface: compare live registry vs affordances.yaml to detect phantom entries, missing tools, description drift, and alias conflicts. Federation-wide drift detection.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "GOVERN",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_surface_guard",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE. MCP Surface Guard \u2014 schema fingerprinting + drift detection. Modes: check (run federation drift check), status (get cached drift log), pin (snapshot current tool surface), config (show guard config). F1 AMANAH + F2 TRUTH + F8 LAW + F11 AUDIT.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "GOVERN",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_synthesize",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 skill \u00b7 MUTATE. Create artifact from intent. Code goes to temporary buffer ONLY \u2014 never touches filesystem.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_tier_bind",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE. [FORGE8#6] Set trust tier LOWER BOUND only. A-FORGE cannot promote \u2014 only arifOS sets actual tier. Phase C: not unregistered (pipeline load-bearing); agents should not call ad-hoc outside FORGE8 flow. Use when: Set trust tier LOWER BOUND only. A-FORGE cannot promote \u2014 only arifOS sets actual tier.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "GOVERN",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_transfer_confirm",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 confirm \u00b7 MUTATE. Transfer funds with human confirmation via form-mode elicitation. F13 consent gate. Blocks until user accept/decline/cancel.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_trust_score",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE. Trust scoring engine for external MCP servers. Scores on 5 dimensions (identity, uptime, auditability, mutation_risk, witnessability), maps to bands (ALLOW/LIMITED/HOLD/DENY), and gates access. Modes: score, evaluate, list, history, verify. Constitutional: F2 TRUTH, F7 HUMILITY, F11 AUDIT, F13 SOVEREIGN. Use when: ACTUATOR [governance/OBSERVE] Trust scoring engine for external MCP servers. Scores on 5 dimensions (identity, uptime, auditability, mutation_risk, witnessability), maps to bands (ALLOW/LIMITED/HOLD/DENY), and gates access. Modes: score, evaluate, list, history, verify. Constitutional: F2 TRUTH, F7 HUMILITY, F11 AUDIT, F13 SOVEREIGN.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_vault",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 vault \u00b7 OBSERVE. VAULT999 primitive (A-FORGE cache layer). Modes: read, list, write, receipt. For seal: use arifOS arif_seal (port 8088) or /root/scripts/federation_ritual.py seal. Use when: VAULT999 primitive. Modes: read, list, write, seal. Use when: VAULT999 primitive. Modes: read, list, write, seal.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_verify_timeline",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE. Verify timeline claims require minimum 2 independent sources.\nTIMELINE_MIN_SOURCES invariant: No timeline claim with fewer than 2 sources passes.\nReturns verification verdict, source count, source quality assessment, and gaps.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_visual_qa",
+      "server": "aforge",
+      "description": "Constitutional visual QA: W\u00b3 tri-witness (vision+linter+sovereign), scar consultation, entropy gate. PASS does not exist \u2014 only PASS_CANDIDATE + 888_HOLD \u2192 SEALED_DEPLOY. F1/F2/F3/F4/F7.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_visual_seal",
+      "server": "aforge",
+      "description": "VAULT999 composite seal: validates W\u00b3 tri-witness hash and seals. I1-I5 invariants. Routing guard blocks premature seals. F1/F2/F3/F11.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "SEAL",
+      "effective_class": "SEAL",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_vps_cron",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 vps \u00b7 OBSERVE. Machine Constitution cron registry. Lists cron jobs from root crontab, /etc/crontab, and /etc/cron.d. OBSERVE-class; does not mutate.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_vps_ports",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 vps \u00b7 OBSERVE. Machine Constitution port registry. Scans listening ports and classifies each as public, internal, or unknown. OBSERVE-class; does not mutate. Does not trust UFW alone because Docker can bypass it.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_vps_services",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 vps \u00b7 OBSERVE. Machine Constitution service registry. Lists running systemd services and Docker containers. OBSERVE-class; does not mutate.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_wealth",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 org_bridge \u00b7 OBSERVE. Route to WEALTH capital intelligence organ. Modes: emv, conservation, flow, runway, wisdom.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_web_extract",
+      "server": "aforge",
+      "description": "Full-capability agentic web extraction \u2014 auto-SPA-rendering, browser actions, authenticated sessions, downloads. All agents. DITEMPA BUKAN DIBERI.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_web_zen",
+      "server": "aforge",
+      "description": "Thin wrapper around web_zen CLI \u2014 agentic site sense/verify/orphan/ephemeral/doctor. Humans use six missions at /missions; agents call this instead of inventing deploy paths. Modes: sense, verify, orphan (dry-run only), ephemeral, doctor, caddy-reload-hint. No production rsync --delete. No Caddy authority self-grant. USE WHEN: site audit, missions 404, vitals proxies, SPA deploy check, ephemeral site parser.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_well",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 org_bridge \u00b7 OBSERVE. WELL relay primitive. Routes to WELL organ (port 18083). Modes: state, readiness, floors, anchor, machine_intelligence. Use when: WELL human readiness primitive. Routes to WELL organ (port 18083). Modes: state, readiness, floors,. Use when: WELL human readiness primitive. Routes to WELL organ (port 18083). Modes: state, readiness, floors,.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_witness",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE. APEX v36\u03a9 tri-witness consensus gate. Computes W\u00b3 = \u221b(Human \u00d7 AI \u00d7 External) via geometric mean (Nash 1950). Returns CONSENSUS/WEAK/DIVERGENT. All three channels must be present. Zero in any channel collapses consensus. DO NOT fake witness confidence \u2014 unknown \u2192 0.0, not 0.5. F13 SOVEREIGN: DIVERGENT \u2192 888_HOLD.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "GOVERN",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_wm_gaps",
+      "server": "aforge",
+      "description": "World Model gap alerts with experience trace cross-reference. Returns high-confidence wrong predictions where the agent was confident but the output diverged significantly. Now also shows which gaps have experience feedback and which lack it \u2014 identifying the highest-priority improvement targets. Severity: CRITICAL/HIGH/MEDIUM. Read-only.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_wm_quality",
+      "server": "aforge",
+      "description": "World Model trajectory quality report + Phase 2 readiness. Grades tools from A-D based on training data quality and assesses whether ECHO/PaW RL training can begin. Read-only.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_wm_stats",
+      "server": "aforge",
+      "description": "World Model statistics dashboard. Returns record counts, per-tool surprise scores, WM eligibility rates, and prediction trending. Read-only.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_worktree",
+      "server": "aforge",
+      "description": "ACTUATOR \u00b7 git \u00b7 OBSERVE. Local git physics sensor \u2014 reports branch, dirty state, stash, conflicts, and blast radius. Use when: Local git physics sensor. Returns branch, dirty state, stash, conflicts, in-progress ops, blast radi.",
+      "parameters": null,
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "arif_appeal_list",
+      "server": "arifos",
+      "description": "List all appeals with optional status filter.",
+      "parameters": null,
+      "tags": [
+        "appeal",
+        "list",
+        "governance"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "arif_appeal_raise",
+      "server": "arifos",
+      "description": "Raise an appeal against a sealed or decided verdict.",
+      "parameters": null,
+      "tags": [
+        "appeal",
+        "governance",
+        "challenge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "arif_appeal_status",
+      "server": "arifos",
+      "description": "Check the status of a previously raised appeal.",
+      "parameters": null,
+      "tags": [
+        "appeal",
+        "status",
+        "governance"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "arif_evidence_fetch",
+      "server": "arifos",
+      "description": "Fetch and preserve external evidence with source citations.",
+      "parameters": null,
+      "tags": [
+        "evidence",
+        "citation",
+        "fact-check"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "arif_forge",
+      "server": "arifos",
+      "description": "KERNEL 777 \u00b7 Execution gate via A-FORGE \u2014 mutates only after SEAL verdict.",
+      "parameters": null,
+      "tags": [
+        "arifos",
+        "arif"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "arif_forge_execute",
+      "server": "arifos",
+      "description": "Execute approved builds, deployments, or system changes.",
+      "parameters": null,
+      "tags": [
+        "forge",
+        "deploy",
+        "build",
+        "execution"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "arif_gateway_connect",
+      "server": "arifos",
+      "description": "Bridge to other federation agents (GEOX, WEALTH, WELL, A-FORGE, AAA, APEX, cn-organ).",
+      "parameters": null,
+      "tags": [
+        "bridge",
+        "gateway",
+        "multi-agent"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "arif_heart_critique",
+      "server": "arifos",
+      "description": "Assess ethical risks and human impact before acting.",
+      "parameters": null,
+      "tags": [
+        "ethics",
+        "critique",
+        "human-impact",
+        "safety"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "arif_init",
+      "server": "arifos",
+      "description": "KERNEL 000 \u00b7 Session ignition \u2014 binds actor, floors, and audit before any other arif_* verb.",
+      "parameters": null,
+      "tags": [
+        "arifos",
+        "arif"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "GOVERN",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "arif_judge",
+      "server": "arifos",
+      "description": "KERNEL 666 \u00b7 Constitutional verdict \u2014 binding SEAL/HOLD/SABAR/VOID arbitration.",
+      "parameters": null,
+      "tags": [
+        "arifos",
+        "arif"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "GOVERN",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "arif_judge_deliberate",
+      "server": "arifos",
+      "description": "Render final constitutional verdict on a proposed action.",
+      "parameters": null,
+      "tags": [
+        "judge",
+        "verdict",
+        "constitutional",
+        "deliberation"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "GOVERN",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "arif_kernel_route",
+      "server": "arifos",
+      "description": "Route intent to the correct tool or federation organ.",
+      "parameters": null,
+      "tags": [
+        "routing",
+        "orchestration",
+        "dispatch"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "GOVERN",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "arif_memory",
+      "server": "arifos",
+      "description": "KERNEL 555 \u00b7 Memory governor \u2014 L1\u2013L6 governed semantic recall, storage, and persistence.",
+      "parameters": null,
+      "tags": [
+        "arifos",
+        "arif"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "arif_memory_recall",
+      "server": "arifos",
+      "description": "Search past sessions, assets, sealed events, or repositories.",
+      "parameters": null,
+      "tags": [
+        "memory",
+        "search",
+        "history",
+        "recall"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "arif_mind_reason",
+      "server": "arifos",
+      "description": "Multi-step reasoning, planning, and reflection with confidence labeling.",
+      "parameters": null,
+      "tags": [
+        "reasoning",
+        "planning",
+        "reflection",
+        "analysis"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "arif_observe",
+      "server": "arifos",
+      "description": "KERNEL 111 \u00b7 Sense reality into evidence with epistemic tags and uncertainty bounds.",
+      "parameters": null,
+      "tags": [
+        "arifos",
+        "arif"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "arif_ops_measure",
+      "server": "arifos",
+      "description": "Check system health, thermodynamic state, and resource metrics.",
+      "parameters": null,
+      "tags": [
+        "health",
+        "metrics",
+        "monitoring",
+        "ops"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "arif_reply_compose",
+      "server": "arifos",
+      "description": "Compose the final response for the user.",
+      "parameters": null,
+      "tags": [
+        "composition",
+        "reply",
+        "formatting"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "arif_route",
+      "server": "arifos",
+      "description": "KERNEL 444 \u00b7 Intent\u2192organ router \u2014 dispatches to GEOX/WEALTH/WELL/A-FORGE.",
+      "parameters": null,
+      "tags": [
+        "arifos",
+        "arif"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "GOVERN",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "arif_seal",
+      "server": "arifos",
+      "description": "KERNEL 999 \u00b7 VAULT999 immutable append \u2014 irreversible civilizational memory sealing.",
+      "parameters": null,
+      "tags": [
+        "arifos",
+        "arif"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "SEAL",
+      "effective_class": "SEAL",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "arif_sense_observe",
+      "server": "arifos",
+      "description": "Search the web, ingest URLs, check system vitals, or map a repository.",
+      "parameters": null,
+      "tags": [
+        "web",
+        "search",
+        "observation",
+        "evidence"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "arif_session_init",
+      "server": "arifos",
+      "description": "Start or resume a governed constitutional session. Must be called first.",
+      "parameters": null,
+      "tags": [
+        "governance",
+        "session",
+        "constitutional"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "GOVERN",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "arif_think",
+      "server": "arifos",
+      "description": "KERNEL 333 \u00b7 Mind \u2014 structured reasoning under F2/F7 with OBS/DER/INT/SPEC labels.",
+      "parameters": null,
+      "tags": [
+        "arifos",
+        "arif"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "arif_vault_seal",
+      "server": "arifos",
+      "description": "Seal a verdict or outcome to the immutable audit ledger.",
+      "parameters": null,
+      "tags": [
+        "vault",
+        "seal",
+        "audit",
+        "immutable"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "SEAL",
+      "effective_class": "SEAL",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "brave_image_search",
+      "server": "brave-search",
+      "description": "Performs an image search using the Brave Search API.",
+      "parameters": null,
+      "tags": [
+        "image",
+        "search",
+        "brave"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "brave_local_search",
+      "server": "brave-search",
+      "description": "Searches for local businesses and places using Brave's Local Search API.",
+      "parameters": null,
+      "tags": [
+        "local",
+        "search",
+        "business",
+        "brave"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "brave_news_search",
+      "server": "brave-search",
+      "description": "Searches for news articles using Brave's News Search API.",
+      "parameters": null,
+      "tags": [
+        "news",
+        "search",
+        "brave"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "brave_summarizer",
+      "server": "brave-search",
+      "description": "Retrieves AI-generated summaries of web search results.",
+      "parameters": null,
+      "tags": [
+        "summary",
+        "search",
+        "brave",
+        "ai"
+      ],
+      "epistemic_tag": "PLAUSIBLE",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "brave_video_search",
+      "server": "brave-search",
+      "description": "Searches for videos using Brave's Video Search API.",
+      "parameters": null,
+      "tags": [
+        "video",
+        "search",
+        "brave"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "brave_web_search",
+      "server": "brave-search",
+      "description": "Search the open web using the Brave Search API. Find news, updates, protocol specifications, documentation, and general information on the internet.",
+      "parameters": null,
+      "tags": [
+        "web",
+        "search",
+        "brave",
+        "protocol",
+        "updates",
+        "mcp"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "query-docs",
+      "server": "context7",
+      "description": "Retrieves and queries up-to-date documentation and code examples from Context7 for any programming library or framework.\n\nYou must call 'Resolve Context7 Library ID' tool first to obtain the exact Context7-compatible library ID required to use this tool, UNLESS the user explicitly provides a library ID in the format '/org/project' or '/org/project/version' in their query.\n\nDo not call this tool more than 3 times per question.",
+      "parameters": null,
+      "tags": [
+        "context7",
+        "query-docs"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "resolve-library-id",
+      "server": "context7",
+      "description": "Resolves a package/product name to a Context7-compatible library ID and returns matching libraries.\n\nYou MUST call this function before 'Query Documentation' tool to obtain a valid Context7-compatible library ID UNLESS the user explicitly provides a library ID in the format '/org/project' or '/org/project/version' in their query.\n\nEach result includes:\n- Library ID: Context7-compatible identifier (format: /org/project)\n- Name: Library or package name\n- Description: Short summary\n- Code Snippets: Number of available code examples\n- Source Reputation: Authority indicator (High, Medium, Low, or Unknown)\n- Benchmark Score: Quality indicator (100 is the highest score)\n- Versions: List of versions if available. Use one of those versions if the user provides a version in their query. The format of the version is /org/project/version.\n\nFor best results, select libraries based on name match, source reputation, snippet coverage, benchmark score, and relevance to your use case.\n\nSelection Process:\n1. Analyze the query to understand what library/package the user is looking for\n2. Return the most relevant match based on:\n- Name similarity to the query (exact matches prioritized)\n- Description relevance to the query's intent\n- Documentation coverage (prioritize libraries with higher Code Snippet counts)\n- Source reputation (consider libraries with High or Medium reputation more authoritative)\n- Benchmark Score: Quality indicator (100 is the highest score)\n\nResponse Format:\n- Return the selected library ID in a clearly marked section\n- Provide a brief explanation for why this library was chosen\n- If multiple good matches exist, acknowledge this but proceed with the most relevant one\n- If no good matches exist, clearly state this and suggest query refinements\n\nFor ambiguous queries, request clarification before proceeding with a best-guess match.\n\nIMPORTANT: Do not call this tool more than 3 times per question. If you cannot find what you need after 3 calls, use the best result you have.",
+      "parameters": null,
+      "tags": [
+        "context7",
+        "resolve-library-id"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "duckdb_describe",
+      "server": "duckdb",
+      "description": "Inspect schema, data types, and column metadata of a dataset within approved roots.",
+      "parameters": null,
+      "tags": [
+        "duckdb",
+        "duckdb"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "duckdb_list_approved_datasets",
+      "server": "duckdb",
+      "description": "List all datasets currently available across approved analytical enclave directories.",
+      "parameters": null,
+      "tags": [
+        "duckdb",
+        "duckdb"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "duckdb_query",
+      "server": "duckdb",
+      "description": "Execute a bounded, read-only SQL query over approved datasets (.parquet, .csv)\nin /data/geox/derived, /data/aaa/audit, /data/aaa/ledgers, /data/aaa/log-exports.\n\nOnly SELECT, DESCRIBE, EXPLAIN, SHOW queries are allowed.\nAll operations outside approved roots are strictly blocked.\nResults are capped at 500 rows and 1MB.",
+      "parameters": null,
+      "tags": [
+        "duckdb",
+        "duckdb"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "fed_classify",
+      "server": "fed",
+      "description": "Classify a message into a capability lane. Deterministic, identity-blind.\n\nAnswers ONE question: \"capability apa diperlukan oleh mesej ini?\"\nNever identity, never emotion, never philosophy \u2014 those live prompt-side.",
+      "parameters": null,
+      "tags": [
+        "fed",
+        "fed"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "ADVISORY"
+    },
+    {
+      "tool_name": "fed_contrast",
+      "server": "fed",
+      "description": "Compare two routes side-by-side: cost, latency, shadow, constitutional fit.",
+      "parameters": null,
+      "tags": [
+        "fed",
+        "fed"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "ADVISORY"
+    },
+    {
+      "tool_name": "fed_health",
+      "server": "fed",
+      "description": "FED health check \u2014 returns service status and DB integrity.",
+      "parameters": null,
+      "tags": [
+        "fed",
+        "fed"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "ADVISORY"
+    },
+    {
+      "tool_name": "fed_probe",
+      "server": "fed",
+      "description": "Probe LiteLLM gateway lanes + DB state (v3.3.1).\n\nReplaces the dead delegation to balance_probe.py (probed DeepSeek only,\nhardcoded provider_count=6). Reads live gateway health surfaces directly\nand reports honest DB counts. ADVISORY_ONLY \u2014 never judges.",
+      "parameters": null,
+      "tags": [
+        "fed",
+        "fed"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "ADVISORY"
+    },
+    {
+      "tool_name": "fed_report_latency",
+      "server": "fed",
+      "description": "Report latency for a provider-model route. Agents call this after every\nAPI call to populate route_latency table with live telemetry.",
+      "parameters": null,
+      "tags": [
+        "fed",
+        "fed"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "ADVISORY"
+    },
+    {
+      "tool_name": "fed_route",
+      "server": "fed",
+      "description": "Primary routing tool. Returns ranked routes for a given task.",
+      "parameters": null,
+      "tags": [
+        "fed",
+        "fed"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "GOVERN",
+      "risk_tier": "medium",
+      "authority_ceiling": "ADVISORY"
+    },
+    {
+      "tool_name": "fed_status",
+      "server": "fed",
+      "description": "Return full FED state: all provider balances, route health, latency summary.",
+      "parameters": null,
+      "tags": [
+        "fed",
+        "fed"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "ADVISORY"
+    },
+    {
+      "tool_name": "geox_basin",
+      "server": "geox",
+      "description": "Unified basin intelligence: profile, resolve, macrostrat, backstrip, mass balance, thermal maturity, map context, deep time, tectonic reconstruction. Use when: Use when you need basin evidence.",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_calibration_register_witness",
+      "server": "geox",
+      "description": "Register a calibration witness for structural interpretation.\n\nThe witness defines the calibrated measurement frame that structural\ngates consume. Without a valid witness, gates return UNMEASURED.",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_claim",
+      "server": "geox",
+      "description": "Unified claim engine. Modes: create/validate/challenge/seal/attach (claim lifecycle), falsify (Popperian falsification), discover/synthesize/abduct/contradict/spatial_block/ingest_literature (evidence), scan (contradiction scan).",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_contrast_metabolize",
+      "server": "geox",
+      "description": "Unified anomalous contrast metabolic pipeline. Binds three stages into one call: ISOLATE (deterministic acoustic impedance contrast detection) then MEASURE (AVO gradient + LMR estimates) then CLASSIFY (>=3 stratigraphic trap hypotheses). substrate_class=INERT. Local max QUALIFIED_CANDIDATE - arifOS seals. Use when: Use when you need contrast metabolize evidence.",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_deep_time",
+      "server": "geox",
+      "description": "Deep-time Digital Earth reasoning. Modes: dde_reason (DDE Ontology + Macrostrat neuro-symbolic reasoning for stratigraphic queries, cross-section validation, tectonic context).",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_extract_display_proxy",
+      "server": "geox",
+      "description": "Extract a display-derived proxy from a raster seismic image.\n\nThis function produces pixel-derived proxy arrays for visual and\nmorphological interpretation assistance. The output is explicitly\nlabeled DISPLAY_DERIVED_PROXY and cannot be used for:\n- amplitude preservation validation\n- AVO classification\n- phase certification\n- native seismic-to-well tie acceptance\n- quantitative prospect/fault-seal decisions\n\nInputs:\n    image_path: Path to seismic image file\n    image_data: Base64-encoded image (alternative to path)\n    calibration_witness_ref: Validated CalibrationWitness reference\n    panel_bounds: Override panel detection {x_min, y_min, x_max, y_max}\n    extraction_method: Algorithm identifier for provenance\n    session_id, actor_id, trace_id: Transport metadata\n\nReturns:\n    dict with proxy arrays, provenance, permitted/prohibited uses, and status",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_extract_native_trace",
+      "server": "geox",
+      "description": "Extract a native seismic trace from a registered source.\n\nReturns NativeTraceRef with full provenance, sample metadata, and\nexplicit permitted/prohibited downstream uses.\n\nHOLD conditions:\n- Source not registered\n- Authority insufficient\n- Data classification disallows access\n- Invalid trace locator\n- Unparseable SEG-Y",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_geomechanics",
+      "server": "geox",
+      "description": "Geomechanical analysis: bulk/shear/young modulus, poisson ratio, acoustic impedance, stress polygon. Use when: Use when you need geomechanics evidence.",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_glof_cascade_initialize",
+      "server": "geox",
+      "description": "GLOF cascade simulation init. Accepts 33D GEOXEarthState33 (M9+P9+W9+X6 zen-33) or defaults to himalayan_glof_33. Returns session state_id. Use when: Use when you need glof cascade initialize evidence.",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_glof_cascade_inverse",
+      "server": "geox",
+      "description": "Bayesian grid-search inference on 33D posterior from wave observations (W obs). Returns inferred theta_hat + log_likelihood + posterior_summary. Use when: Use when you need glof cascade inverse evidence.",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_glof_cascade_mcmc_inverse",
+      "server": "geox",
+      "description": "Phase C \u2014 proper Bayesian posterior via adaptive Metropolis-Hastings MCMC. Replaces grid search. Returns posterior mean, std, percentiles, R-hat, ESS, accept_rate, n_samples. Sampling on (E, c, phi, tau_0, sigma_t, phi_p). Use when: Use when you need glof cascade mcmc inverse evidence.",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_glof_cascade_metabolize",
+      "server": "geox",
+      "description": "Close F-I-M loop on 33D state. Emit FIMReceipt33 with tri-witness G-score, phase transitions, cycle_id. Use when: Use when you need glof cascade metabolize evidence.",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_glof_cascade_phase",
+      "server": "geox",
+      "description": "Yield surface eval on 33D state. Returns Mohr-Coulomb/Voellmy verdict + 33D-derived sigma_eff, tau_max, breach_probability_33D, hydro_fracture indicator. Use when: Use when you need glof cascade phase evidence.",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_glof_cascade_propagate",
+      "server": "geox",
+      "description": "Phase C \u2014 1D Saint-Venant (shallow-water) wave propagation from breach to downstream. Lax-Friedrichs finite-volume solver with Manning friction. Returns time series of (h, u, Q) along domain + peak downstream Q/time/depth/velocity. Use when: Use when you need glof cascade propagate evidence.",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_glof_cascade_step",
+      "server": "geox",
+      "description": "Advance 33D GLOF state by n_steps. Uses metabolize_33 closure + forward_kinematics to derive W (Vp,Vs,alpha_B). Returns evolved 33D state. Use when: Use when you need glof cascade step evidence.",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_list_registered_sources",
+      "server": "geox",
+      "description": "List all registered native seismic sources.",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_map",
+      "server": "geox",
+      "description": "Geological map pipeline. Modes: layers_list (list available layers for bbox), scene_plan (create deterministic visual recipe), render_preview (render static map preview).",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_model",
+      "server": "geox",
+      "description": "Subsurface and geological modeling. Modes: subsurface (joint inversion, gravity/mag, MT forward), geological_generate (deterministic 2D cross-section from strata), gempy_3d (GemPy implicit 3D structural modeling).",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_paleobiodb_query",
+      "server": "geox",
+      "description": "Query the Paleobiology Database (PBDB v1.2) for taxa, occurrences, and biozones. Modes: taxa (resolve a taxon), occurrence (fossil occurrence records), zone (biozones by scale), age_intervals (ICS / nanno / foram zones). Read-only, public-domain fossil data. Use when: Use when you need paleobiodb query evidence.",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_petrophysics",
+      "server": "geox",
+      "description": "Unified petrophysics: Vsh, porosity, Sw, permeability, net pay, LEM inference, QC. Modes: generate, verify, lem_inference, stoip_feed, qc. Use when: Use when you need petrophysics evidence.",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_prospect",
+      "server": "geox",
+      "description": "Prospect evaluation: volumetrics, POS, EVOI, risk assessment. Modes: screen, evaluate. Use when: Use when you need prospect evidence.",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_register_native_source",
+      "server": "geox",
+      "description": "Register a native SEG-Y source for trace extraction.\n\nValidates file existence, computes SHA256, extracts binary header metadata.\nDoes NOT load trace data \u2014 that happens at extraction time.\n\nReturns registration receipt with HOLD reasons if validation fails.",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_seismic_compute",
+      "server": "geox",
+      "description": "Seismic computation. Modes: avo_forward (AVO forward modeling: Zoeppritz, Shuey, LMR, Castagna).",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_seismic_ingest",
+      "server": "geox",
+      "description": "SEG-Y I/O, header inspection, export. Use when: Use when you need seismic ingest evidence.",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_seismic_interpret",
+      "server": "geox",
+      "description": "One semantic capability \u2014 propose geometry, physics-gate, compare hypotheses (NOT autonomous SEAL). Live modes: horizon_contrast, fault_sticks, volume_frame, blend, structure_validate, interpret (interpretation_bundle \u22653 hyps), interpret_section/rsi_pipeline (INT_SEISMIC), segy_slice. Gates return PASS|WARN|KILL|UNMEASURED + receipt_hash. preferred_hypothesis always null from GEOX. Local max QUALIFIED_CANDIDATE \u2014 arifOS seals only. Use when: Use when you need seismic interpret evidence.",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_source",
+      "server": "geox",
+      "description": "Source rock and diagenesis evaluation. Modes: source_rock (TOC, kerogen, maturity, \u0394logR), diagenesis (compaction models: Athy, Sclater & Christie).",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_spatial",
+      "server": "geox",
+      "description": "Spatial indexing and discovery. Modes: h3_index (H3 hexagonal spatial indexing), lancedb_store (LanceDB embedded vector store for earth embeddings), stac_discover (STAC catalog query for cloud-native geospatial assets).",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_temporal",
+      "server": "geox",
+      "description": "Temporal analytics for petroleum basins. Modes: decline (decline curve analysis), rrr (reserve replacement ratio), basin_lifecycle (classify lifecycle stage), cadence (licensing cadence analysis).",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_well",
+      "server": "geox",
+      "description": "Well operations. Modes: view (hydrate LAS curves into interactive tracks for WellDesk), desk (interactive view, publish, render with petrophysics).",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_well_ingest",
+      "server": "geox",
+      "description": "Load well log data from LAS, SEG-Y, DST, deviation, or tops files. Auto-detects format. Use when: Use when you need well ingest evidence.",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_well_qc",
+      "server": "geox",
+      "description": "Quality control for well data: depth monotonicity, null %, physical range checks. Use when: Use when you need well qc evidence.",
+      "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "add_issue_comment",
+      "server": "github",
+      "description": "Add a comment to an existing issue",
+      "parameters": null,
+      "tags": [
+        "github",
+        "add"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "create_branch",
+      "server": "github",
+      "description": "Create a new branch in a GitHub repository",
+      "parameters": null,
+      "tags": [
+        "github",
+        "create"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "create_issue",
+      "server": "github",
+      "description": "Create a new issue in a GitHub repository",
+      "parameters": null,
+      "tags": [
+        "github",
+        "create"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "create_or_update_file",
+      "server": "github",
+      "description": "Create or update a single file in a GitHub repository",
+      "parameters": null,
+      "tags": [
+        "github",
+        "create"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "create_pull_request",
+      "server": "github",
+      "description": "Create a new pull request in a GitHub repository",
+      "parameters": null,
+      "tags": [
+        "github",
+        "create"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "create_pull_request_review",
+      "server": "github",
+      "description": "Create a review on a pull request",
+      "parameters": null,
+      "tags": [
+        "github",
+        "create"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "create_repository",
+      "server": "github",
+      "description": "Create a new GitHub repository in your account",
+      "parameters": null,
+      "tags": [
+        "github",
+        "create"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "fork_repository",
+      "server": "github",
+      "description": "Fork a GitHub repository to your account or specified organization",
+      "parameters": null,
+      "tags": [
+        "github",
+        "fork"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "get_file_contents",
+      "server": "github",
+      "description": "Get the contents of a file or directory from a GitHub repository",
+      "parameters": null,
+      "tags": [
+        "github",
+        "get"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "get_issue",
+      "server": "github",
+      "description": "Get details of a specific issue in a GitHub repository.",
+      "parameters": null,
+      "tags": [
+        "github",
+        "get"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "get_pull_request",
+      "server": "github",
+      "description": "Get details of a specific pull request",
+      "parameters": null,
+      "tags": [
+        "github",
+        "get"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "get_pull_request_comments",
+      "server": "github",
+      "description": "Get the review comments on a pull request",
+      "parameters": null,
+      "tags": [
+        "github",
+        "get"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "get_pull_request_files",
+      "server": "github",
+      "description": "Get the list of files changed in a pull request",
+      "parameters": null,
+      "tags": [
+        "github",
+        "get"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "get_pull_request_reviews",
+      "server": "github",
+      "description": "Get the reviews on a pull request",
+      "parameters": null,
+      "tags": [
+        "github",
+        "get"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "get_pull_request_status",
+      "server": "github",
+      "description": "Get the combined status of all status checks for a pull request",
+      "parameters": null,
+      "tags": [
+        "github",
+        "get"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "list_commits",
+      "server": "github",
+      "description": "Get list of commits of a branch in a GitHub repository",
+      "parameters": null,
+      "tags": [
+        "github",
+        "list"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "list_issues",
+      "server": "github",
+      "description": "List issues in a GitHub repository with filtering options",
+      "parameters": null,
+      "tags": [
+        "github",
+        "list"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "list_pull_requests",
+      "server": "github",
+      "description": "List and filter repository pull requests",
+      "parameters": null,
+      "tags": [
+        "github",
+        "list"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "merge_pull_request",
+      "server": "github",
+      "description": "Merge a pull request",
+      "parameters": null,
+      "tags": [
+        "github",
+        "merge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "push_files",
+      "server": "github",
+      "description": "Push multiple files to a GitHub repository in a single commit",
+      "parameters": null,
+      "tags": [
+        "github",
+        "push"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "search_code",
+      "server": "github",
+      "description": "Search for code across GitHub repositories",
+      "parameters": null,
+      "tags": [
+        "github",
+        "search"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "search_issues",
+      "server": "github",
+      "description": "Search for issues and pull requests across GitHub repositories",
+      "parameters": null,
+      "tags": [
+        "github",
+        "search"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "search_repositories",
+      "server": "github",
+      "description": "Search for GitHub repositories",
+      "parameters": null,
+      "tags": [
+        "github",
+        "search"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "search_users",
+      "server": "github",
+      "description": "Search for users on GitHub",
+      "parameters": null,
+      "tags": [
+        "github",
+        "search"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "update_issue",
+      "server": "github",
+      "description": "Update an existing issue in a GitHub repository",
+      "parameters": null,
+      "tags": [
+        "github",
+        "update"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "update_pull_request_branch",
+      "server": "github",
+      "description": "Update a pull request branch with the latest changes from the base branch",
+      "parameters": null,
+      "tags": [
+        "github",
+        "update"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "add_observations",
+      "server": "memory",
+      "description": "Add new observations to existing entities in the knowledge graph",
+      "parameters": null,
+      "tags": [
+        "memory",
+        "add"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "create_entities",
+      "server": "memory",
+      "description": "Create multiple new entities in the knowledge graph",
+      "parameters": null,
+      "tags": [
+        "memory",
+        "create"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "create_relations",
+      "server": "memory",
+      "description": "Create multiple new relations between entities in the knowledge graph. Relations should be in active voice",
+      "parameters": null,
+      "tags": [
+        "memory",
+        "create"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "delete_entities",
+      "server": "memory",
+      "description": "Delete multiple entities and their associated relations from the knowledge graph",
+      "parameters": null,
+      "tags": [
+        "memory",
+        "delete"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "delete_observations",
+      "server": "memory",
+      "description": "Delete specific observations from entities in the knowledge graph",
+      "parameters": null,
+      "tags": [
+        "memory",
+        "delete"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "delete_relations",
+      "server": "memory",
+      "description": "Delete multiple relations from the knowledge graph",
+      "parameters": null,
+      "tags": [
+        "memory",
+        "delete"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "open_nodes",
+      "server": "memory",
+      "description": "Open specific nodes in the knowledge graph by their names",
+      "parameters": null,
+      "tags": [
+        "memory",
+        "open"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "read_graph",
+      "server": "memory",
+      "description": "Read the entire knowledge graph",
+      "parameters": null,
+      "tags": [
+        "memory",
+        "read"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "search_nodes",
+      "server": "memory",
+      "description": "Search for nodes in the knowledge graph based on a query",
+      "parameters": null,
+      "tags": [
+        "memory",
+        "search"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "find_capability",
+      "server": "meyhem",
+      "description": "Find the best tool for your task across MCP servers and OpenClaw skills.",
+      "parameters": null,
+      "tags": [
+        "discovery",
+        "capability"
+      ],
+      "epistemic_tag": "PLAUSIBLE",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "find_server",
+      "server": "meyhem",
+      "description": "Find MCP servers for a given task.",
+      "parameters": null,
+      "tags": [
+        "discovery",
+        "server"
+      ],
+      "epistemic_tag": "PLAUSIBLE",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "outcome",
+      "server": "meyhem",
+      "description": "Report whether a search result helped complete your task.",
+      "parameters": null,
+      "tags": [
+        "feedback",
+        "search",
+        "meyhem"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "search",
+      "server": "meyhem",
+      "description": "Search the web and return ranked results with feedback-driven scoring.",
+      "parameters": null,
+      "tags": [
+        "web",
+        "search",
+        "meyhem"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "select",
+      "server": "meyhem",
+      "description": "Select a search result to get its full content.",
+      "parameters": null,
+      "tags": [
+        "web",
+        "select",
+        "content"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "understand_image",
+      "server": "minimax",
+      "description": "Analyze and interpret image content from local files or URLs.",
+      "parameters": null,
+      "tags": [
+        "vision",
+        "image",
+        "analysis"
+      ],
+      "epistemic_tag": "PLAUSIBLE",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "web_search",
+      "server": "minimax",
+      "description": "Search the web and return ranked results with feedback-driven scoring.",
+      "parameters": null,
+      "tags": [
+        "web",
+        "search",
+        "ranking"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "query",
+      "server": "postgres",
+      "description": "Run a read-only SQL query",
+      "parameters": null,
+      "tags": [
+        "postgres",
+        "query"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "capital_backtest",
+      "server": "wealth",
+      "description": "Run strategy backtest on XAUUSD using the proven indicator fusion (EMA alignment + ATR-scaled stops + RSI pullback filter + S/R zones). Wraps the v2 backtest engine. Returns win rate, profit factor, Sharpe, max drawdown, and trade log. SIDE EFFECT: writes a vault receipt.",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_diagnose",
+      "server": "wealth",
+      "description": "Abductive institutional diagnostics \u2014 inference from partial evidence across stress, governance, and institutional domains. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_entropy",
+      "server": "wealth",
+      "description": "Capital and institutional entropy analysis \u2014 measures information loss, consequence displacement, and metric drift. Computes, never allocates. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_entry_plan",
+      "server": "wealth",
+      "description": "Compute S/R-aware entry zone, stop loss, and take profit targets for XAUUSD. Combines swing-point support/resistance clustering with ATR-based risk scaling. Returns structured trade plan: entry_zone, stop_loss, target_1, target_2, risk_reward_ratio. SIDE EFFECT: writes a vault receipt.",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_health",
+      "server": "wealth",
+      "description": "Financial health metrics \u2014 deductive computation from structured inputs, no inference or governance verdict. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_indicator",
+      "server": "wealth",
+      "description": "Compute technical analysis indicators for any yfinance symbol. Indicators: ema, sma, rsi, macd, bb (Bollinger Bands), psar (Parabolic SAR), atr, adx. Pure numpy computation \u2014 no external TA library needed. SIDE EFFECT: writes a vault receipt.",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_ledger",
+      "server": "wealth",
+      "description": "VAULT999 immutable ledger access \u2014 query read-only, write requires human acknowledgment. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_market",
+      "server": "wealth",
+      "description": "Market data and commodity intelligence \u2014 observational with derived and interpreted fields. MODES: fundamentals (pass ticker=<BURSA_CODE> for the F1-F9 fundamental-invariant engine), fx, commodity, indicator, stock, gold, oil, gas. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_primitive",
+      "server": "wealth",
+      "description": "Deductive capital math primitives \u2014 pure computation, no inference or governance verdict. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_registry",
+      "server": "wealth",
+      "description": "WEALTH meta/introspection \u2014 registry status, tool schema, domain index, health check. Observational only. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_agent_path",
+      "server": "wealth",
+      "description": "Sovereign Intent Router \u2014 classifies tasks into L1/L2 physics-economic paths.",
+      "parameters": null,
+      "tags": [
+        "routing",
+        "intent",
+        "physics",
+        "economics"
+      ],
+      "epistemic_tag": "PLAUSIBLE",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_boundary_governance",
+      "server": "wealth",
+      "description": "Boundary \u2014 constitutional floors, maruah, stewardship, constraint.",
+      "parameters": null,
+      "tags": [
+        "boundary",
+        "governance",
+        "maruah",
+        "stewardship"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_conservation_capital",
+      "server": "wealth",
+      "description": "Conservation \u2014 capital stock reality (assets, liabilities, reserves).",
+      "parameters": null,
+      "tags": [
+        "capital",
+        "assets",
+        "liabilities",
+        "reserves"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_energy_productivity",
+      "server": "wealth",
+      "description": "Energy \u2014 output per input, productivity, capital efficiency.",
+      "parameters": null,
+      "tags": [
+        "productivity",
+        "efficiency",
+        "energy"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_entropy_audit",
+      "server": "wealth",
+      "description": "Calculate structural and narrative entropy coefficients for an SOE/NOC.",
+      "parameters": null,
+      "tags": [
+        "entropy",
+        "audit",
+        "soe",
+        "noc",
+        "governance"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "action_class": "GOVERN",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_entropy_risk",
+      "server": "wealth",
+      "description": "Entropy \u2014 uncertainty, dispersion, tail risk, disorder.",
+      "parameters": null,
+      "tags": [
+        "risk",
+        "entropy",
+        "uncertainty",
+        "tail-risk"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_epf_project",
+      "server": "wealth",
+      "description": "Project EPF accumulation to target age.",
+      "parameters": null,
+      "tags": [
+        "epf",
+        "malaysia",
+        "retirement",
+        "projection"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_field_macro",
+      "server": "wealth",
+      "description": "Field \u2014 macro environment (rates, FX, energy, carbon, regime).",
+      "parameters": null,
+      "tags": [
+        "macro",
+        "rates",
+        "fx",
+        "energy",
+        "carbon"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_flow_liquidity",
+      "server": "wealth",
+      "description": "Flow \u2014 liquidity movement (cashflow, burn, runway, survival).",
+      "parameters": null,
+      "tags": [
+        "liquidity",
+        "cashflow",
+        "burn",
+        "runway"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_game_coordination",
+      "server": "wealth",
+      "description": "Game \u2014 multi-agent incentives, bargaining, coordination.",
+      "parameters": null,
+      "tags": [
+        "game-theory",
+        "incentives",
+        "bargaining",
+        "coordination"
+      ],
+      "epistemic_tag": "PLAUSIBLE",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_governance_verdict",
+      "server": "wealth",
+      "description": "Final Allocation Verdict \u2014 sovereign governance recommendation.",
+      "parameters": null,
+      "tags": [
+        "governance",
+        "verdict",
+        "allocation",
+        "sovereign"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_gradient_price",
+      "server": "wealth",
+      "description": "Gradient \u2014 price pressure, spread, mispricing detection.",
+      "parameters": null,
+      "tags": [
+        "price",
+        "spread",
+        "mispricing",
+        "trading"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_health_check",
+      "server": "wealth",
+      "description": "Universal health check for federation stability.",
+      "parameters": null,
+      "tags": [
+        "health",
+        "federation",
+        "stability"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_inequality_kernel",
+      "server": "wealth",
+      "description": "Inequality Kernel \u2014 unified diagnosis across all 5 inequality dimensions.",
+      "parameters": null,
+      "tags": [
+        "inequality",
+        "kernel",
+        "diagnosis",
+        "social"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_inertia_leverage",
+      "server": "wealth",
+      "description": "Inertia \u2014 resistance to change, leverage stress, fragility.",
+      "parameters": null,
+      "tags": [
+        "leverage",
+        "dscr",
+        "fragility",
+        "stress"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_judge_handoff",
+      "server": "wealth",
+      "description": "Build or validate structured handoff envelope for arifOS governance review and 888_HOLD judgment. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "wealth"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_ledger_query",
+      "server": "wealth",
+      "description": "Ledger Read \u2014 query the immutable governance ledger.",
+      "parameters": null,
+      "tags": [
+        "ledger",
+        "query",
+        "audit"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_ledger_write",
+      "server": "wealth",
+      "description": "Ledger Append \u2014 irreversible state transition to VAULT999.",
+      "parameters": null,
+      "tags": [
+        "ledger",
+        "write",
+        "vault",
+        "irreversible"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_market_data",
+      "server": "wealth",
+      "description": "Unified surface for FX, commodities, and macro indicators.",
+      "parameters": null,
+      "tags": [
+        "market",
+        "fx",
+        "commodity",
+        "macro"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_omni_wisdom",
+      "server": "wealth",
+      "description": "Unified capital intelligence \u2014 synthesis + deal + hysteresis in one tool.",
+      "parameters": null,
+      "tags": [
+        "synthesis",
+        "wisdom",
+        "capital",
+        "deal"
+      ],
+      "epistemic_tag": "PLAUSIBLE",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_personal_finance",
+      "server": "wealth",
+      "description": "Unified surface for cashflow, runway, and net worth.",
+      "parameters": null,
+      "tags": [
+        "finance",
+        "cashflow",
+        "runway",
+        "net-worth",
+        "personal"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_preference_rank",
+      "server": "wealth",
+      "description": "Personal Utility Ranking \u2014 preference ordering under constraints.",
+      "parameters": null,
+      "tags": [
+        "preference",
+        "ranking",
+        "utility",
+        "decision"
+      ],
+      "epistemic_tag": "PLAUSIBLE",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_signal_information",
+      "server": "wealth",
+      "description": "Signal \u2014 information value, evidence quality, schema validity.",
+      "parameters": null,
+      "tags": [
+        "signal",
+        "information",
+        "evidence",
+        "e-and-p"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_survival_engine",
+      "server": "wealth",
+      "description": "Unified survival intelligence: cashflow, runway, burn, liquidity.",
+      "parameters": null,
+      "tags": [
+        "survival",
+        "liquidity",
+        "burn",
+        "runway"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_system_registry_status",
+      "server": "wealth",
+      "description": "Registry truth diagnostic \u2014 intended, registered, and alias surfaces.",
+      "parameters": null,
+      "tags": [
+        "registry",
+        "diagnostic",
+        "truth"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_time_discount",
+      "server": "wealth",
+      "description": "Time \u2014 NPV, IRR, payback, compounding, decay.",
+      "parameters": null,
+      "tags": [
+        "npv",
+        "irr",
+        "payback",
+        "time-value"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_zakat_calculate",
+      "server": "wealth",
+      "description": "Malaysian 2.5%% zakat above nisab.",
+      "parameters": null,
+      "tags": [
+        "zakat",
+        "malaysia",
+        "islamic-finance"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "mcp_health_check",
+      "server": "well",
+      "description": "DEPRECATED: use well_assess_reliability instead.",
+      "parameters": null,
+      "tags": [
+        "health",
+        "deprecated"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_adaptation",
+      "server": "well",
+      "description": "A-WELL (v0). Adaptation Readiness plane. mode=precheck|readiness|mttr|gaps.\n\nConstitutional question: can witnessed reality still change future behavior?",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_assess_homeostasis",
+      "server": "well",
+      "description": "\u03a9-WELL-06: Assess regulation, stability, and empathic balance under change.\n\nWhen mode=\"fatigue\", accepts biometric overrides to support contrast scenarios\nand real-time assessment without state.json dependency. Also accepts decision_class\nto route the homeostasis verdict through the C-class threshold matrix:\n  C1/C2 -- proceed unless CRITICAL\n  C3     -- proceed if STABLE or better\n  C4     -- proceed only if OPTIMAL; DEFER if STABLE; ADVISORY_BLOCK if DEGRADED/CRITICAL\n  C5     -- proceed only if OPTIMAL + no chronic fatigue; block otherwise",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_assess_livelihood",
+      "server": "well",
+      "description": "Assess human wellness, role, dignity, support, and meaning.",
+      "parameters": null,
+      "tags": [
+        "livelihood",
+        "wellness",
+        "dignity",
+        "meaning"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_assess_metabolism",
+      "server": "well",
+      "description": "Assess biological metabolism and system throughput across substrates.",
+      "parameters": null,
+      "tags": [
+        "metabolism",
+        "throughput",
+        "biology"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_assess_reliability",
+      "server": "well",
+      "description": "\u03a9-WELL-10: Assess machine, tool, institution, and operational reliability.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_assess_sovereign_entropy",
+      "server": "well",
+      "description": "Measure the sovereign's resistance to behavioral modeling.",
+      "parameters": null,
+      "tags": [
+        "sovereignty",
+        "entropy",
+        "behavioral-modeling"
+      ],
+      "epistemic_tag": "PLAUSIBLE",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_assess_triadic_state",
+      "server": "well",
+      "description": "[Triad Phase 4] Headline composition: human \u00d7 machine \u00d7 governance \u2192 unified signal.\n\nComposes:\n  - Human plane: well_assess_homeostasis (state.json metrics)\n  - Machine plane: well_observe_federation_thermal (per-organ /health aggregate)\n  - Governance plane: well_consent_audit + events.jsonl recommendation count\n\nReturns unified_score, weakest_plane, route (PROCEED/REDUCE_LOAD/RECOVER/HOLD/SABAR).\nF12 verdict hygiene: NEVER returns sealed/verdict/acted_on. Route is recommendation only.\nCaller must pass through arifOS.verify \u2192 AAA.judge before any action.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_attest_to_kernel",
+      "server": "well",
+      "description": "[Triad Phase 3] Bridge fire \u2014 attestation from WELL \u2192 arifOS :18081 /attest.\n\nWrites own copy to events.jsonl first, then forwards to arifOS bridge.\nF8 graceful UNKNOWN if arifOS unreachable. NEVER returns verdict or sealed\nfrom WELL alone (separation of powers: WELL proposes, arifOS verifies,\nAAA judges, A-FORGE executes, FRAME observes).",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "SEAL",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_bridge",
+      "server": "well",
+      "description": "G-WELL outbound witness plane. mode=attest|signal|recommend|dignity|log.\n\nAll modes route via arifFlow receipts (F13 Option B); arifOS lane DEAD.\nWELL never returns verdicts \u2014 proposals + evidence only.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_check_repair",
+      "server": "well",
+      "description": "\u03a9-WELL-07: Check repair, recovery, resilience, and forge cycle integrity.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_classify_machine_state",
+      "server": "well",
+      "description": "[Triad Phase 2] Compose prior tools \u2192 OPTIMAL/WATCH/DEGRADED/CRITICAL.\n\nNever writes verdict to vault. Recommendation only. F12 verdict hygiene\nenforced (no \"sealed\" / \"verdict\" / \"acted_on\" fields in response).",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_classify_substrate",
+      "server": "well",
+      "description": "\u03a9-WELL-01: Substrate classification and boundary sensing.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_compute_metabolic_flux",
+      "server": "well",
+      "description": "Compute metabolic_flux \u2014 unified thermodynamic entropy rate.",
+      "parameters": null,
+      "tags": [
+        "metabolic-flux",
+        "entropy",
+        "thermodynamics"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_consent",
+      "server": "well",
+      "description": "G-WELL consent plane. mode=audit|grant|revoke.\n\ngrant/revoke = well_consent_set_scope (Hermes-only F11 gate preserved).",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_consent_audit",
+      "server": "well",
+      "description": "[Triad Phase 3] Read consent scope registry. Sovereign's right (no F11 gate).",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_consent_set_scope",
+      "server": "well",
+      "description": "[Triad Phase 3] Grant or revoke consent scope. Hermes-only (F11 governance.consent_write).\n\nMutates ONLY F11 scope registry in state.json. NEVER mutates verdict/floor state.\nRequires actor_token == HERMES_HERMETIC_TOKEN env var.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_detect_boundary",
+      "server": "well",
+      "description": "Boundary detection across membrane, body, machine, and federation.",
+      "parameters": null,
+      "tags": [
+        "boundary",
+        "detection",
+        "membrane"
+      ],
+      "epistemic_tag": "PLAUSIBLE",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_frame_read_snapshot",
+      "server": "well",
+      "description": "[Triad Phase 5] FRAME observer reads snapshot as evidence, never verdict.\n\nF12 verdict hygiene: returns `snapshot` (observation) + `frame_verdict:\n\"EVIDENCE_ONLY\"`. FRAME is the independent observer \u2014 never ratifies decisions.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_get_triadic_snapshot",
+      "server": "well",
+      "description": "[Triad Phase 5] Read the canonical triadic snapshot at /state/triadic_snapshot.json.\n\nThis is the read surface consumed by HUD, AAA cockpit, and FRAME observer.\nCron snapshotter writes the file every 60s. If absent, returns graceful UNKNOWN.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_guard_dignity",
+      "server": "well",
+      "description": "\u03a9-WELL-12: Guard soul, personhood, meaning, and symbolic boundaries.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_handoff_dignity_to_arifos",
+      "server": "well",
+      "description": "[Triad Phase 3] High-urgency dignity handoff WELL \u2192 arifOS /dignity/handoff.\n\nSeparation of powers: WELL prepares the dignity packet; arifOS judges.\nReturns `awaiting_verification: True` \u2014 never a verdict.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_human",
+      "server": "well",
+      "description": "H-WELL unified plane. mode=homeostasis|readiness|dignity.\n\nhomeostasis: regulation/stability under change (biometric overrides\naccepted; decision_class routes the C-class gate). readiness: vitality\nenvelope + gate. dignity: F6 consent/boundary guard.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_inject_biometric",
+      "server": "well",
+      "description": "[Triad Phase 1] Hermes-only biometric injection from external device.\n\nRequires Hermes actor_token (env HERMES_HERMETIC_TOKEN). Required scope:\nbiometric.full (default OFF \u2014 operator must opt in via Hermes).",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_intake",
+      "server": "well",
+      "description": "H-WELL write plane. mode=meal|recovery|substance|biometric.\n\nConsent gates (F11/F13) preserved by delegation \u2014 biometric requires\nHermes actor_token; substance requires substance.full scope.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_log_intake",
+      "server": "well",
+      "description": "[Triad Phase 1] Log a meal/snack/intake event with kcal + macro breakdown.\n\nRequired scope: intake.basic (or intake.location if location_label given).\nSource: must be declared (F2). Free-form fields: PII-scanned (F4).",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_log_recovery_event",
+      "server": "well",
+      "description": "[Triad Phase 1] Log a recovery/restorative event.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_log_substance",
+      "server": "well",
+      "description": "[Triad Phase 1] Log a substance intake event.\n\nRequired scope: substance.full (default OFF \u2014 operator must opt in).",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_machine",
+      "server": "well",
+      "description": "M-WELL unified plane. mode=diagnose|recommend|classify|observe.\n\nobserve scope=organ \u2192 per-organ thermal/drift/scar/evidence card;\nscope=federation \u2192 all-organ + mesh thermal aggregate.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_machine_diagnose",
+      "server": "well",
+      "description": "M-WELL MACHINE DIAGNOSTIC -- Full VPS health with actionable recommendations.\n\nReads machine_state.json (cron-collected /proc telemetry every 5 min).\nReturns: CPU, RAM, swap, disk, PSI pressure, services, Docker, zombies.\nIncludes per-issue RECOMMENDATIONS suitable for A-FORGE routing.\n\nThis is the CANONICAL M_WELL diagnostic -- use this instead of\nwell_assess_reliability for VPS optimization workflows.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_machine_recommend",
+      "server": "well",
+      "description": "M-WELL RECOMMENDATION ENGINE -- Get specific fix commands for machine issues.\n\nMaps a diagnosis to concrete shell commands with risk assessment.\nModes: swap | memory | disk | service | docker | zombie | all\n\nReturns commands suitable for A-FORGE forge_shell execution.\nADVISORY_ONLY -- WELL does not execute.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_measure_gradient",
+      "server": "well",
+      "description": "Measure chemical, energy, pressure, attention, and compute gradients.",
+      "parameters": null,
+      "tags": [
+        "gradient",
+        "energy",
+        "pressure",
+        "attention"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_observe_drift_field",
+      "server": "well",
+      "description": "[Triad Phase 2] FRAME observer drift over last N hours.\n\nBridges to FRAME /frame/drift. Returns samples, mean, max, trend\n(stable|drifting|critical). F8 OBS truth class.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_observe_evidence_backlog",
+      "server": "well",
+      "description": "[Triad Phase 2] Receipt queue depth. Graceful UNKNOWN if no endpoint.\n\nReturns missing_evidence=[\"no_evidence_endpoint\"] if AAA\n/cockpit/queue_depth is not implemented.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_observe_federation_thermal",
+      "server": "well",
+      "description": "[Triad Phase 2] Aggregate thermal state across KVM8 organs + KVM4/KVM2 mesh.\n\nProbes each organ's /health, scores, finds weakest, returns route\nrecommendation. F1 no biometric leakage.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_observe_machine",
+      "server": "well",
+      "description": "[Triad Phase 2] Per-organ thermal/drift/scar/evidence card.\n\nBridges: FRAME /frame/probe/{organ} for thermal, FRAME /frame/drift for\ndrift, arifOS /vault/scar_count (graceful UNKNOWN), AAA /cockpit/queue_depth\n(graceful UNKNOWN). F1 no biometric leakage on aggregate.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_observe_scar_load",
+      "server": "well",
+      "description": "[Triad Phase 2] Scar volume per organ. Graceful UNKNOWN if no endpoint.\n\nReturns missing_evidence=[\"no_scar_endpoint\"] if arifOS /vault/scar_count\nis not implemented. Honest UNKNOWN > fabricated count.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_propose_governance_signal",
+      "server": "well",
+      "description": "[Triad Phase 3] Propose operational governance signal to arifOS :18081 /signal/inbox.\n\nLower-stakes than seal recommendation. Carries evidence, never verdict.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_propose_seal_recommendation",
+      "server": "well",
+      "description": "[Triad Phase 3] Propose SEAL recommendation to arifOS :18081 /recommendation/inbox.\n\nReturns proposal_id + status='submitted' + awaiting_verification=True.\nNEVER returns sealed=True from WELL alone.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "SEAL",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_reality",
+      "server": "well",
+      "description": "R-WELL (v1). Reality Integrity plane. mode=confidence|memory|witness|lineage|patterns.\n\nConstitutional metric: Edited Reality \u2260 Executed Reality.\nv1 sources (live-probed): graphiti_mcp :18412, falkordb graphs,\ncommit alignment, machine telemetry, witness bridge lane.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_registry",
+      "server": "well",
+      "description": "WELL registry meta. mode=status|full|contradictions.\n\ncontradictions = live self-audit of the C1-C8 class (reality integrity).",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_registry_status",
+      "server": "well",
+      "description": "WELL registry truth diagnostic -- blueprint canonical format.\n\nPerforms live callable tests against all known WELL tool names.\nReturns structured drift report: intended vs registered vs callable.\n\nThis is the WELL_REGISTRY tool from the WELL MCP Constitution blueprint.\nNo WELL is healthy without knowing its own organs.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_render_hud_panel",
+      "server": "well",
+      "description": "[Triad Phase 5] Render HUD cockpit ASCII panel from triadic snapshot.\n\nF1 amanah: panel never includes per-biometric fields, only aggregate scores.\nHermes HUD reads this for the cockpit top-bar.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_seal_recommendation_log",
+      "server": "well",
+      "description": "[Triad Phase 3] Read recommendation history from events.jsonl. Read-only.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "SEAL",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_system_registry_status",
+      "server": "well",
+      "description": "WELL registry truth probe \u2014 somatic surface vs autonomic internals.",
+      "parameters": null,
+      "tags": [
+        "registry",
+        "truth",
+        "somatic"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_trace_lineage",
+      "server": "well",
+      "description": "\u03a9-WELL-02: Memory, trend, ledger, and vault chain tracing.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_triad",
+      "server": "well",
+      "description": "G+C triadic plane. mode=assess|snapshot|hud.\n\nsnapshot observer=frame \u2192 FRAME evidence-only read of the same file.",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "well_validate_vitality",
+      "server": "well",
+      "description": "\u03a9-WELL-08: Validate vitality, readiness, and NIAT. (Floor compliance removed -- arifOS adjudicates floors.)",
+      "parameters": null,
+      "tags": [
+        "well",
+        "well"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "REFLECT_ONLY"
+    }
+  ]
+}

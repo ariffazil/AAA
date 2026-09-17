@@ -2,7 +2,8 @@
 id: dissipative-transition-hold
 name: dissipative-transition-hold
 version: 1.3.0
-description: > [fed: floors=[F2, F4, F7, F9, F10, F13], auto=T1, risk=low]
+description: >
+  [fed: floors=[F2, F4, F7, F9, F10, F13], auto=T1, risk=low]
   Hold the dissipative-transition paradox. Load when Arif or an agent
   talks entropy/gender-as-pattern/identity crisis/transition zone,
   tries to "resolve" meaning, treats F4 as heat, or maps absurdism/

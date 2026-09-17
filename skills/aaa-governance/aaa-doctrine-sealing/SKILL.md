@@ -101,6 +101,14 @@ SKILL.md as well. Otherwise skip; doctrine and skill have different owners.
   `/root/AAA/skills/**` resolve for reading but refuse writes; user-owned skills refuse autonomous
   curation outright. Edit the real file with the `patch` tool, or leave it and tell the user to run
   `hermes curator adopt <name>`. Do not silently skip the skill layer — say which layer you could not seal.
+- **Canon-mutate + complex content: write to temp file first.** Shell parsing breaks on JSON
+  parentheses, quotes, and interpolation inside `bash -c "echo '...' >> file"`. The command
+  reports `rc=0` but the content does not land. Fix: write the content to `/tmp/<name>.ext` first,
+  then `cat /tmp/<name>.ext >> <target>` via canon-mutate. Verify with `grep` after.
+- **W_SCAR gate can block base.md edits.** The W_SCAR scar gate flags base.md edits as
+  "touches critical variable" and holds the write across patch/write_file/terminal/execute_code.
+  When this happens, seal all other layers (fragment, ledger, amendment, render, commit) and
+  report the base.md gap explicitly — do not bypass the gate.
 - **Push is a gate, not a formality.** `git -C /root/AAA push` runs the F1–F13 governance check;
   arifOS pushes also run the drift check and print source vs deployed.
 - **"Seal all" authorises the layers of the rules in play — never a wholesale adoption.** When the same

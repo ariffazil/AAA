@@ -2,7 +2,8 @@
 name: web-scrape
 id: web-scrape
 version: 1.0.0
-description: > [fed: tier=fed-multimodal-vision, floors=[F1, F2, F4, F7, F12], auto=T1, risk=low]
+description: >
+  [fed: tier=fed-multimodal-vision, floors=[F1, F2, F4, F7, F12], auto=T1, risk=low]
   AI-powered web scraping and extraction. ScrapeGraph AI for structured extraction
   with schema generation and async crawling. Decodo for high-success web scraping
   across 195+ locations with residential proxies, anti-bot handling, eCommerce,

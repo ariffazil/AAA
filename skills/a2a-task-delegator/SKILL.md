@@ -1,6 +1,6 @@
 ---
 name: a2a-task-delegator
-description: Standardized A2A v1.0 task delegation (message/send, tasks/get, tasks/cancel), precondition contracts, and output attestation for cross-vendor multi-agent swarms. [fed: tier=fed-agent-subagent]
+description: "Standardized A2A v1.0 task delegation (message/send, tasks/get, tasks/cancel), precondition contracts, and output attestation for cross-vendor multi-agent swarms. [fed: tier=fed-agent-subagent]"
 capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---
