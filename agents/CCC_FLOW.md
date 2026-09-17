@@ -22,6 +22,26 @@ CCC(Gemini)    — gemini-3.x, multimodal
 
 Model can swap. CLI can swap. Contract stays.
 
+## agent_profile Identity Tuple (EUREKA-CCC-01)
+
+Same harness + different model = different agent for routing and telemetry.
+
+```
+agent_profile =
+    harness            (e.g. qwen-code, kimi-code, codex)
+  + harness_version    (e.g. 0.24.0)
+  + model_provider     (e.g. zai, deepseek, openai)
+  + model_id           (e.g. glm-5.3, deepseek-v4-pro)
+  + model_version
+  + reasoning_settings (effort, thinking mode)
+  + context_policy     (max tokens, compaction strategy)
+  + tool_policy        (allowed/denied tools)
+  + sandbox_profile    (S0/S1/S2/S3)
+  + prompt_bundle_hash (SHA256 of AGENTS.md + skills + prompts)
+```
+
+Stamp on every FED routing decision and arifFlow receipt. Compare performance within tuple-equivalent groups only.
+
 ## What CCC Gets
 
 ```
