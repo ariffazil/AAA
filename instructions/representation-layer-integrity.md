@@ -189,12 +189,12 @@ introspection all agree the gap is real").
 | Layer | What enforces | Where |
 |---|---|---|
 | Prompt discipline | This fragment + scar_005 reference | All arif_init / forge_execute callers |
-| Code discipline | `grep` + `dist/` checks before gap filing | Audit skills: AUDIT-recursive-audit, AUDIT-drift-detector, AUDIT-repo-reality |
+| Code discipline | `grep` + `dist/` checks before gap filing | Audit skills: skill-portfolio-audit (absorbed AUDIT-recursive-audit + AUDIT-drift-detector), AUDIT-repo-reality |
 | Runtime discipline | Live MCP probe before any "drift" verdict | forge_surface_audit must aggregate ALL modules |
 | Audit trail | Every gap filing cites the three checks performed | forge_scar / forge_seal receipts |
 
 **Enforce now:** Prompt + audit-trail discipline. The audit skills
-(AUDIT-recursive-audit, AUDIT-repo-reality) MUST run the verification
+(skill-portfolio-audit, AUDIT-repo-reality) MUST run the verification
 protocol before filing a phantom verdict.
 
 **Enforce later, junctions only:** forge_surface_audit should
