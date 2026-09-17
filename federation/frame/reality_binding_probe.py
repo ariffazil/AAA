@@ -147,7 +147,11 @@ def check_path_owner(path: Path) -> dict:
 
 
 def probe_organ(organ_id: str) -> dict:
-    """Probe one organ: declared authority vs effective physics."""
+    """Probe one organ: declared authority vs effective physics.
+    Binding measured on two dimensions:
+      1. UID binding: does the service run as expected user?
+      2. Sandbox binding: are kernel-level powers restricted?
+    """
     declared = DECLARED_AUTHORITIES.get(organ_id, {})
     expected_user = declared.get("expected_user")
     services = SERVICE_MAP.get(organ_id, [])
@@ -190,8 +194,8 @@ def probe_organ(organ_id: str) -> dict:
             except KeyError:
                 pass
 
-    # Determine if bound: at least one service uses expected_user
-    bound = False
+    # Determine UID binding
+    uid_bound = False
     expected_uid = None
     if expected_user:
         try:
@@ -200,15 +204,32 @@ def probe_organ(organ_id: str) -> dict:
             pass
         for entry in actual_uids:
             if entry["user"] == expected_user:
-                bound = True
+                uid_bound = True
                 break
 
-    if not actual_uids:
+    # Determine sandbox binding — read systemd sandboxing primitives
+    sandbox = {"services": {}}
+    for svc in services:
+        svc_sandbox = _read_sandbox(svc)
+        if svc_sandbox:
+            sandbox["services"][svc] = svc_sandbox
+    sandbox["score"] = _compute_sandbox_score(sandbox["services"])
+
+    # Composite status: BOUND if either uid_bound OR sandbox.score >= threshold
+    if not actual_uids and not sandbox["services"]:
         bound_status = "NOT_RUNNING"
-    elif bound:
+    elif uid_bound or sandbox["score"] >= 0.5:
         bound_status = "BOUND"
     else:
         bound_status = "UNBOUND"
+
+    binding_dimensions = []
+    if uid_bound:
+        binding_dimensions.append("uid")
+    if sandbox["score"] >= 0.5:
+        binding_dimensions.append("sandbox")
+    if not binding_dimensions:
+        binding_dimensions.append("none")
 
     return {
         "organ": organ_id,
@@ -217,9 +238,102 @@ def probe_organ(organ_id: str) -> dict:
         "expected_uid": expected_uid,
         "services": services,
         "running_processes": actual_uids,
-        "bound": bound,
+        "uid_bound": uid_bound,
+        "sandbox": sandbox,
+        "bound": bound_status == "BOUND",
         "status": bound_status,
-        "binding_gap": None if bound else f"runs as {[e['user'] for e in actual_uids]} instead of {expected_user}",
+        "binding_dimensions": binding_dimensions,
+        "binding_gap": (
+            None if bound_status == "BOUND"
+            else f"uid={'✅' if uid_bound else '❌'} sandbox={sandbox['score']:.0%}"
+        ),
+    }
+
+
+# ── Sandbox probe ─────────────────────────────────────────────────────────
+
+SANDBOX_PRIMITIVES = [
+    "NoNewPrivileges",
+    "ProtectSystem",
+    "ProtectHome",
+    "PrivateTmp",
+    "PrivateDevices",
+    "ProtectKernelTunables",
+    "ProtectKernelModules",
+    "ProtectControlGroups",
+    "RestrictNamespaces",
+    "RestrictRealtime",
+    "RestrictSUIDSGID",
+    "LockPersonality",
+    "MemoryDenyWriteExecute",
+]
+
+
+def _read_sandbox(unit: str) -> dict:
+    """Read sandboxing primitives from a systemd unit."""
+    result = {}
+    for prop in SANDBOX_PRIMITIVES:
+        try:
+            val = subprocess.run(
+                ["systemctl", "show", unit, f"--property={prop}", "--value"],
+                capture_output=True, text=True, timeout=5,
+            ).stdout.strip()
+            # Convert systemd yes/no/empty to bool
+            if val.lower() in ("yes", "true", "1"):
+                result[prop] = True
+            elif val.lower() in ("no", "false", "0", ""):
+                result[prop] = False
+            else:
+                result[prop] = val  # e.g. "strict", "full"
+        except Exception:
+            result[prop] = None
+    # Also read capability bounding set
+    try:
+        cap = subprocess.run(
+            ["systemctl", "show", unit, "--property=CapabilityBoundingSet", "--value"],
+            capture_output=True, text=True, timeout=5,
+        ).stdout.strip()
+        result["CapabilityBoundingSet"] = cap if cap else None
+    except Exception:
+        result["CapabilityBoundingSet"] = None
+    return result
+
+
+def _compute_sandbox_score(service_sandbox: dict) -> float:
+    """Compute 0.0–1.0 sandbox binding score across all services."""
+    if not service_sandbox:
+        return 0.0
+    scores = []
+    for svc, props in service_sandbox.items():
+        active = sum(1 for k in SANDBOX_PRIMITIVES if props.get(k) is True or props.get(k) in ("strict", "full"))
+        score = active / len(SANDBOX_PRIMITIVES)
+        scores.append(score)
+    return sum(scores) / len(scores) if scores else 0.0
+
+
+def compute_binding_ratio(organ_results: list[dict]) -> dict:
+    """Compute aggregate Binding Ratio.
+    Two dimensions:
+      uid_ratio:    how many organs have UID binding
+      sandbox_ratio: how many organs have sandbox binding (>=50%)
+    """
+    total = len(organ_results)
+    uid_bound = sum(1 for o in organ_results if o["status"] == "BOUND" and "uid" in o.get("binding_dimensions", []))
+    sandbox_bound = sum(1 for o in organ_results if o["status"] == "BOUND" and "sandbox" in o.get("binding_dimensions", []))
+    not_running = sum(1 for o in organ_results if o["status"] == "NOT_RUNNING")
+    bound = sum(1 for o in organ_results if o["status"] == "BOUND")
+
+    return {
+        "total_declared": total,
+        "total_bound": bound,
+        "uid_bound": uid_bound,
+        "sandbox_bound": sandbox_bound,
+        "total_not_running": not_running,
+        "total_unbound": total - bound - not_running,
+        "uid_ratio": f"{uid_bound}/{total}",
+        "sandbox_ratio": f"{sandbox_bound}/{total}",
+        "ratio": round(bound / total, 3) if total else 0.0,
+        "ratio_pct": f"{round(bound/total*100)}%" if total else "N/A",
     }
 
 
@@ -265,28 +379,6 @@ def probe_vault() -> dict:
     return result
 
 
-def compute_binding_ratio(organ_results: list[dict]) -> dict:
-    """Compute aggregate Binding Ratio.
-    Only BOUND counts. NOT_RUNNING is excluded (not a binding failure, just no data).
-    UNBOUND counts as a physics gap.
-    """
-    total_declared = len(organ_results)
-    bound = sum(1 for o in organ_results if o["status"] == "BOUND")
-    unbound = sum(1 for o in organ_results if o["status"] == "UNBOUND")
-    not_running = sum(1 for o in organ_results if o["status"] == "NOT_RUNNING")
-    # Effective ratio: bound / (bound + unbound) — excludes not_running from denominator
-    effective_denom = bound + unbound
-    ratio = round(bound / effective_denom, 3) if effective_denom else 0.0
-    return {
-        "total_declared": total_declared,
-        "total_bound": bound,
-        "total_unbound": unbound,
-        "total_not_running": not_running,
-        "ratio": ratio,
-        "ratio_pct": f"{round(ratio * 100)}%" if effective_denom else "N/A",
-    }
-
-
 # ── Main ──────────────────────────────────────────────────────────────────
 
 def main():
@@ -322,18 +414,22 @@ def main():
     else:
         print("=" * 60)
         n = binding
-        print(f"  BINDING RATIO: {n['ratio_pct']} ({n['total_bound']} bound / {n['total_unbound']} unbound / {n['total_not_running']} not running)")
+        print(f"  BINDING RATIO: {n['ratio_pct']} ({n['total_bound']}/{n['total_declared']})")
+        print(f"    UID binding:    {n['uid_ratio']}")
+        print(f"    Sandbox binding: {n['sandbox_ratio']}")
         print(f"  VERDICT: {output['overall_verdict']}")
         print("=" * 60)
         print()
         print("PER-ORGAN BINDING:")
-        print(f"  {'organ':<12} {'declared':<22} {'running_as':<14} {'status':<10}")
-        print(f"  {'-'*12} {'-'*22} {'-'*14} {'-'*10}")
+        print(f"  {'organ':<12} {'declared':<22} {'uid':<6} {'sandbox':<8} {'status':<10}")
+        print(f"  {'-'*12} {'-'*22} {'-'*6} {'-'*8} {'-'*10}")
         for o in organ_results:
-            running = ",".join(set(e["user"] for e in o["running_processes"])) or "(not running)"
+            uid = "✅" if "uid" in o.get("binding_dimensions", []) else ("—" if o["status"] == "NOT_RUNNING" else "❌")
+            sandbox_pct = int(o["sandbox"]["score"] * 100) if o.get("sandbox", {}).get("services") else 0
+            sandbox = f"{sandbox_pct}%" if o.get("sandbox", {}).get("services") else "—"
             icon = {"BOUND": "✅ BOUND", "UNBOUND": "❌ UNBOUND", "NOT_RUNNING": "⚠️  INACTIVE"}.get(o["status"], "?")
-            print(f"  {o['organ']:<12} {o['declared_authority']:<22} {running:<14} {icon}")
-            if o.get("binding_gap"):
+            print(f"  {o['organ']:<12} {o['declared_authority']:<22} {uid:<6} {sandbox:<8} {icon}")
+            if o.get("binding_gap") and o["status"] != "BOUND":
                 print(f"    └─ gap: {o['binding_gap']}")
         print()
         v = vault_result
@@ -342,10 +438,14 @@ def main():
             risk = "⚠️ " if d["world_writable"] else ("📖" if d["world_readable"] else "🔒")
             print(f"  {risk} {d['path']}: {d['perm']} {d['owner']}:{d['group']}")
         exposed = [f for f in v["ledger_files"] if f.get("world_readable")]
+        append_only = sum(1 for f in v["ledger_files"] if f.get("immutable"))
         if exposed:
-            print(f"  ⚠️  {len(exposed)} ledger files are world-readable (644)")
+            tamper = f", {append_only} append-only" if append_only else ""
+            print(f"  📖 {len(exposed)} ledger files readable for witnesses (644)")
+            print(f"     {tamper}")
             for f in exposed[:3]:
-                print(f"      {f['path']}: {f['perm']}")
+                ao = "🔒" if f.get("immutable") else "  "
+                print(f"      {ao} {f['path']}")
             if len(exposed) > 3:
                 print(f"      ... and {len(exposed) - 3} more")
         print(f"  VAULT RISK: {v['overall_risk']}")

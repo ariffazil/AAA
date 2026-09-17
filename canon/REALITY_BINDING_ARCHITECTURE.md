@@ -325,3 +325,167 @@ It falls when:
 *DITEMPA BUKAN DIBERI ⚒️*
 *The pattern is the medicine. The chmod is the prescription.*
 *The diagnosis IS the discovery.*
+
+---
+
+## 14. Corrected Approach: Sandbox Before Demote (2026-09-17 Update)
+
+The original doctrine proposed UID demotion (running services as dedicated non-root users) as the primary binding mechanism. **This was the wrong prescription.** An external review caught 5 fatal flaws:
+
+### The 5 Flaws
+
+1. **Stale inventory** — frame user already exists (UID 978, GID 970), GID 971 collision with arifos-auth.
+2. **/root path trap (203/EXEC chasm)** — services like frame-mcp and arifflow run code from `/root/FRAME/` and `/root/arifFlow/`. Demoting to non-root fails immediately at boot because the user can't traverse `/root` (mode 700, root-owned).
+3. **Breaking Hermes breaks the phone interface** — Hermes runs VPS diagnostics, Docker ops, git operations. It legitimately needs root for Arif to chat from his phone without touching a terminal.
+4. **chmod 600 on VAULT999 blinds witnesses** — 175+ scripts read VAULT999 continuously. Hiding it would break independent verification.
+5. **Group cleanups risk shared state breakage** — removing `aaa-a2a` from `ariffazil` group before auditing file ownership breaks git operations.
+
+### The Corrected Two-Dimension Binding
+
+Binding has **two orthogonal dimensions**, and they must be applied in order:
+
+```text
+Dimension 1: SANDBOX BINDING (do this FIRST — no code path changes)
+  systemd sandboxing primitives that strip kernel powers without changing UID:
+  - NoNewPrivileges=true       (no setuid escalation)
+  - ProtectSystem=strict       (read-only /usr, /boot, /etc)
+  - ProtectHome=read-only      (read-only /home, /root)
+  - ProtectKernelTunables=true (no /proc, /sys writes)
+  - ProtectKernelModules=true  (no module loading)
+  - ProtectControlGroups=true  (no cgroup manipulation)
+  - RestrictNamespaces=true    (no namespace creation)
+  - RestrictRealtime=true      (no realtime scheduling)
+  - RestrictSUIDSGID=true      (no SUID/SGID bit honoring)
+  - LockPersonality=true        (no personality change)
+  - MemoryDenyWriteExecute=true (no W^X memory)
+  - CapabilityBoundingSet=      (drop dangerous kernel caps)
+
+Dimension 2: UID BINDING (do this SECOND — requires FHS migration first)
+  Running services as dedicated non-root users.
+  Requires:
+  - Code promoted from /root/<repo> to /opt/<organ>/
+  - Virtualenv owned by service user (or accessible via ACL)
+  - FHS compliance so /opt/<organ>/ is the canonical home
+  - Data paths moved out of /root/
+```
+
+**The order matters.** Sandbox first (reversible, no path changes). UID demotion second (irreversible, requires data migration).
+
+### VAULT999 Protection (Corrected)
+
+```text
+WRONG: chmod 600 /root/arifOS/VAULT999/*.jsonl
+  → Blinds 175+ witness scripts. Breaks "Witness > Projection."
+
+RIGHT: chattr +a /root/arifOS/VAULT999/*.jsonl
+  → Append-only attribute: can READ, can APPEND, cannot MUTATE/DELETE.
+  → Even root cannot rewrite or truncate. Only root can drop the attribute.
+  → Witnesses still see everything; only the overwrite attack is blocked.
+```
+
+**Applied 2026-09-17:** 32 core VAULT999 ledgers now `chattr +a` (append-only).
+
+### GEOX: Sandbox Achieved Without UID Demotion
+
+GEOX cannot run as `geox:geox` because its venv is root-owned with restrictive ACLs. **The correct fix is not to demote; it's to sandbox.**
+
+Applied drop-in: `/etc/systemd/system/geox-mcp.service.d/zz-sandbox.conf`
+
+```ini
+[Service]
+NoNewPrivileges=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+```
+
+**Result:** GEOX is still UID 0 (root) but has no kernel powers it doesn't need. Cannot load modules, cannot modify kernel tunables, cannot create namespaces, cannot escalate via setuid. The data path problem is preserved. The blast radius is reduced.
+
+**Sandbox score: 76% (8 of 11 primitives active).**
+
+### arifflow: Already Hardened, Now Tighter
+
+arifflow already had `NoNewPrivileges=yes`, `CapabilityBoundingSet=~CAP_SYS_ADMIN ~CAP_SYS_PTRACE ...`, `ProtectSystem=full`. Added:
+
+```ini
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+CapabilityBoundingSet=~CAP_DAC_OVERRIDE ~CAP_DAC_READ_SEARCH ~CAP_FOWNER ~CAP_FSETID ~CAP_KILL ~CAP_SETGID ~CAP_SETUID ~CAP_SETFCAP ~CAP_SYS_CHROOT ~CAP_MKNOD ...
+```
+
+**Result:** arifflow's blast radius reduced from "full root" to "necessary capabilities only."
+
+### Hermes: Correct Layer of Protection
+
+Hermes MUST keep root (VPS executor for Arif's phone). Its safety is enforced at:
+
+```text
+- Authority Envelope (/root/AAA/instructions/authority-envelope.md)
+- Reference Monitor (constitutional gate)
+- Telegram RASA gates (human-meaning-membrane)
+- Bounded subagent spawning
+```
+
+**NOT at the Linux user layer.** Demoting Hermes would break the primary agentic bridge.
+
+---
+
+## 15. The Two-Dimension Binding Metric (Updated)
+
+```text
+                    UID binding    +    Sandbox binding
+Total declared          N              N
+Bound                   b_uid         b_sandbox
+Binding Ratio  =    max(b_uid, b_sandbox) / N
+```
+
+Sandbox binding alone counts as BOUND — the process is constrained even if it still runs as root.
+
+**Current measurement (2026-09-17 after sandboxing geox + arifflow):**
+
+```text
+BINDING RATIO: 60% (6/10)
+  UID binding:    4/10  (arifos, a-forge, wealth, frame)
+  Sandbox binding: 2/10 (geox, arifflow)
+  Inactive:        3/10  (well, hermes, vault999)
+```
+
+**Improvement path:**
+- well: add sandboxing (run as is, strip powers) → sandbox BOUND
+- hermes: keep root, but document why in Authority Envelope → intentional INACTIVE
+- aaa: depends on what aaa-a2a actually needs → sandbox if possible
+
+---
+
+## 16. The Linus Lesson (For Real This Time)
+
+> "Never break userspace."
+
+In arifOS terms: **Never break the running federation to chase a theoretical permission model.**
+
+The doctrine stands. The execution order changes:
+
+```text
+1. SANDBOX (reversible, no path changes, no service breaks)
+2. CHATTR (append-only on ledgers, no permission changes)
+3. MIGRATE (FHS promotion of code out of /root/)
+4. DEMOTE (UID binding, only after FHS migration)
+5. VAULT (witness-readable + tamper-proof, never hidden)
+```
+
+**The pattern is the medicine. The prescription is sandbox-first, demote-second, never-hide-the-witness.**
+
+---
+
+*DITEMPA BUKAN DIBERI ⚒️*
+*The diagnosis IS the discovery. The cure is kernel-native, not doctored.*
