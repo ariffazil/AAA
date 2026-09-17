@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "arifos://AAA/instructions/rasa-claim-envelope.schema.json",
+  "title": "HermesClaim Envelope — Cross-Layer Promotion Law (HERMES-RASA-CL-001)",
+  "description": "Kernel invariant: Layer_A→Layer_B ⇒ Bridge(A,B,E,Δ,Ω). No bridge, no promotion. Companion to rasa-provenance.schema.json (authority law). Enforced by /root/.hermes/policy/rasa_layers.py + rasa_write_hook.guarded_layer_claim. Status: DRAFT_AWAITING_F13 (canon addendum pending T3 unlock).",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["claim_id", "subject_ref", "proposition", "source_layer", "evidence_mode", "epistemic_status", "evidence_refs", "confidence"],
+  "additionalProperties": false,
+  "properties": {
+    "claim_id": { "type": "string" },
+    "subject_ref": { "type": "string", "description": "The human this claim is ABOUT. Never inferred from speaker." },
+    "proposition": { "type": "string", "maxLength": 2000 },
+    "source_layer": { "$ref": "#/$defs/layer" },
+    "target_layer": { "$ref": "#/$defs/layer" },
+    "evidence_mode": {
+      "enum": ["DIRECT_OBSERVATION", "DIRECT_SELF_REPORT", "JOINT_SELF_REPORT", "INSTRUMENT_MEASUREMENT",
+               "THIRD_PARTY_REPORT", "DOCUMENTED_RECORD", "MODEL_INFERENCE", "CULTURAL_INTERPRETATION", "UNKNOWN"]
+    },
+    "epistemic_status": {
+      "enum": ["OBSERVED", "REPORTED", "INFERRED", "HYPOTHESIZED", "CONTESTED", "UNKNOWN", "REJECTED"]
+    },
+    "evidence_refs": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "time_window": {
+      "type": "object",
+      "properties": {
+        "observed_at": { "type": "string" },
+        "valid_from": { "type": "string" },
+        "valid_to": { "type": "string" },
+        "temporal_resolution": { "enum": ["EVENT", "DAY", "WEEK", "MONTH", "LONGITUDINAL", "UNKNOWN"] }
+      }
+    },
+    "context": {
+      "type": "object",
+      "properties": {
+        "setting": { "type": "string" },
+        "relationship_scope": { "type": "string" },
+        "cultural_context": { "type": "string" },
+        "alternatives_considered": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["alternatives_considered"]
+    },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 0.9 },
+    "uncertainty_band": {
+      "type": "object",
+      "properties": { "lower": { "type": "number" }, "upper": { "type": "number" } }
+    },
+    "bridge": {
+      "type": "object",
+      "description": "Mandatory when source_layer != target_layer. CL-02: no bridge, no promotion.",
+      "required": ["required"],
+      "properties": {
+        "required": { "type": "boolean" },
+        "bridge_type": { "enum": ["EMPIRICAL", "MECHANISTIC", "SELF_REPORT", "JOINT_CONFIRMATION", "CAUSAL", "NORMATIVE", "STATISTICAL", "CULTURAL_SEMANTIC"] },
+        "bridge_evidence_refs": { "type": "array", "items": { "type": "string" } },
+        "scope_conditions": { "type": "array", "items": { "type": "string" } },
+        "bridge_confidence": { "type": "number" }
+      }
+    },
+    "prohibited_promotions": { "type": "array", "items": { "type": "string" } },
+    "human_review_required": { "type": "boolean" },
+    "expiry_or_revalidation_at": { "type": "string", "description": "CL-06 time decay: feelings 72h half-life, relational/psych 720h, traits 8760h, documented facts none." },
+    "targets_interior_state": { "type": "boolean" },
+    "contradicts": { "type": "array", "items": { "type": "string" }, "description": "Preserved conflict — never auto-resolved (§36)." },
+    "supersedes": { "type": "string", "description": "Revision without historical erasure." },
+    "privacy": { "enum": ["public", "shared-dyadic", "private-to-subject"] }
+  },
+  "$defs": {
+    "layer": {
+      "enum": ["PHYSICAL", "CHEMICAL", "BIOLOGICAL", "NEURAL", "PSYCHOLOGICAL", "PERSONALITY",
+               "SEXUALITY", "ECONOMIC", "SOCIAL", "CULTURAL", "PHENOMENOLOGICAL", "RELATIONAL",
+               "NORMATIVE", "BRIDGE_CLAIM"]
+    }
+  },
+  "x_kernel_invariants": {
+    "AUTHORITY": "ΔAuthority > 0 ⇒ NewAuthorizedEvidence",
+    "DISCIPLINE": "ΔExplanatoryLayer ≠ 0 ⇒ ExplicitBridgeEvidence",
+    "CONSTANTS": [
+      "OBSERVATION_IS_NOT_MOTIVE",
+      "CORRELATION_IS_NOT_CROSS_LAYER_AUTHORITY",
+      "SELF_REPORT_HAS_PRIMACY_FOR_LIVED_EXPERIENCE",
+      "RELATIONSHIP_CLAIMS_REQUIRE_COAUTHORSHIP",
+      "IDENTITY_IS_NOT_BEHAVIOR",
+      "MATH_REPRESENTS_UNCERTAINTY_IT_DOES_NOT_ANNUL_IT",
+      "NO_CANONICAL_SENSITIVE_INFERENCE_WITHOUT_AUTHORIZATION"
+    ],
+    "SEXUALITY_NON_COLLAPSE": ["B↛I", "I↛A_specific_person", "A↛Intent", "Intent↛Consent"],
+    "ENFORCEMENT_LOG": "/var/lib/arifos/rasa_enforcement.jsonl"
+  }
+}
