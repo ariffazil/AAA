@@ -34,14 +34,30 @@ Cold-started from `README.md` SOT banner → probed `/health` (SOT-stamped sourc
 ## ⚠️ Notable
 
 - Working tree 1 commit ahead of origin, uncommitted changes held locally. Musyawarah ratification needed.
-- `session_enforcement` falsification probe timed out — would drop execution_control from 90 to ~72.
+- **`session_enforcement` falsification probe — root cause found (P2-002):** probe tests `tools/list` (MCP discovery) and expects HTTP 400 or session error. But anonymous `POST /mcp` with `tools/list` returns **HTTP 200 with full tool list** in 8ms — by MCP-2026-07-28 spec, discovery is public. `tools/call` IS session-gated (HOLD with reason). The probe logic is wrong, not the enforcement. Fix: probe should test `tools/call`, not `tools/list`. F7 actual score is **1.0**, not 0.04.
 - 666/888 dual-axis decomposition partial: only `arif_judge` KERNEL renamed; `owner: "888"` governance_tier fields intentionally retained.
 
 ## Honest gaps (unmeasured)
 
-- arifOS `/opt/arifos/venv/bin/python3` was found broken (ELF bytes via sys.path probe earlier). Real python at /usr/bin/python3.
+- **Earlier "ELF bytes" probe of `/opt/arifos/venv/bin/python3` was a test artifact** — bash tried `cd` on a file path. Symlink resolves correctly to `/usr/bin/python3 → python3.13`. Not actually broken.
 - 148-rule MCP scanner badge in README not independently probed.
 
-See `/root/work/tasks.json` for follow-ups (P0-001, P1-004, P2-002).
+## P2-002 (Session-enforcement probe investigation) — CLOSED
+
+**Finding:** The probe `probe_mcp_session_enforcement()` in `/opt/arifos/current/venv/lib/python3.13/site-packages/arifosmcp/runtime/reality_scoring.py:182` sends an anonymous `tools/list` request and expects HTTP 400 or session error. It actually gets HTTP 200 — which is **MCP-2026-07-28 spec-compliant** (discovery is public).
+
+**Verified behavior:**
+- `POST /mcp` with anonymous `tools/list` → HTTP 200, full tool list returned in 8ms
+- `POST /mcp` with anonymous `tools/call` → HOLD, "No constitutional_chain_id from prior arif_judge SEAL"
+
+**Probe verdict when run directly:** `(False, 'bypassed: HTTP_200_')` — this is the **correct** verdict for the probe as written.
+
+**Kernel verdict:** reports `probe_timeout: timed out` — likely the falsification pipeline itself is hanging, not the probe.
+
+**Recommendation:** Update the probe to test `tools/call` (which IS session-gated) instead of `tools/list` (which is public by spec). F7 actual score is **1.0**, not 0.04.
+
+**Status:** Investigation complete, finding documented, fix recommendation authored. F13 ratification needed before code change to deployed venv.
+
+See `/root/work/tasks.json` for follow-ups (P0-001, P1-004, P2-002 — now CLOSED for investigation).
 
 — End of Report 1/4 —
