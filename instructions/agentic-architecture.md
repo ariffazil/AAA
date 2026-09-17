@@ -20,7 +20,7 @@ HUMAN CHAOS → AGENTIC TOOLS → LOWER ENTROPY → CIVILIZATIONAL CLARITY
 | Layer | Name | What Lives Here | Who Builds It |
 |-------|------|----------------|---------------|
 | **L0 KERNEL** | Constitutional Substrate | `arif_init`, `arif_judge`, `arif_seal` — the 8 canonical verbs. F1-F13 floors. Session binding. Identity. | arifOS kernel (Python, :8088) |
-| **L1 META-MESA** | Tool Governance | `forge_ephemeral` (capability metabolism), `AUDIT-skill-atlas` (skill landscape), `COPILOT-zen-router` (intent→skill routing), `FORGE-route-least-power` (entropy discipline) | 333-AGI + 555-ASI |
+| **L1 META-MESA** | Tool Governance | `forge_ephemeral` (capability metabolism), `skill-portfolio-audit (absorbed AUDIT-skill-atlas, Wave 2)` (skill landscape), `COPILOT-zen-router` (intent→skill routing), `FORGE-route-least-power` (entropy discipline) | 333-AGI + 555-ASI |
 | **L2 META** | Domain Intelligence | GEOX (earth), WEALTH (capital), WELL (human readiness), `ASI-agentic-architecture`, `FORGE-ephemeral-genesis` | Domain organs + ASI architects |
 | **L3 MESA** | Execution | `forge_shell`, `geox_seismic`, `capital_market`, `forge_git`, `forge_github` — the tools that actually DO the work | A-FORGE + domain organs |
 
