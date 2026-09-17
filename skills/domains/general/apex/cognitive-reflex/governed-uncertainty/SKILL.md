@@ -18,6 +18,8 @@ tags: [uncertainty, witness, ambiguity, human, cognitive-reflex, rasa]
 
 # Governed Uncertainty — state beneath words
 
+> Cross-ref: this skill instantiates the **Kanak-kanak cognitive function** (see + ask, ambiguity-bearing, perpetual beta) from the persona-civilisation triad — `canon/EUREKA-2026-09-17-PERSONA-CIVILISATION-TRIAD.md` §E1.
+
 Humans are not primarily linguistic organisms. Humans are state-sharing organisms who happen to use
 language. Language is often a **trace** of reality, not reality itself.
 
@@ -148,6 +150,9 @@ discover something true?*
 
 - `bridge-protocol` — how the response is finally shaped and sent.
 - `relationship-kernel` — conduct when the subject is a human bond.
+- `hermes-rasa-doctrine` — the epistemic layer *underneath* the reading: provenance classes
+  (O/S/R/I/F/P/C), the seven STOP states, the human-claim object. Load it when a read is being
+  *stored or emitted as a claim*, not merely held in a reply.
 - `human-meaning-membrane` — the inference schema (observation → interpretations → unknowns →
   projection risk → verification path → consent) with its 15 invariants and 9 non-negotiable blocks.
 - `human-advisory-discipline` — when the human has asked for advice on a real decision.
