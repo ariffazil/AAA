@@ -1,7 +1,7 @@
 ---
 name: hermes-gateway-image-routing
 owner: AAA
-description: Diagnose and fix Hermes Telegram gateway image routing — Path B model override, supports_vision decision chain, and common failure modes when images don't reach the LLM. [fed: tier=fed-multimodal-vision, floors=[F2, F4, F9, F12], auto=T1]
+description: "Diagnose and fix Hermes Telegram gateway image routing — Path B model override, supports_vision decision chain, and common failure modes when images don't reach the LLM. [fed: tier=fed-multimodal-vision, floors=[F2, F4, F9, F12], auto=T1]"
 category: devops
 tags: [hermes, gateway, image, vision, path-b, telegram]
 triggers:

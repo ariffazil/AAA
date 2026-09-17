@@ -15,8 +15,8 @@
  },
  "https://api.bnm.gov.my/public/opr": {
   "bytes": 144,
-  "fetched_at_epoch": 1789484847.5205383,
-  "fetched_at_utc": "2026-09-15T15:07:27Z",
+  "fetched_at_epoch": 1789622555.2941422,
+  "fetched_at_utc": "2026-09-17T05:22:35Z",
   "http_status": 200,
   "sha256": "bb7a2dc69bbd3ba33fc73cba24db65d981d8035cdb9f8101146acfa82a36c666"
  },

@@ -2,7 +2,8 @@
 id: forge-musyawarah-gotong
 name: forge-musyawarah-gotong
 version: 1.0.0
-description: > [fed: tier=fed-agent-subagent, floors=[F1, F2, F3, F4, F7, F9, F11, F13], auto=T1, risk=medium]
+description: >
+  [fed: tier=fed-agent-subagent, floors=[F1, F2, F3, F4, F7, F9, F11, F13], auto=T1, risk=medium]
   Runtime for musyawarah (independent 333 ARCHITECT + 555 AUDITOR) then
   gotong-royong (sequential execute hop). Authority star, evidence as
   position files. Not a chatboard. Grok: workflow musyawarah-gotong.

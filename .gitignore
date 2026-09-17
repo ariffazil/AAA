@@ -116,3 +116,11 @@ state/kvm4-mutations-*.txt
 
 # ── 2026-09-16: F5-private human memory lane — never versioned (Arif directive) ──
 human-paradox/
+
+# === RUNTIME ARTIFACTS (2026-09-17 cleanup) ===
+.reconcile-backup-*/
+experience/session-traces/
+experience/session-trace.lock
+workspace/
+*.lock
+state-snapshots/

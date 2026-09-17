@@ -2,7 +2,8 @@
 id: AGI-agentic-web-delivery
 name: agi-agentic-web-delivery
 version: 1.0.0-2026.09.13
-description: > [fed: tier=fed-agent-subagent, floors=[F1, F2, F4, F7, F11, F13], auto=T1, risk=T2]
+description: >
+  [fed: tier=fed-agent-subagent, floors=[F1, F2, F4, F7, F11, F13], auto=T1, risk=T2]
   Governed agentic-web delivery fabric for AAA agents working arif-fazil.com.
   Routes to existing skills. Pins live MCP tiers. Enforces doctor-first,
   orphan-before-delete, Caddy HOLD, no public /a2a, no self-SEAL.

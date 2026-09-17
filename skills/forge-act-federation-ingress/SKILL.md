@@ -4,7 +4,8 @@ id: forge-act-federation-ingress
 owner: A-FORGE
 risk_tier: low
 floor_scope: [F1, F2, F4, F7]
-description: > [fed: tier=fed-long-context, floors=[F1, F2, F4, F7], auto=T1, risk=low]
+description: >
+  [fed: tier=fed-long-context, floors=[F1, F2, F4, F7], auto=T1, risk=low]
   Wire, verify, and operate federation Arif's Capability Tokens (ACT) across
   arifOS mint/validate and organ ingress gates (A-FORGE, GEOX, WEALTH, WELL, AAA).
   Use when: ACT gate (legacy SCT), session_token, federation_act, ACT_AMBIGUOUS
