@@ -87,8 +87,28 @@ Suggested skills to author:
 - `SEAL-discipline` — distinguish SEAL from RECEIPT
 
 ### Rule 6 — Close with witnessed SABAR, not fake SEAL
-
 If metabolism is sub-threshold (G < 0.80, W3 < 0.75), do NOT claim SEAL. Close as SABAR — acknowledge the gap honestly. The kernel allows SABAR (seal.py line 61). SABAR is constitutional honesty.
+
+### Rule 7 — Session-to-skill feedback loop (NEW — 2026-09-18)
+Every session that discovers gaps in existing skills MUST upgrade those skills before closing. The feedback loop:
+
+```
+Session discovers gap → gap is evidence → skill patch drafted → skill updated → future sessions inherit fix
+```
+
+**How to identify skill gaps during a session:**
+1. A tool/skill missed something a human or other agent caught (e.g., TOCTOU hazard, gitignore gap)
+2. A manual step repeated across multiple sessions (e.g., "run audit then clean up" = two skills that should chain)
+3. A new pattern emerged that the existing skill doesn't cover (e.g., `.stale` files being tracked)
+
+**How to upgrade:**
+1. Read the skill's SKILL.md
+2. Identify the specific gap (line, section, missing step)
+3. Patch the skill with the new capability
+4. Add a scar reference: `NEW — YYYY-MM-DD scar` in the section header
+5. If a new skill is needed (bridge between two existing skills), create it
+
+**Anti-pattern:** Discovering a gap, fixing it manually, and NOT upgrading the skill. This means the next session will hit the same gap. The skill is the institutional memory — if it's not patched, the lesson is lost.
 
 ## Workflow (canonical)
 
@@ -101,8 +121,9 @@ INPUT: user asks to compile/lower entropy
 4. ENUMERATE shadow (Rule 3) — write shadow first
 5. COMPILE /root/work/tasks.json (Rule 4)
 6. ENCODE wisdom into skills (Rule 5)
-7. PROPOSE doctrine patches for F13 ratification (do NOT auto-apply)
-8. CLOSE with witnessed SABAR if metabolism < threshold (Rule 6)
+7. UPGRADE skills with session gaps (Rule 7 — patch SKILL.md files directly)
+8. PROPOSE doctrine patches for F13 ratification (do NOT auto-apply)
+9. CLOSE with witnessed SABAR if metabolism < threshold (Rule 6)
   ↓
 OUTPUT: manifest + skills + doctrine proposals + close SABAR
 ```
