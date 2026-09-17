@@ -3,8 +3,8 @@ id: kimi-code-aaa
 name: forge-kimi-code
 autonomy_tier: T1
 version: 1.0.2
-description: Configure, audit, and align Kimi Code CLI as AAA warga FI-008 with arifOS [fed: tier=fed-long-context, auto=T1, risk=medium]
-  kernel and A-FORGE stdio actuator.
+description: "Configure, audit, and align Kimi Code CLI as AAA warga FI-008 with arifOS [fed: tier=fed-long-context, auto=T1, risk=medium]
+  kernel and A-FORGE stdio actuator."
 owner: AAA
 risk_tier: medium
 knowledge_basis:

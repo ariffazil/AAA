@@ -5,14 +5,14 @@ version: 1.0.0
 owner: A-FORGE
 risk_tier: low
 license: MIT
-description: This skill should be used when the user needs to analyze Git repositories, [fed: tier=fed-reasoning-heavy, auto=T1, risk=low]
+description: "This skill should be used when the user needs to analyze Git repositories, [fed: tier=fed-reasoning-heavy, auto=T1, risk=low]
   compare developer commit patterns, work habits, development efficiency, code style,
   code quality, and slacking behaviors. It generates honest, direct developer evaluations
   with scores, grades, strengths, weaknesses, and actionable suggestions. Trigger
-  phrases include "analyze code", "analyze repository", "compare developers", "code
-  quality report", "commit patterns", "developer efficiency", "developer evaluation",
-  "slacking index", "摸鱼指数", "工作习惯分析", "代码分析", "研发效率", "代码质量", "开发者评估", "developer
-  score".
+  phrases include \"analyze code\", \"analyze repository\", \"compare developers\", \"code
+  quality report\", \"commit patterns\", \"developer efficiency\", \"developer evaluation\",
+  \"slacking index\", \"摸鱼指数\", \"工作习惯分析\", \"代码分析\", \"研发效率\", \"代码质量\", \"开发者评估\", \"developer
+  score\"."
 floor_scope:
 - F1
 - F2
