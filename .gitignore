@@ -126,3 +126,4 @@ workspace/
 state-snapshots/
 tmp/
 mcp/filings/cache/*.bin
+backups/
