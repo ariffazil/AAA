@@ -385,7 +385,6 @@
       ]
     }
   ],
-  "": "arifOS/agent-card/v2.2.0",
   "apexMasterSeal": {
     "cognitiveRing": "unassigned",
     "thermodynamicRole": "neutral",
@@ -505,5 +504,12 @@
     "detected_at": "2026-09-16T07:00:00Z",
     "material_preserved_under": "signature_legacy",
     "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
+  },
+  "provenance": {
+    "restored": "2026-09-17 Fasa 1 (SOUL from 2026-09-04 consolidation bak)",
+    "triad_forged": "2026-09-17 Fasa 2",
+    "canon": "/root/AAA/canon/EUREKA-2026-09-17-PERSONA-CIVILISATION-TRIAD.md",
+    "triad_position": "READ + HEAL — verify, never punish. Kanak-kanak asks, Makcik understands, Abang Sado protects.",
+    "dunbar_layer": "Affinity (~50)"
   }
 }
