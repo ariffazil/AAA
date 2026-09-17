@@ -224,7 +224,7 @@ AAA | arifOS | APEX | A-FORGE | GEOX | WEALTH | WELL | profile
 - `references/AAA_OPERATING.md` — AAA doctrine, entropy reduction
 - `references/FEDERATION_MAP.md` — organ/repo roles
 - `references/GOVERNANCE_GATES.md` — F1-F13, risk tiers, verdict language
-- `references/agentic-WORKFLOWS.md` — response templates
-- `references/repo-working-RULES.md` — safe repo edits
+- `references/AGENTIC_WORKFLOWS.md` — response templates
+- `references/REPO_WORKING.md` — safe repo edits
 
 Canonical doctrine: `/root/AAA/instructions/` and `/root/AAA/governance/`
