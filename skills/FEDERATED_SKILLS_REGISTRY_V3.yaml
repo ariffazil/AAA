@@ -21,7 +21,7 @@ disk_reconciliation:
   verdict: WARN
 layers:
   substrate:
-    count: 7
+    count: 8
     path: /root/AAA/skills/substrate
     skills:
     - kernel-bind
@@ -31,6 +31,7 @@ layers:
     - verify-gate
     - audit-seal
     - apx_init_substrate
+    - substrate-taxonomy
     load: ALL agents, ALWAYS, FIRST
   knowledge:
     count: 4
