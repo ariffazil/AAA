@@ -551,7 +551,9 @@ components:
     authority_ceiling: RELAY_ONLY
     units:
       - hermes-asi-gateway.service
-    mcp_port: null  # 2026-09-12: 18086 PHANTOM — ss probe confirms no listener. Gateway uses stdio MCP children, not TCP.
+    mcp_port: 18087  # 2026-09-16: officialized HERMES MCP (streamable-http, RELAY_ONLY, meaning integrity organ)
+    mcp_unit: hermes-mcp-server.service
+    mcp_endpoint: https://hermes.arif-fazil.com/mcp
     owned_domains:
       - telegram_relay
       - multimodal_bridge
