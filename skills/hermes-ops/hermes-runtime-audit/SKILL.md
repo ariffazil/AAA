@@ -162,6 +162,102 @@ Two rules decide whether this section produces a finding or a fabrication:
 
 Queries for all of the above: `references/state-store-queries.md`.
 
+### 4c. MCP surface truth — census, supervisor, and advertisement are three different things
+
+The census and `hermes mcp list` answer *configured*. Neither answers *supervised* or *advertised*,
+and the three disagree in ways that each produce a different defect.
+
+```bash
+ls ~/.hermes/mcp/                                 # what has an implementation directory
+systemctl list-unit-files | grep -iE '<server>'   # what has a supervisor
+ss -tlnp | grep -E ':<port>\b'                    # what is actually listening
+```
+
+- **An implementation directory and a listening port with NO systemd unit is the highest-severity
+  shape here.** Its enforcement surface is unreachable after any restart, with no auto-recovery, and
+  nothing in the census says so. Report "runs only when manually started" as a governance gap, not
+  an ops nit — check the unit before believing any server is durable.
+- **A server advertised somewhere but implemented nowhere.** Grep the whole config tree, not the
+  census: a directory holding only a config file and a test, with no entrypoint, is a configured
+  phantom. It may not appear in the census at all — absence from the census is not absence of the
+  claim.
+- **The census footer carries a timestamp; read it before quoting the census.** A stale census is a
+  snapshot of *intent*, and its per-row `last_smoke_test` stamps are written per generation, so every
+  row looks fresh while the file itself is hours old. **Freshness = the file's mtime, not the field
+  inside it.** Then judge the mtime against the **producer's own period**, not against "now" — a census
+  rebuilt four times a day is healthy at six hours old and broken at six hours *past its slot*. Quote
+  the cron period beside the age so the reader can tell a normal gap from a dead schedule.
+- **An advertisement inside a tool description is the worst case**, because it is served to every
+  client rather than sitting in a file. A description claiming a source was "live-probed" while that
+  service is down has the server lying on its own behalf. A census-based inventory is blind to
+  this — read tool descriptions, not just the server list.
+
+Two error shapes from one server is normal and worth naming separately: a doctrine/policy rejection
+returned as an ordinary result (`ok: false`, `isError: false`) beside a schema rejection raised as a
+protocol error (`isError: true`). A caller cannot branch on one field, so report the shape, not just
+the instance.
+
+Note on enum drift: a served mode enum narrower than the code constant (with a third number in a
+source comment) is not "the schema lies" — the direction is *served ⊆ code*. Read the handler's mode
+dispatch before recommending a prune; the number that matters is which modes the dispatcher actually
+implements.
+
+### 4d. Public exposure — three layers, and the fix is usually verified at the wrong one
+
+§4c answers whether a server is *configured, supervised and advertised*. None of those answers whether
+an outsider can **reach** it. Reachability has its own three layers, and they are read with three
+different instruments:
+
+```
+origin vhost     curl -k --resolve <host>:443:127.0.0.1 https://<host>/<path>   # the machine's own answer
+edge ingress     the tunnel config's hostname -> service mapping                  # what the tunnel claims
+public hostname  curl https://<host>/<path>                                      # what the world gets
+```
+
+The `--resolve` SNI test is the only way to ask the origin directly; without it you are measuring the
+edge and calling it the server. Read the response **headers**, not the status: a service that answers
+`X-Organ: HERMES` at the origin is not the same service that answers at the public hostname.
+
+- **A fix verified at the origin is not a fix.** Measured on this host: the ingress comment recorded
+  *"Verified by SNI test: HTTP 200 + Mcp-Session-Id + X-Organ: HERMES"* — all true, **all at the
+  origin**. Over the public hostname the same path returned **404**, and `/` returned a different
+  organ's HTML entirely. Three layers, one of them working, and the receipt named the layer that
+  passed. When you cite a reachability test, cite the layer it was run against.
+- **Compare the public body against the organ it claims to be.** Fetch the hostname's `/` and read the
+  description/`X-Organ` header; fetch a sibling hostname and compare. Two hostnames returning the same
+  body means one of them is misrouted — a routing defect that no census, unit file or smoke test in
+  §4c can surface.
+- **A public `404` on an MCP path is a reachability defect, not an application defect.** The path
+  either never arrives (wrong origin at the edge) or arrives and is not handled (wrong vhost). The
+  origin probe separates those two, and they have opposite fixes.
+- **Internal-only is a legitimate state; unrecorded internal-only is not.** A server bound to
+  loopback with no ingress rule is fine *if the inventory says so*. What must never stand is a hostname,
+  a comment, or a tool description implying external reachability that the edge does not provide.
+
+### 4e. Doctrine-only capability — advertised in knowledge, absent in execution
+
+§4c covers a server advertised but implemented nowhere. The inverse shape is more dangerous to an
+agent: **implemented, advertised in the skill corpus, and not running.**
+
+```bash
+systemctl show <unit> -p LoadState,ActiveState,UnitFileState --value
+ls -la $(systemctl show <unit> -p ExecStart --value | grep -oP 'path=\K[^ ;]+')
+```
+
+The signature is three readings that disagree in a specific way: an `ExecStart` path that **exists**,
+`ActiveState=inactive` with `UnitFileState=disabled`, and **zero** references in the runtime config —
+while N *skills* name the capability. Measured: a graph database server with a 4 KB start script on
+disk, unit inactive and disabled, absent from both the runtime config and the MCP census, yet named in
+8 skill files.
+
+- Report this as a **knowledge/reality split**, not as an outage. Nothing is broken; the doctrine has
+  outrun the substrate, and the cost lands on the next agent that reads the skill, believes the
+  capability, and plans on it.
+- The severity question is not "is it up" but **"does anything instruct an agent to depend on it"**.
+  `grep -rl <name> ~/.hermes/skills/` is the blast-radius probe; config and census will both read clean.
+- The fix is usually one of two opposite acts — wire the unit, or mark the skills as aspirational.
+  Deciding which is an authority question, so put it to the principal as one binary, not a menu.
+
 ### 5. Directory sprawl and the ownership law
 
 ```bash
