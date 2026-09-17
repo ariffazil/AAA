@@ -66,6 +66,36 @@ script is present and executable. An unwired engine is a library with no callers
 `grep -rl <engine-name>` across the live runtime, plugins, and harness configs. Zero hits means it
 gates nothing, however complete it looks.
 
+### 2b. Read the gate's default AND its own bypass note
+
+Coverage depends on whether the control is even switched on, and the guard's source usually documents
+the hole its author already knew about. Read both before scoring.
+
+- **Opt-in gates score zero on a default install.** Measured 2026-09-17: a skill-write security scan
+  is gated by one config flag (`skills.guard_agent_created`), default **False**, and the guard's own
+  docstring says so and then names the uncovered path in the same breath — *"opt-in — terminal()
+  runs the same code ungated."* The author documented the bypass. **Read the guard's docstring, not
+  just its decision table**, and read both against this install's config value before quoting either.
+- **A gate whose only offered remedy is impossible is a wall, not a gate.** Same case: the decision
+  table returns `"ask"` for an agent-created package with a dangerous verdict, but the caller converts
+  that verdict into a hard **error** whose stated remedy is *"retry without the flagged content"*.
+  When the flagged content **is** the package's purpose — a body of `getMe` identity checks that any
+  exfiltration-pattern rule will match — the remedy cannot be satisfied and there is no path forward
+  at all. Report the shape: **an `ask` verdict with no queue behind it is a dead end presenting as a
+  policy.** File the dead end; do not spend the turn hunting for the exit.
+- **Check the verdict against the content before calling it a false positive.** Grep the flagged file
+  for a literal value matching the shape the rule hunts. Measured on the same package: 29
+  exfiltration/supply-chain findings, every one a **variable reference** (`…/bot${TOKEN}/…`) and zero
+  literal credentials. The rule matched the *shape of the idiom*, not a value. Report three numbers —
+  findings, literals, and where the literals are absent — and let them carry the argument; never assert
+  "false positive" from a read-through alone.
+- **Then stop. A bypassable gate is a finding about the gate, not a licence to take the open path.**
+  The rationalisation arrives pre-shaped and persuasive: *it is decorative, therefore I may route
+  around it.* That sentence is the exact defect this audit exists to catch — and the smarter the
+  actor, the better it argues. The correct output is `coverage < 1, uncovered = <the path>, action =
+  HOLD`, plus the naming of the gap. Testing the hole "to prove the finding" converts the auditor
+  into the incident.
+
 ### 3. Compute coverage explicitly
 
 ```
