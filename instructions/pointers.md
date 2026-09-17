@@ -6,7 +6,7 @@
 | `/root/AAA/docs/ORGAN.md` | **Canonical topology SOT** (human map) |
 | `/root/AAA/federation/organs.yaml` | **Machine SOT** (organs, ports, ceilings) |
 | `/root/AAA/federation/workspace.yaml` | **Workspace topology** (fragments, renders, symlinks — monorepo pattern) |
-| `/root/AAA/prompts/INIT.md` | **Boot prompt** — Trinity-33 · RSI · Constitutional Friction |
+| MCP prompt `/init` (arifos-kernel :8088) | **Boot prompt (canonical, 2026-09-04 supersede)** — Trinity-33 · RSI · Constitutional Friction. File copies (`INIT.md`, `INIT-ZEN.md`) archived 2026-09-16 → `prompts/_archive/2026-09-16-prompt-zen/` |
 | `/root/AAA/prompts/SEAL.md` | **Exit prompt** — two-lane SEAL/RECEIPT |
 | `/root/AAA/prompts/AAA-ZEN-ALIGNMENT.md` | Federation-wide Zen (supersedes per-runtime AGENTS.md where conflict) |
 | `/root/AAA/governance/QQQ_RECOMMENDATION_PROTOCOL.md` | QQQ doctrine |

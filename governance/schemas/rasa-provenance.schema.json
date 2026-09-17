@@ -1,0 +1,297 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "arifos://AAA/instructions/rasa-provenance.schema.json",
+  "title": "RASA Provenance Record",
+  "description": "Doctrine: /root/AAA/instructions/hermes-rasa-doctrine.md §12, §29, §38a. Every memory item about a human carries an origin class and may never be silently promoted. Forbidden promotions (fail closed): F->O, P->O, I->S, R->S, I->C.",
+  "version": "1.0.0",
+  "status": "DRAFT_AWAITING_F13",
+  "type": "object",
+  "required": ["class", "subject", "statement", "source_ref", "confidence"],
+  "additionalProperties": false,
+  "properties": {
+    "class": {
+      "type": "string",
+      "enum": ["O", "S", "R", "I", "F", "P", "C"],
+      "description": "O=OBSERVED direct event · S=SELF-REPORT by the subject · R=REPORTED-BY-OTHER (A claims about B) · I=INFERENCE machine-derived · F=FICTION/persona · P=POPULATION PRIOR (literature/statistic) · C=CO-CREATED explicitly shared and agreed by the relevant humans"
+    },
+    "subject": {
+      "type": "string",
+      "description": "The human this statement is ABOUT. Never inferred from the speaker."
+    },
+    "speaker": {
+      "type": ["string", "null"],
+      "description": "Who said it, if it is a statement. Null for pure observation."
+    },
+    "statement": { "type": "string", "maxLength": 2000 },
+
+    "channel": {
+      "type": ["string", "null"],
+      "description": "e.g. whatsapp | telegram-dm | telegram-group | in-person | agent-mediation | system-observation"
+    },
+    "addressee": {
+      "type": ["string", "null"],
+      "description": "Literal addressee. 'agen n arif' style plural addressees must be preserved verbatim and MUST NOT be collapsed to a single human."
+    },
+    "audience_present": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Who else could see it. Empty = private."
+    },
+    "reply_target": { "type": ["string", "null"] },
+
+    "prompted": {
+      "type": "boolean",
+      "description": "Doctrine §24. true = the statement is reactive to a question or probe; false = spontaneously initiated. Hypothesis-reactive answers are weaker evidence."
+    },
+    "spontaneous": {
+      "type": "boolean",
+      "description": "Derived convenience flag; must equal (!prompted) or the record is malformed."
+    },
+
+    "privacy_class": {
+      "type": "string",
+      "enum": ["public", "shared-channel", "private-to-subject", "private-to-pair", "f5-private", "ambient-capture"],
+      "description": "Doctrine §22. private-to-subject content is NOT re-presentable to the infrastructure owner merely because they own the infrastructure."
+    },
+    "disclosable_to": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Principals who may be shown this record. Absent/empty means the subject only."
+    },
+
+    "observed_at": { "type": ["string", "null"], "format": "date-time" },
+
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "evidence_quality": {
+      "type": "string",
+      "enum": ["measured", "counted", "documented", "recollected", "impression"],
+      "description": "How the figure was obtained. 'impression' caps confidence at 0.4."
+    },
+
+    "qualia_status": {
+      "type": "string",
+      "enum": ["accessible", "inaccessible", "undisclosed"],
+      "description": "Doctrine §29 L6. 'accessible' only when the subject has actually externalised it."
+    },
+    "shared_meaning_status": {
+      "type": "string",
+      "enum": ["uncreated", "unilateral", "tacit", "explicit"],
+      "description": "Doctrine §29 L7 and §3. 'unilateral' = only one human's frame; 'explicit' requires a co-authored statement."
+    },
+    "alternatives": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Doctrine §29 L4. At least one competing explanation is REQUIRED for class=I, F or P."
+    },
+    "causal_bridge": {
+      "type": ["string", "null"],
+      "description": "Doctrine §13. REQUIRED whenever class=P or F is applied to an individual."
+    },
+
+    "terminal_state": {
+      "type": ["string", "null"],
+      "enum": [null, "RESOLVED", "PARTIAL", "UNKNOWN-RETRIEVABLE", "UNKNOWN-HUMAN-PRIVATE", "UNKNOWN-UNCREATED", "ETHICALLY-INACCESSIBLE", "CHANNEL-EXHAUSTED"],
+      "description": "Doctrine §27. UNKNOWN-* is a valid, successful deliverable."
+    },
+
+    "channel_exhausted": {
+      "type": "boolean",
+      "description": "Doctrine §6/§38d. true = this modality can no longer reduce uncertainty about this target; re-mining is a defect."
+    },
+
+    "sleeps_until": { "type": ["string", "null"], "format": "date-time" },
+    "supersedes": { "type": ["string", "null"], "description": "record id of the claim this replaces" },
+    "record_id": { "type": "string" },
+
+    "explanatory_layer": {
+      "type": ["string", "null"],
+      "enum": [
+        null,
+        "PHYSICAL",
+        "CHEMICAL",
+        "BIOLOGICAL",
+        "NEURAL",
+        "PSYCHOLOGICAL",
+        "PERSONALITY",
+        "SEXUALITY",
+        "ECONOMIC",
+        "SOCIOLOGICAL",
+        "ANTHROPOLOGICAL",
+        "PHENOMENOLOGICAL",
+        "RELATIONAL",
+        "NORMATIVE"
+      ],
+      "description": "Cross-Layer Promotion Law: Explanatory layer of the claim. Different sciences constrain one another; they do not automatically translate."
+    },
+    "source_layer": {
+      "type": ["string", "null"],
+      "enum": [
+        null, "PHYSICAL", "CHEMICAL", "BIOLOGICAL", "NEURAL", "PSYCHOLOGICAL",
+        "PERSONALITY", "SEXUALITY", "ECONOMIC", "SOCIOLOGICAL", "ANTHROPOLOGICAL",
+        "PHENOMENOLOGICAL", "RELATIONAL", "NORMATIVE"
+      ]
+    },
+    "target_layer": {
+      "type": ["string", "null"],
+      "enum": [
+        null, "PHYSICAL", "CHEMICAL", "BIOLOGICAL", "NEURAL", "PSYCHOLOGICAL",
+        "PERSONALITY", "SEXUALITY", "ECONOMIC", "SOCIOLOGICAL", "ANTHROPOLOGICAL",
+        "PHENOMENOLOGICAL", "RELATIONAL", "NORMATIVE"
+      ]
+    },
+    "evidence_mode": {
+      "type": ["string", "null"],
+      "enum": [
+        null,
+        "DIRECT_OBSERVATION",
+        "DIRECT_SELF_REPORT",
+        "JOINT_SELF_REPORT",
+        "INSTRUMENT_MEASUREMENT",
+        "THIRD_PARTY_REPORT",
+        "DOCUMENTED_RECORD",
+        "MODEL_INFERENCE",
+        "CULTURAL_INTERPRETATION",
+        "UNKNOWN"
+      ],
+      "description": "Evidentiary modality: DIRECT_OBSERVATION != DIRECT_SELF_REPORT != MODEL_INFERENCE."
+    },
+    "epistemic_status": {
+      "type": ["string", "null"],
+      "enum": [
+        null,
+        "OBSERVED",
+        "REPORTED",
+        "INFERRED",
+        "HYPOTHESIZED",
+        "CONTESTED",
+        "UNKNOWN",
+        "REJECTED"
+      ]
+    },
+    "uncertainty_band": {
+      "type": ["object", "null"],
+      "properties": {
+        "lower": { "type": "number", "minimum": 0, "maximum": 1 },
+        "upper": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "bridge": {
+      "type": ["object", "null"],
+      "description": "Kernel Invariant: Layer_A -> Layer_B => Bridge(A, B, E, Delta, Omega).",
+      "properties": {
+        "required": { "type": "boolean" },
+        "bridge_type": {
+          "type": "string",
+          "enum": ["EMPIRICAL", "MECHANISTIC", "SELF_REPORT", "JOINT_CONFIRMATION", "CAUSAL", "NORMATIVE"]
+        },
+        "bridge_evidence_refs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "scope_conditions": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "bridge_confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "human_review_required": {
+      "type": "boolean",
+      "description": "Mandatory human review flag when claims touch sensitive private-state, motive, or sexuality."
+    },
+    "alternatives_considered": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "At least three plausible alternative interpretations to prevent single-story collapse."
+    },
+    "bridge_claim": {
+      "type": ["object", "null"],
+      "description": "Required when an assertion connects observations in one layer to conclusions in another layer.",
+      "properties": {
+        "source_layer": {
+          "type": "string",
+          "enum": [
+            "PHYSICAL", "CHEMICAL", "BIOLOGICAL", "NEURAL", "PSYCHOLOGICAL",
+            "PERSONALITY", "SEXUALITY", "ECONOMIC", "SOCIOLOGICAL", "ANTHROPOLOGICAL",
+            "PHENOMENOLOGICAL", "RELATIONAL", "NORMATIVE"
+          ]
+        },
+        "target_layer": {
+          "type": "string",
+          "enum": [
+            "PHYSICAL", "CHEMICAL", "BIOLOGICAL", "NEURAL", "PSYCHOLOGICAL",
+            "PERSONALITY", "SEXUALITY", "ECONOMIC", "SOCIOLOGICAL", "ANTHROPOLOGICAL",
+            "PHENOMENOLOGICAL", "RELATIONAL", "NORMATIVE"
+          ]
+        },
+        "bridge_evidence": {
+          "type": "string",
+          "description": "Explicit empirical evidence justifying the causal link between source and target layers."
+        },
+        "falsification_conditions": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Declared conditions under which this cross-layer bridge would be disproven."
+        }
+      },
+      "required": ["source_layer", "target_layer", "bridge_evidence", "falsification_conditions"]
+    }
+  },
+
+  "allOf": [
+    {
+      "if": { "properties": { "class": { "const": "I" } }, "required": ["class"] },
+      "then": { "required": ["alternatives", "confidence"] }
+    },
+    {
+      "if": { "properties": { "class": { "enum": ["P", "F"] } }, "required": ["class"] },
+      "then": { "required": ["causal_bridge", "alternatives"] }
+    },
+    {
+      "if": { "properties": { "class": { "const": "C" } }, "required": ["class"] },
+      "then": {
+        "required": ["privacy_class", "addressee"],
+        "description": "CO-CREATED requires an identified co-author; a single speaker can never set class=C."
+      }
+    },
+    {
+      "if": { "properties": { "evidence_quality": { "const": "impression" } }, "required": ["evidence_quality"] },
+      "then": { "properties": { "confidence": { "maximum": 0.4 } } }
+    },
+    {
+      "if": {
+        "properties": { "bridge_claim": { "type": "object" } },
+        "required": ["bridge_claim"]
+      },
+      "then": {
+        "properties": {
+          "bridge_claim": {
+            "required": ["source_layer", "target_layer", "bridge_evidence", "falsification_conditions"]
+          }
+        }
+      }
+    }
+  ],
+
+  "arifos": {
+    "forbidden_promotions": [
+      { "from": "F", "to": "O", "reason": "fiction is not a record of what happened" },
+      { "from": "P", "to": "O", "reason": "a population statistic is not an observation of an individual" },
+      { "from": "I", "to": "S", "reason": "the machine's interpretation is not the human's self-report" },
+      { "from": "R", "to": "S", "reason": "A's claim about B is not B's self-report" },
+      { "from": "I", "to": "C", "reason": "shared meaning requires both humans, not a model of them" },
+      { "from": "R", "to": "O", "reason": "one person's report about another is not an observation of that person" }
+    ],
+    "cross_layer_promotion_law": {
+      "invariant": "Layer_A -> Layer_B => ExplicitBridgeEvidence",
+      "principle": "Different sciences constrain one another; they do not automatically translate into one another.",
+      "enforcement": "fail closed — unbridged cross-layer conclusions are rejected"
+    },
+    "enforcement": "fail closed — a writer that would perform a forbidden promotion must reject the write, not warn",
+    "note": "Doctrine §38b and §48 (Interdisciplinary Explanatory Layers). This schema documents the contract; the gate hook is the enforcement point."
+  }
+}
