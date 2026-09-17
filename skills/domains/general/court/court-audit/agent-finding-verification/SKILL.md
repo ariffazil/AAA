@@ -223,6 +223,51 @@ control is checking **reachability or presence, not identity**.
 - **Report it as a measured property plus the probe that produced it**, never as "the gate is
   broken" — the next session must be able to re-run the same two calls and see whether it still holds.
 
+### A control has three layers — name which one lacks the exit
+
+"No turn line", "dead end", "there is no override" are verdicts about a control's *shape*, and a
+control is three separable layers. Read all three before accepting that no exit exists:
+
+1. **The policy table** — the trust-class × verdict → decision map.
+2. **The decision function** — what it returns per cell, and whether it accepts an override argument
+   at all.
+3. **The caller** — the single place that invokes the decision function, and the arguments it passes.
+
+Measured: a post-write scan keyed `agent-created` + `dangerous` to `"ask"`. The decision function
+already implemented a **written** override for exactly that cell, returning a labelled force verdict
+with the finding count. Only the caller was missing — it invoked the function with no override flag
+and exposed none upward. The defect was **one unplumbed parameter**, not a missing policy: the repair
+is a caller change plus a durable audit row, not a scanner rewrite and not a gate exemption. Reporting
+"the gate offers no path" would have been false, and would have aimed the fix at the wrong layer.
+
+- **Grep the decision function for its own override parameter before declaring a dead end:**
+  `grep -n "def <decide>(" -A 20 <module>` then `grep -rn "<decide>(" <tree>` for every call site and
+  the arguments actually passed. A policy layer that supports `force=`/`override=` and a caller that
+  never supplies it is the commonest false "no exit".
+- **Check whether the escape hatch is already governed.** The allowance should write a durable audit
+  row where the class is refused, so it reads as a record rather than a bypass. Look for that ledger
+  before proposing one — it usually already exists for the neighbouring refusal path.
+- **"Armed" and "at upstream default" are different installs.** A docstring's `default False`
+  describes upstream; the live config decides this box. Read the flag before writing "zero coverage on
+  a default install" — on a host where it is set (`grep -n "<flag>" <config.yaml>`), the accurate
+  shape is *armed but leaky* (name which paths skip it), which is a different finding with a different
+  fix. Reporting the upstream default as this host's state is the same stale-source error the audit
+  exists to catch.
+- **A control you can bypass is a finding about the control, never a licence.** The end state of such
+  an audit is `coverage < 1` plus a HOLD. An agent that proves a gate weak and then routes around it
+  has supplied the incident, not the audit.
+- **Enumerate EVERY call site before declaring a remedy impossible — "no exit" is a claim about the
+  whole control, and one caller is not the control.** Measured on this host: a scan gate's decision
+  function supported a documented `force=` override for exactly the blocked cell, and one caller in
+  the tree already plumbed it (`force=force`, reachable from the CLI as
+  `hermes skills install --force`); a second caller — the agent's own skill-write path — passed
+  nothing, which is the lane where "no path exists" was reported. Both statements are true about
+different lanes, and only the second is true about the lane that was audited. **Grep every call site
+  (`grep -rn "<decide>(" <tree>`) and say which lane each one serves**, because the fix differs
+  completely: an unplumbed parameter on one caller is a one-line repair, whereas a missing policy
+  cell is an authority decision. Reporting a dead end from a single hit is the audit committing the
+  defect it exists to catch.
+
 ### Re-derive the population before accepting any count in the review
 
 Enumeration is the one thing a reviewer cannot fake and the thing they most often get wrong. Recompute
@@ -589,6 +634,64 @@ from memory: a real, correctly-relevant paper can be attributed to the wrong jou
 a plausible transposition of the real DOI. **A correctly formatted citation is not evidence the
 cited work was consulted** — verify a sample, and where metadata is wrong, downgrade confidence
 in the surrounding synthesis proportionally.
+
+### A source that cannot be opened is not a source
+
+A ledger entry whose URL uses a scheme nothing can resolve — a non-`http(s)` prefix, an invented
+internal pseudo-protocol, an empty string, a bare domain with no path — is a citation-shaped string.
+It is worse than no citation at all, because it makes an unsourced claim *read as audited*, and the
+date and format attached to it are what defeat the reader's scepticism.
+
+```bash
+# every scheme, whatever the quoting - then read the histogram
+{ grep -rhoE "[a-z_-]+://[^\"' )]*" <doc-or-ledger-dir>; \
+  grep -rhoE "[a-z_-]+://[^\"' )]*" <generated-mirror-dir>; } \
+  | sed 's|^\([a-z_-]*\)://.*|\1|' | sort | uniq -c | sort -rn
+```
+
+**Do not quote-anchor the pattern, and run a positive control before trusting a clean result.**
+Measured 2026-09-17 on a civic corpus: a check written as `"[a-z_-]+://[^"]*"` matched only
+**double-quoted** URLs — 24 of 107 occurrences, i.e. **22%** of the corpus — and reported zero
+defects. The tree was in fact clean, so the check was right for the wrong reason and nobody would
+have noticed until the day it mattered. A planted control against the same pattern caught **2 of 4**
+forms (missed single-quoted and missed an unquoted `url: <scheme>://`); the pattern above catches
+**5 of 5**. Plant one invented scheme per form, confirm the check fires, remove the plants, then run
+it on the real tree. **A check whose clean result you have not seen fail is a decoration.**
+
+Every scheme that is not `http`/`https` (or a genuinely resolvable local scheme) is a defect to
+report, and the claims resting on it become `UNVERIFIED` until a reachable source is named. Sweep
+the **generated mirrors** as well as the source of truth — a generator writes the same unusable
+string into the published copy, which is where a reader actually meets it. Report the count, name
+the claims affected, and do not let a document's evidentiary formatting stand in for evidentiary
+discipline.
+
+### A review's claims about a named person are the cheapest to fabricate
+
+A review that targets or addresses a real third party carries biography claims — role, employer,
+experience, credentials, publications. These read as background colour, which is exactly why they
+are the least-checked part of a review and where a generated one fails loudest. Probe them before
+the review's framing reaches the sovereign or its plan is drafted into anything.
+
+- **Three cheap probes, and a memory-assembled bio fails at least one:** the subject's own
+  published profile, an encyclopaedic entry, and a registry or filing for the claimed role. Check
+  the ROLE LIST and the YEARS, not just the headline — a review can name the right person and still
+  invent the career.
+- **A "never did X" claim about a person is falsified by a single primary.** Absence claims are the
+  highest-yield thing to probe and the cheapest to break; once one is false, the rest of the review's
+  biography is suspect as a block.
+- **Verifying one entry does not license the list.** A list of N roles where one is confirmable and
+  the others appear nowhere is a fabricated list with a true head — the harder shape to catch. Check
+  each entry, or state plainly which ones you checked.
+- **Agreement between the subject's own surfaces is not required.** Two durations for one job (a
+  profile page and an encyclopaedia entry counting different things) are frequently both correct.
+  Report both and stop; do not resolve the discrepancy into a single authoritative number.
+- **A corrected occupation changes the strategy built on it.** Whether the subject is a journalist,
+  an operator, or an industry veteran decides what they want and what a letter to them should
+  contain. Re-derive the approach after the biography is repaired rather than patching the wording.
+- **The fabrication and the plan share a source.** A review that got the person wrong did not read
+  the sources, so treat its recommendation as unanchored too — say both. Where the plan is a draft
+  you were asked to write, every invented detail becomes a claim in the sovereign's own voice going
+  out under his name.
 
 ### Provenance record for uncustodied documents
 
