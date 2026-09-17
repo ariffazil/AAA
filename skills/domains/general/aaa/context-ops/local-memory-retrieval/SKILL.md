@@ -150,7 +150,47 @@ When the artifact answers the question, DELIVER it (`MEDIA:/absolute/path`) and 
 - Offer one concrete next action (refresh, build a tracker, re-verify a live claim). No menus.
 - Match the user's language and length: casual BM for Arif, short and direct, no headers unless the content is genuinely tabular.
 
+## The Write Side — which layer owns the fact
+
+This skill's sweep finds facts that already exist. When the job is to *create* them — "remember
+this", "update the memory", "capture this as reality" — the fact still has to land in the layer
+that owns it. Writing everything to one store is how a memory system rots: session state buried in
+canon, permanent findings left in a 7-day-pruned event log.
+
+**Route by lifetime, not by convenience.**
+
+| The fact is… | It belongs in |
+|---|---|
+| session state: a decision, a scar, an open loop, an event | carry-forward (sanctioned writer, generational, flock-safe) |
+| a permanent insight worth ratifying | eureka canon — **stage it; the ledger is sealed** |
+| something to recall semantically | the vector collection for that domain |
+| a causal step in this session's work | the reality-graph endpoint, chained by parent id |
+| conversational | conversational memory, automatically |
+
+Full procedure, exact commands, and endpoint traps: `references/memory-layer-write-procedure.md`.
+
+Three rules that hold regardless of which layer:
+
+- **A sealed ledger is staged against, never unlocked.** Canon ledgers carry filesystem-level
+  immutability. A constitutional gate blocks any attempt to clear it, the lock is not the agent's
+  to lift, and promotion runs through the kernel seal lane with sovereign authority. Report the
+  true state — `STAGED, pending promotion` — and never the word "sealed". A *stray duplicate*
+  ledger often sits beside the sealed one; if its own README says append nothing, honour that
+  rather than treating it as an alternate write target.
+- **A governance hold on a tool is not a tool failure.** Calls whose arguments touch critical
+  variables can be held pending source evidence. Establish evidence first (probe the owning organ,
+  search, read the record), then retry — do not re-attempt the identical call, and never record
+  "tool X is broken" as a durable rule, which hardens a temporary state into a standing refusal.
+- **Read the error; these endpoints name their own contract.** A closed enum rejects an unknown
+  value *and returns the full variant list*; a mis-typed identifier returns a parse error naming
+  the expected type. Both are one round-trip to fix if read, and several if guessed at. Record the
+  valid values once, in the reference, not per session.
+
 ## Support Files
+
+- `references/memory-layer-write-procedure.md` — the per-session write loop across carry-forward,
+  eureka staging, the vector store and the reality graph: exact commands, the sealed-canon rule,
+  identify/verb/enum traps, and how to read the flow meter that reports on your own balance.
 
 - `references/store-command-catalogue.md` — copy-pasteable sweep commands per store (memory stores, artifacts, caches, session DB, person-recall sweeps) plus the roots worth grepping.
 
