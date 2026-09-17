@@ -1,0 +1,75 @@
+{
+ "generated": "2026-09-17T17:38:19.697495+00:00",
+ "verdict": "both actuators EXIST as code; neither is missing; the gap is WIRING",
+ "geox": {
+  "status": "LIVE_PRODUCT",
+  "code_dir": "/root/GEOX/src/geox_mcp/tools/structure_gates",
+  "files": [
+   "k_dip.py",
+   "k_dl.py",
+   "k_throw.py",
+   "restore.py",
+   "topology.py",
+   "velocity.py",
+   "growth.py",
+   "witness.py",
+   "calibration_derive.py",
+   "cutoff.py",
+   "geometry_adapt.py",
+   "normalize.py"
+  ],
+  "entrypoint": "geox_structure_validate -> run_all_structure_gates",
+  "registered_in_manifest": true,
+  "returns": [
+   "PASS",
+   "KILL",
+   "INCONCLUSIVE",
+   "UNMEASURED"
+  ],
+  "never_local_seal": true,
+  "naming_correction": {
+   "K-TAPER": "K-THROW (throw tapers to elliptical tip-line, Barnett 1987)",
+   "K-SCALE": "K-DL (D/L 1e-3..1e-1 global; Earth bulk 0.005..0.05)"
+  },
+  "verdict": "PHANTOM ABSENCE in the external audit \u2014 and in my own first pass"
+ },
+ "jitu": {
+  "implementations": [
+   {
+    "path": "/root/arifOS/core/paradox/circuit_breakers.py",
+    "kind": "epistemic CB1-CB5",
+    "has_tests": true,
+    "tests": "/root/arifOS/tests/test_jitu_audit.py"
+   },
+   {
+    "path": "/root/scripts/governance/circuit-breaker.sh",
+    "kind": "3-strikes task-loop cap",
+    "state_dir": "/root/.local/share/arifos/circuit-breakers"
+   },
+   {
+    "path": "/root/arifOS/scripts/wire/arif-circuit-breaker",
+    "kind": "anti-infinite-RSI lock",
+    "state_file": "/var/run/arifos_circuit_breaker.json"
+   }
+  ],
+  "wiring": {
+   "runtime_callers": 0,
+   "cron_callers": 0,
+   "systemd_units": 0,
+   "state_file_present": false,
+   "cb_state_entries": [
+    "test-task.cb (2026-08-15)"
+   ],
+   "verdict": "BUILT, NEVER WIRED \u2014 three implementations, no single authority, no live trigger"
+  }
+ },
+ "wire_spec_sections": [
+  "AUTHORITY",
+  "TRIGGER",
+  "ENFORCEMENT",
+  "RECEIPT",
+  "SCOPE",
+  "IMMUTABILITY"
+ ],
+ "not_built_reason": "a fourth implementation would be the duplication defect, and a descriptive skill would be the safety theatre F13 refused"
+}
