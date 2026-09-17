@@ -3,9 +3,9 @@ id: nusantara-intelligence-substrate
 name: agi-nusantara-substrate
 autonomy_tier: T1
 version: 1.0.0
-description: Cultural, dignity, and sovereignty lens for AAA state records. Apply [fed: auto=T1, risk=low]
+description: "Cultural, dignity, and sovereignty lens for AAA state records. Apply [fed: auto=T1, risk=low]
   before sealing decisions that touch identity, privacy, boundaries, or sovereign
-  veto.
+  veto."
 owner: AAA
 risk_tier: low
 knowledge_basis:

@@ -1,7 +1,7 @@
 ---
 name: asi-summarize
-description: When user asks to summarize text, articles, documents, meetings, emails, [fed: tier=fed-long-context]
-  YouTube transcripts, books, PDFs, reports, conversations, or any long content
+description: "When user asks to summarize text, articles, documents, meetings, emails, [fed: tier=fed-long-context]
+  YouTube transcripts, books, PDFs, reports, conversations, or any long content"
 metadata:
   clawdbot:
     emoji: 📝

@@ -47,7 +47,9 @@ orthogonal_tags:
   - Ω
   functional:
   - Interface
-  layer: RUNTIME
+  # 2026-09-17 P2-001: layer corrected to DESIGN until P0-002 (cross-warga read +
+  # arif_judge gate) lands. SKILL.md spec is federated; runtime currently dreams solo.
+  layer: DESIGN
   autonomy_tier: T2
 floor_scope:
 - F2
