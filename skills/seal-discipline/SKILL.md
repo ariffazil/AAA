@@ -175,6 +175,7 @@ Never emit verdict without all five.
 - ❌ `verdict=SEAL` without `judge_state_hash`
 - ❌ `verdict=SEAL` for Lane B work
 - ❌ `verdict=SEAL` when substrate says HOLD
+- ❌ Reporting `substrate_state=FAIL` when the system is actually `IDLE_RESTING` or `FAIL_CLOSED` (violates SUBSTRATE_TAXONOMY_2026-09-18)
 - ❌ Confusing kernel's `/health verdict: SEAL` (self-report) with constitutional SEAL (chain entry)
 - ❌ Treating `last_seal_timestamp` from `/health` as proof of constitutional write (it's session-internal counter, not chain truth)
 - ❌ Trusting carry_forward `verdict=SEAL` without checking seal_chain.jsonl
