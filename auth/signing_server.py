@@ -288,23 +288,36 @@ class SigningHandler(BaseHTTPRequestHandler):
                 canonical_payload if canonical_payload else json.dumps({"challenge_id": challenge_id, "verified": True})
             )
         else:
-            # Legacy path — deprecated, logged
-            logger.warning("LEGACY: signing raw canonical_json without challenge verification (deprecated path)")
-            payload_to_sign = canonical_json
+            # Legacy path — FAIL CLOSED. Challenge verification is mandatory.
+            logger.warning("REJECTED: legacy canonical_json without challenge_id (fail-closed)")
+            self.send_response(400)
+            self.end_headers()
+            self.wfile.write(b'{"error":"challenge_id required; legacy canonical_json path removed"}')
+            return
 
-        # PAM credential confirmation (transitional — not sovereign presence proof)
+        # PAM credential confirmation — FAIL CLOSED.
+        # AAA_PAM_USER must be set; missing credential = refuse to sign.
         pam_user = os.environ.get("AAA_PAM_USER", "")
-        if pam_user:
-            try:
-                import pam
+        if not pam_user:
+            logger.warning("REJECTED: AAA_PAM_USER not set — signing refused (fail-closed)")
+            self.send_response(401)
+            self.end_headers()
+            self.wfile.write(b'{"error":"AAA_PAM_USER not configured; signing requires credential"}')
+            return
+        try:
+            import pam
 
-                if not pam.authenticate(pam_user, os.environ.get("AAA_PAM_PASS", "")):
-                    self.send_response(401)
-                    self.end_headers()
-                    self.wfile.write(b'{"error":"pam authentication failed"}')
-                    return
-            except ImportError:
-                pass  # PAM not available — skip (transitional)
+            if not pam.authenticate(pam_user, os.environ.get("AAA_PAM_PASS", "")):
+                self.send_response(401)
+                self.end_headers()
+                self.wfile.write(b'{"error":"pam authentication failed"}')
+                return
+        except ImportError:
+            logger.error("REJECTED: python-pam module not available — cannot verify credential")
+            self.send_response(503)
+            self.end_headers()
+            self.wfile.write(b'{"error":"PAM module unavailable; signing requires credential verification"}')
+            return
 
         try:
             private_key_bytes = load_sovereign_key()
