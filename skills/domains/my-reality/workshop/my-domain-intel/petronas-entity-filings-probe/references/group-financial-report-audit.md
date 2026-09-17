@@ -70,6 +70,22 @@ Purpose/mission/values wording drifts. Before claiming a phrase was removed or a
 
 The same rule applies to a **list of behaviours or values**: a short list quoted from an internal deck may not appear in any public document. Check the public report before treating an internal list as citable outside the company, and check whether items present in an older published list are *absent* from the newer one — a removal is a stronger finding than an addition.
 
+## A clone of the corporate site is not the corporate site
+
+A staging or marketing deployment of a company website can be visually identical to the live site, carry the same branding, and surface in a search result. It is not a source. Check three things before citing any web surface outside the registered corporate domain:
+
+- **The legal entity name in the footer.** A footer naming an entity the company registry does not contain means an agency build, not a corporate publication.
+- **Self-applied labels.** A page describing its own figures as "illustrative", "not operational readings", or "shown while the feed is being connected" has told you it is a mock. Believe it.
+- **Internal consistency.** Two pages of the same site giving different values for one metric — or a "read this morning" timestamp sitting above an "illustrative" disclaimer — falsify the surface from the inside.
+
+Registered office, leadership and corporate-structure detail from the company's own domain is citable. Operating dashboards, per-asset production tables and reserve figures hosted elsewhere are not, however precise they look: per-asset granularity is cheap to generate and expensive to verify.
+
+## Flagging a source is not excluding it
+
+Once you have judged a source unreliable, its numbers do not appear in your output — not with a caveat, not in a subordinate clause. A caveated figure is still a figure; the reader keeps the number and drops the qualifier.
+
+The failure mode is specific: writing "this source is not authoritative" and then quoting it in the next sentence reads as diligence while performing the exact thing the judgement forbade. Deciding a source is unusable is a decision about *exclusion*, not about labelling. Replace the figure with a citable one or omit it, and say plainly that you did.
+
 ## Unattributed third-party claims
 
 "Analysts say X" with no name, house, date or link is not evidence. It is unfalsifiable, and it is the first sentence a technical reader attacks — which then taints the verified material around it.
