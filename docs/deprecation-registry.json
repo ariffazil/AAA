@@ -560,6 +560,103 @@
       "reviewed": true,
       "reviewed_date": "2026-09-15",
       "reviewed_by": "Hermes ASI subagent / VAULT999-SOT-RECONCILIATION"
+    },
+    {
+      "id": "hermes-snap-*",
+      "type": "pattern",
+      "status": "DEPRECATED_SECURITY",
+      "tombstone_date": "2026-09-18",
+      "severity": "P1",
+      "reason": "hermes-snap-*.sh snapshot mechanism previously emitted ACK_BOT_TOKEN via hardcoded literal into 4 shell scripts + 1 terminal-output log. Severity UPGRADED 2026-09-17T16:47Z from P3 to P1 after exhaustive disk probe revealed the token was leaked through the snap-pipeline, not just the state.db-wal Hermes originally reported. 5 disk occurrences cleaned up; mechanism removed.",
+      "replacement": "Arif-managed credential rotation (no snap mechanism); future snapshots use hermes_session_token issuance through AAA arif_init only.",
+      "scar_anchor": "carry_forward e-token-cleanup-2026-09-18 / scar 2026-09-17T16:47Z",
+      "reviewed": true,
+      "reviewed_date": "2026-09-18",
+      "reviewed_by": "333-AGI / BIJAKSANA-compile T9"
+    },
+    {
+      "id": "flameClient.ts:393 (gatewayTools import)",
+      "type": "cosmetic_branch",
+      "status": "DEPRECATED_RESIDUAL",
+      "tombstone_date": "2026-09-18",
+      "reason": "Cosmetic-only import + invoke of flameClient from gatewayTools.ts survives flame-api.service decommission (commit 802e0c8d at 2026-09-04 22:00:38 short-circuited flameClient.ts:17 + line 40 early-return). Call site still exists in gatewayTools but routes to 'FLAME decommissioned 2026-09-04' error; 0ms, no fetch. No live FLAME dependency; tombstone is for grep-cleanliness so future agents do not chase a ghost.",
+      "replacement": "Delete the flameSynthesizeSearch call site in gatewayTools.ts:393 (T3 cleanup, F13 not required — cosmetic branch on already-decommissioned service)",
+      "scar_anchor": "deprecated_services[flame-api.service].residual_refs",
+      "reviewed": true,
+      "reviewed_date": "2026-09-18",
+      "reviewed_by": "333-AGI / BIJAKSANA-compile T9"
+    },
+    {
+      "id": "graphiti-*",
+      "type": "service",
+      "status": "DEPRECATED_RETIRED_888",
+      "tombstone_date": "2026-09-17",
+      "reason": "Graphiti semantic floor retired to 888 (HOLD) on 2026-09-17. /health now reports graphiti_transport=retired_888, graphiti_storage=retired_888, graphiti_embedding_runtime=unverified, graphiti_semantic_floor=disabled. Semantic memory tier is no longer wired to Graphiti backend. No active consumers — verified via /health disabled status + arifOS 2026-09-17 federation-log.",
+      "replacement": "Apex scalars + apex_scalars.{h, QDF, W3} heuristic tier (per /health.runtime_floors)",
+      "scar_anchor": "carry_forward e-graphiti-retirement-2026-09-17",
+      "reviewed": true,
+      "reviewed_date": "2026-09-18",
+      "reviewed_by": "333-AGI / BIJAKSANA-compile T9"
+    },
+    {
+      "id": "/root/.local/share/arifos/vault999/EPOCH_ATTESTATION.json",
+      "type": "file",
+      "status": "SUPERSEDED_READONLY",
+      "tombstone_date": "2026-09-18",
+      "reason": "Frozen 2026-09-05 05:42 (884 bytes). Pre-VAULT999-reboot attestation fossil. Sibling of /root/.local/share/arifos/vault999/outcomes.jsonl tombstone. No live reader; pre-2026-08-25 epoch artefacts superseded by VAULT999_DB (Supabase vault_seals via VAULT999 :5001).",
+      "replacement": "VAULT999_DB :5001 vault_seals table (live) — Supabase",
+      "scar_anchor": "DIV-VAULT999-MULTIPATH-SOT (open_divergence)",
+      "reviewed": true,
+      "reviewed_date": "2026-09-18",
+      "reviewed_by": "333-AGI / BIJAKSANA-compile T9-B"
+    },
+    {
+      "id": "/root/.local/share/arifos/vault999/EUREKA-ZEN-SUBSTRATE-LOCK-2026-07-13.json",
+      "type": "file",
+      "status": "SUPERSEDED_READONLY",
+      "tombstone_date": "2026-09-18",
+      "reason": "Frozen 2026-07-17 15:56 (2969 bytes). EUREKA lock artefact from pre-AAA substrate era. Sibling of outcomes.jsonl tombstone. No live reader; superseded by apex_scalars.{h, QDF, W3} heuristic tier (per /health.runtime_floors 2026-09-17).",
+      "replacement": "apex_scalars.{h, QDF, W3} + /opt/arifos/canon/ (active 2026.09.17-edea664)",
+      "scar_anchor": "DIV-VAULT999-MULTIPATH-SOT (open_divergence)",
+      "reviewed": true,
+      "reviewed_date": "2026-09-18",
+      "reviewed_by": "333-AGI / BIJAKSANA-compile T9-B"
+    },
+    {
+      "id": "/root/.local/share/arifos/vault999/F11_AUTH_HOLD.jsonl",
+      "type": "file",
+      "status": "SUPERSEDED_READONLY",
+      "tombstone_date": "2026-09-18",
+      "reason": "Frozen 2026-05-05 14:06 (343 bytes). Pre-AAA AUTH_HOLD lineage. Sibling of outcomes.jsonl tombstone. Duplicate also exists at /root/.local/share/arifos/vault999/_archive/historical_seals/F11_AUTH_HOLD.jsonl (already cold-archived). No live reader; L11 AUTH now enforced via kernel arif_judge floor (status='pass', score=1.0 per /health.runtime_floors.L11).",
+      "replacement": "arif_judge.L11 (live kernel floor)",
+      "scar_anchor": "DIV-VAULT999-MULTIPATH-SOT (open_divergence)",
+      "reviewed": true,
+      "reviewed_date": "2026-09-18",
+      "reviewed_by": "333-AGI / BIJAKSANA-compile T9-B"
+    },
+    {
+      "id": "/root/.local/share/arifos/_archive_2026-09-08-empty-db-cleanup/{arifos.db,fed_token_bank.db,local.db}",
+      "type": "file_set",
+      "status": "DEPRECATED_RESIDUAL",
+      "tombstone_date": "2026-09-18",
+      "reason": "3 zero-byte SQLite databases from 2026-09-08 empty-db cleanup. arifos.db + fed_token_bank.db (Sep 8 01:54, 0 bytes) + local.db (Sep 8 01:58, 0 bytes). Empty dbs are filesystem noise; no schema, no readers, no purpose. Tombstone for grep-cleanliness.",
+      "replacement": "Live dbs at /root/.local/share/arifos/{capability_ledger,arifflow_receipts,etc.} (none zero-byte)",
+      "scar_anchor": "carry_forward e-zero-db-cleanup-2026-09-08",
+      "reviewed": true,
+      "reviewed_date": "2026-09-18",
+      "reviewed_by": "333-AGI / BIJAKSANA-compile T9-B"
+    },
+    {
+      "id": "/root/VAULT999/SESSION_SEAL_aa1cdfcb676f458b.json",
+      "type": "symlink",
+      "status": "DEPRECATED_RESIDUAL",
+      "tombstone_date": "2026-09-18",
+      "reason": "Broken dangling symlink -> /agent/vault999/sealed/SESSION_SEAL_aa1cdfcb676f458b.json (target dir empty since 2026-06-22). 57 bytes symlink, lrwxrwxrwx. Child fossil of /agent/vault999/receipts/outcomes.jsonl tombstone (L553-L563). Delete is safe — no consumer.",
+      "replacement": "/root/VAULT999/outcomes.jsonl (live, growing)",
+      "scar_anchor": "DIV-VAULT999-MULTIPATH-SOT (open_divergence)",
+      "reviewed": true,
+      "reviewed_date": "2026-09-18",
+      "reviewed_by": "333-AGI / BIJAKSANA-compile T9-B"
     }
   ],
   "deprecated_endpoints": [

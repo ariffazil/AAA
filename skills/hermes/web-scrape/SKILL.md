@@ -3,10 +3,10 @@ name: web-scrape
 id: web-scrape
 version: 1.0.0
 description: >
-  [fed: tier=fed-multimodal-vision, floors=[F1, F2, F4, F7, F12], auto=T1, risk=low]
+
   AI-powered web scraping and extraction. ScrapeGraph AI for structured extraction
   with schema generation and async crawling. Decodo for high-success web scraping
-  across 195+ locations with residential proxies, anti-bot handling, eCommerce,
+  across 195+ locations with residential proxies, anti-bot handling, eCommerce
   social media, and AI search integration.
 owner: AAA
 risk_tier: low
@@ -15,9 +15,7 @@ floor_scope: [F1, F2, F4, F7, F12]
 tags: [scrape, extract, crawl, web, scrapegraph, decodo, ecommerce, social-media, structured-data]
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
----
-
-# Web Scrape — AI-Powered Extraction & Crawling
+---# Web Scrape — AI-Powered Extraction & Crawling
 
 > **DITEMPA BUKAN DIBERI** — Extraction is structured sensing.
 

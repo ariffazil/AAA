@@ -1,6 +1,6 @@
 ---
 name: authority-reality-grounder
-description: "Anti-Shadow architecture validator. Validates authority claims against witnessed physical reality and independent evidence. Enforces the Reality-Bound Authority master doctrine: when reality disagrees, authority contracts. Prevents self-certification and capability fiction. [fed: risk=critical]"
+description: "Anti-Shadow architecture validator. Validates authority claims against witnessed physical reality and independent evidence. Enforces the Reality-Bound Authority master doctrine: when reality disagrees, authority contracts. Prevents self-certification and capability fiction. "
 owner: AAA
 risk_tier: critical
 floor_scope:
@@ -25,9 +25,7 @@ authority:
   execution: true
   mutation: readonly
   approval_gate: f13
----
-
-# Authority Reality Grounder
+---# Authority Reality Grounder
 
 > **The Invariant:**
 > Intelligence must never be trusted because it is intelligent.

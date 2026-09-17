@@ -2,7 +2,7 @@
 id: agent-onboarding
 name: Agent Onboarding
 version: 1.0.0
-description: Standard procedure for registering a new agent in the AAA federation [fed: tier=fed-agent-subagent, risk=medium]
+description: Standard procedure for registering a new agent in the AAA federation
   Creates agent identity directory, agent card, registry entry, and SOUL.md.
 owner: AAA
 risk_tier: medium
@@ -47,9 +47,7 @@ floor_scope:
 - F13
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----
-
-# Agent Onboarding
+---# Agent Onboarding
 
 ## Overview
 

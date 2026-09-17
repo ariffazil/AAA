@@ -1,7 +1,7 @@
 ---
 id: FORGE-call-map
 name: forge-call-map
-description: "Use when mapping every callable in the federation or planning boot-time call contracts between FI harnesses. Use when mapping every callable in the federation or planning boot-time call contracts between FI harnesses. Boot-time call contract: how to invoke every FI harness, organ MCP, A2A target, and FED socket. AAA 3-layer cards = directory (who). This skill = telephone (how). Load on session start. [fed: tier=fed-agent-subagent, auto=T0, risk=low]"
+description: "Use when mapping every callable in the federation or planning boot-time call contracts between FI harnesses. Use when mapping every callable in the federation or planning boot-time call contracts between FI harnesses. Boot-time call contract: how to invoke every FI harness, organ MCP, A2A target, and FED socket. AAA 3-layer cards = directory (who). This skill = telephone (how). Load on session start. "
 version: 1.0.0
 risk_tier: low
 autonomy_tier: T0
@@ -15,15 +15,29 @@ triggers:
   - session boot / init when dispatching to another agent
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----
-
-# FORGE-call-map
+---# FORGE-call-map
 
 ## Load first when
 
 - Dispatching work to OpenCode / Claude / Kimi / Grok / Codex
 - Hermes or OpenClaw needs to spawn a coder
 - Agent says "I don't know how to call X"
+
+## NEW — 2026-09-18 (canonical13 ↔ legacy argument-translation table)
+
+arifOS exposes a public surface (`arif_*`) AND internal canonical13 (`arif_init`, `arif_observe`, etc.). Probe 2026-09-18T06:38Z showed 5/8 public names resolve+execute; 3 contract drifts remain:
+
+| Public name | Internal | Status | Drift |
+|---|---|---|---|
+| `arif_sense_observe` | `arif_observe` | ✅ works | — |
+| `arif_mind_reason` | `arif_think` | ✅ works | — |
+| `arif_ops_measure` | `arif_measure` | ✅ works | — |
+| `arif_heart_critique` | `arif_judge` | ⚠️ executes, degraded_fallback | verdict geometry drift |
+| `arif_kernel_route` | `arif_route` | ⚠️ works without `mode` | `mode='status'` rejected |
+| `arif_gateway_connect` | `arif_bridge_connect` | ❌ schema mismatch | `mode` arg not translated to `organ`+`tool_name` |
+| `arif_session_budget` | unknown | ❌ Unknown tool | not registered |
+
+**Adapter translation rule:** When public tool requires `mode=` arg, internal handler expects positional or different-keyword. ALWAYS probe with no-arg first, then escalate. Never assume advertised schema matches callable schema.
 
 ## Canonical paths
 

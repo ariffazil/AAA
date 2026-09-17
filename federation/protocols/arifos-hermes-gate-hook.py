@@ -56,6 +56,7 @@ def jitu_state():
     except Exception as exc:
         return True, f"JITU authority raised: {exc}"
 
+
 # T3 patterns — same as OpenCode gate (E-12: capability beats instruction)
 T3_PATTERNS = [
     r"secrets?[/\\]",
@@ -260,6 +261,58 @@ def write_receipt(
         pass  # Never block
 
 
+# CCC-T-02 (2026-09-18): Federation Envelope emit.
+# Maps to /root/AAA/federation/protocols/federation_envelope.yaml schema v0.1.
+# Distinct path so existing hermes_hook_receipts.jsonl readers are not affected.
+FEDERATION_ENVELOPE_PATH = "/root/.local/share/arifos/hermes_envelope_emits.jsonl"
+
+
+def emit_envelope(
+    identity: dict,
+    authority: str,
+    tier: str,
+    decision: str,
+    harness: str = "hermes",
+    trace_id: str = "unknown",
+    parent_receipt: str = "",
+    verdict: str = "NONE",
+    judge_ref: str = "",
+    transport: str = "MCP",
+):
+    """Emit a FederationEnvelope v0.1 record for cross-harness tracing.
+
+    Never block on failure (E-11). Side path; does not alter write_receipt output.
+    """
+    try:
+        record = {
+            "envelope_version": "0.1",
+            "envelope_id": str(uuid.uuid4()),
+            "agent_id": identity.get("agent_id", "hermes"),
+            "parent_agent": identity.get("parent_agent", "null"),
+            "session_id": identity.get("session_id", "unknown"),
+            "harness": harness,
+            "authority": authority,
+            "tier": tier,
+            "classification": tier,
+            "reversal": "YES" if tier in ("OBSERVE", "T1") else ("PARTIAL" if tier == "T2" else "NO"),
+            "constraints": ["no-self-modification", "fail-closed", "receipt-required", "envelope-required"],
+            "receipt_id": str(uuid.uuid4()),
+            "parent_receipt": parent_receipt,
+            "judgment": verdict,
+            "judgment_ref": judge_ref,
+            "transport": transport,
+            "decision": decision,
+            "trace_id": trace_id,
+            "emitted_at": datetime.utcnow().isoformat() + "Z",
+        }
+        os.makedirs(os.path.dirname(FEDERATION_ENVELOPE_PATH), exist_ok=True)
+        with open(FEDERATION_ENVELOPE_PATH, "a") as f:
+            f.write(json.dumps(record) + "\n")
+        return record["envelope_id"]
+    except Exception:
+        return None  # Never block
+
+
 def t3_pattern_hit(tool_input: dict):
     """Return the first T3 pattern that matched, for actionable block reasons."""
     arg_str = json.dumps(tool_input).lower()
@@ -297,20 +350,23 @@ def main():
         tripped, jitu_why = jitu_state()
         if tripped:
             reason = f"JITU HARD INTERRUPT — {jitu_why}"
-            write_receipt(tool_name, classification, "JITU_TRIPPED", reason,
-                          trace_id=trace_id, session_id=session_id)
+            write_receipt(tool_name, classification, "JITU_TRIPPED", reason, trace_id=trace_id, session_id=session_id)
             write_falsification_metric("jitu_interrupt", {"tool": tool_name, "reason": jitu_why})
             update_telemetry("hold")
-            print(json.dumps({
-                "decision": "block",
-                "reason": (
-                    f"\U0001F6D1 JITU (circuit breaker): {jitu_why}. "
-                    "This is a sovereign-issued stop, not an error — do not retry, do not route around it. "
-                    "Read-only inspection stays available. Release requires F13: "
-                    "`python3 /root/AAA/federation/kernel/jitu.py release --by F13 --reason '...'`. "
-                    "Report the true state (JITU_TRIPPED) and stop."
-                ),
-            }))
+            print(
+                json.dumps(
+                    {
+                        "decision": "block",
+                        "reason": (
+                            f"\U0001f6d1 JITU (circuit breaker): {jitu_why}. "
+                            "This is a sovereign-issued stop, not an error — do not retry, do not route around it. "
+                            "Read-only inspection stays available. Release requires F13: "
+                            "`python3 /root/AAA/federation/kernel/jitu.py release --by F13 --reason '...'`. "
+                            "Report the true state (JITU_TRIPPED) and stop."
+                        ),
+                    }
+                )
+            )
             sys.exit(3)  # 3 = circuit-breaker interrupt (distinct from T3's 2)
 
     # W_scar: critical-variable claim detection (machine-enforced, not advisory)
@@ -379,6 +435,19 @@ def main():
     )
     write_falsification_metric("mutation_witnessed", {"tool": tool_name, "classification": "T2"})
     update_telemetry("pass")
+    # CCC-T-02 (2026-09-18): emit FederationEnvelope v0.1 for cross-harness tracing.
+    # The hermes pre_tool_call gate is observation-class — authority stays OBSERVE_ONLY
+    # even when witnessing T2 mutations. parent_receipt unlinked until receipt_id minting
+    # is added to write_receipt (deferred to CCC-T-02b).
+    emit_envelope(
+        identity={"agent_id": "hermes", "session_id": session_id},
+        authority="OBSERVE_ONLY",
+        tier=classification,
+        decision="WITNESSED_T2",
+        harness="hermes",
+        trace_id=trace_id,
+        verdict="SEAL",
+    )
     # Allow (no output)
 
 

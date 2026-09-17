@@ -1,11 +1,9 @@
 ---
 name: duckdb-analytics-engine
-description: "In-process columnar SQL analytics engine over Parquet, CSV, JSONL, and well log (.las) files using DuckDB and Polars. [fed: tier=fed-agent-subagent]"
+description: "In-process columnar SQL analytics engine over Parquet, CSV, JSONL, and well log (.las) files using DuckDB and Polars. "
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----
-
-# DuckDB & Polars High-Performance Analytics Skill (`duckdb-analytics-engine`)
+---# DuckDB & Polars High-Performance Analytics Skill (`duckdb-analytics-engine`)
 
 Enables AI agents to execute sub-second columnar SQL queries over large local datasets (well logs, financial ledgers, web access logs, Parquet files) directly in memory with zero database server overhead.
 

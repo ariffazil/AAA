@@ -1,8 +1,8 @@
 # AAA Federation Envelope — Canonical Schema
-# Authority: AAA_FEDERATION_CONTRACT_v0.1 (INV-01, INV-02, INV-03, INV-14)
-# Date: 2026-08-07
+# Authority: AAA_FEDERATION_CONTRACT_v1.0 (RATIFIED F13 2026-09-08) + FED_ACTOR_ENVELOPE_DOCTRINE.md (RATIFIED F13 2026-08-15)
+# Date: 2026-08-07 (forged) · 2026-09-18 (PATCH_READY upgrade via CCC-T-01)
 # Version: 0.1.0
-# Status: DRAFT — pending ratification
+# Status: PATCH_READY — envelope schema ratified as FederationEnvelopeCanonical v0.1; await F13 sovereign sign-off for constitutionalization. Companion doctrine FED_ACTOR_ENVELOPE_DOCTRINE.md already F13-ratified.
 
 # Purpose: single canonical envelope all AAA federation agents must carry.
 # Without envelope: spawn denied (K-04), T2/T3 blocked (K-03).

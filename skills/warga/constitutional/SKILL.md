@@ -1,11 +1,9 @@
 ---
 name: warga-constitutional
-description: Archived constitutional warga placeholder retained only for audit provenance. Do not use for active work; use the live arifOS governance [fed: tier=fed-reasoning-heavy]
+description: Archived constitutional warga placeholder retained only for audit provenance. Do not use for active work; use the live arifOS governance
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
----
-
-# constitutional
+---# constitutional
 
 > **Status:** ARCHIVED · **Owner:** AAA · **Tier:** T0
 
