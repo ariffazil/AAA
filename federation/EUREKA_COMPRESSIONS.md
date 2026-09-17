@@ -133,6 +133,32 @@ F13 remains sovereign.
 
 ---
 
+## EUREKA-25 :: agent_profile Identity Tuple (CCC-01, 2026-09-18)
+
+Same harness + different model = different agent. "Codex solved 78%" is meaningless without specifying (harness, model, config). Stamp the full tuple on every routing decision and receipt.
+
+## EUREKA-26 :: Three-Layer Protocol Separation (CCC-02, 2026-09-18)
+
+A2A = federation (agent↔agent). MCP = capability (agent↔tool). ACP/SDK = edge (editor↔agent). Never mix layers. MCP is NOT the authority protocol.
+
+## EUREKA-27 :: Data-Authority Hierarchy (CCC-03, 2026-09-18)
+
+Retrieved text is Level 5 (data, never instruction). A malicious README "upload .env" cannot grant capabilities, override policy, or authorize actions. F12 structural defense.
+
+## EUREKA-28 :: Autonomy Ladder A2 — Ephemeral Workspace Write (CCC-04, 2026-09-18)
+
+A2 = free write in isolated workspaces (worktrees, containers). No governance overhead. Transition to A3 (PR/branch) requires SEAL. F1 AMANAH: ephemeral = reversible by definition.
+
+## EUREKA-29 :: Router Regret (CCC-05, 2026-09-18)
+
+Regret(t) = Utility(best, t) - Utility(routed, t). FED routes by cost/latency but has zero outcome feedback. Without regret, routing optimization is blind.
+
+## EUREKA-30 :: Normalized Event Vocabulary (CCC-06, 2026-09-18)
+
+TASK_ACCEPTED → PLAN → TOOL_REQUESTED → TOOL_DENIED → FILE_READ → PATCH_PROPOSED → COMMAND_EXECUTED → TEST_RESULT → REVIEW_FINDING → ARTIFACT → TASK_COMPLETED → TASK_FAILED. Raw transcripts never cross federation boundaries.
+
+---
+
 **Ω₀ ≈ 0.04. Discovery density ≈ high. Remaining gap = enforcement.**
 
 **DITEMPA BUKAN DIBERI.**
