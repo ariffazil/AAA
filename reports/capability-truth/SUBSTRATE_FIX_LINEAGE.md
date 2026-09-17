@@ -39,6 +39,21 @@ else: -> HEALTHY
 - The touched file set overlaps **STEP 4's plane/envelope area** → the in-flight package likely targets the same dualism (substrate DEGRADED-vs-HEALTHY + verdict envelope).
 - The variant is a plausible fix for the persistent `/health status: degraded` (thermodynamic block reads healthy: entropy_delta −0.11, vitality 1.0, kappa_r 1.0, shadow 0.0) — but it is **untested and unversioned**.
 
+## Change-set inventory & collision verdict (pass 3, cycle 11 — 2026-09-18)
+
+| file | ± | mtime | attribution |
+|---|---|---|---|
+| `runtime/tools.py` | 9A/6D | 2026-09-17 03:04 | in-flight package — substrate logic (region ~3045) |
+| `runtime/verdict.py` | 1A/1D | 2026-09-17 03:04 | in-flight package |
+| `runtime/tools_internal.py` | 2A/2D | 2026-09-17 03:04 | in-flight package |
+| `abi/amanah_gate.py` | 1A/1D | 2026-09-17 03:04 | in-flight package |
+| `schemas/budget_contract.py` | 1A/1D | 2026-09-17 03:04 | in-flight package |
+| `server.py` | 40A/2D | **2026-09-18 03:51** | **333-AGI ghost-alias patch (this session)** — NOT the package |
+| `app/FEDERATION_MAP.md` | 41D | ? | deleted; provenance unknown — flagged |
+
+**Collision verdict: DISJOINT.** Package edit at ~3045 (substrate); staged `cb2411928` at
+~24340 / ~24496 / ~27775 (memory routing + registration guard). Both land in either order.
+
 ## Recommendation (F13)
 Treat the clone as an **in-flight workspace, not a stale artifact**:
 1. Identify the author session (Sep 17 ~03:00–03:04) or decide to adopt/abandon deliberately — do **not** blind-sync and do **not** discard.
