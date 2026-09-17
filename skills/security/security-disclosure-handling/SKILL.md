@@ -85,7 +85,48 @@ When the root cause turns out to be the *framework* (a router matching a path te
 before decoding it), fix your usage **and** report upstream; the reporter will tell you if
 they traced it there, and confirming that split is part of the acknowledgment.
 
-### 4. The vendor acknowledgment email
+#### Verify the guard without exercising the danger
+
+Proving an egress guard actually blocks has two traps, and both produce a green result that
+means nothing.
+
+- **An outer layer's refusal is not the guard's verdict.** Exec-approval harnesses, sandbox
+  policy, and host firewalls deny the same call. If the DENY came from a layer wrapping the
+  tool, it says nothing about the guard under test — the test reads as passing while the guard
+  may be absent entirely. Name which layer refused, or drop to the guard itself.
+- **Never aim the test at the real sensitive endpoint.** A cloud metadata address is the
+  obvious vector and the worst choice: if the guard fails, the credentials it returns are
+  captured by every layer that records tool calls — receipts, vault entries, gateway logs —
+  not just the few characters you printed. Safe substitutes, best first:
+  1. **Call the guard function directly.** A resolve-then-verify guard returns its verdict
+     before any socket opens, so invoking it with each blocked URL exercises the real
+     predicate with zero egress. This *is* the proof; the tool-level call only wraps it.
+     Assert the verdict per vector (local, link-local, `file://`, IPv6, non-dotted notations)
+     and assert that legitimate public URLs still return clean — a guard that blocks
+     everything passes the first half and breaks the service.
+  2. If end-to-end coverage is genuinely required, serve the path from a dummy listener on
+     localhost with inert content, so a guard failure leaks nothing.
+
+Harness note: import only the leaf module holding the predicate. Reaching one function by
+importing the whole tool package pulls in the runtime's heavy initialisation and can hang the
+session outright; put a hard `timeout` on the command so a hang costs one probe instead of the
+kernel.
+
+### 4. Verify the reporter's email address — BEFORE drafting
+
+The acknowledgment is useless if it reaches a placeholder. When Gmail read is down or the thread origin is ambiguous, do not guess — discover.
+
+Discovery ladder (check in order):
+1. **Thread headers** — extract From address from the original email (via email client, Brevo inbox query, or session transcript).
+2. **Git commit trail** — `git log --all --grep="<reporter name>"` may surface a co-authored commit or external-report reference with the address.
+3. **Vendor acknowledgment file** — if one was already generated (e.g. `forge_work/<date>-<finding>/vendor-acknowledgment.html`), the reporter's full name is in it; cross-reference with the source channel.
+4. **GitHub profile** — if the report came through a GitHub issue/PR/security advisory, the reporter's profile may list a public email.
+5. **Web search** — full name plus professional context.
+6. **Ask the principal** — last resort, and only once you have the full name and channel to offer.
+
+**Block:** Do not proceed to step 5 (sending) with a placeholder or unverified address. A sent-to-nowhere acknowledgment is worse than silence — the researcher sees nothing, the vendor believes it was sent, and the thread dies.
+
+### 5. The vendor acknowledgment email
 
 Reply **on the existing thread** so the researcher's client threads it. Six things, no more:
 
@@ -199,10 +240,19 @@ Three things convert the letter from template into person:
   claim as a hypothesis. Quote the difference, not the docstring.
 - **A disclosure is not an audit.** One confirmed finding never closes the "no independent security review" gap — the two describe different artefacts and live in different rows.
 
+## Send lanes — two options, different trade-offs
+
+| Lane | Tool | Audit trail | When to use |
+|---|---|---|---|
+| **Governed** (`gov_email.py`) | `prepare` → confirm token → `send` | Hash-chained JSONL ledger (`audit/email_ledger.jsonl`), intent logged BEFORE send | Default for all disclosure correspondence. See `references/outbound-send-lane.md` § Governed lane. |
+| **APA bridge** (`forge_email :18093`) | HTTP POST | Content hash (sha256) in response, no local ledger | When governed lane is unavailable or for non-disclosure sends. See `references/outbound-send-lane.md`. |
+
+**Default:** Use the governed lane. It gives you a receipt chain and prevents unsent-by-accident.
+
 ## References
 
 - `references/published-artifact-verification.md` — the three-layer probe (repo / running service / published artefact): registry `upload_time` vs fix commit, opening the archive and hash-matching the shipped module, call-site completeness inside the artefact, and why a stale raw-CDN read is not evidence a push failed.
-- `references/outbound-send-lane.md` — the APA email bridge (`forge_email`, :18093): probe, POST shape, the two-routes-only fact, and the content hash that is the only durable record of what text was sent.
+- `references/outbound-send-lane.md` — both send lanes: the governed lane (`gov_email.py`) with prepare-confirm-send workflow and JSONL audit ledger, and the APA email bridge (`forge_email`, :18093) with probe, POST shape, and content hash receipt.
 
 ## Related
 

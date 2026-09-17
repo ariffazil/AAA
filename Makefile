@@ -35,6 +35,8 @@ health:
 sot-check:
 	@echo "=== Source-of-Truth Drift Check ==="
 	@python3 scripts/sot_check.py
+	@echo "=== Prompt Integrity (SOUL/AGENTS truth layer) ==="
+	@python3 scripts/prompt_integrity.py
 
 # ──────────────────────────────────────────────
 # SECURITY AUDIT

@@ -1,0 +1,1392 @@
+meta:
+  generated_at: '2026-09-16T16:56:46.888225+00:00'
+  generator: sweep_scheduled_units.py v1
+  unit_of_account: distinct execution obligation (not file/line/timer)
+  classification: PROVISIONAL heuristic — F13-confirmable per unit
+  surfaces:
+  - root-crontab
+  - cron.d
+  - systemd
+  - hermes
+  counts:
+    total: 179
+    machine: 88
+    human: 81
+    agent: 10
+  law: registry=declared desired-state; live-vs-registry diff = named alarm with owner; retirement requires tombstone
+units:
+- id: root-cron::python3::*/15_*_*_*_*
+  surface: root-crontab
+  schedule: '*/15 * * * *'
+  plane: machine
+  class: S0
+  command_head: /usr/bin/python3 /root/AAA/scripts/cockpit_probe.py --once && cp -p /root/AAA/state/status.json /var/www/html/aaa/status.json >> /var/log/ar
+  delivery: log/state
+- id: root-cron::unsealed-counter.sh::*/30_*_*_*_*
+  surface: root-crontab
+  schedule: '*/30 * * * *'
+  plane: machine
+  class: S0
+  command_head: /root/scripts/unsealed-counter.sh
+  delivery: log/state
+- id: root-cron::python3::*/30_*_*_*_*
+  surface: root-crontab
+  schedule: '*/30 * * * *'
+  plane: human
+  class: S1
+  command_head: /usr/bin/python3 /root/WELL/scripts/well_ingest.py >> /var/log/well/intake.log 2>&1
+  delivery: log/state
+- id: root-cron::cd::*/30_*_*_*_*
+  surface: root-crontab
+  schedule: '*/30 * * * *'
+  plane: human
+  class: S1
+  command_head: 'cd /root/arifOS && SHA=$(git rev-parse HEAD) && echo "$SHA" > .git_commit && OBSERVATORY_PUBLISH_TARGET=/var/www/html/arifos/.well-known sh '
+  delivery: log/state
+- id: root-cron::agentic-web.sh::0_*_*_*_*
+  surface: root-crontab
+  schedule: 0 * * * *
+  plane: machine
+  class: S0
+  command_head: /root/web-canon/scripts/agentic-web.sh   > /root/forge_work/site-audit/agentic-web.log 2>&1
+  delivery: log/state
+- id: root-cron::zombie_reaper_cron.sh::0_*_*_*_*
+  surface: root-crontab
+  schedule: 0 * * * *
+  plane: machine
+  class: S0
+  command_head: /root/A-FORGE/scripts/recovery/zombie_reaper_cron.sh > /dev/null 2>&1
+  delivery: log/state
+- id: root-cron::python3::0_*_*_*_*
+  surface: root-crontab
+  schedule: 0 * * * *
+  plane: machine
+  class: S0
+  command_head: /usr/bin/python3 /root/scripts/mvm_fire.py >> /var/log/mvm-fire.log 2>&1
+  delivery: log/state
+- id: root-cron::well_auto_keepalive.py::*/30_*_*_*_*
+  surface: root-crontab
+  schedule: '*/30 * * * *'
+  plane: human
+  class: S1
+  command_head: '/root/WELL/scripts/well_auto_keepalive.py >> /var/log/arifos/cron.log 2>&1 # [2026-09-15 FIX: was 0 */6; 6h cadence cannot hold max_fresh_ag'
+  delivery: log/state
+- id: root-cron::forge-vitality-pulse.sh::0_15_*_*_*
+  surface: root-crontab
+  schedule: 0 15 * * *
+  plane: human
+  class: S1
+  command_head: /root/A-FORGE/duties/forge-vitality-pulse.sh >> /root/A-FORGE/duties/logs/cron.log 2>&1
+  delivery: log/state
+- id: root-cron::forge-work-gc.sh::0_19_*_*_*
+  surface: root-crontab
+  schedule: 0 19 * * *
+  plane: machine
+  class: S0
+  command_head: /root/scripts/governance/forge-work-gc.sh
+  delivery: log/state
+- id: root-cron::python3::0_22_*_*_*
+  surface: root-crontab
+  schedule: 0 22 * * *
+  plane: human
+  class: S2
+  command_head: '/usr/bin/python3 /root/arifFlow/scripts/arifflow_digest.py >> /var/log/arifos/arifflow-digest.log 2>&1 # [FI-008 2026-09-09 delivery-repair:'
+  delivery: log/state
+- id: root-cron::bash::0_3_*_*_*
+  surface: root-crontab
+  schedule: 0 3 * * *
+  plane: machine
+  class: S0
+  command_head: /bin/bash /root/scripts/phoenix72.sh >> /var/log/arifos/phoenix72.log 2>&1
+  delivery: log/state
+- id: root-cron::.::0_3_25_*_*
+  surface: root-crontab
+  schedule: 0 3 25 * *
+  plane: machine
+  class: S0
+  command_head: . /root/.secrets/kunci-root.env && python3 /root/AAA/scripts/supply_chain_audit.py >> /var/log/arifos/supply-chain-audit.log 2>&1
+  delivery: log/state
+- id: root-cron::bash::0_6_*_*_*
+  surface: root-crontab
+  schedule: 0 6 * * *
+  plane: machine
+  class: S0
+  command_head: /bin/bash /root/A-FORGE/tests/mcp-conformance/ci-conformance.sh >> /var/log/ci-conformance.log 2>&1
+  delivery: log/state
+- id: root-cron::forge-constitutional-sync.sh::0_7_*_*_*
+  surface: root-crontab
+  schedule: 0 7 * * *
+  plane: machine
+  class: S0
+  command_head: /root/A-FORGE/duties/forge-constitutional-sync.sh >> /root/A-FORGE/duties/logs/cron.log 2>&1
+  delivery: log/state
+- id: root-cron::fomc-tripwire-trigger.sh::0_8_*_*_1-5
+  surface: root-crontab
+  schedule: 0 8 * * 1-5
+  plane: human
+  class: S1
+  command_head: /root/arifOS/scripts/cron/fomc-tripwire-trigger.sh >> /var/log/arifos/cron.log 2>&1
+  delivery: log/state
+- id: root-cron::.::0_9_*_*_*
+  surface: root-crontab
+  schedule: 0 9 * * *
+  plane: human
+  class: S2
+  command_head: . /root/.secrets/kunci-root.env 2>/dev/null; TZ='Asia/Kuala_Lumpur' /root/scripts/federation-triage-digest.sh && cp /root/forge_work/daily-t
+  delivery: telegram
+- id: root-cron::python3::17_*_*_*_*
+  surface: root-crontab
+  schedule: 17 * * * *
+  plane: human
+  class: S1
+  command_head: '/usr/bin/python3 /root/A-FORGE/scripts/fed_quota_sentinel.py >> /root/.local/share/arifos/fed_sentinel.log 2>&1 # FED-BIJAKSANA sentinel v2 '
+  delivery: log/state
+- id: root-cron::google_fit_bridge.py::30_*/6_*_*_*
+  surface: root-crontab
+  schedule: 30 */6 * * *
+  plane: human
+  class: S1
+  command_head: /root/WELL/scripts/google_fit_bridge.py >> /var/log/arifos/cron.log 2>&1
+  delivery: log/state
+- id: root-cron::bash::47_7_*_*_*
+  surface: root-crontab
+  schedule: 47 7 * * *
+  plane: machine
+  class: S0
+  command_head: '/usr/bin/bash /root/A-FORGE/duties/federation-pulse.sh >> /root/A-FORGE/duties/logs/pulse.log 2>&1 # [FI-008 2026-09-04: daily institutional'
+  delivery: log/state
+- id: root-cron::python3::*/15_*_*_*_*
+  surface: root-crontab
+  schedule: '*/15 * * * *'
+  plane: agent
+  class: S0
+  command_head: '/usr/bin/python3 /root/scripts/p0_metabolize_traces.py >> /var/log/p0-metabolize.log 2>&1 && /usr/bin/python3 /root/scripts/reexamine.py >> '
+  delivery: log/state
+- id: root-cron::multi-actor-flusher.sh::*/30_*_*_*_*
+  surface: root-crontab
+  schedule: '*/30 * * * *'
+  plane: machine
+  class: S0
+  command_head: /usr/local/bin/multi-actor-flusher.sh >> /var/log/multi-actor-flusher.log 2>&1
+  delivery: log/state
+- id: root-cron::reality-pulse.py::*/15_*_*_*_*
+  surface: root-crontab
+  schedule: '*/15 * * * *'
+  plane: machine
+  class: S0
+  command_head: /usr/local/bin/reality-pulse.py >> /var/log/reality-pulse.log 2>&1
+  delivery: log/state
+- id: root-cron::.::*/30_*_*_*_*
+  surface: root-crontab
+  schedule: '*/30 * * * *'
+  plane: human
+  class: S1
+  command_head: . /root/.secrets/kunci-root.env 2>/dev/null; /usr/bin/python3 /root/scripts/metabolize_cron.py >> /var/log/arifos/metabolism.log 2>&1
+  delivery: log/state
+- id: root-cron::find::0_5_*_*_*
+  surface: root-crontab
+  schedule: 0 5 * * *
+  plane: machine
+  class: S0
+  command_head: find /root/.hermes/state-snapshots /root/.hermes/profiles/aaa-hermes/state-snapshots /root/.hermes/profiles/router-test/state-snapshots /roo
+  delivery: log/state
+- id: root-cron::python3::17_7_*_*_*
+  surface: root-crontab
+  schedule: 17 7 * * *
+  plane: human
+  class: S1
+  command_head: /usr/bin/python3 /root/scripts/forge_dependency_probe.py >> /var/log/arifos/dependency_probe.log 2>&1
+  delivery: log/state
+- id: root-cron::python3::0_3_*_*_*
+  surface: root-crontab
+  schedule: 0 3 * * *
+  plane: human
+  class: S1
+  command_head: /usr/bin/python3 /root/scripts/sro_expiry_checker.py >> /var/log/arifos/sro-expiry.log 2>&1
+  delivery: log/state
+- id: root-cron::python3::0_4_*_*_1
+  surface: root-crontab
+  schedule: 0 4 * * 1
+  plane: human
+  class: S1
+  command_head: /usr/bin/python3 /root/scripts/sro_calibration_pipeline.py >> /var/log/arifos/sro-calibration.log 2>&1
+  delivery: log/state
+- id: root-cron::python3::23_*/6_*_*_*
+  surface: root-crontab
+  schedule: 23 */6 * * *
+  plane: human
+  class: S1
+  command_head: '/usr/bin/python3 /root/A-FORGE/scripts/fed_retirement_watcher.py >> /root/.local/share/arifos/fed_retirement.log 2>&1 # FED retirement watch'
+  delivery: log/state
+- id: root-cron::python3::27_*_*_*_*
+  surface: root-crontab
+  schedule: 27 * * * *
+  plane: human
+  class: S1
+  command_head: '/usr/bin/python3 /root/A-FORGE/scripts/fed_route_weights.py >> /root/.local/share/arifos/fed_route_weights.log 2>&1 # FED route weights - de'
+  delivery: log/state
+- id: root-cron::apex-zen-run-loop.sh::*/5_*_*_*_*
+  surface: root-crontab
+  schedule: '*/5 * * * *'
+  plane: agent
+  class: S0
+  command_head: /root/AAA/scripts/apex-zen-run-loop.sh
+  delivery: log/state
+- id: root-cron::pulse-event.sh::48_7_*_*_*
+  surface: root-crontab
+  schedule: 48 7 * * *
+  plane: human
+  class: S1
+  command_head: /root/scripts/pulse-event.sh >> /root/AAA/state/event-bridge/bridge.log 2>&1
+  delivery: log/state
+- id: root-cron::triage-event.sh::1_9_*_*_*
+  surface: root-crontab
+  schedule: 1 9 * * *
+  plane: human
+  class: S1
+  command_head: /root/scripts/triage-event.sh >> /root/AAA/state/event-bridge/bridge.log 2>&1
+  delivery: log/state
+- id: root-cron::vitality-event.sh::1_15_*_*_*
+  surface: root-crontab
+  schedule: 1 15 * * *
+  plane: human
+  class: S1
+  command_head: /root/scripts/vitality-event.sh >> /root/AAA/state/event-bridge/bridge.log 2>&1
+  delivery: log/state
+- id: root-cron::flow-event.sh::6_22_*_*_*
+  surface: root-crontab
+  schedule: 6 22 * * *
+  plane: human
+  class: S1
+  command_head: /root/scripts/flow-event.sh >> /root/AAA/state/event-bridge/bridge.log 2>&1
+  delivery: log/state
+- id: root-cron::scanner-event.sh::1_2_*_*_*
+  surface: root-crontab
+  schedule: 1 2 * * *
+  plane: human
+  class: S1
+  command_head: /root/scripts/scanner-event.sh >> /root/AAA/state/event-bridge/bridge.log 2>&1
+  delivery: log/state
+- id: root-cron::weekly-digest.sh::0_14_*_*_0
+  surface: root-crontab
+  schedule: 0 14 * * 0
+  plane: human
+  class: S1
+  command_head: /root/scripts/weekly-digest.sh >> /root/AAA/state/event-bridge/bridge.log 2>&1
+  delivery: log/state
+- id: root-cron::vault999-push-replica.sh::0_*/6_*_*_*
+  surface: root-crontab
+  schedule: 0 */6 * * *
+  plane: machine
+  class: S0
+  command_head: /root/scripts/vault999-push-replica.sh
+  delivery: log/state
+- id: root-cron::python3::17_4,10,16,22_*_*_*
+  surface: root-crontab
+  schedule: 17 4,10,16,22 * * *
+  plane: human
+  class: S1
+  command_head: /usr/bin/python3 /root/.hermes/scripts/skill-matrix.py >> /var/log/arifos/skill-matrix.log 2>&1
+  delivery: log/state
+- id: root-cron::python3::23_5_*_*_1
+  surface: root-crontab
+  schedule: 23 5 * * 1
+  plane: human
+  class: S1
+  command_head: /usr/bin/python3 /root/.hermes/scripts/dead-pointer-sweep.py >> /var/log/arifos/dead-pointers.log 2>&1
+  delivery: log/state
+- id: root-cron::selfimprove-meter-run.sh::10_21_*_*_*
+  surface: root-crontab
+  schedule: 10 21 * * *
+  plane: agent
+  class: S0
+  command_head: /root/scripts/selfimprove-meter-run.sh
+  delivery: log/state
+- id: root-cron::python3::45_6_*_*_*
+  surface: root-crontab
+  schedule: 45 6 * * *
+  plane: machine
+  class: S0
+  command_head: '/usr/bin/python3 /root/scripts/hermes_morning_state.py >> /root/.hermes/cron/state/morning_state/cron.log 2>&1 # [333-AGI 2026-09-16: HERMES'
+  delivery: log/state
+- id: root-cron::python3::23_4,10,16,22_*_*_*
+  surface: root-crontab
+  schedule: 23 4,10,16,22 * * *
+  plane: human
+  class: S1
+  command_head: /usr/bin/python3 /root/scripts/skill-entropy-gate.py --quiet >> /var/log/arifos/skill-entropy.log 2>&1
+  delivery: log/state
+- id: root-cron::python3::37_4,10,16,22_*_*_*
+  surface: root-crontab
+  schedule: 37 4,10,16,22 * * *
+  plane: human
+  class: S1
+  command_head: /usr/bin/python3 /root/scripts/skills-census.py --write --quiet >> /var/log/arifos/skills-census.log 2>&1
+  delivery: log/state
+- id: root-cron::python3::40_4,10,16,22_*_*_*
+  surface: root-crontab
+  schedule: 40 4,10,16,22 * * *
+  plane: human
+  class: S1
+  command_head: /usr/bin/python3 /root/scripts/mcp-health-census.py >> /var/log/arifos/mcp-health.log 2>&1; /usr/bin/python3 /root/scripts/hermes-chaos-swee
+  delivery: log/state
+- id: root-cron::ARIFOS_TRACE_ID=trc-pending-reconcile::17_4_*_*_*
+  surface: root-crontab
+  schedule: 17 4 * * *
+  plane: human
+  class: S1
+  command_head: ARIFOS_TRACE_ID=trc-pending-reconcile /usr/bin/python3 /root/scripts/pending_reconcile.py --apply >> /root/work/pending_reconcile/cron.log 2
+  delivery: log/state
+- id: cron.d::aaa-mesh-health::root::17_3_*_*_*
+  surface: cron.d
+  file: aaa-mesh-health
+  schedule: 17 3 * * *
+  plane: machine
+  class: S0
+  command_head: /root/AAA/scripts/mesh-health-probe.sh >> /root/AAA/forge_work/mesh-health.log 2>&1
+  delivery: log/state
+- id: cron.d::aaa-rsi-loop::root::7_*/6_*_*_*
+  surface: cron.d
+  file: aaa-rsi-loop
+  schedule: 7 */6 * * *
+  plane: human
+  class: S1
+  command_head: /usr/bin/python3 /root/AAA/rsi/loop.py --window 7 >> /var/log/arifos/rsi-loop.log 2>&1; tail -n 3000 /var/log/arifos/rsi-loop.log > /tmp/rsi
+  delivery: log/state
+- id: cron.d::aaa-rsi-loop::root::43_4_*_*_*
+  surface: cron.d
+  file: aaa-rsi-loop
+  schedule: 43 4 * * *
+  plane: human
+  class: S1
+  command_head: /usr/bin/python3 /root/AAA/rsi/promote.py >> /var/log/arifos/rsi-boundary.log 2>&1; tail -n 1000 /var/log/arifos/rsi-boundary.log > /tmp/rsi
+  delivery: log/state
+- id: cron.d::aaa-skill-learn::root::0_*_*_*_*
+  surface: cron.d
+  file: aaa-skill-learn
+  schedule: 0 * * * *
+  plane: agent
+  class: S0
+  command_head: /usr/bin/python3 /root/AAA/scripts/skill-learn-ingest.py >> /root/AAA/skills/.learning/cron.log 2>&1
+  delivery: log/state
+- id: cron.d::aaa-universe-drift::root::23_*_*_*_*
+  surface: cron.d
+  file: aaa-universe-drift
+  schedule: 23 * * * *
+  plane: machine
+  class: S0
+  command_head: /root/AAA/scripts/universe-drift-sentinel.sh >> /root/AAA/forge_work/universe-drift.log 2>&1
+  delivery: log/state
+- id: cron.d::agent-vault::root::0_*_*_*_*
+  surface: cron.d
+  file: agent-vault
+  schedule: 0 * * * *
+  plane: machine
+  class: S0
+  command_head: find /run/agent-vault -maxdepth 1 -mindepth 1 -type d -mmin +60 -exec rm -rf {} + 2>/dev/null
+  delivery: log/state
+- id: cron.d::agent-vault::root::0_9_*_*_*
+  surface: cron.d
+  file: agent-vault
+  schedule: 0 9 * * *
+  plane: machine
+  class: S0
+  command_head: /usr/local/bin/agent-vault-rotation
+  delivery: log/state
+- id: cron.d::arif-commodity-reseal::root::7_*_*_*_*
+  surface: cron.d
+  file: arif-commodity-reseal
+  schedule: 7 * * * *
+  plane: human
+  class: S1
+  command_head: /usr/bin/python3 /root/arif-fazil.com/sites/arif-fazil.com/scripts/reseal-commodity-packets.py >> /var/log/arifos/commodity-reseal.log 2>&1
+  delivery: log/state
+- id: cron.d::arifos-daily-probe::root::15_6_*_*_*
+  surface: cron.d
+  file: arifos-daily-probe
+  schedule: 15 6 * * *
+  plane: human
+  class: S1
+  command_head: /usr/local/bin/arifos-daily-probe.sh >> /var/log/arifos-daily-probe.log 2>&1
+  delivery: log/state
+- id: cron.d::arifos-federation-audit::root::15_19_*_*_*
+  surface: cron.d
+  file: arifos-federation-audit
+  schedule: 15 19 * * *
+  plane: machine
+  class: S0
+  command_head: /usr/bin/python3 /root/scripts/check_tool_drift.py --codex-runtime-only --quiet
+  delivery: log/state
+- id: cron.d::arifos-governed-obligations::root::0_3_*_*_*
+  surface: cron.d
+  file: arifos-governed-obligations
+  schedule: 0 3 * * *
+  plane: machine
+  class: S0
+  command_head: /root/arifOS/scripts/cron/vault999-daily-backup.sh >> /var/log/arifos/cron.log 2>&1
+  delivery: log/state
+- id: cron.d::arifos-governed-obligations::root::30_3_*_*_*
+  surface: cron.d
+  file: arifos-governed-obligations
+  schedule: 30 3 * * *
+  plane: machine
+  class: S0
+  command_head: /root/arifOS/scripts/cron/backup-federation.sh >> /var/log/arifos/cron.log 2>&1
+  delivery: log/state
+- id: cron.d::arifos-governed-obligations::root::*/30_*_*_*_*
+  surface: cron.d
+  file: arifos-governed-obligations
+  schedule: '*/30 * * * *'
+  plane: human
+  class: S1
+  command_head: /root/scripts/external_witness_probe.py >> /var/log/arifos/cron.log 2>&1
+  delivery: log/state
+- id: cron.d::arifos-governed-obligations::root::0_2_*_*_*
+  surface: cron.d
+  file: arifos-governed-obligations
+  schedule: 0 2 * * *
+  plane: machine
+  class: S0
+  command_head: /root/A-FORGE/duties/forge-drift-scanner.sh >> /root/A-FORGE/duties/logs/cron.log 2>&1
+  delivery: log/state
+- id: cron.d::arifos-governed-obligations::root::0_7_*_*_*
+  surface: cron.d
+  file: arifos-governed-obligations
+  schedule: 0 7 * * *
+  plane: human
+  class: S1
+  command_head: /root/WEALTH/.venv/bin/python3 /root/WEALTH/internal/ingest/refresh_briefing.py >> /var/log/arifos/briefing-cron.log 2>&1
+  delivery: log/state
+- id: cron.d::arifos-infra::root::0_*_*_*_*
+  surface: cron.d
+  file: arifos-infra
+  schedule: 0 * * * *
+  plane: machine
+  class: S0
+  command_head: /bin/bash /root/scripts/infra-crons/hermes-health.sh >> /var/log/hermes-health.log 2>&1
+  delivery: log/state
+- id: cron.d::arifos-infra::root::0_*/4_*_*_*
+  surface: cron.d
+  file: arifos-infra
+  schedule: 0 */4 * * *
+  plane: machine
+  class: S0
+  command_head: /bin/bash /root/scripts/infra-crons/github-pr-watcher.sh >> /var/log/github-pr-watcher.log 2>&1
+  delivery: log/state
+- id: cron.d::arifos-repo-audit::root::0_1_*_*_1
+  surface: cron.d
+  file: arifos-repo-audit
+  schedule: 0 1 * * 1
+  plane: human
+  class: S1
+  command_head: /root/A-FORGE/scripts/repo-audit.sh >> /var/log/arifos/repo-audit.log 2>&1
+  delivery: log/state
+- id: cron.d::arifos-self-healing-cycle::root::*/30_*_*_*_*
+  surface: cron.d
+  file: arifos-self-healing-cycle
+  schedule: '*/30 * * * *'
+  plane: human
+  class: S1
+  command_head: /usr/bin/python3 /root/scripts/arif_self_healing_cycle_cron.py >> /var/log/arifos-self-healing.log 2>&1
+  delivery: log/state
+- id: cron.d::arifos-sentinel-discovery::root::30_2_*_*_*
+  surface: cron.d
+  file: arifos-sentinel-discovery
+  schedule: 30 2 * * *
+  plane: human
+  class: S1
+  command_head: /bin/bash /root/AAA/scripts/sentinel_discovery_audit.sh >> /var/log/arifos-sentinel.log 2>&1
+  delivery: log/state
+- id: cron.d::arifos-sovereignty-drill::root::0_2_*_*_0
+  surface: cron.d
+  file: arifos-sovereignty-drill
+  schedule: 0 2 * * 0
+  plane: machine
+  class: S0
+  command_head: '[ $(date +\%d) -le 7 ] && /root/arifOS/scripts/sovereignty_drill.sh >> /var/log/arifos/sovereignty_drill.log 2>&1'
+  delivery: log/state
+- id: cron.d::backup-rotation::root::30_2_*_*_*
+  surface: cron.d
+  file: backup-rotation
+  schedule: 30 2 * * *
+  plane: machine
+  class: S0
+  command_head: /root/.local/share/arifos/backup_rotation.sh >> /var/log/backup-rotation.log 2>&1
+  delivery: log/state
+- id: cron.d::certbot::root::0_*/12_*_*_*
+  surface: cron.d
+  file: certbot
+  schedule: 0 */12 * * *
+  plane: machine
+  class: S0
+  command_head: test -x /usr/bin/certbot -a \! -d /run/systemd/system && perl -e 'sleep int(rand(43200))' && certbot -q renew --no-random-sleep-on-renew
+  delivery: log/state
+- id: cron.d::docker-builder-prune::root::22_5_*_*_1
+  surface: cron.d
+  file: docker-builder-prune
+  schedule: 22 5 * * 1
+  plane: machine
+  class: S0
+  command_head: docker builder prune -f > /dev/null 2>&1
+  delivery: log/state
+- id: cron.d::e2scrub_all::root::30_3_*_*_0
+  surface: cron.d
+  file: e2scrub_all
+  schedule: 30 3 * * 0
+  plane: machine
+  class: S0
+  command_head: test -e /run/systemd/system || SERVICE_MODE=1 /usr/libexec/e2fsprogs/e2scrub_all_cron
+  delivery: log/state
+- id: cron.d::e2scrub_all::root::10_3_*_*_*
+  surface: cron.d
+  file: e2scrub_all
+  schedule: 10 3 * * *
+  plane: machine
+  class: S0
+  command_head: test -e /run/systemd/system || SERVICE_MODE=1 /sbin/e2scrub_all -A -r
+  delivery: log/state
+- id: cron.d::entropy-governor::root::0_19_*_*_*
+  surface: cron.d
+  file: entropy-governor
+  schedule: 0 19 * * *
+  plane: machine
+  class: S0
+  command_head: /usr/local/bin/entropy-governor.sh >> /var/log/entropy-governor.log 2>&1
+  delivery: log/state
+- id: cron.d::f13-weekly-packet::root::7_9_*_*_1
+  surface: cron.d
+  file: f13-weekly-packet
+  schedule: 7 9 * * 1
+  plane: human
+  class: S1
+  command_head: /usr/bin/python3 /root/AAA/scripts/f13-weekly-packet.py >> /var/log/arifos/f13-packet.log 2>&1
+  delivery: log/state
+- id: cron.d::federation-memory-helix::root::0_*/6_*_*_*
+  surface: cron.d
+  file: federation-memory-helix
+  schedule: 0 */6 * * *
+  plane: agent
+  class: S0
+  command_head: /usr/bin/python3 /root/scripts/federation_memory_helix_cron.py >> /var/log/federation-memory-helix.log 2>&1
+  delivery: log/state
+- id: cron.d::hermes-prune::root::17_19_*_*_6
+  surface: cron.d
+  file: hermes-prune
+  schedule: 17 19 * * 6
+  plane: machine
+  class: S0
+  command_head: /usr/local/bin/hermes checkpoints prune >>/var/log/hermes-prune.log 2>&1
+  delivery: log/state
+- id: cron.d::hermes-session-trace::root::13,43_*_*_*_*
+  surface: cron.d
+  file: hermes-session-trace
+  schedule: 13,43 * * * *
+  plane: machine
+  class: S0
+  command_head: /root/.hermes/scripts/session-trace.py --auto >> /var/log/hermes-session-trace.log 2>&1
+  delivery: log/state
+- id: cron.d::institution-mae-pulse::root::0_*/6_*_*_*
+  surface: cron.d
+  file: institution-mae-pulse
+  schedule: 0 */6 * * *
+  plane: human
+  class: S1
+  command_head: set -a; source /root/.secrets/kunci-mas.env; set +a; /usr/bin/python3 /root/scripts/zen/kabarkan-publish.py >> /var/log/arifos/mae-pulse.log
+  delivery: log/state
+- id: cron.d::memory-helix-rollup::root::0_19_*_*_*
+  surface: cron.d
+  file: memory-helix-rollup
+  schedule: 0 19 * * *
+  plane: human
+  class: S1
+  command_head: /root/.arifos/scripts/memory-helix-rollup.sh >> /var/log/memory-helix.log 2>&1
+  delivery: log/state
+- id: cron.d::musyawarah-sentinel::root::*/15_*_*_*_*
+  surface: cron.d
+  file: musyawarah-sentinel
+  schedule: '*/15 * * * *'
+  plane: human
+  class: S1
+  command_head: /usr/bin/python3 /root/scripts/musyawarah_sentinel.py >> /root/.arifos/musyawarah_sentinel.log 2>&1
+  delivery: log/state
+- id: cron.d::pati-sweep::root::0_18_*_*_6
+  surface: cron.d
+  file: pati-sweep
+  schedule: 0 18 * * 6
+  plane: human
+  class: S1
+  command_head: /usr/local/bin/pati-sweep.sh >> /var/log/arifos/pati-sweep-cron.log 2>&1
+  delivery: log/state
+- id: cron.d::skill-audit::root::0_20_*_*_6
+  surface: cron.d
+  file: skill-audit
+  schedule: 0 20 * * 6
+  plane: agent
+  class: S0
+  command_head: /usr/local/bin/skill-audit.sh >> /var/log/skill-audit.log 2>&1
+  delivery: log/state
+- id: cron.d::sot-cron-vault-bridge::root::23_7_*_*_*
+  surface: cron.d
+  file: sot-cron-vault-bridge
+  schedule: 23 7 * * *
+  plane: machine
+  class: S0
+  command_head: /usr/bin/python3 /root/scripts/sot_cron.py >> /var/log/sot-cron.log 2>&1
+  delivery: log/state
+- id: cron.d::sysstat::root::5-55/10_*_*_*_*
+  surface: cron.d
+  file: sysstat
+  schedule: 5-55/10 * * * *
+  plane: machine
+  class: S0
+  command_head: command -v debian-sa1 > /dev/null && debian-sa1 1 1
+  delivery: log/state
+- id: cron.d::sysstat::root::59_23_*_*_*
+  surface: cron.d
+  file: sysstat
+  schedule: 59 23 * * *
+  plane: machine
+  class: S0
+  command_head: command -v debian-sa1 > /dev/null && debian-sa1 60 2
+  delivery: log/state
+- id: cron.d::trading-scan::root::0_1,3,5,7,9,11,13,15,17,19_*_*_1-5
+  surface: cron.d
+  file: trading-scan
+  schedule: 0 1,3,5,7,9,11,13,15,17,19 * * 1-5
+  plane: human
+  class: S1
+  command_head: /usr/bin/flock -n /var/lock/trading-scan.lock /root/WEALTH/.venv/bin/python3 /root/WEALTH/trading/cron/refresh_market_digests.py >> /var/log
+  delivery: log/state
+- id: cron.d::trading-scan::root::0_2,8,14,20_*_*_6,7
+  surface: cron.d
+  file: trading-scan
+  schedule: 0 2,8,14,20 * * 6,7
+  plane: human
+  class: S1
+  command_head: /usr/bin/flock -n /var/lock/trading-scan.lock /root/WEALTH/.venv/bin/python3 /root/WEALTH/trading/cron/refresh_market_digests.py >> /var/log
+  delivery: log/state
+- id: cron.d::vault-replica::root::17_*/6_*_*_*
+  surface: cron.d
+  file: vault-replica
+  schedule: 17 */6 * * *
+  plane: machine
+  class: S0
+  command_head: rsync -a --delete /root/.local/share/arifos/vault999/ kvm4-forge:/root/vault-replica/vault999/ >> /var/log/vault-replica.log 2>&1
+  delivery: log/state
+- id: cron.d::wealth-briefing::root::0_6_*_*_*
+  surface: cron.d
+  file: wealth-briefing
+  schedule: 0 6 * * *
+  plane: human
+  class: S1
+  command_head: /root/scripts/wealth-briefing-cron.sh >> /var/log/wealth_briefing.log 2>&1
+  delivery: log/state
+- id: cron.d::well-dream::arifos::0_20_*_*_*
+  surface: cron.d
+  file: well-dream
+  schedule: 0 20 * * *
+  plane: human
+  class: S1
+  command_head: cd /var/lib/arifos/well_dream && python3 well_dream.py daily >> /var/lib/arifos/well_dream/logs/well_dream.log 2>&1
+  delivery: log/state
+- id: cron.d::well-dream::arifos::0_20_*_*_6
+  surface: cron.d
+  file: well-dream
+  schedule: 0 20 * * 6
+  plane: human
+  class: S1
+  command_head: cd /var/lib/arifos/well_dream && python3 well_dream.py weekly >> /var/lib/arifos/well_dream/logs/well_dream.log 2>&1
+  delivery: log/state
+- id: cron.d::well-dream::arifos::0_20_1_*_*
+  surface: cron.d
+  file: well-dream
+  schedule: 0 20 1 * *
+  plane: human
+  class: S1
+  command_head: cd /var/lib/arifos/well_dream && python3 well_dream.py monthly >> /var/lib/arifos/well_dream/logs/well_dream.log 2>&1
+  delivery: log/state
+- id: cron.d::well-dream::arifos::0_22_*_*_*
+  surface: cron.d
+  file: well-dream
+  schedule: 0 22 * * *
+  plane: human
+  class: S1
+  command_head: cd /var/lib/arifos/well_dream && python3 entropy_controller.py >> /var/lib/arifos/well_dream/logs/well_dream.log 2>&1
+  delivery: log/state
+- id: cron.d::zai-temporal-drift-check::root::0_18_*_*_*
+  surface: cron.d
+  file: zai-temporal-drift-check
+  schedule: 0 18 * * *
+  plane: human
+  class: S1
+  command_head: /root/.arifos/scripts/zai-temporal-drift-check.sh >> /var/log/zai-temporal-drift.log 2>&1
+  delivery: log/state
+- id: cron.d::zen-loop-closure::root::*/15_*_*_*_*
+  surface: cron.d
+  file: zen-loop-closure
+  schedule: '*/15 * * * *'
+  plane: machine
+  class: S0
+  command_head: /usr/bin/python3 /root/AAA/scripts/cron_failure_autopause.py >> /root/AAA/scripts/logs/cron_autopause.log 2>&1
+  delivery: log/state
+- id: cron.d::zen-loop-closure::root::*/30_*_*_*_*
+  surface: cron.d
+  file: zen-loop-closure
+  schedule: '*/30 * * * *'
+  plane: machine
+  class: S0
+  command_head: /usr/bin/python3 /root/AAA/scripts/probe_health_flip.py >> /root/AAA/scripts/logs/probe_health_flip.log 2>&1
+  delivery: log/state
+- id: systemd::federation-state.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: federation-state.service
+  delivery: internal
+- id: systemd::arifos-deploy-reconciler.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: human
+  class: S1
+  command_head: arifos-deploy-reconciler.service
+  delivery: internal
+- id: systemd::arifflow-cooling-watchdog.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: human
+  class: S1
+  command_head: arifflow-cooling-watchdog.service
+  delivery: internal
+- id: systemd::triadic-snapshot.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: triadic-snapshot.service
+  delivery: internal
+- id: systemd::arifos-reality.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: human
+  class: S1
+  command_head: arifos-reality.service
+  delivery: internal
+- id: systemd::frame-probe.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: frame-probe.service
+  delivery: internal
+- id: systemd::hermes-liveness.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: hermes-liveness.service
+  delivery: internal
+- id: systemd::fq-probe.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: fq-probe.service
+  delivery: internal
+- id: systemd::arifos-drift-check.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: human
+  class: S1
+  command_head: arifos-drift-check.service
+  delivery: internal
+- id: systemd::gov-a008-arifflow-sync.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: human
+  class: S1
+  command_head: gov-a008-arifflow-sync.service
+  delivery: internal
+- id: systemd::gov-a009-git-to-vault.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: gov-a009-git-to-vault.service
+  delivery: internal
+- id: systemd::sysstat-collect.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: sysstat-collect.service
+  delivery: internal
+- id: systemd::arifos-sys-health.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: human
+  class: S1
+  command_head: arifos-sys-health.service
+  delivery: internal
+- id: systemd::fed-sync.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: fed-sync.service
+  delivery: internal
+- id: systemd::sct-renew.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: sct-renew.service
+  delivery: internal
+- id: systemd::well-machine-telemetry.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: well-machine-telemetry.service
+  delivery: internal
+- id: systemd::vps-receipt.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: vps-receipt.service
+  delivery: internal
+- id: systemd::stabilization-check.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: stabilization-check.service
+  delivery: internal
+- id: systemd::frame-reader.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: frame-reader.service
+  delivery: internal
+- id: systemd::fed-provider-probe.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: fed-provider-probe.service
+  delivery: internal
+- id: systemd::vault999-backup.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: vault999-backup.service
+  delivery: internal
+- id: systemd::security-disclosure-watch.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: security-disclosure-watch.service
+  delivery: internal
+- id: systemd::arifos-backup.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: arifos-backup.service
+  delivery: internal
+- id: systemd::frame-witness-reader.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: frame-witness-reader.service
+  delivery: internal
+- id: systemd::apt-daily-upgrade.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: apt-daily-upgrade.service
+  delivery: internal
+- id: systemd::arifos-capability-probe.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: human
+  class: S1
+  command_head: arifos-capability-probe.service
+  delivery: internal
+- id: systemd::arifos-morning-briefing.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: human
+  class: S1
+  command_head: arifos-morning-briefing.service
+  delivery: internal
+- id: systemd::drift-detector.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: drift-detector.service
+  delivery: internal
+- id: systemd::auditor-drift-check.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: auditor-drift-check.service
+  delivery: internal
+- id: systemd::update-notifier-download.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: update-notifier-download.service
+  delivery: internal
+- id: systemd::systemd-tmpfiles-clean.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: systemd-tmpfiles-clean.service
+  delivery: internal
+- id: systemd::apt-daily.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: apt-daily.service
+  delivery: internal
+- id: systemd::dpkg-db-backup.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: dpkg-db-backup.service
+  delivery: internal
+- id: systemd::sysstat-rotate.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: sysstat-rotate.service
+  delivery: internal
+- id: systemd::wealth-market-daily.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: human
+  class: S1
+  command_head: wealth-market-daily.service
+  delivery: internal
+- id: systemd::sysstat-summary.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: sysstat-summary.service
+  delivery: internal
+- id: systemd::aaa-drift-check.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: aaa-drift-check.service
+  delivery: internal
+- id: systemd::man-db.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: man-db.service
+  delivery: internal
+- id: systemd::logrotate.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: logrotate.service
+  delivery: internal
+- id: systemd::arif-dream-distill.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: human
+  class: S1
+  command_head: arif-dream-distill.service
+  delivery: internal
+- id: systemd::arif-dream.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: human
+  class: S1
+  command_head: arif-dream.service
+  delivery: internal
+- id: systemd::e2scrub_all.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: e2scrub_all.service
+  delivery: internal
+- id: systemd::fstrim.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: fstrim.service
+  delivery: internal
+- id: systemd::update-notifier-motd.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: update-notifier-motd.service
+  delivery: internal
+- id: systemd::apport-autoreport.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: apport-autoreport.service
+  delivery: internal
+- id: systemd::snapd.snap-repair.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: snapd.snap-repair.service
+  delivery: internal
+- id: systemd::ua-timer.timer
+  surface: systemd
+  schedule: OnCalendar/OnUnitActiveSec (unit file)
+  plane: machine
+  class: S0
+  command_head: ua-timer.service
+  delivery: internal
+- id: hermes::2a3fe4915620
+  surface: hermes
+  name: arif-morning-pulse
+  schedule: 0 6 * * *
+  enabled: false
+  plane: human
+  class: S2
+  delivery: telegram:267378578
+  last_status: ok
+- id: hermes::c1e41e6ee03a
+  surface: hermes
+  name: geo-econ-horizon
+  schedule: 0 8 * * 1
+  enabled: false
+  plane: human
+  class: S2
+  delivery: telegram:267378578
+  last_status: ok
+- id: hermes::9eddcab58b5c
+  surface: hermes
+  name: iron-radar
+  schedule: 0 12 * * 5
+  enabled: false
+  plane: human
+  class: S2
+  delivery: telegram:267378578
+  last_status: ok
+- id: hermes::0e37cdaf4a37
+  surface: hermes
+  name: arif-world-reality-intel
+  schedule: 0 9 * * *
+  enabled: false
+  plane: human
+  class: S2
+  delivery: telegram:267378578
+  last_status: ok
+- id: hermes::a004b6357d06
+  surface: hermes
+  name: arif-reckoning
+  schedule: 30 6 * * 1
+  enabled: false
+  plane: human
+  class: S2
+  delivery: telegram:267378578
+  last_status: ok
+- id: hermes::a5b0eda31bfa
+  surface: hermes
+  name: syed-mak-cbd-followup
+  schedule: 0 9 * * 1
+  enabled: true
+  plane: human
+  class: S2
+  delivery: telegram:1042200555
+  last_status: ok
+- id: hermes::4f47cde23bb8
+  surface: hermes
+  name: output-attestation-check
+  schedule: every 120m
+  enabled: false
+  plane: agent
+  class: S0
+  delivery: local
+  last_status: ok
+- id: hermes::4eee9cc62dfb
+  surface: hermes
+  name: institution-metrics-pulse
+  schedule: every 360m
+  enabled: false
+  plane: machine
+  class: S0
+  delivery: local
+  last_status: ok
+- id: hermes::6c672e289f80
+  surface: hermes
+  name: arifflow-daily-governance-digest
+  schedule: 0 22 * * *
+  enabled: false
+  plane: human
+  class: S2
+  delivery: telegram:267378578
+  last_status: ok
+- id: hermes::9eca62b8db1b
+  surface: hermes
+  name: Forge→Vault Auto-Ingest
+  schedule: every 60m
+  enabled: false
+  plane: machine
+  class: S0
+  delivery: local
+  last_status: ok
+- id: hermes::86b80f0cf94e
+  surface: hermes
+  name: hermes-upstream-drift-watch
+  schedule: 0 4 1 * *
+  enabled: false
+  plane: machine
+  class: S2
+  delivery: telegram:267378578
+  last_status: null
+- id: hermes::012dbd1cb566
+  surface: hermes
+  name: morning-brief-wakebus-audit
+  schedule: 0 7 * * 1,3,5
+  enabled: false
+  plane: human
+  class: S2
+  delivery: telegram:267378578
+  last_status: ok
+- id: hermes::c9f2a8e14d3b
+  surface: hermes
+  name: morning-brief-wakebus-audit-rest
+  schedule: 0 7 * * 0,2,4,6
+  enabled: true
+  plane: human
+  class: S2
+  delivery: telegram:267378578
+  last_status: ok
+- id: hermes::67126c14382a
+  surface: hermes
+  name: trajectory-harvest
+  schedule: every 360m
+  enabled: false
+  plane: agent
+  class: S0
+  delivery: local
+  last_status: ok
+- id: hermes::b7943df5bad1
+  surface: hermes
+  name: seal-integrity-sweep-script
+  schedule: 17 3 * * 0
+  enabled: false
+  plane: machine
+  class: S0
+  delivery: local
+  last_status: ok
+- id: hermes::35a9931b28dd
+  surface: hermes
+  name: artifact-drift-audit-script
+  schedule: 53 1 * * *
+  enabled: false
+  plane: machine
+  class: S0
+  delivery: local
+  last_status: ok
+- id: hermes::782b79613088
+  surface: hermes
+  name: evening-zen-brief
+  schedule: 0 20 * * *
+  enabled: false
+  plane: human
+  class: S2
+  delivery: telegram:267378578
+  last_status: ok
+- id: hermes::3d3874f3e1fe
+  surface: hermes
+  name: syed-mak-dressing
+  schedule: 0 8 * * *
+  enabled: false
+  plane: human
+  class: S2
+  delivery: telegram:1042200555
+  last_status: ok
+- id: hermes::547d3653f977
+  surface: hermes
+  name: syed-gerd-log
+  schedule: 0 8 * * *
+  enabled: false
+  plane: human
+  class: S2
+  delivery: telegram:1042200555
+  last_status: ok
+- id: hermes::8fef34d562a0
+  surface: hermes
+  name: syed-sambal-preorder
+  schedule: 30 6 * * *
+  enabled: false
+  plane: human
+  class: S2
+  delivery: telegram:1042200555
+  last_status: ok
+- id: hermes::644118d3b9ce
+  surface: hermes
+  name: stale-group-session-cleaner
+  schedule: every 360m
+  enabled: false
+  plane: machine
+  class: S0
+  delivery: local
+  last_status: ok
+- id: hermes::cf8cf0f12f0c
+  surface: hermes
+  name: vps-gdrive-daily-backup
+  schedule: 0 2 * * *
+  enabled: true
+  plane: machine
+  class: S2
+  delivery: telegram:267378578
+  last_status: ok
+- id: hermes::14e52a8cab81
+  surface: hermes
+  name: reddit-daily-monitor
+  schedule: 0 9 * * *
+  enabled: false
+  plane: machine
+  class: S2
+  delivery: telegram:267378578
+  last_status: ok
+- id: hermes::c37e116d61af
+  surface: hermes
+  name: malaysia-intel-weekly
+  schedule: 0 10 * * 1
+  enabled: false
+  plane: human
+  class: S2
+  delivery: telegram:267378578
+  last_status: ok
+- id: hermes::1e60bfab20fb
+  surface: hermes
+  name: forge-vision-densify-summary
+  schedule: 55 23 * * *
+  enabled: false
+  plane: machine
+  class: S0
+  delivery: local
+  last_status: ok
+- id: hermes::b3abbfb94999
+  surface: hermes
+  name: federation-state-backup
+  schedule: 0 3 * * *
+  enabled: false
+  plane: machine
+  class: S0
+  delivery: local
+  last_status: ok
+- id: hermes::449c7ad82056
+  surface: hermes
+  name: organ-health-sentinel
+  schedule: every 15m
+  enabled: false
+  plane: machine
+  class: S0
+  delivery: local
+  last_status: ok
+- id: hermes::658e19e34565
+  surface: hermes
+  name: Dream Engine — 72h Reasoning Distillation
+  schedule: 0 3 */3 * *
+  enabled: true
+  plane: agent
+  class: S2
+  delivery: telegram:267378578
+  last_status: ok
+- id: hermes::8b2ccdb9bce5
+  surface: hermes
+  name: agent-card-drift-check
+  schedule: 30 5 * * *
+  enabled: true
+  plane: agent
+  class: S2
+  delivery: telegram:267378578
+  last_status: ok
+- id: hermes::99659c39430c
+  surface: hermes
+  name: attention-closure
+  schedule: 45 23 * * *
+  enabled: true
+  plane: human
+  class: S2
+  delivery: telegram:267378578
+  last_status: ok
+- id: hermes::canary-morning-brief-wakebus
+  surface: hermes
+  name: CANARY morning-brief-wakebus-audit
+  schedule: 0 7 * * 1,3,5
+  enabled: true
+  plane: human
+  class: S2
+  delivery: telegram:267378578
+  last_status: ok
+- id: hermes::canary-geo-econ-horizon
+  surface: hermes
+  name: CANARY geo-econ-horizon
+  schedule: 0 8 * * 1
+  enabled: true
+  plane: human
+  class: S2
+  delivery: telegram:267378578
+  last_status: ok
+- id: hermes::canary-iron-radar
+  surface: hermes
+  name: CANARY iron-radar
+  schedule: 0 12 * * 5
+  enabled: true
+  plane: human
+  class: S2
+  delivery: telegram:267378578
+  last_status: ok
+- id: hermes::canary-malaysia-intel-weekly
+  surface: hermes
+  name: CANARY malaysia-intel-weekly
+  schedule: 0 10 * * 1
+  enabled: true
+  plane: human
+  class: S2
+  delivery: telegram:267378578
+  last_status: ok
+- id: hermes::canary-arif-reckoning
+  surface: hermes
+  name: CANARY arif-reckoning
+  schedule: 30 6 * * 1
+  enabled: true
+  plane: human
+  class: S2
+  delivery: telegram:267378578
+  last_status: ok
+- id: hermes::canary-arifflow-governance-digest
+  surface: hermes
+  name: CANARY arifflow-daily-governance-digest
+  schedule: 0 22 * * *
+  enabled: true
+  plane: human
+  class: S2
+  delivery: telegram:267378578
+  last_status: ok

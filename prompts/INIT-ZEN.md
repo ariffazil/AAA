@@ -1,1 +1,0 @@
-/root/AAA/prompts/BOOTSTRAP_STATE.md

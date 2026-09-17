@@ -1,0 +1,95 @@
+schema: arifos.scheduler.logical_obligations.v1
+generated_at: '2026-09-16T16:57:12Z'
+law: 'One obligation -> one registry identity -> one publisher -> one receipt chain
+  -> one accountable owner. Collectors may be many; publishers exactly one.
+
+  '
+obligations:
+- logical_id: arifflow-nightly-governance-digest
+  class: S1
+  plane: human
+  owner: Arif
+  consumer: Arif
+  status: active
+  authoritative_executor: hermes
+  collector:
+    surface: root-cron
+    schedule: 0 22 * * *
+    action: archive-only
+    note: inbox tee removed P1 2026-09-17; writes /var/log/arifos/arifflow-digest.log
+      only
+  publisher:
+  - surface: hermes
+    job_id: 6c672e289f80
+    schedule: 0 22 * * *
+    status: superseded
+    superseded_by_canary: canary-arifflow-governance-digest
+  - surface: hermes
+    job_id: canary-arifflow-governance-digest
+    schedule: 0 22 * * *
+    status: active
+    activated: 2026-09-17 F13 do-all
+  delivery:
+    platform: telegram
+    target: '267378578'
+  legacy_paths:
+  - surface: root-cron
+    schedule: 5 22 * * *
+    action: retired
+    reason: Duplicate delivery prevention (P1 single-publisher 2026-09-17)
+  - surface: root-cron
+    schedule: 0 22 * * *
+    action: demoted-to-collector
+    reason: Was competing inbox writer; now archive collector only
+- logical_id: arif-morning-briefing
+  class: S1
+  plane: human
+  owner: Arif
+  consumer: Arif
+  status: active
+  authoritative_executor: systemd
+  publisher:
+  - surface: systemd
+    job_id: arifos-morning-briefing.timer
+    schedule: 06:30 daily MYT
+    status: active
+  delivery:
+    platform: as-built
+    target: arif-lane
+  related_lanes:
+  - hermes job 012dbd1cb566 (wakebus audit M/W/F)
+  - hermes job c9f2a8e14d3b (rest-day variant)
+  note: consolidation decision pending F13 — three morning-surface lanes exist
+- logical_id: nightly-attention-closure
+  class: S1
+  plane: human
+  owner: Arif
+  consumer: Arif
+  status: active
+  authoritative_executor: hermes
+  publisher:
+  - surface: hermes
+    job_id: 99659c39430c
+    schedule: 45 23 * * *
+    status: active
+  delivery:
+    platform: telegram
+    target: '267378578'
+- logical_id: external-witness-liveness
+  class: S0
+  plane: machine
+  owner: 333-AGI
+  consumer: FRAME observer
+  status: active
+  authoritative_executor: cron.d
+  publisher:
+  - surface: cron.d
+    file: arifos-governed-obligations
+    schedule: '*/30 * * * *'
+    status: active
+    script: /root/scripts/external_witness_probe.py
+  legacy_paths:
+  - surface: systemd
+    job_id: external-witness-probe.timer
+    action: retired
+    reason: Duplicate scope consolidated P1 2026-09-17; cron.d */30 authoritative

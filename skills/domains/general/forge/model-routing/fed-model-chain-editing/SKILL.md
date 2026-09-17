@@ -24,6 +24,7 @@ tags: [litellm, federation, fed, fallback-chain, model-routing, provider-health,
 - You are asked to "clean up", "fix the fallback", or "purge a dead provider".
 - Config `notes:` claim a provider is live and you need to know whether it is.
 - You are asked directly which model backs a lane ("apa model aku guna" / "what model are you"). Answer from a live router probe — see *Attribution*; the chain cannot answer it, and neither can the agent-side config.
+- The trigger is a **vendor email or beta invite** that names model ids the router does not carry. Triage the notice first (`provider-notice-triage`); this skill owns only the lane edit that may follow, and a new preview id is a census-probe-propose job, never a login.
 
 ## When NOT to Use
 

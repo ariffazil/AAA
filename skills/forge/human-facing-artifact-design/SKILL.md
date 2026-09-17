@@ -55,6 +55,12 @@ Do not answer a request for clarity with volume. When a person asks for confiden
 
 When asked to say something *as* the user to another human, match his register: plain Malay/English code-switch, short sentences, no headers-as-therapy, no bullet list of feelings, no numbered framework where one sentence will do. Ground it in specific shared history rather than general encouragement — a named moment he witnessed lands; a generic pep talk does not.
 
+### Zero system references in personal reflection artifacts
+
+When the artifact is a personal reflection, life document, or wisdom piece — anything addressed to the human about his own life — the rendered text must contain ZERO references to any technical system: no MCP, no organs, no federation, no agents, no tools, no code, no architecture, no federation nodes. The human reads this, not the machine. 'No coding stuff' is the rule, not a suggestion. If the underlying work used 14 MCP tools and 3 subagents to produce it, the human never sees that. The artifact reads as if it was written by someone who sat with him and thought deeply — because that is exactly what happened, the tools are just the cognitive infrastructure.
+
+**Pitfall:** Subagents asked to generate personal artifacts will default to describing their process or embedding system context if the prompt does not explicitly forbid it. The ban must be stated in the delegation prompt, not assumed.
+
 ## 5. Probe before quoting any number
 
 Market, salary, price and status figures must come from a live probe in the same session, with source and date stated alongside the number. Reciting remembered figures is fabrication-adjacent and gets caught.
@@ -73,6 +79,7 @@ Build and refine a single output path; do not generate v2/v3/v4 side by side and
 [ ] Every page is dense — chars/page counted from the built PDF, not eyeballed (§3)
 [ ] No number appears without a source and a date (§5)
 [ ] No internal vocabulary in the rendered text (floor IDs, tags, tool names, PASS/FAIL)
+[ ] No system references in personal reflection artifacts (§4)
 [ ] Page count matches the limit, verified from the file
 [ ] Text extracts cleanly (pymupdf / pdftotext returns real text, not empty)
 [ ] One file sent, not several drafts (§6)

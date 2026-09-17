@@ -2,7 +2,7 @@
 id: trinity-33-canonical
 name: kernel-trinity-33
 version: 1.1.0-2026.07.08
-description: The canonical 33-repo Trinity (final) [fed: tier=fed-agent-subagent, floors=[F2, F7, F8, F11], auto=T1, risk=low]
+description: "The canonical 33-repo Trinity (final) [fed: tier=fed-agent-subagent, floors=[F2, F7, F8, F11], auto=T1, risk=low]"
 owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
 risk_tier: low
 floor_scope: [F2, F7, F8, F11]
