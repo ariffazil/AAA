@@ -16,8 +16,11 @@ floor_scope: ['F2', 'F6', 'F7']
 
 ## Where things live
 - **Landing:** `https://arif-fazil.com/world/makcikgpt/` — React SPA. View-source and WebFetch show nothing useful; the article list is client-rendered.
-- **Article source of truth:** `/root/arif-fazil.com/sites/arif-fazil.com/src/data/makcikgpt/*.ts` — one .ts per article, filename = slug. Re-count live before citing a corpus size; it grows.
-- **Machine-readable index:** `https://arif-fazil.com/llms.txt`
+- **Article source of truth:** `/root/arif-fazil.com/sites/arif-fazil.com/src/data/makcikgpt/*.ts` — one .ts per article, filename = slug. Re-count live before citing a corpus size; it grows. **Copy the module shape from an existing sibling file — and read `types.ts` first, because the sibling files differ.** `ArticleContent` carries ONLY `slug` and `html`; putting `title` (or `subtitle`, `date`, `excerpt`, `tags`) on the module object is a type error, because every display field lives on `MakcikArticleMeta` in `index.ts`. The export is a bare default export (`export default content;`), not a named `article` export. Body sections use `class="article-section"`, inline-styled Georgia `<h2>` headings, and `fact-box` callouts for sourced figures. Continue the series numbering by reading the registry — **`src/data/essays.json`**, entries carry `series: {"id": "M6", "n": 3}` in UPPERCASE; the lowercase `m6-3` form is derived by the generator and only visible in `dist/makcikgpt-md/`. **`src/data/makcikgpt/` is not the registry** — grepping it returns at most a prose mention. Enumerate the whole series, never just the maximum: measured 2026-09-17 the registry holds a gap (M6 has no n=4) and a duplicate (M1 slot 3 claimed twice by `m1-3` and `m1-2-dossier`). Recipe and the full reasoning: `references/provenance-sourcing.md` §4.
+- **Registry:** `…/src/data/makcikgpt/index.ts` — an article file that is not registered here **is not live**, however complete it looks. An article has three states and they are not the same state — `WRITTEN ≠ REGISTERED ≠ SERVED` — and a draft parked in `.staging/` is WRITTEN only: untracked, unimported, never built. Report which state you reached, never "done".
+- **Machine-readable index:** `https://arif-fazil.com/llms.txt`; the build also emits `dist/makcikgpt-md/<slug>.md` and `.html` twins.
+- **Draft staging:** `/root/arif-fazil.com/.staging/makcikgpt-drafts/` — an unpublished draft belongs outside `src/`, so it never enters a build or a `verify-pages` pass.
+- **Publish gate:** `make verify-pages` must pass before anything is sealed — it asserts every `dist/*/index.html` returns HTTP 200 on the live site, and exists because a batch of built-but-unrouted pages once shipped as 404s. Never run whole `make deploy` (it reloads Caddy, a T3 HOLD unless named); never `rsync --delete` without a `web_zen.py orphan` preview first.
 - **Deploy / site repair is a different job** → `FORGE-agentic-web-builder`.
 
 ## Rule 0 — No gap, no article
@@ -88,6 +91,8 @@ Enjin melapor. Manusia yang putuskan. Yang benar dikarang, bukan diberi percuma.
 
 Tag the epistemic status of load-bearing claims in the footer (`[OBS]` observed / `[DER]` derived). "Semua nombor diaudit" is a claim you must be able to defend line by line.
 
+A published page also carries a machine-readable header above the prose: `article_id`, `canonical_url`, `seal`, `provenance_status`, `version`, `merkle_leaf`, and an `epistemic_summary` counting obs / der / int / spec, followed by a **Claim Register** (`claim_id | tag | text | source_id | maruah`) and a **Source Ledger** (`source_id | type | title | url`). These are part of the public artefact, not internal notes — a new piece needs the same fields, and each load-bearing sentence needs a row. Tags: `OBS` observed, `DER` derived, `INT` interpretation, `SPEC` speculative.
+
 ### 7. Draft in chat, then stop
 Deliver the full draft in the conversation and ask **one** question about angle or tone. Do not attach an explanation of your own craft or a list of options — Arif will redirect if he wants a different shape. Nothing is published until he says so; the byline, the site, and the seal are his.
 
@@ -99,7 +104,9 @@ Deliver the full draft in the conversation and ask **one** question about angle 
 - **No histrionics.** The tone is a relative who has noticed something, not an activist. The numbers carry the anger.
 
 ## Pitfalls
-- **F6 MARUAH — aim at the system, not the person.** The corpus handles this explicitly: attack the structure that lets the outcome happen, because a named individual can be replaced and the behaviour continues. Criticising a role or a decision is fine; degrading a named human is not, and is also the fastest way to have the piece read as a grudge.
+- **F6 MARUAH — charge the decisions, not the dignity.** Aim at the structure and the choices that let the outcome happen, because a named individual can be replaced and the behaviour continues. This does **not** mean never naming anyone: the corpus names individuals and their tenure plainly. The operative line is *what* is charged — appointments, capital decisions, sign-offs, the refusal to answer a question — never dignity: no family, no body, no private life, no interior motive asserted as fact. Put the editorial read in an `INT` row that states it is the author's interpretation and not an allegation; that row is what keeps a sharp piece publishable.
+- **Choose the frame that leaves the subject no exit.** When Arif asks for a personal attack, keep his words and his strongest phrase — a sanitised version of his anger reads as nobody's voice — but change what the piece *accuses*. Charging incompetence hands the subject a defence, because a mistake is an accident and an accident is forgivable; charging willing compliance does not, because compliance is a choice made every morning. If his own earlier series rows already say "this is a question of context-fit, not of personal intelligence", hold that line rather than silently reversing it, tell him you held it, and offer the direct version as his call. The judgement is his; the craft is yours.
+- **Verify byline and date on any supplied document before building on it.** A column handed over as "what he wrote" may be by a different author, decades old, and written about a different situation. Fetch it, read the byline and the issue date, and if they contradict the assumption, say so plainly and rebuild the piece around the real artefact. An old instrument that *praises* the institution cuts deeper than a fresh attack, because it cannot be dismissed as a critic's hostility.
 - **Never invent, round, or "reasonably estimate" a number.** The piece's entire authority is sourcing. One fabricated figure converts a civic-intelligence article into a liability.
 - **Do not present a structural read as a fact.** A pattern in appointment histories is an observation, not an admission. Label it.
 - **Insider-sourced colour must be anonymised properly.** "Anak mak kerja dalam upstream" is the shape. Never a name, a team, or anything that narrows to one desk.
@@ -109,3 +116,4 @@ Deliver the full draft in the conversation and ask **one** question about angle 
 - `petronas-knowledge-router` — routing table for Petronas-domain substance
 - `internal-first-probe` — probe order and the ground-reality rule for anything Arif's world touches
 - `FORGE-agentic-web-builder` — publishing and repairing the site itself
+- `references/provenance-sourcing.md` — the source-ledger checks to run before an article is registered: resolving each `url`, tagging each claim, and the byline/date trap
