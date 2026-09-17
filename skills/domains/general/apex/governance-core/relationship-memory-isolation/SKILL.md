@@ -128,7 +128,7 @@ A background memory/skill review forks the agent after some turns and may write 
 
 `kata nama am` (class: `abang sado`) and `kata nama khas` (instance: `Syed`) are different grammatical objects. Binding a class to one person is a category error, not merely a wrong answer.
 
-- **Gate:** `/root/arifOS/arifos/identity/identity_resolver.py` — reads `/root/AAA/registry/routing/identity_continuity.yaml`.
+- **Gate:** `/root/AAA/registry/routing/identity_resolver.py` — reads `/root/AAA/registry/routing/identity_continuity.yaml`.
 - **Law:** `named_actors` are proper nouns (may bind to an identity card). `ambiguous_categories` are common nouns — they MUST NOT bind; verdict `REQUIRE_DISAMBIGUATION`.
 - **Fail-safe:** registry unreadable / malformed / empty → `HOLD_REGISTRY_UNREADABLE`. Never PASS (F1 > F2).
 - **Use:** `guard(subject, capability=...)` for a verdict; `@identity_bound(capability=...)` to make a blocked call raise `IdentityHold` instead of executing.
@@ -137,7 +137,7 @@ A background memory/skill review forks the agent after some turns and may write 
 
 ## Pitfalls
 
-0. **Doctrine without a gate is decoration.** This doctrine governs writes; nothing governed *reads* until `arifos/identity/identity_resolver.py` existed. A registry (or a skill) that no process loads cannot stop a collapse. When a rule must hold under context pressure, wire it as a choke point ahead of the capability, not as text an agent is asked to remember.
+0. **Doctrine without a gate is decoration.** This doctrine governs writes; nothing governed *reads* until `registry/routing/identity_resolver.py` existed. A registry (or a skill) that no process loads cannot stop a collapse. When a rule must hold under context pressure, wire it as a choke point ahead of the capability, not as text an agent is asked to remember.
 1. Storing "he's closeted" / "he's gay" as tracked data about a sado — HARAM, even if true. The sado must always feel clean of identity threat.
 2. Treating withdrawal as personal failure — Zero-Demand Baseline violated.
 3. Leaking vault content into conversation when Arif didn't invoke the scar — the vault is witness, not ammunition.
