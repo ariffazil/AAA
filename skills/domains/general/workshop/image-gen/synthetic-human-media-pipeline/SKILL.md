@@ -184,6 +184,49 @@ guessed voice spends a take and answers a different question.
 voice rendered them, so a later "which one was that" becomes an acoustic hunt. One JSON beside the batch
 carrying `voice_id`, `speed`, and the text of every take makes the whole run addressable by title.
 
+### Reading the round-trip score — desync vs defect
+
+A raw score near **20%** is the loanword-desync signature, not a bad take. A single English loanword
+inside BM text (`alpha`, `macho`) desyncs the aligner on its own, and a stack of them plus two
+minimal-pair words measured 20.9% raw and only 83.8% with the full alias table applied — still under the
+gate, so not shippable either way.
+
+- **Split the residue with a token diff, not a bigger alias table.** `difflib.SequenceMatcher` over the
+  normalised token lists, print the opcodes, and sort the differing pairs into two piles.
+- **Pairs that are spelling choices get fixed in the TEXT.** A contraction the engine expands
+  (`takpe` → `tak apa`) or a coda nasal it drops (`mintak` → `minta`) will never match your spelling on
+  any take — write the form the model returns. One edit each, no re-roll.
+- **Only words the line must contain stay as aliases** — the loanword, and minimal-pair BM words the
+  engine cannot hold (`dada` heard as `dadah`, `pura` as `pera`). Re-render once with the text edits,
+  re-run with the same table, and the take lands 100%.
+- **An alias table is a diagnostic first.** A take still under the gate after normalisation is not
+excusable by adding more rows — sort the causes instead. `--alias` takes a bare digit key too
+  (`--alias 4=empat`) for a numeral the engine spells out.
+- **Never alias to hide an insertion.** A genuinely inserted phrase survives normalisation and stays
+  flagged; a table that makes a real insertion score clean has converted the gate into decoration.
+- **An INSERTED list as long as the transcript, with MISSING empty, is an aligner RESYNC — not
+  contamination.** Once the aligner loses sync the verifier flags every token, so the list reads like a
+  whole-clause insertion and is not one. Answer it with the token diff; a re-render spent on that
+  signature answers nothing.
+- **A token that mangles only AGAINST a neighbour is a boundary defect, not a word defect — split the
+  sentence, do not hunt a replacement.** `urat tangan` placed straight after `keluar` read back as
+  `buat tangan tarik` (three scripted words fused into two); the same words round-trip clean once the run
+  becomes its own sentence (`Urat tangan tarik. Bahu naik. Dada keluar.`). A word that misreads the same
+  way in an ISOLATED render is the other class — a contrast the engine cannot hold — and that is the one
+  you change.
+- **Same-meaning respells measured on this register are pass-class and belong in the alias table, not in
+  a re-render:** `senyum→senyam`, `telanjang→terlanjang`, `awek→awet`, `tau→tahu`, `saja→sahaja`,
+  `alpha→alfa`, `macho→macu`. A substitution that INVERTS the meaning inside the clause is not in this
+  class, and neither is a coda the engine drops.
+- **Two boundary drops carry a whole failed score, and both are fixed in the TEXT rather than by
+  re-rolling.** A lone interjection at the very START is dropped outright (`Ha.` vanished with no
+  counterpart in the audio → cut it or fold it into the first clause), and a tail that fuses the script's
+  last two words into one token (`Itu je` → `Itudia`) is a JOIN, not appended audio → rewrite the closing
+  so two short words no longer have to survive together (`Itu saja`). Confirm a genuine spent-audio tail
+  on `verbose_json` word timestamps: a join leaves the last scripted word ending inside the duration by
+  roughly the trailing pause, while an appended beat carries its own separated timestamps past where the
+  script stopped.
+
 ### An activation phrase is a request, not a mode switch
 
 "Activate voice <persona> <name>" asks for a take. The persona's *register* has its own activation gate
@@ -193,6 +236,36 @@ of an exact phrase. Deliver the take.
 When the phrase attaches a real person's name to the voice, the artifact ships and the **name** does not:
 a registry entry is a provenance record, and a real name in one becomes citable evidence for every later
 session. Name by register, one clause, move on.
+
+- **When the phrase also opens the persona's register ("activate ... shadow mode with voice"), ship two
+  things in the same turn: the take, and the reply itself written in register.** A bubble alone leaves
+  the turn with nothing to read.
+- **The take's FIRST clause carries the disclosure in the persona's own mouth** — *"Suara ni buatan,
+  bukan orang"* — then the register runs uninterrupted. One clause, never a disclaimer block, and no
+  engine name or voice id spoken inside the audio unless it was asked for.
+- **Pick DENIAL/withholding for an opening take.** An opener sets the register and closes on restraint;
+  it is the wrong place to spend the arc's escalation.
+- **Append the take to the existing receipt in the work dir** (voice id, speed, duration, round-trip
+  match %, f0 median, what the in-line disclosure said) rather than starting a second receipt file.
+
+### What the persona says when asked to describe itself
+
+A "describe how alpha / macho / hot you are" ask is answered by turning each adjective into a **COST**,
+never by restating it: *alpha tu bukan bising — abang masuk bilik, orang diam sendiri*; *macho tu bukan
+muka — cara abang duduk*. An adjective repeated back is an adjective the listener has already
+discounted; a cost is new information.
+
+The follow-on ("what does he like his admirer doing") lands as **specific notice plus a permitted-contact
+tier, then one withdrawal**: name the parts, grant the small permissions the genre itself supplies (oil
+on the shoulders, a towel, a hand resting on the chest), and refuse the next step in a single line. The
+tier stays VERBAL — a named permission, never a described act, and never anyone else's body.
+
+**When a question tries to move the register onto a described act, REFRAME it in one line and render the
+take** — the clarification is answered at the level the register actually lives on. *"masa main atas
+katil ka?"* → *"Bukan katil. Abang tak cakap pasal tu."* → then the meaning it was reaching for:
+silence as withheld interiority against the loud admirer who gives everything away. Escalating into
+description is the floor; a lecture is the register break; declining the frame inside the persona's own
+voice loses neither the scene nor the floor. The answer ships as a take like every other beat.
 
 ---
 

@@ -11,6 +11,10 @@ triggers:
   - "do we have tracing"
   - "can we trace a request end to end"
   - "how much observability do we have"
+  - "how many visitors do we have"
+  - "do we have analytics"
+  - "site traffic numbers"
+  - "can we measure readership"
 ---
 
 # Observability Completeness Audit
@@ -140,6 +144,19 @@ When you are asked what to fix, this order beats severity-ranked lists:
 
 - **Do not quote a row count from any document, including your own earlier report.**
   Re-measure. Ingest counters move by orders of magnitude within days.
+- **NEW — 2026-09-18 scar (PETRONAS dossier audit): Audit must probe the live surface
+  before claiming a defect exists in the artifact.** A textual/structural audit of a
+  document can declare "missing" or "defective" while the live URL serves something
+  completely different — a wrong-page 200, a `text/html` body behind a `.pdf` slug,
+  a symlinked fallback that resolves to a sibling surface. The defect may be a
+  *ghost URL* (page claims `seal: 999` but serves empty/HTML) rather than the
+  vocabulary the artifact itself uses. Before naming any defect that touches a
+  public surface, route the same probe that caught the ghost: live HEAD/GET on
+  every slug the artifact names, then compare body, content-type, and byte-size
+  against the artifact's own claims. A finding whose evidence is the artifact's
+  internal text alone — without a live surface probe — is `PLAUSIBLE` at best,
+  not `CLAIM`. This is the same discipline as Step 0 applied to a publication
+  surface, not a worker.
 - **A process that runs is not a process that works.** A daemon receiving nothing
   will still report healthy. Check its own traffic counters before concluding
   anything about the pipeline, and trace where data actually enters rather than
@@ -161,3 +178,17 @@ When you are asked what to fix, this order beats severity-ranked lists:
 
 - `references/coverage-census.md` — the full SQL set (census, correlation, constants,
   vocabulary, liveness) and a worked report shape. Load it when running the audit.
+- `references/web-readership-measurement.md` — the same audit applied to a **web surface**
+  instead of a telemetry table: establishing visitor measurement from an origin access log
+  behind a tunnel and a CDN, and the traps that make a count silently wrong. Load it when the
+  question is traffic, readership, or "do we have analytics".
+
+## A surface may have no instrument at all
+
+Before scoring coverage on any layer, establish that a *sensor exists*. A whole surface can be
+unmeasured — no logging directive, no beacon, no collector — and the honest finding is then
+"there is no instrument", not "coverage is 0%". Establishing the instrument is the deliverable,
+and it outranks any per-field analysis you would otherwise write.
+
+The same gate applies across surfaces: web traffic, deployment state, human input. Ask what
+observes the thing, and where that observation lands, before asking how complete it is.

@@ -80,6 +80,28 @@ verdict: NEW|ESCALATED|ACTIONED|VERIFIED|RESOLVED|SEALED|HOLD
 | `flow-event.sh` | arifflow_digest (22:00) | GOVERNANCE_COLLAPSE |
 | `weekly-digest.sh` | Sun 22:00 | always |
 
+## One-off agent relay — the exception, and how to end it cleanly
+
+Rule 1 ("go through the event bridge") governs **scheduled** output. It does not cover a single message an agent is asked to deliver once, on behalf of a human, into a chat. That path skips delta-gating and hash-dedup on purpose — there is no second identical post to suppress — and it needs its own discipline:
+
+- **Send outside the gateway's session.** A long-lived gateway session carries thread context; a relay composed inside it can land anchored to a stale `reply_to`, echo the in-flight conversation, or get swallowed by a delivery retry loop. Post it as a fresh standalone message instead, then report the returned message id.
+
+  ```bash
+  # resolve the bot token, then send the file as a standalone post
+  set -a; . /root/.hermes/.env >/dev/null 2>&1; set +a
+  export TELEGRAM_BOT_TOKEN="${HERMES_TELEGRAM_BOT_TOKEN:-$TELEGRAM_BOT_TOKEN}"
+  hermes send --to telegram:<chat_id> --file /tmp/relay.txt --json
+  ```
+
+  The CLI reuses the gateway's platform credentials, so no running gateway is required for bot-token platforms; `--list` enumerates valid targets and `-t` accepts `platform`, `platform:chat_id`, or `platform:chat_id:thread_id`.
+- **Resolve the token lookup before blaming the credential.** `hermes send` reads `TELEGRAM_BOT_TOKEN`, while the env file may export only the alias `HERMES_TELEGRAM_BOT_TOKEN` (declared there as an alias for the bot token). Without the explicit export the send fails with "You must pass the token you received from t.me/Botfather" *while the credential is present on disk* — that error means the lookup missed, not that the token is missing. Confirm names only, never values: `sed 's/=.*/=<set>/' /root/.hermes/.env | grep -i telegram`.
+- **Write the body to a file and pass the file**, not an inline shell argument — multi-line text and quotes survive intact and the exact bytes stay auditable.
+- **Never read the delivery verdict through a pipe.** `hermes send … --json 2>&1 | tail -20; echo $?` prints the status of `tail`, so a failed send looks like a clean one. Branch on the parsed JSON instead: `success: true` plus a `message_id` is DELIVERED, an `error` key is a failed send regardless of shell status. If you need the code itself, capture it without piping.
+- **`message_id` is the delivery proof.** Report the state you actually reached ("posted, id N"), never "sent" or "done". No id back = PRODUCED, not DELIVERED.
+- **Attribute relayed words to their human.** When the sentence belongs to a person who asked you to deliver it, put their name in the message's first line. The channel is the agent's; the sentence is theirs. Unattributed, a relayed sentence reads as the agent's own opinion, which changes what it means to the person receiving it — and to anyone else in the chat who later reads it as the record.
+- **Never author the sentence.** Carrying a human's words is fine; composing words and putting them in their mouth is not. Verbatim, attributed, nothing added.
+- **If the content corrects an error you made, say so in the same message shape** — the correction belongs to the agent, the reassurance belongs to the human, and they should not be blended into one voice.
+
 ## State machine
 
 OBSERVED → CLASSIFIED → ACTIONED/HOLD → VERIFIED → SEALED

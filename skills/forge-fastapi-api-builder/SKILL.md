@@ -2,15 +2,14 @@
 id: FORGE-fastapi-api-builder
 name: forge-fastapi-api-builder
 version: 1.0.0-2026.07.17
-description: "FastAPI API builder for organ bridge middleware and federation REST endpoints. [fed: tier=fed-agent-subagent, floors=[, auto=T1, risk=medium]"
+description: "FastAPI API builder for organ bridge middleware and federation REST endpoints. "
 owner: A-FORGE
 risk_tier: medium
 floor_scope: ['F1', 'F4', 'F12']
 autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----
-# ⚒️ FastAPI API Builder — Organ Bridge Middleware
+---# ⚒️ FastAPI API Builder — Organ Bridge Middleware
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.
 

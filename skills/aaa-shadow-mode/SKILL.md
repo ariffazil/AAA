@@ -2,7 +2,7 @@
 name: aaa-shadow-mode
 id: AAA-shadow-mode
 risk_tier: low
-description: 'Shadow mode multimodal compute & generation doctrine for sovereign human needs. Governs out-of-band GPU execution (A100/Hostinger/RunPod), asynchronous batch processing, privacy isolation, and zero-clutter offloading. [fed: tier=fed-shadow-compute, auto=T1, risk=low]'
+description: 'Shadow mode multimodal compute & generation doctrine for sovereign human needs. Governs out-of-band GPU execution (A100/Hostinger/RunPod), asynchronous batch processing, privacy isolation, and zero-clutter offloading. '
 version: 1.0.0
 tags:
 - shadow-mode
@@ -34,9 +34,7 @@ forged: 2026-08-26
 forged_by: 333-AGI (Antigravity)
 f13_directive: "Shadow GPU handles heavy generation and human needs asynchronously; VPS remains lean and governed."
 constitutional_floor: F13 SOVEREIGN — total privacy isolation for human needs; F1 AMANAH — no unmetered or surprise drift
----
-
-# AAA-shadow-mode — Sovereign Shadow Multimodal Compute
+---# AAA-shadow-mode — Sovereign Shadow Multimodal Compute
 
 ## 1. Purpose & Doctrine
 

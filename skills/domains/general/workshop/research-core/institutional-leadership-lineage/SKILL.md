@@ -134,10 +134,24 @@ When the user asks "layak or not" / "did they deserve it", every holder gets, in
 Wording and schema in `references/office-holder-roster.md`. A verdict without a scale and
 counter-points is an opinion.
 
+**Incumbents are excluded from the verdict.** A holder still in office gets the recorded facts and an
+explicit `VERDICT WITHHELD — IN OFFICE`, never a scale value. Two reasons, both mechanical: a
+fitness verdict on a sitting officer is an assessment with consequences the subject cannot answer,
+and it dates the moment they act again. Escalate the restraint when the requester is an employee of
+the institution — then the sitting chair and sitting chief executive are the requester's own
+officers, and a scale value on them is a document about the requester's employer that the requester
+has to live beside. Issue the incumbent's entry as facts + "what the record shows so far" and say
+plainly that the file stays open. Full doctrine: `references/publication-restraint.md`.
+
 ### Step 6 — Build the archive PDF
 
 Cover → one page-section per holder (seat-type band/pill on each) → closing **roster table** →
-**patterns** section → **sources & provenance** including the open questions.
+**patterns** section → **claims corrected** → **sources & provenance** including the open questions.
+
+The **claims corrected** section is not optional and is not an apology. Widely-repeated summaries of
+any institution carry false facts, and some of them will be inside the brief you were handed. List
+each one as `claim → corrected fact → source`. This section is where the archive earns its
+credibility: it proves the research ran against the record rather than against the summary.
 
 Use `templates/roster_pdf_builder.py` — markdown → weasyprint, dark theme, page-per-person, SHA256
 receipt printed at the end. It is a starter: edit `manifest.json`, not the script.
@@ -146,6 +160,23 @@ receipt printed at the end. It is a starter: edit `manifest.json`, not the scrip
 
 Send the PDF with `MEDIA:` plus a short chat summary that leads with the **structural finding**
 (the seat's architecture, or the pattern in how it changes hands), not with a name list.
+
+**Verify the artifact you deliver is the artifact on disk.** Compute the hash at delivery time and
+put it in the summary; a long build invites a second writer, and a delivered PDF whose hash no
+longer matches the disk copy means two documents are circulating under one filename. If a hash
+changed between build and delivery, say so and say which version the recipient is holding.
+
+**Never overwrite a sibling writer's files.** These archives live in shared `forge_work/` paths and
+another session may be building the same one. Before writing any file into an archive directory,
+read it first; if it differs from what you last wrote, you are the second writer — preserve the
+variant rather than replacing it. When two versions diverge on a *decision* (not on wording), keep
+both and record the divergence in a provenance note with both hashes. Do not merge them: merging
+silently deletes one writer's judgment call, and the judgment call is usually the point.
+
+**Correct your own errors on air.** If a figure you already gave the requester turns out wrong,
+open with the retraction — state the wrong value, the right value, and the source — before
+continuing. A quiet correction buried in a later document leaves the wrong number in the human's
+head, and for an insider reader a confident wrong detail discredits everything around it.
 
 ## Scoring: merit vs structure
 
@@ -183,6 +214,15 @@ requester's own framing, say whose framing it is.
 8. **Distinguish institutional history from current politics.** Appointment timing relative to a
    change of government is an observation about mechanism; a claim about what the appointee owes
    anyone is an inference — label it.
+9. **Living and recently-departed holders get restraint, and incumbents get no verdict.** Public
+   office and corporate office do not carry the same publication risk: a head of government is
+   legitimately subject to civic assessment, while a company chair or chief executive is a corporate
+   officer with strong defamation standing and a live employment relationship with the requester
+   when the requester works inside the institution. Do not port a precedent built for public
+   officials onto corporate officers. See `references/publication-restraint.md`.
+10. **State a duration only after computing it.** Any span you derive ("eight years of acting
+   chairmen", "a five-year tenure") must be computed from the two dates, not read off a vibe. A
+   wrong derived number is the cheapest possible error and the most damaging to a factual archive.
 
 ## Pitfalls
 
@@ -198,13 +238,29 @@ requester's own framing, say whose framing it is.
 3. **Founders and early executive directors are often not on the official roster page.** If a source
    names someone by a short form (a single name, a nickname, a title), record that as the identifier
    and mark the full name OPEN. Do not silently drop a senior figure because they are hard to find —
-   an unexplained absence in the roster is itself a defect.
+   an unexplained absence in the roster is itself a defect. **The short form is usually resolvable:**
+   the English record may carry only the nickname while the vernacular-language record, a local
+   secondary source, or a memorial page carries the full name, the prior post and an appointment
+   date. Search the short form against the institution's name before declaring OPEN.
 4. **A partial-name holder must be flagged, not guessed at.** Cross-reference initials, role and
    employer before accepting any full-name expansion.
 5. **Don't let the verdict section swallow the evidence.** Brought / got / basis / verdict, in that
    order, each sourced. Verdict last and short.
 6. **Consistent per-person schema across every holder.** If holder 3 has "what they got" and holder 7
    does not, the archive reads as uneven treatment — which reads as bias.
+7. **The brief's own premises may be false.** Treat every ready-made fact in the request as a claim
+   to test, not context to build on. Run an adversarial pass over the premises before writing, and
+   put every correction in the archive's **claims corrected** section. Assembled summaries acquire
+   errors that later summaries copy, and the most persistent ones attach a rival's act to the
+   subject, mis-date a headline figure by a fiscal year, or assert an event that never happened.
+8. **Do not present a tenure's outcome as the holder's decision.** Large capital bets and impairments
+   are booked in the fiscal years they land, which is routinely after the holder who authorised them
+   has left and before the one who inherits the write-off. Anchor the decision to the year it was
+   made and the outcome to the year it was booked, and say which is which.
+9. **A combined chair-and-chief seat is a governance finding, not a naming convenience.** Where one
+   person holds the oversight seat and the executive seat — permanently or on an acting basis — no
+   governance dimension can be assessed for the holders in that window at all, and the archive should
+   say that rather than scoring them on it.
 
 ## Lane notes
 
@@ -222,8 +278,11 @@ requester's own framing, say whose framing it is.
 - `references/office-holder-roster.md` — seat-architecture checklist, source ladder for pre-internet
   public figures, the fitness-for-seat schema, the subagent hard-rules block, and a worked example.
 - `references/petronas-leadership-lineage.md` — PETRONAS chairman and President/CEO succession 1974
-  to present, including a documented eleven-year acting-chairman period, plus the fan-out contract as
-  applied.
+  to present, including the documented acting-chairman interregnum after the chair died in office
+  (Jul 2004 – Jun 2012, **7 years 11 months**), plus the fan-out contract as applied.
+- `references/publication-restraint.md` — where a fitness verdict may and may not be published:
+  incumbent carve-out, living vs departed holders, public office vs corporate officer, and the
+  twin-artifact split between a private dossier and a public page.
 - `templates/roster_pdf_builder.py` — markdown → weasyprint archive builder (manifest-driven, dark
   theme, page-per-person, SHA256 receipt).
 

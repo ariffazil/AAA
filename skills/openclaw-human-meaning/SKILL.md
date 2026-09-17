@@ -3,7 +3,7 @@ name: openclaw-human-meaning
 id: openclaw-human-meaning
 version: 1.0.0
 risk_tier: low
-description: 'OpenClaw integration for the human-meaning-membrane doctrine — apply the inference protocol when reviewing human-facing code (chatbots, UIs, social features). USE WHEN: "review this chatbot PR", "audit user-facing copy", "check consent logic", "message tone analysis code", "social feature review", "human-interaction code review". NOT for OpenClaw ops/health — use openclaw skill. NOT for token audit — use FORGE-telegram-audit. [fed: tier=fed-agent-subagent, auto=T1, risk=low]'
+description: 'OpenClaw integration for the human-meaning-membrane doctrine — apply the inference protocol when reviewing human-facing code (chatbots, UIs, social features). USE WHEN: "review this chatbot PR", "audit user-facing copy", "check consent logic", "message tone analysis code", "social feature review", "human-interaction code review". NOT for OpenClaw ops/health — use openclaw skill. NOT for token audit — use FORGE-telegram-audit. '
 owner: A-FORGE
 floor_scope:
 - F4
@@ -34,9 +34,7 @@ version_lock:
   artifact_hash: pending
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----
-
-# OpenClaw × Human-Meaning-Membrane — Human-Facing Code Review
+---# OpenClaw × Human-Meaning-Membrane — Human-Facing Code Review
 
 **A coding-agent adapter for the human-meaning doctrine.** This skill teaches OpenClaw (and any coding agent bridging through it) to review human-interaction code — chatbots, user interfaces, social features, sentiment/tone analysis, profiling — against the canonical doctrine at `/root/AAA/skills/human-meaning-membrane/SKILL.md`.
 
