@@ -1,8 +1,8 @@
 {
   "register_version": "2.0.0",
   "created": "2026-08-09T00:00:00+08:00",
-  "updated": "2026-08-09T12:50:00+08:00",
-  "description": "Person Register — theory-of-mind layer for the federation. DER-labeled models of real humans. Attribution-based, not shared-memory: every fact carries source + confidence; the agent can be WRONG about a person's reality and correct through interaction (the A2A hydrogen bond). Fikiran tak bersentuh, cuma berhubung.",
+  "updated": "2026-09-17T00:20:00+08:00",
+  "description": "Person Register — theory-of-mind layer for the federation. DER-labeled models of real humans. Attribution-based, not shared-memory: every fact carries source + confidence; the agent can be WRONG about a person's reality and correct through interaction (the A2A hydrogen bond). Fikiran tak bersentuh, cuma berhubung. Updated 2026-09-17: removed WAWA (reclassified as bot), removed USER_5444180135 (ghost entry), fixed IZZU fact (wrong telegram ID).",
   "privacy_policy": {
     "principle": "Private layers of any person are NOT machine memory. They are witnessed when shared, never stored, never echoed into another lane's context.",
     "rule_1": "Register holds DER models only — never testimony, never private identity layers (orientation, worship, wounds, intimacy).",
@@ -122,25 +122,6 @@
       }
     },
     {
-      "person_id": "WAWA",
-      "telegram_id": "8324190535",
-      "profile": "aaa-hermes (lane: pending)",
-      "visibility": [
-        "lane-wawa"
-      ],
-      "role": "UNKNOWN — in channel directory, no lane built",
-      "facts": [],
-      "boundaries": {
-        "private_layers": "UNKNOWN — nothing assumed, nothing stored"
-      },
-      "wrong_able": {
-        "note": "First contact must establish: who, relationship to operator, needs, voice. Do NOT invent."
-      },
-      "state_2026_08_09": {
-        "note": "Skeleton card only. Contact updates."
-      }
-    },
-    {
       "person_id": "ALIFF",
       "display": "Aliff",
       "telegram_id": "1024343313",
@@ -226,8 +207,8 @@
       "role": "UNKNOWN — Telegram ID provided by Arif 2026-08-09; details pending first contact",
       "facts": [
         {
-          "fact": "Telegram ID 1024343313 — DM + AIA group access enabled 2026-08-09",
-          "source": "OBS — Arif 2026-08-09",
+          "fact": "Telegram ID 1237635275 — DM + AIA group access. Session shows display_name as \"Mohd\". Needs verification: is Izzu = Mohd?",
+          "source": "OBS — Arif 2026-08-09 (CORRECTED 2026-09-17, original had wrong telegram ID)",
           "confidence": 0.99
         }
       ],
@@ -244,22 +225,6 @@
           "izzu-aia (group-safe)"
         ],
         "status": "Registered & whitelisted — tg_id 1024343313"
-      }
-    },
-    {
-      "person_id": "USER_5444180135",
-      "telegram_id": "5444180135",
-      "profile": "aaa-hermes (lane: pending)",
-      "visibility": [
-        "lane-arif-refers"
-      ],
-      "role": "UNKNOWN — skeleton",
-      "facts": [],
-      "boundaries": {
-        "private_layers": "UNKNOWN — nothing assumed, nothing stored"
-      },
-      "state_2026_08_13": {
-        "note": "Added to allowlist for YANG ARIF group (-5443591163)"
       }
     }
   ],
