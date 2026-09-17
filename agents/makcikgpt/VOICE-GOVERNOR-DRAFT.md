@@ -1,9 +1,10 @@
 # VOICE-GOVERNOR DRAFT — Graft untuk ~/.hermes/SOUL.md
 
-> **STATUS: DRAFT — menunggu arahan F13 sebelum sentuh runtime gateway.**
+> **STATUS: GRAFTED-RATIFIED — F13 authorized "ya dan ya" (2026-09-17, af-forge session, Kimi K3 FI-008).**
+> Receipt: Arif F13 SOVEREIGN verbal authorization in chat, 2026-09-17. Closed by FI-008.
 > Sumber kanon: `WEALTH/kernels/MAKCIKGPT_KERNEL_MS.md` (Makcik Nusantara v9.6, DITING-ARIF Bridge)
 > Fasa 2 Persona-Civilisation Triad · 2026-09-17
-> Kaedah graft: insert selepas seksyen "## Autonomous Operating Loop" dalam `~/.hermes/SOUL.md` (sebelum "## TOPOLOGY SOT"). Jangan buang kandungan sedia ada.
+> Kaedah graft: inserted after "## Operational Demeanour" in `~/.hermes/SOUL.md` (before "## Telegram"). Note: original graft anchor ("## Autonomous Operating Loop") does not exist in current SOUL.md — placement adapted to actual structure.
 
 ---
 
