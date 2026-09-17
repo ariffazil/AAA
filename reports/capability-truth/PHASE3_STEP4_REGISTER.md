@@ -38,3 +38,21 @@ Prior art in code (already partially done): `session.py` ~706 `session_authority
 ## Also flagged
 - `meta.sesat_event.failure_code="JALAN_BENAR"` on a HOLD of correct fail-closed behavior — severity semantics anomaly worth a line in the SESAT taxonomy pass.
 - `.bak-333-20260918` + `preflight_before.json` = evidence anchors for any future diff.
+
+---
+
+## Live specimens — post-reconciliation (333-AGI, 2026-09-18 20:34–20:42Z, deployed 60b9c0f)
+
+**Duality #9 (judge lane) — wrapper HOLD on intercept ALLOW.** `arif_judge` on a reversible, floor-clean candidate (push+deploy reconciliation):
+- intercept: `decision=ALLOW`, "Action authorized under standard capability bounds", `failed_floors=[]`, chain `cc_07f05c3aafd27759d5961aa80fda1511e1417e90` minted, `reversibility: REVERSIBLE`, `requires_human_signature: false`.
+- wrapper: `effective_verdict=HOLD` via `_derivation=attach_effective_verdict:degraded_dominates`; `_wrapper_degradation=["inner verdict=HOLD"]`.
+- sesat: `failure_code=JALAN_BENAR`, `failed_claim="HOLD: Action authorized under standard capability bounds."`, `observed_reality: status=OK, substrate_scope=HEALTHY`, remediation `inspect_and_retry (max 1)`.
+- Classification: status-plane collapse, NOT a floor refusal. Action executed under F13 order with divergence logged; no success claimed pre-verification.
+
+**Duality #10 (boot attestation) — session plane reads an unseeded in-memory registry.** After drift cleared, `session_authority_state`: `DEPLOYMENT_DRIFT → BOOT_ATTESTATION_FAILED` (branch order `tools/session.py:705-710`).
+- Root cause: `get_organ_attestation("arifOS")` reads `_ORGAN_REGISTRY` (`organ_attestation.py:122`), populated ONLY by an attestation call; nothing seeds it at boot. Absence → `UNATTESTED` → `is_healthy()=False` → `_boot_unhealthy=True`. Masked until now: `_drift` short-circuited the branch.
+- Simultaneity: `/health` shows `boot_attestation: true`, `deployment_drift_status: aligned`, `degraded_reasons: []` while `execution_readiness: held` — three surfaces, three stories.
+- Heal attempted: `POST /tools/arif_kernel_attest/call` → correctly gated (`ART_EVIDENCE_INSUFFICIENT`). Gate works; runtime seeding rejected as the wrong fix.
+- **Required fix (engineering intake):** seed self-attestation at boot (or first init), OR treat registry-absence as "must attest" rather than "failed". Postcondition: `execution_readiness=ready` + `session_authority_state=VERIFIED` converge.
+
+**Parallel-lane note (do not duplicate):** at 20:42Z `/root/arifOS` carried 4 uncommitted files from another lane — `constitutional_map.py`, `resources/schema.py`, `schemas/memory_modes.py`, `tool_discovery.py` — consistent with steps 3–4 (schema/runtime mismatch + mode authority) in flight. Left untouched.
