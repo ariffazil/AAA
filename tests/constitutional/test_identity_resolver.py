@@ -15,9 +15,9 @@ from pathlib import Path
 
 import pytest
 
-sys.path.insert(0, "/root/arifOS")
+sys.path.insert(0, "/root/AAA/registry/routing")
 
-from arifos.identity.identity_resolver import (  # noqa: E402
+from identity_resolver import (  # noqa: E402
     IdentityHold,
     Verdict,
     _reset_cache,
@@ -198,7 +198,7 @@ def test_junk_input_is_safe():
 
 
 def test_blocked_decision_is_written_to_the_ledger(tmp_path, monkeypatch):
-    import arifos.identity.identity_resolver as ir
+    import identity_resolver as ir
 
     ledger = tmp_path / "intercept.jsonl"
     monkeypatch.setattr(ir, "LEDGER_PATH", ledger)
