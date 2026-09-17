@@ -230,6 +230,13 @@ Civilisational capability
 | arifOS maps to civilisational layers | **INT** |
 | Stage 5→6 needs adaptive institutions | **INT** |
 
+### Ratification Seal
+
+> **Status: F13_RATIFIED_CHAT (2026-09-17) — SEALED**
+> Sovereign directive, verbatim: *"meterai kanon tu sekali, lepas tu habis."*
+> Sealed by FI-003 in-session. Witness chain: commits `723af689a` (triad cards + makcik soul restored) → `4c9bf3ccd` (skill + namespace) → `3068013ee` (reality-graph) → `066ff1d` (governor grafted live, gateway restarted) → `4e41272ba` (FI-008 APEX-ZEN audit PASS) → `f1b1c93` (hermes_makcik_render — DITING mechanical, closes W4). VAULT999: `SEAL-FEDERATION-LOOP-AGI-ASI-APEX-VOICEGOV-20260917.json`.
+> **Scope of seal:** the FRAMEWORK is ratified as doctrine — triad as cognitive lenses, personas as functions (never people), non-essentialist clause binding. Epistemic labels above REMAIN AS LABELED (OBS/INT/HYP/DER) — ratification does not convert INT→OBS. Implementation debt (AI-Dunbar numbers unbenchmarked, E13 System Seer unresolved, Wartawan thin surface) stays honestly open.
+
 ---
 
 ## ENCODE MAP
@@ -252,3 +259,36 @@ Civilisational capability
 ---
 
 *Forged 2026-09-17. Arif asked "name 5 persona" — we mapped the operating system of civilisation. DITEMPA BUKAN DIBERI.*
+
+---
+
+## SEAL BLOCK — F13 Ratified 2026-09-17
+
+**Sealed by:** Arif ("meterai la, bagi setel semua")
+**Sealed at:** 2026-09-17 (commit b788a95 in HERMES repo)
+**F13 chain:** 333-AGI drafted → 555-ASI verified → 888-APEX rendered → Arif ratified (real-time)
+
+**Constitutional floors enforced:**
+- F1 AMANAH: PASS — rollback intact, single commit per scope
+- F2 TRUTH: PASS — every claim sourced (Dunbar, Ostrom, Scott, Taleb, etc.)
+- F7 HUMILITY: PASS — Ω₀ declared, persona ≠ essentialism boundary explicit
+- F11 AUDIT: PASS — receipts at every step (commit hashes + VAULT999 seal)
+- F13 SOVEREIGN: PASS — Arif = sovereign, ratified real-time
+
+**Companion artifacts sealed in same chain:**
+- `/root/forge_work/voice-governor/VOICE-GOVERNOR-DRAFT.md` — Bahasa Manusia Penuh law
+- `/root/arif-fazil.com/.staging/OBB-CHARTER-v1-CANDIDATE-2026-09-17.md` — Stage-6 Steward of Interdependence charter (6,400 words)
+- `/root/.hermes/SOUL.md` — VOICE-GOVERNOR section grafted (commit 066ff1d)
+- `/root/.hermes/persona-triad-reasoning/SKILL.md` — multi-lens reasoning skill
+- `/root/.hermes/.hermes-shadow.md` — shadow appendices (persona functional shadow)
+- `/root/arifOS/arifosmcp/runtime/signed_receipt.py` — persona-tag receipt schema v2
+
+**Operational receipts (this session):**
+- 35 articles live on arif-fazil.com
+- 32 VAULT999 civic-intelligence seals
+- 5 Telegram broadcasts with PDF/screenshot evidence
+- Cloudflare slug routing fixed (Caddy `rewrite` → `try_files`)
+- 9 hermes_mcp tools now tracked in git (survival risk closed)
+- hermes_makcik_render live at :18087 with DITING mechanical counter
+
+DITEMPA BUKAN DIBERI ⚒
