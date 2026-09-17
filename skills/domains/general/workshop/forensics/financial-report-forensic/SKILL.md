@@ -116,6 +116,10 @@ Total dependency per annum = sum of all flows TO government. For PETRONAS 1H 202
 
 ## Pitfalls
 
+- **Never source a financial number from a news article when the primary report exists.** Reporters compress three distinct metrics — *cash and cash equivalents*, *net cash (cash less borrowings)*, and *cash flow from operations* — into "cash". They are not interchangeable. Pull the FRA/IFR first; cite news only for facts the report does not contain (and label it secondary).
+- **Never annualise a balance-sheet delta and call it a burn rate.** A six-month change in net cash can be driven by new borrowings, FX translation, or dividends declared — none of which are operating burn. Check the borrowings line before using any cash delta as a run-rate. (PETRONAS 1H26: net cash fell ~RM16B, but RM5.2B of that was *borrowings rising* RM121.6B → RM126.8B.)
+- **Never build a savings-vs-loss comparison on an assumed unit cost.** "Headcount × assumed average cost" produces a number that looks precise and cannot be verified. If the average is assumed, the comparison is not evidence — say so or drop it.
+- **Check whether a segment loss is an operating result or an accounting recognition.** JV loss recognition on capital injection is a balance-sheet event, not a period loss. Read the wording: "recognition of accumulated share of losses … previously recorded at the joint venture level" means the segment may have been operationally profitable in the period.
 - **Don't trust company peer benchmarks.** They use min-max band to align company with top, average line below. Always pull primary 10-Q/6-K.
 - **Don't trust "rising gearing" narrative.** Always check net debt = (Debt − Cash) position. If net cash, gearing is artificial.
 - **Don't conflate headline CAPEX with cash deployment.** Read footnote disclosures for non-cash accounting composition.
