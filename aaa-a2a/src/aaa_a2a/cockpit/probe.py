@@ -153,6 +153,8 @@ class OrganProbe:
                             "W3": apex.get("W3", {}).get("value")
                             if isinstance(apex.get("W3"), dict)
                             else apex.get("W3"),
+                            "measurement_scope": "local_organ_health",
+                            "source_organ": agent_id,
                         }
                     # Extract tools count
                     tc = body.get("tools_count") or body.get("tools_loaded") or body.get("tools")
