@@ -1,5 +1,15 @@
-<!-- SOT: doctrine/audit fragment. Tier: DRAFT_AWAITING_F13 unless ratified in chat. -->
+<!-- SOT: this file is a doctrine proposal. Tier: DRAFT_AWAITING_F13 unless ratified in chat. -->
 # SKILL MESH — REALITY AUDIT AGAINST AN EXTERNAL STRUCTURAL AUDIT
+
+> **CORRECTION 2026-09-18 (see `/root/AAA/docs/S0-S2-EXECUTION-RECORD-2026-09-18.md` §0):** this audit
+> itself carried two measurement errors, corrected there before execution. (C1) "3 of the 6 named paths
+> do not exist on disk" was wrong — a depth-bounded `find` plus a storage-only check. They exist as
+> ADDRESSES in `/root/.hermes/skills/domains/`; `/root/AAA/skills/domains/` is a different tree (storage).
+> Exactly one true invention existed: `domains/general/workshop/general-capability` (11 skills), removed in
+> S0. (C2) "8 organ capabilities already addressed" was wrong — a follow-links walk conflated the two
+> trees; the true count was 4, all WELL. **The structural finding stands and is sharper:** address and
+> storage are two trees sharing one name, and the index never said which was which.
+
 > Forged: 2026-09-18 · KVM8 (forge, 100.64.0.2) · Hermes ASI session
 > External input: an outside model's structural audit of the skill mesh, relayed by F13 (Arif) 2026-09-18.
 > Method: live disk walk of the canonical home + the harness view + the three organ repos, read against
