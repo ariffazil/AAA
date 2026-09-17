@@ -12,3 +12,4 @@
 {"ts":"2026-09-15T22:07:09Z","event_id":"evt_20260916_0607_4a6ecca2","source":"rsi_exhale","severity":"P2","type":"VERIFIED","hash":"4a6ecca280060e05","host":"forge"}
 {"ts":"2026-09-16T23:48:02Z","event_id":"evt_20260917_0748_fe6ffc99","source":"federation_pulse","severity":"P2","type":"STATE_CHANGED","hash":"fe6ffc99e276f100","host":"forge"}
 {"ts":"2026-09-17T10:07:10Z","event_id":"evt_20260917_1807_271c5c7a","source":"rsi_exhale","severity":"P2","type":"STATE_CHANGED","hash":"271c5c7aeb8a25b5","host":"forge"}
+{"ts":"2026-09-17T18:01:01Z","event_id":"evt_20260918_0201_73ca6564","source":"drift_scanner","severity":"P1","type":"VERIFIED","hash":"73ca65642660d1f3","host":"forge"}

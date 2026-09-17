@@ -4,7 +4,7 @@ id: forge-fastmcp
 owner: A-FORGE
 risk_tier: low
 floor_scope: [F1, F2, F4, F7]
-description: "Build, test, inspect, install, and deploy MCP servers with FastMCP in Python [fed: tier=fed-agent-subagent, floors=[F1, F2, F4, F7], auto=T1, risk=low]"
+description: "Build, test, inspect, install, and deploy MCP servers with FastMCP in Python "
 version: 1.2.0
 author: arifOS (based on Hermes official/mcp/fastmcp)
 tags: MCP, FastMCP, Python, Tools, Deployment
@@ -12,9 +12,7 @@ agents: claude | opencode | kimi | codex
 autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----
-
-# FastMCP — Build & Deploy MCP Servers in Python
+---# FastMCP — Build & Deploy MCP Servers in Python
 
 > **Current stable:** `fastmcp[tasks]==3.4.2` (PyPI latest as of 2026-06-12).
 > **arifOS federation target:** all Python MCP organs run FastMCP 3.4.2.

@@ -414,6 +414,53 @@ trusting any generated output.
 claim_register/source_ledger), so `scripts/lib/makcik-source.cjs` cannot route around it — the
 fix is to read the `.ts` directly and mind the backslash-escape parsing of its template literal.
 
+## WHO OWNS THIS FILE? — three writers, no coordination (PROVEN 2026-09-18)
+
+Symptom: a curated page "keeps vanishing". Cause: three separate mechanisms claim
+`public/<route>/index.html` and none knows the others exist.
+
+1. `scripts/generate-agent-shells.cjs` — `writeRoute()` rewrites its routes on EVERY
+   `prebuild`. It overwrote the 148 KB curated `/world/` hub with a 3.8 KB shell.
+2. `scripts/copy-static-html.js` — the SPA injection loop writes the React shell into
+   `dist/<route>/index.html` for every `SPA_ROUTES` entry, AFTER mirroring `public/`
+   over it.
+3. Caddy — `try_files {path} {path}/index.html /<route>/index.html /index.html =404`.
+   It already prefers the static page. **The build destroys the file before the
+   fallback can be reached.** Don't "fix" Caddy; fix the writers.
+
+`dist/` is gitignored, so every overwrite leaves no diff and the page looks like it
+vanished by itself. Always compare `public/` vs `dist/` vs webroot by SIZE and TITLE
+before theorising.
+
+Two registries must agree, and both mean "a human/agent curated this, the generator
+must not own it":
+- `PRESERVED_ROUTES` in `generate-agent-shells.cjs`
+- `STATIC_INDEX_ALLOWLIST` in `copy-static-html.js`
+
+### The cheap test that finds every instance
+
+Serve a curated page and compare its `<title>` with `public/`:
+
+```bash
+curl -s -A "Mozilla/5.0" https://arif-fazil.com/<route> | grep -o '<title>[^<]*'
+```
+
+If the live title is the HOMEPAGE title but `public/<route>/index.html` has its own,
+the curated page is not being served — the SPA shell is. That single check found
+`/words/` (16.5 KB → 8.6 KB), `/work/` (10.1 KB → 8.6 KB) and `/world/makcikgpt/`
+(42.1 KB / 30 slugs → 8.6 KB / 0 slugs) in one pass.
+
+### Silent-drop filters
+
+`e.lang === "bm"` dropped `lang: "en-bm"` entries from the MakcikGPT listing with no
+error. A filter that hides an entry is worse than one that rejects it: rejection is
+loud, hiding is invisible. Prefer `lang.split("-").includes("bm")` for SCOPE and let
+the validator own validity.
+
+Related: a sealed entry (`provenance_status: "sealed"`) with an empty `claim_register`
+makes `loadMakcikSource()` THROW — the whole listing fails to generate, not just that
+entry. Supply the witness chain; never weaken the gate.
+
 ## PUBLISH ORDER: asset first, reference second (PROVEN, twice-burned 2026-09-18)
 
 Cloudflare caches a 404 for a hashed asset URL under `max-age=31536000, immutable`.

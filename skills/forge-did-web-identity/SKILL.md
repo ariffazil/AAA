@@ -2,15 +2,14 @@
 id: FORGE-did-web-identity
 name: forge-did-web-identity
 version: 1.0.0-2026.07.17
-description: "Decentralized identifier (did:web) identity management for federation organs and agents. [fed: tier=fed-agent-subagent, floors=[, auto=T2, risk=high]"
+description: "Decentralized identifier (did:web) identity management for federation organs and agents. "
 owner: A-FORGE
 risk_tier: high
 floor_scope: ['F1', 'F2', 'F11', 'F13']
 autonomy_tier: T2
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----
-# ⚒️ did:web Identity — Decentralized Identifier
+---# ⚒️ did:web Identity — Decentralized Identifier
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.
 

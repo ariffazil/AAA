@@ -27,6 +27,201 @@ A service running is not the same as a service running what you think. For compi
 2. **compiled artifact (`dist/`)** — may predate source (fix authored, build never re-run).
 3. **running process** — loads the compiled artifact at startup; a restart is required to pick it up.
 
+## The layer above the artifact — the request router decides which file is actually served
+
+A file can be present in source, present in `dist/`, synced to the served tree, and validated
+config — and the URL still returns a different document. Serving is a separate, ordered resolution
+step, and it is a fourth place a fix rots. It fails in exactly the way this skill warns about: a
+clean `200` carrying the wrong bytes, so every probe short of a content grep reads as success.
+
+**Config is often split — grep the file that holds the rules, not the one you remember.**
+Reverse-proxy configs get refactored into a small dispatcher that imports a directory of per-site
+files. Searching the dispatcher returns nothing, which reads as "the rule is gone" and invites an
+agent to "restore" a config that was never broken.
+
+```bash
+# which file actually holds the site rules?
+grep -rn 'import' /etc/caddy/Caddyfile          # e.g. import /etc/caddy/vhosts/*.conf
+ls /etc/caddy/vhosts/
+grep -n '<pattern>' /etc/caddy/vhosts/<site>.conf
+caddy validate --config /etc/caddy/Caddyfile    # dispatcher path still validates the whole tree
+```
+
+**Check whether an existing block already covers the path before adding one.** A handler whose
+`try_files` includes `{path}/index.html` serves every new subdirectory under its prefix for free —
+no config change, only the file plus a sync. Adding a redundant handler is an unaudited config
+mutation, not a harmless extra.
+
+```bash
+grep -n -A6 'handle /<prefix>/\*' /etc/caddy/vhosts/<site>.conf
+```
+
+**Ordering is the failure mode.** First-match-wins: a specific `handle` placed after a catch-all
+never fires, and the catch-all serves the shell instead. Bare `redir` directives are evaluated
+before `handle` blocks regardless of line order, so a legacy redirect can shadow a handler you just
+added. Never gate a redirect on `not header_regexp User-Agent` — it creates a bot-only hole that
+browser testing cannot see, while curl from an external host catches it.
+
+**A static file in the served tree can be dead weight — check whether the route is carried by the SPA catch-all.**
+On a single-page-app host the catch-all serves the shell for every path under its matcher, whatever
+files exist on disk. A page can sit in the webroot at the exact URL, be the file you have been
+editing for an hour, and never reach a single user. Probe which document actually answers before
+editing either one:
+
+```bash
+curl -s "$URL" | grep -o '<title>[^<]*'              # what visitors get
+curl -s "$URL" | wc -c                              # shell bundle is small; a real page is not
+grep -o '<title>[^<]*' <webroot>/<path>/index.html  # what you were about to edit
+```
+
+A different title, or a response sized like the bundle rather than the file, means the route is
+client-rendered and the on-disk copy is shadowed. **Edit the source component and rebuild** — editing
+the webroot copy is a no-op for that route and the next sync overwrites it anyway.
+
+**One vhost, several `root` directives — one rsync is not a deploy.** A site block can serve
+different paths from different trees. A deploy that syncs only the primary webroot reports success
+while the surfaces rooted elsewhere keep serving pre-fix bytes, which is the clean-200-wrong-bytes
+failure in its whole-tree form. Enumerate the roots, then verify at least one changed file in each:
+
+```bash
+grep -n 'root \*' /etc/caddy/vhosts/<site>.conf | sort -u
+```
+
+Where a repo ships a companion sync script for the secondary roots, it is part of the deploy rather
+than a follow-up — run it last and treat a non-zero exit as a failed deploy, not a warning.
+
+**A directory at the route path terminates the fallback chain.** With
+`try_files {path} {path}/index.html /index.html`, a request whose path matches a real directory
+satisfies the first term, so the third — the shell — is never reached and the route 403s or 404s.
+Keep page assets flat beside the route (`public/<slug>-<name>.pdf`) rather than inside a directory
+named after it (`public/<slug>/<name>.pdf`). Same first-match-wins mechanic as handler ordering,
+expressed as file layout.
+
+**The opposite failure: a file that never reached the mirror step.** A build that mirrors a
+`public/` tree into the served tree usually carries an allowlist for `index.html` — top-level
+`index.html` files are assumed to be SPA routes and are skipped so the compiled shell can replace
+them. A hand-written static page under a deep path therefore lands in the source tree, is silently
+skipped by the mirror, and never exists in the served tree at all. Its URL does not 404: the
+`try_files` fallback walks up to the nearest real `index.html` and serves the **parent listing**, so
+the page looks published while none of it is reachable.
+
+```bash
+# does the served tree hold what the source tree holds?
+for f in $(cd <src>/public && find . -name index.html); do
+  [ -f "<served>/$f" ] || echo "NOT MIRRORED: $f"
+done
+grep -n 'ALLOWLIST\|SKIP_DIRS' <scripts>/<mirror-step>.js   # find the gate, then read its entries
+```
+
+**Tell a missing artifact from a mis-routed one by checking a SIBLING asset in the same directory.**
+When a document URL returns the parent listing, fetch a second file that should sit beside it — a
+PDF, an image, a `.json`. If the sibling also returns `200` with `content-type: text/html` and a byte
+size matching the listing, nothing was ever placed: a placement fault, not a routing one. `file` is
+the cheapest adjudicator, because a wrong body defeats every status-code check:
+
+```bash
+curl -so /tmp/x "<url>.pdf" && file /tmp/x      # "HTML document" => never placed, not mis-routed
+```
+
+**Close the loop with a content grep, never a status code.** The artifact is verified only when the
+response body carries a string unique to it:
+
+```bash
+curl -s -o /dev/null -w '%{http_code} %{size_download}\n' "$URL"   # 200 - necessary, not sufficient
+curl -s "$URL" | grep -c '<string unique to the new artifact>'      # the actual receipt
+```
+
+A `200` with an unexpected body means the fallback fired — the artifact never reached the response.
+Report that as "file deployed, handler not resolving it", a different fault from "the deploy did not
+run", with a different fix. When a request resolves to the wrong document and no config was edited,
+the cause is almost always handler ordering or the `try_files` fallback — not syntax, and not a
+stale build.
+
+Worked values for a Caddy-fronted SPA host with a split config and split roots — the dispatcher/
+vhost layout, the `@static_dirs` vs `@spa_routes` split, the page-that-exists-twice check, and
+the closure probe — are in `references/webroot-serving-resolution.md`.
+
+## Publish ORDER is part of the deploy — a pointer published before its target poisons the edge cache
+
+Every layer above is about whether a fix *reached* the served tree. This one is about the order in
+which you put the pieces there, because with content-hashed artifacts the order is not a style
+preference — getting it wrong is **permanent**.
+
+Publish in this order, always:
+
+```
+1. assets/        the hashed artifact must exist at its URL BEFORE anything names it
+2. pointers       every HTML/document that references the new hash
+3. generated mirrors / secondary surfaces
+```
+
+**Why the order is load-bearing.** A hashed asset is normally served with `cache-control: public,
+max-age=31536000, immutable`. If a document naming it goes live first, the first request for the
+missing asset returns 404 — and the CDN caches the **404** under that same year-long immutable TTL.
+Every later visitor is then served the cached 404 while the correct file sits on disk. The failure
+is invisible to every check that looks at the filesystem, and the artifact's presence on disk is
+exactly what makes it look deployed.
+
+**Signature:** `curl -sI <asset-url> | grep -i cf-cache-status` → `HIT` with a small `age` on a
+`404`. Compare against the served document's own pointer to confirm the mismatch.
+
+**Recovery, in order of preference:**
+
+1. **Purge the URL.** Needs a cache-purge scope on the credential. If the token lacks it you get an
+auth error — that is a scope problem, not a transient one; do not retry with different payloads.
+2. **Re-key the artifact.** Works with no purge permission, and it is the reliable path. Give the
+   *identical bytes* a new filename, then repoint every document that referenced the old name:
+   ```python
+   # salt the hash so the NAME is guaranteed fresh even when the BYTES are unchanged
+   new = hashlib.sha256(data + b"rekey-salt").hexdigest()[:8]
+   ```
+   Without the salt you regenerate the same poisoned name, because a content hash of unchanged
+   content is by definition the same string. Find every referencing file with
+   `grep -rl <old-name> <tree>` — the pointer is usually duplicated across many route shells, not
+   just the one you edited — and rewrite them all.
+   Leave the old file in place: it is still what any in-flight document is pointing at.
+3. **Do not wait for expiry.** A year-long immutable entry does not age out on any useful timescale.
+
+**Verify with an unbusted fetch.** A `?v=<timestamp>` query string is a different cache key, so it
+returns 200 while real visitors still get 404 — it will report the exact opposite of the truth. The
+honest check is the pointer comparison plus a plain fetch:
+
+```bash
+D=$(grep -oE 'assets/[a-zA-Z0-9._-]+\.js' <dist>/index.html | head -1)
+L=$(curl -s <url>/ | grep -oE 'assets/[a-zA-Z0-9._-]+\.js' | head -1)
+[ "$D" = "$L" ] && echo "pointer served: $D" || echo "DRIFT dist=$D live=$L"
+curl -so /dev/null -w '%{http_code}\n' <url>/$D      # no query string
+```
+
+**A partial sync is the same defect in a different direction.** If the assets reach the served tree
+but the document carrying the pointer does not, the new artifact sits there unreferenced and the
+site keeps serving the previous build indefinitely. Check BOTH directions: pointer-not-reachable and
+artifact-not-referenced are separate faults with separate fixes.
+
+## A generated cache whose upstream is another cache
+
+A build step that regenerates published output can itself read from a *stale cache* rather than from
+the canonical source. The tell is a regenerated artifact with a fresh `mtime` and old content: it
+looks updated because the timestamp is current, and it is wrong because its input was old.
+
+```bash
+# for every generated output, compare its mtime against ITS INPUT, not against the build
+stat -c '%y  %n' <canonical-source> <cached-intermediate> <generated-output>
+# then count how many cached intermediates are older than their canonical source
+```
+
+Two consequences worth acting on:
+
+- **Check the generator's input, not just its output.** Reading the source file confirms the fix is
+  present; only reading the *generator* tells you whether the fix can reach the output. A generator
+  pointed at a stale intermediate is a build that can never publish the correct content.
+- **Wire the generator into the build chain, or it drifts again.** If a regeneration step is not in
+  the build's script chain, it runs when someone remembers and not otherwise — so the same staleness
+  recurs silently. Adding it to the build is the durable fix; re-running it by hand is a one-time
+  repair.
+- **After fixing the source, RE-RUN the generator before republishing.** Outputs built before the
+  fix still hold the old text on disk and in the served tree.
+
 ## The collapsed case: no build step (interpreted service from a live checkout)
 
 When the artifact *is* the checkout — Python via editable install, `uvicorn`, `python -m <pkg>`,
@@ -293,6 +488,59 @@ never do: if the guard were wrong, the response body would land in whatever audi
 call and the test becomes the exfiltration. Import the leaf guard module only; importing a whole
 application module can boot the runtime or hang.
 
+## A fail-closed change is a dependency change — verify the chain, not the diff
+
+Converting a permissive path to fail-closed does not merely edit a branch; it makes the service
+require a set of prerequisites that previously did not matter. Those prerequisites are **not in the
+diff**, so the change reviews clean while the deployed service refuses everything.
+
+Probe the chain in order and name which link fails:
+
+```bash
+systemctl show <unit> -p Environment | grep -c <EXPECTED_CRED_VAR>   # first refusal point
+<service-interpreter> -c "import <module>"                          # second
+<backing-store> ping                                                # third
+journalctl -u <unit> --since "<deploy time>" --no-pager | tail -30    # which one actually fired
+```
+
+Rules:
+- **A successful package install is not a working dependency.** Package name and import name
+  diverge routinely — a distro package can ship module `PAM` while the code imports `pam`. Confirm
+  what was placed and under which name (`dpkg -L <pkg> | grep -E '\.so|\.py$'`, or
+  `find <site-packages> -name '<mod>*'`), then import it **with the interpreter the unit runs**,
+  not the one on your PATH. Two packages may be needed for one import.
+- **An undeclared dependency is invisible until it breaks.** If the import is absent from
+  `requirements.txt`/`pyproject.toml`, nothing catches it on a fresh build. Add it while you are there.
+- **Report the true state as `BLOCKED_AT_GATE`, never as done.** If applying the change needs a
+  gated verb (service restart, privileged write), the change is on disk and **not live**. Say
+  exactly that, name the lane that can apply it, and do not describe it as staged or applied.
+- **Do not revert a hardening change to "restore" a lane — measure the pre-change behaviour first.**
+  A lane can already be dead upstream of the change (unreachable backing store), so the revert
+  restores nothing while reopening the insecure path: a security regression wearing the shape of a
+  fix. Establish empirically what worked before, and if the only path that worked was the insecure
+  one, say so rather than proposing rollback.
+- **After a fail-closed change, health must report capability, not liveness.** A liveness endpoint
+  answering `{"status":"ok"}` while the service refuses every request trains monitors to ignore a
+  dead lane. Add guard/dependency state to the health payload — a hardening that no probe can see
+  is indistinguishable from an outage.
+
+## A handshake that echoes your request measures nothing
+
+Version and capability negotiation commonly **return the value you asked for** when it is
+supported. A single probe then reports your own request, not the server's ceiling, and any
+conclusion drawn from it is unfounded.
+
+```bash
+# vary the input to find the real value
+request A -> A
+request B -> C   # C is the ceiling; A and C are different surfaces of one organ
+```
+
+Same class as a marker probe matching the echo of its own log line. When several surfaces of one
+organ report the same fact (root / health / tools / build-info / handshake), probe at least two and
+report the disagreement rather than picking a winner — a version read from one endpoint is a claim
+about that endpoint only.
+
 ## Pitfalls
 
 - **A kernel/monitor "deployed SHA" field may be attesting the DEV CHECKOUT, not the deployment.**
@@ -325,7 +573,16 @@ application module can boot the runtime or hang.
 - **Missing config on disk is a latent, not an active, outage.** A service started from a config file that has since been deleted keeps running from memory — healthy now, unbootable on next restart. Say "reboot-fragile", not "down", until you have checked whether it is in the data path at all. When you do rebuild the file, call it a RECONSTRUCTION, not a restore, and validate it with the service's own validator (`<binary> validate --config=...`) before restarting.
 - **A source default is not live state.** Code carries seeded default templates — a baseline dict, a port list, a config literal — while the runtime state file may already be correct. Grepping the default and reporting it as the deployed value manufactures a defect that does not exist. Read the runtime artifact (the JSON/YAML the process actually loads) for the current value; read source only to learn the shape.
 - **Check whether the component self-maintains before calling its state stale.** If a service rewrites its own state file on a cycle, a stale value means the cycle is not running — not that the value needs hand-editing. Restore the schedule and the state often normalises itself, which also changes the diagnosis from "two faults" to "one fault with a symptom".
-- **Multi-session edits to the same file.** In a multi-agent environment, `git status` may show a NEW uncommitted change that appeared mid-session (another agent editing the same file). Re-check `git status` after you commit; never commit working-tree state that is not yours.
+- **Multi-session edits to the same file — and to live config, where there is no VCS to notice.**
+  In a multi-agent environment, `git status` may show a NEW uncommitted change that appeared
+  mid-session (another agent editing the same file). Re-check `git status` after you commit; never
+  commit working-tree state that is not yours. The sharper case is a **live config file outside any
+  repo** (`/etc/<svc>/*.conf`, `/var/www/**`): two agents can write the same file seconds apart,
+  neither aware of the other, and nothing reveals the collision. `stat -c '%y'` the file before and
+  after your write — an mtime you did not cause means stop and read the current content before
+  continuing. A diff of only cosmetic parameters is luck; the same mechanism aimed at a routing or
+  proxy target takes the service down with no warning. Assign exactly one writer per live config
+  file; everyone else hands over a patch.
 - **An interpreted runtime keeps pre-edit modules in `sys.modules` — and a mixed-version agent is the normal outcome.** The process that booted before your patch keeps serving the old module for its whole life; log lines from that PID are the old code's behaviour. An updater that pulls code without restarting the unit will usually say so itself; treat that banner as a receipt, not as noise to dismiss.
 - **`dist-info` is an installation record, not the code on disk.** An editable install's package metadata stays frozen at install time while the checkout moves, so `pip show` / reported package version can trail the code the process actually runs. Read the module's `__file__` and the git state of that tree instead of reconciling versions.
 - **`grep -c <marker> <path>` cannot tell "guard absent" from "file absent".** A grep against a
@@ -340,3 +597,6 @@ application module can boot the runtime or hang.
 - **Two nodes can hold the same repo at different commits and both report honestly.** Pin every citation as `host + repo path + short sha`; line numbers are not portable between nodes, and a patch built on the wrong node's numbers lands on ghost lines. Load `proxy-verification-audit` when the change being deployed is a security/authority control — it owns proving the control actually refuses something.
 - **Prove a library major bump by executing, not by reading.** An SDK going one major version up reads like the headline blocker and usually is not. Check the call surface the code actually uses — constructor keyword arguments, transport argument names, decorator signatures — for removed or renamed parameters, then run one initialize handshake per entrypoint on the new interpreter and confirm each registers its full tool set. Record the cosmetic drift too: a server that does not pass an explicit version of its own will report the library's version in its handshake instead. This is the empirical half of the SDK-drift pitfall above; the static pin comparison tells you a delta exists, only the handshake tells you whether it breaks anything.
 - **Two venvs can differ only by their system-site-packages flag, and the difference presents as missing modules.** Identical CPython version and identical core pins (`pydantic`, `starlette`, `uvicorn`, `anyio`) do not mean identical surfaces: read `include-system-site-packages` in each `pyvenv.cfg` before diffing long package lists, because the interpreter with the host global `dist-packages` visible sees hundreds of packages the isolated one does not — one flag, an enormous diff, and a misleading "the new venv is missing X" conclusion. The migration blocker is then rarely the framework major bump but the few entrypoints reaching into the host pool; install those specific packages into the isolated venv and verify by importing them under that interpreter, rather than re-enabling system-site-packages to make the diff go away. Do the install with a dry run first (`pip install --dry-run`) to see the full resolver plan before committing to it.
+- **The checkout moves under you — re-pin HEAD immediately before every write.** A registered peer seat can commit to the same repo while your session is live; between auditing a file and patching it, HEAD can advance several commits and every line number, function name, and existence check you gathered now describes a ghost revision. Identify the mover by author — `git log -6 --format='%h | author=%an | %ci | %s'` — because a named FI seat is a coordination problem while an unrecognised author is an incident. Re-run `git log -1` and check for an in-flight writer (`ls .git/index.lock`) at the moment of the commit, not at the start of the task. A discovery that the target moved is itself worth reporting: it is live evidence that the provenance chain is not closed.
+- **Select the tree to patch by grepping a string you captured AT RUNTIME.** The envelope or response you observed was produced by the code that is actually executing. Grep that exact string in the candidate tree: if it is absent, you are in the wrong tree and the patch lands silently nowhere. A runtime-observed string is the strongest available tree selector — stronger than a path you assumed, a directory named like the package, or a SHA a monitor reports, because it is bound to observed behaviour rather than to metadata.
+- **Two paths for one message is a finding, not an inconvenience.** When the same defect surfaces through a bare builder and through a wrapper (two different strings for the same concept in two code paths), a patch to one path leaves the other emitting the old shape. Enumerate the paths first and cover both, or say explicitly which one you fixed and which remains — a half-applied fix reads as "fixed" to everyone downstream.

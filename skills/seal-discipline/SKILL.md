@@ -22,6 +22,18 @@ Load this skill BEFORE emitting `verdict=SEAL` or any close-record. Trigger phra
 
 ## The Iron Rule — Three Classes, Each with Evidence
 
+### Class 0: HEART Verdict Geometry — Monotonicity Invariant (NEW 2026-09-18)
+
+**Probe evidence:** `arif_heart_critique` reported `action_risk=GREEN` but wrapper-level dignity check forced `VOID` + `do_not_treat_as_seal=True`. This is a verdict composition contradiction.
+
+**Iron rule:** Risk dimension and dignity dimension MUST compose monotonically:
+- `action_risk=GREEN` → wrapper MUST NOT escalate to `VOID`
+- `do_not_treat_as_seal=True` is INFORMATIONAL, NOT a downgrade
+- Final verdict ∈ {GREEN, HOLD, VOID} only via single-dimensional escalation
+- If a wrapper forces `VOID` despite lower dimension GREEN, log as `VERDICT_GEOMETRY_DRIFT` (conformance defect)
+
+**Scar anchor:** none yet (new class). Apply whenever any verdict field has two dimensions that can compose non-monotonically.
+
 ### Class 1: SEAL — Lane A Constitutional
 
 **Required conditions (ALL must hold):**

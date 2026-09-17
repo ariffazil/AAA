@@ -270,6 +270,49 @@ Rank findings in this order:
 
 ---
 
+## Section 4: False-DOWN patterns measured on KVM8 (2026-09-18)
+
+Four ways an organ reads DOWN while it is actually serving. Each one produced a
+monitor flap and each one had a different fix — probe first, restart never.
+
+1. **"server X is not connected" from an MCP client is usually the client's own
+   state, not the server.** Measured: A-FORGE MCP :7072 applies a per-IP bucket of
+   **120 requests / 60 s** (`RATE_LIMIT_MAX` in `A-FORGE/src/interfaces/mcp/serve.ts`,
+   compiled into `dist/src/interfaces/mcp/serve.js`). Every local consumer
+   (gateway, coding agents, sentinels) arrives from `127.0.0.1`, so they **share one
+   bucket**; one agent's burst returns `429` to everyone else and those clients mark
+   the server disconnected. Confirm from the server side before acting:
+   `curl -s -D - -o /dev/null -X POST http://127.0.0.1:7072/mcp -H 'Content-Type: application/json'
+   -H 'Accept: application/json, text/event-stream' -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"probe","version":"1"}}}' | grep -i ratelimit`
+   A 200 + `X-RateLimit-Remaining` means the organ is UP; the flap is quota, not health.
+
+2. **`docker unavailable` in the reality frame can be a probe race.** `reality.py`
+   `docker_state()` called `docker info` with a 2 s timeout; under load it timed out
+   while 9 containers ran, and the frame printed `available: false`. Fixed by raising
+   the timeout and falling back to `docker ps -q` before declaring absence — never let
+   a single timeout be the sole witness of absence.
+
+3. **A witness surface fails on *schema*, not on health.** `/999/verify` returns
+   `{"verified": true, "chain_status": "verified"}` and **no `status` key**, so a probe
+   that only accepts `status in (healthy|ok|...)` scores the vault dead at HTTP 200
+   (`WITNESS: 4/5` with `vault: ❌ (200)`). Any witness probe must accept both shapes.
+   Two copies existed (`/root/scripts/` and `/root/arifOS/scripts/cron/`) — patch both.
+
+4. **`UNOWNED` / `duplicate-*` in the frame is a registry-absence signal, not a
+   service fault — and it flips the whole box to `WATCH`.** `reality.py` overlays
+   `/root/AAA/federation/SERVICE_OWNERSHIP.yaml` on top of its inline `KNOWN` table;
+   a unit missing from the YAML is `registered: false`, which (a) raises
+   `unowned-running`, (b) makes any `hermes*` unit pair look like `duplicate-hermes-units`,
+   and (c) forces `mode: WATCH` with `mutate: announce`. Fix = add the unit to the YAML
+   (group + `role` + `repo`), re-run `arifos status`, confirm `duplicates: []` and
+   `mode: SAFE`. Registry fixes need no restart; they are live on the next frame.
+
+**A restart can be the cure even when the flap is in a neighbour.** Measured: `geox-mcp`
+was stopped/re-started 4× in 40 minutes while a long-running gateway served pre-update
+modules; no unit or script owned those stops. After `hermes gateway restart --system`
+(new MainPID, `--replace`), the stops went to **0** over the following minutes — so
+correlate flap bursts with process age before blaming the flapped organ.
+
 ## Alert Conditions
 
 | Condition | Action |
