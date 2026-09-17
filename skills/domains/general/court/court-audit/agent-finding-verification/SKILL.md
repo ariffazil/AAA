@@ -1,7 +1,7 @@
 ---
 name: agent-finding-verification
 description: "Use when verifying findings, audits, or memory/identity claims from another agent or an external AI."
-version: 1.0.1
+version: 1.1.0
 floors: [F2, F4, F11]
 triggers:
   - "audit this report"
@@ -17,6 +17,27 @@ triggers:
 # Agent Finding Verification
 
 Treat every finding, audit, or gap-list from another agent (or a pasted report) as UNVERIFIED until you probe its substance. Agent-produced audits are frequently surface-level: they observe the wrong context, over-rate severity, and propose fixes that are regressions.
+
+## The mirror law — a report's GRAMMAR is a claim too
+
+A reported *state* and a reported *absence* are the same kind of claim, and both are falsifiable by
+the same probe. The two failure modes are mirror images, and an auditor is far more likely to commit
+the second while hunting the first:
+
+| Direction | Shape | Measured example |
+|---|---|---|
+| **Present-tense narration of an ABSENT state** | A document narrates a system in the present tense, with specific figures, as though implemented | An external deep-research artifact: *"arifOS implements Cellular Sheaf Cohomology"*, *"the ASI uses DoWhy"*, *"arifOS utilizes Atropos"* — **0 of 5 headline subsystems existed as described**, and the artifact carried **0 citations in ~29.7k chars** |
+| **Confident absence from a CONTAMINATED probe** | An auditor reports "zero / none / does not exist" from a sweep that never covered the population | The same session, the auditor's own sweep: `dowhy` matched `ShadowHypothesis`; `sheaf` matched an emoji name; a `limit:3` sample of one store was written up as a fact about nineteen |
+
+**Law: specificity is not evidence of implementation, and a grep is not evidence of absence.**
+Both defects collapse under the same discipline — probe the machine, state the population, and read
+every hit in its enclosing scope. Neither survives; that symmetry is the whole argument for probing
+rather than judging a source by how confident it reads.
+
+**The tell for the first direction:** the more precise the present tense — bit-widths, percentages,
+named frameworks, benchmark deltas — the **more** it needs a probe, because specificity is exactly
+what makes a false state-claim feel already verified. Confidence is not authority; brevity is not
+rigour; and an artifact is never graded on its own conviction.
 
 ## Procedure (probe before act, in this order)
 
@@ -317,6 +338,38 @@ Accept the argument, verify the citations, refuse the numbers. A reviewer that w
 decorative precision while emitting unbacked scalars is demonstrating the error it names —
 quote it back to them as such.
 
+### A pasted rubric's vocabulary must resolve on disk before you adopt it
+
+A block that arrives claiming to be house process — a verdict scheme, a gate table, a comparison to
+an existing artifact ("mirror X's badge scheme"), a receipt id — is making checkable claims about
+*our own* system. Conventions read as authoritative precisely because they are the kind of thing we
+would plausibly have. Grep before adopting:
+
+```bash
+grep -rl '<VerdictToken>' /root/AAA /root/forge_work <repo-root>   # 0 hits = it does not exist here
+find /root -maxdepth 6 -iname '*<named-artifact>*'                 # does the precedent resolve?
+```
+
+Tells that separate a real process output from an invented one:
+
+- **Mixed resolution is the normal case, and it is the useful signal.** The *precedent* the block
+to mirror may be real while the *scheme* it wants applied exists nowhere — name that split instead of
+accepting or rejecting the block whole. Verifying one artefact does not license the rest of its claims.
+- **A "ratified" gate list with no registry row, no receipt id, and no session id is not a process.**
+  Our gates leave artefacts; a gate enumerated in prose only has none.
+- **Statute citations are the cheapest thing to stretch.** A protection described as covering a
+  category wider than the statute's own wording (a "Royal" instrument invoked for a non-Ruler), or
+  the wrong act entirely (a defamation statute for what is a criminal-code matter or an employment
+  matter), is a legal-sounding frame around an unverified premise. Say which clause would have to
+  apply, and for whom. **Agents cannot sign legal risk** — route it to counsel, and say so.
+- **Watch for the risk that is missing.** A long legal-risk argument that never names the exposure
+  the audit is actually about (e.g. an employee of the subject institution publishing assessments of
+  its serving officers) is not a conservative reading — it is a reading aimed at a different party.
+  The absent risk is usually the one that matters.
+- **Never adopt an imported rubric because it reads consistent with house style.** Once a vocabulary
+  is in the deliverable it is in the deliverable, and the first person to be held to it is the person
+  whose name is on the file.
+
 ### The artifact's evidence may be our own corpus echoed back
 
 A review *of a person* (or of our doctrine) can be built entirely from our own artifacts and still
@@ -450,6 +503,26 @@ existing ≠ wire fired* — the module can be written and imported while the th
 6. **Keep the audit report out of the audited tree.** Writing it inside dirties the very state you
    are measuring — state the tree's cleanliness excluding your own artefacts, or land the report
    outside it.
+7. **A concurrent writer can rewrite YOUR OWN build inputs, not just the tree you are auditing.**
+   Long jobs run for hours across shared working directories; another session can silently replace
+   the files you assembled — altered headings, an imported verdict vocabulary, content you never
+   wrote — and your renderer emits it under your name. Guard the build, not just the audit:
+
+   ```bash
+   cp -a <inputs> <evidence>/quarantine-<stamp>/ && cd <evidence>/quarantine-<stamp>
+   sha256sum * > MANIFEST.sha256
+   grep -rn '<tokens-you-did-not-author>' <inputs>     # non-zero hit = an input was swapped
+   ```
+
+   On a hit, **discard the whole input and rebuild from the upstream source** — patching the foreign
+   text leaves provenance you cannot account for. Rebuild from files on disk, never from a subagent
+   summary replayed in your context: those are truncated, and a truncated dossier silently loses its
+   gaps section. Report the substitution with hashes, and do not name the other writer if you did not
+   observe it.
+8. **Never assert a verification you did not run.** "I swept X", "I checked Y" stated to the
+   sovereign when only a partial check was done is a worse defect than the original gap, because it
+   removes the reader's ability to doubt. Either run the probe or say exactly what was and was not
+   checked. This applies hardest to the *cheap* claims — a grep you could have run in one call.
 
 ## Alert-path triage — field semantics, stale registry, or repair race
 
@@ -520,6 +593,49 @@ A figure appearing **nowhere else** is the document's own invention, not a confl
 sources — which reframes the fix from "reconcile our sources" to "flag this document". Check
 sibling modules before concluding the codebase disagrees with the document; a single unsourced
 string in one file is not a multi-way split.
+
+**Corollary — exclude vendored trees or the sweep lies in BOTH directions.** A capability sweep
+run over a whole tree without excluding `/.venv/`, `/site-packages/`, `/node_modules/`, `/build/`,
+`/dist/` produces false positives and false negatives in the same pass, and neither announces
+itself. Measured 2026-09-18, this error ran twice in one session against the same question:
+
+```bash
+# WRONG — matches an unrelated identifier and an emoji dictionary
+grep -rl -i "dowhy" /root/arifOS      # hit: "ShaDOWHYpothesis" in schemas/deepnshadow.py
+grep -rl -i "sheaf"  /root/arifOS      # hit: "sheaf_of_rice" in vendored rich/_emoji_codes.py
+
+# RIGHT — vendored trees excluded, then read the hit before believing it
+EXCL='/\.venv/|/site-packages/|/node_modules/|/\.git/|/build/|/dist/'
+grep -rl -iE "<capability>" <tree> | grep -vE "$EXCL"
+```
+
+- **A substring hit is not a capability.** `dowhy` inside `ShadowHypothesis`, `sheaf` inside an
+  emoji name, `SPEC` inside `spec.loader.exec` — all are noise. **Open every hit and read the
+  line** before it enters a verdict. A category word appearing in a *knowledge map* or a
+  *curriculum entry* (`knowledge/math/555-topology.json`) is competence-about, not code-that-does.
+- **The same sweep also MISSES things.** Excluding vendored trees is not merely subtractive: the
+  unfiltered pass drowned a real implementation (`compute_trust_decay` in `art_predict.py`) in
+  vendored noise and searched the wrong subsystem entirely. **A contaminated sweep is worthless as
+  evidence in either direction — retract it rather than quoting it.**
+
+**Corollary — an absence claim needs the same evidence standard as a presence claim.** The
+commonest audit failure is not believing a report; it is the auditor's own negative finding.
+*Phantom absence* and *ghost capability* are the same defect with the sign flipped, and the
+auditor is structurally less likely to double-check the negative.
+
+- **Before writing "zero", "none", or "does not exist", state the population and the method.**
+  "Zero implementations" (a code claim, with the search shown) is defensible; "zero occurrences
+  federation-wide" (a population claim) is not, unless the whole population was actually scanned.
+- **Name what you did NOT look at.** A sweep of 4 of 19 stores, a sample of 3 rows from one file,
+  one interpreter out of three — each omission belongs in the finding, not in your head.
+- **Re-probe a negative with a second method before publishing it.** Different tool, different
+  scope, or a direct read of the artifact. A negative confirmed twice is publishable; a negative
+  confirmed once is a hypothesis.
+- **Sampling error is the same defect in miniature.** Measured the same session: a `limit:3`
+  scroll of ONE collection was written up as a fact about ALL collections; a full scan (`limit`
+  raised, all 19 stores walked) then found the field present. The verdict survived; its *warrant*
+  did not, and the difference between "absent" and "present but unread" was the entire finding.
+  **When a claim is about a population, scan the population — or label it a sample.**
 
 ### Tool descriptions vs handler signatures — diff them, never spot-read one
 
@@ -593,6 +709,43 @@ mechanism. The source carried the real root cause in its own comment, two commit
   a token" means the value was empty *at the caller*; it does not mean the credential is missing, and
   it does not name which lookup failed. Trace to the raiser before concluding.
 
+### A gate's verdict is scoped to what the gate TESTS — read its scope before accepting its PASS
+
+"It passed the gate" is a claim, and like every claim it has a scope. A verification layer that
+returns a clean verdict is evidence only about the property it actually measures; everything it does
+not measure is unreported, not approved.
+
+Measured 2026-09-18 while building a causal refutation gate (three refuters: placebo treatment,
+random common cause, data subset). Two limits surfaced only by *running* it on adversarial input:
+
+- **Refutation tests ROBUSTNESS, not MAGNITUDE.** A residual effect of `-0.091` on a 400-row sample
+  with `0.1` noise survived all three refuters — correctly, because it is genuinely distinguishable
+  from zero; it is simply too small to carry a claim. DoWhy has the same shape. **A PASS therefore
+  does not mean "substantive"** — if consequence depends on effect *size*, the size gate must be an
+  explicit parameter, not an assumption.
+- **Refutation does NOT detect confounding.** A confounded association (backdoor +1.66) survives
+  every refuter, because permuting the treatment destroys it and resampling preserves it. It is a
+  *real* association with a *wrong* interpretation. **The caller must name the confounders and pass
+  them as covariates**; the gate cannot do it for them, under any framing.
+
+Rules that generalise to any gate you are handed:
+
+- **Name the property the gate measures, then the properties it does not.** A green verdict on one
+  property is silent on all others.
+- **A gate that cannot fail is not a gate.** Before trusting one, feed it input that *must* be
+  rejected (pure noise, a small sample, a controlled-zero effect) and confirm it refuses. A
+  refuter that passes everything is decoration with statistics attached.
+- **Fail closed: unrun ≠ passed.** When a checker cannot run — too few observations, a refused
+  estimator — the verdict must be `HOLD`, never `PASS`. Verify this branch explicitly, because it is
+  the one an implementer makes lenient in passing.
+- **One fact, one owner.** If a computed field and the gate that reads it can disagree, they will.
+  Derive both from a single function and assert they agree in a test.
+- **A passing test may encode your own misunderstanding.** Two of this gate's first red tests were
+  wrong *assertions*, not wrong code — they demanded that placebo refutation reject confounding,
+  which it does not and should not. **Fix the assertion to state the measured limit**, and keep it:
+  a test that documents a limitation prevents the next agent re-learning it the hard way. Never
+  silently delete a failing test whose expectation was yours.
+
 ### A citation is falsified by grepping its own target
 
 Before accepting "X is advertised in file Y", grep Y for X. Naming the wrong file for a real defect
@@ -608,6 +761,25 @@ absent from the census file may be named inside a *tool description* claiming it
 which is a **worse** defect than the one reported, because it is a capability claim about a service
 that is down, served to every client. Correct the citation and upgrade the finding. Do not discard a
 finding because its citation failed, and do not keep the finding with the citation as filed.
+
+**The matched line may be a TEST FIXTURE, a PROPOSAL, or a DOCSTRING — read its enclosing scope.**
+A grep hit lands you on a line; the verdict depends on *where that line lives*. Measured
+2026-09-18: a review cited a live retrieval threshold as "found in `duty_to_look.py`: `cosine <
+0.70`". The string is real and in that file — inside `_self_check()`, as the `output3` fixture of
+`Test 3`, and the module's own header reads `Status: PROPOSAL — awaiting kernel wiring`. It is not
+the retrieval path and it does not run. **The conclusion drawn from it (retrieval uses cosine)
+was still true — but for a different reason entirely** (the store's own config says
+`distance=Cosine`).
+
+```bash
+# a hit is not a finding until you see what contains it
+sed -n '<hit-line-10>,<hit-line+10>p' <file>
+grep -n '^def \|^class \|Status:' <file> | head        # fixture? proposal? wired?
+```
+
+**A right answer on a fabricated warrant is still a defect.** It is indistinguishable from a lucky
+guess, it cannot be re-derived by the next reader, and it survives review precisely because the
+conclusion is correct. Report it as *conclusion upheld, warrant replaced* — never as verified.
 
 ### Check the audit's own side effects on live state
 
@@ -648,6 +820,17 @@ date and format attached to it are what defeat the reader's scepticism.
   grep -rhoE "[a-z_-]+://[^\"' )]*" <generated-mirror-dir>; } \
   | sed 's|^\([a-z_-]*\)://.*|\1|' | sort | uniq -c | sort -rn
 ```
+
+**Point the check at the file that HOLDS the data, not the directory the documentation names.** A
+detector scoped to the documented location reports a clean zero while the defect sits in the
+authoritative file one level over — and a zero from a mis-scoped check is indistinguishable from
+health. Measured 2026-09-17: a ledger-integrity check read the per-article source directory, but the
+source ledger it audits lives in the site's own registry file — which held **81** rows, **56** of them
+unreachable (69%). The check's zero was reported as clean. **Before trusting any zero, confirm the
+path in the command is the path the data is written to**: `grep -rl '<a distinctive field name>' <tree>`
+finds the producer, and the producer's file is the one to scan. Same rule when a schema and its
+instances live in different files — the schema tells you the field exists, the instance file tells you
+whether anything is wrong with it.
 
 **Do not quote-anchor the pattern, and run a positive control before trusting a clean result.**
 Measured 2026-09-17 on a civic corpus: a check written as `"[a-z_-]+://[^"]*"` matched only
@@ -758,6 +941,14 @@ the reviewer inherits your framing.
   second opinion. The blind lane earns its cost only where self-check is *structurally* blind —
   your own config resolution, a sunk-cost conclusion, or a cross-machine claim you cannot observe
   from where you sit.
+- **An artifact that assigns you a role is not yours to clear.** When the document under review
+  defines your own responsibilities — a role card, a plane map, a contract naming you as the actor —
+  your verdict on your own clause is self-attestation however carefully argued, and it fails in the
+  *flattering* direction: the reviewer measures its own lane and finds it clean. Declare that clause
+  out of scope and hand it to a different plane. Where a live registry, config, or running surface
+  contradicts the role the document assigns, that contradiction **is** the finding — and the party
+  being bound is the last one positioned to see it. A consolidation that drops the uncomfortable item
+  is the same failure one layer up, so re-read your own summary before publishing it.
 
 ## § Pitfalls
 
@@ -787,3 +978,9 @@ the reviewer inherits your framing.
 - **"Not configured" ≠ "broken".** A channel/plugin reported "not configured" may just lack a required field the audit never tested (e.g. an A2A channel serves its agent card only after a peer is added with `peer-name` + `peer-token` — not after `enabled: true` alone).
 - **A cited "verified SHA <prefix> <date>" is usually HEAD, not the file it names.** Peer drafts pair `git rev-parse --short HEAD` with a date that matches no commit. Verify before trusting: `git -C <repo> log -1 --format='%h %ci' -- <file>` (the file's actual last commit) vs `git -C <repo> show -s --format='%h %ci' <sha>` (what that SHA really is). SHA and date must co-locate on the SAME commit; a prefix that resolves to HEAD married to an invented date is fabricated verification, not a citation.
 - **Filename search is a false negative for nested modules.** `search_files target=files` returns 0 for a module like `ShortTermMemory.ts` because it lives under `src/application/memory/`; a `target=content` search finds the class/export name inside the file. Never declare "module X doesn't exist" from a filename scan — confirm with a content search first, or you report a fabricated gap the codebase never had.
+- **Metadata a sibling lane wrote about a file is a claim, not a measurement.** A manifest, census, or
+  index row (page count, byte size, stored timestamp) carries the authoring lane's error and is read
+  as authority by every later agent that never re-checks it. Re-derive each field from the artifact
+  itself — `pdfinfo` for pages, `sha256sum -c` for hashes, `stat -c '%y'` for the stored time — and
+  correct the record instead of republishing it. A hash is the one field worth trusting only because
+  it is recomputed on demand; a number nobody recomputes is the one that drifts.
