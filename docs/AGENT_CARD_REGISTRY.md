@@ -31,7 +31,7 @@
 | 777-FORGE | `AAA/agents/777-FORGE/` | Executor — governed execution |
 | 888-APEX | `AAA/agents/888-APEX/` | Judge — constitutional verdicts |
 
-## AAA Edge Agents (7)
+## AAA Edge Agents (9)
 
 | Card ID | Directory | Type |
 |---------|-----------|------|
@@ -42,6 +42,8 @@
 | opencode | `AAA/agents/opencode/` | Forge worker |
 | prospect-maturation | `AAA/agents/prospect-maturation/` | GEOX pipeline |
 | agent-zero | `AAA/agents/agent-zero/` | Experimental agent |
+| kanak-kanak | `AAA/agents/kanak-kanak/` | Novelty probe — PROPOSE_ONLY, arif_think(wonder) (2026-09-17) |
+| abang-sado | `AAA/agents/abang-sado/` | Protector-executor — A-FORGE lane face, sealed-envelope-only (2026-09-17) |
 
 ## GEOX Skill Agents (11)
 
