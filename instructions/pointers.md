@@ -78,7 +78,7 @@ Clerks do **not** curl `:7073` at init. Hero is the only thinker.
 | `/root/AAA/skills/SKILL_ALIAS_TABLE.json` | **Alias table** — 166 rows (V3 short name → disk) |
 | `/root/AAA/skills/CONTRAST_ANALYSIS_2026-08-08.md` | **Zen contrast report** — 10-surface audit template |
 | `/root/AAA/skills/scripts/skill-mesh-sync.sh` | Mesh sync — grok/claude/codex/opencode symlinks |
-| `/root/AAA/skills/AUDIT-recursive-audit/` | **v2.0** multi-surface audit — drift/dual-name detection |
+| `/root/.hermes/skills/core/governance/skill-portfolio-audit/` | multi-surface audit — portfolio/drift/atlas (absorbed `AUDIT-recursive-audit`, `AUDIT-drift-detector`, `AUDIT-skill-atlas`, `AUDIT-agent-skill-mesh`, Wave 2) |
 | `/root/AAA/skills/FORGE-mcp-testing/` | **MCP testing doctrine** — use MCPJam Inspector, not coding agents |
 | `http://127.0.0.1:6274` | **MCPJam Inspector** — local test/debug/evals for any MCP server |
 | `100.64.0.2:6274` | MCPJam via Tailscale (Arif's Windows) |
