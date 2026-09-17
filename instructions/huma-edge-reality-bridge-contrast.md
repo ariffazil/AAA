@@ -125,10 +125,86 @@ its subject is already built. If anything is warranted it is a *reconciliation* 
 one owner, and proof the existing gate recognises the live tokens. That is a different, smaller, and
 far more falsifiable task than the one proposed.
 
-**Method note (feeds Law 1).** The musyawarah voices each extended the evidence base and each
-corrected it — one withdrew its own hypothesis after falsifying it. Two independent voices found
-what one auditor had missed precisely because they attacked from opposite directions. This is what
-independence buys, and it is why the voices must not see each other.
+### 8b. AMENDMENT — my own §8 conclusion was partly WRONG (verified 2026-09-18, post-musyawarah)
+
+§8 above states the gap is "**read-side only**". **That is falsified.** There is an equal and more
+consequential **write-side** defect, and it is live. Five findings, each re-probed by hand after the
+musyawarah voices reported them — none is taken on a voice's word.
+
+**A1 — The class is read as `truth_class` at the moment of writing. Nothing writes that key.**
+`arifosmcp/runtime/memory_store.py:1173`:
+`payload["sro"] = compute_sro_block(truth_class=payload.get("truth_class"))`
+The payload carries `epistemic_class`; the SRO stamp asks for `truth_class`. Same defect at `:1359`.
+Result: the class is **present and silently discarded** exactly where it decides something.
+
+**A2 — The discard silently mints the wrong TTL.** `admissibility.py:189-190`:
+`if label not in _VALID_TRUTH_CLASSES: label = "INT"` → the INT window is 90 days. The live
+`DERIVATION` points called for DER's 180. Arithmetic on the live values: `sro_migrated_at`
+2026-09-11 + 90d = `expires_at` 2026-12-10 — the INT window, not the DER window (which would be
+2027-03-10). **The class-keyed expiry ladder the gate is praised for is inert at the live writer**,
+because the class never reaches it.
+
+**A3 — The gate FAILS OPEN on an unknown class.** `admissibility.py:427-441`: absent class →
+`tc = "INT"`; absent confidence → `confidence = None`; then
+`if confidence is not None and confidence < floor:` — **when confidence is `None` the floor check is
+skipped entirely** and the function returns `"admissible": True`. An unlabelled point therefore takes
+the **most permissive** path. This is the exact inverse of what a provenance gate should do, and it is
+the strongest argument in the whole dispute — for fixing the existing gate, not for a new field.
+
+**A4 — The low-evidence BLOCK is unreachable on the Qdrant search path.** `f4_retrieval_policy.py:437-441`:
+`evidence_confidence = mem.get("phoenix_psi_utility", 0.5)` · `f2_truth = mem.get("f2_truth_confidence", 0.5)`
+· `confidence = max(...)` · `if confidence < _MIN_EVIDENCE_CONFIDENCE` (0.30).
+`memory_store.py` contains **zero** occurrences of `f2_truth_confidence`, so it always resolves to
+its 0.5 default, and `max(x, 0.5) >= 0.5 > 0.30` **always**. A governance branch that cannot fire is
+decoration with a threshold attached.
+
+**A5 — The proposed score modifier would be a NO-OP as specified.** The candidate list is
+**RRF-fused**: `memory_store.py:2032` builds `rrf_score`, `:2081` sorts the fused map by it, `:2097`
+re-keys `results` on it, `:2137` sorts, `:2148` calls the gate, `:2166` takes
+`final_mems = governance_filtered[:limit]` with **no re-sort afterwards**. So mutating `mem["score"]`
+inside the gate changes nothing that reaches the caller. The artifact's "Qdrant payload filter + score
+modifier, zero collision" assumes a plain-cosine ordering that is not the ordering in force (Cosine is
+the per-list metric; RRF is the ranking key).
+
+**A6 — The policy file itself says its class-keyed calibration is immature.**
+`config/memory-admissibility-policy.yaml:63,71` — `min_confidence: null` in **both** modes, with the
+inline comment *"null = disabled until calibration data matures"*. An institution whose own policy
+declares the calibration immature is a poor place to introduce class-based ranking. This is the
+strongest support for the HOLD, and no voice needed to argue it — the artifact says it.
+
+**A7 — The F13 hazard, and it is the direction-change.** Of the 9 ACTIVE (recallable) points in
+`arifos_memory`, 3 carry `DERIVATION` and 6 carry no class — and among those 6 are points holding the
+sovereign's own private human records. Under the proposed weight table, unlabelled scores 0.70 and
+`DERIVATION` scores 0.85, so **class-ranking would demote the sovereign's private records below
+derived ontology notes.** That is not a technical trade-off; it is a direction change, and it is the
+concrete reason the score-modifier limb is F13-class while the write-wiring fix is not. *(The records'
+contents are deliberately not reproduced here.)*
+
+**A8 — `SOVEREIGN_TESTIMONY` writes to a collection that does not exist.**
+`substrate_loader.py:39` defines `EPISTEMIC_CLASS = "SOVEREIGN_TESTIMONY"` targeting
+`arif_human_substrate`, which is **not among the 19 live Qdrant collections**. One of the three
+"canonical definitions" cited in §2 therefore targets a non-existent store. UNKNOWN whether dead,
+undeployed, or deployed elsewhere — and deliberately **not aliased** in any proposed vocabulary,
+because giving sovereign testimony a numeric retrieval weight is a constitutional judgement, not an
+engineering one.
+
+**A9 — The vocabulary is forked four ways, and the only live token is in none of them.**
+`{OBS,DER,INT}, {OBSERVED,DERIVED,ESTIMATED,SIMULATED,INFERRED,HYPOTHESIS}`,
+`{OBSERVATION,DERIVATION,INTERPRETATION,SPECULATION,…}`, and the live payload value **`DERIVATION`** —
+which matches **no enum in the tree**. Any score modifier built against the existing constant would
+misclassify **100%** of currently-classified points, and A2's silent coercion would hide it.
+
+**Corrected shape of the finding.** The defect is not a missing consumer. It is a **missing
+producer plus two fail-open paths**: the canonical writer never supplies the class (A1), the SRO gate
+admits absence permissively (A3), and the evidence floor cannot fire (A4). Adding a fourth consumer on
+top of an inert chain raises entropy rather than lowering it (F4). **The correct first change is a
+three-line write-side wiring fix plus vocabulary unification — not a field, not a backfill, and not a
+ranker.**
+
+**Still UNVERIFIED (carried forward, not filled in):** whether repairing A1 restores the intended
+TTL for future writes only (it cannot un-expire the 31 already-EXPIRED points); whether `min_confidence`
+is null because calibration is genuinely absent or because nothing ever wired it; and whether any
+retrieval path other than `memory_store.py:2148` reaches the gate.
 
 ## Correction Log
 
@@ -137,5 +213,7 @@ independence buys, and it is why the voices must not see each other.
 - **Correction 3:** Do not read §2's "MISSING" column as a work queue. It is a probe result.
 - **Correction 4 (2026-09-18, this audit against itself):** The first pass's raw sweep was **contaminated and is RETRACTED as evidence**. It did not exclude vendored trees, and it accepted substring matches: `dowhy` → `ShadowHypothesis`; `sheaf` → `sheaf_of_rice` (emoji dictionary). The same pass **missed** `compute_trust_decay` (`art_predict.py`), a real Ebbinghaus-grounded decay applied to tool trust — §2 row 4 has been upgraded accordingly. The words "ZERO occurrences federation-wide" in the first draft **overstated the evidence** and now read "ZERO implementations, with the word present in knowledge-competence maps". Counts in the score line are unchanged (component 4 stays PARTIAL, component 5 stays MISSING) — but the *warrant* changed, and the difference between those two statements is the entire lesson of Law 6.
 - **Correction 5:** Only the clean sweep — vendored trees excluded, word-presence separated from implementation — may be cited as evidence in this register. Any earlier sweep remains in the record as a false start, not as a finding.
+- **Correction 6 (2026-09-18, post-musyawarah): §8's "the gap is READ-SIDE ONLY" is FALSIFIED.** An equal and more consequential **write-side** defect exists and is live (§8b, A1–A9, each re-probed by hand). §8's *ruling* — HOLD the build — stands and is strengthened; its *diagnosis* was incomplete in the direction that would have aimed the fix at the wrong layer. The corrected shape: **a missing producer plus two fail-open paths**, not a missing consumer. Note the recurrence of this session's own theme — my first pass was wrong in the flattering direction, because "the gate already exists and does the job" is a more comfortable conclusion than "the gate exists and three of its branches are inert".
+- **Correction 7:** Do not lift findings out of §8b without their probe. Each was reported by a musyawarah voice and independently re-verified here; a downstream summary that cites them without the file:line is repeating them on authority, which is the defect this register exists to catch.
 
 DITEMPA BUKAN DIBERI ⚒️
