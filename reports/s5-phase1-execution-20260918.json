@@ -44,7 +44,40 @@
   "live_tree_commits_behind": 38,
   "blocked_operation": "unit-restart of geox-mcp.service (K-02 T3 pattern match)",
   "blocked_state": "BLOCKED_AT_GATE",
-  "activated": false
+  "activated": false,
+  "regression": {
+   "method": "pristine HEAD vs patched, same pytest selection, failure lists diffed",
+   "baseline": "26 failed / 238 passed",
+   "patched": "28 failed / 236 passed",
+   "new_failures": [
+    "tests/test_geox_fix_brief_a_b_c.py::test_c_acceptance_session_payload_gates_measurable",
+    "tests/test_seismic_zen_f1.py::test_f1_measure_throw_feeds_gates"
+   ],
+   "both_assert": "local_verdict == QUALIFIED_CANDIDATE for a framework the K-* gates KILL",
+   "evidence": {
+    "acceptance_fixture": {
+     "combined_gate_verdict": "KILL",
+     "kills": [
+      "K-THROW",
+      "K-DL",
+      "K-RESTORE"
+     ],
+     "detail": "throw grows toward tip; D/L 1.477e-01 vs global 0.005-0.05; restore residual 0.33-0.89 vs tol 0.05"
+    },
+    "measure_throw_fixture": {
+     "kill": "K-THROW",
+     "detail": "throw_profile_m [1,1,1,1,1] constant -> fails tip-taper"
+    }
+   },
+   "tests_edited": false,
+   "reason_not_edited": "rewriting an assertion to match new code is the self-modification asymmetry Law 6 forbids",
+   "earlier_rule_bug": {
+    "found": 4,
+    "after_narrowing": 2,
+    "bug": "treated any governance_status==HOLD as falsification, mislabelling empty-framework/unknown-mode"
+   },
+   "pre_existing_failures": 26
+  }
  },
  "names_corrected": {
   "K-TAPER": "K-THROW",
