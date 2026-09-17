@@ -12,8 +12,11 @@ from __future__ import annotations
 import asyncio
 import logging
 import os
+import subprocess
 import uvicorn
 from contextlib import asynccontextmanager
+from pathlib import Path
+
 from fastapi import FastAPI, HTTPException
 
 from a2a.server.request_handlers.default_request_handler import LegacyRequestHandler
@@ -30,6 +33,43 @@ logger = logging.getLogger("aaa.server")
 
 # ── Cockpit globals ────────────────────────────────────────────────────────
 _probe: OrganProbe | None = None
+
+# ── Deployment-attestation helpers (musyawarah-2026-09-17-mcp-migration) ─────
+# Compute drift dynamically from real files instead of hardcoded strings.
+# This closes the F2 TRUTH defect: AAA :3001/health must reflect reality.
+_DEPLOY_MARKER = Path("/opt/arifos/releases/deployed-commit")
+_ARIFOS_DIR = Path("/root/arifOS")
+
+
+def _read_deployed_commit() -> str:
+    """Return the SHA deployed at /opt/arifos, or 'unknown' if missing."""
+    try:
+        if _DEPLOY_MARKER.exists():
+            sha = _DEPLOY_MARKER.read_text().strip()
+            if sha:
+                return sha
+    except (OSError, PermissionError) as exc:
+        logger.warning("could not read %s: %s", _DEPLOY_MARKER, exc)
+    return "unknown"
+
+
+def _read_source_commit() -> str:
+    """Return HEAD of /root/arifOS, or 'unknown' if git is unavailable."""
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            cwd=str(_ARIFOS_DIR),
+            capture_output=True,
+            text=True,
+            timeout=5,
+        )
+        if result.returncode == 0:
+            sha = result.stdout.strip()
+            if sha:
+                return sha
+    except (OSError, subprocess.TimeoutExpired, subprocess.SubprocessError) as exc:
+        logger.warning("git rev-parse HEAD failed in %s: %s", _ARIFOS_DIR, exc)
+    return "unknown"
 
 
 def create_agent_card() -> AgentCard:
@@ -254,9 +294,9 @@ def create_app() -> FastAPI:
                 "last_probe": summary["last_probe_at"],
             },
             "identity_hash": "f909eab007954d345edd20ecad73c361b6b2ad2d417b15b9cf0454caf9399578",
-            "deployed_commit": "e20c29f",
-            "source_commit": "e20c29f",
-            "deployment_drift": False,
+            "deployed_commit": _read_deployed_commit(),
+            "source_commit": _read_source_commit(),
+            "deployment_drift": _read_deployed_commit() != _read_source_commit(),
         }
 
     # ── Cockpit Endpoints ──────────────────────────────────────────────

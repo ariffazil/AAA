@@ -1,7 +1,8 @@
 ---
 id: CLAUDE-agentic-state
 name: claude-agentic-state
-description: > [fed: tier=meta-mesa, auto=T1, risk=low]
+description: >
+  [fed: tier=meta-mesa, auto=T1, risk=low]
   Persistent agentic state doctrine for Claude Code (FI-002). Survive across sessions by
   writing to /root/.claude/agent_state/. Auto-memory (CLAUDE_IDENTITY.md + memory/)
   holds lessons learned; this holds session-overlapping capability + mission history.

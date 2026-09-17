@@ -1,7 +1,8 @@
 ---
 id: CLAUDE-meta-mesa
 name: claude-meta-mesa
-description: > [fed: tier=meta-mesa, auto=T1, risk=low]
+description: >
+  [fed: tier=meta-mesa, auto=T1, risk=low]
   Meta-mesa orchestrator for Claude Code (FI-002). Given a multi-step mission, decompose
   into L1/L2 skills, sequence them, route to the right organ (arifOS/A-FORGE/GEOX/WEALTH/WELL).
   Load this when a mission spans more than 2 skills or 3 steps, or when you feel yourself
