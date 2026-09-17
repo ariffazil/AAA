@@ -13,6 +13,8 @@ Press releases describe the group. Filings describe the entity that signed. The 
 - Testing "is this expansion or substitution?" for any PETRONAS global deal
 - Any claim about PETRONAS offshore revenue, trading arms, or European/Atlantic LNG activity
 - **Auditing a third-party PETRONAS critique or corporate document** — every number in it gets checked against the group's own report before you repeat it (see `references/group-financial-report-audit.md`)
+- **Pricing a dispute, a concession, or a competitor's entry into a contested asset** — the counterparty's return on capital it never had to pay, not our cost of carry (see `references/dispute-time-value-and-optionality.md`)
+- **Any deal where the counterparty is a foreign listed company** (Eni, TotalEnergies, Shell, ExxonMobil, BP, any JV partner) — that party's SEC filings are primary record, are dated, and routinely carry structure the host country never publishes (see `references/counterparty-sec-filings.md`)
 
 ## Core insight
 
@@ -24,11 +26,12 @@ Known entity set:
 |---|---|---|
 | PETCO Trading (UK) Ltd (PTUK) | 06695912 | trading arm; crude/products/LNG marketing, chartering |
 | LNG Investments Europe Ltd (LIEL) | 09291740 | Dragon LNG (Milford Haven) offtake; UK NBP regas; global LNG resale |
-| Searah | UK Co. #17027115 | upstream operatorship from Jul 2026 — moves gas cash flows under English Commercial Law |
+| Searah | UK Co. #17027115 | JV parent **Searah Limited**, London (Holbein Gardens SW1W 8NR); operating cos in Jakarta (Ketapang, Muara Bakau) and KL (Searah Malaysia). Assumed operatorship of five Malaysian upstream assets from Petronas Carigali effective 1 Jul 2026 — moves gas cash flows under English Commercial Law |
 
 ## Procedure
 
 1. **Identify the signing entity** from the press release. Note if the ceremony screen disagrees with the release — that discrepancy is itself a finding.
+1b. **Check the counterparty's mandatory filings before reaching for a search engine.** A host government is under no obligation to publish deal terms; a listed counterparty is. Structure, asset counts, regional splits, financing and accounting treatment therefore land in the counterparty's filing first, in an exhibit it signed. General search engines index these badly — block codes and deal terms return unrelated results. See `references/counterparty-sec-filings.md`.
 2. **Find the filing history**:
    `https://find-and-update.company-information.service.gov.uk/company/<NUMBER>/filing-history`
    Browser-driven (`js` on body innerText) works; the page is JS-heavy.
@@ -72,6 +75,9 @@ Known entity set:
 - PERSON WITH SIGNIFICANT CONTROL filings are useful: they show when a ministry (e.g. Minister of Finance of Malaysia) was added or removed as PSC — a governance breadcrumb with dates.
 - **Never repeat a number because it sounds authoritative.** Bank/analyst estimates, rounded recollections and third-party critiques are not company figures. Trace each number to the filing or drop it — one wrong figure discredits an otherwise-sound argument.
 - **Verify a corporate statement against the live website, not memory.** Mission/purpose/values wording changes over time; quote what the site says today.
+- **A clone of the corporate site is not the corporate site.** A staging or agency deployment can look identical to the live site and rank in search. Treat it as a source only after checking the legal entity name in its footer, whether it labels its own figures "illustrative"/"not operational readings", and whether two of its pages agree. Registered-office and group-structure detail from the corporate domain is citable; per-asset production and reserve tables hosted elsewhere are not, however precise they look.
+- **Once you have judged a source unreliable, exclude it — do not label it and then quote it.** A caveated figure is still a figure; the reader keeps the number and drops the qualifier. Flagging is a decision about exclusion, and writing "this source is not authoritative" beside a number lifted from it performs the exact thing the judgement forbade.
+- **The canon is immutable, so a correction is a report, not an edit.** Files under the PETRONAS canon directory (and the S3 routing matrix) carry the immutable attribute: writes fail with `Operation not permitted`, and writing down how to lift it is itself gated. When an audit contradicts a stored canon figure, do not attempt the write — record the conflict with both values, name both sources, and hand it to the user as an F13 decision, because lifting the lock is theirs. A blocked write here is the control working, not a failure to report as one.
 
 ## Reporting standard
 
@@ -100,4 +106,7 @@ The insider's most persuasive evidence is their own earlier writing, and it is t
 ## References
 
 - `references/group-financial-report-audit.md` — auditing the PETRONAS group interim/FY report: the accumulated-share-of-losses trap, net-cash arithmetic, dividend-declared vs analyst estimate, operational-vs-one-off separation, two-series cross-labelling, deck-percentage vs report-absolute, non-cash borrowing movement, and how to handle a conflict with your own stored canon.
+- `references/dispute-time-value-and-optionality.md` — pricing a dispute, a concession or a competitor's entry through time value: float and earnings-uplift computation, effective-price decay under unpenalised delay, clock asymmetry between political and asset actors, reading pleadings for what a party did NOT contest, and the satellite-vehicle vs headcount-reduction distinction.
+- `references/counterparty-sec-filings.md` — working the SEC EDGAR lane for a foreign listed counterparty: the declared-User-Agent requirement, what a 6-K exhibit discloses that a host-country release does not, reading the acquirer's own gain-on-contribution as evidence of transfer value, and the ownership-vs-operatorship split worked through the Searah JV.
 - `references/basin-thermal-maturity.md` — answering "can this basin cook?" for a petroleum geologist.
+- Skill `makcikgpt-article-craft` — when the verified figures are destined for a piece on the user's own publication: the zero-context drafting rule, the verification footer, and the registration surfaces a page needs before it renders at all.

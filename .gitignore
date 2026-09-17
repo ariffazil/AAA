@@ -125,3 +125,4 @@ workspace/
 *.lock
 state-snapshots/
 tmp/
+mcp/filings/cache/*.bin

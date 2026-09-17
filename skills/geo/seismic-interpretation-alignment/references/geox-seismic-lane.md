@@ -21,6 +21,15 @@ any of it: when skill and tool surface disagree, the tool surface wins.
 - `geox_prospect` requires OPERATOR authority; from a default OBSERVE_ONLY session it returns `AUTHORITY_GATE` with a
   HOLD verdict. Raise authority via the kernel init before promising prospect numbers.
 - An OBSERVE-only actor can still read basin profiles and compute indicators; only the evaluation verbs are gated.
+- `geox_basin` accepts optional `session_id`, `actor_id` and `trace_id`. Omitted, the envelope comes back
+  `actor_id: auto-anon` with a generated `ANON-…` session. The receipt still lands, but the read is not
+  attributable — pass the three ids whenever the result will be cited in a deliverable, otherwise the
+  artifact id cannot be joined back to the objective that asked for it.
+- **Catalog evidence is `mode: derived`, not live witness.** A `geox_basin` reply — including a successful
+  one — carries `ext_witness_ready: false` with the explicit note `mode=derived: metabolized/catalog
+  evidence — not live Ext_witness for SEAL geometry`. So even a populated basin profile can support a
+  literature or screening statement and can never witness a SEAL. Quote the mode when the answer graduates
+  into a review pack; do not let "the organ returned data" read as "the organ verified this basin".
 
 ## Iron rules as implemented (observed in response envelopes)
 
