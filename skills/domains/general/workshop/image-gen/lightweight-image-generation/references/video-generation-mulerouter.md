@@ -1,0 +1,1 @@
+../../../minimax-tools/mulerouter-media/references/video-generation-mulerouter.md

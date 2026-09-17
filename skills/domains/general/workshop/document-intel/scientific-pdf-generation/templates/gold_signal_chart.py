@@ -1,0 +1,1 @@
+../../../../../wealth/workshop/trading-exec/trading-signal-chart/templates/gold_signal_chart.py
