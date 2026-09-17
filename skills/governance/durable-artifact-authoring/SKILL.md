@@ -53,10 +53,69 @@ truth is permanent reconciliation debt; the sweep costs seconds.
 
 Commit each surface so the seal is verifiable, and run the repo's doctrine-status gate if one exists.
 
+### The two ledgers are not interchangeable
+
+`/root/AAA/canon/eureka-entries.jsonl` and `/root/AAA/eurekas/eureka-entries.jsonl` are different
+objects with different authority, and Step 1's sweep (`grep -rl … /root/AAA/canon`) will surface the
+first one first:
+
+| Path | Role | Writable? |
+|---|---|---|
+| `canon/eureka-entries.jsonl` | the **frozen ratified registry** — every row is `RATIFIED_*` / `SEALED` / `F13_RATIFIED_CHAT` | **no** — `chattr +i`, append returns `EPERM` even as root |
+| `eurekas/eureka-entries.jsonl` | the **live feed** written by sessions (`ts`, `agent`, `session`, `truth_class`, `status`) | yes |
+
+Write to the live feed. If a row must reach the frozen registry, that is a ratification act: a
+`CANDIDATE` / `PROPOSED_AWAITING_F13` entry plus the sovereign's word, not an append.
+
+**An `EPERM` on append is a governance signal, not a permissions bug.** Check `lsattr <file>` before
+diagnosing anything; the `i` attribute refuses writes by design, and the flag exists to make exactly
+this class of write impossible. Report the true state (`BLOCKED_AT_<gate>`, naming the exact
+operation) and route the entry to the writable surface. Clearing the flag to make your own write land
+inverts the authority order the flag enforces — the same rule as any other protected target.
+
 ## Step 4 — Declare residual debt honestly
 
 If the rule is doctrine-layer only (no kernel enforcement yet), say so in the artifact and in the
 report: *"detection is debt until it can say NO."* Do not let prose binding be read as a gate.
+
+## Session close — classify the remaining work before the candidate
+
+When the ask is to compile what is left and execute it toward a seal, the candidate is the LAST step,
+not the first. Sweep the residue, classify every item, execute what is already inside your authority,
+and HOLD the rest with the reason named.
+
+| Class | Test | Action |
+|---|---|---|
+| Executable | info + authority + capability already exist | **execute now** — the deliverable is the artifact, not a plan to build it |
+| Authority boundary | needs a naming decision, a retirement, or a governance change | HOLD; name the exact decision and its options |
+| Ambiguous by construction | the target has other live dependents, or content is split across two copies | HOLD; say which dependents you resolved |
+
+Some residue looks executable and is not. An advertised *name* whose body exists nowhere is a question
+about whether that name is retired — a **naming** decision, not a cleanup. Build the removal pass,
+dry-run it, and reject it when every target still has other dependents; the honest output is a FAILing
+check plus the named decision, not a quiet deletion.
+
+**The close write path:**
+
+```bash
+python3 /root/scripts/carry_forward.py append --agent <id> --kind <kind> \
+  --session-id <sid> --content "..."
+```
+
+`--agent` is validated against a fixed writer allowlist, and a display name is rejected
+(`[DENIED] agent 'X' not in writer allowlist: [...]`). The refusal names the valid ids — read it and
+retry with a listed one. Do not report a bare refusal as a broken tool, and do not substitute a
+friendlier display name because it looks more accurate.
+
+**State the facts the decision depends on — they are part of the artifact.** Name the repo, the
+commit, and the **branch** each change sits on. A repair whose worktree is on a long-lived proposal
+branch, with the default branch N commits behind, is one `git checkout` from reverting; nobody can
+authorize that without knowing it. Same for anything frozen, externally-owned, or held — say it rather
+than presenting a clean summary.
+
+**An empty input space reports health.** If a close checklist prints "0 remaining", read its input
+count beside it. A check that found nothing because its path was wrong prints the same clean zero as a
+genuinely clean session.
 
 ## Artifact class is not decoration — it decides whether the artifact can bind
 
@@ -216,6 +275,19 @@ and do not stay silent.
 See `references/claim-provenance-audit.md` for the full trace procedure.
 - **A review of work already done is a merge task, not a build task.** Run Step 1 before treating any
   incoming review as new work.
+- **An external reviewer reads the PUBLISHED surface, not your disk — so a review can recommend what
+  you already have and cannot reach.** When a consolidation or retirement leaves a thinned stub, the
+  reviewer sees the stub and proposes the schema, section, or reference that the retired body already
+  contained, usually in less detail than the original. Before drafting anything a review asks for,
+  check two things: is the owner *reachable* (resolve the path the review cites — do not trust a
+  catalog or an index that merely lists it), and is the recommended content already *inside* it (grep
+  the owner and its `references/` for the field names being proposed)? A recommendation that matches a
+  retired body is a **recovery** task — restore the body, wire the pointer — not a build task.
+  Answering it by drafting a fresh contract creates exactly the second owner the rule below forbids.
+- **A proposal to add a contract IS a draft.** An external review's field list, output schema, or
+  "required sections" table is subject to Step 1 like any other artifact: sweep for an existing owner
+  before adopting it. A review can be right about the gap and wrong about the fix — the gap is real
+  and its proposed owner already exists under another name.
 - **A dropped field term makes an equation look clean and lie.** When a doctrine states a pattern, the
   constraint field is part of the claim, not decoration.
 - **Split owners are worse than no owner.** Two files stating one truth diverge, and every later reader
