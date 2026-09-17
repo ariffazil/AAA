@@ -27,13 +27,13 @@ Setiap unsur protocol dipetakan ke arkitek sedia ada. **Guna yang ini, bukan ver
 | Falsification / destructive mandate | ⚠️ ada (AUDITOR voice) tapi belum first-class → **delta-1** | AUDITOR prompt in `musyawarah-gotong` · `forge-musyawawah-deliberation` Phase 1 |
 | Tri-Witness Validation | ✅ floor F3 + suara ARCHITECT/AUDITOR (+external witness) | constitution.md F3 · `FORGE-musyawarah-gotong` |
 | Conflict resolution (B vs C → delta ke metabolizer, F1>F2>888) | ✅ CONVERGE + Gödel lock (no self-cert) | workflow Converge phase · `apex_reversibility_test` |
-| GOTONG_ROYONG_EXECUTE (output→input, filter ΔS) | ✅ sequential hop after dual GO + handoff | workflow gotong phase · `FORGE-cross-agent-handoff` |
+| GOTONG_ROYONG_EXECUTE (output→input, filter ΔS) | ✅ sequential hop after dual GO + handoff | workflow gotong phase · `handoff-contract` (core/federation; absorbed `FORGE-cross-agent-handoff`) |
 | Decoder: SOLUTION + TRADE_OFFS + RISKS_FOR_888 | ✅ position-file + closeout (Lane B vs A, F13 surface) | `forge-musyawawah-deliberation` templates |
 | INCLUSIVE_DELTA → kitaran musyawarah berikutnya | ⚠️ "Surprises/findings" ada tapi tidak first-class → **delta-2** | `forge-musyawawah-deliberation` Phase 4 |
 | W_scar boundary / 888 escalation / SYSTEM_HALT | ✅ Gödel lock + `apex-judge isolate` + F13 | `arifos-constitutional-judge` · `apex_verdict_hold` |
 | A2A opaque handoff (RequestTask JSON-RPC) | ✅ A2A gateway + agent-card (A2A hub) | `/root/AAA/agent-card.json` · aaa-a2a.service :3001 |
 | behavior-validator pada penerima | ✅ OpenClaw handoff + behavioral sink scan | `/root/.openclaw/workspace/scripts/hib_behavioral_sink.py` |
-| Rejection / A2A.TaskError, isolate, jangan teka | ✅ handoff + EMD [HOLD] + isolate | skill `FORGE-cross-agent-handoff` · ander `apex_verdict_hold` |
+| Rejection / A2A.TaskError, isolate, jangan teka | ✅ handoff + EMD [HOLD] + isolate | skill `handoff-contract` · ander `apex_verdict_hold` |
 | Recursive improvement SKILL.md → tri-witness → vector_memory → agent-card | ✅ RSI + skill governance + vector_memory | skill `RSI-recursive-improvement` · `arifos-memory-architecture` |
 | 5-layer governance (OpenCode/MCP/A2A/Hermes/OpenClaw) | ✅ organ: exec=MCP, brain=Hermes, law=OpenClaw | `/root/AAA/docs/ORGAN.md` · organs.yaml |
 
@@ -93,7 +93,7 @@ Patching `forge-musyawawah-deliberation`: tambah falsification sebagai "voice" k
 
 ## §5 — Gotong Royong = Handoff Filter
 
-Guna `FORGE-cross-agent-handoff`. Setiap handoff:
+Guna `handoff-contract` (core/federation). Setiap handoff:
 1. Penerima baca payload sebagai input PIAWAI (bukan restart).
 2. Anggap F1/F2 Phase sebelumnya telah clear — jangan ulang siasat (kecuali jumpa percanggahan).
 3. Output "instantly decodable" oleh agent seterusnya — JSON/schema, bukan prose.
@@ -218,7 +218,7 @@ Do not touch F1-F13 rule sets. Do not run git push. Reversible only.
 | Component | How it integrates |
 |---|---|
 | `delegate_task` tool | Envelope IS the `context` parameter |
-| `FORGE-cross-agent-handoff` skill | Envelope replaces prose handoff |
+| `handoff-contract` skill | Envelope replaces prose handoff |
 | `forge-musyawawah-deliberation` | Envelope for Phase 1 critique dispatch |
 | `aaa-autonomy.ts` plugin | Reads envelope for tool restriction |
 | W_scar gate hook | Envelope CONSTRAINT validated against F1-F13 |
