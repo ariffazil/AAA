@@ -1,0 +1,157 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arifos.dream_proposal.v1",
+  "title": "arifOS Dream Proposal",
+  "description": "Schema for dream_proposal.jsonl records emitted to /var/spool/arifos/dream-proposals/. Proposal-only — promotion requires arif_judge SEAL. Lane B autonomous emission. F13 ratification needed for daily cap policy and source ratification.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "proposal_id",
+    "created_at",
+    "source_agent",
+    "actor_id",
+    "session_id",
+    "federation_inbox_path",
+    "evidence_class",
+    "source_layer",
+    "proposition",
+    "counterfactual",
+    "synthesis_score",
+    "reversibility_grade",
+    "source_ref",
+    "f1_amanah",
+    "f2_truth",
+    "f13_sovereign"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "dream-proposal/1.0"
+    },
+    "proposal_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "UUID v4. Idempotency key — coordinator checks against memory_records before insert."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 timestamp with UTC offset."
+    },
+    "source_agent": {
+      "type": "string",
+      "enum": ["qwen-code", "opencode", "openclaw", "claude-code", "kimi-code", "codex"]
+    },
+    "actor_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+:dream-cycle-[0-9TZ:-]+$",
+      "description": "Format: <agent>:<dream-cycle-iso8601>. e.g. qwen-code:dream-cycle-2026-09-17T15:04:00Z"
+    },
+    "session_id": {
+      "type": ["string", "null"],
+      "description": "arif_init session_id if available, else null."
+    },
+    "federation_inbox_path": {
+      "type": "string",
+      "pattern": "^/var/spool/arifos/dream-proposals/[a-z]+/[a-zA-Z0-9._-]+\\.jsonl$"
+    },
+    "evidence_class": {
+      "type": "string",
+      "enum": ["episodic", "semantic", "procedural", "constitutional", "audit"]
+    },
+    "source_layer": {
+      "type": "string",
+      "enum": ["L1", "L2", "L3", "L4", "L5", "L6"]
+    },
+    "cluster_id": {
+      "type": ["string", "null"],
+      "format": "uuid"
+    },
+    "proposition": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 500,
+      "description": "Falsifiable single-sentence claim. Must be specific enough to be disproved."
+    },
+    "counterfactual": {
+      "type": "string",
+      "minLength": 10,
+      "description": "Falsifier test — what observation would disprove the proposition?"
+    },
+    "synthesis_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Confidence 0–1. Default cap: 0.65 (F7 humility)."
+    },
+    "reversibility_grade": {
+      "type": "string",
+      "enum": ["A", "B", "C", "D"],
+      "description": "A=fully reversible, D=irreversible. C+ requires arif_judge before consolidation."
+    },
+    "source_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "ratified_by"],
+      "properties": {
+        "path": { "type": "string" },
+        "sha256": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+        "ratified_by": {
+          "type": "string",
+          "description": "Sovereign identity — typically 'arif-fazil' for human-ratified or 'arifos:dream-engine' for self-ratified."
+        },
+        "ratified_floors": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["F1_amanah", "F2_truth", "F4_clarity", "F7_humility", "F8_reversibility", "F11_audit", "F13_sovereign"]
+          }
+        }
+      }
+    },
+    "f1_amanah": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rollback_path", "snapshot_ref"],
+      "properties": {
+        "rollback_path": {
+          "type": "string",
+          "description": "Concrete rollback command or path. e.g. 'DELETE FROM memory_records WHERE actor_id = ...'"
+        },
+        "snapshot_ref": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$",
+          "description": "Pre-write snapshot hash for audit trail."
+        }
+      }
+    },
+    "f2_truth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["falsifiable", "counterfactual_present", "witness_class"],
+      "properties": {
+        "falsifiable": { "type": "boolean" },
+        "counterfactual_present": { "type": "boolean" },
+        "witness_class": {
+          "type": "string",
+          "enum": ["human", "ai", "earth", "second-agent", "none"]
+        }
+      }
+    },
+    "f13_sovereign": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cap_respected", "threshold_respected", "cadence_respected", "ratification_required"],
+      "properties": {
+        "cap_respected": { "type": "boolean" },
+        "threshold_respected": { "type": "boolean" },
+        "cadence_respected": { "type": "boolean" },
+        "ratification_required": {
+          "type": "boolean",
+          "description": "True if reversibility_grade is C or D. Consolidator must arif_judge before insertion."
+        }
+      }
+    }
+  }
+}
