@@ -57,4 +57,4 @@ Broken substrate screams (timeout, EROFS, load). Broken authority seals quietly 
 
 ## The three authority surfaces are disconnected
 
-Declarative capability graph, `gate_action` judgment, and the tool execution path are separate surfaces with no hard interceptor between judgment and execution — that gap IS the scope bypass. `gate_action` lives in `arifOS/arifosmcp/boot/internal_rasa.py`; `scripts/constitutional_guard.py` imports a `core.constitutional_gate` module that does not exist (dead CLI). To close the bypass, wire the gate into the execution path (`forge_shell`, `forge_seal_lane_a`), not beside it.
+Declarative capability graph, `gate_action` judgment, and the tool execution path are separate surfaces with no hard interceptor between judgment and execution — that gap IS the scope bypass. `gate_action` lives in `arifOS/arifosmcp/boot/internal_rasa.py`; `/root/scripts/constitutional_guard.py` imports a `core.constitutional_gate` module that does not exist (dead CLI). To close the bypass, wire the gate into the execution path (`forge_shell`, `forge_seal_lane_a`), not beside it.

@@ -1,0 +1,1 @@
+../../../aaa-governance/aaa-doctrine-sealing/references/external-artifact-intake.md
