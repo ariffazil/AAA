@@ -165,6 +165,32 @@ sqlite3 <db> "select length(<vector_payload>) from <chunks_table> limit 1;"   # 
 
 A near-empty store beside a large one is a shadow, not the contract. One host commonly holds several stores for the same capability with **different** contracts (one model at 3072 dims, three others at 768), so staged partial migration is the normal outcome — not the exception. Corroborate compatibility against the store the consumer actually writes, or state plainly which store you measured.
 
+### Rule 1d — a shared launcher path is one point of failure across every unit that names it
+
+Several units can resolve their **interpreter or entrypoint through one shared path**. When that
+path is a link whose target changed during a deploy, every consumer is affected at once while no
+unit file changed — and the breakage arrives wearing an unrelated-looking error.
+
+- **The reported error names the wrong thing.** A stale interpreter path surfaces as a
+  missing-module error from a lazy or optional import (often a traceback/logging dependency), not
+  as a clear path error, because the launcher never gets far enough to say otherwise. Reproduce
+  against the interpreter directly — *before* concluding a package is absent.
+- **Already-running units keep answering health checks from held file handles.** A process already
+  up serves from the inode it holds, so liveness stays green across exactly the fleet that would
+  fail on its next start. This is the sharpest form of Rule 1: **"service responded" and "service
+  can start" are different conditions, and only the second survives a reboot.**
+- **Enumerate the consumers before diagnosing.** `grep -rl '<path>' /etc/systemd/system`, then
+  `systemctl show <unit> -p ExecStart` for each hit, then test that unit's entrypoint against the
+  intended interpreter.
+- **Classify every hit — grep overcounts consumers.** Inert `.bak`/`.disabled` unit files are not
+  consumers, and a unit naming the path only inside `Environment=PATH` (while its `ExecStart`
+  already points elsewhere) is not one either. Say which units genuinely launch through the path.
+- **Confirm the resolved target matches doctrine, not merely that it resolves.** Where a successor
+  path is declared canonical, a link that resolves to the predecessor reports success while
+  running the deprecated origin. After any repair, `readlink -f` the path and compare against the
+  declared origin — a link that resolves is not the same finding as a link that resolves
+  *correctly*.
+
 ## Rule 2 — the encrypted store and the plaintext store are different lanes
 
 Do not write "no plaintext credentials on disk" while a plaintext token file exists in the secrets tree. On KVM8 both exist for Google: `~/.config/gws/credentials.enc` + `.encryption_key` (mode 0600, encrypted, unpacked via keyring — this one works) and `/root/.secrets/google_token.json` (plaintext, dead). A doc that conflates them, or that labels the `GOOGLE_TOKEN_PATH` bridges as "app-password" consumers when they are OAuth-token consumers, is wrong in a way an outside reviewer will find.
