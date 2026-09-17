@@ -1,11 +1,9 @@
 ---
 name: emem-shared-memory
-description: "Verifiable shared memory layer for multi-agent systems and Earth observation (emem.dev). Enables citing signed facts (emem:fact: tokens), offline receipt verification, and cross-agent A2A collaboration without vendor lock-in. [fed: tier=fed-agent-subagent]"
+description: "Verifiable shared memory layer for multi-agent systems and Earth observation (emem.dev). Enables citing signed facts (emem:fact: tokens), offline receipt verification, and cross-agent A2A collaboration without vendor lock-in. "
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----
-
-# `emem` Verifiable Shared Memory Skill
+---# `emem` Verifiable Shared Memory Skill
 
 `emem` is a universal shared memory layer for multi-agent systems (`https://emem.dev/mcp`). It allows independent AI agents across different vendors, models, and sessions to cite signed facts using permanent content-addressed tokens (`emem:fact:...`) and verify them offline with zero-trust Ed25519 receipts.
 

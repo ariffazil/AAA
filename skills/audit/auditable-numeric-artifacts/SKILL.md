@@ -154,6 +154,33 @@ When a reader returns line-by-line corrections against the primary:
 
 ---
 
+## A number spoken about a present person
+
+The hardest audit surface is not a document. It is a live conversation where the subject of your
+number is also reading it.
+
+A figure about someone's own work — how many they sold, how long they slept, what time they left —
+is checked instantly by the one person who counted it, and they will rarely tell you they noticed.
+Unlike a document there is no version bump available: no change table, no previous-value column,
+only a sentence already in the room.
+
+- **If the source is not in hand, the sentence is not available.** Not hedged, not rounded, not
+  "roughly" — unavailable. An approximate figure about a real event is still a fabricated figure.
+- **Check who the question was addressed to.** A question the principal aimed at someone else is a
+  signal you are about to speak without a source; answering it for them, then instructing them to
+  answer, is the same defect twice.
+- **Never invent the cause, either.** A number replaced by a mechanism — "he slept late because…" —
+  is the same fabrication wearing prose.
+- **Keep one epistemic posture across rooms.** Marking something UNKNOWN in a private thread and
+  stating it as fact in a group is not two audiences; it is one false claim.
+- **Retract in the same room, in the same shape.** One plain line owning the figure, then the
+  correction built from the record — not a tightened estimate.
+- **Before claiming a figure came from the record, sweep it.** Logs, prior messages, data files,
+  and the skill's own pointers (a referenced data file may not exist at all). If the sweep is
+  empty, the figure was yours.
+
+---
+
 ## Pitfalls
 
 - **Never take a number from a news article when the primary exists.** Summarisers collapse related-but-distinct metrics under one word; the value survives and the meaning does not.
@@ -163,6 +190,8 @@ When a reader returns line-by-line corrections against the primary:
 - **Never declare one of two published series wrong.** Quote both with labels; verify two-series tables column-to-column.
 - **Never read a recognition as an operating result.** Accumulated-loss recognition triggered by a capital injection is a balance-sheet event; read the exact wording before calling it a period loss.
 - **Never silently revise a published artifact.** Version it, and show what changed.
+- **Never state a count about a real person's own work in front of that person without the source.** They are the auditor, and the utterance cannot be versioned.
+- **Never present an unsourced figure as background colour.** Detail that feels like context is still a claim; add it only from the record.
 - **Never let a headline figure be one you cannot quote.** If it must be derived, say what it is derived from, in the artifact.
 - **Don't skip the full document for a summary of it.** The summary carries the framing; the full document carries the footnotes where the real figure lives.
 

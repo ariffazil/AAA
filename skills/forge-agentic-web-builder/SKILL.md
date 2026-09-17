@@ -2,7 +2,7 @@
 id: FORGE-agentic-web-builder
 name: forge-agentic-web-builder
 version: 1.2.0-2026.09.13
-description: "Use when building, deploying, auditing, or repairing arif-fazil.com constellation and federation agentic web apps. Use when building, deploying, auditing, or repairing arif-fazil.com constellation and federation agentic web apps. Build, deploy, audit, and repair arif-fazil.com constellation sites autonomously. Class-level umbrella: DOCTOR (web_zen CLI), DEPLOY, AUDIT, REPAIR, SEAL, EPHEMERAL. Humans use six missions — not tool menus. USE WHEN: \"deploy site\", \"site down\", \"audit all pages\", \"404 on arif-fazil.com\", \"deploy-vps.sh\", \"makcikgpt broken\", \"web zen\", \"missions 404\", \"vitals proxies\", \"rsync --delete\", \"ephemeral tool\". DO NOT USE FOR: Caddy SSL/DNS/tunnel (FORGE-infra-guardian), LLM SEO (AGI-web-optimization), generic CI/CD (FORGE-cicd-docker-deploy). [fed: tier=fed-agent-subagent, floors=[F1, F2, F4, F11], auto=ANNOUNCE, risk=T2]"
+description: "Use when building, deploying, auditing, or repairing arif-fazil.com constellation and federation agentic web apps. Use when building, deploying, auditing, or repairing arif-fazil.com constellation and federation agentic web apps. Build, deploy, audit, and repair arif-fazil.com constellation sites autonomously. Class-level umbrella: DOCTOR (web_zen CLI), DEPLOY, AUDIT, REPAIR, SEAL, EPHEMERAL. Humans use six missions — not tool menus. USE WHEN: \"deploy site\", \"site down\", \"audit all pages\", \"404 on arif-fazil.com\", \"deploy-vps.sh\", \"makcikgpt broken\", \"web zen\", \"missions 404\", \"vitals proxies\", \"rsync --delete\", \"ephemeral tool\". DO NOT USE FOR: Caddy SSL/DNS/tunnel (FORGE-infra-guardian), LLM SEO (AGI-web-optimization), generic CI/CD (FORGE-cicd-docker-deploy). "
 owner: FORGE (000Ω)
 risk_tier: T2
 floor_scope: [F1, F2, F4, F11]
@@ -10,9 +10,7 @@ autonomy_tier: ANNOUNCE
 forged_from: INCIDENT-2026-07-23 + MISSIONS-ZEN-2026-07-30
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----
-
-# 🌐 FORGE — Agentic Web Builder
+---# 🌐 FORGE — Agentic Web Builder
 
 > One night, three identical failures: `organ_proxy.py` (code), `999/index.html`
 > (doctrine), `static/wealth.html` (renderer output) — all lived ONLY in the

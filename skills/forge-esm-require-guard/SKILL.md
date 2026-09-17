@@ -1,13 +1,11 @@
 ---
 name: forge-esm-require-guard
-description: "ESM/CommonJS interop guard - blocks silent require() failure of .mjs modules at pre-commit. Foodset-derived from scar-001-esm-sct-silent-fail (2026-08-13). Static analysis, read-only. [fed: tier=default]"
+description: "ESM/CommonJS interop guard - blocks silent require() failure of .mjs modules at pre-commit. Foodset-derived from scar-001-esm-sct-silent-fail (2026-08-13). Static analysis, read-only. "
 tags: [forge, guard, esm, pre-commit, scar-derived]
 license: MIT
 capability_tier: default
 ecology_state: WARM
----
-
-# FORGE-esm-require-guard — ESM/CommonJS Interop Guard
+---# FORGE-esm-require-guard — ESM/CommonJS Interop Guard
 
 > **Origin:** Scar scar-001-esm-sct-silent-fail (2026-08-13)
 > **Type:** Foodset-derived skill (generated from failure, not authored from scratch)

@@ -1,11 +1,9 @@
 ---
 name: mata
-description: "Unified visual intelligence truth-pane for arifOS — before ANY claim about image/video generation or understanding capability (or its absence), run mata. Kills stale-prose lies (\"no API key\", \"quota habis\", \"404\") with live canaries. Covers gemini, minimax (Hailuo video), mimo, kimi, dashscope VL, bailian wan2.7, qwen token-plans, ComfyUI, FED, pollinations. Trigger phrases - \"generate image\", \"generate video\", \"no vision model\", \"quota habis\", \"no api key\", \"can we make video\", \"which vision model\", anything visual-capability-related. [fed: tier=fed-multimodal-vision]"
+description: "Unified visual intelligence truth-pane for arifOS — before ANY claim about image/video generation or understanding capability (or its absence), run mata. Kills stale-prose lies (\"no API key\", \"quota habis\", \"404\") with live canaries. Covers gemini, minimax (Hailuo video), mimo, kimi, dashscope VL, bailian wan2.7, qwen token-plans, ComfyUI, FED, pollinations. Trigger phrases - \"generate image\", \"generate video\", \"no vision model\", \"quota habis\", \"no api key\", \"can we make video\", \"which vision model\", anything visual-capability-related. "
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
----
-
-# MATA — Sebelum cakap takde, tengok dulu (look before claiming absence)
+---# MATA — Sebelum cakap takde, tengok dulu (look before claiming absence)
 
 MATA is the federation's single truth surface for visual capability (image gen, video gen, image/video understanding). Canonical map: `/root/AAA/knowledge-graph/MATA.md`.
 

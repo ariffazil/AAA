@@ -3,9 +3,9 @@ name: forge-telegram-audit
 id: forge-telegram-audit
 version: 1.1.0
 risk_tier: low
-description: 'Automated TREE777 security checks for Telegram bot tokens, webhook isolation, [fed: tier=fed-long-context, auto=T0, risk=low]
-  bot permission scope, and A2A bridge security. v1.1.0: organ paths from registry,
-  ports from live probes. USE WHEN: "telegram audit", "bot security", "webhook check",
+description: 'Automated TREE777 security checks for Telegram bot tokens, webhook isolation
+  bot permission scope, and A2A bridge security. v1.1.0: organ paths from registry
+  ports from live probes. USE WHEN: "telegram audit", "bot security", "webhook check"
   "token isolation", "TREE777 check", "telegram permissions".'
 owner: A-FORGE
 floor_scope:
@@ -18,8 +18,7 @@ floor_scope:
 autonomy_tier: T0
 capability_tier: fed-long-context
 ecology_state: WARM
----
-# Telegram Security Audit (TREE777) — Probe-Based v1.1.0
+---# Telegram Security Audit (TREE777) — Probe-Based v1.1.0
 
 **Automated Telegram bot security checks — token isolation, webhook exposure, permission scope.**
 

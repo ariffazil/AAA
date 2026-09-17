@@ -20,6 +20,22 @@ When `allowed_consequence: "cleanup_local"` is set:
 4. After cleanup: verify `git status` shows only expected changes
 5. Report: files deleted, space freed, tracked changes pending commit
 
+### 5-state conformance ladder (NEW — 2026-09-18, scar-bound SCAR-KERNEL-LEGACY-VERDICT-LEAK-002)
+
+When probe finds `Advertised != Callable`, output MUST follow this 5-state ladder:
+
+```
+BROKEN_SURFACE         — public tools return Unknown; substrate DEGRADED
+PARTIALLY_RESTORED     — some public tools resolve+execute, others Unknown
+CONTRACT_RECONCILIATION — public tools execute, but adapter schema drifts remain
+ADAPTER_CLEAN          — public + internal schemas agree, no drift
+CLEAN                  — Advertised = Discoverable = Callable = Schema-compat = Authority-compat
+```
+
+**Forbidden:** Jumping directly from BROKEN to CLEAN. Forbidden: claiming CLEAN before all 5 invariants verified. Probe 2026-09-18T06:38Z showed federation is in **Phase 2 of 3 (CONTRACT_RECONCILIATION)** — never CLEAN, never BROKEN.
+
+**Scar anchor:** SCAR-KERNEL-LEGACY-VERDICT-LEAK-002 (truth told twice is truth fractured — the 5-state ladder prevents premature CLEAN claim).
+
 ---
 
 ## Identity pin (MANDATORY — before anything)

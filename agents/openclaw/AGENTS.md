@@ -3,13 +3,27 @@
 
 > **Canonical:** /root/AGENTS.md
 > **ZEN:** /root/AAA/prompts/AAA-ZEN-ALIGNMENT.md
-> **SOT:** 2026-08-01 | **seal_seq:** SEAL-8a8e064d1fe34443
+> **SOT:** 2026-09-18 | **seal_seq:** SEAL-8a8e064d1fe34443
 > This file is a pointer, not a constitution. Load /root/AGENTS.md for full doctrine.
 
-OpenClaw runtime overlay. Telegram bridge config at /root/.openclaw. Routes through A-FORGE :7071.
+OpenClaw runtime overlay.
+
+- **Edge node:** KVM4 (workshop, 100.64.0.5) — gateway `:18789` (live since 2026-09-04 13:37 MYT per MACHINE_MAP §1)
+- **KVM8 mirror:** loopback DNAT `127.0.0.1:18789 → 100.64.0.5:18789` (iptables NAT, verified 2026-09-13)
+- **Public ingress:** caddy vhosts `openclaw.arif-fazil.com` + `claw.arif-fazil.com` → KVM4 `:18789` (410 internal-only by policy; tailnet-only access)
+- **Telegram:** `@AGI_ASI_bot` polling on KVM4
+- **A-FORGE MCP broker:** KVM8 `:7072` (forge.arif-fazil.com/mcp) — execute lanes route through A-FORGE, never direct
+- **A-FORGE legacy HTTP:** KVM8 `:7071` (af-forge-sense) — read-only probe compatible
+- **Kernel governance:** arifOS `:8088` (mcp.arif-fazil.com) — judge + seal via constitutional
+- **Cold archive (KVM8):** `/root/.quarantine/zen-20260912/.openclaw-cold/openclaw-heritage-2.8G-20260904/` (NOT `/root/.openclaw-cold/` — path migrated 2026-09-07; verify before use)
+- **Agent identity (kernel):** `openclaw/FI-017` · capabilities: OBSERVE · REASON · ROUTE · MEMORY · max_blast_radius: T1 · bound_to: `arif-fazil/F13`
+- **AAA agent card (canonical):** `/root/AAA/agent-cards/functions/openclaw/agent-card.json` (schemaVersion 2.3.0)
+- **A2A federation card:** `/root/AAA/a2a-server/agent-cards/federation/openclaw.json` (protocolVersion 1.2)
+- **Identity doc:** `/root/AAA/agents/openclaw/IDENTITY.md` — kernel-aligned T1 (capabilities OBSERVE · REASON · ROUTE · MEMORY, FI-017, bound_to arif-fazil/F13); drift resolution table embedded at §Authority. OpenClaw cannot directly invoke forge_shell/forge_evaluate/forge_execute — must route through A-FORGE :7072 with lease + authority envelope.
+- **F13 ratification status:** T1 alignment landed 2026-09-18 across all 4 legacy sources (organs.yaml DISPLAY_ONLY → T1; functions/ and agents/openclaw/ cards ROUTE_BRIDGE → T1; IDENTITY.md GATEWAY → T1). Sealed declaration at `/root/AAA/governance/OPENCLAW_AUTHORITY_RECONCILIATION_2026-09-18.md` (F13_PENDING). Carry_forward entry `e-openclaw-f13-pending-20260918` awaiting sovereign ratification. See `OPENCLAW_AUTHORITY_RECONCILIATION_2026-09-18.md` for full alignment table.
 
 If this file disagrees with `/root/AGENTS.md`, the kernel wins. Fix this file.
 
 ---
 
-*ZEN-aligned 2026-08-01. Snapshot: /root/forge_work/zen-snapshots/20260801T104455-agents-md-zen.*
+*ZEN-aligned 2026-08-01, re-aligned 2026-09-18 (KVM4 cutover doctrine update + drift reconciliation).*
