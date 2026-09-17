@@ -55,6 +55,48 @@
   "http_status": 200,
   "sha256": "cb90ffafc5b6f997b60aa109e07008223ad35abe896ec7918fd43652b4057329"
  },
+ "https://efts.sec.gov/LATEST/search-index?q=%22ExxonMobil%22+Malaysia+%22production+sharing+contract%22+Petronas": {
+  "bytes": 59480,
+  "fetched_at_epoch": 1789647685.9585705,
+  "fetched_at_utc": "2026-09-17T12:21:27Z",
+  "http_status": 200,
+  "sha256": "62575e9dfe72b5a89e4988b4af1a21df7ba76b8f7700bd5bd67b81f029749f3b"
+ },
+ "https://efts.sec.gov/LATEST/search-index?q=%22Gas+Production+Sharing+Contract%22+Malaysia+Petronas": {
+  "bytes": 36,
+  "fetched_at_epoch": 1789647841.9769979,
+  "fetched_at_utc": "2026-09-17T12:24:02Z",
+  "http_status": 500,
+  "sha256": "660f19c09a36ca1620054261590b73df388b95892469ff17c1caf4e50376aa02"
+ },
+ "https://efts.sec.gov/LATEST/search-index?q=%22Malaysia%22+%22Petronas%22+production+sharing": {
+  "bytes": 60310,
+  "fetched_at_epoch": 1789647644.9002333,
+  "fetched_at_utc": "2026-09-17T12:20:45Z",
+  "http_status": 200,
+  "sha256": "fdb0807dc597ca7b4321677d4d4ca18ba6f2cd3777b5453c47331a928457a7f7"
+ },
+ "https://efts.sec.gov/LATEST/search-index?q=%22PM303%22+OR+%22PM324%22+Malaysia": {
+  "bytes": 7238,
+  "fetched_at_epoch": 1789647676.4446423,
+  "fetched_at_utc": "2026-09-17T12:21:16Z",
+  "http_status": 200,
+  "sha256": "a9ebdc54051ae36b3f03f54eb117cf7fe0125a260cdc2fe03698b63897dd6f0c"
+ },
+ "https://efts.sec.gov/LATEST/search-index?q=%22Peninsular+Malaysia%22+%22production+sharing+contract%22": {
+  "bytes": 28877,
+  "fetched_at_epoch": 1789647637.719576,
+  "fetched_at_utc": "2026-09-17T12:20:38Z",
+  "http_status": 200,
+  "sha256": "f0b7d959fd6fd8a92ecd7c27ddf268404e2c42017fb9b728ed18183d30b4f820"
+ },
+ "https://efts.sec.gov/LATEST/search-index?q=%22Searah%22": {
+  "bytes": 3304,
+  "fetched_at_epoch": 1789647699.4068165,
+  "fetched_at_utc": "2026-09-17T12:21:39Z",
+  "http_status": 200,
+  "sha256": "38fed2323f87f290eecf5098c9d07b83f982c19b24249ed95f546377b4ad905a"
+ },
  "https://efts.sec.gov/LATEST/search-index?q=%22going+concern%22&forms=8-K": {
   "bytes": 62038,
   "fetched_at_epoch": 1789484848.2656205,
@@ -69,6 +111,20 @@
   "http_status": 200,
   "sha256": "0ab40dfafdeece29f214b5429ef1b5a7fbef41f86d1ef8c1ec4513ccf6e07b30"
  },
+ "https://efts.sec.gov/LATEST/search-index?q=ExxonMobil+Malaysia&forms=10-K&dateRange=custom&startdt=2024-01-01&enddt=2026-09-17": {
+  "bytes": 22534,
+  "fetched_at_epoch": 1789647631.0923839,
+  "fetched_at_utc": "2026-09-17T12:20:32Z",
+  "http_status": 200,
+  "sha256": "d437e0d1b764042c1ba2bb622047884d8505d4da88466f901d44af99dd380d66"
+ },
+ "https://efts.sec.gov/LATEST/search-index?q=ExxonMobil+Malaysia+PSC+farm+out+Petronas+Carigali+Peninsular": {
+  "bytes": 6321,
+  "fetched_at_epoch": 1789647932.0024676,
+  "fetched_at_utc": "2026-09-17T12:25:33Z",
+  "http_status": 200,
+  "sha256": "402db84ced9825677827abe188b6ab79b6307cf2008fd22ceb570d945e7d2b5a"
+ },
  "https://www.bursamalaysia.com/api/v1/announcements/announcements?ann_type=company&per_page=1&page=1": {
   "bytes": 5834,
   "fetched_at_epoch": 1789484849.167018,
@@ -76,12 +132,40 @@
   "http_status": 403,
   "sha256": "2d5ff59282e70310a2ec98737e94de1075f4fb3d77c18a9cccd2498993418497"
  },
+ "https://www.sec.gov/Archives/edgar/data/1002242/000117494726000417/form6k-35579_eni.htm": {
+  "bytes": 272706,
+  "fetched_at_epoch": 1789647703.5514443,
+  "fetched_at_utc": "2026-09-17T12:21:43Z",
+  "http_status": 200,
+  "sha256": "39445b1c4149ddcc092433fc3fc9c208658c94d3fedf1b7d50533e4a34f7a5a3"
+ },
  "https://www.sec.gov/Archives/edgar/data/1386570/000165495420005725/cdxc10ka_12312019.htm": {
   "bytes": 111993,
   "fetched_at_epoch": 1789484849.2427177,
   "fetched_at_utc": "2026-09-15T15:07:29Z",
   "http_status": 200,
   "sha256": "1b868b4ae9568a6cdacabb28ee01cb16f78853266a5c87a042b618fe8e4239dc"
+ },
+ "https://www.sec.gov/Archives/edgar/data/34088/000003408808000053/f8k1q991.htm": {
+  "bytes": 224228,
+  "fetched_at_epoch": 1789647692.5263796,
+  "fetched_at_utc": "2026-09-17T12:21:32Z",
+  "http_status": 200,
+  "sha256": "e9b31770d5bf84415b10d8ca973a70ece0386553158259b322835f9b0b9c12bc"
+ },
+ "https://www.sec.gov/Archives/edgar/data/879764/000095012308006779/y01945exv99w13.htm": {
+  "bytes": 5311,
+  "fetched_at_epoch": 1789647670.6413448,
+  "fetched_at_utc": "2026-09-17T12:21:10Z",
+  "http_status": 200,
+  "sha256": "f088d4781d3919ba4e93319c59d23b941fb54e9394d4818aa0032362a930f8d0"
+ },
+ "https://www.sec.gov/Archives/edgar/data/879764/000095012311000468/y03386exv99w3.htm": {
+  "bytes": 6700,
+  "fetched_at_epoch": 1789647681.2108986,
+  "fetched_at_utc": "2026-09-17T12:21:21Z",
+  "http_status": 200,
+  "sha256": "a7cf30b1d80fcca971a7bf60f0cb52165297abf78025906b4a1a91402c434e4e"
  },
  "https://www.sec.gov/files/company_tickers.json": {
   "bytes": 797759,

@@ -88,6 +88,26 @@ entitled to assert.
 
 `references/geox-seismic-lane.md` — the live GEOX interpretation surface: mode list, argument contracts that cause
 avoidable failures, and the known gaps of that specific implementation.
+`references/basin-dossier-from-public-literature.md` — how to answer a basin/field dossier request when no proprietary
+volume exists in the federation: organ coverage-gap read, literature sweep, full-text extraction, and the provenance
+labels the deliverable must carry.
+
+## 7. When the organ holds no data for that basin — say so, then build the honest artifact
+
+`geox_basin` resolves against a catalog. A basin outside it returns `Basin data not found` for every basin_name you
+try, including lat/lng-only calls (which are rejected earlier for an empty `basin_name`).
+
+- **A coverage gap is not a tool failure.** Do not announce the lane is down, and do not keep re-querying different
+  spellings. Catalog absent = this organ cannot witness this basin. Report that, then use the fallback in
+  `references/basin-dossier-from-public-literature.md`.
+- **After three rejections the GEOX server pauses (~48 s) and rejects again regardless of content.** Change the
+  approach or the lane — never re-issue a variant of the same call to "check".
+- **A dossier assembled from published papers is a literature synthesis, not an interpretation.** State that in the
+  artifact itself, and list the proprietary inputs you did not have (SEG-Y volume, LAS well logs, Petrel picks,
+  interval-velocity model, well ties). A reviewer will ask a question that only the volume can answer; the deliverable
+  must not imply it can.
+- **Never synthesise a pick, depth, or volume figure to fill a gap.** A fabricated number in a review pack is worse
+  than an admitted unknown — it survives to the slide and dies under cross-examination, taking the author with it.
 
 ---
 

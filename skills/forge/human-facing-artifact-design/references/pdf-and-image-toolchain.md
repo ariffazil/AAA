@@ -152,6 +152,38 @@ for i, page in enumerate(doc):
 
 Two dense A4 pages land around 3.5k–4.5k characters each. A page under ~2k is under-filled — fix the layout, do not ship it. A page returning a few hundred characters usually means content overflowed to nowhere or a table failed to render.
 
+### Ink coverage — the complementary check (§3)
+
+Character count catches emptiness; it does not catch a page that has a few lines of text but reads visually empty. Rasterise the pages, then compute dark-pixel share for each:
+
+```python
+# first: pdftoppm -png -r 100 out.pdf /tmp/qa/page
+from PIL import Image
+import glob
+
+for f in sorted(glob.glob("/tmp/qa/page-*.png")):
+    im = Image.open(f).convert("L")
+    w, h = im.size
+    px = im.load()
+    dark = tot = 0
+    for y in range(0, h, 4):
+        for x in range(0, w, 4):
+            tot += 1
+            if px[x, y] < 235:
+                dark += 1
+    print(f, f"{100 * dark / tot:5.2f}%")
+```
+
+Healthy text-and-figure pages sit roughly 4–25%. **A single page an order of magnitude below its
+neighbours is the signature of a stranded fragment**, not of intentional design — typically a
+closing epigraph, signature block or footer that overflowed onto a page of its own. Fix it by
+tightening that block's top margin and leading so it joins the preceding page, and by shortening
+its line lengths if that is what makes it fit. Do not delete the block and do not pad it with
+filler.
+
+Skip this sweep when the active model has no vision lane; the numbers are the whole check, and a
+page-count match alone will not report a stranded page (the fragment still counts as a page).
+
 ## Matplotlib gotchas that cost time
 
 - `plt.Rectangle` is **not exported** — `import matplotlib.patches as patches` and use `patches.Rectangle`.
