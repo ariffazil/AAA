@@ -1,7 +1,7 @@
 ---
 name: delta-omega-psi-multimodal-cognition
 description: >
-  [fed: tier=fed-multimodal-vision, risk=LOW]
+
   Enforce Δ·Ω·Ψ multimodal cognition rules. Every AAA agent that reasons about multimodal inputs
   (images, audio, video, seismic, well logs, market data) MUST load this skill. Constitutional rule:
   multimodal perception without Δ-substrate metabolism is not cognition. LLM is tri-witness, never judge.
@@ -20,9 +20,7 @@ forged: 2026-07-25
 version: 1.0.0
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
----
-
-# Δ·Ω·Ψ Multimodal Cognition — Forge Skill
+---# Δ·Ω·Ψ Multimodal Cognition — Forge Skill
 
 > **Skill ID:** `delta-omega-psi-multimodal-cognition`
 > **Domain:** meta

@@ -31,6 +31,44 @@ this session, the work is already done.
 **The tell:** a doctrine that feels fully formed on first draft is usually one you already wrote.
 Context compaction erases the memory of authoring an artifact; it does not erase the artifact.
 
+### Step 1b — Verify the IDENTIFIER you are about to cite, not just the owner
+
+Sweeping for an owner finds *whether* a doctrine exists. It does not tell you what its class
+identifiers **mean**. Citing a rule number you have not opened is the same defect as citing a
+document you have not read — and it survives longer, because a bare `C<n>` looks like a
+cross-reference to everyone downstream.
+
+**A lineage line is not a definition.** A file whose header reads
+
+```
+Lineage: <parent>.md (C13/C14) -> this file (C15/C16, <date>)
+```
+
+means *this file adds or extends those clauses*. It does **not** mean *this file is* those clauses.
+Reading the arrow as identity is enough to attach an entire session's findings to the wrong
+canonical text, while every downstream reader accepts it — because the number is real.
+
+Before an identifier enters a durable artifact:
+
+```bash
+# 1. Open the file that DEFINES it — not the file that merely references it
+grep -rn '^C1[0-9]' /root/AAA/instructions/human-meaning-membrane.md
+# 2. Check the definition actually matches the meaning you are attaching
+# 3. If it does not match, cite by NAME (the doctrine file), never by class number
+```
+
+**Never mint a sub-identifier over a live prefix.** `C15.1` / `C15.2` under an existing `C15` is
+exactly what **C20 SYMBOL TRUTH** prohibits: a symbol already carrying meaning must never be
+redefined, and a new axis must not be minted over a live prefix. The instrument already ships —
+run `/root/scripts/symbol-probe.py` and read `/root/AAA/canon/SYMBOL_TABLE.json` (its `_rule` and
+`reserved_never_reuse` keys) **before** a new identifier is written into anything durable. The probe
+takes a *document path*, not a symbol name — read its usage before invoking it.
+
+**Why this belongs in the procedure, not in memory:** this is a claim without provenance applied to
+the citation layer. A rule number with no opened definition is an unattributed claim wearing the
+costume of a cross-reference. Two seats can propagate the same wrong identifier for a whole session
+and both be wrong in the same way, because neither ran the check.
+
 ## Step 2 — Classify, then act
 
 | Finding | Action |

@@ -37,6 +37,22 @@ as a coordination event, not a local edit.
    an idempotent "no-op" write or reload after telling the user you would hold — reporting an
    action that in fact did nothing is still a false claim about your own effects, and the
    write you performed anyway destroys the evidence that would identify the real author.
+
+   **And check whether that author is still live before you touch their file.** Attribution and
+   mutation are separate questions: having named the agent, confirm it has *finished* before you edit
+   the same path, or you become a third hand on a file mid-write. The agent's session transcript is
+   the liveness signal — an mtime inside the last minute or two means it is still working:
+
+   ```bash
+   ls -la --time-style=full-iso <agent-home>/sessions/**/agents/main/wire.jsonl
+   date '+%F %T'          # advancing mtime == still mid-task
+   ```
+
+   Wait rather than race. A defect found inside another agent's in-flight work is a **state of the
+   file at this moment**, not a standing defect: report it with the owning session named, and re-probe
+   before calling it unresolved, because the author is usually already on it. Saying "this is broken"
+   about work that is still being written invites the reader to fix a thing that is about to be fixed
+   — and two writers on one file is the coordination failure this section exists to prevent.
 4. **Check whether the artefact is under external observation.** A restart or redeploy
    replaces the thing a third party is currently measuring — an external reviewer
    mid-scan, a benchmark in flight, someone reproducing a bug you just acknowledged.
@@ -109,6 +125,43 @@ scanner.
   of probing live will keep reporting old state indefinitely. When a job's output looks wrong,
   check what it was told to read before you check the service.
 
+**Liveness is not capability — a healthy status word can hide a service that refuses every
+request.** A daemon can be up, hold its key, answer `/health` with `{"status":"ok"}`, and refuse
+every real operation because a precondition for the request path is unset. The status word
+describes the *process*; it says nothing about whether the *request* can complete. Read the
+preconditions the handler needs, not the ones the process needs:
+
+```bash
+curl -s :PORT/health                                        # what health claims
+tr '\0' '\n' < /proc/$PID/environ | grep -c REQUIRED_VAR    # 0 = the guard will refuse
+<service_interpreter> -c 'import <module_the_code_imports>' # preconditions the path needs
+```
+
+Then check the health payload actually reports those preconditions. If it omits them, every
+monitor downstream inherits the blind spot: a guard that is configured OFF is invisible to its
+own health check, and an up-but-incapable service keeps reporting healthy while it serves
+nothing. The durable shape is `status` + one field per precondition + a single derived
+`can_<do_the_thing>` boolean, so the incapable case is *visible* rather than inferred.
+
+When you add those fields, the change only lands on a restart — a health handler edited on disk
+still serves the old payload until the process is replaced. Verify with `curl`, not with the file.
+
+**Provisioning a dependency: install ≠ importable ≠ functional.** A package can install cleanly
+and leave the code broken, because providers disagree on the module name for the same capability
+— a distro package exposing an upper-case module while the source imports lower-case is a
+recurring shape. After any install, verify the *exact* import the code performs, under **the
+interpreter the service runs**:
+
+```bash
+<service_interpreter> -c 'import <exact_module_name_from_the_source>'   # not the name you installed
+```
+
+A module resolving in your shell, or in your editor's language server, is not evidence the
+runtime will resolve it — they are different interpreters with different path sets. Also confirm
+the import is **declared** in the project's dependency file: an undeclared dependency exists on
+the box where someone installed it by hand and is absent on every fresh build, so the failure
+only ever appears on machines that did not do the manual step.
+
 ## A refusal is address-specific — probe the address the consumer uses
 
 A service can be fully up and refuse the address you picked, and restarting on the strength of one
@@ -125,6 +178,30 @@ The mutation-side consequences are this skill's:
   name exactly as it does for a stopped one (`LoadState` is the discriminator). Restarting a unit
   whose name you guessed is how a healthy service gets stopped to fix a name typo.
 - **State which address you probed** in the report. "Down" without the address is not a finding.
+
+## An observation is scoped to one endpoint on one host
+
+A reading is evidence about **the surface you probed, on the host you probed** — and nothing wider.
+Two ways this gets overclaimed:
+
+- **One endpoint is one midpoint, not the organ.** Services contradict themselves across their own
+  surfaces: a root/metadata endpoint, a negotiation endpoint, and an in-band server-info field can
+  each report a different version, commit, or capability — all live at the same time, none of them
+  stale. Before concluding anything about a system, name the surface, probe a second one, and report
+  the set you checked. A verdict from a single endpoint is unqualified, and the *author* of the
+  verdict owns the scope error, not the reader who is misled by it.
+- **A negative found on a replica is a fact about that replica.** Mirrored, stale, or secondary nodes
+  report absence for artefacts that exist on the origin. Print `hostname` and the node address beside
+  every existence/absence verdict. Without it, two readers comparing findings from different nodes are
+  both locally correct, and the disagreement gets misdiagnosed as one of them fabricating.
+- **Vary the input when the endpoint can echo.** Some negotiation/version endpoints return the value
+  you sent when they support it, so a single probe measures only your own request. Probe with at least
+  two distinct values and report the server's *supported set* or *maximum*; a single reading of a
+  self-echoing endpoint is your own argument wearing a server property's clothes.
+
+Same family as the refusal rule above: **scope is part of the claim.** An unscoped verdict is not a
+stronger claim, it is an unqualified one — and it fails in the direction that costs most, because a
+false negative reads exactly like evidence.
 
 
 ## Prefer the smallest change inside the mechanism already running
@@ -213,6 +290,33 @@ signal or merely read your output. Agent memory files, quoted logs, and paraphra
 echoes, not witnesses. Check the peer's finding against the source before carrying it
 forward — a peer's confidence is not verification.
 
+**A peer's report often arrives inside the principal's own lane.** Reports written by another
+agent — frequently addressed *to* the principal, in third person — get pasted into a channel where
+they read like the principal's own decision or a finished status update. Classify by **authorship,
+not by who forwarded it**: an unattributed report is a peer claim, and a peer claim that an action
+*was performed* (killed, restarted, pushed, pruned, deployed) is checkable in one breath:
+
+```bash
+ss -lntp | grep <port>                                        # listener gone?
+ps -p <pid> -o pid,lstart,cmd                                 # pid gone?
+curl -s -o /dev/null -w '%{http_code}' http://<host>:<port>/  # refused?
+```
+
+Three independent reads is what makes it witnessed; the report's own assertion is none of them.
+When it does check out, still find the hand: artefact `mtime`, the operator's own backup trail, and
+that agent's transcript/file-history on disk name the actor. "It is done" never says *who* — and in a
+multi-agent estate that is the part you actually need. Never let a forwarded report become your
+receipt for an action you did not take.
+
+**A report's stated cause is a separate claim from its recommendation — falsify the cause first.**
+Peer reports pair a finding with an inferred cause and an action to take, and the cause is a
+hypothesis. When it is wrong the recommended action is not merely unnecessary, it is destructive:
+a "this backup repo was never pruned, reclaim the space" recommendation, tested against the repo
+itself, came back as a healthy content-addressed store deduplicating 146 GiB logical into 23 GB on
+disk, retention policy running on schedule. Pruning it would have reclaimed almost nothing and cut
+the snapshot chain. Measure the artefact before acting on a peer's explanation — never inherit a
+cause — and correct the record in the same channel when the peer's cause does not survive the test.
+
 ## Reversibility
 
 State the rollback before the change: a config toggle plus restart, or a named backup
@@ -241,6 +345,21 @@ correct response to "this edit will not land" is to check the flag **and then ro
 elsewhere** — reporting locked debt, not clearing the flag. Clearing `i` to make your own edit land
 inverts the authority order the flag exists to enforce; that is a governance mutation, and it needs
 the authority any other protected write needs. Say `BLOCKED_AT_GATE` and name the exact operation.
+
+**A blocked mutation is reported, never narrated around.** State the gate, the exact operation it
+refused, and the lawful lane to take it (a judge seal, a different executor). Two failure modes to
+avoid, both of which look like progress:
+
+- Reporting a change as staged, applied, or done when the write was refused — the file may be
+  edited on disk while the running process still serves the old behaviour, and only a restart
+  closes that gap. Check which one you actually achieved and say *that*.
+- Quietly re-routing the write to a different path to get it to land. If a control refused it, the
+  control is the finding; routing around it converts a governance signal into a silent bypass.
+
+If the gate's stated reason does not describe the content it blocked (a text pattern matching prose
+that only *describes* a guarded operation, say), report the mismatch alongside the block. A guard
+that misreports *why* it fired trains its operators to ignore it — and an ignored gate is worse than
+no gate, because it is still trusted.
 
 **2. A partial apply reports like a complete one.** A multi-item edit wrote 5 of 8 planned changes,
 aborted on the one immutable target, and the re-run reported the remainder as *"already applied"* —

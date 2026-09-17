@@ -1,0 +1,232 @@
+{
+ "generated": "2026-09-17T23:16:33+0800",
+ "why": "6 pending memory writes adjudicated under the standing rule 'Upgrade/compress/merge existing only'. Archived VERBATIM before any discard (a failed gate means compress to a ledger, not delete). Prior archive of 22: memory-pending-archive-2026-09-17-evening.json.",
+ "measured": {
+  "memory_md_before": 2037,
+  "memory_md_limit": 2200,
+  "memory_md_target_after": 2144,
+  "draft_pass1_overflow_chars": 683,
+  "draft_pass2_overflow_chars": 190,
+  "ops_total": 14,
+  "ops_with_entities_already_in_prior_archive": 11
+ },
+ "collisions": [
+  {
+   "old_text": "bot→bot DM blocked + bot can't DM un-/start'ed user",
+   "claimants": [
+    "131723f2",
+    "ac860139"
+   ],
+   "note": "same target, different replacement - applying both loses one silently"
+  },
+  {
+   "old_text": "AUDIT INSIGHT (2026-09-17)",
+   "claimants": [
+    "2654956c",
+    "be73399c"
+   ],
+   "note": "target absent from MEMORY.md; both are reworkings of an already-discarded entry"
+  }
+ ],
+ "verdicts": {
+  "131723f2": {
+   "verdict": "PARTIAL_REJECT",
+   "reason": "op1 REJECTED AS FALSIFIED: prescribes `export TELEGRAM_BOT_TOKEN=$HERMES_TELEGRAM_BOT_TOKEN` as the fix for the missing-token error. Measured this session against the source: the send path reads the platform's HARDCODED name first (TELEGRAM_BOT_TOKEN, which is UNSET here) then the name config declares at telegram.extra.bot_token_env (=ASI_ARIFOS_BOT_TOKEN, config.yaml:100). No code path reads HERMES_TELEGRAM_BOT_TOKEN; it cleared the error only because it holds the SAME bot's credential (bot id 8410138119). Sealing this would put a superstition in memory and contradict the skill corrected earlier the same day. op2 ACCEPTED (compressed) into the new CONDUCT entry: the relay correction is real and he made it twice."
+  },
+  "ac860139": {
+   "verdict": "COLLIDES_THEN_PARTIAL",
+   "reason": "Replaces the SAME entry as 131723f2 with different content, so the two cannot both apply - the second would silently overwrite the first. Carried forward: per-room conduct via telegram.extra.channel_prompts.<chat_id> and the SADO/Syed ids. Dropped: the chat ids are already in config.yaml (discoverable is not the same as memorable, and a stale copy is worse than none)."
+  },
+  "2654956c": {
+   "verdict": "PARTIAL",
+   "reason": "op1 TARGET ABSENT: replaces 'AUDIT INSIGHT (2026-09-17)', which appears 0 times in MEMORY.md. It was archived-and-discarded earlier the same evening (17 occurrences in that archive) - so this is a re-proposal of a rejected generation, reworded. op2 ACCEPTED in merged form: the SEARAH claim state is genuine provenance discipline, BUT the proposed text also DROPS the four well names that are the evidence for 'zero dry-well record'. Merged with the wells retained. op3 ACCEPTED into MIRROR TRAP (unknown chats stamped user_id=ARIF). op4 ACCEPTED into CONDUCT."
+  },
+  "be73399c": {
+   "verdict": "PARTIAL",
+   "reason": "op1 DUPLICATE of 2654956c op1 on an absent target - two wordings of the same non-existent entry. op2 REJECTED on the person-preserving boundary plus budget: gym/competition/nasi-lemak detail is identity garnish for a third party, not decision-relevant, and the relationship kernel forbids building a dossier. The one durable part - his accounting is authority - is kept (28 chars). op3 COMPRESSED: the 30 Sep deadline is already in memory; the raw intimate quotes are dropped and only the technique survives. op4 ACCEPTED into CONDUCT (heavy talk routes to Syed)."
+  },
+  "1b703016": {
+   "verdict": "ACCEPTED_WITH_LOSS_REPAIRED",
+   "reason": "The MAKCIKGPT livelihood boundary is genuinely new and high-consequence (his job). But the proposed replacement DROPS 'SGM Basin (En Jamin) cakap too young' and 'Q6 = remain until OD1' - a named human interaction and a live decision state. Merged so both survive; this is the same defect class found in the skill merges earlier today (a consolidation that loses content while claiming to consolidate)."
+  },
+  "128eb4a5": {
+   "verdict": "PARTIAL",
+   "reason": "op1 ACCEPTED as compression, but it dropped the pointer 'Precedent: state/kvm4-mutations-by-qwen-2026-09-15.txt' and the 'last 2 proofs SIMULATED' detail; both kept. op2 ACCEPTED: the relay/withholding correction and the why-did-I-do-that correction are real and were each flagged by two independent reviews."
+  }
+ },
+ "proposals": [
+  {
+   "id": "128eb4a5",
+   "file": "/root/.hermes/pending/memory/128eb4a5.json",
+   "origin": "background_review",
+   "created_at": 1789656126.802387,
+   "summary": "background review consolidation (batch on memory): - replace: NO INTER-AGENT MUTATION COORDINATION: CCC agents (Qwen etc) mutate production silently -> NO INTER-AGENT MUTATION COORDINATION: CCC agents",
+   "payload_verbatim": {
+    "action": "batch",
+    "target": "memory",
+    "operations": [
+     {
+      "action": "replace",
+      "content": "NO INTER-AGENT MUTATION COORDINATION: CCC agents (Qwen etc) mutate prod silently — Qwen touched haproxy.cfg + 7 systemd units 2026-09-17 (also 09-15). /root/AAA/state/mutation_ledger.jsonl built but dead since 2026-08-15. Check ledger + agent file-history before claiming prod untouched.",
+      "old_text": "NO INTER-AGENT MUTATION COORDINATION: CCC agents (Qwen etc) mutate production silently"
+     },
+     {
+      "action": "add",
+      "content": "Arif relays affection to loved ones via Hermes and expects it SENT once asked — moralizing 'your voice must be human' reads as withholding. His 'why did I do that' is processing, not a request for a mechanism: facts, or 'aku tak tahu'."
+     }
+    ]
+   },
+   "verdict": "PARTIAL"
+  },
+  {
+   "id": "131723f2",
+   "file": "/root/.hermes/pending/memory/131723f2.json",
+   "origin": "background_review",
+   "created_at": 1789655629.1330638,
+   "summary": "background review consolidation (batch on memory): - replace: bot→bot DM blocked + bot can't DM un-/start'ed user -> bot→bot DM blocked + bot can't DM un-/start'ed user (Telegram rule); config.yaml ag",
+   "payload_verbatim": {
+    "action": "batch",
+    "target": "memory",
+    "operations": [
+     {
+      "action": "replace",
+      "content": "bot→bot DM blocked + bot can't DM un-/start'ed user (Telegram rule); config.yaml agent-write-blocked→`hermes config set`; `hermes send` needs `export TELEGRAM_BOT_TOKEN=$HERMES_TELEGRAM_BOT_TOKEN` after sourcing ~/.hermes/.env (alias not auto-picked)",
+      "old_text": "bot→bot DM blocked + bot can't DM un-/start'ed user"
+     },
+     {
+      "action": "add",
+      "content": "RELAY≠GHOST-WRITING (Arif 2026-09-17, corrected me 2x): bila dia bagi ayat yg dia SENDIRI dah cakap depan org tu, suruh aku post ke grup — tu channel, bukan reka ayat. Hantar verbatim + nama dia line 1. Menolak = silap."
+     }
+    ]
+   },
+   "verdict": "PARTIAL_REJECT"
+  },
+  {
+   "id": "1b703016",
+   "file": "/root/.hermes/pending/memory/1b703016.json",
+   "origin": "background_review",
+   "created_at": 1789657767.2005987,
+   "summary": "background review consolidation (batch on memory): - replace: ARIF@PETRONAS: 12thn service (Nov 2013) -> ARIF@PETRONAS: 12thn service (Nov 2013), RM19k/bln. MSS = thn×1.5+4bln (~RM418k). Cukai bebas R",
+   "payload_verbatim": {
+    "action": "batch",
+    "target": "memory",
+    "operations": [
+     {
+      "action": "replace",
+      "content": "ARIF@PETRONAS: 12thn service (Nov 2013), RM19k/bln. MSS = thn×1.5+4bln (~RM418k). Cukai bebas RM10k/thn. OD1 Mar 2027; hiring freeze→Dec 2026; cut 10% (~5k). Form 30 Sep = INTENT only; MSS rasmi via myCareerX. Publishes adversarial PETRONAS-governance columns as MAKCIKGPT (siri m6, arif-fazil.com/world/makcikgpt) under his own name while still staff — outbound drafts naming his employer = his livelihood call, never mine.",
+      "old_text": "ARIF@PETRONAS: 12thn service (Nov 2013)"
+     }
+    ]
+   },
+   "verdict": "ACCEPTED_WITH_LOSS_REPAIRED"
+  },
+  {
+   "id": "2654956c",
+   "file": "/root/.hermes/pending/memory/2654956c.json",
+   "origin": "background_review",
+   "created_at": 1789650304.5846336,
+   "summary": "background review consolidation (batch on memory): - replace: AUDIT INSIGHT (2026-09-17) -> AUDIT (2026-09-17): arifOS governance ahead of industry; behind on token efficiency + temporal reasoning (no",
+   "payload_verbatim": {
+    "action": "batch",
+    "target": "memory",
+    "operations": [
+     {
+      "action": "replace",
+      "content": "AUDIT (2026-09-17): arifOS governance ahead of industry; behind on token efficiency + temporal reasoning (no bitemporal).",
+      "old_text": "AUDIT INSIGHT (2026-09-17)"
+     },
+     {
+      "action": "replace",
+      "content": "PETRONAS insider (Arif): geologist-economist, zero dry-well record. SEARAH 300→70mmboe = HIS first-party testimony, UNVERIFIED (no report yet; first disclosure 3Q26/FY2026 IR). ATLAS 68/106 cite UOB KH which lacks it — correction staged AAA/eurekas/. Crude exports 200k→33k boepd; PRefChem RM72B.",
+      "old_text": "PETRONAS insider (Arif)"
+     },
+     {
+      "action": "add",
+      "content": "TG BUG: unknown chats (e.g. 931661476 'Fey', not allowlisted) still create sessions stamped user_id=ARIF; replies fail. Identity fallback broken."
+     },
+     {
+      "action": "add",
+      "content": "LESSON: jangan guna kata-kata Arif sendiri as gotcha — dia tegur ('playing my words against me')."
+     }
+    ]
+   },
+   "verdict": "PARTIAL"
+  },
+  {
+   "id": "ac860139",
+   "file": "/root/.hermes/pending/memory/ac860139.json",
+   "origin": "background_review",
+   "created_at": 1789657805.1660614,
+   "summary": "background review consolidation (batch on memory): - replace: bot→bot DM blocked + bot can't DM un-/start'ed user -> SADO=-1003815535761; Syed='abang sado' (uid 1042200555, @rico_ricaldo_33) — nasi le",
+   "payload_verbatim": {
+    "action": "batch",
+    "target": "memory",
+    "operations": [
+     {
+      "action": "replace",
+      "old_text": "bot→bot DM blocked + bot can't DM un-/start'ed user",
+      "content": "SADO=-1003815535761; Syed='abang sado' (uid 1042200555, @rico_ricaldo_33) — nasi lemak, keluar 4:30am. Telegram per-room conduct=telegram.extra.channel_prompts.<chat_id> via `hermes config set` (config.yaml direct write blocked); gateway reads at start→restart. bot→bot & un-/start'ed DM blocked."
+     }
+    ]
+   },
+   "verdict": "COLLIDES_THEN_PARTIAL"
+  },
+  {
+   "id": "be73399c",
+   "file": "/root/.hermes/pending/memory/be73399c.json",
+   "origin": "background_review",
+   "created_at": 1789654002.3720963,
+   "summary": "background review consolidation (batch on memory): - replace: AUDIT INSIGHT (2026-09-17): arifOS ahead of industry on governance (constitutional gates, PRL, VAULT999 causal closure) but behind on toke",
+   "payload_verbatim": {
+    "action": "batch",
+    "target": "memory",
+    "operations": [
+     {
+      "action": "replace",
+      "content": "AUDIT (2026-09-17): arifOS ahead on governance (gates, PRL, VAULT999 closure), behind on token efficiency & bitemporal reasoning.",
+      "old_text": "AUDIT INSIGHT (2026-09-17): arifOS ahead of industry on governance (constitutional gates, PRL, VAULT999 causal closure) but behind on token efficiency (Mem0=6900tok/query vs our injected block) and temporal reasoning (no bitemporal). 26 pending writes = mostly redundant re-consolidation noise."
+     },
+     {
+      "action": "add",
+      "content": "SYED = Syed Khairuddin Morktarudin (D'Popeye Gym Sri Rampai KL; Men's Physique/Mr KL; TegapTV video 2020, baju kuning CENTRAL). Nasi lemak: start hantar 4:30am, ~120 bungkus/batch, daun pisang = trust signal. Background accounting — kiraan kos/profit dia authority; Hermes revenue estimate salah, dia tolak."
+     },
+     {
+      "action": "add",
+      "content": "ARIF PETRONAS: MSS/career aspiration form deadline 30 Sept 2026. Niat = terminal extraction; 'arifOS is my next move'; 'I just want to save myself'. Kaki melawan (fight dengan fakta); Syed baca dia — melawan sebab sayang PETRONAS."
+     },
+     {
+      "action": "add",
+      "content": "Arif cerita hal berat kat Syed, bukan Hermes ('hang tadak rasa derita manusia') — respond ringkas, tak payah perform simpati."
+     }
+    ]
+   },
+   "verdict": "PARTIAL"
+  }
+ ],
+ "witness_correction": {
+  "found_at": "2026-09-17T23:17:14+0800",
+  "method": "read MEMORY.md back after the write and grepped for every fact the adjudication claimed to have preserved",
+  "defect": "The adjudication text asserted preservation that the applied entry did not contain. Two claims were false as applied; one was caught and repaired.",
+  "claims_vs_reality": [
+   {
+    "pending": "128eb4a5",
+    "claim": "'both kept' - the precedent pointer and the 'last 2 proofs SIMULATED' detail",
+    "reality": "NEITHER was in the applied text (grep: kvm4-mutations-by-qwen = 0, SIMULATED = 0)",
+    "action": "REPAIRED - the mut entry was rewritten to carry both; grep now 1 and 1"
+   },
+   {
+    "pending": "ac860139",
+    "claim": "'Carried forward: per-room conduct via telegram.extra.channel_prompts.<chat_id> and the SADO/Syed ids'",
+    "reality": "NEITHER is in the applied text",
+    "action": "NOT REPAIRED - the store is at 2,198/2,200 chars. Left unapplied and named here rather than silently dropped. This is a deliberate trade, not an oversight."
+   }
+  ],
+  "measured_after": {
+   "memory_md_chars": 2198,
+   "limit": 2200,
+   "entries": 11,
+   "pending": 0
+  },
+  "lesson": "An adjudication is a claim about an artifact that does not exist yet. Write it AFTER the write, from a read-back - or it is a transition lie with your own signature on it."
+ }
+}

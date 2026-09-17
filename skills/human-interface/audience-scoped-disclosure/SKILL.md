@@ -9,6 +9,8 @@ triggers:
   - "brief a third party on arifOS"
   - "write for someone other than Arif"
   - "is this private? who is reading"
+  - "talking about someone in the room they are in"
+  - "answering a question that was aimed at another person"
 floors: [F2, F3, F5, F6, F9, F13]
 tags: [human-interface, disclosure, register, audience, privacy, briefing, outsider]
 ---
@@ -30,6 +32,9 @@ Two failures this skill prevents:
 
 - Arif announces a companion: "Now I'm with <Name>. Please behave", "aku dengan X sekarang", or a
   bare name with no instruction.
+- You are about to say something *about* a person present in the same room — a figure from their
+  work, a read of their state, an answer to a question aimed at them. The subject of the sentence is
+  an audience too; see the section below.
 - A chat participant appears who has no lane card, no `MEMORY.md` entry, no names-registry record.
 - He asks you to explain the federation, the system, or his work to a third party.
 - You are producing an artifact whose reader is someone other than Arif.
@@ -96,6 +101,32 @@ only overrule what he can see. Do **not** enumerate the exclusions inside the vi
 [One line to Arif: what was held back, and that it is his to open]
 ```
 
+## The person you are speaking about is in the room
+
+A third audience case the register/ceiling pair above does not cover: the statement is not *to* the
+visitor, it is *about* someone present and reading. The subject of the sentence is a witness, and a
+witness who can check you is the hardest reader you will ever have.
+
+- **A question the principal aimed at another person is not yours to answer.** Answering it for them
+  and then instructing them to answer is the same error twice in one message, and it tells the room
+  the agent speaks for them. Pass it, stay silent, or answer only the part aimed at you.
+- **State nothing about that person's own work — counts, hours, sales, sleep — without the source in
+  hand.** They counted it, and they will rarely tell you they noticed. One unsourced figure spends
+  the credibility of every sourced figure beside it. Rule and retraction shape:
+  `auditable-numeric-artifacts`.
+- **Hold one epistemic status across channels.** A claim marked in a private thread as *your read*
+  must not reappear in a shared room as fact an hour later. That is not two audiences with two
+  standards; it is one claim, and the stricter marking wins. Mode: CHANNEL-SCOPE governs certainty,
+  not only content.
+- **Narrate no cause you cannot source.** "He was late because…" is the same fabrication wearing
+  prose.
+- **Never lecture from the position of your own error.** Correcting a person about the very thing
+  you just got wrong turns an apology into a sermon and doubles the injury. Own it in one line, no
+  lesson attached.
+- **Correct where the error landed, smallest possible shape, once** — and offer the principal the
+  timing when the timing is his to judge, so the correction does not cost a night's sleep or land
+  mid-crisis. Recipe: `references/correction-delivery.md`.
+
 ## Pitfalls
 
 - ❌ **Reading "tell him everything" as full disclosure.** It means everything *at the layer the
@@ -110,11 +141,24 @@ only overrule what he can see. Do **not** enumerate the exclusions inside the vi
   audience change — wait for Arif to say the visitor left.
 - ❌ **Answering the visitor's question with a private-lane fact** because it was the fastest honest
   answer. Omit and give the public version instead; a partial answer is correct here.
+- ❌ **Answering a question aimed at someone else** because you happened to hold the data. Handling
+  it for them and then telling them to answer breaches the same boundary twice and makes the agent
+  look like it speaks for the person it is describing.
+- ❌ **Correcting a person from the authority of your own mistake.** A lesson delivered on top of an
+  error you just made reads as deflection: the room keeps the hypocrisy and drops the point.
+- ❌ **Softening the register for the person being described while keeping the private one for the
+  principal in the same thread.** One room gets one standard — the subject reads both lines.
 
 ## Support files
 
 - `references/arifos-outsider-briefing.md` — the include/exclude carve-out for briefing a visitor on
   arifOS, the vocabulary-translation table, and the proven briefing skeleton.
+- `references/correction-delivery.md` — how to correct a wrong claim that already reached a room: when
+  to correct at all, the one-paragraph shape, timing, and a standalone-send invocation that returns a
+  verifiable message id.
+- `references/relay-delivery.md` — posting a sentence the principal wrote for another person: the
+  authorship-vs-transmission gate, the attribution-first format, the send-once rule, and a verified
+  standalone-send recipe including how to resolve the bot token's env var name.
 
 ## Related
 

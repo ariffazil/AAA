@@ -55,6 +55,28 @@ Empty-search is not failure; it is early evidence. Reporting it cleanly with dis
 | "Cari info pasal [nama]" / "Apa cerita pasal" | QUICK |
 | "Tell me about [person]" | QUICK |
 | "Deep research about a person" | FULL |
+| "Every X ever" / full roster / lineage of office-holders | LINEAGE |
+
+### Mode C: Lineage / Multi-Subject Dossier
+
+Use when the ask is a **population**, not a person: "every CEO this company ever had", "every holder of this seat", "who ran X from founding to now". Do not run the single-person pattern N times and staple the results — a population has structure the individuals do not.
+
+Deliverable shape:
+1. **Architecture first** — was the office one seat or two? When did it split, and who appoints? Cite the statute, charter or filings, not a news article.
+2. **Roster table(s)** — one row per holder per seat with tenure, seat type, and **appointing authority named**. Vacant and interim periods get their own rows: a gap in the roster is a finding, not a formatting artifact.
+3. **Per-person entry** — background · mandate · what they brought · what they got · verdict.
+4. **Pattern section** — the cross-cutting rules the population reveals (career-pipeline direction, pay transparency, where exits lead). This is usually the section the requester actually wanted; budget for it.
+5. **Provenance & corrections** — sources, declared gaps, and the false-premise list.
+
+## Verdict discipline (always on)
+
+- **Withhold verdicts on sitting office-holders.** Say the file is open and why. Do not rate a serving officer.
+- **No verdict stamps on anything publishable about a real person.** Verdicts live in the internal dossier only.
+- **Score the seat against its mandate**, with sourced facts, and name the scar as well as the win.
+- **Every unverifiable fact is a declared GAP**, never a silent omission.
+- **Ask the requester only the terminal publish/withhold question**, once a draft exists.
+
+Full reasoning, the six-dimension rubric and the artifact-split rule: `references/verdict-and-publication-discipline.md`.
 
 ## The pattern (5 steps)
 
@@ -113,7 +135,25 @@ Target distribution 60 to 70 percent OBS, 10 to 15 percent DER, 15 to 20 percent
 - **Empty search ≠ empty reality.** A single `web_search` returning zero hits is NOT proof the person doesn't exist or the relationship is wrong. Three failure modes look identical from the result shape: (a) the tool is broken (SearXNG backend bug returning empty), (b) quota exhausted (firecrawl HTTP 402), (c) genuine zero footprint. Before declaring null, **probe the tool**: check `firecrawl_health`, dispatch a subagent with direct-curl fallback to Bing/Wikipedia/Malaysian portals, look for the parent/anchor first ("Noraniza Idris" anchor was solid via Wikipedia even when "Aliff Haiqal" returned nothing). The parent-anchor finding lets you state a clean partial result instead of total null. Pattern lives in `references/malaysian-namesake-probe-pattern.md`.
 - **Namesake audit before null claim.** When the primary query is empty, search for OTHER famous Malaysians with similar names (Aliff Aziz, Aliff Syukri, Aliff Rakib) so the user knows you checked and ruled out the obvious lookalikes. Stating "checked Aliff Aziz, Aliff Syukri — different people" turns a dead-end into evidence.
 - **Three honest hypotheses when footprint is empty.** Don't fabricate to fill silence. State three: (1) person exists but zero online presence (private IG, no content), (2) the reported relationship is incorrect, (3) the name is misremembered. List what would unlock each.
+- **A supplied credential list is not a source — verify each role against a primary record.**
+  Aggregator sites (ContactOut, ZoomInfo, SignalHire, RocketReach) mix people with similar names,
+  and a subagent asked about a person will happily fill gaps so the list reads complete. Treat any
+  confident career list you did not build yourself as unverified input: check each claimed role
+  against at least one primary record (Wikipedia infobox, the company's own board page, a regulator
+  or exchange filing). A named role that appears in none of those is not evidence and must not be
+  repeated, quoted in a plan, or built on. Verified secondary facts (a book, an award, an industry
+  column) are cheap to confirm and usually survive; invented titles cluster on the roles that would
+  make the person look most relevant to your task — that cluster is the tell.
+- **Establish the subject's CURRENT institutional position and standing interest before drafting
+  anything addressed to them.** A bio describes where a person has been; what you need is who pays
+  them now and how your proposal lands inside their own sector. A commentator arguing for a policy
+  rarely has no position in it, and a plan built on the wrong premise about the recipient collapses
+  even when every other fact is right.
 - **Speaker attribution before content analysis (multi-speaker sources).** When mapping a person from group chats, gateway logs, or session transcripts with multiple speakers: attribute EVERY quote to its speaker BEFORE analyzing content. Gateway log format `[NAME|ID] msg='...'` makes this mechanical — extract the name tag first, then analyze. The failure mode is reading a message from Speaker A and attributing it to Speaker B because both appear in the same conversation thread. This produces false relationship dynamics. One misattributed quote can flip the entire analysis. Verify: does the name tag match the claimed speaker? If the source has no name tag (e.g. anonymous `No name`), mark attribution as UNCERTAIN and do not build conclusions on it.
+- **A research brief steers its researchers — brief for falsification, not confirmation.** Any factual premise you put in a brief (an acquisition, an episode, a figure) comes back confirmed unless you instruct otherwise: a subagent asked to profile "X's handling of event Y" will produce a profile of that handling whether or not Y happened. Add a standing clause — *verify every factual premise supplied; if a premise is false, say so and correct it rather than writing around it* — and require a separate `corrections` output field. Expect real yield; premises supplied from memory are wrong more often than you would like, and the requester is the one who absorbs the error if you pass it through.
+- **Assign file ownership before fanning writers into one directory.** Parallel agents writing into a shared archive silently overwrite each other, and the write tool's "modified by sibling agent" warning arrives *after* the collision. Give each writer a unique path, or read-before-write on any shared file.
+- **Distinguish a mandate from a mismatch.** When a brief hands you a premise that the source record contradicts, the contradiction is a finding worth reporting, not an obstacle to route around.
+- **Do not import publication gates into research.** A plan for a *published* artifact generates HOLD gates (scope, cutoff, affiliation disclosure) that do not apply to research the requester asked for personally. See `references/verdict-and-publication-discipline.md`.
 
 ## Verification
 
@@ -124,6 +164,10 @@ Target distribution 60 to 70 percent OBS, 10 to 15 percent DER, 15 to 20 percent
 - "What this does not say" section is non-empty
 - Email redacted, private matter refused
 - Closing note (if present) is short and honest
+- **Rendered output verified by text extraction, not by build exit code.** Extract the full text of the produced PDF and assert that every required section name and every subject name actually appears. A build that exits 0 and prints a page count can still drop a section.
+- Every declared GAP appears in the output; no gap was resolved by silently omitting the entry.
+- The corrections list is non-empty whenever the dossier draws on secondary coverage.
+- For lineage mode: every seat-holder named in the ask has a roster row, and vacant/interim periods are visible.
 
 ## Output contract
 
@@ -137,4 +181,5 @@ Target distribution 60 to 70 percent OBS, 10 to 15 percent DER, 15 to 20 percent
 
 - `references/reportlab-pitfalls.md` - HTML parser limits and fix patterns (7 pitfalls, with verification recipe)
 - `references/malaysian-namesake-probe-pattern.md` - parent-anchor probe + tool-failure verification (SearXNG empty / firecrawl 402), direct-curl fallback ladder, namesake audit, three-hypothesis null reporting
+- `references/verdict-and-publication-discipline.md` - when to issue a verdict, the six-dimension rubric, withholding on sitting officers, the internal/public artifact split, and the corrections section
 - `witness-companion-briefing` (sibling skill) - when the "person" is actually a witness object

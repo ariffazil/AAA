@@ -407,6 +407,33 @@ The register is not "announce dominance every five minutes". What makes a take w
 | `apsal` → `apa salah` | Real phoneme split, not an ASR artifact | Drop the word; Penang flavour survives on `hang`/`la`/`tau` |
 | `hang` → `hank`, `awek` → `awik` | ASR mishears on real words | Normalise before scoring, then read the transcript yourself |
 | `rate` → `red` on THREE separate takes (full line + isolated probe) | Pronunciation limit, not an ASR artifact — it mangles the same way every time | Change the word, don't re-roll: `Nilai bahu abang hari ni` |
+| match collapses to ~20% with a huge INSERTED list, and MISSING names a single ordinary word | **TOKEN-COUNT DESYNC.** One written token was heard as TWO (`takde` → `tak ada`), so every downstream token is off by one and the aligner reports the whole remainder as insertions | Alias the *expanded* form back to one token: `--alias "tak ada=takde"`. `norm()` wraps the key in `\b…\b`, so a multi-word key works — the desync is not a defect and the take is clean |
+| A false FAIL where MISSING names a word that is plainly IN the transcript | **Alias direction reversed.** The flag is `HEARD=WRITTEN`; writing it backwards makes the script rewrite the correct heard token into a token the source lacks | Always `--alias <what Whisper wrote>=<what the line says>`. Confirm by reading the `heard` line before touching the line |
+| `Syed` → `Syai`; `hold` → `haul`; `tensen` → `Tencent`; `Tu` → `Tua`; `mintak` → `minta` | Mishears on real words (proper noun, English loanword, slang) | All alias-row classes, not pronunciation limits — alias them, never rewrite the line |
+
+#### The alias table IS the deliverable on this voice — build it before re-rolling
+
+On dense Penang BM one take carried **six** distinct substitutions and still scored **98.6% with
+zero insertions** once aliased. Raw it read 20.5% and the verdict was FAIL. **A 20% score on this
+text is not evidence of a bad take** — it is evidence of an unbuilt alias table, and re-rolling
+would have burned a clean render. Verify once with no aliases, read the pair list, build the table,
+then re-verify: one diagnostic pass beats guessing which substitution fired.
+
+#### Contraindication on the round-trip script: it can miss a visible tail, so check EOF yourself
+
+The closing-boilerplate hallucination was present in the transcript while the script still printed
+`INSERTED: none` with `verdict: PASS` — the aligner matched the invented tokens loosely against real
+ones inside one large block. **The script is not the sole witness for insertions.** The independent,
+decisive check is the timestamp: re-transcribe with `timestamp_granularities[]=word` and compare the
+last word's end against the file duration.
+
+| Evidence | Reading |
+|---|---|
+| tail words carry real, separated timestamps that END at or before EOF, right where the script stopped | spent audio — hard-cut it and say so in the delivery line |
+| tail words' timestamps run **past EOF** (measured here: `kerana` ended at **117.24s on an 87.62s file**) | **transcriber invention over silence** — the audio contains no such line; do NOT cut, do NOT report contamination |
+| audio energy agrees: speech ends 87.57s, file 87.62s — 0.29s of room | four words cannot fit in 0.29s — the hallucination reading is confirmed independently |
+
+Never retract a take, and never report a checkpoint contamination, on a whole-file transcript alone.
 
 Run the take through the gate in one command — render, ASR, token diff vs the source line, f0 family
 check — and ship only when the divergences are all ASR mishears. **Target 100%; 95% is only acceptable

@@ -6,7 +6,7 @@ risk_tier: low
 slug: google-workspace-cli
 version: 1.0.0
 homepage: https://clawic.com/skills/google-workspace-cli
-description: "Operate Google Workspace from one CLI using dynamic API discovery, secure [fed: tier=fed-agent-subagent, auto=T1, risk=low]
+description: "Operate Google Workspace from one CLI using dynamic API discovery, secure
   OAuth flows, and agent-ready automation patterns for Drive and"
 changelog: Initial release with gws command patterns, auth playbooks, MCP integration,
   and safety-first change control for production tenants.
@@ -40,8 +40,7 @@ floor_scope:
 autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----
-## Setup
+---## Setup
 
 On first activation, read `SETUP_MD.md` and lock integration boundaries before running any write command.
 

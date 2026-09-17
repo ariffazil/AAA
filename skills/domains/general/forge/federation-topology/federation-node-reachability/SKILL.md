@@ -61,6 +61,27 @@ Organ ports typically appear as `tailscaled` listeners bound to the tailnet IP. 
 - **Read the ACL, never infer it.** Presence in a config file is not a rule. Quote the actual accept/deny lines you found.
 - **Port-to-organ mapping drifts.** Confirm which service owns a port (`ss -tlnp` → PID → `ps -p <pid> -o cmd`) before reporting an organ as down; detectors, docs, and dashboards all go stale independently.
 - **A listener the firewall blocks is not "down".** Report it as unreachable-by-policy; the distinction changes who fixes it.
+- **An address is not an identity — probe the peer's `hostname` before you trust a route.** A
+  Tailscale IP, an `~/.ssh/config` alias, a fleet-table row, and your memory of "0.4 = that box" are
+  all *claims about identity*; only the far side's own `hostname` output witnesses it. Precede any
+  cross-host operation with `ssh <target> "hostname; ip -4 addr show | grep 100.64"` and read the
+  answer, not the alias you typed.
+- **A misresolved alias is self-consistent, so N checks through it are ONE observation.** Every
+  re-probe returns the same *wrong* machine, which feels like corroboration while carrying no new
+  information. When a peer contradicts you about what is on a node, suspect the route before the
+  peer — the disagreement is itself the finding, and neither side is lying.
+- **Close a cross-host transfer on the receiver's probe, never the sender's.** `scp`/`rsync` exit 0,
+  the sender's `ls`, and the sender's own `sha256sum` read-back all live on the sender's side of the
+  boundary; they attest the send, not the landing. State `host + sha256 + byte count` and have the
+  other side report what *it* sees. One-sided verification is not verification.
+- **Prefer a pull-able lane for anything another node must witness.** `git push` to the shared origin,
+  then the peer `git fetch` + `checkout`, yields a hash-addressed artifact both nodes resolve
+  independently and neither can author unilaterally. Ad-hoc `scp` plus an in-thread paste is the shape
+  that burns a working thread on one file. A large paste into a chat channel is **not** a delivery —
+  content over a few KB can arrive split or dropped and the sender cannot see that; ask the receiver
+  to confirm the bytes.
+- **Name the host whenever you claim an artifact exists.** "It's on disk" with no host is not a
+  falsifiable claim. "On `<host>`, `sha256 <hash>`, `<n>` bytes" is the claim a peer can act on.
 - **Firewall edits roll back cheaper than an ACL restart.** A per-port allow is removed with `ufw delete <n>`; an ACL change needs a headscale restart. Prefer the smaller blast radius unless the ACL is genuinely wrong.
 
 ## Fix shape
