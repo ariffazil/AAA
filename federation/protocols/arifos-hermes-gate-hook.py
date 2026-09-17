@@ -11,6 +11,19 @@ Pattern: Detect → Classify → Decide → Receipt → Deny (or Allow).
 
 This is the FIRST runtime enforcement path in Hermes.
 K-02 transition: Witness → Enforcer.
+
+JITU (2026-09-18) — THE CIRCUIT BREAKER SITS IN FRONT OF EVERYTHING ELSE.
+  F13: *"Wayarkan terus ke urat saraf enforcement semua lane automatik. Apabila JITU diaktifkan,
+  ia mesti jadi hard interrupt (henti serta-merta) dan tinggalkan receipt jelas."*
+
+  Order of decision is now:
+      0. JITU      — a sovereign-issued stop. Checked FIRST. Beats every other rule.
+      1. W_scar    — critical-variable claim without source evidence
+      2. T3        — irreversible pattern
+      3. T2/OBSERVE
+
+  The brake is read through its single authority (`federation/kernel/jitu.py`). This file holds no
+  copy of the trip logic — only the call. A second implementation of a brake is two brakes.
 """
 
 import json
@@ -21,6 +34,27 @@ import uuid
 from datetime import datetime
 
 RECEIPT_PATH = "/root/.local/share/arifos/hermes_hook_receipts.jsonl"
+JITU_AUTHORITY = "/root/AAA/federation/kernel/jitu.py"
+
+
+def jitu_state():
+    """(tripped, reason) from the single circuit-breaker authority.
+
+    FAIL-CLOSED on any fault: if the authority cannot be loaded or answered, we cannot prove the
+    brake is released, so a mutation must not proceed. An unreadable brake is not an absent brake.
+    """
+    import importlib.util
+
+    try:
+        spec = importlib.util.spec_from_file_location("jitu_authority", JITU_AUTHORITY)
+        if spec is None or spec.loader is None:
+            return True, "JITU authority not loadable (spec empty)"
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        allowed, why = mod.check(lane=None, quiet=True)
+        return (not allowed), why
+    except Exception as exc:
+        return True, f"JITU authority raised: {exc}"
 
 # T3 patterns — same as OpenCode gate (E-12: capability beats instruction)
 T3_PATTERNS = [
@@ -255,6 +289,29 @@ def main():
     trace_id = os.environ.get("ARIFOS_TRACE_ID") or f"trc-{uuid.uuid4().hex[:12]}"
 
     classification = classify(tool_name, tool_input)
+
+    # ---- 0. JITU: the sovereign brake. Checked before every other rule. ----
+    # A read-only observation is still allowed while tripped: stopping investigation is not what a
+    # circuit breaker is for, and a brake that blinds the operator cannot be released safely.
+    if classification != "OBSERVE":
+        tripped, jitu_why = jitu_state()
+        if tripped:
+            reason = f"JITU HARD INTERRUPT — {jitu_why}"
+            write_receipt(tool_name, classification, "JITU_TRIPPED", reason,
+                          trace_id=trace_id, session_id=session_id)
+            write_falsification_metric("jitu_interrupt", {"tool": tool_name, "reason": jitu_why})
+            update_telemetry("hold")
+            print(json.dumps({
+                "decision": "block",
+                "reason": (
+                    f"\U0001F6D1 JITU (circuit breaker): {jitu_why}. "
+                    "This is a sovereign-issued stop, not an error — do not retry, do not route around it. "
+                    "Read-only inspection stays available. Release requires F13: "
+                    "`python3 /root/AAA/federation/kernel/jitu.py release --by F13 --reason '...'`. "
+                    "Report the true state (JITU_TRIPPED) and stop."
+                ),
+            }))
+            sys.exit(3)  # 3 = circuit-breaker interrupt (distinct from T3's 2)
 
     # W_scar: critical-variable claim detection (machine-enforced, not advisory)
     if has_critical_claim(tool_name, tool_input):
