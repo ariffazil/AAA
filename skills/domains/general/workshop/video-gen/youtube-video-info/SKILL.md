@@ -8,7 +8,7 @@ risk_tier: low
 floor_scope: [F2, F4]
 autonomy_tier: T1
 forged: 2026-08-30
-forged_by: kimi-code/FI-008 (F13 directive: make YouTube work for Hermes ASI)
+forged_by: "kimi-code/FI-008 (F13 directive: make YouTube work for Hermes ASI)"
 trigger_when:
   - "message contains youtu.be/ or youtube.com/watch or youtube.com/shorts"
   - "user asks what a video is, or sends a video link for discussion"

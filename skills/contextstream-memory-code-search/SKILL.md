@@ -1,6 +1,6 @@
 ---
 name: contextstream-memory-code-search
-description: Persistent conversational memory, semantic code search, dependency graph mapping, pre-compaction session capture, and workspace Q&A via ContextStream MCP server (mcp.contextstream.io/mcp). [fed: tier=fed-long-context]
+description: "Persistent conversational memory, semantic code search, dependency graph mapping, pre-compaction session capture, and workspace Q&A via ContextStream MCP server (mcp.contextstream.io/mcp). [fed: tier=fed-long-context]"
 capability_tier: fed-long-context
 ecology_state: WARM
 ---

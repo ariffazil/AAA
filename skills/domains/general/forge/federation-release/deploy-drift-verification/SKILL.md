@@ -52,6 +52,12 @@ shape: **the running process is the artifact, and it is holding the modules it i
    `venv/bin/python -c "import <pkg>, <pkg>.<module>; print(<pkg>.__file__)"` — an editable install
    routes through a `.pth` finder back to the checkout, so a same-named copy elsewhere on disk
    is a different program.
+   **Run it from a neutral cwd, or from the unit's own `WorkingDirectory=`.** `sys.path[0]` is
+   the current directory for `-c` and stdin scripts, so running the check from inside the
+   checkout makes the dev tree win and prints exactly the path you were hoping to confirm. cd
+   elsewhere first, or pin the deployed location explicitly
+   (`sys.path.insert(0, "<deployed-site-packages>")`), and only then does the answer describe
+   the service rather than your shell.
 3. **Restart, then re-probe.** For a service you are running inside, schedule the restart detached
    (`systemd-run --on-active=Ns systemctl restart <unit>`) and do not judge health during the boot
    window. Coordination mechanics live in `live-service-ops`; this skill owns the *detection*.
@@ -255,6 +261,38 @@ Consequences worth stating out loud:
 - When a peer declares a hold on this basis, a hold that depends on a dirty tree is a
   *conditional* hold. Say so, with the condition named.
 
+## Every process, not just the main one
+
+`systemctl show -p MainPID` names ONE process; an interpreted service usually runs several that
+each imported the module at their own start time. A worker can hold pre-edit code while the main
+unit holds the fix — and workers frequently resolve from a **different tree** than the service.
+
+```bash
+# candidate set by ARGV (never by comm/process name)
+pgrep -af "<pkg>" ; pgrep -af "/opt/<app>"
+# + children of the unit, + any python carrying the venv in its environ
+for p in $(pgrep -x python3); do tr '\0' '\n' < /proc/$p/environ 2>/dev/null | grep -q "<venv>" && echo $p; done
+```
+
+Filter by **argv, never by name**: a database client or daemon whose *comm* merely contains the
+organ name joins the list (it is not running your code at all), while a worker launched as
+`python -c` carries no organ name where a name search looks and is silently dropped. Union the
+candidate sets, then test each PID against **the file that PID resolves** — a `-m` worker with
+`PYTHONPATH=<dev tree>` loads from the dev tree while the service loads from site-packages, so a
+single global mtime is the wrong comparison and clears the wrong process.
+
+**`/proc/PID/maps` does not list Python source.** Interpreted `.py` is read, not mmapped; maps
+shows only C extensions. Its silence is no information, not absence — resolve the package root
+and grep that tree's contents for the guard symbol rather than grepping `import` statements (a
+relative or lazy import inside the package pins the whole tree from one root resolution, and an
+import-statement grep misses both).
+
+**Exercising a guard is safe when you call the guard itself.** It returns its verdict before any
+socket opens, so a blocked address performs no fetch — no need to aim it at a live endpoint, and
+never do: if the guard were wrong, the response body would land in whatever audit layer wraps the
+call and the test becomes the exfiltration. Import the leaf guard module only; importing a whole
+application module can boot the runtime or hang.
+
 ## Pitfalls
 
 - **A kernel/monitor "deployed SHA" field may be attesting the DEV CHECKOUT, not the deployment.**
@@ -286,4 +324,15 @@ Consequences worth stating out loud:
 - **Multi-session edits to the same file.** In a multi-agent environment, `git status` may show a NEW uncommitted change that appeared mid-session (another agent editing the same file). Re-check `git status` after you commit; never commit working-tree state that is not yours.
 - **An interpreted runtime keeps pre-edit modules in `sys.modules` — and a mixed-version agent is the normal outcome.** The process that booted before your patch keeps serving the old module for its whole life; log lines from that PID are the old code's behaviour. An updater that pulls code without restarting the unit will usually say so itself; treat that banner as a receipt, not as noise to dismiss.
 - **`dist-info` is an installation record, not the code on disk.** An editable install's package metadata stays frozen at install time while the checkout moves, so `pip show` / reported package version can trail the code the process actually runs. Read the module's `__file__` and the git state of that tree instead of reconciling versions.
+- **`grep -c <marker> <path>` cannot tell "guard absent" from "file absent".** A grep against a
+  path that does not exist yields zero hits and reads as a missing fix, when the real situation
+  is that the path was never a deploy target. Test existence first (`[ -f "$p" ] && grep ...`),
+  and enumerate every candidate tree — repo, deployed app dir, venv `site-packages` — before
+  concluding anything. On hosts where the service imports from an installed package, the app
+  directory you grepped may not contain the package at all, and "absent" then means you looked
+  in the wrong place, not that the work was lost.
 - **A patch in an install dir has no build fallback.** With source-plus-build, a lost working-tree edit can be rebuilt from a commit; with an interpreted install, the working-tree diff may be the *only* copy of a live fix. Copy it to a named backup with a `sha256sum` manifest before any updater runs, and treat it as unshipped until it is committed.
+- **A registry snapshot that names your new commit is not proof the fix is live.** Kernel/monitor snapshots read repo HEAD, so they flip to the patched SHA the moment you commit — while the process still holds the pre-commit module. Re-run the original attack after restart and show the changed verdict; a snapshot agreeing with you is the weakest possible receipt here.
+- **Two nodes can hold the same repo at different commits and both report honestly.** Pin every citation as `host + repo path + short sha`; line numbers are not portable between nodes, and a patch built on the wrong node's numbers lands on ghost lines. Load `proxy-verification-audit` when the change being deployed is a security/authority control — it owns proving the control actually refuses something.
+- **Prove a library major bump by executing, not by reading.** An SDK going one major version up reads like the headline blocker and usually is not. Check the call surface the code actually uses — constructor keyword arguments, transport argument names, decorator signatures — for removed or renamed parameters, then run one initialize handshake per entrypoint on the new interpreter and confirm each registers its full tool set. Record the cosmetic drift too: a server that does not pass an explicit version of its own will report the library's version in its handshake instead. This is the empirical half of the SDK-drift pitfall above; the static pin comparison tells you a delta exists, only the handshake tells you whether it breaks anything.
+- **Two venvs can differ only by their system-site-packages flag, and the difference presents as missing modules.** Identical CPython version and identical core pins (`pydantic`, `starlette`, `uvicorn`, `anyio`) do not mean identical surfaces: read `include-system-site-packages` in each `pyvenv.cfg` before diffing long package lists, because the interpreter with the host global `dist-packages` visible sees hundreds of packages the isolated one does not — one flag, an enormous diff, and a misleading "the new venv is missing X" conclusion. The migration blocker is then rarely the framework major bump but the few entrypoints reaching into the host pool; install those specific packages into the isolated venv and verify by importing them under that interpreter, rather than re-enabling system-site-packages to make the diff go away. Do the install with a dry run first (`pip install --dry-run`) to see the full resolver plan before committing to it.

@@ -1,6 +1,6 @@
 ---
 name: bijaksana-compile
-description: When user asks to compile remaining work, lower entropy, or make future agents lebih arif dan bijaksana. Enforces read-before-celebrate, vocabulary discipline (SEAL ≠ RECEIPT), and shadow-first audit. USE WHEN: 'compile remaining tasks', 'lower entropy', 'wisdom patch', 'next session should know', 'make agents smarter'.
+description: "When user asks to compile remaining work, lower entropy, or make future agents lebih arif dan bijaksana. Enforces read-before-celebrate, vocabulary discipline (SEAL ≠ RECEIPT), and shadow-first audit. USE WHEN: 'compile remaining tasks', 'lower entropy', 'wisdom patch', 'next session should know', 'make agents smarter'."
 ---
 
 # ⌬ BIJAKSANA-Compile — Session Hygiene Compiler

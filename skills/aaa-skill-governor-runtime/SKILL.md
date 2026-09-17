@@ -2,7 +2,7 @@
 id: aaa-skill-governor-runtime
 name: aaa-skill-governor-runtime
 version: 1.0.0
-description: Operational runtime for SKILL_RUNTIME_GOVERNANCE.md — the 6-gate pre-load and lifecycle discipline. USE WHEN: 'skill validation', 'runtime governance', 'collision resolution', 'deprecation sweep', 'skill promotion review'. Covers: 6 pre-load gates (filesystem, permission, dependency, harness, model, constitutional); loading order 000-substrate → 150-harness_specific; cost classes C0-C4 with agent budgets; collision classes (DUPLICATE, OVERLAP, CHAINED, ALIAS, ORTHOGONAL — unresolved DUPLICATE >72h = both HOLD); weekly deprecation sweep (KEEP/MERGE/DEPRECATE/HOLD/VOID — broken + no owner >30d = VOID); registry declares topology, runtime is truth, never confuse them. [fed: tier=fed-agent-subagent, floors=[F1, F2, F7, F11], auto=T1, risk=medium]
+description: "Operational runtime for SKILL_RUNTIME_GOVERNANCE.md — the 6-gate pre-load and lifecycle discipline. USE WHEN: 'skill validation', 'runtime governance', 'collision resolution', 'deprecation sweep', 'skill promotion review'. Covers: 6 pre-load gates (filesystem, permission, dependency, harness, model, constitutional); loading order 000-substrate → 150-harness_specific; cost classes C0-C4 with agent budgets; collision classes (DUPLICATE, OVERLAP, CHAINED, ALIAS, ORTHOGONAL — unresolved DUPLICATE >72h = both HOLD); weekly deprecation sweep (KEEP/MERGE/DEPRECATE/HOLD/VOID — broken + no owner >30d = VOID); registry declares topology, runtime is truth, never confuse them. [fed: tier=fed-agent-subagent, floors=[F1, F2, F7, F11], auto=T1, risk=medium]"
 owner: 333-AGI
 risk_tier: medium
 floor_scope: [F1, F2, F7, F11]

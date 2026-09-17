@@ -123,3 +123,22 @@ only overrule what he can see. Do **not** enumerate the exclusions inside the vi
 - `bridge-protocol` (user-owned) — the human-facing output contract; its kampung-register default
   applies only while Arif is the sole human present.
 - `relationship-kernel` — when the subject is one of Arif's human bonds.
+
+## Modes — Skill Zen quartet (2026-09-16, F13 directive)
+
+This skill is **Owner 2 of 4** in the human-alignment quartet. It owns information
+*flow*: who may know, use, infer-from, or disclose what, scoped by audience and channel.
+
+- **Mode: PRINCIPAL-RECOGNITION** *(absorbed `sovereign-recognize`, archived
+  `.agents/skills/.archive/2026-09-16-skill-zen-quartet/`)* — before any action that
+  targets, addresses, or binds a person, identify who is present: sovereign / other
+  human / agent / mixed audience. Recognition gates register, ceiling, and consent.
+- **Mode: CHANNEL-SCOPE** — group vs DM vs agent-mediation vs in-person: same human,
+  different audience, different ceiling. Never merge cross-channel evidence without
+  the channel tag (RASA §23).
+- **Mode: PRIVACY-FIDUCIARY** — infrastructure ownership ≠ disclosure ownership
+  (RASA §22). A confidence held for person X is not the system owner's through the
+  machine. Enforcement: `check_epistemic_access` (`/root/.hermes/policy/rasa_multi_principal.py`).
+
+Quartet: RASA Doctrine → **audience-scoped-disclosure** → APEX-humility-godel →
+disclosure-advisory. Map: `AAA/skills/OWNERSHIP_MAP.yaml`.

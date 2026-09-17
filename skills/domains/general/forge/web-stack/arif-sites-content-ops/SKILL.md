@@ -348,6 +348,22 @@ Arif's doctrine: *"Same directive ≠ same execution. Same mission ≠ same file
 
 **Pitfall — canon-sync required-files list:** `scripts/canon-sync.sh` has a hardcoded array of files it syncs. Any NEW canon file (atlas.yaml, file-authority.yaml) must be added to that array or the live mirror 404s. Check with `curl -s -o /dev/null -w '%{http_code}' https://arif-fazil.com/canon/<new-file>` after sync.
 
+## Dual-lane UA routing — probe BOTH lanes (2026-09-17)
+
+`/world/makcikgpt/*` serves **different bytes by User-Agent**: bot/crawler UAs
+(`GPTBot|…|TelegramBot|HeadlessChrome|curl|wget`) get the markdown mirror root with a
+terminal `/index.html` fallback = the **listing**; browser UAs get the React shell.
+
+- A new article with no `makcikgpt-md/<slug>.md|.html` mirror therefore **200s the
+  listing** — Telegram preview and crawlers see the wrong page while the author's browser
+  looks fine. 200 ≠ correct content: grep a string unique to the article.
+- **Your headless browser IS a bot** (`HeadlessChrome` is in the regex). Override with
+  `cdp('Network.setUserAgentOverride', …)` before navigating, then verify
+  `navigator.userAgent` — `Emulation.setUserAgentOverride` may not take effect.
+
+Full detail, probe commands, and the og-tag/social-preview gap:
+`references/dual-lane-ua-routing-pitfalls.md`.
+
 ## Pitfalls — ARCHIVE
 
 The pitfall history for this skill (`## Pitfalls` and `## Additional Pitfalls`, ~31 KB)

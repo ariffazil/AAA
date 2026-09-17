@@ -150,6 +150,8 @@ and the hard-floor carve-out.
 - `generated-media-delivery` — synthetic subject boundaries, lane honesty
 - `AAA-audio-qualia-doctrine` — qualia as acoustic variance, F9 boundary at synthesis
 - `human-meaning-membrane` — C1–C14, consent never inferred, manipulation watchlist
+- `hermes-rasa-doctrine` — provenance classes (O/S/R/I/F/P/C) and STOP states for any claim
+  about a real person's interior; the epistemic half of this skill's delivery half.
 - `hermes-response-format-fit` — register calibration
 - `malaysian-physique-circuit` — bodies never merge, identity never inherits
 

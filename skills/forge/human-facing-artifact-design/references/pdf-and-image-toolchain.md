@@ -43,6 +43,63 @@ doc.build(elements, canvasmaker=PagedCanvas)
 
 Buffering `self.__dict__` per page is what makes "of M" possible — a footer drawn inside `showPage` never knows the total.
 
+### Dark full-bleed page theme (personal / reflective documents)
+
+For a document with a coloured page background (dark theme, warm gold text), do **not** subclass
+the canvas — pass page callbacks to `SimpleDocTemplate`. They run before the flowables draw, so a
+filled rect becomes the backdrop, and the same callback is the simplest place for a centred page
+number:
+
+```python
+from reportlab.lib.colors import HexColor
+from reportlab.lib.pagesizes import A4
+
+BG, GOLD, DIM = HexColor("#1a1a2e"), HexColor("#d4a574"), HexColor("#8a7060")
+
+def draw_bg(canvas, doc):
+    canvas.saveState()
+    canvas.setFillColor(BG)
+    canvas.rect(0, 0, A4[0], A4[1], fill=1, stroke=0)
+    canvas.setFont(body_font, 8)
+    canvas.setFillColor(DIM)
+    canvas.drawCentredString(A4[0]/2, 15*mm, f"— {doc.page} —")
+    canvas.restoreState()
+
+doc.build(story, onFirstPage=draw_bg, onLaterPages=draw_bg)
+```
+
+Setting `bg=None` on `SimpleDocTemplate` does not affect the page background — the callback is the
+only mechanism.
+
+**Register the font family explicitly — base and bold are separate faces.** One TTF registration
+gives you exactly one face and there is no implicit bold. Discover the files instead of hardcoding
+paths:
+
+```python
+import glob
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+
+for fp in glob.glob("/usr/share/fonts/truetype/**/*.ttf", recursive=True):
+    if "dejavuserif" in fp.lower() and fp.endswith(".ttf"):
+        name = "DejaVuSerif-Bold" if "bold" in fp.lower() else "DejaVuSerif"
+        pdfmetrics.registerFont(TTFont(name, fp))
+```
+
+Referencing `"DejaVuSerif-Bold"` without registering it falls back silently to a default font — on
+a dark page that is a visible style break, not a subtle one.
+
+**Every style needs its own colour; there is no global text colour.** A `canvas.setFillColor`
+inside the page callback does not reach flowable text. Each `ParagraphStyle` carries its own
+`textColor`, so on a dark background a style you forgot to colour renders **invisible**, not merely
+inconsistent. Set it on title, subtitle, heading, body, quote, footer and intro styles explicitly,
+and pass an explicit light `color=` to every `HRFlowable` — the default rule colour is near-black
+and vanishes against the theme.
+
+Dark-theme checklist: every style has an explicit light `textColor`; every divider has an explicit
+light `color`; the callback fills the rect before drawing the page number; and the normal §3
+density check still applies unchanged (`page.get_text()` is unaffected by background colour).
+
 ### Section header band
 
 Wrap each title in a one-cell Table with a background colour. Gives a coloured band without drawing primitives or measuring text:
