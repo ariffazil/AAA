@@ -31,8 +31,20 @@ either way; what differs is who owns the time.
 
 Package step-ups follow completed years of service, not the employer's org-design or handover
 date. Waiting past a stated milestone can add nothing, while waiting a few weeks to the next
-anniversary can add 1.5 months. Always compute the package at three points — today, next
+anniversary can add a whole step. Always compute the package at three points — today, next
 anniversary, and the employer's named milestone — and name the optimum decision window.
+
+- **The anniversary date is an assumption until the instrument says otherwise.** "Completed
+  years" must be counted from a reference date the employer picks — last day of service,
+  acceptance date, scheme cut-off, or a fixed scheme date — and the choice can be worth a full
+  step. Never state a computed step-up date as a fact. Derive it, then say which reference
+  convention it rests on and that confirming that convention is a question for HR. A date you
+  inferred and delivered as an answer will be tested immediately by the only person who can see
+  the document, and the retraction costs more trust than the answer was worth.
+- **A stated formula is not a stated reference date.** When the person gives you the package
+  formula but not the counting convention, you have the multiplier and not the clock. Say so in
+  the same message, mark the resulting figure as conditional, and keep any recommendation that
+  turns on it provisional until the convention is confirmed.
 
 ## 3. Statutory minimum is what defines whether the deal is fair
 
@@ -148,6 +160,29 @@ windows already closed, and any litigation that threatens the business itself.
 - What the person already knows outranks what the search returns — they read their own
   organisation better than any public source. Use the record to fill gaps and to hand them numbers
   for a conversation they are already having; never to tell them their own company.
+
+### Adjudicating a "the employer will fail" thesis
+
+A principal who fears collapse arrives with a chain of premises. Three moves settle it:
+
+- **Separate solvency from trajectory.** "Will it go bust?" and "is it contracting?" are different
+  questions with different answers, and an entity can be comfortably solvent while shrinking fast.
+  Refuse the false binary: report the level (cash, profit, gearing) *and* the rate (change across
+  the last two reporting periods). A balance sheet that lost a large share of its net cash over
+  six months is the real finding, and it is invisible in the level. The decision is usually driven
+  by the rate.
+- **Test each premise; do not debate the conclusion.** A thesis assembled from several dated
+  claims is settled by checking the premises against sources. One premise is often simply wrong —
+  a leader reported as departing who has just had a contract extended, a milestone that has
+  already passed, a deadline that has moved. Correcting that single premise does more than any
+  counter-argument, and it is also how you keep the person's trust: you are repairing their
+  evidence, not contradicting their judgement. State which premises verified, which did not, and
+  which the record cannot settle.
+- **Find the variable the paperwork omits.** Where an employer's ability to keep employing
+  someone depends on an external matter — litigation, a licence, a state or political dispute, a
+  settlement — and the internal instrument is silent on it, that variable governs the decision and
+  the instrument does not. Name it as the first-order question and the personal terms as
+  second-order. Surfacing it is often the single most useful thing in the whole reply.
 
 ## 10. Settling a small mortgage first
 
