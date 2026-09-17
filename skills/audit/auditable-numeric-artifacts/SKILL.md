@@ -1,0 +1,179 @@
+---
+name: auditable-numeric-artifacts
+description: "Use when issuing checkable numbers. Source every figure."
+version: 1.0.0
+risk_tier: low
+floor_scope: [F2, F9]
+autonomy_tier: T0
+tags: [epistemic, numbers, primary-source, verification, artifacts]
+---
+
+# Auditable Numeric Artifacts
+
+> **DITEMPA BUKAN DIBERI** — A number you cannot quote from its source is a liability, not an asset.
+
+## When this applies
+
+Any deliverable carrying numbers a reader can independently check: financial or operational
+analysis, institutional briefings, due-diligence notes, data-backed PDFs and reports. The
+governing assumption is **the recipient will open the primary document and check you line by
+line** — not because they distrust you, but because that is the correct way to read an
+evidential document.
+
+This is the authoring counterpart to the audit skills. Those govern reading someone else's
+claims adversarially; this governs producing your own so they hold up.
+
+---
+
+## Procedure
+
+1. **Classify each claim before writing it.** Two classes, handled differently:
+   - **Quotable fact** — a figure stated in a primary document. Cite it, and quote the source's own wording where the wording carries the meaning.
+   - **Derived figure** — anything computed (delta, annualised rate, product, ratio, comparison). These are what get destroyed under audit. Allow them only when every input is itself quotable, and label what you did.
+2. **Locate the primary.** Company filing or annual report, regulator database, official statistical release, the system's own logs. A news article, broker note, or colleague's slide is a **summariser**, never a source of record.
+3. **Match the metric name, not just the value.** Same number under a different label is a wrong number.
+4. **Check whether the source publishes the metric on more than one basis.** If it does, both are usually legitimate — quote both with their labels.
+5. **Label every assumption at the point of use.** "Assuming an average cost of X" is a variable the reader may change; a bare X is a defect they will expose.
+6. **Lead with observations that rest on no numbers.** Structural and definitional findings survive every audit; a figure-dependent finding survives only until the figure is corrected.
+7. **Treat the artifact as versioned.** On any correction, publish a new version and a short table of what changed and why.
+
+---
+
+## Metric identity
+
+Between the primary and your reply there is usually a summariser. Summarisers are lossy in three
+specific ways, and each loss is invisible unless you go back to the primary:
+
+| Loss | Signature | Recovery |
+|---|---|---|
+| **Metric collapse** | One word — commonly "cash" — standing for a balance, a net position and a flow at once | Pull the primary, match the *label* |
+| **Series collapse** | Two published series for one period presented as one | Read the source table row by row |
+| **Wording collapse** | An accounting event reported as an operating outcome | Quote the primary's sentence verbatim |
+
+**Rule:** before any consequential number leaves your hands, ask *which document does this come
+from, and does that document use the same metric name I am about to use?* If the honest answer is
+a summariser, either go to the primary or label it secondary **inside the artifact**.
+
+A number correct to four significant figures under the wrong metric name is a wrong number, and
+it will be caught precisely because it looks precise.
+
+---
+
+## Stock versus flow
+
+A change in a balance is the difference between two stocks. Converting it into "per month" or
+"per year" silently asserts a flow that was never measured.
+
+Before attributing a decline in a balance to operations:
+- read the **flow statement** for the actual operating figure;
+- check whether the **other side of the balance sheet moved** — new borrowing, translation effects,
+  declared distributions and lease additions all produce the same balance-sheet signature as
+  genuine cash consumption.
+
+A balance-sheet delta presented as a burn rate is one of the easiest errors to falsify, because
+the correcting document sits in the same filing.
+
+---
+
+## Scenarios versus measurements
+
+**Any product containing an assumed factor is a scenario, not a measurement.**
+
+If one input is assumed — a typical unit cost, an average headcount, a blended rate — the result
+may appear only as a labelled scenario. It may not be compared against a measured figure as
+though both were measurements, because the comparison then carries precision it never earned.
+
+When the temptation arises to make an argument land harder by multiplying two plausible numbers:
+make the argument from fewer, harder numbers instead. A comparison built on four quotable facts
+survives a hostile reader; one built on an assumed unit cost does not, and its failure takes the
+argument with it.
+
+---
+
+## Attribution
+
+An attributed claim requires a **nameable artefact**: author, title, date — something the reader
+can open.
+
+- "Analysts say", "sources indicate", "it is understood" cannot be checked.
+- When a reader tries and finds nothing, the cost is not the sentence. It is the whole document's
+  standing, because you have shown that at least one claim was never anchored.
+- If you cannot name it, cut it. Losing one sentence is cheaper than losing the argument.
+
+Distinguish this from *aggregate* attribution ("the industry expects") — a different defect: an
+unnamed sample presented as a consensus.
+
+---
+
+## Dual series
+
+When a source publishes the same metric on two bases for the same period — different definitions,
+different scopes, different measurement points — both are usually valid.
+
+- Quote both with their labels. **Declaring one wrong is itself an error.**
+- Where two series are laid out as adjacent rows or columns, transposing them is the most findable
+  mistake a reader can catch, because the correcting table is on the page they are already
+  looking at. Verify two-series tables **column-to-column, not row-to-row**.
+- State which series you are using and why, once, then be consistent.
+
+---
+
+## Hedging asymmetry
+
+Over-hedging is the same defect class as over-claiming, pointed the other way.
+
+- An "unverified" list is for claims whose **source is unreachable** — not for claims you
+  personally did not open.
+- Demoting a figure the primary document actually states weakens a case that would have held, and
+  it teaches the reader to distrust your confidence signal generally.
+- Conversely, a claim carried as verified because a summariser stated it is an asserted unverified
+  claim. Both directions cost the same credibility.
+
+---
+
+## Receiving an audit of your own artifact
+
+When a reader returns line-by-line corrections against the primary:
+
+1. **Go to the primary yourself before responding.** Do not concede or defend from memory —
+   agreeing quickly is as unreliable as refusing.
+2. **Classify each correction.** Metric confusion, series transposition, and accounting-versus-
+   operating misreads need different fixes. Say which class each one is.
+3. **Retract in the open, quoting the source's own wording.** A retraction that quotes the primary
+   is evidence the claims were removable — which is what makes the surviving claims trustworthy.
+4. **Recompute from the corrected input; do not merely delete the line.** Deleting leaves the
+   conclusion the wrong number induced still standing.
+5. **Re-examine everything built on the corrected number.** A derived figure usually supports a
+   larger argument; fixing the figure without checking the argument is half a correction.
+6. **Version the artifact** with a short table of what changed and why. Never silently patch — a
+   reader holding the old number cannot tell which document they have.
+7. **Report what remains unverified, and remove what cannot be sourced at all.** Some corrections
+   resolve in your favour; say so plainly rather than over-conceding.
+8. **Record the failure mode** where the next session will load it, so the same class of error is
+   not re-learned.
+
+---
+
+## Pitfalls
+
+- **Never take a number from a news article when the primary exists.** Summarisers collapse related-but-distinct metrics under one word; the value survives and the meaning does not.
+- **Never annualise a balance-sheet delta and call it a burn rate.** Check the other balance-sheet side and the flow statement first.
+- **Never present a product of an assumed factor as a measurement.** Label it a scenario or drop it.
+- **Never attribute a claim to unnamed third parties.** Name the artefact or cut the sentence.
+- **Never declare one of two published series wrong.** Quote both with labels; verify two-series tables column-to-column.
+- **Never read a recognition as an operating result.** Accumulated-loss recognition triggered by a capital injection is a balance-sheet event; read the exact wording before calling it a period loss.
+- **Never silently revise a published artifact.** Version it, and show what changed.
+- **Never let a headline figure be one you cannot quote.** If it must be derived, say what it is derived from, in the artifact.
+- **Don't skip the full document for a summary of it.** The summary carries the framing; the full document carries the footnotes where the real figure lives.
+
+---
+
+## Output shape that survives audit
+
+- Lead with defined terms and structural observations — the parts no number can falsify.
+- Present quotable facts in a table with a source column naming the document and period.
+- Keep derived figures in a separate block labelled as derived.
+- Carry a short "what remains unverified" section; it is a strength, not an admission.
+- On revision, carry a change table: previous value, new value, reason.
+- Include a falsification test: the specific observations that would show your reading wrong. A
+  reading that cannot be wrong is a belief, and readers treat it as one.
