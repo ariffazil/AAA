@@ -476,6 +476,81 @@ sources — which reframes the fix from "reconcile our sources" to "flag this do
 sibling modules before concluding the codebase disagrees with the document; a single unsourced
 string in one file is not a multi-way split.
 
+### Tool descriptions vs handler signatures — diff them, never spot-read one
+
+A finding of the shape "the tool description advertises fields the handler rejects" is cheap to
+state and cheap to falsify. Both sides are machine-readable, so diff the whole surface at once
+rather than reading one tool and generalizing.
+
+`scripts/mcp_schema_signature_diff.py <server.py> <schema_cache.json> <server-key>` parses the
+`ast` (no import, no side effects), keeps only handlers carrying a tool decorator (`@mcp.tool`,
+`@server.tool()`) and discards internal helpers, then diffs parameter names **in both directions**:
+served-with-no-handler, handler-never-served, required-but-defaulted. Exit `0` agree, `1` disagree,
+`2` input unreadable.
+
+- **A 100% match across every tool kills the finding outright.** Report the count and the command
+  that produced it — that is a complete reply to the claim. Then state the scope: names,
+  required-ness and coarse types only. Enums, nested schemas, default values and descriptions are
+  *not* attested, so "the schema is correct" is never a licensed conclusion. Quote the scope line the
+  script prints rather than paraphrasing it.
+- **A one-directional diff reports a false clean.** Driving the comparison off the served set alone
+  cannot see a handler that is registered in code and absent from the served schema — which is
+  exactly the case a stale cache produces, and exactly the case that matters. Measured: with one tool
+dropped from the cache, the served-driven version printed *"Every served schema matches its handler
+signature… FALSIFIED"* while the bidirectional version printed `CODE-ONLY`. **A diff is only as
+  strong as its weaker direction**; if you inherit a one-way diff, run the reverse query by hand
+  before repeating its verdict.
+- **Filter what counts as a tool by decorator, not by name.** Reporting every internal helper
+  (`get_db`, `log_event`) as a missing tool buries the real row in noise. If a server carries no tool
+  decorator at all, the reverse direction is untrustworthy — say so instead of reporting a clean diff.
+- **Read the cache's age before its contents.** A stale cache is the commonest cause of a false OK,
+  and it presents as *agreement*. The script prints the cache age and warns past 24h; when a
+  `CODE-ONLY` row appears, check staleness before alleging a broken registration.
+- **No mismatch, plus descriptions that do not name those fields either, means the auditor read a
+  *different* tool's schema.** Adjacent tools in one server commonly differ (one takes `subject` +
+  `observation`, its neighbour takes `event_id` + `actor` + `channel`). Name which tool the fields
+  belong to — a defect attributed to the wrong tool is a *fabricated* defect, not an imprecise one.
+- **Use a schema cache as the served truth when one exists.** The cache is what the client actually
+  received; the source is what the author wrote. Once cache and source agree, the description can no
+  longer be "misleading" in the way claimed.
+- **Do not claim typing strictness the diff does not measure.** A name comparison shows a server
+  cannot advertise a *field* the handler rejects; it does not show it cannot advertise a *mode*, and
+  it says nothing about enums. Annotation-derived type notes are INFO, because Python annotations are
+  optional and their absence proves nothing. Report strictness only where a type note fired.
+
+### A citation is falsified by grepping its own target
+
+Before accepting "X is advertised in file Y", grep Y for X. Naming the wrong file for a real defect
+is the commonest audit error, and it costs one command to settle:
+
+```bash
+grep -c -i "<claimed-subject>" <cited-file>     # 0 = the citation is wrong
+grep -rn "<claimed-subject>" <component-dir>    # find where it IS mentioned
+```
+
+**Then read the mention you found.** An advertisement can be real and still mis-cited: a subject
+absent from the census file may be named inside a *tool description* claiming it was "live-probed" —
+which is a **worse** defect than the one reported, because it is a capability claim about a service
+that is down, served to every client. Correct the citation and upgrade the finding. Do not discard a
+finding because its citation failed, and do not keep the finding with the citation as filed.
+
+### Check the audit's own side effects on live state
+
+An auditor that must probe live state can damage the thing it reports on. Before ratifying any
+finding, read what it *did*:
+
+- **Fixture rows written into a live production store are contamination, not test data.** Locate the
+  store the audit wrote to and read the rows it added. "No mutations performed" is true only if the
+  store agrees — and rows attributed to a real actor's name are the harmful subset.
+- **A service the auditor stopped and never restarted.** An audit that flags "no supervisor unit" and
+  then kills the process has instantiated the exact defect it reports. Verify the port is back up
+  before accepting the report; the leftover becomes the first remediation item.
+- **The counts it quoted.** Re-run `grep -c` per server/tree. These numbers are cheap to confirm and
+  they anchor whether the auditor read the code at all.
+- **Rate the audit by error direction.** One fabricated defect plus one mis-cited citation out of six
+  findings is a materially different artifact from four verified findings plus two imprecise ones.
+  Split the ratification: verify what is verified, HOLD what is not, strike what the code contradicts.
+
 ### Citation metadata is itself a claim
 
 The "verify every citation" step means more than resolving the URL. Check the **journal, year,
