@@ -53,7 +53,7 @@ Same skills. Different intelligence. The same FORGE-code-analysis that finds bug
 |---|---|---|
 | FORGE-code-analysis | Find bugs, suggest refactor | + dependency impact + maintenance burden + knowledge concentration risk |
 | FORGE-federation-orchestrator | Optimise topology | + authority shift + failure blast radius + recovery complexity |
-| FORGE-mcp-smoke-test | Tool passes | + what depends on it + what breaks if it dies + consequence chain |
+| runtime-probe (absorbed FORGE-mcp-smoke-test, Wave 2) | Tool passes | + what depends on it + what breaks if it dies + consequence chain |
 | deep-research | Find facts | + what incentives generated those facts + who benefits + who pays |
 | PETRONAS-intelligence-router | Industry intelligence | + resource → capital → institution → political settlement → consequence |
 
