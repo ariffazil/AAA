@@ -56,3 +56,21 @@ Prior art in code (already partially done): `session.py` ~706 `session_authority
 - **Required fix (engineering intake):** seed self-attestation at boot (or first init), OR treat registry-absence as "must attest" rather than "failed". Postcondition: `execution_readiness=ready` + `session_authority_state=VERIFIED` converge.
 
 **Parallel-lane note (do not duplicate):** at 20:42Z `/root/arifOS` carried 4 uncommitted files from another lane — `constitutional_map.py`, `resources/schema.py`, `schemas/memory_modes.py`, `tool_discovery.py` — consistent with steps 3–4 (schema/runtime mismatch + mode authority) in flight. Left untouched.
+
+---
+
+## STEP ④ delivered (2026-09-18 21:05Z, deployed edea664d5)
+
+Mode-specific authority shipped — authority = f(mode), not namespace/alias:
+- `9eb99dd42`: session_policy alias-normalized manifest lookup + Tier-3 L13 mode-aware + clamp sites.
+- `e7ae4afe1`: quick_gate tool_mode param + rest_routes mode threading.
+- `edea664d5`: restraint mode-aware (query≠EXECUTE_HIGH_IMPACT) + deny/allow alias normalization.
+
+Falsification pairs: OLD query→CLAMP "threshold 0.00" / NEW query→PASS, engineer→BLOCKED.
+Live: S1/S2 pass all authority layers; S3 blocked correctly ("dangerous mode without ack").
+Security: denying `arif_forge` now denies `arif_forge_execute` (alias-family lists).
+
+**Residual fixtures for next lane:**
+- **F1 · identity plumbing:** REST route does not surface caller session into tool dispatch (`"actor":"anonymous-session"` despite body session_id); shell-bound test sessions invisible to service (shell default = venv-local `.arifos/runtime_sessions.json`; service = `/var/lib/arifos/runtime_sessions.json`). Needs single identity-store SOT + explicit route→tool session forward.
+- **F2 · query-chain:** `arif_forge_execute` mode=query deep path returns "No constitutional_chain_id from prior arif_judge SEAL" — audit whether read-only modes should require the chain at all.
+- **F3 · envelope (→ ⑤):** S1 transport=success, result HOLD/RETAK via "verdict_monotonicity: HOLD → RETAK (sub-signal floor dominates aggregate)" — operation success erased by governance degrade. Primary ⑤ acceptance fixture.
