@@ -319,11 +319,53 @@ relative symlink **inside** this package (one body, many paths); (c) the mention
 known absolute path → correct the mention. If none, the pointer is aspirational: report it, do not
 fabricate the file. Measured: 14 restored, 23 linked, 6 mentions corrected, 0 invented.
 
-**Repair rule for a shell — mirror before eviction.** If the same name exists as a real package
-anywhere in the live trees, replace the shell with a relative symlink to it (one body, many paths).
-Archive only when no successor exists **and** the shell holds no files; HOLD any shell holding orphan
-files — an orphaned body is a human call. Measured: 43 shells → 17 mirrored, 14 archived (empty), 12
-held. This is the same trap as eviction-on-appearance (LAW 2), now with a mechanical test.
+**Repair rule for a shell — the four gates, in order (do not reorder).** A shell is a canonical
+entry with no body; a *candidate mirror* is a package of the same name elsewhere. Replace only when
+all four hold, and resolve rather than guess:
+
+```
+1 resolve     basename -> name-identical | case-only | prefix-stripped (AUDIT- FORGE- APEX- ASI- KERNEL-)
+2 rank        canonical store first, then the default harness view, then profiles
+              (a per-profile copy is a MIRROR of one body, not a competing successor)
+3 skill.md    the target must actually carry SKILL.md
+4 containment target realpath must lie INSIDE an approved skill root
+5 hash        every file in the shell must exist in the mirror with an identical sha256
+```
+
+Gate 4 is not decoration. Canonical entries symlinked to an **external plugin checkout**
+(`/root/.understand-anything/repo/...`) resolve fine and carry a SKILL.md, so they pass gates 1-3 and
+1-5 — they are a *portability* defect (the store's contents depend on a path outside every managed
+root), not a broken capability. Deleting them drops a capability; calling them OK hides the
+dependency. Give them their own verdict class and one governance call: add the source root to the
+approved list, or vendor the skills.
+
+Gate 5 is where the weak predicate shows itself. Comparing *relative-path sets* passes a shell whose
+`SKILL.md.bak` — or whose `scripts/`, `assets/` — differ in content; comparing **hashes** catches it.
+Then classify the divergence before choosing a remedy: a `__pycache__`/`.bak`/`.tmp` difference is a
+build artifact (mechanically mergeable), a `SKILL.md`/`scripts/`/`assets/` difference is content and
+is a merge a human owns. Two different defects must never share one label, or the label picks the
+wrong remedy. Measured: one non-content pair, one genuine content split (`assets/icon.svg` differed,
+two scripts existed only on the shell side), one backup-only pair.
+
+Measured on the full store: 43 shells → 26 mirrored (all five gates), 14 archived (empty, no mirror),
+3 held. Never delete a shell: mirroring keeps the path and swaps the body for a relative symlink;
+an empty shell is *moved* to `.archive`.
+
+**A backup left inside the scanned root is itself a shell on the next census.** The mirroring pass
+keeps each pre-mirror body as `<shell>.bak-<ts>` — correctly, for reversibility — but that remedy
+pollutes the instrument measuring it. Move the backups **outside every scanned root** and write the
+inverse operation (`mv <dest> <src>`) to a manifest, appending rather than truncating.
+
+**The shape change must be committed, or it evaporates.** Replacing a real directory with a symlink is
+a repo mutation: in git it reads as `D` for every file inside plus a new untracked link, so an
+uncommitted repair is one `git checkout` away from reverting while the backup bodies now sit outside
+the tree. Commit scoped to the paths **your own manifests** produced — never `git add -A`, which
+sweeps the learning loop's ledger and other writers' uncommitted work into a commit that claims to be
+a mechanical repair. Print what you deliberately left out. Verify with
+`git ls-tree -r HEAD <store> | grep ^120000` that the paths are recorded as **mode 120000**; a fresh
+checkout then reproduces the shape instead of resurrecting the duplicate bodies. Then state which
+**branch** the commit landed on — a store whose worktree sits on a long-lived proposal branch has a
+repair that a later `git checkout main` will revert, and that is a fact the next agent needs.
 
 ### 5. Deleting anything — the safe rules
 
