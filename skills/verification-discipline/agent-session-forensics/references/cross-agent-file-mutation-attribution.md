@@ -67,12 +67,17 @@ Do not read "no file-history dir" as "that CLI did not write".
 
 ## Backup-name fingerprints
 
-| Name shape | Author |
-|---|---|
-| `*.bak-<YYYYMMDD>` / `*.backup.<YYYYMMDD>` | a human taking a snapshot before editing |
-| `*.bak-<YYYYMMDDTHHMMSSZ>` | a script stamping UTC before a patch |
-| `*.bak-<tag>-<YYYYMMDDTHHMMSSZ>` | a script with a reason tag — the tag names the campaign |
-| `*.bak.broken-*` / `*.bak-*-fix` | a previous repair attempt; read it before trusting the live file |
+| Name shape | Author | Observed here |
+|---|---|---|
+| `*.bak-<YYYYMMDD>` / `*.backup.<YYYYMMDD>` | a human taking a snapshot before editing | 11 + 2 |
+| `*.bak-<YYYYMMDDTHHMMSSZ>` | a script stamping UTC before a patch | 23 |
+| `*.bak-<tag>-<YYYYMMDDTHHMMSSZ>` | a script with a reason tag — the tag names the campaign | 80 |
+| `*.bak.broken-*` / `*.bak-*-fix` | a previous repair attempt; read it before trusting the live file | **0 — shape unobserved here** |
+
+Census scoped to six organ trees (135,656 files). The last row is a shape to *recognise* if you meet
+it, not one measured in this federation — do not cite it as observed. A census over the whole home
+directory is the wrong instrument for this: it runs for minutes and can be outpaced by the event you
+are chasing, so scope every count to the trees that matter.
 
 The timestamp in the name is evidence of *when*; the sibling ordering (`ls` with
 `--time-style=full-iso`) is what proves which version is older when the names disagree.
