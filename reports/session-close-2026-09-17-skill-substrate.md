@@ -86,36 +86,56 @@ Recorded because the next agent inherits the lesson, not the apology.
    `0 — clean`. Now the empty case is an explicit FAIL (`cannot witness`), and the input count prints
    beside the result count.
 
-## 5. HELD — one item, and why it is not mechanical
+## 5. HELD — RESOLVED after the questions were put to the principal
 
 **10 phantom views + their families.** A phantom view is a symlink that *resolves* while its target
 directory holds no `SKILL.md` — the index advertises a capability that loads as nothing.
 
-A removal pass was **built, dry-run, and rejected**: all 15 candidate targets have 3–5 further
-dependents each (~60 links across the AAA and profile trees). Deleting them is a decision about
-whether those NAMES are retired — a naming decision, not a link cleanup. Per the standing rule
-(a rename with no registry record is a live naming decision), this needs the owner, not a script.
+I first reported this as a naming decision needing the owner, because every candidate target had 3–5
+further dependents. **That was the wrong diagnosis, and the principal sent it back.** The names were
+never due for retirement. Probing each name against every tree, then against git, found the actual
+cause:
 
-Affected names: `verify-work · security-audit · apex-gate-evaluator · apex-verdict · mcp-testing ·
-incident-response · skill-inventory · cicd-deploy · federation-health · vps-ops · mcp-ops ·
-skill-drift · drift-watch · pr-governance · telemetry-watchdog`.
+```
+commit c3ac34677  (333-AGI, 2026-09-16 00:10)
+  "chore(nightly): consolidate 2026-09-15 multi-lane work (750 files) — verified scan clean"
+  deleted 79 SKILL.md   added 1
+  64 of those names have a body living elsewhere today
+  17 do not — and those 17 are exactly the names with no body at the link target
+```
 
-**Option A** — declare the family retired: remove every link resolving into the body-less
-`engineering/` + `governance/` shell trees, with a manifest (one command, reversible).
-**Option B** — the bodies exist somewhere I could not resolve: point me at them and I repoint the
-whole family.
-**Option C** — leave them; the gate now reports `phantom_views` as FAIL so they can never hide again.
+**The bodies were deleted, not retired.** The commit's scan checked PII and credential patterns; it
+could not see that the deletions removed load-bearing content. Recovered from `c3ac34677^` at the
+exact paths they were deleted from — 15 in `engineering/`, 2 in `governance/` (`apex-gate-evaluator`,
+`apex-verdict`), plus `code-review` and `skill-creator` (excluded from the first pass because a body
+of the same NAME lives elsewhere, so a basename test passed while the path was still empty).
+
+```
+phantom_views   24 -> 0
+gate            FAIL fail=1  ->  WARN fail=0
+```
+
+Manifest with per-file inverse (`rm <path>`): `forge_work/skill-hardening/restore-deleted-bodies.json`.
+
+**Lesson for the record:** "the names look retired" was an inference from an empty directory. The
+evidence that settles it is one level down — did a body ever exist, and what removed it. Same defect
+class as the Wave-2 tombstones: a consolidation that recorded success while removing content, silent
+because nothing errors when a body disappears.
+
+The affected names were: `verify-work · security-audit · apex-gate-evaluator · apex-verdict ·
+mcp-testing · incident-response · skill-inventory · cicd-deploy · federation-health · vps-ops ·
+mcp-ops · skill-drift · drift-watch · pr-governance · telemetry-watchdog`.
 
 ## 6. State at close (verified from disk, not from memory)
 
 ```
-gate verdict          WARN   fail=1  (phantom_views — see §5)
+gate verdict          WARN   fail=0  (all FAIL-class checks clear)
 broken_symlinks       0
 dead_internal_pointers 0
 merge_completeness    14/14 PRESERVED
 missing_frontmatter   0
-resolvable links      ~400 of which 17 phantom
-commits    AAA 8e25ae9d8 [proposals/orthogonality-v02-hermes-mapping]
+phantom_views         0      (was 24)
+commits    AAA 88d662825 [proposals/orthogonality-v02-hermes-mapping]
            .hermes 40f9b8c [main]
            scripts 9487667 [master]
 ```
