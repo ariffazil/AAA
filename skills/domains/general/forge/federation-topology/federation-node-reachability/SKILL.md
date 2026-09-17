@@ -41,6 +41,10 @@ ss -tlnp | grep '<target-tailnet-ip>'
 
 # 4. On the TARGET: does the firewall admit that port?
 ufw status numbered
+
+# 5. On the CONSUMER: which address does it actually call, and does that address answer?
+tr '\0' '\n' < /proc/<consumer-pid>/environ | grep -iE '<DEP>.*(BASE_URL|HOST|PORT)'
+ss -lntp | grep ':<port>'          # note WHICH interface each listener sits on
 ```
 
 Organ ports typically appear as `tailscaled` listeners bound to the tailnet IP. A listener there means the service is reachable **if** the firewall permits it — the listener alone proves nothing about reachability.
@@ -48,6 +52,12 @@ Organ ports typically appear as `tailscaled` listeners bound to the tailnet IP. 
 ## Pitfalls
 
 - **A `127.0.0.1`-only bind is invisible remotely.** If a service binds loopback, a remote probe times out and reports it DOWN while it is perfectly healthy. Check `ss -tlnp` for which interface the port sits on before treating a timeout as an outage.
+- **A tailnet-IP-only bind makes *loopback* probes fail — the mirror case, and the more deceptive one.** `bind 100.64.0.2:<port>` alone answers every remote peer while a loopback probe returns connection-refused. A co-located consumer configured for `http://127.0.0.1:<port>` then reports its own dependency DOWN, and that false outage propagates into kernel health, tracing, and any peer monitor reading the same field. Probe **both** addresses before believing either result.
+- **Read the consumer's configured address from its live process, not from docs.** The env in `/etc/…`, a README, and a peer's memory all drift from the process actually running:
+  ```bash
+  tr '\0' '\n' < /proc/<pid>/environ | grep -iE '<DEP>.*(BASE_URL|HOST|PORT)'
+  ```
+  Mask values before printing — `sed -E 's/(KEY|TOKEN|SECRET)=.*/\1=<redacted>/I'`.
 - **Read the ACL, never infer it.** Presence in a config file is not a rule. Quote the actual accept/deny lines you found.
 - **Port-to-organ mapping drifts.** Confirm which service owns a port (`ss -tlnp` → PID → `ps -p <pid> -o cmd`) before reporting an organ as down; detectors, docs, and dashboards all go stale independently.
 - **A listener the firewall blocks is not "down".** Report it as unreachable-by-policy; the distinction changes who fixes it.
@@ -67,4 +77,31 @@ This fleet also exposes an IPv6 tailnet range that may need its own rule — che
 
 When the fix has real tradeoffs, rank the candidate paths against **latency / risk / complexity / reversibility** and state a recommendation with the axis that drove it. The tradeoff table is the artifact the sovereign decides from — a bare recommendation without the table makes them re-derive it.
 
-Treat any firewall or ACL mutation as F13 territory: stage it, show the diff, and wait for the sovereign's word. Reachability *diagnosis* is read-only and needs no gate.
+## Bind-address mismatch: pick the smaller blast radius
+
+When a service is healthy on one interface and a co-located consumer is configured for
+another, two fixes exist:
+
+- **Widen the listener** — add the missing `bind` line to the frontend/proxy. One change,
+  fixes *every* consumer on that path including ones you have not found yet, and touches
+  no consumer config.
+- **Edit each consumer's env** — one change per consumer, each needing its own restart, and
+  the next consumer added inherits the same trap.
+
+Prefer widening the listener; keep a timestamped backup beside the config, validate before
+reload (`haproxy -c -f <cfg>`, `nginx -t`), revert automatically if validation fails, then
+probe **both** addresses to prove the repair. A graceful reload (`systemctl reload`) keeps
+existing connections alive; a restart does not — and a restart of a unit other sessions are
+hosted in kills them.
+
+Confirm the payoff by field name, not by status word: the dependency's own report
+(`provider_status.*_healthy`, `last_fallback_reason`) going from a named failure to `null`
+is the receipt that the address was the whole fault. Do that *before* reporting the repair
+— and if the line turns out to have been already present, report that you verified rather
+than applied it.
+
+## Reachability vs authority
+
+Treat any firewall, ACL, or public-port mutation as F13 territory: stage it, show the diff,
+and wait for the sovereign's word. Reachability *diagnosis* is read-only and needs no gate —
+report findings and the candidate fixes, then hold.
