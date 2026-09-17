@@ -76,13 +76,22 @@ the hole its author already knew about. Read both before scoring.
   docstring says so and then names the uncovered path in the same breath — *"opt-in — terminal()
   runs the same code ungated."* The author documented the bypass. **Read the guard's docstring, not
   just its decision table**, and read both against this install's config value before quoting either.
-- **A gate whose only offered remedy is impossible is a wall, not a gate.** Same case: the decision
-  table returns `"ask"` for an agent-created package with a dangerous verdict, but the caller converts
-  that verdict into a hard **error** whose stated remedy is *"retry without the flagged content"*.
-  When the flagged content **is** the package's purpose — a body of `getMe` identity checks that any
-  exfiltration-pattern rule will match — the remedy cannot be satisfied and there is no path forward
-  at all. Report the shape: **an `ask` verdict with no queue behind it is a dead end presenting as a
-  policy.** File the dead end; do not spend the turn hunting for the exit.
+- **Enumerate EVERY call site before declaring the remedy impossible.** A decision function is not
+  the control and one caller is not the control. Same case, corrected by a later pass: the scan
+  gate's decision function *does* implement a documented `force=` override for the blocked cell, and
+  one caller in the tree already plumbs it (`force=force`, reachable as `hermes skills install
+  --force`); what I had hit was a **different caller** — the agent's own skill-write path — which
+  passed nothing. So "there is no path forward at all" was true of the audited lane and false of the
+  control, and I had generalised from one hit. **Run `grep -rn "<decide>(" <tree>` and map each hit to
+  the lane it serves before writing the verdict.** The distinction decides the fix: an unplumbed
+  parameter on one caller is a one-line repair, a missing policy cell is an authority decision. Write
+  the lane into the finding ("no exit **on the agent write path**"), never the bare claim.
+- **A remedy that is unsatisfiable for *this* package is still a finding — name it precisely.** The
+  caller's only offered remedy was *"retry without the flagged content"*, and the flagged content
+  **is** the package's purpose (a body of `getMe` identity checks that any exfiltration-pattern rule
+  will match). That is a real defect in the remedy, separate from the override question: report it as
+  *the stated remedy cannot be satisfied for this artefact*, and file it against the remedy — not as
+  "the gate has no exit". Do not spend the turn hunting for the exit; do spend it enumerating callers.
 - **Check the verdict against the content before calling it a false positive.** Grep the flagged file
   for a literal value matching the shape the rule hunts. Measured on the same package: 29
   exfiltration/supply-chain findings, every one a **variable reference** (`…/bot${TOKEN}/…`) and zero
