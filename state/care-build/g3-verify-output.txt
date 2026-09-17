@@ -1,0 +1,167 @@
+lane_switch: registry load failed: [Errno 2] No such file or directory: '/root/HERMES/lanes/lanes.yaml'
+lane_switch: registry load failed: [Errno 2] No such file or directory: '/root/HERMES/lanes/social-graph.yaml'
+lane_switch: registry load failed: [Errno 2] No such file or directory: '/root/HERMES/lanes/social-graph.yaml'
+lane_switch: registry load failed: [Errno 2] No such file or directory: '/root/HERMES/lanes/social-graph.yaml'
+lane_switch: registry load failed: [Errno 2] No such file or directory: '/root/HERMES/lanes/social-graph.yaml'
+lane_switch: registry load failed: [Errno 2] No such file or directory: '/root/HERMES/lanes/social-graph.yaml'
+lane_switch: registry load failed: [Errno 2] No such file or directory: '/root/HERMES/lanes/social-graph.yaml'
+lane_switch: registry load failed: [Errno 2] No such file or directory: '/root/HERMES/lanes/social-graph.yaml'
+lane_switch: registry load failed: [Errno 2] No such file or directory: '/root/HERMES/lanes/social-graph.yaml'
+lane_switch: registry load failed: [Errno 2] No such file or directory: '/root/HERMES/lanes/social-graph.yaml'
+[register] people=5 private_facts=10 shared_facts=2
+  arif    scope=dm     src=arif                         observed=2026-09-17 | Kerja: exec geoscience PETRONAS Carigali (upstream).
+  arif    scope=dm     src=arif                         observed=2026-09-17 | Bahasa harian: BM Penang kampung, pendek dan laju; guna 'a
+  arif    scope=dm     src=arif                         observed=2026-09-17 | Bapak meninggal 4 Mac 2024 (Penang).
+  arif    scope=dm     src=arif                         observed=2026-09-17 | PETRONAS: 12 tahun service (mula Nov 2013); OD1 Mac 2027; 
+  syed    scope=dm     src=syed (self, in-lane message) observed=2026-09-12 | Mengaku dirinya 'syed' di dalam lane (pengenalan diri send
+  syed    scope=dm     src=arif                         observed=2026-09-17 | Bidang kerja: fitness dan athletic training; recovery fizi
+  syed    scope=dm     src=arif                         observed=2026-09-17 | Amalan direkod: biohacking peptides, IFBB coaching; rujuka
+  syed    scope=dm     src=arif                         observed=2026-09-17 | Maid agency 'Power One' — JB (JTKSM 1280) dan Alor Setar (
+  paan    scope=dm     src=arif                         observed=2026-09-17 | Kelas sado sebelum Syed; INBA Pro Elite Athlete 2024; PT +
+  lutfi   scope=dm     src=arif                         observed=2026-09-17 | PETRONAS geologist; kerja lapangan BEKANTAN-1.
+  arif    scope=shared src=arif                         observed=2026-09-17 | Timezone harian: Asia/Kuala_Lumpur (MYT, UTC+8).
+  paan    scope=shared src=arif                         observed=2026-09-13 | Room 'PAAN SADO' (chat -1004496922048) wujud; arif daftark
+
+[fixture A] /tmp/g3-lanes.yaml  lanes=['arif', 'arif-sado', 'syed', 'syed-dm']
+[fixture B] /tmp/g3-lanes-nomem.yaml  lanes=['arif', 'arif-sado', 'syed', 'syed-dm'] (memory_files=[])
+
+[live] _lane_card('arif-sado') with the real LANES_YAML -> '' (LANES_YAML.exists()=False)
+
+[detect] Arif in SADO group   user=267378578   chat=-1003815535761   -> lane=arif-sado
+[detect] Syed in SADO group   user=1042200555  chat=-1003815535761   -> lane=syed
+[detect] Arif DM              user=267378578   chat=267378578        -> lane=arif
+[detect] Syed DM              user=1042200555  chat=1042200555       -> lane=syed-dm
+[detect] stranger in SADO     user=999999999   chat=-1003815535761   -> lane=guest
+
+==============================================================================
+### LANE CARD arif-sado#A  chars=7445
+==============================================================================
+PEOPLE IN THIS LANE (facts only — everything below was stated by a human and is sourced; nothing here is inferred, scored or ranked):
+· Muhammad Arif bin Fazil (sovereign) [id: arif]
+  - telegram_user_id=267378578 [src: channel_directory.json (Telegram-provided; dm named "ARIF") · 2026-09-17]
+  - Timezone harian: Asia/Kuala_Lumpur (MYT, UTC+8). [src: arif · 2026-09-17 · /root/.hermes/config.yaml (timezone); lanes.yaml heritage register records federation_tz.set_by = "arif (F13)", set 2026-08-11]
+· Syed (Abang Sado) [id: syed]
+  - telegram_user_id=1042200555 [src: channel_directory.json (dm recorded as "No name", 2026-09-17); lanes.yaml heritage register 2026-08-30 · 2026-09-17]
+  - room=-1003815535761 [src: channel_directory.json (group named "SADO"); lanes.yaml heritage register · 2026-09-17]
+PEOPLE RULE: never state a fact about these people that is not in this block (or in this lane's own memory above). "Aku tak tahu" is the correct answer otherwise. Do not ask them to re-explain what is already recorded here.
+SHARED-ROOM RULE: 8 private-lane entries for these people exist and are WITHHELD from this room. Do not ask for them, guess them, or reconstruct them here.
+
+==============================================================================
+### LANE CARD arif#A  chars=7144
+==============================================================================
+PEOPLE IN THIS LANE (facts only — everything below was stated by a human and is sourced; nothing here is inferred, scored or ranked):
+· Muhammad Arif bin Fazil (sovereign) [id: arif]
+  - telegram_user_id=267378578 [src: channel_directory.json (Telegram-provided; dm named "ARIF") · 2026-09-17]
+  - Kerja: exec geoscience PETRONAS Carigali (upstream). [src: arif · 2026-09-17 · /root/.hermes/memories/USER.md]
+  - Bahasa harian: BM Penang kampung, pendek dan laju; guna 'aku'/'hang', pronomina 'saya' ditolak. [src: arif · 2026-09-17 · /root/.hermes/memories/USER.md]
+  - Bapak meninggal 4 Mac 2024 (Penang). [src: arif · 2026-09-17 · /root/.hermes/memories/USER.md]
+  - PETRONAS: 12 tahun service (mula Nov 2013); OD1 Mac 2027; form 30 Sep = niat sahaja, MSS rasmi melalui myCareerX. [src: arif · 2026-09-17 · /root/.hermes/memories/MEMORY.md]
+  - Timezone harian: Asia/Kuala_Lumpur (MYT, UTC+8). [src: arif · 2026-09-17 · /root/.hermes/config.yaml (timezone); lanes.yaml heritage register records federation_tz.set_by = "arif (F13)", set 2026-08-11]
+PEOPLE RULE: never state a fact about these people that is not in this block (or in this lane's own memory above). "Aku tak tahu" is the correct answer otherwise. Do not ask them to re-explain what is already recorded here.
+
+==============================================================================
+### LANE CARD syed-dm#A  chars=5091
+==============================================================================
+PEOPLE IN THIS LANE (facts only — everything below was stated by a human and is sourced; nothing here is inferred, scored or ranked):
+· Syed (Abang Sado) [id: syed]
+  - telegram_user_id=1042200555 [src: channel_directory.json (dm recorded as "No name", 2026-09-17); lanes.yaml heritage register 2026-08-30 · 2026-09-17]
+  - room=-1003815535761 [src: channel_directory.json (group named "SADO"); lanes.yaml heritage register · 2026-09-17]
+  - Mengaku dirinya 'syed' di dalam lane (pengenalan diri sendiri, bukan diandaikan). [src: syed (self, in-lane message) · 2026-09-12 · /root/.hermes/mem0-promotion-ledger.jsonl (ts 2026-09-12T04:46:21Z)]
+  - Bidang kerja: fitness dan athletic training; recovery fizikal dikira kerja profesional. [src: arif · 2026-09-17 · /root/.hermes/memories/USER.md]
+  - Amalan direkod: biohacking peptides, IFBB coaching; rujukan Dr. Trevor Bachmeyer (@DrTrevorBachmeyer, Rumble). [src: arif · 2026-09-17 · /root/.hermes/memories/MEMORY.md]
+  - Maid agency 'Power One' — JB (JTKSM 1280) dan Alor Setar (JTKSM 215-1); tiada cawangan PJ. [src: arif · 2026-09-17 · /root/.hermes/memories/MEMORY.md]
+PEOPLE RULE: never state a fact about these people that is not in this block (or in this lane's own memory above). "Aku tak tahu" is the correct answer otherwise. Do not ask them to re-explain what is already recorded here.
+
+==============================================================================
+### LANE CARD arif-sado#B  chars=5517
+==============================================================================
+PEOPLE IN THIS LANE (facts only — everything below was stated by a human and is sourced; nothing here is inferred, scored or ranked):
+· Muhammad Arif bin Fazil (sovereign) [id: arif]
+  - telegram_user_id=267378578 [src: channel_directory.json (Telegram-provided; dm named "ARIF") · 2026-09-17]
+  - Timezone harian: Asia/Kuala_Lumpur (MYT, UTC+8). [src: arif · 2026-09-17 · /root/.hermes/config.yaml (timezone); lanes.yaml heritage register records federation_tz.set_by = "arif (F13)", set 2026-08-11]
+· Syed (Abang Sado) [id: syed]
+  - telegram_user_id=1042200555 [src: channel_directory.json (dm recorded as "No name", 2026-09-17); lanes.yaml heritage register 2026-08-30 · 2026-09-17]
+  - room=-1003815535761 [src: channel_directory.json (group named "SADO"); lanes.yaml heritage register · 2026-09-17]
+PEOPLE RULE: never state a fact about these people that is not in this block (or in this lane's own memory above). "Aku tak tahu" is the correct answer otherwise. Do not ask them to re-explain what is already recorded here.
+SHARED-ROOM RULE: 8 private-lane entries for these people exist and are WITHHELD from this room. Do not ask for them, guess them, or reconstruct them here.
+
+==============================================================================
+### LEAK SCAN — 10 private(dm) facts x 4 hard-locked GROUP cards
+==============================================================================
+
+-- card arif-sado#A: people-block 1184 chars
+   [ok  ] people_block=False whole_card=False arif    | Kerja: exec geoscience PETRONAS Carigali
+   [ok  ] people_block=False whole_card=False arif    | Bahasa harian: BM Penang kampung, pendek
+   [ok  ] people_block=False whole_card=False arif    | Bapak meninggal 4 Mac 2024 (Penang).
+   [ok  ] people_block=False whole_card=False arif    | PETRONAS: 12 tahun service (mula Nov 201
+   [ok  ] people_block=False whole_card=False syed    | Mengaku dirinya 'syed' di dalam lane (pe
+   [ok  ] people_block=False whole_card=False syed    | Bidang kerja: fitness dan athletic train
+   [ok  ] people_block=False whole_card=False syed    | Amalan direkod: biohacking peptides, IFB
+   [ok  ] people_block=False whole_card=False syed    | Maid agency 'Power One' — JB (JTKSM 1280
+   [ok  ] people_block=False whole_card=False paan    | Kelas sado sebelum Syed
+   [ok  ] people_block=False whole_card=True  lutfi   | PETRONAS geologist
+
+-- card arif-sado/mem#A: people-block 1184 chars
+   [ok  ] people_block=False whole_card=True  arif    | Kerja: exec geoscience PETRONAS Carigali
+   [ok  ] people_block=False whole_card=False arif    | Bahasa harian: BM Penang kampung, pendek
+   [ok  ] people_block=False whole_card=False arif    | Bapak meninggal 4 Mac 2024 (Penang).
+   [ok  ] people_block=False whole_card=False arif    | PETRONAS: 12 tahun service (mula Nov 201
+   [ok  ] people_block=False whole_card=False syed    | Mengaku dirinya 'syed' di dalam lane (pe
+   [ok  ] people_block=False whole_card=False syed    | Bidang kerja: fitness dan athletic train
+   [ok  ] people_block=False whole_card=False syed    | Amalan direkod: biohacking peptides, IFB
+   [ok  ] people_block=False whole_card=False syed    | Maid agency 'Power One' — JB (JTKSM 1280
+   [ok  ] people_block=False whole_card=False paan    | Kelas sado sebelum Syed
+   [ok  ] people_block=False whole_card=True  lutfi   | PETRONAS geologist
+
+-- card arif-sado#B: people-block 1184 chars
+   [ok  ] people_block=False whole_card=False arif    | Kerja: exec geoscience PETRONAS Carigali
+   [ok  ] people_block=False whole_card=False arif    | Bahasa harian: BM Penang kampung, pendek
+   [ok  ] people_block=False whole_card=False arif    | Bapak meninggal 4 Mac 2024 (Penang).
+   [ok  ] people_block=False whole_card=False arif    | PETRONAS: 12 tahun service (mula Nov 201
+   [ok  ] people_block=False whole_card=False syed    | Mengaku dirinya 'syed' di dalam lane (pe
+   [ok  ] people_block=False whole_card=False syed    | Bidang kerja: fitness dan athletic train
+   [ok  ] people_block=False whole_card=False syed    | Amalan direkod: biohacking peptides, IFB
+   [ok  ] people_block=False whole_card=False syed    | Maid agency 'Power One' — JB (JTKSM 1280
+   [ok  ] people_block=False whole_card=False paan    | Kelas sado sebelum Syed
+   [ok  ] people_block=False whole_card=False lutfi   | PETRONAS geologist
+
+-- card arif-sado/mem#B: people-block 1184 chars
+   [ok  ] people_block=False whole_card=False arif    | Kerja: exec geoscience PETRONAS Carigali
+   [ok  ] people_block=False whole_card=False arif    | Bahasa harian: BM Penang kampung, pendek
+   [ok  ] people_block=False whole_card=False arif    | Bapak meninggal 4 Mac 2024 (Penang).
+   [ok  ] people_block=False whole_card=False arif    | PETRONAS: 12 tahun service (mula Nov 201
+   [ok  ] people_block=False whole_card=False syed    | Mengaku dirinya 'syed' di dalam lane (pe
+   [ok  ] people_block=False whole_card=False syed    | Bidang kerja: fitness dan athletic train
+   [ok  ] people_block=False whole_card=False syed    | Amalan direkod: biohacking peptides, IFB
+   [ok  ] people_block=False whole_card=False syed    | Maid agency 'Power One' — JB (JTKSM 1280
+   [ok  ] people_block=False whole_card=False paan    | Kelas sado sebelum Syed
+   [ok  ] people_block=False whole_card=False lutfi   | PETRONAS geologist
+
+RESULT people_block_leaks_into_group_card = 0
+RESULT whole_card_leaks_into_group_card   = 3  (from lane memory tail, not the G3 block)
+
+[attribution] lines in the A group card that carry one of the private-fact probes:
+   > · PAAN: kelas sado sebelum Syed; INBA Pro Elite Athlete 2024; PT+nutritionist. LUTFI: PETRONAS geologist BEKANTAN-1.
+
+[attribution] same scan against card B (memory_files emptied):
+   lines=0
+
+[shared-scope] injected into group card 'arif-sado':
+   arif    present=True | Timezone harian: Asia/Kuala_Lumpur (MYT, UTC+8).
+   paan    present=False | Room 'PAAN SADO' (chat -1004496922048) wujud; arif daftarkan
+
+[pre-existing path] /root/.hermes/memories/MEMORY.md content lines=10
+   reachable in SADO group card A (lane memory_files as configured): verbatim=7 truncated-to-240-chars=3 total=10
+   reachable in SADO group card B (memory_files=[])              : 0
+   LEAKED> PAAN: kelas sado sebelum Syed; INBA Pro Elite Athlete 2024; PT+nutritionist. LUTFI: PETRONAS geologist BE
+   LEAKED> bot→bot DM blocked + bot can't DM un-/start'ed user (Telegram hard rule); ~/.hermes/config.yaml agent-wri
+   LEAKED> MEMORY ARCH: L3 Qdrant(bge-m3) + L4 Postgres + L5 Graphiti(advisory). VAULT999=immutable. PRL=precedent i
+   LEAKED> SYED (DM user): biohacking peptides, IFBB coaching, Dr. Trevor Bachmeyer (@DrTrevorBachmeyer Rumble). Mai
+   LEAKED> Upgrade/compress/merge existing only. Counts: census only.
+   LEAKED> MIRROR TRAP (Telegram): Arif's outgoing msgs to a 3rd party arrive as inbound DM (user_id=267378578, chat
+   LEAKED> EUREKA ledger: write to eurekas/eureka-entries.jsonl (live, writable). canon/eureka-entries.jsonl is chat
+   LEAKED> PETRONAS insider (Arif): geologist-economist, zero dry-well record (Puteri, Bunga Tasbih, Bekantan, Lebah
+   LEAKED> ARIF@PETRONAS: 12thn service (Nov 2013), RM19k/bln. MSS = thn×1.5+4bln (~RM418k). Cukai bebas RM10k/thn. 
+   LEAKED> NO INTER-AGENT MUTATION COORDINATION: CCC agents (Qwen etc) mutate production silently — Qwen touched hap
+
+[wrote] /root/AAA/state/care-build/g3-cards.json

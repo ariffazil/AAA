@@ -258,6 +258,28 @@ disk, unit inactive and disabled, absent from both the runtime config and the MC
 - The fix is usually one of two opposite acts — wire the unit, or mark the skills as aspirational.
   Deciding which is an authority question, so put it to the principal as one binary, not a menu.
 
+**The per-room / per-person instruction surface is the same shape.** Before writing a conduct rule,
+person register or room limit into the layer that is *supposed* to inject it — a lane plugin, a
+gateway hook, a persona module — read the layer's own liveness, then find the surface that actually
+reaches the model:
+
+```bash
+grep -c <plugin_name> ~/.hermes/logs/gateway.log     # 0 = not in the loaded plugin set
+hermes config get plugins                            # what the profile actually enables
+```
+
+Three readings decide it, and they fail independently: the plugin is listed under `plugins.enabled`; the
+registry file the module loads actually exists; and exercising the module's own builder with a real lane
+returns non-empty text. A module can sit on disk, be fully implemented, and still fail the second and
+third — it then degrades *silently* (fallback lane, empty card) while the diff, the file listing and the
+doctrine all say the wiring is done. Every rule written into it reaches no model. Report the layer as
+inert and name which reading failed; never call such a wiring working because the code looks correct.
+
+**The effective alternative for per-room rules is `telegram.extra.channel_prompts.<chat_id>`** in the
+profile config — per-chat instruction text injected on arrival, independent of any plugin. Recipe,
+verification and content rules: `references/room-scoped-instruction-prompts.md`. Prefer the surface you
+can prove reaches the model over the layer that merely looks finished.
+
 ### 5. Directory sprawl and the ownership law
 
 ```bash
@@ -319,6 +341,20 @@ environment is no longer readable from one place. State the count and name the p
 (a service-level `EnvironmentFile` outranks a drop-in) — that is the thing that costs a future session
 an hour.
 
+**Test the standalone caller separately from the daemon.** A gateway that is alive and answering proves
+only that the *daemon* path resolves its credentials. CLI subcommands, cron jobs and scripts that reuse
+the same config run as separate processes and can be dead while the gateway stays green — most often
+because the daemon is surviving on a systemd drop-in that hardcodes a variable name the config only
+*declares*. Probe each caller class once, for real:
+
+```bash
+systemctl cat <unit> | grep -E 'EnvironmentFile|^Environment='   # merged view, drop-ins included
+<cli> send --to <platform>:<id> --json "probe"                   # the standalone path
+```
+
+Report a broken standalone path as a finding about *that* path. Never generalise it into "the platform is
+down", and never let the daemon's health stand in for the CLI's — the two answer different questions.
+
 ## Output shape Arif wants
 
 - **Plain BM, compressed, decision-shaped.** Lead with the one-line verdict, then the findings that
@@ -360,4 +396,6 @@ an hour.
 
 See `references/probe-cookbook.md` for the full one-shot command set, including the storage attribution
 query and the surface-inventory sweep. See `references/state-store-queries.md` for the behavioural-record
-probes (usage frequency, session timeline, scheduler book vs execution ledger, delivery split).
+probes (usage frequency, session timeline, scheduler book vs execution ledger, delivery split). See
+`references/room-scoped-instruction-prompts.md` for the per-room conduct surface — how to set, verify and
+activate `telegram.extra.channel_prompts`, and what belongs in one.

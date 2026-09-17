@@ -216,9 +216,31 @@ class SigningHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self._cors_headers(origin_ok)
             self.end_headers()
+            # T20/T27 (2026-09-18): health must report CAPABILITY, not just liveness.
+            # A lane that cannot sign is up-but-incapable, and /health previously said
+            # {"status":"ok"} while every request was refused. That trained monitors to
+            # treat a dead lane as healthy.
+            _pam_user = os.environ.get("AAA_PAM_USER", "").strip()
+            try:
+                import pam as _pam_probe  # noqa: F401
+
+                _pam_ok = True
+            except ImportError:
+                _pam_ok = False
+            _key_ok = _CACHED_PRIVATE_KEY is not None
+            _can_sign = bool(_key_ok and _pam_user and _pam_ok)
             self.wfile.write(
                 json.dumps(
-                    {"status": "ok", "service": "aaa-signing", "key_loaded": _CACHED_PRIVATE_KEY is not None}
+                    {
+                        "status": "ok" if _can_sign else "degraded",
+                        "service": "aaa-signing",
+                        "key_loaded": _key_ok,
+                        # capability block — added so a dead lane cannot report healthy
+                        "can_sign": _can_sign,
+                        "sovereign_presence_guard": "CONFIGURED" if _pam_user else "UNCONFIGURED",
+                        "pam_module_available": _pam_ok,
+                        "serving": True,
+                    }
                 ).encode()
             )
             return

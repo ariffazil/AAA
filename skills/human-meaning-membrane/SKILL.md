@@ -1,11 +1,9 @@
 ---
 name: human-meaning-membrane
-description: "Use when modeling human behavior or intent. [fed: tier=fed-agent-subagent]"
+description: "Use when modeling human behavior or intent. "
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----
-
-# Human Meaning and Uncertainty Membrane
+---# Human Meaning and Uncertainty Membrane
 
 > DITEMPA BUKAN DIBERI — Forged from live analysis, sealed at arifOS governance layer.
 

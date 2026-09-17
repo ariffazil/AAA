@@ -4,11 +4,15 @@
   "protocolVersion": "1.2",
   "agentId": "openclaw",
   "name": "openclaw",
-  "description": "openclaw \u2014 Telegram/surface bridge \u2014 media-capable",
+  "description": "openclaw — Telegram/surface bridge — media-capable",
   "version": "1.0.0",
   "provider": {
     "organization": "arifOS Federation",
-    "source": "federation.yaml (generated)"
+    "source": "federation.yaml (generated)",
+    "canonical_source": "/root/AAA/agent-cards/functions/openclaw/agent-card.json",
+    "canonical_source_note": "Functions/ card is hand-curated SOT; this card is auto-generated from federation.yaml. Sync from federation-a2a-sync.py. Schema divergence: canonical 2.3.0 vs generated 2.2.0 — sync script update pending.",
+    "last_aligned_utc": "2026-09-18T00:07:00Z",
+    "aligned_by": "333-AGI audit 2026-09-18"
   },
   "capabilities": {
     "streaming": true,
@@ -744,6 +748,10 @@
     "runtime": "node",
     "note": "Agent-facing mesh router. Telegram bot @AGI_ASI_bot.",
     "source": "federation.yaml",
-    "generated_by": "federation-a2a-sync.py"
+    "generated_by": "federation-a2a-sync.py",
+    "host": "KVM4 (workshop, 100.64.0.5)",
+    "kvm8_mirror": "127.0.0.1:18789 DNAT to KVM4",
+    "live_probe_2026_09_18": "live on KVM4; cold on KVM8 since 2026-09-04",
+    "actor_id_canonical": "openclaw/FI-017"
   }
 }

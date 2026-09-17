@@ -12,13 +12,13 @@ floor_scope:
   - F9
   - F11
 description: >
-  [fed: tier=fed-multimodal-vision, auto=T1, risk=low]
+
   VSS-2 Lightweight Verifier Suite — independent post-generation verifiers for
   Verified Scene Synthesis. Wraps vision_analyze with three focused checks
   (Count/Containment, Perspective/Depth, Shadow/Light Direction) producing
-  structured Hard/Soft Violation reports. Pure OBSERVATION — never mutates,
+  structured Hard/Soft Violation reports. Pure OBSERVATION — never mutates
   never judges. 555-ASI gates output before reasoning.
-  USE WHEN: "verify this generated image", "check if generation has violations",
+  USE WHEN: "verify this generated image", "check if generation has violations"
   "run VSS verifiers", "post-generation QA", "Hard/Soft Violation report".
 tags:
   - vss
@@ -39,9 +39,7 @@ required_tools:
   - vision_analyze
   - mcp__arifos__arif_judge
 tool_gate: strict
----
-
-# forge-vss-verifier-suite · VSS-2
+---# forge-vss-verifier-suite · VSS-2
 
 > **The verifier layer of Verified Scene Synthesis.**
 > Pure observation. Never mutates. Never judges. Reports only what the image shows.

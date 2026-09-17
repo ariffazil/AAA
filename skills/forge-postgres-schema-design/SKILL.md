@@ -2,15 +2,14 @@
 id: FORGE-postgres-schema-design
 name: forge-postgres-schema-design
 version: 1.0.0-2026.07.17
-description: "PostgreSQL schema design for the federation data layer — migrations, indexing, and entity modeling. [fed: tier=fed-reasoning-heavy, floors=[, auto=T2, risk=high]"
+description: "PostgreSQL schema design for the federation data layer — migrations, indexing, and entity modeling. "
 owner: A-FORGE
 risk_tier: high
 floor_scope: ['F1', 'F4', 'F11', 'F12']
 autonomy_tier: T2
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
----
-# ⚒️ PostgreSQL Schema Design — Federation Data Layer
+---# ⚒️ PostgreSQL Schema Design — Federation Data Layer
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.
 

@@ -2,7 +2,7 @@
 name: forge-symlink-audit
 id: forge-symlink-audit
 floor_scope: [F1, F2, F4, F7]
-description: 'Federation-wide broken symlink scanner. Scans /root for broken symlinks, [fed: tier=fed-long-context, floors=[F1, F2, F4, F7], auto=T1, risk=low]
+description: 'Federation-wide broken symlink scanner. Scans /root for broken symlinks
   categorizes by location, and reports with safe-delete recommendations. USE WHEN:
   "check symlinks", "broken links", "symlink debt", "find broken symlinks", or during
   entropy sweeps.
@@ -17,8 +17,7 @@ autonomy_tier: T1
 owner: A-FORGE
 capability_tier: fed-long-context
 ecology_state: WARM
----
-# 🔗 FORGE — Symlink Audit
+---# 🔗 FORGE — Symlink Audit
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.
 

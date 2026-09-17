@@ -6,6 +6,9 @@
 # CONSUMERS: /run/arifos inventory clerk (unowned_count) should read this file;
 #             `now` pane, entropy sweeps, and incident triage reference it.
 # LAW: OS-BASE = Ubuntu platform, NOT federation entropy — never audit as organ drift.
+# AMENDED: 2026-09-18 stabilize — registered hermes-asi-gateway, hermes-rasa-mcp, hermes-voice-governor,
+#             ack-consumer, session-federation, mcp-media-ingest, forge-bot, aaa-mcp, qwen-serve,
+#             mcp-claim-ledger, mcp-doc-tables, mcp-filings, mcp-numeric-audit, frame-mcp, falkordb
 # AMENDED: 2026-09-17 zen sweep — registered hermes-health, hermes-mcp-server, kabarkan-health (continues inventory-ownership-audit)
 
 federation_services:
@@ -83,13 +86,37 @@ federation_services:
   - unit: surface-guard.service
     role: MCP Surface Guard — federation drift watchdog
     repo: /root/A-FORGE
+  - unit: forge-bot.service
+    role: FORGE Bot — Telegram gateway 3 (@arifOS_bot -> A-FORGE)
+    repo: /opt/forge-bot
   AAA:
+  - unit: federation-gateway.service
+    role: Federation Gateway — cross-organ routing surface
+    repo: /root/AAA
   - unit: aaa-a2a.service
     role: AAA A2A Gateway — Federation agent mesh
     repo: /root/AAA
   - unit: aaa-signing.service
     role: AAA Ed25519 Signing Server — F13 challenge signing
     repo: /root/AAA
+  - unit: aaa-mcp.service
+    role: AAA FastMCP Server — MCP HTTP transport for AAA organ
+    repo: /root/AAA
+  - unit: qwen-serve.service
+    role: Qwen Code daemon — FI-003 agent surface for AAA federation (127.0.0.1:4170)
+    repo: /root/.local/lib/qwen-code
+  - unit: mcp-claim-ledger.service
+    role: Claim Ledger MCP — claim->source->artifact provenance ledger
+    repo: /root/AAA/mcp
+  - unit: mcp-doc-tables.service
+    role: Doc Tables MCP — structured PDF/HTML table extraction + total reconciliation
+    repo: /root/AAA/mcp
+  - unit: mcp-filings.service
+    role: Filings MCP — Bursa/BNM/SEC EDGAR structured filings access
+    repo: /root/AAA/mcp
+  - unit: mcp-numeric-audit.service
+    role: Numeric Audit MCP — deterministic recomputation and scope audit of brief numbers
+    repo: /root/AAA/mcp
   GEOX:
   - unit: geox-mcp.service
     role: GEOX MCP Server — Earth Intelligence MCP Surface (FHS Promoted)
@@ -136,6 +163,9 @@ federation_services:
   - unit: frame-organ.service
     role: FRAME Organ — Federation Reference & Assessment Measurement Engine
     repo: /root/FRAME
+  - unit: frame-mcp.service
+    role: FRAME FastMCP Server — MCP HTTP transport for FRAME organ
+    repo: /opt/frame
   SIGNAL:
   - unit: signal-organ.service
     role: SIGNAL Organ — 3-Chamber Webhook Membrane for arifOS Federation
@@ -149,6 +179,9 @@ federation_services:
     role: Gold Data API Server (XAUUSD live data)
     repo: /var/www/html (WEALTH data APIs, deployed from WEALTH)
   NET-INFRA:
+  - unit: 1mcp.service
+    role: 1MCP Aggregated MCP Runtime — local aggregator (:3050)
+    repo: /root/.npm-global
   - unit: caddy.service
     role: Caddy
     repo: network edge
@@ -181,6 +214,9 @@ federation_services:
     role: Journal Service for Namespace %i
     repo: observability
   DATA-INFRA:
+  - unit: falkordb.service
+    role: FalkorDB Graph Database (Docker) — L5 substrate, 127.0.0.1:6380
+    repo: /root/arifOS
   - unit: nats-server.service
     role: NATS Server
     repo: local data plane
@@ -264,12 +300,33 @@ federation_services:
     role: User Manager for UID %i
     repo: Ubuntu base
   Hermes:
+  - unit: playwright-mcp.service
+    role: Playwright MCP — headless browser automation surface (:8931)
+    repo: /root/.hermes/mcp
   - unit: hermes-health.service
     role: Hermes Health-Check Sidecar (production observability)
     repo: /root/scripts/hermes-prod
   - unit: hermes-mcp-server.service
     role: HERMES MCP Server — Meaning Integrity Organ (:18087)
     repo: /root/HERMES
+  - unit: hermes-asi-gateway.service
+    role: Hermes ASI Gateway (KVM8 canonical) — Telegram ASI lane + cron scheduler
+    repo: /root/.hermes
+  - unit: hermes-rasa-mcp.service
+    role: Hermes RASA MCP — human-context, provenance, privacy & RASA boundaries (HTTP :18420)
+    repo: /root/HERMES
+  - unit: hermes-voice-governor.service
+    role: Hermes Voice Governor Monitor — per-reply DITING scoring (post-hoc observer)
+    repo: /root/scripts
+  - unit: ack-consumer.service
+    role: ACK Consumer — human acceptance callbacks (@hermesarifos_bot)
+    repo: /root/WELL/scripts
+  - unit: session-federation.service
+    role: Session Federation MCP — arifOS session discovery
+    repo: /root/.hermes/mcp
+  - unit: mcp-media-ingest.service
+    role: Media Ingest MCP — governed multi-lane media/link ingestion
+    repo: /root/.hermes/mcp
 docker_containers:
 - name: searxng
   image: searxng/searxng:latest

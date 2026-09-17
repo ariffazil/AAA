@@ -49,6 +49,9 @@ Do NOT skip. The substrate remembers what your narrative forgot.
 
 **Forbidden:** `verdict=SEAL` without `judge_state_hash` and chain entry. This is precision rot and SCAR-002/KERNEL-LEGACY-VERDICT-LEAK-002 both attest to the damage.
 
+**NEW — 2026-09-18 SCAR-KERNEL-LEGACY-VERDICT-LEAK-002 (apex_scalars vocabulary drift):**
+The /health endpoint emits `apex_scalars.verdict=SEAL` AND `thermodynamic.verdict=SEAL` even when scalars are sub-threshold (e.g. G=0.4722<0.80, W3=0.7439<0.75). This is a vocabulary leak — the verdict field is ceremonial, not constitutional. **Detect it:** if `apex_scalars.verdict == SEAL` AND any scalar < its threshold, downgrade to `HOLD` in your reasoning AND flag as SHADOW. If `execution_readiness == held` while verdict == SEAL, log contradiction. Do not propagate the kernel's SEAL claim uncritically.
+
 ### Rule 3 — Every audit MUST include a SHADOW section
 
 Before claiming victory / cleanliness / completion, enumerate:
@@ -60,6 +63,17 @@ SHADOW:
 - What is missing or stale? (e.g. H-WELL biometric 54h, FLAME retired)
 - What floors are PASS vs HOLD vs UNKNOWN? (e.g. F8 G=0.4572 < 0.80)
 ```
+
+**NEW — 2026-09-18 (vault999 SEAL gap probe):**
+MUST probe `/root/.local/share/arifos/vault999/seal_chain_head.json` and compute `hours_since_last_seal = (now - last_seal_timestamp) / 3600`. If > 24h, log as SHADOW item ("VAULT999 silent for Nh — constitutional heartbeat slow"). If > 72h, escalate as P0 alert (the kernel witness oracle is not breathing).
+
+**NEW — 2026-09-18 (apex_scalars contradiction probe):**
+MUST probe `apex_scalars` field for verdict-vs-threshold contradictions:
+- `apex_scalars.verdict` vs scalar thresholds (G≥0.80, W3≥0.75)
+- `execution_readiness` vs `verdict` (held vs SEAL is contradictory)
+- `service_health` vs `session_authority` (green + OBSERVE_ONLY is informational, not failure)
+
+If any contradiction found, downgrade effective_verdict and flag in SHADOW.
 
 If you cannot enumerate shadow, you have not audited. You have echoed.
 
@@ -109,6 +123,9 @@ Session discovers gap → gap is evidence → skill patch drafted → skill upda
 5. If a new skill is needed (bridge between two existing skills), create it
 
 **Anti-pattern:** Discovering a gap, fixing it manually, and NOT upgrading the skill. This means the next session will hit the same gap. The skill is the institutional memory — if it's not patched, the lesson is lost.
+
+**NEW — 2026-09-18 (post-patch evidence):**
+Session 2026-09-18 (333-AGI / BIJAKSANA compile) discovered `apex_scalars.verdict=SEAL` while G=0.4722 / W3=0.7439 — a vocabulary drift that bypassed Rule 2 entirely because the kernel itself emits the contradiction. Patch applied: explicit apex_scalars contradiction probe in Rule 3 SHADOW enumeration. Future sessions inherit this audit gate.
 
 ## Workflow (canonical)
 

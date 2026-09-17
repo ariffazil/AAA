@@ -3,9 +3,9 @@ id: AGI-agentic-web-delivery
 name: agi-agentic-web-delivery
 version: 1.0.0-2026.09.13
 description: >
-  [fed: tier=fed-agent-subagent, floors=[F1, F2, F4, F7, F11, F13], auto=T1, risk=T2]
+
   Governed agentic-web delivery fabric for AAA agents working arif-fazil.com.
-  Routes to existing skills. Pins live MCP tiers. Enforces doctor-first,
+  Routes to existing skills. Pins live MCP tiers. Enforces doctor-first
   orphan-before-delete, Caddy HOLD, no public /a2a, no self-SEAL.
 owner: AAA
 risk_tier: T2
@@ -28,9 +28,7 @@ trigger_phrases:
   - upgrade arif-fazil.com
   - agent skills for the site
   - MCP tiers for web
----
-
-# Agentic-web delivery fabric
+---# Agentic-web delivery fabric
 
 Do not invent a second catalog. Load this, then the mapped existing skills.
 

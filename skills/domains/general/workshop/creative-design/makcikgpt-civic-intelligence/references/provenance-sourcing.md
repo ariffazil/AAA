@@ -38,9 +38,12 @@ positive control before trusting any clean result** — plant one invented schem
 imagine, confirm the check fires, delete the plants, then run it on the real tree. A check whose
 clean result you have not seen fail is decoration.
 
-**Sweep the generated mirrors too.** The build emits `dist/makcikgpt-md/<slug>.md` and `.html` twins,
-so the same unusable string lands in the served copy as well as the source. Fix the source, then
-confirm the mirror is clean.
+**Sweep the mirrors too — and sweep the tracked one, not only the build copy.** The generator emits
+`dist/makcikgpt-md/<slug>.md` and `.html` twins, so the same unusable string lands in the published
+copy as well as the source. Two mirror trees exist and they are not equivalent: `dist/makcikgpt-md/`
+is an **untracked build artifact**, while `public/makcikgpt-md/` is the **git-tracked, served** copy
+(116 tracked files) reachable at `https://arif-fazil.com/world/makcikgpt-md/<slug>.md`. Grep both,
+but know which one carries the recorded seal before you reason about fixing anything — see §7.
 
 When a source genuinely cannot be linked, write it as `UNVERIFIED` with what you do have
 (publication, title, date) rather than minting a scheme for it.
@@ -112,3 +115,31 @@ dirty with work that is not yours, say so instead of building through it.
 Where a claim cannot be sourced, the correct output is a named HOLD, not a draft with the number
 softened. Publishing an unsourced figure is the failure the hold exists to prevent; report the state
 reached and the check that stopped it.
+
+## 7. The seal binds the ledger — so an audit REPORTS, it does not repair
+
+A defect found by §1 cannot be fixed in place. The seal is a hash over the ledger itself:
+`computeCanonicalPayloadHash` in `scripts/lib/makcik-source.cjs` hashes
+`{id, slug, claim_register, source_ledger}` (claim and source arrays sorted by id), and the generator
+writes the result as `merkle_leaf` in the frontmatter of a file carrying `seal: 999` and
+`provenance_status: sealed`. That file is git-tracked and clean in the repository.
+
+Therefore **editing one source `url` to point at a real page silently re-seals the article.** The
+merkle leaf changes, the recorded seal no longer describes the artefact, and the change lands as a
+diff on a published, sealed document. A 56-citation cleanup is not a citation cleanup; it is a
+re-seal of every article it touches, and that decision belongs to Arif.
+
+What the agent does instead:
+
+1. **Report the count and the shape** — how many unreachable `url` values, across how many articles,
+   in how many published mirrors (§1's command gives all three).
+2. **Name the fix form without applying it:** replace the invented scheme with
+   `UNVERIFIED <publisher, title, date>` — the information actually held — rather than minting a
+   reachable-looking alternative.
+3. **State the consequence in the same breath:** a new `merkle_leaf` per affected article, so the old
+   seal becomes historical record rather than current attestation.
+4. **Stop and ask.** This is an authority boundary, not a judgement call about tidiness.
+
+The same logic blocks "regenerate the mirrors to clear the warning": a rebuild recomputes every
+leaf from whatever the source currently says, so it re-seals the corpus without repairing any
+citation. Never run a generator over a sealed tree to make a provenance check green.

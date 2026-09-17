@@ -28,6 +28,8 @@ Load this skill BEFORE making any "we did it" / "all clean" / "SEAL" claim. Trig
 Before declaring success / completion / SEAL, read in this order:
 
 ```
+
+```
 1. /root/.local/share/arifos/carry_forward.json — last session's open loops
 2. /root/.local/share/arifos/carry_forward_backups/*.json — evolution trail
 3. /root/.local/share/arifos/scars/SCAR-*.json — failure patterns (the substrate's memory of pain)
@@ -125,6 +127,31 @@ Recommendation: [next safe action | sovereign unblock needed]
 - ❌ Reading only `/health` and assuming substrate is healthy
 - ❌ Treating `actor_verified=true` as `mutation_allowed=true`
 - ❌ Closing a session with SEAL when HOLD was the truth
+
+## NEW — 2026-09-18 (vault999 freshness probe)
+
+**Before any verdict emission, probe `/root/.local/share/arifos/vault999/seal_chain_head.json`:**
+
+```bash
+HEAD=$(python3 -c "
+import json, datetime
+d = json.load(open('/root/.local/share/arifos/vault999/seal_chain_head.json'))
+ts = d.get('timestamp') or d.get('last_seal_timestamp')
+if ts:
+    delta = (datetime.datetime.utcnow() - datetime.datetime.fromisoformat(ts.replace('Z',''))).total_seconds() / 3600
+    print(f'{delta:.1f}h')
+else:
+    print('UNKNOWN')
+")
+echo "vault999 head age: $HEAD"
+```
+
+**Thresholds:**
+- `< 24h` — fresh, normal
+- `24-72h` — informational, log in SHADOW
+- `> 72h` — P0 alert, constitutional heartbeat is silent
+
+**Why:** Probe 2026-09-18T00:30Z detected 29.8h gap (informational, not yet P0). Probe 2026-09-18T06:38Z confirmed 57 entries intact (chain valid). Freshness != validity, both must be checked.
 
 ## Reference scars (carry these)
 

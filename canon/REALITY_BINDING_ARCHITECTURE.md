@@ -489,3 +489,116 @@ The doctrine stands. The execution order changes:
 
 *DITEMPA BUKAN DIBERI ⚒️*
 *The diagnosis IS the discovery. The cure is kernel-native, not doctored.*
+
+---
+
+## 17. Zero-Day Register (2026-09-17)
+
+The architecture has 4 structural zero-days — places where the Governance Layer assumes a boundary that the Physics Layer does not enforce.
+
+### ZD-1: Ambient Root Authority (CLOSED — partially)
+
+**Status:** Reduced risk. Not eliminated.
+
+**Doctrine says:** A-FORGE builds, Kernel decides, FRAME witnesses, VAULT999 proves. Organ X cannot write to Organ Y.
+
+**Physics says:** Many services run with full Linux root powers. A prompt injection that triggers arbitrary file write executes with ambient root authority.
+
+**Probe (2026-09-17):**
+| Service | Sandbox Score | Status |
+|---------|---------------|--------|
+| a-forge | 75% | ✅ |
+| a-forge-mcp | 75% | ✅ |
+| geox-mcp | 75% | ✅ |
+| frame-organ | 75% | ✅ |
+| arifflow | 75% | ✅ |
+| frame-mcp | 50% | ⚠️ |
+| arifos | 25% | ❌ (kernel itself, harder to sandbox) |
+| kabarkan-health | 75% | ✅ (was 0%, now sandboxed) |
+| litellm-federation | 75% | ✅ (was 0%, now sandboxed) |
+
+**Remaining gap:** arifOS (the constitutional kernel) itself runs with minimal sandboxing. Hardening it requires careful analysis of which paths it must write to (VAULT999, /opt/arifos/app).
+
+---
+
+### ZD-2: SSRF on Unauthenticated Loopback Daemons (OPEN)
+
+**Status:** Documented. No fix applied (large undertaking).
+
+**Doctrine says:** LOCALHOST_IS_PASSWORD — Postgres, Redis, Qdrant, NATS bind 127.0.0.1 with no auth. UFW blocks outside.
+
+**Physics says:** Local services (playwright-mcp, firecrawl, searxng, media-ingest, web scrapers) can reach 127.0.0.1:5432 (Postgres), 6379 (Redis), 6333 (Qdrant), 4222 (NATS). A single SSRF redirect to a DB port bypasses all auth.
+
+**Probe (2026-09-17):** 6 loopback daemons accept unauthenticated connections.
+| Port | Service | Auth |
+|------|---------|------|
+| 5432 | Postgres (Docker) | ❌ None |
+| 6379 | Redis | ❌ None |
+| 6333 | Qdrant (Docker) | ❌ None |
+| 4222 | NATS | ❌ None |
+| 8222 | NATS monitoring | ❌ None |
+| 4000 | LiteLLM / HAProxy | ❌ None |
+
+**Recommended fix (not executed):**
+- Add token-based auth to Postgres/Redis/Qdrant (requires app code changes)
+- Run web scrapers in network namespace (`ip netns`) that cannot reach DB ports
+- Use iptables `--uid-owner` to restrict which processes can connect to DB ports
+
+---
+
+### ZD-3: Silent FED Fallback (CLOSED)
+
+**Status:** Patched. No silent fallback anymore.
+
+**Doctrine says:** Witness > Projection. The system must declare anomalies immediately.
+
+**Physics said:** When FED was unreachable, the kernel silently fell back to Ollama/local models. `status: "healthy"` was still reported on :8088. Cognitive tier dropped without alarm.
+
+**Patch (2026-09-17):** Added explicit `cognitive_tier` and `fallback_acknowledged` fields to provider_status. When fallback is active, tier becomes `DEGRADED_COGNITIVE_TIER` or `DETERMINISTIC_ONLY`, never silent.
+
+**Verification:**
+```
+cognitive_tier: FEDERATED
+fallback_acknowledged: True
+primary_provider: fed_federation
+```
+
+When FED goes down, this will show `DEGRADED_COGNITIVE_TIER` instead of silently falling back. The watchdog now sees the degradation.
+
+**File:** `/opt/arifos/app/arifosmcp/runtime/rest_routes/rest_routes.py:_probe_provider_status`
+
+---
+
+### ZD-4: Human Cognitive Denial of Service (OPEN — structural)
+
+**Status:** Documented. Cannot be fixed in-session.
+
+**Doctrine says:** F13: Arif is the sovereign human principal. W₈₈₈ (sovereign attention) is the ultimate cost.
+
+**Physics says:** Multiple autonomous agents (OpenClaw, Kimi, Claude Code, Antigravity, Hermes) generate telemetry simultaneously. When agents disagree on system state, the dispute collapses to Arif's phone. A flood of subtle disagreements exhausts W₈₈₈.
+
+**Recommended fix (out-of-session):**
+- Enforce PRODUCED ≠ SENT ≠ DELIVERED ≠ OBSERVED chains mechanically
+- Agents resolve evidence disagreements on port checks / hashes BEFORE messaging Arif
+- Cross-agent arbitration tier: 2 agents must confirm before pinging human
+
+**Why not fixed now:** Requires changes to multiple agents' message routing and arbitration logic. Each agent has its own implementation. One-session fix risks creating new arbitration bugs.
+
+---
+
+## 18. Zero-Day Closure Map
+
+| ZD | Severity | Status | Closure Method |
+|----|----------|--------|----------------|
+| ZD-1 | HIGH | 🟡 REDUCED | systemd sandboxing (capability drops) |
+| ZD-2 | HIGH | 🔴 OPEN | Pending: token auth or netns isolation |
+| ZD-3 | MEDIUM | ✅ CLOSED | cognitive_tier field in provider_status |
+| ZD-4 | MEDIUM | 🔴 OPEN | Pending: cross-agent arbitration tier |
+
+**Net result:** 1 of 4 zero-days closed. 1 reduced in severity. 2 still open.
+
+---
+
+*DITEMPA BUKAN DIBERI ⚒️*
+*Zero-day ≠ software bug. Zero-day = governance layer assuming a boundary the physics layer does not enforce.*
+*Map reality first. Then patch.*

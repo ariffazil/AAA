@@ -3,9 +3,9 @@ id: dissipative-transition-hold
 name: dissipative-transition-hold
 version: 1.3.0
 description: >
-  [fed: floors=[F2, F4, F7, F9, F10, F13], auto=T1, risk=low]
+
   Hold the dissipative-transition paradox. Load when Arif or an agent
-  talks entropy/gender-as-pattern/identity crisis/transition zone,
+  talks entropy/gender-as-pattern/identity crisis/transition zone
   tries to "resolve" meaning, treats F4 as heat, or maps absurdism/
   Gödel/Sisyphus/AzwaOS onto the federation. Operating skill, not a
   new floor. Pointers to canon + C13/C14 + Gödel lock.
@@ -15,9 +15,7 @@ floor_scope: [F2, F4, F7, F9, F10, F13]
 autonomy_tier: T1
 forged: 2026-09-06
 status: active
----
-
-# dissipative-transition-hold
+---# dissipative-transition-hold
 
 > **Canon:** `/root/AAA/canon/EUREKA-DISSIPATIVE-TRANSITION-2026-09.md`
 > **Already law:** C13/C14 (`category-individual.md`, `human-meaning-membrane.md`); paradox hold (`PARADOX_COORDINATE_THEORY.md`); shadow as expensive reality.

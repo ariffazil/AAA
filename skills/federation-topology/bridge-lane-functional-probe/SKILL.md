@@ -261,6 +261,33 @@ unit file changed — and the breakage arrives wearing an unrelated-looking erro
   declared origin — a link that resolves is not the same finding as a link that resolves
   *correctly*.
 
+## Rule 1e — the readiness read is in the body, not the status code
+
+`curl -sf <url>/health && echo "OK"` is the same error as `is-active`: HTTP 200 proves the process
+answered, and the lane's own verdict lives in the fields. Read the keys the body **actually has** —
+quoting a field a build does not emit is fabrication, and **an absent key is not a pass**.
+
+- **Split the two questions and answer both separately.** *Is the process alive* (HTTP code, `status`)
+  and *is the consumer side fed* (counters, measurement-status flags, provenance class). A perfectly
+  healthy organ with `subjects: 0` / `ledger_events: 0` is serving nobody — the confident-zero failure
+  at the health layer, same shape as the empty-input-space pitfall below. `status: degraded` beside
+  working endpoints is a finding to report, not a failure to hide.
+- **Read the measurement-status flag beside every number.** A scalar carrying `status: MEASURED` is a
+  reading; the same field on a modelled/defaulted build is not. Quote the flag with the value.
+- **Name the provenance class when relaying to a human.** `OPERATOR_REPORTED` is self-reported, not
+  instrumented; say so, or a self-report silently reads as telemetry.
+- **A commit trio (`source_commit` / `built_commit` / `deployed_commit`) is three readings, not one.**
+  `drift: true` says the source you are reading is not what is running; quote the commit you probed.
+- **A ceiling declared in the payload (`authority` / `authority_ceiling`) is the organ telling you it
+  never gates.** An organ whose ceiling is reflection-only must never be relayed as an approval.
+- **A protocol precondition is not a dead lane.** A raw HTTP MCP call (`POST /mcp` carrying
+  `tools/call`) can answer `SESSION_MISSING: Mcp-Session-Id header required` — the server is up and
+  correct. Go through the MCP client / tool bridge, or complete `initialize` first and carry the
+  returned session id. Never report the tool down on the strength of a hand-rolled request.
+- **When a build's field set changes, list what you could NOT read.** Emit the names of the expected
+  keys that are missing from the body alongside the values you did get. Naming a missing read is an
+  honest report; asserting a value for an absent key — or letting its absence pass as health — is not.
+
 ## Rule 2 — the encrypted store and the plaintext store are different lanes
 
 Do not write "no plaintext credentials on disk" while a plaintext token file exists in the secrets tree. On KVM8 both exist for Google: `~/.config/gws/credentials.enc` + `.encryption_key` (mode 0600, encrypted, unpacked via keyring — this one works) and `/root/.secrets/google_token.json` (plaintext, dead). A doc that conflates them, or that labels the `GOOGLE_TOKEN_PATH` bridges as "app-password" consumers when they are OAuth-token consumers, is wrong in a way an outside reviewer will find.

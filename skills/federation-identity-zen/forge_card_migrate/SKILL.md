@@ -2,7 +2,7 @@
 id: forge_card_migrate
 name: forge_card_migrate
 version: 1.0.0
-description: "Migrate agent-cards to schema v2.3.0 with INV-11/12/13 invariants applied. Single canonical migration path — no card ever mutated by more than one tool. USE WHEN: 'card migration', 'agent-card upgrade', 'authority_ceiling populate', 'INV-12 enforcement', 'registry_receipt_hash fix'. Reversible (.bak-20260908-pre-migration companions) under F1 AMANAH. [fed: tier=fed-agent-subagent, floors=[F1, F2, F4, F11, F13], auto=T1 (edits commit-prep; never push), risk=medium]"
+description: "Migrate agent-cards to schema v2.3.0 with INV-11/12/13 invariants applied. Single canonical migration path — no card ever mutated by more than one tool. USE WHEN: 'card migration', 'agent-card upgrade', 'authority_ceiling populate', 'INV-12 enforcement', 'registry_receipt_hash fix'. Reversible (.bak-20260908-pre-migration companions) under F1 AMANAH. "
 owner: 333-AGI
 risk_tier: medium
 floor_scope: [F1, F2, F4, F11, F13]
@@ -11,9 +11,7 @@ organ_domain: aaa-federation
 forged: 2026-09-08
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----
-
-# forge_card_migrate — Federation Identity Plane Migration Skill
+---# forge_card_migrate — Federation Identity Plane Migration Skill
 
 > Single canonical path for migrating agent-cards. **No other tool may write to `agent-card.json` files.** Replaces ad-hoc schemaVersion bumps, scattered authority_ceiling additions, and orphaned registry_receipt_hash fixes.
 > Forged 2026-09-08 from the federation identity plane audit. Backs the enforcement closure of schema v2.3.0 INV-005/INV-007 plus federation-invariants.md #11/#12/#13.

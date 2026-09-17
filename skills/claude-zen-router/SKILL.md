@@ -2,7 +2,7 @@
 id: CLAUDE-zen-router
 name: claude-zen-router
 description: >
-  [fed: tier=meta-mesa, auto=T1, risk=low]
+
   Orthogonal axis routing for Claude Code (FI-002). Given an intent, classify it across 9
   orthogonal axes (organ, action, mode, tier, layer, surface, scope, time, reversibility)
   and route to the right organ MCP server. Load when you must pick between equally-valid
@@ -20,9 +20,7 @@ triggers:
   - branching decision
 capability_tier: meta-mesa
 ecology_state: WARM
----
-
-## What I do
+---## What I do
 
 I am the **zen router**. I do not orchestrate (that's `CLAUDE-meta-mesa`). I **classify and select**.
 

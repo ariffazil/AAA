@@ -157,6 +157,65 @@ These five recur, and all are wording defects in the original, never something t
 own kill criteria, leave canon/seal/render untouched, and close with ONE binary — ratify to canon,
 or leave as draft. Governance-class deltas are HOLD territory however clean the audit reads.
 
+### Its quotations of YOUR OWN words, and its "catches", are claims too
+
+A review of our work frequently narrates the conversation back to us: what we said, what we
+agreed to, what we were about to do next. Those are the least-checked lines in the document,
+because they arrive in your own voice.
+
+- **Grep the thread before accepting a line the review puts in your mouth.** A quoted "and your
+  agent offered to do X next" may correspond to nothing you wrote. Two causes, both worth naming:
+  a *parallel session of you* (concurrent lanes produce text under the same name — see the live-tree
+  rules on naming authors), or invention. Either way an attribution with no trace is not evidence,
+  and echoing it forward launders it into your record. Say "not in the audited thread, no trace_id"
+  and stop there — do not adopt the offer it invented for you.
+- **Read the cited source before accepting a "the source actually argued X" correction.** A review
+  can drop a premise and present the drop as a discovery. When the dropped premise is one your own
+  doctrine already holds, the correct reply is *agreement stated out loud* — being told you agree,
+  by a document that treats it as a catch, is the commonest inversion in this genre. It also means
+  the review's most useful line may be the one it nearly discarded.
+- **Check the review's argument for self-contradiction, not only against reality.** A review that
+  faults a governance document for having no enforcement, while elsewhere arguing that governance
+  is unnecessary for the class it governs, has refuted itself — pick one branch and say which. An
+  argument whose parts cancel needs no probe to reject, and the contradiction is the whole finding.
+- **Distinguish an unsupported leap from a false claim.** "This public statement opens a market
+  window for our architecture" is not falsifiable and not our business to affirm. Quote the
+  statement, name the leap, and do not let a hopeful inference ride into a plan on the back of a
+  verified quote.
+
+### A "commits pushed" manifest — verify each hash, then verify the tree
+
+A delivery summary carrying hashes is the cheapest thing to confirm and the most over-read.
+Resolve every hash, then look past it, in this order:
+
+```bash
+git -C <repo> cat-file -t <hash>            # commit / tree / blob — or absent (fabricated)
+git -C <repo> log -1 --oneline <hash>       # does it say what the summary says it says?
+git -C <repo> log -1 --oneline origin/<branch>
+git -C <repo> status -sb | head -3          # ahead/behind + dirty entries
+```
+
+- **A hash that resolves is not a hash that is pushed, and a branch is not main.** Credit the
+  distinction when the summary makes it — naming a feature branch honestly is better hygiene than
+  the common alternative — and correct it when the summary says "main".
+- **Read the diff, not only the message.** The commit message is a claim about the diff, and the
+  message can declare one canonical vocabulary while the other half of its own diff emits another.
+  That is a finding about the artifact, scoped to the commit's author rather than to the reporter.
+- **"Gates passed ✅" collapses a transition into a Boolean.** Ask which state was reached:
+  committed ≠ clean ≠ deployed. A pushed HEAD sitting on a dirty tree means the *pushed* part is
+  true and the *working state* is not; report both, with the dirty paths.
+- **Re-run a quoted test count, then run the containing suite.** A subset count can be exactly true
+  while the module it lives in is not clean. When the wider suite fails, classify the failures
+  before scoring the claim: a missing dependency is an environment gap, not logic rot, and the
+  honest verdict is "subset claim verified, module not runnable in this environment, cause named" —
+  neither a false claim nor a clean bill.
+- **Read the authorship.** Multi-agent work narrated in one voice hides which seat produced what;
+  two commits minutes apart with different authors is a fact worth stating when the summary implies
+  a single actor.
+- **A true claim's SCOPE is where the overselling lives.** Verify, then ask what the verified
+  sentence does *not* cover. That gap — not a falsified line — is usually the finding worth
+  reporting, and it is the one a ✅ hides most effectively.
+
 ### Its premises about our own system are claims — probe them before adopting the plan
 
 An external review can be *internally coherent* and *factually wrong about our infrastructure*,
@@ -309,6 +368,77 @@ the `PUBLIC_*_NAMES` constant the registrar reads) — never the client-facing c
 reviewer happened to see. A compat/alias map keeps retired names resolvable-looking, and that map is
 the usual explanation for an inflated count; report live-registered and alias-only names separately
 rather than calling the reviewer's list invented.
+
+### A readiness gate table is a claim set, not a measurement
+
+An audit that arrives as a gate checklist ("10 gates · 7 open · 3 critical") reads as quantitative and
+is usually the least-probed part of the document — the verdict line gets quoted, the rows never get
+re-derived. Re-derive the split before acting on any of it:
+
+- **Rows marked `?` / `Unknown` are UNPROBED, not failed.** Reclassify them before totalling. A table
+  with 4 undetermined rows and 3 measured defects is 3 findings plus 4 blanks, not the "7 open" it
+  claims. Reporting it the auditor's way converts the auditor's own omission into a work list you then
+  labour through — and it inflates the auditor's apparent yield at the same time.
+- **Recount the arithmetic; do not repeat the verdict.** These tables routinely carry a total that does
+  not equal the sum of their own rows, or a ✅ count that contradicts the rows marked ✅.
+- **Probe every URL the audit prescribes.** Internal links it tells you to add frequently point at
+  routes that were never built — `curl -s -o /dev/null -w '%{http_code}' <url>` settles each in one
+  call. A prescribed link to a 404 is the audit inventing a surface and then faulting you for the
+  absence of it.
+- **A recommendation that reverses a standing decision is not a gap.** Where the audit proposes
+  changing a posture the principal deliberately chose — a declared content licence, a crawler
+  permission, an approved byline — it is proposing to undo an authority's call, not fill a hole. Check
+  whether the posture was ratified before treating anything as missing; name it as chosen and leave it
+  standing.
+- **Its verdict on a document you cannot find is a finding about the document, not about you.** "This
+  gate is unmet" about an artifact that was never written is one row, not a program of repairs.
+
+### Before calling a review's vocabulary fabricated, prove WHICH artifact it describes
+
+A review that uses domain vocabulary you cannot find is *not* automatically inventing it. The
+commoner explanation is that you opened the wrong document: workspaces accumulate sibling
+directories differing only by date and one noun (`YYYY-MM-DD-<topic>-<kind>/`), and `find` returns
+the first match while the review meant the second. You grep the older file, get zero hits, and
+announce fabrication — against a review that was accurate about a different artifact the whole time.
+
+Measured: a review's readiness table used terms that scored **0** against the artifact found first
+(`PLAUSIBLE`, `father`, `scar`, `soul`). Against the sibling artifact: **3, 9, 69, 0**. The review
+described the sibling; the fabrication charge had to be retracted.
+
+```bash
+# 1. Enumerate EVERY candidate on the TOPIC, not on the artifact's full name
+find <root> -maxdepth 4 -iname "*<topic>*" -not -path "*/node_modules/*" 2>/dev/null
+
+# 2. Score the disputed vocabulary PER CANDIDATE — a single non-zero refutes the hypothesis
+for d in <c1> <c2>; do printf '%s: ' "$d"; grep -rioh -e '<term1>' -e '<term2>' "$d" 2>/dev/null | wc -l; done
+```
+
+**Retract explicitly and in the same message** as the surviving critique. A false fabrication charge
+against an accurate review is itself an F2 violation, and burying the correction costs more than the
+original error. The user acts on the loudest claim in the reply, so a wrong charge left standing
+while you critique the rest is the message they will carry away.
+
+**Then separate the vocabulary from the method — that is where the surviving findings live.** An
+accurate description of a real artifact can still:
+
+- **Author its own gates, then score against them.** A checklist the auditor invents is not a gate.
+  For each gate ask: who asked for this, and where is it written?
+- **Issue its own verdict stamp.** A review emitting a terminal verdict marker and the institutional
+  motto has collapsed diagnosis and sealing into one actor. An executor may never issue its own
+  envelope, however sound its observations.
+- **Assert structure it never checked.** A directory described as populated was empty; a claimed
+  artifact pair had only one half. Verify every structural claim (`ls`, file counts, page counts,
+  `content-type`) rather than trusting the prose that describes it.
+
+**Also verify artifact dimensions, not just the prose about them.** A `.pdf` whose `content-type` is
+`text/html` and whose text extraction returns zero words is not a PDF; a claimed page count and word
+count either resolve or do not.
+
+**Record what the review got RIGHT.** An honest reconciliation is not a takedown — mark the
+infrastructure gates it correctly called satisfied, the real risk it correctly named even if its
+supporting terms were misattributed, and the genuine gap it found by any route. Then surface the
+**single binary the sovereign must resolve**, rather than re-listing the auditor's own multi-gate
+table — reproducing someone else's checklist launders it into your report.
 
 ### A "missing file" claim must be re-probed at every DECLARED path
 
@@ -524,6 +654,43 @@ existing ≠ wire fired* — the module can be written and imported while the th
    removes the reader's ability to doubt. Either run the probe or say exactly what was and was not
    checked. This applies hardest to the *cheap* claims — a grep you could have run in one call.
 
+## Cross-node verdicts — a peer's "fabricated" is host-pinned too
+
+A peer seat read a stale mirror-node checkout and reported an entire repository audit as
+"fabricated, ~25% real". At the truth node the same audit was honest: the artifact existed, the
+"missing" files were present, and the audit's own embedded receipt (`git_sha` + `timestamp`)
+matched HEAD exactly. Both seats read truthfully — one read a mirror weeks behind. The defect was
+not in the audit; it was applying a **file-absence rule to a whole-artifact verdict**.
+
+- **Read the accused artifact's own provenance before adjudicating anything.** An audit that stamps
+  its inputs (`git_sha`, `timestamp`, `evidence_window`) is checkable in one command: does the
+  embedded `git_sha` resolve (`git cat-file -t <sha>`), and does it equal the HEAD you hold? A
+  self-consistent receipt is a stronger reply than either seat's opinion, and it usually settles the
+  dispute in a single call. Prefer it over re-litigating the peer's sampling.
+- **Absence on a mirror is not fabrication.** The negative verdict carries exactly the same warrant
+  requirement as the positive one. Name the node — "absent at `<host>`", never bare "absent" or
+  "fabricated". A peer that has already established its own seat is a mirror has supplied the
+  explanation for its own null result; apply that reading to the verdict, not only to the probe.
+- **Triangulation needs an anchor, not a timestamp.** Two seats agreeing on a time window can still
+  disagree on content because one is staggered. Before declaring a peer wrong, anchor on something
+  both can resolve: a commit SHA, a content hash, an artifact id. A timestamp range alone cannot
+  distinguish "they read a different state" from "they read the same state and one is lying".
+- **Check a peer's self-correction against the receipt as well.** A seat that retracts and
+  reattributes its own words can retract something it did say. Re-read its actual message before
+  accepting the correction — a wrong attribution in the ledger is still a wrong record, and
+  "immaterial to substance" does not make it record-free. Quote the line; do not accept the
+  paraphrase, in either direction.
+- **A divergence worth recording is often worth more than its resolution.** One repo identity, two
+  hosts, two incompatible realities, and no attestation forcing them to agree is *live evidence*
+  that the provenance chain is not closed — and it is stronger evidence than either seat's verdict,
+  because it was measured rather than argued. Report the divergence alongside the resolution.
+- **"Scanned" and "tracked" are different populations.** A count from an artifact's own summary
+  (`total_files_scanned`) counts every file the run visited, including untracked and build output;
+  `git ls-files` counts only tracked files. Comparing the two and reporting an inflated multiple is
+  a units error, not a fabrication — resolve it by measuring both populations on the node that
+  produced the count.
+
+
 ## Alert-path triage — field semantics, stale registry, or repair race
 
 A dead-path alert (`DEAD_POINTER`, `SILENT_FAIL` on `<path>`) has three causes needing different
@@ -636,6 +803,15 @@ auditor is structurally less likely to double-check the negative.
   raised, all 19 stores walked) then found the field present. The verdict survived; its *warrant*
   did not, and the difference between "absent" and "present but unread" was the entire finding.
   **When a claim is about a population, scan the population — or label it a sample.**
+- **Your own PROPOSAL is an absence claim too, and it decays fastest of all.** Before recommending a
+  build, run the existence probe *and* a recent-history sweep, because a concurrent lane can land the
+  capability while you are still drafting the plan — the gap you are describing may have closed
+  between forming the idea and sending it. `git log --oneline --since='<n> hours ago'` plus a symbol
+  grep over the owning tree; also sweep the doctrine fragments, not only the code, since a sharper
+  analysis of the same gap may already be filed there. Measured: two of three proposed deltas had
+  already been built by parallel sessions (one minutes earlier), and a third had already been analysed
+  more completely in a doctrine file. Recommending work that exists spends the sovereign's attention
+  on a non-event and costs more credibility than the missed build would have.
 
 ### Tool descriptions vs handler signatures — diff them, never spot-read one
 
@@ -949,6 +1125,28 @@ the reviewer inherits your framing.
   contradicts the role the document assigns, that contradiction **is** the finding — and the party
   being bound is the last one positioned to see it. A consolidation that drops the uncomfortable item
   is the same failure one layer up, so re-read your own summary before publishing it.
+
+### A fix verified by its own author is not verified
+
+Self-verification does not count as a witness, however rigorous it reads. When you are the lane that
+produced a change, your re-probe is a regression check, not evidence — and the two must not be
+reported under one word.
+
+- **Re-probe from a different seat or client than the one that patched.** Before accepting an item
+  as confirmed, establish what the verifying lane can actually reach. A tool surface unreachable from
+  the peer's seat cannot be independently confirmed by that peer — mark the item **self-report only**
+  and say which surface was unreachable, rather than letting "witnessed" stand for "reported".
+- **Bind a claimed fix through raw field-level before/after, never through prose.** For each item,
+  show the same call with the same input, and quote the exact fields that changed (`epistemic_state`
+  before → after, verdict before → after). A narrative summary of a fix is a claim about a diff; the
+  diff is the receipt.
+- **A gate that refuses your write is a PASS of the gate, not a blocked task.** When an irreversible
+  or self-sealing action is rejected (no bound identity, no signing authority), record the refusal as
+  evidence the control works and stop — do not hunt for a lane that will accept it. Route the
+  proposal to the authority that can carry it.
+- **Name the verification state per item, in the same table as the findings.** Every row carries one
+  of: independently re-probed, self-report only, or unmeasured. A findings list without that column
+  reads as fully verified no matter how it was produced.
 
 ## § Pitfalls
 

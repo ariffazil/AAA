@@ -93,6 +93,18 @@ SKILL.md as well. Otherwise skip; doctrine and skill have different owners.
   (`canon/*.md` and `instructions/anti-calhoun.md` cite it). `/root/AAA/eurekas/eureka-entries.jsonl`
   is a stray with a different entry shape and no readers. Appending to the wrong one silently loses
   the record. See `references/commit-gates.md`.
+- **A rule that must bind EVERY harness needs a generator and a drift check, not hand-copies.**
+  Harness boot surfaces are not one file: `/root/AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `QWEN.md`,
+  `.codex/AGENTS.md`, `.config/opencode/AGENTS.md`, `.kimi-code/{AGENTS,SYSTEM}.md`,
+  `.qwen/instructions.md`, `.grok/AGENTS.md`, `.arifos/agents/*/AGENTS.md`, and on KVM4 the
+  `.openclaw/{system.md,workspace*,agents/*/system.md}` set. Hand-copying a clause into them rots
+  silently: surfaces drift, some end up with two copies while others get none, and a stale host can
+  carry zero. Fix pattern — ONE writer script emitting a marker-delimited block
+  (`<!-- BEGIN/END AAA-<TOPIC> -->`), idempotent, stripping pre-marker legacy sections so exactly one
+  copy survives per surface, with `--check` exiting non-zero and a scheduled drift-check writing a
+  receipt. Reference implementation: `/root/scripts/membrane-propagate.py` +
+  `membrane-drift-check.sh`. A host whose `/root/AGENTS.md` is generated elsewhere (KVM8 → KVM4) gets
+  the rendered file synced, never hand-edited on the stale side.
 - **Sweep for an existing owner before minting.** Parallel agent sessions on the same box mint the
   same insight independently. Before writing, grep the ledger, the fragments, and `git log` for the
   topic; if an owner exists, fold the delta into it instead of creating a second file
