@@ -136,6 +136,30 @@ Self-test before shipping an alert format: strip the emitter and hand the line t
 someone who has never read the code. If they cannot state what each token's role is,
 the format is not finished.
 
+### A ratio moves for two reasons; report both, or the trend lies
+
+A compliance percentage that falls can mean the numerator got worse *or* the denominator
+got smaller. Reading the ratio as a trend is how a housekeeping sweep gets reported as a
+governance collapse. Always publish the pair (`31/190 → 37/149`) next to the percentage,
+and state which side moved: "six new entries arrived without the declaration, while the
+population shrank by 41" is a finding; "compliance dropped 12 points" is a rumour about a
+number.
+
+**Read the predicate before trusting the metric's name.** A check implemented as a case-
+insensitive grep for `F1|F2|F4|floors` over a whole file measures *mention*, not
+*declaration* — any file that names a floor in prose passes. The metric is honest about
+what it tested and wrong about what its label claims. Before acting on any compliance
+figure, open the line that computes it and say aloud what predicate it actually runs; then
+report the number under that name ("mentions a floor"), not the label's name ("declares
+floor_scope").
+
+**Do not fix a metric by satisfying its predicate.** Stamping the missing field across every
+failing file raises the score and the underlying binding stays absent — a declaration nobody
+enforced is a false record, and it is the same act as silently reconciling two disagreeing
+numbers. Per-item fields that carry real meaning get set per item, by whoever owns the item;
+a sweep is only legitimate for genuinely mechanical, meaning-free normalisation. Say which
+case you are in rather than letting the count drop speak for itself.
+
 ## Survey before routing
 
 Jobs live on independent surfaces that do not reconcile with each other — Hermes cron
