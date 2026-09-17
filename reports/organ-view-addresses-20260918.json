@@ -485,5 +485,34 @@
   "unchanged": 6,
   "total": 17
  },
- "accounting_note": "retargeted entries: the address existed and pointed at a copy; it now names the named home first (net resolution unchanged, both were byte-identical). unchanged entries were verified already correct."
+ "accounting_note": "retargeted entries: the address existed and pointed at a copy; it now names the named home first (net resolution unchanged, both were byte-identical). unchanged entries were verified already correct.",
+ "previous_target_of_retargeted": {
+  "domains/wealth/workshop/finance-domain/wealth-claim-state": "/root/.hermes/profiles/aaa-hermes/skills/wealth-claim-state",
+  "domains/well/forge/incident-response/FORGE-well-boundary-repair": "/root/.hermes/profiles/aaa-hermes/skills/FORGE-well-boundary-repair"
+ },
+ "reversal_exact": {
+  "remove_these_9": [
+   "domains/geo/workshop/geox-intel/geox-basin-evaluation",
+   "domains/geo/workshop/geox-intel/geox-claim-falsification",
+   "domains/geo/workshop/geox-intel/geox-prospect-evaluation",
+   "domains/geo/workshop/geox-intel/geox-seismic-interpretation",
+   "domains/geo/workshop/geox-intel/geox-well-log-qc",
+   "domains/wealth/workshop/finance-domain/wealth-capital-primitives",
+   "domains/wealth/workshop/finance-domain/wealth-ledger-discipline",
+   "domains/wealth/workshop/finance-domain/wealth-market-pulse",
+   "domains/wealth/workshop/finance-domain/wealth-runway-conservation"
+  ],
+  "repoint_these_2": {
+   "domains/wealth/workshop/finance-domain/wealth-claim-state": "/root/.hermes/profiles/aaa-hermes/skills/wealth-claim-state",
+   "domains/well/forge/incident-response/FORGE-well-boundary-repair": "/root/.hermes/profiles/aaa-hermes/skills/FORGE-well-boundary-repair"
+  },
+  "unchanged_do_nothing": [
+   "domains/geo/workshop/my-domain-intel/geox-production-cockpit",
+   "domains/wealth/workshop/trading-exec/xauusd-trading",
+   "domains/well/aaa/catalog-ops/well-consent-registry",
+   "domains/well/aaa/substrate/well-substrate-readiness",
+   "domains/well/forge/incident-response/well-machine-diagnose",
+   "domains/well/workshop/well-domain/well-triadic-ops"
+  ]
+ }
 }
