@@ -280,6 +280,51 @@ skill_view(name='<the-skill>')     # must return content, not "Ambiguous skill n
 A repaired tree that still refuses to load is not repaired. Same discipline as verifying any
 tool change: re-invoke and read the returned fields, never the exit code.
 
+### 4b. The three defect classes a link sweep actually finds (measured 2026-09-17)
+
+A census can report `broken_symlinks: 0` while the library is still losing capabilities, because
+there are three separate defect classes. Repair them in this order — each one changes what the
+next one sees:
+
+| Class | Symptom | Test |
+|---|---|---|
+| Dead view link | link resolves to nothing | `os.path.islink(p) and not os.path.exists(p)` |
+| Dead internal pointer | SKILL.md cites a file under `references/` (or `templates/`, `assets/`) **and the package HAS that folder** but not the file | the body instructs a load that cannot succeed |
+| Headless shell | canonical top-level dir with no `SKILL.md` anywhere beneath | looks like a capability, loads nothing |
+
+The gate's `dead_internal_pointers` check covers class 2 (FAIL-class). Two predicates keep it
+honest, and both were needed on the first run: a mention is a **real pointer only when the top
+folder exists in that package** (otherwise the cited path is prose or an example), and a match
+truncated by a following character (a prefix such as `assets/index-`) is a **glob, not a pointer** —
+drop it. Without those two filters the check fires on hundreds of doc examples and is switched off
+within a week. Measured: 397 candidate mentions across 845 packages → 74 real dead pointers in 21
+packages.
+
+**The gate must pass on its own documentation.** Adding this check made it fail on the skill that
+documents it, because the examples were written as bare paths under a package that really does have
+that folder. Write illustrative pointers in an unmatchable form (`references/<name>.md`) rather than
+excluding a documented file from the sensor — an exclusion list is how the next real dead pointer
+walks through.
+
+**Repair rule ladder for a dead link — resolve, never guess.** Take the link's own basename and try:
+name-identical → case-only → prefix-stripped (`AUDIT-`, `FORGE-`, `APEX-`, `ASI-`, `KERNEL-`). If
+several candidates remain, prefer the canonical store, then the default harness view: the rest are
+per-profile mirrors of one skill, not competing successors. If nothing resolves, the named
+capability has no successor in the forest — remove the link (it already resolves to nothing) and log
+it; never invent a mapping, and never delete the directory a link pointed at.
+
+**Repair rule for a dead pointer — three sources, in order:** (a) the file exists in the federation's
+own quarantine snapshots → restore it into the package; (b) it exists in a sibling live package →
+relative symlink **inside** this package (one body, many paths); (c) the mention names a real file at a
+known absolute path → correct the mention. If none, the pointer is aspirational: report it, do not
+fabricate the file. Measured: 14 restored, 23 linked, 6 mentions corrected, 0 invented.
+
+**Repair rule for a shell — mirror before eviction.** If the same name exists as a real package
+anywhere in the live trees, replace the shell with a relative symlink to it (one body, many paths).
+Archive only when no successor exists **and** the shell holds no files; HOLD any shell holding orphan
+files — an orphaned body is a human call. Measured: 43 shells → 17 mirrored, 14 archived (empty), 12
+held. This is the same trap as eviction-on-appearance (LAW 2), now with a mechanical test.
+
 ### 5. Deleting anything — the safe rules
 
 Deleting on the same pass you use to *enumerate* destroys your ability to inspect the
@@ -377,6 +422,16 @@ git -C /root/AAA status --porcelain        # must show no deletions before movin
   refresh stamp is wrong, either recompute it by actually running the producing process, or
   leave the check failing and name it as debt. Hand-editing the number or timestamp to make the
   gate green is fabrication, and it destroys the only signal that would have caught the drift.
+- **A repaired link must be re-probed, not assumed.** After repointing, assert
+  `os.path.exists(link)` AND that it resolves to a `SKILL.md` — a link that now points at a directory
+  without one is still a lost capability, and it will not appear in the broken count again.
+- **Dedupe the walk by realpath before mutating.** A sweep across overlapping roots (the store plus a
+  profile tree that mirrors it) visits the same physical link twice; the second visit then throws
+  `FileNotFoundError` on a link the first visit already removed, aborting the run mid-plan. Keep a seen
+  set keyed on `(realpath, path)` — the counted total is otherwise inflated as well.
+- **Verify every mutation from its own log, not from the tool's summary.** Re-read the apply manifest
+  after the run and stat each destination; a partial apply that reports success is the normal failure
+  shape here. The check is `defects == 0`, computed from disk.
 - **Classify emptiness structurally, not from a top-level listing.** A store directory holding no
   `SKILL.md` may be a container of sub-skills, and a directory whose only children are
   `references/`, `__pycache__`, or fixtures is a live skill whose body sits one level up. Decide
