@@ -1,0 +1,53 @@
+{
+ "stamp": "2026-09-17T17:57:18.892914+00:00",
+ "jitu": {
+  "authority": "/root/AAA/federation/kernel/jitu.py",
+  "selftest": "8/8 PASS",
+  "guard": "/root/.local/bin/jitu-guard",
+  "gate_hook": "/root/AAA/federation/protocols/arifos-hermes-gate-hook.py (decision step 0)",
+  "gate_hook_tests": "idle-allow \u00b7 tripped-block exit3 \u00b7 read-only-still-allowed \u00b7 released-allow",
+  "cron_lanes_guarded": 47,
+  "cron_env_verified": true,
+  "retired": [
+   "/root/scripts/governance/circuit-breaker.sh",
+   "/root/arifOS/scripts/wire/arif-circuit-breaker"
+  ],
+  "designated_detector": "/root/arifOS/core/paradox/circuit_breakers.py"
+ },
+ "geox_wall": {
+  "defect": "KILL verdict not propagated to the interpret payload; local_verdict hardcoded QUALIFIED_CANDIDATE",
+  "edits": [
+   "seismic_interpret._stamp_qualified",
+   "seismic_interpret interpret branch",
+   "seismic_interpret both payloads",
+   "section_render.compact_interpret_envelope"
+  ],
+  "impossible": {
+   "combined_gate_verdict": "KILL",
+   "governance_status": "HOLD",
+   "local_verdict": "FALSIFIED",
+   "kills": [
+    "K-THROW",
+    "K-DL"
+   ]
+  },
+  "plausible": {
+   "combined_gate_verdict": "PARTIAL",
+   "governance_status": "QUALIFY",
+   "local_verdict": "QUALIFIED_CANDIDATE",
+   "kills": []
+  },
+  "source_fixed": true,
+  "live_tree_patched": true,
+  "live_process_reloaded": false,
+  "live_tree_commit": "8c6c7f2d",
+  "live_tree_commits_behind": 38,
+  "blocked_operation": "unit-restart of geox-mcp.service (K-02 T3 pattern match)",
+  "blocked_state": "BLOCKED_AT_GATE",
+  "activated": false
+ },
+ "names_corrected": {
+  "K-TAPER": "K-THROW",
+  "K-SCALE": "K-DL"
+ }
+}
