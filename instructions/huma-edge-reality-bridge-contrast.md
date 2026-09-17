@@ -88,6 +88,48 @@ The artifact proposes five subsystem builds: (1) Fisher–Rao retrieval, (2) Tur
 
 Sharpest candidate if one is ever built: **sheaf-cohomology contradiction detection** (component 5) — it is the only gap whose absence has already cost us (a hand-maintained contradiction register), and it is the only one that does not touch the live recall path.
 
+## 8. Delta 1 REFUTED — the class-aware read gate already exists (musyawarah 2026-09-18)
+
+A downstream proposal (an outside report, then my own reading of it) held that arifOS retrieval is
+"epistemic-blind" and that a canonical epistemic-class field plus score modifier should be built.
+A two-voice musyawarah was convened. **The premise is falsified.** Both voices independently found,
+and direct probe confirms:
+
+- **`MemoryAdmissibilityGate` exists and is WIRED.** `/root/arifOS/arifosmcp/memory/admissibility.py`
+  (472 lines). Its own docstring: *"This module governs the READ side: what may be RECALLED, in which
+  mode."* Called at `arifosmcp/tools/memory.py:261` inside the recall path — it quarantines
+  inadmissible records (`usable=False`, `SRO_EXCLUDED`).
+- **It carries per-class thresholds.** `CONFIDENCE_FLOORS = {"OBS": 0.90, "DER": 0.75, "INT": 0.65,
+  "SPEC": 0.50}` (line 314). `_VALID_TRUTH_CLASSES = {"OBS", "DER", "INT", "SPEC"}` (line 100).
+  Per-class expiry defaults too: OBS 365d / DER 180d / INT 90d / SPEC 30d.
+- **So F2 is not blind at retrieval.** A class-aware read gate with class-specific floors and
+  class-specific expiry was already built and already invoked.
+
+**This is the fourth occurrence of one pattern in a single night**, and it is the one to internalise:
+*the capability was already there.* An artifact claimed a subsystem existed (it did not); a report
+claimed a field was absent (it existed under another name); my own sweep claimed an absence from a
+contaminated probe; and finally a "gap" I was about to design against was already implemented,
+wired, and thresholded.
+
+**Convergent finding from both voices — the real defect is the OPPOSITE of the proposal.** The
+auditor measured that the live class token is `DERIVATION` (`arifosmcp/schemas/memory_truth.py`
+carries `derived`; `tools/vault.py:1292` carries `DERIVED`; `kernel/trl/coordinates.py` carries
+`DER`), while `_VALID_TRUTH_CLASSES` accepts only `{OBS, DER, INT, SPEC}`. **The vocabulary is
+already forked at the one place the field is populated** — so the gate may be failing to recognise
+the only three classified points that exist. The architect separately flagged a live TTL
+miscalibration on those same three points. Whether either is real is **UNVERIFIED here** and is the
+correct next probe — but note the shape: the gap is *integration*, not construction.
+
+**Ruling: HOLD the build.** Not because the idea is wrong, but because its premise is falsified and
+its subject is already built. If anything is warranted it is a *reconciliation* — one vocabulary,
+one owner, and proof the existing gate recognises the live tokens. That is a different, smaller, and
+far more falsifiable task than the one proposed.
+
+**Method note (feeds Law 1).** The musyawarah voices each extended the evidence base and each
+corrected it — one withdrew its own hypothesis after falsifying it. Two independent voices found
+what one auditor had missed precisely because they attacked from opposite directions. This is what
+independence buys, and it is why the voices must not see each other.
+
 ## Correction Log
 
 - **Correction 1 (2026-09-18):** The artifact's five headline subsystems read as implemented. They are not. Any downstream summary that repeats "arifOS implements sheaf cohomology" without the probe result is a re-import of the defect. Do not re-import.
