@@ -5,86 +5,166 @@
   "created_local": "2026-09-18T11:20+08:00",
   "authority": "F13 chat 155218 — keep the shell plastic, seal the causal spine",
   "law": "A representation may never claim to be reality itself.",
-
   "what_is_sealed_and_what_stays_plastic": {
-    "inner_sealed_slow": ["truth ontology", "provenance", "identity", "privacy",
-                          "perspective sovereignty", "authority", "promotion ladder",
-                          "rollback", "receipt integrity"],
-    "middle_learnable": ["source reliability", "ranking weights", "relevance priors",
-                         "novelty calibration", "delivery timing", "prediction calibration"],
-    "outer_fluid": ["language", "visual layout", "quote choice", "PNG vs text vs voice",
-                    "typography", "card length", "whether tonight needs a card at all"]
+    "inner_sealed_slow": [
+      "truth ontology",
+      "provenance",
+      "identity",
+      "privacy",
+      "perspective sovereignty",
+      "authority",
+      "promotion ladder",
+      "rollback",
+      "receipt integrity"
+    ],
+    "middle_learnable": [
+      "source reliability",
+      "ranking weights",
+      "relevance priors",
+      "novelty calibration",
+      "delivery timing",
+      "prediction calibration"
+    ],
+    "outer_fluid": [
+      "language",
+      "visual layout",
+      "quote choice",
+      "PNG vs text vs voice",
+      "typography",
+      "card length",
+      "whether tonight needs a card at all"
+    ]
   },
-
   "the_spine_as_checks": {
     "file": "/root/AAA/scripts/chron_spine_gate.py",
     "verdicts": "PASS | FAIL | UNBUILT — UNBUILT is honest and is NOT a pass",
-    "result": {"PASS": 6, "FAIL": 0, "UNBUILT": 3, "self_test": "PASS"},
+    "result": {
+      "PASS": 6,
+      "FAIL": 0,
+      "UNBUILT": 3,
+      "self_test": "PASS"
+    },
     "boundaries": [
-      {"n": 1, "arrow": "WORLD -> OBSERVE", "verdict": "PASS",
-       "evidence": "5/5 events in chron_events.json carry source, confidence, target_date, audience"},
-      {"n": 2, "arrow": "OBSERVE -> CLAIM", "verdict": "PASS",
-       "evidence": "9 rows, every cell classed; tags in use: OBS, DER, INT, CONTESTED"},
-      {"n": 3, "arrow": "CLAIM -> ATTENTION", "verdict": "PASS",
-       "evidence": "truth_score and urgency_score exposed separately and provably diverge on a collision pair"},
-      {"n": 4, "arrow": "ATTENTION -> DELIVERY", "verdict": "PASS",
-       "evidence": "newest ledger row resolves; 4 older rows stale, all predating the content-addressing fix"},
-      {"n": 5, "arrow": "DELIVERY -> HUMAN", "verdict": "PASS",
-       "evidence": "12 patterns, 10 word-bounded prose + 2 literal; inner-state rule present"},
-      {"n": 6, "arrow": "EXPERIENCE -> MEMORY", "verdict": "UNBUILT",
-       "why": "no memory lifecycle exists; an episode cannot yet be distinguished from a durable lesson"},
-      {"n": 7, "arrow": "MEMORY -> POLICY", "verdict": "UNBUILT",
-       "why": "no policy-candidate object exists, so nothing can be promoted from a single episode"},
-      {"n": 8, "arrow": "LEARNING -> PRODUCTION", "verdict": "PASS",
-       "evidence": "engine defaults to SHADOW and cannot send; a separate production renderer exists — the learner is behind the door"},
-      {"n": 9, "arrow": "OUTCOME -> LEARNING", "verdict": "UNBUILT",
-       "why": "no prediction object carries a verification appointment, so calibration cannot accumulate"}
+      {
+        "n": 1,
+        "arrow": "WORLD -> OBSERVE",
+        "verdict": "PASS",
+        "evidence": "5/5 events in chron_events.json carry source, confidence, target_date, audience"
+      },
+      {
+        "n": 2,
+        "arrow": "OBSERVE -> CLAIM",
+        "verdict": "PASS",
+        "evidence": "9 rows, every cell classed; tags in use: OBS, DER, INT, CONTESTED"
+      },
+      {
+        "n": 3,
+        "arrow": "CLAIM -> ATTENTION",
+        "verdict": "PASS",
+        "evidence": "truth_score and urgency_score exposed separately and provably diverge on a collision pair"
+      },
+      {
+        "n": 4,
+        "arrow": "ATTENTION -> DELIVERY",
+        "verdict": "PASS",
+        "evidence": "newest ledger row resolves; 4 older rows stale, all predating the content-addressing fix"
+      },
+      {
+        "n": 5,
+        "arrow": "DELIVERY -> HUMAN",
+        "verdict": "PASS",
+        "evidence": "12 patterns, 10 word-bounded prose + 2 literal; inner-state rule present"
+      },
+      {
+        "n": 6,
+        "arrow": "EXPERIENCE -> MEMORY",
+        "verdict": "UNBUILT",
+        "why": "no memory lifecycle exists; an episode cannot yet be distinguished from a durable lesson"
+      },
+      {
+        "n": 7,
+        "arrow": "MEMORY -> POLICY",
+        "verdict": "UNBUILT",
+        "why": "no policy-candidate object exists, so nothing can be promoted from a single episode"
+      },
+      {
+        "n": 8,
+        "arrow": "LEARNING -> PRODUCTION",
+        "verdict": "PASS",
+        "evidence": "engine defaults to SHADOW and cannot send; a separate production renderer exists — the learner is behind the door"
+      },
+      {
+        "n": 9,
+        "arrow": "OUTCOME -> LEARNING",
+        "verdict": "UNBUILT",
+        "why": "no prediction object carries a verification appointment, so calibration cannot accumulate"
+      }
     ]
   },
-
   "changes_this_pass": [
-    {"file": "/root/AAA/scripts/chron.py",
-     "sha256_before": "82f40a2cd188",
-     "before_source": "untracked before this pass; backup-105522 is the only pre-forge state",
-     "sha256_after": "afb1ca65047f",
-     "defect": "score() multiplied truth-shaped and time-shaped factors into one float, so 'urgent but trivial' and 'calm but consequential' became indistinguishable the moment they collided",
-     "fix": "components() exposes truth_score and urgency_score separately; ordering is unchanged but no longer destroys what it was not entitled to consume",
-     "evidence": "chron.py --self-test -> separation PASS (truth 1.0 vs 3.0, urgency 10.5 vs 1.8)"},
-    {"file": "/root/AAA/scripts/chron_spine_gate.py",
-     "sha256_before": "NEW",
-     "sha256_after": "600b9a85adc0",
-     "defect": null,
-     "fix": "NEW — nine boundaries as checks, each able to REJECT, with a two-way self-test",
-     "evidence": "6 PASS, 0 FAIL, 3 UNBUILT; self-test PASS"},
-    {"file": "/root/scripts/alpha_zen_engine.py",
-     "sha256_before": "f0b31aa62d54",
-     "sha256_after": "dc1420b0eb19",
-     "defect": "_pick() on the SUKA_TAHU/EUREKA path ended in `return pool[0]` — the same soft gate bypass already removed from the KENA_TAHU path and left behind here. When every candidate failed freshness the caller still received a stale signal, silently: a refusing gate turned into a reordering one",
-     "fix": "returns None; the caller renders a visible WITHHELD marker. Return type annotated str | None",
-     "evidence": "the gate can now refuse; a missing line is visible, a wrong number is not"},
-    {"file": "/root/AAA/scripts/alpha_zen_card.py",
-     "sha256_before": "a15322a0f856",
-     "before_note": "this file's forger-visible before-state is unchanged from the previous pass, which already landed the content-addressing fix",
-     "sha256_after": "a15322a0f856",
-     "defect": "fixed in the prior pass; listed here so the spine record is complete",
-     "fix": "content-addressed artifact plus a stable copy for the delivery contract",
-     "evidence": "test render: 2 ledger rows, both RESOLVE"}
+    {
+      "file": "/root/AAA/scripts/chron.py",
+      "sha256_before": "82f40a2cd188",
+      "before_source": "untracked before this pass; backup-105522 is the only pre-forge state",
+      "sha256_after": "afb1ca65047f",
+      "defect": "score() multiplied truth-shaped and time-shaped factors into one float, so 'urgent but trivial' and 'calm but consequential' became indistinguishable the moment they collided",
+      "fix": "components() exposes truth_score and urgency_score separately; ordering is unchanged but no longer destroys what it was not entitled to consume",
+      "evidence": "chron.py --self-test -> separation PASS (truth 1.0 vs 3.0, urgency 10.5 vs 1.8)"
+    },
+    {
+      "file": "/root/AAA/scripts/chron_spine_gate.py",
+      "sha256_before": "NEW",
+      "sha256_after": "600b9a85adc0",
+      "defect": null,
+      "fix": "NEW — nine boundaries as checks, each able to REJECT, with a two-way self-test",
+      "evidence": "6 PASS, 0 FAIL, 3 UNBUILT; self-test PASS"
+    },
+    {
+      "file": "/root/scripts/alpha_zen_engine.py",
+      "sha256_before": "f0b31aa62d54",
+      "sha256_after": "dc1420b0eb19",
+      "defect": "_pick() on the SUKA_TAHU/EUREKA path ended in `return pool[0]` — the same soft gate bypass already removed from the KENA_TAHU path and left behind here. When every candidate failed freshness the caller still received a stale signal, silently: a refusing gate turned into a reordering one",
+      "fix": "returns None; the caller renders a visible WITHHELD marker. Return type annotated str | None",
+      "evidence": "the gate can now refuse; a missing line is visible, a wrong number is not"
+    },
+    {
+      "file": "/root/AAA/scripts/alpha_zen_card.py",
+      "sha256_before": "a15322a0f856",
+      "before_note": "this file's forger-visible before-state is unchanged from the previous pass, which already landed the content-addressing fix",
+      "sha256_after": "a15322a0f856",
+      "defect": "fixed in the prior pass; listed here so the spine record is complete",
+      "fix": "content-addressed artifact plus a stable copy for the delivery contract",
+      "evidence": "test render: 2 ledger rows, both RESOLVE"
+    }
   ],
-
   "self_reported_defects": [
     "The spine gate's own self-test caught THREE false alarms I had written into it: (a) it looked for cell.tier when the claim class lives in cell.tag; (b) it required word boundaries on literal host-path patterns where they are meaningless; (c) it regexed for a module constant when the delivery mode is an env var. All three are recorded inside the file rather than quietly fixed — a gate that fires on correct content trains its own removal, which is the exact defect the file exists to prevent.",
     "An earlier countdown message said 55 minutes remained to 14:00. It was 3h21m. Nothing acted on it."
   ],
-
   "third_party_findings_recorded": {
     "auditor_333agi_retraction": "retracted its own chain-intact claim; 4 of 7 ledger rows were stale. Recorded, not defended.",
     "ownership_question": "A/B/C remains unanswered by F13. carry_forward e-3a377340 holds a self-authored ratification record; under the authority envelope an executor may not issue its own envelope, so it does not self-bind."
   },
-
   "rollback": "git HEAD in /root/AAA and /root/scripts; /root/AAA/forge_work/chron-audit/backup-105522 for pre-forge byte state",
-
   "chron_state": "EXPERIMENTAL",
   "state_reason": "0 of 3 enabled jobs have fired; 14:00 MYT is the first real observation",
-
-  "next_single_action": "14:00 MYT — delivered? number matches the canonical store? ledger hash still resolves?"
+  "next_single_action": "14:00 MYT — delivered? number matches the canonical store? ledger hash still resolves?",
+  "append_only_corrections": {
+    "law": "MEMORY MUST PRESERVE UNCERTAINTY, NOT ERASE IT",
+    "format": "ORIGINAL -> COUNTEREVIDENCE -> CORRECTION (append-only; no history rewritten)",
+    "appended_at": "2026-09-18T11:30:30+08:00",
+    "corrections": [
+      {
+        "subject": "changes[2] alpha_zen_engine.py sha256_after",
+        "original": "dc1420b0eb19 (forgery seal: f0b31aa62d54)",
+        "counterevidence": "working tree re-hashed 2026-09-18T11:26 MYT = a822850a37c13fcf; git status shows alpha_zen_engine.py modified vs HEAD",
+        "correction": "Both seal values were TRUE when written. The file moved after. The seal is not wrong; it is STALE, and the old format could not say so.",
+        "state": "SUPERSEDED",
+        "observed_at": "2026-09-18T11:26+08:00",
+        "superseded_by": "claim clm-47aab3359c209d17 in /root/AAA/claim_ledger/claims.db (artifact art-a822850a37c13fcf)",
+        "note": "dc1420b0eb19 DOES equal the committed HEAD blob. The spine seal bound correctly to code-as-committed. The drift is uncommitted working-tree change."
+      }
+    ],
+    "what_this_instantiates": "Law 2 of temporal-artifact-integrity applied to CODE, not only to rendered artifacts. A seal that records a hash of a mutable file describes a moment, not a state. The durable record now lives in the claim ledger, where claim -> artifact -> hash is a real join and recheck_artifact re-hashes on disk."
+  }
 }
