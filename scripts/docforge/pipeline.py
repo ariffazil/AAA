@@ -244,6 +244,12 @@ def run(items_path: Path, *, edition: str, date: str, template: str = "base-a4",
         "template": template, "theme": theme, "source": str(src),
         "run_dir": str(run_dir),
         "gates": {"profile": "print-light", "forbid_paths": True},
+        "stats": {
+            "new": len(delta.new), "moved": len(delta.moved),
+            "reopened": len(delta.reopened), "still_open": len(delta.still_open),
+            "settled": len(delta.settled), "dropped": len(delta.dropped),
+            "items_total": len(items),
+        },
     }
     spec_path = run_dir / "spec.json"
     spec_path.write_text(json.dumps(spec, indent=2))

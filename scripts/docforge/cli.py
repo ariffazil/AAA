@@ -182,12 +182,17 @@ def _compose(spec: dict, run_dir: Path) -> str:
     else:
         body = src.read_text()
 
+    stats = spec.get("stats", {}) or {}
     composed = (structure
                 .replace("{{THEME_CSS}}", theme_css)
                 .replace("{{TITLE}}", spec.get("title", spec.get("edition", "Document")))
                 .replace("{{SUBTITLE}}", spec.get("subtitle", ""))
                 .replace("{{EDITION}}", spec.get("edition", ""))
                 .replace("{{EDITION_DATE}}", spec.get("edition_date", ""))
+                .replace("{{STAT_NEW}}", str(stats.get("new", 0)))
+                .replace("{{STAT_OPEN}}", str(stats.get("still_open", 0)))
+                .replace("{{STAT_CONTESTED}}", str(stats.get("moved", 0)))
+                .replace("{{STAT_SETTLED}}", str(stats.get("settled", 0)))
                 .replace("{{BODY}}", body))
     return composed
 
@@ -286,7 +291,8 @@ def cmd_feedback(args) -> int:
                   "Use --whole to record the message as one instruction.")
             return 1
         for c in cands:
-            r = store.add(c, edition_ref=args.edition, source=args.source)
+            r = store.add(c, edition_ref=args.edition, source=args.source,
+                          chat_id=args.chat_id, message_id=args.message_id)
             mark = "already standing" if r.get("duplicate") else "recorded"
             print(f"  {mark}: fb_id={r['fb_id']} [{r.get('direction','?')}] {r['rule']}")
         return 0
@@ -357,6 +363,10 @@ def main(argv=None) -> int:
                    help="add: record the whole message as ONE instruction "
                         "(default is to split directive lines out of it)")
     f.add_argument("--edition", help="add: the edition the comment was about")
+    f.add_argument("--chat-id", help="add: provenance — which chat the comment "
+                                     "came from (recorded, never used for routing)")
+    f.add_argument("--message-id", help="add: provenance — the platform message id, "
+                                        "so a later capture can tell if it was handled")
     f.add_argument("--source", default="telegram_reply",
                    choices=["telegram_reply", "manual", "system"])
     f.add_argument("--db", help="state database (default: the brief state db)")
