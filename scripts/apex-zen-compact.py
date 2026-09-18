@@ -73,7 +73,33 @@ def compact_telemetry(dry_run: bool = False) -> dict:
             try:
                 tmp = TELEMETRY.with_suffix(".tmp")
                 tmp.write_text('\n'.join(kept_lines) + '\n' if kept_lines else '')
-                os.replace(tmp, TELEMETRY)
+                try:
+                    os.replace(tmp, TELEMETRY)
+                except PermissionError:
+                    # The telemetry file carries the append-only attribute
+                    # (chattr +a). Compaction REWRITES that file, which an
+                    # append-only vault forbids BY DESIGN. So this is not a
+                    # transient fault to retry — it is a permanent conflict
+                    # between two deliberate rules, and it had already failed
+                    # 169 times before anyone looked, every five minutes, with
+                    # a traceback the caller swallowed.
+                    #
+                    # The honest outcome is a clean SKIP that names the
+                    # conflict. Rewriting an append-only ledger to tidy it
+                    # would destroy the guarantee the ledger exists to provide.
+                    try:
+                        tmp.unlink()
+                    except OSError:
+                        pass
+                    return {
+                        'action': 'skip',
+                        'reason': 'target is append-only (immutable); compaction '
+                                  'requires a rewrite the vault forbids by design',
+                        'original': original_count,
+                        'kept': original_count,
+                        'dropped': 0,
+                        'parse_errors': 0,
+                    }
             finally:
                 fcntl.flock(lock_fd.fileno(), fcntl.LOCK_UN)
 
