@@ -1,0 +1,32 @@
+/* docforge theme: dark  — SCREEN ONLY
+   Exists so the dark look is available deliberately, not by accident. It
+   deliberately FAILS gate profile `print-light`: a dark theme delivered to
+   paper is a toner-eater and the exact defect a reader complains about.
+   Pair it with the `screen-dark` gate profile, which expects a dark page.
+
+   The gate is what keeps this honest: a theme cannot quietly reach a printed
+   deliverable, and the failure is stated in the build rather than discovered
+   by the reader. */
+:root {
+  --accent:       #4cc9c0;
+  --accent-ink:   #7fe0d8;
+  --rule:         #3a444f;
+  --rule-strong:  #4cc9c0;
+  --rule-faint:   #2b333c;
+  --zebra:        #171c22;
+  --panel:        #171c22;
+  --muted:        #93a1ae;
+  --warn:         #ff8a75;  --warn-bg:  #2a1a17;
+  --open:         #ffc06a;  --open-bg:  #2a2117;
+  --claim:        #9fb0bf;  --claim-bg: #1c232a;
+  --mono: "DejaVu Sans Mono", monospace;
+}
+body { font-family: "DejaVu Sans", "Liberation Sans", sans-serif; color: #e6ebf0; background: #0f1419; }
+h1, h2, h3 { color: #ffffff; }
+h2 { border-bottom: 1px solid #3a444f; }
+a { color: #7fe0d8; }
+.kv { background: #171c22; border-color: #2b333c; }
+.t-doc  { background: #102a28; color: #7fe0d8; border-color: #2f6f6a; }
+.t-wire { background: #1c232a; color: #9fb0bf; border-color: #46525e; }
+.t-open { background: #2a1a17; color: #ff8a75; border-color: #7a3a2c; }
+.t-own  { background: #2a2117; color: #ffc06a; border-color: #7a5a2c; }

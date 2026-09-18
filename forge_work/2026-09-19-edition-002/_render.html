@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Executive Brief</title>
+<style>
+/* ── STRUCTURE (this file) ─────────────────────────────────────────────────
+   Page geometry, margin boxes, and the layout skeleton. Colour and type live
+   in the theme, so one template serves every theme. */
+@page {
+  size: A4;
+  margin: 16mm 14mm 15mm 14mm;
+  @bottom-left  { content: "Executive Brief"; font-size: 7pt; color: #7a8590; }
+  @bottom-right { content: "EDITION-002 · " counter(page) " / " counter(pages);
+                  font-size: 7pt; color: #7a8590; }
+}
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; }
+h1 { font-size: 19pt; margin: 0 0 3mm 0; line-height: 1.15; }
+h2 { font-size: 12pt; margin: 7mm 0 2mm 0; padding-bottom: 1.4mm;
+     border-bottom: 1px solid var(--rule); page-break-after: avoid; }
+h3 { font-size: 10pt; margin: 4mm 0 1.5mm 0; page-break-after: avoid; }
+p, li { font-size: 9.2pt; line-height: 1.5; margin: 0 0 2.2mm 0; }
+ul, ol { margin: 0 0 2.5mm 5mm; padding: 0; }
+table { width: 100%; border-collapse: collapse; margin: 3mm 0 4mm 0; font-size: 8.4pt; }
+th { text-align: left; padding: 1.6mm 2mm; font-size: 7.8pt; font-weight: 700;
+     border-bottom: 1.6px solid var(--rule-strong); }
+td { padding: 1.5mm 2mm; border-bottom: 1px solid var(--rule-faint); vertical-align: top; }
+tbody tr:nth-child(even) td { background: var(--zebra); }
+h2, h3, tr { page-break-inside: avoid; }
+.cover { page-break-after: always; }
+.cover-rule { height: 3px; width: 34mm; background: var(--accent); margin: 0 0 6mm 0; }
+.subtitle { font-size: 11pt; color: var(--muted); margin: 0 0 14mm 0; }
+.meta { font-size: 8.2pt; color: var(--muted); line-height: 1.7; }
+.stats { display: flex; gap: 3mm; margin: 6mm 0; }
+.stat { flex: 1; border-top: 3px solid var(--accent); padding: 2mm 2.2mm;
+        background: var(--panel); }
+.stat .n { font-size: 13pt; font-weight: 700; color: var(--accent-ink); }
+.stat .l { font-size: 7.4pt; color: var(--muted); line-height: 1.35; }
+.box { padding: 2.6mm 3mm; margin: 3mm 0; border-left: 4px solid var(--accent); }
+.box.key    { background: var(--panel); }
+.box.warn   { background: var(--warn-bg); border-left-color: var(--warn); }
+.box.open   { background: var(--open-bg); border-left-color: var(--open); }
+.box.claim  { background: var(--claim-bg); border-left-color: var(--claim); }
+.kv { font-family: var(--mono); font-size: 7.2pt; background: var(--panel);
+      padding: 2.6mm; line-height: 1.6; word-break: break-all;
+      border: 1px solid var(--rule-faint); border-left: 3px solid var(--accent); }
+.tag { display: inline-block; font-size: 6.8pt; font-weight: 700; padding: 0.3mm 1.4mm;
+       border-radius: 2px; border: 1px solid; }
+.small { font-size: 7.8pt; color: var(--muted); }
+.nobreak { page-break-inside: avoid; }
+
+/* ── THEME ──────────────────────────────────────────────────────────────── */
+/* docforge theme: light  (DEFAULT)
+   Light background throughout. Accent appears as RULES and TINTS, never as a
+   filled dark block — a filled header costs toner and bands on paper.
+   Passes gate profile `print-light`.
+   Contrast: body #1d2733 on #ffffff = 14.1:1 (AAA at any size). */
+:root {
+  --accent:       #1b7f79;
+  --accent-ink:   #14605b;
+  --rule:         #c9d3dc;
+  --rule-strong:  #0d2b45;
+  --rule-faint:   #e3e8ee;
+  --zebra:        #f7f9fb;
+  --panel:        #f7f9fb;
+  --muted:        #5a6673;
+  --warn:         #b4432f;  --warn-bg:  #fdf2f0;
+  --open:         #b06a12;  --open-bg:  #fdf7ec;
+  --claim:        #4a5765;  --claim-bg: #f0f2f5;
+  --mono: "DejaVu Sans Mono", monospace;
+}
+body { font-family: "DejaVu Sans", "Liberation Sans", sans-serif; color: #1d2733; background: #ffffff; }
+h1, h2, h3 { color: #0d2b45; }
+.t-doc  { background: #eef6f5; color: #14605b; border-color: #9fcac6; }
+.t-wire { background: #f0f2f5; color: #3d4956; border-color: #bfc7d0; }
+.t-open { background: #fdf2f0; color: #9c3a29; border-color: #e2b3a9; }
+.t-own  { background: #fdf7ec; color: #a86713; border-color: #e6cfa4; }
+
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="cover-rule"></div>
+  <h1>Executive Brief</h1>
+  <div class="subtitle">Delta tracked edition · 4 new, 4 carrying over</div>
+  <div class="meta">
+    Edition <strong>EDITION-002</strong><br>
+    2026-09-19<br>
+    Built by the docforge lane · integrity seal applied
+  </div>
+  <div class="kv" style="margin-top:14mm">
+    content_sha256 &nbsp;85029881700f5728d484e1da02c41f56c987a0ebeee2de8c4f290300bfcfc56e<br>
+    artifact_sha256 delivered in EDITION-002.sha256 &mdash; a file cannot embed its own hash<br>
+    signature &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not_signed (hashes only;
+    authorship is not proven by a hash)
+  </div>
+  <div class="small" style="margin-top:3mm">
+    The content hash above covers the canonical source of this document and was
+    computed before it was injected, so it is checkable from the page. The
+    artifact hash covers the rendered file's bytes and therefore cannot appear
+    inside it — it ships in the sidecar, in <code>sha256sum -c</code> format.
+    Neither hash says anything about whether the contents are true.
+  </div>
+</section>
+
+<h2>0 &middot; What Changed Since Yesterday</h2><p class='small'>Compared against <strong>EDITION-001</strong>. 4 new, 4 carrying over</p><h3>New today <span class='small'>(4)</span></h3><table><thead><tr><th>Item</th><th>Section</th><th>Was</th><th>Now</th></tr></thead><tbody><tr><td>Budget 2027 tabled in Parliament, 9 October 2026</td><td>SITUATION</td><td>&mdash;</td><td><strong>OPEN</strong></td></tr><tr><td>Nomination voiding silently on a change of marital status</td><td>VOID</td><td>&mdash;</td><td><strong>OPEN</strong></td></tr><tr><td>Electricity protection threshold reverts 800 to 600 kWh on 1 January 2027</td><td>RISK</td><td>&mdash;</td><td><strong>OPEN</strong></td></tr><tr><td>AI-generated intimate images fall inside the criminal definition</td><td>EUREKA</td><td>&mdash;</td><td><strong>NEW</strong></td></tr></tbody></table><p class='small'>Carrying over unchanged: <strong>4</strong> item(s). Not repeated in full — see the open-items register.</p><div style='page-break-before:always'></div><h2>Situation</h2><h3>Whether LNG exported from Bintulu falls under PETROS or stays with PETRONAS <span class='tag t-open'>CONTESTED</span></h3><div class='box open'>No document in the public record defines the boundary for the export molecule specifically. The dispute is live at the Federal Court on the constitutional question underneath it, which means the commercial question cannot settle before the constitutional one does. Unchanged from Edition 001.<div class='small' style='margin-top:2mm'>Source: Federal Court leave granted 16 March 2026; Sarawak petition February 2026</div></div><h3>Budget 2027 tabled in Parliament, 9 October 2026 <span class='tag t-doc'>OPEN</span></h3><div class='box claim'>Tabled 9 October, 21 days from this edition. The petroleum dividend figure and the fuel subsidy line become checkable on that date. This is the point at which the projection item above either acquires a source or does not.<div class='small' style='margin-top:2mm'>Source: MOF pre-budget statement 2027</div></div><h2>Wall</h2><h3>Federal Court full hearing date on the PDA 1974 challenge <span class='tag t-doc'>OPEN</span></h3><div class='box claim'>Leave was granted, so the appeal exists. No date for the full hearing is in the public record. This is UNRESOLVED rather than WITHDRAWN: the date is knowable, the court simply has not set it publicly. It will appear, and this item is what notices when it does.<div class='small' style='margin-top:2mm'>Source: no hearing date published as of this edition</div></div><h3>The RM10-20 billion petroleum revenue projection <span class='tag t-open'>CONTESTED</span></h3><div class='box open'>The range circulates without a filing behind it. Two published readings disagree and neither is traceable to a document. Labelled CONTESTED rather than estimated, because an estimate carries a method and this does not.<div class='small' style='margin-top:2mm'>Source: no primary document located — range appears in secondary commentary only</div></div><h2>Void</h2><h3>RM13.3 billion of unclaimed money with the Accountant-General <span class='tag t-doc'>OPEN</span></h3><div class='box claim'>Not a news item, which is exactly why it stays unknown: it is a register nobody markets. Verifiable by the individual in about a minute using an identity card. Structurally the same shape as any unclaimed entitlement — it belongs to someone who does not know it exists.<div class='small' style='margin-top:2mm'>Source: Accountant-General unclaimed money register, January 2026</div></div><h3>Nomination voiding silently on a change of marital status <span class='tag t-doc'>OPEN</span></h3><div class='box claim'>A nomination made before a marriage is not automatically the nomination that applies after it. The failure is silent and is discovered by survivors. The fund itself has publicly corrected circulating messages on this, which is the reason to take it from the fund rather than from a forwarded message.<div class='small' style='margin-top:2mm'>Source: EPF public statements correcting viral nomination claims</div></div><h2>Eureka</h2><h3>AI-generated intimate images fall inside the criminal definition <span class='tag t-doc'>NEW</span></h3><div class='box key'>The 2026 cybercrime amendments bring synthetically generated intimate images within the offence rather than leaving them outside it. Worth knowing before it is needed, because the person who needs it is usually already under attack when they find out.<div class='small' style='margin-top:2mm'>Source: Cybercrimes Bill 2026, clause 24</div></div><h3>The market index is still below its own 2014 peak <span class='tag t-doc'>SETTLED</span></h3><div class='box key'>Twelve years under a high set in July 2014, while nominal output roughly doubled over the same period. A settled observation rather than a live signal: it is context for reading any claim about a market at a record.<div class='small' style='margin-top:2mm'>Source: Bursa Malaysia index history</div></div><h2>Risk</h2><h3>Electricity protection threshold reverts 800 to 600 kWh on 1 January 2027 <span class='tag t-doc'>OPEN</span></h3><div class='box claim'>105 days from this edition. The extended band was a temporary widening; the underlying automatic fuel adjustment mechanism continues underneath it and its December reading is projected at the highest of the year. The reversion and the adjustment land in the same window, which is where a household bill can move twice.<div class='small' style='margin-top:2mm'>Source: automatic fuel adjustment schedule</div></div>
+
+</body>
+</html>

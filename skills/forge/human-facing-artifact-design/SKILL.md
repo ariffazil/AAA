@@ -49,6 +49,10 @@ A page limit is a density target, not permission to ship whitespace. A sparse tw
 
 Detect it by rasterising the built pages and computing dark-pixel share per page rather than trusting the page count; a spread where one page sits an order of magnitude below its neighbours is the signature of a stranded fragment, not of intentional design.
 
+**On a dark-background document the measure inverts.** "Ink" is the share of pixels that *differ from the dominant background*, not the share that are non-white — a white-page threshold applied to a dark page reports every page as near-full and hides exactly the stranded fragment you are looking for. Sample the modal pixel value first, then count deviation from it.
+
+**A page count roughly double the number of designed blocks means every block is spanning two pages.** The usual cause is a container taller than the printable box, so the block breaks and its tail lands on the next page. Compare the container height against the `@page` box before touching content — the fix is geometry, and adding or trimming text will not find it.
+
 The fix is layout, not content: tighten the trailing block's top margin and line spacing so it joins the preceding page, and shorten its line lengths if that is what makes it fit. Do **not** delete the block, and do not pad it with filler to earn its page — filler on a closing page is more visible than the whitespace it replaced.
 
 ## 4. Care artifacts are not information transfer
@@ -129,6 +133,10 @@ Where a domain convention differs from the obvious metric, report the convention
 
 **Never write an unattributable attribution.** "Analysts say", "sources indicate", "it is understood" — a claim with no named owner. If the source cannot be named, the claim does not ship; a checking reader finds that gap before they find the argument.
 
+**A citation must resolve, not merely appear.** A citation-shaped string that 404s is not a source — shape is not witness, and a document full of dead references reads as authoritative while being uncheckable. Run `scripts/verify-citations.py` over the artifact before release and replace or drop anything that fails. Status semantics: `2xx`/`3xx` resolve; `403`/`405`/`429` mean *the host answered* — the resource exists and is refusing HEAD, so it counts as live; `404`/`410` and no-response are real failures. Verify against the **source file before the build**, not only the rendered artifact, because a dead link found after a build costs the whole build.
+
+**Report the count you measured, not the count you intended.** If a register holds 30 pointers, say 30; a stated count that disagrees with the list beside it is the first thing a checking reader notices, and it discredits the entries that are correct.
+
 **When the reader returns corrections:** reopen the primary source — do not reconstruct your reasoning from memory. Do not defend; verify and report. Separate *I was wrong* from *the figure was right but the definition differs*. Correct even when it hurts your own conclusion, and say so. Move claims the reader independently verified out of the unverified column. Then issue a **new version with a change table** (previous value | corrected value | why) and a count of corrections — never a silent edit, because a reader already holding the earlier number cannot otherwise tell which document they are reading.
 
 ## 6. Iterate one file, then send once
@@ -156,8 +164,12 @@ receiving-an-audit procedure.
 [ ] Personal letters: no motto, no house sign-off, no sender's business unless asked (§4)
 [ ] If reaching a person: authentic source used, not a synthesis; one page sent, comparison held back (§4)
 [ ] Every number traceable to a primary source; anything secondary is labelled (§5)
+[ ] Every cited URL probed and resolving — `scripts/verify-citations.py`, run on the source before the build (§5)
+[ ] Any stated count of sources/items matches the list beside it — measured, not intended (§5)
 [ ] Page count matches the limit, verified from the file
 [ ] Text extracts cleanly (pymupdf / pdftotext returns real text, not empty)
+[ ] No stranded near-empty page, measured on the rendered pages (§3)
+[ ] Rendered pages actually LOOKED at, not just measured — composition defects (a top-heavy page, an unanchored footer, a stamp floating mid-page) are invisible to page counts and ink percentages (§3)
 [ ] One file sent, not several drafts (§6)
 ```
 
@@ -166,6 +178,10 @@ receiving-an-audit procedure.
 See `references/pdf-and-image-toolchain.md` for ReportLab paged-footer and section-band recipes, the density
 verification snippet, Matplotlib gotchas that cost time, the geological cross-section orientation rule, and
 Gemini image-model selection with the `responseModalities` contract for logos and marks.
+
+`scripts/verify-citations.py` extracts every URL from an artifact (HTML / Markdown / text / JSON) and reports
+which resolve, which are dead and which gave no response. Run it on the source before the build; it exits
+non-zero when anything is dead, so it composes into a build gate.
 
 ---
 
