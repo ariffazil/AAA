@@ -21,7 +21,27 @@ this chat as `MEDIA:<absolute path>`. This skill is the build-and-ship loop.
 
 ## 1. House style (Arif's brand)
 
-Dark, high-contrast, restrained. Never pastel, never corporate-blue.
+**Default to LIGHT for anything read on paper or scrolled as text** — PDFs, reports, briefs, dossiers,
+letters. White ground, dark text, restrained accents.
+
+> **Corrected 2026-09-18.** This section previously specified a dark base (`#0d0d0d`) as the house
+default. Arif stated the opposite plainly: *"I hate black dark background in pdf."* The dark palette
+survives only as an **opt-in for screen-native artifacts** — a poster, a social graphic, a deck
+shown on a projector — and never as the default for a document he reads.
+
+**Light palette (use this):**
+
+| Role | Hex |
+|---|---|
+| Ground | `#ffffff` |
+| Body text | `#1c1c1c` |
+| Heading / table header | `#1a3a5c` (navy) — white text on it |
+| Accent rule / stamp | `#b02a1f` (deep brick) |
+| Emphasis numbers | `#6b5210` (dark bronze) |
+| Zebra row | `#f7f6f4` |
+| Muted / caption | `#5f5f5f` |
+
+**Dark palette — opt-in only, for screen-native work:**
 
 | Role | Hex |
 |---|---|
@@ -32,10 +52,18 @@ Dark, high-contrast, restrained. Never pastel, never corporate-blue.
 | Body text | `#f5f0e8` (cream) |
 | Muted / captions | `#888888` |
 
-Recurring framing devices: a gold hairline rule with a small centred diamond,
-`ALPHA — ZEN` as the eyebrow line, and `DITEMPA BUKAN DIBERI` in the footer.
-Use them when the artifact is for the ALPHA-ZEN space; drop them for neutral
-work (IC replacement guides, technical runbooks) where they read as noise.
+**Contrast trap when you move a design from dark to light:** an accent that sits comfortably on a
+dark ground can fall to ~3:1 on white — below WCAG AA. Gold `#d4a843` is the usual casualty; take it
+to `#6b5210`. Vision inspection caught exactly this on the first light build, so check the accent
+rather than assuming the palette transferred.
+
+Recurring framing devices: a gold hairline rule with a small centred diamond, `ALPHA — ZEN` as the
+eyebrow line, and `DITEMPA BUKAN DIBERI` in the footer. Use them when the artifact is for the
+ALPHA-ZEN space; drop them for neutral work (IC replacement guides, technical runbooks) where they
+read as noise.
+
+For the full document pipeline — engine choice, gates, seal, and the layer stack with each layer's
+owning skill — load `document-pipeline` first.
 
 ## 2. Tool selection
 

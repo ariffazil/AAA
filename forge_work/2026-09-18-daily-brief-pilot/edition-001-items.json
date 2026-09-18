@@ -1,0 +1,44 @@
+{
+  "items": [
+    {
+      "item_id": "petros-lng-jurisdiction",
+      "section": "SITUATION",
+      "title": "Whether LNG exported from Bintulu falls under PETROS or stays with PETRONAS",
+      "claim_state": "CONTESTED",
+      "summary": "Unresolved jurisdiction over the export molecule.",
+      "source": "Federal Court leave 16 March 2026"
+    },
+    {
+      "item_id": "fc-hearing-date",
+      "section": "WALL",
+      "title": "Federal Court full hearing date on the PDA 1974 challenge",
+      "claim_state": "OPEN",
+      "summary": "No date in the public record.",
+      "source": "none located"
+    },
+    {
+      "item_id": "petroleum-revenue-projection",
+      "section": "WALL",
+      "title": "The RM10-20 billion petroleum revenue projection",
+      "claim_state": "CONTESTED",
+      "summary": "No filing behind the range.",
+      "source": "secondary commentary only"
+    },
+    {
+      "item_id": "unclaimed-money-register",
+      "section": "VOID",
+      "title": "RM13.3 billion of unclaimed money with the Accountant-General",
+      "claim_state": "OPEN",
+      "summary": "A register nobody markets.",
+      "source": "AG register Jan 2026"
+    },
+    {
+      "item_id": "index-below-2014-peak",
+      "section": "EUREKA",
+      "title": "The market index is still below its own 2014 peak",
+      "claim_state": "SETTLED",
+      "summary": "Twelve years under the 2014 high.",
+      "source": "Bursa index history"
+    }
+  ]
+}

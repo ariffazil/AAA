@@ -191,6 +191,46 @@ GREEN: parsers, converters, disposable analysis. RED never self-grant: secrets, 
 - ❌ Advertising 128 tools as intelligence — six missions + Canonical 8
 ---
 
+## OP 8 — PREVIEW BATCHES FOR SOVEREIGN REVIEW (2026-09-18)
+
+When F13 asks for a visual change and wants to *see* it before any deploy:
+
+1. **Render it yourself — do not ask him which bot or format.** Headless Chrome on KVM8 is
+   `/usr/bin/google-chrome`. Playwright's bundled browser is usually NOT installed
+   (`chromium_headless_shell` missing) — do not `playwright install` on a production host;
+   use system Chrome:
+   ```
+   google-chrome --headless=new --disable-gpu --no-sandbox --hide-scrollbars \
+     --force-device-scale-factor=1 --window-size=430,2100 \
+     --virtual-time-budget=5000 --user-data-dir=/tmp/chr-x \
+     --screenshot=/abs/out.png file:///abs/preview.html
+   ```
+   Send PNG, not `.html` — fonts and CSS do not resolve from a file attachment.
+
+2. **Verify the JS actually ran** before shipping: `--dump-dom`, then grep the ids the script
+   writes. A screenshot of a clock that never ticked still looks fine.
+
+3. **Link the canon tokens; never re-declare `:root`.** Copy
+   `public/_shared/design-system/tokens.css` next to the preview so a relative
+   `href="_shared/design-system/tokens.css"` resolves locally, then use
+   `var(--soul-accent, #D4AF37)`. A private palette is how a page becomes a "rogue surface"
+   (auditor finding, F13-Q2).
+
+4. **Never generate CSS with regex.** `re.sub(r"\.cls\{[^}]*\}", ...)` stops at the first `}`
+   — which is inside `clamp(...)` — and silently leaves half a keyframe block behind. Write CSS
+   literally, or patch exact strings.
+
+5. **Trademark:** build the *geometry*, not the franchise. A trinity emblem (triangle + circle
+   + line) needs no franchise wording in the markup. If F13 wants the name on a public page,
+   that is his explicit call — say so once, plainly, and build it.
+
+6. **Never label an estimate as biometric.** If WELL holds no wearable or sleep data, the
+   circadian surface is a *solar-entrained estimate* from the NOAA sunrise/sunset approximation
+   for declared home coordinates — labelled "estimate · not biometric" in the UI itself.
+
+7. A static HTML page with client-side JS is **still cacheable**. A live clock does not force a
+   Caddy/Cloudflare caching change. Correct that claim when it is raised.
+
 ## OP 7 — MULTIMODAL VISION & CARTOGRAPHIC FIDELITY STANDARD (2026-09-18 F13 SEAL)
 
 > "map buat la betul2 gambar render la guna ai image generator etc" — Arif Fazil (F13 Sovereign, 2026-09-18).

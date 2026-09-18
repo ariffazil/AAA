@@ -22,7 +22,7 @@ tr { page-break-inside: avoid; }
 h2 { orphans: 3; widows: 3; }
 p  { orphans: 2; widows: 2; }
 table { width: 100%; border-collapse: collapse; margin: 7px 0 10px 0; font-size: 8.5pt; }
-th { background: #0d2b45; color: #fff; text-align: left; padding: 5px 6px; font-size: 8pt; font-weight: 700; }
+th { background: #eef3f7; color: #0d2b45; text-align: left; padding: 5px 6px; font-size: 8pt; font-weight: 700; border-bottom: 2px solid #0d2b45; }
 td { padding: 4px 6px; border-bottom: 1px solid #e3e8ee; vertical-align: top; }
 tr:nth-child(even) td { background: #f7f9fb; }
 .cover { height: 250mm; page-break-after: always; }
@@ -39,9 +39,12 @@ tr:nth-child(even) td { background: #f7f9fb; }
 .callout { background: #f7f9fb; border: 1px solid #e3e8ee; padding: 9px 11px; margin: 9px 0; }
 .twocol { display: flex; gap: 13px; }
 .twocol > div { flex: 1; }
-.chain { font-family: "DejaVu Sans Mono", monospace; font-size: 7.1pt; background: #0d2b45; color: #cfe3e0; padding: 10px; line-height: 1.6; word-break: break-all; }
-.tag { display: inline-block; font-size: 6.8pt; font-weight: 700; padding: 1px 5px; border-radius: 3px; color: #fff; }
-.t-doc { background: #1b7f79; } .t-wire { background: #4a5765; } .t-open { background: #b4432f; } .t-own { background: #d98324; }
+.chain { font-family: "DejaVu Sans Mono", monospace; font-size: 7.1pt; background: #f7f9fb; color: #1d2733; padding: 10px; line-height: 1.6; word-break: break-all; border: 1px solid #d7dee6; border-left: 3px solid #1b7f79; }
+.tag { display: inline-block; font-size: 6.8pt; font-weight: 700; padding: 1px 5px; border-radius: 3px; border: 1px solid; }
+.t-doc { background: #eef6f5; color: #14605b; border-color: #9fcac6; }
+.t-wire { background: #f0f2f5; color: #3d4956; border-color: #bfc7d0; }
+.t-open { background: #fdf2f0; color: #9c3a29; border-color: #e2b3a9; }
+.t-own { background: #fdf7ec; color: #a86713; border-color: #e6cfa4; }
 .small { font-size: 8pt; color: #5a6673; }
 .srcline { font-size: 7.4pt; color: #6b7684; font-style: italic; margin: -4px 0 9px 0; }
 </style></head><body>
@@ -81,7 +84,7 @@ tr:nth-child(even) td { background: #f7f9fb; }
     <tr><td>Built</td><td>Friday 18 September 2026, Asia/Kuala_Lumpur</td></tr>
     <tr><td>Evidence window</td><td>16&ndash;18 September 2026 for wire items; standing documents cited by their own date</td></tr>
     <tr><td>Source discipline</td><td>Primary instrument &gt; statutory body &gt; party claim &gt; analyst desk. Rung stated where it matters.</td></tr>
-    <tr><td>Content hash</td><td><code>9e62d60b47aeef8f0e2d50484168d16c52f868697779069009e815b5779e77f0</code></td></tr>
+    <tr><td>Content hash</td><td><code>e5add29e5fade315182fcb45fc11a59498452db876b85ebd9ac580054963bc56</code></td></tr>
     <tr><td>Seal method</td><td>SHA-256 over the canonical source text; artifact hash computed after render. See &sect;9.</td></tr>
   </table>
   <p class="small">Prepared for Arif Fazil. F13 sovereign. Not for redistribution.</p>
@@ -324,7 +327,7 @@ The 52-week high is <b>US$5,477.79</b> per ounce. On 17 September gold stood at 
 <h2>9 &nbsp;Seal</h2>
 <div class="chain">
 EDITION ......... PILOT-001 · 2026-09-18
-CONTENT_SHA256 .. 9e62d60b47aeef8f0e2d50484168d16c52f868697779069009e815b5779e77f0
+CONTENT_SHA256 .. e5add29e5fade315182fcb45fc11a59498452db876b85ebd9ac580054963bc56
 ARTIFACT_SHA256 . delivered alongside in PILOT-001.sha256 &mdash; a file cannot embed its own hash
 CHAIN_PREV ...... (genesis — no prior edition)
 SEAL_METHOD ..... SHA-256 over canonical source text (content) and over the rendered PDF (artifact)

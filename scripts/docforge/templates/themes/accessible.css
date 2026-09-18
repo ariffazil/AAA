@@ -1,0 +1,37 @@
+/* docforge theme: accessible
+   High contrast, larger type, stronger hierarchy. Aimed at PDF/UA-style
+   legibility: body 11pt with 1.65 line-height, body contrast 17.4:1, and no
+   information carried by colour alone — every tag also has a text label and a
+   border, so it survives greyscale and colour-blind reading.
+   NOTE: this theme improves legibility. It does NOT by itself make the PDF
+   PDF/UA-conformant — real conformance needs a tagged structure tree validated
+   by veraPDF, which this lane does not yet run. Stated so the theme cannot be
+   mistaken for a certification. */
+:root {
+  --accent:       #0f5f5a;
+  --accent-ink:   #0b4642;
+  --rule:         #7d8894;
+  --rule-strong:  #000000;
+  --rule-faint:   #c2c9d0;
+  --zebra:        #f2f4f6;
+  --panel:        #f2f4f6;
+  --muted:        #414b55;
+  --warn:         #8f2f1e;  --warn-bg:  #fdeeeb;
+  --open:         #8a5210;  --open-bg:  #fdf4e6;
+  --claim:        #333e49;  --claim-bg: #eef0f3;
+  --mono: "DejaVu Sans Mono", monospace;
+}
+body { font-family: "DejaVu Sans", "Liberation Sans", sans-serif; color: #000000; background: #ffffff; }
+h1 { font-size: 22pt; }
+h2 { font-size: 14pt; }
+h3 { font-size: 12pt; }
+p, li { font-size: 11pt; line-height: 1.65; }
+table { font-size: 10pt; }
+th { font-size: 9.4pt; }
+td { padding: 2mm; }
+.tag { font-size: 8pt; font-weight: 700; padding: 0.6mm 1.8mm; border-width: 1.5px; }
+.box { border-left-width: 6px; padding: 3.4mm 4mm; }
+.t-doc  { background: #e9f5f3; color: #0b4642; border-color: #0f5f5a; }
+.t-wire { background: #eef0f3; color: #333e49; border-color: #333e49; }
+.t-open { background: #fdeeeb; color: #8f2f1e; border-color: #8f2f1e; }
+.t-own  { background: #fdf4e6; color: #8a5210; border-color: #8a5210; }
