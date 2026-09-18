@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "arifos://alpha-zen/card.schema.json",
+  "title": "ALPHA-ZEN daily card — THE 9",
+  "description": "Nine conceptual components, eighteen independently selected signals. Each row carries an ARIF signal and a SYED signal chosen separately. Renderer: /root/AAA/scripts/alpha_zen_card.py",
+
+  "THE MEMORY BOUNDARY": [
+    "Memory may answer: 'what is worth putting in front of this person today?'",
+    "Memory may NOT answer publicly: 'why do we know this about him?'",
+    "Selection is personalised. The reason it was selected never appears.",
+    "Both men read this card. Every line must be safe for the other to read.",
+    "Perspective A is not Perspective B: never state or imply either man's inner state.",
+    "Nothing about Syed that is not public or said by him in the shared group.",
+    "A card that shows off what the machine knows has already failed."
+  ],
+
+  "THE ENGINE": [
+    "WORLD   -> candidate signals",
+    "WEALTH  -> money, gold, market, economic consequence",
+    "WELL    -> body, workload, recovery. NEVER diagnosing the human.",
+    "GEOX    -> Earth, energy, geology, physical-reality material",
+    "HERMES  -> strip mind-reading, separate fact from inference, privacy check",
+    "arifOS  -> rank relevance + diversity; block nine versions of one subject",
+    "pool 100+ -> two lenses -> freshness/consequence/novelty -> gate -> 3/3/3"
+  ],
+
+  "THE ONE RULE THAT MATTERS": "Never fill a slot merely because the template demands nine. If today's random fact is rubbish, replace it from another domain. The objective is not 9 items. It is 9 reasons to stop scrolling.",
+
+  "type": "object",
+  "required": ["mode", "date", "yin_quote", "yang_quote", "rows"],
+  "additionalProperties": false,
+
+  "properties": {
+    "mode": { "enum": ["morning", "night"] },
+    "date": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+    "headline": { "type": "string", "description": "Optional one-line read. Omit rather than pad." },
+
+    "yin_quote": { "$ref": "#/$defs/quote" },
+    "yang_quote": { "$ref": "#/$defs/quote" },
+
+    "rows": {
+      "type": "array", "minItems": 9, "maxItems": 9,
+      "description": "The 9. Order is fixed; content is not.",
+      "items": {
+        "type": "object",
+        "required": ["n", "label", "tier", "arif", "syed"],
+        "additionalProperties": false,
+        "properties": {
+          "n": { "type": "string", "pattern": "^0[1-9]$" },
+          "label": {
+            "enum": ["WORLD", "REALITY", "CLOCK", "OUR WORLD", "MONEY", "HUMAN",
+                     "CONNECTION", "RANDOM", "TONIGHT"]
+          },
+          "tier": { "enum": ["KENA_TAHU", "SUKA_TAHU", "EUREKA"] },
+          "arif": { "$ref": "#/$defs/signal" },
+          "syed": { "$ref": "#/$defs/signal" }
+        }
+      }
+    },
+
+    "arif_anchor_hit": { "type": "boolean", "description": "Did this card carry an intelligence/Earth/wealth/institutions/meaning signal?" },
+    "syed_anchor_hit": { "type": "boolean", "description": "Did this card carry at least one BODY/gym signal AND one GOLD/trading signal? Both are required." }
+  },
+
+  "$defs": {
+    "signal": {
+      "type": "object",
+      "required": ["text"],
+      "additionalProperties": false,
+      "properties": {
+        "text": { "type": "string" },
+        "source": { "type": "string", "description": "REQUIRED when tier is KENA_TAHU and the item is NEWS/market/deadline/event." },
+        "tag": { "enum": ["OBS", "DER", "INT", "CONTESTED"] }
+      }
+    },
+    "quote": {
+      "type": "object",
+      "description": "Rotates with the day's signals — not a fixed motto. A quote without real attribution does not ship.",
+      "required": ["text", "author"],
+      "additionalProperties": false,
+      "properties": {
+        "text": { "type": "string" },
+        "author": { "type": "string" }
+      }
+    }
+  }
+}
