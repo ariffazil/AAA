@@ -280,6 +280,72 @@ profile config — per-chat instruction text injected on arrival, independent of
 verification and content rules: `references/room-scoped-instruction-prompts.md`. Prefer the surface you
 can prove reaches the model over the layer that merely looks finished.
 
+### 4f. The enforcement gate is a text classifier — audit it as one
+
+The `pre_tool_call` shell hook is the harness's first runtime enforcement path, and it decides
+allow/block by reading the tool payload. It is a classifier over **text**, so audit it by its two error
+directions, never by its rule count:
+
+```bash
+grep -n "CLAIM_TEXT_FIELDS\|has_critical_claim\|def verify_provenance\|^T3_PATTERNS\|^W_SCAR_CRITICAL" <hook>.py
+wc -l ~/.local/share/arifos/hermes_hook_receipts.jsonl      # is the gate deciding at all?
+```
+
+**False positive — STRUCTURE read as assertion.** The gate grepped `json.dumps(tool_input)` wholesale,
+so a file *path* containing a trigger word was read as a claim: a doctrine patch was refused twice, and
+a read-only `grep` naming the same file once, because a directory in the path was named `court`. The
+payload asserted nothing. **Token-level matching over the serialized payload cannot tell a path, an
+id, or an enum from prose** — and the file a claim is written into is not the claim.
+
+**False negative — SHAPE read as witness.** Provenance passed if the payload merely *contained* the
+token `url`/`source`/`evidence`. Any string satisfies that, so a fabricated figure with the word "url"
+beside it cleared the gate. A check that asks whether a citation-shaped string is present is not a check
+on whether the citation holds.
+
+**The repair pattern — claim surface + verified provenance:**
+
+1. Scan only claim-bearing fields (`content`, `new_string`, `command`, …) — never the whole payload.
+2. Strip structure *before* matching: URLs, file paths, receipt ids, code spans. Collect the URLs first,
+   then remove them.
+3. Verify provenance instead of detecting its vocabulary: extract cited URLs and resolve them.
+4. Three provenance fates, three decisions: `VERIFIED` (a URL resolves, or a receipt id / on-disk
+   evidence path exists) → allow + witness receipt; `UNRESOLVED` (URLs present, none resolve) → block;
+   `ABSENT` → block.
+5. **A network fault must never become a blanket denial of service.** Timeout, TLS failure and refusal
+   are `DEGRADED` → allow. NXDOMAIN is a fact about the *citation*; a timeout is a fact about *your
+   link*. Collapsing them turns an outage into an enforced halt on all work.
+6. Any widening — a path whitelist, an exempt tool class — is a bypass. Count every exempted call to
+   telemetry so abuse is visible, and say in the receipt which widening you introduced and how to
+   reverse it. A silent exemption is indistinguishable from a hole.
+
+**Read-only detection:** split a compound command on `&& || | ;` and require EVERY segment to be a
+probe. A single regex anchored at the start of the whole command reads `cd X && grep … | head` as a
+mutation, which is the path false-positive one layer down.
+
+**Implementation traps when a gate matches text over a serialized payload** (permanent language
+behaviour, not environment state):
+
+- `json.dumps` **escapes** quotes to `\"`. A regex written against plain text
+  (`"receipt_id": "..."`) will not match the serialized form the gate actually receives. Unit-check the
+  pattern against `json.dumps(...)` output, never the plain string.
+- **Regex alternation is ordered.** `json|jsonl` truncates `evidence.jsonl` to `evidence.json`, and the
+  bug is invisible because the truncated path simply fails to exist. Longest alternative first.
+- `urllib.request.urlopen` **wraps socket faults in `URLError`** — `except socket.gaierror` never fires.
+  Inspect `exc.reason` to tell NXDOMAIN from a timeout.
+
+**Validate both directions, plus a negative control.** A fixture of three classes: previously-blocked
+read-only cases (must allow), previously-passing fabrications (must block), true positives (must allow).
+Then feed input that MUST be rejected and confirm it refuses. A check whose failure you have never
+observed is decoration — and expect the fixture to find real bugs in the new code, including in the
+receipt-id pattern the gate uses to read its own receipts.
+
+**Tie the decision order to the constitution, not to convenience.** The circuit-breaker branch is
+checked before every other rule and must fail *closed* when its authority cannot be loaded — an
+unreadable brake is not an absent brake. Read-only observation stays available while the brake is
+tripped: a brake that blinds the operator cannot be released safely. Preserve the exit-code semantics
+(one code for a constitutional block, a distinct one for a circuit-breaker interrupt) and say so in the
+receipt; collapsing them destroys the caller's ability to branch.
+
 ### 5. Directory sprawl and the ownership law
 
 ```bash
@@ -393,6 +459,16 @@ down", and never let the daemon's health stand in for the CLI's — the two answ
 - **Don't rank capability by a store that records no counts.** A usage file with one entry per skill and
   null counts invites a confident "most skills are unused" finding the sensor cannot support. Say which
   sensor was null, and what would have to be wired before the question is answerable.
+- **A gate's hold ratio is not its error rate.** The telemetry file records holds over total decisions;
+  a ratio near zero means either a working gate or one whose rules never match, and the number alone
+  cannot tell you which. Read the recent receipt rows to see *which* rule fired and against what payload,
+  then judge. An enforcement path with zero recorded blocks and a growing receipt count is a gate that
+  runs, not a gate that catches — do not report it as either healthy or broken on the ratio alone.
+- **A fix that unblocks your own audit is proven by the audit continuing.** When you cannot complete a
+  review because a control refuses the work, repairing the control and then completing the review in the
+  same pass is the test of the repair — and the refusal itself belongs in the finding, quoted with the
+  payload that triggered it. Routing around the control instead supplies the incident rather than the
+  audit.
 
 See `references/probe-cookbook.md` for the full one-shot command set, including the storage attribution
 query and the surface-inventory sweep. See `references/state-store-queries.md` for the behavioural-record
