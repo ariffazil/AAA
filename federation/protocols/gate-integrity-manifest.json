@@ -1,0 +1,31 @@
+{
+  "_comment": "Integrity manifest for the W_SCAR enforcement surface. Compare with: python3 /root/.hermes/scripts/gate-integrity-verify.py",
+  "_generated": "2026-09-18T01:03:00Z",
+  "_generated_by": "hermes (session 2026-09-18, F13 directive 'Fix and seal all')",
+  "_meaning": "These hashes record the exact bytes of the gate and its conformance suite as SEALED. Any divergence means the enforcement surface changed after seal — which is legitimate only if this manifest is updated deliberately in the same act.",
+  "_limit": "This detects DRIFT, not an adversary. An actor who reads this file and recomputes it can pass verification. See RESIDUAL-OPEN-wscar-gate-v2.md R4.",
+  "artifacts": [
+    {
+      "role": "enforcement-gate",
+      "path": "/root/AAA/federation/protocols/arifos-hermes-gate-hook.py",
+      "sha256": "8f969aa27fbee60dd7a8fda7048f7889d44f0e04a74b68b1beb1688fd1d23655",
+      "size": 29029,
+      "mtime": "2026-09-18T08:59:03.971417968+08:00"
+    },
+    {
+      "role": "conformance-suite",
+      "path": "/root/AAA/federation/protocols/test_wscar_gate.py",
+      "sha256": "402a6fa8e52944683077f42b6d469ce868f1da45a04c9a26de3ea3b4db5006a8",
+      "size": 9810,
+      "mtime": "2026-09-18T09:02:41.919910822+08:00",
+      "expected_result": "11/11 behavioural, 7/7 regex"
+    },
+    {
+      "role": "residual-register",
+      "path": "/root/AAA/federation/protocols/RESIDUAL-OPEN-wscar-gate-v2.md",
+      "sha256": "0a21c1df09bf2e15b45ce4987e0eadfdcd75b3c85160462f67805795a07b8d08",
+      "size": 4935,
+      "mtime": "2026-09-18T09:02:41.759909726+08:00"
+    }
+  ]
+}
