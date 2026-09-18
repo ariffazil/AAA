@@ -1,6 +1,6 @@
 ---
 name: local-memory-retrieval
-description: "Use when asked what you know about X — check disk first."
+description: "Use when recalling, writing, or adjudicating memory — check disk first."
 ---
 
 # Local Memory Retrieval
@@ -150,7 +150,93 @@ When the artifact answers the question, DELIVER it (`MEDIA:/absolute/path`) and 
 - Offer one concrete next action (refresh, build a tracker, re-verify a live claim). No menus.
 - Match the user's language and length: casual BM for Arif, short and direct, no headers unless the content is genuinely tabular.
 
+## The Write Side — which layer owns the fact
+
+This skill's sweep finds facts that already exist. When the job is to *create* them — "remember
+this", "update the memory", "capture this as reality" — the fact still has to land in the layer
+that owns it. Writing everything to one store is how a memory system rots: session state buried in
+canon, permanent findings left in a 7-day-pruned event log.
+
+**Route by lifetime, not by convenience.**
+
+| The fact is… | It belongs in |
+|---|---|
+| session state: a decision, a scar, an open loop, an event | carry-forward (sanctioned writer, generational, flock-safe) |
+| a permanent insight worth ratifying | eureka canon — **stage it; the ledger is sealed** |
+| something to recall semantically | the vector collection for that domain |
+| a causal step in this session's work | the reality-graph endpoint, chained by parent id |
+| conversational | conversational memory, automatically |
+
+Full procedure, exact commands, and endpoint traps: `references/memory-layer-write-procedure.md`.
+
+Three rules that hold regardless of which layer:
+
+- **A sealed ledger is staged against, never unlocked.** Canon ledgers carry filesystem-level
+  immutability. A constitutional gate blocks any attempt to clear it, the lock is not the agent's
+  to lift, and promotion runs through the kernel seal lane with sovereign authority. Report the
+  true state — `STAGED, pending promotion` — and never the word "sealed". A *stray duplicate*
+  ledger often sits beside the sealed one; if its own README says append nothing, honour that
+  rather than treating it as an alternate write target.
+- **A governance hold on a tool is not a tool failure.** Calls whose arguments touch critical
+  variables can be held pending source evidence. Establish evidence first (probe the owning organ,
+  search, read the record), then retry — do not re-attempt the identical call, and never record
+  "tool X is broken" as a durable rule, which hardens a temporary state into a standing refusal.
+- **Read the error; these endpoints name their own contract.** A closed enum rejects an unknown
+  value *and returns the full variant list*; a mis-typed identifier returns a parse error naming
+  the expected type. Both are one round-trip to fix if read, and several if guessed at. Record the
+  valid values once, in the reference, not per session.
+
+## The Queue Side — adjudicating staged writes
+
+Trigger: a notice that writes are pending, `memory.write_approval` reported off, "review pending
+memory", or any sweep that turns up files in `~/.hermes/pending/memory/`. The queue holds proposals
+from an **unsupervised** writer, which is why approval exists at all.
+
+Adjudicating is not applying. Work the stages until every proposal has a verdict:
+
+1. **Measure entity overlap** against prior archives — a re-generation of an adjudicated queue is
+   common, and a wording-sensitive test cannot see it. Compare entities, not phrases.
+2. **Group by `old_text`** — two proposals replacing the same entry with different text cannot both
+   land, and the loser disappears without an error.
+3. **Grep every `old_text`** against the live store. Absent target = a rework of something already
+   removed, not a replace to apply.
+4. **Diff each proposal against the entry it claims to replace and list the LOSSES.** A proposal that
+   says "compress" routinely deletes named humans, live decision states, and pointers.
+5. **Budget before writing** — draft, measure, trim, repeat. A store near its ceiling is improved by
+   replacement, never by addition.
+6. **Rank by blast radius** — what breaks in a future session if the fact is absent — not by how
+   interesting the fact is.
+7. **Archive verbatim, then discard through the API.** Never delete a pending file by hand.
+8. **Witness the result.** Read back and grep every fact the adjudication claims it preserved; the
+   claims are about an artifact that did not exist when you wrote them.
+
+Six rules that hold for every queue:
+
+- **Never adopt a fact the same session falsified.** If a proposal prescribes a mechanism that was
+  disproved by reading the source earlier in the session, applying it re-injects a superstition and
+  contradicts the skill that was just corrected. Reject it and record why, so the rejection survives
+  the next generation of the same proposal.
+- **An adjudication written before the write is a transition lie with your own signature on it.**
+  Draft the verdicts, land the write, then author the preservation claims from a read-back. What you
+  intended to keep and what the artifact carries are different facts about the world.
+- **An inert gate does not postpone the decision.** With the gate off the queue still reads as
+  approved-but-unsent work, so a later session will apply it unchallenged. Clear it or adjudicate it.
+- **Third-party detail is bounded by the relationship kernel.** Memory about a person the user cares
+  about is not licence to accumulate a profile; identity garnish is what to cut when budget forces a
+  choice, and building it is the dossier behaviour the kernel forbids.
+- **Report the trade, not just the result.** "Applied 9 operations" hides the two facts dropped to
+  fit. State what left, and why.
+- **The queue's summary lines are intent, not evidence.** Read the payload.
+
 ## Support Files
+
+- `references/memory-layer-write-procedure.md` — the per-session write loop across carry-forward,
+  eureka staging, the vector store and the reality graph: exact commands, the sealed-canon rule,
+  identify/verb/enum traps, and how to read the flow meter that reports on your own balance.
+
+- `references/pending-queue-adjudication.md` — the eight-stage procedure for a staged-memory queue:
+  the entity-overlap test, the collision and absent-target classes, the draft-measure-trim budget
+  ladder, the archive-ledger schema, the verdict vocabulary, and the read-back witness step.
 
 - `references/store-command-catalogue.md` — copy-pasteable sweep commands per store (memory stores, artifacts, caches, session DB, person-recall sweeps) plus the roots worth grepping.
 
@@ -164,4 +250,5 @@ When the artifact answers the question, DELIVER it (`MEDIA:/absolute/path`) and 
 - **Discovery crowded out by the live session:** when the query is built from words the user JUST typed, FTS discovery returns the current session as the top hit and the older session holding the answer may be absent from the result set entirely — a discovery call that mirrors the live message is not evidence of absence. Query `state.db` `messages` directly with a distinctive keyword from the earlier discussion (`SELECT id, session_id, role, content FROM messages WHERE content LIKE '%<keyword>%' ORDER BY id`), then take the `session_id` and read that session whole. `session_id` is date-prefixed (`YYYYMMDD_HHMMSS_hash`), so the id itself names the day — no need to hydrate a session to date it.
 - **Self-recall answered from memory:** when the question is what the agent said, the agent's memory of the session is the least reliable source in the room — the row is on disk. Query, quote, then judge whether the old reasoning still holds.
 - **"The full log is gone" is an answer, not a gap to fill:** long exports expire from the document cache, leaving a fragment plus distilled entries. Say exactly that. Never imply a decade of source was read, and never reconstruct detail from summaries to make the brief look complete.
+- **"Applied N operations" reported as the outcome:** the count hides what was dropped to fit the budget. A queue adjudication ends with what left and why, plus a read-back grep proving the kept facts are actually in the file. See *The Queue Side*.
 - **Scope:** person-profile depth (source audit, entropy mapping, honest-deliverable format, anti-fabrication rules) lives in the `human-intelligence-gathering` skill — load it for anything beyond retrieval. This skill covers only where stored facts live and how to report them.

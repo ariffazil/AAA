@@ -4,20 +4,24 @@ canonical_home: /root/AAA/skills
 contrast_doc: /root/AAA/docs/TOOLBENCH_3WAY_CONTRAST.md
 architecture: 3-layer-3-axis
 disk_reconciliation:
-  refreshed: '2026-09-16T02:37:01+00:00'
+  refreshed: '2026-09-17T20:37:02+00:00'
   method: 'skills-census.py (cron 4x/day) — machine-derived, do not hand-edit'
-  physical_disk_skills: 504
-  canonical_skills: 482
-  viewed_skills: 409
-  loadable_skills: 409
-  shells: 45
-  diverged: 30
+  physical_disk_skills: 580
+  canonical_skills: 659
+  viewed_skills: 447
+  loadable_skills: 447
+  overlay_skills: 'continue=0, gemini=12, kimi=109, opencode=18, qwen=29'
+  whole_mesh_skills: 748
+  duplicate_identity_groups: 30
+  duplicate_identity_skills: 88
+  shells: 1
+  diverged: 4
   broken_symlinks: 0
-  witness_hash: 72a0e4764ea03d9f
+  witness_hash: ba5f3b3d259bce3f
   verdict: WARN
 layers:
   substrate:
-    count: 7
+    count: 8
     path: /root/AAA/skills/substrate
     skills:
     - kernel-bind
@@ -27,6 +31,7 @@ layers:
     - verify-gate
     - audit-seal
     - apx_init_substrate
+    - substrate-taxonomy
     load: ALL agents, ALWAYS, FIRST
   knowledge:
     count: 4

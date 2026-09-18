@@ -1,0 +1,8 @@
+{
+  "skill_id": "FORGE-context-compressor",
+  "agent": "hermes-rsi-loop",
+  "lesson": "TRUNCATION_LOSS observed 1x \u2014 impact=evidence_loss. First surface: session:user \u2014 all four checks passed, but independence is NAME-LEVEL ONLY (same author) \u2014 verdict is PROVISIONAL: may enter the capability graph, may NOT record a survival event",
+  "evidence": "[{\"layer\": \"runtime\", \"source\": \"session:user\", \"excerpt\": \"Full subagent output saved to: /root/.hermes/cache/delegation/subagent-summary-0-20260917_154616_572977.txt\\nTo read the omitted middle: read_file path=\\\"/root/.hermes/cache/delegation/subagent-summary-0-20260917_154616_572977.txt\\\" offset=115 limit=200  (the file is the complete summary; raise/lower o\"}]",
+  "atom_id": "ATOM-4b10b6b1fd3e",
+  "verified_by": "hermes-rsi-verifier"
+}

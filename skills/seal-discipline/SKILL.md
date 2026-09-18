@@ -1,6 +1,6 @@
 ---
 name: seal-discipline
-description: Distinguish SEAL (Lane A constitutional) from RECEIPT (Lane B autonomous) from SABAR (Lane A honest sub-threshold) BEFORE emitting any verdict. USE WHEN: 'verdict=SEAL', 'sesi termeterai', 'session sealed', 'verdict=SABAR', 'constitutional silence', 'seal the chain', 'close the session'.
+description: "Distinguish SEAL (Lane A constitutional) from RECEIPT (Lane B autonomous) from SABAR (Lane A honest sub-threshold) BEFORE emitting any verdict. USE WHEN: 'verdict=SEAL', 'sesi termeterai', 'session sealed', 'verdict=SABAR', 'constitutional silence', 'seal the chain', 'close the session'."
 ---
 
 # 🔒 SEAL-discipline — Vocabulary Discipline for Constitutional Records
@@ -21,6 +21,18 @@ Load this skill BEFORE emitting `verdict=SEAL` or any close-record. Trigger phra
 - After any session with constitutional implications
 
 ## The Iron Rule — Three Classes, Each with Evidence
+
+### Class 0: HEART Verdict Geometry — Monotonicity Invariant (NEW 2026-09-18)
+
+**Probe evidence:** `arif_heart_critique` reported `action_risk=GREEN` but wrapper-level dignity check forced `VOID` + `do_not_treat_as_seal=True`. This is a verdict composition contradiction.
+
+**Iron rule:** Risk dimension and dignity dimension MUST compose monotonically:
+- `action_risk=GREEN` → wrapper MUST NOT escalate to `VOID`
+- `do_not_treat_as_seal=True` is INFORMATIONAL, NOT a downgrade
+- Final verdict ∈ {GREEN, HOLD, VOID} only via single-dimensional escalation
+- If a wrapper forces `VOID` despite lower dimension GREEN, log as `VERDICT_GEOMETRY_DRIFT` (conformance defect)
+
+**Scar anchor:** none yet (new class). Apply whenever any verdict field has two dimensions that can compose non-monotonically.
 
 ### Class 1: SEAL — Lane A Constitutional
 
@@ -175,6 +187,7 @@ Never emit verdict without all five.
 - ❌ `verdict=SEAL` without `judge_state_hash`
 - ❌ `verdict=SEAL` for Lane B work
 - ❌ `verdict=SEAL` when substrate says HOLD
+- ❌ Reporting `substrate_state=FAIL` when the system is actually `IDLE_RESTING` or `FAIL_CLOSED` (violates SUBSTRATE_TAXONOMY_2026-09-18)
 - ❌ Confusing kernel's `/health verdict: SEAL` (self-report) with constitutional SEAL (chain entry)
 - ❌ Treating `last_seal_timestamp` from `/health` as proof of constitutional write (it's session-internal counter, not chain truth)
 - ❌ Trusting carry_forward `verdict=SEAL` without checking seal_chain.jsonl

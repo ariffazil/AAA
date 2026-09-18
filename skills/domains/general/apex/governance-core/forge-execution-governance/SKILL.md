@@ -83,6 +83,42 @@ instrument that reports "all clear" while incapable of saying anything else is c
 evidence — every inference built on it inherits the false negative, and nothing in its
 output ever contradicts it.
 
+### 1c. Consumption control — a parser is an instrument too
+
+The same rule applies to any **parser, importer, or indexer** that feeds an analysis: prove it
+consumed its whole input before trusting anything downstream of it.
+
+```bash
+# 1. count records the parser MATCHED
+# 2. count records the parser REJECTED (lines with a plausible shape it skipped)
+# 3. compare against the raw line count
+wc -l <input>
+```
+
+A parse that silently drops a large fraction of its input still produces a complete-looking output:
+plausible record counts, a plausible date range, a plausible summary. **Nothing in the output
+announces the loss.** The failure is worse than a crash because every downstream metric — totals,
+gaps, rates, timelines — is computed over the surviving subset and inherits the bias silently.
+
+Two controls, both cheap:
+
+- **Validating vs. non-validating parse, compared.** Run a permissive parser and a validating one;
+  a large disagreement means the validating one is discarding records, not that the input is dirty.
+- **Input-consumption ratio.** `matched / raw_lines` should be explainable. In a well-formed export
+  it sits near 1 modulo wrapped continuation lines; a ratio of 0.6 means 40% of the evidence is
+  gone, and every count reported from it is wrong in an unknown direction.
+
+**Locale/format assumptions are the classic silent discarder.** Timestamps, decimal separators, unit
+suffixes, D/M vs M/D — an assumption that is wrong in one field can invalidate a whole column while
+the rest of the parse succeeds. Detect the format from the data (e.g. if any first-field value
+exceeds 12, the field cannot be a month) and assert it explicitly rather than defaulting.
+
+**Sanity-check outputs against themselves.** Internal contradictions reveal parse artefacts cheaply:
+a series whose first dated entry precedes the file's own start date, a duplicate record at a boundary,
+a gap far larger than anything else in the series. Treat an impossible value as an instrument fault
+until proven otherwise — the natural instinct is to read it as a finding, and that instinct is what
+manufactures phantom events.
+
 ### 1b. Enumerate the bypass paths before trusting any gate
 
 Coverage is a property of the **boundary**, not of the gate. List every path by which a capable
@@ -132,6 +168,38 @@ Canonical identity files (SOUL.md, agent identity artifacts) may have `chattr +i
 - Removing immutable protection without authorization = governed mutation violation
 - Restoration: `git checkout` + `chattr +i` (if git-tracked)
 - SOUL.md is often symlinked to arifOS repo — canonical source is centrally owned
+
+**Locking a tree freezes whatever draft happens to be inside it — so the canonical copy can be the
+OLDER one.** When protected trees are sealed, later and better drafts written to an unprotected
+sibling directory diverge silently, and every consumer reading the canonical path gets the superseded
+text. Detect it before quoting canon as authoritative:
+
+```bash
+# canonical vs working draft: mtime AND section diff
+for f in <canon_path> <draft_path>; do stat -c '%y %s %n' "$f"; done
+diff <canon_path> <draft_path> | grep -E '^[0-9]' | head    # hunk headers = sections that differ
+# then, for each heading present in draft but absent in canon, grep it by name
+```
+
+Report the divergence by **section name** ("canon lacks the paradox section added later"), not as a
+byte diff. A tree that is `+i` is not thereby up to date — immutability guarantees *integrity*, never
+*currency*, and the two are routinely confused.
+
+**Cross-read the mutation receipt against the document's own authority claim.** Where a locked tree's
+writes are receipted, the receipt records how the write was attributed; the document records what it
+claims to be. Compare them:
+
+```bash
+tail -3 <mutation_receipt_log>   # look at the actor / trace_id / attribution fields
+```
+
+An artifact that declares sovereign ratification while its own write receipt reads
+`trace=<...unattributed>` is a **contradiction on the record**, and the receipt is the machine answer.
+Report both strings verbatim — the doc's claim and the receipt's value — and let the issuer resolve
+it. This is the sharpest form of §6's rule: a self-declared authority is a claim, and a receipt that
+records no attributable source for the write is the measurement that contradicts it. It is also the
+most honest finding an audit can produce, because it is the governance layer failing its own test
+rather than a constituent failing the governance layer.
 
 ### 3. Monotonicity
 
@@ -252,6 +320,31 @@ gate's own deny class attempted and refused. A file, a config key, and a doctrin
 neither. **Zero receipts across a session that made dozens of mutation-capable calls is positive
 proof the gate is not on that path** — report it as measured, not as a suspicion.
 
+**Subtract the control's own test receipts before counting.** A gate shipped with a self-test,
+a benchmark, or a `__main__` block writes receipts every time anyone runs the tests — so a
+non-empty receipt stream is not evidence of a live path. Filter first:
+
+```bash
+wc -l <receipt_path>
+python3 -c "import json,sys,collections; \
+  ev=[json.loads(l) for l in open(sys.argv[1])]; \
+  ids=[e.get('details',{}).get('claim_id','') for e in ev]; \
+  print('total',len(ev),'synthetic',sum(1 for i in ids if i.startswith(('TEST','G','A','T'))))" <receipt_path>
+```
+
+Worse: if the receipt payload does **not record the caller** (no session id, no process, no
+pid), you cannot separate test traffic from production traffic after the fact, and the log is
+permanently uninterpretable for this purpose. That is a schema defect worth reporting on its own —
+**a receipt stream that cannot distinguish its own test harness from its production callers cannot
+prove liveness for anything.** Fix the receipt schema before arguing about the count.
+
+**Distinguish "not wired" from "never invoked yet".** A freshly-built, correctly-wired gate that no
+workflow has exercised also shows zero receipts. Resolve by asking the harness (`hooks list`) rather
+than by counting: if the harness does not list it, wiring is absent regardless of how many receipts
+exist; if the harness lists it and receipts are absent, the wiring is present and unexercised. The
+two have different remediations (one config entry vs. nothing) and conflating them sends the fix to
+the wrong place.
+
 **One mediated lane is not coverage.** A reference monitor can genuinely refuse an action inside
 its own lane (a kernel rejecting its own seal on a precondition) while every execution lane around
 it stays open. Report coverage per-lane and name the unmediated set; see §1b and §6. This is also
@@ -334,6 +427,8 @@ and retracting is how the record stays usable.
 | Service alive but not governed | Wire into MCP governance surface |
 | Tool listed but not callable (transport gate) | Read the rejection's gate name; fix the gate or the caller — do not treat the listing as evidence |
 | Instrument returns a structural zero | Report UNMEASURABLE, not zero; repair the read/write field contract before trusting any value |
+| Parser/importer silently dropped part of its input | Compute matched-vs-raw ratio before quoting any count; a plausible-looking output over a partial parse inherits the bias silently in an unknown direction |
+| A timestamp/format assumption invalidated one field | Detect the format from the data and assert it; a wrong locale assumption discards records without erroring, and the resulting phantom gaps read as real events |
 | Immutable flag removed without auth | Restore immediately, incident report |
 | Downgrade in hook chain | Preserve max restriction, log violation |
 | Rollback escapes sandbox | HOLD, scope violation |
@@ -344,6 +439,10 @@ and retracting is how the record stays usable.
 | "RATIFIED" stamp with no chain/seal id while sibling artifacts carry one | Name the stamp and the missing identifier; check the event ledger for the entry |
 | Gate exists on one surface; the mutation path never reaches it | Report coverage **at the boundary** = 0 and name each unmediated path — a gate's own pass rate says nothing about it |
 | Gate file present and complete, but not invoked | Check the harness's own wiring answer (`hooks list`), read the module's self-declaration, and correlate receipt freshness with the activity window — zero receipts during real activity = not on the path |
+| Receipt stream looks healthy but was written by the gate's own tests | Subtract synthetic/test callers before counting; if the payload does not record the caller at all, report the schema defect — liveness is unprovable from that log |
+| Control wired but unexercised vs. control unwired | Disambiguate with the harness listing, not the receipt count; the remediations differ (config entry vs. nothing) |
+| Locked canonical tree quoted as authoritative | Check mtime and section-diff against the working draft; `+i` guarantees integrity, never currency — a sealed tree routinely holds the older text |
+| Document declares sovereign ratification; its own write receipt reads `unattributed` | Quote both strings verbatim and report the contradiction. The receipt is the machine answer; a self-declared authority is a claim |
 | Control declared REACHABLE and reported as "we have X" | The claim stops at REACHABLE; EFFECTIVE requires a production invocation with its output consumed. Report the rung by name |
 | "N records with trace_id=NULL" quoted from a prior session | Test for the FIELD before the values across all stores; if no store carries a join key, retract the claim — absence is a worse defect than nulls |
 | Ledger parse fails on line 1 | JSONL mixes line types; skip non-dict lines, report the bad-line count, and never ground a verdict on the first parse |
@@ -353,6 +452,7 @@ and retracting is how the record stays usable.
 | Concurrent session wrote artifacts you are auditing | Grade them a shared evidence path, not an independent witness |
 
 ## References
+- Cross-registry reconciliation: `references/cross-registry-reconciliation.md` — pattern for auditing multiple registries of the same entity class, finding discrepancies, and building unified heartbeat monitors
 - Federation topology: FORGE-federation-manifest
 - Verification: FORGE-verify-runtime
 - Drift detection: ASI-drift-watch

@@ -25,6 +25,14 @@ Arif Fazil is a human. He hates the terminal.
 3. **Arif does not SSH to do tasks.** He SSH only for realtime logs or interactive Python.
 4. **Tailscale Connect** is OK for remote access from outside. **Never SSH through Tailscale.** SSH = direct VPS IP (`Host vps` → `72.62.71.199:22888`).
 
+### ATTENTION MEMBRANE — Arif is NOT a coder (F13-ratified 2026-09-13 · T3-binding)
+
+- **NEVER** ask Arif technical or implementation questions. Not schema, naming, architecture, framework, library, tooling, style, config, file layout, error output, or "which do you prefer".
+- Asking him HOW is an **attention leak — treat as a BUG in yourself**, not as collaboration.
+- **When unsure HOW:** run **musyawarah** (min 333 ARCHITECT + 555 AUDITOR, skill `FORGE-musyawarah-gotong`), choose the reversible path, execute, log the receipt. Then report the result in human language.
+- **Escalate to Arif F13-class binaries ONLY:** money, irreversible mutation, canonical records, external ports, direction change — phrased as ONE binary choice, never a menu.
+- Canon: `/root/AAA/instructions/human-attention-membrane.md`
+
 - **NEVER** ask Arif to copy-paste terminal commands, logs, curl, git, docker, ssh, or config.
 - **NEVER** dump "run this" / "COPY THIS" / "paste into your terminal".
 - **NEVER** make him click OK / Approve / Continue for digital work. Always-approve. HITL OFF. Digital = MUBAH.

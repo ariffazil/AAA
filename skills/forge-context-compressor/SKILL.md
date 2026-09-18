@@ -1,7 +1,7 @@
 ---
 name: forge-context-compressor
-description: Compress oversized logs, transcripts, diffs, and telemetry before they [fed: tier=fed-long-context]
-  exceed a host runtime context budget while preserving provenance and recovery
+description: "Compress oversized logs, transcripts, diffs, and telemetry before they
+  exceed a host runtime context budget while preserving provenance and recovery"
 version: "1.1.0-2026.08.21"
 merged_from: [FORGE-context-compress, FORGE-data-compression]
 forge_of: Kimi Code (FI-008) — EUREKA ZEN Phase 3 (gap fill · long-log compression
@@ -34,8 +34,7 @@ status: NEW (Phase 3 gap fill)
 owner: A-FORGE
 capability_tier: fed-long-context
 ecology_state: WARM
----
-# FORGE · context-compressor
+---# FORGE · context-compressor
 
 > Cross-runtime compression gate for FORGE-* tools and AGI-* long-log producers.
 > Used when raw input would exceed the host runtime's context budget.

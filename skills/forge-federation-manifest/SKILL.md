@@ -2,15 +2,14 @@
 id: FORGE-federation-manifest
 name: forge-federation-manifest
 version: 1.0.0-2026.07.17
-description: "Federation topology manifest — arifOS organ registry and inter-organ contract specification. [fed: tier=fed-agent-subagent, floors=[, auto=T2, risk=high]"
+description: "Federation topology manifest — arifOS organ registry and inter-organ contract specification. "
 owner: A-FORGE
 risk_tier: high
 floor_scope: ['F1', 'F2', 'F11', 'F13']
 autonomy_tier: T2
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----
-# ⚒️ Federation Manifest — arifOS Topology
+---# ⚒️ Federation Manifest — arifOS Topology
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.
 

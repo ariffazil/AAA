@@ -45,6 +45,25 @@ This includes: landing pages, index pages, Caddy config, any file under `/var/ww
 - Editing React components (footer, header, pages) — not just essays
 - Building and deploying the site after changes
 - Fixing governance/canonical claims (seals, pseudo-metrics, stale version strings) that appear in the UI
+- Adding or upgrading visual assets, GIS cartography, or media payloads (see OP 7 & `references/asset-hash-and-multimodal-fidelity.md`)
+
+## 🗺️ OP 7 — Multimodal Vision, Cartographic Grounding & Asset-First Law (F13 SEAL 2026-09-18)
+
+> *"map buat la betul2 gambar render la guna ai image generator etc"* — Arif Fazil (F13 Sovereign).  
+> Full doctrine, incident mechanics, and verification checklist: `references/asset-hash-and-multimodal-fidelity.md`.
+
+1. **Physical Geography Demands Real Cartography (F2 TRUTH):**
+   - NEVER use crude placeholder SVG polygons for national/regional infrastructure claims.
+   - Use interactive **Leaflet.js** with CartoDB Dark Matter tiles (`https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png`), pre-approved in Caddy CSP (`connect-src *.basemaps.cartocdn.com`).
+   - Every site marker must have authentic coordinates, operator, capacity (MW/GW), and environmental parameters.
+   - Interactive layer controls (`[All Layers] [Data Centres] [Power Grid] [Water Moratorium] [Interconnects]`).
+
+2. **Cloudflare Cache Edge Poisoning Defect & Asset-First Rule (SCAR-2026-09-18):**
+   - **Asset First, Reference Second:** NEVER write `<img src="...">` or `<link href="...">` in HTML before the physical file exists on disk, in dist, and in webroot. Cloudflare edge will cache the initial 404 with long TTL (`max-age=31536000`), breaking subsequent valid requests.
+   - **Contaminated-URL Rule:** If an asset URL was ever requested while non-existent (receiving a 404), DO NOT retry the same URL. Re-key the filename with a content hash (e.g. `hero-five-engines.c797f5c9.webp`). Fresh URLs bypass contaminated edge caches immediately.
+
+3. **Epistemic Metric Truth (Anti-Hallucinatory Standard):**
+   - Report measured reality: actual bytes, actual dimensions (`1376x768`, never inflated "8K"), actual WebP quality/sizes (≤200KB).
 
 ## Site architecture
 
@@ -248,7 +267,7 @@ The site's law lives in a SEPARATE repo, not the React app: `/root/web-canon` (G
 - `canon/design-tokens.json` — machine law (exact hex scales human/institution/earth/sovereign/neutral; geometry radii {human:12, machine:2, torus:full}; motion 90ms; territory_map; machine_twin channel/state enums)
 - `canon/design-rules.json` — lintable invariants (red_usage scopes, allowed_radii, max_torus_per_view=1, forbid_local_palette, forbid_unregistered_hero, require_channel_field, require_state_enum, contrast_floor, motion_rationing, live_must_be_real, prefers_reduced_motion)
 - `canon/page-instruments.json` — route hero law ("a page cannot choose its own hero — the route registry chooses the hero"; every route declares territory/palette/instrument/data/torus_count/status; held items carry hold_reason)
-- `scripts/verify-design-canon.cjs` — the lint gate (66 checks: token-vs-PRIMER_SPEC alignment, red rationing, radii, contrast, instruments registry, rules self-consistency); wired into site package.json prebuild chain as F4 gate
+- `/root/web-canon/scripts/verify-design-canon.cjs` — the lint gate (66 checks: token-vs-PRIMER_SPEC alignment, red rationing, radii, contrast, instruments registry, rules self-consistency); wired into site package.json prebuild chain as F4 gate
 
 **Ratification protocol (Arif 2026-08-01):** Phase 1 = freeze PRIMER-1 as `forge_work/proposals/design/2026-08-01-primer-1/design-primer.proposal.md`; Phase 2 = promote ONLY the four canon files. If a sibling agent does Phase 1 while you do Phase 2, both coexist correctly — keep the proposal copy as audit trail AND the canon copy as law (commit both). Build order: canon first, then ONE reference instrument page (/earth preferred over /world/oil — oil needs a real data source, see F9 below).
 
@@ -347,6 +366,140 @@ Arif's doctrine: *"Same directive ≠ same execution. Same mission ≠ same file
 **Where it lives in practice:** the fail-closed header is embedded in `sites/arif-fazil.com/public/AGENTS.md` (and served at `/AGENTS.md`). Site canon files (App.tsx, AtlasGate.tsx, ns_results.json) are CANON — agents edit only with Arif's explicit go. Generated outputs (dist/, compare/index.html, navCanon.ts, ns_live_telemetry.json) are DERIVED. The `canon/` mirror in `/var/www/html/canon/` is DERIVED (synced by canon-sync.sh).
 
 **Pitfall — canon-sync required-files list:** `scripts/canon-sync.sh` has a hardcoded array of files it syncs. Any NEW canon file (atlas.yaml, file-authority.yaml) must be added to that array or the live mirror 404s. Check with `curl -s -o /dev/null -w '%{http_code}' https://arif-fazil.com/canon/<new-file>` after sync.
+
+## Partial rsync = built-but-not-served bundle (PROVEN 2026-09-18)
+
+A full `npm run build` writes `dist/index.html` pointing at a NEW hashed bundle
+(`assets/index-<hash>.js`). If only `assets/` reaches the webroot and `index.html` does not,
+the new bundle sits in `/var/www/html/arif/assets/` while the live HTML still points at the
+PREVIOUS hash. The site keeps serving old content indefinitely — and the new file's presence
+on disk makes it look deployed.
+
+**Symptom:** `grep -c '<marker>' /var/www/html/arif/assets/index-<new>.js` > 0 (the file is
+there) but `curl -s https://arif-fazil.com/ | grep -oE 'assets/index-[A-Za-z0-9_-]+\.js'`
+names a DIFFERENT, older hash. Verify by fetching the LIVE html and checking which hash it
+references, never by grepping the newest file in the webroot.
+
+**Audit (run after every deploy):**
+```bash
+DIST=/root/arif-fazil.com/sites/arif-fazil.com/dist
+WEB=/var/www/html/arif
+D=$(grep -oE 'assets/index-[A-Za-z0-9_-]+\.js' $DIST/index.html | head -1)
+W=$(grep -oE 'assets/index-[A-Za-z0-9_-]+\.js' $WEB/index.html | head -1)
+L=$(curl -s -m 10 https://arif-fazil.com/ | grep -oE 'assets/index-[A-Za-z0-9_-]+\.js' | head -1)
+[ "$D" = "$W" ] && [ "$W" = "$L" ] && echo "IN SYNC: $D" || echo "DRIFT dist=$D web=$W live=$L"
+```
+
+**Fix:** copy every HTML file that carries the bundle pointer, not just assets. `grep -rl`
+the new hash across `dist/` (the SPA route shells under `dist/<route>/index.html` carry it too)
+and `cp -p` each to the matching webroot path. Additive, no `--delete`, no Caddy reload.
+
+**Rule:** PRODUCED ≠ DEPLOYED ≠ SERVED. Grepping an artifact proves it exists; grepping the
+LIVE response proves it is served. Only the second one counts.
+
+## Build-regenerated caches read from staleness, not from canon (PROVEN 2026-09-18)
+
+`scripts/generate-md-mirrors.cjs` emits the agent-facing markdown mirror under
+`public/makcikgpt-md/`. Its `convertBody(slug)` reads a CACHED `public/makcikgpt-md/{slug}.html`
+— NOT the canonical `src/data/makcikgpt/{slug}.ts`. Edit the `.ts`, rebuild, and every `.md`
+regenerates with a fresh timestamp containing the OLD body: the mirror looks updated (new mtime)
+and is wrong (old content). Measured: 16 `.html` stale, 7 missing entirely.
+
+This is the worst possible lane to leave stale — the bot lane is what AI crawlers and link
+previews read, so unpatched text gets archived and ingested. Any `.html`-as-source cache in
+this repo is a staleness trap: check `stat -c '%y'` on the cache against its `.ts` before
+trusting any generated output.
+
+`essays.json` cannot supply the body (it carries only id/title/date/series/dest/seal/
+claim_register/source_ledger), so `scripts/lib/makcik-source.cjs` cannot route around it — the
+fix is to read the `.ts` directly and mind the backslash-escape parsing of its template literal.
+
+## WHO OWNS THIS FILE? — three writers, no coordination (PROVEN 2026-09-18)
+
+Symptom: a curated page "keeps vanishing". Cause: three separate mechanisms claim
+`public/<route>/index.html` and none knows the others exist.
+
+1. `scripts/generate-agent-shells.cjs` — `writeRoute()` rewrites its routes on EVERY
+   `prebuild`. It overwrote the 148 KB curated `/world/` hub with a 3.8 KB shell.
+2. `scripts/copy-static-html.js` — the SPA injection loop writes the React shell into
+   `dist/<route>/index.html` for every `SPA_ROUTES` entry, AFTER mirroring `public/`
+   over it.
+3. Caddy — `try_files {path} {path}/index.html /<route>/index.html /index.html =404`.
+   It already prefers the static page. **The build destroys the file before the
+   fallback can be reached.** Don't "fix" Caddy; fix the writers.
+
+`dist/` is gitignored, so every overwrite leaves no diff and the page looks like it
+vanished by itself. Always compare `public/` vs `dist/` vs webroot by SIZE and TITLE
+before theorising.
+
+Two registries must agree, and both mean "a human/agent curated this, the generator
+must not own it":
+- `PRESERVED_ROUTES` in `generate-agent-shells.cjs`
+- `STATIC_INDEX_ALLOWLIST` in `copy-static-html.js`
+
+### The cheap test that finds every instance
+
+Serve a curated page and compare its `<title>` with `public/`:
+
+```bash
+curl -s -A "Mozilla/5.0" https://arif-fazil.com/<route> | grep -o '<title>[^<]*'
+```
+
+If the live title is the HOMEPAGE title but `public/<route>/index.html` has its own,
+the curated page is not being served — the SPA shell is. That single check found
+`/words/` (16.5 KB → 8.6 KB), `/work/` (10.1 KB → 8.6 KB) and `/world/makcikgpt/`
+(42.1 KB / 30 slugs → 8.6 KB / 0 slugs) in one pass.
+
+### Silent-drop filters
+
+`e.lang === "bm"` dropped `lang: "en-bm"` entries from the MakcikGPT listing with no
+error. A filter that hides an entry is worse than one that rejects it: rejection is
+loud, hiding is invisible. Prefer `lang.split("-").includes("bm")` for SCOPE and let
+the validator own validity.
+
+Related: a sealed entry (`provenance_status: "sealed"`) with an empty `claim_register`
+makes `loadMakcikSource()` THROW — the whole listing fails to generate, not just that
+entry. Supply the witness chain; never weaken the gate.
+
+## PUBLISH ORDER: asset first, reference second (PROVEN, twice-burned 2026-09-18)
+
+Cloudflare caches a 404 for a hashed asset URL under `max-age=31536000, immutable`.
+The `CLOUDFLARE_API_TOKEN` on this box has **no cache-purge permission** (`purge_cache`
+returns `Authentication error`), so a poisoned URL stays broken for a year.
+
+**Consequence for deploy order — never violate:**
+1. Copy assets (js/css/images/pdf) to the webroot FIRST and confirm each resolves on disk.
+2. THEN copy the HTML that references them.
+
+Publishing the reference first is the trap. Caddy's `try_files {path} {path}/index.html
+... =404` falls through to the SPA shell, the request 404s-then-serves-HTML, and CF stores
+that HTML for the asset URL. Symptom: `curl -sI <asset-url>` shows
+`content-type: text/html`, `cf-cache-status: HIT`. The file on disk is correct and complete —
+it is only the cached response that is wrong.
+
+**Recovery without purge permission — re-key the filename.** Give identical bytes a fresh
+content-addressed name (`hero.c797f5c9.webp`), point the HTML at it, republish. A URL CF has
+never seen cannot be poisoned. Do NOT retry the original URL and expect it to heal.
+
+**This bit twice in one night:** once diagnosing another agent's build, once committing the
+same mistake with WebP conversion. The `publish.sh` helper enforces the order; use it rather
+than hand-rolling copies.
+
+## Dual-lane UA routing — probe BOTH lanes (2026-09-17)
+
+`/world/makcikgpt/*` serves **different bytes by User-Agent**: bot/crawler UAs
+(`GPTBot|…|TelegramBot|HeadlessChrome|curl|wget`) get the markdown mirror root with a
+terminal `/index.html` fallback = the **listing**; browser UAs get the React shell.
+
+- A new article with no `makcikgpt-md/<slug>.md|.html` mirror therefore **200s the
+  listing** — Telegram preview and crawlers see the wrong page while the author's browser
+  looks fine. 200 ≠ correct content: grep a string unique to the article.
+- **Your headless browser IS a bot** (`HeadlessChrome` is in the regex). Override with
+  `cdp('Network.setUserAgentOverride', …)` before navigating, then verify
+  `navigator.userAgent` — `Emulation.setUserAgentOverride` may not take effect.
+
+Full detail, probe commands, and the og-tag/social-preview gap:
+`references/dual-lane-ua-routing-pitfalls.md`.
 
 ## Pitfalls — ARCHIVE
 

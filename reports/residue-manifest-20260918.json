@@ -1,0 +1,5353 @@
+{
+ "generated_note": "S1 residue manifest \u2014 address vs storage (2026-09-18)",
+ "storage_root": "/root/AAA/skills",
+ "view_root": "/root/.hermes/skills",
+ "storage_skills": 549,
+ "view_addresses": 445,
+ "generations": {
+  "bucket": 127,
+  "taxonomy": 212,
+  "flat-root": 210
+ },
+ "bundled_in_manifest": 50,
+ "authored_not_in_bundled_manifest": 499,
+ "symlinked_out_of_AAA": 0,
+ "no_view_address": 186,
+ "broken_links": [],
+ "self_referential_links": [],
+ "no_address": [
+  {
+   "name": "AGI-decisions-reflect",
+   "rel": "capabilities/synthesis/AGI-decisions-reflect",
+   "kind": "bucket:capabilities",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "APEX-humility-godel",
+   "rel": "domains/general/apex/recursive-audit/APEX-humility-godel",
+   "kind": "taxonomy",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "a2a-task-delegator",
+   "rel": "a2a-task-delegator",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "aaa-human-physique-topology",
+   "rel": "aaa-human-physique-topology",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "aaa-image-editing",
+   "rel": "media/aaa-image-editing",
+   "kind": "bucket:media",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "aaa-musyawarah-execution",
+   "rel": "aaa-musyawarah-execution",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "aaa-shadow-mode",
+   "rel": "aaa-shadow-mode",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "aaa-skill-governor-runtime",
+   "rel": "aaa-skill-governor-runtime",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "agent-onboarding",
+   "rel": "forge-onboarding/agent-onboarding",
+   "kind": "bucket:forge-onboarding",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "agi-agentic-web-delivery",
+   "rel": "agi-agentic-web-delivery",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "agi-nusantara-substrate",
+   "rel": "agi-nusantara-substrate",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "agi-web-optimization",
+   "rel": "agi-web-optimization",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "agy-scar-hardening",
+   "rel": "agy-scar-hardening",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "arifos-eight-verb-canonical",
+   "rel": "arifos-eight-verb-canonical",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "ascii-art",
+   "rel": "creative/ascii-art",
+   "kind": "bucket:creative",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "asi-agentic-governance",
+   "rel": "asi-agentic-governance",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "asi-summarize",
+   "rel": "asi-summarize",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "audit-repo-reality",
+   "rel": "audit-repo-reality",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "audit-repository-entropy",
+   "rel": "audit-repository-entropy",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "auditable-numeric-artifacts",
+   "rel": "audit/auditable-numeric-artifacts",
+   "kind": "bucket:audit",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "authority-reality-grounder",
+   "rel": "authority-reality-grounder",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "bijaksana-compile",
+   "rel": "bijaksana-compile",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "blogwatcher",
+   "rel": "research/blogwatcher",
+   "kind": "bucket:research",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "browser-playwright-runner",
+   "rel": "browser-playwright-runner",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "capability-addressing",
+   "rel": "governance/capability-addressing",
+   "kind": "bucket:governance",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "capability-telemetry-audit",
+   "rel": "capability-telemetry-audit",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "causal-attribution-discipline",
+   "rel": "audit/causal-attribution-discipline",
+   "kind": "bucket:audit",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "civic-article-publishing",
+   "rel": "aaa/civic-article-publishing",
+   "kind": "bucket:aaa",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "claude-agentic-state",
+   "rel": "claude-agentic-state",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "claude-meta-mesa",
+   "rel": "claude-meta-mesa",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "claude-zen-router",
+   "rel": "claude-zen-router",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "codebase-reality",
+   "rel": "codebase-reality",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "comfyui",
+   "rel": "creative/comfyui",
+   "kind": "bucket:creative",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "contextstream-memory-code-search",
+   "rel": "contextstream-memory-code-search",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "corpus-evidence-discipline",
+   "rel": "audit/corpus-evidence-discipline",
+   "kind": "bucket:audit",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "cross-host-artifact-delivery",
+   "rel": "federation-topology/cross-host-artifact-delivery",
+   "kind": "bucket:federation-topology",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "cross-node-artifact-transfer",
+   "rel": "federation-topology/cross-node-artifact-transfer",
+   "kind": "bucket:federation-topology",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "delegated-build-fanout",
+   "rel": "delegated-build-fanout",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "dissipative-transition-hold",
+   "rel": "dissipative-transition-hold",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "duckdb-analytics-engine",
+   "rel": "duckdb-analytics-engine",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "emem-shared-memory",
+   "rel": "emem-shared-memory",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "enforcement-coverage-audit",
+   "rel": "enforcement-coverage-audit",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "entropy-metabolizer",
+   "rel": "entropy-metabolizer",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "evaluating-llms-harness",
+   "rel": "mlops/evaluation/evaluating-llms-harness",
+   "kind": "bucket:mlops",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "excalidraw",
+   "rel": "creative/excalidraw",
+   "kind": "bucket:creative",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "federation-memory-writeback",
+   "rel": "governance/federation-memory-writeback",
+   "kind": "bucket:governance",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "fi-mesh-check",
+   "rel": "fi-mesh-check",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "first-party-corpus-audit",
+   "rel": "governance/first-party-corpus-audit",
+   "kind": "bucket:governance",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "first-party-evidence-audit",
+   "rel": "first-party-evidence-audit",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-act-federation-ingress",
+   "rel": "forge-act-federation-ingress",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-artifact-publisher",
+   "rel": "forge-artifact-publisher",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-ci-diagnose",
+   "rel": "forge-ci-diagnose",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-code-analysis",
+   "rel": "forge-code-analysis",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-context-compressor",
+   "rel": "forge-context-compressor",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-cross-agent-handoff",
+   "rel": "forge-cross-agent-handoff",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-design-intelligence",
+   "rel": "forge-design-intelligence",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-did-web-identity",
+   "rel": "forge-did-web-identity",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-document-intelligence",
+   "rel": "forge-document-intelligence",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-esm-require-guard",
+   "rel": "forge-esm-require-guard",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-fastapi-api-builder",
+   "rel": "forge-fastapi-api-builder",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-fastmcp",
+   "rel": "forge-fastmcp",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-federation-manifest",
+   "rel": "forge-federation-manifest",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-google-workspace",
+   "rel": "forge-google-workspace",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-governance-jsonld",
+   "rel": "forge-governance-jsonld",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-hermes-self-evolution",
+   "rel": "forge-hermes-self-evolution",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-infra-crons",
+   "rel": "forge-infra-crons",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-infra-guardian",
+   "rel": "forge-infra-guardian",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-kimi-code",
+   "rel": "forge-kimi-code",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-komda-color-law",
+   "rel": "forge-komda-color-law",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-mcp-a2a-agentic",
+   "rel": "forge-mcp-a2a-agentic",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-mcp-gui",
+   "rel": "forge-mcp-gui",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-model-monitor",
+   "rel": "forge-model-monitor",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-musyawarah-gotong",
+   "rel": "forge-musyawarah-gotong",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-nextjs-mastery",
+   "rel": "forge-nextjs-mastery",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-onboarding",
+   "rel": "forge-onboarding",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-postgres-schema-design",
+   "rel": "forge-postgres-schema-design",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-react-spa-discipline",
+   "rel": "forge-react-spa-discipline",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-redis-qdrant-integration",
+   "rel": "forge-redis-qdrant-integration",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-repo-intelligence",
+   "rel": "forge-repo-intelligence",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-secret-hygiene",
+   "rel": "forge-secret-hygiene",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-spatial-grounding",
+   "rel": "forge-spatial-grounding",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-symlink-audit",
+   "rel": "forge-symlink-audit",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-tailwind-tokens",
+   "rel": "forge-tailwind-tokens",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-telegram-audit",
+   "rel": "forge-telegram-audit",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-vision-densify",
+   "rel": "forge-vision-densify",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge-visual-qa-w3",
+   "rel": "forge-visual-qa-w3",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "forge_card_migrate",
+   "rel": "federation-identity-zen/forge_card_migrate",
+   "kind": "bucket:federation-identity-zen",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "futures-forecast-briefing",
+   "rel": "research-core/futures-forecast-briefing",
+   "kind": "bucket:research-core",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "geox-grounding",
+   "rel": "geox-grounding",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "github-auth",
+   "rel": "github/github-auth",
+   "kind": "bucket:github",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "github-code-review",
+   "rel": "github/github-code-review",
+   "kind": "bucket:github",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "github-issue-to-pr",
+   "rel": "github/github-issue-to-pr",
+   "kind": "bucket:github",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "github-issues",
+   "rel": "github/github-issues",
+   "kind": "bucket:github",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "github-pr-workflow",
+   "rel": "github/github-pr-workflow",
+   "kind": "bucket:github",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "github-repo-management",
+   "rel": "github/github-repo-management",
+   "kind": "bucket:github",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "hermes-coding-gateway",
+   "rel": "hermes-coding-gateway",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "hermes-federated-identity",
+   "rel": "hermes-federated-identity",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "hermes-opencode-protocol",
+   "rel": "hermes-opencode-protocol",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "hermes-rasa-doctrine",
+   "rel": "domains/general/apex/governance-core/hermes-rasa-doctrine",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "hermes-telegram-stack-zen",
+   "rel": "hermes-telegram-stack-zen",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "huggingface-hub",
+   "rel": "mlops/huggingface-hub",
+   "kind": "bucket:mlops",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "human-bond-reality-audit",
+   "rel": "verification-discipline/human-bond-reality-audit",
+   "kind": "bucket:verification-discipline",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "human-relationship-audit",
+   "rel": "research/human-relationship-audit",
+   "kind": "bucket:research",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "human-state-estimation",
+   "rel": "human-state-estimation",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "image-text-editing",
+   "rel": "creative/image-text-editing",
+   "kind": "bucket:creative",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "inherited-claim-audit",
+   "rel": "court-audit/inherited-claim-audit",
+   "kind": "bucket:court-audit",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "insider-exposure-inventory",
+   "rel": "audit/insider-exposure-inventory",
+   "kind": "bucket:audit",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "institutional-fact-verification",
+   "rel": "research/institutional-fact-verification",
+   "kind": "bucket:research",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "kernel-trinity-33",
+   "rel": "kernel-trinity-33",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "kimi-agentic-state",
+   "rel": "kimi-agentic-state",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "llama-cpp",
+   "rel": "mlops/inference/llama-cpp",
+   "kind": "bucket:mlops",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "makcikgpt-article-craft",
+   "rel": "civic-publishing/makcikgpt-article-craft",
+   "kind": "bucket:civic-publishing",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "malaysian-employment-separation",
+   "rel": "legal-my/malaysian-employment-separation",
+   "kind": "bucket:legal-my",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "mapbox-cartography-gis",
+   "rel": "mapbox-cartography-gis",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "mata",
+   "rel": "mata",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "mcp-sota-shopping-list",
+   "rel": "mcp-sota-shopping-list",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "measurement-discipline",
+   "rel": "governance-core/measurement-discipline",
+   "kind": "bucket:governance-core",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "media-content-extraction",
+   "rel": "media/media-content-extraction",
+   "kind": "bucket:media",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "merge-reconciler",
+   "rel": "autonomous-ai-agents/merge-reconciler",
+   "kind": "bucket:autonomous-ai-agents",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "mimo-audio",
+   "rel": "mimo-audio",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "mimo-vision",
+   "rel": "mimo-vision",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "multi-period-cashflow-analysis",
+   "rel": "finance/multi-period-cashflow-analysis",
+   "kind": "bucket:finance",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "nano-pdf",
+   "rel": "productivity/nano-pdf",
+   "kind": "bucket:productivity",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "ocr-and-documents",
+   "rel": "productivity/ocr-and-documents",
+   "kind": "bucket:productivity",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "openclaw-human-meaning",
+   "rel": "openclaw-human-meaning",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "opencode-agentic-state",
+   "rel": "opencode-agentic-state",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "opencode-meta-mesa",
+   "rel": "opencode-meta-mesa",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "opencode-zen-router",
+   "rel": "opencode-zen-router",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "openhue",
+   "rel": "smart-home/openhue",
+   "kind": "bucket:smart-home",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "outbound-message-delivery",
+   "rel": "telegram-ops/outbound-message-delivery",
+   "kind": "bucket:telegram-ops",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "ped-hormone-advisory",
+   "rel": "ped-hormone-advisory",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "persona-triad-reasoning",
+   "rel": "domains/general/apex/cognitive-reflex/persona-triad-reasoning",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "plan",
+   "rel": "software-development/plan",
+   "kind": "bucket:software-development",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "pretext",
+   "rel": "creative/pretext",
+   "kind": "bucket:creative",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "principal-analysis-artifact",
+   "rel": "document-intel/principal-analysis-artifact",
+   "kind": "bucket:document-intel",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "prompts-chat-library",
+   "rel": "prompts-chat-library",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "provider-notice-triage",
+   "rel": "provider-notice-triage",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "proxy-verification-audit",
+   "rel": "court-audit/proxy-verification-audit",
+   "kind": "bucket:court-audit",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "public-column-publishing",
+   "rel": "public-column-publishing",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "publication-risk-audit",
+   "rel": "governance/publication-risk-audit",
+   "kind": "bucket:governance",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "qwen-agentic-state",
+   "rel": "qwen-agentic-state",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "qwen-meta-mesa",
+   "rel": "qwen-meta-mesa",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "qwen-zen-router",
+   "rel": "qwen-zen-router",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "qwencloud-audio-tts",
+   "rel": "qwencloud-audio-tts",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "qwencloud-deploy",
+   "rel": "qwencloud-deploy",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "qwencloud-image-generation",
+   "rel": "qwencloud-image-generation",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "qwencloud-model-selector",
+   "rel": "qwencloud-model-selector",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "qwencloud-ops-auth",
+   "rel": "qwencloud-ops-auth",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "qwencloud-text",
+   "rel": "qwencloud-text",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "qwencloud-update-check",
+   "rel": "qwencloud-update-check",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "qwencloud-usage",
+   "rel": "qwencloud-usage",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "qwencloud-video-generation",
+   "rel": "qwencloud-video-generation",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "qwencloud-vision",
+   "rel": "qwencloud-vision",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "relationship-evidence-audit",
+   "rel": "audit/relationship-evidence-audit",
+   "kind": "bucket:audit",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "relationship-reality-audit",
+   "rel": "audit/relationship-reality-audit",
+   "kind": "bucket:audit",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "research-paper-writing",
+   "rel": "research/research-paper-writing",
+   "kind": "bucket:research",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "rsi-federation-mesh",
+   "rel": "rsi-federation-mesh",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "rtc-loop",
+   "rel": "rtc-loop",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "sanctuary-boundary-enforcer",
+   "rel": "sanctuary-boundary-enforcer",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "scar-bridge-install",
+   "rel": "scar-bridge-install",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "seal-discipline",
+   "rel": "seal-discipline",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "sensitive-publication-governance",
+   "rel": "governance/sensitive-publication-governance",
+   "kind": "bucket:governance",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "serving-llms-vllm",
+   "rel": "mlops/inference/serving-llms-vllm",
+   "kind": "bucket:mlops",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "session-librarian",
+   "rel": "productivity/session-librarian",
+   "kind": "bucket:productivity",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "site-traffic-reality",
+   "rel": "governance/site-traffic-reality",
+   "kind": "bucket:governance",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "sketch",
+   "rel": "creative/sketch",
+   "kind": "bucket:creative",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "skill-creator",
+   "rel": "engineering/skill-creator",
+   "kind": "bucket:engineering",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "sovereign-recognize",
+   "rel": "reflective/sovereign-recognize",
+   "kind": "bucket:reflective",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "symbol-namespace-integrity",
+   "rel": "governance/symbol-namespace-integrity",
+   "kind": "bucket:governance",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "third-party-audit-intake",
+   "rel": "audit/third-party-audit-intake",
+   "kind": "bucket:audit",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "touchdesigner-mcp",
+   "rel": "creative/touchdesigner-mcp",
+   "kind": "bucket:creative",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "understand",
+   "rel": "understand",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "understand-chat",
+   "rel": "understand-chat",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "understand-dashboard",
+   "rel": "understand-dashboard",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "understand-diff",
+   "rel": "understand-diff",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "understand-domain",
+   "rel": "understand-domain",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "understand-explain",
+   "rel": "understand-explain",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "understand-figma",
+   "rel": "understand-figma",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "understand-knowledge",
+   "rel": "understand-knowledge",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "understand-onboard",
+   "rel": "understand-onboard",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "wawabot-anthropology-surface",
+   "rel": "wawabot-anthropology-surface",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "web-scrape",
+   "rel": "hermes/web-scrape",
+   "kind": "bucket:hermes",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "web-search",
+   "rel": "hermes/web-search",
+   "kind": "bucket:hermes",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "weights-and-biases",
+   "rel": "mlops/evaluation/weights-and-biases",
+   "kind": "bucket:mlops",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "wisdom-reader",
+   "rel": "wisdom-reader",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  {
+   "name": "youtube-eureka",
+   "rel": "media/youtube-eureka",
+   "kind": "bucket:media",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  }
+ ],
+ "storage": {
+  "AAA-video-emd-pipeline": {
+   "rel": "capabilities/media/AAA-video-emd-pipeline",
+   "kind": "bucket:capabilities",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "AGI-decisions-reflect": {
+   "rel": "capabilities/synthesis/AGI-decisions-reflect",
+   "kind": "bucket:capabilities",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "agent-capability-self-audit": {
+   "rel": "capabilities/agent-capability-self-audit",
+   "kind": "bucket:capabilities",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "futures-forecast-briefing": {
+   "rel": "research-core/futures-forecast-briefing",
+   "kind": "bucket:research-core",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "geox-basin-claims-audit": {
+   "rel": "geo/geox-basin-claims-audit",
+   "kind": "bucket:geo",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "seismic-interpretation-alignment": {
+   "rel": "geo/seismic-interpretation-alignment",
+   "kind": "bucket:geo",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "basin-charge-screening": {
+   "rel": "geo/basin-charge-screening",
+   "kind": "bucket:geo",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "geological-figure-production": {
+   "rel": "domains/geo/workshop/my-domain-intel/geological-figure-production",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "federation-organ-recovery": {
+   "rel": "domains/well/forge/federation-topology/federation-organ-recovery",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "federation-service-recovery": {
+   "rel": "domains/well/forge/federation-topology/federation-service-recovery",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "biohacker-peptide-stack": {
+   "rel": "domains/well/workshop/research-core/biohacker-peptide-stack",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "sleep-data-interpretation": {
+   "rel": "domains/well/workshop/research-core/sleep-data-interpretation",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "BIOHACK-PEPTIDES": {
+   "rel": "domains/well/workshop/physique-intel/BIOHACK-PEPTIDES",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "malaysian-physique-circuit": {
+   "rel": "domains/well/workshop/physique-intel/malaysian-physique-circuit",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "wealth-mcp-testing": {
+   "rel": "domains/wealth/forge/mcp-ops/wealth-mcp-testing",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "wealth-mcp-tool-hardening": {
+   "rel": "domains/wealth/forge/mcp-ops/wealth-mcp-tool-hardening",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "agentic-trading-companion": {
+   "rel": "domains/wealth/workshop/trading-exec/agentic-trading-companion",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "mt5-ai-trading-agent": {
+   "rel": "domains/wealth/workshop/trading-exec/mt5-ai-trading-agent",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "trading-signal-chart": {
+   "rel": "domains/wealth/workshop/trading-exec/trading-signal-chart",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "petronas-petros-shell-dispute": {
+   "rel": "domains/my-reality/workshop/research-core/petronas-petros-shell-dispute",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "petronas-entity-filings-probe": {
+   "rel": "domains/my-reality/workshop/my-domain-intel/petronas-entity-filings-probe",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "my-reality": {
+   "rel": "domains/my-reality/workshop/my-domain-intel/my-reality",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "nasilemak-engine": {
+   "rel": "domains/my-reality/workshop/business-intel/nasilemak-engine",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "nasi-lemak-business-intelligence": {
+   "rel": "domains/my-reality/workshop/business-intel/nasi-lemak-business-intelligence",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "malaysian-tenancy-consumer-dispute": {
+   "rel": "domains/my-reality/workshop/legal-my/malaysian-tenancy-consumer-dispute",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "malaysian-family-law": {
+   "rel": "domains/my-reality/workshop/legal-my/malaysian-family-law",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "arifos-kernel-ceremony": {
+   "rel": "domains/general/apex/verdict/arifos-kernel-ceremony",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "hermes-rca-forge": {
+   "rel": "domains/general/apex/governance-core/hermes-rca-forge",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "relationship-memory-isolation": {
+   "rel": "domains/general/apex/governance-core/relationship-memory-isolation",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "live-system-investigation": {
+   "rel": "domains/general/apex/governance-core/live-system-investigation",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "sovereign-theoretical-directive": {
+   "rel": "domains/general/apex/governance-core/sovereign-theoretical-directive",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "pasted-material-analysis": {
+   "rel": "domains/general/apex/governance-core/pasted-material-analysis",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-mcp-governance-wrapper": {
+   "rel": "domains/general/apex/governance-core/forge-mcp-governance-wrapper",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "agentic-autonomy-loop": {
+   "rel": "domains/general/apex/governance-core/agentic-autonomy-loop",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "constitutional-floors": {
+   "rel": "domains/general/apex/governance-core/constitutional-floors",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "live-service-ops": {
+   "rel": "domains/general/apex/governance-core/live-service-ops",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "federation-housekeeping-master": {
+   "rel": "domains/general/apex/governance-core/federation-housekeeping-master",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "constitutional-kernel-architecture": {
+   "rel": "domains/general/apex/governance-core/constitutional-kernel-architecture",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "event-driven-alerting": {
+   "rel": "domains/general/apex/governance-core/event-driven-alerting",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-governance-analysis": {
+   "rel": "domains/general/apex/governance-core/forge-governance-analysis",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "hermes-rasa-doctrine": {
+   "rel": "domains/general/apex/governance-core/hermes-rasa-doctrine",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "agent-output-contract": {
+   "rel": "domains/general/apex/governance-core/agent-output-contract",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-execution-governance": {
+   "rel": "domains/general/apex/governance-core/forge-execution-governance",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "internal-holdings-locate": {
+   "rel": "domains/general/apex/governance-core/internal-holdings-locate",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "rasa-qualia-governance": {
+   "rel": "domains/general/apex/governance-core/rasa-qualia-governance",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "federation-mcp-drift-audit": {
+   "rel": "domains/general/apex/governance-core/federation-mcp-drift-audit",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "identity-axiom-derivation": {
+   "rel": "domains/general/apex/governance-core/identity-axiom-derivation",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "operational-signal-routing": {
+   "rel": "domains/general/apex/governance-core/operational-signal-routing",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "institution-entropy-audit": {
+   "rel": "domains/general/apex/governance-core/institution-entropy-audit",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "RSI-recursive-improvement": {
+   "rel": "RSI-recursive-improvement",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": true,
+   "target": "/root/AAA/skills/domains/general/apex/recursive-audit/RSI-recursive-improvement"
+  },
+  "arif-style-zen-audit": {
+   "rel": "domains/general/apex/recursive-audit/arif-style-zen-audit",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "APEX-humility-godel": {
+   "rel": "domains/general/apex/recursive-audit/APEX-humility-godel",
+   "kind": "taxonomy",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "forge-musyawawah-deliberation": {
+   "rel": "domains/general/apex/musyawarah/forge-musyawawah-deliberation",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "loved-one-worry-support": {
+   "rel": "domains/general/apex/cognitive-reflex/loved-one-worry-support",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "goodnight-loop-discipline": {
+   "rel": "domains/general/apex/cognitive-reflex/goodnight-loop-discipline",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "shadow-mode": {
+   "rel": "domains/general/apex/cognitive-reflex/shadow-mode",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "sinboy-shadow-lane": {
+   "rel": "domains/general/apex/cognitive-reflex/sinboy-shadow-lane",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "governed-uncertainty": {
+   "rel": "domains/general/apex/cognitive-reflex/governed-uncertainty",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "persona-triad-reasoning": {
+   "rel": "domains/general/apex/cognitive-reflex/persona-triad-reasoning",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "wisdom-letter-for-loved-ones": {
+   "rel": "domains/general/apex/cognitive-reflex/wisdom-letter-for-loved-ones",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "shadow-mapping": {
+   "rel": "domains/general/apex/cognitive-reflex/shadow-mapping",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "a2a-agent-card-registration": {
+   "rel": "domains/general/aaa/onboarding/a2a-agent-card-registration",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "agent-exploration-discipline": {
+   "rel": "domains/general/aaa/substrate/agent-exploration-discipline",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "bridge-protocol": {
+   "rel": "domains/general/aaa/substrate/bridge-protocol",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "arifos-runtime-module-authoring": {
+   "rel": "domains/general/aaa/substrate/arifos-runtime-module-authoring",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "arifos-auto-init": {
+   "rel": "domains/general/aaa/substrate/arifos-auto-init",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "sovereign-recognize": {
+   "rel": "reflective/sovereign-recognize",
+   "kind": "bucket:reflective",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "aaa-knowledge-files": {
+   "rel": "domains/general/aaa/substrate/aaa-knowledge-files",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "skill-audit-methodology": {
+   "rel": "domains/general/aaa/skill-mesh/skill-audit-methodology",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "skills-cold-storage-ops": {
+   "rel": "domains/general/aaa/skill-mesh/skills-cold-storage-ops",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "skill-taxonomy-reclassification": {
+   "rel": "domains/general/aaa/skill-mesh/skill-taxonomy-reclassification",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "local-memory-retrieval": {
+   "rel": "domains/general/aaa/context-ops/local-memory-retrieval",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "arifos-memory-architecture": {
+   "rel": "domains/general/aaa/context-ops/arifos-memory-architecture",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-mcp-registry-publish": {
+   "rel": "domains/general/aaa/catalog-ops/forge-mcp-registry-publish",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "hermes-response-latency-triage": {
+   "rel": "domains/general/forge/incident-response/hermes-response-latency-triage",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "hermes-gateway-delivery-storm": {
+   "rel": "domains/general/forge/mesh-transport/hermes-gateway-delivery-storm",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "ccc-pool-multihost-audit": {
+   "rel": "domains/general/forge/mesh-transport/ccc-pool-multihost-audit",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "hermes-browser-skills-mesh-snap": {
+   "rel": "domains/general/forge/mesh-transport/hermes-browser-skills-mesh-snap",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "kvm4-ccc-dispatch": {
+   "rel": "domains/general/forge/mesh-transport/kvm4-ccc-dispatch",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "opencode-config-zen": {
+   "rel": "domains/general/forge/mesh-transport/opencode-config-zen",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "agent-to-agent-enablement": {
+   "rel": "domains/general/forge/mesh-transport/agent-to-agent-enablement",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "observability-completeness-audit": {
+   "rel": "domains/general/forge/telemetry/observability-completeness-audit",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "kabarkan-observability": {
+   "rel": "domains/general/forge/telemetry/kabarkan-observability",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "aforge-test-runner": {
+   "rel": "domains/general/forge/verify-work/aforge-test-runner",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "arif-sites-content-ops": {
+   "rel": "domains/general/forge/web-stack/arif-sites-content-ops",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "har-derived-api-client": {
+   "rel": "domains/general/forge/web-stack/har-derived-api-client",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "china-ai-key-classification": {
+   "rel": "domains/general/forge/secret-hygiene/china-ai-key-classification",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "litellm-proxy-triage": {
+   "rel": "domains/general/forge/model-routing/litellm-proxy-triage",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "tokenrouter-guide": {
+   "rel": "domains/general/forge/model-routing/tokenrouter-guide",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "fed-model-chain-editing": {
+   "rel": "domains/general/forge/model-routing/fed-model-chain-editing",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "institutional-forensic-analysis": {
+   "rel": "domains/general/forge/repo-intelligence/institutional-forensic-analysis",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "hermes-upstream-audit": {
+   "rel": "domains/general/forge/repo-intelligence/hermes-upstream-audit",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "audio-analysis": {
+   "rel": "domains/general/forge/repo-intelligence/audio-analysis",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "audio-feature-analysis": {
+   "rel": "domains/general/forge/repo-intelligence/audio-feature-analysis",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-monolith-split": {
+   "rel": "domains/general/forge/repo-intelligence/forge-monolith-split",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-minimax-mcp-direct-invoke": {
+   "rel": "domains/general/forge/mcp-ops/forge-minimax-mcp-direct-invoke",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "FORGE-mcp-testing": {
+   "rel": "FORGE-mcp-testing",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": true,
+   "target": "/root/AAA/skills/domains/general/forge/mcp-ops/FORGE-mcp-testing"
+  },
+  "external-platform-mcp": {
+   "rel": "domains/general/forge/mcp-ops/external-platform-mcp",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "mcp-ecosystem-indexing": {
+   "rel": "domains/general/forge/mcp-ops/mcp-ecosystem-indexing",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "telegram-mcp-product-line": {
+   "rel": "domains/general/forge/mcp-ops/telegram-mcp-product-line",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "hermes-cron-zen": {
+   "rel": "domains/general/forge/cron-ops/hermes-cron-zen",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-event-delivery": {
+   "rel": "domains/general/forge/cron-ops/forge-event-delivery",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "ops-event-routing": {
+   "rel": "domains/general/forge/cron-ops/ops-event-routing",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "aaa-event-bridge": {
+   "rel": "domains/general/forge/cron-ops/aaa-event-bridge",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "deploy-drift-verification": {
+   "rel": "domains/general/forge/federation-release/deploy-drift-verification",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "fork-drift-assessment": {
+   "rel": "domains/general/forge/federation-release/fork-drift-assessment",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "deployment-claim-verification": {
+   "rel": "domains/general/forge/federation-release/deployment-claim-verification",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "federation-machine-migration": {
+   "rel": "domains/general/forge/federation-topology/federation-machine-migration",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "federation-machine-verification": {
+   "rel": "domains/general/forge/federation-topology/federation-machine-verification",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "vps-cpu-throttle-triage": {
+   "rel": "domains/general/forge/federation-topology/vps-cpu-throttle-triage",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "federation-node-reachability": {
+   "rel": "domains/general/forge/federation-topology/federation-node-reachability",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "audit-falsification-discipline": {
+   "rel": "domains/general/court/court-audit/audit-falsification-discipline",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "live-probe-audit-pattern": {
+   "rel": "domains/general/court/court-audit/live-probe-audit-pattern",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "cognitive-level-assertion-protocol": {
+   "rel": "cognitive-level-assertion-protocol",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": true,
+   "target": "/root/AAA/skills/domains/general/court/court-audit/cognitive-level-assertion-protocol"
+  },
+  "synthesis-verification-gate": {
+   "rel": "domains/general/court/court-audit/synthesis-verification-gate",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "claim-receipt-discipline": {
+   "rel": "domains/general/court/court-audit/claim-receipt-discipline",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "agent-finding-verification": {
+   "rel": "domains/general/court/court-audit/agent-finding-verification",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "void-paradox-doctrine": {
+   "rel": "domains/general/court/court-audit/void-paradox-doctrine",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "escalation-trajectory-hold": {
+   "rel": "domains/general/court/court-audit/escalation-trajectory-hold",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "self-recurrence-guards": {
+   "rel": "domains/general/court/court-audit/self-recurrence-guards",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "assertion-window-discipline": {
+   "rel": "domains/general/court/court-audit/assertion-window-discipline",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "live-pipeline-trace-audit": {
+   "rel": "domains/general/court/court-audit/live-pipeline-trace-audit",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "sovereign-worry-witness": {
+   "rel": "domains/general/court/witness/sovereign-worry-witness",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "aaa-audio-mms-ctc-witness": {
+   "rel": "domains/general/court/witness/aaa-audio-mms-ctc-witness",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "arifos-kernel-seal-ritual": {
+   "rel": "domains/general/court/seal-ritual/arifos-kernel-seal-ritual",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "reality-kernel-phase1-evidence-ledger": {
+   "rel": "domains/general/court/vault-ledger/reality-kernel-phase1-evidence-ledger",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "health-product-claim-audit": {
+   "rel": "domains/general/workshop/research-core/health-product-claim-audit",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "external-technology-evaluation": {
+   "rel": "domains/general/workshop/research-core/external-technology-evaluation",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "human-intelligence-gathering": {
+   "rel": "domains/general/workshop/research-core/human-intelligence-gathering",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "person-intelligence-dossier": {
+   "rel": "domains/general/workshop/research-core/person-intelligence-dossier",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "news-research-briefing": {
+   "rel": "domains/general/workshop/research-core/news-research-briefing",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "professional-intelligence-briefing": {
+   "rel": "domains/general/workshop/research-core/professional-intelligence-briefing",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "person-dossier-from-public-sources": {
+   "rel": "domains/general/workshop/research-core/person-dossier-from-public-sources",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "food-nutrition-intelligence": {
+   "rel": "domains/general/workshop/research-core/food-nutrition-intelligence",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "whatsapp-group-intelligence": {
+   "rel": "domains/general/workshop/research-core/whatsapp-group-intelligence",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "text-forensics": {
+   "rel": "domains/general/workshop/research-core/text-forensics",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "institutional-leadership-lineage": {
+   "rel": "domains/general/workshop/research-core/institutional-leadership-lineage",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "executive-intelligence-briefing": {
+   "rel": "domains/general/workshop/research-core/executive-intelligence-briefing",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "arif-daily-sensorium": {
+   "rel": "domains/general/workshop/research-core/arif-daily-sensorium",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "composio-social-intelligence": {
+   "rel": "domains/general/workshop/social-media/composio-social-intelligence",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "email-outbound": {
+   "rel": "domains/general/workshop/email-outbound/email-outbound",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "brevo-email-sending": {
+   "rel": "domains/general/workshop/email-outbound/brevo-email-sending",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "qwen-token-plan-team-edition": {
+   "rel": "domains/general/workshop/qwencloud/qwen-token-plan-team-edition",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "qwencloud-mesh": {
+   "rel": "domains/general/workshop/qwencloud/qwencloud-mesh",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "qwencloud-cli": {
+   "rel": "domains/general/workshop/qwencloud/qwencloud-cli",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-web-intelligence": {
+   "rel": "domains/general/workshop/search-web/forge-web-intelligence",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "web-extraction-fallbacks": {
+   "rel": "domains/general/workshop/search-web/web-extraction-fallbacks",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "deep-research": {
+   "rel": "domains/general/workshop/search-web/deep-research",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "tts-route-deep-research": {
+   "rel": "domains/general/workshop/search-web/tts-route-deep-research",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "sovereign-search": {
+   "rel": "domains/general/workshop/search-web/sovereign-search",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "video-prompt-engineering": {
+   "rel": "domains/general/workshop/video-gen/video-prompt-engineering",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "youtube-video-info": {
+   "rel": "domains/general/workshop/video-gen/youtube-video-info",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "ai-video-generation": {
+   "rel": "domains/general/workshop/video-gen/ai-video-generation",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "happyhorse-video-api": {
+   "rel": "domains/general/workshop/video-gen/happyhorse-video-api",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "social-video-intelligence": {
+   "rel": "domains/general/workshop/video-gen/social-video-intelligence",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "h3-video": {
+   "rel": "domains/general/workshop/video-gen/h3-video",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "hermes-naked-prior-audit": {
+   "rel": "domains/general/workshop/verification-discipline/hermes-naked-prior-audit",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "poster-vision-extraction": {
+   "rel": "domains/general/workshop/vision-analyzer/poster-vision-extraction",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "chat-screenshot-forensics": {
+   "rel": "domains/general/workshop/vision-analyzer/chat-screenshot-forensics",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "telegram-group-sender-identity": {
+   "rel": "domains/general/workshop/telegram-ops/telegram-group-sender-identity",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "telegram-gateway-troubleshooting": {
+   "rel": "domains/general/workshop/telegram-ops/telegram-gateway-troubleshooting",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "relay-echo-loop-handling": {
+   "rel": "domains/general/workshop/telegram-ops/relay-echo-loop-handling",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "telegram-gateway-ipv6-hang-fix": {
+   "rel": "domains/general/workshop/telegram-ops/telegram-gateway-ipv6-hang-fix",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "telegram-userbot-telethon": {
+   "rel": "domains/general/workshop/telegram-ops/telegram-userbot-telethon",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "telegram-bot-identity-and-group-routing": {
+   "rel": "domains/general/workshop/telegram-ops/telegram-bot-identity-and-group-routing",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "telegram-bot-routing-doctrine": {
+   "rel": "domains/general/workshop/telegram-ops/telegram-bot-routing-doctrine",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "telegram-conversation-history-extraction": {
+   "rel": "domains/general/workshop/telegram-ops/telegram-conversation-history-extraction",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "hermes-lane-switch-routing": {
+   "rel": "domains/general/workshop/telegram-ops/hermes-lane-switch-routing",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "telegram-group-bot-rollout": {
+   "rel": "domains/general/workshop/telegram-ops/telegram-group-bot-rollout",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "hermes-telegram-gateway-authorization": {
+   "rel": "domains/general/workshop/telegram-ops/hermes-telegram-gateway-authorization",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "hermes-response-format-fit": {
+   "rel": "domains/general/workshop/human-interface/hermes-response-format-fit",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "arif-human-membrane-integration": {
+   "rel": "domains/general/workshop/human-interface/arif-human-membrane-integration",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "a-forge-development": {
+   "rel": "domains/general/workshop/forge-dev/a-forge-development",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-phased-delivery": {
+   "rel": "domains/general/workshop/media-delivery/forge-phased-delivery",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "generated-media-delivery": {
+   "rel": "domains/general/workshop/media-delivery/generated-media-delivery",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "visual-artifact-delivery": {
+   "rel": "domains/general/workshop/media-delivery/visual-artifact-delivery",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "mulerouter-media": {
+   "rel": "domains/general/workshop/minimax-tools/mulerouter-media",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "mmx-mesh": {
+   "rel": "domains/general/workshop/minimax-tools/mmx-mesh",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "minimax-voice-design-prompts": {
+   "rel": "domains/general/workshop/voice-stack/minimax-voice-design-prompts",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "text-to-speech": {
+   "rel": "domains/general/workshop/voice-stack/text-to-speech",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "hermes-voice-config": {
+   "rel": "domains/general/workshop/voice-stack/hermes-voice-config",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "nusantara-voice-stack": {
+   "rel": "domains/general/workshop/voice-stack/nusantara-voice-stack",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "nusantara-acoustic-infrastructure": {
+   "rel": "domains/general/workshop/voice-stack/nusantara-acoustic-infrastructure",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "tts-edge-fallback": {
+   "rel": "domains/general/workshop/voice-stack/tts-edge-fallback",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "human-voice-writing": {
+   "rel": "domains/general/workshop/voice-stack/human-voice-writing",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "heartmula": {
+   "rel": "domains/general/workshop/audio-emd/heartmula",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "music-generation": {
+   "rel": "domains/general/workshop/audio-emd/music-generation",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "music-intelligence": {
+   "rel": "domains/general/workshop/audio-emd/music-intelligence",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "kpj-sales-dashboard": {
+   "rel": "domains/general/workshop/business-intel/kpj-sales-dashboard",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "human-advisory-discipline": {
+   "rel": "domains/general/workshop/counseling/human-advisory-discipline",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "third-party-advisory-doc": {
+   "rel": "domains/general/workshop/counseling/third-party-advisory-doc",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "makcikgpt-civic-intelligence": {
+   "rel": "domains/general/workshop/creative-design/makcikgpt-civic-intelligence",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "makcikgpt-article-forging": {
+   "rel": "domains/general/workshop/creative-design/makcikgpt-article-forging",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "civic-social-infographic": {
+   "rel": "domains/general/workshop/creative-design/civic-social-infographic",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "infographic-generation": {
+   "rel": "domains/general/workshop/creative-design/infographic-generation",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "civic-shadow-editorial": {
+   "rel": "domains/general/workshop/creative-design/civic-shadow-editorial",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "abang-sado-creative-lane": {
+   "rel": "domains/general/workshop/creative-design/abang-sado-creative-lane",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "medical-document-interpretation": {
+   "rel": "domains/general/workshop/document-intel/medical-document-interpretation",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "civic-intelligence-pdf": {
+   "rel": "domains/general/workshop/document-intel/civic-intelligence-pdf",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "open-slide-integration": {
+   "rel": "domains/general/workshop/document-intel/open-slide-integration",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-pdf-delivery": {
+   "rel": "domains/general/workshop/document-intel/forge-pdf-delivery",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "scientific-pdf-generation": {
+   "rel": "domains/general/workshop/document-intel/scientific-pdf-generation",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "termux-arif-tailscale-ssh": {
+   "rel": "domains/general/workshop/device-edge/termux-arif-tailscale-ssh",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "mobile-device-edge": {
+   "rel": "domains/general/workshop/device-edge/mobile-device-edge",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "phone-bridge": {
+   "rel": "domains/general/workshop/device-edge/phone-bridge",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "relationship-kernel": {
+   "rel": "domains/general/workshop/personal-lane/relationship-kernel",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "arif-family-members": {
+   "rel": "domains/general/workshop/personal-lane/arif-family-members",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "well-operations": {
+   "rel": "domains/general/workshop/well-domain/well-operations",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "hospital-patient-advocacy": {
+   "rel": "domains/general/workshop/health-advocacy/hospital-patient-advocacy",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "photorealistic-human-image-gen": {
+   "rel": "domains/general/workshop/image-gen/photorealistic-human-image-gen",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "minimax-cli": {
+   "rel": "domains/general/workshop/image-gen/minimax-cli",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "photorealistic-human-multi-model": {
+   "rel": "domains/general/workshop/image-gen/photorealistic-human-multi-model",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "lightweight-image-generation": {
+   "rel": "domains/general/workshop/image-gen/lightweight-image-generation",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-real-person-reference-photos": {
+   "rel": "domains/general/workshop/image-gen/forge-real-person-reference-photos",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "image-gen-fallback-chain": {
+   "rel": "domains/general/workshop/image-gen/image-gen-fallback-chain",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "sd-lora-ecosystem": {
+   "rel": "domains/general/workshop/image-gen/sd-lora-ecosystem",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "synthetic-human-media-pipeline": {
+   "rel": "domains/general/workshop/image-gen/synthetic-human-media-pipeline",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "image-identity-transfer": {
+   "rel": "domains/general/workshop/image-gen/image-identity-transfer",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "weekly-federation-deep-brief": {
+   "rel": "domains/general/workshop/intel-brief/weekly-federation-deep-brief",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "intelligence-brief-forge": {
+   "rel": "domains/general/workshop/intel-brief/intelligence-brief-forge",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "ariflow-component-forging": {
+   "rel": "domains/general/workshop/organ-forging/ariflow-component-forging",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "arifos-organ-forging": {
+   "rel": "domains/general/workshop/organ-forging/arifos-organ-forging",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "financial-report-forensic": {
+   "rel": "domains/general/workshop/forensics/financial-report-forensic",
+   "kind": "taxonomy",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "know-physics": {
+   "rel": "know-physics",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "mimo-vision": {
+   "rel": "mimo-vision",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "aaa-skill-governor-runtime": {
+   "rel": "aaa-skill-governor-runtime",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "makcikgpt-article-craft": {
+   "rel": "civic-publishing/makcikgpt-article-craft",
+   "kind": "bucket:civic-publishing",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-secret-hygiene": {
+   "rel": "forge-secret-hygiene",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-telegram-audit": {
+   "rel": "forge-telegram-audit",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "runpod": {
+   "rel": "runpod",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "forge-onboarding": {
+   "rel": "forge-onboarding",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "agent-onboarding": {
+   "rel": "forge-onboarding/agent-onboarding",
+   "kind": "bucket:forge-onboarding",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "claude-meta-mesa": {
+   "rel": "claude-meta-mesa",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "plan": {
+   "rel": "software-development/plan",
+   "kind": "bucket:software-development",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-document-intelligence": {
+   "rel": "forge-document-intelligence",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "understand-dashboard": {
+   "rel": "understand-dashboard",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "agi-decisions-reflect": {
+   "rel": "agi-decisions-reflect",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "web-search": {
+   "rel": "hermes/web-search",
+   "kind": "bucket:hermes",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "web-scrape": {
+   "rel": "hermes/web-scrape",
+   "kind": "bucket:hermes",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "know-math": {
+   "rel": "know-math",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "qwencloud-deploy": {
+   "rel": "qwencloud-deploy",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-well-boundary-repair": {
+   "rel": "forge-well-boundary-repair",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-google-workspace": {
+   "rel": "forge-google-workspace",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "geox-grounding": {
+   "rel": "geox-grounding",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "aaa-ocr-optical-compression": {
+   "rel": "aaa-ocr-optical-compression",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "prompts-chat-library": {
+   "rel": "prompts-chat-library",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "qwen-meta-mesa": {
+   "rel": "qwen-meta-mesa",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "claude-agentic-state": {
+   "rel": "claude-agentic-state",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "runtime": {
+   "rel": "runtime",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "delegated-build-fanout": {
+   "rel": "delegated-build-fanout",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "scar-bridge-install": {
+   "rel": "scar-bridge-install",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "fi-mesh-check": {
+   "rel": "fi-mesh-check",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "agi-web-optimization": {
+   "rel": "agi-web-optimization",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "understand-onboard": {
+   "rel": "understand-onboard",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "arifos-external-council": {
+   "rel": "arifos-external-council",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "forge-github-ops": {
+   "rel": "forge-github-ops",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "audit-repo-reality": {
+   "rel": "audit-repo-reality",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "mcp-dual-era-transport": {
+   "rel": "forge-mcp-ops/mcp-dual-era-transport",
+   "kind": "bucket:forge-mcp-ops",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "agi-plan-dag": {
+   "rel": "agi-plan-dag",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "help": {
+   "rel": "help",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "runpod-usage": {
+   "rel": "runpod-usage",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "forge-react-spa-discipline": {
+   "rel": "forge-react-spa-discipline",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "qwencloud-ops-auth": {
+   "rel": "qwencloud-ops-auth",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-spatial-grounding": {
+   "rel": "forge-spatial-grounding",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "browser-playwright-runner": {
+   "rel": "browser-playwright-runner",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "openclaw-human-meaning": {
+   "rel": "openclaw-human-meaning",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "WELL-3baik-log": {
+   "rel": "WELL-3baik-log",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-hermes-self-evolution": {
+   "rel": "forge-hermes-self-evolution",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "google-workspace-gws": {
+   "rel": "google-workspace-gws",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "multi-period-cashflow-analysis": {
+   "rel": "finance/multi-period-cashflow-analysis",
+   "kind": "bucket:finance",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "agy-scar-hardening": {
+   "rel": "agy-scar-hardening",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "reality-loop-operator": {
+   "rel": "reality-loop-operator",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "contextstream-memory-code-search": {
+   "rel": "contextstream-memory-code-search",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "FORGE-federation-manifest": {
+   "rel": "FORGE-federation-manifest",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "hermes-coding-gateway": {
+   "rel": "hermes-coding-gateway",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "wisdom-scar-session-audit": {
+   "rel": "wisdom-scar-session-audit",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "forge-ci-diagnose": {
+   "rel": "forge-ci-diagnose",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "qwencloud-model-selector": {
+   "rel": "qwencloud-model-selector",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "sanctuary-boundary-enforcer": {
+   "rel": "sanctuary-boundary-enforcer",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "wealth-claim-state": {
+   "rel": "wealth-claim-state",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "proxy-verification-audit": {
+   "rel": "court-audit/proxy-verification-audit",
+   "kind": "bucket:court-audit",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "inherited-claim-audit": {
+   "rel": "court-audit/inherited-claim-audit",
+   "kind": "bucket:court-audit",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "rsi-federation-mesh": {
+   "rel": "rsi-federation-mesh",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-postgres-schema-design": {
+   "rel": "forge-postgres-schema-design",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "openclaw": {
+   "rel": "openclaw",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "qwencloud-usage": {
+   "rel": "qwencloud-usage",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "qwencloud-update-check": {
+   "rel": "qwencloud-update-check",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "asi-agentic-governance": {
+   "rel": "asi-agentic-governance",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "canon-doctrine-sealing": {
+   "rel": "governance-core/canon-doctrine-sealing",
+   "kind": "bucket:governance-core",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "autonomous-learning-loop": {
+   "rel": "governance-core/autonomous-learning-loop",
+   "kind": "bucket:governance-core",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "measurement-discipline": {
+   "rel": "governance-core/measurement-discipline",
+   "kind": "bucket:governance-core",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-issue-triage": {
+   "rel": "forge-issue-triage",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "human-logistics-advisory": {
+   "rel": "human-logistics-advisory",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-fastapi-api-builder": {
+   "rel": "forge-fastapi-api-builder",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-multimodal-router": {
+   "rel": "forge-multimodal-router",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "machine-read-verification": {
+   "rel": "verification-discipline/machine-read-verification",
+   "kind": "bucket:verification-discipline",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "agent-session-forensics": {
+   "rel": "verification-discipline/agent-session-forensics",
+   "kind": "bucket:verification-discipline",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "human-bond-reality-audit": {
+   "rel": "verification-discipline/human-bond-reality-audit",
+   "kind": "bucket:verification-discipline",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "codebase-reality": {
+   "rel": "codebase-reality",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "human-state-estimation": {
+   "rel": "human-state-estimation",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "aaa-image-editing": {
+   "rel": "media/aaa-image-editing",
+   "kind": "bucket:media",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "youtube-eureka": {
+   "rel": "media/youtube-eureka",
+   "kind": "bucket:media",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "media-content-extraction": {
+   "rel": "media/media-content-extraction",
+   "kind": "bucket:media",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "social-media-content-ingestion": {
+   "rel": "media/social-media-content-ingestion",
+   "kind": "bucket:media",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-repo-intelligence": {
+   "rel": "forge-repo-intelligence",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-did-web-identity": {
+   "rel": "forge-did-web-identity",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-route-least-power": {
+   "rel": "forge-route-least-power",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "aaa-human-physique-topology": {
+   "rel": "aaa-human-physique-topology",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "mimo-audio": {
+   "rel": "mimo-audio",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "qwen-zen-router": {
+   "rel": "qwen-zen-router",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "MY-REALITY-STACK": {
+   "rel": "MY-REALITY-STACK",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "bijaksana-compile": {
+   "rel": "bijaksana-compile",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-context-compressor": {
+   "rel": "forge-context-compressor",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "opencode-zen-router": {
+   "rel": "opencode-zen-router",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-governance-jsonld": {
+   "rel": "forge-governance-jsonld",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge_card_migrate": {
+   "rel": "federation-identity-zen/forge_card_migrate",
+   "kind": "bucket:federation-identity-zen",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "substrate": {
+   "rel": "substrate",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "memory-manage": {
+   "rel": "memory-manage",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": true,
+   "target": "/root/AAA/skills/substrate/memory-manage"
+  },
+  "audit-seal": {
+   "rel": "audit-seal",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": true,
+   "target": "/root/AAA/skills/substrate/audit-seal"
+  },
+  "observe-ground": {
+   "rel": "observe-ground",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": true,
+   "target": "/root/AAA/skills/substrate/observe-ground"
+  },
+  "verify-gate": {
+   "rel": "verify-gate",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": true,
+   "target": "/root/AAA/skills/substrate/verify-gate"
+  },
+  "route-dispatch": {
+   "rel": "route-dispatch",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": true,
+   "target": "/root/AAA/skills/substrate/route-dispatch"
+  },
+  "session-federation-discovery": {
+   "rel": "substrate/session-federation-discovery",
+   "kind": "bucket:substrate",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "kernel-bind": {
+   "rel": "kernel-bind",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": true,
+   "target": "/root/AAA/skills/substrate/kernel-bind"
+  },
+  "outbound-message-delivery": {
+   "rel": "telegram-ops/outbound-message-delivery",
+   "kind": "bucket:telegram-ops",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "first-party-evidence-audit": {
+   "rel": "first-party-evidence-audit",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "ocr-and-documents": {
+   "rel": "productivity/ocr-and-documents",
+   "kind": "bucket:productivity",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "nano-pdf": {
+   "rel": "productivity/nano-pdf",
+   "kind": "bucket:productivity",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "session-librarian": {
+   "rel": "productivity/session-librarian",
+   "kind": "bucket:productivity",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "COPILOT-zen-router": {
+   "rel": "COPILOT-zen-router",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "enforcement-coverage-audit": {
+   "rel": "enforcement-coverage-audit",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "opencode-agentic-state": {
+   "rel": "opencode-agentic-state",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "ped-hormone-advisory": {
+   "rel": "ped-hormone-advisory",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "hermes": {
+   "rel": "apex_verdict_seal/hermes",
+   "kind": "bucket:apex_verdict_seal",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "claude": {
+   "rel": "FORGE-onboarding/claude",
+   "kind": "bucket:FORGE-onboarding",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-symlink-audit": {
+   "rel": "forge-symlink-audit",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-act-federation-ingress": {
+   "rel": "forge-act-federation-ingress",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "malaysia-reality-interface": {
+   "rel": "malaysia-reality-interface",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-infra-crons": {
+   "rel": "forge-infra-crons",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "fi-qwen-upgrade": {
+   "rel": "fi-qwen-upgrade",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "federation-connect-headscale": {
+   "rel": "federation-connect-headscale",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "capability-telemetry-audit": {
+   "rel": "capability-telemetry-audit",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "cognitive-commands": {
+   "rel": "cognitive-commands",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "youtube-extraction-datacenter-ip": {
+   "rel": "youtube-extraction-datacenter-ip",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "opencode-meta-mesa": {
+   "rel": "opencode-meta-mesa",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-subagent-spawn": {
+   "rel": "forge-subagent-spawn",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-call-map": {
+   "rel": "forge-call-map",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "agi-agentic-web-delivery": {
+   "rel": "agi-agentic-web-delivery",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "RSI-federation-mesh": {
+   "rel": "RSI-federation-mesh",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-cross-agent-handoff": {
+   "rel": "forge-cross-agent-handoff",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-kimi-code": {
+   "rel": "forge-kimi-code",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-redis-qdrant-integration": {
+   "rel": "forge-redis-qdrant-integration",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "audit-repository-entropy": {
+   "rel": "audit-repository-entropy",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-vss-verifier-suite": {
+   "rel": "forge-vss-verifier-suite",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "imagine": {
+   "rel": "imagine",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "minimax-image-gen": {
+   "rel": "minimax-image-gen",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "kimi-agentic-state": {
+   "rel": "kimi-agentic-state",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "a2a-task-delegator": {
+   "rel": "a2a-task-delegator",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "audience-scoped-disclosure": {
+   "rel": "human-interface/audience-scoped-disclosure",
+   "kind": "bucket:human-interface",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "human-recognition-architecture": {
+   "rel": "human-interface/human-recognition-architecture",
+   "kind": "bucket:human-interface",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "public-profile-persona-mapping": {
+   "rel": "human-interface/public-profile-persona-mapping",
+   "kind": "bucket:human-interface",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "warga": {
+   "rel": "warga",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "constitutional": {
+   "rel": "warga/constitutional",
+   "kind": "bucket:warga",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "identity-invariance": {
+   "rel": "warga/constitutional/identity-invariance",
+   "kind": "bucket:warga",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "mcp-context-compression": {
+   "rel": "mcp-context-compression",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "emem-shared-memory": {
+   "rel": "emem-shared-memory",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "docs": {
+   "rel": "docs",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "mcp-sota-shopping-list": {
+   "rel": "mcp-sota-shopping-list",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "qwencloud-vision": {
+   "rel": "qwencloud-vision",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "understand-explain": {
+   "rel": "understand-explain",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-mcp-gui": {
+   "rel": "forge-mcp-gui",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "security-disclosure-handling": {
+   "rel": "security/security-disclosure-handling",
+   "kind": "bucket:security",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "authority-reality-grounder": {
+   "rel": "authority-reality-grounder",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "claude-zen-router": {
+   "rel": "claude-zen-router",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-design-intelligence": {
+   "rel": "forge-design-intelligence",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-musyawarah-gotong": {
+   "rel": "forge-musyawarah-gotong",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "kernel-trinity-33": {
+   "rel": "kernel-trinity-33",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "mcp-testing": {
+   "rel": "engineering/mcp-testing",
+   "kind": "bucket:engineering",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "incident-response": {
+   "rel": "engineering/incident-response",
+   "kind": "bucket:engineering",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "skill-creator": {
+   "rel": "engineering/skill-creator",
+   "kind": "bucket:engineering",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "drift-watch": {
+   "rel": "engineering/drift-watch",
+   "kind": "bucket:engineering",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "skill-inventory": {
+   "rel": "engineering/skill-inventory",
+   "kind": "bucket:engineering",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "telemetry-watchdog": {
+   "rel": "engineering/telemetry-watchdog",
+   "kind": "bucket:engineering",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "verify-work": {
+   "rel": "engineering/verify-work",
+   "kind": "bucket:engineering",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "cicd-deploy": {
+   "rel": "engineering/cicd-deploy",
+   "kind": "bucket:engineering",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "security-audit": {
+   "rel": "engineering/security-audit",
+   "kind": "bucket:engineering",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "federation-health": {
+   "rel": "engineering/federation-health",
+   "kind": "bucket:engineering",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "vps-ops": {
+   "rel": "engineering/vps-ops",
+   "kind": "bucket:engineering",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "code-review": {
+   "rel": "engineering/code-review",
+   "kind": "bucket:engineering",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "pr-governance": {
+   "rel": "engineering/pr-governance",
+   "kind": "bucket:engineering",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "mcp-ops": {
+   "rel": "engineering/mcp-ops",
+   "kind": "bucket:engineering",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "skill-drift": {
+   "rel": "engineering/skill-drift",
+   "kind": "bucket:engineering",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-artifact-publisher": {
+   "rel": "forge-artifact-publisher",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-vault999-witness": {
+   "rel": "forge-vault999-witness",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "aaa-doctrine-sealing": {
+   "rel": "aaa-governance/aaa-doctrine-sealing",
+   "kind": "bucket:aaa-governance",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-subagent-lifecycle": {
+   "rel": "forge-subagent-lifecycle",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "aaa-setup-help": {
+   "rel": "aaa-setup-help",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "hermes-gateway-image-routing": {
+   "rel": "hermes-gateway-image-routing",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "forge-esm-require-guard": {
+   "rel": "forge-esm-require-guard",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "arifos-constitutional-judge": {
+   "rel": "arifos-constitutional-judge",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "mcp-shopping-list-2026-09": {
+   "rel": "mcp-shopping-list-2026-09",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "federation-state-report": {
+   "rel": "federation/federation-state-report",
+   "kind": "bucket:federation",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-visual-qa-w3": {
+   "rel": "forge-visual-qa-w3",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-lsp-pre-edit-gate": {
+   "rel": "forge-lsp-pre-edit-gate",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "entropy-metabolizer": {
+   "rel": "entropy-metabolizer",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "hermes-opencode-protocol": {
+   "rel": "hermes-opencode-protocol",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "provider-notice-triage": {
+   "rel": "provider-notice-triage",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-nextjs-mastery": {
+   "rel": "forge-nextjs-mastery",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "federation-release-attestation": {
+   "rel": "federation-release-attestation",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "human-apps-roadmap-2026": {
+   "rel": "human-apps-roadmap-2026",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "arifos-kernel-zen-audit": {
+   "rel": "arifos-kernel-zen-audit",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "understand": {
+   "rel": "understand",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "understand-diff": {
+   "rel": "understand-diff",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "aaa-musyawarah-execution": {
+   "rel": "aaa-musyawarah-execution",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "aaa-pdf-voice-protocol": {
+   "rel": "aaa-pdf-voice-protocol",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "qwen-agentic-state": {
+   "rel": "qwen-agentic-state",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "hermes-runtime-audit": {
+   "rel": "hermes-ops/hermes-runtime-audit",
+   "kind": "bucket:hermes-ops",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "media-ingest-lane": {
+   "rel": "media-ingest-lane",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "human-meaning-membrane": {
+   "rel": "human-meaning-membrane",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "graphiti-temporal-memory-ops": {
+   "rel": "graphiti-temporal-memory-ops",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "agi-multimodal-bridge": {
+   "rel": "agi-multimodal-bridge",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "duckdb-analytics-engine": {
+   "rel": "duckdb-analytics-engine",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "wawabot-anthropology-surface": {
+   "rel": "wawabot-anthropology-surface",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "github-repo-management": {
+   "rel": "github/github-repo-management",
+   "kind": "bucket:github",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "github-auth": {
+   "rel": "github/github-auth",
+   "kind": "bucket:github",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "github-pr-workflow": {
+   "rel": "github/github-pr-workflow",
+   "kind": "bucket:github",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "github-issue-to-pr": {
+   "rel": "github/github-issue-to-pr",
+   "kind": "bucket:github",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "github-code-review": {
+   "rel": "github/github-code-review",
+   "kind": "bucket:github",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "github-issues": {
+   "rel": "github/github-issues",
+   "kind": "bucket:github",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "llama-cpp": {
+   "rel": "mlops/inference/llama-cpp",
+   "kind": "bucket:mlops",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "serving-llms-vllm": {
+   "rel": "mlops/inference/serving-llms-vllm",
+   "kind": "bucket:mlops",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "huggingface-hub": {
+   "rel": "mlops/huggingface-hub",
+   "kind": "bucket:mlops",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "weights-and-biases": {
+   "rel": "mlops/evaluation/weights-and-biases",
+   "kind": "bucket:mlops",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "evaluating-llms-harness": {
+   "rel": "mlops/evaluation/evaluating-llms-harness",
+   "kind": "bucket:mlops",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "comfyui": {
+   "rel": "creative/comfyui",
+   "kind": "bucket:creative",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "sketch": {
+   "rel": "creative/sketch",
+   "kind": "bucket:creative",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "pretext": {
+   "rel": "creative/pretext",
+   "kind": "bucket:creative",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "touchdesigner-mcp": {
+   "rel": "creative/touchdesigner-mcp",
+   "kind": "bucket:creative",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "image-text-editing": {
+   "rel": "creative/image-text-editing",
+   "kind": "bucket:creative",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "excalidraw": {
+   "rel": "creative/excalidraw",
+   "kind": "bucket:creative",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "ascii-art": {
+   "rel": "creative/ascii-art",
+   "kind": "bucket:creative",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "third-party-audit-intake": {
+   "rel": "audit/third-party-audit-intake",
+   "kind": "bucket:audit",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "corpus-evidence-discipline": {
+   "rel": "audit/corpus-evidence-discipline",
+   "kind": "bucket:audit",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "auditable-numeric-artifacts": {
+   "rel": "audit/auditable-numeric-artifacts",
+   "kind": "bucket:audit",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "relationship-reality-audit": {
+   "rel": "audit/relationship-reality-audit",
+   "kind": "bucket:audit",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "causal-attribution-discipline": {
+   "rel": "audit/causal-attribution-discipline",
+   "kind": "bucket:audit",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "relationship-evidence-audit": {
+   "rel": "audit/relationship-evidence-audit",
+   "kind": "bucket:audit",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "insider-exposure-inventory": {
+   "rel": "audit/insider-exposure-inventory",
+   "kind": "bucket:audit",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-vision-densify": {
+   "rel": "forge-vision-densify",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "civic-article-publishing": {
+   "rel": "aaa/civic-article-publishing",
+   "kind": "bucket:aaa",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "learning-loop-verification": {
+   "rel": "learning-loop-verification",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "mata": {
+   "rel": "mata",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "caller-trace": {
+   "rel": "reflective/caller-trace",
+   "kind": "bucket:reflective",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "human-facing-artifact-design": {
+   "rel": "forge/human-facing-artifact-design",
+   "kind": "bucket:forge",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "autonomous-loop-engineering": {
+   "rel": "forge/autonomous-loop-engineering",
+   "kind": "bucket:forge",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "rtc-loop": {
+   "rel": "rtc-loop",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "understand-domain": {
+   "rel": "understand-domain",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "public-column-publishing": {
+   "rel": "public-column-publishing",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "link-to-evidence": {
+   "rel": "link-to-evidence",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "handoff-contract": {
+   "rel": "core/federation/handoff-contract",
+   "kind": "bucket:core",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "multi-harness-sync": {
+   "rel": "core/federation/multi-harness-sync",
+   "kind": "bucket:core",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "repo-cleanup": {
+   "rel": "core/forge/repo-cleanup",
+   "kind": "bucket:core",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "dignity-substrate": {
+   "rel": "core/governance/dignity-substrate",
+   "kind": "bucket:core",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "recursive-audit": {
+   "rel": "core/governance/recursive-audit",
+   "kind": "bucket:core",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "skill-portfolio-audit": {
+   "rel": "core/governance/skill-portfolio-audit",
+   "kind": "bucket:core",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "verify-runtime": {
+   "rel": "core/governance/verify-runtime",
+   "kind": "bucket:core",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "scar-integration": {
+   "rel": "core/governance/scar-integration",
+   "kind": "bucket:core",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "runtime-probe": {
+   "rel": "core/mcp/runtime-probe",
+   "kind": "bucket:core",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "mmx-cli": {
+   "rel": "mmx-cli",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "fi-zai-probe": {
+   "rel": "fi-zai-probe",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "aaa-audio-qualia-doctrine": {
+   "rel": "aaa-audio-qualia-doctrine",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "human-relationship-audit": {
+   "rel": "research/human-relationship-audit",
+   "kind": "bucket:research",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "institutional-fact-verification": {
+   "rel": "research/institutional-fact-verification",
+   "kind": "bucket:research",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "blogwatcher": {
+   "rel": "research/blogwatcher",
+   "kind": "bucket:research",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "research-paper-writing": {
+   "rel": "research/research-paper-writing",
+   "kind": "bucket:research",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "provider-endpoint-migration": {
+   "rel": "provider-endpoint-migration",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "know-language": {
+   "rel": "know-language",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "forge-code-analysis": {
+   "rel": "forge-code-analysis",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "geox-production-cockpit": {
+   "rel": "geox-production-cockpit",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "disclosure-advisory": {
+   "rel": "counseling/disclosure-advisory",
+   "kind": "bucket:counseling",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "external-artifact-verdict": {
+   "rel": "external-artifact-verdict",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "federation-memory-writeback": {
+   "rel": "governance/federation-memory-writeback",
+   "kind": "bucket:governance",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "apex-gate-evaluator": {
+   "rel": "governance/apex-gate-evaluator",
+   "kind": "bucket:governance",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "sensitive-publication-governance": {
+   "rel": "governance/sensitive-publication-governance",
+   "kind": "bucket:governance",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "publication-risk-audit": {
+   "rel": "governance/publication-risk-audit",
+   "kind": "bucket:governance",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "first-party-corpus-audit": {
+   "rel": "governance/first-party-corpus-audit",
+   "kind": "bucket:governance",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "capability-addressing": {
+   "rel": "governance/capability-addressing",
+   "kind": "bucket:governance",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "site-traffic-reality": {
+   "rel": "governance/site-traffic-reality",
+   "kind": "bucket:governance",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "public-claims-maintenance": {
+   "rel": "governance/public-claims-maintenance",
+   "kind": "bucket:governance",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "staged-write-triage": {
+   "rel": "governance/staged-write-triage",
+   "kind": "bucket:governance",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "apex-verdict": {
+   "rel": "governance/apex-verdict",
+   "kind": "bucket:governance",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "durable-artifact-authoring": {
+   "rel": "governance/durable-artifact-authoring",
+   "kind": "bucket:governance",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "symbol-namespace-integrity": {
+   "rel": "governance/symbol-namespace-integrity",
+   "kind": "bucket:governance",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "token-plan-image": {
+   "rel": "token-plan-image",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "runpod-mcp": {
+   "rel": "runpod-mcp",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "responsible-disclosure-handling": {
+   "rel": "security-ops/responsible-disclosure-handling",
+   "kind": "bucket:security-ops",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "openhue": {
+   "rel": "smart-home/openhue",
+   "kind": "bucket:smart-home",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-federation-manifest": {
+   "rel": "forge-federation-manifest",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-ephemeral-genesis": {
+   "rel": "forge-ephemeral-genesis",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "public-persona-read": {
+   "rel": "cognitive-reflex/public-persona-read",
+   "kind": "bucket:cognitive-reflex",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "agi-dream-engine": {
+   "rel": "agi-dream-engine",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-mcp-a2a-agentic": {
+   "rel": "forge-mcp-a2a-agentic",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "hermes-federated-identity": {
+   "rel": "hermes-federated-identity",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "qwen-harness-tools": {
+   "rel": "qwen-harness-tools",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "companion-clis": {
+   "rel": "companion-clis",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "forge-fastmcp": {
+   "rel": "forge-fastmcp",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "arifos-eight-verb-canonical": {
+   "rel": "arifos-eight-verb-canonical",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "delta-omega-psi-multimodal-cognition": {
+   "rel": "delta-omega-psi-multimodal-cognition",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "asi-summarize": {
+   "rel": "asi-summarize",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "xauusd-trading": {
+   "rel": "xauusd-trading",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "qwencloud-image-generation": {
+   "rel": "qwencloud-image-generation",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "flash": {
+   "rel": "flash",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "dissipative-transition-hold": {
+   "rel": "dissipative-transition-hold",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "principal-analysis-artifact": {
+   "rel": "document-intel/principal-analysis-artifact",
+   "kind": "bucket:document-intel",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "rendered-document-audit": {
+   "rel": "document-intel/rendered-document-audit",
+   "kind": "bucket:document-intel",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "paged-media-report-layout": {
+   "rel": "document-intel/paged-media-report-layout",
+   "kind": "bucket:document-intel",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-seal-a-close": {
+   "rel": "forge-seal-a-close",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "causal555-pywhy": {
+   "rel": "causal555-pywhy",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "understand-figma": {
+   "rel": "understand-figma",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "mapbox-cartography-gis": {
+   "rel": "mapbox-cartography-gis",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "agi-nusantara-substrate": {
+   "rel": "agi-nusantara-substrate",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "qwencloud-text": {
+   "rel": "qwencloud-text",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "federation-scheduler-audit": {
+   "rel": "cron-ops/federation-scheduler-audit",
+   "kind": "bucket:cron-ops",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "organ-capability-map": {
+   "rel": "organ-capability-map",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "qwencloud-audio-tts": {
+   "rel": "qwencloud-audio-tts",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "qwencloud-video-generation": {
+   "rel": "qwencloud-video-generation",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "submission-readiness-audit": {
+   "rel": "submission-readiness-audit",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "forge-agentic-web-builder": {
+   "rel": "forge-agentic-web-builder",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "understand-chat": {
+   "rel": "understand-chat",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "skill-library-integrity": {
+   "rel": "skill-library-integrity",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "aaa-shadow-mode": {
+   "rel": "aaa-shadow-mode",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "merge-reconciler": {
+   "rel": "autonomous-ai-agents/merge-reconciler",
+   "kind": "bucket:autonomous-ai-agents",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-model-monitor": {
+   "rel": "forge-model-monitor",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-tailwind-tokens": {
+   "rel": "forge-tailwind-tokens",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "malaysian-employment-separation": {
+   "rel": "legal-my/malaysian-employment-separation",
+   "kind": "bucket:legal-my",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "deal-consolidation-intelligence": {
+   "rel": "intel-brief/deal-consolidation-intelligence",
+   "kind": "bucket:intel-brief",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "understand-knowledge": {
+   "rel": "understand-knowledge",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-cross-repo-doc-zen": {
+   "rel": "forge-cross-repo-doc-zen",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-komda-color-law": {
+   "rel": "forge-komda-color-law",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "hermes-telegram-stack-zen": {
+   "rel": "hermes-telegram-stack-zen",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "seal-discipline": {
+   "rel": "seal-discipline",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "wisdom-reader": {
+   "rel": "wisdom-reader",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-infra-guardian": {
+   "rel": "forge-infra-guardian",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "forge-t3a-binding-matrix": {
+   "rel": "forge-t3a-binding-matrix",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "runpodctl": {
+   "rel": "runpodctl",
+   "kind": "flat-root",
+   "bundled": true,
+   "is_link": false,
+   "target": null
+  },
+  "cross-host-artifact-delivery": {
+   "rel": "federation-topology/cross-host-artifact-delivery",
+   "kind": "bucket:federation-topology",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "bridge-lane-functional-probe": {
+   "rel": "federation-topology/bridge-lane-functional-probe",
+   "kind": "bucket:federation-topology",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "cross-node-artifact-transfer": {
+   "rel": "federation-topology/cross-node-artifact-transfer",
+   "kind": "bucket:federation-topology",
+   "bundled": false,
+   "is_link": false,
+   "target": null
+  },
+  "my-reality-stack": {
+   "rel": "my-reality-stack",
+   "kind": "flat-root",
+   "bundled": false,
+   "is_link": true,
+   "target": "/root/AAA/skills/MY-REALITY-STACK"
+  }
+ }
+}

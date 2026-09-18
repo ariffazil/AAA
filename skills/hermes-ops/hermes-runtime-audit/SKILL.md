@@ -162,6 +162,190 @@ Two rules decide whether this section produces a finding or a fabrication:
 
 Queries for all of the above: `references/state-store-queries.md`.
 
+### 4c. MCP surface truth — census, supervisor, and advertisement are three different things
+
+The census and `hermes mcp list` answer *configured*. Neither answers *supervised* or *advertised*,
+and the three disagree in ways that each produce a different defect.
+
+```bash
+ls ~/.hermes/mcp/                                 # what has an implementation directory
+systemctl list-unit-files | grep -iE '<server>'   # what has a supervisor
+ss -tlnp | grep -E ':<port>\b'                    # what is actually listening
+```
+
+- **An implementation directory and a listening port with NO systemd unit is the highest-severity
+  shape here.** Its enforcement surface is unreachable after any restart, with no auto-recovery, and
+  nothing in the census says so. Report "runs only when manually started" as a governance gap, not
+  an ops nit — check the unit before believing any server is durable.
+- **A server advertised somewhere but implemented nowhere.** Grep the whole config tree, not the
+  census: a directory holding only a config file and a test, with no entrypoint, is a configured
+  phantom. It may not appear in the census at all — absence from the census is not absence of the
+  claim.
+- **The census footer carries a timestamp; read it before quoting the census.** A stale census is a
+  snapshot of *intent*, and its per-row `last_smoke_test` stamps are written per generation, so every
+  row looks fresh while the file itself is hours old. **Freshness = the file's mtime, not the field
+  inside it.** Then judge the mtime against the **producer's own period**, not against "now" — a census
+  rebuilt four times a day is healthy at six hours old and broken at six hours *past its slot*. Quote
+  the cron period beside the age so the reader can tell a normal gap from a dead schedule.
+- **An advertisement inside a tool description is the worst case**, because it is served to every
+  client rather than sitting in a file. A description claiming a source was "live-probed" while that
+  service is down has the server lying on its own behalf. A census-based inventory is blind to
+  this — read tool descriptions, not just the server list.
+
+Two error shapes from one server is normal and worth naming separately: a doctrine/policy rejection
+returned as an ordinary result (`ok: false`, `isError: false`) beside a schema rejection raised as a
+protocol error (`isError: true`). A caller cannot branch on one field, so report the shape, not just
+the instance.
+
+Note on enum drift: a served mode enum narrower than the code constant (with a third number in a
+source comment) is not "the schema lies" — the direction is *served ⊆ code*. Read the handler's mode
+dispatch before recommending a prune; the number that matters is which modes the dispatcher actually
+implements.
+
+### 4d. Public exposure — three layers, and the fix is usually verified at the wrong one
+
+§4c answers whether a server is *configured, supervised and advertised*. None of those answers whether
+an outsider can **reach** it. Reachability has its own three layers, and they are read with three
+different instruments:
+
+```
+origin vhost     curl -k --resolve <host>:443:127.0.0.1 https://<host>/<path>   # the machine's own answer
+edge ingress     the tunnel config's hostname -> service mapping                  # what the tunnel claims
+public hostname  curl https://<host>/<path>                                      # what the world gets
+```
+
+The `--resolve` SNI test is the only way to ask the origin directly; without it you are measuring the
+edge and calling it the server. Read the response **headers**, not the status: a service that answers
+`X-Organ: HERMES` at the origin is not the same service that answers at the public hostname.
+
+- **A fix verified at the origin is not a fix.** Measured on this host: the ingress comment recorded
+  *"Verified by SNI test: HTTP 200 + Mcp-Session-Id + X-Organ: HERMES"* — all true, **all at the
+  origin**. Over the public hostname the same path returned **404**, and `/` returned a different
+  organ's HTML entirely. Three layers, one of them working, and the receipt named the layer that
+  passed. When you cite a reachability test, cite the layer it was run against.
+- **Compare the public body against the organ it claims to be.** Fetch the hostname's `/` and read the
+  description/`X-Organ` header; fetch a sibling hostname and compare. Two hostnames returning the same
+  body means one of them is misrouted — a routing defect that no census, unit file or smoke test in
+  §4c can surface.
+- **A public `404` on an MCP path is a reachability defect, not an application defect.** The path
+  either never arrives (wrong origin at the edge) or arrives and is not handled (wrong vhost). The
+  origin probe separates those two, and they have opposite fixes.
+- **Internal-only is a legitimate state; unrecorded internal-only is not.** A server bound to
+  loopback with no ingress rule is fine *if the inventory says so*. What must never stand is a hostname,
+  a comment, or a tool description implying external reachability that the edge does not provide.
+
+### 4e. Doctrine-only capability — advertised in knowledge, absent in execution
+
+§4c covers a server advertised but implemented nowhere. The inverse shape is more dangerous to an
+agent: **implemented, advertised in the skill corpus, and not running.**
+
+```bash
+systemctl show <unit> -p LoadState,ActiveState,UnitFileState --value
+ls -la $(systemctl show <unit> -p ExecStart --value | grep -oP 'path=\K[^ ;]+')
+```
+
+The signature is three readings that disagree in a specific way: an `ExecStart` path that **exists**,
+`ActiveState=inactive` with `UnitFileState=disabled`, and **zero** references in the runtime config —
+while N *skills* name the capability. Measured: a graph database server with a 4 KB start script on
+disk, unit inactive and disabled, absent from both the runtime config and the MCP census, yet named in
+8 skill files.
+
+- Report this as a **knowledge/reality split**, not as an outage. Nothing is broken; the doctrine has
+  outrun the substrate, and the cost lands on the next agent that reads the skill, believes the
+  capability, and plans on it.
+- The severity question is not "is it up" but **"does anything instruct an agent to depend on it"**.
+  `grep -rl <name> ~/.hermes/skills/` is the blast-radius probe; config and census will both read clean.
+- The fix is usually one of two opposite acts — wire the unit, or mark the skills as aspirational.
+  Deciding which is an authority question, so put it to the principal as one binary, not a menu.
+
+**The per-room / per-person instruction surface is the same shape.** Before writing a conduct rule,
+person register or room limit into the layer that is *supposed* to inject it — a lane plugin, a
+gateway hook, a persona module — read the layer's own liveness, then find the surface that actually
+reaches the model:
+
+```bash
+grep -c <plugin_name> ~/.hermes/logs/gateway.log     # 0 = not in the loaded plugin set
+hermes config get plugins                            # what the profile actually enables
+```
+
+Three readings decide it, and they fail independently: the plugin is listed under `plugins.enabled`; the
+registry file the module loads actually exists; and exercising the module's own builder with a real lane
+returns non-empty text. A module can sit on disk, be fully implemented, and still fail the second and
+third — it then degrades *silently* (fallback lane, empty card) while the diff, the file listing and the
+doctrine all say the wiring is done. Every rule written into it reaches no model. Report the layer as
+inert and name which reading failed; never call such a wiring working because the code looks correct.
+
+**The effective alternative for per-room rules is `telegram.extra.channel_prompts.<chat_id>`** in the
+profile config — per-chat instruction text injected on arrival, independent of any plugin. Recipe,
+verification and content rules: `references/room-scoped-instruction-prompts.md`. Prefer the surface you
+can prove reaches the model over the layer that merely looks finished.
+
+### 4f. The enforcement gate is a text classifier — audit it as one
+
+The `pre_tool_call` shell hook is the harness's first runtime enforcement path, and it decides
+allow/block by reading the tool payload. It is a classifier over **text**, so audit it by its two error
+directions, never by its rule count:
+
+```bash
+grep -n "CLAIM_TEXT_FIELDS\|has_critical_claim\|def verify_provenance\|^T3_PATTERNS\|^W_SCAR_CRITICAL" <hook>.py
+wc -l ~/.local/share/arifos/hermes_hook_receipts.jsonl      # is the gate deciding at all?
+```
+
+**False positive — STRUCTURE read as assertion.** The gate grepped `json.dumps(tool_input)` wholesale,
+so a file *path* containing a trigger word was read as a claim: a doctrine patch was refused twice, and
+a read-only `grep` naming the same file once, because a directory in the path was named `court`. The
+payload asserted nothing. **Token-level matching over the serialized payload cannot tell a path, an
+id, or an enum from prose** — and the file a claim is written into is not the claim.
+
+**False negative — SHAPE read as witness.** Provenance passed if the payload merely *contained* the
+token `url`/`source`/`evidence`. Any string satisfies that, so a fabricated figure with the word "url"
+beside it cleared the gate. A check that asks whether a citation-shaped string is present is not a check
+on whether the citation holds.
+
+**The repair pattern — claim surface + verified provenance:**
+
+1. Scan only claim-bearing fields (`content`, `new_string`, `command`, …) — never the whole payload.
+2. Strip structure *before* matching: URLs, file paths, receipt ids, code spans. Collect the URLs first,
+   then remove them.
+3. Verify provenance instead of detecting its vocabulary: extract cited URLs and resolve them.
+4. Three provenance fates, three decisions: `VERIFIED` (a URL resolves, or a receipt id / on-disk
+   evidence path exists) → allow + witness receipt; `UNRESOLVED` (URLs present, none resolve) → block;
+   `ABSENT` → block.
+5. **A network fault must never become a blanket denial of service.** Timeout, TLS failure and refusal
+   are `DEGRADED` → allow. NXDOMAIN is a fact about the *citation*; a timeout is a fact about *your
+   link*. Collapsing them turns an outage into an enforced halt on all work.
+6. Any widening — a path whitelist, an exempt tool class — is a bypass. Count every exempted call to
+   telemetry so abuse is visible, and say in the receipt which widening you introduced and how to
+   reverse it. A silent exemption is indistinguishable from a hole.
+
+**Read-only detection:** split a compound command on `&& || | ;` and require EVERY segment to be a
+probe. A single regex anchored at the start of the whole command reads `cd X && grep … | head` as a
+mutation, which is the path false-positive one layer down.
+
+**Implementation traps when a gate matches text over a serialized payload** (permanent language
+behaviour, not environment state):
+
+- `json.dumps` **escapes** quotes to `\"`. A regex written against plain text
+  (`"receipt_id": "..."`) will not match the serialized form the gate actually receives. Unit-check the
+  pattern against `json.dumps(...)` output, never the plain string.
+- **Regex alternation is ordered.** `json|jsonl` truncates `evidence.jsonl` to `evidence.json`, and the
+  bug is invisible because the truncated path simply fails to exist. Longest alternative first.
+- `urllib.request.urlopen` **wraps socket faults in `URLError`** — `except socket.gaierror` never fires.
+  Inspect `exc.reason` to tell NXDOMAIN from a timeout.
+
+**Validate both directions, plus a negative control.** A fixture of three classes: previously-blocked
+read-only cases (must allow), previously-passing fabrications (must block), true positives (must allow).
+Then feed input that MUST be rejected and confirm it refuses. A check whose failure you have never
+observed is decoration — and expect the fixture to find real bugs in the new code, including in the
+receipt-id pattern the gate uses to read its own receipts.
+
+**Tie the decision order to the constitution, not to convenience.** The circuit-breaker branch is
+checked before every other rule and must fail *closed* when its authority cannot be loaded — an
+unreadable brake is not an absent brake. Read-only observation stays available while the brake is
+tripped: a brake that blinds the operator cannot be released safely. Preserve the exit-code semantics
+(one code for a constitutional block, a distinct one for a circuit-breaker interrupt) and say so in the
+receipt; collapsing them destroys the caller's ability to branch.
+
 ### 5. Directory sprawl and the ownership law
 
 ```bash
@@ -223,6 +407,20 @@ environment is no longer readable from one place. State the count and name the p
 (a service-level `EnvironmentFile` outranks a drop-in) — that is the thing that costs a future session
 an hour.
 
+**Test the standalone caller separately from the daemon.** A gateway that is alive and answering proves
+only that the *daemon* path resolves its credentials. CLI subcommands, cron jobs and scripts that reuse
+the same config run as separate processes and can be dead while the gateway stays green — most often
+because the daemon is surviving on a systemd drop-in that hardcodes a variable name the config only
+*declares*. Probe each caller class once, for real:
+
+```bash
+systemctl cat <unit> | grep -E 'EnvironmentFile|^Environment='   # merged view, drop-ins included
+<cli> send --to <platform>:<id> --json "probe"                   # the standalone path
+```
+
+Report a broken standalone path as a finding about *that* path. Never generalise it into "the platform is
+down", and never let the daemon's health stand in for the CLI's — the two answer different questions.
+
 ## Output shape Arif wants
 
 - **Plain BM, compressed, decision-shaped.** Lead with the one-line verdict, then the findings that
@@ -261,7 +459,19 @@ an hour.
 - **Don't rank capability by a store that records no counts.** A usage file with one entry per skill and
   null counts invites a confident "most skills are unused" finding the sensor cannot support. Say which
   sensor was null, and what would have to be wired before the question is answerable.
+- **A gate's hold ratio is not its error rate.** The telemetry file records holds over total decisions;
+  a ratio near zero means either a working gate or one whose rules never match, and the number alone
+  cannot tell you which. Read the recent receipt rows to see *which* rule fired and against what payload,
+  then judge. An enforcement path with zero recorded blocks and a growing receipt count is a gate that
+  runs, not a gate that catches — do not report it as either healthy or broken on the ratio alone.
+- **A fix that unblocks your own audit is proven by the audit continuing.** When you cannot complete a
+  review because a control refuses the work, repairing the control and then completing the review in the
+  same pass is the test of the repair — and the refusal itself belongs in the finding, quoted with the
+  payload that triggered it. Routing around the control instead supplies the incident rather than the
+  audit.
 
 See `references/probe-cookbook.md` for the full one-shot command set, including the storage attribution
 query and the surface-inventory sweep. See `references/state-store-queries.md` for the behavioural-record
-probes (usage frequency, session timeline, scheduler book vs execution ledger, delivery split).
+probes (usage frequency, session timeline, scheduler book vs execution ledger, delivery split). See
+`references/room-scoped-instruction-prompts.md` for the per-room conduct surface — how to set, verify and
+activate `telegram.extra.channel_prompts`, and what belongs in one.

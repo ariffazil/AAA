@@ -1,23 +1,68 @@
-# Outbound send lane — APA email bridge (`forge_email`)
+# Outbound send lanes — two options for disclosure correspondence
 
-The lane used to send a vendor acknowledgment, a correction, or any external correspondence from this estate. Verified working for sends.
+The lane used to send a vendor acknowledgment, a correction, or any external correspondence from this estate.
+
+## Option 1: Governed lane (`gov_email.py`) — DEFAULT
+
+`/root/.hermes/lanes/email_lane/gov_email.py` wraps the Brevo transactional REST API with a governance layer: prepare → confirm token → send, with an append-only hash-chained audit ledger.
+
+### Probe
+```bash
+cd /root && python3 /root/.hermes/lanes/email_lane/gov_email.py status
+```
+Returns `{status, lane, sender, auth_check, ledger, reads_available}`. `status: READY` with `auth_check.http_status: 200` means sends work.
+
+### Prepare (READ_ONLY — no network call)
+```bash
+cd /root && python3 /root/.hermes/lanes/email_lane/gov_email.py prepare \
+  --to "recipient@example.com" \
+  --subject "Re: ..." \
+  --body "..." \
+  --actor arif
+```
+Returns `{status: PREPARED, confirm_token, expires_utc}`. The token is valid for the window; re-run prepare if it expires.
+
+### Send (MUTATE_IRREVERSIBLE — requires confirm token)
+```bash
+cd /root && python3 /root/.hermes/lanes/email_lane/gov_email.py send \
+  --to "recipient@example.com" \
+  --subject "Re: ..." \
+  --body "..." \
+  --actor arif \
+  --confirm "<token-from-prepare>"
+```
+**The payload (to/subject/body) must be IDENTICAL to prepare.** Different payload → token rejected → zero network calls.
+
+Returns `{status: SENT, message_id, lane: email:brevo, ledger_entries}`. The `message_id` is the Brevo messageId for delivery tracking.
+
+### Audit trail
+- Ledger: `/root/.hermes/lanes/email_lane/audit/email_ledger.jsonl`
+- INTENT entry written and fsynced BEFORE the network call; SENT entry written after.
+- Every entry is hash-chained; tampering breaks the chain.
+- Drafts: `gov_email.py drafts` shows any pending prepares.
+
+### Key facts
+- Sender: `arifbfazil@gmail.com` (Brevo-verified).
+- Reads (inbox) are DEAD — Gmail OAuth expired. Cannot search or retrieve incoming mail through this lane.
+- The `--confirm` token is single-use; a second `send` with the same token is rejected.
+
+---
+
+## Option 2: APA email bridge (`forge_email` :18093)
 
 Endpoint: `http://127.0.0.1:18093/` (loopback only, no auth header). Backed by the systemd unit `apa-email-bridge.service`.
 
-## Probe first
-
+### Probe
 ```bash
 curl -s -m 6 http://127.0.0.1:18093/health
 ```
-
 Returns `{ok, backends, brevo_configured, gmail_configured, sender, status}`.
 
 - `status: READY` with `backends: ["brevo-send"]` means **sends work**.
-- A dead READ lane (`gmail_configured: false`) does **not** block sending. Do not diagnose a send failure from the read-lane flag.
+- A dead READ lane (`gmail_configured: false`) does **not** block sending.
 - `sender` is the From address — confirm it matches what the counterparty expects before sending.
 
-## Send
-
+### Send
 ```python
 import json, urllib.request
 req = urllib.request.Request(
@@ -26,27 +71,33 @@ req = urllib.request.Request(
                      "subject": "...", "body": body}).encode(),
     headers={"Content-Type": "application/json"}, method="POST")
 ```
-
 Returns `{ok, mode, result: {message_id, status, provider, sha256, timestamp}}`.
 
 - `to` / `cc` accept a single address or a list.
 - `body` is plain text; the bridge also wraps it for HTML clients.
 
-## Route facts — do not waste calls
-
+### Route facts
 - **Only two routes exist:** `GET /health` and `POST /`.
-- `GET /` returns `{"error": "not found"}`. There is **no** `/openapi.json` — do not hunt for a schema.
-- `/health`'s `verbs` list (`search`, `read`, `send`, `list_labels`) describes the bridge's full verb set, but `search` / `read` / `list_labels` need the Gmail IMAP credential. Only `send` works on the Brevo key alone.
+- `GET /` returns `{"error": "not found"}`. There is **no** `/openapi.json`.
+- `/health`'s `verbs` list describes the bridge's full verb set, but `search` / `read` / `list_labels` need Gmail IMAP credential. Only `send` works on the Brevo key alone.
 
-## The response is the receipt
+### Receipt
+- No sent-items store. Write body to `~/.hermes/cache/outbound/<name>.txt` first for hash reproducibility.
+- Report `message_id`, `sha256`, and `timestamp` to the principal.
 
-The lane keeps no sent-items store. So:
+---
 
-1. **Write the body to a file first** (`~/.hermes/cache/outbound/<name>.txt`) — then the hash is reproducible and the exact text can be re-derived later.
-2. **Report all three back to the principal:** `result.message_id`, `result.sha256`, `result.timestamp`. The `sha256` is the content hash of the message.
+## Choosing between lanes
 
-That hash is the only durable evidence of *what text* went out. It is what lets a later audit compare a recovered draft against what was actually sent — without it, a draft on disk and a send record in a transcript cannot be reconciled.
+| | Governed (`gov_email.py`) | APA bridge (`forge_email`) |
+|---|---|---|
+| **Audit trail** | Hash-chained JSONL ledger | Content hash in response only |
+| **Send guard** | Requires confirm token | No guard (immediate send) |
+| **Sender** | arifbfazil@gmail.com | Configurable (check /health) |
+| **Default for** | All disclosure correspondence | Non-disclosure sends, or when governed lane is unavailable |
+
+**Default:** governed lane.
 
 ## Corrections and follow-ups
 
-When a follow-up corrects something an earlier message claimed (e.g. "this is not in the release" → "the release landed"), send it **on the same thread** with the same subject line. A promised follow-up that never arrives is what turns a friendly counterparty into a public critic.
+When a follow-up corrects something an earlier message claimed, send it **on the same thread** with the same subject line. A promised follow-up that never arrives is what turns a friendly counterparty into a public critic.

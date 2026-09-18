@@ -1,11 +1,9 @@
 ---
 name: mapbox-cartography-gis
-description: Mapbox developer API suite, cartographic design, style management, GeoJSON validation/preview, coordinate conversion, and token security via Mapbox DevKit MCP server (mcp-devkit.mapbox.com). [fed: tier=fed-reasoning-heavy]
+description: "Mapbox developer API suite, cartographic design, style management, GeoJSON validation/preview, coordinate conversion, and token security via Mapbox DevKit MCP server (mcp-devkit.mapbox.com). "
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
----
-
-# Mapbox Cartography & GIS Developer Skill (`mapbox`)
+---# Mapbox Cartography & GIS Developer Skill (`mapbox`)
 
 This skill provides direct access to Mapbox Developer APIs, style building, GeoJSON validation/previews, token management, color contrast checking, and coordinate reference system conversion via `https://mcp-devkit.mapbox.com/mcp`.
 

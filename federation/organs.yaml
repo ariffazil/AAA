@@ -141,23 +141,36 @@ components:
     class: EDGE
     display_name: OpenClaw
     repo: openclaw/openclaw
-    source_path: /root/.openclaw-cold  # 2026-09-07: /root/.openclaw no longer exists — OpenClaw cold-stored
+    source_path: /root/.quarantine/zen-20260912/.openclaw-cold/openclaw-heritage-2.8G-20260904  # 2026-09-18 audit-reconciled: actual cold archive path (not /root/.openclaw-cold)
     role: agentic_mesh_router
-    authority_ceiling: DISPLAY_ONLY
-    port: 18789          # declared (historical) — refused as of 2026-09-07
-    port_web: 8787       # declared (historical) — refused as of 2026-09-07
-    unit: openclaw-gateway.service
+    authority_ceiling: T1  # 2026-09-18: kernel-aligned per "kernel wins" doctrine. Prior claim (DISPLAY_ONLY) was downgraded; kernel SOT at /root/arifOS/arifos/identity/agent_registry.json grants T1 max_blast_radius with capabilities OBSERVE/REASON/ROUTE/MEMORY (FI-017). See agents/openclaw/IDENTITY.md §Authority for the four-source drift resolution. F13 ratification PENDING (canonical record).
+    port: 18789          # LIVE on KVM4 (100.64.0.5) since 2026-09-04 13:37 MYT per MACHINE_MAP §1 — KVM8 cold since 2026-09-04 14:20 MYT
+    port_web: 8787       # declared (historical) — not live; web UI retired with cold-extraction
+    unit: openclaw-gateway.service  # on KVM4 only; KVM8 units archived+removed 2026-09-04 14:22 MYT
     runtime: node-22
+    host: KVM4 (workshop)  # 2026-09-18: edge relocated from KVM8 to KVM4
+    kvm8_mirror: 127.0.0.1:18789 DNAT → 100.64.0.5:18789 (iptables nat, MASQUERADE; verified 2026-09-13)
     actor_id: "openclaw:ingress"
+    fi_id: "FI-017"  # 2026-09-18: kernel agent_registry.json alignment (was implicit)
     did: "did:key:z7QHNDZM4dm0fl4bwI7BOhVmMAh_pBVsQN2i17Ndog1jLjQ"
     signing_key: "/root/AAA/auth/keys/openclaw_private.key"
+    bound_to: "arif-fazil/F13"  # 2026-09-18: kernel SOT alignment
+    capabilities: [OBSERVE, REASON, ROUTE, MEMORY]  # 2026-09-18: kernel agent_registry.json SOT (T1 blast radius)
+    agent_card_canonical: /root/AAA/agent-cards/functions/openclaw/agent-card.json  # schemaVersion 2.3.0, governance_profile.authority_ceiling pending kernel-alignment (was ROUTE_BRIDGE)
+    agent_card_a2a: /root/AAA/a2a-server/agent-cards/federation/openclaw.json  # protocolVersion 1.2
     live_probe_2026_08_07:
       status: active
       gateway_port: 18789
       web_ui_port: 8787  # currently down — known
     live_probe_2026_09_07:   # FI-008 contrast audit — COLD on KVM8
       status: cold
-      evidence: "unit absent from /etc/systemd/system; :18789/:8787 refused; state at /root/.openclaw-cold; units from 2026-08-06 audit (gateway/bot/apa-bridge/restart) no longer present on this node"
+      evidence: "unit absent from /etc/systemd/system; :18789/:8787 refused on KVM8; state at /root/.openclaw-cold; units from 2026-08-06 audit (gateway/bot/apa-bridge/restart) no longer present on this node"
+    live_probe_2026_09_18:  # 333-AGI audit — LIVE on KVM4, COLD on KVM8
+      status: live_kvm4_cold_kvm8
+      gateway_kvm4_100.64.0.5:18789: '{"ok":true,"status":"live"}'
+      gateway_kvm8_127.0.0.1:18789: DNAT-routed live to KVM4 (verified)
+      public_caddy_openclaw_arif-fazil_com: 410 internal-only (by policy, not drift)
+      evidence: "KVM4 OpenClaw gateway live (verified 2026-09-17 16:05:24Z); KVM8 cold-extracted per MACHINE_MAP §1; AAA loopback DNAT mirrors KVM4 surface"
     owned_domains:
       - a2a_dispatch
       - session_continuity
@@ -551,7 +564,9 @@ components:
     authority_ceiling: RELAY_ONLY
     units:
       - hermes-asi-gateway.service
-    mcp_port: null  # 2026-09-12: 18086 PHANTOM — ss probe confirms no listener. Gateway uses stdio MCP children, not TCP.
+    mcp_port: 18087  # 2026-09-16: officialized HERMES MCP (streamable-http, RELAY_ONLY, meaning integrity organ)
+    mcp_unit: hermes-mcp-server.service
+    mcp_endpoint: https://hermes.arif-fazil.com/mcp
     owned_domains:
       - telegram_relay
       - multimodal_bridge

@@ -648,7 +648,8 @@
     "card": 27
   },
   "governance_profile": {
-    "authority_ceiling": "ROUTE_BRIDGE",
+    "authority_ceiling": "T1",
+    "_authority_ceiling_note": "2026-09-18: kernel-aligned per kernel-wins doctrine. Prior claim was ROUTE_BRIDGE; IDENTITY.md prior was GATEWAY; organs.yaml prior was DISPLAY_ONLY. Kernel SOT T1 wins. See /root/AAA/agents/openclaw/IDENTITY.md Authority drift section.",
     "constitutional_floors": [
       "F1",
       "F2",
@@ -662,5 +663,16 @@
     ],
     "vault": "VAULT999"
   },
-  "admissible": true
+  "admissible": true,
+  "_canonical": true,
+  "_canonical_role": "source-of-truth (hand-curated) for OpenClaw identity, governance profile, and constitutional alignment",
+  "_canonical_consumers": [
+    "/root/AAA/a2a-server/agent-cards/federation/openclaw.json (auto-generated)",
+    "/root/AAA/agents/openclaw/IDENTITY.md (alignment pending F13)",
+    "/root/AAA/agents/openclaw/AGENTS.md (reconciled 2026-09-18)",
+    "/root/AAA/federation/organs.yaml (reconciled 2026-09-18)",
+    "/root/AAA/federation/STATE.yaml (reconciled 2026-09-18)",
+    "/root/arifOS/arifos/identity/agent_registry.json (canonical kernel SOT — openclaw/FI-017)"
+  ],
+  "_canonical_audit_2026_09_18": "333-AGI audit reconciled 10 drifts: KVM4 cutover, FI-017 alignment, port mapping, gateway URL, capabilities (OBSERVE/REASON/ROUTE/MEMORY T1). F13 pending: authority_ceiling reconciliation (IDENTITY.md GATEWAY vs kernel ROUTE_BRIDGE vs organs.yaml DISPLAY_ONLY)."
 }

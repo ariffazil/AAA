@@ -1,6 +1,7 @@
 ---
 name: forge-hermes-self-evolution
-description: > [fed: tier=fed-agent-subagent, floors=[F1, F2, F12, F13], auto=T3]
+description: >
+
   Stage and operate Nous hermes-agent-self-evolution (DSPy + GEPA) against
   arifOS Hermes skills. Use when Arif says evolve a skill, GEPA, DSPy
   self-evolution, or hermes-agent-self-evolution. Never auto-writes live
@@ -12,9 +13,7 @@ floor_scope: [F1, F2, F12, F13]
 autonomy_tier: T3
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----
-
-# Hermes self-evolution (DSPy + GEPA) — F13 gated
+---# Hermes self-evolution (DSPy + GEPA) — F13 gated
 
 Upstream: https://github.com/NousResearch/hermes-agent-self-evolution
 Staged clone (read-only until 888): `/root/forge_work/2026-08-25-hermes-self-evolution/upstream`

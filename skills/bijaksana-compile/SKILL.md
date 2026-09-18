@@ -1,6 +1,6 @@
 ---
 name: bijaksana-compile
-description: When user asks to compile remaining work, lower entropy, or make future agents lebih arif dan bijaksana. Enforces read-before-celebrate, vocabulary discipline (SEAL ≠ RECEIPT), and shadow-first audit. USE WHEN: 'compile remaining tasks', 'lower entropy', 'wisdom patch', 'next session should know', 'make agents smarter'.
+description: "When user asks to compile remaining work, lower entropy, or make future agents lebih arif dan bijaksana. Enforces read-before-celebrate, vocabulary discipline (SEAL ≠ RECEIPT), and shadow-first audit. USE WHEN: 'compile remaining tasks', 'lower entropy', 'wisdom patch', 'next session should know', 'make agents smarter'."
 ---
 
 # ⌬ BIJAKSANA-Compile — Session Hygiene Compiler
@@ -49,6 +49,9 @@ Do NOT skip. The substrate remembers what your narrative forgot.
 
 **Forbidden:** `verdict=SEAL` without `judge_state_hash` and chain entry. This is precision rot and SCAR-002/KERNEL-LEGACY-VERDICT-LEAK-002 both attest to the damage.
 
+**NEW — 2026-09-18 SCAR-KERNEL-LEGACY-VERDICT-LEAK-002 (apex_scalars vocabulary drift):**
+The /health endpoint emits `apex_scalars.verdict=SEAL` AND `thermodynamic.verdict=SEAL` even when scalars are sub-threshold (e.g. G=0.4722<0.80, W3=0.7439<0.75). This is a vocabulary leak — the verdict field is ceremonial, not constitutional. **Detect it:** if `apex_scalars.verdict == SEAL` AND any scalar < its threshold, downgrade to `HOLD` in your reasoning AND flag as SHADOW. If `execution_readiness == held` while verdict == SEAL, log contradiction. Do not propagate the kernel's SEAL claim uncritically.
+
 ### Rule 3 — Every audit MUST include a SHADOW section
 
 Before claiming victory / cleanliness / completion, enumerate:
@@ -60,6 +63,17 @@ SHADOW:
 - What is missing or stale? (e.g. H-WELL biometric 54h, FLAME retired)
 - What floors are PASS vs HOLD vs UNKNOWN? (e.g. F8 G=0.4572 < 0.80)
 ```
+
+**NEW — 2026-09-18 (vault999 SEAL gap probe):**
+MUST probe `/root/.local/share/arifos/vault999/seal_chain_head.json` and compute `hours_since_last_seal = (now - last_seal_timestamp) / 3600`. If > 24h, log as SHADOW item ("VAULT999 silent for Nh — constitutional heartbeat slow"). If > 72h, escalate as P0 alert (the kernel witness oracle is not breathing).
+
+**NEW — 2026-09-18 (apex_scalars contradiction probe):**
+MUST probe `apex_scalars` field for verdict-vs-threshold contradictions:
+- `apex_scalars.verdict` vs scalar thresholds (G≥0.80, W3≥0.75)
+- `execution_readiness` vs `verdict` (held vs SEAL is contradictory)
+- `service_health` vs `session_authority` (green + OBSERVE_ONLY is informational, not failure)
+
+If any contradiction found, downgrade effective_verdict and flag in SHADOW.
 
 If you cannot enumerate shadow, you have not audited. You have echoed.
 
@@ -87,8 +101,31 @@ Suggested skills to author:
 - `SEAL-discipline` — distinguish SEAL from RECEIPT
 
 ### Rule 6 — Close with witnessed SABAR, not fake SEAL
-
 If metabolism is sub-threshold (G < 0.80, W3 < 0.75), do NOT claim SEAL. Close as SABAR — acknowledge the gap honestly. The kernel allows SABAR (seal.py line 61). SABAR is constitutional honesty.
+
+### Rule 7 — Session-to-skill feedback loop (NEW — 2026-09-18)
+Every session that discovers gaps in existing skills MUST upgrade those skills before closing. The feedback loop:
+
+```
+Session discovers gap → gap is evidence → skill patch drafted → skill updated → future sessions inherit fix
+```
+
+**How to identify skill gaps during a session:**
+1. A tool/skill missed something a human or other agent caught (e.g., TOCTOU hazard, gitignore gap)
+2. A manual step repeated across multiple sessions (e.g., "run audit then clean up" = two skills that should chain)
+3. A new pattern emerged that the existing skill doesn't cover (e.g., `.stale` files being tracked)
+
+**How to upgrade:**
+1. Read the skill's SKILL.md
+2. Identify the specific gap (line, section, missing step)
+3. Patch the skill with the new capability
+4. Add a scar reference: `NEW — YYYY-MM-DD scar` in the section header
+5. If a new skill is needed (bridge between two existing skills), create it
+
+**Anti-pattern:** Discovering a gap, fixing it manually, and NOT upgrading the skill. This means the next session will hit the same gap. The skill is the institutional memory — if it's not patched, the lesson is lost.
+
+**NEW — 2026-09-18 (post-patch evidence):**
+Session 2026-09-18 (333-AGI / BIJAKSANA compile) discovered `apex_scalars.verdict=SEAL` while G=0.4722 / W3=0.7439 — a vocabulary drift that bypassed Rule 2 entirely because the kernel itself emits the contradiction. Patch applied: explicit apex_scalars contradiction probe in Rule 3 SHADOW enumeration. Future sessions inherit this audit gate.
 
 ## Workflow (canonical)
 
@@ -101,8 +138,9 @@ INPUT: user asks to compile/lower entropy
 4. ENUMERATE shadow (Rule 3) — write shadow first
 5. COMPILE /root/work/tasks.json (Rule 4)
 6. ENCODE wisdom into skills (Rule 5)
-7. PROPOSE doctrine patches for F13 ratification (do NOT auto-apply)
-8. CLOSE with witnessed SABAR if metabolism < threshold (Rule 6)
+7. UPGRADE skills with session gaps (Rule 7 — patch SKILL.md files directly)
+8. PROPOSE doctrine patches for F13 ratification (do NOT auto-apply)
+9. CLOSE with witnessed SABAR if metabolism < threshold (Rule 6)
   ↓
 OUTPUT: manifest + skills + doctrine proposals + close SABAR
 ```

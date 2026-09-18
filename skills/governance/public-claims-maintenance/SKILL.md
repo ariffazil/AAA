@@ -1,6 +1,6 @@
 ---
 name: public-claims-maintenance
-description: "Use when a repo's public claims drift from reality."
+description: "Use when public claims drift from reality or a figure has no source."
 version: 1.0.0
 triggers:
   - "the README says the wrong version"
@@ -15,6 +15,8 @@ triggers:
   - "which one is right"
   - "the slot number conflicts"
   - "the registry says X, this table says Y"
+  - "this number has no source"
+  - "which figures can I actually stand behind"
 ---
 
 # Public Claims Maintenance
@@ -66,6 +68,67 @@ When a project is built by agents under a human maintainer, the readership canno
 2. cut the sentence back to what the cited evidence actually shows.
 
 Verify the artefacts before writing the sentence — `git log -1 --format='%an <%ae>'` on the fix commits, plus the built package's `Author` / `Maintainer` METADATA — then state **who is accountable**, not merely who ran what. "The design and the judgment are mine, the implementation is theirs, and the bug is mine to answer for" carries the claim; "built by agents under my rules" is invisible to the reader it is meant to inform.
+
+## An ungroundable FIGURE — repair the shape of the claim, never label its provenance
+
+A published number can be neither stale nor arithmetically wrong and still be unsourced. The repair
+is not "find the right number" — it is **change the shape of the claim**. The sorting step below is
+what stops a repair pass from deleting true claims while keeping the false ones.
+
+### 1. Sort every disputed figure BEFORE touching it
+
+| Class | Test | Repair |
+|---|---|---|
+| **A — publicly traceable** | Resolves to a filing, a regulatory disclosure, a counterparty's own published statement, a press release | **Add the citation. Do not caveat it.** |
+| **B — real, privately sourced** | You know its origin and the reader cannot go there | Soften the *attributive phrasing* to the honest reading; the figure stays |
+| **C — a quotation with no home** | Presented as someone's words, but no document contains them | Convert to a labelled inference in the writer's own voice; never keep quotation marks around text with no source |
+| **D — opinion / motive / register** | A judgement about intent, not a measurement | **Out of scope. Do not touch.** |
+
+**Class A is the one most often mis-handled.** A figure that reads like insider knowledge is
+frequently a published counterparty or regulatory disclosure — so the reader's suspicion is a
+*sourcing* gap, not a *truth* gap. Widen the search to the counterparty and the regulator before
+concluding a number is unsourceable; a two-party disagreement over a figure is settled by sourcing
+it, never by hedging it. Hedging a sourced number weakens it for no gain.
+
+### 2. Never label provenance on a public surface
+
+The tempting repair — attaching an "internal estimate, no public confirmation"-style tag — is the one
+move that makes the document **worse**, and it fails in both directions: to a hostile reader it
+**confirms inside access** to the subject institution, while to an ordinary reader it asserts
+something they cannot verify anyway. It is a confession formatted as diligence. It protects neither
+the writer nor the reader.
+
+### 3. The four legitimate repairs
+
+When a figure cannot be sourced, change the claim rather than annotating it:
+
+- **Widen to a range** — the honest uncertainty is usually the more defensible claim.
+- **Reframe as a question** — moves the assertion from the writer to the reader without losing the point.
+- **Attribute the ACT OF COUNTING, not the number**, to a named public source ("the contracts
+  announced to date total …"). This is the commonest real repair, because the underlying facts are
+  usually public even when the aggregate is the writer's own.
+- **Drop the precision** — an order of magnitude the writer will stand behind beats a unit they will not.
+
+### 4. Never invent a source
+
+A number with no citation is **exposed**. A number with a fabricated citation is **defended** — it
+survives exactly the audit that would have caught it. If the source cannot be found, that *is* the
+finding: label it unverified and say so. Manufacturing a plausible report, page number, or URL is a
+worse act than the unsourced figure it was meant to protect.
+
+### 5. Repair the claim, not the voice
+
+Where the text carries a named persona or a deliberate register, **the register is the writer's, not
+the auditor's** — only the claim's shape moves. On the same ground: **label, never delete.** Deleting
+loses the truth; a labelled claim keeps it as a labelled inference.
+
+### 6. The pass is not landed until every rendering carries it
+
+A published claim usually exists in more than one rendering — the canonical source, a generated
+markdown mirror, a compiled bundle. Repairing one and reporting the pass complete is the standard
+failure mode. Read back what the *served* surface returns, and report the pass as
+`cited / labelled / replaced / deleted` counts, with `deleted` expected to be **zero** for any pass
+whose rule is never-delete. A count of zero deletions is a result worth stating, not an omission.
 
 ## Identifier claims — slot numbers, ids, versions of record
 

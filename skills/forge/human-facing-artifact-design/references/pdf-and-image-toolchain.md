@@ -43,6 +43,80 @@ doc.build(elements, canvasmaker=PagedCanvas)
 
 Buffering `self.__dict__` per page is what makes "of M" possible — a footer drawn inside `showPage` never knows the total.
 
+### Dark full-bleed page theme (personal / reflective documents)
+
+For a document with a coloured page background (dark theme, warm gold text), do **not** subclass
+the canvas — pass page callbacks to `SimpleDocTemplate`. They run before the flowables draw, so a
+filled rect becomes the backdrop, and the same callback is the simplest place for a centred page
+number:
+
+```python
+from reportlab.lib.colors import HexColor
+from reportlab.lib.pagesizes import A4
+
+BG, GOLD, DIM = HexColor("#1a1a2e"), HexColor("#d4a574"), HexColor("#8a7060")
+
+def draw_bg(canvas, doc):
+    canvas.saveState()
+    canvas.setFillColor(BG)
+    canvas.rect(0, 0, A4[0], A4[1], fill=1, stroke=0)
+    canvas.setFont(body_font, 8)
+    canvas.setFillColor(DIM)
+    canvas.drawCentredString(A4[0]/2, 15*mm, f"— {doc.page} —")
+    canvas.restoreState()
+
+doc.build(story, onFirstPage=draw_bg, onLaterPages=draw_bg)
+```
+
+Setting `bg=None` on `SimpleDocTemplate` does not affect the page background — the callback is the
+only mechanism.
+
+**Register the font family explicitly — base and bold are separate faces.** One TTF registration
+gives you exactly one face and there is no implicit bold. Discover the files instead of hardcoding
+paths:
+
+```python
+import glob
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+
+for fp in glob.glob("/usr/share/fonts/truetype/**/*.ttf", recursive=True):
+    if "dejavuserif" in fp.lower() and fp.endswith(".ttf"):
+        name = "DejaVuSerif-Bold" if "bold" in fp.lower() else "DejaVuSerif"
+        pdfmetrics.registerFont(TTFont(name, fp))
+```
+
+Referencing `"DejaVuSerif-Bold"` without registering it falls back silently to a default font — on
+a dark page that is a visible style break, not a subtle one.
+
+**Every style needs its own colour; there is no global text colour.** A `canvas.setFillColor`
+inside the page callback does not reach flowable text. Each `ParagraphStyle` carries its own
+`textColor`, so on a dark background a style you forgot to colour renders **invisible**, not merely
+inconsistent. Set it on title, subtitle, heading, body, quote, footer and intro styles explicitly,
+and pass an explicit light `color=` to every `HRFlowable` — the default rule colour is near-black
+and vanishes against the theme.
+
+Dark-theme checklist: every style has an explicit light `textColor`; every divider has an explicit
+light `color`; the callback fills the rect before drawing the page number; and the normal §3
+density check still applies unchanged (`page.get_text()` is unaffected by background colour).
+
+**A style `parent` must be a style object, not a style name.** If a string reaches the paragraph
+parser where a style is expected, ReportLab fails with `'str' object has no attribute 'fontName'`
+(and a follow-on `'str' object has no attribute 'name'`) from `paraparser._initial_frag` — an error
+that names neither your variable nor your paragraph, so it reads as a ReportLab bug rather than a
+bad argument. Build styles through a small factory that always receives `parent=<style object>`, and
+keep one helper per document so every style is constructed the same way:
+
+```python
+def mk(name, **kw):
+    base = dict(fontName=body_font, fontSize=9, textColor=GOLD, leading=14, spaceAfter=3*mm)
+    base.update(kw)
+    return ParagraphStyle(name, **base)   # name is a label, never a parent
+```
+
+When a build fails with an attribute error inside `paraparser`, check the style arguments before
+touching the content.
+
 ### Section header band
 
 Wrap each title in a one-cell Table with a background colour. Gives a coloured band without drawing primitives or measuring text:
@@ -77,6 +151,38 @@ for i, page in enumerate(doc):
 ```
 
 Two dense A4 pages land around 3.5k–4.5k characters each. A page under ~2k is under-filled — fix the layout, do not ship it. A page returning a few hundred characters usually means content overflowed to nowhere or a table failed to render.
+
+### Ink coverage — the complementary check (§3)
+
+Character count catches emptiness; it does not catch a page that has a few lines of text but reads visually empty. Rasterise the pages, then compute dark-pixel share for each:
+
+```python
+# first: pdftoppm -png -r 100 out.pdf /tmp/qa/page
+from PIL import Image
+import glob
+
+for f in sorted(glob.glob("/tmp/qa/page-*.png")):
+    im = Image.open(f).convert("L")
+    w, h = im.size
+    px = im.load()
+    dark = tot = 0
+    for y in range(0, h, 4):
+        for x in range(0, w, 4):
+            tot += 1
+            if px[x, y] < 235:
+                dark += 1
+    print(f, f"{100 * dark / tot:5.2f}%")
+```
+
+Healthy text-and-figure pages sit roughly 4–25%. **A single page an order of magnitude below its
+neighbours is the signature of a stranded fragment**, not of intentional design — typically a
+closing epigraph, signature block or footer that overflowed onto a page of its own. Fix it by
+tightening that block's top margin and leading so it joins the preceding page, and by shortening
+its line lengths if that is what makes it fit. Do not delete the block and do not pad it with
+filler.
+
+Skip this sweep when the active model has no vision lane; the numbers are the whole check, and a
+page-count match alone will not report a stranded page (the fragment still counts as a page).
 
 ## Matplotlib gotchas that cost time
 

@@ -93,6 +93,18 @@ SKILL.md as well. Otherwise skip; doctrine and skill have different owners.
   (`canon/*.md` and `instructions/anti-calhoun.md` cite it). `/root/AAA/eurekas/eureka-entries.jsonl`
   is a stray with a different entry shape and no readers. Appending to the wrong one silently loses
   the record. See `references/commit-gates.md`.
+- **A rule that must bind EVERY harness needs a generator and a drift check, not hand-copies.**
+  Harness boot surfaces are not one file: `/root/AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `QWEN.md`,
+  `.codex/AGENTS.md`, `.config/opencode/AGENTS.md`, `.kimi-code/{AGENTS,SYSTEM}.md`,
+  `.qwen/instructions.md`, `.grok/AGENTS.md`, `.arifos/agents/*/AGENTS.md`, and on KVM4 the
+  `.openclaw/{system.md,workspace*,agents/*/system.md}` set. Hand-copying a clause into them rots
+  silently: surfaces drift, some end up with two copies while others get none, and a stale host can
+  carry zero. Fix pattern — ONE writer script emitting a marker-delimited block
+  (`<!-- BEGIN/END AAA-<TOPIC> -->`), idempotent, stripping pre-marker legacy sections so exactly one
+  copy survives per surface, with `--check` exiting non-zero and a scheduled drift-check writing a
+  receipt. Reference implementation: `/root/scripts/membrane-propagate.py` +
+  `membrane-drift-check.sh`. A host whose `/root/AGENTS.md` is generated elsewhere (KVM8 → KVM4) gets
+  the rendered file synced, never hand-edited on the stale side.
 - **Sweep for an existing owner before minting.** Parallel agent sessions on the same box mint the
   same insight independently. Before writing, grep the ledger, the fragments, and `git log` for the
   topic; if an owner exists, fold the delta into it instead of creating a second file
@@ -101,6 +113,14 @@ SKILL.md as well. Otherwise skip; doctrine and skill have different owners.
   `/root/AAA/skills/**` resolve for reading but refuse writes; user-owned skills refuse autonomous
   curation outright. Edit the real file with the `patch` tool, or leave it and tell the user to run
   `hermes curator adopt <name>`. Do not silently skip the skill layer — say which layer you could not seal.
+- **Canon-mutate + complex content: write to temp file first.** Shell parsing breaks on JSON
+  parentheses, quotes, and interpolation inside `bash -c "echo '...' >> file"`. The command
+  reports `rc=0` but the content does not land. Fix: write the content to `/tmp/<name>.ext` first,
+  then `cat /tmp/<name>.ext >> <target>` via canon-mutate. Verify with `grep` after.
+- **W_SCAR gate can block base.md edits.** The W_SCAR scar gate flags base.md edits as
+  "touches critical variable" and holds the write across patch/write_file/terminal/execute_code.
+  When this happens, seal all other layers (fragment, ledger, amendment, render, commit) and
+  report the base.md gap explicitly — do not bypass the gate.
 - **Push is a gate, not a formality.** `git -C /root/AAA push` runs the F1–F13 governance check;
   arifOS pushes also run the drift check and print source vs deployed.
 - **"Seal all" authorises the layers of the rules in play — never a wholesale adoption.** When the same

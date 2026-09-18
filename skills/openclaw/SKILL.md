@@ -3,7 +3,7 @@ name: openclaw
 id: openclaw
 version: 1.0.0
 risk_tier: medium
-description: 'OpenClaw edge agent bridge — operational triage, doctor, restart, and A2A bridge routing for the federation edge (Telegram surface). USE WHEN: "openclaw unhealthy", "gateway down", "edge bot not responding", "a2a bridge disconnected", "watchdog tripped", "openclaw doctor", "openclaw restart". NOT for token/security audit — use FORGE-telegram-audit. [fed: tier=fed-agent-subagent, auto=T2, risk=medium]'
+description: 'OpenClaw edge agent bridge — operational triage, doctor, restart, and A2A bridge routing for the federation edge (Telegram surface). USE WHEN: "openclaw unhealthy", "gateway down", "edge bot not responding", "a2a bridge disconnected", "watchdog tripped", "openclaw doctor", "openclaw restart". NOT for token/security audit — use FORGE-telegram-audit. '
 owner: A-FORGE
 floor_scope:
 - F1
@@ -36,9 +36,7 @@ version_lock:
   artifact_hash: pending
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----
-
-# OpenClaw — Edge Agent Bridge Operations
+---# OpenClaw — Edge Agent Bridge Operations
 
 **Operational triage for the federation edge.** OpenClaw is the Telegram-facing agent surface (`@AGI_ASI_bot`) and A2A bridge into the internal federation. This skill governs the **operational** surface — health, restart, watchdog, doctor — and explicitly **does not** cover security/token audit (which is `FORGE-telegram-audit`'s lane).
 

@@ -3,7 +3,7 @@ id: repo-intelligence
 name: forge-repo-intelligence
 autonomy_tier: T1
 version: 1.0.0
-description: 'SOLE controller skill for repository intelligence across the arifOS Federation. Exposes 12 [fed: tier=fed-agent-subagent, auto=T1, risk=medium]'
+description: 'SOLE controller skill for repository intelligence across the arifOS Federation. Exposes 12 '
 owner: AAA
 risk_tier: medium
 knowledge_basis:
@@ -70,9 +70,7 @@ floor_scope:
 - F11
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----
-
-# FORGE-repo-intelligence — Controller Skill
+---# FORGE-repo-intelligence — Controller Skill
 
 > **One controller. Twelve modes. No duplicate logic.**
 > This skill is the SOLE repository intelligence controller. Smaller GitHub skills are consolidated as internal modules.

@@ -1,7 +1,8 @@
 ---
 name: pasted-material-analysis
 description: Use when he pastes material for analysis or a deep read.
-category: governance
+tags: []
+related_skills: []
 ---
 
 # Analysis of Material He Pasted
@@ -83,12 +84,21 @@ analysis, and the destination is the whole decision.
 - **Machine-translated input has already lost its register. Do not inherit what is left of it.** Reconstruct in his voice (BM Penang, pendek, terus) and answer the substance there. If the material was translated, the only correct output language is still his.
 - **Length of input is not a request for length of output.** Document-shaped material invites document-shaped replies — resist. Collapse to the one or two things that matter to him.
 
+## When he references a book he's reading (no material in hand)
+
+He mentions a book title and asks for analysis or distillation. No text is pasted; no photograph is taken. The object lives only in your knowledge base.
+
+**Procedure:**
+1. **Verify the book exists before analyzing it.** Quick search — title + author match. If the title might be a chapter, subtitle, or misremembering, say so upfront rather than building a reading on a phantom. "I know Housel's *Psychology of Money* inside-out; I can't confirm a book called *Art of Spending Money* — here's the analysis from his known work, correct me if the title is different."
+2. **Give the analysis from what you actually know.** If the book is real and within your knowledge, give the full deep read. If it's partially or wholly outside your knowledge, state the boundary, then give the best analysis you can from related work, marking explicitly what comes from the specific book vs. your broader knowledge of the author's framework.
+3. **Critique, don't just agree.** Books he's reading are objects to diff, not authorities to defer to. Name what the author misses, where the framework breaks under local conditions (Malaysia, his industry, his life), and what's genuinely new vs. restated wisdom.
+4. **Ground in his world.** Every framework point lands on one of three surfaces: his institution (PETRONAS/geoscience), his bonds (Syed, family), or his own life. Without that landing the analysis is a book report.
+
+**Pitfall — do not fabricate a book you cannot confirm.** If online verification fails (search tools blocked, CAPTCHA, config error), fall back to your knowledge base honestly. State what you know and what you can't verify in the same breath. A confidently wrong book title or invented chapter summary costs the whole reply's credibility.
+
 ## Books, products, objects he photographs
 
-He shops and photographs covers, one at a time, then asks for the distill ("analyze and distill the
-key eureka from each"). When a shelf arrives whole, run it through `vision_analyze` and transcribe the
-spines before naming anything — never guess a title, author or subtitle from a blurry spine, and skip
-spines that cannot be read rather than filling them in.
+He shops and photographs covers, one at a time, then asks for the distill ("analyze and distill the key eureka from each"). When a shelf arrives whole, run it through `vision_analyze` and transcribe the spines before naming anything — never guess a title, author or subtitle from a blurry spine, and skip spines that cannot be read rather than filling them in.
 
 Hold ONE block shape for the whole run so entries can be compared:
 
@@ -129,3 +139,14 @@ Rules:
 ## When the material is about someone he loves
 
 Keep every rule above, and add: do not write that person's interior at all. Offer what he could do or say to them instead — presence, timing, one unforced question — and let them be the one who speaks for themselves.
+
+## When analysis leads to a parallel deliverable
+
+He may chain: book analysis → summary → system check → PDF. When the session scope expands mid-conversation, the analysis is NOT the bottleneck — the downstream deliverable is. Two moves:
+
+1. **Deliver the analysis inline first** (as normal). The human is reading and reacting in real time; the analytical output is its own value.
+2. **Spawn the downstream deliverable immediately** as a background subagent while continuing to engage. The subagent gets a self-contained prompt with all personal context it needs (name, bonds, profession, life details, voice style) and an explicit **no-system-references** ban if the artifact is personal. Do not wait for the analysis discussion to finish before spawning — the latency is in PDF generation, not in conversation.
+
+**Pitfall:** Do not batch the analysis and the PDF into one subagent. The analysis is conversational and interactive; the PDF is a one-shot background job. Mixing them means either the analysis waits for PDF generation, or the PDF gets incomplete input. Separate them.
+
+**Pitfall:** When spawning a subagent for a personal artifact, repeat ALL personal context in the delegation prompt — name, workplace, family details, preferences, speaking style. The subagent sees nothing of the parent conversation. A subagent prompt that says 'write about his life' without the life details will produce generic output.

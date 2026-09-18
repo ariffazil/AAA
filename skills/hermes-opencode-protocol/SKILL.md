@@ -4,7 +4,8 @@ name: hermes-opencode-protocol
 owner: Hermes-Prime
 risk_tier: low
 version: 2.0.0
-description: > [fed: tier=fed-agent-subagent, floors=[F01, F02, F04, F08, F11, F13], auto=T1, risk=low]
+description: >
+
   Unified Hermes/OpenCode/OpenClaw governed intelligence protocol. Stage 777 FORGE
   execution under F1-F13 with 888_HOLD gates. Reversible-first, evidence-cite-or-UNKNOWN.
   BIJAKSANA: XML-tagged for Claude, numbered steps for Codex, imperative for Hermes.
@@ -16,9 +17,7 @@ cognitive_hints:
 autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----
-
-# HERMES-opencode-protocol
+---# HERMES-opencode-protocol
 
 <cognitive-note model="claude">XML-tagged protocol stages. Track state across all 7 stages in extended context.</cognitive-note>
 <cognitive-note model="codex">7 sequential stages. Each has explicit input/output/gate. Log chain-of-thought at each gate.</cognitive-note>
