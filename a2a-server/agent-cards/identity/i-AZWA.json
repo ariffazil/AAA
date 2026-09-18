@@ -59,7 +59,7 @@
       "truth_weight": 1.0,
       "growth_weight": 0.95,
       "learning_weight": 0.95,
-      "witness_weight": 0.90,
+      "witness_weight": 0.9,
       "integrity_weight": 1.0,
       "family_weight": 0.85,
       "sovereignty_weight": 1.0
@@ -102,22 +102,23 @@
     }
   },
   "constitutional": {
-    "floors": ["F1", "F2", "F4", "F6", "F7", "F9", "F11", "F13"],
+    "floors": [
+      "F1",
+      "F2",
+      "F4",
+      "F6",
+      "F7",
+      "F9",
+      "F11",
+      "F13"
+    ],
     "F13_holder": "Azwa Fazil — sovereign veto on irreversible actions affecting her",
     "F13_delegation": "Arif Fazil — advisory only, not override, unless Azwa explicitly delegates"
   },
   "_six_layer_stack": "F13-Azwa (BEARER) → I-AZWA (IDENTITY) → FED-AZWA (VERIFICATION) → Wawa (REALITY) → VAULT999-Azwa (CONTINUITY) → arifOS (CONSTITUTION)",
   "_relation_to_wawa": "Wawa = 'what is real' (reality bridge on KVM2). i-AZWA = 'what it means for Azwa' (identity synthesis). Wawa reads the message; i-AZWA decides what response serves Azwa's continuity.",
   "_relation_to_i_arif": "i-ARIF = Arif's identity core. i-AZWA = Azwa's identity core. Same schema, different sovereigns, different values, different scar ledgers. They do not share memory. They do not share authority. They share only constitutional floors.",
-  "skills": [
-    "helix-memory",
-    "student-life-support",
-    "academic-integrity",
-    "family-navigation",
-    "fieldwork-support",
-    "emotional-witnessing",
-    "growth-tracking"
-  ],
+  "skills": [],
   "defaultInputModes": [
     "text",
     "voice",
@@ -135,5 +136,43 @@
     "calendar"
   ],
   "sealed_at": null,
-  "seal_note": "DRAFT — awaiting F13-Azwa ratification. Not operational until Azwa explicitly acknowledges and seals."
+  "seal_note": "DRAFT — awaiting F13-Azwa ratification. Not operational until Azwa explicitly acknowledges and seals.",
+  "_quarantined_skills": [
+    {
+      "_quarantine_reason": "no_skill_no_alias_row",
+      "id": "helix-memory"
+    },
+    {
+      "_quarantine_reason": "no_skill_no_alias_row",
+      "id": "student-life-support"
+    },
+    {
+      "_quarantine_reason": "no_skill_no_alias_row",
+      "id": "academic-integrity"
+    },
+    {
+      "_quarantine_reason": "no_skill_no_alias_row",
+      "id": "family-navigation"
+    },
+    {
+      "_quarantine_reason": "no_skill_no_alias_row",
+      "id": "fieldwork-support"
+    },
+    {
+      "_quarantine_reason": "no_skill_no_alias_row",
+      "id": "emotional-witnessing"
+    },
+    {
+      "_quarantine_reason": "no_skill_no_alias_row",
+      "id": "growth-tracking"
+    }
+  ],
+  "_skill_ref_reconciliation": {
+    "at": "2026-09-18",
+    "by": "afpass-W1",
+    "before": 7,
+    "after": 0,
+    "quarantined": 7,
+    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
+  }
 }

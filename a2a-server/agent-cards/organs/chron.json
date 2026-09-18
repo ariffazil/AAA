@@ -1,0 +1,82 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "protocolVersion": "1.2",
+  "agentId": "chron",
+  "name": "CHRON",
+  "description": "Temporal consequence tracker — predictions, verification, calibration, learning. The8th organ. Answers: What did we expect? What happened? Were we wrong?",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "arifOS",
+    "system": "AAA"
+  },
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "stateTransitionHistory": true,
+    "extendedAgentCard": true
+  },
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.2",
+      "url": "https://aaa.arif-fazil.com/a2a"
+    },
+    {
+      "protocolBinding": "MCP",
+      "protocolVersion": "1.0",
+      "url": "https://chron.arif-fazil.com/mcp"
+    }
+  ],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "application/json",
+    "text/plain"
+  ],
+  "skills": [],
+  "governance_profile": {
+    "authority_ceiling": "COMPUTE_ONLY",
+    "forbidden_domains": [
+      "constitutional_judgment",
+      "engineering_execution",
+      "capital_allocation",
+      "mutation_authorization"
+    ]
+  },
+  "temporal": {
+    "port": 18102,
+    "health_endpoint": "https://chron.arif-fazil.com/health",
+    "mcp_endpoint": "https://chron.arif-fazil.com/mcp"
+  },
+  "_quarantined_skills": [
+    {
+      "id": "chron_predictions_due",
+      "name": "Predictions Due",
+      "description": "Get predictions whose verify_at has arrived",
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "chron_calibration_state",
+      "name": "Calibration State",
+      "description": "Get calibration statistics",
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "chron_temporal_briefing",
+      "name": "Temporal Briefing",
+      "description": "Full temporal briefing for agent wake-up",
+      "_quarantine_reason": "no_skill_no_alias_row"
+    }
+  ],
+  "_skill_ref_reconciliation": {
+    "at": "2026-09-18",
+    "by": "afpass-W1",
+    "before": 3,
+    "after": 0,
+    "quarantined": 3,
+    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
+  }
+}

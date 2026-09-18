@@ -52,15 +52,24 @@ phases:
     court_ledger_note: "vault-ledger reality checks -> VERIFY; memory-source verification -> WITNESS"
 
   P3_mcp_tooling:
-    status: QUEUED
+    status: ACTIVE  # collapsed: 2026-09-19
     chain: MCP Build + MCP Verify + MCP Operate
     owners:
       - id: MCP-Build   # owner: forge/fastmcp
         absorbs: [generic mcp build/setup skills differing only by implementation detail]
-      - id: MCP-Verify  # owner: forge/verify-work lane
-        absorbs: [mcp-testing, mcp-smoke-test, mcp-probe, handshake/health checks, fingerprint/surface-audit modes]
-      - id: MCP-Operate # owner: forge/mcp-ops
+      - id: MCP-Verify  # owner: engineering/mcp-testing  # canonical-path
+        absorbs: [mcp-testing, mcp-smoke-test, mcp-probe, handshake/health checks, fingerprint/surface-audit modes, FORGE-mcp-testing, mcp-dual-era-transport]
+        absorbed_2026_09_19:  # phase: skill-zen-collapse Phase 2+3
+          - FORGE-mcp-testing    # 12-point conformance matrix → mcp-testing Section 4
+          - mcp-dual-era-transport  # era-mismatch doctrine → mcp-testing Section 5
+          - mcp-shopping-list-2026-09  # dated snapshot → superseded by mcp-sota-shopping-list
+        cross_references_added:
+          - mcp-transport-fix    # KEEP separate (SSE→streamable-http) — referenced from mcp-testing Related + negative triggers
+          - external-platform-mcp # KEEP separate (third-party wiring) — distinct concern from mcp-ops
+      - id: MCP-Operate # owner: engineering/mcp-ops  # canonical-path
         absorbs: [external-platform-mcp, mcp-ecosystem-indexing, registry-publish modes]
+        patch_2026_09_19:  # phase: skill-zen-collapse Phase 3b
+          - negative_triggers_added_to_deflect_external_platform_wiring_queries
 
   P4_research:
     status: QUEUED
@@ -103,3 +112,4 @@ anti_bloat_law: >
 phase_log:
   - "2026-09-16 P1: quartet registered; sovereign-recognize + AGI-decisions-reflect frozen to /root/AAA/skills/.frozen/2026-09-16-skill-zen-quartet/ with alias stubs; APEX-humility-godel created; Owner 2 modes patched"
   - "2026-09-16 INCIDENT: synced-tree .archive copy of sovereign-recognize pruned by mesh sync within minutes; original recovered from AAA-tree copy (domains/apex/); freeze location moved to /root/AAA/skills/.frozen/ — never freeze inside mirror trees"
+  - "2026-09-19 P3 mcp-tooling collapse (skill-zen-collapse): FORGE-mcp-testing conformance matrix → mcp-testing §4 (absorbed); mcp-dual-era-transport era-mismatch doctrine → mcp-testing §5 (absorbed); mcp-shopping-list-2026-09 dated snapshot → superseded by mcp-sota-shopping-list (Phases 6). mcp-transport-fix KEPT separate (SSE→streamable-http is a distinct concern from testing); external-platform-mcp KEPT separate (third-party platform wiring is its own operational domain per MCP-Operate). mcp-testing + mcp-ops gained negative_trigger fields to deflect cross-domain queries. Originating content frozen at /root/AAA/skills/.frozen/2026-09-19-mcp-collapse/ (Phase 2a). Alias stubs at all 4 mirror tree locations (Phase 2b). mcp-ecosystem-indexing v1.1.0 refreshed against canonical MCP 2026-07-28 spec + RFC 8414/8705 + MCP-Protocol-Version header (Phase 5). P3_mcp_tooling status: QUEUED → ACTIVE."

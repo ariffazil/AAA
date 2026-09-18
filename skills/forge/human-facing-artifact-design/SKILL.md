@@ -27,7 +27,20 @@ Name the reader **before** laying anything out. There are two, and they want opp
 
 Never fuse them. Handing a technical dump to a human reader is a failure even when every fact is correct. For a human artifact the question is not "is this complete?" but "does the reader now know what to do or feel?"
 
+**A technical artifact's figures are part of the argument, not decoration.** When the reader is a domain specialist, prose and tables alone come back with a direct instruction to add the maps and sections. A geologist reading a basin or asset dossier expects the regional location map, at least one cross-section, and the stratigraphic column wherever reservoir, seal or velocity are discussed — ship them inside the document, at the density the text implies. Where the supporting geometry is not in the public record, **still draw it and mark it** `schematic` / `indicative` / `not to scale` in both the figure subtitle and the caption: an absent map costs more credibility than a correctly-labelled schematic, and the label is what keeps the schematic admissible. Figure production and its vision-QA loop live in `geological-figure-production`. The rule generalises: a specialist reader judges the artifact partly on whether it carries the instrument of the discipline it claims.
+
 **Third case — the internal-audience artifact.** When the reader is the sovereign and the subject *is* his own system, neither rule above applies cleanly. Internal vocabulary is the payload, not a leak, and the failure mode inverts: stripping the terms that carry the meaning destroys the artifact. What such an artifact owes instead is its epistemic status rendered on its face — an assessment that was never ratified must say so in the frame. See `visual-artifact-delivery` §4c.
+
+**Fourth case — the numeric-averse reader.** When the reader has signalled that figures themselves are the barrier ("aku pening matematik", "aku lemah matematik", "aku x faham hang tulis number", "cuba hang lukis"), a correct table is an unreadable artifact. The barrier is the *channel*, not the content, and repeating the number more slowly never fixes it. Re-render as a picture:
+
+- Pick the single contrast that carries the lesson — two cases side by side beats a twelve-row scenario table.
+- One panel per idea, three panels maximum. Every panel labelled in words. A number may appear inside the figure; an equation may not.
+- Name the two things to look at in the caption, in ordinary language. The reader must not have to derive what the picture shows.
+- Keep the accompanying text to the conclusion and the one mechanism sentence. Do **not** restate the figure as prose — that trains the reader to skip the image.
+- On any comparison, show the **baseline** as well as the result. A score presented alone reads as skill; a score beside its trivial baseline is the actual finding.
+- Convert PNG → JPEG (quality ~94) and deliver with `MEDIA:/abs/path.jpg`.
+
+A correct answer in the wrong channel is still a failure to communicate — track the channel signal the same way you track an audience.
 
 Related: `FORGE-artifact-publisher` covers the EMD pipeline mechanics (HTML → Chrome headless → delivery). This skill owns the layer above it — who is reading, and how the page is weighted.
 
@@ -74,6 +87,25 @@ When asked to say something *as* the user to another human, match his register: 
 - **Match the form's language, but offer his.** If the form is in English, provide English and offer Malay. For anything personal or emotional he will usually want his own register.
 - **Leave one slot for a real event, never invent the event.** Say where a concrete moment of his belongs; fabricating an anecdote in his voice is the one unrecoverable error here.
 
+### A reader who communicates by forwarding, not by writing
+
+Some readers never compose prose. They send a quoted card, a screenshot, a forwarded article, or a
+three-word answer, and that IS the message. Two rules follow, and both are about the reader rather than the
+artifact:
+
+- **Do not credit them with authoring what they forwarded.** A quote they pasted is a signal that the idea
+  landed with them — not their own writing. Replying "you wrote that yourself" is a factual error they will
+  notice, and it reads as flattery aimed at someone who did not do the thing. Respond to the idea inside the
+  quote; leave the attribution alone.
+- **Keep replies to them short regardless of how much there is to say.** Length is a register error for this
+  reader, independent of content, and it is detectable: "do you think I'm bothered to type that much?" A
+  multi-paragraph answer to a forwarded quote is the same failure as a technical dump to a non-technical
+  reader — the channel is wrong even when every sentence is correct. Compress to 2–4 lines and let them pull
+  for more.
+
+Read the channel the same way you read the audience: a reader who sends images and quotes is asking to be
+answered in kind, not to be handed an essay about their own message.
+
 ### Personal letters to a colleague, mentor or superior
 
 A letter the sovereign sends to someone in his working life is a short, narrow artifact: it says
@@ -115,11 +147,39 @@ When the artifact is a personal reflection, life document, or wisdom piece — a
 
 **Pitfall:** Subagents asked to generate personal artifacts will default to describing their process or embedding system context if the prompt does not explicitly forbid it. The ban must be stated in the delegation prompt, not assumed.
 
+### Health, rehab and training artifacts addressed to a named person
+
+A document built for one person about their own body — a rehab timeline, a return-to-work plan, a training block — is a care artifact with an extra failure mode: it can be complete against the *previous version* and still be incomplete against the *person*.
+
+- **Carry the constraint that actually governs their behaviour, not the headline diagnosis.** A person's file usually holds more than one finding, and the secondary one is often the binding one — a repaired structure heals slower than a reconstructed one and carries a lower load ceiling. An artifact covering only the flagship injury reads finished while spending the reader's effort on the wrong constraint. Before shipping, diff the document against everything the person has actually disclosed, not against the draft you are revising.
+- **Never resolve the clinician's unknown for them.** Clearance timing, load ceilings and protocol progression belong to the treating professional. Put each unknown in the artifact as a written question the reader takes to that professional, and say plainly that the clinician's protocol wins. A plausible invented week number is the one error in this genre that causes harm.
+- **The reader is the person, not the principal.** No internal vocabulary, no house sign-off, no federation footer. The whole furniture is a source line and a plain "not medical advice" line.
+- **Ship a ladder, not a verdict.** Stage the progression — allowed now, gated, destination — so the reader can place themselves. A gated stage presented as a stage reads as guidance; the same gate presented as a bare refusal reads as punishment.
+- **Lead with what changed.** When the reader already holds the earlier version, the top of the new one says what moved and why, before any of the standing content.
+
+### Résumés and career documents that leave the institution
+
+A CV is read by a stranger deciding whether to spend money on the subject, and it travels outside every boundary the source record sits behind. Two things dominate: the record must be checkable, and nothing restricted may travel with it.
+
+- **Sweep the source record for access-class flags before drafting.** Personnel and project files carry entries marked restricted, held, or incident-class. Those do not enter a document a third party will hold — not paraphrased, not softened, not implied by a date the reader can look up. Confirm the exclusion back to the principal so the absence is never later read as an oversight.
+- **Zero operational numbers.** Flow rates, volumes, pressures, acreage or well-test results belong to the institution, not the individual, and their presence is what makes a CV unsafe to forward. Close with one plain line stating the document carries no proprietary data.
+- **Rank by what the reader is hiring for, not by what the subject is proudest of.** When the subject carries two identities — the profession and a personal initiative — the artifact is written for the reader's vacancy. Lead with the professional record; give the personal initiative a short block below it, explicitly labelled a personal project and not an employer one. Equal weight reads as a person whose attention is elsewhere, the opposite of the needed conclusion.
+- **Every entry carries what it demonstrates, not only what happened.** One line of fact, one line of capability proven. A list of names with no demonstrated capability cannot be priced by the reader.
+- **A selected-record block may lead the chronology.** For technical or research careers, the evidence above the employment history is often stronger than dates first — keep the chronological history beneath it for the reader verifying continuity.
+- **Never derive a field the record does not hold.** Contact details, graduation year, start date, job titles. A résumé is the highest-consequence place to guess and the easiest to check; ship what is on file and return the gaps to the principal as a short confirm-list. Do not ship a plausible number with a caveat attached — the number is the part that gets read.
+- **When the principal names an application date, time the artifact to it.** A posting deadline in the message is the reader's constraint, not background detail — say which version is which if an earlier one is already circulating.
+- **A short or low-status attachment earns a line when a named technique transferred out of it.** An internship, secondment, or on-the-job stint the subject dismisses as "I did nothing there" is often the origin of a method they still use — a play analogue, a workflow, a tool habit. Record the **transfer**, not the role: name the technique and where it was later applied, and keep the donor organisation's proprietary specifics out. The subject under-reports this and will not volunteer it; ask before writing it off, because "I did nothing" and "nothing here is recordable" are different claims.
+- **The document carries no compensation figure.** A number in the CV caps the negotiation before it opens. Position the band instead by naming the *scope of accountability* — an asset-wide remit rather than a single prospect, a portfolio rather than a field, a multi-year programme rather than a campaign — because that is what a reader uses to place a level. Keep the arithmetic for the conversation and, if asked to reason about a target, do it outside the artifact.
+- **Describe a self-authored project by its verifiable surface, never by its vanity metrics.** When the subject's personal initiative is part of the pitch, probe its public claims live in the same session — registry version and licence, repository description, whether the live endpoint actually answers — and cite only what resolves. Star counts, follower counts and download totals invite the reader to price the person by the smallest number on the page; a published package, an open licence and a reachable service do not.
+- **Where the subject is a systems thinker rather than an implementer, write that as the competence being hired.** An architect who specifies and then delegates implementation is exercising exactly what a senior technical post demands — precision sufficient that the work can be built *and audited* by somebody else. Name the method (architecture, ontology and constraint design by the subject; implementation through governed harnesses) instead of leaving a gap the reader will fill with "cannot code".
+
 ## 5. Probe before quoting any number
 
 Market, salary, price and status figures must come from a live probe in the same session, with source and date stated alongside the number. Reciting remembered figures is fabrication-adjacent and gets caught.
 
 Where a domain convention differs from the obvious metric, report the convention rather than the raw metric. Example: Malaysian oil-and-gas compensation is quoted as a **total package** (base + bonus + allowances + rotation). Base alone is systematically low, and quoting it alone materially understates an offer — quote the package and say which components are in it.
+
+**Tier the source before quoting a benchmark.** For pay, market and status figures the *sample* matters more than the headline. Rank what you hold: a structured industry pay guide published as role × experience × company tier outranks a specialist salary survey, which outranks a job-board aggregate, which outranks a forum anecdote. Job-board aggregates are the trap — they average every listing sharing one job title, so a "geologist" figure folds quarry, GIS and site work into a single number and lands far below the specialist band, and a survey quoting an annual figure for a role the market pays monthly invites a 12× misread. State the tier beside every number, and state what it excludes: in resource industries, offshore, hardship and hazardous-duty allowances commonly run 40–60% of take-home and are quoted separately from base, so a base-only comparison understates the offer by roughly half. Where several sources disagree by a factor of two, the disagreement is a sampling statement — say which tier you are quoting and why the others are not comparable, rather than averaging them.
 
 **Read a figure off its row label, not its position.** Stacked tables put the prior-year cell of one series directly beneath the current-year cell of the next, so proximity is not identity. Match the number to its row label, then re-verify against both cells of that row. A cross-row misread is the first thing a checking reader finds, because they go straight to that page.
 
@@ -133,7 +193,28 @@ Where a domain convention differs from the obvious metric, report the convention
 
 **Never write an unattributable attribution.** "Analysts say", "sources indicate", "it is understood" — a claim with no named owner. If the source cannot be named, the claim does not ship; a checking reader finds that gap before they find the argument.
 
+**No borrowed-prestige vocabulary in the rendered text.** A domain name is not evidence of rigour. Applying quantum-mechanical, thermodynamic or information-theoretic vocabulary to an ordinary decision — where none of the underlying measurement cost has been paid — inflates how well-founded the claim looks while doing no work. When the reader asks for "the quantum solution", "APEX theory", or an entropy reading of a decision, supply the legitimate form of the mathematics with its assumptions stated (a diffusion envelope `sigma*sqrt(t)`, a Kelly growth curve, a first-passage probability, a measured sensitivity/specificity pair) and name the retraction if a borrowed term has already been used in the thread. Canonical form: **a label must do work, not borrow prestige.** Where a term is retained — Shannon entropy with a defined distribution, metabolism with a biological substrate, field/gradient in a defined mathematical space — it ships with the structure that makes it precise; everywhere else drop the metaphor and keep the goal.
+
+**Answer a claim of predictive skill with a test, not an argument.** When the reader asserts that a
+chart, a signal, an organ or a model can forecast an outcome — "technical analysis can tell when a
+company will die", "the model gives high-quality calls" — do not debate it and do not agree with it.
+A dispute about predictive power cannot be settled in conversation, because whoever already knows
+the outcome will find their pattern every time. Build a blind test instead: anonymised cases, seeded
+labels, the answer sealed to a separate file, and the score published beside its trivial baseline.
+Report the falsification of your OWN hypothesis first. The reader learns more from one honestly
+scored test than from any amount of analysis, and a result that dissolves a confidently-held belief
+is still the correct deliverable. Procedure and scaffold: `blind-prediction-testing`.
+
 **A citation must resolve, not merely appear.** A citation-shaped string that 404s is not a source — shape is not witness, and a document full of dead references reads as authoritative while being uncheckable. Run `scripts/verify-citations.py` over the artifact before release and replace or drop anything that fails. Status semantics: `2xx`/`3xx` resolve; `403`/`405`/`429` mean *the host answered* — the resource exists and is refusing HEAD, so it counts as live; `404`/`410` and no-response are real failures. Verify against the **source file before the build**, not only the rendered artifact, because a dead link found after a build costs the whole build.
+
+**When a publisher blocks automated retrieval, resolve the DOI's metadata instead of dropping the citation.** A `403` from a paywalled publisher, a JavaScript interstitial ("Just a moment…"), a CAPTCHA on a mirror, or a gateway error from an aggregator all mean *retrieval failed*, not *the source does not exist*. Query the registered metadata directly — `https://api.crossref.org/works/<doi>` returns JSON with no browser: title, journal, volume, issue, pages, DOI, the full author list and the abstract. Two things beyond bare existence come out of it, and both change the artifact:
+
+- **Author affiliations are provenance.** A paper whose corresponding author sits at an operating company is that company's own account of the geology, not independent scholarship — a materially different thing to cite in a peer or competitor dossier, and worth saying in the caption rather than presenting it as neutral literature.
+- **A confirmed DOI settles version questions.** Where a source is described loosely, the registered year, volume and page range are the version of record; cite those rather than a retrieval date or a working-paper label.
+
+Never soften a citation to "a study found" because the page would not load. Resolve it or drop it — an unattributable attribution is already banned by this skill's own rules.
+
+**An absence in the record ships as a named gap, not as silence.** Where a fact the reader will want does not exist in any source you can reach — a licence or contract term, a resource number, a headcount, a spud or first-gas date — record it in the artifact as an explicit *not found* / *not published* row and say why it matters, rather than omitting it and leaving the reader to notice the hole. Omitting it makes the document look complete and makes the reader wrong about their own exposure; naming it turns a gap into a question somebody can go and answer. Keep the two states distinct: **no public evidence is not evidence of absence** — write "no public evidence found" and give it a lower confidence, never "does not exist".
 
 **Report the count you measured, not the count you intended.** If a register holds 30 pointers, say 30; a stated count that disagrees with the list beside it is the first thing a checking reader notices, and it discredits the entries that are correct.
 
@@ -148,23 +229,41 @@ Build and refine a single output path; do not generate v2/v3/v4 side by side and
 been delivered and the reader returns corrections. A corrected artifact gets a **new version plus a
 short table of what changed and why** — because a reader who already holds the earlier number
 cannot otherwise tell which document they are reading, and because a visible correction is what
-makes the surviving claims trustworthy. See `auditable-numeric-artifacts` for the full
+makes the surviving claims trustworthy. A change table covers **omissions as well as errors**: name what the earlier version left out and what it changes for the reader. An error is visible to anyone who checks the figure; an omission is invisible until it costs something. See `auditable-numeric-artifacts` for the full
 receiving-an-audit procedure.
+
+**Verification that did not return is not a pass.** When a QA call fails, times out, or comes back
+without a verdict, the artifact is *unreviewed*, not *clean* — re-issue the call, and if the deliverable
+must ship first, name the unverified item to the reader and invite them to flag it. Reporting an
+unchecked figure or page as reviewed is the exact failure the check existed to prevent, and the reader
+has no way to tell the two states apart from the document alone.
 
 ## 7. Pre-send checklist
 
 ```
 [ ] Reader named, and the layout matches that reader (§1)
+[ ] If the reader is numeric-averse: figures rendered as a picture, not a table, with the baseline shown beside the result (§1)
 [ ] The one thing they must retain is the most visually weighted element (§2)
+[ ] Technical artifact for a specialist reader: the discipline's own figures are present (map / cross-section / column), and every schematic element is labelled `schematic` / `indicative` in subtitle and caption (§1)
 [ ] Every page is dense — chars/page counted from the built PDF, not eyeballed (§3)
 [ ] No stranded near-empty final page — ink coverage measured per page (§3)
 [ ] No number appears without a source and a date (§5)
+[ ] No borrowed-prestige vocabulary (quantum / entropy / thermodynamics) applied to an ordinary decision — the maths stands on its own, or the term is dropped (§5)
+[ ] A claim of predictive skill was tested blind and scored against its trivial baseline, with any sampling limitation stated on the artifact — or the claim is marked untested (§5)
 [ ] No internal vocabulary in the rendered text — for an OUTSIDE reader (floor IDs, tags, tool names, PASS/FAIL). For an internal reader whose subject IS the system, internal vocabulary is the payload (§1)
 [ ] No system references in personal reflection artifacts (§4)
 [ ] Personal letters: no motto, no house sign-off, no sender's business unless asked (§4)
+[ ] Person-specific artifact: diffed against everything the subject has disclosed, not against the draft being revised — the binding constraint is carried, not just the headline one (§4)
+[ ] Health/rehab artifact: no clinician timeline invented; unknowns ship as questions for their professional; furniture is a source line plus a "not medical advice" line (§4)
+[ ] Résumé/CV: restricted-class entries confirmed absent and reported to the principal; no operational numbers; a provenance/cleanliness line closes the document (§4)
+[ ] Résumé/CV: every field absent from the record returned as a confirm-list — nothing invented and shipped (§4)
+[ ] Résumé/CV: no compensation figure anywhere in the document — level positioned by scope of accountability instead (§4)
+[ ] Résumé/CV: self-authored project cited by verifiable surface only (registry, licence, live endpoint probed this session) — no star, follower or download counts (§4)
+[ ] Benchmark figure quoted with its source tier named, and what the number excludes (allowances, non-cash, rotation) stated beside it (§5)
 [ ] If reaching a person: authentic source used, not a synthesis; one page sent, comparison held back (§4)
 [ ] Every number traceable to a primary source; anything secondary is labelled (§5)
 [ ] Every cited URL probed and resolving — `scripts/verify-citations.py`, run on the source before the build (§5)
+[ ] Citations behind a paywall or bot-block: DOI metadata resolved via Crossref, and any operator affiliation read and reflected in how the source is framed (§5)
 [ ] Any stated count of sources/items matches the list beside it — measured, not intended (§5)
 [ ] Page count matches the limit, verified from the file
 [ ] Text extracts cleanly (pymupdf / pdftotext returns real text, not empty)
@@ -175,13 +274,38 @@ receiving-an-audit procedure.
 
 ## 8. Toolchain
 
-See `references/pdf-and-image-toolchain.md` for ReportLab paged-footer and section-band recipes, the density
-verification snippet, Matplotlib gotchas that cost time, the geological cross-section orientation rule, and
+See `references/pdf-and-image-toolchain.md` for the build-path decision (browser print vs ReportLab), the browser-print recipe for HTML that declares its own `@page` rule, ReportLab paged-footer and section-band recipes, the density
+verification snippet, the in-memory ink-coverage sweep, Matplotlib gotchas that cost time, the geological cross-section orientation and figure-integrity rules, the Natural Earth regional-basemap recipe, and
 Gemini image-model selection with the `responseModalities` contract for logos and marks.
+
+See `references/well-log-and-subsurface-figure-recipes.md` when the artifact carries well data or a
+regional map: the LAS parsing contract (mnemonic unit suffixes, data-column vs curve-header
+reconciliation, null sentinel, metre/feet detection), log-track and petrophysics panel layout including
+the twin-axis RHOB/NPHI track, the single-axes multi-well correlation pattern, a real Natural Earth
+basemap without GeoPandas, and the subsurface number-integrity rules — report the computed zero, plot
+the sensitivity of whatever assumption controls it, never claim a tie correlation without a seismic
+volume, and label unpicked correlation levels as candidates.
 
 `scripts/verify-citations.py` extracts every URL from an artifact (HTML / Markdown / text / JSON) and reports
 which resolve, which are dead and which gave no response. Run it on the source before the build; it exits
 non-zero when anything is dead, so it composes into a build gate.
+
+`scripts/verify-html-artifact.py` runs a browser-free structural check on a source HTML artifact — unclosed
+or mismatched tags, visible word count, per-class element counts, required strings present, and a
+house-furniture leak scan — exiting non-zero on failure. Use it as the build gate when a real browser render
+is not available, and prefer it to eyeballing: the defects it catches (a section that silently failed to
+render, internal vocabulary sitting in text a human will read) are invisible to page counts. Build the
+substance into the artifact file and run the checks from a checked-in script; keep shell payloads to short
+read-only probes, since a long inline shell body that restates the artifact's own claims is the shape that
+gets held at the write gate.
+
+See `references/entity-dossier-from-public-record.md` when the artifact profiles an organisation — an
+operator's or competitor's position, an institution's presence in a country. Covers building the asset
+table from primary releases rather than coverage of them, splitting participating interest per field,
+reading a leadership seat's background as an operating posture, checking whether the subject authored
+the primary literature on its own ground, laying state-linked public affairs into national-narrative /
+technical-authority / ground-level-licence / shadow layers, verifying that a fact actually belongs to
+the entity you are profiling, and closing with a named-gap register instead of an estimate.
 
 ---
 

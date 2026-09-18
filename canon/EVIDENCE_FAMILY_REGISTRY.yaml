@@ -1,0 +1,401 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# EVIDENCE_FAMILY_REGISTRY.yaml — Schema from Reality
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# Forged by: FI-008 (institution-entropy-audit)
+# Date: 2026-09-19
+# Source: /root/VAULT999/SEALED_EVENTS.jsonl (1337 events, 12 event classes)
+# Principle: Schema from reality, NOT reality from schema.
+#
+# Each family defines:
+#   - source_classes: which event_type/event_class values belong here
+#   - count: actual count from live vault
+#   - required_fields: MUST be present for evidence validity
+#   - vectorizable_fields: carry semantic meaning for embedding
+#   - authority_fields: cryptographic chain / governance proof
+#   - replay_fields: allow reconstruction of the decision
+#   - verdict_field: where the verdict lives in the event
+#   - purpose: what this evidence family PROVES
+#
+# Missing fields → tag UNKNOWN, never fabricate.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+registry_version: "1.0.0"
+forged_at: "2026-09-19T00:15:00Z"
+source_file: "/root/VAULT999/SEALED_EVENTS.jsonl"
+total_events: 1337
+total_classes: 12
+total_families: 9
+
+# ─── SHARED INVARIANTS (apply to ALL families) ───────────────────────────────
+
+shared_invariants:
+  chain_fields:
+    - prev_hash
+    - merkle_leaf
+    - chain_hash
+  always_required:
+    - event_type
+  epistemic_rule: >
+    If a field is absent, record UNKNOWN — never infer, never fabricate.
+    Evidence without provenance is archive, not memory.
+
+# ─── FAMILY 1: SealEvidence ──────────────────────────────────────────────────
+# The workhorse. 72% of all events. Every organ action that was sealed.
+
+SealEvidence:
+  purpose: "Proves that an action was taken, judged, and irreversibly sealed."
+  source_classes: [vault_seal]
+  count: 956
+  priority: HIGH
+  required_fields:
+    - ts
+    - event_type
+    - operator_id
+    - session_id
+    - judge_rationale
+    - ack_irreversible_received
+    - merkle_leaf
+    - chain_hash
+    - integrity_hash
+  vectorizable_fields:
+    - payload.action_summary          # What happened (semantic core)
+    - payload.event_type              # Domain event type (organ_refactor, etc.)
+    - payload.organ                   # Which organ (GEOX, WEALTH, WELL, arifOS)
+    - payload.verdict                 # SEAL / HOLD / VOID
+    - judge_rationale                 # Why this was sealed
+  authority_fields:
+    - chain_hash
+    - merkle_leaf
+    - integrity_hash
+    - ack_irreversible_received
+    - zkpc_metadata
+  replay_fields:
+    - payload.before_state
+    - payload.after_state
+    - payload.code_changes
+    - payload.invariants_deployed
+  verdict_field: payload.verdict
+  embedding_strategy: >
+    Combine action_summary + organ + event_type + judge_rationale into
+    a single vectorizable text. Weight organ + verdict as metadata filters.
+
+# ─── FAMILY 2: JudgmentEvidence ──────────────────────────────────────────────
+# The judge's verdict on a candidate. 19% of all events. Rich evidence bundles.
+
+JudgmentEvidence:
+  purpose: "Proves that a judgment was made with an evidence bundle and floor alignment."
+  source_classes: [888_JUDGE_EXECUTION]
+  count: 251
+  priority: HIGH
+  required_fields:
+    - event_type
+    - operator_id
+    - payload.verdict
+    - payload.confidence_score
+    - payload.evidence_bundle
+    - payload.floor_alignment
+  vectorizable_fields:
+    - payload.verdict                           # 888_HOLD / SEAL / VOID
+    - payload.blocking_tag                      # What blocked it
+    - payload.evidence_bundle                   # The evidence considered
+    - payload.floor_alignment                   # Which constitutional floors applied
+    - payload.metrics.delta_s                   # Entropy delta
+    - payload.metrics.peace_squared             # Peace metric
+  authority_fields:
+    - chain_hash
+    - merkle_leaf
+    - payload.evidence_bundle.judge_state_hash
+    - payload.evidence_bundle.current_epoch_hash
+    - payload.evidence_bundle.epoch_chain_valid
+  replay_fields:
+    - payload.evidence_bundle.identity_commitment
+    - payload.evidence_bundle.continuity_proven
+    - payload.metrics
+  verdict_field: payload.verdict
+  embedding_strategy: >
+    Combine verdict + blocking_tag + evidence_bundle summary + floor_alignment
+    into vectorizable text. Confidence_score as metadata filter.
+
+# ─── FAMILY 3: CognitiveEvidence ─────────────────────────────────────────────
+# Reasoning sessions captured by arifOS 333_mind. 9% of all events.
+
+CognitiveEvidence:
+  purpose: "Proves that a reasoning session occurred with metabolic state and floor compliance."
+  source_classes: [arifos_333_mind]
+  count: 121
+  priority: HIGH
+  required_fields:
+    - event_type
+    - operator_id
+    - payload.report
+    - payload.metabolic_metadata
+  vectorizable_fields:
+    - payload.report.reasoning_lanes           # The actual reasoning
+    - payload.report.conclusion                # What was concluded
+    - payload.metabolic_metadata.confidence_score
+    - payload.metabolic_metadata.delta_s
+    - payload.metabolic_metadata.peace_squared
+    - payload.metabolic_metadata.floor_alignment
+  authority_fields:
+    - chain_hash
+    - merkle_leaf
+    - payload.metabolic_metadata.vault_receipt
+    - payload.metabolic_metadata.source_integrity
+  replay_fields:
+    - payload.report.reasoning_lanes
+    - payload.report.evidence_consulted
+    - payload.multimodal_results
+  verdict_field: payload.metabolic_metadata.floor_alignment
+  embedding_strategy: >
+    Combine reasoning_lanes + conclusion into vectorizable text.
+    Confidence and delta_s as metadata.
+
+# ─── FAMILY 4: DecisionEvidence ──────────────────────────────────────────────
+# Decision events with apex judge verdicts. Singleton but governance-critical.
+
+DecisionEvidence:
+  purpose: "Proves that a decision was made with test validation and floor compliance."
+  source_classes: [decision]
+  count: 1
+  priority: MEDIUM
+  required_fields:
+    - event_id
+    - event_type
+    - session_id
+    - actor_id
+    - verdict
+    - payload.apex_judge_verdict
+    - payload.tests
+  vectorizable_fields:
+    - payload.apex_judge_verdict
+    - payload.actions
+    - payload.floors
+    - payload.w3_score
+  authority_fields:
+    - merkle_leaf
+    - prev_hash
+    - chain_hash
+    - signature
+    - signed_by
+  replay_fields:
+    - payload.commit
+    - payload.tests
+    - payload.session
+  verdict_field: verdict
+  embedding_strategy: >
+    Combine apex_judge_verdict + actions + floors into vectorizable text.
+
+# ─── FAMILY 5: DeploymentEvidence ────────────────────────────────────────────
+# Deployment events. Singleton but proves what was deployed and when.
+
+DeploymentEvidence:
+  purpose: "Proves that a deployment occurred with entropy state and floor compliance."
+  source_classes: [deployment]
+  count: 1
+  priority: MEDIUM
+  required_fields:
+    - event_id
+    - event_type
+    - session_id
+    - actor_id
+    - verdict
+    - payload.commits
+    - payload.domain
+  vectorizable_fields:
+    - payload.apex_judge_verdict
+    - payload.domain
+    - payload.actions
+    - payload.entropy_state
+  authority_fields:
+    - merkle_leaf
+    - prev_hash
+    - chain_hash
+    - signature
+    - signed_by
+  replay_fields:
+    - payload.commits
+    - payload.session
+    - payload.floors
+  verdict_field: verdict
+  embedding_strategy: >
+    Combine domain + apex_judge_verdict + entropy_state into vectorizable text.
+
+# ─── FAMILY 6: SessionEvidence ───────────────────────────────────────────────
+# Session lifecycle: binds and seals. Proves session provenance.
+
+SessionEvidence:
+  purpose: "Proves that a session was bound or sealed with verification across organs."
+  source_classes: [session_bind, SESSION_SEAL]
+  count: 2
+  priority: LOW
+  required_fields:
+    - event_type
+    - operator_id
+    - session_id
+  vectorizable_fields:
+    - payload.mode                    # Session mode
+    - payload.verification            # Which organs verified
+    - payload.actions                 # What was done
+    - payload.commits                 # What was committed
+  authority_fields:
+    - chain_hash
+    - merkle_leaf
+    - ack_irreversible_received
+    - judge_rationale
+  replay_fields:
+    - payload.actions
+    - payload.commits
+    - payload.verification
+  verdict_field: null  # Session events don't have verdicts
+  embedding_strategy: >
+    Combine mode + actions + verification into vectorizable text.
+
+# ─── FAMILY 7: DoctrineEvidence ──────────────────────────────────────────────
+# Constitutional/doctrine seals. Proves what the constitution says.
+
+DoctrineEvidence:
+  purpose: "Proves that a doctrine was ratified or a constitutional baseline was established."
+  source_classes: [DOCTRINE_SEAL, CONSTITUTIONAL_BASELINE]
+  count: 2
+  priority: LOW
+  required_fields:
+    - event_id
+    - event_type
+    - verdict
+    - payload
+  vectorizable_fields:
+    - payload.doctrine                # The doctrine text
+    - payload.binding                 # What it binds
+    - payload.rationale               # Why it was sealed
+    - payload.registry                # What it governs
+  authority_fields:
+    - merkle_leaf
+    - prev_hash
+    - chain_hash
+    - signature
+    - signed_by
+    - payload.sovereign_authorization
+  replay_fields:
+    - payload.doctrine_file
+    - payload.doctrine_sha256
+    - payload.binding
+  verdict_field: verdict
+  embedding_strategy: >
+    Combine doctrine + binding + rationale into vectorizable text.
+
+# ─── FAMILY 8: FederationEvidence ────────────────────────────────────────────
+# Federation sync seals. Proves federation state at a point in time.
+
+FederationEvidence:
+  purpose: "Proves that a federation sync occurred with health snapshot and test results."
+  source_classes: [FEDERATION_SYNC_SEAL]
+  count: 1
+  priority: LOW
+  required_fields:
+    - event_id
+    - event_type
+    - verdict
+    - payload.health
+    - payload.epoch
+  vectorizable_fields:
+    - payload.health                  # Federation health snapshot
+    - payload.repos                   # Repository states
+    - payload.auditor                 # Who audited
+    - payload.dS                      # Entropy delta
+    - payload.peace2                  # Peace metric
+  authority_fields:
+    - merkle_leaf
+    - prev_hash
+    - chain_hash
+    - signature
+    - signed_by
+    - payload.sovereign_authorization
+  replay_fields:
+    - payload.repos
+    - payload.tests
+    - payload.health
+  verdict_field: verdict
+  embedding_strategy: >
+    Combine health verdict + repos + epoch into vectorizable text.
+
+# ─── FAMILY 9: VaultEvidence ─────────────────────────────────────────────────
+# Vault infrastructure seals. Proves vault capability at a point in time.
+
+VaultEvidence:
+  purpose: "Proves that the vault infrastructure was verified with ZKPC readiness."
+  source_classes: [VAULT999_SEAL, FINAL_SYSTEM_SEAL]
+  count: 2
+  priority: LOW
+  required_fields:
+    - event_type
+    - operator_id
+    - payload
+  vectorizable_fields:
+    - payload.description             # What was sealed
+    - payload.seal_type               # Type of seal
+    - payload.zkpc_readiness          # ZK proof readiness
+    - payload.status                  # System status
+    - payload.tools                   # Tool state
+  authority_fields:
+    - chain_hash
+    - merkle_leaf
+    - payload.snarkjs_verified
+    - payload.verification_key
+  replay_fields:
+    - payload.test_results
+    - payload.test_suite
+    - payload.implementation
+  verdict_field: payload.verdict or payload.status
+  embedding_strategy: >
+    Combine description + seal_type + zkpc_readiness into vectorizable text.
+
+# ─── EVIDENCE CONTRACT (minimum for any evidence entry) ─────────────────────
+
+evidence_contract:
+  description: >
+    Every evidence entry in arif_evidence must be able to answer these questions.
+    If a field cannot be answered, record UNKNOWN — never fabricate.
+  required_answers:
+    - question: "What happened?"
+      field: "vectorizable_fields (combined)"
+    - question: "Who observed it?"
+      field: "operator_id / actor_id"
+    - question: "When?"
+      field: "ts / sealed_at"
+    - question: "Under what authority?"
+      field: "authority_fields"
+    - question: "Can it be replayed?"
+      field: "replay_fields"
+    - question: "What was the verdict?"
+      field: "verdict_field"
+
+# ─── PIPELINE STAGES (Fasa 2-4, to be executed after this registry stabilizes)
+
+pipeline_stages:
+  stage_1_classify:
+    status: COMPLETE
+    description: "This registry classifies all 1337 events into 9 families."
+    artifact: "EVIDENCE_FAMILY_REGISTRY.yaml"
+
+  stage_2_ingest:
+    status: PENDING
+    description: >
+      For each family: build a family-specific ingest function that reads
+      the source events, extracts vectorizable_fields into a combined text,
+      embeds with bge-m3, and upserts into arif_evidence with family-specific
+      payload metadata.
+    prerequisite: "This registry must be reviewed and ratified."
+
+  stage_3_query:
+    status: PENDING
+    description: >
+      arif_observe must be able to search arif_evidence by family, verdict,
+      organ, and semantic similarity.
+
+  stage_4_loop:
+    status: PENDING
+    description: >
+      arif_judge must query arif_evidence before judgment.
+      arif_seal must produce new evidence entries.
+      The loop closes: Evidence → Observe → Judge → Act → Witness → Evidence.

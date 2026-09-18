@@ -193,6 +193,21 @@ only a sentence already in the room.
 - **Never state a count about a real person's own work in front of that person without the source.** They are the auditor, and the utterance cannot be versioned.
 - **Never present an unsourced figure as background colour.** Detail that feels like context is still a claim; add it only from the record.
 - **Never let a headline figure be one you cannot quote.** If it must be derived, say what it is derived from, in the artifact.
+- **Never derive a figure by scraping digits out of prose.** An automated reader that takes the
+  largest number found in a page and compares it to a threshold will happily score a **year** as a
+  **currency amount**. Measured: a verifier extracting "the reported value" from a search snippet
+  returned `~2026.0` against a claim of `>= 30,000,000,000`, then recorded a decisive *incorrect*
+  verdict against a real prediction — a fabricated number manufactured by the checker itself, and
+  the precise failure the check existed to prevent. A magnitude comparison needs a **unit-aware
+  extractor over a named data source** (a filing, a statistical release, a field in a database).
+  Absent that, **decline and leave the claim open**. No verdict is cheaper than a false verdict:
+  a false one silently corrupts the ledger every later decision is calibrated against.
+- **Never let a keyword stand in for a magnitude.** "Announced", "effective" or "implemented" in
+  a snippet say an event happened, not what it was worth. If the claim carries a threshold, only a
+  comparable value decides it.
+- **Bind the snippet to the claim before it may vote.** Require distinctive tokens from the claim
+  itself to appear in the source text; otherwise a generic page about the same country or company
+  casts a verdict on a specific claim it never addressed.
 - **Don't skip the full document for a summary of it.** The summary carries the framing; the full document carries the footnotes where the real figure lives.
 
 ---

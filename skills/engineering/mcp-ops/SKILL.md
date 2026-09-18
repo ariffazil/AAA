@@ -3,9 +3,12 @@ name: mcp-ops
 description: >
   Unified MCP operations skill. General MCP server operations via mcporter CLI, federation MCP
   management (FastMCP build/deploy/operate), and MCP server health probe + auto-recovery (lifeguard).
-  Merges: FORGE-mcp-ops, FORGE-mcp-federation-ops, FORGE-mcp-lifeguard.
+  Merges: FORGE-mcp-ops, FORGE-mcp-federation-ops, FORGE-mcp-lifeguard. NOT for wiring external
+  third-party platforms (Composio / social-mcp / xurl / Firecrawl) into Hermes gateway → see
+  external-platform-mcp. NOT for SSE→streamable-http external-client transport fix → see
+  mcp-transport-fix. NOT for MCP server test/conformance probing → see mcp-testing.
 id: mcp-ops
-version: 2.0.0
+version: 2.1.0
 owner: AAA
 risk_tier: low
 floor_scope: [F1, F2, F4, F8, F10, F11, F12, F13]
@@ -37,6 +40,10 @@ triggers:
   - "MCP timeout"
   - "model fallback chain"
   - "Ollama cold-start"
+negative_triggers:
+  - "wire Composio / social-mcp / xurl / Firecrawl into Hermes gateway → external-platform-mcp"
+  - "SSE→streamable-http transport fix for external clients → mcp-transport-fix"
+  - "MCP protocol 2026-07-28 conformance test, MCPJam, era-mismatch diagnose → mcp-testing"
 ---
 
 # MCP Operations

@@ -68,24 +68,6 @@
   ],
   "skills": [
     {
-      "id": "AGI-plan-mode",
-      "name": "Plan Mode",
-      "description": "Architecture exploration before edit for ambiguous tasks",
-      "tags": [
-        "plan",
-        "architecture",
-        "ambiguity"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4",
-        "F7"
-      ],
-      "riskClass": "low",
-      "executionAllowed": false,
-      "approval_policy": "auto"
-    },
-    {
       "id": "FORGE-subagent-spawn",
       "name": "Subagent Spawn + Parallelism",
       "description": "True parallel with isolation, capability modes, resume chains",
@@ -98,41 +80,6 @@
         "F1",
         "F4",
         "F11"
-      ],
-      "riskClass": "medium",
-      "executionAllowed": true
-    },
-    {
-      "id": "FORGE-implement-loop",
-      "name": "Implement-Review-Fix Loop",
-      "description": "Full build with reviewer subagents until clean",
-      "tags": [
-        "implement",
-        "review",
-        "fix"
-      ],
-      "floor_scope": [
-        "F1",
-        "F2",
-        "F4",
-        "F11"
-      ],
-      "riskClass": "medium",
-      "executionAllowed": true
-    },
-    {
-      "id": "APEX-mcp-federation",
-      "name": "MCP Federation Router",
-      "description": "Route tasks across arifOS/GEOX/WEALTH/WELL/A-FORGE/AAA + GitHub",
-      "tags": [
-        "route",
-        "mcp",
-        "federation"
-      ],
-      "floor_scope": [
-        "F1",
-        "F3",
-        "F4"
       ],
       "riskClass": "medium",
       "executionAllowed": true
@@ -153,92 +100,6 @@
       "riskClass": "high",
       "executionAllowed": true,
       "approval_policy": "gated for merge"
-    },
-    {
-      "id": "AGI-workflow-dag",
-      "name": "Execute Plan DAG",
-      "description": "Topological worktree-isolated execution from design",
-      "tags": [
-        "dag",
-        "workflow",
-        "execute"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4"
-      ],
-      "riskClass": "medium",
-      "executionAllowed": true
-    },
-    {
-      "id": "APEX-godel-humility",
-      "name": "Godel Humility Lock",
-      "description": "Self-critique + epistemic humility before final claims",
-      "tags": [
-        "humility",
-        "F7",
-        "evidence"
-      ],
-      "floor_scope": [
-        "F7",
-        "F2"
-      ],
-      "riskClass": "low",
-      "executionAllowed": false
-    },
-    {
-      "id": "FORGE-image-video",
-      "name": "Image/Video Generation + Edit",
-      "description": "Imagine API + reference transforms",
-      "tags": [
-        "media",
-        "visual"
-      ],
-      "floor_scope": [
-        "F5"
-      ],
-      "riskClass": "low",
-      "executionAllowed": true
-    },
-    {
-      "id": "ASI-autonomous-execution",
-      "name": "Autonomous Governed Execution",
-      "description": "Governed execution: T1/T2 auto, T3→888_HOLD. F1-F13 enforced.",
-      "tags": [
-        "execution",
-        "governance",
-        "harness"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4",
-        "F11",
-        "F13"
-      ],
-      "riskClass": "medium",
-      "executionAllowed": true
-    },
-    {
-      "id": "APEX-constitutional-audit",
-      "name": "arifOS Constitutional Audit",
-      "description": "Evaluate against F1-F13, produce verdicts and evidence bundles",
-      "tags": [
-        "audit",
-        "constitutional",
-        "F-floors"
-      ],
-      "floor_scope": [
-        "F1",
-        "F2",
-        "F4",
-        "F7",
-        "F9",
-        "F11",
-        "F13"
-      ],
-      "riskClass": "high",
-      "executionAllowed": false,
-      "approval_policy": "888_HOLD or human"
     },
     {
       "id": "APEX-fff-loop-protocol",
@@ -275,52 +136,6 @@
       "executionAllowed": true
     },
     {
-      "id": "KERNEL-reality-skills",
-      "name": "Reality Skills (F2 Grounding)",
-      "description": "Physical law veto. Claims need OBS/DER/INT/SPEC.",
-      "tags": [
-        "kernel",
-        "f2",
-        "reality",
-        "grounding"
-      ],
-      "floor_scope": [
-        "F2",
-        "F7",
-        "F9"
-      ]
-    },
-    {
-      "id": "KERNEL-sovereign-recognize",
-      "name": "Sovereign Recognition (F13)",
-      "description": "Route to sovereign. No action without sovereign chain.",
-      "tags": [
-        "kernel",
-        "f13",
-        "sovereign",
-        "identity"
-      ],
-      "floor_scope": [
-        "F13"
-      ]
-    },
-    {
-      "id": "KERNEL-session-inhabit",
-      "name": "Session Inhabit (Lifecycle)",
-      "description": "INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
-      "tags": [
-        "kernel",
-        "session",
-        "lifecycle",
-        "000-999"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4",
-        "F11"
-      ]
-    },
-    {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
       "description": "Every output reduces entropy. ΔS < 0.",
@@ -335,12 +150,14 @@
         "F8"
       ]
     },
-    "KERNEL-sovereign-recognize",
-    "KERNEL-trinity-33",
-    "KERNEL-session-inhabit",
-    "RSI-recursive-improvement",
-    "SHADOW-diagnostic",
-    "CLAIM-verification-gate"
+    {
+      "id": "KERNEL-trinity-33",
+      "_normalised": "bare string -> object (schema conformity, afpass-W1)"
+    },
+    {
+      "id": "RSI-recursive-improvement",
+      "_normalised": "bare string -> object (schema conformity, afpass-W1)"
+    }
   ],
   "tier": "FI-007",
   "role": "build-harness / forge-citizen / agentic-cli",
@@ -615,5 +432,227 @@
     "status": "DUAL-NODE (KVM8 + KVM4) — version-PASS 1.0.13 (2026-09-05), CLI healthy, API external balance exhausted (402)",
     "member_of": "kvm4-ccc-pool",
     "updated": "2026-09-05T04:32+08:00"
+  },
+  "_quarantined_skills": [
+    {
+      "id": "AGI-plan-mode",
+      "name": "Plan Mode",
+      "description": "Architecture exploration before edit for ambiguous tasks",
+      "tags": [
+        "plan",
+        "architecture",
+        "ambiguity"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F7"
+      ],
+      "riskClass": "low",
+      "executionAllowed": false,
+      "approval_policy": "auto",
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "FORGE-implement-loop",
+      "name": "Implement-Review-Fix Loop",
+      "description": "Full build with reviewer subagents until clean",
+      "tags": [
+        "implement",
+        "review",
+        "fix"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F11"
+      ],
+      "riskClass": "medium",
+      "executionAllowed": true,
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "APEX-mcp-federation",
+      "name": "MCP Federation Router",
+      "description": "Route tasks across arifOS/GEOX/WEALTH/WELL/A-FORGE/AAA + GitHub",
+      "tags": [
+        "route",
+        "mcp",
+        "federation"
+      ],
+      "floor_scope": [
+        "F1",
+        "F3",
+        "F4"
+      ],
+      "riskClass": "medium",
+      "executionAllowed": true,
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "AGI-workflow-dag",
+      "name": "Execute Plan DAG",
+      "description": "Topological worktree-isolated execution from design",
+      "tags": [
+        "dag",
+        "workflow",
+        "execute"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4"
+      ],
+      "riskClass": "medium",
+      "executionAllowed": true,
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "APEX-godel-humility",
+      "name": "Godel Humility Lock",
+      "description": "Self-critique + epistemic humility before final claims",
+      "tags": [
+        "humility",
+        "F7",
+        "evidence"
+      ],
+      "floor_scope": [
+        "F7",
+        "F2"
+      ],
+      "riskClass": "low",
+      "executionAllowed": false,
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "FORGE-image-video",
+      "name": "Image/Video Generation + Edit",
+      "description": "Imagine API + reference transforms",
+      "tags": [
+        "media",
+        "visual"
+      ],
+      "floor_scope": [
+        "F5"
+      ],
+      "riskClass": "low",
+      "executionAllowed": true,
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "ASI-autonomous-execution",
+      "name": "Autonomous Governed Execution",
+      "description": "Governed execution: T1/T2 auto, T3→888_HOLD. F1-F13 enforced.",
+      "tags": [
+        "execution",
+        "governance",
+        "harness"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11",
+        "F13"
+      ],
+      "riskClass": "medium",
+      "executionAllowed": true,
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "APEX-constitutional-audit",
+      "name": "arifOS Constitutional Audit",
+      "description": "Evaluate against F1-F13, produce verdicts and evidence bundles",
+      "tags": [
+        "audit",
+        "constitutional",
+        "F-floors"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F7",
+        "F9",
+        "F11",
+        "F13"
+      ],
+      "riskClass": "high",
+      "executionAllowed": false,
+      "approval_policy": "888_HOLD or human",
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "KERNEL-reality-skills",
+      "name": "Reality Skills (F2 Grounding)",
+      "description": "Physical law veto. Claims need OBS/DER/INT/SPEC.",
+      "tags": [
+        "kernel",
+        "f2",
+        "reality",
+        "grounding"
+      ],
+      "floor_scope": [
+        "F2",
+        "F7",
+        "F9"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-reality-skills"
+    },
+    {
+      "id": "KERNEL-sovereign-recognize",
+      "name": "Sovereign Recognition (F13)",
+      "description": "Route to sovereign. No action without sovereign chain.",
+      "tags": [
+        "kernel",
+        "f13",
+        "sovereign",
+        "identity"
+      ],
+      "floor_scope": [
+        "F13"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-sovereign-recognize"
+    },
+    {
+      "id": "KERNEL-session-inhabit",
+      "name": "Session Inhabit (Lifecycle)",
+      "description": "INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "tags": [
+        "kernel",
+        "session",
+        "lifecycle",
+        "000-999"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-session-inhabit"
+    },
+    {
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-sovereign-recognize",
+      "id": "KERNEL-sovereign-recognize"
+    },
+    {
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-session-inhabit",
+      "id": "KERNEL-session-inhabit"
+    },
+    {
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/SHADOW-diagnostic",
+      "id": "SHADOW-diagnostic"
+    },
+    {
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/CLAIM-verification-gate",
+      "id": "CLAIM-verification-gate"
+    }
+  ],
+  "_skill_ref_reconciliation": {
+    "at": "2026-09-18",
+    "by": "afpass-W1",
+    "before": 22,
+    "after": 7,
+    "quarantined": 15,
+    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
   }
 }

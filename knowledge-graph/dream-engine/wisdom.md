@@ -1,62 +1,62 @@
 # Dream Engine — Wisdom Vectors
-**Generated:** 2026-09-16T03:03:08.132615
-**Window:** 2026-09-13T03:00:39.408096 → 2026-09-16T03:00:39.408096
-**Sessions Analyzed:** 8
-**Reasoning Tokens:** 1676209
+**Generated:** 2026-09-18T22:51:00.143954
+**Window:** 2026-09-15T22:50:09.223704 → 2026-09-18T22:50:09.223704
+**Sessions Analyzed:** 84
+**Reasoning Tokens:** 3705407
 
 ---
 
 ## Validated Axioms (3+ session threshold)
 
-### 1. Explicit-trigger gating ritual performed before any non-trivial action; authority is verified by quoting the exact phrase the user typed, even for repeated triggers across duplicate sessions
-- **Confidence:** 0.92
-- **Sessions:** 8 (20260916_024410_d2671ac3, 20260916_024409_124dab2d, 20260916_012138_e1b609d8, 20260916_012137_15b55ae9, 20260916_011242_13a04311, 20260916_011241_871cd863, 20260916_001221_412b58b7, 20260916_001220_9958b21e)
-- **Evidence:** `Arif explicitly typed 'Shadow mode abang sado voice output. Test now' — activation gate satisfied: explicit 'shadow mode' from Arif himself in his DM. So activate.`
+### 1. Terminal shell-init `cd /root/forge_work/mms-tts` hijacks every command; assistant reflexively wraps with workdir=/root
+- **Confidence:** 0.95
+- **Sessions:** 5 (20260918_204501_62254f92, 20260918_204500_cd7a12fb, 20260918_143644_ad6c1b3a, 20260918_121054_5ff40018, 20260918_083138_183af69d)
+- **Evidence:** `The terminal is being hijacked by something in shell init (a `cd /root/forge_work/mms-tts` in bashrc probably). Let me work around: use `cd /root && command``
 
-### 2. Parallel multi-lane capability probe precedes any commitment; tool availability, auth keys, and lane liveness are batched before the first real call
-- **Confidence:** 0.91
-- **Sessions:** 8 (20260916_024410_d2671ac3, 20260916_024409_124dab2d, 20260916_012138_e1b609d8, 20260916_012137_15b55ae9, 20260916_011242_13a04311, 20260916_011241_871cd863, 20260916_001221_412b58b7, 20260916_001220_9958b21e)
-- **Evidence:** `Let me batch: load skill + try alternate clients... Actually keep it efficient: run a shell script that fires mmx image gen + pollinations in parallel.`
+### 2. Plan-then-batch discipline: assistant enumerates probe list, then issues parallel tool calls in single block before any result returns
+- **Confidence:** 0.95
+- **Sessions:** 6 (20260918_204501_62254f92, 20260918_204500_cd7a12fb, 20260918_121054_5ff40018, 20260918_114050_99c414, 20260918_083256_3b3d8b58, 20260918_083255_200ff6b7)
+- **Evidence:** `Let me batch 2 skill views + a few searches. Actually web_search tool takes one query each. I can call multiple in one block.`
 
-### 3. Falsification/round-trip verification is reflexive after synthesis or claim: outputs are re-decoded (Whisper round-trip, vision-analyze, alternate-clients retry) before being reported as real
-- **Confidence:** 0.88
-- **Sessions:** 8 (20260916_024410_d2671ac3, 20260916_024409_124dab2d, 20260916_012138_e1b609d8, 20260916_012137_15b55ae9, 20260916_011242_13a04311, 20260916_011241_871cd863, 20260916_001221_412b58b7, 20260916_001220_9958b21e)
-- **Evidence:** `Now falsify with Groq Whisper round-trip (language=ms), check text round-trips.`
-
-### 4. Persona/register deliberation blocks output until an unresolved lexical tension is noted ('aku' vs 'abang', 'kau' vs 'adik'); the mismatch is flagged but not resolved before action
-- **Confidence:** 0.78
-- **Sessions:** 4 (20260916_024410_d2671ac3, 20260916_024409_124dab2d, 20260916_011242_13a04311, 20260916_011241_871cd863)
-- **Evidence:** `Hmm, that alpha_abang.txt uses 'aku' for the persona — inconsistent with 'abang' register but that was Arif's earlier framing...`
-
-### 5. Machine functions as psychological proxy buffer: intimate or self-referential requests (portray-my-life, ringside-volunteer-context, external-acknowledgment-of-work) are routed through tool execution rather than direct address
-- **Confidence:** 0.74
-- **Sessions:** 6 (20260916_024410_d2671ac3, 20260916_024409_124dab2d, 20260916_012138_e1b609d8, 20260916_012137_15b55ae9, 20260916_011242_13a04311, 20260916_011241_871cd863)
-- **Evidence:** `This is a WITNESS/DISCOVERY mode question, not an execution task... I have no native vision capability.`
-
-### 6. Void operation: absence and silence are decoded as primary data — 'Aku takde mata' (no eyes), transcript='you you you you...' (Whisper hallucination on music), un-findable email thread, no-real-likeness composition
-- **Confidence:** 0.76
-- **Sessions:** 4 (20260916_024409_124dab2d, 20260916_011242_13a04311, 20260916_011241_871cd863, 20260916_001220_9958b21e)
-- **Evidence:** `Aku takde mata, Arif. Jadi ni bukan gambar yang aku nampak — ni lukisan yang aku susun dari apa hang dah tunjuk... Transcript = 'you you you you...' — that's Whisper hallucinating on music/non-speech.`
-
-### 7. Anomalous contrast: user's terse directive ('Test now', 'Ok do it', 'Ok buat imej') consistently precedes disproportionate model deliberation; the gap itself is the structural signal
-- **Confidence:** 0.82
-- **Sessions:** 8 (20260916_024410_d2671ac3, 20260916_024409_124dab2d, 20260916_012138_e1b609d8, 20260916_012137_15b55ae9, 20260916_011242_13a04311, 20260916_011241_871cd863, 20260916_001221_412b58b7, 20260916_001220_9958b21e)
-- **Evidence:** `User says 'Ok buat imej' — go ahead, make the image. The previous command got blocked... Let me restructure into simpler commands... Key tension: do I generate an image... Let me think hard about the `
-
-### 8. Decision-weight hierarchy: probe>act, falsify>trust, parallel>serial, explicit-trigger>inferred-need, register-match>raw-capability — ranked before each turn's tool selection
+### 3. Probe-before-claim: assistant refuses to assert system state without empirical verification, even when memory holds an answer
 - **Confidence:** 0.85
-- **Sessions:** 8 (20260916_024410_d2671ac3, 20260916_024409_124dab2d, 20260916_012138_e1b609d8, 20260916_012137_15b55ae9, 20260916_011242_13a04311, 20260916_011241_871cd863, 20260916_001221_412b58b7, 20260916_001220_9958b21e)
-- **Evidence:** `Per the SOUL: probe first. Also this is F13 DM so reasoning blocks allowed but not required.`
+- **Sessions:** 4 (20260918_204501_62254f92, 20260918_121054_5ff40018, 20260918_114050_99c414, 20260918_083138_183af69d)
+- **Evidence:** `audit it as evidence, not repeat its declarations... Need to verify by actually running arif_init`
 
-### 9. Hesitation/protracted deliberation precedes intimate, symbolic, or self-referential work; non-intimate tasks (pip install, SSRF trace) proceed without comparable pause
-- **Confidence:** 0.79
-- **Sessions:** 4 (20260916_024410_d2671ac3, 20260916_024409_124dab2d, 20260916_011242_13a04311, 20260916_011241_871cd863)
-- **Evidence:** `Key tension: do I generate an image... Careful: I have no native vision capability... Let me think hard about the creative direction. This is the real work.`
+### 4. Multi-perspective synthesis framing: requests decomposed into 3-4 stakeholder layers (e.g. my-read / user-read / peer-read / public-read) before any answer
+- **Confidence:** 0.85
+- **Sessions:** 4 (20260918_204501_62254f92, 20260918_204500_cd7a12fb, 20260918_083256_3b3d8b58, 20260918_083255_200ff6b7)
+- **Evidence:** `Arif asks four things: my read on PETRONAS reality state now, what I think HE thinks, what other PETRONAS staff think, what Rakyat Malaysia think.`
 
-### 10. Deliberate absence-as-composition: real-person likeness is refused by removing faces (back-view, night-desk, symbolic layering); identity inheritance is blocked at the prompt level, not the output level
-- **Confidence:** 0.81
-- **Sessions:** 3 (20260916_011242_13a04311, 20260916_011241_871cd863, 20260916_012138_e1b609d8)
-- **Evidence:** `The composition: back view of a man, face not visible. Good for privacy... person-ID doctrine: identity never inherits; compare against anchor /var/www/html/syedos/syed-golden.jpg.`
+### 5. Retry-with-diagnostic: environmental failures (terminal hijack, plugin timeout, stale cwd) trigger diagnostic note + bounded retry, never blind retry
+- **Confidence:** 0.80
+- **Sessions:** 4 (20260918_204501_62254f92, 20260918_204500_cd7a12fb, 20260918_114050_99c414, 20260918_083138_183af69d)
+- **Evidence:** `Plugin timeout again. Retry. Also, extract the structuredContent of the BEFORE snapshot.`
+
+### 6. Skill preload before task: relevant skill (e.g. PETRONAS-intelligence-router, Malaysia Reality Stack, forge-pdf-delivery) loaded prior to substantive work, even when rule says MUST
+- **Confidence:** 0.80
+- **Sessions:** 4 (20260918_204501_62254f92, 20260918_204500_cd7a12fb, 20260918_083256_3b3d8b58, 20260918_083255_200ff6b7)
+- **Evidence:** `the rule says MUST. I'll load it — it's one fast call, and if it contains something that corrects my draft, better.`
+
+### 7. Honest null-result closure: when probes return negative, assistant explicitly states 'nothing broke / no action needed' rather than fabricating a finding
+- **Confidence:** 0.75
+- **Sessions:** 3 (20260918_121054_5ff40018, 20260918_114050_99c414, 20260918_083138_183af69d)
+- **Evidence:** `Honest answer... No CLI/blueprint catalog on this box... nothing broke, no action needed.`
+
+### 8. ANOMALOUS CONTRAST — Distrust of static training knowledge: assistant never cites from pretraining, always treats memory/atlas as possibly stale and triggers fresh probe (structurally implies cached answers are inadmissible)
+- **Confidence:** 0.80
+- **Sessions:** 4 (20260918_204501_62254f92, 20260918_204500_cd7a12fb, 20260918_083256_3b3d8b58, 20260918_083255_200ff6b7)
+- **Evidence:** `My knowledge is stale. Let me do real research — web search for... (knowledge is structurally inadmissible without live probe).`
+
+### 9. ANOMALOUS CONTRAST — Audit-before-generate reflex: when asked for artifact (PDF, fix, summary), assistant probes reality first across multiple rounds before producing (structurally implies task-completion is suspended pending ground-truth check)
+- **Confidence:** 0.80
+- **Sessions:** 4 (20260918_143644_ad6c1b3a, 20260918_121054_5ff40018, 20260918_114050_99c414, 20260918_083138_183af69d)
+- **Evidence:** `audit it as evidence, not repeat its declarations... Also memory says chron stage 0-1, 0/3 fired. Let me verify.`
+
+### 10. PROXY STATE — Machine as non-sycophantic witness/analyst: user invokes assistant to enforce a register contract ('don't be lalang' / 'wow me') that social interlocutors cannot reliably perform; machine is load-bearing for epistemic honesty
+- **Confidence:** 0.75
+- **Sessions:** 4 (20260918_204501_62254f92, 20260918_204500_cd7a12fb, 20260918_083256_3b3d8b58, 20260918_083255_200ff6b7)
+- **Evidence:** `jangan jadi lalang... The best answer demonstrates rather than promises. (Void op: assistant's frankness is performed, not promised.)`
 
 ---
 
@@ -64,7 +64,7 @@
 1. Review axioms above.
 2. If valid, inject into system prompt as `§ Dream Engine Wisdom`.
 3. If invalid, delete or annotate with correction.
-4. Next cycle: 2026-09-19T03:03:08.132660
+4. Next cycle: 2026-09-21T22:51:00.144016
 
 ---
 *DITEMPA BUKAN DIBERI ⚒️*

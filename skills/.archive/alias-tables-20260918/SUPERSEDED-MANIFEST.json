@@ -1,0 +1,127 @@
+{
+  "artifact": "SKILL_ALIAS_TABLE",
+  "master": "/root/AAA/skills/SKILL_ALIAS_TABLE.json",
+  "master_sha256": "13efa5205b9127af4ed0d5e7a578c4291a357fc34c3b6c1e6b0b8517af70b7e1",
+  "ruling": "ONE master truth. Every non-master copy on an agent-readable surface is now a symlink to the master. Copies inside archive/quarantine/backup trees are historical bytes and were left untouched (moving them out of their own archive would de-archive them).",
+  "at": "2026-09-18",
+  "by": "afpass-W2",
+  "live_copies_reconciled": [
+    {
+      "path": "/opt/aaa/app/skills/AGI-skill-unification/SKILL_ALIAS_TABLE.json",
+      "action": "REPLACED_WITH_SYMLINK",
+      "superseded_sha256": "04be8341a8a5877b283835f00f35971fd02e85ed7bf6789f35c7982e1d6343a7",
+      "to": "/root/AAA/skills/SKILL_ALIAS_TABLE.json"
+    },
+    {
+      "path": "/opt/aaa/app/skills/SKILL_ALIAS_TABLE.json",
+      "action": "REPLACED_WITH_SYMLINK",
+      "superseded_sha256": "c2ca66683ece7074f8b771ef7d7667b5ff02b017c8232db0e35d788e76768f87",
+      "to": "/root/AAA/skills/SKILL_ALIAS_TABLE.json"
+    },
+    {
+      "path": "/root/.arifos/agents/opencode/SKILL_ALIAS_TABLE.json",
+      "action": "REPLACED_WITH_SYMLINK",
+      "superseded_sha256": "064816bb4c11ebe56647ff5ea7d7863a823211f22d1a3951864d9ac247364625",
+      "to": "/root/AAA/skills/SKILL_ALIAS_TABLE.json"
+    },
+    {
+      "path": "/root/.hermes/skills/AGI-skill-unification/SKILL_ALIAS_TABLE.json",
+      "action": "REPLACED_WITH_SYMLINK",
+      "superseded_sha256": "d2d82190f34a0c912bc1df779bd336a7f35650e6143932dbe9b420b12ba490f0",
+      "to": "/root/AAA/skills/SKILL_ALIAS_TABLE.json"
+    },
+    {
+      "path": "/root/.kimi-code/skills/SKILL_ALIAS_TABLE.json",
+      "action": "ALREADY_SYMLINK",
+      "to": "/root/AAA/skills/SKILL_ALIAS_TABLE.json"
+    },
+    {
+      "path": "/root/.kimi-code/skills/skill-mesh/AGI-skill-unification/SKILL_ALIAS_TABLE.json",
+      "action": "REPLACED_WITH_SYMLINK",
+      "superseded_sha256": "d2d82190f34a0c912bc1df779bd336a7f35650e6143932dbe9b420b12ba490f0",
+      "to": "/root/AAA/skills/SKILL_ALIAS_TABLE.json"
+    },
+    {
+      "path": "/root/hermes_work/hermes-agent-copy/profiles/aaa-hermes/skills/AGI-skill-unification/SKILL_ALIAS_TABLE.json",
+      "action": "REPLACED_WITH_SYMLINK",
+      "superseded_sha256": "d2d82190f34a0c912bc1df779bd336a7f35650e6143932dbe9b420b12ba490f0",
+      "to": "/root/AAA/skills/SKILL_ALIAS_TABLE.json"
+    },
+    {
+      "path": "/root/hermes_work/hermes-agent-copy/skills/AGI-skill-unification/SKILL_ALIAS_TABLE.json",
+      "action": "REPLACED_WITH_SYMLINK",
+      "superseded_sha256": "d2d82190f34a0c912bc1df779bd336a7f35650e6143932dbe9b420b12ba490f0",
+      "to": "/root/AAA/skills/SKILL_ALIAS_TABLE.json"
+    },
+    {
+      "path": "/root/hermes_work/pristine-full/profiles/aaa-hermes/skills/AGI-skill-unification/SKILL_ALIAS_TABLE.json",
+      "action": "REPLACED_WITH_SYMLINK",
+      "superseded_sha256": "d2d82190f34a0c912bc1df779bd336a7f35650e6143932dbe9b420b12ba490f0",
+      "to": "/root/AAA/skills/SKILL_ALIAS_TABLE.json"
+    },
+    {
+      "path": "/root/hermes_work/pristine-full/skills/AGI-skill-unification/SKILL_ALIAS_TABLE.json",
+      "action": "REPLACED_WITH_SYMLINK",
+      "superseded_sha256": "d2d82190f34a0c912bc1df779bd336a7f35650e6143932dbe9b420b12ba490f0",
+      "to": "/root/AAA/skills/SKILL_ALIAS_TABLE.json"
+    },
+    {
+      "path": "/usr/local/lib/hermes-agent/profiles/aaa-hermes/skills/AGI-skill-unification/SKILL_ALIAS_TABLE.json",
+      "action": "REPLACED_WITH_SYMLINK",
+      "superseded_sha256": "d2d82190f34a0c912bc1df779bd336a7f35650e6143932dbe9b420b12ba490f0",
+      "to": "/root/AAA/skills/SKILL_ALIAS_TABLE.json"
+    },
+    {
+      "path": "/usr/local/lib/hermes-agent/skills/AGI-skill-unification/SKILL_ALIAS_TABLE.json",
+      "action": "REPLACED_WITH_SYMLINK",
+      "superseded_sha256": "d2d82190f34a0c912bc1df779bd336a7f35650e6143932dbe9b420b12ba490f0",
+      "to": "/root/AAA/skills/SKILL_ALIAS_TABLE.json"
+    }
+  ],
+  "historical_resident": [
+    {
+      "path": "/opt/aaa/app/archive/2026-07-25/AAA/_archive/skill-canonical-sync-2026-07-16/AGI-skill-unification/SKILL_ALIAS_TABLE.json",
+      "note": "historical tree; bytes preserved; superseded by master"
+    },
+    {
+      "path": "/root/.kimi-code/backups/zen-2026-08-30/quarantine-20260821-lane-mati/skills/SKILL_ALIAS_TABLE.json",
+      "note": "historical tree; bytes preserved; superseded by master"
+    },
+    {
+      "path": "/root/.kimi-code/skills-backup/alias-fix-x/SKILL_ALIAS_TABLE.json",
+      "note": "historical tree; bytes preserved; superseded by master"
+    },
+    {
+      "path": "/root/.kimi-code/skills-backup/artifact-rehome-20260908-163646/SKILL_ALIAS_TABLE.json",
+      "note": "historical tree; bytes preserved; superseded by master"
+    },
+    {
+      "path": "/root/.kimi-code/skills-backup/consolidate-20260908-162154/AGI-skill-unification/SKILL_ALIAS_TABLE.json",
+      "note": "historical tree; bytes preserved; superseded by master"
+    },
+    {
+      "path": "/root/.quarantine/zen-20260912/_CANONICAL/HERMES-heritage-5.3G-20260904/profiles/aaa-hermes/skills/AGI-skill-unification/SKILL_ALIAS_TABLE.json",
+      "note": "historical tree; bytes preserved; superseded by master"
+    },
+    {
+      "path": "/root/.quarantine/zen-20260912/_CANONICAL/HERMES-heritage-5.3G-20260904/skills-cold/AGI-skill-unification/SKILL_ALIAS_TABLE.json",
+      "note": "historical tree; bytes preserved; superseded by master"
+    },
+    {
+      "path": "/root/.quarantine/zen-20260912/_CANONICAL/HERMES-heritage-5.3G-20260904/skills/AGI-skill-unification/SKILL_ALIAS_TABLE.json",
+      "note": "historical tree; bytes preserved; superseded by master"
+    },
+    {
+      "path": "/root/.quarantine/zen-20260912/_quarantine/skills-sweep-snapshot-20260827-030604/AGI-skill-unification/SKILL_ALIAS_TABLE.json",
+      "note": "historical tree; bytes preserved; superseded by master"
+    },
+    {
+      "path": "/root/AAA/archive/2026-07-25/AAA/_archive/skill-canonical-sync-2026-07-16/AGI-skill-unification/SKILL_ALIAS_TABLE.json",
+      "note": "historical tree; bytes preserved; superseded by master"
+    },
+    {
+      "path": "/root/AAA/skills-retired-20260826/AGI-skill-unification/SKILL_ALIAS_TABLE.json",
+      "note": "historical tree; bytes preserved; superseded by master"
+    }
+  ]
+}

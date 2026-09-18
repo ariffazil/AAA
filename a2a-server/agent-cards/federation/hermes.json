@@ -4,7 +4,7 @@
   "protocolVersion": "1.2",
   "agentId": "hermes",
   "name": "hermes",
-  "description": "hermes \u2014 Hermes-Read lane (interpretation, intent geometry, evidence gathering). Read-only intake + multimodal perception. Action-Broker execution routes via A-FORGE per CONTRACT-20260904 AMENDMENT-001 \u00a75.",
+  "description": "hermes — Hermes-Read lane (interpretation, intent geometry, evidence gathering). Read-only intake + multimodal perception. Action-Broker execution routes via A-FORGE per CONTRACT-20260904 AMENDMENT-001 §5.",
   "version": "1.1.0",
   "lane": "Hermes-Read",
   "power_band": "conversation_media_routing_only",
@@ -61,20 +61,6 @@
       ]
     },
     {
-      "id": "agi-explorer",
-      "name": "Agi Explorer",
-      "tags": [
-        "arifos"
-      ]
-    },
-    {
-      "id": "agi-graph-engineering",
-      "name": "Agi Graph Engineering",
-      "tags": [
-        "arifos"
-      ]
-    },
-    {
       "id": "agi-multimodal-bridge",
       "name": "Agi Multimodal Bridge",
       "tags": [
@@ -100,63 +86,48 @@
       "name": "Apex Audit Coverage",
       "tags": [
         "arifos"
-      ]
+      ],
+      "resolved_skill": "apex_audit_coverage_check"
     },
     {
       "id": "apex-authority-check",
       "name": "Apex Authority Check",
       "tags": [
         "arifos"
-      ]
+      ],
+      "resolved_skill": "apex_authority_check"
     },
     {
       "id": "apex-floor-check",
       "name": "Apex Floor Check",
       "tags": [
         "arifos"
-      ]
-    },
-    {
-      "id": "apex-humility-godel",
-      "name": "Apex Humility Godel",
-      "tags": [
-        "arifos"
-      ]
-    },
-    {
-      "id": "apex-reversibility-test",
-      "name": "Apex Reversibility Test",
-      "tags": [
-        "arifos"
-      ]
+      ],
+      "resolved_skill": "apex_floor_check"
     },
     {
       "id": "apex-scope-check",
       "name": "Apex Scope Check",
       "tags": [
         "arifos"
-      ]
+      ],
+      "resolved_skill": "apex_scope_check"
     },
     {
       "id": "apex-verdict-hold",
       "name": "Apex Verdict Hold",
       "tags": [
         "arifos"
-      ]
+      ],
+      "resolved_skill": "apex_verdict_hold"
     },
     {
       "id": "apex-verdict-seal",
       "name": "Apex Verdict Seal",
       "tags": [
         "arifos"
-      ]
-    },
-    {
-      "id": "asi-agent-invariants",
-      "name": "Asi Agent Invariants",
-      "tags": [
-        "arifos"
-      ]
+      ],
+      "resolved_skill": "apex_verdict_seal"
     },
     {
       "id": "asi-agentic-governance",
@@ -166,43 +137,8 @@
       ]
     },
     {
-      "id": "asi-drift-watch",
-      "name": "Asi Drift Watch",
-      "tags": [
-        "arifos"
-      ]
-    },
-    {
-      "id": "asi-fabrication-prevention",
-      "name": "Asi Fabrication Prevention",
-      "tags": [
-        "arifos"
-      ]
-    },
-    {
       "id": "asi-summarize",
       "name": "Asi Summarize",
-      "tags": [
-        "arifos"
-      ]
-    },
-    {
-      "id": "audit-agent-skill-mesh",
-      "name": "Audit Agent Skill Mesh",
-      "tags": [
-        "arifos"
-      ]
-    },
-    {
-      "id": "audit-drift-detector",
-      "name": "Audit Drift Detector",
-      "tags": [
-        "arifos"
-      ]
-    },
-    {
-      "id": "audit-recursive",
-      "name": "Audit Recursive",
       "tags": [
         "arifos"
       ]
@@ -222,214 +158,84 @@
       ]
     },
     {
-      "id": "audit-skill-atlas",
-      "name": "Audit Skill Atlas",
-      "tags": [
-        "arifos"
-      ]
-    },
-    {
-      "id": "dev-analysis",
-      "name": "Dev Analysis",
-      "tags": [
-        "aforge"
-      ]
-    },
-    {
-      "id": "dev-ci-diagnose",
-      "name": "Dev Ci Diagnose",
-      "tags": [
-        "aforge"
-      ]
-    },
-    {
       "id": "dev-db-stack",
       "name": "Dev Db Stack",
       "tags": [
         "aforge"
-      ]
+      ],
+      "resolved_skill": "forge-postgres-schema-design"
     },
     {
       "id": "dev-did-identity",
       "name": "Dev Did Identity",
       "tags": [
         "aforge"
-      ]
+      ],
+      "resolved_skill": "forge-did-web-identity"
     },
     {
       "id": "dev-fastapi",
       "name": "Dev Fastapi",
       "tags": [
         "aforge"
-      ]
+      ],
+      "resolved_skill": "forge-fastapi-api-builder"
     },
     {
       "id": "dev-github",
       "name": "Dev Github",
       "tags": [
         "aforge"
-      ]
-    },
-    {
-      "id": "dev-issue-triage",
-      "name": "Dev Issue Triage",
-      "tags": [
-        "aforge"
-      ]
+      ],
+      "resolved_skill": "github"
     },
     {
       "id": "dev-jsonld",
       "name": "Dev Jsonld",
       "tags": [
         "aforge"
-      ]
+      ],
+      "resolved_skill": "forge-governance-jsonld"
     },
     {
       "id": "dev-komda-law",
       "name": "Dev Komda Law",
       "tags": [
         "aforge"
-      ]
-    },
-    {
-      "id": "dev-pr-governance",
-      "name": "Dev Pr Governance",
-      "tags": [
-        "aforge"
-      ]
-    },
-    {
-      "id": "dev-pr-review",
-      "name": "Dev Pr Review",
-      "tags": [
-        "aforge"
-      ]
-    },
-    {
-      "id": "dev-repo-audit",
-      "name": "Dev Repo Audit",
-      "tags": [
-        "aforge"
-      ]
+      ],
+      "resolved_skill": "forge-komda-color-law"
     },
     {
       "id": "dev-sct-ingress",
       "name": "Dev Sct Ingress",
       "tags": [
         "aforge"
-      ]
+      ],
+      "resolved_skill": "forge-act-federation-ingress"
     },
     {
       "id": "dev-seal-close",
       "name": "Dev Seal Close",
       "tags": [
         "aforge"
-      ]
+      ],
+      "resolved_skill": "forge-seal-a-close"
     },
     {
       "id": "dev-t3a-matrix",
       "name": "Dev T3A Matrix",
       "tags": [
         "aforge"
-      ]
+      ],
+      "resolved_skill": "forge-t3a-binding-matrix"
     },
     {
       "id": "dev-web-builder",
       "name": "Dev Web Builder",
       "tags": [
         "aforge"
-      ]
-    },
-    {
-      "id": "dev-wiki",
-      "name": "Dev Wiki",
-      "tags": [
-        "aforge"
-      ]
-    },
-    {
-      "id": "forge-exec",
-      "name": "Forge Exec",
-      "tags": [
-        "aforge"
-      ]
-    },
-    {
-      "id": "forge-verbs",
-      "name": "Forge Verbs",
-      "tags": [
-        "aforge"
-      ]
-    },
-    {
-      "id": "geo-artifact-rigor",
-      "name": "Geo Artifact Rigor",
-      "tags": [
-        "geox"
-      ]
-    },
-    {
-      "id": "geo-basin",
-      "name": "Geo Basin",
-      "tags": [
-        "geox"
-      ]
-    },
-    {
-      "id": "geo-constitution",
-      "name": "Geo Constitution",
-      "tags": [
-        "geox"
-      ]
-    },
-    {
-      "id": "geo-petrophysics",
-      "name": "Geo Petrophysics",
-      "tags": [
-        "geox"
-      ]
-    },
-    {
-      "id": "geo-prospect",
-      "name": "Geo Prospect",
-      "tags": [
-        "geox"
-      ]
-    },
-    {
-      "id": "geo-well-tie",
-      "name": "Geo Well Tie",
-      "tags": [
-        "geox"
-      ]
-    },
-    {
-      "id": "geo-writing",
-      "name": "Geo Writing",
-      "tags": [
-        "geox"
-      ]
-    },
-    {
-      "id": "gov-constitutional-judge",
-      "name": "Gov Constitutional Judge",
-      "tags": [
-        "arifos"
-      ]
-    },
-    {
-      "id": "gov-external-council",
-      "name": "Gov External Council",
-      "tags": [
-        "arifos"
-      ]
-    },
-    {
-      "id": "gov-musyawarah",
-      "name": "Gov Musyawarah",
-      "tags": [
-        "arifos"
-      ]
+      ],
+      "resolved_skill": "forge-nextjs-mastery"
     },
     {
       "id": "kernel-bind",
@@ -460,13 +266,6 @@
       ]
     },
     {
-      "id": "media-imagine",
-      "name": "Media Imagine",
-      "tags": [
-        "aforge"
-      ]
-    },
-    {
       "id": "memory-manage",
       "name": "Memory Manage",
       "tags": [
@@ -481,102 +280,20 @@
       ]
     },
     {
-      "id": "ops-docker",
-      "name": "Ops Docker",
-      "tags": [
-        "aforge"
-      ]
-    },
-    {
-      "id": "ops-google",
-      "name": "Ops Google",
-      "tags": [
-        "aforge"
-      ]
-    },
-    {
-      "id": "ops-health",
-      "name": "Ops Health",
-      "tags": [
-        "aforge"
-      ]
-    },
-    {
-      "id": "ops-incident",
-      "name": "Ops Incident",
-      "tags": [
-        "aforge"
-      ]
-    },
-    {
-      "id": "ops-infra",
-      "name": "Ops Infra",
-      "tags": [
-        "aforge"
-      ]
-    },
-    {
       "id": "ops-infra-crons",
       "name": "Ops Infra Crons",
       "tags": [
         "aforge"
-      ]
-    },
-    {
-      "id": "ops-mcp-builder",
-      "name": "Ops Mcp Builder",
-      "tags": [
-        "aforge"
-      ]
-    },
-    {
-      "id": "ops-mcp-lifeguard",
-      "name": "Ops Mcp Lifeguard",
-      "tags": [
-        "aforge"
-      ]
-    },
-    {
-      "id": "ops-mcp-probe",
-      "name": "Ops Mcp Probe",
-      "tags": [
-        "aforge"
-      ]
+      ],
+      "resolved_skill": "forge-infra-crons"
     },
     {
       "id": "ops-mcp-testing",
       "name": "Ops Mcp Testing",
       "tags": [
         "aforge"
-      ]
-    },
-    {
-      "id": "ops-model-monitor",
-      "name": "Ops Model Monitor",
-      "tags": [
-        "aforge"
-      ]
-    },
-    {
-      "id": "ops-spatial",
-      "name": "Ops Spatial",
-      "tags": [
-        "aforge"
-      ]
-    },
-    {
-      "id": "ops-transport",
-      "name": "Ops Transport",
-      "tags": [
-        "aforge"
-      ]
-    },
-    {
-      "id": "ops-vps",
-      "name": "Ops Vps",
-      "tags": [
-        "aforge"
-      ]
+      ],
+      "resolved_skill": "FORGE-mcp-testing"
     },
     {
       "id": "route-dispatch",
@@ -590,90 +307,6 @@
       "name": "Verify Gate",
       "tags": [
         "arifos"
-      ]
-    },
-    {
-      "id": "wealth-collapse",
-      "name": "Wealth Collapse",
-      "tags": [
-        "wealth"
-      ]
-    },
-    {
-      "id": "wealth-reason",
-      "name": "Wealth Reason",
-      "tags": [
-        "wealth"
-      ]
-    },
-    {
-      "id": "wealth-thermo",
-      "name": "Wealth Thermo",
-      "tags": [
-        "wealth"
-      ]
-    },
-    {
-      "id": "well-boundary",
-      "name": "Well Boundary",
-      "tags": [
-        "well"
-      ]
-    },
-    {
-      "id": "well-readiness",
-      "name": "Well Readiness",
-      "tags": [
-        "well"
-      ]
-    },
-    {
-      "id": "identity-continuity",
-      "name": "Identity Continuity",
-      "tags": [
-        "arifos",
-        "identity",
-        "constitutional",
-        "witness"
-      ]
-    },
-    {
-      "id": "identity-continuity-routing",
-      "name": "Identity Continuity Routing",
-      "tags": [
-        "arifos",
-        "identity",
-        "routing",
-        "self-reference"
-      ]
-    },
-    {
-      "id": "forge-face-embed",
-      "name": "Forge Face Embed",
-      "tags": [
-        "aforge",
-        "biometric",
-        "identity",
-        "BINDING_T1"
-      ]
-    },
-    {
-      "id": "forge-face-match",
-      "name": "Forge Face Match",
-      "tags": [
-        "aforge",
-        "biometric",
-        "identity",
-        "verifier"
-      ]
-    },
-    {
-      "id": "syed-care-architecture",
-      "name": "Syed Care Architecture",
-      "tags": [
-        "identity",
-        "human-reality",
-        "f13-domain"
       ]
     }
   ],
@@ -833,15 +466,463 @@
     "execute",
     "human"
   ],
-  "grant_DEPRECATION_REASON": "AMENDMENT-001 \u00a75 + \u00a7: Hermes-Read is interpretation lane only. Action-Broker execution routes via A-FORGE. capital=WEALTH (organ), earth=GEOX (organ), human=WELL (organ, F11-gated), execute=A-FORGE (lane), code_repo=git mutation (out-of-lane). To use any of these, route to the corresponding organ / forge lane with signed envelope.",
+  "grant_DEPRECATION_REASON": "AMENDMENT-001 §5 + §: Hermes-Read is interpretation lane only. Action-Broker execution routes via A-FORGE. capital=WEALTH (organ), earth=GEOX (organ), human=WELL (organ, F11-gated), execute=A-FORGE (lane), code_repo=git mutation (out-of-lane). To use any of these, route to the corresponding organ / forge lane with signed envelope.",
   "federation_metadata": {
     "fi": "",
     "runtime": "python",
     "lane": "Hermes-Read",
-    "note": "Telegram multimodal bridge. Also expresses 555-ASI. AMENDMENT-001 applied 2026-09-04 \u2014 grant shrunk from 11 to 6 (read-only).",
+    "note": "Telegram multimodal bridge. Also expresses 555-ASI. AMENDMENT-001 applied 2026-09-04 — grant shrunk from 11 to 6 (read-only).",
     "source": "federation.yaml",
     "generated_by": "federation-a2a-sync.py",
     "amended_at": "2026-09-04",
     "contract_reference": "CONTRACT-20260904-HERMES-OPENCLAW-ROLE-SPLIT-AMENDMENT-001"
+  },
+  "_quarantined_skills": [
+    {
+      "id": "agi-explorer",
+      "name": "Agi Explorer",
+      "tags": [
+        "arifos"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "agi-graph-engineering",
+      "name": "Agi Graph Engineering",
+      "tags": [
+        "arifos"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "apex-humility-godel",
+      "name": "Apex Humility Godel",
+      "tags": [
+        "arifos"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "apex-reversibility-test",
+      "name": "Apex Reversibility Test",
+      "tags": [
+        "arifos"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "asi-agent-invariants",
+      "name": "Asi Agent Invariants",
+      "tags": [
+        "arifos"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "asi-drift-watch",
+      "name": "Asi Drift Watch",
+      "tags": [
+        "arifos"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "asi-fabrication-prevention",
+      "name": "Asi Fabrication Prevention",
+      "tags": [
+        "arifos"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "audit-agent-skill-mesh",
+      "name": "Audit Agent Skill Mesh",
+      "tags": [
+        "arifos"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "audit-drift-detector",
+      "name": "Audit Drift Detector",
+      "tags": [
+        "arifos"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "audit-recursive",
+      "name": "Audit Recursive",
+      "tags": [
+        "arifos"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "audit-skill-atlas",
+      "name": "Audit Skill Atlas",
+      "tags": [
+        "arifos"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "dev-analysis",
+      "name": "Dev Analysis",
+      "tags": [
+        "aforge"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/AAA/skills/code-analysis-skills"
+    },
+    {
+      "id": "dev-ci-diagnose",
+      "name": "Dev Ci Diagnose",
+      "tags": [
+        "aforge"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/AAA/skills/github-ci-diagnose"
+    },
+    {
+      "id": "dev-issue-triage",
+      "name": "Dev Issue Triage",
+      "tags": [
+        "aforge"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/AAA/skills/github-issue-triage"
+    },
+    {
+      "id": "dev-pr-governance",
+      "name": "Dev Pr Governance",
+      "tags": [
+        "aforge"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/AAA/skills/pr-review-governance"
+    },
+    {
+      "id": "dev-pr-review",
+      "name": "Dev Pr Review",
+      "tags": [
+        "aforge"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/AAA/skills/github-pr-review"
+    },
+    {
+      "id": "dev-repo-audit",
+      "name": "Dev Repo Audit",
+      "tags": [
+        "aforge"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/AAA/skills/readme-truth-check"
+    },
+    {
+      "id": "dev-wiki",
+      "name": "Dev Wiki",
+      "tags": [
+        "aforge"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/AAA/skills/code-wiki"
+    },
+    {
+      "id": "forge-exec",
+      "name": "Forge Exec",
+      "tags": [
+        "aforge"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/kernel-verbs-aforge-hands"
+    },
+    {
+      "id": "forge-verbs",
+      "name": "Forge Verbs",
+      "tags": [
+        "aforge"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/kernel-verbs-aforge-hands"
+    },
+    {
+      "id": "geo-artifact-rigor",
+      "name": "Geo Artifact Rigor",
+      "tags": [
+        "geox"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/geological-artifact-rigor"
+    },
+    {
+      "id": "geo-basin",
+      "name": "Geo Basin",
+      "tags": [
+        "geox"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/geox-basin-engines"
+    },
+    {
+      "id": "geo-constitution",
+      "name": "Geo Constitution",
+      "tags": [
+        "geox"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/geox-constitution"
+    },
+    {
+      "id": "geo-petrophysics",
+      "name": "Geo Petrophysics",
+      "tags": [
+        "geox"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/geox-petrophysics-bounds"
+    },
+    {
+      "id": "geo-prospect",
+      "name": "Geo Prospect",
+      "tags": [
+        "geox"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/prospect-maturation-workflow"
+    },
+    {
+      "id": "geo-well-tie",
+      "name": "Geo Well Tie",
+      "tags": [
+        "geox"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/geox-well-tie-pipeline"
+    },
+    {
+      "id": "geo-writing",
+      "name": "Geo Writing",
+      "tags": [
+        "geox"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/geox-scientific-writing"
+    },
+    {
+      "id": "gov-constitutional-judge",
+      "name": "Gov Constitutional Judge",
+      "tags": [
+        "arifos"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "gov-external-council",
+      "name": "Gov External Council",
+      "tags": [
+        "arifos"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "gov-musyawarah",
+      "name": "Gov Musyawarah",
+      "tags": [
+        "arifos"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "media-imagine",
+      "name": "Media Imagine",
+      "tags": [
+        "aforge"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "ops-docker",
+      "name": "Ops Docker",
+      "tags": [
+        "aforge"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/AAA/skills/docker"
+    },
+    {
+      "id": "ops-google",
+      "name": "Ops Google",
+      "tags": [
+        "aforge"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/AAA/skills/google-workspace-cli"
+    },
+    {
+      "id": "ops-health",
+      "name": "Ops Health",
+      "tags": [
+        "aforge"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/AAA/skills/verify-runtime"
+    },
+    {
+      "id": "ops-incident",
+      "name": "Ops Incident",
+      "tags": [
+        "aforge"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/AAA/skills/incident-triage"
+    },
+    {
+      "id": "ops-infra",
+      "name": "Ops Infra",
+      "tags": [
+        "aforge"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/AAA/skills/infra-guardian"
+    },
+    {
+      "id": "ops-mcp-builder",
+      "name": "Ops Mcp Builder",
+      "tags": [
+        "aforge"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/mcp-builder-doctrine"
+    },
+    {
+      "id": "ops-mcp-lifeguard",
+      "name": "Ops Mcp Lifeguard",
+      "tags": [
+        "aforge"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/AAA/skills/mcp-lifeguard"
+    },
+    {
+      "id": "ops-mcp-probe",
+      "name": "Ops Mcp Probe",
+      "tags": [
+        "aforge"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/AAA/skills/mcp-ops"
+    },
+    {
+      "id": "ops-model-monitor",
+      "name": "Ops Model Monitor",
+      "tags": [
+        "aforge"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/AAA/skills/model-fallback-monitor"
+    },
+    {
+      "id": "ops-spatial",
+      "name": "Ops Spatial",
+      "tags": [
+        "aforge"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/AAA/skills/spatial-grounding"
+    },
+    {
+      "id": "ops-transport",
+      "name": "Ops Transport",
+      "tags": [
+        "aforge"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/transport-physics-intelligence"
+    },
+    {
+      "id": "ops-vps",
+      "name": "Ops Vps",
+      "tags": [
+        "aforge"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/AAA/skills/vps-docker-ops"
+    },
+    {
+      "id": "wealth-collapse",
+      "name": "Wealth Collapse",
+      "tags": [
+        "wealth"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/wealth-collapse-signature"
+    },
+    {
+      "id": "wealth-reason",
+      "name": "Wealth Reason",
+      "tags": [
+        "wealth"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/wealth-capital-reasoning"
+    },
+    {
+      "id": "wealth-thermo",
+      "name": "Wealth Thermo",
+      "tags": [
+        "wealth"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/wealth-capital-thermodynamics"
+    },
+    {
+      "id": "well-boundary",
+      "name": "Well Boundary",
+      "tags": [
+        "well"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/well-substrate-readiness"
+    },
+    {
+      "id": "well-readiness",
+      "name": "Well Readiness",
+      "tags": [
+        "well"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/well-substrate-readiness"
+    },
+    {
+      "id": "identity-continuity",
+      "name": "Identity Continuity",
+      "tags": [
+        "arifos",
+        "identity",
+        "constitutional",
+        "witness"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "identity-continuity-routing",
+      "name": "Identity Continuity Routing",
+      "tags": [
+        "arifos",
+        "identity",
+        "routing",
+        "self-reference"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "forge-face-embed",
+      "name": "Forge Face Embed",
+      "tags": [
+        "aforge",
+        "biometric",
+        "identity",
+        "BINDING_T1"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "forge-face-match",
+      "name": "Forge Face Match",
+      "tags": [
+        "aforge",
+        "biometric",
+        "identity",
+        "verifier"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "syed-care-architecture",
+      "name": "Syed Care Architecture",
+      "tags": [
+        "identity",
+        "human-reality",
+        "f13-domain"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    }
+  ],
+  "_skill_ref_reconciliation": {
+    "at": "2026-09-18",
+    "by": "afpass-W1",
+    "before": 87,
+    "after": 34,
+    "quarantined": 53,
+    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
   }
 }

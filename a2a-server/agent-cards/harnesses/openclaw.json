@@ -62,206 +62,6 @@
   ],
   "skills": [
     {
-      "id": "role-binding-gateway",
-      "name": "Gateway Role Binding (OpenClaw)",
-      "description": "Polymorphic gateway binding for subagent orchestration and execution handoff. Loads openclaw-doctor-recipes, mcp-boot-failure-diagnosis, kanban-playbook, arif-federation-ops. References contracts/hermes-role-binding.md and AAA_SKILL_BINDING.md. F1, F4, F11 enforced.",
-      "tags": [
-        "role-binding",
-        "openclaw",
-        "gateway",
-        "subagent",
-        "F11"
-      ],
-      "floor_scope": [
-        "F01",
-        "F04",
-        "F11"
-      ],
-      "approval_policy": "auto (per task) + 888 for T3",
-      "reversibility_class": "reversible",
-      "binding_state": "LEASED (gateway execution)"
-    },
-    {
-      "id": "FORGE-gateway-routing",
-      "name": "Gateway Routing",
-      "description": "Route inbound Telegram messages to the correct agent persona via deterministic bindings",
-      "approval_policy": "none"
-    },
-    {
-      "id": "FORGE-agent-dispatch",
-      "name": "Agent Dispatch",
-      "description": "Dispatch tasks to internal OpenClaw personas or external federation agents",
-      "approval_policy": "on-demand"
-    },
-    {
-      "id": "FORGE-agent-handoff",
-      "name": "Agent Handoff",
-      "description": "Governed handoff to Hermes, A-FORGE, or arifOS through A2A/ACP bridges",
-      "approval_policy": "hold"
-    },
-    {
-      "id": "ASI-web-research",
-      "name": "Web Research",
-      "description": "Search and fetch web content via MiniMax and Tavily plugins",
-      "approval_policy": "none"
-    },
-    {
-      "id": "FORGE-browser-automation",
-      "name": "Browser Automation",
-      "description": "Chrome-based browser automation for E2E testing, screenshots, and scraping",
-      "approval_policy": "on-demand"
-    },
-    {
-      "id": "FORGE-shell-execution",
-      "name": "Shell Execution",
-      "description": "Local shell command execution on VPS af-forge under constitutional F1-F13 governance",
-      "approval_policy": "hold"
-    },
-    {
-      "id": "ASI-memory-search",
-      "name": "Memory Search",
-      "description": "QMD session transcript search and Ollama bge-m3 embedding retrieval",
-      "approval_policy": "none"
-    },
-    {
-      "id": "FORGE-status-query",
-      "name": "Status Query",
-      "description": "Read-only gateway, agent, and session status retrieval",
-      "approval_policy": "none"
-    },
-    {
-      "id": "FORGE-openclaw-doctor",
-      "name": "OpenClaw Doctor Recipes",
-      "description": "Fix common OpenClaw gateway health issues — model-registry drift, MCP localhost bindings, plugin cache, orphan transcripts, gateway restart, Telegram webhook 502/404, webhook-URL drift vs Caddy route, post-fix reply-latency. ACTIVE.",
-      "tags": [
-        "doctor",
-        "MCP",
-        "Telegram",
-        "drift",
-        "recovery"
-      ],
-      "examples": [
-        "Fix 'M3 not found' model-registry drift",
-        "Recover Telegram webhook 404 after Caddy reload",
-        "Clear orphan transcript cache"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "FORGE-mcp-boot-diagnosis",
-      "name": "MCP Boot Failure Diagnosis",
-      "description": "Diagnose MCP servers that show 'failed' in Hermes/OpenClaw boot screen. Boot status is misleading for stdio and SSE transports — distinguish 'not connected to a session' (false negative) from 'actually broken'. F1, F11 enforced. ACTIVE.",
-      "tags": [
-        "MCP",
-        "boot",
-        "diagnosis",
-        "transport"
-      ],
-      "examples": [
-        "Distinguish stdio false-negative from SSE handshake failure",
-        "Diagnose playwright dead + agentmail not connecting"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "FORGE-federation-ops",
-      "name": "arif Federation Ops",
-      "description": "arifOS federation topology and routing — 7 organs + gateway. Map ports, services, dependencies for gateway dispatch decisions. F1, F11 enforced. ACTIVE.",
-      "tags": [
-        "federation",
-        "topology",
-        "ops",
-        "ports"
-      ],
-      "examples": [
-        "Map arifOS:8088 + GEOX:8081 + WEALTH:18082 for routing decisions",
-        "Trace a Telegram request through the gateway to its organ"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "AGI-kanban-playbook",
-      "name": "Kanban Playbook",
-      "description": "Hermes Kanban dispatcher — both orchestrator (routing, decomposition, fan-out, recovery) and worker (handoff shapes, retries, pitfalls, edge cases) perspectives. F4 enforced. ACTIVE.",
-      "tags": [
-        "kanban",
-        "dispatcher",
-        "orchestrator",
-        "worker"
-      ],
-      "examples": [
-        "Decompose task into worker lanes with capability_mode",
-        "Recover from worker timeout with retry chain"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "KERNEL-reality-skills",
-      "name": "Reality Skills (F2 Grounding)",
-      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
-      "tags": [
-        "kernel",
-        "f2",
-        "reality",
-        "grounding"
-      ],
-      "floor_scope": [
-        "F2",
-        "F7",
-        "F9"
-      ]
-    },
-    {
-      "id": "KERNEL-sovereign-recognize",
-      "name": "Sovereign Recognition (F13)",
-      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
-      "tags": [
-        "kernel",
-        "f13",
-        "sovereign",
-        "identity"
-      ],
-      "floor_scope": [
-        "F13"
-      ]
-    },
-    {
-      "id": "KERNEL-session-inhabit",
-      "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
-      "tags": [
-        "kernel",
-        "session",
-        "lifecycle",
-        "000-999"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4",
-        "F11"
-      ]
-    },
-    {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
       "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
@@ -289,52 +89,6 @@
       "floor_scope": [
         "F4",
         "F8"
-      ]
-    },
-    {
-      "id": "KERNEL-mcp-zen",
-      "name": "MCP Zen Architecture",
-      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
-      "tags": [
-        "kernel",
-        "mcp",
-        "zen",
-        "architecture"
-      ],
-      "floor_scope": [
-        "F4",
-        "F11"
-      ]
-    },
-    {
-      "id": "KERNEL-verbs-forge-hands",
-      "name": "Forge Verbs (Execution)",
-      "description": "Governed execution verbs: dry_run → engineer → write → commit → deploy. Every verb has a reversibility class.",
-      "tags": [
-        "kernel",
-        "forge",
-        "execution",
-        "verbs"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4",
-        "F11"
-      ]
-    },
-    {
-      "id": "KERNEL-mcp-builder",
-      "name": "MCP Builder",
-      "description": "FastMCP server construction, tool registration, MCP handshake, verify script, venv pattern.",
-      "tags": [
-        "kernel",
-        "mcp",
-        "builder",
-        "forge"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4"
       ]
     }
   ],
@@ -651,5 +405,280 @@
   },
   "ed25519_pubkey": "6c232cbe23b8414b25e07a981ac0530e784bc02665f209ab9fa46a8ea72bbd2c",
   "identity_fingerprint": "d34446ad0908b3f58b6b57031ea4153d",
-  "identity_bound_at": "2026-07-29T13:55:07.272023+00:00"
+  "identity_bound_at": "2026-07-29T13:55:07.272023+00:00",
+  "_quarantined_skills": [
+    {
+      "id": "role-binding-gateway",
+      "name": "Gateway Role Binding (OpenClaw)",
+      "description": "Polymorphic gateway binding for subagent orchestration and execution handoff. Loads openclaw-doctor-recipes, mcp-boot-failure-diagnosis, kanban-playbook, arif-federation-ops. References contracts/hermes-role-binding.md and AAA_SKILL_BINDING.md. F1, F4, F11 enforced.",
+      "tags": [
+        "role-binding",
+        "openclaw",
+        "gateway",
+        "subagent",
+        "F11"
+      ],
+      "floor_scope": [
+        "F01",
+        "F04",
+        "F11"
+      ],
+      "approval_policy": "auto (per task) + 888 for T3",
+      "reversibility_class": "reversible",
+      "binding_state": "LEASED (gateway execution)",
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "FORGE-gateway-routing",
+      "name": "Gateway Routing",
+      "description": "Route inbound Telegram messages to the correct agent persona via deterministic bindings",
+      "approval_policy": "none",
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "FORGE-agent-dispatch",
+      "name": "Agent Dispatch",
+      "description": "Dispatch tasks to internal OpenClaw personas or external federation agents",
+      "approval_policy": "on-demand",
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "FORGE-agent-handoff",
+      "name": "Agent Handoff",
+      "description": "Governed handoff to Hermes, A-FORGE, or arifOS through A2A/ACP bridges",
+      "approval_policy": "hold",
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "ASI-web-research",
+      "name": "Web Research",
+      "description": "Search and fetch web content via MiniMax and Tavily plugins",
+      "approval_policy": "none",
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "FORGE-browser-automation",
+      "name": "Browser Automation",
+      "description": "Chrome-based browser automation for E2E testing, screenshots, and scraping",
+      "approval_policy": "on-demand",
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "FORGE-shell-execution",
+      "name": "Shell Execution",
+      "description": "Local shell command execution on VPS af-forge under constitutional F1-F13 governance",
+      "approval_policy": "hold",
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "ASI-memory-search",
+      "name": "Memory Search",
+      "description": "QMD session transcript search and Ollama bge-m3 embedding retrieval",
+      "approval_policy": "none",
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "FORGE-status-query",
+      "name": "Status Query",
+      "description": "Read-only gateway, agent, and session status retrieval",
+      "approval_policy": "none",
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "FORGE-openclaw-doctor",
+      "name": "OpenClaw Doctor Recipes",
+      "description": "Fix common OpenClaw gateway health issues — model-registry drift, MCP localhost bindings, plugin cache, orphan transcripts, gateway restart, Telegram webhook 502/404, webhook-URL drift vs Caddy route, post-fix reply-latency. ACTIVE.",
+      "tags": [
+        "doctor",
+        "MCP",
+        "Telegram",
+        "drift",
+        "recovery"
+      ],
+      "examples": [
+        "Fix 'M3 not found' model-registry drift",
+        "Recover Telegram webhook 404 after Caddy reload",
+        "Clear orphan transcript cache"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "FORGE-mcp-boot-diagnosis",
+      "name": "MCP Boot Failure Diagnosis",
+      "description": "Diagnose MCP servers that show 'failed' in Hermes/OpenClaw boot screen. Boot status is misleading for stdio and SSE transports — distinguish 'not connected to a session' (false negative) from 'actually broken'. F1, F11 enforced. ACTIVE.",
+      "tags": [
+        "MCP",
+        "boot",
+        "diagnosis",
+        "transport"
+      ],
+      "examples": [
+        "Distinguish stdio false-negative from SSE handshake failure",
+        "Diagnose playwright dead + agentmail not connecting"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "FORGE-federation-ops",
+      "name": "arif Federation Ops",
+      "description": "arifOS federation topology and routing — 7 organs + gateway. Map ports, services, dependencies for gateway dispatch decisions. F1, F11 enforced. ACTIVE.",
+      "tags": [
+        "federation",
+        "topology",
+        "ops",
+        "ports"
+      ],
+      "examples": [
+        "Map arifOS:8088 + GEOX:8081 + WEALTH:18082 for routing decisions",
+        "Trace a Telegram request through the gateway to its organ"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "AGI-kanban-playbook",
+      "name": "Kanban Playbook",
+      "description": "Hermes Kanban dispatcher — both orchestrator (routing, decomposition, fan-out, recovery) and worker (handoff shapes, retries, pitfalls, edge cases) perspectives. F4 enforced. ACTIVE.",
+      "tags": [
+        "kanban",
+        "dispatcher",
+        "orchestrator",
+        "worker"
+      ],
+      "examples": [
+        "Decompose task into worker lanes with capability_mode",
+        "Recover from worker timeout with retry chain"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "KERNEL-reality-skills",
+      "name": "Reality Skills (F2 Grounding)",
+      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
+      "tags": [
+        "kernel",
+        "f2",
+        "reality",
+        "grounding"
+      ],
+      "floor_scope": [
+        "F2",
+        "F7",
+        "F9"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-reality-skills"
+    },
+    {
+      "id": "KERNEL-sovereign-recognize",
+      "name": "Sovereign Recognition (F13)",
+      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
+      "tags": [
+        "kernel",
+        "f13",
+        "sovereign",
+        "identity"
+      ],
+      "floor_scope": [
+        "F13"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-sovereign-recognize"
+    },
+    {
+      "id": "KERNEL-session-inhabit",
+      "name": "Session Inhabit (Lifecycle)",
+      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "tags": [
+        "kernel",
+        "session",
+        "lifecycle",
+        "000-999"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-session-inhabit"
+    },
+    {
+      "id": "KERNEL-mcp-zen",
+      "name": "MCP Zen Architecture",
+      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
+      "tags": [
+        "kernel",
+        "mcp",
+        "zen",
+        "architecture"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "KERNEL-verbs-forge-hands",
+      "name": "Forge Verbs (Execution)",
+      "description": "Governed execution verbs: dry_run → engineer → write → commit → deploy. Every verb has a reversibility class.",
+      "tags": [
+        "kernel",
+        "forge",
+        "execution",
+        "verbs"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-verbs-forge-hands"
+    },
+    {
+      "id": "KERNEL-mcp-builder",
+      "name": "MCP Builder",
+      "description": "FastMCP server construction, tool registration, MCP handshake, verify script, venv pattern.",
+      "tags": [
+        "kernel",
+        "mcp",
+        "builder",
+        "forge"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    }
+  ],
+  "_skill_ref_reconciliation": {
+    "at": "2026-09-18",
+    "by": "afpass-W1",
+    "before": 21,
+    "after": 2,
+    "quarantined": 19,
+    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
+  }
 }

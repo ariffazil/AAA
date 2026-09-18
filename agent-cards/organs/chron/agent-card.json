@@ -1,0 +1,128 @@
+{
+    "$schema": "arifOS/agent-card/v2.2.0",
+    "schemaVersion": "2.3.0",
+    "id": "chron-mcp",
+    "protocolVersion": "1.2",
+    "agentId": "chron",
+    "name": "CHRON",
+    "principal_agent": {
+        "type": "agent",
+        "category": "Temporal consequence tracker — PREDICT_ONLY, never adjudicates",
+        "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive"
+    },
+    "warga_binding": {
+        "citizenship": "warga-aaa",
+        "lane": "TEMPORAL-777",
+        "intelligence_tier": "AGI",
+        "authority_level": "COMPUTE_ONLY",
+        "citizenship_forged": "2026-09-18"
+    },
+    "description": "Temporal consequence tracker — predictions, verification, calibration, learning. The8th organ. Answers: What did we expect? What happened? Were we wrong?",
+    "version": "1.0.0",
+    "provider": {
+        "organization": "arifOS",
+        "system": "AAA"
+    },
+    "capabilities": {
+        "streaming": true,
+        "pushNotifications": false,
+        "stateTransitionHistory": true,
+        "extendedAgentCard": true
+    },
+    "supportedInterfaces": [
+        {
+            "protocolBinding": "JSONRPC",
+            "protocolVersion": "1.2",
+            "url": "https://aaa.arif-fazil.com/a2a"
+        },
+        {
+            "protocolBinding": "MCP",
+            "protocolVersion": "1.0",
+            "url": "https://chron.arif-fazil.com/mcp"
+        }
+    ],
+    "defaultInputModes": [
+        "text/plain",
+        "application/json"
+    ],
+    "defaultOutputModes": [
+        "application/json",
+        "text/plain"
+    ],
+    "skills": [
+        {
+            "id": "chron_predictions_due",
+            "name": "Predictions Due",
+            "description": "Get predictions whose verify_at has arrived — the temporal delta"
+        },
+        {
+            "id": "chron_calibration_state",
+            "name": "Calibration State",
+            "description": "Get calibration statistics — Brier scores, accuracy"
+        },
+        {
+            "id": "chron_last_loop",
+            "name": "Last Loop",
+            "description": "Get the last FULL_LOOP entry from loop_log"
+        },
+        {
+            "id": "chron_active_events",
+            "name": "Active Events",
+            "description": "Get chron_events filtered by audience"
+        },
+        {
+            "id": "chron_active_predictions",
+            "name": "Active Predictions",
+            "description": "Get all active (unverified) predictions"
+        },
+        {
+            "id": "chron_store_stats",
+            "name": "Store Stats",
+            "description": "Get CHRON store statistics"
+        },
+        {
+            "id": "chron_temporal_briefing",
+            "name": "Temporal Briefing",
+            "description": "Full temporal briefing for agent wake-up"
+        },
+        {
+            "id": "chron_generate_predictions",
+            "name": "Generate Predictions",
+            "description": "Generate predictions from chron_events.json"
+        }
+    ],
+    "governance_profile": {
+        "authority_ceiling": "COMPUTE_ONLY",
+        "forbidden_domains": [
+            "constitutional_judgment",
+            "engineering_execution",
+            "capital_allocation",
+            "mutation_authorization"
+        ],
+        "owned_domains": [
+            "prediction_lifecycle",
+            "temporal_verification",
+            "calibration_tracking",
+            "lesson_extraction",
+            "bitemporal_episodes"
+        ]
+    },
+    "identity": {
+        "did": "did:web:chron.arif-fazil.com",
+        "verification_method": "Ed25519VerificationKey2020",
+        "service_endpoint": "https://chron.arif-fazil.com/mcp"
+    },
+    "temporal": {
+        "port": 18102,
+        "unit": "chron-mcp.service",
+        "health_endpoint": "https://chron.arif-fazil.com/health",
+        "mcp_endpoint": "https://chron.arif-fazil.com/mcp",
+        "timers": [
+            "chron-task0-reconciliation.timer (06:50 MYT)",
+            "chron-prediction-verifier.timer (07:00 MYT)",
+            "chron-loop-closer.timer (07:15 MYT)"
+        ],
+        "first_falsification": "2026-09-23"
+    },
+    "doctrine": "Demi masa. Time is the witness. CHRON is the temporal cortex — predicts, verifies, calibrates, learns. Not a scheduler. Not a memory store."
+}

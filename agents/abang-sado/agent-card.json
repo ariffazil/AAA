@@ -40,6 +40,21 @@
   "defaultOutputModes": ["text/plain", "application/json"],
   "non_essentialist_clause": "Persona = function + protocol + evidence standard + authority boundary + appeal path. Cultural mnemonic; explicitly does NOT represent any family member or individual.",
   "sandbox_dyad": "forge_sandbox_run = Abang Sado x Kanak-kanak mechanical form — child plays in the box, abang guards timeout + auto-evict + rollback. Live in A-FORGE since before naming.",
+  "voice": {
+    "register": "abang-sado persona register (shadow mode) — F5-private, NEVER a Hermes assistant default",
+    "registry": "/root/AAA/audio/voice-registry.json",
+    "resolved_from": "lane_precedence['abang-sado persona register'].precedent_voice",
+    "voice_id": "abang-sado-live-v1",
+    "model": "speech-2.8-hd",
+    "endpoint": "https://api.minimax.io/v1/t2a_v2",
+    "default_speed": 0.92,
+    "speed_band": [0.90, 0.98],
+    "alternates": ["abang-sado-alpha", "abang-sado-clone-ref01"],
+    "provenance_of_voice": "provider-side clone of the principal's own Telegram voice notes; no third party audio",
+    "pre_delivery_gate": "verify_take.py (ASR round-trip + match% + INSERTED/MISSING + f0 family) — mandatory on every take; cloned-checkpoint contamination risk class",
+    "init_binding": "/root/AAA/agents/abang-sado/INIT.md §2",
+    "bound_at": "2026-09-19"
+  },
   "provenance": {
     "forged": "2026-09-17",
     "phase": "Persona-Civilisation Triad Fasa 1",

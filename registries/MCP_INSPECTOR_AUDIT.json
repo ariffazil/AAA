@@ -1,9 +1,9 @@
 {
-  "audit_timestamp": "2026-09-14T17:52:15.440027+00:00",
+  "audit_timestamp": "2026-09-18T07:15:06.664248+00:00",
   "total_organs": 4,
-  "total_tools": 127,
+  "total_tools": 144,
   "total_prompts": 54,
-  "total_resources": 120,
+  "total_resources": 123,
   "total_templates": 43,
   "total_status": "GREEN",
   "exit_code": 0,
@@ -14,11 +14,11 @@
       "authority_ceiling": "JUDGE_ONLY",
       "total_tools": 6,
       "total_prompts": 13,
-      "total_resources": 35,
+      "total_resources": 38,
       "total_templates": 27,
       "tools_passed": 5,
       "prompts_passed": 13,
-      "resources_passed": 35,
+      "resources_passed": 38,
       "tools": [
         {
           "name": "arif_init",
@@ -688,9 +688,10 @@
                   "promote",
                   "revise",
                   "forget",
-                  "audit"
+                  "audit",
+                  "metabolize"
                 ],
-                "description": "Operation mode: recall, inspect, attest, remember, promote, revise, forget, audit, etc."
+                "description": "Operation mode: recall, inspect, attest, remember, promote, revise, forget, audit, metabolize."
               },
               "query": {
                 "anyOf": [
@@ -1197,7 +1198,7 @@
             }
           ],
           "test_status": "VERIFIED",
-          "test_detail": "Render ok (968 chars)"
+          "test_detail": "Render ok (989 chars)"
         },
         {
           "name": "111 \ud83c\udf0a SENSE",
@@ -1211,7 +1212,7 @@
             }
           ],
           "test_status": "VERIFIED",
-          "test_detail": "Render ok (950 chars)"
+          "test_detail": "Render ok (969 chars)"
         },
         {
           "name": "222 \ud83c\udfdb PLAN",
@@ -1225,7 +1226,7 @@
             }
           ],
           "test_status": "VERIFIED",
-          "test_detail": "Render ok (924 chars)"
+          "test_detail": "Render ok (949 chars)"
         },
         {
           "name": "333 \ud83e\udde0 REASON",
@@ -1239,7 +1240,7 @@
             }
           ],
           "test_status": "VERIFIED",
-          "test_detail": "Render ok (943 chars)"
+          "test_detail": "Render ok (967 chars)"
         },
         {
           "name": "444 \ud83e\udded DIRECT",
@@ -1253,7 +1254,7 @@
             }
           ],
           "test_status": "VERIFIED",
-          "test_detail": "Render ok (947 chars)"
+          "test_detail": "Render ok (964 chars)"
         },
         {
           "name": "555 \ud83d\uddc2 REMEMBER",
@@ -1267,7 +1268,7 @@
             }
           ],
           "test_status": "VERIFIED",
-          "test_detail": "Render ok (924 chars)"
+          "test_detail": "Render ok (945 chars)"
         },
         {
           "name": "666 \u2696 DIGNITY",
@@ -1281,7 +1282,7 @@
             }
           ],
           "test_status": "VERIFIED",
-          "test_detail": "Render ok (936 chars)"
+          "test_detail": "Render ok (953 chars)"
         },
         {
           "name": "777 \ud83d\udd25 FORGE",
@@ -1295,7 +1296,7 @@
             }
           ],
           "test_status": "VERIFIED",
-          "test_detail": "Render ok (914 chars)"
+          "test_detail": "Render ok (936 chars)"
         },
         {
           "name": "888 \ud83d\udd12 JUDGE",
@@ -1309,7 +1310,7 @@
             }
           ],
           "test_status": "VERIFIED",
-          "test_detail": "Render ok (962 chars)"
+          "test_detail": "Render ok (988 chars)"
         },
         {
           "name": "999 \ud83d\udc8e SEAL",
@@ -1323,7 +1324,7 @@
             }
           ],
           "test_status": "VERIFIED",
-          "test_detail": "Render ok (914 chars)"
+          "test_detail": "Render ok (934 chars)"
         },
         {
           "name": "\ud83c\udf00 GOVERN",
@@ -1337,7 +1338,7 @@
             }
           ],
           "test_status": "VERIFIED",
-          "test_detail": "Render ok (1340 chars)"
+          "test_detail": "Render ok (1359 chars)"
         },
         {
           "name": "\u2693 INIT",
@@ -1348,7 +1349,7 @@
             }
           ],
           "test_status": "VERIFIED",
-          "test_detail": "Render ok (1022 chars)"
+          "test_detail": "Render ok (1036 chars)"
         },
         {
           "name": "\ud83d\udd10 CLOSE",
@@ -1359,7 +1360,7 @@
             }
           ],
           "test_status": "VERIFIED",
-          "test_detail": "Render ok (915 chars)"
+          "test_detail": "Render ok (933 chars)"
         }
       ],
       "resources": [
@@ -1375,7 +1376,7 @@
           "name": "get_vitals",
           "mime_type": "text/plain",
           "test_status": "VERIFIED",
-          "test_detail": "Read ok (1414 bytes)"
+          "test_detail": "Read ok (1412 bytes)"
         },
         {
           "uri": "arifos://init/agent_init",
@@ -1389,7 +1390,28 @@
           "name": "get_carry_forward",
           "mime_type": "text/plain",
           "test_status": "VERIFIED",
-          "test_detail": "Read ok (40021 bytes)"
+          "test_detail": "Read ok (168104 bytes)"
+        },
+        {
+          "uri": "arifos://chron/briefing",
+          "name": "get_chron_briefing",
+          "mime_type": "text/plain",
+          "test_status": "VERIFIED",
+          "test_detail": "URI registered"
+        },
+        {
+          "uri": "arifos://chron/predictions",
+          "name": "get_chron_predictions",
+          "mime_type": "text/plain",
+          "test_status": "VERIFIED",
+          "test_detail": "URI registered"
+        },
+        {
+          "uri": "arifos://chron/calibration",
+          "name": "get_chron_calibration",
+          "mime_type": "text/plain",
+          "test_status": "VERIFIED",
+          "test_detail": "URI registered"
         },
         {
           "uri": "arifos://flow-state",
@@ -1747,17 +1769,17 @@
         }
       ],
       "status": "VERIFIED",
-      "elapsed_ms": 3912.027793005109
+      "elapsed_ms": 4080.9139229822904
     },
     {
       "organ_id": "GEOX",
       "server_class": "CORE \u00b7 EARTH",
       "authority_ceiling": "COMPUTE_ONLY",
-      "total_tools": 44,
+      "total_tools": 49,
       "total_prompts": 16,
       "total_resources": 37,
       "total_templates": 13,
-      "tools_passed": 44,
+      "tools_passed": 49,
       "prompts_passed": 16,
       "resources_passed": 37,
       "tools": [
@@ -5179,6 +5201,406 @@
           "test_detail": "Schema valid"
         },
         {
+          "name": "geox_calibration_register_witness",
+          "description": "Register a calibration witness for structural interpretation.\n\nThe witness defines the calibrated measurement frame that structural\ngates consume. Without a valid witness, gates return UNMEASURED.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "witness": {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              "session_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "actor_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "trace_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              }
+            },
+            "required": [
+              "witness"
+            ],
+            "type": "object"
+          },
+          "test_status": "VERIFIED",
+          "test_detail": "Schema valid"
+        },
+        {
+          "name": "geox_extract_display_proxy",
+          "description": "Extract a display-derived proxy from a raster seismic image.\n\nThis function produces pixel-derived proxy arrays for visual and\nmorphological interpretation assistance. The output is explicitly\nlabeled DISPLAY_DERIVED_PROXY and cannot be used for:\n- amplitude preservation validation\n- AVO classification\n- phase certification\n- native seismic-to-well tie acceptance\n- quantitative prospect/fault-seal decisions\n\nInputs:\n    image_path: Path to seismic image file\n    image_data: Base64-encoded image (alternative to path)\n    calibration_witness_ref: Validated CalibrationWitness reference\n    panel_bounds: Override panel detection {x_min, y_min, x_max, y_max}\n    extraction_method: Algorithm identifier for provenance\n    session_id, actor_id, trace_id: Transport metadata\n\nReturns:\n    dict with proxy arrays, provenance, permitted/prohibited uses, and status",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "image_path": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "image_data": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "calibration_witness_ref": {
+                "anyOf": [
+                  {
+                    "additionalProperties": true,
+                    "type": "object"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "panel_bounds": {
+                "anyOf": [
+                  {
+                    "additionalProperties": {
+                      "type": "integer"
+                    },
+                    "type": "object"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "extraction_method": {
+                "default": "column_luminance_r_minus_b",
+                "type": "string"
+              },
+              "session_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "actor_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "trace_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              }
+            },
+            "type": "object"
+          },
+          "test_status": "VERIFIED",
+          "test_detail": "Schema valid"
+        },
+        {
+          "name": "geox_register_native_source",
+          "description": "Register a native SEG-Y source for trace extraction.\n\nValidates file existence, computes SHA256, extracts binary header metadata.\nDoes NOT load trace data \u2014 that happens at extraction time.\n\nReturns registration receipt with HOLD reasons if validation fails.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "source_uri": {
+                "type": "string"
+              },
+              "source_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "classification": {
+                "default": "unknown",
+                "type": "string"
+              },
+              "authority": {
+                "default": "UNVERIFIED",
+                "type": "string"
+              },
+              "survey_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "line_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "crs": {
+                "default": "CRS_UNKNOWN",
+                "type": "string"
+              },
+              "registered_by": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "session_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "actor_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "trace_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              }
+            },
+            "required": [
+              "source_uri"
+            ],
+            "type": "object"
+          },
+          "test_status": "VERIFIED",
+          "test_detail": "Schema valid"
+        },
+        {
+          "name": "geox_extract_native_trace",
+          "description": "Extract a native seismic trace from a registered source.\n\nReturns NativeTraceRef with full provenance, sample metadata, and\nexplicit permitted/prohibited downstream uses.\n\nHOLD conditions:\n- Source not registered\n- Authority insufficient\n- Data classification disallows access\n- Invalid trace locator\n- Unparseable SEG-Y",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "source_id": {
+                "type": "string"
+              },
+              "trace_index": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "cdp": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "inline": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "crossline": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "intent": {
+                "default": "trace_extraction",
+                "type": "string"
+              },
+              "session_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "actor_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "trace_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              }
+            },
+            "required": [
+              "source_id"
+            ],
+            "type": "object"
+          },
+          "test_status": "VERIFIED",
+          "test_detail": "Schema valid"
+        },
+        {
+          "name": "geox_list_registered_sources",
+          "description": "List all registered native seismic sources.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "session_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "actor_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "trace_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              }
+            },
+            "type": "object"
+          },
+          "test_status": "VERIFIED",
+          "test_detail": "Schema valid"
+        },
+        {
           "name": "geox_coord_transform_tool",
           "description": "Transform points between coordinate systems.\n\nTwo explicit modes are supported:\n  - CRS reprojection: provide x/y or 2D points plus from_crs/to_crs (EPSG codes).\n  - Local affine transform: provide 3D points plus from_space/to_space\n    in block/survey/world.",
           "parameters": {
@@ -6864,17 +7286,17 @@
         }
       ],
       "status": "VERIFIED",
-      "elapsed_ms": 2927.963050082326
+      "elapsed_ms": 4166.881941957399
     },
     {
       "organ_id": "WEALTH",
       "server_class": "CORE \u00b7 CAPITAL",
       "authority_ceiling": "COMPUTE_ONLY",
-      "total_tools": 11,
+      "total_tools": 14,
       "total_prompts": 7,
       "total_resources": 18,
       "total_templates": 0,
-      "tools_passed": 11,
+      "tools_passed": 14,
       "prompts_passed": 7,
       "resources_passed": 18,
       "tools": [
@@ -7191,7 +7613,7 @@
             "type": "object"
           },
           "test_status": "VERIFIED",
-          "test_detail": "NPV call ok (3311 chars)"
+          "test_detail": "NPV call ok (3743 chars)"
         },
         {
           "name": "capital_health",
@@ -7516,7 +7938,7 @@
         },
         {
           "name": "capital_market",
-          "description": "Market data and commodity intelligence \u2014 observational with derived and interpreted fields. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
+          "description": "Market data and commodity intelligence \u2014 observational with derived and interpreted fields. MODES: fundamentals (pass ticker=<BURSA_CODE> for the F1-F9 fundamental-invariant engine), fx, commodity, indicator, stock, gold, oil, gas. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
           "parameters": {
             "additionalProperties": false,
             "properties": {
@@ -7554,6 +7976,10 @@
                   }
                 ],
                 "default": null
+              },
+              "ticker": {
+                "default": "",
+                "type": "string"
               },
               "asset_class": {
                 "default": "fx_commodity",
@@ -7706,6 +8132,66 @@
                 "anyOf": [
                   {
                     "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "session_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "trace_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "actor_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              }
+            },
+            "type": "object"
+          },
+          "test_status": "VERIFIED",
+          "test_detail": "Schema valid"
+        },
+        {
+          "name": "capital_claims",
+          "description": "Named-entity claim gate \u2014 validates claims about real institutions/persons before publication. OBS_ELIGIBLE requires external source_uri + ISO retrieval timestamp + CHECKED contradiction with external second source; person-trait claims rejected (structures, not people); any HOLD/REJECT blocks the batch. SIDE EFFECT: writes a vault receipt.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "claims": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "additionalProperties": true,
+                      "type": "object"
+                    },
+                    "type": "array"
                   },
                   {
                     "type": "null"
@@ -8310,6 +8796,112 @@
           },
           "test_status": "VERIFIED",
           "test_detail": "Schema valid"
+        },
+        {
+          "name": "capital_polix",
+          "description": "Power topology intelligence \u2014 incentive mapping, capture detection, rent extraction analysis, rule asymmetry. MODES: topology (full power map), capture (capture risk), rents (rent flows), asymmetry (rule asymmetries). SEED CASES: malaysia_fiscal, petronas_glc. SIDE EFFECT: writes a vault receipt.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "mode": {
+                "default": "topology",
+                "type": "string"
+              },
+              "seed_case": {
+                "default": "malaysia_fiscal",
+                "type": "string"
+              },
+              "session_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "trace_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "actor_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              }
+            },
+            "type": "object"
+          },
+          "test_status": "VERIFIED",
+          "test_detail": "Schema valid"
+        },
+        {
+          "name": "capital_civx",
+          "description": "Civilizational scenario intelligence \u2014 long-horizon resilience, sovereignty, intergenerational burden. MODES: scenario (full scenario study), resilience (resilience scores), risks (key risks), assumptions (assumption axes). SEED CASES: malaysia_fiscal_2027_2040. Status: SAFE_TO_STUDY, never decision authority. SIDE EFFECT: writes a vault receipt.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "mode": {
+                "default": "scenario",
+                "type": "string"
+              },
+              "seed_case": {
+                "default": "malaysia_fiscal_2027_2040",
+                "type": "string"
+              },
+              "session_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "trace_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "actor_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              }
+            },
+            "type": "object"
+          },
+          "test_status": "VERIFIED",
+          "test_detail": "Schema valid"
         }
       ],
       "prompts": [
@@ -8466,14 +9058,14 @@
           "name": "WEALTH Schema",
           "mime_type": "application/json",
           "test_status": "VERIFIED",
-          "test_detail": "Read ok (2970 bytes)"
+          "test_detail": "Read ok (3036 bytes)"
         },
         {
           "uri": "wealth://tools/registry",
           "name": "WEALTH Tools Registry",
           "mime_type": "application/json",
           "test_status": "VERIFIED",
-          "test_detail": "Read ok (3093 bytes)"
+          "test_detail": "Read ok (3159 bytes)"
         },
         {
           "uri": "wealth://prompts/index",
@@ -8590,17 +9182,17 @@
       ],
       "templates": [],
       "status": "VERIFIED",
-      "elapsed_ms": 219.64907902292907
+      "elapsed_ms": 259.5673277974129
     },
     {
       "organ_id": "WELL",
       "server_class": "CORE \u00b7 VITALITY",
       "authority_ceiling": "REFLECT_ONLY",
-      "total_tools": 66,
+      "total_tools": 75,
       "total_prompts": 18,
       "total_resources": 30,
       "total_templates": 3,
-      "tools_passed": 66,
+      "tools_passed": 75,
       "prompts_passed": 18,
       "resources_passed": 30,
       "tools": [
@@ -8860,7 +9452,7 @@
             "type": "object"
           },
           "test_status": "VERIFIED",
-          "test_detail": "State log ok (1074 chars)"
+          "test_detail": "Call note: too many values to unpack (expected 2)"
         },
         {
           "name": "well_log_intake",
@@ -12466,6 +13058,571 @@
           },
           "test_status": "VERIFIED",
           "test_detail": "Schema valid"
+        },
+        {
+          "name": "well_human",
+          "description": "H-WELL unified plane. mode=homeostasis|readiness|dignity.\n\nhomeostasis: regulation/stability under change (biometric overrides\naccepted; decision_class routes the C-class gate). readiness: vitality\nenvelope + gate. dignity: F6 consent/boundary guard.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "mode": {
+                "default": "readiness",
+                "type": "string"
+              },
+              "decision_class": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "sleep_debt_days": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "cognitive_clarity": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "decision_fatigue": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "stress_load": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "emotional_state": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "hrv_status": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "chronic_fatigue": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "subject": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "dignity_preservation": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "coercion_signals": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              }
+            },
+            "type": "object"
+          },
+          "test_status": "VERIFIED",
+          "test_detail": "Schema valid"
+        },
+        {
+          "name": "well_machine",
+          "description": "M-WELL unified plane. mode=diagnose|recommend|classify|observe.\n\nobserve scope=organ \u2192 per-organ thermal/drift/scar/evidence card;\nscope=federation \u2192 all-organ + mesh thermal aggregate.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "mode": {
+                "default": "diagnose",
+                "type": "string"
+              },
+              "agent_id": {
+                "default": "well",
+                "type": "string"
+              },
+              "scope": {
+                "default": "organ",
+                "type": "string"
+              },
+              "issue_type": {
+                "default": "all",
+                "type": "string"
+              },
+              "lookback_hours": {
+                "default": 1,
+                "type": "integer"
+              }
+            },
+            "type": "object"
+          },
+          "test_status": "VERIFIED",
+          "test_detail": "Schema valid"
+        },
+        {
+          "name": "well_triad",
+          "description": "G+C triadic plane. mode=assess|snapshot|hud.\n\nsnapshot observer=frame \u2192 FRAME evidence-only read of the same file.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "mode": {
+                "default": "assess",
+                "type": "string"
+              },
+              "observer": {
+                "default": "well",
+                "type": "string"
+              },
+              "lookback_hours": {
+                "default": 1,
+                "type": "integer"
+              }
+            },
+            "type": "object"
+          },
+          "test_status": "VERIFIED",
+          "test_detail": "Schema valid"
+        },
+        {
+          "name": "well_reality",
+          "description": "R-WELL (v1). Reality Integrity plane. mode=confidence|memory|witness|lineage|patterns.\n\nConstitutional metric: Edited Reality \u2260 Executed Reality.\nv1 sources (live-probed): graphiti_mcp :18412, falkordb graphs,\ncommit alignment, machine telemetry, witness bridge lane.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "mode": {
+                "default": "confidence",
+                "type": "string"
+              },
+              "limit": {
+                "default": 10,
+                "type": "integer"
+              },
+              "lookback_days": {
+                "default": 30,
+                "type": "integer"
+              }
+            },
+            "type": "object"
+          },
+          "test_status": "VERIFIED",
+          "test_detail": "Schema valid"
+        },
+        {
+          "name": "well_adaptation",
+          "description": "A-WELL (v0). Adaptation Readiness plane. mode=precheck|readiness|mttr|gaps.\n\nConstitutional question: can witnessed reality still change future behavior?",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "mode": {
+                "default": "precheck",
+                "type": "string"
+              },
+              "task_description": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "decision_class": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "source": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              }
+            },
+            "type": "object"
+          },
+          "test_status": "VERIFIED",
+          "test_detail": "Schema valid"
+        },
+        {
+          "name": "well_intake",
+          "description": "H-WELL write plane. mode=meal|recovery|substance|biometric.\n\nConsent gates (F11/F13) preserved by delegation \u2014 biometric requires\nHermes actor_token; substance requires substance.full scope.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "mode": {
+                "type": "string"
+              },
+              "kcal": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "event_type": {
+                "default": "meditation",
+                "type": "string"
+              },
+              "note": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "occurred_at": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "substance": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "dose_mg": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "source": {
+                "default": "manual",
+                "type": "string"
+              },
+              "readings": {
+                "anyOf": [
+                  {
+                    "additionalProperties": {
+                      "type": "number"
+                    },
+                    "type": "object"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "consent_scope": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "actor_token": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              }
+            },
+            "required": [
+              "mode"
+            ],
+            "type": "object"
+          },
+          "test_status": "VERIFIED",
+          "test_detail": "Schema valid"
+        },
+        {
+          "name": "well_consent",
+          "description": "G-WELL consent plane. mode=audit|grant|revoke.\n\ngrant/revoke = well_consent_set_scope (Hermes-only F11 gate preserved).",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "mode": {
+                "default": "audit",
+                "type": "string"
+              },
+              "scope_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "level": {
+                "default": "granted",
+                "type": "string"
+              },
+              "actor_token": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "include_revoked": {
+                "default": true,
+                "type": "boolean"
+              },
+              "scope_filter": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              }
+            },
+            "type": "object"
+          },
+          "test_status": "VERIFIED",
+          "test_detail": "Schema valid"
+        },
+        {
+          "name": "well_bridge",
+          "description": "G-WELL outbound witness plane. mode=attest|signal|recommend|dignity|log.\n\nAll modes route via arifFlow receipts (F13 Option B); arifOS lane DEAD.\nWELL never returns verdicts \u2014 proposals + evidence only.",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "mode": {
+                "default": "attest",
+                "type": "string"
+              },
+              "attestation_kind": {
+                "default": "substrate_evidence",
+                "type": "string"
+              },
+              "candidate": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "recommendation": {
+                "default": "HOLD",
+                "type": "string"
+              },
+              "signal_kind": {
+                "default": "substrate_warning",
+                "type": "string"
+              },
+              "severity": {
+                "default": "INFO",
+                "type": "string"
+              },
+              "description": {
+                "default": "",
+                "type": "string"
+              },
+              "signal": {
+                "default": "dignity_leakage_under_review",
+                "type": "string"
+              },
+              "coercion_signals": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "dignity_preservation": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "reductionism_risk": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "lookback_hours": {
+                "default": 24,
+                "type": "integer"
+              },
+              "actor_id": {
+                "default": "arif",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "test_status": "VERIFIED",
+          "test_detail": "Schema valid"
+        },
+        {
+          "name": "well_registry",
+          "description": "WELL registry meta. mode=status|full|contradictions.\n\ncontradictions = live self-audit of the C1-C8 class (reality integrity).",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "mode": {
+                "default": "status",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "test_status": "VERIFIED",
+          "test_detail": "Schema valid"
         }
       ],
       "prompts": [
@@ -12899,7 +14056,7 @@
         }
       ],
       "status": "VERIFIED",
-      "elapsed_ms": 3075.7810128852725
+      "elapsed_ms": 1360.1932260207832
     }
   ]
 }

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Human Reality Bridge"
+  short_description: "Read the human, then pass the voice send gate."
+  default_prompt: "Use $bridge-protocol before sending this reply — read the reader, then pass the Voice Governor gate."
