@@ -1,0 +1,705 @@
+{
+  "manifest_id": "CHRON-ARTIFACT-MANIFEST-2026-09-18",
+  "generated_at": "2026-09-18T11:49:10+08:00",
+  "generator": "HERMES subagent (read-only artefact lifecycle audit)",
+  "subject": "every rendered CHRON / ALPHA-ZEN poster artifact on this host, hashed, classified, and chained by supersession",
+  "scope": {
+    "trees_searched": [
+      "/root/AAA/forge_work/apex-zen-chron/",
+      "/root/AAA/forge_work/alpha-zen/ (incl. cards/)",
+      "/root/forge_work/ (top level)"
+    ],
+    "name_pattern": "*.png whose basename matches /zen|chron|alpha|olympia|signal/i",
+    "artifacts_inventoried": 13,
+    "artifacts_named_in_task": 11,
+    "additions_found_by_sweep": [
+      "/root/AAA/forge_work/apex-zen-chron/_yy_selftest.png (same lane, self-test artifact)"
+    ]
+  },
+  "method": "each file opened: sha256 + bytes + mtime + PIL dimensions read from disk; renderer attribution from sibling .html/.py and from the writing line of the script; lifecycle decided by scheduler reference (jobs.json MEDIA: line) with unscheduled producers falling to ORPHAN/DEMO. Nothing taken from a prior report without re-measuring it.",
+  "scheduler_evidence": {
+    "substrate": "/root/.hermes/cron/jobs.json",
+    "jobs_total": 39,
+    "jobs_with_MEDIA_line": 3,
+    "media_lines": [
+      {
+        "job_id": "a77681618199",
+        "job_name": "docforge-edition-daily",
+        "enabled": true,
+        "schedule": "0 6 * * *",
+        "last_run_at": "2026-09-18T09:59:06.928812+08:00",
+        "media_line": "MEDIA:/root/AAA/forge_work/<date>-edition-NNN/EDITION-NNN.pdf"
+      },
+      {
+        "job_id": "8313453a73a7",
+        "job_name": "ALPHA-ZEN 1 — Alpha Signal (07:15)",
+        "enabled": true,
+        "schedule": "15 7 * * *",
+        "last_run_at": null,
+        "media_line": "MEDIA:/root/AAA/forge_work/alpha-zen/ALPHA-ZEN-MORNING.png"
+      },
+      {
+        "job_id": "161c0d5e0d0c",
+        "job_name": "ALPHA-ZEN 3 — Zen Signal (21:15)",
+        "enabled": true,
+        "schedule": "15 21 * * *",
+        "last_run_at": null,
+        "media_line": "MEDIA:/root/AAA/forge_work/alpha-zen/ALPHA-ZEN-NIGHT.png"
+      }
+    ],
+    "other_surfaces_checked": [
+      "/etc/crontab",
+      "/etc/cron.d/*",
+      "systemd timers (systemctl list-timers --all)",
+      "user crontab (crontab -l)",
+      "/root/.hermes/cron/lane_manifests.yaml"
+    ],
+    "verdict": "exactly ONE scheduled delivery path per poster slot: ALPHA-ZEN 1 (07:15) -> /root/AAA/forge_work/alpha-zen/ALPHA-ZEN-MORNING.png ; ALPHA-ZEN 3 (21:15) -> /root/AAA/forge_work/alpha-zen/ALPHA-ZEN-NIGHT.png. No other scheduler surface on this host references any other CHRON/ALPHA-ZEN poster."
+  },
+  "ledger_crosscheck": {
+    "substrate": "/root/AAA/forge_work/alpha-zen/cycles.jsonl",
+    "rows": 8,
+    "rows_resolving_to_current_bytes": 4,
+    "detail": [
+      {
+        "cycle_id": "morning-2026-09-18-376a621d",
+        "render_time": "2026-09-18T10:26:50+08:00",
+        "mode": "morning",
+        "ledger_sha256": "bec583a643788ef1f90b112396253202113139d413bf32db530229e062fdcef9",
+        "artifact": "/root/AAA/forge_work/alpha-zen/ALPHA-ZEN-MORNING.png",
+        "resolves_on_disk": true,
+        "hash_matches_disk": false
+      },
+      {
+        "cycle_id": "night-2026-09-18-c4b1c130",
+        "render_time": "2026-09-18T10:26:51+08:00",
+        "mode": "night",
+        "ledger_sha256": "3df35f20fe969d7125f352445ab4b69dc78fc4bcf0a2b0e41685a4db2357f673",
+        "artifact": "/root/AAA/forge_work/alpha-zen/ALPHA-ZEN-NIGHT.png",
+        "resolves_on_disk": true,
+        "hash_matches_disk": false
+      },
+      {
+        "cycle_id": "morning-2026-09-18-525a4288",
+        "render_time": "2026-09-18T10:29:50+08:00",
+        "mode": "morning",
+        "ledger_sha256": "c38f45c105cdc5c6a34adb34481ad0888cab1eeea20787368a25e842a50a81d3",
+        "artifact": "/root/AAA/forge_work/alpha-zen/ALPHA-ZEN-MORNING.png",
+        "resolves_on_disk": true,
+        "hash_matches_disk": false
+      },
+      {
+        "cycle_id": "night-2026-09-18-c4b1c130",
+        "render_time": "2026-09-18T10:29:52+08:00",
+        "mode": "night",
+        "ledger_sha256": "3df35f20fe969d7125f352445ab4b69dc78fc4bcf0a2b0e41685a4db2357f673",
+        "artifact": "/root/AAA/forge_work/alpha-zen/ALPHA-ZEN-NIGHT.png",
+        "resolves_on_disk": true,
+        "hash_matches_disk": false
+      },
+      {
+        "cycle_id": "morning-2026-09-18-d1d3f8a0",
+        "render_time": "2026-09-18T10:32:18+08:00",
+        "mode": "morning",
+        "ledger_sha256": "a1b865d7dbda55ccd13405e12592d2b7f1ec67ffec47172032d3ab7ff2081a50",
+        "artifact": "/root/AAA/forge_work/alpha-zen/ALPHA-ZEN-MORNING.png",
+        "resolves_on_disk": true,
+        "hash_matches_disk": true
+      },
+      {
+        "cycle_id": "morning-2026-09-18-d1d3f8a0",
+        "render_time": "2026-09-18T10:32:54+08:00",
+        "mode": "morning",
+        "ledger_sha256": "a1b865d7dbda55ccd13405e12592d2b7f1ec67ffec47172032d3ab7ff2081a50",
+        "artifact": "/root/AAA/forge_work/alpha-zen/ALPHA-ZEN-MORNING.png",
+        "resolves_on_disk": true,
+        "hash_matches_disk": true
+      },
+      {
+        "cycle_id": "night-2026-09-18-e3b6d15d",
+        "render_time": "2026-09-18T10:32:55+08:00",
+        "mode": "night",
+        "ledger_sha256": "ef394ce31d0ecd8289db067d70a9ea34086da9c88823ac04d9813b45ef4732e8",
+        "artifact": "/root/AAA/forge_work/alpha-zen/ALPHA-ZEN-NIGHT.png",
+        "resolves_on_disk": true,
+        "hash_matches_disk": true
+      },
+      {
+        "cycle_id": "morning-2026-09-18-d1d3f8a0",
+        "render_time": "2026-09-18T10:40:06+08:00",
+        "mode": "morning",
+        "ledger_sha256": "a1b865d7dbda55ccd13405e12592d2b7f1ec67ffec47172032d3ab7ff2081a50",
+        "artifact": "/root/AAA/forge_work/alpha-zen/ALPHA-ZEN-MORNING.png",
+        "resolves_on_disk": true,
+        "hash_matches_disk": true
+      }
+    ],
+    "reading": "Both CANONICAL artifacts resolve: the newest morning row (10:40:06) and the night row (10:32:55) carry sha256 values equal to the bytes on disk right now, so the canonical path holds the canonical renderer's current output and the two CANONICAL rows in this manifest are verifiable today. What the ledger does NOT prove: that any earlier row ever resolved — 4 of 8 rows are already stale because the artifact path is fixed and each render overwrites the file the previous row hashed. The chain is verifiable only at the head, and only until the next render.",
+    "rows_resolving_on_disk": 8,
+    "rows_hash_matching_current_bytes": 4,
+    "rows_stale": 4,
+    "staleness_pattern": "every row from 2026-09-18T10:32:18+08:00 onward MATCHES; every earlier row (10:26:50-10:29:52) is STALE. Independent re-measurement this pass agrees with the prior audit ADDENDUM-A."
+  },
+  "lifecycle_counts": {
+    "CANONICAL": 2,
+    "SUPERSEDED": 2,
+    "ORPHAN": 5,
+    "DEMO": 4
+  },
+  "supersession_chains": [
+    {
+      "chain_id": "ALPHA-ZEN-MORNING",
+      "state": "CANONICAL at head",
+      "rows": [
+        {
+          "path": "/root/forge_work/alpha-signal-morning.png",
+          "state": "SUPERSEDED",
+          "mtime": "2026-09-18T10:17:48+08:00"
+        },
+        {
+          "path": "/root/AAA/forge_work/alpha-zen/ALPHA-ZEN-MORNING.png",
+          "state": "CANONICAL",
+          "mtime": "2026-09-18T10:40:06+08:00"
+        }
+      ],
+      "successor_pointer": "/root/forge_work/alpha-signal-morning.png -> /root/AAA/forge_work/alpha-zen/ALPHA-ZEN-MORNING.png"
+    },
+    {
+      "chain_id": "ALPHA-ZEN-NIGHT",
+      "state": "CANONICAL at head",
+      "rows": [
+        {
+          "path": "/root/forge_work/zen-signal-night.png",
+          "state": "SUPERSEDED",
+          "mtime": "2026-09-18T10:17:48+08:00"
+        },
+        {
+          "path": "/root/AAA/forge_work/alpha-zen/ALPHA-ZEN-NIGHT.png",
+          "state": "CANONICAL",
+          "mtime": "2026-09-18T10:32:55+08:00"
+        }
+      ],
+      "successor_pointer": "/root/forge_work/zen-signal-night.png -> /root/AAA/forge_work/alpha-zen/ALPHA-ZEN-NIGHT.png"
+    },
+    {
+      "chain_id": "APEX-ZEN-CHRON-DEMO",
+      "state": "terminates at DEMO (no successor, no scheduled consumer)",
+      "rows": [
+        {
+          "path": "/root/AAA/forge_work/apex-zen-chron/APEX-ZEN-CHRON-001-pagi-2026-09-18.png",
+          "state": "DEMO"
+        },
+        {
+          "path": "/root/AAA/forge_work/apex-zen-chron/APEX-ZEN-CHRON-002-malam-2026-09-18.png",
+          "state": "DEMO"
+        },
+        {
+          "path": "/root/AAA/forge_work/apex-zen-chron/_yy_selftest.png",
+          "state": "DEMO"
+        }
+      ]
+    },
+    {
+      "chain_id": "ALPHA-ZEN-DEMO",
+      "state": "terminates at DEMO",
+      "rows": [
+        {
+          "path": "/root/AAA/forge_work/alpha-zen/shape-test.png",
+          "state": "DEMO"
+        }
+      ]
+    },
+    {
+      "chain_id": "ENGINE(dormant)",
+      "state": "orphaned; producer declares itself DORMANT",
+      "rows": [
+        {
+          "path": "/root/forge_work/alpha-zen-engine-output.png",
+          "state": "ORPHAN"
+        }
+      ]
+    },
+    {
+      "chain_id": "OLYMPIA(unattributed)",
+      "state": "orphaned; no scheduler and no generator reference",
+      "rows": [
+        {
+          "path": "/root/forge_work/olympia_gemini.png",
+          "state": "ORPHAN"
+        },
+        {
+          "path": "/root/forge_work/olympia_syed_motivation.png",
+          "state": "ORPHAN"
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "/root/AAA/forge_work/alpha-zen/ALPHA-ZEN-MORNING.png",
+      "sha256": "a1b865d7dbda55ccd13405e12592d2b7f1ec67ffec47172032d3ab7ff2081a50",
+      "bytes": 350597,
+      "mtime": "2026-09-18T10:40:06+08:00",
+      "pixel_dimensions": "1080x1612",
+      "container_format": "PNG",
+      "declared_extension": ".png",
+      "extension_format_match": true,
+      "lifecycle_state": "CANONICAL",
+      "chain_id": "ALPHA-ZEN-MORNING",
+      "renderer": {
+        "name": "/root/AAA/scripts/alpha_zen_card.py",
+        "attribution": "PROVEN",
+        "method": "headless google-chrome screenshot of /root/AAA/forge_work/alpha-zen/morning.html (card.py lines 288-292)",
+        "evidence": [
+          "cron job 8313453a73a7 'ALPHA-ZEN 1 — Alpha Signal (07:15)' prompt STEP 4: 'cd /root/AAA/scripts && python3 alpha_zen_card.py .../cards/<date>-morning.json'",
+          "cycles.jsonl last row (render_time 2026-09-18T10:40:06+08:00, mode morning) names this exact path with artifact_sha256 a1b865d7... which EQUALS the sha256 measured now -> the bytes on disk are the bytes the canonical renderer wrote",
+          "cycles.jsonl rows are written only by alpha_zen_card.py (schema at lines 306-320 incl. rejection_tracking)"
+        ]
+      },
+      "content_input": "/root/AAA/forge_work/alpha-zen/cards/2026-09-18-morning.json",
+      "html_source": "/root/AAA/forge_work/alpha-zen/morning.html",
+      "successor": null,
+      "successor_of": "/root/forge_work/alpha-signal-morning.png",
+      "decision_evidence": [
+        "scheduled=True job_id=8313453a73a7 schedule='15 7 * * *'",
+        "MEDIA:/root/AAA/forge_work/alpha-zen/ALPHA-ZEN-MORNING.png is the delivery path named in that job's prompt",
+        "ledger cross-check MATCH (a1b865d7dbda55ccd13405e12592d2b7f1ec67ffec47172032d3ab7ff2081a50)"
+      ],
+      "confidence": "HIGH",
+      "caveat": "CANONICAL means 'named by the scheduled delivery contract on this host'. The two ALPHA-ZEN jobs have never fired (last_run_at=null in jobs.json), so no human has received this artifact yet."
+    },
+    {
+      "path": "/root/AAA/forge_work/alpha-zen/ALPHA-ZEN-NIGHT.png",
+      "sha256": "ef394ce31d0ecd8289db067d70a9ea34086da9c88823ac04d9813b45ef4732e8",
+      "bytes": 332421,
+      "mtime": "2026-09-18T10:32:55+08:00",
+      "pixel_dimensions": "1080x1568",
+      "container_format": "PNG",
+      "declared_extension": ".png",
+      "extension_format_match": true,
+      "lifecycle_state": "CANONICAL",
+      "chain_id": "ALPHA-ZEN-NIGHT",
+      "renderer": {
+        "name": "/root/AAA/scripts/alpha_zen_card.py",
+        "attribution": "PROVEN",
+        "method": "headless google-chrome screenshot of /root/AAA/forge_work/alpha-zen/night.html",
+        "evidence": [
+          "cron job 161c0d5e0d0c 'ALPHA-ZEN 3 — Zen Signal (21:15)' prompt STEP 4 runs alpha_zen_card.py",
+          "cycles.jsonl row render_time 2026-09-18T10:32:55+08:00 mode night names this path with artifact_sha256 ef394ce31d0ecd8289db067d70a9ea34086da9c88823ac04d9813b45ef4732e8 which EQUALS the measured sha256"
+        ]
+      },
+      "content_input": "/root/AAA/forge_work/alpha-zen/cards/2026-09-18-night.json",
+      "html_source": "/root/AAA/forge_work/alpha-zen/night.html",
+      "successor": null,
+      "successor_of": "/root/forge_work/zen-signal-night.png",
+      "decision_evidence": [
+        "scheduled=True job_id=161c0d5e0d0c schedule='15 21 * * *'",
+        "MEDIA:/root/AAA/forge_work/alpha-zen/ALPHA-ZEN-NIGHT.png named in that job's prompt",
+        "ledger cross-check MATCH (ef394ce3...)"
+      ],
+      "confidence": "HIGH",
+      "caveat": "Never fired (last_run_at=null); delivery not yet observed."
+    },
+    {
+      "path": "/root/forge_work/alpha-signal-morning.png",
+      "sha256": "5d2d85cec6b9306e2f509a75faffd35e1cb694e7f498a7927244b7a06f94209a",
+      "bytes": 578377,
+      "mtime": "2026-09-18T10:17:48+08:00",
+      "pixel_dimensions": "1080x1080",
+      "container_format": "PNG",
+      "declared_extension": ".png",
+      "extension_format_match": true,
+      "lifecycle_state": "SUPERSEDED",
+      "chain_id": "ALPHA-ZEN-MORNING",
+      "successor": "/root/AAA/forge_work/alpha-zen/ALPHA-ZEN-MORNING.png",
+      "successor_of": null,
+      "renderer": {
+        "name": null,
+        "attribution": "INFERRED_UNATTRIBUTED",
+        "candidate": "ad-hoc headless-chrome render of /root/forge_work/infographic-morning-alpha.html (no .py on disk writes either name; 0 script references host-wide)",
+        "evidence": [
+          "sibling HTML /root/forge_work/infographic-morning-alpha.html (mtime 2026-09-18 10:10:45) renders the heading 'ALPHA SIGNAL'",
+          "the scheduled morning job is literally named 'ALPHA-ZEN 1 — Alpha Signal' -> same product name",
+          "png mtime 10:17:48 sits 15 min before the first canonical render (10:32:54)"
+        ]
+      },
+      "decision_evidence": [
+        "earlier artifact of the same product slot (morning card, heading 'ALPHA SIGNAL') as the CANONICAL ALPHA-ZEN-MORNING.png",
+        "same day (2026-09-18), same 1080px width, superseded 15 minutes later by the canonical render",
+        "no scheduler references it: 0 hits across jobs.json, /etc/crontab, /etc/cron.d/*, systemd timers, user crontab"
+      ],
+      "confidence": "MEDIUM",
+      "caveat": "Supersession is inferred from product-slot + time ordering, not from a declared supersedes pointer (none exists). Its exact renderer cannot be proven."
+    },
+    {
+      "path": "/root/forge_work/zen-signal-night.png",
+      "sha256": "ed9bdaf195929742a6f111ca68af53b3061e5853cfa5b8161b5736fb5d2a5d5b",
+      "bytes": 488785,
+      "mtime": "2026-09-18T10:17:48+08:00",
+      "pixel_dimensions": "1080x1080",
+      "container_format": "PNG",
+      "declared_extension": ".png",
+      "extension_format_match": true,
+      "lifecycle_state": "SUPERSEDED",
+      "chain_id": "ALPHA-ZEN-NIGHT",
+      "successor": "/root/AAA/forge_work/alpha-zen/ALPHA-ZEN-NIGHT.png",
+      "successor_of": null,
+      "renderer": {
+        "name": null,
+        "attribution": "INFERRED_UNATTRIBUTED",
+        "candidate": "ad-hoc headless-chrome render of /root/forge_work/infographic-night-zen.html (no .py on disk writes either name)",
+        "evidence": [
+          "sibling HTML /root/forge_work/infographic-night-zen.html (mtime 10:11:13) renders the heading 'ZEN SIGNAL'",
+          "the scheduled night job is named 'ALPHA-ZEN 3 — Zen Signal' -> same product name"
+        ]
+      },
+      "decision_evidence": [
+        "earlier artifact of the same product slot (night card, heading 'ZEN SIGNAL') as CANONICAL ALPHA-ZEN-NIGHT.png",
+        "png mtime 10:17:48 vs canonical 10:32:55, same day, same 1080px width",
+        "0 scheduler references anywhere"
+      ],
+      "confidence": "MEDIUM"
+    },
+    {
+      "path": "/root/forge_work/alpha-zen-engine-output.png",
+      "sha256": "653f0d1175c7d3f238c7860d8d5fc229c30bac5e0282404abce00c7c6ff2b057",
+      "bytes": 241056,
+      "mtime": "2026-09-18T10:56:57+08:00",
+      "pixel_dimensions": "1080x1920",
+      "container_format": "PNG",
+      "declared_extension": ".png",
+      "extension_format_match": true,
+      "lifecycle_state": "ORPHAN",
+      "chain_id": null,
+      "successor": null,
+      "successor_of": null,
+      "renderer": {
+        "name": "/root/scripts/alpha_zen_engine.py",
+        "attribution": "PROVEN",
+        "method": "writes OUTPUT_DIR/'alpha-zen-engine-output.html' then headless-chrome screenshot to OUTPUT_DIR/'alpha-zen-engine-output.png' (engine line 873; html line 862)",
+        "evidence": [
+          "engine header lines 3-13 (read from disk): 'STATUS: DORMANT — NOT IN THE PRODUCTION PATH (verified 2026-09-18). Zero scheduled callers. hermes cron jobs.json: 0 references; systemd units: 0; /etc/cron.d: 0; shell wrappers: 0'",
+          "sibling /root/forge_work/alpha-zen-engine-output.html (mtime 10:56:56) matches the png mtime 10:56:57",
+          "engine mtime 11:18:52 -> produced after the last canonical render; nothing scheduled consumes it"
+        ]
+      },
+      "decision_evidence": [
+        "producer lane is unscheduled by its own declaration ('zero scheduled callers') and by measurement: 0 references in jobs.json, /etc/crontab, /etc/cron.d/*, systemd timers, user crontab",
+        "prior audit ADDENDUM-A classifies /root/scripts/alpha_zen_engine.py as the 'superseded lane' (5 blockers: 356-day clock error, frozen od1_days=164, off-by-one day-count, dead freshness gate, no privacy mechanism)"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "path": "/root/forge_work/alpha-zen-engine-v2.png",
+      "sha256": "e0a31630be038775df1213cbb79d15dc9de3030fc5e33b278749804831ec3914",
+      "bytes": 248505,
+      "mtime": "2026-09-18T10:33:44+08:00",
+      "pixel_dimensions": "1080x1920",
+      "container_format": "PNG",
+      "declared_extension": ".png",
+      "extension_format_match": true,
+      "lifecycle_state": "ORPHAN",
+      "chain_id": null,
+      "successor": null,
+      "successor_of": null,
+      "renderer": {
+        "name": null,
+        "attribution": "UNATTRIBUTED",
+        "candidate": "ALPHA-ZEN engine lane family (dark template body{width:1080px;min-height:1920px;background:#0a0a12} shared with the engine's own output HTML); no surviving script writes the string 'alpha-zen-engine-v2'",
+        "evidence": [
+          "host-wide grep: the only files mentioning 'alpha-zen-engine-v2' are two prior audit JSONs (they list it as an unclassified PNG)",
+          "the engine's current source writes 'alpha-zen-engine-output.png' only — a pre-rename revision is the plausible producer but that revision is not on disk"
+        ]
+      },
+      "decision_evidence": [
+        "0 scheduler references (jobs.json, /etc/crontab, /etc/cron.d/*, systemd timers, user crontab)",
+        "CANNOT DECIDE ORPHAN vs SUPERSEDED: it is chronologically earlier than the canonical renders (10:33:44) and shares the light/dark ALPHA-ZEN poster product line, so lineage is plausible; but no surviving renderer writes the name, dimensions differ from the canonical (1080x1920 vs 1080x1612/1568) and it cannot be tied to the morning or night slot. Per the task rule -> ORPHAN, with the undecidable part stated."
+      ],
+      "confidence": "LOW"
+    },
+    {
+      "path": "/root/forge_work/alpha-zen-v2.png",
+      "sha256": "ee25033cb09eb003c3013976f4b3b6e042362fadaf4488f256a1f9f95f75f995",
+      "bytes": 281106,
+      "mtime": "2026-09-18T10:26:50+08:00",
+      "pixel_dimensions": "1080x1920",
+      "container_format": "PNG",
+      "declared_extension": ".png",
+      "extension_format_match": true,
+      "lifecycle_state": "ORPHAN",
+      "chain_id": null,
+      "successor": null,
+      "successor_of": null,
+      "renderer": {
+        "name": null,
+        "attribution": "INFERRED",
+        "candidate": "ALPHA-ZEN engine lane family; sibling /root/forge_work/infographic-alpha-zen-v2.html (mtime 10:26:38) uses the engine's dark template and renders the heading 'TODAY BETWEEN TWO WORLDS' plus the KENA TAHU tier vocabulary",
+        "evidence": [
+          "named html sibling exists; grep of all scripts finds 0 files that write 'infographic-alpha-zen-v2' or 'alpha-zen-v2'"
+        ]
+      },
+      "decision_evidence": [
+        "0 scheduler references anywhere on this host",
+        "CANNOT DECIDE ORPHAN vs SUPERSEDED: earlier than the canonical render (10:26:50) and same tier vocabulary, but its renderer is not on disk and it is not tied to a specific canonical slot"
+      ],
+      "confidence": "LOW"
+    },
+    {
+      "path": "/root/forge_work/olympia_gemini.png",
+      "sha256": "c5e75a1f37577a1f97d231ecc7240f77e5cfd39b66bfc1271ea4cafd24ecd0f5",
+      "bytes": 1554254,
+      "mtime": "2026-09-12T10:27:27+08:00",
+      "pixel_dimensions": "1024x1024",
+      "container_format": "PNG",
+      "declared_extension": ".png",
+      "extension_format_match": true,
+      "lifecycle_state": "ORPHAN",
+      "chain_id": "OLYMPIA",
+      "successor": null,
+      "successor_of": null,
+      "renderer": {
+        "name": null,
+        "attribution": "UNATTRIBUTED",
+        "candidate": null,
+        "evidence": [
+          "host-wide grep for 'olympia_gemini' returns 0 files (no script, no html, no scheduler entry)",
+          "no sibling .html/.py with the same stem in /root/forge_work",
+          "does not belong to the ALPHA-ZEN/CHRON product line at all (mtime 2026-09-12, 5 days earlier)"
+        ]
+      },
+      "decision_evidence": [
+        "0 scheduler references; 0 generator references; no source artifact anywhere -> cannot attribute a renderer",
+        "classified ORPHAN because it is unscheduled and unattributable, and it cannot be an earlier version of a CANONICAL CHRON artifact across a 6-day gap with no lineage trace"
+      ],
+      "confidence": "LOW",
+      "note": "Grouped under chain_id OLYMPIA only to keep the two unattributed Sep-12 artifacts together; this is a label, not a verified lane."
+    },
+    {
+      "path": "/root/forge_work/olympia_syed_motivation.png",
+      "sha256": "06881a3b6e873936c8c62d3e0cf0838b2c5be3181f8101f79ae4fb11027bb9cf",
+      "bytes": 297939,
+      "mtime": "2026-09-12T10:14:57+08:00",
+      "pixel_dimensions": "720x1280",
+      "container_format": "JPEG",
+      "declared_extension": ".png",
+      "extension_format_match": false,
+      "lifecycle_state": "ORPHAN",
+      "chain_id": "OLYMPIA",
+      "successor": null,
+      "successor_of": null,
+      "renderer": {
+        "name": null,
+        "attribution": "UNATTRIBUTED",
+        "candidate": null,
+        "evidence": [
+          "host-wide grep for 'olympia_syed_motivation' returns 0 files",
+          "name suggests a generated media/portrait artifact (image-gen lane), not a CHRON poster lane; no generator script on disk references it"
+        ]
+      },
+      "decision_evidence": [
+        "0 scheduler references; 0 generator references",
+        "FORMAT DEFECT measured by this audit: container_format=JPEG while declared_extension=.png -> the file is JPEG bytes named .png"
+      ],
+      "confidence": "LOW"
+    },
+    {
+      "path": "/root/AAA/forge_work/apex-zen-chron/APEX-ZEN-CHRON-001-pagi-2026-09-18.png",
+      "sha256": "552b5f1b4da808b2f0833ff7c69eeb91b8a22e0518f57a8382d46950b4fb359c",
+      "bytes": 246856,
+      "mtime": "2026-09-18T10:30:39+08:00",
+      "pixel_dimensions": "1080x1084",
+      "container_format": "PNG",
+      "declared_extension": ".png",
+      "extension_format_match": true,
+      "lifecycle_state": "DEMO",
+      "chain_id": "APEX-ZEN-CHRON-DEMO",
+      "successor": null,
+      "successor_of": null,
+      "renderer": {
+        "name": "/root/AAA/forge_work/apex-zen-chron/build.py",
+        "attribution": "PROVEN",
+        "method": "build.py line 310-315 writes APEX-ZEN-CHRON-{num}-{phase}-{date_key}.png via headless google-chrome",
+        "evidence": [
+          "sibling pagi.html written by build.py line 308",
+          "lane self-published digest /root/AAA/forge_work/apex-zen-chron/APEX-ZEN.sha256 lists this filename with sha256 552b5f1b... which EQUALS the measured sha256 -> the lane's own seal resolves on disk"
+        ]
+      },
+      "decision_evidence": [
+        "explicitly built for illustration, not delivery: prior audit ADDENDUM-A records this lane as 'my_own_lane ... status: demonstrator, not the production path'",
+        "REALITY-MAP-FORGE-CHRON-2026-09-18 records 'apex-zen-chron/build.py (this auditor's demonstrator, unwired)'",
+        "0 scheduler references (jobs.json, /etc/crontab, /etc/cron.d/*, systemd timers, user crontab) -> and no delivery contract names it"
+      ],
+      "confidence": "HIGH",
+      "note": "Would be ORPHAN on the scheduler test alone; DEMO is the more specific true state because intent is explicitly recorded ('demonstrator')."
+    },
+    {
+      "path": "/root/AAA/forge_work/apex-zen-chron/APEX-ZEN-CHRON-002-malam-2026-09-18.png",
+      "sha256": "7b75cbbda409f0b695467c6ab0b249b4d57e587cbc69eeb0c0cecf594bac5afa",
+      "bytes": 219802,
+      "mtime": "2026-09-18T10:30:41+08:00",
+      "pixel_dimensions": "1080x1084",
+      "container_format": "PNG",
+      "declared_extension": ".png",
+      "extension_format_match": true,
+      "lifecycle_state": "DEMO",
+      "chain_id": "APEX-ZEN-CHRON-DEMO",
+      "successor": null,
+      "successor_of": null,
+      "renderer": {
+        "name": "/root/AAA/forge_work/apex-zen-chron/build.py",
+        "attribution": "PROVEN",
+        "method": "build.py lines 308-318 render malam.html -> this PNG",
+        "evidence": [
+          "APEX-ZEN.sha256 lists this filename with sha256 7b75cbbd... which EQUALS the measured sha256"
+        ]
+      },
+      "decision_evidence": [
+        "same lane and same recorded intent as APEX-ZEN-CHRON-001-pagi (auditor's demonstrator, unwired)",
+        "0 scheduler references"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "path": "/root/AAA/forge_work/apex-zen-chron/_yy_selftest.png",
+      "sha256": "f3b804b70b161dea800516392235337cedf3729cd8ec77ce2c657c23743cf7e1",
+      "bytes": 16029,
+      "mtime": "2026-09-18T10:21:59+08:00",
+      "pixel_dimensions": "320x320",
+      "container_format": "PNG",
+      "declared_extension": ".png",
+      "extension_format_match": true,
+      "lifecycle_state": "DEMO",
+      "chain_id": "APEX-ZEN-CHRON-DEMO",
+      "successor": null,
+      "successor_of": null,
+      "renderer": {
+        "name": null,
+        "attribution": "UNATTRIBUTED",
+        "candidate": "the apex-zen-chron demonstrator lane (self-test of the yin-yang identity device); build.py contains privacy_selftest/leak_selftest/clock_selftest but does NOT contain the string '_yy_selftest'",
+        "evidence": [
+          "sibling /root/AAA/forge_work/apex-zen-chron/_yy_selftest.html (573 bytes, mtime 10:21, 8 minutes before the png)",
+          "leading-underscore 'selftest' naming convention = non-delivery test artifact"
+        ]
+      },
+      "decision_evidence": [
+        "explicitly a self-test artifact (name + stub HTML), inside the lane already recorded as a demonstrator -> illustration/testing, not delivery",
+        "0 scheduler references"
+      ],
+      "confidence": "MEDIUM",
+      "note": "Lifecycle state is decidable (DEMO); the exact renderer is not."
+    },
+    {
+      "path": "/root/AAA/forge_work/alpha-zen/shape-test.png",
+      "sha256": "a0281142ee93b9102ea4305bd29b96a0f48a34df7aa4fb172fe35cd30f927f08",
+      "bytes": 32958,
+      "mtime": "2026-09-18T10:10:29+08:00",
+      "pixel_dimensions": "900x460",
+      "container_format": "PNG",
+      "declared_extension": ".png",
+      "extension_format_match": true,
+      "lifecycle_state": "DEMO",
+      "chain_id": "ALPHA-ZEN-DEMO",
+      "successor": null,
+      "successor_of": null,
+      "renderer": {
+        "name": "/root/AAA/scripts/alpha_zen_infographic.py",
+        "attribution": "PROVEN",
+        "method": "alpha_zen_infographic.py --mode html writes shape-test.html (lines 318-328) containing two yin-yang geometry variants labelled 'variant a' / 'variant b' for visual comparison; the png is that page rasterised (900x460)",
+        "evidence": [
+          "sibling /root/AAA/forge_work/alpha-zen/shape-test.html read from disk: two 400x400 SVG discs with mirrored dot placement, captioned 'variant a' and 'variant b'",
+          "script line 319: p = od / 'shape-test.html'"
+        ]
+      },
+      "decision_evidence": [
+        "explicitly a geometry comparison sheet ('variant a' vs 'variant b'), built to choose a shape, not to deliver a card",
+        "0 scheduler references; alpha_zen_infographic.py is referenced by no scheduler and by no other file (grep: itself only)"
+      ],
+      "confidence": "HIGH",
+      "note": "HAZARD noted in blockers: this same unwired renderer writes to the canonical output path ALPHA-ZEN-{MODE}.png (its line 297), which is also the scheduled card's path."
+    }
+  ],
+  "unclassified": [],
+  "unclassified_reason": "none — every inventoried artifact received exactly one lifecycle state",
+  "could_not_decide": [
+    {
+      "path": "/root/forge_work/alpha-zen-engine-v2.png",
+      "could_not_decide": "ORPHAN vs SUPERSEDED",
+      "why": "earlier than the canonical renders (10:33:44) and plausibly the same product family, but no surviving renderer writes that name and it cannot be tied to the morning or night slot. Recorded ORPHAN per the rule."
+    },
+    {
+      "path": "/root/forge_work/alpha-zen-v2.png",
+      "could_not_decide": "ORPHAN vs SUPERSEDED",
+      "why": "same as above; renderer for the sibling infographic-alpha-zen-v2.html is not on disk."
+    },
+    {
+      "path": "/root/forge_work/olympia_gemini.png",
+      "could_not_decide": "renderer attribution (state decided: ORPHAN)",
+      "why": "0 references of any kind host-wide."
+    },
+    {
+      "path": "/root/forge_work/olympia_syed_motivation.png",
+      "could_not_decide": "renderer attribution (state decided: ORPHAN)",
+      "why": "0 references of any kind host-wide."
+    },
+    {
+      "path": "/root/AAA/forge_work/apex-zen-chron/_yy_selftest.png",
+      "could_not_decide": "renderer attribution (state decided: DEMO)",
+      "why": "build.py does not contain the string '_yy_selftest'."
+    }
+  ],
+  "blockers": [
+    {
+      "id": "X1",
+      "severity": "P1",
+      "what": "Two different renderers write the SAME canonical output path.",
+      "evidence": "/root/AAA/scripts/alpha_zen_card.py line 286-287 (scheduled) and /root/AAA/scripts/alpha_zen_infographic.py line 297 (unscheduled) both compute outdir/'ALPHA-ZEN-{MODE}.png' for outdir=/root/AAA/forge_work/alpha-zen.",
+      "consequence": "The canonical artifact is a MUTABLE path. Any execution of the unwired renderer silently replaces the file that the scheduled job is contracted to deliver, and no record would show it happened.",
+      "class": "same defect family as the stale ledger rows: a delivery target that cannot be re-verified."
+    },
+    {
+      "id": "X2",
+      "severity": "P1",
+      "what": "No content-addressed canonical artifact exists on disk, so no supersession chain can be built for past renders.",
+      "evidence": "card.py's content-addressed branch exists in source (mtime 10:55:53) but the last render was 10:40:06; the directory contains only ALPHA-ZEN-MORNING.png / ALPHA-ZEN-NIGHT.png / shape-test.png — no ALPHA-ZEN-<MODE>-<hash8>.png.",
+      "consequence": "Earlier canonical states are unrecoverable; the 4 stale ledger rows measured by the prior audit cannot be repaired retrospectively, only from the next render onward."
+    },
+    {
+      "id": "X3",
+      "severity": "P1",
+      "what": "CANONICAL is a contract state, not an observed delivery state.",
+      "evidence": "jobs.json: jobs 8313453a73a7 and 161c0d5e0d0c are enabled with last_run_at=null (measured this pass).",
+      "consequence": "Both canonical posters have never been delivered. The chain head is declared, not witnessed — this manifest must not be read as evidence that a human received either card."
+    },
+    {
+      "id": "X4",
+      "severity": "P2",
+      "what": "Two artifacts cannot be placed in the chain with confidence.",
+      "evidence": "alpha-zen-engine-v2.png and alpha-zen-v2.png have no surviving renderer writing their names (see could_not_decide).",
+      "consequence": "If a future reader promotes either as canonical they would be promoting an unattributable file."
+    },
+    {
+      "id": "X5",
+      "severity": "P3",
+      "what": "Format/extension mismatch on an orphan artifact.",
+      "evidence": "/root/forge_work/olympia_syed_motivation.png is JPEG bytes (720x1280, PIL format=JPEG) with a .png extension.",
+      "consequence": "Any pipeline that trusts the extension will mis-handle it."
+    },
+    {
+      "id": "X6",
+      "severity": "P3",
+      "what": "Out-of-scope MEDIA: match excluded deliberately.",
+      "evidence": "A third job (docforge-edition-daily, a77681618199) also carries a MEDIA: line, but it names a PDF (/root/AAA/forge_work/<date>-edition-NNN/EDITION-NNN.pdf), not a poster.",
+      "consequence": "none — recorded so the 3-vs-2 MEDIA count is not read as an error."
+    }
+  ],
+  "read_only_attestation": {
+    "files_created": 1,
+    "files_modified": 0,
+    "files_deleted": 0,
+    "files_moved": 0,
+    "file_written": "/root/AAA/forge_work/chron-audit/CHRON-ARTIFACT-MANIFEST-2026-09-18.json",
+    "git_commands_run": "none",
+    "note": "Every pre-existing file was opened read-only. Dimensions/hashes were computed in-process; no artifact was rewritten, not even to test the renderers."
+  },
+  "next_action": "Before the next 07:15 / 21:15 firing: (1) make the canonical path content-addressed or record superseded_by in cycles.jsonl, so this chain becomes buildable forward; (2) prevent the unwired infographic renderer from writing the canonical path; (3) treat every row above as CANONICAL-by-contract until a delivery is actually observed."
+}
