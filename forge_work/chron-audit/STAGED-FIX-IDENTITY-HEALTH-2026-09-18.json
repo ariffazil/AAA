@@ -1,0 +1,41 @@
+{
+  "staged_fix_id": "STAGED-FIX-IDENTITY-HEALTH-2026-09-18",
+  "status": "STAGED — NOT APPLIED",
+  "why_not_applied": "Freeze before the first natural CHRON fire at 14:00. This is kernel runtime code (arifosmcp/runtime/identity.py). Changing a kernel status value hours before the first end-to-end observation risks confusing the very test the freeze protects. Recorded with full evidence so it applies cleanly afterwards.",
+
+  "finding": {
+    "file": "/root/arifOS/arifosmcp/runtime/identity.py",
+    "line": 87,
+    "code": "\"status\": \"healthy\",",
+    "function": "get_identity(running_commit: str = 'unknown') -> dict",
+    "verdict": "VOID under NAME_REQUIRES_MECHANISM / MEASURED_EFFECT",
+    "why_it_is_sharper_than_it_looks": "The same dict carries BOTH values needed to compute a verdict. Line 79 puts canonical_commit beside line 80 running_commit. The function is HANDED running_commit as an argument for exactly this purpose. Then line 87 writes a bare constant. It has the measurement in hand and returns a label instead — the purest instance of declaration outranking mechanism found so far.",
+    "callers_note": "identity.py:4 documents that 'All identity surfaces (/identity, /health, Agent Card) derive from here', so this single literal seeds the whole /health family. The 6 VOID health surfaces are plausibly downstream of this one constant."
+  },
+
+  "proposed_change": {
+    "sketch": [
+      "canonical = identity.get('canonical_commit', running_commit)",
+      "measured = None if running_commit in ('unknown', '', None) else (canonical == running_commit)",
+      "status = 'unknown' if measured is None else ('healthy' if measured else 'degraded')",
+      "drift = None if measured is None else (not measured)"
+    ],
+    "rules_it_must_obey": [
+      "Never default a reason. The kernel's own law, earned today: d['reason_code'] or 'DEPLOYMENT_DRIFT' can produce a drift label with no drift measured.",
+      "'unknown' is a legitimate third state — an unmeasured system is not a healthy one.",
+      "Do NOT let this module raise. Identity surfaces are load-bearing; a crash here breaks /health for everything."
+    ],
+    "acceptance_test": "Call get_identity(running_commit=<canonical>) -> status healthy. Call get_identity(running_commit='deadbeef') -> status degraded AND drift true. Call get_identity() with no argument -> status unknown, never healthy."
+  },
+
+  "verification_of_the_finding": {
+    "method": "read the source at the cited line, and confirm the sibling keys exist in the same returned dict",
+    "read_lines": "74-87",
+    "keys_confirmed_present": ["canonical_commit", "running_commit", "status"]
+  },
+
+  "related_voids": {
+    "count": 6,
+    "note": "5 further /health surfaces report a bare constant with 0 live-state reads in their file. Each must be re-verified individually before renaming — two of this auditor's earlier finding sets were itself fabricated (14 invented endpoints, 40+ false orphans), so a count is not a finding."
+  }
+}
