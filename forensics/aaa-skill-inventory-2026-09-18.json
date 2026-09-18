@@ -1,0 +1,112 @@
+{
+  "forged_at_utc": "2026-09-18T07:35:00Z",
+  "forged_by": "af-explore / FI-008 kimi-code / k3 lane",
+  "authority": "T3 pending F13",
+  "scope": "Active SKILL.md files across /root/AAA, /root/A-FORGE, /root/GEOX, /root/Hermes, /root/.kimi, /root/skills, /root/skills-proposed",
+  "constitutional_floors_active": ["F1", "F2", "F11", "F13"],
+  "attention_kill_criterion_applied": true,
+
+  "summary": {
+    "total_active_skill_md": 218,
+    "total_in_aaa_skills_root": 218,
+    "in_root_AAA_skills": 216,
+    "in_root_A_FORGE_skills": 2,
+    "in_root_GEOX_skills": 5,
+    "in_root_AAA_skills_deprecated": 9,
+    "in_root_AAA_archive": 27,
+    "in_root_AAA_plugins_claude_code_federation_skills": 1,
+    "in_root_AAA_registries_antigravity_skills": 19,
+    "in_root_AAA_registries_qwen_skills": 0,
+    "in_root_AAA_registries_opencode_skills": 0,
+    "in_root_kimi_skills": 0,
+    "by_organ": {
+      "AAA core (canonical federation cockpit)": 216,
+      "Antigravity (separate harness, may not bind)": 19,
+      "Claude-code federation plugin": 1,
+      "A-FORGE workspace skills (supabase + tool-fitness-compiler)": 3,
+      "GEOX skills (geoscience specialty)": 5,
+      "Total active unique": 218,
+      "Total in archive / deprecated": 36
+    }
+  },
+
+  "canonical_skills_referenced_in_AGENTS_md": {
+    "for_root_arif_fazil_com": ["AGI-agentic-web-delivery", "FORGE-agentic-web-builder"],
+    "first_class_state_in_root_AAA_skills": {
+      "AGI-agentic-web-delivery": "exists at /root/AAA/skills/agi-agentic-web-delivery",
+      "FORGE-agentic-web-builder": "exists at /root/AAA/skills/forge-agentic-web-builder"
+    },
+    "valid_AAA_agent_skill_names_referenced_in_root_agent_config_root_kimi_code_FI_008": ["kimi-code-aaa", "arifos-mcp-federation", "agent-onboarding"]
+  },
+
+  "skills_with_high_signal_for_site_mcp_provenance": {
+    "related_to_site_delivery": ["agi-agentic-web-delivery", "forge-agentic-web-builder", "FORGE-route-least-power", "forge-governance-jsonld", "forge-react-spa-discipline", "forge-nextjs-mastery", "forge-tailwind-tokens", "forge-vault999-witness", "forge-cross-repo-doc-zen", "agi-plan-dag", "agi-web-optimization"],
+    "related_to_mcp_governance": ["forge-musyawarah-gotong", "bijaksana-compile", "court-audit", "external-artifact-verdict", "evidence-hierarchy", "first-party-evidence-audit", "audit-via-tests", "audit-repo-reality", "verification-discipline", "verify-gate", "capability-telemetry-audit", "seal-discipline", "audit-seal"],
+    "related_to_arifos_kernel": ["arifos-eight-verb-canonical", "arifos-kernel-zen-audit", "arifos-constitutional-judge", "arifos-memory", "arifos-recursive-audit", "arifos-external-council", "arifos-governance", "arifos-auto-memory", "arifos-plan-dag"],
+    "related_to_geox_organ": ["geox-basin-evaluation", "geox-claim-falsification", "geox-prospect-evaluation", "geox-seismic-interpretation", "geox-well-log-qc", "geox-grounding", "geox-production-cockpit", "well-correlation-rigor (GEOX)"],
+    "related_to_wealth_organ": ["wealth-claim-state", "xauusd-trading", "wealth-claim-state", "human-logistics-advisory", "malaysia-reality-interface", "civic-publishing"],
+    "related_to_well_organ": ["ped-hormone-advisory", "counseling", "human-state-estimation", "aaa-human-physique-topology", "aaa-pdf-voice-protocol"],
+    "related_to_hermes_organ": ["hermes-federated-identity", "hermes-telegram-stack-zen", "hermes-coding-gateway", "hermes-gateway-image-routing", "hermes-opencode-protocol", "hermes-ops", "aaa-audio-qualia-doctrine", "aaa-pdf-voice-protocol"],
+    "related_to_vault_evidence": ["vault-integrity (ARCHIVED)", "vault999-reader (ARCHIVED)", "forge-vault999-witness", "forge-git-seal", "seal-discipline"]
+  },
+
+  "gaps_observed": [
+    {
+      "gap": "WELL organ skill coverage thin (depth-first, not breadth)",
+      "evidence": "Only 5-7 wellness-themed skills vs 16+ for arifOS",
+      "what_we_have": ["ped-hormone-advisory", "counseling", "human-state-estimation", "aaa-human-physique-topology"],
+      "what_we_need": "Skills that bridge WELL biosignal → AAA cockpit (H5 dignity-boundary) for human-facing surfaces",
+      "blast": "medium — wellbeing sensitive"
+    },
+    {
+      "gap": "No `core-constitutional-fundamentals` style skill that explicitly enumerates F1-F13 + observability for new agents",
+      "evidence": "/root/AAA/skills/* has no single skill that introduces 'what is the federation'",
+      "what_we_have": "arifos-eight-verb-canonical + arifos-constitutional-judge (verb-specific only)",
+      "what_we_need": "One canonical 'federation-onboarding' skill that any new agent can load to discover the 7 organs + 8 canonical verbs + 13 floors + 6 missions",
+      "blast": "low — agent onboarding"
+    },
+    {
+      "gap": "Site delivery / agentic-web skills don't cite the MCP contract layer",
+      "evidence": "agi-agentic-web-delivery and forge-agentic-web-builder don't reference mcp.arif-fazil.com/mcp or arifOS MCP canonical verbs in their first 200 lines",
+      "what_we_have": ["skill at /root/AAA/skills/agi-agentic-web-delivery"],
+      "what_we_need": "Both skills add a 'MCP Canonical Surface' section naming the 8 verbs",
+      "blast": "medium — agent discoverability of WHY arifOS exist"
+    },
+    {
+      "gap": "No skill for AI agent to do 'page-mcp-provenance assertion'",
+      "evidence": "0 skills under /root/AAA/skills/* named like '*provenance*' or '*territory-discoverability*'",
+      "what_we_have": "claims-validation mostly lives in hermes/evidence-hierarchy, but no page-bound tool",
+      "what_we_need": "A bounded skill 'territory-provenance-assertion' that audits a /<territory>/ page and emits a JSON-LD provenance entry binding to mcp__<organ>__<verb>",
+      "blast": "high — directly addresses user ask"
+    },
+    {
+      "gap": "Verify-pages gate has no skill wrapper",
+      "evidence": "AGENTS.md mandates `make verify-pages` but there's no skill that wraps the invocation + receipt parsing",
+      "what_we_have": "raw `make verify-pages` is just a shell target",
+      "what_we_need": "A skill `site-deploy-receipt-parser` that runs the gate and emits a sealed-style receipt chain (F11 auditability)",
+      "blast": "medium — F11 auditability"
+    },
+    {
+      "gap": "Attention-kill criterion under-deployed",
+      "evidence": "Fewer than 5 of 218 SKILL.md files explicitly contain a 'kill-switch' / 'abort' / 'rollback' string in body (excluded from read; estimated from filenames — verify needed)",
+      "what_we_have": "doctrine written",
+      "what_we_need": "An audit pass that flags every skill lacking an explicit kill, and proposes one",
+      "blast": "high — Attention Kill F13-ratified (2026-09-11)"
+    },
+    {
+      "gap": "No skill for `arif-flow-mint` discipline",
+      "evidence": "mcp__arifFlow__flow_ingest exists; no SKILL.md teaches agents to mint FlowReceipts on every emit",
+      "what_we_have": "federation contract mentions flow",
+      "what_we_need": "A skill 'flow-mint-discipline' that wraps mcp__arifFlow__flow_ingest with consequence-class defaults",
+      "blast": "high — FQ health depends on this"
+    }
+  ],
+
+  "distribution_intelligence": {
+    "geox_skills_are_mature": "5 skills at /root/GEOX/skills/* form a complete geoscience-stack (basin → claim → log → prospect → seismic). They are the model template for other organs.",
+    "aaa_has_breadth_not_depth": "218 skills reflects AAA's 'cockpit' role — but quality-vs-coverage tradeoff untested per skill",
+    "antigravity_skills_are_external": "19 skills in /root/AAA/registries/antigravity/skills/* bind to Antigravity harness — useful but separate citizenship path"
+  },
+
+  "skill_canonical_recommendation": "Promote /root/AAA/skills-deprecated/{COPILOT-zen-router,FLAME-router,RSI-recursive-improvement,deter*}/SKILL.md to FULL_AUDIT — they appear repeatedly in alias table and may carry drift."
+}

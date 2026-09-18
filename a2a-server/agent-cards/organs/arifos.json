@@ -4,7 +4,7 @@
   "protocolVersion": "1.2",
   "agentId": "arifos",
   "name": "arifOS Kernel",
-  "description": "Constitutional kernel \u2014 F1-F13 governance, session lifecycle, judgment, VAULT999 sealing, and sovereign routing.",
+  "description": "Constitutional kernel — F1-F13 governance, session lifecycle, judgment, VAULT999 sealing, and sovereign routing.",
   "version": "1.0.0",
   "provider": {
     "organization": "arifOS",
@@ -42,7 +42,18 @@
       "name": "x-a2a-key"
     }
   },
-  "skills": [
+  "skills": [],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "rYsGOhBsT1WmHN6CBnVebODZUn17qTfb1Qj/5aT05TN1BMSxTQdr+KEdY5KIpzVcnpQHyZfph9FsgbkYfjsVCA==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ],
+  "did": "did:web:arif-fazil.com",
+  "_quarantined_skills": [
     {
       "id": "arif_init",
       "name": "Session Init",
@@ -55,12 +66,13 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "arif_observe",
       "name": "Observe Reality",
-      "description": "Sense evidence \u2014 search, fetch, vitals. 111_SENSE.",
+      "description": "Sense evidence — search, fetch, vitals. 111_SENSE.",
       "tags": [
         "kernel"
       ],
@@ -69,7 +81,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "arif_think",
@@ -83,7 +96,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "arif_route",
@@ -97,7 +111,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "arif_critique",
@@ -111,7 +126,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "arif_memory",
@@ -125,7 +141,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "arif_forge",
@@ -139,7 +156,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "arif_judge",
@@ -153,7 +171,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "arif_seal",
@@ -167,7 +186,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "arif_compose",
@@ -181,7 +201,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "arif_verify",
@@ -195,7 +216,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "arif_bridge",
@@ -209,17 +231,16 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     }
   ],
-  "signatures": [
-    {
-      "did": "did:arif:aaa",
-      "proofValue": "rYsGOhBsT1WmHN6CBnVebODZUn17qTfb1Qj/5aT05TN1BMSxTQdr+KEdY5KIpzVcnpQHyZfph9FsgbkYfjsVCA==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T23:25:58Z",
-      "type": "Ed25519Signature2020"
-    }
-  ],
-  "did": "did:web:arif-fazil.com"
+  "_skill_ref_reconciliation": {
+    "at": "2026-09-18",
+    "by": "afpass-W1",
+    "before": 12,
+    "after": 0,
+    "quarantined": 12,
+    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
+  }
 }

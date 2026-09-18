@@ -4,7 +4,7 @@
   "protocolVersion": "1.2",
   "agentId": "well",
   "name": "WELL",
-  "description": "Human readiness and vitality \u2014 substrate classification, dignity guard, homeostasis, dark geometry mirror.",
+  "description": "Human readiness and vitality — substrate classification, dignity guard, homeostasis, dark geometry mirror.",
   "version": "1.0.0",
   "provider": {
     "organization": "arifOS",
@@ -42,7 +42,18 @@
       "name": "x-a2a-key"
     }
   },
-  "skills": [
+  "skills": [],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "Ktb7ZXXlt5aqjiiphSGEFDW9g3mMzzzcREUDrF+E7veSoTFROrSjvG2irUa8j1mBcwvr3bQgGuTn+ZwVb484AA==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ],
+  "did": "did:web:arif-fazil.com",
+  "_quarantined_skills": [
     {
       "id": "well_classify_substrate",
       "name": "Classify Substrate",
@@ -55,7 +66,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "well_detect_boundary",
@@ -69,7 +81,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "well_measure_gradient",
@@ -83,7 +96,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "well_assess_metabolism",
@@ -97,7 +111,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "well_assess_homeostasis",
@@ -111,7 +126,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "well_check_repair",
@@ -125,7 +141,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "well_validate_vitality",
@@ -139,7 +156,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "well_assess_livelihood",
@@ -153,7 +171,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "well_assess_reliability",
@@ -167,7 +186,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "well_guard_dignity",
@@ -181,7 +201,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "well_trace_lineage",
@@ -195,7 +216,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "well_signal_coverage",
@@ -209,7 +231,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "well_classify_state",
@@ -223,7 +246,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "well_dark_geometry_mirror",
@@ -237,17 +261,16 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     }
   ],
-  "signatures": [
-    {
-      "did": "did:arif:aaa",
-      "proofValue": "Ktb7ZXXlt5aqjiiphSGEFDW9g3mMzzzcREUDrF+E7veSoTFROrSjvG2irUa8j1mBcwvr3bQgGuTn+ZwVb484AA==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T23:25:58Z",
-      "type": "Ed25519Signature2020"
-    }
-  ],
-  "did": "did:web:arif-fazil.com"
+  "_skill_ref_reconciliation": {
+    "at": "2026-09-18",
+    "by": "afpass-W1",
+    "before": 14,
+    "after": 0,
+    "quarantined": 14,
+    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
+  }
 }

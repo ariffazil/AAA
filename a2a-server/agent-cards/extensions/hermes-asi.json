@@ -16,7 +16,7 @@
     "media"
   ],
   "epistemic_floor": "F2",
-  "f1_boundary": "Read-only outside of conversational context. Mutative execution must route to FORGE- / opencode. Per AMENDMENT-001 \u00a75: Hermes-Read = interpretation lane only. Action-Broker = A-FORGE lane. T3 content (web/email/PDF/Drive/non-Telegram) cannot influence planning per \u00a76. Data classification required before tool routing per \u00a77. KILL_EXECUTION / KILL_EGRESS / ISOLATE_NODE gates apply per §8.",
+  "f1_boundary": "Read-only outside of conversational context. Mutative execution must route to FORGE- / opencode. Per AMENDMENT-001 §5: Hermes-Read = interpretation lane only. Action-Broker = A-FORGE lane. T3 content (web/email/PDF/Drive/non-Telegram) cannot influence planning per §6. Data classification required before tool routing per §7. KILL_EXECUTION / KILL_EGRESS / ISOLATE_NODE gates apply per §8.",
   "rollback_plan": "Terminate hermes_cli process and isolate from :3001 gateway.",
   "sovereign": "888 (Muhammad Arif bin Fazil, F13 SOVEREIGN)",
   "forged": "2026-07-13T00:00:00+08:00",
@@ -30,52 +30,6 @@
   "injectable_surfaces": [],
   "motto": "DITEMPA BUKAN DIBERI",
   "skills": [
-    {
-      "id": "KERNEL-reality-skills",
-      "name": "Reality Skills (F2 Grounding)",
-      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
-      "tags": [
-        "kernel",
-        "f2",
-        "reality",
-        "grounding"
-      ],
-      "floor_scope": [
-        "F2",
-        "F7",
-        "F9"
-      ]
-    },
-    {
-      "id": "KERNEL-sovereign-recognize",
-      "name": "Sovereign Recognition (F13)",
-      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
-      "tags": [
-        "kernel",
-        "f13",
-        "sovereign",
-        "identity"
-      ],
-      "floor_scope": [
-        "F13"
-      ]
-    },
-    {
-      "id": "KERNEL-session-inhabit",
-      "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
-      "tags": [
-        "kernel",
-        "session",
-        "lifecycle",
-        "000-999"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4",
-        "F11"
-      ]
-    },
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
@@ -107,56 +61,13 @@
       ]
     },
     {
-      "id": "KERNEL-mcp-zen",
-      "name": "MCP Zen Architecture",
-      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
-      "tags": [
-        "kernel",
-        "mcp",
-        "zen",
-        "architecture"
-      ],
-      "floor_scope": [
-        "F4",
-        "F11"
-      ]
+      "id": "KERNEL-trinity-33",
+      "_normalised": "bare string -> object (schema conformity, afpass-W1)"
     },
     {
-      "id": "KERNEL-quantum-runtime",
-      "name": "Quantum Runtime (APEX)",
-      "description": "APEX quantum state management. G = A·P·E·X·Φ computation. C_dark detection. Tri-witness geometry.",
-      "tags": [
-        "kernel",
-        "quantum",
-        "apex",
-        "intelligence"
-      ],
-      "floor_scope": [
-        "F2",
-        "F8"
-      ]
-    },
-    {
-      "id": "KERNEL-qubit-substrate",
-      "name": "Qubit Substrate (Physics)",
-      "description": "Substrate physics for non-binary intelligence states. Superposition, collapse, entanglement principles.",
-      "tags": [
-        "kernel",
-        "substrate",
-        "quantum",
-        "physics"
-      ],
-      "floor_scope": [
-        "F2",
-        "F10"
-      ]
-    },
-    "KERNEL-sovereign-recognize",
-    "KERNEL-trinity-33",
-    "KERNEL-session-inhabit",
-    "RSI-recursive-improvement",
-    "SHADOW-diagnostic",
-    "CLAIM-verification-gate"
+      "id": "RSI-recursive-improvement",
+      "_normalised": "bare string -> object (schema conformity, afpass-W1)"
+    }
   ],
   "_kernel_bound": "2026-07-13-EUREKA-ZEN",
   "metadata": {
@@ -235,5 +146,128 @@
       "type": "Ed25519Signature2020"
     }
   ],
-  "did": "did:web:arif-fazil.com"
+  "did": "did:web:arif-fazil.com",
+  "_quarantined_skills": [
+    {
+      "id": "KERNEL-reality-skills",
+      "name": "Reality Skills (F2 Grounding)",
+      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
+      "tags": [
+        "kernel",
+        "f2",
+        "reality",
+        "grounding"
+      ],
+      "floor_scope": [
+        "F2",
+        "F7",
+        "F9"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-reality-skills"
+    },
+    {
+      "id": "KERNEL-sovereign-recognize",
+      "name": "Sovereign Recognition (F13)",
+      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
+      "tags": [
+        "kernel",
+        "f13",
+        "sovereign",
+        "identity"
+      ],
+      "floor_scope": [
+        "F13"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-sovereign-recognize"
+    },
+    {
+      "id": "KERNEL-session-inhabit",
+      "name": "Session Inhabit (Lifecycle)",
+      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "tags": [
+        "kernel",
+        "session",
+        "lifecycle",
+        "000-999"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-session-inhabit"
+    },
+    {
+      "id": "KERNEL-mcp-zen",
+      "name": "MCP Zen Architecture",
+      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
+      "tags": [
+        "kernel",
+        "mcp",
+        "zen",
+        "architecture"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "KERNEL-quantum-runtime",
+      "name": "Quantum Runtime (APEX)",
+      "description": "APEX quantum state management. G = A·P·E·X·Φ computation. C_dark detection. Tri-witness geometry.",
+      "tags": [
+        "kernel",
+        "quantum",
+        "apex",
+        "intelligence"
+      ],
+      "floor_scope": [
+        "F2",
+        "F8"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "KERNEL-qubit-substrate",
+      "name": "Qubit Substrate (Physics)",
+      "description": "Substrate physics for non-binary intelligence states. Superposition, collapse, entanglement principles.",
+      "tags": [
+        "kernel",
+        "substrate",
+        "quantum",
+        "physics"
+      ],
+      "floor_scope": [
+        "F2",
+        "F10"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-qubit-substrate"
+    },
+    {
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-sovereign-recognize",
+      "id": "KERNEL-sovereign-recognize"
+    },
+    {
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-session-inhabit",
+      "id": "KERNEL-session-inhabit"
+    },
+    {
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/SHADOW-diagnostic",
+      "id": "SHADOW-diagnostic"
+    },
+    {
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/CLAIM-verification-gate",
+      "id": "CLAIM-verification-gate"
+    }
+  ],
+  "_skill_ref_reconciliation": {
+    "at": "2026-09-18",
+    "by": "afpass-W1",
+    "before": 14,
+    "after": 4,
+    "quarantined": 10,
+    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
+  }
 }

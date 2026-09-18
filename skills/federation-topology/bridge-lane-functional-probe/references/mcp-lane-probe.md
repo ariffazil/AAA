@@ -57,7 +57,7 @@ python3 <skill>/scripts/mcp_stdio_probe.py --cmd '/opt/venv/bin/python' -- /path
 
 Read the tool names, not just the count: a server that initializes and returns a shorter list
 than the registry declares is partially wired. For HTTP servers, the equivalent is a POST
-`initialize` with session-id capture — see the `mcp-dual-era-transport` skill for the
+`initialize` with session-id capture — see the `mcp-testing` skill (Section 5: Era Mismatch) for the
 version/session headers, since a 400 there is a protocol-era problem, not a dead lane.
 
 ## 4. Verify a fix by delta, not by "it compiles now"
