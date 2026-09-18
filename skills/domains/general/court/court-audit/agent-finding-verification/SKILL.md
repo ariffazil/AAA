@@ -1012,6 +1012,45 @@ uniformly ticked.
 - **Separate "the control is weak" from "somebody bypassed authority".** The first is measurable;
   the second is an accusation that needs an issuer, a date and a diff. Refuse to merge them.
 
+### A clean causal chain is a hypothesis until a rival has been tested
+
+An inference of the form *"X happened because of Y"* — especially one that accounts for several
+observations at once — carries the narrative-fallacy signature. The more observations a single
+mechanism explains, the more urgently it needs a competitor run against it, because a mechanism
+that explains everything is indistinguishable from a story.
+
+**The gate, before a high-impact inference leaves the building:**
+
+1. **Enumerate ≥2 rival mechanisms** that would produce the *same* observation without your causal
+   claim. Include at least one that is boring and technical — schedule, maintenance, capacity,
+   weather, accounting. The mundane rival is the one the exciting hypothesis crowds out.
+2. **Name the discriminating observation** — the data that would read differently under your
+   mechanism than under the rival. If no such observation exists, the claim is not falsifiable and
+   is published as interpretation only.
+3. **Test at least one rival against observable data** and report the result: *survives* ·
+   *weakened* · *collapses*. "Could not test it" is a valid, reportable outcome. Silence is not.
+4. **Tag the surviving inference with its untested rivals.** It may still be published. It may not
+   be published as though it were the only reading.
+
+**Worked shape (scar 2026-09-18).** A brief argued that electoral losses in one region were
+exchanged for concessions in another, with energy supply as the lever. Rivals that had to be named
+before that chain could stand:
+
+- **External demand and availability** — soft demand abroad diverts supply for reasons carrying no
+  political linkage at all.
+- **Scheduled outages and turnaround** — an export dip is frequently maintenance; a technical
+  calendar mimics a political decision perfectly.
+- **Grid and capacity constraints** — domestic demand pressure can originate in network limits
+  rather than in any allocation contest.
+- **Agreement tenor and delivery points** — who receives the volume, and when the arrangement
+  renews, usually dominates any political signal.
+
+None of these needs to win for the inference to be publishable. They need to be *named*, and at
+least one *checked* — or the inference is a story wearing a citation.
+
+**The tell for when this gate is mandatory:** the chain is elegant, it walks from a verifiable fact
+to a consequential conclusion in ≤3 steps, and it makes the world feel tighter than it is.
+
 ### A gate's verdict is scoped to what the gate TESTS — read its scope before accepting its PASS
 
 "It passed the gate" is a claim, and like every claim it has a scope. A verification layer that
