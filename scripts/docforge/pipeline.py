@@ -158,6 +158,31 @@ def render_items_html(items: list[dict]) -> str:
 # ── the run ──────────────────────────────────────────────────────────────────
 
 
+def render_rules_html(store) -> str:
+    """Show the standing instructions INSIDE the document.
+
+    A rule that only exists inside a database is invisible to the person it
+    governs. Printing it in the brief means Arif can see what the machine has
+    been told to do, and can retire it in the same breath as reading it.
+    """
+    rows = store.active()
+    if not rows:
+        return ""
+    out = ["<h2>0.1 &middot; Standing Instructions</h2>",
+           "<p class='small'>Derived from your own comments on earlier editions. "
+           "Each shows the words it came from. A rule you no longer want can be "
+           "retired; it is listed here so it cannot operate invisibly.</p>",
+           "<table><thead><tr><th>Instruction</th><th>Standing since</th>"
+           "<th>Editions</th></tr></thead><tbody>"]
+    for r in rows:
+        out.append(f"<tr><td><strong>{r['rule']}</strong><br>"
+                   f"<span class='small'>heard as: &ldquo;{r['raw_text']}&rdquo;</span>"
+                   f"</td><td>{r['created_at'][:10]}</td>"
+                   f"<td>{r['applied_count']}</td></tr>")
+    out.append("</tbody></table>")
+    return "".join(out)
+
+
 def run(items_path: Path, *, edition: str, date: str, template: str = "base-a4",
         theme: str = "light", title: str = "Executive Brief", subtitle: str = "",
         run_dir: Path, db: Path | None = None, target: str | None = None,
@@ -197,8 +222,16 @@ def run(items_path: Path, *, edition: str, date: str, template: str = "base-a4",
         "open_items": len(store.open_items()),
     }
 
-    # 3. compose body: delta first, then the register
+    # 3. compose body: delta first, then standing instructions, then the register
+    from .feedback import FeedbackStore
+    fb = FeedbackStore(db or DEFAULT_DB)
+    rules_path = fb.export_rules(run_dir / "brief-rules.md")
+    receipt["stages"]["feedback"] = {
+        "ok": True, "standing_rules": len(fb.active()),
+        "rules_file": str(rules_path),
+    }
     body = (render_delta_html(delta, prev_edition)
+            + render_rules_html(fb)
             + "<div style='page-break-before:always'></div>"
             + render_items_html(items))
     src = run_dir / "content.html"

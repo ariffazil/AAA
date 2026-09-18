@@ -266,6 +266,63 @@ def cmd_verify(args) -> int:
     return 0 if ok else 1
 
 
+def cmd_feedback(args) -> int:
+    """Record, list, retire and export the standing instructions."""
+    from .feedback import FeedbackStore, capture_candidates
+
+    db = Path(args.db or "/root/AAA/forge_work/brief-state.sqlite3")
+    store = FeedbackStore(db)
+
+    if args.fb_action == "add":
+        text = args.text
+        if not text and args.from_file:
+            text = Path(args.from_file).read_text()
+        if not text:
+            print("nothing to add — pass text or --from-file", file=sys.stderr)
+            return 2
+        cands = capture_candidates(text) if args.split else [text]
+        if not cands:
+            print("no directive-shaped line found; nothing recorded. "
+                  "Use --whole to record the message as one instruction.")
+            return 1
+        for c in cands:
+            r = store.add(c, edition_ref=args.edition, source=args.source)
+            mark = "already standing" if r.get("duplicate") else "recorded"
+            print(f"  {mark}: fb_id={r['fb_id']} [{r.get('direction','?')}] {r['rule']}")
+        return 0
+
+    if args.fb_action == "list":
+        rows = store.all_rows() if args.all else store.active()
+        if not rows:
+            print("  no standing instructions")
+            return 0
+        for r in rows:
+            state = "ACTIVE " if r["active"] else "retired"
+            print(f"  {r['fb_id']:>3}  {state}  [{r['scope']}] {r['rule']}")
+            print(f"        heard as: \"{r['raw_text']}\""
+                  + (f"  (since {r['created_at'][:10]}, "
+                     f"applied {r['applied_count']}x)" if r["active"] else
+                     f"  (retired: {r['retire_reason']})"))
+        return 0
+
+    if args.fb_action == "retire":
+        try:
+            ok = store.retire(int(args.fb_id), args.reason or "")
+        except ValueError as e:
+            print(f"refused: {e}", file=sys.stderr)
+            return 2
+        print("retired" if ok else "no live rule with that id")
+        return 0 if ok else 1
+
+    if args.fb_action == "export":
+        out = store.export_rules(Path(args.out) if args.out else None)
+        print(f"exported {len(store.active())} standing instruction(s) -> {out}")
+        return 0
+
+    print("unknown feedback action", file=sys.stderr)
+    return 2
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(prog="docforge", description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -291,6 +348,24 @@ def main(argv=None) -> int:
     v = sub.add_parser("verify", help="re-check a seal chain")
     v.add_argument("ledger")
     v.set_defaults(func=cmd_verify)
+
+    f = sub.add_parser("feedback", help="standing instructions from Arif's own comments")
+    f.add_argument("fb_action", choices=["add", "list", "retire", "export"])
+    f.add_argument("text", nargs="?", help="for add: the comment or instruction")
+    f.add_argument("--from-file", help="for add: read the text from a file")
+    f.add_argument("--whole", dest="split", action="store_false", default=True,
+                   help="add: record the whole message as ONE instruction "
+                        "(default is to split directive lines out of it)")
+    f.add_argument("--edition", help="add: the edition the comment was about")
+    f.add_argument("--source", default="telegram_reply",
+                   choices=["telegram_reply", "manual", "system"])
+    f.add_argument("--db", help="state database (default: the brief state db)")
+    f.add_argument("--all", action="store_true", help="list: include retired rules")
+    f.add_argument("--fb-id", help="retire: the fb_id to withdraw")
+    f.add_argument("--reason", help="retire: why (required — an unexplained "
+                                    "retirement is indistinguishable from a bug)")
+    f.add_argument("--out", help="export: destination path")
+    f.set_defaults(func=cmd_feedback)
 
     args = ap.parse_args(argv)
     return args.func(args)
