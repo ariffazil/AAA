@@ -123,8 +123,13 @@ OPS_PATH_WHITELIST = (
 )
 
 URL_RE = re.compile(r"https?://[^\s\"'`<>)\]}]+", re.IGNORECASE)
-RECEIPT_RE = re.compile(r"\b(?:receipt|trace|envelope)[_-]?id\s*[:=]?\s*[A-Za-z0-9._:-]{6,}", re.IGNORECASE)
-EVIDENCE_PATH_RE = re.compile(r"(/[A-Za-z0-9._/-]+\.(?:json|jsonl|log|md|csv|parquet|db|yaml|yml))")
+# Tolerates JSON/key quoting: `"receipt_id": "rcpt-abc123"` and `receipt_id=rcpt-abc123` both match.
+# The v2 first draft missed the JSON form, which is the form the gate actually receives.
+RECEIPT_RE = re.compile(
+    r"\b(?:receipt|trace|envelope)[_-]?id[\\\"']*\s*[:=]\s*[\\\"']*[A-Za-z0-9][A-Za-z0-9._:-]{5,}",
+    re.IGNORECASE,
+)
+EVIDENCE_PATH_RE = re.compile(r"(/[A-Za-z0-9._/-]+\.(?:jsonl|json|parquet|yaml|yml|csv|log|md|db))")
 PROVENANCE_CACHE_PATH = "/root/.local/share/arifos/wscar_url_cache.json"
 URL_CHECK_TIMEOUT = 3
 
@@ -167,6 +172,26 @@ def _strip_nonclaim(text: str) -> str:
     return text.lower()
 
 
+def _targets_ops_tree(tool_input: dict) -> bool:
+    """True if the mutation's declared TARGET lives in a federation method tree.
+
+    F13-authorised exemption (2026-09-18): a write into the federation's own doctrine/skills trees
+    is a method operation — it addresses no human, so it owes no market/patient claim. Writing
+    `.../court/court-audit/SKILL.md` asserts nothing about a court.
+
+    Scope note: this is a *bounded, receipted* exemption, not a silent bypass. Every skipped call
+    is written to telemetry as `wscar_ops_exempt`, so if it is ever abused the count is visible.
+    Provenance duty for ops-tree content is carried by the skill/canon review lanes.
+    """
+    for field in ("path", "file_path", "target", "target_path"):
+        val = tool_input.get(field)
+        if isinstance(val, str) and val:
+            low = val.lower()
+            if any(low.startswith(root) for root in OPS_PATH_WHITELIST):
+                return True
+    return False
+
+
 def claim_surface(tool_name: str, tool_input: dict) -> str:
     """The text a human would read as an assertion — with structure stripped out.
 
@@ -174,6 +199,8 @@ def claim_surface(tool_name: str, tool_input: dict) -> str:
     """
     if tool_name in W_SCAR_EXEMPT_TOOLS:
         return ""
+    if _targets_ops_tree(tool_input):
+        return ""  # receipted method-tree exemption — see _targets_ops_tree
     if tool_name in {"terminal", "bash", "shell"}:
         cmd = (tool_input.get("command") or tool_input.get("cmd") or "").strip()
         if _cmd_is_readonly(cmd):
@@ -220,9 +247,14 @@ def _save_url_cache(cache: dict):
 
 
 def _url_resolves(url: str, cache: dict):
-    """True / False / None. None means UNDETERMINED (DNS, timeout, TLS) — not 'fabricated'."""
+    """True / False / None. None means UNDETERMINED (timeout, TLS, refusal) — not 'fabricated'.
+
+    A name that does not RESOLVE is a different fact from a network we cannot reach: NXDOMAIN is a
+    property of the citation, a timeout is a property of our link. Only the first is evidence.
+    """
     if url in cache:
         return cache[url]
+    import socket
     import urllib.error
     import urllib.request
 
@@ -234,6 +266,12 @@ def _url_resolves(url: str, cache: dict):
     except urllib.error.HTTPError as exc:
         # 403/405/429 mean the HOST ANSWERED — the resource exists and refuses HEAD.
         verdict = exc.code in (403, 405, 429) or 200 <= (exc.code or 0) < 400
+    except urllib.error.URLError as exc:
+        # urlopen wraps socket faults in URLError; the cause is on .reason.
+        if isinstance(exc.reason, socket.gaierror):
+            verdict = False  # NXDOMAIN — a fact about the citation, not about our link
+        else:
+            verdict = None   # timeout / refused / TLS — undetermined, not fabricated
     except Exception:
         verdict = None  # unreachable ≠ fabricated
     if verdict is not None:
@@ -531,32 +569,68 @@ def main():
             )
             sys.exit(3)  # 3 = circuit-breaker interrupt (distinct from T3's 2)
 
-    # W_scar: critical-variable claim detection (machine-enforced, not advisory)
+    # ---- 1. W_scar v2: claim-surface detection + VERIFIED provenance (F13-authorised 2026-09-18).
+    # v1 blocked on vocabulary found anywhere in the payload (including file paths) and passed on
+    # the mere presence of the token "url". v2 scans assertions and resolves citations.
     if has_critical_claim(tool_name, tool_input):
-        if not has_source_evidence(tool_input):
-            # W_SCAR HOLD — critical claim without source evidence
-            reason = f"W_SCAR HOLD: Tool '{tool_name}' touches critical variable (money/health/legal/trading) without source evidence."
+        state, detail = verify_provenance(tool_input)
+
+        if state == "ABSENT":
+            reason = (
+                f"W_SCAR HOLD: Tool '{tool_name}' asserts a critical variable "
+                f"(money/health/legal/trading) with no source — {detail}."
+            )
             write_receipt(tool_name, "W_SCAR", "BLOCKED", reason, trace_id=trace_id, session_id=session_id)
-            write_falsification_metric("wscar_hold", {"tool": tool_name, "reason": "critical_claim_no_source"})
+            write_falsification_metric("wscar_hold", {"tool": tool_name, "reason": "claim_without_source"})
             update_telemetry("hold")
             result = {
                 "decision": "block",
-                "reason": f"🛑 W_SCAR: {reason} Route through evidence source first (probe, web_search, session_search) or escalate to sovereign.",
+                "reason": (
+                    f"🛑 W_SCAR: {reason} The gate checks the CLAIM, not the file path — a path "
+                    "containing a trigger word is no longer scanned. Attach a resolvable URL, a "
+                    "receipt id, or an on-disk evidence path and this clears. Read-only probes, "
+                    "ops-tree writes and creative tools are exempt."
+                ),
             }
             print(json.dumps(result))
             sys.exit(2)
-        else:
-            # Critical claim WITH source — witness it
-            write_falsification_metric("wscar_pass", {"tool": tool_name, "reason": "critical_claim_with_source"})
-            update_telemetry("wscar_pass")
-            write_receipt(
-                tool_name,
-                "W_SCAR",
-                "WITNESSED",
-                "Critical claim with source evidence — witnessed",
-                trace_id=trace_id,
-                session_id=session_id,
+
+        if state == "UNRESOLVED":
+            reason = (
+                f"W_SCAR HOLD: {detail}. A citation-shaped string that does not resolve is not a "
+                "source — shape is not witness."
             )
+            write_receipt(tool_name, "W_SCAR", "BLOCKED", reason, trace_id=trace_id, session_id=session_id)
+            write_falsification_metric("wscar_hold", {"tool": tool_name, "reason": "citation_unresolved"})
+            update_telemetry("hold")
+            result = {
+                "decision": "block",
+                "reason": (
+                    f"🛑 W_SCAR: {reason} Supply a URL that resolves, or a receipt id / evidence "
+                    "path on disk."
+                ),
+            }
+            print(json.dumps(result))
+            sys.exit(2)
+
+        # VERIFIED or DEGRADED — witness it. DEGRADED is deliberate: an unreachable network is not
+        # evidence of fabrication, and a gate that turns an outage into a blanket denial of service
+        # is worse than the defect it guards. The receipt records which of the two it was.
+        write_falsification_metric(
+            "wscar_pass", {"tool": tool_name, "reason": f"provenance_{state.lower()}"}
+        )
+        update_telemetry("wscar_pass")
+        write_receipt(
+            tool_name,
+            "W_SCAR",
+            "WITNESSED",
+            f"Critical claim, provenance {state}: {detail}",
+            trace_id=trace_id,
+            session_id=session_id,
+        )
+    elif tool_name in T2_TOOLS and _targets_ops_tree(tool_input):
+        # Auditable exemption counter — see _targets_ops_tree. Not a silent skip.
+        write_falsification_metric("wscar_ops_exempt", {"tool": tool_name})
 
     if classification == "OBSERVE":
         # Track observation for falsification rate calculation
