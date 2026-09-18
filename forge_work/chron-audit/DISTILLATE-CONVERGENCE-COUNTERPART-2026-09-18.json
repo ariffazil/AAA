@@ -1,0 +1,62 @@
+{
+  "distillate_id": "DISTILLATE-CONVERGENCE-COUNTERPART-2026-09-18",
+  "source": "counterpart synthesis relayed by F13 (telegram msg 155399) — a sibling agent's disk-grounded convergence reply",
+  "method": "the convergence verdict accepted; each factual row in its comparison table re-derived from disk before acceptance. One row refuted, one claim names a nonexistent artifact.",
+
+  "accepted": {
+    "convergence_thesis": "CHRON = Temporal Reconciliation Layer — the governed join between event, observation, belief, decision, action, outcome, lesson and attention. Two independent channels (literature; local audit) reached it. Per F3 this is a real signal and grounds to proceed to falsification rather than re-research.",
+    "the_scheduler_separation": "Its 'HALF-TRUE' and the earlier 'CONTRADICTED' do not conflict — different referents. Target != current artifact. Keeping them separate is correct and is the whole point of the day's mandate.",
+    "event_calculus_precision": "CORRECT and better than my formulation: event calculus is the QUERY/REASONING layer (AS-OF reconstruction), not the storage layer. Storage stays event-sourcing + bitemporal. Adopted as a correction to my own §5.",
+    "three_added_refinements": "attention elevated to differentiator; the six missing episode fields; belief/prediction snapshots so 'why were we wrong' is answerable.",
+    "start_from_the_disk_line": "Correct. The destination is settled; only the disk knows the starting line. 'Revive-or-retire the dead consumer + build the missing arrows' beats 'design a temporal substrate'.",
+    "critical_path": "NOW/NEXT/LATER is unchanged and correct. Nothing requires new authority; everything reversible."
+  },
+
+  "refuted": [
+    {
+      "row": "\"6 of 9 spine arrows already PASS (chron_spine_gate.py)\"",
+      "verdict": "OVER-READ, and it is the same class of error the day is auditing.",
+      "evidence": [
+        "chron_spine_gate.py has ZERO scheduled callers. Verified across all four scheduler surfaces: hermes cron jobs.json (0 refs), crontab -l (0), /etc/cron.d (0 files), systemd units (0). The only reference anywhere on the box is /root/AAA/scripts/seal_chron_day.py:53 — my own daily record script, which merely HASHES the file. It never executes it.",
+        "The 14:00 job does not run the gate. It runs a 3,550-character LLM PROMPT that names chron.py and the SKILL.md under an 'evidence:' header — as reading matter, not as an executable check.",
+        "The gate's own selftest() exercises only b1, b2, b5 (re-derived: boundary refs inside selftest are ['b1','b2','b5']), with 6 references to private paraphrase helpers (_b2_against, _b1_all_present, _b5_has_unbounded_prose) rather than the shipped checks. A parallel sweep found b4's probe never calls the real function — it hashes a temp file twice and asserts hashlib works.",
+        "The gate's PASS vocabulary is defined in its own header as 'the boundary holds on the artifact as it exists now' — a statement about the ARTIFACT, not about a runtime arrow. And its exit code cannot express UNBUILT: with 0 FAIL it returns 0, so UNBUILT and all-PASS are identical to any caller.",
+        "Per this day's own forged law: a gate that no door has is not a gate. These PASSes are declarations by an unexecuted script."
+      ],
+      "what_is_actually_true": "Six boundaries currently hold BY INSPECTION of the artifacts they name, when the script is run by hand. That is a real and useful property — it is not the same as six runtime arrows having PASSED. Zero of the eleven runtime arrows (SCHEDULED -> ... -> RECEIPT_MATCHED) has been witnessed, because zero of the three ALPHA-ZEN jobs has ever fired.",
+      "consequence": "The embryo framing is directionally right but its headline number borrows credibility from a script that never runs. Restate as: 6 of 9 boundary checks hold by inspection; 0 of 11 runtime arrows witnessed."
+    },
+    {
+      "claim": "\"chron.py + chron_events.v2 already ship the daily card with enforced claim-state\"",
+      "verdict": "THE ARTIFACT 'chron_events.v2' DOES NOT EXIST.",
+      "evidence": "find across /root/AAA and /root/scripts for 'chron_events*' returns exactly two files: chron_events.json and chron_events.schema.json. No v2. The live store is chron_events.json — 5 events, eleven flat keys, ONE date field.",
+      "consequence": "A claim that names a versioned artifact which is not on disk. Minor in itself; recorded because the day's mandate is precisely that a name must resolve to a mechanism."
+    }
+  ],
+
+  "precision_on_enforced_claim_state": {
+    "claim": "the daily card ships with 'enforced claim-state'",
+    "measured": "The enforcement exists in exactly one place: chron_spine_gate.py b1, which returns FAIL if events lack source/confidence/target_date/audience. That is a genuine mechanism — hand-rolled, not schema-driven.",
+    "but": "that mechanism sits in a script nothing invokes. In the LIVE delivery path, the 14:00 job is an LLM prompt; the claim-state discipline there is enforced by instruction-following, i.e. by the model's compliance, not by a mechanism.",
+    "so": "claim-state is enforced OUTSIDE the delivery path and instructed INSIDE it. Precisely inverted from where enforcement is needed."
+  },
+
+  "the_f13_binary": {
+    "question": "Does the daily card stay a briefing engine while the three learning arrows are built behind it, or does the card itself become the CHRON experiment surface?",
+    "recommendation": "A — the card stays a briefing engine; the learning arrows are built behind it.",
+    "reasons": [
+      "The card is on a live human path with ZERO witnessed runs. An unproven experiment on the human's daily surface spends attention that has not yet been earned.",
+      "'Keep the shell plastic; seal the causal spine.' The shell is the card. Making the shell the experiment surface welds the two together, which is the opposite of the doctrine.",
+      "It keeps the change reversible and the blast radius at zero — matching the standing constraint that nothing here should need new authority or touch production."
+    ],
+    "not_a_close_call": "Option B would put an uncalibrated learner in the same object the human reads each day, before a single arrow is witnessed. That is a direction change with an irreversible-ish attention cost."
+  },
+
+  "net_effect": {
+    "changed": "The starting line is now stated from disk: revive-or-retire the dead consumer, build the three missing arrows. Event calculus is placed at the query layer. The binary is on the table for F13.",
+    "unchanged": "CHRON remains Stage 0-1. 12:05 MYT, 14:00 is 115 minutes out. No build before the arrow chain is witnessed.",
+    "sharpened": "The gap between 'boundary checks hold by inspection' and 'runtime arrows witnessed' is now measured rather than implied. That gap IS the remaining work."
+  },
+
+  "next_single_action": "Unchanged. Witness the 14:00 fire. F13 answers the binary when he is ready; nothing blocks on it."
+}
