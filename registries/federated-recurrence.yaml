@@ -560,6 +560,13 @@ events:
   fq_gate: false
   cost_estimate: 0.02
   superseded_job_id: m482478523bf
+  # RETIRED 2026-09-18 (APEX-Zen purge): the 07:00 morning-brief family was
+  # folded into the single sovereign ALPHA-ZEN lane. The job no longer exists in
+  # jobs.json BY DESIGN, so its absence is the expected state, not drift. The
+  # autopause drift check skips any entry carrying this status.
+  status: retired
+  retired_at: 2026-09-18
+  retired_reason: folded into the ALPHA-ZEN morning lane; declared job removed from jobs.json
 - id: arif-reckoning
   adapter: hermes-cron
   schedule: 30 6 * * 1

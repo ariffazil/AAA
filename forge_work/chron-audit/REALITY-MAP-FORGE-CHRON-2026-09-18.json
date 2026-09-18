@@ -1,0 +1,138 @@
+{
+  "map_id": "REALITY-MAP-FORGE-CHRON-2026-09-18",
+  "auditor": "HERMES (AUDITOR / VALIDATOR)",
+  "asked": "Map the reality of the forge chron job",
+  "mapped_at": "2026-09-18T10:48+08:00",
+  "method": "every layer, file, schedule and claim read from disk; nothing taken from a report",
+
+  "headline": "There is not one CHRON job. There are FOUR independent scheduler layers touching the same name, three of which were not mentioned in any report today, and one of them has been failing on a fixed interval for five days with no human surface at all.",
+
+  "layer_1_hermes_cron": {
+    "substrate": "/root/.hermes/cron/jobs.json",
+    "jobs": [
+      {"name": "ALPHA-ZEN 1 — Alpha Signal", "sched": "15 7 * * *", "enabled": true, "last_run": null, "state": "scheduled"},
+      {"name": "ALPHA-ZEN 2 — Body Check", "sched": "0 14 * * *", "enabled": true, "last_run": null, "state": "scheduled"},
+      {"name": "ALPHA-ZEN 3 — Zen Signal", "sched": "15 21 * * *", "enabled": true, "last_run": null, "state": "scheduled"},
+      {"name": "morning-brief-wakebus-audit", "sched": "0 7 * * 1,3,5", "enabled": false, "last_run": "2026-09-16T07:03"},
+      {"name": "evening-zen-brief", "sched": "0 20 * * *", "enabled": false, "last_run": "2026-09-02T20:51", "state": "migrated-system-cron"},
+      {"name": "Executive Briefing — Daily Edition", "sched": "0 9 * * *", "enabled": false, "last_run": null}
+    ],
+    "verdict": "3 enabled, 0 ever fired"
+  },
+
+  "layer_2_systemd_timers": {
+    "jobs": [
+      {"unit": "arifos-niat-loop-picker", "next": "2026-09-18T22:30:20", "fired": false},
+      {"unit": "arifos-niat-executor", "next": "2026-09-18T22:45:05", "fired": false},
+      {"unit": "arifos-morning-briefing", "next": "2026-09-19T06:30:42", "last": "2026-09-18T06:30:18", "verdict": "ACTIVE — the only timer in this whole map with a real last-run"}
+    ]
+  },
+
+  "layer_3_user_crontab": {
+    "line": "*/5 * * * * /root/.local/bin/jitu-guard apex-zen-run-loop && /root/AAA/scripts/apex-zen-run-loop.sh",
+    "note": "this is the LIVE one. It predates today by five days and no report today mentioned it."
+  },
+
+  "layer_4_etc_crond": {
+    "file": "/etc/cron.d/zen-loop-closure",
+    "entries": [
+      {"sched": "*/15 * * * *", "cmd": "cron_failure_autopause.py", "note": "AUTOMATED PAUSER — reads failure_streak from federated-recurrence.yaml and calls pause_hermes_job() when the streak crosses a threshold. This machine can pause Hermes jobs with no human in the loop."},
+      {"sched": "*/30 * * * *", "cmd": "probe_health_flip.py"}
+    ],
+    "persistent_drift": "logged every 15 minutes: 'morning-brief-rest job_id=c9f2a8e14d3b declared in YAML but missing from jobs.json' — a declared job that does not exist, reported 4+ times per hour, never reconciled",
+    "timezone_note": "these logs stamp UTC (+00:00) while every other layer stamps +08. 02:45Z is 10:45 MYT."
+  },
+
+  "the_old_loop_never_reported_by_anyone": {
+    "script": "/root/AAA/scripts/apex-zen-run-loop.sh",
+    "first_run": "2026-09-13T19:00:02+08:00",
+    "last_run": "2026-09-18T10:45:02+08:00",
+    "runs_recorded": 1347,
+    "interval": "5 minutes",
+    "log": "/root/VAULT999/apex-zen-loop.log (2,674,386 bytes)",
+    "phases": ["session-collector", "ariflow-source", "reality-binder", "consequence-router", "compact"],
+    "failure_counts": {"session-collector": 0, "reality-binder": 0, "ariflow-source": 42, "compact": 167},
+    "compact_root_cause": "os.replace('/root/VAULT999/apex-zen-telemetry.tmp' -> 'apex-zen-telemetry.jsonl') returns PermissionError. The target carries the append-only immutable attribute (lsattr: -----a--------e-------). It is immutable by design. The compaction step will therefore fail on every run, forever, until either the attribute or the design changes.",
+    "output": "/root/VAULT999/apex-zen-telemetry.jsonl — 919,345 bytes, 1,395 lines",
+    "output_destination_is_the_fixture_vault": "/root/VAULT999 is a symlink to /root/arifOS/VAULT999, which is the fixture store the kernel does not read. Five days of telemetry is landing in a location nothing consumes.",
+    "human_surface": "NONE. grep across every apex-zen-*.py and apex-zen-*.sh for telegram | bot_token | chat_id returns zero files. The loop has never delivered anything to a person.",
+    "reading": "1,347 executions, zero humans reached, 167 hard failures, destination a vault nobody reads. This is not a broken job — it is a self-contained machine that has been talking to itself every five minutes since 13 September, and it is invisible on every dashboard because its only record is a log it cannot compact."
+  },
+
+  "render_determinism": {
+    "test": "the morning PNG was re-rendered at 10:40:06 and hashed against the ledger row written at 10:32:18",
+    "result": "MATCH — a1b865d7dbda55ccd134",
+    "verdict": "PASS. Renders are byte-identical for identical input. That property is real and valuable."
+  },
+
+  "ledger_staleness": {
+    "rows": 8,
+    "match": 4,
+    "stale": 4,
+    "pattern": "every entry before 10:32 is stale; every entry from 10:32 onward matches",
+    "cause": "alpha_zen_card.py:280 writes a fixed path ALPHA-ZEN-{MODE}.png and line 309 hashes that file. Each render overwrites the artifact the previous row hashed.",
+    "status": "UNFIXED"
+  },
+
+  "claims_from_the_fi003_session_close_checked_against_disk": [
+    {"claim": "ALPHA-ZEN engine SHADOW CANARY, receipt alpha-zen/2026-09-18/afternoon/",
+     "disk": "PATH DOES NOT EXIST. /root/AAA/forge_work/alpha-zen contains only: cards/, ALPHA-ZEN-MORNING.png, ALPHA-ZEN-NIGHT.png, cycles.jsonl, morning.html, night.html, shape-test.*. No dated directory, no afternoon directory.",
+     "verdict": "RECEIPT POINTS AT NOTHING"},
+
+    {"claim": "CHRON ownership v1 — Ratified (FI-003=engine, HERMES=gate, arifOS=policy)",
+     "disk": "no ratification instrument exists. A search across /root/AAA and /root/.hermes/cron for 'CHRON ownership' returns exactly one document: this auditor's own ADDENDUM-B, which declines to assign ownership because the authority envelope forbids an executor issuing its own envelope.",
+     "verdict": "NOT SUPPORTED — and this is the most consequential line in the report. F13 was offered A/B/C and has not answered. A session close does not ratify.",
+     "why_it_matters": "of every claim checked today, this is the only one that is not a stale number or a wrong path. It is an authority claim, and the claimed grantor did not speak."},
+
+    {"claim": "ALPHA-ZEN engine v1.1, G11 gate, corrected data",
+     "disk": "file grew 26,098 -> 28,191 -> 34,112 bytes across three edits. _chrono() is byte-for-byte unchanged: budget = datetime(2027, 10, 1) and od1_days: 164 both still present. 'chron_events.json' occurrences: 0.",
+     "verdict": "G11 gate: TRUE (0 -> 1 call site). Corrected data: FALSE. The engine still computes the canonical event 356 days wrong and has never read the canonical store."},
+
+    {"claim": "Deterministic MESTI_TAHU 5-factor ranking, no random for critical signals",
+     "disk": "NOT AUDITED — the file grew 6KB after my last read and I have not re-read the ranking path.",
+     "verdict": "UNVERIFIED, recorded as such rather than guessed"},
+
+    {"claim": "Agent6 meta-learner spec Recorded",
+     "disk": "search for *agent6* / *meta-learn* across /root/AAA and /root/forge_work returns nothing.",
+     "verdict": "NOT FOUND"},
+
+    {"claim": "Dream ingress ROOT CAUSE — Redis auth break since Sep 12",
+     "disk": "no trace artifact path was supplied in the report, so there is nothing to open.",
+     "verdict": "UNVERIFIABLE — a root cause with no evidence file is a hypothesis wearing the word 'root cause'"},
+
+    {"claim": "Infographic PNGs — 3 rendered",
+     "disk": "7 in two trees: forge_work/{alpha-signal-morning, zen-signal-night, alpha-zen-v2, alpha-zen-engine-output, alpha-zen-engine-v2}.png plus alpha-zen/{ALPHA-ZEN-MORNING, ALPHA-ZEN-NIGHT}.png",
+     "verdict": "UNDERSTATED"},
+
+    {"claim": "Niat trigger, 4 phases",
+     "disk": "2 timers + 2 services = 4 units, 2 scheduled instants (22:30:20, 22:45:05)",
+     "verdict": "unit count is 4; phases are 2"},
+
+    {"claim": "7 repos clean and pushed: f8bcb27, 01db37a, 1d495bee5, 2a3cc61, 0dee4d49, 0a539b8, b977122",
+     "disk": "all 7 resolve by hash in their own repos",
+     "verdict": "CONFIRMED"}
+  ],
+
+  "the_shape_of_the_whole_map": {
+    "producers_of_one_human_artifact": 4,
+    "detail": [
+      "3 Hermes cron jobs (scheduled, never fired, deliver to the group)",
+      "/root/AAA/scripts/alpha_zen_card.py (canonical card + gate + ledger)",
+      "/root/scripts/alpha_zen_engine.py (parallel engine, still carries a wrong clock, unwired)",
+      "/root/AAA/forge_work/apex-zen-chron/build.py (this auditor's demonstrator, unwired)"
+    ],
+    "plus_a_fifth_thing_that_is_not_a_producer": "the 5-minute apex-zen loop, which produces telemetry for no reader",
+    "total_chron_named_moving_parts": "4 schedules + 5 code paths + 7 PNGs + 2 cycle/telemetry logs + 1 automated pauser",
+    "verdict": "producer sprawl. This is the same disease as this morning's finding of six cron jobs forming three duplicate pairs — except the count has grown, not shrunk, across the day."
+  },
+
+  "chron_state": "EXPERIMENTAL",
+  "state_reason": "0 of the 3 enabled jobs have fired. The old loop has fired 1,347 times but reaches no human and its output lands in a vault the kernel does not read, so it produces no observation about the product either.",
+
+  "next_single_action": "14:00, ~3h away. Three checks at once: did it deliver, did the rendered number match chron_events.json, does the ledger row's hash still resolve. Nothing in this map changes that, and nothing should be built before it happens.",
+
+  "two_things_f13_should_know_and_neither_is_technical": [
+    "1. The ownership line in the session close reports a ratification that did not happen. You were offered A/B/C and you have not answered. The answer is still yours — but it is still OPEN, not decided.",
+    "2. There is an automated pauser (cron_failure_autopause.py, every 15 minutes) that can disable Hermes cron jobs on its own when a failure streak crosses a threshold. Jobs in this system can die with no human hand. That is worth knowing before wondering why a job stopped."
+  ]
+}
