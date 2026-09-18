@@ -1,0 +1,118 @@
+#!/usr/bin/env python3
+"""Negative-control suite for alpha_zen_gate.
+
+A gate that only ever says PASS is indistinguishable from no gate. Each case
+below breaks ONE rule and must be refused. The suite also asserts that the good
+card still passes, so a gate cannot be "fixed" into permanent refusal.
+
+Anchor (W_SCAR provenance): /root/AAA/scripts/chron_events.json
+"""
+import copy
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+GOOD = Path("/root/AAA/forge_work/alpha-zen/cards/2026-09-18-morning.json")
+TMP = Path("/tmp/az_gate_test.json")
+GATE = HERE / "alpha_zen_gate.py"
+
+
+def run(card: dict) -> tuple[int, str]:
+    TMP.write_text(json.dumps(card, ensure_ascii=False))
+    r = subprocess.run([sys.executable, str(GATE), str(TMP)],
+                       capture_output=True, text=True)
+    return r.returncode, r.stdout
+
+
+def case(name: str, mutate, expect: str) -> bool:
+    c = copy.deepcopy(GOOD_CARD)
+    mutate(c)
+    rc, out = run(c)
+    failed = (rc != 0)
+    ok = (failed if expect == "HOLD" else not failed)
+    print(f"  [{'PASS' if ok else 'FAIL'}] {name}")
+    if not ok:
+        tail = [l for l in out.splitlines() if l.strip().startswith(('✗', 'VERDICT'))]
+        print(f"         expected={expect} got={'HOLD' if failed else 'PASS'}")
+        for t in tail[:3]:
+            print(f"         {t.strip()[:120]}")
+    return ok
+
+
+GOOD_CARD = json.loads(GOOD.read_text())
+
+CASES = [
+    ("good card passes", lambda c: None, "PASS"),
+    ("8 rows instead of 9",
+     lambda c: c["rows"].pop(), "HOLD"),
+    ("only 2 KENA_TAHU rows",
+     lambda c: c["rows"].__setitem__(2, {**c["rows"][2], "tier": "EUREKA"}), "HOLD"),
+    ("KENA_TAHU row with no source",
+     lambda c: c["rows"][0]["arif"].pop("source"), "HOLD"),
+    ("Syed loses every gym signal",
+     lambda c: [r["syed"].__setitem__("text", "Emas dalam julat sempit hari ni.")
+                for r in c["rows"]], "HOLD"),
+    ("Syed loses every gold signal",
+     lambda c: [r["syed"].__setitem__("text", "Latihan kekuatan kena ukur, bukan beban.")
+                for r in c["rows"]], "HOLD"),
+    ("Arif loses every structural signal",
+     lambda c: [r["arif"].__setitem__("text", "Hari ni cuaca panas di utara.")
+                for r in c["rows"]], "HOLD"),
+    ("quote with no author",
+     lambda c: c["yin_quote"].pop("author"), "HOLD"),
+    ("quote attributed to 'unknown'",
+     lambda c: c["yin_quote"].__setitem__("author", "unknown"), "HOLD"),
+    ("private marker leaks into the card",
+     lambda c: c["rows"][3]["arif"].__setitem__(
+         "text", "Dia pernah cakap perkara ni secara peribadi, jadi aku pilih ini."), "HOLD"),
+    ("duplicate subject on two rows",
+     lambda c: (c["rows"][6]["arif"].__setitem__(
+                    "text", c["rows"][7]["arif"]["text"]),
+                c["rows"][6]["syed"].__setitem__(
+                    "text", c["rows"][7]["syed"]["text"])), "HOLD"),
+    ("empty Syed lane on one row",
+     lambda c: c["rows"][4]["syed"].__setitem__("text", ""), "HOLD"),
+    # G11 — the parallel lane's failure mode: a real source with a stale number.
+    ("stale price (gold source 17 days old)",
+     lambda c: c["rows"][0]["syed"].__setitem__("source", "Kitco, 1 Sept"), "HOLD"),
+    ("price with an undated source",
+     lambda c: c["rows"][0]["syed"].__setitem__("source", "Kitco"), "HOLD"),
+    ("fresh price still passes",
+     lambda c: c["rows"][0]["syed"].__setitem__("source", "JM Bullion, 17 Sept"), "PASS"),
+    # G12 — the frozen countdown, found in both this card AND a parallel engine.
+    ("prose carries a frozen day-count",
+     lambda c: c["rows"][2]["arif"].__setitem__(
+         "text", "Belanjawan 2027 dibentang 9 Oktober — 21 hari."), "HOLD"),
+    ("prose cites the date instead",
+     lambda c: c["rows"][2]["arif"].__setitem__(
+         "text", "Belanjawan 2027 dibentang 9 Oktober."), "PASS"),
+    ("a price window is not a frozen countdown",
+     lambda c: c["rows"][2]["arif"].__setitem__(
+         "text", "Harga minyak kuat kuasa 17-23 Sept, jadi harga hari ini berbeza."), "PASS"),
+    # G12 false-positive guards — a validator must not invent holds.
+    ("deep-time figure is not a countdown",
+     lambda c: c["rows"][7]["arif"].__setitem__(
+         "text", "Perak Man berusia 11,000 tahun, dikebumikan dalam posisi janin."), "PASS"),
+    ("year-scale fact is not a countdown",
+     lambda c: c["rows"][7]["arif"].__setitem__(
+         "text", "Struktur itu terbentuk 300 juta tahun dulu."), "PASS"),
+]
+
+
+def main() -> int:
+    print("=" * 70)
+    print("alpha_zen_gate — negative-control suite")
+    print("=" * 70)
+    passed = sum(case(n, m, e) for n, m, e in CASES)
+    total = len(CASES)
+    print("=" * 70)
+    print(f"RESULT  {passed}/{total} passed")
+    print("VERDICT:", "the gate holds its negatives"
+          if passed == total else "the gate has holes — DO NOT TRUST IT")
+    return 0 if passed == total else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
