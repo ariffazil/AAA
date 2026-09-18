@@ -716,6 +716,32 @@ git -C /root/AAA status --porcelain        # must show no deletions before movin
 - **A registry that reports `drift: 0` from a stale method is worse than no registry.** If a sensor
   cannot fail, it is decoration; the next agent trusts it. Never re-stamp a witness with a method
   you did not run — that is fabrication, not witness.
+- **A report generator can carry a stale PATH for years and print a confident zero every time.**
+  Measured 2026-09-19: `skill-sync.sh audit` ended with `grep -c 'id:' .../FEDERATED_SKILLS_REGISTRY.yaml`
+  — a file that has never existed; the registry is `..._V3.yaml`. It printed `Registry total: 0 entries`
+  on every run, forever, on a healthy store, and a reader had to know the registry was fine to see the
+  lie. A second defect sat behind it: the registry carries its counts as **fields**
+  (`logical_registry_count`, `total_skills`), not as `id:` lines, so even the corrected path would
+  have returned 0. Two fixes, both required — resolve the path WITH a fallback, then read the actual
+  field, and **print which file you read** so the next zero is falsifiable. Generalise: when a report
+  line ends in a bare number with no named source, probe the source before believing the number.
+- **An audit whose SCOPE is one level deep under-reports by more than half, and never says so.** The
+  same class as a depth-bounded `find`, but inside the instrument. Measured 2026-09-19:
+  `skill-constitutional-audit.py` discovered skills with `args.skills_dir.iterdir()` — one level only.
+  The authored library is nested (`domains/<domain>/<org>/<coordinate>/<skill>/`), so the scan saw
+  **281 of 626** bodies and published an **11% compliance rate over 55% of the library**. Recursive
+  discovery gave the real figure: **55/620 = 8%**, and the filter `--skills <name>` — which had been
+  silently returning *0 skills scanned* for every nested skill — started working. Two rules follow.
+  (a) **A published rate must name its denominator's scope in the report header** (`root — flat|
+  recursive; N dirs found`), because a number with no scope reads as federation-wide. (b) When you
+  make a scan recursive, ship a `--flat` escape so the historical series stays reproducible and the
+  semantic break is a stated decision rather than an invisible one. Reproduce the old number with the
+  flag before publishing the new one; a changed figure with no way back to the old one is unverifiable.
+- **Recursion surfaces the duplicates a flat scan hides — expect the count to move in two directions
+  at once.** Going recursive on the store lifted the scan from 281 to 620 and simultaneously revealed
+  that nested `SKILL.md` files whose path is itself a skill (per-harness variant dirs, migration
+  leftovers) were never audited at all. A larger denominator is not automatically a better scan: check
+  that every newly-included path really is a skill before quoting the new total.
 - **Over-eager shell eviction.** Directories that hold no SKILL.md of their own may still be the live
   body for a view symlink. Check what references a shell before moving it; moving one breaks every
   link pointing at it.
