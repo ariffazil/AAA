@@ -21,6 +21,7 @@ SOT: `/root/AAA/docs/MACHINE_MAP.md`. Fingerprint yourself first: `echo "$(hostn
 | :7074 | FED MCP (route advisor, token_bank) |
 | :8088 | arifOS kernel (constitutional) |
 | :18095 | i-ARIF synthesis (Seal B engine) |
+| :18102 | **CHRON** — temporal consequence tracker (prediction/verify/calibrate/learn). MCP surface: `chron_predictions_due`, `chron_calibration_state`, `chron_last_loop`, `chron_active_events`, `chron_active_predictions`, `chron_store_stats`, `chron_temporal_briefing`, `chron_generate_predictions`. Source: `/root/chron/` |
 | HERMES | Telegram poller `@ASI_arifos_bot` — `~/.hermes` on KVM8, no TCP listener, connects to :8088 + :4000 (Tier 3 boundary interface, not a core organ) |
 
 ## Hard rules

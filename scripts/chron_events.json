@@ -1,6 +1,7 @@
 {
-  "_comment": "CHRON canonical event store. Dates only \u2014 day counts are COMPUTED at render. Add an event with a real source or do not add it.",
+  "_comment": "CHRON canonical event store. Dates only — day counts are COMPUTED at render. Add an event with a real source or do not add it.",
   "_updated": "2026-09-18",
+  "_prediction_schema": "Falsifiable predictions: each event carries predictions[] with claim, expected_value, threshold, verifier (how to check), falsifier (what proves it wrong). A prediction that can only be 'did event happen' is not a prediction.",
   "events": [
     {
       "id": "budget-2027",
@@ -13,7 +14,27 @@
       "confidence": "CONFIRMED",
       "consequence": "HIGH",
       "actionability": "PREPARE",
-      "note": "Baris dividen PETRONAS dan subsidi bahan api jadi boleh dicek pada hari itu."
+      "note": "Baris dividen PETRONAS dan subsidi bahan api jadi boleh dicek pada hari itu.",
+      "predictions": [
+        {
+          "claim": "PETRONAS dividen to federal government will be ≥ RM30b for FY2027",
+          "expected_value": "≥30b",
+          "threshold": 30000000000,
+          "unit": "MYR",
+          "verifier": "Check MOF budget speech or fiscal outlook report on budget day",
+          "falsifier": "Announced dividen < RM30b",
+          "confidence": 0.6
+        },
+        {
+          "claim": "RON95 subsidy rationalisation will be announced or reaffirmed in budget speech",
+          "expected_value": "announced",
+          "threshold": true,
+          "unit": "boolean",
+          "verifier": "Read budget speech transcript, search for subsidi bahan api / RON95",
+          "falsifier": "Budget speech makes no mention of fuel subsidy reform",
+          "confidence": 0.7
+        }
+      ]
     },
     {
       "id": "fuel-price-window",
@@ -26,7 +47,28 @@
       "confidence": "CONFIRMED",
       "consequence": "MEDIUM",
       "actionability": "WATCH",
-      "note": "Harga minggu seterusnya diumum sekitar tarikh ini."
+      "note": "Harga minggu seterusnya diumum sekitar tarikh ini.",
+      "predictions": [
+        {
+          "claim": "RON95 price for 24-30 Sept window will remain at or below RM2.05/litre",
+          "expected_value": "≤2.05",
+          "threshold": 2.05,
+          "unit": "MYR/litre",
+          "verifier": "Check MOF weekly fuel price announcement on 23 Sept",
+          "falsifier": "RON95 price announced > RM2.05/litre",
+          "confidence": 0.85
+        },
+        {
+          "claim": "Brent crude will be in range USD65-75/bbl on 23 Sept (weekly avg)",
+          "expected_value": "65-75",
+          "threshold_low": 65,
+          "threshold_high": 75,
+          "unit": "USD/bbl",
+          "verifier": "Check Brent spot price via WEALTH capital_market on 23 Sept",
+          "falsifier": "Brent outside USD65-75 range",
+          "confidence": 0.65
+        }
+      ]
     },
     {
       "id": "od1",
@@ -39,7 +81,27 @@
       "confidence": "ANNOUNCED",
       "consequence": "HIGH",
       "actionability": "PREPARE",
-      "note": "Bukan tarikh yang orang lain tetapkan. Kalau dibiar, tarikh yang buat keputusan."
+      "note": "Bukan tarikh yang orang lain tetapkan. Kalau dibiar, tarikh yang buat keputusan.",
+      "predictions": [
+        {
+          "claim": "MSS package terms will be formally received by OD1",
+          "expected_value": "received",
+          "threshold": true,
+          "unit": "boolean",
+          "verifier": "Sovereign confirms MSS terms in hand (or not) by 2027-03-01",
+          "falsifier": "No MSS terms received by OD1",
+          "confidence": 0.7
+        },
+        {
+          "claim": "arifOS revenue (pilot or contract) will be > RM0 by OD1",
+          "expected_value": ">0",
+          "threshold": 0,
+          "unit": "MYR",
+          "verifier": "Check arifOS revenue ledger or /pilot conversion data",
+          "falsifier": "Zero revenue from arifOS by OD1",
+          "confidence": 0.4
+        }
+      ]
     },
     {
       "id": "electricity-800",
@@ -52,7 +114,18 @@
       "confidence": "CONFIRMED",
       "consequence": "MEDIUM",
       "actionability": "WATCH",
-      "note": "Bil Januari naik walaupun penggunaan tidak berubah."
+      "note": "Bil Januari naik walaupun penggunaan tidak berubah.",
+      "predictions": [
+        {
+          "claim": "January 2027 electricity bill for a household using 700 kWh/month will be ≥15% higher than December 2026",
+          "expected_value": "≥15%",
+          "threshold": 0.15,
+          "unit": "ratio",
+          "verifier": "Compare Jan 2027 vs Dec 2026 TNB bill for same usage level",
+          "falsifier": "Bill increase < 15% or no increase",
+          "confidence": 0.8
+        }
+      ]
     },
     {
       "id": "einv-svdp",
@@ -65,7 +138,100 @@
       "confidence": "CONFIRMED",
       "consequence": "MEDIUM",
       "actionability": "WATCH",
-      "note": "Hari terakhir untuk regularisasi tanpa penalti."
+      "note": "Hari terakhir untuk regularisasi tanpa penalti.",
+      "predictions": [
+        {
+          "claim": "LHDN will NOT extend the SVDP window beyond 2027-12-31",
+          "expected_value": "no_extension",
+          "threshold": true,
+          "unit": "boolean",
+          "verifier": "Check LHDN announcements for SVDP extension in Q4 2027",
+          "falsifier": "LHDN announces extension of SVDP deadline",
+          "confidence": 0.6
+        },
+        {
+          "claim": "e-Invoice compliance rate among SMEs will be ≥60% by SVDP end",
+          "expected_value": "≥60%",
+          "threshold": 0.6,
+          "unit": "ratio",
+          "verifier": "Check LHDN or DOSM e-invoice adoption statistics",
+          "falsifier": "SME compliance rate < 60% at SVDP close",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "my-001-bnm-opr-nov2026",
+      "title": "BNM MPC: OPR unchanged at 2.75%",
+      "target_date": "2026-11-05",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "MONETARY_POLICY",
+      "source": "BNM MPC decision schedule 2026; Aug CPI 1.9% per DOSM",
+      "confidence": "PREDICTED",
+      "consequence": "HIGH",
+      "actionability": "PREPARE",
+      "note": "First calibration test from ChatGPT external witness. Binary, falsifiable, exact verify date. Continuous moderate inflation + strong growth → no immediate rate-cut need.",
+      "predictions": [
+        {
+          "claim": "BNM will keep the Overnight Policy Rate at 2.75% on 5 November 2026",
+          "expected_value": "2.75%",
+          "threshold": 2.75,
+          "unit": "percent",
+          "verifier": "BNM official press release after 5 Nov 2026 MPC meeting (3:00pm MYT)",
+          "falsifier": "BNM announces OPR ≠ 2.75% (cut to 2.50% or hike to 3.00%)",
+          "confidence": 0.80
+        }
+      ]
+    },
+    {
+      "id": "my-002-cpi-sept2026",
+      "title": "Malaysia Sept 2026 CPI: 1.7–2.1% YoY",
+      "target_date": "2026-10-19",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "MACRO_INDICATOR",
+      "source": "DOSM CPI release schedule; July CPI 1.8%, August 1.9%",
+      "confidence": "PREDICTED",
+      "consequence": "MEDIUM",
+      "actionability": "WATCH",
+      "note": "Second calibration test. No interpretive ambiguity — binary pass/fail on bounds. Central estimate 1.9%.",
+      "predictions": [
+        {
+          "claim": "Malaysia September 2026 headline CPI inflation will be between 1.7% and 2.1% YoY inclusive",
+          "expected_value": "1.7-2.1%",
+          "threshold_low": 1.7,
+          "threshold_high": 2.1,
+          "unit": "percent",
+          "verifier": "DOSM official CPI release on 19 Oct 2026 (~14:00 MYT)",
+          "falsifier": "Headline CPI YoY < 1.7% OR > 2.1%",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "my-003-gdp-q3-2026",
+      "title": "Malaysia Q3 2026 advance GDP: ≥5.0% YoY",
+      "target_date": "2026-10-16",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "MACRO_INDICATOR",
+      "source": "DOSM advance GDP release schedule; Q2 2026 actual 6.0%, Q1 5.4% per BNM",
+      "confidence": "PREDICTED",
+      "consequence": "HIGH",
+      "actionability": "PREPARE",
+      "note": "Third calibration test. First to verify (16 Oct). Threshold 5.0% is conservative — below Q1 actual. If this passes, it strongly supports MY-001 (BNM hold).",
+      "predictions": [
+        {
+          "claim": "Malaysia Q3 2026 advance GDP growth will be at least 5.0% YoY",
+          "expected_value": "≥5.0%",
+          "threshold": 5.0,
+          "unit": "percent",
+          "verifier": "DOSM advance GDP estimate release on 16 Oct 2026 (~14:00 MYT)",
+          "falsifier": "Advance Q3 GDP YoY < 5.0%",
+          "confidence": 0.70
+        }
+      ]
     }
   ]
 }
