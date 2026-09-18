@@ -1,0 +1,73 @@
+{
+  "mode": "morning",
+  "date": "2026-09-18",
+  "headline": "Hari ni: satu lensa baca sistem, satu lensa baca tekanan. Dua-dua kerja.",
+
+  "yin_quote": {
+    "text": "See the system beneath the event.",
+    "author": "lensa hari ni — Arif"
+  },
+  "yang_quote": {
+    "text": "Strength is what survives contact with resistance.",
+    "author": "lensa hari ni — Syed"
+  },
+
+  "rows": [
+    {"n": "01", "label": "World", "tier": "KENA_TAHU",
+     "arif": {"text": "Fed naik 25bps ke 3.75–4.00% — kali pertama sejak 2023, undi 12–0. Pasaran baca ini sebagai mula, bukan habis.",
+              "source": "FOMC, 16 Sept", "tag": "OBS"},
+     "syed": {"text": "Emas tutup sekitar $4,330–4,350 selepas naik kadar. Naik walaupun Fed hawkish — beli-fakta, short seller tutup posisi.",
+              "source": "JM Bullion / USA Today, 17 Sept", "tag": "OBS"}},
+
+    {"n": "02", "label": "Reality", "tier": "KENA_TAHU",
+     "arif": {"text": "Kasawari CCS ditarik ke depan ke 2027, dari 2029. Suntikan CO₂ pertama 3.3 Mtpa ke medan M1 offshore Sarawak. Nilai projek ~RM4.5b.",
+              "source": "The Star / Bernama, disahkan 18 Sept", "tag": "OBS"},
+     "syed": {"text": "Harga RON97 naik ke RM4.85, kuat kuasa 17–23 Sept. Kalau ada urusan luar atau travel hujung minggu, ini masuk dalam kiraan.",
+              "source": "MOF, 16 Sept", "tag": "OBS"}},
+
+    {"n": "03", "label": "Clock", "tier": "KENA_TAHU",
+     "arif": {"text": "Belanjawan 2027 dibentang 9 Oktober. Dua baris yang terus kena: dividen PETRONAS dan subsidi bahan api.",
+              "source": "MOF / The Edge, disahkan 18 Sept", "tag": "OBS"},
+     "syed": {"text": "Cahaya elektrik 800 kWh kekal sampai 31 Dis, lepas tu jatuh balik ke 600 kWh. Apa hang bayar Januari tak sama dengan apa hang bayar sekarang.",
+              "source": "PM, 17 Sept", "tag": "OBS"}},
+
+    {"n": "04", "label": "Our World", "tier": "SUKA_TAHU",
+     "arif": {"text": "Enjin carian untuk AI mula bergerak dari 'cari dokumen serupa' ke 'cari sebab dulu'. Beza besar: yang pertama jawab apa, yang kedua jawab kenapa. Banyak sistem sekarang masih tersangkut di yang pertama.",
+              "tag": "INT"},
+     "syed": {"text": "Dalam latihan kekuatan, yang paling kerap tertinggal bukan beban — ia UKURAN. Regangkan satu pemboleh ubah satu masa, atau hang tak tahu mana yang sebenarnya jalan.",
+              "tag": "DER"}},
+
+    {"n": "05", "label": "Money", "tier": "SUKA_TAHU",
+     "arif": {"text": "PETRONAS 26% hasil kerajaan selama lima tahun. Bila kerajaan berunding dengan syarikat minyak miliknya, ia berunding dengan suku pendapatannya sendiri — itu tak jadi dalam rundingan komersial biasa.",
+              "source": "Fitch, Dis 2025", "tag": "OBS"},
+     "syed": {"text": "Setup emas sekarang duduk dalam julat sempit. Dua sumber bagi support berbeza ($4,298 vs $4,265). Masa sumber bercanggah, saiz posisi yang jawab — bukan keyakinan.",
+              "source": "Kitco / pelbagai, 17–18 Sept", "tag": "CONTESTED"}},
+
+    {"n": "06", "label": "Human", "tier": "SUKA_TAHU",
+     "arif": {"text": "Pengangguran Malaysia 3.0%, terendah sedekad. Tapi PMET ambil ~51% pemberhentian. Dua-dua benar serentak — dan angka agregat tak cakap apa-apa pasal lapisan hang sendiri.",
+              "source": "DOSM Julai / Reeracoen 2026", "tag": "OBS"},
+     "syed": {"text": "Kekuatan yang tahan lama jarang datang dari fasa paling keras. Ia datang dari orang yang boleh ulang fasa biasa selama sepuluh tahun tanpa berhenti.",
+              "tag": "DER"}},
+
+    {"n": "07", "label": "Connection", "tier": "EUREKA",
+     "arif": {"text": "Cermin geologi dan memori mesin kongsi satu masalah: pengumpulan tanpa stratigrafi tak berguna. Kecerdasan perlukan sempadan, provenance, dan unconformity — bukan sekadar lebih banyak bahan tersimpan.",
+              "tag": "INT"},
+     "syed": {"text": "Progressive overload dan position sizing kongsi satu undang-undang: cukup stress untuk beradaptasi, tak cukup untuk hancurkan sistem.",
+              "tag": "INT"}},
+
+    {"n": "08", "label": "Random", "tier": "EUREKA",
+     "arif": {"text": "Bunga terbesar dunia hidup dalam pokok tanpa batang, tanpa daun, tanpa akar. Struktur dia adalah KETIADAAN — muncul hanya bila nak berbunga, selebihnya tisu tak kelihatan dalam perumah.",
+              "tag": "OBS"},
+     "syed": {"text": "Jepun bunuh sindiket yakuza dengan akaun bank, bukan penjara. Bank tolak, telco tolak, tuan rumah tolak. Keahlian runtuh — tapi estetika dia viral pada masa yang sama.",
+              "tag": "OBS"}},
+
+    {"n": "09", "label": "Tonight", "tier": "EUREKA",
+     "arif": {"text": "Kalau semua orang dalam sistem tu hilang esok, apa yang masih berfungsi? Jawapan tu yang bagi tahu apa yang sebenarnya struktur, bukan siapa.",
+              "tag": "INT"},
+     "syed": {"text": "Apa yang hang buat hari ni yang hang akan masih buat sepuluh tahun lagi? Benda tu yang patut jadi pangkal — bukan benda yang paling hang suka buat minggu ni.",
+              "tag": "INT"}}
+  ],
+
+  "arif_anchor_hit": true,
+  "syed_anchor_hit": true
+}

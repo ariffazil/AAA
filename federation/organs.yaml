@@ -433,6 +433,54 @@ components:
       drift_verdict: STABLE
       fq: 0.887
 
+  - id: chron
+    class: METABOLISM
+    display_name: CHRON
+    source_path: /root/chron
+    role: temporal_consequence_tracker
+    authority_ceiling: COMPUTE_ONLY
+    port: 18102
+    mcp_port: 18102
+    unit: chron-mcp.service
+    public_mcp: https://chron.arif-fazil.com/mcp
+    runtime: python-3.12-fastmcp
+    live_probe_2026_09_18:
+      status: healthy
+      tools: 8
+      episodes: 49526
+      predictions_active: 5
+      predictions_verified: 0
+    owned_domains:
+      - prediction_lifecycle
+      - temporal_verification
+      - calibration_tracking
+      - lesson_extraction
+      - bitemporal_episodes
+    forbidden_domains:
+      - constitutional_judgment
+      - engineering_execution
+      - capital_allocation
+      - mutation_authorization
+    interfaces:
+      health: /health
+      mcp: /mcp
+    mcp_tools:
+      - chron_predictions_due
+      - chron_calibration_state
+      - chron_last_loop
+      - chron_active_events
+      - chron_active_predictions
+      - chron_store_stats
+      - chron_temporal_briefing
+      - chron_generate_predictions
+    doctrine: "Demi masa. Time is the witness. CHRON is the temporal cortex — predicts, verifies, calibrates, learns. Not a scheduler. Not a memory store."
+    notes:
+      - "Temporal consequence tracker — the8th organ"
+      - "Systemd timers: chron-task0-reconciliation (06:50), chron-prediction-verifier (07:00), chron-loop-closer (07:15) MYT"
+      - "Carry-forward injection: carry_forward.py chron-inject"
+      - "arifFlow bridge: CHRON loop entries → arifflow receipts"
+      - "First falsification window: Sep 23 (fuel-price prediction)"
+
   - id: minimax-media
     class: SUPPORT
     display_name: MiniMax Media MCP
@@ -808,6 +856,7 @@ port_observability:
     - {port: 7073, organ: "arifFlow", binding: "127.0.0.1"}
     - {port: 7074, organ: "FED router", binding: "127.0.0.1"}
     - {port: 18100, organ: "MiniMax Media MCP", binding: "127.0.0.1"}
+    - {port: 18102, organ: "CHRON Temporal Cortex", binding: "127.0.0.1"}
     - {port: 18901, organ: "FLAME", binding: "127.0.0.1"}
   organ_ports_tailscale:
     - {port: 3001, organ: "AAA", binding: "100.64.0.2 (tailnet)"}

@@ -65,6 +65,42 @@ part of the claim. When the corpus splits across schedulers, report which substr
 treat "N jobs, all healthy" as a statement about N, never about the machine. On one host, a
 cron-only sweep reported 36 jobs balanced while 48 timers ran unseen.
 
+## Step 1b — Enumerate by DELIVERY TARGET, never by job name
+
+When the question is "what reaches this person / this chat", the substrates are only half the scope.
+The other half is your filter, and a keyword filter is the half that hides.
+
+Filtering job NAMES (`grep -E 'zen|chron|brief|alpha'`) silently omits every deliverer whose name
+lacks the word, and the omission is invisible — the list looks complete because nothing in it is
+obviously missing. Two live deliverers to the same human DM were missed exactly this way. Enumerate
+by ADDRESS, then resolve each hit to a name; never the reverse:
+
+```bash
+python3 - <<'PY'
+import json, pathlib
+TARGET = "<destination id>"          # the address, not a topic word
+for book in ("/root/.hermes/cron/jobs.json",):
+    d = json.loads(pathlib.Path(book).read_text())
+    for j in (d["jobs"] if isinstance(d, dict) else d):
+        o = j.get("origin") or {}
+        if TARGET in json.dumps(j) or "origin" == str(j.get("deliver")):
+            print(f"{str(j.get('name'))[:44]:<44} {j.get('deliver')} "
+                  f"origin_user={o.get('user_id')} enabled={j.get('enabled')}")
+PY
+# then extend the same address grep across the OTHER substrates, which hold jobs no book knows about
+grep -rn "<destination id>\|cron-deliver\|sendMessage" /etc/cron.d/ /root/scripts/*.sh
+```
+
+A destination grep also catches the jobs the Hermes book cannot see — script-backed entries in
+`/etc/cron.d` and the root crontab address the human directly, with no book entry at all.
+
+**`deliver: "origin"` is a pointer, not a target.** Resolve it through the job's own
+`origin.user_id` / `origin.chat_id` before counting, or one job is counted twice — once as the
+literal string `origin` and once under its real address — and the total is wrong in both directions.
+
+**A filter is a coverage claim.** State the destination and the substrates together, or "N jobs
+reach this person" is an undercount presented as a total.
+
 ## Step 2 — Interpret `enabled: false` by its `state`
 
 Hermes parks a disabled job with a machine-readable reason, and three very different meanings hide
@@ -306,6 +342,20 @@ Two more traps in the same read, both of which made a `STALLED` timer look settl
   probe ran and reported; the threshold verdict is data, not a crash — but it means the verdict lives
   in the **journal**, and `systemctl status` is not the witness for a job whose failure is a verdict
   rather than an exception.
+- **A header comment in a scheduled *script* is a claim, not a schedule fact.** The `Description` rule
+  above applies verbatim to shell and cron payloads. A script banner reading
+  `Runs at 06:00 UTC (14:00 MYT)` described a job that actually fired at **06:00 system-local** — a
+  crontab inherits the host's `TZ` unless the entry sets its own, so a timezone word in a comment is
+  usually the author's assumption, not a measured offset. Settle the firing time from two artifacts
+  the machine wrote, never from the banner:
+
+  ```bash
+  grep -E '^\[?=== ' <job>.log | tail -1      # the script's own stamped header (a `date -u` line gives the offset directly)
+  stat -c '%y %n' <artifact it produced>      # the product's mtime, in local time
+  ```
+
+  A log header reading `22:00Z` beside a product mtime of `06:00` is the whole proof. Report the time
+  you measured; reading the banner instead republishes the author's bug into your own report.
 
 ## Step 3h — Repairing a STALLED timer, and revert-falsifying the cause you were handed
 
@@ -413,6 +463,132 @@ looking, not that the fault was repaired:
 Add `closed_by` + `verified_by`, normalise to UTC, and treat the ledger as the seed of a closure
 metric rather than a status feed.
 
+## Step 3k — Declaring two jobs redundant: compare DESTINATION and PRODUCT, never name or schedule
+
+Retiring a "duplicate" job is a mutation, and the cheap discriminator is wrong. Three jobs named like
+briefs, at overlapping morning slots, resolved to **three different products on three different
+surfaces**:
+
+| shape | destination | product |
+|---|---|---|
+| script-backed brief | Telegram **group** (a topic id, not the human's DM) | text, plus a sidecar JSON consumed downstream |
+| systemd timer brief | Telegram DM | text |
+| `/etc/cron.d` brief | a static **web page on disk** | HTML — no Telegram at all |
+
+Only the DM pair were actually redundant. Compare on **destination ID + artifact type** before
+proposing a merge:
+
+```bash
+grep -nE 'deliver|chat_id|TELEGRAM_.*TARGET|MEDIA' <job script | jobs.json entry>   # where it addresses
+python3 -c "import json,sys;d=json.load(open('/root/.hermes/channel_directory.json'));\
+  print([c for c in d['platforms']['telegram'] if str(c['id']).split(':')[0]==sys.argv[1]])" <chat_id>
+```
+
+Resolve the id to a **name** before calling anything a duplicate: a group topic and a DM look
+identical in a jobs book and are different readers.
+
+**A job whose output another job consumes is an upstream stage, not a duplicate.** Retiring it starves
+the consumer silently — the downstream loop simply stops having input and reports nothing. Grep for a
+file the job writes before proposing to kill it:
+
+```bash
+grep -nE 'Path\(|\.json|\.jsonl|\.md' <job script> | head    # sidecars and their consumers
+```
+
+**The other direction is the expensive one: two lanes can pause each other into zero.** When two
+sessions independently notice the same duplication and each retires the *other's* job, the result is
+not one brief — it is **none**, and both operators report success. After any redundancy action,
+re-read the whole surface and assert the surviving count is exactly one, naming the substrate you
+counted:
+
+```bash
+# enumerate every enabled deliverer from ALL substrates (see Step 1), then count those reaching the human
+```
+
+State the **count you observed**, not the change you made. "Paused the duplicate" is not a delivery
+claim; "exactly one job now delivers to this destination" is.
+
+### Choosing which duplicate survives
+
+Finding the duplicate is half the job; deciding which one lives is the other half, and the instinct
+here is wrong. **The survivor should be the stronger ENGINE, not the lane you happened to build.**
+Two lanes were built for the same deliverable within a minute of each other; the one that lost the
+scheduling race also had the better state layer, the real test suite, and the theme support — and the
+correct move was consolidating onto it and deleting the other implementation rather than defending
+your own. Keeping your version because it is yours leaves the weaker engine in production and
+doubles the maintenance surface.
+
+Evaluate on evidence, never authorship:
+
+- Does it have a **claim/state store with a stable join key**, or only a list of artifact hashes? The
+  one that can express "this claim MOVED" is the one that can learn.
+- Does it have a **real test suite**? Run both, right now, before choosing.
+- Does it keep **content and presentation separable** (more than one theme/engine)?
+- Is a **second writer actively improving it**? A lane under active development will simply be
+  rebuilt tomorrow if you retire it — consolidation that ignores this resets the race.
+
+**Retire the trigger, keep the code.** Switch off the losing lane's schedule; do not delete its work.
+It is often the better source of a component even when it is the worse orchestrator.
+
+**Then break every dependency on the retired lane.** A survivor that reads the loser's output — a
+sidecar, a state file, a "run after that one" note — waits forever on a file that no longer updates,
+and reports nothing. Grep the survivor for the retired lane's paths before declaring done.
+
+**Two writers in one store will collide, and the failure is deferred.** A second writer declaring the
+same table name with a different column set in a shared SQLite file is not rejected: `CREATE TABLE IF
+NOT EXISTS` silently no-ops, so the owning module's schema never exists and its first query dies much
+later with a misleading error (`no such column: <x>`) far from the cause. When two lanes share a
+store, **check the schema you are about to rely on is the one that actually got created**, and fix a
+collision by **renaming the conflicting table and preserving the rows** — never by dropping it, which
+destroys the evidence of what those rows were.
+
+## Step 3l — A whole job book can be DORMANT (enabled, frozen cursor)
+
+The reverse of Step 3e. There the cursor advances while nothing executes. Here the cursor is
+**frozen in the past** while every job in the book reports `enabled: true`, because the runtime
+that reads the book is dead. Such jobs are not paused, not migrated, and not failing — they are
+**dormant**, and the book gives no hint of it. `enabled: true` is a field about intent, never
+about a live reader.
+
+```bash
+python3 - <<'PY'
+import json, datetime
+now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+for p in ('/root/.hermes/cron/jobs.json',
+          '/root/AAA/agents/hermes-asi/runtime/cron/jobs.json'):
+    try:
+        d = json.load(open(p))
+    except Exception:
+        continue
+    jobs = d if isinstance(d, list) else d.get('jobs', [])
+    en = [j for j in jobs if j.get('enabled')]
+    stale = [j for j in en if str(j.get('next_run_at') or '') < now]
+    print(p, f'{len(en)} enabled / {len(jobs)} total, {len(stale)} with a PAST next_run_at')
+PY
+```
+
+A live ticker always rewrites the cursor forward after firing, so *every* enabled job carrying a
+`next_run_at` in the past is the signature. Report the book as DORMANT and name the runtime whose
+death explains it.
+
+**Dormant is not harmless — it is a loaded collision.** These jobs are still in the store and still
+`enabled`. Restarting the runtime re-arms all of them at once, so a book quietly dead for months
+comes back into the very slots a replacement lane now occupies, and both deliver. Before restarting
+any dormant runtime, diff its enabled jobs against the live surfaces by destination and product
+(Step 3k) — the restart is the injection, not the audit. Report it as a finding and let the owner
+choose, exactly as with an orphaned migration (Step 2b).
+
+**A second Hermes-family book can live on the SAME host**, under another agent's runtime directory,
+and it is invisible to every peer-host check. Enumerate books by path, not by host:
+
+```bash
+find / -name jobs.json -path '*cron*' 2>/dev/null
+```
+
+Ignore `_CANONICAL`, `quarantine`, and `state-snapshots` hits — those are history, not schedulers.
+"No duplicate on this host" requires having looked at every book on it, not only the one your CLI
+reads. A cron-book count taken from one book is a statement about that book.
+
 ## Step 4 — Snapshot before any resume
 
 `cp jobs.json jobs.json.bak-<ts>` first. A resume batch is reversible only while the prior book
@@ -489,7 +665,16 @@ inside a 24h window — a migrated expression is rarely re-validated by whoever 
   the job, the tee target is usually the job's own product. A line with no redirect at all is
   UNMEASURED — say that, rather than reading it as healthy.
 
-- **A scheduler count is a statement about the substrates you read, not about the host.** A sweep
+- **A `last_run_at` that does not land on a schedule slot is a MANUAL run, not the schedule
+  working.** A job with expression `0 6 * * *` whose `last_run_at` is mid-morning was triggered by
+  hand; its schedule has still never fired. Cross-check `created_at`: a job created *after* its own
+  slot cannot have run on it. The manual run also leaves a receipt for a **dry run** — an artifact
+  reported `PRODUCED` with the payload never sent — so the ledger shows a same-day result while
+  nothing reached any reader. Only a `last_run_at` sitting on a real slot is evidence about the
+  schedule.
+- **A scheduler count is a statement about the substrates you read, not about the host.** A count is
+  also a statement about the FILTER you applied (Step 1b): a job-name grep undercounts silently,
+  because a deliverer whose name lacks the keyword is absent without looking absent. A sweep
   that walks `crontab -l` and stops can publish "36 jobs, all balanced" while dozens of systemd
   timers run unmeasured on the same machine — the count looked healthy precisely because the missing
   half was invisible. Name your substrates in the verdict, and extend to a new scheduler the moment
@@ -497,8 +682,33 @@ inside a 24h window — a migrated expression is rarely re-validated by whoever 
 - **Fired is not delivered.** A job can run green while every message it produces dies: read the
   `delivery_obligations` states, never the job's `last_status`. Non-zero `failed`/`abandoned` against
   the **bot's own uid** means the job's `origin.chat_id` was mis-seeded (Step 3i).
+- **`enabled: true` says nothing about whether anything is reading the book.** A dead runtime leaves
+  every job enabled with a `next_run_at` frozen in the past — dormant, not paused. Worse than idle:
+  a restart re-arms them all into slots a replacement lane now occupies (Step 3l). And there can be
+  more than one book on one host; enumerate by path, not by hostname.
 - **`is-active` on a oneshot service is not a liveness check.** Oneshot units are `inactive` between
   firings, so the word is identical for healthy-idle and dead. Ask the timer (Step 3g).
+- **A timezone or schedule stated in a script's own header comment is a claim.** Crontabs inherit the
+  host `TZ`; settle the firing time from the script's stamped log line and its product's mtime
+  (Step 3g).
+- **"Same name" or "same hour" is not duplication.** Compare destination ID and artifact type, and
+  check whether the job feeds a consumer before retiring it (Step 3k). Two lanes pausing each other's
+  duplicate produces zero, not one — assert the surviving count from every substrate.
+- **A delivery target must be DECLARED, and the grammar matters.** `hermes send -t <bare_number>`
+  fails with `Unknown or unregistered plugin platform: <number>` — the bare id is parsed as a platform
+  name. The `telegram:<chat_id>` form is required. A transport probe that uses the wrong grammar
+  returns a **false negative** and will convince you a working path is broken, so probe with the exact
+  form the job itself will use. Resolve the id to a NAME before trusting it: a group topic and a DM
+  look identical in a job book and reach different readers.
+- **Creating or updating a scheduled job passes through the constitutional gate — a refusal is the
+  gate working, not an error to route around.** Two shapes bite. A payload asserting a critical
+  variable (money/health/legal) with no admissible source is held: a URL counts as a citation SHAPE
+  and must actually resolve, so prefer a **receipt id plus an on-disk evidence path**, which cannot be
+  NXDOMAIN'd. A destructive command shape is refused outright: **rewrite the operation (rename and
+  preserve) rather than retrying it**.
+- **After any create or update, re-read the book from disk and confirm the field persisted.** The
+  tool response echoing your value back is not evidence it landed in the store — and a target that
+  silently reverted is indistinguishable from a working job until it fails to deliver.
 
 ## Related
 

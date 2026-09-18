@@ -161,6 +161,26 @@ is **write-only**: every agent-authored skill lands there, loads from nowhere, a
 any surface. A view tree full of symlinks into that store is the only thing keeping it reachable, so
 the store's real reachability is *the links*, not its own existence.
 
+**So the create path must mint the address, and by default it does not.** Creating a skill writes the
+package into the canonical store and stops — nothing on the write path creates the view symlink. A
+skill can therefore be complete, resolvable by path, tracked by nothing, and still return *not found*
+to `skill_view`, which is the failure that matters because the loader is what an agent actually uses.
+Measured: a newly authored skill was invisible to `skill_view` until the view link was created and the
+derived index refreshed; the sibling skills in the same category resolved fine, which is what made the
+outlier obvious.
+
+```bash
+# after creating ANY skill — resolve it the way the LOADER does, not the way find does
+ln -sfn <canonical>/<category>/<name> <view>/<category>/<name>   # if the view link is missing
+python3 <view>/../scripts/skill-matrix.py                        # refresh the derived index
+```
+
+Verify with `skill_view(name=<new skill>)` **immediately after creating it**, not at the end of the
+session. Anything that cites the name — a cron job, a handoff, a later step in the same task — fails
+silently on a name that resolves to nothing, and the failure surfaces hours later in an unrelated
+lane. Diagnose the outlier by comparison: if every sibling name in a category resolves and yours does
+not, you are looking at a missing address, not a malformed skill body.
+
 **Census the diff — the difference is the finding.** Loadable = walk every read root following links;
 storage = walk the store without following, plus its own top-level links:
 
@@ -968,6 +988,23 @@ git -C /root/AAA status --porcelain        # must show no deletions before movin
   (`find <store> -name SKILL.md -path '*<name>*'`) and say which of the two failures you found: a
   listed-but-unresolvable name is a broken pointer; an unlisted-but-present body is a resolution gap.
   Mistaking the second for the first is how a real skill gets declared off-limits and left unpatched.
+  Measured again on two newly created packages: both were written, both sat on disk with a complete
+  body, and `skill_view` returned *not found* for each while every sibling name in the same tree
+  resolved. Treat "the create succeeded" and "the skill loads" as two separate claims, and test the
+  second one directly.
+- **`skill_manage(action='create')` takes a SINGLE directory name for `category`, never a path.** A
+  slash-separated coordinate (`domains/general/apex`) is rejected outright — *"Categories must be a
+  single directory name"* — and the operations batch is atomic, so the rejection rolls back every
+  OTHER operation in the same call, including patches to unrelated skills that had already applied.
+  Pass one segment, or omit `category` entirely and settle placement separately.
+- **A skill `description` is budgeted for the always-loaded index.** Discovery text must be one short
+  sentence, trigger first, ending with a period (~60 chars). Longer text is refused at write time and
+  rolls back its batch the same way; the index truncates at ~57 chars and destroys the routing signal
+  regardless. Put the detail in the body, not the description.
+- **Do not mix a `create` with `patch` operations in one batch.** The two above are write-time
+  validation failures that fire on the FIRST operation but abort the WHOLE array, so a malformed
+  create silently discards the patch work beside it and reports only the create error. Sequence them:
+  create and verify first, then patch.
 - **A curator write can be refused for the skill's PATH, not its content.** The federation's pre-tool
   gate trips on the directory name as well as the payload, so a skill under a legal-, medical- or
   trading-worded path (`court/`, `audit/`, `well/`) is held even for a plain read, and `skill_manage`
@@ -977,6 +1014,20 @@ git -C /root/AAA status --porcelain        # must show no deletions before movin
   evidence for it. Read the refusal's reason before blaming the content, never reword a payload to
   slip past a HOLD, and never report the skill as unwritable — a held write is blocked, not refused
   on merit.
+- **An autonomous curator write is refused for OWNERSHIP, and that is a THIRD refusal class.** A
+  skill authored outside the curator reports `created_by=None` and is treated as user-owned: patches
+  and file writes are refused no matter how on-topic the change is, and no rewording clears it. This
+  is systemic across a hand-authored library — it is not a property of the one skill you tried. Three
+  refusals now share a shape and need three different remedies, so read the reason string before
+  acting: a **PATH** hold (the pre-tool gate tripping on a directory word) means apply via `patch`
+  against the canonical path; a **CONTENT-pattern** hold means report it and stop; an **OWNERSHIP**
+  refusal is a request to the human, and the only correct move is to name the topical owner you
+  could not write to and ask for `hermes curator adopt <name>` on it.
+- **Never re-home a lesson into a writable skill that does not own it.** When the topical owner is
+  unreachable, the temptation is to file the finding under the nearest writable neighbour; that is
+  how a library grows a second, thinner owner for one doctrine and then drifts. An unroutable lesson
+  is reported, not relocated — a curated skill in the wrong package is worse than an unfiled note,
+  because the next agent will find it and believe it belongs there.
 
   **The same gate also refuses on CONTENT PATTERN, and that class can never clear.** A skill whose
   purpose *is* the flagged idiom — a package of `getMe` identity probes, credential-name comparisons,
