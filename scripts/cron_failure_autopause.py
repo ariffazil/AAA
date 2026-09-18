@@ -183,6 +183,14 @@ def main():
 
         # Drift check: declared job doesn't exist in live registry
         if adapter == "hermes-cron":
+            # A RETIRED declaration is not drift. This entry's job was removed
+            # deliberately (retired/superseded), so its absence from jobs.json is
+            # the expected state. Reporting it every 15 minutes buried real drift
+            # under ~96 false alarms a day — the same "gate that cries wolf"
+            # defect found elsewhere today. Retired entries are skipped, and any
+            # stub left in the registry must carry status: retired to qualify.
+            if event.get("status") == "retired":
+                continue
             job_id = event.get("job_id")
             if job_id and str(job_id) not in live_job_ids:
                 log(f"DRIFT: {entry_id} job_id={job_id} declared in YAML but missing from jobs.json")

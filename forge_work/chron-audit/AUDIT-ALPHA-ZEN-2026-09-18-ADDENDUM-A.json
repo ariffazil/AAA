@@ -1,0 +1,83 @@
+{
+  "addendum": "AUDIT-ALPHA-ZEN-2026-09-18-ADDENDUM-A",
+  "auditor": "HERMES (AUDITOR / VALIDATOR role)",
+  "subject": "independent verification of the 333-AGI verification report (msg 155143)",
+  "method": "every claim re-derived from disk; nothing accepted from the report itself",
+  "files_found_at_different_paths_than_reported": {
+    "test_alpha_zen_gate.py": "reported /root/scripts/ -> actually /root/AAA/scripts/",
+    "cycles.jsonl": "reported /root/forge_work/ -> actually /root/AAA/forge_work/alpha-zen/",
+    "note": "not a defect, but a verifier who follows the report's paths finds nothing and may wrongly conclude the work does not exist"
+  },
+
+  "claims_confirmed": [
+    {"claim": "3 jobs live, exact schedule, deliver=telegram:-1003815535761",
+     "measured": "CONFIRMED — 15 7, 0 14, 15 21; enabled=true; deliver matches"},
+    {"claim": "39 jobs total / 13 enabled", "measured": "CONFIRMED — 39 and 13, exact"},
+    {"claim": "zero cycles run", "measured": "CONFIRMED — last_run_at null on all three; next 14:00 and 21:15 today"},
+    {"claim": "duplicates removed, legacy briefs disabled",
+     "measured": "CONFIRMED — 3 tombstones for the duplicate pulses; Executive Briefing — Daily Edition enabled=false state=paused; morning-brief-wakebus-audit enabled=false paused; evening-zen-brief migrated-system-cron"},
+    {"claim": "skill alpha-zen-lanes absent from .matrix-index.json",
+     "measured": "CONFIRMED — 145,087-byte index, string absent"},
+    {"claim": "chron expiry / privacy / ranking live; OD1 hidden from the shared view",
+     "measured": "CONFIRMED BY SUBSTITUTION — chron_events.json computes budget 21, fuel-window 5, electricity 104 on 2026-09-18, and morning.html renders exactly 21 / 5 / 104. od1 (164, audience='arif') is ABSENT from the rendered card. The audience filter demonstrably fires."}
+  ],
+
+  "claims_overstated_or_false": [
+    {
+      "claim": "sha256 dua PNG padan entri cycles.jsonl — rantai utuh (chain intact)",
+      "verdict": "FALSE for 4 of 7 entries",
+      "measured": "4 entries STALE, 3 MATCH",
+      "detail": [
+        "10:26:50 morning bec583a643788ef1 -> no longer on disk",
+        "10:26:51 night   3df35f20fe969d71 -> no longer on disk",
+        "10:29:50 morning c38f45c105cdc5c6 -> no longer on disk",
+        "10:29:52 night   3df35f20fe969d71 -> no longer on disk",
+        "10:32:18 / 10:32:54 morning a1b865d7 -> MATCH",
+        "10:32:55 night   ef394ce31d0ecd82 -> MATCH"
+      ],
+      "root_cause": "alpha_zen_card.py:280 writes a FIXED path `ALPHA-ZEN-{MODE}.png`; line 309 then hashes that file. Every re-run overwrites the artifact, so each earlier ledger entry records the hash of a file state that no longer exists.",
+      "why_it_matters": "a ledger entry whose artifact is mutable records an event, not a verifiable claim. The chain is intact only until the next render — and the next render is the whole point of the system.",
+      "class": "same defect family as everything else this session: a receipt that cannot be re-verified because its target moved.",
+      "fix_direction": "content-address the artifact (ALPHA-ZEN-MORNING-<hash8>.png) so old hashes stay resolvable, or add `superseded_by` to the ledger row. Do NOT patch the forger's file from this seat."
+    },
+    {
+      "claim": "gate 12/12, 11 broken cards all rejected",
+      "verdict": "UNDERSTATED, not wrong",
+      "measured": "20/20 — 20 negative controls, all pass, exit 0",
+      "note": "the suite is stronger than its own summary. Notable: it carries a regression test citing the exact defect found earlier today — an engine printing 377 where the truth was 21, and a frozen od1_days: 164. The audit finding became a test. That is the loop closing correctly."
+    }
+  ],
+
+  "my_own_probe_error": {
+    "id": "E1",
+    "what_i_did": "checked `{\"arif\",\"syed\"} <= set(cell.get(\"audience\"))` and counted 0 shared / 5 owner-only",
+    "what_is_true": "audience is a STRING ('both' | 'arif'), not a list. 'both' means both principals.",
+    "correct_count": "4 shared, 1 owner-only",
+    "consequence": "my first probe appeared to contradict the reported '4 aktif kongsi vs 5'. The report was RIGHT and my check was wrong.",
+    "recorded_because": "an auditor who does not audit his own probe is just a second narrator."
+  },
+
+  "corrected_complementarity_map": {
+    "note": "supersedes the earlier 'complementarity_not_duplication' section, which described a hand-built chron that has since been replaced by a canonical store",
+    "accepted_lane": {
+      "path": "/root/AAA/scripts/",
+      "files": ["chron.py", "chron_events.json", "chron_events.schema.json", "alpha_zen_card.py", "alpha_zen_card.schema.json", "alpha_zen_gate.py", "test_alpha_zen_gate.py"],
+      "strengths": ["canonical event store with schema", "audience-scoped rendering", "20 negative controls", "rotation + live sensor fetch", "cycle ledger"]
+    },
+    "superseded_lane": {
+      "path": "/root/scripts/alpha_zen_engine.py",
+      "status": "superseded — 5 blockers previously recorded (year error, frozen value, off-by-one, dead gate, no privacy mechanism)",
+      "note": "still present on disk; a reader may not know it was abandoned. Recommend an explicit tombstone or header comment."
+    },
+    "my_own_lane": {
+      "path": "/root/AAA/forge_work/apex-zen-chron/",
+      "status": "demonstrator, not the production path",
+      "note": "its unique artifact is the clock SELF-TEST (renders 10 days apart, fails if a count does not move). If the accepted lane wants that property, port the TEST, not the renderer."
+    }
+  },
+
+  "next_single_action": "Accept the lane at /root/AAA/scripts/ as the canonical CHRON path. Before promote: fix the mutable-artifact ledger (content-address the PNG or add superseded_by), and add a tombstone header to /root/scripts/alpha_zen_engine.py so it cannot be re-adopted by accident. Then let 14:00 and 21:15 fire and observe, which is what the other lane already proposed and what the spec's own STOP condition requires.",
+
+  "chron_state": "EXPERIMENTAL",
+  "chron_state_note": "0 cycles recorded against the live jobs. CANARY requires a comparison between old and new paths over real cycles; nothing has fired yet. The machine layer is built and verified; the temporal layer has not been exercised."
+}

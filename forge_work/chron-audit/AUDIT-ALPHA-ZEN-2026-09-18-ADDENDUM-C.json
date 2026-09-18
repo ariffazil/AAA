@@ -1,0 +1,81 @@
+{
+  "addendum": "AUDIT-ALPHA-ZEN-2026-09-18-ADDENDUM-C",
+  "auditor": "HERMES (AUDITOR / VALIDATOR role)",
+  "subject": "the CHRON world-model architecture proposal — converted from prose into testable conditions and checked against the live system",
+  "method": "each architectural claim was restated as a falsifiable assertion, then measured on disk and on live substrates",
+
+  "auditor_self_correction": {
+    "what_i_said": "in the previous message: 'Baki 55 minit' to the 14:00 firing",
+    "truth": "at 10:39 MYT the 14:00 firing is 3h 21m away",
+    "consequence": "none — nothing acted on it",
+    "recorded_because": "an auditor who does not audit his own arithmetic is a narrator with a badge"
+  },
+
+  "claim_1_time_is_missing_from_the_reality_graph": {
+    "status": "CONFIRMED BY MEASUREMENT",
+    "evidence": "5 memory collections sampled on :6333 — arifos_memory (40 pts), arifos_precedent (258), arifos_session_memory (56), federation_memory_patterns (223), arifos_vault_canon (13). Payload schema time-fields: FALSE for all five.",
+    "reading": "the institution has a memory substrate with real content in it, and none of that content is stamped with when it was true. It can retrieve what it knows. It cannot ask when it knew it."
+  },
+
+  "claim_1b_and_the_contradiction_inside_it": {
+    "status": "SHARPER THAN THE PROPOSAL STATES",
+    "finding": "a bi-temporal graph engine is ALREADY deployed — /root/arifOS/arifosmcp/runtime/l5_graphiti_bridge.py + deploy/graphiti-config.yaml, plus two hardening test files.",
+    "measurement": "grep for valid_at | invalid_at | valid_from | valid_to | temporal | event_time | reference_time across the bridge returns ZERO hits.",
+    "reading": "Graphiti's whole reason to exist is bi-temporal edges (event time vs ingestion time). The engine is present; the temporal capability is not surfaced through the bridge that the rest of the federation calls.",
+    "therefore": "the correct statement is not 'time is missing'. It is: time is absent where memory is USED, and present-but-unexposed where the right engine is INSTALLED. That is a wiring defect, not a greenfield build — and a greenfield build would be the expensive wrong answer."
+  },
+
+  "claim_2_attention_itself_is_data": {
+    "status": "FALSE IN THE CURRENT SYSTEM",
+    "evidence": "cycles.jsonl, all 7 entries: signal_count = 18 every time, selected_count = 9 every time, source_count = 9 every time. privacy_rejections = 0, duplicate_rejections = 0, weak_signal_rejections = 0 — every value, every entry.",
+    "reading": "the field names for the attention funnel already exist. Nothing has ever passed through them. There is no candidate pool: 18 arrive, 9 render, mechanically, with no observed rejection of any kind.",
+    "why_this_matters_more_than_it_looks": "a field named privacy_rejections that is permanently 0 is not a privacy filter — it is a placeholder shaped like one, and a reader who greps for it will conclude protection exists. This is the third instance today of the same pattern: the form of a mechanism without the mechanism.",
+    "consequence": "the proposal's strongest eureka — 'yesterday CHRON ranked this LOW, reality proved otherwise' — requires a rejected-candidate trace that has never been written once."
+  },
+
+  "claim_3_the_chron_packet": {
+    "status": "ABSENT — 13 of 13 checked fields",
+    "missing": ["chron_id", "principal", "predictions", "questions", "attention_delta", "memory_candidates", "previous_chron_ref", "next_review_at", "signals_rejected", "rejected_detail", "provenance", "confidence", "privacy_scope"],
+    "present_instead": ["artifact", "artifact_sha256", "cycle_id", "dimensions", "duplicate_rejections", "gate", "mode", "privacy_rejections", "render_status", "render_time", "selected_count", "signal_count", "source_count", "weak_signal_rejections"],
+    "reading": "the current cycle record is a RENDER log, not a CHRON packet. It describes an artifact that was produced. It does not describe a state of the world that was decided. The proposal is therefore a specification for a system that does not exist yet, and the PNG is correctly understood as its only implemented view."
+  },
+
+  "the_five_invariants_restated_as_gates": {
+    "note": "the proposal's closing invariant set is the most immediately useful part of it, because each one can be made to fail. Restated so they are checkable, with the current verdict.",
+    "gates": [
+      {"invariant": "No CHRON signal without provenance.",
+       "test": "every rendered cell carries a source with an observed_at",
+       "current": "PARTIAL — chron_events.json carries source+confidence, and the card renders a confidence line; but the 18 signal cells carry only an O/D/I tier tag, no source. The 'o' tag claims sourced without naming what."},
+      {"invariant": "No durable memory without lifecycle.",
+       "test": "memory writes carry expires_at or a review date",
+       "current": "FAIL — no time fields in any sampled collection, so no lifecycle is possible"},
+      {"invariant": "No prediction without a future verification time.",
+       "test": "any claim of the form 'X will happen' carries a verify_at",
+       "current": "FAIL — no prediction object exists; no verification time exists"},
+      {"invariant": "No human-state claim without perspective.",
+       "test": "claims about a person are stored as <statement> REPORTED_BY <person>, never <person> <state>",
+       "current": "PASS IN STRUCTURE, UNTESTED IN PRACTICE — the privacy gate blocks 'arif/syed + inner-state word' patterns and has a two-way self-test that catches both a real leak and a false alarm. This is the one invariant with working machinery behind it."},
+      {"invariant": "No event without time.",
+       "test": "every event node carries a target_date and a timezone",
+       "current": "PASS — chron_events.json: 5 events, all with target_date + timezone + audience + confidence. Schema-enforced."}
+    ],
+    "score": "2 pass, 1 partial, 2 fail"
+  },
+
+  "the_tension_this_proposal_creates": {
+    "stated_plainly": "this arrives while the previous spec is at §19 STOP CONDITION, and that condition is not met.",
+    "condition_text": "CHRON v1 is stable when ... 7 consecutive cycles complete without material defect. Then: STOP FORGING. RUN IT. OBSERVE HUMAN RESPONSE.",
+    "measured": "consecutive cycles completed: 0",
+    "therefore": "adopting the CHRON packet ontology now would be building a second and third storey on a foundation that has never carried a load. The proposal is not wrong. It is early by at least seven cycles.",
+    "what_the_proposal_gets_right_anyway": "it is a coherent cognitive architecture and its placement of CHRON (temporal attention between reality graph and world model) is well-argued. Recording the target is worthwhile. Building the target now is not.",
+    "recommended_sequencing": [
+      "1. Let 14:00 and 21:15 fire. Observe delivery, clock correctness, and ledger resolution.",
+      "2. Fix the two conditions already recorded: delete the engine's _chrono(); content-address the artifact or add superseded_by.",
+      "3. THEN build the rejection trace — it is cheap, it needs only candidate_id + reason + rank_band, and it is the precondition for every attention-policy claim in the proposal.",
+      "4. Only after that does the CHRON packet (the 13 absent fields) become meaningful, because it is a container for exactly the data steps 2-3 begin producing."
+    ]
+  },
+
+  "chron_state": "EXPERIMENTAL",
+  "next_single_action": "14:00, 3h 21m away. Verify three things at once: delivered? number matches the canonical store? ledger hash still resolves? Nothing in this proposal changes that."
+}

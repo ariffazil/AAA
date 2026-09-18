@@ -1,0 +1,90 @@
+{
+  "addendum": "AUDIT-ALPHA-ZEN-2026-09-18-ADDENDUM-B",
+  "auditor": "HERMES (AUDITOR / VALIDATOR role)",
+  "subject": "the session-state report and the A/B/C ownership proposal put in front of F13",
+  "method": "every row of the deliverables table re-derived from disk; every claimed commit resolved by hash",
+
+  "commits_verified": {
+    "result": "7 of 7 EXIST — all resolved by hash in their own repos",
+    "detail": [
+      {"repo": "scripts", "sha": "f8bcb27", "when": "2026-09-18 09:32", "subject": "feat(niat-trigger): autonomous init->seal arc"},
+      {"repo": "scripts", "sha": "01db37a", "when": "2026-09-18 10:33", "subject": "feat(alpha-zen): recommendation engine v1.1"},
+      {"repo": "arifOS", "sha": "1d495bee5", "when": "2026-09-18 09:31", "subject": "fix(drift): dirty-tree check"},
+      {"repo": "arifFlow", "sha": "2a3cc61", "when": "2026-09-18 08:58", "subject": "fix(governance): actor ID canonicalization"},
+      {"repo": "GEOX", "sha": "0dee4d49", "when": "2026-09-18 08:57", "subject": "chore: server.py update"},
+      {"repo": "WEALTH", "sha": "0a539b8", "when": "2026-09-18 08:57", "subject": "chore: server.py update"},
+      {"repo": "WELL", "sha": "b977122", "when": "2026-09-18 09:35", "subject": "chore: server.py update"}
+    ]
+  },
+
+  "deliverable_claims": [
+    {"row": "Niat trigger (4 phases) LIVE, timers fire 22:30/22:45",
+     "verdict": "PARTLY SUPPORTED",
+     "measured": "2 timers exist and are armed for 2026-09-18 22:30:20 and 22:45:05 (arifos-niat-loop-picker, arifos-niat-executor). Units on disk: 2 timers + 2 services = 4 files, which appears to be the '4 phases' accounting. Two scheduled instants, not four.",
+     "note": "armed is not fired. Neither has ever fired."},
+
+    {"row": "ALPHA-ZEN engine v1.1, G11 gate, corrected data",
+     "verdict": "FALSE on 'corrected data'",
+     "measured_live": "_chrono() executed at audit time returns {days_left_2026: 103, budget_2027_days: 377, od1_days: 164, year_pct: 72}",
+     "truth_on_same_day": "the event's real date (2026-10-09) gives 21 days",
+     "error": "356 days, printed with full confidence",
+     "source_lines_still_present": [
+       "line 252: budget = datetime(2027, 10, 1, ...)  -- year wrong, unchanged",
+       "line 259: od1_days: 164                         -- frozen literal, unchanged",
+       "line 254: days_left = (year_end - now).days    -- off-by-one, unchanged"
+     ],
+     "what_actually_changed_in_v1.1": "the G11 freshness gate went from 0 call sites to 1 (lines 264-277, _pick now tries up to 3 candidates). That is a REAL fix and it is the one that was made. The three chron defects were not touched.",
+     "reads_canonical_event_store": "0 occurrences of chron_events.json in the engine",
+     "why_it_matters": "the row says 'corrected data' while the number is a year wrong, and this is the row F13 is reading to decide ownership"},
+
+    {"row": "Unified scheduler ledger, 190 entries, 3-class",
+     "verdict": "SUPPORTED",
+     "measured": "18,242 bytes; 196 table rows (190 entries plus header and separator rows)"},
+
+    {"row": "Dream ingress trace, ROOT CAUSE FOUND (Redis auth)",
+     "verdict": "NOT AUDITED",
+     "reason": "no trace artifact path was given in the report; nothing to open. Recorded as an unverifiable claim, not as false."},
+
+    {"row": "Infographic PNGs, 3 rendered",
+     "verdict": "UNDERSTATED — actually 7 in two trees",
+     "measured": [
+       "/root/forge_work/alpha-zen-engine-output.png",
+       "/root/forge_work/alpha-zen-engine-v2.png",
+       "/root/forge_work/alpha-zen-v2.png",
+       "/root/forge_work/alpha-signal-morning.png",
+       "/root/forge_work/zen-signal-night.png",
+       "/root/AAA/forge_work/alpha-zen/ALPHA-ZEN-MORNING.png",
+       "/root/AAA/forge_work/alpha-zen/ALPHA-ZEN-NIGHT.png"
+     ],
+     "note": "7 artifacts named for one product, across two trees, from at least three renderers. This is producer sprawl — the same disease as the 6-cron-jobs-three-pairs finding from this morning."},
+
+    {"row": "Scheduler cleanup, 3 ALPHA-ZEN duplicates disabled",
+     "verdict": "SUPPORTED",
+     "measured": "3 tombstone rows naming the 07:15, 14:00 and 21:15 duplicate pulses; the three survivors are enabled and scheduled"}
+  ],
+
+  "the_pattern_worth_naming": {
+    "observation": "two reports in a row from the same direction carried a false assurance on an integrity claim",
+    "instances": [
+      {"report": "333-AGI verification (msg 155143)", "claim": "sha256 of both PNGs matches the cycles.jsonl entries — chain intact", "truth": "4 of 7 ledger entries stale; the artifact path is fixed, so each render overwrites the file the previous row hashed"},
+      {"report": "session-state table (this message)", "claim": "engine v1.1 ... corrected data", "truth": "the chron in that engine still returns 377 against a truth of 21"}
+    ],
+    "reading": "both failures share one shape: the claim was checked against the newest or most convenient state, and is true of that state while false of the object it describes. Not fabrication. Overclaiming under time pressure.",
+    "consequence_for_F13": "the word 'verified' currently means 'verified where the verifier happened to look'. Treat it as a pointer, not a proof."
+  },
+
+  "the_ownership_question": {
+    "framing_offered": "A = Hermes holds, engine becomes a pool supplier. B = FI-003 holds, Hermes becomes delivery only. C = combine, one owner.",
+    "auditor_view": "C is correct in structure. As written it is insufficient, because the collision that caused today's damage is not ownership — it is TWO CLOCKS.",
+    "the_actual_hazard": "the engine carries its own _chrono(). The canonical lane carries chron_events.json. Two independent clocks produce two different numbers for the same event, and that is how 377 and 21 can coexist in one system on one day.",
+    "non_negotiable_term": "the engine's _chrono() must be DELETED, not repaired. A supplier of content does not own time. If it keeps a clock, C re-creates the defect it is meant to resolve.",
+    "second_term": "the artifact path must be content-addressed (ALPHA-ZEN-MORNING-hash8.png) or the ledger must carry superseded_by, or the cycle log stays unverifiable past the next render.",
+    "self_disqualification": "the auditor does not assign ownership. Per the authority envelope the executor may never issue its own envelope, and an auditor recommending its own lane as owner would be doing exactly that. Ownership is F13's. This seat records conditions, not a claim on the seat.",
+    "one_clock_rule": "wherever ownership lands, exactly one component may compute a day-count. Everything else reads it."
+  },
+
+  "chron_state": "EXPERIMENTAL",
+  "chron_state_reason": "zero cycles fired; last_run_at null on all three live jobs; next firing 2026-09-18T14:00. The report's own claim of CANARY is not yet supportable: CANARY requires comparison data from real cycles and there are none.",
+
+  "next_single_action": "Let 14:00 fire. Then verify three things at once: did it deliver, did the number match the canonical store, and did the cycle row's hash still resolve. Everything else in this report can wait behind those three."
+}
