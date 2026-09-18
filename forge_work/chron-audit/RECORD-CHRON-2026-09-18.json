@@ -1,0 +1,348 @@
+{
+  "record_id": "RECORD-CHRON-2026-09-18",
+  "created": "2026-09-18T11:47:47+08:00",
+  "created_utc": "2026-09-18T03:47:47+00:00",
+  "what_this_is": "RECEIPT (Lane B). NOT a constitutional SEAL.",
+  "why_not_a_seal": {
+    "asked": "kernel arif_init at :8088, 2026-09-18T11:47 MYT",
+    "kernel_answer": {
+      "seal_allowed": false,
+      "mutation_allowed": false,
+      "actor_cryptographically_verified": false,
+      "autonomy_band": "OBSERVE_ONLY",
+      "effective_verdict": "HOLD",
+      "reason_code": "NEEDS_REVIEW"
+    },
+    "consequence": "A Lane A SEAL requires judge_state_hash + witness + a recognised actor. This seat has none. Per seal-discipline: 'I will not call RECEIPT a SEAL. I will not write the word SEAL without the hash chain.'",
+    "so": "this file carries a real hash chain and refuses the word SEAL."
+  },
+  "chain": {
+    "algorithm": "sha256",
+    "rule": "row_hash = sha256(json(previous row incl. its prev)). Editing any row breaks every row after it.",
+    "rows": [
+      {
+        "i": 0,
+        "kind": "artifact",
+        "path": "/root/AAA/forge_work/chron-audit/AUDIT-ALPHA-ZEN-2026-09-18-ADDENDUM-A.json",
+        "sha256": "98c4c8ed513ebce38e99d6a0968bbd263dee823cd5aaa3471722d9f42854362f",
+        "note": "",
+        "prev": "GENESIS",
+        "row_hash": "2ee71888514b55b6aa31464f47e44f573c0392b2eba7c7ed3b037079377fb175"
+      },
+      {
+        "i": 1,
+        "kind": "artifact",
+        "path": "/root/AAA/forge_work/chron-audit/AUDIT-ALPHA-ZEN-2026-09-18-ADDENDUM-B.json",
+        "sha256": "0a7b4679a428004b8c0fe07f3c1831c20d60c07cabada697bc5d94c06eaef373",
+        "note": "",
+        "prev": "2ee71888514b55b6aa31464f47e44f573c0392b2eba7c7ed3b037079377fb175",
+        "row_hash": "f152b5940757c091a71add9efbbc1619bc1945053cd1fb4f479d1ea0672eda7a"
+      },
+      {
+        "i": 2,
+        "kind": "artifact",
+        "path": "/root/AAA/forge_work/chron-audit/AUDIT-ALPHA-ZEN-2026-09-18-ADDENDUM-C.json",
+        "sha256": "764001dd8f1e35a5571099c99345f184de65d1bdc21ba0d77c9fd037bb2db57d",
+        "note": "",
+        "prev": "f152b5940757c091a71add9efbbc1619bc1945053cd1fb4f479d1ea0672eda7a",
+        "row_hash": "885b79a3b2eadb5bd9cd011545d72560b1dc7256eba2a740a6680ebac421c7b0"
+      },
+      {
+        "i": 3,
+        "kind": "artifact",
+        "path": "/root/AAA/forge_work/chron-audit/AUDIT-ALPHA-ZEN-2026-09-18.json",
+        "sha256": "29c30cf7bb0eed8e2a58af5da81219250665880eeca3708fdfd63942d3ec7e60",
+        "note": "",
+        "prev": "885b79a3b2eadb5bd9cd011545d72560b1dc7256eba2a740a6680ebac421c7b0",
+        "row_hash": "405fdd2bbbc90a2c3885a17f9c54935a2a1614aad723ed93814ec55d7b8ac0eb"
+      },
+      {
+        "i": 4,
+        "kind": "artifact",
+        "path": "/root/AAA/forge_work/chron-audit/DISTILLATE-EXTERNAL-APEX-ZEN-AUDIT-2026-09-18.json",
+        "sha256": "582d25fd5e9f0e60ba36286cd1e2658204935f1a51ac303b5cb7d27201d46089",
+        "note": "",
+        "prev": "405fdd2bbbc90a2c3885a17f9c54935a2a1614aad723ed93814ec55d7b8ac0eb",
+        "row_hash": "a84bdde9ac0880e1d00bbb4d58dba0af5886dee979fd05b5a71cfa4bbf1f3cd7"
+      },
+      {
+        "i": 5,
+        "kind": "artifact",
+        "path": "/root/AAA/forge_work/chron-audit/DISTILLATE-EXTERNAL-E13-2026-09-18.json",
+        "sha256": "607b7a9655e58175632fb3a541d0754d595bc0e3fb6a315677efbe9ca1be3441",
+        "note": "",
+        "prev": "a84bdde9ac0880e1d00bbb4d58dba0af5886dee979fd05b5a71cfa4bbf1f3cd7",
+        "row_hash": "f1ec5e7d989b9f1600c0d12b93a924fdbd55d3652e10cfcda5717121d34a0459"
+      },
+      {
+        "i": 6,
+        "kind": "artifact",
+        "path": "/root/AAA/forge_work/chron-audit/DISTILLATE-EXTERNAL-TEMPORAL-SUBSTRATE-2026-09-18.json",
+        "sha256": "1d4d97f379ce3b0e6f52d958e75308c22335de7b3730499e2f64249f2e029a97",
+        "note": "",
+        "prev": "f1ec5e7d989b9f1600c0d12b93a924fdbd55d3652e10cfcda5717121d34a0459",
+        "row_hash": "55c6cf9d20424130ecf107df19a7585cd54b81dbb76f9ed8f9ee616110311f02"
+      },
+      {
+        "i": 7,
+        "kind": "artifact",
+        "path": "/root/AAA/forge_work/chron-audit/REALITY-MAP-FORGE-CHRON-2026-09-18.json",
+        "sha256": "6961e16e92776604481b9ff0d18045de6d5611789b98a829889048b9bb01c5fc",
+        "note": "",
+        "prev": "55c6cf9d20424130ecf107df19a7585cd54b81dbb76f9ed8f9ee616110311f02",
+        "row_hash": "63790335a0bf78077d3d47dfb69de16869956a8f6be11b749c469d19a9b58ae8"
+      },
+      {
+        "i": 8,
+        "kind": "artifact",
+        "path": "/root/AAA/forge_work/chron-audit/SEAL-CHRON-FORGERY-2026-09-18.json",
+        "sha256": "83acc62c4dea587b68ca278bedf56f45ff65f20ba6edd04f32472f741cbedf71",
+        "note": "",
+        "prev": "63790335a0bf78077d3d47dfb69de16869956a8f6be11b749c469d19a9b58ae8",
+        "row_hash": "8ad50c7abf67ce8f1b096603a2624180e11833f2a91f0f618856a54522004764"
+      },
+      {
+        "i": 9,
+        "kind": "artifact",
+        "path": "/root/AAA/forge_work/chron-audit/SEAL-CHRON-SPINE-2026-09-18.json",
+        "sha256": "aed21fa19cdb2894cc02aa4731f0ed306bb0414103e7ac8ba30c751d84a5b0fc",
+        "note": "",
+        "prev": "8ad50c7abf67ce8f1b096603a2624180e11833f2a91f0f618856a54522004764",
+        "row_hash": "1725841d56863b053da4443e8957fd11082090d3ec4d1c1932a1fb215ed596fb"
+      },
+      {
+        "i": 10,
+        "kind": "artifact",
+        "path": "/root/AAA/forge_work/chron-audit/SEAL-RECONCILIATION-2026-09-18.json",
+        "sha256": "3b268aceb977f81a9cae80002827961de652f641b427ff1a3c39afc111da83f7",
+        "note": "",
+        "prev": "1725841d56863b053da4443e8957fd11082090d3ec4d1c1932a1fb215ed596fb",
+        "row_hash": "59bddf769618026edb636d53115243a7e63db18a4c670ef93a50fbf298280beb"
+      },
+      {
+        "i": 11,
+        "kind": "artifact",
+        "path": "/root/AAA/forge_work/chron-audit/STAGED-FIX-IDENTITY-HEALTH-2026-09-18.json",
+        "sha256": "d949ca3bc10b7ae6b278e02312195d9744ee302d729c618b0ceed95076af4baa",
+        "note": "",
+        "prev": "59bddf769618026edb636d53115243a7e63db18a4c670ef93a50fbf298280beb",
+        "row_hash": "a7132cff12a258cbacef2d41325a3177ab40c8120a42c7d4f4c8a40e4eb9c314"
+      },
+      {
+        "i": 12,
+        "kind": "code",
+        "path": "/root/AAA/scripts/alpha_zen_card.py",
+        "sha256": "a15322a0f856cd7ef04263276c0edc4039742c1e4dedd4367a7accaf6c29b963",
+        "note": "",
+        "prev": "a7132cff12a258cbacef2d41325a3177ab40c8120a42c7d4f4c8a40e4eb9c314",
+        "row_hash": "1b96ab4fec52c33ec2cc41eed34a108d9f8b07e7715e845af46e8cf468f7b443"
+      },
+      {
+        "i": 13,
+        "kind": "code",
+        "path": "/root/AAA/scripts/alpha_zen_gate.py",
+        "sha256": "8adedfd8f173fe07e71f409245692c872cdfdce235de0367d8857bfd78d35458",
+        "note": "",
+        "prev": "1b96ab4fec52c33ec2cc41eed34a108d9f8b07e7715e845af46e8cf468f7b443",
+        "row_hash": "fefbeb4899f6c161e8cd0e10f4e178c5d37aa2a0fb80e618362f1bb20a966810"
+      },
+      {
+        "i": 14,
+        "kind": "code",
+        "path": "/root/AAA/scripts/alpha_zen_infographic.py",
+        "sha256": "4f66016a9f9ff4d3de1daf6b62b7785e76b15b6e3c4fa74bb8fe908962f9e349",
+        "note": "",
+        "prev": "fefbeb4899f6c161e8cd0e10f4e178c5d37aa2a0fb80e618362f1bb20a966810",
+        "row_hash": "2c2facb2d8c48f5e35b0331b78ee5683f5de0ab4488ab4bfd659872fd9743b93"
+      },
+      {
+        "i": 15,
+        "kind": "code",
+        "path": "/root/AAA/scripts/alpha_zen_card.schema.json",
+        "sha256": "65e6845b094f0f436897b1a965346cc2c8e8312dbe2f521114ddd980204f75a3",
+        "note": "",
+        "prev": "2c2facb2d8c48f5e35b0331b78ee5683f5de0ab4488ab4bfd659872fd9743b93",
+        "row_hash": "0506a887c3cbde80e893d091a7e474045210a93e6d3542ded9b664c9c2be04e9"
+      },
+      {
+        "i": 16,
+        "kind": "code",
+        "path": "/root/AAA/scripts/chron.py",
+        "sha256": "afb1ca65047f569513ba8e4825405bcbe0c6b6b9092340cc318e99eea8981cd4",
+        "note": "",
+        "prev": "0506a887c3cbde80e893d091a7e474045210a93e6d3542ded9b664c9c2be04e9",
+        "row_hash": "ea817ec6d98b79ada08e549d344b71c8979467f58a1bfd382cac5636dc1f978e"
+      },
+      {
+        "i": 17,
+        "kind": "code",
+        "path": "/root/AAA/scripts/chron_events.json",
+        "sha256": "361d7b76e141dcf5c7a96908b962b4c0f93e99358a4e46f32a1ee9b6fec553a3",
+        "note": "",
+        "prev": "ea817ec6d98b79ada08e549d344b71c8979467f58a1bfd382cac5636dc1f978e",
+        "row_hash": "ac30ebd4dbd6d63acba221fb6b0aff9c5214e0f2d7b601b3fbf922e5b0b06d1d"
+      },
+      {
+        "i": 18,
+        "kind": "code",
+        "path": "/root/AAA/scripts/chron_events.schema.json",
+        "sha256": "30723d86cf4c9d7a41069c41b286156494b352b97d2714443151f5091f13d4fd",
+        "note": "",
+        "prev": "ac30ebd4dbd6d63acba221fb6b0aff9c5214e0f2d7b601b3fbf922e5b0b06d1d",
+        "row_hash": "99c801362ebc80c06c32057b7399509d75a6dfae058fb0432d615032072ea7bc"
+      },
+      {
+        "i": 19,
+        "kind": "code",
+        "path": "/root/AAA/scripts/chron_spine_gate.py",
+        "sha256": "600b9a85adc0181b371b93691c31dfd79e5fb6bf49d217f1207fa4e20e558109",
+        "note": "",
+        "prev": "99c801362ebc80c06c32057b7399509d75a6dfae058fb0432d615032072ea7bc",
+        "row_hash": "deb551d9c2d5f9ee3fea9d5fbb5441611bcd0bbfc94d723649da9ed0b037a725"
+      },
+      {
+        "i": 20,
+        "kind": "code",
+        "path": "/root/AAA/scripts/semantic_authority_gate.py",
+        "sha256": "e05242ee983d8e357c2a374255ebcacba8fdcd4484404003711a01aeb76f0f8b",
+        "note": "",
+        "prev": "deb551d9c2d5f9ee3fea9d5fbb5441611bcd0bbfc94d723649da9ed0b037a725",
+        "row_hash": "85b2e1d1db3559b4ce2bdd0555d704d94033bb1e673585f6d5cc1ef9751ba7e1"
+      },
+      {
+        "i": 21,
+        "kind": "code",
+        "path": "/root/AAA/scripts/musyawarah_gate.py",
+        "sha256": "818b2ea9990f02d926fcaeb9ad5561a6f304c3cdc8f1112f087ac40baf36bc12",
+        "note": "",
+        "prev": "85b2e1d1db3559b4ce2bdd0555d704d94033bb1e673585f6d5cc1ef9751ba7e1",
+        "row_hash": "b308a97839939ee0a66a382ed2e8d490ed2c942b75b7a9b7c4a01156dc751ba3"
+      },
+      {
+        "i": 22,
+        "kind": "code",
+        "path": "/root/AAA/scripts/test_alpha_zen_gate.py",
+        "sha256": "fd521cd73a88f031eeb47e658dd8f260a484b652d0a0c6bd1efaea5914ed0258",
+        "note": "",
+        "prev": "b308a97839939ee0a66a382ed2e8d490ed2c942b75b7a9b7c4a01156dc751ba3",
+        "row_hash": "1b26523afc54c00b8e3edab01ef209c00109cf769872823d4675b188b84cd599"
+      },
+      {
+        "i": 23,
+        "kind": "code",
+        "path": "/root/AAA/scripts/cron_failure_autopause.py",
+        "sha256": "d23dd46640efdf497c3ad6124c96e26fcc823d2e6b7af4dd87b0dc9ce42a574d",
+        "note": "",
+        "prev": "1b26523afc54c00b8e3edab01ef209c00109cf769872823d4675b188b84cd599",
+        "row_hash": "4700887d8531e128d5ed9c5e6611d0cf6f671608569d3873166c90eeaff2b355"
+      },
+      {
+        "i": 24,
+        "kind": "code",
+        "path": "/root/AAA/scripts/apex-zen-compact.py",
+        "sha256": "189be35acf8efb161d14a50cbe66dd8c1ff8697636a1a34fb55a2da762f2638f",
+        "note": "",
+        "prev": "4700887d8531e128d5ed9c5e6611d0cf6f671608569d3873166c90eeaff2b355",
+        "row_hash": "be811bcf4508685dbc2400b5348832377cd9d4bdc882b3a3adaeefbc15bbd3f5"
+      },
+      {
+        "i": 25,
+        "kind": "code",
+        "path": "/root/AAA/registries/federated-recurrence.yaml",
+        "sha256": "79219ac2deda76d5945f9d5877842ca6b3839c3c07ff8c05035a64f1884bbcc4",
+        "note": "",
+        "prev": "be811bcf4508685dbc2400b5348832377cd9d4bdc882b3a3adaeefbc15bbd3f5",
+        "row_hash": "e07e704899a8748d8ce86445903b0ebc03244a154e714a36c12ad7414287911f"
+      },
+      {
+        "i": 26,
+        "kind": "code",
+        "path": "/root/scripts/alpha_zen_engine.py",
+        "sha256": "a822850a37c13fcfa6d3ad822142c18ea590b1158cdeed0a264678387dde4830",
+        "note": "",
+        "prev": "e07e704899a8748d8ce86445903b0ebc03244a154e714a36c12ad7414287911f",
+        "row_hash": "81b7d99a69a26b660fb9e973a9dd8f0e63f950b322a54685652efa4caa64f85b"
+      },
+      {
+        "i": 27,
+        "kind": "code",
+        "path": "/root/A-FORGE/hooks/pre-commit-lsp-gate.sh",
+        "sha256": "4b79a69b6fb832c9121178291029e516cf2c425ed8ef7282cace339c0ac18de4",
+        "note": "",
+        "prev": "81b7d99a69a26b660fb9e973a9dd8f0e63f950b322a54685652efa4caa64f85b",
+        "row_hash": "2f7b1dbd9c77cc9b2ea66e22586997e1ae5ac789c60f329d391ebe245d23deaf"
+      },
+      {
+        "i": 28,
+        "kind": "ledger",
+        "path": "/root/AAA/claim_ledger/claims.db",
+        "sha256": "142c67d055bbcc4c6975098b7327d47fdf058f35a660267ea61e237f5bc8faf5",
+        "note": "",
+        "prev": "2f7b1dbd9c77cc9b2ea66e22586997e1ae5ac789c60f329d391ebe245d23deaf",
+        "row_hash": "90c67643714b66716bf294888e4d83939e763926c32e367895327d192416431c"
+      },
+      {
+        "i": 29,
+        "kind": "repo_head",
+        "path": "/root/AAA",
+        "sha256": "608957c34bbd45357c0ab3ac589ce5997e467e9d",
+        "note": "52 commit(s) today",
+        "prev": "90c67643714b66716bf294888e4d83939e763926c32e367895327d192416431c",
+        "row_hash": "733bc5454b0a855438708dbcbe2bc854486e66a1107e1c0e9edfde51c76189dd"
+      },
+      {
+        "i": 30,
+        "kind": "repo_head",
+        "path": "/root/scripts",
+        "sha256": "133f6920169ce9ae337ffedb20c745793a893d01",
+        "note": "5 commit(s) today",
+        "prev": "733bc5454b0a855438708dbcbe2bc854486e66a1107e1c0e9edfde51c76189dd",
+        "row_hash": "4cc03c328d98ae7d86124f4090ac7bfe4fafa10726bc9c21f593b6b7614908b0"
+      },
+      {
+        "i": 31,
+        "kind": "repo_head",
+        "path": "/root/A-FORGE",
+        "sha256": "4f030155d304ac8fcd706fcbe6b62643d746db32",
+        "note": "4 commit(s) today",
+        "prev": "4cc03c328d98ae7d86124f4090ac7bfe4fafa10726bc9c21f593b6b7614908b0",
+        "row_hash": "49d5ea3807b6f877bfb5bb2c5b2cb20a582cad9ee97bf6c4be7a6469c2500f44"
+      },
+      {
+        "i": 32,
+        "kind": "repo_head",
+        "path": "/root/arifOS",
+        "sha256": "1d495bee5c2cdb348ff0093d128cae1a8dd34eb9",
+        "note": "19 commit(s) today",
+        "prev": "49d5ea3807b6f877bfb5bb2c5b2cb20a582cad9ee97bf6c4be7a6469c2500f44",
+        "row_hash": "09eee02e723600c56b10ab16ef2be75abe7e3a4a46a5d626167b719d0ea78332"
+      }
+    ],
+    "terminal_hash": "09eee02e723600c56b10ab16ef2be75abe7e3a4a46a5d626167b719d0ea78332",
+    "row_count": 33
+  },
+  "what_it_covers": {
+    "audit_artifacts": 12,
+    "code_files": 16,
+    "missing_code": [],
+    "claim_ledger": "/root/AAA/claim_ledger/claims.db",
+    "repo_heads": {
+      "/root/AAA": "608957c34bbd45357c0ab3ac589ce5997e467e9d",
+      "/root/scripts": "133f6920169ce9ae337ffedb20c745793a893d01",
+      "/root/A-FORGE": "4f030155d304ac8fcd706fcbe6b62643d746db32",
+      "/root/arifOS": "1d495bee5c2cdb348ff0093d128cae1a8dd34eb9"
+    }
+  },
+  "open_items": [
+    "14:00 ALPHA-ZEN Body Check has NOT fired. Recorded as VOID in the claim ledger (clm-01c59438b9d22cda). Must be superseded by an OBS after the run.",
+    "The 06:00 docforge job's first scheduled fire is tomorrow 06:00. Its dispatch path is a dry run today; delivery is unproven.",
+    "alpha_zen_engine.py carries uncommitted working-tree changes. Two writers touched it; a classifier agent is judging whether they are deliberate.",
+    "A-FORGE world-model-lite.jsonl stopped writing 2026-08-27 (22 days). Root cause unknown.",
+    "kernel tools.py lines 140 and 153 accept a LABEL and a SUBSTRING as deployment-drift proof. Latent; no current false label observed.",
+    "identity.py:87 returns a bare 'status' constant while holding both commits needed to compute drift. Staged fix written, NOT applied.",
+    "One subagent (artifact manifest) still running at record time."
+  ],
+  "chron_state": "EXPERIMENTAL",
+  "state_reason": "0 of 3 ALPHA-ZEN jobs have fired; the arrow chain is unproven",
+  "next_single_action": "14:00 MYT — witness the nine arrows. Supersede the VOID claim with an OBS. Nothing else."
+}
