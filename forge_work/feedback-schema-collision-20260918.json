@@ -1,0 +1,9 @@
+{
+  "recorded_at": "2026-09-18T01:49:44Z",
+  "cause": "A second writer created table 'feedback' with a different column set; the owning module's CREATE TABLE IF NOT EXISTS silently no-op'd, so its queries failed with 'no such column: active'.",
+  "action": "renamed, not dropped \u2014 rows preserved for inspection",
+  "moves": [
+    "feedback -> feedback_legacy_20260918 (1 row(s) preserved)",
+    "feedback_refusals -> feedback_refusals_legacy_20260918 (3 row(s) preserved)"
+  ]
+}

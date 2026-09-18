@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>POLIX &amp; CIVX — WEALTH Capability Brief</title>
+<style>
+@page {
+  size: A4 portrait;
+  margin: 15mm 13mm 16mm 13mm;
+  @bottom-left {
+    content: "WEALTH · POLIX & CIVX capability brief · 2026-09-18";
+    font-family: "DejaVu Sans"; font-size: 7pt; color: #8A98A5;
+  }
+  @bottom-right {
+    content: "Page " counter(page) " of " counter(pages);
+    font-family: "DejaVu Sans"; font-size: 7pt; color: #8A98A5;
+  }
+}
+* { box-sizing: border-box; }
+body { font-family: "DejaVu Sans", sans-serif; font-size: 8.8pt; line-height: 1.45;
+       color: #14202B; margin: 0; }
+h1, h2, h3, h4 { margin: 0; font-weight: bold; }
+p { margin: 0 0 6pt 0; }
+.small { font-size: 7.8pt; color: #5B6B7A; }
+
+/* ---------- cover ---------- */
+.cover { border-top: 4pt solid #0F5C6B; padding-top: 10pt; margin-bottom: 12pt; }
+.eyebrow { font-size: 7.6pt; letter-spacing: 1.6pt; text-transform: uppercase;
+           color: #0F5C6B; font-weight: bold; margin-bottom: 6pt; }
+h1 { font-size: 30pt; line-height: 1.03; letter-spacing: -0.6pt; color: #0B1B24; }
+.sub { font-size: 11pt; color: #3C4C5A; margin-top: 7pt; line-height: 1.35; }
+.metagrid { display: table; width: 100%; margin-top: 13pt; border-top: 0.8pt solid #D9E1E8;
+            border-bottom: 0.8pt solid #D9E1E8; padding: 7pt 0; }
+.metagrid .row { display: table-row; }
+.metagrid .cell { display: table-cell; width: 50%; padding: 2.4pt 10pt 2.4pt 0; vertical-align: top; }
+.mlabel { font-size: 7pt; letter-spacing: 0.9pt; text-transform: uppercase; color: #8A98A5; display: block; }
+.mvalue { font-size: 8.8pt; color: #14202B; }
+.badge { display: inline-block; font-size: 7.4pt; font-weight: bold; letter-spacing: 0.5pt;
+         padding: 2pt 6pt; border-radius: 2pt; background: #FDF3DC; color: #8A5A00;
+         border: 0.6pt solid #E8C97A; }
+
+/* ---------- sections ---------- */
+h2 { font-size: 12.5pt; color: #0B1B24; margin: 15pt 0 6pt 0; padding-bottom: 3pt;
+     border-bottom: 1.4pt solid #0F5C6B; }
+h2 .num { color: #0F5C6B; margin-right: 6pt; }
+h3 { font-size: 10pt; color: #0F5C6B; margin: 11pt 0 4pt 0; }
+h4 { font-size: 8.8pt; color: #14202B; margin: 8pt 0 3pt 0; }
+.lede { font-size: 9.4pt; color: #33424F; margin-bottom: 8pt; }
+ul { margin: 3pt 0 6pt 0; padding-left: 12pt; }
+li { margin-bottom: 2.4pt; }
+
+/* ---------- tables ---------- */
+table { width: 100%; border-collapse: collapse; margin: 4pt 0 8pt 0; font-size: 7.9pt; }
+th { background: #0F5C6B; color: #FFFFFF; text-align: left; font-size: 7.2pt;
+     letter-spacing: 0.45pt; text-transform: uppercase; padding: 4pt 5pt; font-weight: bold; }
+td { padding: 4pt 5pt; border-bottom: 0.6pt solid #E3E9EE; vertical-align: top; }
+tr:nth-child(even) td { background: #F6F9FA; }
+td.k { font-weight: bold; color: #0B1B24; }
+caption { caption-side: top; text-align: left; font-size: 7.2pt; color: #8A98A5;
+          padding-bottom: 2.5pt; letter-spacing: 0.4pt; text-transform: uppercase; }
+
+/* ---------- chips ---------- */
+.pill { display: inline-block; font-size: 6.9pt; font-weight: bold; padding: 1pt 4.5pt;
+        border-radius: 2pt; letter-spacing: 0.3pt; }
+.r-hi { background: #FBE7E7; color: #A32020; }
+.r-md { background: #FDF3DC; color: #8A5A00; }
+.r-lo { background: #E4F5EA; color: #1E7A46; }
+.st-ok { color: #1E7A46; font-weight: bold; }
+.st-new { color: #0F5C6B; font-weight: bold; }
+.st-part { color: #8A5A00; font-weight: bold; }
+.st-gap { color: #A32020; font-weight: bold; }
+
+/* ---------- path cards ---------- */
+.pcard { border: 0.7pt solid #D9E1E8; border-left: 3pt solid #0F5C6B; padding: 7pt 9pt 6pt 9pt;
+         margin-bottom: 7pt; background: #FBFDFE; }
+.pcard.warn { border-left-color: #B26B00; }
+.pcard.bad { border-left-color: #A32020; }
+.pcard h4 { margin: 0 0 3pt 0; font-size: 9.6pt; }
+.pcard .pid { font-family: "DejaVu Sans Mono", monospace; font-size: 7pt; color: #8A98A5;
+              letter-spacing: 0.4pt; }
+.pcard .assum { font-size: 7.7pt; color: #3C4C5A; margin: 3pt 0; }
+
+/* ---------- resilience matrix ---------- */
+table.matrix td.sc { text-align: center; font-weight: bold; width: 14%; }
+table.matrix th { text-align: center; }
+table.matrix th.ax, table.matrix td.ax { text-align: left; }
+.s-hi { background: #E4F5EA !important; color: #14663A; }
+.s-md { background: #FDF3DC !important; color: #8A5A00; }
+.s-lo { background: #FBE7E7 !important; color: #A32020; }
+
+/* ---------- callouts ---------- */
+.note { background: #F4F7F9; border-left: 3pt solid #0F5C6B; padding: 6pt 8pt; margin: 7pt 0;
+        font-size: 8.1pt; color: #33424F; }
+.note b { color: #0B1B24; }
+.warnbox { background: #FDF3DC; border-left: 3pt solid #B26B00; padding: 6pt 8pt; margin: 7pt 0;
+           font-size: 8.1pt; color: #5C4200; }
+.two { display: table; width: 100%; }
+.two > div { display: table-cell; width: 50%; vertical-align: top; padding-right: 9pt; }
+.avoid { page-break-inside: avoid; }
+.pb { page-break-before: always; }
+</style></head><body>
+
+<div class="cover">
+  <div class="eyebrow">WEALTH Organ · arifOS Federation · Knowledge Axis L4 &amp; L10</div>
+  <h1>POLIX &amp; CIVX</h1>
+  <div class="sub">Power topology and civilizational horizon for the Malaysian fiscal regime —
+  who holds power, who captures the rent, who pays, and what becomes irreversible between
+  2027 and 2040.</div>
+  <div class="metagrid">
+    <div class="row">
+      <div class="cell"><span class="mlabel">Domain</span><span class="mvalue">Malaysia fiscal regime</span></div>
+      <div class="cell"><span class="mlabel">Horizon</span><span class="mvalue">14 years — 2027 to 2040</span></div>
+    </div>
+    <div class="row">
+      <div class="cell"><span class="mlabel">Schemas</span><span class="mvalue">POLIX-v1.0.0 &nbsp;·&nbsp; CIVX-v1.0.0</span></div>
+      <div class="cell"><span class="mlabel">Tools</span><span class="mvalue">capital_polix &nbsp;·&nbsp; capital_civx</span></div>
+    </div>
+    <div class="row">
+      <div class="cell"><span class="mlabel">Evidence basis</span><span class="mvalue">Public sources only · no insider knowledge</span></div>
+      <div class="cell"><span class="mlabel">Epistemic tag</span><span class="mvalue">INTERPRETED · DYNAMIC, not observed</span></div>
+    </div>
+    <div class="row">
+      <div class="cell"><span class="mlabel">Governance status</span>
+        <span class="mvalue"><span class="badge">SAFE_TO_STUDY — NOT DECISION AUTHORITY</span></span></div>
+      <div class="cell"><span class="mlabel">Produced</span><span class="mvalue">18 September 2026 · WEALTH / POLIX · CIVX</span></div>
+    </div>
+  </div>
+</div>
+
+<h2><span class="num">1</span>The void this fills</h2>
+<p class="lede">Before POLIX and CIVX, WEALTH could do the arithmetic of capital — NPV, IRR,
+entry plans, entropy — but had no political economy, no distribution of consequence, and no
+horizon long enough to see what cannot be undone. A number that is correct and unplaced is
+still a blind spot.</p>
+<p>The gap was structural, not cosmetic. Four questions could not be answered at all:</p>
+<ul>
+  <li><b>Who captured the regulator?</b> — POLIX now maps incentive, opacity and capture risk
+      per institution.</li>
+  <li><b>Who benefits, and who pays?</b> — POLIX now traces rent flows from source to
+      beneficiary to cost-bearer.</li>
+  <li><b>What becomes irreversible in fourteen years?</b> — CIVX now names the lock-ins
+      per path.</li>
+  <li><b>How resilient is the system under different oil and reform paths?</b> — CIVX now
+      scores six resilience axes across three explicit paths.</li>
+</ul>
+<table>
+  <caption>Knowledge axis coverage after this build</caption>
+  <tr><th>Axis</th><th>Domain</th><th>Owner</th><th>Status</th><th>Availability</th></tr>
+  <tr><td class="k">L0</td><td>Physical</td><td>GEOX</td><td class="">Live</td><td class="st-ok">●  Live</td></tr><tr><td class="k">L1</td><td>Economic</td><td>WEALTH</td><td class="">Live</td><td class="st-ok">●  Live</td></tr><tr><td class="k">L2</td><td>Market signals</td><td>WEALTH</td><td class="">Live + signal typing</td><td class="st-ok">●  Live</td></tr><tr><td class="k">L3</td><td>Institutional</td><td>WEALTH</td><td class="">Live</td><td class="st-ok">●  Live</td></tr><tr><td class="k">L4</td><td>Power topology</td><td>WEALTH</td><td class="">POLIX seed</td><td class="st-new">◆  New</td></tr><tr><td class="k">L5</td><td>Social / cultural</td><td>—</td><td class="">Vacant</td><td class="st-gap">○  Vacant</td></tr><tr><td class="k">L6</td><td>Behavioural</td><td>WELL</td><td class="">Live</td><td class="st-ok">●  Live</td></tr><tr><td class="k">L7</td><td>Information / entropy</td><td>WEALTH</td><td class="">Live + four-truth receipts</td><td class="st-ok">●  Live</td></tr><tr><td class="k">L8</td><td>Consequence topology</td><td>WEALTH</td><td class="">Partial</td><td class="st-part">◐  Partial</td></tr><tr><td class="k">L9</td><td>Constitutional</td><td>arifOS</td><td class="">Live</td><td class="st-ok">●  Live</td></tr><tr><td class="k">L10</td><td>Civilizational</td><td>WEALTH</td><td class="">CIVX seed</td><td class="st-new">◆  New</td></tr>
+</table>
+<p class="small">Two axes remain open. <b>L5 — social and cultural</b> is vacant. <b>L8 —
+consequence topology</b> is partial. Both are the next voids.</p>
+
+<div class="pb"></div>
+<h2><span class="num">2</span>POLIX — power topology of the Malaysian fiscal regime</h2>
+<p class="lede">Scope: federal petroleum revenue, taxation, subsidies, GLC governance and
+federal–state fiscal relations. Six actors, four rent flows, three rule asymmetries.</p>
+
+<div class="note"><b>Capture score: MODERATE.</b> Not uniform. State governments
+carry the highest capture risk (opacity 0.7); Bank Negara Malaysia the lowest (0.3) — operational
+independence holds even though the Governor is politically appointed. The concentration that
+matters most is not in a regulator but at the centre: the Prime Minister also holds the Finance
+portfolio.</div>
+
+<h3>2.1 Actors: mandate, opacity, capture risk</h3>
+<table>
+  <caption>Opacity 0–1: how much of the decision process is publicly legible</caption>
+  <tr><th>Actor</th><th>Type</th><th>Opacity</th><th>Capture</th><th>Structural note</th></tr>
+  <tr><td class="k">PETRONAS</td><td>SOE</td><td style="text-align:center">0.6</td><td><span class="pill r-md">MODERATE</span></td><td>Structural dual role: commercial entity AND national resource custodian. Dividend policy is politically sensitive.</td></tr><tr><td class="k">Ministry of Finance (MoF)</td><td>STATE</td><td style="text-align:center">0.5</td><td><span class="pill r-md">MODERATE</span></td><td>PM holds MoF portfolio — concentration of fiscal + executive power.</td></tr><tr><td class="k">Bank Negara Malaysia (BNM)</td><td>REGULATOR</td><td style="text-align:center">0.3</td><td><span class="pill r-lo">LOW</span></td><td>Relatively independent. Governor appointment is political but operational independence is maintained.</td></tr><tr><td class="k">Securities Commission (SC)</td><td>REGULATOR</td><td style="text-align:center">0.4</td><td><span class="pill r-md">MODERATE</span></td><td>Regulatory capture risk from industry revolving door.</td></tr><tr><td class="k">State Governments (esp. Sabah, Sarawak, Terengganu)</td><td>STATE</td><td style="text-align:center">0.7</td><td><span class="pill r-hi">HIGH</span></td><td>East Malaysia has stronger resource claims under Malaysia Agreement 1963 (MA63). Federal fiscal transfers create leverage.</td></tr><tr><td class="k">Cabinet / Economic Planning Unit (EPU)</td><td>STATE</td><td style="text-align:center">0.6</td><td><span class="pill r-md">MODERATE</span></td><td>EPU has outsized influence on allocation without proportional public scrutiny.</td></tr>
+</table>
+
+<h3>2.2 Rent flows: source, beneficiary, cost-bearer</h3>
+<table>
+  <caption>Where value is extracted, who receives it, and who absorbs the cost</caption>
+  <tr><th>Rent type</th><th>Source</th><th>Beneficiary</th><th>Cost bearer</th>
+      <th>Est. annual</th><th>Reversibility</th></tr>
+  <tr><td class="k">Resource Rent</td><td>Petroleum extraction (upstream)</td><td>Federal government (via PETRONAS dividend + petroleum tax + export duty)</td><td>State governments (fixed 5% royalty, not profit share), future generations (depletion), local communities (environmental)</td><td>RM 60-80B (PETRONAS dividend + tax + royalty, varies with oil price)</td><td>STRUCTURAL</td></tr><tr><td class="k">Regulatory Rent</td><td>Sugar/flour/cement licensing oligopoly</td><td>Licensed producers (few families/corporations)</td><td>Consumers (higher prices), new entrants (barriers)</td><td>RM 2-5B (estimated consumer surplus loss)</td><td>MEDIUM</td></tr><tr><td class="k">Fiscal Rent</td><td>Subsidy regime (fuel, cooking oil, rice)</td><td>Consumers (diffuse), but disproportionate benefit to high-consumption households</td><td>Federal budget (RM 50-80B annually), future fiscal space</td><td>RM 50-80B</td><td>HIGH</td></tr><tr><td class="k">Political Rent</td><td>GLC board appointments and procurement</td><td>Connected individuals and networks</td><td>GLC performance, minority shareholders, public trust</td><td>UNMEASURED — performance drag is diffuse</td><td>MEDIUM</td></tr>
+</table>
+<p class="small">The resource rent is the one that compounds. States bear extraction costs and
+receive a fixed fraction — the rule is capped at 5%, and it takes an Act of Parliament
+(Petroleum Development Act 1974) to move it.</p>
+
+<h3>2.3 Rule asymmetries</h3>
+<table>
+  <caption>Rules that distribute advantage without distributing accountability</caption>
+  <tr><th>Asymmetry</th><th>Who benefits</th><th>Who carries the cost</th>
+      <th>Reform difficulty</th><th>Note</th></tr>
+  <tr><td>Petroleum royalty capped at 5% for states. Federal receives majority of petroleum revenue.</td><td>Federal government (fiscal consolidation, spending flexibility)</td><td>Petroleum-producing states (especially Terengganu, Sabah, Sarawak)</td><td><span class="pill r-md">STRUCTURAL</span></td><td>Constitutional + legislative. Sabah/Sarawak claim 10%+ under MA63. Political negotiation ongoing.</td></tr><tr><td>PM holds MoF portfolio. Executive and fiscal authority concentrated in one person.</td><td>PM/executive branch (fiscal discretion without Cabinet constraint)</td><td>Parliamentary oversight, checks and balances</td><td><span class="pill r-md">HIGH</span></td><td>Convention, not law. But structural concentration of power is documented.</td></tr><tr><td>GST replaced by SST — regressive shift reducing tax base and fiscal resilience.</td><td>Consumers (lower visible tax), businesses (simpler compliance)</td><td>Federal fiscal space (RM 20-25B annual revenue loss), future generations</td><td><span class="pill r-md">HIGH</span></td><td>GST is economically superior (broader base, self-enforcing chain). SST is politically easier but fiscally weaker.</td></tr>
+</table>
+
+<div class="two avoid">
+  <div>
+    <h4>Coercion signals — pressure points</h4>
+    <ul><li>Federal fiscal transfers create state dependency</li><li>PETRONAS dividend pressure during low oil prices</li><li>Subsidy reform political cost exceeds fiscal benefit in short term</li></ul>
+  </div>
+  <div>
+    <h4>Geopolitical exposure</h4>
+    <ul><li>Oil price volatility (Brent correlation)</li><li>China demand slowdown (commodity export)</li><li>US rate cycle (MYR pressure, capital flows)</li><li>ASEAN supply chain shift</li></ul>
+  </div>
+</div>
+
+<h3>2.4 Second seed case — PETRONAS and the GLC layer</h3>
+<p>Three actors control the country's largest pools of institutional capital. The structural
+tension is the same in each: a commercial mandate and a national mandate held by the same board,
+with the appointment power sitting outside the balance sheet.</p>
+<table>
+  <caption>GLC layer — opacity and capture risk</caption>
+  <tr><th>Actor</th><th>Type</th><th>Opacity</th><th>Capture</th><th>Structural note</th></tr>
+  <tr><td class="k">PETRONAS Board</td><td>SOE</td><td style="text-align:center">0.6</td><td><span class="pill r-md">MODERATE</span></td><td>Board appointments are political. But operational competence has historically been high.</td></tr><tr><td class="k">Khazanah Nasional</td><td>SOE</td><td style="text-align:center">0.5</td><td><span class="pill r-md">MODERATE</span></td><td>Dual mandate: commercial returns AND strategic national interest. Tension is structural.</td></tr><tr><td class="k">PNB (Permodalan Nasional Berhad)</td><td>SOE</td><td style="text-align:center">0.4</td><td><span class="pill r-lo">LOW</span></td><td>Largest fund manager in Malaysia. Social mandate (Bumiputera equity) is explicit.</td></tr>
+</table>
+<ul><li><b>Political appointees, connected networks</b> benefit; <b>GLC performance, minority shareholders, public trust</b> carry the cost. GLC board appointments are political patronage instruments, not merit-based governance. <span class="small">(Malaysia Corporate Governance Code exists but enforcement is weak.)</span></li></ul>
+<div class="note">Khazanah carries RM100B+ and PNB RM300B+ — between them, a large share of listed
+Malaysian equity. When appointment is political and the mandate is dual, the performance drag is
+real but diffuse. That diffuseness is exactly why it survives scrutiny.</div>
+
+<div class="pb"></div>
+<h2><span class="num">3</span>CIVX — civilizational horizon, 2027 to 2040</h2>
+<p class="lede">Five assumption axes, three explicit paths, six resilience axes per path. Every
+number below is an interpretation held open for calibration — not a forecast.</p>
+
+<h3>3.1 Assumption axes</h3>
+<table>
+  <caption>Each axis is stated with its range and its uncertainty class</caption>
+  <tr><th>Axis</th><th>Values</th><th>Basis</th><th>Uncertainty</th></tr>
+  <tr><td class="k">oil_price_brent</td><td>$55/bbl (low) · $75/bbl (base) · $95/bbl (high)</td><td>EIA/IEA long-range forecasts, historical volatility</td><td><span class="pill r-hi">HIGH</span></td></tr><tr><td class="k">petroleum_production</td><td>Declining 3%/yr (depletion) · Flat (new discoveries offset) · Growing 1%/yr (deepwater)</td><td>PETRONAS annual reports, MPM data</td><td><span class="pill ">MEDIUM</span></td></tr><tr><td class="k">demographic_path</td><td>High aging (TFR 1.3, rapid aging) · Medium aging (TFR 1.5, gradual) · Managed transition (TFR 1.7, policy success)</td><td>DOSM population projections, UN World Population Prospects</td><td><span class="pill ">MEDIUM</span></td></tr><tr><td class="k">fiscal_reform</td><td>No reform (SST stays) · Partial reform (GST-lite) · Full reform (GST + property tax)</td><td>Political feasibility assessment</td><td><span class="pill ">DEEP</span></td></tr><tr><td class="k">subsidy_trajectory</td><td>Full subsidies maintained · Gradual rationalization · Full targeted cash transfers</td><td>Historical reform attempts, PADU implementation</td><td><span class="pill r-hi">HIGH</span></td></tr>
+</table>
+<p class="small">Four of the five axes are political or behavioural. That is the honest shape of
+this problem: the geology and the price are the easier half.</p>
+
+<h3>3.2 Resilience matrix</h3>
+<table class="matrix">
+  <caption>Ordinal scores 0–1 · green ≥ 0.70 · amber 0.45–0.69 · red &lt; 0.45</caption>
+  <tr><th class="ax">Resilience axis</th><th>BEST<br><span style="font-weight:normal;font-size:6.6pt">Managed transition</span></th><th>BASE<br><span style="font-weight:normal;font-size:6.6pt">Muddle through</span></th><th>WORST<br><span style="font-weight:normal;font-size:6.6pt">Structural decline</span></th></tr>
+  <tr><td class="ax k">Fiscal</td><td class="sc s-hi">0.8</td><td class="sc s-md">0.5</td><td class="sc s-lo">0.2</td></tr><tr><td class="ax k">Energy</td><td class="sc s-hi">0.7</td><td class="sc s-md">0.5</td><td class="sc s-lo">0.3</td></tr><tr><td class="ax k">Institutional</td><td class="sc s-hi">0.7</td><td class="sc s-md">0.5</td><td class="sc s-lo">0.3</td></tr><tr><td class="ax k">Social Cohesion</td><td class="sc s-hi">0.7</td><td class="sc s-md">0.5</td><td class="sc s-lo">0.3</td></tr><tr><td class="ax k">Sovereignty</td><td class="sc s-hi">0.8</td><td class="sc s-md">0.6</td><td class="sc s-lo">0.4</td></tr><tr><td class="ax k">Intergenerational</td><td class="sc s-hi">0.8</td><td class="sc s-lo">0.4</td><td class="sc s-lo">0.1</td></tr>
+</table>
+
+<h3>3.3 The three paths</h3>
+<div class="pcard avoid">
+  <span class="pid">MY-FISCAL-BEST · 14y</span>
+  <h4>Managed transition — high oil + fiscal reform + demographic adaptation</h4>
+  <div class="assum"><b>Assumptions:</b> $95/bbl (high) · Growing 1%/yr (deepwater) · Managed transition (TFR 1.7, policy success) · Full reform (GST + property tax) · Full targeted cash transfers</div>
+  <div class="two"><div><b>Key risks</b><ul><li>Oil price reversal after investment lock-in</li><li>GST political backlash (2014 precedent)</li><li>Demographic transition slower than assumed</li></ul></div>
+  <div><b>Irreversible if taken</b><ul><li>Deepwater infrastructure once committed (30yr lifecycle)</li><li>GST political capital spent</li></ul></div></div>
+  <div class="small"><b>Option space:</b> Full fiscal flexibility. Investment capacity for energy transition. Social safety net funded. &nbsp;|&nbsp; Best case requires political will that has historically been absent. Not impossible but not baseline.</div>
+</div><div class="pcard warn avoid">
+  <span class="pid">MY-FISCAL-BASE · 14y</span>
+  <h4>Muddle through — base oil + partial reform + demographic drift</h4>
+  <div class="assum"><b>Assumptions:</b> $75/bbl (base) · Flat (new discoveries offset) · Medium aging (TFR 1.5, gradual) · Partial reform (GST-lite) · Gradual rationalization</div>
+  <div class="two"><div><b>Key risks</b><ul><li>Fiscal deficit widens as petroleum revenue declines</li><li>MYR depreciation pressure from twin deficits</li><li>Aging population strains healthcare + pensions</li><li>Energy transition investment delayed</li></ul></div>
+  <div><b>Irreversible if taken</b><ul><li>Lost decade of energy transition investment</li><li>Brain drain accelerates (skilled workforce outflow)</li><li>Fossil fuel infrastructure lock-in</li></ul></div></div>
+  <div class="small"><b>Option space:</b> Limited fiscal flexibility. Incremental reform possible but structural change deferred. &nbsp;|&nbsp; Most likely path based on historical pattern. Not optimal but survivable.</div>
+</div><div class="pcard bad avoid">
+  <span class="pid">MY-FISCAL-WORST · 14y</span>
+  <h4>Structural decline — low oil + no reform + rapid aging</h4>
+  <div class="assum"><b>Assumptions:</b> $55/bbl (low) · Declining 3%/yr (depletion) · High aging (TFR 1.3, rapid aging) · No reform (SST stays) · Full subsidies maintained</div>
+  <div class="two"><div><b>Key risks</b><ul><li>Sovereign credit downgrade</li><li>MYR crisis (capital flight, FX reserve depletion)</li><li>Brain drain accelerates (skilled workforce exodus)</li><li>Social unrest from subsidy removal pressure</li><li>Energy security crisis (net importer by 2035)</li><li>Pension/healthcare funding gap for aging population</li></ul></div>
+  <div><b>Irreversible if taken</b><ul><li>Institutional trust deficit (hard to rebuild)</li><li>Human capital loss (10+ years to replace)</li><li>Ecological damage from deferred maintenance</li><li>Intergenerational debt burden</li></ul></div></div>
+  <div class="small"><b>Option space:</b> Very limited. IMF-style conditionality possible. Sovereignty compromised. &nbsp;|&nbsp; Low probability but high consequence. Requires combination of adverse factors. Worth studying, not worth panicking.</div>
+</div>
+
+<div class="warnbox"><b>The gap that matters:</b> the distance between BEST (0.8 fiscal) and WORST
+(0.2 fiscal) is not oil. Both extreme paths assume the same geology; they differ on political
+choices — tax base, subsidy design, and how early the transition is funded. Oil sets the
+weather. Reform decides the outcome.</div>
+
+<div class="pb"></div>
+<h2><span class="num">4</span>Limits, calibration debt and governance status</h2>
+<div class="warnbox"><b>Status: SAFE_TO_STUDY.</b> CIVX is not decision authority. No path becomes
+decision-eligible until it is calibrated against realised history and promoted by a sovereign
+decision.</div>
+
+<div class="two avoid">
+  <div>
+    <h4>Stated limitations</h4>
+    <ul><li>Not calibrated against historical fiscal outcomes</li><li>Political economy variables are deep uncertainty</li><li>External shocks (pandemic, war, financial crisis) not modeled</li><li>No Monte Carlo — discrete paths only</li><li>Resilience scores are ordinal, not cardinal</li><li>SAFE_TO_STUDY — not decision authority</li></ul>
+  </div>
+  <div>
+    <h4>Calibration backlog — the path to trust</h4>
+    <ul><li>Historical fiscal deficit vs oil price correlation (2000-2025)</li><li>PETRONAS actual dividend vs budget assumption accuracy</li><li>GST revenue vs SST revenue actual comparison</li><li>DOSM population projection vs actual (2015-2025 validation)</li><li>MYR/USD correlation with fiscal fundamentals</li></ul>
+    <p class="small">Until these five lines are measured, the resilience scores stay ordinal and
+    the paths stay scenarios.</p>
+  </div>
+</div>
+
+<h3>4.1 How to read this document</h3>
+<ul>
+  <li><b>POLIX is structural, not personal.</b> It maps roles, rules and flows — it does not
+      allege motive in any individual. Capture risk is a property of a position, not a verdict
+      on a person.</li>
+  <li><b>CIVX is a study, not a prediction.</b> Three discrete paths, no Monte Carlo, no
+      external shocks modelled. It is a reasoning scaffold.</li>
+  <li><b>Epistemic tags are load-bearing.</b> Every rent flow and rule asymmetry carries its
+      basis — OBSERVED, DERIVED or INTERPRETED. The distinction is the value.</li>
+  <li><b>Nothing here is sourced from inside.</b> Public sources only. No insider knowledge.</li>
+</ul>
+
+<div class="note"><b>Provenance of this document.</b> The POLIX-v1.0.0 and CIVX-v1.0.0 seed
+constructors were executed on 18 September 2026 for both cases, and the values printed here are
+their own output, reproduced verbatim. The analysis layer is therefore sound.</div>
+
+<div class="warnbox"><b>Status of the endpoint layer — declared, not hidden.</b> The tool wrappers
+<code>capital_polix</code> and <code>capital_civx</code> failed on every live call at the MCP
+boundary (a schema-name mismatch in the response envelope). The repair is written and staged;
+the service reload is withheld pending a governed approval decision. Until that reload lands, the
+intelligence in this brief is reproducible but not yet served through the tool interface. Read
+this as a study produced correctly, from an interface not yet declared live.</div>
+
+<div class="note"><b>What would make this decision-grade:</b> PETRONAS dividend against budget
+assumption accuracy over ten years; realised GST-versus-SST revenue; DOSM projection error
+against actual; and the state-versus-federal petroleum take resolved as a number rather than a
+negotiation. Four measurements, and the whole structure tightens.</div>
+
+<p class="small" style="margin-top:10pt;color:#8A98A5">
+WEALTH — capital intelligence for arifOS · POLIX-v1.0.0 · CIVX-v1.0.0 · seed case
+<code>Malaysia fiscal durability 2027-2040</code> · generated 2026-09-18 01:35:19 UTC ·
+DITEMPA BUKAN DIBERI.</p>
+</body></html>

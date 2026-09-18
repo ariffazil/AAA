@@ -33,6 +33,25 @@ Inline payload shape (POST to `api.brevo.com/v3/smtp/email`):
 - Response: `{"messageId": "<...>"}` — quote it back to Arif; delivery trackable in Brevo dashboard (Transactional → Logs).
 - `env | grep BREVO_API_KEY` → kunci-root.env has it; never echo into chat.
 
+## Attachments (governed lane only)
+
+The Brevo lane carries file attachments. One file per `--attach`, repeatable:
+
+```bash
+python3 gov_email.py prepare --to a@b.com --subject S --body B \
+  --html "$(cat body.html)" --attach /abs/path/file.pdf --actor hermes-asi
+python3 gov_email.py send    --to a@b.com --subject S --body B \
+  --html "$(cat body.html)" --attach /abs/path/file.pdf --actor hermes-asi --confirm <token>
+```
+
+- `--attach` takes an **absolute path**; `--html` takes the **HTML string** (use `"$(cat f.html)"`). The two flags read differently — mixing them silently ships a filesystem path as your body.
+- Attachment **SHA-256 + size are bound into the confirm digest**, so a file swapped between `prepare` and `send` invalidates the token. Change the file → re-run `prepare`.
+- Attachment-free payloads keep a byte-identical digest, so this stayed additive and did not invalidate older prepared tokens.
+- Brevo caps the whole request (~10 MB, and base64 inflates ~33 %); keep attachments well under.
+- `mcp_server.py` does **not** expose attachments — use the CLI for anything with a file.
+
+**Order of operations that catches the real defect:** build the artifact → `sha256sum` it → paste that hash into the body → `prepare` → confirm `prepare` echoes the same `attachments[].sha256` → `send`. Quoting a hash computed *before* a later rebuild is the standard trip-up: the PDF changes (a label fix, a provenance note) and the body's hash silently becomes a false claim about the bytes the recipient will verify. Re-hash after every rebuild.
+
 ## Content discipline (financial / official correspondence)
 
 - NEVER invent personal data. IC, phone, account/card digits, registered email — fill ONLY from what Arif typed in chat.

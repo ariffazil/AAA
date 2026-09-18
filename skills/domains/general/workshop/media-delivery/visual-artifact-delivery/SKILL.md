@@ -128,6 +128,49 @@ When the artifact is handed to you to check rather than to build, the failure mo
 
 Full recipe, including the orientation/scale/legend and citation checks: `references/pdf-artifact-audit.md`.
 
+## 3c. Mechanical gates at build time, not at audit time
+
+A page-based artifact must be measured by the build that produced it. Anything you can check with a
+number, check automatically — reserve the vision pass for what only looking can catch.
+
+Run these the moment the file is rendered, and fail the build on any of them:
+
+- **Page count.** `pdfinfo <pdf> | grep ^Pages`. An unexpected count means the content did not fit
+  where you thought it did — most often one section spilled onto an extra page.
+- **Text layer size.** An empty or tiny text layer means a scan or a failed render, not a document.
+- **Per-page ink coverage.** Render to PNG and measure the non-white share of each page. A page far
+  below its neighbours is a **stranded fragment** — a trailing section with nothing to sit beside.
+  Fix it by moving real content into that page (the seal block, the verification table), never by
+  padding. Compare coverage before and after to prove the fix.
+- **Leaked internals.** Grep the text layer for `file://` and for absolute source paths. Headless
+  `--print-to-pdf` stamps browser chrome unless `--no-pdf-header-footer` is passed, and a document
+  that prints its own build path on its face exposes the machine it was built on.
+
+A **recurring** artifact needs a second gate class that runs on its CONTENT, because the checks above
+only prove it rendered. For any card that carries claims, prices, deadlines or a countdown:
+
+- **Freshness — a source can be real and the number still stale.** Presence of a citation proves the
+  citation exists; it says nothing about whether the figure is current. Require a DATE inside the
+  source on every price/rate/market line, set an explicit staleness limit, and refuse past it. A
+  confidently-sourced stale figure is *more* dangerous than an unsourced one because it reads as
+  verified. Scope the rule to price-bearing lines or legitimate monthly series will false-fail every
+  run.
+- **Never store a countdown — compute it at render.** A day-count written into prose or a field is
+  frozen at authoring time: it does not error, it just keeps saying the old number. Store the target
+  DATE, compute the delta at draw time, let prose cite dates, and expire passed events out of the
+  pool. Guard the false positive — a historical or deep-time figure is a fact, not a clock.
+- **Prove the gate can refuse before you trust it.** A gate that only ever says PASS is
+  indistinguishable from no gate. Keep a companion suite of deliberately-broken inputs that MUST be
+  rejected *plus* at least one legitimate input that must still pass — the passing case is the
+  false-positive guard. On a HOLD, fix the content; never lower a threshold to pass. The pressure to
+  relax a gate peaks exactly when it is doing its job.
+
+Full ladder, the freshness and countdown rules, and the negative-control suite pattern:
+`references/content-gates.md`.
+
+**Why the order matters:** a gate that runs inside the build fails loudly and cheaply; the same check
+performed later by eye costs a round-trip and is easy to talk yourself out of.
+
 ## 4. The real-photo rule
 
 When Arif asks for a photo of a real person ("nak gambar", "actual photo"), he
@@ -178,6 +221,33 @@ not only in the chat message that carries it:
 - **The frame and the message must agree.** A hedge that lives only in the chat text does
   not travel with the image. Frame the claim once, then state it in the artifact.
 
+## 4d. Artifacts read by more than one person — select on private context, never disclose it
+
+When an artifact goes to a shared surface — a group, a partner, a family member — the privacy
+question is not whether you may *use* what you know. It is whether the reader can infer *why* an item
+was chosen.
+
+**Memory informs SELECTION; it must never create EXPOSURE.** Use what you know to decide what is
+relevant. Never reprint the evidence, and never write a causal clause that explains the choice
+(``because you told me...``, ``after what happened with...``). The artifact is a product of the
+knowledge; it is not a report about it.
+
+- **Only what is already public, or stated on the shared surface itself.** Nothing a third party said
+  in confidence; no health, money, family or private-deadline detail — even if the user would not
+  personally mind.
+- **The safety test, applied per line:** could the OTHER reader see this without learning something
+  they were not meant to know? If no — rewrite it generally, substitute a public signal, or drop it.
+- **Enforce the boundary in CODE, not in the prompt.** Give each item an audience field and have the
+  renderer filter it. A rule that lives only in an instruction is skipped exactly on the busy day it
+  matters. Measured: a shared card was about to print a personal departure date that only ONE of the
+  two readers had been told; the renderer's audience filter caught it and the writer's prompt had not.
+- **Never let the machine be the first to disclose.** A detail the user has not told the co-reader is
+  his to reveal, on his timing. Surfacing it inside a pleasant digest does not make it less of a
+  disclosure.
+- **Do not model the bond.** Witness the shared surface and stop there; inferring what the
+  relationship means, or ranking one person's importance from activity counts, is a claim the
+  evidence does not carry.
+
 ## 5. Pitfalls
 
 - **Emoji variation selectors can trip the security scanner.** Emoji such as the
@@ -195,6 +265,17 @@ not only in the chat message that carries it:
 - **Match artifact weight to the ask.** A casual "buat satu gambar" wants one
   clean image, not a five-page design system. Ship the smallest thing that
   answers.
+- **When he names a count, it is a CEILING, not a target.** "Max 2 PNG" means two,
+  not two plus a chart plus a source table plus a spare variant. Ship inside the
+  budget; if the content genuinely cannot fit, say so and let him raise it.
+- **Chrome `--screenshot` captures exactly the window height** — too short clips
+  the bottom, too tall ships a dead band. Render well above any realistic content
+  height and auto-crop the trailing background rows, so one height is correct for
+  both a short and a long layout. Helper: `references/balance-card.md`.
+- **A structural element drawn in the same colour as what it sits on is
+  invisible.** Dots, badges, dividers and counters placed on a filled shape must
+  contrast with THAT shape, not with the page. Derive the colour from its
+  container in code so it cannot be got wrong by hand.
 
 ## 6. Delivery conventions
 
@@ -204,6 +285,63 @@ not only in the chat message that carries it:
   user knows what arrived.
 - Save into the workspace directory so it can be re-sent later without
   regenerating.
+
+### Audience order — his DM before any group
+
+When an artifact is destined for a shared group, render it, deliver it **to his own DM first**, and
+wait for his read before publishing it anywhere else.
+
+The failure is not that the group saw it — it is that he lost the chance to reject it. A shared
+group cannot un-see an artifact, and his correction then arrives after the fact instead of before.
+Preview and publish are different acts; the cheap order is **preview → his verdict → publish**.
+
+### Pushing to Telegram from a scheduled job
+
+- **`hermes send -t <target>` requires the `telegram:` prefix.** A bare numeric chat id returns
+  `Unknown or unregistered plugin platform: <id>` and exits 0 — a false success. Use
+  `telegram:<chat_id>`, and read the JSON result for `"success": true` plus a `message_id` rather
+  than trusting the exit code.
+- **`deliver: origin` can silently resolve to the BOT's own chat, not the human's DM.** A job created
+  from an agent context may capture the bot's chat_id as its origin, so it *looks* configured while
+  every delivery goes somewhere the user never reads — with no error surfaced. Set an EXPLICIT
+  target on any human-facing job and re-read the stored job to confirm it persisted.
+- **Verify the destination against the identity lock, not a hardcoded list.** `/root/.hermes/IDENTITY_LOCK.json`
+  already declares which ids are humans, groups and bots; a literal allow-list goes stale the moment
+  a human's id changes. Refuse (fail closed) when the lock cannot be read — "I could not check" is
+  not "it is fine". This also catches the mirror bug of a correctly-formed id aimed at the WRONG
+  person.
+- **Enumerate EVERY scheduler surface before adding a recurring artifact — or declaring one
+  redundant.** This host runs several cron stores for different agent runtimes, plus systemd timers,
+  `/etc/cron.d` files and a user crontab. Each is invisible from inside the others, so "there is only
+  one briefing job" is a claim about the surface you happened to read. List them all before
+  scheduling, and again before declaring a duplicate removed. Note especially the trap of a job whose
+  schedule has long passed but whose `enabled` flag is still true: it is dormant, not dead, and it
+  wakes the moment its runtime restarts — adding deliveries nobody planned. Probe for a job that has
+  actually FIRED, not for a job that is merely marked enabled.
+
+### Sealing a deliverable — two hashes, two homes
+
+When an artifact carries a claim of integrity, split the digest in two, because a file cannot contain
+the hash of its own bytes:
+
+- **Content hash — printed inside the document.** Taken over the template *before* placeholder
+  substitution, so it proves the words were fixed at build time.
+- **Artifact hash — written to a sidecar beside the file** (`<name>.sha256`, verifiable with
+  `sha256sum -c`). This is the one that proves the delivered bytes are the built bytes.
+
+State in the document which hash is which, and give the reader the exact verification command.
+A bare digest pasted into the chat message is not a seal — it is a number in a conversation that
+nothing can be checked against.
+
+**Chain successive editions.** Record `{edition, content_sha256, artifact_sha256, chain_prev}` in an
+append-only ledger, where `chain_prev` is the previous edition's `artifact_sha256`. Edition *n+1*
+cannot then be substituted without breaking the chain, and the ledger turns a pile of artifacts into
+an ordered record. Verify the linkage by rendering twice into a scratch ledger and asserting
+`rows[1].chain_prev == rows[0].artifact_sha256` — do not assume the plumbing works.
+
+**Label the authority truthfully.** Lane-level integrity is not constitutional ratification. If the
+kernel did not grant a SEAL, the artifact says so on its face (`NOT F13-RATIFIED`) rather than
+inheriting the stronger word from habit.
 
 ## 7. Support files
 
@@ -218,3 +356,10 @@ not only in the chat message that carries it:
 - `references/pdf-artifact-audit.md` — auditing a delivered PDF: page fragmentation
   from a slide/page box mismatch, browser-chrome leakage, ink-coverage triage,
   squashed rasters, orientation / scale / legend consistency, citation verification.
+- `references/balance-card.md` — presenting TWO subjects as EQUALS: why not to chart
+  them to scale, taijitu SVG geometry, the dot-contrast trap, the render-tall-then-crop
+  helper, and the label-ambiguity guard.
+- `references/content-gates.md` — gating a recurring artifact's CONTENT: the gate ladder,
+  freshness (a real source can carry a stale number), why never to store a countdown,
+  ranking by consequence, and the negative-control suite that proves a gate can refuse.
+  Read before building or auditing any card that repeats.
