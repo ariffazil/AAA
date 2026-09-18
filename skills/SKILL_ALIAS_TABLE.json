@@ -1716,13 +1716,13 @@
       "v3_name": "a2a-sovereign",
       "layer": "domain",
       "primary_disk_name": "sovereign-recognize",
-      "primary_path": "/root/AAA/skills/reflective/sovereign-recognize",
-      "primary_resolved": "/root/AAA/skills/reflective/sovereign-recognize",
+      "primary_path": "/root/AAA/skills/human-interface/audience-scoped-disclosure",
+      "primary_resolved": "/root/AAA/skills/human-interface/audience-scoped-disclosure",
       "primary_home": "aaa",
       "related": [
         {
           "name": "sovereign-recognize",
-          "path": "/root/AAA/skills/reflective/sovereign-recognize",
+          "path": "/root/AAA/skills/human-interface/audience-scoped-disclosure",
           "home": "aaa"
         },
         {
@@ -1731,9 +1731,12 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
-      "restored_live": false
+      "status": "TOMBSTONED",
+      "tombstone": true,
+      "restored_live": false,
+      "quarantined_body": "/root/AAA/.quarantine-redundancy-2026-09-19/sovereign-recognize",
+      "absorbed_reference": "/root/AAA/skills/human-interface/audience-scoped-disclosure/references/absorbed-sovereign-recognize.md",
+      "note": "collapsed 2026-09-16 (F13 Skill Zen); body quarantined 2026-09-19 after content recovery"
     },
     {
       "v3_name": "a2a-spawn",

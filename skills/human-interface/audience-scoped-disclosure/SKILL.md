@@ -248,6 +248,7 @@ The governing rule:
   ("we're on week N", a resumed thread): envelope + registry recipe, the first-contact / stale-record /
   identity-ambiguous decision table, the honest-reply shape, and the internal-organ vocabulary-collision
   trap (a human's term that also names an organ API).
+- `references/absorbed-sovereign-recognize.md` — pre-collapse body of `sovereign-recognize`, recovered 2026-09-19.
 
 ## Related
 

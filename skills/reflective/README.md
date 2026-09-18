@@ -60,7 +60,9 @@ Existing implementation: **`/root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md`
 
 ### SK04 → `sovereign-recognize`
 
-**Path:** `/root/AAA/skills/reflective/sovereign-recognize/SKILL.md`
+**Path:** RETIRED 2026-09-16 (F13 Skill Zen) → successor `human-interface/audience-scoped-disclosure`.
+Body quarantined 2026-09-19 at `/root/AAA/.quarantine-redundancy-2026-09-19/sovereign-recognize`; content preserved at
+`human-interface/audience-scoped-disclosure/references/absorbed-sovereign-recognize.md`.
 
 **Why new:** The existing F13 floor says "Arif holds final veto." But no skill cleanly separated "sending-as-sovereign" from "naming-the-sovereign." Without this skill, agents emit "ARIF" labels without cryptographic anchoring — which is exactly how G1 (seal actor=unknown) happened. This skill binds sovereign identity to actor_signature, not a string.
 
