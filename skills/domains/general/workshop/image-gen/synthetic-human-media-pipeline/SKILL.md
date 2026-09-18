@@ -74,6 +74,8 @@ Group prompts fail in a specific way: bodies fuse into one mass, hands and objec
 - **A near hand that touches the other subject does not composite — use a silhouette or a hovering hand instead.** Asked for a foreground palm pressed flat on a second person's bare chest, image-01 returns the hand hovering in front of the torso with no contact shadow, folds it into the subject's own arm, or melts it — consistently, across several wordings and seeds. Do not spend more than two wordings on it. Take one of three routes: accept the hovering half-open hand and label it as such on delivery, crop tight enough that only a forearm crosses the frame, or swap the near element for the backlit silhouette above, which composites cleanly where a touching hand does not.
 - **Intimate two-person frames leak faces — make "no face visible" a QC gate, not a prompt clause.** In a close embrace or back-hug, image-01 resolves a face or a three-quarter profile on one or both subjects even when the brief says the faces are hidden. Restating the denial at higher volume does not help — it can backfire (a louder `neither face is visible anywhere in the frame` pass produced *more* face-visible takes than the plain one), so do not spend iterations rewording. State the framing once (`back of head, nape and shoulders only, no eyes, no nose, no mouth, no profile`), then roll seeds and reject on sight. Leak rate in this register is high: budget 6–8 seeds per accepted still.
 - **A composition instruction does not remove a head — only the camera and a crop do.** Wording that puts both heads outside the frame (`cropped just below the collarbones so that both heads are outside the frame entirely, no head and no face in the picture`) still rendered full frontal faces on half of a four-seed roll. Treat head removal as a framing/crop decision taken after the roll, never as a clause to be trusted; budget the seeds for the face gate either way.
+- **A two-figure embrace inverts the composition AND fuses the hands, so the escape is to drop to ONE figure — not to reword and not to re-roll.** On a back-hug brief the model pressed the smaller man against the larger man's **chest** in seven of eight seeds and produced melted/fused hands in **eight of eight**; a second batch that spelled out `both seen from behind, no hands visible` cleared neither gate. Roughly 28 seeds across four compositions produced no shippable two-figure frame. **Two full rolls failing the SAME gate is the stop signal — change the composition, not the seed and not the wording.** What cleared on the first try was a SOLO frame: the big man's back and shoulders filling the frame, head turned fully away, so the face gate has nothing to leak and the gesture still reads.
+- **Design the frame so the highest-failure anatomy is out of shot, and you stop paying for it seed after seed.** Hands are the single most-failing surface in this lane. A composition that removes them — `both arms opened wide outward and angled downward, the left and right edges of the frame cutting them off at the forearms, no hands and no fingers anywhere` — converts an unfixable QC item into a non-issue, and the requester asked for the gesture, not the fingers. Crop as a fallback: send the arms below the crop line (`hands clasped behind the back`, cut away) when an open pose will not hold. Prefer either to spending seeds on finger accuracy.
 - **Put the face gate first in the QC list, with the failure modes named.** Ask *"is ANY face or profile visible anywhere — eyes, nose, mouth, cheek?"* A generic "describe the image" buries a visible profile inside a paragraph of prose and you ship it. Same for hands and contact points: name the artifact you are hunting, or the QC answer passes it. Put **every negative you wrote** on the QC list as well — facial hair on a clean-shaven brief, grey in the hair, bare feet, a watermark, a logo on the shorts — because a render can pass every anatomy and composition check and still contradict the brief on a clause you never asked about.
 - **More seeds when a named invariant must survive.** Quality varies more between seeds than between prompt wordings. Two is the floor; when an invariant is load-bearing (a hidden face, a size relationship, a phenotype, a single focal gaze) generate 4+, QA all of them, and keep the one where that invariant actually survived — do not ship a compromise because it arrived first.
 
@@ -177,6 +179,12 @@ Same register, same speed band, genuinely different artifact: on one identical l
 per-voice `preferred_settings.speed`), then **pick the id an earlier take used whenever the requester
 points at that take** — not the id that looks newest.
 
+**Wiring a registered id so it can actually be selected → `references/wiring-a-voice-to-a-provider.md`.**
+Minting an id and wiring an id are different jobs; a registered voice nothing can select is a working
+artifact with no road to it. That file carries the placeholder limits (no chat id → no automatic
+per-room voice), the one-pinned-default-plus-named-alternatives pattern, the config-edit route, and the
+negative tests to re-run after touching voice resolution.
+
 ### Resolving a take the requester points at ("you generated this before")
 
 When the ask is about an artifact that already exists — a reply to an old clip, a forwarded take, a
@@ -230,6 +238,15 @@ excusable by adding more rows — sort the causes instead. `--alias` takes a bar
   becomes its own sentence (`Urat tangan tarik. Bahu naik. Dada keluar.`). A word that misreads the same
   way in an ISOLATED render is the other class — a contrast the engine cannot hold — and that is the one
   you change.
+- **The score does NOT flag a fusion or a meaning flip — read the transcript, and read the SEAM first.**
+  Two defects measured on one closing line both scored **99% with `INSERTED: none`**: a two-word fusion
+  (`perlu hang` heard as `peluhang`, fixed by adding the syllable that breaks the junction —
+  `perlukan hang`) and a one-word semantic inversion (`tetap buka` heard as `tak buka`). The aligner files
+  both as a *replace* opcode, not an insertion, so a take passes every gate while the money line says the
+  opposite of what was written. The gate catches added and deleted words; it structurally cannot catch
+  these two. Run the gate, then read the heard line yourself with the LAST clause first — that is where an
+  arc lands, and a flip there inverts the whole artifact. Fix the TEXT (the junction, or the word); never
+  alias a flip away, and never re-roll the same words hoping the join separates.
 - **Same-meaning respells measured on this register are pass-class and belong in the alias table, not in
   a re-render:** `senyum→senyam`, `telanjang→terlanjang`, `awek→awet`, `tau→tahu`, `saja→sahaja`,
   `alpha→alfa`, `macho→macu`. A substitution that INVERTS the meaning inside the clause is not in this
@@ -305,6 +322,12 @@ session. Name by register, one clause, move on.
   it is the wrong place to spend the arc's escalation.
 - **Append the take to the existing receipt in the work dir** (voice id, speed, duration, round-trip
   match %, f0 median, what the in-line disclosure said) rather than starting a second receipt file.
+- **Once a register is live in the session, an ambiguous follow-up belongs to THAT register.** "Reply la
+  in voice", "say that again", "I want <the persona>" after a persona take means the register already in
+  play — not the assistant default. Answering in the default voice reads as a mis-pick and is corrected on
+  the next turn, spending a render. Corollary: on a tender beat the disclosure COMPRESSES to one clause or
+  to zero — re-running the full synthetic-origin declaration over a beat that was already answered reads as
+  a disclaimer loop.
 
 ### What the persona says when asked to describe itself
 

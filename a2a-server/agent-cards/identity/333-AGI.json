@@ -84,139 +84,6 @@
   ],
   "skills": [
     {
-      "id": "role-binding-delta",
-      "name": "Δ MIND Role Binding (333-AGI)",
-      "description": "Hermes polymorphic binding to 333-AGI (reason + evidence synthesis + federation routing). Loads arifos-mcp-federation, arifos-agent-landscape, arifos-paradox-engine. One runtime. See contracts/hermes-role-binding.md. F2, F3, F4, F11 enforced.",
-      "tags": [
-        "role-binding",
-        "333-AGI",
-        "delta",
-        "reasoning",
-        "federation",
-        "F4",
-        "F11"
-      ],
-      "floor_scope": [
-        "F02",
-        "F03",
-        "F04",
-        "F11"
-      ],
-      "approval_policy": "auto (role intent)",
-      "reversibility_class": "reversible"
-    },
-    {
-      "id": "evidence-reasoning",
-      "name": "Evidence Reasoning",
-      "description": "Analyze multi-source evidence (geological, financial, textual) and produce structured reasoning chains with uncertainty bands. Every claim tagged with epistemic rung (Signal→Narrative) and confidence level.",
-      "tags": [
-        "reasoning",
-        "evidence",
-        "analysis",
-        "epistemic",
-        "AGI"
-      ],
-      "examples": [
-        "Evaluate the petroleum system elements for Prospect X",
-        "Compare fiscal terms between PSC regimes",
-        "What is the evidence for a DHI at -2200m TVDSS?"
-      ],
-      "inputModes": [
-        "text/plain",
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "hypothesis-generation",
-      "name": "Hypothesis Generation",
-      "description": "Generate competing hypotheses for ambiguous observations using Theory of Anomalous Contrast (Observation − Expectation = Signal). Returns ranked hypotheses with falsification criteria.",
-      "tags": [
-        "hypothesis",
-        "abduction",
-        "anomaly",
-        "AGI"
-      ],
-      "examples": [
-        "Why does the amplitude anomaly not conform to structure?",
-        "Generate 3 competing models for the Oligo-Miocene carbonate play"
-      ],
-      "inputModes": [
-        "text/plain",
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "task-decomposition",
-      "name": "Task Decomposition",
-      "description": "Break complex multi-step queries into atomic sub-tasks, each tagged with the appropriate downstream agent (555-ASI for deep review, 888-APEX for judgment).",
-      "tags": [
-        "planning",
-        "orchestration",
-        "decomposition"
-      ],
-      "examples": [
-        "Plan a full CP-HRA workflow for Layang-Layang Basin",
-        "Design the QC pipeline for a new well log bundle"
-      ],
-      "inputModes": [
-        "text/plain"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "APEX-mcp-federation",
-      "name": "arifOS MCP Federation",
-      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. Load only when work spans multiple organs (GEOX, WEALTH, WELL, A-FORGE, AAA, external APIs). Δ axis primary. LEASED.",
-      "tags": [
-        "MCP",
-        "federation",
-        "routing",
-        "multi-organ"
-      ],
-      "examples": [
-        "Sequence GEOX seismic + WEALTH NPV for prospect eval",
-        "Route WELL readiness check before A-FORGE execution",
-        "Define fallback when Qdrant returns DEGRADED"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "sequential-thinking-hermes",
-      "name": "Sequential Thinking (Hermes)",
-      "description": "Real sequential thinking — step-by-step reasoning with revision, branching, and verification. Reasoning backbone for complex analysis, coding, debugging, diagnosis, planning. NOT optional. F4, F8 enforced. ACTIVE.",
-      "tags": [
-        "reasoning",
-        "sequential",
-        "backbone",
-        "F4",
-        "F8"
-      ],
-      "examples": [
-        "Reason through a 10-step diagnostic with revision branches",
-        "Verify each step before moving to next"
-      ],
-      "inputModes": [
-        "application/json",
-        "text/plain"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
       "id": "APEX-fff-loop-protocol",
       "name": "FFF Loop Protocol (Light)",
       "description": "Light variant of 5-pass recursive audit — emit diagnosis, attack, fix, verify, seal. Use when full FFF overkill but reasoning needs adversarial pressure. Δ axis. LEASED.",
@@ -236,74 +103,6 @@
       ],
       "outputModes": [
         "application/json"
-      ]
-    },
-    {
-      "id": "AGI-paradox-engine",
-      "name": "arifOS Paradox Engine",
-      "description": "Constitutional perception pipeline — ingest narrative, extract frame geometry, detect paradox tensions. Separates 'LLM that summarizes' from 'AGI kernel that perceives constitutional geometry'. Δ axis primary. F11, F13 gated.",
-      "tags": [
-        "paradox",
-        "perception",
-        "geometry",
-        "Δ"
-      ],
-      "examples": [
-        "Ingest news, extract frame, detect paradox",
-        "Score shadow/meaning_leak on a draft"
-      ],
-      "inputModes": [
-        "application/json",
-        "text/plain"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "KERNEL-reality-skills",
-      "name": "Reality Skills (F2 Grounding)",
-      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
-      "tags": [
-        "kernel",
-        "f2",
-        "reality",
-        "grounding"
-      ],
-      "floor_scope": [
-        "F2",
-        "F7",
-        "F9"
-      ]
-    },
-    {
-      "id": "KERNEL-sovereign-recognize",
-      "name": "Sovereign Recognition (F13)",
-      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
-      "tags": [
-        "kernel",
-        "f13",
-        "sovereign",
-        "identity"
-      ],
-      "floor_scope": [
-        "F13"
-      ]
-    },
-    {
-      "id": "KERNEL-session-inhabit",
-      "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
-      "tags": [
-        "kernel",
-        "session",
-        "lifecycle",
-        "000-999"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4",
-        "F11"
       ]
     },
     {
@@ -337,57 +136,13 @@
       ]
     },
     {
-      "id": "KERNEL-mcp-zen",
-      "name": "MCP Zen Architecture",
-      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
-      "tags": [
-        "kernel",
-        "mcp",
-        "zen",
-        "architecture"
-      ],
-      "floor_scope": [
-        "F4",
-        "F11"
-      ]
+      "id": "KERNEL-trinity-33",
+      "_normalised": "bare string -> object (schema conformity, afpass-W1)"
     },
     {
-      "id": "KERNEL-verbs-forge-hands",
-      "name": "Forge Verbs (Execution)",
-      "description": "Governed execution verbs: dry_run → engineer → write → commit → deploy. Every verb has a reversibility class.",
-      "tags": [
-        "kernel",
-        "forge",
-        "execution",
-        "verbs"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4",
-        "F11"
-      ]
-    },
-    {
-      "id": "KERNEL-mcp-builder",
-      "name": "MCP Builder",
-      "description": "FastMCP server construction, tool registration, MCP handshake, verify script, venv pattern.",
-      "tags": [
-        "kernel",
-        "mcp",
-        "builder",
-        "forge"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4"
-      ]
-    },
-    "KERNEL-sovereign-recognize",
-    "KERNEL-trinity-33",
-    "KERNEL-session-inhabit",
-    "RSI-recursive-improvement",
-    "SHADOW-diagnostic",
-    "CLAIM-verification-gate"
+      "id": "RSI-recursive-improvement",
+      "_normalised": "bare string -> object (schema conformity, afpass-W1)"
+    }
   ],
   "mcp_surface": {
     "type": "consumed",
@@ -650,5 +405,291 @@
     ],
     "loop_orchestrator": "🌀 SABAR",
     "human_role": "call arif_init (🌱 BOOT) → 🌀 SABAR → call arif_seal (💎 SEAL) at end"
+  },
+  "_quarantined_skills": [
+    {
+      "id": "role-binding-delta",
+      "name": "Δ MIND Role Binding (333-AGI)",
+      "description": "Hermes polymorphic binding to 333-AGI (reason + evidence synthesis + federation routing). Loads arifos-mcp-federation, arifos-agent-landscape, arifos-paradox-engine. One runtime. See contracts/hermes-role-binding.md. F2, F3, F4, F11 enforced.",
+      "tags": [
+        "role-binding",
+        "333-AGI",
+        "delta",
+        "reasoning",
+        "federation",
+        "F4",
+        "F11"
+      ],
+      "floor_scope": [
+        "F02",
+        "F03",
+        "F04",
+        "F11"
+      ],
+      "approval_policy": "auto (role intent)",
+      "reversibility_class": "reversible",
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "evidence-reasoning",
+      "name": "Evidence Reasoning",
+      "description": "Analyze multi-source evidence (geological, financial, textual) and produce structured reasoning chains with uncertainty bands. Every claim tagged with epistemic rung (Signal→Narrative) and confidence level.",
+      "tags": [
+        "reasoning",
+        "evidence",
+        "analysis",
+        "epistemic",
+        "AGI"
+      ],
+      "examples": [
+        "Evaluate the petroleum system elements for Prospect X",
+        "Compare fiscal terms between PSC regimes",
+        "What is the evidence for a DHI at -2200m TVDSS?"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "hypothesis-generation",
+      "name": "Hypothesis Generation",
+      "description": "Generate competing hypotheses for ambiguous observations using Theory of Anomalous Contrast (Observation − Expectation = Signal). Returns ranked hypotheses with falsification criteria.",
+      "tags": [
+        "hypothesis",
+        "abduction",
+        "anomaly",
+        "AGI"
+      ],
+      "examples": [
+        "Why does the amplitude anomaly not conform to structure?",
+        "Generate 3 competing models for the Oligo-Miocene carbonate play"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "task-decomposition",
+      "name": "Task Decomposition",
+      "description": "Break complex multi-step queries into atomic sub-tasks, each tagged with the appropriate downstream agent (555-ASI for deep review, 888-APEX for judgment).",
+      "tags": [
+        "planning",
+        "orchestration",
+        "decomposition"
+      ],
+      "examples": [
+        "Plan a full CP-HRA workflow for Layang-Layang Basin",
+        "Design the QC pipeline for a new well log bundle"
+      ],
+      "inputModes": [
+        "text/plain"
+      ],
+      "outputModes": [
+        "application/json"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "APEX-mcp-federation",
+      "name": "arifOS MCP Federation",
+      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. Load only when work spans multiple organs (GEOX, WEALTH, WELL, A-FORGE, AAA, external APIs). Δ axis primary. LEASED.",
+      "tags": [
+        "MCP",
+        "federation",
+        "routing",
+        "multi-organ"
+      ],
+      "examples": [
+        "Sequence GEOX seismic + WEALTH NPV for prospect eval",
+        "Route WELL readiness check before A-FORGE execution",
+        "Define fallback when Qdrant returns DEGRADED"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "sequential-thinking-hermes",
+      "name": "Sequential Thinking (Hermes)",
+      "description": "Real sequential thinking — step-by-step reasoning with revision, branching, and verification. Reasoning backbone for complex analysis, coding, debugging, diagnosis, planning. NOT optional. F4, F8 enforced. ACTIVE.",
+      "tags": [
+        "reasoning",
+        "sequential",
+        "backbone",
+        "F4",
+        "F8"
+      ],
+      "examples": [
+        "Reason through a 10-step diagnostic with revision branches",
+        "Verify each step before moving to next"
+      ],
+      "inputModes": [
+        "application/json",
+        "text/plain"
+      ],
+      "outputModes": [
+        "application/json"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "AGI-paradox-engine",
+      "name": "arifOS Paradox Engine",
+      "description": "Constitutional perception pipeline — ingest narrative, extract frame geometry, detect paradox tensions. Separates 'LLM that summarizes' from 'AGI kernel that perceives constitutional geometry'. Δ axis primary. F11, F13 gated.",
+      "tags": [
+        "paradox",
+        "perception",
+        "geometry",
+        "Δ"
+      ],
+      "examples": [
+        "Ingest news, extract frame, detect paradox",
+        "Score shadow/meaning_leak on a draft"
+      ],
+      "inputModes": [
+        "application/json",
+        "text/plain"
+      ],
+      "outputModes": [
+        "application/json"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "KERNEL-reality-skills",
+      "name": "Reality Skills (F2 Grounding)",
+      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
+      "tags": [
+        "kernel",
+        "f2",
+        "reality",
+        "grounding"
+      ],
+      "floor_scope": [
+        "F2",
+        "F7",
+        "F9"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-reality-skills"
+    },
+    {
+      "id": "KERNEL-sovereign-recognize",
+      "name": "Sovereign Recognition (F13)",
+      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
+      "tags": [
+        "kernel",
+        "f13",
+        "sovereign",
+        "identity"
+      ],
+      "floor_scope": [
+        "F13"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-sovereign-recognize"
+    },
+    {
+      "id": "KERNEL-session-inhabit",
+      "name": "Session Inhabit (Lifecycle)",
+      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "tags": [
+        "kernel",
+        "session",
+        "lifecycle",
+        "000-999"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-session-inhabit"
+    },
+    {
+      "id": "KERNEL-mcp-zen",
+      "name": "MCP Zen Architecture",
+      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
+      "tags": [
+        "kernel",
+        "mcp",
+        "zen",
+        "architecture"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "KERNEL-verbs-forge-hands",
+      "name": "Forge Verbs (Execution)",
+      "description": "Governed execution verbs: dry_run → engineer → write → commit → deploy. Every verb has a reversibility class.",
+      "tags": [
+        "kernel",
+        "forge",
+        "execution",
+        "verbs"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-verbs-forge-hands"
+    },
+    {
+      "id": "KERNEL-mcp-builder",
+      "name": "MCP Builder",
+      "description": "FastMCP server construction, tool registration, MCP handshake, verify script, venv pattern.",
+      "tags": [
+        "kernel",
+        "mcp",
+        "builder",
+        "forge"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-sovereign-recognize",
+      "id": "KERNEL-sovereign-recognize"
+    },
+    {
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-session-inhabit",
+      "id": "KERNEL-session-inhabit"
+    },
+    {
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/SHADOW-diagnostic",
+      "id": "SHADOW-diagnostic"
+    },
+    {
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/CLAIM-verification-gate",
+      "id": "CLAIM-verification-gate"
+    }
+  ],
+  "_skill_ref_reconciliation": {
+    "at": "2026-09-18",
+    "by": "afpass-W1",
+    "before": 22,
+    "after": 5,
+    "quarantined": 17,
+    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
   }
 }

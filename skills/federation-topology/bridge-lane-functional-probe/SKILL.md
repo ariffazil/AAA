@@ -210,7 +210,7 @@ authority boundary for a tree with another agent's uncommitted work — is in
 `references/mcp-lane-probe.md`. Reusable handshake probe: `scripts/mcp_stdio_probe.py`
 (`initialize` → `tools/list`, prints server version and every tool name, non-zero exit on
 failure). For HTTP MCP servers that answer a legacy handshake but 400 a modern probe, see the
-`mcp-dual-era-transport` skill instead — that is a protocol-era fault, not a dead lane.
+`mcp-testing` skill (Section 5: Era Mismatch) instead — that is a protocol-era fault, not a dead lane.
 
 Two rules that generalise beyond MCP:
 

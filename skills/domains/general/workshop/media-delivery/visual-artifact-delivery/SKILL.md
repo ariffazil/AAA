@@ -90,6 +90,20 @@ Never ship an artifact you have not looked at.
 3. **Inspect it with `vision_analyze` before sending.** Confirm text is legible,
    the layout did not overflow, and nothing is clipped. Text-heavy posters
    routinely overflow or collide — only looking catches this.
+   **For charts, ask a COLLISION question, not a legibility one.** A render with correct data can
+   still carry an annotation box sitting on the chart title, a right-edge label flush against the
+   frame, two callouts overlapping each other, or a summary panel parked on top of the series —
+   none of which raises an exception. Scope the read explicitly:
+
+   > "Check layout: are all candles/markers/bars visible? Does any annotation box overlap the chart
+   > title or another box? Is any label clipped at an edge? Does the summary panel cover the data
+   > lines?"
+
+   Then **patch the offending offsets and re-render, and re-read the new render** — one QC pass
+   confirms a clean build, it does not authorise a fix you have not looked at. Widen `xlim`/`ylim`
+   to open headroom rather than only nudging the label. A read that comes back with the plotted
+   VALUES ("donut says 28 / 51 / 20") is confirming a different thing — the pipeline carried the
+   data — and is worth taking separately from the collision check.
    *Before* the vision check, catch overflow mechanically: measure each string with
    `draw.textlength(text, font=font)` against its column width and print every failure
    as the build runs. PIL neither wraps nor raises, so an overlong line silently runs
@@ -272,10 +286,46 @@ knowledge; it is not a report about it.
   the bottom, too tall ships a dead band. Render well above any realistic content
   height and auto-crop the trailing background rows, so one height is correct for
   both a short and a long layout. Helper: `references/balance-card.md`.
+- **Stagger the labels for price levels that sit close together.** A chart carrying a stop, three entry
+  levels and the current price inside a 4% band has four labels landing in one column of pixels, and
+  matplotlib never raises on an overlap. Give each label its own y-offset and an opaque background box
+  (`bbox=dict(facecolor=BG, edgecolor="none", pad=1.4, alpha=0.85)`) so the level lines stop striking
+  through the text, then confirm with a vision pass that asks the collision question. Open headroom via
+  `ylim` rather than nudging the label alone.
 - **A structural element drawn in the same colour as what it sits on is
   invisible.** Dots, badges, dividers and counters placed on a filled shape must
   contrast with THAT shape, not with the page. Derive the colour from its
   container in code so it cannot be got wrong by hand.
+- **An artifact whose data was RECONSTRUCTED must say so on its face.** When the primary series is
+  unavailable — a delisted ticker with no OHLC, an unreachable feed, a figure assembled from news
+  reports and filings — the artifact carries a METHOD line naming the sources and stating plainly
+  that it is a reconstruction built for shape, not a feed. Without it the chart reads as measured
+  data and gets cited as such, which is the same defect as an unstamped non-ratified diagram:
+  a plausible surface acquiring an authority nothing granted it. Recipe:
+  `references/historical-reconstruction-charts.md`.
+- **A BACKTEST or panel result carries its known limitations on its face, WITH the direction of the
+  bias.** A sample built only from surviving names renders exactly like a complete one, so sampling
+  bias is invisible in the picture. Put the caveat in the frame, not only in the chat text, and say
+  which way it pushes ("the dead cases are absent, so this is biased AGAINST the signal"). A
+  limitation note that does not name its direction is decoration, and the reader will assume it
+  favours the conclusion. Analysis protocol: `blind-prediction-testing`.
+- **Rendering a test result: split the series at the information boundary and colour the two halves.**
+  When the artifact shows what a predictor saw versus what was hidden, draw the visible window and the
+  revealed window as two differently-coloured segments meeting at a vertical cut line, and label each
+  half in the frame ("what the predictor saw" / "what actually happened"). One continuous line makes
+  the cut invisible and the artifact unreadable as evidence. Print the trivial baseline in the frame
+  beside the score — a bare "6 of 8" reads as skill, and "6 of 8, and always guessing the majority
+  class also scores 6 of 8" reads as the finding it is.
+- **Strip the timezone before comparing a pandas index to a `datetime`.** A `yfinance` history
+  index carries the exchange zone, so slicing it with a naive `datetime` raises
+  `Invalid comparison between dtype=datetime64[s, Asia/Kuala_Lumpur] and datetime`. Normalise at
+  load (`h.index.tz_localize(None)`) and tz-strip event timestamps the same way before matching
+  them against the index — the failure reads like a data problem and is a type problem.
+- **A simulated path built with `np.cumsum` is one element shorter than the time axis you plot it
+  against.** `ValueError: x and y must have same first dimension` on a Monte-Carlo fan means the
+  starting point was dropped — prepend it (`np.concatenate([[1.0], np.exp(np.cumsum(...))])`) and plot
+  against a matching `np.arange(len(path))`, rather than shortening the axis and silently shifting
+  every path one step off the origin.
 
 ## 6. Delivery conventions
 
@@ -363,3 +413,7 @@ inheriting the stronger word from habit.
   freshness (a real source can carry a stale number), why never to store a countdown,
   ranking by consequence, and the negative-control suite that proves a gate can refuse.
   Read before building or auditing any card that repeats.
+- `references/historical-reconstruction-charts.md` — charts for delisted / insolvent tickers and
+  long-history dividend-adjusted views: price feeds return nothing, so the series is rebuilt from
+  documented event-date closes, with the METHOD footer, the shape vocabulary, and the
+  dividend-adjustment recipe.
