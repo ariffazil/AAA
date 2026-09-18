@@ -1,0 +1,244 @@
+{
+  "record_id": "SEAL-RECONCILIATION-2026-09-18",
+  "record_type": "RECONCILIATION",
+  "grade": "RECONCILIATION — LANE B",
+  "ratification": "NOT F13-RATIFIED. This is not a SEAL. No constitutional SEAL was granted by the kernel for this record. It is a lane-B reconciliation and carries no F13 authority.",
+  "lane": "B",
+  "actor": "hermes (reconciliation subagent)",
+  "sovereign": "ARIF_FAZIL (F13)",
+  "created_myt": "2026-09-18T11:43:17+08:00",
+  "host": "forge (KVM8)",
+  "principle": "A seal is a claim about a state of the world at a moment in time. When the world moves the seal does not become a lie — it becomes STALE, and that transition must be RECORDED, never erased. This record appends to the lineage. It does not rewrite either seal, and it did not modify any existing artifact.",
+  "method": {
+    "raw_observation": [
+      "sha256 of every attested file, on disk, this session",
+      "sha256 of every file in backup-105522/",
+      "sha256 of file content at each git commit (git show <commit>:<path> | sha256sum) in /root/scripts and /root/AAA",
+      "stat birth/mtime for the subject files and for both seal files",
+      "direct read of both seals and of /root/briefing-system/RECEIPT-2026-09-18-chron-engine-witness-fix.json",
+      "read of /root/AAA/claim_ledger/claims.db (artifacts, claims)"
+    ],
+    "no_assumption": "Every MATCH/MISMATCH below was re-derived this session. Nothing was accepted from a prior summary. One premise handed to this agent was found to be FALSE and is corrected in `premises_corrected`.",
+    "null_result_discipline": "Before treating any absence as evidence, the query was shown capable of returning a hit (e.g. the git-history sweep for a822850a was confirmed to enumerate real blob hashes for the same path before its null result was believed)."
+  },
+
+  "premises_corrected": [
+    {
+      "premise_as_given": "SEAL-CHRON-SPINE-2026-09-18 'attests no hashes at all'.",
+      "raw_observation": "FALSE. The spine seal carries `changes_this_pass[]` with four entries, each holding `sha256_before` and `sha256_after` — but truncated to 12 hex characters (e.g. chron.py 82f40a2cd188 -> afb1ca65047f).",
+      "effect": "The spine seal DOES attest hashes. It is a different defect: it attests TRUNCATED hashes (48 bits), which is under-specified for verification and not a full sha256. See spine_seal_assessment."
+    },
+    {
+      "premise_as_given": "'11:00:41 a SECOND writer patched the same file'.",
+      "raw_observation": "No event at 11:00:41 for /root/scripts/alpha_zen_engine.py could be found in git history, file mtimes, or the sibling receipt. The observed engine transitions are 11:02:24 (commit 133f692) and 11:18:52 (uncommitted banner, file Birth=Modify=11:18:52.290/.305 +0800). 11:00:48 is the mtime of a DIFFERENT file, /root/AAA/scripts/chron.py.",
+      "effect": "The collision is real; the specific intermediary timestamp in the brief is UNVERIFIED. Recorded as such rather than propagated."
+    }
+  ],
+
+  "supersedes": [
+    {
+      "seal_id": "SEAL-CHRON-FORGERY-2026-09-18",
+      "path": "/root/AAA/forge_work/chron-audit/SEAL-CHRON-FORGERY-2026-09-18.json",
+      "scope": "changes[1] — /root/scripts/alpha_zen_engine.py .sha256_after only. No other field of this seal is qualified.",
+      "field": "changes[1].sha256_after = f0b31aa62d544490d079c686188d1bd8054e9b6a62c9d9f61e7cb761f32cef52"
+    },
+    {
+      "seal_id": "SEAL-CHRON-SPINE-2026-09-18",
+      "path": "/root/AAA/forge_work/chron-audit/SEAL-CHRON-SPINE-2026-09-18.json",
+      "scope": "changes_this_pass[2] — /root/scripts/alpha_zen_engine.py .sha256_after only. No other field of this seal is qualified.",
+      "field": "changes_this_pass[2].sha256_after = dc1420b0eb19"
+    }
+  ],
+  "superseded_by_state": {
+    "state": "STALE",
+    "applies_to": "the two sha256_after values above, and only those",
+    "not_a_retraction": "Neither seal value is retracted as false. Both were TRUE of a real state that existed on disk and is preserved in git. A third state now occupies disk. The claims are STALE, not LIES.",
+    "current_state_of_subject": {
+      "path": "/root/scripts/alpha_zen_engine.py",
+      "sha256_now": "a822850a37c13fcfa6d3ad822142c18ea590b1158cdeed0a264678387dde4830",
+      "bytes": 43816,
+      "state": "UNCOMMITTED working-tree divergence in /root/scripts (git status: ' M alpha_zen_engine.py'); it exists in no commit and in no backup of this set"
+    },
+    "durable_lineage_already_written": {
+      "artifact": "art-a822850a37c13fcf (/root/AAA/claim_ledger/claims.db, registered_by i-ARIF, 2026-09-18T03:29:32Z)",
+      "claim": "clm-47aab3359c209d17 (recorded_by i-ARIF, 2026-09-18T03:29:40Z, confidence 0.99)",
+      "note": "A durable record of this same transition already exists in the claim ledger, where claim -> artifact -> hash is a real join. This reconciliation record is the file-level, append-only counterpart and does not displace it."
+    }
+  },
+
+  "corrections": [
+    {
+      "id": "REC-1",
+      "file": "/root/scripts/alpha_zen_engine.py",
+      "affected_claims": [
+        "SEAL-CHRON-FORGERY-2026-09-18 changes[1].sha256_after",
+        "SEAL-CHRON-SPINE-2026-09-18 changes_this_pass[2].sha256_after"
+      ],
+      "original_claim": "FORGERY: sha256_after = f0b31aa62d544490d079c686188d1bd8054e9b6a62c9d9f61e7cb761f32cef52. SPINE: sha256_after = dc1420b0eb19.",
+      "counterevidence": {
+        "disk_now": "a822850a37c13fcfa6d3ad822142c18ea590b1158cdeed0a264678387dde4830",
+        "verdict_both": "MISMATCH against disk",
+        "the_seal_values_were_real": [
+          "`git show b8c600c:alpha_zen_engine.py | sha256sum` = f0b31aa62d544490d079c686188d1bd8054e9b6a62c9d9f61e7cb761f32cef52 — byte-identical to the FORGERY seal's sha256_after. Commit b8c600c 'fix(alpha-zen): rejection funnel no longer records constants as measurement', 2026-09-18T10:59:04+08:00.",
+          "`git show 133f692:alpha_zen_engine.py | sha256sum` = dc1420b0eb1941dd7525d81723fb51292f066b89be51af3f2560470fc770ab88 — byte-identical to the full value whose 12-char prefix the SPINE seal recorded. Commit 133f692 'fix(alpha-zen): remove the last soft gate bypass, type the refusal', 2026-09-18T11:02:24+08:00, and still HEAD.",
+          "`git show eb16372:alpha_zen_engine.py | sha256sum` = 017a1da0eb881ff3a51c41bb06da67f76056760dac6c9e9c8604a4b7826c07e2 — the FORGERY seal's sha256_before, matching backup-105522/alpha_zen_engine.py exactly."
+        ],
+        "conclusion_from_that": "Both sealed values name states that really existed and are preserved in git. The seals did not invent anything. Disk has moved past both of them."
+      },
+      "correction": "Both sha256_after values are CORRECT-FOR-THEIR-MOMENT and STALE against the current disk. The current on-disk state of /root/scripts/alpha_zen_engine.py is a822850a37c13fcfa6d3ad822142c18ea590b1158cdeed0a264678387dde4830, uncommitted. Consumers of either seal must not treat f0b31aa6 or dc1420b0 as describing disk. Lineage: 017a1da0 (pre-forge) -> f0b31aa6 (forgery pass) -> dc1420b0 (spine pass) -> a822850a (current, uncommitted).",
+      "causal_chain_with_timestamps": [
+        {"t_myt": "2026-09-18T10:38:37", "event": "pre-forge engine state on disk; mtime of backup-105522/alpha_zen_engine.py; sha256 017a1da0…", "evidence": "stat + sha256 backup-105522/alpha_zen_engine.py"},
+        {"t_myt": "2026-09-18T10:39:11", "event": "commit eb16372 records that same content (sha256 017a1da0…)", "evidence": "git show eb16372:alpha_zen_engine.py | sha256sum"},
+        {"t_myt": "2026-09-18T10:55:22", "event": "pre-forge backup taken into backup-105522/ (directory name encodes the time)", "evidence": "path name /root/AAA/forge_work/chron-audit/backup-105522"},
+        {"t_myt": "2026-09-18T10:56:37", "event": "sibling lane mutates the file (rejection-funnel constants -> None / rejection_tracking=NOT_MEASURED) while another fix is in progress", "evidence": "RECEIPT-2026-09-18-chron-engine-witness-fix.json coordination_note: 'sibling_lane … modified this file at 10:56:37'"},
+        {"t_myt": "2026-09-18T10:58:19", "event": "SEAL-CHRON-FORGERY-2026-09-18.json created on disk", "evidence": "stat birth=2026-09-18 10:58:19.944351667 +0800"},
+        {"t_myt": "2026-09-18T10:58:42", "event": "FORGERY seal declared created; records engine sha256_after = f0b31aa6… — TRUE of the working tree at that moment", "evidence": "seal field `created` + git b8c600c content"},
+        {"t_myt": "2026-09-18T10:59:04", "event": "commit b8c600c lands that exact content (f0b31aa6…). The forged state becomes durable and observable.", "evidence": "git log --format=%cI + git show"},
+        {"t_myt": "2026-09-18T11:02:24", "event": "FIRST MOVEMENT after the forgery seal. Commit 133f692 lands dc1420b0…. The forgery seal's sha256_after goes STALE — 3 min 42 s after the seal was written.", "evidence": "git log + sha256 of committed content"},
+        {"t_myt": "2026-09-18T11:03:14", "event": "SEAL-CHRON-SPINE-2026-09-18.json created on disk; records engine sha256_after = dc1420b0 (correct for the then-current state)", "evidence": "stat birth=2026-09-18 11:03:14.955369476 +0800"},
+        {"t_myt": "2026-09-18T11:18:52", "event": "SECOND MOVEMENT. A 26-line 'STATUS: DORMANT — NOT IN THE PRODUCTION PATH' banner is inserted at the head of the engine. sha256 becomes a822850a…. File Birth=Modify=11:18:52.290/.305 +0800 (atomic replace, not in-place append).", "evidence": "stat Birth/Modify; git diff HEAD -- alpha_zen_engine.py = 26 insertions, 0 deletions"},
+        {"t_myt": "2026-09-18T11:20:00", "event": "SEAL-CHRON-SPINE declared created_local = 11:20+08:00 — CONFLICTS with the file's filesystem birth of 11:03:14. See open_items OPEN-1.", "evidence": "seal field `created_local` vs stat birth"},
+        {"t_myt": "2026-09-18T11:22:21", "event": "RECEIPT-2026-09-18-chron-engine-witness-fix.json written (mtime)", "evidence": "stat"},
+        {"t_myt": "2026-09-18T11:26:00", "event": "sibling lane re-hashes the working tree and finds a822850a…", "evidence": "correction block in both seals; claim clm-47aab3359c209d17"},
+        {"t_myt": "2026-09-18T11:29:32", "event": "art-a822850a37c13fcf registered in /root/AAA/claim_ledger/claims.db", "evidence": "sqlite read: artifacts.registered_at=2026-09-18T03:29:32Z"},
+        {"t_myt": "2026-09-18T11:29:40", "event": "clm-47aab3359c209d17 recorded, stating the seals were true when written and the file moved after", "evidence": "sqlite read: claims.recorded_at=2026-09-18T03:29:40Z"},
+        {"t_myt": "2026-09-18T11:30:30", "event": "BOTH seal files amended in place with an identical `append_only_corrections` block (mtime 11:30:30 on both, 0.001 s apart)", "evidence": "stat mtime on both seal files; python equality check of the two blocks = True"},
+        {"t_myt": "2026-09-18T11:43:17", "event": "THIS reconciliation: disk still a822850a…, still uncommitted", "evidence": "sha256sum + git status"}
+      ],
+      "cause": "ESTABLISHED. A second writer inserted a 26-line DORMANT status banner into /root/scripts/alpha_zen_engine.py at 11:18:52 MYT, after both seals were written, and never committed it.",
+      "responsible_lane": "PROVABLE — the lane that authored /root/briefing-system/RECEIPT-2026-09-18-chron-engine-witness-fix.json (receipt field `actor`: hermes; `lane`: B). Three independent proofs: (1) the banner text itself carries `receipt: rcpt-2026-09-18-chron-engine-witness-fix`; (2) that receipt self-attributes the act — causal_path_finding.doctrine_applied: 'A DORMANT banner was added to the engine header so no future agent wires in a second renderer with a second clock'; (3) the same receipt's two_writer_collision.hash_reality records before_this_lane_wrote = dc1420b0eb1941dd7525d81723fb51292f066b89be51af3f2560470fc770ab88 and after_this_lane_wrote = a822850a37c13fcfa6d3ad822142c18ea590b1158cdeed0a264678387dde4830, the latter being exactly the current disk hash.",
+      "culpability": "NONE ASSERTED. The write is documented, self-attested, deliberate, and substantively correct (the engine has zero scheduled callers — verified against hermes cron jobs.json, systemd, /etc/cron.d, shell wrappers). The defect is not the edit; it is that the edit was uncommitted and unwitnessed by the seals it invalidated. Single-writer ownership without an enforcement mechanism is the same defect class the day was spent auditing."
+    }
+  ],
+
+  "still_valid": {
+    "definition": "Attested sha256 VALUES from the two seals that still match the file as it exists on disk right now (2026-09-18T11:43 MYT).",
+    "count": 7,
+    "values": [
+      {"seal": "SEAL-CHRON-FORGERY-2026-09-18", "field": "changes[0].sha256_after", "file": "/root/AAA/scripts/alpha_zen_card.py", "attested": "a15322a0f856cd7ef04263276c0edc4039742c1e4dedd4367a7accaf6c29b963", "on_disk": "a15322a0f856cd7ef04263276c0edc4039742c1e4dedd4367a7accaf6c29b963", "verdict": "MATCH"},
+      {"seal": "SEAL-CHRON-FORGERY-2026-09-18", "field": "changes[2].sha256_after", "file": "/root/AAA/scripts/cron_failure_autopause.py", "attested": "d23dd46640efdf497c3ad6124c96e26fcc823d2e6b7af4dd87b0dc9ce42a574d", "on_disk": "d23dd46640efdf497c3ad6124c96e26fcc823d2e6b7af4dd87b0dc9ce42a574d", "verdict": "MATCH"},
+      {"seal": "SEAL-CHRON-FORGERY-2026-09-18", "field": "changes[3].sha256_after", "file": "/root/AAA/registries/federated-recurrence.yaml", "attested": "79219ac2deda76d5945f9d5877842ca6b3839c3c07ff8c05035a64f1884bbcc4", "on_disk": "79219ac2deda76d5945f9d5877842ca6b3839c3c07ff8c05035a64f1884bbcc4", "verdict": "MATCH"},
+      {"seal": "SEAL-CHRON-FORGERY-2026-09-18", "field": "changes[4].sha256_after", "file": "/root/AAA/scripts/apex-zen-compact.py", "attested": "189be35acf8efb161d14a50cbe66dd8c1ff8697636a1a34fb55a2da762f2638f", "on_disk": "189be35acf8efb161d14a50cbe66dd8c1ff8697636a1a34fb55a2da762f2638f", "verdict": "MATCH"},
+      {"seal": "SEAL-CHRON-SPINE-2026-09-18", "field": "changes_this_pass[0].sha256_after", "file": "/root/AAA/scripts/chron.py", "attested": "afb1ca65047f (12-char prefix)", "on_disk": "afb1ca65047f569513ba8e4825405bcbe0c6b6b9092340cc318e99eea8981cd4", "verdict": "MATCH — prefix; also byte-identical to git HEAD:scripts/chron.py (commit d1f97be, 'preserve(live-chron): byte-exact commit of CHRON production path')"},
+      {"seal": "SEAL-CHRON-SPINE-2026-09-18", "field": "changes_this_pass[1].sha256_after", "file": "/root/AAA/scripts/chron_spine_gate.py", "attested": "600b9a85adc0 (12-char prefix)", "on_disk": "600b9a85adc0181b371b93691c31dfd79e5fb6bf49d217f1207fa4e20e558109", "verdict": "MATCH — prefix; also byte-identical to git HEAD:scripts/chron_spine_gate.py"},
+      {"seal": "SEAL-CHRON-SPINE-2026-09-18", "field": "changes_this_pass[3].sha256_after", "file": "/root/AAA/scripts/alpha_zen_card.py", "attested": "a15322a0f856 (12-char prefix)", "on_disk": "a15322a0f856cd7ef04263276c0edc4039742c1e4dedd4367a7accaf6c29b963", "verdict": "MATCH — prefix; this entry is a declared no-op (before == after)"}
+    ],
+    "note": "The production path named in the seals — /root/AAA/scripts/chron.py and /root/AAA/scripts/alpha_zen_card.py — matches both seals exactly and is byte-clean in git at HEAD (d1f97be). The damage in this reconciliation is confined to ONE file."
+  },
+
+  "historical_claims_verified": {
+    "definition": "Attested sha256_before VALUES, which are by nature claims about a PAST state. Verified against backup-105522/ and/or git history, not against disk.",
+    "count": 8,
+    "verified": 8,
+    "unverified": 0,
+    "detail": [
+      {"file": "/root/AAA/scripts/alpha_zen_card.py", "seal": "FORGERY changes[0].sha256_before", "attested": "d66974ee1815767e688caaa6dd4ae7d42def89e8e9899c866eb514d39eb16fbd", "referent": "backup-105522/alpha_zen_card.py", "referent_sha256": "d66974ee1815767e688caaa6dd4ae7d42def89e8e9899c866eb514d39eb16fbd", "verdict": "MATCH", "note": "seal before_note 'untracked in git (created 2026-09-18)' confirmed — this sha256 appears nowhere in /root/AAA git history"},
+      {"file": "/root/scripts/alpha_zen_engine.py", "seal": "FORGERY changes[1].sha256_before", "attested": "017a1da0eb881ff3a51c41bb06da67f76056760dac6c9e9c8604a4b7826c07e2", "referent": "backup-105522/alpha_zen_engine.py AND git eb16372", "verdict": "MATCH (both referents independently)"},
+      {"file": "/root/AAA/scripts/cron_failure_autopause.py", "seal": "FORGERY changes[2].sha256_before", "attested": "e4932272001f5738fca92925d3b296d814487511c4eb58273c0d3064fcfc5009", "referent": "git history", "verdict": "MATCH"},
+      {"file": "/root/AAA/registries/federated-recurrence.yaml", "seal": "FORGERY changes[3].sha256_before", "attested": "102c8db0db50e2628a2e6a9b18fa787b7786095bed8a6c8e3bee1878c127218a", "referent": "git history", "verdict": "MATCH"},
+      {"file": "/root/AAA/scripts/apex-zen-compact.py", "seal": "FORGERY changes[4].sha256_before", "attested": "661f80cea4107934042e25a4066435224279e771711bc1b429745a8ec521d772", "referent": "git history", "verdict": "MATCH"},
+      {"file": "/root/AAA/scripts/chron.py", "seal": "SPINE changes_this_pass[0].sha256_before", "attested": "82f40a2cd188 (12-char prefix)", "referent": "backup-105522/chron.py", "referent_sha256": "82f40a2cd1887d1487e55a66a141ae969de8da78a6512387aadfdd0fd3f84a01", "verdict": "MATCH — prefix"},
+      {"file": "/root/scripts/alpha_zen_engine.py", "seal": "SPINE changes_this_pass[2].sha256_before", "attested": "f0b31aa62d54 (12-char prefix)", "referent": "git b8c600c content", "referent_sha256": "f0b31aa62d544490d079c686188d1bd8054e9b6a62c9d9f61e7cb761f32cef52", "verdict": "MATCH — prefix"},
+      {"file": "/root/AAA/scripts/alpha_zen_card.py", "seal": "SPINE changes_this_pass[3].sha256_before", "attested": "a15322a0f856 (12-char prefix)", "referent": "disk + git HEAD", "verdict": "MATCH — prefix (declared no-op entry)"}
+    ],
+    "not_a_hash_claim": [
+      {"file": "/root/AAA/scripts/chron_spine_gate.py", "seal": "SPINE changes_this_pass[1].sha256_before", "value": "NEW", "note": "no hash asserted; correctly labelled NEW rather than faked. This is honest."}
+    ]
+  },
+
+  "verified_not_broken_recheck": {
+    "note": "The FORGERY seal's `verified_not_broken` block is behavioural, not hash-based. Spot-checked where it was cheap and safe (read-only grep, no execution of the engine — it is dormant and running it could write artifacts).",
+    "engine_header_after_fix": {
+      "seal_claim": "OD1=0 occurrences, 377=0 occurrences, 21 present",
+      "observed_now": "OD1 = 7 occurrences, 377 = 2 occurrences, 21 present once",
+      "assessment": "The LITERAL counting claim does not hold and did not hold at 10:58 either — prose strings containing the token 'OD1' existed in the pre-fix file too. It is a scope-imprecise claim (substring counts vs the actual defect), NOT proof the fix failed. Substantive check: the uncommented `privacy_filter: 'OD1 arif-only'` literal present in the pre-forge state (017a1da0) is gone from the committed fixed state (only a quoted description of the removed defect remains, commented out), and the hardcoded CHRON strip `<div class=\"chron-num\">{chrono[\"od1_days\"]}</div>…OD1 Horizon` present in 017a1da0 is absent from dc1420b0. The defect the seal names is genuinely fixed.",
+      "verdict": "DIFFERENT CLAIM CLASS — behavioural, scope-imprecise, NOT counted as a hash mismatch. Recorded so it is not silently inherited either."
+    },
+    "not_verified_by_me": [
+      "production_quality_gate 20/20 negative controls — requires executing the gate; out of this record's lane and not needed to reconcile hashes",
+      "canonical_clock_self_test — same",
+      "render_determinism, compact exit 0 — same",
+      "These are UNVERIFIED-BY-THIS-RECORD, not found false."
+    ]
+  },
+
+  "refuted_third_party_claim": {
+    "claim": "RECEIPT-2026-09-18-chron-engine-witness-fix.json, two_writer_collision.finding: 'Neither hash on disk has ever matched the sibling's sealed hash. The sibling seal attests a state that does not exist.'",
+    "raw_observation": "FALSE with respect to the forgery seal, and refutable from git alone. The forgery seal attests f0b31aa6… = the byte-exact content of commit b8c600c (2026-09-18T10:59:04+08:00), verified this session by `git show b8c600c:alpha_zen_engine.py | sha256sum`. That state existed on disk from the forgery pass until 11:02:24 and is durably recorded in git. The state does exist.",
+    "why_the_receipt_got_it_wrong": "FINDING-B-1 — read-time inference from a stale read, not a falsehood. The receipt's own hash_reality block records before_this_lane_wrote = dc1420b0… — i.e. by the time that lane read the file it already held the SPINE state, never the FORGERY state. From a vantage point after 11:02:24 both earlier values are invisible on disk, which is an artifact of WHEN the observation was made, not evidence that the earlier state never existed.",
+    "correction": "The sibling forgery seal attests a state that really existed and is preserved in git; it is STALE, not fictional. This refutation CUTS IN FAVOUR OF the forgery lane. It also instantiates the error class the same receipt correctly retracts elsewhere (SELF-1): asserting absence from a probe that could not have returned a hit. Here the probe was a point-in-time read being used to make a claim about all time.",
+    "doctrine": "Temporal-artifact-integrity: a mutable file's hash is evidence only of a moment. A hash mismatch does not license the inference that the sealed state never existed — only that it is not now."
+  },
+
+  "spine_seal_assessment": {
+    "premise_correction_restated": "The spine seal does NOT attest no hashes. It attests TRUNCATED hashes.",
+    "what_it_attests_in_full": {
+      "full_sha256_values": 0,
+      "truncated_12_char_prefixes": 6,
+      "files_covered_by_prefix": ["/root/AAA/scripts/chron.py", "/root/AAA/scripts/chron_spine_gate.py", "/root/scripts/alpha_zen_engine.py", "/root/AAA/scripts/alpha_zen_card.py"],
+      "non_hash_values": 4,
+      "non_hash_list": ["three-way seal/plastic partition (sealed slow / learnable middle / fluid outer)", "nine boundary checks with verdicts 6 PASS / 0 FAIL / 3 UNBUILT", "prose evidence strings per boundary", "self_reported_defects"]
+    },
+    "seal_of_a_document_or_a_seal_of_a_state": "It is PRIMARILY A SEAL OF A DOCUMENT — specifically of the spine gate's own verdict set (nine boundary checks, 6 PASS / 0 FAIL / 3 UNBUILT, self-test PASS) — and only INCIDENTALLY, and under-specifiedly, a seal of file state. The four file entries exist to record 'a change was made this pass', not to make the files verifiable. Evidence: three of the four entries carry no `defect` at all (one says defect fixed in a PRIOR pass; one is a declared no-op before==after; one is NEW), which is the shape of a change-log, not of an artifact binding.",
+    "can_it_be_verified": {
+      "verdict": "PARTIALLY — and not as a seal of state.",
+      "verified_for_you": "All 6 prefix values were checked this session and all 6 resolve to real content: 82f40a2cd188 -> backup-105522/chron.py (82f40a2cd1887d14…); afb1ca65047f -> disk + git HEAD (afb1ca65047f569…); 600b9a85adc0 -> disk + git HEAD (600b9a85adc0181b…); f0b31aa62d54 -> git b8c600c (f0b31aa62d54…); dc1420b0eb19 -> git 133f692/HEAD (dc1420b0eb1941dd…); a15322a0f856 -> disk (a15322a0f856cd7e…).",
+      "why_that_is_not_verification": "A 12-hex-character (48-bit) prefix is a MATCH-ABLE value, not a VERIFYING one. Collision resistance at 48 bits is ~2^24 (~1.7e7) for a second preimage — a determined writer of a mutable production file can construct a colliding prefix. The seal asserts integrity at a strength far below the sha256 it names the field after, and it names the field `sha256_before`/`sha256_after` while storing something else. That is a representation claiming to be more than it is — the exact law the spine seal itself declares: 'A representation may never claim to be reality itself.'",
+      "second_defect": "The engine entry's `sha256_after` (dc1420b0eb19) did not match the working tree at the time this reconciliation began, and matches disk in no case — see REC-1. The file was never committed in the state it held when the seal was declared.",
+      "third_defect_timestamps": "The seal's declared `created_local` = 2026-09-18T11:20+08:00 is contradicted by the file's filesystem birth time, 2026-09-18T11:03:14.955369476+08:00 — a 16-minute 45-second gap. Two competing creation times are recorded and this reconciliation does not pick a winner (see OPEN-1). The choice matters: at 11:03:14 the seal's values were true of disk (stale 15 min later); at 11:20+ they were already stale at write.",
+      "the_block_that_IS_verifiable_and_sound": "`self_reported_defects` is the seal's strongest component. It records that the gate's own self-test caught three false alarms the author had written into it, and that they were recorded INSIDE the file rather than quietly deleted. That is a falsifiable, self-incriminating artefact of real value, and it is the part of this seal a reviewer should read first. It is not, however, a hash, and it does not verify file state."
+    },
+    "plain_finding": "The spine seal is a LEGIBLE RECORD OF A PASS and an UNVERIFIABLE CLAIM OF INTEGRITY. It should not be cited as proof that any file is what it was, because at 12 hex characters it was not built to carry that proof, and at least one of its values does not describe disk. It should be cited as the record of which nine boundaries were checked, with which verdicts, and by what evidence — that part is real, auditable and useful.",
+    "not_softened": "This is not a minor formatting nit. A hash field that cannot verify and a count field that is scope-imprecise give a reviewer the sensation of verification without its substance — the same FALSE_NAME defect class the sibling lane correctly upheld against A-FORGE :7071 elsewhere today."
+  },
+
+  "errata_found_in_existing_records": [
+    {
+      "id": "ERR-1",
+      "where": "SEAL-CHRON-FORGERY-2026-09-18.append_only_corrections.corrections[0].subject",
+      "text": "\"changes[2] alpha_zen_engine.py sha256_after\"",
+      "defect": "WRONG INDEX. In the forgery seal, alpha_zen_engine.py is changes[1]. changes[2] is cron_failure_autopause.py. The block's text is correct for the SPINE seal (where the engine IS index 2) — the python equality check shows both seals carry a byte-identical correction block, so it was copied verbatim without re-indexing.",
+      "severity": "LOW — a pointer label, not a value. Noted because a wrong index in a correction block is exactly how a future reader lands on the wrong file.",
+      "not_rewritten": "Recorded here only. The seal was not edited. Append-only."
+    },
+    {
+      "id": "ERR-2",
+      "where": "SEAL-CHRON-FORGERY-2026-09-18.append_only_corrections.corrections[0].original",
+      "text": "\"dc1420b0eb19 (forgery seal: f0b31aa62d54)\"",
+      "defect": "MISLEADING ORDER. The parenthetical labels the SPINE value as the forgery seal's. The forgery seal's engine sha256_after is f0b31aa62d54; dc1420b0eb19 is the spine seal's. Both values are present and correct, but the attribution is inverted.",
+      "severity": "LOW — verifiable both ways, recorded for lineage cleanliness."
+    }
+  ],
+
+  "open_items": [
+    {
+      "id": "OPEN-1",
+      "item": "SPINE seal creation-time conflict: declared created_local 2026-09-18T11:20+08:00 vs filesystem birth 2026-09-18T11:03:14.955369476+08:00.",
+      "why_it_matters": "It decides whether the spine seal's engine hash was TRUE-then-stale or STALE-at-write. Under the fs birth (raw observation) it was true at write, 50 s after commit 133f692, and went stale at 11:18:52 — the same benign pattern as the forgery seal. Under the declared 11:20 it was already stale by ~68 s when sealed.",
+      "state": "UNRESOLVED — both observations recorded, neither privileged. The file's content cannot speak to its own write time; only the filesystem and the author can, and they disagree.",
+      "effect_on_this_record": "NONE for the mismatch itself. /root/scripts/alpha_zen_engine.py does not match either seal today under either reading. The conflict changes attribution of care, not the stale fact."
+    },
+    {
+      "id": "OPEN-2",
+      "item": "/root/scripts/alpha_zen_engine.py remains uncommitted at a822850a… (git status ' M').",
+      "state": "OPEN — the only remaining divergence in this reconciliation set. A single git commit in /root/scripts would close it, but that is a mutation outside this record's lane."
+    },
+    {
+      "id": "OPEN-3",
+      "item": "Neither seal, and neither receipt, names a single enforced owner for /root/scripts/alpha_zen_engine.py across the 10:56–11:19 window.",
+      "state": "OPEN — process defect, not a record defect. Three lanes touched one file under one F13 instruction with no lock and no declared owner. The kernel/lane mechanism that would have prevented it is the same mechanism the sibling receipt reports as refusing every seal (DEPLOYMENT_DRIFT HOLD)."
+    },
+    {
+      "id": "OPEN-4",
+      "item": "Ownership A/B/C remains unanswered by F13; carry_forward e-3a377340 records a self-authored ratification which, under the authority envelope, does not self-bind.",
+      "state": "OPEN — carried forward unchanged from both seals. Not adjudicated here."
+    },
+    {
+      "id": "OPEN-5",
+      "item": "The behavioural claims in SEAL-CHRON-FORGERY.verified_not_broken (20/20 negative controls, clock self-test, render determinism, compact exit 0) were not re-executed by this record.",
+      "state": "UNVERIFIED-BY-THIS-RECORD. Not false. Recorded so the gap is visible rather than implied-closed."
+    }
+  ],
+
+  "honest_state": "RECONCILED, APPEND-ONLY. 15 attested hash values across both seals were re-derived from raw disk, backup-105522/ and git this session: 9 current-state ('after') claims, of which 7 still MATCH disk and 2 are STALE; and 8 historical ('before') claims, all 8 MATCH their referent in backup or git. Exactly ONE file is affected — /root/scripts/alpha_zen_engine.py — with one stale value in each seal. The cause is established with three independent proofs: a second writer inserted a 26-line DORMANT banner at 2026-09-18T11:18:52+08:00 and left it uncommitted; that lane self-attests the act in /root/briefing-system/RECEIPT-2026-09-18-chron-engine-witness-fix.json and its own before/after hashes bracket the exact transition. Neither seal lied. The FORGERY seal was true when written and went stale 3 min 42 s later at commit 133f692; the SPINE seal was true of the state it bound to and is now stale. This record does not downgrade any claim that is in fact sound: the production path (/root/AAA/scripts/chron.py and alpha_zen_card.py) matches both seals exactly and is byte-clean at git HEAD d1f97be. One third-party claim was REFUTED in favour of the forgery lane — the sibling receipt's assertion that the forgery seal 'attests a state that does not exist' is false; that state is commit b8c600c, preserved in git. This record is LANE B and NOT F13-RATIFIED. It is a RECONCILIATION, not a SEAL. It did not edit, move or delete any existing artifact."
+}

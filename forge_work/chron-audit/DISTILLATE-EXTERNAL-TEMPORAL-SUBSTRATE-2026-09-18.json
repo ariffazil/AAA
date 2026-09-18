@@ -1,0 +1,112 @@
+{
+  "distillate_id": "DISTILLATE-EXTERNAL-TEMPORAL-SUBSTRATE-2026-09-18",
+  "source": "external architectural analysis relayed by F13 (telegram msg 155329), truncated mid-sentence",
+  "method": "every checkable claim re-derived from disk and from live endpoints",
+  "rule": "external analysis enters as CLAIMS with state, never as fact",
+
+  "admitted": [
+    {
+      "claim": "The arifOS memory API already exposes temporal_as_of, include_historical, include_contested, supersedes_memory_id, plus graph-first and hybrid retrieval.",
+      "verified": true,
+      "how": "tools.py:24322 supersedes_memory_id, :24341 include_contested, :24343 temporal_as_of; tool_13_arif_memory.py:428 enforces B5 (revise without supersedes_memory_id is refused)",
+      "consequence": "The temporal substrate the analysis asks for is PARTLY BUILT. This is the same finding as the routing registry: the capability exists, so building a parallel one would be duplication."
+    },
+    {
+      "claim": "Time is missing from the institution's memory as actually used.",
+      "verified": true,
+      "how": "five Qdrant collections sampled; zero time-shaped payload fields",
+      "consequence": "Already recorded. Time is absent where memory is USED and present-but-unexposed where the right engine is INSTALLED."
+    },
+    {
+      "claim": "The closed loop Reality -> Observation -> Attention -> Expectation -> Decision -> Action -> Outcome -> Memory -> Calibration -> Better Attention is the correct target.",
+      "verified": "structural, not falsifiable as stated",
+      "consequence": "ADOPTED as the target architecture. It matches the five CHRON questions already recorded."
+    },
+    {
+      "claim": "SILENT is an intelligent action; a system sending fewer better messages has higher temporal intelligence.",
+      "verified": true,
+      "how": "consistent with the delivery_policy ALWAYS | MATERIAL_ONLY | SILENT_OK field already adopted",
+      "consequence": "ADOPTED. It also independently confirms the freeze: not sending is a valid output."
+    },
+    {
+      "claim": "Stage 0 -> Stage 1 is where CHRON sits: witness the natural runtime chains before building learning.",
+      "verified": true,
+      "how": "0 of 3 ALPHA-ZEN jobs have fired; the arrow chain is unproven",
+      "consequence": "ADOPTED. It agrees with the freeze already held."
+    },
+    {
+      "claim": "The fourth timestamp matters: EVENT_TIME / OBSERVED_TIME / KNOWLEDGE_TIME / RELEVANCE_TIME.",
+      "verified": "sound, unbuilt",
+      "how": "no object currently carries all four",
+      "consequence": "ADOPTED as design target for ChronEpisode. Not built — the freeze forbids it."
+    },
+    {
+      "claim": "Do not make Qdrant the truth store, the graph the audit log, VAULT999 the daily event DB, or Telegram the memory.",
+      "verified": true,
+      "how": "consistent with the machine map already in force",
+      "consequence": "ADOPTED as a layering rule."
+    }
+  ],
+
+  "refuted": [
+    {
+      "claim": "arifOS live init reports the commits as matching and drift:false, yet the outer state still becomes DEGRADED with reason_code=DEPLOYMENT_DRIFT.",
+      "verdict": "NOT REPRODUCIBLE at 2026-09-18T11:44 MYT",
+      "measured_live": "arif_init at :8088 returned drift=false, reason_code='NEEDS_REVIEW', state='HEALTHY', status='completed', verdict='HOLD'",
+      "so": "no DEPLOYMENT_DRIFT is present, and no DEGRADED state is present. The claim describes a state that is not current.",
+      "but_the_mechanism_is_real_and_worse_than_stated": {
+        "file": "/root/arifOS/arifosmcp/runtime/tools.py",
+        "function": "_payload_has_deployment_drift, lines 130-155",
+        "four_triggers": [
+          "line 143: software_release.drift is True        -> MEASURED",
+          "line 150: deployment_invariant.drift is True     -> MEASURED",
+          "line 140: substrate.state == 'DEGRADED'          -> LABEL, not measurement",
+          "line 153: any('drift' in str(x).lower() for x in degraded[]) -> SUBSTRING MATCH in free text, not measurement"
+        ],
+        "finding": "Two of the four drift triggers are not measurement. One accepts a STATE LABEL as proof of deployment drift; the other accepts the SUBSTRING 'drift' anywhere in a prose list. A degraded state caused by anything at all would be relabelled DEPLOYMENT_DRIFT.",
+        "this_supersedes_my_earlier_narrower_claim": "I previously named only line 140. Line 153 is a second, independent name-matching trigger."
+      }
+    },
+    {
+      "claim": "The DEPLOYMENT_DRIFT label observed earlier today was a label overriding a false value.",
+      "verdict": "FALSE for the observed instance",
+      "measured": "the 09:12 receipt at /root/arifOS/VAULT999/RECEIPTS/2026-09-18-wscar-gate-v2-RECEIPT-laneB.json records drift_finding_verified_independently: source_commit a027b74676ba vs deployed_commit 174c76c82eff (genuinely different), and live :8088/health release.drift = True",
+      "consequence": "In that instance the label was CORRECT — drift was independently measured. The defect is a LATENT path (lines 140 and 153), not a past event. Conflating the two would have sent a fixer to patch correct code."
+    }
+  ],
+
+  "found_that_the_analysis_missed": [
+    {
+      "finding": "A-FORGE world-model log has been STALE for 22 days.",
+      "artifact": "/root/A-FORGE/duties/logs/world-model-lite.jsonl",
+      "measured": "792 prediction records, 792 distinct prediction_ids, but only 5 distinct actions; first ts 2026-07-28T20:40:33Z, last ts 2026-08-27T02:20:26Z — 22 days before today",
+      "why_it_matters": "The analysis praised the experience layer as 'much richer' and proposed feeding it into CHRON. It is not richer; it stopped writing on 27 August. Same defect class as the 5-minute APEX-ZEN loop: a subsystem that ran, produced records, and silently ceased while its artifacts still look healthy.",
+      "consequence": "Before CHRON can contribute episodes to a world model, someone must establish why the existing world-model writer stopped. A new producer feeding a dead consumer changes nothing."
+    },
+    {
+      "finding": "The '406 traces across 34 tools' figure could not be located on disk.",
+      "measured": "no experience-traces log found; only /root/A-FORGE/src/interfaces/mcp/experienceTraceTools.ts (the tool definition, not a record store)",
+      "consequence": "Recorded as UNVERIFIED. Not refuted — the store may live in a database not searched. A count with no artifact is a reported number."
+    }
+  ],
+
+  "what_this_changes": {
+    "before": "the external framing implied kernel drift-labelling is currently corrupting state",
+    "now": "the kernel state is coherent right now; the corruption is a LATENT mechanism at two lines, and the observed past instance was correct",
+    "and": "the subsystem the analysis wanted to build on stopped writing three weeks ago",
+    "so_the_priority_order_is": [
+      "1. 14:00 / 21:15 witness (freeze holds)",
+      "2. find why world-model-lite stopped on 27 Aug",
+      "3. SEAL-CHRON-SPINE key rename 'changes_this_pass' -> also expose 'changes' (the subagent is doing this)",
+      "4. kernel lines 140 and 153 (latent; not urgent since no current false label)"
+    ]
+  },
+
+  "not_adopted": [
+    "Build a giant graph database, RL loop, policy-learning engine, or autonomous memory promotion — the analysis itself says not to, and there are zero episodes.",
+    "Treat the 406/34 experience figure or the 22/21 world-model figures as measured — one has no artifact, the other uses a metric I could not reproduce against the 792-record log.",
+    "Patch reason_code defaults — measured correct in the observed instance."
+  ],
+
+  "next": "14:00 MYT. Witness the arrow chain. Nothing else."
+}
