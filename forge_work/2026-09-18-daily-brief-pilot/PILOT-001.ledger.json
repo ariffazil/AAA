@@ -1,0 +1,9 @@
+{
+  "edition": "PILOT-001",
+  "date": "2026-09-18",
+  "built_at": "2026-09-18T01:18:39Z",
+  "content_sha256": "9e62d60b47aeef8f0e2d50484168d16c52f868697779069009e815b5779e77f0",
+  "artifact_sha256": "92b560343050c93812370cb7235ec4ac041aff970c8ca4bf824a075c63c37bf0",
+  "chain_prev": null,
+  "seal_authority": "FI Hermes (KVM8) \u2014 lane-level integrity seal, NOT an F13 seal"
+}
