@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Health check: probe all federation organs.
 
-2026-08-15 upgrade:
-- Full 10-surface coverage (was 4) — aligns `make health` with `now` + FRAME baseline.
+2026-09-18: Added CHRON :18102 (11 surfaces).
+2026-08-15: Full 10-surface coverage (was 4) — aligns `make health` with `now` + FRAME baseline.
 - FED :4000 probed via /health/liveliness (no-auth); its /health is auth-gated.
 - 401/403 on /health means the service is UP but auth-gated — never DOWN.
   (HTTP 000 / connection refused is the only DOWN signal.)
@@ -24,6 +24,7 @@ ORGANS = [
     ('arifFlow', 7073, '/health'),
     ('FED', 4000, '/health/liveliness'),
     ('FRAME', 18085, '/health'),
+    ('CHRON', 18102, '/health'),
 ]
 
 UP_CODES = {200, 301, 308}
