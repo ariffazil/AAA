@@ -1,0 +1,57 @@
+{
+  "_why": "CHRON is a temporal intelligence surface, not a footer. §6: every countdown is COMPUTED from target_date at render time. Hardcoding '21 hari' or '164 hari' means the number is wrong the next morning and nobody notices — the poster keeps printing a stale number with full confidence. Both lanes were doing exactly that.",
+  "_rule": "No renderer may print a day-count that is not (target_date - render_date).days. The build self-test proves this by rendering twice, ten days apart, and failing if the numbers do not move.",
+
+  "_fields": {
+    "target_date": "ISO date in the event's own timezone",
+    "timezone": "IANA name; deltas are computed against the render date in this zone",
+    "title": "what the reader sees",
+    "audience": "who this is relevant to — arif | syed | both",
+    "source": "where the date comes from; a date with no source is a rumour",
+    "confidence": "HIGH | MEDIUM | LOW, about the DATE itself not the event",
+    "consequence": "HIGH | MEDIUM | LOW if the date passes unnoticed",
+    "actionability": "HIGH | MEDIUM | LOW — can the reader do anything before it lands",
+    "note": "one line of why it matters, written for the shared audience"
+  },
+
+  "events": [
+    {
+      "id": "belanjawan-2027",
+      "title": "Belanjawan 2027",
+      "target_date": "2026-10-09",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": ["arif", "syed"],
+      "source": "MOF pre-budget announcement, Sept 2026",
+      "confidence": "HIGH",
+      "consequence": "HIGH",
+      "actionability": "MEDIUM",
+      "note": "Baris dividen petroleum boleh disemak pada tarikh itu. Sebelum itu, setiap angka yang berlegar tiada pemfailan di belakangnya."
+    },
+    {
+      "id": "bank-gold-targets-2026",
+      "title": "Sasaran emas hujung tahun",
+      "target_date": "2026-12-31",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": ["syed", "arif"],
+      "source": "Goldman Sachs $4,900 and J.P. Morgan $6,000 published 2026 targets",
+      "confidence": "HIGH",
+      "consequence": "LOW",
+      "actionability": "LOW",
+      "note": "Tarikh di mana dua sasaran bank boleh dinilai. Sasaran bank ialah pendapat yang ada tarikh — ikut tarikh, bukan nombor."
+    },
+    {
+      "id": "od1-window",
+      "title": "Tingkap keputusan OD1",
+      "target_date": "2027-03-01",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": ["arif"],
+      "source": "Arif's own stated window (Mac 2027) — a window, not a fixed date",
+      "confidence": "LOW",
+      "consequence": "HIGH",
+      "actionability": "HIGH",
+      "note": "Hujung paling awal. Tarikh tepat belum dikunci — ini anggaran, bukan janji."
+    }
+  ],
+
+  "_expiry_law": "An event whose target_date is in the past LEAVES the active pool. It does not render as '0 hari' or a negative count. It moves to history with state MISSED or FULFILLED. A stale countdown on a poster is a lie printed once a day."
+}

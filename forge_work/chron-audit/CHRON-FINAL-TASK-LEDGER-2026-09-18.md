@@ -221,7 +221,28 @@ FRAME=reality · arifFlow=experience flow · CHRON=consequence through time · H
 
 ---
 
-## 11. ARTIFACTS PRODUCED THIS SESSION
+## 11. CHRON = ORGAN, NOT MCP
+
+CHRON should not start life as an MCP. CHRON is an organ. CHRON MCP is the query API.
+
+| Component | Nature |
+|-----------|--------|
+| CHRON | Organ (temporal cognition, runs continuously) |
+| CHRON MCP | Interface (query API for other organs) |
+
+Same pattern: GEOX ≠ GEOX MCP · WELL ≠ WELL MCP · WEALTH ≠ WEALTH MCP · CHRON ≠ CHRON MCP
+
+**Test:** If MCP dies, does capability die? For GEOX/WELL/GitHub = Yes. For CHRON = No — capability lives in episodes, predictions, verification, calibration.
+
+**CHRON as materialized consumer:** NATS → CHRON Observer → ChronEpisode Store → Prediction Store → Calibration Store.
+
+**Why not merge into arifFlow:** Flow + Memory + Prediction + Learning + Temporal Reasoning + Calibration = another "everything server."
+
+**Full doctrine:** `CHRON-ORGAN-NOT-MCP-2026-09-18.md`
+
+---
+
+## 12. ARTIFACTS PRODUCED THIS SESSION
 
 | # | Artifact | Path | Status |
 |---|----------|------|--------|
@@ -231,7 +252,8 @@ FRAME=reality · arifFlow=experience flow · CHRON=consequence through time · H
 | 4 | CHRON Organ Boundary Doctrine (Federation View) | `CHRON-ORGAN-BOUNDARY-DOCTRINE-2026-09-18.md` | DEFINED |
 | 5 | CHRON vs Agentic Memory Boundary | `CHRON-AGENTIC-MEMORY-BOUNDARY-2026-09-18.md` | DEFINED |
 | 6 | CHRON Six-Layer Architecture | `CHRON-SIX-LAYER-ARCHITECTURE-2026-09-18.md` | DEFINED |
-| 7 | Final Task Ledger | `CHRON-FINAL-TASK-LEDGER-2026-09-18.md` | THIS FILE |
+| 7 | CHRON = Organ, Not MCP | `CHRON-ORGAN-NOT-MCP-2026-09-18.md` | DEFINED |
+| 8 | Final Task Ledger | `CHRON-FINAL-TASK-LEDGER-2026-09-18.md` | THIS FILE |
 
 ---
 

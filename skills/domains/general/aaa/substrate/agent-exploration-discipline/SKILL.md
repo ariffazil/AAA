@@ -62,7 +62,13 @@ arrives after stopping — mechanism, not luck.
 4. Report the lanes tried. Never emit a bare "tool broken" — that claim outlives the fault and
    gets cited against you later.
 
-Declare "cannot witness" only after the sweep.
+Declare "cannot witness" only after the sweep — and only if the sweep *could* have found it. A null
+result is evidence of absence **only if the query could have matched**: prove it by running the same
+probe against a known-present control. A name pattern that cannot match the real naming convention
+(the files are `doc_<hash>_PREFIX_*` while the pattern demands `PREFIX_*`), a date filter applied on
+the wrong side of a timezone boundary (a local-morning entry is stored under the previous UTC date),
+and an output truncation (`| head -N`) each manufacture a false absence whose null carries zero
+information. Read the empty result as *your probe failed*, not as *the thing is gone*.
 
 ## Instrument vs hand-roll
 

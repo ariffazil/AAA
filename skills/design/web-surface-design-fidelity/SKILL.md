@@ -155,6 +155,9 @@ the honest version rather than escalating it:
 - **Generating CSS with regex.** `re.sub(r"\.cls\{[^}]*\}", ...)` stops at the first `}` —
   which is inside `clamp(...)` — and silently leaves half a keyframe block behind. Write CSS
   literally or patch exact strings, then check brace balance.
+- **Checking live values with a regex that ends at the first `</`.** A clock built as
+  `09<span>:</span>51` reads as `09:`. `../sovereign-surface-design/scripts/render_and_measure.py`
+  walks tags with a depth counter — copy the walker, not the regex, when proving JS ran.
 - **Declaring a private palette.** Derive every colour from the canon ring variables
   (`var(--soul-accent, #D4AF37)`) and link the token stylesheet. A page with its own `:root`
   palette becomes a "rogue surface" and fails review on governance grounds.
@@ -170,3 +173,11 @@ the honest version rather than escalating it:
 - `references/design-language-fidelity.md` — worked example on the arifOS constellation: the
   three type systems, measured contrast table, Fraunces axis values, and the rejected-vs-accepted
   shape comparison.
+
+## See also
+
+- `../sovereign-surface-design/` — companion skill for the "design a sovereign surface
+  from its canon tokens" lane. Its `references/arif-fazil-type-and-color.md` is the live
+  contrast table this one abstracts from; its `scripts/render_and_measure.py` is the same
+  render-then-measure pipeline. Use it when the page is sovereign-owned rather than a
+  generic site fidelity task.

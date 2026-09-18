@@ -61,6 +61,40 @@ Darken it. Vision inspection caught exactly this on the first light build.
 
 Never duplicate an owner's doctrine here. If this file and an owner disagree, the owner wins.
 
+## Two lanes exist — resolved by consolidation, not by running both
+
+Two DIFFERENT implementations of the recurring-briefing deliverable were built on this host on the
+same morning (2026-09-18), 30 seconds apart, both scheduled to 09:00 to the same DM. That is a
+**defect, not redundancy**: two notifications, and claim history split across two stores so neither
+delta is complete. The standing resolution is ONE lane.
+
+| Lane | Location | Engine | Strength |
+|---|---|---|---|
+| **docforge — THE LIVE LANE** | `/root/AAA/scripts/docforge/` (~1,900 lines) | WeasyPrint, 4 themes incl. `accessible.css` | SQLite claim-state (`CONTESTED`/`OPEN`/`MOVED`/`SETTLED`/`NEW`), `item_id` persists across editions, `first_seen`/`last_seen`/`last_changed`, 32+39 passing tests, producer injected not hardcoded |
+| briefing-system — RETIRED | `/root/briefing-system/` | Chrome headless | JSON schema contract + Jinja2 split, ink and path-leak gates, `chain_prev` ledger chaining. Archived editions remain readable as historical input |
+
+**Why docforge won:** the superior state layer. A brief that *learns* needs claim lifecycle and a
+stable join key; a list of artifact hashes cannot express "this claim moved". Its transport was then
+verified separately (`hermes send -t telegram:<chat_id>` — a bare numeric chat id FAILS with
+"Unknown or unregistered plugin platform"; the `telegram:` prefix is required).
+
+**Rules for anyone adding a briefing job:**
+- List cron jobs first and check the target timeslot for overlap. Two PDFs to one person on one
+  morning is the failure mode.
+- On overlap: pick ONE and have the other delegate or retire — never silently leave both live.
+- Consolidate onto the stronger engine; do not destroy the losing lane's code, retire its trigger.
+- A retired lane must stop being a *source* too, or the survivor waits on output that never comes.
+- **`deliver: origin` can silently misroute.** A job created from an agent context can capture the
+  BOT'S OWN chat as its origin, not the human's DM — so `origin` looks configured while delivery
+  goes somewhere the human never reads. Observed 2026-09-18: origin captured `chat_id 8410138119`
+  (the bot's own chat) for a briefing meant for `267378578`. Always set an EXPLICIT target
+  (`telegram:<chat_id>`) on a human-facing job and verify it persisted to the job store.
+- **Bare numeric chat ids fail in `hermes send`** — `-t 267378578` returns "Unknown or unregistered
+  plugin platform". The `telegram:` prefix is required. A transport probe must use the real grammar
+  or it reports a false negative.
+
+## Engine matrix — pick by shape, not habit
+
 ## Engine matrix — pick by shape, not habit
 
 | Artifact | Engine | Why | Watch out |

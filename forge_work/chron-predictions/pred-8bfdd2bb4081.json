@@ -1,0 +1,21 @@
+{
+  "prediction_id": "pred-8bfdd2bb4081",
+  "claim": "Event: OD1 - tarikh pilihan keluar Arif",
+  "expected_outcome": "OD1 - tarikh pilihan keluar Arif will occur by 2027-03-01",
+  "confidence": 0.8,
+  "verify_at": "2027-03-01T23:59:59+08:00",
+  "horizon": "5m",
+  "assumptions": [],
+  "evidence": [],
+  "source": "chron_events",
+  "source_id": "od1",
+  "principal": "arif",
+  "status": "ACTIVE",
+  "created_at": "2026-09-18T05:11:06.357379Z",
+  "observed_outcome": null,
+  "error": null,
+  "error_type": null,
+  "verified_at": null,
+  "brier_score": null,
+  "supersedes": null
+}

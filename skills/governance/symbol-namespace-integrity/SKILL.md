@@ -21,6 +21,9 @@ autonomy_tier: T1
 2. You are about to mint notation: a new tier scale, band, axis, prefix, acronym, or numeric ladder.
 3. A document proposes a classification scheme and you are deciding whether to encode it.
 4. A proposal says "I corrected the notation" — a revision needs its own probe, not trust.
+5. You are about to REUSE a symbol you did not define — citing it in a report, a doctrine, a commit
+   message, or a handoff. A symbol already in circulation needs the same probe as a new one, because
+   the catalog line that advertises it is not the file that owns it.
 
 ## Do not use when
 
@@ -146,6 +149,22 @@ the *source* while the doctrine stays the *owner*.
   layout, check whether the system already derives one from storage (e.g. `skill-matrix.py` computes a
   domain × organ × capability coordinate rather than storing it). A new hand-kept taxonomy has to be
   reconciled forever; structure proposals must beat the derived view on evidence, not on neatness.
+- **The rendered index is a CLAIM, not the definition — resolve a symbol to its owner file before citing it.**
+  A label can be misattributed in the always-loaded catalog (the generated `AGENTS.md` fragment table, a
+  skill's "Adjacent skills" row, a registry one-liner, a report) while the file that actually owns the
+  symbol says something else. Every session loads the index; almost none loads the owner — so a wrong
+  index line propagates through each agent that quotes it, and each of them believes the notation was
+  verified *because it appears in canon*. Measured: an always-loaded index bound two doctrine labels to
+  a mechanism file, while the symbol table assigned those same labels to a **different** owner at
+  `collision_class: FATAL`; two agents used the labels across a whole session, both citing the index,
+  neither opening the definition. The probe this skill already prescribes applies unchanged — run it
+  against the **definition file**, and grep the symbol to learn who defines it, *before the first
+  citation*, not after the correction. Generated output is a view; when it disagrees with the owner,
+  that disagreement is an index defect to report, never licence to pick whichever meaning is convenient.
+- **A symbol with a live owner cannot be extended by appending to it.** Proposing `X.1`/`X.2` under a
+  reserved prefix, or `X-b` under a live letter, is the same FATAL collision as minting it fresh — the
+  reader of `X.1` cannot tell which parent it belongs to, and the parent already means something else.
+  Stage the concept in neutral words, or take a genuinely free namespace and register it first.
 
 ## Verification
 
