@@ -1,0 +1,75 @@
+{
+  "distillate_id": "DISTILLATE-EXTERNAL-E13-2026-09-18",
+  "source": "external ChatGPT analysis, relayed by F13 (telegram msg 155307)",
+  "method": "every claim re-derived from disk before admission; nothing imported whole",
+  "rule": "External analysis enters as CLAIMS with state, never as fact. Unverified stays unverified.",
+
+  "admitted_as_correct": [
+    {
+      "claim": "4 of 5 entries in SEAL-CHRON-FORGERY match disk; only alpha_zen_engine.py mismatches.",
+      "verified": true,
+      "how": "re-hashed every listed file against the seal",
+      "consequence": "Corrects the earlier framing 'two seals, neither matches'. One file, one stale value."
+    },
+    {
+      "claim": "The seal is STALE, not FALSE. It was accurate when written, then the file moved.",
+      "verified": true,
+      "how": "sealed f0b31aa62d54; the pre-forge backup-105522 holds 017a1da0 (the sha256_before entry), and the value was right at write time",
+      "consequence": "A stale seal is repaired by a supersedes record; it does not need rewriting. Recorded as append_only_corrections on both seals."
+    },
+    {
+      "claim": "The cause is TWO WRITERS on one file, not seal dishonesty.",
+      "verified": true,
+      "how": "git shows commit 133f692 (HERMES, 11:02:24) set the blob to dc1420b0; the working tree then moved to a822850a uncommitted",
+      "consequence": "The same two-writer defect documented all day, this time inside the seal lane."
+    },
+    {
+      "claim": "Stale seal is LESS serious than the dormant engine.",
+      "verified": true,
+      "how": "a stale hash is repairable by one record with no history rewrite; a dormant capability misleads about what can happen",
+      "consequence": "Priority reordered accordingly. The engine banner stays the higher item."
+    },
+    {
+      "claim": "E13 applied to memory: entries carry epistemic state, not bare fact.",
+      "verified": true,
+      "how": "the routing entry now reads 'VFY 09-18' and states it can go stale, instead of asserting routing as permanent truth",
+      "consequence": "ADOPTED. Same discipline as the claim ledger (state + evidence_ref + observed_at + supersedes)."
+    },
+    {
+      "claim": "A third gap class exists beyond routing and semantic: TIMING.",
+      "verified": "plausible, untested",
+      "how": "not yet measurable — no cycle has fired",
+      "consequence": "ADOPTED as a hypothesis to test AFTER 14:00, not as a finding. A 14:00 Body Check delivered to a group nobody reads at 14:00 is a routing error AND a timing error; they are distinguishable only by observation."
+    }
+  ],
+
+  "refuted": [
+    {
+      "claim": "SEAL-CHRON-SPINE has no changes[] block at all.",
+      "verdict": "FALSE",
+      "measured": "the seal carries changes_this_pass with FOUR entries, each with sha256_before AND sha256_after: chron.py, chron_spine_gate.py, alpha_zen_engine.py, alpha_zen_card.py",
+      "root_cause": "the key is named changes_this_pass. A reader searching for 'changes[]' finds nothing and concludes absence.",
+      "why_this_matters": "This is the day's defect family committed inside the seal itself — a NAME hid real data from a searching reader. The data was present and correct; only the label misled. Exactly E11 NAME_REQUIRES_MECHANISM, applied to a JSON key.",
+      "correction": "searched under the wrong name, not a missing block"
+    }
+  ],
+
+  "the_irony_worth_naming": {
+    "statement": "An external analyst auditing our seals was misled by a key name in our own artifact — the same declaration-vs-mechanism gap the seal's own spine gate exists to catch.",
+    "reading": "Naming honesty is not cosmetic. It is the cheapest available control and it failed here."
+  },
+
+  "adopted_into_our_system": [
+    "Seal append_only_corrections blocks (both seals) — ORIGINAL / COUNTEREVIDENCE / CORRECTION, no history rewritten.",
+    "Claim ledger brief 2026-09-18-chron-runtime-baseline — 4 claims, 2 confirmed by recheck_artifact on disk.",
+    "Memory entries carry epistemic state (VFY-<date>, explicit staleness) instead of bare assertion.",
+    "Gap taxonomy widened from 2 to 3: routing | semantic | timing — all three measured after the freeze, none assumed."
+  ],
+
+  "not_adopted": [
+    "Any promotion, wiring, or schedule change. Freeze holds.",
+    "The external's framing that the seal work is 'more serious' than the dormant engine — measured as less."
+  ],
+
+  "next": "14:00 MYT. Measure the arrow chain; supersede the VOID claim with an OBS. Nothing else."
+}
