@@ -1,0 +1,103 @@
+{
+  "distillate_id": "DISTILLATE-EXTERNAL-BITEMPORAL-SYNTHESIS-2026-09-18",
+  "source": "external research synthesis relayed by F13 (telegram msg 155372), self-labelled 'SEAL: PARTIAL (Research Synthesis, not implementation)'",
+  "method": "every checkable claim re-derived from disk and live endpoints. Literature claims (Allen algebra, Event Calculus, Lamport, CQRS, Letta) accepted as literature and not re-derived; claims about OUR system were tested.",
+
+  "verdict_in_one_line": "The architecture advice is sound and the formal foundations are the right ones. But its central verdict — 'your proposed object is approximately correct' — grades the proposal against itself, and the live store is nowhere near it.",
+
+  "accepted": [
+    {
+      "claim": "Bitemporal is the minimum: valid_time vs transaction_time",
+      "why": "Matches the four-clocks finding already in our architecture reference. Independently arrives at the same conclusion from database literature.",
+      "action": "ADOPT as the inner/sealed layer. This is the sharpest real gap — see refuted[1]."
+    },
+    {
+      "claim": "Allen interval algebra (13 relations) beats bare timestamps for 'Project A OVERLAPS Project B'",
+      "why": "Correct and cheap. We currently store a single date; interval relations are a strict superset of what we can express.",
+      "action": "ADOPT for the edge vocabulary when episodes land."
+    },
+    {
+      "claim": "Event Calculus is the strongest formal foundation found: events + fluents + persistence",
+      "why": "CHRON's core question is literally 'which state changed because an event occurred'. Named a foundation we had not named.",
+      "action": "ADOPT as the candidate formalism for the state-change layer. Not a build item yet."
+    },
+    {
+      "claim": "Do not collapse PRECEDED / ASSOCIATED_WITH / POSSIBLY_INFLUENCED / CAUSED",
+      "why": "Already our §5 rule. Independent convergence.",
+      "action": "HOLD as written."
+    },
+    {
+      "claim": "ATTENTION_EVENT as a first-class object (selected/ignored/deferred/dismissed/escalated)",
+      "why": "Correct, and it is the object our negative-space design needs. Calibration of attention is impossible without recording non-selection.",
+      "action": "ADOPT into the ontology."
+    },
+    {
+      "claim": "Multiple time constants; control theory predicts oscillation/thrashing/Goodhart if mixed",
+      "why": "Already our §14. The addition of 'Goodhart' as the named failure mode is useful.",
+      "action": "HOLD as written."
+    },
+    {
+      "claim": "Agent6 safe scope: observe/measure/hypothesize/simulate/recommend. Forbidden: authorize/execute/change authority/goals/governance",
+      "why": "Correct separation of powers, and it matches the authority-envelope doctrine already binding on this federation.",
+      "action": "ADOPT as the standing constraint on any future learner seat."
+    },
+    {
+      "claim": "CHRON is not Temporal.io: Temporal executes, CHRON understands time",
+      "why": "The comparison is right and the boundary is clean.",
+      "action": "RECORD."
+    },
+    {
+      "claim": "Do not build a scheduler / workflow engine / graph DB / memory store / world model — those exist elsewhere",
+      "why": "Matches this day's repeated finding that capabilities are usually already built.",
+      "action": "HOLD."
+    },
+    {
+      "claim": "Queries: TRUE_NOW / BELIEVED_AT(T) / KNOWN_AT(T) / CHANGED_BETWEEN / CORRECTED_AFTER",
+      "why": "Feasible, and our memory API already exposes temporal_as_of + include_contested.",
+      "action": "RECORD as the acceptance test for Stage 4."
+    }
+  ],
+
+  "refuted": [
+    {
+      "claim": "Your proposed object is surprisingly close. APPROXIMATELY CORRECT, not obviously oversized. Missing only 6 fields.",
+      "verdict": "CIRCULAR, and it describes the wrong object.",
+      "evidence": "The ChronEpisode spec this grades came from the SAME external lineage (the 27-section analysis relayed earlier today). It is grading a proposal against the proposal. The LIVE store is a different thing entirely: /root/AAA/scripts/chron_events.json holds 5 events whose keys are [actionability, audience, confidence, consequence, id, kind, note, source, target_date, timezone, title]. Eleven flat keys, ONE date field. Zero of the four clocks. Zero of the six 'missing' fields. There is no ChronEpisode anywhere on disk.",
+      "why_it_matters": "Accepting this would tell the institution it is one small delta from an episodic memory layer, when in fact the episodic layer does not exist. That is the 'artifact truth vs runtime truth' gap this whole day has been about.",
+      "consequence": "Do not treat CHRON as Stage 2-ready. It remains Stage 0-1."
+    },
+    {
+      "claim": "(implicit) The event store carries the temporal contract, so adding 6 fields closes the gap.",
+      "verdict": "FALSE, and worse than stated.",
+      "evidence": "The schema that would carry that contract — /root/AAA/scripts/chron_events.schema.json, title 'CHRON canonical event store' — declares exactly ONE property: 'events'. required is ['events']. Zero bitemporal clocks. Zero of the six proposed fields. It is a title with no contents. And per the parallel NAME_REQUIRES_MECHANISM sweep, NO code path loads it: grep for jsonschema across /root/AAA/scripts and /root/scripts finds only validate_federation_abi.py (federation ABI schemas, not chron).",
+      "why_it_matters": "Adding six fields to a schema that nothing loads and that currently declares nothing would add six more unenforced names. That is precisely the defect family the sweep catalogued.",
+      "consequence": "The fix is NOT 'add 6 fields to the schema'. The fix is: make the store carry time, then make something load a schema that requires it, then prove a bad event is REJECTED."
+    }
+  ],
+
+  "found_missed_by_the_source": [
+    {
+      "finding": "FRAME already exists, is UP, and already has the independence the source recommends building toward.",
+      "evidence": "FRAME answers on :18085 — {organ: frame, version 1.0.0, baseline_organs: 10, baseline_established 2026-08-06T09:57:02Z, chambers: baseline/probe/compare/trend/alert/report/rsi_verify/rejection all active}. It has its own baseline dating from 2026-08-06, its own evidence readers (/root/scripts/frame-evidence-reader.py, frame_witness_reader.py), and a distinct port and process from arifOS :8088.",
+      "why_it_matters": "Same pattern as the routing registry and the memory temporal surface: the capability is already built. The source's recommendation should be a CHECK ('does FRAME measure independently?'), not a construction project."
+    },
+    {
+      "finding": "The live event store is 5 rows. A bitemporal episode layer cannot be validated at n=5.",
+      "evidence": "chron_events.json: 5 events (budget-2027, fuel-price-window, od1, +2). Each carries target_date but no event_time, no observed_at, no known_at.",
+      "why_it_matters": "The source's own §26 warns 'you don't have enough episodes yet'. Our episode count is five, and they are deadline records, not episodes."
+    }
+  ],
+
+  "not_testable_here": [
+    "Allen interval algebra, Event Calculus, Lamport clocks, CQRS/event-sourcing, Letta/MemGPT internals, Temporal.io capability claims — accepted as literature. Not re-derived; no local referent exists.",
+    "The four-source citation list in the source was not verified against the cited pages."
+  ],
+
+  "net_effect_on_our_position": {
+    "changed": "The formal foundations are now named (Event Calculus, Allen algebra, bitemporal). ATTENTION_EVENT joins the ontology. Agent6 scope is pinned. CHRON != Temporal.io is stated.",
+    "unchanged": "CHRON remains Stage 0-1. Nothing may be built before the 14:00 arrow chain is witnessed. The live store remains 5 flat deadline rows.",
+    "sharpened": "The single highest-value structural gap is now precise: the store has ONE clock where it needs at least TWO (valid_time, transaction_time), and the artifact that would enforce that declares nothing and is loaded by nothing."
+  },
+
+  "next_single_action": "Unchanged. Witness the 14:00 fire. Add no fields, load no schema, build no episode layer until the arrow chain is proven."
+}
