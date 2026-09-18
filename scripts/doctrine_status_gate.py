@@ -29,11 +29,30 @@ import sys
 WATCHED_PREFIXES = ("instructions/", "governance/")
 
 STATUS_RE = re.compile(
-    r"^\s*>?\s*\*{0,2}Status\*{0,2}\s*[:\uff1a]\s*(.+?)\s*$",
+    r"^\s*>?\s*(?:[^|\n]*\|\s*)?\*{0,2}Status(?:\s+of\s+this\s+file)?\*{0,2}\s*[:：]\s*(.+?)\s*$",
     re.IGNORECASE | re.MULTILINE,
 )
-F13_MARKER_RE = re.compile(r"F13[_\s-]*RATIFIED[_\s-]*CHAT", re.IGNORECASE)
+# A ratification instrument is any explicit F13 ratify/seal act - not one token.
+# Widened 2026-09-18: the gate accepted only F13_RATIFIED_CHAT, so a document
+# carrying F13_RATIFIED_SOVEREIGN + a date + the sovereign's name was refused as
+# "lacks F13 instrument" even though the instrument was present and legible.
+# The protection is the INSTRUMENT (date or quote required, below), never the
+# spelling of one marker. Bare F13_SOVEREIGN does not count - only an act.
+F13_MARKER_RE = re.compile(
+    r"F13[_\s-]*(?:RATIFIED[_\s-]*\w+|SEAL(?:ED)?\b)", re.IGNORECASE
+)
 RATIFIED_CLASS_RE = re.compile(r"(?:\b|_)(RATIFIED|SEALED|CANON|CANONICAL|CONSTITUTIONAL)(?:\b|_)", re.IGNORECASE)
+# Negation guard (2026-09-18): a status that DISCLAIMS ratification was being read
+# as a CLAIM of it. Measured: `Status: Working artifact, not sealed` blocked for
+# "ratified-class Status lacks F13 instrument" - the gate matched the word
+# "sealed" inside the sentence denying it. A document saying it is not sealed is
+# the opposite of the K6 threat (a DRAFT relabelled as ratified), so it must not
+# be blocked for lacking an instrument it correctly says it does not have.
+NEGATED_CLASS_RE = re.compile(
+    r"\b(?:not|no|never|non|un|without)\s*[-\s]*(?:yet\s+)?"
+    r"(?:RATIFIED|SEALED|CANON|CANONICAL|CONSTITUTIONAL)\w*",
+    re.IGNORECASE,
+)
 ANNEX_CLASS_RE = re.compile(r"CONSTITUTIONAL[_\s-]*ANNEX|\bANNEXED?\b", re.IGNORECASE)
 DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
 QUOTE_RE = re.compile(r"\"[^\"]{6,}\"")
@@ -83,8 +102,10 @@ def check_file(letter, path, errors):
         if ANNEX_CLASS_RE.search(value):
             errors.append(f"R2 {path}: ANNEX-class Status forbidden ({value[:60]}) — no instrument form exists (K6/UL-002)")
             continue
-        # R1 — ratified-class requires F13 marker + date-or-quote on the line
-        if RATIFIED_CLASS_RE.search(value):
+        # R1 - ratified-class requires F13 marker + date-or-quote on the line.
+        # Negated occurrences are stripped first: "not sealed" asserts nothing.
+        claim_value = NEGATED_CLASS_RE.sub(" ", value)
+        if RATIFIED_CLASS_RE.search(claim_value):
             has_marker = bool(F13_MARKER_RE.search(value))
             has_instrument = bool(DATE_RE.search(value) or QUOTE_RE.search(value))
             if not (has_marker and has_instrument):
