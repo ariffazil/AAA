@@ -1,7 +1,7 @@
 ---
 name: hermes-gateway-image-routing
 owner: AAA
-description: Diagnose and fix Hermes Telegram gateway image routing — Path B model override, supports_vision decision chain, and common failure modes when images don't reach the LLM. [fed: tier=fed-multimodal-vision, floors=[F2, F4, F9, F12], auto=T1]
+description: "Diagnose and fix Hermes Telegram gateway image routing — Path B model override, supports_vision decision chain, and common failure modes when images don't reach the LLM. "
 category: devops
 tags: [hermes, gateway, image, vision, path-b, telegram]
 triggers:
@@ -28,9 +28,7 @@ floor_scope: [F2, F4, F9, F12]
 autonomy_tier: T1
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
----
-
-# Hermes Gateway Image Routing
+---# Hermes Gateway Image Routing
 
 Diagnose and fix how the Hermes Telegram gateway routes images to LLM models.
 
@@ -399,13 +397,14 @@ When you receive an `[IMAGE TRANSCRIPT]` block (you are a text-only model — yo
 5. **Use the IDENTITY section for named reference** — if the transcript includes `IDENTITY: Chris Bumstead`, use that name directly. If it says `[unidentifiable]`, don't guess.
 6. **When vision pipeline fails** and you need to manually call it, do NOT say "I can't see it" passively — diagnose aggressively. Check the failure chain in order: MiniMax MCP dead, OpenRouter/MuleRouter unhealthy, main model fallback, OPENAI_BASE_URL env poisoning.
 
-**Example — correct (with IDENTITY):**
+**Example — correct format (SYNTHETIC. No image is attached to this skill. Every field below is a
+placeholder, not an observation. Never copy these values into a real relay — copy the SHAPE only.)**
 ```
 [Qwen-VL description -- agent does not see images]
-SCENE: Young Malay male, dark spiky hair, sawo matang skin...
-OCR: Yellow text on grey shirt -- "ALPHA-ZEN"
-DATA: [none]
-IDENTITY: Syed (Abang Sado) — known contact
+SCENE: <verbatim scene text from the transcript>
+OCR: <verbatim OCR text, or UNKNOWN if the transcript has none>
+DATA: <verbatim data block, or [none]>
+IDENTITY: <name as given, or [unidentified]>
 ```
 
 **Example — WRONG (two distinct mistakes):**

@@ -1,14 +1,12 @@
 ---
 name: image-text-editing
-description: Edit existing images to add, replace, or remove text using PIL/Pillow [fed: tier=fed-multimodal-vision]
+description: "Edit existing images to add, replace, or remove text using PIL/Pillow "
 trigger: User provides an image and asks to add, change, or remove text; user says "same format", "exact copy", "just add", "change the value"; user sends a screenshot and wants modifications to it.
 required_tools: ['image_generate', 'vision_analyze']
 tool_gate: strict
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
----
-
-# Image Text Editing with PIL
+---# Image Text Editing with PIL
 
 ## When to Use
 - User provides an image (screenshot, document, photo) and wants text added/changed/removed

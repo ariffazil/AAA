@@ -1,0 +1,156 @@
+{
+  "generated_at": "2026-09-17T20:02:32.016469+00:00",
+  "generator": "capability_truth.py v0.1 (333-AGI · APEX-777 phase 3 step 1)",
+  "surfaces": {
+    "arifos-local": {
+      "endpoint": "http://127.0.0.1:8088/mcp",
+      "role": "canonical kernel (truth node)",
+      "reachable": true,
+      "advertised": [
+        "arif_forge",
+        "arif_init",
+        "arif_judge",
+        "arif_memory",
+        "arif_observe",
+        "arif_route",
+        "arif_seal",
+        "arif_think"
+      ],
+      "advertised_count": 8,
+      "callable": {
+        "arif_observe": "RESOLVES",
+        "arif_think": "RESOLVES",
+        "arif_route": "RESOLVES",
+        "arif_memory": "RESOLVES"
+      },
+      "phantom_tools": [],
+      "legacy_aliases": {
+        "probed": {
+          "arif_kernel_route": "RESOLVES",
+          "arif_memory_recall": "RESOLVES",
+          "arif_mind_reason": "RESOLVES",
+          "arif_sense_observe": "RESOLVES",
+          "arif_evidence_fetch": "RESOLVES",
+          "arif_reply_compose": "RESOLVES",
+          "arif_heart_critique": "RESOLVES",
+          "arif_judge_deliberate": "RESOLVES",
+          "arif_ops_measure": "RESOLVES",
+          "arif_stack_health_probe": "RESOLVES",
+          "arif_bridge": "RESOLVES",
+          "arif_bridge_connect": "RESOLVES"
+        },
+        "skipped_mutating": [
+          "arif_forge_execute",
+          "arif_vault_seal"
+        ]
+      },
+      "notes": [],
+      "endpoint_used": "http://127.0.0.1:8088/mcp",
+      "not_probed_mutating": [
+        "arif_init",
+        "arif_forge",
+        "arif_seal",
+        "arif_judge"
+      ]
+    },
+    "hermes-local": {
+      "endpoint": "http://127.0.0.1:18087/mcp",
+      "role": "HERMES meaning-integrity organ",
+      "reachable": true,
+      "advertised": [
+        "hermes_claim_validate",
+        "hermes_contradiction_scan",
+        "hermes_counterstory_test",
+        "hermes_handoff_package",
+        "hermes_makcik_render",
+        "hermes_perspective_scope",
+        "hermes_qualia_boundary",
+        "hermes_registry_status",
+        "hermes_retrieve",
+        "hermes_uncreated_classify"
+      ],
+      "advertised_count": 10,
+      "callable": {},
+      "phantom_tools": [],
+      "legacy_aliases": {},
+      "notes": [],
+      "endpoint_used": "http://127.0.0.1:18087/mcp"
+    },
+    "arifos-public": {
+      "endpoint": "https://mcp.arif-fazil.com/mcp",
+      "role": "public route (must mirror canonical)",
+      "reachable": true,
+      "advertised": [
+        "arif_forge",
+        "arif_init",
+        "arif_judge",
+        "arif_memory",
+        "arif_observe",
+        "arif_route",
+        "arif_seal",
+        "arif_think"
+      ],
+      "advertised_count": 8,
+      "callable": {},
+      "phantom_tools": [],
+      "legacy_aliases": {},
+      "notes": [],
+      "endpoint_used": "https://mcp.arif-fazil.com/mcp"
+    },
+    "hermes-public": {
+      "endpoint": "https://mcp.arif-fazil.com/hermes/mcp",
+      "role": "public route (must mirror canonical)",
+      "reachable": true,
+      "advertised": [
+        "hermes_claim_validate",
+        "hermes_contradiction_scan",
+        "hermes_counterstory_test",
+        "hermes_handoff_package",
+        "hermes_makcik_render",
+        "hermes_perspective_scope",
+        "hermes_qualia_boundary",
+        "hermes_registry_status",
+        "hermes_retrieve",
+        "hermes_uncreated_classify"
+      ],
+      "advertised_count": 10,
+      "callable": {},
+      "phantom_tools": [],
+      "legacy_aliases": {},
+      "notes": [],
+      "endpoint_used": "https://mcp.arif-fazil.com/hermes/mcp"
+    }
+  },
+  "kpis": {
+    "phantom_tools": [],
+    "phantom_tools_note": "mutating verbs not probed — see not_probed_mutating",
+    "missing_tools": [],
+    "capability_truth_rate_probed": 1.0,
+    "advertised_count": 8,
+    "handler_count": 62,
+    "legacy_aliases_failed": [],
+    "schema_mismatch": "NOT_MEASURED_V01",
+    "alias_conflicts": "NOT_MEASURED_V01"
+  },
+  "arifos_registered_side": {
+    "handler_count": 62,
+    "kernel_abi_8": [
+      "arif_forge",
+      "arif_init",
+      "arif_judge",
+      "arif_memory",
+      "arif_observe",
+      "arif_route",
+      "arif_seal",
+      "arif_think"
+    ],
+    "public_for_mode": [
+      "arif_init",
+      "arif_judge",
+      "arif_memory",
+      "arif_observe",
+      "arif_route",
+      "arif_think"
+    ]
+  }
+}

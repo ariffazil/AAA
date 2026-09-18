@@ -136,6 +136,30 @@ Self-test before shipping an alert format: strip the emitter and hand the line t
 someone who has never read the code. If they cannot state what each token's role is,
 the format is not finished.
 
+### A ratio moves for two reasons; report both, or the trend lies
+
+A compliance percentage that falls can mean the numerator got worse *or* the denominator
+got smaller. Reading the ratio as a trend is how a housekeeping sweep gets reported as a
+governance collapse. Always publish the pair (`31/190 → 37/149`) next to the percentage,
+and state which side moved: "six new entries arrived without the declaration, while the
+population shrank by 41" is a finding; "compliance dropped 12 points" is a rumour about a
+number.
+
+**Read the predicate before trusting the metric's name.** A check implemented as a case-
+insensitive grep for `F1|F2|F4|floors` over a whole file measures *mention*, not
+*declaration* — any file that names a floor in prose passes. The metric is honest about
+what it tested and wrong about what its label claims. Before acting on any compliance
+figure, open the line that computes it and say aloud what predicate it actually runs; then
+report the number under that name ("mentions a floor"), not the label's name ("declares
+floor_scope").
+
+**Do not fix a metric by satisfying its predicate.** Stamping the missing field across every
+failing file raises the score and the underlying binding stays absent — a declaration nobody
+enforced is a false record, and it is the same act as silently reconciling two disagreeing
+numbers. Per-item fields that carry real meaning get set per item, by whoever owns the item;
+a sweep is only legitimate for genuinely mechanical, meaning-free normalisation. Say which
+case you are in rather than letting the count drop speak for itself.
+
 ## Survey before routing
 
 Jobs live on independent surfaces that do not reconcile with each other — Hermes cron
@@ -344,6 +368,74 @@ fail is decoration. Three levels, all needed:
 
 And prove failability directly: plant one wrong assertion in the suite, confirm the runner returns
 FAIL with a non-zero code, restore it. A suite that has never been seen to fail has not been tested.
+
+## A new notifier is untested until BOTH branches have fired
+
+Wiring a voice onto a previously silent job is an improvement only if the voice tells the truth. A
+pass/fail wrapper's *failure* branch is the one that gets exercised by accident during setup (the
+unit is restarted, the log fills, something fires), so it is the *success* branch that reaches
+production unproven — and an inverted predicate lives there invisibly for as long as nothing
+succeeds.
+
+**Prove each branch by running the real path and reading what it printed.** A wrapper whose success
+branch has never executed is a wrapper whose failure branch you are reading; there is no "probably
+fine". See both verdicts once, from the unit's own exit, before the channel is trusted.
+
+### systemd oneshot wrappers: read the variable the manager actually sets
+
+`ExecStartPost=` / `ExecStopPost=` receive the outcome as environment, and the names are not
+interchangeable:
+
+| variable | value on a clean run |
+|---|---|
+| `$SERVICE_RESULT` | `success` |
+| `$EXIT_CODE` | `exited` — a *word*, not a status |
+| `$EXIT_STATUS` | `0` — the numeric status |
+
+So the ubiquitous test `[ "$EXIT_CODE" = "0" ]` is false on success and **never** true, making every
+run alert FAIL. Compare `$SERVICE_RESULT` first, then `$EXIT_STATUS`.
+
+**`ExecStopPost=` fires on every exit of a oneshot unit — including a successful start.** It is not a
+stop hook; it is an "any exit" hook. A wrapper placed there must expect to run after
+`systemctl start <unit>` in a healthy case, and must not read that as a stop.
+
+Probe the manager's own contract instead of guessing it:
+
+```bash
+# /tmp/envprobe.sh:  { echo "SERVICE_RESULT=[${SERVICE_RESULT:-<unset>}]"; \
+#                      echo "EXIT_CODE=[${EXIT_CODE:-<unset>}]"; \
+#                      echo "EXIT_STATUS=[${EXIT_STATUS:-<unset>}]"; }
+chmod +x /tmp/envprobe.sh
+systemd-run --unit=envprobe --collect --property=Type=oneshot \
+  --property=ExecStopPost=/tmp/envprobe.sh /bin/true
+cat /tmp/envprobe.txt
+```
+
+### Never measure elapsed time from inside the notifier
+
+`$SECONDS` counts from the start of the shell that reads it. A wrapper is a *new* shell, so `$SECONDS`
+is ~0 there no matter how long the unit ran — every alert then carries a fabricated duration, and a
+monitoring field that cannot be non-zero is worse than an absent one because it looks measured. Take
+the duration from the manager (`ExecMainStartTimestamp` / `ExecMainExitTimestamp`, or
+`$MONOTONIC_USEC`), or drop the field.
+
+**This is the same defect class as a metric whose predicate does not test what its label claims:** the
+number is honest, the meaning laid over it is not. Before a wrapper prints any derived figure, name
+the predicate that produced it and confirm it can take a non-default value.
+
+### One run, one verdict
+
+A per-run notifier fired from two hooks emits two messages that can disagree — a `success-so-far` echo
+followed seconds later by `FAIL` for the same run. The reader cannot resolve which to believe, and the
+contradictory pair trains them to ignore both. Gate the channel on the run identity
+(`Invocation`/`MainPID`, or a hash of the verdict) so one run yields exactly one message, and let the
+**log** carry the intermediate phase.
+
+**A false alarm is strictly worse than the silence it replaced.** Silence costs attention once, when
+someone notices the absence; an alarm that lies spends the credibility every future alert depends on,
+and the third false positive is when the true one stops being read. Say this plainly rather than
+shipping the notifier anyway — and never let a success branch ship unobserved simply because the
+failure branch was loud enough to look like evidence.
 
 ## Counter-rules
 

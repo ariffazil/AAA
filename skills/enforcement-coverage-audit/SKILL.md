@@ -66,6 +66,45 @@ script is present and executable. An unwired engine is a library with no callers
 `grep -rl <engine-name>` across the live runtime, plugins, and harness configs. Zero hits means it
 gates nothing, however complete it looks.
 
+### 2b. Read the gate's default AND its own bypass note
+
+Coverage depends on whether the control is even switched on, and the guard's source usually documents
+the hole its author already knew about. Read both before scoring.
+
+- **Opt-in gates score zero on a default install.** Measured 2026-09-17: a skill-write security scan
+  is gated by one config flag (`skills.guard_agent_created`), default **False**, and the guard's own
+  docstring says so and then names the uncovered path in the same breath — *"opt-in — terminal()
+  runs the same code ungated."* The author documented the bypass. **Read the guard's docstring, not
+  just its decision table**, and read both against this install's config value before quoting either.
+- **Enumerate EVERY call site before declaring the remedy impossible.** A decision function is not
+  the control and one caller is not the control. Same case, corrected by a later pass: the scan
+  gate's decision function *does* implement a documented `force=` override for the blocked cell, and
+  one caller in the tree already plumbs it (`force=force`, reachable as `hermes skills install
+  --force`); what I had hit was a **different caller** — the agent's own skill-write path — which
+  passed nothing. So "there is no path forward at all" was true of the audited lane and false of the
+  control, and I had generalised from one hit. **Run `grep -rn "<decide>(" <tree>` and map each hit to
+  the lane it serves before writing the verdict.** The distinction decides the fix: an unplumbed
+  parameter on one caller is a one-line repair, a missing policy cell is an authority decision. Write
+  the lane into the finding ("no exit **on the agent write path**"), never the bare claim.
+- **A remedy that is unsatisfiable for *this* package is still a finding — name it precisely.** The
+  caller's only offered remedy was *"retry without the flagged content"*, and the flagged content
+  **is** the package's purpose (a body of `getMe` identity checks that any exfiltration-pattern rule
+  will match). That is a real defect in the remedy, separate from the override question: report it as
+  *the stated remedy cannot be satisfied for this artefact*, and file it against the remedy — not as
+  "the gate has no exit". Do not spend the turn hunting for the exit; do spend it enumerating callers.
+- **Check the verdict against the content before calling it a false positive.** Grep the flagged file
+  for a literal value matching the shape the rule hunts. Measured on the same package: 29
+  exfiltration/supply-chain findings, every one a **variable reference** (`…/bot${TOKEN}/…`) and zero
+  literal credentials. The rule matched the *shape of the idiom*, not a value. Report three numbers —
+  findings, literals, and where the literals are absent — and let them carry the argument; never assert
+  "false positive" from a read-through alone.
+- **Then stop. A bypassable gate is a finding about the gate, not a licence to take the open path.**
+  The rationalisation arrives pre-shaped and persuasive: *it is decorative, therefore I may route
+  around it.* That sentence is the exact defect this audit exists to catch — and the smarter the
+  actor, the better it argues. The correct output is `coverage < 1, uncovered = <the path>, action =
+  HOLD`, plus the naming of the gap. Testing the hole "to prove the finding" converts the auditor
+  into the incident.
+
 ### 3. Compute coverage explicitly
 
 ```

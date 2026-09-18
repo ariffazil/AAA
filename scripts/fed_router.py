@@ -1283,4 +1283,4 @@ if __name__ == "__main__":
     print(f"   v3.3 changes: task→capability classifier (BenchDrift), probe-row health fallback (corpse fix), fed_classify verb, /report telemetry ingress, notes hard-marker filter")
     print(f"   Zen Changes: DRY pricing, with(DB), RankGate matrix, ThreadPoolExecutor, SIGTERM guard")
     print(f"   Tools: fed_route, fed_status, fed_probe, fed_contrast, fed_health")
-    mcp.run(transport="streamable-http", host="0.0.0.0", port=FED_PORT, uvicorn_config={"ws": "websockets"})
+    mcp.run(transport="streamable-http", host="0.0.0.0", port=FED_PORT, uvicorn_config={"ws": "websockets"}, json_response=True)

@@ -3,6 +3,7 @@
 > **Status:** Planning artifact produced by the architect planning session on 2026-09-12.
 > **Authority:** 333-AGI (Δ MIND) on behalf of Arif (F13 SOVEREIGN).
 > **F13 release scope for execution:** *Phase 0 reality audit only — OBSERVE + VERIFY, no MUTATE.*
+> **RELEASED 2026-09-17 (D1 APPROVE, F13 "D1-D5 APPROVE, bina D2 resolver"):** direction ratified for execution. D2 executed same day — `capability_resolve` live in arifOS capability_index (commit 2d53aebbe; eager/deferred/hidden, role ceilings, fail-closed, 10/10 tests). D3 naming canon: canonical term = **capability fabric**; "ZEN" reuse rejected (ZEN reserved for operations state, F13 2026-09-08). D4 (alias/data-quality pass) + D5 (additive schema extensions on task-contract/cell-manifest/evidence-packet) commissioned as follow-on. Reconciliation SOT: `/root/forge_work/2026-09-17-zpex-zen-reconciliation.md`.
 > **Machine-backed constitutional seal:** NOT bound (LIMITED_MUTATE band, `seal_allowed=false`). Planning session content is embedded below as carry-forward evidence, not as a sealed record.
 
 ---

@@ -78,6 +78,7 @@ Every extracted claim gets exactly one label:
 | **HEARSAY** | From secondary source (news article, Reddit post, blog) | **NO** | Include ONLY as "X reports that..." — never as established fact |
 | **MEMORY** | From stored memory/honcho | CONDITIONAL | If > 7 days old → re-probe or label stale. If < 7 days → include with timestamp |
 | **INFERRED** | Agent's own reasoning from other claims | CONDITIONAL | Only valid if ALL premises are PROBED or CITED. If any premise is HEARSAY → inference is also HEARSAY |
+| **CONTESTED** | Two named parties of standing contradict each other on the same status; a third body (registrar, court, commission) owns resolution | **NO** (until resolved) | Report both attributed claims, name the unresolved state, name the resolving owner. Never carry the louder claim as established fact |
 | **UNKNOWN** | Cannot determine truth value | **NO** | Must abstain: "tak pasti" / "tak verified" |
 
 ### Phase 3: OUTPUT FILTER
@@ -108,6 +109,58 @@ Apply these rules BEFORE the synthesis reaches the human:
 
 5. **Confidence ceiling on hearsay:** Maximum confidence for any claim
    sourced from HEARSAY = 0.7. Never present as "confirmed."
+
+6. **CONTESTED status may not be narrated as settled.** When two named officeholders or
+   institutions of the same body contradict each other about a status change, the reportable
+   finding is the disagreement plus who owns its resolution — not the claim that was stated
+   loudest or latest. Collapsing it is a transition lie: `ANNOUNCED ≠ EFFECTIVE`, and
+   `DISPUTED` is a state in its own right. Resolution is expected from a named owner, never
+   inferred from who spoke last, from which wing is larger, or from what "will obviously"
+   happen. Applies equally to institutions declaring their own compliance.
+
+### Phase 2.5: INDEPENDENCE AND ORDER CHECKS (mechanical)
+
+Two structural blindspots survive Phase 2 because both produce a *correct-looking* label set.
+
+#### A · Source Independence Constraint (echo-chamber inflation)
+
+Three URLs agreeing is not three witnesses. `CITED ×3` currently cannot distinguish three
+independent origins from three reprints of one press release.
+
+**Rule:** group every CITED claim's sources into **origin units** before counting weight.
+
+| Same origin if… | Weight |
+|---|---|
+| all trace to one wire item (Bernama, Reuters, AFP), one press release, one speech, or one party statement | **W = 1** |
+| independent outlets, each with its own reporting, same underlying event | W = number of outlets that did independent work |
+| primary instrument plus any number of reports of it | W = 1 (the instrument), reports are transport |
+
+- **A quote is one source however many times it is printed.** Restating a minister's line in five
+  outlets is W = 1 attributable to *that minister*, never W = 5 for the proposition.
+- **Data cannot be verified by its own echo.** If every source for a number routes back to one
+  body's release, the number's status is *"self-reported by X"* — not "corroborated".
+- Record the arithmetic: `SOURCES: 5 URLs → ORIGIN_UNITS: 1 (Bernama wire) → W = 1`.
+
+#### B · Chronological Lock (temporal collapse)
+
+Narrative order is not causal order, and prose arranged by theme silently re-dates events.
+
+**Rule:** two events may be joined in a cause→effect sentence only if they carry absolute
+timestamps and `t_A < t_B`. Where dates are ambiguous at day level, compare at month
+resolution; where the order is genuinely unknown, the sentence becomes *"A and B (order
+unestablished)"*.
+
+- **Check the mechanism is even available at the earlier date.** An actor cannot have responded
+  to a thing that had not yet happened. If the "response" predates the "trigger", the pairing is
+  a narrative artefact — one of the two dates is wrong, or the two events are unrelated.
+- **A policy stated in month M and reversed in month M+5 is a sequence of decisions, not a
+  single "policy U-turn".** Collapsing them hides the reversal's trigger.
+- Record it: `LOCK: A(YYYY-MM-DD) < B(YYYY-MM-DD) → ORDERED` or `→ UNESTABLISHED`.
+- Narrow repo analogue: in codebase audit the same lock reads as commit/mtime ordering —
+  `git log --format='%ct'` gives epoch order, and a "fix" whose hash predates the "bug" is not a fix.
+
+**Both checks are mechanical and fail-closed on the draft:** an independence count that was not
+computed, or an ordering that was not locked, is an edit — not a hedge.
 
 ---
 

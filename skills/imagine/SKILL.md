@@ -3,7 +3,7 @@ name: imagine
 id: imagine
 version: 1.0.0
 risk_tier: low
-description: 'How to use the image_gen and image_edit tool calls in Grok Build: when [fed: tier=fed-multimodal-vision, auto=T1, risk=low]
+description: 'How to use the image_gen and image_edit tool calls in Grok Build: when
   to build a visual with code instead of generating it, prompt-craft, reference-first
   handling of real people, factual grounding, and asset-consistency. Load this whenever
   generating or editing an image is on the table, i.e. when an image_gen or image_edit
@@ -22,8 +22,7 @@ floor_scope:
 autonomy_tier: T1
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
----
-# Imagine
+---# Imagine
 
 Guidance for the two image tool calls in Grok Build:
 

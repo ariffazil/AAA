@@ -2,7 +2,7 @@
 id: github-ops
 name: forge-github-ops
 version: 1.1.0
-description: "Runbook for GitHub & Git operations across federation repos — commit workflow, PR ops, branch discipline. v1.1.0: organ paths from organ registry, no hardcoded /root/<repo> paths. [fed: tier=fed-agent-subagent, floors=[F1, F2, F11], auto=T1, risk=low]"
+description: "Runbook for GitHub & Git operations across federation repos — commit workflow, PR ops, branch discipline. v1.1.0: organ paths from organ registry, no hardcoded /root/<repo> paths. "
 owner: AAA
 risk_tier: low
 floor_scope: [F1, F2, F11]
@@ -10,9 +10,7 @@ autonomy_tier: T1
 tags: [github, git, runbook, ops]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----
-
-# GitHub & Git Operations (Probe-Based v1.2.0 — workflow merged)
+---# GitHub & Git Operations (Probe-Based v1.2.0 — workflow merged)
 
 ## Federation Repos — Discover from Organ Registry
 
