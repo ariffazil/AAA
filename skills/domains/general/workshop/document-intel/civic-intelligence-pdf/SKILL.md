@@ -376,6 +376,42 @@ After generating:
 4. Check page count matches expectations
 5. Verify callout boxes render with correct border colors
 
+## Official Document Ingest — the number comes from the source document
+
+Before any figure enters a briefing, ingest it from the document that PUBLISHES it, not from an
+article about that document. The briefing's credibility is the provenance of its numbers; a
+beautiful layout over a summarised figure is decoration on a defect.
+
+| Figure class | Ingest from | Notes |
+|---|---|---|
+| Budget revenue / expenditure / subsidy / debt-service lines | **Buku Anggaran Hasil dan Perbelanjaan Persekutuan** (MOF) + Economic Report / Finance Bill | Line-item level — the aggregate headline is not the programme figure |
+| GDP, CPI, labour, trade, mining & gas output | **DOSM** release PDFs (`open.dosm.gov.my`, `storage.dosm.gov.my`) | Match the metric label exactly — volume vs value, production vs exports |
+| Monetary, OPR, financial stability, household debt | **BNM** Annual Report · Economic & Monetary Review · Financial Stability Review (`bnm.gov.my/publications`) | AR and FSR publish the same metric on different bases — quote both with their labels |
+| Election results / seat counts | **SPR** result pages | Not outlet live-blogs |
+| Corporate financials | Issuer report / Bursa announcement | Not the analyst note |
+
+**Extraction discipline.** `pdftotext -layout` is fine for narrative and unreliable for tables —
+it collapses columns. For any disclosed table use camelot (lattice/stream) or pdfplumber, then
+**reconcile the extracted total against the printed total before use**. An unreconciled table is
+not ingested. If extraction fails, report the gap and leave the figure out — never fill it from
+commentary. (Same rule as `intelligence-brief-forge` → Table Extraction.)
+
+**The pairing trap (scar 2026-09-18).** Two figures brought into relation inside a briefing —
+debt-service charges beside tax receipts, a wage level beside a productivity figure — form an
+**argument**. If the pairing came from an article rather than from each document, the argument is
+the article's and the provenance does not transfer. Cite each figure to its own document, and
+state the relationship as *your* inference with its basis. A briefing that borrows a juxtaposition
+inherits the summariser's error and then signs it in the sovereign's name.
+
+**A level is not a base.** When a source publishes a growth rate, a back-solved level is a derived
+figure: label it as yours and show the derivation, or leave it out. Attributing a computed level to
+the body that published only the rate is the defect an auditor finds first, because the arithmetic
+looks impeccable while the citation is false.
+
+**Ingest receipt.** Per document: source body · document title · period · page or table reference ·
+content hash. The briefing appendix carries that table, so a reader can open the same document and
+land on the same line.
+
 ## Data Analytics Layer (charts, maps, diagrams)
 
 Every briefing MUST include embedded visual analytics when data supports it. Use these tools:

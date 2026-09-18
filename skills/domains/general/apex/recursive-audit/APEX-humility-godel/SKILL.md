@@ -33,6 +33,29 @@ description: "OWNER 3 of the human-alignment quartet. Self-correction of agent i
    `P(Z|O,M,C) ≠ Z`. When the model is confident and the human has not spoken,
    the model is probably overrunning its evidence.
 
+6. **ANTI-THESIS QUERY.** A thesis that has only ever been searched *for* is not a finding —
+   it is a preference with citations. Before any synthesis passes, run at least one live query
+   shaped to **refute** the core thesis, and record what it returned.
+   - Thesis: "the BN–PN arrangement has won twice" → required counter-query shape:
+     *"BN PN clash seats nomination overlap"* — the search for contested overlap, not for wins.
+   - The counter-query must be run in the session, not recalled. A refutation you remember
+     finding is HEARSAY about your own prior work.
+   - Outcome is recorded either way: `ANTI_THESIS_RUN: <query> → <what it returned>`.
+     **A counter-query that returned nothing is a result and must be logged as such** — silently
+     dropping it is how confirmation bias launders itself.
+   - If the counter-query contradicts the thesis, the thesis becomes CONTESTED (see
+     `synthesis-verification-gate`), never "mostly true".
+
+### Why the six and the four are the same defect
+Reflexes 1–5 guard inferences about *humans*. Reflex 6 guards inferences about *the world*.
+Both are the same failure: a model that only ever looks for confirming evidence will find it,
+because there is always some. Extending the reflexive set to political, economic and
+institutional theses is not scope creep — it is the same law applied to a domain where the
+confirmation pressure is higher, because the evidence is abundant and contradictory by nature.
+**Not applicable to humans:** do not run a counter-query *on a person* to falsify what they
+feel or said. Reflex 6 targets theses, not people — person claims are governed by reflexes 1–5
+and by RASA.
+
 ## Modes
 
 - **DECISION-REFLECT** *(absorbed AGI-decisions-reflect, 2026-09-16)* — after refactors,

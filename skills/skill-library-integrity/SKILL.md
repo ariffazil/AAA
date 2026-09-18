@@ -381,6 +381,16 @@ It emits `witness_hash` over the claim. The registry's `disk_reconciliation` blo
 by this command — hand-editing it is the defect it exists to prevent. A count quoted from anywhere
 else (a doc, a memory, a previous session, an external artifact) is stale by definition.
 
+**A hand-rolled count is not merely stale — it is wrong in a specific direction, and the direction is
+predictable.** Resolution is keyed on the skill **name**, matched across every read root; it is *not*
+a path comparison. So a hand-written diff of `<store>/<category>/<name>` against
+`<harness>/<category>/<name>` reports as unreachable every skill whose category path differs between
+the two trees, even though the loader finds it by name. Measured: a directory-by-directory comparison
+reported **192** unreachable addresses against a canonical census of **587 on disk / 451 loadable** —
+an overcount by roughly half, produced by a method that never consulted the loader. The category path
+is a placement claim; *can it load* is answered by name. Diff basenames, never paths, and quote the
+census instead of your own arithmetic.
+
 ## Procedure
 
 ### 1. Audit resolution BEFORE anything else
@@ -786,6 +796,13 @@ git -C /root/AAA status --porcelain        # must show no deletions before movin
   `references/`, `__pycache__`, or fixtures is a live skill whose body sits one level up. Decide
   with a recursive body check plus an inbound-link check, never from one directory level.
 
+- **Before concluding a rule does not exist, check that its owner skill can actually load.** An
+  unreachable governance skill is indistinguishable from a missing one at the point of use: the agent
+  re-derives the procedure from priors, gets it subtly wrong, and reports the gap as newly discovered
+  knowledge. Measured: a session re-derived a notation-collision doctrine that a skill on disk already
+  stated verbatim, because that skill returned `not found` while the catalog advertised it. A settled
+  doctrine being "rediscovered" is a reachability symptom first and a doctrine gap second — resolve the
+  owner by name, and if it is unreachable, mint the address before doing anything else.
 - **One census, many consumers — never fork a second counter.** A checker that re-derives its own count
   beside the canonical one guarantees the two will disagree eventually, and nothing reconciles them:
   a registry carried `drift: 0` for weeks precisely because a hand-era counter sat beside the real one
