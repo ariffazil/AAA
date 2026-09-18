@@ -78,5 +78,23 @@
   ],
   "chron_state": "EXPERIMENTAL",
   "state_reason": "0 of 3 enabled jobs have fired",
-  "next_single_action": "14:00 MYT — delivered? number matches the canonical store? ledger hash still resolves?"
+  "next_single_action": "14:00 MYT — delivered? number matches the canonical store? ledger hash still resolves?",
+  "append_only_corrections": {
+    "law": "MEMORY MUST PRESERVE UNCERTAINTY, NOT ERASE IT",
+    "format": "ORIGINAL -> COUNTEREVIDENCE -> CORRECTION (append-only; no history rewritten)",
+    "appended_at": "2026-09-18T11:30:30+08:00",
+    "corrections": [
+      {
+        "subject": "changes[2] alpha_zen_engine.py sha256_after",
+        "original": "dc1420b0eb19 (forgery seal: f0b31aa62d54)",
+        "counterevidence": "working tree re-hashed 2026-09-18T11:26 MYT = a822850a37c13fcf; git status shows alpha_zen_engine.py modified vs HEAD",
+        "correction": "Both seal values were TRUE when written. The file moved after. The seal is not wrong; it is STALE, and the old format could not say so.",
+        "state": "SUPERSEDED",
+        "observed_at": "2026-09-18T11:26+08:00",
+        "superseded_by": "claim clm-47aab3359c209d17 in /root/AAA/claim_ledger/claims.db (artifact art-a822850a37c13fcf)",
+        "note": "dc1420b0eb19 DOES equal the committed HEAD blob. The spine seal bound correctly to code-as-committed. The drift is uncommitted working-tree change."
+      }
+    ],
+    "what_this_instantiates": "Law 2 of temporal-artifact-integrity applied to CODE, not only to rendered artifacts. A seal that records a hash of a mutable file describes a moment, not a state. The durable record now lives in the claim ledger, where claim -> artifact -> hash is a real join and recheck_artifact re-hashes on disk."
+  }
 }
