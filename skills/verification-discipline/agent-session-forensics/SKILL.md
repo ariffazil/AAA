@@ -137,6 +137,28 @@ Rules that keep this honest:
 - **A capability earns its retirement by measurement, not by being unused.** Run the suspect one against work that was already independently checked by the existing path, and count what it catches that the existing path missed. "Dormant" is then a finding with evidence behind it.
 - **Answer capability questions in behaviour, not inventory.** Naming an internal tool, server, or port to a non-coder is a schema dump, not an answer. Give the behaviour, the count that proves it, and what it costs — tool names belong in the artifact on disk.
 
+## Cross-CLI file attribution — "who changed this file?"
+
+Peer agents on a shared host keep their own per-file histories and transcripts, keyed by the ABSOLUTE PATH of the file they touched. When a service or config file changed and the Hermes ledger cannot explain it, those stores can:
+
+```bash
+# 1. When did it change, and what sits next to it? A *.bak-<ts> sibling is a patcher's signature,
+#    not a human's
+ls -la --time-style=full-iso /etc/<dir>/ | sort -k6,7 | tail -10
+
+# 2. Files each peer touched in the window, kept only if they name the artefact
+find /root/.<agent-home> -type f -newermt '<HH:MM:00>' ! -newermt '<HH:MM:59>' | \
+  while read f; do grep -l '<artefact-basename>' "$f" 2>/dev/null; done | head
+```
+
+- **History dirs** store a copy per version (`file-history/<session>/<hash>@vN`): the mtime is the edit time, `@vN` is the edit count, and the stored bytes are the PRE-edit content — that is what lets you diff peer intent against the live file.
+- **Transcripts** are JSONL events carrying an ISO timestamp, the tool name, and its arguments. Filter by window, then print a character window around the artefact name rather than whole records; these files are large.
+- **Per-turn telemetry** logs give the class of work in flight (observe vs mutate) when the transcript is unreadable or absent.
+
+Then the rule that keeps the record honest: **never claim a mutation you did not make.** Report the transition you caused separately from the one you found. If your write-time re-read shows the change already applied, do not re-apply it and do not reload "to make it take effect" — a no-op reload is still an unannounced mutation of shared state and can clobber a peer's in-flight edit. Read the peer's live transcript as well: an agent mid-task on the same artefact may already have decided to revert the very line that fixed the symptom, and that is worth warning about before it lands.
+
+Full recipe, including backup-name fingerprints: `references/cross-agent-file-mutation-attribution.md`.
+
 ## Pitfalls
 
 - **A draft on disk is not a sent message.** Quarantine copies exist precisely because the send lane failed. Only an API response row (messageId/status) in the transcript proves delivery. Never report "we replied" from a draft file.
@@ -145,7 +167,7 @@ Rules that keep this honest:
 - **`PRAGMA table_info(<table>)` first.** The time column is `timestamp`, not `created_at`; guessing fails the query before it runs.
 - **Timestamps are epoch floats.** Convert before reporting, and state the window you actually covered.
 - **Never print whole rows from `messages` or `system_prompts`.** Prompts run 30–100 KB and there are hundreds of them. Print lengths, hashes and matched markers; always `substr(content, 1, N)` in the query.
-- **Sweep every session, not just the current one.** Several agent sessions can be live and mutating mid-investigation. A partial window is not the world: check all sessions before attributing an action, and say which window you checked.
+- **Sweep every session, not just the current one.** Several agent sessions can be live and mutating mid-investigation. A partial window is not the world: check all sessions before attributing an action, and say which window you checked. Other CLIs' histories and transcripts are part of that world too — see "Cross-CLI file attribution" above.
 - **Report counts, not adjectives.** "57 tool calls, 0 subagents, 3 skills loaded, 2 artifacts" is auditable; "a heavy agentic pipeline" is not.
 - **When the review finds your own error, lead with it.** A forensic answer is also a falsifier of your own prior output — a corrected figure with the mechanism attached is worth more than a clean-sounding summary.
 - **Repetition discipline still applies.** Reading a ledger is not a licence to repeat private content outward.

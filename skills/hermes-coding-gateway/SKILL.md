@@ -4,7 +4,8 @@ name: hermes-coding-gateway
 owner: Hermes-Prime (333-AGI orchestration layer)
 risk_tier: T2
 version: 1.0.0-2026.08.25
-description: > [fed: tier=coding-fabric-gateway, floors=[F1, F2, F4, F7, F8, F11, F12, F13], auto=T1, risk=T2]
+description: >
+
   Governed multi-CLI coding fabric. Hermes dispatcher routes intent to
   specialist workers (qwen / claude / codex / kimi / gh). F13 enforcement
   via wrapper executables, not prompt-only. Hermes accepts only verifiable
@@ -26,9 +27,7 @@ cites:
   - openai/codex: OpenAI-flavour coding worker
   - MoonshotAI/kimi-code: media-input specialist
   - cli/cli (gh): GitHub operations (F13-gated for writes)
----
-
-# Hermes Coding Gateway — Governed Multi-CLI Coding Fabric
+---# Hermes Coding Gateway — Governed Multi-CLI Coding Fabric
 
 First milestone of arifOS coding-fabric doctrine (2026-08-25, F13 SOVEREIGN).
 Hermes is the control-plane / orchestrator. CLI workers (qwen, claude, codex,

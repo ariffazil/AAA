@@ -3,7 +3,8 @@ id: agent-onboarding
 name: forge-onboarding
 autonomy_tier: T1
 version: 2.0.0
-description: > [fed: tier=fed-agent-subagent, auto=T1, risk=medium]
+description: >
+
   Standard procedure for registering a new agent in the AAA federation.
   Creates agent identity directory, agent card (v2.0.0 schema), registry entry, and SOUL.md.
   Updated 2026-08-03: canonical card locations vary by agent class — identity lanes at agent-cards/identity/, organs at agent-cards/{pillars,organs}/, FI agents (warga-aaa forge instruments, FI-001 to FI-008) at agents/_external/<id>/, other internal agents at agents/<id>/. The 2026-07-01 single-path note is now obsolete.
@@ -50,9 +51,7 @@ floor_scope:
 - F13
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----
-
-# Agent Onboarding
+---# Agent Onboarding
 
 ## Overview
 

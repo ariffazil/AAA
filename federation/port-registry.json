@@ -205,14 +205,17 @@
     },
     "hermes": {
       "class": "EDGE",
-      "role": "multimodal_telegram_bridge",
-      "mcp_port": null,
-      "mcp_port_note": "2026-09-12: 18086 phantom — ss probe shows no listener; stdio MCP children only (organs.yaml live_probe_2026_09_12)",
+      "role": "multimodal_telegram_bridge + meaning_integrity_mcp",
+      "mcp_port": 18087,
+      "mcp_unit": "hermes-mcp-server.service",
+      "mcp_endpoint": "https://hermes.arif-fazil.com/mcp",
+      "mcp_note": "2026-09-16: officialized HERMES MCP (streamable-http, RELAY_ONLY, meaning integrity organ). Gateway stdio children remain on :9900.",
       "repo": "ariffazil/HERMES",
       "source_path": "/root/HERMES",
       "owned_domains": [
         "telegram_relay",
-        "multimodal_bridge"
+        "multimodal_bridge",
+        "meaning_integrity"
       ]
     },
     "opencode": {

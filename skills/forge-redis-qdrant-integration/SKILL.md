@@ -2,15 +2,14 @@
 id: FORGE-redis-qdrant-integration
 name: forge-redis-qdrant-integration
 version: 1.0.0-2026.07.17
-description: "Redis + Qdrant integration — caching layer and vector memory for federation semantic search. [fed: tier=fed-agent-subagent, floors=[, auto=T1, risk=medium]"
+description: "Redis + Qdrant integration — caching layer and vector memory for federation semantic search. "
 owner: A-FORGE
 risk_tier: medium
 floor_scope: ['F1', 'F2', 'F4']
 autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----
-# ⚒️ Redis + Qdrant Integration — Caching & Vector Memory
+---# ⚒️ Redis + Qdrant Integration — Caching & Vector Memory
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.
 

@@ -1,0 +1,139 @@
+{
+ "mismatched": [
+  {
+   "address": "domains/geo/workshop/my-domain-intel/geox-production-cockpit",
+   "link_target": "/root/AAA/skills/geox-production-cockpit",
+   "organ": "GEOX",
+   "organ_path": "/root/GEOX/skills/geox-production-cockpit",
+   "copy_sha": "d01ba32819934f99",
+   "organ_sha": "d01ba32819934f99",
+   "size_copy": 8968,
+   "size_organ": 8968,
+   "verdict": "IDENTICAL"
+  },
+  {
+   "address": "domains/wealth/workshop/finance-domain/wealth-claim-state",
+   "link_target": "/root/.hermes/profiles/aaa-hermes/skills/wealth-claim-state",
+   "organ": "W3",
+   "organ_path": "/root/WEALTH/skills/wealth-claim-state",
+   "copy_sha": "40c25878e8351358",
+   "organ_sha": "40c25878e8351358",
+   "size_copy": 419,
+   "size_organ": 419,
+   "verdict": "IDENTICAL"
+  },
+  {
+   "address": "domains/wealth/workshop/trading-exec/xauusd-trading",
+   "link_target": "/root/AAA/skills/xauusd-trading",
+   "organ": "W3",
+   "organ_path": "/root/WEALTH/skills/xauusd-trading",
+   "copy_sha": "a5e9b67b08e91394",
+   "organ_sha": "a5e9b67b08e91394",
+   "size_copy": 4840,
+   "size_organ": 4840,
+   "verdict": "IDENTICAL"
+  },
+  {
+   "address": "domains/well/aaa/catalog-ops/well-consent-registry",
+   "link_target": "/root/WELL/skills/well-consent-registry",
+   "organ": "WELL",
+   "organ_path": "/root/WELL/skills/well-consent-registry",
+   "copy_sha": "353655510672ffbd",
+   "organ_sha": "353655510672ffbd",
+   "size_copy": 2284,
+   "size_organ": 2284,
+   "verdict": "IDENTICAL"
+  },
+  {
+   "address": "domains/well/aaa/substrate/well-substrate-readiness",
+   "link_target": "/root/WELL/skills/well-substrate-readiness",
+   "organ": "WELL",
+   "organ_path": "/root/WELL/skills/well-substrate-readiness",
+   "copy_sha": "10c96349f6da6d3e",
+   "organ_sha": "10c96349f6da6d3e",
+   "size_copy": 3169,
+   "size_organ": 3169,
+   "verdict": "IDENTICAL"
+  },
+  {
+   "address": "domains/well/forge/incident-response/FORGE-well-boundary-repair",
+   "link_target": "/root/.hermes/profiles/aaa-hermes/skills/FORGE-well-boundary-repair",
+   "organ": "WELL",
+   "organ_path": "/root/WELL/skills/FORGE-well-boundary-repair",
+   "copy_sha": "2c4a29f54631ee70",
+   "organ_sha": "2c4a29f54631ee70",
+   "size_copy": 736,
+   "size_organ": 736,
+   "verdict": "IDENTICAL"
+  },
+  {
+   "address": "domains/well/forge/incident-response/well-machine-diagnose",
+   "link_target": "/root/WELL/skills/well-machine-diagnose",
+   "organ": "WELL",
+   "organ_path": "/root/WELL/skills/well-machine-diagnose",
+   "copy_sha": "1288e110cc6a6f86",
+   "organ_sha": "1288e110cc6a6f86",
+   "size_copy": 1897,
+   "size_organ": 1897,
+   "verdict": "IDENTICAL"
+  },
+  {
+   "address": "domains/well/workshop/well-domain/well-triadic-ops",
+   "link_target": "/root/WELL/skills/well-triadic-ops",
+   "organ": "WELL",
+   "organ_path": "/root/WELL/skills/well-triadic-ops",
+   "copy_sha": "ff354fe564dfb215",
+   "organ_sha": "ff354fe564dfb215",
+   "size_copy": 2432,
+   "size_organ": 2432,
+   "verdict": "IDENTICAL"
+  }
+ ],
+ "unaddressed": [
+  {
+   "organ": "GEOX",
+   "skill": "geox-basin-evaluation",
+   "path": "/root/GEOX/skills/geox-basin-evaluation"
+  },
+  {
+   "organ": "GEOX",
+   "skill": "geox-claim-falsification",
+   "path": "/root/GEOX/skills/geox-claim-falsification"
+  },
+  {
+   "organ": "GEOX",
+   "skill": "geox-prospect-evaluation",
+   "path": "/root/GEOX/skills/geox-prospect-evaluation"
+  },
+  {
+   "organ": "GEOX",
+   "skill": "geox-seismic-interpretation",
+   "path": "/root/GEOX/skills/geox-seismic-interpretation"
+  },
+  {
+   "organ": "GEOX",
+   "skill": "geox-well-log-qc",
+   "path": "/root/GEOX/skills/geox-well-log-qc"
+  },
+  {
+   "organ": "W3",
+   "skill": "wealth-capital-primitives",
+   "path": "/root/WEALTH/skills/wealth-capital-primitives"
+  },
+  {
+   "organ": "W3",
+   "skill": "wealth-ledger-discipline",
+   "path": "/root/WEALTH/skills/wealth-ledger-discipline"
+  },
+  {
+   "organ": "W3",
+   "skill": "wealth-market-pulse",
+   "path": "/root/WEALTH/skills/wealth-market-pulse"
+  },
+  {
+   "organ": "W3",
+   "skill": "wealth-runway-conservation",
+   "path": "/root/WEALTH/skills/wealth-runway-conservation"
+  }
+ ]
+}

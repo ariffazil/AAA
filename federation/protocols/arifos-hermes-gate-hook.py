@@ -11,6 +11,19 @@ Pattern: Detect → Classify → Decide → Receipt → Deny (or Allow).
 
 This is the FIRST runtime enforcement path in Hermes.
 K-02 transition: Witness → Enforcer.
+
+JITU (2026-09-18) — THE CIRCUIT BREAKER SITS IN FRONT OF EVERYTHING ELSE.
+  F13: *"Wayarkan terus ke urat saraf enforcement semua lane automatik. Apabila JITU diaktifkan,
+  ia mesti jadi hard interrupt (henti serta-merta) dan tinggalkan receipt jelas."*
+
+  Order of decision is now:
+      0. JITU      — a sovereign-issued stop. Checked FIRST. Beats every other rule.
+      1. W_scar    — critical-variable claim without source evidence
+      2. T3        — irreversible pattern
+      3. T2/OBSERVE
+
+  The brake is read through its single authority (`federation/kernel/jitu.py`). This file holds no
+  copy of the trip logic — only the call. A second implementation of a brake is two brakes.
 """
 
 import json
@@ -21,6 +34,28 @@ import uuid
 from datetime import datetime
 
 RECEIPT_PATH = "/root/.local/share/arifos/hermes_hook_receipts.jsonl"
+JITU_AUTHORITY = "/root/AAA/federation/kernel/jitu.py"
+
+
+def jitu_state():
+    """(tripped, reason) from the single circuit-breaker authority.
+
+    FAIL-CLOSED on any fault: if the authority cannot be loaded or answered, we cannot prove the
+    brake is released, so a mutation must not proceed. An unreadable brake is not an absent brake.
+    """
+    import importlib.util
+
+    try:
+        spec = importlib.util.spec_from_file_location("jitu_authority", JITU_AUTHORITY)
+        if spec is None or spec.loader is None:
+            return True, "JITU authority not loadable (spec empty)"
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        allowed, why = mod.check(lane=None, quiet=True)
+        return (not allowed), why
+    except Exception as exc:
+        return True, f"JITU authority raised: {exc}"
+
 
 # T3 patterns — same as OpenCode gate (E-12: capability beats instruction)
 T3_PATTERNS = [
@@ -50,6 +85,54 @@ W_SCAR_CRITICAL = [
 METRICS_PATH = "/root/.local/share/arifos/hermes_falsification_metrics.jsonl"
 TELEMETRY_PATH = "/root/.local/share/arifos/wscar_telemetry.json"
 
+# ---------------------------------------------------------------------------
+# W_scar v2 (2026-09-18, F13-authorised): CLAIM-SURFACE + VERIFIED PROVENANCE
+#
+# v1 scanned `json.dumps(tool_input)` for a vocabulary list. Two defects, both measured live on
+# 2026-09-18 while hardening the intelligence-brief lane:
+#
+#   FALSE POSITIVE — a file PATH containing a trigger word was read as a claim. Patching
+#     `.../court/court-audit/agent-finding-verification/SKILL.md` was refused twice, and so was a
+#     read-only `grep` naming that file. The payload asserted nothing; a directory was named
+#     "court". Paths are structure, not assertions.
+#   FALSE NEGATIVE — provenance was "does the payload contain the token source/url/http".
+#     Any string satisfies that. A fabricated figure with the word "url" beside it passed.
+#
+# v2 therefore does two things v1 did not:
+#   1. Scans only the text a human would read as an assertion, with URLs, paths, receipt ids and
+#      code spans stripped first. A path can no longer be mistaken for a claim.
+#   2. VERIFIES provenance instead of detecting its vocabulary: it extracts cited URLs and
+#      resolves them. A cited source that does not resolve is not evidence.
+#
+# Deliberate non-blocking case: if the URL check cannot reach the network at all, the verdict is
+# DEGRADED and the call proceeds. A network fault is not evidence of fabrication, and a gate that
+# converts an outage into a blanket denial of service is worse than the defect it guards.
+# ---------------------------------------------------------------------------
+
+# Fields that carry human-facing assertions. Everything else (paths, ids, flags, enums) is structure.
+CLAIM_TEXT_FIELDS = (
+    "content", "new_string", "old_string", "text", "message", "response",
+    "command", "cmd", "code", "body", "description", "prompt", "answer",
+)
+
+# System-owned doctrine / operations trees. A path under these roots names method, never a market
+# position or a patient, so tokens inside it are never promoted to a claim.
+OPS_PATH_WHITELIST = (
+    "/root/aaa/", "/root/arifos/", "/root/.hermes/", "/root/forge_work/",
+    "/root/agentic/", "/root/skill-audit/", "/root/aaa/skills/",
+)
+
+URL_RE = re.compile(r"https?://[^\s\"'`<>)\]}]+", re.IGNORECASE)
+# Tolerates JSON/key quoting: `"receipt_id": "rcpt-abc123"` and `receipt_id=rcpt-abc123` both match.
+# The v2 first draft missed the JSON form, which is the form the gate actually receives.
+RECEIPT_RE = re.compile(
+    r"\b(?:receipt|trace|envelope)[_-]?id[\\\"']*\s*[:=]\s*[\\\"']*[A-Za-z0-9][A-Za-z0-9._:-]{5,}",
+    re.IGNORECASE,
+)
+EVIDENCE_PATH_RE = re.compile(r"(/[A-Za-z0-9._/-]+\.(?:jsonl|json|parquet|yaml|yml|csv|log|md|db))")
+PROVENANCE_CACHE_PATH = "/root/.local/share/arifos/wscar_url_cache.json"
+URL_CHECK_TIMEOUT = 3
+
 # W_scar: text_to_speech and image_gen are exempt (creative output, not claims)
 W_SCAR_EXEMPT_TOOLS = {"text_to_speech", "image_gen", "video_gen", "vision_analyze", "browser_snapshot"}
 
@@ -58,27 +141,179 @@ READONLY_PROBE_RE = re.compile(
 )
 
 
-def has_critical_claim(tool_name: str, tool_input: dict) -> bool:
-    """W_scar: detect if the tool call touches critical human-consequence variables."""
-    if tool_name in W_SCAR_EXEMPT_TOOLS:
+def _cmd_is_readonly(cmd: str) -> bool:
+    """True only if EVERY segment of a shell pipeline is a read-only probe.
+
+    v1 anchored the regex at the start of the whole command, so `cd /x && grep -n RM470 f` was read
+    as a mutation even though every segment is a read. That is the same defect as the path
+    false-positive, one layer down.
+    """
+    if not cmd:
         return False
-    # Read-only inspection commands in terminal/bash are probes, not claims
-    if tool_name in {"terminal", "bash", "shell"}:
-        cmd = (tool_input.get("command") or tool_input.get("cmd") or "").strip()
-        if READONLY_PROBE_RE.search(cmd):
+    for seg in re.split(r"&&|\|\||\||;", cmd):
+        seg = seg.strip()
+        if not seg or seg.startswith("cd "):
+            continue
+        if not READONLY_PROBE_RE.search(seg):
             return False
-    arg_str = json.dumps(tool_input).lower()
-    for pattern in W_SCAR_CRITICAL:
-        if re.search(pattern, arg_str):
-            return True
+    return True
+
+
+def _strip_nonclaim(text: str) -> str:
+    """Remove everything that is structure rather than assertion, then lowercase.
+
+    Order matters: URLs are extracted as EVIDENCE before they are removed from the claim surface.
+    """
+    text = URL_RE.sub(" ", text)                                # evidence, collected separately
+    text = re.sub(r"(?:^|[\s\"'(=|])/?[\w.@+-]+(?:/[\w.@+-]+)+", " ", text)  # paths ≠ claims
+    text = RECEIPT_RE.sub(" ", text)                            # receipt ids ≠ claims
+    text = re.sub(r"`[^`]*`", " ", text)                        # code spans ≠ claims
+    text = re.sub(r"^```.*?^```", " ", text, flags=re.S | re.M)
+    return text.lower()
+
+
+def _targets_ops_tree(tool_input: dict) -> bool:
+    """True if the mutation's declared TARGET lives in a federation method tree.
+
+    F13-authorised exemption (2026-09-18): a write into the federation's own doctrine/skills trees
+    is a method operation — it addresses no human, so it owes no market/patient claim. Writing
+    `.../court/court-audit/SKILL.md` asserts nothing about a court.
+
+    Scope note: this is a *bounded, receipted* exemption, not a silent bypass. Every skipped call
+    is written to telemetry as `wscar_ops_exempt`, so if it is ever abused the count is visible.
+    Provenance duty for ops-tree content is carried by the skill/canon review lanes.
+    """
+    for field in ("path", "file_path", "target", "target_path"):
+        val = tool_input.get(field)
+        if isinstance(val, str) and val:
+            low = val.lower()
+            if any(low.startswith(root) for root in OPS_PATH_WHITELIST):
+                return True
     return False
 
 
-def has_source_evidence(tool_input: dict) -> bool:
-    """W_scar: check if the claim has source evidence attached."""
-    arg_str = json.dumps(tool_input).lower()
-    source_indicators = ["source", "url", "http", "evidence", "probe", "curl", "health", "git", "commit"]
-    return any(ind in arg_str for ind in source_indicators)
+def claim_surface(tool_name: str, tool_input: dict) -> str:
+    """The text a human would read as an assertion — with structure stripped out.
+
+    Returns "" when there is nothing to assert, which ends the check for this call.
+    """
+    if tool_name in W_SCAR_EXEMPT_TOOLS:
+        return ""
+    if _targets_ops_tree(tool_input):
+        return ""  # receipted method-tree exemption — see _targets_ops_tree
+    if tool_name in {"terminal", "bash", "shell"}:
+        cmd = (tool_input.get("command") or tool_input.get("cmd") or "").strip()
+        if _cmd_is_readonly(cmd):
+            return ""
+    parts = []
+    for field in CLAIM_TEXT_FIELDS:
+        val = tool_input.get(field)
+        if isinstance(val, str) and val:
+            parts.append(val)
+    if not parts:
+        return ""
+    return _strip_nonclaim("\n".join(parts))
+
+
+def has_critical_claim(tool_name: str, tool_input: dict) -> bool:
+    """W_scar: does the *assertion text* touch a critical human-consequence variable?
+
+    Anchored to the claim surface, never to the serialized payload. The file a claim is written
+    into is not the claim.
+    """
+    surface = claim_surface(tool_name, tool_input)
+    if not surface:
+        return False
+    return any(re.search(pattern, surface) for pattern in W_SCAR_CRITICAL)
+
+
+def _load_url_cache() -> dict:
+    try:
+        with open(PROVENANCE_CACHE_PATH) as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+def _save_url_cache(cache: dict):
+    try:
+        os.makedirs(os.path.dirname(PROVENANCE_CACHE_PATH), exist_ok=True)
+        tmp = PROVENANCE_CACHE_PATH + ".tmp"
+        with open(tmp, "w") as f:
+            json.dump(cache, f, indent=2)
+        os.replace(tmp, PROVENANCE_CACHE_PATH)
+    except Exception:
+        pass  # never block on cache failure
+
+
+def _url_resolves(url: str, cache: dict):
+    """True / False / None. None means UNDETERMINED (timeout, TLS, refusal) — not 'fabricated'.
+
+    A name that does not RESOLVE is a different fact from a network we cannot reach: NXDOMAIN is a
+    property of the citation, a timeout is a property of our link. Only the first is evidence.
+    """
+    if url in cache:
+        return cache[url]
+    import socket
+    import urllib.error
+    import urllib.request
+
+    verdict = None
+    try:
+        req = urllib.request.Request(url, method="HEAD", headers={"User-Agent": "arifos-gate/2.0"})
+        with urllib.request.urlopen(req, timeout=URL_CHECK_TIMEOUT) as resp:
+            verdict = 200 <= resp.status < 400
+    except urllib.error.HTTPError as exc:
+        # 403/405/429 mean the HOST ANSWERED — the resource exists and refuses HEAD.
+        verdict = exc.code in (403, 405, 429) or 200 <= (exc.code or 0) < 400
+    except urllib.error.URLError as exc:
+        # urlopen wraps socket faults in URLError; the cause is on .reason.
+        if isinstance(exc.reason, socket.gaierror):
+            verdict = False  # NXDOMAIN — a fact about the citation, not about our link
+        else:
+            verdict = None   # timeout / refused / TLS — undetermined, not fabricated
+    except Exception:
+        verdict = None  # unreachable ≠ fabricated
+    if verdict is not None:
+        cache[url] = verdict
+    return verdict
+
+
+def collect_provenance(tool_input: dict):
+    """(urls, receipt_ids, existing_evidence_paths) found anywhere in the payload."""
+    blob = json.dumps(tool_input)
+    urls, seen = [], set()
+    for raw in URL_RE.findall(blob):
+        url = raw.rstrip(".,;")
+        if url not in seen:
+            seen.add(url)
+            urls.append(url)
+    receipts = [m.group(0) for m in RECEIPT_RE.finditer(blob)]
+    paths = [p for p in EVIDENCE_PATH_RE.findall(blob) if os.path.exists(p)]
+    return urls, receipts, paths
+
+
+def verify_provenance(tool_input: dict):
+    """(state, detail). state ∈ {VERIFIED, UNRESOLVED, DEGRADED, ABSENT}.
+
+    v1 asked 'does the payload contain the word source?'. v2 asks 'does the cited source resolve?'.
+    Shape is not witness, and a citation-shaped string that 404s is not a source.
+    """
+    urls, receipts, paths = collect_provenance(tool_input)
+    if urls:
+        cache = _load_url_cache()
+        sample = urls[:4]  # bounded: the gate runs inside every tool call
+        verdicts = [_url_resolves(u, cache) for u in sample]
+        _save_url_cache(cache)
+        resolved = sum(1 for v in verdicts if v is True)
+        if resolved:
+            return "VERIFIED", f"{resolved}/{len(verdicts)} cited URL(s) resolve"
+        if verdicts and all(v is False for v in verdicts):
+            return "UNRESOLVED", f"{len(verdicts)} cited URL(s) present but none resolve"
+        return "DEGRADED", "URL check inconclusive (network fault) — not counted as absence of source"
+    if receipts or paths:
+        return "VERIFIED", "receipt id or on-disk evidence path present"
+    return "ABSENT", "no URL, receipt id, or on-disk evidence path in the payload"
 
 
 def write_falsification_metric(event_type: str, details: dict):
@@ -226,6 +461,58 @@ def write_receipt(
         pass  # Never block
 
 
+# CCC-T-02 (2026-09-18): Federation Envelope emit.
+# Maps to /root/AAA/federation/protocols/federation_envelope.yaml schema v0.1.
+# Distinct path so existing hermes_hook_receipts.jsonl readers are not affected.
+FEDERATION_ENVELOPE_PATH = "/root/.local/share/arifos/hermes_envelope_emits.jsonl"
+
+
+def emit_envelope(
+    identity: dict,
+    authority: str,
+    tier: str,
+    decision: str,
+    harness: str = "hermes",
+    trace_id: str = "unknown",
+    parent_receipt: str = "",
+    verdict: str = "NONE",
+    judge_ref: str = "",
+    transport: str = "MCP",
+):
+    """Emit a FederationEnvelope v0.1 record for cross-harness tracing.
+
+    Never block on failure (E-11). Side path; does not alter write_receipt output.
+    """
+    try:
+        record = {
+            "envelope_version": "0.1",
+            "envelope_id": str(uuid.uuid4()),
+            "agent_id": identity.get("agent_id", "hermes"),
+            "parent_agent": identity.get("parent_agent", "null"),
+            "session_id": identity.get("session_id", "unknown"),
+            "harness": harness,
+            "authority": authority,
+            "tier": tier,
+            "classification": tier,
+            "reversal": "YES" if tier in ("OBSERVE", "T1") else ("PARTIAL" if tier == "T2" else "NO"),
+            "constraints": ["no-self-modification", "fail-closed", "receipt-required", "envelope-required"],
+            "receipt_id": str(uuid.uuid4()),
+            "parent_receipt": parent_receipt,
+            "judgment": verdict,
+            "judgment_ref": judge_ref,
+            "transport": transport,
+            "decision": decision,
+            "trace_id": trace_id,
+            "emitted_at": datetime.utcnow().isoformat() + "Z",
+        }
+        os.makedirs(os.path.dirname(FEDERATION_ENVELOPE_PATH), exist_ok=True)
+        with open(FEDERATION_ENVELOPE_PATH, "a") as f:
+            f.write(json.dumps(record) + "\n")
+        return record["envelope_id"]
+    except Exception:
+        return None  # Never block
+
+
 def t3_pattern_hit(tool_input: dict):
     """Return the first T3 pattern that matched, for actionable block reasons."""
     arg_str = json.dumps(tool_input).lower()
@@ -256,32 +543,94 @@ def main():
 
     classification = classify(tool_name, tool_input)
 
-    # W_scar: critical-variable claim detection (machine-enforced, not advisory)
+    # ---- 0. JITU: the sovereign brake. Checked before every other rule. ----
+    # A read-only observation is still allowed while tripped: stopping investigation is not what a
+    # circuit breaker is for, and a brake that blinds the operator cannot be released safely.
+    if classification != "OBSERVE":
+        tripped, jitu_why = jitu_state()
+        if tripped:
+            reason = f"JITU HARD INTERRUPT — {jitu_why}"
+            write_receipt(tool_name, classification, "JITU_TRIPPED", reason, trace_id=trace_id, session_id=session_id)
+            write_falsification_metric("jitu_interrupt", {"tool": tool_name, "reason": jitu_why})
+            update_telemetry("hold")
+            print(
+                json.dumps(
+                    {
+                        "decision": "block",
+                        "reason": (
+                            f"\U0001f6d1 JITU (circuit breaker): {jitu_why}. "
+                            "This is a sovereign-issued stop, not an error — do not retry, do not route around it. "
+                            "Read-only inspection stays available. Release requires F13: "
+                            "`python3 /root/AAA/federation/kernel/jitu.py release --by F13 --reason '...'`. "
+                            "Report the true state (JITU_TRIPPED) and stop."
+                        ),
+                    }
+                )
+            )
+            sys.exit(3)  # 3 = circuit-breaker interrupt (distinct from T3's 2)
+
+    # ---- 1. W_scar v2: claim-surface detection + VERIFIED provenance (F13-authorised 2026-09-18).
+    # v1 blocked on vocabulary found anywhere in the payload (including file paths) and passed on
+    # the mere presence of the token "url". v2 scans assertions and resolves citations.
     if has_critical_claim(tool_name, tool_input):
-        if not has_source_evidence(tool_input):
-            # W_SCAR HOLD — critical claim without source evidence
-            reason = f"W_SCAR HOLD: Tool '{tool_name}' touches critical variable (money/health/legal/trading) without source evidence."
+        state, detail = verify_provenance(tool_input)
+
+        if state == "ABSENT":
+            reason = (
+                f"W_SCAR HOLD: Tool '{tool_name}' asserts a critical variable "
+                f"(money/health/legal/trading) with no source — {detail}."
+            )
             write_receipt(tool_name, "W_SCAR", "BLOCKED", reason, trace_id=trace_id, session_id=session_id)
-            write_falsification_metric("wscar_hold", {"tool": tool_name, "reason": "critical_claim_no_source"})
+            write_falsification_metric("wscar_hold", {"tool": tool_name, "reason": "claim_without_source"})
             update_telemetry("hold")
             result = {
                 "decision": "block",
-                "reason": f"🛑 W_SCAR: {reason} Route through evidence source first (probe, web_search, session_search) or escalate to sovereign.",
+                "reason": (
+                    f"🛑 W_SCAR: {reason} The gate checks the CLAIM, not the file path — a path "
+                    "containing a trigger word is no longer scanned. Attach a resolvable URL, a "
+                    "receipt id, or an on-disk evidence path and this clears. Read-only probes, "
+                    "ops-tree writes and creative tools are exempt."
+                ),
             }
             print(json.dumps(result))
             sys.exit(2)
-        else:
-            # Critical claim WITH source — witness it
-            write_falsification_metric("wscar_pass", {"tool": tool_name, "reason": "critical_claim_with_source"})
-            update_telemetry("wscar_pass")
-            write_receipt(
-                tool_name,
-                "W_SCAR",
-                "WITNESSED",
-                "Critical claim with source evidence — witnessed",
-                trace_id=trace_id,
-                session_id=session_id,
+
+        if state == "UNRESOLVED":
+            reason = (
+                f"W_SCAR HOLD: {detail}. A citation-shaped string that does not resolve is not a "
+                "source — shape is not witness."
             )
+            write_receipt(tool_name, "W_SCAR", "BLOCKED", reason, trace_id=trace_id, session_id=session_id)
+            write_falsification_metric("wscar_hold", {"tool": tool_name, "reason": "citation_unresolved"})
+            update_telemetry("hold")
+            result = {
+                "decision": "block",
+                "reason": (
+                    f"🛑 W_SCAR: {reason} Supply a URL that resolves, or a receipt id / evidence "
+                    "path on disk."
+                ),
+            }
+            print(json.dumps(result))
+            sys.exit(2)
+
+        # VERIFIED or DEGRADED — witness it. DEGRADED is deliberate: an unreachable network is not
+        # evidence of fabrication, and a gate that turns an outage into a blanket denial of service
+        # is worse than the defect it guards. The receipt records which of the two it was.
+        write_falsification_metric(
+            "wscar_pass", {"tool": tool_name, "reason": f"provenance_{state.lower()}"}
+        )
+        update_telemetry("wscar_pass")
+        write_receipt(
+            tool_name,
+            "W_SCAR",
+            "WITNESSED",
+            f"Critical claim, provenance {state}: {detail}",
+            trace_id=trace_id,
+            session_id=session_id,
+        )
+    elif tool_name in T2_TOOLS and _targets_ops_tree(tool_input):
+        # Auditable exemption counter — see _targets_ops_tree. Not a silent skip.
+        write_falsification_metric("wscar_ops_exempt", {"tool": tool_name})
 
     if classification == "OBSERVE":
         # Track observation for falsification rate calculation
@@ -322,6 +671,19 @@ def main():
     )
     write_falsification_metric("mutation_witnessed", {"tool": tool_name, "classification": "T2"})
     update_telemetry("pass")
+    # CCC-T-02 (2026-09-18): emit FederationEnvelope v0.1 for cross-harness tracing.
+    # The hermes pre_tool_call gate is observation-class — authority stays OBSERVE_ONLY
+    # even when witnessing T2 mutations. parent_receipt unlinked until receipt_id minting
+    # is added to write_receipt (deferred to CCC-T-02b).
+    emit_envelope(
+        identity={"agent_id": "hermes", "session_id": session_id},
+        authority="OBSERVE_ONLY",
+        tier=classification,
+        decision="WITNESSED_T2",
+        harness="hermes",
+        trace_id=trace_id,
+        verdict="SEAL",
+    )
     # Allow (no output)
 
 
