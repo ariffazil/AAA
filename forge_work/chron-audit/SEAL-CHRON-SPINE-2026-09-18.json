@@ -137,6 +137,43 @@
       "evidence": "test render: 2 ledger rows, both RESOLVE"
     }
   ],
+  "changes": [
+    {
+      "file": "/root/AAA/scripts/chron.py",
+      "sha256_before": "82f40a2cd188",
+      "before_source": "untracked before this pass; backup-105522 is the only pre-forge state",
+      "sha256_after": "afb1ca65047f",
+      "defect": "score() multiplied truth-shaped and time-shaped factors into one float, so 'urgent but trivial' and 'calm but consequential' became indistinguishable the moment they collided",
+      "fix": "components() exposes truth_score and urgency_score separately; ordering is unchanged but no longer destroys what it was not entitled to consume",
+      "evidence": "chron.py --self-test -> separation PASS (truth 1.0 vs 3.0, urgency 10.5 vs 1.8)"
+    },
+    {
+      "file": "/root/AAA/scripts/chron_spine_gate.py",
+      "sha256_before": "NEW",
+      "sha256_after": "600b9a85adc0",
+      "defect": null,
+      "fix": "NEW — nine boundaries as checks, each able to REJECT, with a two-way self-test",
+      "evidence": "6 PASS, 0 FAIL, 3 UNBUILT; self-test PASS"
+    },
+    {
+      "file": "/root/scripts/alpha_zen_engine.py",
+      "sha256_before": "f0b31aa62d54",
+      "sha256_after": "dc1420b0eb19",
+      "defect": "_pick() on the SUKA_TAHU/EUREKA path ended in `return pool[0]` — the same soft gate bypass already removed from the KENA_TAHU path and left behind here. When every candidate failed freshness the caller still received a stale signal, silently: a refusing gate turned into a reordering one",
+      "fix": "returns None; the caller renders a visible WITHHELD marker. Return type annotated str | None",
+      "evidence": "the gate can now refuse; a missing line is visible, a wrong number is not"
+    },
+    {
+      "file": "/root/AAA/scripts/alpha_zen_card.py",
+      "sha256_before": "a15322a0f856",
+      "before_note": "this file's forger-visible before-state is unchanged from the previous pass, which already landed the content-addressing fix",
+      "sha256_after": "a15322a0f856",
+      "defect": "fixed in the prior pass; listed here so the spine record is complete",
+      "fix": "content-addressed artifact plus a stable copy for the delivery contract",
+      "evidence": "test render: 2 ledger rows, both RESOLVE"
+    }
+  ],
+  "changes_key_note": "Both 'changes_this_pass' and 'changes' exist and are byte-identical: an external analyst searched for a key named 'changes', found only 'changes_this_pass', and wrongly concluded the change block was absent. The data was never missing - only its name hid it. Additive alias only; neither key is authoritative and no existing value was altered.",
   "self_reported_defects": [
     "The spine gate's own self-test caught THREE false alarms I had written into it: (a) it looked for cell.tier when the claim class lives in cell.tag; (b) it required word boundaries on literal host-path patterns where they are meaningless; (c) it regexed for a module constant when the delivery mode is an env var. All three are recorded inside the file rather than quietly fixed — a gate that fires on correct content trains its own removal, which is the exact defect the file exists to prevent.",
     "An earlier countdown message said 55 minutes remained to 14:00. It was 3h21m. Nothing acted on it."
