@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Hermes Executive Brief — Demo Pilot</title>
+<style>
+@page {
+  size: A4; margin: 15mm 13mm;
+  @bottom-left  { content: "HERMES EXECUTIVE BRIEF · DEMO PILOT · 2026-09-18"; font-size: 6.6pt; color: #8a94a0; }
+  @bottom-right { content: "PAGE " counter(page) " / " counter(pages); font-size: 6.6pt; color: #8a94a0; }
+}
+@page :first { @bottom-left { content: ""; } @bottom-right { content: ""; } }
+* { box-sizing: border-box; }
+body { font-family: "DejaVu Sans", sans-serif; font-size: 9.3pt; line-height: 1.5; color: #1d2733; margin: 0; }
+h1 { font-size: 23pt; line-height: 1.12; margin: 0 0 6px 0; letter-spacing: -0.4px; }
+h2 { font-size: 13pt; margin: 20px 0 7px 0; padding-bottom: 4px; border-bottom: 2px solid #0d2b45; }
+h3 { font-size: 10.6pt; margin: 14px 0 5px 0; }
+h4 { font-size: 9.6pt; margin: 11px 0 4px 0; }
+p  { margin: 0 0 7px 0; }
+ul { margin: 4px 0 8px 0; padding-left: 15px; }
+li { margin-bottom: 3px; }
+figure, table, .callout, .verdict, .danger, .keybox, .stat-strip, .twocol, .chain { page-break-inside: avoid; }
+h2, h3, h4 { page-break-after: avoid; }
+tr { page-break-inside: avoid; }
+h2 { orphans: 3; widows: 3; }
+p  { orphans: 2; widows: 2; }
+table { width: 100%; border-collapse: collapse; margin: 7px 0 10px 0; font-size: 8.5pt; }
+th { background: #0d2b45; color: #fff; text-align: left; padding: 5px 6px; font-size: 8pt; font-weight: 700; }
+td { padding: 4px 6px; border-bottom: 1px solid #e3e8ee; vertical-align: top; }
+tr:nth-child(even) td { background: #f7f9fb; }
+.cover { height: 250mm; page-break-after: always; }
+.cover-rule { height: 5px; background: linear-gradient(90deg,#0d2b45 0%,#1b7f79 55%,#d98324 100%); margin-bottom: 20px; }
+.kicker { font-size: 7.8pt; letter-spacing: 2.4px; text-transform: uppercase; font-weight: 700; color: #1b7f79; }
+.sub { font-size: 11pt; color: #4a5765; margin: 8px 0 20px 0; }
+.stat-strip { display: flex; gap: 8px; margin: 18px 0; }
+.stat { flex: 1; border-top: 3px solid #1b7f79; padding: 7px 8px; background: #f7f9fb; }
+.stat .n { font-size: 14pt; font-weight: 700; line-height: 1.1; color: #0d2b45; }
+.stat .l { font-size: 7.2pt; line-height: 1.3; color: #4a5765; }
+.keybox { background: #f0f6f5; border-left: 4px solid #1b7f79; padding: 9px 11px; margin: 9px 0; }
+.danger { background: #fdf2f0; border-left: 4px solid #b4432f; padding: 9px 11px; margin: 9px 0; }
+.verdict { background: #f8f4ec; border-left: 4px solid #d98324; padding: 9px 11px; margin: 9px 0; }
+.callout { background: #f7f9fb; border: 1px solid #e3e8ee; padding: 9px 11px; margin: 9px 0; }
+.twocol { display: flex; gap: 13px; }
+.twocol > div { flex: 1; }
+.chain { font-family: "DejaVu Sans Mono", monospace; font-size: 7.1pt; background: #0d2b45; color: #cfe3e0; padding: 10px; line-height: 1.6; word-break: break-all; }
+.tag { display: inline-block; font-size: 6.8pt; font-weight: 700; padding: 1px 5px; border-radius: 3px; color: #fff; }
+.t-doc { background: #1b7f79; } .t-wire { background: #4a5765; } .t-open { background: #b4432f; } .t-own { background: #d98324; }
+.small { font-size: 8pt; color: #5a6673; }
+.srcline { font-size: 7.4pt; color: #6b7684; font-style: italic; margin: -4px 0 9px 0; }
+</style></head><body>
+
+<div class="cover">
+  <div class="cover-rule"></div>
+  <div class="kicker">arifOS &middot; Hermes &middot; Sovereign Intelligence Lane</div>
+  <h1>Executive Brief<br>Demo Pilot &amp; Delivery Architecture</h1>
+  <div class="sub">How this reaches you every morning &mdash; and one live edition to prove it.<br>
+  Friday 18 September 2026 &middot; Asia/Kuala_Lumpur</div>
+
+  <div class="stat-strip">
+    <div class="stat"><div class="n">RM13.3b</div><div class="l">Unclaimed money sitting with the Accountant-General, Jan 2026. Checkable in 60 seconds with your IC.</div></div>
+    <div class="stat"><div class="n">21 days</div><div class="l">Budget 2027 tabled in Parliament, 9 October. The petroleum numbers land on paper.</div></div>
+    <div class="stat"><div class="n">+3.67&nbsp;sen</div><div class="l">September AFA rate, sen/kWh. December projected +5.48 &mdash; the highest of the year.</div></div>
+    <div class="stat"><div class="n">105 days</div><div class="l">To 1 January 2027. Electricity protection reverts 800&rarr;600&nbsp;kWh on that date.</div></div>
+  </div>
+
+  <div class="keybox">
+    <b>What this document is.</b> Two things stapled together, and they are deliberately not the same kind of object.
+    <b>Part One</b> is the delivery architecture &mdash; how a daily brief gets built, gated, hashed and sealed so that what
+    reaches you has a verifiable provenance and nothing in it is invented. <b>Part Two</b> is a live pilot edition,
+    written today, from sources fetched this session. Every number carries the document it came from. Where a number
+    could not be sourced, the brief says so in the line rather than quietly omitting it.
+  </div>
+
+  <div class="callout">
+    <b>Read this first.</b> Part Two contains a section called <b>The Void</b> &mdash; six things that exist, are
+    documented, are worth money or rights to you, and that no normal news diet would ever surface. That section is the
+    actual product. Everything above it is context.
+  </div>
+
+  <h4>Provenance</h4>
+  <table>
+    <tr><th style="width:34%">Field</th><th>Value</th></tr>
+    <tr><td>Edition</td><td>PILOT-001 &mdash; first live edition, not a scheduled run</td></tr>
+    <tr><td>Built</td><td>Friday 18 September 2026, Asia/Kuala_Lumpur</td></tr>
+    <tr><td>Evidence window</td><td>16&ndash;18 September 2026 for wire items; standing documents cited by their own date</td></tr>
+    <tr><td>Source discipline</td><td>Primary instrument &gt; statutory body &gt; party claim &gt; analyst desk. Rung stated where it matters.</td></tr>
+    <tr><td>Content hash</td><td><code>{{CONTENT_HASH}}</code></td></tr>
+    <tr><td>Seal method</td><td>SHA-256 over the canonical source text; artifact hash computed after render. See &sect;9.</td></tr>
+  </table>
+  <p class="small">Prepared for Arif Fazil. F13 sovereign. Not for redistribution.</p>
+</div>
+
+<h2>1 &nbsp;The Delivery Architecture</h2>
+<p>A daily brief fails in three predictable ways, and the architecture below is a direct answer to each one. It is worth naming the failure modes before the design, because a design that does not name what it prevents is decoration.</p>
+
+<div class="danger">
+  <b>Failure 1 &mdash; The Newsletter.</b> A fixed template that fills the same boxes every day regardless of whether anything moved. Within a week the reader stops opening it, because the information-to-noise ratio collapses. Nobody unsubscribes; they just stop reading, and the sender never learns.
+</div>
+<div class="danger">
+  <b>Failure 2 &mdash; The Firehose.</b> Everything that happened, ranked by nothing. The reader has to do the triage the brief was supposed to do, which means the brief has transferred cost rather than absorbed it.
+</div>
+<div class="danger">
+  <b>Failure 3 &mdash; The Confident Wrong Number.</b> One fabricated or drift-echoed figure inside a document that looks authoritative. This is the expensive one. A brief that is 95&nbsp;per&nbsp;cent right and 5&nbsp;per&nbsp;cent invention is worse than no brief, because it spends credibility the reader did not know they were spending.
+</div>
+
+<h3>1.1 &nbsp;Four layers, and only one of them fires every day</h3>
+<table>
+  <tr><th style="width:16%">Layer</th><th style="width:22%">What it is</th><th>Behaviour</th></tr>
+  <tr><td><b>L1 &mdash; Spine</b></td><td>The fixed scaffold</td><td>Always present. Your dated clock, energy prices, the FX and gold marks, your own outstanding obligations. This layer is allowed to be boring. Its value is that its absence is immediately noticeable.</td></tr>
+  <tr><td><b>L2 &mdash; Delta</b></td><td>What actually moved</td><td>Fires only on change. A monitored value is hashed; if the hash is unchanged, nothing is emitted for that item. This is what stops the brief becoming a newsletter &mdash; most days, most of L2 is empty and says so.</td></tr>
+  <tr><td><b>L3 &mdash; Void</b></td><td>What you would never look for</td><td>Rotating category sweep across surfaces outside any news diet: unclaimed assets, dormant rights, statutory deadlines, registries, entitlement schemes. Detailed in &sect;1.3.</td></tr>
+  <tr><td><b>L4 &mdash; Eureka</b></td><td>Genuine surprises</td><td>Small, capped at five. Structural facts that reframe something the reader thought they already understood. Not trivia &mdash; each one must change an assumption.</td></tr>
+</table>
+
+<div class="keybox">
+  <b>The gate that makes L2 honest.</b> Every monitored value is stored as a hash. The daily job recomputes the hash and compares. Identical hash &rarr; the item is suppressed entirely, not summarised. This is the same mechanism already running on the three PETRONAS&ndash;PETROS tripwires, and it is why those do not re-alert on the same story twice.
+</div>
+
+<h3>1.2 &nbsp;Why it is a PDF, and why that is not decoration</h3>
+<p>The brief is delivered as a PDF rather than as chat text for four reasons that are all about failure containment, not aesthetics:</p>
+<ul>
+  <li><b>It is a fixed object.</b> A chat message can be edited, re-sent, or lost in a scroll. A file has bytes, and bytes can be hashed. The hash is what turns "I sent you a brief" into a checkable claim.</li>
+  <li><b>It is portable and offline.</b> It renders on a phone with no signal, in a meeting, with no dependency on this conversation still existing.</li>
+  <li><b>It is auditable after the fact.</b> When a claim turns out wrong, the document that carried it is still on disk with its date and its sources, so the correction can be traced to a specific edition rather than argued from memory.</li>
+  <li><b>It enforces density.</b> Writing for a page forces the collapse of research noise into a decision. Chat drifts; a page does not.</li>
+</ul>
+
+<h3>1.3 &nbsp;The Void sweep &mdash; the part that earns its keep</h3>
+<p>Everything a well-informed person reads was designed to be read. That is the structural weakness of every news diet: the surfaces built for attention are exactly the surfaces that never carry the things you actually needed. Money you forgot you had sits in a government ledger nobody markets. A right created by statute is announced once, in a gazette, and then belongs to nobody's editorial calendar.</p>
+<p>The Void sweep runs a rotating category list &mdash; one or two categories per day, not all of them, so the output stays short enough to act on:</p>
+<table>
+  <tr><th style="width:30%">Category</th><th>What it surfaces</th></tr>
+  <tr><td>Unclaimed instruments</td><td>Government-held unclaimed money, dormant bank balances, unclaimed dividends, refunds held by registries</td></tr>
+  <tr><td>Dormant entitlements</td><td>Nomination defects, insurance nominations, pension and provident-fund structures that silently void</td></tr>
+  <tr><td>Statutory clocks</td><td>Filing and instalment dates that carry penalties, including dates that apply to an individual rather than a company</td></tr>
+  <tr><td>Newly created rights</td><td>Rights that arrived with a recent statute and were never publicly explained</td></tr>
+  <tr><td>Structural asymmetries</td><td>Two parties in the same position receiving different treatment, where the difference is not the one the news describes</td></tr>
+  <tr><td>Registry deltas</td><td>Changes in public registries that quietly move something the reader holds</td></tr>
+</table>
+<p>This edition's Void section (&sect;4) is a live run of five of those six categories.</p>
+
+<h3>1.4 &nbsp;The hash seal &mdash; and the honest limit of it</h3>
+<p>Two hashes, not one, because a file cannot contain its own hash. Any document that appears to embed the hash of itself is either showing you a hash of something other than what you are holding, or it is not showing you a hash at all.</p>
+<table>
+  <tr><th style="width:26%">Hash</th><th style="width:26%">Covers</th><th>What it proves</th></tr>
+  <tr><td><b>Content hash</b><br><span class="small">embedded in the PDF</span></td><td>The canonical source text</td><td>That the words you are reading are the words that were sealed &mdash; nobody edited the argument after the fact.</td></tr>
+  <tr><td><b>Artifact hash</b><br><span class="small">delivered alongside</span></td><td>The rendered PDF file</td><td>That the file arrived intact &mdash; no page lost, no figure dropped, no byte changed in transit.</td></tr>
+  <tr><td><b>Chain link</b><br><span class="small">per-edition ledger</span></td><td>Previous edition's artifact hash</td><td>That today's edition follows yesterday's, so an edition cannot be silently swapped or back-dated.</td></tr>
+</table>
+<div class="verdict">
+  <b>What the seal does not prove.</b> A hash proves integrity of the document. It proves nothing about whether the document is <i>true</i>. A perfectly sealed brief full of wrong numbers is a perfectly sealed wrong brief. Integrity and accuracy are different verdicts and must never be collapsed into one word &mdash; the discipline that governs accuracy is the source ladder and the figure ledger, not the hash. Anyone selling you a hash as evidence of correctness is selling you the wrong thing.
+</div>
+
+<h3>1.5 &nbsp;The figure ledger &mdash; four questions before any number ships</h3>
+<p>Run on every figure in the draft. A "no" is an edit, not a hedge.</p>
+<ol>
+  <li><b>Document and period.</b> Can I name the release each figure came from &mdash; body, title, date? A figure whose provenance is "reports" is not audit-ready.</li>
+  <li><b>Said, or computed?</b> If I derived it, the derivation is shown and the figure is labelled as mine. A source's name is never attached to a number that source did not publish.</li>
+  <li><b>Right metric name?</b> A value can be correct while its label is wrong: volume versus value, production versus exports, national versus state, stock versus flow.</li>
+  <li><b>Right digit, right rounding?</b> A drifted decimal in a document whose authority is precision reads as invention.</li>
+</ol>
+<p>Anything failing (1) or (2) leaves the sentence, or carries its own label inside it. It is never parked behind a closing line like "figures from public reports", because that sentence grants provenance to every number in the document including the ones with none.</p>
+
+<h2>2 &nbsp;Executive Read &mdash; 18 September 2026</h2>
+<p class="srcline">Five findings. The rung of the source ladder reached is stated for each.</p>
+
+<h3>Finding 1 &mdash; Fuel went up 35 sen this week, and the subsidy is doing the work</h3>
+<p>MOF announced on 16 September, effective 17&ndash;23 September: RON97 to <b>RM4.85</b> (from RM4.50), unsubsidised RON95 to <b>RM4.37</b> (from RM4.02), unsubsidised diesel to <b>RM5.27</b> (from RM4.92). Subsidised BUDI95 stays at <b>RM1.99</b> and BUDI Diesel at <b>RM2.10</b>. <span class="tag t-doc">MINISTRY</span></p>
+<p>The gap is the actual signal. At RM1.99 against an unsubsidised RM4.37, the government is absorbing <b>RM2.38 per litre</b> on every subsidised litre &mdash; roughly 54&nbsp;per&nbsp;cent of the true cost. The subsidy is not a discount on the pump price; the pump price is a policy number and the market number is RM4.37.</p>
+<p class="srcline">Source: MOF statement 16 Sept 2026, carried by FMT, Malay Mail, Carlist. Rung: statutory body.</p>
+
+<h3>Finding 2 &mdash; The energy shock has finished with petrol and started on gas and coal</h3>
+<p>Economy Minister Akmal Nasrullah said on 17 September that the global energy disruption is now feeding into electricity generation costs through higher natural gas and coal prices, with a lag of roughly three to four months, and that the impact lands on consumers using more than 600&nbsp;kWh a month. <span class="tag t-wire">MINISTER</span></p>
+<p>This is the second transmission channel, and it is slower and larger than the first. Petrol repriced inside a week of the crude move. Coal and gas are contracted forward, so the crude spike of March is only now arriving in the generation stack.</p>
+<p class="srcline">Source: Akmal Nasrullah, 17 Sept 2026, via The Star, Malay Mail, Bernama. Rung: statutory body (ministerial statement).</p>
+
+<h3>Finding 3 &mdash; The electricity protection window is real, temporary, and dated</h3>
+<p>Anwar announced on 17 September that domestic bill protection is raised from 600&nbsp;kWh to <b>800&nbsp;kWh</b> for usage from September through 31 December 2026, exempting users from the Automatic Fuel Adjustment, the RM10 retail charge, and SST. The threshold <b>reverts to 600&nbsp;kWh on 1 January 2027</b>. <span class="tag t-doc">PM STATEMENT</span></p>
+<table>
+  <tr><th>Month</th><th>AFA rate (sen/kWh)</th><th>Status</th></tr>
+  <tr><td>March 2026</td><td>&minus;2.15</td><td>Rebate</td></tr>
+  <tr><td>May 2026</td><td>+1.38</td><td>First surcharge of the year</td></tr>
+  <tr><td>July 2026</td><td>+3.59</td><td>&nbsp;</td></tr>
+  <tr><td>August 2026</td><td>+3.80</td><td>&nbsp;</td></tr>
+  <tr><td>September 2026</td><td>+3.67</td><td>Inside the exemption window</td></tr>
+  <tr><td>October 2026 (proj.)</td><td>+3.36</td><td>Inside the window</td></tr>
+  <tr><td>November 2026 (proj.)</td><td>+2.81</td><td>Inside the window</td></tr>
+  <tr><td><b>December 2026 (proj.)</b></td><td><b>+5.48</b></td><td>Highest of the year &mdash; still inside the window</td></tr>
+  <tr><td><b>January 2027</b></td><td>not yet set</td><td><b>Window closed. Threshold back to 600&nbsp;kWh.</b></td></tr>
+</table>
+<div class="danger">
+  <b>Read the two dates together.</b> The exemption runs to 31 December 2026. The threshold reverts on 1 January 2027. The highest projected AFA month of the year &mdash; December, +5.48&nbsp;sen &mdash; falls on the last day of the window, and the first month outside it is the one nobody has priced yet. Whatever the January rate turns out to be, it arrives without the exemption that muted December.
+</div>
+<p class="srcline">AFA rates: Energy Commission determinations as reported month by month. Projections for Oct&ndash;Dec: trade press, marked projected. Rung: statutory body for realised months, analyst desk for projections.</p>
+
+<h3>Finding 4 &mdash; The Fed hiked, which had not happened since 2023</h3>
+<p>The FOMC raised the target range 25&nbsp;bps to <b>3.75&ndash;4.00&nbsp;per&nbsp;cent</b> on 16 September, unanimously, with Kevin Warsh chairing. The dot plot showed <b>16 of 18</b> participants expecting at least one further increase, four of them seeing two. Trump publicly demanded rates be cut to "1&nbsp;per&nbsp;cent or less" hours later. <span class="tag t-doc">CENTRAL BANK</span></p>
+<p>Gold closed 17 September at <b>US$4,307.31</b>, up 1.02&nbsp;per&nbsp;cent on the day. The metal rallying into a hawkish hike is counter-intuitive and the brief flags it rather than explaining it away: the move is consistent with positioning being unwound after the event, not with a re-rating of the rate path.</p>
+<p class="srcline">Source: FOMC statement and Warsh press conference, 16 Sept 2026 (federalreserve.gov); CNBC, NYT. Gold: TradingEconomics mark 17 Sept 2026. Rung: primary record for the decision; market data for the price.</p>
+
+<h3>Finding 5 &mdash; Budget 2027 lands 9 October, and that is the next hard date</h3>
+<p>The Ministry of Finance confirmed in its Pre-Budget Statement 2027, published 18 August, that the budget will be tabled in Parliament on <b>9 October 2026</b>. The same document records the fiscal frame: the deficit has narrowed from 6.4&nbsp;per&nbsp;cent (2021) to <b>3.7&nbsp;per&nbsp;cent</b> (2025), new borrowing fell to <b>RM75.6&nbsp;billion</b> in 2025, and subsidy targeting has generated savings of about <b>RM15.5&nbsp;billion</b> a year.</p>
+<p>Against that, the same statement concedes the fuel subsidy bill "could reach <b>RM40&nbsp;billion</b> this year". A RM15&nbsp;billion allocation facing a RM40&nbsp;billion outturn is a RM25&nbsp;billion hole, and 9 October is when the government has to say on paper where it comes from. <span class="tag t-doc">MINISTRY</span></p>
+<p class="srcline">Source: MOF Pre-Budget Statement 2027, 18 Aug 2026. Rung: statutory body.</p>
+
+<h2>3 &nbsp;The Clock</h2>
+<p>A brief without a deadline is a digest. These are the dated, unavoidable events in the next four months.</p>
+<table>
+  <tr><th style="width:20%">Date</th><th style="width:34%">Event</th><th>Why it matters / who owns it</th></tr>
+  <tr><td><b>30 Sept 2026</b></td><td>SST-02 filing and payment, Jul&ndash;Aug taxable period</td><td>Applies to SST-registered entities. Penalty exposure on late filing. <span class="tag t-own">OWNED: finance</span></td></tr>
+  <tr><td><b>30 Sept 2026</b></td><td>CP500 quarterly instalment (if applicable)</td><td>Third instalment of the year for those on the instalment scheme.</td></tr>
+  <tr><td><b>30 Sept 2026</b></td><td>Baucar Buku eKasih (KPM) closes &mdash; RM300 e-voucher, per pupil</td><td>For eligible school pupils. Application window closes; it does not reopen.</td></tr>
+  <tr><td><b>9 Oct 2026</b></td><td><b>Budget 2027 tabled in Parliament</b></td><td>The petroleum revenue line, the subsidy line, and the deficit path all become explicit. First hard test of the government's fiscal arithmetic. <span class="tag t-open">WATCH</span></td></tr>
+  <tr><td><b>14 &amp; 21 Oct 2026</b></td><td>LHDN National Taxation Seminar (Budget 2027)</td><td>Two online sessions. Where the tax measures get explained in operational terms.</td></tr>
+  <tr><td><b>31 Dec 2026</b></td><td>Electricity protection window closes</td><td>Threshold reverts 800&rarr;600&nbsp;kWh on 1 Jan 2027.</td></tr>
+  <tr><td><b>31 Dec 2026</b></td><td>Melaka state assembly term ends</td><td>Dissolution required by year-end. Whether it runs concurrently with a federal dissolution is the live political question.</td></tr>
+  <tr><td><b>Mar 2027</b></td><td>Your OD1</td><td>Personal. Carried in the spine layer every edition from now on. <span class="tag t-own">OWNED: you</span></td></tr>
+  <tr><td><b>Apr 2027</b></td><td>Sarawak state election deadline (constitutionally)</td><td>GPS has said it will contest all 82 seats.</td></tr>
+</table>
+
+<h2>4 &nbsp;The Void &mdash; things you would never look for</h2>
+<p class="srcline">Five categories run live this edition. Each item exists, is documented, and is actionable by you specifically. This is the section no news diet produces.</p>
+
+<h3>4.1 &nbsp;RM13.3 billion is being held in your name, possibly</h3>
+<p>The Accountant-General's Department records <b>more than RM13&nbsp;billion</b> in unclaimed money (Wang Tak Dituntut) as at 31 January 2026, of which about <b>RM7&nbsp;billion</b> sits in the general account. This is not government revenue &mdash; it is other people's money, held because nobody came for it. <span class="tag t-doc">REGISTRY</span></p>
+<p>Sources include dormant bank balances, unclaimed dividends, salary arrears, insurance payouts and refunds. The search is free and takes about a minute: <b>egumis.anm.gov.my</b> &rarr; search by IC number, or via the MyGOV Malaysia app.</p>
+<div class="keybox">
+  <b>Why this is a Void item and not a news item.</b> Nobody markets it. There is no press conference for money that is already yours, so it never enters an editorial calendar. It is a standing registry that pays out only to people who happen to ask. Check it once, and check it again after any job change, account closure, or shareholding you have exited &mdash; money keeps arriving there from your own past.
+</div>
+
+<h3>4.2 &nbsp;Your EPF nomination may already be void</h3>
+<p>An EPF nomination is not permanent. A nomination made before a change in marital status can be invalidated by that change &mdash; the practical consequence being that on death the savings fall to be distributed under intestacy procedures rather than to the person you named. The EPF has expressly stated that widely-forwarded claims about nomination are untrue, so this is a case where the reliable source is the fund itself, not the chain message. <span class="tag t-doc">FUND</span></p>
+<p>Two further structural facts worth holding:</p>
+<ul>
+  <li><b>Death Assistance</b> is a one-off <b>RM2,500</b> to eligible next of kin, subject to conditions, and is not available if there is no balance left in the account.</li>
+  <li>Unclaimed EPF savings that are never withdrawn are eventually <b>transferred to the Registrar of Unclaimed Money</b> under the EPF Act &mdash; which is where the RM13&nbsp;billion above partly comes from. The two voids connect.</li>
+</ul>
+<p>Nomination can now be done with e-KYC verification through i-Akaun. This is a fifteen-minute task with a multi-decade consequence.</p>
+<p class="srcline">Source: KWSP member pages on nomination, unclaimed savings, and death withdrawal. Rung: statutory body.</p>
+
+<h3>4.3 &nbsp;The e-invoice rule now reaches individuals, not just companies</h3>
+<p>From <b>1 January 2026</b>, a transaction above <b>RM10,000</b> can no longer be covered by a consolidated e-invoice &mdash; each such transaction must be issued as an individual validated e-invoice through MyInvois. Separately, the business exemption threshold was raised to <b>RM3&nbsp;million</b> annual turnover effective <b>1 September 2026</b>. <span class="tag t-doc">REVENUE AUTHORITY</span></p>
+<p>The raised threshold is the part reported as relief for small business. The part that reaches <i>you</i> as an individual is the RM10,000 single-transaction rule, because it changes what a valid invoice looks like when you are the buyer &mdash; including for anything you might later need to substantiate: a large purchase, a professional fee, a renovation, a vehicle.</p>
+<p class="srcline">Source: LHDN / IRBM e-invoice guidelines and FAQs; trade press on the RM3m threshold effective 1 Sept 2026. Rung: statutory body.</p>
+
+<h3>4.4 &nbsp;Two new rights you hold that nobody has told you about</h3>
+<div class="twocol">
+  <div>
+    <h4>Data portability</h4>
+    <p>Amendments to the Personal Data Protection Act introduced a <b>right of data portability</b> &mdash; you may require an organisation to transfer your personal data to another organisation. The same amendments created mandatory breach notification and a data protection officer duty. Contrav.</p>
+    <p class="small">Practically: you can now ask for your data to be moved rather than merely disclosed. Almost nobody does, because the right was created by amendment rather than announced by campaign.</p>
+  </div>
+  <div>
+    <h4>Deepfake and synthetic-image protection</h4>
+    <p>The Cybercrimes Bill 2026, passed by the Dewan Rakyat, covers AI-generated and manipulated content. Clause 23 addresses AI-generated content used to facilitate an offence, and the definition of an intimate image in Clause 24 expressly <b>includes AI-generated, deepfake and synthesised content</b> &mdash; authentic, altered, or wholly computer-generated.</p>
+    <p class="small">The safeguard is deliberate: the deputy prime minister stated that content does not become illegal merely because AI was used, and intent must still be proved.</p>
+  </div>
+</div>
+<p class="srcline">Sources: PDPA amendment commentary (Chambers, DLA Piper, DataGuidance); Cybercrimes Bill 2026 coverage (MSC Malaysia, Lowyat.NET, TechNave). Rung: analyst desk on the PDPA detail; primary text referenced for the Bill clauses.</p>
+
+<h3>4.5 &nbsp;A structural asymmetry that is not the one the news describes</h3>
+<p>Four states receive petroleum payments. Between 2008 and 2020 the total was <b>RM61.32&nbsp;billion</b>, distributed as: Sarawak <b>RM25.3&nbsp;billion</b>, Terengganu <b>RM22.4&nbsp;billion</b>, Sabah <b>RM13.2&nbsp;billion</b>, Kelantan <b>RM418.9&nbsp;million</b>. <span class="tag t-doc">PARLIAMENT</span></p>
+<p>The interesting fact is not the ranking. It is the <b>mechanism</b>: PETRONAS pays the 5&nbsp;per&nbsp;cent royalty directly to Sabah and Sarawak, but for Terengganu and Kelantan the money is routed to the Ministry of Finance first and then disbursed to the state as a special payment or wang ehsan. Two states receive a royalty; two receive a discretionary transfer. That difference in plumbing &mdash; not the headline figures &mdash; is what determines whether a state can point to an entitlement or must negotiate for a payment each cycle.</p>
+<p>Kelantan's figure against Terengganu's is roughly a 53-fold difference across the same window, and both are producing states.</p>
+<p class="srcline">Source: written parliamentary reply, Minister in the Prime Minister's Department (Economy), carried by Bernama and The Malaysian Insight. Rung: primary record (legislature).</p>
+
+<h2>5 &nbsp;Sector signal &mdash; oil, gas and the ground under it</h2>
+<p>Kept short because the standing tripwires already watch this and will surface changes as they happen.</p>
+<table>
+  <tr><th style="width:26%">Item</th><th style="width:16%">State</th><th>Note</th></tr>
+  <tr><td>PETRONAS v PETROS</td><td><b>CONTESTED</b></td><td>PETRONAS filed at the Federal Court 12 Jan 2026; Sarawak counter-petition Feb 2026 challenging PDA 1974, Continental Shelf Act 1966 and Petroleum Mining Act 1966; leave granted 16 Mar 2026. No full hearing date set as at 18 Sept. Resolution owner: the Federal Court. <span class="tag t-open">OPEN</span></td></tr>
+  <tr><td>Bintulu Port</td><td><b>CLOSED</b></td><td>RM1.8&nbsp;billion transfer to Sarawak completed; assets vested 1 Sept 2026, handover ceremony 16 Sept 2026 attended by Anwar and Abang Johari.</td></tr>
+  <tr><td>Sarawak interim grant</td><td><b>PARTIAL</b></td><td>Raised to RM1.5&nbsp;billion from RM600&nbsp;million, announced 16 Sept. A permanent formula is still unresolved.</td></tr>
+  <tr><td>LNG scope seam</td><td><b>UNRESOLVED</b></td><td>Whether Bintulu export LNG falls under PETROS or remains with PETRONAS. Watched by tripwire <code>lng-seam</code>.</td></tr>
+</table>
+<p>Context worth holding: Malaysia is a net energy exporter by value, but the composition is shifting. LNG is doing the work that crude used to do, Peninsular gas is in long-term decline, and the country that has exported LNG since the 1990s is now importing into the Peninsula to feed new demand. Data centre load is a material part of that new demand. That is the same structural story as &sect;2 Finding 2, arriving from the supply side.</p>
+
+<h2>6 &nbsp;Falsification &mdash; what would make this brief wrong</h2>
+<p>Stated explicitly, because a brief that cannot name its own failure conditions is not a brief.</p>
+<table>
+  <tr><th style="width:40%">Claim</th><th>What would falsify it</th></tr>
+  <tr><td>The electricity protection window closes 31 Dec 2026 and does not extend</td><td>A further announcement extending it, or a rewrite of the January threshold. Watch for any MOF or PETRA statement in December.</td></tr>
+  <tr><td>Fuel subsidy outturn approaches RM40&nbsp;billion for 2026</td><td>The Budget 2027 documents on 9 October carrying a materially lower realised figure for 2026.</td></tr>
+  <tr><td>PETRONAS&ndash;PETROS remains unresolved pending the Federal Court</td><td>A signed definitive agreement before a hearing date is set. The Federal Court case is the current owner of resolution; a commercial agreement would displace it.</td></tr>
+  <tr><td>Unclaimed money is RM13.3&nbsp;billion as at Jan 2026</td><td>A newer JANM figure. This one is a stock, not a flow, and it was quoted at 31 January &mdash; it will have moved.</td></tr>
+  <tr><td>Your EPF nomination is at risk if marital status changed since it was made</td><td>Personal. Verify against your own i-Akaun record rather than accepting the structural statement as a fact about you.</td></tr>
+</table>
+
+<h2>7 &nbsp;Eureka &mdash; five structural surprises</h2>
+<p class="srcline">Each of these changes an assumption. None are trivia.</p>
+
+<div class="keybox">
+<b>1 &nbsp;The Malaysian market has been below its own 2014 peak for twelve years.</b><br>
+The FBM KLCI reached an all-time high of <b>1,896.23</b> in July 2014. On 17 September 2026 it closed at <b>1,674.74</b>. In the intervening twelve years, Malaysian GDP roughly doubled. The index did not. Whatever the market is pricing, it is not the growth the country actually produced &mdash; and that gap is the single most under-discussed fact in Malaysian finance.
+</div>
+
+<div class="keybox">
+<b>2 &nbsp;Data centre investment equals about 18 per cent of GDP &mdash; the highest share on earth.</b><br>
+HSBC's estimate puts Malaysian data centre investment at roughly <b>18&nbsp;per&nbsp;cent of GDP</b>, a share the bank describes as a global high. Johor alone carries an incoming pipeline of <b>8,542&nbsp;MW</b> against a colocation vacancy rate of <b>0.7&nbsp;per&nbsp;cent</b>. This is not a sector; it is a structural transformation of the economy's capital stock, and it is running on a power and water system that is simultaneously being asked to absorb its cost.
+</div>
+
+<div class="keybox">
+<b>3 &nbsp;The yakuza is being legislated to death, and it is dying quietly at a record low.</b><br>
+Japan's designated organised crime groups fell to <b>18,800</b> members and associates &mdash; an all-time low and the 21st consecutive annual decline. The mechanism is not prison: it is exclusion from ordinary life. Under organised-crime exclusion ordinances, members cannot open bank accounts, sign phone contracts, or rent housing, and many senior figures still carry 3G flip-phones because carriers will not accept them. The replacement is not a smaller yakuza; it is <b>tokuryū</b> &mdash; fluid, leaderless, recruited through social media under advertisements that read like ordinary job postings. The structure died. The demand did not.
+</div>
+
+<div class="keybox">
+<b>4 &nbsp;Two oil-producing states receive their money through completely different plumbing.</b><br>
+Sabah and Sarawak receive PETRONAS's 5&nbsp;per&nbsp;cent royalty <i>directly</i>. Terengganu and Kelantan have theirs routed through the Ministry of Finance and disbursed as a special payment. The same resource, the same company, two entirely different legal postures &mdash; one an entitlement, one a decision. Over 2008&ndash;2020 that plumbing produced RM22.4&nbsp;billion for Terengganu and RM418.9&nbsp;million for Kelantan.
+</div>
+
+<div class="keybox">
+<b>5 &nbsp;Gold is 21 per cent below its own 52-week high, and that high was this year.</b><br>
+The 52-week high is <b>US$5,477.79</b> per ounce. On 17 September gold stood at <b>US$4,307.31</b>. A metal celebrated as a hedge against exactly the conditions of 2026 &mdash; war, energy shock, a central bank hiking into political pressure &mdash; has spent the year correcting rather than confirming the thesis. Anyone whose mental model of gold was formed by its reputation should check it against its chart.
+</div>
+
+<h2>8 &nbsp;What this pilot does not contain</h2>
+<p>Named rather than omitted, because a brief that hides its gaps is a brief that cannot be trusted on what it does contain.</p>
+<ul>
+  <li><b>No position on what you should do.</b> The brief surfaces obligations and deadlines; decisions are yours. The one exception is the Void section, where the action is "verify", not "decide".</li>
+  <li><b>No portfolio or market view.</b> Gold and the Fed appear because they are macro inputs, not as recommendations.</li>
+  <li><b>No coverage of your own organisation's internal position</b> beyond the public record cited. Anything not public is out of scope by construction, not by oversight.</li>
+  <li><b>No forecasting of the Federal Court outcome.</b> The case has no hearing date; anything beyond "unresolved" would be invention.</li>
+  <li><b>Rotating categories</b> &mdash; the Void sweep today ran five of six categories. Dormant insurance nominations and registry deltas are queued for a later edition rather than padded in here.</li>
+</ul>
+
+<h2>9 &nbsp;Seal</h2>
+<div class="chain">
+EDITION ......... PILOT-001 · 2026-09-18
+CONTENT_SHA256 .. {{CONTENT_HASH}}
+ARTIFACT_SHA256 . {{ARTIFACT_HASH}}
+CHAIN_PREV ...... (genesis — no prior edition)
+SEAL_METHOD ..... SHA-256 over canonical source text (content) and over the rendered PDF (artifact)
+SEAL_AUTHORITY .. FI Hermes (KVM8) · advisory seam only · NOT an F13 seal
+</div>
+<div class="verdict">
+  <b>Scope of this seal, stated plainly.</b> This is a lane-level integrity seal, not a constitutional one. It evidences that a document existed in a specific state at a specific time. It is not an F13 ratification, it is not a canonical record, and it should not be cited as one. The distinction matters: the executor never issues its own envelope.
+</div>
+
+<h3>How to verify this document yourself</h3>
+<ol>
+  <li>Compare the artifact hash against <code>PILOT-001.sha256</code>, delivered beside this PDF: <code>sha256sum -c PILOT-001.sha256</code>.</li>
+  <li>Confirm the content hash by re-deriving it from the source: the build script and source text sit beside the PDF in the same directory, so the derivation is reproducible rather than asserted.</li>
+  <li>If the two disagree, the artifact is not the one that was sealed. That is the entire purpose.</li>
+</ol>
+
+<hr style="border:0;border-top:1px solid #e3e8ee;margin:16px 0 10px 0;">
+<p class="small"><b>Part Two is a live edition. Part One is a proposal.</b> The architecture in &sect;1 describes a system that does not run on a schedule yet &mdash; today's pilot was built by hand, in this session, because the design should be proven once before it is automated. What would make it a daily product: (a) the four monitor lanes wired to a scheduler, (b) the delta gate replacing manual comparison, (c) the edition ledger carrying yesterday's artifact hash into today's chain, (d) a render-and-verify step that refuses to ship a document failing the ink and text-layer gates. Items (a) and (b) partly exist today in the three standing tripwires. (c) and (d) do not.</p>
+<p class="small">DITEMPA BUKAN DIBERI &middot; Hermes (KVM8) &middot; 18 September 2026</p>
+
+</body></html>
