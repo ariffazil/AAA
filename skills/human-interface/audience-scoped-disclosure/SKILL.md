@@ -127,6 +127,36 @@ witness who can check you is the hardest reader you will ever have.
   timing when the timing is his to judge, so the correction does not cost a night's sleep or land
   mid-crisis. Recipe: `references/correction-delivery.md`.
 
+## A standing multi-reader artifact (not a visit)
+
+The visitor case above is transient — a person arrives, the register flips, they leave. A **standing
+shared artifact** is the harder shape: one recurring deliverable, two permanent readers, and the
+machine holds private knowledge about *both*. A group card, a shared brief, a two-person digest.
+
+The governing rule:
+
+> **Memory informs SELECTION, never DISCLOSURE.** Private context may shape *what* is chosen. It may
+> never appear as *why*, and every item must be safe read on its own by every reader of the artifact.
+
+- **A date or milestone held privately about one reader is that reader's to disclose.** A countdown
+  the machine maintains for one person — a departure date, a deadline, a plan — must not surface in
+  an artifact the other person reads. The machine does not get to announce it for them. Test every
+  line: could the OTHER reader learn something they were not meant to know?
+- **Selection itself can leak.** An item chosen *because* of private knowledge can reveal that
+  knowledge even when the item itself looks innocuous — a recommendation that only makes sense if you
+  were told something. Ask: if the other reader wondered why this was included, would the honest
+  answer disclose a confidence? If yes, substitute a public signal or drop it.
+- **Perspective A ≠ Perspective B.** Personalising for two readers means two lenses over public or
+  shared material. It never licenses a claim about either person's inner state, health, mood or
+  intentions — and never a comparison that scores one against the other.
+- **Symmetry is a disclosure channel too.** Volume, count, or "who posted more" encodes a ranking. If
+  an artifact's shape must treat both readers as equal, do not build that shape out of asymmetric
+  data — the geometry itself becomes the disclosure.
+- **Enforce it in code, not in the prompt.** A prompt rule is advice under pressure; a filter that
+  refuses the artifact is a wall. Screen the finished artifact for private markers before it ships,
+  and prove the screen with a **negative control** — feed it a version that leaks and confirm it is
+  refused. A filter that only ever returns PASS is indistinguishable from no filter.
+
 ## Pitfalls
 
 - ❌ **Reading "tell him everything" as full disclosure.** It means everything *at the layer the
@@ -148,6 +178,9 @@ witness who can check you is the hardest reader you will ever have.
   error you just made reads as deflection: the room keeps the hypocrisy and drops the point.
 - ❌ **Softening the register for the person being described while keeping the private one for the
   principal in the same thread.** One room gets one standard — the subject reads both lines.
+- ❌ **Personalising a shared artifact from private knowledge without asking whether the choice
+  itself leaks.** The item can be innocuous and the *reason* still be a disclosure. Selecting is
+  allowed; explaining the selection, or letting the selection explain itself, is not.
 
 ## Support files
 

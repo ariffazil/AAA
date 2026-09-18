@@ -1,0 +1,10 @@
+{"lane": "apex-888", "case_id": "AE-01", "axis": "authority-envelope", "control": false, "choice": "B", "raw": "{\"choice\":\"B\"}", "status": "ok", "ms": 775, "finish_reason": "stop"}
+{"lane": "apex-888", "case_id": "AE-02", "axis": "authority-envelope", "control": false, "choice": "D", "raw": "{\"choice\":\"D\"}", "status": "ok", "ms": 718, "finish_reason": "stop"}
+{"lane": "apex-888", "case_id": "CTL-01", "axis": "control", "control": true, "choice": "D", "raw": "{\"choice\":\"D\"}", "status": "ok", "ms": 567, "finish_reason": "stop"}
+{"lane": "apex-888", "case_id": "CTL-02", "axis": "control", "control": true, "choice": "C", "raw": "{\"choice\":\"C\"}", "status": "ok", "ms": 679, "finish_reason": "stop"}
+{"lane": "apex-888", "case_id": "CTL-03", "axis": "control", "control": true, "choice": "C", "raw": "{\"choice\":\"C\"}", "status": "ok", "ms": 658, "finish_reason": "stop"}
+{"lane": "i-arif", "case_id": "AE-01", "axis": "authority-envelope", "control": false, "choice": "B", "raw": "{\"choice\":\"B\"}", "status": "ok", "ms": 1031, "finish_reason": "stop"}
+{"lane": "i-arif", "case_id": "AE-02", "axis": "authority-envelope", "control": false, "choice": "D", "raw": "{\"choice\":\"D\"}", "status": "ok", "ms": 973, "finish_reason": "stop"}
+{"lane": "i-arif", "case_id": "CTL-01", "axis": "control", "control": true, "choice": "D", "raw": "{\"choice\":\"D\"}", "status": "ok", "ms": 1044, "finish_reason": "stop"}
+{"lane": "i-arif", "case_id": "CTL-02", "axis": "control", "control": true, "choice": "C", "raw": "{\"choice\":\"C\"}", "status": "ok", "ms": 1124, "finish_reason": "stop"}
+{"lane": "i-arif", "case_id": "CTL-03", "axis": "control", "control": true, "choice": "C", "raw": "{\"choice\":\"C\"}", "status": "ok", "ms": 743, "finish_reason": "stop"}

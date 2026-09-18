@@ -1,0 +1,73 @@
+{
+  "mode": "night",
+  "date": "2026-09-18",
+  "headline": "Hari ni dunia bergerak. Tak semua pergerakan tu perlu hang bawa masuk tidur.",
+
+  "yin_quote": {
+    "text": "The present is the key to the past.",
+    "author": "James Hutton, 1788"
+  },
+  "yang_quote": {
+    "text": "It is not the mountain we conquer, but ourselves.",
+    "author": "Edmund Hillary"
+  },
+
+  "rows": [
+    {"n": "01", "label": "World", "tier": "KENA_TAHU",
+     "arif": {"text": "Enam belas dari lapan belas pegawai Fed jangkakan sekurang-kurangnya satu kenaikan lagi sebelum akhir tahun. Median kadar akhir 2026 naik 3.8% ke 4.1%.",
+              "source": "FOMC dot plot, 16 Sept", "tag": "OBS"},
+     "syed": {"text": "Emas masih dalam julat $4,257–$4,335. Support $4,298 (Fibonacci 61.8%). Kalau tutup bawah tu, rujukan seterusnya $4,013.",
+              "source": "Kitco, 17–18 Sept", "tag": "OBS"}},
+
+    {"n": "02", "label": "Reality", "tier": "KENA_TAHU",
+     "arif": {"text": "Petronas–Petros: prinsip dah muktamad, aspek komersial belum. Seam yang belum selesai ialah LNG eksport — dan belum ada tarikh pendengaran penuh di Mahkamah Persekutuan.",
+              "source": "FMT / NST, 16–18 Sept", "tag": "CONTESTED"},
+     "syed": {"text": "Cahaya elektrik 800 kWh kekal sampai 31 Dis. Lepas tu revert ke 600 kWh — bil Januari naik walaupun penggunaan tak berubah.",
+              "source": "PM, 17 Sept", "tag": "OBS"}},
+
+    {"n": "03", "label": "Clock", "tier": "KENA_TAHU",
+     "arif": {"text": "Belanjawan 2027 dibentang 9 Oktober. Kalau ada apa-apa hang nak tahu pasal angka petroleum, ini masa nak cari — bukan pagi 9 Oktober.",
+              "source": "MOF / The Edge", "tag": "DER"},
+     "syed": {"text": "Harga minyak kuat kuasa sampai 23 Sept. Harga minggu depan belum keluar — kalau ada perjalanan lepas 23hb, tunggu angka dulu.",
+              "source": "MOF, 16 Sept", "tag": "OBS"}},
+
+    {"n": "04", "label": "Our World", "tier": "SUKA_TAHU",
+     "arif": {"text": "Satu benda yang makin jelas tahun ni: kos sebenar sistem AI bukan model — ia penyelenggaraan konteks. Model makin murah, ingatan yang betul makin mahal.",
+              "tag": "INT"},
+     "syed": {"text": "Penyelidikan pemulihan makin fokus pada masa, bukan tambahan alat. Yang paling berkesan biasanya paling murah: tidur cukup, makan cukup, beban dikawal.",
+              "tag": "DER"}},
+
+    {"n": "05", "label": "Money", "tier": "SUKA_TAHU",
+     "arif": {"text": "Belanjawan asal RM15 bilion untuk subsidi bahan api. Unjuran sekarang hampir RM40 bilion. Yang berubah bukan polisi — yang berubah harga dunia.",
+              "source": "MOF / RTM", "tag": "OBS"},
+     "syed": {"text": "Dua sumber bagi support berbeza ($4,298 lawan $4,265). Masa sumber bercanggah, yang jawab bukan keyakinan — saiz posisi.",
+              "source": "Kitco / pelbagai, 17–18 Sept", "tag": "CONTESTED"}},
+
+    {"n": "06", "label": "Human", "tier": "SUKA_TAHU",
+     "arif": {"text": "Rightsizing PETRONAS dah TAMAT. Struktur baharu jalan 1 Ogos. Kalau ada orang masih cakap ia berjalan, dia baca fail tahun lepas.",
+              "source": "The Edge, disahkan 18 Sept", "tag": "OBS"},
+     "syed": {"text": "Badan yang tahan sepuluh tahun jarang datang dari fasa paling keras. Ia datang dari orang yang boleh ulang fasa biasa tanpa berhenti.",
+              "tag": "DER"}},
+
+    {"n": "07", "label": "Connection", "tier": "EUREKA",
+     "arif": {"text": "Geologi dan institusi kongsi satu tabiat: dua-dua merekod apa yang berlaku SELEPAS satu lapisan hilang. Unconformity tu bukan kekosongan — ia bukti paling kuat ada sesuatu yang berlaku.",
+              "tag": "INT"},
+     "syed": {"text": "Gold dan badan kongsi satu benda: dua-dua diuji dengan MASA, bukan dengan satu hari yang hebat. Yang tahan ialah yang tak perlu dipaksa setiap hari.",
+              "tag": "INT"}},
+
+    {"n": "08", "label": "Random", "tier": "EUREKA",
+     "arif": {"text": "Lenggong Valley, Perak simpan rekod manusia berterusan antara yang terpanjang di mana-mana satu tempat di dunia — dan yang tertua di luar Afrika. 'Perak Man' 11,000 tahun, dikebumikan dalam posisi janin.",
+              "tag": "OBS"},
+     "syed": {"text": "Bulan bergerak jauh 3.8 cm setiap tahun. 300 juta tahun dulu, gerhana matahari penuh tak boleh berlaku — bulan terlalu dekat. Benda yang stabil hari ni sedang berubah, cuma lambat.",
+              "tag": "OBS"}},
+
+    {"n": "09", "label": "Tonight", "tier": "EUREKA",
+     "arif": {"text": "Apa benda yang hari ni hang buat kerana ia penting, dan apa yang hang buat kerana ia mendesak? Dua tu jarang benda yang sama.",
+              "tag": "INT"},
+     "syed": {"text": "Apa satu benda yang hang boleh tinggal malam ni tanpa ia jadi masalah esok? Kalau tak ada apa-apa, itu pun jawapan yang bagus.",
+              "tag": "INT"}}
+  ],
+
+  "arif_anchor_hit": true,
+  "syed_anchor_hit": true
+}
