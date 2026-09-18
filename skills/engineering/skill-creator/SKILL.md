@@ -150,29 +150,48 @@ tool input. Reference source: `/root/AAA/federation/protocols/arifos-hermes-gate
 (verify the live file with `git log --oneline -3 --` on that path; a `.bak-<date>-pre-jitu` sibling
 means the gate was recently edited).
 
-**Rule:** if the payload matches the critical-variable patterns below and carries no source indicator,
-the write is **BLOCKED** and returned as `W_SCAR HOLD`.
+**Rule:** the gate extracts a **claim surface** (only the text a human would read as an assertion),
+strips URLs / receipt ids / evidence paths out of it first, and then matches the critical-variable
+patterns against what remains. No match → no block. Match and no admissible evidence → **BLOCKED**,
+returned as `W_SCAR HOLD`.
 
-| Critical vocabulary (matched) | Source indicators that clear it |
-|---|---|
-| duit · money · bayar · bayaran · transfer · rm + digits · price · cost · budget | `source` · `url` · `http` · `evidence` · `probe` · `curl` · `health` · `git` · `commit` |
-| nyawa · health · ubat · dosis · medical · hospital · doktor · sakit | (same set) |
-| reputasi · legal · law · laws · saman · polis · court · undang | (same set) |
-| invest · investment · trading · xauusd · forex · leverage | (same set) |
+| Critical vocabulary (matched) |
+|---|
+| duit · money · bayar · bayaran · transfer · rm + digits · price · cost · budget |
+| nyawa · health · ubat · dosis · medical · hospital · doktor · sakit |
+| reputasi · legal · law · laws · saman · polis · court · undang |
+| invest · investment · trading · xauusd · forex · leverage |
 
-**Correct response: fix the payload, never shop for an unguarded tool.** Add a real source line — a
-URL, an absolute file path, a probe command. The gate asserts exactly the law this skill already
-requires: a claim about a consequential variable carries its provenance in the same breath.
+**What actually clears a HOLD — evidence, not vocabulary.** Exactly three things qualify:
 
-**Read-only terminal commands are exempt** — a command starting with `ls`/`cat`/`grep`/`git status`/
+1. a **URL** anywhere in the payload;
+2. a **receipt / trace / envelope id** (`receipt_id: <6+ chars>` — other keys are ignored);
+3. an **on-disk path that exists**, ending in `.json .jsonl .log .md .csv .parquet .db .yaml .yml`.
+
+Note (3) carefully: the file must **exist**, and `.py` / `.sh` / `.txt` do **not** count. A path
+that merely contains a trigger word is no longer scanned — that defect was fixed 2026-09-18.
+
+**Correct response: fix the payload, never shop for an unguarded tool.** Attach a real URL or cite a
+live evidence file. The gate asserts exactly the law this skill already requires: a claim about a
+consequential variable carries its provenance in the same breath.
+
+**Read-only terminal commands are exempt** — a command beginning with `ls`/`cat`/`grep`/`git status`/
 `curl`/`jq`/`systemctl status` routes as a probe, not a claim. That is why inspection keeps working
-during a HOLD, and why `read_file` on a skill whose text contains such vocabulary can still be
-refused (the guard reads the tool's arguments, and the *path* can trip it too).
+during a HOLD.
 
-**Pitfall observed 2026-09-18:** a skill patch containing `court`, `undang` and `RM` figures but no
-URL was refused three times — across `patch`, `skill_manage` and a shell `grep`. Adding a `Sources:`
-line with real URLs to the identical content cleared it in one attempt. **Do not retry the same
-payload** — the check is deterministic; only the payload changed.
+**Pitfalls observed 2026-09-18.** A skill patch containing `court`, `undang` and `RM` figures but no
+URL was refused three times — across `patch`, `skill_manage` and a shell command. A `Sources:` line
+with real URLs to the identical content cleared it in one attempt. Separately, naming a monitor
+`apex-court` made *every later command referencing it* fail, because the id itself carried the trigger
+substring; renaming the id was the fix. **Do not retry the same payload** — the check is
+deterministic; only the payload changed. And do not name artefacts after trigger words: prefer
+`apex-pda` over anything containing the word the gate hunts.
+
+**This gate is under active development.** It was rewritten in place at 08:57 on 2026-09-18 —
+mid-session, while this very note was being written — moving from word-level source indicators to the
+claim-surface + existing-evidence model above. Before relying on any of this, re-read the live file
+`/root/AAA/federation/protocols/arifos-hermes-gate-hook.py`, and check its mtime against the present
+time. Live state that the gate itself consults: `/root/.hermes/cron/sentinel/state.json`.
 
 **Name resolution trap:** when two skills share a name in different roots, `skill_manage` resolves by
 NAME across all roots, not by the path you read. Patching "the file you just read" can therefore fail
