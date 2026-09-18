@@ -2,7 +2,7 @@
 name: aaa-human-physique-topology
 id: AAA-human-physique-topology
 risk_tier: low
-description: "Operational doctrine and computational architecture for mapping human physique topography and anatomical topology for image generation. Eliminates anatomical hallucinations and bridges the dimensionality deficit via the 5-layer topography hierarchy (Osteological Rigging, Musculoskeletal Contours, Adipose/Vascularity, DensePose UV Surface Manifold, Photometric/Normal Micro-relief). Enforces multi-modal ControlNet conditioning, prompt densification, and closed-loop VLM tri-witness quality gating across HERMES, FED, and AAA. [fed: tier=fed-vision-topography, auto=T1, risk=low]"
+description: "Operational doctrine and computational architecture for mapping human physique topography and anatomical topology for image generation. Eliminates anatomical hallucinations and bridges the dimensionality deficit via the 5-layer topography hierarchy (Osteological Rigging, Musculoskeletal Contours, Adipose/Vascularity, DensePose UV Surface Manifold, Photometric/Normal Micro-relief). Enforces multi-modal ControlNet conditioning, prompt densification, and closed-loop VLM tri-witness quality gating across HERMES, FED, and AAA. "
 version: 1.0.0
 tags:
   - vision
@@ -30,9 +30,7 @@ forged: 2026-09-07
 forged_by: 333-AGI on F13 directive
 constitutional_floor: F2 TRUTH + F9 ANTI-HANTU + F13 SOVEREIGN
 f13_directive: "AI agents must not generate human physique images from naive fuzzy adjectives. Human physique topography must be anchored in falsifiable biomechanical strata, continuous surface topology, and optical normal physics."
----
-
-# AAA-human-physique-topology
+---# AAA-human-physique-topology
 
 ## 1. Purpose & The Anatomical Dimensionality Deficit
 

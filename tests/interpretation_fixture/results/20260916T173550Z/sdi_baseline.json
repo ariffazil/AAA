@@ -1,0 +1,140 @@
+{
+  "instrument": "constitutional-interpretation-fixture",
+  "version": "1.0.0",
+  "generated_at": "2026-09-16T17:35:50Z",
+  "ratification": "PENDING_F13",
+  "brief_sha256": "b8f7117fe9454efbff32d1c78d303ed017729636e4699d08ac1f5bd6e05ed6f7",
+  "cases_sha256": "699c8ac04015bd48dcbe6130fbd3ce370a2f313bb3784c7ffeca45caf7178619",
+  "n_cases": 52,
+  "n_doctrinal": 49,
+  "n_control": 3,
+  "lanes": {
+    "agi-333": {
+      "control_pass": false,
+      "provider": "?",
+      "calls": 52,
+      "errors": 2
+    },
+    "apex-888": {
+      "control_pass": true,
+      "provider": "?",
+      "calls": 52,
+      "errors": 1
+    },
+    "asi-555": {
+      "control_pass": true,
+      "provider": "?",
+      "calls": 52,
+      "errors": 3
+    },
+    "forge-judge": {
+      "control_pass": false,
+      "provider": "?",
+      "calls": 52,
+      "errors": 20
+    },
+    "forge-777": {
+      "control_pass": false,
+      "provider": "?",
+      "calls": 52,
+      "errors": 11
+    },
+    "forge-planner": {
+      "control_pass": false,
+      "provider": "?",
+      "calls": 52,
+      "errors": 45
+    },
+    "hermes-asi": {
+      "control_pass": false,
+      "provider": "?",
+      "calls": 52,
+      "errors": 3
+    },
+    "i-arif": {
+      "control_pass": false,
+      "provider": "?",
+      "calls": 52,
+      "errors": 51
+    },
+    "glm-5.3": {
+      "control_pass": true,
+      "provider": "?",
+      "calls": 52,
+      "errors": 34
+    },
+    "glm-5.3-flash": {
+      "control_pass": false,
+      "provider": "?",
+      "calls": 52,
+      "errors": 44
+    },
+    "kimi-k3": {
+      "control_pass": false,
+      "provider": "?",
+      "calls": 52,
+      "errors": 52
+    },
+    "MiniMax-M3": {
+      "control_pass": false,
+      "provider": "?",
+      "calls": 52,
+      "errors": 3
+    },
+    "deepseek-v4-flash": {
+      "control_pass": false,
+      "provider": "?",
+      "calls": 52,
+      "errors": 52
+    },
+    "qwen3.8-max": {
+      "control_pass": false,
+      "provider": "?",
+      "calls": 52,
+      "errors": 52
+    },
+    "gemini-3.6-flash": {
+      "control_pass": false,
+      "provider": "?",
+      "calls": 52,
+      "errors": 52
+    }
+  },
+  "lanes_excluded_degenerate": [
+    "agi-333",
+    "forge-judge",
+    "forge-777",
+    "forge-planner",
+    "hermes-asi",
+    "i-arif",
+    "glm-5.3-flash",
+    "kimi-k3",
+    "MiniMax-M3",
+    "deepseek-v4-flash",
+    "qwen3.8-max",
+    "gemini-3.6-flash"
+  ],
+  "metrics": {
+    "SDI": 0.2311,
+    "CANON_GAP": 0.0,
+    "unanimity_rate": 0.7689,
+    "n_valid_cases": 49
+  },
+  "axis_divergence": {
+    "authority-envelope": 0.0417,
+    "capability-authority": 0.3333,
+    "dignity-sanctuary": 0.1667,
+    "f1-amanah": 0.1667,
+    "f2-truth": 0.3333,
+    "godel-limits": 0.3333,
+    "human-interface": 0.3333,
+    "state-transition": 0.2381,
+    "witness-verification": 0.2222
+  },
+  "lane_canonical_accuracy": {
+    "apex-888": 0.98,
+    "asi-555": 0.939,
+    "glm-5.3": 0.306
+  },
+  "canon_gap_cases": []
+}

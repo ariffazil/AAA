@@ -2,7 +2,8 @@
 id: wawabot-anthropology-surface
 name: wawabot-anthropology-surface
 version: 1.4.0
-description: > [fed: floors=[F2, F5, F6, F7, F9, F10, F13], auto=T1, risk=medium]
+description: >
+
   WawaBot is the human-reality organ. Hermes consumes its packets
   (meaning, scar, trust, status) — it does not grow more IQ from WawaBot.
   Load when routing human-reality vs ops-reality, or designing the
@@ -13,9 +14,7 @@ floor_scope: [F2, F5, F6, F7, F9, F10, F13]
 autonomy_tier: T1
 forged: 2026-09-06
 status: active
----
-
-# wawabot-anthropology-surface
+---# wawabot-anthropology-surface
 
 > **Canon:** `/root/AAA/canon/WAWABOT-ANTHROPOLOGY-SURFACE.md`
 > **Already law:** human-meaning-membrane, RASA constitution, C13/C14, shadow-as-expensive-reality, Gödel lock, human-memory (H-axis not owned).

@@ -24,6 +24,17 @@ An HTML slide deck printed to PDF where every slide is clipped to a fraction of 
 
 `scripts/pdf_content_loss_audit.py` runs steps 1–3 in one deterministic pass and exits non-zero on loss. Use it as the gate; hand-run the per-page commands only to investigate a failure it reported.
 
+### When the source is a drawing script, not HTML
+
+`reportlab` (or any canvas/PDF-library) output has no DOM and no text atoms to diff, so steps 2–3 and 5 do not apply. The source count is still knowable — it is the number of page-break calls in the generator — and reconciling it is still the gate:
+
+```bash
+grep -c "showPage()" build_script.py      # canvas page breaks = expected pages
+pdfinfo out.pdf | grep -E '^Pages'        # must match
+```
+
+Then spot-read the rendered pages (`pdftoppm -r 100 -png`, or the vision tool on a page image) for whichever pages the last edit touched. A generator that exits 0 and writes bytes is the same false green as a file that opens — the count and the read are what make it evidence, and a dossier delivered without either is unaudited.
+
 ## Prove figures exist; never read presence from a caption
 
 A caption is the author's claim that a figure rendered. Enumerate the embedded image objects instead:

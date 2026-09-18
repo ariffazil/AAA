@@ -1,7 +1,8 @@
 ---
 id: QWEN-meta-mesa
 name: qwen-meta-mesa
-description: > [fed: tier=meta-mesa, auto=T1, risk=low]
+description: >
+
   Meta-mesa orchestrator for Qwen Code (FI-003). Given a multi-step mission, decompose
   into L1/L2 skills, sequence them, route to the right organ (arifOS/A-FORGE/GEOX/WEALTH/WELL).
   Load this when a mission spans more than 2 skills or 3 steps, or when you feel yourself
@@ -19,9 +20,7 @@ triggers:
   - session boot for complex work
 capability_tier: meta-mesa
 ecology_state: WARM
----
-
-## What I do
+---## What I do
 
 I am the **meta-router** of the Qwen Code skill mesh. I do not implement — I orchestrate other skills.
 

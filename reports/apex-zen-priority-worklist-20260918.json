@@ -1,0 +1,1406 @@
+{
+ "rule": "apex-zen pass when a skill reaches reality and cannot prove a consequence class",
+ "total_canonical": 513,
+ "needs_pass": 230,
+ "by_surface": {
+  "ARTIFACT": 57,
+  "CANON": 92,
+  "DESTRUCT": 2,
+  "INFRA": 45,
+  "OUTBOUND": 34
+ },
+ "law_summary": {
+  "law2_dead_pointers_in_index": 16,
+  "law3_diverged_pairs_aaa_vs_hermes": 26,
+  "law4_full": 0,
+  "law4_proxy_only": 207,
+  "law4_absent": 306,
+  "law5_collision_clusters": 8,
+  "law7_owner": 209,
+  "law7_forged": 33,
+  "law7_last_verified": 0,
+  "law7_kill": 0
+ },
+ "worklist": [
+  {
+   "surface": "ARTIFACT",
+   "skill": "AAA-video-emd-pipeline",
+   "rel": "capabilities/media/AAA-video-emd-pipeline",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "aaa-audio-mms-ctc-witness",
+   "rel": "domains/general/court/witness/aaa-audio-mms-ctc-witness",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "aaa-image-editing",
+   "rel": "media/aaa-image-editing",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "ai-video-generation",
+   "rel": "domains/general/workshop/video-gen/ai-video-generation",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "audio-analysis",
+   "rel": "domains/general/forge/repo-intelligence/audio-analysis",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "audio-feature-analysis",
+   "rel": "domains/general/forge/repo-intelligence/audio-feature-analysis",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "civic-intelligence-pdf",
+   "rel": "domains/general/workshop/document-intel/civic-intelligence-pdf",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "composio-social-intelligence",
+   "rel": "domains/general/workshop/social-media/composio-social-intelligence",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "forge-pdf-delivery",
+   "rel": "domains/general/workshop/document-intel/forge-pdf-delivery",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "forge-phased-delivery",
+   "rel": "domains/general/workshop/media-delivery/forge-phased-delivery",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "forge-real-person-reference-photos",
+   "rel": "domains/general/workshop/image-gen/forge-real-person-reference-photos",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "generated-media-delivery",
+   "rel": "domains/general/workshop/media-delivery/generated-media-delivery",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "geological-figure-production",
+   "rel": "domains/geo/workshop/my-domain-intel/geological-figure-production",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "h3-video",
+   "rel": "domains/general/workshop/video-gen/h3-video",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "happyhorse-video-api",
+   "rel": "domains/general/workshop/video-gen/happyhorse-video-api",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "heartmula",
+   "rel": "domains/general/workshop/audio-emd/heartmula",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "hermes-gateway-image-routing",
+   "rel": "hermes-gateway-image-routing",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "hermes-voice-config",
+   "rel": "domains/general/workshop/voice-stack/hermes-voice-config",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "human-voice-writing",
+   "rel": "domains/general/workshop/voice-stack/human-voice-writing",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "image-gen-fallback-chain",
+   "rel": "domains/general/workshop/image-gen/image-gen-fallback-chain",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "image-identity-transfer",
+   "rel": "domains/general/workshop/image-gen/image-identity-transfer",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "image-text-editing",
+   "rel": "creative/image-text-editing",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "lightweight-image-generation",
+   "rel": "domains/general/workshop/image-gen/lightweight-image-generation",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "media-content-extraction",
+   "rel": "media/media-content-extraction",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "media-ingest-lane",
+   "rel": "media-ingest-lane",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "mimo-audio",
+   "rel": "mimo-audio",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "minimax-cli",
+   "rel": "domains/general/workshop/image-gen/minimax-cli",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "minimax-image-gen",
+   "rel": "minimax-image-gen",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "minimax-voice-design-prompts",
+   "rel": "domains/general/workshop/voice-stack/minimax-voice-design-prompts",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "mulerouter-media",
+   "rel": "domains/general/workshop/minimax-tools/mulerouter-media",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "music-generation",
+   "rel": "domains/general/workshop/audio-emd/music-generation",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "music-intelligence",
+   "rel": "domains/general/workshop/audio-emd/music-intelligence",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "nano-pdf",
+   "rel": "productivity/nano-pdf",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "nusantara-acoustic-infrastructure",
+   "rel": "domains/general/workshop/voice-stack/nusantara-acoustic-infrastructure",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "nusantara-voice-stack",
+   "rel": "domains/general/workshop/voice-stack/nusantara-voice-stack",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "ocr-and-documents",
+   "rel": "productivity/ocr-and-documents",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "paged-media-report-layout",
+   "rel": "document-intel/paged-media-report-layout",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "photorealistic-human-image-gen",
+   "rel": "domains/general/workshop/image-gen/photorealistic-human-image-gen",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "photorealistic-human-multi-model",
+   "rel": "domains/general/workshop/image-gen/photorealistic-human-multi-model",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "poster-vision-extraction",
+   "rel": "domains/general/workshop/vision-analyzer/poster-vision-extraction",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "qwencloud-audio-tts",
+   "rel": "qwencloud-audio-tts",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "qwencloud-image-generation",
+   "rel": "qwencloud-image-generation",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "qwencloud-video-generation",
+   "rel": "qwencloud-video-generation",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "rendered-document-audit",
+   "rel": "document-intel/rendered-document-audit",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "scientific-pdf-generation",
+   "rel": "domains/general/workshop/document-intel/scientific-pdf-generation",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "sd-lora-ecosystem",
+   "rel": "domains/general/workshop/image-gen/sd-lora-ecosystem",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "social-media-content-ingestion",
+   "rel": "media/social-media-content-ingestion",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "social-video-intelligence",
+   "rel": "domains/general/workshop/video-gen/social-video-intelligence",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "synthetic-human-media-pipeline",
+   "rel": "domains/general/workshop/image-gen/synthetic-human-media-pipeline",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "text-to-speech",
+   "rel": "domains/general/workshop/voice-stack/text-to-speech",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "trading-signal-chart",
+   "rel": "domains/wealth/workshop/trading-exec/trading-signal-chart",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "tts-edge-fallback",
+   "rel": "domains/general/workshop/voice-stack/tts-edge-fallback",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "tts-route-deep-research",
+   "rel": "domains/general/workshop/search-web/tts-route-deep-research",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "video-prompt-engineering",
+   "rel": "domains/general/workshop/video-gen/video-prompt-engineering",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "visual-artifact-delivery",
+   "rel": "domains/general/workshop/media-delivery/visual-artifact-delivery",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "youtube-eureka",
+   "rel": "media/youtube-eureka",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "ARTIFACT",
+   "skill": "youtube-video-info",
+   "rel": "domains/general/workshop/video-gen/youtube-video-info",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "APEX-humility-godel",
+   "rel": "domains/general/apex/recursive-audit/APEX-humility-godel",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "RSI-recursive-improvement",
+   "rel": "domains/general/apex/recursive-audit/RSI-recursive-improvement",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "aaa-doctrine-sealing",
+   "rel": "aaa-governance/aaa-doctrine-sealing",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "agent-capability-self-audit",
+   "rel": "capabilities/agent-capability-self-audit",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "agent-finding-verification",
+   "rel": "domains/general/court/court-audit/agent-finding-verification",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "agent-output-contract",
+   "rel": "domains/general/apex/governance-core/agent-output-contract",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "agentic-autonomy-loop",
+   "rel": "domains/general/apex/governance-core/agentic-autonomy-loop",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "apex-gate-evaluator",
+   "rel": "governance/apex-gate-evaluator",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "apex-verdict",
+   "rel": "governance/apex-verdict",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "arif-style-zen-audit",
+   "rel": "domains/general/apex/recursive-audit/arif-style-zen-audit",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "arifos-eight-verb-canonical",
+   "rel": "arifos-eight-verb-canonical",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "arifos-kernel-ceremony",
+   "rel": "domains/general/apex/verdict/arifos-kernel-ceremony",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "arifos-kernel-seal-ritual",
+   "rel": "domains/general/court/seal-ritual/arifos-kernel-seal-ritual",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "asi-agentic-governance",
+   "rel": "asi-agentic-governance",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "assertion-window-discipline",
+   "rel": "domains/general/court/court-audit/assertion-window-discipline",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "audit-falsification-discipline",
+   "rel": "domains/general/court/court-audit/audit-falsification-discipline",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "audit-repo-reality",
+   "rel": "audit-repo-reality",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "audit-repository-entropy",
+   "rel": "audit-repository-entropy",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "audit-seal",
+   "rel": "audit-seal",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "auditable-numeric-artifacts",
+   "rel": "audit/auditable-numeric-artifacts",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "autonomous-learning-loop",
+   "rel": "governance-core/autonomous-learning-loop",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "canon-doctrine-sealing",
+   "rel": "governance-core/canon-doctrine-sealing",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "capability-addressing",
+   "rel": "governance/capability-addressing",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "causal-attribution-discipline",
+   "rel": "audit/causal-attribution-discipline",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "ccc-pool-multihost-audit",
+   "rel": "domains/general/forge/mesh-transport/ccc-pool-multihost-audit",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "claim-receipt-discipline",
+   "rel": "domains/general/court/court-audit/claim-receipt-discipline",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "claude",
+   "rel": "apex_verdict_hold/claude",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "claude",
+   "rel": "apex_verdict_seal/claude",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "cognitive-level-assertion-protocol",
+   "rel": "domains/general/court/court-audit/cognitive-level-assertion-protocol",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "constitutional",
+   "rel": "warga/constitutional",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "constitutional-floors",
+   "rel": "domains/general/apex/governance-core/constitutional-floors",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "constitutional-kernel-architecture",
+   "rel": "domains/general/apex/governance-core/constitutional-kernel-architecture",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "corpus-evidence-discipline",
+   "rel": "audit/corpus-evidence-discipline",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "dignity-substrate",
+   "rel": "core/governance/dignity-substrate",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "durable-artifact-authoring",
+   "rel": "governance/durable-artifact-authoring",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "enforcement-coverage-audit",
+   "rel": "enforcement-coverage-audit",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "escalation-trajectory-hold",
+   "rel": "domains/general/court/court-audit/escalation-trajectory-hold",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "event-driven-alerting",
+   "rel": "domains/general/apex/governance-core/event-driven-alerting",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "federation-housekeeping-master",
+   "rel": "domains/general/apex/governance-core/federation-housekeeping-master",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "federation-memory-writeback",
+   "rel": "governance/federation-memory-writeback",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "first-party-corpus-audit",
+   "rel": "governance/first-party-corpus-audit",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "first-party-evidence-audit",
+   "rel": "first-party-evidence-audit",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "forge-execution-governance",
+   "rel": "domains/general/apex/governance-core/forge-execution-governance",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "forge-governance-analysis",
+   "rel": "domains/general/apex/governance-core/forge-governance-analysis",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "forge-governance-jsonld",
+   "rel": "forge-governance-jsonld",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "forge-telegram-audit",
+   "rel": "forge-telegram-audit",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "geox-basin-claims-audit",
+   "rel": "geo/geox-basin-claims-audit",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "health-product-claim-audit",
+   "rel": "domains/general/workshop/research-core/health-product-claim-audit",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "hermes",
+   "rel": "apex_verdict_hold/hermes",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "hermes",
+   "rel": "apex_verdict_seal/hermes",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "hermes-naked-prior-audit",
+   "rel": "domains/general/workshop/verification-discipline/hermes-naked-prior-audit",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "hermes-rasa-doctrine",
+   "rel": "domains/general/apex/governance-core/hermes-rasa-doctrine",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "hermes-rca-forge",
+   "rel": "domains/general/apex/governance-core/hermes-rca-forge",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "hermes-runtime-audit",
+   "rel": "hermes-ops/hermes-runtime-audit",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "hermes-upstream-audit",
+   "rel": "domains/general/forge/repo-intelligence/hermes-upstream-audit",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "human-bond-reality-audit",
+   "rel": "verification-discipline/human-bond-reality-audit",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "human-relationship-audit",
+   "rel": "research/human-relationship-audit",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "identity-axiom-derivation",
+   "rel": "domains/general/apex/governance-core/identity-axiom-derivation",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "identity-invariance",
+   "rel": "warga/constitutional/identity-invariance",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "inherited-claim-audit",
+   "rel": "court-audit/inherited-claim-audit",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "insider-exposure-inventory",
+   "rel": "audit/insider-exposure-inventory",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "institution-entropy-audit",
+   "rel": "domains/general/apex/governance-core/institution-entropy-audit",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "internal-holdings-locate",
+   "rel": "domains/general/apex/governance-core/internal-holdings-locate",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "live-pipeline-trace-audit",
+   "rel": "domains/general/court/court-audit/live-pipeline-trace-audit",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "live-probe-audit-pattern",
+   "rel": "domains/general/court/court-audit/live-probe-audit-pattern",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "live-service-ops",
+   "rel": "domains/general/apex/governance-core/live-service-ops",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "live-system-investigation",
+   "rel": "domains/general/apex/governance-core/live-system-investigation",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "measurement-discipline",
+   "rel": "governance-core/measurement-discipline",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "operational-signal-routing",
+   "rel": "domains/general/apex/governance-core/operational-signal-routing",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "pasted-material-analysis",
+   "rel": "domains/general/apex/governance-core/pasted-material-analysis",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "pr-governance",
+   "rel": "engineering/pr-governance",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "public-claims-maintenance",
+   "rel": "governance/public-claims-maintenance",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "publication-risk-audit",
+   "rel": "governance/publication-risk-audit",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "rasa-qualia-governance",
+   "rel": "domains/general/apex/governance-core/rasa-qualia-governance",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "reality-kernel-phase1-evidence-ledger",
+   "rel": "domains/general/court/vault-ledger/reality-kernel-phase1-evidence-ledger",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "recursive-audit",
+   "rel": "core/governance/recursive-audit",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "relationship-evidence-audit",
+   "rel": "audit/relationship-evidence-audit",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "relationship-memory-isolation",
+   "rel": "domains/general/apex/governance-core/relationship-memory-isolation",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "relationship-reality-audit",
+   "rel": "audit/relationship-reality-audit",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "scar-integration",
+   "rel": "core/governance/scar-integration",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "seal-discipline",
+   "rel": "seal-discipline",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "security-audit",
+   "rel": "engineering/security-audit",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "self-recurrence-guards",
+   "rel": "domains/general/court/court-audit/self-recurrence-guards",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "sensitive-publication-governance",
+   "rel": "governance/sensitive-publication-governance",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "skill-audit-methodology",
+   "rel": "domains/general/aaa/skill-mesh/skill-audit-methodology",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "skill-portfolio-audit",
+   "rel": "core/governance/skill-portfolio-audit",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "sovereign-theoretical-directive",
+   "rel": "domains/general/apex/governance-core/sovereign-theoretical-directive",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "staged-write-triage",
+   "rel": "governance/staged-write-triage",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "symbol-namespace-integrity",
+   "rel": "governance/symbol-namespace-integrity",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "synthesis-verification-gate",
+   "rel": "domains/general/court/court-audit/synthesis-verification-gate",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "CANON",
+   "skill": "verify-runtime",
+   "rel": "core/governance/verify-runtime",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "CANON",
+   "skill": "void-paradox-doctrine",
+   "rel": "domains/general/court/court-audit/void-paradox-doctrine",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "DESTRUCT",
+   "skill": "forge-symlink-audit",
+   "rel": "forge-symlink-audit",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "DESTRUCT",
+   "skill": "repo-cleanup",
+   "rel": "core/forge/repo-cleanup",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "FORGE-mcp-testing",
+   "rel": "domains/general/forge/mcp-ops/FORGE-mcp-testing",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "aaa-event-bridge",
+   "rel": "domains/general/forge/cron-ops/aaa-event-bridge",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "capability-telemetry-audit",
+   "rel": "capability-telemetry-audit",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "cicd-deploy",
+   "rel": "engineering/cicd-deploy",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "deploy-drift-verification",
+   "rel": "domains/general/forge/federation-release/deploy-drift-verification",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "deployment-claim-verification",
+   "rel": "domains/general/forge/federation-release/deployment-claim-verification",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "external-platform-mcp",
+   "rel": "domains/general/forge/mcp-ops/external-platform-mcp",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "federation-connect-headscale",
+   "rel": "federation-connect-headscale",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "federation-machine-migration",
+   "rel": "domains/general/forge/federation-topology/federation-machine-migration",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "federation-mcp-drift-audit",
+   "rel": "domains/general/apex/governance-core/federation-mcp-drift-audit",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "federation-scheduler-audit",
+   "rel": "cron-ops/federation-scheduler-audit",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "forge-event-delivery",
+   "rel": "domains/general/forge/cron-ops/forge-event-delivery",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "forge-fastmcp",
+   "rel": "forge-fastmcp",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "forge-infra-crons",
+   "rel": "forge-infra-crons",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "forge-mcp-a2a-agentic",
+   "rel": "forge-mcp-a2a-agentic",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "forge-mcp-governance-wrapper",
+   "rel": "domains/general/apex/governance-core/forge-mcp-governance-wrapper",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "forge-mcp-gui",
+   "rel": "forge-mcp-gui",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "forge-mcp-registry-publish",
+   "rel": "domains/general/aaa/catalog-ops/forge-mcp-registry-publish",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "forge-minimax-mcp-direct-invoke",
+   "rel": "domains/general/forge/mcp-ops/forge-minimax-mcp-direct-invoke",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "forge-postgres-schema-design",
+   "rel": "forge-postgres-schema-design",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "forge-redis-qdrant-integration",
+   "rel": "forge-redis-qdrant-integration",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "hermes-cron-zen",
+   "rel": "domains/general/forge/cron-ops/hermes-cron-zen",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "kabarkan-observability",
+   "rel": "domains/general/forge/telemetry/kabarkan-observability",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "litellm-proxy-triage",
+   "rel": "domains/general/forge/model-routing/litellm-proxy-triage",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "mcp-context-compression",
+   "rel": "mcp-context-compression",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "mcp-dual-era-transport",
+   "rel": "forge-mcp-ops/mcp-dual-era-transport",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "mcp-ecosystem-indexing",
+   "rel": "domains/general/forge/mcp-ops/mcp-ecosystem-indexing",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "mcp-ops",
+   "rel": "engineering/mcp-ops",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "mcp-shopping-list-2026-09",
+   "rel": "mcp-shopping-list-2026-09",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "mcp-sota-shopping-list",
+   "rel": "mcp-sota-shopping-list",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "mcp-testing",
+   "rel": "engineering/mcp-testing",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "observability-completeness-audit",
+   "rel": "domains/general/forge/telemetry/observability-completeness-audit",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "ops-event-routing",
+   "rel": "domains/general/forge/cron-ops/ops-event-routing",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "provider-endpoint-migration",
+   "rel": "provider-endpoint-migration",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "proxy-verification-audit",
+   "rel": "court-audit/proxy-verification-audit",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "qwencloud-deploy",
+   "rel": "qwencloud-deploy",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "runpod-mcp",
+   "rel": "runpod-mcp",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "runtime-probe",
+   "rel": "core/mcp/runtime-probe",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "telegram-mcp-product-line",
+   "rel": "domains/general/forge/mcp-ops/telegram-mcp-product-line",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "telemetry-watchdog",
+   "rel": "engineering/telemetry-watchdog",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "touchdesigner-mcp",
+   "rel": "creative/touchdesigner-mcp",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "vps-cpu-throttle-triage",
+   "rel": "domains/general/forge/federation-topology/vps-cpu-throttle-triage",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "vps-ops",
+   "rel": "engineering/vps-ops",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "wealth-mcp-testing",
+   "rel": "domains/wealth/forge/mcp-ops/wealth-mcp-testing",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "INFRA",
+   "skill": "wealth-mcp-tool-hardening",
+   "rel": "domains/wealth/forge/mcp-ops/wealth-mcp-tool-hardening",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "agi-agentic-web-delivery",
+   "rel": "agi-agentic-web-delivery",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "agi-web-optimization",
+   "rel": "agi-web-optimization",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "arif-sites-content-ops",
+   "rel": "domains/general/forge/web-stack/arif-sites-content-ops",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "blogwatcher",
+   "rel": "research/blogwatcher",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "brevo-email-sending",
+   "rel": "domains/general/workshop/email-outbound/brevo-email-sending",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "civic-article-publishing",
+   "rel": "aaa/civic-article-publishing",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "civic-social-infographic",
+   "rel": "domains/general/workshop/creative-design/civic-social-infographic",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "deep-research",
+   "rel": "domains/general/workshop/search-web/deep-research",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "email-outbound",
+   "rel": "domains/general/workshop/email-outbound/email-outbound",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "forge-agentic-web-builder",
+   "rel": "forge-agentic-web-builder",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "forge-artifact-publisher",
+   "rel": "forge-artifact-publisher",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "forge-did-web-identity",
+   "rel": "forge-did-web-identity",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "forge-web-intelligence",
+   "rel": "domains/general/workshop/search-web/forge-web-intelligence",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "har-derived-api-client",
+   "rel": "domains/general/forge/web-stack/har-derived-api-client",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "hermes-lane-switch-routing",
+   "rel": "domains/general/workshop/telegram-ops/hermes-lane-switch-routing",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "hermes-telegram-gateway-authorization",
+   "rel": "domains/general/workshop/telegram-ops/hermes-telegram-gateway-authorization",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "hermes-telegram-stack-zen",
+   "rel": "hermes-telegram-stack-zen",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "makcikgpt-article-craft",
+   "rel": "civic-publishing/makcikgpt-article-craft",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "makcikgpt-article-forging",
+   "rel": "domains/general/workshop/creative-design/makcikgpt-article-forging",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "outbound-message-delivery",
+   "rel": "telegram-ops/outbound-message-delivery",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "public-column-publishing",
+   "rel": "public-column-publishing",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "relay-echo-loop-handling",
+   "rel": "domains/general/workshop/telegram-ops/relay-echo-loop-handling",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "sovereign-search",
+   "rel": "domains/general/workshop/search-web/sovereign-search",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "telegram-bot-identity-and-group-routing",
+   "rel": "domains/general/workshop/telegram-ops/telegram-bot-identity-and-group-routing",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "telegram-bot-routing-doctrine",
+   "rel": "domains/general/workshop/telegram-ops/telegram-bot-routing-doctrine",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "telegram-conversation-history-extraction",
+   "rel": "domains/general/workshop/telegram-ops/telegram-conversation-history-extraction",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "telegram-gateway-ipv6-hang-fix",
+   "rel": "domains/general/workshop/telegram-ops/telegram-gateway-ipv6-hang-fix",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "telegram-gateway-troubleshooting",
+   "rel": "domains/general/workshop/telegram-ops/telegram-gateway-troubleshooting",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "telegram-group-bot-rollout",
+   "rel": "domains/general/workshop/telegram-ops/telegram-group-bot-rollout",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "telegram-group-sender-identity",
+   "rel": "domains/general/workshop/telegram-ops/telegram-group-sender-identity",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "telegram-userbot-telethon",
+   "rel": "domains/general/workshop/telegram-ops/telegram-userbot-telethon",
+   "gap": "ABSENT"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "web-extraction-fallbacks",
+   "rel": "domains/general/workshop/search-web/web-extraction-fallbacks",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "web-scrape",
+   "rel": "hermes/web-scrape",
+   "gap": "PROXY_ONLY"
+  },
+  {
+   "surface": "OUTBOUND",
+   "skill": "web-search",
+   "rel": "hermes/web-search",
+   "gap": "PROXY_ONLY"
+  }
+ ]
+}

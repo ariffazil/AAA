@@ -1,0 +1,16 @@
+[Unit]
+Description=arifOS Federation Gateway — unified MCP surface
+After=network.target aaa-mcp.service
+Wants=aaa-mcp.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /root/AAA/mcp/federation_gateway.py
+Restart=on-failure
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+NoNewPrivileges=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

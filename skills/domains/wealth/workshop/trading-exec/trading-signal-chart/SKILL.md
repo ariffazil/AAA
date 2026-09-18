@@ -367,7 +367,7 @@ edge-tts --voice ms-MY-OsmanNeural --rate "+5%" \
 - `references/cron-chart-alert-delivery.md`
 - `references/tradingview-lightweight-charts-webapp.md`
 - `references/gold-dashboard-architecture.md`
-- `references/red-news-impact.md` (lives in the `hermes-cron-rhythm` skill: `devops/hermes-cron-rhythm/references/red-news-impact.md`)
+- `references/red-news-impact.md` — red-news impact rules (vendored here 2026-09-17 from the quarantine snapshot)
 - `references/visual-first-pdf-recap.md` — chat-side ≤8-line recap template (2026-08-04)
 - `templates/gold_signal_chart.py`
 - `templates/xauusd_signal_pdf.py`

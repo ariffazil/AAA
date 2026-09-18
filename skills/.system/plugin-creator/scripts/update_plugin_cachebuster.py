@@ -10,10 +10,6 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-
-from identifier_validation import validate_plugin_identifier
-
 
 CACHEBUSTER_PREFIX = "codex"
 
@@ -39,11 +35,6 @@ def main() -> None:
     manifest_path = plugin_root / ".codex-plugin" / "plugin.json"
     manifest = load_manifest(manifest_path)
 
-    plugin_name = manifest.get("name")
-    if not isinstance(plugin_name, str) or not plugin_name.strip():
-        raise ValueError(f"{manifest_path} must contain a non-empty string 'name'.")
-    validate_plugin_identifier(plugin_name)
-
     version = manifest.get("version")
     if not isinstance(version, str) or not version.strip():
         raise ValueError(f"{manifest_path} must contain a non-empty string 'version'.")
@@ -62,8 +53,6 @@ def load_manifest(manifest_path: Path) -> dict[str, object]:
     if not isinstance(payload, dict):
         raise ValueError(f"{manifest_path} must contain a JSON object.")
     return payload
-
-
 def sanitize_cachebuster(value: str) -> str:
     sanitized = re.sub(r"[^a-z0-9-]+", "-", value.strip().lower())
     sanitized = re.sub(r"-{2,}", "-", sanitized).strip("-")

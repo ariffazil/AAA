@@ -2,7 +2,8 @@
 id: FORGE-design-intelligence
 name: forge-design-intelligence
 version: 1.0.0-2026-08-20
-description: > [fed: tier=fed-reasoning-heavy, floors=[, auto=T1, risk=low]
+description: >
+
   Design intelligence for building professional UI/UX across platforms.
   Industry-specific reasoning rules, UI style taxonomy, color palettes,
   typography pairing, accessibility guidelines, and anti-patterns.
@@ -33,9 +34,7 @@ trigger_phrases:
 dependencies:
   skills:
     - FORGE-tailwind-tokens
----
-
-# FORGE-design-intelligence — Design Intelligence Knowledge Base
+---# FORGE-design-intelligence — Design Intelligence Knowledge Base
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.
 > **Kebijaksanaan:** Captured from external research (ui-ux-pro-max), distilled for federation use.

@@ -1,0 +1,842 @@
+# ═══════════════════════════════════════════════════════════════════
+# AAA Federation — Machine System Map (organs + linked planes)
+# ═══════════════════════════════════════════════════════════════════
+# HUMAN TWIN: /root/AAA/docs/ORGAN.md  (topology SOT — this file is machine SOT)
+# Truth rule: live :port/health beats these numbers. Re-probe before SEAL claims.
+# Stabilized: 2026-07-30 · reconciled: 2026-09-12 (truth-reconciliation C2)
+# ═══════════════════════════════════════════════════════════════════
+
+schema_version: 2
+generated: "2026-09-12 (entries re-probed 2026-09-12; header refreshed under F13 execute-all)"
+maintainer: "AAA Control Plane"
+human_map: /root/AAA/docs/ORGAN.md
+truth_rule: live_health_beats_file
+
+# Classification legend:
+#   CORE        — constitutional organ (authority boundary)
+#   METABOLISM  — federation pulse / receipts (never judge/execute)
+#   MEMORY      — immutable or durable truth store
+#   EDGE        — agent / UI / bridge (connect through kernel)
+#   SUPPORT     — helper daemon (crypto, guard, signing)
+#   DATA        — data-plane service (Docker/local)
+#   ADVISORY    — recommendation only (models, routes)
+
+components:
+
+  # ── CORE ORGANS ──────────────────────────────────────────────────
+  - id: arifos
+    class: CORE
+    display_name: arifOS
+    repo: ariffazil/arifos
+    source_path: /root/arifOS
+    runtime_path: /opt/arifos/app
+    role: governance_kernel
+    authority_ceiling: JUDGE_ONLY
+    port: 8088
+    mcp_port: 8088
+    unit: arifos.service
+    public_mcp: https://arifos.arif-fazil.com/mcp
+    default_branch: main
+    runtime: python-3.12
+    live_probe_2026_07_30:
+      status: healthy
+      tools_public: 8
+    interfaces:
+      health: /health
+      mcp: /mcp
+    owned_domains:
+      - constitutional_judgment
+      - session_identity
+      - floor_enforcement
+      - vault999_seal_gate
+      - capability_routing
+    forbidden_domains:
+      - engineering_execution
+      - earth_evidence
+      - capital_allocation
+      - human_diagnosis
+    public_tools:
+      - arif_init
+      - arif_observe
+      - arif_think
+      - arif_route
+      - arif_memory
+      - arif_judge
+      - arif_forge
+      - arif_seal
+
+  - id: a-forge
+    class: CORE
+    display_name: A-FORGE
+    repo: ariffazil/A-FORGE
+    source_path: /root/A-FORGE
+    runtime_path: /opt/a-forge/app
+    role: execution_actuator
+    authority_ceiling: EXECUTE_AFTER_SEAL
+    port: 7071
+    mcp_port: 7072
+    units:
+      - a-forge.service
+      - a-forge-mcp.service
+    public_mcp: https://mcp.arif-fazil.com/mcp
+    default_branch: main
+    runtime: node-22
+    live_probe_2026_07_30:
+      api_status: healthy
+      api_tools: 124
+      mcp_status: healthy
+      mcp_stateless_tools: 52
+    owned_domains:
+      - engineering_execution
+      - build_deploy
+      - shell_orchestration
+      - rollback
+      - web_exploration
+      - agentic_search
+      - research_intelligence
+    public_tools:
+      - forge_search
+      - forge_research
+      - forge_fetch
+      - forge_browser_navigate
+      - forge_explore
+    a2a_intent_routing:
+      EXPLORE: "A-FORGE (:7072 / stdio) is primary organ for web exploration and deep multi-source research. Agents hitting epistemic walls must delegate search to A-FORGE via A2A."
+      ACT: "A-FORGE (:7071 / :7072) is primary organ for governed engineering execution."
+    forbidden_domains:
+      - constitutional_judgment
+      - self_authorization
+      - earth_evidence
+      - capital_allocation
+
+  - id: aaa
+    class: CORE
+    display_name: AAA
+    repo: ariffazil/AAA
+    source_path: /root/AAA
+    role: control_plane
+    authority_ceiling: DISPLAY_ONLY
+    port: 3001
+    unit: aaa-a2a.service
+    public: https://aaa.arif-fazil.com
+    default_branch: main
+    runtime: node-22
+    live_probe_2026_07_30:
+      status: healthy
+    owned_domains:
+      - federation_registry
+      - a2a_routing
+      - cockpit_display
+      - schema_validation
+    forbidden_domains:
+      - constitutional_judgment
+      - engineering_execution
+      - earth_evidence
+      - capital_allocation
+    notes:
+      - hosts machine SOT at federation/organs.yaml
+      - companion units: aaa-signing, aaa-preforge (SUPPORT)
+
+  - id: openclaw
+    class: EDGE
+    display_name: OpenClaw
+    repo: openclaw/openclaw
+    source_path: /root/.openclaw-cold  # 2026-09-07: /root/.openclaw no longer exists — OpenClaw cold-stored
+    role: agentic_mesh_router
+    authority_ceiling: DISPLAY_ONLY
+    port: 18789          # declared (historical) — refused as of 2026-09-07
+    port_web: 8787       # declared (historical) — refused as of 2026-09-07
+    unit: openclaw-gateway.service
+    runtime: node-22
+    actor_id: "openclaw:ingress"
+    did: "did:key:z7QHNDZM4dm0fl4bwI7BOhVmMAh_pBVsQN2i17Ndog1jLjQ"
+    signing_key: "/root/AAA/auth/keys/openclaw_private.key"
+    live_probe_2026_08_07:
+      status: active
+      gateway_port: 18789
+      web_ui_port: 8787  # currently down — known
+    live_probe_2026_09_07:   # FI-008 contrast audit — COLD on KVM8
+      status: cold
+      evidence: "unit absent from /etc/systemd/system; :18789/:8787 refused; state at /root/.openclaw-cold; units from 2026-08-06 audit (gateway/bot/apa-bridge/restart) no longer present on this node"
+    owned_domains:
+      - a2a_dispatch
+      - session_continuity
+      - channel_aggregation
+      - task_queue
+      - result_aggregation
+    forbidden_domains:
+      - constitutional_judgment
+      - engineering_execution
+      - human_face  # Hermes owns the human face — OpenClaw is agent-facing
+      - cognitive_research
+      - memory_curation  # arifOS memory tiers are canonical
+      - skills_library  # Hermes skills are canonical
+    receives_from:
+      - hermes          # inbound research/agent requests from the human face
+      - cron_jobs       # scheduled task outputs
+      - system_alerts   # organ health / failover notifications
+    routes_to:
+      - "333-agi"       # reasoning/planning core
+      - opencode        # engineering execution (via A-FORGE)
+      - "555-asi"       # causal/structural intelligence
+      - arifos          # constitutional judgment / SEAL
+      - geox / wealth / well  # domain evidence organs
+    partner_organ: hermes  # Hermes is human-facing; OpenClaw is agent-facing
+    notes:
+      - Agent-facing mesh router. NOT human-facing (Hermes owns Telegram/CLI/cron).
+      - DISPLAY_ONLY ceiling — can never mutate federation state directly.
+      - Owns WhatsApp/Signal/iMessage/macOS/iOS/Android channels (Hermes owns Telegram).
+      - Cross-channel session continuity via session_id propagation.
+      - Escalation gate: routes F13 holds to Hermes for Arif review.
+      - "Hermes is the face. OpenClaw is the spine. OpenCode is the hands. arifOS is the law. Arif is the sovereign."
+
+  - id: geox
+    class: CORE
+    display_name: GEOX
+    repo: ariffazil/geox
+    source_path: /root/GEOX
+    role: domain_evidence
+    domain_law: NATURAL_LAW
+    authority_ceiling: COMPUTE_ONLY
+    port: 8081
+    unit: geox-mcp.service
+    public_mcp: https://geox.arif-fazil.com/mcp
+    default_branch: main
+    runtime: python-3.12
+    live_probe_2026_07_30:
+      status: healthy
+      tools: 33
+      surface_drift_ok: true
+    live_probe_2026_09_06:
+      status: healthy
+      tools: 26
+      runtime_path: /opt/geox
+      unit: geox-mcp.service
+      note: "33 was the 2026-07-30 snapshot. Live SOT is :8081/health tools_loaded."
+    owned_domains:
+      - earth
+      - subsurface
+      - petrophysics
+      - seismic
+      - basin
+      - mcp_apps_ui
+    forbidden_domains:
+      - constitutional_judgment
+      - capital_allocation
+      - deployment_authorization
+
+  - id: wealth
+    class: CORE
+    display_name: WEALTH
+    repo: ariffazil/wealth
+    source_path: /root/WEALTH
+    role: domain_evidence
+    domain_law: CAPITAL_LAW
+    authority_ceiling: COMPUTE_ONLY
+    port: 18082
+    unit: wealth-organ.service
+    public_mcp: https://wealth.arif-fazil.com/mcp
+    default_branch: main
+    runtime: python-3.12
+    live_probe_2026_07_30:
+      status: healthy
+      tools_public: 14
+      tools_canonical: 9
+    owned_domains:
+      - capital_computation
+      - financial_modeling
+      - market_data
+      - risk_scenarios
+    forbidden_domains:
+      - constitutional_judgment
+      - capital_allocation
+      - investment_authority
+      - deployment_authorization
+
+  - id: well
+    class: CORE
+    display_name: WELL
+    repo: ariffazil/well
+    source_path: /root/WELL
+    role: domain_evidence
+    domain_law: SUBSTRATE_LAW
+    authority_ceiling: REFLECT_ONLY
+    port: 18083
+    unit: well.service
+    public_mcp: https://well.arif-fazil.com/mcp
+    default_branch: main
+    runtime: python-3.12
+    live_probe_2026_08_09:
+      status: degraded
+      tools: 14
+      note: "Port GREEN but /health reports degraded. Root cause: NO LIVE BIOMETRIC DATA — WELL state.json is from 2026-07-04 (36+ days stale), running in MOCK mode. No biometric pipeline (Apple Watch→VPS) is feeding real data. This is an architectural gap, not a code defect. WELL correctly reports degraded when it has nothing real to reflect. Fix requires: sovereign biometric data source + ingestion pipeline."
+    owned_domains:
+      - human_readiness
+      - vitality_reflection
+      - dignity_guard
+      - machine_reliability_signal
+    forbidden_domains:
+      - medical_diagnosis
+      - medical_prescription
+      - constitutional_judgment
+      - capital_allocation
+    companions:
+      - well-witness  # SUPPORT observer :18084
+
+  # ── METABOLISM / MEMORY ──────────────────────────────────────────
+  - id: arifflow
+    class: METABOLISM
+    display_name: arifFLOW
+    role: federation_metabolism
+    authority_ceiling: METABOLIZE_ONLY
+    port: 7073
+    unit: arifflow.service
+    runtime: rust
+    live_probe_2026_07_30:
+      status: ok
+    owned_domains:
+      - flow_quotient
+      - receipt_metabolism
+      - attention_checkpointing
+    forbidden_domains:
+      - constitutional_judgment
+      - engineering_execution
+    notes:
+      - routes/checkpoints/witnesses; never judges; never executes
+      - plane SOT: /root/AAA/governance/ARIF_FLOW_METABOLIC_PLANE.md
+      - live edges: /var/lib/arifflow/receipts.jsonl
+      - FLOW_GRAPH.json not minted — Phase 7 queued (architect lock 2026-08-18)
+
+  - id: signal
+    class: CORE
+    display_name: SIGNAL
+    repo: arifOS (embedded organ)
+    role: signal_membrane
+    authority_ceiling: OBSERVE_ONLY
+    port: 18084
+    unit: signal-organ.service
+    source_path: /root/SIGNAL
+    runtime_path: /opt/signal/app
+    runtime: python-3.12
+    mcp_port: 18084
+    public_mcp: null
+    owned_domains:
+      - webhook_ingestion
+      - cryptographic_gate
+      - governed_broadcast
+      - sovereign_ping
+      - priority_classification
+      - quiet_hours_enforcement
+    forbidden_domains:
+      - constitutional_judgment
+      - engineering_execution
+      - mutation_authorization
+    interfaces:
+      health: /health
+    endpoints:
+      ingest:
+        - /signal/github
+        - /signal/tradingview
+        - /signal/generic
+      kabarkan:
+        - /kabarkan/telegram
+        - /kabarkan/sovereign
+        - /kabarkan/broadcast
+    chambers:
+      chamber_1: crypto_gate
+      chamber_2: idempotency_buffer
+      chamber_3: tcoa_ingestion
+      chamber_4: priority_classify
+      chamber_5: channel_route
+      chamber_6: governed_send
+    doctrine:
+      ingest: "A webhook never executes a command. A webhook only proposes an observation."
+      kabarkan: "A signal is broadcast only when the entropy cost of silence exceeds the entropy cost of interruption."
+    live_probe_2026_08_06:
+      status: healthy
+      redis: healthy
+      all_6_chambers: active
+
+  - id: frame
+    class: CORE
+    display_name: FRAME
+    repo: ariffazil/AAA  # 2026-08-26: consolidated from ariffazil/FRAME (standalone) → AAA state plane per FRAME_BOUNDARY_ALIGNMENT
+    role: federation_measurement
+    authority_ceiling: ADVISORY_ONLY
+    port: 18085
+    unit: frame-organ.service
+    source_path: /root/AAA/federation/frame/  # 2026-08-26: relocated from /root/FRAME — identity preserved (service unit, port, package name unchanged)
+    runtime_path: /opt/frame/app
+    runtime: python-3.12
+    public_mcp: null
+    migration_doc: /root/AAA/federation/AAA_FEDERATION_FRAME_BOUNDARY_ALIGNMENT.md  # 2026-08-26: Sprint 1 declaration
+    identity_preserved:  # F1 AMANAH: identity ≠ location
+      service_unit: frame-organ.service  # systemd unit name unchanged
+      python_package: frame_organ        # import path unchanged
+      public_port: 18085                 # endpoint unchanged
+      doctrine_anchor: /root/AAA/federation/frame/doctrine/  # doctrine moved with code
+      github_mirror: ariffazil/FRAME (read-only archive post-Sprint 4)
+    owned_domains:
+      - institutional_baseline
+      - organ_probe
+      - drift_detection
+      - trend_analysis
+      - threshold_alerting
+      - institutional_reporting
+    forbidden_domains:
+      - constitutional_judgment
+      - engineering_execution
+      - mutation_authorization
+    interfaces:
+      health: /health
+    endpoints:
+      baseline:
+        - /frame/baseline
+        - /frame/baseline/{organ}
+      probe:
+        - /frame/probe
+        - /frame/probe/{organ}
+      compare:
+        - /frame/drift
+      trend:
+        - /frame/trend
+      alert:
+        - /frame/alert
+      report:
+        - /frame/report
+        - /frame/report/{period}
+    chambers:
+      chamber_1: baseline
+      chamber_2: probe
+      chamber_3: compare
+      chamber_4: trend
+      chamber_5: alert
+      chamber_6: report
+    doctrine: "Measurement without a reference frame is just numbers. FRAME provides the baseline, the trend, and the drift signal that makes every other organ's metrics meaningful."
+    live_probe_2026_08_06:
+      status: healthy
+      all_6_chambers: active
+      baseline_organs: 10
+      drift_verdict: STABLE
+      fq: 0.887
+
+  - id: minimax-media
+    class: SUPPORT
+    display_name: MiniMax Media MCP
+    role: multimodal_generation
+    authority_ceiling: OBSERVE_AND_GENERATE
+    port: 18100
+    unit: minimax-media-mcp.service
+    source_path: /opt/minimax-mcp-media
+    runtime: python-3.12-fastmcp
+    mcp_port: 18100
+    public_mcp: null
+    upstream_provider: MiniMax Cloud API (api.minimax.io)
+    upstream_models:
+      video:
+        - MiniMax-Hailuo-02          # best quality, 768P/1080P, 6s/10s
+        - I2V-01-Director            # image-to-video with camera instructions
+        - I2V-01-live                # live-action image-to-video
+        - T2V-01-Director            # text-to-video with camera instructions
+        - T2V-01                     # text-to-video base
+      image: wan2.7-image/pro
+      audio: qwen-audio-3.0-tts-plus
+      music: suno-style music generation
+    owned_domains:
+      - video_generation            # text-to-video + image-to-video
+      - image_generation            # text-to-image (wan2.7)
+      - text_to_speech              # 200+ voices incl. voice_clone + voice_design
+      - music_generation            # suno-like prompt + lyrics → song
+    forbidden_domains:
+      - constitutional_judgment
+      - engineering_execution
+      - mutation_authorization
+      - capital_allocation
+    interfaces:
+      health: n/a (MCP streamable-http)
+      mcp_endpoint: /mcp
+      transport: streamable-http
+    cost_posture: billable_per_request
+    rate_limits: per-MiniMax-cloud-quota
+    tools_exposed:
+      - generate_video
+      - query_video_generation
+      - text_to_image
+      - text_to_audio
+      - list_voices
+      - voice_clone
+      - voice_design
+      - play_audio
+      - music_generation
+    notes:
+      - Transport is 127.0.0.1:18100 (unit minimax-media-mcp.service). :18090 is Hermes MCP, not media.
+      - Default vendor .env FASTMCP_PORT=18090 must stay overridden.
+      - Billable per MiniMax cloud call — F13 consent for paid generation.
+    live_probe_2026_08_07:
+      status: active
+      port: 18100
+      launched_by: "Arif via Hermes (sado chest-flex demo)"
+      tools_count: 9
+      verified_models:
+        - MiniMax-Hailuo-02
+        - I2V-01-Director
+        - T2V-01
+        - wan2.7-image/pro
+        - suno-music
+      sample_run: sado_chest_real.mp4 (5.64s, 720x720, 765KB)
+
+  - id: vault999
+    class: MEMORY
+    display_name: VAULT999
+    role: immutable_audit_memory
+    authority_ceiling: APPEND_ONLY
+    path_canonical: /root/arifOS/VAULT999/outcomes.jsonl
+    path_symlink: /root/VAULT999
+    owned_domains:
+      - sealed_receipts
+      - hash_chain
+      - replay
+    forbidden_domains:
+      - reinterpretation
+      - silent_rewrite
+
+  # ── ADVISORY PLANES (not organs) ─────────────────────────────────
+  - id: fed
+    class: ADVISORY
+    display_name: FED
+    role: model_route_advisor
+    authority_ceiling: ADVISORY_ONLY
+    port: 7074
+    unit: fed-router.service
+    source_path: /root/AAA/scripts/fed_router.py
+    owned_domains:
+      - model_route_ranking
+      - provider_balance_awareness
+    forbidden_domains:
+      - constitutional_judgment
+      - inference_execution
+    notes:
+      - answers WHERE to call; does not call; not an organ
+
+  - id: flame
+    class: ADVISORY
+    display_name: FLAME
+    role: rm0_free_inference_mesh
+    authority_ceiling: ADVISORY_WORKER
+    port: 18901
+    unit: flame-api.service
+    status: DEPRECATED 2026-09-04
+    deprecation:
+      reason: RM0 free-tier exhausted — all free providers fail per-request; fallback burned paid qwen-max with 7 wasted retries. Zero live callers.
+      replacement: FED litellm flash lane (KVM4 :4000)
+      archive: /root/BACKUPS/FLAME-retired-20260904
+      tombstone: AAA/docs/deprecation-registry.json
+    owned_domains:
+      - free_tier_tool_inference  # domain now served by FED flash models
+    forbidden_domains:
+      - constitutional_judgment
+      - paid_routing_policy
+    notes:
+      - answers cheap tool meaning; never seals
+      - RETIRED — registry SOT is deprecation-registry.json; entry kept for history
+
+  # ── EDGE ─────────────────────────────────────────────────────────
+  - id: hermes
+    class: EDGE
+    display_name: HERMES
+    repo: ariffazil/HERMES
+    source_path: /root/HERMES
+    runtime_home: /root/.hermes  # 2026-09-12: canonical runtime path (live git repo)
+    role: multimodal_telegram_bridge
+    authority_ceiling: RELAY_ONLY
+    units:
+      - hermes-asi-gateway.service
+    mcp_port: 18087  # 2026-09-16: officialized HERMES MCP (streamable-http, RELAY_ONLY, meaning integrity organ)
+    mcp_unit: hermes-mcp-server.service
+    mcp_endpoint: https://hermes.arif-fazil.com/mcp
+    owned_domains:
+      - telegram_relay
+      - multimodal_bridge
+    forbidden_domains:
+      - constitutional_judgment
+      - engineering_execution
+      - sealing
+    live_probe_2026_09_12:
+      status: active
+      pid: 3244719
+      machine: KVM8
+      note: "Gateway + brain (i-ARIF) on KVM8 (2026-09-15 swap: HAProxy primary KVM8 :4013, KVM4 cold LD backup only at :4000)"
+
+  - id: opencode
+    class: EDGE
+    display_name: OpenCode
+    role: edge_agent_forge_hands
+    unit: opencode-bot.service
+    authority_ceiling: EDGE_AGENT
+    forbidden_domains:
+      - constitutional_judgment
+      - self_authorization
+
+  - id: arif-fazil-com
+    class: EDGE
+    display_name: arif-fazil.com
+    repo: ariffazil/arif-fazil.com
+    role: public_projection
+    authority_ceiling: DISPLAY_ONLY
+    owned_domains:
+      - public_websites
+      - federation_projection
+    forbidden_domains:
+      - constitutional_truth
+      - engineering_execution
+    notes: "Supersedes id arif-sites / repo ariffazil/arif-sites (GitHub rename 301). Canon law: web-canon."
+
+  # ── SUPPORT ──────────────────────────────────────────────────────
+  # [STALE-SOT 2026-09-04 FI-008 PATCH-003: unit 'well-witness' disabled/not-found at live probe; entry tombstoned — see LOOP2_ZEN_AUDIT R2/R3/R4]
+#  - id: well-witness
+#    class: SUPPORT
+#    display_name: WELL Witness
+#    port: 18084
+#    unit: well-witness.service
+#    authority_ceiling: OBSERVE_ONLY
+#    notes: independent substrate observer for WELL; never adjudicates
+#
+  - id: aaa-signing
+    class: SUPPORT
+    display_name: AAA Signing
+    port: 18900
+    unit: aaa-signing.service
+    authority_ceiling: CRYPTO_HELPER
+
+  # [STALE-SOT 2026-09-04 FI-008 PATCH-003: unit 'aaa-preforge' disabled/not-found at live probe; entry tombstoned — see LOOP2_ZEN_AUDIT R2/R3/R4]
+#  - id: aaa-preforge
+#    class: SUPPORT
+#    display_name: AAA Pre-Forge
+#    unit: aaa-preforge.service
+#    authority_ceiling: GATE_HELPER
+#
+  - id: surface-guard
+    class: SUPPORT
+    display_name: Surface Guard
+    unit: surface-guard.service
+    authority_ceiling: OBSERVE_ALERT
+
+  - id: apa-email-bridge
+    class: SUPPORT
+    unit: apa-email-bridge.service
+    authority_ceiling: ACTUATE_AFTER_LEASE
+    parent: a-forge
+
+  - id: apa-calendar-bridge
+    class: SUPPORT
+    unit: apa-calendar-bridge.service
+    authority_ceiling: ACTUATE_AFTER_LEASE
+    parent: a-forge
+
+  - id: apa-github-bridge
+    class: SUPPORT
+    unit: apa-github-bridge.service
+    authority_ceiling: ACTUATE_AFTER_LEASE
+    parent: a-forge
+
+  - id: apa-telegram-bridge
+    class: SUPPORT
+    unit: apa-telegram-bridge.service
+    authority_ceiling: ACTUATE_AFTER_LEASE
+    parent: a-forge
+
+  # [STALE-SOT 2026-09-04 FI-008 PATCH-003: unit 'miniapp-api' disabled/not-found at live probe; entry tombstoned — see LOOP2_ZEN_AUDIT R2/R3/R4]
+#  - id: miniapp-api
+#    class: SUPPORT
+#    unit: miniapp-api.service
+#    authority_ceiling: UI_EDGE
+#
+  # [STALE-SOT 2026-09-04 FI-008 PATCH-003: unit 'arifosd' disabled/not-found at live probe; entry tombstoned — see LOOP2_ZEN_AUDIT R2/R3/R4]
+#  - id: arifosd
+#    class: SUPPORT
+#    unit: arifosd.service
+#    authority_ceiling: KERNEL_COMPANION
+#    parent: arifos
+#
+#  # ── DATA PLANE ───────────────────────────────────────────────────
+  - id: postgres
+    class: DATA
+    port: 5432
+    role: durable_state
+  - id: redis
+    class: DATA
+    port: 6379
+    role: ephemeral_locks_session
+  - id: qdrant
+    class: DATA
+    port: 6333
+    role: vector_similarity_not_truth
+  - id: falkordb
+    class: DATA
+    port: 6380
+    role: graph
+  # [STALE-SOT 2026-09-04 FI-008 PATCH-003: unit 'graphiti-mcp' disabled/not-found at live probe; entry tombstoned — see LOOP2_ZEN_AUDIT R2/R3/R4]
+#  - id: graphiti-mcp
+#    class: DATA
+#    port: 8000
+#    role: knowledge_graph_mcp
+  - id: minio
+    class: DATA
+    port: 9000
+    role: object_storage
+  - id: nats
+    class: DATA
+    port: 4222
+    unit: nats-server.service
+    role: message_bus
+    companions:
+      - id: nats-prometheus-exporter
+        class: SUPPORT
+        port: 7777  # default metrics endpoint
+        unit: nats-prometheus-exporter.service
+        role: metrics_export
+    # Zen-2026-08-06 (AUDIT-M4): companion nats-prometheus-exporter added
+    #   - Single nats-server instance; prometheus-exporter is SUPPORT companion (not a duplicate)
+  - id: searxng
+    class: DATA
+    port: 8080
+    role: search
+  # [STALE-SOT 2026-09-04 FI-008 PATCH-003: unit 'mcpjam' disabled/not-found at live probe; entry tombstoned — see LOOP2_ZEN_AUDIT R2/R3/R4]
+#  - id: mcpjam
+#    class: DATA
+#    port: 6274
+#    role: mcp_inspector
+  - id: headscale
+    class: DATA
+    port: 8083
+    unit: headscale.service
+    role: mesh_coordination
+  - id: caddy
+    class: DATA
+    unit: caddy.service
+    role: ingress_membrane
+
+  # ── IDENTITY ORGAN (promoted 2026-08-12) ─────────────────────────
+  - id: i-arif
+    class: IDENTITY
+    display_name: i-ARIF
+    fi: FI-000
+    bound_to: F13-SOVEREIGN
+    role: sovereign_identity_core
+    authority_ceiling: IDENTITY_SOVEREIGN
+    layer: identity
+    source_path: null
+    port: null
+    mcp_port: null
+    unit: null
+    default_branch: null
+    runtime: null
+    live_probe_2026_08_12:
+      status: active
+      note: "Identity layer — no standalone process. Runs via litellm FED chain :4000. 13 model chains registered."
+    owned_domains:
+      - identity_core
+      - qualia_synthesis
+      - multimodal_vision
+      - multimodal_audio
+      - meaning_interpretation
+    forbidden_domains:
+      - engineering_execution
+      - constitutional_judgment
+      - earth_evidence
+      - capital_allocation
+    receive_only_from:
+      - hermes
+      - openclaw
+    routes_to: []
+    notes:
+      - "Promoted from non_components 2026-08-12 per F13 SOVEREIGN directive."
+      - "ID class: only organ bound_directly to F13-SOVEREIGN."
+      - "hermes-asi = nerve (routes signal). i-ARIF = brain (synthesises meaning)."
+      - "FI-000: pre-harness. Identity precedes engine."
+      - "Chain order 2026-08-18 (zen-fix): opencode-zen/deepseek-v4-pro (order 1) > kimi-moonshot/k3 (order 2) > MiMo V2.5 (order 3) > GLM-5.3 Z.ai (order 5). PATCH bypasses Xiaomi MiMo server-side content filter that blocked 'Fucker' and 'Look into deep memory' prompts."
+      - "Snapshot 2026-08-18 pre-patch: /root/forge_work/_quarantine/2026-08-18-i-arif-filter-fix/"
+
+# ── PORT OBSERVABILITY (zen-2026-08-06 AUDIT-M2) ─────────────────────────
+# Live ports classified. Sub-processes (a-forge sub-workers, devtools, debug)
+# are out of scope for SOT — they don't claim authority. Substrate ports below
+# ARE in SOT but their actual binding (tailscale vs localhost) is documented here.
+port_observability:
+  audited_at: "2026-08-06T11:05:00Z"
+  audited_by: "ARIF via kimi-code/FI-008 (zen-remediation-2026-08-06)"
+  total_live_ports: 51
+  sot_registered: 23
+  drift_status:
+    raw_unknown: 28        # ports with live listener but no SOT entry
+    classified_known: 23   # ports in SOT (substrate + organs + infra)
+    drift_reduction: "from 75 (audit-zen-2026-08-06) to 28 (post-classification)"
+  substrate_ports:
+    - {port: 5432, service: "Postgres L4", binding: "127.0.0.1"}
+    - {port: 6379, service: "Redis L1-L2", binding: "127.0.0.1"}
+    - {port: 6333, service: "Qdrant L3", binding: "127.0.0.1"}
+    - {port: 6334, service: "Qdrant gRPC", binding: "127.0.0.1"}
+    - {port: 6380, service: "FalkorDB L5", binding: "127.0.0.1"}
+    - {port: 4222, service: "NATS client", binding: "127.0.0.1"}
+    - {port: 8222, service: "NATS monitoring", binding: "127.0.0.1"}
+    - {port: 7777, service: "NATS prom-exporter", binding: "127.0.0.1", note: "added 2026-08-06 (B2)"}
+    - {port: 8000, service: "Graphiti MCP", binding: "127.0.0.1"}
+    - {port: 8083, service: "Headscale", binding: "127.0.0.1"}
+    - {port: 6274, service: "MCPJam inspector", binding: "127.0.0.1"}
+    - {port: 6277, service: "MCPJam proxy", binding: "127.0.0.1"}
+    - {port: 9000, service: "MinIO API", binding: "127.0.0.1"}
+    - {port: 9001, service: "MinIO console", binding: "127.0.0.1"}
+    - {port: 8080, service: "SearXNG", binding: "127.0.0.1"}
+  organ_ports_localhost:
+    - {port: 8088, organ: "arifOS", binding: "127.0.0.1"}
+    - {port: 7071, organ: "A-FORGE API", binding: "127.0.0.1"}
+    - {port: 7072, organ: "A-FORGE MCP", binding: "127.0.0.1"}
+    - {port: 8081, organ: "GEOX", binding: "127.0.0.1"}
+    - {port: 8787, organ: "OpenClaw gateway", binding: "127.0.0.1"}
+    - {port: 7073, organ: "arifFlow", binding: "127.0.0.1"}
+    - {port: 7074, organ: "FED router", binding: "127.0.0.1"}
+    - {port: 18100, organ: "MiniMax Media MCP", binding: "127.0.0.1"}
+    - {port: 18901, organ: "FLAME", binding: "127.0.0.1"}
+  organ_ports_tailscale:
+    - {port: 3001, organ: "AAA", binding: "100.64.0.2 (tailnet)"}
+    - {port: 18082, organ: "WEALTH", binding: "100.64.0.2 (tailnet)"}
+    - {port: 18083, organ: "WELL", binding: "100.64.0.2 (tailnet)"}
+  infra_ports:
+    - {port: 53, service: "systemd-resolved", binding: "127.0.0.53/54"}
+    - {port: 22888, service: "sshd", binding: "0.0.0.0"}
+    - {port: 9100, service: "prometheus node_exporter", binding: "127.0.0.1"}
+    - {port: 9090, service: "prometheus server", binding: "127.0.0.1"}
+    - {port: 8125, service: "netdata", binding: "127.0.0.1"}
+    - {port: 19999, service: "netdata dashboard", binding: "127.0.0.1"}
+    - {port: 4317, service: "otel-collector", binding: "127.0.0.1"}
+    - {port: 20241, service: "cloudflared", binding: "127.0.0.1"}
+  sub_process_out_of_scope:
+    description: "a-forge sub-workers, debug ports, litellm 4000, hermes 8444, dev tools — not registered as SOT components (no authority claim)"
+    examples: [4000, 4096, 4173, 4329, 5001, 7099, 8090, 8091, 8092, 8094, 8100, 8444, 8931, 9222, 39570, 46590]
+  hermes_observability_note: "2026-09-12 re-probe (FI-008): HERMES binds NO TCP port — historic :8444 public bind and mcp_port 18086 are both dead (tombstoned in hermes entry above). Gateway = Telegram long-poll outbound + stdio MCP children. The 8444 example in sub_process_out_of_scope is retained as 2026-08-06 audit history."
+
+# Explicit non-components (naming traps — do not register as organs)
+non_components:
+  - id: i-arif
+    reason: "PROMOTED_TO_ORGAN — refactored 2026-08-12 per F13 SOVEREIGN directive. Class: IDENTITY. FI-000. bound_to: F13-SOVEREIGN."
+  - id: apex-as-organ
+    reason: judgment_absorbed_into_arifos_aaa_path
+  - id: eureka-zen-draft
+    reason: future_abi_ledger_design_not_live_topology
+
+authority_chain:
+  - arif_init
+  - arif_observe
+  - arif_think
+  - arif_route
+  - domain_evidence
+  - arif_judge
+  - arif_forge
+  - a_forge_execute
+  - arif_seal
+
+links:
+  human_map: /root/AAA/docs/ORGAN.md
+  contract: /root/FEDERATION_CONTRACT.md
+  agents_doctrine: /root/AGENTS.md
+  mcp_ops: /root/AAA/docs/MCP_FEDERATION_ZEN.md
+  runbook: /root/RUNBOOK.md

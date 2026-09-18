@@ -1,0 +1,18 @@
+{
+  "tombstone_operation": "graphiti fs cleanup",
+  "operation_date": "2026-09-18T06:47:00Z",
+  "actor": "333-AGI / BIJAKSANA-compile T9-C",
+  "files_archived": [
+    "/root/.hermes/mcp/graphiti/acceptance_test.py",
+    "/root/.hermes/mcp/graphiti/config.base.yaml",
+    "/root/.hermes/mcp/graphiti/config.yaml",
+    "/etc/systemd/system/graphiti-mcp.service.d/override.conf"
+  ],
+  "archive_path": "/root/BACKUPS/graphiti-retired-20260918/",
+  "reversibility": "REVERSIBLE (move back)",
+  "f13_required": false,
+  "scar_anchor": "graphiti-* DEPRECATED_RETIRED_888 tombstone",
+  "linked_remaining": [
+    "/root/A-FORGE/src/domain/probes/shadowMcpDetector.ts (string literal 'graphiti-mcp' — code-level reference, not fs)"
+  ]
+}

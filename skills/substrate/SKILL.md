@@ -2,15 +2,14 @@
 id: substrate
 name: substrate
 version: 1.0.0-2026.07.17
-description: "Substrate-layer skills for federation organs. See subdirectories for specialized substrate skills. [fed: tier=fed-agent-subagent, floors=[, auto=T0, risk=low]"
+description: "Substrate-layer skills for federation organs. See subdirectories for specialized substrate skills. "
 owner: AAA
 risk_tier: low
 floor_scope: ['F1']
 autonomy_tier: T0
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----
-# AAA Skills Substrate
+---# AAA Skills Substrate
 
 > **Status:** INFRA · **Owner:** AAA · **Tier:** T0
 

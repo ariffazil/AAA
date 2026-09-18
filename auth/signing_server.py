@@ -216,9 +216,31 @@ class SigningHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self._cors_headers(origin_ok)
             self.end_headers()
+            # T20/T27 (2026-09-18): health must report CAPABILITY, not just liveness.
+            # A lane that cannot sign is up-but-incapable, and /health previously said
+            # {"status":"ok"} while every request was refused. That trained monitors to
+            # treat a dead lane as healthy.
+            _pam_user = os.environ.get("AAA_PAM_USER", "").strip()
+            try:
+                import pam as _pam_probe  # noqa: F401
+
+                _pam_ok = True
+            except ImportError:
+                _pam_ok = False
+            _key_ok = _CACHED_PRIVATE_KEY is not None
+            _can_sign = bool(_key_ok and _pam_user and _pam_ok)
             self.wfile.write(
                 json.dumps(
-                    {"status": "ok", "service": "aaa-signing", "key_loaded": _CACHED_PRIVATE_KEY is not None}
+                    {
+                        "status": "ok" if _can_sign else "degraded",
+                        "service": "aaa-signing",
+                        "key_loaded": _key_ok,
+                        # capability block — added so a dead lane cannot report healthy
+                        "can_sign": _can_sign,
+                        "sovereign_presence_guard": "CONFIGURED" if _pam_user else "UNCONFIGURED",
+                        "pam_module_available": _pam_ok,
+                        "serving": True,
+                    }
                 ).encode()
             )
             return
@@ -288,23 +310,36 @@ class SigningHandler(BaseHTTPRequestHandler):
                 canonical_payload if canonical_payload else json.dumps({"challenge_id": challenge_id, "verified": True})
             )
         else:
-            # Legacy path — deprecated, logged
-            logger.warning("LEGACY: signing raw canonical_json without challenge verification (deprecated path)")
-            payload_to_sign = canonical_json
+            # Legacy path — FAIL CLOSED. Challenge verification is mandatory.
+            logger.warning("REJECTED: legacy canonical_json without challenge_id (fail-closed)")
+            self.send_response(400)
+            self.end_headers()
+            self.wfile.write(b'{"error":"challenge_id required; legacy canonical_json path removed"}')
+            return
 
-        # PAM credential confirmation (transitional — not sovereign presence proof)
+        # PAM credential confirmation — FAIL CLOSED.
+        # AAA_PAM_USER must be set; missing credential = refuse to sign.
         pam_user = os.environ.get("AAA_PAM_USER", "")
-        if pam_user:
-            try:
-                import pam
+        if not pam_user:
+            logger.warning("REJECTED: AAA_PAM_USER not set — signing refused (fail-closed)")
+            self.send_response(401)
+            self.end_headers()
+            self.wfile.write(b'{"error":"AAA_PAM_USER not configured; signing requires credential"}')
+            return
+        try:
+            import pam
 
-                if not pam.authenticate(pam_user, os.environ.get("AAA_PAM_PASS", "")):
-                    self.send_response(401)
-                    self.end_headers()
-                    self.wfile.write(b'{"error":"pam authentication failed"}')
-                    return
-            except ImportError:
-                pass  # PAM not available — skip (transitional)
+            if not pam.authenticate(pam_user, os.environ.get("AAA_PAM_PASS", "")):
+                self.send_response(401)
+                self.end_headers()
+                self.wfile.write(b'{"error":"pam authentication failed"}')
+                return
+        except ImportError:
+            logger.error("REJECTED: python-pam module not available — cannot verify credential")
+            self.send_response(503)
+            self.end_headers()
+            self.wfile.write(b'{"error":"PAM module unavailable; signing requires credential verification"}')
+            return
 
         try:
             private_key_bytes = load_sovereign_key()

@@ -57,7 +57,9 @@ Enjin melapor. Manusia yang putuskan. Yang benar dikarang, bukan diberi percuma.
 - [ ] The gap is statable in one sentence, and it survived the steelman
 - [ ] Every number traced to a Tier 1 or Tier 2 source; no Tier 3 numbers anywhere
 - [ ] POV is a human inside the story, not the analyst
-- [ ] No named individual degraded — the criticism lands on the system
+- [ ] Any individual named is charged through their **decisions and role**, never through their dignity — no family, body, private life, or motive asserted as fact; the editorial read sits in an `INT` row that declares itself interpretation, not allegation
+- [ ] The frame leaves the subject no exit — an incompetence charge invites "it was a mistake", a willing-compliance charge does not
+- [ ] Any column or document supplied as the hook was fetched, and its **byline and issue date** verified before building on it
 - [ ] Insider colour anonymised; nothing narrows to one identifiable desk
 - [ ] Closes on a question, not a summary
 - [ ] Seal footer, source line, and epistemic tags present
