@@ -1,0 +1,118 @@
+{
+  "distillate_id": "DISTILLATE-CHRON-GAP-FOR-ARIF-SYED-2026-09-18",
+  "source": "Arif F13 directive (telegram msg 155405) — CHRON task grammar shift + missing care for Arif & Syed",
+  "method": "every spine function tested against disk: does it fire, does it store, does it feed the next arrow?",
+
+  "the_core_shift": {
+    "old": "Agent instructions named by artifact: 'Generate Card', 'Create Briefing', 'Send Digest'",
+    "new": "Agent instructions named by spine position: OBSERVE, RECONCILE, PREDICT, VERIFY, LEARN, ROUTE",
+    "why_it_matters": "An agent told 'generate briefing' optimizes for the briefing. An agent told 'OBSERVE material change' optimizes for detecting what actually moved. The first is content production. The second is intelligence."
+  },
+
+  "spine_function_audit": {
+    "OBSERVE": {
+      "what_fires": "06:00 docforge (news + market + organs → PDF); 06:45 morning_state (calendar + mail + weather + sleep + joy → DM)",
+      "what_stores": "Neither feeds a ChronPacket. Neither produces observations[]. Both produce rendered artifacts.",
+      "gap_for_arif": "Arif's first observation of the day arrives as a PDF he must open and read. There is no 'material change detected' signal — only a curated document. If nothing material changed, he still gets a document.",
+      "gap_for_syed": "ZERO observations about Syed's domain (fitness, recovery, body state). WELL has 27 tools but delivers nothing to the spine."
+    },
+    "RECONCILE": {
+      "what_fires": "chron.py filters events by audience ('arif' vs 'syed' vs 'both'). card.py renders filtered cards.",
+      "what_stores": "audience field on events. truth_score vs relevance_score separation declared in code (chron.py:83) but never scored — both are flat integers.",
+      "gap_for_arif": "No relevance scoring. Arif gets the same signal strength for 'Brent moved $2' as for 'OD1 is 164 days away'. What matters NOW is not computed.",
+      "gap_for_syed": "Nothing. No Syed-specific reconciliation exists."
+    },
+    "PREDICT": {
+      "what_fires": "NIAT picker (22:30) — but it picks INTENTIONS, not predictions. It does not say 'I expect X to happen'.",
+      "what_stores": "ZERO predictions anywhere in the system. chron.py has 0 prediction references. The only 'prediction' file is predict_gate.js in the a2a server (unrelated).",
+      "gap_for_both": "No predictions are stored. This is the empty set. Everything downstream of prediction (verify, calibrate, learn) has no input.",
+      "this_is_the_gap": "The 27-section architecture says 'prediction becomes first-class node' and 'failed predictions are more valuable than correct ones'. We have zero predictions to fail."
+    },
+    "VERIFY": {
+      "what_fires": "Nothing.",
+      "what_stores": "Nothing. proof_pack.py mentions 'prediction/outcome/lesson schema' in comments. ledger_admin.py has an 'observed_outcome' field. Neither is connected to anything.",
+      "gap_for_both": "Cannot verify what was never predicted. The verify_at / expected / observed / error fields do not exist on any live object."
+    },
+    "LEARN": {
+      "what_fires": "Nothing.",
+      "what_stores": "causal_spine.py references UNRATIFIED-LESSONS-LEDGER.jsonl in /root/AAA/governance/ (chattr +i — immutable). The path exists but nothing writes to it.",
+      "gap_for_both": "Lessons are never extracted. The memory metabolism (RAW→EPISODE→LESSON→POLICY) has zero inputs. Its first cell is empty."
+    },
+    "ROUTE": {
+      "what_fires": "Every job fires at its clock regardless of whether material change exists.",
+      "what_stores": "ZERO jobs carry delivery_policy. SILENT_OK exists as a prompt word in the ALPHA-ZEN template but is not enforced by any mechanism.",
+      "gap_for_arif": "If nothing material changed since yesterday, Arif still gets a PDF, a DM, and potentially a group message. SILENT is never chosen by the system — only by the LLM's judgment at prompt time.",
+      "gap_for_syed": "Syed gets nothing regardless — no route to him exists."
+    },
+    "REFLECT": {
+      "what_fires": "NIAT picks intentions for tomorrow. Night signal (21:15 ALPHA-ZEN) sends a card.",
+      "what_stores": "NIAT outcomes: never compared to intentions. Night signal: has never fired.",
+      "gap_for_arif": "Arif picks intentions at 22:30. The next morning, nobody checks whether those intentions survived contact with reality.",
+      "gap_for_syed": "Nothing."
+    }
+  },
+
+  "the_five_gaps_ranked": [
+    {
+      "rank": 1,
+      "gap": "NO PREDICTIONS STORED",
+      "why_first": "This is the empty set that makes all downstream arrows impossible. Without predictions, there is nothing to verify, nothing to calibrate, nothing to learn from. The entire back half of the spine is structurally blocked.",
+      "what_to_build": "A prediction store (append-only) that captures: what the system expects will happen, by when, with what confidence, and for whom. Even a simple one — 'I predict Brent will stay above $100 through September' — gives VERIFY something to check.",
+      "what_not_to_build": "A prediction ENGINE. Just store what the morning observation implies."
+    },
+    {
+      "rank": 2,
+      "gap": "NO ROUTE MECHANISM — SILENT IS A PROMPT WORD",
+      "why": "Every job fires regardless. If nothing changed, Arif still gets a message. This burns attention for no value. The system has no way to say 'today is quiet — stay silent'. That's a routing gap, not a content gap.",
+      "what_to_build": "delivery_policy as a machine-enforced field on jobs: ALWAYS (Arif DM must arrive), MATERIAL_ONLY (only if observations changed), SILENT_OK (system may choose silence). The 06:45 and 14:00 slots should start as MATERIAL_ONLY.",
+      "what_not_to_build": "A new producer. Just enforce silence on existing ones."
+    },
+    {
+      "rank": 3,
+      "gap": "ZERO SYED SIGNALS IN THE SPINE",
+      "why": "Syed is half the ALPHA-ZEN audience. His domain (fitness, recovery, strength) has signals in WELL (27 tools) but ZERO flow into CHRON. The group message is written 'for both' but contains nothing from Syed's reality.",
+      "what_to_build": "One WELL→CHRON bridge: sleep quality, training status, recovery readiness. One observation per day. That's enough to make the shared card grounded in both humans.",
+      "what_not_to_build": "A Syed dashboard. One signal per day."
+    },
+    {
+      "rank": 4,
+      "gap": "NO VERIFY → LEARN ARROW",
+      "why": "Even if predictions existed, there's no mechanism to check them against outcomes and extract lessons. The lessons ledger exists but is immutable and disconnected.",
+      "what_to_build": "After predictions exist: a weekly verify job that compares predictions against outcomes and writes LESSON_CANDIDATE to an append-only file. Not policy — just candidates.",
+      "what_not_to_build": "A learning engine. Just write candidate lessons."
+    },
+    {
+      "rank": 5,
+      "gap": "NO REFLECT FEEDBACK LOOP",
+      "why": "NIAT picks intentions but never checks outcomes. The night card has never fired. Arif's 'what should carry into tomorrow' has no input from 'what actually happened today'.",
+      "what_to_build": "After VERIFY exists: NIAT reads the day's verified outcomes and compares them to its picked intentions. That's the reflection loop.",
+      "what_not_to_build": "A new reflection surface. Just feed NIAT the verify output."
+    }
+  ],
+
+  "grammar_proposal_status": {
+    "accepted": "The grammar shift is correct and should be adopted NOW. Every agent instruction should reference its spine position, not its output format.",
+    "implementation": "This is a naming convention, not a code change. The 14:00 job prompt already does this partially — it says 'THE WHOLE CONTRACT IS BELOW' and defines the question. But it doesn't label itself as 'function: reconcile' or carry delivery_policy.",
+    "concrete_change": "The three ALPHA-ZEN jobs should be re-prompted with the grammar prefix: function/question/audience/delivery_policy/output/renderer. That changes what the model optimizes for without changing any code.",
+    "not_a_code_change": "This is a prompt architecture change. The grammar goes into the prompt. The renderer stays the same."
+  },
+
+  "what_the_dossier_confirms_we_already_knew": [
+    "CHRON is not a scheduler — confirmed across 3 independent analyses",
+    "The shell is plastic, the spine is what matters — confirmed",
+    "Bitemporal is the minimum — confirmed from literature + local audit",
+    "Most observations should die — confirmed (forgetting is essential)",
+    "Failed predictions are more valuable than correct ones — confirmed",
+    "SILENT is an intelligent action — confirmed"
+  ],
+
+  "what_the_dossier_adds_we_didn't_have": [
+    "Event Calculus as the formal reasoning layer (corrected: not storage, but query)",
+    "ATTENTION_EVENT as first-class (the non-selection IS the signal)",
+    "The grammar: every task named by spine position, not artifact",
+    "Arif's deepest need reframed: not 'more information' but 'calibrated attention'",
+    "Syed's deepest need: ANY signal at all — the system is blind to his reality"
+  ],
+
+  "next_single_action": "The 14:00 fire is 115 minutes out. If it fires and delivers, we have our first arrow. If it doesn't, the gap is proven. Nothing the grammar changes can substitute for that observation."
+}
