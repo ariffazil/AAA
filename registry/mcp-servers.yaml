@@ -106,6 +106,31 @@ organs:
     bind: loopback
     wired_to: [qwen-code, hermes]
 
+  chron:
+    name: CHRON
+    endpoint: http://localhost:18102/mcp
+    protocol: "2025-03-26"
+    transport: http-streamable
+    role: temporal
+    authority: COMPUTE_ONLY
+    tools_count: 8
+    tools:
+      - chron_predictions_due
+      - chron_calibration_state
+      - chron_last_loop
+      - chron_active_events
+      - chron_active_predictions
+      - chron_store_stats
+      - chron_temporal_briefing
+      - chron_generate_predictions
+      - chron_record_verification
+    description: "Temporal consequence tracker — predicts, verifies, calibrates, learns. The8th organ. Not a scheduler. Not a memory store."
+    health_endpoint: http://localhost:18102/health
+    bind: loopback
+    note: "FastMCP 3.x streamable-http. Verification cron at /root/chron/verify_due.py (23:30 MYT daily). First falsification window: 2026-09-23."
+    registered_at: "2026-09-19T01:40:00+08:00"
+    registered_by: "FI-003 (F13 directive)"
+
   iarif:
     name: i-ARIF
     endpoint: http://localhost:18095/mcp
@@ -204,7 +229,7 @@ roles:
 
   sovereign:
     description: "Full access — F13 only"
-    organs: [kernel, aforge, geox, wealth, well, frame, iarif, fed, aaa, arifflow]
+    organs: [kernel, aforge, geox, wealth, well, frame, chron, iarif, fed, aaa, arifflow]
     capabilities: [observe, compute, execute, mutate, judge, seal]
 
 # ─────────────────────────────────────────────────────────────
@@ -214,7 +239,7 @@ forge_instruments:
   opencode:
     id: FI-001
     name: OpenCode
-    mcp_servers: [kernel, aforge, geox, wealth, well, arifflow, hermes-mcp]
+    mcp_servers: [kernel, aforge, geox, wealth, well, chron, arifflow, hermes-mcp]
     missing: [fed]
     role: builder
     note: "Most capable agent config — missing FED"
@@ -222,45 +247,45 @@ forge_instruments:
   claude:
     id: FI-002
     name: Claude Code
-    mcp_servers: [kernel, aforge, geox, wealth, well, fed, arifflow, hermes-mcp]
+    mcp_servers: [kernel, aforge, geox, wealth, well, chron, fed, arifflow, hermes-mcp]
     role: builder
     note: "Full federation +19 utility MCPs (richest utility surface)"
 
   qwen:
     id: FI-003
     name: Qwen Code
-    mcp_servers: [kernel, aforge, geox, wealth, well, fed, arifflow, hermes-mcp]
+    mcp_servers: [kernel, aforge, geox, wealth, well, chron, fed, arifflow, hermes-mcp]
     role: builder
     note: "Full federation access via HTTP"
 
   kimi:
     id: FI-008
     name: Kimi Code
-    mcp_servers: [kernel, aforge, geox, wealth, well, fed, arifflow, hermes-mcp]
+    mcp_servers: [kernel, aforge, geox, wealth, well, chron, fed, arifflow, hermes-mcp]
     role: researcher
     note: "Full federation access — uses stdio launchers"
 
   codex:
     id: FI-005
     name: Codex CLI
-    mcp_servers: [kernel, aforge, geox, wealth, well, fed, arifflow, hermes-mcp]
+    mcp_servers: [kernel, aforge, geox, wealth, well, chron, fed, arifflow, hermes-mcp]
     role: builder
     note: "Full federation +4 utility MCPs (fetch, context7, brave, github)"
 
   grok:
     id: FI-007
     name: Grok
-    mcp_servers: [kernel, aforge, geox, wealth, well, fed, arifflow, hermes-mcp]
+    mcp_servers: [kernel, aforge, geox, wealth, well, chron, fed, arifflow, hermes-mcp]
     role: architect
     note: "Full federation — cleanest config, no utility MCPs"
 
   hermes:
     id: hermes-prime
     name: Hermes
-    mcp_servers: [kernel, aforge, geox, wealth, well, arifflow, frame, aaa, fed, hermes-mcp]
+    mcp_servers: [kernel, aforge, geox, wealth, well, chron, arifflow, frame, aaa, fed, hermes-mcp]
     missing: []
     role: governor
-    note: "Telegram gateway — full federation (9 MCP servers)"
+    note: "Telegram gateway — full federation (10 MCP servers)"
 
   copilot:
     id: FI-006
@@ -272,7 +297,7 @@ forge_instruments:
   antigravity:
     id: FI-009
     name: Antigravity CLI
-    mcp_servers: [kernel, aforge, fed, geox, wealth, well, context7, hermes-mcp]
+    mcp_servers: [kernel, aforge, fed, geox, wealth, well, chron, context7, hermes-mcp]
     role: builder
     note: "Pair-programming harness — connected to core organs + FED + Context7"
 
