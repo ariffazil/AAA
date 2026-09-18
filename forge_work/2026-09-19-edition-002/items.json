@@ -1,0 +1,78 @@
+{
+  "_schema": "docforge.brief-items/v1",
+  "_note": "Edition 002 tracked items. Each item carries an explicit claim lifecycle so tomorrow's delta is a set operation over recorded state, not a prose diff. claim_state: NEW | OPEN | MOVED | CONTESTED | SETTLED | RETRACTED. section: SITUATION | WALL | VOID | EUREKA | RISK | OWN.",
+  "items": [
+    {
+      "item_id": "petros-lng-jurisdiction",
+      "section": "SITUATION",
+      "title": "Whether LNG exported from Bintulu falls under PETROS or stays with PETRONAS",
+      "claim_state": "CONTESTED",
+      "summary": "No document in the public record defines the boundary for the export molecule specifically. The dispute is live at the Federal Court on the constitutional question underneath it, which means the commercial question cannot settle before the constitutional one does. Unchanged from Edition 001.",
+      "source": "Federal Court leave granted 16 March 2026; Sarawak petition February 2026"
+    },
+    {
+      "item_id": "fc-hearing-date",
+      "section": "WALL",
+      "title": "Federal Court full hearing date on the PDA 1974 challenge",
+      "claim_state": "OPEN",
+      "summary": "Leave was granted, so the appeal exists. No date for the full hearing is in the public record. This is UNRESOLVED rather than WITHDRAWN: the date is knowable, the court simply has not set it publicly. It will appear, and this item is what notices when it does.",
+      "source": "no hearing date published as of this edition"
+    },
+    {
+      "item_id": "petroleum-revenue-projection",
+      "section": "WALL",
+      "title": "The RM10-20 billion petroleum revenue projection",
+      "claim_state": "CONTESTED",
+      "summary": "The range circulates without a filing behind it. Two published readings disagree and neither is traceable to a document. Labelled CONTESTED rather than estimated, because an estimate carries a method and this does not.",
+      "source": "no primary document located — range appears in secondary commentary only"
+    },
+    {
+      "item_id": "budget-2027-tabling",
+      "section": "SITUATION",
+      "title": "Budget 2027 tabled in Parliament, 9 October 2026",
+      "claim_state": "OPEN",
+      "summary": "Tabled 9 October, 21 days from this edition. The petroleum dividend figure and the fuel subsidy line become checkable on that date. This is the point at which the projection item above either acquires a source or does not.",
+      "source": "MOF pre-budget statement 2027"
+    },
+    {
+      "item_id": "unclaimed-money-register",
+      "section": "VOID",
+      "title": "RM13.3 billion of unclaimed money with the Accountant-General",
+      "claim_state": "OPEN",
+      "summary": "Not a news item, which is exactly why it stays unknown: it is a register nobody markets. Verifiable by the individual in about a minute using an identity card. Structurally the same shape as any unclaimed entitlement — it belongs to someone who does not know it exists.",
+      "source": "Accountant-General unclaimed money register, January 2026"
+    },
+    {
+      "item_id": "epf-nomination-void",
+      "section": "VOID",
+      "title": "Nomination voiding silently on a change of marital status",
+      "claim_state": "OPEN",
+      "summary": "A nomination made before a marriage is not automatically the nomination that applies after it. The failure is silent and is discovered by survivors. The fund itself has publicly corrected circulating messages on this, which is the reason to take it from the fund rather than from a forwarded message.",
+      "source": "EPF public statements correcting viral nomination claims"
+    },
+    {
+      "item_id": "electricity-threshold-reversion",
+      "section": "RISK",
+      "title": "Electricity protection threshold reverts 800 to 600 kWh on 1 January 2027",
+      "claim_state": "OPEN",
+      "summary": "105 days from this edition. The extended band was a temporary widening; the underlying automatic fuel adjustment mechanism continues underneath it and its December reading is projected at the highest of the year. The reversion and the adjustment land in the same window, which is where a household bill can move twice.",
+      "source": "automatic fuel adjustment schedule"
+    },
+    {
+      "item_id": "deepfake-intimate-image-protection",
+      "section": "EUREKA",
+      "title": "AI-generated intimate images fall inside the criminal definition",
+      "claim_state": "NEW",
+      "summary": "The 2026 cybercrime amendments bring synthetically generated intimate images within the offence rather than leaving them outside it. Worth knowing before it is needed, because the person who needs it is usually already under attack when they find out.",
+      "source": "Cybercrimes Bill 2026, clause 24"
+    },
+    {
+      "item_id": "index-below-2014-peak",
+      "section": "EUREKA",
+      "title": "The market index is still below its own 2014 peak",
+      "claim_state": "SETTLED",
+      "summary": "Twelve years under a high set in July 2014, while nominal output roughly doubled over the same period. A settled observation rather than a live signal: it is context for reading any claim about a market at a record.",
+      "source": "Bursa Malaysia index history"
+    }
+  ]
+}
