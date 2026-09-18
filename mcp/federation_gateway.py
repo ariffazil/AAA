@@ -31,6 +31,7 @@ ORGS: dict[str, dict[str, str]] = {
     "well": {"url": "http://127.0.0.1:18083/mcp", "desc": "WELL — Substrate Vitality"},
     "forge": {"url": "http://127.0.0.1:7072/mcp", "desc": "A-FORGE — Execution"},
     "kernel": {"url": "http://127.0.0.1:8088/mcp", "desc": "arifOS — Constitutional Kernel"},
+    "chron": {"url": "http://127.0.0.1:18102/mcp", "desc": "CHRON — Temporal Consequence Tracker"},
     # frame (:18085) and flow (:7073) don't expose /mcp HTTP endpoint
 }
 
