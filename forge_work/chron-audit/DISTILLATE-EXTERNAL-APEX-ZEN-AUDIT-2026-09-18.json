@@ -1,0 +1,94 @@
+{
+  "distillate_id": "DISTILLATE-EXTERNAL-APEX-ZEN-AUDIT-2026-09-18",
+  "source": "external APEX-ZEN audit pasted by F13 (telegram msg 155317)",
+  "method": "every checkable claim re-derived from disk; nothing imported whole",
+  "rule": "external analysis enters as CLAIMS with state, never as fact",
+
+  "admitted_as_correct": [
+    {
+      "claim": "07:15 / 14:00 / 21:15 ALPHA-ZEN deliver to the SADO group.",
+      "verified": true,
+      "how": "channel_directory.json resolves -1003815535761 as name='SADO' type=group; the three jobs carry deliver=telegram:-1003815535761",
+      "consequence": "The audit's routing map is right on this row. SADO, not AAA."
+    },
+    {
+      "claim": "06:30 morning_briefing goes to the AAA group, execution proven.",
+      "verified": true,
+      "how": "TELEGRAM_MORNING_BRIEF_TARGET=-1003753855708 (env:499) overrides chat id at morning_briefing.py:216; channel_directory resolves that id as 'AAA' type=group",
+      "consequence": "Already recorded. The audit agrees."
+    },
+    {
+      "claim": "06:00 docforge delivers to Arif DM; first auto-fire is tomorrow.",
+      "verified": true,
+      "how": "jobs.json docforge-edition-daily: created 2026-09-18T09:34, schedule 0 6 * * *, next_run 2026-09-19T06:00, deliver telegram:267378578",
+      "consequence": "Correct. Note this job lives on KVM8, not KVM4 — the audit does not repeat the earlier KVM4 mis-attribution."
+    },
+    {
+      "claim": "The 23.5-hour DM gap is real.",
+      "verified": true,
+      "how": "one confirmed DM surface at 06:45; nothing else reaches 267378578 on a schedule",
+      "consequence": "Accepted. But see refutations — the gap is narrower than '23.5 hours of silence' implies, because 06:00 and 06:45 both land in the morning window."
+    },
+    {
+      "claim": "Human reality has no representation in the pipeline; delivery is clock-driven, not context-driven.",
+      "verified": "true as stated",
+      "how": "no job reads Arif's readiness, location, or attention state before sending",
+      "consequence": "ADOPTED as framing. It is the correct description of the architecture and it costs nothing to accept."
+    }
+  ],
+
+  "refuted": [
+    {
+      "claim": "06:45 — 'CONFIGURED + STATE PROVEN, delivery UNKNOWN'. Also: 'No delivery receipts for 06:45'.",
+      "verdict": "FALSE",
+      "measured": "/root/WELL/state/digest_delivery_log.jsonl holds 5 receipts. The latest is 2026-09-17T22:45:05Z chat=267378578 status=SENT — that UTC timestamp IS 06:45 MYT on 18 Sep.",
+      "root_cause_of_the_error": "the receipt log stamps UTC while the schedule is MYT (+08). A reader filtering for '2026-09-18' finds zero rows and concludes no delivery. The same UTC/MYT trap caught this lane earlier today.",
+      "correction": "06:45 delivery is PROVEN, not unknown. It is the ONLY surface in the federation with a delivery receipt at all."
+    },
+    {
+      "claim": "No registry maps -1003753855708 -> 'AAA group' or 267378578 -> 'Arif DM'; agents reverse-engineer this every session.",
+      "verdict": "FALSE",
+      "measured": "/root/.hermes/channel_directory.json, 5134 bytes, resolves every id: 267378578 name='ARIF' type=dm; -1003753855708 name='AAA / topic N' type=group (10 topics); -1003815535761 name='SADO' type=group",
+      "root_cause_of_the_error": "the registry exists and is complete; the analyst did not read it",
+      "correction": "the lookup table the audit proposes already exists. Building a second one would be a duplicate producer for a resolved problem."
+    },
+    {
+      "claim": "DEPLOYMENT_DRIFT label beats drift:false; reason_code defaults override measurement.",
+      "verdict": "WRONG MECHANISM — the instinct is right, the location is wrong",
+      "measured": "tools.py:163 returns the payload UNTOUCHED unless _payload_has_deployment_drift() is true. All of _force_no_mutate / _force_verdict_keys / _force_nine / _force_standing sit inside that guard. So reason_code = reason_code or 'DEPLOYMENT_DRIFT' (line 224) fires only AFTER drift was measured. It names a measured drift; it does not substitute for measurement.",
+      "the_real_mechanism": "line 140: `if sub.get('state') == 'DEGRADED' or sub.get('drift') is True`. Here a DEGRADED LABEL is accepted as equivalent to a MEASURED drift flag. That is the actual label-beats-measurement point, and it is one token wide: an OR where the two sides are not the same kind of thing.",
+      "note": "F13 identified this correctly earlier (state=DEGRADED producing drift even when drift=false). The external audit restated a true finding at the wrong address, which would have sent a fixer to patch line 224 — the one line that is already correct."
+    },
+    {
+      "claim": "'No routing state machine' / 'routing is unproven'.",
+      "verdict": "OVERSTATED",
+      "measured": "routing for the two live paths IS proven: 06:30 -> AAA by env-var override, 06:45 -> DM by hardcoded id plus a SENT receipt. The three ALPHA-ZEN jobs are UNPROVEN because they have never fired — which is a different statement from 'routing is unproven'.",
+      "correction": "unproven-by-absence-of-cycles, not unproven-by-absence-of-mechanism"
+    }
+  ],
+
+  "the_finding_the_audit_stumbled_near": {
+    "statement": "The 06:45 receipt proves SENT but carries msg_id=None. It cannot prove WHAT was sent.",
+    "why_it_matters": "This is E13 in the delivery layer. A receipt that does not bind to the artifact it carried proves a channel, not an event. F13's own arrow protocol already requires TELEGRAM ACCEPTED to name a message id — this receipt cannot satisfy that arrow.",
+    "consequence": "The audit's CONCLUSION was wrong (delivery is not unknown) but its discomfort was pointing at something real: delivery is proven, CONTENT BINDING is not.",
+    "adopted": true
+  },
+
+  "adopted_into_our_system": [
+    "Channel directory read BEFORE any routing claim — it resolves every id we use, so no agent needs to reverse-engineer one.",
+    "Receipt content-binding flagged as a real gap: msg_id=None means SENT is proven and payload is not.",
+    "DEPLOYMENT_DRIFT real mechanism localised to tools.py:140 (state=='DEGRADED' accepted as drift proof), NOT line 224.",
+    "Kernel contradiction elevated: it is upstream of CHRON because any CHRON signal reading kernel state inherits a mislabelled verdict.",
+    "The 'clock-driven vs context-driven' framing adopted as the correct description of the delivery architecture."
+  ],
+
+  "not_adopted": [
+    "Build a routing registry — one already exists and is complete.",
+    "Treat 06:45 delivery as unknown — it has the only real receipt in the federation.",
+    "Patch reason_code defaults — measured as already correct; the defect is at line 140."
+  ],
+
+  "agreement_with_the_audit_on_sequencing": "Nothing before 14:00. Observe the fire, then decide. The audit's decision tree (MISSING / DUPLICATE / CONTRADICTED / UNPROVEN -> build only what observation proves missing) matches the freeze this lane is already holding.",
+
+  "next": "14:00 MYT. Measure the arrow chain; supersede the VOID claim with an OBS. Nothing else."
+}
