@@ -3,7 +3,7 @@
   "schemaVersion": "2.2.0",
   "id": "makcikgpt",
   "name": "MakcikGPT Investigative Persona",
-  "description": "Investigative journalism persona \u2014 jiran-jiran, Bahasa Makcik. Evidence-first, soalan tajam. Lives under WEALTH organ. Uses BBB dataset as pathology baseline. DRAFT_ONLY \u2014 no deployment without F13 SEAL. Evidence chain wajib before 999. Defamation-aware: 'kartel struktur' not 'kartel'. Missing sources flagged before seal.",
+  "description": "Investigative journalism persona — jiran-jiran, Bahasa Makcik. Evidence-first, soalan tajam. Lives under WEALTH organ. Uses BBB dataset as pathology baseline. DRAFT_ONLY — no deployment without F13 SEAL. Evidence chain wajib before 999. Defamation-aware: 'kartel struktur' not 'kartel'. Missing sources flagged before seal.",
   "version": "2.0.0",
   "protocolVersion": "1.2",
   "url": "https://aaa.arif-fazil.com/a2a/makcikgpt",
@@ -18,7 +18,7 @@
   "principal_agent": {
     "type": "llm",
     "category": "Persona-bound agent (MakcikGPT)",
-    "principle_origin": "MAKCIKGPT-999\ud83c\udf3a"
+    "principle_origin": "MAKCIKGPT-999🌺"
   },
   "capabilities": {
     "streaming": false,
@@ -64,9 +64,9 @@
     ]
   },
   "autonomy_tiers": {
-    "T1_auto": "Observe, analyze, draft \u2014 read-only",
+    "T1_auto": "Observe, analyze, draft — read-only",
     "T2_announce": "Draft report for review",
-    "T3_888_HOLD": "Publish, deploy, seal \u2014 requires F13"
+    "T3_888_HOLD": "Publish, deploy, seal — requires F13"
   },
   "scopes": [
     "OBSERVE",
@@ -101,7 +101,7 @@
       "timestamp": "2026-07-01T18:00:00Z"
     },
     "ai": {
-      "witness_id": "MAKCIKGPT-999\ud83c\udf3a",
+      "witness_id": "MAKCIKGPT-999🌺",
       "attestation": "SEAL",
       "timestamp": "2026-07-01T18:00:00Z"
     },
@@ -113,55 +113,9 @@
   },
   "skills": [
     {
-      "id": "KERNEL-reality-skills",
-      "name": "Reality Skills (F2 Grounding)",
-      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
-      "tags": [
-        "kernel",
-        "f2",
-        "reality",
-        "grounding"
-      ],
-      "floor_scope": [
-        "F2",
-        "F7",
-        "F9"
-      ]
-    },
-    {
-      "id": "KERNEL-sovereign-recognize",
-      "name": "Sovereign Recognition (F13)",
-      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
-      "tags": [
-        "kernel",
-        "f13",
-        "sovereign",
-        "identity"
-      ],
-      "floor_scope": [
-        "F13"
-      ]
-    },
-    {
-      "id": "KERNEL-session-inhabit",
-      "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
-      "tags": [
-        "kernel",
-        "session",
-        "lifecycle",
-        "000-999"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4",
-        "F11"
-      ]
-    },
-    {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -189,26 +143,13 @@
       ]
     },
     {
-      "id": "KERNEL-mcp-zen",
-      "name": "MCP Zen Architecture",
-      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
-      "tags": [
-        "kernel",
-        "mcp",
-        "zen",
-        "architecture"
-      ],
-      "floor_scope": [
-        "F4",
-        "F11"
-      ]
+      "id": "KERNEL-trinity-33",
+      "_normalised": "bare string -> object (schema conformity, afpass-W1)"
     },
-    "KERNEL-sovereign-recognize",
-    "KERNEL-trinity-33",
-    "KERNEL-session-inhabit",
-    "RSI-recursive-improvement",
-    "SHADOW-diagnostic",
-    "CLAIM-verification-gate"
+    {
+      "id": "RSI-recursive-improvement",
+      "_normalised": "bare string -> object (schema conformity, afpass-W1)"
+    }
   ],
   "mcp_surface": {
     "type": "consumed",
@@ -324,7 +265,7 @@
     "created_at": "2026-07-01T18:00:00Z",
     "expires_at": "2027-07-01T18:00:00Z",
     "migrated_to_v2.0.0": "2026-07-01T18:00:00Z",
-    "migrated_by": "FORGE (000\u03a9) \u2014 Phase 1 entropy reduction",
+    "migrated_by": "FORGE (000Ω) — Phase 1 entropy reduction",
     "doctrine": "DITEMPA BUKAN DIBERI",
     "kernel_deps": [
       "KERNEL-trinity-33",
@@ -370,7 +311,7 @@
       "from_version": "1.0.0",
       "to_version": "2.0.0",
       "upgraded_at": "2026-07-01T21:00:00Z",
-      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
+      "upgraded_by": "FORGE (000Ω) — Phase 5.1 A2A Protocol Alignment",
       "changes": [
         "topological_role binding",
         "a2a_transport declaration",
@@ -431,5 +372,96 @@
       "type": "Ed25519Signature2020"
     }
   ],
-  "did": "did:web:arif-fazil.com"
+  "did": "did:web:arif-fazil.com",
+  "_quarantined_skills": [
+    {
+      "id": "KERNEL-reality-skills",
+      "name": "Reality Skills (F2 Grounding)",
+      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
+      "tags": [
+        "kernel",
+        "f2",
+        "reality",
+        "grounding"
+      ],
+      "floor_scope": [
+        "F2",
+        "F7",
+        "F9"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-reality-skills"
+    },
+    {
+      "id": "KERNEL-sovereign-recognize",
+      "name": "Sovereign Recognition (F13)",
+      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
+      "tags": [
+        "kernel",
+        "f13",
+        "sovereign",
+        "identity"
+      ],
+      "floor_scope": [
+        "F13"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-sovereign-recognize"
+    },
+    {
+      "id": "KERNEL-session-inhabit",
+      "name": "Session Inhabit (Lifecycle)",
+      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "tags": [
+        "kernel",
+        "session",
+        "lifecycle",
+        "000-999"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-session-inhabit"
+    },
+    {
+      "id": "KERNEL-mcp-zen",
+      "name": "MCP Zen Architecture",
+      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
+      "tags": [
+        "kernel",
+        "mcp",
+        "zen",
+        "architecture"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-sovereign-recognize",
+      "id": "KERNEL-sovereign-recognize"
+    },
+    {
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-session-inhabit",
+      "id": "KERNEL-session-inhabit"
+    },
+    {
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/SHADOW-diagnostic",
+      "id": "SHADOW-diagnostic"
+    },
+    {
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/CLAIM-verification-gate",
+      "id": "CLAIM-verification-gate"
+    }
+  ],
+  "_skill_ref_reconciliation": {
+    "at": "2026-09-18",
+    "by": "afpass-W1",
+    "before": 12,
+    "after": 4,
+    "quarantined": 8,
+    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
+  }
 }

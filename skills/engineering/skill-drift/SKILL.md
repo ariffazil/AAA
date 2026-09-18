@@ -1,7 +1,7 @@
 ---
 name: skill-drift
 id: skill-drift
-version: 2.0.0
+version: 2.1.0
 description: >
   Drift detection, skill binding, and federated architecture management.
   Real-time drift detection across tool manifests, agent cards, skill registries, and runtime-injected files.
@@ -48,13 +48,15 @@ A unified skill covering three concerns:
 
 ### Drift Dimensions
 
-1. **Build vs Runtime Manifest Drift** — Canonical drift check via `arifOS/runtime/manifest.py` (`build_manifest` vs `runtime_manifest`)
+1. **Build vs Runtime Manifest Drift** — Canonical drift check via `arifOS/arifosmcp/runtime/manifest.py` (`build_manifest` vs `runtime_manifest`). Live witness: `GET :8088/health` → `layer_health.runtime.{source_commit, built_commit, runtime_matches_build, deployment_attestation}`. **If both commits read `null`, the honest verdict is `UNKNOWN`, not `degraded`** (pitfall 11).
 2. **Tool Manifest Drift** — Live MCP tools vs registered tools vs agent card references
 3. **Skill Registry Drift** — SKILL_ALIAS_TABLE vs actual directories vs agent card skill IDs
 4. **Agent Card Drift** — Card skill IDs vs existing skill directories
 5. **Schema Drift** — Tool input schemas vs documented schemas
 6. **Floor Drift** — Declared floor_scope vs actual floor enforcement
-7. **Verdict Taxonomy Drift** — Verdict emissions vs closed 6-value set (OBSERVE_ONLY|SEAL|SABAR|VOID|HOLD|888_HOLD)
+7. **Verdict Taxonomy Drift** — `verdict` / `effective_verdict` emissions vs `CANONICAL_VERDICTS`
+   (OBSERVE_ONLY|SEAL|SABAR|VOID|HOLD|888_HOLD). **Read the instrument caveat before reporting this
+   as a violation rate** — the key carries three vocabularies and the metric as written can never pass.
 
 ### Detection Pipeline
 
@@ -74,12 +76,24 @@ When dirty after clean commit: check if injected content was already committed �
 
 ### Baselines
 
-- **Canonical drift check**: `arifOS/runtime/manifest.py`
-- Tool registry: `/root/arifOS/tool_registry.json`
-- Agent cards: `/root/AAA/a2a-server/agent-cards/`
-- Skill alias: `/root/AAA/skills/SKILL_ALIAS_TABLE.json`
-- MCP surface: Live `tools/list` from each organ
-- Verdict taxonomy: `arifOS/runtime/verdict.py`
+> All paths re-probed on disk 2026-09-18. The three `arifOS/runtime/*` paths this list used to carry
+> were **dead** — the package was nested under `arifosmcp/` and the skill was never folded back.
+> A drift detector that cannot find its own baselines is the purest instance of what it detects.
+
+- **Canonical drift check**: `/root/arifOS/arifosmcp/runtime/manifest.py` (`build_manifest` vs `runtime_manifest`)
+- Tool registry: `/root/arifOS/arifosmcp/tool_registry.json` — and a **second** copy at
+  `/root/AAA/registries/tool_registry.canonical.json`. The two disagree by one tool; see pitfall 8.
+- Agent cards: `/root/AAA/a2a-server/agent-cards/` (42 cards as of 2026-09-18)
+- Skill alias: `/root/AAA/skills/SKILL_ALIAS_TABLE.json` — the ONLY canonical copy. Verify by hash;
+  24 files with this name exist on the box across 5 distinct hashes (pitfall 3).
+- MCP surface: Live `tools/list` from each organ. The **live wire surface is 8 tools**, not 66 —
+  `hermes_*` / `forge_*` are gated behind `ARIFOS_MCP_EXPOSE_DEV_TOOLS=true` (pitfall 9).
+- Verdict taxonomy: `/root/arifOS/arifosmcp/runtime/verdict.py` — `CANONICAL_VERDICTS` = 6 values,
+  but `_LEGACY_VERDICT_MAP` only normalises 13 of the 75+ values seen in the wild (dimension 7).
+- Floor enforcement: `/root/arifOS/scripts/audit_floor_coverage.py` — **run it before claiming floors
+  are enforced**; it reports 2/13 coverage and exits 0 regardless (pitfall 10).
+- Census (skill side): `/root/scripts/skills-census.py`
+- **Current receipt:** `${FORGE_WORK:-/root/forge_work}/2026-09-18/SKILL-DRIFT-REPORT-2026-09-18.md`
 
 ## §2. SKILL BINDING
 
@@ -181,6 +195,10 @@ Domains: `kernel`, `geo`, `wealth`, `well`, `forge`, `a2a`, `meta`, `mem`, `sec`
 
 **Phase 3 — Forge Gaps:** Cross-reference agent-card skill IDs against skills on disk. Missing = architectural gaps.
 
+> **BLOCKED as of 2026-09-18.** 731 of 927 card skill references resolve to nothing. Running this
+> phase would forge 337 phantom skills. **Fix the cards first** (D-1 in the current receipt), then run
+> the phase. A gap-forge loop fed by unresolvable IDs is a fabrication engine.
+
 **Phase 4 — KERNEL Substrate Injection:** Every agent card must inherit arifOS baseline physics.
 
 **Phase 5 — Seal:** Verify alias table synced, federation health green, write seal payload to VAULT999.
@@ -206,11 +224,65 @@ Domains: `kernel`, `geo`, `wealth`, `well`, `forge`, `a2a`, `meta`, `mem`, `sec`
 ### Pitfalls
 
 1. **Same-content skills with different names** — choose FORGE-* as canonical
-2. **Agent cards rot silently** — audit cards against live config monthly
-3. **SKILL_ALIAS_TABLE has 3 copies** — always verify hash match
-4. **Granularity gap** — registry says 64 skills but manifest has 209. Use registry for layer classification, manifest for per-agent counts
+2. **Agent cards rot silently** — audit cards against live config monthly. Measured 2026-09-18:
+   **731 of 927 card skill references resolve to no body** (285 compound-drift through dead alias
+   rows, 337 pure phantoms). The rot mechanism is a stale skill-id list **copy-pasted into five
+   federation cards** — one list, propagated by copy, never re-validated. Phase 3 (forge gaps) must
+   NOT run against this card set: it would forge 337 phantoms.
+3. **SKILL_ALIAS_TABLE copies** — not 3. Measured 2026-09-18: **24 files, 5 distinct sha256**, three
+   of them on live surfaces an agent could read (opencode copy 6 weeks stale, `/opt/aaa/app` copy
+   stale). Canonical is `/root/AAA/skills/SKILL_ALIAS_TABLE.json`; verify by hash every time — the
+   pitfall's *instruction* was right, its *number* was the thing that rotted.
+4. **Granularity gap** — counts disagree by design, so *always name the source*. Measured 2026-09-18:
+   V3 registry `total_skills` 95 · BOOTSTRAP `universal_skills` 9 · alias rows 164 · census canonical
+   706 / loadable 451 / whole_mesh 801. The old "64 vs 209" figures are dead. Use registry for layer
+   classification, census for disk truth, cards for per-agent claims — never one for another.
 5. **Sibling-agent file conflicts** — use `skill_manage(action='patch')` for targeted edits
-6. **Behavioral vs Enforcement confusion** — behavioral governance alone is "vibe-based"; enforcement layer must survive a system prompt rewrite
+6. **Behavioral vs Enforcement confusion** — behavioral governance alone is "vibe-based"; enforcement
+   layer must survive a system prompt rewrite
+7. **A loose regex manufactures a catastrophe.** A sweep for out-of-set verdicts returned 29,886 hits
+   with `STABLE`/`CRITICAL` on top — because `"?verdict"?` also matched the tail of
+   `"overall_verdict"`. With a negative lookbehind the number was 856. **Anchor the key boundary**
+   (`(?<![A-Za-z0-9_])`) and sample one raw line before believing any detector count.
+8. **Two artifacts both named "canonical" is a two-master defect.** `arifosmcp/tool_registry.json`
+   (66 tools) vs `AAA/registries/tool_registry.canonical.json` (65) differ by `arif_telegram_send`.
+   Body-identical otherwise, 5 days apart. Treat any file whose *name* asserts canon as unverified
+   until diffed against its twin.
+9. **A registered tool that is not live is not drift.** The live `:8088` wire surface is **8** tools;
+   the registry holds 66 because `hermes_*` / `forge_*` are gated behind
+   `ARIFOS_MCP_EXPOSE_DEV_TOOLS=true`. Reporting "58 missing tools" is a false positive — check the
+   namespace ruling in `constitutional_map.py` before flagging.
+10. **Some instruments cannot fail — that is itself the drift.** `audit_floor_coverage.py` reports
+    **2/13** tools calling the floor enforcer, against a declared invariant that all 13 floors appear
+    on ≥2 tools each, and then **exits 0**. No cron, no CI gate. Run the instrument, then ask who
+    closes its output. Same class as any gate whose FAIL goes to a log nobody reads: detection without
+    `{owner, deadline, timeout→SYNCHRONIZATION_FAULT}` is not governance.
+11. **A drift verdict with `null` on both sides is not a measurement.** `/health` returns
+    `status: degraded`, `deployment_attestation: "drift"`, `runtime_matches_build: true`, and
+    `source_commit: null` + `built_commit: null`. `a != b` is unevaluable when both are null. When
+    the attestation is unreadable, the honest state is `UNKNOWN` — not `degraded`.
+12. **Runtime-injected-file drift must be measured, not assumed.** WELL `index.html` is the named
+    case but measured **clean** (WELL dirty=0); AAA 55 / WEALTH 3 / arifOS 1 dirty are ordinary churn.
+    Re-check `git status --porcelain` per repo instead of inheriting the example.
+
+### Dimension 7 — read the instrument before the metric
+
+`CANONICAL_VERDICTS` (6 values) is real and imported, not merely documented. But the `verdict` key
+carries **three vocabularies**, and this is the actual drift:
+
+| Vocabulary | Values | Status |
+|---|---|---|
+| Constitutional verdict | OBSERVE_ONLY SEAL SABAR VOID HOLD 888_HOLD | the canonical set |
+| Stage verdict | `CLAIM_ONLY` (000/333 always emit), `999_SEAL` | **declared schema const** — not drift |
+| Governance tier | `READONLY` (`RiskTier`, `organ_governance.py:46`), `ALLOW`, `DENY` | **cross-vocabulary leak into a `verdict` field** |
+
+`_LEGACY_VERDICT_MAP` normalises only **13** of the **75+** values observed in the wild. So
+`ALLOW/DEGRADED/FAIL/ERROR/BLOCKED/PARTIAL/UNKNOWN` are mapped-on-read (not drift), while
+`CLAIM_ONLY / READONLY / READY_READONLY / COMPLETE / SEAL_OVERRIDE / SEAL_AMEND / 999_SEAL` pass
+through un-normalised.
+
+**A metric that can never pass is as useless as a gate that can never fail.** Report this dimension
+as *vocabulary coverage* (mapped ÷ observed), never as a violation count against 6.
 
 ## Floors
 
@@ -219,3 +291,14 @@ Domains: `kernel`, `geo`, `wealth`, `well`, `forge`, `a2a`, `meta`, `mem`, `sec`
 - F4 CLARITY: Drift report must be actionable, not noise
 - F8 GENIUS: Skill binding must optimize for capability, not convenience
 - F11 AUDITABILITY: Every drift check logged with timestamp and findings
+
+## Current receipt
+
+`${FORGE_WORK:-/root/forge_work}/2026-09-18/SKILL-DRIFT-REPORT-2026-09-18.md` — 10 findings
+(D-1 card drift + D-5 floor drift CRITICAL), 1 dimension recorded as PASS, 2 self-corrected false
+findings disclosed, and an explicit §8 list of what was NOT witnessed (schema drift = UNKNOWN;
+`/opt/aaa/app` tree unclassified).
+
+Companion (skill-mesh lane): `${FORGE_WORK:-/root/forge_work}/2026-09-18/SKILL-INVENTORY-AUDIT-2026-09-18.md`
+— the `skill-inventory` meta-skill's F-1…F-11. Read both together: they probe different surfaces of
+the same mesh and their numbers are deliberately not merged.

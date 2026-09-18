@@ -1,28 +1,31 @@
 {
-  "taken_at_local": "2026-09-16 23:35:49 +08",
+  "taken_at_local": "2026-09-19 02:53:58 +08",
   "method": "os.walk on ABSOLUTE store roots; key = relative path from store root (collision-safe); leaf-name used ONLY for cross-store archived-only set math",
   "v1_defect_corrected": "v1 keyed by realpath basename -> collapsed 12 distinct skills, reported 339 for hermes_live. Truth is 351.",
   "per_store_skill_files": {
-    "hermes_live": 122,
-    "aaa_live": 476,
-    "profile_aaa": 234,
+    "hermes_live": 65,
+    "aaa_live": 633,
+    "profile_aaa": 222,
     "hermes_archive": 0
   },
   "hermes_live_bundled_manifest_entries": 282,
-  "hermes_live_bundled_manifest_mtime": "2026-09-16 23:30:56",
+  "hermes_live_bundled_manifest_mtime": "2026-09-19 02:49:09",
   "intra_store_duplicate_leaf_names": {
     "aaa_live": {
       "sovereign-recognize": [
         "domains/general/aaa/substrate/reflective/sovereign-recognize",
         "reflective/sovereign-recognize"
       ],
-      "hermes": [
-        "apex_verdict_hold/hermes",
-        "apex_verdict_seal/hermes"
+      "institutional-leadership-lineage": [
+        "domains/general/workshop/research-core/institutional-leadership-lineage",
+        ".archive/2026-09-17-leadership-roster-merge/research-core/institutional-leadership-lineage"
+      ],
+      "skill-creator": [
+        ".system/skill-creator",
+        "engineering/skill-creator"
       ],
       "claude": [
         "apex_verdict_hold/claude",
-        "apex_verdict_seal/claude",
         "FORGE-onboarding/claude"
       ]
     },

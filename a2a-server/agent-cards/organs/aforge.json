@@ -42,7 +42,18 @@
       "name": "x-a2a-key"
     }
   },
-  "skills": [
+  "skills": [],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "ULnF77oWnwEusJIky1VwuE+ooiSAAB+R8cSbaD7GR+dYqulJdyElT7UV6vDjO07f+LmGTd3cRtapX+ruoK8iBg==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ],
+  "did": "did:web:arif-fazil.com",
+  "_quarantined_skills": [
     {
       "id": "forge_shell",
       "name": "Governed Shell",
@@ -55,7 +66,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "forge_filesystem",
@@ -69,7 +81,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "forge_git",
@@ -83,7 +96,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "forge_docker",
@@ -97,7 +111,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "forge_browser",
@@ -111,7 +126,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "forge_fetch",
@@ -125,7 +141,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "forge_execute",
@@ -139,7 +156,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "forge_parallel",
@@ -153,7 +171,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "forge_vps",
@@ -167,12 +186,13 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "forge_evaluate",
       "name": "APEX Gate",
-      "description": "Compute G = A\u00b7P\u00b7E\u00b7X\u00b7\u03a6.",
+      "description": "Compute G = A·P·E·X·Φ.",
       "tags": [
         "actuator"
       ],
@@ -181,7 +201,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "forge_seal",
@@ -195,7 +216,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "forge_reality_loop",
@@ -209,17 +231,16 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     }
   ],
-  "signatures": [
-    {
-      "did": "did:arif:aaa",
-      "proofValue": "ULnF77oWnwEusJIky1VwuE+ooiSAAB+R8cSbaD7GR+dYqulJdyElT7UV6vDjO07f+LmGTd3cRtapX+ruoK8iBg==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T23:25:58Z",
-      "type": "Ed25519Signature2020"
-    }
-  ],
-  "did": "did:web:arif-fazil.com"
+  "_skill_ref_reconciliation": {
+    "at": "2026-09-18",
+    "by": "afpass-W1",
+    "before": 12,
+    "after": 0,
+    "quarantined": 12,
+    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
+  }
 }

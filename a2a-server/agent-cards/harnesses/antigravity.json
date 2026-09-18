@@ -171,60 +171,6 @@
       ]
     },
     {
-      "id": "ASI-autonomous-execution",
-      "name": "Autonomous Governed Execution",
-      "description": "Governed execution: T1/T2 auto, T3→888_HOLD. F1-F13 enforced.",
-      "tags": [
-        "autonomous",
-        "F1-F13",
-        "execution",
-        "T1-T3"
-      ],
-      "floor_scope": [
-        "F1",
-        "F2",
-        "F4",
-        "F7",
-        "F11",
-        "F13"
-      ]
-    },
-    {
-      "id": "APEX-constitutional-audit",
-      "name": "arifOS Constitutional Audit (Light)",
-      "description": "Read-only six-organ audit. F1-F13 enforced.",
-      "tags": [
-        "constitutional",
-        "audit",
-        "F1-F13",
-        "read-only"
-      ],
-      "floor_scope": [
-        "F1",
-        "F2",
-        "F4",
-        "F7",
-        "F9",
-        "F11",
-        "F13"
-      ]
-    },
-    {
-      "id": "APEX-humility-lock",
-      "name": "Gödel Humility Lock",
-      "description": "Epistemic humility before SEAL-grade claims. F2/F7 enforced.",
-      "tags": [
-        "humility",
-        "F7",
-        "self-critique",
-        "epistemic"
-      ],
-      "floor_scope": [
-        "F2",
-        "F7"
-      ]
-    },
-    {
       "id": "FORGE-github-ops",
       "name": "GitHub Ops (merged v1.2.0)",
       "description": "GitHub ops: repos, PRs, issues, review. F1/F11 enforced.",
@@ -236,21 +182,6 @@
       ],
       "floor_scope": [
         "F1",
-        "F11"
-      ]
-    },
-    {
-      "id": "APEX-mcp-federation",
-      "name": "arifOS MCP Federation",
-      "description": "Route tasks across federation MCP servers. F4/F11 enforced.",
-      "tags": [
-        "MCP",
-        "federation",
-        "routing",
-        "multi-organ"
-      ],
-      "floor_scope": [
-        "F4",
         "F11"
       ]
     }
@@ -383,5 +314,88 @@
     "status": "VERIFIED-ON-KVM4 — ccc-remote agy end-to-end PASS (fi-003 live probe); auth = GEMINI_API_KEY (kunci-root.env) + ~/.gemini oauth; ~/.antigravity was wrong-layer diagnosis (not agy config home — absent on working KVM8 too)",
     "member_of": "kvm4-ccc-pool",
     "updated": "2026-09-03T16:55+08:00"
+  },
+  "_quarantined_skills": [
+    {
+      "id": "ASI-autonomous-execution",
+      "name": "Autonomous Governed Execution",
+      "description": "Governed execution: T1/T2 auto, T3→888_HOLD. F1-F13 enforced.",
+      "tags": [
+        "autonomous",
+        "F1-F13",
+        "execution",
+        "T1-T3"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F7",
+        "F11",
+        "F13"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "APEX-constitutional-audit",
+      "name": "arifOS Constitutional Audit (Light)",
+      "description": "Read-only six-organ audit. F1-F13 enforced.",
+      "tags": [
+        "constitutional",
+        "audit",
+        "F1-F13",
+        "read-only"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F7",
+        "F9",
+        "F11",
+        "F13"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "APEX-humility-lock",
+      "name": "Gödel Humility Lock",
+      "description": "Epistemic humility before SEAL-grade claims. F2/F7 enforced.",
+      "tags": [
+        "humility",
+        "F7",
+        "self-critique",
+        "epistemic"
+      ],
+      "floor_scope": [
+        "F2",
+        "F7"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "APEX-mcp-federation",
+      "name": "arifOS MCP Federation",
+      "description": "Route tasks across federation MCP servers. F4/F11 enforced.",
+      "tags": [
+        "MCP",
+        "federation",
+        "routing",
+        "multi-organ"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    }
+  ],
+  "_skill_ref_reconciliation": {
+    "at": "2026-09-18",
+    "by": "afpass-W1",
+    "before": 8,
+    "after": 4,
+    "quarantined": 4,
+    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
   }
 }

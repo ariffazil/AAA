@@ -53,6 +53,35 @@ Write the ledger record **after** the action, never before, and make a run with 
 exhale log itself as a failed run. Silence is not success — distinguish "nothing to
 do" from "nothing happened" explicitly in the record.
 
+### A cycle record carries delta AND state
+
+Logging only what this run changed makes a healthy quiet cycle indistinguishable
+from a broken one: **both write zeros.** An observer who did not run the job cannot
+tell "nothing was due" from "every step failed silently".
+
+Every cycle record carries four things:
+
+- `delta` — what this run changed
+- `state` — what is true now (a post-run snapshot of the store)
+- `errors` — the failed steps, named, each with its message
+- `status` — three-way: `ACTIVE` (something changed) / `QUIET` (nothing due, no
+  errors, and `state` shows the store populated) / `DEGRADED` (a step failed)
+
+Collapsing those three into a boolean is what lets an organ report "all zeros" for
+weeks while holding live data.
+
+Corollary — never wrap a loop step in `except: pass`. That is how `DEGRADED`
+becomes indistinguishable from `QUIET`. Capture the exception as data, keep the
+other steps running, and put the failure in the record.
+
+Corollary — a `dry_run` flag must reach every mutating step. One step that ignores
+it means a "dry" cycle still writes. Prove it by hashing every store file around a
+dry pass, never by reading the flag.
+
+Corollary — extraction jobs that append every cycle duplicate their own output.
+Fingerprint the artefact by its defining fields (not its timestamp) and skip ones
+already held, or N cycles produce N copies and inflate every downstream count.
+
 ---
 
 ## §2. BUILD ORDER
@@ -283,6 +312,10 @@ afterwards.
 ❌ Citing a skill the job depends on unproven → silent improvise at the first unattended fire.
 ❌ A regression suite never wired to a sweep → it will not run on the edit that matters.
 ❌ A branch that absorbs every input         → decoration wearing a verdict.
+❌ Deltas only, no state snapshot           → quiet cycle and dead cycle are identical.
+❌ `except: pass` around a loop step         → DEGRADED silently reported as QUIET.
+❌ A dry_run flag some step ignores          → rehearsal mutates what it meant to protect.
+❌ Appending the same extraction each cycle  → N runs, N copies, inflated counts.
 ```
 
 ---

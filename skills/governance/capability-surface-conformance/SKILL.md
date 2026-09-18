@@ -199,6 +199,18 @@ behaviour actually changed.
   code. Divergent vantage is the default explanation; fabrication is the rare one.
 - **Contradiction false positive.** Verify the axis before calling a same-envelope
   disagreement a defect.
+- **A declaration layer that nothing reads is not evidence the capability is unwired.** A config
+  block of switch-shaped keys (`*_locked_*`, `*_default`, `ENABLE_*`) can be completely inert — no
+  reader anywhere — while the live route sits in a *different* registry one level over: a named
+  provider, a dispatch table, a scheduler entry point. Reading the inert layer and concluding "this
+  is not wired" is phantom absence wearing a config file, and it is the same defect as a ghost
+  capability with the sign flipped. Before any "unwired / not live" claim, enumerate every layer
+  that can carry a route (grep the provider or dispatch registry, not only the keys that look like
+  the switch), then **dispatch the candidate and grade the CONTENT that comes back**. Corollary:
+  when two routes reach the same effect, drive both and diff the artefacts they produce — a shared
+  backend can hardcode a setting, so one route is correct in identity and drifted in behaviour, and
+  only the side-by-side run exposes the gap. Report the gap; do not silently patch a backend that
+  also serves another lane.
 
 ## Reference
 
