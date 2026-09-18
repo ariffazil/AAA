@@ -65,7 +65,13 @@ h2, h3, tr { page-break-inside: avoid; }
     {{EDITION_DATE}}<br>
     Built by the docforge lane · integrity seal applied
   </div>
-  <div class="kv" style="margin-top:14mm">
+  <div class="stats">
+    <div class="stat"><div class="n">{{STAT_NEW}}</div><div class="l">New items</div></div>
+    <div class="stat"><div class="n">{{STAT_OPEN}}</div><div class="l">Carrying over</div></div>
+    <div class="stat"><div class="n">{{STAT_CONTESTED}}</div><div class="l">Contested</div></div>
+    <div class="stat"><div class="n">{{STAT_SETTLED}}</div><div class="l">Settled / terminal</div></div>
+  </div>
+  <div class="kv" style="margin-top:8mm">
     content_sha256 &nbsp;{{CONTENT_HASH}}<br>
     artifact_sha256 {{ARTIFACT_HASH}}<br>
     signature &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not_signed (hashes only;
