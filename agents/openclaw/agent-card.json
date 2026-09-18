@@ -770,7 +770,8 @@
     "card": 21
   },
   "governance_profile": {
-    "authority_ceiling": "ROUTE_BRIDGE",
+    "authority_ceiling": "T1",
+    "_authority_ceiling_note": "2026-09-18: kernel-aligned per kernel-wins doctrine. Prior claim was ROUTE_BRIDGE; IDENTITY.md prior was GATEWAY; organs.yaml prior was DISPLAY_ONLY. Kernel SOT T1 wins. See /root/AAA/agents/openclaw/IDENTITY.md Authority drift section.",
     "constitutional_floors": [
       "F1",
       "F2",
@@ -812,5 +813,9 @@
     "detected_at": "2026-09-16T07:00:00Z",
     "material_preserved_under": "signature_legacy",
     "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
-  }
+  },
+  "_canonical_source": "/root/AAA/agent-cards/functions/openclaw/agent-card.json",
+  "_canonical_source_note": "agents/openclaw/agent-card.json is hand-curated but co-located with identity files (NOT the SOT for federation mesh — that is functions/agent-card.json). Auto-generated A2A card at /root/AAA/a2a-server/agent-cards/federation/openclaw.json.",
+  "_canonical_audit_2026_09_18": "333-AGI audit found this third card missed in initial sweep. Reconciled with canonical pointer to avoid split-SOT confusion.",
+  "canonical_marker_2026_09_18": "co-located identity card; federation-mesh canonical = agent-cards/functions/openclaw/agent-card.json"
 }

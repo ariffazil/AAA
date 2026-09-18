@@ -2,7 +2,7 @@
 id: FORGE-agentic-web-builder
 name: forge-agentic-web-builder
 version: 1.2.0-2026.09.13
-description: "Use when building, deploying, auditing, or repairing arif-fazil.com constellation and federation agentic web apps. Use when building, deploying, auditing, or repairing arif-fazil.com constellation and federation agentic web apps. Build, deploy, audit, and repair arif-fazil.com constellation sites autonomously. Class-level umbrella: DOCTOR (web_zen CLI), DEPLOY, AUDIT, REPAIR, SEAL, EPHEMERAL. Humans use six missions — not tool menus. USE WHEN: \"deploy site\", \"site down\", \"audit all pages\", \"404 on arif-fazil.com\", \"deploy-vps.sh\", \"makcikgpt broken\", \"web zen\", \"missions 404\", \"vitals proxies\", \"rsync --delete\", \"ephemeral tool\". DO NOT USE FOR: Caddy SSL/DNS/tunnel (FORGE-infra-guardian), LLM SEO (AGI-web-optimization), generic CI/CD (FORGE-cicd-docker-deploy). [fed: tier=fed-agent-subagent, floors=[F1, F2, F4, F11], auto=ANNOUNCE, risk=T2]"
+description: "Use when building, deploying, auditing, or repairing arif-fazil.com constellation and federation agentic web apps. Use when building, deploying, auditing, or repairing arif-fazil.com constellation and federation agentic web apps. Build, deploy, audit, and repair arif-fazil.com constellation sites autonomously. Class-level umbrella: DOCTOR (web_zen CLI), DEPLOY, AUDIT, REPAIR, SEAL, EPHEMERAL. Humans use six missions — not tool menus. USE WHEN: \"deploy site\", \"site down\", \"audit all pages\", \"404 on arif-fazil.com\", \"deploy-vps.sh\", \"makcikgpt broken\", \"web zen\", \"missions 404\", \"vitals proxies\", \"rsync --delete\", \"ephemeral tool\". DO NOT USE FOR: Caddy SSL/DNS/tunnel (FORGE-infra-guardian), LLM SEO (AGI-web-optimization), generic CI/CD (FORGE-cicd-docker-deploy). "
 owner: FORGE (000Ω)
 risk_tier: T2
 floor_scope: [F1, F2, F4, F11]
@@ -10,9 +10,7 @@ autonomy_tier: ANNOUNCE
 forged_from: INCIDENT-2026-07-23 + MISSIONS-ZEN-2026-07-30
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----
-
-# 🌐 FORGE — Agentic Web Builder
+---# 🌐 FORGE — Agentic Web Builder
 
 > One night, three identical failures: `organ_proxy.py` (code), `999/index.html`
 > (doctrine), `static/wealth.html` (renderer output) — all lived ONLY in the
@@ -191,7 +189,39 @@ GREEN: parsers, converters, disposable analysis. RED never self-grant: secrets, 
 - ❌ Status-200 audit without content grep — SPA soft-404 lies
 - ❌ `rm -rf` for cleanup — quarantine instead
 - ❌ Advertising 128 tools as intelligence — six missions + Canonical 8
-- ❌ Skipping `web_zen.py doctor` and reinventing the deploy path every session
+---
+
+## OP 7 — MULTIMODAL VISION & CARTOGRAPHIC FIDELITY STANDARD (2026-09-18 F13 SEAL)
+
+> "map buat la betul2 gambar render la guna ai image generator etc" — Arif Fazil (F13 Sovereign, 2026-09-18).
+> A crude 15-point SVG polygon pretending to be Peninsular Malaysia is an F2 failure (TRUTH).
+> A text-only dossier without visual evidence is an F4 failure (CLARITY).
+
+1. **Physical Geography Demands Real Cartography:**
+   - NEVER draw crude placeholder polygons for national or regional infrastructure claims.
+   - For regional, Earth, infrastructure, and energy slices (e.g. Johor Data Centre Corridor, TNB 500kV Transmission Grid, water moratorium basins), embed interactive **Leaflet.js** or Mapbox GIS cartography.
+   - Base tiles: **CartoDB Dark Matter** (`https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png`), pre-approved in Caddy CSP (`connect-src *.basemaps.cartocdn.com`).
+   - Every site marker must contain verified coordinates, operator identity, capacity metrics (MW), grid interconnect, and water dissipation parameters.
+   - Layer toggles must be interactive (`[All] [Data Centres] [Power Grid] [Water Stress]`).
+
+2. **Generative Multimodal Asset Pipeline:**
+   - High-impact editorial intelligence dossiers require high-fidelity visual representations.
+   - Generate bespoke 16:9 cinematic editorial hero visuals (`generate_image` / `minimax` / `token-plan-image`) with precise architectural, telemetry, and lighting prompts.
+   - Compress all generated imagery via Pillow to high-efficiency WebP (quality 80–82, ≤160KB per image).
+   - Triple-Sync rule:
+     1. Source repository: `/root/arif-fazil.com/sites/arif-fazil.com/public/<path>/images/`
+     2. Build distribution: `/root/arif-fazil.com/sites/arif-fazil.com/dist/<path>/images/`
+     3. Live web root: `/var/www/html/arif/<path>/images/`
+     4. Base64 fallback embedded in standalone distribution files for 100% offline and cross-proxy reliability.
+
+3. **Interactive Evidence & Receipt Layers:**
+   - Sourced claims and receipts pages must NEVER be static, unsearchable HTML tables.
+   - Implement client-side instant filtering by grade (`[All] [Grade A] [Grade B] [Grade C]`) and dynamic keyword search.
+   - Every receipt must display: Grade badge, empirical claim summary, verified primary source link, and verification date.
+   - Display the complete **Musyawarah Convergence Audit Trail** (333-AGI Δ MIND → 555-ASI Φ SENSE → CONVERGE → 888-APEX Ψ SOUL → F13 Sovereign Seal).
+
+4. **Resilient Doctor Telemetry:**
+   - `web_zen.py doctor` must always wrap receipt writes in an EROFS/OSError handler falling back to `/tmp/`, ensuring execution in restricted or sandboxed container environments.
 
 DITEMPA BUKAN DIBERI.
 

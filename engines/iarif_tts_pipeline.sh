@@ -122,11 +122,34 @@ br = resp.get("base_resp", {})
 if br.get("status_code", 0) != 0:
     raise SystemExit(f"MiniMax error {br.get('status_code')}: {br.get('status_msg')}")
 open(f"{work}/raw.mp3", "wb").write(bytes.fromhex(resp["data"]["audio"]))
+sys.stderr.write(f"IARIF_ENGINE=minimax {voice_id} (Tier 1, rented)\n")
 PYEOF
 
-# Failover 1: MiMo Token Plan
-if [ ! -s "$WORK/raw.mp3" ]; then
-  echo "iarif_tts_pipeline: Stage 1 MiniMax failed, falling back to MiMo" >&2
+# ---- Failover 1: PIPER — SOVEREIGN, offline, CPU, zero quota ----
+# Inserted 2026-09-18 after live probing on KVM8.
+#   * MiniMax 2056 lands on a 4-HOUR INTERVAL cap that is separate from the weekly
+#     cap — the lane goes quiet mid-session while weekly headroom remains.
+#   * The rung below it was MiMo, FALSIFIED for BM (nusantara-voice-stack §3):
+#     falling through swapped voice identity for a mangled one, silently.
+#   * Piper renders BM on CPU at 22.05 kHz with no network and no key.
+# KNOWN LIMIT: mangles ENGLISH words inside code-switch (the→teh, everyone→eferione);
+# BM words are clean. Use for BM-dominant text. The engine is LABELLED on stderr so
+# the delivery message can name what actually spoke — never a silent swap.
+if [ ! -s "$WORK/raw.mp3" ] && [ ! -s "$WORK/raw.wav" ]; then
+  PIPER_BIN="${IARIF_PIPER_BIN:-/usr/local/bin/piper}"
+  PIPER_MODEL="${IARIF_PIPER_MODEL:-/root/forge_work/piper-sovereign/id_voice.onnx}"
+  if [ -x "$PIPER_BIN" ] && [ -s "$PIPER_MODEL" ]; then
+    echo "iarif_tts_pipeline: MiniMax unavailable → SOVEREIGN FALLBACK Piper (id_ID, offline, zero-quota)" >&2
+    "$PIPER_BIN" -m "$PIPER_MODEL" -f "$WORK/raw.wav" < "$WORK/input.txt" >/dev/null 2>&1 || true
+    if [ -s "$WORK/raw.wav" ]; then
+      echo "IARIF_ENGINE=piper id_ID-news_tts-medium (SOVEREIGN)" >&2
+    fi
+  fi
+fi
+
+# Failover 2: MiMo Token Plan (LAST RESORT — falsified for BM, gap filler only)
+if [ ! -s "$WORK/raw.mp3" ] && [ ! -s "$WORK/raw.wav" ]; then
+  echo "iarif_tts_pipeline: Stage 1 MiniMax failed, falling back to MiMo (LAST RESORT — BM unreliable)" >&2
   python3 - "$WORK" <<'PYMIMO'
 import sys, os, json, urllib.request, base64
 work = sys.argv[1]
@@ -162,8 +185,8 @@ open(f"{work}/raw.mp3", "wb").write(base64.b64decode(audio))
 PYMIMO
 fi
 
-# Failover 2: Edge-TTS
-if [ ! -s "$WORK/raw.mp3" ]; then
+# Failover 3: Edge-TTS (cloud, not sovereign — kept as a free last rung below Piper)
+if [ ! -s "$WORK/raw.mp3" ] && [ ! -s "$WORK/raw.wav" ]; then
   echo "iarif_tts_pipeline: Falling back to Edge-TTS" >&2
   python3 - "$WORK" <<'PYEDGE'
 import sys, os, asyncio
@@ -177,7 +200,7 @@ asyncio.run(main())
 PYEDGE
 fi
 
-if [ ! -s "$WORK/raw.mp3" ]; then
+if [ ! -s "$WORK/raw.mp3" ] && [ ! -s "$WORK/raw.wav" ]; then
   echo "iarif_tts_pipeline: attempt $_ATTEMPT produced no audio — retry" >&2
   continue
 fi
@@ -185,7 +208,10 @@ fi
 # ---- Duration check (fail closed on truncated/silent render) ----
 _chars=$(python3 -c "print(len(open('$WORK/input.txt', encoding='utf-8').read()))")
 _floor=$(python3 -c "print(max(0.4 * (float('$_chars')/12.0), 2.0))")
-_DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$WORK/raw.mp3" 2>/dev/null || echo 0)
+_RAW=""
+[ -s "$WORK/raw.mp3" ] && _RAW="$WORK/raw.mp3"
+[ -z "$_RAW" ] && [ -s "$WORK/raw.wav" ] && _RAW="$WORK/raw.wav"
+_DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "${_RAW:-$WORK/raw.mp3}" 2>/dev/null || echo 0)
 _DUR_OK=$(python3 -c "print(1 if float('$_DUR') >= float('$_floor') else 0)")
 if [ "$_DUR_OK" = "1" ]; then
   break
@@ -201,7 +227,11 @@ fi
 
 # ── Stage 2: Pure Neural Studio Passthrough (Bypassing Vocoder) ──
 # Raw studio neural audio. Zero vocoder phase distortion. Spectral Flatness 125.89.
-STABILIZED="$WORK/raw.mp3"
+if [ -s "$WORK/raw.mp3" ]; then
+  STABILIZED="$WORK/raw.mp3"
+else
+  STABILIZED="$WORK/raw.wav"   # sovereign Piper rung
+fi
 
 # Convert stabilized audio to requested format
 case "$(basename "$OUT_PATH" | sed 's/.*\.//')" in

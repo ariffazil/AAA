@@ -12,7 +12,7 @@ Single-word verdicts hide entire state machines. For consequential objects, sayi
 PRODUCED ≠ SENT ≠ DELIVERED ≠ OBSERVED ≠ ACKNOWLEDGED
 ```
 
-## Four Instantiations (one invariant, four layers)
+## Five Instantiations (one invariant, five layers)
 
 | Layer | Forbidden collapse | Real chain |
 |---|---|---|
@@ -20,6 +20,7 @@ PRODUCED ≠ SENT ≠ DELIVERED ≠ OBSERVED ≠ ACKNOWLEDGED
 | Communication | "sent" | Produced ≠ Sent ≠ Delivered ≠ Observed ≠ Acked |
 | Epistemology | "X is Y" | Claimed ≠ Measured ≠ CrossValidated ≠ Canonical |
 | Memory | "remembered" | Stored ≠ Retrieved ≠ Relevant ≠ Current |
+| Substrate | "FAIL" / "PASS" | OUTAGE ≠ DEGRADED ≠ IDLE_RESTING ≠ FAIL_CLOSED ≠ ACTIVE_SEALED |
 
 ## Object Contract — every persistent promise / claim / task
 
@@ -70,5 +71,6 @@ Operational memory (objective, timestamps, own probes) = YES. Shared hypothesis,
 5. **Consequential receipts carry trace_id.**
 6. **Witnessing another agent's claim → operate prior-isolated.**
 7. **WAIT has a deadline.** Polite indefinite blocking = distributed deadlock. Declare the fault.
+8. **Never collapse substrate into binary FAIL/PASS.** (F13 SEAL 2026-09-18: `SUBSTRATE_TAXONOMY_2026-09-18.md`). Idle/gated posture is `IDLE_RESTING` or `FAIL_CLOSED`, never physical `FAIL`.
 
 DITEMPA BUKAN DIBERI ⚒️

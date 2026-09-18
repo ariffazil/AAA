@@ -1,7 +1,7 @@
 ---
 name: forge-artifact-publisher
 id: forge-artifact-publisher
-description: "EMD artifact forge — the OUTPUT direction of AAA document intelligence. Takes structured internal intelligence (GEOX OKF, WEALTH analysis, AAA knowledge graphs, literature reviews) and forges publication-grade visual+text PDF artifacts. SVG diagrams, embedded images, knowledge graphs, reality graphs, tectonic timelines, prospect evaluations — all rendered as geologist-ready slide packs or dossier PDFs. Load when: 'make a PDF', 'visual pack', 'slide deck', 'dossier', 'forge artifact', 'publish to telegram', 'send report'. [fed: tier=fed-reasoning-heavy, floors=[F1, F2, F4, F6, F11], auto=T1, risk=low]"
+description: "EMD artifact forge — the OUTPUT direction of AAA document intelligence. Takes structured internal intelligence (GEOX OKF, WEALTH analysis, AAA knowledge graphs, literature reviews) and forges publication-grade visual+text PDF artifacts. SVG diagrams, embedded images, knowledge graphs, reality graphs, tectonic timelines, prospect evaluations — all rendered as geologist-ready slide packs or dossier PDFs. Load when: 'make a PDF', 'visual pack', 'slide deck', 'dossier', 'forge artifact', 'publish to telegram', 'send report'. "
 version: 1.1.0
 owner: F13 SOVEREIGN — Muhammad Arif bin Fazil
 risk_tier: low
@@ -22,9 +22,7 @@ dependencies:
 forged: 2026-09-15
 apex-zen: 2026-09-15
 session: FI-003 Kinabalu Basin visual pack session
----
-
-# FORGE ARTIFACT PUBLISHER — EMD Output Reflex Arc
+---# FORGE ARTIFACT PUBLISHER — EMD Output Reflex Arc
 
 > **DITEMPA BUKAN DIBERI** — Intelligence is forged into artifacts, not dumped as text.
 > **The human reads the artifact. The agent reads the source. Never confuse the two.**

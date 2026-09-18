@@ -148,7 +148,7 @@ curl -s https://api.minimax.io/v1/voice_clone \
 - Clone response does NOT echo back the voice_id — the string you sent IS the ID. If synthesis returns `2054 voice id not exist`, the ID string mismatched, not a hydration delay.
 - TTS synthesis (`t2a_v2`) returns HEX-ENCODED audio, not base64. Decode: `bytes.fromhex(audio_str)`. Ratio `len(audio_str) / audio_size == 2.0`.
 
-Full details: `references/minimax-ttv-voice-cloning-2026-08-18.md`.
+Full details: `references/minimax-voice-clone-v9-2026-08-19.md` (the 2026-08-18 TTV note was never vendored; the V9 session record supersedes it).
 
 ## 6. Qwen Voice Cloning — FREE Custom Malay Voice (BREAKTHROUGH 2026-08-18)
 

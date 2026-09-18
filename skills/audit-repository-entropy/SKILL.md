@@ -10,7 +10,31 @@ argument-hint: ["<repo_id> [scope]", "example: A-FORGE --scope src,config,tools"
 
 > An agent may propose from inference; assert only from revision-pinned evidence; execute only within a bounded capability; promote only with human authority.
 
-This skill is **read-only**. It produces a candidate ledger with evidence and dispositions. It does NOT delete, merge, unregister, or alter policy.
+This skill is **read-only by default**. It produces a candidate ledger with evidence and dispositions. With `--cleanup`, it can also execute safe-local-cleanup (gitignored backup/build files only). It does NOT delete tracked files, merge, unregister, or alter policy without human approval.
+
+### Cleanup mode (opt-in, 2026-09-18)
+When `allowed_consequence: "cleanup_local"` is set:
+1. **local_debris** items (gitignored `.bak*`, `.stale`, `build/`, `__pycache__/`) → auto-delete with `rm -v`
+2. **tracked_debris** items (git-tracked stale files) → present for confirmation, then `git rm`
+3. **All other dispositions** → HOLD, no action
+4. After cleanup: verify `git status` shows only expected changes
+5. Report: files deleted, space freed, tracked changes pending commit
+
+### 5-state conformance ladder (NEW — 2026-09-18, scar-bound SCAR-KERNEL-LEGACY-VERDICT-LEAK-002)
+
+When probe finds `Advertised != Callable`, output MUST follow this 5-state ladder:
+
+```
+BROKEN_SURFACE         — public tools return Unknown; substrate DEGRADED
+PARTIALLY_RESTORED     — some public tools resolve+execute, others Unknown
+CONTRACT_RECONCILIATION — public tools execute, but adapter schema drifts remain
+ADAPTER_CLEAN          — public + internal schemas agree, no drift
+CLEAN                  — Advertised = Discoverable = Callable = Schema-compat = Authority-compat
+```
+
+**Forbidden:** Jumping directly from BROKEN to CLEAN. Forbidden: claiming CLEAN before all 5 invariants verified. Probe 2026-09-18T06:38Z showed federation is in **Phase 2 of 3 (CONTRACT_RECONCILIATION)** — never CLEAN, never BROKEN.
+
+**Scar anchor:** SCAR-KERNEL-LEGACY-VERDICT-LEAK-002 (truth told twice is truth fractured — the 5-state ladder prevents premature CLEAN claim).
 
 ---
 
@@ -80,7 +104,31 @@ Every finding carries `repo_id`, `branch`, `git_sha`, and `timestamp`.
 
 ---
 
-## Method (10 steps)
+## Method (12 steps)
+
+### Step 0 — TOCTOU pre-flight (NEW — 2026-09-18 scar)
+Before starting the audit, check for concurrent writer hazard:
+
+```bash
+# Pin HEAD at start
+AUDIT_HEAD=$(git -C /root/$REPO rev-parse HEAD)
+# After inventory (Step 3), re-check HEAD
+LIVE_HEAD=$(git -C /root/$REPO rev-parse HEAD)
+if [ "$AUDIT_HEAD" != "$LIVE_HEAD" ]; then
+  echo "⚠️ TOCTOU: HEAD moved during audit. $AUDIT_HEAD → $LIVE_HEAD"
+  echo "New commits: $(git -C /root/$REPO log --oneline $AUDIT_HEAD..$LIVE_HEAD)"
+fi
+```
+
+If HEAD moved: re-pin to new HEAD, note drift in output, flag `toctou_hazard=true` in summary. The audit's SHA must match reality at seal time.
+
+Also check for active concurrent sessions/workers:
+```bash
+# Check for uncommitted changes from other writers
+git -C /root/$REPO status --porcelain | head -20
+# Check for recent commits in last hour by other actors
+git -C /root/$REPO log --since="1 hour ago" --oneline --no-merges
+```
 
 ### Step 1 — Pin identity
 Repo, branch, full SHA, timestamp. Every finding inherits this.
@@ -107,6 +155,30 @@ find /root/$REPO -type f \( -name "*.ts" -o -name "*.js" -o -name "*.py" -o -nam
 - **Registration map**: Parse affordances.yaml, serve.ts tool registrations, .mcp.json
 - **Dependency map**: package.json imports, requirements.txt, pyproject.toml
 - **Config references**: Dockerfile, docker-compose, Makefile, CI workflows, systemd units
+
+### Step 4b — Gitignore coverage gap detection (NEW — 2026-09-18 scar)
+Find tracked files that match gitignore patterns (gitignore exists but file was committed before the rule):
+
+```bash
+# Files tracked by git that match .gitignore patterns
+git -C /root/$REPO ls-files -i --exclude-from=.gitignore 2>/dev/null
+# Backup/temp files that are tracked (should be gitignored)
+git -C /root/$REPO ls-files '*.bak' '*.bak-*' '*.stale' '*.orig' '*~' '*.tmp' 2>/dev/null
+# Check if .gitignore covers common debris patterns
+for pat in "*.bak" "*.stale" "*.orig" "*~" "build/" "__pycache__/" "*.pyc"; do
+  git check-ignore -q "$pat" 2>/dev/null && echo "covered: $pat" || echo "GAP: $pat not in .gitignore"
+done
+```
+
+Also detect **local filesystem debris** (not tracked, but present):
+```bash
+# Files matching gitignore patterns that exist on disk (safe local cleanup candidates)
+find /root/$REPO -name "*.bak" -o -name "*.bak-*" -o -name "*.stale" -o -name "*.orig" -o -name "*~" 2>/dev/null | grep -v .git | grep -v node_modules | wc -l
+# Build artifacts that are gitignored but occupy disk
+du -sh /root/$REPO/build/ 2>/dev/null
+```
+
+Classify as `local_debris` (safe to clean, not tracked) vs `tracked_debris` (needs git rm + commit).
 
 ### Step 5 — Historical churn
 ```bash
@@ -170,7 +242,13 @@ The structured JSON output below. NO file mutations.
     "deprecate": 0,
     "archive": 0,
     "delete_candidate": 0,
-    "hold": 0
+    "hold": 0,
+    "local_debris_count": 0,
+    "local_debris_bytes": 0,
+    "tracked_debris_count": 0,
+    "gitignore_gaps": [],
+    "toctou_hazard": false,
+    "concurrent_writers": []
   },
   "candidates": [
     {
