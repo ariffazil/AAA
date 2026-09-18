@@ -1,0 +1,31 @@
+{
+  "_comment": "docforge template + theme registry. Axes are independent: a template declares STRUCTURE, a theme declares APPEARANCE, neither knows the engine. Add a document type by adding a row here, not by writing a new script.",
+  "templates": {
+    "base-a4": {
+      "file": "base-a4.j2",
+      "theme": "light",
+      "engines": ["weasyprint", "chromium", "typst"],
+      "pages": "flowing",
+      "note": "A4 portrait, flowing sections with running header/footer. The default for briefs, dossiers, reports."
+    },
+    "deck-16x9": {
+      "file": "deck-16x9.j2",
+      "theme": "light",
+      "engines": ["chromium"],
+      "pages": "fixed",
+      "note": "16:9 landscape, 338.67x190.5mm = 960x540pt, one .slide per page. @page margin MUST be 0 or every slide splits into two pages and the browser furniture prints on all of them. Chromium only — WeasyPrint has no JS and the deck axis assumes browser rendering."
+    }
+  },
+  "themes": {
+    "light": "themes/light.css",
+    "dark": "themes/dark.css",
+    "print": "themes/print.css",
+    "accessible": "themes/accessible.css"
+  },
+  "theme_notes": {
+    "light": "DEFAULT. Light background, accent rules, tinted callouts. Passes the print-light gate profile.",
+    "dark": "Screen-only. Deliberately FAILS the print-light gate so it cannot be delivered to paper by accident — pair it with the screen-dark profile.",
+    "print": "Toner-frugal: no background fills at all, hairlines only. For anything that will be photocopied.",
+    "accessible": "High contrast, larger type, stronger hierarchy. Pair with the accessible gate profile."
+  }
+}

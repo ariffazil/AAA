@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{TITLE}}</title>
+<style>
+/* ── DECK STRUCTURE — genuine 16:9 ─────────────────────────────────────────
+   Page box is 338.67 x 190.5 mm = 960 x 540 pt, the standard presentation
+   geometry (13.333in x 7.5in), matching the template's own name.
+   An earlier revision declared the name 16:9 while sizing the page 297x210mm,
+   which is A4 LANDSCAPE (4:3-ish) — the file would have been a different shape
+   than its label promised. Either fix the geometry or fix the name; sizing to
+   297x210mm is a one-line change if a print-on-A4 deck is ever wanted.
+
+   @page margin MUST be 0. With a non-zero margin the printable box is smaller
+   than the page box, each slide overflows, and the renderer emits TWO pages per
+   slide — title on one, body on the next — silently. The slide supplies its own
+   padding instead.
+   Render through the chromium engine, which always passes
+   --no-pdf-header-footer; otherwise the render date, the document title and the
+   raw file:/// source path print on every page. */
+@page { size: 338.67mm 190.5mm; margin: 0; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; }
+.slide { width: 338.67mm; height: 190.5mm; padding: 15mm 18mm; box-sizing: border-box;
+         page-break-after: always; overflow: hidden; position: relative; }
+.slide:last-child { page-break-after: auto; }
+.slide h1 { font-size: 27pt; margin: 0 0 5mm 0; }
+.slide h2 { font-size: 15pt; margin: 0 0 7mm 0; }
+.slide p, .slide li { font-size: 12.5pt; line-height: 1.5; }
+.slide .footer { position: absolute; bottom: 8mm; left: 18mm; right: 18mm;
+                 font-size: 8pt; color: var(--muted); display: flex;
+                 justify-content: space-between; }
+.slide .rule { height: 4px; width: 40mm; background: var(--accent); margin: 0 0 7mm 0; }
+
+/* ── THEME ──────────────────────────────────────────────────────────────── */
+{{THEME_CSS}}
+</style>
+</head>
+<body>
+
+<section class="slide">
+  <div class="rule"></div>
+  <h1>{{TITLE}}</h1>
+  <p>{{SUBTITLE}}</p>
+  <div class="footer"><span>{{EDITION}} · {{EDITION_DATE}}</span>
+  <span>content_sha256 {{CONTENT_HASH}}</span></div>
+</section>
+
+{{BODY}}
+
+</body>
+</html>
