@@ -64,6 +64,33 @@ arrives after stopping — mechanism, not luck.
 
 Declare "cannot witness" only after the sweep.
 
+## Instrument vs hand-roll
+
+**A hand-rolled probe is not a missing instrument.** The same inventory discipline applies to the
+measuring tool itself: before writing your own counter, meter, classifier or diff, sweep for the
+canonical sensor.
+
+```bash
+ls /root/scripts/              # census, entropy gate, notation probe, consolidators, sensors
+ls /root/scripts/tests/        # fixture + regression case files
+ls /root/tests/                # fixtures a doctrine's own re-run schedule names
+```
+
+Measured in one session: a skill count, a notation-namespace sweep and a doctrine-drift inference
+were each hand-rolled while an instrument that already existed — and that nobody had run — said
+something materially different. In every case the instrument was right and the hand-rolled method
+was the defect; the hand-rolled count was also **inflated**, so it manufactured work that did not
+exist.
+
+Two consequences worth holding:
+
+- **A hand-rolled method has no shared definition.** The canonical instrument encodes what the
+  quantity *means* — which roots count, which walk flags, which exclusion classes. Re-deriving the
+  number silently re-derives the definition, and the two figures then cannot be reconciled at all.
+- **When your number and the instrument disagree, do not average and do not pick one.** Re-run the
+  instrument, read its machine-readable output, and treat your own method as the thing under
+  suspicion until it explains the difference.
+
 ## Budgets worth holding
 
 - **Contradiction budget** — time spent actively trying to falsify the current belief
@@ -103,3 +130,7 @@ a moving target immutable. Refusing to do so *is* the value of the audit.
   would fail. A report with no failure condition has stopped being a report.
 - **Repeating a lane after in-line failure.** That is route repetition. Change lane, change
   observer, or pause.
+- **Hand-rolling an instrument that ships.** A bespoke counter beside a canonical sensor guarantees
+  the two will disagree, with nothing to reconcile them. Locate the sensor first; if none exists, say
+  so explicitly when you publish the number — a figure with no named method is not evidence, and one
+  that *under*-counts reads as less work than there is.
