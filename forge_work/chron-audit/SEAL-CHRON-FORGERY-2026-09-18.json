@@ -1,0 +1,82 @@
+{
+  "seal_id": "SEAL-CHRON-FORGERY-2026-09-18",
+  "created": "2026-09-18T10:58:42+08:00",
+  "authority": "F13 chat instruction 155196 — 'forge to seal this meaning fix all u see as witness just now'",
+  "role_switch": "AUDITOR -> FORGER at that instruction. Prior audit artifacts stand unchanged and are not superseded by this seal.",
+  "rollback": "/root/AAA/forge_work/chron-audit/backup-105522 (partial) + git HEAD (authoritative)",
+  "changes": [
+    {
+      "file": "/root/AAA/scripts/alpha_zen_card.py",
+      "repo": "/root/AAA",
+      "relpath": "scripts/alpha_zen_card.py",
+      "sha256_before": "d66974ee1815767e688caaa6dd4ae7d42def89e8e9899c866eb514d39eb16fbd",
+      "sha256_after": "a15322a0f856cd7ef04263276c0edc4039742c1e4dedd4367a7accaf6c29b963",
+      "changed_by": "HERMES (forger) unless noted",
+      "defect": "artifact path was fixed, so every render overwrote the file the previous ledger row had hashed; 4 of 7 entries went stale",
+      "fix": "content-addressed artifact + a stable copy kept for the delivery contract",
+      "evidence": "test render: 2 ledger rows, both RESOLVE; filename stable under identical content",
+      "before_note": "untracked in git (created 2026-09-18), so the earliest captured state is the 10:55:22 pre-forge backup, not a commit"
+    },
+    {
+      "file": "/root/scripts/alpha_zen_engine.py",
+      "repo": "/root/scripts",
+      "relpath": "alpha_zen_engine.py",
+      "sha256_before": "017a1da0eb881ff3a51c41bb06da67f76056760dac6c9e9c8604a4b7826c07e2",
+      "sha256_after": "f0b31aa62d544490d079c686188d1bd8054e9b6a62c9d9f61e7cb761f32cef52",
+      "changed_by": "HERMES (forger) unless noted",
+      "defect": "rejection funnel recorded constants (0, 0, and a 0/1 flag) as if measured",
+      "fix": "null + rejection_tracking=NOT_MEASURED",
+      "evidence": "fresh engine run: artifact has OD1=0 and 377=0, 21 present"
+    },
+    {
+      "file": "/root/AAA/scripts/cron_failure_autopause.py",
+      "repo": "/root/AAA",
+      "relpath": "scripts/cron_failure_autopause.py",
+      "sha256_before": "e4932272001f5738fca92925d3b296d814487511c4eb58273c0d3064fcfc5009",
+      "sha256_after": "d23dd46640efdf497c3ad6124c96e26fcc823d2e6b7af4dd87b0dc9ce42a574d",
+      "changed_by": "HERMES (forger) unless noted",
+      "defect": "a deliberately-retired job was reported as DRIFT ~96x/day, burying real drift",
+      "fix": "drift check skips entries carrying status: retired",
+      "evidence": "audit: 0 entries at/over threshold; retired list = ['morning-brief-rest']"
+    },
+    {
+      "file": "/root/AAA/registries/federated-recurrence.yaml",
+      "repo": "/root/AAA",
+      "relpath": "registries/federated-recurrence.yaml",
+      "sha256_before": "102c8db0db50e2628a2e6a9b18fa787b7786095bed8a6c8e3bee1878c127218a",
+      "sha256_after": "79219ac2deda76d5945f9d5877842ca6b3839c3c07ff8c05035a64f1884bbcc4",
+      "changed_by": "HERMES (forger) unless noted",
+      "defect": "declared job c9f2a8e14d3b absent from jobs.json by design, never reconciled",
+      "fix": "marked status: retired with date and reason",
+      "evidence": "same"
+    },
+    {
+      "file": "/root/AAA/scripts/apex-zen-compact.py",
+      "repo": "/root/AAA",
+      "relpath": "scripts/apex-zen-compact.py",
+      "sha256_before": "661f80cea4107934042e25a4066435224279e771711bc1b429745a8ec521d772",
+      "sha256_after": "189be35acf8efb161d14a50cbe66dd8c1ff8697636a1a34fb55a2da762f2638f",
+      "changed_by": "HERMES (forger) unless noted",
+      "defect": "169 hard PermissionError failures rewriting an append-only vault file",
+      "fix": "clean SKIP that names the design conflict instead of a swallowed traceback",
+      "evidence": "python3 apex-zen-compact.py -> exit 0, action=skip, reason recorded"
+    }
+  ],
+  "verified_not_broken": {
+    "production_quality_gate": "20/20 negative controls PASS",
+    "canonical_clock_self_test": "5 events; expiry PASS; arif-only privacy filter PASS",
+    "engine_header_after_fix": "OD1=0 occurrences, 377=0 occurrences, 21 present",
+    "render_determinism": "identical content -> identical hash -> identical filename",
+    "compact": "exit 0, action=skip",
+    "no_job_at_pause_risk": "0 entries at/over threshold with status=error"
+  },
+  "open_items": [
+    "ownership A/B/C is still unanswered by F13. carry_forward e-3a377340 records a self-authored ratification; under the authority envelope an executor may not issue its own envelope, so it does not self-bind.",
+    "the demo deck CHRON_APEX_ZEN_Demo_2026-09-18.{pptx,pdf} carries the pre-fix 377 and OD1. It cannot be un-sent. Recorded here as SUPERSEDED by this seal.",
+    "the 5-minute APEX-ZEN loop still has no human surface; its output lands in a vault the kernel does not read. Compaction conflict is now a clean skip, so it no longer fails — but it also still reaches no one.",
+    "rejection funnel remains NOT_MEASURED: honest, and unbuilt."
+  ],
+  "chron_state": "EXPERIMENTAL",
+  "state_reason": "0 of 3 enabled jobs have fired",
+  "next_single_action": "14:00 MYT — delivered? number matches the canonical store? ledger hash still resolves?"
+}
