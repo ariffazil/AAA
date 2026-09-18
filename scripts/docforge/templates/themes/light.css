@@ -1,0 +1,25 @@
+/* docforge theme: light  (DEFAULT)
+   Light background throughout. Accent appears as RULES and TINTS, never as a
+   filled dark block — a filled header costs toner and bands on paper.
+   Passes gate profile `print-light`.
+   Contrast: body #1d2733 on #ffffff = 14.1:1 (AAA at any size). */
+:root {
+  --accent:       #1b7f79;
+  --accent-ink:   #14605b;
+  --rule:         #c9d3dc;
+  --rule-strong:  #0d2b45;
+  --rule-faint:   #e3e8ee;
+  --zebra:        #f7f9fb;
+  --panel:        #f7f9fb;
+  --muted:        #5a6673;
+  --warn:         #b4432f;  --warn-bg:  #fdf2f0;
+  --open:         #b06a12;  --open-bg:  #fdf7ec;
+  --claim:        #4a5765;  --claim-bg: #f0f2f5;
+  --mono: "DejaVu Sans Mono", monospace;
+}
+body { font-family: "DejaVu Sans", "Liberation Sans", sans-serif; color: #1d2733; background: #ffffff; }
+h1, h2, h3 { color: #0d2b45; }
+.t-doc  { background: #eef6f5; color: #14605b; border-color: #9fcac6; }
+.t-wire { background: #f0f2f5; color: #3d4956; border-color: #bfc7d0; }
+.t-open { background: #fdf2f0; color: #9c3a29; border-color: #e2b3a9; }
+.t-own  { background: #fdf7ec; color: #a86713; border-color: #e6cfa4; }

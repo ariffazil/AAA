@@ -1,0 +1,28 @@
+/* docforge theme: print
+   Toner-frugal. NO background fills at all — not even zebra striping — and
+   hairline rules only. For anything that will be photocopied or printed in
+   volume, where a 5% tint reads as a grey smear by the third generation.
+   Passes gate profile `print-light` with room to spare. */
+:root {
+  --accent:       #0d2b45;
+  --accent-ink:   #0d2b45;
+  --rule:         #8a939c;
+  --rule-strong:  #000000;
+  --rule-faint:   #d5d9dd;
+  --zebra:        transparent;
+  --panel:        transparent;
+  --muted:        #4b545d;
+  --warn:         #000000;  --warn-bg:  transparent;
+  --open:         #000000;  --open-bg:  transparent;
+  --claim:        #000000;  --claim-bg: transparent;
+  --mono: "DejaVu Sans Mono", monospace;
+}
+body { font-family: "Liberation Serif", "DejaVu Serif", serif; color: #000000; background: #ffffff; }
+h1, h2, h3 { color: #000000; }
+h2 { border-bottom: 1px solid #000000; }
+.box { border-left: 3px solid #000000; background: transparent; }
+.stat { background: transparent; border-top: 2px solid #000000; }
+.stat .n { color: #000000; }
+.stat .l { color: #333333; }
+.kv { background: transparent; border: 1px solid #000000; }
+.t-doc, .t-wire, .t-open, .t-own { background: transparent; color: #000000; border-color: #000000; }

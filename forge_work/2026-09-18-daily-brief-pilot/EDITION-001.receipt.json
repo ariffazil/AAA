@@ -1,0 +1,54 @@
+{
+  "edition": "EDITION-001",
+  "date": "2026-09-18",
+  "built_at": "2026-09-18T01:33:22Z",
+  "stages": {
+    "validate": {
+      "ok": true,
+      "item_count": 5,
+      "problems": []
+    },
+    "state": {
+      "ok": true,
+      "prev_edition": null,
+      "delta": {
+        "new": 5,
+        "moved": 0,
+        "reopened": 0,
+        "still_open": 0,
+        "settled": 0,
+        "dropped": 0
+      },
+      "headline": "First tracked edition \u2014 no prior state to diff against.",
+      "semantic_mirror": {
+        "available": true,
+        "detail": "reachable at http://localhost:6333"
+      },
+      "open_items": 4
+    },
+    "build": {
+      "ok": true,
+      "exit": 0,
+      "spec": "/root/AAA/forge_work/2026-09-18-daily-brief-pilot/spec.json"
+    },
+    "seal": {
+      "ok": true,
+      "artifact": "/root/AAA/forge_work/2026-09-18-daily-brief-pilot/EDITION-001.pdf",
+      "sidecar": "/root/AAA/forge_work/2026-09-18-daily-brief-pilot/EDITION-001.sha256",
+      "artifact_sha256": "a9add62fb27a7e382d271d40cc37c67fd7a7d3222b6e0fcdd540e89ed4c0cf6d",
+      "content_sha256": "9d29b9460f89e3c7eb113cc8e1545db190b8213430dd1cda4016b5e22b524764",
+      "gates_all_pass": true
+    },
+    "mirror": {
+      "ok": true,
+      "detail": "mirrored to hermes_brief_editions"
+    },
+    "dispatch": {
+      "state": "PRODUCED",
+      "literal": true,
+      "detail": "dry run \u2014 artifact sealed on disk, nothing pushed. Set target to actually send.",
+      "artifact": "/root/AAA/forge_work/2026-09-18-daily-brief-pilot/EDITION-001.pdf"
+    }
+  },
+  "ok": true
+}

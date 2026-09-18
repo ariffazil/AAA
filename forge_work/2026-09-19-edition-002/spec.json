@@ -1,0 +1,14 @@
+{
+  "edition": "EDITION-002",
+  "edition_date": "2026-09-19",
+  "title": "Executive Brief",
+  "subtitle": "Delta tracked edition \u00b7 4 new, 4 carrying over",
+  "template": "base-a4",
+  "theme": "light",
+  "source": "/root/AAA/forge_work/2026-09-19-edition-002/content.html",
+  "run_dir": "/root/AAA/forge_work/2026-09-19-edition-002",
+  "gates": {
+    "profile": "print-light",
+    "forbid_paths": true
+  }
+}
