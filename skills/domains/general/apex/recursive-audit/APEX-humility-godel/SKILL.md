@@ -71,3 +71,7 @@ and by RASA.
 
 Reflection that never changes a verdict, surfaces no uncertainty, and produces no
 correction across N uses is decoration — demote it. (Attention-kill-criterion applies.)
+
+## Support files
+
+- `references/absorbed-AGI-decisions-reflect.md` — pre-collapse body of `AGI-decisions-reflect`, recovered 2026-09-19.

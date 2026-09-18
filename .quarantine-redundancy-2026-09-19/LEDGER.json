@@ -1,0 +1,55 @@
+[
+ {
+  "op": "recover",
+  "from": "/root/AAA/skills/reflective/sovereign-recognize/SKILL.md",
+  "sha_before": "0cef1ae064972f7c67565ff80efc0ba5ab57247e26c4ff4a0dc648e273b84772",
+  "to": "/root/AAA/skills/human-interface/audience-scoped-disclosure/references/absorbed-sovereign-recognize.md",
+  "sha_after": "12ef447079f5b5967df241ac50bf0b2865d231fad95bb79ee4da9f4f8efd7e13"
+ },
+ {
+  "op": "recover",
+  "from": "/root/AAA/skills/capabilities/synthesis/AGI-decisions-reflect/SKILL.md",
+  "sha_before": "bdd203b0bb31364cf6f6aefc11d024a1baa8b4499ace21947e42dfc315c67f2a",
+  "to": "/root/AAA/skills/domains/general/apex/recursive-audit/APEX-humility-godel/references/absorbed-AGI-decisions-reflect.md",
+  "sha_after": "47606e90d14b576ba02c840839462e5f0cfad6b4451a543e9f3ffb8661a950c2"
+ },
+ {
+  "op": "quarantine",
+  "from": "/root/AAA/skills/reflective/sovereign-recognize",
+  "to": "/root/AAA/.quarantine-redundancy-2026-09-19/sovereign-recognize",
+  "reverse": "mv /root/AAA/.quarantine-redundancy-2026-09-19/sovereign-recognize /root/AAA/skills/reflective/sovereign-recognize"
+ },
+ {
+  "op": "quarantine",
+  "from": "/root/AAA/skills/capabilities/synthesis/AGI-decisions-reflect",
+  "to": "/root/AAA/.quarantine-redundancy-2026-09-19/AGI-decisions-reflect",
+  "reverse": "mv /root/AAA/.quarantine-redundancy-2026-09-19/AGI-decisions-reflect /root/AAA/skills/capabilities/synthesis/AGI-decisions-reflect"
+ },
+ {
+  "op": "repoint",
+  "path": "/root/AAA/skills/.archive/2026-09-16-skill-zen-quartet/sovereign-recognize",
+  "was": "/root/AAA/skills/reflective/sovereign-recognize/SKILL.md",
+  "now": "/root/AAA/skills/human-interface/audience-scoped-disclosure/references/absorbed-sovereign-recognize.md"
+ },
+ {
+  "op": "remove_broken_link",
+  "path": "/root/.hermes/profiles/aaa-hermes/skills/reflective/sovereign-recognize",
+  "was_target": "/root/AAA/skills/reflective/sovereign-recognize",
+  "reverse": "ln -s /root/AAA/skills/reflective/sovereign-recognize /root/.hermes/profiles/aaa-hermes/skills/reflective/sovereign-recognize",
+  "why": "target quarantined; link was a mirror/archive pointer to the retired body"
+ },
+ {
+  "op": "remove_broken_link",
+  "path": "/root/AAA/skills/domains/apex/sovereign-recognize",
+  "was_target": "../../reflective/sovereign-recognize",
+  "reverse": "ln -s ../../reflective/sovereign-recognize /root/AAA/skills/domains/apex/sovereign-recognize",
+  "why": "target quarantined; link was a mirror/archive pointer to the retired body"
+ },
+ {
+  "op": "remove_broken_link",
+  "path": "/root/AAA/skills/.frozen/2026-09-16-skill-zen-quartet/sovereign-recognize",
+  "was_target": "../../reflective/sovereign-recognize",
+  "reverse": "ln -s ../../reflective/sovereign-recognize /root/AAA/skills/.frozen/2026-09-16-skill-zen-quartet/sovereign-recognize",
+  "why": "target quarantined; link was a mirror/archive pointer to the retired body"
+ }
+]

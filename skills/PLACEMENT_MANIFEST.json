@@ -23,14 +23,17 @@
    "placed": true
   },
   "AGI-decisions-reflect": {
-   "storage": "/root/AAA/skills/capabilities/synthesis/AGI-decisions-reflect",
-   "rel": "capabilities/synthesis/AGI-decisions-reflect",
+   "storage": "/root/AAA/.quarantine-redundancy-2026-09-19/AGI-decisions-reflect",
+   "rel": "<quarantined>/AGI-decisions-reflect",
    "generation": "bucket",
    "bundled": true,
-   "body_held_here": true,
+   "body_held_here": false,
    "borrowed_from": null,
    "address": null,
-   "placed": false
+   "placed": false,
+   "quarantined": "2026-09-19",
+   "successor": "/root/AAA/skills/domains/general/apex/recursive-audit/APEX-humility-godel",
+   "absorbed_reference": "/root/AAA/skills/domains/general/apex/recursive-audit/APEX-humility-godel/references/absorbed-AGI-decisions-reflect.md"
   },
   "agent-capability-self-audit": {
    "storage": "/root/AAA/skills/capabilities/agent-capability-self-audit",
@@ -673,14 +676,17 @@
    "placed": true
   },
   "sovereign-recognize": {
-   "storage": "/root/AAA/skills/reflective/sovereign-recognize",
-   "rel": "reflective/sovereign-recognize",
+   "storage": "/root/AAA/.quarantine-redundancy-2026-09-19/sovereign-recognize",
+   "rel": "<quarantined>/sovereign-recognize",
    "generation": "bucket",
    "bundled": false,
-   "body_held_here": true,
+   "body_held_here": false,
    "borrowed_from": null,
    "address": "domains/general/aaa/substrate/reflective/sovereign-recognize",
-   "placed": true
+   "placed": true,
+   "quarantined": "2026-09-19",
+   "successor": "/root/AAA/skills/human-interface/audience-scoped-disclosure",
+   "absorbed_reference": "/root/AAA/skills/human-interface/audience-scoped-disclosure/references/absorbed-sovereign-recognize.md"
   },
   "aaa-knowledge-files": {
    "storage": "/root/AAA/skills/domains/general/aaa/substrate/aaa-knowledge-files",
