@@ -5,7 +5,30 @@ Depth companion to `human-facing-artifact-design` §8. Load when actually buildi
 ## Choosing the build path
 
 - Multi-slide visual packs and anything HTML-shaped → Chrome headless (see `FORGE-artifact-publisher` §6).
-- Data-driven documents — resumes, dossiers assembled from Python structures, chart-and-table reports → **ReportLab** directly. Deterministic pagination, custom page furniture, no browser in the loop, repeatable builds.
+- Data-driven documents — dossiers assembled from Python structures, chart-and-table reports → **ReportLab** directly. Deterministic pagination, custom page furniture, no browser in the loop, repeatable builds.
+- HTML that already declares its own page geometry with `@page { size: A4; margin: ... }` → **print it with the browser**, no shell call and no PDF library (next section). When the layout work is already done in CSS, re-implementing it in ReportLab is duplicated effort and a second place for the two to drift.
+
+## HTML → PDF through the browser's own print pipeline
+
+An artifact that sets its own `@page` rule can be printed by the browser it is already being viewed in. This is the shortest path for a styled one-to-two page document (résumé, one-pager, brief):
+
+```python
+import base64
+new_tab("file:///abs/path/artifact.html")
+wait_for_load()
+res = cdp("Page.printToPDF",
+          printBackground=True,        # default False silently drops every CSS background
+          preferCSSPageSize=True,      # defer to the artifact's @page rule
+          paperWidth=8.27, paperHeight=11.69,   # fallback when no @page is declared
+          marginTop=0.51, marginBottom=0.47, marginLeft=0.55, marginRight=0.55)
+with open(out_pdf, "wb") as f:
+    f.write(base64.b64decode(res["data"]))
+```
+
+- `printBackground=True` is mandatory for any themed document. Without it the browser omits background colour and a light card on a coloured page arrives as an unstyled white sheet — the artifact looks broken rather than unthemed.
+- Then extract text from the built PDF in the same session before delivering. A render that dropped a stylesheet, or a section that failed to lay out, is invisible in the HTML source and obvious in the extracted text.
+- **Assert every embedded image decoded before printing.** For a document carrying base64 figures, check `[...document.images].every(i => i.complete && i.naturalWidth > 0)` in the loaded page. A base64 image that fails to decode prints as a silent gap while the page still measures as non-blank — so page count, character count and ink coverage all pass a document with a missing figure.
+- Deliver with `MEDIA:/abs/path.pdf`.
 
 ## ReportLab recipes
 
@@ -181,14 +204,42 @@ tightening that block's top margin and leading so it joins the preceding page, a
 its line lengths if that is what makes it fit. Do not delete the block and do not pad it with
 filler.
 
+**Exclude pages designed to be figure-only before thresholding.** A one-figure-per-page layout
+legitimately reads 3–15 % ink, because the figure's own white margins dominate the raster — so a flat
+"under 2 % is a defect" rule reports every correct figure page as broken. Rank the pages and inspect
+the outlier instead of thresholding each one, and pair ink with the per-page embedded-image count
+(`len(page.get_images(full=True))`) so a figure page and a blank page are told apart before you "fix"
+a layout that was already right.
+
 Skip this sweep when the active model has no vision lane; the numbers are the whole check, and a
 page-count match alone will not report a stranded page (the fragment still counts as a page).
+
+**Rasterise in memory instead of shelling out to `pdftoppm`.** `pymupdf` renders each page without a
+PNG round-trip, and sampling the **modal** pixel value first (rather than thresholding against
+white) makes the same snippet correct on a dark page as well as a light one:
+
+```python
+import pymupdf, collections
+
+doc = pymupdf.open(path)
+for i, page in enumerate(doc):
+    pm = page.get_pixmap(dpi=72)
+    vals = pm.samples[::3][:60000]
+    modal = collections.Counter(vals).most_common(1)[0][0]   # the page background
+    ink = sum(1 for v in vals if abs(v - modal) > 24) / len(vals)
+    print(i + 1, len(page.get_text()), "%.2f%%" % (ink * 100))
+```
+
+Dense A4 text pages land near 9–13% by this measure. Read the numbers **relative to each other**
+within one document — the absolute value shifts with page size, margin and type size, so a
+cross-document threshold is not meaningful; a page far below its siblings is the finding.
 
 ## Matplotlib gotchas that cost time
 
 - `plt.Rectangle` is **not exported** — `import matplotlib.patches as patches` and use `patches.Rectangle`.
-- `Axes.text(x, y, ...)` raises `only 0-dimensional arrays can be converted to Python scalars` when `y` is a numpy slice. Collapse to a scalar first (`float(np.mean(y))`) before labelling a band or layer.
+- `Axes.text(x, y, ...)` raises `only 0-dimensional arrays can be converted to Python scalars` whenever `y` is an array rather than a scalar — a slice, or equally a **one-element array** returned by a helper you expected to give two floats (`xa, ya = curve(t)` yields length-1 arrays when `t` is a list rather than a linspace). Collapse explicitly: `float(np.mean(y))` for a band or layer, `float(xa[0])` for a single sample. The error names neither the variable nor the call, so grep for `ax.text(` and your curve helpers first when it appears after a refactor.
 - A user style sheet can inject unsupported rcParams (e.g. `legend.bbox_to_anchor`) and emit a `Bad key` warning on every run. Cosmetic — the figure still writes.
+- **Reserve head-room before a title band collides with the axes.** A `fig.suptitle` plus a `fig.text` subtitle drawn near the top edge gets overprinted the moment `tight_layout()` runs — and the line it eats is usually the figure's own provenance note, i.e. the disclaimer that makes the schematic admissible. Draw the header at about `y≈1.005` / `y≈0.963` and pass the reserve explicitly (`fig.tight_layout(rect=(0, 0.05, 1, 0.945))` when a legend also sits below the axes), then confirm both lines survived on the rendered PNG — the collision is invisible to every count-based check.
 - Both x and y for a band label must be scalars; compute midpoints from means, never from arrays.
 
 ### Geological cross-sections must read the right way up
@@ -197,6 +248,42 @@ page-count match alone will not report a stranded page (the fragment still count
 - Invert the depth axis explicitly: `ax.set_ylim(max_depth, -margin)` so depth increases downward. Forgetting this produces a section that reads upside down — the most common rejection.
 - Draw the water layer from 0 to the water depth, and label a unit only when its mean thickness exceeds a floor (e.g. 0.15 km), otherwise labels collide.
 - Wells: vertical line from 0 to TD, a marker at the wellhead, a tick at the target depth, and the name in a boxed annotation.
+- **The axis label and the tick signs must agree.** Ticks running `0 → −26` under a label reading "Depth below sea level (km)" is a contradiction a specialist spots in the first second. Either label the axis "Elevation relative to sea level (km)" for negative values, or carry positive depth and invert with `set_ylim(max_depth, -margin)` — and use the same convention in the caption.
+- **No placeholder or unresolved token in rendered text** — no `?`, `(7.85–? Ma)`, `~7x`, `TBC`. Resolve it or drop the clause; one unresolved token makes the whole figure read as unchecked and discredits the resolved numbers beside it.
+- **Every figure carries a legend**, and every schematic element says so (`schematic` / `indicative` / `not to scale`) in both the subtitle and the caption. Colour fills without a key read as unfinished; an unlabelled schematic passes interpretation off as measurement.
+- **Structural geometry must be kinematically coherent** — a wedge has a décollement, a taper and a hinterland-verging thrust set, and every fault has a named sense. A pile of coloured polygons with two unlabelled red lines is a collage, and a specialist rejects the whole pack on it. The same test applies to bodies: a pluton is a tapered intrusion with a narrow stem rather than a rectangle, a carbonate platform has a build-up profile rather than constant thickness, and a seal follows the top of the unit beneath it. **A geological name obliges a geological shape** — geometry that contradicts its own label costs more trust than a missing element does.
+- **A value the caption claims and the panel contradicts is worse than no value.** If the caption says a horizon lies at 45–60 km and the panel stops at 26 km, drop the claim or extend the panel.
+- **Say where a schematic came from.** `built from published cross-sections and figures (<author year, journal vol:pages>); not re-picked from seismic` in the subtitle is the sentence that makes the figure admissible in a technical deliverable.
+
+### Regional basemaps without a cartopy data download
+
+Natural Earth vectors are served as GeoJSON from the Natural Earth repo — download and parse directly: no cartopy data-fetch step, and no projection library in the loop.
+
+```python
+BASE = "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/"
+for f in ["ne_10m_land.geojson", "ne_10m_coastline.geojson",
+          "ne_10m_admin_0_boundary_lines_land.geojson"]:
+    urllib.request.urlretrieve(BASE + f, os.path.join(GEO, f))
+```
+
+- Use **10m** for a regional map. The 110m land file carries one polygon per continent with its vertices at extreme latitudes, so a regional bbox test over it finds nothing usable.
+- **Clip by vertex count inside a padded bbox, never by a whole-feature bbox.** A continent feature's bbox spans the globe, so any regional test matches it and you end up drawing the world. Keep rings with at least a few vertices inside the window, padded by ~2° so the coastline closes at the frame edge.
+- Draw land as filled patches first, then coastline rings as lines, then boundaries dashed.
+- `ax.set_aspect(1.0 / np.cos(np.radians(mid_lat)))` renders the degrees at their true local shape; `aspect=1` visibly stretches a regional map away from the equator.
+- **Furniture a specialist checks for, each a few lines:**
+  - *North arrow* — `ax.annotate("", xy=(x, y_hi), xytext=(x, y_lo), arrowprops=dict(arrowstyle="-|>"))` plus a bold `N`. Never omit it on a frame that is cropped or rotated; a map without one reads as a plot.
+  - *Scale bar with a representative fraction* — `dlon = km / (111.32 * np.cos(np.radians(mid_lat)))`, then label the bar `"100 km  (~1:2,200,000 at 5°N)"`. A bar with a length but no RF is not a scale, and a length in degrees with no stated latitude is worse.
+  - *Block and well outlines in the water, clear of the coastline* — a licence rectangle crossing land is the fastest way to lose a specialist reader, and it is the one map defect that reads as carelessness rather than as a deliberate schematic.
+  - *Graticule labels as degrees* — `f"{v}°E"`. Bare numbers read as a plot axis, not a map.
+  - *Legend below the frame* — `ax.legend(..., loc="upper center", bbox_to_anchor=(0.5, -0.055), ncol=N, frameon=False)` with `tight_layout(rect=...)` reserving the space. A legend placed inside a regional map covers a landmass or a country label every time; vision QA catches it as "legend covering data".
+- **Say which half of the map is real.** Caption the basemap as real geography (source and datum) and the block outlines, contours and well symbols as `indicative`, with a plain `not a licence map` where that is true. Naming the sourced half is what buys the reader's trust in the approximated half — and never draw a guessed coordinate pair as if it were the licence shape.
+- Distinguish evidence classes by line style — solid for sourced or measured, dashed for indicated or schematic — so the reader does not need the caption to tell them apart.
+- **`Line2D` has no `where` kwarg.** `ax.plot(x, y, where=cond)` raises `AttributeError: Line2D.set() got an unexpected keyword argument 'where'`. Mask instead: `ax.plot(x, np.ma.masked_where(~cond, y))`. `where=` is valid on `ax.step()` and `ax.fill_between()`, not on `ax.plot()` — grep every `where=` in a figure script before trusting the run.
+- The full geo stack (`geopandas`, `shapely`, `pyproj`, `cartopy`, `rasterio`) is installed in the organ virtualenvs rather than the system interpreter or the agent venv — on this host `/root/GEOX/.venv/bin/python` carries all of them, so run figure scripts with that binary: `/root/GEOX/.venv/bin/python make_figs.py`. Probe the candidates with `importlib.util.find_spec` before installing anything — installing is the slow path, and a missing import in one interpreter is not evidence the stack is absent from the host:
+  ```bash
+  for v in /opt/arifos/venv /root/GEOX/.venv; do echo "== $v"; "$v/bin/python" -c "import geopandas, cartopy; print('geo stack OK')" 2>&1 | tail -1; done
+  ```
+  The Hermes sandbox carries `matplotlib` and `numpy` but not the geospatial stack — fine for a quick geometry check, wrong for a real basemap.
 
 ## Image generation (Gemini API)
 

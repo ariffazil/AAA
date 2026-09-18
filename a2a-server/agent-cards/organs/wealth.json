@@ -4,7 +4,7 @@
   "protocolVersion": "1.2",
   "agentId": "wealth",
   "name": "WEALTH",
-  "description": "Capital intelligence \u2014 NPV/IRR, markets, institutional stress, entropy, wisdom.",
+  "description": "Capital intelligence — NPV/IRR, markets, institutional stress, entropy, wisdom.",
   "version": "1.0.0",
   "provider": {
     "organization": "arifOS",
@@ -42,7 +42,18 @@
       "name": "x-a2a-key"
     }
   },
-  "skills": [
+  "skills": [],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "/Hfc52GfOBNbAa8T8ei691BS92Yt8RilvFHpiuQp2w59M+jRaEQoRiocQT5FnXr7gcQ9qcDOK4eYtYMscoQHAg==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ],
+  "did": "did:web:arif-fazil.com",
+  "_quarantined_skills": [
     {
       "id": "capital_primitive",
       "name": "Capital Math",
@@ -55,7 +66,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "capital_health",
@@ -69,7 +81,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "capital_market",
@@ -83,7 +96,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "capital_wisdom",
@@ -97,7 +111,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "capital_diagnose",
@@ -111,7 +126,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "capital_entropy",
@@ -125,7 +141,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "capital_ledger",
@@ -139,7 +156,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "capital_registry",
@@ -153,7 +171,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "wealth_institutional_stress",
@@ -167,7 +186,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "wealth_governance_capacity",
@@ -181,7 +201,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "wealth_cascade_model",
@@ -195,7 +216,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "wealth_external_exploitation",
@@ -209,17 +231,16 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     }
   ],
-  "signatures": [
-    {
-      "did": "did:arif:aaa",
-      "proofValue": "/Hfc52GfOBNbAa8T8ei691BS92Yt8RilvFHpiuQp2w59M+jRaEQoRiocQT5FnXr7gcQ9qcDOK4eYtYMscoQHAg==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T23:25:58Z",
-      "type": "Ed25519Signature2020"
-    }
-  ],
-  "did": "did:web:arif-fazil.com"
+  "_skill_ref_reconciliation": {
+    "at": "2026-09-18",
+    "by": "afpass-W1",
+    "before": 12,
+    "after": 0,
+    "quarantined": 12,
+    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
+  }
 }

@@ -128,7 +128,7 @@ P_effective = P_oauth ∩ P_actor ∩ P_verdict ∩ P_constraint ∩ P_runtime
 
 - Individual organ identity (DID) — use `did-web-identity`
 - Runtime health probes — use organ `/health` endpoints
-- MCP testing/validation — use `FORGE-mcp-testing` with MCPJam Inspector
+- MCP testing/validation — use `mcp-testing` (canonical, merged 2026-09-19) with MCPJam Inspector
 - Model routing/fallback — use `litellm-proxy-triage`
 
 ## Constitutional Floor Alignment

@@ -4,21 +4,21 @@ canonical_home: /root/AAA/skills
 contrast_doc: /root/AAA/docs/TOOLBENCH_3WAY_CONTRAST.md
 architecture: 3-layer-3-axis
 disk_reconciliation:
-  refreshed: '2026-09-18T02:37:02+00:00'
+  refreshed: '2026-09-18T17:34:12+00:00'
   method: 'skills-census.py (cron 4x/day) — machine-derived, do not hand-edit'
-  physical_disk_skills: 600
-  canonical_skills: 672
-  viewed_skills: 452
-  loadable_skills: 452
+  physical_disk_skills: 636
+  canonical_skills: 708
+  viewed_skills: 454
+  loadable_skills: 453
   overlay_skills: 'continue=0, gemini=12, kimi=109, opencode=18, qwen=28'
-  whole_mesh_skills: 767
+  whole_mesh_skills: 803
   duplicate_identity_groups: 29
   duplicate_identity_skills: 81
   shells: 2
   diverged: 4
-  broken_symlinks: 5
-  witness_hash: 6565195c7bf1eee1
-  verdict: FAIL
+  broken_symlinks: 0
+  witness_hash: 80422e8c3d4dc9e0
+  verdict: WARN
 layers:
   substrate:
     count: 8
@@ -329,9 +329,34 @@ agent_profiles:
       tool system. Requires --no-gui --exit --yes-always in non-tty. See CCC_DOCTRINE.md.
 total_skills: 95
 logical_registry_count: 95
-alias_table_rows: 133
-active_alias_rows: 104
-tombstone_alias_rows: 29
+# Alias-table figures re-measured against /root/AAA/skills/SKILL_ALIAS_TABLE.json
+# on 2026-09-18 (afpass-W2). Field semantics preserved: total / non-tombstone / tombstone.
+# The previous triple (133, 104, 29) was internally inconsistent AND stale: 104+29=133
+# while the table already held 164 rows.
+alias_table_rows: 164
+active_alias_rows: 133
+tombstone_alias_rows: 31
+# The defect signal: how many non-tombstone rows actually resolve to a body on disk.
+# status="RESOLVED" is a claim in the row; these two numbers are the measurement.
+alias_rows_resolvable: 42
+alias_rows_dead: 91
+alias_reconciliation:
+  refreshed: '2026-09-18'
+  by: afpass-W2
+  method: os.path.exists(primary_path) for every non-tombstone row
+  evidence: /root/forge_work/2026-09-18/SKILL-DRIFT-REPORT-2026-09-18.md (D-3, D-7)
+  finding: >
+    91 non-tombstone rows still carry status RESOLVED or FORGED while their primary_path
+    does not exist. Root cause: the organ doctrine suites moved to organ-native homes
+    (/root/GEOX/skills, /root/WELL/skills, /root/WEALTH/skills, /root/arifOS/skills) and the
+    table was never re-resolved. Each row needs an individual verdict (retarget vs tombstone);
+    this reconciliation sizes the hole, it does not close it.
+  copies: >
+    24 files named SKILL_ALIAS_TABLE*.json exist on this box across 5 distinct hashes. As of
+    2026-09-18 every copy on an agent-readable surface is a SYMLINK to the master
+    /root/AAA/skills/SKILL_ALIAS_TABLE.json; 11 historical copies inside archive/quarantine
+    trees are left as bytes and listed in
+    /root/AAA/skills/.archive/alias-tables-20260918/SUPERSEDED-MANIFEST.json
 reduction_from_original: 124 -> 64 logical registry entries; alias rows are a separate mapping/history
   dimension
 unification_atlas: /root/A-FORGE/forge_work/2026-07-12/GROK-CLI-AAA-SKILL-UNIFICATION-ATLAS.md
