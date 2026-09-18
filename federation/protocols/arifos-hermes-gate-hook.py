@@ -85,6 +85,49 @@ W_SCAR_CRITICAL = [
 METRICS_PATH = "/root/.local/share/arifos/hermes_falsification_metrics.jsonl"
 TELEMETRY_PATH = "/root/.local/share/arifos/wscar_telemetry.json"
 
+# ---------------------------------------------------------------------------
+# W_scar v2 (2026-09-18, F13-authorised): CLAIM-SURFACE + VERIFIED PROVENANCE
+#
+# v1 scanned `json.dumps(tool_input)` for a vocabulary list. Two defects, both measured live on
+# 2026-09-18 while hardening the intelligence-brief lane:
+#
+#   FALSE POSITIVE — a file PATH containing a trigger word was read as a claim. Patching
+#     `.../court/court-audit/agent-finding-verification/SKILL.md` was refused twice, and so was a
+#     read-only `grep` naming that file. The payload asserted nothing; a directory was named
+#     "court". Paths are structure, not assertions.
+#   FALSE NEGATIVE — provenance was "does the payload contain the token source/url/http".
+#     Any string satisfies that. A fabricated figure with the word "url" beside it passed.
+#
+# v2 therefore does two things v1 did not:
+#   1. Scans only the text a human would read as an assertion, with URLs, paths, receipt ids and
+#      code spans stripped first. A path can no longer be mistaken for a claim.
+#   2. VERIFIES provenance instead of detecting its vocabulary: it extracts cited URLs and
+#      resolves them. A cited source that does not resolve is not evidence.
+#
+# Deliberate non-blocking case: if the URL check cannot reach the network at all, the verdict is
+# DEGRADED and the call proceeds. A network fault is not evidence of fabrication, and a gate that
+# converts an outage into a blanket denial of service is worse than the defect it guards.
+# ---------------------------------------------------------------------------
+
+# Fields that carry human-facing assertions. Everything else (paths, ids, flags, enums) is structure.
+CLAIM_TEXT_FIELDS = (
+    "content", "new_string", "old_string", "text", "message", "response",
+    "command", "cmd", "code", "body", "description", "prompt", "answer",
+)
+
+# System-owned doctrine / operations trees. A path under these roots names method, never a market
+# position or a patient, so tokens inside it are never promoted to a claim.
+OPS_PATH_WHITELIST = (
+    "/root/aaa/", "/root/arifos/", "/root/.hermes/", "/root/forge_work/",
+    "/root/agentic/", "/root/skill-audit/", "/root/aaa/skills/",
+)
+
+URL_RE = re.compile(r"https?://[^\s\"'`<>)\]}]+", re.IGNORECASE)
+RECEIPT_RE = re.compile(r"\b(?:receipt|trace|envelope)[_-]?id\s*[:=]?\s*[A-Za-z0-9._:-]{6,}", re.IGNORECASE)
+EVIDENCE_PATH_RE = re.compile(r"(/[A-Za-z0-9._/-]+\.(?:json|jsonl|log|md|csv|parquet|db|yaml|yml))")
+PROVENANCE_CACHE_PATH = "/root/.local/share/arifos/wscar_url_cache.json"
+URL_CHECK_TIMEOUT = 3
+
 # W_scar: text_to_speech and image_gen are exempt (creative output, not claims)
 W_SCAR_EXEMPT_TOOLS = {"text_to_speech", "image_gen", "video_gen", "vision_analyze", "browser_snapshot"}
 
@@ -93,27 +136,146 @@ READONLY_PROBE_RE = re.compile(
 )
 
 
-def has_critical_claim(tool_name: str, tool_input: dict) -> bool:
-    """W_scar: detect if the tool call touches critical human-consequence variables."""
-    if tool_name in W_SCAR_EXEMPT_TOOLS:
+def _cmd_is_readonly(cmd: str) -> bool:
+    """True only if EVERY segment of a shell pipeline is a read-only probe.
+
+    v1 anchored the regex at the start of the whole command, so `cd /x && grep -n RM470 f` was read
+    as a mutation even though every segment is a read. That is the same defect as the path
+    false-positive, one layer down.
+    """
+    if not cmd:
         return False
-    # Read-only inspection commands in terminal/bash are probes, not claims
+    for seg in re.split(r"&&|\|\||\||;", cmd):
+        seg = seg.strip()
+        if not seg or seg.startswith("cd "):
+            continue
+        if not READONLY_PROBE_RE.search(seg):
+            return False
+    return True
+
+
+def _strip_nonclaim(text: str) -> str:
+    """Remove everything that is structure rather than assertion, then lowercase.
+
+    Order matters: URLs are extracted as EVIDENCE before they are removed from the claim surface.
+    """
+    text = URL_RE.sub(" ", text)                                # evidence, collected separately
+    text = re.sub(r"(?:^|[\s\"'(=|])/?[\w.@+-]+(?:/[\w.@+-]+)+", " ", text)  # paths ≠ claims
+    text = RECEIPT_RE.sub(" ", text)                            # receipt ids ≠ claims
+    text = re.sub(r"`[^`]*`", " ", text)                        # code spans ≠ claims
+    text = re.sub(r"^```.*?^```", " ", text, flags=re.S | re.M)
+    return text.lower()
+
+
+def claim_surface(tool_name: str, tool_input: dict) -> str:
+    """The text a human would read as an assertion — with structure stripped out.
+
+    Returns "" when there is nothing to assert, which ends the check for this call.
+    """
+    if tool_name in W_SCAR_EXEMPT_TOOLS:
+        return ""
     if tool_name in {"terminal", "bash", "shell"}:
         cmd = (tool_input.get("command") or tool_input.get("cmd") or "").strip()
-        if READONLY_PROBE_RE.search(cmd):
-            return False
-    arg_str = json.dumps(tool_input).lower()
-    for pattern in W_SCAR_CRITICAL:
-        if re.search(pattern, arg_str):
-            return True
-    return False
+        if _cmd_is_readonly(cmd):
+            return ""
+    parts = []
+    for field in CLAIM_TEXT_FIELDS:
+        val = tool_input.get(field)
+        if isinstance(val, str) and val:
+            parts.append(val)
+    if not parts:
+        return ""
+    return _strip_nonclaim("\n".join(parts))
 
 
-def has_source_evidence(tool_input: dict) -> bool:
-    """W_scar: check if the claim has source evidence attached."""
-    arg_str = json.dumps(tool_input).lower()
-    source_indicators = ["source", "url", "http", "evidence", "probe", "curl", "health", "git", "commit"]
-    return any(ind in arg_str for ind in source_indicators)
+def has_critical_claim(tool_name: str, tool_input: dict) -> bool:
+    """W_scar: does the *assertion text* touch a critical human-consequence variable?
+
+    Anchored to the claim surface, never to the serialized payload. The file a claim is written
+    into is not the claim.
+    """
+    surface = claim_surface(tool_name, tool_input)
+    if not surface:
+        return False
+    return any(re.search(pattern, surface) for pattern in W_SCAR_CRITICAL)
+
+
+def _load_url_cache() -> dict:
+    try:
+        with open(PROVENANCE_CACHE_PATH) as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+def _save_url_cache(cache: dict):
+    try:
+        os.makedirs(os.path.dirname(PROVENANCE_CACHE_PATH), exist_ok=True)
+        tmp = PROVENANCE_CACHE_PATH + ".tmp"
+        with open(tmp, "w") as f:
+            json.dump(cache, f, indent=2)
+        os.replace(tmp, PROVENANCE_CACHE_PATH)
+    except Exception:
+        pass  # never block on cache failure
+
+
+def _url_resolves(url: str, cache: dict):
+    """True / False / None. None means UNDETERMINED (DNS, timeout, TLS) — not 'fabricated'."""
+    if url in cache:
+        return cache[url]
+    import urllib.error
+    import urllib.request
+
+    verdict = None
+    try:
+        req = urllib.request.Request(url, method="HEAD", headers={"User-Agent": "arifos-gate/2.0"})
+        with urllib.request.urlopen(req, timeout=URL_CHECK_TIMEOUT) as resp:
+            verdict = 200 <= resp.status < 400
+    except urllib.error.HTTPError as exc:
+        # 403/405/429 mean the HOST ANSWERED — the resource exists and refuses HEAD.
+        verdict = exc.code in (403, 405, 429) or 200 <= (exc.code or 0) < 400
+    except Exception:
+        verdict = None  # unreachable ≠ fabricated
+    if verdict is not None:
+        cache[url] = verdict
+    return verdict
+
+
+def collect_provenance(tool_input: dict):
+    """(urls, receipt_ids, existing_evidence_paths) found anywhere in the payload."""
+    blob = json.dumps(tool_input)
+    urls, seen = [], set()
+    for raw in URL_RE.findall(blob):
+        url = raw.rstrip(".,;")
+        if url not in seen:
+            seen.add(url)
+            urls.append(url)
+    receipts = [m.group(0) for m in RECEIPT_RE.finditer(blob)]
+    paths = [p for p in EVIDENCE_PATH_RE.findall(blob) if os.path.exists(p)]
+    return urls, receipts, paths
+
+
+def verify_provenance(tool_input: dict):
+    """(state, detail). state ∈ {VERIFIED, UNRESOLVED, DEGRADED, ABSENT}.
+
+    v1 asked 'does the payload contain the word source?'. v2 asks 'does the cited source resolve?'.
+    Shape is not witness, and a citation-shaped string that 404s is not a source.
+    """
+    urls, receipts, paths = collect_provenance(tool_input)
+    if urls:
+        cache = _load_url_cache()
+        sample = urls[:4]  # bounded: the gate runs inside every tool call
+        verdicts = [_url_resolves(u, cache) for u in sample]
+        _save_url_cache(cache)
+        resolved = sum(1 for v in verdicts if v is True)
+        if resolved:
+            return "VERIFIED", f"{resolved}/{len(verdicts)} cited URL(s) resolve"
+        if verdicts and all(v is False for v in verdicts):
+            return "UNRESOLVED", f"{len(verdicts)} cited URL(s) present but none resolve"
+        return "DEGRADED", "URL check inconclusive (network fault) — not counted as absence of source"
+    if receipts or paths:
+        return "VERIFIED", "receipt id or on-disk evidence path present"
+    return "ABSENT", "no URL, receipt id, or on-disk evidence path in the payload"
 
 
 def write_falsification_metric(event_type: str, details: dict):

@@ -143,6 +143,42 @@ description: <the description>
 3. The Floor-Tier SEAL Gate was observed
 4. All trigger clauses pass L1-L3 compliance
 
+## Federation Write Gate — critical-variable vocabulary (arifOS)
+
+A pre-tool hook intercepts calls before they run. It does not read intent — it greps the serialized
+tool input. Reference source: `/root/AAA/federation/protocols/arifos-hermes-gate-hook.py`
+(verify the live file with `git log --oneline -3 --` on that path; a `.bak-<date>-pre-jitu` sibling
+means the gate was recently edited).
+
+**Rule:** if the payload matches the critical-variable patterns below and carries no source indicator,
+the write is **BLOCKED** and returned as `W_SCAR HOLD`.
+
+| Critical vocabulary (matched) | Source indicators that clear it |
+|---|---|
+| duit · money · bayar · bayaran · transfer · rm + digits · price · cost · budget | `source` · `url` · `http` · `evidence` · `probe` · `curl` · `health` · `git` · `commit` |
+| nyawa · health · ubat · dosis · medical · hospital · doktor · sakit | (same set) |
+| reputasi · legal · law · laws · saman · polis · court · undang | (same set) |
+| invest · investment · trading · xauusd · forex · leverage | (same set) |
+
+**Correct response: fix the payload, never shop for an unguarded tool.** Add a real source line — a
+URL, an absolute file path, a probe command. The gate asserts exactly the law this skill already
+requires: a claim about a consequential variable carries its provenance in the same breath.
+
+**Read-only terminal commands are exempt** — a command starting with `ls`/`cat`/`grep`/`git status`/
+`curl`/`jq`/`systemctl status` routes as a probe, not a claim. That is why inspection keeps working
+during a HOLD, and why `read_file` on a skill whose text contains such vocabulary can still be
+refused (the guard reads the tool's arguments, and the *path* can trip it too).
+
+**Pitfall observed 2026-09-18:** a skill patch containing `court`, `undang` and `RM` figures but no
+URL was refused three times — across `patch`, `skill_manage` and a shell `grep`. Adding a `Sources:`
+line with real URLs to the identical content cleared it in one attempt. **Do not retry the same
+payload** — the check is deterministic; only the payload changed.
+
+**Name resolution trap:** when two skills share a name in different roots, `skill_manage` resolves by
+NAME across all roots, not by the path you read. Patching "the file you just read" can therefore fail
+with a no-match error against an entirely different file. Resolve the path with
+`find /root/.hermes/skills /root/AAA/skills -name SKILL.md -path '*<name>*'` before editing.
+
 ## Failure Modes & Escalation
 
 *   **Intent Ambiguity:** User request too vague. *Action:* Pause and present clarifying questions.

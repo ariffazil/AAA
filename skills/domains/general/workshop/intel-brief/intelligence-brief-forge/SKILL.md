@@ -31,6 +31,46 @@ tags: [intelligence, tersurat, tersirat, quantum, void-analysis, sovereign-brief
 
 The four layers compose: tersurat is the surface; tersirat is the undercurrent; quantum is the trajectory space; void is the negative space (often the most predictive).
 
+## Ground / Synthesis Schema — mandatory separation, enforced by layout
+
+The four layers above are analytic. This is the **format law** that stops them bleeding into each
+other, and it is enforced by structure rather than intention. Every brief carries two visibly
+separate blocks; each claim lives in exactly one of them.
+
+**BLOCK A — GROUND (tersurat).** Facts that hold independently of my reading.
+Each row: claim · value or statement · source body · document + period · page/table ref.
+A row with no resolvable document does not enter Block A — it moves to Block B marked UNSOURCED,
+or it is cut.
+
+**BLOCK B — SYNTHESIS (tersirat · quantum · void).** Everything I concluded.
+Each row: inference · premises (by Block A row id) · confidence · **what would falsify it**.
+
+Rules that make the separation real:
+
+1. **A synthesis sentence may not carry a figure Block A does not already hold.** The number
+   appears in A first; B cites its row id. This is what prevents a figure from being introduced
+   inside an argument, where it cannot be checked without unpicking the argument.
+2. **Chain downgrade.** If any premise of an inference is itself an inference, the conclusion
+   inherits the weakest premise. Label the chain depth. Never let a three-step chain present as
+   one step — the compression is where the confidence inflation happens.
+3. **No restating.** An inference may not reappear as flat fact in a later section of the same
+   brief. The drift is one-directional, and it lands in the summary box, so re-read the summary
+   against Block B last, not first.
+4. **Settled and open never share a sentence unlabelled.** A final election result and an assumed
+   electoral pact are different claim types; so are a gazetted instrument and a negotiation
+   reported in progress. Scar 2026-09-18: an assumed coalition pact was narrated as having "won
+   twice", when one of the two states was won by one bloc in direct contest with the other — the
+   universal claim was never in evidence, only the two local results were. Result → Block A. Pact
+   reading → Block B. Name the observation that would settle it (nomination papers, a sealed pact
+   document).
+5. **Provenance sentence.** A closing "figures from public reports (X, Y, Z)" line grants
+   provenance to EVERY number in the brief, including the unsourced ones — that is the deepest
+   defect in a brief, because it reads as rigour. Replace it with the Block A table, which grants
+   provenance per row and nothing collectively.
+6. **Attribution follows the voice.** An inference stated in the sovereign's phrasing is still
+   Block B. If it is to travel as the brief's conclusion, it carries its falsifier in the same
+   paragraph — an unfalsifiable conclusion in a sealed product is a belief with a masthead.
+
 ## 5-Phase Workflow
 
 ### Phase 1 — Dataset Build (5-10 min)

@@ -27,6 +27,8 @@ Name the reader **before** laying anything out. There are two, and they want opp
 
 Never fuse them. Handing a technical dump to a human reader is a failure even when every fact is correct. For a human artifact the question is not "is this complete?" but "does the reader now know what to do or feel?"
 
+**Third case — the internal-audience artifact.** When the reader is the sovereign and the subject *is* his own system, neither rule above applies cleanly. Internal vocabulary is the payload, not a leak, and the failure mode inverts: stripping the terms that carry the meaning destroys the artifact. What such an artifact owes instead is its epistemic status rendered on its face — an assessment that was never ratified must say so in the frame. See `visual-artifact-delivery` §4c.
+
 Related: `FORGE-artifact-publisher` covers the EMD pipeline mechanics (HTML → Chrome headless → delivery). This skill owns the layer above it — who is reading, and how the page is weighted.
 
 ## 2. Attention hierarchy — visual weight follows consequence
@@ -149,7 +151,7 @@ receiving-an-audit procedure.
 [ ] Every page is dense — chars/page counted from the built PDF, not eyeballed (§3)
 [ ] No stranded near-empty final page — ink coverage measured per page (§3)
 [ ] No number appears without a source and a date (§5)
-[ ] No internal vocabulary in the rendered text (floor IDs, tags, tool names, PASS/FAIL)
+[ ] No internal vocabulary in the rendered text — for an OUTSIDE reader (floor IDs, tags, tool names, PASS/FAIL). For an internal reader whose subject IS the system, internal vocabulary is the payload (§1)
 [ ] No system references in personal reflection artifacts (§4)
 [ ] Personal letters: no motto, no house sign-off, no sender's business unless asked (§4)
 [ ] If reaching a person: authentic source used, not a synthesis; one page sent, comparison held back (§4)

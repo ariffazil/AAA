@@ -91,6 +91,7 @@ FI seat + role. What each registry file is worth, and the worker-host probe: `re
 - **Two registry docs can disagree about the same identifier.** When a roster file, the MCP registry, and a harness's own overlay carry different labels for one seat, report all of them and let the sovereign arbitrate — never silently pick one. A role carried by an existing agent (clerk, pruner, on-demand helper) is not an additional agent; do not inflate the fleet with it.
 - **Cross-host version drift has no fixed direction.** Neither host is "the" version: record both, per harness, and never quote one host's numbers as the federation's. Wrap every `--version` in `timeout` — node CLIs hang under load and eat the probe budget.
 - **A quota wall is not a defect.** A subscription-gated CLI answering 402/429 is EXTERNAL — money-gated, alive — not DOWN. Classify it separately from a broken lane, or the report sends a repair where a top-up is needed.
+- **A config flag is a posture, not a status — and its name is not evidence.** A boolean whose name embeds a failure mode (`..._on_db_unavailable`, `allow_requests_on_X_unavailable`, `disable_...`) states what the system *would* do if that failure happened; it says nothing about whether it is happening now. Quoting one before you have measured the subsystem manufactures an incident the operator then chases. Probe first (`pg_isready`, the readiness body, `systemctl --failed`), state that, and only then the stance. Read a settings *block* as one intent — flags that ship together usually mean one thing together, and pulling one line out of the block invents an alarm the others explain away.
 - **Extract config facts from a script file, not an inline pipeline.** Piping into an interpreter is refused by the safety scanner, and nested shell-to-python quoting mangles bracketed regexes (unterminated character set). Write the probe to a file, then run it.
 
 ## Reporting shape (Arif)
@@ -101,6 +102,7 @@ Plain BM Penang, short, no tables and no receipt labels. Lead with what is actua
 - Never say "semua OK" when `/ready` is red — name the failing checks and keep the two verdicts separate.
 - Close with at most one decision. If a probe returned `human_decision_required`, that is the decision; do not offer a menu.
 - Do not paste raw JSON at the sovereign. Extract the fields, state the delta, keep evidence paths for when he asks.
+- **An internal identifier in the sentence becomes the question he asks.** A config key, env var, table name or unit name quoted bare reads as an incident report — most of all one whose name contains a failure mode. Name the subsystem's measured state first, with its probe in the same breath ("Postgres up, accepting connections, 0 restarts"), *then* the stance in plain words. A healthy subsystem must never be quoted in the middle of a fault list; the keys belong in the receipt, not the sentence. If he comes back with "why is X unavailable?" or "should it be?", the framing failed — answer in two separate moves: (a) the measured state now, (b) whether anything is supposed to depend on it, because those are different questions with different owners.
 
 ## Related
 

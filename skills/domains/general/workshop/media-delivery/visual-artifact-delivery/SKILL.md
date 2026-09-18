@@ -43,7 +43,7 @@ Pick by artifact shape, not by habit.
 
 | Artifact | Tool | Notes |
 |---|---|---|
-| Flat graphic, poster, chart, text overlaid on a photo | PIL (`PIL.ImageDraw`) | Fastest. Render 1280–1920 wide. DejaVu Sans Bold; confirm the font path exists first. |
+| Flat graphic, poster, chart, text overlaid on a photo | PIL (`PIL.ImageDraw`) | Fastest. Render 1280–1920 wide. DejaVu Sans Bold; confirm the font path exists first. Long strings never wrap and never raise — measure every one against its column width at build time (`references/pil-text-poster.md`). |
 | Multi-page document, tables, paged layout | `reportlab` | `SimpleDocTemplate` + flowables; tables via `Table` + `TableStyle`. |
 | Photographic scene, illustration, conceptual render | image-gen API (Pollinations `flux` is free and keyless; Gemini and others when configured) | Always label as a generated representation — see §4. |
 | Voice note | `text_to_speech` | Add `[[audio_as_voice]]` on its own line to land as a native voice bubble. |
@@ -62,6 +62,12 @@ Never ship an artifact you have not looked at.
 3. **Inspect it with `vision_analyze` before sending.** Confirm text is legible,
    the layout did not overflow, and nothing is clipped. Text-heavy posters
    routinely overflow or collide — only looking catches this.
+   *Before* the vision check, catch overflow mechanically: measure each string with
+   `draw.textlength(text, font=font)` against its column width and print every failure
+   as the build runs. PIL neither wraps nor raises, so an overlong line silently runs
+   off the canvas edge and the vision pass degrades from confirmation into detection.
+   A build that printed an overflow is a failed build — fix and rebuild, never ship it.
+   Recipe: `references/pil-text-poster.md`.
 4. If inspection fails, fix and regenerate. Do not send the broken version with
    an apology.
 5. Deliver as `MEDIA:<absolute path>` on its own line.
@@ -124,6 +130,26 @@ Image models add people, props, and text you did not ask for. Left unbounded the
 
 **Why:** the disclosure costs one sentence and preserves the user's ability to trust the next artifact. Losing it costs the whole lane.
 
+## 4c. Internal-audience artifacts — keep the vocabulary, stamp the status
+
+When the reader is the sovereign himself and the subject *is* his own system, the
+"no internal vocabulary" rule inverts. Organ names, floor IDs, canonical verb names and
+drift findings are the entire payload; stripping them out destroys the artifact. Diagram
+the architecture in its own terms — the reader is the person who named those terms.
+
+What such an artifact owes instead is its **epistemic status, rendered on its face** —
+not only in the chat message that carries it:
+
+- **Stamp non-ratified assessments in the frame.** An artifact built from an assessment
+  the kernel did not authorize carries that status where it will be read next to the
+  content — `NOT F13-RATIFIED`, `OBSERVE_ONLY`. An unstamped architecture diagram gets
+  forwarded and cited as though it were the decided architecture.
+- **Source external figures as rendered text, with version and date** (`v0.20.1`,
+  `v0.21.3 (14 Sep 2026)`). A diagram is the easiest place for a remembered number to
+  become a permanent one, and the hardest place for a reader to check it.
+- **The frame and the message must agree.** A hedge that lives only in the chat text does
+  not travel with the image. Frame the claim once, then state it in the artifact.
+
 ## 5. Pitfalls
 
 - **Emoji variation selectors can trip the security scanner.** Emoji such as the
@@ -153,6 +179,10 @@ Image models add people, props, and text you did not ask for. Left unbounded the
 
 ## 7. Support files
 
+- `references/pil-text-poster.md` — building a text-dominant single-page graphic:
+  geometry constants, the build-time overflow check that catches what the vision pass
+  would only discover, tracked/right-aligned text, grid furniture, and the
+  build → measure → look → fix order of operations.
 - `references/generated-scene-recipe.md` — prompt skeleton for generated human
   scenes, the composition rules that stop fused anatomy, and the vision-based
   verification harness (author ground truth → read back on a different lane →

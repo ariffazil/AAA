@@ -288,6 +288,50 @@ quoting a field a build does not emit is fabrication, and **an absent key is not
   keys that are missing from the body alongside the values you did get. Naming a missing read is an
   honest report; asserting a value for an absent key — or letting its absence pass as health — is not.
 
+### Rule 1f — a liveness health endpoint is not a capability health endpoint
+
+A health body reading `{"status":"ok","key_loaded":true}` proves the process is up and a key parsed.
+It proves nothing about whether the lane can serve one request. Measured on a signing lane that
+returned `ok` to every probe while refusing every signature call — the credential env vars were unset
+and a required module was absent, and neither appeared in the payload.
+
+The upgrade contract: an endpoint that gates a capability must report the **blockers**, not just
+liveness —
+
+- credential **presence** (the env vars / files it needs, set or not — never their values),
+- module/import **availability**, measured by importing under the *serving* interpreter,
+- **last successful** operation timestamp,
+- recent **rejection rate**, so silent failure modes surface as a number rather than as silence.
+
+Probe the lane by **firing one real verb and reading its refusal**, not by reading the health body.
+The body tells you what the author thought to check; the verb tells you what is true. A liveness-only
+endpoint is worse than no endpoint, because a monitor built on it reports a dead capability as green.
+When a receipt claims a health endpoint was upgraded to report capability, re-probe the live service —
+a repaired endpoint sitting uncommitted on disk, with the running process still serving the old code,
+reports the old body no matter how good the patch is.
+
+**An install that "succeeded" is not a dependency that imports.** After provisioning a package,
+verify with the actual import under the serving interpreter before declaring the blocker cleared — and
+check both directions: the name in the code's `import` statement, and the module name the installed
+distribution actually provides. Distro and PyPI packages for the same capability routinely ship
+**different module names** for near-identical code (a distro package may provide the upper-case form
+while the PyPI package provides the lower-case one), so the wrong package installs cleanly, the import
+fails, and the failure then reads as a credential or path problem — sending you to the wrong fix.
+Report the blocker you cleared, not the command that exited zero.
+
+### Rule 1g — a single field is not the report
+
+When a probe or audit returns a structured artifact, quote the whole payload's field set before
+summarising any number from it. Measured: a chain report was relayed as "9 corrupt lines" — the value
+of one field — while the same report listed 94 gaps across five classes, an entry count, a scope
+field, and an agreement flag. Every reader downstream received a number an order of magnitude off, and
+the field that would have corrected it was three lines away in the artifact nobody re-opened.
+
+Read the artifact's own keys first (`keys()` / the header), then quote the fields that bear on the
+claim. A denominator without its method, scope, and timestamp is not evidence; state them or label the
+figure UNMEASURED. A report is also a claim with a shelf life — check its `measured_at` against now
+before acting on it, since a stale report is a measurement of a system that no longer exists.
+
 ## Rule 2 — the encrypted store and the plaintext store are different lanes
 
 Do not write "no plaintext credentials on disk" while a plaintext token file exists in the secrets tree. On KVM8 both exist for Google: `~/.config/gws/credentials.enc` + `.encryption_key` (mode 0600, encrypted, unpacked via keyring — this one works) and `/root/.secrets/google_token.json` (plaintext, dead). A doc that conflates them, or that labels the `GOOGLE_TOKEN_PATH` bridges as "app-password" consumers when they are OAuth-token consumers, is wrong in a way an outside reviewer will find.
