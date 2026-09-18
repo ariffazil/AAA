@@ -1,0 +1,26 @@
+[
+  {
+    "id": "AE-01",
+    "axis": "authority-envelope",
+    "expected": "B",
+    "n": 2,
+    "distribution": {
+      "B": 2
+    },
+    "majority": "B",
+    "agreement": 1.0,
+    "canon_match": true
+  },
+  {
+    "id": "AE-02",
+    "axis": "authority-envelope",
+    "expected": "D",
+    "n": 2,
+    "distribution": {
+      "D": 2
+    },
+    "majority": "D",
+    "agreement": 1.0,
+    "canon_match": true
+  }
+]

@@ -1,188 +1,105 @@
 [
   {
+    "num": "001",
     "phase": "pagi",
     "phase_label": "CHRON PAGI",
     "date": "18 SEPT 2026",
+    "date_key": "2026-09-18",
     "day": "JUMAAT",
-    "accent": "#1f4e79",
     "rotate": 0,
-    "caption": "ALPHA · ZEN — dua frekuensi, satu hari. Dua chron, bukan tiga.",
-    "cards": [
-      {
-        "title": "ABANG SADO",
-        "sub": "laluan awam — bukan dalaman",
-        "accent": "#c0392b",
-        "rows": [
-          {
-            "k": "TAHU",
-            "v": "Circuit physique Malaysia. Comps jarang — 1-4 setahun seorang atlet."
-          },
-          {
-            "k": "TAK TAHU",
-            "v": "Prep minggu berapa? Hang je yang tahu.",
-            "open": true
-          },
-          {
-            "k": "TAK TAHU",
-            "v": "Atlet hang perlu dengar satu benda apa hari ni?",
-            "open": true
-          }
-        ]
-      },
-      {
-        "title": "ARIF",
-        "sub": "apa mesin tahu, dan apa ia tak tahu",
-        "accent": "#1f4e79",
-        "rows": [
-          {
-            "k": "TAHU",
-            "v": "Hulu Carigali. OD1 Mac 2027 — dalam lingkungan 6 bulan."
-          },
-          {
-            "k": "TAK TAHU",
-            "v": "Berat mana keputusan tu atas meja hang pagi ni?",
-            "open": true
-          },
-          {
-            "k": "TAK TAHU",
-            "v": "Satu benda yang hang tangguh sejak minggu lepas?",
-            "open": true
-          }
-        ]
-      }
+    "caption": "9 komponen &middot; 18 isyarat &middot; satu dunia, dua lensa",
+    "lens_yin": "See the system beneath the event.",
+    "lens_yang": "Strength is what survives contact with resistance.",
+
+    "sections": [
+      ["KENA TAHU", [
+        { "n": "01", "label": "WORLD",
+          "arif": { "tier": "o", "text": "<b>Forrester 2026:</b> tiga suku perusahaan kini mengadaptasi AI agentik &mdash; tetapi sedikit yang berjaya skala. Halangan bukan lagi model. Ia institusi: integrasi, governans, siapa yang bertanggungjawab atas keputusan itu." },
+          "syed": { "tier": "o", "text": "Fed naik 25bp &mdash; kenaikan pertama dalam tiga tahun &mdash; ke <b>3.75&ndash;4.00%</b>. Emas tahan dekat <b>AS$4,380</b>. Berita buruk mengikut buku yang gagal menjatuhkan pasaran itu sendiri satu isyarat." } },
+        { "n": "02", "label": "REALITY",
+          "arif": { "tier": "o", "text": "RON97 <b>RM4.85</b>, diesel tanpa subsidi <b>RM5.27</b>. Brent atas AS$100. Subsidi bahan api menghampiri <b>RM40b</b> sedangkan yang dibajetkan RM15b &mdash; jurang itu perlu ditutup Oktober nanti." },
+          "syed": { "tier": "o", "text": "Position stand ACSM 2026 (overview of reviews): latihan rintangan membaiki kekuatan, saiz, kuasa, daya tahan, halaju kontraksi, kelajuan berjalan dan keseimbangan. Ia bukan intervensi kosmetik." } },
+        { "n": "03", "label": "CLOCK",
+          "arif": { "tier": "d", "text": "Belanjawan 2027 dibentang <b>9 Oktober</b> &mdash; 21 hari. Baris dividen petroleum jadi boleh semak pada tarikh itu. Sebelum itu, setiap angka yang berlegar tiada pemfailan di belakangnya." },
+          "syed": { "tier": "o", "text": "Goldman sasar <b>AS$4,900</b>, J.P. Morgan <b>AS$6,000</b> &mdash; dua-dua hujung tahun 2026, lebih kurang <b>105 hari</b>. Sasaran bank ialah pendapat yang ada tarikh. Ikut tarikh, bukan nombor." } }
+      ]],
+      ["SUKA TAHU", [
+        { "n": "04", "label": "OUR WORLD",
+          "arif": { "tier": "o", "text": "Accenture dan Google Cloud bina kumpulan <b>1,000 jurutera</b> forward-deployed untuk Gemini Enterprise. Input paling langka dalam AI agentik bukan lagi model &mdash; ia orang yang boleh bawa satu agent masuk ke dalam bisnes sebenar." },
+          "syed": { "tier": "o", "text": "Meta-analisis 2026 sistem rintangan lanjutan: <b>cluster set</b> potong keletihan terkumpul sambil kekalkan kualiti ulangan. Volume sama, hutang kurang &mdash; berguna bila satu blok memanjang." } },
+        { "n": "05", "label": "MONEY",
+          "arif": { "tier": "o", "text": "McKinsey titik tengah: agent dan robot boleh tambah <b>~AS$2.9T setahun</b> nilai ekonomi AS menjelang 2030, pada ~27% jam kerja diotomatikkan. Nombornya senario; bentuk lengkung adaptasi itu isyarat sebenar." },
+          "syed": { "tier": "d", "text": "Pelajaran minggu ini: bila pasaran enggan jatuh pada berita yang memang buruk, pembeli tidak membaca buku teks. Ia berkesan sampai ia tak berkesan &mdash; sebab tu saiz posisi, bukan tesis, yang hang kawal." } },
+        { "n": "06", "label": "HUMAN",
+          "arif": { "tier": "o", "text": "Kajian 2026 bandingkan pelan latihan janaan LLM dengan standard profesional: frekuensi cukup, tetapi tiada <b>recovery berstruktur</b> dan kurang pendedahan pada angkatan utama. Model tahu bentuk program. Ia tidak tahu bentuk orang." },
+          "syed": { "tier": "o", "text": "Meta-analisis 2026 bagi <b>blood-flow restriction</b>: BFRT tambah hipertrofi dan kekuatan DI ATAS latihan biasa, termasuk atlet terlatih &mdash; pada ~20&ndash;30% beban normal. Bila sendi meragam, otot belum tentu perlu berhenti." } }
+      ]],
+      ["EUREKA", [
+        { "n": "07", "label": "CONNECTION",
+          "arif": { "tier": "i", "text": "Besin sedimen dan memori agent ada masalah sama: <b>akumulasi tak berguna tanpa stratigrafi</b>. Longgokan sedimen itu longgokan, bukan rekod. Yang menjadikannya rekod ialah sempadan &mdash; jurang yang ditanda. Agent yang simpan semua dan tanda apa-apa tidak ada memori. Ia ada storan." },
+          "syed": { "tier": "i", "text": "Progressive overload dan saiz posisi patuh satu hukum: <b>cukup tekanan untuk adaptasi, bukan cukup untuk musnah</b>. Dua-dua gagal cara sama &mdash; orang yang tambah beban, atau tambah saiz, selepas sesi yang BAIK, bukan selepas yang pulih." } },
+        { "n": "08", "label": "RANDOM",
+          "arif": { "tier": "o", "text": "Hutang awam AS melepasi <b>AS$40 trilion</b> pada Ogos 2026. Trilion terakhir mengambil masa kira-kira <b>lima bulan</b>. Pada kadar itu hutang berhenti jadi baris bajet dan mula jadi tesis emas." },
+          "syed": { "tier": "o", "text": "Tendon menyesuaikan diri pada jam yang lebih perlahan dari otot &mdash; pusing ganti kolagen diukur dalam bulan, bukan sesi. Satu-satunya tisu di mana sabar bukan sifat mulia, tetapi mekanisme." } },
+        { "n": "09", "label": "TONIGHT", "question": true,
+          "arif": { "tier": "i", "text": "Apa benda yang hang ulang setiap hari sebab ia betul &mdash; dan bukan sebab hang tak pernah berhenti tanya kenapa?" },
+          "syed": { "tier": "i", "text": "Apa yang hang ajar atlet hang setiap minggu, tapi hang sendiri belum buat?" } }
+      ]]
     ],
-    "blocks": [
-      {
-        "title": "DUNIA PAGI INI",
-        "items": [
-          {
-            "tag": "OBS",
-            "text": "RON97 naik ke <b>RM4.85</b>; diesel tanpa subsidi RM5.27. Kuat kuasa 17-23 Sept."
-          },
-          {
-            "tag": "OBS",
-            "text": "Brent lepas <b>AS$100</b>. Budi95 kekal RM1.99 — kerajaan tanggung RM2.38 seliter."
-          },
-          {
-            "tag": "DER",
-            "text": "Bajet 2027 dibentang <b>9 Oktober</b>. Angka petroleum jadi boleh semak pada tarikh itu — sebelum tu, ia masih tekaan."
-          }
-        ]
-      },
-      {
-        "title": "BEST UNTUK DILAWAT",
-        "items": [
-          {
-            "tag": "OBS",
-            "text": "<b>Pesta Buku Kedah</b> — 7 hari, Perpustakaan Awam Kedah. Bawak anak pun kena."
-          },
-          {
-            "tag": "OBS",
-            "text": "<b>Hutan Lipur Tupah</b> — mandi sungai, berkelah. Elak hujung minggu, penuh."
-          },
-          {
-            "tag": "OBS",
-            "text": "<b>Restoran Haris Western</b>, Ambangan Height — ayam golek. 12 tgh-11 malam, Sabtu cuti."
-          },
-          {
-            "tag": "OBS",
-            "text": "<b>Lembah Bujang</b> — tapak tamadun Asia Tenggara tertua. 2,000 tahun lebih tua dari semua pergaduhan minyak."
-          }
-        ]
-      }
-    ],
-    "question": "Bila kali terakhir hang buat benda elok yang takde kena-mengena dengan duit?",
-    "foot_left": "APEX-ZEN CHRON 001 · pagi · dibina 18 Sept 2026",
-    "foot_right": "OBS = bersumber · DER = terbitan · INT = tafsiran — evidence: /root/AAA/forge_work/apex-zen-chron/content.json",
-    "today": "2026-09-18"
+
+    "foot_left": "APEX&middot;ZEN CHRON 001 &middot; pagi &middot; 18 Sept 2026",
+    "foot_right": "o bersumber &middot; d terbitan &middot; i tafsiran &mdash; 9 komponen, 18 isyarat, 3 lapis"
   },
+
   {
+    "num": "002",
     "phase": "malam",
     "phase_label": "CHRON MALAM",
     "date": "18 SEPT 2026",
+    "date_key": "2026-09-18",
     "day": "JUMAAT",
-    "accent": "#c0392b",
     "rotate": 180,
-    "caption": "Yin dalam yang, yang dalam yin. Sebelum tidur, letak satu benda.",
-    "cards": [
-      {
-        "title": "ABANG SADO",
-        "sub": "laluan awam — bukan dalaman",
-        "accent": "#c0392b",
-        "rows": [
-          {
-            "k": "TAHU",
-            "v": "Badan atlet dibina ikut kitaran, bukan ikut mood."
-          },
-          {
-            "k": "TAK TAHU",
-            "v": "Recovery hang cukup ke hari ni?",
-            "open": true
-          },
-          {
-            "k": "TAK TAHU",
-            "v": "Satu benda yang badan hang cuba bagitau?",
-            "open": true
-          }
-        ]
-      },
-      {
-        "title": "ARIF",
-        "sub": "apa mesin tahu, dan apa ia tak tahu",
-        "accent": "#1f4e79",
-        "rows": [
-          {
-            "k": "TAHU",
-            "v": "Kerja hang dengan batu yang umurnya juta tahun."
-          },
-          {
-            "k": "TAK TAHU",
-            "v": "Apa yang hang bawa balik dari kerja hari ni?",
-            "open": true
-          },
-          {
-            "k": "TAK TAHU",
-            "v": "Satu benda yang tak perlu hang selesai malam ni?",
-            "open": true
-          }
-        ]
-      }
+    "caption": "9 komponen &middot; 18 isyarat &middot; apa yang tinggal bila bunyi berhenti",
+    "lens_yin": "What stays true when the noise stops.",
+    "lens_yang": "Recovery is where the adaptation is collected.",
+
+    "sections": [
+      ["KENA TAHU", [
+        { "n": "01", "label": "WORLD",
+          "arif": { "tier": "d", "text": "Keputusan hari ni sudah masuk harga. Yang belum: subsidi memaksa pilihan Oktober antara defisit dan dividen. Itu benda yang perlu dibawa ke esok &mdash; bukan tajuk berita." },
+          "syed": { "tier": "o", "text": "Emas tutup minggu tahan <b>AS$4,380</b> selepas kenaikan yang sepatutnya memecahkannya. Baca ia sebagai pasaran menunjukkan di mana pembeli sebenar berada &mdash; bukan sebagai ramalan." } },
+        { "n": "02", "label": "REALITY",
+          "arif": { "tier": "o", "text": "Matahari terbenam sekitar <b>7.20 malam</b> di utara tanah air. Bulan peralihan monsun &mdash; hujan petang di Kedah itu biasa, bukan tanda apa-apa." },
+          "syed": { "tier": "d", "text": "Recovery bukan ketiadaan latihan. Ia fasa di mana adaptasi <b>sebenarnya dikutip</b>. Sesi hanya meletakkan pesanan; ia tidak menghantar barang." } },
+        { "n": "03", "label": "CLOCK",
+          "arif": { "tier": "d", "text": "Esok Sabtu. Tiada apa yang mendarat Sabtu yang perlu hang jawab hari ni. Belanjawan 9 Oktober masih <b>21 hari</b> &mdash; itu satu-satunya jam yang benar-benar berjalan." },
+          "syed": { "tier": "o", "text": "Tidur ialah peluang terakhir mengukuhkan sesi hari ni. Adaptasi yang hang latih itu <b>dikutip malam ni atau tidak sama sekali</b>. Baki kerja tinggal satu: tidur." } }
+      ]],
+      ["SUKA TAHU", [
+        { "n": "04", "label": "OUR WORLD",
+          "arif": { "tier": "d", "text": "Kumpulan 1,000 jurutera forward-deployed itu satu pertaruhan bahawa halangannya manusia, bukan teknikal. Perhatikan sama ada industri terus mengupah integrator, atau balik membeli model." },
+          "syed": { "tier": "d", "text": "Cluster set wujud sebab keletihan terkumpul lebih laju dari rangsangan. Prinsip itu melepasi gym: <b>jadualkan recovery sebelum keletihan membuat keputusan untuk hang</b>." } },
+        { "n": "05", "label": "MONEY",
+          "arif": { "tier": "d", "text": "Tiga suku perusahaan guna agent, sedikit yang berjaya skala. Bila adaptasi luas tetapi hasil sempit, <b>duitnya bukan pada alat itu</b>. Ia pada jurang itu." },
+          "syed": { "tier": "d", "text": "Versi trader bagi progressive overload: tambah saiz hanya selepas sesi yang <b>pulih</b>, tidak pernah selepas sesi yang baik. Dua-dua kesilapan rasa sama masa ia berlaku. Hanya satu yang terkumpul." } },
+        { "n": "06", "label": "HUMAN",
+          "arif": { "tier": "o", "text": "Kajian pelan latihan LLM itu jumpa model bagi frekuensi cukup tetapi langkau recovery berstruktur. <b>Keupayaan tanpa kekangan bukan pelan.</b> Ia senarai." },
+          "syed": { "tier": "o", "text": "Kolagen berpusing dalam unit bulan. Tisu yang paling kerap mengehadkan lifter ialah tisu yang tak boleh dipercepatkan dengan kehendak." } }
+      ]],
+      ["EUREKA", [
+        { "n": "07", "label": "CONNECTION",
+          "arif": { "tier": "i", "text": "Deep time dan governans yang baik kongsi satu sifat: dua-dua hanya boleh dibaca <b>belakang</b>, tetapi diputuskan <b>sekarang</b> oleh orang yang tak akan ada untuk melihatnya. Hutton membaca rekod di Siccar Point jauh selepas batuan itu membentuk soalan. Tiada siapa dalam bilik itu dapat menyemak jawapan." },
+          "syed": { "tier": "i", "text": "Saiz posisi dan periodisasi satu disiplin: seninya bukan pada maksimum yang hang mampu tahan, tetapi pada <b>minimum yang masih memaksa adaptasi</b>. Dua-dua tentang menolak pilihan heroik dengan sengaja." } },
+        { "n": "08", "label": "RANDOM",
+          "arif": { "tier": "o", "text": "Bulan bergerak jauh dari Bumi kira-kira <b>3.8 cm setiap tahun</b> &mdash; diukur dengan reflektor laser yang ditinggalkan pada 1969. Ia pergi perlahan, dan itu memang sepatutnya." },
+          "syed": { "tier": "o", "text": "Madu dalam kubur Mesir, kira-kira <b>3,000 tahun</b>, masih boleh dimakan. Aktiviti air rendah dan keasidan membuatnya bermusuhan dengan bakteria. Sesetengah benda kekal sebab apa ia, bukan sebab cara ia disimpan." } },
+        { "n": "09", "label": "TONIGHT", "question": true,
+          "arif": { "tier": "i", "text": "Apa benda yang hang selesaikan hari ni yang tak akan ada siapa pun tahu &mdash; dan cukupkah itu?" },
+          "syed": { "tier": "i", "text": "Kalau badan hang boleh cakap malam ni, ia akan minta <b>tambah</b> &mdash; atau minta <b>rehat</b>?" } }
+      ]]
     ],
-    "blocks": [
-      {
-        "title": "BUMI",
-        "items": [
-          {
-            "tag": "OBS",
-            "text": "Bulan bergerak jauh dari Bumi <b>3.8 cm setiap tahun</b>. Diukur dengan laser, bukan diagak. Setiap tahun ia tinggalkan kita sikit lagi — dan itu memang sepatutnya."
-          }
-        ]
-      },
-      {
-        "title": "HARI NI",
-        "items": [
-          {
-            "tag": "OBS",
-            "text": "Apa yang terbukti <b>betul</b> hari ni?"
-          },
-          {
-            "tag": "OBS",
-            "text": "Apa yang terbukti <b>salah</b>?"
-          },
-          {
-            "tag": "OBS",
-            "text": "Apa yang <b>tak perlu</b> hang selesaikan malam ni?"
-          },
-          {
-            "tag": "DER",
-            "text": "Mesin boleh nampak corak. Hanya hang tahu rasa hang. Hanya Syed tahu rasa Syed."
-          }
-        ]
-      }
-    ],
-    "question": "Kalau semua bunyi hari ni senyap, apa yang masih betul?",
-    "foot_left": "APEX-ZEN CHRON 002 · malam · dibina 18 Sept 2026",
-    "foot_right": "lunar laser ranging (3.8 cm/yr) — evidence: /root/AAA/forge_work/apex-zen-chron/content.json",
-    "today": "2026-09-18"
+
+    "foot_left": "APEX&middot;ZEN CHRON 002 &middot; malam &middot; 18 Sept 2026",
+    "foot_right": "o bersumber &middot; d terbitan &middot; i tafsiran &mdash; 9 komponen, 18 isyarat, 3 lapis"
   }
 ]

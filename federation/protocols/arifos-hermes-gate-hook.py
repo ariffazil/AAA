@@ -569,6 +569,59 @@ def main():
             )
             sys.exit(3)  # 3 = circuit-breaker interrupt (distinct from T3's 2)
 
+    # ---- 0.5 TRANSPORT LOCK (F13 2026-09-18) — destination must be DECLARED. ----
+    # 2026-09-18: a cron job stored origin.chat_id = 8410138119 (the BOT's own id)
+    # while deliver=origin. Telegram refused three times with "the bot can't send
+    # messages to the bot" and the brief silently never arrived. A target inferred
+    # from ambient context is dangerous precisely because it LOOKS configured.
+    # This rule is deliberately placed before content rules: a misdirected artifact
+    # is a lost artifact no matter how clean its claims are.
+    _cmd = ""
+    if isinstance(tool_input, dict):
+        _cmd = str(tool_input.get("command") or tool_input.get("cmd") or "")
+    if _cmd and "send" in _cmd and ("hermes send" in _cmd or "send -t" in _cmd or "send --" in _cmd):
+        _dec = None
+        _lockset = True
+        _load_err = "import failed"
+        try:
+            if "/root/AAA/scripts" not in sys.path:
+                sys.path.insert(0, "/root/AAA/scripts")
+            from docforge.transport import scan_command as _scan  # type: ignore
+
+            _dec = _scan(_cmd)
+            _lockset = False
+        except Exception as _exc:  # noqa: BLE001
+            _lockset = True
+            _load_err = str(_exc)[:200]
+        if _dec is not None and not _dec.ok:
+            _r = f"TRANSPORT LOCK {_dec.verdict}: {_dec.reason}"
+            write_receipt(tool_name, "TRANSPORT_LOCK", "BLOCKED", _r, trace_id=trace_id, session_id=session_id)
+            update_telemetry("hold")
+            print(json.dumps({
+                "decision": "block",
+                "reason": (
+                    f"🔒 TRANSPORT LOCK: outbound send refused. {_r} "
+                    "A destination must be DECLARED (telegram:<chat_id>), never inferred from "
+                    "context. The 2026-09-18 defect was exactly this: origin resolved to the bot's "
+                    "own chat and the document was delivered into a room the principal does not "
+                    "read, with no error visible to anyone. Declare the target explicitly and retry."
+                ),
+            }))
+            sys.exit(2)
+        if _dec is None and _lockset:
+            _r = f"TRANSPORT LOCK DEGRADED: cannot verify destination ({_load_err if '_load_err' in dir() else 'import failed'})"
+            write_receipt(tool_name, "TRANSPORT_LOCK", "BLOCKED", _r, trace_id=trace_id, session_id=session_id)
+            update_telemetry("hold")
+            print(json.dumps({
+                "decision": "block",
+                "reason": (
+                    f"🔒 {_r}. An unverifiable send is not an allowed send — 'I could not check' "
+                    "is not 'it is fine'. Restore /root/AAA/scripts/docforge/transport.py and "
+                    "/root/.hermes/IDENTITY_LOCK.json, then retry."
+                ),
+            }))
+            sys.exit(2)
+
     # ---- 1. W_scar v2: claim-surface detection + VERIFIED provenance (F13-authorised 2026-09-18).
     # v1 blocked on vocabulary found anywhere in the payload (including file paths) and passed on
     # the mere presence of the token "url". v2 scans assertions and resolves citations.

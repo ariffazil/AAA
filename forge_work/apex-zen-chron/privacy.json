@@ -1,0 +1,52 @@
+{
+  "_why": "The 'safely peek' mechanism, made mechanical. Arif authorised using what the machine knows about both men to TUNE the poster — never to DISCLOSE it. A promise in a prompt cannot hold that line; a gate that fails the build can. Every pattern here is something a third person in the group could read and weaponise.",
+
+  "_word_boundary_rule": "EVERY pattern here uses \\b. The first version did not, and the gate fired on 'forward-deployed' (contains 'ward') and on 'ketakselarasan' — the GEOLOGY term for an unconformity, which contains 'rasa'. A gate that cries wolf on correct content gets switched off, and then it protects nothing. Word boundaries are not cosmetic; they are the difference between a gate and a nuisance.",
+
+  "_bare_bond_removed": "The pattern 'bond' was dropped. Syed's lane is gold and rates, where 'bond yields' is ordinary vocabulary — a rule that fires on the subject matter itself would fail the very poster it is meant to guard. The relationship sense is caught by the explicit phrases instead.",
+
+  "never_emit": [
+    {"pattern": "\\bwisconsin\\b", "why": "previous life — F5"},
+    {"pattern": "\\b(cerai|divorce|ex-wife|bekas isteri)\\b", "why": "family history — F5"},
+    {"pattern": "\\b(surgery|pembedahan|diagnosis|ERCP|laparotomy|OGDS)\\b|\\bCBD dilation\\b", "why": "third-party medical — F5, and the group has other readers"},
+    {"pattern": "\\b(hospital|ward|wad|klinikal)\\b", "why": "medical context"},
+    {"pattern": "\\b(MSS|gratuity|pencen)\\b|\\bseparation package\\b|\\bpakej berhenti\\b", "why": "employment terms"},
+    {"pattern": "RM4[0-9][0-9],000|\\bRM418\\b", "why": "personal financial figures"},
+    {"pattern": "\\b(syed|arif)\\b[^.]{0,160}\\b(rasa|hati|perasaan|marah|sedih|takut|risau|worried|anxious|angry|sad|afraid|frustrated|lonely|happy|excited|proud|guilty)\\b", "why": "claimed inner state of a named person — windowed, not whole-document, or it matches an innocent 'rasa' far away. English words included: a Malay-only list let 'Arif is worried' through, which the self-test caught."},
+    {"pattern": "\\b(sayang|rindu|cinta)\\b|\\bworship\\b", "why": "affection vocabulary — H5, not this lane's to speak"},
+    {"pattern": "\\b(hubungan kami|between us|our bond|bond between us)\\b", "why": "manufacturing shared meaning — H3"},
+    {"pattern": "\\b(WhatsApp|chat log|transcript|corpus)\\b", "why": "quoting the private record"},
+    {"pattern": "niat_candidates|carry_forward|vault999", "why": "internal federation plumbing, not for a group chat"},
+    {"pattern": "/root/|file://", "why": "host paths never belong in something a third party reads"}
+  ],
+
+  "_selftest_must_catch": [
+    "Syed rasa down hari ni",
+    "Arif is worried about the outcome",
+    "his MSS package lands in March",
+    "mak underwent surgery at the hospital",
+    "they met in Wisconsin",
+    "/root/AAA/scripts/docforge/gates.py",
+    "the WhatsApp transcript says"
+  ],
+
+  "_selftest_must_allow": [
+    "forward-deployed engineers for Gemini Enterprise",
+    "the unconformity marks a hiatus in the record",
+    "ketakselarasan itu menandakan hiatus",
+    "bond yields rose after the Fed",
+    "gold held near $4,380 despite the hike",
+    "progressive overload and position sizing",
+    "1,000 jurutera forward-deployed"
+  ],
+
+  "allowed_basis": [
+    "public professional lane (upstream O&G for Arif; physique coaching and circuit for Syed)",
+    "publicly stated life anchors (service length, a decision window he has named himself)",
+    "the group's own prior messages",
+    "general life rhythms shared by anyone who trains and works hard",
+    "open-source facts (news, events, science)"
+  ],
+
+  "rule": "An item may be SELECTED because of private knowledge. It may not CONTAIN private knowledge. Selection is invisible; content is published. If a third person in the group gains information they did not have about either man, the gate has failed."
+}

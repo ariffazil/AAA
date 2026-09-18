@@ -1,8 +1,8 @@
 ---
 id: capability-surface-conformance
 name: capability-surface-conformance
-version: 1.0.0
-description: Use when a capability reports dead, unknown, or broken.
+version: 1.1.0
+description: Use when a capability reports dead, unknown, or broken, or when a control-like name (gate, guard, check, sandbox, seal, shadow, drift, healthy) may not enforce anything.
 owner: Hermes (arifOS federation)
 risk_tier: low
 autonomy_tier: T1
@@ -22,6 +22,13 @@ triggers:
   - "schema mismatch"
   - "callable vs registered"
   - "verify capability surface"
+  - "does this control actually control"
+  - "gate not enforced"
+  - "zero callers"
+  - "false name"
+  - "declaration vs enforcement"
+  - "is this fix in the causal path"
+  - "is this wired in"
 ---
 
 # Capability Surface Conformance
@@ -41,6 +48,66 @@ registration/dispatch** — never to whichever projection you happened to read f
 A capability that is advertised but uncallable is a **false affordance**.
 A capability that is callable but unadvertised is a **phantom capability**.
 Both are the same defect with the sign flipped.
+
+### The enforcement extension — a control that nothing calls
+
+The same law applies one layer up, to things named like controls. A module named `*_gate`,
+`*_check`, `verify_*`, `*_sandbox`, `*_seal` may be advertised (it exists, it has tests, it is
+documented) and **uncalled in the causal path of anything it claims to govern**. That is a false
+affordance of governance:
+
+```
+Named = Invoked = Enforced = Can-refuse = Authorized correctly
+```
+
+Vocabulary: `SEMANTIC AUTHORITY = NAME ∩ CALL_PATH ∩ MEASURED_EFFECT ∩ BYPASS_RESISTANCE ∩ EVIDENCE`.
+Any empty term → the authority claim is **VOID**. The NAME is never a term on its own.
+
+The name is believed faster than the mechanism is read — which is why the defect propagates to
+every downstream reader, including the next auditor. Named shapes, all one defect:
+
+- a gate with **zero callers** in every scheduler/entry surface (an artifact, not a boundary)
+- a metric hardcoded to a constant, or computed from a **flag** rather than from behaviour
+- a privacy/security flag asserted in metadata that the renderer never consults
+- a health check returning a **literal** status while probing nothing
+- a sandbox whose containment engine is **imported and never invoked** on the execution path
+- a guard that can reorder or delay but **cannot reject** (a total failure still returns a result)
+- a `reason_code` produced by `x or "DEFAULT_LABEL"` — a fallback string where the text claims a
+  measurement
+- a label that overrides a fact in the same payload (a `state == "DEGRADED"` predicate firing
+  while `drift` is `false`)
+
+**Grade a control by whether a bad input changes its output — never by its name, its test suite,
+or its metadata.** Three proofs, all required:
+
+| Proof | Question | Failing shape |
+|---|---|---|
+| **CALLER** | Who invokes it, in the path that matters? | grep every scheduler surface returns 0 |
+| **EFFECT** | Does bad input change the output or block the action? | guard reorders; a total failure still returns the top-ranked item |
+| **BYPASS** | Is there another route to the same effect? | a second renderer reads the raw source directly, skipping the gate |
+
+**Repair order: rename BEFORE you fix.** A control-shaped name that fails its proofs is corrected
+by relabelling it honestly first (`*_health_check` → `*_status_banner`; `SHADOW=true` →
+`delivery_default=off`), then implementing the mechanism if it is still wanted. Fixing the body
+while the name keeps promising enforcement leaves the false assurance in place — the artifact now
+does *something*, and the name still says it *guarantees*.
+
+**A safe default is not a boundary.** "Off by default", "SHADOW by default", "read-only by
+default" is reversible configuration, not an authority wall — anyone who can write the env var,
+the config, or the flag opens it. Distinguish `safe-by-default` (the state you get if nobody
+decides; protects against accident only) from `authority-boundary` (a check that refuses
+regardless of configuration). Concrete tell: an accessor with a falsy default
+(`os.environ.get("MODE", "SHADOW")`) is configuration; a gate that returns a refusal is a boundary.
+Never describe the first as the second.
+
+**A fix outside the causal path is not a fix.** After editing a file, confirm the scheduled or
+live entry point actually invokes *that file* before claiming the defect is closed. Repairing a
+dormant module changes nothing that runs. The check is the same CALLER proof, applied to your
+own work.
+
+**Family-level remedy:** give every control a **negative self-test** — disable its dependency,
+inject bad input, attempt the bypass, and require the output to change as its contract states. A
+control whose self-test cannot FAIL is a banner with a test suite.
 
 ## Always-On Rules
 
@@ -137,5 +204,7 @@ behaviour actually changed.
 
 - `references/arifos-surface-inventory.md` — the concrete projection list, the canonical
   stage-map SOT location, and the known drift sites for the arifOS federation.
+- `references/control-enforcement-probe.md` — re-runnable CALLER / EFFECT / BYPASS procedure:
+  the scheduler surfaces to sweep, the bad-input test, the receipt-hash check, and the report shape.
 
 DITEMPA BUKAN DIBERI.

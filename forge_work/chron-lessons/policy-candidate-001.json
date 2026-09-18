@@ -1,0 +1,10 @@
+{
+  "candidate_id": "policy-cand-001",
+  "source": "chron_learn",
+  "status": "CANDIDATE",
+  "created_at": "2026-09-18T05:13:00Z",
+  "lesson": "Predictions with untested assumptions need review before acceptance.",
+  "error_type": "ASSUMPTION_ERROR",
+  "recurrence": 0,
+  "note": "Placeholder \u2014 no verified predictions yet to derive real lessons from."
+}

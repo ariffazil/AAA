@@ -122,6 +122,40 @@ state reads as broken.
 - cadence above the cadence of the signal it governs and below the one it must not
   alias: sampling slower than twice the phenomenon folds it into noise
 - header comment carries the rollback: how to remove the job, what to restore
+- **deliver to `origin`, not to a hardcoded chat id.** `origin` resolves at fire time and follows
+  the session; a hardcoded numeric id is a routing claim that is routinely wrong (a bot's own DM id
+  and a human's user id are different numbers) and it cannot follow a chat that moves. Use an
+explicit id only for a channel the creating session is not in.
+- **confirm every skill the job names actually resolves**, with `skill_view(name=...)` rather than a
+  filesystem search. A cited skill that does not resolve fails silently: the run starts, the skill is
+  absent, and the agent improvises a procedure it believes it loaded. A job created in the same
+  session as its own skill is the exact case that breaks, and it breaks at the first unattended fire.
+- **check the other producers before you retire this one.** A loop is frequently the *second* producer
+  of an artifact, and the first lives in another session's job store. Two jobs, same schedule, same
+  artifact, same human is one defect — but retiring both is a worse one.
+
+### Two writers on one scheduler — the failure is ZERO, not a conflict
+
+Several sessions editing the same job store concurrently is the normal condition in a federation, not
+an edge case. They read the same file, spot the same duplicate, and **each retires the other's
+producer.** Measured: two lanes building the same daily artifact both judged the other redundant;
+each pause applied cleanly and reported success, and the net result was no artifact at all. Nothing
+errored, and each mutation was correct in isolation.
+
+```
+After ANY scheduler mutation:
+  1. re-read the job store FROM DISK (a tool's return value reports what you wrote,
+     not what the store now holds — a concurrent writer may have moved it)
+  2. enumerate every ENABLED job whose product overlaps yours
+  3. assert the overlap set is exactly ONE, and that it is enabled: true
+  4. assert the total is not zero before you stop
+```
+
+Decide the survivor on **evidence** — test coverage, verified output, a seal that re-hashes — never on
+which session authored it, and never on which looks tidier. Record the survivor and the reversal in
+the pause reason, so the next reader knows which lane is authoritative without re-deriving it. Pause
+the redundant job; **do not delete the implementation.** Its code tree, schema and archived output
+stay on disk, still readable, so the logic can be revived or ported later.
 
 ---
 
@@ -243,6 +277,10 @@ afterwards.
 ❌ Reporting PENDING as success              → unfalsifiable and self-congratulatory.
 ❌ Gating a human-burden metric              → its optimum is to stop reporting.
 ❌ Classifier logic inline in a scan loop    → cannot be shown to fail; untestable.
+❌ Retiring a duplicate without checking     → two writers each retire the other; net zero.
+❌ Trusting your own write as final state   → a concurrent writer moved it after you looked.
+❌ Hardcoded chat id instead of origin       → routing claim that cannot follow the session.
+❌ Citing a skill the job depends on unproven → silent improvise at the first unattended fire.
 ❌ A regression suite never wired to a sweep → it will not run on the edit that matters.
 ❌ A branch that absorbs every input         → decoration wearing a verdict.
 ```

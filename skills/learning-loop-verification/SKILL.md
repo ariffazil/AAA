@@ -73,6 +73,14 @@ findings with three separate owners.
   all-null payload, a false characterization flag, or a zero-sample window is *wired but
   uncharacterized*. Report the empty gauge as such — same class of error as inventing a
   timestamp.
+- **An identified label is not an identified unit.** A numerator/denominator over N *names* is not
+  evidence about N independent things: role lanes, agent seats and service names are routinely
+  fallback **chains**, so several names can be served by one backend. Resolve every unit name to what
+  actually served it before reading an agreement, consensus, or coverage figure, and record the
+  serving unit per observation — an instrument that stores only the requested label cannot be
+  falsified later, because two different worlds yield identical output. If the denominator cannot be
+  resolved, the verdict is *metric real, denominator unverified*: neither pass nor fail. Full probe in
+  `references/instrument-validity.md`.
 - **Resolve every named organ to a path, unit or cron line before repeating it.** Labels
   arrive from other agents' briefs, reviews and pasted audits. If a named governor or
   sweep does not resolve on disk, report it as unresolved and name what IS live instead;
@@ -128,3 +136,7 @@ capability surface; leave governance under human sovereignty.
 
 - `references/learning-pipeline-probes.md` — copy-pasteable probe bundle for the six hops,
   plus an observation→interpretation table.
+- `references/instrument-validity.md` — hop 5 extended: resolving a metric's denominator to distinct
+  real units before citing it, the unit-identity output contract, and batch-run safety (smoke-test,
+  fail-fast on every dead-input class, incremental writes). Read before quoting any agreement,
+  consensus, coverage, or drift figure.
