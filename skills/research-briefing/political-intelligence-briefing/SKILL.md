@@ -98,6 +98,35 @@ Then: the figures that fail (1) or (2) come out of the sentence, or carry the la
 it. Do not park them behind a closing "figures from public reports" line — that sentence
 grants provenance to every number in the brief, including the ones without any.
 
+## Standing protocol (F13, locked 2026-09-18)
+
+Two checks run by DEFAULT on every intel read, not on request. They are the two failure modes that
+survive an otherwise disciplined brief, because both produce a result that *looks* verified.
+
+**1 · Anti-thesis query.** Before synthesis, run at least one live query shaped to REFUTE the core
+thesis, and record what it returned. A thesis that has only ever been searched *for* is a preference
+with citations. Log it either way — `ANTI_THESIS_RUN: <query> → <result>`. **A counter-query that
+returned nothing is a result and must be logged as such**; silently dropping it is how confirmation
+bias launders itself. If the counter-query contradicts the thesis, the thesis becomes CONTESTED —
+never "mostly true".
+
+*Worked example, 2026-09-18:* a brief asserted that state-election losses created the leverage that
+produced recent Borneo concessions. The counter-query surfaced the concession timeline — RM300m→RM600m
+(Sept 2024), Petros aggregator recognition (Feb 2025), joint declaration (May 2025) — every item
+predating the July/August 2026 losses. The thesis died. What survived was smaller and defensible:
+electoral arithmetic explains the *timing and staging*, not the content.
+
+**2 · Chronological lock.** Two events may be joined in a cause→effect sentence only if both carry
+absolute timestamps and `t_A < t_B`. Check the mechanism was even *available* at the earlier date — an
+actor cannot respond to a thing that had not yet happened. `LOCK: A(YYYY-MM-DD) < B(YYYY-MM-DD) →
+ORDERED` or `→ UNESTABLISHED`.
+
+**Contested is a state, not a hedge.** Aim it only where two NAMED parties of standing contradict each
+other on the same status and a third body owns resolution. Widen it carelessly and everything becomes
+"it's complicated", which is its own failure — the mirror of premature closure. Related machinery:
+`synthesis-verification-gate` (Phase 2.5 — source independence + chronological lock) and
+`APEX-humility-godel` (reflex 6 — anti-thesis query).
+
 ## Output Contract (chat delivery)
 
 1. **Tension first.** Open with the contradiction the events sit inside — not a summary
