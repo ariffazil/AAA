@@ -99,6 +99,78 @@ Then the delta is a **set operation over recorded state**, not a prose diff. Pro
 - **Never embed raw internal paths.** `file:///`, `/root/`, `/tmp/` in a text layer is a leak; gate on it.
 - **Batch a multi-file commit deliberately.** A directory `git add` stages `__pycache__`; add it to `.gitignore` and `git rm --cached` it.
 
+## Deliver to a VERIFIED destination, or do not deliver
+
+A scheduled document that silently stops arriving looks identical to a quiet
+week. Real incident (gateway log, three occurrences in one day):
+
+    Queued-lane final send to 8410138119 failed:
+    Forbidden: the bot can't send messages to the bot
+
+8410138119 was the bot's OWN id, stored as `origin.chat_id` on a cron job while
+`origin.user_id` held the human's id. `deliver: origin` resolved to the bot.
+
+- **Never trust `origin` when the stored origin id could be the bot.** Resolve to
+  an explicit `platform:id` and verify it.
+- **Three verdicts, not two:** ALLOW / HOLD / DEGRADED. "I could not verify" is
+  not "it is fine" — fail CLOSED when the identity source is unreadable.
+- **Read the allowed set from the identity source, never hardcode it.** A
+  hardcoded id makes the gate stale the moment a human's id changes, and a stale
+  gate that cannot be checked is worse than none.
+- **Verify before the transport is touched**, so a refused send costs nothing.
+- **Sweep the whole scheduler**, don't just fix the one job: enumerate every job
+  and flag any whose origin/deliver resolves to a bot or an unknown id.
+- **Prove the sweep can FAIL.** Feed it a synthetic bad job and assert it is
+  caught. A sweep that always returns nothing is decoration.
+- Record refusals in a table. A declined instruction is information.
+
+## A feedback loop that closes
+
+A briefing that ignores what the reader said about yesterday's is scheduled, not
+stateful. But do NOT auto-rewrite prompts from chat:
+
+- Keep `raw_text` **verbatim** and derive the `rule` beside it. The derived rule
+  is reviewable and reversible; the raw text is the evidence it came from.
+- **Store the DIRECTION.** `buang X` and `fokus X` reduce to the same keyword and
+  mean opposite things. A store that keeps only the token applies the wrong one.
+- **Retirement requires a reason.** An unexplained retirement is
+  indistinguishable from a bug.
+- **Never delete.** `status` goes ACTIVE -> RETIRED; the row stays.
+- **Count applications.** A rule with a high count and no visible effect is a
+  candidate for retirement; without the count it becomes eternal.
+- Print the standing rules **inside the document** so they cannot govern
+  invisibly.
+- **Inject them via a per-tick script, not prose in the prompt.** Rules baked
+  into a prompt go stale the first time one is added. The script must print an
+  explicit "none standing" — silence is indistinguishable from a failed script.
+
+## Two lanes, one table: schema collision
+
+If `CREATE TABLE IF NOT EXISTS` does not change an existing table, and a parallel
+agent already created that table with different columns, your code fails with
+`no such column`. Before writing any module that owns a table:
+
+1. Read the live schema: `PRAGMA table_info(<table>)` and `sqlite_master`.
+2. If it already exists with a different shape, **adapt your code to the table,
+   do not migrate the table to your code.** Their columns may be better (extra
+   provenance fields), and rewriting destroys evidence for no gain.
+3. Bridge the differences in ONE place — a row-mapping function that returns both
+   the live column names and your aliases — so existing callers keep working.
+4. Add columns additively (`ALTER TABLE ... ADD COLUMN ... DEFAULT`), never
+   destructively.
+
+## A governance record is a claim that must be checked BEFORE you delete
+
+A tombstone said a retired job's unique sections had been "folded into" the
+surviving job. A grep found 0 occurrences. Deleting on that record would have
+removed the capability while the record said it survived.
+
+Before retiring anything on the strength of "the capability moved": grep the
+survivor for the actual content. Then, if the claim was false, **append a
+correction row — never edit the original.** A governance record that rewrites
+itself is worth nothing. A correlated defect: the retired job referenced a script
+that no longer existed, so it was already partly broken.
+
 ## Verifying a claim about a document
 
 When someone (or another AI) reports a defect in a rendered document, verify the specific claim before acting — including when the claim is about YOUR output. Real example: a report claimed page 8 measured 1.40% ink and was corrected to 7.75%. Re-measured: no page was 1.40%, and page 8 was 9.31%. The correction had never happened. Re-measure, then report the numbers.
