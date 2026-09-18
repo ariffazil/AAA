@@ -158,7 +158,35 @@ audit() {
         echo "  $name: $all SKILL.md resolvable ($phys physical)"
     done
     echo ""
-    echo "Registry total: $(grep -c 'id:' /root/AAA/skills/FEDERATED_SKILLS_REGISTRY.yaml 2>/dev/null || echo 0) entries"
+    # FIX 2026-09-19: two defects in the original one-liner.
+    #   (1) registry filename is _V3.yaml; the un-suffixed path never existed,
+    #       so this line silently reported "0 entries" forever.
+    #   (2) the registry carries counts as FIELDS (total_skills / logical_registry_count),
+    #       not as `id:` lines — grepping for 'id:' returns 0 even on a valid file.
+    local _reg="/root/AAA/skills/FEDERATED_SKILLS_REGISTRY_V3.yaml"
+    [ -f "$_reg" ] || _reg="/root/AAA/skills/FEDERATED_SKILLS_REGISTRY.yaml"
+    if [ -f "$_reg" ]; then
+        python3 - "$_reg" <<'PYREG'
+import sys, yaml
+try:
+    d = yaml.safe_load(open(sys.argv[1])) or {}
+except Exception as e:
+    print(f"Registry: UNREADABLE ({e})"); raise SystemExit
+n  = d.get("logical_registry_count") or d.get("total_skills") or "?"
+rec = d.get("disk_reconciliation", {}) or {}
+print(f"Registry total: {n} logical entries  ({sys.argv[1].split('/')[-1]})")
+if rec:
+    print("  disk reconciliation: "
+          f"physical={rec.get('physical_disk_skills','?')} "
+          f"canonical={rec.get('canonical_skills','?')} "
+          f"loadable={rec.get('loadable_skills','?')} "
+          f"duplicate_identity={rec.get('duplicate_identity_skills','?')} "
+          f"diverged={rec.get('diverged','?')}")
+    print(f"  refreshed: {rec.get('refreshed','?')} via {rec.get('method','?')}")
+PYREG
+    else
+        echo "Registry: MISSING (no FEDERATED_SKILLS_REGISTRY*.yaml under /root/AAA/skills)"
+    fi
 }
 
 case "${1:-sync}" in

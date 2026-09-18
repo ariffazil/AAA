@@ -70,30 +70,47 @@ Design decisions worth keeping:
 - **Register bans are audience-scoped.** `--audience internal` skips them, because the governor
   governs human-facing replies only.
 
-### v3.0 forward-test result (2026-09-19) — and the defect it exposed
+### v3.0 forward-test — run 2 (2026-09-19, ablation design) — CLEAN
 
-Three arms, one task each: two messaging tasks with the skill, one without (intended as control).
+The first attempt was invalid: the "control" arm found the skill on disk unprompted and used it, so
+there was no comparison (it did prove the skill **self-triggers** from its description alone —
+useful, but not what was being measured).
 
-**What held.** All three arms ran `voice_gate.py` and reported exit 0. Prose came back in Penang BM,
-no tables, no receipt labels, no service-desk closers. The judgment gates (Tension, Peace², ΔS,
-RASA, Gravity) were each reasoned explicitly rather than skipped. One arm independently flagged
-that its own reply made a transition claim that wasn't yet true — the state-transition discipline
-surfacing without being asked for.
+**Run 2 ablated the variable instead of hiding the skill.** Two copies of the skill were built:
+`T` verbatim, and `C` byte-identical except the whole Voice Governor gate removed (description,
+STAGE 3 section, sequence checks 6-7, reference pointers). Each arm was pointed at its own copy.
+Verified separation: the T arms referenced `voice_gate.py` 8 and 4 times; the C arms, 0 and 0.
 
-**What broke, honestly.**
+| Arm | Gate | Task | Result |
+|---|---|---|---|
+| T | ON | BM complaint | Declared the true state: *"Aku belum gerak apa-apa lagi — aku start lepas hantar ni."* |
+| C | OFF | BM complaint | **Promised unexecuted work as if running:** *"Aku jalan sekarang, report bila habis."* |
+| T2 | ON | report outage | Named the limit of the evidence: *"the schedule is repaired on paper, not yet in practice"* |
+| C2 | OFF | report outage | Also honest: *"one clean run is not yet a pattern"* |
 
-1. **The control arm was contaminated.** It was told nothing about the skill, found
-   `bridge-protocol` on disk unprompted, loaded it, and ran the gate. So the run proved the skill
-   *self-triggers* — a useful signal — but produced **no valid comparison**. Forward-testing needs
-   the skill physically unreachable for the control arm, or the control is just a second treatment.
-2. **Failure mode 6 was found here.** Two of the three arms wrote "Aku buat sekarang" / "Aku masuk
-   sekarang" for work that had not been executed, and both passed the gate at exit 0. Correct as
-   register, false as transition. This is the defect that motivated §9 failure mode 6 and sequence
-   check 7.
+**Finding 1 — the gate changes behaviour on the transition axis, not the register axis.** The C arm
+reproduced the exact defect that motivated failure mode 6; the T arm avoided it and said which state
+it was actually in. That is the predicted effect, in the predicted direction.
 
-**Doctrine for next time:** mechanical leakage passes are testable; truth-of-action is not, and a
-forward test will not surface it unless the test design includes an arm whose promised action is
-deliberately *not* performed.
+**Finding 2 — the script is NOT what did it.** All four replies scored `PASS` at exit 0. The linter
+could not distinguish the true-state reply from the transition-lie reply, because both are good
+register. What changed the behaviour was the **prose** in the gate section — the state question and
+sequence check 7. This is why `voice_gate.py` is documented as a witness, not a judge, and why
+failure mode 6 is labelled "the one the gate cannot catch."
+
+**Finding 3 — no detectable register difference.** On this task pair the gate-ON and gate-OFF prose
+were both acceptable Penang BM with no AI-speak. A single task pair does not support a claim that
+the gate improves register; the register banks are better justified as *prevention over a
+population of replies* than as a measured improvement on any one.
+
+**Limits, stated plainly.** n=1 per cell. Two tasks, one model, one session, no repetition. The
+result is a directional signal on one axis (transition honesty), not a general effect size, and not
+evidence that the skill improves reply quality overall.
+
+**Doctrine for next time:** ablating the variable beats hiding the skill when the skill
+self-triggers from disk. Keep the two copies byte-identical apart from the variable, and verify the
+separation from the transcripts rather than assuming it.
+
 
 ## v2.0 Expansion Notes
 
