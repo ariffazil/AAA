@@ -15,7 +15,13 @@ name-level, content-level, and description-level redundancy. No hand-counting.
 | Distinct routing names (core) | 733 |
 | YAML frontmatter parse errors | 12 |
 
-## R1 — NAME COLLISIONS: 28 names, 2 bodies each
+## R1 — NAME COLLISIONS: 28 names, 2 bodies each — CORRECTED 2026-09-19
+
+**CORRECTION.** Most of these were an ARTIFACT of counting one tree twice: `/root/.agents/skills` is a
+**symlink to `/root/AAA/skills`**, so 627 bodies appeared under two root labels. Re-measured against
+the loader's actual read path there are only **4** genuine same-name collisions, listed in R5.
+The 20 `agents↔forge` pairs are AAA vs `/root/.forge/skills` — a *different harness home*
+(own `config.yaml`), not a redundant copy of AAA.
 
 Classified by what actually differs, not by which looks newer:
 
@@ -80,18 +86,31 @@ Every one answers: *"is this named control actually doing anything?"*
 independent write-ups of the same procedure. This is the "second, thinner owner for one doctrine"
 defect: all seven load, all seven sound right, none is canonical, and they will drift apart.
 
-## R5 — FAILED COLLAPSES: 2 (highest severity)
+## R5 — FAILED COLLAPSES: 2 (highest severity) — CORRECTED 2026-09-19
 
-A skill was declared collapsed on 2026-09-16 and replaced by an ALIAS stub — but the original body
-was never removed. Both copies still load.
+**CORRECTION to the first version of this section.** It claimed "both stub and retired body still
+load". That is wrong: the loader is FIRST-WINS by name, so exactly ONE body per name is reachable.
+Measured against the loader's real read path (`get_scan_ordered_skills_dirs`), the true state:
 
-| Skill | Stub | Live original still present | Points to | Target exists |
-|---|---|---|---|---|
-| AGI-decisions-reflect | 1124 B | **4980 B** | APEX-humility-godel | yes |
-| sovereign-recognize | 1155 B | **5611 B** | audience-scoped-disclosure | yes |
+| Skill | What the loader SERVES | What is unreachable | Successor |
+|---|---|---|---|
+| AGI-decisions-reflect | the **4980 B live body** (the retired doctrine) | the 1124 B stub | APEX-humility-godel |
+| sovereign-recognize | the **1155 B stub** (the redirect) | the 5611 B live body | audience-scoped-disclosure |
 
-Retirement is silent in one direction, so nothing errors: the index advertises both the stub and the
-retired body, and an agent can load a doctrine that was voted out.
+So one collapse failed to take effect (still serving retired doctrine); the other took effect but
+left an orphan. Neither had absorbed its content — heading check: 6/6 and 7/10 H2 headings absent
+from the successor.
+
+**Both "archive" pointers were CIRCULAR.** `.archive/2026-09-16-skill-zen-quartet/sovereign-recognize`
+was a symlink back to the live orphan it claimed to have archived. So "the body is archived" was a
+claim with no independent copy behind it — deleting first would have destroyed the only one.
+
+**RESOLVED 2026-09-19 (commit f5bed9f88), tertib = recover first, then remove:**
+content recovered into each successor's `references/absorbed-<name>.md` (payload hash verified ==
+source), then both orphans quarantined to `/root/AAA/.quarantine-redundancy-2026-09-19/` with a
+reversal ledger. 3 dependent symlinks fixed; 3 inventories updated. Verified: loader served count
+unchanged, 0 links pointing at quarantined paths, census `broken_symlinks: 0`.
+
 
 ## R6 — DIR-NAME vs FRONTMATTER NAME MISMATCH: 2
 
