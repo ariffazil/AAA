@@ -1,0 +1,71 @@
+{
+  "_comment": "CHRON canonical event store. Dates only — day counts are COMPUTED at render. Add an event with a real source or do not add it.",
+  "_updated": "2026-09-18",
+  "events": [
+    {
+      "id": "budget-2027",
+      "title": "Belanjawan 2027 dibentang di Parlimen",
+      "target_date": "2026-10-09",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "both",
+      "kind": "FISCAL",
+      "source": "MOF / theedgemalaysia node/814941, verified 2026-09-18",
+      "confidence": "CONFIRMED",
+      "consequence": "HIGH",
+      "actionability": "PREPARE",
+      "note": "Baris dividen PETRONAS dan subsidi bahan api jadi boleh dicek pada hari itu."
+    },
+    {
+      "id": "fuel-price-window",
+      "title": "Harga minyak kuat kuasa 17-23 Sept tamat",
+      "target_date": "2026-09-23",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "both",
+      "kind": "MARKET_EVENT",
+      "source": "MOF, 16 Sept",
+      "confidence": "CONFIRMED",
+      "consequence": "MEDIUM",
+      "actionability": "WATCH",
+      "note": "Harga minggu seterusnya diumum sekitar tarikh ini."
+    },
+    {
+      "id": "od1",
+      "title": "OD1 - tarikh pilihan keluar Arif",
+      "target_date": "2027-03-01",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "PERSONAL_SAFE",
+      "source": "fakta berdiri: 'OD1 Mar27', pakej MSS sudah disebut",
+      "confidence": "ANNOUNCED",
+      "consequence": "HIGH",
+      "actionability": "PREPARE",
+      "note": "Bukan tarikh yang orang lain tetapkan. Kalau dibiar, tarikh yang buat keputusan."
+    },
+    {
+      "id": "electricity-800",
+      "title": "Perlindungan elektrik 800 kWh tamat, revert ke 600 kWh",
+      "target_date": "2026-12-31",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "both",
+      "kind": "REGULATORY_WINDOW",
+      "source": "PM, 17 Sept",
+      "confidence": "CONFIRMED",
+      "consequence": "MEDIUM",
+      "actionability": "WATCH",
+      "note": "Bil Januari naik walaupun penggunaan tidak berubah."
+    },
+    {
+      "id": "einv-svdp",
+      "title": "Tetingkap e-Invoice tanpa penalti tamat",
+      "target_date": "2027-12-31",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "both",
+      "kind": "REGULATORY_WINDOW",
+      "source": "LHDN SVDP 7 Jul 2026 - 31 Dis 2027",
+      "confidence": "CONFIRMED",
+      "consequence": "MEDIUM",
+      "actionability": "WATCH",
+      "note": "Hari terakhir untuk regularisasi tanpa penalti."
+    }
+  ]
+}
