@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 from dataclasses import dataclass, field
@@ -319,7 +320,7 @@ def audit_skill(skill_dir: Path) -> Verdict:
     return Verdict(skill=skill_name, verdict=verdict, checks=all_checks)
 
 
-def markdown_report(verdicts: list[Verdict]) -> str:
+def markdown_report(verdicts: list[Verdict], scope: str = "") -> str:
     """Generate markdown compliance report."""
     now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     total = len(verdicts)
@@ -332,6 +333,7 @@ def markdown_report(verdicts: list[Verdict]) -> str:
         "",
         f"**Generated:** {now}",
         f"**Constitution:** SKILL_CONSTITUTION.md v1.0",
+        f"**Scope:** {scope}" if scope else "**Scope:** (unspecified)",
         f"**Skills scanned:** {total}",
         f"**✅ PASS:** {passed}",
         f"**⚠️ HOLD:** {held}",
@@ -417,6 +419,8 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="AAA Skill Constitutional Audit")
     parser.add_argument("--skills-dir", type=Path, default=SKILLS_DIR, help="Skills directory")
     parser.add_argument("--skills", type=str, default="", help="Comma-separated skill name filter (glob)")
+    parser.add_argument("--flat", action="store_true",
+                        help="Legacy one-level scan (pre-2026-09-19 behaviour; misses nested skills)")
     parser.add_argument("--format", choices=["markdown", "json"], default="markdown")
     parser.add_argument("--output", type=Path, default=None, help="Write report to file")
     parser.add_argument("--fail-on", choices=["pass", "hold", "void"], default="hold",
@@ -427,17 +431,33 @@ def main(argv: list[str] | None = None) -> int:
         print(f"Skills directory not found: {args.skills_dir}", file=sys.stderr)
         return 1
 
-    # Discover skills
-    skill_dirs = []
-    for entry in sorted(args.skills_dir.iterdir()):
-        if not entry.is_dir() or entry.name.startswith("."):
-            continue
-        if args.skills:
-            import fnmatch
-            patterns = [p.strip() for p in args.skills.split(",")]
-            if not any(fnmatch.fnmatch(entry.name, p) for p in patterns):
-                continue
-        skill_dirs.append(entry)
+    # Discover skills.
+    # DEFECT FIXED 2026-09-19: this was `args.skills_dir.iterdir()` — ONE LEVEL ONLY. The
+    # authored library is nested (domains/<domain>/<org>/<coordinate>/<skill>/), so a flat scan
+    # saw 281 of the 626 SKILL.md files on disk and published an 11% compliance rate over 55%
+    # of the library, with no indication of the scope. Same defect class as a stale registry
+    # path: an authoritative-looking number that is silently blind.
+    # Reproduce the old behaviour with --flat.
+    import fnmatch
+    patterns = [p.strip() for p in args.skills.split(",")] if args.skills else []
+
+    candidates: list[Path] = []
+    if args.flat:
+        for entry in sorted(args.skills_dir.iterdir()):
+            if entry.is_dir() and not entry.name.startswith("."):
+                candidates.append(entry)
+    else:
+        PRUNE = {"__pycache__", "node_modules", ".venv", "venv", "site-packages",
+                 ".git", ".archive", ".hub", ".curator_backups"}
+        for dirpath, dirnames, filenames in os.walk(args.skills_dir):
+            dirnames[:] = sorted(d for d in dirnames
+                                 if not d.startswith(".") and d not in PRUNE)
+            if "SKILL.md" in filenames:
+                candidates.append(Path(dirpath))
+
+    skill_dirs = [d for d in candidates
+                  if not patterns or any(fnmatch.fnmatch(d.name, p) for p in patterns)]
+    skill_dirs.sort()
 
     # Audit
     verdicts = [audit_skill(d) for d in skill_dirs]
@@ -446,7 +466,11 @@ def main(argv: list[str] | None = None) -> int:
     if args.format == "json":
         report = json_report(verdicts)
     else:
-        report = markdown_report(verdicts)
+        mode = "flat (legacy, one level)" if args.flat else "recursive"
+        report = markdown_report(
+            verdicts,
+            scope=f"{args.skills_dir} — {mode}; {len(skill_dirs)} skill dirs found",
+        )
 
     if args.output:
         args.output.write_text(report, encoding="utf-8")
