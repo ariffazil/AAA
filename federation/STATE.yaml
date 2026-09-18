@@ -78,8 +78,17 @@ operators:
     layer: binding
     bound_to: i-arif
   openclaw:
-    fi: null
+    fi: FI-017
     layer: binding
+    bound_to: arif-fazil/F13
+    capabilities: [OBSERVE, REASON, ROUTE, MEMORY]
+    max_blast_radius: T1
+    host: KVM4 (workshop, 100.64.0.5)
+    kvm8_mirror: 127.0.0.1:18789 DNAT to KVM4
+    gateway_port: 18789
+    telegram: "@AGI_ASI_bot"
+    agent_card: /root/AAA/agent-cards/functions/openclaw/agent-card.json
+    audit_2026_09_18: 333-AGI reconciled — was (fi:null, layer:binding, bound_to:i-arif) per stale 2026-09-04 entry; now aligned to kernel agent_registry.json
   agy:
     fi: FI-009
     layer: harness

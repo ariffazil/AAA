@@ -1,13 +1,12 @@
 ---
 name: forge-infra-crons
-description: 'Infrastructure cron job management — schedule, audit, and govern VPS [fed: tier=fed-long-context]
+description: 'Infrastructure cron job management — schedule, audit, and govern VPS
   cron entries. Read-only observation of root crontab, /etc/crontab, and /etc/cron.d.
   F1 AMANAH: never mutate crontabs without 888_HOLD.'
 owner: A-FORGE
 capability_tier: fed-long-context
 ecology_state: WARM
----
-# FORGE-infra-crons
+---# FORGE-infra-crons
 
 Infrastructure cron governance skill. Scans and audits cron entries across the VPS.
 

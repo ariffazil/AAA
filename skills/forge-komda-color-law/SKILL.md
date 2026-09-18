@@ -1,11 +1,9 @@
 ---
 name: forge-komda-color-law
-description: Komda Color Law lint — enforces SOVEREIGN_DECREES §04 (territory color families). Use when generating, editing, or auditing any visual artifact (HTML/SVG/CSS) that claims a federation territory (arifos / geox / wealth / well / aaa). Foreign-family color in territory DOM = violation per F13 SOVEREIGN doctrine (2026-08-01). [fed: tier=fed-multimodal-vision]
+description: "Komda Color Law lint — enforces SOVEREIGN_DECREES §04 (territory color families). Use when generating, editing, or auditing any visual artifact (HTML/SVG/CSS) that claims a federation territory (arifos / geox / wealth / well / aaa). Foreign-family color in territory DOM = violation per F13 SOVEREIGN doctrine (2026-08-01). "
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
----
-
-# FORGE-komda-color-law
+---# FORGE-komda-color-law
 
 The Komda Color Law is **SOVEREIGN DECREES §04** — F13-ratified doctrine (2026-08-01). It enforces that every visual artifact claiming a federation territory uses only that territory's closed color family plus the universal PRIMER-1 dark field.
 

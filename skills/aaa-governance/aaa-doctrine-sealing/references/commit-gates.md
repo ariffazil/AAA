@@ -45,6 +45,28 @@ entry preserving the original timestamp and naming the source as a port), then l
 non-canonical marker file in the stray's directory stating where the SOT is — so the next agent does not
 repeat the split. Never delete the stray: it is still evidence of what was recorded when.
 
+## Canon-mutate content injection pattern
+
+JSON, multi-line text, or content with shell-special characters must NOT be passed inline in
+`bash -c "echo '...' >> target"`. Shell parsing breaks on parentheses, quotes, and `$` signs;
+the command reports `rc=0` but the content does not land — a silent failure.
+
+Correct pattern:
+```bash
+# 1. Write content to temp file (any tool — write_file, python, heredoc)
+python3 -c "import json; open('/tmp/entry.jsonl','w').write(json.dumps(entry))"
+
+# 2. Append via canon-mutate using cat (not echo, not inline)
+ARIFOS_TRACE_ID=trc-<id> /root/scripts/canon-mutate run <tree> -- \
+  bash -c 'cat /tmp/entry.jsonl >> <target-file>'
+
+# 3. Verify
+grep '<unique-string>' <target-file>
+```
+
+`echo` with `-e` or heredocs inside `canon-mutate run ... -- bash -c` also break on complex
+content. `cat` from a temp file is the only reliable path.
+
 Entry count sanity: `wc -l` the ledger before and after; all lines must parse as JSON:
 
 ```bash

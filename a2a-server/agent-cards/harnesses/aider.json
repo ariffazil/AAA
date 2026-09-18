@@ -8,7 +8,7 @@
     "category": "LLM-as-principal (model is principal, CLI is harness)",
     "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
   },
-  "description": "Aider CLI pair-programming coding harness. HOLDS NO FI SLOT — FI citizenship retired 2026-07-18 when grok-build took FI-007. Binary not installed on this machine. Federation participation is CCC-contract-only: CCC(Aider) per CCC_DOCTRINE.md / CODER_FEDERATION_MAP.md (000-AIDER). FI is the passport; CCC is the contract. Aider has a contract lane, not a passport.",
+  "description": "Aider CLI pair-programming coding harness (binary v0.86.2 present at /root/.local/bin/aider, verified 2026-09-18). HOLDS NO FI SLOT — FI citizenship retired 2026-07-18 when grok-build took FI-007. Federation participation is CCC-contract-only: CCC(Aider) per CCC_DOCTRINE.md / CODER_FEDERATION_MAP.md (000-AIDER). Phase 4 canary activation 2026-09-18: housekeeping scope only (README, doc SOT, entropy check, deploy). Probe matrix: /root/AAA/federation/probes/aider-20260918.md. Card truth-repaired: prior phantom-absence claim ('Binary not installed') corrected.",
   "version": "2.0.0",
   "model": "claude-sonnet-4 / gpt-5",
   "binary": "/root/.local/bin/aider",
