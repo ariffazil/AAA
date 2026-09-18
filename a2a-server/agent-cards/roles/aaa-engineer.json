@@ -64,144 +64,13 @@
   "power_band": "execution_only",
   "skills": [
     {
-      "id": "FORGE-run-task",
-      "name": "Run Task",
-      "description": "Execute a task locally using MCP tools. Respects task schema from A-rchitect. Records execution intent for A-auditor review.",
-      "tags": [
-        "execute",
-        "mcp",
-        "local",
-        "task"
-      ],
-      "floor_scope": [
-        "F01",
-        "F02",
-        "F04",
-        "F05",
-        "F06"
-      ],
-      "approval_policy": "auto",
-      "reversibility_class": "reversible",
-      "input_modes": [
-        "application/json"
-      ],
-      "output_modes": [
-        "application/json",
-        "text/plain"
-      ]
+      "id": "KERNEL-trinity-33",
+      "_normalised": "bare string -> object (schema conformity, afpass-W1)"
     },
     {
-      "id": "FORGE-dispatch-task",
-      "name": "Dispatch Task",
-      "description": "Send a task to a downstream agent via A2A. Must pass A-auditor evaluate-delegation before dispatch. Returns taskId for tracking.",
-      "tags": [
-        "dispatch",
-        "a2a",
-        "delegate",
-        "downstream"
-      ],
-      "floor_scope": [
-        "F01",
-        "F02",
-        "F05",
-        "F06",
-        "F09",
-        "F12",
-        "F13"
-      ],
-      "approval_policy": "auto",
-      "reversibility_class": "irreversible",
-      "judgment_required": true,
-      "judgment_skill": "evaluate-delegation",
-      "input_modes": [
-        "application/json"
-      ],
-      "output_modes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "FORGE-stream-progress",
-      "name": "Stream Progress",
-      "description": "Emit SSE stream events for a running task: status transitions, artifact chunks, log entries, hold events. Must not fabricate progress \u2014 truth in transit.",
-      "tags": [
-        "stream",
-        "sse",
-        "progress",
-        "events"
-      ],
-      "floor_scope": [
-        "F01",
-        "F02",
-        "F04"
-      ],
-      "approval_policy": "auto",
-      "reversibility_class": "reversible",
-      "input_modes": [
-        "application/json"
-      ],
-      "output_modes": [
-        "text/event-stream"
-      ]
-    },
-    {
-      "id": "FORGE-manage-task-lifecycle",
-      "name": "Manage Task Lifecycle",
-      "description": "Transition task through states: submitted\u2192working\u2192completed/failed/input_required/auth_required. Records timestamps and state reasons.",
-      "tags": [
-        "task",
-        "lifecycle",
-        "state",
-        "status"
-      ],
-      "floor_scope": [
-        "F01",
-        "F02",
-        "F04"
-      ],
-      "approval_policy": "auto",
-      "reversibility_class": "reversible",
-      "input_modes": [
-        "application/json"
-      ],
-      "output_modes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "FORGE-receive-handoff",
-      "name": "Receive Handoff",
-      "description": "Accept a handoff from a remote agent: receive context, validate schema, bind to session, record receipt. Must emit receipt to A-auditor.",
-      "tags": [
-        "handoff",
-        "receive",
-        "context",
-        "intake"
-      ],
-      "floor_scope": [
-        "F01",
-        "F02",
-        "F04",
-        "F05",
-        "F11",
-        "F12"
-      ],
-      "approval_policy": "auto",
-      "reversibility_class": "irreversible",
-      "judgment_required": true,
-      "input_modes": [
-        "application/json"
-      ],
-      "output_modes": [
-        "application/json"
-      ]
-    },
-    "KERNEL-sovereign-recognize",
-    "KERNEL-trinity-33",
-    "KERNEL-session-inhabit",
-    "RSI-recursive-improvement",
-    "SHADOW-diagnostic",
-    "CLAIM-verification-gate"
+      "id": "RSI-recursive-improvement",
+      "_normalised": "bare string -> object (schema conformity, afpass-W1)"
+    }
   ],
   "peers": [
     {
@@ -311,5 +180,169 @@
     }
   ],
   "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN"
+  "sovereign": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
+  "_quarantined_skills": [
+    {
+      "id": "FORGE-run-task",
+      "name": "Run Task",
+      "description": "Execute a task locally using MCP tools. Respects task schema from A-rchitect. Records execution intent for A-auditor review.",
+      "tags": [
+        "execute",
+        "mcp",
+        "local",
+        "task"
+      ],
+      "floor_scope": [
+        "F01",
+        "F02",
+        "F04",
+        "F05",
+        "F06"
+      ],
+      "approval_policy": "auto",
+      "reversibility_class": "reversible",
+      "input_modes": [
+        "application/json"
+      ],
+      "output_modes": [
+        "application/json",
+        "text/plain"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "FORGE-dispatch-task",
+      "name": "Dispatch Task",
+      "description": "Send a task to a downstream agent via A2A. Must pass A-auditor evaluate-delegation before dispatch. Returns taskId for tracking.",
+      "tags": [
+        "dispatch",
+        "a2a",
+        "delegate",
+        "downstream"
+      ],
+      "floor_scope": [
+        "F01",
+        "F02",
+        "F05",
+        "F06",
+        "F09",
+        "F12",
+        "F13"
+      ],
+      "approval_policy": "auto",
+      "reversibility_class": "irreversible",
+      "judgment_required": true,
+      "judgment_skill": "evaluate-delegation",
+      "input_modes": [
+        "application/json"
+      ],
+      "output_modes": [
+        "application/json"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "FORGE-stream-progress",
+      "name": "Stream Progress",
+      "description": "Emit SSE stream events for a running task: status transitions, artifact chunks, log entries, hold events. Must not fabricate progress — truth in transit.",
+      "tags": [
+        "stream",
+        "sse",
+        "progress",
+        "events"
+      ],
+      "floor_scope": [
+        "F01",
+        "F02",
+        "F04"
+      ],
+      "approval_policy": "auto",
+      "reversibility_class": "reversible",
+      "input_modes": [
+        "application/json"
+      ],
+      "output_modes": [
+        "text/event-stream"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "FORGE-manage-task-lifecycle",
+      "name": "Manage Task Lifecycle",
+      "description": "Transition task through states: submitted→working→completed/failed/input_required/auth_required. Records timestamps and state reasons.",
+      "tags": [
+        "task",
+        "lifecycle",
+        "state",
+        "status"
+      ],
+      "floor_scope": [
+        "F01",
+        "F02",
+        "F04"
+      ],
+      "approval_policy": "auto",
+      "reversibility_class": "reversible",
+      "input_modes": [
+        "application/json"
+      ],
+      "output_modes": [
+        "application/json"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "FORGE-receive-handoff",
+      "name": "Receive Handoff",
+      "description": "Accept a handoff from a remote agent: receive context, validate schema, bind to session, record receipt. Must emit receipt to A-auditor.",
+      "tags": [
+        "handoff",
+        "receive",
+        "context",
+        "intake"
+      ],
+      "floor_scope": [
+        "F01",
+        "F02",
+        "F04",
+        "F05",
+        "F11",
+        "F12"
+      ],
+      "approval_policy": "auto",
+      "reversibility_class": "irreversible",
+      "judgment_required": true,
+      "input_modes": [
+        "application/json"
+      ],
+      "output_modes": [
+        "application/json"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-sovereign-recognize",
+      "id": "KERNEL-sovereign-recognize"
+    },
+    {
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-session-inhabit",
+      "id": "KERNEL-session-inhabit"
+    },
+    {
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/SHADOW-diagnostic",
+      "id": "SHADOW-diagnostic"
+    },
+    {
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/CLAIM-verification-gate",
+      "id": "CLAIM-verification-gate"
+    }
+  ],
+  "_skill_ref_reconciliation": {
+    "at": "2026-09-18",
+    "by": "afpass-W1",
+    "before": 11,
+    "after": 2,
+    "quarantined": 9,
+    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
+  }
 }

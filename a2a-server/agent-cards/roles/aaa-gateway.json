@@ -3,7 +3,7 @@
   "schemaVersion": "2.2.0",
   "id": "aaa-gateway",
   "name": "AAA A2A Gateway",
-  "description": "Federation A2A Gateway \u2014 central edge for all arifOS federation organs. Implements A2A Gateway pattern: task routing, authN/Z (OAuth 2.1), webhook broker, skill catalog aggregator, sovereign injection. One edge, six organs discoverable. Any A2A-native peer discovers the entire federation through this card.",
+  "description": "Federation A2A Gateway — central edge for all arifOS federation organs. Implements A2A Gateway pattern: task routing, authN/Z (OAuth 2.1), webhook broker, skill catalog aggregator, sovereign injection. One edge, six organs discoverable. Any A2A-native peer discovers the entire federation through this card.",
   "version": "2026.07.02",
   "protocolVersion": "1.2",
   "url": "https://aaa.arif-fazil.com",
@@ -142,98 +142,7 @@
       "card_url": "https://well.arif-fazil.com/.well-known/agent-card.json"
     }
   ],
-  "skills": [
-    {
-      "id": "FORGE-route-task",
-      "name": "Task Routing",
-      "description": "Route A2A tasks to the correct federation organ based on skill matching. Implements the A2A Gateway pattern: receives task \u2192 matches skill \u2192 routes to organ \u2192 streams result.",
-      "tags": [
-        "routing",
-        "gateway",
-        "A2A",
-        "orchestration"
-      ],
-      "floor_scope": [
-        "F4",
-        "F8",
-        "F11"
-      ]
-    },
-    {
-      "id": "APEX-enforce-sovereign-veto",
-      "name": "Sovereign Veto Enforcement",
-      "description": "When any organ emits auth-required (HOLD), pause task, push-notify ARIF, await sovereign decision. Implements F13 at A2A protocol level.",
-      "tags": [
-        "F13",
-        "sovereign",
-        "veto",
-        "auth-required"
-      ],
-      "floor_scope": [
-        "F11",
-        "F13"
-      ]
-    },
-    {
-      "id": "AGI-aggregate-capabilities",
-      "name": "Capability Aggregation",
-      "description": "Aggregate AgentCards from all 6 organs into a single federation manifest. Any A2A peer discovers the entire federation through this gateway.",
-      "tags": [
-        "discovery",
-        "aggregation",
-        "manifest"
-      ],
-      "floor_scope": [
-        "F4",
-        "F11"
-      ]
-    },
-    {
-      "id": "FORGE-broker-webhooks",
-      "name": "Webhook Broker",
-      "description": "Relay push notifications from long-running organ tasks to registered webhook endpoints. GEOX basin analysis, WEALTH simulation, WELL monitoring.",
-      "tags": [
-        "webhook",
-        "push",
-        "notification",
-        "async"
-      ],
-      "floor_scope": [
-        "F11"
-      ]
-    },
-    {
-      "id": "AUDIT-defend-injection",
-      "name": "Injection Defense",
-      "description": "F12 injection defense at gateway layer. All external A2A tasks scanned before routing to internal organs.",
-      "tags": [
-        "security",
-        "injection",
-        "F12",
-        "defense"
-      ],
-      "floor_scope": [
-        "F12"
-      ]
-    },
-    {
-      "id": "ASI-federated-memory-query",
-      "name": "Federated Memory Query",
-      "description": "Query the zen federated memory state (L1-L6 layers, flow, rule). Surfaces kernel-governed memory (bands, provenance, no-bypass) as AA state. Kernel owns, AAA surfaces via Redis + /federation/memory.",
-      "tags": [
-        "memory",
-        "federation",
-        "state",
-        "L1-L6",
-        "zen"
-      ],
-      "floor_scope": [
-        "F2",
-        "F4",
-        "F11"
-      ]
-    }
-  ],
+  "skills": [],
   "governance": {
     "floors": [
       "F1",
@@ -265,10 +174,10 @@
     "vault": "VAULT999"
   },
   "metadata": {
-    "doctrine": "DITEMPA BUKAN DIBERI \u2014 Control is forged, not given.",
+    "doctrine": "DITEMPA BUKAN DIBERI — Control is forged, not given.",
     "created": "2026-07-02T04:50:00Z",
-    "created_by": "FORGE (000\u03a9) \u2014 A2A Gateway pattern",
-    "rationale": "Copilot A2A analysis \u2014 blindspot #9: AAA should be A2A Gateway. One edge, N organs discoverable. Verdict grammar extension for sovereignty.",
+    "created_by": "FORGE (000Ω) — A2A Gateway pattern",
+    "rationale": "Copilot A2A analysis — blindspot #9: AAA should be A2A Gateway. One edge, N organs discoverable. Verdict grammar extension for sovereignty.",
     "gateway_pattern": "https://www.glukhov.org/ai-systems/architecture/a2a-protocol-explained/",
     "kernel_deps": [
       "KERNEL-trinity-33",
@@ -315,5 +224,111 @@
     }
   ],
   "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN"
+  "sovereign": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
+  "_quarantined_skills": [
+    {
+      "id": "FORGE-route-task",
+      "name": "Task Routing",
+      "description": "Route A2A tasks to the correct federation organ based on skill matching. Implements the A2A Gateway pattern: receives task → matches skill → routes to organ → streams result.",
+      "tags": [
+        "routing",
+        "gateway",
+        "A2A",
+        "orchestration"
+      ],
+      "floor_scope": [
+        "F4",
+        "F8",
+        "F11"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "APEX-enforce-sovereign-veto",
+      "name": "Sovereign Veto Enforcement",
+      "description": "When any organ emits auth-required (HOLD), pause task, push-notify ARIF, await sovereign decision. Implements F13 at A2A protocol level.",
+      "tags": [
+        "F13",
+        "sovereign",
+        "veto",
+        "auth-required"
+      ],
+      "floor_scope": [
+        "F11",
+        "F13"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "AGI-aggregate-capabilities",
+      "name": "Capability Aggregation",
+      "description": "Aggregate AgentCards from all 6 organs into a single federation manifest. Any A2A peer discovers the entire federation through this gateway.",
+      "tags": [
+        "discovery",
+        "aggregation",
+        "manifest"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "FORGE-broker-webhooks",
+      "name": "Webhook Broker",
+      "description": "Relay push notifications from long-running organ tasks to registered webhook endpoints. GEOX basin analysis, WEALTH simulation, WELL monitoring.",
+      "tags": [
+        "webhook",
+        "push",
+        "notification",
+        "async"
+      ],
+      "floor_scope": [
+        "F11"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "AUDIT-defend-injection",
+      "name": "Injection Defense",
+      "description": "F12 injection defense at gateway layer. All external A2A tasks scanned before routing to internal organs.",
+      "tags": [
+        "security",
+        "injection",
+        "F12",
+        "defense"
+      ],
+      "floor_scope": [
+        "F12"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "ASI-federated-memory-query",
+      "name": "Federated Memory Query",
+      "description": "Query the zen federated memory state (L1-L6 layers, flow, rule). Surfaces kernel-governed memory (bands, provenance, no-bypass) as AA state. Kernel owns, AAA surfaces via Redis + /federation/memory.",
+      "tags": [
+        "memory",
+        "federation",
+        "state",
+        "L1-L6",
+        "zen"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4",
+        "F11"
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    }
+  ],
+  "_skill_ref_reconciliation": {
+    "at": "2026-09-18",
+    "by": "afpass-W1",
+    "before": 6,
+    "after": 0,
+    "quarantined": 6,
+    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
+  }
 }

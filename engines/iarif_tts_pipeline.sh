@@ -4,9 +4,12 @@
 # Zero vocoder phase noise. Zero artificial F0 distortion.
 set -eo pipefail
 
-TEXT_FILE="${1:?usage: iarif_tts_pipeline.sh <text-file> <output-path>}"
-OUT_PATH="${2:?usage: iarif_tts_pipeline.sh <text-file> <output-path>}"
-VOICE_ID="${IARIF_VOICE_ID:-iarif-sovereign-v9}"
+TEXT_FILE="${1:?usage: iarif_tts_pipeline.sh <text-file> <output-path> [voice-id]}"
+OUT_PATH="${2:?usage: iarif_tts_pipeline.sh <text-file> <output-path> [voice-id]}"
+# Voice selection order: explicit 3rd arg (lane-selectable) > IARIF_VOICE_ID env > canonical default.
+# An explicit arg does NOT weaken the gate below: registry resolution still FAILS CLOSED
+# on REVOKED or unknown ids, so no caller can route around the V8 revocation.
+VOICE_ID="${3:-${IARIF_VOICE_ID:-iarif-sovereign-v9}}"
 
 # ---- V8/V9 registry resolution — FAIL CLOSED on REVOKED voices (F1 AMANAH) ----
 # The voice-registry.json is canonical. Any REVOKED or unknown id aborts before

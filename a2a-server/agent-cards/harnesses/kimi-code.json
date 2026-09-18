@@ -446,74 +446,6 @@
       ]
     },
     {
-      "id": "ASI-autonomous-execution",
-      "name": "Autonomous Governed Execution",
-      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. ΦΙ + Functional Execution. LEASED → ACTIVE.",
-      "tags": [
-        "autonomous",
-        "F1-F13",
-        "execution",
-        "T1-T3"
-      ],
-      "floor_scope": [
-        "F1",
-        "F2",
-        "F4",
-        "F7",
-        "F11",
-        "F13"
-      ],
-      "security_requirements": [
-        {
-          "scheme": "session_token",
-          "scopes": [
-            "sovereign:ack",
-            "floor:F1",
-            "floor:F2",
-            "floor:F4",
-            "floor:F7",
-            "floor:F11",
-            "floor:F13"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "APEX-constitutional-audit",
-      "name": "arifOS Constitutional Audit (Light)",
-      "description": "Read-only constitutional audit of arifOS code and agent cards. Six-organ gap analysis, lexical priority check, blast-radius 888 HOLD bypass detection. F1, F2, F4, F7, F9, F11, F13 enforced. ATTESTED + LEASED.",
-      "tags": [
-        "constitutional",
-        "audit",
-        "F1-F13",
-        "read-only"
-      ],
-      "floor_scope": [
-        "F1",
-        "F2",
-        "F4",
-        "F7",
-        "F9",
-        "F11",
-        "F13"
-      ],
-      "security_requirements": [
-        {
-          "scheme": "session_token",
-          "scopes": [
-            "sovereign:ack",
-            "floor:F1",
-            "floor:F2",
-            "floor:F4",
-            "floor:F7",
-            "floor:F9",
-            "floor:F11",
-            "floor:F13"
-          ]
-        }
-      ]
-    },
-    {
       "id": "APEX-humility-godel",
       "name": "Gödel Humility Lock",
       "description": "Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. LEASED.",
@@ -556,171 +488,6 @@
           "scheme": "session_token",
           "scopes": [
             "floor:F1",
-            "floor:F11"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "APEX-mcp-federation",
-      "name": "arifOS MCP Federation",
-      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. Δ axis primary. LEASED.",
-      "tags": [
-        "MCP",
-        "federation",
-        "routing",
-        "multi-organ"
-      ],
-      "floor_scope": [
-        "F4",
-        "F11"
-      ],
-      "security_requirements": [
-        {
-          "scheme": "session_token",
-          "scopes": [
-            "floor:F4",
-            "floor:F11"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "FORGE-agentic-builder",
-      "name": "Agentic Builder",
-      "description": "Meta-skill for building governed agents: identity, SOUL.md prompt, skills binding, MCP tool selection, agent-card registration, and test harness. T2 guarded write under F2/F4/F8/F11.",
-      "tags": [
-        "agent",
-        "architecture",
-        "prompt-engineering",
-        "agent-card",
-        "F8"
-      ],
-      "floor_scope": [
-        "F2",
-        "F4",
-        "F8",
-        "F11"
-      ],
-      "approval_policy": "888_HOLD for new agent SEAL",
-      "reversibility_class": "reversible",
-      "security_requirements": [
-        {
-          "scheme": "session_token",
-          "scopes": [
-            "floor:F2",
-            "floor:F4",
-            "floor:F8",
-            "floor:F11"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "FORGE-webmcp-site-builder",
-      "name": "WebMCP Site Builder",
-      "description": "Build browser-as-MCP-server sites using navigator.modelContext (declarative + imperative), MCP-B bridge, HITL for irreversible actions, and agent-legibility checklist (llms.txt, agents.md, schema.org). T2 under F1/F2/F4/F8/F11/F12.",
-      "tags": [
-        "webmcp",
-        "browser",
-        "mcp",
-        "site-builder",
-        "F12"
-      ],
-      "floor_scope": [
-        "F1",
-        "F2",
-        "F4",
-        "F8",
-        "F11",
-        "F12"
-      ],
-      "approval_policy": "auto (T2)",
-      "reversibility_class": "reversible",
-      "security_requirements": [
-        {
-          "scheme": "session_token",
-          "scopes": [
-            "floor:F1",
-            "floor:F2",
-            "floor:F4",
-            "floor:F8",
-            "floor:F11",
-            "floor:F12"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "KERNEL-reality-skills",
-      "name": "Reality Skills (F2 Grounding)",
-      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
-      "tags": [
-        "kernel",
-        "f2",
-        "reality",
-        "grounding"
-      ],
-      "floor_scope": [
-        "F2",
-        "F7",
-        "F9"
-      ],
-      "security_requirements": [
-        {
-          "scheme": "session_token",
-          "scopes": [
-            "floor:F2",
-            "floor:F7",
-            "floor:F9"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "KERNEL-sovereign-recognize",
-      "name": "Sovereign Recognition (F13)",
-      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
-      "tags": [
-        "kernel",
-        "f13",
-        "sovereign",
-        "identity"
-      ],
-      "floor_scope": [
-        "F13"
-      ],
-      "security_requirements": [
-        {
-          "scheme": "session_token",
-          "scopes": [
-            "sovereign:ack",
-            "floor:F13"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "KERNEL-session-inhabit",
-      "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
-      "tags": [
-        "kernel",
-        "session",
-        "lifecycle",
-        "000-999"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4",
-        "F11"
-      ],
-      "security_requirements": [
-        {
-          "scheme": "session_token",
-          "scopes": [
-            "floor:F1",
-            "floor:F4",
             "floor:F11"
           ]
         }
@@ -1093,5 +860,256 @@
     "status": "VERIFIED 0.40.1 post-rebuild 2026-09-03",
     "member_of": "kvm4-ccc-pool",
     "updated": "2026-09-03T16:25+08:00"
+  },
+  "_quarantined_skills": [
+    {
+      "id": "ASI-autonomous-execution",
+      "name": "Autonomous Governed Execution",
+      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. ΦΙ + Functional Execution. LEASED → ACTIVE.",
+      "tags": [
+        "autonomous",
+        "F1-F13",
+        "execution",
+        "T1-T3"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F7",
+        "F11",
+        "F13"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "sovereign:ack",
+            "floor:F1",
+            "floor:F2",
+            "floor:F4",
+            "floor:F7",
+            "floor:F11",
+            "floor:F13"
+          ]
+        }
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "APEX-constitutional-audit",
+      "name": "arifOS Constitutional Audit (Light)",
+      "description": "Read-only constitutional audit of arifOS code and agent cards. Six-organ gap analysis, lexical priority check, blast-radius 888 HOLD bypass detection. F1, F2, F4, F7, F9, F11, F13 enforced. ATTESTED + LEASED.",
+      "tags": [
+        "constitutional",
+        "audit",
+        "F1-F13",
+        "read-only"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F7",
+        "F9",
+        "F11",
+        "F13"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "sovereign:ack",
+            "floor:F1",
+            "floor:F2",
+            "floor:F4",
+            "floor:F7",
+            "floor:F9",
+            "floor:F11",
+            "floor:F13"
+          ]
+        }
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "APEX-mcp-federation",
+      "name": "arifOS MCP Federation",
+      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. Δ axis primary. LEASED.",
+      "tags": [
+        "MCP",
+        "federation",
+        "routing",
+        "multi-organ"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F4",
+            "floor:F11"
+          ]
+        }
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "FORGE-agentic-builder",
+      "name": "Agentic Builder",
+      "description": "Meta-skill for building governed agents: identity, SOUL.md prompt, skills binding, MCP tool selection, agent-card registration, and test harness. T2 guarded write under F2/F4/F8/F11.",
+      "tags": [
+        "agent",
+        "architecture",
+        "prompt-engineering",
+        "agent-card",
+        "F8"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4",
+        "F8",
+        "F11"
+      ],
+      "approval_policy": "888_HOLD for new agent SEAL",
+      "reversibility_class": "reversible",
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F2",
+            "floor:F4",
+            "floor:F8",
+            "floor:F11"
+          ]
+        }
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "FORGE-webmcp-site-builder",
+      "name": "WebMCP Site Builder",
+      "description": "Build browser-as-MCP-server sites using navigator.modelContext (declarative + imperative), MCP-B bridge, HITL for irreversible actions, and agent-legibility checklist (llms.txt, agents.md, schema.org). T2 under F1/F2/F4/F8/F11/F12.",
+      "tags": [
+        "webmcp",
+        "browser",
+        "mcp",
+        "site-builder",
+        "F12"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F8",
+        "F11",
+        "F12"
+      ],
+      "approval_policy": "auto (T2)",
+      "reversibility_class": "reversible",
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F1",
+            "floor:F2",
+            "floor:F4",
+            "floor:F8",
+            "floor:F11",
+            "floor:F12"
+          ]
+        }
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
+    },
+    {
+      "id": "KERNEL-reality-skills",
+      "name": "Reality Skills (F2 Grounding)",
+      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
+      "tags": [
+        "kernel",
+        "f2",
+        "reality",
+        "grounding"
+      ],
+      "floor_scope": [
+        "F2",
+        "F7",
+        "F9"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F2",
+            "floor:F7",
+            "floor:F9"
+          ]
+        }
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-reality-skills"
+    },
+    {
+      "id": "KERNEL-sovereign-recognize",
+      "name": "Sovereign Recognition (F13)",
+      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
+      "tags": [
+        "kernel",
+        "f13",
+        "sovereign",
+        "identity"
+      ],
+      "floor_scope": [
+        "F13"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "sovereign:ack",
+            "floor:F13"
+          ]
+        }
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-sovereign-recognize"
+    },
+    {
+      "id": "KERNEL-session-inhabit",
+      "name": "Session Inhabit (Lifecycle)",
+      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "tags": [
+        "kernel",
+        "session",
+        "lifecycle",
+        "000-999"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F1",
+            "floor:F4",
+            "floor:F11"
+          ]
+        }
+      ],
+      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-session-inhabit"
+    }
+  ],
+  "_skill_ref_reconciliation": {
+    "at": "2026-09-18",
+    "by": "afpass-W1",
+    "before": 14,
+    "after": 6,
+    "quarantined": 8,
+    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
   }
 }

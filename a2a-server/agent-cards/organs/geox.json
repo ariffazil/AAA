@@ -4,7 +4,7 @@
   "protocolVersion": "1.2",
   "agentId": "geox",
   "name": "GEOX",
-  "description": "Earth intelligence \u2014 basin analysis, seismic, petrophysics, wells, geomechanics, biostratigraphy.",
+  "description": "Earth intelligence — basin analysis, seismic, petrophysics, wells, geomechanics, biostratigraphy.",
   "version": "1.0.0",
   "provider": {
     "organization": "arifOS",
@@ -42,7 +42,18 @@
       "name": "x-a2a-key"
     }
   },
-  "skills": [
+  "skills": [],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "LVkeJKrOyMuHUU/GCC4etf1g5ZELzYnef24iYGAndYoeovD2Slvz62CqNfvQ+PaluK1neN3rLcjHgPnMMwDBAw==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ],
+  "did": "did:web:arif-fazil.com",
+  "_quarantined_skills": [
     {
       "id": "geox_well_ingest",
       "name": "Well Ingest",
@@ -55,7 +66,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_well_qc",
@@ -69,7 +81,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_well_desk_open",
@@ -83,7 +96,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_well_desk_publish",
@@ -97,7 +111,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_render_well_panel",
@@ -111,7 +126,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_petrophysics",
@@ -125,7 +141,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_sequence",
@@ -139,7 +156,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_seismic_ingest",
@@ -153,7 +171,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_seismic_compute",
@@ -167,7 +186,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_seismic_interpret",
@@ -181,7 +201,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_vision",
@@ -195,7 +216,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_subsurface_model",
@@ -209,7 +231,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_geomechanics",
@@ -223,7 +246,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_basin",
@@ -237,7 +261,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_deep_time_state",
@@ -251,7 +276,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_surface_status",
@@ -265,7 +291,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_claim",
@@ -279,7 +306,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_evidence",
@@ -293,7 +321,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_prospect",
@@ -307,7 +336,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_map_context_scene",
@@ -321,7 +351,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_contrast_detect",
@@ -335,7 +366,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_biostrat_parse",
@@ -349,7 +381,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_biostrat_falsify",
@@ -363,7 +396,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_basin_backstrip",
@@ -377,7 +411,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_sediment_mass_balance",
@@ -391,7 +426,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_thermal_maturity_history",
@@ -405,7 +441,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_claim_graph_evaluate",
@@ -419,7 +456,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_consequence_footprint",
@@ -433,7 +471,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_optionality_loss",
@@ -447,7 +486,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_feedback_integrity",
@@ -461,7 +501,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_material_truth_challenge",
@@ -475,7 +516,8 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     },
     {
       "id": "geox_cascade_pathway",
@@ -489,17 +531,16 @@
       ],
       "outputModes": [
         "application/json"
-      ]
+      ],
+      "_quarantine_reason": "no_skill_no_alias_row"
     }
   ],
-  "signatures": [
-    {
-      "did": "did:arif:aaa",
-      "proofValue": "LVkeJKrOyMuHUU/GCC4etf1g5ZELzYnef24iYGAndYoeovD2Slvz62CqNfvQ+PaluK1neN3rLcjHgPnMMwDBAw==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T23:25:58Z",
-      "type": "Ed25519Signature2020"
-    }
-  ],
-  "did": "did:web:arif-fazil.com"
+  "_skill_ref_reconciliation": {
+    "at": "2026-09-18",
+    "by": "afpass-W1",
+    "before": 32,
+    "after": 0,
+    "quarantined": 32,
+    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
+  }
 }

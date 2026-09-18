@@ -1,10 +1,10 @@
 ---
 name: skill-inventory
 id: skill-inventory
-version: 2.0.0
+version: 2.1.0
 description: >
   Unified skill inventory, audit, mesh health, and cross-surface contrast.
-  Multi-surface skill audit (10 agent homes) with cross-surface contrast, drift/orphan/dual-name detection.
+  Multi-surface skill audit (16 surfaces incl. organ-native homes) with cross-surface contrast, drift/orphan/dual-name detection.
   Check whether every agent in the federation has the same core skills at the same version.
   Multi-harness skill catalog unity — AAA catalog, Grok/Claude/Codex views, alias table, mesh-sync, BOOT gate.
 owner: AAA
@@ -69,17 +69,43 @@ AAA/skills  (catalog + V3 registry)   ← sole named truth
 Hermes categories | Kimi roles | OpenClaw owned
 ```
 
-### Live inventory (OBSERVED)
+### Live inventory — WITNESS, NOT TRUTH (re-probe before every claim)
 
-| Surface | Count | Role |
-|---------|-------|------|
-| AAA `${AAA_HOME:-/root/AAA}/skills` | ~108 active bodies | **Catalog**; archives excluded |
-| V3 registry | 64 logical | Short-name registry |
-| Alias table | 133 rows | 104 active + 29 tombstone |
-| `.agents/skills` | ~130 active bodies | Stage/domain doctrine |
-| Grok `~/.grok/skills` | ~184 resolvable | View + native keepers |
-| Claude / Codex / OpenCode | ~176 / 56 / 39 | Mesh/profile views |
-| Kimi | ~7 | Role contrast/RSI skills |
+> Counts below are a dated witness (2026-09-18). **Do not inherit them.** Any sentence of the form
+> "the mesh has N skills" must be produced by the probe in the right-hand column **in the same
+> session as the claim**. The previous version of this file carried ~108 / 64 / 133 frozen numbers
+> for ~2 months; the live mesh had moved far past them.
+
+```bash
+AAA_HOME=${AAA_HOME:-/root/AAA}
+# the ONE canonical census — writes disk_reconciliation + witness_hash, exit 1 on disagreement
+python3 /root/scripts/skills-census.py            # human    | --json | --write | --quiet
+# mesh propagation + CI gate (exit 1 = drift/broken)
+bash $AAA_HOME/skills/scripts/skill-mesh-sync.sh --check
+# raw enumeration with correct depth (skill dirs nest up to 8 deep)
+find /root/AAA/skills -name SKILL.md | wc -l
+```
+
+| Surface | Live (2026-09-18) | Role |
+|---------|--------------------|------|
+| AAA canonical `${AAA_HOME:-/root/AAA}/skills` | 629 raw `find` SKILL.md · census 706 canonical / 634 physical | **Catalog / SOT** |
+| Hermes view `~/.hermes/skills` | 452 indexed / 451 loadable | copy |
+| Hermes profile `~/.hermes/profiles/aaa-hermes/skills` | 222 | copy (census-witnessed) |
+| install profile `/usr/local/lib/hermes-agent/profiles/aaa-hermes/skills` | **487** | **NOT witnessed by the census** |
+| overlays: kimi / qwen / opencode / gemini | 109 / 28 / 18 / 12 (167 local) | harness-local |
+| `~/.grok` · `~/.claude` · `~/.codex` · `~/.agents` | symlink → AAA (view) | view, never counted twice |
+| `whole_mesh_skills` | 801 | **lower bound — see §1 note** |
+| V3 registry | `total_skills: 95`, `logical_registry_count: 95` | short-name registry |
+| Alias table `aliases[]` | **164 rows** (124 RESOLVED · 7 FORGED · 1 ALIAS_RESOLVED · 1 active · 31 TOMBSTONE) | the registry's `alias_table_rows: 133` is **stale** |
+| duplicate identity | 29 groups / 81 skills (24 re-implementations) | dedupe candidates |
+| shells / diverged / broken symlinks | 2 / 4 / 5 | shells = indexed dir with no SKILL.md |
+
+**The three AAA numbers disagree on purpose** — 629 raw `find`, 634 physical, 706 canonical — because
+census counts are symlink-aware and carry their own exclusion rules. Report *which command produced
+the number* alongside the number. A count without its command is a claim, not a measurement.
+
+**Current receipt:** `${FORGE_WORK:-/root/forge_work}/2026-09-18/SKILL-INVENTORY-AUDIT-2026-09-18.md`
+(11 classified defects F-1…F-11 with command-level evidence).
 
 ### Canonical artifacts
 
@@ -87,9 +113,12 @@ Hermes categories | Kimi roles | OpenClaw owned
 |----------|------|
 | Alias table | `${AAA_HOME:-/root/AAA}/skills/SKILL_ALIAS_TABLE.json` |
 | Mesh sync | `${AAA_HOME:-/root/AAA}/skills/scripts/skill-mesh-sync.sh` |
+| **Canonical census** | `${AAA_HOME:-/root/AAA}/skills/scripts/../` → `/root/scripts/skills-census.py` (cron 4x/day, `--write`) |
+| Dead-pointer sweep | `/root/scripts/skill-entropy-gate.py` (cron 4x/day, `--quiet`) — log `/var/log/arifos/skill-entropy.log` |
 | V3 registry | `${AAA_HOME:-/root/AAA}/skills/FEDERATED_SKILLS_REGISTRY_V3.yaml` |
+| BOOTSTRAP manifest | `${AAA_HOME:-/root/AAA}/skills/BOOTSTRAP_MANIFEST.json` |
 | Historical receipt | `${AAA_HOME:-/root/AAA}/skills/docs/SKILL-UNIFICATION-COMPLETE-2026-07-12.md` |
-| Current receipt | `${FORGE_WORK:-/root/forge_work}/2026-07-15/AAA-SKILL-TOOL-RECONCILIATION.json` |
+| **Current receipt** | `${FORGE_WORK:-/root/forge_work}/2026-09-18/SKILL-INVENTORY-AUDIT-2026-09-18.md` |
 | Hermes bridge | `${AFORGE_HOME:-/root/A-FORGE}/forge_work/2026-07-12/HERMES-V3-DOMAIN-BRIDGE.md` |
 
 ### Resolve a V3 short name
@@ -118,28 +147,76 @@ BIND → GROUND → ROUTE → RECALL → VERIFY → SEAL → KNOW → READY
 
 Only after **READY** may domain skills load.
 
-## §1. CROSS-SURFACE INVENTORY (10 Surfaces)
+**BOOTSTRAP manifest — read it correctly:**
+
+```bash
+python3 -c "import json;d=json.load(open('/root/AAA/skills/BOOTSTRAP_MANIFEST.json'));\
+print(len(d['universal_skills']))"   # → 9
+```
+
+- ⚠️ The array key is **`universal_skills`**, *not* `skills`. A `d['skills']` read returns empty and
+  produces a false "the manifest is empty" claim. Field-name traps fabricate findings.
+- The 9 universals live at `substrate/{kernel-bind,observe-ground,route-dispatch,memory-manage,verify-gate,audit-seal}`,
+  `know-physics`, `know-math`, `knowledge/know-language` — all resolve (verified 2026-09-18).
+- `_runtime_corrections` remaps 2 verbs that are **not** registered MCP tools:
+  `arif_verify → arif_judge`, `arif_compose → arif_think`. Consume the override, never the signed body verb.
+- `status: SIGNED`, `expires: 2026-10-11`. `root_keys[1] kernel-steward-001` is still
+  `PENDING_STEWARD_SIGNATURE` — one signature, one human. Do not claim dual-custody.
+
+## §1. CROSS-SURFACE INVENTORY (16 Surfaces)
+
+### 1a. Named surfaces
 
 | # | Surface | Path | Type |
 |---|---------|------|------|
 | 1 | AAA canonical | `/root/AAA/skills/` | SOT |
 | 2 | kimi | `/root/.kimi-code/skills/` | copy |
 | 3 | opencode | `/root/.arifos/agents/opencode/skills/` | symlink |
-| 4 | grok | `/root/.grok/skills/` | symlink |
-| 5 | claude | `/root/.claude/skills/` | symlink |
-| 6 | codex | `/root/.codex/skills/` | symlink |
+| 4 | grok | `/root/.grok/skills/` | symlink → AAA |
+| 5 | claude | `/root/.claude/skills/` | symlink → AAA |
+| 6 | codex | `/root/.codex/skills/` | symlink → AAA |
 | 7 | hermes | `/root/.hermes/skills/` | copy |
-| 8 | hermes-asi | `/usr/local/lib/hermes-agent/skills/` | copy |
+| 8 | hermes-asi install | `/usr/local/lib/hermes-agent/skills/` | copy |
 | 9 | openclaw-ws | `/root/.openclaw/workspace/skills/` | copy |
 | 10 | openclaw-bundled | bundled | built-in |
+
+### 1b. Organ-native + profile surfaces (ADDED 2.1.0 — the old “10 surfaces” map was blind to these)
+
+| # | Surface | Live bodies | Meaning |
+|---|---------|-------------|---------|
+| 11 | `/root/GEOX/skills/` | 5 | organ-native doctrine — **not in AAA canon, not census-witnessed** |
+| 12 | `/root/WELL/skills/` | 4 | organ-native |
+| 13 | `/root/WEALTH/skills/` | 4 | organ-native |
+| 14 | `/root/arifOS/skills/` | 35 | organ-native |
+| 15 | `/root/A-FORGE/skills/` | 1 | organ-native |
+| 16 | `/usr/local/lib/hermes-agent/profiles/aaa-hermes/skills/` | 487 | install-profile view — **not census-witnessed** |
+| — | `/opt/aaa/app/skills/` | 208 | **separate inode** from AAA = deploy copy or stale snapshot — status UNKNOWN |
+| — | `/root/.forge/skills/` · lanes `555-ASI`/`333-AGI` · `registries/antigravity` · `~/.grok/bundled` | 88 · 23/2 · 36 · 25 | sub-surface trees |
+
+**Re-probe before any "mesh total" claim:**
+
+```bash
+find /root /opt /usr/local/lib -maxdepth 6 -type d -name skills 2>/dev/null | while read d; do
+  n=$(find "$d" -maxdepth 5 -name SKILL.md 2>/dev/null | wc -l); [ "$n" -gt 0 ] && printf "%5d  %s\n" "$n" "$d"; done | sort -rn
+```
+
+> **Consequence for every count in this file:** `whole_mesh_skills` from the census is a **lower
+> bound**. Until `/opt/aaa/app` is classified live-vs-snapshot and the organ homes are either
+> promoted into AAA or formally declared sanctioned-non-canonical, no total is defensible.
+> That classification is **F13-class** (it moves where "the catalog" is) — do not take it in an audit run.
 
 ### Cross-surface compare
 
 ```bash
-# Dump each surface
+# Dump each surface (symlink-aware — plain `comm` on `ls` lies across symlinked roots)
 comm -23 <(ls /root/AAA/skills/ | sort) <(ls /root/.kimi-code/skills/ | sort)   # orphans: AAA has, kimi lacks
 comm -13 <(ls /root/AAA/skills/ | sort) <(ls /root/.kimi-code/skills/ | sort)   # drift: kimi has, AAA lacks
 ```
+
+**PITFALL — symlink blindness produces FALSE ABSENCE.** `/root/.agents/skills`, `~/.grok/skills`,
+`~/.claude/skills`, `~/.codex/skills` are all symlinks to `/root/AAA/skills`. A bare
+`os.walk()` / `find` **without** `followlinks` / `-L` skips them and reports bodies as missing
+when they are merely behind a link. Always `os.path.realpath` and dedupe before counting.
 
 ### Classification Matrix
 
@@ -160,7 +237,16 @@ comm -13 <(ls /root/AAA/skills/ | sort) <(ls /root/.kimi-code/skills/ | sort)   
 find /root/AAA/skills /root/.hermes/skills /root/.kimi-code/skills -maxdepth 2 -name 'SKILL.md' | xargs grep '^version:' | sort
 ```
 
-**PITFALL:** `-maxdepth 1` returns empty on this mesh — skill dirs nest one level deep. Use `-maxdepth 2`.
+**PITFALL:** `-maxdepth 1` returns empty on this mesh — and `-maxdepth 2` is **also wrong now**.
+Skill dirs nest up to 8 levels (`domains/general/aaa/skill-mesh/skill-inventory/SKILL.md`), and
+`find` does not traverse the symlinked roots without `-L`. Use an unbounded
+`find <root> -name SKILL.md` (or `os.walk(..., followlinks=True)`), never a hand-picked depth.
+
+**PITFALL:** `find … -xtype l` finds broken symlinks — but **not one byte of it is a defect until you
+check whether the link points at a pruned shell.** `/root/AAA/skills/.archive/shells-20260917/`
+holds 14 empty shells; the 19 BROKEN opencode links are links to those shells, left behind by the
+prune. Classify before deleting: *link to pruned shell* → delete; *link whose body exists elsewhere*
+→ re-point.
 
 ### Health report format
 
@@ -206,17 +292,25 @@ skill_name | AAA_version | hermes_version | kimi_version | status
 | 15-30 | AGING | Verify references still valid |
 | 30+ | STALE | Audit needed, consider archive or refresh |
 
-## §4. ROUTING TABLE
+## §4. ROUTING TABLE (all targets re-probed against disk 2026-09-18)
+
+> A routing table that routes to tombstones is worse than no table. **Verify every target with
+> `[ -d <path> ]` before adding a row.** 5 of the 8 rows in v2.0.0 pointed at skills that no longer exist
+> anywhere on the box (`geox-constitution`, `wealth-capital-thermodynamics`, `well-substrate-readiness`,
+> `mcp-mastery`, `github-operations`).
 
 | Intent Pattern | Skill to Load |
 |---------------|---------------|
-| "seismic" / "well log" / "petrophysics" / "basin" | `geox-constitution` + domain geox-* |
-| "NPV" / "IRR" / "capital" / "investment" | `wealth-capital-thermodynamics` |
-| "sleep" / "fatigue" / "vitality" / "dignity" | `well-substrate-readiness` |
-| "build MCP tool" / "forge tool" | `mcp-mastery` |
-| "GitHub PR" / "CI broken" / "issue triage" | `github-operations` |
-| "create a skill" / "new skill" | `skill-creator` |
+| "seismic" / "well log" / "petrophysics" / "basin" | `geox-grounding` → `/root/GEOX/skills/{geox-seismic-interpretation, geox-well-log-qc, geox-basin-evaluation}` · AAA `geo/basin-charge-screening`, `geo/seismic-interpretation-alignment` |
+| "prospect" / "volumetrics" / "POS" / "EMV" | `/root/GEOX/skills/geox-prospect-evaluation` |
+| "NPV" / "IRR" / "capital" / "investment" | `/root/WEALTH/skills/wealth-capital-primitives` · `wealth-runway-conservation` · AAA `wealth/market-analysis-scope` |
+| "sleep" / "fatigue" / "vitality" / "dignity" | `/root/WELL/skills/well-substrate-readiness` · `well-triadic-ops` |
+| "build MCP tool" / "forge tool" | `forge-fastmcp` · AAA `engineering/mcp-ops` · `engineering/mcp-testing` |
+| "GitHub PR" / "CI broken" / "issue triage" | `forge-github-ops` (AAA) · AAA `github/*` · `FORGE-pr-governance` |
+| "create a skill" / "new skill" | `skill-creator` → `${AAA_HOME:-/root/AAA}/skills/.system/skill-creator` |
 | "what skill should I load" / "skill gap" | **THIS SKILL** |
+| "multi-agent deliberation before a decision" | `FORGE-musyawarah-gotong` (hermes view) |
+| "kernel init / judge / seal" | `substrate/kernel-bind` + `arifos-kernel-ceremony` |
 
 ## §5. HEALTH SCORING
 
@@ -237,20 +331,30 @@ skill_health = {
 |-------------|--------|
 | Copy skill bodies into every `~/.X/skills` | Symlink to AAA / .agents |
 | Second "Grok catalog" of 100+ natives | Keep ≤12 harness keepers |
-| Route by V3 short name without path | Resolve via alias table |
-| Trust frozen counts | Re-probe disk |
+| Route by V3 short name without path | Resolve via alias table **and then `os.path.exists` the resolved path** — 90 of 164 alias rows resolve to nothing |
+| Trust frozen counts | Re-probe disk — every count carries the command that produced it |
 | Skill overload (5+ for simple task) | Use this meta-skill for minimum set |
 | Phantom reliance | Run gap register and forge missing |
 | Stage skipping | Always start with 000-init |
+| Treat a green/red log as closure | A sensor writing `verdict=FAIL` into a log nobody reads is decoration. Every gate needs `{expected_event, owner, deadline}` and timeout→SYNCHRONIZATION_FAULT |
+| Blanket `--apply` propagation | 248 missing/drift entries is a **profile-scoping decision**, not a sync job — it changes the live loader surface (context cost, W₈₈₈) |
+| Counting with a symlink-blind walk | Realpath + dedupe, else false absence (see §1 pitfall) |
 
 ## §7. PRE-SEAL CHECKLIST
 
-1. `skill-mesh-sync.sh --check` exits 0
-2. V3 logical count is 64; alias rows separately classified
-3. No live primary resolves through a tombstone row
-4. No source-less broken alias remains active
-5. Harness-native keepers remain real directories
-6. This skill points to a dated live receipt
+1. `skill-mesh-sync.sh --check` exits 0 — **as of 2026-09-18: exit 1** (MISSING 231 · DRIFT 14 · BROKEN 19 · EXTRA 3)
+2. `skills-census.py` VERDICT is not FAIL — **as of 2026-09-18: FAIL** (5 broken symlinks), 3+ consecutive runs
+3. `skill-entropy-gate.py` reports `fail=0` — **as of 2026-09-18: fail=4** (broken_symlinks 3, missing_frontmatter 1, registry_witness blank, dead_internal_pointers 2)
+4. Alias table: no non-tombstone row whose `primary_path` is missing — **as of 2026-09-18: 90 such rows**
+5. Registry `alias_table_rows / active / tombstone` equal a fresh census — **as of 2026-09-18: 133/104/29 vs disk 164/125/31**
+6. No live primary resolves through a tombstone row (currently PASS)
+7. Harness-native keepers remain real directories (currently PASS)
+8. BOOTSTRAP 9 universals all resolve on disk (currently PASS — all 9 resolve; manifest `expires: 2026-10-11`)
+9. No archived body is discoverable by a live loader (`archive-void-rot`) — **as of 2026-09-18: FAIL** (`.archive-2026-09-18/exact-dups`, `.profile-archive`, `.archive-20260912`)
+10. This skill points to a dated live receipt — PASS (`forge_work/2026-09-18/SKILL-INVENTORY-AUDIT-2026-09-18.md`)
+
+**Read this checklist as a state machine, not a Boolean.** Each line names the command, the value it
+returned, and the date. "Checklist complete" is never a deliverable; `VERIFIED` + evidence is.
 
 ## §8. INDEPENDENT VERIFICATION LANE (WAJIB 2)
 
@@ -298,10 +402,33 @@ Subagents are optional, scope-bounded evidence collectors. They do not inherit a
 4. The root agent compares evidence, labels contradictions/UNKNOWNs
 5. Irreversible SEAL still requires real human/external witness path
 
+## §10. LESSONS FROM THE 2026-09-18 AUDIT (procedural — keep, do not re-derive)
+
+1. **A meta-skill's own counts rot first.** Frozen numbers survived ~2 months past their truth and
+   *became* the false authority they warn about. If a count has no command and no date next to it,
+   delete it or make it a probe.
+2. **A routing table is a claim about the disk.** Re-verify every target with `[ -d ]` on the run that
+   uses it. 5 of 8 rows pointed at tombstones.
+3. **A gate that fires into a log nobody reads has not failed — the *closure* has.**
+   `skill-entropy-gate` reported the same 4 defects four times a day for days. Detection without an
+   owner + deadline + timeout→SYNCHRONIZATION_FAULT is not governance.
+4. **A prune must clean the links it invalidates.** Archives that remove bodies but leave the symlink
+   mesh dangling convert a tidy prune into 19 BROKEN entries — and into a surface agents stop trusting.
+5. **Archive must be a wall, not a curtain.** Bodies moved to `.archive*` were still offered by the live
+   loader. Discovery is a capability; pruning the file is not pruning the capability.
+6. **Alias tables describe a topology, not a file list.** When organ suites move to organ-native homes
+   (`/root/GEOX|WELL|WEALTH|arifOS/skills`), every `primary_path` written against the old root becomes a
+   lie while still reading `status: RESOLVED`. Re-resolve against reality, not against the field.
+7. **Symlink-blind counting manufactures false absences.** (Cost: one wrong finding caught in self-review.)
+8. **Never collapse a whole mesh into one number.** 629 / 634 / 706 / 801 are all correct — for different
+   questions. State the question with the number, or the number is noise.
+
 ## References
 
 - `contracts/AAA_SKILL.md` — full orthogonal + subagent contract spec
 - `contracts/HERMES_ROLE.md` — polymorphic runtime
-- `BOOTSTRAP_MANIFEST.json` — signed manifest with 9 skills
-- `FEDERATED_SKILLS_REGISTRY_V3.yaml` — 64 canonical skills
-- `SKILL_ALIAS_TABLE.json` — 133 rows (104 active + 29 tombstone)
+- `BOOTSTRAP_MANIFEST.json` — signed manifest; `universal_skills` = 9 entries (key name matters)
+- `FEDERATED_SKILLS_REGISTRY_V3.yaml` — registry; its `total_skills` / `alias_table_rows` are **derived and stale** until `skills-census.py --write` runs
+- `SKILL_ALIAS_TABLE.json` — 164 rows on disk (124 RESOLVED · 7 FORGED · 1 ALIAS_RESOLVED · 1 active · 31 TOMBSTONE); **90 non-tombstone rows point at nothing**
+- `${FORGE_WORK:-/root/forge_work}/2026-09-18/SKILL-INVENTORY-AUDIT-2026-09-18.md` — the dated receipt for this version
+- `/var/log/arifos/skill-entropy.log` · `/var/log/arifos/skills-census.log` — the two sensors whose exit states define §7
