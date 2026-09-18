@@ -1,0 +1,92 @@
+{
+  "audit_id": "AUDIT-ALPHA-ZEN-2026-09-18",
+  "auditor": "HERMES (role: AUDITOR / VALIDATOR — not forger)",
+  "subject": "/root/scripts/alpha_zen_engine.py + the 3 live ALPHA-ZEN cron jobs",
+  "method": "claims re-derived from disk and from live function calls; no claim accepted from a report",
+  "render_date": "2026-09-18",
+
+  "blockers": [
+    {"id": "B1", "where": "alpha_zen_engine.py:219",
+     "claim": "budget = datetime(2027, 10, 1)",
+     "measured": "the MOF date is 2026-10-09; engine prints 378 days (377 in the rendered card), truth is 21",
+     "error": "356 days wrong",
+     "why_it_matters": "a year-scale error printed with full confidence, once a day"},
+    {"id": "B2", "where": "alpha_zen_engine.py:220,226",
+     "claim": "od1 = now + timedelta(days=164)  then  return {'od1_days': 164}",
+     "measured": "the computed value on 220 is discarded; 226 returns a literal",
+     "error": "frozen — prints 164 today and 164 in 2027",
+     "why_it_matters": "computes, then throws the computation away. Greps as dynamic; is not"},
+    {"id": "B3", "where": "alpha_zen_engine.py:_chrono (all countdowns)",
+     "claim": "days_left = (year_end - now).days",
+     "measured": "datetime diff .days = 103; date diff = 104; the card prints 103",
+     "error": "every day-count is 1 short",
+     "why_it_matters": "subtracting datetimes truncates the partial day. Subtracting dates does not"},
+    {"id": "B4", "where": "alpha_zen_engine.py:_freshness_gate",
+     "claim": "G11 freshness gate exists",
+     "measured": "defined once, called zero times",
+     "error": "dead code",
+     "why_it_matters": "a reader who greps for 'gate' finds one and assumes protection. It is a decoy, and it is the only gate the engine has"},
+    {"id": "B5", "where": "alpha_zen_engine.py (absent)",
+     "claim": "§13 privacy contract",
+     "measured": "no deny list, no never_emit, no redaction path; 'privacy' appears once in the source, 'provenance' zero times",
+     "error": "no mechanism",
+     "why_it_matters": "nothing prevents private material reaching a group that has other readers"}
+  ],
+
+  "major": [
+    {"id": "M1", "spec": "§16",
+     "finding": "rendered output carries 0 OBS / 0 DER / 0 INT / 0 CONTESTED / 0 UNKNOWN and 0 provenance strings",
+     "note": "time-sensitive claims ship with no status and no retrievable source"},
+    {"id": "M2", "spec": "§14",
+     "finding": "must-know row 1 is a static curated string with no observed_at, presented as today's must-know",
+     "note": "row 2 IS live (verified below) — the live plumbing exists, it is simply not applied to the must-know tier"},
+    {"id": "M3", "spec": "§18",
+     "finding": "no cycle log, no metrics, zero recorded cycles",
+     "note": "observability is a spec item, not implemented"}
+  ],
+
+  "verified_pass": [
+    {"id": "P1", "claim": "'Python, no deps'", "measured": "7 imports, all stdlib (datetime, json, pathlib, random, re, urllib.request, __future__)"},
+    {"id": "P2", "claim": "5 per row x 9 rows = 45 signals", "measured": "ARIF_POOL 9 keys x [5,5,5,5,5,5,5,5,5] = 45; SYED_POOL identical. Exact."},
+    {"id": "P3", "claim": "'each run produces different content'", "measured": "three consecutive generate_signals() calls all differed"},
+    {"id": "P4", "claim": "live market / federation data", "measured": "_live_market_signal() returned Brent 104.08; _federation_status() returned 3/5 on the first probe and 5/5 on the second — it genuinely tracks live state"},
+    {"id": "P5", "claim": "§5 quote attribution", "measured": "the engine emits no attributed quotes — vacuously safe, no risk to verify"}
+  ],
+
+  "my_own_refuted_hypothesis": {
+    "id": "H1",
+    "hypothesis": "the 'Federation N/5 organs UP' string is a stale curated claim that would contradict the live sensor inside one card",
+    "evidence_against": "the string comes from _federation_status() itself, and it changed between probes (3/5 then 5/5). It is live.",
+    "status": "REFUTED — recorded so the next reader does not re-derive it"
+  },
+
+  "state_claim_check": {
+    "reported": "CHRON_STATE = CANARY",
+    "measured": "all three jobs have last_run_at = null; next runs are 2026-09-18T14:00, 2026-09-18T21:15, 2026-09-19T07:15; created 2026-09-18T10:02",
+    "cycles_completed": 0,
+    "verdict": "NOT SUPPORTED",
+    "correct_state": "EXPERIMENTAL",
+    "why": "CANARY means old path and new path ran side by side and produced comparison data. Nothing has run. There is nothing to compare."
+  },
+
+  "duplicate_producer_map": {
+    "law": "§11 — many sensors are good; many truth producers are not",
+    "producers_of_one_artifact": [
+      {"n": 1, "what": "3 live cron jobs (ALPHA-ZEN 1/2/3)", "state": "enabled, scheduled, never fired", "wired_to_engine": false},
+      {"n": 2, "what": "/root/scripts/alpha_zen_engine.py -> 1 PNG", "state": "not wired to cron; 5 blockers", "unique_value": "rotating pools + live sensor fetch"},
+      {"n": 3, "what": "/root/AAA/forge_work/apex-zen-chron/build.py -> 2 PNGs (pagi, malam)", "state": "gates pass; not wired to cron", "unique_value": "computed clock with a self-test that fails on a frozen number; privacy gate with a two-way self-test"}
+    ],
+    "count": 3,
+    "assessment": "three producers, one daily human artifact — this is duplication, not redundancy",
+    "note": "the 3 cron jobs deliver TEXT and are the only path currently reaching the group"
+  },
+
+  "complementarity_not_duplication": {
+    "engine_lane_has": ["content rotation from pools", "live market + federation fetch", "single PNG"],
+    "auditor_lane_has": ["clock computed from target_date", "clock self-test (renders 10 days apart, fails if the number does not move)", "expiry handling", "privacy gate with two-way self-test", "epistemic tier tags", "two phases (pagi + malam)"],
+    "proposed_single_pipeline": "engine supplies rotating/live CONTENT -> canonical clock supplies the NUMBERS -> gates supply the REFUSAL -> one renderer -> one Telegram delivery",
+    "not_proposed": "two posters, or two clocks"
+  },
+
+  "next_single_action": "Decide ONE clock of record. If the engine is to be the source, B1-B3 must be fixed there and the engine must read target dates from a canonical store rather than constructing them inline. Auditor does not patch the forger's file."
+}

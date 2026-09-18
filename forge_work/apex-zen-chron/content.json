@@ -1,0 +1,188 @@
+[
+  {
+    "phase": "pagi",
+    "phase_label": "CHRON PAGI",
+    "date": "18 SEPT 2026",
+    "day": "JUMAAT",
+    "accent": "#1f4e79",
+    "rotate": 0,
+    "caption": "ALPHA · ZEN — dua frekuensi, satu hari. Dua chron, bukan tiga.",
+    "cards": [
+      {
+        "title": "ABANG SADO",
+        "sub": "laluan awam — bukan dalaman",
+        "accent": "#c0392b",
+        "rows": [
+          {
+            "k": "TAHU",
+            "v": "Circuit physique Malaysia. Comps jarang — 1-4 setahun seorang atlet."
+          },
+          {
+            "k": "TAK TAHU",
+            "v": "Prep minggu berapa? Hang je yang tahu.",
+            "open": true
+          },
+          {
+            "k": "TAK TAHU",
+            "v": "Atlet hang perlu dengar satu benda apa hari ni?",
+            "open": true
+          }
+        ]
+      },
+      {
+        "title": "ARIF",
+        "sub": "apa mesin tahu, dan apa ia tak tahu",
+        "accent": "#1f4e79",
+        "rows": [
+          {
+            "k": "TAHU",
+            "v": "Hulu Carigali. OD1 Mac 2027 — dalam lingkungan 6 bulan."
+          },
+          {
+            "k": "TAK TAHU",
+            "v": "Berat mana keputusan tu atas meja hang pagi ni?",
+            "open": true
+          },
+          {
+            "k": "TAK TAHU",
+            "v": "Satu benda yang hang tangguh sejak minggu lepas?",
+            "open": true
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "title": "DUNIA PAGI INI",
+        "items": [
+          {
+            "tag": "OBS",
+            "text": "RON97 naik ke <b>RM4.85</b>; diesel tanpa subsidi RM5.27. Kuat kuasa 17-23 Sept."
+          },
+          {
+            "tag": "OBS",
+            "text": "Brent lepas <b>AS$100</b>. Budi95 kekal RM1.99 — kerajaan tanggung RM2.38 seliter."
+          },
+          {
+            "tag": "DER",
+            "text": "Bajet 2027 dibentang <b>9 Oktober</b>. Angka petroleum jadi boleh semak pada tarikh itu — sebelum tu, ia masih tekaan."
+          }
+        ]
+      },
+      {
+        "title": "BEST UNTUK DILAWAT",
+        "items": [
+          {
+            "tag": "OBS",
+            "text": "<b>Pesta Buku Kedah</b> — 7 hari, Perpustakaan Awam Kedah. Bawak anak pun kena."
+          },
+          {
+            "tag": "OBS",
+            "text": "<b>Hutan Lipur Tupah</b> — mandi sungai, berkelah. Elak hujung minggu, penuh."
+          },
+          {
+            "tag": "OBS",
+            "text": "<b>Restoran Haris Western</b>, Ambangan Height — ayam golek. 12 tgh-11 malam, Sabtu cuti."
+          },
+          {
+            "tag": "OBS",
+            "text": "<b>Lembah Bujang</b> — tapak tamadun Asia Tenggara tertua. 2,000 tahun lebih tua dari semua pergaduhan minyak."
+          }
+        ]
+      }
+    ],
+    "question": "Bila kali terakhir hang buat benda elok yang takde kena-mengena dengan duit?",
+    "foot_left": "APEX-ZEN CHRON 001 · pagi · dibina 18 Sept 2026",
+    "foot_right": "OBS = bersumber · DER = terbitan · INT = tafsiran — evidence: /root/AAA/forge_work/apex-zen-chron/content.json",
+    "today": "2026-09-18"
+  },
+  {
+    "phase": "malam",
+    "phase_label": "CHRON MALAM",
+    "date": "18 SEPT 2026",
+    "day": "JUMAAT",
+    "accent": "#c0392b",
+    "rotate": 180,
+    "caption": "Yin dalam yang, yang dalam yin. Sebelum tidur, letak satu benda.",
+    "cards": [
+      {
+        "title": "ABANG SADO",
+        "sub": "laluan awam — bukan dalaman",
+        "accent": "#c0392b",
+        "rows": [
+          {
+            "k": "TAHU",
+            "v": "Badan atlet dibina ikut kitaran, bukan ikut mood."
+          },
+          {
+            "k": "TAK TAHU",
+            "v": "Recovery hang cukup ke hari ni?",
+            "open": true
+          },
+          {
+            "k": "TAK TAHU",
+            "v": "Satu benda yang badan hang cuba bagitau?",
+            "open": true
+          }
+        ]
+      },
+      {
+        "title": "ARIF",
+        "sub": "apa mesin tahu, dan apa ia tak tahu",
+        "accent": "#1f4e79",
+        "rows": [
+          {
+            "k": "TAHU",
+            "v": "Kerja hang dengan batu yang umurnya juta tahun."
+          },
+          {
+            "k": "TAK TAHU",
+            "v": "Apa yang hang bawa balik dari kerja hari ni?",
+            "open": true
+          },
+          {
+            "k": "TAK TAHU",
+            "v": "Satu benda yang tak perlu hang selesai malam ni?",
+            "open": true
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "title": "BUMI",
+        "items": [
+          {
+            "tag": "OBS",
+            "text": "Bulan bergerak jauh dari Bumi <b>3.8 cm setiap tahun</b>. Diukur dengan laser, bukan diagak. Setiap tahun ia tinggalkan kita sikit lagi — dan itu memang sepatutnya."
+          }
+        ]
+      },
+      {
+        "title": "HARI NI",
+        "items": [
+          {
+            "tag": "OBS",
+            "text": "Apa yang terbukti <b>betul</b> hari ni?"
+          },
+          {
+            "tag": "OBS",
+            "text": "Apa yang terbukti <b>salah</b>?"
+          },
+          {
+            "tag": "OBS",
+            "text": "Apa yang <b>tak perlu</b> hang selesaikan malam ni?"
+          },
+          {
+            "tag": "DER",
+            "text": "Mesin boleh nampak corak. Hanya hang tahu rasa hang. Hanya Syed tahu rasa Syed."
+          }
+        ]
+      }
+    ],
+    "question": "Kalau semua bunyi hari ni senyap, apa yang masih betul?",
+    "foot_left": "APEX-ZEN CHRON 002 · malam · dibina 18 Sept 2026",
+    "foot_right": "lunar laser ranging (3.8 cm/yr) — evidence: /root/AAA/forge_work/apex-zen-chron/content.json",
+    "today": "2026-09-18"
+  }
+]
