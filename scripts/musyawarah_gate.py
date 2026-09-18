@@ -136,16 +136,31 @@ def main() -> None:
     if violations:
         if emit:
             emit_holds(violations, grace_date)
+        # LABEL MUST MATCH THE MECHANISM.
+        # In dry-run this loop printed "[BLOCK]" 2,862 times and then exited 0 —
+        # a label asserting an enforcement that did not occur. Worse, the strict
+        # path in the calling hook could never fire either: the hook hardcodes
+        # --dry-run, so this script never reaches sys.exit(1), so the hook's
+        # `RC -ne 0` test is unreachable even with MUSYAWARAH_STRICT=1. Two
+        # guards, both dead, while the log says BLOCK.
+        #
+        # The dry-run label is now a HOLD that names itself as unenforced. A
+        # reader skimming 2,862 lines must not conclude that 2,862 things were
+        # stopped. Rename before fix: the count is real, the verb was not.
+        label = "WOULD-HOLD" if dry_run else "BLOCK"
+        action_word = "would block" if dry_run else "blocks"
         for rid, actor, step, ts in violations:
             action = action_class_of(step)
             print(
-                f"MUSYAWARAH GATE [BLOCK]: {action} receipt without musyawawah_reference "
+                f"MUSYAWARAH GATE [{label}]: {action} receipt without musyawawah_reference "
+                f"({action_word} commit) "
                 f"— receipt_id={rid} actor={actor} step={step} created_at={ts}",
                 file=sys.stderr,
             )
         if not dry_run:
             sys.exit(1)
-        print(f"MUSYAWARAH GATE [DRY-RUN]: {len(violations)} violation(s) (would have blocked){exempt_note}", file=sys.stderr)
+        print(f"MUSYAWARAH GATE [DRY-RUN]: {len(violations)} violation(s) NOT enforced "
+              f"— nothing was blocked{exempt_note}", file=sys.stderr)
     else:
         print(f"MUSYAWARAH GATE [PASS]: all T2/T3 receipts since {grace_date} carry musyawawah_reference{exempt_note}")
 
