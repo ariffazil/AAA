@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "arifos://chron/events.schema.json",
+  "title": "CHRON canonical event store",
+  "description": "The clock that matters. Every countdown is COMPUTED from target_date at render time — never stored as '21 days'. Expired events leave the active pool. Reference anchor: /root/AAA/scripts/chron.py",
+
+  "THE LAW": [
+    "Never hardcode a day count. Store target_date; compute delta = target_date - now.",
+    "Every event carries a source. A date without provenance does not ship.",
+    "Expired events do not display. Stale countdowns are worse than none.",
+    "Rank by urgency x consequence x actionability — NOT by nearest date alone.",
+    "audience: 'both' | 'arif' | 'syed'. Never name a private deadline for one man in a card the other reads."
+  ],
+
+  "type": "object",
+  "required": ["events"],
+  "additionalProperties": false,
+  "properties": {
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "target_date", "audience", "source", "kind"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "target_date": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+          "timezone": { "type": "string", "default": "Asia/Kuala_Lumpur" },
+          "audience": { "enum": ["both", "arif", "syed"] },
+          "kind": {
+            "enum": ["DEADLINE", "REGULATORY_WINDOW", "MARKET_EVENT", "MEETING",
+                     "PROJECT_MILESTONE", "FISCAL", "PUBLIC_EVENT", "PERSONAL_SAFE"]
+          },
+          "source": { "type": "string" },
+          "confidence": { "enum": ["CONFIRMED", "ANNOUNCED", "TENTATIVE"] },
+          "consequence": { "enum": ["HIGH", "MEDIUM", "LOW"] },
+          "actionability": { "enum": ["ACT_NOW", "PREPARE", "WATCH"] },
+          "note": { "type": "string" },
+          "state": {
+            "enum": ["ACTIVE", "FULFILLED", "MISSED", "WITHDRAWN"],
+            "default": "ACTIVE",
+            "description": "Set by hand when an outcome is known. Expiry by date is automatic."
+          }
+        }
+      }
+    }
+  }
+}
