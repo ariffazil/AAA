@@ -25,6 +25,33 @@ tags: [petronas, petros, shell, sarawak, gas, dispute, simulative-exploitation, 
 - Shell never sued PETRONAS in 60 years. First interpleader Nov 2024 = during BOD thinning + profit decline + restructuring
 - Pattern: detect weakness → frame as neutral → extract value → exit clean
 
+## Governing Instruments — the parameter set (read the text, not the sentiment)
+
+Any claim about Sarawak gas allocation, the aggregator role, or who may license what must be
+parameterised by these instruments. Political signalling is a *variable* here, never a parameter:
+it tells you about timing and pressure, not about rights.
+
+| Instrument | Body / law | What it actually does | Read it at |
+|---|---|---|---|
+| **PDA 1974** | Petroleum Development Act 1974 (federal) | Vests petroleum resource management in PETRONAS; basis of federal upstream authority and the national LNG value chain | `lom.agc.gov.my` |
+| **OMO 1958** | Oil Mining Ordinance 1958 (Sarawak) | Sarawak's own upstream licensing claim — the state's position that its ordinance, not the PDA, governs onshore / shallow Sarawak | `lawnet.sarawak.gov.my` |
+| **DGO 2016** (amended 2023) | Distribution of Gas Ordinance 2016 (Sarawak) | Appoints **PETROS as sole gas aggregator** for Sarawak's domestic market; the licensing requirement the state says binds all parties, PETRONAS included | `lawnet.sarawak.gov.my` (Chapter 72) |
+| **CSA 1966 / PMA 1966** | Continental Shelf Act · Petroleum Mining Act | Extended to Sarawak under the **1969 Emergency**; the emergency-lapse argument turns on these | `lom.agc.gov.my` |
+| **OIC 1954** | Sarawak (Alteration of Boundaries) Order in Council 1954 | Colonial instrument extending Sarawak's boundaries to the continental shelf — every offshore state claim traces here; PETRONAS prayer (e) seeks to void anything relying on it | AGC / Gazette archive |
+| **Art 150(7)** | Federal Constitution | Emergency ordinances lapse ~6 months after the emergency ends — annulment Dec 2011 puts CSA/PMA lapse at **June 2012** on this reading; if accepted, DGO is the only standing gas law | Constitution text |
+
+**The rule for this dispute:** a commercial term — price, volume, delivery point, GSA tenor,
+aggregator fee — resolves a claim about molecules. A political statement does not, however senior
+the speaker. When a negotiation is reported, separate and label the two: *"the political pressure
+is X; the contract term that would move volume is Y; Y is not yet public."* That sentence is a
+finding; "Sarawak is squeezing Petronas" is atmosphere.
+
+**Geography check before any molecule claim.** Demand in one region and supply in another are
+connected by trains, pipelines, terminals and contracts — not automatically by being the same
+country, and not by a minister mentioning both in one speech. Name the physical route AND the
+contractual holder of the volume before asserting that one draws on the other. When neither is
+nameable, the honest status is UNKNOWN, not a linkage.
+
 ## Timeline (key dates)
 - 24 Jan 2024: Khairul applies to Petros
 - 8 Jun 2024: Khairul leaks Q1 upstream data to Petros CEO/CFO
@@ -63,8 +90,13 @@ tags: [petronas, petros, shell, sarawak, gas, dispute, simulative-exploitation, 
   1. Petroleum Development Act 1974
   2. Continental Shelf Act 1966  
   3. Petroleum Mining Act 1966
-- **Art 150(7) Emergency-lapse argument** (nuclear): CSA 1966 + PMA 1966 extended to Sarawak during 1969 Emergency. Emergency annulled Dec 2011 → laws should have lapsed June 2012. If accepted, Sarawak's DGO becomes the only standing petroleum law.
+- **Art 150(7) Emergency-lapse argument** (nuclear): CSA 1966 + PMA 1966 extended to Sarawak during 1969 Emergency. Emergency annulled Dec 2011 → laws should have lapsed June 2012. If accepted, Sarawak's DGO becomes the only standing petroleum law. **Extends to PDA 1974 itself** — PDA was enacted under emergency powers; the same Art 150(7) chain that kills CSA/PMA reaches PDA.
 - **OIC 1954** = hidden constitutional weapon. Sarawak (Alteration of Boundaries) Order in Council 1954 extends Sarawak's boundaries to continental shelf. Every Sarawak law's offshore claim traces to this colonial instrument. PETRONAS prayer (e): ANY law relying on OIC 1954 is void.
+- **OMO 1958** = the missing fourth layer (added 2026-09-18). Oil Mining Ordinance 1958 is *pre-Malaysia* Sarawak law, never repealed, holding **equal standing with federal law under MA63**. It provides powers to issue prospecting licences, mining leases and certificates to regulate oil mining **onshore and offshore without qualification**. This is the instrument Petros' aggregator power actually rests on, and it matches *directly* against PDA 1974 rather than the CSA/PMA pair.
+  - **Johari's public line (16 Sept 2026, Malaysia Day):** OMO 1958 and PDA 1974 should **co-exist** "in the spirit of the Federation". Read as: Sarawak offers parity, not repeal — parity is still a loss for the PETRONAS monopoly.
+  - **The unresolved seam:** Law Minister Azalina has stated Petros' authority does **not** extend to LNG. Petros' position (Willie Mongin, Puncak Borneo MP) is that OMO 1958's offshore reach covers it. **LNG is precisely the seam** — Bintulu LNG is where gas-export, DC-power and aggregator claims all collide.
+  - **Commercial consequence:** if OMO 1958 parity is conceded, the Petronas–Petros "commercial agreement" is not the settlement of a dispute — it is a *price on an already-decided constitutional question*. Watch the framing: commercial (Petronas retains title, Petros takes fees) versus regulatory (Petros gets aggregator rights over molecules). **The framing is the tell.**
+  - Sources: https://premier.sarawak.gov.my/web/subpage/news_view/5621 · https://www.sarawaktribune.com/oil-mining-ordinance-is-valid-and-in-force/ · https://dayakdaily.com/pda-1974-enacted-under-emergency-no-longer-valid-sarawak-laws-take-precedence/ · https://www.malaymail.com/news/malaysia/2025/02/14/sarawaks-oil-and-gas-rights-pm-anwar-should-use-absolute-powers-under-pda-to-correct-imbalances-as-omo-1958-still-valid-mp-tells-parliament/166652
 - Leave judgment [2026] 4 MLRA 491 (Hashim Hamzah CJM, 30 Apr 2026): PETRONAS has arguable case. 7 Sarawak laws challenged.
 - PETRONAS wants separate hearing from Sarawak petition (filed May 2026).
 
@@ -133,6 +165,53 @@ Added the full APEX v37Ω-E thermodynamic governance framework applied to the PE
 - BIJAKSANA ratchet chain: Razaleigh→Azizan→Hassan→fracture→Taufik
 
 **CRITICAL PITFALL: "Ayat manis" trap.** The framework is a lens, not a proof. A beautiful narrative can be wrong if the evidence doesn't support it. Always ground readings in concrete evidence (VPS data, quotes, financial records, specific actions) before accepting. OBS before DER/INT.
+
+## Malaysia Political-Economy Bridge (hook added 2026-09-18 · F13 EMD directive)
+
+**Why this section exists.** The sovereign's EMD stack validated a cross-domain read — state-election
+losses (Johor, N9) → Borneo leverage → Petronas commercial terms → domestic gas bottleneck for Johor
+data centres — and directed the lane be hooked to four federation skills so it cannot drift into
+unfalsifiable narrative. The chain is **INFERENCE**. Never state it as fact.
+
+### The chain
+```
+PH loses Malay-majority ground (Johor 11 Jul: BN 48 / PH 8; N9 1 Aug: BN 18 + PN 7 = 25/36)
+  → federal parliamentary arithmetic depends on GPS + GRS
+    → the price of that support is paid in MA63 deliverables
+      → the deliverable with least slack is PETRONAS' domestic gas
+        → and that gas is now triple-claimed: LNG export, DC power demand,
+          Sarawak aggregator rights
+```
+Each arrow is a separate inference with its own falsifier. Do not compress the chain into one
+sentence for a human without marking which arrows are sourced and which are inferred.
+
+### Falsifiers — run before re-asserting the chain
+| Arrow | What falsifies it |
+|---|---|
+| losses → Borneo dependence | federal majority survives without the GPS/GRS bloc, or the BN–PN pact breaks before GE16 |
+| dependence → MA63 price | deliverables granted for non-electoral reasons (existing legal obligation, court order, formula) rather than support purchase |
+| price → PETRONAS gas | settlement lands on cash/fees rather than molecule or aggregator rights (see the OMO 1958 seam above) |
+| gas → DC bottleneck | DC pipeline served from non-Petronas molecules (imported LNG, delayed coal retirement, direct Sarawak supply) |
+
+### The four hooks — load before extending this lane
+| Hook | Skill | What it supplies |
+|---|---|---|
+| legal / commercial mechanism | `petronas-petros-shell-dispute` (this skill) | PDA 1974 · OMO 1958 · CSA 1966 · OIC 1954 geometry; DGO ladder; BG war |
+| inference integrity | `agent-finding-verification` | periodic audit of the chain so it does not harden into a conspiracy claim |
+| quantitative backing | `wealth-capital-primitives` (WEALTH Capital Primitives Lane) | move market observation → capital-flow computation (NPV / IRR / EMV / MC). WEALTH computes · arifOS judges · Arif decides |
+| source discipline | `MY-REALITY-STACK` | lock to Hansard, BNM, DOSM, SPR maps, Suruhanjaya Tenaga; news wire = INT until anchored |
+
+### Supporting sources (probed 2026-09-18)
+- DC/gas demand: https://www.thestar.com.my/business/business-news/2026/07/13/data-centre-demand-to-energise-tnb-growth
+- Johor DC pipeline (Knight Frank Atlas 2026): https://ciosea.economictimes.indiatimes.com/news/business-analytics/malaysias-data-centre-boom-is-becoming-a-power-story/133966491
+- Petronas–Petros expedite directive: https://www.freemalaysiatoday.com/category/nation/2026/09/16/work-as-a-team-to-develop-malaysia-pm-tells-petronas-petros
+- Sabah 40% deferral: https://www.utusan.com.my/berita/2026/04/kerajaan-berjaya-tangguh-bayaran-40-hasil-sabah/
+- Sara­wak interim grant RM1.5b: https://www.bernama.com/en/general/news.php?id=2608188
+
+### Prohibited
+- Naming any living individual as the *author* of the electoral→gas chain. **888 HOLD stands on intent attribution.**
+- Emitting the chain to a human without the falsifier table available.
+- Reverse "ayat manis" trap: a chain that sounds true is not thereby evidenced.
 
 ## Pitfalls
 - Don't confuse "simulative" (external exploitation) with "extractive" (internal decay)

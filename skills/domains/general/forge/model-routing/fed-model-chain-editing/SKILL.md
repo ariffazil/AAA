@@ -1,7 +1,7 @@
 ---
 name: fed-model-chain-editing
 id: fed-model-chain-editing
-version: 1.0.0
+version: 1.1.0
 description: Use when editing or repairing FED model fallback chains.
 owner: AAA
 risk_tier: medium
@@ -102,9 +102,25 @@ PGPASSWORD="$POSTGRES_PASSWORD" psql -h 127.0.0.1 -U "$POSTGRES_USER" -d litellm
 ```
 
 Check the **age of the newest row** before concluding anything. Newest row weeks old while the lane
-is demonstrably answering = spend logging has stopped flowing: that is a defect to report, and it
-means live headers are the only attribution you have. Absence of spend rows is never evidence of
-absence of traffic.
+is demonstrably answering means spend logging is not flowing — and that has **two possible causes
+with opposite responses**, so read the config flag before diagnosing a defect:
+
+```bash
+python3 -c "import yaml;g=yaml.safe_load(open('/root/A-FORGE/litellm-config.yaml'))['general_settings'];print({k:g.get(k) for k in ['disable_spend_logs','store_model_in_db','allow_requests_on_db_unavailable']})"
+```
+
+- `disable_spend_logs: True` — the ledger is **off by design**. Never report it as a logging defect
+  and never re-enable it on your own initiative: the flag sits on the path of every request, and the
+  reason it was set is usually not recorded anywhere. Live headers (*Attribution*) are then the only
+  instrument; the correct move is a header sweep over the live lanes, not a database query.
+- Flag absent/false and rows still stale — then it *is* a defect: report it with the newest row's age.
+
+Absence of spend rows is never evidence of absence of traffic.
+
+**Know which of the two claims you are making.** A header sweep is a **snapshot**: it says which rung
+served at time T. It cannot say what a rung *adds* over time — marginal value needs a temporal
+ledger. "8/18 lanes fell through on this pass" is a snapshot claim and must not be dressed up as a
+value claim about the rungs.
 
 ## Provider Liveness Semantics
 
@@ -170,8 +186,73 @@ echo "$code"; head -c 200 /tmp/_p
 
 The config is bind-mounted into the litellm container from the primary path — editing the file without a restart changes nothing.
 
+## A Lane Is a Failover Ladder, Not an Ensemble
+
+FED lanes are **failover ladders**: one rung answers and the rest are tried only when the rung above
+fails. Nothing votes, nothing is collapsed. This decides which external findings apply here.
+
+- **Model-pool / ensemble research does not transfer to lane design.** Results that homogeneous pools
+  beat heterogeneous ones, that diversity lowers consensus accuracy, or that larger pools underperform
+  their best single member are about collapsing many *answers* into one verdict. In a ladder the pool
+  decides *who answers*, and a second brain from another vendor is precisely what keeps the lane alive
+  when the first vendor's quota dies. Importing "use one family only" into lane chains converts an
+  availability asset into a correlated outage.
+- **Where those findings DO apply here** is organ-level deliberative work — any panel that collapses
+  several answers into one verdict, whether a multi-witness bench, a musyawarah round, or a judge lane.
+  Two rules follow:
+  (a) **Measure what a member adds before adding it, and never infer it from the model card.** A pool's
+  *potential* (the oracle: what its best member could have answered) is not its achieved accuracy — on
+  hard benchmarks an expanded heterogeneous pool commonly lands BELOW its own best single member, while
+  replicates of one family are the variant that improves. Model size, accuracy and domain-specialisation
+  signals do not predict panel performance; measured error diversity does not either. High oracle is a
+  ceiling, never a forecast.
+  (b) **A panel of four must beat one, or it is wasted budget.** litellm records spend, latency and
+  failures — never right-vs-wrong — so nothing in the current telemetry can say whether a second witness
+  improved a verdict. Any quality claim about a lane or a panel is ESTIMATED and must be labelled so,
+  until a scored probe runs against a held-out set and its receipts are keyed by lane.
+- **Homogeneity is a resilience metric, not a quality metric.** A lane whose live rungs are all one
+  vendor family is a **terminal node**: when that vendor lapses, every rung dies together. A lane with
+  2+ live rungs from one family is not redundancy, it only looks like it. Census it:
+
+```bash
+python3 - <<'PY'
+import collections, yaml
+cfg = yaml.safe_load(open('/root/A-FORGE/litellm-config.yaml'))
+lanes = collections.defaultdict(list)
+for e in cfg.get('model_list', []) or []:
+    lanes[str(e.get('model_name'))].append((int(e.get('order', 0)), str(e.get('model'))))
+def fam(m):
+    return next((k for k in ('qwen','deepseek','gemini','minimax','glm','mimo','kimi','sea-lion','llama','gpt-oss') if k in m.lower()), 'other')
+for l, r in sorted(lanes.items(), key=lambda x: -len(x[1])):
+    live = [x for x in r if x[0] < 90]
+    parked = [x for x in r if x[0] >= 90]
+    fams = sorted({fam(m) for _, m in r})
+    if len(live) > 1 and len(fams) == 1:
+        print(f'TERMINAL-NODE {l:22s} live={len(live)} fams=1 ({fams[0]}); parked99={len(parked)}')
+PY
+```
+
+  Every rung parked at `order: 99` is a model that was added and never measured — report the count as
+  pool pressure (high ceiling, unmeasured service), not as capability.
+
 ## Pitfalls
 
+- ❌ **Putting a credential-store path on a command line.** A shell command carrying a literal path
+  into the secret store is refused by the T3 gate before it runs — the whole call is blocked, not just
+  the offending fragment, and retrying the same command repeats the block. The 5-R vars are normally
+  already exported in the session env: check with `env | grep -oE '^[A-Z_]+='` and reference `$VAR`
+  directly (`LITELLM_MASTER_KEY`, `POSTGRES_USER`, `POSTGRES_PASSWORD`). Sourcing the env file inside
+  every command is what trips the gate — source once per session, then use the variables. The same
+  gate also scans `skill_manage` args, so keep the literal path out of written doctrine too.
+- ❌ **Dumping a container's or unit's environment to read one variable.**
+  `docker inspect <c> --format '{{range .Config.Env}}{{println .}}{{end}}'`, `/proc/PID/environ` and
+  `systemctl show -p Environment` all emit every credential the process was started with — DB passwords,
+  the litellm master key, provider API keys, bot tokens — into the session transcript, which is replayed
+  to a model endpoint. Print key NAMES only (`| cut -d= -f1`); for a single value, select the exact key
+  AND mask it in the same expression that does the printing. A grep/regex used as a *filter* is not a
+  redactor — everything it fails to classify still lands in the output. A credential that reaches the
+  transcript is a **rotation event, not a typo**: report it, and separate the keys you can mint yourself
+  from those needing a vendor dashboard.
 - ❌ **Assuming the `:4000` front door reaches the node you are editing.** HAProxy `:4000` can
   be serving a *completely different machine*. Verify before you reason about a lane from
   `:4000` output: request a model id that exists on only one node (2026-09-15:
@@ -222,9 +303,59 @@ unconditional master-key injection **overwrites the caller's** `Authorization`, 
 prove "the right backend was selected" proves nothing on that path — use a model id that exists on
 only one node instead.
 
+### Readiness semantics — one node cannot tell you about another
+
+`/health/liveliness` answers without auth (~12 bytes). `/health` is **auth-gated**: a bare
+`401 Authentication Error` there means UP, not down. `/health/readiness` is the endpoint carrying `db`:
+
+```json
+{"status":"healthy","db":"Not connected"}
+```
+
+`Not connected` means that process was started with **no `DATABASE_URL` at all**. That is by design for a
+node serving the master-key path — the frontend injects the key, so no virtual-key lookup is needed and
+the DB is irrelevant to it. The virtual-key (zen) path is pinned **separately** to whichever node IS
+database-wired; read the `frontend`/`backend` blocks to see which, rather than believing either node's own
+claim about itself. Consequences:
+
+- `db != connected` on a non-key-holding node is **not an incident**; alerting on it is a false alarm.
+- A node with no DB **cannot validate a caller's virtual key**. Sending a key-bearing caller at it leaves
+the key unverified — assert the frontend→backend pin before assuming key governance on that path.
+- `allow_requests_on_db_unavailable: true` degrades a DB outage to "serve anyway" instead of an error.
+Read the flag and reason from it; do not test it by breaking the DB. Report it as **posture, never
+status**: a flag whose name contains a failure mode reads as an outage report the moment it is quoted
+bare. Measure the subsystem first (`pg_isready`, the readiness body, the unit's state), state that,
+*then* the flag. And read a settings *block* as one intent before treating a single line as a defect —
+`store_model_in_db: false` together with `disable_spend_logs: true` and this flag is one design stance
+("do not make serving depend on the DB"); isolating any one of them manufactures an alarm the others
+explain away. Weight a written rationale next to a bare boolean as evidence about intent — but never
+treat its absence as evidence of a fault.
+- A readiness answer taken from a node with a high `RestartCount` and seconds of uptime was sampled
+*between restarts*. Read readiness against uptime, never in isolation.
+
+### A declared backup is a claim — probe it or don't count it
+
+`server <name> <ip:port> ... backup` is topology INTENT, not verified capacity. `option httpchk` grades a
+node on `/health/liveliness`, which a crash-looping process answers happily between restarts while every
+real request through it fails. Before counting any failover target as capacity, probe the target itself:
+
+```bash
+docker inspect <ctr> --format 'restarts={{.RestartCount}} started={{.State.StartedAt}} exit={{.State.ExitCode}}'
+stat -c '%y' <the config it mounts>     # a config older than the build is a stale node
+# then one real 1-token call THROUGH that node — not through the front door
+```
+
+An unexercised backup is a ghost capability, and its presence is worse than no backup: it makes the
+primary *look* protected. On the cooldown table — the `cooldown_time` litellm logs is its own bookkeeping
+and can outlive the reset the provider advertised in the error body, so a rung can be absent from the pool
+long after the provider would serve again. Compare the two numbers before calling a rung merely "waiting
+on quota": a bookkeeping-dead rung is not revived by a restart or by the reset arriving.
+
 ## Support Files
 
 - `scripts/parse-chain-map.py` — parse `model_list` lanes + the `fallbacks:` map (handles inverted entries); fails on dangling fallback rungs.
+- `scripts/node-posture-probe.sh` — per-node posture in one shot: listeners, restart count vs uptime, config mtime, whether the node is DB-wired, and readiness on :4000/:4013. Prints key NAMES only, never env values.
+- `scripts/fed-attribution-probe.py` — sweep every live lane through the router and classify each as `SERVED_ON_PRIMARY` / `SERVED_OFF_PRIMARY` / `UNATTRIBUTED` / `ROUTER_ERROR` / `TIMEOUT` from the `x-litellm-*` headers; writes one JSON snapshot receipt. Use for the "which rung is actually answering, and did it fall through" question, and as the evidence artifact behind a snapshot attribution claim.
 - `references/provider-liveness-semantics.md` — per-provider probe quirks and how to read a failure body.
 - `references/i-arif-voice-drift.md` — symptom→diagnosis for "the agent's voice changed": alias rungs vs router-level fallbacks, the two independent causes (degraded router / English prompt frame), and why the client log cannot attribute the model.
 
