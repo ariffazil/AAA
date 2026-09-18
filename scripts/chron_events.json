@@ -1,5 +1,5 @@
 {
-  "_comment": "CHRON canonical event store. Dates only — day counts are COMPUTED at render. Add an event with a real source or do not add it.",
+  "_comment": "CHRON canonical event store. Dates only \u2014 day counts are COMPUTED at render. Add an event with a real source or do not add it.",
   "_updated": "2026-09-18",
   "events": [
     {
