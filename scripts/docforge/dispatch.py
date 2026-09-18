@@ -32,7 +32,7 @@ from pathlib import Path
 
 @dataclass
 class DeliveryResult:
-    state: str            # PRODUCED | SENT | FAILED | TRANSPORT_ABSENT
+    state: str            # PRODUCED | SENT | FAILED | TRANSPORT_ABSENT | HELD | DENIED
     target: str
     artifact: str
     detail: str = ""
@@ -64,8 +64,27 @@ def transport_available() -> tuple[bool, str]:
 
 
 def send(artifact: Path, target: str, caption: str = "",
-         sidecar: Path | None = None) -> DeliveryResult:
-    """Push the PDF (and its sidecar) to a target. Records what really happened."""
+         sidecar: Path | None = None, expect_role: str | None = "arif") -> DeliveryResult:
+    """Push the PDF (and its sidecar) to a verified target.
+
+    THE DESTINATION IS VERIFIED FIRST. On 2026-09-18 the gateway logged, three
+    times, `send to 8410138119 failed: Forbidden: the bot can't send messages to
+    the bot` — 8410138119 being the bot's own id. A scheduled brief aimed there
+    never arrives and reports no error to anyone reading the brief. So the
+    target is checked against the identity lock BEFORE the transport is touched,
+    and an unverifiable destination returns HELD rather than being attempted.
+    """
+    from . import transport as transportmod
+
+    decision = transportmod.verify(target, expect_role=expect_role)
+    if not decision.ok:
+        return DeliveryResult("HELD", target, artifact.name,
+                              f"destination not verified ({decision.verdict}): "
+                              f"{decision.reason}",
+                              {"transport_verdict": decision.verdict,
+                               "reason": decision.reason,
+                               "resolved_id": decision.resolved_id})
+
     ok, detail = transport_available()
     if not ok:
         return DeliveryResult("TRANSPORT_ABSENT", target, artifact.name, detail)
