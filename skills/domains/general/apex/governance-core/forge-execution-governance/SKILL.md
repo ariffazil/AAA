@@ -320,6 +320,43 @@ gate's own deny class attempted and refused. A file, a config key, and a doctrin
 neither. **Zero receipts across a session that made dozens of mutation-capable calls is positive
 proof the gate is not on that path** — report it as measured, not as a suspicion.
 
+**A control can pass BOTH receipts tests and still control nothing — check what it gates.** Neither
+artifact in the rule above asks *when* the control runs relative to the act it is meant to prevent.
+A pipeline shaped
+
+```
+[1/n] generate  →  [2/n] sync  →  [3/n] RENDER + PUBLISH  →  [4/n] run integrity gates
+```
+
+leaves the gate with fresh receipts on every run — it is genuinely invoked, genuinely reports
+`[FAIL]`, and genuinely influences nothing, because the artifact it audits is already published one
+step earlier. Observed over 19 consecutive runs: a freshness gate failing every time on missing
+timestamps while the page it guarded went live each time. The receipt stream looked healthy; the
+surface was unguarded.
+
+**Two independent defects produce that signature — test both, they need different fixes:**
+
+| defect | probe | fix |
+|---|---|---|
+| **Ordering** — verification after the irreversible step | print the step banners in execution order; find the first step that mutates the world | move verification **before** the act it guards |
+| **Swallowed status** — failure cannot propagate | grep the invocation for `\|\|`, `2>&1`, `;` chaining, `set +e`, or a wrapper that always exits 0 | let a failed gate stop the run; log the failure *and* set the exit code |
+
+```bash
+grep -nE '^\s*(echo ")?\[[0-9]+/[0-9]+\]' <pipeline>.sh    # the declared step order
+grep -nE 'gate|\.py|\.sh' <pipeline>.sh | grep -E '\|\||2>&1|tee|;'   # swallowed status
+```
+
+`cmd || echo "[ALARM] ..."` is the canonical swallow: the alarm text is emitted, the non-zero exit is
+consumed, the wrapper returns 0, and every downstream status surface reports success. It reads as
+defensive logging and is the opposite — **a gate whose failure cannot stop the thing it guards is
+decoration, and it is at its most convincing when it is noisy.** A gate that reports `FAIL`
+repeatedly while the artifact ships anyway is not a broken gate; it is a gate in the wrong position,
+and the order of the steps is the finding.
+
+**Report the ordering defect as the root cause, not the missing metadata.** The gate's own message
+("no `as_of`") names a symptom in the data; the publish-before-verify shape is why 19 failures
+changed nothing. Name both, and lead with the one whose fix would have prevented the other.
+
 **Subtract the control's own test receipts before counting.** A gate shipped with a self-test,
 a benchmark, or a `__main__` block writes receipts every time anyone runs the tests — so a
 non-empty receipt stream is not evidence of a live path. Filter first:
@@ -441,6 +478,7 @@ and retracting is how the record stays usable.
 | Gate file present and complete, but not invoked | Check the harness's own wiring answer (`hooks list`), read the module's self-declaration, and correlate receipt freshness with the activity window — zero receipts during real activity = not on the path |
 | Receipt stream looks healthy but was written by the gate's own tests | Subtract synthetic/test callers before counting; if the payload does not record the caller at all, report the schema defect — liveness is unprovable from that log |
 | Control wired but unexercised vs. control unwired | Disambiguate with the harness listing, not the receipt count; the remediations differ (config entry vs. nothing) |
+| Gate runs with fresh receipts but AFTER the action it guards, or its exit status is swallowed by `\|\|` / `2>&1` | Report the ordering defect as root cause: verification did not fail to run, it ran too late to matter. Check step order and status propagation independently |
 | Locked canonical tree quoted as authoritative | Check mtime and section-diff against the working draft; `+i` guarantees integrity, never currency — a sealed tree routinely holds the older text |
 | Document declares sovereign ratification; its own write receipt reads `unattributed` | Quote both strings verbatim and report the contradiction. The receipt is the machine answer; a self-declared authority is a claim |
 | Control declared REACHABLE and reported as "we have X" | The claim stops at REACHABLE; EFFECTIVE requires a production invocation with its output consumed. Report the rung by name |

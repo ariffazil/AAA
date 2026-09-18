@@ -249,14 +249,29 @@ def g_ink_present(pdf: Path, opts: dict) -> Finding:
     med = sorted(vals)[len(vals) // 2]
     dense = med >= opts.get("ink_dense_median", INK_DENSE_MEDIAN)
     rel = opts.get("ink_sparse_ratio", INK_SPARSE_RATIO)
+    # A document that declares an explicit cover page is exempting its first
+    # page from the orphan check. A title page is sparse BY DESIGN; treating
+    # it as an orphan is a false positive. The opt-in is in the spec, so the
+    # exemption cannot be applied accidentally to a document that has no cover.
+    cover_exempt = bool(opts.get("cover_orphan_exempt", False))
+    n = len(pages)
 
     blank: list[str] = []
-    for p, v in zip(pages, vals):
+    reported: list[str] = []
+    for i, (pg, v) in enumerate(zip(pages, vals)):
+        is_cover = cover_exempt and i == 0
+        # Median calculation skips the cover so a sparse cover cannot drag the
+        # document-wide median down and mask a genuine blank later.
+        if not is_cover:
+            reported.append(v)
         if v < floor:
-            blank.append(f"{p.stem}:{100*v:.2f}% (blank)")
+            blank.append(f"{pg.stem}:{100*v:.2f}% (blank)")
         elif dense and v < rel * med:
-            blank.append(f"{p.stem}:{100*v:.2f}% (under {int(rel*100)}% of the "
+            if is_cover:
+                continue
+            blank.append(f"{pg.stem}:{100*v:.2f}% (under {int(rel*100)}% of the "
                          f"{100*med:.1f}% median — orphan page)")
+    med = sorted(reported)[len(reported) // 2] if reported else 0
 
     summary = (f"min ink {100*min(vals):.2f}%, median {100*med:.2f}%, "
                f"floor {100*floor:.2f}%"

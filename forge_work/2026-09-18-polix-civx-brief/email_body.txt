@@ -1,0 +1,40 @@
+Arif,
+
+Attached: WEALTH POLIX & CIVX — capability brief (6 pages, A4, light background).
+
+What is in it:
+
+1. The void this fills — WEALTH could do capital arithmetic but had no political economy,
+   no distribution of consequence, no horizon past the current decision. Knowledge-axis
+   coverage L0-L10 with the two remaining gaps named.
+
+2. POLIX — power topology of the Malaysian fiscal regime. Six actors with mandate, opacity
+   and capture risk; four rent flows with beneficiary and cost-bearer; three rule
+   asymmetries. Capture score MODERATE — highest at state governments, lowest at Bank
+   Negara. The concentration that matters most sits at the centre, not in a regulator.
+   Second seed case covers PETRONAS / Khazanah / PNB.
+
+3. CIVX — civilizational horizon 2027 to 2040. Five assumption axes, three explicit paths
+   (best / base / worst), six resilience axes per path, with the irreversibilities named
+   per path. Every figure tagged INTERPRETED, status SAFE_TO_STUDY.
+
+4. Limits and calibration debt — what would have to be measured before any of this
+   becomes decision-grade.
+
+Two things stated plainly inside the document, not hidden:
+
+- The tool wrappers capital_polix and capital_civx failed on every live call at the MCP
+  boundary (a schema-name mismatch in the response envelope). The repair is written and
+  staged; the service reload is withheld pending a governed approval decision, so the
+  interface is not yet declared live.
+- The underlying seed constructors were executed and their own output is reproduced
+  verbatim. The analysis layer is sound; the endpoint layer is pending.
+
+Source and reproducibility:
+  /root/AAA/forge_work/2026-09-18-polix-civx-brief/
+    WEALTH_POLIX_CIVX_Brief_2026-09-18.pdf
+    build_polix_civx_brief.py
+    polix-civx-seeds.json
+  PDF sha256 1e6a0862401d4d7e0c83d35f8cc7fb32ecf36e669ca0460d5e0cf256f82db864 (48,233 bytes)
+
+DITEMPA BUKAN DIBERI.
