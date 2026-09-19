@@ -1,0 +1,416 @@
+{
+  "ts": "2026-09-19T01:03:13.711027+00:00",
+  "authority": "F13 sovereign in-chat 2026-09-19",
+  "canon": "/root/AAA/skills",
+  "freeze_root": "/root/AAA/skills-retired/2026-09-19-namespace-collapse",
+  "undo": "mv <frozen_path> <orig_path>   (paths recorded below)",
+  "items": [
+    {
+      "rel": "mcp-shopping-list-2026-09",
+      "kind": "dir",
+      "tier": "T2-alias",
+      "reason": "redirect only -> mcp-sota-shopping-list",
+      "successor": "mcp-sota-shopping-list",
+      "files": {
+        "SKILL.md": "2d3db70f52bf6f33c9e4ca34d113ccd4b5db8d23940ab364e6fca107fa6b1e68"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/mcp-shopping-list-2026-09",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/mcp-shopping-list-2026-09"
+    },
+    {
+      "rel": "forge-mcp-ops/mcp-dual-era-transport",
+      "kind": "dir",
+      "tier": "T2-alias",
+      "reason": "redirect only -> mcp-testing",
+      "successor": "mcp-testing",
+      "files": {
+        "SKILL.md": "eaa721c84d9aac823a51da9553681b12f5fd5b143d6a7fe0f87e74f07af1ba09"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/forge-mcp-ops/mcp-dual-era-transport",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/forge-mcp-ops/mcp-dual-era-transport"
+    },
+    {
+      "rel": "wisdom-scar-session-audit",
+      "kind": "dir",
+      "tier": "T2-alias",
+      "reason": "redirect only -> scar-integration",
+      "successor": "scar-integration",
+      "files": {
+        "SKILL.md": "986c8b787138c97cb88920a115f460c2c59fceebc80319d95c34bf815ccfc7e6",
+        "references/F1_amanah_reversibility_audit_2026-07-10.md": "fd3f2ad253d2d51b9751463a0f1f23e8bb1efddfa1662cb56f184920afa07bf3"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/wisdom-scar-session-audit",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/wisdom-scar-session-audit"
+    },
+    {
+      "rel": "domains/general/aaa/substrate/reflective/sovereign-recognize",
+      "kind": "dir",
+      "tier": "T2-alias",
+      "reason": "redirect only -> audience-scoped-disclosure",
+      "successor": "audience-scoped-disclosure",
+      "files": {
+        "SKILL.md": "bf2ddaec7dde1cfc0d978c164cbd14eccbe51c52fb869d3144b7bdeb3bdaf73b"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/domains/general/aaa/substrate/reflective/sovereign-recognize",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/domains/general/aaa/substrate/reflective/sovereign-recognize"
+    },
+    {
+      "rel": "domains/general/forge/mcp-ops/FORGE-mcp-testing",
+      "kind": "dir",
+      "tier": "T2-alias",
+      "reason": "redirect only -> mcp-testing",
+      "successor": "mcp-testing",
+      "files": {
+        "SKILL.md": "204b999f7e9f08d8d2566a1a53c458ebfffd679dcd1fc5033e940fc775a3be47"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/domains/general/forge/mcp-ops/FORGE-mcp-testing",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/domains/general/forge/mcp-ops/FORGE-mcp-testing"
+    },
+    {
+      "rel": "domains/general/court/court-audit/cognitive-level-assertion-protocol",
+      "kind": "dir",
+      "tier": "T2-alias",
+      "reason": "redirect only -> claim-receipt-discipline",
+      "successor": "claim-receipt-discipline",
+      "files": {
+        "SKILL.md": "4010c97f965945f2a5338e5f3e002214c0d14ea06e338c596745c514daf42ceb",
+        "references/clap-v2-invariants.md": "1ce40338eb5550f304eb46581f7491b846b8de45343246e3ec0855c2cc84d2f7",
+        "references/ed25519-identity-setup.md": "bf7934b69e76f4473bb91422933c33e6516aa85c6e3a16af45a6fc238fb23c9e"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/domains/general/court/court-audit/cognitive-level-assertion-protocol",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/domains/general/court/court-audit/cognitive-level-assertion-protocol"
+    },
+    {
+      "rel": "domains/general/apex/recursive-audit/RSI-recursive-improvement",
+      "kind": "dir",
+      "tier": "T1-stub",
+      "reason": "34-byte tombstone, zero procedure",
+      "successor": null,
+      "files": {
+        "rsi-cycle.py": "2070f88850c954889fdb5bab085dfce18ca37b7c0a1285216e4c2111cbb1ab19",
+        "SKILL.md": "78ed0a2ac81b0085fc01f5ca92025ebe1de16d2d40cd25163ddfe95dd3eb943e",
+        "liveness.json": "4b59c37e424f4c8a819e7023c8836f3b3bc061738e16076fcb0381bf68ad60d7"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/domains/general/apex/recursive-audit/RSI-recursive-improvement",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/domains/general/apex/recursive-audit/RSI-recursive-improvement"
+    },
+    {
+      "rel": "causal555-pywhy",
+      "kind": "dir",
+      "tier": "T1-stub",
+      "reason": "self-declared ARCHIVED placeholder, no procedure",
+      "successor": null,
+      "files": {
+        "SKILL.md": "1c0e8037a3dc1377549336e5cdfc1ef741db3872b4e893d753f733f9fb36ec83"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/causal555-pywhy",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/causal555-pywhy"
+    },
+    {
+      "rel": "wealth-claim-state",
+      "kind": "dir",
+      "tier": "T1-stub",
+      "reason": "self-declared placeholder; live lane is wealth-claim-state skill under domains",
+      "successor": null,
+      "files": {
+        "SKILL.md": "40c25878e8351358f5196abcbd781d211ee525d6f48f8d905fbb8cc44b13b825",
+        "probe.sh": "28d997844f28eec00a67ce5a81eecfd0f7ddb0a7e44e7b59e41508163f0d5434"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/wealth-claim-state",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/wealth-claim-state"
+    },
+    {
+      "rel": ".system/imagegen",
+      "kind": "dir",
+      "tier": "T4-vendor",
+      "reason": "foreign harness bundle, not an AAA capability",
+      "successor": null,
+      "files": {
+        "LICENSE.txt": "4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9",
+        "SKILL.md": "59981d23519222bcecf1be48bb37730bbc50539ceb0e35ad09fcef98a3df19d3",
+        "references/image-api.md": "ca5424dfcad5a4c87b4401d1cffb70bfcc18c7ca2c281d12045f822e59fa4093",
+        "references/sample-prompts.md": "43307821f1db18e06be50189a078f3e1ccc3ee6b5523934614e22e64d27597ab",
+        "references/codex-network.md": "c88298ca4481f6116a16fa7987434fc977f8b311c1bbc0c3d862ffd0c5981148",
+        "references/cli.md": "38d92cdbec5f3430439a3868ced0a3c5694e0e84a75e46d6e7f7a00aca6e673b",
+        "references/prompting.md": "a88c459a0306051535d1b68eb899925f08a175cbbcd07d72a9d0c43f330cb81f",
+        "scripts/image_gen.py": "35e8f9fa47deca111e46c63c4ac2008e09198ef664c0926a9dfdcd6745aa37ed",
+        "scripts/remove_chroma_key.py": "3f7b9b14ad5c90f37618bc1c16a039a2076abca12ddc41b3ae470e2b1cad6c0e",
+        "agents/openai.yaml": "9ca574af14580dc7a2a3dc37a1796d17f93cb8850be66501f0799ef8603e9dc0",
+        "assets/imagegen-small.svg": "cff5f34f57ff60b3ee92eaedd17b15e96dd4b9e776df3e78936c9e00d42be294",
+        "assets/imagegen.png": "95952f644064eb9e890f98d8db07216347186526e4c41ad66d3420629eb86e20"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/.system/imagegen",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/.system/imagegen"
+    },
+    {
+      "rel": ".system/openai-docs",
+      "kind": "dir",
+      "tier": "T4-vendor",
+      "reason": "vendor documentation bot, not an AAA capability",
+      "successor": null,
+      "files": {
+        "LICENSE.txt": "4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9",
+        "SKILL.md": "9914a79e6e1bd70d780b777e9019677af0eba60bbdfac3b7fe9b0407f16b5cc4",
+        "references/upgrading-to-gpt-5p6-sol.md": "4643eb48cb105140b6b9aa55c3deecb950c75e70698e5fa9cc7534db1c293828",
+        "references/latest-model.md": "7c5a1b8cb74f6140c52df722781df4ce43bbcfa34cadc15c425276c2492783c4",
+        "references/upgrade-guide.md": "ed1b75a89b8ec4d67787774ef6c4e8b98eace16c63348f42e969e6ffa67cb656",
+        "references/prompting-guide.md": "d66112cbc583c4fd39952904efb2bf41c9f665368b7ba22f5ba01dc657c576f8",
+        "scripts/resolve-latest-model-info.cjs": "eeb1bb486018e16b37edfc06b1a37179dbc672982d501040d4f7142f29dd2e64",
+        "scripts/fetch-codex-manual.mjs": "f53eb6d2f286e9efcc397e8bee93a938e37296c90953e4e06e94899ef1b6c363",
+        "scripts/resolve-latest-model-info": "7354dbb030ca0736dd633a7ca1b930cf640abd40370725dea3a458cb51d49523",
+        "agents/openai.yaml": "004c73f6e01409cfd7db699e815f5fed4ced3b63dd2cc25874f6791eae7fd4bc",
+        "assets/openai.png": "156cc84d7332bfe95b310350bd470b690d22aa33d65340cc6c2e06022946194c",
+        "assets/openai-small.svg": "45be1f0757eb18889eefb1e7db79668ef46a275dc4e0e78e8df5ebd7f6cdeadc"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/.system/openai-docs",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/.system/openai-docs"
+    },
+    {
+      "rel": ".system/plugin-creator",
+      "kind": "dir",
+      "tier": "T4-vendor",
+      "reason": "foreign harness bundle + carries a ghost script",
+      "successor": null,
+      "files": {
+        "SKILL.md": "8fd56316b2c49cbdc657a5d197967a233018e1fada65b00a5dd030dce6499a6e",
+        "references/plugin-json-spec.md": "eeb640130f69636affaa299d4170d5a7ae6a0ff978296ddf75c409ce6dd87b91",
+        "references/installing-and-updating.md": "b030517fe05b12dda71babe2890656d7c6db6a0111797e1d20d208804427276d",
+        "scripts/read_marketplace_name.py": "7659216759152f83087020b4d2971b4ad3cc13851e2614efc30fc2317ad59d96",
+        "scripts/validate_plugin.py": "ebda00d55d7518b127f675f062fb5c6e7a1ffdc0a99df1a55ac594400d7d3228",
+        "scripts/create_basic_plugin.py": "b5aa34f7f9dcec4bb007a66d65cff0c5c77a67042ae6c4de57d8ab7f4ef737d2",
+        "scripts/update_plugin_cachebuster.py": "4fe3c5a49212f6e30a2306e245c460e01aaf5e36bc8ad3dd2852c199257eff89",
+        "agents/openai.yaml": "fecaf35d692bd3d33d1a065648258d12e393afa9055d78adf6e57b42f4142f6d",
+        "assets/plugin-creator.png": "a4024b0306ddb05847e1012879d37aaf1e658205199da596f5145ed7a88d9162",
+        "assets/plugin-creator-small.svg": "6591bf8ea9bb9435890dbdea299e0d2bd05f3aa893a335d26e4c535e93c8e7fb"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/.system/plugin-creator",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/.system/plugin-creator"
+    },
+    {
+      "rel": ".system/review-agent",
+      "kind": "dir",
+      "tier": "T4-vendor",
+      "reason": "foreign harness bundle, not an AAA capability",
+      "successor": null,
+      "files": {
+        "SKILL.md": "07079efd0dc76f05fade424e5dfb048dce1de2df7626e1a4f56292a4f3f92228",
+        "agents/openai.yaml": "4d867a46d15e36ac880176484aae160f59855340c6059b2ea6ab9fbc9af084de"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/.system/review-agent",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/.system/review-agent"
+    },
+    {
+      "rel": ".system/skill-installer",
+      "kind": "dir",
+      "tier": "T4-vendor",
+      "reason": "foreign harness bundle, not an AAA capability",
+      "successor": null,
+      "files": {
+        "LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "SKILL.md": "d68b77e5bbb34dedab89d134da52855f140fc4b4299b80104f534e3b9e98f8ee",
+        "scripts/list-skills.py": "e4e1f78ca3d045827f2a05cfd99fae57cc7c1a1bfeba8704029108834debff35",
+        "scripts/github_utils.py": "61c1bbe2ae217433b4b6f9f09f21aca4df52c12598068343ade719f706e4859b",
+        "scripts/install-skill-from-github.py": "0fbbd36e8ea294442c0bd48d6f610a2e8656216bfef5c322f1dcf448ef2f09f1",
+        "agents/openai.yaml": "5ce223d8b1070b82c42298538f1b8d376f788eb9e7a42a987e8c094070d73f0e",
+        "assets/skill-installer-small.svg": "3928703ff00dc1a681e7a22401843b7edcbd4b2051651ce4c43b75f7e140504e",
+        "assets/skill-installer.png": "d0a230b1a79b71b858b7c215a0fbb0768d6459c14ea4ef80c61592629bf0e605"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/.system/skill-installer",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/.system/skill-installer"
+    },
+    {
+      "rel": ".system/skill-creator",
+      "kind": "dir",
+      "tier": "T4-dup",
+      "reason": "triple body; canonical kept in the taxonomised home",
+      "successor": "skill-creator",
+      "files": {
+        "SKILL.md": "da44c88f6b3845a8fa8c60792ec9a722110a55a9793c279757b48fefb11f819c",
+        "license.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "references/openai_yaml.md": "ffac39318e408108141d40f820968e59f70434a891694f9bf1d25be8237b150c",
+        "scripts/init_skill.py": "f40cb8fafc34e2d5dbbb8b6b04297af128b70844b67bc9445ef69790e0cdb49e",
+        "scripts/quick_validate.py": "6cc9dc3199c935916cf6f73fcbbbb0e3bb1b58c8f5109fefa499978908164f51",
+        "scripts/generate_openai_yaml.py": "ddaf9abdfb3e762ed3c82571e9c607ce964188f49f2146281beb2cb8a553a93d",
+        "scripts/__pycache__/generate_openai_yaml.cpython-313.pyc": "eb1453c5111c38dce5562110727da9df4c8cb566a8e5a176337b2bb94ca3dc93",
+        "agents/openai.yaml": "d07d21b93fcf3d4dc8d9a3399c05fc226a49a333a96d3e1c68b451b8dd9eade6",
+        "assets/skill-creator-small.svg": "6591bf8ea9bb9435890dbdea299e0d2bd05f3aa893a335d26e4c535e93c8e7fb",
+        "assets/skill-creator.png": "a4024b0306ddb05847e1012879d37aaf1e658205199da596f5145ed7a88d9162"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/.system/skill-creator",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/.system/skill-creator"
+    },
+    {
+      "rel": ".profile-archive",
+      "kind": "dir",
+      "tier": "T4-vendor",
+      "reason": "symlink farm into a third-party plugin repo, not AAA doctrine",
+      "successor": null,
+      "files": {},
+      "action": "move",
+      "orig_path": "/root/AAA/skills/.profile-archive",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/.profile-archive"
+    },
+    {
+      "rel": "help",
+      "kind": "dir",
+      "tier": "T4-vendor",
+      "reason": "documents a vendor product this federation does not run",
+      "successor": null,
+      "files": {
+        "SKILL.md": "a87267729d4e83bf4886ea14eeeadd3b4f13331021bd8e22ec26952e62390c40",
+        "liveness.json": "4b59c37e424f4c8a819e7023c8836f3b3bc061738e16076fcb0381bf68ad60d7"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/help",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/help"
+    },
+    {
+      "rel": ".archive-2026-09-18",
+      "kind": "dir",
+      "tier": "T3-archive",
+      "reason": "archive that was still being loaded as live skill",
+      "successor": null,
+      "files": {
+        "exact-dups/PRUNE_LEDGER_2026-09-18.md": "1d43fd825a5df584aabbb0cb3b2c759e9108fb63cbad25c4dbabd8d7a3e1f972",
+        "exact-dups/substrate-taxonomy-nested/SKILL.md": "f1ed3f2307fc4671d95844cfb38b457f4b97fc291507a21bd7120e417be1f648",
+        "exact-dups/apex-seal-hermes/SKILL.md": "aaa76080a95743950e5ea9e923f68d600e5707c67aa453f4874f3218720dfd41",
+        "exact-dups/apex-seal-claude/SKILL.md": "451db8dd742e9d2c8bd24114eb4c8df8d98b126f1b5c949ecb5bc0fdc33d29de"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/.archive-2026-09-18",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/.archive-2026-09-18"
+    },
+    {
+      "rel": "forge-federation-manifest",
+      "kind": "dir",
+      "tier": "T6-case-twin",
+      "reason": "case is not doctrine; twin of FORGE-federation-manifest",
+      "successor": "FORGE-federation-manifest",
+      "files": {
+        "SKILL.md": "97f2dc470bf6c8e83af247b1d2592c73da7164c8ec88d8e6a1613cc29a8b9558",
+        "SKILL.md.bak-precompile": "6b8200d542052fedaf0c5f848ab79ebaa3b7bfaa293bb459cf2d83cf9d83f508",
+        "liveness.json": "4b59c37e424f4c8a819e7023c8836f3b3bc061738e16076fcb0381bf68ad60d7"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/forge-federation-manifest",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/forge-federation-manifest"
+    },
+    {
+      "rel": "RSI-federation-mesh",
+      "kind": "dir",
+      "tier": "T6-case-twin",
+      "reason": "case is not doctrine; twin of rsi-federation-mesh",
+      "successor": "rsi-federation-mesh",
+      "files": {
+        "SKILL.md": "ca7bf203b0f23b46cd8001ecbe68efb9cbbabde254a817daddf57c01559e4805",
+        "liveness.json": "6ea8304efa28ad7b3a014d19809ecf4797743720335ea4fdbe4ae3411d418421"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/RSI-federation-mesh",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/RSI-federation-mesh"
+    },
+    {
+      "rel": "runtime/SKILL.md",
+      "kind": "file",
+      "tier": "T1b-placeholder",
+      "reason": "namespace dir stub; dir holds real children",
+      "successor": null,
+      "sha256": "2221545da64b25733fbb2a25a659d64c5eeac0a66e0ca51891a0b401dfb5012f",
+      "action": "move",
+      "orig_path": "/root/AAA/skills/runtime/SKILL.md",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/runtime/SKILL.md"
+    },
+    {
+      "rel": "scripts/SKILL.md",
+      "kind": "file",
+      "tier": "T1b-placeholder",
+      "reason": "namespace dir stub; dir holds real children",
+      "successor": null,
+      "sha256": "7fb1a44392cb7a1faef1ce158df2b1f4cdb0cfd6a101d00b8a13154a372707b8",
+      "action": "move",
+      "orig_path": "/root/AAA/skills/scripts/SKILL.md",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/scripts/SKILL.md"
+    },
+    {
+      "rel": "docs/SKILL.md",
+      "kind": "file",
+      "tier": "T1b-placeholder",
+      "reason": "namespace dir stub; dir holds real children",
+      "successor": null,
+      "sha256": "f2a10fdf0b7de860aa96ad16851cea66fffb90c39a143171b90adb6dce8031ae",
+      "action": "move",
+      "orig_path": "/root/AAA/skills/docs/SKILL.md",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/docs/SKILL.md"
+    },
+    {
+      "rel": "substrate/SKILL.md",
+      "kind": "file",
+      "tier": "T1b-placeholder",
+      "reason": "namespace dir stub; dir holds real children",
+      "successor": null,
+      "sha256": "da0db2bff5486667360b4d4df677334b9576079f159bde061d7da19860dd63d3",
+      "action": "move",
+      "orig_path": "/root/AAA/skills/substrate/SKILL.md",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/substrate/SKILL.md"
+    },
+    {
+      "rel": "warga/SKILL.md",
+      "kind": "file",
+      "tier": "T1b-placeholder",
+      "reason": "namespace dir stub; dir holds real children",
+      "successor": null,
+      "sha256": "bdf53fb4f5828751bb298ba7eb01c6082887cf0e268b9f2a1b1e033b5900b3a2",
+      "action": "move",
+      "orig_path": "/root/AAA/skills/warga/SKILL.md",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/warga/SKILL.md"
+    },
+    {
+      "rel": "FORGE-mcp-testing",
+      "kind": "symlink",
+      "tier": "T6-orphan-link",
+      "reason": "resolution alias; target is being retired",
+      "successor": null,
+      "sha256": "symlink:domains/general/forge/mcp-ops/FORGE-mcp-testing",
+      "action": "unlink_symlink",
+      "orig_path": "/root/AAA/skills/FORGE-mcp-testing",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/FORGE-mcp-testing"
+    },
+    {
+      "rel": "cognitive-level-assertion-protocol",
+      "kind": "symlink",
+      "tier": "T6-orphan-link",
+      "reason": "resolution alias; target is being retired",
+      "successor": null,
+      "sha256": "symlink:domains/general/court/court-audit/cognitive-level-assertion-protocol",
+      "action": "unlink_symlink",
+      "orig_path": "/root/AAA/skills/cognitive-level-assertion-protocol",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/cognitive-level-assertion-protocol"
+    },
+    {
+      "rel": "RSI-recursive-improvement",
+      "kind": "symlink",
+      "tier": "T6-orphan-link",
+      "reason": "resolution alias; target is being retired",
+      "successor": null,
+      "sha256": "symlink:domains/general/apex/recursive-audit/RSI-recursive-improvement",
+      "action": "unlink_symlink",
+      "orig_path": "/root/AAA/skills/RSI-recursive-improvement",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/RSI-recursive-improvement"
+    }
+  ]
+}

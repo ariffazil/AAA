@@ -1,0 +1,531 @@
+============================================================================================
+CYCLE 4 — IDENTITY INFLATION & GHOST AUDIT   (ARIF, 2026-09-19)
+============================================================================================
+
+T1. IDENTITY INFLATION RATIO
+    canonical store : 641 loadable identities / 561 unique bodies   -> IIR 1.14
+    whole mesh      : 4449 loadable identities / 893 unique bodies   -> IIR 4.98
+    decomposition   : of the 3556 redundancy paths, 3808 are MESH MOUNTS of the same store
+                      (canonical tree is mounted by 5 harness homes), and 80 are duplicated bodies inside the store itself.
+    reading         : address inflation (same body, many roads) >> capability inflation.
+                      The mesh number is large because of mounts, not because the
+                      federation holds 5x the capabilities. Do not read it as famine.
+
+T2. TOP DUPLICATE CAPABILITY FAMILIES (one capability, N identities on disk)
+    NOTE ON ADDRESS QUALITY — a byte-identical body reached by several paths is only entropy if
+    the paths are COPIES. Where the extra paths are resolving symlinks, they are the intended
+    one-writer/many-views addressing tree (substrate / primitives / capabilities / domains are
+    bands over the same body) and they are recorded here, not removed. Measured: of the 80
+    duplicate bodies in canon, the large families (memory-manage, audit-seal,
+    arifos-constitutional-judge, observe-ground, verify-gate, zen-router, meta-mesa) are
+    address bands; the genuine copy-level duplication was demolished in the merge pass.
+  n=4  [memory-manage]  same body (pure address)
+        capabilities/synthesis/memory-manage
+        memory-manage
+        primitives/memory/memory-manage
+        substrate/memory-manage
+  n=4  [audit-seal]  same body (pure address)
+        audit-seal
+        capabilities/synthesis/audit-seal
+        primitives/memory/audit-seal
+        substrate/audit-seal
+  n=4  [arifos-constitutional-judge]  same body (pure address)
+        arifos-constitutional-judge
+        capabilities/audit/arifos-constitutional-judge
+        domains/apex/arifos-constitutional-judge
+        primitives/judge/arifos-constitutional-judge
+  n=4  [observe-ground]  same body (pure address)
+        domains/apex/observe-ground
+        observe-ground
+        primitives/observe/observe-ground
+        substrate/observe-ground
+  n=4  [verify-gate]  same body (pure address)
+        domains/apex/verify-gate
+        primitives/verify/verify-gate
+        substrate/verify-gate
+        verify-gate
+  n=4  [meta-mesa]  same body (pure address)
+        claude-meta-mesa
+        meta-mesa
+        opencode-meta-mesa
+        qwen-meta-mesa
+  n=3  [ocr-optical-compression]  same body (pure address)
+        aaa-ocr-optical-compression
+        capabilities/media/AAA-OCR-optical-compression
+        primitives/observe/AAA-OCR-optical-compression
+  n=3  [plan-dag]  same body (pure address)
+        agi-plan-dag
+        capabilities/planning/AGI-plan-dag
+        primitives/think/AGI-plan-dag
+  n=3  [mcp-testing]  same body (pure address)
+        capabilities/coding/mcp-testing
+        domains/forge/mcp-testing
+        engineering/mcp-testing
+  n=3  [verify-work]  same body (pure address)
+        capabilities/coding/verify-work
+        domains/forge/verify-work
+        engineering/verify-work
+  n=3  [security-audit]  same body (pure address)
+        capabilities/coding/security-audit
+        domains/forge/security-audit
+        engineering/security-audit
+  n=3  [code-review]  DIFFERENT BODY
+        capabilities/coding/code-review
+        domains/forge/code-review
+        engineering/code-review
+  n=3  [mcp-ops]  DIFFERENT BODY
+        capabilities/coding/mcp-ops
+        domains/forge/mcp-ops
+        engineering/mcp-ops
+  n=3  [apex-gate-evaluator]  same body (pure address)
+        capabilities/audit/apex-gate-evaluator
+        domains/apex/apex-gate-evaluator
+        governance/apex-gate-evaluator
+  n=3  [apex-verdict]  same body (pure address)
+        capabilities/audit/apex-verdict
+        domains/apex/apex-verdict
+        governance/apex-verdict
+  n=3  [kernel-bind]  same body (pure address)
+        domains/apex/kernel-bind
+        kernel-bind
+        substrate/kernel-bind
+  n=3  [my-reality-stack]  same body (pure address)
+        MY-REALITY-STACK
+        domains/capital/MY-REALITY-STACK
+        my-reality-stack
+  n=3  [route-dispatch]  same body (pure address)
+        route-dispatch
+        substrate/route-dispatch
+        workflows/core/route-dispatch
+  n=2  [audio-qualia-doctrine]  same body (pure address)
+        aaa-audio-qualia-doctrine
+        capabilities/media/AAA-audio-qualia-doctrine
+  n=2  [token-plan-image]  same body (pure address)
+        capabilities/media/token-plan-image
+        token-plan-image
+
+T3. TOP AUDIT-OVERLAP FAMILIES (grouped by the QUESTION ANSWERED, not the name)
+  "does this claim survive the first-party record?"  -> 3 identities
+        domains/general/apex/governance-core/relationship-memory-isolation
+        domains/general/workshop/personal-lane/relationship-kernel
+        first-party-evidence-audit
+  "how do I seal/record a decision?"  -> 5 identities
+        aaa-governance/aaa-doctrine-sealing
+        domains/general/court/seal-ritual/arifos-kernel-seal-ritual
+        governance-core/canon-doctrine-sealing
+        propose-seal
+        seal-discipline
+  "is the agent's claim true?"  -> 13 identities
+        audit/agent-claim-verification
+        audit/divergent-claim-reconciliation
+        court-audit/inherited-claim-audit
+        court/predictive-claim-falsification
+        domains/general/court/court-audit/agent-finding-verification
+        domains/general/court/court-audit/claim-receipt-discipline
+        domains/general/forge/federation-release/deployment-claim-verification
+        domains/general/workshop/research-core/health-product-claim-audit
+        geo/geox-basin-claims-audit
+        governance/claim-ledger-integrity
+        governance/durable-claim-ledger
+        governance/public-claims-maintenance
+        ... +1 more
+  "is the deployment what it says?"  -> 13 identities
+        domains/forge/cicd-deploy
+        domains/forge/drift-watch
+        domains/forge/skill-drift
+        domains/general/apex/governance-core/federation-mcp-drift-audit
+        domains/general/forge/federation-release/deploy-drift-verification
+        domains/general/forge/federation-release/deployment-claim-verification
+        domains/general/forge/federation-release/fork-drift-assessment
+        engineering/cicd-deploy
+        engineering/drift-watch
+        engineering/skill-drift
+        federation-release-attestation
+        qwencloud-deploy
+        ... +1 more
+  "who owns the skill library?"  -> 11 identities
+        core/governance/skill-portfolio-audit
+        domains/forge/skill-creator
+        domains/forge/skill-drift
+        domains/forge/skill-inventory
+        domains/general/aaa/skill-mesh/skill-audit-methodology
+        domains/general/aaa/skill-mesh/skill-taxonomy-reclassification
+        domains/general/aaa/skill-mesh/skills-cold-storage-ops
+        engineering/skill-creator
+        engineering/skill-drift
+        engineering/skill-inventory
+        skill-library-integrity
+  "does this human read match reality?"  -> 2 identities
+        cognitive-reflex/public-persona-read
+        human-state-estimation
+
+T4. INCIDENT FOSSILS (name carries the one-off event, not the capability)
+  media-lane-outage-ladder   :: Use when a media lane is quota-gated or blocked.
+  media/provider-pool-outage-fallback   :: Use when a provider quota pool dies mid-task; swap lanes.
+
+T5. ALIASES PRETENDING TO BE SKILLS (body is a redirect)
+
+T6. GHOST AUDIT — registry surface vs reality
+    named capabilities across surfaces : 1789
+      verified                 1015
+      ghost                    557
+      retired-but-referenced   208
+      frozen-by-policy         8
+      empty                    1
+
+    TRUE GHOSTS (name referenced, no loadable body, no successor declared):
+      NAME geo-basin                            REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER agents   STATUS ghost
+      NAME geox-basin-engines                   REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER agents   STATUS ghost
+      NAME geo-constitution                     REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER agents   STATUS ghost
+      NAME geox-constitution                    REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER agents   STATUS ghost
+      NAME geo-petrophysics                     REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER agents   STATUS ghost
+      NAME geox-petrophysics-bounds             REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER agents   STATUS ghost
+      NAME geo-writing                          REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER agents   STATUS ghost
+      NAME geox-scientific-writing              REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER agents   STATUS ghost
+      NAME geo-well-tie                         REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER agents   STATUS ghost
+      NAME geox-well-tie-pipeline               REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER agents   STATUS ghost
+      NAME geo-artifact-rigor                   REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER agents   STATUS ghost
+      NAME geo-prospect                         REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER agents   STATUS ghost
+      NAME prospect-maturation-workflow         REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER agents   STATUS ghost
+      NAME wealth-reason                        REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER agents   STATUS ghost
+      NAME wealth-capital-reasoning             REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER agents   STATUS ghost
+      NAME wealth-thermo                        REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER agents   STATUS ghost
+      NAME wealth-capital-thermodynamics        REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER agents   STATUS ghost
+      NAME wealth-collapse                      REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER agents   STATUS ghost
+      NAME wealth-collapse-signature            REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER agents   STATUS ghost
+      NAME well-boundary                        REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER agents   STATUS ghost
+      NAME well-readiness                       REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER agents   STATUS ghost
+      NAME forge-exec                           REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER agents   STATUS ghost
+      NAME kernel-verbs-aforge-hands            REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER agents   STATUS ghost
+      NAME forge-verbs                          REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER agents   STATUS ghost
+      NAME dev-github                           REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME github-ops                           REG SKILL_ALIAS_TABLE.related          BODY none  OWNER aaa      STATUS ghost
+      NAME github-runbook                       REG SKILL_ALIAS_TABLE.related          BODY none  OWNER aaa      STATUS ghost
+      NAME dev-ci-diagnose                      REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME github-ci-diagnose                   REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME dev-issue-triage                     REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME github-issue-triage                  REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME dev-pr-review                        REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME github-pr-review                     REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME dev-pr-governance                    REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME pr-review-governance                 REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME dev-wiki                             REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME code-wiki                            REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME dev-analysis                         REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME code-analysis-skills                 REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME dev-repo-audit                       REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME readme-truth-check                   REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME arifos-recursive-audit               REG SKILL_ALIAS_TABLE.related          BODY none  OWNER aaa      STATUS ghost
+      NAME ops-docker                           REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME docker                               REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME vps-docker-ops                       REG SKILL_ALIAS_TABLE.related          BODY none  OWNER aaa      STATUS ghost
+      NAME docker-entropy-ops                   REG SKILL_ALIAS_TABLE.related          BODY none  OWNER aaa      STATUS ghost
+      NAME docker-thermodynamics                REG SKILL_ALIAS_TABLE.related          BODY none  OWNER aaa      STATUS ghost
+      NAME ops-vps                              REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME vps-docker-runbook                   REG SKILL_ALIAS_TABLE.related          BODY none  OWNER aaa      STATUS ghost
+      NAME spatial-grounding                    REG SKILL_ALIAS_TABLE.related          BODY none  OWNER aaa      STATUS ghost
+      NAME ops-mcp-builder                      REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER agents   STATUS ghost
+      NAME mcp-builder-doctrine                 REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER agents   STATUS ghost
+      NAME mcp-zen-authoring                    REG SKILL_ALIAS_TABLE.related          BODY none  OWNER agents   STATUS ghost
+      NAME mcp-federation-ops                   REG SKILL_ALIAS_TABLE.related          BODY none  OWNER aaa      STATUS ghost
+      NAME ops-mcp-probe                        REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME mcp-smoke-test                       REG SKILL_ALIAS_TABLE.related          BODY none  OWNER aaa      STATUS ghost
+      NAME ops-infra                            REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME infra-guardian                       REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME ops-incident                         REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME incident-triage                      REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME incident-escalation                  REG SKILL_ALIAS_TABLE.related          BODY none  OWNER aaa      STATUS ghost
+      NAME ops-spatial                          REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME ops-health                           REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME federation-orchestrator              REG SKILL_ALIAS_TABLE.related          BODY none  OWNER aaa      STATUS ghost
+      NAME mcp-lifeguard                        REG SKILL_ALIAS_TABLE.related          BODY none  OWNER aaa      STATUS ghost
+      NAME ops-mcp-lifeguard                    REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME ops-mcp-testing                      REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER kimi     STATUS ghost
+      NAME ops-model-monitor                    REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME model-fallback-monitor               REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME apex-audit-coverage                  REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER kimi     STATUS ghost
+      NAME apex-authority-check                 REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER kimi     STATUS ghost
+      NAME apex-floor-check                     REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER kimi     STATUS ghost
+      NAME apex-reversibility                   REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER kimi     STATUS ghost
+      NAME apex-scope-check                     REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER kimi     STATUS ghost
+      NAME apex-tool-gate                       REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER kimi     STATUS ghost
+      NAME apex-verdict-hold                    REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER kimi     STATUS ghost
+      NAME apex-verdict-seal                    REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER kimi     STATUS ghost
+      NAME ops-compressor                       REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME ops-compress                         REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME ops-data-compress                    REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME ops-infra-crons                      REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME dev-web-builder                      REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME dev-db-stack                         REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME dev-fastapi                          REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME dev-did-identity                     REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME dev-t3a-matrix                       REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME dev-komda-law                        REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME dev-sct-ingress                      REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME dev-seal-close                       REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME dev-jsonld                           REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME domain-causal                        REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME domain-delta-omega-psi               REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME domain-wealth-claim                  REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME domain-summarize                     REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME domain-federation-hs                 REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME domain-release-attest                REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME dev-sct-ingress-deprecated           REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME ops-google                           REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME google-workspace-cli                 REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME ops-transport                        REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER agents   STATUS ghost
+      NAME transport-physics-intelligence       REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER agents   STATUS ghost
+      NAME meta-skill-create                    REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME meta-skill-lint                      REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME skill-trigger-linter                 REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME meta-rsi                             REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER agents   STATUS ghost
+      NAME recursive-self-improvement           REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER agents   STATUS ghost
+      NAME cooling-ledger-rsi                   REG SKILL_ALIAS_TABLE.related          BODY none  OWNER agents   STATUS ghost
+      NAME meta-rsi-audit                       REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME meta-evals                           REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME arifos-evals                         REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME meta-plan                            REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME arifos-plan-dag                      REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME meta-atlas                           REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME meta-mesa-skill-atlas                REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME meta-rsi-cool                        REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER agents   STATUS ghost
+      NAME meta-trust-map                       REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER agents   STATUS ghost
+      NAME symbolic-order-trust-architecture    REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER agents   STATUS ghost
+      NAME a2a-onboard                          REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME a2a-kimi                             REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME kimi-code-aaa                        REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME a2a-sovereign                        REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME apa-sovereign-connector              REG SKILL_ALIAS_TABLE.related          BODY none  OWNER agents   STATUS ghost
+      NAME a2a-spawn                            REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME subagent-spawn-template              REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME sec-secrets                          REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME secret-hygiene                       REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER opencode STATUS ghost
+      NAME secret-safety-scan                   REG SKILL_ALIAS_TABLE.related          BODY none  OWNER aaa      STATUS ghost
+      NAME sec-telegram                         REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME telegram-security-audit              REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME research-summarize                   REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME summarize-pro                        REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME research-search                      REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER agents   STATUS ghost
+      NAME ask-search                           REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER agents   STATUS ghost
+      NAME research-deep                        REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME explorer-intelligence-architecture   REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME multi-discipline-critique            REG SKILL_ALIAS_TABLE.related          BODY none  OWNER aaa      STATUS ghost
+      NAME kernel-eureka                        REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME quantum-eureka-doctrine              REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME meta-skill-unification               REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME skill-unification                    REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME agi-sovereign-connector              REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME agi-prospect-maturation              REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME asi-knowledge-writeback              REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME asi-cooling-ledger-rsi               REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME asi-knowledge-graph-query            REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME asi-unified-memory                   REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME forge-init-intent-classify           REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME forge-phase-escalation               REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME forge-search                         REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME forge-seek                           REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME archive-vault-seal                   REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME audit-clarity-canon                  REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME audit-post-seal-sweep                REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME audit-symbolic-collective-bias       REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME audit-symbolic-trust                 REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME kernel-verbs-forge-hands             REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME kernel-reality-skills                REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME kernel-session-inhabit               REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME kernel-sovereign-recognize           REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME shadow-diagnostic                    REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME mcp-transport-physics                REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME claim-receipt-v1                     REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME claim-verification-gate              REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME well-boundary-sense                  REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME well-somatic-kernel                  REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME geox-artifact-rigor                  REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME kernel-qubit-substrate               REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER opencode STATUS ghost
+      NAME archive-code-wiki                    REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME archive-docker                       REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME fastmcp                              REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME archive-fastmcp                      REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME archive-federation-orchestrator      REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME archive-github-ops                   REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME archive-github-runbook               REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME archive-github                       REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME archive-incident-escalation          REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME archive-incident-triage              REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME archive-infra-guardian               REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME archive-mcp-federation-ops           REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME archive-mcp-lifeguard                REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME archive-mcp-ops                      REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME archive-mcp-smoke-test               REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME mcporter                             REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME archive-mcporter                     REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME precommit-gate                       REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME archive-precommit-gate               REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME precommit-review                     REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME archive-precommit-review             REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME archive-readme-truth-check           REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME route-least-power                    REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME archive-route-least-power            REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME archive-secret-hygiene               REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME archive-secret-safety-scan           REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME archive-skill-creator                REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME archive-spatial-grounding            REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME archive-verify-runtime               REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME constitutional-reasoning             REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME archive-constitutional-reasoning     REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME drift-response                       REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME archive-drift-response               REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME archive-drift-watch                  REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME archive-multi-discipline-critique    REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME archive-docker-entropy-ops           REG SKILL_ALIAS_TABLE.primary_disk_nam BODY none  OWNER aaa      STATUS ghost
+      NAME agi-claude-xml-structured-reasoning  REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER kimi     STATUS ghost
+      NAME agi-hermes-system-prompt-voice       REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER kimi     STATUS ghost
+      NAME agi-codex-chain-of-thought           REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER kimi     STATUS ghost
+      NAME agi-emd-decode                       REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME agi-emd-metabolize                   REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME forge-grok-profile                   REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER kimi     STATUS ghost
+      NAME tri-witness                          REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME trinity-witness                      REG SKILL_ALIAS_TABLE.related          BODY none  OWNER —        STATUS ghost
+      NAME agi-entropy-lock-prime               REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER aaa      STATUS ghost
+      NAME trinity-design-seam                  REG SKILL_ALIAS_TABLE.v3_name          BODY none  OWNER -        STATUS ghost
+      NAME 🜂-qubit-substrate                    REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME agentic-dream-engine                 REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME agentic-web-optimization             REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME nusantara-intelligence-substrate     REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME aaa-agent-invariants                 REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME agent-memory-bridge                  REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME arif-agent-bootstrap                 REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME arif-mcp-governor                    REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME arifos-observability                 REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME unified-skill-binding                REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME arifos-act                           REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME arifos-governance                    REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME f1-gate                              REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME parallel-authority-detection         REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME arifos-mcp-federation                REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME infra-crons                          REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME well-boundary-repair                 REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME vault-integrity                      REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME vault999-integrity                   REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME vault999-reader                      REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME zen-organ-memory                     REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME agentic-architecture                 REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME fabrication-prevention               REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME autonomous-governed-execution        REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME arifos-arconstitutional-audit        REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME 070-lock-humility-godel              REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME github-workflow                      REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME ethical-critique                     REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME deep-memory-synthesis                REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME anti-beautiful-one                   REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME substrate-validation                 REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME hermes-human-model                   REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME sovereignty-entropy-guard            REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME scar-forge                           REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME symbolic-order-collective-bias       REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME design-task-schema                   REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME propose-agent-mesh                   REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME update-skill-exposure                REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME design-handoff-object                REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME evaluate-treaty                      REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME evaluate-delegation                  REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME verify-agent-card                    REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME emit-receipt                         REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME check-floor-compliance               REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME audit-task-history                   REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME issue-hold                           REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME run-task                             REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME dispatch-task                        REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME stream-progress                      REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME manage-task-lifecycle                REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME receive-handoff                      REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME route_task                           REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME enforce_sovereign_veto               REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME aggregate_capabilities               REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME broker_webhooks                      REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME defend_injection                     REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME federated-memory-query               REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME godel-humility-lock                  REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME plan-mode                            REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME subagent-spawn                       REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME implement-loop                       REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME mcp-federation                       REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME workflow-dag                         REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME godel-humility                       REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME image-video                          REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME code-execution                       REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME git-operations                       REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME deployment                           REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME workflow-automation                  REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME agentic-builder                      REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME webmcp-site-builder                  REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME constitutional-boot                  REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME arifos-kernel-bridge                 REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME federation-routing                   REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME vault-seal                           REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME sovereign-veto-respect               REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME gateway-routing                      REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME agent-dispatch                       REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME agent-handoff                        REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME web-research                         REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME browser-automation                   REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME shell-execution                      REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME memory-search                        REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME status-query                         REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME openclaw-doctor-recipes              REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME mcp-boot-failure-diagnosis           REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME arif-federation-ops                  REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME kanban-playbook                      REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME federation-coding-agent              REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME 700-clean-audit-immune               REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME 555-memory-session-bind              REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME aaa-zen                              REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME fff-loop-protocol                    REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME arifos-paradox-engine                REG SKILL_ALIAS_TABLE.reverse_disk_to_ BODY none  OWNER -        STATUS ghost
+      NAME arif-governed-autonomous-execution   REG SKILL_ALIAS_TABLE.harness_native   BODY none  OWNER -        STATUS ghost
+      NAME grok-zen-aaa-substrate               REG SKILL_ALIAS_TABLE.harness_native   BODY none  OWNER -        STATUS ghost
+      NAME grok-federation-skill-upgrader       REG SKILL_ALIAS_TABLE.harness_native   BODY none  OWNER -        STATUS ghost
+      NAME orthogonal-skill-update              REG SKILL_ALIAS_TABLE.harness_native   BODY none  OWNER -        STATUS ghost
+      NAME pptx                                 REG SKILL_ALIAS_TABLE.harness_native   BODY none  OWNER -        STATUS ghost
+      NAME verify                               REG OWNERSHIP_MAP.P2_verification_chai BODY none  OWNER VERIFY   STATUS ghost
+      NAME witness                              REG OWNERSHIP_MAP.P2_verification_chai BODY none  OWNER WITNESS  STATUS ghost
+      NAME seal                                 REG OWNERSHIP_MAP.P2_verification_chai BODY none  OWNER SEAL     STATUS ghost
+      NAME mcp-build                            REG OWNERSHIP_MAP.P3_mcp_tooling.owner BODY none  OWNER MCP-Build STATUS ghost
+      NAME mcp-verify                           REG OWNERSHIP_MAP.P3_mcp_tooling.owner BODY none  OWNER MCP-Verify STATUS ghost
+      NAME mcp-operate                          REG OWNERSHIP_MAP.P3_mcp_tooling.owner BODY none  OWNER MCP-Operate STATUS ghost
+      NAME search                               REG OWNERSHIP_MAP.P4_research.owner    BODY none  OWNER SEARCH   STATUS ghost
+      NAME evidence                             REG OWNERSHIP_MAP.P4_research.owner    BODY none  OWNER EVIDENCE STATUS ghost
+      NAME synthesis                            REG OWNERSHIP_MAP.P4_research.owner    BODY none  OWNER SYNTHESIS STATUS ghost
+      NAME scripts                              REG GENEALOGY.skills                   BODY none  OWNER -        STATUS ghost
+      NAME warga-skills                         REG GENEALOGY.skills                   BODY none  OWNER -        STATUS ghost
+      NAME copilot_autonomous_pipeline          REG GENEALOGY.skills                   BODY none  OWNER -        STATUS ghost
+      NAME kimi-contrast                        REG GENEALOGY.skills                   BODY none  OWNER -        STATUS ghost
+      NAME kimi-primer                          REG GENEALOGY.skills                   BODY none  OWNER -        STATUS ghost
+      NAME kimi-router                          REG GENEALOGY.skills                   BODY none  OWNER -        STATUS ghost
+      NAME kimi-skill-reflector                 REG GENEALOGY.skills                   BODY none  OWNER -        STATUS ghost
+      NAME apx_init_substrate                   REG REGISTRY_V3.layers.substrate       BODY none  OWNER -        STATUS ghost
+      NAME know-pragmatics                      REG REGISTRY_V3.layers.knowledge       BODY none  OWNER -        STATUS ghost
+      NAME proxy-verification-audit             REG PLACEMENT.placement.skills         BODY none  OWNER -        STATUS ghost
+      NAME enforcement-coverage-audit           REG PLACEMENT.placement.skills         BODY none  OWNER -        STATUS ghost
+      NAME political-intelligence-briefing      REG PLACEMENT.placement.skills         BODY none  OWNER -        STATUS ghost
+      NAME name-requires-mechanism              REG PLACEMENT.placement.skills         BODY none  OWNER -        STATUS ghost
+      NAME control-integrity-audit              REG PLACEMENT.placement.skills         BODY none  OWNER -        STATUS ghost
+      NAME declared-vs-enforced-control-audit   REG PLACEMENT.placement.skills         BODY none  OWNER -        STATUS ghost
+      NAME control-mechanism-audit              REG PLACEMENT.placement.skills         BODY none  OWNER -        STATUS ghost
+      NAME control-seal-verification            REG PLACEMENT.placement.skills         BODY none  OWNER -        STATUS ghost
+      NAME named-mechanism-audit                REG PLACEMENT.placement.skills         BODY none  OWNER -        STATUS ghost
+    unique ghost names: 339
+
+    DETECTOR FALSE POSITIVES MEASURED: 582 names that a naive
+      pass called ghost were resolved once the index covered all skill roots and
+      composite keys were normalised. Rule: a ghost claim needs the same warrant as
+      a presence claim — sweep every root before calling a capability dead.
+
+============================================================================================
+WHAT THIS AUDIT DID NOT DO
+============================================================================================
+  * No skill was created, renamed for aesthetics, or given a new doctrine name.
+  * No mutation was made from the ghost list: a ghost is a REGISTRY defect. Repairing
+    it means editing hand-maintained governance files, which is an ownership decision.
+  * The knowledge layer (know-physics / know-math / know-language / +1) is confirmed
+    ghost: BOOTSTRAP phase 7 names 3 of them, the registry layer block names 4, and
+    only liveness.json exists on disk. Pre-existing, unchanged by this pass.

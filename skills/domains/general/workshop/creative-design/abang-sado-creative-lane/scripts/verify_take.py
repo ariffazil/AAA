@@ -121,10 +121,17 @@ def main() -> int:
     heard = (j.get("text") or "").strip()
 
     ns, nh = norm(src, aliases), norm(heard, aliases)
-    sm = difflib.SequenceMatcher(None, ns, nh)
+    # TOKEN-level diff. The opcodes of a SequenceMatcher run on the normalised
+    # STRINGS carry CHARACTER offsets; indexing a token list with them is a
+    # category error that manufactures phantom words. Measured 2026-09-19: a
+    # take reported INSERTED ['pandang'] for a word plainly present in the
+    # transcript, because the char-level 'insert' opcode for the 'h' in
+    # `tau`→`tahu` was used to slice the token list. Diff the token lists.
+    ns_t, nh_t = ns.split(), nh.split()
+    sm = difflib.SequenceMatcher(None, ns_t, nh_t)
     match = sm.ratio() * 100
-    ins = [w for op in sm.get_opcodes() if op[0] == "insert" for w in nh.split()[op[3]:op[4]]]
-    dele = [w for op in sm.get_opcodes() if op[0] == "delete" for w in ns.split()[op[1]:op[2]]]
+    ins = [w for op in sm.get_opcodes() if op[0] == "insert" for w in nh_t[op[3]:op[4]]]
+    dele = [w for op in sm.get_opcodes() if op[0] == "delete" for w in ns_t[op[1]:op[2]]]
     miss_real = [w for w in dele if w not in FILLERS]
 
     print(f"take     : {a.take}")

@@ -1,0 +1,127 @@
+{
+  "ledger": "voice-lane namespace-collapse merge",
+  "authority": "F13 sovereign in-chat order 2026-09-19 (namespace entropy compression)",
+  "merged_into": "/root/AAA/skills/voice-lane/SKILL.md",
+  "merged_skill_sha256": "3ded0747a492ed090f89ee6ee7d08090d80fb9012944356b5790fb6d3bfe7b4d",
+  "merged_skill_bytes": 67775,
+  "retired_tree": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/voice-lane",
+  "created_utc": "2026-09-19T01:14:28.901043+00:00",
+  "hash_algorithm": "sha256 of <original>/SKILL.md computed BEFORE the move",
+  "entries": [
+    {
+      "skill": "sovereign-tts-lanes",
+      "original_abs_path": "/root/AAA/skills/audio/sovereign-tts-lanes",
+      "new_abs_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/voice-lane/sovereign-tts-lanes",
+      "skill_md_sha256_before_move": "eed52a2ee89b4e8facfcf57a33e83bb84f44e063ef45b36682231d0773c59b2c",
+      "skill_md_sha256_after_move": "eed52a2ee89b4e8facfcf57a33e83bb84f44e063ef45b36682231d0773c59b2c",
+      "sha256_match": true,
+      "files_moved": [
+        "SKILL.md"
+      ],
+      "file_count": 1
+    },
+    {
+      "skill": "tts-edge-fallback",
+      "original_abs_path": "/root/AAA/skills/domains/general/workshop/voice-stack/tts-edge-fallback",
+      "new_abs_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/voice-lane/tts-edge-fallback",
+      "skill_md_sha256_before_move": "4f90bdca5f2f57ebf76a701e85d59da6ec99532f11843633f78b22ac0c0ed4f2",
+      "skill_md_sha256_after_move": "4f90bdca5f2f57ebf76a701e85d59da6ec99532f11843633f78b22ac0c0ed4f2",
+      "sha256_match": true,
+      "files_moved": [
+        "SKILL.md",
+        "references/arif-voice-note-proxy.md",
+        "references/edge-tts-ssml-ceiling.md",
+        "references/mimo-tts-api-quirks.md",
+        "references/nusantara-prosody-engine.md"
+      ],
+      "file_count": 5
+    },
+    {
+      "skill": "qwencloud-audio-tts",
+      "original_abs_path": "/root/AAA/skills/qwencloud-audio-tts",
+      "new_abs_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/voice-lane/qwencloud-audio-tts",
+      "skill_md_sha256_before_move": "f3fe90e68b509d6634db05a9365460ed942fb045a40587cccc66b66dc339e3c2",
+      "skill_md_sha256_after_move": "f3fe90e68b509d6634db05a9365460ed942fb045a40587cccc66b66dc339e3c2",
+      "sha256_match": true,
+      "files_moved": [
+        "SKILL.md",
+        "SKILL.md.bak-precompile",
+        "references/agent-compatibility.md",
+        "references/api-guide.md",
+        "references/codingplan.md",
+        "references/cosyvoice-guide.md",
+        "references/custom-oss.md",
+        "references/execution-guide.md",
+        "references/prompt-guide.md",
+        "references/sources.md",
+        "scripts/gossamer.py",
+        "scripts/qwencloud_lib.py",
+        "scripts/tts.py",
+        "scripts/tts_cosyvoice.py"
+      ],
+      "file_count": 14
+    },
+    {
+      "skill": "audio-roundtrip-diagnostics",
+      "original_abs_path": "/root/AAA/skills/audio/audio-roundtrip-diagnostics",
+      "new_abs_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/voice-lane/audio-roundtrip-diagnostics",
+      "skill_md_sha256_before_move": "ca43c4e4cccc967e2519350cb8e1d3ba1cba1a89fc30d19bf997474bfa848d1d",
+      "skill_md_sha256_after_move": "ca43c4e4cccc967e2519350cb8e1d3ba1cba1a89fc30d19bf997474bfa848d1d",
+      "sha256_match": true,
+      "files_moved": [
+        "SKILL.md"
+      ],
+      "file_count": 1
+    },
+    {
+      "skill": "tts-roundtrip-scoring",
+      "original_abs_path": "/root/AAA/skills/voice-stack/tts-roundtrip-scoring",
+      "new_abs_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/voice-lane/tts-roundtrip-scoring",
+      "skill_md_sha256_before_move": "ca47f27aa214eada8adfe8f6c21e433f0ee20203d4d19b8818fe193ea0138839",
+      "skill_md_sha256_after_move": "ca47f27aa214eada8adfe8f6c21e433f0ee20203d4d19b8818fe193ea0138839",
+      "sha256_match": true,
+      "files_moved": [
+        "SKILL.md"
+      ],
+      "file_count": 1
+    },
+    {
+      "skill": "voice-lane-verification",
+      "original_abs_path": "/root/AAA/skills/verification-discipline/voice-lane-verification",
+      "new_abs_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/voice-lane/voice-lane-verification",
+      "skill_md_sha256_before_move": "e30b9d14c81fb20266684ce70fdebd074e6d2ac7b0b7a1f88221b021ed72e6e5",
+      "skill_md_sha256_after_move": "e30b9d14c81fb20266684ce70fdebd074e6d2ac7b0b7a1f88221b021ed72e6e5",
+      "sha256_match": true,
+      "files_moved": [
+        "SKILL.md"
+      ],
+      "file_count": 1
+    },
+    {
+      "skill": "minimax-voice-design-prompts",
+      "original_abs_path": "/root/AAA/skills/domains/general/workshop/voice-stack/minimax-voice-design-prompts",
+      "new_abs_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/voice-lane/minimax-voice-design-prompts",
+      "skill_md_sha256_before_move": "4d5de2a8805ea79d0c3d60ad2b993a010c5f4e512ebe85c4e488bceb719dddea",
+      "skill_md_sha256_after_move": "4d5de2a8805ea79d0c3d60ad2b993a010c5f4e512ebe85c4e488bceb719dddea",
+      "sha256_match": true,
+      "files_moved": [
+        "SKILL.md"
+      ],
+      "file_count": 1
+    },
+    {
+      "skill": "nusantara-acoustic-infrastructure",
+      "original_abs_path": "/root/AAA/skills/domains/general/workshop/voice-stack/nusantara-acoustic-infrastructure",
+      "new_abs_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/voice-lane/nusantara-acoustic-infrastructure",
+      "skill_md_sha256_before_move": "e5b76a9f13b9ffc2af8daf1bb1dd3d6c1b63c6282e159bc958da23b428bf934f",
+      "skill_md_sha256_after_move": "e5b76a9f13b9ffc2af8daf1bb1dd3d6c1b63c6282e159bc958da23b428bf934f",
+      "sha256_match": true,
+      "files_moved": [
+        "SKILL.md",
+        "references/acoustic-sovereign-strategy.md",
+        "references/voice-loop-pipeline.md"
+      ],
+      "file_count": 3
+    }
+  ]
+}

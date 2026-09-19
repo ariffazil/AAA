@@ -127,8 +127,23 @@ projection derive from it. Patching projections one by one is the failing anti-p
 6. **Read the same field at every nesting level** of a single response before trusting any
 of it.
 7. **A contradiction is same-question, same-axis, different answer.** Verify the axis
-before calling one. Execution status, governance verdict and lifecycle state legitimately
-differ.
+   before calling one. Execution status, governance verdict and lifecycle state legitimately
+   differ.
+8. **A registry that cannot be enumerated cannot be conformed against.** An index that returns
+   counts, metadata and descriptions but **no per-skill / per-tool names** forces every client to
+   guess — so it hides both staleness and absence. Grade an index by whether a caller can derive
+   the complete name set from it alone; if not, that is the first defect to report, ahead of any
+   individual missing name.
+9. **Dispatch the primitive, do not read a doc.** The live wire surface is the only authority:
+   ```bash
+   curl -s -X POST http://127.0.0.1:8088/mcp -H 'Content-Type: application/json' \
+     -H 'Accept: application/json, text/event-stream' \
+     -d '{"jsonrpc":"2.0","id":1,"method":"resources/list"}'
+   # then prompts/list, then resources/read on the URI that claims to cover the question
+   ```
+   The dual `Accept` value is required — a POST without `text/event-stream` is refused at the
+   transport layer before any handler runs, which reads exactly like a dead capability but is a
+   transport refusal. Distinguish those two before reporting a negative.
 
 ## Procedure
 
@@ -199,6 +214,17 @@ behaviour actually changed.
   code. Divergent vantage is the default explanation; fabrication is the rare one.
 - **Contradiction false positive.** Verify the axis before calling a same-envelope
   disagreement a defect.
+- **A served registry that is a COPY of a live tree drifts monotonically.** Whenever the thing
+  you are conformance-checking is materialised — rsync'd, baked into an image, snapshotted into a
+  ConfigMap, symlinked from a staging dir — compare `stat` mtime and entry count of the **served**
+  root against the **live** root, and name the sync job that is supposed to close the gap. No sync
+  job means it is a one-time bake wearing a registry's name. Do not report the individual missing
+  entries until the copy itself is named as the cause — otherwise you produce a list of symptoms
+  and the next reader re-derives the same list.
+- **A guard that passes its own tests can still refuse valid inputs.** A containment/rejection
+  control is graded by its stated INTENT, not by its green suite: read what it is defending and
+  then count what it rejects. Refusals of legitimate, correctly-shaped inputs are a defect of the
+  control, not evidence that the inputs were invalid.
 - **A declaration layer that nothing reads is not evidence the capability is unwired.** A config
   block of switch-shaped keys (`*_locked_*`, `*_default`, `ENABLE_*`) can be completely inert — no
   reader anywhere — while the live route sits in a *different* registry one level over: a named

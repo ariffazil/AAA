@@ -1,0 +1,45 @@
+{
+  "ledger_version": "1.0.0",
+  "merge": "agentic-state",
+  "operation": "namespace-collapse",
+  "date": "2026-09-19",
+  "authority": "F13 sovereign in-chat order 2026-09-19 \u2014 compress namespace entropy (same capability, many identities)",
+  "canonical_skill": "/root/AAA/skills/agentic-state/SKILL.md",
+  "retired_root": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/agentic-state",
+  "hash_algorithm": "sha256",
+  "hash_note": "sha256 computed on each SKILL.md BEFORE the folder was moved",
+  "merged_from": [
+    {
+      "folder": "claude-agentic-state",
+      "original_path": "/root/AAA/skills/claude-agentic-state",
+      "retired_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/agentic-state/claude-agentic-state",
+      "skill_md_sha256": "d2dd4c7711ce716069735be436ea081c555f2278e9472eb2e29cdc4515af3c2d",
+      "skill_md_bytes": 5695,
+      "moved_at": "2026-09-19T01:09:33Z"
+    },
+    {
+      "folder": "kimi-agentic-state",
+      "original_path": "/root/AAA/skills/kimi-agentic-state",
+      "retired_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/agentic-state/kimi-agentic-state",
+      "skill_md_sha256": "5c8ecc5df158b88105e447be7677aa630c9e81673b401096109668a79131e92b",
+      "skill_md_bytes": 5506,
+      "moved_at": "2026-09-19T01:09:33Z"
+    },
+    {
+      "folder": "opencode-agentic-state",
+      "original_path": "/root/AAA/skills/opencode-agentic-state",
+      "retired_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/agentic-state/opencode-agentic-state",
+      "skill_md_sha256": "05516c43ebbbce55c4a0ea227792d57fef907b8bc357f604bbd9e0bffffcfa1b",
+      "skill_md_bytes": 5133,
+      "moved_at": "2026-09-19T01:09:33Z"
+    },
+    {
+      "folder": "qwen-agentic-state",
+      "original_path": "/root/AAA/skills/qwen-agentic-state",
+      "retired_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/agentic-state/qwen-agentic-state",
+      "skill_md_sha256": "fe97f5e2470d51fd56aa60cfa0b57b125f856a5ed6d8368137c483ffa6334605",
+      "skill_md_bytes": 4737,
+      "moved_at": "2026-09-19T01:09:33Z"
+    }
+  ]
+}
