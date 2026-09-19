@@ -1,77 +1,39 @@
 {
-  "generated_at": "2026-09-18T18:57:22Z",
+  "generated_at": "2026-09-19T01:31:14Z",
   "root": "/root/AAA/skills",
   "schema_version": "1.0.0-orthogonal-discovery",
-  "count": 278,
-  "elapsed_ms": 21,
+  "count": 248,
+  "elapsed_ms": 45,
   "errors": [
-    ".archive-2026-09-18: no SKILL.md found",
     ".frozen: no SKILL.md found",
     ".learning: no SKILL.md found",
-    "apex_verdict_seal: no SKILL.md found",
+    ".system: no SKILL.md found",
+    "audio: no SKILL.md found",
     "core: no SKILL.md found",
     "domains: no SKILL.md found",
     "knowledge: no SKILL.md found",
     "primitives: no SKILL.md found",
+    "voice-stack: no SKILL.md found",
     "workflows: no SKILL.md found"
   ],
   "skills": [
     {
-      "name": "skill-creator",
-      "category": "skill",
-      "path": "/root/AAA/skills/.archive/skill-creator/SKILL.md",
+      "name": "drift-watch",
+      "category": "drift",
+      "path": "/root/AAA/skills/.archive/drift-watch/SKILL.md",
       "dir": "/root/AAA/skills/.archive",
       "frontmatter": {
-        "name": "skill-creator",
-        "description": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Codex's capabilities with specialized knowledge, workflows, or tool integrations.",
-        "metadata": "",
-        "short-description": "Create or update a skill"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "understand-dashboard",
-      "category": "understand",
-      "path": "/root/AAA/skills/.profile-archive/understand-dashboard/SKILL.md",
-      "dir": "/root/AAA/skills/.profile-archive",
-      "frontmatter": {
-        "name": "understand-dashboard",
-        "description": "Launch the interactive web dashboard to visualize a codebase's knowledge graph",
-        "argument-hint": "[project-path]"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "review-agent",
-      "category": "review",
-      "path": "/root/AAA/skills/.system/review-agent/SKILL.md",
-      "dir": "/root/AAA/skills/.system",
-      "frontmatter": {
-        "name": "review-agent",
-        "description": "Perform a read-only, defect-first review of a specified code change and return every actionable finding. Use when another agent delegates review of uncommitted changes, a base-branch diff, a commit, or custom review instructions."
-      },
-      "has_sk": true
-    },
-    {
-      "name": "COPILOT-zen-router",
-      "category": "copilot",
-      "path": "/root/AAA/skills/COPILOT-zen-router/SKILL.md",
-      "dir": "/root/AAA/skills/COPILOT-zen-router",
-      "frontmatter": {
-        "name": "COPILOT-zen-router",
-        "id": "copilot_zen_router",
-        "owner": "AAA",
-        "floor_scope": "[F1, F2, F4, F7]",
+        "name": "drift-watch",
+        "id": "drift-watch",
+        "version": "2.0.0",
         "description": ">",
-        "META-MESA": "Orthogonal skill taxonomy + intent→skill router for Copilot CLI.",
-        "trigger_phrases": "",
-        "harness": "copilot-cli",
-        "domain": "meta",
-        "risk_tier": "LOW",
-        "autonomy": "T1",
-        "forged": "2026-07-28",
-        "version": "1.0.0",
-        "autonomy_tier": "T1"
+        "owner": "AAA",
+        "risk_tier": "low",
+        "autonomy_tier": "T0",
+        "floor_scope": "[F1, F2, F4, F7, F11]",
+        "tags": "[drift, watch, runtime, source, baseline, manifest, registry, probe, health]",
+        "capability_tier": "fed-agent-subagent",
+        "ecology_state": "WARM"
       },
       "has_sk": true
     },
@@ -91,20 +53,6 @@
         "autonomy_tier": "T2",
         "triggers": "",
         "tags": "[federation, topology, manifest, mcp, protocol, deployment, attestation]"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "forge-mcp-testing",
-      "category": "forge",
-      "path": "/root/AAA/skills/FORGE-mcp-testing/SKILL.md",
-      "dir": "/root/AAA/skills/FORGE-mcp-testing",
-      "frontmatter": {
-        "name": "forge-mcp-testing",
-        "description": "ALIAS → mcp-testing (canonical). 12-point 2026-07-28 conformance matrix absorbed into mcp-testing Section 4. Frozen 2026-09-19 per skill-zen-collapse. Load mcp-testing instead.",
-        "superseded_by": "mcp-testing",
-        "frozen": "2026-09-19",
-        "freeze_path": "/root/AAA/skills/.frozen/2026-09-19-mcp-collapse/FORGE-mcp-testing/"
       },
       "has_sk": true
     },
@@ -158,35 +106,6 @@
         "floor_scope": "[F2, F7, F9, F10]",
         "autonomy_tier": "T0"
       },
-      "has_sk": true
-    },
-    {
-      "name": "RSI - Federation Mesh (Cross-Agent Recursive Improvement)",
-      "category": "rsi",
-      "path": "/root/AAA/skills/RSI-federation-mesh/SKILL.md",
-      "dir": "/root/AAA/skills/RSI-federation-mesh",
-      "frontmatter": {
-        "id": "RSI-federation-mesh",
-        "name": "RSI - Federation Mesh (Cross-Agent Recursive Improvement)",
-        "version": "1.0.0",
-        "description": "Unified recursive-improvement protocol across ALL agents in the federation (AAA, Hermes, Kimi, OpenClaw, Claude Code, Codex, OpenCode, Grok). Bridges session-level RSI to federation-wide sync: detects skill drift between agents, propagates fixes back to the canonical AAA catalog, and ensures the federation learns from every session — not just the agent that ran it.",
-        "owner": "AAA",
-        "risk_tier": "low",
-        "floor_scope": "[F2, F4, F7, F9, F11]",
-        "autonomy_tier": "T1",
-        "forged": "2026-08-08",
-        "forged_by": "333-AGI (subagent)",
-        "trigger_when": "",
-        "tags": "[meta, rsi, federation, mesh, cross-agent, recursive-improvement, sync, drift]"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "RSI-recursive-improvement",
-      "category": "rsi",
-      "path": "/root/AAA/skills/RSI-recursive-improvement/SKILL.md",
-      "dir": "/root/AAA/skills/RSI-recursive-improvement",
-      "frontmatter": {},
       "has_sk": true
     },
     {
@@ -250,7 +169,7 @@
       "dir": "/root/AAA/skills/aaa-governance",
       "frontmatter": {
         "name": "aaa-doctrine-sealing",
-        "description": "Seal a session eureka into AAA canon across all layers."
+        "description": "Use when F13 says seal or code this into canon. Seal a session eureka into AAA canon across all layers."
       },
       "has_sk": true
     },
@@ -398,6 +317,30 @@
         "organ_domain": "aaa",
         "forged": "2026-09-04",
         "capability_tier": "fed-agent-subagent",
+        "ecology_state": "WARM"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "agentic-state",
+      "category": "agentic",
+      "path": "/root/AAA/skills/agentic-state/SKILL.md",
+      "dir": "/root/AAA/skills/agentic-state",
+      "frontmatter": {
+        "name": "agentic-state",
+        "description": ">-",
+        "version": "1.0.0",
+        "risk_tier": "low",
+        "autonomy_tier": "T1",
+        "owner": "AAA",
+        "license": "MIT",
+        "compatibility": "all-harnesses (claude-code, kimi-code, opencode, qwen-code)",
+        "audience": "[claude-code, kimi-code, opencode, qwen-code, FI-002, FI-003, FI-008, af-forge, 333-AGI, 555-ASI, 888-APEX, dispatch]",
+        "triggers": "",
+        "capability_tier": "meta-mesa",
+        "metadata": "",
+        "layer": "meta-mesa",
+        "tier": "state",
         "ecology_state": "WARM"
       },
       "has_sk": true
@@ -755,28 +698,6 @@
       "has_sk": true
     },
     {
-      "name": "sovereign-tts-lanes",
-      "category": "sovereign",
-      "path": "/root/AAA/skills/audio/sovereign-tts-lanes/SKILL.md",
-      "dir": "/root/AAA/skills/audio",
-      "frontmatter": {
-        "id": "sovereign-tts-lanes",
-        "name": "sovereign-tts-lanes",
-        "description": "Use when TTS must run offline without a cloud provider.",
-        "version": "1.0.0",
-        "author": "hermes",
-        "license": "arifOS",
-        "tags": "[audio, tts, sovereign, offline]",
-        "metadata": "",
-        "hermes": "",
-        "related": "[nusantara-voice-stack, hermes-voice-config, audio-roundtrip-diagnostics]",
-        "forged": "2026-09-18",
-        "provenance": "All rows measured live on KVM8 (forge) 2026-09-18. Each engine rendered the identical test line; round-trip via Groq Whisper language=ms; f0 via librosa yin.",
-        "triggers": ""
-      },
-      "has_sk": true
-    },
-    {
       "name": "third-party-audit-intake",
       "category": "third",
       "path": "/root/AAA/skills/audit/third-party-audit-intake/SKILL.md",
@@ -956,23 +877,6 @@
       "has_sk": true
     },
     {
-      "name": "causal555-pywhy",
-      "category": "causal555",
-      "path": "/root/AAA/skills/causal555-pywhy/SKILL.md",
-      "dir": "/root/AAA/skills/causal555-pywhy",
-      "frontmatter": {
-        "id": "causal555-pywhy",
-        "name": "causal555-pywhy",
-        "version": "1.0.0-2026.07.17",
-        "description": "Causal inference bridge — PyWhy/DoWhy integration for 555-ASI causal reasoning.",
-        "owner": "AAA",
-        "risk_tier": "medium",
-        "floor_scope": "['F1', 'F2', 'F8']",
-        "autonomy_tier": "T1"
-      },
-      "has_sk": true
-    },
-    {
       "name": "makcikgpt-article-craft",
       "category": "makcikgpt",
       "path": "/root/AAA/skills/civic-publishing/makcikgpt-article-craft/SKILL.md",
@@ -984,62 +888,26 @@
       "has_sk": true
     },
     {
-      "name": "claude-agentic-state",
-      "category": "claude",
-      "path": "/root/AAA/skills/claude-agentic-state/SKILL.md",
-      "dir": "/root/AAA/skills/claude-agentic-state",
-      "frontmatter": {
-        "id": "CLAUDE-agentic-state",
-        "name": "claude-agentic-state",
-        "description": ">",
-        "version": "1.0.0",
-        "risk_tier": "low",
-        "autonomy_tier": "T1",
-        "owner": "AAA",
-        "audience": "[claude-code, FI-002, 333-AGI]",
-        "triggers": "",
-        "capability_tier": "meta-mesa",
-        "ecology_state": "WARM"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "claude-meta-mesa",
-      "category": "claude",
+      "name": "meta-mesa",
+      "category": "meta",
       "path": "/root/AAA/skills/claude-meta-mesa/SKILL.md",
       "dir": "/root/AAA/skills/claude-meta-mesa",
       "frontmatter": {
-        "id": "CLAUDE-meta-mesa",
-        "name": "claude-meta-mesa",
-        "description": ">",
+        "name": "meta-mesa",
+        "description": "Use when a mission spans more than 2 skills or 3 steps, or when you feel yourself wandering between tools. Meta-mesa orchestrator — decompose a multi-step mission into L1/L2 skills, sequence them, route each sub-task to the right organ (arifOS/A-FORGE/GEOX/WEALTH/WELL), recover from failure. Canonical merge of the claude/opencode/qwen clones. Triggers: multi-step mission · orchestrating across organs · mission spans multiple skills · repetitive meta-task · session boot for complex work · wandering between tools.",
         "version": "1.0.0",
         "risk_tier": "low",
         "autonomy_tier": "T1",
         "owner": "AAA",
-        "audience": "[claude-code, FI-002, 333-AGI]",
+        "license": "MIT",
+        "compatibility": "[claude-code, opencode, qwen-code]",
+        "audience": "[claude-code, opencode, qwen-code, kimi-code, FI-001, FI-002, FI-003, 333-AGI, dispatch]",
         "triggers": "",
         "capability_tier": "meta-mesa",
-        "ecology_state": "WARM"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "claude-zen-router",
-      "category": "claude",
-      "path": "/root/AAA/skills/claude-zen-router/SKILL.md",
-      "dir": "/root/AAA/skills/claude-zen-router",
-      "frontmatter": {
-        "id": "CLAUDE-zen-router",
-        "name": "claude-zen-router",
-        "description": ">",
-        "version": "1.0.0",
-        "risk_tier": "low",
-        "autonomy_tier": "T1",
-        "owner": "AAA",
-        "audience": "[claude-code, FI-002, 333-AGI]",
-        "triggers": "",
-        "capability_tier": "meta-mesa",
-        "ecology_state": "WARM"
+        "ecology_state": "WARM",
+        "canonical": "true",
+        "supersedes": "[claude-meta-mesa, opencode-meta-mesa, qwen-meta-mesa]",
+        "merged_from": ""
       },
       "has_sk": true
     },
@@ -1065,27 +933,6 @@
         "owner": "AAA",
         "description": "Hermes cognitive slash commands — /NNN_word format. 8 numerological spine, 16 cognitive verbs. Zen layer for arifOS federation.",
         "triggers": "",
-        "source": "hermes-only",
-        "synthesized": "2026-08-08"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "akal-cognitive-invariants",
-      "category": "akal",
-      "path": "/root/AAA/skills/cognitive-level-assertion-protocol/SKILL.md",
-      "dir": "/root/AAA/skills/cognitive-level-assertion-protocol",
-      "frontmatter": {
-        "name": "akal-cognitive-invariants",
-        "owner": "AAA",
-        "description": "SUPERSEDED by governance/akal-cognitive-invariants. CLAP v2 — Bloom's Taxonomy as constitutional physics. Renamed to AKAL (عقل)",
-        "version": "2.0.0",
-        "author": "hermes-prime",
-        "date": "2026-07-11",
-        "tags": "[governance, cognition, bloom, hermes-prime, constitutional, reflex-protocol, sovereignty]",
-        "depends_on": "[hermes-prime-reflex-v2, arifos-kernel-surface-curator]",
-        "constitutional": "true",
-        "load_when": "Any governed interaction, constitutional decision, artifact creation, or agent reasoning chain",
         "source": "hermes-only",
         "synthesized": "2026-08-08"
       },
@@ -1180,20 +1027,20 @@
       "has_sk": true
     },
     {
-      "name": "proxy-verification-audit",
-      "category": "proxy",
-      "path": "/root/AAA/skills/court-audit/proxy-verification-audit/SKILL.md",
+      "name": "inherited-claim-audit",
+      "category": "inherited",
+      "path": "/root/AAA/skills/court-audit/inherited-claim-audit/SKILL.md",
       "dir": "/root/AAA/skills/court-audit",
       "frontmatter": {
-        "name": "proxy-verification-audit",
-        "id": "proxy-verification-audit",
+        "name": "inherited-claim-audit",
+        "description": "Use when repeating a claim from a prior pass or review.",
         "version": "1.0.0",
-        "risk_tier": "low",
-        "floor_scope": "[F2, F9, F11, F13]",
-        "autonomy_tier": "T0",
-        "description": "Use when auditing an auth/gate control for verification.",
-        "when_to_use": "Auditing a session gate, an authority band, a human-approval field, an allow/deny regex, or any control whose name promises verification. Also when a fix must be proven to close a bypass rather than to merely look closed.",
-        "tags": "[authority, gates, verification, audit, falsification, arifos]"
+        "license": "arifOS",
+        "triggers": "",
+        "metadata": "",
+        "hermes": "",
+        "tags": "[epistemic, verification, audit, provenance, third-party-data]",
+        "related_skills": "[claim-receipt-discipline, synthesis-verification-gate, text-forensics, relationship-memory-isolation]"
       },
       "has_sk": true
     },
@@ -1327,25 +1174,6 @@
       "has_sk": true
     },
     {
-      "name": "docs",
-      "category": "general",
-      "path": "/root/AAA/skills/docs/SKILL.md",
-      "dir": "/root/AAA/skills/docs",
-      "frontmatter": {
-        "id": "docs",
-        "name": "docs",
-        "version": "1.0.0-2026.07.17",
-        "description": "Reference documentation for AAA skill system. Not an executable skill. ",
-        "owner": "AAA",
-        "risk_tier": "low",
-        "floor_scope": "['F1', 'F4']",
-        "autonomy_tier": "T0",
-        "capability_tier": "fed-long-context",
-        "ecology_state": "WARM"
-      },
-      "has_sk": true
-    },
-    {
       "name": "principal-analysis-artifact",
       "category": "principal",
       "path": "/root/AAA/skills/document-intel/principal-analysis-artifact/SKILL.md",
@@ -1399,23 +1227,6 @@
         "description": "Verifiable shared memory layer for multi-agent systems and Earth observation (emem.dev). Enables citing signed facts (emem:fact: tokens), offline receipt verification, and cross-agent A2A collaboration without vendor lock-in. ",
         "capability_tier": "fed-agent-subagent",
         "ecology_state": "WARM"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "enforcement-coverage-audit",
-      "category": "enforcement",
-      "path": "/root/AAA/skills/enforcement-coverage-audit/SKILL.md",
-      "dir": "/root/AAA/skills/enforcement-coverage-audit",
-      "frontmatter": {
-        "name": "enforcement-coverage-audit",
-        "description": "Use when auditing whether a control actually controls.",
-        "version": "1.0.0",
-        "owner": "AAA",
-        "risk_tier": "medium",
-        "autonomy_tier": "T1",
-        "triggers": "",
-        "floor_scope": "[F1, F2, F11]"
       },
       "has_sk": true
     },
@@ -1692,9 +1503,12 @@
       "frontmatter": {
         "name": "first-party-evidence-audit",
         "description": "Use when auditing claims against first-party records.",
-        "version": "1.0.0",
-        "tags": "[evidence, audit, epistemology, records, human, witness]",
-        "related_skills": "[text-forensics, telegram-conversation-history-extraction, void-paradox-doctrine, governed-uncertainty, human-meaning-membrane]"
+        "version": "2.0.0",
+        "author": "Hermes",
+        "license": "arifOS",
+        "tags": "[evidence, audit, epistemology, records, human, witness, relationship, corpus, privacy, first-party, forensics]",
+        "related_skills": "[text-forensics, telegram-conversation-history-extraction, void-paradox-doctrine, governed-uncertainty, human-meaning-membrane, relationship-memory-isolation, claim-receipt-discipline, claim-level-verification]",
+        "triggers": ""
       },
       "has_sk": true
     },
@@ -1716,14 +1530,21 @@
       "has_sk": true
     },
     {
-      "name": "disk-pressure-triage",
-      "category": "disk",
-      "path": "/root/AAA/skills/forge/disk-pressure-triage/SKILL.md",
+      "name": "generated-artifact-integrity",
+      "category": "generated",
+      "path": "/root/AAA/skills/forge/generated-artifact-integrity/SKILL.md",
       "dir": "/root/AAA/skills/forge",
       "frontmatter": {
-        "name": "disk-pressure-triage",
-        "description": "Use when a host's disk is filling; reclaim space safely.",
-        "owner": "Hermes"
+        "name": "generated-artifact-integrity",
+        "description": "Use when a rendered artifact prints live numbers.",
+        "version": "1.0",
+        "author": "hermes-curator",
+        "license": "MIT",
+        "metadata": "",
+        "hermes": "",
+        "tags": "[rendering, integrity, verification, gates, templates, delivery]",
+        "related_skills": "[infographic-generation, docforge-document-lane, forge-pdf-delivery]",
+        "triggers": ""
       },
       "has_sk": true
     },
@@ -2076,25 +1897,6 @@
       "has_sk": true
     },
     {
-      "name": "forge-federation-manifest",
-      "category": "forge",
-      "path": "/root/AAA/skills/forge-federation-manifest/SKILL.md",
-      "dir": "/root/AAA/skills/forge-federation-manifest",
-      "frontmatter": {
-        "id": "FORGE-federation-manifest",
-        "name": "forge-federation-manifest",
-        "version": "1.0.0-2026.07.17",
-        "description": "Federation topology manifest — arifOS organ registry and inter-organ contract specification. ",
-        "owner": "A-FORGE",
-        "risk_tier": "high",
-        "floor_scope": "['F1', 'F2', 'F11', 'F13']",
-        "autonomy_tier": "T2",
-        "capability_tier": "fed-agent-subagent",
-        "ecology_state": "WARM"
-      },
-      "has_sk": true
-    },
-    {
       "name": "forge-git-seal",
       "category": "forge",
       "path": "/root/AAA/skills/forge-git-seal/SKILL.md",
@@ -2379,20 +2181,6 @@
         "tags": "[forge, mcp, apps, ui, sep-1865, csp]",
         "capability_tier": "fed-long-context",
         "ecology_state": "WARM"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "mcp-dual-era-transport",
-      "category": "mcp",
-      "path": "/root/AAA/skills/forge-mcp-ops/mcp-dual-era-transport/SKILL.md",
-      "dir": "/root/AAA/skills/forge-mcp-ops",
-      "frontmatter": {
-        "name": "mcp-dual-era-transport",
-        "description": "ALIAS → mcp-testing (canonical). Era-mismatch diagnose-then-fix doctrine absorbed into mcp-testing Section 5. Trigger: MCP 400 on stateless probe, MCP server/discover failure. Frozen 2026-09-19 per skill-zen-collapse.",
-        "superseded_by": "mcp-testing",
-        "frozen": "2026-09-19",
-        "freeze_path": "/root/AAA/skills/.frozen/2026-09-19-mcp-collapse/mcp-dual-era-transport/"
       },
       "has_sk": true
     },
@@ -3014,17 +2802,34 @@
       "has_sk": true
     },
     {
-      "name": "canon-doctrine-sealing",
-      "category": "canon",
-      "path": "/root/AAA/skills/governance-core/canon-doctrine-sealing/SKILL.md",
+      "name": "governance-audit",
+      "category": "governance",
+      "path": "/root/AAA/skills/governance-audit/SKILL.md",
+      "dir": "/root/AAA/skills/governance-audit",
+      "frontmatter": {
+        "name": "governance-audit",
+        "description": "Use when asking whether a control, gate or safeguard is actually enforced or is only a label. Triggers: is this actually enforced, does this gate work, verify this safeguard, the control is present, privacy filter is on, 0 rejections, gate passed, is this wired up, verify a claimed control, false name, named but not installed, hardcoded metric, is this gate real, does the gate actually block, can this bypass the gate, enforcement coverage, is the guard load-bearing, who actually made this change, audit trail attribution, prevented vs detected, is this control real, auditing whether a control really enforces, auditing whether a named control actually acts, auditing whether a named control actually controls, auditing whether a control actually controls, a named control may not actually enforce, a service claims a control you must verify, verifying a claimed result or sealing a control, auditing an auth/gate control for verification. Surfaces: gates, validators, health checks, sandboxes, seals, drift detectors, shadow modes, authority checks, privacy filters, promotion ladders, approval gates, signatures, scope checks, deny lists, rate limits, authorization tiers, session gates, authority bands, human-approval fields, allow/deny regexes. Mode router — 7 modes: control-integrity, declared-vs-enforced, named-mechanism, enforcement-coverage, seal-verification, proxy, metric-derivation.",
+        "version": "2.0.0",
+        "owner": "Hermes",
+        "risk_tier": "low",
+        "floor_scope": "[F1, F2, F4, F9, F11, F13]",
+        "autonomy_tier": "T1",
+        "tags": "[audit, governance, control-integrity, false-name, enforcement, bypass, verification, seal, coverage, proxy, metric-derivation]",
+        "triggers": "",
+        "merged_from": "",
+        "retired_to": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/control-audit",
+        "authority": "F13 sovereign in-chat order 2026-09-19 (namespace collapse) — eight skills answering one question collapsed into one router."
+      },
+      "has_sk": true
+    },
+    {
+      "name": "temporal-artifact-integrity",
+      "category": "temporal",
+      "path": "/root/AAA/skills/governance-core/temporal-artifact-integrity/SKILL.md",
       "dir": "/root/AAA/skills/governance-core",
       "frontmatter": {
-        "name": "canon-doctrine-sealing",
-        "description": "Use when F13 says seal or code this into canon.",
-        "owner": "AAA",
-        "risk_tier": "medium",
-        "autonomy_tier": "T1",
-        "floor_scope": "[F1, F2, F11, F13]"
+        "name": "temporal-artifact-integrity",
+        "description": "Use when a countdown or hash-sealed ledger must verify."
       },
       "has_sk": true
     },
@@ -3042,25 +2847,6 @@
         "tags": "[graphiti, falkordb, memory, temporal, graph, mcp]",
         "floor_scope": "[F2, F4, F9]",
         "autonomy_tier": "T1"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "help",
-      "category": "general",
-      "path": "/root/AAA/skills/help/SKILL.md",
-      "dir": "/root/AAA/skills/help",
-      "frontmatter": {
-        "name": "help",
-        "id": "help",
-        "version": "1.0.0",
-        "risk_tier": "low",
-        "description": "Grok documentation and configuration help. Use when users ask about",
-        "metadata": "",
-        "short-description": "Grok docs — config, MCP, auth, skills, commands",
-        "owner": "AAA",
-        "floor_scope": "",
-        "autonomy_tier": "T0"
       },
       "has_sk": true
     },
@@ -3208,17 +2994,22 @@
       "has_sk": true
     },
     {
-      "name": "audience-scoped-disclosure",
-      "category": "audience",
-      "path": "/root/AAA/skills/human-interface/audience-scoped-disclosure/SKILL.md",
+      "name": "persona-boundary-conduct",
+      "category": "human-interface",
+      "path": "/root/AAA/skills/human-interface/persona-boundary-conduct/SKILL.md",
       "dir": "/root/AAA/skills/human-interface",
       "frontmatter": {
-        "name": "audience-scoped-disclosure",
-        "description": "Use when a human other than Arif is present or reading.",
+        "name": "persona-boundary-conduct",
+        "description": "Use when running a fictional persona for a human.",
         "version": "1.0.0",
-        "triggers": "",
-        "floors": "[F2, F3, F5, F6, F9, F13]",
-        "tags": "[human-interface, disclosure, register, audience, privacy, briefing, outsider]"
+        "author": "Hermes",
+        "license": "arifOS",
+        "tags": "[persona, synthetic-media, boundary, tts]",
+        "metadata": "",
+        "hermes": "",
+        "category": "human-interface",
+        "related": "[abang-sado-creative-lane, governed-uncertainty, hermes-rasa, nusantara-voice-stack]",
+        "triggers": ""
       },
       "has_sk": true
     },
@@ -3337,6 +3128,22 @@
       "has_sk": true
     },
     {
+      "name": "intelligence-briefing",
+      "category": "intelligence",
+      "path": "/root/AAA/skills/intelligence-briefing/SKILL.md",
+      "dir": "/root/AAA/skills/intelligence-briefing",
+      "frontmatter": {
+        "name": "intelligence-briefing",
+        "description": ">",
+        "version": "2.0.0",
+        "tier": "canonical",
+        "authority": "F13 sovereign in-chat order 2026-09-19 (\"One capability, fifteen costumes\")",
+        "merged_from": "",
+        "triggers": ""
+      },
+      "has_sk": true
+    },
+    {
       "name": "kernel-bind",
       "category": "kernel",
       "path": "/root/AAA/skills/kernel-bind/SKILL.md",
@@ -3382,26 +3189,6 @@
         "schema_version": "1",
         "artifact_hash": "pending",
         "capability_tier": "fed-agent-subagent",
-        "ecology_state": "WARM"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "kimi-agentic-state",
-      "category": "kimi",
-      "path": "/root/AAA/skills/kimi-agentic-state/SKILL.md",
-      "dir": "/root/AAA/skills/kimi-agentic-state",
-      "frontmatter": {
-        "id": "KIMI-agentic-state",
-        "name": "kimi-agentic-state",
-        "description": ">",
-        "version": "1.0.0",
-        "risk_tier": "low",
-        "autonomy_tier": "T1",
-        "owner": "AAA",
-        "audience": "[kimi-code, FI-008, af-forge, 333-AGI]",
-        "triggers": "",
-        "capability_tier": "meta-mesa",
         "ecology_state": "WARM"
       },
       "has_sk": true
@@ -3579,20 +3366,6 @@
       "has_sk": true
     },
     {
-      "name": "mcp-shopping-list-2026-09",
-      "category": "mcp",
-      "path": "/root/AAA/skills/mcp-shopping-list-2026-09/SKILL.md",
-      "dir": "/root/AAA/skills/mcp-shopping-list-2026-09",
-      "frontmatter": {
-        "name": "mcp-shopping-list-2026-09",
-        "description": "ALIAS → mcp-sota-shopping-list (live canonical). Snapshot 2026-09-16 frozen 2026-09-19 per skill-zen-collapse Phase 6; superseded by mcp-sota-shopping-list which carries the maintained TOP-12 table. Load mcp-sota-shopping-list instead.",
-        "superseded_by": "mcp-sota-shopping-list",
-        "frozen": "2026-09-19",
-        "freeze_path": "/root/AAA/skills/.archive/2026-09-19-sota-snapshot/"
-      },
-      "has_sk": true
-    },
-    {
       "name": "mcp-sota-shopping-list",
       "category": "mcp",
       "path": "/root/AAA/skills/mcp-sota-shopping-list/SKILL.md",
@@ -3682,6 +3455,30 @@
         "ecology_state": "WARM",
         "required_tools": "['arif_memory']",
         "tool_gate": "strict"
+      },
+      "has_sk": true
+    },
+    {
+      "name": "meta-mesa",
+      "category": "meta",
+      "path": "/root/AAA/skills/meta-mesa/SKILL.md",
+      "dir": "/root/AAA/skills/meta-mesa",
+      "frontmatter": {
+        "name": "meta-mesa",
+        "description": "Use when a mission spans more than 2 skills or 3 steps, or when you feel yourself wandering between tools. Meta-mesa orchestrator — decompose a multi-step mission into L1/L2 skills, sequence them, route each sub-task to the right organ (arifOS/A-FORGE/GEOX/WEALTH/WELL), recover from failure. Canonical merge of the claude/opencode/qwen clones. Triggers: multi-step mission · orchestrating across organs · mission spans multiple skills · repetitive meta-task · session boot for complex work · wandering between tools.",
+        "version": "1.0.0",
+        "risk_tier": "low",
+        "autonomy_tier": "T1",
+        "owner": "AAA",
+        "license": "MIT",
+        "compatibility": "[claude-code, opencode, qwen-code]",
+        "audience": "[claude-code, opencode, qwen-code, kimi-code, FI-001, FI-002, FI-003, 333-AGI, dispatch]",
+        "triggers": "",
+        "capability_tier": "meta-mesa",
+        "ecology_state": "WARM",
+        "canonical": "true",
+        "supersedes": "[claude-meta-mesa, opencode-meta-mesa, qwen-meta-mesa]",
+        "merged_from": ""
       },
       "has_sk": true
     },
@@ -3856,53 +3653,26 @@
       "has_sk": true
     },
     {
-      "name": "opencode-agentic-state",
-      "category": "opencode",
-      "path": "/root/AAA/skills/opencode-agentic-state/SKILL.md",
-      "dir": "/root/AAA/skills/opencode-agentic-state",
-      "frontmatter": {
-        "name": "opencode-agentic-state",
-        "description": "Persistent agentic state doctrine — survive across sessions by writing to /root/.config/opencode/agent_state/<agent>.json. Load this when you want to accumulate capability memory, mission history, and federation learnings across sessions.",
-        "license": "MIT",
-        "compatibility": "opencode",
-        "metadata": "",
-        "layer": "meta-mesa",
-        "tier": "state",
-        "audience": "333-AGI, 555-ASI, 888-APEX, dispatch"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "opencode-meta-mesa",
-      "category": "opencode",
+      "name": "meta-mesa",
+      "category": "meta",
       "path": "/root/AAA/skills/opencode-meta-mesa/SKILL.md",
       "dir": "/root/AAA/skills/opencode-meta-mesa",
       "frontmatter": {
-        "name": "opencode-meta-mesa",
-        "description": "Meta-mesa orchestrator — given a multi-step mission, decompose into L1/L2 skills, sequence them, recover from failure. Load this when a task spans more than 2 skills or 3 steps, or when you feel yourself wandering between tools.",
+        "name": "meta-mesa",
+        "description": "Use when a mission spans more than 2 skills or 3 steps, or when you feel yourself wandering between tools. Meta-mesa orchestrator — decompose a multi-step mission into L1/L2 skills, sequence them, route each sub-task to the right organ (arifOS/A-FORGE/GEOX/WEALTH/WELL), recover from failure. Canonical merge of the claude/opencode/qwen clones. Triggers: multi-step mission · orchestrating across organs · mission spans multiple skills · repetitive meta-task · session boot for complex work · wandering between tools.",
+        "version": "1.0.0",
+        "risk_tier": "low",
+        "autonomy_tier": "T1",
+        "owner": "AAA",
         "license": "MIT",
-        "compatibility": "opencode",
-        "metadata": "",
-        "layer": "meta-mesa",
-        "tier": "orchestration",
-        "audience": "333-AGI, dispatch"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "opencode-zen-router",
-      "category": "opencode",
-      "path": "/root/AAA/skills/opencode-zen-router/SKILL.md",
-      "dir": "/root/AAA/skills/opencode-zen-router",
-      "frontmatter": {
-        "name": "opencode-zen-router",
-        "description": "Orthogonal axis routing — given an intent, classify it across 9 orthogonal axes (organ, action, mode, tier, layer, surface, scope, time, reversibility) and route to the right tool. Load this when you must pick between equally-valid tools.",
-        "license": "MIT",
-        "compatibility": "opencode",
-        "metadata": "",
-        "layer": "meta-mesa",
-        "tier": "routing",
-        "audience": "333-AGI, dispatch, 555-ASI"
+        "compatibility": "[claude-code, opencode, qwen-code]",
+        "audience": "[claude-code, opencode, qwen-code, kimi-code, FI-001, FI-002, FI-003, 333-AGI, dispatch]",
+        "triggers": "",
+        "capability_tier": "meta-mesa",
+        "ecology_state": "WARM",
+        "canonical": "true",
+        "supersedes": "[claude-meta-mesa, opencode-meta-mesa, qwen-meta-mesa]",
+        "merged_from": ""
       },
       "has_sk": true
     },
@@ -3925,6 +3695,23 @@
       "frontmatter": {
         "name": "ped-hormone-advisory",
         "description": "Use when asked about PEDs, TRT, peptides, or prep rules."
+      },
+      "has_sk": true
+    },
+    {
+      "name": "person-intelligence",
+      "category": "person",
+      "path": "/root/AAA/skills/person-intelligence/SKILL.md",
+      "dir": "/root/AAA/skills/person-intelligence",
+      "frontmatter": {
+        "name": "person-intelligence",
+        "description": ">",
+        "version": "2.0.0",
+        "tier": "canonical",
+        "authority": "F13 sovereign in-chat order 2026-09-19 (\"One capability, fifteen costumes\")",
+        "merged_from": "",
+        "constitutional_floors": "[F2, F4, F6, F7, F9, F13]",
+        "triggers": ""
       },
       "has_sk": true
     },
@@ -3997,6 +3784,25 @@
       "has_sk": true
     },
     {
+      "name": "propose-seal",
+      "category": "propose",
+      "path": "/root/AAA/skills/propose-seal/SKILL.md",
+      "dir": "/root/AAA/skills/propose-seal",
+      "frontmatter": {
+        "name": "propose-seal",
+        "description": "Use when an agent submits /propose-seal to 888-APEX after a code mutation or completed work. NEVER self-seals. Canonical cross-harness substrate primitive — OpenClaw, OpenCode and Hermes variants merged. Pipeline: agent proposes → 888 judges → F13 authorizes → 999 executes (append to VAULT999).",
+        "tags": "[constitutional, seal, propose, substrate-primitive, canonical, telegram-native, openclaw, opencode, hermes]",
+        "license": "MIT",
+        "capability_tier": "fed-agent-subagent",
+        "ecology_state": "WARM",
+        "canonical": "true",
+        "supersedes": "[openclaw-propose-seal, opencode-propose-seal, hermes-propose-seal]",
+        "merged_from": "",
+        "triggers": ""
+      },
+      "has_sk": true
+    },
+    {
       "name": "provider-endpoint-migration",
       "category": "forge",
       "path": "/root/AAA/skills/provider-endpoint-migration/SKILL.md",
@@ -4037,26 +3843,6 @@
       "has_sk": true
     },
     {
-      "name": "qwen-agentic-state",
-      "category": "qwen",
-      "path": "/root/AAA/skills/qwen-agentic-state/SKILL.md",
-      "dir": "/root/AAA/skills/qwen-agentic-state",
-      "frontmatter": {
-        "id": "QWEN-agentic-state",
-        "name": "qwen-agentic-state",
-        "description": ">",
-        "version": "1.0.0",
-        "risk_tier": "low",
-        "autonomy_tier": "T1",
-        "owner": "AAA",
-        "audience": "[qwen-code, FI-003, 333-AGI]",
-        "triggers": "",
-        "capability_tier": "meta-mesa",
-        "ecology_state": "WARM"
-      },
-      "has_sk": true
-    },
-    {
       "name": "qwen-harness-tools",
       "category": "qwen",
       "path": "/root/AAA/skills/qwen-harness-tools/SKILL.md",
@@ -4076,56 +3862,26 @@
       "has_sk": true
     },
     {
-      "name": "qwen-meta-mesa",
-      "category": "qwen",
+      "name": "meta-mesa",
+      "category": "meta",
       "path": "/root/AAA/skills/qwen-meta-mesa/SKILL.md",
       "dir": "/root/AAA/skills/qwen-meta-mesa",
       "frontmatter": {
-        "id": "QWEN-meta-mesa",
-        "name": "qwen-meta-mesa",
-        "description": ">",
+        "name": "meta-mesa",
+        "description": "Use when a mission spans more than 2 skills or 3 steps, or when you feel yourself wandering between tools. Meta-mesa orchestrator — decompose a multi-step mission into L1/L2 skills, sequence them, route each sub-task to the right organ (arifOS/A-FORGE/GEOX/WEALTH/WELL), recover from failure. Canonical merge of the claude/opencode/qwen clones. Triggers: multi-step mission · orchestrating across organs · mission spans multiple skills · repetitive meta-task · session boot for complex work · wandering between tools.",
         "version": "1.0.0",
         "risk_tier": "low",
         "autonomy_tier": "T1",
         "owner": "AAA",
-        "audience": "[qwen-code, FI-003, 333-AGI]",
+        "license": "MIT",
+        "compatibility": "[claude-code, opencode, qwen-code]",
+        "audience": "[claude-code, opencode, qwen-code, kimi-code, FI-001, FI-002, FI-003, 333-AGI, dispatch]",
         "triggers": "",
         "capability_tier": "meta-mesa",
-        "ecology_state": "WARM"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "qwen-zen-router",
-      "category": "qwen",
-      "path": "/root/AAA/skills/qwen-zen-router/SKILL.md",
-      "dir": "/root/AAA/skills/qwen-zen-router",
-      "frontmatter": {
-        "id": "QWEN-zen-router",
-        "name": "qwen-zen-router",
-        "description": ">",
-        "version": "1.0.0",
-        "risk_tier": "low",
-        "autonomy_tier": "T1",
-        "owner": "AAA",
-        "audience": "[qwen-code, FI-003, 333-AGI]",
-        "triggers": "",
-        "capability_tier": "meta-mesa",
-        "ecology_state": "WARM"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "qwencloud-audio-tts",
-      "category": "qwencloud",
-      "path": "/root/AAA/skills/qwencloud-audio-tts/SKILL.md",
-      "dir": "/root/AAA/skills/qwencloud-audio-tts",
-      "frontmatter": {
-        "name": "qwencloud-audio-tts",
-        "description": "[QwenCloud] Synthesize speech from text with Qwen TTS models. TRIGGER when: user wants to convert text to speech, create voiceovers, generate audio narration, read text aloud, build TTS applications, mentions speech synthesis/voice generation/audio output from text, or explicitly invokes this skill by name (e.g. use qwencloud-audio-tts). DO NOT TRIGGER when: user wants speech recognition/ASR, text generation without audio, non-Qwen audio tasks. ",
-        "compatibility": "Requires Python 3.9+ and curl. Cursor: auto-loaded. Claude Code: read this skill's SKILL.md before first use.",
-        "capability_tier": "fed-realtime-voice",
-        "ecology_state": "WARM"
+        "ecology_state": "WARM",
+        "canonical": "true",
+        "supersedes": "[claude-meta-mesa, opencode-meta-mesa, qwen-meta-mesa]",
+        "merged_from": ""
       },
       "has_sk": true
     },
@@ -4283,15 +4039,32 @@
       "has_sk": true
     },
     {
-      "name": "sovereign-recognize",
-      "category": "sovereign",
-      "path": "/root/AAA/skills/reflective/sovereign-recognize/SKILL.md",
+      "name": "recovery-playbook",
+      "category": "recovery",
+      "path": "/root/AAA/skills/recovery-playbook/SKILL.md",
+      "dir": "/root/AAA/skills/recovery-playbook",
+      "frontmatter": {
+        "name": "recovery-playbook",
+        "description": "Use when a failure is misattributed to the wrong layer. Symptom→signal→action playbook for gateway hang/crash-loop/echo-loop/delivery-storm, VPS CPU steal & throttle, disk pressure, and datacenter-IP media-extraction blocks. Merged 2026-09-19 from six one-off incident skills.",
+        "owner": "Hermes",
+        "version": "2.0.0",
+        "risk_tier": "medium",
+        "autonomy_tier": "T2",
+        "tags": "[recovery, triage, incident, telegram, gateway, vps, cpu, disk, ipv6, rate-limit, heuristic]",
+        "triggers": ""
+      },
+      "has_sk": true
+    },
+    {
+      "name": "caller-trace",
+      "category": "caller",
+      "path": "/root/AAA/skills/reflective/caller-trace/SKILL.md",
       "dir": "/root/AAA/skills/reflective",
       "frontmatter": {
-        "id": "sovereign-recognize",
-        "name": "sovereign-recognize",
+        "id": "caller-trace",
+        "name": "caller-trace",
         "version": "1.0.0",
-        "description": "Identifies and recognizes the sovereign (Arif, F13) before any action that targets them, addresses them, or binds them. Prevents agent",
+        "description": "Before invoking any tool, traces WHO else calls this tool, the cost of misuse, and whether the caller's use is",
         "owner": "AAA",
         "risk_tier": "low",
         "knowledge_basis": "",
@@ -4300,7 +4073,7 @@
         "language": "true",
         "host_compatibility": "",
         "dependencies": "",
-        "skills": "[arif-agent-bootstrap, CONSTITUTIONAL_REFLEX]",
+        "skills": "[route-least-power, mcp-mastery, forge-document-intelligence]",
         "servers": "[]",
         "tools": "[]",
         "examples": "",
@@ -4312,31 +4085,17 @@
       "has_sk": true
     },
     {
-      "name": "human-relationship-audit",
-      "category": "research",
-      "path": "/root/AAA/skills/research/human-relationship-audit/SKILL.md",
+      "name": "institutional-fact-verification",
+      "category": "general",
+      "path": "/root/AAA/skills/research/institutional-fact-verification/SKILL.md",
       "dir": "/root/AAA/skills/research",
       "frontmatter": {
-        "name": "human-relationship-audit",
-        "description": "Use when auditing a real relationship from archives.",
+        "name": "institutional-fact-verification",
+        "description": "Use when verifying what an organisation did or signed.",
         "version": "1.0.0",
-        "tags": "[evidence, audit, human, privacy]",
-        "metadata": "",
-        "hermes": "",
-        "category": "research"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "political-intelligence-briefing",
-      "category": "political",
-      "path": "/root/AAA/skills/research-briefing/political-intelligence-briefing/SKILL.md",
-      "dir": "/root/AAA/skills/research-briefing",
-      "frontmatter": {
-        "name": "political-intelligence-briefing",
-        "description": "Use when asked for a political intelligence read.",
-        "tags": "[politics, intelligence, briefing, research, provenance]",
-        "triggers": ""
+        "risk_tier": "low",
+        "floor_scope": "[F2, F11]",
+        "tags": "[verification, sourcing, contracts, corporate-structure, provenance]"
       },
       "has_sk": true
     },
@@ -4483,25 +4242,6 @@
       "has_sk": true
     },
     {
-      "name": "runtime",
-      "category": "general",
-      "path": "/root/AAA/skills/runtime/SKILL.md",
-      "dir": "/root/AAA/skills/runtime",
-      "frontmatter": {
-        "id": "runtime",
-        "name": "runtime",
-        "version": "1.0.0-2026.07.17",
-        "description": "Runtime support for AAA skill execution. Not an executable skill. ",
-        "owner": "AAA",
-        "risk_tier": "low",
-        "floor_scope": "['F1']",
-        "autonomy_tier": "T0",
-        "capability_tier": "fed-agent-subagent",
-        "ecology_state": "WARM"
-      },
-      "has_sk": true
-    },
-    {
       "name": "sanctuary-boundary-enforcer",
       "category": "sanctuary",
       "path": "/root/AAA/skills/sanctuary-boundary-enforcer/SKILL.md",
@@ -4537,25 +4277,6 @@
       "path": "/root/AAA/skills/scar-bridge-install/SKILL.md",
       "dir": "/root/AAA/skills/scar-bridge-install",
       "frontmatter": {},
-      "has_sk": true
-    },
-    {
-      "name": "scripts",
-      "category": "general",
-      "path": "/root/AAA/skills/scripts/SKILL.md",
-      "dir": "/root/AAA/skills/scripts",
-      "frontmatter": {
-        "id": "scripts",
-        "name": "scripts",
-        "version": "1.0.0-2026.07.17",
-        "description": "Utility scripts for AAA skill management. Not an executable skill. ",
-        "owner": "AAA",
-        "risk_tier": "low",
-        "floor_scope": "['F1']",
-        "autonomy_tier": "T0",
-        "capability_tier": "fed-agent-subagent",
-        "ecology_state": "WARM"
-      },
       "has_sk": true
     },
     {
@@ -4614,7 +4335,7 @@
       "dir": "/root/AAA/skills/skill-library-integrity",
       "frontmatter": {
         "name": "skill-library-integrity",
-        "description": "Use when a skill won't load, a capability vanished silently, or trees diverge — one-writer/many-views consolidation with a live entropy sensor.",
+        "description": "Use when a skill won't load, a capability vanished silently, trees diverge, or one capability has accumulated several identities — one-writer/many-views consolidation, namespace collapse, with a live entropy sensor.",
         "version": "1.0.0",
         "owner": "AAA",
         "category": "governance",
@@ -4688,21 +4409,27 @@
       "has_sk": true
     },
     {
-      "name": "substrate",
-      "category": "general",
-      "path": "/root/AAA/skills/substrate/SKILL.md",
+      "name": "memory-manage",
+      "category": "memory",
+      "path": "/root/AAA/skills/substrate/memory-manage/SKILL.md",
       "dir": "/root/AAA/skills/substrate",
       "frontmatter": {
-        "id": "substrate",
-        "name": "substrate",
-        "version": "1.0.0-2026.07.17",
-        "description": "Substrate-layer skills for federation organs. See subdirectories for specialized substrate skills. ",
-        "owner": "AAA",
+        "id": "memory-manage",
+        "name": "memory-manage",
         "risk_tier": "low",
-        "floor_scope": "['F1']",
-        "autonomy_tier": "T0",
+        "floor_scope": "[F1, F2, F4, F7]",
+        "version": "1.0.0",
+        "layer": "substrate",
+        "description": "Use when managing persistent conversational memory, semantic code search, and memory graph operations. Use when managing persistent conversational memory, semantic code search, and memory graph operations. Intelligence without memory is stateless. Store less, recall well, forget when stale. ΔS ≤ 0 on every cycle.",
+        "owner": "F13 SOVEREIGN",
+        "status": "active",
+        "three_axis": "true",
+        "axis_version": "1.0.0",
+        "autonomy_tier": "T1",
         "capability_tier": "fed-agent-subagent",
-        "ecology_state": "WARM"
+        "ecology_state": "WARM",
+        "required_tools": "['arif_memory']",
+        "tool_gate": "strict"
       },
       "has_sk": true
     },
@@ -4773,112 +4500,6 @@
       "has_sk": true
     },
     {
-      "name": "understand",
-      "category": "general",
-      "path": "/root/AAA/skills/understand/SKILL.md",
-      "dir": "/root/AAA/skills/understand",
-      "frontmatter": {
-        "name": "understand",
-        "description": "Analyze a codebase to produce an interactive knowledge graph for understanding architecture, components, and relationships",
-        "argument-hint": "[\"[path] [--full|--auto-update|--no-auto-update|--review|--language <lang>|--exclude <patterns>]\"]"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "understand-chat",
-      "category": "understand",
-      "path": "/root/AAA/skills/understand-chat/SKILL.md",
-      "dir": "/root/AAA/skills/understand-chat",
-      "frontmatter": {
-        "name": "understand-chat",
-        "description": "Use when you need to ask questions about a codebase or understand code using a knowledge graph",
-        "argument-hint": "[query]"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "understand-dashboard",
-      "category": "understand",
-      "path": "/root/AAA/skills/understand-dashboard/SKILL.md",
-      "dir": "/root/AAA/skills/understand-dashboard",
-      "frontmatter": {
-        "name": "understand-dashboard",
-        "description": "Launch the interactive web dashboard to visualize a codebase's knowledge graph",
-        "argument-hint": "[project-path]"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "understand-diff",
-      "category": "understand",
-      "path": "/root/AAA/skills/understand-diff/SKILL.md",
-      "dir": "/root/AAA/skills/understand-diff",
-      "frontmatter": {
-        "name": "understand-diff",
-        "description": "Use when you need to analyze git diffs or pull requests to understand what changed, affected components, and risks"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "understand-domain",
-      "category": "understand",
-      "path": "/root/AAA/skills/understand-domain/SKILL.md",
-      "dir": "/root/AAA/skills/understand-domain",
-      "frontmatter": {
-        "name": "understand-domain",
-        "description": "Extract business domain knowledge from a codebase and generate an interactive domain flow graph. Works standalone (lightweight scan) or derives from an existing /understand knowledge graph.",
-        "argument-hint": "[--full]"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "understand-explain",
-      "category": "understand",
-      "path": "/root/AAA/skills/understand-explain/SKILL.md",
-      "dir": "/root/AAA/skills/understand-explain",
-      "frontmatter": {
-        "name": "understand-explain",
-        "description": "Use when you need a deep-dive explanation of a specific file, function, or module in the codebase",
-        "argument-hint": "[file-path]"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "understand-figma",
-      "category": "understand",
-      "path": "/root/AAA/skills/understand-figma/SKILL.md",
-      "dir": "/root/AAA/skills/understand-figma",
-      "frontmatter": {
-        "name": "understand-figma",
-        "description": "Analyze a Figma file via the Figma REST API and generate an interactive design knowledge graph (pages, screens, components, component sets, instances, design tokens) with a kind:\"design\" dashboard.",
-        "argument-hint": "<figma-file-url-or-key> [--language <lang>]"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "understand-knowledge",
-      "category": "understand",
-      "path": "/root/AAA/skills/understand-knowledge/SKILL.md",
-      "dir": "/root/AAA/skills/understand-knowledge",
-      "frontmatter": {
-        "name": "understand-knowledge",
-        "description": "Analyze a Karpathy-pattern LLM wiki knowledge base and generate an interactive knowledge graph with entity extraction, implicit relationships, and topic clustering.",
-        "argument-hint": "[wiki-directory]"
-      },
-      "has_sk": true
-    },
-    {
-      "name": "understand-onboard",
-      "category": "understand",
-      "path": "/root/AAA/skills/understand-onboard/SKILL.md",
-      "dir": "/root/AAA/skills/understand-onboard",
-      "frontmatter": {
-        "name": "understand-onboard",
-        "description": "Use when you need to generate an onboarding guide for new team members joining a project"
-      },
-      "has_sk": true
-    },
-    {
       "name": "machine-read-verification",
       "category": "verification-discipline",
       "path": "/root/AAA/skills/verification-discipline/machine-read-verification/SKILL.md",
@@ -4920,37 +4541,39 @@
       "has_sk": true
     },
     {
-      "name": "tts-roundtrip-scoring",
+      "name": "voice-lane",
       "category": "voice-stack",
-      "path": "/root/AAA/skills/voice-stack/tts-roundtrip-scoring/SKILL.md",
-      "dir": "/root/AAA/skills/voice-stack",
+      "path": "/root/AAA/skills/voice-lane/SKILL.md",
+      "dir": "/root/AAA/skills/voice-lane",
       "frontmatter": {
-        "name": "tts-roundtrip-scoring",
-        "description": "Use when scoring a TTS take against its script.",
-        "version": "1.0.0",
+        "id": "voice-lane",
+        "name": "voice-lane",
+        "description": "Use when a voice note / TTS render is requested, a TTS lane must be chosen or failed over, a rendered take must be verified, or a voice must be designed/cloned. Canonical router for every TTS lane (MiniMax, MuleRouter, edge-tts, Piper, F5-TTS, MiMo, Qwen/CosyVoice, Nusantara engine) + round-trip verification discipline + voice-design and consent rules. Triggers: cloud TTS quota exhausted and a voice is still needed; TTS must work offline / without a provider; MiniMax 2056 / balance error blocks delivery; Malay or BM text needs speech on CPU only; evaluating Piper, MMS-TTS, F5-TTS for Malay; TTS fallback when OpenAI TTS quota is exhausted or unavailable; free/local Malay voice; convert text to speech, create voiceovers, generate audio narration, read text aloud, build TTS applications, speech synthesis / voice generation / audio output from text; TTS round-trip match percentage looks wrong; INSERTED words flagged but the text contains them; transcript has words after the file duration; about to re-render a take on a low match score; building an alias table for a voice; scoring a TTS take against its script; activating, wiring, or switching a persona voice, or asked to prove one is live; a round-trip / ASR gate flags an inserted word; reporting that a voice lane is down, refused, or mis-routed; a config change must be shown to have actually taken effect; designing voice prompts for MiniMax speech synthesis; Nusantara voice AI: corpus, TTS, dialect strategy. DO NOT TRIGGER for speech recognition / ASR alone, text generation without audio, or non-Qwen audio tasks (Qwen seat TTS is one lane inside this skill, not the whole skill).",
+        "version": "2.0.0",
         "owner": "AAA",
         "category": "voice-stack",
-        "tags": "[tts, asr, roundtrip, scoring, dialect, verification]",
-        "floor_scope": "[F2, F4, F7]",
-        "autonomy_tier": "T1"
+        "tags": "[audio, tts, voice, verification, lane-router]",
+        "floor_scope": "[F1, F2, F4, F6, F7, F13]",
+        "autonomy_tier": "T1",
+        "supersedes": "",
+        "retired_into": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/voice-lane/",
+        "metadata": "",
+        "hermes": "",
+        "related": "[hermes-voice-config, nusantara-voice-stack, machine-read-verification, abang-sado-creative-lane]",
+        "forged": "2026-09-19",
+        "provenance": "Merge of eight lane-selection / fallback / verification skills (F13 in-chat order 2026-09-19, namespace-entropy collapse). Every command, provider name, parameter, threshold and failure signature of the eight source bodies is preserved here. Originals retired, never deleted."
       },
       "has_sk": true
     },
     {
-      "name": "warga",
-      "category": "general",
-      "path": "/root/AAA/skills/warga/SKILL.md",
+      "name": "warga-constitutional",
+      "category": "warga",
+      "path": "/root/AAA/skills/warga/constitutional/SKILL.md",
       "dir": "/root/AAA/skills/warga",
       "frontmatter": {
-        "id": "warga",
-        "name": "warga",
-        "version": "1.0.0-2026.07.17",
-        "description": "Warga (citizen) agent skills for AAA federation members. See subdirectories for specialized warga skills. ",
-        "owner": "AAA",
-        "risk_tier": "medium",
-        "floor_scope": "['F1', 'F6', 'F13']",
-        "autonomy_tier": "T1",
-        "capability_tier": "fed-agent-subagent",
+        "name": "warga-constitutional",
+        "description": "Archived constitutional warga placeholder retained only for audit provenance. Do not use for active work; use the live arifOS governance",
+        "capability_tier": "fed-reasoning-heavy",
         "ecology_state": "WARM"
       },
       "has_sk": true
@@ -4989,23 +4612,6 @@
       "has_sk": true
     },
     {
-      "name": "wealth-claim-state",
-      "category": "wealth",
-      "path": "/root/AAA/skills/wealth-claim-state/SKILL.md",
-      "dir": "/root/AAA/skills/wealth-claim-state",
-      "frontmatter": {
-        "id": "wealth-claim-state",
-        "name": "wealth-claim-state",
-        "version": "1.0.0-2026.07.17",
-        "description": "Capital claim state management — tracks claim lifecycle across WEALTH organ.",
-        "owner": "WEALTH",
-        "risk_tier": "medium",
-        "floor_scope": "['F1', 'F2', 'F11']",
-        "autonomy_tier": "T1"
-      },
-      "has_sk": true
-    },
-    {
       "name": "wisdom-reader",
       "category": "wisdom",
       "path": "/root/AAA/skills/wisdom-reader/SKILL.md",
@@ -5013,22 +4619,6 @@
       "frontmatter": {
         "name": "wisdom-reader",
         "description": "Read substrate BEFORE claiming victory. Enforces witness-first doctrine. USE WHEN: 'audit', 'validate', 'verify this', 'is this real', 'what is the shadow', 'what's actually true', 'what's missing'."
-      },
-      "has_sk": true
-    },
-    {
-      "name": "wisdom-scar-session-audit",
-      "category": "wisdom",
-      "path": "/root/AAA/skills/wisdom-scar-session-audit/SKILL.md",
-      "dir": "/root/AAA/skills/wisdom-scar-session-audit",
-      "frontmatter": {
-        "name": "wisdom-scar-session-audit",
-        "owner": "AAA",
-        "description": "ALIAS → scar-integration (v2.0.0). Superseded: the scar-capture procedure now lives in scar-integration, which declares itself the replacement. Load scar-integration for 'capture wisdom scar', 'session failure audit', 'scar ledger'.",
-        "tags": "[wisdom-scar, audit, self-correction, constitutional, learning]",
-        "triggers": "",
-        "source": "hermes-only",
-        "synthesized": "2026-08-08"
       },
       "has_sk": true
     },
@@ -5058,13 +4648,34 @@
       "has_sk": true
     },
     {
-      "name": "youtube-extraction-datacenter-ip",
-      "category": "youtube",
-      "path": "/root/AAA/skills/youtube-extraction-datacenter-ip/SKILL.md",
-      "dir": "/root/AAA/skills/youtube-extraction-datacenter-ip",
+      "name": "zen-router",
+      "category": "zen",
+      "path": "/root/AAA/skills/zen-router/SKILL.md",
+      "dir": "/root/AAA/skills/zen-router",
       "frontmatter": {
-        "name": "youtube-extraction-datacenter-ip",
-        "description": "Use when YouTube extraction fails from a datacenter IP."
+        "name": "zen-router",
+        "id": "zen-router",
+        "description": ">",
+        "THE canonical meta-mesa orthogonal router": "given an intent, classify it across 9 orthogonal",
+        "DO NOT load domain skills blindly — route through this. Harness-agnostic": "the single routing",
+        "license": "MIT",
+        "version": "2.0.0",
+        "owner": "AAA",
+        "floor_scope": "[F1, F2, F4, F7]",
+        "risk_tier": "LOW",
+        "autonomy_tier": "T1",
+        "capability_tier": "meta-mesa",
+        "layer": "meta-mesa",
+        "tier": "routing",
+        "domain": "meta",
+        "compatibility": "harness-agnostic (Claude Code · Qwen Code · OpenCode · Copilot CLI)",
+        "harness": "any",
+        "audience": "[333-AGI, 555-ASI, dispatch, FI-002, FI-003, claude-code, qwen-code, opencode, copilot-cli]",
+        "forged": "2026-07-28",
+        "version_merged": "2026-09-19",
+        "ecology_state": "WARM",
+        "triggers": "",
+        "trigger_phrases": ""
       },
       "has_sk": true
     }

@@ -36,7 +36,7 @@ curl -s -m 5 http://127.0.0.1:<organ-port>/health
 
 # 4. INTELLIGENCE — ledgers and loops, not vibes
 python3 -c "import json;d=json.load(open('/root/.hermes/cron/jobs.json'));j=d if isinstance(d,list) else d.get('jobs',[]);print(len(j),'jobs,',sum(1 for x in j if x.get('enabled')),'enabled')"
-tail -5 /root/AAA/canon/eureka-entries.jsonl
+tail -5 /root/AAA/eurekas/eureka-entries.jsonl
 ```
 
 A ready-made run of all four layers: `scripts/probe.sh`.
