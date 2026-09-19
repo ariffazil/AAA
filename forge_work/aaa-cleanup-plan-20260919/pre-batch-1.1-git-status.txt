@@ -1,0 +1,300 @@
+ M AAA_AGENTS_REGISTRY.json.md
+ M AAA_ALIGNMENT_STATUS.md
+ M AGENTS-AUTONOMY.md
+ M AGENTS.md
+ M CHANGELOG.md
+ M CLAUDE.md
+ M CONTEXT.md
+ M CONTRIBUTING.md
+ M DEPLOYMENT.md
+ M FEDERATION.md
+ M FEDERATION_MEMORY_QUICKSTART.md
+ M HARDENING_REPORT_2026-08-30.md
+ M IDENTITY_AXIOMS_V0.md
+ M PROTOCOL_CONFORMANCE.md
+ M QWEN_INIT_PROMPT.md
+ M README.md
+ M RUNBOOK.md
+ M SECURITY.md
+ M TODO.md
+ M agents/_external/agy/agent-card.json
+ M agents/_external/aider/agent-card.json
+ M agents/_external/claude-code/agent-card.json
+ M agents/_external/codex/agent-card.json
+ M agents/_external/continue-cli/agent-card.json
+ M agents/_external/copilot-cli/agent-card.json
+ M agents/_external/copilot/agent-card.json
+ M agents/_external/grok-build/agent-card.json
+ M agents/_external/grok/agent-card.json
+ M agents/_external/kimi-code/agent-card.json
+ M agents/_external/mesa-test-agent/agent-card.json
+ M agents/_external/opencode/agent-card.json
+ M agents/_external/qwen-code/agent-card.json
+ M cognitive-cost-gate.md
+ M docs/FEDERATION_CONTRACT.md
+ M docs/deprecation-registry.json
+ M eurekas/eureka-entries.jsonl
+ M governance/OPENCLAW_AUTHORITY_RECONCILIATION_2026-09-18.md
+ M governance/WISDOM_SCAR_LOG.md
+ M prompts/AAA-ZEN-ALIGNMENT.md
+ M reports/skill-store-census-2026-09-12.json
+ M scripts/cockpit_probe.py
+ M scripts/shadow_geometry_cron.sh
+ M skills/.system/.codex-system-skills.marker
+ M skills/FEDERATED_SKILLS_REGISTRY_V3.yaml
+ M skills/OPENCODE_SKILL_PROFILE.json
+ M skills/a2a-task-delegator/SKILL.md
+ M skills/aaa-human-physique-topology/SKILL.md
+ M skills/aaa-musyawarah-execution/SKILL.md
+ M skills/aaa-pdf-voice-protocol/SKILL.md
+ M skills/aaa-setup-help/SKILL.md
+ M skills/aaa-shadow-mode/SKILL.md
+ M skills/aaa-skill-governor-runtime/SKILL.md
+ M skills/agi-agentic-web-delivery/SKILL.md
+ M skills/agi-multimodal-bridge/SKILL.md
+ M skills/agi-nusantara-substrate/SKILL.md
+ M skills/agi-web-optimization/SKILL.md
+ M skills/arifos-eight-verb-canonical/SKILL.md
+ M skills/asi-summarize/SKILL.md
+ M skills/audit-repo-reality/SKILL.md
+ M skills/authority-reality-grounder/SKILL.md
+ M skills/browser-playwright-runner/SKILL.md
+ M skills/capabilities/agent-capability-self-audit/SKILL.md
+ M skills/capabilities/media/AAA-video-emd-pipeline/SKILL.md
+ M skills/contextstream-memory-code-search/SKILL.md
+ M skills/creative/image-text-editing/SKILL.md
+ M skills/delta-omega-psi-multimodal-cognition/SKILL.md
+ M skills/design/circular-mark-and-arabic-typography/SKILL.md
+ M skills/dissipative-transition-hold/SKILL.md
+ M skills/document-intel/paged-media-report-layout/SKILL.md
+ M skills/document-intel/paged-media-report-layout/references/html-paged-media-css.md
+ D skills/domains/forge/drift-watch
+ D skills/domains/forge/mcp-ops
+ D skills/domains/forge/pr-governance
+ D skills/domains/forge/telemetry-watchdog
+ M skills/domains/general/apex/governance-core/event-driven-alerting/SKILL.md
+ M skills/domains/general/apex/governance-core/federation-mcp-drift-audit/SKILL.md
+ M skills/domains/general/apex/governance-core/forge-mcp-governance-wrapper/SKILL.md
+ M skills/domains/general/apex/governance-core/live-service-ops/SKILL.md
+ M skills/domains/general/apex/governance-core/live-system-investigation/SKILL.md
+ M skills/domains/general/apex/governance-core/operational-signal-routing/SKILL.md
+ M skills/domains/general/apex/governance-core/pasted-material-analysis/SKILL.md
+ M skills/domains/general/court/court-audit/assertion-window-discipline/SKILL.md
+ M skills/domains/general/forge/cron-ops/aaa-event-bridge/SKILL.md
+ M skills/domains/general/forge/cron-ops/forge-event-delivery/SKILL.md
+ M skills/domains/general/forge/cron-ops/ops-event-routing/SKILL.md
+ M skills/domains/general/forge/federation-release/deploy-drift-verification/SKILL.md
+ M skills/domains/general/workshop/media-delivery/visual-artifact-delivery/SKILL.md
+ M skills/domains/general/workshop/media-delivery/visual-artifact-delivery/references/historical-reconstruction-charts.md
+ M skills/domains/general/workshop/media-delivery/visual-artifact-delivery/references/persona-voice-rendering.md
+ M skills/domains/general/workshop/media-delivery/visual-artifact-delivery/references/vision-read-discipline.md
+ M skills/domains/general/workshop/voice-stack/hermes-voice-config/SKILL.md
+ M skills/duckdb-analytics-engine/SKILL.md
+ M skills/emem-shared-memory/SKILL.md
+ M skills/entropy-metabolizer/SKILL.md
+ M skills/federation-connect-headscale/SKILL.md
+ M skills/federation-identity-zen/forge_card_migrate/SKILL.md
+ M skills/fi-mesh-check/SKILL.md
+ M skills/fi-qwen-upgrade/SKILL.md
+ M skills/fi-zai-probe/SKILL.md
+ M skills/forge-act-federation-ingress/SKILL.md
+ M skills/forge-agentic-web-builder/SKILL.md
+ M skills/forge-artifact-publisher/SKILL.md
+ M skills/forge-call-map/SKILL.md
+ M skills/forge-ci-diagnose/SKILL.md
+ M skills/forge-code-analysis/SKILL.md
+ M skills/forge-context-compressor/SKILL.md
+ M skills/forge-cross-repo-doc-zen/SKILL.md
+ M skills/forge-design-intelligence/SKILL.md
+ M skills/forge-did-web-identity/SKILL.md
+ M skills/forge-document-intelligence/SKILL.md
+ M skills/forge-esm-require-guard/SKILL.md
+ M skills/forge-fastapi-api-builder/SKILL.md
+ M skills/forge-fastmcp/SKILL.md
+ M skills/forge-github-ops/SKILL.md
+ M skills/forge-google-workspace/SKILL.md
+ M skills/forge-governance-jsonld/SKILL.md
+ M skills/forge-hermes-self-evolution/SKILL.md
+ M skills/forge-infra-crons/SKILL.md
+ M skills/forge-infra-guardian/SKILL.md
+ M skills/forge-kimi-code/SKILL.md
+ M skills/forge-komda-color-law/SKILL.md
+ M skills/forge-mcp-a2a-agentic/SKILL.md
+ M skills/forge-mcp-gui/SKILL.md
+ M skills/forge-model-monitor/SKILL.md
+ M skills/forge-multimodal-router/SKILL.md
+ M skills/forge-musyawarah-gotong/SKILL.md
+ M skills/forge-nextjs-mastery/SKILL.md
+ M skills/forge-onboarding/SKILL.md
+ M skills/forge-onboarding/agent-onboarding/SKILL.md
+ M skills/forge-postgres-schema-design/SKILL.md
+ M skills/forge-react-spa-discipline/SKILL.md
+ M skills/forge-redis-qdrant-integration/SKILL.md
+ M skills/forge-repo-intelligence/SKILL.md
+ M skills/forge-route-least-power/SKILL.md
+ M skills/forge-secret-hygiene/SKILL.md
+ M skills/forge-spatial-grounding/SKILL.md
+ M skills/forge-symlink-audit/SKILL.md
+ M skills/forge-tailwind-tokens/SKILL.md
+ M skills/forge-telegram-audit/SKILL.md
+ M skills/forge-vault999-witness/SKILL.md
+ M skills/forge-vision-densify/SKILL.md
+ M skills/forge-visual-qa-w3/SKILL.md
+ M skills/forge-vss-verifier-suite/SKILL.md
+ M skills/forge-well-boundary-repair/SKILL.md
+ M skills/forge/human-facing-artifact-design/SKILL.md
+ M skills/governance/capability-surface-conformance/SKILL.md
+ M skills/governance/capability-surface-conformance/references/arifos-surface-inventory.md
+ M skills/governance/public-claims-maintenance/SKILL.md
+ M skills/hermes-coding-gateway/SKILL.md
+ M skills/hermes-federated-identity/SKILL.md
+ M skills/hermes-gateway-image-routing/SKILL.md
+ M skills/hermes-opencode-protocol/SKILL.md
+ M skills/hermes-ops/hermes-runtime-audit/SKILL.md
+ M skills/hermes-telegram-stack-zen/SKILL.md
+ M skills/hermes/web-scrape/SKILL.md
+ M skills/hermes/web-search/SKILL.md
+ M skills/human-meaning-membrane/SKILL.md
+ M skills/human-state-estimation/SKILL.md
+ M skills/imagine/SKILL.md
+ M skills/kernel-trinity-33/SKILL.md
+ M skills/mapbox-cartography-gis/SKILL.md
+ M skills/mata/SKILL.md
+ M skills/media/aaa-image-editing/SKILL.md
+ M skills/mimo-vision/SKILL.md
+ M skills/minimax-image-gen/SKILL.md
+ M skills/mmx-cli/SKILL.md
+ M skills/openclaw-human-meaning/SKILL.md
+ M skills/openclaw/SKILL.md
+ M skills/prompts-chat-library/SKILL.md
+ M skills/qwencloud-deploy/SKILL.md
+ M skills/qwencloud-update-check/SKILL.md
+ M skills/qwencloud-usage/SKILL.md
+ M skills/sanctuary-boundary-enforcer/SKILL.md
+ M skills/skill-library-integrity/references/served-surface-drift.md
+ M skills/substrate/verify-gate/SKILL.md
+ M skills/warga/constitutional/SKILL.md
+ M skills/warga/constitutional/identity-invariance/SKILL.md
+ M skills/wawabot-anthropology-surface/SKILL.md
+?? .architect-musyawawah/draft-arch-position-2026-09-19.yaml
+?? canon/BARRIER-OPACITY-2026-09-19.md
+?? canon/DAY-3.20-FINAL-STATE-2026-09-19.md
+?? canon/F13-VERDICT-WINDOW-BRIEFING-2026-09-19.md
+?? canon/HELD-ACTOR-DIAGNOSTIC-2026-09-19.md
+?? canon/HOLD-COUNT-SURGE-DIAGNOSTIC-2026-09-19.md
+?? canon/HOLD-SURGE-RCA-2026-09-19.md
+?? canon/RG-7-RG-8-STATE-PROBE-2026-09-19.md
+?? canon/SESSION-CLOSED-2026-09-19.md
+?? canon/SESSION-RETROSPECTIVE-2026-09-19.md
+?? canon/WIRE-CAPTURE-2026-09-19-DAY-3.20.md
+?? cockpit/shadow-matrix/session-checks/
+?? forge_work/aaa-cleanup-plan-20260919/
+?? forge_work/codex-shadow-ack-20260919/
+?? forge_work/federation-shadow-ack-20260919/
+?? instructions/add-only-truth-preservation.md
+?? instructions/capability-rich-authority-poor.md
+?? instructions/doctrine-admission-gate.md
+?? instructions/fsl-f13-non-substitution-boundary.md
+?? instructions/functional-spec-binding-path.md
+?? instructions/functional-spec-canonical-ontology.md
+?? instructions/functional-spec-vaul999-anchoring.md
+?? instructions/orthogonal-verification-surfaces.md
+?? instructions/reversibility-as-information-test.md
+?? instructions/state-dependent-doctrine.md
+?? instructions/story-as-drift-vector.md
+?? instructions/temporal-grounding-doctrine.md
+?? reports/acah-audit-2026-09-19/
+?? reports/self-mod-receipt-2026-09-19-skill-serving.md
+?? scripts/populate-shadow-acknowledged.sh
+?? skills/.archive/NAMESPACE.md
+?? skills/.frozen/NAMESPACE.md
+?? skills/.learning/NAMESPACE.md
+?? skills/.system/NAMESPACE.md
+?? skills/.system/imagegen/
+?? skills/.system/openai-docs/
+?? skills/.system/plugin-creator/
+?? skills/.system/review-agent/
+?? skills/.system/skill-creator/
+?? skills/.system/skill-installer/
+?? skills/aaa-governance/NAMESPACE.md
+?? skills/aaa/NAMESPACE.md
+?? skills/apex-cognitive-reflex/NAMESPACE.md
+?? skills/apex_verdict_hold/NAMESPACE.md
+?? skills/audit/NAMESPACE.md
+?? skills/audit/corporate-language-audit/
+?? skills/autonomous-ai-agents/NAMESPACE.md
+?? skills/capabilities/NAMESPACE.md
+?? skills/civic-publishing/NAMESPACE.md
+?? skills/cognitive-reflex/NAMESPACE.md
+?? skills/core/NAMESPACE.md
+?? skills/counseling/NAMESPACE.md
+?? skills/court-audit/NAMESPACE.md
+?? skills/court/NAMESPACE.md
+?? skills/creative/NAMESPACE.md
+?? skills/cron-ops/NAMESPACE.md
+?? skills/design/NAMESPACE.md
+?? skills/devops/NAMESPACE.md
+?? skills/document-intel/NAMESPACE.md
+?? skills/domains/NAMESPACE.md
+?? skills/domains/forge/drift-watch.DEPRECATED-2026-09-19
+?? skills/domains/forge/mcp-ops.DEPRECATED-2026-09-19
+?? skills/domains/forge/pr-governance.DEPRECATED-2026-09-19
+?? skills/domains/forge/telemetry-watchdog.DEPRECATED-2026-09-19
+?? skills/domains/general/workshop/media-delivery/visual-artifact-delivery/references/platform-screenshot-capture.md
+?? skills/engineering/NAMESPACE.md
+?? skills/federation-identity-zen/NAMESPACE.md
+?? skills/federation-topology/NAMESPACE.md
+?? skills/federation/NAMESPACE.md
+?? skills/fence-fix-summary.txt
+?? skills/finance/NAMESPACE.md
+?? skills/forge/NAMESPACE.md
+?? skills/geo/NAMESPACE.md
+?? skills/github/NAMESPACE.md
+?? skills/governance-core/NAMESPACE.md
+?? skills/governance/NAMESPACE.md
+?? skills/governance/capability-surface-conformance/references/store-counting-conformance.md
+?? skills/governance/control-reality-audit/
+?? skills/governance/external-review-intake/
+?? skills/governance/institutional-language-audit/
+?? skills/hermes-ops/NAMESPACE.md
+?? skills/hermes-ops/hermes-runtime-audit/references/gate-estate-audit.md
+?? skills/hermes/NAMESPACE.md
+?? skills/human-interface/NAMESPACE.md
+?? skills/image-gen/NAMESPACE.md
+?? skills/infra/NAMESPACE.md
+?? skills/intel-brief/NAMESPACE.md
+?? skills/knowledge/NAMESPACE.md
+?? skills/legal-my/NAMESPACE.md
+?? skills/media/NAMESPACE.md
+?? skills/mlops/NAMESPACE.md
+?? skills/persona/NAMESPACE.md
+?? skills/primitives/NAMESPACE.md
+?? skills/productivity/NAMESPACE.md
+?? skills/reflective/NAMESPACE.md
+?? skills/research-core/NAMESPACE.md
+?? skills/research/NAMESPACE.md
+?? skills/search-web/NAMESPACE.md
+?? skills/security-ops/NAMESPACE.md
+?? skills/security/NAMESPACE.md
+?? skills/skill-library-integrity/references/control-vs-document.md
+?? skills/skill-library-integrity/references/counting-and-instrument-liveness.md
+?? skills/skill-library-integrity/references/dead-instrument-audit.md
+?? skills/skill-library-integrity/references/detector-integrity.md
+?? skills/skill-library-integrity/references/identity-keying-and-collisions.md
+?? skills/skill-library-integrity/references/instrument-liveness.md
+?? skills/skill-library-integrity/references/instrument-verification.md
+?? skills/skill-library-integrity/references/measured-theatre-detection.md
+?? skills/skill-library-integrity/references/repair-campaign-fanout.md
+?? skills/skill-library-integrity/references/routing-name-collision.md
+?? skills/skill-library-integrity/scripts/store_census.py
+?? skills/smart-home/NAMESPACE.md
+?? skills/software-development/NAMESPACE.md
+?? skills/substrate/NAMESPACE.md
+?? skills/telegram-ops/NAMESPACE.md
+?? skills/trading/NAMESPACE.md
+?? skills/verification-discipline/NAMESPACE.md
+?? skills/warga/NAMESPACE.md
+?? skills/wealth/NAMESPACE.md
+?? skills/wealth/listed-equity-chart-delivery/
+?? skills/workflows/NAMESPACE.md
+?? temporal/
