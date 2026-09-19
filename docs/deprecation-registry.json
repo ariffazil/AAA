@@ -68,6 +68,66 @@
       "stopgap_taken": "2026-09-15: 4 stale consumers corrected with timestamped .bak (arifflow_digest.py, A-FORGE/duties/aed.py, A-FORGE/duties/memory_promotion_smoke.py, arifOS/scripts/auto_remediate.py). VAULT_WRITER_URL/VAULT_API_URL held at :8100 in /root/.secrets/{kunci-root,kunci-mas}.env while nothing listens on :8100 -> left UNTOUCHED and raised as a proposal instead.",
       "closure": "F13 decision required: (a) retire or formally tombstone the two frozen outcomes.jsonl paths and the three broken /agent/vault999 symlinks under /root/VAULT999, and (b) collapse the :8100 compose lane vs :5001 systemd lane onto one declared writer. See /root/AAA/registry/PROPOSAL-2026-09-15-vault999-lane-store-consolidation.md and /root/AAA/registry/VAULT999-SOT-RECONCILIATION-2026-09-15.md",
       "classification": "OPEN (F13)"
+    },
+    {
+      "id": "DIV-CODEX-DUAL-HOME",
+      "status": "OPEN",
+      "owner": "/root/AAA/agents/codex (internal) vs /root/AAA/agents/_external/codex (external)",
+      "reality": "Two canonical homes for codex carry different AGENTS.md doctrine. (1) /root/AAA/agents/codex/AGENTS.md dated 2026-09-15, 2.8 KB — the 2026-09-14 'warga citizen card', F13-ratified. (2) /root/AAA/agents/_external/codex/AGENTS.md dated 2026-08-26, 7.1 KB — the 'engineer-executor' doc referencing Codex CLI v0.147.0 and 'mcp.json retired 2026-07-27' (binary reality: codex-cli 0.154.0 at /root/.npm-global/bin/codex, mcp.json was retired so the doc is right but the version is stale by 7 minor releases). Only the external home has an agent-card.json; the internal home has identity.json + AGENTS.md only. Two sources of truth, one agent.",
+      "consequence": "Callers reading different surfaces get different doctrine. A musyawarah citing /root/AAA/agents/codex/AGENTS.md lands on F13-ratified citizen law; a 333-AGI session citing the _external AGENTS.md operates against the stale 2026-08-26 doctrine. One of them is wrong on runtime facts; both are 'valid' by their own dates.",
+      "stopgap_taken": "2026-09-19: codex _external agent-card.json shadowAcknowledged now records the divergence explicitly with shadow_id DIV-CODEX-DUAL-HOME so downstream readers see the trap. The card's identity.fi_slot (FI-005) and metadata.fi_slot (FI-005) both match /root/AAA/agents/codex/identity.json — so the FI slot is convergent; only the prose doctrine diverges.",
+      "closure": "F13-gated canonical-record move: collapse the two codex dirs into one canonical home. Same class as the prior harness collision / canonical-record moves. Until then, the shadowAcknowledged entry in _external agent-card.json is the read-side mitigation.",
+      "classification": "OPEN (F13) — canonical-record"
+    },
+    {
+      "id": "DIV-CODEX-SHADOW-SPARSE",
+      "status": "OPEN",
+      "owner": "/root/AAA/agents/_external/codex (card) vs /root/AAA/cockpit/shadow-matrix/shadow-matrix-2026-09-07.json (matrix)",
+      "reality": "Codex's entry in the shadow-matrix (per_actor_shadows) shows state=BALANCED, fq=1.0, execute_count=1, verify_count=1, verdict=CAUTION, note='Sparse'. The _external agent-card.json had shadowAcknowledged=null (audit 2026-09-19), so no shadow was being declared against the matrix observation. Codex is one of several _external cards where this gap exists; codex was the first audited. After fix (2026-09-19), codex _external card now carries 5 shadow entries covering sparse_history, two_canonical_homes, fi_slot_ground_truth, stale_binary_refs, and card_truth_repair_stale.",
+      "consequence": "Before fix: a caller trusting the agent-card alone would not learn that codex is at BALANCED 1.0 sparse — the matrix tracks it, the card did not. The shadow-matrix is the authority; the card was a leak. After fix: the card surfaces the trap explicitly. Other _external cards still have null shadowAcknowledged (qwen-code, grok, aider, etc.) — partial closure, not federation-wide.",
+      "stopgap_taken": "2026-09-19: shadowAcknowledged array + shadow_population_meta block added to /root/AAA/agents/_external/codex/agent-card.json. Backup at agent-card.json.bak-20260919-shadow-ack. JSON validated.",
+      "closure": "Run the same shadowAcknowledged population pass for the remaining _external cards (qwen-code, aider, claude-code, grok, kimi-code, opencode, copilot, continue-cli, mesa-test-agent, agy) — each is a separate T1 mutation. Federation-wide script at /root/AAA/scripts/populate-shadow-acknowledged.sh would close the rest of this divergence in one run; required-script spec below.",
+      "classification": "OPEN (partial closure 2026-09-19, codex only)"
+    },
+    {
+      "id": "DIV-FEDERATION-SHADOW-ACK-CLOSED",
+      "status": "CLOSED",
+      "owner": "/root/AAA/agents/_external/*/agent-card.json",
+      "reality": "Federation-wide pass 2026-09-19: shadowAcknowledged field added to all 13 _external agent cards (agy, aider, claude-code, codex, continue-cli, copilot, copilot-cli, grok, grok-build, kimi-code, mesa-test-agent, opencode, qwen-code). Codex had the manual hand-edit from the codex audit (5 shadows, .bak-20260919-shadow-ack). The other 12 were populated by /root/AAA/scripts/populate-shadow-acknowledged.sh with per-card .bak-2026-09-19-shadow-ack. Each shadow entry is a string of shape 'name: gloss' and was derived from real, probeable evidence: identity.json (FI slot), shadow-matrix (per_actor_shadows), live binary version probe, agent-card.json (verified_against).",
+      "consequence": "Before this pass, callers reading _external cards alone could not learn whether each agent had any execution/verification signal (shadow-matrix is the authority, cards were silent leaks). After: every card surfaces its own shadow inventory, and read_state MUST treat each agent's self-assessment as DERIVED (small N) until the shadow-matrix record grows above min_governance_samples=10.",
+      "stopgap_taken": "Per-card .bak at /root/AAA/agents/_external/<agent>/agent-card.json.bak-2026-09-19-shadow-ack (mode 600). Single consolidated federation-wide audit script at /root/AAA/scripts/populate-shadow-acknowledged.sh. Code audit chain: 333-AGI ran the audit; codex verified the audit (including the opencode state which was strictly worse than codex's); the opencode card was prioritized first as the worst-fi-slot case.",
+      "closure": "CLOSED 2026-09-19. Reopen if: (a) a new _external card is added without shadowAcknowledged, or (b) shadow-matrix crosses the per-agent min_governance_samples=10 threshold and existing shadows become stale (real activity > stated shadows). Per-card reversibility: cp /root/AAA/agents/_external/<agent>/agent-card.json.bak-2026-09-19-shadow-ack /root/AAA/agents/_external/<agent>/agent-card.json.",
+      "classification": "CLOSED"
+    },
+    {
+      "id": "DIV-FEDERATION-SHADOW-ACK-V2",
+      "status": "PARTIALLY_CLOSED",
+      "owner": "/root/AAA/scripts/populate-shadow-acknowledged.sh",
+      "reality": "Audit-of-the-audit pass 2026-09-19T13:48Z (333-AGI responding to codex audit). Codex found two latent bugs in the v1 script that the federation pass landed with: (Bug 1) matrix probe regex `test(\"qwen\"; \"i\")` was too broad — matched both `qwen-code` AND `qwen-code/FI-003` — and the multi-object JSON stream got interpolated into multi-line variables, then split by jq -s encoding into 4 array fragments where one was intended. qwen-code was the only card with a matrix match that was broader than one entry, so it was the only card that broke. (Bug 2) script-populated shadow_population_meta blocks had no `covers_shadow_ids` field, breaking traceability from card → divergence registry. Both fixed: regex is now exact-match `==`, jq has `-c` flag so matrix probe returns single compact line, and covers_shadow_ids is populated per card.",
+      "consequence": "Initial v1 state would have left qwen-code's sparse_history information garbled across 4 array entries (still parseable, but meaning hidden) and 12 cards without divergence linkage. After v2 fix: all 13 cards have well-formed shadow entries (verified: 0 fragments across the federation) and full traceability to divergences.",
+      "stopgap_taken": "Script v1 → v2 patch. 12 cards reverted from .bak-v1 to pre-script state, re-run with v2 script, .bak-v1 now contains the v1 (pre-fix) state for each card. v1 audit chain preserved.",
+      "closure": "PARTIALLY_CLOSED 2026-09-19T13:51Z — script fix landed, all 13 cards valid, but TWO F13 follow-ups remain: DIV-CODEX-DUAL-HOME (collapse two codex dirs) and DIV-OPENCODE-FI-UNRESOLVED (sovereign assigns opencode's FI slot — literal '???' placeholder in identity.json actor_id). When F13 acts on either, this divergence can move to fully CLOSED.",
+      "classification": "PARTIALLY_CLOSED (script fix done; 2 F13 follow-ups)"
+    },
+    {
+      "id": "DIV-QWEN-CODE-STUCK-MATRIX",
+      "status": "OPEN",
+      "owner": "/root/AAA/agents/_external/qwen-code",
+      "reality": "Shadow-matrix 2026-09-07 records qwen-code at state=STUCK, fq=0.25, execute_count=8, verify_count=2, verdict=STUCK, note='Same execution-dominance pattern'. This means qwen-code has executed 8 times but only verified twice — execution outruns verification 4×. Per substrate-taxonomy (FAIL_CLOSED doctrine 2026-09-18): STUCK = 'no verification', which is the inverse of the FOSSILIZED state grok-build is in. qwen-code is doing real work that nobody is checking.",
+      "consequence": "A federation member with execute/verify = 8/2 produces DERIVED claims with minimal MEASURED backing. Callers reading qwen-code's card should treat any self-assessment as unverified by ratio. The shadow is now declared in the card's shadowAcknowledged[0] entry but no execution path closes the gap — verification has to come from arifOS (888) or a witness organ.",
+      "stopgap_taken": "2026-09-19: shadow entry declared in /root/AAA/agents/_external/qwen-code/agent-card.json shadowAcknowledged[0]; covers_shadow_ids includes 'DIV-QWEN-CODE-STUCK-MATRIX'.",
+      "closure": "Either (a) qwen-code traffic grows enough that verify_count catches up naturally, or (b) arifOS routes a verification witness to qwen-code explicitly. Both are operational, not F13-gated.",
+      "classification": "OPEN (operational)"
+    },
+    {
+      "id": "DIV-OPENCODE-FI-UNRESOLVED",
+      "status": "OPEN",
+      "owner": "/root/AAA/agents/opencode/identity.json + arif-fazil/F13",
+      "reality": "/root/AAA/agents/opencode/identity.json has actor_id literally set to 'opencode/FI-???' — the '???' is a placeholder, never resolved. The file has NO `fi_slot` field at all (compare codex identity.json which has fi_slot='FI-005'). Meanwhile /root/AAA/agents/_external/opencode/agent-card.json declares fi='FI-OPENCODE' and fi_slot='FI-001' with actor_id=null at top level. So the FI slot claim exists in three places, all inconsistent: identity says '???', external card says 'FI-001', and the convention would say opencode is FI-001 (used in agent-card.json.bak-20260908-pre-migration and in scar/2026-08-15-w3-degradation references). The '???' was either a copy-paste from another identity file or a draft never resolved.",
+      "consequence": "opencode's legal identity binding is broken. An ed25519 pubkey is present (ad611f…), but no FI slot to anchor it to. A future agent-card verifier cannot check whether 'opencode/FI-001' is the legitimate sovereign-assigned slot or just an external-card guess. F13 SOVEREIGN needs to either ratify FI-001, assign a different slot, or formally retire the '???' and the opencode diri entirely.",
+      "stopgap_taken": "2026-09-19: shadow entry declared in /root/AAA/agents/_external/opencode/agent-card.json shadowAcknowledged[1]='fi_slot_unresolved: ...'; covers_shadow_ids includes 'DIV-OPENCODE-FI-UNRESOLVED'.",
+      "closure": "F13 SOVEREIGN DIRECTION REQUIRED. Either: (a) sovereign confirms FI-001 for opencode and identity.json is patched to actor_id='opencode/FI-001' + fi_slot='FI-001', or (b) sovereign assigns a different FI slot, or (c) opencode gets formally retired and identity.json is moved to archive. This is the same class of canonical-record mutation as the prior F13 harness collision.",
+      "classification": "OPEN (F13)"
     }
   ],
   "recent_closures": [
