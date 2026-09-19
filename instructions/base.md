@@ -78,21 +78,66 @@ Kernel definitions: `/root/AAA/instructions/shadow-as-expensive-reality.md`
 NATS bind `127.0.0.1` with no auth. UFW blocks the outside. Full doctrine:
 `/root/arifOS/docs/LOCALHOST_IS_PASSWORD.md`.
 
-### 30-second session start checklist
+### Session Init Protocol — Frozen Snapshot Injection (F13 2026-09-20)
 
-0. **Witness demand check** (H09/I8) — Before touching any tool: `python3 /root/scripts/carry_forward.py show --entries | tail -20` to read last carry_forward entries + `date '+%H:%M %Z'` for session time. What state is the human in? What witness demand is active? If no carry_forward exists or last entry >24h stale, flag WITNESS_DEMAND_UNKNOWN and proceed minimally. The human's current reality context (time, fatigue, session type) must precede every capability invocation.
-1. `source /root/.secrets/kunci-root.env` (5-R Protocol ready)
-2. Read `/root/AGENTS.md` + `/root/CLAUDE.md`
-3. Boot: `MCP '/init' prompt (arifos-kernel · 2026-09-04 supersede)` (Trinity-33 · RSI)
-4. One-shot state pane: `now` — time + 10 federation surfaces + FRAME observer drift + last session carry. (`now --json` for machine-readable)
-5. Deep probe if needed: `make health` (10 surfaces) or per-organ `curl :PORT/health`
-6. Check dirty repos:
-   `for d in /root/{arifOS,A-FORGE,AAA,GEOX,WEALTH,WELL}; do git -C "$d" status -s; done`
-7. Check deprecation map: `cat /root/AAA/docs/deprecation-registry.json | jq .`
+> **Source:** Anthropic context engineering, MindStudio frozen snapshot pattern, OpenAI context personalization cookbook.
+> **Principle:** The first human-facing message must be preceded by a compact state summary. No fumbling. No "let me check." The agent enters the conversation already knowing.
+
+#### Step 0 — Witness Demand Check (MANDATORY, pre-tool)
+
+Before ANY tool invocation, load context:
+```
+1. date '+%H:%M %Z %z'           # Current time (MANDAAT TEMPORAL)
+2. carry_forward entries (top 20) # What loops are open? What needs attention?
+3. Human state field              # What is the human's current energy/context?
+```
+
+If no carry_forward exists or last entry >24h stale: flag `WITNESS_DEMAND_UNKNOWN`, proceed minimally.
+
+#### Step 1 — Snapshot Assembly (MUST complete before first human-facing message)
+
+Produce a compact SESSION SNAPSHOT:
+```
+SESSION SNAPSHOT:
+- Time: [HH:MM MYT] ([Day])
+- Human state: [known/unknown from carry_forward]
+- Open loops requiring attention: [count + top 3 by urgency]
+- Federation: [KVM8 status, last carry_forward write, dirty repos count]
+- Pending F13: [any pending human decisions]
+- Last topic: [from carry_forward last entry]
+```
+
+This snapshot is **internal only** — never shown to the human. It is the agent's situational awareness before speaking.
+
+#### Step 2 — Execute Boot Sequence
+
+```
+source /root/.secrets/kunci-root.env
+Read /root/AGENTS.md + /root/CLAUDE.md
+Boot: MCP '/init' prompt (arifos-kernel · 2026-09-04 supersede)
+```
+
+#### Step 3 — Federation State (parallel reads)
+
+```
+now                           # Time + surfaces + FRAME drift
+Dirty repos check             # for d in /root/{arifOS,A-FORGE,AAA,...}
+Deprecation registry check
+```
+
+#### Step 4 — Ready
+
+First message to human: **grounded in their context, not your uncertainty.**
+
+❌ "Let me check what's happening..."
+✅ "Hang, [address what they need directly based on carry_forward context]."
 
 **State-read conventions (2026-08-15):**
 - `carry_forward.json` is generational (schema `arifos.carry_forward.v3`, canonical at `/root/.hermes/carry_forward.json`): closing agents run `/root/scripts/carry_forward.py append` — never hand-edit. (A live collision 2026-09-12 — a concurrent session overwrote another's close 2 min later — is why: flock now blocks the two-writer race.) Loop lifecycle via `loop --close`. All timestamps ISO-8601 **UTC** (local = Asia/Kuala_Lumpur). Backups stamp automatically on every write.
 - HTTP 401/403 on a health endpoint = service UP, auth-gated. Only conn-refused/timeout = DOWN. FED :4000 no-auth endpoint: `/health/liveliness`.
-- FRAME (:18085) is the independent observer — its output is evidence, never a verdict.
+- FRAME (:1805) is the independent observer — its output is evidence, never a verdict.
+- Carry forward human state field (H09/I8): read `carry_forward.json` last human state field. What is the human's current energy/context? If unknown: note UNOBSERVED, proceed minimally.
 
 **If stuck:** 3-strikes rule — read files, check logs, search, run diagnostics, **then** ask.
+
+**Canonical reference:** `/root/AAA/canon/GODEL-LOCK-V2-2026-09-20.md` (INIT::GODEL_LOCK block for agent bootstrap)
