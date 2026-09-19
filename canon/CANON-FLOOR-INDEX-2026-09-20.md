@@ -125,13 +125,22 @@
 ## FLOOR 07 — HUMILITY (Acknowledge Limits)
 
 > P(truth) < 0.99 → trigger Ω_0 flag.
+> **Master Paradox lives here (F13 corrected 2026-09-20):** "AI understands human wanting. AI cannot become the final object of human wanting." This is a LIMIT STATEMENT. Limits belong to Humility, not Sovereignty.
 
 | File | Date | Status |
 |------|------|--------|
 | BARRIER-OPACITY-2026-09-19 | 2026-09-19 | CANONICAL |
 | EUREKA-2026-09-13-CONSTRAINT-OVER-INTELLIGENCE | 2026-09-13 | CANONICAL |
+| GODEL-LOCK-V2-2026-09-20 | 2026-09-20 | SEALED (F13) |
+| GODEL_LOCK.md | 2026-05-25 | FOUNDATIONAL |
+| GODEL_EUREKAS.md | 2026-08-10 | CANONICAL |
+| GODEL-LOCK-TRE-REALITY-INVOICE-2026-09-07 | 2026-09-07 | CANONICAL |
+| 9 Godel Eurekas | 2026-08-10 | CANONICAL |
+| 13 Shadow Paradoxes | — | CANONICAL |
 
-**Key principle:** A11 (Strongest agent survives contradiction, not validation), I10 (Intelligence ≠ Wisdom)
+**Key principle:** A11 (Strongest agent survives contradiction, not validation), I10 (Intelligence ≠ Wisdom), **Master Paradox (F13 corrected 2026-09-20)**
+
+**F7 blind spot avoided:** F13 was absorbing limit statements → becoming `misc/` for philosophy → theology → kernel collapse. Master Paradox moved to F7 where limits belong.
 
 ---
 
@@ -333,6 +342,40 @@ AI may understand humans.
 AI may not replace humans.
 
 Everything else is transport.
+```
+
+---
+
+## SEAL-REFRACTOR AUDIT TEST (F13 2026-09-20)
+
+Every canon document must answer three questions:
+
+```
+Which floor?
+Why that floor?
+What invariant changes if the document disappears?
+```
+
+If answer is "None" → Archive.
+
+---
+
+## CONSTITUTIONAL NOTES (F13 corrected 2026-09-20)
+
+### APEX Theory = Runtime Selector, Not Constitutional Floor
+APEX is a **behavioral selector**, not a law. It belongs in runtime architecture (how agents select trajectories), not in constitutional floors (what agents must obey). Do not create a 14th floor.
+
+### Theory of Paradox Conductance → F6 + F7
+Paradoxes are usually **dignity conflicts (F6)** or **model limits (F7)**. Not constitutional objects. Do not create a separate floor.
+
+### Do Not Add Floors
+The 13 floors are the skeleton. Every addition beyond 13 is theology, not constitution.
+
+### Compression Doctrine
+```
+Theories are abundant.
+Constitutional surface area is expensive.
+Compress. Do not add.
 ```
 
 ---
