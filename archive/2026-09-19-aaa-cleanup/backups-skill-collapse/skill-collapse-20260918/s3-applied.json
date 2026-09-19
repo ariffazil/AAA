@@ -1,0 +1,216 @@
+{
+ "stamp": "2026-09-17T17:45:27.527707+00:00",
+ "rule": "one body, one address: body in AAA (write surface), .hermes entry is the read-surface address",
+ "applied": [
+  {
+   "skill": "FORGE-federation-manifest",
+   "group": "aaa_newer",
+   "action": "SKIP_WOULD_LOSE_CHILDREN",
+   "lost": [
+    "liveness.json"
+   ]
+  },
+  {
+   "skill": "companion-clis",
+   "group": "merge_union",
+   "action": "COLLAPSED",
+   "merged_frontmatter_keys": [],
+   "body_sha": "cef4437253e8253f",
+   "address": "/root/.hermes/skills/companion-clis",
+   "body": "/root/AAA/skills/companion-clis"
+  },
+  {
+   "skill": "delta-omega-psi-multimodal-cognition",
+   "group": "aaa_superset",
+   "action": "COLLAPSED",
+   "merged_frontmatter_keys": [],
+   "body_sha": "24ebc475dccaa775",
+   "address": "/root/.hermes/skills/delta-omega-psi-multimodal-cognition",
+   "body": "/root/AAA/skills/delta-omega-psi-multimodal-cognition"
+  },
+  {
+   "skill": "docs",
+   "group": "aaa_superset",
+   "action": "COLLAPSED",
+   "merged_frontmatter_keys": [],
+   "body_sha": "cbe0dd847995f813",
+   "address": "/root/.hermes/skills/docs",
+   "body": "/root/AAA/skills/docs"
+  },
+  {
+   "skill": "federation-connect-headscale",
+   "group": "aaa_superset",
+   "action": "COLLAPSED",
+   "merged_frontmatter_keys": [],
+   "body_sha": "ef275e0de7397dbf",
+   "address": "/root/.hermes/skills/federation-connect-headscale",
+   "body": "/root/AAA/skills/federation-connect-headscale"
+  },
+  {
+   "skill": "fi-qwen-upgrade",
+   "group": "aaa_superset",
+   "action": "COLLAPSED",
+   "merged_frontmatter_keys": [],
+   "body_sha": "31af6a684789301e",
+   "address": "/root/.hermes/skills/fi-qwen-upgrade",
+   "body": "/root/AAA/skills/fi-qwen-upgrade"
+  },
+  {
+   "skill": "fi-zai-probe",
+   "group": "aaa_superset",
+   "action": "COLLAPSED",
+   "merged_frontmatter_keys": [],
+   "body_sha": "e4a2a05afc1a184f",
+   "address": "/root/.hermes/skills/fi-zai-probe",
+   "body": "/root/AAA/skills/fi-zai-probe"
+  },
+  {
+   "skill": "flash",
+   "group": "merge_union",
+   "action": "COLLAPSED",
+   "merged_frontmatter_keys": [],
+   "body_sha": "3e5ad053e4af1165",
+   "address": "/root/.hermes/skills/flash",
+   "body": "/root/AAA/skills/flash"
+  },
+  {
+   "skill": "forge-vss-verifier-suite",
+   "group": "aaa_superset",
+   "action": "COLLAPSED",
+   "merged_frontmatter_keys": [],
+   "body_sha": "3d53726bba60904a",
+   "address": "/root/.hermes/skills/forge-vss-verifier-suite",
+   "body": "/root/AAA/skills/forge-vss-verifier-suite"
+  },
+  {
+   "skill": "hermes-gateway-image-routing",
+   "group": "aaa_superset",
+   "action": "COLLAPSED",
+   "merged_frontmatter_keys": [],
+   "body_sha": "63499a11a349c825",
+   "address": "/root/.hermes/skills/hermes-gateway-image-routing",
+   "body": "/root/AAA/skills/hermes-gateway-image-routing"
+  },
+  {
+   "skill": "imagine",
+   "group": "aaa_superset",
+   "action": "COLLAPSED",
+   "merged_frontmatter_keys": [],
+   "body_sha": "1419604fbbf57f2b",
+   "address": "/root/.hermes/skills/imagine",
+   "body": "/root/AAA/skills/imagine"
+  },
+  {
+   "skill": "minimax-image-gen",
+   "group": "aaa_newer",
+   "action": "COLLAPSED",
+   "merged_frontmatter_keys": [],
+   "body_sha": "44f0de2763486dce",
+   "address": "/root/.hermes/skills/minimax-image-gen",
+   "body": "/root/AAA/skills/minimax-image-gen"
+  },
+  {
+   "skill": "openclaw",
+   "group": "aaa_superset",
+   "action": "COLLAPSED",
+   "merged_frontmatter_keys": [],
+   "body_sha": "5abb76ae8f7967d4",
+   "address": "/root/.hermes/skills/openclaw",
+   "body": "/root/AAA/skills/openclaw"
+  },
+  {
+   "skill": "qwen-harness-tools",
+   "group": "aaa_superset",
+   "action": "COLLAPSED",
+   "merged_frontmatter_keys": [],
+   "body_sha": "0da78f2e6d57ccb3",
+   "address": "/root/.hermes/skills/qwen-harness-tools",
+   "body": "/root/AAA/skills/qwen-harness-tools"
+  },
+  {
+   "skill": "reality-loop-operator",
+   "group": "aaa_superset",
+   "action": "COLLAPSED",
+   "merged_frontmatter_keys": [],
+   "body_sha": "ded9f02ad213840b",
+   "address": "/root/.hermes/skills/reality-loop-operator",
+   "body": "/root/AAA/skills/reality-loop-operator"
+  },
+  {
+   "skill": "runpod",
+   "group": "merge_union",
+   "action": "COLLAPSED",
+   "merged_frontmatter_keys": [],
+   "body_sha": "d0289b1b0c98f2e6",
+   "address": "/root/.hermes/skills/runpod",
+   "body": "/root/AAA/skills/runpod"
+  },
+  {
+   "skill": "runpod-mcp",
+   "group": "merge_union",
+   "action": "COLLAPSED",
+   "merged_frontmatter_keys": [],
+   "body_sha": "b6cd7fb52dd7af76",
+   "address": "/root/.hermes/skills/runpod-mcp",
+   "body": "/root/AAA/skills/runpod-mcp"
+  },
+  {
+   "skill": "runpod-usage",
+   "group": "merge_union",
+   "action": "COLLAPSED",
+   "merged_frontmatter_keys": [],
+   "body_sha": "f1992851556c610b",
+   "address": "/root/.hermes/skills/runpod-usage",
+   "body": "/root/AAA/skills/runpod-usage"
+  },
+  {
+   "skill": "runpodctl",
+   "group": "merge_union",
+   "action": "COLLAPSED",
+   "merged_frontmatter_keys": [],
+   "body_sha": "f0a6f15c493c0b5a",
+   "address": "/root/.hermes/skills/runpodctl",
+   "body": "/root/AAA/skills/runpodctl"
+  },
+  {
+   "skill": "runtime",
+   "group": "aaa_superset",
+   "action": "COLLAPSED",
+   "merged_frontmatter_keys": [],
+   "body_sha": "b3ccdd5b138f0122",
+   "address": "/root/.hermes/skills/runtime",
+   "body": "/root/AAA/skills/runtime"
+  },
+  {
+   "skill": "substrate",
+   "group": "aaa_superset",
+   "action": "COLLAPSED",
+   "merged_frontmatter_keys": [],
+   "body_sha": "bb7907d02a57f074",
+   "address": "/root/.hermes/skills/substrate",
+   "body": "/root/AAA/skills/substrate"
+  },
+  {
+   "skill": "warga",
+   "group": "aaa_superset",
+   "action": "COLLAPSED",
+   "merged_frontmatter_keys": [],
+   "body_sha": "0c44966914fe2cac",
+   "address": "/root/.hermes/skills/warga",
+   "body": "/root/AAA/skills/warga"
+  },
+  {
+   "skill": "constitutional",
+   "group": "aaa_superset",
+   "action": "COVERED_BY_PARENT",
+   "note": "/root/.hermes/skills/warga/constitutional now resolves into AAA via an ancestor link"
+  },
+  {
+   "skill": "identity-invariance",
+   "group": "aaa_superset",
+   "action": "COVERED_BY_PARENT",
+   "note": "/root/.hermes/skills/warga/constitutional/identity-invariance now resolves into AAA via an ancestor link"
+  }
+ ],
+ "backup": "/root/AAA/backups/skill-collapse-20260918"
+}
