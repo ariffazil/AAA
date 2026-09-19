@@ -80,7 +80,7 @@ NATS bind `127.0.0.1` with no auth. UFW blocks the outside. Full doctrine:
 
 ### 30-second session start checklist
 
-0. **Witness demand check** — read `carry_forward.json` last human state field. What is the human's current energy/context? If unknown: note UNOBSERVED, proceed minimally.
+0. **Witness demand check** (H09/I8) — Before touching any tool: `python3 /root/scripts/carry_forward.py show --entries | tail -20` to read last carry_forward entries + `date '+%H:%M %Z'` for session time. What state is the human in? What witness demand is active? If no carry_forward exists or last entry >24h stale, flag WITNESS_DEMAND_UNKNOWN and proceed minimally. The human's current reality context (time, fatigue, session type) must precede every capability invocation.
 1. `source /root/.secrets/kunci-root.env` (5-R Protocol ready)
 2. Read `/root/AGENTS.md` + `/root/CLAUDE.md`
 3. Boot: `MCP '/init' prompt (arifos-kernel · 2026-09-04 supersede)` (Trinity-33 · RSI)
