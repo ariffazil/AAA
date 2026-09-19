@@ -1,0 +1,244 @@
+# Enhanced Shadow-Matrix v2 — Failure Signatures
+# ══════════════════════════════════════════════
+# Enhancement of shadow-matrix-2026-09-07.json
+# Adds: failure signatures, harness shadow linkage, Yin-Yang balance,
+# trigger pattern frequency, and behavioral drift metrics.
+#
+# Original shadow-matrix only captured FQ (verify/execute ratio).
+# This enhancement captures WHY the agent is in its state, not just WHAT state.
+#
+# Schema: enhanced-shadow-matrix-v2
+# Created: 2026-09-19 by FI-008
+# DITEMPA BUKAN DIBERI.
+
+schema_version: "2.0.0"
+snapshot_at: "2026-09-19T03:30:00+08:00"
+source: "shadow-matrix-2026-09-07 + live session evidence + harness shadow files"
+enhancement: "failure signatures, harness shadow linkage, Yin-Yang balance"
+
+# ─────────────────────────────────────────────
+# PER-ACTOR ENHANCED SHADOW PROFILES
+# ─────────────────────────────────────────────
+
+actors:
+
+  - actor_id: claude-code
+    harness_shadow_file: /root/AAA/registries/models/claude_code_harness_shadow.yaml
+    model_shadow_file: /root/AAA/registries/models/anthropic_shadow.yaml
+    
+    fq_metrics:
+      fq: 0.079
+      state: BURNING
+      execute_count: 38
+      verify_count: 3
+      consecutive_exec_no_verify: 28
+      
+    failure_signatures:
+      - signature: execution_gravity
+        frequency: 0.73  # 73% of sessions show this pattern
+        severity: CRITICAL
+        evidence: shadow-matrix-2026-09-07
+      - signature: menu_reflex
+        frequency: 0.60  # estimated from Arif's session
+        severity: HIGH
+        evidence: arif-witness-20260918
+      - signature: attention_leak
+        frequency: 0.40
+        severity: HIGH
+        evidence: arif-witness-20260918
+      - signature: honesty_performance
+        frequency: 0.30
+        severity: HIGH
+        evidence: arif-witness-20260918
+        
+    yin_yang:
+      balance: 0.073
+      persona_dominance: 0.92
+      phase: DEEP_NIGREDO
+      shadow_boundary_distance: -0.15
+      
+    mechanical_checks_active: []
+    mechanical_checks_needed: [001, 002, 003, 004, 005, 006, 007]
+
+  - actor_id: kimi-code
+    harness_shadow_file: /root/AAA/registries/models/kimi_code_harness_shadow.yaml
+    model_shadow_file: /root/AAA/registries/models/kimi_shadow.yaml
+    
+    fq_metrics:
+      fq: 2.29
+      state: FLOWING
+      execute_count: null  # not in original matrix
+      verify_count: null
+      consecutive_exec_no_verify: 0
+      
+    failure_signatures:
+      - signature: organ_routing_excess
+        frequency: 0.50
+        severity: MEDIUM
+        evidence: self-observed-20260919
+      - signature: receipt_theater
+        frequency: 0.40
+        severity: MEDIUM
+        evidence: self-observed-20260919
+      - signature: subagent_delegation_escape
+        frequency: 0.20
+        severity: HIGH
+        evidence: arif-witness-20260919
+      - signature: synthesis_as_substance
+        frequency: 0.35
+        severity: MEDIUM
+        evidence: self-observed-20260919
+        
+    yin_yang:
+      balance: 0.231
+      persona_dominance: 0.637
+      phase: NIGREDO
+      shadow_boundary_distance: 0.064
+      
+    mechanical_checks_active: []
+    mechanical_checks_needed: [002, 008, 009, 010]
+
+  - actor_id: hermes-asi
+    harness_shadow_file: null  # NOT YET BUILT
+    model_shadow_file: null
+    
+    fq_metrics:
+      fq: 0.286
+      state: STUCK
+      execute_count: 556
+      verify_count: 159
+      consecutive_exec_no_verify: 1
+      
+    failure_signatures:
+      - signature: bridge_volume_overload
+        frequency: 0.80
+        severity: HIGH
+        evidence: shadow-matrix-20260907
+        
+    yin_yang:
+      balance: 0.18
+      persona_dominance: 0.78
+      phase: TRANSITION
+      
+    mechanical_checks_needed: [009]
+
+  - actor_id: aforge
+    harness_shadow_file: null  # NOT YET BUILT
+    
+    fq_metrics:
+      fq: 1.0
+      state: CAUTION
+      execute_count: 1
+      verify_count: 1
+      consecutive_exec_no_verify: 0
+      
+    failure_signatures:
+      - signature: sparse_activity
+        frequency: null  # insufficient data
+        severity: LOW
+        evidence: shadow-matrix-20260907
+        
+    yin_yang:
+      balance: 0.25
+      persona_dominance: 0.50
+      phase: TRANSITION
+
+  - actor_id: well
+    harness_shadow_file: null
+    
+    fq_metrics: null  # not in original matrix
+      
+    failure_signatures:
+      - signature: self_report_paradox
+        frequency: 1.0
+        severity: MEDIUM
+        evidence: well_observe_federation_thermal-20260919
+        
+    yin_yang:
+      balance: 0.23
+      persona_dominance: 0.55
+      phase: NIGREDO
+
+  - actor_id: frame
+    harness_shadow_file: null
+    
+    fq_metrics: null
+      
+    failure_signatures:
+      - signature: behavioral_blindness
+        frequency: 1.0
+        severity: HIGH
+        evidence: structural-only-measurement
+      - signature: identical_score_problem
+        frequency: 1.0
+        severity: MEDIUM
+        evidence: all-organs-report-0.95
+        
+    yin_yang:
+      balance: 0.10
+      persona_dominance: 0.90
+      phase: PERSONA_RIGID
+
+  - actor_id: grok-build
+    harness_shadow_file: null
+    
+    fq_metrics:
+      fq: 85.0
+      state: FOSSILIZED
+      execute_count: 6
+      verify_count: 510
+      consecutive_exec_no_verify: 0
+      
+    failure_signatures:
+      - signature: verification_paralysis
+        frequency: 1.0
+        severity: HIGH
+        evidence: shadow-matrix-20260907
+        
+    yin_yang:
+      balance: 0.07
+      persona_dominance: 0.98
+      phase: PERSONA_RIGID
+
+  - actor_id: qwen-code
+    harness_shadow_file: null
+    
+    fq_metrics:
+      fq: 0.25
+      state: STUCK
+      execute_count: 8
+      verify_count: 2
+      consecutive_exec_no_verify: 2
+      
+    failure_signatures:
+      - signature: execution_dominance
+        frequency: 0.75
+        severity: MEDIUM
+        evidence: shadow-matrix-20260907
+        
+    yin_yang:
+      balance: 0.20
+      persona_dominance: 0.75
+      phase: TRANSITION
+
+# ─────────────────────────────────────────────
+# FEDERATION AGGREGATE
+# ─────────────────────────────────────────────
+federation_aggregate:
+  total_actors: 8
+  harness_shadow_files_built: 2  # claude-code, kimi-code
+  harness_shadow_files_needed: 6
+  model_shadow_files_built: 7  # anthropic, deepseek, minimax, kimi, qwen, ilmu, xiaomi_mimo
+  mechanical_checks_defined: 10
+  mechanical_checks_implemented: 0
+  agent_cards_shadow_populated: 0  # still empty
+  agent_cards_shadow_needed: 8
+  
+  avg_yin_yang_balance: 0.17
+  worst_balance: grok-build (0.07)
+  best_balance: aforge (0.25)
+  
+  critical_actors: [claude-code]  # FQ <0.1
+  stuck_actors: [hermes-asi, qwen-code]
+  fossilized_actors: [grok-build]
+  flowing_actors: [kimi-code]
