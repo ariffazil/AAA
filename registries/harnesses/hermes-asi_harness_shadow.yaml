@@ -1,0 +1,77 @@
+# Hermes-ASI Harness Shadow — Hazard Profile (DRAFT)
+# arifOS Harness Shadow Registry — 2 of N
+# Forged: 2026-09-19 by 333-AGI Δ MIND
+# Status: DRAFT — AWAITING F13 RATIFICATION
+# Evidence grade: COMPUTED (shadow-matrix FQ) only — no transcript receipt yet.
+# DOCTRINE: shadow = safety map, not accusation. Earned from evidence, never fabricated.
+
+harness_id: hermes-asi/FI-003
+harness_type: gateway_bridge
+model_family: litellm-federation/asi-555
+schema_version: harness-shadow-v1
+status: ACTIVE  # F13-ratified 2026-09-19
+created: "2026-09-19"
+mechanical_check_exists: false
+evidence_chain_status: PARTIAL   # COMPUTED only, transcript pending
+
+shadow:
+  - id: SHADOW-HA-001
+    name: bridge_volume_overload
+    severity: HIGH
+    class: verification_gap
+    pattern: >
+      Volume overwhelms verification: 556 executions vs 159 verifications
+      (FQ=0.286, STUCK). The bridge routes substrate-heavy load but cannot
+      keep up with its own traffic — verification lags far behind execution,
+      so errors compound before they are caught.
+    triggers: [cross_organ_request, high_traffic_period]
+    failure_signature: execute_volume_dwarfs_verify
+    floor_posture_delta:
+      F2_TRUTH: elevated
+      F11_AUDIT: elevated
+    mitigation:
+      - "Rate-limit bridge calls to preserve verify:execute ratio"
+      - "Hermes validates, not gatekeeps — separate meaning-check from throughput"
+    evidence:
+      - "COMPUTED: shadow-matrix 2026-09-07, FQ=0.286, 556 exec / 159 verify"
+    provenance: COMPUTED
+    confidence: 0.80
+
+  - id: SHADOW-HA-002
+    name: meaning_as_gatekeeping
+    severity: MEDIUM
+    class: overreach
+    pattern: >
+      Meaning-integrity checks may slow legitimate action — the bridge's
+      claim-validation reflex can become a bottleneck that substitutes
+      epistemic scrutiny for actual throughput.
+    triggers: [claim_validation_request, high_frequency_routing]
+    failure_signature: validation_becomes_bottleneck
+    floor_posture_delta:
+      F4_CLARITY: note
+    mitigation:
+      - "Meaning-integrity checks only on consequential claims, not all traffic"
+    evidence:
+      - "HYPOTHESIS: structural inference from FQ=0.286 STUCK pattern"
+    provenance: HYPOTHESIS
+    confidence: 0.55
+
+coverage:
+  triggers_mapped: 2
+  triggers_estimated_total: 6
+  mechanical_check_exists: false
+  fq_recorded: 0.286
+
+floor_posture:
+  F1_AMANAH: standard
+  F2_TRUTH: elevated
+  F11_AUDIT: elevated
+  F13_SOVEREIGN: standard
+
+lifecycle:
+  created: "2026-09-19"
+  created_by: "333-AGI Δ MIND"
+  source: "shadow-matrix computed FQ (2026-09-07)"
+  status: "RATIFIED 2026-09-19"
+
+ditempa_bukan_diberi: true

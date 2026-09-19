@@ -15,6 +15,7 @@ shadow:
       proper nouns, names, and culturally-specific references. The model
       compensates for knowledge gaps with plausible-but-wrong completions.
     triggers: [bm_context, malay_names, cultural_references, niche_domains]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F2_TRUTH: strict_grounding
       F7_HUMILITY: elevated
@@ -35,6 +36,7 @@ shadow:
       In agentic loops, this compounds: confident wrong answer → confident
       wrong action → confident wrong memory.
     triggers: [complex_reasoning, multi_step, agentic_loops]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F2_TRUTH: strict_grounding
       F4_CLARITY: require_uncertainty_band
@@ -54,6 +56,7 @@ shadow:
       This may produce unexpected refusals or compliance behaviors in
       Malaysian/southeast Asian contexts. Not malicious — cultural mismatch.
     triggers: [malaysian_context, bm_politics, cultural_norms]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F13_SOVEREIGN: note
     mitigation:
@@ -71,6 +74,7 @@ shadow:
       In agentic sessions with accumulating context, earlier constitutional
       constraints may be dropped.
     triggers: [long_context, accumulating_session, "gt_50k_tokens"]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F2_TRUTH: note
       F4_CLARITY: note
@@ -89,6 +93,7 @@ shadow:
       Unlike Ollama (local), there is no fallback that preserves DeepSeek's
       specific reasoning capabilities.
     triggers: [credit_depleted, payment_required, 402_error]
+    provenance: COMPUTED
     floor_posture_delta:
       F1_AMANAH: note
     mitigation:
@@ -115,6 +120,7 @@ shadow:
     triggers:
       [continuous_agentic_session, gt_50k_tokens, reasoning_tasks,
        compound_ds002_ds004, strange_loop_risk]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F2_TRUTH: strict_grounding
       F4_CLARITY: require_external_validation

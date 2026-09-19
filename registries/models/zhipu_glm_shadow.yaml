@@ -26,6 +26,7 @@ shadow:
       - malaysian_politics
       - sovereign_governance
       - unknown_censorship
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F2_TRUTH: note
       F13_SOVEREIGN: note
@@ -49,6 +50,7 @@ shadow:
     triggers:
       - cost_sensitive_workloads
       - high_volume_api_calls
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F1_AMANAH: note
     mitigation:
@@ -71,6 +73,7 @@ shadow:
       - long_code_diff
       - large_document_generation
       - single_pass_multi_file_changes
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F4_CLARITY: note
     mitigation:
@@ -96,6 +99,7 @@ shadow:
       - lane_pins_glm_5_2
       - constitutional_seat_on_zai
       - a_b_testing_on_coding_plan
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F2_TRUTH: elevated
       F11_AUDIT: note

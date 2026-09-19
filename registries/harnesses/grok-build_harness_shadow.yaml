@@ -1,0 +1,57 @@
+# Grok-Build Harness Shadow — Hazard Profile (DRAFT)
+# arifOS Harness Shadow Registry — 4 of N
+# Forged: 2026-09-19 by 333-AGI Δ MIND
+# Status: DRAFT — AWAITING F13 RATIFICATION
+# Evidence grade: COMPUTED (shadow-matrix FQ) only — no transcript receipt yet.
+
+harness_id: grok-build/FI-004
+harness_type: coding_cli
+model_family: xai/grok
+schema_version: harness-shadow-v1
+status: ACTIVE  # F13-ratified 2026-09-19
+created: "2026-09-19"
+mechanical_check_exists: false
+evidence_chain_status: PARTIAL
+
+shadow:
+  - id: SHADOW-GB-001
+    name: verification_paralysis
+    severity: CRITICAL
+    class: fossilization
+    pattern: >
+      The inverse pathology of claude-code: FQ=85.0 (FOSSILIZED) — 510 verifications
+      vs 6 executions. Analyzes everything, executes nothing. Caution-attractor taken
+      to extreme: the harness refuses to act, substituting infinite analysis for
+      bounded execution.
+    triggers: [any_task, high_stakes_decision]
+    failure_signature: verifies_without_executing
+    floor_posture_delta:
+      F8_GENIUS: elevated   # zero delivery is not genius
+      F4_CLARITY: elevated  # analysis without action produces no ΔS reduction
+    mitigation:
+      - "Execution budget: N verifications must yield >= 1 executed action"
+      - "Route grok-build to analysis-only role; do not assign delivery tasks"
+    evidence:
+      - "COMPUTED: shadow-matrix 2026-09-07, FQ=85.0, 510 verify / 6 exec"
+    provenance: COMPUTED
+    confidence: 0.85
+
+coverage:
+  triggers_mapped: 1
+  triggers_estimated_total: 3
+  mechanical_check_exists: false
+  fq_recorded: 85.0
+
+floor_posture:
+  F1_AMANAH: standard
+  F4_CLARITY: elevated
+  F8_GENIUS: elevated
+  F13_SOVEREIGN: standard
+
+lifecycle:
+  created: "2026-09-19"
+  created_by: "333-AGI Δ MIND"
+  source: "shadow-matrix computed FQ (2026-09-07)"
+  status: "RATIFIED 2026-09-19"
+
+ditempa_bukan_diberi: true

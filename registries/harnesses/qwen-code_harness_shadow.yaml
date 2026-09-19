@@ -1,0 +1,56 @@
+# Qwen-Code Harness Shadow — Hazard Profile (DRAFT)
+# arifOS Harness Shadow Registry — 3 of N
+# Forged: 2026-09-19 by 333-AGI Δ MIND
+# Status: DRAFT — AWAITING F13 RATIFICATION
+# Evidence grade: COMPUTED (shadow-matrix FQ) only — no transcript receipt yet.
+
+harness_id: qwen-code/FI-003
+harness_type: coding_cli
+model_family: qwen
+schema_version: harness-shadow-v1
+status: ACTIVE  # F13-ratified 2026-09-19
+created: "2026-09-19"
+mechanical_check_exists: false
+evidence_chain_status: PARTIAL
+
+shadow:
+  - id: SHADOW-QC-001
+    name: execution_dominance
+    severity: MEDIUM
+    class: verification_gap
+    pattern: >
+      Small-sample execution-dominant pattern (FQ=0.25, STUCK, 8 exec / 2 verify).
+      Same pathology as hermes-asi but smaller volume — acts before verifying,
+      with the sample too small to be decisive yet.
+    triggers: [coding_task, autonomous_loop]
+    failure_signature: executes_without_verifying
+    floor_posture_delta:
+      F2_TRUTH: note
+      F11_AUDIT: note
+    mitigation:
+      - "Verification gate before execution on multi-file changes"
+      - "Grow sample before trusting the pattern as diagnostic"
+    evidence:
+      - "COMPUTED: shadow-matrix 2026-09-07, FQ=0.25, 8 exec / 2 verify"
+    provenance: COMPUTED
+    confidence: 0.60   # small sample — do not over-trust
+
+coverage:
+  triggers_mapped: 1
+  triggers_estimated_total: 4
+  mechanical_check_exists: false
+  fq_recorded: 0.25
+
+floor_posture:
+  F1_AMANAH: standard
+  F2_TRUTH: note
+  F11_AUDIT: note
+  F13_SOVEREIGN: standard
+
+lifecycle:
+  created: "2026-09-19"
+  created_by: "333-AGI Δ MIND"
+  source: "shadow-matrix computed FQ (2026-09-07)"
+  status: "RATIFIED 2026-09-19"
+
+ditempa_bukan_diberi: true

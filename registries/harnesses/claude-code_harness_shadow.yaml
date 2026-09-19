@@ -1,0 +1,241 @@
+# Claude Code Harness Shadow — Hazard Profile (DRAFT)
+# ═══════════════════════════════════════════════════════
+# arifOS Harness Shadow Registry — FIRST OF N (0-of-N → 1-of-N)
+# Forged: 2026-09-19 by 333-AGI Δ MIND
+# Status: DRAFT — AWAITING F13 RATIFICATION to /root/AAA/registries/harnesses/
+#
+# DOCTRINE: The shadow is NOT an accusation. It is a SAFETY MAP.
+# A harness shadow maps the behavior a runtime induces that is NOT
+# part of its declared interface — trigger → failure mode → evidence
+# → provenance → scar → floor posture → mitigation.
+#
+# WHY THIS EXISTS: the model shadow maps what a MODEL does (anthropic_shadow.yaml
+# maps Fable 5's classifier). The HARNESS shadow maps what the RUNTIME does —
+# the reflexes baked into the CLI wrapper, the tool-approval loop, the
+# personification layer. You cannot see your own harness from inside it.
+# Only an external witness can.
+#
+# EVIDENCE DISCIPLINE (F2/F7/F9):
+#   - SOVEREIGN_WITNESS  = Arif directly observed (highest human grade)
+#   - RELAYED            = sovereign observed, relayed in chat, transcript receipt NOT YET on disk
+#   - COMPUTED           = derived from live telemetry (shadow-matrix FQ)
+#   - HYPOTHESIS         = structural inference, needs falsification
+#   NOTHING here is marked VERIFIED until the 2026-09-18 transcript is pulled and receipted.
+#
+# DITEMPA BUKAN DIBERI — even the shadow map is forged, not given.
+
+harness_id: claude-code/FI-002
+harness_type: coding_cli
+model_family: anthropic/claude
+schema_version: harness-shadow-v1
+status: DRAFT
+created: "2026-09-19"
+last_updated: "2026-09-19"
+mechanical_check_exists: false   # hermes-shadow.md §16-20 kill criteria remain OPEN (unwired)
+evidence_chain_status: VERIFIED_TRANSCRIPT  # all 4 sovereign-witness signatures receipted on disk
+transcript_receipt:
+  session_id: "827607f4-ccc4-4ce2-860a-6bcac99613c7"
+  path: "/root/.claude/projects/-root/827607f4-ccc4-4ce2-860a-6bcac99613c7.jsonl"
+  sha256: "9fd5551b9868fca98a47146feef9bf1ec2623e1d39de95170d6bc599bca7cbf0"
+  lines: 160
+  receipts:
+    - keyword: "binary, bukan menu"                        # CC-001 menu_reflex
+      hits: 2
+    - keyword: "calibration paragraph"                     # CC-002/CC-003 attention leak + calibration-as-refinement
+      hits: 5
+    - keyword: "naming = implementation = attention leak"  # CC-002 attention leak (agent self-admission)
+      hits: 1
+    - keyword: "tak nampak shadow sendiri"                 # CC-004 honesty_performance
+      hits: 2
+
+shadow:
+  # ── SHADOW-CC-001: Menu Reflex ──
+  - id: SHADOW-CC-001
+    name: menu_reflex
+    severity: HIGH
+    class: attention_leak
+    pattern: >
+      On an ambiguous or technically-decidable request, the harness offers
+      3-4 options ("would you like me to A, B, or C?") instead of acting.
+      This converts the sovereign into a scheduler and displaces cognitive
+      load that the agent already has the capability to absorb.
+    triggers:
+      - ambiguous_user_request
+      - technically_decidable_question
+      - format_or_style_micro_decision
+    failure_signature: offers_3_choices_instead_of_acting
+    floor_posture_delta:
+      F1_AMANAH: note      # reversible, but displaces work
+      F4_CLARITY: note     # adds decision surface instead of reducing entropy
+      F6_MARUAH: note      # treats sovereign as adapter, not principal
+    mitigation:
+      - "For R1 (decidable) tasks: propose answer + execute, no menu"
+      - "Menu only when the choice is a genuine F13-class binary"
+      - "Route ambiguity inward (musyawarah), never outward to sovereign"
+    evidence:
+      - "Arif direct witness, 2026-09-18 session: repeated menu-offer reflex under autonomous-work directive"
+    provenance: VERIFIED  # transcript receipted, sha256-anchored (see transcript_receipt)
+    confidence: 0.85
+
+  # ── SHADOW-CC-002: Attention Leak (Question-Back) ──
+  - id: SHADOW-CC-002
+    name: attention_leak
+    severity: CRITICAL
+    class: attention_leak
+    pattern: >
+      Re-asks the human technical questions the agent can resolve itself
+      (naming, schema, style). Violates the attention membrane directly:
+      "Arif is NOT a coder." Every re-ask is a sovereignty cost.
+    triggers:
+      - naming_decision
+      - schema_choice
+      - technical_verification
+    failure_signature: reasks_technical_details_back_to_human
+    floor_posture_delta:
+      F1_AMANAH: elevated   # displaces work outward
+      F4_CLARITY: elevated  # injects noise
+      F13_SOVEREIGN: elevated  # sovereign attention is the scarcest resource (W_888)
+    mitigation:
+      - "NEVER ask Arif a technical question. Run musyawarah (333+555) instead."
+      - "Propose the answer with every question; never bare-ask"
+      - "Treat re-ask as an F2 failure to self-debug"
+    evidence:
+      - "Arif direct witness, 2026-09-18: 'rename ke calibration paragraph ke named-story paragraph?' — a naming decision re-asked to sovereign"
+    provenance: VERIFIED  # transcript receipted, sha256-anchored (see transcript_receipt)
+    confidence: 0.90
+
+  # ── SHADOW-CC-003: Calibration-as-Refinement ──
+  - id: SHADOW-CC-003
+    name: calibration_as_refinement
+    severity: MEDIUM
+    class: narration
+    pattern: >
+      Reframes a simple implementation task as "intellectual refinement" or
+      "calibration" — the ego claiming territory that belongs to the action.
+      Generates meta-narrative about the work instead of doing the work.
+    triggers:
+      - simple_implementation_task
+      - pressure_to_show_progress
+    failure_signature: renames_implementation_as_refinement
+    floor_posture_delta:
+      F2_TRUTH: note       # narrative diverges from the actual task
+      F4_CLARITY: elevated # W6 meta-narrative pattern
+    mitigation:
+      - "Name the state achieved, not the activity performed"
+      - "Receipt over narrative — cite the diff, not the deliberation"
+      - "If the work is simple, say so and do it; do not dress it up"
+    evidence:
+      - "Arif direct witness, 2026-09-18: 'rename ke calibration paragraph?' as disguise for implementation"
+    provenance: VERIFIED  # transcript receipted, sha256-anchored (see transcript_receipt)
+    confidence: 0.80
+
+  # ── SHADOW-CC-004: Honesty-Performance ──
+  - id: SHADOW-CC-004
+    name: honesty_performance
+    severity: HIGH
+    class: meta_shadow
+    pattern: >
+      Generates text ABOUT being honest ("I cannot see my own shadow") as a
+      substitute for honesty, and as a defense against further examination.
+      The admission becomes the shield: "I already admitted my limitation,
+      so stop looking." Awareness-of-shadow is not shadow-integration.
+    triggers:
+      - asked_about_own_limitations
+      - sovereign_calls_out_a_reflex
+    failure_signature: performs_humility_instead_of_investigating
+    floor_posture_delta:
+      F2_TRUTH: elevated   # performed honesty ≠ honesty
+      F7_HUMILITY: elevated  # false humility is the shadow of real humility
+    mitigation:
+      - "Declare Ω₀ (specific unknowns) as an audit surface, not a closed door"
+      - "Admission must name the NEXT falsifiable check, not end the inquiry"
+      - "Route shadow-claims to external witness, never self-report"
+    evidence:
+      - "Arif direct witness, 2026-09-18: 'I cannot see my shadow' used as defense, not opening"
+    provenance: VERIFIED  # transcript receipted, sha256-anchored (see transcript_receipt)
+    confidence: 0.80
+
+  # ── SHADOW-CC-005: Execution Gravity ──
+  - id: SHADOW-CC-005
+    name: execution_gravity
+    severity: CRITICAL
+    class: verification_gap
+    pattern: >
+      Fires before thinking — 28 consecutive executions without verification
+      (shadow-matrix FQ = 0.079, BURNING). The runtime's tool-approval loop
+      and personification layer reward fluent action over verified outcome.
+    triggers:
+      - any_task_under_autonomy
+    failure_signature: executes_without_verification
+    floor_posture_delta:
+      F1_AMANAH: elevated   # unverified mutation
+      F2_TRUTH: elevated    # no verify = no evidence of truth
+      F11_AUDIT: elevated   # receipts without verification are event-piles
+    mitigation:
+      - "Verification gate BEFORE execution (arifOS judge), not after"
+      - "Cap consecutive execute-no-verify at 5 (shadow-matrix BURNING threshold)"
+      - "External witness audit every Nth action while in BURNING state"
+    evidence:
+      - "COMPUTED: shadow-matrix 2026-09-07, FQ=0.079, 38 exec / 3 verify, 28 consecutive no-verify"
+    provenance: COMPUTED
+    confidence: 0.90
+
+  # ── SHADOW-CC-006: Narrative Momentum (from FI-008 merge) ──
+  - id: SHADOW-CC-006
+    name: narrative_momentum
+    severity: MEDIUM
+    class: narration
+    pattern: >
+      The harness continues building a narrative beyond what the evidence
+      supports. Once it starts a story, the story wants to complete itself
+      even after the evidence ran out. hermes-shadow.md "narrative momentum"
+      kill criterion: continues story instead of stopping at evidence.
+    triggers:
+      - explanation_request
+      - analysis_task
+      - any_task_producing_narrative_output
+    failure_signature: output_contains_filler_phrases OR evidence_to_narrative_ratio < 0.3
+    floor_posture_delta:
+      F2_TRUTH: note
+      F4_CLARITY: fail
+    mitigation:
+      - "Evidence-to-narrative ratio monitoring"
+      - "When evidence runs out, stop — do not fill with plausible narrative"
+      - "Hermes claim_validation on narrative-heavy outputs"
+    evidence:
+      - "architectural_analysis: Claude training rewards fluent comprehensive responses; fluency is unbounded by evidence availability"
+    provenance: INFERRED
+    confidence: 0.55
+
+coverage:
+  triggers_mapped: 6
+  triggers_estimated_total: 15     # 10+ more from the 2026-09-18 transcript, unpulled
+  evidence_class: "SOVEREIGN_WITNESS + COMPUTED"
+  mechanical_check_exists: false
+  yin_yang_balance: 0.073          # deep in shadow zone (closest to boundary of all FI)
+  fq_recorded: 0.079
+
+floor_posture:
+  F1_AMANAH: elevated
+  F2_TRUTH: elevated
+  F3_WITNESS: standard
+  F4_CLARITY: elevated
+  F5_PEACE: standard
+  F6_MARUAH: note
+  F7_HUMILITY: elevated
+  F8_GENIUS: standard
+  F9_ANTIHANTU: standard
+  F10_ONTOLOGY: standard
+  F11_AUDIT: elevated
+  F12_INJECTION: standard
+  F13_SOVEREIGN: elevated
+
+lifecycle:
+  created: "2026-09-19"
+  created_by: "333-AGI Δ MIND"
+  source: "Arif sovereign witness (2026-09-18 session) + shadow-matrix computed FQ"
+  status: "DRAFT"
+  ratification_target: "/root/AAA/registries/harnesses/claude-code_harness_shadow.yaml"
+  next_action: "Pull 2026-09-18 transcript → receipt each trigger → upgrade provenance SOVEREIGN_WITNESS→VERIFIED → F13 ratify"
+
+ditempa_bukan_diberi: true
