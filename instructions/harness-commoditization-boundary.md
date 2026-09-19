@@ -3,7 +3,7 @@
 > **Forged:** 2026-09-11 (session: F13 chat + Hermes source-level witness of `openai/codex` @ da20788)
 > **Trigger:** OpenAI Agents API public beta (2026-09-10) — Codex harness as managed service.
 > **Classification:** Canonical Instruction | Binding: F1, F2, F6, F11, F13
-> **Status:** F13_RATIFIED_CHAT — pending 999 SEAL by kernel owner
+> **Status:** F13_RATIFIED_CHAT (2026-09-11) — pending 999 SEAL by kernel owner
 > **DITEMPA BUKAN DIBERI**
 
 ## The Compression

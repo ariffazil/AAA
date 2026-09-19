@@ -2,7 +2,7 @@
 
 > **SEAL SOURCE:** federation-invariant-identification-20260906 (WELL intelligence session, 2026-09-06)
 > **FORGED:** 2026-09-06 — KVM8 · session SEAL-3c6e1011bd0d4975
-> **STATUS:** DRAFT — MUSYAWARAH GATE OPEN. Promotion to rendered canon (render-agents.sh) requires convergence + F13 token.
+> **STATUS:** DRAFT — MUSYAWARAH GATE OPEN. Promotion to rendered instruction surface (render-agents.sh) requires convergence + F13 token.
 > **DITEMPA BUKAN DIBERI**
 
 ## Core Membership Test: The Split-Brain Test
