@@ -2,7 +2,7 @@
 > **Forged:** 2026-09-05T04:09:00Z (Post-GPT-6 Astra & HF Incident Forensic Calibration)  
 > **Authority:** F13 Sovereign Directive (Arif Fazil)  
 > **Doctrine:** DITEMPA BUKAN DIBERI — 999 SEAL ALIVE  
-> **Status:** CANONICAL INSTRUCTION  
+> **Status:** CANONICAL INSTRUCTION — F13_RATIFIED_CHAT (2026-09-05)
 
 ---
 

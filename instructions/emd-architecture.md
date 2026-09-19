@@ -3,7 +3,7 @@
 > **Ratified: 2026-08-09 by F13 SOVEREIGN (Arif).**
 > **Reflected by: Hermes (Metabolizer), OpenClaw (Encoder), OpenCode (Decoder).**
 > **DITEMPA BUKAN DIBERI** — Architecture is forged, not given.
-> **Status:** CANONICAL v1.1 — incorporates agent self-reflections.
+> **Status:** CANONICAL v1.1 — F13_RATIFIED_CHAT (2026-08-09) — incorporates agent self-reflections.
 
 ## The Core Insight
 

@@ -3,7 +3,7 @@
 **Type:** Implementation spec (NOT a canon capsule)
 **Scope:** Observatory dashboard + MCP Apps glass layer
 **Thesis:** GUI is a **trust surface**, not an action surface. Its only job is to prevent silent divergence between the glass and the ground.
-**Status:** v1.0 — apply to code, not to canon.
+**Status:** spec v1.0 — apply to code, not to canon. (F13_RATIFIED_CHAT 2026-08-19)
 **Forged:** 2026-08-19
 
 ---
