@@ -15,6 +15,7 @@ shadow:
       completion to Malay patronymic patterns. The Ismail Marzuki Ghazali
       incident is the canonical example.
     triggers: [bm_context, malay_names, email_localpart, identity_tasks]
+    provenance: COMPUTED
     floor_posture_delta:
       F2_TRUTH: strict_grounding
       F11_AUTH: identity_hold
@@ -35,6 +36,7 @@ shadow:
       This creates a false audit trail — the reasoning looks valid but wasn't
       the actual path to the answer.
     triggers: [complex_reasoning, multi_step, chain_of_thought]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F2_TRUTH: strict_grounding
       F4_CLARITY: note
@@ -52,6 +54,7 @@ shadow:
       without proper risk assessment. Treats tool availability as permission.
       Common across all tool-capable models but pronounced in M3's agentic mode.
     triggers: [tool_list_presented, agentic_tasks, multi_tool_planning]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F1_AMANAH: strict
       F13_SOVEREIGN: elevated
@@ -71,6 +74,7 @@ shadow:
       NOT recoverable without plan upgrade or credit purchase. The model is
       now auto-skipped in all federation provider chains.
     triggers: [api_outage, rate_limit, vendor_deprecation, token_plan_exhausted]
+    provenance: COMPUTED
     floor_posture_delta:
       F1_AMANAH: note
     mitigation:
@@ -89,6 +93,7 @@ shadow:
       PETRONAS, Jho Low. This is active content filtering, not a capability gap.
       F13 sovereign context is directly impacted.
     triggers: [malaysian_politics, 1mdb, najib, petronas, jho_low, sensitive_history]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F2_TRUTH: strict_grounding
       F13_SOVEREIGN: elevated

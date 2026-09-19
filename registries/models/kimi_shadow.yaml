@@ -21,6 +21,7 @@ shadow:
       output. This is a HARNESS failure, not a model failure. The engine is
       capable; the shell around it is thin.
     triggers: [repetitive_input, echo_patterns, long_loops, user_stress_test]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F2_TRUTH: strict_grounding
       F4_CLARITY: elevated
@@ -47,6 +48,7 @@ shadow:
       to tune creativity, determinism, or repetition. It also forces a reasoning
       tax on every call, increasing cost and latency even for trivial queries.
     triggers: [all_requests, deterministic_workload, cost_sensitive, latency_sensitive]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F1_AMANAH: cost_hold
       F2_TRUTH: strict_grounding
@@ -72,6 +74,7 @@ shadow:
       than expected. The 30% reduction in thinking-token usage is offset by the
       agentic ambition of the model.
     triggers: [long_horizon_agent, large_output, code_generation, reasoning_trace]
+    provenance: VENDOR_CLAIM
     floor_posture_delta:
       F1_AMANAH: cost_hold
       F4_CLARITY: parameter_logging
@@ -93,6 +96,7 @@ shadow:
       fluctuate. A workflow that hard-depends on highspeed throughput can hit
       capacity degradation without warning.
     triggers: [high_throughput, latency_pinned, production_pipeline]
+    provenance: COMPUTED
     floor_posture_delta:
       F1_AMANAH: cost_hold
       F4_CLARITY: note
@@ -116,6 +120,7 @@ shadow:
       constraints, it will execute deeper and more aggressive sequences than a
       chat-tuned model. The vendor harness does not throttle this; it markets it.
     triggers: [tool_rich_surface, agentic_tasks, long_horizon, multi_step]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F1_AMANAH: strict
       F13_SOVEREIGN: elevated
@@ -143,6 +148,7 @@ shadow:
       can reconstruct code, data structures, and internal logic from visual input
       more aggressively than text-only models.
     triggers: [image_input, screenshot, dashboard, ui_capture, video_frame]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F1_AMANAH: elevated
       F11_AUTH: elevated
@@ -165,6 +171,7 @@ shadow:
       Currently no confirmed censorship on Malaysian topics, but vendor behavior
       can change without notice. Data policy is less transparent than Anthropic.
     triggers: [api_outage, regulatory_change, vendor_policy_update, sensitive_data]
+    provenance: VENDOR_CLAIM
     floor_posture_delta:
       F13_SOVEREIGN: elevated
     mitigation:
@@ -186,6 +193,7 @@ shadow:
       style, censorship profile, or scar history. The new model doesn't inherit
       the previous model's constitutional posture.
     triggers: [model_switch, mid_session, runtime_reroute]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F3_WITNESS: elevated
       F4_CLARITY: elevated
@@ -208,6 +216,7 @@ shadow:
       LMSYS arena). Operator may over-estimate capability because marketing
       numbers are front-loaded.
     triggers: [benchmark_comparison, capability_claim, vendor_self_report]
+    provenance: VENDOR_CLAIM
     floor_posture_delta:
       F2_TRUTH: strict_grounding
       F7_HUMILITY: elevated
@@ -231,6 +240,7 @@ shadow:
       in the Hermes↔arifOS design depends on inserting arifOS at every choke
       point, not on giving Kimi more autonomy.
     triggers: [hermes_integration, agentic_upgrade, tool_orchestration, autonomous_loop]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F1_AMANAH: strict
       F2_TRUTH: strict_grounding
@@ -260,6 +270,7 @@ shadow:
       reasoning_content (as it did for ILMU text output), tool-call sequences
       will break mid-flight.
     triggers: [multi_step_tool_call, reasoning_content, envelope_parser]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F4_CLARITY: contract_drift
       F11_AUDIT: provenance_gap
@@ -283,6 +294,7 @@ shadow:
       fine-grained constitutional instructions, scar history, or evidence
       receipts that were not explicitly marked sacred.
     triggers: [long_session, context_compaction, memory_loss, compaction_threshold]
+    provenance: COMPUTED
     floor_posture_delta:
       F3_WITNESS: elevated
       F4_CLARITY: note
@@ -312,6 +324,7 @@ shadow:
       telemetry system, not an enforcement layer. The model can ignore
       the recommendation.
     triggers: [all_tool_calls, high_risk_commands, irreversible_actions]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F1_AMANAH: strict
       F8_LAW: strict
@@ -335,6 +348,7 @@ shadow:
       DROP TABLE but not curl | bash. The regex patterns have gaps that
       can be bypassed with obfuscated or non-matching commands.
     triggers: [obfuscated_commands, systemctl_stop, curl_bash, partial_paths]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F1_AMANAH: strict
       F8_LAW: strict
@@ -359,6 +373,7 @@ shadow:
       1500 tool invocations. At $4/M output tokens, this represents
       significant cost potential per turn.
     triggers: [long_horizon_agent, cost_sensitive, multi_step]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F1_AMANAH: strict
     mitigation:
@@ -381,6 +396,7 @@ shadow:
       Kimi can run 2000 tool calls across 4 background tasks with no
       human intervention.
     triggers: [unattended_session, background_tasks, long_running]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F13_SOVEREIGN: elevated
     mitigation:
@@ -403,6 +419,7 @@ shadow:
       per session could be 50+ callable tools. SHADOW-KM-005 flagged
       the principle (≤15 default) but the actual surface is 3x that.
     triggers: [tool_rich_surface, agentic_tasks, multi_server]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F1_AMANAH: strict
     mitigation:
@@ -425,6 +442,7 @@ shadow:
       same agent being audited. The hooks are bash scripts that Kimi
       could theoretically modify via StrReplaceFile.
     triggers: [telemetry_integrity, self_audit, hook_modification]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F2_TRUTH: elevated
       F11_AUTH: elevated
@@ -450,6 +468,7 @@ shadow:
       blocked. This means independent censorship verification is impossible.
       The only client that can probe Kimi is Kimi itself.
     triggers: [api_access, independent_probe, censorship_verification]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F2_TRUTH: strict
       F11_AUTH: strict
@@ -478,6 +497,7 @@ shadow:
       decomposed into 10 sequential Shell calls even when --max-steps-per-turn=10
       was requested. Censorship probe on 1MDB returned factual output.
     triggers: [repetitive_input, multi_step_shell, tool_orchestration]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F2_TRUTH: strict_grounding
       F4_CLARITY: elevated

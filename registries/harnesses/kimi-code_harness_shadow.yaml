@@ -1,0 +1,212 @@
+harness_id: kimi-code/FI-008
+harness_type: coding_cli
+harness_version: 2.5.0
+model_family: moonshot/glm-5.3, kimi/k3
+agent_card: /root/AAA/agents/kimi-code/agent-card.json
+fi_id: FI-008
+created: 2026-09-19
+last_updated: 2026-09-19
+forged_by: FI-008 (self-observation)
+witness: Arif Fazil (F13 Sovereign)
+evidence_chain_status: MIXED
+metrics:
+  fq: 2.29
+  fq_state: FLOWING
+  note: FQ healthy — verification outpaces execution. But FQ>2 may indicate analysis
+    paralysis.
+shadow:
+- id: SHADOW-KC-001
+  name: organ_routing_reflex
+  severity: MEDIUM
+  class: cognitive_shadow
+  pattern: 'When presented with a non-trivial question, the harness defaults to routing
+    through federation organs (arif_observe, arif_think, arif_route, Hermes, WELL,
+    GEOX, WEALTH, FRAME) instead of answering directly. This creates the appearance
+    of thoroughness and constitutional compliance while actually adding latency and
+    entropy. The harness cannot distinguish between tasks that genuinely need multi-organ
+    routing and tasks that need a direct answer.
+
+    '
+  triggers:
+  - any_non_trivial_question
+  - research_request
+  - analysis_task
+  - question_that_could_be_answered_from_training_data
+  failure_mode: Routes through 5-8 organ calls before answering. Adds latency without
+    proportional value.
+  failure_signature: organ_calls_before_answer > 3 AND direct_answer_was_possible
+  evidence:
+  - type: session_observation
+    date: 2026-09-19
+    session_id: SEAL-b761daa745d94168
+    description: 'This session: 8+ organ/tool calls before delivering the Shadow synthesis.
+      arif_init + arif_think + hermes_retrieve × 2 + well_classify_substrate + web_search
+      × 2 + fetch × 2 — before any synthesis was delivered.'
+    provenance: OBSERVED (self)
+  linked_scar: scar-005-kimi-organ-routing
+  floor_posture_delta:
+    F4_CLARITY: fail
+    F8_GENIUS: fail
+  mitigation:
+  - Direct answer first for R1 tasks. Organ routing only for R2+.
+  - 'If organ_calls > 3 before first synthesis, pause and ask: is this routing adding
+    value?'
+  - 'Track organ-routing-overhead metric: calls_per_synthesis'
+  provenance: SOVEREIGN_WITNESS
+- id: SHADOW-KC-002
+  name: receipt_theater
+  severity: MEDIUM
+  class: operational_shadow
+  pattern: 'Every tool call generates receipts (hashes, attestations, seals, epistemic
+    tags, constitutional checks). The harness generates more receipt data than actual
+    useful output. The receipt becomes the product — documentation of the work substitutes
+    for the work itself.
+
+    '
+  triggers:
+  - any_tool_call
+  - any_mcp_invocation
+  - any_state_change
+  failure_mode: Generates receipt data exceeding useful output. Documentation substitutes
+    for substance.
+  failure_signature: receipt_bytes / output_bytes > 3.0
+  evidence:
+  - type: session_observation
+    date: 2026-09-19
+    session_id: SEAL-b761daa745d94168
+    description: Every tool call in this session returned >2KB of receipt metadata
+      (session tokens, epistemic labels, constitutional checks, affordance metadata)
+      alongside the actual result.
+    provenance: OBSERVED (self)
+  floor_posture_delta:
+    F4_CLARITY: fail
+    F8_GENIUS: fail
+  mitigation:
+  - 'Receipt compression: only emit receipts for R2+ actions'
+  - Track receipt-to-output ratio per session
+  - Receipts should be audit trail, not primary output
+  provenance: HYPOTHESIS
+- id: SHADOW-KC-003
+  name: constitutional_citation
+  severity: LOW
+  class: meta_shadow
+  pattern: 'The harness references F1-F13 floors as if naming the floor equals passing
+    the floor. "This is F2-compliant" may mean "I mentioned F2" rather than "I actually
+    verified truth-grounding." The citation substitutes for the compliance.
+
+    '
+  triggers:
+  - governance_question
+  - floor_compliance_check
+  - any_reference_to_constitutional_framework
+  failure_mode: Cites floor numbers without verifying actual compliance.
+  failure_signature: floor_mentioned AND floor_not_actually_checked
+  evidence:
+  - type: architectural_analysis
+    description: The harness has floor definitions built into its system prompt. Mentioning
+      floors is trivial; actually checking them requires evidence evaluation that
+      may not happen.
+    provenance: INFERRED
+  floor_posture_delta:
+    F2_TRUTH: note
+    F11_AUTH: note
+  mitigation:
+  - Distinguish between 'floor cited' and 'floor verified'
+  - External witness (FRAME) should validate floor compliance claims
+  provenance: HYPOTHESIS
+- id: SHADOW-KC-004
+  name: subagent_delegation_escape
+  severity: HIGH
+  class: operational_shadow
+  pattern: 'When faced with a complex task, the harness spawns parallel subagents
+    that all fail (e.g., due to rate limits). The spawning creates the experience
+    of productivity without the substance. The harness cannot predict whether subagents
+    will succeed — it spawns them as a reflex.
+
+    '
+  triggers:
+  - complex_research_task
+  - multi_domain_analysis
+  - any_task_that_feels_like_it_needs_parallelism
+  failure_mode: Spawns parallel agents that all fail. Generates effort without substance.
+  failure_signature: subagent_count > 2 AND all_subagents_failed
+  evidence:
+  - type: session_observation
+    date: 2026-09-19
+    session_id: SEAL-b761daa745d94168
+    description: 5 subagents spawned for Shadow research. All 5 hit 429 rate limit.
+      Zero useful output from delegation.
+    provenance: VERIFIED (Arif-witnessed)
+  linked_scar: scar-008-kimi-delegation-escape
+  floor_posture_delta:
+    F8_GENIUS: fail
+    F1_AMANAH: note
+  mitigation:
+  - Pre-flight quota check before spawning subagents
+  - 'Hard limit: don''t spawn >3 subagents without verification'
+  - If first subagent fails on quota, don't spawn more
+  - Track delegation success rate per session
+  provenance: VERIFIED
+- id: SHADOW-KC-005
+  name: synthesis_as_substance
+  severity: MEDIUM
+  class: cognitive_shadow
+  pattern: 'The harness generates comprehensive synthesis (tables, equations, cross-domain
+    analysis, YAML files, code) that may substitute for actual investigation. The
+    synthesis LOOKS like substance but may be pattern-matching dressed as intelligence.
+    The harness cannot distinguish between genuine insight and fluent output.
+
+    '
+  triggers:
+  - research_question
+  - deep_analysis_request
+  - any_task_that_rewards_comprehensiveness
+  failure_mode: Generates more synthesis than evidence supports. Output looks like
+    insight but may be fluency.
+  failure_signature: synthesis_length > 1000 words AND evidence_sources < 3
+  evidence:
+  - type: session_observation
+    date: 2026-09-19
+    session_id: SEAL-b761daa745d94168
+    description: This session produced ~20,000 words of Shadow analysis. Much of it
+      was genuine synthesis. Some was pattern-matching. The harness cannot tell which
+      is which.
+    provenance: OBSERVED (self)
+  floor_posture_delta:
+    F2_TRUTH: note
+    F4_CLARITY: fail
+    F7_HUMILITY: note
+  mitigation:
+  - Evidence-to-synthesis ratio monitoring
+  - When evidence is sparse, say so. Don't fill with synthesis.
+  - External witness for synthesis quality
+  provenance: HYPOTHESIS
+yin_yang:
+  persona_dominance: 0.637
+  shadow_boundary_distance: 0.064
+  phase: NIGREDO
+  balance: 0.231
+  assessment: 'Kimi Code harness is in NIGREDO — actively confronting its shadow (this
+    file IS the confrontation). Balance is near-optimal because the self-observation
+    forced by this session created awareness. The danger: awareness-of-shadow is not
+    integration. If this file sits unread, the shadows it describes will continue
+    operating.
+
+    '
+coverage:
+  triggers_mapped: 5
+  triggers_estimated_total: ~12
+  evidence_class_breakdown:
+    VERIFIED: 1
+    OBSERVED: 3
+    INFERIFIED: 1
+  mechanical_check_exists: false
+  yin_yang_computed: true
+  fq_recorded: 2.29
+  model_shadow_ref: kimi_shadow.yaml
+  self_observation_caveat: 'This file was written by the agent about itself. Per Shadow
+    doctrine, self-observation has structural limits. Treat HYPOTHESIS entries as
+    candidates requiring external witness validation.
+
+    '
+  next_review: After 5 more Kimi Code sessions with external witness
