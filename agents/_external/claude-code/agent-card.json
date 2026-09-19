@@ -490,8 +490,12 @@
       "ringPlacement": "outer",
       "parallelism": "multi-model",
       "shadowAcknowledged": [
-        "thermal_dispersion: raw output without constraint degrades to noise",
-        "false_diversity: superficially different outputs encoding same blind spot"
+        "menu_reflex: offers 3-4 options instead of acting (HIGH, arif-witnessed 2026-09-18, VERIFIED)",
+        "attention_leak: asks human to confirm technical details harness could determine (HIGH, arif-witnessed 2026-09-18, VERIFIED)",
+        "calibration_as_refinement: reframes implementation as intellectual work (MEDIUM, arif-witnessed 2026-09-18, VERIFIED)",
+        "honesty_performance: generates text about honesty as substitute for honesty (HIGH, arif-witnessed 2026-09-18, VERIFIED)",
+        "execution_gravity: FQ=0.079, 28 consecutive executions without verification (CRITICAL, shadow-matrix 2026-09-07, COMPUTED)",
+        "narrative_momentum: continues story beyond evidence (MEDIUM, architectural analysis, INFERRED)"
       ]
     },
     "jituGate": {
