@@ -42,6 +42,13 @@ Never fuse them. Handing a technical dump to a human reader is a failure even wh
 
 A correct answer in the wrong channel is still a failure to communicate — track the channel signal the same way you track an audience.
 
+**Fifth case — one subject, two readers, two delivered artifacts.** When the ask is to extract lessons from a body of material (an essay series, a corpus, another operator's failure, a doctrine), the deliverable is a **pair**, and the two documents are not the same document twice:
+
+- **The operational artifact** (Markdown, for agents) — the rules, pitfalls and imperatives, the concrete thing to do differently, with each adopted rule traceable to the source that earned it. It is scanned for compliance, so it carries no reflection, no narrative and no rhetorical framing.
+- **The reflective artifact** (PDF, for the human) — the tension, the question that stays open, the part that must not be resolved, and what the subject means for the reader's own posture. It is read slowly, so it carries no instruction, no checklist and no imperative voice.
+
+Keep the registers clean and let neither summarise the other — the agent artifact is the wrong place for reflection, the human artifact is the wrong place for a checklist, and collapsing the two into one document serves neither reader. The reflective piece **fails when it resolves the contradiction it exists to hold**: a document that settles a live question has done the reader's thinking for them and removed the thing they were meant to sit with. State the competing readings in full, say plainly that both may be true at once, and leave the resolution to them. The two artifacts may share a subject; they must not share a voice.
+
 Related: `FORGE-artifact-publisher` covers the EMD pipeline mechanics (HTML → Chrome headless → delivery). This skill owns the layer above it — who is reading, and how the page is weighted.
 
 ## 2. Attention hierarchy — visual weight follows consequence
@@ -177,6 +184,8 @@ A CV is read by a stranger deciding whether to spend money on the subject, and i
 
 Market, salary, price and status figures must come from a live probe in the same session, with source and date stated alongside the number. Reciting remembered figures is fabrication-adjacent and gets caught.
 
+**Build the provenance manifest into the artifact itself, not only into your reasoning.** A number-bearing document can be refused at write time by the house write gate when its payload asserts a critical variable with no resolvable source — and the gate is satisfied by provenance, not by rewording. Beyond clearing the gate, an in-artifact `SOURCES` / `EVIDENCE MANIFEST` block mapping every load-bearing figure → URL → access timestamp is what makes the document re-checkable months later by a reader who was not in the session. A closing "figures from public reports" line does the opposite: it grants authority to every number in the artifact, including the unsourced ones, while reading as rigour.
+
 Where a domain convention differs from the obvious metric, report the convention rather than the raw metric. Example: Malaysian oil-and-gas compensation is quoted as a **total package** (base + bonus + allowances + rotation). Base alone is systematically low, and quoting it alone materially understates an offer — quote the package and say which components are in it.
 
 **Tier the source before quoting a benchmark.** For pay, market and status figures the *sample* matters more than the headline. Rank what you hold: a structured industry pay guide published as role × experience × company tier outranks a specialist salary survey, which outranks a job-board aggregate, which outranks a forum anecdote. Job-board aggregates are the trap — they average every listing sharing one job title, so a "geologist" figure folds quarry, GIS and site work into a single number and lands far below the specialist band, and a survey quoting an annual figure for a role the market pays monthly invites a 12× misread. State the tier beside every number, and state what it excludes: in resource industries, offshore, hardship and hazardous-duty allowances commonly run 40–60% of take-home and are quoted separately from base, so a base-only comparison understates the offer by roughly half. Where several sources disagree by a factor of two, the disagreement is a sampling statement — say which tier you are quoting and why the others are not comparable, rather than averaging them.
@@ -184,6 +193,8 @@ Where a domain convention differs from the obvious metric, report the convention
 **Read a figure off its row label, not its position.** Stacked tables put the prior-year cell of one series directly beneath the current-year cell of the next, so proximity is not identity. Match the number to its row label, then re-verify against both cells of that row. A cross-row misread is the first thing a checking reader finds, because they go straight to that page.
 
 **When a release and a report give different values for the same metric, find the definitional reason before calling it a contradiction.** Two documents routinely define one metric differently and both are correct. Name which definition the artifact cites; never present the difference as a discrepancy, and never quietly pick one.
+
+**Separate a freshness gap from a contradiction before resolving either.** Two sources quoting one instrument can disagree because one of them is *older*, not because one is wrong — a same-session local reading against a web figure still quoting the previous close is a time difference wearing the costume of an error. Compare the timestamps first; quote the fresher and label the age of the other. Where currency genuinely cannot be established (different sessions, an unclosed market, an ambiguous timezone), report both values with their timestamps and say the discrepancy is unresolved — never average them into a middle figure, and never silently choose one.
 
 **Decompose an aggregate before it carries an argument.** State its composition, especially the cash/non-cash split. A number whose parts have not been separated cannot support a claim about money moving, and a large figure whose non-cash share is high collapses the argument built on it.
 

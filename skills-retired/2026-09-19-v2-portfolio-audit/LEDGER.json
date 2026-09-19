@@ -1,0 +1,366 @@
+{
+  "ledger": "v2-portfolio-audit-retirement",
+  "operation": "retire_identity_skill — freeze body, carry trigger phrases, re-point Wave-2 tombstones to the live mode owners",
+  "retired_skill": "skill-portfolio-audit",
+  "original_path": "/root/AAA/skills/core/governance/skill-portfolio-audit/SKILL.md",
+  "original_folder": "/root/AAA/skills/core/governance/skill-portfolio-audit",
+  "frozen_path": "/root/AAA/skills-retired/2026-09-19-v2-portfolio-audit/skill-portfolio-audit/SKILL.md",
+  "frozen_folder": "/root/AAA/skills-retired/2026-09-19-v2-portfolio-audit/skill-portfolio-audit",
+  "freeze_root": "/root/AAA/skills-retired/2026-09-19-v2-portfolio-audit",
+  "canon": "/root/AAA/skills",
+  "sha256_before_move": "8423972185285f11e21a742c4fd1fb97abeeec764d26cfbcc3bc67e61f840c4c",
+  "sha256_skilmd_before_move": "8423972185285f11e21a742c4fd1fb97abeeec764d26cfbcc3bc67e61f840c4c",
+  "sha256_frozen_body_after_move": "8423972185285f11e21a742c4fd1fb97abeeec764d26cfbcc3bc67e61f840c4c",
+  "digest_match": true,
+  "size_bytes_skilmd": 4731,
+  "files_moved": [
+    "SKILL.md",
+    "references/absorbed-AUDIT-agent-skill-mesh.md",
+    "references/absorbed-AUDIT-drift-detector.md",
+    "references/absorbed-AUDIT-recursive-audit.md",
+    "references/absorbed-AUDIT-skill-atlas.md"
+  ],
+  "file_digests": [
+    {
+      "rel": "SKILL.md",
+      "sha256": "8423972185285f11e21a742c4fd1fb97abeeec764d26cfbcc3bc67e61f840c4c",
+      "size_bytes": 4731
+    },
+    {
+      "rel": "references/absorbed-AUDIT-agent-skill-mesh.md",
+      "sha256": "7f92acff845ef8dddc9e38b71726db559ed169e2a9db8097306bf97388a5f5e9",
+      "size_bytes": 6303
+    },
+    {
+      "rel": "references/absorbed-AUDIT-drift-detector.md",
+      "sha256": "56b9960f03a307032f1ad6d9f6e136368f6ea082adb020311af8f68a8a34b7d6",
+      "size_bytes": 3168
+    },
+    {
+      "rel": "references/absorbed-AUDIT-recursive-audit.md",
+      "sha256": "3653e2ec2ff1a379064d6c6a3305a80ade2ca15d7d68c2699ed50db73140c2ae",
+      "size_bytes": 12078
+    },
+    {
+      "rel": "references/absorbed-AUDIT-skill-atlas.md",
+      "sha256": "9eee886aec5ab6b297235b15a65afdcc9c55868402244d5f2c9d1cdca6368aa6",
+      "size_bytes": 30391
+    }
+  ],
+  "authority": "ARIF — SKILLSTORE_NAMESPACE_COLLAPSE_V2 (no new skill names, no new doctrine names, no aesthetic renames; freeze, never delete)",
+  "verdict": "skill-portfolio-audit is an IDENTITY, not a capability: provenance + a rollback recipe + a 4-row mode table. All four modes are owned by live skills — atlas/mesh/inventory by engineering/skill-inventory, drift by engineering/skill-drift, recursive by core/governance/recursive-audit (verbatim proof quoted in the retirement report).",
+  "mode_owners": {
+    "atlas": "engineering/skill-inventory",
+    "mesh": "engineering/skill-inventory",
+    "inventory": "engineering/skill-inventory",
+    "drift": "engineering/skill-drift",
+    "recursive": "core/governance/recursive-audit"
+  },
+  "tombstones_repointed": [
+    {
+      "tombstone": "/root/.hermes/.archive_skills_wave2/audit-family/TOMBSTONE-AUDIT-recursive-audit.json",
+      "successor": "core/governance/recursive-audit"
+    },
+    {
+      "tombstone": "/root/.hermes/.archive_skills_wave2/audit-family/TOMBSTONE-AUDIT-drift-detector.json",
+      "successor": "engineering/skill-drift"
+    },
+    {
+      "tombstone": "/root/.hermes/.archive_skills_wave2/audit-family/TOMBSTONE-AUDIT-agent-skill-mesh.json",
+      "successor": "engineering/skill-inventory"
+    },
+    {
+      "tombstone": "/root/.hermes/.archive_skills_wave2/audit-family/TOMBSTONE-AUDIT-skill-atlas.json",
+      "successor": "engineering/skill-inventory"
+    }
+  ],
+  "tombstone_fields_untouched": [
+    "sha256_before",
+    "rollback_command",
+    "ts",
+    "approved_by"
+  ],
+  "landing_sections_added": [
+    "/root/AAA/skills/engineering/skill-inventory/SKILL.md — 'Retired-name landing' (AUDIT-skill-atlas, AUDIT-agent-skill-mesh)",
+    "/root/AAA/skills/engineering/skill-drift/SKILL.md — 'Retired-name landing' (AUDIT-drift-detector)",
+    "/root/AAA/skills/core/governance/recursive-audit/SKILL.md — 'Retired-name landing' (AUDIT-recursive-audit)"
+  ],
+  "selector_note": "The literal trigger 'audit skills' is contested and was NOT resolved by merging bodies: it stays live in domains/general/aaa/skill-mesh/skill-audit-methodology/SKILL.md (trigger) and in engineering/skill-inventory (portfolio lane). Selector problem, reported not merged.",
+  "left_in_place_not_touched": [
+    "/root/.hermes/skills/core/governance/skill-portfolio-audit is a SYMLINK into the canon path and is now DANGLING (no file deleted — removing it is a delete the iron rules forbid). Authorised fix: rm the symlink, or re-point it at engineering/skill-inventory.",
+    "/root/AAA/skills/PLACEMENT_MANIFEST.json still lists skills/skill-portfolio-audit (registry artifact, not a skill).",
+    "/root/AAA/skills/skill-library-integrity/SKILL.md (~line 1060) cites skill-portfolio-audit as the shared Wave-2 tombstone target — historical lesson text, still true as history.",
+    "/root/AAA/skills/SKILL_ALIAS_TABLE.json has NO aliases[] row for skill-portfolio-audit or for any of the four AUDIT-* names; only historical reverse_disk_to_v3 / rename_map strings. Nothing to re-point there."
+  ],
+  "undo_command": "mv /root/AAA/skills-retired/2026-09-19-v2-portfolio-audit/skill-portfolio-audit /root/AAA/skills/core/governance/skill-portfolio-audit",
+  "undo_note": "Single mv restores the canon skill byte-identically (SKILL.md sha256 8423972185285f11e21a742c4fd1fb97abeeec764d26cfbcc3bc67e61f840c4c re-verified after the move; content unmodified by the move). /root/AAA is a git work tree, so the relocation is also visible to `git -C /root/AAA status`.",
+  "note": "LEDGER.json written after the move; it is the ledger, not part of files_moved. A second identical copy sits at the freeze_root for store convention (siblings 2026-09-19-v2-first-party, 2026-09-19-v2-profile-junk keep LEDGER.json at the batch root).",
+  "ts": "2026-09-19T01:28:37.012715+00:00",
+  "date": "2026-09-19",
+  "tombstone_repoint_detail": [
+    {
+      "tombstone": "/root/.hermes/.archive_skills_wave2/audit-family/TOMBSTONE-AUDIT-recursive-audit.json",
+      "sha256_file_before_edit": "f5872be43c24ccea6ecb75260cdc963d22026d5145731623b0210f2946f57f63",
+      "sha256_file_after_edit": "811aa6081df9f26dd1c7115362a5bb95e4515286db33124a35fa2c23e98ee74f",
+      "moved_to_before": "core/governance/skill-portfolio-audit",
+      "moved_to_after": "core/governance/recursive-audit",
+      "canonical_target_before": "/root/.hermes/skills/core/governance/skill-portfolio-audit/SKILL.md",
+      "canonical_target_after": "/root/AAA/skills/core/governance/recursive-audit/SKILL.md",
+      "successor_added": "core/governance/recursive-audit",
+      "fields_untouched": [
+        "sha256_before",
+        "rollback_command",
+        "ts",
+        "approved_by"
+      ],
+      "json_before": {
+        "id": "AUDIT-recursive-audit",
+        "ts": "2026-09-16T22:42:00Z",
+        "moved_to": "core/governance/skill-portfolio-audit",
+        "sha256_before": "4228872ab95adf27e7ea4aa77ed129fdad186c42986bf421758266189b1134a7",
+        "reason": "Wave 2 ACT — 4×AUDIT family merged into canonical core/governance/skill-portfolio-audit per /root/.hermes/reports/hermes-skill-entropy-audit-2026-09-16.md §duplicate_clusters.md Cluster A. AGI proposal order item 1. APEX verdict: SEAL.",
+        "reversibility": "high",
+        "rollback_command": "git checkout entropy-wave2-pre-act-20260916T144144Z -- skills/AUDIT-recursive-audit/",
+        "approved_by": "F13 SOVEREIGN — implied via 'execute the best path fwd' against audit's planned Wave 2 batch",
+        "wave": 2,
+        "merge_plan": "cluster_A_audit_family",
+        "canonical_target": "/root/.hermes/skills/core/governance/skill-portfolio-audit/SKILL.md",
+        "deprecation_window_days": 90
+      },
+      "json_after": {
+        "id": "AUDIT-recursive-audit",
+        "ts": "2026-09-16T22:42:00Z",
+        "moved_to": "core/governance/recursive-audit",
+        "sha256_before": "4228872ab95adf27e7ea4aa77ed129fdad186c42986bf421758266189b1134a7",
+        "reason": "Wave 2 ACT — 4×AUDIT family merged into canonical core/governance/skill-portfolio-audit per /root/.hermes/reports/hermes-skill-entropy-audit-2026-09-16.md §duplicate_clusters.md Cluster A. AGI proposal order item 1. APEX verdict: SEAL.",
+        "reversibility": "high",
+        "rollback_command": "git checkout entropy-wave2-pre-act-20260916T144144Z -- skills/AUDIT-recursive-audit/",
+        "approved_by": "F13 SOVEREIGN — implied via 'execute the best path fwd' against audit's planned Wave 2 batch",
+        "wave": 2,
+        "merge_plan": "cluster_A_audit_family",
+        "canonical_target": "/root/AAA/skills/core/governance/recursive-audit/SKILL.md",
+        "deprecation_window_days": 90,
+        "successor": "core/governance/recursive-audit",
+        "successor_absolute_path": "/root/AAA/skills/core/governance/recursive-audit/SKILL.md",
+        "superseded_successor": "core/governance/skill-portfolio-audit",
+        "superseded_canonical_target": "/root/.hermes/skills/core/governance/skill-portfolio-audit/SKILL.md",
+        "repoint": {
+          "ts": "2026-09-19T01:28:58.664646+00:00",
+          "authority": "ARIF — SKILLSTORE_NAMESPACE_COLLAPSE_V2",
+          "by": "retirement of skill-portfolio-audit (identity, 4 modes each owned live)",
+          "from": "core/governance/skill-portfolio-audit",
+          "to": "core/governance/recursive-audit",
+          "moved_to_before": "core/governance/skill-portfolio-audit",
+          "moved_to_after": "core/governance/recursive-audit",
+          "canonical_target_before": "/root/.hermes/skills/core/governance/skill-portfolio-audit/SKILL.md",
+          "canonical_target_after": "/root/AAA/skills/core/governance/recursive-audit/SKILL.md",
+          "fields_untouched": [
+            "sha256_before",
+            "rollback_command",
+            "ts",
+            "approved_by"
+          ],
+          "note": "canonical_target was repointed from the frozen identity to the live mode owner; the retired identity body is frozen at /root/AAA/skills-retired/2026-09-19-v2-portfolio-audit/skill-portfolio-audit/SKILL.md (sha256 8423972185285f11e21a742c4fd1fb97abeeec764d26cfbcc3bc67e61f840c4c)."
+        }
+      }
+    },
+    {
+      "tombstone": "/root/.hermes/.archive_skills_wave2/audit-family/TOMBSTONE-AUDIT-drift-detector.json",
+      "sha256_file_before_edit": "d383355d06a0a82defecccaa29cdf7f2b937db5ac992ed9496370d6b8cae747e",
+      "sha256_file_after_edit": "3298e7b56ba76d5243b63328fd7a937a15fd01194fce7e27de8d127c10b9f5c3",
+      "moved_to_before": "core/governance/skill-portfolio-audit",
+      "moved_to_after": "engineering/skill-drift",
+      "canonical_target_before": "/root/.hermes/skills/core/governance/skill-portfolio-audit/SKILL.md",
+      "canonical_target_after": "/root/AAA/skills/engineering/skill-drift/SKILL.md",
+      "successor_added": "engineering/skill-drift",
+      "fields_untouched": [
+        "sha256_before",
+        "rollback_command",
+        "ts",
+        "approved_by"
+      ],
+      "json_before": {
+        "id": "AUDIT-drift-detector",
+        "ts": "2026-09-16T22:42:00Z",
+        "moved_to": "core/governance/skill-portfolio-audit",
+        "sha256_before": "4481e8d529de4aaf66b391650ce6cc4132d7b98895d967c6707d1a6df74ca308",
+        "reason": "Wave 2 ACT — 4×AUDIT family merged into canonical core/governance/skill-portfolio-audit per audit §Cluster A. APEX verdict: SEAL.",
+        "reversibility": "high",
+        "rollback_command": "git checkout entropy-wave2-pre-act-20260916T144144Z -- skills/AUDIT-drift-detector/",
+        "approved_by": "F13 SOVEREIGN — implied via 'execute the best path fwd'",
+        "wave": 2,
+        "merge_plan": "cluster_A_audit_family",
+        "canonical_target": "/root/.hermes/skills/core/governance/skill-portfolio-audit/SKILL.md",
+        "deprecation_window_days": 90
+      },
+      "json_after": {
+        "id": "AUDIT-drift-detector",
+        "ts": "2026-09-16T22:42:00Z",
+        "moved_to": "engineering/skill-drift",
+        "sha256_before": "4481e8d529de4aaf66b391650ce6cc4132d7b98895d967c6707d1a6df74ca308",
+        "reason": "Wave 2 ACT — 4×AUDIT family merged into canonical core/governance/skill-portfolio-audit per audit §Cluster A. APEX verdict: SEAL.",
+        "reversibility": "high",
+        "rollback_command": "git checkout entropy-wave2-pre-act-20260916T144144Z -- skills/AUDIT-drift-detector/",
+        "approved_by": "F13 SOVEREIGN — implied via 'execute the best path fwd'",
+        "wave": 2,
+        "merge_plan": "cluster_A_audit_family",
+        "canonical_target": "/root/AAA/skills/engineering/skill-drift/SKILL.md",
+        "deprecation_window_days": 90,
+        "successor": "engineering/skill-drift",
+        "successor_absolute_path": "/root/AAA/skills/engineering/skill-drift/SKILL.md",
+        "superseded_successor": "core/governance/skill-portfolio-audit",
+        "superseded_canonical_target": "/root/.hermes/skills/core/governance/skill-portfolio-audit/SKILL.md",
+        "repoint": {
+          "ts": "2026-09-19T01:28:58.666079+00:00",
+          "authority": "ARIF — SKILLSTORE_NAMESPACE_COLLAPSE_V2",
+          "by": "retirement of skill-portfolio-audit (identity, 4 modes each owned live)",
+          "from": "core/governance/skill-portfolio-audit",
+          "to": "engineering/skill-drift",
+          "moved_to_before": "core/governance/skill-portfolio-audit",
+          "moved_to_after": "engineering/skill-drift",
+          "canonical_target_before": "/root/.hermes/skills/core/governance/skill-portfolio-audit/SKILL.md",
+          "canonical_target_after": "/root/AAA/skills/engineering/skill-drift/SKILL.md",
+          "fields_untouched": [
+            "sha256_before",
+            "rollback_command",
+            "ts",
+            "approved_by"
+          ],
+          "note": "canonical_target was repointed from the frozen identity to the live mode owner; the retired identity body is frozen at /root/AAA/skills-retired/2026-09-19-v2-portfolio-audit/skill-portfolio-audit/SKILL.md (sha256 8423972185285f11e21a742c4fd1fb97abeeec764d26cfbcc3bc67e61f840c4c)."
+        }
+      }
+    },
+    {
+      "tombstone": "/root/.hermes/.archive_skills_wave2/audit-family/TOMBSTONE-AUDIT-agent-skill-mesh.json",
+      "sha256_file_before_edit": "80ac8920d2dd4c3edfbfbaa55a5cee97f5b4809d49cb8534577ba74fba126101",
+      "sha256_file_after_edit": "5087842842667adf5ffd960d8316786b5254d1de4b974622d500befc30eab826",
+      "moved_to_before": "core/governance/skill-portfolio-audit",
+      "moved_to_after": "engineering/skill-inventory",
+      "canonical_target_before": "/root/.hermes/skills/core/governance/skill-portfolio-audit/SKILL.md",
+      "canonical_target_after": "/root/AAA/skills/engineering/skill-inventory/SKILL.md",
+      "successor_added": "engineering/skill-inventory",
+      "fields_untouched": [
+        "sha256_before",
+        "rollback_command",
+        "ts",
+        "approved_by"
+      ],
+      "json_before": {
+        "id": "AUDIT-agent-skill-mesh",
+        "ts": "2026-09-16T22:42:00Z",
+        "moved_to": "core/governance/skill-portfolio-audit",
+        "sha256_before": "e42c1df82e812f54ca202658eeae9b417b1d1c8720e8053748400903b92a098c",
+        "reason": "Wave 2 ACT — 4×AUDIT family merged into canonical core/governance/skill-portfolio-audit per audit §Cluster A. APEX verdict: SEAL.",
+        "reversibility": "high",
+        "rollback_command": "git checkout entropy-wave2-pre-act-20260916T144144Z -- skills/AUDIT-agent-skill-mesh/",
+        "approved_by": "F13 SOVEREIGN — implied via 'execute the best path fwd'",
+        "wave": 2,
+        "merge_plan": "cluster_A_audit_family",
+        "canonical_target": "/root/.hermes/skills/core/governance/skill-portfolio-audit/SKILL.md",
+        "deprecation_window_days": 90
+      },
+      "json_after": {
+        "id": "AUDIT-agent-skill-mesh",
+        "ts": "2026-09-16T22:42:00Z",
+        "moved_to": "engineering/skill-inventory",
+        "sha256_before": "e42c1df82e812f54ca202658eeae9b417b1d1c8720e8053748400903b92a098c",
+        "reason": "Wave 2 ACT — 4×AUDIT family merged into canonical core/governance/skill-portfolio-audit per audit §Cluster A. APEX verdict: SEAL.",
+        "reversibility": "high",
+        "rollback_command": "git checkout entropy-wave2-pre-act-20260916T144144Z -- skills/AUDIT-agent-skill-mesh/",
+        "approved_by": "F13 SOVEREIGN — implied via 'execute the best path fwd'",
+        "wave": 2,
+        "merge_plan": "cluster_A_audit_family",
+        "canonical_target": "/root/AAA/skills/engineering/skill-inventory/SKILL.md",
+        "deprecation_window_days": 90,
+        "successor": "engineering/skill-inventory",
+        "successor_absolute_path": "/root/AAA/skills/engineering/skill-inventory/SKILL.md",
+        "superseded_successor": "core/governance/skill-portfolio-audit",
+        "superseded_canonical_target": "/root/.hermes/skills/core/governance/skill-portfolio-audit/SKILL.md",
+        "repoint": {
+          "ts": "2026-09-19T01:28:58.666675+00:00",
+          "authority": "ARIF — SKILLSTORE_NAMESPACE_COLLAPSE_V2",
+          "by": "retirement of skill-portfolio-audit (identity, 4 modes each owned live)",
+          "from": "core/governance/skill-portfolio-audit",
+          "to": "engineering/skill-inventory",
+          "moved_to_before": "core/governance/skill-portfolio-audit",
+          "moved_to_after": "engineering/skill-inventory",
+          "canonical_target_before": "/root/.hermes/skills/core/governance/skill-portfolio-audit/SKILL.md",
+          "canonical_target_after": "/root/AAA/skills/engineering/skill-inventory/SKILL.md",
+          "fields_untouched": [
+            "sha256_before",
+            "rollback_command",
+            "ts",
+            "approved_by"
+          ],
+          "note": "canonical_target was repointed from the frozen identity to the live mode owner; the retired identity body is frozen at /root/AAA/skills-retired/2026-09-19-v2-portfolio-audit/skill-portfolio-audit/SKILL.md (sha256 8423972185285f11e21a742c4fd1fb97abeeec764d26cfbcc3bc67e61f840c4c)."
+        }
+      }
+    },
+    {
+      "tombstone": "/root/.hermes/.archive_skills_wave2/audit-family/TOMBSTONE-AUDIT-skill-atlas.json",
+      "sha256_file_before_edit": "847f5e249d2462c8c3ea03addd38acdb91af5606a6a90cd8cb0a20c01bbf2516",
+      "sha256_file_after_edit": "bfd5d5ef5488cfc1ee7734a3b692516d0dcc770aac91b2a9e9627d0852d53faf",
+      "moved_to_before": "core/governance/skill-portfolio-audit",
+      "moved_to_after": "engineering/skill-inventory",
+      "canonical_target_before": "/root/.hermes/skills/core/governance/skill-portfolio-audit/SKILL.md",
+      "canonical_target_after": "/root/AAA/skills/engineering/skill-inventory/SKILL.md",
+      "successor_added": "engineering/skill-inventory",
+      "fields_untouched": [
+        "sha256_before",
+        "rollback_command",
+        "ts",
+        "approved_by"
+      ],
+      "json_before": {
+        "id": "AUDIT-skill-atlas",
+        "ts": "2026-09-16T22:42:00Z",
+        "moved_to": "core/governance/skill-portfolio-audit",
+        "sha256_before": "fb5e86f626d5985cc33995c713208860a71528fe8e5164c33de78e99d085e7e4",
+        "reason": "Wave 2 ACT — 4×AUDIT family merged into canonical core/governance/skill-portfolio-audit per audit §Cluster A. APEX verdict: SEAL.",
+        "reversibility": "high",
+        "rollback_command": "git checkout entropy-wave2-pre-act-20260916T144144Z -- skills/AUDIT-skill-atlas/",
+        "approved_by": "F13 SOVEREIGN — implied via 'execute the best path fwd'",
+        "wave": 2,
+        "merge_plan": "cluster_A_audit_family",
+        "canonical_target": "/root/.hermes/skills/core/governance/skill-portfolio-audit/SKILL.md",
+        "deprecation_window_days": 90
+      },
+      "json_after": {
+        "id": "AUDIT-skill-atlas",
+        "ts": "2026-09-16T22:42:00Z",
+        "moved_to": "engineering/skill-inventory",
+        "sha256_before": "fb5e86f626d5985cc33995c713208860a71528fe8e5164c33de78e99d085e7e4",
+        "reason": "Wave 2 ACT — 4×AUDIT family merged into canonical core/governance/skill-portfolio-audit per audit §Cluster A. APEX verdict: SEAL.",
+        "reversibility": "high",
+        "rollback_command": "git checkout entropy-wave2-pre-act-20260916T144144Z -- skills/AUDIT-skill-atlas/",
+        "approved_by": "F13 SOVEREIGN — implied via 'execute the best path fwd'",
+        "wave": 2,
+        "merge_plan": "cluster_A_audit_family",
+        "canonical_target": "/root/AAA/skills/engineering/skill-inventory/SKILL.md",
+        "deprecation_window_days": 90,
+        "successor": "engineering/skill-inventory",
+        "successor_absolute_path": "/root/AAA/skills/engineering/skill-inventory/SKILL.md",
+        "superseded_successor": "core/governance/skill-portfolio-audit",
+        "superseded_canonical_target": "/root/.hermes/skills/core/governance/skill-portfolio-audit/SKILL.md",
+        "repoint": {
+          "ts": "2026-09-19T01:28:58.667263+00:00",
+          "authority": "ARIF — SKILLSTORE_NAMESPACE_COLLAPSE_V2",
+          "by": "retirement of skill-portfolio-audit (identity, 4 modes each owned live)",
+          "from": "core/governance/skill-portfolio-audit",
+          "to": "engineering/skill-inventory",
+          "moved_to_before": "core/governance/skill-portfolio-audit",
+          "moved_to_after": "engineering/skill-inventory",
+          "canonical_target_before": "/root/.hermes/skills/core/governance/skill-portfolio-audit/SKILL.md",
+          "canonical_target_after": "/root/AAA/skills/engineering/skill-inventory/SKILL.md",
+          "fields_untouched": [
+            "sha256_before",
+            "rollback_command",
+            "ts",
+            "approved_by"
+          ],
+          "note": "canonical_target was repointed from the frozen identity to the live mode owner; the retired identity body is frozen at /root/AAA/skills-retired/2026-09-19-v2-portfolio-audit/skill-portfolio-audit/SKILL.md (sha256 8423972185285f11e21a742c4fd1fb97abeeec764d26cfbcc3bc67e61f840c4c)."
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1127 @@
+{
+  "generated": "2026-09-19T01:36:52.442125+00:00",
+  "skills_scanned": 643,
+  "totals": {
+    "dead_paths_in_skill_md": 80,
+    "dead_scripts_in_skill_md": 8,
+    "immutable_write_targets": 1,
+    "dead_paths_in_references": 75,
+    "skills_with_corpses": 64,
+    "skills_with_historical_refs": 47
+  },
+  "corpses": {
+    "capabilities/media/AAA-video-emd-pipeline": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/.hermes/skills/domains/general/forge/mcp-ops/external-platform-mcp/references/firecrawl-yo"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "capabilities/coding/mcp-testing": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/forge_work/2026-07-20/GEOX-CHATGPT-MCP-GUI-BLUEPRINT.md"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "capabilities/coding/verify-work": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/apex-health.sh"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "domains/wealth/workshop/trading-exec/agentic-trading-companion": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/XAUUSD_TRADING_RESEARCH.md"
+        ],
+        [
+          "SKILL.md",
+          "/root/paper_trading/governed_engine.py"
+        ],
+        [
+          "SKILL.md",
+          "/root/trading/data/xauusd_1h.json"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        3,
+        0,
+        0
+      ]
+    },
+    "domains/wealth/workshop/trading-exec/mt5-ai-trading-agent": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/trading/scripts/gold_engine.py"
+        ]
+      ],
+      "dead_scripts": [
+        [
+          "SKILL.md",
+          "scripts/gold_engine.py"
+        ]
+      ],
+      "immutable_targets": [],
+      "n": [
+        1,
+        1,
+        0
+      ]
+    },
+    "domains/wealth/workshop/trading-exec/trading-signal-chart": {
+      "dead_paths": [],
+      "dead_scripts": [
+        [
+          "SKILL.md",
+          "scripts/chart_pro.py"
+        ]
+      ],
+      "immutable_targets": [],
+      "n": [
+        0,
+        1,
+        0
+      ]
+    },
+    "domains/my-reality/workshop/research-core/petronas-petros-shell-dispute": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/cases/federal-court-constitutional-geometry-map.md"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "domains/my-reality/workshop/business-intel/nasilemak-engine": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/sado/data/engine_v4.json"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "domains/forge/mcp-testing": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/forge_work/2026-07-20/GEOX-CHATGPT-MCP-GUI-BLUEPRINT.md"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "domains/forge/verify-work": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/apex-health.sh"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "domains/forge/federation-health": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/.local/share/arifos/dependency_death_events.jsonl"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "domains/capital/xauusd-trading": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/XAUUSD_TRADING_RESEARCH.md"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "domains/general/apex/governance-core/constitutional-floors": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/AGENTS.OWNERSHIP.md"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "domains/general/apex/governance-core/federation-housekeeping-master": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/var/log/arifos/supply-chain-audit.log"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "domains/general/apex/governance-core/forge-execution-governance": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/etc/ld.so.preload"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "domains/general/apex/cognitive-reflex/shadow-mapping": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/memory/H5-scars/SCAR_"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "domains/general/aaa/onboarding/a2a-agent-card-registration": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/AAA/a2a-server/forge-live-wire.js"
+        ],
+        [
+          "SKILL.md",
+          "/root/AAA/a2a-server/live-wire-manifest.json"
+        ],
+        [
+          "SKILL.md",
+          "/root/AAA/docs/TOOLREGISTRY.json"
+        ],
+        [
+          "SKILL.md",
+          "/root/AAA/registries/TOOL_MANIFEST.json"
+        ],
+        [
+          "SKILL.md",
+          "/root/AAA/skills/ARCHIVE-chaos-quarantine"
+        ],
+        [
+          "SKILL.md",
+          "/root/arifOS/TOOL_MANIFEST.json"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        6,
+        0,
+        0
+      ]
+    },
+    "domains/general/forge/mesh-transport/hermes-browser-skills-mesh-snap": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/.hermes/memories/MEMORY.md.bak.1786598284"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "domains/general/forge/web-stack/arif-sites-content-ops": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/var/www/html/arif/makcikgpt-md/index.html.bak"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "domains/general/forge/repo-intelligence/audio-feature-analysis": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/music-eval/motif_memory.py"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "domains/general/forge/mcp-ops/forge-minimax-mcp-direct-invoke": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/usr/local/lib/hermes-agent/venv/lib/python3.12/site-packages"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "domains/general/forge/mcp-ops/external-platform-mcp": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/.composio/composio"
+        ],
+        [
+          "SKILL.md",
+          "/root/.local/bin/composio"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        2,
+        0,
+        0
+      ]
+    },
+    "domains/general/forge/cron-ops/hermes-cron-zen": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/forge_work/backups/haproxy.cfg.bak-20260814"
+        ]
+      ],
+      "dead_scripts": [
+        [
+          "SKILL.md",
+          "scripts/foo.sh"
+        ]
+      ],
+      "immutable_targets": [],
+      "n": [
+        1,
+        1,
+        0
+      ]
+    },
+    "domains/general/forge/federation-release/deployment-claim-verification": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/REPO"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "domains/general/workshop/research-core/external-technology-evaluation": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/docs/AGENTS-wire-3layer.md"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "domains/general/workshop/social-media/composio-social-intelligence": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/.composio/composio"
+        ],
+        [
+          "SKILL.md",
+          "/root/.composio/user_data.json"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        2,
+        0,
+        0
+      ]
+    },
+    "domains/general/workshop/telegram-ops/telegram-userbot-telethon": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/etc/systemd/system/telegram-userbot.service"
+        ],
+        [
+          "SKILL.md",
+          "/root/.hermes/scripts/telegram-userbot.py"
+        ],
+        [
+          "SKILL.md",
+          "/root/.hermes/userbot.session"
+        ],
+        [
+          "SKILL.md",
+          "/root/_archive/2026-08-04/userbot/ari_session"
+        ],
+        [
+          "SKILL.md",
+          "/root/_archive/2026-08-04/userbot/ari_session.session"
+        ],
+        [
+          "SKILL.md",
+          "/root/userbot/ari_session"
+        ]
+      ],
+      "dead_scripts": [
+        [
+          "SKILL.md",
+          "scripts/telegram-userbot.py"
+        ]
+      ],
+      "immutable_targets": [],
+      "n": [
+        6,
+        1,
+        0
+      ]
+    },
+    "domains/general/workshop/telegram-ops/telegram-bot-routing-doctrine": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/docs/TELEGRAM_BOT_ROUTING_DOCTRINE.md"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "domains/general/workshop/forge-dev/a-forge-development": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/forge_work/2026-07-25-arifflow-bsp-spec/UNIFIED_ARIFLOW_SPEC_v1.md"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "domains/general/workshop/voice-stack/nusantara-voice-stack": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/AAA/audio/rollback-v9.sh"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "domains/general/workshop/audio-emd/music-generation": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/HERMES/models/rvc/target_voice.index"
+        ],
+        [
+          "SKILL.md",
+          "/root/HERMES/models/rvc/target_voice.pth"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        2,
+        0,
+        0
+      ]
+    },
+    "domains/general/workshop/audio-emd/music-intelligence": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/arifos/forge/music-intelligence/report.json"
+        ],
+        [
+          "SKILL.md",
+          "/root/arifos/forge/music-intelligence/somatic_engine.py"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        2,
+        0,
+        0
+      ]
+    },
+    "domains/general/workshop/creative-design/civic-social-infographic": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/forge_work/final.png"
+        ],
+        [
+          "SKILL.md",
+          "/root/forge_work/page.html"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        2,
+        0,
+        0
+      ]
+    },
+    "domains/general/workshop/well-domain/well-operations": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/WELL/google_fit_creds.json"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "forge-telegram-audit": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/.openclaw/tg_token"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "forge-document-intelligence": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/A-FORGE/forge_work/2026-07-02/AAA-INIT-PROMPT-document-intelligence.md"
+        ],
+        [
+          "SKILL.md",
+          "/root/A-FORGE/forge_work/2026-07-02/olmocr-agentic-ocr-analysis.md"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        2,
+        0,
+        0
+      ]
+    },
+    "apex-cognitive-reflex/alpha-zen-lanes": {
+      "dead_paths": [],
+      "dead_scripts": [
+        [
+          "SKILL.md",
+          "scripts/chron_events.js"
+        ]
+      ],
+      "immutable_targets": [],
+      "n": [
+        0,
+        1,
+        0
+      ]
+    },
+    "agi-web-optimization": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/AAA/instructions/grammar-doctrine.md"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "search-web/web-search-query-gate-recovery": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/agentic"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "rsi-federation-mesh": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/AAA/skills/RSI-federation-mesh/mesh-seal.py"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "intelligence-briefing": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/AAA/skills/domains/general/workshop/research-core/professional-intelligence-briefing/SKILL"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "forge-did-web-identity": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/etc/caddy/conf.d/did.conf"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "forge-act-federation-ingress": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/forge_work/2026-07-20/GEOX-CHATGPT-MCP-GUI-BLUEPRINT.md"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "fi-qwen-upgrade": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/.local/lib/qwen-code.old.OLD"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "minimax-image-gen": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/forge_work/sunset_20260804.jpg"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "forge-mcp-gui": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/A-FORGE/forge_work/2026-07-19/MCP-GUI-COMPREHENSIVE-REPORT-2026-07-19.md"
+        ],
+        [
+          "SKILL.md",
+          "/root/forge_work/2026-07-20/GEOX-CHATGPT-MCP-GUI-BLUEPRINT.md"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        2,
+        0,
+        0
+      ]
+    },
+    "engineering/mcp-testing": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/forge_work/2026-07-20/GEOX-CHATGPT-MCP-GUI-BLUEPRINT.md"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "engineering/verify-work": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/apex-health.sh"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "engineering/federation-health": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/.local/share/arifos/dependency_death_events.jsonl"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "aaa-governance/aaa-doctrine-sealing": {
+      "dead_paths": [],
+      "dead_scripts": [],
+      "immutable_targets": [
+        [
+          "SKILL.md",
+          "/root/AAA/canon/eureka-entries.jsonl",
+          "`references/commit-gates.md` named `/root/AAA/canon/eureka-entries.jsonl` as the write target (\"append to"
+        ]
+      ],
+      "n": [
+        0,
+        0,
+        1
+      ]
+    },
+    "workflows/core/FORGE-t3a-binding-matrix": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/compose/sekrits/arifos_sovereign.key"
+        ],
+        [
+          "SKILL.md",
+          "/root/compose/sekrits/arifos_sovereign.pub"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        2,
+        0,
+        0
+      ]
+    },
+    "workflows/core/RSI-federation-mesh": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/AAA/skills/RSI-federation-mesh/mesh-seal.py"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "forge-visual-qa-w3": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/forge_work/2026-07-20/GEOX-CHATGPT-MCP-GUI-BLUEPRINT.md"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "core/federation/multi-harness-sync": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/.hermes/.archive_skills_wave2/federation-multi-harness/TOMBSTONE-federated-skill-architect"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "research/research-paper-writing": {
+      "dead_paths": [],
+      "dead_scripts": [
+        [
+          "SKILL.md",
+          "scripts/make_figure2.py"
+        ],
+        [
+          "SKILL.md",
+          "scripts/reproduce_table1.sh"
+        ]
+      ],
+      "immutable_targets": [],
+      "n": [
+        0,
+        2,
+        0
+      ]
+    },
+    "governance/durable-artifact-authoring": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/.hermes/skills/core/federation/handoff-contract/references/absorbed-FORGE-cross-agent-hand"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "hermes-federated-identity": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/usr/local/bin/hermes-id-zen"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "forge-fastmcp": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/forge_work/2026-07-20/GEOX-CHATGPT-MCP-GUI-BLUEPRINT.md"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "xauusd-trading": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/XAUUSD_TRADING_RESEARCH.md"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "forge-agentic-web-builder": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/AAA/instructions/grammar-doctrine.md"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "skill-library-integrity": {
+      "dead_paths": [],
+      "dead_scripts": [
+        [
+          "SKILL.md",
+          "scripts/foo.py"
+        ]
+      ],
+      "immutable_targets": [],
+      "n": [
+        0,
+        1,
+        0
+      ]
+    },
+    "forge-komda-color-law": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/docs/design-rules/SOVEREIGN_DECREES.md"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "forge-infra-guardian": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/.cloudflared/tunnel-token"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        1,
+        0,
+        0
+      ]
+    },
+    "forge-t3a-binding-matrix": {
+      "dead_paths": [
+        [
+          "SKILL.md",
+          "/root/compose/sekrits/arifos_sovereign.key"
+        ],
+        [
+          "SKILL.md",
+          "/root/compose/sekrits/arifos_sovereign.pub"
+        ]
+      ],
+      "dead_scripts": [],
+      "immutable_targets": [],
+      "n": [
+        2,
+        0,
+        0
+      ]
+    }
+  },
+  "historical_reference_noise": {
+    "capabilities/synthesis/audit-seal": 1,
+    "capabilities/audit/arifos-external-council": 1,
+    "capabilities/audit/arifos-kernel-zen-audit": 2,
+    "domains/wealth/workshop/trading-exec/agentic-trading-companion": 2,
+    "domains/wealth/workshop/trading-exec/trading-signal-chart": 1,
+    "domains/general/apex/governance-core/forge-execution-governance": 3,
+    "domains/general/aaa/onboarding/a2a-agent-card-registration": 1,
+    "domains/general/aaa/substrate/arifos-runtime-module-authoring": 1,
+    "domains/general/forge/web-stack/arif-sites-content-ops": 1,
+    "domains/general/forge/model-routing/litellm-proxy-triage": 1,
+    "domains/general/forge/repo-intelligence/hermes-upstream-audit": 2,
+    "domains/general/forge/cron-ops/hermes-cron-zen": 1,
+    "domains/general/forge/federation-release/deployment-claim-verification": 3,
+    "domains/general/court/court-audit/live-probe-audit-pattern": 4,
+    "domains/general/court/seal-ritual/arifos-kernel-seal-ritual": 2,
+    "domains/general/workshop/research-core/external-technology-evaluation": 2,
+    "domains/general/workshop/research-core/text-forensics": 1,
+    "domains/general/workshop/social-media/composio-social-intelligence": 3,
+    "domains/general/workshop/search-web/deep-research": 1,
+    "domains/general/workshop/search-web/sovereign-search": 1,
+    "domains/general/workshop/human-interface/hermes-response-format-fit": 2,
+    "domains/general/workshop/forge-dev/a-forge-development": 3,
+    "domains/general/workshop/voice-stack/hermes-voice-config": 3,
+    "domains/general/workshop/voice-stack/nusantara-voice-stack": 3,
+    "domains/general/workshop/creative-design/makcikgpt-article-forging": 3,
+    "domains/general/workshop/document-intel/scientific-pdf-generation": 1,
+    "domains/general/workshop/image-gen/lightweight-image-generation": 1,
+    "domains/general/workshop/image-gen/image-identity-transfer": 1,
+    "arifos-external-council": 1,
+    "hermes-coding-gateway": 1,
+    "audit-seal": 1,
+    "substrate/audit-seal": 1,
+    "workflows/core/submission-readiness-audit": 1,
+    "arifos-kernel-zen-audit": 2,
+    "mlops/inference/llama-cpp": 1,
+    "forge-vision-densify": 1,
+    "core/federation/handoff-contract": 1,
+    "core/federation/multi-harness-sync": 1,
+    "core/forge/repo-cleanup": 2,
+    "core/governance/dignity-substrate": 1,
+    "core/governance/recursive-audit": 1,
+    "core/governance/verify-runtime": 2,
+    "core/governance/scar-integration": 1,
+    "core/mcp/runtime-probe": 3,
+    "primitives/memory/wisdom-scar-session-audit": 1,
+    "primitives/memory/audit-seal": 1,
+    "submission-readiness-audit": 1
+  }
+}

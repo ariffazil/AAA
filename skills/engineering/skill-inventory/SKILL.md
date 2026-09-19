@@ -432,3 +432,19 @@ Subagents are optional, scope-bounded evidence collectors. They do not inherit a
 - `SKILL_ALIAS_TABLE.json` — 164 rows on disk (124 RESOLVED · 7 FORGED · 1 ALIAS_RESOLVED · 1 active · 31 TOMBSTONE); **90 non-tombstone rows point at nothing**
 - `${FORGE_WORK:-/root/forge_work}/2026-09-18/SKILL-INVENTORY-AUDIT-2026-09-18.md` — the dated receipt for this version
 - `/var/log/arifos/skill-entropy.log` · `/var/log/arifos/skills-census.log` — the two sensors whose exit states define §7
+
+## Retired-name landing (names retired, modes live here)
+
+Trigger phrases carried forward when the `skill-portfolio-audit` identity was retired (2026-09-19; frozen body at
+`/root/AAA/skills-retired/2026-09-19-v2-portfolio-audit/skill-portfolio-audit/SKILL.md`). The names below are
+RETIRED routing names — this skill is their live mode owner; nothing is re-forged under them.
+
+| Retired name | Retired trigger phrase (verbatim) | Live section here |
+|---|---|---|
+| `AUDIT-skill-atlas` | "skill atlas", "unified skill inventory", "unified inventory" | §0 multi-harness unification · §1 cross-surface inventory (16 surfaces) · §3 rot classification · §4 routing table |
+| `AUDIT-agent-skill-mesh` | "skill mesh sync", "check skill mesh sync", "skill mesh" | §2 MESH SYNC PROTOCOL (`SYNC` / `DIVERGED` / `MISSING_FROM_X`) |
+
+These were the `mode=atlas`, `mode=mesh` and `mode=inventory` rows of the retired `skill-portfolio-audit`
+("Unified skill inventory, audit, mesh health, and cross-surface contrast"). Its absorbed pre-merge bodies remain
+readable at the frozen path above (`references/absorbed-AUDIT-skill-atlas.md`,
+`references/absorbed-AUDIT-agent-skill-mesh.md`).

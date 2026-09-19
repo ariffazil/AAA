@@ -1,0 +1,235 @@
+LIVING CORPSE AUDIT v2 — instructions that cannot be executed
+generated 2026-09-19T01:36:52.443019+00:00
+witness: /root/AAA/skills — 643 skills scanned, read-only
+
+v1 reported 331 dead paths across 152 skills. Three false-positive classes were then removed
+(dated receipts in references/, declared-transient cache roots, negated 'never write it' lines)
+and the noisy MISSING-BIN test was dropped. What follows is only what makes a skill UNEXECUTABLE.
+
+skills with a corpse in SKILL.md  : 64
+DEAD-PATH in SKILL.md             : 80
+DEAD-SCRIPT in SKILL.md           : 8
+IMMUTABLE path named as write tgt : 1
+
+(informational) dead paths inside reference logs: 75 across 47 skills — these are receipts, not instructions
+
+========================================================================================
+RANKED
+========================================================================================
+
+### domains/general/workshop/telegram-ops/telegram-userbot-telethon   [dead_paths=6 dead_scripts=1 immutable=0]
+    DEAD-PATH    /etc/systemd/system/telegram-userbot.service
+    DEAD-PATH    /root/.hermes/scripts/telegram-userbot.py
+    DEAD-PATH    /root/.hermes/userbot.session
+    DEAD-PATH    /root/_archive/2026-08-04/userbot/ari_session
+    DEAD-PATH    /root/_archive/2026-08-04/userbot/ari_session.session
+    DEAD-PATH    /root/userbot/ari_session
+    DEAD-SCRIPT  scripts/telegram-userbot.py
+
+### domains/general/aaa/onboarding/a2a-agent-card-registration   [dead_paths=6 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/AAA/a2a-server/forge-live-wire.js
+    DEAD-PATH    /root/AAA/a2a-server/live-wire-manifest.json
+    DEAD-PATH    /root/AAA/docs/TOOLREGISTRY.json
+    DEAD-PATH    /root/AAA/registries/TOOL_MANIFEST.json
+    DEAD-PATH    /root/AAA/skills/ARCHIVE-chaos-quarantine
+    DEAD-PATH    /root/arifOS/TOOL_MANIFEST.json
+
+### aaa-governance/aaa-doctrine-sealing   [dead_paths=0 dead_scripts=0 immutable=1]
+    IMMUTABLE    /root/AAA/canon/eureka-entries.jsonl   <- `references/commit-gates.md` named `/root/AAA/canon/eureka-entries.jsonl` as the write target ("append to
+
+### research/research-paper-writing   [dead_paths=0 dead_scripts=2 immutable=0]
+    DEAD-SCRIPT  scripts/make_figure2.py
+    DEAD-SCRIPT  scripts/reproduce_table1.sh
+
+### domains/wealth/workshop/trading-exec/agentic-trading-companion   [dead_paths=3 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/XAUUSD_TRADING_RESEARCH.md
+    DEAD-PATH    /root/paper_trading/governed_engine.py
+    DEAD-PATH    /root/trading/data/xauusd_1h.json
+
+### domains/wealth/workshop/trading-exec/mt5-ai-trading-agent   [dead_paths=1 dead_scripts=1 immutable=0]
+    DEAD-PATH    /root/trading/scripts/gold_engine.py
+    DEAD-SCRIPT  scripts/gold_engine.py
+
+### domains/general/forge/cron-ops/hermes-cron-zen   [dead_paths=1 dead_scripts=1 immutable=0]
+    DEAD-PATH    /root/forge_work/backups/haproxy.cfg.bak-20260814
+    DEAD-SCRIPT  scripts/foo.sh
+
+### domains/wealth/workshop/trading-exec/trading-signal-chart   [dead_paths=0 dead_scripts=1 immutable=0]
+    DEAD-SCRIPT  scripts/chart_pro.py
+
+### domains/general/forge/mcp-ops/external-platform-mcp   [dead_paths=2 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/.composio/composio
+    DEAD-PATH    /root/.local/bin/composio
+
+### domains/general/workshop/social-media/composio-social-intelligence   [dead_paths=2 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/.composio/composio
+    DEAD-PATH    /root/.composio/user_data.json
+
+### domains/general/workshop/audio-emd/music-generation   [dead_paths=2 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/HERMES/models/rvc/target_voice.index
+    DEAD-PATH    /root/HERMES/models/rvc/target_voice.pth
+
+### domains/general/workshop/audio-emd/music-intelligence   [dead_paths=2 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/arifos/forge/music-intelligence/report.json
+    DEAD-PATH    /root/arifos/forge/music-intelligence/somatic_engine.py
+
+### domains/general/workshop/creative-design/civic-social-infographic   [dead_paths=2 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/forge_work/final.png
+    DEAD-PATH    /root/forge_work/page.html
+
+### forge-document-intelligence   [dead_paths=2 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/A-FORGE/forge_work/2026-07-02/AAA-INIT-PROMPT-document-intelligence.md
+    DEAD-PATH    /root/A-FORGE/forge_work/2026-07-02/olmocr-agentic-ocr-analysis.md
+
+### apex-cognitive-reflex/alpha-zen-lanes   [dead_paths=0 dead_scripts=1 immutable=0]
+    DEAD-SCRIPT  scripts/chron_events.js
+
+### forge-mcp-gui   [dead_paths=2 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/A-FORGE/forge_work/2026-07-19/MCP-GUI-COMPREHENSIVE-REPORT-2026-07-19.md
+    DEAD-PATH    /root/forge_work/2026-07-20/GEOX-CHATGPT-MCP-GUI-BLUEPRINT.md
+
+### workflows/core/FORGE-t3a-binding-matrix   [dead_paths=2 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/compose/sekrits/arifos_sovereign.key
+    DEAD-PATH    /root/compose/sekrits/arifos_sovereign.pub
+
+### skill-library-integrity   [dead_paths=0 dead_scripts=1 immutable=0]
+    DEAD-SCRIPT  scripts/foo.py
+
+### forge-t3a-binding-matrix   [dead_paths=2 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/compose/sekrits/arifos_sovereign.key
+    DEAD-PATH    /root/compose/sekrits/arifos_sovereign.pub
+
+### capabilities/media/AAA-video-emd-pipeline   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/.hermes/skills/domains/general/forge/mcp-ops/external-platform-mcp/references/firecrawl-yo
+
+### capabilities/coding/mcp-testing   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/forge_work/2026-07-20/GEOX-CHATGPT-MCP-GUI-BLUEPRINT.md
+
+### capabilities/coding/verify-work   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/apex-health.sh
+
+### domains/my-reality/workshop/research-core/petronas-petros-shell-dispute   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/cases/federal-court-constitutional-geometry-map.md
+
+### domains/my-reality/workshop/business-intel/nasilemak-engine   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/sado/data/engine_v4.json
+
+### domains/forge/mcp-testing   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/forge_work/2026-07-20/GEOX-CHATGPT-MCP-GUI-BLUEPRINT.md
+
+### domains/forge/verify-work   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/apex-health.sh
+
+### domains/forge/federation-health   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/.local/share/arifos/dependency_death_events.jsonl
+
+### domains/capital/xauusd-trading   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/XAUUSD_TRADING_RESEARCH.md
+
+### domains/general/apex/governance-core/constitutional-floors   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/AGENTS.OWNERSHIP.md
+
+### domains/general/apex/governance-core/federation-housekeeping-master   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /var/log/arifos/supply-chain-audit.log
+
+### domains/general/apex/governance-core/forge-execution-governance   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /etc/ld.so.preload
+
+### domains/general/apex/cognitive-reflex/shadow-mapping   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/memory/H5-scars/SCAR_
+
+### domains/general/forge/mesh-transport/hermes-browser-skills-mesh-snap   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/.hermes/memories/MEMORY.md.bak.1786598284
+
+### domains/general/forge/web-stack/arif-sites-content-ops   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /var/www/html/arif/makcikgpt-md/index.html.bak
+
+### domains/general/forge/repo-intelligence/audio-feature-analysis   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/music-eval/motif_memory.py
+
+### domains/general/forge/mcp-ops/forge-minimax-mcp-direct-invoke   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /usr/local/lib/hermes-agent/venv/lib/python3.12/site-packages
+
+### domains/general/forge/federation-release/deployment-claim-verification   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/REPO
+
+### domains/general/workshop/research-core/external-technology-evaluation   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/docs/AGENTS-wire-3layer.md
+
+### domains/general/workshop/telegram-ops/telegram-bot-routing-doctrine   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/docs/TELEGRAM_BOT_ROUTING_DOCTRINE.md
+
+### domains/general/workshop/forge-dev/a-forge-development   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/forge_work/2026-07-25-arifflow-bsp-spec/UNIFIED_ARIFLOW_SPEC_v1.md
+
+### domains/general/workshop/voice-stack/nusantara-voice-stack   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/AAA/audio/rollback-v9.sh
+
+### domains/general/workshop/well-domain/well-operations   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/WELL/google_fit_creds.json
+
+### forge-telegram-audit   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/.openclaw/tg_token
+
+### agi-web-optimization   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/AAA/instructions/grammar-doctrine.md
+
+### search-web/web-search-query-gate-recovery   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/agentic
+
+### rsi-federation-mesh   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/AAA/skills/RSI-federation-mesh/mesh-seal.py
+
+### intelligence-briefing   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/AAA/skills/domains/general/workshop/research-core/professional-intelligence-briefing/SKILL
+
+### forge-did-web-identity   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /etc/caddy/conf.d/did.conf
+
+### forge-act-federation-ingress   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/forge_work/2026-07-20/GEOX-CHATGPT-MCP-GUI-BLUEPRINT.md
+
+### fi-qwen-upgrade   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/.local/lib/qwen-code.old.OLD
+
+### minimax-image-gen   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/forge_work/sunset_20260804.jpg
+
+### engineering/mcp-testing   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/forge_work/2026-07-20/GEOX-CHATGPT-MCP-GUI-BLUEPRINT.md
+
+### engineering/verify-work   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/apex-health.sh
+
+### engineering/federation-health   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/.local/share/arifos/dependency_death_events.jsonl
+
+### workflows/core/RSI-federation-mesh   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/AAA/skills/RSI-federation-mesh/mesh-seal.py
+
+### forge-visual-qa-w3   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/forge_work/2026-07-20/GEOX-CHATGPT-MCP-GUI-BLUEPRINT.md
+
+### core/federation/multi-harness-sync   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/.hermes/.archive_skills_wave2/federation-multi-harness/TOMBSTONE-federated-skill-architect
+
+### governance/durable-artifact-authoring   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/.hermes/skills/core/federation/handoff-contract/references/absorbed-FORGE-cross-agent-hand
+
+### hermes-federated-identity   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /usr/local/bin/hermes-id-zen
+
+### forge-fastmcp   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/forge_work/2026-07-20/GEOX-CHATGPT-MCP-GUI-BLUEPRINT.md
+
+### xauusd-trading   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/XAUUSD_TRADING_RESEARCH.md
+
+### forge-agentic-web-builder   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/AAA/instructions/grammar-doctrine.md
+
+### forge-komda-color-law   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/docs/design-rules/SOVEREIGN_DECREES.md
+
+### forge-infra-guardian   [dead_paths=1 dead_scripts=0 immutable=0]
+    DEAD-PATH    /root/.cloudflared/tunnel-token

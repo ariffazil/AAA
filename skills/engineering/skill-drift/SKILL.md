@@ -302,3 +302,16 @@ findings disclosed, and an explicit §8 list of what was NOT witnessed (schema d
 Companion (skill-mesh lane): `${FORGE_WORK:-/root/forge_work}/2026-09-18/SKILL-INVENTORY-AUDIT-2026-09-18.md`
 — the `skill-inventory` meta-skill's F-1…F-11. Read both together: they probe different surfaces of
 the same mesh and their numbers are deliberately not merged.
+
+## Retired-name landing (name retired, mode live here)
+
+Trigger phrases carried forward when the `skill-portfolio-audit` identity was retired (2026-09-19; frozen body at
+`/root/AAA/skills-retired/2026-09-19-v2-portfolio-audit/skill-portfolio-audit/SKILL.md`).
+
+| Retired name | Retired trigger phrase (verbatim) | Live section here |
+|---|---|---|
+| `AUDIT-drift-detector` | "find drift across surfaces", "find drift", "drift detector" | §1 DRIFT DETECTION (Drift Dimensions 1–7 · Detection Pipeline · Baselines) |
+
+This was the `mode=drift` row of the retired `skill-portfolio-audit`. The retired body's Drift Dimensions and
+Detection Pipeline appear verbatim in §1 of this file; its absorbed pre-merge copy remains readable at
+`references/absorbed-AUDIT-drift-detector.md` under the frozen path above.
