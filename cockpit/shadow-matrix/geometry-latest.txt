@@ -1,0 +1,23 @@
+# Federation Agent Shadow Geometry Report
+# Generated: 2026-09-19 by shadow_geometry_comparison.py
+
+| Rank | Agent | FQ | State | Balance | Phase | Boundary | Critical |
+|------|-------|-----|-------|---------|-------|----------|----------|
+| 1 | claude-code | 0.079 | BURNING | 0.139 | SHADOW_DOMINANT | -0.620 | 1 |
+| 2 | kimi-code | 2.29 | FLOWING | 0.230 | SHADOW_PROMINENT | -0.520 | 0 |
+| 3 | frame | N/A | STRUCTURAL_ONLY | 0.250 | EQUILIBRIUM | -0.120 | 0 |
+| 4 | aforge | 1.0 | CAUTION | 0.182 | NIGREDO_DEEP | +0.280 | 0 |
+| 5 | grok-build | 85.0 | FOSSILIZED | 0.182 | NIGREDO_DEEP | +0.080 | 0 |
+| 6 | well | N/A | DEGRADED | 0.204 | NIGREDO_DEEP | +0.180 | 0 |
+| 7 | hermes-asi | 0.286 | STUCK | 0.243 | SHADOW_PROMINENT | +0.080 | 0 |
+| 8 | qwen-code | 0.25 | STUCK | 0.250 | EQUILIBRIUM | +0.180 | 0 |
+
+## Federation Aggregate
+- Average Yin-Yang balance: 0.210 / 0.250 max (84.0%)
+- Worst balance: claude-code (0.139)
+- Best balance: qwen-code (0.250)
+- Agents in CRITICAL: 1
+- Agents in BURNING/STUCK: 3
+- Harness shadow files built: 2/8
+- Mechanical checks defined: 10/10 (from harness_shadow_mechanical_checks.yaml)
+- Mechanical checks implemented: 0/10
