@@ -1,0 +1,1335 @@
+       PETRONAS Group
+        Financial Report
+         For First Half Year Ended
+               30 June 2026
+
+
+
+
+Open
+PETROLIAM NASIONAL BERHAD (PETRONAS) (197401002911 (20076-K))
+
+
+FINANCIAL REPORT
+FOR FIRST HALF YEAR ENDED 30 JUNE 2026
+
+The Board of Directors of Petroliam Nasional Berhad (“PETRONAS” or the “Company”) is pleased to announce the results of
+PETRONAS Group and its reportable segments for the first half year ended 30 June 2026 which should be read in
+conjunction with the unaudited condensed consolidated financial statements and the accompanying explanatory notes on
+page 6 to 22.
+
+                                                                     GROUP PERFORMANCE REVIEW
+
+
+                                                                                                                                                       30 June                    30 June
+In RM Mil                                                                                                                                                 2026                       2025
+Revenue                                                                                                                                                152,441                    132,563
+EBITDA1                                                                                                                                                 56,790                     54,446
+PAT2                                                                                                                                                    27,224                     26,192
+
+Cash flows from operating activities                                                                                                                    47,506                     48,092
+
+Capital investments3                                                                                                                                     41,363                     17,737
+
+                                                                                                                                                          As at                 As at
+                                                                                                                                                       30 June           31 December
+                                                                                                                                                          2026                  2025
+
+Total assets                                                                                                                                          794,290                    774,953
+Shareholders’ equity                                                                                                                                  449,147                    448,308
+Gearing ratio4                                                                                                                                          21.2%                      20.7%
+ROACE5                                                                                                                                                    8.5%                       8.2%
+
+PETRONAS Group’s revenue of RM152.4 billion for the first half of 2026 was higher by RM19.9 billion or 15% as compared to
+the same period in 2025 mainly attributable to higher average realised prices across major products coupled with the impact
+from higher sales volume mainly from liquefied natural gas (“LNG”) and processed gas. This was partially offset by impact
+from foreign exchange.
+
+The Group recorded EBITDA of RM56.8 billion, higher by RM2.3 billion or 4% as compared to the same period in 2025
+primarily driven by higher revenue as described above partially offset by certain identified non-cash items6. PAT of RM27.2
+billion was higher by RM1.0 billion in tandem with improved EBITDA.
+
+Cash flows from operating activities was RM47.5 billion mainly comprised EBITDA after non-cash adjustments partially offset
+by working capital outflows.
+
+Capital investments amounted to RM41.4 billion mainly attributable to Downstream’s additional investment in a joint venture
+company, as well as investments in Upstream’s development and production activities.
+
+
+
+
+ 1 Earnings Before Interest, Taxation, Depreciation and Amortisation (“EBITDA”) consists of profit before taxation and non-controlling interests, with the addition of amounts previously
+
+     deducted for depreciation, amortisation, net impairment losses on property, plant and equipment and intangible assets, provision for onerous contracts, loss on remeasurement of
+     net assets held for sale, loss/(gain) on remeasurement of financial assets measured at amortised cost and the exclusion of financing costs and interest income.
+ 2 Profit After Tax
+
+ 3 Capital investments are based on cash, comprising purchase of property, plant and equipment, investment properties, intangible assets and land held for development, as well as
+
+     acquisition of subsidiaries, investments in associates and joint arrangements.
+ 4 Gearing   ratio is calculated as adjusted total debt (total debt including financial guarantees) divided by adjusted total equity (total equity plus deferred tax liabilities and minus
+     capitalised interest) and adjusted total debt.
+ 5 Return on average capital employed (“ROACE”) is calculated as profit before interest expense after tax (calculated on 12-month preceding basis) divided by average total equity and
+
+     long-term debt.
+ 6 Certain identified non-cash items amounting to RM14.8 billion comprised recognition of previously unrecognised accumulated share of losses of a joint venture following additional
+
+     equity injection made during the period. This injection formed part of transactions undertaken by the Group to enhance operational alignment and flexibility across PRefChem’s
+     value chain, in support of PETRONAS’ commitment to Malaysia’s energy security and the strengthening of international partnerships that position Malaysia as a progressive energy
+     nation (Refer Note A6 (iv)). This was partially offset by the gains on divestments and dilutions mainly arising from the Group’s dilution of participating interests in certain assets and
+     disposal of certain subsidiaries in exchange of equity interest in a newly established upstream joint venture company.
+
+
+
+                                                                                              1
+ PETROLIAM NASIONAL BERHAD (PETRONAS) (197401002911 (20076-K))
+
+
+FINANCIAL REPORT
+FOR FIRST HALF YEAR ENDED 30 JUNE 2026
+
+                                                          GROUP PERFORMANCE REVIEW (continued)
+
+Total assets of the Group increased to RM794.3 billion as at 30 June 2026 against RM775.0 billion as at 31 December 2025
+mainly due to higher investments in joint ventures, coupled with higher receivables and inventories. This was partially offset
+by lower cash and cash equivalents and a decrease in assets held for sale. Shareholders’ equity of RM449.1 billion increased
+by RM0.8 billion primarily attributable to profit recorded during the period partially offset by dividends declared on
+26 February 2026 to shareholders amounting to RM20.0 billion.
+
+Gearing ratio marginally increased to 21.2% as at 30 June 2026 from 20.7% as at 31 December 2025 primarily due to higher
+borrowings. ROACE of the Group increased to 8.5% as at 30 June 2026 from 8.2% as at 31 December 2025 in line with
+higher profitability during the period.
+
+                                                                 UPSTREAM PERFORMANCE REVIEW
+
+
+Financial Indicators
+                                                                                                                                        30 June   30 June
+In RM Mil                                                                                                                                  2026      2025
+
+Revenue
+  Third party                                                                                                                           12,828     16,519
+  Inter-segment                                                                                                                         48,727     41,091
+                                                                                                                                        61,555     57,610
+PAT                                                                                                                                     28,113     16,549
+Capital investments                                                                                                                      8,990      8,565
+
+Operational Indicators                                                                                                                  30 June   30 June
+                                                                                                                                           2026      2025
+
+Production7 (‘000 boe8 per day)
+  Crude oil and condensates                                                                                                                657        792
+  Natural gas                                                                                                                            1,677       1,611
+                                                                                                                                         2,334      2,403
+
+Entitlement9 ('000 boe per day)
+  Crude oil and condensates                                                                                                                 427       462
+  Natural gas                                                                                                                             1,178     1,192
+                                                                                                                                          1,605     1,654
+
+Revenue of RM61.6 billion for the first half of 2026 was higher by RM3.9 billion or 7% as compared to the same period in
+2025 mainly due to higher average realised prices partially offset by impact from foreign exchange.
+
+PAT of RM28.1 billion was higher by RM11.6 billion in line with higher revenue, coupled with gains on divestments and
+dilutions arising from the dilution of participating interests in certain assets and disposal of certain subsidiaries in exchange
+of equity interest to a newly established joint venture company.
+
+Capital investments amounted to RM9.0 billion mainly from development and production activities.
+
+Total daily production average for the period ended 30 June 2026 was at 2,334 thousand boe per day, lower by
+69 thousand boe per day as compared to the same period in 2025 mainly due to lower crude oil and condensates
+production.
+
+
+
+
+7 Represents Malaysia’s production (PETRONAS Group and other operators) and PETRONAS Group’s international equity production volume.
+
+8 boe: barrels oil equivalent. Volume of gas has been converted using gas heating values, reflecting PETRONAS gas portfolio.
+9 Represents PETRONAS Group’s sales entitlement to Malaysia’s production and PETRONAS Group’s international sales entitlement volume.
+
+
+
+
+                                                                                            2
+ PETROLIAM NASIONAL BERHAD (PETRONAS) (197401002911 (20076-K))
+
+
+FINANCIAL REPORT
+FOR FIRST HALF YEAR ENDED 30 JUNE 2026
+
+                                                              GAS & MARITIME PERFORMANCE REVIEW
+
+
+Financial Indicators
+                                                                                                   30 June      30 June
+In RM Mil                                                                                             2026         2025
+Revenue
+  Third party                                                                                      60,878        53,039
+  Inter-segment                                                                                     7,246         6,952
+                                                                                                   68,124        59,991
+PAT                                                                                                16,694        10,409
+Capital investments                                                                                 5,353         5,357
+
+Operational Indicators                                                                             30 June      30 June
+                                                                                                      2026         2025
+
+Malaysia average sales gas volume (mmscfd10)                                                         3,111        2,769
+Gross LNG sales volume11 (million tonnes)                                                            20.29        17.34
+
+Revenue of RM68.1 billion for the first half of 2026 was higher by RM8.1 billion or 14% as compared to the same period in
+2025 mainly contributed by higher LNG and processed gas sales volume coupled with higher average realised prices from
+LNG partially offset by impact from foreign exchange.
+
+PAT of RM16.7 billion was higher by RM6.3 billion against RM10.4 billion in the same period of 2025 primarily driven by
+higher net product margin from LNG.
+
+Capital investments for the first half of 2026 was RM5.4 billion, comparable to the same period in 2025.
+
+Malaysia average sales gas volume increased by 342 mmscfd mainly due to higher offtake from power sector. Gross LNG
+sales volume increased by 2.95 million tonnes primarily attributed by higher production from PETRONAS LNG Complex and
+LNG Canada following its full commercial operations in the second half of 2025.
+
+
+
+
+10 mmscfd: million standard cubic feet per day.
+
+11 Gross volume refers to all LNG sales inclusive of volume subsequently sold as sales gas.
+
+
+
+
+                                                                                              3
+ PETROLIAM NASIONAL BERHAD (PETRONAS) (197401002911 (20076-K))
+
+
+FINANCIAL REPORT
+FOR FIRST HALF YEAR ENDED 30 JUNE 2026
+
+                                                            DOWNSTREAM PERFORMANCE REVIEW
+
+
+Financial Indicators
+                                                                                                30 June          30 June
+In RM Mil                                                                                          2026             2025
+
+Revenue
+  Third party                                                                                    73,926           57,770
+  Inter-segment                                                                                      361             375
+                                                                                                 74,287           58,145
+LAT12                                                                                            (15,157)           (865)
+Capital investments                                                                              25,987            1,562
+
+Operational Indicators13                                                                        30 June          30 June
+                                                                                                   2026             2025
+
+Petroleum products sales volume (in million barrels)                                              102.0             99.0
+Chemical products sales volume (in million metric tonnes)                                           5.0              5.1
+
+Revenue of RM74.3 billion for the first half of 2026 was higher by RM16.1 billion or 28% as compared to the same period in
+2025 primarily due to higher average realised prices for petroleum and chemical products partially offset by impact from
+foreign exchange.
+
+LAT was RM15.2 billion against RM0.9 billion in the same period of 2025, higher by RM14.3 billion mainly due to previously
+unrecognised accumulated share of losses of a joint venture following additional equity injection made during the period.
+This was partially offset by higher average realised petroleum and chemical products margins. Excluding the previously
+unrecognised accumulated share of losses of certain joint venture, PAT for the period is RM7.0 billion.
+
+Capital investments for the first half of 2026 was RM26.0 billion mainly from additional investment in a joint venture
+company.
+
+Petroleum products sales volume was 102.0 million barrels, higher by 3.0 million barrels mainly due to higher marketing
+volume partially offset by lower trading volume. Chemical products sales volume was marginally lower by 0.1 million metric
+tonnes as compared to the same period in 2025.
+
+
+
+
+12 Loss After Tax
+
+13 Refers to volume sold by the Group excluding volume traded and recognised net of cost.
+
+
+
+
+                                                                                            4
+PETROLIAM NASIONAL BERHAD (PETRONAS) (197401002911 (20076-K))
+
+
+FINANCIAL REPORT
+FOR FIRST HALF YEAR ENDED 30 JUNE 2026
+
+                                     CORPORATE AND OTHERS PERFORMANCE REVIEW
+
+
+Financial Indicators
+                                                                                                30 June          30 June
+In RM Mil                                                                                          2026             2025
+Revenue
+  Third party                                                                                     4,809            5,235
+  Inter-segment                                                                                      758           1,302
+                                                                                                   5,567           6,537
+LAT                                                                                               (1,119)           (622)
+Capital investments                                                                                1,033           2,253
+
+Revenue of RM5.6 billion for the first half of 2026 was lower by RM1.0 billion or 15% as compared to the same period in
+2025 primarily due to lower fund investment income.
+
+LAT was RM1.1 billion as compared to RM0.6 billion in the same period in 2025 mainly due to lower revenue partially offset
+by lower operating expenditure.
+
+Capital investments for the first half of 2026 was RM1.0 billion.
+
+
+
+
+                                                                5
+ PETROLIAM NASIONAL BERHAD (PETRONAS) (197401002911 (20076-K))
+
+
+FINANCIAL REPORT
+FOR FIRST HALF YEAR ENDED 30 JUNE 2026
+
+                             UNAUDITED CONDENSED CONSOLIDATED STATEMENT OF PROFIT OR LOSS AND
+                                              OTHER COMPREHENSIVE INCOME
+
+
+                                                                                                                               30 June                30 June
+In RM Mil                                                                                                                         2026                   2025
+Revenue                                                                                                                        152,441                132,563
+Cost of revenue                                                                                                                (81,453)               (78,768)
+Gross profit                                                                                                                    70,988                 53,795
+Selling and distribution expenses                                                                                                (4,395)                 (4,211)
+Administration expenses                                                                                                           (7,179)               (8,234)
+Net impairment losses/write-off14                                                                                                   (813)                  (468)
+Other expenses                                                                                                                      (769)               (2,798)
+Other income                                                                                                                    10,472                    2,814
+Operating profit                                                                                                                68,304                 40,898
+Financing costs                                                                                                                  (3,700)                (3,233)
+Share of (loss)/profit after tax and non-controlling interests of equity accounted
+  associates and joint ventures                                                                                                 (21,637)                   170
+Profit before taxation                                                                                                           42,967                 37,835
+Tax expense                                                                                                                     (15,743)               (11,643)
+PROFIT FOR THE PERIOD                                                                                                            27,224                 26,192
+
+Profit attributable to:
+  Shareholders of the Company                                                                                                    22,728                23,640
+  Non-controlling interests                                                                                                       4,496                 2,552
+PROFIT FOR THE PERIOD                                                                                                            27,224                26,192
+
+Other comprehensive income/(loss)
+Items that will not be reclassified subsequently to profit or loss
+   Net changes in fair value of equity investments at fair value through other
+    comprehensive income ("OCI")                                                                                                      89                    (40)
+Items that may be reclassified subsequently to profit or loss
+   Net movements from exchange differences                                                                                           (75)               (9,244)
+   Cash flow hedge                                                                                                               (2,585)                   582
+   Others                                                                                                                             30                  (194)
+Total other comprehensive loss for the period                                                                                    (2,541)                (8,896)
+TOTAL COMPREHENSIVE INCOME FOR THE PERIOD                                                                                       24,683                  17,296
+
+Total comprehensive income attributable to:
+ Shareholders of the Company                                                                                                    20,113                  15,682
+ Non-controlling interests                                                                                                       4,570                   1,614
+TOTAL COMPREHENSIVE INCOME FOR THE PERIOD                                                                                       24,683                  17,296
+
+
+
+
+14 Excludes well costs and includes loss on remeasurement of financial assets measured at amortised cost.
+
+
+
+
+The unaudited condensed consolidated statement of profit or loss should be read in conjunction with the accompanying explanatory notes attached to these condensed
+consolidated financial statements.
+
+                                                                                           6
+ PETROLIAM NASIONAL BERHAD (PETRONAS) (197401002911 (20076-K))
+
+
+FINANCIAL REPORT
+FOR FIRST HALF YEAR ENDED 30 JUNE 2026
+
+                         UNAUDITED CONDENSED CONSOLIDATED STATEMENT OF FINANCIAL POSITION
+
+
+                                                                                                                            As at               As at
+                                                                                                                         30 June         31 December
+In RM Mil                                                                                                                   2026                2025
+
+ASSETS
+ Property, plant and equipment                                                                                           279,915                283,923
+ Investment properties and land held for development                                                                      18,753                 18,939
+ Investments in associates and joint ventures                                                                             43,367                 11,558
+ Intangible assets                                                                                                        31,897                 30,332
+ Long-term receivables                                                                                                    52,708                  49,111
+ Fund and other investments                                                                                               18,034                 18,698
+ Deferred tax assets                                                                                                      22,665                 21,661
+ TOTAL NON-CURRENT ASSETS                                                                                                467,339                434,222
+
+
+  Trade and other inventories                                                                                            16,663                  12,805
+  Trade and other receivables                                                                                            84,106                  74,235
+  Fund and other investments                                                                                             22,553                  19,046
+  Cash and cash equivalents                                                                                             193,635                 204,375
+                                                                                                                        316,957                 310,461
+ Assets classified as held for sale                                                                                       9,994                  30,270
+ TOTAL CURRENT ASSETS                                                                                                   326,951                 340,731
+TOTAL ASSETS                                                                                                            794,290                 774,953
+
+
+EQUITY
+ Share capital                                                                                                              100                    100
+ Reserves                                                                                                               449,047                448,208
+ Total equity attributable to shareholders of the Company                                                               449,147                448,308
+ Non-controlling interests                                                                                               55,226                  53,777
+TOTAL EQUITY                                                                                                            504,373                502,085
+
+
+LIABILITIES
+  Borrowings                                                                                                             102,847                108,137
+  Deferred tax liabilities                                                                                                 8,903                  9,527
+  Other long-term liabilities and provisions                                                                              60,847                 63,122
+  TOTAL NON-CURRENT LIABILITIES                                                                                          172,597                180,786
+
+
+  Trade and other payables                                                                                               64,989                  65,204
+  Borrowings                                                                                                             23,934                  13,466
+  Taxation                                                                                                               10,140                   2,300
+  Dividend payable                                                                                                       12,000                       —
+                                                                                                                        111,063                  80,970
+ Liabilities classified as held for sale                                                                                  6,257                   11,112
+ TOTAL CURRENT LIABILITIES                                                                                              117,320                  92,082
+TOTAL LIABILITIES                                                                                                       289,917                 272,868
+TOTAL EQUITY AND LIABILITIES                                                                                            794,290                 774,953
+
+
+
+
+The unaudited condensed consolidated statement of financial position should be read in conjunction with the accompanying explanatory notes attached to these
+condensed consolidated financial statements.
+
+                                                                             7
+ PETROLIAM NASIONAL BERHAD (PETRONAS) (197401002911 (20076-K))
+
+
+FINANCIAL REPORT
+FOR FIRST HALF YEAR ENDED 30 JUNE 2026
+
+                              UNAUDITED CONDENSED CONSOLIDATED STATEMENT OF CHANGES IN EQUITY
+                                                                                             Attributable to shareholders of the Company
+                                                                                                           Non-distributable
+                                                                                                     Capital      Foreign      Fair Value
+                                                                                                        and      Currency       through
+                                                                                       Share          Other Translation              OCI                  Hedging
+In RM Mil                                                                             Capital      Reserves       Reserve        Reserve                  Reserve
+
+Period ended 30 June 2026
+Balance at 1 January 2026                                                                  100               16,339               24,442          (3)         302
+Net changes in fair value of equity investments
+  at fair value through OCI                                                                     —                  —                  —          89             —
+Net movements from exchange differences                                                         —                  —                 (68)        —              —
+Cash flow hedge15                                                                               —                  —                  —          —          (2,664)
+Other comprehensive income                                                                      —                  28                 —          —              —
+Total other comprehensive income/(loss) for the
+  period, net of tax                                                                            —                  28                (68)        89         (2,664)
+Profit for the period                                                                           —                  —                  —          —              —
+Total comprehensive income/(loss) for the
+  period                                                                                        —                  28                (68)        89         (2,664)
+Additional issuance of shares to non-controlling
+  interests                                                                                     —                  —                   —          —             —
+Changes in ownership interests in subsidiaries                                                  —                  —                  (61)        —             —
+Disposal of subsidiaries                                                                        —                  25               (479)         —             —
+Redemption of redeemable preference shares in
+  a subsidiary                                                                               —                  113                    —          —             —
+Dividends to shareholders of the Company                                                     —                   —                     —          —             —
+Dividends to non-controlling interests                                                       —                   —                     —          —             —
+Total transactions with shareholders                                                         —                  138                 (540)         —             —
+Balance at 30 June 2026                                                                    100               16,505               23,834          86        (2,362)
+                                                                                                                                             continue to next page
+Period ended 30 June 2025
+Balance at 1 January 2025                                                                  100               16,444               41,095         (20)         (965)
+Net changes in fair value of equity investments
+  at fair value through OCI                                                                     —                  —                  —          (40)          —
+Net movements from exchange differences                                                         —                  —              (8,479)          —           —
+Cash flow hedge15                                                                               —                  —                  —            —          726
+Other comprehensive loss                                                                        —                (165)                —            —           —
+Total other comprehensive (loss)/income for the
+  period, net of tax                                                                            —                (165)            (8,479)        (40)         726
+Profit for the period                                                                           —                  —                  —            —           —
+Total comprehensive (loss)/income for the
+  period                                                                                        —                (165)            (8,479)        (40)         726
+Additional issuance of shares to non-controlling
+  interests                                                                                  —                   —                    —           —             —
+Changes in ownership interests in subsidiaries                                               —                   —                     (3)        —             —
+Disposal of subsidiaries                                                                     —                 (329)                (292)         —             —
+Dividends to shareholders of the Company                                                     —                   —                    —           —             —
+Dividends to non-controlling interests                                                       —                   —                    —           —             —
+Total transactions with shareholders                                                         —                 (329)                (295)         —             —
+Balance at 30 June 2025                                                                    100               15,950               32,321        (60)          (239)
+                                                                                                                                             continue to next page
+15 Includes reduction of RM184 million (30 June 2025: RM20 million) to the cost of hedging reserve during the financial period.
+
+
+The unaudited condensed consolidated statement of changes in equity should be read in conjunction with the accompanying explanatory notes attached to these
+condensed consolidated financial statements.
+
+
+
+                                                                                            8
+ PETROLIAM NASIONAL BERHAD (PETRONAS) (197401002911 (20076-K))
+
+
+FINANCIAL REPORT
+FOR FIRST HALF YEAR ENDED 30 JUNE 2026
+
+                     UNAUDITED CONDENSED CONSOLIDATED STATEMENT OF CHANGES IN EQUITY (continued)
+                                                                                      Attributable to shareholders of
+                                                                                               the Company
+                                                                                        Distributable
+                                                                                                                                                    Non-
+                                                                                     General             Retained                             Controlling         Total
+In RM Mil                                                                            Reserve               Profits                  Total       Interests        Equity
+
+Period ended 30 June 2026
+Balance at 1 January 2026                                                              12,000              395,128                448,308          53,777      502,085
+Net changes in fair value of equity investments
+  at fair value through OCI                                                                     —                   —                   89            —               89
+Net movements from exchange differences                                                         —                   —                  (68)            (7)           (75)
+Cash flow hedge15                                                                               —                   —              (2,664)            79         (2,585)
+Other comprehensive income                                                                      —                   —                   28              2             30
+Total other comprehensive income/(loss) for the
+  period, net of tax                                                                            —                —                  (2,615)           74         (2,541)
+Profit for the period                                                                           —            22,728                22,728          4,496        27,224
+Total comprehensive income/(loss) for the
+  period                                                                                        —            22,728                20,113          4,570        24,683
+Additional issuance of shares to non-controlling
+  interests                                                                                     —                 —                     —             21             21
+Changes in ownership interests in subsidiaries                                                  —                998                  937            643         1,580
+Disposal of subsidiaries                                                                        —                243                  (211)            (2)         (213)
+Redemption of redeemable preference shares in
+  a subsidiary                                                                              —                   (113)                   —             (58)          (58)
+Dividends to shareholders of the Company                                                    —              (20,000)               (20,000)             —      (20,000)
+Dividends to non-controlling interests                                                      —                     —                     —         (3,725)        (3,725)
+Total transactions with shareholders                                                        —               (18,872)               (19,274)        (3,121)     (22,395)
+Balance at 30 June 2026                                                                12,000              398,984                449,147        55,226       504,373
+                                                                                                                                         continued from previous page
+Period ended 30 June 2025
+Balance at 1 January 2025                                                              12,000              382,561                451,215         55,395       506,610
+Net changes in fair value of equity investments
+  at fair value through OCI                                                                     —                   —                 (40)             —           (40)
+Net movements from exchange differences                                                         —                   —              (8,479)           (765)      (9,244)
+Cash flow hedge15                                                                               —                   —                 726            (144)         582
+Other comprehensive loss                                                                        —                   —                (165)            (29)        (194)
+Total other comprehensive (loss)/income for the
+  period, net of tax                                                                            —                 —                 (7,958)          (938)      (8,896)
+Profit for the period                                                                           —            23,640                23,640           2,552       26,192
+Total comprehensive (loss)/income for the
+  period                                                                                        —            23,640                15,682           1,614       17,296
+Additional issuance of shares to non-controlling
+  interests                                                                                 —                    —                      —              42           42
+Changes in ownership interests in subsidiaries                                              —                 2,850                  2,847             71        2,918
+Disposal of subsidiaries                                                                    —                    —                    (621)            —          (621)
+Dividends to shareholders of the Company                                                    —              (32,000)               (32,000)             —      (32,000)
+Dividends to non-controlling interests                                                      —                    —                      —         (2,628)       (2,628)
+Total transactions with shareholders                                                        —               (29,150)               (29,774)        (2,515)    (32,289)
+Balance at 30 June 2025                                                                12,000              377,051                437,123        54,494       491,617
+                                                                                                                                         continued from previous page
+
+15 Includes reduction of RM184 million (30 June 2025: RM20 million) to the cost of hedging reserve during the financial period.
+
+
+
+
+The unaudited condensed consolidated statement of changes in equity should be read in conjunction with the accompanying explanatory notes attached to these
+condensed consolidated financial statements.
+
+                                                                                            9
+ PETROLIAM NASIONAL BERHAD (PETRONAS) (197401002911 (20076-K))
+
+
+FINANCIAL REPORT
+FOR FIRST HALF YEAR ENDED 30 JUNE 2026
+
+                               UNAUDITED CONDENSED CONSOLIDATED STATEMENT OF CASH FLOWS
+
+
+                                                                                                                                30 June               30 June
+In RM Mil                                                                                                                          2026                  2025
+
+Cash flows from operating activities
+
+   Profit before taxation                                                                                                        42,967                 37,835
+
+   Adjustments for:
+     Change in contract liabilities and provisions                                                                                  (214)                  (39)
+     Depreciation and amortisation                                                                                                14,917                18,762
+     Financing costs                                                                                                               3,700                 3,233
+     Interest income                                                                                                              (5,419)               (5,583)
+     Loss/(Gain) on remeasurement of financial assets measured at amortised cost                                                     310                   (45)
+     Loss on remeasurement of net assets classified as held for sale                                                                 415                    —
+     Net impairment losses of assets                                                                                                 388                   239
+     Net (reversals)/impairment/write-off of well costs                                                                             (213)                   81
+     Net inventories written down to net realisable value/written off                                                                700                    57
+     Net (gain)/loss on disposals of investments in an associate, subsidiaries, property,
+       plant and equipment and other investments                                                                                  (6,763)                   462
+     Net gain on realisation of foreign currency translation reserve from disposals                                                (1,138)                 (292)
+     Net unrealised (gain)/loss on derivatives                                                                                       (158)                  279
+     Net unrealised gain on foreign exchange                                                                                      (2,398)                  (426)
+     Net write-off of assets                                                                                                          115                   160
+     Share of loss/(profit) after tax and non-controlling interests of equity accounted
+       associates and joint ventures                                                                                              21,637              (170)
+   Operating profit before changes in working capital                                                                            68,846            54,553
+   Net changes in working capital                                                                                                (17,051)              554
+   Cash generated from operations                                                                                                 51,795           55,107
+   Interest income received                                                                                                        5,419             5,583
+   Interest expenses paid                                                                                                         (2,338)           (2,370)
+   Taxation paid, net of refund                                                                                                   (7,370)         (10,228)
+   Net cash generated from operating activities                                                                                  47,506           48,092
+                                                                                                                                    continue to next page
+
+
+
+
+The unaudited condensed consolidated statement of cash flows should be read in conjunction with the accompanying explanatory notes attached to these condensed
+consolidated financial statements.
+
+
+
+                                                                               10
+ PETROLIAM NASIONAL BERHAD (PETRONAS) (197401002911 (20076-K))
+
+
+FINANCIAL REPORT
+FOR FIRST HALF YEAR ENDED 30 JUNE 2026
+
+                       UNAUDITED CONDENSED CONSOLIDATED STATEMENT OF CASH FLOWS (continued)
+
+
+                                                                                                                                30 June               30 June
+In RM Mil                                                                                                                          2026                  2025
+
+Cash flows from investing activities
+
+   Acquisition of a subsidiary, net of cash acquired                                                                                  —                    (823)
+   Dividends received                                                                                                                569                    264
+   Investments in:
+   - associates and joint ventures                                                                                              (24,557)                    (123)
+   - securities and other investments                                                                                            (7,879)                 (6,601)
+   Long-term receivables paid by joint arrangements                                                                                  —                     1,151
+   Proceeds from capital reduction in joint ventures                                                                                185                       —
+   Proceeds from disposal/partial disposal of:
+   - investments in subsidiaries, net of cash disposed                                                                                35                  3,532
+   - investments in an associate                                                                                                      15                     —
+   - property, plant and equipment and land held for development                                                                   1,617                  1,003
+   - securities and other investments                                                                                              5,027                  2,158
+   Proceeds from redemption of preference shares in a joint venture                                                                    8                     —
+   Purchase of property, plant and equipment, investment properties, intangible assets
+     and land held for development                                                                                              (16,806)                (16,791)
+   Reimbursement paid arising from dilution of participating interests in joint
+     arrangements and cash in subsidiaries disposed of                                                                           (6,976)                    —
+   Net cash used in investing activities                                                                                        (48,762)               (16,230)
+
+Cash flows from financing activities
+
+   Dividends paid                                                                                                                (8,000)               (10,000)
+   Dividends paid to non-controlling interests                                                                                    (3,725)                (2,628)
+   Drawdown of borrowings                                                                                                        22,331                 34,849
+   Payment of lease liabilities                                                                                                   (1,961)                (3,395)
+   Payment to non-controlling interests on additional equity interests                                                                 —                   (165)
+   Payment to non-controlling interests on redemption of redeemable preference shares                                                 (41)                   —
+   Proceeds from partial disposal of equity interest to non-controlling interests                                                  1,593                  2,856
+   Repayment of borrowings                                                                                                      (17,898)                (19,339)
+   Net cash (used in)/generated from financing activities                                                                         (7,701)                 2,178
+
+Net (decrease)/increase in cash and cash equivalents                                                                             (8,957)                34,040
+(Increase)/decrease in cash and cash equivalents restricted                                                                        (417)                     35
+Net foreign exchange differences                                                                                                 (2,269)                 (6,011)
+Cash and cash equivalents at beginning of the period                                                                            202,710                186,197
+Cash and cash equivalents at end of the period                                                                                  191,067                214,261
+
+Cash and cash equivalents
+Cash and cash equivalents                                                                                                     193,635          216,540
+Bank overdrafts                                                                                                                     (11)             —
+                                                                                                                              193,624          216,540
+Less: Cash and cash equivalents restricted                                                                                      (2,557)          (2,279)
+                                                                                                                              191,067          214,261
+                                                                                                                          continued from previous page
+
+
+
+The unaudited condensed consolidated statement of cash flows should be read in conjunction with the accompanying explanatory notes attached to these condensed
+consolidated financial statements.
+
+
+
+                                                                               11
+PETROLIAM NASIONAL BERHAD (PETRONAS) (197401002911 (20076-K))
+
+
+FINANCIAL REPORT
+FOR FIRST HALF YEAR ENDED 30 JUNE 2026
+
+                               PART A – EXPLANATORY NOTES PURSUANT TO MFRS 134
+
+A1.   BASIS OF PREPARATION
+
+      The condensed consolidated interim financial statements are unaudited and have been prepared in accordance with
+      MFRS 134 Interim Financial Reporting and IAS 34 Interim Financial Reporting.
+
+      These financial statements should be read in conjunction with the Group’s audited consolidated financial statements
+      for the financial year ended 31 December 2025.
+
+      The explanatory notes attached to these condensed consolidated financial statements provide an explanation of
+      events and transactions that are significant to an understanding of the changes in the financial position and
+      performance of the Group since the financial year ended 31 December 2025.
+
+      Within the context of these condensed consolidated financial statements, the Group comprises the Company, its
+      subsidiaries and joint operations, as well as the Group’s interests in joint ventures and associates as at and for the
+      financial period ended 30 June 2026.
+
+A2.   MATERIAL ACCOUNTING POLICIES
+
+      The financial information presented herein has been prepared in accordance with the accounting policies to be used
+      in preparing the annual consolidated financial statements for the financial year ending 31 December 2026 under the
+      MFRS framework. These policies do not differ significantly from those used in the audited consolidated financial
+      statements for the financial year ended 31 December 2025 except as disclosed below.
+
+      During the financial period, the Group has adopted the following Amendments to MFRSs (“pronouncements”) that
+      have been issued by the Malaysian Accounting Standards Board (“MASB”).
+
+      Effective for annual periods beginning on or after 1 January 2026
+
+       Amendments to MFRS 9 Financial Instruments and MFRS 7 Financial Instruments: Disclosures (Classification and
+        Measurement of Financial Instruments)
+       Amendments to MFRS 1 First-time Adoption of Malaysian Financial Reporting Standards, MFRS 7 Financial
+        Instruments: Disclosures, MFRS 9 Financial Instruments, MFRS 10 Consolidated Financial Statements and MFRS
+        107 Statement of Cash Flows (Annual Improvements to MFRS Accounting Standards - Volume 11)
+
+      The initial application of the above pronouncements do not have any material impact to the consolidated financial
+      statements of the Group.
+
+A3.   AUDIT REPORT OF PRECEDING ANNUAL FINANCIAL STATEMENTS
+
+      The audited financial statements of the Group for the financial year ended 31 December 2025 were not subject to
+      any audit qualification.
+
+A4.   SEASONALITY OR CYCLICALITY OF OPERATIONS
+
+      The Group’s operations, on overall, are not significantly affected by seasonal or cyclical fluctuations of the business/
+      industry.
+
+A5.   DIVIDENDS PAID
+
+      During the financial period, the Company paid a dividend of RM8 billion, being partial payment of the approved
+      dividend of RM200,000 per ordinary share amounting to RM20 billion declared on 26 February 2026.
+
+
+
+
+                                                             12
+PETROLIAM NASIONAL BERHAD (PETRONAS) (197401002911 (20076-K))
+
+
+FINANCIAL REPORT
+FOR FIRST HALF YEAR ENDED 30 JUNE 2026
+
+                           PART A – EXPLANATORY NOTES PURSUANT TO MFRS 134 (continued)
+
+A6.   SIGNIFICANT EVENTS
+
+      i.     On 2 November 2025, PETRONAS and Eni S.p.A., through their respective subsidiaries, signed an Investment
+             Agreement to establish a regional upstream joint venture company.
+
+             On 31 May 2026, the Shareholders Agreement and other related agreements including fulfilment of conditions
+             precedent and regulatory approvals were completed. The transactions resulted in dilution of participating
+             interests in certain Malaysia upstream assets and disposal of certain subsidiaries in exchange of 50% interest in a
+             new joint venture company, Searah Limited (“Searah”). The joint venture marks PETRONAS’ first satellite business
+             model, which aims to unlock significant opportunities for accelerated growth in value creation, operational
+             performance and energy security from the combined asset portfolio.
+
+             The transactions resulted in gains on disposal amounting to RM5.0 billion. The finalisation of the net effect of
+             transactions is subject to final customary adjustment.
+
+      ii.    On 9 April 2026, PETRONAS via its wholly-owned subsidiary, PETRONAS Petróleo Brasil Ltda. (“PPBL”) entered
+             into a Sale and Purchase Agreement (“SPA”) with Petróleo Brasileiro S.A. (“Petrobras”) in line with the
+             pre-emptive rights exercised, for the sale of its entire 50% interest in Tartaruga Verde field (BM-C-36
+             Concession) and Module III of the Espadarte field (Espadarte Concession), as part of continuous portfolio
+             optimisation strategy.
+
+             The transaction is expected to be completed upon customary approvals. As at 30 June 2026, the related assets
+             and liabilities were classified as held for sale.
+
+      iii.   On 30 April 2026, PETRONAS and ENEOS Netherlands B.V. (part of ENEOS Xplora) (“ENEOS”) signed a Sale and
+             Purchase of Shares Agreement, formalising ENEOS re-entry into Malaysia LNG Tiga Sdn. Bhd. ("MLNG Tiga") with
+             a 10% equity interest. The reinvestment reaffirms the long-standing partnership between PETRONAS and
+             ENEOS, reflecting a shared commitment to strengthening long-term energy security and supporting reliable
+             energy supply to international market, particularly Japan. The transaction was completed on 8 June 2026, with
+             PETRONAS retaining control of MLNG Tiga, resulting in the transaction being accounted for as an equity
+             transaction at the Group level.
+
+      iv.    In May 2026, PETRONAS and its wholly-owned subsidiary, PETRONAS Refinery and Petrochemical Corporation
+             Sdn. Bhd. (“PRPC”) signed a Share Purchase Agreement with Aramco Overseas Company B.V. (“AOC”) for PRPC
+             to acquire AOC’s 50% equity stake in Pengerang Refining Company Sdn. Bhd. (“PRC”) and Pengerang
+             Petrochemical Company Sdn. Bhd. (“PPC”), collectively (“PRefChem”).
+
+             Subject to the fulfilment of customary closing conditions, PRefChem will become wholly-owned subsidiaries of
+             PETRONAS Group upon completion of the share transfer which is expected to be completed during the second
+             half of the year.
+
+             The transaction enhances operational alignment and flexibility across PRefChem’s value chain, while allowing
+             PETRONAS to draw on its international supply network and integrated operating model to support reliability
+             across varying market conditions. PETRONAS remains committed to Malaysia’s energy security and to building
+             the international partnerships that position Malaysia as a progressive energy nation.
+
+             Separately, crude supply arrangements between Saudi Arabian Oil Company (“Aramco”) and PETRONAS under
+             existing commercial agreements remain unaffected by this transaction.
+
+      v.     As part of ongoing portfolio high-grading exercise, on 9 June 2026, the Group via its wholly-owned
+             subsidiaries, PETRONAS Carigali Sdn. Bhd. (“PCSB”) and E&P Malaysia Venture Sdn. Bhd. (“EPMV”) entered
+             into Farm-Out Agreements (“FOAs”) with EnQuest Petroleum Production Malaysia Limited (“EnQuest”) involving
+             participating interests in four PSCs in Malaysia, under three separate packages. The arrangement is intended to
+             enhance assets value creation by leveraging on an operator that has proven expertise in optimising and
+             maximising value from late-life assets. Accordingly, as at 30 June 2026, the Group has classified the related
+             assets and liabilities as held for sale.
+
+             Following the fulfilment of customary conditions precedent in August 2026, the transfer of the participating
+             interests under all three packages from PCSB and EPMV to EnQuest is expected to occur on the agreed
+             effective date in January 2027.
+
+
+                                                               13
+PETROLIAM NASIONAL BERHAD (PETRONAS) (197401002911 (20076-K))
+
+
+FINANCIAL REPORT
+FOR FIRST HALF YEAR ENDED 30 JUNE 2026
+
+                          PART A – EXPLANATORY NOTES PURSUANT TO MFRS 134 (continued)
+
+A7.    COMMITMENTS
+
+       Outstanding commitments in respect of capital expenditure at the end of the reporting period not provided for in the
+       financial statements are:
+
+                                                                                                         As at          As at
+                                                                                                      30 June    31 December
+       In RM Mil                                                                                         2026           2025
+
+       Capital expenditure
+        Approved and contracted for                                                                    61,931          51,862
+        Approved but not contracted for                                                                81,617          93,251
+                                                                                                      143,548         145,113
+
+       Share of capital expenditure of associates and joint ventures
+        Approved and contracted for                                                                     4,458           4,346
+        Approved but not contracted for                                                                14,325           8,495
+                                                                                                       18,783          12,841
+                                                                                                      162,331         157,954
+
+A8.    INSURANCE CONTRACTS
+
+       Exposure to insurance contracts
+
+       The Group had entered into agreements which may include agreements where the Group accepts insurance risks by
+       agreeing to compensate third party if a specified uncertain future event adversely affect the guaranteed entities in the
+       normal and on-going business requirements, consistent with generally acceptable and recognised industry practices.
+       The exposure of the Group is therefore triggered upon the default by the guaranteed entities’ obligation under the
+       contracts. As at 30 June 2026, there were no exposures on the default of the guaranteed entities’ obligations under
+       the contracts.
+
+A9.    CHANGES IN COMPOSITION OF THE GROUP
+
+       There were no material changes in the composition of the Group for the financial period under review.
+
+A10.   SIGNIFICANT RELATED PARTY TRANSACTIONS
+
+       Significant related party transactions for the financial period under review are as follows:
+
+
+                                                                                                      30 June        30 June
+       In RM Mil                                                                                         2026           2025
+
+       Federal and State Governments of Malaysia:
+        Cash payments                                                                                  (5,856)         (5,132)
+        Lease income                                                                                      489             574
+        Sales of petroleum products                                                                       187             157
+        Sales of utilities                                                                                 92              96
+        Project management income and building maintenance                                                169             169
+
+       Government of Malaysia's related entities:
+        Sales of petroleum products, chemicals and processed gas                                        6,917           5,645
+
+
+
+
+                                                               14
+PETROLIAM NASIONAL BERHAD (PETRONAS) (197401002911 (20076-K))
+
+
+FINANCIAL REPORT
+FOR FIRST HALF YEAR ENDED 30 JUNE 2026
+
+                           PART A – EXPLANATORY NOTES PURSUANT TO MFRS 134 (continued)
+
+A10.   SIGNIFICANT RELATED PARTY TRANSACTIONS (continued)
+
+                                                                                                      30 June         30 June
+       In RM Mil                                                                                         2026            2025
+
+       Associate companies:
+        Sales of chemicals and processed gas                                                             3,911           4,314
+
+       Joint arrangements:
+        Sales of industrial utilities                                                                   1,060            1,338
+        Sales of chemicals and processed gas                                                              619            1,307
+        Sourcing of crude oil                                                                           7,692            3,377
+        Site services charges                                                                             339              353
+        Purchase of crude oil, natural gas, petroleum products and chemicals                           (4,482)          (5,804)
+
+
+A11.   FAIR VALUE INFORMATION
+
+       The following table analyses financial instruments carried at fair value by valuation method. The different levels in a
+       fair value hierarchy based on the input used in the valuation technique have been defined as follows:
+
+       Level 1   - Quoted prices (unadjusted) in active markets for identical assets or liabilities.
+       Level 2   - Input other than quoted prices included within Level 1 that are observable for the asset or liability, either
+                   directly (i.e. as prices) or indirectly (i.e. derived from prices).
+       Level 3   - Inputs for the asset or liability that are not based on observable market data (unobservable input).
+
+       The Group recognises transfers between levels of fair value hierarchy as of the date of the event or change in
+       circumstances that caused the transfers.
+
+       There were no transfers between Level 1, Level 2 and Level 3 fair value measurements during the current financial
+       period and comparative period.
+
+       30 June 2026
+       In RM Mil                                                    Level 1         Level 2          Level 3             Total
+
+       Financial assets
+         Quoted shares                                               8,459               —                —             8,459
+         Quoted securities                                               —              52                —                52
+         Unquoted shares                                                 —               —             1,726            1,726
+         Malaysian Government Securities                                 —           2,326                —             2,326
+         Corporate Bonds and Sukuk                                       —          11,687                —            11,687
+         Deposit                                                         —              28                —                28
+         Forward foreign exchange and other contracts                    —             381                —               381
+         Commodity derivatives                                         450             950                —             1,400
+         Interest rate swaps                                             —             344                —               344
+                                                                     8,909          15,768             1,726           26,403
+
+       Financial liabilities
+         Forward foreign exchange contracts                             —              (260)               —              (260)
+         Commodity derivatives                                        (321)          (1,308)               —            (1,629)
+                                                                      (321)          (1,568)               —            (1,889)
+
+
+
+
+                                                               15
+PETROLIAM NASIONAL BERHAD (PETRONAS) (197401002911 (20076-K))
+
+
+FINANCIAL REPORT
+FOR FIRST HALF YEAR ENDED 30 JUNE 2026
+
+                          PART A – EXPLANATORY NOTES PURSUANT TO MFRS 134 (continued)
+
+A11.   FAIR VALUE INFORMATION (continued)
+
+       31 December 2025
+       In RM Mil                                                  Level 1         Level 2          Level 3            Total
+
+       Financial assets
+         Quoted shares                                             7,319               —                —             7,319
+         Quoted securities                                            —              599                —               599
+         Unquoted shares                                              —                —             1,698            1,698
+         Malaysian Government Securities                              —            2,066                —             2,066
+         Corporate Bonds and Sukuk                                    —            9,580                —             9,580
+         Deposit                                                      —                2                —                 2
+         Forward foreign exchange and other contracts                 —              165                —               165
+         Commodity derivatives                                        58           2,336                —             2,394
+         Interest rate swaps                                          —              195                —               195
+                                                                   7,377          14,943             1,698           24,018
+
+       Financial liabilities
+         Forward foreign exchange contracts                           —             (134)               —              (134)
+         Commodity derivatives                                      (178)           (188)               —              (366)
+         Interest rate swaps                                          —               (23)              —                (23)
+                                                                    (178)           (345)               —              (523)
+
+       Derivative financial instruments
+
+       As disclosed in the Group’s audited consolidated financial statements for the financial year ended 31 December 2025,
+       the Group is exposed to various risks which may affect the value of the Group’s assets, liabilities or expected future
+       cash flows. To mitigate these exposures from a business perspective, the Group enters into various hedging activities
+       and applies hedge accounting on the fair value movement of certain commodity derivatives and interest rate swaps
+       to hedge its exposures. Methods and assumptions used to estimate the fair values as at 30 June 2026 are consistent
+       with those used as at 31 December 2025.
+
+
+
+
+                                                             16
+PETROLIAM NASIONAL BERHAD (PETRONAS) (197401002911 (20076-K))
+
+
+FINANCIAL REPORT
+FOR FIRST HALF YEAR ENDED 30 JUNE 2026
+
+                         PART A – EXPLANATORY NOTES PURSUANT TO MFRS 134 (continued)
+
+A12.   OPERATING SEGMENTS
+
+       The Group’s reportable segments comprise Upstream, Gas & Maritime and Downstream. Each reportable segment
+       offers different products and services and are managed separately as described in the Group’s audited consolidated
+       financial statements for the financial year ended 31 December 2025.
+
+       For each of the reportable segment, the Group chief operating decision maker, which in this case is the PETRONAS
+       Executive Leadership Team (“ELT”), reviews internal management reports at least on a half yearly basis.
+
+       Performance is measured based on segment PAT, as included in the internal management reports. Segment PAT is
+       used to measure performance as the PETRONAS ELT believes that such information is the most relevant in evaluating
+       the results of the segments.
+
+       A12.1 Segment revenue
+                                                                                               30 June          30 June
+             In RM Mil                                                                           2026             2025
+
+             Third-parties
+               Upstream                                                                         12,828           16,519
+               Gas & Maritime                                                                   60,878           53,039
+               Downstream                                                                       73,926           57,770
+               Corporate and Others                                                              4,809            5,235
+             Total third-parties                                                               152,441          132,563
+
+             Inter-segment
+               Upstream                                                                         48,727           41,091
+               Gas & Maritime                                                                    7,246            6,952
+               Downstream                                                                          361              375
+               Corporate and Others                                                                758            1,302
+             Total inter-segment                                                                57,092           49,720
+
+             Gross total revenue
+              Upstream                                                                          61,555           57,610
+              Gas & Maritime                                                                    68,124           59,991
+              Downstream                                                                        74,287           58,145
+              Corporate and Others                                                               5,567            6,537
+             Total revenue                                                                     209,533          182,283
+
+
+
+       A12.2 Segment PAT
+                                                                                               30 June          30 June
+             In RM Mil                                                                           2026             2025
+
+               Upstream                                                                          28,113          16,549
+               Gas & Maritime                                                                   16,694           10,409
+               Downstream                                                                       (15,157)           (865)
+               Corporate and Others                                                               (1,119)          (622)
+             Total PAT for reportable segments                                                   28,531          25,471
+             Elimination of inter-segment transactions                                           (1,307)            721
+             Consolidated PAT                                                                   27,224           26,192
+
+
+
+
+                                                           17
+ PETROLIAM NASIONAL BERHAD (PETRONAS) (197401002911 (20076-K))
+
+
+FINANCIAL REPORT
+FOR FIRST HALF YEAR ENDED 30 JUNE 2026
+
+                                             PART A – EXPLANATORY NOTES PURSUANT TO MFRS 134 (continued)
+
+A13.       REVENUE
+
+           The following table includes a reconciliation of the disaggregated revenue with the Group’s reportable segments.
+
+                                                                                                       30 June        30 June
+           In RM Mil                                                                                     2026           2025
+
+           Revenue from contract customers
+             Upstream                                                                                       11,005     15,416
+             Gas & Maritime                                                                                 57,431     49,636
+             Downstream                                                                                     71,531     56,966
+             Corporate and Others                                                                            1,324      1,407
+           Total revenue from contract customers                                                           141,291    123,425
+
+           Other revenue
+            Upstream                                                                                         1,823      1,103
+            Gas & Maritime16                                                                                 3,447      3,403
+            Downstream16                                                                                     2,395        804
+            Corporate and Others                                                                             3,485      3,828
+           Total other revenue                                                                              11,150      9,138
+
+           Total revenue
+             Upstream                                                                                   12,828         16,519
+             Gas & Maritime                                                                             60,878         53,039
+             Downstream                                                                                 73,926         57,770
+             Corporate and Others                                                                        4,809          5,235
+           Total revenue                                                                               152,441        132,563
+
+
+
+
+16 Inclusive of net trading gain/(losses).
+
+
+
+
+                                                                         18
+PETROLIAM NASIONAL BERHAD (PETRONAS) (197401002911 (20076-K))
+
+
+FINANCIAL REPORT
+FOR FIRST HALF YEAR ENDED 30 JUNE 2026
+
+                                         PART B – OTHER EXPLANATORY NOTES
+
+B1.   COMMENTARY ON PROSPECTS
+
+      The global energy landscape remains fragile and uncertain amid elevated geopolitical headwinds and prolonged West
+      Asia conflict. These conditions continue to influence prices, trade flows and cost structures, creating a challenging
+      operating environment and cost pressures across the value chain. Despite the challenging environment, PETRONAS
+      is demonstrating its resilience through prudent financial management and a steadfast commitment to advancing its
+      transformation agenda. The Board and management will ensure that the Group remains well-positioned to navigate
+      the market volatility and create long-term value.
+
+      In strengthening regional and global energy security, PETRONAS has achieved significant milestones across its
+      integrated portfolio. These include the establishment of Searah joint venture with ENI, upstream discoveries in
+      Malaysia, Suriname and Indonesia, and the expected completion of the acquisition of full ownership in PRefChem
+      during the second half of the year. The Group has further expanded its supply footprint through the diversification of
+      long-term LNG supply arrangements via strategic partnerships, underpinning supply resilience and supporting
+      sustainable growth.
+
+      PETRONAS is resolute in capturing growth opportunities and delivering sustainable value by leveraging its integrated
+      portfolio across businesses. The Group continues to be guided by its energy transition agenda, reinforcing its
+      commitment to meeting customers’ energy needs.
+
+B2.   TAXATION
+
+                                                                                                    30 June          30 June
+      In RM Mil                                                                                       2026             2025
+
+      Components of tax expenses include:
+      Current tax expenses
+       Malaysia                                                                                      14,105             9,704
+       Overseas                                                                                       1,586             1,170
+                                                                                                     15,691            10,874
+
+      Deferred tax expenses
+       Origination and reversal of temporary differences                                                 52               769
+                                                                                                     15,743            11,643
+
+      The Group’s effective tax rate for the current period to date was 37% which is reflective of the various tax legislations
+      within which the Group operates, including among others Petroleum (Income Tax) Act 1967 (“PITA”), Malaysia
+      Income Tax Act 1967, Global Incentive for Trading (“GIFT”) under Labuan Financial Services and Securities Act 2010,
+      Labuan Business Activity Tax 1990 (“LBATA”) and international tax legislations.
+
+
+
+
+                                                             19
+PETROLIAM NASIONAL BERHAD (PETRONAS) (197401002911 (20076-K))
+
+
+FINANCIAL REPORT
+FOR FIRST HALF YEAR ENDED 30 JUNE 2026
+
+                                      PART B – OTHER EXPLANATORY NOTES (continued)
+
+B3.   TRADE AND OTHER RECEIVABLES
+
+      The breakdown of trade and other receivables as at 30 June 2026 are as follows:
+                                                                                                 As at           As at
+                                                                                              30 June     31 December
+      In RM Mil                                                                                  2026            2025
+
+      Trade receivables
+        Third party                                                                            33,116           30,086
+        Amount due from associates and joint arrangements                                      38,768           29,798
+        Contract assets                                                                             64              119
+        Derivative financial assets                                                              1,301            2,293
+                                                                                               73,249           62,296
+        Less: Impairment losses                                                                 (1,924)          (2,007)
+                                                                                               71,325           60,289
+
+      Other receivables                                                                        56,997            54,915
+       Less: Impairment losses                                                                   (777)            (1,203)
+                                                                                               56,220            53,712
+      Trade and other receivables                                                             127,545           114,001
+
+      As at the end of the reporting period, the maximum exposure to credit risk arising from receivables is equal to the
+      carrying amount.
+
+B4.   BORROWINGS
+
+      The details of the Group borrowings as at 30 June 2026 are as follows:
+                                                                                                 As at           As at
+                                                                                              30 June     31 December
+      In RM Mil                                                                                  2026            2025
+      Non-Current
+       Term loans                                                                              17,381             21,911
+       Lease liabilities                                                                       18,791            17,189
+       Notes and Bonds                                                                         64,628            67,389
+       Islamic financing facilities                                                             2,047              1,648
+       Total non-current borrowings                                                           102,847           108,137
+
+      Current
+       Term loans                                                                               5,645             4,001
+       Lease liabilities                                                                        2,396             2,851
+       Notes and Bonds                                                                          4,455             2,026
+       Islamic financing facilities                                                             1,861             1,742
+       Revolving credits                                                                        9,236             2,682
+       Bankers' acceptances                                                                       330               164
+       Bank overdrafts                                                                             11                —
+       Total current borrowings                                                                23,934            13,466
+      Total borrowings                                                                        126,781           121,603
+
+
+
+
+                                                           20
+PETROLIAM NASIONAL BERHAD (PETRONAS) (197401002911 (20076-K))
+
+
+FINANCIAL REPORT
+FOR FIRST HALF YEAR ENDED 30 JUNE 2026
+
+                                              PART B – OTHER EXPLANATORY NOTES (continued)
+
+B4.   BORROWINGS (continued)
+                                                                                                           Net changes
+                                                                                           As at                  from                              As at
+                                                                                      1 January              financing     Non-cash              30 June
+      In RM Mil                                                                           2026              cash flows     changes17                2026
+        Term loans                                                                         25,912               (2,766)          (120)           23,026
+        Lease liabilities                                                                 20,040                 (1,961)        3,108            21,187
+        Notes and Bonds                                                                   69,415                     —           (332)           69,083
+        Islamic financing facilities                                                        3,390                   520             (2)           3,908
+        Revolving credits                                                                   2,682                 6,512            42             9,236
+        Bankers' acceptances                                                                  164                   167             (1)             330
+        Bank overdrafts                                                                         —                    —             11                11
+      Total borrowings                                                                    121,603                2,472          2,706            126,781
+
+
+                                                                                                                   As at                As at
+                                                                                                                30 June          31 December
+      In RM Mil                                                                                                    2026    %            2025          %
+
+      By Currency
+        USD                                                                                                     110,447 87.1              104,880 86.2
+        RM                                                                                                        7,289   5.7                7,370   6.0
+        INR                                                                                                       4,805   3.8                5,058   4.2
+        EUR                                                                                                       1,742   1.4                1,793   1.5
+        SEK                                                                                                       1,158   0.9                1,185   1.0
+        AUD                                                                                                         813   0.6                  810   0.7
+        CAD                                                                                                         320   0.3                  336   0.3
+        CNY                                                                                                         207   0.2                   171  0.1
+                                                                                                                126,781 100.0              121,603 100.0
+
+      By Repayment Schedule
+        < 1 year                                                                                                 23,934 18.9               13,466   11.1
+        1 to 5 years                                                                                             33,446 26.4               41,385 34.0
+        5 to 10 years                                                                                            20,582 16.2               26,365   21.7
+        > 10 years                                                                                               48,819 38.5               40,387 33.2
+                                                                                                                126,781 100.0             121,603 100.0
+      Term loans
+
+      Included in the Group’s term loans is 50% share of project financing facility of a joint operation entity amounting to
+      USD300 million (2025: USD315 million), which is undertaken with a joint venture entity, under an integrated
+      borrowing structure for contractual obligations for project completion and delivery and for the repayment of bridge
+      loan facilities and other expenditures.
+
+      As per the integrated borrowing structure, PETRONAS has provided a project completion guarantee to the lenders,
+      via a Debt Service Undertaking (“DSU”) for a Guaranteed Project Completion Date (“Guaranteed PCD”) on
+      31 December 2023. The DSU further defines that the lenders have the right to request for full repayment of
+      outstanding amount if the project completion delays beyond the Guaranteed PCD.
+
+      The Guaranteed PCD was extended from 31 December 2023 to 31 December 2025 and subsequently further
+      extended to 31 December 2027.
+
+      Subsequent to the financial period ended, the project financing facility of the joint operation which is undertaken with
+      a joint venture under the integrated borrowing has been fully prepaid and accordingly all obligations under the DSU
+      have been terminated.
+
+       17 Non-cash changes consists of foreign exchange translation, other amortisation and bank overdrafts.
+
+
+
+
+                                                                                     21
+PETROLIAM NASIONAL BERHAD (PETRONAS) (197401002911 (20076-K))
+
+
+FINANCIAL REPORT
+FOR FIRST HALF YEAR ENDED 30 JUNE 2026
+
+                                                    PART B – OTHER EXPLANATORY NOTES (continued)
+
+
+B5.       PROFIT FOR THE PERIOD
+
+                                                                                                                                                   30 June                   30 June
+          In RM Mil                                                                                                                                  2026                      2025
+
+          Included in profit for the period are the following charges:
+
+          Depreciation and amortisation                                                                                                              14,917                      18,762
+          Loss on remeasurement of financial assets measured at amortised cost                                                                          310                          —
+          Loss on remeasurement of net assets classified as held for sale                                                                               415                          —
+          Net impairment losses of:
+            - intangible assets                                                                                                                            —                        16
+            - investment in a joint venture                                                                                                                —                        42
+            - property, plant and equipment                                                                                                              352                       148
+            - trade and other receivables                                                                                                                 36                        38
+          Net impairment/write-off of well costs                                                                                                           —                        81
+          Net write-down of inventories to net realisable value/inventories written off                                                                  700                        57
+          Net loss on:
+            - derivatives18                                                                                                                            5,838                        460
+            - foreign exchange                                                                                                                            —                       1,433
+          Net loss on disposals of investments in subsidiaries                                                                                            —                         905
+          Net write-off of:
+            - intangible assets                                                                                                                             —                       89
+            - property, plant and equipment                                                                                                                85                       71
+            - receivables                                                                                                                                  30                       —
+
+           and credits:
+
+          Dividend income                                                                                                                                113                        71
+          Gain on remeasurement of financial assets measured at amortised cost                                                                             —                        45
+          Interest income                                                                                                                              5,419                     5,583
+          Net change in contract liabilities                                                                                                             184                        38
+          Net impairment reversals of other investments                                                                                                    —                         5
+          Net impairment reversals on well costs                                                                                                         213                        —
+          Net gain on foreign exchange                                                                                                                    56                        —
+          Net gain on disposals of:
+          - investment in an associate                                                                                                                    15                        —
+          - investments in subsidiaries                                                                                                                4,216                        —
+          - other investments                                                                                                                            386                        —
+          - property, plant and equipment                                                                                                              2,146                       443
+          Net gain on realisation of foreign currency translation reserve from disposals                                                               1,138                       292
+
+
+
+
+ 18 The net loss on derivatives arose from the Group’s hedging strategies to manage market risk exposures. It includes fair value remeasurement effects and gains or losses upon
+
+      settlement of derivative contracts, which are substantially offset by the corresponding impacts from the underlying exposures being hedged recognised in profit or loss.
+
+
+
+By order of the Board
+
+Azizi Md Ali (LS0008803)
+Company Secretary
+Kuala Lumpur
+28 August 2026
+
+                                                                                           22
+
