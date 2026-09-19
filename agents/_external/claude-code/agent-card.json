@@ -634,5 +634,20 @@
     "detected_at": "2026-09-16T07:00:00Z",
     "material_preserved_under": "signature_legacy",
     "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
+  },
+  "shadowAcknowledged": [
+    "two_canonical_homes: /root/AAA/agents/claude-code/ (internal) vs /root/AAA/agents/_external/claude-code/ (external) carry different doctrine; read identity.json for canonical surface",
+    "fi_slot_ground_truth: identity.json is the canonical FI slot (actor=claude-code, fi=, fi_slot=FI-002); card's fi=FI-CLAUDE / fi_slot=FI-002 — readers must NOT infer 'unassigned' from absent fields",
+    "sparse_history: shadow-matrix shows state=BURNING, fq=0.079, execute_count=38 — too little signal to diagnose a blind spot; truth-class for any claude-code claim stays DERIVED not MEASURED until traffic grows",
+    "card_truth_repair_stale: verified_against 2026-08-13T04:00:00+08:00 = 37 days without a repair pass; description may not match reality",
+    "shadow_undeclared: this card had no shadowAcknowledged block before 2026-09-19 audit — read_state MUST treat claude-code self-assessment as DERIVED"
+  ],
+  "shadow_population_meta": {
+    "populated_at": "2026-09-19T13:48:00Z",
+    "populated_by": "opencode (333-AGI) per federation-shadow-ack audit",
+    "method": "Script-driven derivation from: identity.json (FI slot), /root/AAA/cockpit/shadow-matrix/shadow-matrix-2026-09-07.json (per_actor_shadows, exact-match), live binary version probe, agent-card.json (verified_against)",
+    "covers_shadow_ids": [
+      "DIV-FEDERATION-SHADOW-ACK-CLOSED"
+    ]
   }
 }
