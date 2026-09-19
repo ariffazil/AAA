@@ -1,0 +1,133 @@
+
+# AAA Cockpit status refresh (lightweight 98ms probe, every 15 mins)
+# Commodity JSON-LD reseal — hourly F2 TRUTH freshness (2026-08-07 by 333-AGI)
+# Digest delivery to Telegram — bridges digest_inbox to briefing and sends (FI-008 2026-09-09)
+# FI-002 Claude Code — Infra Watchdog (every 4h at :23)
+# FI-003 Qwen Code — Memory consolidation + federation health pulse (every 6h @ :17)
+# FI-005 Codex CLI — Tech Debt Scan (every 8h at :47)
+# MVM auto-fire: scan experience_traces for high-Δ, write to carry_forward (sovereign test 2026-09-07)
+# P0 auto-fire: metabolize new experience traces (added 2026-09-07 sovereign auto-go)
+# SCT autonomous renewal (2026-08-05 by HERMES) — SCT TTL=1h, buffer 30min; renew every 30min
+# WELL intake pipeline — every 30 min (Day 1, F13-ratified 2026-09-08, P1 reversible phase)
+# WELL machine telemetry collector — restored 2026-08-04 by hermes (was scheduled Jul31-Aug3, lost in crontab edit)
+# [DISABLED 2026-09-04 FI-008 M7/PHASE-B: Hermes gateway live on KVM4; KVM8 heritage cron dual-active — see LOOP2 RED R12] */30 * * * * /root/HERMES/scripts/agentic-intelligence-pulse.sh >> /var/log/arifos/cron.log 2>&1
+# [DISABLED 2026-09-04 FI-008 M7/PHASE-B: Hermes gateway live on KVM4; KVM8 heritage cron dual-active — see LOOP2 RED R12] 0 */6 * * * /root/.hermes/state-db-backup.sh
+# [DISABLED 2026-09-04 FI-008 cron-zen-audit: duplicate of arifos-backup.timer 04:30 (verified OK today); rollback: uncomment] 0 18 * * * /root/scripts/direct-backup.sh >> /root/logs/backup-cron.log 2>&1
+# arifOS Observatory — auto-publish fresh signed snapshot every 30 min
+# forge_work garbage collection — 7-day TTL, 30-day quarantine, 90-day archive (F1 AMANAH)
+# │          + 6-condition gate. Verifies doctrine integrity.                │
+# │         /root/.local/share/arifos/unsealed-counter-alerts.log (delta>5)   │
+# │         /var/log/arifos/forge-unsealed-counter.log (cron stdout/stderr)   │
+# │  */5 dynamic-gate   — cheap health check every 5 min                    │
+# │  0 *  agentic-web   — full dry-run cycle every hour (validation only)   │
+# │  Action: Re-run zero_day_sentinel against 7×10 matrix + 8 fixtures       │
+# │  Alerts when delta > 5 (configurable via UNSEALED_ALERT_THRESHOLD env).    │
+# │  Created: 2026-08-02 by 333-AGI (under F13 sovereign directive)          │
+# │  Cron ID: d26dd96f                                                       │
+# │  Daily 22:00 MYT (sys TZ +08) — delivers governance digest to Arif      │
+# │  Doctrine: /root/forge_work/2026-08-02/doctrine/AGENTIC_ZERO_DAY_DOCTRINE.md │
+# │  Doctrine: ARIFOS::CLOSURE_RECOVERY::v1 LEVERAGE POINT #4              │
+# │  Doctrines: F1 reversible (symlinks, restart), F11 audit via logs   │
+# │  Every 5 min: evaluates all active COMPLETION_CONTRACTs          │
+# │  Evidence: /var/log/arifos/arifflow-digest.log                         │
+# │  F12 fomc-tripwire, substrate well/google_fit, F11 sync, F4 pulse   │
+# │  F2 TRUTH: daily 0200 UTC (10:00 MYT) organ-port health probe           │
+# │  F4 CLARITY: silent on clean, reports on drift > threshold             │
+# │  Failure: HOLD + notify F13 (Arif) via Hermes                            │
+# │  Gates autonomous loop termination — agents do NOT self-certify │
+# │  LIVE sync runs from deploy-vps.sh (already wired for canon-sync)        │
+# │  Logs: /root/.local/share/arifos/unsealed-counter.jsonl (always)          │
+# │  Restored: F11 vault backup, F1 federation backup, F3 witness probe  │
+# │  Schedule: hourly — auto-recovery from manual recovery                 │
+# │  Script: /root/arifFlow/scripts/arifflow_digest.py                     │
+# │  T2 build per F13 sovereign directive. Counts unsealed forge_work files.  │
+# │  Wired: 2026-08-11 by 333-AGI Δ MIND (P3A under F13 directive)        │
+# │  Wrapper logs internally to cron-logs/, exit=1 alerts cron-alerts.log  │
+# │  against verification criteria (ΔS≤0, FQ≥0.5, git anchor, LSP) │
+# ┌─ FORGE ZOMBIE REAPER — P3A ARIFOS::CLOSURE_RECOVERY::v1 ──────────────┐
+# └────────────────────────────────────────────────────────────────────────┘
+*/15 * * * * /usr/bin/python3 /root/AAA/scripts/cockpit_probe.py --once && cp -p /root/AAA/state/status.json /var/www/html/aaa/status.json >> /var/log/arifos/cockpit_probe.log 2>&1
+*/30 * * * * /root/scripts/unsealed-counter.sh
+*/30 * * * * /usr/bin/python3 /root/WELL/scripts/well_ingest.py >> /var/log/well/intake.log 2>&1
+*/30 * * * * cd /root/arifOS && SHA=$(git rev-parse HEAD) && echo "$SHA" > .git_commit && OBSERVATORY_PUBLISH_TARGET=/var/www/html/arifos/.well-known sh -c 'echo "CRON-RUN $(date -Is)"; python3 scripts/emit_observatory_snapshot.py && python3 scripts/build_public_state.py; echo "EXIT=$?"' >> /var/log/arifos/observatory.log 2>&1
+0 * * * *   /root/web-canon/scripts/agentic-web.sh   > /root/forge_work/site-audit/agentic-web.log 2>&1
+0 * * * * /root/A-FORGE/scripts/recovery/zombie_reaper_cron.sh > /dev/null 2>&1
+0 * * * * /usr/bin/python3 /root/scripts/mvm_fire.py >> /var/log/mvm-fire.log 2>&1
+*/30 * * * * /root/WELL/scripts/well_auto_keepalive.py >> /var/log/arifos/cron.log 2>&1 # [2026-09-15 FIX: was 0 */6; 6h cadence cannot hold max_fresh_age_seconds=3600 -> gate went STALE between runs]
+0 15 * * * /root/A-FORGE/duties/forge-vitality-pulse.sh >> /root/A-FORGE/duties/logs/cron.log 2>&1
+0 19 * * * /root/scripts/governance/forge-work-gc.sh
+0 22 * * * /usr/bin/python3 /root/arifFlow/scripts/arifflow_digest.py >> /var/log/arifos/arifflow-digest.log 2>&1 # [FI-008 2026-09-09 delivery-repair: P1 witness-membrane + FI-008 tzfix 14->22 sysTZ+08] # [P1 2026-09-17: collector/archive ONLY — inbox tee removed; single-writer inbox = Hermes]
+0 3 * * * /bin/bash /root/scripts/phoenix72.sh >> /var/log/arifos/phoenix72.log 2>&1
+0 3 25 * * . /root/.secrets/kunci-root.env && python3 /root/AAA/scripts/supply_chain_audit.py >> /var/log/arifos/supply-chain-audit.log 2>&1
+0 6 * * * /bin/bash /root/A-FORGE/tests/mcp-conformance/ci-conformance.sh >> /var/log/ci-conformance.log 2>&1
+0 7 * * * /root/A-FORGE/duties/forge-constitutional-sync.sh >> /root/A-FORGE/duties/logs/cron.log 2>&1
+0 8 * * 1-5 /root/arifOS/scripts/cron/fomc-tripwire-trigger.sh >> /var/log/arifos/cron.log 2>&1
+0 9 * * * . /root/.secrets/kunci-root.env 2>/dev/null; TZ='Asia/Kuala_Lumpur' /root/scripts/federation-triage-digest.sh && cp /root/forge_work/daily-triage/$(date +\%Y-\%m-\%d).md /root/.hermes/cron/state/digest_inbox/triage_latest.md 2>/dev/null >> /root/forge_work/daily-triage/cron.log 2>&1 # [FI-008 2026-09-09 delivery-repair: P1 witness-membrane + AAA-group-delivery 2026-09-14]
+17 * * * * /usr/bin/python3 /root/A-FORGE/scripts/fed_quota_sentinel.py >> /root/.local/share/arifos/fed_sentinel.log 2>&1 # FED-BIJAKSANA sentinel v2 reflex hourly
+30 */6 * * * /root/WELL/scripts/google_fit_bridge.py >> /var/log/arifos/cron.log 2>&1
+47 7 * * * /usr/bin/bash /root/A-FORGE/duties/federation-pulse.sh >> /root/A-FORGE/duties/logs/pulse.log 2>&1 # [FI-008 2026-09-04: daily institutional pulse]
+# [TOMBSTONED 2026-09-17 P1 single-publisher: legacy duplicate send REMOVED.
+#  Hermes job 6c672e289f80 (22:02) is sole publisher of the nightly digest DM.
+#  RESTORE: uncomment the next line. Backup: apexzen-cron-20260917/backups/]
+# 5 22 * * * cp /root/.hermes/cron/state/digest_inbox/arifflow_digest_latest.txt /root/.hermes/briefing-output.txt && bash /root/.hermes/scripts/cron-deliver.sh 267378578 >> /var/log/arifos/digest-delivery.log 2>&1
+*/15 * * * * /usr/bin/python3 /root/scripts/p0_metabolize_traces.py >> /var/log/p0-metabolize.log 2>&1 && /usr/bin/python3 /root/scripts/reexamine.py >> /var/log/reexamine.log 2>&1
+*/30 * * * * /usr/local/bin/multi-actor-flusher.sh >> /var/log/multi-actor-flusher.log 2>&1
+*/15 * * * * /usr/local/bin/reality-pulse.py >> /var/log/reality-pulse.log 2>&1
+# metabolism cron — L1-L5 metabolism cycle (restored 2026-09-10, was missing since P0 refactor)
+*/30 * * * * . /root/.secrets/kunci-root.env 2>/dev/null; /usr/bin/python3 /root/scripts/metabolize_cron.py >> /var/log/arifos/metabolism.log 2>&1
+# Hermes state-snapshots retention — 3 day purge (arifOS zen-2026-09-10)
+0 5 * * * find /root/.hermes/state-snapshots /root/.hermes/profiles/aaa-hermes/state-snapshots /root/.hermes/profiles/router-test/state-snapshots /root/HERMES/state-snapshots -mtime +3 -type f -delete 2>/dev/null
+# Layer 0 Economics probe — daily dependency liveness (EUREKA 6, added 2026-09-11 FI-008 888-directed session)
+17 7 * * * /usr/bin/python3 /root/scripts/forge_dependency_probe.py >> /var/log/arifos/dependency_probe.log 2>&1
+
+# SRO Expiry Checker — daily 03:00 MYT (F13 approved 2026-09-12)
+0 3 * * * /usr/bin/python3 /root/scripts/sro_expiry_checker.py >> /var/log/arifos/sro-expiry.log 2>&1
+# SRO Calibration Pipeline — weekly Monday 04:00 MYT (F13 approved 2026-09-12)
+0 4 * * 1 /usr/bin/python3 /root/scripts/sro_calibration_pipeline.py >> /var/log/arifos/sro-calibration.log 2>&1
+23 */6 * * * /usr/bin/python3 /root/A-FORGE/scripts/fed_retirement_watcher.py >> /root/.local/share/arifos/fed_retirement.log 2>&1 # FED retirement watcher - model rename/retire detection (333-AGI 2026-09-12)
+27 * * * * /usr/bin/python3 /root/A-FORGE/scripts/fed_route_weights.py >> /root/.local/share/arifos/fed_route_weights.log 2>&1 # FED route weights - demote/promote loop-closer (333-AGI 2026-09-12)
+*/5 * * * * /root/AAA/scripts/apex-zen-run-loop.sh
+
+# ── EVENT BRIDGES (delta-gated, P0-P2) ──────────────────────────────
+# Each runs after parent cron, checks for material state change.
+# Posts to AAA group ONLY on NEW or ESCALATED. Silent when unchanged.
+# See: /root/scripts/event-bridge.sh (F1 AMANAH, F2 TRUTH)
+
+# P2: Federation pulse → event bridge (runs 1 min after pulse at 07:48)
+48 7 * * * /root/scripts/pulse-event.sh >> /root/AAA/state/event-bridge/bridge.log 2>&1
+
+# P1: Triage digest → event bridge (runs 1 min after triage at 09:01)
+1 9 * * * /root/scripts/triage-event.sh >> /root/AAA/state/event-bridge/bridge.log 2>&1
+
+# P2: Vitality pulse → event bridge (runs 1 min after vitality at 15:01)
+1 15 * * * /root/scripts/vitality-event.sh >> /root/AAA/state/event-bridge/bridge.log 2>&1
+
+# P1: arifFlow digest → event bridge (runs 1 min after flow at 22:06)
+6 22 * * * /root/scripts/flow-event.sh >> /root/AAA/state/event-bridge/bridge.log 2>&1
+
+# P1: Drift scanner → event bridge (runs 1 min after scanner at 02:01)
+1 2 * * * /root/scripts/scanner-event.sh >> /root/AAA/state/event-bridge/bridge.log 2>&1
+
+# P2: Weekly federation digest (Sunday 22:00 MYT)
+0 14 * * 0 /root/scripts/weekly-digest.sh >> /root/AAA/state/event-bridge/bridge.log 2>&1
+0 */6 * * * /root/scripts/vault999-push-replica.sh
+
+# Hermes skill matrix index — regenerates the derived 3-axis coordinate index over
+# /root/.hermes/skills after any skill add/remove/update. Reader: tools/skills_tool.py.
+# Added 2026-09-15 (F13 'buat bagi habis'). Idempotent; safe to run any time.
+17 4,10,16,22 * * * /usr/bin/python3 /root/.hermes/scripts/skill-matrix.py >> /var/log/arifos/skill-matrix.log 2>&1
+
+# Dead-pointer sweep — every cited skill name must resolve to an artifact.
+# Weekly. Reference implementation for the class that hid `governed-uncertainty`.
+23 5 * * 1 /usr/bin/python3 /root/.hermes/scripts/dead-pointer-sweep.py >> /var/log/arifos/dead-pointers.log 2>&1
+# HERMES self-improvement METER — daily 21:10 MYT (forged 2026-09-16, F13 ASI push)
+10 21 * * * /root/scripts/selfimprove-meter-run.sh
+45 6 * * * /usr/bin/python3 /root/scripts/hermes_morning_state.py >> /root/.hermes/cron/state/morning_state/cron.log 2>&1 # [333-AGI 2026-09-16: HERMES Morning State v1 — Ring 1 informational, idempotent, PAUSE file honoured]
+23 4,10,16,22 * * * /usr/bin/python3 /root/scripts/skill-entropy-gate.py --quiet >> /var/log/arifos/skill-entropy.log 2>&1
+37 4,10,16,22 * * * /usr/bin/python3 /root/scripts/skills-census.py --write --quiet >> /var/log/arifos/skills-census.log 2>&1
+
+# HERMES residual-chaos sweep — skills / tools / MCPs / capabilities. 4x daily (F13 doctrine
+# 2026-09-16: "jadikan ia boleh gagal secara automatik"). Census first, then sweep; exit 1 = FAIL.
+40 4,10,16,22 * * * /usr/bin/python3 /root/scripts/mcp-health-census.py >> /var/log/arifos/mcp-health.log 2>&1; /usr/bin/python3 /root/scripts/hermes-chaos-sweep.py >> /var/log/arifos/hermes-chaos.log 2>&1
+17 4 * * * ARIFOS_TRACE_ID=trc-pending-reconcile /usr/bin/python3 /root/scripts/pending_reconcile.py --apply >> /root/work/pending_reconcile/cron.log 2>&1
+17 6 * * * /root/scripts/membrane-drift-check.sh >> /root/AAA/state/membrane_drift.log 2>&1

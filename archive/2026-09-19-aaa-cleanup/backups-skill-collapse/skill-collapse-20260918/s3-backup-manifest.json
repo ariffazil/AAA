@@ -1,0 +1,216 @@
+{
+ "stamp": "2026-09-17T17:45:13.313042+00:00",
+ "rule": "S3 collapse: one body, one address. Body in AAA (canonical write surface); the .hermes entry becomes a symlink (the read surface address).",
+ "pairs": [
+  {
+   "skill": "APEX-humility-godel",
+   "group": "HOLD_F13",
+   "aaa": "/root/AAA/skills/domains/general/apex/recursive-audit/APEX-humility-godel",
+   "herm": "/root/.hermes/skills/domains/general/apex/recursive-audit/APEX-humility-godel",
+   "aaa_sha": "c99bf5c763e88160",
+   "herm_sha": "34dedc46b9bde55c"
+  },
+  {
+   "skill": "FORGE-federation-manifest",
+   "group": "aaa_newer",
+   "aaa": "/root/AAA/skills/FORGE-federation-manifest",
+   "herm": "/root/.hermes/skills/FORGE-federation-manifest",
+   "aaa_sha": "dac21b8be7b0051d",
+   "herm_sha": "dcc71567894f22f2"
+  },
+  {
+   "skill": "companion-clis",
+   "group": "merge_union",
+   "aaa": "/root/AAA/skills/companion-clis",
+   "herm": "/root/.hermes/skills/companion-clis",
+   "aaa_sha": "cef4437253e8253f",
+   "herm_sha": "22c2107342e8c354"
+  },
+  {
+   "skill": "constitutional",
+   "group": "aaa_superset",
+   "aaa": "/root/AAA/skills/warga/constitutional",
+   "herm": "/root/.hermes/skills/warga/constitutional",
+   "aaa_sha": "4e3e582d5ad2714f",
+   "herm_sha": "e73caa69d459feb2"
+  },
+  {
+   "skill": "delta-omega-psi-multimodal-cognition",
+   "group": "aaa_superset",
+   "aaa": "/root/AAA/skills/delta-omega-psi-multimodal-cognition",
+   "herm": "/root/.hermes/skills/delta-omega-psi-multimodal-cognition",
+   "aaa_sha": "24ebc475dccaa775",
+   "herm_sha": "17c5f58624f993f4"
+  },
+  {
+   "skill": "docs",
+   "group": "aaa_superset",
+   "aaa": "/root/AAA/skills/docs",
+   "herm": "/root/.hermes/skills/docs",
+   "aaa_sha": "cbe0dd847995f813",
+   "herm_sha": "7124e8e0d03fee0b"
+  },
+  {
+   "skill": "federation-connect-headscale",
+   "group": "aaa_superset",
+   "aaa": "/root/AAA/skills/federation-connect-headscale",
+   "herm": "/root/.hermes/skills/federation-connect-headscale",
+   "aaa_sha": "ef275e0de7397dbf",
+   "herm_sha": "68eca6429f229eee"
+  },
+  {
+   "skill": "fi-mesh-check",
+   "group": "HOLD_F13",
+   "aaa": "/root/AAA/skills/fi-mesh-check",
+   "herm": "/root/.hermes/skills/fi-mesh-check",
+   "aaa_sha": "34718f0731babf2e",
+   "herm_sha": "852881734d939093"
+  },
+  {
+   "skill": "fi-qwen-upgrade",
+   "group": "aaa_superset",
+   "aaa": "/root/AAA/skills/fi-qwen-upgrade",
+   "herm": "/root/.hermes/skills/fi-qwen-upgrade",
+   "aaa_sha": "31af6a684789301e",
+   "herm_sha": "14f749efc9bce3d9"
+  },
+  {
+   "skill": "fi-zai-probe",
+   "group": "aaa_superset",
+   "aaa": "/root/AAA/skills/fi-zai-probe",
+   "herm": "/root/.hermes/skills/fi-zai-probe",
+   "aaa_sha": "e4a2a05afc1a184f",
+   "herm_sha": "da88748c278fbd8b"
+  },
+  {
+   "skill": "flash",
+   "group": "merge_union",
+   "aaa": "/root/AAA/skills/flash",
+   "herm": "/root/.hermes/skills/flash",
+   "aaa_sha": "3e5ad053e4af1165",
+   "herm_sha": "dbbda441a034167d"
+  },
+  {
+   "skill": "forge-vss-verifier-suite",
+   "group": "aaa_superset",
+   "aaa": "/root/AAA/skills/forge-vss-verifier-suite",
+   "herm": "/root/.hermes/skills/forge-vss-verifier-suite",
+   "aaa_sha": "3d53726bba60904a",
+   "herm_sha": "e3e29797a17f907f"
+  },
+  {
+   "skill": "hermes-gateway-image-routing",
+   "group": "aaa_superset",
+   "aaa": "/root/AAA/skills/hermes-gateway-image-routing",
+   "herm": "/root/.hermes/skills/hermes-gateway-image-routing",
+   "aaa_sha": "63499a11a349c825",
+   "herm_sha": "332eab75f75df866"
+  },
+  {
+   "skill": "identity-invariance",
+   "group": "aaa_superset",
+   "aaa": "/root/AAA/skills/warga/constitutional/identity-invariance",
+   "herm": "/root/.hermes/skills/warga/constitutional/identity-invariance",
+   "aaa_sha": "1d6503af744981b4",
+   "herm_sha": "97d6f837360d9181"
+  },
+  {
+   "skill": "imagine",
+   "group": "aaa_superset",
+   "aaa": "/root/AAA/skills/imagine",
+   "herm": "/root/.hermes/skills/imagine",
+   "aaa_sha": "1419604fbbf57f2b",
+   "herm_sha": "d8b2a74587c91b79"
+  },
+  {
+   "skill": "minimax-image-gen",
+   "group": "aaa_newer",
+   "aaa": "/root/AAA/skills/minimax-image-gen",
+   "herm": "/root/.hermes/skills/minimax-image-gen",
+   "aaa_sha": "44f0de2763486dce",
+   "herm_sha": "b1de5d9fc1912731"
+  },
+  {
+   "skill": "openclaw",
+   "group": "aaa_superset",
+   "aaa": "/root/AAA/skills/openclaw",
+   "herm": "/root/.hermes/skills/openclaw",
+   "aaa_sha": "5abb76ae8f7967d4",
+   "herm_sha": "d86a0ef987ec5d6f"
+  },
+  {
+   "skill": "qwen-harness-tools",
+   "group": "aaa_superset",
+   "aaa": "/root/AAA/skills/qwen-harness-tools",
+   "herm": "/root/.hermes/skills/qwen-harness-tools",
+   "aaa_sha": "0da78f2e6d57ccb3",
+   "herm_sha": "20c64d3917d340d4"
+  },
+  {
+   "skill": "reality-loop-operator",
+   "group": "aaa_superset",
+   "aaa": "/root/AAA/skills/reality-loop-operator",
+   "herm": "/root/.hermes/skills/reality-loop-operator",
+   "aaa_sha": "ded9f02ad213840b",
+   "herm_sha": "e984d3b0db16f24a"
+  },
+  {
+   "skill": "runpod",
+   "group": "merge_union",
+   "aaa": "/root/AAA/skills/runpod",
+   "herm": "/root/.hermes/skills/runpod",
+   "aaa_sha": "d0289b1b0c98f2e6",
+   "herm_sha": "e0d8770117c70c8a"
+  },
+  {
+   "skill": "runpod-mcp",
+   "group": "merge_union",
+   "aaa": "/root/AAA/skills/runpod-mcp",
+   "herm": "/root/.hermes/skills/runpod-mcp",
+   "aaa_sha": "b6cd7fb52dd7af76",
+   "herm_sha": "8afa04afb7fcc18b"
+  },
+  {
+   "skill": "runpod-usage",
+   "group": "merge_union",
+   "aaa": "/root/AAA/skills/runpod-usage",
+   "herm": "/root/.hermes/skills/runpod-usage",
+   "aaa_sha": "f1992851556c610b",
+   "herm_sha": "07008e8ba9b9400c"
+  },
+  {
+   "skill": "runpodctl",
+   "group": "merge_union",
+   "aaa": "/root/AAA/skills/runpodctl",
+   "herm": "/root/.hermes/skills/runpodctl",
+   "aaa_sha": "f0a6f15c493c0b5a",
+   "herm_sha": "7b61344c7fd9b07c"
+  },
+  {
+   "skill": "runtime",
+   "group": "aaa_superset",
+   "aaa": "/root/AAA/skills/runtime",
+   "herm": "/root/.hermes/skills/runtime",
+   "aaa_sha": "b3ccdd5b138f0122",
+   "herm_sha": "f646b772f54c86c5"
+  },
+  {
+   "skill": "substrate",
+   "group": "aaa_superset",
+   "aaa": "/root/AAA/skills/substrate",
+   "herm": "/root/.hermes/skills/substrate",
+   "aaa_sha": "bb7907d02a57f074",
+   "herm_sha": "f24141e73e5d26e9"
+  },
+  {
+   "skill": "warga",
+   "group": "aaa_superset",
+   "aaa": "/root/AAA/skills/warga",
+   "herm": "/root/.hermes/skills/warga",
+   "aaa_sha": "0c44966914fe2cac",
+   "herm_sha": "1b6db143e96dd61f"
+  }
+ ],
+ "held": [],
+ "mutation_applied": false
+}

@@ -1,0 +1,43 @@
+{
+ "stamp": "2026-09-17T17:46:45.189258+00:00",
+ "note": "substrate-core bodies moved to the registry-declared path; top-level entries are addresses",
+ "fixed": [
+  {
+   "name": "audit-seal",
+   "body": "/root/AAA/skills/substrate/audit-seal",
+   "address": "/root/AAA/skills/audit-seal",
+   "sha": "101c3e395be13c98"
+  },
+  {
+   "name": "kernel-bind",
+   "body": "/root/AAA/skills/substrate/kernel-bind",
+   "address": "/root/AAA/skills/kernel-bind",
+   "sha": "855e76fbe6791142"
+  },
+  {
+   "name": "memory-manage",
+   "body": "/root/AAA/skills/substrate/memory-manage",
+   "address": "/root/AAA/skills/memory-manage",
+   "sha": "b6e5dac8bea1b2df"
+  },
+  {
+   "name": "observe-ground",
+   "body": "/root/AAA/skills/substrate/observe-ground",
+   "address": "/root/AAA/skills/observe-ground",
+   "sha": "004eeef99a806c99"
+  },
+  {
+   "name": "route-dispatch",
+   "body": "/root/AAA/skills/substrate/route-dispatch",
+   "address": "/root/AAA/skills/route-dispatch",
+   "sha": "cf1d8a84578bae13"
+  },
+  {
+   "name": "verify-gate",
+   "body": "/root/AAA/skills/substrate/verify-gate",
+   "address": "/root/AAA/skills/verify-gate",
+   "sha": "7f89be60dfa95dd1"
+  }
+ ],
+ "loadable": 445
+}

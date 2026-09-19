@@ -1,0 +1,339 @@
+{
+ "stamp": "2026-09-17T17:46:05.323055+00:00",
+ "rule": "AAA holds the body; every other surface holds an address",
+ "done": [
+  {
+   "name": "aaa-audio-qualia-doctrine",
+   "action": "REPATRIATED",
+   "kind": "PROFILE",
+   "aaa": "/root/AAA/skills/aaa-audio-qualia-doctrine",
+   "was": "/root/.hermes/profiles/aaa-hermes/skills/AAA-audio-qualia-doctrine",
+   "body_sha": "bd477016dd49b03b",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "aaa-ocr-optical-compression",
+   "action": "REPATRIATED",
+   "kind": "PROFILE",
+   "aaa": "/root/AAA/skills/aaa-ocr-optical-compression",
+   "was": "/root/.hermes/profiles/aaa-hermes/skills/AAA-OCR-optical-compression",
+   "body_sha": "c306617612e7c3f0",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "aaa-pdf-voice-protocol",
+   "action": "REPATRIATED",
+   "kind": "PROFILE",
+   "aaa": "/root/AAA/skills/aaa-pdf-voice-protocol",
+   "was": "/root/.hermes/profiles/aaa-hermes/skills/aaa-pdf-voice-protocol",
+   "body_sha": "5f3d02096e50a93d",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "agi-multimodal-bridge",
+   "action": "REPATRIATED",
+   "kind": "PROFILE",
+   "aaa": "/root/AAA/skills/agi-multimodal-bridge",
+   "was": "/root/.hermes/profiles/aaa-hermes/skills/AGI-multimodal-bridge",
+   "body_sha": "924fcbc12ac7ac1b",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "agi-plan-dag",
+   "action": "REPATRIATED",
+   "kind": "PROFILE",
+   "aaa": "/root/AAA/skills/agi-plan-dag",
+   "was": "/root/.hermes/profiles/aaa-hermes/skills/AGI-plan-dag",
+   "body_sha": "492b1b1eddb68684",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "arifos-constitutional-judge",
+   "action": "REPATRIATED",
+   "kind": "PROFILE",
+   "aaa": "/root/AAA/skills/arifos-constitutional-judge",
+   "was": "/root/.hermes/profiles/aaa-hermes/skills/arifos-constitutional-judge",
+   "body_sha": "0eb3d68ced32e572",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "arifos-external-council",
+   "action": "REPATRIATED",
+   "kind": "PROFILE",
+   "aaa": "/root/AAA/skills/arifos-external-council",
+   "was": "/root/.hermes/profiles/aaa-hermes/skills/arifos-external-council",
+   "body_sha": "d949aaa99a92ecd7",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "arifos-kernel-zen-audit",
+   "action": "REPATRIATED",
+   "kind": "PROFILE",
+   "aaa": "/root/AAA/skills/arifos-kernel-zen-audit",
+   "was": "/root/.hermes/profiles/aaa-hermes/skills/arifos-kernel-zen-audit",
+   "body_sha": "d26d39ce093313d0",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "causal555-pywhy",
+   "action": "REPATRIATED",
+   "kind": "HERMES",
+   "aaa": "/root/AAA/skills/causal555-pywhy",
+   "was": "/root/.hermes/skills/causal555-pywhy",
+   "body_sha": "1c0e8037a3dc1377",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "cognitive-commands",
+   "action": "REPATRIATED",
+   "kind": "HERMES",
+   "aaa": "/root/AAA/skills/cognitive-commands",
+   "was": "/root/.hermes/skills/cognitive-commands",
+   "body_sha": "379958922d01e7f1",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "external-artifact-verdict",
+   "action": "REPATRIATED",
+   "kind": "HERMES",
+   "aaa": "/root/AAA/skills/external-artifact-verdict",
+   "was": "/root/.hermes/skills/external-artifact-verdict",
+   "body_sha": "486c24711dfbb3eb",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "federation-release-attestation",
+   "action": "REPATRIATED",
+   "kind": "HERMES",
+   "aaa": "/root/AAA/skills/federation-release-attestation",
+   "was": "/root/.hermes/skills/federation-release-attestation",
+   "body_sha": "c426936d970c1f2d",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "forge-cross-agent-handoff",
+   "action": "REPATRIATED",
+   "kind": "PROFILE",
+   "aaa": "/root/AAA/skills/forge-cross-agent-handoff",
+   "was": "/root/.hermes/profiles/aaa-hermes/skills/FORGE-cross-agent-handoff",
+   "body_sha": "dad5a1f7d6c55b00",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "forge-cross-repo-doc-zen",
+   "action": "REPATRIATED",
+   "kind": "HERMES",
+   "aaa": "/root/AAA/skills/forge-cross-repo-doc-zen",
+   "was": "/root/.hermes/skills/FORGE-cross-repo-doc-zen",
+   "body_sha": "d250bc3790e0b793",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "forge-ephemeral-genesis",
+   "action": "REPATRIATED",
+   "kind": "HERMES",
+   "aaa": "/root/AAA/skills/forge-ephemeral-genesis",
+   "was": "/root/.hermes/skills/FORGE-ephemeral-genesis",
+   "body_sha": "1693b6a57f97b899",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "forge-issue-triage",
+   "action": "REPATRIATED",
+   "kind": "HERMES",
+   "aaa": "/root/AAA/skills/forge-issue-triage",
+   "was": "/root/.hermes/skills/FORGE-issue-triage",
+   "body_sha": "c25234853a6f3b1b",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "forge-lsp-pre-edit-gate",
+   "action": "REPATRIATED",
+   "kind": "HERMES",
+   "aaa": "/root/AAA/skills/forge-lsp-pre-edit-gate",
+   "was": "/root/.hermes/skills/FORGE-lsp-pre-edit-gate",
+   "body_sha": "82499a1e70f9a404",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "forge-seal-a-close",
+   "action": "REPATRIATED",
+   "kind": "HERMES",
+   "aaa": "/root/AAA/skills/forge-seal-a-close",
+   "was": "/root/.hermes/skills/FORGE-seal-a-close",
+   "body_sha": "2fde4561628a3da0",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "forge-subagent-lifecycle",
+   "action": "REPATRIATED",
+   "kind": "HERMES",
+   "aaa": "/root/AAA/skills/forge-subagent-lifecycle",
+   "was": "/root/.hermes/skills/domains/general/aaa/subagent/FORGE-subagent-lifecycle",
+   "body_sha": "4dcc13f46d129652",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "forge-subagent-spawn",
+   "action": "REPATRIATED",
+   "kind": "HERMES",
+   "aaa": "/root/AAA/skills/forge-subagent-spawn",
+   "was": "/root/.hermes/skills/FORGE-subagent-spawn",
+   "body_sha": "1b6000431bc2b25f",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "forge-t3a-binding-matrix",
+   "action": "REPATRIATED",
+   "kind": "HERMES",
+   "aaa": "/root/AAA/skills/forge-t3a-binding-matrix",
+   "was": "/root/.hermes/skills/FORGE-t3a-binding-matrix",
+   "body_sha": "c6a24c6e46536917",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "forge-vault999-witness",
+   "action": "REPATRIATED",
+   "kind": "HERMES",
+   "aaa": "/root/AAA/skills/forge-vault999-witness",
+   "was": "/root/.hermes/skills/FORGE-vault999-witness",
+   "body_sha": "c728d5926becd42a",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "forge-well-boundary-repair",
+   "action": "REPATRIATED",
+   "kind": "PROFILE",
+   "aaa": "/root/AAA/skills/forge-well-boundary-repair",
+   "was": "/root/.hermes/profiles/aaa-hermes/skills/FORGE-well-boundary-repair",
+   "body_sha": "2c4a29f54631ee70",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "help",
+   "action": "REPATRIATED",
+   "kind": "HERMES",
+   "aaa": "/root/AAA/skills/help",
+   "was": "/root/.hermes/skills/help",
+   "body_sha": "a87267729d4e83bf",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "submission-readiness-audit",
+   "action": "REPATRIATED",
+   "kind": "HERMES",
+   "aaa": "/root/AAA/skills/submission-readiness-audit",
+   "was": "/root/.hermes/skills/submission-readiness-audit",
+   "body_sha": "b3340f76b2e06bbc",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "token-plan-image",
+   "action": "REPATRIATED",
+   "kind": "PROFILE",
+   "aaa": "/root/AAA/skills/token-plan-image",
+   "was": "/root/.hermes/profiles/aaa-hermes/skills/token-plan-image",
+   "body_sha": "4e4cc4a60a3a6617",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "understand",
+   "action": "REPATRIATED",
+   "kind": "VENDOR",
+   "aaa": "/root/AAA/skills/understand",
+   "was": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand",
+   "body_sha": "1f6acd37e1501c3a",
+   "other_surface": "vendor left untouched (third-party)"
+  },
+  {
+   "name": "understand-chat",
+   "action": "REPATRIATED",
+   "kind": "VENDOR",
+   "aaa": "/root/AAA/skills/understand-chat",
+   "was": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand-chat",
+   "body_sha": "5f1da70e0849ec2f",
+   "other_surface": "vendor left untouched (third-party)"
+  },
+  {
+   "name": "understand-dashboard",
+   "action": "REPATRIATED",
+   "kind": "VENDOR",
+   "aaa": "/root/AAA/skills/understand-dashboard",
+   "was": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand-dashboard",
+   "body_sha": "d12cb059d8e61398",
+   "other_surface": "vendor left untouched (third-party)"
+  },
+  {
+   "name": "understand-diff",
+   "action": "REPATRIATED",
+   "kind": "VENDOR",
+   "aaa": "/root/AAA/skills/understand-diff",
+   "was": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand-diff",
+   "body_sha": "fc8dc1b216ee1a48",
+   "other_surface": "vendor left untouched (third-party)"
+  },
+  {
+   "name": "understand-domain",
+   "action": "REPATRIATED",
+   "kind": "VENDOR",
+   "aaa": "/root/AAA/skills/understand-domain",
+   "was": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand-domain",
+   "body_sha": "b2c98c18b579856a",
+   "other_surface": "vendor left untouched (third-party)"
+  },
+  {
+   "name": "understand-explain",
+   "action": "REPATRIATED",
+   "kind": "VENDOR",
+   "aaa": "/root/AAA/skills/understand-explain",
+   "was": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand-explain",
+   "body_sha": "661389c81c9133e6",
+   "other_surface": "vendor left untouched (third-party)"
+  },
+  {
+   "name": "understand-figma",
+   "action": "REPATRIATED",
+   "kind": "VENDOR",
+   "aaa": "/root/AAA/skills/understand-figma",
+   "was": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand-figma",
+   "body_sha": "b8f76ffb75250a26",
+   "other_surface": "vendor left untouched (third-party)"
+  },
+  {
+   "name": "understand-knowledge",
+   "action": "REPATRIATED",
+   "kind": "VENDOR",
+   "aaa": "/root/AAA/skills/understand-knowledge",
+   "was": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand-knowledge",
+   "body_sha": "e2b225a82d0fc59a",
+   "other_surface": "vendor left untouched (third-party)"
+  },
+  {
+   "name": "understand-onboard",
+   "action": "REPATRIATED",
+   "kind": "VENDOR",
+   "aaa": "/root/AAA/skills/understand-onboard",
+   "was": "/root/.understand-anything/repo/understand-anything-plugin/skills/understand-onboard",
+   "body_sha": "e5be45248859ca82",
+   "other_surface": "vendor left untouched (third-party)"
+  },
+  {
+   "name": "wealth-claim-state",
+   "action": "REPATRIATED",
+   "kind": "PROFILE",
+   "aaa": "/root/AAA/skills/wealth-claim-state",
+   "was": "/root/.hermes/profiles/aaa-hermes/skills/wealth-claim-state",
+   "body_sha": "40c25878e8351358",
+   "other_surface": "other surface now an address -> AAA"
+  },
+  {
+   "name": "wisdom-scar-session-audit",
+   "action": "REPATRIATED",
+   "kind": "HERMES",
+   "aaa": "/root/AAA/skills/wisdom-scar-session-audit",
+   "was": "/root/.hermes/skills/wisdom-scar-session-audit",
+   "body_sha": "986c8b787138c97c",
+   "other_surface": "other surface now an address -> AAA"
+  }
+ ]
+}
