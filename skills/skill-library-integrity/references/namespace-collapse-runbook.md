@@ -14,7 +14,7 @@ Group three ways and act on the family. A family you have not named is a family 
 - **declared identity** — the frontmatter `id:` field (distinct from `name:`, the routing field)
 - **case-insensitive folder name** — case is not doctrine; two bodies is two bodies
 
-## The six defect classes and the one correct remedy each
+## The eight defect classes and the one correct remedy each
 
 | Class | Looks like | Remedy |
 |---|---|---|
@@ -25,6 +25,12 @@ Group three ways and act on the family. A family you have not named is a family 
 | archive-still-loading | an `.archive*` directory inside the walked tree | an archive inside the walk is not an archive; move it out |
 | incident fossil | a skill whose whole purpose is one dated event | extract the heuristic into the lane's playbook, freeze the incident |
 | contradicting twin | two independent write-ups of ONE procedure that have drifted into disagreeing, where one instruction cannot execute at all | merge the identity AND correct the instruction in the same pass — see §8 |
+| mode-router umbrella | a thin body whose stated modes are EACH already owned by a live skill; it carries provenance and a routing table, not a procedure | retire it, after re-pointing every surface that names it — see §9 |
+
+A **mode-router umbrella** is the one class where the body itself looks reasonable and the defect is
+structural: every mode resolves to an owner, so the router adds a hop and a stale copy of the routing
+map. Detect it by writing each mode's owning skill name beside it and checking that skill really owns
+that mode — if all of them do, the router is an identity wearing a capability's clothes.
 
 ## 1. Reconnaissance — measure before you cut
 
@@ -203,3 +209,41 @@ How to detect it, since file comparison will not:
 Symptom that points here: a family of "same capability" bodies whose SHARED content is nearly zero
 (measure it: shared non-trivial lines / union). Zero overlap with an identical purpose means two people
 solved the same problem separately and neither read the other's answer.
+
+## 9. Sweep the CLASS, and orchestrate the sweep without racing yourself
+
+**A wrong instruction is rarely confined to the file where you found it.** A defect that is a *pattern*
+(a stale target, a mislabelled surface, an inverted SOT claim) was almost certainly copied forward by
+whoever wrote the second skill. Measured: one inverted-ledger instruction existed in three separate
+skills, and repairing the two named in the audit left the third — the one that actually owned the write
+path — still teaching the impossible action. After fixing any instance, grep the whole store for the
+pattern (`grep -rn '<the wrong target>' --include=*.md <store>`), classify each hit as instruction vs
+history, and fix the instructions. Repair the dependents, not the detector: when a path or claim is
+corrected, the consumers of that claim are part of the same defect.
+
+**Separate the two kinds of stale reference before repairing either.** A dead path inside a dated
+`references/<session>.md` is a RECEIPT — evidence of what happened, and it is allowed to point at
+something that has since moved. A dead path in `SKILL.md` is an INSTRUCTION — the agent will try to
+follow it. Only the second is a defect; repairing the first destroys provenance.
+
+**Three states, not two.** A target under a locked tree is not automatically unusable: a sanctioned lane
+may clear the attribute for one operation and restore it. So classify each reference as *executes*,
+*needs a sanctioned lane* (state the lane — the defect is the omission), or *cannot execute* (repair it).
+An impossible instruction wastes action forever; an incomplete one wastes one attempt and then teaches
+the lane.
+
+**Orchestration — the parent's own mistakes cost more than a child's.** When the collapse is delegated:
+
+1. **Do not stage or commit while a child is still writing in the same worktree.** `git add <dir>` picks
+   up a sibling's half-written file and the history records it as a finished deliverable. Stage explicit
+   paths only, and wait for the batch to report before committing anything they touched.
+2. **The parent's sweep runs LAST.** Children retire bodies; every retirement leaves dangling view
+   symlinks in the mirror trees. A sweep run while children are still working is stale before it finishes,
+   and the next census reports the parent's own in-flight work as a defect.
+3. **Re-run the measurement after every child returns, not once at the end.** A count of broken links
+   read 24, then 18, then 0 inside one day as repairs landed — each reading was true when taken and wrong
+   minutes later. Report the state and its trajectory ("0 now; 24 this morning; expected during a merge,
+   repaired same day") rather than a single frozen sample, and never quote an earlier sample as current.
+4. **Children find defects outside their slice and leave them, correctly.** Harvest those reports and
+   assign them — an out-of-scope finding is usually the same class as the one they were sent to fix, and
+   it is the cheapest instance to repair because the pattern is already loaded.
