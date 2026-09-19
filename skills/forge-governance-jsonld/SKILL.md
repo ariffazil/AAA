@@ -25,7 +25,11 @@ Generate and maintain `/.well-known/governance.jsonld` — machine-readable cons
 ## When NOT to Use
 - DID identity — use `did-web-identity`
 - Federation topology — use `federation-manifest`
-- Human-readable governance docs — write to /root/AAA/governance/
+- Human-readable governance docs — those live in `/root/AAA/governance/`, which is **immutable**
+  (the directory carries the immutable attribute, so creating a new file there returns `EPERM`, and
+  existing files inside carry it too). Writing there is not a plain file write: it goes through the
+  canon-mutate lane, which clears the attribute for one sanctioned operation and sets it again.
+  `aaa-doctrine-sealing` documents that lane. Never clear the attribute by hand.
 
 ## Constitutional Floor Alignment
 
