@@ -125,6 +125,13 @@ authority that owns the library, together with the reason.
   before retiring the sources; a merge that loses a trigger silently removes a capability from discovery.
 - Carry the payload: keep every checklist item, metric formula, probe, red flag and refusal case. A body
   absorbed without its content is a content loss hiding inside a structural repair.
+- **Decide "lost content" by CONCEPT, not by LINE.** A line diff (`diff old new | grep '^<'`) is not
+  content-loss proof: a consolidation rewrites a rule in fewer words, moves it into another section, or
+  merges two clauses into one, so a rule that is fully present reads as deleted because its *sentence*
+  changed. Before re-adding anything a diff appears to have dropped, grep the NEW body for the
+  distinguishing noun phrase of the rule — the heuristic's name, the threshold, the field name — not the
+  old sentence. Acting on the diff alone re-adds content that already exists, bloat the survivor, and
+  re-introduces the very duplication the merge removed.
 - Freeze the sources with their own ledger; never delete in the same pass.
 - Verify: merged file exists and is larger than any single source, all sources gone from the walk, all
   sources present in the freeze tree, the ledger parses.
