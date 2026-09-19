@@ -1,0 +1,252 @@
+{
+  "items": [
+    {
+      "item_id": "brent-hormuz-price",
+      "section": "SITUATION",
+      "claim_state": "MOVED",
+      "title": "Brent fell three sessions running to USD 103.21 while Aramco cancelled European cargoes",
+      "summary": "Brent settled at USD 103.21 on 18 September, a third consecutive daily fall, down 1.2 per cent on the week but still up 12.7 per cent on the month and 54.8 per cent on the year. The fall prices the Hormuz reroute, not a repair: satellite tracking shows 2.8 million barrels a day moving back through Hormuz over six days against 700,000 a day in August. The physical side reads the other way - Aramco has cancelled or delayed European crude cargoes and Yanbu stock covers three to five days of loadings. Correction to Edition 003, which printed 104.16 against 18 September: the same source now reads 103.21 for 18 September and 104.82 for 17 September, so the settled figure stands.",
+      "source": "Trading Economics Brent page, 18 September 2026 (actual 103.21, previous 104.82). Anti-thesis search run: 'Yanbu pipeline repair weeks diesel shortage Europe refinery runs cut September 2026' - it returns Aramco cancelling European cargoes and a trade reading of no crude for Europe until November, i.e. the cheap-side thesis is NOT clean. Kpler, 17 September 2026; OilPrice.com on the cargo cancellations."
+    },
+    {
+      "item_id": "yanbu-pipeline-outage",
+      "section": "SITUATION",
+      "claim_state": "NEW",
+      "title": "The attack took the pumping stations, not the pipe",
+      "summary": "The 10 September drone strike disabled multiple pumping stations along the 1,200 km East-West pipeline that carries Saudi crude from Abqaiq to Yanbu and around Hormuz. The pipe is largely intact; the stations are the constraint. West-coast refineries are cutting throughput onto inventory, diesel into Europe is the tight product, and tanker freight has risen across the route. The question is whether Aramco restores half of the flows as it says it can, or whether the stations take longer than the pipe ever would.",
+      "source": "Kpler market note, 17 September 2026 - https://www.kpler.com/blog/yanbu-pipeline-attack-ripples-across-crude-freight-and-gas-markets ; Euronews, 17 September 2026"
+    },
+    {
+      "item_id": "houthi-mocha-seizure",
+      "section": "SITUATION",
+      "claim_state": "NEW",
+      "title": "The Houthis took Mocha, and now sit beside Bab el-Mandeb",
+      "summary": "Houthi forces seized the Red Sea port city of Mocha on 10 September in their most serious push along Yemen's coast in years, putting them roughly 80 km from Bab el-Mandeb. Both chokepoints on the Gulf-to-Europe route - Hormuz and Bab el-Mandeb - are now contested at the same time, which is why the answer to the first one is not simply a cheaper route. For anything priced off delivered barrels rather than wellhead barrels, this is the part of the story that never appears in the Brent number.",
+      "source": "Guardian, Al Jazeera, NPR, The National, 10-11 September 2026"
+    },
+    {
+      "item_id": "petronas-estuary-mutiara",
+      "section": "SITUATION",
+      "claim_state": "NEW",
+      "title": "Two more Malaysian clusters went to partners this month",
+      "summary": "On 11 September PETRONAS, through Malaysia Petroleum Management, awarded the Small Field Asset PSC for the Estuary Cluster to Harvester Energy and handed DIALOG Resources an enhanced 3D seismic dataset for the Mutiara Cluster offshore Borneo. Both are marginal and stranded resource plays. Read beside the Block A-18-01 award three days later, the pattern across one week is that PETRONAS keeps the subsurface data and hands the development risk to asset-light partners.",
+      "source": "PETRONAS media release, 11 September 2026 - https://www.petronas.com/media/media-releases/petronas-progresses-malaysias-upstream-development-estuary-cluster-psc-award ; Rigzone 15 September 2026; NST 10 September 2026"
+    },
+    {
+      "item_id": "petronas-sea-metec",
+      "section": "SITUATION",
+      "claim_state": "NEW",
+      "title": "A methane measurement centre for Southeast Asia, opened with TotalEnergies",
+      "summary": "On 15 September PETRONAS and partners advanced SEA METEC, described as the first centre of its kind in the region, covering methane measurement, monitoring, reporting, verification and capability building. Methane intensity is the number that decides whether Malaysian gas keeps its place on European and Japanese buyer lists that now ask for measured figures rather than pledges. Instrumentation outlasts targets, which is why this matters more than the announcement size suggests.",
+      "source": "PETRONAS media release, 15 September 2026; Rigzone, 15 September 2026 - https://www.rigzone.com/news/petronas_totalenergies_partner_to_support_methane_monitoring_in_se_asia-15-sep-2026-184618-article"
+    },
+    {
+      "item_id": "petronas-metlen-lng",
+      "section": "SITUATION",
+      "claim_state": "NEW",
+      "title": "PETRONAS signed a long-term LNG sale into Greece",
+      "summary": "On 14 September METLEN and PETRONAS, through PETCO Trading (UK) Limited, signed a sale and purchase agreement for long-term LNG supply to Greece at six cargoes a year, aimed at Southeast Europe. The commercial answer to a contested sea lane is a longer contract with a buyer who needs the molecule regardless of the route. It also puts Malaysian volume into the one European market whose alternative supplier is the party whose pipeline is currently down.",
+      "source": "PRNewswire, 14 September 2026 - https://www.prnewswire.com/news-releases/metlen-and-petronas-enter-into-lng-supply-agreement-to-strengthen-energy-security-and-diversification-in-southeast-europe-302877474.html"
+    },
+    {
+      "item_id": "carbon-tax-delay",
+      "section": "SITUATION",
+      "claim_state": "NEW",
+      "title": "The carbon tax is delayed and the energy sector has no compliance date",
+      "summary": "The rollout of the carbon tax, originally aimed at iron, steel and energy, has been pushed back pending review against Middle East uncertainty and global energy costs, on the environment minister's own statement. The practical effect is that the first compliance obligation for the sector has no date, and therefore no announced measurement methodology either. Budget 2027 on 9 October is the next point at which a date could be named.",
+      "source": "The Straits Times, Malaysia carbon tax delayed due to Middle East uncertainties (minister Arthur Joseph Kurup) - https://www.straitstimes.com/asia/se-asia/malaysias-carbon-tax-delayed-due-to-middle-east-uncertainties-minister ; PwC Malaysia commentary, 2026"
+    },
+    {
+      "item_id": "budget-2027-tabling",
+      "section": "SITUATION",
+      "claim_state": "OPEN",
+      "title": "Budget 2027 tabled in Parliament, 9 October 2026",
+      "summary": "Twenty days from this edition. The petroleum dividend line and the fuel subsidy line become checkable that day, and the pre-budget statement of 18 August set ten consultation focus areas without a single number attached to them. This is also the date the petroleum revenue projection below either acquires a source or does not.",
+      "source": "Ministry of Finance pre-budget statement - https://www.mof.gov.my/portal/en/news/press-release/pre-budget-statement-2027"
+    },
+    {
+      "item_id": "petronas-pda-petition-scope",
+      "section": "SITUATION",
+      "claim_state": "NEW",
+      "title": "The exact list of Sarawak laws PETRONAS is asking the Federal Court to strike down",
+      "summary": "PETRONAS petition BKA-1-01-2026(W) is not a general challenge. It names Sarawak's Environment (Reduction of Greenhouse Gases Emission) Ordinance 2023, the Sarawak Land (Carbon Storage) Rules 2022, sections 7, 7A and 8 of the Distribution of Gas Ordinance 2016, the Oil Mining Ordinance 1958, and the 1954 boundary order that pulls the continental shelf into the definition of State land. Leave was granted on 16 March 2026 and the judgment recorded on 30 April 2026. Carbon storage regulation sits inside the scope, which is the part that touches the CCS chain directly.",
+      "source": "[2026] 4 MLRA 491, Federal Court, Hashim Hamzah CJM, Motion No BKA-1-01-2026(W) - https://www.elaw.my/JE/01/JE_2026_20.html"
+    },
+    {
+      "item_id": "petros-lng-jurisdiction",
+      "section": "SITUATION",
+      "claim_state": "CONTESTED",
+      "title": "Whether LNG exported from Bintulu falls under PETROS or stays with PETRONAS",
+      "summary": "Still no document in the public record defines the boundary for the export molecule specifically. The commercial question cannot settle before the constitutional one does, and the constitutional one has leave granted with no hearing date. Unchanged from Editions 001, 002 and 003.",
+      "source": "Federal Court leave granted 16 March 2026; Sarawak petition filed 23 February 2026. No further primary document located this edition."
+    },
+    {
+      "item_id": "fed-hike-2026-09",
+      "section": "SITUATION",
+      "claim_state": "NEW",
+      "title": "The Fed raised rates on 16 September - first hike since 2023, and the market took it",
+      "summary": "The target range moved to 3.75-4.00 per cent on a 12-0 vote, with the committee naming oil-driven inflation in the statement itself. Projections show another hike possible this year, none pencilled in for 2027, headline PCE at 3.7 per cent and unemployment at 4.1 per cent. The week closed with the S&P 500 and the Nasdaq advancing, so the hike was absorbed rather than repriced. The ringgit and the oil price are still pulling on the same side of the ledger.",
+      "source": "CNBC, 16 September 2026 - https://www.cnbc.com/2026/09/16/fed-rate-decision-september-2026.html ; FOMC statement same date; FMT market close, 18 September 2026"
+    },
+    {
+      "item_id": "petronas-carigali-mtjda-a18-01",
+      "section": "SITUATION",
+      "claim_state": "NEW",
+      "title": "Carigali's new 35-year PSC for Block A-18-01, approved on 14 September",
+      "summary": "PC JDA, a wholly owned subsidiary of PETRONAS Carigali, and PTTEP JDX received Malaysian and Thai approval for a new PSC covering the existing Block A-18 plus an adjacent exploration area. The 35-year term runs from 1 January 2026 - before the current PSC expires on 20 April 2029 - and a Gas Sales Agreement was signed the same day. The joint development area covers 7,250 square kilometres across Blocks A-18-01 and B-17-01, at about 700 million standard cubic feet a day split equally between the two countries.",
+      "source": "PETRONAS statement 14 September 2026, via The Star - https://www.thestar.com.my/business/business-news/2026/09/14/petronas-carigali-partners-secure-new-psc-for-mtjda-block-a-18-01"
+    },
+    {
+      "item_id": "petronas-1h2026-results",
+      "section": "SITUATION",
+      "claim_state": "NEW",
+      "title": "PETRONAS 1H 2026: revenue up 15 per cent, production down 61 thousand boe a day",
+      "summary": "Revenue came in at RM152.4 billion, up RM19.8 billion, with profit after tax of RM27.2 billion and capex of RM41.4 billion - the capex inflated by the additional injection into PRefChem. Upstream output fell to 2,341 thousand barrels of oil equivalent a day from 2,402, which the company attributes to planned portfolio optimisation, asset transitions and the West Asia conflict. Twenty-five Final Investment Decisions were taken and seven projects delivered first hydrocarbons; the Searah joint venture with ENI took effect on 1 June 2026 across 19 assets at about 500 thousand boe a day.",
+      "source": "PETRONAS media release, 28 August 2026 - https://www.petronas.com/media/media-releases/petronas-posts-resilient-half-year-results-remains-steadfast-safeguarding"
+    },
+    {
+      "item_id": "coal-generation-cost",
+      "section": "RISK",
+      "claim_state": "NEW",
+      "title": "Coal is at USD 148 a tonne and the minister has now tied it to the electricity bill",
+      "summary": "Coal traded at USD 144.65 on 17 September after reaching USD 148 a tonne on 10 September. On 18 September the Economy Minister, Akmal Nasrullah Mohd Nasir, said the increase will directly affect the cost of electricity generation. Coal and gas together are about 90 per cent of Peninsular Malaysia's generation fuel. This is the input that decides whether the 1 January reversion of the household threshold from 800 to 600 kWh arrives with a tariff move attached.",
+      "source": "Trading Economics coal (USD 144.65, 17 September 2026); Malay Mail, 18 September 2026, on the Economy Minister's statement"
+    },
+    {
+      "item_id": "petrol-price-band-sept-2026",
+      "section": "RISK",
+      "claim_state": "NEW",
+      "title": "Pump prices up 35 sen for 17-23 September while the subsidised grade is held",
+      "summary": "RON97 moved to RM4.85, unsubsidised RON95 to RM4.37 and unsubsidised diesel to RM5.27 for the 17-23 September week, while subsidised RON95 stays at RM1.99 and BUDI diesel at RM2.10. The gap between RM4.37 and RM1.99 is the size of the position the government is carrying at these oil prices, and the Ministry of Finance attributes the move to global prices. The band runs to 23 September, so the next schedule lands midweek and is the first one set against a falling Brent rather than a rising one.",
+      "source": "Ministry of Finance weekly automatic pricing mechanism schedule, 16 September 2026 - https://mediaselangor.com/en/2026/09/396071"
+    },
+    {
+      "item_id": "electricity-threshold-reversion",
+      "section": "RISK",
+      "claim_state": "OPEN",
+      "title": "Electricity protection threshold reverts 800 to 600 kWh on 1 January 2027",
+      "summary": "The widened band is formally dated from the government side: 800 kWh a month for domestic users, with the automatic fuel adjustment, retail charge and service tax suspended, applying to usage from September to 31 December 2026 and worth up to RM47 a month. It ends on 31 December and the baseline underneath it is 600 kWh. One hundred and four days from this edition, and December's consumption is the last one still covered.",
+      "source": "Prime Minister's announcement, 17 September 2026 - https://www.nst.com.my/news/nation/2026/09/1534928/updated-electricity-subsidy-threshold-expanded-households-using-800kwh"
+    },
+    {
+      "item_id": "fc-hearing-date",
+      "section": "WALL",
+      "claim_state": "OPEN",
+      "title": "Federal Court full hearing date on the PDA 1974 challenge - STILL UNRESOLVED",
+      "summary": "Leave was granted on 16 March 2026 and the judgment on that leave was recorded on 30 April, so the petition is live and has been canvassed. No date for the full hearing of either petition is in the public record. This is UNRESOLVED, not WITHDRAWN: the date is knowable and the court simply has not set it publicly. This item is what notices when it does.",
+      "source": "No full hearing date published as of this edition. Wall standing from Editions 001, 002 and 003."
+    },
+    {
+      "item_id": "petroleum-revenue-projection",
+      "section": "WALL",
+      "claim_state": "CONTESTED",
+      "title": "The RM10-20 billion petroleum revenue projection - STILL WITHDRAWN",
+      "summary": "The range still circulates without a filing behind it. Labelled CONTESTED rather than estimated, because an estimate carries a method and this carries a spread. The nearest verifiable neighbour is the RM20 billion dividend declared for 2026 - the lowest in nine years - which is a different number measuring a different thing and is not the same claim.",
+      "source": "No primary document located; the range appears in secondary commentary only. Wall standing from Edition 002."
+    },
+    {
+      "item_id": "sarawak-election-clock",
+      "section": "VOID",
+      "claim_state": "MOVED",
+      "title": "Sarawak must go to the polls by April 2027, and the field has just narrowed",
+      "summary": "The State Legislative Assembly's term expires in February 2027 and a poll must follow within 60 days unless the House is dissolved earlier; GPS has said it will contest all 82 seats and that 17 proposed new seats may not clear the Election Commission's timeline. This edition adds a real change: Parti Sarawak Bersatu has dissolved and its members joined PDP, a GPS component, so the state opposition inside the House has effectively been absorbed by the coalition that will negotiate the petroleum question. The election lands in the same window as the constitutional case, so whoever is returned inherits the negotiating position rather than the current one.",
+      "source": "Sarawak Tribune and Scoop on the PSB dissolution and the move of Wong Soon Koh and two senior leaders into PDP; Free Malaysia Today, 5 July 2026, on the 82 seats and the April 2027 deadline"
+    },
+    {
+      "item_id": "tasik-bera-encroachment",
+      "section": "VOID",
+      "claim_state": "NEW",
+      "title": "Seven thousand hectares of Malaysia's first Ramsar wetland were cleared without permission",
+      "summary": "Pahang's state enforcement unit said on 18 September that more than 7,000 hectares of the Tasik Bera permanent forest reserve - the country's first Ramsar wetland - are suspected to have been illegally cleared for oil palm and rubber, an area the size of roughly 9,800 football pitches. It sits outside your categories and still lands in them: the enforcement gap it exposes is the same gap that decides whether Sarawak's carbon-storage ordinances can be policed at all, and that question is currently before the Federal Court in your own company's petition.",
+      "source": "The Star and Free Malaysia Today, 18 September 2026; New Straits Times, 18 September 2026"
+    },
+    {
+      "item_id": "haze-emergency-threshold",
+      "section": "VOID",
+      "claim_state": "NEW",
+      "title": "The haze now has an operating threshold, and it has been used once this year",
+      "summary": "A district in Sarawak was placed under a state of emergency on 4 September when its air reading passed 500 - the first such declaration of 2026 - and the emergency was lifted three days later. On 15 September, 38 areas were still reading unhealthy, with Johor carrying the most; Serian peaked at 188 and the Klang Valley ran above 150 from Cheras to Shah Alam to Putrajaya. The threshold defines when field activity and school activity actually stop, and it has now been tested once this year. MetMalaysia issued a thunderstorms and heavy rain warning covering Perlis, Penang, parts of Kedah, Perak, Melaka and Labuan on 18 September.",
+      "source": "Department of Environment API readings via CNA, 15 September 2026; Bernama weather warning, 18 September 2026"
+    },
+    {
+      "item_id": "unclaimed-money-register",
+      "section": "VOID",
+      "claim_state": "OPEN",
+      "title": "RM13.3 billion of unclaimed money with the Accountant-General",
+      "summary": "Not a news item, which is exactly why it stays unknown: it is a register nobody markets. Verifiable by an individual in about a minute with an identity card. Structurally the same shape as any unclaimed entitlement - it belongs to someone who does not know it exists. Carried forward unchanged.",
+      "source": "Accountant-General unclaimed money register, January 2026"
+    },
+    {
+      "item_id": "epf-nomination-void",
+      "section": "VOID",
+      "claim_state": "OPEN",
+      "title": "Nomination voiding silently on a change of marital status",
+      "summary": "A nomination made before a marriage is not automatically the nomination that applies after it, and the failure is silent - it is discovered by survivors. The fund has publicly corrected circulating messages on this, which is the reason to take it from the fund and not from a forwarded message. Carried forward unchanged.",
+      "source": "EPF public statements correcting viral nomination claims"
+    },
+    {
+      "item_id": "eureka-spectre-chiral-light",
+      "section": "EUREKA",
+      "claim_state": "NEW",
+      "title": "The shape that tiles forever without repeating also twists light",
+      "summary": "The Spectre - the chiral aperiodic monotile found in 2023, a single shape that covers a plane without ever repeating and without needing its mirror image - turns out to scatter laser light into pinwheel diffraction patterns that expose its chirality directly. Reported 14-15 September. For a geologist this is the quasicrystal family again: order without periodicity, the same structural idea that took the 2011 chemistry Nobel and that was later found to occur naturally in a meteorite from the Khatyrka river in Russia.",
+      "source": "ScienceDaily, 14-15 September 2026 - https://www.sciencedaily.com/releases/2026/09/260914102432.htm"
+    },
+    {
+      "item_id": "eureka-gut-metabolite",
+      "section": "EUREKA",
+      "claim_state": "NEW",
+      "title": "A gut-bacteria by-product of pomegranates and walnuts helps repair the gut lining",
+      "summary": "A compound produced when gut bacteria digest foods such as pomegranates, walnuts and berries appears to help repair and protect the intestinal lining, reported 17 September. The surprise is which side of the pathway it comes from: the effect rides a mechanism usually studied for inflammation rather than repair. It is early laboratory work and not a prescription, but the lever is dietary rather than pharmaceutical.",
+      "source": "ScienceDaily, 17 September 2026 - https://www.sciencedaily.com/news/health_medicine/"
+    },
+    {
+      "item_id": "eureka-amazon-frog",
+      "section": "EUREKA",
+      "claim_state": "NEW",
+      "title": "A new frog species was hiding in plain sight in the western Amazon",
+      "summary": "Scientists working in the flooded forests of the western Amazon described a new frog species on 17 September, separated from near-identical relatives by DNA and by a call that is audibly different even where the animals look the same. It is the old field-biology lesson in a new place: in a flooded forest, sound separates species faster than eyesight does, which is why acoustic surveys keep out-performing visual ones.",
+      "source": "ScienceDaily, 17 September 2026 - https://www.sciencedaily.com/news/fossils_ruins/"
+    },
+    {
+      "item_id": "eureka-dark-matter-hint",
+      "section": "EUREKA",
+      "claim_state": "NEW",
+      "title": "The most sensitive dark matter detector in the world has one unexplained event",
+      "summary": "LUX-ZEPLIN, ten tonnes of ultrapure liquid xenon a mile underground in South Dakota, found a single interaction in 220 live days of data that its own team cannot explain with known backgrounds. Significance is 2.6 sigma against the 5 sigma needed to claim a discovery, and the collaboration states plainly that it is not claiming dark matter. If it is real, the particle would be at least 200 times the mass of a proton.",
+      "source": "Berkeley Lab, 1 September 2026 - https://newscenter.lbl.gov/2026/09/01/lz-sees-surprising-result-in-search-for-dark-matter/"
+    },
+    {
+      "item_id": "eureka-diplodocus-spain",
+      "section": "EUREKA",
+      "claim_state": "NEW",
+      "title": "Diplodocus has been found outside North America for the first time",
+      "summary": "Every confirmed Diplodocus since 1878 has come out of one formation in the western United States. Fourteen tail vertebrae and several chevron bones unearthed at La Tejeria near El Castellar in Teruel, Spain, belong to the genus - a 25-metre animal that lived about 150 million years ago, described in the Journal of Vertebrate Paleontology. It is the strongest evidence yet that dinosaurs moved between the two continents across temporary land bridges when the proto-Atlantic shallowed.",
+      "source": "EL PAIS, 15 September 2026 - https://english.elpais.com/science-tech/2026-09-15/first-diplodocus-found-outside-north-america-discovered-in-spain.html"
+    },
+    {
+      "item_id": "eureka-bepicolombo-mercury",
+      "section": "EUREKA",
+      "claim_state": "NEW",
+      "title": "BepiColombo reached Mercury after eight years and cut its engine loose",
+      "summary": "The Mercury Transfer Module separated from the two science orbiters on 3 September 2026, ending an eight-year cruise that used flybys of Earth, Venus and Mercury itself because carrying enough fuel for a direct route was never possible. Two orbiters - one European, one Japanese - will now be inserted into different orbits to measure the planet from the inside out. Nothing built by humans has flown this close to the Sun for this long.",
+      "source": "European Space Agency mission updates - https://www.esa.int/Science_Exploration/Space_Science/BepiColombo/Latest_updates_BepiColombo_s_arrival_at_Mercury"
+    },
+    {
+      "item_id": "deepfake-intimate-image-protection",
+      "section": "EUREKA",
+      "claim_state": "OPEN",
+      "title": "AI-generated intimate images fall inside the criminal definition",
+      "summary": "The 2026 cybercrime amendments bring synthetically generated intimate images within the offence rather than leaving them outside it. Worth knowing before it is needed, because the person who needs it is usually already under attack when they find out. Carried forward unchanged.",
+      "source": "Cybercrimes Bill 2026, clause 24"
+    },
+    {
+      "item_id": "own-od1-window",
+      "section": "OWN",
+      "claim_state": "NEW",
+      "title": "The window is unchanged; the ground under it has moved twice in a week",
+      "summary": "OD1 is still March 2027. What moved since the last edition: Brent settling near USD 103 after a month up 12.7 per cent, a new 35-year PSC through Carigali, two more marginal clusters handed to asset-light partners, and a workforce reduction announced in June 2025 whose hiring freeze runs to December 2026. The freeze bears on timing rather than money: an exit taken while it holds puts you into a market where your own employer is not hiring, and the MSS figure on the table was quoted against a softer price deck than the one now on the screen.",
+      "source": "Composite; every figure is sourced individually in this edition. Separation package and hiring freeze - The Edge Malaysia and FMT, 10 June 2025."
+    }
+  ]
+}

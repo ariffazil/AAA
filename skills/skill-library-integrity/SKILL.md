@@ -872,6 +872,18 @@ honest; the drift concentrates in whatever a human typed once and nothing ever r
 that reports `alias_rows_dead: 91` in its own body is a registry already telling you it has ghosts —
 believe it and go find which.
 
+**Tooling — run these, do not re-derive them:**
+
+```bash
+python3 /root/AAA/skills/skill-library-integrity/scripts/corpse_audit.py      # living-corpse sweep
+python3 /root/AAA/skills/skill-library-integrity/scripts/discovery_guard.py <merged_skill> <retired_dirs...>
+python3 /root/AAA/skills/skill-library-integrity/scripts/dependents.py <dir...>   # pre-eviction inbound links
+python3 /root/scripts/skills-census.py            # the ONE census; --write refreshes only disk_reconciliation
+```
+
+A date-stamped tool left inside a `skills-retired/<date>/` folder is a tool the next agent will not
+find. Any script that encodes a lesson belongs in `scripts/` beside the skill that teaches it.
+
 ## Pitfalls
 
 - **A LIVING CORPSE outranks a duplicate as a defect.** A duplicate wastes attention; a skill that

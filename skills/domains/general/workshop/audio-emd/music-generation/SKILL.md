@@ -357,6 +357,14 @@ python3 -m rvc_python cli \
   -index "/root/HERMES/models/rvc/target_voice.index"
 ```
 
+> **UNBUILT on this host (verified 2026-09-19): this step cannot run as written.**
+> `/root/HERMES/models/` does not exist, no `.pth` or `.index` RVC model exists anywhere on
+> disk, and `rvc_python` is not importable from any installed interpreter. What would have to
+> exist: `pip install rvc-python` (plus a CUDA GPU), a trained or downloaded voice model, and
+> a models directory to hold it. Treat `target_voice.pth` / `target_voice.index` as
+> **placeholder filenames** — substitute real model paths once you have them, and keep the
+> "no GPU and no model → skip this step" fallback below.
+
 **Where to get voice models:**
 - Train your own: https://github.com/RVC-Project/RVC
 - HuggingFace: search "rvc model" for community models

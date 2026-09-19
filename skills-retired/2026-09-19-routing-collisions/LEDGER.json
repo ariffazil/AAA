@@ -1,0 +1,57 @@
+{
+  "ts": "2026-09-19T01:54:20.089489+00:00",
+  "authority": "ARIF \u2014 audit of routing-name collisions, 2026-09-19",
+  "evidence": "hermes-agent tools/skills_tool.py:275-277 (first-wins dedupe on frontmatter name)",
+  "canon": "/root/AAA/skills",
+  "freeze_root": "/root/AAA/skills-retired/2026-09-19-routing-collisions",
+  "items": [
+    {
+      "path": "/root/AAA/skills/FORGE-onboarding/claude",
+      "rel": "FORGE-onboarding/claude",
+      "kind": "retire_dir",
+      "files": {
+        "SKILL.md": "2348ebda0ea1f06b08ee6ae039b87541cae64d19fa665c5d5092332dd8939a26"
+      },
+      "files_count": 1,
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-routing-collisions/claude",
+      "action": "moved",
+      "undo": "mv /root/AAA/skills-retired/2026-09-19-routing-collisions/claude /root/AAA/skills/FORGE-onboarding/claude"
+    },
+    {
+      "path": "/root/AAA/skills/capabilities/coding/code-review",
+      "rel": "capabilities/coding/code-review",
+      "kind": "repoint",
+      "was": "../../../../.hermes/profiles/aaa-hermes/skills/code-review",
+      "now": "/root/AAA/skills/engineering/code-review",
+      "undo": "ln -sfn ../../../../.hermes/profiles/aaa-hermes/skills/code-review /root/AAA/skills/capabilities/coding/code-review"
+    },
+    {
+      "path": "/root/AAA/skills/domains/forge/code-review",
+      "rel": "domains/forge/code-review",
+      "kind": "repoint",
+      "was": "../../../../.hermes/profiles/aaa-hermes/skills/code-review",
+      "now": "/root/AAA/skills/engineering/code-review",
+      "undo": "ln -sfn ../../../../.hermes/profiles/aaa-hermes/skills/code-review /root/AAA/skills/domains/forge/code-review"
+    },
+    {
+      "path": "/root/.hermes/profiles/aaa-hermes/skills/code-review",
+      "rel": "/root/.hermes/profiles/aaa-hermes/skills/code-review",
+      "kind": "retire_dir",
+      "files": {
+        "SKILL.md": "9724766ac971e50351909dd121e0b1aba3749162f48e3bbfd13cca15221ed90a",
+        "liveness.json": "4b59c37e424f4c8a819e7023c8836f3b3bc061738e16076fcb0381bf68ad60d7"
+      },
+      "files_count": 2,
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-routing-collisions/code-review",
+      "action": "moved",
+      "undo": "mv /root/AAA/skills-retired/2026-09-19-routing-collisions/code-review /root/.hermes/profiles/aaa-hermes/skills/code-review"
+    },
+    {
+      "path": "/root/AAA/skills/FORGE-onboarding",
+      "rel": "FORGE-onboarding",
+      "kind": "rmdir_empty",
+      "undo": "mkdir -p /root/AAA/skills/FORGE-onboarding",
+      "note": "case-twin of forge-onboarding/ became empty after its only child retired"
+    }
+  ]
+}

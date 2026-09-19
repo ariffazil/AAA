@@ -178,10 +178,18 @@ ps aux | grep 'social-mcp/src/server.py' | grep -v grep
 ```
 **Note:** If only watchdogs remain (no `server.py` children), kill the watchdogs too (`kill -9 <watchdog_pids>`) — Hermes respawns the full chain.
 
-### Composio CLI (INSTALLED 2026-08-25)
-Installed via official installer: `curl -fsSL https://composio.dev/install | sh` → `@composio/cli@0.4.0` at `/root/.composio/composio`, entry point `/root/.local/bin/composio`.
+### Composio CLI (UNBUILT on this host — verified 2026-09-19)
 
-**NOTE:** `/tmp/mask_env/bin/composio` (a different/older tool) can shadow the real one in PATH — invoke via `/root/.local/bin/composio` explicitly.
+**The CLI is not installed.** Neither `/root/.composio/composio` nor its entry point
+`/root/.local/bin/composio` exists, `/root/.composio/` does not exist at all, and no
+`composio` binary is on PATH — so every `composio …` command in this skill and in
+`references/composio-skills-layer.md` fails today. What would have to exist: the binary the
+official installer (`curl -fsSL https://composio.dev/install | sh`) places at those two
+paths. The Composio route that *is* live is the stdio proxy
+`/root/.config/mcp/composio-proxy.mjs` (section above) — a separate user context, and not a
+substitute for the CLI.
+
+**NOTE (applies once the CLI exists):** `/tmp/mask_env/bin/composio` (a different/older tool) could shadow the real one in PATH — invoke via `/root/.local/bin/composio` explicitly.
 
 **Auth flow (one-time, human clicks URL):**
 ```bash

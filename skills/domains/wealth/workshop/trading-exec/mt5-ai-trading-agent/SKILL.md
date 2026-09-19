@@ -477,12 +477,18 @@ This skill covers **Phase 3-4** (auto/semi-auto execution). For earlier phases:
 | 3 | Supervised | This skill | AI executes live, human approves each trade |
 | 4 | Semi-auto | This skill | AI auto-exutes with risk limits, human monitors weekly |
 
-**Phase 1 gold engine (already live):**
-- Location: `/root/trading/scripts/gold_engine.py`
-- Config: `/root/trading/config/trading_spec.json`
-- Journal: `/root/trading/journal/signals.jsonl`
-- Cron: `2258f1b3fa0e` — 8am MYT daily
-- Uses Yahoo Finance (free, no API key), yfinance + pandas + ta
+**Phase 1 gold engine — status corrected 2026-09-19 (this block previously read "already live"):**
+- Location: the `gold_engine.py` engine under the old top-level trading tree. **Gone.** No such file exists
+  anywhere under `/root`, and that tree itself is gone: it was migrated into the WEALTH organ on 2026-07-19 and
+  the source deleted (`/root/WEALTH/trading/MIGRATION.md`); `gold_engine.py` was not among the preserved
+  modules, so there is no substitute path to repoint to. Do not plan Phase 2 around this path until an engine
+  is re-materialised.
+- Config: the live copy is `/root/WEALTH/trading/config/trading_spec.json` (verified on disk 2026-09-19); the
+  old top-level form no longer resolves.
+- Journal: the old `journal/signals.jsonl` went with the tree — no replacement found on disk.
+- Cron: `2258f1b3fa0e` — 8am MYT daily. **Not found** in the live store (`grep -rl 2258f1b3fa0e /root/.hermes/cron`
+  → no hits, 2026-09-19), so treat this id as stale until re-probed.
+- Intended stack: Yahoo Finance (free, no API key), yfinance + pandas + ta
 - EMA 20/50, RSI divergence, S/R, candle patterns, session filter, ≥2 confluence rule
 
 **To advance to Phase 2:** Connect MT5 Python on Windows VPS, use this skill's MT5 connection code, point signals from gold_engine.py to mt5.order_send().

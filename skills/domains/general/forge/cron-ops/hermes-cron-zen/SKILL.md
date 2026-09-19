@@ -214,7 +214,8 @@ Full evidence trail (job IDs, prompt-recovery recipe, false-unreachable digest):
 
 - **`HTTP 504 — HTML error page` after ~50s** = haproxy :4000 (fronting litellm :4011) had
   `timeout client/server 50000`; long reasoning calls get cut mid-flight, Hermes retries 3×,
-  job dies. Raised to 600000 on 2026-08-14 (backup: /root/forge_work/backups/haproxy.cfg.bak-20260814);
+  job dies. Raised to 600000 on 2026-08-14 (the pre-change backup was not retained — `/root/forge_work/backups/`
+  now holds only `jobs.json.bak-*`; verified 2026-09-19);
   reload `kill -HUP $(pgrep -x haproxy)`. Rule: long prompt 504s while short probes 200 → check
   haproxy timeouts FIRST, not the model.
 - **`HTTP 503 — HTML error page`** = upstream quota death (MiniMax 429 code 2056 "Token Plan
