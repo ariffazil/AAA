@@ -456,7 +456,10 @@
       "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
       "ringPlacement": "none",
       "parallelism": "none",
-      "shadowAcknowledged": []
+      "shadowAcknowledged": [
+        "decision_avoidance: offers options when direct action was requested (HIGH, HYPOTHESIS 2026-09-19)",
+        "governance_reflex: routes through governance when direct answer serves (MEDIUM, HYPOTHESIS 2026-09-19)"
+      ]
     },
     "jituGate": {
       "requiresJitu": false,

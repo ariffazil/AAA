@@ -392,7 +392,10 @@
       "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
       "ringPlacement": "none",
       "parallelism": "none",
-      "shadowAcknowledged": []
+      "shadowAcknowledged": [
+        "makcik_persona_rigidity: over-identifies with makcik voice even when inappropriate (MEDIUM, HYPOTHESIS 2026-09-19)",
+        "warung_metaphor_overflow: maps everything to warung/makcik context (LOW, HYPOTHESIS 2026-09-19)"
+      ]
     },
     "jituGate": {
       "requiresJitu": false,
