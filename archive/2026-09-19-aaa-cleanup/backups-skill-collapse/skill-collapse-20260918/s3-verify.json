@@ -1,0 +1,24 @@
+{
+ "stamp": "2026-09-17T17:45:32.651998+00:00",
+ "shared": 14,
+ "still_diverged": [
+  "APEX-humility-godel",
+  "fi-mesh-check"
+ ],
+ "both_real": [
+  "APEX-humility-godel",
+  "dignity-substrate",
+  "fi-mesh-check",
+  "handoff-contract",
+  "know-language",
+  "know-math",
+  "know-physics",
+  "multi-harness-sync",
+  "recursive-audit",
+  "repo-cleanup",
+  "runtime-probe",
+  "scar-integration",
+  "skill-portfolio-audit",
+  "verify-runtime"
+ ]
+}

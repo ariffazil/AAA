@@ -1,0 +1,15 @@
+{
+ "stamp": "2026-09-17T17:52:33.198756+00:00",
+ "retired": [
+  {
+   "file": "/root/scripts/governance/circuit-breaker.sh",
+   "status": "retired",
+   "copy": "/root/AAA/backups/skill-collapse-20260918/jitu-collapse/circuit-breaker.sh"
+  },
+  {
+   "file": "/root/arifOS/scripts/wire/arif-circuit-breaker",
+   "status": "retired",
+   "copy": "/root/AAA/backups/skill-collapse-20260918/jitu-collapse/arif-circuit-breaker"
+  }
+ ]
+}

@@ -1,0 +1,87 @@
+[
+ {
+  "skill": "runtime",
+  "rel": "runtime",
+  "marker": "[fed: tier=fed-agent-subagent, floors=[, auto=T0, risk=low]"
+ },
+ {
+  "skill": "forge-react-spa-discipline",
+  "rel": "forge-react-spa-discipline",
+  "marker": "[fed: tier=fed-reasoning-heavy, floors=[, auto=T1, risk=medium]"
+ },
+ {
+  "skill": "forge-postgres-schema-design",
+  "rel": "forge-postgres-schema-design",
+  "marker": "[fed: tier=fed-reasoning-heavy, floors=[, auto=T2, risk=high]"
+ },
+ {
+  "skill": "forge-fastapi-api-builder",
+  "rel": "forge-fastapi-api-builder",
+  "marker": "[fed: tier=fed-agent-subagent, floors=[, auto=T1, risk=medium]"
+ },
+ {
+  "skill": "forge-did-web-identity",
+  "rel": "forge-did-web-identity",
+  "marker": "[fed: tier=fed-agent-subagent, floors=[, auto=T2, risk=high]"
+ },
+ {
+  "skill": "forge-governance-jsonld",
+  "rel": "forge-governance-jsonld",
+  "marker": "[fed: tier=fed-reasoning-heavy, floors=[, auto=T1, risk=medium]"
+ },
+ {
+  "skill": "substrate",
+  "rel": "substrate",
+  "marker": "[fed: tier=fed-agent-subagent, floors=[, auto=T0, risk=low]"
+ },
+ {
+  "skill": "federation-connect-headscale",
+  "rel": "federation-connect-headscale",
+  "marker": "[fed: tier=fed-agent-subagent, floors=[, auto=T2, risk=high]"
+ },
+ {
+  "skill": "forge-redis-qdrant-integration",
+  "rel": "forge-redis-qdrant-integration",
+  "marker": "[fed: tier=fed-agent-subagent, floors=[, auto=T1, risk=medium]"
+ },
+ {
+  "skill": "warga",
+  "rel": "warga",
+  "marker": "[fed: tier=fed-agent-subagent, floors=[, auto=T1, risk=medium]"
+ },
+ {
+  "skill": "docs",
+  "rel": "docs",
+  "marker": "[fed: tier=fed-long-context, floors=[, auto=T0, risk=low]"
+ },
+ {
+  "skill": "forge-design-intelligence",
+  "rel": "forge-design-intelligence",
+  "marker": "[fed: tier=fed-reasoning-heavy, floors=[, auto=T1, risk=low]"
+ },
+ {
+  "skill": "forge-visual-qa-w3",
+  "rel": "forge-visual-qa-w3",
+  "marker": "[fed: tier=fed-multimodal-vision, floors=[, auto=T2, risk=high]"
+ },
+ {
+  "skill": "forge-nextjs-mastery",
+  "rel": "forge-nextjs-mastery",
+  "marker": "[fed: tier=fed-agent-subagent, floors=[, auto=T1, risk=medium]"
+ },
+ {
+  "skill": "forge-federation-manifest",
+  "rel": "forge-federation-manifest",
+  "marker": "[fed: tier=fed-agent-subagent, floors=[, auto=T2, risk=high]"
+ },
+ {
+  "skill": "forge-mcp-a2a-agentic",
+  "rel": "forge-mcp-a2a-agentic",
+  "marker": "[fed: tier=fed-agent-subagent, floors=[, auto=T2, risk=high]"
+ },
+ {
+  "skill": "forge-tailwind-tokens",
+  "rel": "forge-tailwind-tokens",
+  "marker": "[fed: tier=fed-reasoning-heavy, floors=[, auto=T1, risk=low]"
+ }
+]

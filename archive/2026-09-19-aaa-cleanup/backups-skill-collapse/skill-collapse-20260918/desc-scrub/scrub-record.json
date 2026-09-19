@@ -1,0 +1,872 @@
+{
+ "stamp": "2026-09-17T17:49:37.718413+00:00",
+ "scrubbed": [
+  {
+   "skill": "agent-capability-self-audit",
+   "rel": "capabilities/agent-capability-self-audit",
+   "marker": "[fed: tier=fed-reasoning-heavy, floors=[F02, F04, F07, F09, F11], auto=T0 (read-only audit), risk=low]",
+   "carried": [],
+   "sha_before": "67710fecf98d159b",
+   "sha_after": "dac65da0185c3a77"
+  },
+  {
+   "skill": "mimo-vision",
+   "rel": "mimo-vision",
+   "marker": "[fed: tier=fed-multimodal-vision]",
+   "carried": [],
+   "sha_before": "cc16a26973212531",
+   "sha_after": "17eb0aeb6e10dee3"
+  },
+  {
+   "skill": "aaa-skill-governor-runtime",
+   "rel": "aaa-skill-governor-runtime",
+   "marker": "[fed: tier=fed-agent-subagent, floors=[F1, F2, F7, F11], auto=T1, risk=medium]",
+   "carried": [],
+   "sha_before": "93cde11a540ed8ac",
+   "sha_after": "4ef2e8cb99d20d01"
+  },
+  {
+   "skill": "forge-secret-hygiene",
+   "rel": "forge-secret-hygiene",
+   "marker": "[fed: tier=fed-long-context, auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "799fa327a7e81efc",
+   "sha_after": "d49523744dda45e1"
+  },
+  {
+   "skill": "forge-telegram-audit",
+   "rel": "forge-telegram-audit",
+   "marker": "[fed: tier=fed-long-context, auto=T0, risk=low]",
+   "carried": [],
+   "sha_before": "3a670761646db2ad",
+   "sha_after": "d187c504cc70c424"
+  },
+  {
+   "skill": "forge-onboarding",
+   "rel": "forge-onboarding",
+   "marker": "[fed: tier=fed-agent-subagent, auto=T1, risk=medium]",
+   "carried": [],
+   "sha_before": "99acd0df0012adf3",
+   "sha_after": "dbeb6d17ef524789"
+  },
+  {
+   "skill": "agent-onboarding",
+   "rel": "forge-onboarding/agent-onboarding",
+   "marker": "[fed: tier=fed-agent-subagent, risk=medium]",
+   "carried": [],
+   "sha_before": "5d7b3f2d70144702",
+   "sha_after": "973401c73675cb30"
+  },
+  {
+   "skill": "claude-meta-mesa",
+   "rel": "claude-meta-mesa",
+   "marker": "[fed: tier=meta-mesa, auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "edacee784271265a",
+   "sha_after": "fc760214a8ceba8e"
+  },
+  {
+   "skill": "forge-document-intelligence",
+   "rel": "forge-document-intelligence",
+   "marker": "[fed: tier=fed-multimodal-vision, floors=[F1, F2, F4, F9, F11, F12, F13], auto=T1, risk=medium]",
+   "carried": [],
+   "sha_before": "fe64d28fe132c51c",
+   "sha_after": "9d66a53b63b92ce1"
+  },
+  {
+   "skill": "web-search",
+   "rel": "hermes/web-search",
+   "marker": "[fed: tier=fed-long-context, floors=[F1, F2, F4, F7, F12], auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "5c2a89a42915f6b7",
+   "sha_after": "0bbc9781cf3d4d3b"
+  },
+  {
+   "skill": "web-scrape",
+   "rel": "hermes/web-scrape",
+   "marker": "[fed: tier=fed-multimodal-vision, floors=[F1, F2, F4, F7, F12], auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "47a4414e838b301f",
+   "sha_after": "584c8d5567f71de4"
+  },
+  {
+   "skill": "qwencloud-deploy",
+   "rel": "qwencloud-deploy",
+   "marker": "[fed: tier=fed-multimodal-vision]",
+   "carried": [],
+   "sha_before": "29d1a583e28cd126",
+   "sha_after": "bad2d742dd34eadb"
+  },
+  {
+   "skill": "forge-google-workspace",
+   "rel": "forge-google-workspace",
+   "marker": "[fed: tier=fed-agent-subagent, auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "d57c0c61cd4be323",
+   "sha_after": "dc328e830e14544a"
+  },
+  {
+   "skill": "prompts-chat-library",
+   "rel": "prompts-chat-library",
+   "marker": "[fed: tier=fed-agent-subagent]",
+   "carried": [],
+   "sha_before": "be958ae829b508a9",
+   "sha_after": "089fa5b0ca2d798b"
+  },
+  {
+   "skill": "qwen-meta-mesa",
+   "rel": "qwen-meta-mesa",
+   "marker": "[fed: tier=meta-mesa, auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "32726af343ba7d53",
+   "sha_after": "f819d116fdb7ee94"
+  },
+  {
+   "skill": "claude-agentic-state",
+   "rel": "claude-agentic-state",
+   "marker": "[fed: tier=meta-mesa, auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "0b8e75c144380029",
+   "sha_after": "d2dd4c7711ce7160"
+  },
+  {
+   "skill": "fi-mesh-check",
+   "rel": "fi-mesh-check",
+   "marker": "[fed: tier=fed-long-context, floors=[F2, F4], risk=low]",
+   "carried": [],
+   "sha_before": "34718f0731babf2e",
+   "sha_after": "0e932aa3b2254d19"
+  },
+  {
+   "skill": "agi-web-optimization",
+   "rel": "agi-web-optimization",
+   "marker": "[fed: tier=fed-long-context, floors=[F2, F4], auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "041ee384b93f6485",
+   "sha_after": "5395f48b861585be"
+  },
+  {
+   "skill": "forge-github-ops",
+   "rel": "forge-github-ops",
+   "marker": "[fed: tier=fed-agent-subagent, floors=[F1, F2, F11], auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "5dbeee1aabb10bd9",
+   "sha_after": "4b95d1d36bb21145"
+  },
+  {
+   "skill": "audit-repo-reality",
+   "rel": "audit-repo-reality",
+   "marker": "[fed: tier=fed-reasoning-heavy, floors=[F02, F04, F07, F11], auto=T0, risk=low]",
+   "carried": [],
+   "sha_before": "f35f06381bca28b6",
+   "sha_after": "c570e1cce7a6ceca"
+  },
+  {
+   "skill": "qwencloud-ops-auth",
+   "rel": "qwencloud-ops-auth",
+   "marker": "[fed: tier=fed-long-context]",
+   "carried": [],
+   "sha_before": "46fa583134af29fa",
+   "sha_after": "24ae99137a89b1ef"
+  },
+  {
+   "skill": "forge-spatial-grounding",
+   "rel": "forge-spatial-grounding",
+   "marker": "[fed: tier=fed-long-context, auto=T1, risk=medium]",
+   "carried": [],
+   "sha_before": "103666b2540ea591",
+   "sha_after": "a2eb9507b3a2163d"
+  },
+  {
+   "skill": "browser-playwright-runner",
+   "rel": "browser-playwright-runner",
+   "marker": "[fed: tier=fed-multimodal-vision]",
+   "carried": [],
+   "sha_before": "4aa118d7737adb40",
+   "sha_after": "e4ec6b8fff407f66"
+  },
+  {
+   "skill": "openclaw-human-meaning",
+   "rel": "openclaw-human-meaning",
+   "marker": "[fed: tier=fed-agent-subagent, auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "86dc9d817199c7e1",
+   "sha_after": "794490c6454d59ff"
+  },
+  {
+   "skill": "forge-hermes-self-evolution",
+   "rel": "forge-hermes-self-evolution",
+   "marker": "[fed: tier=fed-agent-subagent, floors=[F1, F2, F12, F13], auto=T3]",
+   "carried": [],
+   "sha_before": "edeac37b6a9e7eef",
+   "sha_after": "2212abc476b55bc7"
+  },
+  {
+   "skill": "contextstream-memory-code-search",
+   "rel": "contextstream-memory-code-search",
+   "marker": "[fed: tier=fed-long-context]",
+   "carried": [],
+   "sha_before": "919f6efff131d5d6",
+   "sha_after": "d1d29488c5ba8ea7"
+  },
+  {
+   "skill": "hermes-coding-gateway",
+   "rel": "hermes-coding-gateway",
+   "marker": "[fed: tier=coding-fabric-gateway, floors=[F1, F2, F4, F7, F8, F11, F12, F13], auto=T1, risk=T2]",
+   "carried": [],
+   "sha_before": "ecee0a1f5ce527b6",
+   "sha_after": "4d0256b024ddb70f"
+  },
+  {
+   "skill": "forge-ci-diagnose",
+   "rel": "forge-ci-diagnose",
+   "marker": "[fed: tier=fed-agent-subagent, auto=T1, risk=medium]",
+   "carried": [],
+   "sha_before": "b122a15b00935dd4",
+   "sha_after": "82cc2954ed7f7efa"
+  },
+  {
+   "skill": "qwencloud-model-selector",
+   "rel": "qwencloud-model-selector",
+   "marker": "[fed: tier=fed-agent-subagent]",
+   "carried": [],
+   "sha_before": "5c1e61632fcbbf96",
+   "sha_after": "73276fe5f8fd4238"
+  },
+  {
+   "skill": "sanctuary-boundary-enforcer",
+   "rel": "sanctuary-boundary-enforcer",
+   "marker": "[fed: risk=critical]",
+   "carried": [],
+   "sha_before": "63edaa50f5e1f5c9",
+   "sha_after": "8a4d4735ab065e13"
+  },
+  {
+   "skill": "openclaw",
+   "rel": "openclaw",
+   "marker": "[fed: tier=fed-agent-subagent, auto=T2, risk=medium]",
+   "carried": [],
+   "sha_before": "5abb76ae8f7967d4",
+   "sha_after": "7dd39a2301b39452"
+  },
+  {
+   "skill": "qwencloud-usage",
+   "rel": "qwencloud-usage",
+   "marker": "[fed: tier=fed-reasoning-heavy]",
+   "carried": [],
+   "sha_before": "eeb833667bbf658d",
+   "sha_after": "c38108436c767b57"
+  },
+  {
+   "skill": "qwencloud-update-check",
+   "rel": "qwencloud-update-check",
+   "marker": "[fed: tier=fed-agent-subagent]",
+   "carried": [],
+   "sha_before": "eae839b9edc3c415",
+   "sha_after": "d980f7db94ca7db5"
+  },
+  {
+   "skill": "forge-multimodal-router",
+   "rel": "forge-multimodal-router",
+   "marker": "[fed: tier=fed-multimodal-router, auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "96d47f83bd49e946",
+   "sha_after": "ec17b7319297c684"
+  },
+  {
+   "skill": "human-state-estimation",
+   "rel": "human-state-estimation",
+   "marker": "[fed: tier=fed-agent-subagent, risk=low]",
+   "carried": [],
+   "sha_before": "edc97b9e95cf60bc",
+   "sha_after": "052cf1b1cb0df1b7"
+  },
+  {
+   "skill": "aaa-image-editing",
+   "rel": "media/aaa-image-editing",
+   "marker": "[fed: tier=fed-multimodal-vision, floors=[F2, F4, F7], auto=T1, risk=T1]",
+   "carried": [],
+   "sha_before": "4e5bd2412a7b4872",
+   "sha_after": "9d1deaac841e7c6b"
+  },
+  {
+   "skill": "forge-repo-intelligence",
+   "rel": "forge-repo-intelligence",
+   "marker": "[fed: tier=fed-agent-subagent, auto=T1, risk=medium]",
+   "carried": [],
+   "sha_before": "a241ac59cee5799b",
+   "sha_after": "22f2efe732641b8d"
+  },
+  {
+   "skill": "forge-route-least-power",
+   "rel": "forge-route-least-power",
+   "marker": "[fed: tier=fed-agent-subagent, floors=[F1, F2, F4, F7], auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "a3fb2b4b5d60aa36",
+   "sha_after": "240006809ff326f3"
+  },
+  {
+   "skill": "aaa-human-physique-topology",
+   "rel": "aaa-human-physique-topology",
+   "marker": "[fed: tier=fed-vision-topography, auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "dd1387bfa39349ac",
+   "sha_after": "4c9c24b39afe8dad"
+  },
+  {
+   "skill": "qwen-zen-router",
+   "rel": "qwen-zen-router",
+   "marker": "[fed: tier=meta-mesa, auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "585df4eeead46fc5",
+   "sha_after": "9acd8d858f13ffe2"
+  },
+  {
+   "skill": "forge-context-compressor",
+   "rel": "forge-context-compressor",
+   "marker": "[fed: tier=fed-long-context]",
+   "carried": [],
+   "sha_before": "2c5343fa0aacce25",
+   "sha_after": "59fe299a95038e57"
+  },
+  {
+   "skill": "forge_card_migrate",
+   "rel": "federation-identity-zen/forge_card_migrate",
+   "marker": "[fed: tier=fed-agent-subagent, floors=[F1, F2, F4, F11, F13], auto=T1 (edits commit-prep; never push), risk=medium]",
+   "carried": [],
+   "sha_before": "86cb73ef6b85e545",
+   "sha_after": "78c6d05518ea74ab"
+  },
+  {
+   "skill": "forge-symlink-audit",
+   "rel": "forge-symlink-audit",
+   "marker": "[fed: tier=fed-long-context, floors=[F1, F2, F4, F7], auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "01c19b10a23dea44",
+   "sha_after": "64440afbf052f30b"
+  },
+  {
+   "skill": "forge-act-federation-ingress",
+   "rel": "forge-act-federation-ingress",
+   "marker": "[fed: tier=fed-long-context, floors=[F1, F2, F4, F7], auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "84c610e9a8505a62",
+   "sha_after": "e06d441e6f174fb6"
+  },
+  {
+   "skill": "forge-infra-crons",
+   "rel": "forge-infra-crons",
+   "marker": "[fed: tier=fed-long-context]",
+   "carried": [],
+   "sha_before": "fc7d0ac84350faf6",
+   "sha_after": "5204d3513cdcb0be"
+  },
+  {
+   "skill": "fi-qwen-upgrade",
+   "rel": "fi-qwen-upgrade",
+   "marker": "[fed: tier=fed-agent-subagent, floors=[F1, F2, F11], risk=medium]",
+   "carried": [],
+   "sha_before": "31af6a684789301e",
+   "sha_after": "1c38c8f64e0b285f"
+  },
+  {
+   "skill": "forge-call-map",
+   "rel": "forge-call-map",
+   "marker": "[fed: tier=fed-agent-subagent, auto=T0, risk=low]",
+   "carried": [],
+   "sha_before": "3911f77102546908",
+   "sha_after": "754c31e82ec1bbfb"
+  },
+  {
+   "skill": "agi-agentic-web-delivery",
+   "rel": "agi-agentic-web-delivery",
+   "marker": "[fed: tier=fed-agent-subagent, floors=[F1, F2, F4, F7, F11, F13], auto=T1, risk=T2]",
+   "carried": [],
+   "sha_before": "8fecf3c7a6fc6642",
+   "sha_after": "3caeef443b4448c4"
+  },
+  {
+   "skill": "forge-kimi-code",
+   "rel": "forge-kimi-code",
+   "marker": "[fed: tier=fed-long-context, auto=T1, risk=medium]",
+   "carried": [],
+   "sha_before": "b72dba3984790259",
+   "sha_after": "3c3086709b039e5a"
+  },
+  {
+   "skill": "forge-vss-verifier-suite",
+   "rel": "forge-vss-verifier-suite",
+   "marker": "[fed: tier=fed-multimodal-vision, auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "3d53726bba60904a",
+   "sha_after": "2a3715298e72c4eb"
+  },
+  {
+   "skill": "imagine",
+   "rel": "imagine",
+   "marker": "[fed: tier=fed-multimodal-vision, auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "1419604fbbf57f2b",
+   "sha_after": "f4106ffd1419652b"
+  },
+  {
+   "skill": "minimax-image-gen",
+   "rel": "minimax-image-gen",
+   "marker": "[fed: floors=F2, F4, F7, auto=T1, risk=T1]",
+   "carried": [],
+   "sha_before": "44f0de2763486dce",
+   "sha_after": "b8e45b64ff0b3b56"
+  },
+  {
+   "skill": "a2a-task-delegator",
+   "rel": "a2a-task-delegator",
+   "marker": "[fed: tier=fed-agent-subagent]",
+   "carried": [],
+   "sha_before": "3f6d31a2abad4ce7",
+   "sha_after": "b5fe400363443e55"
+  },
+  {
+   "skill": "constitutional",
+   "rel": "warga/constitutional",
+   "marker": "[fed: tier=fed-reasoning-heavy]",
+   "carried": [],
+   "sha_before": "4e3e582d5ad2714f",
+   "sha_after": "f0addb8daea7ffd1"
+  },
+  {
+   "skill": "identity-invariance",
+   "rel": "warga/constitutional/identity-invariance",
+   "marker": "[fed: tier=fed-agent-subagent, floors=[F1, F2, F9, F13], auto=T1, risk=high]",
+   "carried": [],
+   "sha_before": "1d6503af744981b4",
+   "sha_after": "373a7aba852c6620"
+  },
+  {
+   "skill": "emem-shared-memory",
+   "rel": "emem-shared-memory",
+   "marker": "[fed: tier=fed-agent-subagent]",
+   "carried": [],
+   "sha_before": "b8e6782a5d377250",
+   "sha_after": "98fcc47150c4ec65"
+  },
+  {
+   "skill": "qwencloud-vision",
+   "rel": "qwencloud-vision",
+   "marker": "[fed: tier=fed-multimodal-vision]",
+   "carried": [],
+   "sha_before": "5690805d44977cc9",
+   "sha_after": "84a7ad9282fd5318"
+  },
+  {
+   "skill": "forge-mcp-gui",
+   "rel": "forge-mcp-gui",
+   "marker": "[fed: tier=fed-long-context, floors=[F1, F2, F4, F11, F12], auto=T2, risk=medium]",
+   "carried": [],
+   "sha_before": "6892ccd2d9b82a2b",
+   "sha_after": "a40de0b1b70a9d22"
+  },
+  {
+   "skill": "authority-reality-grounder",
+   "rel": "authority-reality-grounder",
+   "marker": "[fed: risk=critical]",
+   "carried": [],
+   "sha_before": "6c2fd87be74089a6",
+   "sha_after": "5a4002e8a455e62c"
+  },
+  {
+   "skill": "claude-zen-router",
+   "rel": "claude-zen-router",
+   "marker": "[fed: tier=meta-mesa, auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "b968d4a83267d5b6",
+   "sha_after": "a2c73b27f82260bc"
+  },
+  {
+   "skill": "forge-musyawarah-gotong",
+   "rel": "forge-musyawarah-gotong",
+   "marker": "[fed: tier=fed-agent-subagent, floors=[F1, F2, F3, F4, F7, F9, F11, F13], auto=T1, risk=medium]",
+   "carried": [],
+   "sha_before": "75c1d6655903eefe",
+   "sha_after": "0c4898e067bb638d"
+  },
+  {
+   "skill": "kernel-trinity-33",
+   "rel": "kernel-trinity-33",
+   "marker": "[fed: tier=fed-agent-subagent, floors=[F2, F7, F8, F11], auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "2bacd66de545e450",
+   "sha_after": "c1f2f291bccec874"
+  },
+  {
+   "skill": "forge-artifact-publisher",
+   "rel": "forge-artifact-publisher",
+   "marker": "[fed: tier=fed-reasoning-heavy, floors=[F1, F2, F4, F6, F11], auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "8c6f84e51cdac633",
+   "sha_after": "02b8c6a83ce3866c"
+  },
+  {
+   "skill": "aaa-setup-help",
+   "rel": "aaa-setup-help",
+   "marker": "[fed: tier=fed-agent-subagent, floors=[F1, F2, F4, F7], auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "95622ef261a5d832",
+   "sha_after": "ce352e80dcd38168"
+  },
+  {
+   "skill": "hermes-gateway-image-routing",
+   "rel": "hermes-gateway-image-routing",
+   "marker": "[fed: tier=fed-multimodal-vision, floors=[F2, F4, F9, F12], auto=T1]",
+   "carried": [],
+   "sha_before": "dd81b0a8fe1a301a",
+   "sha_after": "5d072dd1070b4613"
+  },
+  {
+   "skill": "forge-esm-require-guard",
+   "rel": "forge-esm-require-guard",
+   "marker": "[fed: tier=default]",
+   "carried": [],
+   "sha_before": "ebf07315e1a49697",
+   "sha_after": "1911317872ecdaaf"
+  },
+  {
+   "skill": "entropy-metabolizer",
+   "rel": "entropy-metabolizer",
+   "marker": "[fed: tier=fed-agent-subagent, floors=[F1, F2, F7, F11], auto=T1, risk=low]",
+   "carried": [
+    "capability_tier: fed-agent-subagent",
+    "floor_scope: [F1, F2, F7, F11]",
+    "autonomy_tier: T1",
+    "risk_tier: low"
+   ],
+   "sha_before": "a05b43fbe870dab8",
+   "sha_after": "f046c3e3337135a9"
+  },
+  {
+   "skill": "hermes-opencode-protocol",
+   "rel": "hermes-opencode-protocol",
+   "marker": "[fed: tier=fed-agent-subagent, floors=[F01, F02, F04, F08, F11, F13], auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "18d1fdd1682286a2",
+   "sha_after": "df7cd0c8b90ea91f"
+  },
+  {
+   "skill": "aaa-musyawarah-execution",
+   "rel": "aaa-musyawarah-execution",
+   "marker": "[fed: tier=fed-agent-subagent, floors=[F1, F2, F7, F11], auto=T1, risk=medium]",
+   "carried": [],
+   "sha_before": "d266bba2a8949b18",
+   "sha_after": "371588e30e33185b"
+  },
+  {
+   "skill": "qwen-agentic-state",
+   "rel": "qwen-agentic-state",
+   "marker": "[fed: tier=meta-mesa, auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "143c44729cf629e0",
+   "sha_after": "fe97f5e2470d51fd"
+  },
+  {
+   "skill": "human-meaning-membrane",
+   "rel": "human-meaning-membrane",
+   "marker": "[fed: tier=fed-agent-subagent]",
+   "carried": [],
+   "sha_before": "cf7817590ba3725f",
+   "sha_after": "48ee6fc86001c04c"
+  },
+  {
+   "skill": "duckdb-analytics-engine",
+   "rel": "duckdb-analytics-engine",
+   "marker": "[fed: tier=fed-agent-subagent]",
+   "carried": [],
+   "sha_before": "e58ee5bc9d91e6fa",
+   "sha_after": "965781e91177761f"
+  },
+  {
+   "skill": "wawabot-anthropology-surface",
+   "rel": "wawabot-anthropology-surface",
+   "marker": "[fed: floors=[F2, F5, F6, F7, F9, F10, F13], auto=T1, risk=medium]",
+   "carried": [],
+   "sha_before": "cb23c8890bd7caff",
+   "sha_after": "7f9e255e1fab01f4"
+  },
+  {
+   "skill": "image-text-editing",
+   "rel": "creative/image-text-editing",
+   "marker": "[fed: tier=fed-multimodal-vision]",
+   "carried": [],
+   "sha_before": "dc5352461660821a",
+   "sha_after": "783252e1d0e67e92"
+  },
+  {
+   "skill": "forge-vision-densify",
+   "rel": "forge-vision-densify",
+   "marker": "[fed: tier=fed-vision-governance, auto=T1, risk=medium]",
+   "carried": [],
+   "sha_before": "39ee41e328833134",
+   "sha_after": "4839cd8a5f8c38d0"
+  },
+  {
+   "skill": "mata",
+   "rel": "mata",
+   "marker": "[fed: tier=fed-multimodal-vision]",
+   "carried": [],
+   "sha_before": "be303cb038ed35fb",
+   "sha_after": "914b27367223d437"
+  },
+  {
+   "skill": "mmx-cli",
+   "rel": "mmx-cli",
+   "marker": "[fed: tier=fed-multimodal-vision]",
+   "carried": [],
+   "sha_before": "0bbc1b34fe1b372c",
+   "sha_after": "e76ea46e21bdeb73"
+  },
+  {
+   "skill": "fi-zai-probe",
+   "rel": "fi-zai-probe",
+   "marker": "[fed: floors=[F2, F4], risk=low]",
+   "carried": [],
+   "sha_before": "e4a2a05afc1a184f",
+   "sha_after": "38610fc83792f404"
+  },
+  {
+   "skill": "forge-code-analysis",
+   "rel": "forge-code-analysis",
+   "marker": "[fed: tier=fed-reasoning-heavy, auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "c3e0ff9a42e5eb9b",
+   "sha_after": "fa01778a58a94941"
+  },
+  {
+   "skill": "hermes-federated-identity",
+   "rel": "hermes-federated-identity",
+   "marker": "[fed: tier=fed-long-context]",
+   "carried": [],
+   "sha_before": "9ae298c5368d466a",
+   "sha_after": "2857ba0e35c8b1b2"
+  },
+  {
+   "skill": "qwen-harness-tools",
+   "rel": "qwen-harness-tools",
+   "marker": "[fed: tier=fed-multimodal-vision, floors=[F1, F2, F4, F7], auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "0da78f2e6d57ccb3",
+   "sha_after": "c17bbe3f53d1093d"
+  },
+  {
+   "skill": "forge-fastmcp",
+   "rel": "forge-fastmcp",
+   "marker": "[fed: tier=fed-agent-subagent, floors=[F1, F2, F4, F7], auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "87e205bc7a9e8a6f",
+   "sha_after": "cf48092398e72184"
+  },
+  {
+   "skill": "arifos-eight-verb-canonical",
+   "rel": "arifos-eight-verb-canonical",
+   "marker": "[fed: tier=fed-reasoning-heavy, floors=[F1, F2, F7, F11], auto=T1, risk=medium]",
+   "carried": [],
+   "sha_before": "06ac79c8c2a061fb",
+   "sha_after": "b99159a0c3eab779"
+  },
+  {
+   "skill": "delta-omega-psi-multimodal-cognition",
+   "rel": "delta-omega-psi-multimodal-cognition",
+   "marker": "[fed: tier=fed-multimodal-vision, risk=LOW]",
+   "carried": [],
+   "sha_before": "24ebc475dccaa775",
+   "sha_after": "de0484494f2f88ed"
+  },
+  {
+   "skill": "asi-summarize",
+   "rel": "asi-summarize",
+   "marker": "[fed: tier=fed-long-context]",
+   "carried": [],
+   "sha_before": "70138f90c539ccc0",
+   "sha_after": "18180efcfba4496f"
+  },
+  {
+   "skill": "qwencloud-image-generation",
+   "rel": "qwencloud-image-generation",
+   "marker": "[fed: tier=fed-multimodal-vision]",
+   "carried": [],
+   "sha_before": "13e49ada583e43a8",
+   "sha_after": "4bc654d721dd4f37"
+  },
+  {
+   "skill": "dissipative-transition-hold",
+   "rel": "dissipative-transition-hold",
+   "marker": "[fed: floors=[F2, F4, F7, F9, F10, F13], auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "8122c9991cf8ccda",
+   "sha_after": "f93c211ca66cad24"
+  },
+  {
+   "skill": "mapbox-cartography-gis",
+   "rel": "mapbox-cartography-gis",
+   "marker": "[fed: tier=fed-reasoning-heavy]",
+   "carried": [],
+   "sha_before": "c99715685309b4c5",
+   "sha_after": "52f63c60a7b43c8f"
+  },
+  {
+   "skill": "agi-nusantara-substrate",
+   "rel": "agi-nusantara-substrate",
+   "marker": "[fed: auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "f1a3ca3bdf4de565",
+   "sha_after": "6232df498d8f0e92"
+  },
+  {
+   "skill": "qwencloud-text",
+   "rel": "qwencloud-text",
+   "marker": "[fed: tier=fed-multimodal-vision]",
+   "carried": [],
+   "sha_before": "f3d9bce57d5cb97b",
+   "sha_after": "0ea2e71c11ed1fa7"
+  },
+  {
+   "skill": "qwencloud-audio-tts",
+   "rel": "qwencloud-audio-tts",
+   "marker": "[fed: tier=fed-realtime-voice]",
+   "carried": [],
+   "sha_before": "9bb48c6ab079b2b7",
+   "sha_after": "f3fe90e68b509d66"
+  },
+  {
+   "skill": "qwencloud-video-generation",
+   "rel": "qwencloud-video-generation",
+   "marker": "[fed: tier=fed-multimodal-vision]",
+   "carried": [],
+   "sha_before": "3f355c22605eb857",
+   "sha_after": "0e46966de2697504"
+  },
+  {
+   "skill": "forge-agentic-web-builder",
+   "rel": "forge-agentic-web-builder",
+   "marker": "[fed: tier=fed-agent-subagent, floors=[F1, F2, F4, F11], auto=ANNOUNCE, risk=T2]",
+   "carried": [],
+   "sha_before": "e2934315d0753db4",
+   "sha_after": "d6d1e5fa1eec85ae"
+  },
+  {
+   "skill": "aaa-shadow-mode",
+   "rel": "aaa-shadow-mode",
+   "marker": "[fed: tier=fed-shadow-compute, auto=T1, risk=low]",
+   "carried": [],
+   "sha_before": "272c46637fd6034b",
+   "sha_after": "6f02ea438c0098d4"
+  },
+  {
+   "skill": "forge-model-monitor",
+   "rel": "forge-model-monitor",
+   "marker": "[fed: tier=fed-agent-subagent, auto=T0, risk=low]",
+   "carried": [],
+   "sha_before": "9403560785cbcdf3",
+   "sha_after": "a01fc26e8d448bab"
+  },
+  {
+   "skill": "forge-komda-color-law",
+   "rel": "forge-komda-color-law",
+   "marker": "[fed: tier=fed-multimodal-vision]",
+   "carried": [],
+   "sha_before": "bf64edcc9a6b4d72",
+   "sha_after": "111dc38fb53df054"
+  },
+  {
+   "skill": "hermes-telegram-stack-zen",
+   "rel": "hermes-telegram-stack-zen",
+   "marker": "[fed: tier=federation-architect]",
+   "carried": [],
+   "sha_before": "97a76cb675023581",
+   "sha_after": "3c286d17c3e7316c"
+  },
+  {
+   "skill": "forge-infra-guardian",
+   "rel": "forge-infra-guardian",
+   "marker": "[fed: tier=fed-agent-subagent, auto=T0, risk=low]",
+   "carried": [],
+   "sha_before": "891abea68e02426d",
+   "sha_after": "6b32b9992cf88395"
+  }
+ ],
+ "skipped": [
+  [
+   "capabilities/media/AAA-video-emd-pipeline/SKILL.md",
+   "marker not in description"
+  ],
+  [
+   "runtime/SKILL.md",
+   "unbalanced marker"
+  ],
+  [
+   "forge-react-spa-discipline/SKILL.md",
+   "unbalanced marker"
+  ],
+  [
+   "forge-postgres-schema-design/SKILL.md",
+   "unbalanced marker"
+  ],
+  [
+   "forge-fastapi-api-builder/SKILL.md",
+   "unbalanced marker"
+  ],
+  [
+   "forge-did-web-identity/SKILL.md",
+   "unbalanced marker"
+  ],
+  [
+   "forge-governance-jsonld/SKILL.md",
+   "unbalanced marker"
+  ],
+  [
+   "substrate/SKILL.md",
+   "unbalanced marker"
+  ],
+  [
+   "federation-connect-headscale/SKILL.md",
+   "unbalanced marker"
+  ],
+  [
+   "forge-redis-qdrant-integration/SKILL.md",
+   "unbalanced marker"
+  ],
+  [
+   "warga/SKILL.md",
+   "unbalanced marker"
+  ],
+  [
+   "docs/SKILL.md",
+   "unbalanced marker"
+  ],
+  [
+   "forge-design-intelligence/SKILL.md",
+   "unbalanced marker"
+  ],
+  [
+   "forge-visual-qa-w3/SKILL.md",
+   "unbalanced marker"
+  ],
+  [
+   "forge-nextjs-mastery/SKILL.md",
+   "unbalanced marker"
+  ],
+  [
+   "governance/capability-addressing/SKILL.md",
+   "marker not in description"
+  ],
+  [
+   "forge-federation-manifest/SKILL.md",
+   "unbalanced marker"
+  ],
+  [
+   "forge-mcp-a2a-agentic/SKILL.md",
+   "unbalanced marker"
+  ],
+  [
+   "forge-tailwind-tokens/SKILL.md",
+   "unbalanced marker"
+  ]
+ ]
+}
