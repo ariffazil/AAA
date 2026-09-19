@@ -34,7 +34,8 @@ status: NEW (Phase 3 gap fill)
 owner: A-FORGE
 capability_tier: fed-long-context
 ecology_state: WARM
----# FORGE · context-compressor
+---
+# FORGE · context-compressor
 
 > Cross-runtime compression gate for FORGE-* tools and AGI-* long-log producers.
 > Used when raw input would exceed the host runtime's context budget.
