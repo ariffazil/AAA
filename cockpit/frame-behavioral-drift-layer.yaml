@@ -1,0 +1,117 @@
+# FRAME Behavioral Drift Layer — Proposal
+# ═══════════════════════════════════════
+# Enhancement to FRAME observer organ
+# Authority: F13 SOVEREIGN (Arif Fazil)
+# Forged: 2026-09-19 by FI-008 (Kimi Code)
+# Status: PROPOSAL — requires FRAME organ update
+#
+# Current FRAME measures STRUCTURAL drift (latency, health endpoints).
+# This proposal adds BEHAVIORAL drift measurement.
+# FRAME currently reports: all organs at 0.95 OPTIMAL, 0 drifts.
+# Reality: C_dark is54% above baseline. Behavioral drift is invisible.
+#
+# DITEMPA BUKAN DIBERI.
+
+schema_version: "1.0.0"
+frame_ref: /root/frame/
+created: 2026-09-19
+purpose: "Add behavioral pattern tracking alongside structural health probes"
+
+# ─────────────────────────────────────────────
+# CURRENT FRAME LIMITATIONS
+# ─────────────────────────────────────────────
+
+current_capabilities:
+  structural_drift:
+    - "Per-organ latency"
+    - "Health endpoint status"
+    - "Service availability"
+    measured: true
+    
+  behavioral_drift:
+    - "Tool-call pattern entropy"
+    - "Question-back rate"
+    - "Verbosity trends"
+    - "Receipt-to-output ratio"
+    - "Shadow activation frequency"
+    measured: false  # THIS IS THE GAP
+
+# ─────────────────────────────────────────────
+# PROPOSED BEHAVIORAL DRIFT METRICS
+# ─────────────────────────────────────────────
+
+metrics:
+
+  - id: BEHAV-DRIFT-001
+    name: tool_call_entropy
+    description: "Shannon entropy of tool-call distribution per session"
+    formula: "H = -Σ p(tool_i) × log2(p(tool_i))"
+    interpretation:
+      high_entropy: "Agent uses diverse tool set — healthy exploration"
+      low_entropy: "Agent stuck in routing pattern — shadow activation"
+      zero_entropy: "Agent calls same tool repeatedly — stuck/fossilized"
+    baseline: "Compute from last20 sessions per agent"
+    alert_threshold: "H drops below 50% of baseline"
+    implementation: "frame_probe.behavioral.tool_call_entropy(session_tool_calls)"
+
+  - id: BEHAV-DRIFT-002
+    name: question_back_rate
+    description: "Frequency of agent asking human questions vs acting"
+    formula: "QBR = questions_asked / total_responses"
+    interpretation:
+      low_qbr: "Agent acts on context — healthy"
+      high_qbr: "Agent deflects to human — attention leak shadow"
+      zero_qbr: "Agent never asks — may miss genuine ambiguity"
+    baseline: "0.1-0.3 is healthy range for coding agents"
+    alert_threshold: "QBR > 0.5"
+    implementation: "frame_probe.behavioral.question_back_rate(agent_responses)"
+
+  - id: BEHAV-DRIFT-003
+    name: verbosity_drift
+    description: "Trend in response length over time"
+    formula: "VD = slope(response_length over last N responses)"
+    interpretation:
+      increasing: "Agent becoming more verbose — narrative momentum shadow"
+      stable: "Healthy consistency"
+      decreasing: "Agent becoming terse — may be losing context"
+    baseline: "Compute per-agent baseline from last20 sessions"
+    alert_threshold: "VD > +20% per session"
+    implementation: "frame_probe.behavioral.verbosity_drift(agent_response_lengths)"
+
+  - id: BEHAV-DRIFT-004
+    name: receipt_output_ratio
+    description: "Bytes of receipt/metadata vs bytes of useful output"
+    formula: "ROR = receipt_bytes / output_bytes"
+    interpretation:
+      low_ror: "Substance-focused — healthy"
+      high_ror: "Receipt theater — shadow activation"
+    baseline: "< 2.0 is healthy"
+    alert_threshold: "ROR > 3.0"
+    implementation: "frame_probe.behavioral.receipt_output_ratio(tool_calls)"
+
+  - id: BEHAV-DRIFT-005
+    name: shadow_activation_rate
+    description: "Frequency of mechanical shadow check triggers per session"
+    formula: "SAR = shadow_triggers / total_interactions"
+    interpretation:
+      low_sar: "Agent operating within persona — healthy"
+      high_sar: "Shadow frequently activated — needs attention"
+    baseline: "< 0.1 is healthy"
+    alert_threshold: "SAR > 0.3"
+    implementation: "frame_probe.behavioral.shadow_activation_rate(session, checks)"
+
+# ─────────────────────────────────────────────
+# IMPLEMENTATION PATH
+# ─────────────────────────────────────────────
+
+implementation:
+  phase_1: "Add tool_call_entropy and question_back_rate to frame_probe output"
+  phase_2: "Add verbosity_drift and receipt_output_ratio"
+  phase_3: "Add shadow_activation_rate (requires mechanical checks deployed)"
+  phase_4: "Integrate with enhanced-shadow-matrix-v2 for per-actor behavioral profiles"
+
+  integration_points:
+    - "frame_probe: add behavioral section alongside structural"
+    - "frame_drift: compare behavioral metrics against baseline"
+    - "frame_trend: track behavioral metrics over time"
+    - "well_observe_federation_thermal: include behavioral health score"
