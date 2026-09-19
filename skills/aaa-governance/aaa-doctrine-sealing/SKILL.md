@@ -280,7 +280,55 @@ floor ratification** — and say so in the reply: doctrine binds by canon, only 
 edit `FLOOR_TABLE.json` (13 floors — constitutional surface); an amendment is a proposal, and reporting it
 as live is a false receipt.
 
-## M10 — Pitfalls (union of both bodies)
+## M10 — Canon Refactoring Doctrine (F13 2026-09-20)
+
+When canon files accumulate (69+ files = compression failure, not knowledge surplus), refactor using the Tier-2 Compression path:
+
+```
+Theories (69 files)
+→ 13 Constitutional Floors (each floor = one facet of reality defended)
+→ 1 Kernel (INIT::GODEL_LOCK)
+→ 1 Invariant (Reality > Everything)
+```
+
+### The 13 Floors as 13 Defenses of Reality
+
+Each floor protects one specific facet of reality from corruption:
+F01=consequence, F02=observation, F03=attestation, F04=representation, F05=coexistence, F06=personhood, F07=reality-exceeds-model, F08=elegance, F09=no-ghost-reality, F10=structure, F11=identity, F12=origin, F13=authority.
+
+### SEAL-REFRACTOR Audit Test
+
+Every canon document must answer three questions:
+```
+Which floor?
+Why that floor?
+What invariant changes if the document disappears?
+```
+If answer is "None" → Archive.
+
+### Compression Doctrine
+```
+Theories are abundant.
+Constitutional surface area is expensive.
+Compress. Do not add.
+Do not add floors. Do not add doctrines. Do not add primitives.
+```
+
+### Blind Spot: Floor > Reality
+
+If floors become sacred — if the constitution sits above reality — shadow reborn. The Gödel Lock Level 2: "Constitution cannot become authority above reality." If reality contradicts a floor, reality wins.
+
+### What NOT to Refactor Into a Floor
+
+- APEX Theory = runtime selector, not constitutional floor
+- Theory of Paradox Conductance = F6 + F7 (dignity conflict or model limit)
+- Master Paradox = F7 HUMILITY (limit statement, not sovereignty)
+
+**Full reference:** `/root/AAA/canon/TIER-2-COMPRESSION-2026-09-20.md`, `/root/AAA/canon/CANON-FLOOR-INDEX-2026-09-20.md`
+
+---
+
+## M11 — Pitfalls (union of both bodies)
 
 **Ledger and layer traps**
 
