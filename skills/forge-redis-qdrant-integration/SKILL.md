@@ -9,7 +9,8 @@ floor_scope: ['F1', 'F2', 'F4']
 autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----# ⚒️ Redis + Qdrant Integration — Caching & Vector Memory
+---
+# ⚒️ Redis + Qdrant Integration — Caching & Vector Memory
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.
 

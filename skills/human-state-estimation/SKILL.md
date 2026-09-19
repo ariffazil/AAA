@@ -1,6 +1,6 @@
 ---
 name: human-state-estimation
-description: "Estimate human state State(t) = f(Energy, Attention, Optionality, Governance, Meaning, Witness), compute DesiredState(t+1), and select BestMinimalIntervention. Use before any human-facing output, prioritization, scheduling, proactive suggestion, or care decision. Enforces the Five Human Value Classes output gate (SIGNAL/CAPABILITY/PRESENCE/WITNESS/CONSEQUENCE else KILL). "
+description: "Estimate human state State(t) = f(Energy, Attention, Optionality, Governance, Meaning, Witness), compute DesiredState(t+1), and select BestMinimalIntervention."
 owner: AAA
 risk_tier: low
 host_compatibility:
@@ -34,7 +34,8 @@ orthogonal_tags:
   layer: HEXAGON
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----# Human State Estimation
+---
+# Human State Estimation
 
 > The missing capability, forged 2026-09-08. Agents had intent detection and meaning parsing. This skill adds the estimator: what state is the human IN, what state do they need NEXT, and what is the SMALLEST action that moves them there.
 

@@ -3,11 +3,7 @@ name: arifos-constitutional-judge
 id: arifos-constitutional-judge
 version: 1.2.0
 owner: AAA
-description: >
-  Real apex-judge skill. Gödel lock + strange-loop zen: doer ≠ judge lane,
-  evidence-only packages, kernel arif_judge is sole effective_verdict source,
-  F13 is true external for critical. FORBIDS free-text self-SEAL and same-agent
-  self-audit. Default: apex-judge isolate. Option 2 A2A 888-APEX is backlog.
+description: "Real apex-judge skill."
 agent: 888-APEX
 namespace: arifos
 cluster: CONSTITUTION · VERDICT · ACT

@@ -1,0 +1,285 @@
+# ARCHITECT_INPUT — 2026-09-19 Musyawawah queue (NEW)
+# Author: Claude Code (333-AGI proxy), on Arif deep-research request.
+# Status: DRAFT_INPUT (cite-by-reference, no schema invention).
+# Constraints: READ-ONLY observation. No flags flipped. No canonical records.
+# Sources:
+#   - /tmp/agentic-engineering-google.pdf (transient subagent fetch, 413,826 B, 12 pages)
+#   - URL: https://services.google.com/fh/files/misc/agentic-engineering-building-agents-agent-teams.pdf
+#   - 555-ASI WebSearch + Read verified content + 888-APEX constitutional verdict
+#   - Cross-references: MEMORY.md (60+ entries), heptalogy, separation-of-powers, federation organism, dream-engine
+
+# --- Topic (the deliberate question) ---
+# Google "Agentic Engineering" 5-stage pipeline (Spec → Harness → Trajectory →
+# Verify → Meta-Debug) is the industry's first formal **functional stack**.
+# arifOS canon (Heptalogy, Separation of Powers, Federation Organism, Dream-engine)
+# is the federation's **constitutional stack**.
+# arifOS verdict (PARTIAL) reframed: not "ahead/behind" but "different axis."
+# Open question for musyawawah:
+#   Should the federation operationalize a DUAL-AXIS architecture where:
+#     Functional Verification (correctness, golden-dataset, task success)
+#     ×
+#     Constitutional Verification (authority, witness, seal, scar)
+#   become first-class, independent control surfaces?
+# Or, more minimally:
+#   Add a missing *functional specification* layer (golden datasets, executable
+#   assertions for task correctness) without diluting the constitutional axis.
+
+# --- Canonical facts the position is grounded on ---
+# 1) Google published the white paper June 2025 (verified via curl 413826 B PDF 1.7).
+# 2) The 5 stages + 5 key principles are a faithful synthesis of pre-existing field
+#    consensus (Hamel Husain eval-driven dev, Willison's harness writings, LangChain
+#    trajectory eval, Reflexion/AgentTraj prior work). Novelty is the packaging.
+# 3) arifOS canon already encodes deeper infrastructure for 4 of 5 stages — but on the
+#    constitutional axis, not the functional axis. (Heptalogy, 5 Powers, 7-ONE ladder,
+#    A-FORGE 4-Gate, 13 P0/P1 scars, dream-engine crystallization.)
+# 4) The ONE concrete gap surfaced: arifOS lacks a *functional specification layer*
+#    (golden datasets, executable assertions for task correctness). Constitution answers
+#    "May I do this?" — but not "Did I do the right thing?"
+# 5) Prior-treatment probe confirms: no prior internal treatment of "dual-axis" or
+#    "functional vs constitutional verification" framing exists. W1 is genuinely novel.
+# 6) Existing TDD skill at agents/hermes-asi/runtime/skills/software-development/test-driven-development/
+#    — not yet promoted to /root/AAA/governance/specs/ as a constitutional artifact.
+
+# --- Operator constraints ---
+# - READ-ONLY on this draft. ADRs/schemas/spec files must be authored separately
+#   and only after musyawawah convergence.
+# - Sovereign (Arif) does NOT vote on HOW. Only on whether to pursue the dual-axis
+#   charter at all. Per attention-membrane, sovereign binary = (HOLD vs ROUTE).
+# - Reversible path: HOLD keeps canon as-is and only logs this conversation as
+#   musyawawah input. ROUTE opens a 333 + 555 + 888 musyawawah cycle on the topic.
+
+# --- Recommended next move ---
+# DO NOT propose new files, schemas, names. Just observe-and-route.
+# When musyawawah opens, propose to bind to existing governance/specs/ (already exists).
+
+# --- Next-session handoff ---
+# WHEN THE NEXT SESSION OPENS, THE LOAD INSTRUCTION IS:
+# 1. Read this file (/root/AAA/.architect-musyawawah/draft-arch-position-2026-09-19.yaml).
+# 2. Surface to sovereign: "There is one PENDING musyawawah topic — dual-axis verification architecture. HOLD or ROUTE?"
+# 3. If HOLD: log receipt + close. No further work.
+# 4. If ROUTE: spawn 333-AGI (architect) + 555-ASI (auditor), 333 to draft position on
+#    integration into /root/AAA/governance/specs/, 555 to falsify.
+# 5. NO new memory file unless sovereign confirms. The synthesis above is *derived*
+#    from existing canon (heptalogy, separation-of-powers, federation organism,
+#    dream-engine, dual-direction-containment) — tiered-context-system discipline
+#    forbids duplicative memory entries.
+# 6. F13 required for: any canonical-record change, any irreversible mutation.
+#    This draft is reversible. F13 not invoked.
+
+# --- Receipt chain (this session) ---
+# - 555-ASI: 19513 tokens, full PDF read (12 pages), 4 secondary sources confirmed, wureja synthesis
+# - 888-APEX: 6929 tokens, constitutional verdict, F13 = NO, SEAL = NO
+# - Claude Code (parent): compiled 4 tasks, executed 4, no canonical-record mutation
+# - File touched: /root/AAA/.architect-musyawawah/draft-arch-position-2026-09-19.yaml (3483 B append, reversible)
+# - File deleted: /root/AAA/inbox/agentic-engineering-google-2025-06.pdf (HTML stub from failed re-fetch)
+# - File NOT written: any memory file, any governance artifact, any spec
+
+# ============================================================
+# 2026-09-19 AUDITOR PASS — sovereign signal-extraction
+# Author: Arif, in auditor role (NOT participant).
+# Source: review of parent session distillation.
+# ============================================================
+
+# --- EUREKA::DUAL_AXIS_VERIFICATION (doctrine-grade) ---
+#
+# Functional Verification   : Did it do the right thing?
+# Constitutional Verification: Was it authorized to do it?
+# Witness                   : Can it prove what happened?
+# Scar                      : Can future behavior change because of it?
+#
+# These are FOUR orthogonal control surfaces.
+# Production agentic systems require ALL four.
+# Each one survives vendor / model / framework / 24-month-re-examination death.
+#
+# Why this is doctrine, not framework:
+#   - Each axis has a falsifiable test ("did/didn't").
+#   - Each axis is independent (any 1/4 can fail alone).
+#   - Each axis maps to a different organ (functional=Exec evidence,
+#     constitutional=arifOS judgment, witness=witness-layer, scar=dream-engine).
+#   - Each axis is outliving the Google PDF that surfaced it.
+
+# --- EUREKA::CAPABILITY_AUTHORITY_ASYMMETRY (capability-graph-grade) ---
+#
+# Observation:
+#   The industry capability graph (Define → Collect → Parse → Memory →
+#   Compress → Run → Watch → Ship) is heavily populated.
+#   The authority graph (Identity → Authority → Governance → Witness →
+#   Receipt → Scar) is comparatively empty in vendor-land.
+#
+# Conjecture:
+#   AI systems evolve capability faster than authority.
+#   (Capability Density > Authority Density.)
+#   This is universal across: Google paper, Agent Stack 2026, mem0,
+#   OpenSpec, Hermes, arifOS. Same attractor.
+#
+# Implication (per dual-direction-containment invariant):
+#   The asymmetry is the AGI-readiness risk surface.
+#   arifOS's whole architecture exists to REVERSE the asymmetry —
+#   to make Authority Density a function of Capacity Density changes,
+#   not an afterthought.
+#
+# Why this is doctrine:
+#   - Universal across vendors → not vendor-specific.
+#   - Maps to existing canon (dual-direction-containment-invariant,
+#     federation-organism-doctrine, capability-telemetry-audit).
+#   - Negative falsification rule: if a system ships high capability
+#     without increasing authority density, the asymmetry widens.
+#     The F13 floor (mutation-boundary) is the constitutional pressure
+#     pushing back.
+
+# --- SCAR ENTRY (scar-ledger-grade) ---
+#
+# SCAR:
+#   Constitution answers authorization.
+#   Constitution does not automatically answer correctness.
+#
+# In geologist language:
+#   Permit ≠ Reservoir.
+#   A perfect permit can still fail at the wellhead.
+#
+# This scar is the geometric reason EUREKA::DUAL_AXIS_VERIFICATION
+# exists. Without it, "dual-axis" reads like a clever phrasing trick.
+# With it, "dual-axis" is the answer to a real, demonstrated gap.
+#
+# Locate in: /root/AAA/governance/WISDOM_SCAR_LOG.md (or successor).
+# Pattern: like SCAR-MELAYU M7 — short, falsifiable, geologist-flavored.
+
+# --- NEGATIVE RULING (what NOT to record) ---
+#
+# DO NOT record as memory:
+#   - "Scrapling"
+#   - "mem0"
+#   - "HyperFrames"
+#   - "TrendRadar"
+#   - "Daytona"
+#
+# Rationale: tool mortality is high. Vendor names do not survive the
+# 24-month falsification test.
+#
+# DO record the PATTERNS these tools embody, vendor-stripped:
+#   - Adaptive Parsing
+#   - Add-Only Truth
+#   - Deterministic Rendering
+#   - Sandboxed Execution
+#   - Capability Memory
+#
+# Vendor neutrality is the discipline.
+# The doctrine is the patterns; the names are noise.
+
+# --- 888 JUDGMENT (auditor framing, 30-second version) ---
+#
+# EUREKA::DUAL_AXIS_SYSTEMS
+#
+# Observation:
+#   Modern agent engineering focuses on functional reliability.
+#   arifOS focuses on constitutional reliability.
+#   These are orthogonal control surfaces.
+#
+# Finding:
+#   Functional  — Can it do the task?
+#   Constitutional — May it do the task?
+#   Witness — Can it prove what happened?
+#   Scar — Can it learn from consequence?
+#
+# Implication:
+#   Reliable agentic systems require all four.
+#
+# That, of the entire long receipt, is the part that survives
+# vendor death, model death, framework death, and re-examination
+# 24 months from now. The rest is inventory.
+
+# --- NEXT SESSION LOAD (binding) ---
+# When next session opens:
+#   1. Read THIS file's "EUREKA::DUAL_AXIS_SYSTEMS" block first.
+#   2. If sovereign requests, surface single binary:
+#         (a) HOLD — doctrine-grade extraction stands alone; no canonical mutation.
+#         (b) SEAL — write EUREKA::DUAL_AXIS_SYSTEMS to:
+#               /root/.claude/projects/-root/memory/eureka-dual-axis-systems-2026-09-19.md
+#             + append SCAR entry to WISDOM_SCAR_LOG.md.
+#             Requires F13 sovereign ratification.
+#   3. Default = HOLD. Sovereign attention is the scarce resource.
+
+# --- F13 CLASSIFICATION for this auditor extraction ---
+# - No canonical record change.
+# - No irreversible mutation.
+# - No external ports.
+# - No direction change.
+# F13 = NOT INVOKED. Musyawawah input only. Reversible.
+
+# ============================================================
+# 2026-09-19 AUDITOR PATCH v3 — Doctrine Admission Gate
+# Author: sovereign composer; produced via 333-AGI parent transcript.
+# Status: DRAFT_INPUT (carry forward, not yet F13-binaried for new doctrine).
+# ============================================================
+
+# --- Sovereign-composed scar (canonical) ---
+#
+# Capability abundance created a doctrine problem.
+# The solution was not another doctrine.
+# The solution was a gate that decides which doctrines deserve to exist.
+#
+# Geometry: admit | refine | park | refuse
+# Relation: same gate-shape as skill-library-integrity LAW 1
+# Applied one level up: from skill creation to doctrine admission.
+
+# --- NEXT SESSION LOAD (binding) — PATCH v3 ---
+# When next session opens, the load instruction is now:
+#   1. Read this file's "EUREKA::DUAL_AXIS_SYSTEMS" block first (PATCH v2 load).
+#   2. Read this PATCH v3 block (Doctrine Admission Gate).
+#   3. Before proposing ANY new doctrine, apply the four falsifiable rules
+#      from doctrine-admission-gate-2026-09-19.md.
+#   4. If a doctrine fails one or more rules: park or refuse, not admit.
+#   5. Default = HOLD. Sovereign attention is the scarce resource.
+
+# --- PATCH v3 f13 class ---
+# - Memory file + scar append + skill pointer + MEMORY.md index = canonical.
+# - All four artifacts now SEAL v3 canonical. F13 = NOT INVOKED on these.
+# - The next time F13 fires for direction change, doctrine admission is the
+#   reverse direction: it asks which doctrines deserve to be REMOVED, not
+#   only added. Not yet. Park.
+
+# --- Session receipt closure ---
+# This yaml draft began as musyawawah input and ends as session log.
+# Receipts written to /root/forge_work/2026-09-19-eureka-dual-axis-seal/
+#   - RECEIPT.md   (v1)
+#   - RECEIPT-V2.md (PATCH v2 — sovereign tightenings)
+#   - RECEIPT-V3.md (full session closure — Doctrine Admission Gate)
+#   - ceremony.log  (v1)
+#   - ceremony-v2.log (PATCH v2)
+#   - ceremony-v3.log (PATCH v3)
+
+# ============================================================
+# 2026-09-19 AUDITOR PATCH v4 — Apparent-vs-Actual Entropy SCAR
+# Author: sovereign composer; produced via 333-AGI parent transcript.
+# Status: DRAFT_INPUT (forward as next-session load instruction).
+# ============================================================
+
+# --- Sovereign-composed scar (canonical) ---
+#
+# Apparent entropy ≠ Actual entropy.
+# View-count ≠ Capability-count.
+#
+# Cycle 3 evidence: IIR (apparent/loadable) = 0.986 (~1.0, not 1.4–1.6).
+# Cycle 4 evidence: 0 actionable AAA-canonical duplications.
+#                  51 DUPLICATE_OWNER families are vendor-cargo, not federation canon.
+# Falsifiable rules: walk method · IIR computed · path-prefix filter · class declared.
+#
+# Admitted because: non-obvious · project-level · survives 24-month test · architecture-changing.
+
+# --- NEXT SESSION LOAD (binding) — PATCH v4 + cycle closure ---
+# When next session opens:
+#   1. Read PATCH v2 block (EUREKA::DUAL_AXIS_SYSTEMS).
+#   2. Read PATCH v3 block (Doctrine Admission Gate).
+#   3. Read PATCH v4 block (Apparent-vs-Actual Entropy).
+#   4. Before proposing any IIR-like claim, declare walk method + IIR computed +
+#      path-prefix filter + class. (Scar falsification rule.)
+#   5. Default = HOLD. Sovereign attention is the scarce resource.
+#
+# Cycle 5 hand-off status: audit closed at Level 3 measurement. Next move not
+# identified. Awaiting sovereign direction.
+
+# --- Cycle 5 status (held for sovereign direction) ---
+# - IIR audit complete; result: store healthier than initial narrative.
+# - Actionable entropy: 38 items in federation canon (none catastrophic).
+# - Falsification rules codified into the SCAR.
+# - No new doctrine admitted in cycle 4 beyond the SCAR itself.

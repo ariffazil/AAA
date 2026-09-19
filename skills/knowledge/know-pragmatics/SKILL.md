@@ -1,6 +1,6 @@
 ---
 name: know-pragmatics
-description: "Pragmatics substrate — what works in practice vs what looks correct on paper. Load when deciding between theoretical optimal and operational viable, picking the cheapest reversible action, or evaluating whether a rule's exceptions have eaten its rule. USE WHEN: 'pragmatic', 'in practice', 'actually works', 'cheapest', 'reversible', 'good enough', 'is it worth it', 'effort vs value'. NOT for engineering sizing (use FORGE) or pure theory (use know-math/know-physics)."
+description: "Pragmatics substrate — what works in practice vs what looks correct on paper."
 version: "1.0"
 owner: AAA/knowledge
 risk_tier: low

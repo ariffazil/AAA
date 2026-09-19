@@ -1,11 +1,12 @@
 ---
 name: hermes-federated-identity
-description: "Federated multi-user, multi-group, identity routing, and memory partition controller for Hermes in arifOS. Use when adding/managing Telegram user IDs, group IDs, creating person/group lanes, inspecting allowed chats, or auditing memory isolation between private DMs and public groups. "
+description: "Federated multi-user, multi-group, identity routing, and memory partition controller for Hermes in arifOS."
 version: 1.0.0
 tags: [identity, multi-user, multi-group, telegram, memory-partition, lanes, hermes]
 capability_tier: fed-long-context
 ecology_state: WARM
----# Hermes Federated Identity & Memory Partition Doctrine (Zen Architecture)
+---
+# Hermes Federated Identity & Memory Partition Doctrine (Zen Architecture)
 
 > **DITEMPA BUKAN DIBERI — F13 SOVEREIGN GOVERNED**
 > Single Source of Truth for Multi-User, Multi-Group, and Memory-Mesh orchestration across Telegram and Hermes.

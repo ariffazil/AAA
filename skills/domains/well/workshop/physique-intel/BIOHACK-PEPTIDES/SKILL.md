@@ -1,6 +1,6 @@
 ---
 name: BIOHACK-PEPTIDES
-description: "SADO group pro-biohacker peptide intelligence — evidence tiers, dosing protocols, WADA/legal status, stacks, sourcing standards. Use when peptide/biohacking questions arise in SADO context or general peptide research."
+description: "SADO group pro-biohacker peptide intelligence — evidence tiers, dosing protocols, WADA/legal status, stacks, sourcing standards."
 category: research
 version: 1.0.0
 last_researched: 2026-08-20

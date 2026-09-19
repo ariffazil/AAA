@@ -3,7 +3,8 @@ name: browser-playwright-runner
 description: "Automated headless browser testing, end-to-end UI verification, full-page screenshot capture, visual regression checks, and client-side DOM assertions via Playwright. "
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
----# Browser Playwright UI & E2E Testing Skill (`browser-playwright-runner`)
+---
+# Browser Playwright UI & E2E Testing Skill (`browser-playwright-runner`)
 
 Enables AI agents to perform end-to-end web application testing, visual UI verification, interactive DOM testing, and client-side error auditing.
 

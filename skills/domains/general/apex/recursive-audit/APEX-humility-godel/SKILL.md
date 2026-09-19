@@ -1,6 +1,6 @@
 ---
 name: APEX-humility-godel
-description: "OWNER 3 of the human-alignment quartet. Self-correction of agent inference: falsification before claims, ≥3 alternatives, agent-shadow check, narrative-gravity resistance, overclaim detection, model-smaller-than-human. Modes: DECISION-REFLECT (absorbed AGI-decisions-reflect), COUNTERSTORY, SHADOW-CHECK. Load for any inference about humans, bonds, or seductive patterns."
+description: "OWNER 3 of the human-alignment quartet."
 ---
 
 # APEX-humility-godel — Owner 3: Reflect / Audit

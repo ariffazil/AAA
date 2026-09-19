@@ -9,7 +9,8 @@ floor_scope: ['F1', 'F4', 'F12']
 autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----# ⚒️ FastAPI API Builder — Organ Bridge Middleware
+---
+# ⚒️ FastAPI API Builder — Organ Bridge Middleware
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.
 

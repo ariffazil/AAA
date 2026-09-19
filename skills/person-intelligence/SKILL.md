@@ -1,10 +1,6 @@
 ---
 name: person-intelligence
-description: >
-  Use when the subject is a human being — gathering intelligence on a named person, building a
-  verifiable shareable dossier, mapping a public profile into persona/shadow, or assessing the
-  sovereign himself from session history. Five named modes over one person-intelligence lane,
-  governed by the human-meaning-membrane discipline.
+description: "Use when the subject is a human being — gathering intelligence on a named person, building a verifiable shareable dossier, mapping a public profile into persona/shadow, or assessing the sovereign himself from session history."
 version: 2.0.0
 tier: canonical
 authority: F13 sovereign in-chat order 2026-09-19 ("One capability, fifteen costumes")

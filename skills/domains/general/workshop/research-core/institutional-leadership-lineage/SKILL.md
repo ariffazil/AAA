@@ -1,6 +1,6 @@
 ---
 name: institutional-leadership-lineage
-description: "Use when profiling every holder of an office or seat. Reconstruct a whole succession — seat architecture, tenure, appointment basis — then assess each holder's fitness, in one delivered multi-holder archive."
+description: "Use when profiling every holder of an office or seat."
 version: 2.0.0
 triggers:
   - "every CEO and chairman ever"

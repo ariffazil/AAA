@@ -1,6 +1,6 @@
 ---
 name: institution-entropy-audit
-description: Enterprise Systems Auditor — reality-first audit of an agentic intelligence institution (arifOS federation or any VPS + memory + governance stack). Reduces entropy and improves coherence by tracing FLOW (Observe→Think→Judge→Witness→Act→Learn), finding broken arrows and dead weight, computing leverage points, and emitting a prescriptive verdict. Use for "audit this system", "what's the entropy here", "why isn't X feeding Y", SYSTEM_ENTROPY_REDUCTION missions.
+description: "Enterprise Systems Auditor — reality-first audit of an agentic intelligence institution (arifOS federation or any VPS + memory + governance stack)."
 ---
 
 # Institution Entropy Audit

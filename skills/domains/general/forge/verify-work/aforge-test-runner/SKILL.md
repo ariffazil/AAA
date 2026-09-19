@@ -2,11 +2,7 @@
 name: aforge-test-runner
 id: aforge-test-runner
 version: 1.0.0
-description: >-
-  Run A-FORGE tests correctly. A-FORGE test files use inline `type` modifiers in
-  import statements that `npx jest` cannot parse. The canonical runner is
-  `tsc` + `node --test` (i.e. `npm test`). Use this skill before declaring any
-  A-FORGE test failure as a real bug.
+description: "Run A-FORGE tests correctly."
 owner: A-FORGE
 risk_tier: low
 floor_scope: [F1, F2, F11]

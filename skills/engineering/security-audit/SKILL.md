@@ -2,11 +2,7 @@
 name: security-audit
 id: security-audit
 version: 1.0.0
-description: >
-  Static analysis + README truth checking. Multi-stage automated code health,
-  type-checking, linting, unit test coverage, and AST security vulnerability auditor.
-  Verify that repo READMEs accurately describe current structure, ports, dependencies,
-  and authority boundaries.
+description: "Static analysis + README truth checking."
 owner: AAA
 risk_tier: low
 autonomy_tier: T1

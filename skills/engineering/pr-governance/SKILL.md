@@ -2,11 +2,7 @@
 name: pr-governance
 id: pr-governance
 version: 2.0.0
-description: >
-  Full PR lifecycle: policy layer + checklist + pre-commit gate. High-level governance
-  for pull request review ensuring separation of duties, required signers, and constitutional
-  compliance before merge. Governed checklist for reviewing GitHub PRs. Pre-commit gate
-  for any organ repo with negative conformance testing.
+description: "Full PR lifecycle: policy layer + checklist + pre-commit gate."
 owner: AAA
 risk_tier: high
 autonomy_tier: T1

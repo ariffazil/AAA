@@ -28,7 +28,8 @@ floor_scope: [F2, F4, F9, F12]
 autonomy_tier: T1
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
----# Hermes Gateway Image Routing
+---
+# Hermes Gateway Image Routing
 
 Diagnose and fix how the Hermes Telegram gateway routes images to LLM models.
 
