@@ -1,0 +1,105 @@
+{
+  "ledger": "namespace-collapse-merge",
+  "operation": "merge_skill_clones",
+  "canonical_skill": "intelligence-briefing",
+  "canonical_path": "/root/AAA/skills/intelligence-briefing/SKILL.md",
+  "canonical_sha256": "89142cabd36b423c05e94585ecbdc70eb67b09d56dfbd6aa0dc092f094edf76e",
+  "canonical_size_bytes": 93465,
+  "authority": "F13 sovereign in-chat order 2026-09-19 \u2014 'One capability, fifteen costumes' (compress research/briefing empire)",
+  "date": "2026-09-19",
+  "merged_from": [
+    {
+      "original_path": "/root/AAA/skills/domains/general/workshop/research-core/executive-intelligence-briefing/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/intel-briefing/executive-intelligence-briefing/SKILL.md",
+      "sha256_skilmd_before_move": "8b2002b45662d647eac6c3ab612ef23d94120d6bafa9cb75d3e36cde9b1136a4",
+      "original_folder": "/root/AAA/skills/domains/general/workshop/research-core/executive-intelligence-briefing",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/intel-briefing/executive-intelligence-briefing",
+      "files_moved": [
+        "SKILL.md",
+        "references/dark-theme-html-template.md",
+        "references/petronas-case-study.md",
+        "references/shadow-analysis.md",
+        "references/sources-malaysia.md",
+        "templates/briefing_design_guide.md",
+        "templates/briefing_template.html"
+      ],
+      "size_bytes": 13330
+    },
+    {
+      "original_path": "/root/AAA/skills/domains/general/workshop/intel-brief/intelligence-brief-forge/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/intel-briefing/intelligence-brief-forge/SKILL.md",
+      "sha256_skilmd_before_move": "3e78ed4a8d7dcd2b78f7518c0972e2a4223de5f96f3d4ff3e7279c5ceaa409c1",
+      "original_folder": "/root/AAA/skills/domains/general/workshop/intel-brief/intelligence-brief-forge",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/intel-briefing/intelligence-brief-forge",
+      "files_moved": [
+        "SKILL.md"
+      ],
+      "size_bytes": 14891
+    },
+    {
+      "original_path": "/root/AAA/skills/domains/general/workshop/intel-brief/weekly-federation-deep-brief/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/intel-briefing/weekly-federation-deep-brief/SKILL.md",
+      "sha256_skilmd_before_move": "dee1ab6cb5712f474b54488c967db9a0f84a542d9e2683d01253196d940e4fd8",
+      "original_folder": "/root/AAA/skills/domains/general/workshop/intel-brief/weekly-federation-deep-brief",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/intel-briefing/weekly-federation-deep-brief",
+      "files_moved": [
+        "SKILL.md",
+        "references/agent-workbench-jsonl-parsing.md",
+        "references/cron-probes.md",
+        "references/template.md"
+      ],
+      "size_bytes": 12423
+    },
+    {
+      "original_path": "/root/AAA/skills/domains/general/workshop/research-core/professional-intelligence-briefing/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/intel-briefing/professional-intelligence-briefing/SKILL.md",
+      "sha256_skilmd_before_move": "35978278cc3a66d9e8823d5be1b7a927d7f07e1f76500f6e8f3837d939d5ee3f",
+      "original_folder": "/root/AAA/skills/domains/general/workshop/research-core/professional-intelligence-briefing",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/intel-briefing/professional-intelligence-briefing",
+      "files_moved": [
+        "SKILL.md",
+        "references/faisal-bakar-profile.md",
+        "references/malaysia-medical-tourism-kpj-2026.md",
+        "references/megah-1-discovery.md",
+        "references/megah-limbayong-appraisal.md",
+        "references/petronas-mss-vs-rating4-dynamics.md",
+        "references/petronas-restructuring-2025-2026.md",
+        "references/petronas-shadow-subsidiaries-2026.md",
+        "references/pttep-block-k-strategy.md",
+        "references/sabah-deepwater-block-p-geology.md",
+        "references/vending-pricing-shah-alam-2026.md"
+      ],
+      "size_bytes": 27256
+    },
+    {
+      "original_path": "/root/AAA/skills/research-briefing/political-intelligence-briefing/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/intel-briefing/political-intelligence-briefing/SKILL.md",
+      "sha256_skilmd_before_move": "55bd5981e6c6312eff4cbc2626b5e9aaf35e1cc0b868d9195db00c20b84e5c04",
+      "original_folder": "/root/AAA/skills/research-briefing/political-intelligence-briefing",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/intel-briefing/political-intelligence-briefing",
+      "files_moved": [
+        "SKILL.md",
+        "references/malaysia-political-sources.md"
+      ],
+      "size_bytes": 11605
+    },
+    {
+      "original_path": "/root/AAA/skills/domains/general/workshop/research-core/news-research-briefing/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/intel-briefing/news-research-briefing/SKILL.md",
+      "sha256_skilmd_before_move": "bd0274a48d412612b674d16337329ccd26117dc6d59bcfe47756e115910ab1f6",
+      "original_folder": "/root/AAA/skills/domains/general/workshop/research-core/news-research-briefing",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/intel-briefing/news-research-briefing",
+      "files_moved": [
+        "SKILL.md",
+        "references/external-ai-critique-pattern.md",
+        "references/malaysia-deep-dive-patterns.md",
+        "references/malaysia-election-live-coverage.md",
+        "references/market-data-sources.md",
+        "references/sources-malaysia.md"
+      ],
+      "size_bytes": 20128
+    }
+  ],
+  "note": "sha256_skilmd_before_move computed on the original SKILL.md prior to relocation; content unmodified by the move. All other files in each folder (references/, templates/) moved with their leaf folder; nothing deleted.",
+  "undo_command": "cd /root/AAA && git revert HEAD  (or: move each <leaf-folder> from merges/<merge>/ back to its original_folder recorded above)"
+}
