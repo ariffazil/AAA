@@ -3,7 +3,7 @@
 > **Forged:** 2026-09-09 (session: F13 chat + FI-008 canon mapping, seeded by external-AI trispine model + arXiv:2609.04894 justified-delegation)
 > **Eureka:** `EUREKA-2026-09-09-WRITE-PRICE-COLLAPSE-001` (canon/eureka-entries.jsonl)
 > **Classification:** Canonical Instruction | Binding: F1, F2, F7, F13
-> **Status:** F13_RATIFIED_CHAT — 999 SEAL ALIVE
+> **Status:** F13_RATIFIED_CHAT (2026-09-09) — 999 SEAL ALIVE
 > **DITEMPA BUKAN DIBERI**
 
 ## The Physics
