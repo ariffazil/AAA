@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shell MDS — The Bintulu Fault Line</title>
+<style>
+  :root{
+    --ink:#1a1612;
+    --blood:#8b1a1a;
+    --brass:#a08040;
+    --bone:#d8d0c0;
+    --steel:#5a5650;
+    --paper:#efeae0;
+    --rule:#c9c0ae;
+  }
+  @page { size:A4; margin:20mm 18mm 22mm 18mm;
+    @bottom-center{ content:"— " counter(page) " —"; font-family:"DejaVu Sans Mono",monospace; font-size:7.5pt; color:#5a5650; letter-spacing:.18em; }
+  }
+  @page:first { margin:0; }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    font-family:"DejaVu Serif",Georgia,"Times New Roman",serif;
+    font-size:9.6pt; line-height:1.5; color:var(--ink); background:var(--paper);
+  }
+  h1,h2,h3,h4,.mono,.kicker,.label,.tag,table,th,td,.num{
+    font-family:"DejaVu Sans Mono","Courier New",monospace;
+  }
+
+  .cover{
+    height:297mm; width:210mm; background:var(--ink); color:var(--bone);
+    padding:26mm 20mm; position:relative; page-break-after:always;
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(160,128,64,.13) 0 2px, transparent 2px),
+      radial-gradient(circle at 88% 8%, rgba(160,128,64,.13) 0 2px, transparent 2px),
+      radial-gradient(circle at 12% 92%, rgba(160,128,64,.13) 0 2px, transparent 2px),
+      radial-gradient(circle at 88% 92%, rgba(160,128,64,.13) 0 2px, transparent 2px);
+  }
+  .cover .stamp{
+    border:1px solid var(--brass); color:var(--brass);
+    display:inline-block; padding:3px 10px; font-size:7.5pt; letter-spacing:.34em;
+  }
+  .cover .hdr{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:30mm; }
+  .cover .cls{ font-size:7pt; letter-spacing:.22em; color:var(--steel); text-align:right; line-height:1.9; }
+  .cover hr{ border:0; border-top:1px solid #3a342c; margin:8mm 0; }
+  .cover .tense{ font-size:6.8pt; letter-spacing:.36em; color:var(--blood); }
+  .cover h1{
+    font-size:31pt; line-height:1.05; letter-spacing:-.01em; margin:4mm 0 0 0;
+    color:#f2ece0; font-weight:600; text-transform:uppercase;
+  }
+  .cover h1 em{ font-style:normal; color:var(--brass); }
+  .cover .sub{
+    font-family:"DejaVu Serif",Georgia,serif; font-size:12.5pt; line-height:1.45;
+    color:#bdb3a2; margin-top:7mm; max-width:150mm;
+  }
+  .cover .byline{
+    position:absolute; bottom:26mm; left:20mm; right:20mm;
+    display:flex; justify-content:space-between; align-items:flex-end;
+    font-size:7pt; letter-spacing:.2em; color:var(--steel); line-height:2;
+  }
+  .cover .byline strong{ color:var(--bone); font-weight:600; letter-spacing:.24em; }
+  .cover .motto{ color:var(--brass); letter-spacing:.3em; }
+
+  .wrap{ padding:0 2mm; }
+  .sect{ page-break-inside:auto; margin-bottom:9mm; }
+  .sect > h2{
+    font-size:8pt; letter-spacing:.3em; text-transform:uppercase; color:var(--blood);
+    border-bottom:1.6px solid var(--ink); padding-bottom:2.2mm; margin:0 0 5mm 0;
+    display:flex; justify-content:space-between; align-items:baseline;
+  }
+  .sect > h2 span.n{ color:var(--brass); letter-spacing:.14em; }
+  h3{ font-size:9.4pt; letter-spacing:.06em; margin:6mm 0 2.4mm; color:var(--ink); }
+  h3:before{ content:"// "; color:var(--brass); }
+  p{ margin:0 0 3mm 0; text-align:justify; hyphens:auto; }
+  .lede{ font-size:11pt; line-height:1.5; color:#2b2620; }
+  .lede:first-letter{
+    font-family:"DejaVu Sans Mono",monospace; float:left; font-size:30pt; line-height:.82;
+    padding:2mm 2.5mm 0 0; color:var(--blood);
+  }
+  strong{ font-weight:700; }
+  em{ font-style:italic; }
+  a{ color:var(--blood); text-decoration:none; word-break:break-all; }
+
+  blockquote{
+    margin:4mm 0 4mm 0; padding:4mm 5mm; border-left:3px solid var(--brass);
+    background:#e7e0d2; font-family:"DejaVu Serif",Georgia,serif; font-size:9.4pt;
+    line-height:1.5; color:#2b2620;
+  }
+  blockquote cite{ display:block; margin-top:2mm; font-family:"DejaVu Sans Mono",monospace;
+    font-size:7pt; font-style:normal; letter-spacing:.12em; color:var(--steel); text-transform:uppercase; }
+
+  .pull{
+    margin:5mm 0; padding:5mm 6mm; background:var(--ink); color:var(--bone);
+    font-family:"DejaVu Sans Mono",monospace; font-size:9.6pt; line-height:1.5;
+    page-break-inside:avoid;
+  }
+  .pull strong{ color:var(--brass); }
+  .pull .m{ display:block; margin-top:2.5mm; font-size:7pt; letter-spacing:.24em; color:var(--steel); }
+
+  table{ width:100%; border-collapse:collapse; margin:4mm 0 5mm 0; font-size:7.9pt; }
+  th{
+    background:var(--ink); color:var(--bone); text-align:left; padding:2.2mm 2.6mm;
+    font-size:6.9pt; letter-spacing:.18em; text-transform:uppercase; font-weight:400;
+  }
+  td{ padding:2.1mm 2.6mm; border-bottom:.6px solid var(--rule); vertical-align:top; line-height:1.42; }
+  tr:nth-child(even) td{ background:#e8e1d3; }
+  td.num{ text-align:right; white-space:nowrap; }
+  .tw td:first-child{ width:36%; }
+
+  .box{
+    border:1px solid var(--ink); padding:4.5mm 5mm; margin:5mm 0; background:#e9e2d4;
+    page-break-inside:avoid;
+  }
+  .box .h{
+    font-family:"DejaVu Sans Mono",monospace; font-size:7pt; letter-spacing:.26em;
+    text-transform:uppercase; color:var(--blood); margin-bottom:3mm;
+  }
+  .box.warn{ border-left:4px solid var(--blood); }
+  .box.calm{ border-left:4px solid var(--brass); }
+
+  ul,ol{ margin:0 0 3.5mm 0; padding-left:5.5mm; }
+  li{ margin-bottom:1.6mm; line-height:1.45; }
+
+  .timeline{ font-family:"DejaVu Sans Mono",monospace; font-size:7.9pt; line-height:1.5; }
+  .timeline .row{ display:flex; gap:3mm; padding:1.7mm 0; border-bottom:.6px solid var(--rule); page-break-inside:avoid; }
+  .timeline .d{ width:24mm; flex:none; color:var(--blood); font-weight:600; }
+  .timeline .e{ flex:1; }
+
+  .srcnote{ font-size:7.1pt; color:var(--steel); font-family:"DejaVu Sans Mono",monospace; line-height:1.55; }
+  .srcnote b{ color:var(--ink); }
+
+  .reflection{ background:#e7e0d2; border-top:3px solid var(--blood); border-bottom:3px solid var(--blood);
+    padding:7mm 6mm; margin-top:8mm; }
+  .reflection h2{ font-size:9pt; letter-spacing:.28em; }
+  .reflection .q{ font-size:11.4pt; line-height:1.5; color:#2b2620; font-family:"DejaVu Serif",Georgia,serif; }
+
+  .footer-rule{ border:0; border-top:1px solid var(--rule); margin:7mm 0 3mm; }
+  .endmark{ text-align:center; font-family:"DejaVu Sans Mono",monospace; font-size:7.4pt;
+    letter-spacing:.3em; color:var(--brass); margin-top:6mm; }
+</style>
+</head>
+<body>
+
+<!-- ================= COVER ================= -->
+<div class="cover">
+  <div class="hdr">
+    <div class="stamp">D O S S I E R</div>
+    <div class="cls">
+      ARIFOS FEDERATION // RESEARCH DESK<br>
+      DOC REF &nbsp;SMD-D01<br>
+      17 SEPTEMBER 2026
+    </div>
+  </div>
+
+  <div class="tense">T H E &nbsp; B I N T U L U &nbsp; F A U L T &nbsp; L I N E</div>
+  <h1>Shell <em>MDS</em><br>&amp; the Gas<br>That Two<br>Governments<br>Both Own</h1>
+
+  <div class="sub">
+    A 32-year-old plant in Bintulu became the test case for who actually controls
+    Malaysian gas. The court answered one question in 2025. It has not answered
+    the one that matters. And in September 2026, Shell began looking for the exit.
+  </div>
+
+  <div class="byline">
+    <div>
+      <strong>THE FULL RECORD</strong><br>
+      Filed for the rakyat of Malaysia<br>
+      Sourced from primary filings &amp; court reporting
+    </div>
+    <div style="text-align:right">
+      <span class="motto">DITEMPA BUKAN DIBERI</span><br>
+      ⚒
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ================= 01 EXEC ================= -->
+<div class="sect">
+  <h2>Executive Summary <span class="n">01</span></h2>
+
+  <p class="lede">In August 2024, a gas-to-liquids plant on the Sarawak coast received two invoices for the same gas, from two different companies, each claiming to be the lawful seller. It was not a billing error. It was the first time a foreign multinational had been handed physical proof of a constitutional fault line that has run under Malaysia since 1974 — and the courts have now spent two years deciding who gets paid without ever deciding who is right.</p>
+
+  <p>Shell MDS (Malaysia) Sdn Bhd operates the world's first commercial gas-to-liquids plant, commissioned in Bintulu in 1993. It buys natural gas, converts it into waxes, drilling fluids and middle distillates, and exports to more than 50 countries. It employs around 450 people, nearly 90% of them Sarawakian. For three decades it was a national trophy.</p>
+
+  <p>In August 2024 it signed a gas supply agreement with <strong>Petroleum Sarawak Berhad (Petros)</strong>, the state-owned company designated sole gas aggregator under Sarawak's Distribution of Gas Ordinance 2016 — while still holding a 2020 supply agreement with <strong>Petroliam Nasional Berhad (Petronas)</strong>, the federal national oil company whose exclusive nationwide rights come from the Petroleum Development Act 1974.</p>
+
+  <p>Two months later, both sent invoices. Shell MDS did what any prudent board would do: it stopped paying and asked a judge who the correct recipient was. What followed was a two-year procedural war in which <strong>every court that touched the case reversed the one before it</strong> — and in which the underlying question was ultimately declared, by a High Court judge, to be a matter of law so pure that no witness would ever be called.</p>
+
+  <div class="pull">
+    The Court of Appeal has told Shell MDS to <strong>pay Petronas roughly RM70–80 million every month</strong> until the High Court finishes deciding who owns the gas. Shell MDS is paying. The question remains open.
+    <span class="m">INTERIM STATE OF PLAY — SEPTEMBER 2026</span>
+  </div>
+
+  <p>Then, on 2 September 2026, <em>DealStreetAsia</em> reported that Shell is exploring the sale of a majority stake in Shell MDS — potentially all or part of its 72% — in a transaction valued at around <strong>US$1 billion (RM4.05 billion)</strong>, with Barclays advising. Shell confirmed a "potential strategic review". No decision, it said, has been made.</p>
+
+  <p>Eleven days later, Sarawak took formal control of Bintulu Port — the port from which Shell MDS's products and Petronas's LNG both leave the country.</p>
+
+  <div class="box warn">
+    <div class="h">Why this matters beyond one plant</div>
+    <p style="margin:0 0 2.5mm 0">Three facts, held together, describe the whole problem:</p>
+    <ol style="margin-bottom:0">
+      <li><strong>RM70–80 million per month</strong> is being paid to Petronas <em>without any court having ruled that Petronas is legally entitled to it.</em> The payment rests on an interim appellate order and a signed agreement, not on a decided question of law.</li>
+      <li><strong>Shell MDS told the court that paying the wrong party could expose it to criminal liability</strong> under Sarawak's state ordinance. That claim has not been tested.</li>
+      <li><strong>The buyer of Shell's 72% will inherit that exposure.</strong> Any purchaser is acquiring a business whose single largest cost item — feedstock gas — is subject to a live jurisdictional dispute that its own lawyers say carries criminal risk.</li>
+    </ol>
+  </div>
+
+  <p>This dossier sets out what is documented, what each party has claimed, what the courts have actually decided, and what remains genuinely unknown. It ends with what it means for the ordinary Malaysian household — because the money in dispute is, in the end, the same money.</p>
+</div>
+
+<!-- ================= 02 THE ASSET ================= -->
+<div class="sect">
+  <h2>The Asset <span class="n">02</span></h2>
+
+  <p>Shell Middle Distillate Synthesis (Malaysia) Sdn Bhd sits at Tanjung Kidurong, Bintulu, Sarawak. It was commissioned in 1993 — the culmination of roughly two decades of Shell research into converting methane into liquid hydrocarbons. It is, by Shell's own description and by the Bintulu Development Authority's, <strong>the world's first commercial-scale gas-to-liquids plant.</strong></p>
+
+  <p>The process is not refining. It breaks natural gas into synthesis gas — carbon monoxide and hydrogen — then reassembles the molecules into long-chain hydrocarbons that can be cut into different products. Gas in, liquid out.</p>
+
+  <h3>Technical profile</h3>
+  <table class="tw">
+    <tr><th>Parameter</th><th>Value</th><th>Source</th></tr>
+    <tr><td>Commissioned</td><td>1993</td><td>Shell; Borneo Post; The Star</td></tr>
+    <tr><td>Process</td><td>Shell Middle Distillate Synthesis (SMDS)</td><td>Shell</td></tr>
+    <tr><td>Capacity (original)</td><td>~12,500 b/d at US$850m capital cost</td><td>Oil &amp; Gas Journal</td></tr>
+    <tr><td>Capacity (current)</td><td>~14,700 b/d</td><td>Shell annual reporting, via Upstream / Energy Intelligence</td></tr>
+    <tr><td>Gas input</td><td>~100 million standard cubic feet per day</td><td>Bintulu Development Authority</td></tr>
+    <tr><td>Output</td><td>~470,000 tonnes per year of middle distillates &amp; specialty products</td><td>Bintulu Development Authority</td></tr>
+    <tr><td>Product suite</td><td>Synthetic waxes ("Sarawax"), drilling base fluids, chemicals, specialty fluids, middle distillates</td><td>Shell; The Edge</td></tr>
+    <tr><td>Downstream uses</td><td>40+ applications — food packaging, coatings, cosmetics, road construction, metalworking, adhesives, PVC</td><td>The Edge</td></tr>
+    <tr><td>Export markets</td><td>50+ countries</td><td>Borneo Post (25th anniversary, 2018)</td></tr>
+    <tr><td>Headcount</td><td>450+ staff; ~90% Sarawakian</td><td>The Edge; Borneo Post</td></tr>
+    <tr><td>Estimated EBITDA</td><td>US$120–130 million per year</td><td>DealStreetAsia, via The Edge</td></tr>
+  </table>
+
+  <h3>Ownership as at 2026</h3>
+  <table class="tw">
+    <tr><th>Shareholder</th><th>Stake</th><th>Note</th></tr>
+    <tr><td>Shell Gas BV (Shell plc)</td><td class="num">72%</td><td>The interest reportedly under review for sale</td></tr>
+    <tr><td>Diamond Gas Holding Sdn Bhd</td><td class="num">14%</td><td>Wholly owned subsidiary of Mitsubishi Corporation</td></tr>
+    <tr><td>PETRONAS</td><td class="num">7%</td><td>The federal national oil company — a minority owner of the plant, and its principal gas supplier</td></tr>
+    <tr><td>Sarawak Government</td><td class="num">7%</td><td>The state that licenses the plant's feedstock under state law</td></tr>
+  </table>
+
+  <div class="box calm">
+    <div class="h">Read the ownership table twice</div>
+    <p style="margin:0">Petronas owns 7% of the plant. Sarawak owns 7%. Shell owns 72%. <strong>Three of the four owners are also parties or interested parties to the dispute over who may lawfully sell the plant its gas.</strong> The only neutral shareholder is Mitsubishi, which has said nothing publicly and has no upstream stake in the argument. A plant that cannot buy gas from a legally certain seller is, for accounting and governance purposes, a plant with an unresolved input risk — and that risk now sits on a sale document.</p>
+  </div>
+
+  <h3>A plant that has been rebuilt once already</h3>
+  <p>The Bintulu GTL plant suffered a serious explosion in 1997 and was substantially reconstructed between 1998 and 2000. Malaysian investment documentation records a further rejuvenation programme described as the largest investment in the facility since that rebuild, intended to support reliable production for a further two decades. In 2018 Shell marked its 25th anniversary in partnership with the Sarawak state government and the Bintulu Vocational College; in 2024 it marked its 30th.</p>
+  <p>The point is not sentimental. <strong>Shell has put real capital into keeping this plant alive.</strong> Firms do not normally sell assets immediately after committing to extend their operating life. When they do, the reason is usually on the other side of the balance sheet — or in the legal environment.</p>
+</div>
+
+<!-- ================= 03 THE TRIGGER ================= -->
+<div class="sect">
+  <h2>How the Fault Line Opened <span class="n">03</span></h2>
+
+  <p>The dispute did not begin with a lawsuit. It began with a legal instrument that two governments both considered binding, and a company that was told to obey both.</p>
+
+  <h3>Four documents, one territory</h3>
+  <table class="tw">
+    <tr><th>Instrument</th><th>Year</th><th>What it says</th></tr>
+    <tr>
+      <td><strong>Oil Mining Ordinance (OMO)</strong></td>
+      <td class="num">1958</td>
+      <td>Sarawak's pre-independence oil mining law. Sarawak's position is that it has never been repealed, and therefore coexists with the PDA rather than being displaced by it.</td>
+    </tr>
+    <tr>
+      <td><strong>Malaysia Agreement (MA63)</strong></td>
+      <td class="num">1963</td>
+      <td>The instrument by which Sarawak and Sabah entered the federation. Predates the PDA by eleven years. Sarawak's constitutional anchor.</td>
+    </tr>
+    <tr>
+      <td><strong>Petroleum Development Act (PDA)</strong></td>
+      <td class="num">1974</td>
+      <td>Federal law. Vests exclusive rights over petroleum operations nationwide in Petronas. Enacted during a period of emergency, when Parliament was not functioning normally.</td>
+    </tr>
+    <tr>
+      <td><strong>Distribution of Gas Ordinance (DGO)</strong></td>
+      <td class="num">2016</td>
+      <td>Sarawak state law, amended 2023. Designates Petros as the sole gas aggregator within Sarawak — the entity that buys gas from producers and resells it to users.</td>
+    </tr>
+  </table>
+
+  <p>Read the years again. The OMO is 1958. MA63 is 1963. The PDA is 1974 — <em>later</em> than both. Sarawak's argument is chronological as well as constitutional: the federal statute that Petronas relies on arrived after the instruments that Sarawak says protect it, and cannot silently extinguish them.</p>
+
+  <h3>The sequence on the ground</h3>
+  <div class="timeline">
+    <div class="row"><div class="d">17 JUL 2020</div><div class="e">Shell MDS signs a Gas Supply Agreement with <strong>Petronas</strong>.</div></div>
+    <div class="row"><div class="d">2023</div><div class="e">Sarawak amends the Distribution of Gas Ordinance 2016.</div></div>
+    <div class="row"><div class="d">16 AUG 2024</div><div class="e">Shell MDS signs a second Gas Supply Agreement — with <strong>Petros</strong> — after being notified by the Sarawak government that Petros is now the sole gas aggregator for the state.</div></div>
+    <div class="row"><div class="d">SEP–OCT 2024</div><div class="e">Shell MDS receives invoices from <strong>both</strong> Petronas and Petros, covering the August 2024 gas supply. Shell MDS states it notified Petronas of the Petros agreement, and that Petronas acknowledged it.</div></div>
+    <div class="row"><div class="d">NOV 2024</div><div class="e">Shell MDS files an Originating Summons and an <strong>interpleader summons</strong> in the Kuala Lumpur High Court against both Petronas and Petros, asking the court to determine which of them is entitled to payment.</div></div>
+  </div>
+
+  <div class="box">
+    <div class="h">What an interpleader is — and why it matters</div>
+    <p style="margin:0">An interpleader is a procedural device for a party who holds something (here, money) that two other parties both claim. The holder says, in effect: <em>I do not dispute that I owe this. I dispute only to whom. Let the court decide, and I will pay whoever the court names.</em> It is the procedure of a neutral. By choosing it, Shell MDS placed itself outside the fight between Petronas and Petros — and Petronas's later arguments that Shell MDS "created its own predicament" sit awkwardly beside the fact that Shell MDS is the one party in the case that has never claimed any entitlement to the money.</p>
+  </div>
+
+  <h3>The criminal-liability claim</h3>
+  <p>The single most consequential assertion in the whole matter is one Shell MDS made in its filings and repeated in reporting: that <strong>paying either party without a court determination could expose the company to criminal liability under the DGO 2016</strong>. This is what converted a commercial question into a legal emergency. A company can absorb an overpayment. It cannot absorb a prosecution.</p>
+  <p>That claim, as far as this dossier can establish, has never been adjudicated on its merits.</p>
+</div>
+
+<!-- ================= 04 LITIGATION ================= -->
+<div class="sect">
+  <h2>The Litigation Record <span class="n">04</span></h2>
+
+  <p>Every entry below is drawn from contemporaneous court and business reporting. Where sources conflict, both figures are shown.</p>
+
+  <div class="timeline">
+    <div class="row"><div class="d">06 JAN 2025</div><div class="e">Judicial Commissioner <strong>Arziah Mohamed Apandi</strong> issues grounds of judgment. She records that Shell MDS faces immediate risk of supply disruption under two competing GSAs; that monthly exposure is in the region of <strong>RM70–100 million</strong>; that Shell MDS offered to set funds aside in an interest-bearing account pending resolution; and that Petronas had proceeded to call on a bank guarantee.</div></div>
+
+    <div class="row"><div class="d">10 JAN 2025</div><div class="e">Petronas files a notice of appeal. <strong>Petros does not appeal</strong> — it lets its 30-day window lapse, meaning Petros does not challenge the injunction at that stage.</div></div>
+
+    <div class="row"><div class="d">28–29 JAN 2025</div><div class="e">The High Court grants Shell MDS an interim injunction. Effect: payments to <em>both</em> Petronas and Petros are suspended; Petronas must continue supplying gas; Petronas is restrained from calling on Shell MDS's UOB bank guarantee.<br><br>Arziah finds Shell MDS has "an exceptionally and unusually strong and clear case", noting that the company "did not bring itself to be caught in this turmoil", that "it is not the fault of SMDS that the tussle between Petronas and Petros had come about", and that it "is willing and able to make payments to the correct entity as determined by the court."</div></div>
+
+    <div class="row"><div class="d">17 JUL 2025</div><div class="e">Petronas asks the Court of Appeal for an early hearing. Counsel <strong>Datuk Dr Cyrus Das</strong> states Petronas is losing <strong>more than RM80 million per month</strong> while still supplying the gas. Court reporting records the purported arrears at <strong>over RM523 million</strong>, with Petros understood to be seeking close to <strong>RM600 million</strong>. Shell MDS's counsel is <strong>Christopher Leong</strong>; Petros appears as intervener through <strong>Foo Joon Liang</strong>. The court also admits the federal–Sarawak joint declaration as evidence.</div></div>
+
+    <div class="row"><div class="d">08 OCT 2025</div><div class="e">High Court judge <strong>Mahazan Mat Taib</strong> rejects Petronas's application to convert the interpleader Originating Summons into a writ. Her reasoning: the dispute is "a matter of federal and state laws. It is a matter of law and not facts." No witness credibility is in issue. A full trial, she says, <strong>would delay resolution</strong>. Petros and the Sarawak government had opposed Petronas's application; Shell MDS took a neutral stance.</div></div>
+
+    <div class="row"><div class="d">22 SEP 2025</div><div class="e">The Court of Appeal — <strong>Azimah Omar</strong> presiding, with <strong>Wong Kian Kheong</strong> and <strong>Ismail Brahim</strong> — sets aside the injunctions. It orders Shell MDS to pay Petronas all outstanding sums for August 2024 to 5 October 2025, by 6 October.<br><br>Justice Wong holds that Arziah was <em>wrong</em> to grant the injunctions because there was <strong>no breach of agreement by Petronas</strong> — the company had continued to supply gas throughout. He finds there is "less risk of injustice" in not compelling Petronas to keep supplying without payment.<br><br>Costs: Shell MDS ordered to pay Petronas <strong>RM50,000</strong>; Petros ordered to pay Petronas <strong>RM30,000</strong>.<br><br>Amount owed including accrued interest: reported as approaching <strong>RM1 billion</strong>.</div></div>
+
+    <div class="row"><div class="d">05 FEB 2026</div><div class="e">The Court of Appeal reconvenes to <strong>clarify the wording of its own order</strong> — a rare step. Shell MDS's counsel argues the formal order must be precise because Shell MDS holds its stake on behalf of several other companies, and it needs a clear legal instruction before transferring nearly RM1 billion.<br><br>Petronas's counsel <strong>Khoo Guan Huat</strong> confirms all parties agreed to a draft order but disagreed on phrasing — <em>specifically on how interest and future payments are to be handled.</em><br><br>The amended order directs Shell MDS to (a) pay all past and present sums plus late-payment interest under the <strong>PETRONAS Gas Supply Agreement 2020</strong>, and (b) <strong>continue paying Petronas for future supplies</strong> under that same agreement — in both cases "subject to the order of the High Court upon the final disposal of the interpleader summons."</div></div>
+
+    <div class="row"><div class="d">ONGOING</div><div class="e">The interpleader itself — the actual question of who owns the gas — <strong>remains undecided</strong> before the High Court in Kuala Lumpur. As at February 2026 no hearing date had been fixed; parties were still exchanging affidavits. The Court of Appeal ordered that the matter be <strong>expedited</strong>. Shell MDS continues paying Petronas an estimated <strong>RM70–80 million per month</strong> in the interim.<br><br>Separately, <strong>Petros has filed its own suit in the Kuching High Court</strong> seeking to stop Petronas from using Petros's bank guarantee for gas payments, on the basis that Petronas is not licensed to operate in Sarawak under state law.</div></div>
+  </div>
+
+  <div class="pull">
+    A High Court granted relief. The Court of Appeal reversed it. The Court of Appeal then had to <strong>amend its own order</strong> four months later because the parties could not agree on what it meant. And the question that started it all has still not been argued to judgment.
+    <span class="m">WHAT TWO YEARS OF LITIGATION HAS PRODUCED</span>
+  </div>
+
+  <div class="box warn">
+    <div class="h">The one thing the appeal decided — and how narrowly it decided it</div>
+    <p style="margin:0 0 2.5mm 0">The Court of Appeal did <strong>not</strong> rule that Petronas is legally entitled to the money. It ruled that <strong>Shell MDS had not shown a sufficient basis for an injunction</strong>, because Petronas had kept supplying gas and therefore had not breached the 2020 agreement.</p>
+    <p style="margin:0">That is a procedural conclusion about the conditions for interim relief. It is entirely compatible with Petros ultimately winning the interpleader. A reader who takes "Shell ordered to pay Petronas" as a finding on ownership has read the headline, not the holding. The order says so itself: it operates <em>"subject to the order of the High Court upon the final disposal of the interpleader summons."</em></p>
+  </div>
+</div>
+
+<!-- ================= 05 ARGUMENTS ================= -->
+<div class="sect">
+  <h2>What Each Side Actually Argues <span class="n">05</span></h2>
+
+  <table>
+    <tr><th style="width:15%">Party</th><th style="width:42%">Position</th><th style="width:43%">What a cross-examiner would probe</th></tr>
+
+    <tr>
+      <td><strong>Shell MDS</strong></td>
+      <td>Neutral holder of the money. Signed the Petronas GSA in 2020. Signed the Petros GSA in 2024 only after the Sarawak government notified it that Petros was the sole aggregator. Notified Petronas, which acknowledged. Now faces two invoices, two claimants, and potential criminal exposure under state law if it pays the wrong one. Will pay whoever the court names; has already set funds aside.</td>
+      <td>It signed a second supply agreement for gas it was already contracted to receive from the first supplier, without first obtaining a court declaration or the first supplier's release. Petronas's characterisation — that Shell MDS "cannot have its cake and eat it too" — is not frivolous. The answer is that a company cannot simply ignore a state's lawful notification; but a state notification is not a court order, and Shell MDS is sophisticated enough to know the difference.</td>
+    </tr>
+
+    <tr>
+      <td><strong>Petronas</strong></td>
+      <td>Holds exclusive nationwide petroleum rights under the PDA 1974. Continued to supply gas throughout, incurring costs of approximately RM2 billion in unpaid supplies at one stage. Claims to be the only party physically capable of supplying the gas, with ongoing commitments to upstream producers requiring substantial outlay. Damages would be an adequate remedy. The Shell–Petros GSA relates to the very gas supplied under the Shell–Petronas GSA.</td>
+      <td>It continued to supply for months while unpaid — a decision it now cites as evidence of its own good conduct, but which also removed its own commercial leverage. Its "only party physically capable" argument is an argument about capability, not entitlement; entitlement is the question. And the company that owns 7% of the plant is also the party claiming the right to be its sole lawful supplier — an overlap no other party in the case possesses.</td>
+    </tr>
+
+    <tr>
+      <td><strong>Petros</strong></td>
+      <td>Designated sole gas aggregator for Sarawak under the DGO 2016 (as amended 2023). Contends the DGO supersedes the PDA within Sarawak. Asserts that Petronas is not a designated aggregator and cannot lawfully undertake the relevant activities in the state. Intervened in the appeal; did not appeal the original injunction; has filed a separate action in the Kuching High Court.</td>
+      <td>Its own readiness is the soft spot. Reporting from May 2025 records that Petros is set to receive up to 1.2 billion cubic feet per day for local use — nearly triple the existing 450 million — while industry sources noted that <strong>no major buyers had committed to absorbing the surplus</strong>. Aggregator status without confirmed offtake is a legal position without a commercial base. Note also the concession already on the record: in the May 2025 joint declaration, Petronas's LNG sales — from upstream through to export — were expressly left unaffected, meaning Petros's aggregator role was carved out of the LNG chain from the beginning.</td>
+    </tr>
+
+    <tr>
+      <td><strong>Federal Government</strong></td>
+      <td>Filed no claim in the interpleader but sent a federal counsel to observe. Has stated that no additional licences are required for Petronas to operate in Sarawak under the existing framework. Signed the May 2025 joint declaration with Sarawak recognising Petros as aggregator while reaffirming Petronas's PDA role.</td>
+      <td>The joint declaration left the hard commercial terms open. More than a year later, analysts were still describing the settlement as unresolved. A declaration that affirms both parties' positions is an agreement to disagree.</td>
+    </tr>
+
+    <tr>
+      <td><strong>Sarawak Government</strong></td>
+      <td>Appeared through its own counsel and opposed Petronas's bid for a full trial. Position rests on MA63, the OMO 1958 as never repealed, and the DGO as valid state legislation.</td>
+      <td>Since 2024 it has simultaneously pursued a legal case for control <em>and</em> taken direct operational control of Bintulu Port. Leverage accrued outside the courtroom will be read by the other side as a signal about what the courtroom is for.</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ================= 06 MONEY ================= -->
+<div class="sect">
+  <h2>The Numbers, and Which Ones Hold <span class="n">06</span></h2>
+
+  <table>
+    <tr><th>Figure</th><th style="width:21%">Value</th><th>Status &amp; source</th></tr>
+    <tr><td>Monthly gas payment in dispute</td><td class="num">RM70–80 million</td><td>Consistent across The Edge, FMT, Scoop, Borneo Post. Court-recorded.</td></tr>
+    <tr><td>Monthly exposure range cited by JC Arziah</td><td class="num">RM70–100 million</td><td>From the January 2025 grounds of judgment. The wider range is hers.</td></tr>
+    <tr><td>Arrears claimed by Petronas (Jul 2025)</td><td class="num">&gt; RM523 million</td><td>The Edge, from court proceedings.</td></tr>
+    <tr><td>Sum sought by Petros</td><td class="num">~ RM600 million</td><td>The Edge, "understood" — <em>not</em> a court finding.</td></tr>
+    <tr><td>Amount ordered paid, with interest</td><td class="num">~ RM1 billion</td><td>Reported by FMT and Scoop; The Edge uses "close to RM1 billion". Range-bound, not precise.</td></tr>
+    <tr><td>Petronas unpaid-supply exposure claimed</td><td class="num">~ RM2 billion</td><td>Petronas's own affidavit figure, reported via The Edge. Not independently verified.</td></tr>
+    <tr><td>Shell MDS annual EBITDA estimate</td><td class="num">US$120–130m</td><td>DealStreetAsia. An estimate, from unnamed industry sources.</td></tr>
+    <tr><td>Reported value of the stake under review</td><td class="num">~ US$1 billion</td><td>DealStreetAsia / Upstream / Energy Intelligence. <strong>Reported, not agreed.</strong></td></tr>
+    <tr><td>Value if Petros secures full aggregator role</td><td class="num">up to RM20bn/yr</td><td>Analyst estimate (Malay Mail, May 2025) of what Sarawak <em>could</em> reap. Projection.</td></tr>
+    <tr><td>Petronas dividend to federal government, FY2026</td><td class="num">RM20 billion</td><td>Declared 26 Feb 2026. Down from RM32 billion for FY2025.</td></tr>
+  </table>
+
+  <div class="box calm">
+    <div class="h">How to read a number you cannot verify</div>
+    <p style="margin:0 0 2.5mm 0">This case has generated more large figures than it has judgments. Separate them before repeating any:</p>
+    <ul style="margin-bottom:0">
+      <li><strong>Court-recorded</strong> — RM70–80m per month; RM523m; the costs awards. These appear in reporting of proceedings.</li>
+      <li><strong>Party-claimed</strong> — Petronas's ~RM2bn; Petros's ~RM600m; Shell MDS's criminal-exposure assertion. Assertions in filings, untested.</li>
+      <li><strong>Analyst or press estimates</strong> — the ~RM1bn total; the US$1bn sale valuation; the RM20bn/yr Petros upside; the US$120–130m EBITDA. Indicative, sourced to unnamed parties or to models.</li>
+    </ul>
+  </div>
+
+  <p>One further number deserves its own line, because it will be quoted most and verified least. Reports put the value of the stake under review at "around US$1 billion". That appears to be a market estimate of what a controlling interest in a business earning US$120–130 million of EBITDA a year might fetch. <strong>No buyer, no agreed price, and no signed transaction exist.</strong> Shell's own statement is that a review is under way and no decision has been made. Everything else is inference.</p>
+</div>
+
+<!-- ================= 07 THE EXIT ================= -->
+<div class="sect">
+  <h2>The Exit <span class="n">07</span></h2>
+
+  <p>On 2 September 2026, <em>DealStreetAsia</em> reported that Shell plc is exploring the sale of a majority stake in Shell MDS, in a transaction that could be valued at around US$1 billion, with Barclays appointed as financial adviser. <em>Upstream</em> reported the same on 7 September; <em>Energy Intelligence</em> confirmed on 8 September, describing it as a possible sale of <strong>all or part of Shell's 72%</strong>. Shell's spokesperson confirmed a "potential strategic review of its equity interest" and added that no decision had been made and that the business continues to focus on safe and reliable operations.</p>
+
+  <h3>The conventional explanation</h3>
+  <p>Shell under chief executive Wael Sawan has been reallocating capital towards higher-return barrels. In 2026 alone: Sprng Energy, its India renewables business, agreed for US$1.8 billion in July on a stated rationale of "high-grading" the power portfolio; a 50% interest in the BP-operated Na Kika platform plus associated Gulf of Mexico assets agreed for US$1.7 billion in June; and, days before the Bintulu report, completion of the ARC Resources acquisition at approximately US$13.9 billion equity value. Shell is not simply shrinking. It is swapping old assets for new ones.</p>
+
+  <p>Set against Shell's two remaining GTL plants, the logic looks sharper still:</p>
+
+  <table class="tw">
+    <tr><th>Plant</th><th>Capacity</th><th>Shell stake</th></tr>
+    <tr><td>Bintulu GTL (Malaysia)</td><td class="num">~14,700 b/d</td><td class="num">72%</td></tr>
+    <tr><td>Pearl GTL (Qatar)</td><td class="num">~140,000 b/d</td><td class="num">100%</td></tr>
+  </table>
+
+  <p>Pearl is roughly ten times the size and wholly owned. Bintulu is the pioneer — the plant that proved the technology. If Shell continues to believe in GTL, it can hold that belief through Qatar alone. It does not need Bintulu to hold the intellectual position. It needs Bintulu only to hold the volume — and it can buy volume elsewhere.</p>
+
+  <h3>What the conventional explanation does not cover</h3>
+  <p>Portfolio discipline explains why a company would sell <em>something</em>. It does not explain why this owner would sell <em>this asset now</em>. Three facts sit outside the standard account:</p>
+
+  <ol>
+    <li><strong>The feedstock dispute is unresolved.</strong> Shell MDS is paying RM70–80 million a month to Petronas under an interim order that expressly defers the ownership question. Its own filings assert a criminal-liability exposure if it pays the wrong party. A seller has to disclose that. A buyer has to price it.</li>
+    <li><strong>The legal position could change against the current payer.</strong> The interpleader remains live. If the High Court finds the DGO regime operative, the interim payment arrangement unwinds — and whoever owns the plant inherits the consequences, not the seller.</li>
+    <li><strong>Shell committed to the plant's life extension.</strong> A rejuvenation programme was described as the largest investment since the 1998–2000 rebuild, intended to secure two more decades of production. Selling the majority stake within a period relevant to that horizon is not obviously consistent with the investment case that justified it.</li>
+  </ol>
+
+  <div class="pull">
+    Shell can explain why it sells. It has not yet had to explain why it sells <strong>now</strong> — and the single new fact of the last two years is that the gas this plant runs on is claimed by two governments.
+    <span class="m">THE QUESTION THE ANNOUNCEMENT DOES NOT ANSWER</span>
+  </div>
+
+  <div class="box warn">
+    <div class="h">Who could buy — and why the buyer's identity is the whole story</div>
+    <p style="margin:0 0 2.5mm 0">Three orders of possibility, each with different consequences for Malaysia:</p>
+    <ul style="margin-bottom:0">
+      <li><strong>Sarawak or a Sarawak-linked entity.</strong> This would move the plant under the same government that licenses its feedstock and has just taken Bintulu Port. Commercially the cleanest resolution — and simultaneously the most significant transfer of a strategic downstream asset in the state's modern history.</li>
+      <li><strong>Petronas.</strong> Petronas already owns 7%. Moving to control would settle the supply question by making supplier and operator the same party — and would be read by Sarawak as the federal side consolidating exactly what the dispute is about.</li>
+      <li><strong>A third-party international buyer.</strong> New private capital with no stake in the Malaysian constitutional argument — and therefore with no ability to resolve it. Such a buyer would be purchasing the exposure, not the dispute.</li>
+    </ul>
+    <p style="margin:2.5mm 0 0 0">No buyer has been announced. No bid is public. Anyone who tells you which of the three it will be is guessing.</p>
+  </div>
+</div>
+
+<!-- ================= 08 PARALLEL ================= -->
+<div class="sect">
+  <h2>The Moves Around the Case <span class="n">08</span></h2>
+
+  <p>A dispute about gas is also a dispute about who controls the ground, the pipes and the ports. In the same months as the litigation, three parallel developments changed the physical map of Sarawak's energy sector.</p>
+
+  <h3>Bintulu Port passes to Sarawak</h3>
+  <p>Effective <strong>1 September 2026</strong>, all assets, rights, interests and obligations of Bintulu Port Holdings (LPB) were transferred and vested in the Sarawak government. The takeover took roughly three years from the Sarawak Premier's initial announcement. On <strong>16 September 2026</strong> — Malaysia Day — the Prime Minister and the Sarawak Premier jointly witnessed the official handover in Kuching.</p>
+  <p>Bintulu Port is not incidental to this case. It is the maritime outlet for the Bintulu industrial complex: the LNG export facility, the GTL plant and the surrounding industries. Control of the port is control of the export route for products manufactured from gas whose ownership is in litigation.</p>
+
+  <h3>Shell's earlier exit from Malaysia LNG Tiga</h3>
+  <p>In 2018, Shell Gas Holdings (Malaysia) Limited completed the sale of a 15% shareholding in Malaysia LNG Tiga to the Sarawak State Financial Secretary for an agreed US$750 million, with a net consideration after dividend adjustments of approximately US$640 million. Sarawak's stake in MLNG Tiga rose to 25%. Shell's stated rationale then was, in its own words, "consistent with its strategy to simplify its portfolio and reshape Shell into a simpler, more resilient and focused company."</p>
+  <p>That is the same rationale — capital discipline, portfolio simplification — being offered for the Shell MDS review eight years later. It is worth noting that the 2018 sale moved a Shell interest in a Malaysian LNG asset into <em>Sarawak's</em> hands. If there is a pattern, it is Shell selling down and Sarawak buying in.</p>
+
+  <h3>An investor walks away</h3>
+  <p>Reporting in May 2025 recorded that <strong>ConocoPhillips had withdrawn from a RM13.7 billion deepwater project off Sarawak's coast</strong>, cited alongside the Shell MDS action as evidence that the uncertainty is already affecting investor sentiment.</p>
+
+  <p>Shell, for its part, has not left Malaysia. Its reporting describes interests in 20 Malaysian production-sharing contracts with stakes ranging from 20% to 92.5%; operatorship of major gas-producing interests offshore Sarawak; development of the Rosmari-Marjoram field approximately 220 kilometres offshore Bintulu, including a platform, subsea pipeline and new onshore gas plant; and a 30% interest in the Jerun field, which reached first gas in 2024 with capacity of up to 550 million cubic feet per day plus condensate, flowing towards customers in the Bintulu area including Malaysia LNG.</p>
+
+  <div class="box calm">
+    <div class="h">The distinction that matters</div>
+    <p style="margin:0">A sale of Shell MDS would not mean Shell is abandoning Sarawak. It would mean Shell is distinguishing between an <strong>older downstream processing asset</strong> and <strong>newer upstream and integrated-gas positions</strong>. The trouble is that the older asset is the one with the jurisdictional problem, and the newer ones sit upstream of the argument. Shell would be keeping the gas it produces and selling the plant that has been invoiced twice for buying it. On the seller's side that is a rational separation. From the buyer's side, it is a disclosure problem.</p>
+  </div>
+</div>
+
+<!-- ================= 09 UNRESOLVED ================= -->
+<div class="sect">
+  <h2>What Is Not Known <span class="n">09</span></h2>
+
+  <p>An honest dossier names its own gaps. The following are unresolved as at 17 September 2026, and no amount of confident reporting substitutes for them.</p>
+
+  <table>
+    <tr><th style="width:37%">Open question</th><th>State of knowledge</th></tr>
+    <tr><td>Who legally owns the gas?</td><td><strong>Undecided.</strong> The interpleader remains before the Kuala Lumpur High Court. As at February 2026 no hearing date had been fixed and parties were still exchanging affidavits — despite the Court of Appeal ordering expedition.</td></tr>
+    <tr><td>Has any court ruled on Shell MDS's criminal-liability exposure under the DGO?</td><td><strong>Not established.</strong> The claim appears in filings and reporting. No adjudication has been identified.</td></tr>
+    <tr><td>What is the fate of the Kuching action?</td><td><strong>Unresolved.</strong> Petros filed a separate suit seeking to restrain Petronas from using Petros's bank guarantee, arguing Petronas is not licensed under state law. Contemporaneous status not established.</td></tr>
+    <tr><td>How much does Shell actually intend to sell?</td><td><strong>Unstated.</strong> Reports say "majority stake"; Energy Intelligence says all or part of the 72%.</td></tr>
+    <tr><td>Who is the buyer?</td><td><strong>Unknown.</strong> No buyer announced. No bid public.</td></tr>
+    <tr><td>What is the sale actually worth?</td><td><strong>Undetermined.</strong> The US$1bn figure is a press estimate from unnamed industry sources.</td></tr>
+    <tr><td>Does the May 2025 joint declaration bind the commercial dispute?</td><td><strong>Contested.</strong> The declaration names Petros as aggregator while reaffirming Petronas's PDA role and expressly preserving Petronas's LNG sales chain. Analysts have continued to describe the underlying issues as unresolved since.</td></tr>
+    <tr><td>What happened to the promised final agreement?</td><td><strong>Not delivered.</strong> A final agreement was described as expected in June 2026. As of September, no agreement, formula or signature has been disclosed.</td></tr>
+    <tr><td>Is the RM2 billion unpaid-supply figure verified?</td><td><strong>Party assertion.</strong> From Petronas's affidavit, reported second-hand. Not independently confirmed.</td></tr>
+    <tr><td>Has Petros secured commercial offtake for its expanded allocation?</td><td><strong>Reported as absent.</strong> May 2025 reporting recorded no major buyers committed to absorbing a nearly tripled allocation.</td></tr>
+  </table>
+</div>
+
+<!-- ================= 10 LEDGER ================= -->
+<div class="sect">
+  <h2>Source Ledger <span class="n">10</span></h2>
+
+  <p class="srcnote">
+    <b>COURT &amp; PROCEEDINGS REPORTING</b><br>
+    New Straits Times — "Shell MDS gets interim injunction in Petronas-Petros dispute", 2025.<br>
+    The Borneo Post — "High Court grants interim injunction to Shell MDS amid ongoing Petronas-Petros gas supply dispute", 29 Jan 2025. (Carries JC Arziah's grounds of judgment at length.)<br>
+    DayakDaily — "High Court grants injunction to Shell MDS amid Petronas-Petros payment dispute", 28 Jan 2025.<br>
+    The Edge Malaysia — "Petronas seeks early hearing to set aside Shell MDS injunction following monthly RM80 mil revenue loss", 17 Jul 2025. (RM523m and ~RM600m figures; the RM2bn affidavit claim.)<br>
+    The Edge Malaysia — "Petronas fails to turn Shell MDS gas supply case into full trial; court says it's a matter of law", 8 Oct 2025. (Mahazan Mat Taib ruling.)<br>
+    Free Malaysia Today — "Appellate court sets aside Shell MDS injunction on payment to Petronas", 22 Sep 2025. (Bench composition; Wong Kian Kheong reasoning; costs.)<br>
+    Scoop — "Court orders Shell MDS to pay Petronas over RM500m in gas dues", 23 Sep 2025.<br>
+    The Edge Malaysia — "Court clarifies payment rules in PETRONAS-Shell-Petros dispute", 5 Feb 2026. (The amended order, quoted.)<br>
+    The Borneo Post — "Court of Appeal clarifies payment order in high-stakes gas dispute involving Petronas, Shell MDS and Petros", 5 Feb 2026.<br><br>
+
+    <b>THE ASSET</b><br>
+    Shell Malaysia — Shell Middle Distillate Synthesis business pages; Shell annual reporting (current capacity, via Upstream and Energy Intelligence summaries).<br>
+    Oil &amp; Gas Journal — GTL project survey (original 12,500 b/d capacity; US$850m capital cost); and report on the restart of the damaged Bintulu plant.<br>
+    The Borneo Post — "Shell Malaysia marks 25 years of success in Bintulu", 29 Aug 2018. (Output volume; 50+ export markets; Projek Link; Sarawakian workforce.)<br>
+    The Star — "Shell MDS Malaysia celebrates 30 years in Bintulu", 11 Jul 2024.<br>
+    Bintulu Development Authority — plant description (gas input and output volumes), cited via Royal Dutch Shell Plc .com, 8 Sep 2026.<br><br>
+
+    <b>THE SALE</b><br>
+    DealStreetAsia — original report, via The Edge Malaysia: "Shell exploring US$1 bil sale of majority stake in Bintulu gas-to-liquids plant — report", 2 Sep 2026. (Barclays; the US$120–130m EBITDA estimate; Shell spokesperson statement.)<br>
+    Upstream Online — report, 7 Sep 2026.<br>
+    Sarawak Tribune — "Shell Eyes Bintulu MDS Majority Stake Sale", 3 Sep 2026.<br>
+    Energy Intelligence — "Shell Eyes Sale of Malaysia's Bintulu GTL Unit", 8 Sep 2026, by Clara Tan and James Bourne.<br>
+    Royal Dutch Shell Plc .com (John Donovan) — "Shell Eyes $1 Billion Malaysia Asset Sale", 8 Sep 2026. <b>Note:</b> an advocacy site, adversarial to Shell by design. Its factual assembly on ownership, capacity and the Pearl/Bintulu contrast is consistent with Shell's own disclosures; its framing is not neutral and has not been adopted here.<br><br>
+
+    <b>PARALLEL DEVELOPMENTS</b><br>
+    Malay Mail and The Star — "Anwar, Abang Johari witness Bintulu Port handover to Sarawak", 16–17 Sep 2026. (Effective 1 Sep 2026; three-year process.)<br>
+    Offshore Energy — "Shell sells stake in Malaysian LNG asset for $750 million", on the 2018 MLNG Tiga transaction.<br>
+    Malay Mail, via Yahoo News Malaysia — "Can Malaysia's gas sector survive without Petronas?", 14 May 2025. (ConocoPhillips withdrawal from the RM13.7bn deepwater project; the up-to-RM20bn/yr Petros estimate; the 1.2 bcf/d allocation against the current 450 mmscfd; the absence of committed offtake; analyst commentary from ADA Southeast Asia.)<br><br>
+
+    <b>PRIMARY DOCUMENT REFERENCED</b><br>
+    Joint Declaration between the Federal Government and the Sarawak State Government, signed 23 May 2025. Adduced before the Court of Appeal on 17 July 2025. Terms as described in reporting: Petros recognised as Sarawak's gas aggregator; Petronas's PDA functions reaffirmed; LNG sales arrangements expressly unaffected.<br><br>
+
+    <b>NOT OBTAINED / NOT VERIFIED</b><br>
+    No judgment or cause paper from the interpleader proceedings was available to this desk. No Shell press release or filing confirming a sale has issued. No figure in this dossier has been reconciled against a filed set of accounts. Where a number is an estimate or a party's assertion, it is labelled as such on the page where it appears.
+  </p>
+</div>
+
+<!-- ================= REFLECTION ================= -->
+<div class="sect reflection">
+  <h2>Untuk Rakyat Malaysia — Apa Sebenarnya Yang Kita Sedang Bayar <span class="n">⚒</span></h2>
+
+  <p class="q">Ada satu soalan yang lebih penting daripada siapa menang kes ini. Dan ia lebih mudah difahami daripada mana-mana Akta.</p>
+
+  <p><strong>Jika gas ini milik Sarawak, kenapa Sarawak tidak dapat harganya?</strong></p>
+
+  <p><strong>Jika gas ini milik Persekutuan, kenapa Persekutuan tidak dapat ketenangan?</strong></p>
+
+  <p>Bulan lepas seorang Perdana Menteri memberitahu seluruh negara bahawa tiada masalah yang tidak boleh diselesaikan. Bulan ini sebuah syarikat Britain yang telah beroperasi di Sarawak selama lebih seratus tahun memasang papan tanda "untuk dijual" pada loji pertama dunia yang menukar gas menjadi cecair — sementara dua buah kerajaan masih belum bersetuju siapa pemilik bahan mentah yang masuk ke dalamnya.</p>
+
+  <p>Dan pada setiap satu daripada tiga puluh hari yang berlalu tanpa penyelesaian, satu syarikat membayar kira-kira <strong>RM70 hingga RM80 juta</strong> kepada sebuah pihak yang <em>tiada mahkamah pernah mengesahkan sebagai pemilik sah</em>. Wang itu keluar. Wang itu masuk. Dan soalan asal kekal terbuka.</p>
+
+  <h3>Ini bukan kisah Shell. Ini kisah rutin kita.</h3>
+
+  <p>Pada 1974, satu undang-undang diluluskan ketika Darurat — ketika Parlimen tidak bersidang secara normal — dan ia memberi satu syarikat hak eksklusif ke atas minyak dan gas seluruh negara, termasuk negeri-negeri yang masuk ke dalam Persekutuan pada 1963 dengan syarat-syarat mereka sendiri yang tertulis.</p>
+
+  <p>Selama lima puluh dua tahun, Sarawak menerima lima peratus. Ia tidak pernah dipersoalkan secara rasmi sehinggalah Sarawak membina syarikat sendiri dan mula menghantar bil.</p>
+
+  <p>Dan inilah bahagian yang paling penting untuk kita faham:</p>
+
+  <div class="pull" style="background:#2b2620">
+    <strong>Isu ini bukan tentang negeri lawan Persekutuan.</strong> Sarawak ialah Malaysia. Minyak di perairan Sarawak ialah minyak Malaysia. Apabila kita bercakap tentang "Sarawak menuntut", kita sebenarnya bercakap tentang satu pertiga daripada negara meminta akaun bagi hak yang ia tidak pernah secara bebas melepaskan.
+    <span class="m">SATU AYAT YANG SELALU HILANG DARIPADA PERBINCANGAN INI</span>
+  </div>
+
+  <h3>Apa yang kita semua tanggung — tidak kira siapa menang</h3>
+
+  <ul>
+    <li><strong>Kita tanggung kos ketidakpastian.</strong> Apabila dua kerajaan kedua-dua mendakwa hak untuk menjual gas yang sama, syarikat menunggu. Loji ditangguh. Pelabur keluar. ConocoPhillips sudah keluar dari projek bernilai RM13.7 bilion. Setiap pelaburan yang tidak datang ialah kerja yang tidak wujud.</li>
+
+    <li><strong>Kita tanggung kos subsidi.</strong> PETRONAS menyumbang melalui dividen yang membiayai sebahagian besar subsidi dan perkhidmatan awam. Apabila margin PETRONAS terhakis, sama ada subsidi dipotong, cukai dinaikkan, atau perkhidmatan dikurangkan. Tiada jalan keempat yang selesa. Analis sektor sudah memberi amaran bahawa kesan terawal akan dirasai oleh M40 dan B40 melalui harga bahan api dan elektrik.</li>
+
+    <li><strong>Kita tanggung kos masa.</strong> Kes ini bermula November 2024. Kini September 2026. Mahkamah Tinggi masih belum menetapkan tarikh pendengaran untuk soalan sebenar. Dua puluh dua bulan berlalu, dan soalan asal belum dihujahkan sampai ke penghakiman.</li>
+
+    <li><strong>Kita tanggung kos maruah.</strong> Negara yang berjanji kepada Jepun dan Korea bekalan dua puluh hingga tiga puluh tahun lamanya mesti menyerahkan gas itu. Kontrak sedunia itu tidak boleh dipinda kerana kita belum selesai berdebat siapa yang boleh menandatanganinya.</li>
+  </ul>
+
+  <h3>Tiga soalan yang patut ditanya oleh setiap rakyat Malaysia</h3>
+
+  <ol>
+    <li><strong>Kalau dua kerajaan kedua-dua benar, siapa yang sebenarnya salah?</strong> Bukan Sarawak. Bukan Persekutuan. Yang salah ialah lima puluh dua tahun tanpa satu formula bertulis yang diterima kedua-dua pihak. Ketidakjelasan itu bukan keadaan cuaca. Ia satu keputusan — dibuat oleh orang, setiap tahun, untuk tidak memutuskan.</li>
+
+    <li><strong>Kenapa pertikaian hak milik bahan mentah hanya menjadi kecemasan apabila sebuah syarikat asing menuntut kepastian?</strong> Selama berdekad, isu ini diurus sebagai hal politik. Ia menjadi hal undang-undang hanya apabila Shell MDS berkata ia boleh didakwa di bawah undang-undang negeri. Jika ia cukup serius untuk sebuah syarikat Britain, ia cukup serius untuk kita.</li>
+
+    <li><strong>Siapa yang akan memiliki loji ini selepas ia dijual — dan adakah dia akan diberi jawapan yang Shell tidak pernah dapat?</strong> Kerana itulah sebenarnya yang sedang dijual. Bukan 470,000 tan produk setahun. Bukan 450 pekerja, sembilan puluh peratus daripada mereka anak Sarawak. Yang dijual ialah <em>pendedahan</em> kepada soalan yang tiada sesiapa mahu jawab.</li>
+  </ol>
+
+  <h3>Dan satu perkara yang mesti kita berhenti buat</h3>
+
+  <p>Kita mesti berhenti bercakap tentang ini sebagai pertandingan antara "Semenanjung" dan "Borneo". Sarawak bukan lawan. Sarawak ialah rumah. Apabila kita bertanya "kenapa Sarawak minta lebih", kita mengulang kesilapan yang sama yang dibuat pada 1974: kita menganggap hak seseorang itu sebagai permintaan, bukan sebagai hak milik.</p>
+
+  <p>Sebaliknya, apabila kita bertanya kepada PETRONAS "kenapa tak bagi", kita juga tersalah faham. PETRONAS bukan kerajaan. Ia syarikat yang memegang sesuatu atas nama kerajaan. Ia tidak boleh memberi apa yang kerajaan tidak beri.</p>
+
+  <p>Dan kerajaan itu — yang mengambil dividen RM20 bilion tahun ini, yang merupakan pemilik tunggal PETRONAS melalui MoF Inc, yang menandatangani perisytiharan bersama pada Mei 2025 dan kemudian tidak menukarnya menjadi satu perjanjian — perlu menjawab satu soalan sahaja:</p>
+
+  <div class="pull" style="background:#2b2620">
+    Adakah kita lebih rela <strong>membayar RM1.5 bilion dan masih tidak selesai</strong>, atau <strong>menulis satu formula dan benar-benar selesai?</strong> Kerana yang pertama kelihatan murah. Tetapi ia dibayar setiap tahun, selama-lamanya, dan ia tidak pernah menutup buku.
+    <span class="m">SOALAN YANG TIADA LAPORAN AKAN JAWAB UNTUK KITA</span>
+  </div>
+
+  <h3>Penutup</h3>
+
+  <p>Loji di Bintulu dibuka pada 1993. Ia ialah loji gas-ke-cecair komersial pertama di dunia. Enam tahun kemudian, sekumpulan jurutera daripada loji itu dihantar ke Qatar untuk membantu membina Pearl GTL, yang kini sepuluh kali lebih besar.</p>
+
+  <p>Jadi kita pernah membina perkara yang dunia tidak pernah buat. Kita mengajar Qatar. Kita menghasilkan lilin "Sarawax" yang dinamakan sempena negeri ini, menghantarnya ke lebih lima puluh negara, dan ia berakhir di dalam gincu, pakej makanan dan tayar pesawat orang lain.</p>
+
+  <p>Tiada apa dalam cerita ini yang menunjukkan kita tidak mampu. Yang ditunjukkan ialah sesuatu yang lebih sukar diakui: <strong>kita mampu, dan kita tidak selesai.</strong></p>
+
+  <p>Dan perbezaan antara dua keadaan itu — mampu, dan tidak selesai — dibayar setiap bulan, oleh setiap seorang daripada kita, dalam bentuk yang tidak pernah muncul sebagai satu baris dalam mana-mana bajet.</p>
+
+  <p style="margin-top:6mm"><strong>Jika kita sendiri tidak boleh bersetuju siapa pemilik gas kita selepas enam puluh tiga tahun — jangan salahkan sebuah syarikat Britain kerana ia mula bertanya. Satu-satunya kejutan dalam seluruh urusan ini ialah bahawa ia mengambil masa selama ini.</strong></p>
+
+  <div class="endmark">— TAMAT —</div>
+</div>
+
+<hr class="footer-rule">
+<p class="srcnote" style="text-align:center">
+  <b>arifOS Federation // Research Desk</b> · Doc ref SMD-D01 · Compile 17 September 2026<br>
+  Every figure in this dossier is attributed. Where a number is an estimate or a party's assertion, it is labelled as such.<br>
+  Where a question is unresolved, it is listed in Section 09 rather than answered by inference.
+</p>
+
+</div>
+</body>
+</html>
