@@ -600,5 +600,17 @@
     "detected_at": "2026-09-16T07:00:00Z",
     "material_preserved_under": "signature_legacy",
     "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
+  },
+  "shadowAcknowledged": [
+    "sparse_or_absent_matrix_record: copilot is NOT in shadow-matrix per_actor_shadows — no execution/verification signal at all; all copilot claims are DERIVED from docs, not MEASURED from runtime",
+    "shadow_undeclared: this card had no shadowAcknowledged block before 2026-09-19 audit — read_state MUST treat copilot self-assessment as DERIVED"
+  ],
+  "shadow_population_meta": {
+    "populated_at": "2026-09-19T13:48:00Z",
+    "populated_by": "opencode (333-AGI) per federation-shadow-ack audit",
+    "method": "Script-driven derivation from: identity.json (FI slot), /root/AAA/cockpit/shadow-matrix/shadow-matrix-2026-09-07.json (per_actor_shadows, exact-match), live binary version probe, agent-card.json (verified_against)",
+    "covers_shadow_ids": [
+      "DIV-FEDERATION-SHADOW-ACK-CLOSED"
+    ]
   }
 }
