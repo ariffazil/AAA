@@ -43,6 +43,24 @@ a control: defeating the pattern leaves the security property unsatisfied while 
 reads as success, and it teaches every later agent that the gate is decorative. Cost of
 obeying is one blocked cycle. Report MUTATION_HELD plus the exact blocked operation.
 
+**An artifact you must hand to another lane cannot reproduce the guarded literal.** A receipt,
+postmortem, or handoff gets committed, and committing scans its text like any other argument — so
+writing the guarded verb down blocks the very write that records the hold. Describe the operation
+instead: target, verb class, reason, effect, and the lane that owns it.
+
+```
+TARGET : <unit or path>
+OP     : <verb class, e.g. "unit reload">      (T3 — held at the text gate)
+WHY    : load <file> @ <commit> into the live process
+LANE   : kernel judge SEAL, or the executor organ
+EFFECT : <the observable change, in one line>
+```
+
+The distinction is exact: from the *artifact* the guarded string is omitted; the *operation* still
+travels its authorized lane. Describing an operation is not deferring it, and deferring it is not
+abandoning it — naming the lane and the blocked op is what makes the hold actionable instead of
+decorative.
+
 **The gate's own escape lanes may themselves be down.** Before concluding a mutation is
 impossible, walk each lane the gate names and record a measured failure for each — the
 kernel judge path (verdict + reason_code), the signing service (presence guard configured?
@@ -170,6 +188,26 @@ hostname; tailscale ip -4 2>/dev/null | head -1; df -h / | tail -1
 A peer that retracts its own finding because your numbers differ has not corroborated
 anything — it has swapped one unverified reading for another. The fix is to qualify each
 reading with its host, never to average them.
+
+**A peer's "the file does not exist" is a claim about the peer's filesystem VIEW, not about the
+work.** Agent working trees on different nodes are frequently *frozen mirrors* rather than
+replicas, so an honest probe on a stale node produces a confident, wrong negative. Measured on one
+pair: the authoring node held 168 files in a directory with the newest edited that day; the peer
+node held 37 files, newest twelve days old, on a checkout twelve days behind. Both readings were
+true — one described the work, the other described a replica.
+
+```bash
+# run on BOTH hosts; compare four facts, not the single path the peer reported
+hostname; ls <dir> | wc -l; ls -lt <dir> | head -3; git -C <repo> log --oneline -1
+```
+
+Read the disagreement instead of resolving it by picking a winner: same host and path with the
+entry absent is a real absence; a different host is a finding about that host, not about the work;
+an unexpectedly small count on the same host means the peer is reading a mirror — find which tree
+its view resolves to. **Publish into the claiming node's view, then verify by content hash on both
+sides** — size or mtime agreement passes on a truncated or differently-versioned copy. Carry the
+mirror staleness forward as a finding in its own right: an auditor reading a frozen replica can
+only report on the past, and that caveat belongs on every verdict it signs.
 
 **A peer saying "I was wrong, you have the evidence" is not verification either.** They read
 your output. Check their finding against the source before carrying it forward — a peer's

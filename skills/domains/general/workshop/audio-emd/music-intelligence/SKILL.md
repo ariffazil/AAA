@@ -167,7 +167,7 @@ else:
 
 ## Step 4: Cultural Manifold
 
-JSON schema at `/root/arifos/schemas/cultural_manifold_minang_inang.json`.
+JSON schema: `references/cultural_manifold_minang_inang.json` (it lives in this skill — the old `/root/arifos/schemas/…` path does not exist; note the kernel tree is `/root/arifOS`, and its `schemas/` holds no such file).
 
 Fields:
 - `identity`: region, genre, heritage_lineage
@@ -216,11 +216,13 @@ arifOS kernel also has `arifosmcp/core/enforcement/somatic_loop.py` (139 lines) 
 
 ## Files
 
+Both the engine and the manifold now live **inside this skill**. The `/root/arifos/forge/music-intelligence/` tree never existed at that spelling — the kernel tree is `/root/arifOS` (capital OS) and it has no `forge/music-intelligence/` subtree.
+
 | File | Path |
 |---|---|
-| Somatic Engine | `/root/arifos/forge/music-intelligence/somatic_engine.py` |
-| Cultural Manifold | `/root/arifos/forge/music-intelligence/cultural_manifold_minang_inang.json` |
-| Analysis Report | `/root/arifos/forge/music-intelligence/report.json` |
+| Somatic Engine | `references/somatic_engine_v3.py` — pure scipy+numpy, 4-axis scoring (on disk, 7.6 KB) |
+| Cultural Manifold | `references/cultural_manifold_minang_inang.json` (on disk, 1.6 KB) |
+| Analysis Report | **not on disk** as `report.json`; the engine writes `/tmp/somatic_v3_report.json` per run, and the 2026-07-11 run's surviving record is `/root/.local/share/arifos/vault999/sessions/2026-07-11-music-somatic.json` |
 | Paradox Engine (A-FORGE) | `/root/A-FORGE/paradox-engine/{models,engine,registry}.py` |
 | Somatic Loop (arifOS) | `/root/arifOS/arifosmcp/core/enforcement/somatic_loop.py` |
 
