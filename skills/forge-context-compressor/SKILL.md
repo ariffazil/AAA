@@ -23,7 +23,7 @@ floor_scope:
 cognitive_engine_notes:
   claude: "Use <critical_sections> XML tags to mark preserved coordinates. Claude's extended context handles the structural wrapping natively."
   codex: "Output compressed payload as strict JSON with `preserved_coordinates` array. Codex handles strict schema adherence best."
-  hermes: "Output as `--- COMPRESSED ---` markdown blocks with inline failure markers. Hermes reads conversational formatting fastest."
+  hermes: "Output as [COMPRESSED] markdown blocks with inline failure markers. Hermes reads conversational formatting fastest."
 tags:
 - forge
 - context-compression
