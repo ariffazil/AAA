@@ -162,12 +162,15 @@ Do this ONCE. Never ask "what broker decimal standard?" again.
 python3 -c "import yfinance as yf; print(yf.Ticker('GC=F').fast_info.last_price)"
 
 # Backtest (canonical path post-migration)
+# --data is REQUIRED (engine_v2.py argparse). Supply your own OHLCV JSON: the old
+# sample file /root/trading/data/xauusd_1h.json is gone — the 2026-07-19 migration
+# explicitly did NOT preserve `data/*` (see /root/WEALTH/trading/MIGRATION.md).
 python3 /root/WEALTH/trading/backtest/engine_v2.py \
-  --data /root/trading/data/xauusd_1h.json \
+  --data <path-to-your-ohlcv.json> \
   --equity 10000 --risk 0.01
 
-# Governed engine (paper trading)
-python3 /root/paper_trading/governed_engine.py scan
+# Governed engine (paper trading) — UNBUILT, cannot run: see Component 6.
+# /root/paper_trading/governed_engine.py does not exist anywhere on disk.
 ```
 
 ---
@@ -262,7 +265,15 @@ Three dashboards: Gold (:3456), Brent Oil (:3457), Natural Gas (:3458).
 
 ### Component 6: Governed Autonomous Paper Trading Engine
 
-**File:** `/root/paper_trading/governed_engine.py` — autonomous with 6 constitutional gates:
+**UNBUILT (verified against disk 2026-09-19):** no file named `governed_engine.py` exists
+anywhere on this host, `/root/paper_trading/` does not exist, and
+`/root/WEALTH/trading/MIGRATION.md` does not list such a module among what the 2026-07-19
+migration preserved — there is no live successor path to point at, so do not go looking
+for one. What would have to exist for this component to run: a governed paper-trading loop
+at a live path (the WEALTH trading tree is the only surviving home) implementing the 6
+gates below and sealing every trade. **The table below is the specification, not a running engine.**
+
+**Spec (was `governed_engine.py`) — autonomous with 6 constitutional gates:**
 
 | Gate | Rule | Blocks |
 |------|------|--------|

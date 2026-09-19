@@ -1,0 +1,195 @@
+{
+  "ledger": "REPAIR-LEDGER-B",
+  "generated": "2026-09-19",
+  "slice": "B — skills with dead_scripts > 0 OR immutable_targets > 0 (8 skills)",
+  "source_artifact": "/root/AAA/skills-retired/2026-09-19-living-corpses/LIVING-CORPSES.json",
+  "authority": "repair only — no path invented, no capability claim deleted, SKILL.md/references of the slice only",
+  "buckets": {
+    "UNBUILT": 5,
+    "OBSOLETE": 6,
+    "EXAMPLE": 5,
+    "MOVED": 0
+  },
+  "verification": {
+    "method": "the audit's own detector (/root/AAA/skills-retired/_tools/living_corpse_audit.py) re-run read-only with OUT redirected to /tmp/corpse-recheck-b2 — the shared artifact was NOT overwritten",
+    "totals_before": {"dead_paths_in_skill_md": 80, "dead_scripts_in_skill_md": 8, "immutable_write_targets": 1, "skills_with_corpses": 64},
+    "totals_after": {"dead_paths_in_skill_md": 77, "dead_scripts_in_skill_md": 6, "immutable_write_targets": 1, "skills_with_corpses": 62},
+    "per_skill": {
+      "domains/wealth/workshop/trading-exec/mt5-ai-trading-agent": "[1,1,0] -> [0,0,0]  CLEARED",
+      "domains/wealth/workshop/trading-exec/trading-signal-chart": "[0,1,0] -> [0,0,0]  CLEARED",
+      "domains/general/forge/cron-ops/hermes-cron-zen": "[1,1,0] -> [0,1,0]  dead path cleared; foo.sh is an illustration",
+      "domains/general/workshop/telegram-ops/telegram-userbot-telethon": "[6,1,0] -> [5,1,0]  read-pattern literal cleared; the 5 survivors are the UNBUILT state (unbuilt != repaired) plus one dated receipt",
+      "research/research-paper-writing": "[0,2,0] -> [0,2,0]  unchanged by design (EXAMPLE)",
+      "apex-cognitive-reflex/alpha-zen-lanes": "[0,1,0] -> [0,1,0]  unchanged (detector artefact)",
+      "skill-library-integrity": "[0,1,0] -> [0,1,0]  unchanged by design (EXAMPLE)",
+      "aaa-governance/aaa-doctrine-sealing": "[0,0,1] -> [0,0,1]  unchanged, correctly (detector artefact)"
+    },
+    "detector_gaps_found": [
+      "SCRIPT_RE = r\"scripts/[A-Za-z0-9_\\-./]+\\.(?:py|sh|js|ts)\" has no boundary after the extension, so `scripts/chron_events.json` matches as `scripts/chron_events.js` (the `.js` alternative fires and `on` is left over). This produced the alpha-zen-lanes finding.",
+      "The `/foo|bar|baz|...` documented-example guard is applied only inside the PATH_RE loop (line ~86), never inside the SCRIPT_RE loop — so `scripts/foo.sh` (hermes-cron-zen) and `scripts/foo.py` (skill-library-integrity) are reported although they are textbook illustration names.",
+      "DEAD-PATH reporting is existence-only and not negation-aware (only the IMMUTABLE test checks NEGATION), so a body that correctly marks a path as gone/UNBUILT keeps being re-reported. This is why the doctrine-sealing 'never write it' line still surfaces."
+    ]
+  },
+  "entries": [
+    {
+      "skill": "domains/general/workshop/telegram-ops/telegram-userbot-telethon",
+      "file": "SKILL.md",
+      "ref": "scripts/telegram-userbot.py",
+      "classification": "UNBUILT",
+      "change_made": "Added an UNBUILT note after the Step 4 systemd unit fence: the unit is a spec, not installed; its ExecStart target is absent; what would have to exist is the Step 3 relay listing saved verbatim to that path plus the Step 2 session. Procedure kept intact.",
+      "evidence": "ls /root/.hermes/scripts/ (20 entries) has no telegram-userbot.py; search_files '*userbot*' over /root -> total_count 0; ls -la /etc/systemd/system/telegram-userbot.service -> No such file or directory",
+      "undo": "Delete the paragraph beginning '**UNBUILT — verified 2026-09-19.** The unit above is a spec' (between the Step 4 ```ini fence and '### Pitfall: phone_code_hash not persisted between auth steps')."
+    },
+    {
+      "skill": "domains/general/workshop/telegram-ops/telegram-userbot-telethon",
+      "file": "SKILL.md",
+      "ref": "/etc/systemd/system/telegram-userbot.service",
+      "classification": "UNBUILT",
+      "change_made": "Covered by the same Step 4 UNBUILT note (absolute form of the same finding). No additional edit. The note records that the unit file is absent, which is what makes the enable step unexecutable.",
+      "evidence": "ls -la /etc/systemd/system/telegram-userbot.service -> No such file or directory; present tele* units are only apa-telegram-bridge, machine-telemetry, mcp-telemetry-proxy",
+      "undo": "Same as the scripts/telegram-userbot.py entry — remove that single paragraph."
+    },
+    {
+      "skill": "domains/general/workshop/telegram-ops/telegram-userbot-telethon",
+      "file": "SKILL.md",
+      "ref": "/root/.hermes/scripts/telegram-userbot.py",
+      "classification": "UNBUILT",
+      "change_made": "Covered by the same Step 4 UNBUILT note (absolute form of the same finding). No additional edit.",
+      "evidence": "directory listed in full: a2a_bridge.sh, agent-card-drift-check.py, apex-zen-bridge-score.py, apex-zen-paths.py, arif-fazil-sense.sh, arifflow_ingest.py, attention_closure_run.sh, brief-rules-context.py, constitutional-drift-watch.py, cron-deliver.sh, cron-receipt-bridge.py.bak-20260909, dead-pointer-sweep.py, gate-integrity-verify.py, organic_rebuild_watch.py, probe_models.py, rollback-map-generate.py, __pycache__ — no userbot file",
+      "undo": "Same as the scripts/telegram-userbot.py entry — remove that single paragraph."
+    },
+    {
+      "skill": "domains/general/workshop/telegram-ops/telegram-userbot-telethon",
+      "file": "SKILL.md",
+      "ref": "/root/.hermes/userbot.session",
+      "classification": "UNBUILT",
+      "change_made": "Added an UNBUILT state note at the end of Step 2: no session file exists on this host, the `/root/.hermes/userbot.session` literal is the path Telethon WILL create on first successful client.start(), and every read/relay pattern needs that auth run first. Also qualified the read-pattern lead-in.",
+      "evidence": "ls -la /root/.hermes/*.session -> No such file or directory; find /root -maxdepth 5 -name '*.session' -> 0 hits",
+      "undo": "Delete the paragraph beginning '**UNBUILT — state on disk, verified 2026-09-19:** no session file exists' at the end of Step 2, and revert the read-pattern lead-in to '(use ONLY after Arif authorizes):'."
+    },
+    {
+      "skill": "domains/general/workshop/telegram-ops/telegram-userbot-telethon",
+      "file": "SKILL.md",
+      "ref": "/root/userbot/ari_session",
+      "classification": "UNBUILT",
+      "change_made": "Covered by the Step 2 UNBUILT state note, which names /root/userbot/ as absent. No additional edit.",
+      "evidence": "ls -la /root/userbot -> No such file or directory",
+      "undo": "Same as the /root/.hermes/userbot.session entry — remove that single paragraph."
+    },
+    {
+      "skill": "domains/general/workshop/telegram-ops/telegram-userbot-telethon",
+      "file": "SKILL.md",
+      "ref": "/root/_archive/2026-08-04/userbot/ari_session",
+      "classification": "OBSOLETE",
+      "change_made": "Deleted the stale literal from the 'Approximate working read pattern' SESSION constant and replaced it with a placeholder plus a warning not to point it at a dead path. The read procedure itself is unchanged. The dated 2026-08-19 receipt ('Reality discovered later: ...') and the archive-scan probe were deliberately left intact — dated evidence, not an instruction.",
+      "evidence": "find /root/_archive -maxdepth 4 -> only /root/_archive/2026/09 (the 2026-08-04 tree is gone); re-run detector: telegram skill dead_paths 6 -> 5, this ref no longer matched",
+      "undo": "Restore `SESSION = '/root/_archive/2026-08-04/userbot/ari_session'  # adjust path` in the read-pattern python block."
+    },
+    {
+      "skill": "domains/general/workshop/telegram-ops/telegram-userbot-telethon",
+      "file": "SKILL.md",
+      "ref": "/root/_archive/2026-08-04/userbot/ari_session.session",
+      "classification": "OBSOLETE",
+      "change_made": "No edit. This path survives only inside the dated 2026-08-19 receipt line recording the discovery; it is historical evidence of a missed capability, not a step to execute. Removing it would delete the scar.",
+      "evidence": "same on-disk probe as above; the mention sits in the line 'Reality discovered later: `/root/_archive/2026-08-04/userbot/ari_session.session` (143KB, modified 2026-07-30)'",
+      "undo": "None required (no edit made)."
+    },
+    {
+      "skill": "domains/wealth/workshop/trading-exec/trading-signal-chart",
+      "file": "SKILL.md",
+      "ref": "scripts/chart_pro.py",
+      "classification": "OBSOLETE",
+      "change_made": "Deleted the 'Preferred: chart_pro.py' invocation block, including the dead cd target and the relative script reference. Replaced with an OBSOLETE note that keeps the requirement stated generally (render from the live API + carry the metadata set) and names the provisioned in-skill templates driven by the localhost:3456 gold API. No script was substituted.",
+      "evidence": "ls /root/trading -> No such file or directory; search_files 'chart_pro.py' over /root -> total_count 0; /root/WEALTH/trading/MIGRATION.md line 4 'Source: `/root/trading/` (deleted)'; re-run detector: [0,1,0] -> [0,0,0]",
+      "undo": "Restore the block: '### Preferred: chart_pro.py' + the bash fence 'cd /root/trading && python3 scripts/chart_pro.py --signal LONG --entry 4003 --sl 3970 --tp 4066 --json' + 'Output: `/tmp/xauusd_chart.png` (300KB, 180 DPI, landscape)' + the JSON-metadata line."
+    },
+    {
+      "skill": "domains/wealth/workshop/trading-exec/mt5-ai-trading-agent",
+      "file": "SKILL.md",
+      "ref": "/root/trading/scripts/gold_engine.py",
+      "classification": "OBSOLETE",
+      "change_made": "Corrected the 'Phase 1 gold engine (already live)' block — the capability claim is kept and its state is stated instead: the engine file and its whole tree are gone and no substitute exists, so Phase 2 must not be planned around it. Config was repointed to the live on-disk copy (proof), the journal recorded as gone, and the cron id flagged as not found. Removed the dead absolute/relative path strings.",
+      "evidence": "search_files 'gold_engine.py' over /root -> total_count 0; ls /root/trading -> No such file or directory; /root/WEALTH/trading/MIGRATION.md — preserved-module list has no gold_engine, source '/root/trading/ (deleted)', 'signals/engine.py (v1, superseded)' not preserved; ls -la /root/WEALTH/trading/config/trading_spec.json -> 1313 bytes, present; grep -rl 2258f1b3fa0e /root/.hermes/cron -> no hits; re-run detector: [1,1,0] -> [0,0,0]",
+      "undo": "Restore the original block: '**Phase 1 gold engine (already live):**' plus the Location/Config/Journal/Cron/'Uses Yahoo Finance (free, no API key), yfinance + pandas + ta' bullets."
+    },
+    {
+      "skill": "domains/wealth/workshop/trading-exec/mt5-ai-trading-agent",
+      "file": "SKILL.md",
+      "ref": "scripts/gold_engine.py",
+      "classification": "OBSOLETE",
+      "change_made": "Relative form of the same finding; cleared by the same block correction. No additional edit.",
+      "evidence": "same as the absolute-path entry (0 hits on disk, source tree deleted per MIGRATION.md); re-run detector shows both counters at 0",
+      "undo": "Same as the /root/trading/scripts/gold_engine.py entry."
+    },
+    {
+      "skill": "domains/general/forge/cron-ops/hermes-cron-zen",
+      "file": "SKILL.md",
+      "ref": "/root/forge_work/backups/haproxy.cfg.bak-20260814",
+      "classification": "OBSOLETE",
+      "change_made": "Removed the dead backup path from the haproxy-504 pitfall — the rule and the 2026-08-14 date are untouched; the parenthesis now records that the pre-change backup was not retained.",
+      "evidence": "ls /root/forge_work/backups/ | grep -i haproxy -> no hits (dir holds only jobs.json.bak-20260916-* and jobs.json.receipt-2026*.json); re-run detector: this skill's dead_paths 1 -> 0",
+      "undo": "Restore the parenthetical '(backup: /root/forge_work/backups/haproxy.cfg.bak-20260814);' on the third line of the 504 pitfall bullet."
+    },
+    {
+      "skill": "domains/general/forge/cron-ops/hermes-cron-zen",
+      "file": "SKILL.md",
+      "ref": "scripts/foo.sh",
+      "classification": "EXAMPLE",
+      "change_made": "No edit — left as written. `cron/scripts/foo.sh` and `foo.sh` are placeholder names inside the Rule 2 explanation of how the cron resolver strips sub-directories (which is precisely why the bare-name form is the fix). Not a step to execute.",
+      "evidence": "SKILL.md line 72: 'Path prefix `cron/scripts/foo.sh` (relative) is silently stripped to `foo.sh` and looked up under `/root/HERMES/scripts/`.'; also lines 78-80 ('Move the scripts: mv /root/HERMES/cron/scripts/foo.sh ...'), all inside the resolver explanation",
+      "undo": "None required (no edit made)."
+    },
+    {
+      "skill": "research/research-paper-writing",
+      "file": "SKILL.md",
+      "ref": "scripts/make_figure2.py",
+      "classification": "EXAMPLE",
+      "change_made": "No edit — left as written. The path sits inside the fenced 'README template for research code', i.e. it is a sample filename for the READER's own repository. Skill-relative by accident of the detector, not by intent of the text.",
+      "evidence": "SKILL.md ~line 1200, inside the ```markdown README template: 'To reproduce Figure 2: `python scripts/make_figure2.py`'; the enclosing sample tree at ~1172 is headed 'your-method/'",
+      "undo": "None required (no edit made)."
+    },
+    {
+      "skill": "research/research-paper-writing",
+      "file": "SKILL.md",
+      "ref": "scripts/reproduce_table1.sh",
+      "classification": "EXAMPLE",
+      "change_made": "No edit — left as written; same README-template illustration.",
+      "evidence": "SKILL.md ~line 1182 'reproduce_table1.sh  # One script per main result' and ~line 1199 'To reproduce Table 1: `bash scripts/reproduce_table1.sh`' — both inside the sample repository tree / README template fences",
+      "undo": "None required (no edit made)."
+    },
+    {
+      "skill": "skill-library-integrity",
+      "file": "SKILL.md",
+      "ref": "scripts/foo.py",
+      "classification": "EXAMPLE",
+      "change_made": "No edit — left as written. The mention is a self-referential illustration of the very three-step resolution order this skill teaches; editing it would blunt the lesson.",
+      "evidence": "SKILL.md line 586: 'a skill that says *run `/root/scripts/foo.py`* is not broken because `scripts/foo.py` is absent from its own package — the shared script root is the live path.'",
+      "undo": "None required (no edit made)."
+    },
+    {
+      "skill": "apex-cognitive-reflex/alpha-zen-lanes",
+      "file": "SKILL.md",
+      "ref": "scripts/chron_events.js",
+      "classification": "EXAMPLE",
+      "change_made": "No edit — left as written. Detector artefact: the only related literal is `/root/AAA/scripts/chron_events.json`, which EXISTS on disk. SCRIPT_RE has no boundary after the extension, so `.json` matched the `.js` alternative and the trailing `on` was dropped.",
+      "evidence": "grep -n 'chron_events' SKILL.md -> line 68 '`/root/AAA/scripts/chron.py` reads `/root/AAA/scripts/chron_events.json`.'; grep -n '\\.js' SKILL.md -> the same single line; ls -la /root/AAA/scripts/chron_events.json -> 9379 bytes, 2026-09-18 15:25 (present); /root/AAA/scripts/chron.py -> 9099 bytes (present)",
+      "undo": "None required (no edit made)."
+    },
+    {
+      "skill": "aaa-governance/aaa-doctrine-sealing",
+      "file": "SKILL.md + references/commit-gates.md",
+      "ref": "/root/AAA/canon/eureka-entries.jsonl",
+      "classification": "DETECTOR_ARTEFACT (not one of the four repair buckets; recorded here for completeness, excluded from the counts)",
+      "change_made": "NONE — nothing edited. The body already names the writable live feed as the write target and the canon file as cite-only; the flagged string is the correction text itself quoting the old mistake.",
+      "evidence": "SKILL.md lines 142-146: 'The instruction is ONE line: append the new row to the **LIVE FEED**, `/root/AAA/eurekas/eureka-entries.jsonl`. /root/AAA/canon/eureka-entries.jsonl is immutable by design ... Cite it. Never use it as a write target, never unlock it, never clear its attribute to append.' The detector's own quote is SKILL.md lines 152-153: 'Earlier versions of this skill and of `references/commit-gates.md` named `/root/AAA/canon/eureka-entries.jsonl` as the write target (\"append to canon\")'. references/commit-gates.md lines 43-48 agree (LIVE FEED = 'the WRITE TARGET'; canon = 'cite, never write'). lsattr: /root/AAA/eurekas/eureka-entries.jsonl = '--------------e-------' (writable, 14 rows); /root/AAA/canon/eureka-entries.jsonl = '----i---------e-------' (IMMUTABLE, 109 rows).",
+      "undo": "None required (no edit made)."
+    }
+  ],
+  "notes": [
+    "The doctrine-sealing entry is recorded for completeness but excluded from the four buckets: it is a detector artefact, not a corpse. Four-bucket sum = 16.",
+    "MOVED = 0. No flagged script had a provable substitute on disk. /root/trading was migrated to /root/WEALTH/trading on 2026-07-19 but neither gold_engine.py nor chart_pro.py was carried over, so repointing would have fabricated a path (Iron Rule 1). The one genuine repoint made is the config file, whose live copy was verified present before being named.",
+    "No capability claim was deleted. Every repair either keeps the procedure and marks its state (UNBUILT), or removes only the stale path binding while keeping the requirement stated generally (OBSOLETE).",
+    "The telegram-userbot skill remains flagged on 5 paths after repair, by design: they are the UNBUILT state. unbuilt is not the same as repaired, and the detector cannot see the UNBUILT marker.",
+    "Files edited: 4 SKILL.md files — telegram-userbot-telethon, trading-signal-chart, mt5-ai-trading-agent, hermes-cron-zen. No references/*.md was modified. Nothing else under /root/AAA was touched."
+  ]
+}

@@ -1,0 +1,301 @@
+{
+  "ledger": "REPAIR-LEDGER-A",
+  "generated": "2026-09-19",
+  "scope": "slice A — skills whose SKILL.md carries dead_paths >= 2 (11 distinct skills; 12 JSON keys, one is a symlink duplicate)",
+  "source_artifact": "/root/AAA/skills-retired/2026-09-19-living-corpses/LIVING-CORPSES.json",
+  "authority": "repair only — no path invented, no capability claim deleted",
+  "buckets": {
+    "UNBUILT": 13,
+    "OBSOLETE": 14,
+    "MOVED": 1,
+    "NOT-A-PATH": 3
+  },
+  "classified_paths_total": 31,
+  "notes": [
+    "LIVING-CORPSES.json lists 12 keys for this slice but workflows/core/FORGE-t3a-binding-matrix is a symlink to ../../forge-t3a-binding-matrix, so its 2 paths are the same two text references as the forge-t3a-binding-matrix key. Counting distinct (file, path) pairs gives 31, not 33.",
+    "domains/general/workshop/telegram-ops/telegram-userbot-telethon overlaps slice B (dead_scripts > 0). Slice B repaired it at 09:39:15 before this worker opened it; its 6 dead paths were re-verified independently here and need no further edit (the UNBUILT/OBSOLETE notes are already in the file). No edit made by ledger A.",
+    "MOVED = 1 only. Every other missing artifact had no provable substitute on disk; repointing would have fabricated a path.",
+    "Files edited: 10 SKILL.md + 1 references/*.md. No capability claim deleted: every repair either keeps the procedure and states its true state, or removes only a stale path binding."
+  ],
+  "entries": [
+    {
+      "skill": "domains/wealth/workshop/trading-exec/agentic-trading-companion",
+      "file": "SKILL.md",
+      "dead_path": "/root/XAUUSD_TRADING_RESEARCH.md",
+      "classification": "NOT-A-PATH",
+      "change_made": "NO EDIT. The two mentions (Quick-Commands-adjacent migration note; 'Stale Paths' pitfall) already name this file precisely in order to say it does NOT exist / is stale. It is a negative reference, not an instruction pointing at an artifact. Changing it would delete a correct warning.",
+      "evidence": "SKILL.md line 408: '> `/root/XAUUSD_TRADING_RESEARCH.md` does NOT exist on disk.'; line 452 lists it among paths that are '**all stale**'. ls -la /root/XAUUSD_TRADING_RESEARCH.md -> No such file or directory (claim is TRUE).",
+      "undo": "None required (no edit made)."
+    },
+    {
+      "skill": "domains/wealth/workshop/trading-exec/agentic-trading-companion",
+      "file": "SKILL.md",
+      "dead_path": "/root/trading/data/xauusd_1h.json",
+      "classification": "OBSOLETE",
+      "change_made": "Replaced the hardcoded --data argument in the backtest command with an explicit placeholder plus a comment stating the requirement (engine_v2.py requires --data; supply your own OHLCV JSON) and why the old file is gone. The backtest procedure itself is unchanged.",
+      "evidence": "ls -la /root/trading -> No such file or directory; /root/WEALTH/trading/MIGRATION.md 'Source: `/root/trading/` (deleted)' and under 'What was NOT preserved': '`data/*` (sample data, logs)'; /root/WEALTH/trading/backtest/engine_v2.py:704 parser.add_argument(\"--data\", required=True, help=\"Path to OHLCV JSON\").",
+      "undo": "Restore `  --data /root/trading/data/xauusd_1h.json \\` and delete the three added comment lines immediately above the engine_v2.py invocation."
+    },
+    {
+      "skill": "domains/wealth/workshop/trading-exec/agentic-trading-companion",
+      "file": "SKILL.md",
+      "dead_path": "/root/paper_trading/governed_engine.py",
+      "classification": "UNBUILT",
+      "change_made": "Two edits. (1) The 'Governed engine (paper trading)' command was replaced with a one-line UNBUILT comment. (2) Component 6's '**File:** ...' line was replaced with an UNBUILT paragraph naming what would have to exist, keeping the 6-gate table as the specification. Capability claim kept, marked not-runnable.",
+      "evidence": "find /root /opt /home -name 'governed_engine*' -> 0 hits; ls -d /root/paper_trading -> No such file or directory; /root/WEALTH/trading/MIGRATION.md preserved-module table contains no governed_engine (only apex/, risk/, governance/, core/, config/, backtest/, cron/, docs/, reference/).",
+      "undo": "Restore queue line 'python3 /root/paper_trading/governed_engine.py scan' under '# Governed engine (paper trading)', and restore the Component 6 line '**File:** `/root/paper_trading/governed_engine.py` — autonomous with 6 constitutional gates:' in place of the UNBUILT paragraph + '**Spec (was `governed_engine.py`) ...**' line."
+    },
+    {
+      "skill": "domains/general/aaa/onboarding/a2a-agent-card-registration",
+      "file": "SKILL.md",
+      "dead_path": "/root/AAA/a2a-server/forge-live-wire.js",
+      "classification": "UNBUILT",
+      "change_made": "Step 2 rewritten: the 'node forge-live-wire.js' fence removed and replaced with an UNBUILT statement (generator absent; what would have to exist: a script that walks the agent cards and emits layers[]+flows[]), the intended manifest content kept as an explicit spec list.",
+      "evidence": "ls -la /root/AAA/a2a-server/ -> no forge-live-wire.js (full listing read); find /root/AAA /root/HERMES -maxdepth 4 -iname '*live-wire*' -o -iname '*livewire*' -> 0 hits; grep -rn 'live-wire|live_wire|LIVE_WIRE' /root/AAA/a2a-server/*.md *.json -> 0 hits.",
+      "undo": "Restore the Step 2 block: intro line 'Maps all 33 agents to their A2A endpoints organized by layer:' + ```bash node /root/AAA/a2a-server/forge-live-wire.js ``` + 'Produces `/root/AAA/a2a-server/live-wire-manifest.json` with:' before the bullet list, and delete the UNBUILT blockquote and the 'Spec of the missing manifest...' line."
+    },
+    {
+      "skill": "domains/general/aaa/onboarding/a2a-agent-card-registration",
+      "file": "SKILL.md",
+      "dead_path": "/root/AAA/a2a-server/live-wire-manifest.json",
+      "classification": "UNBUILT",
+      "change_made": "Step 4 check #3 no longer reads a non-existent manifest; it now says the expected manifest is UNBUILT and counts routes in the manifest that does exist. Step 2's UNBUILT block names the on-disk file explicitly as a DIFFERENT artifact (routes[]/meta{} vs layers[]/flows[]) so nobody mistakes it for the same thing.",
+      "evidence": "ls -la /root/AAA/a2a-server/A2A_LIVE_WIRE_MANIFEST.json -> 7501 bytes, 2026-08-05 (present) but head of file shows meta{} + routes[]; grep -c 'flows' A2A_LIVE_WIRE_MANIFEST.json -> 0; the layers/flows manifest does not exist anywhere (grep -rl '\"layers\"' over /root/AAA/docs /registries /a2a-server -> only MCP_INSPECTOR_AUDIT.json, unrelated).",
+      "undo": "Restore '# 3. Verify manifest exists' plus the original python3 -c one-liner reading live-wire-manifest.json with d[\"layers\"]/d[\"flows\"]."
+    },
+    {
+      "skill": "domains/general/aaa/onboarding/a2a-agent-card-registration",
+      "file": "SKILL.md",
+      "dead_path": "/root/AAA/docs/TOOLREGISTRY.json",
+      "classification": "OBSOLETE",
+      "change_made": "The 'Registry Drift Convergence' section (4 dead artifacts + 1 dead scanner) was replaced with a STATE block naming what is gone and why it is safe to keep going, and a general statement of the requirement (one canonical manifest; mirrors are symlinks to it; hash the mirrors). No new path was substituted.",
+      "evidence": "ls -la /root/AAA/docs/TOOLREGISTRY.json -> No such file or directory; ls /root/AAA/docs/_quarantined/ -> TOOLREGISTRY.json.quarantine (19971 bytes, 2026-07-17) is the last copy; TOOLREGISTRY.json.derived is a 50-byte stub whose derived_from source /root/arifOS/registry/03-tools.yaml also does not exist; /root/AAA/scripts/federation_init.py:35 sets TOOLREGISTRY_PATH to the missing file and :302-305 returns {'status':'no_registry','note':'TOOLREGISTRY absent — dedupe deferred'}.",
+      "undo": "Restore the original section text: '## Registry Drift Convergence' + the 'When drift scanner ... cleanest fix is a symlink:' paragraph + the 3-step bash fence (realpath/rm/ln -s) + the closing 'The scanner checks: ...' paragraph."
+    },
+    {
+      "skill": "domains/general/aaa/onboarding/a2a-agent-card-registration",
+      "file": "SKILL.md",
+      "dead_path": "/root/AAA/registries/TOOL_MANIFEST.json",
+      "classification": "OBSOLETE",
+      "change_made": "Covered by the same section rewrite: the mirror file is absent, so there is nothing to symlink or drift-check. The requirement is stated in general terms. No additional edit.",
+      "evidence": "ls -la /root/AAA/registries/TOOL_MANIFEST.json -> No such file or directory (directory listing shows AAA_AGENTS_REGISTRY.json, ROUTE_REGISTRY.json, PORT_REGISTRY.json, etc. — no TOOL_MANIFEST.json). find / -name 'TOOL_MANIFEST.json' -> only /home/ariffazil/arifOS.stale-20260619/TOOL_MANIFEST.json (a stale 2026-06-19 snapshot, not a live mirror).",
+      "undo": "Same as the /root/AAA/docs/TOOLREGISTRY.json entry — restore the original Registry Drift Convergence section."
+    },
+    {
+      "skill": "domains/general/aaa/onboarding/a2a-agent-card-registration",
+      "file": "SKILL.md",
+      "dead_path": "/root/arifOS/TOOL_MANIFEST.json",
+      "classification": "OBSOLETE",
+      "change_made": "Covered by the same section rewrite (mirror absent). No additional edit.",
+      "evidence": "ls -la /root/arifOS/TOOL_MANIFEST.json -> No such file or directory; /root/arifOS is present as a tree but holds no TOOL_MANIFEST.json (ls /root/arifOS -> 00_legacy_materials, app, arifosmcp, ...).",
+      "undo": "Same as the /root/AAA/docs/TOOLREGISTRY.json entry — restore the original Registry Drift Convergence section."
+    },
+    {
+      "skill": "domains/general/aaa/onboarding/a2a-agent-card-registration",
+      "file": "SKILL.md",
+      "dead_path": "/root/AAA/skills/ARCHIVE-chaos-quarantine",
+      "classification": "OBSOLETE",
+      "change_made": "The broken-symlink pitfall item 3 no longer tells the agent to run find against a non-existent archive dir; it keeps the rule (prune dangling symlinks in archive dirs) and names the archive root that exists today.",
+      "evidence": "ls -d /root/AAA/skills/ARCHIVE-chaos-quarantine -> No such file or directory; ls -d /root/AAA/skills/*ARCHIVE* -> no match, but /root/AAA/skills/.archive exists with dated subdirs (2026-08-18-fitness, 2026-09-16-media-skill-dedup, ..., 2026-09-19-sota-snapshot); /root/.claude/skills still exists so that half of the command stays valid.",
+      "undo": "Restore the original item 3 line: '  3. Archive backups (`.archive-*`, `ARCHIVE-chaos-quarantine`, `skills.bak-*`) point to moved skill sources. Fix: `find /root/.claude/skills /root/AAA/skills/ARCHIVE-chaos-quarantine -xtype l -delete`.'"
+    },
+    {
+      "skill": "domains/general/forge/mcp-ops/external-platform-mcp",
+      "file": "SKILL.md",
+      "dead_path": "/root/.composio/composio",
+      "classification": "UNBUILT",
+      "change_made": "The 'Composio CLI (INSTALLED 2026-08-25)' heading and install claim were replaced with an UNBUILT block: CLI absent, every `composio ...` command in this skill and in references/composio-skills-layer.md fails today, what would have to exist, and which route is actually live. The PATH-shadowing NOTE was kept and conditioned on the CLI existing.",
+      "evidence": "find /root /usr/local/bin /usr/bin /opt -maxdepth 4 -name 'composio*' -> 0 hits; which composio -> empty; ls -d /root/.composio -> No such file or directory; the only present Composio artifact is /root/.config/mcp/composio-proxy.mjs (stdio proxy).",
+      "undo": "Restore heading '### Composio CLI (INSTALLED 2026-08-25)', the single install line naming @composio/cli@0.4.0 at /root/.composio/composio with entry point /root/.local/bin/composio, and the original unconditional '**NOTE:** ... can shadow the real one in PATH ...' line."
+    },
+    {
+      "skill": "domains/general/forge/mcp-ops/external-platform-mcp",
+      "file": "SKILL.md",
+      "dead_path": "/root/.local/bin/composio",
+      "classification": "UNBUILT",
+      "change_made": "Covered by the same edit (both install paths named in one UNBUILT block). No additional edit.",
+      "evidence": "as above (no composio binary anywhere on disk; /root/.composio absent).",
+      "undo": "Same as the /root/.composio/composio entry."
+    },
+    {
+      "skill": "domains/general/workshop/social-media/composio-social-intelligence",
+      "file": "SKILL.md",
+      "dead_path": "/root/.composio/user_data.json",
+      "classification": "UNBUILT",
+      "change_made": "Added a STATE block under the dual-key explanation: the uak_ key file is absent because the CLI is absent; what would have to exist (installer binary + the user_data.json `composio login` writes); fix option (2) is currently unavailable rather than merely disfavoured. Pitfall 9 (install path) got the same UNBUILT qualifier.",
+      "evidence": "ls -d /root/.composio -> No such file or directory; ls -la /root/.composio/user_data.json -> No such file or directory; no composio binary on PATH or disk.",
+      "undo": "Delete the '> **STATE (verified 2026-09-19): the CLI half of this diagnosis ...' blockquote after the Fix-options paragraph, and remove the appended '**UNBUILT on this host (verified 2026-09-19): ...**' sentence in pitfall 9."
+    },
+    {
+      "skill": "domains/general/workshop/social-media/composio-social-intelligence",
+      "file": "SKILL.md",
+      "dead_path": "/root/.composio/composio",
+      "classification": "UNBUILT",
+      "change_made": "Covered by the same two edits. Additionally the reference file references/composio-cli-dual-key.md got a leading STATE block (its Key-2 commands are all unrunnable today); no other reference file was touched.",
+      "evidence": "same as the user_data.json entry; references/composio-cli-dual-key.md lines 19-20,33,37,74,89,125-126 all bind to /root/.composio/*, hence the single top-of-file state note rather than 8 line edits.",
+      "undo": "Same as the user_data.json entry, plus delete the STATE blockquote inserted after the '*Discovered 2026-08-25*' line in references/composio-cli-dual-key.md."
+    },
+    {
+      "skill": "domains/general/workshop/telegram-ops/telegram-userbot-telethon",
+      "file": "SKILL.md",
+      "dead_path": "/etc/systemd/system/telegram-userbot.service",
+      "classification": "UNBUILT",
+      "change_made": "NO EDIT BY LEDGER A — already repaired by slice B (file mtime 2026-09-19 09:39:15). Verified here that the file now carries the UNBUILT note under Step 4 stating the unit is a spec, not installed, and what must exist before enable.",
+      "evidence": "ls -la /etc/systemd/system/telegram-userbot.service -> No such file or directory (re-verified); SKILL.md lines 131-152 contain the unit fence followed by the UNBUILT paragraph.",
+      "undo": "Per REPAIR-LEDGER-B: delete the UNBUILT paragraph after the Step 4 ini fence (work already undone by that ledger's owner, not by this one)."
+    },
+    {
+      "skill": "domains/general/workshop/telegram-ops/telegram-userbot-telethon",
+      "file": "SKILL.md",
+      "dead_path": "/root/.hermes/scripts/telegram-userbot.py",
+      "classification": "UNBUILT",
+      "change_made": "NO EDIT BY LEDGER A — covered by slice B's Step 4 UNBUILT note (which names this ExecStart target as absent). Re-verified here.",
+      "evidence": "ls /root/.hermes/scripts/ -> no telegram-userbot.py; ls -la /root/.hermes/scripts/telegram-userbot.py -> No such file or directory.",
+      "undo": "Same as the systemd-unit entry (single paragraph added by ledger B)."
+    },
+    {
+      "skill": "domains/general/workshop/telegram-ops/telegram-userbot-telethon",
+      "file": "SKILL.md",
+      "dead_path": "/root/.hermes/userbot.session",
+      "classification": "UNBUILT",
+      "change_made": "NO EDIT BY LEDGER A — slice B added the Step 2 UNBUILT state note ('no session file exists on this host') and qualified the read-pattern lead-in. Re-verified here: no *.session anywhere.",
+      "evidence": "ls -la /root/.hermes/userbot.session -> No such file or directory; find /root -maxdepth 5 -name '*.session' -> 0 hits.",
+      "undo": "Per ledger B: delete the UNBUILT paragraph at the end of Step 2."
+    },
+    {
+      "skill": "domains/general/workshop/telegram-ops/telegram-userbot-telethon",
+      "file": "SKILL.md",
+      "dead_path": "/root/userbot/ari_session",
+      "classification": "UNBUILT",
+      "change_made": "NO EDIT BY LEDGER A — covered by slice B's Step 2 note (names /root/userbot/ as absent). Re-verified here.",
+      "evidence": "ls -d /root/userbot -> No such file or directory.",
+      "undo": "Same as the /root/.hermes/userbot.session entry."
+    },
+    {
+      "skill": "domains/general/workshop/telegram-ops/telegram-userbot-telethon",
+      "file": "SKILL.md",
+      "dead_path": "/root/_archive/2026-08-04/userbot/ari_session",
+      "classification": "OBSOLETE",
+      "change_made": "NO EDIT BY LEDGER A — slice B replaced the SESSION literal in the read pattern with a placeholder and recorded why. Re-verified here: the 2026-08-04 archive tree is gone (only /root/_archive/2026/09 remains). The dated 2026-08-19 discovery receipt naming the file was deliberately left as history.",
+      "evidence": "find /root/_archive -maxdepth 4 -> /root/_archive/2026/09 only; ls -la /root/_archive/2026-08-04 -> No such file or directory.",
+      "undo": "Per ledger B: restore the SESSION literal line in the read-pattern python block."
+    },
+    {
+      "skill": "domains/general/workshop/telegram-ops/telegram-userbot-telethon",
+      "file": "SKILL.md",
+      "dead_path": "/root/_archive/2026-08-04/userbot/ari_session.session",
+      "classification": "OBSOLETE",
+      "change_made": "NO EDIT BY LEDGER A — same finding as slice B's literal replacement; the historical receipt line naming the 143KB file was intentionally preserved as evidence, not rewritten.",
+      "evidence": "as above (archive tree absent).",
+      "undo": "Same as the /root/_archive/.../ari_session entry."
+    },
+    {
+      "skill": "domains/general/workshop/audio-emd/music-generation",
+      "file": "SKILL.md",
+      "dead_path": "/root/HERMES/models/rvc/target_voice.pth",
+      "classification": "UNBUILT",
+      "change_made": "Added an UNBUILT block after the rvc-python fence: no models dir, no .pth/.index model anywhere, rvc_python not importable; names what would have to exist and instructs treating the filenames as placeholders. The command template and the 'no GPU and no model -> skip' fallback were kept.",
+      "evidence": "ls -la /root/HERMES/models/ -> No such file or directory; find /root /opt -maxdepth 7 -name '*.pth' -> 0 hits (only unrelated .index files under /root/.kimi-code cache); python3 -c 'import rvc_python' -> ImportError in every interpreter tried; no *rvc* artifact anywhere outside build-cache noise.",
+      "undo": "Delete the UNBUILT blockquote between the '**rvc-python CLI:**' fence and the '**Where to get voice models:**' line."
+    },
+    {
+      "skill": "domains/general/workshop/audio-emd/music-generation",
+      "file": "SKILL.md",
+      "dead_path": "/root/HERMES/models/rvc/target_voice.index",
+      "classification": "UNBUILT",
+      "change_made": "Covered by the same UNBUILT block (one note for both model files). No additional edit.",
+      "evidence": "same as the .pth entry (no /root/HERMES/models tree, no .index model on disk).",
+      "undo": "Same as the target_voice.pth entry."
+    },
+    {
+      "skill": "domains/general/workshop/audio-emd/music-intelligence",
+      "file": "SKILL.md",
+      "dead_path": "/root/arifos/forge/music-intelligence/somatic_engine.py",
+      "classification": "MOVED",
+      "change_made": "Repointed the Files table's 'Somatic Engine' row to references/somatic_engine_v3.py (the copy inside this skill) and added a lead sentence explaining the old /root/arifos/... tree never existed at that spelling. Same edit also fixed the adjacent Step 4 schema path (/root/arifos/schemas/cultural_manifold_minang_inang.json -> references/cultural_manifold_minang_inang.json) which the detector did not flag.",
+      "evidence": "PROOF of the moved file: ls -la /root/AAA/skills/domains/general/workshop/audio-emd/music-intelligence/references/ -> cultural_manifold_minang_inang.json (1636 bytes) + somatic_engine_v3.py (7619 bytes, header 'SOMATIC SCORING ENGINE v3 — PURE SCIPY+NUMPY ... 4 inputs: Temporal | Tension/Release | Paradox | Embodied', writes /tmp/somatic_v3_report.json); identical pair present at /etc/arifos/skills/music-intelligence/references/ (the synced runtime copy). Old path dead: ls -d /root/arifos -> No such file or directory; ls /root/arifOS/forge/* -> No such file or directory; find /root/arifOS -iname '*music*' -> 0 hits; ls /root/arifOS/schemas -> exists but holds no cultural_manifold file.",
+      "undo": "Restore table row '| Somatic Engine | `/root/arifos/forge/music-intelligence/somatic_engine.py` |', the original row set order, the deleted 'Both the engine and the manifold now live ...' lead sentence, and Step 4's 'JSON schema at `/root/arifos/schemas/cultural_manifold_minang_inang.json`.'"
+    },
+    {
+      "skill": "domains/general/workshop/audio-emd/music-intelligence",
+      "file": "SKILL.md",
+      "dead_path": "/root/arifos/forge/music-intelligence/report.json",
+      "classification": "OBSOLETE",
+      "change_made": "The 'Analysis Report' row now states there is no report.json on disk, gives the engine's actual output path (/tmp/somatic_v3_report.json per its docstring) and the surviving record of the 2026-07-11 run. The 'Results So Far (2026-07-11)' section was left untouched.",
+      "evidence": "find /root -maxdepth 6 -name '*.json' -path '*music*' -> no report.json; ls -d /root/arifos /root/music-eval -> No such file or directory (the vault session record names /root/music-eval/ as the 2026-07-11 artifact home, and that tree is gone too); surviving record: /root/.local/share/arifos/vault999/sessions/2026-07-11-music-somatic.json (1656 bytes, sealed 2026-07-11T14:58+08:00).",
+      "undo": "Restore the row '| Analysis Report | `/root/arifos/forge/music-intelligence/report.json` |'."
+    },
+    {
+      "skill": "domains/general/workshop/creative-design/civic-social-infographic",
+      "file": "SKILL.md",
+      "dead_path": "/root/forge_work/page.html",
+      "classification": "NOT-A-PATH",
+      "change_made": "NO EDIT. This is a working path inside a recipe the agent itself executes: step 1 of the fence is '# 1. Build HTML with body { height:auto; overflow:hidden }', i.e. the agent writes the file, then renders it. /root/forge_work is the live workshop dir (241 entries, mtime 2026-09-19), not a dead reference.",
+      "evidence": "SKILL.md lines 66-72: the '# 1. Build HTML' comment directly precedes `--screenshot=/tmp/measure.png \"file:///root/forge_work/page.html\"`; ls -ld /root/forge_work -> drwxr-xr-x 147 root root, mtime 2026-09-19 09:06, with current-day subdirs (2026-09-19-daily-triage etc.).",
+      "undo": "None required (no edit made)."
+    },
+    {
+      "skill": "domains/general/workshop/creative-design/civic-social-infographic",
+      "file": "SKILL.md",
+      "dead_path": "/root/forge_work/final.png",
+      "classification": "NOT-A-PATH",
+      "change_made": "NO EDIT. Output path the agent's own crop step writes (crop.save(...)) in the same recipe; same reasoning as page.html.",
+      "evidence": "SKILL.md line 89: `crop.save('/root/forge_work/final.png')` inside the measure-and-crop heredoc; /root/forge_work exists and is the documented scratch dir.",
+      "undo": "None required (no edit made)."
+    },
+    {
+      "skill": "forge-document-intelligence",
+      "file": "SKILL.md",
+      "dead_path": "/root/A-FORGE/forge_work/2026-07-02/olmocr-agentic-ocr-analysis.md",
+      "classification": "OBSOLETE",
+      "change_made": "Session Provenance section: added a STATE block saying the two 2026-07-02 files are gone and why, and marked the 'Analysis file' bullet '(pruned — not on disk)'. The provenance record itself was kept as history; nothing that describes a capability was removed.",
+      "evidence": "ls -la /root/A-FORGE/forge_work/2026-07-02/ -> No such file or directory; ls /root/A-FORGE/forge_work/ -> oldest entries are 2026-07-16.tar.gz, 2026-07-17, 2026-07-18.tar.gz then 2026-07-22 onward (retention pruned 07-02/07-19/07-20); find /root /opt /etc /var /home -name '*olmocr-agentic-ocr-analysis*' -> 0 hits.",
+      "undo": "Delete the STATE blockquote and the two '(pruned — not on disk)' suffixes in the Session Provenance list."
+    },
+    {
+      "skill": "forge-document-intelligence",
+      "file": "SKILL.md",
+      "dead_path": "/root/A-FORGE/forge_work/2026-07-02/AAA-INIT-PROMPT-document-intelligence.md",
+      "classification": "OBSOLETE",
+      "change_made": "Covered by the same STATE block + '(pruned — not on disk)' marking on the 'Init prompt' bullet. No additional edit.",
+      "evidence": "same as the olmocr entry (no 2026-07-02 directory; no file of that name anywhere on disk).",
+      "undo": "Same as the olmocr entry."
+    },
+    {
+      "skill": "forge-mcp-gui",
+      "file": "SKILL.md",
+      "dead_path": "/root/forge_work/2026-07-20/GEOX-CHATGPT-MCP-GUI-BLUEPRINT.md",
+      "classification": "OBSOLETE",
+      "change_made": "Two places: the header 'Hardened 2026-07-20' line now marks the blueprint gone; the CHATGPT-NATIVE APPS 'Contract source:' line now states the blueprint is not on disk and that this section is the surviving contract (so 'this section wins' still holds). The contract rules themselves were not touched.",
+      "evidence": "ls -la /root/forge_work/2026-07-20/ -> No such file or directory; find /root /etc /opt -maxdepth 10 -name '*GEOX-CHATGPT-MCP-GUI-BLUEPRINT*' -> 0 hits (only /root/.quarantine/.../GEOX-CHATGPT-OAUTH-CLIENT-ID.md, a different file); the same dead blueprint is referenced by 4 other skills (forge-fastmcp, forge-act-federation-ingress, forge-visual-qa-w3, and the mcp-testing copies) which are outside this slice.",
+      "undo": "Restore the header lines '> **Hardened:** 2026-07-20 — ChatGPT-native MCP Apps standard (sovereign blueprint:' + '> `/root/forge_work/2026-07-20/GEOX-CHATGPT-MCP-GUI-BLUEPRINT.md`)' and the original one-sentence 'Contract source: ...' paragraph."
+    },
+    {
+      "skill": "forge-mcp-gui",
+      "file": "SKILL.md",
+      "dead_path": "/root/A-FORGE/forge_work/2026-07-19/MCP-GUI-COMPREHENSIVE-REPORT-2026-07-19.md",
+      "classification": "OBSOLETE",
+      "change_made": "ADDITIONAL REFERENCES bullet annotated '(not on disk — that dated directory was pruned; confirmed absent 2026-09-19)'. Link kept as provenance.",
+      "evidence": "ls -la /root/A-FORGE/forge_work/2026-07-19/ -> No such file or directory; find over /root /opt /etc /var /home for '*MCP-GUI-COMPREHENSIVE-REPORT*' -> 0 hits.",
+      "undo": "Remove the appended parenthetical from that bullet."
+    },
+    {
+      "skill": "forge-t3a-binding-matrix (also keyed as workflows/core/FORGE-t3a-binding-matrix, a symlink to this directory)",
+      "file": "SKILL.md",
+      "dead_path": "/root/compose/sekrits/arifos_sovereign.key",
+      "classification": "OBSOLETE",
+      "change_made": "Added a STATE block after the 'Known score (CLOSED 2026-07-17)' fence and marked the Key path inventory row GONE. The block states the rotation (different key_id + fingerprint) so the next agent does not repoint T3a at the new identity, and records that the live kernel still reads the dead path. The 13/13 matrix claim was not deleted.",
+      "evidence": "ls -la /root/compose/ -> docker-compose.yml ONLY (no sekrits/); find /root /opt /etc -maxdepth 5 -name '*sekrit*' -o -name '*sovereign*' -> no key material for this name; grep -rl b467c07d975a36a5 /root/arifOS /root/AAA /root/scripts -> only this skill and its 2026-09-18 backup; the active signer is a different key (key_id omega-2026-01, fingerprint ed25519:sha256:a8fbb5ae8b4772b0, status active) per the aaa-identity key registry file sovereign_key_registry.json; live code still pointing at the dead path: /root/arifOS/arifosmcp/runtime/bridging_seal.py:52,61, runtime/sovereign_verify.py:41, runtime/sovereign_signer.py:59, VAULT999/seal_law.py:430.",
+      "undo": "Delete the STATE blockquote after the 'canonical key: ...' fence and restore the two table rows to '| Canonical private | `/root/compose/sekrits/arifos_sovereign.key` | → `b467c07d975a36a5` |' and '| Canonical public | `/root/compose/sekrits/arifos_sovereign.pub` | `b467c07d975a36a5` |', dropping the added 'Active registered signer' row."
+    },
+    {
+      "skill": "forge-t3a-binding-matrix (also keyed as workflows/core/FORGE-t3a-binding-matrix, a symlink to this directory)",
+      "file": "SKILL.md",
+      "dead_path": "/root/compose/sekrits/arifos_sovereign.pub",
+      "classification": "OBSOLETE",
+      "change_made": "Covered by the same two edits (STATE block + inventory row). No additional edit.",
+      "evidence": "same as the .key entry (/root/compose holds only docker-compose.yml).",
+      "undo": "Same as the arifos_sovereign.key entry."
+    }
+  ]
+}

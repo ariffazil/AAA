@@ -103,6 +103,15 @@ social-mcp gateway (FastMCP, /root/social-mcp/src/server.py)
 
 The CLI binary can see connections via `composio dev connected-accounts list`, but the MCP proxy cannot. **Fix options**: (1) update MCP proxy user_id mapping, or (2) switch ComposioClient to CLI subprocess. See `references/composio-cli-dual-key.md` for discovery commands.
 
+> **STATE (verified 2026-09-19): the CLI half of this diagnosis cannot be reproduced today —
+> the CLI is not installed.** `/root/.composio/` does not exist, so neither
+> `/root/.composio/user_data.json` (the `uak_` key file) nor `/root/.composio/composio` (the
+> binary) is on disk, and no `composio` binary is on PATH. What would have to exist: the
+> binary from `curl -fsSL https://composio.dev/install | sh`, plus the `user_data.json` that
+> `composio login` writes. Until then the only Composio transport on this host is the stdio
+> proxy `/root/.config/mcp/composio-proxy.mjs`, and fix option (2) — CLI subprocess — is
+> unavailable rather than merely disfavoured.
+
 ### 3-Band Policy
 
 | Band | Operations | Approval | Example |
@@ -345,7 +354,7 @@ mcp__social_mcp__x_post(text="Hello world!")
 
 8. **Composio tool schemas ≠ natural param names**: Always `composio execute SLUG --get-schema` before writing wrappers. For example: `search_query` not `query`, `recipient_email` not `to`, `thing_id` not `post_id`, `text` not `body`. The schema is canonical; the skill catalog may be misleading.
 
-9. **Composio CLI install path**: `curl -fsSL https://composio.dev/install | sh` installs binary to `~/.composio/composio` and symlinks to `~/.local/bin/composio`. Ensure `~/.local/bin` is on PATH in social-mcp subprocess env.
+9. **Composio CLI install path**: `curl -fsSL https://composio.dev/install | sh` installs binary to `~/.composio/composio` and symlinks to `~/.local/bin/composio`. Ensure `~/.local/bin` is on PATH in social-mcp subprocess env. **UNBUILT on this host (verified 2026-09-19): neither path exists and `~/.composio/` is absent — the installer must be run before any `composio …` command or the CLI-subprocess ComposioClient can work.**
 
 10. **reddit_get_comments requires `article` (permalink URL), not `post_id`**: The gateway tool `reddit_get_comments` maps to Composio's `REDDIT_RETRIEVE_POST_COMMENTS`. Its only required key is `article` — a full Reddit permalink URL like `https://www.reddit.com/r/x/comments/<id>/<slug>/`. There is no `post_id` key. Passing `post_id` triggers an opaque "Unknown key" schema error with no guidance on the correct param. Verified 2026-08-26 in a 3× retry loop. Always pass the full permalink URL as `article`.
 

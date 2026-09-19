@@ -13,8 +13,11 @@ ecology_state: WARM
 ---# ⚒️ FORGE-mcp-gui — MCP GUI/Apps Development Skill
 
 > **Forged:** 2026-07-19 by FORGE (000Ω) for AAA Control Plane
-> **Hardened:** 2026-07-20 — ChatGPT-native MCP Apps standard (sovereign blueprint:
-> `/root/forge_work/2026-07-20/GEOX-CHATGPT-MCP-GUI-BLUEPRINT.md`)
+> **Hardened:** 2026-07-20 — ChatGPT-native MCP Apps standard
+> *(sovereign blueprint `/root/forge_work/2026-07-20/GEOX-CHATGPT-MCP-GUI-BLUEPRINT.md` is*
+> ***gone*** — *the `2026-07-20` directory no longer exists under `/root/forge_work` and no*
+> *copy of the file remains anywhere on disk. It cannot be re-read: the rules in this skill*
+> *are the surviving form of that contract.)*
 > **Zen Name:** FORGE-mcp-gui
 > **Axis:** forge · **Tier:** AGI · **Class:** C2 Observe+Execute
 > **Spec:** SEP-1865 (MCP Apps, ratified 2026-01-26)
@@ -233,7 +236,7 @@ McpUiServer.create_ui_resource(...)
 
 ## CHATGPT-NATIVE APPS (2026-07 standard)
 
-Contract source: sovereign blueprint `/root/forge_work/2026-07-20/GEOX-CHATGPT-MCP-GUI-BLUEPRINT.md` (authoritative for the GEOX consolidation; the rules below generalize to any ChatGPT-targeted MCP App). Where this section disagrees with older material in this skill, **this section wins**.
+Contract source: the sovereign blueprint `/root/forge_work/2026-07-20/GEOX-CHATGPT-MCP-GUI-BLUEPRINT.md` — **which no longer exists on disk** (that directory was pruned, and no file of that name is present anywhere on this host; verified 2026-09-19). The blueprint was authoritative *for the GEOX consolidation*; with it gone, **this section is the surviving contract** and wins over any older material in this skill. Any other citation of that blueprint is historical, not retrievable.
 
 ### 1. UI Binding Keys
 - **Primary standard key:** `_meta.ui.resourceUri` on the tool definition.
@@ -326,7 +329,7 @@ After Developer Mode: API Playground instrumentation → web + Android + iOS ren
 - FastMCP 3.2: https://github.com/jlowin/fastmcp
 - A2UI: https://developers.googleblog.com/a2ui-and-mcp-apps/
 - MCPJam Inspector: https://github.com/idosal/ui-inspector
-- Comprehensive Report: `/root/A-FORGE/forge_work/2026-07-19/MCP-GUI-COMPREHENSIVE-REPORT-2026-07-19.md`
+- Comprehensive Report: `/root/A-FORGE/forge_work/2026-07-19/MCP-GUI-COMPREHENSIVE-REPORT-2026-07-19.md` *(not on disk — that dated directory was pruned; confirmed absent 2026-09-19)*
 
 ---
 

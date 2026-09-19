@@ -2,6 +2,13 @@
 
 *Discovered 2026-08-25 — root cause of OAuth connection mismatch*
 
+> **STATE (verified 2026-09-19): Key 2 below, and every command that reads it, are UNBUILT on
+> this host.** `/root/.composio/` does not exist — no `composio` binary, no `user_data.json`,
+> nothing named `composio` on PATH. What would have to exist: the binary from
+> `curl -fsSL https://composio.dev/install | sh`, plus the `user_data.json` that
+> `composio login` writes. Key 1 (the `ak_` key consumed by
+> `/root/.config/mcp/composio-proxy.mjs`) is the only live half of this document today.
+
 ## The Problem
 
 Social-mcp gateway returns "No connected account" for all Composio tool calls, even though OAuth connections exist in dashboard.composio.dev.

@@ -255,7 +255,7 @@ from telethon import TelegramClient
 
 API_ID = int(os.environ.get('TELETHON_API_ID'))  # from arkib or env
 API_HASH = os.environ.get('TELETHON_API_HASH')
-SESSION = '<live Telethon session file>'  # OBSOLETE literal removed: /root/_archive/2026-08-04/userbot/ari_session was rotated away (verified absent 2026-09-19; /root/_archive now holds only 2026/09)
+SESSION = '<live Telethon session file>'  # the 2026-08-04 archive was rotated away — do not point this at a dead path (verified 2026-09-19)
 
 async def read_group(group_id, limit=30):
     client = TelegramClient(SESSION, API_ID, API_HASH)

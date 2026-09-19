@@ -1,0 +1,24 @@
+{
+  "edition": "EDITION-004",
+  "edition_date": "2026-09-19",
+  "title": "Executive Brief",
+  "subtitle": "31 tracked claims \u00b7 11 new today \u00b7 2 real state moves \u00b7 8 carrying over",
+  "template": "base-a4",
+  "theme": "light",
+  "source": "/root/AAA/forge_work/2026-09-19-edition-004/content.html",
+  "run_dir": "/root/AAA/forge_work/2026-09-19-edition-004",
+  "gates": {
+    "profile": "print-light",
+    "forbid_paths": true,
+    "cover_orphan_exempt": true
+  },
+  "stats": {
+    "new": 11,
+    "moved": 2,
+    "reopened": 0,
+    "still_open": 18,
+    "settled": 0,
+    "dropped": 0,
+    "items_total": 31
+  }
+}

@@ -480,23 +480,25 @@ curl -s http://localhost:3001/.well-known/agents.json | python3 -c "import json,
 
 ## Registry Drift Convergence
 
-When drift scanner (`/root/HERMES/scripts/registry-drift-scanner.sh`) reports DRIFT between canonical and mirror tool manifests, the cleanest fix is a symlink:
+> **STATE (verified 2026-09-19): this procedure cannot run today — every artifact it names is gone.**
+> - Canonical `/root/AAA/docs/TOOLREGISTRY.json` — absent. The last copy was quarantined on
+>   2026-07-17 and now sits at `/root/AAA/docs/_quarantined/TOOLREGISTRY.json.quarantine`;
+>   only a 50-byte stub `/root/AAA/docs/TOOLREGISTRY.json.derived` remains, and the
+>   `derived_from` source it names (`/root/arifOS/registry/03-tools.yaml`) does not exist either.
+> - Mirrors `/root/arifOS/TOOL_MANIFEST.json` and `/root/AAA/registries/TOOL_MANIFEST.json` — absent.
+> - Scanner `/root/HERMES/scripts/registry-drift-scanner.sh` — absent.
+>
+> Live consumers already tolerate the absence: `/root/AAA/scripts/federation_init.py:35`
+> points `TOOLREGISTRY_PATH` at the missing file and `:304` returns
+> `{"status": "no_registry", "note": "TOOLREGISTRY absent — dedupe deferred"}`.
+> **UNBUILT part:** nothing on disk today hashes tool manifests or reports
+> `SYMLINK_OK`/`DRIFT`. What would have to exist: one canonical tool-manifest file plus a
+> scanner that hashes it against each mirror.
 
-```bash
-# 1. Verify canonical is the source of truth
-realpath /root/AAA/docs/TOOLREGISTRY.json
-
-# 2. Replace mirrors with symlinks
-rm /root/arifOS/TOOL_MANIFEST.json
-rm /root/AAA/registries/TOOL_MANIFEST.json
-ln -s /root/AAA/docs/TOOLREGISTRY.json /root/arifOS/TOOL_MANIFEST.json
-ln -s /root/AAA/docs/TOOLREGISTRY.json /root/AAA/registries/TOOL_MANIFEST.json
-
-# 3. Verify the scanner now reports SYMLINK_OK (not DRIFT)
-bash /root/HERMES/scripts/registry-drift-scanner.sh
-```
-
-The scanner checks: if mirror is a symlink pointing to canonical → `SYMLINK_OK`. If mirror is a file with different hash → `DRIFT`.
+**The requirement this section encodes** (state it this way instead of chasing the old paths):
+one file is canonical; every mirror is a symlink to it, never an independent copy; the drift
+check compares each mirror against the canonical and reports `SYMLINK_OK` when they resolve
+to the same file. If a canonical registry is reintroduced, wire mirrors and scan the same way.
 
 ## A2A Protocol Alignment — Upstream v1.2 Compliance
 
@@ -1056,13 +1058,17 @@ curl -sf -X POST http://127.0.0.1:3001/a2a/message/send \
 
 ### Step 2 — Generate Live Wire Manifest
 
-Maps all 33 agents to their A2A endpoints organized by layer:
+> **UNBUILT (verified 2026-09-19): this step cannot run.** `forge-live-wire.js` does not
+> exist in `/root/AAA/a2a-server/` or anywhere else on disk, and no script that emits a
+> `{layers[], flows[]}` manifest exists. The routing manifest that *does* exist in that
+> directory is `A2A_LIVE_WIRE_MANIFEST.json` (generated 2026-07-25) — a **different
+> artifact**: keyed `routes[]` + `meta{}`, not `layers`/`flows`. What would have to exist:
+> a generator that walks the agent cards and emits `layers[]` (agents per layer) plus
+> `flows[]` (the 7 flows listed below). Until it is written, skip this step; verify through
+> the live endpoints in Steps 1 and 4 instead, and do not expect
+> `live-wire-manifest.json` to appear.
 
-```bash
-node /root/AAA/a2a-server/forge-live-wire.js
-```
-
-Produces `/root/AAA/a2a-server/live-wire-manifest.json` with:
+Spec of the missing manifest (what it was meant to contain):
 - All agents per layer (identity, organs, extensions, harnesses, gateways, governance)
 - 7 defined message flows: 333→555, 555→888, 888→FORGE, FORGE→openclaw, openclaw→hermes, FI→organ, organ→FI
 - P34 and P30 guard documentation
@@ -1100,8 +1106,9 @@ curl -sf http://127.0.0.1:3001/health | python3 -c "import json,sys; d=json.load
 curl -sf -H 'A2A-Version: 1.0' http://127.0.0.1:3001/a2a/discover \
   | python3 -c "import sys,json; d=json.load(sys.stdin); print(f'{len(d.get(\"agents\",[]))} agents discoverable')"
 
-# 3. Verify manifest exists
-python3 -c "import json; d=json.load(open('/root/AAA/a2a-server/live-wire-manifest.json')); print(f'{len(d[\"layers\"])} layers, {len(d[\"flows\"])} flows')"
+# 3. Manifest check — live-wire-manifest.json is UNBUILT (see Step 2); the routing
+#    manifest actually on disk uses a different schema, so count its routes instead:
+python3 -c "import json; d=json.load(open('/root/AAA/a2a-server/A2A_LIVE_WIRE_MANIFEST.json')); print(f'{len(d[\"routes\"])} routes')"
 ```
 
 ### Message Flow Topology (Reference)
@@ -1442,7 +1449,7 @@ This pattern was validated during the EUREKA-ZEN SUBSTRATE LOCK operation: 122 b
 - **Broken symlinks cascade from card cleanup.** After deleting root-level duplicate cards, three categories of broken symlinks appear:
   1. `/root/AAA/*.json` symlinks use `../../agent-cards/` (wrong from root — resolves to `/agent-cards/`). Fix: `ln -sf agent-cards/identity/X.json X.json` (relative from `/root/AAA/`).
   2. `A-FORGE/forge_work/*/agent-cards/*.json` backup symlinks reference deleted root cards. Fix: `find /root/A-FORGE/forge_work -xtype l -delete`.
-  3. Archive backups (`.archive-*`, `ARCHIVE-chaos-quarantine`, `skills.bak-*`) point to moved skill sources. Fix: `find /root/.claude/skills /root/AAA/skills/ARCHIVE-chaos-quarantine -xtype l -delete`.
+  3. Archive backups (`.archive-*`, `.archive`, `skills.bak-*`) point to moved skill sources. Fix: prune the dangling links with `find /root/.claude/skills -xtype l -delete`, and the same `find <archive-dir> -xtype l -delete` over the live archives — today those sit under `/root/AAA/skills/.archive/` (the `/root/AAA/skills/ARCHIVE-chaos-quarantine` directory no longer exists, verified 2026-09-19).
   
   The drift-alert cron monitors ALL broken symlinks with a 40-threshold. Always run `find /root -xtype l | wc -l` and clean to < 40 after any card reorganization.
 
