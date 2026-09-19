@@ -1,0 +1,30 @@
+{
+  "artifact": "/root/AAA/reflections/2026-09-19-session-reflection.md",
+  "sha256": "22ecb591d7d7cfe00cf8a384d4e067fb14a76ec882ff1b25c0e2548e643b7f2d",
+  "bytes": 4240,
+  "chars": 4214,
+  "authority": "F13 sovereign in-chat order 2026-09-19 — 'send the reflection seal to my telegram'",
+  "content": "session reflection: four measurement failures, three disease classes (duplicate/ghost/living-corpse), the three-state repair vocabulary, the gate doctrine, and what was deliberately left unsolved",
+  "delivery": {
+    "target": "telegram:267378578",
+    "target_role": "arif (verified: lock entry humans.arif.telegram_user_id, role=arif)",
+    "target_kind": "dm",
+    "verification": "docforge.transport.verify() -> ALLOW — not inferred from context",
+    "split": "2 messages, 1765 + 2458 chars, because the artifact is 4214 chars and Telegram caps at 4096",
+    "state": "SENT",
+    "state_evidence": "transport accepted both parts; CLI returned 'sent' exit 0 for each",
+    "not_claimed": [
+      "DELIVERED — no per-message delivery receipt located in gateway.log for a CLI-origin send",
+      "OBSERVED — no read confirmation exists in this federation"
+    ],
+    "false_targets_refused_by_lock": {
+      "telegram:1042200555": "HOLD — human 'syed'; send expects 'arif'",
+      "telegram:8798431893": "HOLD — appears in no human/group/bot lock entry"
+    }
+  },
+  "seal": {
+    "kind": "sha256 content seal + receipt",
+    "not_a_constitutional_seal": "no kernel arif_seal, no VAULT999 entry, no F13 ratification was performed. This is a content-integrity seal only, and it is named as such."
+  },
+  "ts": "2026-09-19T02:13:00+00:00"
+}
