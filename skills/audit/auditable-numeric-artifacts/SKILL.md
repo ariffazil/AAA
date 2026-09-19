@@ -25,6 +25,50 @@ claims adversarially; this governs producing your own so they hold up.
 
 ---
 
+## The layer that rots is the number layer, and it rots silently
+
+Measured failure mode, 2026-09-19 — a human-facing explanation of this system was audited before it
+reached its outside reader. Eleven claims in it. The structural claims all held: the architecture,
+the authority analogy, the floor count, the named-citizen count. **Every error was a number, and
+every error had one cause: the figure was recalled from a previous working session instead of
+measured at write time.**
+
+The author caught one himself and corrected it — then the correction was also wrong, including its
+denominator. Two of the three figures in that correction matched nothing ever recorded. The reader
+would have had no way to tell, because nothing in the text distinguished a measured figure from a
+remembered one.
+
+**The rule that follows.** A number that reaches a human must carry its witness. In practice, one of:
+
+- the path or query that produced it, inline or in a footnote;
+- the command output pasted verbatim;
+- an explicit `UNVERIFIED` label when no witness exists.
+
+An unwitnessed number is not a lesser fact — it is a different kind of object, and it must be
+labelled as such or omitted.
+
+**The second-order trap: a stale number is not a false one.** Of the figures audited, two were
+*somewhere correct* — they had been measured mid-operation, during a window when a transient
+condition held, and the condition then changed. A count of broken links read 24, then 18, then 0
+inside one day, because a background repair was mid-flight. Quoting the 16 that a note had captured
+was not a fabrication; it was a photograph of a moving object presented as a still. When a quantity
+is known to move, report the *state and its trajectory* ("0 now; 24 this morning; expected during a
+merge, repaired same day"), never a single frozen sample.
+
+**The third trap: a proxy number silently substitutes for the thing it proxies.** "Number of skills"
+has at least two defensible answers here — distinct bodies, and distinct addresses — differing by
+about 15%. They answer different questions. Quoting one without naming which question it answers
+means the reader supplies their own definition, and any later audit appears to contradict you.
+Name the definition in the same breath as the number.
+
+**Consequence for review.** When auditing a document of this kind, do not sample the numbers — take
+all of them, and sort them into *measured today*, *measured, moving*, *recalled*, *proxied*, and
+*cannot be verified*. The last bucket is the finding. A document that is intellectually right and
+numerically unpinned is the most dangerous kind, because its correctness up top buys credit for the
+figures below.
+
+---
+
 ## Procedure
 
 1. **Classify each claim before writing it.** Two classes, handled differently:
