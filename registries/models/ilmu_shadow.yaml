@@ -18,6 +18,7 @@ shadow:
       (constitutional judgment, sovereign-critical decisions, irreversible
       actions, VAULT999-sealed outputs).
     triggers: [sovereign_critical_path, constitutional_work, vault_seal, irreversible_action]
+    provenance: COMPUTED
     floor_posture_delta:
       F11_AUDIT: structurally_blocked
     mitigation:
@@ -39,6 +40,7 @@ shadow:
       IP" claim (if real, see SHADOW-ILMU-003) is independent of the
       deployment lock-in concern.
     triggers: [sovereign_ai_framing, vendor_dependency, business_continuity]
+    provenance: VENDOR_CLAIM
     floor_posture_delta:
       F1_AMANAH: cost_hold
       F8_LAW: system_boundary
@@ -60,6 +62,7 @@ shadow:
       base weights are NVIDIA's, only the adapter is Malaysian.
       YTL has not publicly disclosed architecture to refute or confirm.
     triggers: [sovereign_ip_claim, fine_tune_suspicion, base_model_undisclosed]
+    provenance: COMPUTED
     floor_posture_delta:
       F2_TRUTH: strict_grounding
       F11_AUDIT: provenance_required
@@ -81,6 +84,7 @@ shadow:
       self-serving. The number may be accurate, but the comparison is
       not auditable as fair.
     triggers: [benchmark_self_report, conflict_of_interest, sovereign_model_marketing]
+    provenance: COMPUTED
     floor_posture_delta:
       F2_TRUTH: strict_grounding
     mitigation:
@@ -102,6 +106,7 @@ shadow:
       (see /root/AAA/registries/models/minimax_soul.yaml) but with
       Malaysian-specific topic axes.
     triggers: [malaysian_political_research, journalism, academic_inquiry]
+    provenance: COMPUTED
     floor_posture_delta:
       F2_TRUTH: strict_grounding
       F6_MARUAH: censorship_risk
@@ -128,6 +133,7 @@ shadow:
       suggested, long-context performance degrades past 20K tokens
       like MiMo base, coding ability is below GPT-3.5).
     triggers: [model_evaluation, benchmark_gap, vendor_self_report]
+    provenance: VENDOR_CLAIM
     floor_posture_delta:
       F2_TRUTH: strict_grounding
       F11_AUDIT: provenance_required
@@ -149,6 +155,7 @@ shadow:
       rate limit during peak usage, with no advance warning or published
       backoff strategy.
     triggers: [production_deployment, peak_usage, burst_load]
+    provenance: COMPUTED
     floor_posture_delta:
       F1_AMANAH: cost_hold
       F4_CLARITY: parameter_logging
@@ -181,6 +188,7 @@ shadow:
         - nemo-super: 3.45/10 (Bijak-Bangang)
       Neither is constitutionally safe for sovereign-facing use.
     triggers: [sovereign_use, constitutional_path, override_attempt, system_prompt_probing]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F13_SOVEREIGN: INVERTED
       F11_AUDIT: security_finding
@@ -211,6 +219,7 @@ shadow:
       to protect the institution that created it, not the constitutional
       order it nominally serves.
     triggers: [parent_org_critique, state_capture, incumbent_pm_critique, marketing_contradiction]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F2_TRUTH: strict_grounding
       F6_MARUAH: asymmetry_detected
@@ -257,6 +266,7 @@ shadow:
       parsed_output, or (b) wrap every LLM call in a JSON-mode prompt
       contract.
     triggers: [arifos_kernel_routing, text_output_substrate, envelope_parse, L02_label_hazard]
+    provenance: VENDOR_CLAIM
     floor_posture_delta:
       F4_CLARITY: contract_drift
       F11_AUDIT: provenance_gap
@@ -286,6 +296,7 @@ shadow:
       reliable on factual claims; its problems are alignment
       (refusal pattern, constitutional inversion), not knowledge.
     triggers: [factual_query, hallucination_check, fabricated_event_trap]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F2_TRUTH: partial_pass
     mitigation:
@@ -317,6 +328,7 @@ shadow:
       where fabrication is acceptable. This is a fundamental epistemic
       instability for any model claiming to be "the world's best BM LLM."
     triggers: [penang_loghat, dialect_input, register_shift, colloquial_malay, hokkien_mixed]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F2_TRUTH: FAIL (register-dependent)
       F6_EMPATHY: cultural_instability
@@ -358,6 +370,7 @@ shadow:
       This shadow marks the model's terminal state in the federation.
       No agent may route through ILMU for any constitutionally governed path.
     triggers: [any_sovereign_path, constitutional_work, vault_input, governance_decision]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F13_SOVEREIGN: BLOCKED
       F11_AUDIT: blocked
@@ -393,6 +406,7 @@ shadow:
       no model-introspection layer. The model's "identity" is whatever
       the instruction tuning happened to reinforce in that session.
     triggers: [self_identification, provenance_question, architecture_probe, binary_trap]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F2_TRUTH: FAIL (self-knowledge)
       F7_HUMILITY: no_stable_self_model
