@@ -1,0 +1,188 @@
+{
+  "ts": "2026-09-19T01:20:42.520733+00:00",
+  "authority": "ARIF \u2014 SKILLSTORE_NAMESPACE_COLLAPSE_V2",
+  "canon": "/root/AAA/skills",
+  "freeze_root": "/root/AAA/skills-retired/2026-09-19-v2-profile-junk",
+  "items": [
+    {
+      "name": "understand",
+      "orig_path": "/root/AAA/skills/understand",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-v2-profile-junk/understand",
+      "files": {
+        "merge-batch-graphs.py": "5aecff376ba28c1971695ce4469685b6bb6979328bacf6ce5980930ff46cffb9",
+        "build-fingerprints.mjs": "652a1b46dbffdf773901cd705ff5131e76dc8da4adcbcc651b7b67866bfe318e",
+        "generate-ignore.mjs": "253bb28abb00dfdd2e40d3e816a200a576c7419ef90b700e267e27890dcb0a8c",
+        "extract-structure.mjs": "fadb0254df5a95488cf4fe1bf1c8afdda2ada92e0b53d9e20f3d60e82867723f",
+        "extract-import-map.mjs": "6da76edfaeb940853e2ce240b46c197969f7b6de47e6926c79fd325e3547d8de",
+        "extract-structure-result.mjs": "637287452487b1ecbcf4ac3c91de19ee901f9bc84084bce5f6b7c6695e92566d",
+        "SKILL.md": "1f6acd37e1501c3ab12b850a182f6238e822c38d466a843b5b925386b6a71c06",
+        "compute-batches.mjs": "49d6bdd660ab19828fb792d49b1a93d2286ce6c96331022a06feedc9f50a6727",
+        "prepare-incremental.mjs": "0b176f9fc8005e440aca116600c6ebaed2aa863a14777947167d232f6177b5b3",
+        "validate-incremental-symbols.mjs": "96688d46e3d84d31f5bf796482d30f48444d556e1bc24d1b9e4520a78621be48",
+        "scan-project.mjs": "62f075686400959d3fb6634f73798485b82b89c743f9deecc62a601ce398ebb3",
+        "prepare-symbol-retry.mjs": "9bc4078f7fcd046182c06357a2ed52ee20781ac514afb444b5c645006bc5b81c",
+        "merge-subdomain-graphs.py": "b984a478a18eb7a0186f5374dd733fc001bc77806215bd067f404107911fa059",
+        "finalize-incremental.mjs": "07bb6f25b8ecd54db69d61a6d991390df92896aa94fdf55da33e874780824b32",
+        "__pycache__/merge-subdomain-graphs.cpython-313.pyc": "50402a73dc3f35deba300f3549ef502ff2c701bc5c2a892f97847e7b7aa2c6cd",
+        "__pycache__/merge-batch-graphs.cpython-313.pyc": "7393156ea19e70ee05e33eb8e75cb00286ac9064ee284bf2841d728f2a9de9ef",
+        "frameworks/fastapi.md": "54f971f48dd74a6138d9cd03a3c4e7f4b06ab803403a663ebcc4a6422c0671b1",
+        "frameworks/gin.md": "6621187a9fe0023d7d36ffe51680571ee58a7a77ebe915db4d35b6fb26eadb77",
+        "frameworks/django.md": "a2257a849cf64d09cf2869a3106991264d7f50acd03c93e76284ed288cba7051",
+        "frameworks/nextjs.md": "99ae673ecaf27381e18483b12a6dc66ce7bbc37f3bf8f2f66344a160a882f2ea",
+        "frameworks/vue.md": "49a432fe59c8b0759632bd1745b4acc7ddcaef4343a270d97698d9bede69e5db",
+        "frameworks/spring.md": "296c10395b794c8c0741cd2faaa61f9e171933003f39cbe45f462237ed1066c6",
+        "frameworks/flask.md": "645844e41c9a09ab47233c4ed68febfb7e15d8cc6bb354bb029b4218b0d6141c",
+        "frameworks/react.md": "eaaf30363244b89a6bad91971f3d476ec809a8892f387a8bf33c04638a04af20",
+        "frameworks/rails.md": "f5fb1fb05a32c9e71ba44e93d205252fd4e58b71a6cce9d62cd4ee20d14adc36",
+        "frameworks/express.md": "0a7b0d4ddc72fca3d1cbf5d7c63739f4cbbb924b86625907df03656b6734898c",
+        "languages/css.md": "ed3a8dcd96e9921d8d85cfcf0ea07d7a15838cd076180017a80162b1b7166131",
+        "languages/json.md": "6a420be6610ed2c5f2950f72b1e3f9c6c15a2377f23d70e066a9bd4ae860cf4a",
+        "languages/typescript.md": "20d6d1ae757d806b8a4aeb0aa6e9fb5c3307ad4e3c83715d2e8532924e8afda6",
+        "languages/protobuf.md": "7db34b5f2085ab14ac888c4c817caa6f1045a7405e14f7c30000bec93139b3dd",
+        "languages/scala.md": "95b9f2c45f473e02226031b6998f2a2c6201d33304d0d885f5cc578ca3e3855c",
+        "languages/rust.md": "32cb3c3fcd1a560821ed09dd9a0da184dfa5c79c85f1e03034945ef4d14208d4",
+        "languages/kotlin.md": "fe3d5eff0f190027ce6e9686bc80e7dce4313aced194a014febb3e93cd091977",
+        "languages/php.md": "043635d64c89b6293936085f2cd341f055d61b71132b0d09ed599e608023c772",
+        "languages/swift.md": "4c866204fffe114a4e27f11b162829257cd687020cb69b30bce88dbfff334775",
+        "languages/markdown.md": "32203c73af64c9f38768199887a25f5e58c166957b82b8b8934fb926d614f944",
+        "languages/csharp.md": "507cb86fb5c494d9d5e8ab947015ac6f4e7a2c280c0509ffdbab812a0472c467",
+        "languages/java.md": "fd8584d68da5d11e2b8b4e1c8a3d737175bfe77abe55ba49ca5750359571f55d",
+        "languages/shell.md": "f9992d17799065cef318c6906ad6cdad646cb3bbbe9ff1d07234a0634f587bd9",
+        "languages/ruby.md": "f5942f0e7136e48723c7d70ef49358cc9d12d4e3b3144e65607c947137382788",
+        "languages/dockerfile.md": "bb548a778970cb234ea805ee35dde488274eb077d2b671aa4b55297985f88bb6",
+        "languages/sql.md": "d0345797e637e91ae8e98f1f9fc37b62b881a6691e2801a60139fc422341c4a4",
+        "languages/go.md": "359f808ba97c79726598fe92478ee5680c1bd22a6065db9d374e403f5e19f0e1",
+        "languages/terraform.md": "862d02b31ebc9de6d03d2112cf17084fcc15b4952bed08fa39e69260d642748e",
+        "languages/html.md": "059b74d8ca82efa09c273afc00aa96796202f637f147242990ebe2c90897ce3f",
+        "languages/cpp.md": "2a658bb677944fa58e6a244430d120cb0657d09e4e50fe28a9cdfbdd554f46f9",
+        "languages/python.md": "bb6553846c7ddb63ab4c156caf183fa64f59c63a56c3b0aaa42f764f9332ba94",
+        "languages/javascript.md": "4e2bc5e4c4139c86baf2a0e48587a4130d337d06929a323d8b2ab302c3355352",
+        "languages/graphql.md": "735b28063ee40ad7b07fc76a4268f96fa59f9fd5d38f185f4914275a1fa430e3",
+        "languages/yaml.md": "0cda6694a866ca53715a23cafcc00d5e8995437916a49e40eb77a50114e55d7f",
+        "locales/ja.md": "97c8462f64dd6fd8400861eb49871b27640b144d532e4be7f866689eefc7b7c6",
+        "locales/ru.md": "02a9cfb7894ffd6e68a24d1dfd050ccc06bd66cac10b0b35d75acf72cedf12de",
+        "locales/zh-TW.md": "727f14f80a4edb73dfe53025686d5d3afe865eaa554ec1c6c787f3a9a070621f",
+        "locales/ko.md": "2a7cbed153d563221516858160b073e33b1080881b13a652f60667e98f0a3e6f",
+        "locales/en.md": "bfbecb6e2e902bf92ee0476a35ea8c267fd7040ba8ffa2621da183fe767dc3b2",
+        "locales/zh.md": "06cbd26979a3383f6177b3d37995bef44f104ebe2de43704b8b1d1b5031ad98b"
+      },
+      "sha256_of_SKILL": "1f6acd37e1501c3ab12b850a182f6238e822c38d466a843b5b925386b6a71c06",
+      "files_count": 56,
+      "class": "F-PROFILE-JUNK",
+      "why": "vendor plugin profile (understand-anything) materialised as a real directory inside the canonical store; federation loses no constitutional capability",
+      "undo": "mv /root/AAA/skills-retired/2026-09-19-v2-profile-junk/understand /root/AAA/skills/understand"
+    },
+    {
+      "name": "understand-chat",
+      "orig_path": "/root/AAA/skills/understand-chat",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-v2-profile-junk/understand-chat",
+      "files": {
+        "SKILL.md": "5f1da70e0849ec2f3005fc232a95ab5f4b1c09cc062ced13945ce8516ca0e5f7"
+      },
+      "sha256_of_SKILL": "5f1da70e0849ec2f3005fc232a95ab5f4b1c09cc062ced13945ce8516ca0e5f7",
+      "files_count": 1,
+      "class": "F-PROFILE-JUNK",
+      "why": "vendor plugin profile (understand-anything) materialised as a real directory inside the canonical store; federation loses no constitutional capability",
+      "undo": "mv /root/AAA/skills-retired/2026-09-19-v2-profile-junk/understand-chat /root/AAA/skills/understand-chat"
+    },
+    {
+      "name": "understand-dashboard",
+      "orig_path": "/root/AAA/skills/understand-dashboard",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-v2-profile-junk/understand-dashboard",
+      "files": {
+        "SKILL.md": "d12cb059d8e6139873542111ccec691b0603496675182f5ac826d5b65273331a"
+      },
+      "sha256_of_SKILL": "d12cb059d8e6139873542111ccec691b0603496675182f5ac826d5b65273331a",
+      "files_count": 1,
+      "class": "F-PROFILE-JUNK",
+      "why": "vendor plugin profile (understand-anything) materialised as a real directory inside the canonical store; federation loses no constitutional capability",
+      "undo": "mv /root/AAA/skills-retired/2026-09-19-v2-profile-junk/understand-dashboard /root/AAA/skills/understand-dashboard"
+    },
+    {
+      "name": "understand-diff",
+      "orig_path": "/root/AAA/skills/understand-diff",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-v2-profile-junk/understand-diff",
+      "files": {
+        "SKILL.md": "fc8dc1b216ee1a480daff421c41c27218d7a0db881d35d0c22e9858de5189379"
+      },
+      "sha256_of_SKILL": "fc8dc1b216ee1a480daff421c41c27218d7a0db881d35d0c22e9858de5189379",
+      "files_count": 1,
+      "class": "F-PROFILE-JUNK",
+      "why": "vendor plugin profile (understand-anything) materialised as a real directory inside the canonical store; federation loses no constitutional capability",
+      "undo": "mv /root/AAA/skills-retired/2026-09-19-v2-profile-junk/understand-diff /root/AAA/skills/understand-diff"
+    },
+    {
+      "name": "understand-domain",
+      "orig_path": "/root/AAA/skills/understand-domain",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-v2-profile-junk/understand-domain",
+      "files": {
+        "extract-domain-context.py": "3ae26832a8df8090b606d86839d0721cc1c316aaac28e2b8fba77ed6d7455ae7",
+        "SKILL.md": "b2c98c18b579856a70174cb93d2d25330e715a5ac411b4cc354dc8a1daeb01ae",
+        "__pycache__/extract-domain-context.cpython-313.pyc": "1b80d25cf4d5bbf20fa73cfc634bfd65e34868e4024963ea757be03a3ac7a4be"
+      },
+      "sha256_of_SKILL": "b2c98c18b579856a70174cb93d2d25330e715a5ac411b4cc354dc8a1daeb01ae",
+      "files_count": 3,
+      "class": "F-PROFILE-JUNK",
+      "why": "vendor plugin profile (understand-anything) materialised as a real directory inside the canonical store; federation loses no constitutional capability",
+      "undo": "mv /root/AAA/skills-retired/2026-09-19-v2-profile-junk/understand-domain /root/AAA/skills/understand-domain"
+    },
+    {
+      "name": "understand-explain",
+      "orig_path": "/root/AAA/skills/understand-explain",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-v2-profile-junk/understand-explain",
+      "files": {
+        "SKILL.md": "661389c81c9133e6cdc99ba033678300ba7a7a377031396b259a23dad39496fe"
+      },
+      "sha256_of_SKILL": "661389c81c9133e6cdc99ba033678300ba7a7a377031396b259a23dad39496fe",
+      "files_count": 1,
+      "class": "F-PROFILE-JUNK",
+      "why": "vendor plugin profile (understand-anything) materialised as a real directory inside the canonical store; federation loses no constitutional capability",
+      "undo": "mv /root/AAA/skills-retired/2026-09-19-v2-profile-junk/understand-explain /root/AAA/skills/understand-explain"
+    },
+    {
+      "name": "understand-figma",
+      "orig_path": "/root/AAA/skills/understand-figma",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-v2-profile-junk/understand-figma",
+      "files": {
+        "figma-scan.mjs": "257a23096534bd32047a294ffbcc84019d85e85a8b7b58aeb4ad69de105a6805",
+        "figma-merge.mjs": "29018498529cf26be6166639ee6e93573b7cd16dba87def29c16f78fa9100797",
+        "SKILL.md": "b8f76ffb75250a265d609d597c218d1884e220618065240748f2256ef10c475d"
+      },
+      "sha256_of_SKILL": "b8f76ffb75250a265d609d597c218d1884e220618065240748f2256ef10c475d",
+      "files_count": 3,
+      "class": "F-PROFILE-JUNK",
+      "why": "vendor plugin profile (understand-anything) materialised as a real directory inside the canonical store; federation loses no constitutional capability",
+      "undo": "mv /root/AAA/skills-retired/2026-09-19-v2-profile-junk/understand-figma /root/AAA/skills/understand-figma"
+    },
+    {
+      "name": "understand-knowledge",
+      "orig_path": "/root/AAA/skills/understand-knowledge",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-v2-profile-junk/understand-knowledge",
+      "files": {
+        "parse-knowledge-base.py": "4eb78d9a8a628bb4547a0c88cb57c2b2a22ba595664736a579ad56d9e46d7249",
+        "SKILL.md": "e2b225a82d0fc59a83b8391afe17d1ff7f84acb831d2cf716f0ab583ba09c010",
+        "merge-knowledge-graph.py": "97e625234ce28bec7b1b02ec7191c70c6c75a54dda3579f7e94bc06ec10679f3",
+        "__pycache__/merge-knowledge-graph.cpython-313.pyc": "951b37e9e16e5f4a5dbac022950ed63dce7ada72af4a283a7a38498ecbe7d4a5",
+        "__pycache__/parse-knowledge-base.cpython-313.pyc": "87bd772edccae2023dd6d666d27692130b51ec761ed812a484dc1e275089bb7e"
+      },
+      "sha256_of_SKILL": "e2b225a82d0fc59a83b8391afe17d1ff7f84acb831d2cf716f0ab583ba09c010",
+      "files_count": 5,
+      "class": "F-PROFILE-JUNK",
+      "why": "vendor plugin profile (understand-anything) materialised as a real directory inside the canonical store; federation loses no constitutional capability",
+      "undo": "mv /root/AAA/skills-retired/2026-09-19-v2-profile-junk/understand-knowledge /root/AAA/skills/understand-knowledge"
+    },
+    {
+      "name": "understand-onboard",
+      "orig_path": "/root/AAA/skills/understand-onboard",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-v2-profile-junk/understand-onboard",
+      "files": {
+        "SKILL.md": "e5be45248859ca8255546a18a340bc1556984162f5b1a3f77da1e66136a557b3"
+      },
+      "sha256_of_SKILL": "e5be45248859ca8255546a18a340bc1556984162f5b1a3f77da1e66136a557b3",
+      "files_count": 1,
+      "class": "F-PROFILE-JUNK",
+      "why": "vendor plugin profile (understand-anything) materialised as a real directory inside the canonical store; federation loses no constitutional capability",
+      "undo": "mv /root/AAA/skills-retired/2026-09-19-v2-profile-junk/understand-onboard /root/AAA/skills/understand-onboard"
+    }
+  ]
+}

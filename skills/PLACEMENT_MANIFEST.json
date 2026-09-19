@@ -1,16 +1,16 @@
 {
  "rule": "a placement tag, not a move: bundled skills keep the updater path, moved skills move one at a time with a receipt",
- "total_storage_skills": 549,
+ "total_storage_skills": 602,
  "generations": {
-  "bucket": 127,
+  "bucket": 185,
   "taxonomy": 212,
-  "flat-root": 210
+  "flat-root": 205
  },
- "bundled_in_manifest": 50,
- "authored_not_in_bundled_manifest": 499,
+ "bundled_in_manifest": 41,
+ "authored_not_in_bundled_manifest": 561,
  "body_borrowed_outside_canonical": 0,
- "placed": 366,
- "unplaced": 183,
+ "placed": 360,
+ "unplaced": 242,
  "skills": {
   "AAA-video-emd-pipeline": {
    "storage": "/root/AAA/skills/capabilities/media/AAA-video-emd-pipeline",
@@ -21,19 +21,6 @@
    "borrowed_from": null,
    "address": "domains/general/workshop/audio-emd/AAA-video-emd-pipeline",
    "placed": true
-  },
-  "AGI-decisions-reflect": {
-   "storage": "/root/AAA/.quarantine-redundancy-2026-09-19/AGI-decisions-reflect",
-   "rel": "<quarantined>/AGI-decisions-reflect",
-   "generation": "bucket",
-   "bundled": true,
-   "body_held_here": false,
-   "borrowed_from": null,
-   "address": null,
-   "placed": false,
-   "quarantined": "2026-09-19",
-   "successor": "/root/AAA/skills/domains/general/apex/recursive-audit/APEX-humility-godel",
-   "absorbed_reference": "/root/AAA/skills/domains/general/apex/recursive-audit/APEX-humility-godel/references/absorbed-AGI-decisions-reflect.md"
   },
   "agent-capability-self-audit": {
    "storage": "/root/AAA/skills/capabilities/agent-capability-self-audit",
@@ -505,16 +492,6 @@
    "address": "domains/general/apex/governance-core/institution-entropy-audit",
    "placed": true
   },
-  "RSI-recursive-improvement": {
-   "storage": "/root/AAA/skills/RSI-recursive-improvement",
-   "rel": "RSI-recursive-improvement",
-   "generation": "flat-root",
-   "bundled": false,
-   "body_held_here": true,
-   "borrowed_from": null,
-   "address": "domains/general/apex/recursive-audit/RSI-recursive-improvement",
-   "placed": true
-  },
   "arif-style-zen-audit": {
    "storage": "/root/AAA/skills/domains/general/apex/recursive-audit/arif-style-zen-audit",
    "rel": "domains/general/apex/recursive-audit/arif-style-zen-audit",
@@ -674,19 +651,6 @@
    "borrowed_from": null,
    "address": "domains/general/aaa/substrate/arifos-auto-init",
    "placed": true
-  },
-  "sovereign-recognize": {
-   "storage": "/root/AAA/.quarantine-redundancy-2026-09-19/sovereign-recognize",
-   "rel": "<quarantined>/sovereign-recognize",
-   "generation": "bucket",
-   "bundled": false,
-   "body_held_here": false,
-   "borrowed_from": null,
-   "address": "domains/general/aaa/substrate/reflective/sovereign-recognize",
-   "placed": true,
-   "quarantined": "2026-09-19",
-   "successor": "/root/AAA/skills/human-interface/audience-scoped-disclosure",
-   "absorbed_reference": "/root/AAA/skills/human-interface/audience-scoped-disclosure/references/absorbed-sovereign-recognize.md"
   },
   "aaa-knowledge-files": {
    "storage": "/root/AAA/skills/domains/general/aaa/substrate/aaa-knowledge-files",
@@ -978,16 +942,6 @@
    "address": "domains/general/forge/mcp-ops/forge-minimax-mcp-direct-invoke",
    "placed": true
   },
-  "FORGE-mcp-testing": {
-   "storage": "/root/AAA/skills/FORGE-mcp-testing",
-   "rel": "FORGE-mcp-testing",
-   "generation": "flat-root",
-   "bundled": false,
-   "body_held_here": true,
-   "borrowed_from": null,
-   "address": "domains/general/forge/mcp-ops/FORGE-mcp-testing",
-   "placed": true
-  },
   "external-platform-mcp": {
    "storage": "/root/AAA/skills/domains/general/forge/mcp-ops/external-platform-mcp",
    "rel": "domains/general/forge/mcp-ops/external-platform-mcp",
@@ -1146,16 +1100,6 @@
    "body_held_here": true,
    "borrowed_from": null,
    "address": "domains/general/court/court-audit/live-probe-audit-pattern",
-   "placed": true
-  },
-  "cognitive-level-assertion-protocol": {
-   "storage": "/root/AAA/skills/cognitive-level-assertion-protocol",
-   "rel": "cognitive-level-assertion-protocol",
-   "generation": "flat-root",
-   "bundled": false,
-   "body_held_here": true,
-   "borrowed_from": null,
-   "address": "domains/general/court/court-audit/cognitive-level-assertion-protocol",
    "placed": true
   },
   "synthesis-verification-gate": {
@@ -2255,7 +2199,7 @@
    "bundled": true,
    "body_held_here": true,
    "borrowed_from": null,
-   "address": "knowledge/know-physics",
+   "address": ".archive-2026-09-18/skeletons/knowledge/know-physics",
    "placed": true
   },
   "mimo-vision": {
@@ -2291,6 +2235,16 @@
   "forge-secret-hygiene": {
    "storage": "/root/AAA/skills/forge-secret-hygiene",
    "rel": "forge-secret-hygiene",
+   "generation": "flat-root",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "concurrent-agent-writers": {
+   "storage": "/root/AAA/skills/concurrent-agent-writers",
+   "rel": "concurrent-agent-writers",
    "generation": "flat-root",
    "bundled": false,
    "body_held_here": true,
@@ -2408,6 +2362,16 @@
    "address": null,
    "placed": false
   },
+  "alpha-zen-lanes": {
+   "storage": "/root/AAA/skills/apex-cognitive-reflex/alpha-zen-lanes",
+   "rel": "apex-cognitive-reflex/alpha-zen-lanes",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
   "know-math": {
    "storage": "/root/AAA/skills/know-math",
    "rel": "know-math",
@@ -2415,7 +2379,7 @@
    "bundled": true,
    "body_held_here": true,
    "borrowed_from": null,
-   "address": "knowledge/know-math",
+   "address": ".archive-2026-09-18/skeletons/knowledge/know-math",
    "placed": true
   },
   "qwencloud-deploy": {
@@ -2498,16 +2462,6 @@
    "address": null,
    "placed": false
   },
-  "runtime": {
-   "storage": "/root/AAA/skills/runtime",
-   "rel": "runtime",
-   "generation": "flat-root",
-   "bundled": true,
-   "body_held_here": true,
-   "borrowed_from": null,
-   "address": "runtime",
-   "placed": true
-  },
   "delegated-build-fanout": {
    "storage": "/root/AAA/skills/delegated-build-fanout",
    "rel": "delegated-build-fanout",
@@ -2541,6 +2495,16 @@
   "agi-web-optimization": {
    "storage": "/root/AAA/skills/agi-web-optimization",
    "rel": "agi-web-optimization",
+   "generation": "flat-root",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "evidence-hierarchy": {
+   "storage": "/root/AAA/skills/evidence-hierarchy",
+   "rel": "evidence-hierarchy",
    "generation": "flat-root",
    "bundled": false,
    "body_held_here": true,
@@ -2588,16 +2552,6 @@
    "address": null,
    "placed": false
   },
-  "mcp-dual-era-transport": {
-   "storage": "/root/AAA/skills/forge-mcp-ops/mcp-dual-era-transport",
-   "rel": "forge-mcp-ops/mcp-dual-era-transport",
-   "generation": "bucket",
-   "bundled": false,
-   "body_held_here": true,
-   "borrowed_from": null,
-   "address": "forge-mcp-ops/mcp-dual-era-transport",
-   "placed": true
-  },
   "agi-plan-dag": {
    "storage": "/root/AAA/skills/agi-plan-dag",
    "rel": "agi-plan-dag",
@@ -2606,16 +2560,6 @@
    "body_held_here": true,
    "borrowed_from": null,
    "address": "domains/general/aaa/agentic-patterns/AGI-plan-dag",
-   "placed": true
-  },
-  "help": {
-   "storage": "/root/AAA/skills/help",
-   "rel": "help",
-   "generation": "flat-root",
-   "bundled": true,
-   "body_held_here": true,
-   "borrowed_from": null,
-   "address": "help",
    "placed": true
   },
   "runpod-usage": {
@@ -2652,6 +2596,76 @@
    "storage": "/root/AAA/skills/forge-spatial-grounding",
    "rel": "forge-spatial-grounding",
    "generation": "flat-root",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "market-analysis-scope": {
+   "storage": "/root/AAA/skills/wealth/market-analysis-scope",
+   "rel": "wealth/market-analysis-scope",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "company-failure-analysis": {
+   "storage": "/root/AAA/skills/wealth/company-failure-analysis",
+   "rel": "wealth/company-failure-analysis",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "market-prediction-falsification": {
+   "storage": "/root/AAA/skills/wealth/market-prediction-falsification",
+   "rel": "wealth/market-prediction-falsification",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "prediction-honesty-audit": {
+   "storage": "/root/AAA/skills/wealth/prediction-honesty-audit",
+   "rel": "wealth/prediction-honesty-audit",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "market-claim-assessment": {
+   "storage": "/root/AAA/skills/wealth/market-claim-assessment",
+   "rel": "wealth/market-claim-assessment",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "company-solvency-forensics": {
+   "storage": "/root/AAA/skills/wealth/company-solvency-forensics",
+   "rel": "wealth/company-solvency-forensics",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "mcp-transport-fix": {
+   "storage": "/root/AAA/skills/devops/mcp-transport-fix",
+   "rel": "devops/mcp-transport-fix",
+   "generation": "bucket",
    "bundled": false,
    "body_held_here": true,
    "borrowed_from": null,
@@ -2708,9 +2722,59 @@
    "address": "google-workspace-gws",
    "placed": true
   },
+  "entity-failure-forensics": {
+   "storage": "/root/AAA/skills/finance/entity-failure-forensics",
+   "rel": "finance/entity-failure-forensics",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
   "multi-period-cashflow-analysis": {
    "storage": "/root/AAA/skills/finance/multi-period-cashflow-analysis",
    "rel": "finance/multi-period-cashflow-analysis",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "financial-distress-data-lanes": {
+   "storage": "/root/AAA/skills/finance/financial-distress-data-lanes",
+   "rel": "finance/financial-distress-data-lanes",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "financial-distress-forensics": {
+   "storage": "/root/AAA/skills/finance/financial-distress-forensics",
+   "rel": "finance/financial-distress-forensics",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "market-collapse-forensics": {
+   "storage": "/root/AAA/skills/finance/market-collapse-forensics",
+   "rel": "finance/market-collapse-forensics",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "decision-risk-quantification": {
+   "storage": "/root/AAA/skills/finance/decision-risk-quantification",
+   "rel": "finance/decision-risk-quantification",
    "generation": "bucket",
    "bundled": false,
    "body_held_here": true,
@@ -2768,16 +2832,6 @@
    "address": null,
    "placed": false
   },
-  "wisdom-scar-session-audit": {
-   "storage": "/root/AAA/skills/wisdom-scar-session-audit",
-   "rel": "wisdom-scar-session-audit",
-   "generation": "flat-root",
-   "bundled": true,
-   "body_held_here": true,
-   "borrowed_from": null,
-   "address": "wisdom-scar-session-audit",
-   "placed": true
-  },
   "forge-ci-diagnose": {
    "storage": "/root/AAA/skills/forge-ci-diagnose",
    "rel": "forge-ci-diagnose",
@@ -2808,15 +2862,35 @@
    "address": null,
    "placed": false
   },
-  "wealth-claim-state": {
-   "storage": "/root/AAA/skills/wealth-claim-state",
-   "rel": "wealth-claim-state",
-   "generation": "flat-root",
-   "bundled": true,
+  "web-search-query-gate-recovery": {
+   "storage": "/root/AAA/skills/search-web/web-search-query-gate-recovery",
+   "rel": "search-web/web-search-query-gate-recovery",
+   "generation": "bucket",
+   "bundled": false,
    "body_held_here": true,
    "borrowed_from": null,
-   "address": "domains/wealth/workshop/finance-domain/wealth-claim-state",
+   "address": null,
+   "placed": false
+  },
+  "sovereign-tts-lanes": {
+   "storage": "/root/AAA/skills/audio/sovereign-tts-lanes",
+   "rel": "audio/sovereign-tts-lanes",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": "sovereign-tts-lanes",
    "placed": true
+  },
+  "audio-roundtrip-diagnostics": {
+   "storage": "/root/AAA/skills/audio/audio-roundtrip-diagnostics",
+   "rel": "audio/audio-roundtrip-diagnostics",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
   },
   "proxy-verification-audit": {
    "storage": "/root/AAA/skills/court-audit/proxy-verification-audit",
@@ -2908,6 +2982,16 @@
    "address": "governance-core/canon-doctrine-sealing",
    "placed": true
   },
+  "temporal-artifact-integrity": {
+   "storage": "/root/AAA/skills/governance-core/temporal-artifact-integrity",
+   "rel": "governance-core/temporal-artifact-integrity",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
   "autonomous-learning-loop": {
    "storage": "/root/AAA/skills/governance-core/autonomous-learning-loop",
    "rel": "governance-core/autonomous-learning-loop",
@@ -2978,6 +3062,16 @@
    "address": "verification-discipline/machine-read-verification",
    "placed": true
   },
+  "voice-lane-verification": {
+   "storage": "/root/AAA/skills/verification-discipline/voice-lane-verification",
+   "rel": "verification-discipline/voice-lane-verification",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
   "agent-session-forensics": {
    "storage": "/root/AAA/skills/verification-discipline/agent-session-forensics",
    "rel": "verification-discipline/agent-session-forensics",
@@ -3012,6 +3106,16 @@
    "storage": "/root/AAA/skills/human-state-estimation",
    "rel": "human-state-estimation",
    "generation": "flat-root",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "provider-pool-outage-fallback": {
+   "storage": "/root/AAA/skills/media/provider-pool-outage-fallback",
+   "rel": "media/provider-pool-outage-fallback",
+   "generation": "bucket",
    "bundled": false,
    "body_held_here": true,
    "borrowed_from": null,
@@ -3138,6 +3242,16 @@
    "address": null,
    "placed": false
   },
+  "forge-git-seal": {
+   "storage": "/root/AAA/skills/forge-git-seal",
+   "rel": "forge-git-seal",
+   "generation": "flat-root",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
   "forge-context-compressor": {
    "storage": "/root/AAA/skills/forge-context-compressor",
    "rel": "forge-context-compressor",
@@ -3177,16 +3291,6 @@
    "borrowed_from": null,
    "address": null,
    "placed": false
-  },
-  "substrate": {
-   "storage": "/root/AAA/skills/substrate",
-   "rel": "substrate",
-   "generation": "flat-root",
-   "bundled": true,
-   "body_held_here": true,
-   "borrowed_from": null,
-   "address": "substrate",
-   "placed": true
   },
   "memory-manage": {
    "storage": "/root/AAA/skills/memory-manage",
@@ -3268,9 +3372,39 @@
    "address": null,
    "placed": false
   },
+  "all-time-and-delisted-charts": {
+   "storage": "/root/AAA/skills/trading/all-time-and-delisted-charts",
+   "rel": "trading/all-time-and-delisted-charts",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "trading-risk-review": {
+   "storage": "/root/AAA/skills/trading/trading-risk-review",
+   "rel": "trading/trading-risk-review",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
   "first-party-evidence-audit": {
    "storage": "/root/AAA/skills/first-party-evidence-audit",
    "rel": "first-party-evidence-audit",
+   "generation": "flat-root",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "substrate-taxonomy": {
+   "storage": "/root/AAA/skills/substrate-taxonomy",
+   "rel": "substrate-taxonomy",
    "generation": "flat-root",
    "bundled": false,
    "body_held_here": true,
@@ -3349,8 +3483,8 @@
    "placed": false
   },
   "hermes": {
-   "storage": "/root/AAA/skills/apex_verdict_seal/hermes",
-   "rel": "apex_verdict_seal/hermes",
+   "storage": "/root/AAA/skills/apex_verdict_hold/hermes",
+   "rel": "apex_verdict_hold/hermes",
    "generation": "bucket",
    "bundled": false,
    "body_held_here": true,
@@ -3382,6 +3516,16 @@
    "storage": "/root/AAA/skills/forge-act-federation-ingress",
    "rel": "forge-act-federation-ingress",
    "generation": "flat-root",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "public-ingress-audit": {
+   "storage": "/root/AAA/skills/infra/public-ingress-audit",
+   "rel": "infra/public-ingress-audit",
+   "generation": "bucket",
    "bundled": false,
    "body_held_here": true,
    "borrowed_from": null,
@@ -3427,6 +3571,16 @@
    "borrowed_from": null,
    "address": "federation-connect-headscale",
    "placed": true
+  },
+  "document-pipeline": {
+   "storage": "/root/AAA/skills/document-pipeline",
+   "rel": "document-pipeline",
+   "generation": "flat-root",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
   },
   "capability-telemetry-audit": {
    "storage": "/root/AAA/skills/capability-telemetry-audit",
@@ -3498,20 +3652,20 @@
    "address": null,
    "placed": false
   },
-  "RSI-federation-mesh": {
-   "storage": "/root/AAA/skills/RSI-federation-mesh",
-   "rel": "RSI-federation-mesh",
-   "generation": "flat-root",
-   "bundled": false,
-   "body_held_here": true,
-   "borrowed_from": null,
-   "address": "RSI-federation-mesh",
-   "placed": true
-  },
   "forge-cross-agent-handoff": {
    "storage": "/root/AAA/skills/forge-cross-agent-handoff",
    "rel": "forge-cross-agent-handoff",
    "generation": "flat-root",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "political-intelligence-briefing": {
+   "storage": "/root/AAA/skills/research-briefing/political-intelligence-briefing",
+   "rel": "research-briefing/political-intelligence-briefing",
+   "generation": "bucket",
    "bundled": false,
    "body_held_here": true,
    "borrowed_from": null,
@@ -3598,6 +3752,16 @@
    "address": null,
    "placed": false
   },
+  "persona-boundary-conduct": {
+   "storage": "/root/AAA/skills/human-interface/persona-boundary-conduct",
+   "rel": "human-interface/persona-boundary-conduct",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
   "audience-scoped-disclosure": {
    "storage": "/root/AAA/skills/human-interface/audience-scoped-disclosure",
    "rel": "human-interface/audience-scoped-disclosure",
@@ -3607,6 +3771,16 @@
    "borrowed_from": null,
    "address": "human-interface/audience-scoped-disclosure",
    "placed": true
+  },
+  "human-facing-recurring-card": {
+   "storage": "/root/AAA/skills/human-interface/human-facing-recurring-card",
+   "rel": "human-interface/human-facing-recurring-card",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
   },
   "human-recognition-architecture": {
    "storage": "/root/AAA/skills/human-interface/human-recognition-architecture",
@@ -3626,16 +3800,6 @@
    "body_held_here": true,
    "borrowed_from": null,
    "address": "human-interface/public-profile-persona-mapping",
-   "placed": true
-  },
-  "warga": {
-   "storage": "/root/AAA/skills/warga",
-   "rel": "warga",
-   "generation": "flat-root",
-   "bundled": true,
-   "body_held_here": true,
-   "borrowed_from": null,
-   "address": "warga",
    "placed": true
   },
   "constitutional": {
@@ -3658,6 +3822,46 @@
    "address": "warga/constitutional/identity-invariance",
    "placed": true
   },
+  "web-surface-design-fidelity": {
+   "storage": "/root/AAA/skills/design/web-surface-design-fidelity",
+   "rel": "design/web-surface-design-fidelity",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "sovereign-surface-design": {
+   "storage": "/root/AAA/skills/design/sovereign-surface-design",
+   "rel": "design/sovereign-surface-design",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "circular-mark-and-arabic-typography": {
+   "storage": "/root/AAA/skills/design/circular-mark-and-arabic-typography",
+   "rel": "design/circular-mark-and-arabic-typography",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "visual-surface-delivery": {
+   "storage": "/root/AAA/skills/design/visual-surface-delivery",
+   "rel": "design/visual-surface-delivery",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
   "mcp-context-compression": {
    "storage": "/root/AAA/skills/mcp-context-compression",
    "rel": "mcp-context-compression",
@@ -3677,16 +3881,6 @@
    "borrowed_from": null,
    "address": null,
    "placed": false
-  },
-  "docs": {
-   "storage": "/root/AAA/skills/docs",
-   "rel": "docs",
-   "generation": "flat-root",
-   "bundled": true,
-   "body_held_here": true,
-   "borrowed_from": null,
-   "address": "docs",
-   "placed": true
   },
   "mcp-sota-shopping-list": {
    "storage": "/root/AAA/skills/mcp-sota-shopping-list",
@@ -3815,8 +4009,8 @@
    "bundled": false,
    "body_held_here": true,
    "borrowed_from": null,
-   "address": "domains/general/aaa/skill-mesh/skill-creator",
-   "placed": true
+   "address": null,
+   "placed": false
   },
   "drift-watch": {
    "storage": "/root/AAA/skills/engineering/drift-watch",
@@ -3968,6 +4162,16 @@
    "address": "aaa-governance/aaa-doctrine-sealing",
    "placed": true
   },
+  "tts-roundtrip-scoring": {
+   "storage": "/root/AAA/skills/voice-stack/tts-roundtrip-scoring",
+   "rel": "voice-stack/tts-roundtrip-scoring",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
   "forge-subagent-lifecycle": {
    "storage": "/root/AAA/skills/forge-subagent-lifecycle",
    "rel": "forge-subagent-lifecycle",
@@ -4016,16 +4220,6 @@
    "body_held_here": true,
    "borrowed_from": null,
    "address": "domains/general/apex/verdict/arifos-constitutional-judge",
-   "placed": true
-  },
-  "mcp-shopping-list-2026-09": {
-   "storage": "/root/AAA/skills/mcp-shopping-list-2026-09",
-   "rel": "mcp-shopping-list-2026-09",
-   "generation": "flat-root",
-   "bundled": false,
-   "body_held_here": true,
-   "borrowed_from": null,
-   "address": "mcp-shopping-list-2026-09",
    "placed": true
   },
   "federation-state-report": {
@@ -4198,6 +4392,16 @@
    "address": "media-ingest-lane",
    "placed": true
   },
+  "financial-history-charting": {
+   "storage": "/root/AAA/skills/financial-history-charting",
+   "rel": "financial-history-charting",
+   "generation": "flat-root",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
   "human-meaning-membrane": {
    "storage": "/root/AAA/skills/human-meaning-membrane",
    "rel": "human-meaning-membrane",
@@ -4207,6 +4411,16 @@
    "borrowed_from": null,
    "address": "domains/general/apex/cognitive-reflex/human-meaning-membrane",
    "placed": true
+  },
+  "pipeline-integrity": {
+   "storage": "/root/AAA/skills/pipeline-integrity",
+   "rel": "pipeline-integrity",
+   "generation": "flat-root",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
   },
   "graphiti-temporal-memory-ops": {
    "storage": "/root/AAA/skills/graphiti-temporal-memory-ops",
@@ -4378,6 +4592,16 @@
    "address": null,
    "placed": false
   },
+  "image-restyle-and-edit": {
+   "storage": "/root/AAA/skills/creative/image-restyle-and-edit",
+   "rel": "creative/image-restyle-and-edit",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
   "pretext": {
    "storage": "/root/AAA/skills/creative/pretext",
    "rel": "creative/pretext",
@@ -4408,9 +4632,29 @@
    "address": null,
    "placed": false
   },
+  "reference-image-rendering": {
+   "storage": "/root/AAA/skills/creative/reference-image-rendering",
+   "rel": "creative/reference-image-rendering",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
   "excalidraw": {
    "storage": "/root/AAA/skills/creative/excalidraw",
    "rel": "creative/excalidraw",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "chart-artifact-render-qa": {
+   "storage": "/root/AAA/skills/creative/chart-artifact-render-qa",
+   "rel": "creative/chart-artifact-render-qa",
    "generation": "bucket",
    "bundled": false,
    "body_held_here": true,
@@ -4438,6 +4682,26 @@
    "address": null,
    "placed": false
   },
+  "agent-claim-verification": {
+   "storage": "/root/AAA/skills/audit/agent-claim-verification",
+   "rel": "audit/agent-claim-verification",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "audit-intake-verification": {
+   "storage": "/root/AAA/skills/audit/audit-intake-verification",
+   "rel": "audit/audit-intake-verification",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
   "corpus-evidence-discipline": {
    "storage": "/root/AAA/skills/audit/corpus-evidence-discipline",
    "rel": "audit/corpus-evidence-discipline",
@@ -4458,9 +4722,59 @@
    "address": null,
    "placed": false
   },
+  "cross-surface-conformance-audit": {
+   "storage": "/root/AAA/skills/audit/cross-surface-conformance-audit",
+   "rel": "audit/cross-surface-conformance-audit",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "name-requires-mechanism": {
+   "storage": "/root/AAA/skills/audit/name-requires-mechanism",
+   "rel": "audit/name-requires-mechanism",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
   "relationship-reality-audit": {
    "storage": "/root/AAA/skills/audit/relationship-reality-audit",
    "rel": "audit/relationship-reality-audit",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "cross-ai-analysis-distillation": {
+   "storage": "/root/AAA/skills/audit/cross-ai-analysis-distillation",
+   "rel": "audit/cross-ai-analysis-distillation",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "control-integrity-audit": {
+   "storage": "/root/AAA/skills/audit/control-integrity-audit",
+   "rel": "audit/control-integrity-audit",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "divergent-claim-reconciliation": {
+   "storage": "/root/AAA/skills/audit/divergent-claim-reconciliation",
+   "rel": "audit/divergent-claim-reconciliation",
    "generation": "bucket",
    "bundled": false,
    "body_held_here": true,
@@ -4488,9 +4802,39 @@
    "address": null,
    "placed": false
   },
+  "surface-consistency-audit": {
+   "storage": "/root/AAA/skills/audit/surface-consistency-audit",
+   "rel": "audit/surface-consistency-audit",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "blind-prediction-testing": {
+   "storage": "/root/AAA/skills/audit/blind-prediction-testing",
+   "rel": "audit/blind-prediction-testing",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
   "insider-exposure-inventory": {
    "storage": "/root/AAA/skills/audit/insider-exposure-inventory",
    "rel": "audit/insider-exposure-inventory",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "declared-vs-enforced-control-audit": {
+   "storage": "/root/AAA/skills/audit/declared-vs-enforced-control-audit",
+   "rel": "audit/declared-vs-enforced-control-audit",
    "generation": "bucket",
    "bundled": false,
    "body_held_here": true,
@@ -4548,6 +4892,26 @@
    "address": "domains/general/aaa/substrate/caller-trace",
    "placed": true
   },
+  "disk-pressure-triage": {
+   "storage": "/root/AAA/skills/forge/disk-pressure-triage",
+   "rel": "forge/disk-pressure-triage",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "generated-artifact-integrity": {
+   "storage": "/root/AAA/skills/forge/generated-artifact-integrity",
+   "rel": "forge/generated-artifact-integrity",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
   "human-facing-artifact-design": {
    "storage": "/root/AAA/skills/forge/human-facing-artifact-design",
    "rel": "forge/human-facing-artifact-design",
@@ -4567,6 +4931,16 @@
    "borrowed_from": null,
    "address": "forge/autonomous-loop-engineering",
    "placed": true
+  },
+  "parallel-agent-fanout": {
+   "storage": "/root/AAA/skills/forge/parallel-agent-fanout",
+   "rel": "forge/parallel-agent-fanout",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
   },
   "rtc-loop": {
    "storage": "/root/AAA/skills/rtc-loop",
@@ -4785,7 +5159,7 @@
    "bundled": true,
    "body_held_here": true,
    "borrowed_from": null,
-   "address": "knowledge/know-language",
+   "address": ".archive-2026-09-18/skeletons/knowledge/know-language",
    "placed": true
   },
   "forge-code-analysis": {
@@ -4835,8 +5209,8 @@
    "bundled": false,
    "body_held_here": true,
    "borrowed_from": null,
-   "address": null,
-   "placed": false
+   "address": "governance/federation-memory-writeback",
+   "placed": true
   },
   "apex-gate-evaluator": {
    "storage": "/root/AAA/skills/governance/apex-gate-evaluator",
@@ -4855,8 +5229,8 @@
    "bundled": false,
    "body_held_here": true,
    "borrowed_from": null,
-   "address": null,
-   "placed": false
+   "address": "governance/sensitive-publication-governance",
+   "placed": true
   },
   "publication-risk-audit": {
    "storage": "/root/AAA/skills/governance/publication-risk-audit",
@@ -4865,12 +5239,32 @@
    "bundled": false,
    "body_held_here": true,
    "borrowed_from": null,
-   "address": null,
-   "placed": false
+   "address": "governance/publication-risk-audit",
+   "placed": true
   },
   "first-party-corpus-audit": {
    "storage": "/root/AAA/skills/governance/first-party-corpus-audit",
    "rel": "governance/first-party-corpus-audit",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": "governance/first-party-corpus-audit",
+   "placed": true
+  },
+  "claim-ledger-integrity": {
+   "storage": "/root/AAA/skills/governance/claim-ledger-integrity",
+   "rel": "governance/claim-ledger-integrity",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "durable-claim-ledger": {
+   "storage": "/root/AAA/skills/governance/durable-claim-ledger",
+   "rel": "governance/durable-claim-ledger",
    "generation": "bucket",
    "bundled": false,
    "body_held_here": true,
@@ -4885,8 +5279,8 @@
    "bundled": false,
    "body_held_here": true,
    "borrowed_from": null,
-   "address": null,
-   "placed": false
+   "address": "governance/capability-addressing",
+   "placed": true
   },
   "site-traffic-reality": {
    "storage": "/root/AAA/skills/governance/site-traffic-reality",
@@ -4895,8 +5289,8 @@
    "bundled": false,
    "body_held_here": true,
    "borrowed_from": null,
-   "address": null,
-   "placed": false
+   "address": "governance/site-traffic-reality",
+   "placed": true
   },
   "public-claims-maintenance": {
    "storage": "/root/AAA/skills/governance/public-claims-maintenance",
@@ -4908,6 +5302,26 @@
    "address": "governance/public-claims-maintenance",
    "placed": true
   },
+  "control-mechanism-audit": {
+   "storage": "/root/AAA/skills/governance/control-mechanism-audit",
+   "rel": "governance/control-mechanism-audit",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "control-seal-verification": {
+   "storage": "/root/AAA/skills/governance/control-seal-verification",
+   "rel": "governance/control-seal-verification",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
   "staged-write-triage": {
    "storage": "/root/AAA/skills/governance/staged-write-triage",
    "rel": "governance/staged-write-triage",
@@ -4918,6 +5332,36 @@
    "address": "governance/staged-write-triage",
    "placed": true
   },
+  "named-mechanism-audit": {
+   "storage": "/root/AAA/skills/governance/named-mechanism-audit",
+   "rel": "governance/named-mechanism-audit",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "capability-surface-conformance": {
+   "storage": "/root/AAA/skills/governance/capability-surface-conformance",
+   "rel": "governance/capability-surface-conformance",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": "governance/capability-surface-conformance",
+   "placed": true
+  },
+  "model-score-disclosure": {
+   "storage": "/root/AAA/skills/governance/model-score-disclosure",
+   "rel": "governance/model-score-disclosure",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
   "apex-verdict": {
    "storage": "/root/AAA/skills/governance/apex-verdict",
    "rel": "governance/apex-verdict",
@@ -4927,6 +5371,16 @@
    "borrowed_from": null,
    "address": "domains/general/apex/verdict/apex-verdict",
    "placed": true
+  },
+  "sealed-deliverable-provenance": {
+   "storage": "/root/AAA/skills/governance/sealed-deliverable-provenance",
+   "rel": "governance/sealed-deliverable-provenance",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
   },
   "durable-artifact-authoring": {
    "storage": "/root/AAA/skills/governance/durable-artifact-authoring",
@@ -4942,6 +5396,16 @@
    "storage": "/root/AAA/skills/governance/symbol-namespace-integrity",
    "rel": "governance/symbol-namespace-integrity",
    "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": "governance/symbol-namespace-integrity",
+   "placed": true
+  },
+  "media-lane-outage-ladder": {
+   "storage": "/root/AAA/skills/media-lane-outage-ladder",
+   "rel": "media-lane-outage-ladder",
+   "generation": "flat-root",
    "bundled": false,
    "body_held_here": true,
    "borrowed_from": null,
@@ -4978,6 +5442,16 @@
    "address": "security-ops/responsible-disclosure-handling",
    "placed": true
   },
+  "persona-voice-binding": {
+   "storage": "/root/AAA/skills/persona/persona-voice-binding",
+   "rel": "persona/persona-voice-binding",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
   "openhue": {
    "storage": "/root/AAA/skills/smart-home/openhue",
    "rel": "smart-home/openhue",
@@ -4988,10 +5462,10 @@
    "address": null,
    "placed": false
   },
-  "forge-federation-manifest": {
-   "storage": "/root/AAA/skills/forge-federation-manifest",
-   "rel": "forge-federation-manifest",
-   "generation": "flat-root",
+  "predictive-claim-falsification": {
+   "storage": "/root/AAA/skills/court/predictive-claim-falsification",
+   "rel": "court/predictive-claim-falsification",
+   "generation": "bucket",
    "bundled": false,
    "body_held_here": true,
    "borrowed_from": null,
@@ -5178,6 +5652,16 @@
    "address": "document-intel/paged-media-report-layout",
    "placed": true
   },
+  "docforge-document-lane": {
+   "storage": "/root/AAA/skills/document-intel/docforge-document-lane",
+   "rel": "document-intel/docforge-document-lane",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": "document-intel/docforge-document-lane",
+   "placed": true
+  },
   "forge-seal-a-close": {
    "storage": "/root/AAA/skills/forge-seal-a-close",
    "rel": "forge-seal-a-close",
@@ -5186,16 +5670,6 @@
    "body_held_here": true,
    "borrowed_from": null,
    "address": "FORGE-seal-a-close",
-   "placed": true
-  },
-  "causal555-pywhy": {
-   "storage": "/root/AAA/skills/causal555-pywhy",
-   "rel": "causal555-pywhy",
-   "generation": "flat-root",
-   "bundled": true,
-   "body_held_here": true,
-   "borrowed_from": null,
-   "address": "causal555-pywhy",
    "placed": true
   },
   "understand-figma": {
@@ -5248,6 +5722,16 @@
    "address": "cron-ops/federation-scheduler-audit",
    "placed": true
   },
+  "background-monitor-design": {
+   "storage": "/root/AAA/skills/cron-ops/background-monitor-design",
+   "rel": "cron-ops/background-monitor-design",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
   "organ-capability-map": {
    "storage": "/root/AAA/skills/organ-capability-map",
    "rel": "organ-capability-map",
@@ -5287,6 +5771,16 @@
    "borrowed_from": null,
    "address": "submission-readiness-audit",
    "placed": true
+  },
+  "live-system-audit-discipline": {
+   "storage": "/root/AAA/skills/live-system-audit-discipline",
+   "rel": "live-system-audit-discipline",
+   "generation": "flat-root",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
   },
   "forge-agentic-web-builder": {
    "storage": "/root/AAA/skills/forge-agentic-web-builder",
@@ -5361,6 +5855,36 @@
   "malaysian-employment-separation": {
    "storage": "/root/AAA/skills/legal-my/malaysian-employment-separation",
    "rel": "legal-my/malaysian-employment-separation",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "photo-style-transfer": {
+   "storage": "/root/AAA/skills/image-gen/photo-style-transfer",
+   "rel": "image-gen/photo-style-transfer",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "layered-perspective-brief": {
+   "storage": "/root/AAA/skills/intel-brief/layered-perspective-brief",
+   "rel": "intel-brief/layered-perspective-brief",
+   "generation": "bucket",
+   "bundled": false,
+   "body_held_here": true,
+   "borrowed_from": null,
+   "address": null,
+   "placed": false
+  },
+  "entity-position-dossier": {
+   "storage": "/root/AAA/skills/intel-brief/entity-position-dossier",
+   "rel": "intel-brief/entity-position-dossier",
    "generation": "bucket",
    "bundled": false,
    "body_held_here": true,

@@ -1,0 +1,129 @@
+# cost>value candidates from the usage ledger (2026-09-19)
+ledger entries: 681 | uses==0: 142 | unused>= 20d: 0
+names in ledger with no body in canon: 254
+
+## NEVER-USED, ranked by bytes they cost on disk
+      57.2 KB  NEVER TOUCHED              last_viewed=Noned  entity-failure-forensics
+      48.6 KB  NEVER TOUCHED              last_viewed=Noned  mt5-ai-trading-agent
+      40.3 KB  NEVER TOUCHED              last_viewed=Noned  document-pipeline
+      38.2 KB  NEVER TOUCHED              last_viewed=Noned  tts-edge-fallback
+      36.7 KB  NEVER TOUCHED              last_viewed=Noned  futures-forecast-briefing
+      34.9 KB  NEVER TOUCHED              last_viewed=Noned  publication-risk-audit
+      34.6 KB  NEVER TOUCHED              last_viewed=Noned  sensitive-publication-governance
+      32.1 KB  NEVER TOUCHED              last_viewed=Noned  sovereign-surface-design
+      30.8 KB  NEVER TOUCHED              last_viewed=Noned  music-generation
+      27.4 KB  NEVER TOUCHED              last_viewed=Noned  mulerouter-media
+      26.7 KB  NEVER TOUCHED              last_viewed=Noned  KERNEL-trinity-33
+      26.1 KB  NEVER TOUCHED              last_viewed=Noned  company-solvency-forensics
+      25.9 KB  NEVER TOUCHED              last_viewed=Noned  makcikgpt-article-craft
+      24.7 KB  NEVER TOUCHED              last_viewed=Noned  cross-surface-conformance-audit
+      24.7 KB  NEVER TOUCHED              last_viewed=Noned  background-monitor-design
+      23.8 KB  NEVER TOUCHED              last_viewed=Noned  RSI-federation-mesh
+      23.1 KB  NEVER TOUCHED              last_viewed=Noned  cross-ai-analysis-distillation
+      22.3 KB  NEVER TOUCHED              last_viewed=Noned  malaysian-employment-separation
+      21.4 KB  NEVER TOUCHED              last_viewed=Noned  market-claim-assessment
+      21.2 KB  NEVER TOUCHED              last_viewed=Noned  blind-prediction-testing
+      20.9 KB  NEVER TOUCHED              last_viewed=Noned  predictive-claim-falsification
+      20.7 KB  NEVER TOUCHED              last_viewed=Noned  malaysian-family-law
+      20.7 KB  NEVER TOUCHED              last_viewed=Noned  first-party-corpus-audit
+      19.5 KB  NEVER TOUCHED              last_viewed=Noned  relationship-evidence-audit
+      18.8 KB  NEVER TOUCHED              last_viewed=Noned  company-failure-analysis
+      17.2 KB  NEVER TOUCHED              last_viewed=Noned  declared-vs-enforced-control-audit
+      16.9 KB  NEVER TOUCHED              last_viewed=Noned  audio-analysis
+      16.7 KB  NEVER TOUCHED              last_viewed=Noned  forge-phased-delivery
+      16.7 KB  NEVER TOUCHED              last_viewed=Noned  relationship-reality-audit
+      16.6 KB  NEVER TOUCHED              last_viewed=Noned  capability-addressing
+      16.5 KB  NEVER TOUCHED              last_viewed=Noned  medical-document-interpretation
+      15.8 KB  NEVER TOUCHED              last_viewed=Noned  financial-distress-forensics
+      15.8 KB  NEVER TOUCHED              last_viewed=Noned  first-party-evidence-audit
+      15.7 KB  NEVER TOUCHED              last_viewed=Noned  market-prediction-falsification
+      15.3 KB  NEVER TOUCHED              last_viewed=Noned  enforcement-coverage-audit
+      15.2 KB  NEVER TOUCHED              last_viewed=Noned  market-collapse-forensics
+      15.2 KB  NEVER TOUCHED              last_viewed=Noned  corpus-evidence-discipline
+      14.9 KB  NEVER TOUCHED              last_viewed=Noned  public-ingress-audit
+      14.8 KB  NEVER TOUCHED              last_viewed=Noned  decision-risk-quantification
+      14.7 KB  NEVER TOUCHED              last_viewed=Noned  measurement-discipline
+      14.7 KB  NEVER TOUCHED              last_viewed=Noned  photo-style-transfer
+      14.3 KB  NEVER TOUCHED              last_viewed=Noned  human-relationship-audit
+      14.1 KB  NEVER TOUCHED              last_viewed=Noned  political-intelligence-briefing
+      13.9 KB  NEVER TOUCHED              last_viewed=Noned  control-mechanism-audit
+      13.8 KB  NEVER TOUCHED              last_viewed=Noned  ped-hormone-advisory
+      13.7 KB  NEVER TOUCHED              last_viewed=Noned  trading-risk-review
+      13.5 KB  NEVER TOUCHED              last_viewed=Noned  prediction-honesty-audit
+      13.5 KB  NEVER TOUCHED              last_viewed=Noned  outbound-message-delivery
+      13.5 KB  NEVER TOUCHED              last_viewed=Noned  web-surface-design-fidelity
+      13.2 KB  NEVER TOUCHED              last_viewed=Noned  parallel-agent-fanout
+      13.2 KB  NEVER TOUCHED              last_viewed=Noned  pipeline-integrity
+      12.9 KB  NEVER TOUCHED              last_viewed=Noned  auditable-numeric-artifacts
+      12.8 KB  NEVER TOUCHED              last_viewed=Noned  provider-pool-outage-fallback
+      12.7 KB  NEVER TOUCHED              last_viewed=Noned  happyhorse-video-api
+      12.5 KB  NEVER TOUCHED              last_viewed=Noned  human-recognition-architecture
+      12.4 KB  NEVER TOUCHED              last_viewed=Noned  proxy-verification-audit
+      12.3 KB  NEVER TOUCHED              last_viewed=Noned  causal-attribution-discipline
+      12.0 KB  NEVER TOUCHED              last_viewed=Noned  fork-drift-assessment
+      11.2 KB  NEVER TOUCHED              last_viewed=Noned  capability-telemetry-audit
+      11.2 KB  NEVER TOUCHED              last_viewed=Noned  market-analysis-scope
+
+## USED BUT DEAD (>=30 days since last use)
+
+## LEDGER NAMES WITH NO BODY ON DISK (phantom capability)
+  AAA-artifact-composer
+  AAA-asr-glm-ingest
+  AAA-audio-emd-pipeline
+  AAA-malaysian-rasa
+  AAA-somatic-emd-pipeline
+  AAA-somatic-music-doctrine
+  AAA-tts-engine-catalog
+  AAA-voice-cloning-mimo-minimax
+  AAA-voice-cloning-qwen-cloud
+  AGI-agentic-web
+  AGI-audio-quantum-cognition
+  AGI-explorer-intelligence
+  AGI-skill-unification
+  APEX-fff-loop-protocol
+  APEX-quantum-eureka
+  ASI-agent-invariants
+  ASI-agentic-architecture
+  ASI-drift-watch
+  ASI-fabrication-prevention
+  AUDIT-drift-detector
+  AUDIT-recursive-audit
+  AUDIT-skill-atlas
+  EUREKA777-paradox-resolution
+  Epistemic Operating Rules
+  FLAME-operator
+  FLAME-router
+  FORGE-cicd-docker-deploy
+  FORGE-context-compress
+  FORGE-docker-entropy
+  FORGE-federation-orchestrator
+  FORGE-github-workflow
+  FORGE-incident-escalation
+  FORGE-incident-triage
+  FORGE-mcp-federation-ops
+  FORGE-mcp-lifeguard
+  FORGE-mcp-ops
+  FORGE-mcp-probe
+  FORGE-mcp-smoke-test
+  FORGE-mcp-testing
+  FORGE-pr-governance
+  FORGE-pr-review
+  FORGE-precommit-review
+  FORGE-readme-truth-check
+  FORGE-sct-federation-ingress
+  FORGE-skill-creator
+  FORGE-skill-linter
+  FORGE-telemetry-watchdog
+  FORGE-verify-runtime
+  FORGE-vps-docker
+  FORGE-vps-runbook
+  GEOX Basin Evaluation Lane
+  GEOX Claim Falsification Discipline
+  GEOX Grounding
+  GEOX Seismic Interpretation Lane
+  GEOX Well Log QC Lane
+  Gemini Image Generation (Nano Banana)
+  M-WELL Machine Diagnostics
+  Malaysia Reality Stack — Primary-Source Routing
+  MiniMax Image Generation
+  PETRONAS-intelligence-router

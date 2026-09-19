@@ -1,0 +1,284 @@
+[
+  {
+    "path": "/root/AAA/skills/domains/general/apex/recursive-audit/COPILOT-zen-router",
+    "was": "../../../../COPILOT-zen-router",
+    "action": "repointed",
+    "now": "/root/AAA/skills/zen-router"
+  },
+  {
+    "path": "/root/AAA/skills/domains/general/workshop/document-intel/scientific-pdf-generation/references/dark-theme-html-template.md",
+    "was": "../../../research-core/executive-intelligence-briefing/references/dark-theme-html-template.md",
+    "action": "materialised",
+    "now": "/root/AAA/skills/domains/general/workshop/document-intel/scientific-pdf-generation/references/dark-theme-html-template.md"
+  },
+  {
+    "path": "/root/.hermes/skills/sovereign-tts-lanes",
+    "was": "/root/AAA/skills/audio/sovereign-tts-lanes",
+    "action": "repointed",
+    "now": "/root/AAA/skills/voice-lane"
+  },
+  {
+    "path": "/root/.hermes/skills/youtube-extraction-datacenter-ip",
+    "was": "/root/AAA/skills/youtube-extraction-datacenter-ip",
+    "action": "repointed",
+    "now": "/root/AAA/skills/recovery-playbook"
+  },
+  {
+    "path": "/root/.hermes/skills/domains/general/apex/recursive-audit/COPILOT-zen-router",
+    "was": "/root/AAA/skills/domains/general/apex/recursive-audit/COPILOT-zen-router",
+    "action": "repointed",
+    "now": "/root/AAA/skills/zen-router"
+  },
+  {
+    "path": "/root/.hermes/skills/domains/general/forge/mesh-transport/hermes-gateway-delivery-storm",
+    "was": "/root/AAA/skills/domains/general/forge/mesh-transport/hermes-gateway-delivery-storm",
+    "action": "repointed",
+    "now": "/root/AAA/skills/recovery-playbook"
+  },
+  {
+    "path": "/root/.hermes/skills/domains/general/forge/federation-topology/vps-cpu-throttle-triage",
+    "was": "/root/AAA/skills/domains/general/forge/federation-topology/vps-cpu-throttle-triage",
+    "action": "repointed",
+    "now": "/root/AAA/skills/recovery-playbook"
+  },
+  {
+    "path": "/root/.hermes/skills/domains/general/workshop/research-core/human-intelligence-gathering",
+    "was": "/root/AAA/skills/domains/general/workshop/research-core/human-intelligence-gathering",
+    "action": "repointed",
+    "now": "/root/AAA/skills/person-intelligence"
+  },
+  {
+    "path": "/root/.hermes/skills/domains/general/workshop/research-core/person-intelligence-dossier",
+    "was": "/root/AAA/skills/domains/general/workshop/research-core/person-intelligence-dossier",
+    "action": "repointed",
+    "now": "/root/AAA/skills/person-intelligence"
+  },
+  {
+    "path": "/root/.hermes/skills/domains/general/workshop/research-core/news-research-briefing",
+    "was": "/root/AAA/skills/domains/general/workshop/research-core/news-research-briefing",
+    "action": "repointed",
+    "now": "/root/AAA/skills/intelligence-briefing"
+  },
+  {
+    "path": "/root/.hermes/skills/domains/general/workshop/research-core/professional-intelligence-briefing",
+    "was": "/root/AAA/skills/domains/general/workshop/research-core/professional-intelligence-briefing",
+    "action": "repointed",
+    "now": "/root/AAA/skills/intelligence-briefing"
+  },
+  {
+    "path": "/root/.hermes/skills/domains/general/workshop/research-core/executive-intelligence-briefing",
+    "was": "/root/AAA/skills/domains/general/workshop/research-core/executive-intelligence-briefing",
+    "action": "repointed",
+    "now": "/root/AAA/skills/intelligence-briefing"
+  },
+  {
+    "path": "/root/.hermes/skills/domains/general/workshop/telegram-ops/telegram-gateway-troubleshooting",
+    "was": "/root/AAA/skills/domains/general/workshop/telegram-ops/telegram-gateway-troubleshooting",
+    "action": "repointed",
+    "now": "/root/AAA/skills/recovery-playbook"
+  },
+  {
+    "path": "/root/.hermes/skills/domains/general/workshop/telegram-ops/telegram-gateway-ipv6-hang-fix",
+    "was": "/root/AAA/skills/domains/general/workshop/telegram-ops/telegram-gateway-ipv6-hang-fix",
+    "action": "repointed",
+    "now": "/root/AAA/skills/recovery-playbook"
+  },
+  {
+    "path": "/root/.hermes/skills/domains/general/workshop/voice-stack/minimax-voice-design-prompts",
+    "was": "/root/AAA/skills/domains/general/workshop/voice-stack/minimax-voice-design-prompts",
+    "action": "repointed",
+    "now": "/root/AAA/skills/voice-lane"
+  },
+  {
+    "path": "/root/.hermes/skills/domains/general/workshop/voice-stack/nusantara-acoustic-infrastructure",
+    "was": "/root/AAA/skills/domains/general/workshop/voice-stack/nusantara-acoustic-infrastructure",
+    "action": "repointed",
+    "now": "/root/AAA/skills/voice-lane"
+  },
+  {
+    "path": "/root/.hermes/skills/domains/general/workshop/voice-stack/tts-edge-fallback",
+    "was": "/root/AAA/skills/domains/general/workshop/voice-stack/tts-edge-fallback",
+    "action": "repointed",
+    "now": "/root/AAA/skills/voice-lane"
+  },
+  {
+    "path": "/root/.hermes/skills/domains/general/workshop/document-intel/scientific-pdf-generation/references/dark-theme-html-template.md",
+    "was": "../../../research-core/executive-intelligence-briefing/references/dark-theme-html-template.md",
+    "action": "materialised",
+    "now": "/root/.hermes/skills/domains/general/workshop/document-intel/scientific-pdf-generation/references/dark-theme-html-template.md"
+  },
+  {
+    "path": "/root/.hermes/skills/domains/general/workshop/intel-brief/weekly-federation-deep-brief",
+    "was": "/root/AAA/skills/domains/general/workshop/intel-brief/weekly-federation-deep-brief",
+    "action": "repointed",
+    "now": "/root/AAA/skills/intelligence-briefing"
+  },
+  {
+    "path": "/root/.hermes/skills/domains/general/workshop/intel-brief/intelligence-brief-forge",
+    "was": "/root/AAA/skills/domains/general/workshop/intel-brief/intelligence-brief-forge",
+    "action": "repointed",
+    "now": "/root/AAA/skills/intelligence-briefing"
+  },
+  {
+    "path": "/root/.hermes/skills/human-interface/public-profile-persona-mapping",
+    "was": "/root/AAA/skills/human-interface/public-profile-persona-mapping",
+    "action": "repointed",
+    "now": "/root/AAA/skills/person-intelligence"
+  },
+  {
+    "path": "/root/.hermes/profiles/aaa-hermes/skills/COPILOT-zen-router",
+    "was": "/root/AAA/skills/COPILOT-zen-router",
+    "action": "repointed",
+    "now": "/root/AAA/skills/zen-router"
+  },
+  {
+    "path": "/root/.qwen/skills/aaa-canonical/domains/general/apex/recursive-audit/COPILOT-zen-router",
+    "was": "../../../../COPILOT-zen-router",
+    "action": "repointed",
+    "now": "/root/AAA/skills/zen-router"
+  },
+  {
+    "path": "/root/.qwen/skills/aaa-canonical/domains/general/workshop/document-intel/scientific-pdf-generation/references/dark-theme-html-template.md",
+    "was": "../../../research-core/executive-intelligence-briefing/references/dark-theme-html-template.md",
+    "action": "materialised",
+    "now": "/root/.qwen/skills/aaa-canonical/domains/general/workshop/document-intel/scientific-pdf-generation/references/dark-theme-html-template.md"
+  },
+  {
+    "path": "/root/.claude/skills/domains/general/apex/recursive-audit/COPILOT-zen-router",
+    "was": "../../../../COPILOT-zen-router",
+    "action": "repointed",
+    "now": "/root/AAA/skills/zen-router"
+  },
+  {
+    "path": "/root/.claude/skills/domains/general/workshop/document-intel/scientific-pdf-generation/references/dark-theme-html-template.md",
+    "was": "../../../research-core/executive-intelligence-briefing/references/dark-theme-html-template.md",
+    "action": "materialised",
+    "now": "/root/.claude/skills/domains/general/workshop/document-intel/scientific-pdf-generation/references/dark-theme-html-template.md"
+  },
+  {
+    "path": "/root/.codex/skills/domains/general/apex/recursive-audit/COPILOT-zen-router",
+    "was": "../../../../COPILOT-zen-router",
+    "action": "repointed",
+    "now": "/root/AAA/skills/zen-router"
+  },
+  {
+    "path": "/root/.codex/skills/domains/general/workshop/document-intel/scientific-pdf-generation/references/dark-theme-html-template.md",
+    "was": "../../../research-core/executive-intelligence-briefing/references/dark-theme-html-template.md",
+    "action": "materialised",
+    "now": "/root/.codex/skills/domains/general/workshop/document-intel/scientific-pdf-generation/references/dark-theme-html-template.md"
+  },
+  {
+    "path": "/root/.config/opencode/skills/opencode-zen-router",
+    "was": "/root/AAA/skills/opencode-zen-router",
+    "action": "repointed",
+    "now": "/root/AAA/skills/zen-router"
+  },
+  {
+    "path": "/root/.config/opencode/skills/opencode-agentic-state",
+    "was": "/root/AAA/skills/opencode-agentic-state",
+    "action": "repointed",
+    "now": "/root/AAA/skills/agentic-state"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/claude-agentic-state",
+    "was": "/root/AAA/skills/claude-agentic-state",
+    "action": "repointed",
+    "now": "/root/AAA/skills/agentic-state"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/CLAUDE-agentic-state",
+    "was": "/root/AAA/skills/claude-agentic-state",
+    "action": "repointed",
+    "now": "/root/AAA/skills/agentic-state"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/qwen-zen-router",
+    "was": "/root/AAA/skills/qwen-zen-router",
+    "action": "repointed",
+    "now": "/root/AAA/skills/zen-router"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/youtube-extraction-datacenter-ip",
+    "was": "/root/AAA/skills/youtube-extraction-datacenter-ip",
+    "action": "repointed",
+    "now": "/root/AAA/skills/recovery-playbook"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/claude-zen-router",
+    "was": "/root/AAA/skills/claude-zen-router",
+    "action": "repointed",
+    "now": "/root/AAA/skills/zen-router"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/qwen-agentic-state",
+    "was": "/root/AAA/skills/qwen-agentic-state",
+    "action": "repointed",
+    "now": "/root/AAA/skills/agentic-state"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/QWEN-agentic-state",
+    "was": "/root/AAA/skills/qwen-agentic-state",
+    "action": "repointed",
+    "now": "/root/AAA/skills/agentic-state"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/QWEN-zen-router",
+    "was": "/root/AAA/skills/qwen-zen-router",
+    "action": "repointed",
+    "now": "/root/AAA/skills/zen-router"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/qwencloud-audio-tts",
+    "was": "/root/AAA/skills/qwencloud-audio-tts",
+    "action": "repointed",
+    "now": "/root/AAA/skills/voice-lane"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/CLAUDE-zen-router",
+    "was": "/root/AAA/skills/claude-zen-router",
+    "action": "repointed",
+    "now": "/root/AAA/skills/zen-router"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/.broken-archive/minimax-voice-design-prompts",
+    "was": "/root/AAA/skills/domains/general/workshop/voice-stack/minimax-voice-design-prompts",
+    "action": "repointed",
+    "now": "/root/AAA/skills/voice-lane"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/.broken-archive/telegram-gateway-ipv6-hang-fix",
+    "was": "/root/AAA/skills/domains/general/workshop/telegram-ops/telegram-gateway-ipv6-hang-fix",
+    "action": "repointed",
+    "now": "/root/AAA/skills/recovery-playbook"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/.broken-archive/COPILOT-zen-router",
+    "was": "/root/AAA/skills/COPILOT-zen-router",
+    "action": "repointed",
+    "now": "/root/AAA/skills/zen-router"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/.broken-archive/nusantara-acoustic-infrastructure",
+    "was": "/root/AAA/skills/domains/general/workshop/voice-stack/nusantara-acoustic-infrastructure",
+    "action": "repointed",
+    "now": "/root/AAA/skills/voice-lane"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/.broken-archive/weekly-federation-deep-brief",
+    "was": "/root/AAA/skills/domains/general/workshop/intel-brief/weekly-federation-deep-brief",
+    "action": "repointed",
+    "now": "/root/AAA/skills/intelligence-briefing"
+  },
+  {
+    "path": "/root/.agents/skills/domains/general/apex/recursive-audit/COPILOT-zen-router",
+    "was": "../../../../COPILOT-zen-router",
+    "action": "repointed",
+    "now": "/root/AAA/skills/zen-router"
+  },
+  {
+    "path": "/root/.agents/skills/domains/general/workshop/document-intel/scientific-pdf-generation/references/dark-theme-html-template.md",
+    "was": "../../../research-core/executive-intelligence-briefing/references/dark-theme-html-template.md",
+    "action": "materialised",
+    "now": "/root/.agents/skills/domains/general/workshop/document-intel/scientific-pdf-generation/references/dark-theme-html-template.md"
+  }
+]
