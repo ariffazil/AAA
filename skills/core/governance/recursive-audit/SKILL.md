@@ -70,3 +70,18 @@ rm -rf skills/core/governance/recursive-audit/
 **DITEMPA BUKAN DIBERI ⚒️**
 ## Absorbed references (Wave-2 merge completion)
 - `references/absorbed-APEX-fff-loop-protocol.md` — content absorbed from the retired `APEX-fff-loop-protocol` skill (Wave-2 merge 2026-09-16, recovered 2026-09-17)
+
+## Retired-name landing (name retired, mode live here)
+
+| Retired name | Retired trigger phrase (verbatim) | Live section here |
+|---|---|---|
+| `AUDIT-recursive-audit` | "audit skills" (the phrase the retired mode table carried for `mode=recursive`, output "recursive drift report") | this file — the 5 passes above |
+
+The mode is the meta-audit ("re-audit the audit"): *any meta-audit of an audit* is this skill's declared scope.
+The identity that listed it, `skill-portfolio-audit`, is retired — frozen body at
+`/root/AAA/skills-retired/2026-09-19-v2-portfolio-audit/skill-portfolio-audit/SKILL.md`.
+
+**SELECTOR NOTE (not a merge).** The literal phrase "audit skills" does not select this skill. Its live carriers are
+`domains/general/aaa/skill-mesh/skill-audit-methodology` (trigger clause) and `engineering/skill-inventory`
+(portfolio lane — the retired skill's own trigger list, rot-classification schema and cross-surface inventory are
+verbatim in its "When to Use" and §3). No bodies were merged to resolve the collision.
