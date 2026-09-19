@@ -1,0 +1,40 @@
+{
+  "ts": "2026-09-19T01:41:00Z",
+  "authority": "ARIF — SKILLSTORE_NAMESPACE_COLLAPSE_V2",
+  "canon": "/root/AAA/skills",
+  "freeze_root": "/root/AAA/skills-retired/2026-09-19-v2-doctrine-sealing",
+  "canonical_successor": "/root/AAA/skills/aaa-governance/aaa-doctrine-sealing/SKILL.md",
+  "collapse": "2 identities -> 1 (aaa-doctrine-sealing); 1 retired name becomes a mode set (M1-M11)",
+  "retention_test": "python3 /root/AAA/skills/skill-library-integrity/scripts/discovery_guard.py /root/AAA/skills/aaa-governance/aaa-doctrine-sealing /root/AAA/skills-retired/2026-09-19-v2-doctrine-sealing/canon-doctrine-sealing",
+  "ledger_correction": "In the same pass: the surviving body and references/commit-gates.md previously named /root/AAA/canon/eureka-entries.jsonl as the write target ('append to canon') and called /root/AAA/eurekas/eureka-entries.jsonl a 'stray; no script reads it'. Both halves were false: lsattr shows /root/AAA/canon/eureka-entries.jsonl as ----i---------e------- (IMMUTABLE, 109 rows, last written 2026-09-16 -> append = EPERM), and /root/AAA/eurekas/eureka-entries.jsonl as --------------e------- (writable, 14 rows, last written 2026-09-18 -> the LIVE FEED, read by governance/durable-artifact-authoring/SKILL.md, commit-gates.md, and governance/AMENDMENT-6-REGISTER-LAW-RATIFICATION-2026-09-15.md). The merged body now carries ONE instruction: write to the live feed; the canon file is the FROZEN RATIFIED REGISTRY, cite-only. Neither ledger file was written to, unlocked, or modified.",
+  "preserved_downstream_owner": "aaa-doctrine-sealing name retained because governance/symbol-namespace-integrity cites it as owner of references/external-artifact-intake.md",
+  "not_touched": [
+    "/root/AAA/skills/domains/general/court/seal-ritual/arifos-kernel-seal-ritual",
+    "/root/AAA/skills/seal-discipline"
+  ],
+  "items": [
+    {
+      "name": "canon-doctrine-sealing",
+      "original_folder": "canon-doctrine-sealing",
+      "original_path": "/root/AAA/skills/governance-core/canon-doctrine-sealing",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-v2-doctrine-sealing/canon-doctrine-sealing",
+      "sha256_of_SKILL.md": "8c7ac8787fea55ebd9241f7182dcc6ee2e62ccf3ed4a0f802fa909db00e99028",
+      "sha256_of_SKILL": "8c7ac8787fea55ebd9241f7182dcc6ee2e62ccf3ed4a0f802fa909db00e99028",
+      "files": {
+        "SKILL.md": "8c7ac8787fea55ebd9241f7182dcc6ee2e62ccf3ed4a0f802fa909db00e99028",
+        "references/doctrine-coding-surfaces.md": "914bfe05a1729138696d3871dca8a29d06482e122a8fe700417cdfe83d22fe5c"
+      },
+      "sha256_computed": "BEFORE the move (hash of the source file at its original path, verified identical after the move)",
+      "files_moved": 2,
+      "files_moved_paths": [
+        "SKILL.md",
+        "references/doctrine-coding-surfaces.md"
+      ],
+      "support_file_carried_live": "/root/AAA/skills/aaa-governance/aaa-doctrine-sealing/references/doctrine-coding-surfaces.md (copy; content identical apart from a one-line companion header naming the survivor and the mode)",
+      "new_mode": "M3 - Surfaces & order of operations (also M1, M4, M5, M6, M7, M8, M9, M10, M11)",
+      "class": "F-IDENTITY-COLLAPSE",
+      "why": "two identities answered one question - where does a settled finding actually land, and what proves it landed; body merged into the surviving name aaa-doctrine-sealing as modes M1-M11, support file carried forward live, no capability removed, no doctrine renamed",
+      "undo": "mv /root/AAA/skills-retired/2026-09-19-v2-doctrine-sealing/canon-doctrine-sealing /root/AAA/skills/governance-core/canon-doctrine-sealing"
+    }
+  ]
+}
