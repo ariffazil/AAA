@@ -84,6 +84,8 @@ asyncio.run(main())
 4. Telethon saves session to `/root/.hermes/userbot.session`
 5. Future runs use the session file — no more codes needed
 
+**UNBUILT — state on disk, verified 2026-09-19:** no session file exists on this host. `/root/.hermes/userbot.session`, `/root/userbot/`, and any `*.session` under `/root` are all absent, so no interactive auth has been completed here. The `/root/.hermes/userbot.session` literal below is the path Telethon *will* create on first successful `client.start()` — it does not resolve today, and every read/relay pattern below needs that auth run first.
+
 ## Step 3: Relay Script (Hermes Integration)
 
 The userbot listens to all incoming messages and routes them through Hermes for processing.
@@ -146,6 +148,8 @@ RestartSec=10
 [Install]
 WantedBy=multi-user.target
 ```
+
+**UNBUILT — verified 2026-09-19.** The unit above is a spec, not something installed: `/etc/systemd/system/telegram-userbot.service` does not exist and neither does its `ExecStart` target `/root/.hermes/scripts/telegram-userbot.py` (nor any `userbot`-named file anywhere under `/root`). What would have to exist: the Step 3 relay listing saved verbatim to that exact path, and the session from Step 2 — then `systemctl enable --now telegram-userbot`. Until then this step cannot execute and should not be reported as a running service.
 
 ### Pitfall: phone_code_hash not persisted between auth steps (2026-07-11)
 
@@ -243,7 +247,7 @@ When a user (especially Arif) asks "can you read SADO group," the natural tempta
 
 **Authorization floor (F2 TRUTH + F1 AMANAH):** Even when session+creds are archivally available, DO NOT connect without explicit Arif authorization. Telegram credentials authenticate as Arif's personal account — using them without authorization is identity impersonation. In the 2026-08-19 case, correctly stopped and surfaced the choice ("Go" / "Stop" / "Setup") instead of just connecting.
 
-**Approximate working read pattern** (use ONLY after Arif authorizes):
+**Approximate working read pattern** (use ONLY after Arif authorizes — and only once a session file exists; none does today, see Step 2):
 
 ```python
 import asyncio, os
@@ -251,7 +255,7 @@ from telethon import TelegramClient
 
 API_ID = int(os.environ.get('TELETHON_API_ID'))  # from arkib or env
 API_HASH = os.environ.get('TELETHON_API_HASH')
-SESSION = '/root/_archive/2026-08-04/userbot/ari_session'  # adjust path
+SESSION = '<live Telethon session file>'  # OBSOLETE literal removed: /root/_archive/2026-08-04/userbot/ari_session was rotated away (verified absent 2026-09-19; /root/_archive now holds only 2026/09)
 
 async def read_group(group_id, limit=30):
     client = TelegramClient(SESSION, API_ID, API_HASH)
