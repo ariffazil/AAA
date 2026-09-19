@@ -1,10 +1,6 @@
 ---
 name: well-operations
-description: >-
-  Diagnose and operate the WELL organ (port 18083) — freshness monitoring,
-  state.json corruption detection, biometric injection, and DEGRADED/HOLD
-  alert resolution. Covers sovereign_state_unknown, mock/test contamination,
-  and distinguishing machine-healthy from human-stale.
+description: "Diagnose and operate the WELL organ (port 18083) — freshness monitoring, state.json corruption detection, biometric injection, and DEGRADED/HOLD alert resolution."
 category: devops
 forged: 2026-07-26
 ---

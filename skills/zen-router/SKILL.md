@@ -1,15 +1,7 @@
 ---
 name: zen-router
 id: zen-router
-description: >
-  Use when you must pick between equally-valid tools, or when unsure which skill/organ to load.
-  THE canonical meta-mesa orthogonal router: given an intent, classify it across 9 orthogonal
-  axes (organ, action, mode, tier, layer, surface, scope, time, reversibility) and route to the
-  right organ / MCP tool / skill. One skill to route them all — covers all 147 federation skills
-  organized into 9 orthogonal layers. Load this FIRST when uncertain which skill to use.
-  DO NOT load domain skills blindly — route through this. Harness-agnostic: the single routing
-  surface for Claude Code (FI-002), Qwen Code (FI-003), OpenCode, Copilot CLI and any
-  333-AGI / 555-ASI warga.
+description: "Use when you must pick between equally-valid tools, or when unsure which skill/organ to load."
 license: MIT
 version: 2.0.0
 owner: AAA

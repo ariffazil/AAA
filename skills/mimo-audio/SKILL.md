@@ -1,6 +1,6 @@
 ---
 name: mimo-audio
-description: "FEDERATED Xiaomi MiMo v2.5 audio intelligence — TTS, ASR, voice design, voice clone (F13-gated). Use when generating speech/voice notes, designing voices, or transcribing audio. ⚠️ LANGUAGES: BM/MS TTS is BROKEN on the raw tts and voicedesign lanes — use voiceclone (or edge-tts / MiniMax) for Bahasa Malaysia. ASR is en/zh only. TRANSPORT: direct lane (litellm cannot carry audio bodies)."
+description: "FEDERATED Xiaomi MiMo v2.5 audio intelligence — TTS, ASR, voice design, voice clone (F13-gated)."
 ---
 
 # MiMo Audio — federated organ (AAA canonical, 2026-09-07)

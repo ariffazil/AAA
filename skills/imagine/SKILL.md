@@ -22,7 +22,8 @@ floor_scope:
 autonomy_tier: T1
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
----# Imagine
+---
+# Imagine
 
 Guidance for the two image tool calls in Grok Build:
 

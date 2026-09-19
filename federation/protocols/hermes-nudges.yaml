@@ -91,6 +91,33 @@ nudges:
       </NUDGE_FALSIFY>
 
   # ═══════════════════════════════════════════════════════════════════════════
+  # Nudge 2b — Receipt Citation Gate (Hook Doctrine 2026-09-20, F13)
+  # Fires on T3/W_scar pattern matches. Reminds agent to cite receipt path.
+  # ═══════════════════════════════════════════════════════════════════════════
+  - id: receipt_citation
+    event: pre_tool
+    priority: 20
+    condition:
+      any_of:
+        - regex: "rm\\s+(-[a-zA-Z]*r|--recursive)"
+        - regex: "DROP\\s+TABLE|DROP\\s+DATABASE"
+        - regex: "force[- ]?push|git\\s+push.*--force"
+        - regex: "DELETE\\s+FROM|TRUNCATE"
+        - regex: "shutdown|reboot|systemctl\\s+(stop|restart|disable)"
+        - regex: "(duit|money|harga|price|cost|revenue|profit|salary|gaji|bayar)"
+        - regex: "(health|sakit|medical|hospital|ubat|drug|dosage)"
+        - regex: "(legal|court|saman|lawsuit|contract|perjanjian)"
+        - regex: "(investment|saham|stock|crypto|bitcoin)"
+    inject_position: last
+    text: |
+      <NUDGE_RECEIPT_CITATION>
+      [F2 RECEIPT CITATION] Consequential mutation detected.
+      Hook Doctrine (2026-09-20, F13): cite the receipt path in your next response.
+      Format: [receipt: /path/to/evidence:LINE] or [receipt: SHA256:HASH].
+      If reversible + low-risk, cite the rollback path instead.
+      </NUDGE_RECEIPT_CITATION>
+
+  # ═══════════════════════════════════════════════════════════════════════════
   # Nudge 3 — Post-LLM Collapse Gate (human-facing output)
   # ═══════════════════════════════════════════════════════════════════════════
   - id: collapse

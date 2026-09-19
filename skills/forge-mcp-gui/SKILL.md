@@ -10,7 +10,8 @@ floor_scope: [F1, F2, F4, F11, F12]
 tags: [forge, mcp, apps, ui, sep-1865, csp]
 capability_tier: fed-long-context
 ecology_state: WARM
----# ⚒️ FORGE-mcp-gui — MCP GUI/Apps Development Skill
+---
+# ⚒️ FORGE-mcp-gui — MCP GUI/Apps Development Skill
 
 > **Forged:** 2026-07-19 by FORGE (000Ω) for AAA Control Plane
 > **Hardened:** 2026-07-20 — ChatGPT-native MCP Apps standard

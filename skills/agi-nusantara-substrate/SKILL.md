@@ -44,7 +44,8 @@ floor_scope:
 - F4
 - F6
 - F7
----# Nusantara Intelligence Substrate
+---
+# Nusantara Intelligence Substrate
 
 ## arifOS-ACT Embedding
 

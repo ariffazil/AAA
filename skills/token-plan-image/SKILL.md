@@ -5,7 +5,7 @@ version: 1.0.0
 owner: AAA
 risk_tier: low
 floor_scope: [F1, F2, F4, F7]
-description: "Call the Qwen Token Plan text-to-image / image-edit models (qwen-image-2.0, qwen-image-2.0-pro, wan2.7-image, wan2.7-image-pro) to generate or edit images. Activates when the user asks to draw or generate images."
+description: "Call the Qwen Token Plan text-to-image / image-edit models (qwen-image-2.0, qwen-image-2.0-pro, wan2.7-image, wan2.7-image-pro) to generate or edit images."
 autonomy_tier: T1
 ---
 

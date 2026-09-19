@@ -1,0 +1,82 @@
+{
+  "graph": "gap_assessment",
+  "description": "What's missing — gaps between spec and implementation",
+  "assessment_date": "2026-09-19T17:09:58Z",
+  "assessed_by": "333-AGI",
+  "gaps": [
+    {
+      "id": "GAP-001",
+      "component": "Reality Vote Principle file",
+      "status": "MISSING",
+      "severity": "LOW",
+      "note": "Referenced in AGENTS.md as GENESIS/059, file not found at /root/AAA/GENESIS/059_REALITY_VOTE.md. Doctrine exists in AGENTS.md §1b but no standalone file.",
+      "action": "Create standalone file or confirm inline reference is sufficient"
+    },
+    {
+      "id": "GAP-002",
+      "component": "arifFlow integration",
+      "status": "NOT_WIRED",
+      "severity": "HIGH",
+      "note": "World model graphs exist as static JSON but are not wired into arifFlow metabolic loop. No automatic update on receipts, no automatic read on session init.",
+      "action": "Phase 2-3 of world-model-daemon-spec.md — needs 888-APEX judgment"
+    },
+    {
+      "id": "GAP-003",
+      "component": "Session init/close enforcement",
+      "status": "NOT_ENFORCED",
+      "severity": "HIGH",
+      "note": "Agents do not currently read world model graphs before planning or update them after execution. No hooks in arif_init or arif_seal.",
+      "action": "Phase 2 of world-model-daemon-spec.md — needs 888-APEX judgment"
+    },
+    {
+      "id": "GAP-004",
+      "component": "Contradiction detector",
+      "status": "NOT_BUILT",
+      "severity": "MEDIUM",
+      "note": "No cross-graph consistency checker exists. Contradictions between capability claims vs reality, authority claims vs execution, etc. are not detected.",
+      "action": "Phase 3 of world-model-daemon-spec.md — needs 888-APEX judgment"
+    },
+    {
+      "id": "GAP-005",
+      "component": "Anti-stagnation engine",
+      "status": "NOT_BUILT",
+      "severity": "MEDIUM",
+      "note": "No learning rate tracker exists. The attention_graph.json has the schema but no daemon to enforce it.",
+      "action": "Phase 4 of world-model-daemon-spec.md — needs 888-APEX judgment"
+    },
+    {
+      "id": "GAP-006",
+      "component": "Graph staleness enforcement",
+      "status": "NOT_ENFORCED",
+      "severity": "MEDIUM",
+      "note": "Graphs have staleness_hours field but no mechanism to force refresh when stale.",
+      "action": "Wire to arifFlow cycle or add staleness check to session init"
+    },
+    {
+      "id": "GAP-007",
+      "component": "AAA staged files commit",
+      "status": "STAGED_NOT_COMMITTED",
+      "severity": "MEDIUM",
+      "note": "19 sealed-canon files staged by FI-005-codex. T2 = F13 ack required. Also world-model files not staged.",
+      "action": "Stage world-model files, await F13 ack for commit"
+    },
+    {
+      "id": "GAP-008",
+      "component": "Graphiti recovery",
+      "status": "PARTIAL",
+      "severity": "LOW",
+      "note": "Port 18412 bound but app hangs at OpenAI client init. Needs code-level investigation.",
+      "action": "Deferred — beyond current scope"
+    }
+  ],
+  "summary": {
+    "total_gaps": 8,
+    "critical": 0,
+    "high": 2,
+    "medium": 4,
+    "low": 2,
+    "addressable_now": 3,
+    "needs_888_apex": 4,
+    "needs_f13": 1
+  }
+}

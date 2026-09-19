@@ -1,10 +1,6 @@
 ---
 name: intelligence-briefing
-description: >
-  Use when asked for a briefing — news scan, executive weekly, institutional-disclosure
-  deep-dive, federation weekly review, live professional read, or political read. One
-  briefing engine, six named output modes, with shared evidence tags, sourcing law,
-  tone law and refusal cases.
+description: "Use when asked for a briefing — news scan, executive weekly, institutional-disclosure deep-dive, federation weekly review, live professional read, or political read."
 version: 2.0.0
 tier: canonical
 authority: F13 sovereign in-chat order 2026-09-19 ("One capability, fifteen costumes")

@@ -1,0 +1,190 @@
+{
+  "graph": "reality",
+  "description": "What exists right now \u2014 live system state",
+  "nodes": [
+    {
+      "id": "arifOS_kernel",
+      "type": "organ",
+      "status": "live",
+      "last_observed": "2026-09-19T16:55:16Z",
+      "observation_source": "arif_init",
+      "reality_class": "OBSERVED",
+      "witness_chain": [
+        "arif_init_2026-09-19T16:55:16Z"
+      ]
+    },
+    {
+      "id": "A-FORGE",
+      "type": "organ",
+      "status": "live",
+      "last_observed": "2026-09-19T17:01:12Z",
+      "observation_source": "forge_probe",
+      "reality_class": "OBSERVED",
+      "witness_chain": [
+        "forge_probe_2026-09-19T17:01:12Z"
+      ]
+    },
+    {
+      "id": "arifFlow",
+      "type": "organ",
+      "status": "live",
+      "last_observed": "2026-09-19T17:01:00Z",
+      "observation_source": "flow_health",
+      "reality_class": "OBSERVED",
+      "witness_chain": [
+        "flow_health_2026-09-19T17:01:00Z"
+      ],
+      "fq_verdict": "HEURISTIC_ADVISORY",
+      "fq_value": 2.25
+    },
+    {
+      "id": "AAA",
+      "type": "organ",
+      "status": "live",
+      "last_observed": "2026-09-19T17:01:12Z",
+      "observation_source": "forge_probe",
+      "reality_class": "OBSERVED"
+    },
+    {
+      "id": "GEOX",
+      "type": "organ",
+      "status": "live",
+      "last_observed": "2026-09-19T17:01:12Z",
+      "observation_source": "forge_probe",
+      "reality_class": "OBSERVED"
+    },
+    {
+      "id": "WEALTH",
+      "type": "organ",
+      "status": "live",
+      "last_observed": "2026-09-19T17:01:12Z",
+      "observation_source": "forge_probe",
+      "reality_class": "OBSERVED"
+    },
+    {
+      "id": "WELL",
+      "type": "organ",
+      "status": "live",
+      "last_observed": "2026-09-19T17:01:12Z",
+      "observation_source": "forge_probe",
+      "reality_class": "OBSERVED"
+    },
+    {
+      "id": "litellm_4000",
+      "type": "service",
+      "status": "live",
+      "last_observed": "2026-09-20T00:58:00Z",
+      "observation_source": "FI-005-codex_session",
+      "reality_class": "OBSERVED",
+      "note": "Was false DOWN earlier, confirmed UP"
+    },
+    {
+      "id": "graphiti_18412",
+      "type": "service",
+      "status": "degraded",
+      "last_observed": "2026-09-20T00:58:00Z",
+      "observation_source": "FI-005-codex_session",
+      "reality_class": "OBSERVED",
+      "note": "Port bound but app hangs at OpenAI client init"
+    },
+    {
+      "id": "falkordb_6380",
+      "type": "service",
+      "status": "live",
+      "last_observed": "2026-09-20T00:58:00Z",
+      "observation_source": "FI-005-codex_session",
+      "reality_class": "OBSERVED"
+    },
+    {
+      "id": "ollama",
+      "type": "service",
+      "status": "live",
+      "last_observed": "2026-09-20T00:58:00Z",
+      "observation_source": "FI-005-codex_session",
+      "reality_class": "OBSERVED",
+      "models_loaded": [
+        "qwen2.5:3b",
+        "qwen2.5:7b",
+        "bge-m3",
+        "nomic-embed-text"
+      ]
+    },
+    {
+      "id": "port_18081",
+      "type": "port",
+      "status": "orphan",
+      "last_observed": "2026-09-20T00:58:00Z",
+      "observation_source": "FI-005-codex_session",
+      "reality_class": "OBSERVED",
+      "note": "No service binds it \u2014 stale assumption in earlier service_registry"
+    },
+    {
+      "id": "EUREKA-AGI-SUBSTRATE-33",
+      "type": "eureka_cluster",
+      "label": "AGI Substrate 33 Eurekas",
+      "class": "FOUNDATION",
+      "status": "F13_RATIFIED_SOVEREIGN",
+      "sealed_at": "2026-09-20T03:27+08:00",
+      "substrate_primitive": "Need->survive. Want->matter. Witness->enough",
+      "axes": [
+        "H01-H11",
+        "A01-A11",
+        "M01-M11",
+        "X01-X11"
+      ],
+      "invariants_count": 13
+    },
+    {
+      "id": "SUBSTRATE-PRIMITIVE-WITNESS",
+      "type": "primitive",
+      "label": "Witness as substrate primitive",
+      "formula": "Need->survive. Want->matter. Witness->enough",
+      "discovered_at": "2026-09-20",
+      "source": "EUREKA-AGI-SUBSTRATE-33"
+    },
+    {
+      "id": "SUBSTRATE-LOOP",
+      "type": "structural_invariant",
+      "label": "Human->Agent->Machine->Reality loop",
+      "claim": "The loop IS the substrate, not transformer/MCP/tools/memory",
+      "discovered_at": "2026-09-20",
+      "source": "EUREKA-AGI-SUBSTRATE-33"
+    }
+  ],
+  "edges": [
+    {
+      "from": "litellm_4000",
+      "to": "all_agents",
+      "type": "feeds"
+    },
+    {
+      "from": "falkordb_6380",
+      "to": "graphiti_18412",
+      "type": "stores_for"
+    },
+    {
+      "from": "ollama",
+      "to": "graphiti_18412",
+      "type": "embeds_for"
+    },
+    {
+      "from": "EUREKA-AGI-SUBSTRATE-33",
+      "to": "SUBSTRATE-PRIMITIVE-WITNESS",
+      "rel": "contains"
+    },
+    {
+      "from": "EUREKA-AGI-SUBSTRATE-33",
+      "to": "SUBSTRATE-LOOP",
+      "rel": "contains"
+    },
+    {
+      "from": "SUBSTRATE-LOOP",
+      "to": "SUBSTRATE-PRIMITIVE-WITNESS",
+      "rel": "terminates_at"
+    }
+  ],
+  "reality_vote": "reality wins over simulation",
+  "last_updated": "2026-09-20T03:43+08:00",
+  "update_count": 1,
+  "session": "AGI-SUBSTRATE-33-SESSION"
+}

@@ -2,13 +2,14 @@
 id: fi-qwen-upgrade
 name: fi-qwen-upgrade
 version: 1.0.0
-description: "Atomic-swap upgrade of the Qwen Code release install (SHA256-verified, rollback-preserved). Use when Arif says 'upgrade qwen', 'qwen update', 'new qwen version', or when `qwen update` refuses with a misleading git-clone message. "
+description: "Atomic-swap upgrade of the Qwen Code release install (SHA256-verified, rollback-preserved)."
 owner: 333-AGI
 risk_tier: medium
 floor_scope: [F1, F2, F11]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----# Qwen Code Atomic-Swap Upgrade
+---
+# Qwen Code Atomic-Swap Upgrade
 
 Qwen Code at /root is a release tarball install at `/root/.local/lib/qwen-code/`, NOT npm and NOT a git clone. `qwen update` refuses with a misleading "git clone" message; `npm install -g` writes to the wrong path. Manual atomic-swap is the only working upgrade (proven 2026-08-14/18/21).
 

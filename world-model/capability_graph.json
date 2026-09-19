@@ -1,0 +1,95 @@
+{
+  "graph": "capability",
+  "description": "What can happen — tools, services, integrations",
+  "nodes": [
+    {
+      "id": "forge_shell",
+      "type": "tool",
+      "status": "active",
+      "last_witnessed": "2026-09-19T17:01:12Z",
+      "witness_source": "registry_status",
+      "authority_ceiling": "MUTATE",
+      "dependents": ["forge_execute", "forge_docker", "forge_git"],
+      "scar_pressure": 0.0
+    },
+    {
+      "id": "forge_docker",
+      "type": "tool",
+      "status": "active",
+      "last_witnessed": "2026-09-19T17:01:12Z",
+      "witness_source": "registry_status",
+      "authority_ceiling": "MUTATE",
+      "dependents": [],
+      "scar_pressure": 0.0
+    },
+    {
+      "id": "forge_git",
+      "type": "tool",
+      "status": "active",
+      "last_witnessed": "2026-09-19T17:01:12Z",
+      "witness_source": "registry_status",
+      "authority_ceiling": "MUTATE",
+      "dependents": [],
+      "scar_pressure": 0.0
+    },
+    {
+      "id": "arif_kernel_8verbs",
+      "type": "capability",
+      "status": "active",
+      "last_witnessed": "2026-09-19T16:55:16Z",
+      "witness_source": "arif_init",
+      "authority_ceiling": "JUDGE_ONLY",
+      "dependents": ["all_agents"],
+      "scar_pressure": 0.0
+    },
+    {
+      "id": "graphiti_memory",
+      "type": "capability",
+      "status": "degraded",
+      "last_witnessed": "2026-09-20T00:58:00Z",
+      "witness_source": "FI-005-codex_session",
+      "authority_ceiling": "OBSERVE",
+      "dependents": [],
+      "scar_pressure": 0.3,
+      "note": "Port 18412 bound but app hangs at OpenAI client init"
+    },
+    {
+      "id": "ollama_embeddings",
+      "type": "capability",
+      "status": "active",
+      "last_witnessed": "2026-09-20T00:58:00Z",
+      "witness_source": "FI-005-codex_session",
+      "authority_ceiling": "OBSERVE",
+      "dependents": ["graphiti_memory"],
+      "scar_pressure": 0.0,
+      "note": "qwen2.5:3b, qwen2.5:7b, bge-m3, nomic-embed-text loaded"
+    },
+    {
+      "id": "falkordb",
+      "type": "capability",
+      "status": "active",
+      "last_witnessed": "2026-09-20T00:58:00Z",
+      "witness_source": "FI-005-codex_session",
+      "authority_ceiling": "OBSERVE",
+      "dependents": ["graphiti_memory"],
+      "scar_pressure": 0.0,
+      "note": "Reachable from graphiti container via host.docker.internal:6380"
+    }
+  ],
+  "edges": [
+    {"from": "forge_shell", "to": "forge_execute", "type": "enables"},
+    {"from": "forge_shell", "to": "forge_docker", "type": "enables"},
+    {"from": "forge_shell", "to": "forge_git", "type": "enables"},
+    {"from": "ollama_embeddings", "to": "graphiti_memory", "type": "feeds"},
+    {"from": "falkordb", "to": "graphiti_memory", "type": "stores"}
+  ],
+  "summary": {
+    "total_nodes": 7,
+    "active": 5,
+    "degraded": 1,
+    "dead": 0,
+    "phantom": 0
+  },
+  "last_updated": "2026-09-19T17:01:12Z",
+  "update_count": 1
+}

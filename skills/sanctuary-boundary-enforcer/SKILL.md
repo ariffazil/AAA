@@ -1,6 +1,6 @@
 ---
 name: sanctuary-boundary-enforcer
-description: "Kernel-level sanctuary invariant enforcer. Automatically protects human dignity and privacy boundaries. Blocks intimate stories from being used as capability inputs or exploited for persuasion. Enforces F6 MARUAH, F13 SOVEREIGN, and the Sanctuary Invariant. "
+description: "Kernel-level sanctuary invariant enforcer."
 owner: AAA
 risk_tier: critical
 floor_scope:
@@ -28,7 +28,8 @@ authority:
   execution: true
   mutation: readonly
   approval_gate: f13
----# Sanctuary Boundary Enforcer
+---
+# Sanctuary Boundary Enforcer
 
 > **The Invariant:**
 > Intimate human stories are not capability inputs.

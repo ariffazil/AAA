@@ -5,7 +5,8 @@ tags: [forge, guard, esm, pre-commit, scar-derived]
 license: MIT
 capability_tier: default
 ecology_state: WARM
----# FORGE-esm-require-guard — ESM/CommonJS Interop Guard
+---
+# FORGE-esm-require-guard — ESM/CommonJS Interop Guard
 
 > **Origin:** Scar scar-001-esm-sct-silent-fail (2026-08-13)
 > **Type:** Foodset-derived skill (generated from failure, not authored from scratch)

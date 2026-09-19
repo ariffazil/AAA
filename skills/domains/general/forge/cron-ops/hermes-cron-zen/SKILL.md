@@ -2,7 +2,7 @@
 id: hermes-cron-zen
 name: hermes-cron-zen
 version: 1.1.0
-description: 'Audit, modify, and heal the Hermes cron subsystem — jobs.json, /root/HERMES/scripts/*, the validator at /root/HERMES/scripts/zen/validate_jobs_json.py. Probe-first, validator-writes-only, review-before-apply. USE WHEN: "cron audit", "jobs.json", "fix broken cron job", "validate jobs.json", "patch cron job", "expand cron patch", "PRN16 / eureka-promote / watchdog-of-watchdogs / syedos-quiet bug", "Telegram token failure in cron", "silent Telegram token failure in cron", "missing script for cron", "convert LLM cron to script", "cron zen", "cron optimization", "kill cron job", "wasteful cron", "cron token savings".'
+description: "Audit, modify, and heal the Hermes cron subsystem — jobs.json, /root/HERMES/scripts/*, the validator at /root/HERMES/scripts/zen/validate_jobs_json.py."
 risk_tier: low
 floor_scope: [F1, F2, F11, F13]
 autonomy_tier: T1

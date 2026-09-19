@@ -1,0 +1,63 @@
+{
+  "graph": "goal",
+  "description": "Desired future states — objectives, progress, dependencies",
+  "nodes": [
+    {
+      "id": "goal-world-model-daemon",
+      "type": "objective",
+      "description": "Integrate World Model Daemon into arifOS federation substrate",
+      "status": "active",
+      "priority": "HIGH",
+      "dependencies": ["capability_graph", "dependency_graph", "reality_graph"],
+      "progress": 0.3,
+      "artifacts": ["world-model-daemon-spec.md"],
+      "next_step": "F13 ratification of spec, then Phase 1 implementation",
+      "last_updated": "2026-09-19T17:01:12Z"
+    },
+    {
+      "id": "goal-aaa-canon-commit",
+      "type": "objective",
+      "description": "Commit 19 staged sealed-canon files to AAA repo",
+      "status": "awaiting_approval",
+      "priority": "MEDIUM",
+      "dependencies": ["F13_ack"],
+      "progress": 0.8,
+      "artifacts": ["19 staged files in AAA"],
+      "blocking": "T2 = F13 ack required",
+      "last_updated": "2026-09-20T00:58:00Z"
+    },
+    {
+      "id": "goal-graphiti-recovery",
+      "type": "objective",
+      "description": "Fix Graphiti OpenAI client init hang",
+      "status": "active",
+      "priority": "MEDIUM",
+      "dependencies": ["graphiti_memory"],
+      "progress": 0.2,
+      "blocking": "Needs code-level investigation beyond current scope",
+      "last_updated": "2026-09-20T00:58:00Z"
+    },
+    {
+      "id": "goal-f11-crypto-identity",
+      "type": "objective",
+      "description": "Resolve F11 signing-lane key drift",
+      "status": "awaiting_approval",
+      "priority": "HIGH",
+      "dependencies": ["F13_sovereign_decision"],
+      "progress": 0.0,
+      "blocking": "Sovereign-only decision per constitution",
+      "last_updated": "2026-09-20T00:58:00Z"
+    }
+  ],
+  "edges": [
+    {"from": "goal-world-model-daemon", "to": "goal-aaa-canon-commit", "type": "independent"},
+    {"from": "goal-world-model-daemon", "to": "goal-graphiti-recovery", "type": "independent"},
+    {"from": "goal-world-model-daemon", "to": "goal-f11-crypto-identity", "type": "independent"}
+  ],
+  "active_goals": 2,
+  "awaiting_approval": 2,
+  "completed_goals": 0,
+  "learning_rate": 0.7,
+  "last_updated": "2026-09-19T17:01:12Z",
+  "update_count": 1
+}

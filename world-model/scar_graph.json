@@ -1,0 +1,71 @@
+{
+  "graph": "scar",
+  "description": "What failures carry learning value",
+  "nodes": [
+    {
+      "id": "SCAR-graphiti-openai-hang",
+      "type": "scar",
+      "failure_mode": "Graphiti container port bound but app hangs at OpenAI client init",
+      "severity": "MEDIUM",
+      "constraint_imposed": "Graphiti memory unreliable until init hang resolved",
+      "pressure": 0.3,
+      "first_seen": "2026-09-20T00:58:00Z",
+      "last_seen": "2026-09-20T00:58:00Z",
+      "occurrence_count": 1,
+      "bound_to": ["graphiti_memory"],
+      "detection_method": "FI-005-codex_session",
+      "scar_pressure": 0.3
+    },
+    {
+      "id": "SCAR-false-down-4000",
+      "type": "scar",
+      "failure_mode": "Port 4000 reported DOWN when actually UP (false negative)",
+      "severity": "LOW",
+      "constraint_imposed": "Probe methods must verify actual bind, not just curl timeout",
+      "pressure": 0.1,
+      "first_seen": "2026-09-20T00:58:00Z",
+      "last_seen": "2026-09-20T00:58:00Z",
+      "occurrence_count": 1,
+      "bound_to": ["litellm_4000"],
+      "detection_method": "FI-005-codex_session",
+      "scar_pressure": 0.1
+    },
+    {
+      "id": "SCAR-orphan-port-18081",
+      "type": "scar",
+      "failure_mode": "Port 18081 mapped as service but no process binds it",
+      "severity": "LOW",
+      "constraint_imposed": "Service registry must verify actual bind, not config assumption",
+      "pressure": 0.1,
+      "first_seen": "2026-09-20T00:58:00Z",
+      "last_seen": "2026-09-20T00:58:00Z",
+      "occurrence_count": 1,
+      "bound_to": ["port_18081"],
+      "detection_method": "FI-005-codex_session",
+      "scar_pressure": 0.1
+    },
+    {
+      "id": "SCAR-f11-signing-drift",
+      "type": "scar",
+      "failure_mode": "F11 signing-lane key drift — no cryptographic identity verification",
+      "severity": "HIGH",
+      "constraint_imposed": "Requires F13 sovereign decision — agents cannot self-authorize",
+      "pressure": 0.5,
+      "first_seen": "2026-09-12T15:35:00Z",
+      "last_seen": "2026-09-20T00:58:00Z",
+      "occurrence_count": 2,
+      "bound_to": ["authority_graph"],
+      "detection_method": "registry_audit",
+      "scar_pressure": 0.5
+    }
+  ],
+  "edges": [
+    {"from": "SCAR-graphiti-openai-hang", "to": "graphiti_memory", "type": "constrains"},
+    {"from": "SCAR-false-down-4000", "to": "litellm_4000", "type": "informs"},
+    {"from": "SCAR-orphan-port-18081", "to": "port_18081", "type": "informs"},
+    {"from": "SCAR-f11-signing-drift", "to": "authority_graph", "type": "constrains"}
+  ],
+  "total_pressure": 1.0,
+  "last_updated": "2026-09-19T17:01:12Z",
+  "update_count": 1
+}

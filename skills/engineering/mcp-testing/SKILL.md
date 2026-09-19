@@ -1,13 +1,6 @@
 ---
 name: mcp-testing
-description: >
-  Unified MCP server testing, probing, and conformance validation. Covers MCPJam Inspector methodology
-  for deep conformance testing, MCPJam CLI/SDK probing for protocol version and stateless transport
-  discovery, and quick smoke tests for federation organ health. Merges: FORGE-mcp-smoke-test,
-  FORGE-mcp-probe, FORGE-mcp-testing. Also absorbs the era-mismatch diagnose-then-fix doctrine
-  from mcp-dual-era-transport (Section 5). NOT for SSE-vs-streamable-http external-client failures
-  → see mcp-transport-fix. NOT for transport-layer integration wiring of external platforms
-  → see external-platform-mcp.
+description: "Unified MCP server testing, probing, and conformance validation."
 id: mcp-testing
 version: 2.1.0
 owner: AAA

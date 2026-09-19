@@ -18,7 +18,8 @@ floor_scope:
 autonomy_tier: T1
 capability_tier: fed-long-context
 ecology_state: WARM
----# Secret Hygiene
+---
+# Secret Hygiene
 
 **Scans Arif's VPS for plaintext secrets, aged credentials, and rotation gaps.**
 
