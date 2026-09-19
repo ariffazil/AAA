@@ -1,13 +1,6 @@
 ---
 name: runpod-mcp
-description: >-
-  Manage Runpod infrastructure — pods, serverless endpoints, jobs, templates,
-  network volumes, container-registry auth, GPU/CPU catalog, and billing — via
-  the Runpod MCP server's structured tool calls. Use when the Runpod MCP tools
-  (create-pod, list-endpoints, …) are connected in this session, or to connect
-  them (hosted OAuth or local npx). Prefer this over runpodctl for plain infra
-  CRUD when MCP is available; use runpodctl for the terminal, file transfer, or
-  SSH setup.
+description: "Manage Runpod infrastructure — pods, serverless endpoints, jobs, templates, network volumes, container-registry auth, GPU/CPU catalog, and billing — via the Runpod MCP server's structured tool calls."
 allowed-tools: Bash(npx:*), Bash(claude:*)
 compatibility: Linux, macOS, Windows
 metadata:

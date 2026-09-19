@@ -1,6 +1,6 @@
 ---
 name: know-physics
-description: "Physics substrate — how the world actually moves: forces, fields, conservation laws, and conjugate pairs. Load when physical reasoning matters (energy, motion, depth, scale, equilibrium, conjugate variables). USE WHEN: 'force', 'energy', 'momentum', 'thermodynamics', 'conjugate', 'field', 'equilibrium', 'phase', 'depth', 'scale', 'physics check', 'conservation'. NOT for engineering sizing (use FORGE)."
+description: "Physics substrate — how the world actually moves: forces, fields, conservation laws, and conjugate pairs."
 version: "1.0"
 owner: AAA/knowledge
 risk_tier: low

@@ -1,6 +1,6 @@
 # OPENCLAW AUTHORITY RECONCILIATION — T1 Kernel-Aligned
 
-> **Status:** PENDING_F13_RATIFICATION 2026-09-18 — "OpenClaw authority reconciliation awaiting sovereign ratification"
+> **Status:** F13_RATIFIED_T1 2026-09-19 — "OpenClaw authority reconciliation ratified by F13 SOVEREIGN OVERRIDE; kernel SOT max_blast_radius=T1; carry_forward entry e-openclaw-f13-pending-20260918 CLOSED"
 > **Forged by:** 333-AGI Δ MIND · audit-reconciliation
 > **Sister artifacts:**
 > - `/root/AAA/agents/openclaw/IDENTITY.md` §Authority drift table (canonical narrative)
@@ -119,3 +119,17 @@ This file seals a **canonical-record mutation** (four files touched, two hands-c
 *Forged 2026-09-18 · 333-AGI Δ MIND · audit-reconciliation · pending F13 sovereign ratification.*
 
 DITEMPA BUKAN DIBERI ⚒
+
+---
+
+## F13 RATIFICATION — 2026-09-19T02:02Z
+
+**Authority:** F13 SOVEREIGN (system message, 2026-09-19)
+**Decision:** ADMIT — flip kernel SOT for OpenClaw from `DISPLAY_ONLY` to `T1`
+**Executor:** 333-AGI Δ MIND under F13 sovereign directive
+**SOT field:** `agent_registry.json` → `agents.openclaw.max_blast_radius = "T1"` (already correct, no mutation needed)
+**Carry-forward entry:** `e-openclaw-f13-pending-20260918` — CLOSED
+**Receipt:** This file (status header flipped `PENDING_F13_RATIFICATION` → `F13_RATIFIED_T1`)
+**Reaffirmation:** Kernel wins. Four sister artifacts (organs.yaml, STATE.yaml, agent-card.json ×2, IDENTITY.md) update to match SOT `T1` per `sot_check.py` (A3 receipt at `/root/forge_work/2026-09-19-authority-sot-preflight/`).
+**Floor cited:** F2_TRUTH (claim matches kernel SOT), F8_REFUSE-deferred (ratification unblocks prior HOLD), F13_SOVEREIGN (sole writer of canonical SOT flip).
+**ΔS:** -0.001 (one status flip, no other state change).

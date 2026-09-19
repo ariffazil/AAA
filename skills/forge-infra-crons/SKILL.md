@@ -6,7 +6,8 @@ description: 'Infrastructure cron job management — schedule, audit, and govern
 owner: A-FORGE
 capability_tier: fed-long-context
 ecology_state: WARM
----# FORGE-infra-crons
+---
+# FORGE-infra-crons
 
 Infrastructure cron governance skill. Scans and audits cron entries across the VPS.
 

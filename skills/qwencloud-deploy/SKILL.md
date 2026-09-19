@@ -1,19 +1,7 @@
 ---
 name: qwencloud-deploy
 version: "2.2"
-description: >-
-
-  One-click deploy, publish, and update a local project or Git repository to Alibaba Cloud
-  International (alibabacloud.com), producing an accessible online service with a public IP.
-  Supports full-stack ROS orchestration, automatic cloud-resource provisioning, pre-deployment
-  price confirmation, service health checks, deployment-state recording, hot updates, and
-  optional domain + HTTPS setup.
-  Use when: the user asks to deploy a project to the cloud, put an app online, publish a
-  website, generate an access URL, deploy a Git repo, or update an online version and has NOT
-  named a specific cloud platform; or the user mentions "Alibaba Cloud", "alibabacloud.com"
-  or the international site.
-  Do not use when: the user explicitly targets Aliyun China (aliyun.com), AWS, GCP, Azure, or
-  another specific cloud platform.
+description: "One-click deploy, publish, and update a local project or Git repository to Alibaba Cloud International (alibabacloud.com), producing an accessible online service with a public IP."
 trigger: >-
   Use when the user asks to deploy a project to the cloud, put an app online, publish a website,
   generate an access URL, deploy a Git repo, or update an online version — and has NOT specified
@@ -32,7 +20,8 @@ output: >-
   (.qwencloud-deploy), and success card with access URL, cost summary, and next-step guidance.
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
----# Qwen Cloud Deploy
+---
+# Qwen Cloud Deploy
 
 ## Quick Path
 

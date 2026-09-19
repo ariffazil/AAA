@@ -2,7 +2,7 @@
 id: RSI-federation-mesh
 name: rsi-federation-mesh
 version: 1.0.0
-description: "Unified recursive-improvement protocol across ALL agents in the federation (AAA, Hermes, Kimi, OpenClaw, Claude Code, Codex, OpenCode, Grok). Bridges session-level RSI to federation-wide sync: detects skill drift between agents, propagates fixes back to the canonical AAA catalog, and ensures the federation learns from every session — not just the agent that ran it."
+description: "Unified recursive-improvement protocol across ALL agents in the federation (AAA, Hermes, Kimi, OpenClaw, Claude Code, Codex, OpenCode, Grok)."
 owner: AAA
 risk_tier: low
 floor_scope: [F2, F4, F7, F9, F11]
@@ -552,6 +552,7 @@ inventory:
 | Version | Date | Change |
 |---------|------|--------|
 | 1.0.0 | 2026-08-08 | Initial forge. Bridges session-level `RSI-recursive-improvement` to federation-wide recursive improvement. 5-step protocol (Identity → Inventory → Reconcile → Inherit → Propagate). Version tracking table covers 8 agents (AAA, Hermes, Kimi, OpenClaw, Grok, Claude, Codex, OpenCode). |
+| 1.0.1 | 2026-09-19 | Kernel-RSI hardening scaffold ready (Codex FI-005 session seal). Tier A (T2): shadow resolver observe-only, A-FORGE/HERMES registry alignment, observe/write fix, FQ reconciliation. Tier B (T3, 888 HOLD): RSI typed controller, arifOS provenance, renderer filtering, kernel reference monitor. 17 fragments PUBLIC-tagged. |
 
 ---
 

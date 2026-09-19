@@ -1,6 +1,6 @@
 ---
 name: agent-output-contract
-description: "7-section sealed decision packet on EVERY agent response. Use on all Hermes/OpenCode/OpenClaw outputs. Word budgets: 1200 human / 500 A2A / 300 execution handoff. Blocks context dumps, repetition, epistemic mixing."
+description: "7-section sealed decision packet on EVERY agent response."
 version: 0.1.0
 status: ACTIVE_DISCIPLINE (this contract governs response SHAPE, not content — no F13 seal needed to be polite)
 origin: sovereign screenshot diagnosis 2026-08-30 + hotfix prompt

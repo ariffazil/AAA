@@ -1,11 +1,6 @@
 ---
 name: runpodctl
-description: >-
-  Runpod CLI for managing GPU/CPU workloads from the terminal — pods, serverless
-  endpoints, templates, network volumes, Hub deploys, models, SSH, and file
-  transfer (send/receive). Use for terminal/CI/scripting, Hub browse/deploy, SSH
-  setup, `doctor`, or when the Runpod MCP tools are not connected. For structured
-  tool calls in an MCP-enabled session, prefer runpod-mcp.
+description: "Runpod CLI for managing GPU/CPU workloads from the terminal — pods, serverless endpoints, templates, network volumes, Hub deploys, models, SSH, and file transfer (send/receive)."
 allowed-tools: Bash(runpodctl:*)
 compatibility: Linux, macOS
 metadata:

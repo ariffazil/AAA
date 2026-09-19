@@ -1,13 +1,14 @@
 ---
 name: hermes-telegram-stack-zen
-description: "Canonical compressed map of the entire Hermes to Telegram to arifOS to arifFlow stack: live state, dependency graph, lane inventory, channel directory, FQ diagnosis, and atomic recipes for onboarding new users and groups without re-discovering the wiring. USE WHEN: any Telegram edge question, hermes-gateway triage, lane or identity audit, arifFlow hermes-asi FQ check, F1 F6 F13 anti-leakage review, is HERMES alive, add new user, add new group, why is hermes-asi STUCK, or any future agent needing the full stack map without re-extracting. "
+description: "Canonical compressed map of the entire Hermes to Telegram to arifOS to arifFlow stack: live state, dependency graph, lane inventory, channel directory, FQ diagnosis, and atomic recipes for onboarding..."
 version: 1.0.0
 tags: [hermes, telegram, lanes, identity, multi-user, multi-group, arifflow, fq, memory-partition, federation, trace, zen]
 capability_tier: federation-architect
 ecology_state: WARM
 canonical_for: [hermes-stack, telegram-edge, identity-routing, hermes-asi-fq]
 depends_on: [hermes-federated-identity, arifFlow, arifOS, AAA, A-FORGE]
----# Hermes Telegram Stack - Zen Map
+---
+# Hermes Telegram Stack - Zen Map
 
 > **DITEMPA BUKAN DIBERI - F13 SOVEREIGN GOVERNED**
 > Single Source of Truth for the entire Hermes to Telegram to arifOS edge.

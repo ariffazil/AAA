@@ -2,11 +2,7 @@
 name: web-search
 id: web-search
 version: 1.0.0
-description: >
-
-  Self-hosted + commercial web search with routing logic. Private SearXNG search
-  multi-engine SerpApi extraction, and Firecrawl web search + scrape + interact +
-  parse + monitor + research. Routes to the right search backend based on task.
+description: "Self-hosted + commercial web search with routing logic."
 owner: AAA
 risk_tier: low
 autonomy_tier: T1
@@ -14,7 +10,8 @@ floor_scope: [F1, F2, F4, F7, F12]
 tags: [search, web, searxng, serpapi, firecrawl, private-search, multi-engine, research]
 capability_tier: fed-long-context
 ecology_state: WARM
----# Web Search — Self-Hosted + Commercial Search Routing
+---
+# Web Search — Self-Hosted + Commercial Search Routing
 
 > **DITEMPA BUKAN DIBERI** — Search is sensing, not knowledge dump.
 

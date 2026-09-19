@@ -9,7 +9,8 @@ floor_scope: ['F1', 'F2', 'F11', 'F13']
 autonomy_tier: T2
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----# ⚒️ did:web Identity — Decentralized Identifier
+---
+# ⚒️ did:web Identity — Decentralized Identifier
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.
 

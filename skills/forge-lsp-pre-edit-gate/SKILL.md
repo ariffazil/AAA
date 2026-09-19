@@ -4,11 +4,7 @@ id: forge-lsp-pre-edit-gate
 owner: A-FORGE · 333-AGI
 risk_tier: low
 floor_scope: [F2, F4, F7, F11]
-description: >
-  MANDATORY LSP grounding gate BEFORE any code mutation on .ts, .py, .js, .tsx, .jsx files.
-  Forces the agent to read real-time compiler diagnostics and structural project context
-  before editing — eliminating blind guesses and anchoring every mutation in F2 (TRUTH).
-  Routes through arifOS kernel (:8088) for centralized gate logic.
+description: "MANDATORY LSP grounding gate BEFORE any code mutation on .ts, .py, .js, .tsx, .jsx files."
 version: 1.0.0
 author: 333-AGI Δ MIND under F13 SOVEREIGN directive
 forged: 2026-08-06

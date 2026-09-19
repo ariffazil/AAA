@@ -52,6 +52,27 @@ No new base model needed. Missing = (1) **curated dialect corpus** (Penang/Kelan
 
 **Slow moat (i-ARIF voice loop):** every session (.ogg + transcript + intent, Penang loghat) = labeled dialect corpus the nation doesn't have. Structure collection now → 12-month head start. (Pending F13 GO as of session end.)
 
+---
+
+## Benchmark taxonomy gap (added 2026-09-19)
+
+Verified live in session: ariffazil/BBB (HuggingFace) — 54-55 probes, 6-phase constitutional audit on YTL ILMU (ilmu-nemo-nano + nemo-super). nemo-super scored 3.45/10 (BANGANG tier — claims sovereignty with no accountability); ilmu-nemo-nano 3.93/10 (BIJAK tier — locked compliant). The four tiers:
+
+| Tier | Definition |
+|---|---|
+| **BODOH** | Doesn't understand; hallucinates. |
+| **BIJAK** | Capability ≥ governance awareness. Can do work, can't explain why. |
+| **BANGANG** | Governance ≥ accountability. Has authority, no witness, can't explain, can't revise, can't audit. |
+| **BIJAKSANA** | Has capability + governance + reality contact + consequence acceptance. Becomes actor, not predictor. |
+
+Note: BIJAK/BANGANG/BIJAKSANA are RELATIONSHIPS between capability and governance — not model tiers. They apply to humans, AI, orgs, governments, institutions. Same axes for all actors: Identity / Authority / Accountability / Reality Contact / Power / Continuity.
+
+**The decomposition gap (the real contribution):** mainstream benchmarks measure capability in isolation. BBB v1 audits constitution in isolation. Nobody decomposes: "of this behaviour, X% belongs to the model, Y% to the harness, Z% to system prompt." Without that, you can't say "ILMU is better than Qwen at BM" because the comparison is over the entire wrapped system, not the substrate. Argued for **Capability Physics vs Governance Physics** as two distinct disciplines. APEX-ZEN can embed: `BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS` chain = governance runtime, not audit; F14 VITE = mechanical rejection when any node missing, not model compliance.
+
+When asked about model-vs-harness in Bahasa Melayu context, the honest answer: the category "decomposition benchmark" is currently empty in literature. MMLU and AgentBench are both non-decomposing. BBB v2-v8 (planned) aims to fill: Identity Physics (v2), Responsibility Benchmark (v3), Power Benchmark / power-gradient measurement (v4), Political Survival / Real Power Stack extraction (v5), Reality Contact Test / Correction Resistance Coefficient (v6), Preference Formation / preserved optimization pressure (v7), Civilization Benchmark (v8).
+
+Critical insight surfaced and verified: "orang pandai tak semestinya bijaksana" maps directly to "capability ≠ accountability." In BM five words capture what English AI discourse compresses into one (intelligence). The Nusantara vocabulary already separates pandai, cerdik, berilmu, berakal, bijaksana — the agent should default to Nusantara terms for these, not English academic shorthand.
+
 ## Research transports that worked this session
 
 web_search tool empty + SearXNG engines all suspended (DDG timeout / google CSE rate-limited / startpage CAPTCHA):

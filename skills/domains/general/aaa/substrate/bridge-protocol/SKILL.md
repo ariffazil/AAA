@@ -1,7 +1,7 @@
 ---
 id: bridge-protocol
 name: bridge-protocol
-description: "Use before composing any human-facing reply. The ASI-grade human reality bridge: read the human, reason across layers, respond with zero machine noise, then pass the Voice Governor send gate (DITING 6, Peace², ΔS, RASA, SABAR). Single entry point for all human-facing intelligence — loads before all federation machinery. Use when a reply sounds robotic, formal or like AI; when AI-speak creeps in; when tone is hot and needs cooling; or when the register is wrong for the reader."
+description: "Use before composing any human-facing reply."
 version: 3.0.0
 owner: F13
 risk_tier: medium

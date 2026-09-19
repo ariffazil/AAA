@@ -2,7 +2,7 @@
 name: verify-runtime
 id: verify-runtime
 version: 2.0.0-wave2-merged
-description: "Verification-as-terminal-state — a task is done ONLY when verified. Replaces FORGE-verify-runtime. Use when user asks to 'verify runtime', 'verify-as-terminal-state', 'task done only when verified', or any terminal-state verification gate."
+description: "Verification-as-terminal-state — a task is done ONLY when verified."
 owner: A-FORGE
 risk_tier: low
 floor_scope: [F2, F4, F7, F11]

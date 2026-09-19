@@ -1,6 +1,6 @@
 ---
 name: hermes-rasa-doctrine
-description: "Runtime doctrine for human-reality handling — HERMES RASA. Load when storing, summarizing, or inferring ANYTHING about a human's relationships, feelings, motives, or bond state. Enforces provenance classes, forbidden promotions, terminal unknown states, and the stop boundary. Trigger words: storing relationship memory, \"what does X feel\", inferring motive from behavior, writing human-claim records, private DM handling, qualia/rasa questions."
+description: "Runtime doctrine for human-reality handling — HERMES RASA."
 ---
 
 # HERMES RASA — Reflex Card

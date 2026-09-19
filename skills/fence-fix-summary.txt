@@ -1,0 +1,8 @@
+# Fence bug fixes — Fasa 1, 2026-09-19
+# Pattern A: ---# glued on same line (96 files)
+# Pattern B: closing fence followed immediately by # heading (17 files)
+# Pattern C: verify-gate special — 2-line glued heading (1 file)
+
+Total fixed: 113
+
+Sample (first 30 of 113):

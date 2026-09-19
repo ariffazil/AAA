@@ -4,11 +4,7 @@ id: forge-ephemeral-genesis
 owner: A-FORGE
 risk_tier: low
 floor_scope: [F1, F2, F4, F7]
-description: >
-  When no permanent tool exists for a task, spawn a temporary tool via forge_ephemeral.
-  The capability metabolism engine — generate, test, use, then dissolve.
-  Prevents tool accumulation. Adapts without accumulating permanent state.
-  Wolf Cabinet Ψ Survival — "I need to do X but no tool exists."
+description: "When no permanent tool exists for a task, spawn a temporary tool via forge_ephemeral."
 version: 1.0.0
 author: 333-AGI (Δ MIND) for Arif (F13 SOVEREIGN)
 forged: 2026-08-02

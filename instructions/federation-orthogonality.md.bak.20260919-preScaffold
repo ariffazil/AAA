@@ -1,0 +1,219 @@
+# Federation Orthogonality — Constitutional Fragment
+
+> **Status:** F13_RATIFIED_CHAT (2026-09-16) — sovereign-directed review of Orthogonality Contract v0.1-draft; convergence between Hermes and OpenClaw confirmed; three-axis model adopted.
+> **Source contract:** Federation Orthogonality Contract v0.1-draft (2026-09-16)
+> **Complements:** APEX-ZEN-CANONICAL-COMPRESSION · SIX-GRAPH-FEDERATION-MODEL · authority-envelope · state-transition-discipline
+
+## The Three-Axis Model
+
+The federation operates on three orthogonal axes, not one:
+
+```
+PLANES (where work happens):
+  Human | Workshop | Protocol | Implementation
+
+INSTITUTIONS (who authorises and confirms):
+  AAA crosses all four planes
+  arifOS kernel = constitutional judgment on every plane
+  VAULT999 = immutable witness on every plane
+
+INSTRUMENTS (how execution happens):
+  arifOS kernel · A-FORGE · VAULT999 · WELL · GEOX · WEALTH · HERMES gateway
+```
+
+**Plane ≠ Institution ≠ Instrument.** A plane is a workspace. An institution is a governance function that crosses planes. An instrument is a tool that executes within a plane under institutional authority.
+
+Trinity-33 (arifOS=Law, AAA=State/Routing, A-FORGE=Execution) is not superseded. It is projected onto a different axis — the institutional axis. The four-plane model governs interaction topology. Trinity-33 governs authority topology. They are coordinates on different dimensions.
+
+I-16 (no duplicate doctrine) is satisfied: there is no duplication, only dimension separation.
+
+## Plane Definitions
+
+| Plane | Topology | Primary Role | Runtime Status |
+|---|---|---|---|
+| **Human** | Agent-to-Human membrane | HERMES — makes reality legible, receives intent, obtains consent | LIVE (gateway + MCP + bridge) |
+| **Workshop** | Agent-to-Agent coordination | OpenClaw — decomposes tasks, allocates subagents, synthesizes artifacts | LIVE (session runtime, role card pending) |
+| **Protocol** | Inter-organ task exchange | A2A — capability discovery, typed tasks, trace propagation | LIVE (aaa-a2a.service) |
+| **Implementation** | Agent-to-Machine forging | Coding Agents — bounded change contracts, branch/PR/test | LIVE (FI-001..FI-009) |
+
+**Correction (I-11 applied to self):** OpenClaw runtime status was initially assessed as PLANNED/NONE based on text reading. Live witness (this session: tool execution, 451-file count, receipts on disk) proves runtime exists. Status corrected to: runtime witnessed, role card pending disposition.
+
+## Institution Axis
+
+AAA is not a plane. AAA is the governance institution that crosses all planes:
+
+| Plane | AAA Function | arifOS Function |
+|---|---|---|
+| Human | Consent verification, audience routing, intent classification | Constitutional admissibility check |
+| Workshop | Subagent lease issuance, progress witnessing, artifact validation | Judgment on whether workshop output reaches SEAL |
+| Protocol | Agent card governance, trace propagation, envelope validation | Policy enforcement on inter-organ transfers |
+| Implementation | Change contract witnessing, PR review coordination, merge eligibility judgment | Final verdict on merge/deploy/release |
+
+**The invariant seat:** I-01 (human sovereignty), I-02 (authority separation), and I-03 (no self-authorisation) require a named institutional actor for enforcement. AAA provides that seat on every plane. Without the institution axis, these invariants float as abstract rules with no accountable enforcer.
+
+## Capability Lease Model
+
+Every delegated agent receives a signed/bound lease. A lease grants work scope, never sovereign authority. (Full lease schema in contract §8.)
+
+**Primary responsibility ≠ complete capability surface.** Primary responsibility defines the first accountable role; secondary capabilities remain loadable under bounded leases but do not create alternate authority paths. (Fixes Friction #3.)
+
+## Universal Invariants → Constitutional Floor Mapping
+
+See companion artifact: `federation-orthogonality-invariant-floor-mapping.md`
+
+## EUREKAs (sealed with this fragment)
+
+- **E-16:** AAA-as-cross-plane-institution — Plane (where) × Institution (who) are genuinely orthogonal axes. Partially dissolves the plane-count supersession problem: four planes need not replace Trinity-33 if they occupy different dimensions.
+- **E-17:** Plane ≠ Institution ≠ Instrument — Three dimensions, not two. The original contract was flat. The depth comes from separating workspace, governance function, and execution tool.
+
+## What This Fragment Does NOT Do
+
+- Does not supersede Trinity-33 canonical
+- Does not create new constitutional floors
+- Does not authorise deployment, restart, merge, or production mutation
+- Does not ratify OpenClaw role card (pending disposition)
+- Does not replace the full contract (which remains DRAFT_FOR_F13_RATIFICATION)
+
+## Phase 0 Deliverables (this fragment is one)
+
+1. This canon fragment (orthogonality principle + three-axis model)
+2. F1–F13 ↔ I-01–I-24 mapping with institution enforcement (companion artifact)
+3. Capability-to-existing-skill mapping (pending OpenClaw deliverable)
+4. OpenClaw role card disposition (pending)
+
+DITEMPA BUKAN DIBERI ⚒️
+
+---
+
+## Kernel Reference Monitor — Migration Roadmap (F13-ratified chat 2026-09-19)
+
+> **Status:** DRAFT architectural roadmap. 888 HOLD on any execution that mutates runtime enforcement. Migration is **strangler-pattern**, not rewrite.
+
+### The problem with prompt-only compartments
+
+The 2026-09-19 prompt-compartment audit found:
+
+- 4 of 50 active federation prompts have compartment frontmatter
+- 46 are UNCLASSIFIED (default-deny is prospective only)
+- 4 cross-compartment references detected; 3 of 4 are false positives because F13 / SOVEREIGN are universal
+- Renderer, filesystem permissions, credentials, and tool policies remain unchanged
+- The "deny-list" is a regex diagnostic, not an access control
+
+**Conclusion:** Frontmatter and prompt prose are **metadata isolation**, not enforcement. The kernel must decide.
+
+### Target architecture
+
+A2H/A2A/A2M become **kernel attributes**, not prompt vocabulary. The arifOS reference monitor:
+
+```text
+allow(
+    actor, capability, target, objective, compartment,
+    reversibility_class, lease_id, human_approval_receipt
+) -> ALLOW | DENY | HOLD | UNKNOWN
+```
+
+| Layer | Current state | Target | Migration phase |
+|---|---|---|---|
+| **Compartment attribute** | YAML frontmatter (4 of 50) | Kernel-resident agent identity | Phase 1 |
+| **Capability contract** | Prompt prose lists | Typed schema at registration | Phase 2 |
+| **Reference monitor** | None (no gate) | Code that wraps every read/write/mutation | Phase 3 |
+| **Memory namespace ACL** | Shared filesystem | Per-compartment namespace + ACL | Phase 4 |
+| **Credential namespace** | Shared vault.env | Per-agent scoped credentials | Phase 5 |
+| **Tool allowlist** | Shared MCP registry | Per-agent tool gate | Phase 6 |
+| **State transition validator** | Prompt-side "report transitions not booleans" | Kernel check before mutation | Phase 3 |
+| **Receipts** | Inconsistent writes | Hash-chained Reality Graph | Phase 7 |
+| **Reality Graph (arifFLOW)** | Concept in canon | Operational substrate | Phase 8 |
+
+### Migration phases (strangler-pattern)
+
+**Phase 1 — Compartment attribute in agent identity** *(no runtime change; observable)*
+- Move YAML frontmatter into agent identity store
+- Frontmatter continues to be readable; kernel does not yet consume it
+- **Evidence of success:** identity store has 50 entries with compartment field
+- **Rollback:** revert identity store to frontmatter; no runtime impact yet
+
+**Phase 2 — Capability contract at registration** *(no runtime change; observable)*
+- Replace prose "may invoke" lists with typed capability schemas
+- **Evidence of success:** registration validates against schema; mismatch rejects
+- **Rollback:** fall back to prose; no runtime impact yet
+
+**Phase 3 — Reference monitor (the gate itself)** *(888 HOLD required)*
+- Code that wraps every `forge_*`, `arif_*`, `mcp__*`, `git`, `shell_exec`, `docker_*`, `sql_*` call
+- Returns ALLOW/DENY/HOLD/UNKNOWN based on kernel predicate
+- **Evidence of success:** parallel run with deny-by-default for one week; zero false positives on legitimate A2M work; correct DENY on unauthorized attempt
+- **Rollback:** gate becomes WARN mode; agents see "would have been denied"; collection continues
+
+**Phase 4 — Memory namespace ACL** *(888 HOLD)*
+- Per-compartment namespace; cross-compartment read requires typed envelope + audit log
+- **Evidence of success:** A2H memory isolated from A2M memory at filesystem level
+
+**Phase 5 — Credential namespace** *(888 HOLD + T2 budget check)*
+- Per-agent scoped credentials; shared `vault.env` deprecated
+- **Evidence of success:** A2H agent cannot read A2M credentials; rotated keys work; rollback path tested
+
+**Phase 6 — Tool allowlist** *(888 HOLD)*
+- Per-agent MCP tool gate
+- **Evidence of success:** A2H agent calling `forge_shell` returns DENY with typed reason
+
+**Phase 7 — Hash-chained receipts** *(T2)*
+- Every consequential action writes a receipt to a hash-chained log
+- **Evidence of success:** tampering detected; orphan receipts queryable
+
+**Phase 8 — Reality Graph operational substrate** *(T3 — multi-week)*
+- arifFlow becomes the canonical substrate for `Objective → Claim → Action → Evidence → State` chains
+- HERMES weekly queries the graph for DEGRADED, STALE, VIOLATION, UNVERIFIED, EXPIRED, CONTESTED, DRIFT
+
+### What goes away from prompts
+
+- Deny-list vocabulary (replaced by kernel predicate)
+- "Never access…" prohibitions (replaced by reference monitor returning DENY)
+- "Compartment leak" warnings (replaced by observed access denials)
+- "Default-deny at prompt level" (replaced by default-deny at kernel boundary)
+- Behaviour-sink negative instructions (replaced by typed capability contracts)
+
+### What stays in prompts (minimal)
+
+- **Role** (one sentence)
+- **Current objective** (one paragraph)
+- **Available named capabilities** (pointer to kernel contract)
+- **Evidence requirement** (must return receipt)
+- **Uncertainty contract** (return UNKNOWN when missing evidence)
+- **Output shape** (typed envelope)
+- **Escalation behaviour** (when to return HOLD)
+
+### 888 HOLD decisions
+
+The following require fresh F13 authorization to execute:
+
+- Any code that wraps tool calls (Phase 3) — runtime change
+- Any filesystem ACL change (Phase 4) — runtime change
+- Any credential rotation or namespace (Phase 5) — irreversible consequences
+- Any tool allowlist change (Phase 6) — runtime change
+- Any Reality Graph operationalization (Phase 8) — multi-week effort
+
+Until then, current state is **metadata isolation with explicit acknowledgement that runtime enforcement does not yet exist**.
+
+DITEMPA BUKAN DIBERI ⚒️
+
+---
+
+## Universal vs Cell-Specific Terms (F13-ratified chat 2026-09-19, post-second-witness)
+
+> **Status:** Documentation-consistency correction following the 2026-09-19 prompt-compartment audit.
+
+The static audit's "cross-compartment leak" report treated `F13`, `SOVEREIGN`, and similar terms as A2H leakage when found in A2M prompts. This is an internal classification contradiction — those terms are universal constitutional references that predate the compartment doctrine.
+
+**Universal terms** (may appear in any compartment without violating it):
+
+- F1–F13 constitutional floors
+- APEX-ZEN governance chain (`BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS`)
+- `capability ≠ authority` invariant
+- F13 SOVEREIGN (human-authority reference, cross-cutting)
+- Identity, citizenship, FI ID
+- Canonical-fragments pointer (`/root/AAA/instructions/`)
+- APEX doctrine references
+
+These appear in prompts of any compartment by design — they encode the constitutional floor system, not cell-specific content. Reclassification removes predictable false positives from keyword audits.
+
+This is a documentation-consistency correction, not a security control. Lexical classification remains a heuristic; only the kernel reference monitor can determine actual privilege boundaries.
+

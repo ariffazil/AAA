@@ -1,10 +1,6 @@
 ---
 name: apex-verdict
-description: >
-  Unified APEX verdict handler. Parameterized by verdict_type to apply the constitutional SEAL path
-  (verify ART-to-kernel-to-ACT evidence) or the constitutional HOLD path (block when authority,
-  evidence, health, reversibility, or blast radius is insufficient). Merges: apex_verdict_seal,
-  apex_verdict_hold.
+description: "Unified APEX verdict handler."
 agent: 888-APEX
 namespace: apex_*
 cluster: VERDICT

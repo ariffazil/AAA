@@ -1,6 +1,6 @@
 ---
 name: organ-capability-map
-description: Master capability→organ routing map — every tool/lane (Google, Malaysia, MCP shopping list, wellness, media) assigned to WEALTH/GEOX/WELL/HERMES/AAA/A-FORGE/arifFlow with live/staged status. Use when "which organ owns X", "route capability", "add tool to organ", "capability home", "distillation map".
+description: "Master capability→organ routing map — every tool/lane (Google, Malaysia, MCP shopping list, wellness, media) assigned to WEALTH/GEOX/WELL/HERMES/AAA/A-FORGE/arifFlow with live/staged status."
 ---
 
 # Organ Capability Map (canonical pointer)

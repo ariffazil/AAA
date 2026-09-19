@@ -1,6 +1,6 @@
 ---
 name: malaysia-reality-interface
-description: Governed Malaysia data lanes for all organs — verified live endpoints (data.gov.my weather/catalogue, BNM), ring model (0-3), organ assignments (WEALTH/GEOX/WELL/HERMES/AAA), capability registry. Use when "malaysia data", "BNM", "OPR", "MYR", "malaysian weather warning", "DOSM statistics", "MyGDX", "MyInvois", "duitnow", "geospatial malaysia", "malaysia open api".
+description: "Governed Malaysia data lanes for all organs — verified live endpoints (data.gov.my weather/catalogue, BNM), ring model (0-3), organ assignments (WEALTH/GEOX/WELL/HERMES/AAA), capability registry."
 ---
 
 # Malaysia Reality Interface (canonical pointer)

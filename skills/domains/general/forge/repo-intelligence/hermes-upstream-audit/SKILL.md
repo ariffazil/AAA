@@ -1,11 +1,6 @@
 ---
 name: hermes-upstream-audit
-description: >-
-  Audit a Hermes Agent installation against upstream Nous Research docs
-  (hermes-agent.nousresearch.com/docs). Maps config.yaml vs available features,
-  identifies capability gaps, and surfaces highest-impact missing features.
-  Use when Arif says "what am I missing from upstream", "map my Hermes",
-  "contrast with upstream", "hermes feature audit".
+description: "Audit a Hermes Agent installation against upstream Nous Research docs (hermes-agent.nousresearch.com/docs)."
 version: 1.0.0
 author: Hermes Agent
 constraints:

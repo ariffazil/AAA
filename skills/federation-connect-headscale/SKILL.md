@@ -9,7 +9,8 @@ floor_scope: ['F1', 'F12', 'F13']
 autonomy_tier: T2
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----# 🌐 Federation Connect — Headscale Sovereign Mesh
+---
+# 🌐 Federation Connect — Headscale Sovereign Mesh
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given
 > **Forged:** 2026-07-16T20:50Z by Hermes-LOCAL on ariffazil-windows

@@ -10,7 +10,8 @@ autonomy_tier: T1
 tags: [identity, invariance, rsi, hexagon, constitutional]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----# HEXAGON IDENTITY INVARIANCE TEST v1.0.0
+---
+# HEXAGON IDENTITY INVARIANCE TEST v1.0.0
 
 > **DITEMPA BUKAN DIBERI** — Identity is forged, not assumed.
 > **RSI Gate Item 1/5:** Prove the institution survives the substrate.

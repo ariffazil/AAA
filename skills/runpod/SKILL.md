@@ -1,11 +1,6 @@
 ---
 name: runpod
-description: >-
-  Start here for any Runpod task — running GPU/CPU pods, deploying serverless
-  endpoints, templates, network volumes, building images, or understanding how
-  Runpod works. Routes the request to the right Runpod skill (runpod-mcp,
-  runpodctl, flash, companion-clis, or runpod-usage). Use when it is unclear
-  which Runpod skill applies.
+description: "Start here for any Runpod task — running GPU/CPU pods, deploying serverless endpoints, templates, network volumes, building images, or understanding how Runpod works."
 metadata:
   author: runpod
   version: "1.1.2" # x-release-please-version

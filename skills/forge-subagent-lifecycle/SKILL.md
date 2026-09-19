@@ -1,6 +1,6 @@
 ---
 name: FORGE-subagent-lifecycle
-description: "USE WHEN: The **unified composition layer** for sub-agent orchestration. The federation has 15+ discrete primitives (spawn, bind, execute, verify, cool, scar, ingest, seal, retire) — this skill is the **lifecycle** that wires them into one coherent pattern. A parent agent should never manually compose these primitives. Load this skill, follow the lifecycle, and every sub-agent run produces: validated output + metabolic receipt + scars (if failure) + cooling record + sealed audit trail"
+description: "USE WHEN: The **unified composition layer** for sub-agent orchestration."
 version: 0.0.0-untracked
 ---
 

@@ -16,7 +16,8 @@ floor_scope:
 autonomy_tier: T0
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----# Model Fallback Monitor
+---
+# Model Fallback Monitor
 
 **Tracks Arif's model federation health. Prevents silent provider failures.**
 

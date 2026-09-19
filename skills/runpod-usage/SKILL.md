@@ -1,12 +1,6 @@
 ---
 name: runpod-usage
-description: >-
-  How Runpod works and how to work it — pods vs serverless, GPU/VRAM selection,
-  storage, building a container, networking, plus the agentic pod development loop
-  (provision → ssh-exec → set up → poll readiness) and on-pod install hygiene
-  (uv/apt). Use to answer "how does X work", "which GPU", "how do I build a
-  container", or "how do I stand up a workload on a pod". Guidance, not a tool —
-  execute with runpodctl, runpod-mcp, or flash.
+description: "How Runpod works and how to work it — pods vs serverless, GPU/VRAM selection, storage, building a container, networking, plus the agentic pod development loop (provision → ssh-exec → set up → poll readiness) and on-pod install hygiene (uv/apt)."
 metadata:
   author: runpod
   version: "1.1.2" # x-release-please-version

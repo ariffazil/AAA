@@ -1,13 +1,6 @@
 ---
 name: agentic-state
-description: >-
-  Use when you want an agent to accumulate intelligence across sessions —
-  persistent agentic state doctrine for every coding harness. Survive across
-  sessions by writing an agent-level state file (capability memory + mission
-  history + fallback map). Load at session start, at mission close, on
-  capability discovered, fallback found, mission failed, tool error repeated,
-  eureka/paradox resolved, warga handoff, or an F2 claim with strong evidence.
-  Covers Claude Code (FI-002), Kimi Code (FI-008), OpenCode, Qwen Code (FI-003).
+description: "Use when you want an agent to accumulate intelligence across sessions — persistent agentic state doctrine for every coding harness."
 version: 1.0.0
 risk_tier: low
 autonomy_tier: T1

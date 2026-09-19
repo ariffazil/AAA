@@ -127,3 +127,13 @@ state-snapshots/
 tmp/
 mcp/filings/cache/*.bin
 backups/
+
+# Auto-added by FI-005 deep-scan 2026-09-20 — ephemeral build/cache artifacts
+forge_work/**/ALPHA-ZEN-NIGHT*.png
+forge_work/**/ALPHA-ZEN-NIGHT*
+forge_work/**/cycles.jsonl
+forge_work/**/night.html
+forge_work/**/cards/*.json
+forge_work/**/probe_reload_fix.py
+audits/linters/
+**/*.pre-demote-*.Z

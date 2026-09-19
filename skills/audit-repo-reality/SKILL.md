@@ -2,7 +2,7 @@
 name: audit-repo-reality
 id: audit-repo-reality
 risk_tier: low
-description: 'REPO_REALITY_AUDIT::v1.2 — Sovereign doctrine (F13, 2026-08-14). Audit codebase reality, not AI output. Categories: STUB Tiers T1-T4, ORPHAN, SHIM, REALITY_LEAK, AUTHORITY_LEAK, CLAIM_DRIFT (A comment/B architecture/C metric), FAKE_METRIC. Pipeline: SCAN→CONTEXT→REACHABILITY→RUNTIME_IMPACT→VERDICT. HEURISTIC≠MEASUREMENT semantics. Nuclear Rule: no abstract feature without concrete consumer. USE WHEN: audit repo, find stubs, reality audit, orphan/shim detection, verify implementation claims. '
+description: "REPO_REALITY_AUDIT::v1.2 — Sovereign doctrine (F13, 2026-08-14)."
 version: 2026.08.14.2
 tags: [audit, reality, stub, dead-code, orphan, shim, reality-leak, authority-leak, F2, F7, F11]
 floor_scope: [F02, F04, F07, F11]
@@ -11,7 +11,8 @@ autonomy_tier: T0
 reference: REPO_REALITY_AUDIT::v1.2
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
----# AUDIT-repo-reality — Repository Reality Auditor
+---
+# AUDIT-repo-reality — Repository Reality Auditor
 
 Operating posture: NO TRUST. Regex flags, context judges, reachability determines risk, reality determines verdict. Scanner output = CANDIDATES only.
 

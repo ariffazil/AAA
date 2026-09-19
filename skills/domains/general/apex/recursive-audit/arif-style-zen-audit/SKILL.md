@@ -1,7 +1,7 @@
 ---
 name: arif-style-zen-audit
 slug: arif-style-zen-audit
-description: Run constitutional ZEN audits of Hermes/federation state per Arif Fazil's epistemic standards. Use when asked to "audit", "purge", "scan drift", "validate state", "trace counts", or "verify identity". Produces a gate map with verified findings, false positives, unresolved items, and proposed patch packets — never inflated completion %.
+description: "Run constitutional ZEN audits of Hermes/federation state per Arif Fazil's epistemic standards."
 version: 1.0.0
 owner: hermes-prime
 license: MIT

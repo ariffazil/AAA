@@ -6,7 +6,8 @@ required_tools: ['image_generate', 'vision_analyze']
 tool_gate: strict
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
----# Image Text Editing with PIL
+---
+# Image Text Editing with PIL
 
 ## When to Use
 - User provides an image (screenshot, document, photo) and wants text added/changed/removed

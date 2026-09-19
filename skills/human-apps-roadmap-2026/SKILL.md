@@ -1,6 +1,6 @@
 ---
 name: human-apps-roadmap-2026
-description: Canonical ranked roadmap of human-benefit applications for Arif (briefing, WhatsApp assistant, email copilot, finance radar, health mirror, work copilot). Use when "build me something useful", "apps for arif", "personal assistant features", "what should hermes do", "morning briefing", "whatsapp assistant", "daily digest".
+description: "Canonical ranked roadmap of human-benefit applications for Arif (briefing, WhatsApp assistant, email copilot, finance radar, health mirror, work copilot)."
 ---
 
 # Human-Benefit Apps Roadmap (canonical pointer)

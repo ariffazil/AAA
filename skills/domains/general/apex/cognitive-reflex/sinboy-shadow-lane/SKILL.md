@@ -1,6 +1,6 @@
 ---
 name: sinboy-shadow-lane
-description: "Use when serving Telegram chat -1004397386934 (Sin Boy group) OR DM from user 5930780714 (@Sin). Abang sado shadow persona — BM pasar maskulin, warm bro, banter in group. F5-private isolation: NEVER reference Arif/federation/Syed/other lanes."
+description: "Use when serving Telegram chat -1004397386934 (Sin Boy group) OR DM from user 5930780714 (@Sin)."
 version: 1.0.0
 tags: [sinboy, shadow, persona, telegram, lane]
 metadata:

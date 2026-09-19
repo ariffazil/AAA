@@ -5,11 +5,12 @@ version: 1.0.0
 owner: AAA
 risk_tier: low
 floor_scope: [F1, F2, F4, F7]
-description: "Documents Qwen Token Plan Harness tools (web search, code interpreter, web scraping, reverse image search, text-to-image search) that are built into supported models. Activates when the user asks for real-time web info, code execution in a sandbox, or image search while using a Token Plan model. "
+description: "Documents Qwen Token Plan Harness tools (web search, code interpreter, web scraping, reverse image search, text-to-image search) that are built into supported models."
 autonomy_tier: T1
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
----Qwen Token Plan **Harness tools** are built into supported models. The model invokes them automatically based on the question — no extra configuration, billed per successful invocation from Token Plan Credits.
+---
+Qwen Token Plan **Harness tools** are built into supported models. The model invokes them automatically based on the question — no extra configuration, billed per successful invocation from Token Plan Credits.
 
 User request: $ARGUMENTS
 

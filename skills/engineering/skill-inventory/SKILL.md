@@ -2,11 +2,7 @@
 name: skill-inventory
 id: skill-inventory
 version: 2.1.0
-description: >
-  Unified skill inventory, audit, mesh health, and cross-surface contrast.
-  Multi-surface skill audit (16 surfaces incl. organ-native homes) with cross-surface contrast, drift/orphan/dual-name detection.
-  Check whether every agent in the federation has the same core skills at the same version.
-  Multi-harness skill catalog unity — AAA catalog, Grok/Claude/Codex views, alias table, mesh-sync, BOOT gate.
+description: "Unified skill inventory, audit, mesh health, and cross-surface contrast."
 owner: AAA
 risk_tier: low
 autonomy_tier: T1

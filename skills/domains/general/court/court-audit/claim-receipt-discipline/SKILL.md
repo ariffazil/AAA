@@ -2,7 +2,7 @@
 id: claim-receipt-discipline
 name: claim-receipt-discipline
 version: 2.0.0
-description: 'Use before stating system state from a partial probe or tagged claim. Claim states (ESTIMATED→MEASURED→CROSS_VALIDATED→RETRACTED), receipt format, verification gates, probe-to-claim matching. Merged from claim-receipt-discipline + claim-level-verification. USE WHEN: any [OBS]/[DER]/[INT]/[SPEC] claim about file/code/system state, any inventory claim of the form "X is present / X is absent", or any external source citation for a numerical claim.'
+description: "Use before stating system state from a partial probe or tagged claim."
 risk_tier: low
 floor_scope: [F2, F9, F11]
 autonomy_tier: T0

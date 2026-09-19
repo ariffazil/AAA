@@ -1,6 +1,6 @@
 ---
 name: kabarkan-observability
-description: "Kabarkan — arifOS sovereign observability plane. Langfuse self-host (insurance) + Kabarkan Postgres backend (sovereign). Covers the full lifecycle: kernel telemetry hooks, NATS JetStream pipeline, standalone worker, schema management, VAULT999 seal pattern, and the three-layer dispatch verification technique."
+description: "Kabarkan — arifOS sovereign observability plane."
 tags: [observability, telemetry, langfuse, kabarkan, tracing, atlass333, kernel, dispatch, jetstream]
 triggers:
   - "langfuse limit"

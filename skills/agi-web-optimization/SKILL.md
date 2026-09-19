@@ -10,7 +10,8 @@ autonomy_tier: T1
 tags: [web, optimization, seo, rag, llm]
 capability_tier: fed-long-context
 ecology_state: WARM
----# SKILL: Agentic Web Optimization
+---
+# SKILL: Agentic Web Optimization
 
 > **Purpose:** Make web content maximally extractable by LLMs, Agentic RAG systems, and search indexers.
 > **Target metric:** τ≥0.99 (high signal-to-noise ratio, ΔS≤0)

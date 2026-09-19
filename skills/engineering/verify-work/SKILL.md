@@ -2,10 +2,7 @@
 name: verify-work
 id: verify-work
 version: 2.0.0
-description: >
-  Verification-as-terminal-state doctrine + subagent verification tool. A task is done
-  ONLY when verified. Never stop at "I changed it" — only at "it's fixed and confirmed."
-  Runs health probes, behavior smoke tests, drift checks, and spawns verifier subagents.
+description: "Verification-as-terminal-state doctrine + subagent verification tool."
 owner: AAA
 risk_tier: low
 autonomy_tier: T1

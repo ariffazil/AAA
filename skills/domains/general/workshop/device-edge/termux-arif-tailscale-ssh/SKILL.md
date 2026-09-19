@@ -2,11 +2,7 @@
 id: termux-arif-tailscale-ssh
 name: termux-arif-tailscale-ssh
 version: 1.0.0
-description: >
-  Arif phone + Termux + Tailscale Connect + VPS SSH reality. Hermes owns VPS work.
-  Trigger: termux, ssh vps, tailscale, phone SSH, copy-paste command, "can't connect",
-  Tailscale Connect, hang SSH, "Hermes check port", restart service, VPS status.
-  Do NOT use for generic Termux install guides. Do NOT ask Arif to paste shell.
+description: "Arif phone + Termux + Tailscale Connect + VPS SSH reality."
 owner: F13 SOVEREIGN
 autonomy_tier: T0
 risk_tier: low

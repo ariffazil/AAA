@@ -18,7 +18,8 @@ floor_scope:
 autonomy_tier: T0
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----# Infra Guardian
+---
+# Infra Guardian
 
 **Validates the infrastructure layer — SSL, DNS, reverse proxy, tunnels.**
 

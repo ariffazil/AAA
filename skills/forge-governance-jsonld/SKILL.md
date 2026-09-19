@@ -9,7 +9,8 @@ floor_scope: ['F1', 'F2', 'F4', 'F11']
 autonomy_tier: T1
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
----# ⚒️ Governance JSON-LD — Constitutional Ontology
+---
+# ⚒️ Governance JSON-LD — Constitutional Ontology
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.
 

@@ -1,6 +1,6 @@
 ---
 name: agentic-trading-companion
-description: "Build an AI trading companion system — signal engine, price alerts, journal tracking, chart generation, and web terminal. **ACTIVE NODE — carries MT5 bridge, governance pipeline, APEX integration. Every trade execution requires 888 approval.**"
+description: "Build an AI trading companion system — signal engine, price alerts, journal tracking, chart generation, and web terminal."
 version: 2.0.0
 author: Hermes Agent (consolidated from trading-intelligence-system)
 tags: [trading, xauusd, gold, agentic, signals, journal, active, governance]

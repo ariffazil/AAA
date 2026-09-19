@@ -12,7 +12,8 @@ agents: claude | opencode | kimi | codex
 autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----# FastMCP — Build & Deploy MCP Servers in Python
+---
+# FastMCP — Build & Deploy MCP Servers in Python
 
 > **Current stable:** `fastmcp[tasks]==3.4.2` (PyPI latest as of 2026-06-12).
 > **arifOS federation target:** all Python MCP organs run FastMCP 3.4.2.

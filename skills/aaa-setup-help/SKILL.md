@@ -2,7 +2,7 @@
 id: aaa-setup-help
 name: aaa-setup-help
 version: 1.0.0
-description: "Guide the sovereign or operator through any setup, configuration, or deployment process step by step. One atomic action per response, with a 'Still remaining' list that never exceeds 8 items. Use when Arif says 'help me set up', 'walk me through', 'setup-help', 'configure X', or any guided process that requires tracking remaining steps across multiple turns. "
+description: "Guide the sovereign or operator through any setup, configuration, or deployment process step by step."
 owner: 333-AGI
 risk_tier: low
 floor_scope: [F1, F2, F4, F7]
@@ -19,7 +19,8 @@ trigger_when:
 tags: [setup, guided, step-by-step, human-in-loop, onboarding]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----# AAA-setup-help — Guided Setup with Progress Tracking
+---
+# AAA-setup-help — Guided Setup with Progress Tracking
 
 > **Pattern origin:** David Ondrej's `setup-help` skill (davidondrej/skills).
 > **Adapted for:** arifOS Federation — constitutional guardrails, Malaysian context.

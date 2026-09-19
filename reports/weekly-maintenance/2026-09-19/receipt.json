@@ -1,5 +1,5 @@
 {
-  "epoch": "2026-09-19T19:06:57.178659+08:00",
+  "epoch": "2026-09-19T20:00:10.988360+08:00",
   "host": "forge",
   "phases": {
     "identity": [
@@ -7,16 +7,16 @@
         "phase": "identity",
         "id": "I1",
         "sev": "OK",
-        "title": "host=forge kernel=6.17.0-41-generic uptime=up 2 weeks, 3 days, 10 hours, 59 minutes",
+        "title": "host=forge kernel=6.17.0-41-generic uptime=up 2 weeks, 3 days, 11 hours, 52 minutes",
         "evidence": "",
         "note": ""
       },
       {
         "phase": "identity",
         "id": "I2",
-        "sev": "P0",
-        "title": "/opt/arifos/venv MISSING - 15 ExecStart lines",
-        "evidence": "systemd-analyze verify confirms NOT_EXECUTABLE",
+        "sev": "OK",
+        "title": "No dead interpreter paths",
+        "evidence": "",
         "note": ""
       }
     ],
@@ -59,7 +59,7 @@
         "phase": "memory",
         "id": "M1",
         "sev": "OK",
-        "title": "state.db: 750MB, 1246 sessions, 111955 msgs",
+        "title": "state.db: 751MB, 1249 sessions, 112245 msgs",
         "evidence": "",
         "note": ""
       },
@@ -93,7 +93,7 @@
         "phase": "prompt",
         "id": "P3",
         "sev": "OK",
-        "title": "Snapshot: 251.9KB",
+        "title": "Snapshot: 252.0KB",
         "evidence": "",
         "note": ""
       }
@@ -145,9 +145,17 @@
     "clis": [
       {
         "phase": "clis",
+        "id": "C1",
+        "sev": "P1",
+        "title": "1 missing",
+        "evidence": "antigravity",
+        "note": ""
+      },
+      {
+        "phase": "clis",
         "id": "C2",
         "sev": "OK",
-        "title": "9 CLIs: qwen, kimi, opencode, codex, claude, antigravity, agy, gemini, hermes",
+        "title": "8 CLIs: qwen, kimi, opencode, codex, claude, agy, gemini, hermes",
         "evidence": "",
         "note": ""
       }
@@ -173,16 +181,16 @@
         "phase": "agents",
         "id": "A3",
         "sev": "OK",
-        "title": "CHRON: 9 events, 16 preds",
+        "title": "CHRON: 8 events, 12 preds",
         "evidence": "",
         "note": ""
       }
     ]
   },
   "summary": {
-    "P0": 2,
-    "P1": 2,
+    "P0": 1,
+    "P1": 3,
     "P2": 2,
-    "OK": 14
+    "OK": 15
   }
 }

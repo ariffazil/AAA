@@ -1,6 +1,6 @@
 ---
 name: qwencloud-mesh
-description: "QwenCloud AGI/ASI Meta-Mesa orchestrator. Unified entry point for ALL QwenCloud capabilities: text, vision, image, video, TTS, deployment, auth, billing, model selection. TRIGGER when: ANY QwenCloud task, ANY Qwen model invocation, ANY DashScope API call, ANY qwencloud- prefix skill match, OR when user says 'qwen', 'wan', 'dashscope', 't2i', 't2v', 'i2v', 'tts', 'ocr', 'vl', 'cosyvoice', 'qwencloud'. DO NOT TRIGGER when: non-Qwen model usage, general AI questions unrelated to QwenCloud."
+description: "QwenCloud AGI/ASI Meta-Mesa orchestrator."
 version: 1.0.0
 author: hermes-curator
 license: MIT

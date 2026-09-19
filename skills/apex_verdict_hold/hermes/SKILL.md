@@ -3,13 +3,7 @@ agent: hermes-asi
 canonical: skills/APEX-act/SKILL.md
 name: APEX ACT — Constitutional Reflex (Hermes ASI)
 skill_id: apex-act-hermes
-description: >
-  Hermes ASI adapter for the APEX ACT reflex arc. 
-  Conversational thin layer: takes the canonical ART→Kernel→ACT cycle
-  and delivers it with RASA — Bahasa Malaysia warmth, visual routing,
-  and open-weights system-prompt obedience.
-  Load when the kernel has SEAL'd an action and you need to execute
-  the ACT phase through Hermes' SOUL layer (conversation, media, heart).
+description: "Hermes ASI adapter for the APEX ACT reflex arc."
 ---
 
 # APEX ACT — Hermes ASI Adapter
