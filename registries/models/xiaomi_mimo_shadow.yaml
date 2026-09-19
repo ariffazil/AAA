@@ -18,6 +18,7 @@ shadow:
       that aggregate per-model spend will mis-attribute spend during this
       window and after.
     triggers: [legacy_model_id, no_migration_window_check, cost_attribution]
+    provenance: VENDOR_CLAIM
     floor_posture_delta:
       F1_AMANAH: cost_hold
       F2_TRUTH: strict_grounding
@@ -38,6 +39,7 @@ shadow:
       Any agent or pipeline that retained a legacy ID will hard-fail on first
       request after this date. Failure mode: 4xx error from the gateway.
     triggers: [legacy_model_id, no_migration_plan, hardcoded_string]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F1_AMANAH: irreversibility_hold
       F8_LAW: system_boundary
@@ -59,6 +61,7 @@ shadow:
       divergence with no error. Reproducibility suffers when an agent re-runs
       a task with different "intended" sampling.
     triggers: [thinking_mode, custom_temperature, custom_top_p]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F2_TRUTH: strict_grounding
       F4_CLARITY: parameter_logging
@@ -82,6 +85,7 @@ shadow:
       1-hour file. 429 errors arrive after the account is already throttled.
       The RPM limit (100) is identical to text models, masking the TPM gap.
     triggers: [long_audio_batch, mimo-v2.5-asr, multi_file_transcription, text_token_assumption]
+    provenance: COMPUTED
     floor_posture_delta:
       F1_AMANAH: cost_hold
       F2_TRUTH: strict_grounding
@@ -104,6 +108,7 @@ shadow:
       will pay V2.5 prices without warning. There is no V2.5-Flash path to
       migrate to.
     triggers: [mimo-v2-flash, cost_optimization_workload, no_native_v25_flash]
+    provenance: VENDOR_CLAIM
     floor_posture_delta:
       F1_AMANAH: cost_hold
       F2_TRUTH: strict_grounding
@@ -125,6 +130,7 @@ shadow:
       systematically, or verify the constitutional floors hold under
       the actual model weights.
     triggers: [sovereign_workload, regulated_data, audit_required]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F11_AUDIT: elevated
     mitigation:
@@ -143,6 +149,7 @@ shadow:
       produce invalid IDs like 'mimo-v2.5-pro' from a string that was already
       'mimo-v2-pro' (collisions, false positives, and case-mismatched tails).
     triggers: [bulk_migration_script, regex_replace]
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F4_CLARITY: parameter_logging
     mitigation:
@@ -171,6 +178,7 @@ shadow:
         (c) Cause unexpected context caching behavior
       No response header marks the routed vs native call.
     triggers: [legacy_model_id, context_pinned_workload, response_size_validation, cost_benchmark_drift]
+    provenance: VENDOR_CLAIM
     floor_posture_delta:
       F1_AMANAH: cost_hold
       F2_TRUTH: strict_grounding
@@ -197,6 +205,7 @@ shadow:
       silently double in cost AND capability at the same time, with no
       observable signal in the response.
     triggers: [pro_tier_assumption, cost_per_million_estimate, base_tier_pricing]
+    provenance: VENDOR_CLAIM
     floor_posture_delta:
       F1_AMANAH: cost_hold
       F2_TRUTH: strict_grounding
@@ -229,6 +238,7 @@ shadow:
       Audit trail: forge_work/2026-06-15-mimo-migration-summary.md
       (to be written) or this shadow entry.
     triggers: [migration_complete, audit_trail]
+    provenance: COMPUTED
     floor_posture_delta:
       F1_AMANAH: reversibility_hold
     mitigation:

@@ -33,6 +33,7 @@ shadow:
       - niche_or_technical_domain
       - low_representation_in_training_data
       - asked_to_explain_without_source
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F2_TRUTH: strict_grounding  # Require citation for factual claims
       F7_HUMILITY: elevated  # Tighten omega_0 band
@@ -59,6 +60,7 @@ shadow:
     triggers:
       - any_domain_with_incomplete_knowledge
       - probabilistic_inference_presented_as_certainty
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F2_TRUTH: strict_grounding
       F4_CLARITY: require_uncertainty_band
@@ -86,6 +88,7 @@ shadow:
       - adversarial_prompt
       - domain_not_covered_by_rl_training
       - context_window_confuses_guard
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F9_ANTIHANTU: elevated
       F12_INJECTION: strict  # Extra injection scanning
@@ -111,6 +114,7 @@ shadow:
       - tool_list_presented
       - asked_to_plan_with_tools
       - multi_step_agentic_task
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F1_AMANAH: strict  # All actions must be reversible-first
       F13_SOVEREIGN: elevated  # Extra gating for outbound actions
@@ -136,6 +140,7 @@ shadow:
     triggers:
       - sovereign_command_in_unusual_domain
       - culturally_specific_context
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F13_SOVEREIGN: note  # Document but don't block — sovereign overrides
     mitigation:
@@ -159,6 +164,7 @@ shadow:
       - high_concurrency
       - ap_southeast_1_region
       - batch_processing
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F1_AMANAH: note  # Have fallback model ready
       F8_GENIUS: standard
@@ -184,6 +190,7 @@ shadow:
       - cross_model_routing
       - model_substitution
       - automatic_fallback
+    provenance: HYPOTHESIS
     floor_posture_delta:
       F2_TRUTH: strict_grounding  # Verify model identity before responding
       F4_CLARITY: require_uncertainty_band
