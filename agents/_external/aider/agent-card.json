@@ -461,7 +461,10 @@
       "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
       "ringPlacement": "none",
       "parallelism": "none",
-      "shadowAcknowledged": []
+      "shadowAcknowledged": [
+        "edit_gravity: prefers editing existing code over restructuring (MEDIUM, HYPOTHESIS 2026-09-19)",
+        "commit_pressure: pushes toward commit-able changes even when analysis incomplete (MEDIUM, HYPOTHESIS 2026-09-19)"
+      ]
     },
     "jituGate": {
       "requiresJitu": false,

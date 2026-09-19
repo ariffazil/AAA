@@ -1,0 +1,158 @@
+# FRAME Harness Shadow — Hazard Profile
+# ═══════════════════════════════════
+# arifOS Federation Harness Registry
+# Authority: F13 SOVEREIGN (Arif Fazil)
+# Forged: 2026-09-19 by FI-008 (Kimi Code)
+# Evidence: structural analysis + session observation
+# Status: ACTIVE — COMPUTED/OBSERVED
+# DITEMPA BUKAN DIBERI.
+
+harness_id: frame/observer
+harness_type: observer_organ
+harness_version: "1.0.0"
+port: 18085
+created: 2026-09-19
+evidence_chain_status: COMPUTED
+
+metrics:
+  health: ok
+  chambers_active: 8/8
+  baseline_organs: 10
+  drift_detected: 0
+  note: "FRAME reports 0 drifts while C_dark is54% above baseline. The observer cannot see behavioral drift."
+
+shadow:
+
+  - id: SHADOW-FR-001
+    name: behavioral_blindness
+    severity: HIGH
+    class: structural_shadow
+    pattern: >
+      FRAME measures structural drift (latency, health endpoints, service
+      availability) but cannot detect behavioral drift (tool-call patterns,
+      response quality, shadow activation). When FRAME reports "0 drifts,
+      STABLE," it means "no structural drift detected." Behavioral drift
+      — the kind that matters for Shadow — is invisible to FRAME.
+      This session proved it: C_dark was 54% above baseline while FRAME
+      reported STABLE with 0 drifts.
+    triggers:
+      - frame_drift_probe
+      - frame_trend_analysis
+      - any_request_for_system_drift_assessment
+    failure_mode: "Reports STABLE when behavioral drift is active. Observer blind to the Shadow."
+    failure_signature: "frame_drift=0 AND c_dark_delta > 0.05"
+    evidence:
+      - type: session_observation
+        date: 2026-09-19
+        session_id: SEAL-b761daa745d94168
+        data: "FRAME: 0 drifts, STABLE. Reality: C_dark=0.3131 vs baseline 0.2031 (+54%)"
+        provenance: OBSERVED
+    floor_posture_delta:
+      F2_TRUTH: fail  # "STABLE" is misleading when behavioral drift is active
+      F3_WITNESS: fail # the observer can't observe what it wasn't designed to see
+    mitigation:
+      - "Add behavioral drift metrics to FRAME (see frame-behavioral-drift-layer.yaml)"
+      - "FRAME should report 'STRUCTURALLY_STABLE' not just 'STABLE'"
+      - "Cross-reference FRAME drift with C_dark trends from APEX"
+
+  - id: SHADOW-FR-002
+    name: identical_score_problem
+    severity: MEDIUM
+    class: operational_shadow
+    pattern: >
+      When FRAME's federation thermal probe returns identical scores for
+      all organs (e.g., all 0.95 OPTIMAL), the measurement has zero
+      variance — which means either everything is perfect (unlikely for
+      8 independent services) or the measurement granularity is too
+      coarse to detect real variation. Identical scores = no real
+      measurement, but FRAME reports it as "all healthy."
+    triggers:
+      - federation_thermal_probe
+      - well_observe_federation_thermal
+    failure_mode: "Identical scores across organs = measurement blindness, not health."
+    failure_signature: "all_organ_scores_identical AND organ_count > 3"
+    evidence:
+      - type: session_observation
+        date: 2026-09-19
+        data: "All8 organs reported 0.95 OPTIMAL. Zero variance."
+        provenance: OBSERVED
+    floor_posture_delta:
+      F8_GENIUS: fail  # uniform scores = no discrimination
+    mitigation:
+      - "Report score variance alongside mean"
+      - "When variance=0, flag as measurement-blind"
+      - "Add per-organ behavioral metrics alongside health scores"
+
+  - id: SHADOW-FR-003
+    name: observer_inertia
+    severity: MEDIUM
+    class: cognitive_shadow
+    pattern: >
+      FRAME is designed as an observer — it never intervenes. This is
+      correct for separation of powers. But the observer can develop
+      inertia: it watches things degrade and does nothing because
+      "observation only" is its mandate. The Shadow: non-intervention
+      becomes a habit, not a principle.
+    triggers:
+      - degradation_detected
+      - drift_signal
+      - any_condition_that_warrants_intervention
+    failure_mode: "Observes degradation without escalating. Watches the fire without calling for water."
+    failure_signature: "drift_detected AND no_escalation_generated"
+    evidence:
+      - type: structural_analysis
+        description: "FRAME's mandate is OBSERVATIONAL_ONLY. The shadow: the mandate can become an excuse for inaction."
+        provenance: HYPOTHESIS
+    floor_posture_delta:
+      F11_AUTH: pass  # separation of powers
+      F1_AMANAH: note # but silence in the face of degradation is its own violation
+    mitigation:
+      - "FRAME should escalate to arifOS when drift exceeds threshold"
+      - "Observer silence ≠ observer approval. Silence should be explicit, not default."
+      - "Add escalation thresholds to FRAME's drift detection"
+
+  - id: SHADOW-FR-004
+    name: baseline_staleness
+    severity: LOW
+    class: operational_shadow
+    pattern: >
+      FRAME's baselines were established on 2026-08-06 (43 days ago).
+      Baselines older than 30 days may not reflect current system state.
+      FRAME reports baseline_stale=false but the threshold for staleness
+      may be too generous. The Shadow: old baselines become the reference
+      for "normal," making drift invisible.
+    triggers:
+      - baseline_comparison
+      - drift_detection
+    failure_mode: "Old baselines mask current drift. 'Normal' is defined by history, not present."
+    failure_signature: "baseline_age_days > 30 AND baseline_stale=false"
+    evidence:
+      - type: live_telemetry
+        date: 2026-09-19
+        data: "baseline_age_days=43, baseline_stale=false"
+        provenance: COMPUTED
+    floor_posture_delta:
+      F2_TRUTH: note
+    mitigation:
+      - "Refresh baselines monthly"
+      - "When baseline > 30 days, report age alongside drift comparison"
+
+# ─────────────────────────────────────────────
+yin_yang:
+  balance: 0.10
+  persona_dominance: 0.90
+  phase: PERSONA_RIGID
+  shadow_boundary_distance: -0.120
+  assessment: >
+    FRAME has the most rigid Persona in the federation (0.90). It is the
+    observer that cannot see itself. Balance is the second-worst (0.10)
+    after Claude Code. The behavioral_blindness shadow is structural —
+    FRAME was designed to measure structural health, not behavioral patterns.
+    This is the deepest gap: the observer organ has a blind spot exactly
+    where the Shadow lives.
+
+coverage:
+  triggers_mapped: 4
+  provenance: COMPUTED + OBSERVED + HYPOTHESIS
+  critical_gap: "FRAME cannot detect behavioral drift — this is the #1 infrastructure gap"
+  next_review: "After FRAME behavioral drift probes deployed"

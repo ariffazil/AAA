@@ -1,0 +1,8 @@
+# Behavioral Drift Report
+Alerts: 2 | Warnings: 2 | OK: 1
+
+🟢 tool_call_entropy: 0.79 [OK] — H=1.25 bits, 3 unique tools, 6 calls. Healthy exploration
+🟡 question_back_rate: 0.5 [WARNING] — 2/4 responses contain questions. Healthy
+🔴 verbosity_drift: 0.377 [ALERT] — slope=175.0 chars/response, mean=464. Increasing verbosity — narrative momentum
+🔴 receipt_output_ratio: 3.33 [ALERT] — receipts=5000B, output=1500B. Receipt theater
+🟡 shadow_activation_rate: 0.3 [WARNING] — 3/10 interactions triggered shadow checks. Normal
