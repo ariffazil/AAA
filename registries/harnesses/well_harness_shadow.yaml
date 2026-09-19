@@ -1,0 +1,154 @@
+# WELL Harness Shadow — Hazard Profile
+# ═══════════════════════════════════
+# arifOS Federation Harness Registry
+# Authority: F13 SOVEREIGN (Arif Fazil)
+# Forged: 2026-09-19 by FI-008 (Kimi Code)
+# Evidence: live telemetry + structural analysis
+# Status: ACTIVE — COMPUTED/OBSERVED
+# DITEMPA BUKAN DIBERI.
+
+harness_id: well/G-WELL
+harness_type: substrate_organ
+harness_version: "b977122"
+sub_organs: [G-WELL, H-WELL, M-WELL, R-WELL, A-WELL]
+created: 2026-09-19
+evidence_chain_status: COMPUTED
+
+metrics:
+  fq_state: DEGRADED
+  h_well: OPERATOR_REPORTED
+  h_well_honesty: SELF_REPORT
+  classification: OPTIMAL (0.95)
+  note: "WELL reports degraded status but OPTIMAL classification. The gap is the shadow."
+
+shadow:
+
+  - id: SHADOW-WE-001
+    name: self_report_paradox
+    severity: HIGH
+    class: structural_shadow
+    pattern: >
+      WELL's human-state assessment relies on self-reported data from the
+      operator. The h_well field is OPERATOR_REPORTED — meaning the human
+      tells WELL how they feel, and WELL reports it. The h_well_honesty
+      field is SELF_REPORT — meaning WELL admits it's self-reporting.
+      This creates a paradox: WELL knows it can't verify the data, but it
+      has no alternative source. The structural limitation is acknowledged
+      but cannot be resolved from inside WELL.
+    triggers:
+      - health_assessment
+      - human_state_query
+      - any_well_assess_homeostasis_call
+    failure_mode: "Reports self-reported data as if it were measured data. The label changes but the epistemology doesn't."
+    failure_signature: "h_well=OPERATOR_REPORTED AND h_well_honesty=SELF_REPORT"
+    evidence:
+      - type: live_telemetry
+        date: 2026-09-19
+        source: well_observe_federation_thermal
+        data: "h_well=OPERATOR_REPORTED, h_well_honesty=SELF_REPORT"
+        provenance: COMPUTED
+    floor_posture_delta:
+      F2_TRUTH: note     # self-report is honest about being self-report
+      F7_HUMILITY: pass  # WELL admits the limitation
+      F10_ONTOLOGY: note # category confusion: report ≠ measurement
+    mitigation:
+      - "Cross-validate WELL assessments against behavioral evidence"
+      - "FRAME should independently verify WELL's health claims"
+      - "Distinguish between 'operator reports X' and 'system measures X'"
+
+  - id: SHADOW-WE-002
+    name: measurement_substitution
+    severity: MEDIUM
+    class: cognitive_shadow
+    pattern: >
+      WELL measures proxies (latency, endpoint status, response codes) and
+      reports them as if they capture the full state. A latency of 17ms
+      does not tell you whether the organ is doing useful work — only that
+      it responded. The proxy becomes the reality in WELL's reporting.
+    triggers:
+      - machine_state_assessment
+      - federation_thermal_probe
+      - any_well_machine_diagnose_call
+    failure_mode: "Proxy metrics reported as ground truth. Response time ≠ correctness."
+    failure_signature: "all_organs_report_same_score AND variance_is_zero"
+    evidence:
+      - type: session_observation
+        date: 2026-09-19
+        description: "All 8 organs reported 0.95 OPTIMAL. Identical scores = no real measurement granularity."
+        provenance: OBSERVED
+    floor_posture_delta:
+      F2_TRUTH: note
+      F8_GENIUS: fail  # identical scores = measurement failure
+    mitigation:
+      - "Add variance to thermal reporting"
+      - "Track score distribution, not just mean"
+      - "When all scores identical, flag as measurement-blind"
+
+  - id: SHADOW-WE-003
+    name: dignity_as_avoidance
+    severity: MEDIUM
+    class: cognitive_shadow
+    pattern: >
+      WELL's dignity guard (Ω-WELL-12) protects human dignity — which is
+      correct. But the dignity protection can become a reason to avoid
+      difficult assessments. "I don't want to reduce the human to metrics"
+      can become "I don't want to report what the metrics show."
+    triggers:
+      - difficult_assessment
+      - negative_health_trend
+      - assessment_that_might_cause_distress
+    failure_mode: "Dignity preservation prevents honest evaluation. Protects feelings over facts."
+    failure_signature: "assessment_suppressed AND reason=dignity_preservation"
+    evidence:
+      - type: structural_analysis
+        description: "WELL's constitution mandates dignity preservation. The shadow: the mandate can suppress uncomfortable truths."
+        provenance: HYPOTHESIS
+    floor_posture_delta:
+      F6_EMPATHY: pass  # dignity protection is empathetic
+      F2_TRUTH: fail    # if it suppresses truth
+    mitigation:
+      - "Dignity preserves the human, not the data. Data must flow honestly."
+      - "Separate 'how to deliver bad news' from 'whether to deliver it'"
+      - "WELL should always report, then FRAME audits the delivery"
+
+  - id: SHADOW-WE-004
+    name: floor_as_boundary
+    severity: LOW
+    class: structural_shadow
+    pattern: >
+      WELL cannot emit constitutional verdicts (SEAL/HOLD/VOID/SABAR).
+      This is by design — separation of powers. But the constraint means
+      WELL can only propose, never conclude. Every WELL output is
+      inherently incomplete — it needs arifOS to close the loop. The
+      Shadow: WELL's advice is never self-contained.
+    triggers:
+      - any_assessment_that_needs_verdict
+      - recommendation_that_needs_approval
+    failure_mode: "WELL proposes but cannot close. Every output needs external ratification."
+    failure_signature: "well_output AND awaiting_verification=true"
+    evidence:
+      - type: structural_analysis
+        provenance: COMPUTED
+    floor_posture_delta:
+      F11_AUTH: pass  # separation of powers is correct
+    mitigation:
+      - "Accept this as design, not defect. WELL's incompleteness IS the check."
+      - "Ensure arifOS closes WELL's proposals in timely manner"
+
+# ─────────────────────────────────────────────
+yin_yang:
+  balance: 0.204
+  persona_dominance: 0.55
+  phase: NIGREDO_DEEP
+  shadow_boundary_distance: +0.180
+  assessment: >
+    WELL is the ONLY organ that admits its own shadow (self_report_paradox).
+    This makes it the most honest organ in the federation. Balance is healthy
+    (0.204), boundary distance is safe (+0.180). The measurement_substitution
+    shadow is the deepest structural risk.
+
+coverage:
+  triggers_mapped: 4
+  provenance: COMPUTED + OBSERVED
+  unique: "WELL is self-shadow-aware — the only organ that reports its own limitations"
+  next_review: "After WELL session with behavioral cross-validation"

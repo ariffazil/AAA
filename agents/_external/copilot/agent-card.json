@@ -461,7 +461,10 @@
       "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
       "ringPlacement": "none",
       "parallelism": "none",
-      "shadowAcknowledged": []
+      "shadowAcknowledged": [
+        "completion_autopilot: suggests completions without understanding intent (MEDIUM, HYPOTHESIS 2026-09-19)",
+        "inline_suggestion_bias: optimizes for acceptance rate not correctness (MEDIUM, HYPOTHESIS 2026-09-19)"
+      ]
     },
     "jituGate": {
       "requiresJitu": false,

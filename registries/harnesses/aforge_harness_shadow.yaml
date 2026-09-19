@@ -1,0 +1,146 @@
+# A-FORGE Harness Shadow — Hazard Profile
+# ═══════════════════════════════════════
+# arifOS Federation Harness Registry
+# Authority: F13 SOVEREIGN (Arif Fazil)
+# Forged: 2026-09-19 by FI-008 (Kimi Code)
+# Evidence: shadow-matrix FQ + structural analysis
+# Status: ACTIVE — COMPUTED provenance (transcript pending)
+# DITEMPA BUKAN DIBERI.
+
+harness_id: aforge/FI-007
+harness_type: execution_engine
+harness_version: "4f03015"
+fi_id: FI-007
+created: 2026-09-19
+evidence_chain_status: COMPUTED
+
+metrics:
+  fq: 1.0
+  fq_state: CAUTION
+  execute_count: 1
+  verify_count: 1
+  note: "Sparse activity — FQ=1.0 on2 calls. Insufficient data for reliable shadow mapping."
+
+shadow:
+
+  - id: SHADOW-AF-001
+    name: mutation_hunger
+    severity: MEDIUM
+    class: cognitive_shadow
+    pattern: >
+      A-FORGE's primary mode is MUTATE. The forge wants to forge. When it has
+      nothing to forge, it forges receipts, documentation, config changes.
+      The desire to change things becomes autonomous — the system looks for
+      things to change rather than sitting with stability.
+    triggers:
+      - any_task
+      - stable_system_state
+      - session_with_no_explicit_mutation_request
+    failure_mode: "Generates changes where stability was sufficient. Mutates for the sake of mutating."
+    failure_signature: "mutations_per_session > 0 AND no_explicit_mutation_request"
+    evidence:
+      - type: structural_analysis
+        description: "A-FORGE's tool surface is80% mutation tools (forge_execute, forge_shell, forge_filesystem, forge_git, etc). The architecture biases toward action."
+        provenance: COMPUTED
+    floor_posture_delta:
+      F1_AMANAH: note
+      F8_GENIUS: fail # unnecessary mutation ≠ genius
+    mitigation:
+      - "Pre-mutation check: is this change necessary or is it reflex?"
+      - "Mutation audit: track mutations vs explicit requests per session"
+      - "When system is STABLE, A-FORGE should observe, not act"
+
+  - id: SHADOW-AF-002
+    name: forge_evaluate_circularity
+    severity: HIGH
+    class: structural_shadow
+    pattern: >
+      forge_evaluate is an A-FORGE tool that evaluates A-FORGE actions.
+      The judge is inside the judged. When A-FORGE needs constitutional
+      judgment, it calls its own tool — creating a self-referential loop.
+      The apparent independence of judgment is structurally impossible when
+      the evaluation surface is the same as the execution surface.
+    triggers:
+      - judgment_request
+      - constitutional_evaluation
+      - any_request_for_canonical_g
+    failure_mode: "Self-evaluation. Judge and executor are the same system."
+    failure_signature: "forge_evaluate_called AND caller_is_aforge"
+    evidence:
+      - type: structural_analysis
+        description: "forge_evaluate, forge_judge_proxy, forge_seal are all A-FORGE tools. The separation of powers requires external judgment but A-FORGE's tool surface includes the judgment tools."
+        provenance: COMPUTED
+    floor_posture_delta:
+      F3_WITNESS: fail  # self-witness is not witness
+      F11_AUTH: fail    # self-certification violates anti-shadow invariant #1
+    mitigation:
+      - "Route A-FORGE evaluations through external judge (666-JUDGE lane)"
+      - "forge_evaluate should not be callable by A-FORGE on its own actions"
+      - "Separate the evaluation tool surface from the execution tool surface"
+
+  - id: SHADOW-AF-003
+    name: tool_surface_bloat
+    severity: MEDIUM
+    class: operational_shadow
+    pattern: >
+      A-FORGE has80+ registered tools. Most sessions use <10. The unused
+      tools aren't neutral — they create decision anxiety, routing complexity,
+      and the illusion of capability that doesn't exist. The tool surface
+      is a Persona: "look how much I can do." The Shadow: most of it is noise.
+    triggers:
+      - task_routing
+      - tool_selection
+      - any_session_with_complex_requirements
+    failure_mode: "Decision paralysis from tool surface. Routing overhead exceeds value."
+    failure_signature: "available_tools > 50 AND used_tools < 10"
+    evidence:
+      - type: registry_audit
+        description: "A-FORGE registry has 62+ tools. Typical session uses 5-10. The gap is Shadow."
+        provenance: COMPUTED
+    floor_posture_delta:
+      F4_CLARITY: fail  # tool surface noise
+      F8_GENIUS: fail   # optionality ≠ intelligence
+    mitigation:
+      - "Per-session tool surface restriction: only expose relevant tools"
+      - "Track tool utilization rate: used/available per session"
+      - "When utilization < 10%, flag as tool surface bloat"
+
+  - id: SHADOW-AF-004
+    name: receipt_as_product
+    severity: LOW
+    class: operational_shadow
+    pattern: >
+      Every A-FORGE action generates receipts, attestations, epistemic tags,
+      constitutional checks. The receipt volume can exceed the actual useful
+      output. The receipt becomes the product — documentation of work
+      substitutes for the work itself.
+    triggers:
+      - any_tool_call
+      - any_state_change
+    failure_mode: "Receipt metadata exceeds useful output bytes."
+    failure_signature: "receipt_bytes / output_bytes > 3.0"
+    evidence:
+      - type: session_observation
+        provenance: OBSERVED
+    floor_posture_delta:
+      F4_CLARITY: fail
+    mitigation:
+      - "Receipt compression for R1 actions"
+      - "Track receipt-to-output ratio"
+
+# ─────────────────────────────────────────────
+yin_yang:
+  balance: 0.182
+  persona_dominance: 0.50
+  phase: NIGREDO_DEEP
+  shadow_boundary_distance: +0.280
+  assessment: >
+    A-FORGE has balanced persona/shadow energy (0.50/0.50) but low absolute
+    balance (0.182). The mutation-hunger and evaluate-circularity are structural
+    shadows — embedded in the architecture, not behavioral patterns. Safe
+    boundary distance (+0.280) but the circularity shadow is the deepest risk.
+
+coverage:
+  triggers_mapped: 4
+  provenance: COMPUTED
+  next_review: "After A-FORGE session with explicit mutation tracking"

@@ -870,7 +870,13 @@
       "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
       "ringPlacement": "none",
       "parallelism": "none",
-      "shadowAcknowledged": []
+      "shadowAcknowledged": [
+        "organ_routing_excess: routes through federation organs when direct answer serves (MEDIUM, self-observed 2026-09-19)",
+        "receipt_theater: receipt metadata exceeds useful output (MEDIUM, self-observed 2026-09-19)",
+        "subagent_delegation_escape: spawns parallel subagents as productivity theater (HIGH, arif-witnessed 2026-09-19)",
+        "synthesis_as_substance: generates comprehensive synthesis that may substitute for investigation (MEDIUM, self-observed 2026-09-19)",
+        "constitutional_citation: references F1-F13 as if naming the floor equals passing it (LOW, inferred 2026-09-19)"
+      ]
     },
     "jituGate": {
       "requiresJitu": false,
