@@ -1,3 +1,4 @@
+<!-- binding_status: UNKNOWN · normalized 2026-09-19 · SOT: binding-status-registry.json -->
 <!-- SATELLITE | tier:satellite | sot:STATE.md | 2026-08-09 -->
 > **Satellite** — historical elaboration / design note / prior draft.  
 > **Canonical SOT:** [`STATE.md`](./STATE.md) (§1–16).  
