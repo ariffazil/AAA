@@ -1,0 +1,147 @@
+{
+  "ledger": "namespace-collapse-merge",
+  "operation": "merge_skill_family",
+  "merge_name": "control-audit",
+  "canonical_skill": "governance-audit",
+  "canonical_path": "/root/AAA/skills/governance-audit/SKILL.md",
+  "canonical_sha256": "49f84bb2e869bd75509d052e3581730752c8fb4a938ee8d788cf4a0f63e6f4fc",
+  "canonical_size_bytes": 78746,
+  "authority": "F13 sovereign in-chat order 2026-09-19 \u2014 eight skills answering one question become one skill with modes",
+  "date": "2026-09-19",
+  "ts": "2026-09-19T01:13:29.490963+00:00",
+  "canon": "/root/AAA/skills",
+  "freeze_root": "/root/AAA/skills-retired/2026-09-19-namespace-collapse",
+  "undo": "mv <new_folder> <original_folder>   (paths recorded below; parent dirs may need mkdir -p)",
+  "merged_from": [
+    {
+      "original_folder": "/root/AAA/skills/audit/control-integrity-audit",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/control-audit/control-integrity-audit",
+      "original_path": "/root/AAA/skills/audit/control-integrity-audit/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/control-audit/control-integrity-audit/SKILL.md",
+      "sha256_skilmd_before_move": "d2811b47492ef54e801606054b1f9580cc2941a4758fb77e63a6e21b80b6a332",
+      "size_bytes": 6800,
+      "files_moved": [
+        "SKILL.md",
+        "references/decoy-catalogue.md"
+      ],
+      "new_mode": "MODE-CONTROL-INTEGRITY"
+    },
+    {
+      "original_folder": "/root/AAA/skills/audit/declared-vs-enforced-control-audit",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/control-audit/declared-vs-enforced-control-audit",
+      "original_path": "/root/AAA/skills/audit/declared-vs-enforced-control-audit/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/control-audit/declared-vs-enforced-control-audit/SKILL.md",
+      "sha256_skilmd_before_move": "8bd5fdab8ddf12045835bf31096f3373cfe31797fc372d21cf343dabe95d2895",
+      "size_bytes": 5182,
+      "files_moved": [
+        "SKILL.md",
+        "scripts/__pycache__/contract_probe.cpython-313.pyc",
+        "scripts/contract_probe.py"
+      ],
+      "new_mode": "MODE-DECLARED-VS-ENFORCED"
+    },
+    {
+      "original_folder": "/root/AAA/skills/governance/control-mechanism-audit",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/control-audit/control-mechanism-audit",
+      "original_path": "/root/AAA/skills/governance/control-mechanism-audit/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/control-audit/control-mechanism-audit/SKILL.md",
+      "sha256_skilmd_before_move": "0b13102ccd2969b1be1b28b9dd72b9053bb4ddb2a1f0f00c5e412d8780fcf201",
+      "size_bytes": 8287,
+      "files_moved": [
+        "SKILL.md",
+        "references/seal-and-delivery-verification.md"
+      ],
+      "new_mode": "MODE-NAMED-MECHANISM"
+    },
+    {
+      "original_folder": "/root/AAA/skills/governance/named-mechanism-audit",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/control-audit/named-mechanism-audit",
+      "original_path": "/root/AAA/skills/governance/named-mechanism-audit/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/control-audit/named-mechanism-audit/SKILL.md",
+      "sha256_skilmd_before_move": "fcea9502863bfd14a94369db1c73aeb6587f886fd57234c1674ff5b781a575c0",
+      "size_bytes": 8748,
+      "files_moved": [
+        "SKILL.md"
+      ],
+      "new_mode": "MODE-NAMED-MECHANISM"
+    },
+    {
+      "original_folder": "/root/AAA/skills/audit/name-requires-mechanism",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/control-audit/name-requires-mechanism",
+      "original_path": "/root/AAA/skills/audit/name-requires-mechanism/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/control-audit/name-requires-mechanism/SKILL.md",
+      "sha256_skilmd_before_move": "f1ee70b19755d6c04ebceb4aac976eb2896cf1ce6791726dbf63d32809d5099f",
+      "size_bytes": 5291,
+      "files_moved": [
+        "SKILL.md"
+      ],
+      "new_mode": "MODE-NAMED-MECHANISM"
+    },
+    {
+      "original_folder": "/root/AAA/skills/enforcement-coverage-audit",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/control-audit/enforcement-coverage-audit",
+      "original_path": "/root/AAA/skills/enforcement-coverage-audit/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/control-audit/enforcement-coverage-audit/SKILL.md",
+      "sha256_skilmd_before_move": "b1d8fa207033ff57061294c769f60b29e2006ca5647d60d4ce677e7fab33a852",
+      "size_bytes": 11412,
+      "files_moved": [
+        "SKILL.md",
+        "references/sensor-falsification.md"
+      ],
+      "new_mode": "MODE-ENFORCEMENT-COVERAGE"
+    },
+    {
+      "original_folder": "/root/AAA/skills/governance/control-seal-verification",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/control-audit/control-seal-verification",
+      "original_path": "/root/AAA/skills/governance/control-seal-verification/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/control-audit/control-seal-verification/SKILL.md",
+      "sha256_skilmd_before_move": "2ab04483d5dfc1a7c1683d12e337d091489a567216ba6a4f936654809f51eaf4",
+      "size_bytes": 4499,
+      "files_moved": [
+        "SKILL.md",
+        "references/sealing-a-control.md"
+      ],
+      "new_mode": "MODE-SEAL-VERIFICATION"
+    },
+    {
+      "original_folder": "/root/AAA/skills/court-audit/proxy-verification-audit",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/control-audit/proxy-verification-audit",
+      "original_path": "/root/AAA/skills/court-audit/proxy-verification-audit/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/control-audit/proxy-verification-audit/SKILL.md",
+      "sha256_skilmd_before_move": "f99361daab88ca8c3c3eb1b3dd278c91a45a753cba130899e66717812f357d00",
+      "size_bytes": 7417,
+      "files_moved": [
+        "SKILL.md",
+        "references/metric-derivation-discipline.md"
+      ],
+      "new_mode": "MODE-PROXY"
+    }
+  ],
+  "support_files_copied_into_canonical": [
+    {
+      "from": "/root/AAA/skills/audit/control-integrity-audit/references/decoy-catalogue.md",
+      "to": "/root/AAA/skills/governance-audit/references/decoy-catalogue.md"
+    },
+    {
+      "from": "/root/AAA/skills/governance/control-mechanism-audit/references/seal-and-delivery-verification.md",
+      "to": "/root/AAA/skills/governance-audit/references/seal-and-delivery-verification.md"
+    },
+    {
+      "from": "/root/AAA/skills/enforcement-coverage-audit/references/sensor-falsification.md",
+      "to": "/root/AAA/skills/governance-audit/references/sensor-falsification.md"
+    },
+    {
+      "from": "/root/AAA/skills/governance/control-seal-verification/references/sealing-a-control.md",
+      "to": "/root/AAA/skills/governance-audit/references/sealing-a-control.md"
+    },
+    {
+      "from": "/root/AAA/skills/court-audit/proxy-verification-audit/references/metric-derivation-discipline.md",
+      "to": "/root/AAA/skills/governance-audit/references/metric-derivation-discipline.md"
+    },
+    {
+      "from": "/root/AAA/skills/audit/declared-vs-enforced-control-audit/scripts/contract_probe.py",
+      "to": "/root/AAA/skills/governance-audit/scripts/contract_probe.py"
+    }
+  ],
+  "note": "sha256_skilmd_before_move computed on the original SKILL.md prior to relocation; folder contents were not modified by the move. A copy of each support file also remains inside its frozen original folder."
+}

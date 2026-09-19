@@ -1,0 +1,122 @@
+{
+  "ts": "2026-09-19T01:22:51.733624+00:00",
+  "authority": "ARIF — SKILLSTORE_NAMESPACE_COLLAPSE_V2",
+  "canon": "/root/AAA/skills",
+  "freeze_root": "/root/AAA/skills-retired/2026-09-19-v2-first-party",
+  "canonical_successor": "/root/AAA/skills/first-party-evidence-audit/SKILL.md",
+  "collapse": "6 identities -> 1 (first-party-evidence-audit); 5 retired names become modes",
+  "retention_test": "python3 /root/AAA/skills/skill-library-integrity/scripts/discovery_guard.py /root/AAA/skills/first-party-evidence-audit /root/AAA/skills-retired/2026-09-19-v2-first-party/relationship-evidence-audit /root/AAA/skills-retired/2026-09-19-v2-first-party/relationship-reality-audit /root/AAA/skills-retired/2026-09-19-v2-first-party/first-party-corpus-audit /root/AAA/skills-retired/2026-09-19-v2-first-party/human-relationship-audit /root/AAA/skills-retired/2026-09-19-v2-first-party/human-bond-reality-audit",
+  "items": [
+    {
+      "name": "relationship-evidence-audit",
+      "original_folder": "relationship-evidence-audit",
+      "original_path": "/root/AAA/skills/audit/relationship-evidence-audit",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-v2-first-party/relationship-evidence-audit",
+      "sha256_of_SKILL.md": "de1b8365b6732191f9962d2740bb7c012ee4235a6315c3b79a95178900a8b492",
+      "sha256_of_SKILL": "de1b8365b6732191f9962d2740bb7c012ee4235a6315c3b79a95178900a8b492",
+      "files": {
+        "SKILL.md": "de1b8365b6732191f9962d2740bb7c012ee4235a6315c3b79a95178900a8b492",
+        "references/output-template.md": "4db133fa6d01380e01fa41a96d5c2952b4df9bfe537030a9b31654963edc32b4",
+        "scripts/relationship_measures.py": "4c2e33dbc448bdb743ae191a5396fb2a772fec6e6362dd5631678ea36ac09914"
+      },
+      "files_moved": 3,
+      "files_moved_paths": [
+        "SKILL.md",
+        "references/output-template.md",
+        "scripts/relationship_measures.py"
+      ],
+      "new_mode": "M2 - Source class & the AI-synthesis trap (also M4, M7, M10, M13)",
+      "class": "F-IDENTITY-COLLAPSE",
+      "why": "six identities answered one question - does this bond/relationship/claim survive contact with the first-party record; body merged into first-party-evidence-audit as modes, support files carried forward live, no capability removed",
+      "undo": "mv /root/AAA/skills-retired/2026-09-19-v2-first-party/relationship-evidence-audit /root/AAA/skills/audit/relationship-evidence-audit"
+    },
+    {
+      "name": "relationship-reality-audit",
+      "original_folder": "relationship-reality-audit",
+      "original_path": "/root/AAA/skills/audit/relationship-reality-audit",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-v2-first-party/relationship-reality-audit",
+      "sha256_of_SKILL.md": "40301372296ba3a84ecdf29b1ad041f492ffdca2aebde9f375426bcdab7c9fdd",
+      "sha256_of_SKILL": "40301372296ba3a84ecdf29b1ad041f492ffdca2aebde9f375426bcdab7c9fdd",
+      "files": {
+        "SKILL.md": "40301372296ba3a84ecdf29b1ad041f492ffdca2aebde9f375426bcdab7c9fdd",
+        "references/item-ladders.md": "d2e951d16d10197794bc9c5f79318af9cd42a91203605af802df3b6c74ad5126"
+      },
+      "files_moved": 2,
+      "files_moved_paths": [
+        "SKILL.md",
+        "references/item-ladders.md"
+      ],
+      "new_mode": "M11 - Negative evidence, void map, and the three UNKNOWNs (also M1, M8, M12)",
+      "class": "F-IDENTITY-COLLAPSE",
+      "why": "six identities answered one question - does this bond/relationship/claim survive contact with the first-party record; body merged into first-party-evidence-audit as modes, support files carried forward live, no capability removed",
+      "undo": "mv /root/AAA/skills-retired/2026-09-19-v2-first-party/relationship-reality-audit /root/AAA/skills/audit/relationship-reality-audit"
+    },
+    {
+      "name": "first-party-corpus-audit",
+      "original_folder": "first-party-corpus-audit",
+      "original_path": "/root/AAA/skills/governance/first-party-corpus-audit",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-v2-first-party/first-party-corpus-audit",
+      "sha256_of_SKILL.md": "569dc735cf4f3fef7f11ab8a054763885f01172e9eed5d5115e110a149fc1a07",
+      "sha256_of_SKILL": "569dc735cf4f3fef7f11ab8a054763885f01172e9eed5d5115e110a149fc1a07",
+      "files": {
+        "SKILL.md": "569dc735cf4f3fef7f11ab8a054763885f01172e9eed5d5115e110a149fc1a07",
+        "references/contamination-and-cross-corpus.md": "44a38e7ad99f6d701e28245289e337e410cc52f6f9639bce28e361f81b529af1",
+        "references/corpus-integrity-gates.md": "c8744ec0b4239834d51631c70c70949acc233dc43618ef18b4a0beda7f2f3d44",
+        "references/evidence-ladders-and-counterfactuals.md": "f86df3bd5dffb61c189020bf2c0b3cf3a33e750eeebb993d9b068c43ee3d7ab9"
+      },
+      "files_moved": 4,
+      "files_moved_paths": [
+        "SKILL.md",
+        "references/contamination-and-cross-corpus.md",
+        "references/corpus-integrity-gates.md",
+        "references/evidence-ladders-and-counterfactuals.md"
+      ],
+      "new_mode": "M1 - Corpus sensor & integrity gates (also M11, M6, M13)",
+      "class": "F-IDENTITY-COLLAPSE",
+      "why": "six identities answered one question - does this bond/relationship/claim survive contact with the first-party record; body merged into first-party-evidence-audit as modes, support files carried forward live, no capability removed",
+      "undo": "mv /root/AAA/skills-retired/2026-09-19-v2-first-party/first-party-corpus-audit /root/AAA/skills/governance/first-party-corpus-audit"
+    },
+    {
+      "name": "human-relationship-audit",
+      "original_folder": "human-relationship-audit",
+      "original_path": "/root/AAA/skills/research/human-relationship-audit",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-v2-first-party/human-relationship-audit",
+      "sha256_of_SKILL.md": "ac3a3616bb5283d0b9c9968b3c4cf8af8fdddc85f0b688a73547bc58f7f4c5bf",
+      "sha256_of_SKILL": "ac3a3616bb5283d0b9c9968b3c4cf8af8fdddc85f0b688a73547bc58f7f4c5bf",
+      "files": {
+        "SKILL.md": "ac3a3616bb5283d0b9c9968b3c4cf8af8fdddc85f0b688a73547bc58f7f4c5bf",
+        "references/archive-parsing-pitfalls.md": "4df3dfb45d491c6b4224a6550f73dd213882563acafa9e4cb4d13013037875c3"
+      },
+      "files_moved": 2,
+      "files_moved_paths": [
+        "SKILL.md",
+        "references/archive-parsing-pitfalls.md"
+      ],
+      "new_mode": "M6 - Behavioural ladders & counterfactuals (also M4, M10, M14)",
+      "class": "F-IDENTITY-COLLAPSE",
+      "why": "six identities answered one question - does this bond/relationship/claim survive contact with the first-party record; body merged into first-party-evidence-audit as modes, support files carried forward live, no capability removed",
+      "undo": "mv /root/AAA/skills-retired/2026-09-19-v2-first-party/human-relationship-audit /root/AAA/skills/research/human-relationship-audit"
+    },
+    {
+      "name": "human-bond-reality-audit",
+      "original_folder": "human-bond-reality-audit",
+      "original_path": "/root/AAA/skills/verification-discipline/human-bond-reality-audit",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-v2-first-party/human-bond-reality-audit",
+      "sha256_of_SKILL.md": "dc41b8de95c962e29af200dfed459cd12f5f98866bd778468828a33b89aaf2f9",
+      "sha256_of_SKILL": "dc41b8de95c962e29af200dfed459cd12f5f98866bd778468828a33b89aaf2f9",
+      "files": {
+        "SKILL.md": "dc41b8de95c962e29af200dfed459cd12f5f98866bd778468828a33b89aaf2f9",
+        "references/corpus-forensics-pitfalls.md": "9c961a014fecf2c9a5a1cb890f4eb4a62df8a4d14d027c09942d542b59fb1fc0"
+      },
+      "files_moved": 2,
+      "files_moved_paths": [
+        "SKILL.md",
+        "references/corpus-forensics-pitfalls.md"
+      ],
+      "new_mode": "M12 - Firewalls, boundaries and refusal cases (also M1, M11)",
+      "class": "F-IDENTITY-COLLAPSE",
+      "why": "six identities answered one question - does this bond/relationship/claim survive contact with the first-party record; body merged into first-party-evidence-audit as modes, support files carried forward live, no capability removed",
+      "undo": "mv /root/AAA/skills-retired/2026-09-19-v2-first-party/human-bond-reality-audit /root/AAA/skills/verification-discipline/human-bond-reality-audit"
+    }
+  ]
+}

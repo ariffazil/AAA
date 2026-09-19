@@ -1,0 +1,162 @@
+[
+  {
+    "merge_dir": "agentic-state",
+    "target": "agentic-state",
+    "merge_dir_exists": true,
+    "target_exists": true,
+    "target_bytes": 16964,
+    "target_sha": "f6f969d81e0c",
+    "sources_frozen": [
+      "claude-agentic-state",
+      "kimi-agentic-state",
+      "opencode-agentic-state",
+      "qwen-agentic-state"
+    ],
+    "ledger": true,
+    "sources_still_in_canon": []
+  },
+  {
+    "merge_dir": "zen-router",
+    "target": "zen-router",
+    "merge_dir_exists": true,
+    "target_exists": true,
+    "target_bytes": 25885,
+    "target_sha": "447316e4558c",
+    "sources_frozen": [
+      "COPILOT-zen-router",
+      "claude-zen-router",
+      "opencode-zen-router",
+      "qwen-zen-router"
+    ],
+    "ledger": true,
+    "sources_still_in_canon": []
+  },
+  {
+    "merge_dir": "meta-mesa",
+    "target": "meta-mesa",
+    "merge_dir_exists": true,
+    "target_exists": true,
+    "target_bytes": 12818,
+    "target_sha": "1db502a2c961",
+    "sources_frozen": [
+      "claude-meta-mesa",
+      "opencode-meta-mesa",
+      "qwen-meta-mesa"
+    ],
+    "ledger": true,
+    "sources_still_in_canon": [
+      "claude-meta-mesa",
+      "opencode-meta-mesa",
+      "qwen-meta-mesa"
+    ]
+  },
+  {
+    "merge_dir": "propose-seal",
+    "target": "propose-seal",
+    "merge_dir_exists": true,
+    "target_exists": true,
+    "target_bytes": 20233,
+    "target_sha": "aa14ebd017d5",
+    "sources_frozen": [
+      "hermes-tree",
+      "hermes-tree-verdict",
+      "kimi-tree",
+      "kimi-tree-hermes",
+      "kimi-tree-opencode",
+      "opencode-config-tree"
+    ],
+    "ledger": true,
+    "sources_still_in_canon": []
+  },
+  {
+    "merge_dir": "control-audit",
+    "target": "governance-audit",
+    "merge_dir_exists": true,
+    "target_exists": true,
+    "target_bytes": 78746,
+    "target_sha": "49f84bb2e869",
+    "sources_frozen": [
+      "control-integrity-audit",
+      "control-mechanism-audit",
+      "control-seal-verification",
+      "declared-vs-enforced-control-audit",
+      "enforcement-coverage-audit",
+      "name-requires-mechanism",
+      "named-mechanism-audit",
+      "proxy-verification-audit"
+    ],
+    "ledger": true,
+    "sources_still_in_canon": []
+  },
+  {
+    "merge_dir": "voice-lane",
+    "target": "voice-lane",
+    "merge_dir_exists": true,
+    "target_exists": true,
+    "target_bytes": 67775,
+    "target_sha": "3ded0747a492",
+    "sources_frozen": [
+      "audio-roundtrip-diagnostics",
+      "minimax-voice-design-prompts",
+      "nusantara-acoustic-infrastructure",
+      "qwencloud-audio-tts",
+      "sovereign-tts-lanes",
+      "tts-edge-fallback",
+      "tts-roundtrip-scoring",
+      "voice-lane-verification"
+    ],
+    "ledger": true,
+    "sources_still_in_canon": []
+  },
+  {
+    "merge_dir": "intel-briefing",
+    "target": "intelligence-briefing",
+    "merge_dir_exists": true,
+    "target_exists": true,
+    "target_bytes": 93465,
+    "target_sha": "89142cabd36b",
+    "sources_frozen": [
+      "executive-intelligence-briefing",
+      "intelligence-brief-forge",
+      "news-research-briefing",
+      "political-intelligence-briefing",
+      "professional-intelligence-briefing",
+      "weekly-federation-deep-brief"
+    ],
+    "ledger": true,
+    "sources_still_in_canon": []
+  },
+  {
+    "merge_dir": "person-intelligence",
+    "target": "person-intelligence",
+    "merge_dir_exists": true,
+    "target_exists": true,
+    "target_bytes": 40116,
+    "target_sha": "f85814ea95ff",
+    "sources_frozen": [
+      "human-intelligence-gathering",
+      "person-intelligence-dossier",
+      "public-profile-persona-mapping"
+    ],
+    "ledger": true,
+    "sources_still_in_canon": []
+  },
+  {
+    "merge_dir": "recovery-playbook",
+    "target": "recovery-playbook",
+    "merge_dir_exists": true,
+    "target_exists": true,
+    "target_bytes": 55030,
+    "target_sha": "492a1fd1776e",
+    "sources_frozen": [
+      "disk-pressure-triage",
+      "hermes-gateway-delivery-storm",
+      "telegram-gateway-ipv6-hang-fix",
+      "telegram-gateway-troubleshooting",
+      "vps-cpu-throttle-triage",
+      "youtube-extraction-datacenter-ip"
+    ],
+    "ledger": true,
+    "sources_still_in_canon": []
+  }
+]

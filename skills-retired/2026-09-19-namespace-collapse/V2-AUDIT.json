@@ -1,0 +1,74 @@
+{
+  "alias": [],
+  "norm": {
+    "shadow-mode": [
+      "domains/general/apex/cognitive-reflex/shadow-mode",
+      "aaa-shadow-mode"
+    ],
+    "onboarding": [
+      "forge-onboarding",
+      "forge-onboarding/agent-onboarding"
+    ],
+    "claude": [
+      "apex_verdict_hold/claude",
+      "FORGE-onboarding/claude"
+    ]
+  },
+  "case": {
+    "claude": [
+      "apex_verdict_hold/claude",
+      "FORGE-onboarding/claude"
+    ]
+  },
+  "fossil": [
+    "domains/general/forge/incident-response/hermes-response-latency-triage",
+    "domains/general/forge/model-routing/litellm-proxy-triage",
+    "devops/mcp-transport-fix",
+    "forge-issue-triage",
+    "provider-notice-triage",
+    "governance/staged-write-triage"
+  ],
+  "vendor": [
+    "understand-dashboard",
+    "understand-onboard",
+    "understand-explain",
+    "understand",
+    "understand-diff",
+    "understand-domain",
+    "understand-figma",
+    "understand-chat",
+    "understand-knowledge"
+  ],
+  "gclass": {
+    "person-audit": [
+      "verification-discipline/human-bond-reality-audit",
+      "first-party-evidence-audit",
+      "audit/relationship-reality-audit",
+      "audit/relationship-evidence-audit",
+      "research/human-relationship-audit",
+      "governance/first-party-corpus-audit"
+    ],
+    "seal-ritual": [
+      "domains/general/court/seal-ritual/arifos-kernel-seal-ritual",
+      "governance-core/canon-doctrine-sealing",
+      "aaa-governance/aaa-doctrine-sealing",
+      "seal-discipline"
+    ],
+    "skill-own-ops": [
+      "domains/general/aaa/skill-mesh/skill-audit-methodology",
+      "domains/general/aaa/skill-mesh/skills-cold-storage-ops",
+      "domains/general/aaa/skill-mesh/skill-taxonomy-reclassification",
+      "engineering/skill-creator",
+      "engineering/skill-inventory",
+      "engineering/skill-drift",
+      "core/governance/skill-portfolio-audit",
+      "skill-library-integrity"
+    ],
+    "memory-write": [
+      "domains/general/aaa/context-ops/local-memory-retrieval",
+      "substrate/memory-manage",
+      "graphiti-temporal-memory-ops",
+      "governance/federation-memory-writeback"
+    ]
+  }
+}

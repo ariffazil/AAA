@@ -1,0 +1,125 @@
+{
+  "ts": "2026-09-19T01:15:37.086190+00:00",
+  "authority": "F13 sovereign in-chat order 2026-09-19",
+  "canon": "/root/AAA/skills",
+  "freeze_root": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/recovery-playbook",
+  "doctrine": "If it is literally one incident, it is not a skill, it is a receipt. Extract the reusable heuristic, burn the incident.",
+  "undo": "mv <frozen_path> <orig_path>   (paths recorded per item below)",
+  "merge": {
+    "name": "recovery-playbook",
+    "canonical_path": "/root/AAA/skills/recovery-playbook/SKILL.md",
+    "sha256": "492a1fd1776e784c37cf327b505c251e83e17515f899b0988ccd07091ab79329",
+    "bytes": 55030,
+    "sources": [
+      "telegram-gateway-ipv6-hang-fix",
+      "telegram-gateway-troubleshooting",
+      "hermes-gateway-delivery-storm",
+      "vps-cpu-throttle-triage",
+      "disk-pressure-triage",
+      "youtube-extraction-datacenter-ip"
+    ],
+    "note": "Six one-off incident skills collapsed into one SYMPTOM->SIGNAL->ACTION playbook with a shared meta-heuristic (8 laws) and a full trigger index + old->new mapping table.",
+    "frontmatter_note": "No '---' token inside frontmatter: a naive delimiter splitter would otherwise truncate it and silently drop all 39 triggers."
+  },
+  "items": [
+    {
+      "rel": "telegram-gateway-ipv6-hang-fix",
+      "kind": "dir",
+      "tier": "T2-incident",
+      "reason": "one-off incident (F1 gateway hang / crash loop) -> heuristic merged into recovery-playbook; incident burnt",
+      "successor": "recovery-playbook",
+      "files": {
+        "SKILL.md": "7eb525860db4cd7c915bf4be6b27b2a71838f785d899497061f302dd4fada5b4",
+        "references/2026-08-05-session-transcript.md": "659dd7b9a2e44e4fb536c14a32c883585424bbfea53600464980239905e77d28"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/domains/general/workshop/telegram-ops/telegram-gateway-ipv6-hang-fix",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/recovery-playbook/telegram-gateway-ipv6-hang-fix",
+      "original_abs_path": "/root/AAA/skills/domains/general/workshop/telegram-ops/telegram-gateway-ipv6-hang-fix",
+      "new_abs_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/recovery-playbook/telegram-gateway-ipv6-hang-fix",
+      "sha256_before_move": "7eb525860db4cd7c915bf4be6b27b2a71838f785d899497061f302dd4fada5b4"
+    },
+    {
+      "rel": "telegram-gateway-troubleshooting",
+      "kind": "dir",
+      "tier": "T2-incident",
+      "reason": "one-off incident (F2 echo loop) -> heuristic merged into recovery-playbook; incident burnt",
+      "successor": "recovery-playbook",
+      "files": {
+        "SKILL.md": "44caf16f743d8956b7695345be6166e5661ea2963596a3fbeb97c33fb74b6834"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/domains/general/workshop/telegram-ops/telegram-gateway-troubleshooting",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/recovery-playbook/telegram-gateway-troubleshooting",
+      "original_abs_path": "/root/AAA/skills/domains/general/workshop/telegram-ops/telegram-gateway-troubleshooting",
+      "new_abs_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/recovery-playbook/telegram-gateway-troubleshooting",
+      "sha256_before_move": "44caf16f743d8956b7695345be6166e5661ea2963596a3fbeb97c33fb74b6834"
+    },
+    {
+      "rel": "hermes-gateway-delivery-storm",
+      "kind": "dir",
+      "tier": "T2-incident",
+      "reason": "one-off incident (F3 delivery storm) -> heuristic merged into recovery-playbook; incident burnt",
+      "successor": "recovery-playbook",
+      "files": {
+        "SKILL.md": "b46dd88dbb535f9ed448f99a8db7cf36e8cb30017be35cb01ff692161034063a"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/domains/general/forge/mesh-transport/hermes-gateway-delivery-storm",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/recovery-playbook/hermes-gateway-delivery-storm",
+      "original_abs_path": "/root/AAA/skills/domains/general/forge/mesh-transport/hermes-gateway-delivery-storm",
+      "new_abs_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/recovery-playbook/hermes-gateway-delivery-storm",
+      "sha256_before_move": "b46dd88dbb535f9ed448f99a8db7cf36e8cb30017be35cb01ff692161034063a"
+    },
+    {
+      "rel": "vps-cpu-throttle-triage",
+      "kind": "dir",
+      "tier": "T2-incident",
+      "reason": "one-off incident (F4 cpu steal / throttle) -> heuristic merged into recovery-playbook; incident burnt",
+      "successor": "recovery-playbook",
+      "files": {
+        "SKILL.md": "5e49716cd5f4ab8e17bb7d12383f8e8457f7b5c7543becea8ac62dd88e78c09a",
+        "references/2026-08-30-09-01-throttle-incidents.md": "680f90dd91f495e155de586abc4e5accc4189870354717980ba0758c4e0e9504"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/domains/general/forge/federation-topology/vps-cpu-throttle-triage",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/recovery-playbook/vps-cpu-throttle-triage",
+      "original_abs_path": "/root/AAA/skills/domains/general/forge/federation-topology/vps-cpu-throttle-triage",
+      "new_abs_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/recovery-playbook/vps-cpu-throttle-triage",
+      "sha256_before_move": "5e49716cd5f4ab8e17bb7d12383f8e8457f7b5c7543becea8ac62dd88e78c09a"
+    },
+    {
+      "rel": "disk-pressure-triage",
+      "kind": "dir",
+      "tier": "T2-incident",
+      "reason": "one-off incident (F5 disk pressure) -> heuristic merged into recovery-playbook; incident burnt",
+      "successor": "recovery-playbook",
+      "files": {
+        "SKILL.md": "5cdc16cc35dae42c08f501233350f6083da35bb6eda0cdbeafd3643d409a1023"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/forge/disk-pressure-triage",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/recovery-playbook/disk-pressure-triage",
+      "original_abs_path": "/root/AAA/skills/forge/disk-pressure-triage",
+      "new_abs_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/recovery-playbook/disk-pressure-triage",
+      "sha256_before_move": "5cdc16cc35dae42c08f501233350f6083da35bb6eda0cdbeafd3643d409a1023"
+    },
+    {
+      "rel": "youtube-extraction-datacenter-ip",
+      "kind": "dir",
+      "tier": "T2-incident",
+      "reason": "one-off incident (F6 datacenter-IP media block) -> heuristic merged into recovery-playbook; incident burnt",
+      "successor": "recovery-playbook",
+      "files": {
+        "SKILL.md": "ac4c851f1cf37605ad7d6ba32e47fe43d108b3c728a52a94637a9108bb311c4d",
+        "SKILL.md.bak": "dab7962801845eceb5ae1d0a45195e91c6ef88b115c103a0596392efac1f8c35"
+      },
+      "action": "move",
+      "orig_path": "/root/AAA/skills/youtube-extraction-datacenter-ip",
+      "frozen_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/recovery-playbook/youtube-extraction-datacenter-ip",
+      "original_abs_path": "/root/AAA/skills/youtube-extraction-datacenter-ip",
+      "new_abs_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/recovery-playbook/youtube-extraction-datacenter-ip",
+      "sha256_before_move": "ac4c851f1cf37605ad7d6ba32e47fe43d108b3c728a52a94637a9108bb311c4d"
+    }
+  ]
+}

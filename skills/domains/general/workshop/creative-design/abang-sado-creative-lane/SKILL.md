@@ -425,6 +425,10 @@ then re-verify: one diagnostic pass beats guessing which substitution fired.
 
 #### Contraindication on the round-trip script: it can miss a visible tail, so check EOF yourself
 
+**Root cause of the whole false-flag class, found 2026-09-19 — the script used to diff STRINGS with TOKEN indices.** `difflib.SequenceMatcher(None, ns, nh)` was run on the *normalised character strings*, then its opcodes were used to slice `nh.split()` / `ns.split()`. Character offsets applied to a token list is a category error, and it manufactures phantom words: a take reported `INSERTED ['pandang']` for a word plainly present in the transcript, because the char-level *insert* opcode for the `h` in `tau`→`tahu` was used as a token index. **Fixed in the script** — the matcher now runs on the token lists. Re-verified the same day against four passing takes and one known-bad take: no regression, and the phantom insertion disappeared.
+
+**Consequence for doctrine, which outlives the fix:** the `INSERTED` flag was never the witness either. A **character-level** substitution inside a word (`tau`→`tahu`, `dorang`→`diorang`) shifted the offsets and re-flagged unrelated words downstream. Treat every automated flag as a *lead*, and confirm it with a token-level diff or the word-timestamp check before convicting a take — and before believing a clean score.
+
 The closing-boilerplate hallucination was present in the transcript while the script still printed
 `INSERTED: none` with `verdict: PASS` — the aligner matched the invented tokens loosely against real
 ones inside one large block. **The script is not the sole witness for insertions.** The independent,

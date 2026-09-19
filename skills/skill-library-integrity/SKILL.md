@@ -1,6 +1,6 @@
 ---
 name: skill-library-integrity
-description: "Use when a skill won't load, a capability vanished silently, or trees diverge — one-writer/many-views consolidation with a live entropy sensor."
+description: "Use when a skill won't load, a capability vanished silently, trees diverge, or one capability has accumulated several identities — one-writer/many-views consolidation, namespace collapse, with a live entropy sensor."
 version: 1.0.0
 owner: AAA
 category: governance
@@ -13,6 +13,19 @@ autonomy_tier: T1
 
 > **Canon:** `/root/AAA/instructions/agi-asi-skills-fundamentals.md` (F13_RATIFIED_CHAT 2026-09-16 — the Seven Laws; C17–C19)
 > **One line:** a skill library is an **actuator**, not documentation. Many may read a capability; few may write it; someone must judge it.
+>
+> **The failure mode this skill exists for (F13-articulated 2026-09-19):**
+> *The most common skill-store failure mode is not missing capability. It is the same capability
+> accumulating multiple identities.* So integrity here is not file integrity — it is **capability
+> integrity + namespace integrity + discovery integrity**, and the three fail independently. A library
+> can be byte-perfect and still incoherent; a merge can remove all duplication and still destroy the
+> capability, because a capability that can no longer be *found* is gone. Hence the hard rule that
+> governs every consolidation below: **a merge must not lose discovery.**
+>
+> **The invariant, stated so it survives a rename:**
+> `Identity Inflation = Taxonomy Entropy` — identities may scale, capabilities must not multiply.
+> `N skills ≠ N capabilities` in a store, exactly as `N agents ≠ N authorities` in a federation.
+> Convergence is produced by **governed selection**, never by abundance.
 
 **Read Law 4 (consequence class on every capability) as a statement about the GATE, not about each
 SKILL.md.** Writing side-effect class / blast radius / reversibility / authority tier into every skill
@@ -560,6 +573,26 @@ per-profile mirrors of one skill, not competing successors. If nothing resolves,
 capability has no successor in the forest — remove the link (it already resolves to nothing) and log
 it; never invent a mapping, and never delete the directory a link pointed at.
 
+**A cited `scripts/` file is a capacity claim of the same class as a dead `references/` pointer, and its
+RAW miss list is mostly false positives.** Extract every `scripts/<path>.py|sh` mention from a
+SKILL.md, then resolve in this order before calling anything missing:
+
+```
+1 relative   os.path.exists(os.path.join(<skill_dir>, <cited_path>))   # the package's own folder
+2 basename   the cited basename exists under a shared script root        # /root/scripts, harness script dirs
+3 elsewhere  search every repo before asserting absence                  # scripts live outside the organ they describe
+```
+
+Step 2 is the one that must not be skipped: a skill that says *run `/root/scripts/foo.py`* is not broken
+because `scripts/foo.py` is absent from its own package — the shared script root is the live path. Measured
+on one library: **151 raw misses, 103 genuine** — a third of the list was a resolution artifact, and a
+report built on the raw figure accuses 150+ packages of a defect most of them do not have. What survives
+all three steps is a true dead instruction (the body tells an agent to run something that exists nowhere),
+which is reported, never fabricated into a file.
+
+The same discipline as the top-folder predicate: a mention is a pointer only when it names a real file,
+and a name matching nothing anywhere is a finding about the BODY, not about the tree.
+
 **Repair rule for a dead pointer — three sources, in order:** (a) the file exists in the federation's
 own quarantine snapshots → restore it into the package; (b) it exists in a sibling live package →
 relative symlink **inside** this package (one body, many paths); (c) the mention names a real file at a
@@ -654,6 +687,53 @@ the original `sha256_before`, and the recovery hash), add one pointer line under
 record the inverse operation. The retirement stands; the content returns. Measured: 14/14 completed,
 147,531 bytes recovered, SKILL.md growth 0-3 lines each.
 
+**A COLLAPSE IS NOT COMPLETE UNTIL BOTH DIRECTIONS ARE VERIFIED — a stub written without the body
+removed is a live duplicate, not a retirement.** A retirement has two halves: the successor gains the
+content, AND the retired body leaves the load surface. A check that reads only the first half passes on
+a half-done collapse. Measured: two skills were marked collapsed on 2026-09-16 (their entry replaced by
+a one-line `ALIAS → <successor>` stub) while the original bodies — 4980 B and 5611 B — stayed in place,
+still resolving. **It is not true that both load.** The loader is FIRST-WINS by routing name, so
+exactly ONE of the two is served and the other is dropped in silence — and *which* one is served is
+the finding, because the two possibilities are opposite defects:
+
+```
+served = the STUB      -> the collapse took effect; the retired body is an unreachable orphan
+served = the LIVE body -> the collapse never took effect; agents are loading retired doctrine
+```
+
+Both were present in one measurement of two half-collapses: one name served its retired body, the
+other served its redirect. A report that says "both load" cannot distinguish them and files the
+worse defect as the milder one. Determine which is served by replicating the loader's own scan order
+(`get_scan_ordered_skills_dirs()` then first-wins), never by counting files.
+
+Detect as two predicates on one routing name, checked separately:
+
+```
+stub          = a body carrying an `ALIAS →` or `Collapsed <date>` marker
+live          = ANOTHER body under the same name whose size is not stub-sized
+half_collapse = stub AND live     # neither is safely removable until you know which one is SERVED
+```
+
+**TERTIB — recover, then remove. Never remove first, and never trust the archive for a copy.** Two
+independent traps sit here, both measured on half-collapses:
+
+1. **The archive pointer can be CIRCULAR.** An `.archive/<date>-<name>/<skill>` entry existed as a
+   symlink whose target was the live body it claimed to have archived. So "the body is archived" was a
+   claim with no independent copy behind it, and removing first would have destroyed the only one.
+   Resolve every archive link with `os.path.realpath` and require the result to land **outside** the
+   live path — onto a frozen or quarantine tree, not back on the source.
+2. **The successor may have absorbed NOTHING.** Compare the source's H2 heading set against the
+   successor **package** (SKILL.md *or* `references/`). Measured: 6/6 and 7/10 source headings absent
+   from the successor, including the whole operational half (`Inputs`, `Forbidden Actions`,
+   `Output Format`, `Escalation Path`).
+
+So the order is: verify the successor's content first, copy anything missing into
+`references/absorbed-<source>.md` with a provenance header and the original `sha256_before`, confirm the
+payload hash equals the source, and only then quarantine. The retirement stands; the content returns. A
+stub pointing at a successor that absorbed nothing is a *content* loss hiding inside a *structure*
+repair, the same defect `merge_completeness` catches for tombstones. Full runbook:
+`references/quarantine-runbook.md`.
+
 ### 5. Deleting anything — the safe rules
 
 Deleting on the same pass you use to *enumerate* destroys your ability to inspect the
@@ -680,6 +760,117 @@ hand, because the target may live outside the repo and a hand-built link is a wr
 git -C /root/AAA checkout -- skills/
 git -C /root/AAA status --porcelain        # must show no deletions before moving on
 ```
+
+### 6. Retiring a NAME (namespace collapse)
+
+When a library grows, the defect is usually NOT missing capability — it is *same capability, many
+identities*: one doctrine under four harness names, one procedure under three spellings, one decision
+under nine audit titles. That is taxonomy entropy, and it is diagnosed by **family**, not by file —
+group by normalized name (strip brand prefixes
+`forge/claude/qwen/kimi/opencode/copilot/aaa/agi/asi/hermes`), by declared `id:`, and by
+case-insensitive folder name, then act on the family.
+
+Six defect classes, one correct remedy each: **alias-parading** (body is only a redirect → kill or
+repoint), **per-harness clone** (N bodies, one doctrine → ONE canonical carrying a harness-binding
+table), **case-twin** (`X` and `x` → one body; casing is not doctrine), **vendor / foreign profile**
+(another product's bundled skills inside your catalog → relocate or freeze), **archive-still-loading**
+(an `.archive*` inside the walked tree → move it out), **incident fossil** (a skill whose whole purpose
+is one dated event → extract the heuristic into the lane's playbook, freeze the incident).
+
+Four rules decide whether a kill holds:
+
+- **Freeze reversibly, outside every walked tree.** Move the body to `<store>-retired/<date>-<reason>/`,
+  log `{original_path, frozen_path, sha256-of-every-file}` with the hash computed **before** the move,
+  and put the undo command in the ledger. If a body must stay in-tree, rename its marker file so no
+  loader matches it (`SKILL.md` → `SKILL.md.frozen`) — an in-tree "archive" is one glob from loading.
+- **Sweep the views, not just the body.** The same name lives in every harness mirror; resolve each
+  dangling link — repoint when the name still maps to a live successor, remove when the name itself is
+  retired. Then re-run the census: a retirement that turns `broken_symlinks` from 0 to N forgot the views.
+- **Keep discovery intact when merging.** The merged skill carries every trigger phrase from every
+  source, plus a mapping `old name → new mode/section`, or an agent that remembers the old name silently
+  stops finding the capability.
+- **Repair the dependents, not the detector.** A path change breaks callers outside the store (cron
+  scripts, sweeps, watchdog lists that hardcode a skill path). Grep for the old path before freezing, and
+  edit any human-reviewed "declared shell" list naming a retired path in the same change — otherwise a
+  later sweep reports your retirement as a defect and a future agent reverts it.
+
+Never leave a dead pointer, and never leave a lying stub. A body that says "not an executable skill" or
+"archived, do not use" is a lie told to the loader: it rents index space and answers nothing. Delete the
+stub; keep the directory when it holds real children — that is a namespace, and the census reporting it
+as a shell is correct, not a defect.
+
+### 7. Confirming the kill — four checks, in order
+
+A sweep that reports "removed N" has proved nothing about the library.
+
+1. **Resolve every replacement you created.** A directory retired into a symlink is correct only if the
+   link *resolves*. Build it and immediately `readlink -f`. A relative target computed at the wrong depth
+   yields a dangling link that still carries the right NAME — it reads as "repointed" in a listing and
+   fails only when a loader touches it.
+2. **Re-run the census AND an independent link checker.** The broken count must return to its pre-sweep
+   value and both must agree; one witness agreeing with itself is not agreement.
+3. **Resolve names the way the LOADER does, not the way `ls` does.** A surface can advertise a name with
+   no body anywhere on disk — phantom capability, one layer above the dead symlink, and invisible to a
+   directory check because there is no directory to check. Spot-check names and resolve each to a real
+   file; if one resolves to nothing, the surface lies and every count derived from it inherits the lie.
+4. **Read the layers above the store for names you retired** — registry, alias table, ownership map,
+   genealogy, and any *layer block* inside the registry, which can claim a whole family whose folders
+   hold nothing but a liveness marker. Prune in the same pass, or the registry can resurrect what you
+   removed.
+
+**Full procedure, tool commands, freeze-ledger schema, mirror-tree list, and the cost>value lens (with
+its scope and horizon limits):** `references/namespace-collapse-runbook.md`.
+
+### 8. Ghost audit — a named capability with no body is worse than a duplicate
+
+Duplicates are noise. A **ghost is a lie**: a registry, alias table, ownership map or bootstrap
+manifest still asserts a capability that no longer has a loadable body, so a future agent reads the
+name, resolves nothing, and authors the capability again. That rebound is how a cleaned library grows
+back. Run this audit after every retirement wave, and treat a ghost as a **registry** defect —
+repairing it means editing a hand-maintained governance surface, which is an ownership decision, not
+a cleanup.
+
+**Two metrics, both cheap, both re-runnable:**
+
+```
+IIR (Identity Inflation Ratio) = loadable identities / unique capabilities
+      unique capability = one distinct BODY (sha256 of the resolved SKILL.md)   <- state this proxy
+      report it per store AND per mesh; they answer different questions
+SCP-style ghosting rate        = non-verified names / named capabilities across all registry surfaces
+```
+
+**A big IIR is usually ADDRESS inflation, not capability inflation — decompose before you panic.**
+Measured on this federation (2026-09-19): canonical store 641 identities / 561 bodies = **1.14** (the
+remainder is the designed view tree: `substrate/`, `primitives/`, `capabilities/`, `domains/` are bands
+over one body), while the whole mesh 4449 identities / 893 bodies = **4.98** because five harness homes
+mount the same store. Same store, two honest numbers, opposite readings. Never quote the mesh figure as
+"we have five times too many capabilities".
+
+**Per-surface status vocabulary** — test every named capability against a live body and emit one of:
+
+| status | meaning | action |
+|---|---|---|
+| verified | body loadable now | none |
+| ghost | named, no body anywhere, no successor declared | registry repair (owner decision) |
+| orphaned | named, body gone, no successor resolvable | registry repair |
+| absorbed-successor | retired name whose replacement is live | none — the map is working |
+| retired-but-referenced | retired name still named by a surface, successor live | prune the surface |
+| frozen-by-policy | deliberately retired with no successor | keep the record, prune the claim |
+
+**Read each registry surface by ITS OWN schema, never by a greedy key scan.** First attempt here
+reported 1080 ghosts; a corrected extractor found 557 — the other 523 were the detector's own defects
+(an index blind to 15 additional skill roots, composite keys like `home/skill` read whole, and dict
+entries stringified). **A ghost claim needs the same warrant as a presence claim: sweep every root
+before calling a capability dead.** Publish the rescue count alongside the ghost count, or the audit
+becomes a machine for manufacturing work.
+
+**Where the ghosts actually live.** In this house the reliable sources are the *hand-maintained*
+surfaces — alias tables (`v3_name` / `primary_disk_name` / `related[]`), ownership maps (`phases[*].owners[*].id`
+and their `absorbed` lists), genealogy `skills` keys, bootstrap `universal_skills`, and a registry's
+layers block. Machine-derived surfaces (a placement manifest regenerated from disk) are usually
+honest; the drift concentrates in whatever a human typed once and nothing ever re-checked. A registry
+that reports `alias_rows_dead: 91` in its own body is a registry already telling you it has ghosts —
+believe it and go find which.
 
 ## Pitfalls
 
@@ -779,6 +970,27 @@ git -C /root/AAA status --porcelain        # must show no deletions before movin
   skills" target that no measured selector produced — order selection `Consequence/Tier -> canonical
   owner -> authority compatibility -> health -> minimal sufficient set -> semantic last mile`, with
   the semantic step LAST.
+
+  **To determine WHICH class you are holding, read the description score and the CONTENT score
+  together — the pair is the finding, and a single number cannot classify.**
+
+  | description | content | class | remedy |
+  |---|---|---|---|
+  | high | high | COPY — one body under two names | collapse to one body plus an address |
+  | high | **near zero** | **JOB DUPLICATE — N independent write-ups of one procedure** | pick a canonical owner, alias the rest |
+  | low | high | copy whose description drifted | re-describe, then collapse |
+  | low | low | unrelated (token-overlap false positive) | leave alone |
+
+  The job duplicate is the class that looks like health and is not: every copy loads, every copy sounds
+  right, none is canonical, and they drift apart silently. Measured: 7 skills answering one question,
+  49,941 bytes, pairwise content similarity 0.02–0.07 — not copies, seven separate texts of one job.
+  **Never resolve that class by merging bodies** — merging N texts of one job produces text N+1. Collapse
+  to one canonical owner and alias the rest.
+  Two measurement rules make the table reliable: **exclude same-name pairs before scoring** (two bodies
+  sharing a routing name score near 1.0 by construction and bury the real finds), and **split a name
+  collision into whole-file vs body-only similarity** — a high body-only score beside a lower whole-file
+  score isolates the difference to frontmatter only, which is mechanically collapsible, where a low
+  body-only score is a content fork a human owns.
 - **Two trees sharing a skill name are not in sync.** Names agree while bodies diverge —
   compare content hashes per shared name, and report the diverged fraction, not the shared
   count. A high shared count reads as health and hides the drift completely.
@@ -807,13 +1019,37 @@ git -C /root/AAA status --porcelain        # must show no deletions before movin
 - **A repaired link must be re-probed, not assumed.** After repointing, assert
   `os.path.exists(link)` AND that it resolves to a `SKILL.md` — a link that now points at a directory
   without one is still a lost capability, and it will not appear in the broken count again.
-- **Dedupe the walk by realpath before mutating.** A sweep across overlapping roots (the store plus a
-  profile tree that mirrors it) visits the same physical link twice; the second visit then throws
-  `FileNotFoundError` on a link the first visit already removed, aborting the run mid-plan. Keep a seen
-  set keyed on `(realpath, path)` — the counted total is otherwise inflated as well.
+- **Dedupe the walk by realpath before mutating, and before quoting a corpus size.** A sweep across
+  overlapping roots (the store plus a profile tree that mirrors it) visits the same physical link twice;
+  the second visit then throws `FileNotFoundError` on a link the first visit already removed, aborting
+  the run mid-plan. Keep a seen set keyed on `(realpath, path)`. The same omission inflates any total:
+  measured, 11 roots returned **1741** `SKILL.md` hits for **1050** unique physical files, so a rate
+  computed over the raw figure is overstated by roughly two thirds. Report `found` and `unique` as two
+  numbers, and say which one a denominator came from.
 - **Verify every mutation from its own log, not from the tool's summary.** Re-read the apply manifest
   after the run and stat each destination; a partial apply that reports success is the normal failure
   shape here. The check is `defects == 0`, computed from disk.
+- **Patch a JSON inventory as a targeted TEXT edit — never a load/dump round-trip.** `json.dump(json.load(f), indent=2)`
+  reformats the entire file, so a two-entry change produced a **5,477-line** diff and buried the real
+  edit where no reviewer could see it. Match the exact block, assert `text.count(old) == 1` before
+  replacing (a silent 0-match or multi-match is how a patch writes nothing or writes twice), then
+  re-parse with `json.load` to confirm validity and print a changed-line count as the receipt. Stage
+  and read `git diff --numstat` before committing: a line count wildly out of proportion to the change
+  is the signal that you reformatted instead of patched.
+- **Snapshot dict keys before mutating during a recursive walk.** A walker that reads a nested
+  structure and writes keys into it raises `RuntimeError: dictionary changed size during iteration`
+  part-way through, leaving the file either untouched or half-edited depending on where the write sits.
+  Iterate `for k, v in list(o.items()):` and add new keys freely. Same discipline for any list you
+  append to while iterating it.
+- **A body move is not finished when the body moves — sweep its DOWNSTREAM twice.** The pre-move
+  dependent check (LAW 2) proves the move is safe; it does not clean up after it. Two surfaces must be
+  re-swept afterwards, and both are easy to forget because neither errors: (a) **links whose target was
+  the moved path** — one measurement broke a profile mirror, a store address, and a frozen-tree pointer,
+  so walk every root with `followlinks=False` and test each link's resolved target against the
+  quarantined prefixes; (b) **inventory files that still NAME the dead path** — the alias table,
+  placement manifest, and a package README each carried the retired path as live data. Update them to
+  the successor plus a `quarantined:` marker, or the next agent reads a path claim that resolves to
+  nothing. Then re-run the census and require `broken_symlinks: 0`.
 - **A new check that reports `0` on an empty input space is the most dangerous shape of decoration.**
   The `merge_completeness` check first shipped reading `/root/.hermes/skills/.archive_skills_wave2` —
   the tombstone registry is at `/root/.hermes/.archive_skills_wave2` (a sibling of the skills root,
@@ -999,7 +1235,17 @@ git -C /root/AAA status --porcelain        # must show no deletions before movin
   script, enumerate the inputs that would take the failing branch, and require at least one; a
   predicate with no reachable failing branch is not a check. Widen the scope in the same pass — a
   detector watching one root cannot catch a false claim about another, so measure every root from a
-  single enumerated table on every cycle rather than adding paths ad hoc.
+  single enumerated table on every cycle rather than adding paths ad hoc. **For a MATCHER or similarity
+  detector, "can this fire?" is not enough — prove it fires on a pair you already KNOW matches, inside
+  the same run, and treat a miss as a failed run.** A scan returning zero hits is indistinguishable from
+  a broken scan, and the failure is silent because the output reads as good news. Measured: a pairwise
+  scan reported **0** overlaps while a pair at 0.88 was present — the pair key was built from one list
+  and the records read from another. It was caught only by hand-checking a pair that had already been
+  seen, which is not a control; make it one. Two corollaries: a detector whose pair key is derived from
+  a different collection than the records it indexes is broken by construction, so assert that the key
+  and the lookup share one source; and **read the DROP rules, not just the output** — a pass that skips
+  high-frequency tokens silently discards exactly the shared tokens that made a genuine pair match, so
+  print the drop count beside the hit count.
 
 - **An advertised skill index is a claim, not existence.** The prompt-injected catalog (and any
   registry, README or report listing) can name a skill that no longer resolves: `skills_list` shows
@@ -1068,6 +1314,24 @@ git -C /root/AAA status --porcelain        # must show no deletions before movin
   the fix: bypassing it once, to prove it is loose, is how the auditor becomes the incident. Report
   `BLOCKED_AT_GATE` with the operation, the finding count, and the literal count; leave it for the
   owner. Never rewrite a correct `${VAR}` idiom into a weaker form to satisfy a scanner.
+ - **The always-loaded index is NOT the disk census, and the gap runs in both directions.** Hidden
+ tree segments (`.archive*`, `.system`, foreign `.profile-archive`/vendor-plugin packages) are still
+ walked and still injected, so the count an agent is shown can exceed the visible-active set by a large
+ margin — measured, a prompt-visible catalog of 456 against 619 active bodies on disk, with tombstone
+ stubs, absorbed aliases and another tool's bundled skills inside the difference. A count quoted from the
+ prompt, a registry, or a previous session is a claim; produce the disk figure with the census command and
+ state which one you are answering — *what can load* and *what exists to be pruned* are different
+ questions with different denominators. Corollary for any prune ledger: entries living in a hidden tree
+ are not already-saved, they are still paying index rent, and the fix is index hygiene (exclude the
+ tree), not crediting the archive.
+ - **A payload that asserts a critical-domain variable with no source is held before it runs, and the
+ refusal reads like a broken command.** A scan or report script whose text carries money/health/legal/
+ trading vocabulary (a keyword list, a filename, a docstring line) is refused by the pre-tool gate even
+ when it is read-only, and retrying the identical payload reproduces the identical refusal. Two fixes,
+ apply both: strip trigger vocabulary the script does not need, and put a resolvable evidence line in the
+ payload itself (a docstring line naming the path being read). Diagnose refusal strings as three separate
+ classes before reacting — PATH / CONTENT-pattern / this payload class — and never reword a payload to
+ slip past a gate that is doing its job.
 
 ## Support files
 
@@ -1087,6 +1351,12 @@ git -C /root/AAA status --porcelain        # must show no deletions before movin
   scans, the per-entry classifier (`address` · `body_held_here` · `bundled` · `generation` ·
   `name_ambiguous`), the assertion discipline for absence claims, and the add-an-address ladder.
   Read before any census, move, rename, or re-merge of the skill tree.
+- `references/quarantine-runbook.md` — the ordered procedure for retiring a skill body: probe the
+  loader's real read path, classify (orphan / served duplicate / live owner), guard that the source is
+  the only copy, compare headings against the successor **package**, recover with a provenance header,
+  quarantine outside every scanned root with a reversal ledger, sweep the downstream twice, and verify
+  from the loader's own served-name set. Read before removing or quarantining any body, and before
+  trusting an `.archive/` entry as a backup.
 - `references/twin-collapse-runbook.md` — collapsing two REAL bodies into one body plus addresses:
   arena probe, backup-and-reversal shape, the classification table (superset / newer / union / design
   fork), the mechanical union merge, container-collapse safety, and verification by load-surface

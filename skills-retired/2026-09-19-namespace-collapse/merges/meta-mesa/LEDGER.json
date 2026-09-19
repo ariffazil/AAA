@@ -1,0 +1,75 @@
+{
+  "ledger": "namespace-collapse-merge",
+  "operation": "merge_skill_clones",
+  "canonical_skill": "meta-mesa",
+  "canonical_path": "/root/AAA/skills/meta-mesa/SKILL.md",
+  "canonical_sha256": "1db502a2c961844912784c5f3a586bfe4bce97f79b8dd622ab6a656c0aaab3fe",
+  "canonical_size_bytes": 12818,
+  "authority": "F13 sovereign in-chat order 2026-09-19 — compress namespace entropy",
+  "date": "2026-09-19",
+  "merged_from": [
+    {
+      "original_path": "/root/AAA/skills/claude-meta-mesa/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/meta-mesa/claude-meta-mesa/SKILL.md",
+      "sha256_skilmd_before_move": "fc760214a8ceba8e423e4a8ba68acc441c1884b0ab5b0251441daf847a134c31",
+      "original_folder": "/root/AAA/skills/claude-meta-mesa",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/meta-mesa/claude-meta-mesa",
+      "files_moved": [
+        "SKILL.md",
+        "SKILL.md.bak-precompile"
+      ],
+      "files_sha256_before_move": {
+        "SKILL.md": "fc760214a8ceba8e423e4a8ba68acc441c1884b0ab5b0251441daf847a134c31",
+        "SKILL.md.bak-precompile": "20ec606ae9c1ccf93f9f0b99d5b9919f2e62cb372061936f2dd3891453d9ef71"
+      },
+      "size_bytes": 5225,
+      "replacement_symlink": {
+        "at": "/root/AAA/skills/claude-meta-mesa",
+        "target": "meta-mesa",
+        "resolves_to": "/root/AAA/skills/meta-mesa"
+      }
+    },
+    {
+      "original_path": "/root/AAA/skills/opencode-meta-mesa/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/meta-mesa/opencode-meta-mesa/SKILL.md",
+      "sha256_skilmd_before_move": "97369aaf5efe42b4661132dd36101c9d7e6cc0b5dc4ae96689ad075a12a70950",
+      "original_folder": "/root/AAA/skills/opencode-meta-mesa",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/meta-mesa/opencode-meta-mesa",
+      "files_moved": [
+        "SKILL.md"
+      ],
+      "files_sha256_before_move": {
+        "SKILL.md": "97369aaf5efe42b4661132dd36101c9d7e6cc0b5dc4ae96689ad075a12a70950"
+      },
+      "size_bytes": 4280,
+      "replacement_symlink": {
+        "at": "/root/AAA/skills/opencode-meta-mesa",
+        "target": "meta-mesa",
+        "resolves_to": "/root/AAA/skills/meta-mesa"
+      }
+    },
+    {
+      "original_path": "/root/AAA/skills/qwen-meta-mesa/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/meta-mesa/qwen-meta-mesa/SKILL.md",
+      "sha256_skilmd_before_move": "f819d116fdb7ee94ac80255563d00934a564b8d1fd1a081f0ae571068be8c21a",
+      "original_folder": "/root/AAA/skills/qwen-meta-mesa",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/meta-mesa/qwen-meta-mesa",
+      "files_moved": [
+        "SKILL.md",
+        "SKILL.md.bak-precompile"
+      ],
+      "files_sha256_before_move": {
+        "SKILL.md": "f819d116fdb7ee94ac80255563d00934a564b8d1fd1a081f0ae571068be8c21a",
+        "SKILL.md.bak-precompile": "5205c1e6623543712be15f0f4888a00157450ff94d5288c3ca04e118cd61374f"
+      },
+      "size_bytes": 4685,
+      "replacement_symlink": {
+        "at": "/root/AAA/skills/qwen-meta-mesa",
+        "target": "meta-mesa",
+        "resolves_to": "/root/AAA/skills/meta-mesa"
+      }
+    }
+  ],
+  "note": "sha256_skilmd_before_move computed on the original SKILL.md prior to relocation; content unmodified by the move. Nothing was deleted: every source folder was MOVED into this freeze folder and its old path replaced by a relative symlink to the canonical folder. Undo: rm <replacement_symlink.at> && mv <new_folder> <original_folder>. 3 harness clones (claude/opencode/qwen) collapsed to /root/AAA/skills/meta-mesa; harness views that referenced the old folders (e.g. /root/.config/opencode/skills/opencode-meta-mesa, /root/.arifos/agents/opencode/skills/{claude,qwen,CLAUDE,QWEN}-meta-mesa) resolve through the replacement symlinks.",
+  "canonical_sha256_note": "recomputed after the verbatim source-frontmatter appendix was added to the canonical SKILL.md; source hashes (sha256_skilmd_before_move) are unaffected."
+}
