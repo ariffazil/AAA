@@ -51,6 +51,26 @@ ls arifosmcp/constitutional_map.py tools_sot.yaml contracts/tools.yaml \
   `source_commit == deployed_commit` and `drift=false`. Commit equality is not the whole
   attestation chain; probe wheel hash, runtime manifest hash and canon version before
   concluding, and treat the root cause as UNMEASURED until pinned.
+- **Registry-as-materialised-copy** — the kernel serves skills from `ARIFOS_SKILL_ROOT`
+  (`/etc/arifos/skills` in production), a *copy* whose entries are symlinks back into the live
+  mesh (`/root/AAA/skills`, via `/root/.agents/skills`), while the live tree keeps growing.
+  Measured: 223 names in the served root vs 638 on disk → `skill://{name}/SKILL.md` answers
+  "Skill not found" for every skill added since the copy. Generalise: **any served registry that
+  is a materialised copy (rsync/bake/snapshot/ConfigMap) of a live tree drifts monotonically.**
+  Check `stat` mtime of the served root against the live root, name the sync job that is supposed
+  to close the gap, and if no such job exists call it a one-time bake, not a registry.
+- **Non-enumerable index** — `skill://index` reports counts and metadata but **no per-skill
+  names**, so a client cannot enumerate the catalogue and must guess names to read anything. That
+  is a conformance defect of its own: *a registry that cannot be enumerated cannot be conformed
+  against.* Grade an index by whether a caller can derive the full name set from it.
+- **Guard rejection count** — the same surface carries a path-traversal containment guard that
+  rejects entries whose resolved path leaves the skill root. 18 *legitimately* symlinked skills
+  are refused ("Skill name rejected") even though containment is satisfied by the resolved path.
+  When a guard's rejection count is non-zero, read the guard's stated **intent** before treating
+  its refusals as correct enforcement — a guard can pass its own tests and still refuse valid
+  inputs. Related, same evening: the kernel's `skill://{name}` template resolves **only the
+  top-level directory name** of its root, so a skill nested under a category folder is
+  unreachable by its bare name.
 
 ## Patching arifOS safely
 

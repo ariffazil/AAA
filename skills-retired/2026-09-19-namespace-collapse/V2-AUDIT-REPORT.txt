@@ -1,0 +1,226 @@
+REFERENCE: SKILLSTORE_NAMESPACE_COLLAPSE_V2
+AUTHORITY: ARIF
+DATE: 2026-09-19
+WITNESSES: skills-census.py (canon 709 -> 647, duplicate identities 77 -> 55, shells 6 -> 3, broken 0)
+           LEDGER.json + LEDGER-view-repair.json + LEDGER-v2-profile-junk.json + merges/*/LEDGER.json
+           discovery_guard.py (retention test, run per merge)
+
+ERR = retired identities / preserved capabilities = 77 / 9 = 8.56
+(8.56 identities removed for every 1 capability that had to be preserved. Vendor and alias items
+contributed 0 preserved capabilities; they were identity inflation with no capability underneath.)
+
+------------------------------------------------------------------
+CLASS A — ALIAS-PARADING
+------------------------------------------------------------------
+NAME: mcp-shopping-list-2026-09 / mcp-dual-era-transport / wisdom-scar-session-audit /
+      sovereign-recognize / FORGE-mcp-testing / cognitive-level-assertion-protocol
+CLASS: A
+WHY IT IS ENTROPY: body resolves entirely to another skill; two identities, one capability.
+CAPABILITY PRESERVED AT: mcp-sota-shopping-list / mcp-testing / scar-integration /
+      audience-scoped-disclosure / mcp-testing / claim-receipt-discipline
+DISCOVERY PRESERVED: successor body carries the same trigger phrases; 6 mirror views repointed.
+ACTION: RETIRE
+
+------------------------------------------------------------------
+CLASS B — PER-HARNESS CLONE
+------------------------------------------------------------------
+NAME: claude-/kimi-/opencode-/qwen-agentic-state
+CLASS: B
+WHY IT IS ENTROPY: same doctrine, four mascots, four state-file paths. Identity inflation only.
+CAPABILITY PRESERVED AT: /root/AAA/skills/agentic-state (harness-binding table, 4 rows)
+DISCOVERY PRESERVED: all 4 retired names + verbatim descriptions kept in the merged body's
+      "Retired names — discovery anchors" block; 41 mirror views repointed to the successor.
+ACTION: MERGE
+
+NAME: claude-/qwen-/opencode-/COPILOT-zen-router
+CLASS: B
+WHY IT IS ENTROPY: one routing doctrine, four transports. COPILOT copy 4x larger, three copies stale.
+CAPABILITY PRESERVED AT: /root/AAA/skills/zen-router (25 KB, 9 axes + L0-L9 layer taxonomy)
+DISCOVERY PRESERVED: 15 trigger phrases + old-name -> section table verified by discovery_guard = PASS.
+ACTION: MERGE
+
+NAME: claude-/opencode-/qwen-meta-mesa
+CLASS: B
+WHY IT IS ENTROPY: same orchestrator doctrine, three harness names.
+CAPABILITY PRESERVED AT: /root/AAA/skills/meta-mesa (12.5 KB)
+DISCOVERY PRESERVED: old names retained as resolving symlinks -> meta-mesa (alias that RESOLVES is
+      a bridge, not entropy); 8 trigger phrases preserved.
+ACTION: REPOINT
+
+NAME: openclaw-/opencode-/hermes-propose-seal (7 live copies across 3 harness trees)
+CLASS: B
+WHY IT IS ENTROPY: one proposal doctrine copied into .hermes, .config/opencode, .kimi-code and canon.
+CAPABILITY PRESERVED AT: /root/AAA/skills/propose-seal (20 KB) — canonical store is now the source.
+DISCOVERY PRESERVED: every old path replaced by a relative symlink resolving to the canonical body.
+ACTION: REPOINT
+
+NAME: forge-onboarding/claude + apex_verdict_hold/claude
+CLASS: B (detector false positive)
+WHY IT IS ENTROPY: NOT entropy. Two different capabilities happen to live in folders both named
+      "claude"; each declares its own routing name in frontmatter (Agent Onboarding / arifOS ACT),
+      so the loader never collides. The defect is in the detector's normalisation, not the store.
+CAPABILITY PRESERVED AT: in place, both.
+DISCOVERY PRESERVED: n/a — no mutation.
+ACTION: (none) — recorded so a later pass does not collapse two real skills on a name collision.
+
+------------------------------------------------------------------
+CLASS C — CASE-TWIN
+------------------------------------------------------------------
+NAME: forge-federation-manifest / RSI-federation-mesh
+CLASS: C
+WHY IT IS ENTROPY: same capability, casing is the only difference; two bodies where one is stale.
+CAPABILITY PRESERVED AT: FORGE-federation-manifest / rsi-federation-mesh (newer body of each pair)
+DISCOVERY PRESERVED: retired spelling's dependents repointed; casing was never a routing key.
+ACTION: MERGE
+
+------------------------------------------------------------------
+CLASS D — INCIDENT FOSSIL
+------------------------------------------------------------------
+NAME: telegram-gateway-ipv6-hang-fix / telegram-gateway-troubleshooting /
+      hermes-gateway-delivery-storm / vps-cpu-throttle-triage / disk-pressure-triage /
+      youtube-extraction-datacenter-ip
+CLASS: D
+WHY IT IS ENTROPY: each existed for one historical event; the reusable heuristic was buried under
+      the incident narrative, so the same fault had to be re-diagnosed from scratch.
+CAPABILITY PRESERVED AT: /root/AAA/skills/recovery-playbook (53.7 KB) — 6 families
+      SYMPTOM/SIGNAL/ACTION/TRAP + 8 shared meta-heuristic laws (sensor-that-cannot-fail,
+      layer asymmetry, wrong-layer exhaustion, transient external gates, recurrence = persistent
+      state, report vs shell, patch-that-does-not-run, verify the gate not the write).
+DISCOVERY PRESERVED: 35 trigger phrases kept; each incident reduced to ONE dated example line;
+      literal command text preserved in the frozen copies.
+ACTION: MERGE
+
+NAME: mcp-transport-fix / hermes-response-latency-triage / litellm-proxy-triage /
+      forge-issue-triage / staged-write-triage / provider-notice-triage
+CLASS: D (detector false positive)
+WHY IT IS ENTROPY: NOT entropy. Name pattern matched "-fix/-triage" but each body is a live lane
+      or workflow (MCP auth lane, latency lane, proxy lane, GitHub issue workflow, queue workflow,
+      vendor-notice workflow), not a single dated event. No mutation.
+CAPABILITY PRESERVED AT: in place, all six.
+DISCOVERY PRESERVED: n/a.
+ACTION: (none)
+
+------------------------------------------------------------------
+CLASS E — ARCHIVE-STILL-LOADING
+------------------------------------------------------------------
+NAME: /root/AAA/skills/.archive-2026-09-18/* (4 bodies incl. 3 exact-sha duplicates)
+CLASS: E
+WHY IT IS ENTROPY: an archive inside the walked tree is not an archive — its bodies were listed as
+      live skills and cost index space while answering nothing.
+CAPABILITY PRESERVED AT: the live twins carry the same sha256, so no capability was unique to it.
+DISCOVERY PRESERVED: nothing routed here; no dependents existed.
+ACTION: FREEZE
+
+------------------------------------------------------------------
+CLASS F — PROFILE JUNK
+------------------------------------------------------------------
+NAME: .system/{imagegen, openai-docs, plugin-creator, review-agent, skill-installer,
+      skill-creator} / .profile-archive/* / help
+CLASS: F
+WHY IT IS ENTROPY: another product's bundled skills and a documentation bot sitting inside the
+      canonical library; federation loses no constitutional capability.
+CAPABILITY PRESERVED AT: nowhere required — 0 capabilities. skill-creator survives at
+      /root/AAA/skills/engineering/skill-creator.
+DISCOVERY PRESERVED: installers reference the vendor plugin, not this path.
+ACTION: FREEZE
+
+NAME: understand / understand-chat / understand-dashboard / understand-diff / understand-domain /
+      understand-explain / understand-figma / understand-knowledge / understand-onboard
+CLASS: F
+WHY IT IS ENTROPY: vendor plugin profile (understand-anything) materialised as NINE real
+      directories inside the canonical store — 56 files / 713 KB of vendor prose, every body
+      naming the third-party plugin as its origin.
+CAPABILITY PRESERVED AT: none in federation terms; the plugin remains installed at its own home
+      (/root/.understand-anything) so the capability is not destroyed, only the identity in canon.
+DISCOVERY PRESERVED: no federation skill references these names; trigger phrases are the vendor's.
+ACTION: FREEZE
+
+------------------------------------------------------------------
+CLASS G — AUDIT BLOAT
+------------------------------------------------------------------
+NAME: control-integrity-audit / declared-vs-enforced-control-audit / control-mechanism-audit /
+      named-mechanism-audit / name-requires-mechanism / enforcement-coverage-audit /
+      control-seal-verification / proxy-verification-audit
+CLASS: G
+WHY IT IS ENTROPY: eight skills, one question — "is this named thing actually enforced, or is it a
+      label?" Eight identities, one capability.
+CAPABILITY PRESERVED AT: /root/AAA/skills/governance-audit (76.9 KB) as a mode router:
+      CONTROL-INTEGRITY / DECLARED-VS-ENFORCED / NAMED-MECHANISM / ENFORCEMENT-COVERAGE /
+      SEAL-VERIFICATION / PROXY / METRIC-DERIVATION; shared law kept once (name-requires-mechanism,
+      effective-control formula, 12-state verdict vocabulary).
+DISCOVERY PRESERVED: 8/8 original descriptions + 20/20 old trigger phrases verified present;
+      old-name -> mode table in the body.
+ACTION: MERGE
+
+NAME: sovereign-tts-lanes / tts-edge-fallback / qwencloud-audio-tts / audio-roundtrip-diagnostics /
+      tts-roundtrip-scoring / voice-lane-verification / minimax-voice-design-prompts /
+      nusantara-acoustic-infrastructure
+CLASS: G
+WHY IT IS ENTROPY: eight skills describing one lane's history — lane selection, failover order,
+      round-trip scoring, design prompts — with the same rule restated three times. Historical
+      evolution kept in full, which is the sovereign's own diagnosis ("looks like every version kept").
+CAPABILITY PRESERVED AT: /root/AAA/skills/voice-lane (66 KB): lane router, verification discipline,
+      voice design, corpus + consent. hermes-voice-config and nusantara-voice-stack deliberately
+      left untouched (distinct live config SOT and corpus) — sha256 identical before and after.
+DISCOVERY PRESERVED: all 8 descriptions' trigger phrases merged + §9 old-name -> section landing
+      table. discovery_guard = PASS.
+ACTION: MERGE
+
+NAME: executive-intelligence-briefing / intelligence-brief-forge / weekly-federation-deep-brief /
+      professional-intelligence-briefing / political-intelligence-briefing / news-research-briefing
+CLASS: G
+WHY IT IS ENTROPY: one briefing engine wearing six costumes — six identities for one capability.
+CAPABILITY PRESERVED AT: /root/AAA/skills/intelligence-briefing (93 KB) — six named output modes
+      (A-F) over a shared spine of evidence tags, sourcing rules, tone rules, 12 refusal cases.
+DISCOVERY PRESERVED: 65 triggers + verbatim original descriptions as discovery anchors. The
+      retention test first caught a real gap here (intelligence-brief-forge's wording had not
+      survived) — repaired, then re-verified PASS.
+ACTION: MERGE
+
+NAME: human-intelligence-gathering / person-intelligence-dossier / public-profile-persona-mapping
+CLASS: G
+WHY IT IS ENTROPY: three identities for "build a verifiable profile of a named person", with the
+      human-reality discipline duplicated between them.
+CAPABILITY PRESERVED AT: /root/AAA/skills/person-intelligence (39 KB), human-reality discipline
+      folded in first-class (membrane, epistemic grammar, 11 refusal cases).
+DISCOVERY PRESERVED: 23 triggers + discovery anchors; discovery_guard = PASS.
+ACTION: MERGE
+
+NAME: relationship-evidence-audit / relationship-reality-audit / first-party-evidence-audit /
+      first-party-corpus-audit / human-relationship-audit / human-bond-reality-audit
+CLASS: G
+WHY IT IS ENTROPY: six skills, one question — "does this bond or claim survive contact with the
+      first-party record?"
+CAPABILITY PRESERVED AT: /root/AAA/skills/first-party-evidence-audit (modes) — IN FLIGHT, retention
+      test required before the five sources may be frozen.
+DISCOVERY PRESERVED: pending — must pass discovery_guard for all five retired names.
+ACTION: MERGE
+
+NAME: aaa-doctrine-sealing / arifos-kernel-seal-ritual / canon-doctrine-sealing / seal-discipline
+      + local-memory-retrieval / federation-memory-writeback / graphiti-temporal-memory-ops /
+      memory-manage
+CLASS: G
+WHY IT IS ENTROPY: under assessment (read-only) — verdict pending on whether these answer one
+      question each or two questions each.
+CAPABILITY PRESERVED AT: in place, untouched pending verdict.
+DISCOVERY PRESERVED: n/a.
+ACTION: (verdict pending — no mutation made)
+
+------------------------------------------------------------------
+CAPABILITIES EXPLICITLY VERIFIED UNTOUCHED
+------------------------------------------------------------------
+hermes-voice-config, nusantara-voice-stack, deep-research, litellm-proxy-triage,
+deploy-drift-verification — sha256 identical before and after the pass.
+
+------------------------------------------------------------------
+NOT DONE, AND SAID SO
+------------------------------------------------------------------
+1. /root/AAA/skills/knowledge/{know-language,know-math,know-physics} — the registry declares a
+   knowledge layer; on disk each folder holds only liveness.json. The registry claims a capability
+   with no body. Pre-existing, not caused by this pass. Not repaired here because repairing it
+   means either writing a body (forbidden: new doctrine) or editing the registry's layer block
+   (an ownership decision, not a cleanup).
+2. Stale retired names still sit in SKILL_ALIAS_TABLE.json, OWNERSHIP_MAP.yaml, GENEALOGY.json and
+   FEDERATED_SKILLS_REGISTRY_V3.yaml. Until those are pruned the registry can still describe a
+   retired name as live. Flagged, not silently half-edited: a partial rewrite of a hand-maintained
+   governance file is a bigger risk than the drift it removes.

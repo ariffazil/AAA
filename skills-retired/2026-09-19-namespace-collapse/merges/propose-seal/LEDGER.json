@@ -1,0 +1,147 @@
+{
+  "ledger": "namespace-collapse-merge",
+  "operation": "merge_skill_clones",
+  "canonical_skill": "propose-seal",
+  "canonical_path": "/root/AAA/skills/propose-seal/SKILL.md",
+  "canonical_sha256": "aa14ebd017d5e61c57fa50d94c24ba69689fd3ff9caa33102ea933b13d869429",
+  "canonical_size_bytes": 20233,
+  "authority": "F13 sovereign in-chat order 2026-09-19 — compress namespace entropy",
+  "date": "2026-09-19",
+  "merged_from": [
+    {
+      "original_path": "/root/.hermes/skills/openclaw-propose-seal/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/propose-seal/hermes-tree/openclaw-propose-seal/SKILL.md",
+      "sha256_skilmd_before_move": "7cf064d091253a6ae07dd305f087ade34ef3e512872efebf3f47fff5a2bf8ea1",
+      "original_folder": "/root/.hermes/skills/openclaw-propose-seal",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/propose-seal/hermes-tree/openclaw-propose-seal",
+      "files_moved": [
+        "SKILL.md"
+      ],
+      "files_sha256_before_move": {
+        "SKILL.md": "7cf064d091253a6ae07dd305f087ade34ef3e512872efebf3f47fff5a2bf8ea1"
+      },
+      "size_bytes": 3850,
+      "replacement_symlink": {
+        "at": "/root/.hermes/skills/openclaw-propose-seal",
+        "target": "../../AAA/skills/propose-seal",
+        "resolves_to": "/root/AAA/skills/propose-seal"
+      }
+    },
+    {
+      "original_path": "/root/.hermes/skills/opencode-propose-seal/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/propose-seal/hermes-tree/opencode-propose-seal/SKILL.md",
+      "sha256_skilmd_before_move": "c8fc449ecc6f23c32faca225c21df7d22f2299f7868bd8a52a827950136b00d8",
+      "original_folder": "/root/.hermes/skills/opencode-propose-seal",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/propose-seal/hermes-tree/opencode-propose-seal",
+      "files_moved": [
+        "SKILL.md"
+      ],
+      "files_sha256_before_move": {
+        "SKILL.md": "c8fc449ecc6f23c32faca225c21df7d22f2299f7868bd8a52a827950136b00d8"
+      },
+      "size_bytes": 5574,
+      "replacement_symlink": {
+        "at": "/root/.hermes/skills/opencode-propose-seal",
+        "target": "../../AAA/skills/propose-seal",
+        "resolves_to": "/root/AAA/skills/propose-seal"
+      }
+    },
+    {
+      "original_path": "/root/.hermes/skills/domains/general/apex/verdict/hermes-propose-seal/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/propose-seal/hermes-tree-verdict/hermes-propose-seal/SKILL.md",
+      "sha256_skilmd_before_move": "59230b3aec2c48e3e3b9156d1fe2cf8d197b4e49d83323d8c88ab80f0f9cb75d",
+      "original_folder": "/root/.hermes/skills/domains/general/apex/verdict/hermes-propose-seal",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/propose-seal/hermes-tree-verdict/hermes-propose-seal",
+      "files_moved": [
+        "SKILL.md"
+      ],
+      "files_sha256_before_move": {
+        "SKILL.md": "59230b3aec2c48e3e3b9156d1fe2cf8d197b4e49d83323d8c88ab80f0f9cb75d"
+      },
+      "size_bytes": 4887,
+      "replacement_symlink": {
+        "at": "/root/.hermes/skills/domains/general/apex/verdict/hermes-propose-seal",
+        "target": "../../../../../../AAA/skills/propose-seal",
+        "resolves_to": "/root/AAA/skills/propose-seal"
+      }
+    },
+    {
+      "original_path": "/root/.config/opencode/skills/opencode-propose-seal/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/propose-seal/opencode-config-tree/opencode-propose-seal/SKILL.md",
+      "sha256_skilmd_before_move": "e1a8037f47ef85dc1e1fdec6fdc940473c86f506c668bcabb006091e429f8c31",
+      "original_folder": "/root/.config/opencode/skills/opencode-propose-seal",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/propose-seal/opencode-config-tree/opencode-propose-seal",
+      "files_moved": [
+        "SKILL.md"
+      ],
+      "files_sha256_before_move": {
+        "SKILL.md": "e1a8037f47ef85dc1e1fdec6fdc940473c86f506c668bcabb006091e429f8c31"
+      },
+      "size_bytes": 5417,
+      "replacement_symlink": {
+        "at": "/root/.config/opencode/skills/opencode-propose-seal",
+        "target": "../../../AAA/skills/propose-seal",
+        "resolves_to": "/root/AAA/skills/propose-seal"
+      }
+    },
+    {
+      "original_path": "/root/.kimi-code/skills/openclaw-propose-seal/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/propose-seal/kimi-tree/openclaw-propose-seal/SKILL.md",
+      "sha256_skilmd_before_move": "0a8349e239cbdfe80372b424ce00b39f7c81d61272fac033806f85b1598d87a2",
+      "original_folder": "/root/.kimi-code/skills/openclaw-propose-seal",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/propose-seal/kimi-tree/openclaw-propose-seal",
+      "files_moved": [
+        "SKILL.md"
+      ],
+      "files_sha256_before_move": {
+        "SKILL.md": "0a8349e239cbdfe80372b424ce00b39f7c81d61272fac033806f85b1598d87a2"
+      },
+      "size_bytes": 3751,
+      "replacement_symlink": {
+        "at": "/root/.kimi-code/skills/openclaw-propose-seal",
+        "target": "../../AAA/skills/propose-seal",
+        "resolves_to": "/root/AAA/skills/propose-seal"
+      }
+    },
+    {
+      "original_path": "/root/.kimi-code/skills/opencode/opencode-propose-seal/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/propose-seal/kimi-tree-opencode/opencode-propose-seal/SKILL.md",
+      "sha256_skilmd_before_move": "dd7b9761f387cecd9a98ede1f2a54e3cbc30dae5659f18f3eb813b12e856a066",
+      "original_folder": "/root/.kimi-code/skills/opencode/opencode-propose-seal",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/propose-seal/kimi-tree-opencode/opencode-propose-seal",
+      "files_moved": [
+        "SKILL.md"
+      ],
+      "files_sha256_before_move": {
+        "SKILL.md": "dd7b9761f387cecd9a98ede1f2a54e3cbc30dae5659f18f3eb813b12e856a066"
+      },
+      "size_bytes": 5475,
+      "replacement_symlink": {
+        "at": "/root/.kimi-code/skills/opencode/opencode-propose-seal",
+        "target": "../../../AAA/skills/propose-seal",
+        "resolves_to": "/root/AAA/skills/propose-seal"
+      }
+    },
+    {
+      "original_path": "/root/.kimi-code/skills/hermes/hermes-propose-seal/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/propose-seal/kimi-tree-hermes/hermes-propose-seal/SKILL.md",
+      "sha256_skilmd_before_move": "8353777f910422ee50ea392c52cd4febb6bbbaf91c3b8cda9fb0d2a1397b5bb4",
+      "original_folder": "/root/.kimi-code/skills/hermes/hermes-propose-seal",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/propose-seal/kimi-tree-hermes/hermes-propose-seal",
+      "files_moved": [
+        "SKILL.md"
+      ],
+      "files_sha256_before_move": {
+        "SKILL.md": "8353777f910422ee50ea392c52cd4febb6bbbaf91c3b8cda9fb0d2a1397b5bb4"
+      },
+      "size_bytes": 4819,
+      "replacement_symlink": {
+        "at": "/root/.kimi-code/skills/hermes/hermes-propose-seal",
+        "target": "../../../AAA/skills/propose-seal",
+        "resolves_to": "/root/AAA/skills/propose-seal"
+      }
+    }
+  ],
+  "note": "sha256_skilmd_before_move computed on the original SKILL.md prior to relocation; content unmodified by the move. Nothing was deleted: every source folder was MOVED into this freeze folder and its old path replaced by a relative symlink to the canonical folder. Undo: rm <replacement_symlink.at> && mv <new_folder> <original_folder>. 7 cross-harness copies found OUTSIDE the canonical store were collapsed to /root/AAA/skills/propose-seal (3 named by the order + 4 further copies discovered by inventory: a second openclaw copy in the Kimi tree, the Hermes-native copies in the Kimi tree and in /root/.hermes/skills/domains/general/apex/verdict/). The aaa-hermes profile symlinks (openclaw/opencode/hermes-propose-seal) resolve through these replacements. Pre-existing archives (AAA/skills-retired-20260826, AAA/skills-deprecated/agent-bindings/substrate-propose-seal, .kimi-code backups, .quarantine, hermes_work copies) were NOT touched — out of scope.",
+  "canonical_sha256_note": "recomputed after the verbatim source-frontmatter appendix was added to the canonical SKILL.md; source hashes (sha256_skilmd_before_move) are unaffected."
+}

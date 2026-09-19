@@ -1,0 +1,60 @@
+{
+  "ledger": "namespace-collapse-merge",
+  "operation": "merge_skill_clones",
+  "canonical_skill": "zen-router",
+  "canonical_path": "/root/AAA/skills/zen-router/SKILL.md",
+  "canonical_sha256": "447316e4558c06485ac7025352a6c87d8363dcf4957471450141fa218ca219a9",
+  "canonical_size_bytes": 25885,
+  "authority": "F13 sovereign in-chat order 2026-09-19 \u2014 compress namespace entropy",
+  "date": "2026-09-19",
+  "merged_from": [
+    {
+      "original_path": "/root/AAA/skills/claude-zen-router/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/zen-router/claude-zen-router/SKILL.md",
+      "sha256_skilmd_before_move": "a2c73b27f82260bcd4b310c5d36c58b50ae354f9f9af6e439dc81bf2fa63883d",
+      "original_folder": "/root/AAA/skills/claude-zen-router",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/zen-router/claude-zen-router",
+      "files_moved": [
+        "SKILL.md",
+        "SKILL.md.bak-precompile"
+      ],
+      "size_bytes": 4663
+    },
+    {
+      "original_path": "/root/AAA/skills/qwen-zen-router/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/zen-router/qwen-zen-router/SKILL.md",
+      "sha256_skilmd_before_move": "9acd8d858f13ffe22d16bf7396dbda8171251321116e1266f42ceaf457b5ed1f",
+      "original_folder": "/root/AAA/skills/qwen-zen-router",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/zen-router/qwen-zen-router",
+      "files_moved": [
+        "SKILL.md",
+        "SKILL.md.bak-precompile"
+      ],
+      "size_bytes": 4474
+    },
+    {
+      "original_path": "/root/AAA/skills/opencode-zen-router/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/zen-router/opencode-zen-router/SKILL.md",
+      "sha256_skilmd_before_move": "92cc475a7a8f6e37869663fc5c116ff2589c21532b7ff508b380b25f9e57eb6c",
+      "original_folder": "/root/AAA/skills/opencode-zen-router",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/zen-router/opencode-zen-router",
+      "files_moved": [
+        "SKILL.md"
+      ],
+      "size_bytes": 4237
+    },
+    {
+      "original_path": "/root/AAA/skills/COPILOT-zen-router/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/zen-router/COPILOT-zen-router/SKILL.md",
+      "sha256_skilmd_before_move": "dd9f619332398edde69743bcb6540545408aabda804a53ce94c87e0f86cccb15",
+      "original_folder": "/root/AAA/skills/COPILOT-zen-router",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/zen-router/COPILOT-zen-router",
+      "files_moved": [
+        "SKILL.md",
+        "liveness.json"
+      ],
+      "size_bytes": 18534
+    }
+  ],
+  "note": "sha256_skilmd_before_move computed on the original SKILL.md prior to relocation; content unmodified by the move."
+}

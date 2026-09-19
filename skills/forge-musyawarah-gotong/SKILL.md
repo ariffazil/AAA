@@ -85,5 +85,9 @@ Workflow scratch: `SYNTHESIS.md` on the run.
 - `kind=guidance` from a specialist
 - Claiming SEAL after Lane B / heuristic stamp
 - Running musyawarah on T1 grep
+
+## Cross-references
+
+When musyawarah output identifies a doctrine-grade finding (post-SEAL hardening, falsifiable conjecture, or a 4-state audit matrix), apply the **Doctrine Admission Gate** (`doctrine-admission-gate-2026-09-19.md`): does the candidate pass all four falsifiable rules (non-obvious · project-level · survives 24-month test · architecture-changing)? If yes, deposit at `/root/.claude/projects/-root/memory/` and surface via `MEMORY.md` index. 2026-09-19 admitted canon: `eureka-dual-axis-systems-2026-09-19.md`.
 ---
 DITEMPA BUKAN DIBERI
