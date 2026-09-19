@@ -251,14 +251,23 @@ curl -sf localhost:3456/api/gold/ticker
 
 ## Chart Generation Pipeline
 
-### Preferred: chart_pro.py
+### Chart generation — render from the live API (no standalone CLI exists)
 
-```bash
-cd /root/trading && python3 scripts/chart_pro.py --signal LONG --entry 4003 --sl 3970 --tp 4066 --json
-```
+**OBSOLETE (verified 2026-09-19).** The invocation that used to head this section ran a `chart_pro.py` engine
+sitting in a top-level trading tree. Neither the script nor that tree exists any more: it was migrated into the
+WEALTH organ on 2026-07-19 and the source deleted, and `chart_pro.py` was not among the preserved modules — so
+there is no substitute path to repoint to. Do not re-add the old invocation from an earlier revision of this
+skill.
 
-Output: `/tmp/xauusd_chart.png` (300KB, 180 DPI, landscape)
-JSON metadata: price, bias, confidence, rsi, ema20/50/200, support[], resistance[]
+The **requirement** that step served still stands and is met by the provisioned route: render the chart from
+the live gold API and carry the metadata beside it.
+
+- Metadata to surface: price, bias, confidence, rsi, ema20/50/200, support[], resistance[]
+- Render path: the in-skill templates — `templates/gold_live_weekly_pdf.py` (visual-first one-PDF, live wiring
+  proven 2026-08-31), `templates/gold_signal_chart.py` (single dark-theme signal chart),
+  `templates/gold_casual_chart.py` (casual mode) — driven by `http://localhost:3456/api/gold/*`
+- Output lands under `/tmp/` as PNG (~150 DPI landscape) + single-page PDF. Do not assume the old
+  `xauusd_chart.png` name or the 180 DPI setting.
 
 ### End-to-End Workflow
 

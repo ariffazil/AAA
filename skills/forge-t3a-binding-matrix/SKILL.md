@@ -28,6 +28,19 @@ commit arifOS 196cb5ef2
 canonical key: /root/compose/sekrits/arifos_sovereign.{key,pub}  fp b467c07d975a36a5
 ```
 
+> **STATE (verified 2026-09-19): that key pair is gone.** `/root/compose/` now holds only
+> `docker-compose.yml`; neither `arifos_sovereign.key` nor `arifos_sovereign.pub` exists, and
+> the fingerprint `b467c07d975a36a5` appears nowhere on disk outside this skill. The active
+> sovereign signing identity is registered as a **different** key — key_id `omega-2026-01`,
+> fingerprint `ed25519:sha256:a8fbb5ae8b4772b0`, status `active` — in the aaa-identity key
+> registry (`sovereign_key_registry.json`). Read that as a **rotation, not a move**: never
+> re-point this matrix at the omega identity as though it were the same key or the same
+> fingerprint. Note also that the live kernel still names the dead path
+> (`arifosmcp/runtime/bridging_seal.py:52,61`, `runtime/sovereign_verify.py:41`,
+> `runtime/sovereign_signer.py:59`, `VAULT999/seal_law.py:430`) — that is an open runtime gap,
+> not a documentation slip, so a re-run of the binding matrix may fail for a reason unrelated
+> to a T3a regression.
+
 ## Fix order — DONE (do not re-open unless regression)
 
 | # | Gap | Status |
@@ -42,8 +55,9 @@ Re-run matrix only if regression suspected → expect **13/13**.
 
 | Role | Path | Fingerprint note |
 |------|------|------------------|
-| Canonical private | `/root/compose/sekrits/arifos_sovereign.key` | → `b467c07d975a36a5` |
-| Canonical public | `/root/compose/sekrits/arifos_sovereign.pub` | `b467c07d975a36a5` |
+| Canonical private | `/root/compose/sekrits/arifos_sovereign.key` — **GONE (2026-09-19)** | was `b467c07d975a36a5` |
+| Canonical public | `/root/compose/sekrits/arifos_sovereign.pub` — **GONE (2026-09-19)** | was `b467c07d975a36a5` |
+| Active registered signer — **different key, rotated** | key_id `omega-2026-01` in the aaa-identity key registry | `ed25519:sha256:a8fbb5ae8b4772b0` |
 | AAA alias | `/root/AAA/IDENTITY/keys/arif_public.pem` | same |
 | Legacy fragment | `/opt/arifos/secrets/did_arifos_*` | `47ae539c…` — not preferred |
 

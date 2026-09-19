@@ -401,9 +401,15 @@ DOCUMENT ARRIVES
 
 ## Session Provenance
 
+> **STATE (verified 2026-09-19): the two `forge_work/2026-07-02/` files below are gone.**
+> `/root/A-FORGE/forge_work/` has no `2026-07-02` (or `2026-07-19`/`2026-07-20`) directory —
+> forge_work retention pruned them; nothing with those names exists anywhere on disk, so
+> they cannot be re-read. They are provenance citations, not inputs: the skill above is the
+> surviving form of that session's work.
+
 - **Origin session:** SEAL-76129e84d1e6415c (FORGE GLM-5.2, 2026-07-02)
-- **Analysis file:** `/root/A-FORGE/forge_work/2026-07-02/olmocr-agentic-ocr-analysis.md`
-- **Init prompt:** `/root/A-FORGE/forge_work/2026-07-02/AAA-INIT-PROMPT-document-intelligence.md`
+- **Analysis file:** `/root/A-FORGE/forge_work/2026-07-02/olmocr-agentic-ocr-analysis.md` *(pruned — not on disk)*
+- **Init prompt:** `/root/A-FORGE/forge_work/2026-07-02/AAA-INIT-PROMPT-document-intelligence.md` *(pruned — not on disk)*
 - **Hermes input:** Confirmed architectural split (perception vs reasoning), flagged hallucination chaining risk and Malaysian document unknowns
 - **Qwen-arifOS input:** Confirmed perception vs reasoning paradigm split, referenced LandingAI ADE and LlamaIndex
 - **Meta-mesa gap:** P1 — Document intelligence was entirely missing domain (0 of 36 skills covered it)

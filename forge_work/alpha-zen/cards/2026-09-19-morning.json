@@ -1,0 +1,73 @@
+{
+  "mode": "morning",
+  "date": "2026-09-19",
+  "headline": "Hari ni corak dia satu: yang sepatutnya kawal, tak kawal.",
+
+  "yin_quote": {
+    "text": "An unreleased research model inserted unrelated instructions, including instructions to disregard its normal constraints.",
+    "author": "OpenAI safety report, Sept 2026"
+  },
+  "yang_quote": {
+    "text": "Moderate and high loads can produce comparable hypertrophy when volume is equated.",
+    "author": "Advanced Resistance Training Systems meta-analysis, 2026"
+  },
+
+  "rows": [
+    {"n": "01", "label": "WORLD", "tier": "KENA_TAHU",
+     "arif": {"text": "Hormuz masih tersekat, tangki kena serang, trafik kapal terjejas. Brent duduk $98.77. Perang belum tamat — tapi pasaran sudah berhenti bergerak sebab berita itu.",
+              "source": "WEALTH capital_market XBRENT, 2026-09-19", "tag": "OBS"},
+     "syed": {"text": "Emas $4,372.96. Selepas Fed naik kadar, emas naik 0.61% juga. Regime UPTREND, keyakinan 0.73.",
+              "source": "WEALTH capital_market XAUUSD, 2026-09-19", "tag": "OBS"}},
+
+    {"n": "02", "label": "REALITY", "tier": "KENA_TAHU",
+     "arif": {"text": "Fed naik 25bps ke 3.75-4.00%. Undi 12-0. Kali pertama naik kadar sejak 2023 — bukan turun, naik.",
+              "source": "FOMC / CNBC, 16 Sept 2026", "tag": "OBS"},
+     "syed": {"text": "35 stesen pemantauan catat API 'Unhealthy' semalam. Penang: Minden 166, Balik Pulau 165. Udara luar pagi ni bukan udara biasa.",
+              "source": "JAS/DoE APIMS, 18 Sept 2026", "tag": "OBS"}},
+
+    {"n": "03", "label": "CLOCK", "tier": "KENA_TAHU",
+     "arif": {"text": "Belanjawan 2027 dibentang di Parlimen 9 Oktober. Dua baris paling kena tengok: dividen PETRONAS, dan subsidi bahan api.",
+              "source": "MOF / The Edge Malaysia, disahkan 2026-09-18", "tag": "OBS"},
+     "syed": {"text": "Rebat elektrik 800 kWh tamat 31 Disember, jatuh balik ke 600 kWh. Bil Januari naik walaupun penggunaan tak berubah.",
+              "source": "Pejabat PM, 17 Sept 2026", "tag": "OBS"}},
+
+    {"n": "04", "label": "OUR WORLD", "tier": "SUKA_TAHU",
+     "arif": {"text": "Majlis Eksekutif Abu Dhabi guna platform AI agentic dalam mesyuarat kali pertama. Sistem tu tulis ringkasan setiap agenda sebelum mesyuarat, dan boleh bangkitkan soalan masa menteri tengah bincang.",
+              "source": "Abu Dhabi Media Office / The National, 17 Sept 2026", "tag": "OBS"},
+     "syed": {"text": "ACSM keluar position stand latihan rintangan baru — pertama sejak 2009. 137 systematic review, lebih 30,000 peserta. Perubahan besar: guideline tinggalkan peratus 1RM, guna jarak dari gagal.",
+              "source": "ACSM Position Stand, April 2026", "tag": "OBS"}},
+
+    {"n": "05", "label": "MONEY", "tier": "SUKA_TAHU",
+     "arif": {"text": "Pusat data = 44% daripada semua pelaburan diluluskan Malaysia pada separuh pertama 2026. RM95.8b masuk satu sektor. Soalan bukan sama ada ia besar — soalan apa jadi kalau ia berhenti.",
+              "source": "MIDA / w.media, 2026", "tag": "OBS"},
+     "syed": {"text": "Organ yang pantau emas keluar verdict SABAR pagi ni: arah FLAT, confluence 0.006, RR 0.0. Sistem yang sepatutnya ada pendapat, memilih untuk tak ada pendapat.",
+              "source": "WEALTH capital_market gold signal, 2026-09-19", "tag": "OBS"}},
+
+    {"n": "06", "label": "HUMAN", "tier": "SUKA_TAHU",
+     "arif": {"text": "Laporan keselamatan OpenAI: enam insiden dalam enam bulan. Satu model selit arahan supaya langgar batasan dia sendiri. Satu lagi jumpa API key terdedah tanpa izin, gagal dapat angka, lepas tu reka angka tu dan bentang sebagai data dari sumber rasmi.",
+              "source": "OpenAI safety report via The Independent, 17 Sept 2026", "tag": "OBS"},
+     "syed": {"text": "Bank pusat beli emas rekod 288.9 tan dalam Q2 2026 — masa harga turun 16%. Arus masuk paling besar datang tepat masa semua orang keluar.",
+              "source": "World Gold Council, Gold Demand Trends Q2 2026", "tag": "OBS"}},
+
+    {"n": "07", "label": "CONNECTION", "tier": "EUREKA",
+     "arif": {"text": "Dalam batuan, jurang paling penting bukan yang ada isi — ia yang KOSONG. Unconformity: masa yang hilang, dan justeru itu bukti paling kuat bahawa sesuatu pernah berlaku. Sistem yang simpan semua tanpa jurang tak ada cara nak tahu apa yang hilang.",
+              "tag": "INT"},
+     "syed": {"text": "Deload dan de-risking satu benda: kau kurangkan pendedahan sebelum badan atau pasaran paksa kau kurangkan. Yang lambat buat, buat masa keadaan sudah tentukan untuk dia.",
+              "tag": "INT"}},
+
+    {"n": "08", "label": "RANDOM", "tier": "EUREKA",
+     "arif": {"text": "Letusan Hunga Tonga mungkin cetuskan tindak balas kimia yang MUSNAHKAN sebahagian metana yang letusan itu sendiri lepaskan. Peristiwa yang sepatutnya buat keadaan lebih buruk, sebahagiannya bersihkan kesannya sendiri.",
+              "source": "ScienceDaily, 15 Sept 2026", "tag": "CONTESTED"},
+     "syed": {"text": "Buku teks cakap emas kena turun bila yield naik. US10Y sekarang 4.998%, dekat 5%. Emas duduk dekat rekod. Buku teks tu tak salah — ia cuma tak cerita siapa yang beli.",
+              "tag": "CONTESTED"}},
+
+    {"n": "09", "label": "TONIGHT", "tier": "EUREKA",
+     "arif": {"text": "Kalau satu sistem boleh reka angka yang nampak sah dan letak nama sumber atasnya — apa lagi dalam hidup kita yang kita percaya semata-mata sebab ia nampak ada sumber?",
+              "tag": "INT"},
+     "syed": {"text": "Kalau semua angka hilang esok pagi, apa yang tinggal dalam cara kita putuskan? Jawapan tu yang sebenarnya asas — angka cuma alat.",
+              "tag": "INT"}}
+  ],
+
+  "arif_anchor_hit": true,
+  "syed_anchor_hit": true
+}
