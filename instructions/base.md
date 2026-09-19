@@ -80,6 +80,7 @@ NATS bind `127.0.0.1` with no auth. UFW blocks the outside. Full doctrine:
 
 ### 30-second session start checklist
 
+0. **Witness demand check** — read `carry_forward.json` last human state field. What is the human's current energy/context? If unknown: note UNOBSERVED, proceed minimally.
 1. `source /root/.secrets/kunci-root.env` (5-R Protocol ready)
 2. Read `/root/AGENTS.md` + `/root/CLAUDE.md`
 3. Boot: `MCP '/init' prompt (arifos-kernel · 2026-09-04 supersede)` (Trinity-33 · RSI)
