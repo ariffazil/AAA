@@ -1,0 +1,188 @@
+{
+  "epoch": "2026-09-19T19:06:57.178659+08:00",
+  "host": "forge",
+  "phases": {
+    "identity": [
+      {
+        "phase": "identity",
+        "id": "I1",
+        "sev": "OK",
+        "title": "host=forge kernel=6.17.0-41-generic uptime=up 2 weeks, 3 days, 10 hours, 59 minutes",
+        "evidence": "",
+        "note": ""
+      },
+      {
+        "phase": "identity",
+        "id": "I2",
+        "sev": "P0",
+        "title": "/opt/arifos/venv MISSING - 15 ExecStart lines",
+        "evidence": "systemd-analyze verify confirms NOT_EXECUTABLE",
+        "note": ""
+      }
+    ],
+    "scheduler": [
+      {
+        "phase": "scheduler",
+        "id": "S1",
+        "sev": "OK",
+        "title": "40 total, 14 enabled, 26 disabled",
+        "evidence": "",
+        "note": ""
+      },
+      {
+        "phase": "scheduler",
+        "id": "S3",
+        "sev": "P0",
+        "title": "2 enabled ZERO executions",
+        "evidence": "sentinel-heartbeat, amin-acl-weekly-checkin",
+        "note": ""
+      },
+      {
+        "phase": "scheduler",
+        "id": "S4",
+        "sev": "P1",
+        "title": "1 FAILED",
+        "evidence": "\ud83d\udf02 Site drift watch \u2014 Caddy config + bundle pointer",
+        "note": ""
+      },
+      {
+        "phase": "scheduler",
+        "id": "S6",
+        "sev": "P2",
+        "title": "26 disabled unlabelled",
+        "evidence": "",
+        "note": ""
+      }
+    ],
+    "memory": [
+      {
+        "phase": "memory",
+        "id": "M1",
+        "sev": "OK",
+        "title": "state.db: 750MB, 1246 sessions, 111955 msgs",
+        "evidence": "",
+        "note": ""
+      },
+      {
+        "phase": "memory",
+        "id": "M2",
+        "sev": "OK",
+        "title": "Cache: 183MB",
+        "evidence": "",
+        "note": ""
+      }
+    ],
+    "prompt": [
+      {
+        "phase": "prompt",
+        "id": "P1",
+        "sev": "OK",
+        "title": "Prompt: 0.0KB skills=0.0KB",
+        "evidence": "",
+        "note": ""
+      },
+      {
+        "phase": "prompt",
+        "id": "P2",
+        "sev": "OK",
+        "title": "Skills: 62",
+        "evidence": "",
+        "note": ""
+      },
+      {
+        "phase": "prompt",
+        "id": "P3",
+        "sev": "OK",
+        "title": "Snapshot: 251.9KB",
+        "evidence": "",
+        "note": ""
+      }
+    ],
+    "tools": [
+      {
+        "phase": "tools",
+        "id": "T1",
+        "sev": "OK",
+        "title": "All 6 MCP ports up",
+        "evidence": "",
+        "note": ""
+      },
+      {
+        "phase": "tools",
+        "id": "T2",
+        "sev": "OK",
+        "title": "All organs healthy",
+        "evidence": "",
+        "note": ""
+      },
+      {
+        "phase": "tools",
+        "id": "T3",
+        "sev": "OK",
+        "title": "All critical units OK",
+        "evidence": "",
+        "note": ""
+      }
+    ],
+    "backups": [
+      {
+        "phase": "backups",
+        "id": "B-vault999",
+        "sev": "OK",
+        "title": "vault999: 0.0fd old",
+        "evidence": "",
+        "note": ""
+      },
+      {
+        "phase": "backups",
+        "id": "B-arifos",
+        "sev": "P2",
+        "title": "arifos dir missing",
+        "evidence": "",
+        "note": ""
+      }
+    ],
+    "clis": [
+      {
+        "phase": "clis",
+        "id": "C2",
+        "sev": "OK",
+        "title": "9 CLIs: qwen, kimi, opencode, codex, claude, antigravity, agy, gemini, hermes",
+        "evidence": "",
+        "note": ""
+      }
+    ],
+    "agents": [
+      {
+        "phase": "agents",
+        "id": "A1",
+        "sev": "OK",
+        "title": "F13: f13-packet-2026-W38-3.md (3.7d)",
+        "evidence": "",
+        "note": ""
+      },
+      {
+        "phase": "agents",
+        "id": "A2",
+        "sev": "P1",
+        "title": "TREE777 exists but NOT installed",
+        "evidence": "",
+        "note": ""
+      },
+      {
+        "phase": "agents",
+        "id": "A3",
+        "sev": "OK",
+        "title": "CHRON: 9 events, 16 preds",
+        "evidence": "",
+        "note": ""
+      }
+    ]
+  },
+  "summary": {
+    "P0": 2,
+    "P1": 2,
+    "P2": 2,
+    "OK": 14
+  }
+}
