@@ -874,6 +874,26 @@ believe it and go find which.
 
 ## Pitfalls
 
+- **A LIVING CORPSE outranks a duplicate as a defect.** A duplicate wastes attention; a skill that
+  loads, reads plausibly and instructs an action that cannot execute wastes ACTION — the agent tries,
+  fails, and blames the environment. Audit for it explicitly: extract every path, script and target
+  named by a body and test whether it resolves, then check whether a target that DOES exist can
+  actually be written (an immutable attr on a file the text tells you to append to is a corpse, and
+  it will never succeed on retry). Repair by classifying each dead reference as OBSOLETE (delete the
+  stale clause, restate any real requirement generally), MOVED (repoint, having proved the new path
+  exists), UNBUILT (mark it so the next agent stops chasing it), or NOT-A-PATH (a documented example
+  or a template with a placeholder — leave it). Never invent a substitute path; never delete the
+  capability claim — say the lane cannot run today instead.
+- **The corpse detector needs four false-positive guards before its number means anything.** Measured
+  this pass: the raw count was 331 dead references across 152 skills; after removing (1) dead paths
+  inside `references/<dated-session>.md` — those are receipts, and a cache file expiring is expected,
+  (2) declared-transient roots (`~/.hermes/cache`, `/tmp`, `/var/tmp`), (3) NEGATED lines, where the
+  text says "cite it, never write it" and a naive write-intent match reports it as a write target —
+  the exact inversion of the sentence, and (4) template/placeholder fragments that a path regex
+  truncates mid-token (a truncated tail, a `<...>` or `${...}` continuation, or an illustrative
+  `foo/bar` name) — the number was 80 across 64 skills. Report the guards and the before/after, or
+  the audit manufactures work.
+
 - **An organ's entry can be a LINK while the body lives elsewhere — never assume the organ holds what
   it appears to own.** An address published under an organ's band may resolve into the canonical store,
   or into a runtime *profile*, while the organ's own `skills/` directory holds the body the whole time.

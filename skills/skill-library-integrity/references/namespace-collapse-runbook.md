@@ -24,6 +24,7 @@ Group three ways and act on the family. A family you have not named is a family 
 | vendor / foreign profile | another product's bundled skills inside your catalog | relocate to the harness that owns them, or freeze |
 | archive-still-loading | an `.archive*` directory inside the walked tree | an archive inside the walk is not an archive; move it out |
 | incident fossil | a skill whose whole purpose is one dated event | extract the heuristic into the lane's playbook, freeze the incident |
+| contradicting twin | two independent write-ups of ONE procedure that have drifted into disagreeing, where one instruction cannot execute at all | merge the identity AND correct the instruction in the same pass — see §8 |
 
 ## 1. Reconnaissance — measure before you cut
 
@@ -121,6 +122,16 @@ authority that owns the library, together with the reason.
 - Freeze the sources with their own ledger; never delete in the same pass.
 - Verify: merged file exists and is larger than any single source, all sources gone from the walk, all
   sources present in the freeze tree, the ledger parses.
+- **Ship the retention gate as a SCRIPT and re-run it yourself against the disk.** When the merge is
+  delegated, a child's "checks passed" is a self-report, not evidence: children have certified merges
+  whose merged body no longer contained the retired names. Ask for the gate's raw output, then run the
+  gate again yourself — `scripts/discovery_guard.py <merged_skill_dir> <frozen_source_dirs...>` must
+  print `VERDICT: DISCOVERY PRESERVED` before the sources may stay out of the walk.
+- **State the constraint, not the command, in delegated task context.** A task payload containing a gated
+  operation's literal token (a destructive shell verb, a credential-path pattern) is refused by the
+  pre-tool gate before any worker starts, and the refusal consumes the whole delegation. Phrase the
+  instruction as the behaviour you want ("leave that attribute untouched") rather than as the command
+  that would change it; a worker does not need the literal string in order to obey the rule.
 
 ## 6. Confirming the kill — four checks, in order
 
@@ -143,7 +154,52 @@ authority that owns the library, together with the reason.
 
 ## 7. Report shape
 
-Name, per tier: what was removed, the evidence that classified it, and the successor if any. Then the
-witness table (census before/after, freeze ledger, git status when the store is a repo, backup path with
-sha256). Then the findings that outlive the sweep — including defects you FOUND but did not cause,
-labelled as such. Finish by naming what you deliberately did NOT do and the authority it needs.
+Report in the currency the owner asked for, not in the number that is easiest to produce. For an entropy
+sweep:
+
+- **identities removed** and **capabilities preserved**, each with the successor that carries it;
+- the **ratio** between them as the primary KPI — identities removed / capabilities preserved, given as a
+  pair with the capability count. A sweep that removed names without preserving anything and a sweep that
+  preserved everything without removing an identity are different results, and either number alone can be
+  dressed up as progress;
+- **false positives**, counted and published next to the findings: say how many candidates a naive
+  detector would have flagged and how many survived inspection. An audit that reports only findings
+  manufactures work;
+- name, per tier: what was removed, the evidence that classified it, and the successor if any;
+- the witness table (census before/after, freeze ledger, git status when the store is a repo, backup path
+  with sha256);
+- defects FOUND but not caused, labelled as such;
+- finish by naming what you deliberately did NOT do and the authority it needs.
+
+Never lead with a raw file or skill count — a count moves when a file is renamed, and the point of the
+sweep is that the capabilities did not move.
+
+## 8. Contradicting twins — the duplicate that drifted into an impossible instruction
+
+Deduplication asks "are these the same thing?". Ask the harder question too: **do they disagree?**
+
+Two skills written independently from one procedure are NOT byte-twins — they share almost no lines, so a
+content diff finds nothing and both look healthy. What drifts is the substrate: one names a write target,
+command, or endpoint that cannot work; the other names one that can. The pair then teaches two different
+procedures for one task class, and the agent that loads the wrong one walks into an unexplained wall — a
+failure that looks like a broken tool rather than a broken document.
+
+How to detect it, since file comparison will not:
+
+1. **Write the one-sentence question the family answers.** If two bodies return the same sentence they are
+   the same capability — then read their *instructions* side by side, not their prose.
+2. **Run each instruction against reality.** Does the target path accept a write (permissions, immutable
+   attribute, mount, ownership)? Does the named command exist? Does the endpoint answer? The instruction
+   that cannot execute is the defect, and it is the only side whose correction is not a judgment call.
+3. **Verify any claim about readers or ownership by looking for the readers.** Labels written beside a
+   file ("stray", "unused", "deprecated", "SOT", "canonical") drift in the opposite direction from the
+   substrate: the surface with the most RECENT writes and the live citations is the executing one, whatever
+   its label says. Grep for who reads a path before believing who claims to own it.
+4. **Merging the identity and correcting the instruction are ONE operation, not two.** A merged body that
+   keeps the dead instruction is worse than the duplicate it replaced: it now speaks with one voice, and
+   that voice is wrong. Fix the text, then freeze the retired body — the frozen copy still holds the
+   original wording as evidence of what was wrong.
+
+Symptom that points here: a family of "same capability" bodies whose SHARED content is nearly zero
+(measure it: shared non-trivial lines / union). Zero overlap with an identical purpose means two people
+solved the same problem separately and neither read the other's answer.

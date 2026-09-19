@@ -33,17 +33,33 @@ Treat `drift=True` as a **question, not a verdict** — a commit-hash monitor ov
 delta contains no runtime code. Check the diff for `.py/.ts/.js` changes before reporting a kernel
 as broken; a hash is a proxy for behaviour, not behaviour.
 
-## The two eureka ledgers
+## The two eureka ledgers — one FROZEN RATIFIED REGISTRY, one LIVE FEED
 
-| path | status | shape |
-|---|---|---|
-| `/root/AAA/canon/eureka-entries.jsonl` | **SOT** — cited by `canon/*.md`, `instructions/anti-calhoun.md` | `{id, timestamp, type, title, source, summary, status}`, `id` = `EUREKA-<TOPIC>-<DATE>` |
-| `/root/AAA/eurekas/eureka-entries.jsonl` | stray; no script reads it (only the `.ua` scanner and git index see the path) | `{ts, agent, session, eureka, evidence, truth_class, actor, verdict}` |
+Two ledgers exist **by design**, and neither is a stray: one was frozen as a ratified registry, the other
+is the live feed. Attribute evidence, read with `lsattr` on 2026-09-19:
 
-Append to **canon**. If the stray already holds an entry that canon lacks, port it (write a canon-shaped
-entry preserving the original timestamp and naming the source as a port), then leave a short
-non-canonical marker file in the stray's directory stating where the SOT is — so the next agent does not
-repeat the split. Never delete the stray: it is still evidence of what was recorded when.
+| path | status | attribute (`lsattr`) | rows · last written | shape |
+|---|---|---|---|---|
+| `/root/AAA/eurekas/eureka-entries.jsonl` | **LIVE FEED — the WRITE TARGET** | `--------------e-------` — writable, no immutable flag | 14 rows · 2026-09-18 (the newer of the two) | `{ts, agent, session, eureka, evidence, truth_class, actor, verdict}` |
+| `/root/AAA/canon/eureka-entries.jsonl` | **FROZEN RATIFIED REGISTRY** — historical authority; **cite, never write** | `----i---------e-------` — **IMMUTABLE**; an append returns EPERM even as root unless the attribute is cleared, which is forbidden | 109 rows · 2026-09-16 | `{id, timestamp, type, title, source, summary, status}`, `id` = `EUREKA-<TOPIC>-<DATE>` |
+
+**Append to the LIVE FEED: `/root/AAA/eurekas/eureka-entries.jsonl`.** The canon file is immutable by
+design — it is the ratified historical record, cited by `canon/*.md` and `instructions/anti-calhoun.md`.
+Cite it as authority; never use it as a write target, never unlock it, never clear its attribute.
+
+Readers of the live feed (verified 2026-09-19) — so it is not an unread file:
+`governance/durable-artifact-authoring/SKILL.md` (~line 87 instructs appending there), this
+`commit-gates.md`, and `governance/AMENDMENT-6-REGISTER-LAW-RATIFICATION-2026-09-15.md`.
+
+**Correction carried (do not re-import).** This section previously listed the canon file as the SOT and
+instructed "append to canon", and labelled the live feed *"stray; no script reads it (only the `.ua`
+scanner and git index see the path)"*. Both halves were wrong and the label was factually inverted: the
+canon target cannot be written at all (immutable attribute → EPERM), and the "stray" is the live feed the
+federation actually reads. **Never port entries between the two ledgers** — the frozen registry is a
+historical snapshot; the live feed is the flowing record. The live feed is not under the canon lock
+(writable, no immutable attribute); the canon-mutate cycle remains mandatory for anything under
+`/root/AAA/canon`, `/root/AAA/governance`, `/root/arifOS/GENESIS`. If you find new eurekas, write to the
+live feed.
 
 ## Canon-mutate content injection pattern
 
@@ -67,8 +83,12 @@ grep '<unique-string>' <target-file>
 `echo` with `-e` or heredocs inside `canon-mutate run ... -- bash -c` also break on complex
 content. `cat` from a temp file is the only reliable path.
 
-Entry count sanity: `wc -l` the ledger before and after; all lines must parse as JSON:
+Entry count sanity: `wc -l` the **live feed** before and after; all lines must parse as JSON:
 
 ```bash
-python3 -c "import json,sys;[json.loads(l) for l in open('/root/AAA/canon/eureka-entries.jsonl') if l.strip()];print('ok')"
+wc -l /root/AAA/eurekas/eureka-entries.jsonl                                        # 14 rows before this write
+python3 -c "import json;[json.loads(l) for l in open('/root/AAA/eurekas/eureka-entries.jsonl') if l.strip()];print('ok')"
 ```
+
+Never run this against the frozen registry file — it is append-frozen and read-only by design; a parse
+check there is harmless but implies it is a write target, which it is not.

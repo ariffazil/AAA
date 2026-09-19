@@ -152,20 +152,22 @@ When the artifact answers the question, DELIVER it (`MEDIA:/absolute/path`) and 
 
 ## The Write Side — which layer owns the fact
 
-This skill's sweep finds facts that already exist. When the job is to *create* them — "remember
-this", "update the memory", "capture this as reality" — the fact still has to land in the layer
-that owns it. Writing everything to one store is how a memory system rots: session state buried in
-canon, permanent findings left in a 7-day-pruned event log.
+This skill's sweep finds facts that already exist. When the job is to *create* them — "remember this",
+"update the memory", "capture this as reality", "memory.write_approval" — the fact still has to land in
+the layer that owns it. Writing everything to one store is how a memory system rots: session state
+buried in canon, permanent findings left in a 7-day-pruned event log.
 
-**Route by lifetime, not by convenience.**
+**Route by lifetime, not by convenience. The routing table and the executable commands live in ONE
+place — `federation-memory-writeback`, the owner of the write path.** Load it for the four
+destinations (generational carry-forward · eureka staging · the vector collection · the reality graph)
+and for the exact commands, schema versions and prune windows. This body keeps only the read side: it
+does not restate the table, because a rule written twice drifts into two different rules.
 
-| The fact is… | It belongs in |
-|---|---|
-| session state: a decision, a scar, an open loop, an event | carry-forward (sanctioned writer, generational, flock-safe) |
-| a permanent insight worth ratifying | eureka canon — **stage it; the ledger is sealed** |
-| something to recall semantically | the vector collection for that domain |
-| a causal step in this session's work | the reality-graph endpoint, chained by parent id |
-| conversational | conversational memory, automatically |
+- "which layer owns this fact" — read side (here) finds it, write side (`federation-memory-writeback`)
+  creates it. If both answers are needed, load both; the split is deliberate, not an overlap.
+- A permanent insight is **staged**, never appended to a sealed ledger: the ratified registry is
+  immutable by design.
+- A conversational exchange needs no filing at all — conversational memory holds it automatically.
 
 Full procedure, exact commands, and endpoint traps: `references/memory-layer-write-procedure.md`.
 
