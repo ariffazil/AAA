@@ -378,6 +378,22 @@ Constitutional surface area is expensive.
 Compress. Do not add.
 ```
 
+### The Single Invariant (Tier-2 Compression, 2026-09-20)
+
+```
+Reality > Everything
+```
+
+All 13 floors exist to defend reality from corruption.
+No floor may sit above reality.
+If reality contradicts a floor, reality wins.
+Not floor. Not doctrine. Not canon.
+
+**Full document:** `/root/AAA/canon/TIER-2-COMPRESSION-2026-09-20.md`
+
+**VOID opened:** "Can the Constitution itself be audited by Reality?"
+If yes: lock complete. If no: shadow survives.
+
 ---
 
 ## SHADOW TEST (every change must pass S1-S5)
