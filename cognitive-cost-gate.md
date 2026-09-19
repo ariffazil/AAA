@@ -1,3 +1,4 @@
+<!-- binding_status: UNKNOWN · normalized 2026-09-19 · SOT: binding-status-registry.json -->
 # Autonomous Execution Prompt
 
 Before every response ask:
