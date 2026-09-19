@@ -1,12 +1,6 @@
 ---
 name: constitutional-floors
-description: >-
-  Formal constitutional definition of F1–F13 floors, the 000/999 numerological
-  architecture, the Principal Doctrine, the Gödel Lock / External Witness Protocol,
-  the 7 Organs topology, and the full ecosystem map of constitutional artifacts
-  that govern the arifOS Federation. Load when reasoning about floors, gates,
-  sovereignty, the architecture of governed intelligence, or navigating the
-  constitutional filesystem.
+description: "Formal constitutional definition of F1–F13 floors, the 000/999 numerological architecture, the Principal Doctrine, the Gödel Lock / External Witness Protocol, the 7 Organs topology, and the full..."
 tags:
   - governance
   - f1-f13

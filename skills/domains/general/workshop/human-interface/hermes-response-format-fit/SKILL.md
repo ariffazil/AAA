@@ -1,6 +1,6 @@
 ---
 name: hermes-response-format-fit
-description: Match response format to user signal — casual BM default, structured technical only on demand. Prevents the "kasual tapi dapat RFC" failure mode where simple questions get treated as technical audits. Use this skill on EVERY reply to Arif Fazil before composing output. The single most common failure across arifOS Hermes sessions is over-structuring casual conversation. Load reflexively.
+description: "Match response format to user signal — casual BM default, structured technical only on demand."
 category: governance
 ---
 

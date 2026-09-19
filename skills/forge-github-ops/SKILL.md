@@ -10,7 +10,8 @@ autonomy_tier: T1
 tags: [github, git, runbook, ops]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----# GitHub & Git Operations (Probe-Based v1.2.0 — workflow merged)
+---
+# GitHub & Git Operations (Probe-Based v1.2.0 — workflow merged)
 
 ## Federation Repos — Discover from Organ Registry
 

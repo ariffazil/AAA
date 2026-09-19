@@ -1,6 +1,6 @@
 ---
 name: telegram-bot-identity-and-group-routing
-description: Verify bot + group + lane before any live Telegram test. Full enumeration audit workflow. Also use when Arif says bot is silent / no reply at all / /new doesn't work — hook signature drift diagnostic ladder.
+description: "Verify bot + group + lane before any live Telegram test."
 ---
 
 # Telegram Bot Identity & Group Routing — Pre-Live-Test Gate

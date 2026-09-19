@@ -2,11 +2,7 @@
 id: forge-musyawarah-gotong
 name: forge-musyawarah-gotong
 version: 1.0.0
-description: >
-
-  Runtime for musyawarah (independent 333 ARCHITECT + 555 AUDITOR) then
-  gotong-royong (sequential execute hop). Authority star, evidence as
-  position files. Not a chatboard. Grok: workflow musyawarah-gotong.
+description: "Runtime for musyawarah (independent 333 ARCHITECT + 555 AUDITOR) then gotong-royong (sequential execute hop)."
 owner: AAA
 risk_tier: medium
 floor_scope: [F1, F2, F3, F4, F7, F9, F11, F13]
@@ -14,7 +10,8 @@ autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
 tags: [musyawarah, gotong-royong, deliberation, handoff, F3, F13]
----# FORGE-musyawarah-gotong
+---
+# FORGE-musyawarah-gotong
 
 Make musyawarah and gotong royong fire. Do not role-play both voices in one process.
 

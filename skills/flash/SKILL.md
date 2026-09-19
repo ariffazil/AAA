@@ -1,11 +1,6 @@
 ---
 name: flash
-description: >-
-  runpod-flash — code-first serverless: write Python locally, run it on remote
-  Runpod GPUs/CPUs with `flash dev` (hot-reload + live worker logs), then
-  `flash deploy`. Use for @Endpoint/@remote functions, resource config, and
-  debugging flash deployments. For CLI-only infra management use runpodctl or
-  runpod-mcp.
+description: "runpod-flash — code-first serverless: write Python locally, run it on remote Runpod GPUs/CPUs with `flash dev` (hot-reload + live worker logs), then `flash deploy`."
 user-invocable: true
 metadata:
   author: runpod

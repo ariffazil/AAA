@@ -17,7 +17,8 @@ autonomy_tier: T1
 owner: A-FORGE
 capability_tier: fed-long-context
 ecology_state: WARM
----# 🔗 FORGE — Symlink Audit
+---
+# 🔗 FORGE — Symlink Audit
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.
 

@@ -1,9 +1,6 @@
 ---
 name: telemetry-watchdog
-description: >
-  Monitor organ telemetry freshness across the federation. Checks state.json age,
-  biometric data staleness, and watchdog cron health. USE WHEN: "check telemetry",
-  "WELL state stale", "vitality unknown", "watchdog status", "biometric freshness".
+description: "Monitor organ telemetry freshness across the federation."
 id: forge-telemetry-watchdog
 owner: A-FORGE
 floor_scope: [F1, F2, F4, F7]

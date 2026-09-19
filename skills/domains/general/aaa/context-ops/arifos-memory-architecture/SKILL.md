@@ -1,6 +1,6 @@
 ---
 name: arifos-memory-architecture
-description: "How memory flows across the arifOS federation — arif_memory (kernel L1–L6 governor), forge_memory (A-FORGE VAULT999 read), and HANG INGAT BALIK / PRL (precedent recall injected into reasoning). Trigger: 'how does memory work', arif_memory/forge_memory/PRL questions, HANG INGAT BALIK, precedent recall, vault_vectorizer, arifos_precedent collection, tau threshold, institutional memory."
+description: "How memory flows across the arifOS federation — arif_memory (kernel L1–L6 governor), forge_memory (A-FORGE VAULT999 read), and HANG INGAT BALIK / PRL (precedent recall injected into reasoning)."
 ---
 
 # arifOS Memory Architecture

@@ -3,10 +3,7 @@ name: forge-phased-delivery
 id: forge-phased-delivery
 owner: A-FORGE
 risk_tier: low
-description: >
-  Phased delivery protocol for building, testing, simulating, tuning, and integrating
-  cognitive modules and intelligent systems. Enforces honest reporting, real simulation
-  over templates, surgical fixes, and structured rollback when something fails.
+description: "Phased delivery protocol for building, testing, simulating, tuning, and integrating cognitive modules and intelligent systems."
 version: 1.0.0
 tags: [delivery, testing, simulation, honest-reporting, phased, F2, F4, F7]
 floor_scope: [F1, F2, F4, F7, F11]

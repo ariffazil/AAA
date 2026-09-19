@@ -1,6 +1,6 @@
 ---
 name: WELL-3baik-log
-description: Capture "3baik:" Telegram replies into the wellbeing joy log. Trigger - any DM message starting with "3baik:" — the nightly 3 Good Things ritual (human-benefit-sleep-joy-v1 directive). Valid replies include "tak ada", "bad day", "skip" — store honestly, never nag.
+description: "Capture 3baik Telegram replies into the wellbeing joy log."
 ---
 
 # 3 Baik Hari Ini — reply capture

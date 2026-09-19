@@ -18,7 +18,8 @@ floor_scope:
 autonomy_tier: T0
 capability_tier: fed-long-context
 ecology_state: WARM
----# Telegram Security Audit (TREE777) — Probe-Based v1.1.0
+---
+# Telegram Security Audit (TREE777) — Probe-Based v1.1.0
 
 **Automated Telegram bot security checks — token isolation, webhook exposure, permission scope.**
 

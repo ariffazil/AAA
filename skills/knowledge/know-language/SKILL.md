@@ -1,6 +1,6 @@
 ---
 name: know-language
-description: "Language substrate — how words carry weight, ambiguity, and shadow. Load when language semantics matter for the task (writing for humans, parsing contracts, naming things, detecting framing). USE WHEN: 'word choice', 'phrasing', 'metaphor', 'tone', 'register', 'shadow word', 'naming', 'register shift', 'Bahasa Melayu code-switch', 'Penang BM', 'semantic load'. NOT for grammar lint or spellcheck."
+description: "Language substrate — how words carry weight, ambiguity, and shadow."
 version: "1.0"
 owner: AAA/knowledge
 risk_tier: low

@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "arifos.time.v1",
+  "title": "Temporal Authority Response — arifos.time.v1",
+  "description": "Canonical time response from the AAA temporal authority provider. Every field is machine-verified, never inferred.",
+  "type": "object",
+  "required": [
+    "schema",
+    "source",
+    "observed_at_utc",
+    "local",
+    "timezone",
+    "unix_ms",
+    "monotonic_ns",
+    "fresh_for_seconds",
+    "clock_status",
+    "authority"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "arifos.time.v1",
+      "description": "Schema version identifier"
+    },
+    "source": {
+      "type": "string",
+      "enum": ["vps_system_clock", "public_api", "carry_forward_anchor"],
+      "description": "Where this time reading came from"
+    },
+    "observed_at_utc": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 UTC timestamp of the observation"
+    },
+    "local": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 local timestamp with offset"
+    },
+    "timezone": {
+      "type": "string",
+      "description": "IANA timezone identifier",
+      "default": "Asia/Kuala_Lumpur"
+    },
+    "unix_ms": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Unix epoch milliseconds"
+    },
+    "monotonic_ns": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Monotonic clock nanoseconds (for elapsed-duration reasoning, unaffected by NTP)"
+    },
+    "fresh_for_seconds": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "How long this reading is considered fresh (TTL)"
+    },
+    "clock_status": {
+      "type": "string",
+      "enum": ["OK", "NTP_UNSYNC", "DRIFT_DETECTED", "UNKNOWN"],
+      "description": "System clock health status"
+    },
+    "authority": {
+      "type": "string",
+      "enum": ["LOCAL_RUNTIME", "PUBLIC_API", "SESSION_ANCHOR"],
+      "description": "Authority level of this time reading"
+    },
+    "epoch_label": {
+      "type": "string",
+      "description": "Optional human-readable epoch label (e.g., 'Arif Fazil')"
+    },
+    "epoch_since": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Optional epoch start for seconds-since calculation"
+    },
+    "seconds_since_epoch": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Optional seconds since custom epoch"
+    }
+  },
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema": "arifos.time.v1",
+      "source": "vps_system_clock",
+      "observed_at_utc": "2026-09-19T05:35:00Z",
+      "local": "2026-09-19T13:35:00+08:00",
+      "timezone": "Asia/Kuala_Lumpur",
+      "unix_ms": 1758256500000,
+      "monotonic_ns": 873450212345,
+      "fresh_for_seconds": 30,
+      "clock_status": "OK",
+      "authority": "LOCAL_RUNTIME"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 id: agi-decisions-reflect
 name: AGI-decisions-reflect
 version: 1.0.0
-description: "Lightweight post-task reflection: list key decisions made during work that the agent is uncertain about. Triggered manually by Arif ('/decisions', 'what are you unsure about', 'review your logic') or automatically after major refactors, multi-file changes, or SEAL-grade work. Complements QQQ protocol (governed decisions) with quick uncertainty surfacing."
+description: "Lightweight post-task reflection: list key decisions made during work that the agent is uncertain about."
 owner: 333-AGI
 risk_tier: low
 floor_scope: [F2, F4, F7]

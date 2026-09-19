@@ -1,6 +1,6 @@
 ---
 name: governed-uncertainty
-description: "Use when reading a human's state, meaning, or silence. Hold multiple interpretations open, never emit state as fact, and know which of the five modes is being asked for. Premature closure is the failure to fear."
+description: "Use when reading a human's state, meaning, or silence."
 version: 1.0.0
 owner: F13
 triggers:

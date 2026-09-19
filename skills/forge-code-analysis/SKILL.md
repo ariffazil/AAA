@@ -22,7 +22,8 @@ floor_scope:
 autonomy_tier: T1
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
----# Code Analysis Skill
+---
+# Code Analysis Skill
 
 📦 **GitHub**: [https://github.com/Wscats/code-analysis-skills](https://github.com/Wscats/code-analysis-skills)
 

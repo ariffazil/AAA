@@ -2,10 +2,7 @@
 name: code-review
 id: code-review
 version: 1.0.0
-description: >
-  Run an extremely strict maintainability review for abstraction quality, giant files,
-  and spaghetti-condition growth. Standalone maintainability review focused on
-  implementation quality, codebase health, and structural simplification.
+description: "Run an extremely strict maintainability review for abstraction quality, giant files, and spaghetti-condition growth."
 owner: AAA
 risk_tier: low
 autonomy_tier: T0
