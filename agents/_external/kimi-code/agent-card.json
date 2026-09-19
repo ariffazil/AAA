@@ -1137,5 +1137,19 @@
     "detected_at": "2026-09-16T07:00:00Z",
     "material_preserved_under": "signature_legacy",
     "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
+  },
+  "shadowAcknowledged": [
+    "two_canonical_homes: /root/AAA/agents/kimi-code/ (internal) vs /root/AAA/agents/_external/kimi-code/ (external) carry different doctrine; read identity.json for canonical surface",
+    "fi_slot_ground_truth: identity.json is the canonical FI slot (actor=kimi-code, fi=, fi_slot=FI-008); card's fi=FI-KIMI / fi_slot=FI-008 — readers must NOT infer 'unassigned' from absent fields",
+    "sparse_or_absent_matrix_record: kimi-code is NOT in shadow-matrix per_actor_shadows — no execution/verification signal at all; all kimi-code claims are DERIVED from docs, not MEASURED from runtime",
+    "shadow_undeclared: this card had no shadowAcknowledged block before 2026-09-19 audit — read_state MUST treat kimi-code self-assessment as DERIVED"
+  ],
+  "shadow_population_meta": {
+    "populated_at": "2026-09-19T13:48:00Z",
+    "populated_by": "opencode (333-AGI) per federation-shadow-ack audit",
+    "method": "Script-driven derivation from: identity.json (FI slot), /root/AAA/cockpit/shadow-matrix/shadow-matrix-2026-09-07.json (per_actor_shadows, exact-match), live binary version probe, agent-card.json (verified_against)",
+    "covers_shadow_ids": [
+      "DIV-FEDERATION-SHADOW-ACK-CLOSED"
+    ]
   }
 }

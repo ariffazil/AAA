@@ -222,5 +222,22 @@
     "motto": "DITEMPA BUKAN DIBERI",
     "capability": "BUILD",
     "lane": "333-AGI"
+  },
+  "shadowAcknowledged": [
+    "two_canonical_homes: /root/AAA/agents/opencode/ (internal) vs /root/AAA/agents/_external/opencode/ (external) carry different doctrine; read identity.json for canonical surface",
+    "fi_slot_unresolved: identity.json actor_id is 'opencode/FI-???' (literal ??? placeholder, never resolved); identity has no fi_slot field — read identity.json + ask sovereign",
+    "sparse_or_absent_matrix_record: opencode is NOT in shadow-matrix per_actor_shadows — no execution/verification signal at all; all opencode claims are DERIVED from docs, not MEASURED from runtime",
+    "stale_binary_refs: card says cli_version=1.18.11, live binary is 1.18.30 — drifted; treat card as archaeological for runtime facts",
+    "card_truth_repair_stale: verified_against 2026-08-13T04:00:00+08:00 = 37 days without a repair pass; description may not match reality",
+    "shadow_undeclared: this card had no shadowAcknowledged block before 2026-09-19 audit — read_state MUST treat opencode self-assessment as DERIVED"
+  ],
+  "shadow_population_meta": {
+    "populated_at": "2026-09-19T13:48:00Z",
+    "populated_by": "opencode (333-AGI) per federation-shadow-ack audit",
+    "method": "Script-driven derivation from: identity.json (FI slot), /root/AAA/cockpit/shadow-matrix/shadow-matrix-2026-09-07.json (per_actor_shadows, exact-match), live binary version probe, agent-card.json (verified_against)",
+    "covers_shadow_ids": [
+      "DIV-FEDERATION-SHADOW-ACK-CLOSED",
+      "DIV-OPENCODE-FI-UNRESOLVED"
+    ]
   }
 }
