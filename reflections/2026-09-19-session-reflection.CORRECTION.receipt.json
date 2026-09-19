@@ -1,0 +1,21 @@
+{
+  "artifact": "/root/AAA/reflections/2026-09-19-session-reflection.CORRECTION.md",
+  "sha256": "0fdfb436a0d3ca174344d013582e861a4367faa41b65b6c1766f60e17832aae8",
+  "chars": 3490,
+  "authority": "F13 order 2026-09-19 \u2014 reflection delivered to telegram:267378578; a delivered claim was later retracted, so the correction goes to the SAME channel (external-action-repair: the unowned repair surface)",
+  "delivery": {
+    "target": "telegram:267378578",
+    "role": "arif (verified via identity lock, ALLOW)",
+    "state": "SENT",
+    "not_claimed": [
+      "DELIVERED",
+      "OBSERVED \u2014 no read confirmation exists"
+    ]
+  },
+  "verified_externally": [
+    "collision_audit.py run by this session: 643 indexed, 561 distinct routing names, 59 same-name groups ALL address bands, 0 real collisions, 20 borrowed addresses",
+    "FROM-ZERO audit doc exists: reports/FROM-ZERO-live-audit-2026-09-16.md line 50",
+    "1882799ee dated 2026-09-19 not 09-16; its own message says 2 groups not 24"
+  ],
+  "ts": "2026-09-19T02:25:00.378417+00:00"
+}
