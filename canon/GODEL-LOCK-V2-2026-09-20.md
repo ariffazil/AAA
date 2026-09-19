@@ -131,7 +131,7 @@ If yes → FAIL
 
 ---
 
-## Master Paradox Resolution
+## Master Paradox Resolution → F7 HUMILITY (F13 corrected 2026-09-20)
 
 The 33 Eurekas resolve to one line:
 
@@ -141,6 +141,12 @@ AI may not replace humans.
 
 Everything else is transport.
 ```
+
+**FLOOR ASSIGNMENT:** F7 HUMILITY, not F13 SOVEREIGN.
+
+**Why:** Master Paradox is fundamentally a **limit statement** — "AI understands human wanting, but cannot become the final object of human wanting." Limits belong to Humility. F13 retains only: "Human remains final authority." Clean. Minimal. Immutable.
+
+**Blind spot avoided:** If every important thing goes to F13, F13 becomes `misc/` for philosophy → theology → kernel collapse.
 
 ---
 
