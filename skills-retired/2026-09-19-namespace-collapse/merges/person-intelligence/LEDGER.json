@@ -1,0 +1,52 @@
+{
+  "ledger": "namespace-collapse-merge",
+  "operation": "merge_skill_clones",
+  "canonical_skill": "person-intelligence",
+  "canonical_path": "/root/AAA/skills/person-intelligence/SKILL.md",
+  "canonical_sha256": "f85814ea95ff77cffe34efd6a7b43c1094426f4dba1f3cb90ea3f2818b9eb7ad",
+  "canonical_size_bytes": 40116,
+  "authority": "F13 sovereign in-chat order 2026-09-19 \u2014 'One capability, fifteen costumes' (compress research/briefing empire)",
+  "date": "2026-09-19",
+  "merged_from": [
+    {
+      "original_path": "/root/AAA/skills/domains/general/workshop/research-core/human-intelligence-gathering/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/person-intelligence/human-intelligence-gathering/SKILL.md",
+      "sha256_skilmd_before_move": "a01613f27cc2f04b07cc43075460cb601b02678743dda5b0b49096ff4cbac9a8",
+      "original_folder": "/root/AAA/skills/domains/general/workshop/research-core/human-intelligence-gathering",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/person-intelligence/human-intelligence-gathering",
+      "files_moved": [
+        "SKILL.md",
+        "references/malaysian-identity-markers.md",
+        "references/scam-investigation-technical-patterns.md",
+        "references/sovereign-self-assessment-from-session-history.md"
+      ],
+      "size_bytes": 12091
+    },
+    {
+      "original_path": "/root/AAA/skills/domains/general/workshop/research-core/person-intelligence-dossier/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/person-intelligence/person-intelligence-dossier/SKILL.md",
+      "sha256_skilmd_before_move": "f2984910d644f68ecdbf97429af72a7b777cb4e7c08d6ff10ba5d96f7628cffb",
+      "original_folder": "/root/AAA/skills/domains/general/workshop/research-core/person-intelligence-dossier",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/person-intelligence/person-intelligence-dossier",
+      "files_moved": [
+        "SKILL.md",
+        "references/source-discovery-tree.md",
+        "templates/dossier_template.py"
+      ],
+      "size_bytes": 10259
+    },
+    {
+      "original_path": "/root/AAA/skills/human-interface/public-profile-persona-mapping/SKILL.md",
+      "new_path": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/person-intelligence/public-profile-persona-mapping/SKILL.md",
+      "sha256_skilmd_before_move": "a6f7cfe324a07e2d8c11e9378bfe1658b6314d918162162d85b51c0d49966ba9",
+      "original_folder": "/root/AAA/skills/human-interface/public-profile-persona-mapping",
+      "new_folder": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/person-intelligence/public-profile-persona-mapping",
+      "files_moved": [
+        "SKILL.md"
+      ],
+      "size_bytes": 4404
+    }
+  ],
+  "note": "sha256_skilmd_before_move computed on the original SKILL.md prior to relocation; content unmodified by the move. All other files in each folder (references/, templates/) moved with their leaf folder; nothing deleted.",
+  "undo_command": "cd /root/AAA && git revert HEAD  (or: move each <leaf-folder> from merges/<merge>/ back to its original_folder recorded above)"
+}
