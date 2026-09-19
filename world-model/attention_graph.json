@@ -1,0 +1,55 @@
+{
+  "graph": "attention",
+  "description": "Where resources are being spent — signal vs noise",
+  "nodes": [
+    {
+      "id": "session_SEAL-e3cfbfe4",
+      "type": "session",
+      "actor": "333-AGI",
+      "objective": "Integrate AGI trajectory bootstrap framework into arifOS federation substrate",
+      "attention_cost": {
+        "human_questions_asked": 0,
+        "tool_calls": 8,
+        "time_seconds": 300
+      },
+      "signal_gain": {
+        "uncertainty_reduced": true,
+        "capability_changed": true,
+        "reality_updated": true,
+        "artifacts_created": ["world-model-daemon-spec.md", "7 graph files"]
+      },
+      "last_updated": "2026-09-19T17:01:12Z"
+    },
+    {
+      "id": "session_FI-005-codex",
+      "type": "session",
+      "actor": "FI-005-codex",
+      "objective": "AAA substrate maintenance — port diagnosis, Ollama, Graphiti, staged canon",
+      "attention_cost": {
+        "human_questions_asked": 0,
+        "tool_calls": 31,
+        "time_seconds": 3600
+      },
+      "signal_gain": {
+        "uncertainty_reduced": true,
+        "capability_changed": true,
+        "reality_updated": true,
+        "artifacts_created": ["staged 19 sealed-canon files", "classified 313 review-needed files"]
+      },
+      "last_updated": "2026-09-20T00:58:00Z"
+    }
+  ],
+  "aggregate": {
+    "total_human_questions": 0,
+    "total_tool_calls": 39,
+    "signal_to_noise_ratio": 0.85,
+    "learning_rate": 0.7
+  },
+  "anti_stagnation": {
+    "consecutive_no_adaptation": 0,
+    "threshold": 5,
+    "action": "HOLD non-critical work, search for unknowns"
+  },
+  "last_updated": "2026-09-19T17:01:12Z",
+  "update_count": 1
+}

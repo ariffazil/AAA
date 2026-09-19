@@ -1,12 +1,13 @@
 ---
 name: entropy-metabolizer
-description: "Bridge audit findings to action — classifies entropy candidates into safe-cleanup, tracked-cleanup, investigate, and hold buckets, then executes safe-cleanup automatically. USE WHEN: after audit-repository-entropy produces a JSON ledger, or when Arif says 'clean up', 'lower entropy', 'metabolize findings', 'act on audit'. "
+description: "Bridge audit findings to action — classifies entropy candidates into safe-cleanup, tracked-cleanup, investigate, and hold buckets, then executes safe-cleanup automatically."
 argument-hint: ["<audit-json-path> [--dry-run] [--auto-local] [--commit]"]
 capability_tier: fed-agent-subagent
 floor_scope: [F1, F2, F7, F11]
 autonomy_tier: T1
 risk_tier: low
----# /entropy-metabolizer
+---
+# /entropy-metabolizer
 
 **Audit → Action bridge. Takes entropy audit JSON, classifies candidates, executes safe actions, reports results.**
 

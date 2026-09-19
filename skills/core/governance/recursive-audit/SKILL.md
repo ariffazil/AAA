@@ -2,7 +2,7 @@
 name: recursive-audit
 id: recursive-audit
 version: 2.0.0-wave2-merged
-description: "5-pass recursive audit: Blue diagnose → Red attack → Blue forge → Yellow verify → Green adjudicate. Replaces APEX-fff-loop-protocol. Use when user asks to 'recursive audit', '5-pass audit', 'FFF loop', 'recursive self-audit', or any meta-audit of an audit."
+description: "5-pass recursive audit: Blue diagnose → Red attack → Blue forge → Yellow verify → Green adjudicate."
 owner: AAA
 risk_tier: low
 floor_scope: [F1, F2, F4, F11]

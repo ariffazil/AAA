@@ -1,6 +1,6 @@
 ---
 name: health-product-claim-audit
-description: "Evaluate health product claims against clinical evidence — supplements, treatments, devices. Structured verdict: what is legit, what is marketing, what is overpriced. Context-aware recommendation considering who is asking."
+description: "Evaluate health product claims against clinical evidence — supplements, treatments, devices."
 tags: [health, product, supplement, evidence, audit, malaysia, claim]
 ---
 

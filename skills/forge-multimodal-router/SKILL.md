@@ -2,7 +2,7 @@
 name: forge-multimodal-router
 id: forge-multimodal-router
 risk_tier: low
-description: 'Federation-wide multimodal routing skill. Resolves any vision/audio/video/somatic request to its canonical model + endpoint via /root/.config/federation-models.json (SOT). USE WHEN: "which model should I use for X", "route this image/audio/video to the right engine", "unify multimodal routing across agents", "I have an image/audio/video and need to know where it goes". '
+description: "Federation-wide multimodal routing skill."
 version: 1.0.0
 tags:
 - multimodal
@@ -37,7 +37,8 @@ forged: 2026-08-20
 forged_by: FI-003 (Qwen Code)
 f13_directive: "make sure my hermes agent telegram ASI_arifos_bot know how to use this"
 constitutional_floor: F11 AUDIT — every routing decision logged to VAULT999 receipts
----# forge-multimodal-router
+---
+# forge-multimodal-router
 
 ## Purpose
 

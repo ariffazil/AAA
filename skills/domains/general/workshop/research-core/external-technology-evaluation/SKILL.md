@@ -1,12 +1,6 @@
 ---
 name: external-technology-evaluation
-description: >-
-  Evaluate external AI models, research papers, tools, and technologies for
-  potential integration into the arifOS federation. Covers the full lifecycle:
-  discovery → structured analysis (Observe→Think→Judge) → EUREKA zen proposal →
-  SABAR/FORGE/HOLD decision → execution on approval. Distinct from
-  ai-model-intelligence-briefing (which is current-awareness briefing) — this is
-  integration assessment with execution follow-through.
+description: "Evaluate external AI models, research papers, tools, and technologies for potential integration into the arifOS federation."
 triggers:
   - "look at this new model"
   - "is this worth having in our system"

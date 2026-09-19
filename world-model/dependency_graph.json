@@ -1,0 +1,112 @@
+{
+  "graph": "dependency",
+  "description": "What relies on what — service dependencies, organ chains",
+  "nodes": [
+    {
+      "id": "arifOS_kernel",
+      "type": "organ",
+      "status": "healthy",
+      "dependents": ["A-FORGE", "arifFlow", "AAA", "all_agents"],
+      "dependencies": [],
+      "last_health_check": "2026-09-19T16:55:16Z"
+    },
+    {
+      "id": "A-FORGE",
+      "type": "organ",
+      "status": "healthy",
+      "dependents": ["all_agents"],
+      "dependencies": ["arifOS_kernel"],
+      "last_health_check": "2026-09-19T17:01:12Z"
+    },
+    {
+      "id": "arifFlow",
+      "type": "organ",
+      "status": "healthy",
+      "dependents": ["all_agents"],
+      "dependencies": ["arifOS_kernel"],
+      "last_health_check": "2026-09-19T17:01:00Z"
+    },
+    {
+      "id": "AAA",
+      "type": "organ",
+      "status": "healthy",
+      "dependents": [],
+      "dependencies": ["arifOS_kernel"],
+      "last_health_check": "2026-09-19T17:01:12Z"
+    },
+    {
+      "id": "GEOX",
+      "type": "organ",
+      "status": "healthy",
+      "dependents": [],
+      "dependencies": [],
+      "last_health_check": "2026-09-19T17:01:12Z"
+    },
+    {
+      "id": "WEALTH",
+      "type": "organ",
+      "status": "healthy",
+      "dependents": [],
+      "dependencies": [],
+      "last_health_check": "2026-09-19T17:01:12Z"
+    },
+    {
+      "id": "WELL",
+      "type": "organ",
+      "status": "healthy",
+      "dependents": [],
+      "dependencies": [],
+      "last_health_check": "2026-09-19T17:01:12Z"
+    },
+    {
+      "id": "graphiti",
+      "type": "service",
+      "status": "degraded",
+      "dependents": [],
+      "dependencies": ["falkordb", "ollama"],
+      "last_health_check": "2026-09-20T00:58:00Z",
+      "note": "Port 18412 bound but app hangs at OpenAI client init"
+    },
+    {
+      "id": "falkordb",
+      "type": "service",
+      "status": "healthy",
+      "dependents": ["graphiti"],
+      "dependencies": [],
+      "last_health_check": "2026-09-20T00:58:00Z"
+    },
+    {
+      "id": "ollama",
+      "type": "service",
+      "status": "healthy",
+      "dependents": ["graphiti"],
+      "dependencies": [],
+      "last_health_check": "2026-09-20T00:58:00Z"
+    },
+    {
+      "id": "litellm",
+      "type": "service",
+      "status": "healthy",
+      "dependents": ["all_agents"],
+      "dependencies": [],
+      "last_health_check": "2026-09-20T00:58:00Z",
+      "note": "Port 4000 — was false DOWN, actually UP"
+    }
+  ],
+  "edges": [
+    {"from": "A-FORGE", "to": "arifOS_kernel", "type": "requires", "critical": true},
+    {"from": "arifFlow", "to": "arifOS_kernel", "type": "requires", "critical": true},
+    {"from": "AAA", "to": "arifOS_kernel", "type": "requires", "critical": true},
+    {"from": "graphiti", "to": "falkordb", "type": "requires", "critical": true},
+    {"from": "graphiti", "to": "ollama", "type": "requires", "critical": false},
+    {"from": "litellm", "to": "all_agents", "type": "feeds"}
+  ],
+  "orphan_ports": ["18081"],
+  "blast_radius": {
+    "arifOS_kernel": "ALL organs down",
+    "A-FORGE": "all_agents lose execution",
+    "litellm": "all_agents lose model access"
+  },
+  "last_updated": "2026-09-19T17:01:12Z",
+  "update_count": 1
+}

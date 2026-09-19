@@ -1,0 +1,65 @@
+{
+  "schema": "arifos.session.v2",
+  "description": "Reference init contract from Perplexity + FI-008 temporal intelligence session (2026-09-19). NOT YET IMPLEMENTED — architectural target for P2.",
+  "session_id": "sess_<generated>",
+  "actor": {
+    "id": "<actor_id>",
+    "type": "agent",
+    "declared_model": "<model>"
+  },
+  "principal": {
+    "sovereign_id": "arif",
+    "delegation_id": null,
+    "mission_id": null,
+    "expires_at_utc": null
+  },
+  "governance": {
+    "constitution_ref": "arifos://canon/constitution@sha256:<hash>",
+    "policy_version": "2026.09.19",
+    "irreversible_action_requires": "validated_seal_receipt",
+    "sovereign_veto": true
+  },
+  "temporal": {
+    "root_ref": "arifos://carry-forward/temporal_root",
+    "observed_at_utc": "<from aaa-time now>",
+    "timezone": "Asia/Kuala_Lumpur",
+    "anchor_ttl_s": 300,
+    "claim_refresh_ttl_s": 60,
+    "provider": "aaa-time",
+    "on_failure": "UNKNOWN_NO_TEMPORAL_CLAIM"
+  },
+  "temporal_policy": {
+    "require_refresh_for": [
+      "current_time",
+      "current_part_of_day",
+      "today_tomorrow_yesterday",
+      "deadline_status",
+      "elapsed_duration",
+      "schedule_execution"
+    ],
+    "on_stale": "CALL_PROVIDER",
+    "on_provider_failure": "RETURN_UNKNOWN",
+    "chron_is_clock_provider": false
+  },
+  "continuity": {
+    "carry_forward_ref": "arifos://carry-forward",
+    "snapshot_hash": "sha256:<hash>",
+    "schema": "arifos.carry_forward.v3"
+  },
+  "authority": {
+    "mode": "OBSERVE_ONLY",
+    "token_ref": "act://<token>",
+    "expires_at_utc": null,
+    "allowed_tool_classes": ["observe", "think", "memory"],
+    "forbidden_action_classes": ["irreversible_mutation", "external_side_effect"]
+  },
+  "capabilities": {
+    "manifest_ref": "arifos://capabilities/<agent>@sha256:<hash>",
+    "policy_visible_tools": []
+  },
+  "audit": {
+    "trace_id": "trc_<generated>",
+    "init_receipt_id": "rcpt_<generated>",
+    "close_behavior": "EMIT_SESSION_CLOSE_RECEIPT"
+  }
+}

@@ -24,7 +24,8 @@ floor_scope:
   - F9
 capability_tier: fed-long-context
 ecology_state: WARM
----# Spatial Grounding
+---
+# Spatial Grounding
 
 Embed VPS spatial context in agent configs — prevents spatial amnesia and SSH confusion.
 

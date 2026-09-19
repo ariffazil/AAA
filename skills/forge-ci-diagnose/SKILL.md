@@ -60,7 +60,8 @@ canonical_siblings:
 - parallel-authority-detection  # if root cause is cross-repo break
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----# GitHub CI Diagnose
+---
+# GitHub CI Diagnose
 
 ## Overview
 

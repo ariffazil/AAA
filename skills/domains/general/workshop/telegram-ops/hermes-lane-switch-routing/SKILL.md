@@ -1,6 +1,6 @@
 ---
 name: hermes-lane-switch-routing
-description: Understand and diagnose the Hermes lane_switch plugin — the multi-human per-person context-isolation layer in the arifOS federation. Use when "why does the bot answer differently for me vs someone else in the same group", "add a register for user X in group Y", "why does a user see the wrong persona/voice/memory", "per-user memory isolation", or "how does lane resolution actually work". Distinct from bot-to-group routing (telegram-bot-routing-doctrine) and gateway identity/process forensics (hermes-telegram-gateway-ops).
+description: "Understand and diagnose the Hermes lane_switch plugin — the multi-human per-person context-isolation layer in the arifOS federation."
 ---
 
 # Hermes Lane Switch Routing — multi-human per-person context

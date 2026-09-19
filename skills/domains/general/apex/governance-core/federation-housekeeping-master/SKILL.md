@@ -1,6 +1,6 @@
 ---
 name: federation-housekeeping-master
-description: Monthly constitutional housekeeping orchestrator — runs the federation's EXISTING audit tools in one ritual (entropy sweep, MCP surface audit, FI mesh check, secret hygiene, repo reality) and closes three real gaps (A2A mesh-vs-live diff, prompt-registry audit, doctrine contradiction scan). Ends with Capability÷Entropy executive ranking. Read-only, receipts mandatory, never self-seals, never mutates. Use when Arif says "housekeeping", "monthly audit", "entropy audit", "capability audit", or on first-Sunday cadence.
+description: "Monthly constitutional housekeeping orchestrator — runs the federation's EXISTING audit tools in one ritual (entropy sweep, MCP surface audit, FI mesh check, secret hygiene, repo reality) and closes..."
 author: kimi-code (FI-008)
 forged: 2026-08-30
 source-artifact: /root/forge_work/2026-08-30-housekeeping-artifact/RECEIVED-ARTIFACT.md

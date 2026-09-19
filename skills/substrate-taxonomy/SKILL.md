@@ -1,6 +1,6 @@
 ---
 name: substrate-taxonomy
-description: "Diagnose and evaluate arifOS substrate state using the canonical 5-state taxonomy (OUTAGE, DEGRADED, IDLE_RESTING, FAIL_CLOSED, ACTIVE_SEALED). Enforce anti-false-green and prevent epistemic collapse of idle/gated states into 'FAIL'. USE WHEN: 'observatory audit', 'substrate state', 'is the system down', 'why is it FAIL', 'readiness check', 'evaluating federation health'."
+description: "Diagnose and evaluate arifOS substrate state using the canonical 5-state taxonomy (OUTAGE, DEGRADED, IDLE_RESTING, FAIL_CLOSED, ACTIVE_SEALED)."
 version: 1.0.0
 owner: AAA
 risk_tier: low

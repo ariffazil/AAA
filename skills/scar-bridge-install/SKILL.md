@@ -1,3 +1,8 @@
+---
+name: scar-bridge-install
+description: "\"\"\" scar_bridge_install_template.py — Canonical Skill Template for Scar-Bridge Step 5 2026-09-08 · F13 Ratified · Promoted from forge_work to canonical"
+---
+
 #!/usr/bin/env python3
 """
 scar_bridge_install_template.py — Canonical Skill Template for Scar-Bridge Step 5

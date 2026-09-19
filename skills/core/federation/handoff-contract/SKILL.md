@@ -2,7 +2,7 @@
 name: handoff-contract
 id: handoff-contract
 version: 2.0.0-wave2-merged
-description: "Cross-agent handoff contract — input/output schema, capability requested, authority classification, evidence requirement, return contract, receipt. Replaces FORGE-cross-agent-handoff. Use when user asks to 'handoff to OpenCode', 'delegate to another agent', 'cross-agent task', 'A2A handoff', or any multi-agent task delegation."
+description: "Cross-agent handoff contract — input/output schema, capability requested, authority classification, evidence requirement, return contract, receipt."
 owner: A-FORGE
 risk_tier: medium
 floor_scope: [F1, F2, F4, F11, F13]

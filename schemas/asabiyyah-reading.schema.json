@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/asabiyyah-reading-v1",
+  "title": "Asabiyyah Substrate Reading",
+  "description": "One organ's self-measurement of the federation cycle signals. The organ owns its own substrate truth; the kernel only federates. Distilled from Ibn Khaldun's asabiyyah (al-Muqaddimah, 1377) + Usman Awang's Melayu (1992). Observe-only: this reading is evidence, never a verdict.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "reading_version",
+    "organ",
+    "host",
+    "observed_at",
+    "metrics",
+    "evidence"
+  ],
+  "properties": {
+    "reading_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "organ": {
+      "type": "string",
+      "enum": [
+        "arifOS",
+        "AAA",
+        "A-FORGE",
+        "arifFlow",
+        "WELL",
+        "WEALTH",
+        "GEOX",
+        "HERMES"
+      ]
+    },
+    "host": {
+      "type": "string",
+      "description": "Machine that produced this reading (tailscale name or IP)."
+    },
+    "observed_at": {
+      "type": "string",
+      "description": "ISO-8601 with offset. A reading without a time cannot be acted on."
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cer": {
+          "$ref": "#/$defs/metric"
+        },
+        "asd": {
+          "$ref": "#/$defs/metric"
+        },
+        "enc": {
+          "$ref": "#/$defs/metric"
+        },
+        "gadai": {
+          "$ref": "#/$defs/metric"
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "description": "Raw counts the metrics were derived from. The kernel re-derives the ratios from these, so they must be additive across organs (never pre-divided).",
+      "additionalProperties": true,
+      "properties": {
+        "ceremony_artifacts": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Live doctrine/policy/ritual artifacts (exclude archive, vendored, node_modules)."
+        },
+        "exercised_capabilities": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Capabilities with a real invocation receipt inside the observation window."
+        },
+        "doctrine_holders": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Distinct actors that hold/inherit the doctrine or skill."
+        },
+        "executors": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Distinct actors with receipted EXECUTION of the primitive."
+        },
+        "gated_paths": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Protected mutation paths that pass a gate."
+        },
+        "total_paths": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "All mutation paths enumerated. 0 = NOT_APPLICABLE, never 1.0 coverage."
+        },
+        "ungated": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Named ungated paths. This is the Kerkoporta list."
+        },
+        "window_days": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Observation window for exercised_capabilities and executors."
+        }
+      }
+    }
+  },
+  "$defs": {
+    "metric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "state",
+        "source",
+        "observed_at"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "state": {
+          "enum": [
+            "MEASURED",
+            "NOT_APPLICABLE",
+            "UNKNOWN"
+          ]
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Where the number came from. Empty source = STORY, not MIRROR."
+        },
+        "observed_at": {
+          "type": "string"
+        },
+        "band": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "x-doctrine-declaration": {
+    "declaration_version": 1,
+    "kind": "schema",
+    "origin": {
+      "class": "observed",
+      "ref": "/var/lib/arifos/asabiyyah/AAA.json",
+      "observed_at": "2026-09-19T17:51:24+0800"
+    },
+    "changes": {
+      "capability": "measurement.federation_cycle_reading",
+      "effect": "adds"
+    },
+    "author": "i-ARIF (F13)",
+    "declared_at": "2026-09-19T18:45:00+0800",
+    "artifact": "schemas/asabiyyah-reading.schema.json",
+    "evidence_refs": [
+      "/var/lib/arifos/asabiyyah/AAA.json"
+    ]
+  }
+}

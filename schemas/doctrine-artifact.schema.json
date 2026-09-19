@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/doctrine-artifact-v1",
+  "title": "Doctrine Artifact Declaration",
+  "description": "The declaration every doctrine/policy/instruction artifact must carry. Distilled from the 2026-09-19 KITARAN audit: a system that emits doctrine faster than it exercises capability ends up believing it governs. An artifact that cannot name the exercised capability it came from and the capability it changes is not a control -- it is a claim of one. Attaching this declaration to an artifact is DECLARATION, not proof; the gate checks that the declaration resolves, a witness checks that it is true.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "declaration_version",
+    "artifact",
+    "origin",
+    "changes",
+    "author",
+    "declared_at"
+  ],
+  "properties": {
+    "declaration_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "artifact": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Repo-relative path of the artifact this declaration covers."
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "doctrine",
+        "policy",
+        "instruction",
+        "schema",
+        "skill",
+        "canon",
+        "report",
+        "audit"
+      ],
+      "description": "Doctrine classes are gated. reports/audits are exempt (they describe, they do not bind)."
+    },
+    "origin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "class",
+        "ref"
+      ],
+      "description": "Where this artifact came from. 'exercised' is the strongest: it names an invocation that actually ran (readable from /var/lib/arifos/metrics/tool_invocations.jsonl). 'observed' names a probe/measurement. 'synthesised' is honest and allowed, but it cannot be the sole basis of a binding rule.",
+      "properties": {
+        "class": {
+          "type": "string",
+          "enum": [
+            "exercised",
+            "observed",
+            "synthesised",
+            "inherited"
+          ]
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 3,
+          "description": "A resolvable pointer: a tool_invocations organ+tool, a probe path, an observed_at-stamped reading, or the parent artifact for 'inherited'."
+        },
+        "observed_at": {
+          "type": "string",
+          "description": "ISO-8601. Required in practice for observed/exercised."
+        }
+      }
+    },
+    "changes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "capability"
+      ],
+      "description": "What capability this artifact changes. 'NONE' is a legal and honest answer -- and an artifact whose changes.capability is NONE may not be enforced as a control.",
+      "properties": {
+        "capability": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The capability/primitive this changes, or the literal string NONE."
+        },
+        "effect": {
+          "type": "string",
+          "enum": [
+            "adds",
+            "constrains",
+            "removes",
+            "documents",
+            "NONE"
+          ]
+        },
+        "supersedes": {
+          "type": "string",
+          "description": "Artifact this replaces, if any."
+        }
+      }
+    },
+    "author": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Actor that wrote it. A label is not a bound identity -- name the binding (e.g. 'i-ARIF (F13)' or a seat id)."
+    },
+    "declared_at": {
+      "type": "string"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Resolvable pointers backing the declaration. An artifact with no evidence_refs is a STORY (see mirror_check in arifosmcp/runtime/asabiyyah.py)."
+    }
+  },
+  "x-doctrine-declaration": {
+    "declaration_version": 1,
+    "kind": "schema",
+    "origin": {
+      "class": "observed",
+      "ref": "/root/AAA/scripts/doctrine-declaration-gate.py",
+      "observed_at": "2026-09-19T17:51:24+0800"
+    },
+    "changes": {
+      "capability": "measurement.doctrine_declaration",
+      "effect": "adds"
+    },
+    "author": "i-ARIF (F13)",
+    "declared_at": "2026-09-19T18:45:00+0800",
+    "artifact": "schemas/doctrine-artifact.schema.json",
+    "evidence_refs": [
+      "/root/AAA/scripts/doctrine-declaration-gate.py"
+    ]
+  }
+}

@@ -2,7 +2,7 @@
 name: runtime-probe
 id: runtime-probe
 version: 2.0.0-wave2-merged
-description: "Unified MCP runtime probe — health + schema + transport check. Replaces FORGE-mcp-{probe,smoke-test}. Use when user asks to 'probe MCP server', 'is this MCP alive', 'MCP smoke test', 'check MCP health', 'MCPJam Inspector probe', or any MCP liveness/schema/transport verification."
+description: "Unified MCP runtime probe — health + schema + transport check."
 owner: AAA
 risk_tier: low
 floor_scope: [F2, F4, F11]

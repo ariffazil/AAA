@@ -4,22 +4,14 @@ id: forge-act-federation-ingress
 owner: A-FORGE
 risk_tier: low
 floor_scope: [F1, F2, F4, F7]
-description: >
-
-  Wire, verify, and operate federation Arif's Capability Tokens (ACT) across
-  arifOS mint/validate and organ ingress gates (A-FORGE, GEOX, WEALTH, WELL, AAA).
-  Use when: ACT gate (legacy SCT), session_token, federation_act, ACT_AMBIGUOUS
-  (legacy SCT_AMBIGUOUS), tool_authority, FORGE_SCT_REQUIRE_MUTATE (historical env
-  name, retained), 65-case matrix, decision event. Also covers ChatGPT App OAuth
-  2.1 resource-server alignment (RFC 9728 PRM, canonical resource identity
-  per-tool securitySchemes) as the EXTERNAL host ingress path alongside the
-  INTERNAL ACT path.
+description: "Wire, verify, and operate federation Arif's Capability Tokens (ACT) across arifOS mint/validate and organ ingress gates (A-FORGE, GEOX, WEALTH, WELL, AAA)."
 version: 2026.09.04
 floors: [F1, F2, F11, F12, F13]
 autonomy_tier: T1
 capability_tier: fed-long-context
 ecology_state: WARM
----# FORGE — ACT Federation Ingress
+---
+# FORGE — ACT Federation Ingress
 
 > **Canonical:** `/root/AAA/governance/federation_act.py`
 > **Authority registry:** `/root/AAA/registries/tool_authority.py` (tools.yaml)

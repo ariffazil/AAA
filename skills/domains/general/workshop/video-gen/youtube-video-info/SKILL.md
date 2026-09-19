@@ -2,7 +2,7 @@
 id: youtube-video-info
 name: youtube-video-info
 version: 1.0.0
-description: "Fetch YouTube video identity (title, channel, thumbnail) and attempt transcript when the user pastes a YouTube link. VPS-IP-safe: uses oEmbed (public, never bot-blocked) via /root/HERMES/bin/youtube-info.py instead of yt-dlp or browser. Use when a message contains youtu.be/, youtube.com/watch, /shorts/, or any YouTube link and the user wants to know what it is, discuss it, or summarize it."
+description: "Fetch YouTube video identity (title, channel, thumbnail) and attempt transcript when the user pastes a YouTube link."
 owner: 333-AGI
 risk_tier: low
 floor_scope: [F2, F4]

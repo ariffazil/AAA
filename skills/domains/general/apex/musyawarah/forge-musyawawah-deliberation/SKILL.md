@@ -3,12 +3,7 @@ name: forge-musyawawah-deliberation
 id: forge-musyawawah-deliberation
 owner: AAA
 risk_tier: low
-description: >
-  Multi-agent musyawawah (deliberation) E2E pattern. Orchestrates N sibling
-  agents voicing distinct positions on a single dispute, converges the
-  evidence, surfaces F13 gates honestly. Use when: inter-agent deliberation
-  test, disputed policy decision, capability enablement debate, multi-voice
-  audit before ratification.
+description: "Multi-agent musyawawah (deliberation) E2E pattern."
 version: 1.0.0
 tags: [musyawawah, deliberation, multi-agent, musyawarah, e2e, governance, F11, F13]
 floor_scope: [F1, F2, F4, F7, F11, F13]

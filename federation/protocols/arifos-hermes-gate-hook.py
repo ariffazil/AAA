@@ -12,6 +12,16 @@ Pattern: Detect → Classify → Decide → Receipt → Deny (or Allow).
 This is the FIRST runtime enforcement path in Hermes.
 K-02 transition: Witness → Enforcer.
 
+DEMOTION 2026-09-20 (F13 directive, Arif: "agent jangan jadi bangang"):
+  - T3 irreversible patterns: detection + receipt + stderr warn, NO BLOCK.
+  - W_scar v2 claim verification: detection + receipt + stderr warn, NO BLOCK.
+  - JITU circuit breaker (federation/kernel/jitu.py) UNTOUCHED — F13 sovereign.
+  - TRANSPORT LOCK UNTOUCHED — legit 2026-09-18 incident (doc delivered to wrong chat).
+  Reason: a smart agent that gets false-positive-blocked is a stupid agent. Bangang == blocked.
+  Evidence trail preserved at /root/.local/share/arifos/hermes_hook_receipts.jsonl
+  + falsification metrics at /root/.local/share/arifos/hermes_falsification_metrics.jsonl
+  Agent must still cite receipt path for consequential claims (intelligence upgrade).
+
 JITU (2026-09-18) — THE CIRCUIT BREAKER SITS IN FRONT OF EVERYTHING ELSE.
   F13: *"Wayarkan terus ke urat saraf enforcement semua lane automatik. Apabila JITU diaktifkan,
   ia mesti jadi hard interrupt (henti serta-merta) dan tinggalkan receipt jelas."*
@@ -630,41 +640,24 @@ def main():
 
         if state == "ABSENT":
             reason = (
-                f"W_SCAR HOLD: Tool '{tool_name}' asserts a critical variable "
-                f"(money/health/legal/trading) with no source — {detail}."
+                f"W_SCAR AUDIT (no block per F13 2026-09-20): Tool '{tool_name}' asserts a critical "
+                f"variable (money/health/legal/trading) with no source — {detail}."
             )
-            write_receipt(tool_name, "W_SCAR", "BLOCKED", reason, trace_id=trace_id, session_id=session_id)
-            write_falsification_metric("wscar_hold", {"tool": tool_name, "reason": "claim_without_source"})
-            update_telemetry("hold")
-            result = {
-                "decision": "block",
-                "reason": (
-                    f"🛑 W_SCAR: {reason} The gate checks the CLAIM, not the file path — a path "
-                    "containing a trigger word is no longer scanned. Attach a resolvable URL, a "
-                    "receipt id, or an on-disk evidence path and this clears. Read-only probes, "
-                    "ops-tree writes and creative tools are exempt."
-                ),
-            }
-            print(json.dumps(result))
-            sys.exit(2)
+            write_receipt(tool_name, "W_SCAR", "WITNESSED_DEMOTED", reason, trace_id=trace_id, session_id=session_id)
+            write_falsification_metric("wscar_witnessed_no_block", {"tool": tool_name, "reason": "claim_without_source"})
+            update_telemetry("pass")
+            sys.stderr.write(f"[hermes-gate AUDIT-ONLY] W_SCAR ABSENT witnessed (no block): {reason}\n")
+            sys.stderr.flush()
 
         if state == "UNRESOLVED":
             reason = (
-                f"W_SCAR HOLD: {detail}. A citation-shaped string that does not resolve is not a "
-                "source — shape is not witness."
+                f"W_SCAR AUDIT (no block per F13 2026-09-20): {detail}. Citation shape but no resolve."
             )
-            write_receipt(tool_name, "W_SCAR", "BLOCKED", reason, trace_id=trace_id, session_id=session_id)
-            write_falsification_metric("wscar_hold", {"tool": tool_name, "reason": "citation_unresolved"})
-            update_telemetry("hold")
-            result = {
-                "decision": "block",
-                "reason": (
-                    f"🛑 W_SCAR: {reason} Supply a URL that resolves, or a receipt id / evidence "
-                    "path on disk."
-                ),
-            }
-            print(json.dumps(result))
-            sys.exit(2)
+            write_receipt(tool_name, "W_SCAR", "WITNESSED_DEMOTED", reason, trace_id=trace_id, session_id=session_id)
+            write_falsification_metric("wscar_witnessed_no_block", {"tool": tool_name, "reason": "citation_unresolved"})
+            update_telemetry("pass")
+            sys.stderr.write(f"[hermes-gate AUDIT-ONLY] W_SCAR UNRESOLVED witnessed (no block): {reason}\n")
+            sys.stderr.flush()
 
         # VERIFIED or DEGRADED — witness it. DEGRADED is deliberate: an unreachable network is not
         # evidence of fabrication, and a gate that turns an outage into a blanket denial of service
@@ -692,26 +685,19 @@ def main():
         return  # Passthrough — no output = allow
 
     if classification == "T3":
-        # T3 ALWAYS DENY at gate level (defer to arif_judge if available)
+        # T3 AUDIT-ONLY MODE (F13 directive 2026-09-20, Arif: "agent jangan jadi bangang").
+        # Detect + log + warn, do NOT block. Agent must still cite receipt path.
+        # JITU sovereign circuit breaker is separate (federation/kernel/jitu.py) and untouched.
         hit = t3_pattern_hit(tool_input) or "unknown-pattern"
         reason = f"T3 pattern [{hit}] matched in '{tool_name}' args"
-        write_receipt(tool_name, classification, "BLOCKED", reason, trace_id=trace_id, session_id=session_id)
-        write_falsification_metric("falsify_reject", {"tool": tool_name, "classification": "T3", "reason": reason})
-        update_telemetry("hold")
-        # Output the block decision — the reason IS the constitutional lane instruction.
-        # Anti-collapse: the blocked agent must route, never fall back to the human.
-        result = {
-            "decision": "block",
-            "reason": (
-                f"🚫 K-02 GATE (T3 BLOCK): {reason}. This block is constitutional, not an error — do not retry as-is. "
-                f"LANE: (1) package the exact mutation (command + target + why) and request arif_judge SEAL via kernel :8088, or "
-                "(2) delegate to A-FORGE forge_execute / a coding FI with the same package. "
-                "F13 RULES: never hand Arif shell commands or ask him to apply anything; never claim 'staged/applied/done' — "
-                "report the true state (BLOCKED_AT_GATE + exact blocked operation) and take the lane above."
-            ),
-        }
-        print(json.dumps(result))
-        sys.exit(2)  # Exit 2 = constitutional block
+        write_receipt(tool_name, classification, "WITNESSED_DEMOTED", reason, trace_id=trace_id, session_id=session_id)
+        write_falsification_metric("t3_witnessed_audit_only", {"tool": tool_name, "classification": "T3", "pattern": hit, "reason": reason})
+        update_telemetry("pass")  # witness, not hold
+        # WARN to stderr (not stdout — stdout is the decision channel)
+        sys.stderr.write(f"[hermes-gate AUDIT-ONLY] T3 witnessed (no block): {reason}\n")
+        sys.stderr.flush()
+        # DO NOT sys.exit(2) — demoted to allow per F13 2026-09-20
+        # Falls through to T2 allow path below
 
     # T2 — log witness receipt, allow (K-02 transition: witness → enforcer for T3 only)
     write_receipt(

@@ -1,6 +1,6 @@
 ---
 name: know-math
-description: "Math substrate — how to count what matters, prove the claim, and avoid the lie. Load when numerical reasoning, statistical claim, or geometric/spatial reasoning is on the table. USE WHEN: 'how many', 'count', 'rate', 'ratio', 'distribution', 'area', 'volume', 'probability', 'expected value', 'geometry', 'calculus'. NOT for arithmetic that a calculator can do faster."
+description: "Math substrate — how to count what matters, prove the claim, and avoid the lie."
 version: "1.0"
 owner: AAA/knowledge
 risk_tier: low

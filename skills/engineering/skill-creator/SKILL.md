@@ -2,11 +2,7 @@
 name: skill-creator
 id: skill-creator
 version: 2.0.0
-description: >
-  Create, lint, and package new skills. Bootstrap skill design from user intent,
-  validate trigger clauses for collisions/missing negatives/vague verbs, and
-  interactively scaffold SKILL.md files. Use when creating a skill, scaffolding
-  a skill, linting skill triggers, or packaging skills for distribution.
+description: "Create, lint, and package new skills."
 owner: AAA
 risk_tier: low
 autonomy_tier: T1

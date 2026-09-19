@@ -2,7 +2,7 @@
 name: multi-harness-sync
 id: multi-harness-sync
 version: 2.0.0-wave2-merged
-description: "Multi-agent harness skill-catalog synchronization — Hermes, Kimi, AAA, Claude, OpenCode, Codex. Replaces federated-skill-architecture. Use when user asks to 'sync skill catalogs', 'align AAA canonical with views', 'unify across harnesses', 'multi-agent skill mesh', or any cross-harness catalog sync."
+description: "Multi-agent harness skill-catalog synchronization — Hermes, Kimi, AAA, Claude, OpenCode, Codex."
 owner: AAA
 risk_tier: medium
 floor_scope: [F1, F2, F4, F11]

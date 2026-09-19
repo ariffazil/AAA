@@ -70,7 +70,8 @@ floor_scope:
 - F11
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----# FORGE-repo-intelligence — Controller Skill
+---
+# FORGE-repo-intelligence — Controller Skill
 
 > **One controller. Twelve modes. No duplicate logic.**
 > This skill is the SOLE repository intelligence controller. Smaller GitHub skills are consolidated as internal modules.

@@ -1,12 +1,6 @@
 ---
 name: mcp-ops
-description: >
-  Unified MCP operations skill. General MCP server operations via mcporter CLI, federation MCP
-  management (FastMCP build/deploy/operate), and MCP server health probe + auto-recovery (lifeguard).
-  Merges: FORGE-mcp-ops, FORGE-mcp-federation-ops, FORGE-mcp-lifeguard. NOT for wiring external
-  third-party platforms (Composio / social-mcp / xurl / Firecrawl) into Hermes gateway → see
-  external-platform-mcp. NOT for SSE→streamable-http external-client transport fix → see
-  mcp-transport-fix. NOT for MCP server test/conformance probing → see mcp-testing.
+description: "Unified MCP operations skill."
 id: mcp-ops
 version: 2.1.0
 owner: AAA

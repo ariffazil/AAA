@@ -1,6 +1,6 @@
 ---
 name: recovery-playbook
-description: "Use when a failure is misattributed to the wrong layer. Symptom→signal→action playbook for gateway hang/crash-loop/echo-loop/delivery-storm, VPS CPU steal & throttle, disk pressure, and datacenter-IP media-extraction blocks. Merged 2026-09-19 from six one-off incident skills."
+description: "Use when a failure is misattributed to the wrong layer."
 owner: Hermes
 version: 2.0.0
 risk_tier: medium

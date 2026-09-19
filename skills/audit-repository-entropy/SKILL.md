@@ -1,6 +1,6 @@
 ---
 name: audit-repository-entropy
-description: "Read-only repository entropy audit — disciplined codebase investigation that classifies sampah sarap by evidence, not guesswork. Finds dead code, orphaned artifacts, duplicates, architectural debt, contract drift, supply-chain debris, documentation drift, and governance debris. NEVER auto-deletes. Every candidate carries evidence, risk, and a bounded disposition. Extends codebase-reality with entropy-specific methodology."
+description: "Read-only repository entropy audit — disciplined codebase investigation that classifies sampah sarap by evidence, not guesswork."
 argument-hint: ["<repo_id> [scope]", "example: A-FORGE --scope src,config,tools"]
 ---
 

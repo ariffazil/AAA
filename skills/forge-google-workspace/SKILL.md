@@ -40,7 +40,8 @@ floor_scope:
 autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----## Setup
+---
+## Setup
 
 On first activation, read `SETUP_MD.md` and lock integration boundaries before running any write command.
 

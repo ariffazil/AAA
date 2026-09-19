@@ -1,6 +1,6 @@
 ---
 name: arifos-auto-init
-description: "Use when initializing a new arifOS session, binding governance floors, or establishing constitutional context at session start. Auto-bind arifOS sessions with Ed25519 challenge-response. Sovereign never touches signing"
+description: "Use when initializing a new arifOS session, binding governance floors, or establishing constitutional context at session start."
 triggers:
   - "init arifOS"
   - "bind session"

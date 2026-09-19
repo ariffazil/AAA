@@ -1,6 +1,6 @@
 ---
 name: meta-mesa
-description: "Use when a mission spans more than 2 skills or 3 steps, or when you feel yourself wandering between tools. Meta-mesa orchestrator — decompose a multi-step mission into L1/L2 skills, sequence them, route each sub-task to the right organ (arifOS/A-FORGE/GEOX/WEALTH/WELL), recover from failure. Canonical merge of the claude/opencode/qwen clones. Triggers: multi-step mission · orchestrating across organs · mission spans multiple skills · repetitive meta-task · session boot for complex work · wandering between tools."
+description: "Use when a mission spans more than 2 skills or 3 steps, or when you feel yourself wandering between tools."
 version: 1.0.0
 risk_tier: low
 autonomy_tier: T1

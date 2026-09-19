@@ -1,11 +1,6 @@
 ---
 name: federation-health
-description: >
-  Unified federation monitoring, container health, auto-recovery, and entropy reasoning. Covers
-  federation orchestration (docker compose, restart, MCP health probes, container drift detection),
-  VPS telemetry auto-healing (Caddy error spikes, container log analysis, automated recovery), and
-  Docker entropy reasoning (thermodynamic fleet health, resource pressure, safe/dangerous intervention
-  boundaries). Merges: FORGE-federation-orchestrator, vps-telemetry-auto-healer, FORGE-docker-entropy.
+description: "Unified federation monitoring, container health, auto-recovery, and entropy reasoning."
 id: federation-health
 version: 2.0.0
 owner: A-FORGE

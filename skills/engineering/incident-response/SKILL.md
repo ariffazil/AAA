@@ -2,11 +2,7 @@
 name: incident-response
 id: incident-response
 version: 2.0.0
-description: >
-  Full incident lifecycle: detect → triage → escalate → resolve. Six-step incident
-  response playbook with structured logging, backoff/circuit-breaker for restart loops,
-  verification-as-terminal-state, severity classification, and canonical escalation ladder.
-  Lower machine entropy.
+description: "Full incident lifecycle: detect → triage → escalate → resolve."
 owner: AAA
 risk_tier: critical
 autonomy_tier: T1

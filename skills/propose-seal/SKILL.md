@@ -1,6 +1,6 @@
 ---
 name: propose-seal
-description: "Use when an agent submits /propose-seal to 888-APEX after a code mutation or completed work. NEVER self-seals. Canonical cross-harness substrate primitive — OpenClaw, OpenCode and Hermes variants merged. Pipeline: agent proposes → 888 judges → F13 authorizes → 999 executes (append to VAULT999)."
+description: "Use when an agent submits /propose-seal to 888-APEX after a code mutation or completed work."
 tags: [constitutional, seal, propose, substrate-primitive, canonical, telegram-native, openclaw, opencode, hermes]
 license: MIT
 capability_tier: fed-agent-subagent

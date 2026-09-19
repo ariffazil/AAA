@@ -9,7 +9,8 @@ floor_scope: ['F1', 'F4', 'F12']
 autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----# ⚒️ Next.js Mastery — App Router Engineering
+---
+# ⚒️ Next.js Mastery — App Router Engineering
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.
 

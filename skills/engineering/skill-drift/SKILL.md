@@ -2,11 +2,7 @@
 name: skill-drift
 id: skill-drift
 version: 2.1.0
-description: >
-  Drift detection, skill binding, and federated architecture management.
-  Real-time drift detection across tool manifests, agent cards, skill registries, and runtime-injected files.
-  Discover, bind, and compose skills across all federation organs using orthogonal axes.
-  Design, validate, and manage skills across a multi-agent federation with 3-layer architecture.
+description: "Drift detection, skill binding, and federated architecture management."
 owner: AAA
 risk_tier: medium
 autonomy_tier: T1
@@ -79,6 +75,10 @@ When dirty after clean commit: check if injected content was already committed �
 > All paths re-probed on disk 2026-09-18. The three `arifOS/runtime/*` paths this list used to carry
 > were **dead** — the package was nested under `arifosmcp/` and the skill was never folded back.
 > A drift detector that cannot find its own baselines is the purest instance of what it detects.
+>
+> **Compartment tagging verified 2026-09-19 (Codex FI-005):** All 17 fragments in /root/AAA/instructions/
+> carry <!-- compartment: PUBLIC --> + <!-- loaded_by: render-agents.sh -->. Default-Deny Rule = deleted.
+> Old Observation Protocol = deleted. F13/SOVEREIGN = universal terms (not A2H-only). AGENTS.md = 591 lines.
 
 - **Canonical drift check**: `/root/arifOS/arifosmcp/runtime/manifest.py` (`build_manifest` vs `runtime_manifest`)
 - Tool registry: `/root/arifOS/arifosmcp/tool_registry.json` — and a **second** copy at
@@ -264,6 +264,21 @@ Domains: `kernel`, `geo`, `wealth`, `well`, `forge`, `a2a`, `meta`, `mem`, `sec`
 12. **Runtime-injected-file drift must be measured, not assumed.** WELL `index.html` is the named
     case but measured **clean** (WELL dirty=0); AAA 55 / WEALTH 3 / arifOS 1 dirty are ordinary churn.
     Re-check `git status --porcelain` per repo instead of inheriting the example.
+13. **Glued `---#` frontmatter corrupts YAML parsing across an entire skill library.** When a
+    skill-forge tool emits `---# Heading` (closing `---` fused to first markdown heading) instead of
+    `---\n# Heading`, the YAML parser treats the heading as a YAML key and raises
+    `could not find expected ':'`. This is invisible to humans (skill renders fine) but breaks any
+    agent that parses frontmatter (Codex skips 88+ skills). Detection: validate YAML frontmatter
+    across all skills with `yaml.safe_load()` — any exception is a corrupted frontmatter. Fix:
+    split `---#` into `---\n#` on the affected line. Batch fix: find lines matching `^---[^-]`
+    within the first 80 lines of SKILL.md files where line 1 is `---`, then insert a newline
+    after the first three dashes.
+14. **Skill description length has a context budget ceiling.** When total description chars across
+    all loaded skills exceed ~110KB, Codex truncates descriptions to fit. A single skill with a
+    2,000+ char description is fine; 587 skills averaging 186 chars each is 109KB — right at the
+    edge. Keep descriptions under 200 chars. If the library is large (>400 skills), target 120
+    chars. The truncation is silent — agents still see the skill name but lose the trigger
+    information that tells them WHEN to load it.
 
 ### Dimension 7 — read the instrument before the metric
 

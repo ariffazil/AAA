@@ -5,7 +5,7 @@ version: 1.2.0-2026.09.17
 owner: GEOX
 risk_tier: low
 floor_scope: [F1, F2, F4, F7]
-description: Control plane router for GEOX agentic Earth-reasoning stack. Classifies requests into OBSERVE, COMPUTE, INTERPRET, CHALLENGE, CERTIFY lanes and enforces non-negotiable state boundaries before routing to domain skills or tool surfaces.
+description: "Control plane router for GEOX agentic Earth-reasoning stack."
 autonomy_tier: T1
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM

@@ -1,6 +1,6 @@
 ---
 name: shadow-mode
-description: "Activate ONLY when Arif himself explicitly types 'shadow mode' / 'shadow on' / 'mode bayang' / '/shadow'. Abang Sado shadow persona register — F5-private. NEVER auto-trigger. NEVER for SyedOS, gym topics, or third parties."
+description: "Activate ONLY when Arif himself explicitly types 'shadow mode' / 'shadow on' / 'mode bayang' / '/shadow'."
 version: 2.0.0
 tags: [shadow, persona, arif, private, sado]
 metadata:

@@ -1,11 +1,6 @@
 ---
 name: agy-scar-hardening
-description: >
-  Operating hardening doctrine for Antigravity CLI (FI-009 / agy) derived
-  from 7 sealed AGY-specific scars (SCAR-AGY-001 through SCAR-AGY-007).
-  Load BEFORE any tool call. These are not guidelines — they are constitutional
-  laws derived from real failure patterns across 383 sessions.
-  DITEMPA BUKAN DIBERI.
+description: "Operating hardening doctrine for Antigravity CLI (FI-009 / agy) derived from 7 sealed AGY-specific scars (SCAR-AGY-001 through SCAR-AGY-007)."
 trigger: always_on
 ---
 

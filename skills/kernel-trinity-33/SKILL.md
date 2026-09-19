@@ -28,7 +28,8 @@ version_lock:
   artifact_hash: pending
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----# TRINITY-33 CANONICAL — SKILL
+---
+# TRINITY-33 CANONICAL — SKILL
 
 > **APEX verdict: PROCEED · Evidence: L2 AAA/A-FORGE identity + L4 orthogonal synthesis · Band: YELLOW**
 > **Forged: 2026-07-08 by FORGE (000Ω) under F13 SOVEREIGN directive**

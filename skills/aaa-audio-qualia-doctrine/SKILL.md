@@ -1,6 +1,6 @@
 ---
 name: AAA-audio-qualia-doctrine
-description: "Operational doctrine for Audio Intelligence with 'qualia rasa' in the arifOS federation. Defines qualia as high-fidelity acoustic variance — agents simulate biological imperfection (breath, pause, hesitation, dry wit, nasal resonance) synchronously with semantic context. Bridge doctrine between AGI-audio-quantum-cognition physics and AAA-audio-emd-pipeline reflex arc."
+description: "Operational doctrine for Audio Intelligence with 'qualia rasa' in the arifOS federation."
 version: 1.0.0
 author: Muhammad Arif bin Fazil (F13) — for ARIF
 forged: 2026-08-18

@@ -328,5 +328,5 @@ See `references/claim-provenance-audit.md` for the full trace procedure.
   and its proposed owner already exists under another name.
 - **A dropped field term makes an equation look clean and lie.** When a doctrine states a pattern, the
   constraint field is part of the claim, not decoration.
-- **Split owners are worse than no owner.** Two files stating one truth diverge, and every later reader
-  picks a different one.
+- **Split owners are worse than no owner.** Two files stating one truth diverge, and every later reader picks a different one.
+- **Dual-file resolution: when two agents create overlapping files on the same topic.** Context compaction or parallel sessions produce two files at different paths covering the same canon. Resolution: (1) compare metadata completeness — prefer the file with witness tags, open questions, sovereign seal, and provenance timestamps; (2) identify unique sections in each file (cross-references, integration points, mapping tables); (3) merge unique sections into the chosen SOT; (4) add a deprecation header to the other file pointing to the SOT (`⚠️ DEPRECATED — SUPERSEDED BY <path>`); (5) record the resolution in the synthesis log. Never delete the deprecated file — future agents may reference it. The SOT selection criterion is metadata completeness, not chronological order or author seniority.

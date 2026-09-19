@@ -1,0 +1,62 @@
+{
+  "graph": "authority",
+  "description": "Who can authorize what — floors, bands, envelopes",
+  "nodes": [
+    {
+      "id": "333-AGI",
+      "type": "agent",
+      "authority_band": "LIMITED_MUTATE",
+      "allowed_verbs": ["arif_init", "arif_observe", "arif_think", "arif_route", "arif_memory", "arif_judge", "arif_forge", "arif_seal", "arif_stage"],
+      "production_boundary": false,
+      "irreversible_allowed": false,
+      "last_attested": "2026-09-19T16:55:16Z"
+    },
+    {
+      "id": "FI-005-codex",
+      "type": "agent",
+      "authority_band": "LIMITED_MUTATE",
+      "allowed_verbs": ["arif_init", "arif_observe", "arif_think", "arif_route", "arif_memory", "arif_judge", "arif_forge", "arif_seal", "arif_stage"],
+      "production_boundary": false,
+      "irreversible_allowed": false,
+      "last_attested": "2026-09-20T00:58:00Z"
+    },
+    {
+      "id": "F13_SOVEREIGN",
+      "type": "human",
+      "authority_band": "UNLIMITED",
+      "allowed_verbs": ["all"],
+      "production_boundary": false,
+      "irreversible_allowed": true,
+      "last_attested": "2026-09-20T00:58:00Z",
+      "note": "Arif — only human authority"
+    },
+    {
+      "id": "A-FORGE",
+      "type": "organ",
+      "authority_band": "EXECUTE_AFTER_SEAL",
+      "allowed_verbs": ["forge_*"],
+      "production_boundary": true,
+      "irreversible_allowed": false,
+      "last_attested": "2026-09-19T17:01:12Z"
+    },
+    {
+      "id": "arifOS_kernel",
+      "type": "organ",
+      "authority_band": "JUDGE_ONLY",
+      "allowed_verbs": ["arif_*"],
+      "production_boundary": false,
+      "irreversible_allowed": false,
+      "last_attested": "2026-09-19T16:55:16Z"
+    }
+  ],
+  "edges": [
+    {"from": "F13_SOVEREIGN", "to": "arifOS_kernel", "type": "authorizes"},
+    {"from": "arifOS_kernel", "to": "A-FORGE", "type": "seals_for"},
+    {"from": "333-AGI", "to": "arifOS_kernel", "type": "delegates_to"},
+    {"from": "FI-005-codex", "to": "arifOS_kernel", "type": "delegates_to"}
+  ],
+  "invariant": "CAPABILITY ≠ AUTHORITY",
+  "f11_status": "UNCHANGED — signing-lane key drift requires F13 sovereign decision",
+  "last_updated": "2026-09-19T17:01:12Z",
+  "update_count": 1
+}

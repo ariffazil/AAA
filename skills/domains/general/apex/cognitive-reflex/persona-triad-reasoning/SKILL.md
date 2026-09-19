@@ -1,6 +1,6 @@
 ---
 name: persona-triad-reasoning
-description: "Run complex problems through the persona-civilisation triad lens — Kanak-kanak (see+ask), Makcik (read+heal), Abang Sado (act+decide). Wrapper around INIT_PERSONA_CIVILISATION.md. Persona = cognitive function, never a person."
+description: "Run complex problems through the persona-civilisation triad lens — Kanak-kanak (see+ask), Makcik (read+heal), Abang Sado (act+decide)."
 version: 1.0.0
 owner: AAA
 triggers:

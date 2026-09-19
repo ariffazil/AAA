@@ -2,7 +2,7 @@
 name: repo-cleanup
 id: repo-cleanup
 version: 2.0.0-wave2-merged
-description: "Unified filesystem hygiene scan — broken symlinks + secret leaks + key age + missing rotation. Replaces FORGE-{symlink-audit,secret-hygiene}. Use when user asks to 'scan /root for broken symlinks', 'audit secrets', 'check key rotation', 'find plaintext secrets', 'repo cleanup', or any filesystem-hygiene scan."
+description: "Unified filesystem hygiene scan — broken symlinks + secret leaks + key age + missing rotation."
 owner: A-FORGE
 risk_tier: medium
 floor_scope: [F1, F2, F4, F7]

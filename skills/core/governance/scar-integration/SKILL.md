@@ -2,7 +2,7 @@
 name: scar-integration
 id: scar-integration
 version: 2.0.0-wave2-merged
-description: "Capture session failure patterns as constitutional scars — reusable diagnostics that prevent repeat mistakes. Replaces wisdom-scar-session-audit. Use when user asks to 'capture wisdom scar', 'session failure audit', 'scar ledger', 'constitutional scar', or any session-pattern-to-scar promotion."
+description: "Capture session failure patterns as constitutional scars — reusable diagnostics that prevent repeat mistakes."
 owner: AAA
 risk_tier: medium
 floor_scope: [F1, F2, F7, F11]

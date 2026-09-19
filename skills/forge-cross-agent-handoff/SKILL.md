@@ -3,11 +3,7 @@ name: FORGE-cross-agent-handoff
 id: forge-cross-agent-handoff
 owner: A-FORGE
 risk_tier: low
-description: >
-  Structured handoff protocol between federation agents. Packages task context,
-  evidence, floor state, and provenance into a transferable artifact. Prevents
-  context loss during agent transitions. USE WHEN: "hand off to", "transfer task",
-  "escalate to agent", "delegate to".
+description: "Structured handoff protocol between federation agents."
 version: 1.0.0
 tags: [handoff, a2a, protocol, delegation, F1, F11]
 floor_scope: [F01, F04, F11]

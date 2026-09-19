@@ -2,7 +2,7 @@
 name: dignity-substrate
 id: dignity-substrate
 version: 2.0.0-wave2-merged
-description: "Cultural, dignity, and sovereignty lens for AAA state records. Replaces AGI-nusantara-substrate. Use when user asks to 'apply Nusantara substrate', 'cultural dignity check', 'sovereignty lens', 'apply Nusantara intelligence', or any cultural/dignity/sovereignty reasoning over state records."
+description: "Cultural, dignity, and sovereignty lens for AAA state records."
 owner: AAA
 risk_tier: low
 floor_scope: [F1, F2, F4, F7, F9, F11]

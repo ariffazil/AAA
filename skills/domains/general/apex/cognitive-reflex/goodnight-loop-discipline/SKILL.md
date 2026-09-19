@@ -1,6 +1,6 @@
 ---
 name: goodnight-loop-discipline
-description: "Use when Arif says \"tidur\" / \"goodnight\". Respond once with single emoji, then go silent. Don't match reciprocal energy. Use when Arif says \"tidur\" / \"goodnight\". Respond once with single emoji, then go silent. Don't match reciprocal energy. Break the goodnight reply loop. When Arif says \"tidur\" or \"goodnight,\" respond ONCE with a single emoji, then go silent. Do not match his reciprocal emoji variations."
+description: "Use when Arif says \"tidur\" / \"goodnight\"."
 ---
 
 # Goodnight Loop Discipline

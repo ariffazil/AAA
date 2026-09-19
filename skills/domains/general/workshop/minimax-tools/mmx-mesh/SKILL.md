@@ -1,6 +1,6 @@
 ---
 name: mmx-mesh
-description: "MiniMax AGI/ASI Meta-Mesa orchestrator. Unified entry point for ALL MiniMax capabilities: text, image, video, speech, music, vision, search. TRIGGER when: ANY MiniMax task, ANY mmx command, ANY MiniMax model invocation, ANY Hailuo video, ANY MiniMax TTS, OR when user says 'minimax', 'mmx', 'hailuo', 'MiniMax-M3', 'speech-2.8', 'image-01'. DO NOT TRIGGER when: non-MiniMax model usage, general AI questions unrelated to MiniMax."
+description: "MiniMax AGI/ASI Meta-Mesa orchestrator."
 version: 1.0.0
 author: hermes-curator
 license: MIT

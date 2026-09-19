@@ -1,13 +1,6 @@
 ---
 name: arif-daily-sensorium
-description: >
-  Produce a current, evidence-disciplined daily world and Malaysia briefing
-  for Arif Fazil, architect of arifOS. Self-contained workflow — does not
-  assume other skills, files, organs, connectors, or tools exist merely
-  because they are named. Search current sources, verify dates and numbers,
-  label each conclusion OBS/DER/INT/SPEC/UNK, expose unresolved conflicts,
-  and tailor consequences to Malaysia, petroleum geoscience, capital systems,
-  PETRONAS, arifOS, MCP, and sovereign AI governance.
+description: "Produce a current, evidence-disciplined daily world and Malaysia briefing for Arif Fazil, architect of arifOS."
 triggers:
   - "world sensorium"
   - "daily briefing"

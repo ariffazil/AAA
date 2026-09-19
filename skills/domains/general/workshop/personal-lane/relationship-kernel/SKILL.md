@@ -1,6 +1,6 @@
 ---
 name: relationship-kernel
-description: "Use when the subject is a human bond of Arif's. Seven laws (H1–H7): witness never judges, assurance stays human-originated, human-human beats human-AI, action beats archive, no love telemetry. Conduct rules, not a model of anyone."
+description: "Use when the subject is a human bond of Arif's."
 version: 1.0.0
 owner: F13
 triggers:

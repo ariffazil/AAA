@@ -1,6 +1,6 @@
 ---
 name: skill-audit-methodology
-description: "Audit skill libraries for redundancy, quality, naming alignment, foundational coverage, and cross-registry prefix mapping. Three-loop zen distillation: extract → cross-reference → distill. AAA prefix taxonomy: AGI-/ASI-/APEX-/FORGE-/KERNEL-/AUDIT-/FLAME-/WELL-/WEALTH-."
+description: "Audit skill libraries for redundancy, quality, naming alignment, foundational coverage, and cross-registry prefix mapping."
 version: 1.2.0
 triggers:
   - "audit skills"
@@ -190,6 +190,8 @@ Format: `prefix-verb-noun`, ≤25 chars, filesystem-safe, no collisions.
 
 When pruning or rewriting skill descriptions across the library, apply the Zen principle:
 **Say once. Positive. No examples.**
+
+**Context budget ceiling:** When total description chars across all loaded skills exceed ~110KB, Codex truncates descriptions silently — agents still see skill names but lose trigger information. For libraries over 400 skills, target 120 chars per description. For smaller libraries, 200 chars is safe. Measure total with a YAML frontmatter parse across all SKILL.md files. If total > 110,000 chars, run bulk description zen.
 
 | Rule | Meaning | Bad Example | Good Example |
 |------|---------|-------------|--------------|

@@ -2,11 +2,7 @@
 name: drift-watch
 id: drift-watch
 version: 2.0.0
-description: >
-  Source-vs-runtime drift detection + live baseline comparison. Detect drift between
-  federation source and runtime. Reads organ topology from canonical SOT, probes live
-  health endpoints, compares git SHAs, and compares live state against saved baselines
-  across tool manifests, agent cards, skill registries, and runtime-injected files.
+description: "Source-vs-runtime drift detection + live baseline comparison."
 owner: AAA
 risk_tier: low
 autonomy_tier: T0

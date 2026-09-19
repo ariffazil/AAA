@@ -47,7 +47,8 @@ floor_scope:
 - F13
 capability_tier: fed-agent-subagent
 ecology_state: WARM
----# Agent Onboarding
+---
+# Agent Onboarding
 
 ## Overview
 

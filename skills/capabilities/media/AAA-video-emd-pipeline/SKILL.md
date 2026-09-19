@@ -3,7 +3,8 @@ capability_tier: fed-multimodal-vision
 ecology_state: WARM
 name: AAA-video-emd-pipeline
 description: "USE WHEN: Video URL (YouTube/Loom/TikTok/X/local path) + any of: question about content; extract-reusable-skill intent, summarize-with-grounding intent, bug-repro diagnosis "
----# AAA-video-emd-pipeline — Canonical Video Intelligence Capability
+---
+# AAA-video-emd-pipeline — Canonical Video Intelligence Capability
 
 > One capability, many thin adapters (OpenCode `/watch` · Hermes Telegram · Claude symlink).
 > The durable product is a **timestamped multimodal evidence ledger + typed claim graph** —

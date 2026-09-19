@@ -1,11 +1,6 @@
 ---
 name: telegram-userbot-telethon
-description: >
-  Set up a Telethon userbot that runs as Arif's actual Telegram account —
-  sees ALL DMs, groups, and channels. Distinct from bot API (which only sees
-  chats the bot is added to). Use when: "manage all my telegram chats",
-  "userbot", "telethon setup", "act as my account", "read all my messages",
-  "telegram as me".
+description: "Set up a Telethon userbot that runs as Arif's actual Telegram account — sees ALL DMs, groups, and channels."
 version: 1.0.0
 author: Hermes Agent
 license: MIT

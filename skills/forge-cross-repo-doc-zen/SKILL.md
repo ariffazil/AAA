@@ -2,10 +2,7 @@
 id: FORGE-cross-repo-doc-zen
 name: FORGE-cross-repo-doc-zen
 version: "2026.08.06"
-description: >
-  Audit and reconcile documentation across federation repositories, preserving
-  canonical signals while removing stale references and graph fragmentation.
-  v2026.08.06: organ topology from registry, no hardcoded /root/<REPO> paths.
+description: "Audit and reconcile documentation across federation repositories, preserving canonical signals while removing stale references and graph fragmentation."
 owner: AAA
 risk_tier: medium
 autonomy_tier: T2

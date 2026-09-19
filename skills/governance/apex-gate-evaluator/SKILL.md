@@ -1,10 +1,6 @@
 ---
 name: apex-gate-evaluator
-description: >
-  Unified APEX constitutional gate evaluator. Parameterized by gate_type to evaluate proposed actions
-  against arifOS F1-F13 floors, scope boundaries, authority claims, reversibility requirements,
-  audit coverage, and MCP tool approval routing. Merges: apex_floor_check, apex_scope_check,
-  apex_authority_check, apex_reversibility_test, apex_audit_coverage_check, apex_tool_approval_gate.
+description: "Unified APEX constitutional gate evaluator."
 agent: 888-APEX
 namespace: apex_*
 cluster: CONSTITUTION

@@ -9,7 +9,8 @@ floor_scope: ['F1', 'F4', 'F11', 'F12']
 autonomy_tier: T2
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
----# ⚒️ PostgreSQL Schema Design — Federation Data Layer
+---
+# ⚒️ PostgreSQL Schema Design — Federation Data Layer
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.
 
