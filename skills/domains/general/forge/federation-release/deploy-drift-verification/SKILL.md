@@ -572,6 +572,21 @@ about that endpoint only.
  can run". When someone proposes a run on this basis, check for the input first.
 - **Missing config on disk is a latent, not an active, outage.** A service started from a config file that has since been deleted keeps running from memory — healthy now, unbootable on next restart. Say "reboot-fragile", not "down", until you have checked whether it is in the data path at all. When you do rebuild the file, call it a RECONSTRUCTION, not a restore, and validate it with the service's own validator (`<binary> validate --config=...`) before restarting.
 - **A source default is not live state.** Code carries seeded default templates — a baseline dict, a port list, a config literal — while the runtime state file may already be correct. Grepping the default and reporting it as the deployed value manufactures a defect that does not exist. Read the runtime artifact (the JSON/YAML the process actually loads) for the current value; read source only to learn the shape.
+- **Written ≠ registered ≠ verified — name the LAYER you checked, never collapse three into one boolean.**
+  A binding can be declared at one layer and absent at the next, and each layer answers a different
+  question: a **config key written** says only that a value was stored; a **provider/handler registered**
+  says the runtime can ADDRESS it by name; a **lane script verified end-to-end** says it produces the
+  right output at the intended settings. Measured on one voice binding: the provider was registered and
+  reachable by name, a separate set of `voice.*` config keys existed that no runtime path reads at all,
+  and the shared command the provider wraps hardcodes its own pace — so the same input rendered 33.40 s
+  via the provider route and 36.14 s via the lane script, ~8% apart, **both passing their correctness
+  checks**. Reachable ≠ calibrated. Run BOTH routes, report the delta, and put the honest state in the
+  report ("provider registered, lane verified, keys written but unread") rather than "the voice is now X".
+- **An inert config key is not a route, and a dormant scaffold is not an integration.** A module written
+  to consume a binding but never wired into the runtime may still pin its OWN constant — including a
+  value the authoritative registry has since superseded or deprecated. Reading that file answers "what
+  did someone intend", never "what runs". Before citing any config-driven behaviour, name the code path
+  that reads the key; if you cannot name it, the key is documentation.
 - **Check whether the component self-maintains before calling its state stale.** If a service rewrites its own state file on a cycle, a stale value means the cycle is not running — not that the value needs hand-editing. Restore the schedule and the state often normalises itself, which also changes the diagnosis from "two faults" to "one fault with a symptom".
 - **Multi-session edits to the same file — and to live config, where there is no VCS to notice.**
   In a multi-agent environment, `git status` may show a NEW uncommitted change that appeared

@@ -1,0 +1,79 @@
+[
+  {
+    "path": "/root/.arifos/agents/opencode/skills/help",
+    "was": "/root/AAA/skills/help",
+    "action": "removed",
+    "now": null,
+    "undo": "ln -s /root/AAA/skills/help /root/.arifos/agents/opencode/skills/help"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/skill-creator",
+    "was": "/root/AAA/skills/.system/skill-creator",
+    "action": "repointed",
+    "now": "/root/AAA/skills/engineering/skill-creator",
+    "undo": "ln -sfn /root/AAA/skills/.system/skill-creator /root/.arifos/agents/opencode/skills/skill-creator"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/FORGE-federation-manifest",
+    "was": "/root/AAA/skills/forge-federation-manifest",
+    "action": "repointed",
+    "now": "/root/AAA/skills/FORGE-federation-manifest",
+    "undo": "ln -sfn /root/AAA/skills/forge-federation-manifest /root/.arifos/agents/opencode/skills/FORGE-federation-manifest"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/wisdom-scar-session-audit",
+    "was": "/root/AAA/skills/wisdom-scar-session-audit",
+    "action": "removed",
+    "now": null,
+    "undo": "ln -s /root/AAA/skills/wisdom-scar-session-audit /root/.arifos/agents/opencode/skills/wisdom-scar-session-audit"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/wealth-claim-state",
+    "was": "/root/AAA/skills/wealth-claim-state",
+    "action": "removed",
+    "now": null,
+    "undo": "ln -s /root/AAA/skills/wealth-claim-state /root/.arifos/agents/opencode/skills/wealth-claim-state"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/docs",
+    "was": "/root/AAA/skills/docs",
+    "action": "removed",
+    "now": null,
+    "undo": "ln -s /root/AAA/skills/docs /root/.arifos/agents/opencode/skills/docs"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/mcp-shopping-list-2026-09",
+    "was": "/root/AAA/skills/mcp-shopping-list-2026-09",
+    "action": "removed",
+    "now": null,
+    "undo": "ln -s /root/AAA/skills/mcp-shopping-list-2026-09 /root/.arifos/agents/opencode/skills/mcp-shopping-list-2026-09"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/forge-federation-manifest",
+    "was": "/root/AAA/skills/forge-federation-manifest",
+    "action": "repointed",
+    "now": "/root/AAA/skills/FORGE-federation-manifest",
+    "undo": "ln -sfn /root/AAA/skills/forge-federation-manifest /root/.arifos/agents/opencode/skills/forge-federation-manifest"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/causal555-pywhy",
+    "was": "/root/AAA/skills/causal555-pywhy",
+    "action": "removed",
+    "now": null,
+    "undo": "ln -s /root/AAA/skills/causal555-pywhy /root/.arifos/agents/opencode/skills/causal555-pywhy"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/.broken-archive/sovereign-recognize",
+    "was": "/root/AAA/skills/domains/apex/sovereign-recognize",
+    "action": "removed",
+    "now": null,
+    "undo": "ln -s /root/AAA/skills/domains/apex/sovereign-recognize /root/.arifos/agents/opencode/skills/.broken-archive/sovereign-recognize"
+  },
+  {
+    "path": "/root/.arifos/agents/opencode/skills/.broken-archive/RSI-recursive-improvement",
+    "was": "/root/AAA/skills/domains/general/apex/recursive-audit/RSI-recursive-improvement",
+    "action": "removed",
+    "now": null,
+    "undo": "ln -s /root/AAA/skills/domains/general/apex/recursive-audit/RSI-recursive-improvement /root/.arifos/agents/opencode/skills/.broken-archive/RSI-recursive-improvement"
+  }
+]
