@@ -52,14 +52,20 @@ the next session picks up the unfinished item without re-deriving it.
 open loops handed forward, and the skills you patched into its `--state` JSON. An anchor without
 the open-loop list is half a close.
 
-## 2. Eureka SOT — sealed; stage, do not force
+## 2. Eureka — the ratified registry is sealed; the live feed is where you write
 
-The ledger is `/root/AAA/canon/eureka-entries.jsonl`. **The whole canon directory carries a
-filesystem-level lock** — a plain append raises `PermissionError: [Errno 1] Operation not
-permitted` even as root.
+**Two ledgers exist. Write to exactly one of them.** Verified on disk 2026-09-19 with `lsattr`:
+
+| ledger | what it is | attribute | rows · last written |
+|---|---|---|---|
+| `/root/AAA/eurekas/eureka-entries.jsonl` | **LIVE FEED — the write target** | writable, no immutable flag | 14 rows · 2026-09-18 |
+| `/root/AAA/canon/eureka-entries.jsonl` | **FROZEN RATIFIED REGISTRY** — historical authority; cite it, never write it | immutable; a plain append raises `PermissionError: [Errno 1] Operation not permitted` even as root | 109 rows · 2026-09-16 |
 
 Do not lift that lock. It is a deliberate governance boundary, and the constitutional gate will
-block any shell command referencing a lock-modifying operation before it reaches the shell.
+block any shell command referencing a lock-modifying operation before it reaches the shell. That is
+correct behaviour, not a bug — and it is also why the canon ledger cannot be the write target: an
+instruction that names it can never execute, no matter how often it is retried. Promotion into the
+canon tree, where it ever happens, runs through the kernel seal lane, not an agent action.
 Treat the block as an instruction, not an obstacle.
 
 Stage the candidate instead:
@@ -68,9 +74,10 @@ Stage the candidate instead:
   target path, and the fact that the lock is untouched.
 - Report the true state to the human: `STAGED — PENDING F13 CANON PROMOTION`. Promotion runs
   through the kernel seal lane; it is not an agent action.
-- Prefer `eurekas/` over `okf/`, `docs/eureka/`, or a second `eureka-entries.jsonl`. A stray
-  duplicate ledger exists in the tree that nothing reads — **check for a `NON-CANONICAL.md`
-  beside a ledger before appending to it**, and if one is there, do not write to that file.
+- Prefer `eurekas/` over `okf/`, `docs/eureka/`, or a second `eureka-entries.jsonl`. If you find a
+  second ledger beside a `NON-CANONICAL.md`, read that marker before writing: it states which ledger
+  is the frozen registry and which is the live feed. The one in `eurekas/` is the live feed and the
+  correct target; the one in `canon/` is immutable.
 
 ## 3. Qdrant — retrieval by meaning
 

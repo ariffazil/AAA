@@ -884,15 +884,27 @@ believe it and go find which.
   exists), UNBUILT (mark it so the next agent stops chasing it), or NOT-A-PATH (a documented example
   or a template with a placeholder — leave it). Never invent a substitute path; never delete the
   capability claim — say the lane cannot run today instead.
-- **The corpse detector needs four false-positive guards before its number means anything.** Measured
-  this pass: the raw count was 331 dead references across 152 skills; after removing (1) dead paths
-  inside `references/<dated-session>.md` — those are receipts, and a cache file expiring is expected,
-  (2) declared-transient roots (`~/.hermes/cache`, `/tmp`, `/var/tmp`), (3) NEGATED lines, where the
-  text says "cite it, never write it" and a naive write-intent match reports it as a write target —
-  the exact inversion of the sentence, and (4) template/placeholder fragments that a path regex
-  truncates mid-token (a truncated tail, a `<...>` or `${...}` continuation, or an illustrative
-  `foo/bar` name) — the number was 80 across 64 skills. Report the guards and the before/after, or
-  the audit manufactures work.
+- **Six false-positive guards, or the corpse/ghost numbers mean nothing.** Both audits in this house
+  first reported a number several times too large, and both times the detector was the author:
+  **(corpse audit, 331 → 80 across 64 skills)** remove (1) dead paths inside `references/<dated-
+  session>.md` — those are receipts, and a cache file expiring is expected; (2) declared-transient
+  roots (`~/.hermes/cache`, `/tmp`, `/var/tmp`); (3) NEGATED lines — text saying "cite it, never
+  write it" gets read by a naive write-intent match as a write target, the exact inversion of the
+  sentence; (4) template/placeholder fragments a path regex truncates mid-token (a trailing `-`,
+  a `<...>` or `${...}` continuation, an illustrative `foo/bar`). **(ghost audit, 1080 → 557)** add
+  (5) an index blind to alternate skill roots (organs keep their own `skills/` trees — a name resolved
+  there is not a ghost), and (6) an `absorbs` / `absorbed_*` / `superseded_*` FIELD IS HISTORY, NOT A
+  CLAIM: an ownership map recording what was absorbed names retired identities on purpose, and
+  calling that a ghost invites a future pass to delete the provenance. Publish the before/after and
+  the guard list with every audit, or the audit manufactures work.
+- **Three states, not two: 'cannot execute', 'needs a sanctioned lane', 'execute'.** A path under a
+  locked tree is not automatically a corpse. Measured here: `/root/AAA/governance` carries the
+  immutable attribute, so creating a file there returns `EPERM` — yet files inside it were written
+  the same day, because a sanctioned lane clears the attribute for one operation and re-sets it.
+  The defect in that case is an INCOMPLETE instruction (it omits the lane), not an impossible one.
+  Distinguish before repairing: an impossible instruction wastes action forever; an incomplete one
+  wastes one attempt and then teaches the lane, if the lane is named. Repair accordingly — state the
+  lane, do not delete the step.
 
 - **An organ's entry can be a LINK while the body lives elsewhere — never assume the organ holds what
   it appears to own.** An address published under an organ's band may resolve into the canonical store,
