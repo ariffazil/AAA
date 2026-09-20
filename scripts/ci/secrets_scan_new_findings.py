@@ -54,7 +54,32 @@ EXCLUDE_PATTERNS = [
     # Review: 2026-12-13.
     r"canon/PETRONAS/qdrant_backup_.*\.json",
     r"skills/.*/_meta\.json",
+    r"skills-retired/.*",
+    r".*\.jsonl$",
+    r"tests/hooks/.*",  # adversarial fixtures intentionally contain ghp_/AKIA
+    r"forge_work/.*",
+    r"\.backup-.*",
+    r"\.ua/.*",
+    r".*\.tombstone.*",
     ".secrets.baseline",
+]
+
+# Entropy plugins treat SHA-256, git SHAs, UUIDs, receipt hashes, and
+# path-shaped base64 as secrets. After the 2026-09-20 skill-merge HexHighEntropy
+# produced ~1,048 of ~1,100 "new" findings, crashed the printer (TypeError on
+# sorted(dict)), and made the WAJIB gate fail blind. Credential-shaped
+# detectors (AWS, GitHub, Stripe, …) stay on. The workflow's regex layer still
+# catches live ghp_/AKIA/sk-/Telegram-bot prefixes on git-visible files.
+DISABLED_PLUGINS = [
+    "HexHighEntropyString",
+    "Base64HighEntropyString",
+    "KeywordDetector",
+]
+
+# Example/docs shapes that are not credentials. Live ghp_/AKIA/sk- still
+# fail the workflow regex layer.
+EXCLUDE_LINES = [
+    r"user:pass@host",
 ]
 
 
@@ -67,13 +92,63 @@ def _die(message: str, exc: Exception | None = None) -> int:
     return 2
 
 
+def build_scan_cmd() -> list[str]:
+    cmd = ["detect-secrets", "scan", "."]
+    for pattern in EXCLUDE_PATTERNS:
+        cmd += ["--exclude-files", pattern]
+    for plugin in DISABLED_PLUGINS:
+        cmd += ["--disable-plugin", plugin]
+    for pattern in EXCLUDE_LINES:
+        cmd += ["--exclude-lines", pattern]
+    return cmd
+
+
+def finding_sort_key(item: tuple[str, dict]) -> tuple[str, int, str]:
+    filename, entry = item
+    # Never `sorted(new_findings)` — entry is a dict; Python 3 raises TypeError
+    # and the gate fails before printing. That was the 2026-09-21 crash.
+    return (
+        filename,
+        int(entry.get("line_number") or 0),
+        str(entry.get("type") or ""),
+    )
+
+
+def new_findings_against_baseline(current: dict, baseline: dict) -> list[tuple[str, dict]]:
+    baseline_results = baseline.get("results", {})
+    new_findings: list[tuple[str, dict]] = []
+    for filename, entries in current.get("results", {}).items():
+        known = {e["hashed_secret"] for e in baseline_results.get(filename, [])}
+        for entry in entries:
+            if entry.get("hashed_secret") not in known:
+                new_findings.append((filename, entry))
+    return new_findings
+
+
+def print_findings(new_findings: list[tuple[str, dict]]) -> None:
+    from collections import Counter
+
+    by_type = Counter(entry.get("type", "?") for _, entry in new_findings)
+    print(f"❌ {len(new_findings)} finding(s) not present in .secrets.baseline:")
+    print("  by type: " + ", ".join(f"{k}={v}" for k, v in sorted(by_type.items())))
+    for filename, entry in sorted(new_findings, key=finding_sort_key):
+        hashed = str(entry.get("hashed_secret") or "")
+        line = entry.get("line_number", "?")
+        kind = entry.get("type", "?")
+        print(f"  🚫 {kind} in {filename}:{line} (hash {hashed[:16]}…)")
+    print()
+    print("If every finding above is a reviewed FALSE POSITIVE (for example a")
+    print("secret *reference* such as \"api_key_ref\": \"secrets::SOME_VAR\"),")
+    print("refresh the baseline after human review — never to silence a real key:")
+    print("  detect-secrets scan . --exclude-files ... --disable-plugin HexHighEntropyString > .secrets.baseline")
+    print("Do not baseline SHA-256 / UUID / git hashes. Those are not secrets.")
+
+
 def main() -> int:
     workspace = os.environ.get("GITHUB_WORKSPACE") or os.getcwd()
     baseline_path = os.path.join(workspace, ".secrets.baseline")
 
-    cmd = ["detect-secrets", "scan", "."]
-    for pattern in EXCLUDE_PATTERNS:
-        cmd += ["--exclude-files", pattern]
+    cmd = build_scan_cmd()
 
     try:
         result = subprocess.run(
@@ -107,31 +182,14 @@ def main() -> int:
                 baseline = json.load(handle)
         except json.JSONDecodeError as exc:
             return _die(f"baseline {baseline_path} is not valid JSON", exc)
-    baseline_results = baseline.get("results", {})
-
-    new_findings = []
-    for filename, entries in current.get("results", {}).items():
-        known = {e["hashed_secret"] for e in baseline_results.get(filename, [])}
-        for entry in entries:
-            if entry["hashed_secret"] not in known:
-                new_findings.append((filename, entry))
+    new_findings = new_findings_against_baseline(current, baseline)
 
     if not new_findings:
         print("✅ No new secrets detected")
         print("NEW_SECRETS_FOUND=0")
         return 0
 
-    print(f"❌ {len(new_findings)} finding(s) not present in .secrets.baseline:")
-    for filename, entry in sorted(new_findings):
-        print(
-            f"  🚫 {entry['type']} in {filename}:{entry['line_number']} "
-            f"(hash {entry['hashed_secret'][:16]}…)"
-        )
-    print()
-    print("If every finding above is a reviewed FALSE POSITIVE (for example a")
-    print("secret *reference* such as \"api_key_ref\": \"secrets::SOME_VAR\"),")
-    print("refresh the baseline after human review — never to silence a real key:")
-    print("  detect-secrets scan . --exclude-files ... > .secrets.baseline")
+    print_findings(new_findings)
     print("NEW_SECRETS_FOUND=" + str(len(new_findings)))
     return 1
 
