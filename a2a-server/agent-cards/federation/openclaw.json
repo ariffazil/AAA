@@ -4,13 +4,13 @@
   "protocolVersion": "1.2",
   "agentId": "openclaw",
   "name": "openclaw",
-  "description": "openclaw — Telegram/surface bridge — media-capable",
+  "description": "KVM4 Telegram guest @AGI_ASI_bot (openclaw-gateway :18789). Kernel FI-017 T1 OBSERVE/REASON/ROUTE/MEMORY. Not Hermes, not 888, not an execution organ.",
   "version": "1.0.0",
   "provider": {
     "organization": "arifOS Federation",
     "source": "federation.yaml (generated)",
     "canonical_source": "/root/AAA/agent-cards/functions/openclaw/agent-card.json",
-    "canonical_source_note": "Functions/ card is hand-curated SOT; this card is auto-generated from federation.yaml. Sync from federation-a2a-sync.py. Schema divergence: canonical 2.3.0 vs generated 2.2.0 — sync script update pending.",
+    "canonical_source_note": "Functions/ card is hand-curated SOT; this card is auto-generated from federation.yaml. Sync from federation-a2a-sync.py. Schema divergence: canonical 2.3.0 vs generated 2.2.0 \u2014 sync script update pending.",
     "last_aligned_utc": "2026-09-18T00:07:00Z",
     "aligned_by": "333-AGI audit 2026-09-18"
   },
@@ -415,26 +415,20 @@
   },
   "role": "edge",
   "grant": [
-    "capital",
     "delegation",
-    "earth",
-    "execute",
-    "human",
-    "judge",
-    "law",
-    "media",
     "web_search"
   ],
   "federation_metadata": {
-    "fi": "",
+    "fi": "FI-017",
     "runtime": "node",
-    "note": "Agent-facing mesh router. Telegram bot @AGI_ASI_bot.",
+    "note": "KVM4 openclaw-gateway + Telegram @AGI_ASI_bot. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.",
     "source": "federation.yaml",
     "generated_by": "federation-a2a-sync.py",
     "host": "KVM4 (workshop, 100.64.0.5)",
     "kvm8_mirror": "127.0.0.1:18789 DNAT to KVM4",
     "live_probe_2026_09_18": "live on KVM4; cold on KVM8 since 2026-09-04",
-    "actor_id_canonical": "openclaw/FI-017"
+    "actor_id_canonical": "openclaw/FI-017",
+    "ikat": "2026-09-20 F13: grant no longer includes execute/judge/law"
   },
   "_quarantined_skills": [
     {
@@ -829,5 +823,7 @@
     "after": 34,
     "quarantined": 48,
     "rule": "skills[] lists only ids resolving to a live SKILL.md body"
-  }
+  },
+  "identity_bind": "KVM4 openclaw-gateway + Telegram @AGI_ASI_bot. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.",
+  "ikat": "2026-09-20 F13 \u2014 Arif: ok ikat la"
 }
