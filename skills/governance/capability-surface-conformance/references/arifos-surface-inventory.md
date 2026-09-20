@@ -16,17 +16,32 @@ and stage maps move.
 ## Projections to enumerate
 
 ```bash
-# wire surface — canonical for clients
-#   POST /mcp: initialize -> tools/list
-# HTTP convenience projection — may be stale
+# wire surface — canonical for clients. Session-negotiating servers need the FULL lifecycle:
+#   initialize (session id returns in the RESPONSE HEADER)
+#   -> notifications/initialized
+#   -> tools/list / tools/call  WITH `Mcp-Session-Id`
+# Use scripts/mcp_session_probe.py; a bare single POST returns SESSION_MISSING on every organ
+# that enforces the lifecycle, and that is a client gap, not a surface defect.
+python3 scripts/mcp_session_probe.py --scan 8088,7071,8081,18082,18083,7073 --list
+
+# HTTP convenience projection — may be stale, and some organs do not serve it at all
 curl -s http://127.0.0.1:8088/tools
 # public projection
 curl -s https://mcp.arif-fazil.com/tools
+
 # session verb list — returned by arif_init, also inside the capability token
 # registry/manifest files
 ls arifosmcp/constitutional_map.py tools_sot.yaml contracts/tools.yaml \
    static/.well-known/peer-contract.json
 ```
+
+**Transport differs per organ — do not assume one probe shape fits all.** Measured: arifOS answers
+`tools/list` over a single POST; WEALTH, WELL and GEOX refuse until `notifications/initialized` has
+been sent; A-FORGE and FLOW would not answer `/mcp` at all. Derive the listening port from the
+systemd unit (`systemctl cat <unit>.service` names it in a header comment) rather than guessing — a
+wrong port yields an empty response that is easily misread as a dead service. Record, per organ,
+which transport and which lifecycle steps it needs. `/tools` counts and session counts can disagree
+(measured 25 declared vs 27 over the session) — count both before calling either authoritative.
 
 ## Known drift sites (all observed live)
 
@@ -50,7 +65,22 @@ ls arifosmcp/constitutional_map.py tools_sot.yaml contracts/tools.yaml \
 - **Boot attestation** — `session_authority_state=BOOT_ATTESTATION_FAILED` returned while
   `source_commit == deployed_commit` and `drift=false`. Commit equality is not the whole
   attestation chain; probe wheel hash, runtime manifest hash and canon version before
-  concluding, and treat the root cause as UNMEASURED until pinned.
+  concluding, and treat the root cause as UNMEASURED until pinned. **And read every nesting level of
+  the SAME payload before believing any of it** — one `arif_init` response carried
+  `session_birth.actor_cryptographically_verified: false` beside
+  `result.actor_cryptographically_verified: true` (same actor, same question, two answers), and
+  `authority_band: LIMITED_MUTATE` granted while that same session's attestation was marked
+  FAILED. So two defects coexist here and must be reported separately: (a) the intra-payload
+  contradiction, and (b) **authority granted on a session whose own gate reports failure** — the
+  fail-closed claim is not held end-to-end. Fix (b) by making the authority decision a reader of
+  the attestation result, not a sibling of it.
+- **Attestation-scope mismatch** — two components answering "which code is running?" from
+  different paths. Measured: the kernel attests
+  `<venv>/lib/python3.*/site-packages/arifosmcp` (exists), while a verifier inspects
+  `/usr/local/lib/python3.*/dist-packages/arifosmcp` (**does not exist** — the directory holds only
+  an `arifosmcp-deprecated/` stub and an editable-install `.pth` for a different package). Every
+  DRIFT verdict from that witness describes an empty target. This is a *measurement* defect, not a
+  parity defect, and it must be fixed before any drift number from that source is quoted.
 - **Registry-as-materialised-copy** — the kernel serves skills from `ARIFOS_SKILL_ROOT`
   (`/etc/arifos/skills` in production), a *copy* whose entries are symlinks back into the live
   mesh (`/root/AAA/skills`, via `/root/.agents/skills`), while the live tree keeps growing.

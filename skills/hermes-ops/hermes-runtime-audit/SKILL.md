@@ -162,6 +162,39 @@ Two rules decide whether this section produces a finding or a fabrication:
 
 Queries for all of the above: `references/state-store-queries.md`.
 
+### 4b-bis. Session close is recorded but never propagated
+
+The session store records the end of every conversation — an `ended_at` plus an `end_reason` such as
+`session_reset` (a human typing `/new` on a chat surface) — and nothing consumes it. A federated
+carry-forward file can therefore sit for days with an empty anchors list while every conversation has a
+clean close recorded in the store. **The close exists; it is not propagated**, so the next session
+starts with no temporal awareness at all and answers as if the last turn were seconds ago when the
+human has slept and moved to a different part of their day.
+
+The repair is **two agent-triggered scripts, no cron and no daemon**:
+
+```bash
+python3 /root/scripts/session-closer.py        # backfill close anchors from the store (idempotent)
+python3 /root/scripts/temporal-briefing.py --compact   # gap + sleep/meal boundary + open loops
+```
+
+The closer reads ended sessions, dedupes against anchors already present, and writes a
+`session/close:<id>` anchor plus an event entry plus an on-disk summary. Run it at session start; the
+value is needed at exactly one instant, which is why a periodic scheduler is the wrong instrument (see
+the standing objection in Pitfalls).
+
+Pitfalls specific to this repair:
+
+- **`sqlite3` rows are tuples.** `row.get()` and `row["col"]` both raise unless `row_factory` is set to
+  `sqlite3.Row`; mixing a row_factory in one function and bare tuples in another is an `AttributeError`
+  on the first run. Convert to dicts, or set the factory once and be consistent.
+- **Dedupe by anchor name, not by recency.** The closer runs repeatedly; without a name-existence check
+  it appends a duplicate anchor for every session on every run.
+- **Skip zero- and one-message sessions.** They are reset artifacts, not conversations, and they pollute
+  the briefing with empty closes.
+- **Never infer the gap from the current clock.** Use the store's `started_at`/`ended_at` and the anchor
+  timestamps. A `date` call reports now, not when the human last spoke.
+
 ### 4c. MCP surface truth — census, supervisor, and advertisement are three different things
 
 The census and `hermes mcp list` answer *configured*. Neither answers *supervised* or *advertised*,
@@ -469,6 +502,15 @@ down", and never let the daemon's health stand in for the CLI's — the two answ
   same pass is the test of the repair — and the refusal itself belongs in the finding, quoted with the
   payload that triggered it. Routing around the control instead supplies the incident rather than the
   audit.
+- **No background scheduler for value needed at one instant.** The standing objection to periodic jobs is
+  that they consume the box continuously for work whose value is only realised at a single moment. Prefer
+  an agent-triggered script at the moment of use over a cron entry, and never add a daemon to watch for an
+  event the store already records — the store plus a one-shot read is the whole mechanism.
+- **A capability absent from the tool schema is not an absent capability.** CLI lanes that a *skill*
+  documents are invisible to tool search, so "no matching tool" is a fact about the schema, not about the
+  machine. Before telling the principal you cannot reach a resource, sweep the skill corpus and the
+  installed binaries for a lane — a false "I have no access" pushes manual verification back onto the one
+  person whose attention the whole system exists to protect, and it is usually wrong.
 
 See `references/probe-cookbook.md` for the full one-shot command set, including the storage attribution
 query and the surface-inventory sweep. See `references/state-store-queries.md` for the behavioural-record

@@ -41,6 +41,34 @@ Only after probing: say plainly what failed and ask for a caption, a screenshot,
 5. **Local attachment → read the path directly.** Do not ask the person to describe a file you already hold.
 6. **Report observation before interpretation.** Who, what, verbatim text, setting — then the reading, labelled as a reading.
 
+## Quoted excerpts — rebuild the sentence before you reuse the words
+
+An excerpt arrives as a photo of a page, a screenshot, or the whole PDF/DOCX. Before any of its words
+go into a reply, a document, or a message to a person, resolve them against the source.
+
+1. **Extract the local artifact you already hold.** An attachment delivered in the session sits in the
+   cache — do not ask for it again, and do not work from an auto-transcript of the image alone.
+
+   ```bash
+   pdftotext -layout "<cache path>.pdf" /tmp/src.txt     # DOCX: pandoc / python-docx
+   grep -n -B6 -A6 "<distinctive phrase>" /tmp/src.txt   # full sentence + the paragraph around it
+   ```
+
+2. **An excerpt that opens mid-word is a LINE-WRAP artifact, not a truncated quote.** Justified text
+   breaks a hyphenated word across lines, so a crop can begin `ship, unconditional and unfailing
+   love…` — the orphan belongs to the word that ended the previous line (`hard-ship`). Search the
+   extracted text for the orphan plus its following words and rebuild the sentence from the source.
+   Never reconstruct it from memory, and never report it as unknown before searching the artifact.
+
+3. **Carry the sentence that frames the quote.** Quoted bare, a line becomes an aphorism; inside the
+   author's own account it is evidence. Ship one sentence of the author's context with it.
+
+4. **Verify the attribution in the document, not in a quote aggregator.** Author, work, section.
+   Aggregators misattribute and paraphrase freely; the file in hand settles it in seconds.
+
+5. **A quote you cannot resolve does not ship.** Say the wording is unverified and paraphrase, or drop
+   it — a plausible-sounding citation is a fabricated one once someone checks.
+
 ## Pitfalls
 
 - Claiming a platform is unreadable without probing. The local CLI path frequently succeeds where an in-app reader will not.

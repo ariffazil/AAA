@@ -18,6 +18,23 @@ Arif often hands over material written by someone else — a song lyric, a news 
 5. **Hand back the one thing only he can answer.** If the material contains a personal claim you cannot place in your record, ask it once, plainly, and let it stand open. Do not build on it and do not silently drop it.
 6. **Close short.** One or two things that matter, in his voice. No summary of what was already said.
 
+## When the input is an unattributed excerpt (crop, quote, screenshot)
+
+A few lines of text with no author, title or page — often carrying a bracketed citation marker and cut mid-word. The marker is a pointer into the source's own endnote system, so the source is usually recoverable. Recover it BEFORE spending a reading on the fragment.
+
+- **Naming what you cannot see is correct; interpreting anyway is not.** State that the excerpt is cut and where, and refuse to guess the missing word. But do not then build a reading on the fragment: an unidentified quotation has no context of its own, and the context is usually the claim.
+- **When he sends the source, locate the excerpt mechanically** — never read a whole book to find three lines:
+
+```bash
+pdftotext -layout "$PDF" /tmp/src.txt 2>/dev/null   # quote the path; these filenames carry spaces and parens
+grep -n "<three or four distinctive words>" /tmp/src.txt
+```
+
+  Then read ~40 lines around the hit. `pdftotext` on EPUB-derived PDFs floods stderr with `Syntax Warning: Invalid Font Weight`; drop stderr or the hit is buried in the noise.
+- **Re-derive the reading from the passage's own section, and lead with where it actually sits.** Chapter placement is part of a sentence's meaning: the same maxim inside a theory chapter and inside a personal background chapter assert different things, and the second is usually about one named person rather than about people in general. Answer the located version, not the one you had already drafted.
+- **When he paraphrases the quote, lead with the delta between his word and the source's word.** He says what he took from it; the source says what it says; the gap between the two is the only thing in the exchange he does not already have, and it is the whole reply.
+- **His boundary remarks are facts about the artifact, not claims to argue.** "The second sentence is where it starts" tells you where the crop begins — take it and rebuild from there.
+
 ## When the material proposes doctrine, a framework, or a metric
 
 A long argumentative essay is the shape that most tempts a summary, and a summary is the one thing
