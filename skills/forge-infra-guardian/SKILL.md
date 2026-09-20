@@ -3,10 +3,7 @@ name: forge-infra-guardian
 id: forge-infra-guardian
 version: 1.0.0
 risk_tier: low
-description: 'Validate Caddy reverse proxy configs, Cloudflare Origin CA SSL expiry
-  DNS parity, tunnel status, and Cloudflare tunnel exposure. USE WHEN: "check SSL"
-  "Caddy config valid", "tunnel status", "DNS parity", "SSL expiry", "infra health"
-  "Cloudflare check".'
+description: "Validate Caddy reverse proxy configs, Cloudflare Origin CA SSL expiry, DNS parity, tunnel status, and Cloudflare tunnel exposure. USE WHEN: \"check SSL\", \"Caddy config valid\", \"tunnel status\", \"DNS parity\", \"SSL expiry\", \"infra health\", \"Cloudflare check\"."
 owner: A-FORGE
 floor_scope:
 - F1
@@ -19,6 +16,10 @@ autonomy_tier: T0
 capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---
+> **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
+> directories differing only in case. The second copy (`/root/.hermes/skills/FORGE-infra-guardian`) is now an alias
+> symlink here. Its full pre-collapse body is preserved at
+> `references/absorbed-FORGE-infra-guardian.md` and in `.frozen/2026-09-20-case-dupes/FORGE-infra-guardian/`.
 # Infra Guardian
 
 **Validates the infrastructure layer — SSL, DNS, reverse proxy, tunnels.**
