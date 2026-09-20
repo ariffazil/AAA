@@ -9,6 +9,30 @@
 
 ---
 
+## Status re-verification — 2026-09-20 (FI-003, live probe)
+
+The six gaps carried as open were re-probed against the running federation rather
+than trusted from this register. **The register was stale in both directions:**
+two gaps were already fixed in source but not loaded by the live process, one was
+fixed and never called, and one is not a defect at all. A register that reports
+open work as closed is the same defect as one that reports closed work as open.
+
+| Gap | Register claim | Verified 2026-09-20 | Evidence |
+|---|---|---|---|
+| **G-09** | fail-open BYPASS | **CLOSED** | `governance/federation_act.py` md5 `51b8ca088f5d5b979c27e1e6b7400dee`, `----i---------e-------`. Recovery path now verifies HMAC **+ `exp` + `act_v` + actor binding**. `tests/constitutional/test_federation_act_g09.py` → **6 passed**. canon-mutate receipt `02b6d321-f205-42b4-85b1-762b1ffc94ff`, `lock_restored: true`. |
+| **G-04** | sandbox imported, never called | **CLOSED — and now LIVE** | Both raw `execAsync("bash artifact.code")` sites route through `governedExecute` (src `:389`, `:773`; verified in `dist/`). The running process started **17:31:25** while the build was **22:44:08** — the fix sat unused for 5h20m. Restarted: PID **461755** at **22:53:25**. |
+| **G-15** | HOLD/VOID flattened to ERROR | **CLOSED — and now LIVE** | `determineStatus` preserves `HOLD`/`VOID`/`SABAR`; present in built `verdict-interceptor.js`. Loaded by the same 22:53:25 restart. |
+| **G-13** | RECEIPTLESS — no sweeper | **CLOSED** | `flowFallbackSweeper.ts` (P1-7) **existed but was called from nowhere** — a phantom capability, i.e. the defect wearing the fix's clothes. Wired to the event that proves the plane is back (a successful emission) via `maybeSweep()` — single-flight, no cron, no timer (F13 event-driven doctrine). CLI dry-run against the live fallback → `rc=0`. |
+| **G-02** | gate off (`ENFORCE` defaults false; guard imported nowhere) | **ROOT CAUSE FOUND — now safe to enable; the enable itself is an F13 decision** | The gate is **wired** (`kernel.py:247`), not decorative, and `kernel.py` passes the RAW tool name (`canonical_name = tool_name`; alias table removed). `_TOOL_STATE_MAP` had no `arif_route` / `arif_memory` keys ⇒ `can_execute` read two of the eight canonical verbs as *unknown tools* ⇒ False. **Enabling would have HOLDed `arif_route` and `arif_memory` for every session and looked like the gate working.** Fixed (+ `arif_judge_deliberate` latent); `tests/test_g02_canonical_tool_coverage.py` → **13 passed**. `is_enforced()` still False. |
+| **G-01** | DEAD_END — execution stage closed | **NOT A DEFECT — FAIL_CLOSED by design** | `forge.py` `_P0_ALLOWED_MODES = {"query"}` is an explicit P0 boundary (`arif_falsification_audit_2026-07-25`) carrying its own reopen condition — Ed25519 signature verified *before* execution + action-hash binding + durable atomic permit consumption. Per `SUBSTRATE_TAXONOMY_2026-09-18` this is `FAIL_CLOSED`, not `FAIL`. Reclassify, do not "fix". |
+
+**Also found (same defect class as G-09's dead suite):** `tests/test_execution_state_machine.py` is **11 failed / 10 passed at HEAD** — reproduced identically in a clean `git worktree` at HEAD, so not caused by this session. It asserts a *third* naming era (`arif_session_init`, `arif_sense_observe`, `arif_mind_reason`) that the dispatcher has not spoken for two generations. Three vocabularies — test, state map, dispatcher — each internally consistent, which is why G-02 stayed invisible. Left unreconciled deliberately: choosing the tests' canonical vocabulary is a direction decision, not a cleanup.
+
+**Durability note:** the G-04/G-15 fixes were committed (`9c91ae2d`) but **never loaded** — the process predated the build. A commit is not a deployment; *built ≠ loaded*. The 22:53:25 restart is what made them real.
+
+
+---
+
 ## A. Execution stage
 
 ### G-01 · DEAD_END — kernel Execution stage is closed
