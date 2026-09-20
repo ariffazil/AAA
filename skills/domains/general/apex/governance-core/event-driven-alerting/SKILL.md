@@ -30,6 +30,45 @@ emit any tier depending on what it found.
 
 Most jobs are P3 most of the time. That is the correct outcome, not a bug.
 
+## Route to a human only on a declared human reason
+
+Severity answers *how urgent*; it does not answer *whose work this is*. A machine fault is machine
+work, and defaulting it to the human is how an operations channel becomes a queue the sovereign has
+to clear by hand.
+
+Assign an owner to every signal, and make the human the exception:
+
+```
+NEXT_ACTOR = machine|agent     DEFAULT — any fault a lane can repair, retry, or delegate
+             human             ONLY when HUMAN_REASON is one of:
+                                 DECISION_REQUIRED · CONSENT_REQUIRED · COMMITMENT_DUE
+                                 MATERIAL_CHANGE · SAFETY · PERSONAL_INFORMATION_REQUESTED
+                                 EXCEPTION_UNRESOLVED
+```
+
+Carry both in one envelope: `STATE · SOURCE · NEXT_ACTOR · ACTION · SEVERITY · DEADLINE · TRACE_ID ·
+RECEIPT_REF`. `ACTION` is a concrete repair, not a restatement of the symptom; `NEXT_ACTOR` is a
+lane, not a person's name, so the recipient is routable without the sovereign deciding who owns it.
+A signal with no `NEXT_ACTOR` is an orphan, and orphans accumulate on the human by default.
+
+**Every field that names a subject must be derived from the predicate that set `STATE` — never
+authored alongside it.** A hand-written `ACTION` sits next to a computed verdict and drifts from it,
+and the reader has no way to tell which one is load-bearing. Measured: an alert carrying
+`ACTION=inspect <guard> HOLD on durable bus` named a subsystem that was demonstrably healthy — its
+own canary reported `ok`, single-digit ms, consumer attached — while the report's actual
+`verdict_reason` named a different organ entirely. Two defects in one line: the route pointed at the
+innocent party, and it concealed the guilty one. The detector's own computed reason is the only
+subject the envelope may name; build `ACTION` by branching on `verdict_reason`, not by writing a
+sentence about what this alert class usually means.
+
+**An agent with no silent destination proves its silence by announcing it.** The A0 band
+("observe and handle, do not notify") is a *destination* requirement before it is a behavioural
+one: if the only surface the producer has is the channel, then "I am staying silent" is the only
+available evidence of compliance, and the room fills with exactly the murmur the band was defined
+to remove. Give silent work a real sink the producer can write to — an append-only record, the same
+one the delta gate already uses — and name that sink in the producer's instructions, so silence is
+provable by the *absence* of a channel message rather than by a message about absence.
+
 ## Delta gate — the mechanism that makes it quiet
 
 Hash the evaluated content; post only when the hash differs from the last **successfully
@@ -49,6 +88,40 @@ printf '%s' "$H" > "$STATE/$SOURCE.last_hash"   # only after confirmed send
 Dedupe key = hash(rule + host + resource + normalized condition), so one condition
 cannot re-post under a new message id. Without this, a steady-state problem becomes a
 daily fresh-looking alert.
+
+**Exclude the trace id from the key, and gate the RECORD with the key too — not only the delivery.**
+A per-emission `trace_id` is unique by construction, so minting a fresh one per firing makes every
+repeat look like a new event. Measured: one unchanged condition wrote four separate entries into the
+append-only event log inside half an hour, each with its own trace id, no two deduplicable. If the key
+guards only the channel, the audit log becomes the repeat generator and the next reader counts four
+incidents where there was one. Hash the condition, write that key into the record, and skip both the
+record and the message when it is unchanged.
+
+**Compute the dedup verdict BEFORE the record is written.** A durable entry appended without its
+verdict cannot answer the one question a reader has — delivered, or suppressed? — and a ledger of
+unlabelled repeats reproduces the exact false incident-count the key exists to prevent. Order the
+emitter as: hash the condition → decide → stamp the decision into the record → then act on it. If you
+drop the repeat entirely rather than recording it, that requirement still holds: the absence must be
+the designed behaviour, never a side effect of deciding after the append.
+
+**Give the key a window, or a standing condition never re-announces itself.** Repeating an unchanged
+condition on a schedule is escalation policy or nothing — so pick one deliberately. The contract that
+works:
+
+```
+first occurrence of a condition         -> notify   (a new fault must always be heard)
+repeat inside the window                -> record suppressed=true, do NOT notify
+condition changes (source|state|action) -> notify   (a different thing is wrong)
+window lapses, condition still open     -> notify once (still broken is news)
+```
+
+The identity is `sha256(source|state|action)` — cheap, stable, and computable at the emitter without
+any new state beyond a small per-fingerprint file. Without a window the only two reachable designs
+are a storm and a permanently silenced fault; the window is what makes "quiet" and "still broken"
+distinguishable. Seed the window when you deploy it, or the standing condition re-announces once more
+before the new code takes effect. Also note that a long-lived worker caches the emitter module in
+memory: the change is not live until that worker restarts, so the storm you are observing may be
+the *old* code (see `live-service-ops` on census and on crediting an intervention).
 
 ## The record is the log; the channel is a projection
 
@@ -131,6 +204,31 @@ measurement report. `[UNRESOLVED at emit]` on a live entry is a *conclusion* —
 state of the world that the predicate never tested. Markers must state the measurement, not
 the meaning: scope, not verdict. A reader who must re-derive the predicate from the label is
 back to forensics, which is the cost the marker was added to remove.
+
+### Read the operands, not the label — a satisfied-shaped line can be a failed comparison
+
+The same defect appears inside threshold and status *values*, where it is quieter than a bad
+marker because the line looks like a measurement. Three measured shapes from three layers of one
+system, each read as a pass by every consumer:
+
+```
+L02: Truth Score: 0.960 >= 0.99             a FAILED threshold printed with a satisfied operator
+OK wealth: src=eaa87d5a deployed=UNKNOWN    a sentinel (unmeasured) printed under a pass label
+<notifier> FAIL … (result=success)          the disposition word compared against the wrong variable
+```
+
+- **`a >= b` must actually satisfy `a >= b`.** A reason string that renders the comparison is still
+  a claim: check the operands. A producer that formats a threshold as "met" regardless of outcome
+  reports the same string whether the floor passed or failed.
+- **A sentinel is not a pass.** `UNKNOWN` / `None` / `n/a` / empty means the field was never
+  measured, so a green label beside it converts a missing measurement into a false assertion — the
+  exact inversion the label exists to prevent.
+- **The disposition word is a word, not a status.** Confirm which variable the notifier compared
+  before believing its polarity; a notifier can be correct about the value it read and wrong about
+  the thing the reader assumes it read.
+
+When you find one, report the **class**, not the instance: the same formatting defect usually exists
+wherever that producer writes thresholds, and repairing one call site leaves the others lying.
 
 Self-test before shipping an alert format: strip the emitter and hand the line to
 someone who has never read the code. If they cannot state what each token's role is,
@@ -441,6 +539,14 @@ failure branch was loud enough to look like evidence.
 
 - A clean run is P3. "X succeeded" is not news.
 - A job that only *starts* something is not a receipt — a receipt needs verified end state.
+- **A verifier that exits 0 having checked nothing has reported SCHEDULER_SUCCESS, not
+  OUTCOME_SUCCESS.** Keep the two names separate in the output: a due-count of zero makes the run
+  indistinguishable from a successful verification of zero items, and it is the *pair* (`due=0`,
+  `status=success`) that lets a reader tell "nothing was due" from "the thing was verified".
+- **A stage that can complete with no output needs a named terminal state.** Low counts are healthy
+  when an outcome was correct and unsurprising; an unexplained absence never is. Require
+  `VERIFIED → {OUTCOME_RECORDED | NO_RECORD_REASON=<measured>}`, or a broken extractor and an accurate
+  predictor both report the same zero and neither is auditable.
 - Repeating an unchanged condition on a schedule is escalation policy or nothing.
 - A silent job is not a broken job. Silence is the designed state for P3.
 - Do not notify on the mechanism working as intended; notify on the world changing.
@@ -473,6 +579,50 @@ neither was installed, and the host already carried 47 timers and 37 cron files.
 systemd units, `/etc/cron.d`, crontab, and any duties/ directory for the condition you are
 about to watch. If two exist, delete one — an uninstalled duplicate is cheaper to lose
 than a second monitor that will drift from the first.
+
+### Duplication is counted by invoked target, not by name
+
+Names lie; the entry's invoked target does not. Extract the script or unit each entry actually runs,
+across **every** surface, and group by that — the grouping is the duplication test. Several jobs
+firing one script are one capability with competing implementations, not N capabilities.
+
+Measured on one estate: 55 systemd timers · 40 `/etc/cron.d` files holding 106 rules · 54 root
+crontab rules · 35 registry jobs · 100+ running services. A total taken from one surface understates
+the estate by an order of magnitude, and the understatement is invisible because each surface looks
+complete on its own.
+
+**The instructive duplication is not the same script twice — it is N scripts answering one
+question.** Two shapes worth counting explicitly, because neither is visible in any single file:
+
+- **Reconciler fan-out.** Measured: six separate drift/reconciler units scheduled on one host, each
+  carrying its own definition of drift, none cross-checking another. Their disagreements are
+  unresolvable and every downstream reader picks one. Count per *question*, not per script name.
+- **Gate towers.** Five independent gates inspecting one artefact, four of them inside a single
+  26-minute window on the same cadence, is five chances to disagree about one fact.
+
+**A stated reason is a claim, not evidence.** Paused and disabled entries carry a reason string, and
+the reason can name a destination that does not resolve. Measured: a batch paused as "converted to
+`/etc/cron.d/<name>`" where neither the file nor the prefix existed anywhere on the host — the work
+had stopped silently while the record read healthy. Resolve the named destination before accepting
+the pause, then classify rather than repeat: `LIVE` · `MIGRATED` (destination resolves **and**
+contains the work) · `FALSE_MIGRATION` (destination absent — the work is gone) · `PAUSED_INTENTIONAL`
+(the decider is named) · `ORPHAN`. `FALSE_MIGRATION` is the highest-value finding available: silent
+death wearing a healthy record.
+
+### Convergence order — never add to reduce complexity
+
+1. **DELETE** entries that cannot justify an outcome — a job existing is not value.
+2. **MERGE** physical entries serving one logical capability.
+3. **CLARIFY ownership** when two surfaces claim one responsibility (`DUAL_ACTIVE_DRIFT`).
+4. **SIMPLIFY the path** — fewer hops between trigger and effect.
+5. **STANDARDISE the envelope** so every signal is routable by the same fields.
+6. **REPAIR** what is genuinely broken.
+7. **ADD a missing primitive — LAST.** Never solve complexity by adding another orchestrator.
+
+**Optimise the institution, not each script independently.** Fifty individually clean jobs can leave
+an estate more complicated than before if no step above reduced the moving parts, duplicate owners,
+or sources of truth. The before→after must name the deltas — duplicate paths, sources of truth per
+question, unowned work, human notifications — not the number of jobs tidied.
 
 Then trim the design to the scar. A user asking "is this not over-engineering?" is usually
 right. Cut, in this order: any list that reimplements what the platform already provides

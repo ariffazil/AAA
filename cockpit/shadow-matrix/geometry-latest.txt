@@ -18,6 +18,6 @@
 - Best balance: qwen-code (0.250)
 - Agents in CRITICAL: 1
 - Agents in BURNING/STUCK: 3
-- Harness shadow files built: 2/8
+- Harness shadow files built: 8/8
 - Mechanical checks defined: 10/10 (from harness_shadow_mechanical_checks.yaml)
-- Mechanical checks implemented: 0/10
+- Mechanical checks implemented: 10/10

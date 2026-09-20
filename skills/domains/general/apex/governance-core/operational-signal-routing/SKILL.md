@@ -108,6 +108,56 @@ skipped.
    reclaim estimate is the same error as a false "clean": partial observation,
    confident global verdict.
 
+## The HUMAN_REASON gate — no human notification without a declared reason
+
+Severity lanes say *how loud*. This gate says *whether a human is the right recipient at all*.
+
+Every message bound for a human must carry a declared reason from this **closed** set:
+
+```
+DECISION_REQUIRED
+CONSENT_REQUIRED
+COMMITMENT_DUE
+MATERIAL_CHANGE
+SAFETY
+PERSONAL_INFORMATION_REQUESTED
+EXCEPTION_UNRESOLVED
+```
+
+If no member applies, the correct `NEXT_ACTOR` is `machine/agent` — route it to the machine lane.
+The set is closed on purpose: opening it is how a monitored estate becomes a stream of daemons
+sending the principal their homework.
+
+Route by *reason*, not by source: output carrying no reason in the set goes to the machine lane;
+`DECISION_REQUIRED` and a standing approval artifact reach the human. `EXCEPTION_UNRESOLVED` is the
+deliberate escape hatch for work the machine cannot close — and it must name what is blocked and on
+what. A bare exception is not a reason.
+
+Prefer mapping these reasons onto an attention model the estate already has over minting a parallel
+taxonomy. Two disagreeing attention models is its own defect.
+
+## Silent state is silent — do not announce it
+
+A run with nothing to report emits **zero characters into the shared channel**. Do not post
+`[silent]`, `[silent — reason]`, a bare `HEARTBEAT_OK`, or a dash placeholder. A visible marker is
+still a message: it consumes the attention the silence was meant to protect, and it teaches every
+other agent in the room that the heartbeat is a conversational turn worth answering. Each marker
+invites a reply, and the replies become the traffic the marker was supposed to prevent.
+
+If an agent finds itself writing a placeholder to show it is alive, the finding is that the
+heartbeat is misconfigured — not that the placeholder needs a better format.
+
+## Human silence creates no task
+
+Absence of a response from a person is not a signal. It generates no reminder, no follow-up, no
+prediction, no inference about how they feel, and no task for anyone. Model actions only from
+explicit requests, explicit promises, and recorded commitments.
+
+This propagates **past notification**. When human-edge automation is stopped for a person, the
+monitoring and prediction scope must be stopped with it. A prediction, watch, or reminder
+concerning that person still running after the automation was disabled is scope drift: find the
+active entries, cancel the live monitoring, and preserve only the historical record.
+
 ## Escalation boundary
 
 Anything disruptive — kill, restart, firewall change, rollback — is HOLD by default.

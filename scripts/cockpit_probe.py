@@ -42,7 +42,7 @@ PROBED_ORGANS = [
     {"id": "arifflow", "port": 7073, "role": "Metabolism", "ceiling": "METABOLIZE_ONLY", "class": "METABOLISM"},
     # flame RETIRED 2026-09-04 -> FED flash lane (see deprecation-registry.json)
     {"id": "fed", "port": 7074, "role": "Model Router", "ceiling": "ADVISORY_ONLY", "class": "ADVISORY"},
-    {"id": "hermes", "port": 18086, "role": "Telegram Bridge", "ceiling": "RELAY_ONLY", "class": "EDGE"},
+    {"id": "hermes", "port": 18087, "role": "Telegram Bridge", "ceiling": "RELAY_ONLY", "class": "EDGE"},  # [2026-09-21 HERMES stabilize: was 18086 = FRAME's port -> permanent phantom "dead"; real hermes-mcp health = :18087/health]
 ]
 
 

@@ -109,10 +109,78 @@ interpreter.
 **Liveness is not capability.** A daemon can answer health with OK and refuse every real
 request because a precondition is unset.
 
+**A panel can report a healthy component dead for weeks, and nobody notices.** A monitor that
+hardcodes one endpoint shape (`/health` on every port) across heterogeneous services asks the
+wrong question of the one component whose surface differs: a 404, or a 400 meaning *server up,
+request malformed*, reads as failure and the component is marked dead on every run. Refused and
+not-found are not down. The tell that the probe was never re-validated is a **second stale
+field in the same entry** — usually the component's role/label, which still names an older
+identity. So when a panel says a component is dead but you can reach it, do not argue with the
+panel and do not restart the component: compare the probe's URL **and port** against the
+component's real surface, then fix the probe. `:PORT/mcp` answering 400 while `:PORT/health`
+answers 404 is one entry in a config table, not an outage. A monitor that invents absence is
+worse than no monitor, because the report it signs reads as confident.
+
+**A cold first read is the same invented absence with the endpoint right.** A monitor that probes
+once and treats the response as the surface reports a live MCP as holding zero tools whenever the
+first request lands before the server warmed. `tool_count: 0` is not a reachable state for a running
+MCP transport, so it always means the *read* failed — never that the tools were removed. A guard's
+own transient filter will not catch it: a container that is cold on the *first* probe every time
+looks like a stable change, not a flap, so it passes straight through the "matched on confirmation"
+check and is written as real drift. Rule: any verdict of the form "the whole surface was removed"
+must re-probe before it is written, because a total is the one reading that cannot be a delta.
+Measured: a guard emitted `TOOL_REMOVED` at `CRITICAL` for a unit that answered 123 tools on three
+consecutive probes with byte-identical bodies. Baseline such an organ while it is warm — record the
+body hash, not just the count — and compare later aggregates against that hash.
+
 ## A refusal is address-specific
 
 **Prefer adding the missing bind over a lifecycle op.** Never op on the strength of
 `is-active` alone — `LoadState` is the discriminator.
+
+**A monitor's endpoint is part of its claim, so read the address before you believe the
+verdict.** A probe that returns "down" has told you only that nothing answered *at that
+host, port and path*. Three of those four are usually wrong when a service is healthy.
+Discriminate by the status code — only the last two are actually down:
+
+| What came back | What it means |
+|---|---|
+| `200` | up |
+| `401` / `403` | **up**, auth-gated |
+| `400` | **up** — the server parsed the request and rejected its shape |
+| `404` | the **path** is wrong, not the service |
+| connection refused | nothing is listening **on that address** — check the bind |
+| timeout | down, or hung mid-request |
+
+`ss -lntp | grep <port>` shows which addresses a port actually answers on; a service bound to
+one interface is refused on every other. Measured: a gateway bound only to a tailnet address
+answered `200` there and refused on `127.0.0.1`, so two consumers configured against localhost
+reported it unreachable while it served traffic the whole time. Both readings were true.
+
+**A probe list with one hardcoded path for N heterogeneous services mislabels the odd one out,
+and nothing re-checks it.** Measured: a cockpit prober fetched `/health` on a fixed port for every
+organ. Eight matched. The ninth ran an MCP transport on the configured port, so `/health` returned
+`404` there while the real service sat on another port and answered `200` — and the organ was
+published as **dead for 44 days**, ~120 000 missed probes, zero humans noticed, because everything
+else in the list was green. The stale label on the same row (an old role name) was a second tell
+that nobody had read it since it was written.
+
+When you correct such a probe, verify the **verdict flips** (`8/9 alive` → `9/9 alive`), keep a
+backup of the prober before editing, and confirm the new target live rather than trusting the
+edit. A monitoring fix whose before/after verdict is not recorded is indistinguishable from a
+monitoring fix that did nothing.
+
+**A monitor is a service too, and it inherits the same rule as any other claim: verify the
+instrument before acting on its reading.** The same failure looks different from the other side —
+the instrument is honest about what it fetched, and the narrative laid over it ("organ down") is
+the false part.
+
+**An identical value across consecutive reports means the monitor stopped observing.** For any
+counter that only ever grows — a ledger length, a seal sequence, a receipt count — a byte-identical
+figure on two successive runs is not stability, it is a cached or truncated read. Before quoting it,
+compare the value against the artefact's own mtime and against the counter's advance: a chain length
+pinned at the same figure while new entries accumulate means the report is quoting a copy, not the
+ledger. Say which file the number came from and when that file was last written.
 
 ## Verify the mutation landed in the kernel, not just in the file
 
@@ -159,6 +227,138 @@ Corollary for one-shot units: a `Type=oneshot` timer job re-imports its modules 
 run, so a source fix reaches it at the next fire with no lifecycle op at all. Always check
 whether the affected path is a long-lived daemon or a scheduled job before declaring a
 fix undeployable.
+
+**And read the TIMER, not the service, before calling a scheduled job dead.** A `Type=oneshot`
+unit sits at `inactive (dead)` between fires and is normally `disabled` for boot purposes — both
+are correct for a timer-driven job and neither means it stopped running. The liveness fact lives in
+the timer:
+
+```bash
+systemctl list-timers --all | grep <job>      # LAST and NEXT are the evidence
+systemctl show <job>.timer -p NextElapseUSecRealtime -p LastTriggerUSec
+```
+
+Measured: three outcome-closure units all read `disabled` + `inactive dead` — exactly the shape of
+an abandoned job — while their timers had fired successfully that same morning and were scheduled
+again for the next day. `is-enabled` answers "does this start at boot"; `is-active` answers "is a
+process alive right now"; for a scheduled job the question is neither. Reading the service alone
+produces a confident false outage report about machinery that is working, and it is the same
+invented-absence defect as a probe with the wrong endpoint.
+
+### An intervention is not credited until it was in effect while the fault was live
+
+Three clocks decide whether a fix caused a recovery, and all three must be read before you claim it:
+
+```bash
+stat -c '%y %n' <file-you-edited>                        # when the change reached DISK
+systemctl show <unit> -p ExecMainStartTimestamp --value  # when the process RE-IMPORTED it
+stat -c '%y' <event-ledger-or-report>                    # when the symptom last OCCURRED
+```
+
+A long-lived process holds your module in memory, so a file edit is **not in effect** until it
+restarts. If the condition stopped before that moment, your change was never exercised and cannot be
+credited — record `NOT_EXERCISED`, not "fixed". Measured: a change landed on disk, the storm's last
+event followed within the minute, and the process restarted only eleven seconds *after* that last
+event, while the detector's own verdict flipped to healthy on its own. The patch was real and its
+regression passed, and it had still never seen the fault live. Report exactly that. A fix presented
+as the remedy for an incident it never overlapped is a claim the next recurrence falsifies — and the
+reader then discounts your probes as well as your conclusions.
+
+**Before/after proof needs the condition present in the "before".** If the detector already reports a
+clean verdict when you start, you are measuring a system that has recovered; the deltas you record
+are weather, not the effect of your edit. Say which of the two you measured.
+
+## Reading `/proc` — names, never values
+
+Verifying a live process means reading `/proc`, and one of those files is a credential store.
+`/proc/<pid>/environ` holds every secret the unit loaded, and a diagnostic that prints it publishes
+them: tool output is persisted into the session transcript, so a value printed once is a value
+published. Filter to names before anything reaches your output.
+
+```bash
+tr '\0' '\n' < /proc/$pid/environ | cut -d= -f1 | sort        # NAMES ONLY — safe
+systemctl show <unit> -p EnvironmentFiles                      # which file supplies them
+```
+
+**Never grep the `KEY=VALUE` lines and redact afterwards.** A line-level pattern matches the whole
+line, so a **value** that happens to contain the pattern token selects that line — and `grep` has
+already written the value down the pipe before any `sed` runs. Measured: a filter for the substrings
+`chron|store|db|path`, intended to locate where an organ kept its data, emitted a provider API key
+because that key's value contained `db`. The pattern was not the defect — filtering full lines is.
+Cut to the field *before* emitting; the same applies to `cmdline` and any config dump.
+
+Use the name-only wrapper rather than hand-typing a filter: `/root/scripts/secretsafe.py`
+(`env <pid|unit>` · `file <path>` · `units` · `agentcheck`) prints variable names and, for a
+credential, only `<redacted len=N fp=hash>`. Raw mode needs a real tty and is refused in any
+agent/pipe context. Regression suite `/root/scripts/tests/test_secretsafe.py` asserts names surface
+and zero values reach stdout with live secrets in scope.
+
+The same applies to `cmdline` and to any config dump. **If a value does escape, the credential is
+rotated — not scrubbed.** Editing the log removes the evidence and leaves the credential live;
+order the rotation first, name plainly which credential was exposed, and never leave the decision
+to whoever reads the transcript next.
+
+**Push the escaped value to its blast radius before reporting.** If a whole environ dump was
+emitted you cannot enumerate from memory which values landed in it — treat **every** secret that
+process inherited as exposed, not just the one you noticed, and audit the *persisted* surface
+(session traces, `state.db`/`-wal`, terminal cache, search indexes, memory exports) for the value's
+presence. Report file counts and paths; never print the value again to prove it is there. Rotation
+is ordered by the **issuer** (provider console, bot owner, DB owner) — a boundary the agent cannot
+cross alone, so this is a sovereign binary, not a task to complete quietly.
+
+## De-scoping a unit's secret inheritance
+
+Units that share one flat `EnvironmentFile` each inherit every secret in it, so one file leaking
+leaks everything and no unit's requirement was ever scoped. Count before you change anything — per
+unit, load its `EnvironmentFile=` list and compute:
+
+```
+SECRETS_PRESENT     every credential name in the files it loads
+SECRETS_REQUIRED    credential names referenced in the service's OWN code tree
+                    (grep the source for each name — never infer need from the unit's name)
+EXCESS_SECRETS      PRESENT - REQUIRED   ← drive this to ∅
+```
+
+Measured: **30** canonical units loading broad flat stores — 27 still carrying 74–153 credentials
+each, 3 already clean. One temporal organ inherited 7 with **zero** referenced anywhere in its own
+source, so de-scoping it removed every credential it held.
+
+**Count units canonically, never by file glob.** Globbing `/etc/systemd/system/*.service` together
+with `*/*.service` double-counts: a unit reachable through a `.wants/` symlink appears twice, and the
+naive pass reported 43 where the canonical census found 30. Enumerate with
+`systemctl list-unit-files --type=service`, resolve each via
+`systemctl show <unit> -p FragmentPath --value`, and dedupe on that resolved path. An inflated count
+overstates the work and, worse, hides how many units are genuinely over-broad.
+
+Target invariant:
+`secret(service_i) ∩ unnecessary_credentials = ∅` — compromise of one organ must not imply
+compromise of every external account.
+
+Procedure:
+
+1. Back up the unit file beside the source tree, not inside a scanned root.
+2. Confirm the service needs none of them by grepping its code for each name; then remove the
+   `EnvironmentFile=` line, leaving a comment naming the backup path and why it was removed.
+3. **Preflight that the unit can come back** before you restart it:
+   ```bash
+   readlink -f "$(systemctl show <unit> -p ExecStart --value | grep -o '/[^ ]*python3' | head -1)"
+   <interpreter> -c "import <every non-stdlib module in the tree>"   # deps still importable?
+   curl -s -m 8 http://127.0.0.1:<port>/health                        # BASELINE, saved
+   ```
+   An `ExecStart` path that resolves and modules that import are the two ways a green-looking unit
+   still fails to return.
+4. `systemctl daemon-reload && systemctl restart <unit>`, then re-read health and compare to the
+   baseline: the number of `*_count` fields must be unchanged or advancing, not reset.
+5. Re-read the process env and assert the credential names are gone:
+   ```bash
+   tr '\0' '\n' < /proc/$(systemctl show <unit> -p MainPID --value)/environ | cut -d= -f1 | sort
+   ```
+6. **Restart the unit that carries your own conversation last, or not in this turn.** When the
+   list of over-broad units includes the gateway hosting the session, batch-restarting it ends the
+   conversation; leave it for a detached, scheduled lane and say so.
+
+A service that comes back on fewer credentials and serves the same health body is the proof the
+removal was safe — record the before/after env var count alongside it.
 
 ## Read the right code path
 
@@ -224,6 +424,21 @@ and the suite silently starts writing to production.
 
 Prove hermeticity by hashing every production store around a full suite run and
 asserting the hashes are unchanged. Do not infer it from reading the fixtures.
+
+**Enumerate EVERY module-level path the code will write to, not just the one you set out to isolate.**
+A module often carries several path constants — a store dir *and* a receipt log *and* an offset file —
+and redirecting one leaves the writer still appending to production through the others. Measured: a
+module holding both a dedup-directory constant and a receipt-log constant was isolated on the first
+only, and six test records landed in the durable production ledger. The tell is that the test *passes*.
+Write the isolation as "list every module-level constant that names a path", and assert each one
+resolves under the temporary root **before** the suite runs, not after.
+
+**Recover by quarantining the records, not by deleting them.** Genuine and test entries are
+interleaved in one append-only file, so removing the file destroys both — and destroys the evidence
+that pollution happened. Move the identified test records to an explicit
+`quarantine-<who>-<what>.jsonl` beside the original, leave the genuine records in place, and state the
+before/after line counts. A production ledger whose contents you cannot reconstruct after cleanup is a
+second, larger defect than the one you were fixing.
 
 ## Verify a code change before restarting the service
 
@@ -368,11 +583,22 @@ work exists. The durable fix is to push and to widen backup coverage — not to 
    edit land; report BLOCKED_AT_GATE.
 2. Partial apply reports as complete — isolate every op, report applied/skipped/failed.
 3. Backup beside source gets scanned — write backups outside every scanned root.
-4. Symlink property reads the wrong object — resolve before reading. A link's own mode is
+4. Symlink reads AND writes resolve to the wrong object. Reading: a link's own mode is
    `lrwxrwxrwx` on any filesystem that stores modes, so 777 there is not a permission and a
-   scan that reports it has invented a vulnerability. Use `stat -L -c '%a %U:%G %n'` and
-   `readlink -f`; then check the target's mode, not the link's.
+   scan that reports it has invented a vulnerability — use `stat -L -c '%a %U:%G %n'` and
+   `readlink -f`, then check the target's mode, not the link's. Writing: a file-write to a path
+   that is a symlink replaces the **target's** contents, so "create a small shim here" can
+   silently destroy the implementation it pointed at. Never author a shim as a symlink to the
+   thing it wraps — make it a wrapper that execs the target — and if a link already sits at that
+   path, unlink it first. Recoverable only if the target is under version control.
 5. Claim before measurement returns — probe is not evidence until it exits.
+6. **A write to a symlinked path lands on the TARGET.** The same resolution that makes `readlink -f`
+   correct for *reading* makes an unguarded write destructive. `test -L <path>` before writing; if it
+   is a link, remove the link and write a real file. A "thin wrapper" placed at a link path wraps
+   nothing — it overwrites the file the link points at, and the loss is silent because the path you
+   wrote to still exists and still looks right. **The tell: the file you meant to create is absent,
+   and the file you meant to call now contains your content.** Recover from version control before
+   doing anything else, then re-verify the target runs.
 
 ## `logrotate --force` is not a dry run
 
@@ -402,6 +628,13 @@ decides to emit*, treat it as a control mutation, not a bugfix: state the
 before/after observable, prove it with an A/B run of the deployed artifact, and
 record the authority that ordered it. A behaviour that silently changes what the
 institution can see needs a receipt naming who authorized it and why.
+
+## Support files
+
+- `references/systemd-oneshot-notify.md` — wiring `ExecStartPost` / `ExecStopPost` on a oneshot unit
+  so the job reports honestly: which hook fires when, which variable is the verdict (and why
+  comparing the disposition word to `0` reports every success as a failure), and why a self-test
+  must never write into the production channel.
 
 ---
 *DITEMPA BUKAN DIBERI*

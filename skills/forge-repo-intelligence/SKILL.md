@@ -89,6 +89,18 @@ Mode 5's procedure is the two `*-ci-diagnose` references, not the mode stub belo
 6. **Tag discipline:** never silently move a published tag. A tag is an immutable receipt; if it is behind
    main, issue a corrected tag.
 7. **No agent authors, approves, and merges the same consequential change.** (Crosses into `github-ops`.)
+8. **Re-read `origin/main` immediately before you act, not only at the start.** Federation repos
+   have concurrent writers; the fix you are about to write may already be merged. Before opening a
+   PR, re-fetch and grep the target file's *current* content on `origin/main`. A merge base that
+   predates your work means someone shipped it — report and withdraw, do not merge on top.
+9. **Remove a false-positive source; never bless it into a baseline.** When a scanner is noisy,
+   disable the detector that emits the noise and keep its sibling detectors live. Whitelisting the
+   findings into a baseline hides that whole class permanently and is the harder change to reverse.
+10. **Confirm which branch the working copy is on before claiming a push landed.** Run
+    `git branch --show-current`. A checkout on a proposal branch is legitimately ahead of `main`,
+    and `git push origin main` from it is not a delivery. Verify the remote ref itself
+    (`gh api repos/<org>/<repo>/commits/<sha>`) rather than trusting the push output — it prints
+    `Everything up-to-date` in states where nothing was pushed.
 
 ## CONTRADICTION — kept, not averaged
 

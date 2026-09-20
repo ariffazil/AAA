@@ -26,7 +26,42 @@ consistent; the files are the implementation.
 Each record carries `id`, `created_at`, `origin`, `summary`, and a `payload` holding
 `target` + `operations[]`, where each op is `{action, old_text, new_text|content}`.
 
-## The eight stages, in order
+## The stages, in order
+
+### 0. Triage — measure the queue against the store it would land in, BEFORE adjudicating
+
+Do this first, because it can end the job. Item-by-item adjudication of a structurally inadmissible
+queue is wasted work, and the finding is the *accumulation mechanism*, not the individual proposals.
+
+**Volume against the ceiling.** Sum the proposed text and compare it to the store's hard limit. A
+queue whose proposed text is a multiple of the entire live store cannot be applied as a batch under
+any ordering of its items — the store improves by **replacement**, never by addition, so most of it
+is re-statement. Measured: proposed **63,738** chars against a live store of **3,519** (with a
+2,200-char cap on the larger file) — **18x the store**, at which point the per-proposal verdict is
+the wrong instrument.
+
+**Does the loader actually forget?** Check how the consumer discovers records before trusting any
+prior cleanup. A recursive glob (`rglob("*.json")`) reads every subdirectory, so moving records into
+a `processed-<date>/` archive hides them from a human listing while changing nothing the consumer
+sees. Measured: four such archive directories, and the loader counted all of them — cleanups had
+already been attempted several times and the queue came back unchanged. That is the signature: not
+stubborn proposals, an unchanged population.
+
+```bash
+find <queue-dir> -name '*.json' | wc -l                # what a recursive loader sees
+find <queue-dir> -maxdepth 1 -name '*.json' | wc -l    # what a human listing shows
+```
+
+**Does any record carry a terminal state?** If every record's status is absent (all `None`), nothing
+anywhere records applied / rejected / superseded. The queue then has no floor: a decided proposal is
+indistinguishable from a fresh one, so it regenerates indefinitely and the same work is
+re-adjudicated every generation. A verdict vocabulary is for the *adjudicator*; the *data* needs the
+terminal states too, or the queue is unbounded by construction.
+
+**Count anchors, not records, when reporting size.** An anchor re-queued with competing text N times
+is not N independent proposals — the newest supersedes the rest. Measured: **147 distinct anchors
+across 173 records, 57 queued more than once, one anchor carrying seven competing versions in three
+days.** That is the queue's own dedupe failure, and it is why the byte count overstates the content.
 
 ### 1. Measure entity overlap against prior archives
 
@@ -173,3 +208,15 @@ intent. Read the payload.
 dropped to fit. State what left and why, in the reply.
 - **An inert gate does not postpone the decision.** Clearing the queue while the gate is off is
   correct precisely because the gate being off is what makes it dangerous later.
+- **Re-probe every live-state claim in the queue before adjudicating it.** An unsupervised writer
+  carries assertions about running systems, and those move under it: measured, a proposal asserted a
+  subsystem was broken (`CALIBRATION BROKEN, 0 verified, accuracy 0.0`) while a live probe in the
+  same session read `2 verified, accuracy 0.5`. Grep the payloads for state claims and probe each
+  one. A stale claim that reaches live memory installs a retracted fact permanently — and the check
+  is cheap, because the probe is one call.
+- **A queue larger than the store's capacity cannot be adjudicated item-by-item.** See stage 0:
+  report the mechanism and the triage numbers instead. "N of M proposals re-state content the store
+  already carries" is the honest summary of a queue that is many times the store.
+- **The queue's content is not its byte count.** Volume at this scale is mostly the same sentences
+  rewritten; measure distinct anchors and distinct entities before describing the queue as "a large
+  amount of new information".

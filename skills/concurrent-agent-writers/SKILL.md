@@ -74,6 +74,22 @@ read it back from the job store to confirm it persisted; do not trust the update
   of theirs broke.
 - **Read state back from the store.** A tool's success response says the call was accepted, not that
   the state changed.
+- **An agent's account of what it changed is not evidence of what changed — diff the artifact.** A
+  lane reporting its own edit can misremember it, and the report and the file then disagree in a way
+  that reads as drift. Measured: a report of a config edit named three renumberings; the diff showed
+  three different source values — all three wrong in the report. The file is the witness, the
+  narrator is a hypothesis. When they disagree, trust the diff and state which one you used.
+- **Before auditing a shared config, read the working tree — not HEAD.** A change written by another
+  lane minutes ago is invisible to any audit that reads committed state, while the running service
+  has already loaded it. Check the file's mtime against the service's process start, and run
+  `git status` / `git diff --stat` before citing its contents. An uncommitted edit is live
+  behaviour, so a report built from HEAD describes a system that is not running.
+- **A convention applied in one act and contradicted in the next is an auditability defect.** When a
+  lane normalises a class of entries one way — demote to a low priority rather than delete — and its
+  own audit, an hour later, proposes removing that same class outright, two policies now govern one
+  file with nothing recording which was intended. Name the convention explicitly and hold the second
+  act to it, or the file stops being able to distinguish intent from accident. Disposition policies
+  are a governance choice, not a per-edit preference.
 
 ## Step 3 — shared data stores
 
@@ -89,6 +105,69 @@ written in isolation.
 - **Back the rows up to JSON before touching anything**, and record why the tables moved.
 - **Expect the destructive path to be refused.** A gate that blocks `DROP` here is right, and the
   block is not an obstacle to route around — take the reversible fix.
+
+## Step 3.5 — one `.git`, two writers
+
+A git repository is a shared mutable store, and a **history rewrite** (`filter-repo`, `rebase`,
+`branch -D`, `gc --prune=now`) moves refs that another lane may be reading. The signature is that
+**the target moves between your own two commands** — a ref you resolved minutes ago now resolves
+differently, and only one of the two readings can appear in your report.
+
+- **Freeze readers, then rewrite, then audit.** One writer at a time. The writer declares `DONE` with
+  a receipt (new ref heads, store size, the rewrite's own maps); only then does an audit run — on the
+  frozen state, never alongside the rewrite.
+- **Pin anything the rewrite can prune BEFORE it starts** — dangling commits, dropped stashes,
+  worktree heads. An audit or an `fsck --dangling` listing is a report, not a lock; the next
+  `gc --prune=now` deletes it. Pin with `git update-ref refs/keep/<name> <sha>`, then verify with
+  `git cat-file -t <sha>`.
+- **Take your own pre-rewrite snapshot if you are the auditor.** Do not assume the writer's backup
+  covers what you need: a bundle of `--all` omits `refs/stash` and `worktrees/*/HEAD` unless they are
+  listed. Check `git bundle list-heads`, and prove the objects are inside by bare-cloning the bundle.
+- **When two probes disagree, re-run before reconciling.** A changed value with an unchanged command
+  is a concurrent write, not a contradiction in your data — check the clock and re-probe instead of
+  averaging the two readings into a claim.
+- **Publish against a stated snapshot.** Every figure carries the state it was read from. A verdict
+  over a tree that changed mid-pass is not a verdict.
+
+### What the rewrite does to your reads (`filter-repo`)
+
+Beyond the paths you asked it to drop:
+
+- **It removes the `origin` remote** — `remote.origin.url` comes back empty and every fetch/push fails
+  until it is re-added. Restore it as part of the rewrite, not after someone reports a broken push.
+- **It rewrites every ref** — `main` and all tags move along with the branch you were thinking about, so
+  "main's hash will not change" is not a promise you can make. Publish which refs moved (`ref-map`).
+- **It clears reflogs** — objects that were recoverable through a reflog become prunable.
+- **It leaves `.git/filter-repo/{commit-map,ref-map,changed-refs,first-changed-commits}`** — the
+  commit-map is the **only** old→new hash bridge for seals, tag citations and ledger entries that quoted
+  an old hash. **Copy it out of `.git` before anything else touches the repo** — it lives inside the tree
+  you are about to gc.
+- **Scope it to the smallest thing that works.** A blob on one unmerged branch is a branch rewrite, not
+  a rewrite of `main` plus every tag. Count unmerged work before deleting a branch to reclaim space
+  (`git rev-list --count main..HEAD`).
+
+**A backup bundle does not carry unreferenced objects.** `git bundle create x.bundle --all` covers refs
+only — dangling commits, dropped stashes and orphan worktree heads are silently omitted, which is
+precisely the set under threat. Name them explicitly (`refs/stash`, `worktrees/*/HEAD`) or they are not
+in the backup. `git bundle verify` proves **integrity**, `git bundle list-heads` proves **coverage**, and
+the only proof of **recoverability** is a bare-clone into a scratch dir plus `git cat-file -t <sha>` per
+object — assert recovery only after that answers.
+
+**"Object pruned" ≠ "work lost."** Work is routinely stashed, popped and committed by another lane
+before the prune. Test for landed before writing a loss into any report: compare the lost object's own
+recorded per-file deltas with what later commits added to the **same paths**
+(`git show <later> --numstat -- <path>`) — a recorded `+82` matching a later `+81/-1`, or `+42` against
+`+42`, is the work landing, not a coincidence. A path that returns 0 lines has usually **moved**
+namespace; resolve its current location before calling the content absent.
+
+**A node is not a mirror until probed.** `.git/shallow` present, or a partial-clone filter such as
+`[blob:none]`, means a truncated history: that node is a consumer, not a recovery floor. Do not list it
+among surviving copies.
+
+**`git tag -f <name> <sha>` without `-m` opens an editor** and hangs a non-interactive shell; and
+`git bundle create <f> <bare-sha>` refuses with *"Refusing to create empty bundle"* — bundle a ref name.
+
+Probe recipes for all of the above: `references/recovery-verification.md`.
 
 ## Step 4 — shared enforcement surfaces
 

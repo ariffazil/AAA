@@ -1,7 +1,7 @@
 ---
 name: malaysian-employment-separation
 description: "Use when advising on a Malaysian job exit or MSS package."
-tags: [malaysia, employment, MSS, VSS, retrenchment, tax, LHDN, EPF, EIS, advisory, legal]
+tags: [malaysia, employment, MSS, VSS, retrenchment, tax, LHDN, EPF, EIS, advisory, legal, compensation-sizing, stigma, exit-decision]
 ---
 
 # Malaysian Employment Separation & Exit Advisory
@@ -16,6 +16,8 @@ tax, the re-employment disqualifier, and the runway calculus.
 - Computing what a package is worth **after tax**, or how long it lasts.
 - A friend or family member asks "should I take this?" — including on someone else's behalf.
 - Checking whether a stated eligibility bar actually exists in the scheme's rules.
+- Sizing a package whose formula the employer has never published — "what will I get?"
+- Answering the social question underneath it: whether taking the package reads as failure.
 
 ## Advisory stance — settle this before computing anything
 
@@ -93,6 +95,119 @@ Ask in writing, before accepting: *does this scheme expressly or impliedly provi
 re-employment?* The answer can be worth the entire exemption — and it is the clause nobody
 mentions.
 
+**Where to find the clause:** the employer's own announcement of the scheme. Modern separation
+programmes advertise career coaching, job-search assistance, placement with affiliated companies
+and an entrepreneurship pathway as employee welfare; that list is the raw material for an implied
+re-employment read. Quote the employer's own wording back in the written question rather than
+paraphrasing it — a list in their words is harder to deny than your summary of it.
+
+## Sizing an unpublished package — give a ladder, never a number
+
+Separation formulas are almost never published. When asked what to expect, the deliverable is a
+**range with its derivation**, and refusing the single clean figure is the substance of the
+answer, not a dodge.
+
+1. **Statutory floor, as comparison only** — 20 days' wages per completed year for 5 years and
+   above, i.e. roughly two-thirds of a month's wages per year. Restate that wages above RM4,000 a
+   month sit outside s.60J, so this bounds nothing for most professionals.
+2. **Industrial-court norm ≈ one month's wages per completed year**, where the employer can pay.
+3. **Large-employer separation schemes commonly run 1–1.5 months per completed year, with a total
+   cap** — 24 to 36 months is the observed practice band.
+4. **Short service still carries a lump floor** — a few months' wages for a couple of years of
+   service is normal in a scheme of this type, not generous.
+5. **Label crowd-sourced figures** — forums, social posts, personal blogs — as reported and
+   unverifiable, name which class they are, and never average them into the estimate. An unsourced
+   six-figure or seven-figure claim is noise, and saying so is part of the answer.
+
+The ladder is stated as an **estimate with its sources named**, never as a quotation of terms.
+
+**The multiple is applied to basic, not to gross remuneration.** Separation formulas and statutory
+day-rates are computed on wages, not on wages plus allowances; a person carrying a large travel,
+site, shift or housing allowance who multiplies their take-home by the multiple over-estimates by a
+third or more. Fix the base first, then apply the ladder — and where the base is unconfirmed, say
+explicitly that the estimate is against basic.
+
+**The band is wide because two things move at once — the multiple and the base.** A reported
+senior-level total, occasionally seven figures, is consistent with a high grade's larger basic times
+a similar multiple; it is not evidence that the formula itself is more generous at that grade. Never
+read a large total as a large multiple. Cross-check the two against each other, and say which one
+the source actually supports.
+
+**Disaggregate the headline number.** Separation compensation is a different instrument from pay
+in lieu of notice, leave encashment, and any short medical/insurance tail; they are taxed and
+treated differently and are routinely folded into one quoted figure. Name the lines.
+
+**Convert to months of wages, gross, plus an approximate net band.** The exempt slice is
+RM10,000 × completed years; the excess is taxed in the year of receipt at the person's own
+marginal rate. Give the shape as a labelled illustration — exempt slice, taxable remainder, rough
+net share of gross — and route the figure itself to a licensed tax agent (Advisory stance 2).
+
+**Close on the two numbers only the person holds:** monthly burn and true months of runway.
+Without those, no range means anything.
+
+## When the formula is on the table — lever order
+
+The ladder above is for an **unpublished** formula. Once the employer's formula is known (typically
+`multiple × completed years + a flat addition`), stop estimating and start levering. Convert it to
+months of wages first, then work the levers **in this order**, because each one can void the ones
+after it.
+
+1. **The cap, first.** Read the ceiling clause before pricing anything else. Where the formula's own
+   output already reaches the scheme ceiling (24 and 36 months are the common ones), crossing the
+   anniversary adds nothing — the extra year is absorbed by the cap. Cap first, then date.
+2. **The exit anniversary.** The service-year count keys off the **last day of service**, and the
+   payout is a step function at the anniversary of the join date. Price the gap in ringgit: waiting
+   across it pays `multiple × one month's wages` **plus** one more year of the RM10,000 exemption,
+   and the wait is often only weeks. A person choosing a date needs the price of the date, not the
+   principle behind it.
+3. **The receipt year.** Exit date and payment date are two separate negotiations. Check the
+   person's own position before recommending a deferral: it pays only when the receiving year
+   carries no other employment income, and is worth nothing if they will be drawing a salary in
+   that year too.
+4. **The base the multiple applies to.** Get it in writing whether "one month's wages" means basic
+   pay or basic plus fixed allowances. On a 20+ month package this single definitional clause moves
+   the gross by a third (see the base note in the sizing section above).
+
+Then hand back four numbers plus a runway — gross, exempt slice, taxable remainder, net — and run
+`scripts/exit_package_calc.py` for the arithmetic instead of re-deriving the tax bands by hand each
+session.
+
+## When the question is social, not arithmetical
+
+"Will people think I'm a loser for taking this?" is a different question from "what is it worth?"
+Answer it separately, and answer the **mechanism** rather than the arithmetic. Five mechanisms
+explain the reflex, and each one is checkable:
+
+1. **An exit is externally identical to a dismissal.** Observers see the person gone; the form they
+   signed and the sentence "I chose this" are invisible. Absence gets filled with the cheapest
+   available story, and the harshest story is the cheapest.
+2. **A company badge functions as a credit rating.** Remove it and the market re-prices the person
+   against demonstrated capability rather than affiliation — a test many never had to sit. Some of
+   the noise is onlookers pricing themselves, not the person.
+3. **Models default to the status quo.** Salary is a countable stream; a transition has no data, so
+   it reads as risk and the recommendation collapses to "don't go". Compound it: staying and
+   suffering blames nobody, while exiting and struggling blames the adviser — the bias is
+   structural, not reasoned. Say this out loud when an agent is the one advising.
+4. **The corpus is loud with casualties.** Boards, communities and feeds are dominated by people
+   who were pushed out; those who left well are quiet. A model trained on that corpus repeats the
+   stigma without ever having measured it.
+5. **The clock asymmetry.** Staying is a job with an expiry date someone else chose; leaving starts
+   a countdown the person chooses. Optimising for the appearance of safety is not safety.
+
+**The label is a claim about the exit, not about the outcome.** It is usually held by people
+measuring their own position on the board the person is leaving, so the first useful move is to name
+who holds it and what it protects — then restate it in the form it can actually be tested in: what
+happened afterwards, measured in months of runway and what the person did with them. A status claim
+and a truth claim are answered differently, and answering the first as though it were the second is
+how the framing gets adopted by the adviser. Do not treat agreement with the label as empathy, and
+do not treat disagreement with it as loyalty to the person.
+
+**Pay the honest counterweight rather than softening it:** a package is finite, and salary is only
+finite once it stops; if there is no evidence the market pays for the person's capability without
+the badge, the position is untested, not lost. And never accept a verdict about the decision from
+someone who carries none of its downside — that verdict is free, and it is about their arithmetic,
+not the person's.
+
 ## VSS vs MSS vs retrenchment — different instruments, not synonyms
 
 - **Retrenchment** — employer-initiated for redundancy. Employer must notify the Labour
@@ -135,8 +250,10 @@ into it ("less than a year in post") stops being true on its own, with no action
    subtract the expected job-search period before calling the result a runway. Quote **months**.
 3. **Timestamp the exit, not the application.** Both the service-year count and the tax year key
    off the **last day**, not the form date. An exit a few weeks later can cross a completed-year
-   boundary and add a full year of exemption plus a multiple of a month's pay. Put the likely exit
-   date beside the anniversary date and check it explicitly.
+   boundary and add a full year of exemption plus a multiple of a month's pay. **Check the scheme's
+   total cap before pricing that wait** — where the formula already reaches the ceiling, crossing
+   the anniversary adds nothing. Put the likely exit date beside the anniversary date and check both
+   explicitly.
 4. **Ask the two questions that decide the case:** is this offer actually on the table or
    hypothetical, and is this the person's own choice or the employer's initiative? The advice
    differs completely, and the second question determines whether there is a deadline at all.
@@ -149,7 +266,13 @@ into it ("less than a year in post") stops being true on its own, with no action
 
 - **Do not quote the statutory minimum as the person's floor** if their wages exceed RM4,000 a
   month. It is a comparison, not an entitlement.
-- **Do not offer a tax spread-over.** None exists; year of receipt decides the year of assessment.
+- **Do not offer a tax spread-over — but do negotiate *which* year receives the payment.**
+  Apportioning one lump across several years does not exist; a single payment is assessed in the
+  year of receipt. That is a different question from the year the receipt falls in. A lump landing
+  in a year that still carries a full salary stacks on top of it and pays the person's top marginal
+  rate; the same lump received in a year with no employment income starts from the bottom of the
+  bands. The receipt year is therefore a lever worth real money, and the way to use it is to time
+  the payment — never to split it.
 - **Do not let a collapse narrative anchor the decision.** If the employer genuinely failed, the
   scheme would not pay either — so believing in imminent collapse argues *against* relying on the
   package, not for it. Ground the decision in runway, role fit, external traction, IP cleanliness
@@ -162,7 +285,9 @@ into it ("less than a year in post") stops being true on its own, with no action
   as failure — and note that being marked as wanting to leave costs less than it feels like if
   the alternative is a paid exit anyway.
 - **A benefit announced in a press release is not a contractual term.** "We will offer a package
-  exceeding the statutory minimum" is a public statement, not a guarantee. Get terms in writing.
+  exceeding the statutory minimum" is a public statement, not a guarantee, and an adjective
+  ("market-competitive") bounds the number from below without stating the multiple. Use it as a
+  lower bound only; get terms in writing.
 - **Put the two critical conversations in writing**, not in person: the eligibility discussion
   and the request for the computation. An oral exchange is reshaped when it reaches a third party;
   a written one is a record.
@@ -170,6 +295,13 @@ into it ("less than a year in post") stops being true on its own, with no action
   raised the matter, while a filed justification or a formal submission already sits in the
   employer's system. That changes how a later application should be framed — and for the person
   who raised it, sending the request a second time in writing is the correction.
+- **Read a weighted offer structure as pricing, not as generosity.** A scheme that pushes signature
+  on a generous first offer, routes decliners into an internal placement attempt, and then returns
+  with a smaller second offer is sequencing the price: the first number is a deadline as much as a
+  valuation. Ask what happens *between* the two offers, because the placement step in the middle is
+  itself the exposure — a placement pipeline is exactly the raw material for reading the scheme as
+  providing for re-employment, which is what puts the tax exemption at risk. Ask for both sets of
+  terms before comparing, and never let the deadline do the arithmetic.
 
 ## References
 
@@ -177,3 +309,9 @@ into it ("less than a year in post") stops being true on its own, with no action
   and its worked examples, the discretionary-clause pattern, case law on voluntary schemes, EPF
   Account 2 housing withdrawal, employment insurance, the 60-day unfair-dismissal window, and
   which hosts actually serve the primary sources.
+- `scripts/exit_package_calc.py` — run this instead of hand-deriving the arithmetic. Takes the
+  scheme's formula (multiple, flat addition, cap), the monthly base, completed years, the person's
+  burn and any salary in the receipt year; prints months of wages, gross, exempt slice, taxable
+  remainder, tax, net, the anniversary step-up in ringgit, the extra tax from a salaried-year
+  receipt, and months of runway. Tax bands are editable constants at the top of the file — verify
+  the schedule for the year of receipt against the current tax-authority table before quoting.
