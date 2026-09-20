@@ -141,7 +141,7 @@ components:
     class: EDGE
     display_name: OpenClaw
     repo: openclaw/openclaw
-    source_path: /root/.quarantine/zen-20260912/.openclaw-cold/openclaw-heritage-2.8G-20260904  # 2026-09-18 audit-reconciled: actual cold archive path (not /root/.openclaw-cold)
+    source_path: ABSENT  # measured 2026-09-20: neither /root/.openclaw-cold nor /root/.quarantine/zen-20260912/.openclaw-cold/openclaw-heritage-2.8G-20260904 exists on KVM8. Live runtime is KVM4 /root/.openclaw.
     role: agentic_mesh_router
     authority_ceiling: T1  # 2026-09-18: kernel-aligned per "kernel wins" doctrine. Prior claim (DISPLAY_ONLY) was downgraded; kernel SOT at /root/arifOS/arifos/identity/agent_registry.json grants T1 max_blast_radius with capabilities OBSERVE/REASON/ROUTE/MEMORY (FI-017). See agents/openclaw/IDENTITY.md §Authority for the four-source drift resolution. F13 ratification PENDING (canonical record).
     port: 18789          # LIVE on KVM4 (100.64.0.5) since 2026-09-04 13:37 MYT per MACHINE_MAP §1 — KVM8 cold since 2026-09-04 14:20 MYT
@@ -164,7 +164,7 @@ components:
       web_ui_port: 8787  # currently down — known
     live_probe_2026_09_07:   # FI-008 contrast audit — COLD on KVM8
       status: cold
-      evidence: "unit absent from /etc/systemd/system; :18789/:8787 refused on KVM8; state at /root/.openclaw-cold; units from 2026-08-06 audit (gateway/bot/apa-bridge/restart) no longer present on this node"
+      evidence: "unit absent from KVM8 systemd; :18789 answers via DNAT to KVM4 (health 200, measured 2026-09-20); :8787 still not listening; cold archive paths ABSENT"
     live_probe_2026_09_18:  # 333-AGI audit — LIVE on KVM4, COLD on KVM8
       status: live_kvm4_cold_kvm8
       gateway_kvm4_100.64.0.5:18789: '{"ok":true,"status":"live"}'

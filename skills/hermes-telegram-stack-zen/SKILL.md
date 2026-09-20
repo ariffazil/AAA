@@ -12,8 +12,9 @@ depends_on: [hermes-federated-identity, arifFlow, arifOS, AAA, A-FORGE]
 
 > **DITEMPA BUKAN DIBERI - F13 SOVEREIGN GOVERNED**
 > Single Source of Truth for the entire Hermes to Telegram to arifOS edge.
-> **Forged 2026-09-08 by 333-AGI from live probes - never re-extract from scratch.**
-> **Anti-extractive rule:** if you find yourself reading config.yaml, lanes.yaml, or channel_directory.json from cold cache to "see what is there" - STOP, this skill is the answer.
+> **Forged 2026-09-08 by 333-AGI from live probes.**
+> **STALE SNAPSHOT — do not treat S0 pids/FQ as live.** Measured 2026-09-20 21:18 MYT: gateway pid **2397177**, code 0.21.3, unit `hermes-asi-gateway` on KVM8. Pid 2081711 is dead. FQ 0.297 is a 2026-09-08 fossil. Re-probe `systemctl show hermes-asi-gateway -p MainPID` before quoting a pid.
+> **Anti-extractive rule:** if you find yourself reading config.yaml, lanes.yaml, or channel_directory.json from cold cache to "see what is there" - STOP, this skill is the answer — then re-probe process state.
 
 
 # Section
