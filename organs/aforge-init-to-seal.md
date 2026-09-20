@@ -5,6 +5,16 @@
 > **Domain:** forge_*, shell, git, docker, browser, vault  
 > **APEX KERNEL:** REALITY > EVERYTHING
 
+## PROXY→REALITY (Proxy-Reality Paradox)
+
+| | |
+|---|---|
+| **Proxy** | Command exit code, receipt minted, hash chain intact |
+| **Reality** | Actual system state change — did the mutation produce the intended effect? |
+| **Failure mode** | Receipt theater — action ran, receipt was minted, but the real system reverted or the effect was cosmetic |
+
+**Every execution must ask:** "Does the receipt prove the effect, or only that the command ran?"
+
 ## INIT
 
 ```python

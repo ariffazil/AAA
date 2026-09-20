@@ -5,6 +5,16 @@
 > **Domain:** basin, seismic, well, petrophysics, prospect  
 > **APEX KERNEL:** REALITY > EVERYTHING
 
+## PROXY→REALITY (Proxy-Reality Paradox)
+
+| | |
+|---|---|
+| **Proxy** | Seismic interpretation, well log analysis, prospect evaluation scores |
+| **Reality** | Actual subsurface geology — what is really down there |
+| **Failure mode** | Model-consistent interpretation — the cross-section is internally coherent but contradicts ground truth that was not measured |
+
+**Every interpretation must ask:** "Does this model fit the data because it's correct, or because I haven't measured the dimension that would falsify it?"
+
 ## INIT
 
 ```python
