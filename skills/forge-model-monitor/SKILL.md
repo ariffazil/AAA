@@ -3,9 +3,7 @@ name: forge-model-monitor
 id: forge-model-monitor
 version: 1.1.0
 risk_tier: low
-description: 'Monitor the model fallback chain. Track latency, billing failures (402)
-  cold-start failures, and auto-pause dead models. USE WHEN: "model health", "check
-  fallback chain", "model latency", "billing alert".'
+description: "Monitor the model fallback chain. Track latency, billing failures (402), cold-start failures, and auto-pause dead models. USE WHEN: \"model health\", \"check fallback chain\", \"model latency\", \"billing alert\"."
 owner: A-FORGE
 floor_scope:
 - F1
@@ -17,6 +15,10 @@ autonomy_tier: T0
 capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---
+> **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
+> directories differing only in case. The second copy (`/root/.hermes/skills/FORGE-model-monitor`) is now an alias
+> symlink here. Its full pre-collapse body is preserved at
+> `references/absorbed-FORGE-model-monitor.md` and in `.frozen/2026-09-20-case-dupes/FORGE-model-monitor/`.
 # Model Fallback Monitor
 
 **Tracks Arif's model federation health. Prevents silent provider failures.**

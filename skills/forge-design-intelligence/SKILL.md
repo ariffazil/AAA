@@ -2,7 +2,7 @@
 id: FORGE-design-intelligence
 name: forge-design-intelligence
 version: 1.0.0-2026-08-20
-description: "Design intelligence for building professional UI/UX across platforms."
+description: "Design intelligence for building professional UI/UX across platforms. Industry-specific reasoning rules, UI style taxonomy, color palettes, typography pairing, accessibility guidelines, and anti-patterns. Use when any agent builds web surfaces, landing pages, dashboards, or UI."
 owner: A-FORGE
 risk_tier: low
 floor_scope: ['F1', 'F4', 'F6', 'F13']
@@ -30,6 +30,10 @@ dependencies:
   skills:
     - FORGE-tailwind-tokens
 ---
+> **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
+> directories differing only in case. The second copy (`/root/.hermes/skills/FORGE-design-intelligence`) is now an alias
+> symlink here. Its full pre-collapse body is preserved at
+> `references/absorbed-FORGE-design-intelligence.md` and in `.frozen/2026-09-20-case-dupes/FORGE-design-intelligence/`.
 # FORGE-design-intelligence — Design Intelligence Knowledge Base
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.

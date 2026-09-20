@@ -2,7 +2,7 @@
 id: spatial-grounding
 name: forge-spatial-grounding
 version: 1.0.0
-description: "Embed VPS spatial context in agent configs — prevents spatial amnesia and SSH confusion. Grounds agents in af-forge VPS reality "
+description: "Embed VPS spatial context in agent configs — prevents spatial amnesia and SSH confusion. Grounds agents in af-forge VPS reality"
 owner: AAA
 risk_tier: medium
 host_compatibility:
@@ -25,6 +25,10 @@ floor_scope:
 capability_tier: fed-long-context
 ecology_state: WARM
 ---
+> **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
+> directories differing only in case. The second copy (`/root/.hermes/skills/FORGE-spatial-grounding`) is now an alias
+> symlink here. Its full pre-collapse body is preserved at
+> `references/absorbed-FORGE-spatial-grounding.md` and in `.frozen/2026-09-20-case-dupes/FORGE-spatial-grounding/`.
 # Spatial Grounding
 
 Embed VPS spatial context in agent configs — prevents spatial amnesia and SSH confusion.

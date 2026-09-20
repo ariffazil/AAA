@@ -5,14 +5,7 @@ version: 1.0.0
 owner: A-FORGE
 risk_tier: low
 license: MIT
-description: "This skill should be used when the user needs to analyze Git repositories
-  compare developer commit patterns, work habits, development efficiency, code style
-  code quality, and slacking behaviors. It generates honest, direct developer evaluations
-  with scores, grades, strengths, weaknesses, and actionable suggestions. Trigger
-  phrases include \"analyze code\", \"analyze repository\", \"compare developers\", \"code
-  quality report\", \"commit patterns\", \"developer efficiency\", \"developer evaluation\"
-  \"slacking index\", \"摸鱼指数\", \"工作习惯分析\", \"代码分析\", \"研发效率\", \"代码质量\", \"开发者评估\", \"developer
-  score\"."
+description: "This skill should be used when the user needs to analyze Git repositories, compare developer commit patterns, work habits, development efficiency, code style, code quality, and slacking behaviors. It generates honest, direct developer evaluations with scores, grades, strengths, weaknesses, and actionable suggestions. Trigger phrases include \"analyze code\", \"analyze repository\", \"compare developers\", \"code quality report\", \"commit patterns\", \"developer efficiency\", \"developer evaluation\", \"slacking index\", \"摸鱼指数\", \"工作习惯分析\", \"代码分析\", \"研发效率\", \"代码质量\", \"开发者评估\", \"developer score\"."
 floor_scope:
 - F1
 - F2
@@ -23,6 +16,10 @@ autonomy_tier: T1
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
 ---
+> **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
+> directories differing only in case. The second copy (`/root/.hermes/skills/FORGE-code-analysis`) is now an alias
+> symlink here. Its full pre-collapse body is preserved at
+> `references/absorbed-FORGE-code-analysis.md` and in `.frozen/2026-09-20-case-dupes/FORGE-code-analysis/`.
 # Code Analysis Skill
 
 📦 **GitHub**: [https://github.com/Wscats/code-analysis-skills](https://github.com/Wscats/code-analysis-skills)

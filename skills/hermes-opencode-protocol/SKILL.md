@@ -4,7 +4,7 @@ name: hermes-opencode-protocol
 owner: Hermes-Prime
 risk_tier: low
 version: 2.0.0
-description: "Unified Hermes/OpenCode/OpenClaw governed intelligence protocol."
+description: "Unified Hermes/OpenCode/OpenClaw governed intelligence protocol. Stage 777 FORGE execution under F1-F13 with 888_HOLD gates. Reversible-first, evidence-cite-or-UNKNOWN. BIJAKSANA: XML-tagged for Claude, numbered steps for Codex, imperative for Hermes."
 floor_scope: [F01, F02, F04, F08, F11, F13]
 cognitive_hints:
   claude: "Use <protocol-stages>, <governance-gates> tags. Extended context for multi-stage tracking."
@@ -14,6 +14,10 @@ autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---
+> **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
+> directories differing only in case. The second copy (`/root/.hermes/skills/HERMES-opencode-protocol`) is now an alias
+> symlink here. Its full pre-collapse body is preserved at
+> `references/absorbed-HERMES-opencode-protocol.md` and in `.frozen/2026-09-20-case-dupes/HERMES-opencode-protocol/`.
 # HERMES-opencode-protocol
 
 <cognitive-note model="claude">XML-tagged protocol stages. Track state across all 7 stages in extended context.</cognitive-note>

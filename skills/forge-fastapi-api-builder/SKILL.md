@@ -2,7 +2,7 @@
 id: FORGE-fastapi-api-builder
 name: forge-fastapi-api-builder
 version: 1.0.0-2026.07.17
-description: "FastAPI API builder for organ bridge middleware and federation REST endpoints. "
+description: "FastAPI API builder for organ bridge middleware and federation REST endpoints."
 owner: A-FORGE
 risk_tier: medium
 floor_scope: ['F1', 'F4', 'F12']
@@ -10,6 +10,10 @@ autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---
+> **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
+> directories differing only in case. The second copy (`/root/.hermes/skills/FORGE-fastapi-api-builder`) is now an alias
+> symlink here. Its full pre-collapse body is preserved at
+> `references/absorbed-FORGE-fastapi-api-builder.md` and in `.frozen/2026-09-20-case-dupes/FORGE-fastapi-api-builder/`.
 # ⚒️ FastAPI API Builder — Organ Bridge Middleware
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.

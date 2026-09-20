@@ -3,7 +3,7 @@ id: agent-onboarding
 name: forge-onboarding
 autonomy_tier: T1
 version: 2.0.0
-description: "Standard procedure for registering a new agent in the AAA federation."
+description: "Standard procedure for registering a new agent in the AAA federation. Creates agent identity directory, agent card (v2.0.0 schema), registry entry, and SOUL.md. Updated 2026-08-03: canonical card locations vary by agent class — identity lanes at agent-cards/identity/, organs at agent-cards/{pillars,organs}/, FI agents (warga-aaa forge instruments, FI-001 to FI-008) at agents/_external/<id>/, other internal agents at agents/<id>/. The 2026-07-01 single-path note is now obsolete."
 owner: AAA
 risk_tier: medium
 knowledge_basis:
@@ -48,6 +48,10 @@ floor_scope:
 capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---
+> **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
+> directories differing only in case. The second copy (`/root/.hermes/skills/FORGE-onboarding`) is now an alias
+> symlink here. Its full pre-collapse body is preserved at
+> `references/absorbed-FORGE-onboarding.md` and in `.frozen/2026-09-20-case-dupes/FORGE-onboarding/`.
 # Agent Onboarding
 
 ## Overview

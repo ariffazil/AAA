@@ -5,14 +5,20 @@ risk_tier: low
 floor_scope: [F1, F2, F4, F7]
 version: 1.0.0
 layer: knowledge
-description: All computation is mathematical. Uncertainty is quantified. Optimization
-  has structure. Proof has rules. Numbers don't lie but models can.
+description: "All computation is mathematical. Uncertainty is quantified. Optimization has structure. Proof has rules. Numbers don't lie but models can. Math substrate — how to count what matters, prove the claim, and avoid the lie."
 owner: F13 SOVEREIGN
 status: active
 three_axis: true
 axis_version: 1.0.0
 autonomy_tier: T1
+tags: [math, statistics, geometry, probability]
+triggers: ["how many", "count", "rate", "ratio", "distribution", "probability", "expected value"]
+capability_tier: federation-substrate-knowledge
 ---
+> **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
+> directories differing only in case. The second copy (`/root/AAA/skills/knowledge/know-math`) is now an alias
+> symlink here. Its full pre-collapse body is preserved at
+> `references/absorbed-know-math.md` and in `.frozen/2026-09-20-case-dupes/know-math/`.
 
 # know-math
 
@@ -64,3 +70,20 @@ autonomy_tier: T1
 ---
 *Forged: 2026-07-11 under F13 SOVEREIGN.*
 *DITEMPA BUKAN DIBERI*
+
+---
+
+## Folded from the `knowledge/know-math` copy (2026-09-20)
+
+Math is not computation. Math is **what you choose to count**, **what you choose to leave out**, and **how you prove the claim holds**.
+
+## Use when
+- Auditing claims (counts, rates, distributions)
+- Statistical reasoning (probability, expected value)
+- Spatial reasoning (geometry, area, volume, depth)
+- Risk modeling (expected loss, variance, tails)
+
+## Don't use for
+- Simple arithmetic (calculator)
+- Token counting (string split)
+- Unit conversion (use a tool)

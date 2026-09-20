@@ -6,8 +6,7 @@ risk_tier: low
 slug: google-workspace-cli
 version: 1.0.0
 homepage: https://clawic.com/skills/google-workspace-cli
-description: "Operate Google Workspace from one CLI using dynamic API discovery, secure
-  OAuth flows, and agent-ready automation patterns for Drive and"
+description: "Operate Google Workspace from one CLI using dynamic API discovery, secure OAuth flows, and agent-ready automation patterns for Drive and"
 changelog: Initial release with gws command patterns, auth playbooks, MCP integration,
   and safety-first change control for production tenants.
 metadata:
@@ -41,6 +40,10 @@ autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---
+> **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
+> directories differing only in case. The second copy (`/root/.hermes/skills/FORGE-google-workspace`) is now an alias
+> symlink here. Its full pre-collapse body is preserved at
+> `references/absorbed-FORGE-google-workspace.md` and in `.frozen/2026-09-20-case-dupes/FORGE-google-workspace/`.
 ## Setup
 
 On first activation, read `SETUP_MD.md` and lock integration boundaries before running any write command.

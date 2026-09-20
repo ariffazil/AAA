@@ -1,11 +1,15 @@
 ---
 name: forge-esm-require-guard
-description: "ESM/CommonJS interop guard - blocks silent require() failure of .mjs modules at pre-commit. Foodset-derived from scar-001-esm-sct-silent-fail (2026-08-13). Static analysis, read-only. "
+description: "ESM/CommonJS interop guard - blocks silent require() failure of .mjs modules at pre-commit. Foodset-derived from scar-001-esm-sct-silent-fail (2026-08-13). Static analysis, read-only."
 tags: [forge, guard, esm, pre-commit, scar-derived]
 license: MIT
 capability_tier: default
 ecology_state: WARM
 ---
+> **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
+> directories differing only in case. The second copy (`/root/.hermes/skills/FORGE-esm-require-guard`) is now an alias
+> symlink here. Its full pre-collapse body is preserved at
+> `references/absorbed-FORGE-esm-require-guard.md` and in `.frozen/2026-09-20-case-dupes/FORGE-esm-require-guard/`.
 # FORGE-esm-require-guard — ESM/CommonJS Interop Guard
 
 > **Origin:** Scar scar-001-esm-sct-silent-fail (2026-08-13)

@@ -2,7 +2,7 @@
 id: FORGE-did-web-identity
 name: forge-did-web-identity
 version: 1.0.0-2026.07.17
-description: "Decentralized identifier (did:web) identity management for federation organs and agents. "
+description: "Decentralized identifier (did:web) identity management for federation organs and agents."
 owner: A-FORGE
 risk_tier: high
 floor_scope: ['F1', 'F2', 'F11', 'F13']
@@ -10,6 +10,10 @@ autonomy_tier: T2
 capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---
+> **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
+> directories differing only in case. The second copy (`/root/.hermes/skills/FORGE-did-web-identity`) is now an alias
+> symlink here. Its full pre-collapse body is preserved at
+> `references/absorbed-FORGE-did-web-identity.md` and in `.frozen/2026-09-20-case-dupes/FORGE-did-web-identity/`.
 # ⚒️ did:web Identity — Decentralized Identifier
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.
