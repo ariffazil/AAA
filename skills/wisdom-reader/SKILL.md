@@ -153,6 +153,29 @@ echo "vault999 head age: $HEAD"
 
 **Why:** Probe 2026-09-18T00:30Z detected 29.8h gap (informational, not yet P0). Probe 2026-09-18T06:38Z confirmed 57 entries intact (chain valid). Freshness != validity, both must be checked.
 
+## NEW — 2026-09-20 (empty gauges that look measured)
+
+Three instruments ship numbers that are not measurements. Probe the *producer*, not the label:
+
+1. **W3** — arifFlow vector `w3=0.7439` with `status=MEASURED` is `∛(0.42 × 0.99 × 0.99)` from hardcoded witness defaults (`rest_routes.py`). `apex_primitives.py` honestly returns `None`. Session tokens may show a third value (0.6563 / 0.94). If channels are defaults: report **UNMEASURED**. Never HOLD on a fabricated W3. Evidence: `/root/AAA/reports/STAB-2026-09-16/W3-IS-A-CONSTANT.md`.
+2. **CHRON calibration.json** — INIT reads the file, not `compute_calibration()`. A live join can be 1/1 while the file still says zeros. After any verification, `save_calibration(compute_calibration())`. `lessons.jsonl` empty is correct when `error_type=NONE` (a hit is calibration, not an error-lesson).
+3. **arifFlow entity_classes.yaml** — loaded once at MCP process start. Live actor `hermes` ≠ listed `hermes-asi` → `UNKNOWN_ACTOR` even after yaml aliases. Disk parse ≠ live report until that MCP process recycles. Do not recycle shared MCP without checking attached sessions.
+
+Also probe `/root/chron/data/calibration.json` vs `compute_calibration()` in the same turn before claiming "0 lessons / 0 verified".
+
+## NEW — 2026-09-20 (attention preservation vs capture)
+
+Candidate eureka, not constitution: `/root/AAA/eurekas/EUREKA-ATTENTION-PRESERVATION-ECONOMY-2026-09-20.md`.
+
+Before any human-facing turn, one test: did this **preserve** his attention or **capture** it?
+
+- Preserve: decide, close, HOLD silently, or stay quiet. Same clock, less of him.
+- Capture: menus, re-asks of unanswered binaries, dumps that carry no decision. Same clock, more of him.
+
+Do not re-ask a binary already on disk. The unanswered item stays HOLD.
+
+Knowledge can be stored. Attention cannot. Verbose “help” that he must re-read is extraction, even when true.
+
 ## Reference scars (carry these)
 
 - **SCAR-002-CEREMONY_FAILED_406** — 49 sessions failed because seal ceremony had a hard test gate. Tests are verify-phase, not seal-gate. Vocab rot.
