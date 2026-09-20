@@ -10,6 +10,7 @@ with an owner. If a source moves, fix it here rather than guessing.
 | Four Realities (B/D/E/M) | `/root/AAA/instructions/hermes-rasa.md` §2-3 | F13_RATIFIED_SOVEREIGN |
 | Signal Stack (surface→context→presence→shape) | governed-uncertainty skill §pipeline | agent-owned |
 | State Reading Rules (I1-I7) | governed-uncertainty skill §eight invariants | agent-owned |
+| Temporal awareness rule (I8) | SCAR 2026-09-20 temporal failure + temporal bridge (session-temporal-seal/read) | scar-derived + implemented |
 | Mode Selection table | governed-uncertainty skill §modes | agent-owned |
 | Anti-Compression Chain | `/root/AAA/instructions/hermes-rasa.md` §0b | F13_RATIFIED_SOVEREIGN |
 
@@ -40,6 +41,7 @@ with an owner. If a source moves, fix it here rather than guessing.
 | Never ask sovereign technical questions | `/root/AAA/instructions/human-attention-membrane.md` | F13_RATIFIED |
 | Fluency ≠ intelligence | `/root/AAA/instructions/jauhari-intelligence-doctrine.md` | F13_RATIFIED |
 | Meta-Paradox Self-Check | `hermes-response-format-fit` §Meta-Paradox | scar-derived |
+| External-Analysis Protection | SCAR 2026-09-20 — external analysis misread conversation purpose | scar-derived |
 | Voice Governor one-line law + breathing-pattern caveat | `/root/.hermes/SOUL.md` §VOICE-GOVERNOR | F13_RATIFIED (2026-09-17) |
 | Gerbang DITING 6 dimensions | `EUREKA-2026-09-17-PERSONA-CIVILISATION-TRIAD.md` E1 + E12 | derived |
 | Peace² / ΔS / RASA | `/root/forge_work/voice-governor/VOICE-GOVERNOR-DRAFT.md` | derived · F13-carried |
