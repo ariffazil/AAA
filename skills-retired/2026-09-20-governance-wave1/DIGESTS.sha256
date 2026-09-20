@@ -5,3 +5,9 @@ f3c468e38544a7b8295cb3e893767a2437deeac3bf0cb64f61086fdf66a09313  FORGE-telegram
 b710b7591929e75876a506455c7e82deae667162663ce8d3223151afa643e108  ASI-agentic-governance/SKILL.md   (frozen dup)  ->  /root/AAA/skills/asi-agentic-governance  [79632d9695bd77eb]
 660bd5ecc14bb3725577daa640efa7348e582b52a5b7ce51641788232929ea04  AUDIT-repo-reality/SKILL.md   (frozen dup) -> /root/AAA/skills/audit/audit-ops
 aaf85c7062ffaec0e879c6bf493e58c5a39fe3e9dc1685cba0289831212be1a5  corpus-claim-falsification/SKILL.md  (absorbed) -> /root/AAA/skills/governance/corpus-claim-discipline
+# NOTE 2026-09-20: FORGE-visual-qa-w3/scripts/forge_dom_lint.js is the ONLY frozen file whose bytes
+# differ from the pre-merge original (pre-merge sha256 prefix 708ac95f...). Two pre-existing defects
+# were repaired so the file could pass the hard pre-commit gate the freeze must clear:
+#   1. SyntaxError line 263 — arrow body opened '{' closed ')' -> '})'
+#   2. SCAR-001 — bare require() in an ESM package -> module-scoped createRequire binding
+# All other frozen files are byte-faithful to their pre-merge originals (verified by sha256).
