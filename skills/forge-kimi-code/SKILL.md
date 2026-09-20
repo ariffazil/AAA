@@ -3,8 +3,7 @@ id: kimi-code-aaa
 name: forge-kimi-code
 autonomy_tier: T1
 version: 1.0.2
-description: "Configure, audit, and align Kimi Code CLI as AAA warga FI-008 with arifOS
-  kernel and A-FORGE stdio actuator."
+description: "Configure, audit, and align Kimi Code CLI as AAA warga FI-008 with arifOS kernel and A-FORGE stdio actuator."
 owner: AAA
 risk_tier: medium
 knowledge_basis:
@@ -55,6 +54,10 @@ floor_scope:
 capability_tier: fed-long-context
 ecology_state: WARM
 ---
+> **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
+> directories differing only in case. The second copy (`/root/.hermes/skills/FORGE-kimi-code`) is now an alias
+> symlink here. Its full pre-collapse body is preserved at
+> `references/absorbed-FORGE-kimi-code.md` and in `.frozen/2026-09-20-case-dupes/FORGE-kimi-code/`.
 # Kimi Code AAA Configuration
 
 ## arifOS-ACT Embedding
