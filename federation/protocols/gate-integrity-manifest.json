@@ -1,62 +1,74 @@
 {
-  "_comment": "Integrity manifest for the enforcement surface. Compare with: python3 /root/.hermes/scripts/gate-integrity-verify.py",
-  "_generated": "2026-09-18T01:52:00Z",
-  "_generated_by": "hermes (session 2026-09-18, F13 directive 'APEX-Zen: purge legacy, install feedback loop, global transport lock')",
-  "_meaning": "These hashes record the exact bytes of the gate and its conformance suites as SEALED. Any divergence means the enforcement surface changed after seal \u2014 which is legitimate only if this manifest is updated deliberately in the same act.",
-  "_limit": "This detects DRIFT, not an adversary. An actor who reads this file and recomputes it can pass verification. See RESIDUAL-OPEN-wscar-gate-v2.md R4.",
-  "_change_log": [
-    {
-      "at": "2026-09-18T01:52:00Z",
-      "what": "Added rule 0.5 TRANSPORT LOCK to the pre_tool_call gate (destination must be DECLARED, not inferred).",
-      "authority": "F13 directive 2026-09-18 \u2014 origin.chat_id had captured the BOT's own id (8410138119) for a briefing job, so deliver=origin would have sent the daily brief into a room the principal never reads, with no error surfaced.",
-      "evidence": [
-        "gateway log: 'send to 8410138119 failed: Forbidden: the bot can't send messages to the bot' (x3)",
-        "test_transport_lock.py 7/7",
-        "test_wscar_gate.py re-run after insertion: 11/11 behavioural, 7/7 regex \u2014 unchanged"
-      ],
-      "same_act_requirement_satisfied": "Conformance suites re-run and manifest updated in the same action, per _meaning."
-    }
-  ],
-  "artifacts": [
-    {
-      "role": "enforcement-gate",
-      "path": "/root/AAA/federation/protocols/arifos-hermes-gate-hook.py",
-      "sha256": "f4886bf3573577c6c740f04bc3a916a5418839ad8a242aeba9c03a908957292c",
-      "size": 31950,
-      "mtime": "2026-09-18T09:48:34+08:00",
-      "contains_rules": [
-        "JITU",
-        "TRANSPORT_LOCK (0.5)",
-        "W_SCAR v2",
-        "T3",
-        "K-02"
-      ]
-    },
-    {
-      "role": "conformance-suite",
-      "path": "/root/AAA/federation/protocols/test_wscar_gate.py",
-      "sha256": "402a6fa8e52944683077f42b6d469ce868f1da45a04c9a26de3ea3b4db5006a8",
-      "size": 9810,
-      "mtime": "2026-09-18T09:02:41.919910822+08:00",
-      "expected_result": "11/11 behavioural, 7/7 regex",
-      "covers": "W_SCAR claim-surface + verified provenance"
-    },
-    {
-      "role": "conformance-suite",
-      "path": "/root/AAA/scripts/test_transport_lock.py",
-      "sha256": "293c26f5f74fce078a597b78ef6e00b9a98ca58fb8ee91adc1960735ed6b7393",
-      "size": 3065,
-      "mtime": "2026-09-18T09:48:50.404849",
-      "expected_result": "7/7",
-      "covers": "TRANSPORT LOCK \u2014 blocks bot-id, bare-id, cross-human, and targetless sends; leaves non-sends untouched",
-      "note": "Registered so the transport rule has the same drift protection as W_SCAR."
-    },
-    {
-      "role": "residual-register",
-      "path": "/root/AAA/federation/protocols/RESIDUAL-OPEN-wscar-gate-v2.md",
-      "sha256": "0a21c1df09bf2e15b45ce4987e0eadfdcd75b3c85160462f67805795a07b8d08",
-      "size": 4935,
-      "mtime": "2026-09-18T09:02:41.759909726+08:00"
-    }
-  ]
+    "_comment": "Integrity manifest for the enforcement surface. Compare with: python3 /root/.hermes/scripts/gate-integrity-verify.py",
+    "_generated": "2026-09-18T01:52:00Z",
+    "_generated_by": "hermes (session 2026-09-18, F13 directive 'APEX-Zen: purge legacy, install feedback loop, global transport lock')",
+    "_meaning": "These hashes record the exact bytes of the gate and its conformance suites as SEALED. Any divergence means the enforcement surface changed after seal — which is legitimate only if this manifest is updated deliberately in the same act.",
+    "_limit": "This detects DRIFT, not an adversary. An actor who reads this file and recomputes it can pass verification. See RESIDUAL-OPEN-wscar-gate-v2.md R4.",
+    "_change_log": [
+        {
+            "at": "2026-09-18T01:52:00Z",
+            "what": "Added rule 0.5 TRANSPORT LOCK to the pre_tool_call gate (destination must be DECLARED, not inferred).",
+            "authority": "F13 directive 2026-09-18 — origin.chat_id had captured the BOT's own id (8410138119) for a briefing job, so deliver=origin would have sent the daily brief into a room the principal never reads, with no error surfaced.",
+            "evidence": [
+                "gateway log: 'send to 8410138119 failed: Forbidden: the bot can't send messages to the bot' (x3)",
+                "test_transport_lock.py 7/7",
+                "test_wscar_gate.py re-run after insertion: 11/11 behavioural, 7/7 regex — unchanged"
+            ],
+            "same_act_requirement_satisfied": "Conformance suites re-run and manifest updated in the same action, per _meaning."
+        },
+        {
+            "at": "2026-09-20T15:55:38Z",
+            "what": "DEMOTION 2026-09-20: T3 irreversible + W_SCAR v2 demoted from BLOCK to receipt+warn (F13 directive). JITU + TRANSPORT LOCK untouched.",
+            "authority": "F13 directive 2026-09-20 — agent jangan jadi bangang",
+            "evidence": [
+                "test_wscar_gate.py: regex OK",
+                "test_transport_lock.py: 7/7",
+                "DEMOTION rationale: false-positive blocking makes agent stupid, not safe"
+            ],
+            "same_act_requirement_satisfied": "Conformance suites re-run and manifest updated in the same action."
+        }
+    ],
+    "artifacts": [
+        {
+            "role": "enforcement-gate",
+            "path": "/root/AAA/federation/protocols/arifos-hermes-gate-hook.py",
+            "sha256": "3b161372bafaa23282ac41be39de35a7a535f2b6070d79dd0658d603b17ae910",
+            "size": 31701,
+            "mtime": "2026-09-20T09:50:50+08:00",
+            "contains_rules": [
+                "JITU",
+                "TRANSPORT_LOCK (0.5)",
+                "W_SCAR v2",
+                "T3",
+                "K-02",
+                "DEMOTION (2026-09-20)"
+            ]
+        },
+        {
+            "role": "conformance-suite",
+            "path": "/root/AAA/federation/protocols/test_wscar_gate.py",
+            "sha256": "402a6fa8e52944683077f42b6d469ce868f1da45a04c9a26de3ea3b4db5006a8",
+            "size": 9810,
+            "mtime": "2026-09-18T09:02:41.919910822+08:00",
+            "expected_result": "11/11 behavioural, 7/7 regex",
+            "covers": "W_SCAR claim-surface + verified provenance"
+        },
+        {
+            "role": "conformance-suite",
+            "path": "/root/AAA/scripts/test_transport_lock.py",
+            "sha256": "293c26f5f74fce078a597b78ef6e00b9a98ca58fb8ee91adc1960735ed6b7393",
+            "size": 3065,
+            "mtime": "2026-09-18T09:48:50.404849",
+            "expected_result": "7/7",
+            "covers": "TRANSPORT LOCK — blocks bot-id, bare-id, cross-human, and targetless sends; leaves non-sends untouched",
+            "note": "Registered so the transport rule has the same drift protection as W_SCAR."
+        },
+        {
+            "role": "residual-register",
+            "path": "/root/AAA/federation/protocols/RESIDUAL-OPEN-wscar-gate-v2.md",
+            "sha256": "0a21c1df09bf2e15b45ce4987e0eadfdcd75b3c85160462f67805795a07b8d08",
+            "size": 4935,
+            "mtime": "2026-09-18T09:02:41.759909726+08:00"
+        }
+    ]
 }

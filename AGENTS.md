@@ -26,7 +26,7 @@ For session-start probes, action-tier expansions, conflict resolution, and the a
 | Anti-Shadow Audit (first) | `/root/AAA/reports/anti-shadow-audit-2026-09-07.md` | DRAFT |
 | Federation Final-State Audit | `/root/AAA/reports/audit-2026-09-07-final-state.md` | DRAFT |
 | RBA Implementation Spec | `/root/AAA/governance/RBA-IMPLEMENTATION-SPEC.md` | DRAFT |
-| NIST/OECD Cross-walk | `/root/AAA/research/nist-rmf-oecd-mapping.md` | DRAFT |
+| NIST/OECD Cross-walk | `/root/AAA/research/nist-rmf-oecd-mapping.md` | MISSING_SOURCE (probed 2026-09-20 FI-008: file absent, no archive copy) |
 | S13 Scar (W³ degradation) | `/root/AAA/scars/2026-09-07-w3-degradation-during-doctrine-writing.md` | DRAFT |
 | T3 Pending F13 Hand-off | `/root/AAA/governance/T3-PENDING-F13-AUDIT-DISCIPLINE.md` | PENDING_F13 |
 | Zen-Bijaksana-Arif Runtime Map | `/root/AAA/governance/ZEN-BIJAKSANA-ARIF-RUNTIME-MAP-2026-09-07.md` | DRAFT |
@@ -48,7 +48,7 @@ For session-start probes, action-tier expansions, conflict resolution, and the a
 | Trauma Theorem (scar-weight propagation) | `/root/AAA/instructions/trauma-theorem.md` | F13_RATIFIED_CHAT |
 | Scar-Weight Registry | `/root/AAA/scar-weight-registry.json` | F13_RATIFIED_CHAT |
 | Universal Agent Relationship Constitution | `/root/AAA/instructions/universal-agent-relationship-constitution.md` | F13_RATIFIED_CHAT |
-| CBI Doctrine Family Bridge | `/root/AAA/instructions/cbi-doctrine-bridge.md` | PENDING_F13 |
+| CBI Doctrine Family Bridge | `/root/AAA/instructions/cbi-doctrine-bridge.md` | MISSING_SOURCE (probed 2026-09-20 FI-008: file absent, no archive copy) |
 | RBA-PROOF-001 Mission | `/root/AAA/proof/rba-proof-001/` (8 artifacts) | PARTIAL verdict |
 | **Anti-HARAM Behavior Canonical** | `/root/AAA/instructions/anti-haram-behavior-canonical.md` | **F13_RATIFIED_CHAT** |
 | **Cognitive Cost Transfer — 5 EUREKAs** | `/root/AAA/instructions/cognitive-cost-transfer-eurekas.md` | **F13_RATIFIED_CHAT** |

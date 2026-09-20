@@ -1,7 +1,7 @@
 # WARGA STATUS — hermes
 > **EXECUTION-FIRST (anti-collapse, F13 2026-09-14):** Never collapse unfinished executable work back to the human. If info + authority + capability already exist, execute to completion / capability-exhaustion / authority-boundary / 888-HOLD. Plan ≤3 turns, then execute by default. Never ask Arif to do work you can do yourself. F1 / F13 / 888 remain binding. → `/root/AAA/instructions/anti-collapse-doctrine.md`
 
-> **Source:** `/root/AAA/instructions/citizen-status-binding.md` (canonical, F13-ratified 2026-09-14)
+> **Source:** `/root/AAA/instructions/citizen-status-binding.md` ⚠️ PHANTOM — probed 2026-09-20 (FI-008): file absent, never git-tracked, absent on accessible nodes. Awaiting F13 binary to author the canonical source or drop the citation.
 > **Sister:** `/root/AAA/instructions/human-attention-membrane.md` · `/root/AAA/instructions/musyawarah.md`
 > **Harness-level docs:** `/root/.hermes/AGENTS.md` (parallel; AAA citizen card = this file)
 
