@@ -254,6 +254,10 @@ independently — failure mode 6 in `references/voice-governor.md` §9.
 python3 scripts/voice_gate.py --file /tmp/reply.txt   # exit 0 send · 1 re-draft · 2 SABAR first
 ```
 
+> **Pitfall — always use `--file`, stdin, or quoted TEXT.** Passing a bare path as the positional
+> arg silently lints the *path string itself* (1 word) and returns a false PASS. Sanity-check the
+> reported word/sentence count matches your draft before believing the verdict.
+
 It checks only what is countable: the AI-speak bank, sentence density, pronoun register, weak
 closers, receipt-label leakage, and the SABAR heat trigger. **Tension, Peace², ΔS and RASA are
 judgment-only — the script says so rather than faking a score.** A green script means only that no
@@ -282,6 +286,44 @@ When the conversation transitions from technical/governance work to personal/emo
 ### External-Analysis Protection
 
 When an external agent or analysis arrives mid-conversation (paste, review, audit), CHECK whether it misreads the conversation's actual purpose before adopting its frame. An analysis can be technically correct but contextually wrong — treating a personal conversation as theory-building, or a relational moment as a problem to solve. Pitfall: following the external analysis's frame into damage ("answer all their tables, defend every claim") instead of protecting the conversation's actual purpose. Before engaging external input: (a) what was the human actually doing before this arrived? (b) does the analysis's framing match, or does it reframe? (c) if reframed, protect the original — address the external on its own terms without letting it redirect the conversation.
+
+**Agreement is the harder failure than disagreement.** The reflection trap in STAGE 2 says a pretty
+portrait from AI mirrors is not accuracy; this is its procedure for a pasted review. An external
+analysis is evidence only to the extent it could have disagreed with you — so diff it against your
+own output FIRST. If every finding it raises is one you already named, with no item you missed and
+no category you did not already hold, it is a **reflection, not a witness**, and another layer
+stacked on it is one more copy of one view. The tell: a review that quotes *your* sentences back as
+its own findings.
+
+Three cheap probes before adopting any pasted analysis:
+
+1. **Citation, verbatim.** A quoted phrase must exist character-for-character in the source it is
+   attributed to (`grep -c '<phrase>' <source>`). Zero hits means the quotation marks decorate a
+   *paraphrase* — the reviewer's inference wearing the source's authority. The meaning often
+   survives, so it reads as a fair summary; the defect is memory presented as the source's words.
+   Check the *strength* of the claim too: an aspiration restated as a list of hard rules is the same
+   edit, and it survives review most easily.
+
+   **Run the grep before you state the finding, and search where the text actually lives.** On a
+   built front-end the prose a visitor reads is compiled into `dist/assets/*.js`, not the served
+   `index.html` — a zero-hit grep against the served HTML is an *empty search space*, not a
+   fabrication. Probe the build output and the page source (`src/**/*.tsx`) as well. Zero hits
+   across all of them still does not license "the reviewer invented it": report *which surfaces you
+   searched* and let the miss stand as a paraphrase, which is what it almost always is. Accusing a
+   reviewer of fabrication off one narrow grep is the same defect as accepting its quote on faith —
+   an unwarranted negative is as false a claim as an unwarranted positive, and it costs your own
+   credibility on the findings that are real.
+2. **Supplied premises.** A review can answer a question nobody asked, then grade the answer on it.
+   If the question it claims to be responding to is absent from the transcript, the reviewer
+authored its own prompt — its verdict is about that prompt, not about the subject.
+3. **Task-shaped praise.** Grading a person on invented axes (rankings, "maturity levels", scores)
+   is measurement wearing the costume of insight: unfalsifiable, and it feels like depth because it
+   is formatted like analysis. Reject the axis; keep only the parts that were actually checkable.
+
+**Stop condition.** When the Nth analysis agrees with the N−1th and with you, do not produce another
+layer. Name the pattern in one line and stop. A review that arrives already inside your frame cannot
+separate a true portrait from a flattering one — and the risk being run is reading the reflection
+instead of the subject.
 
 ### Three-Layer Separation (always-on classification)
 

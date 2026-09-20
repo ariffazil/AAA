@@ -163,6 +163,52 @@ explicit id only for a channel the creating session is not in.
   of an artifact, and the first lives in another session's job store. Two jobs, same schedule, same
   artifact, same human is one defect — but retiring both is a worse one.
 
+### Zero-slack cadence — a phase window must never equal the period
+
+A state machine that advances by **elapsed wall-clock time**, driven by a job on that same period,
+has no margin at all. When window width equals the interval every run lands on the boundary and the
+arithmetic decides the phase:
+
+```bash
+# cron 0 3 * * *  → every 24 h.  Phase window: 24 h wide.  ZERO SLACK.
+compute_phase() { h=$(( (now - start) / 3600 ))
+  [ $h -lt 24 ] && echo RED; [ $h -lt 48 ] && echo BLUE; [ $h -lt 72 ] && echo GOLD; }
+```
+
+One second of scheduler jitter moves `h` from 23 to 48 — an increment of 25, not 24 — stepping clean
+over the entire BLUE window. Bash integer division truncates toward zero, so a run a fraction early
+floors to the previous band and a run exactly on time jumps past it.
+
+Measured: across six cycles one phase was skipped **every time**; the cycle then HOLDs on its unmet
+prerequisite, burns its remaining hours, seals **empty**, and ignites a successor carrying the same
+defect. Seventeen scars collected, zero repairs, for a month — while from outside the organ looked
+healthy throughout: cron fires, logs appear, state advances, cycles seal.
+
+Rules:
+
+1. **Advance the phase by WORK COMPLETED, not by clock.** The *gate* almost always already reads the
+   completed-state record; if the *selector* reads the clock instead, two mechanisms disagree and the
+   wrong one wins. Point both at one source:
+   ```bash
+   compute_phase() {
+     [ -z "$(phase_done RED)"  ] && { echo RED;   return; }
+     [ -z "$(phase_done BLUE)" ] && { echo BLUE;  return; }
+     [ -z "$(phase_done GOLD)" ] && { echo GOLD;  return; }
+     echo REBIRTH; }
+   ```
+   A missed run then self-heals on the next fire instead of skipping a phase.
+2. **Enforce cycle length separately** once the selector is state-driven, or a stalled phase retries
+   forever. Retrying is correct here — but make it visible rather than silent.
+3. **Give the window margin.** If the phase must stay clock-derived, make the width strictly greater
+   than the period (period + slack) and assert the computed band is the one you intended.
+4. **A cycle that seals EMPTY is a defect, not a quiet cycle.** Count completed phases at seal time
+   and fail loudly on zero — the empty seal is precisely what hides this class, because it makes a
+   dead cycle record exactly like a finished one.
+
+**Provisioning is not the loop.** A manual sovereign-run cycle completed all three phases and did
+real repairs; every unattended cycle since skipped one. When a loop has ever worked *only* under
+supervision, the defect is in the scheduler, not the design — check that first.
+
 ### Two writers on one scheduler — the failure is ZERO, not a conflict
 
 Several sessions editing the same job store concurrently is the normal condition in a federation, not
@@ -306,6 +352,10 @@ afterwards.
 ❌ Reporting PENDING as success              → unfalsifiable and self-congratulatory.
 ❌ Gating a human-burden metric              → its optimum is to stop reporting.
 ❌ Classifier logic inline in a scan loop    → cannot be shown to fail; untestable.
+❌ Phase window width == cadence period     → sub-second jitter skips a phase; loop deadlocks.
+❌ Selector keyed on clock, gate on state   → two mechanisms disagree; the clock wins.
+❌ A cycle that seals empty and ignites one → the defect propagates to every future cycle.
+❌ Phase derived from elapsed time alone     → a missed run skips the work instead of retrying it.
 ❌ Retiring a duplicate without checking     → two writers each retire the other; net zero.
 ❌ Trusting your own write as final state   → a concurrent writer moved it after you looked.
 ❌ Hardcoded chat id instead of origin       → routing claim that cannot follow the session.

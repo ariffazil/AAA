@@ -78,13 +78,34 @@ every downstream reader, including the next auditor. Named shapes, all one defec
   while `drift` is `false`)
 
 **Grade a control by whether a bad input changes its output — never by its name, its test suite,
-or its metadata.** Three proofs, all required:
+or its metadata.** Four proofs, all required:
 
 | Proof | Question | Failing shape |
 |---|---|---|
 | **CALLER** | Who invokes it, in the path that matters? | grep every scheduler surface returns 0 |
 | **EFFECT** | Does bad input change the output or block the action? | guard reorders; a total failure still returns the top-ranked item |
 | **BYPASS** | Is there another route to the same effect? | a second renderer reads the raw source directly, skipping the gate |
+| **SELF-TEST** | Does the test exercise the real invocation path? | the suite invokes the control itself and asserts the control refused — passes identically whether or not the control is wired |
+
+### A test that invokes the control proves only the control
+
+The SELF-TEST proof is separate from the other three because it is the failure mode an auditor
+looking at a **green suite** is least likely to catch. A verification script that runs
+`bash <guard_script> gmail ...` and asserts the guard refused has measured the script's behaviour,
+not the system's. It returns the same PASS when the guard is wired into every path and when it is
+wired into none. **Ask of every test: which process would this test have to spawn for the answer
+to change if the control were removed?** If the answer is "the control itself", the test cannot
+falsify the wiring claim.
+
+The canonical correct shape drives an **unprivileged, real caller** and grades the CONTENT that
+comes back — the exact invocation an ordinary agent would type, plus the absolute path (which
+skips `PATH` aliasing), plus an interpreter spawn (which skips the shell). None of those three
+routes is the control.
+
+Corollary for the report: a suite's **verdict line is a claim like any other**. When the summary
+says a boundary holds while a row in the same run measured it failing — or says a mechanism is
+impossible while a row shows it working — the verdict was written, not derived. Re-derive the
+verdict from the rows; never relay the summary.
 
 **Repair order: rename BEFORE you fix.** A control-shaped name that fails its proofs is corrected
 by relabelling it honestly first (`*_health_check` → `*_status_banner`; `SHADOW=true` →
@@ -134,16 +155,29 @@ of it.
    guess — so it hides both staleness and absence. Grade an index by whether a caller can derive
    the complete name set from it alone; if not, that is the first defect to report, ahead of any
    individual missing name.
-9. **Dispatch the primitive, do not read a doc.** The live wire surface is the only authority:
-   ```bash
-   curl -s -X POST http://127.0.0.1:8088/mcp -H 'Content-Type: application/json' \
-     -H 'Accept: application/json, text/event-stream' \
-     -d '{"jsonrpc":"2.0","id":1,"method":"resources/list"}'
-   # then prompts/list, then resources/read on the URI that claims to cover the question
+9. **Dispatch the primitive, do not read a doc — through the FULL protocol lifecycle.** The live
+   wire surface is the only authority, but a probe that skips the handshake measures its own
+   mistake. Two header gates fail at two different layers, and both read like a dead capability:
+
    ```
-   The dual `Accept` value is required — a POST without `text/event-stream` is refused at the
-   transport layer before any handler runs, which reads exactly like a dead capability but is a
-   transport refusal. Distinguish those two before reporting a negative.
+   1. Accept: application/json, text/event-stream   -> transport refusal before any handler runs
+   2. initialize  -> session id                      -> arrives in the RESPONSE HEADER, not the body
+   3. notifications/initialized
+   4. POST methods WITH Mcp-Session-Id               -> else `SESSION_MISSING` / `Missing session ID`
+   ```
+
+   Rule 9 in one line: **a refusal that names a lifecycle step is not a capability verdict.**
+   `SESSION_MISSING`, `NOT_INITIALIZED`, `must send notifications/initialized`, `client must accept
+   text/event-stream` all mean *you are not yet a valid client*. Re-run the handshake before
+   reporting anything, and never let one reach a defect list.
+
+   Run `scripts/mcp_session_probe.py` rather than hand-typing curl — it performs the whole
+   lifecycle and grades response content.
+   ```bash
+   python3 scripts/mcp_session_probe.py --port 18083 --list
+   python3 scripts/mcp_session_probe.py --port 18083 --call well_registry_status --args '{}'
+   python3 scripts/mcp_session_probe.py --scan 8088,7071,8081,18082,18083,7073
+   ```
 
 ## Procedure
 
@@ -201,6 +235,24 @@ behaviour actually changed.
   client-side finding — the stale client is itself worth naming — not as a surface defect.
   Corollary: when an audit's verb list disagrees with the live list, the audit is usually
   the older view, not the authority.
+- **`not yet` is not `never`.** A probe that skips a required protocol step measures the probe, not
+  the capability. Report the true state — *unverified from this client* — and never promote it to
+  "broken", "impossible" or "absent". This is the most expensive false negative in the class
+  because it is *confident*: the error message is specific and authoritative-sounding, so it
+  survives review and gets written up as a remediation item. Before escalating any negative, ask
+  which protocol step your client performed, and re-run the correct sequence once. A defect list
+  assembled from an incomplete client is a list about the client.
+- **A witness reading a path where the thing does not exist is not a witness.** When two components
+  disagree about which code is running, diff the RESOLVED PATHS before adjudicating the verdict —
+  and `ls` each one. A verifier pointed at `/usr/local/lib/python3.*/dist-packages/<pkg>` while the
+  live package sits at `<venv>/lib/python3.*/site-packages/<pkg>` is not reading a *different*
+  revision; it is reading nothing, and every DRIFT/HASH_MISMATCH it emits is a statement about an
+  empty target. Tell: the path contains a `*-deprecated` sibling, an editable-install `.pth`, or a
+  `src/` with no package — remnants whose presence makes the directory look populated. The remedy is
+  one attestation packet naming `import path + interpreter root + PID + manifest hash`, read by both
+  witnesses, never two components each inferring the runtime independently. Corollary for any
+  drift/parity claim: `source == built == deployed` is a three-way equality, so a fourth path's
+  opinion is not a tiebreaker.
 - **Alias residue.** A partial compatibility layer is worse than none: some names resolve,
   most do not, and the ones that resolve look healthy while returning the wrong contract.
   Either complete the translation or remove the aliases.
@@ -237,12 +289,65 @@ behaviour actually changed.
   backend can hardcode a setting, so one route is correct in identity and drifted in behaviour, and
   only the side-by-side run exposes the gap. Report the gap; do not silently patch a backend that
   also serves another lane.
+- **Framework-inherited advertisement is not the server's claim.** A runtime library can inject a
+  capability advertisement unconditionally into every server built on it (a Python MCP framework
+  adding an `extensions` block to every `initialize` response, for instance). Before grading an
+  advertised-but-unimplemented capability as N per-server conformance defects, find the owner:
+  ```bash
+  grep -rn '<extension-id>' <venv>/lib/python*/site-packages/<framework>/   # locate the injecting line
+  ```
+  If the advertisement is framework-wide, the finding is **framework over-advertisement**. The
+  remedy lives at framework level (patch upstream, or strip once at the framework) or at host level
+  (hosts treat an advertisement as a *hint*, not a promise) — never as N per-server patches, which
+  fix the symptom, leave the source, and create N drift points. Note the blast radius before
+  proposing a framework patch: it changes the advertisement for every server that imports it.
+- **An observation is not a verdict.** "Advertises X, implements nothing" is a CLAIM about observed
+  state. Calling it *nonconformant* is a separate verdict needing a normative quote from the spec —
+  an inference from a positive example ("the spec shows the implementing pattern") is not that
+  quote. Specs commonly mandate that *negotiated* capabilities govern a session without stating
+  that advertising an unused extension is a violation. Grade such a class
+  `ADVERTISED_NO_BINDING` — observed state, intent unknown, framework-inherited — and hold the
+  violation verdict until the normative text is in hand.
+- **Re-audit an inventory after the method changes, and diff the two counts.** A sweep built on a
+  naming convention (a `systemd` unit-name prefix, a file glob) silently excludes everything not
+  following it — the undercount is a METHOD error, not a system finding. When a corrected method
+  yields a larger count, say plainly that the first number was method-limited, and carry the
+  superseded figure forward as retracted rather than letting both circulate as live.
+- **A suite's summary line is a claim; the rows are the measurement.** When a verdict asserts a
+  stronger conclusion than its own rows support — a boundary holds though a row measured it failing,
+  or a mechanism is impossible though a row demonstrated it working — the summary was written, not
+  derived. Recompute the verdict from the rows and relay the recomputed one.
+- **A mechanism declared impossible deserves the same falsification as one declared working.**
+  "No layer can deny this principal", "not closeable on this host", `ROOT_RESIDUAL`,
+  `accepted-risk` — an unfixable classification retires an open defect into a documented limit, so
+  it is where defects survive longest. Test the specific impossibility claimed with a controlled
+  experiment before repeating it, and test it where the claim was made, not where it is convenient:
+  a control proven to refuse in one context is evidence the mechanism exists, which is exactly the
+  fact an "impossible" verdict denies.
+- **A fix proposed one layer away from the threat is usually the wrong layer.** Where an asset
+  looks exposed, the reflex is to relocate it or change its ownership and permissions — all of which
+  are inert against a principal that can read anything. Establish first whether the confinement
+  layer already binds that principal when applied to it; if it does, the gap is **coverage**
+  (the control is not attached to the caller), and the smaller correct remedy is to attach it. Say
+  which one it is before proposing either.
+- **Correct the artifact, not only the message.** A false green left inside the suite, the header,
+  or the spec diagram is re-read as evidence by the next agent, so withdrawing it in chat closes
+  nothing. Withdraw the superseded claim in place, name the measured value that replaces it, and
+  leave the parts that were verified working untouched — a correction is not a teardown.
 
 ## Reference
 
+- `scripts/mcp_session_probe.py` — full-lifecycle probe (initialize → session id →
+  `notifications/initialized` → `tools/list` / `tools/call`). Use it instead of hand-typed curl;
+  grades response CONTENT, not status codes. Run before reporting any capability as dead.
 - `references/arifos-surface-inventory.md` — the concrete projection list, the canonical
   stage-map SOT location, and the known drift sites for the arifOS federation.
-- `references/control-enforcement-probe.md` — re-runnable CALLER / EFFECT / BYPASS procedure:
-  the scheduler surfaces to sweep, the bad-input test, the receipt-hash check, and the report shape.
+- `references/control-enforcement-probe.md` — re-runnable CALLER / EFFECT / BYPASS / SELF-TEST
+  procedure: the scheduler surfaces to sweep, the bad-input test, the real-caller routes, the
+  harm-vs-surrogate probe design, the controlled confinement experiment, and the report shape.
+- `references/measured-constant-probe.md` — when a scalar labelled `MEASURED` never moves: the
+  input-provenance table, the falsy-merge pattern that converts absence into a default, and the
+  step that matters — enumerating every implementation of one quantity to find which one actually
+  SURFACES, since the honest sibling is usually the one wired to nothing.
 
 DITEMPA BUKAN DIBERI.

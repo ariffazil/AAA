@@ -11,6 +11,9 @@ triggers:
   - "is this governed"
   - "alive but not governed"
   - "verify governance surface"
+  - "is this control actually wired"
+  - "bypass test"
+  - "false green"
   - "tool registration check"
   - "immutable file"
   - "monotonicity"
@@ -159,6 +162,53 @@ claims with a live call, never with the cached flag alone.
 parallel workstream are a *shared evidence path*: usable, but not an independent witness.
 Corroboration requires two independent observation paths — the same artifact read twice is one
 observation.
+
+### 1d. Gate verification must exercise the caller's path, not the gate's own script
+
+**A test that invokes the guard directly proves the guard refuses when asked. It proves nothing about
+whether any real invocation is intercepted.**
+
+The signature is a suite that reports all-green while the boundary does not exist. Its bypass test reads
+
+```bash
+bash <guard_script> gmail ...        # asserts exit 13 / "DENIED"
+```
+
+— the guard was asked to refuse, and refused. The invocation path every real caller uses was never
+touched. Before crediting any bypass test, read **what it executes** and confirm it is the path a caller
+takes (bare name via `PATH`, the absolute binary, a library/subprocess call) — not the control's own
+file. This is a tautology, and it is the same defect class as a receipt stream written by the gate's own
+self-test (§7): the control's test is not independent evidence about the control.
+
+```bash
+which <binary>; readlink -f "$(which <binary>)"   # does PATH resolve to the guard, or past it?
+```
+
+Three bypass shapes survive a self-testing suite — probe all three:
+
+| Shape | Probe | Meaning |
+|---|---|---|
+| **Guard on no path** | `which <binary>`; grep the tree for the guard's filename | referenced by nothing but its own test → DECLARED, not EFFECTIVE |
+| **Wrapper routes past its own guard** | grep the wrapper for how it invokes the binary | a bare `["gws", ...]` resolves via `PATH` straight to the real binary; the guard is never entered |
+| **Guard's own escape hatch** | read its conditionals for env vars | `if [ "$INTERNAL" != "1" ]` — **any process can export that. An env var is a convention, not a credential** |
+
+Also probe the asset directly, and state what its mode does and does not buy: `chmod 700` on a
+credential store separates it from non-privileged users only. If every agent on the host runs as the
+same privileged uid, `700` provides **no separation between them** — report that, rather than citing the
+mode as protection.
+
+**Do not wire an incomplete control just because it exists.** Wiring a guard whose bypass is still open
+converts an honest "unguarded" into a false "guarded": it stops callers who follow the convention while
+any caller who sets one env var, or reaches the absolute path, passes straight through. **A false
+boundary is worse than an absent one** — an absent boundary invites scrutiny, a false one ends it. The
+correct state for an unfinished control is a header reading NOT WIRED plus its measured bypass list,
+and a suite that exits non-zero.
+
+**Split the suite so a working policy layer is not conflated with a working boundary.** Intent gating,
+purpose checks, receipt minting, and quarantine envelopes can all verify green while the mediation claim
+fails, because those features serve callers who *choose* the gateway. Give the suite a verdict that can
+say so — "**governed wrapper, not a chokepoint**" — and reserve the stronger word for a boundary that
+holds against a caller who has not opted in.
 
 ### 2. Immutable File Protection
 
@@ -488,6 +538,11 @@ and retracting is how the record stays usable.
 | Audit anchored to a host named in a header/stamp/prompt | Verify `hostname` + tailnet IP first; a metadata header is a claim and drifts silently after migrations |
 | Census flag contradicts a live call | Trust the call; re-stamp the census or record it stale. A cached negative is as wrong as a cached positive |
 | Concurrent session wrote artifacts you are auditing | Grade them a shared evidence path, not an independent witness |
+| Bypass test invokes the guard script instead of a caller's path | It proved the guard refuses when asked, not that any path is intercepted. Re-read what the test executes, then re-probe via `PATH` and via the absolute binary |
+| Guard bypassable by an env var it reads | An env var is a convention, not a credential — any process can export it. The control is DECLARED-only until that bypass closes |
+| Wrapper invokes the raw binary instead of its own interceptor | The gate is not on the wrapper's path either. Route the wrapper through the interceptor, or report coverage = 0 |
+| Access mode cited as separation on a single-uid host | `700` separates only from non-privileged users; with every agent on the same privileged uid it buys nothing. Report the mode and what it does not cover |
+| Boundary claim made from a suite that cannot fail | An all-green suite with no failing exit path is not evidence. Split boundary-probe from policy-probe and make the boundary failure exit non-zero |
 
 ## References
 - Cross-registry reconciliation: `references/cross-registry-reconciliation.md` — pattern for auditing multiple registries of the same entity class, finding discrepancies, and building unified heartbeat monitors

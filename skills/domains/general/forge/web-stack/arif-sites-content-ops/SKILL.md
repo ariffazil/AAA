@@ -501,6 +501,67 @@ terminal `/index.html` fallback = the **listing**; browser UAs get the React she
 Full detail, probe commands, and the og-tag/social-preview gap:
 `references/dual-lane-ua-routing-pitfalls.md`.
 
+## SERVED-TRUTH AUDIT — the artifact can be right while the pipeline is wrong (2026-09-20)
+
+Trigger: *"is the site aligned with reality?"*, or Arif pastes an external AI's surface read and says
+*"apply all the fix needed"*. Four probes, ~30 min, **no Caddy reload, no site rebuild** — all four are
+artifact/service level and reversible.
+
+**1. Sitemap sweep (catches an un-regenerated sitemap).**
+```bash
+curl -sS https://arif-fazil.com/sitemap.xml | grep -o '<loc>[^<]*' | sed 's/<loc>//' > /tmp/locs.txt
+cat /tmp/locs.txt | xargs -P 10 -I{} sh -c 'printf "%s\t%s\n" "$(curl -sSL -o /dev/null -w "%{http_code}" {} --max-time 20)" "{}"' \
+  > /tmp/status.tsv
+awk -F'\t' '$1!="200"' /tmp/status.tsv        # must be empty
+```
+Found 43/63 entries returning 308/301 (route migrations ran, sitemap never regenerated) + 1 → 404.
+Rewrite each `<loc>` to its post-redirect target; **drop** entries with no 200 target rather than
+writing a 404 into the sitemap. Same treatment for `feed.xml` item links (`grep -c world/makcikgpt`).
+
+**2. Fix the artifact, then find the generator that will undo it — the real fix is upstream.**
+`scripts/lib/makcik-source.cjs` declares `CANONICAL_PREFIX = "/world/makcikgpt/"` and a parity test
+enforces it, while Caddy 301s `/world/makcikgpt/*` → `/makcikgpt/`, and `prerender-articles.cjs`
+uses a third prefix `/wealth/makcikgpt/`. Artifact-level canonicalisation is correct **for today's
+served routes** and is still reverted by the next `npm run prebuild`. Record the disagreement and
+make the namespace decision (build-canon vs routing-canon) explicit — it needs F13, because option
+(b) requires a Caddy reload (T3, forbidden unnamed by the site's own AGENTS.md).
+
+**3. Canonical-tag collapse.** Every SPA shell inherits the root `index.html` canonical unless the
+route overrides it:
+```bash
+grep -rl '<link rel="canonical" href="https://arif-fazil.com/" />' sites/arif-fazil.com/dist --include=index.html | wc -l
+```
+Measured 87/236 — 77 MakcikGPT article pages + `/about` all declaring the homepage as their
+canonical ("this page duplicates the homepage"). Fix belongs in the shell generator +
+`copy-static-html.js`; it needs a rebuild + deploy, so it is its own decision, not a quick patch.
+
+**4. Daemon source drift — a service can be `active` and doing nothing.**
+```bash
+systemctl status <svc> --no-pager | head -12          # 'active (running) since <old date>' = suspect
+journalctl -u <svc> --no-pager | grep -c 'Error\|404'
+```
+`what-to-watch.service` had been `active` for 16 days while its journal showed HTTP 404 on **every**
+5-minute tick — it read `institutional_signal.v1.json`, which was never deployed to the served root.
+Two more defects sat behind the 404: a **fabricated** Brent (`gold price × 1.02`) compared against a
+$70/bbl oil threshold and one fetch away from being written to VAULT999 tagged `OBS`, and a
+`vitals.get("obs_facts", {}).get(...)` that crashes when the key exists but is `null`.
+
+**Rules for any monitor that can write a ledger:**
+- Every threshold reads a source that **resolves right now** — prove each URL, do not inherit a dead path.
+- Fail-closed **per trigger**: an unavailable source is skipped and named in the log. Never proxy,
+  default, or estimate a value into an `OBS`-tagged receipt.
+- Index list-shaped data by **declared id**, never by position.
+- Persist crossing state (`/var/lib/<svc>/state.json`) or every restart re-fires an already-crossed
+  threshold — the ledger then records process restarts, not state transitions.
+- `systemctl is-active` and `active since <date>` are not evidence the loop works. The journal is.
+
+**Deliverable:** an append-only receipt — `forge_work/2026-09-20-site-repair/RECEIPT.md` — with each
+fix, its probe, and the HOLDs separated from the DONE. Class the layer reached honestly:
+**repo + served artifact**, not a kernel SEAL.
+
+**Pitfall inside the audit:** do not write a literal `<loc>` inside an XML comment — `grep -c '<loc>'`
+will count the comment and your count silently reads one high. Describe the element in words.
+
 ## Pitfalls — ARCHIVE
 
 The pitfall history for this skill (`## Pitfalls` and `## Additional Pitfalls`, ~31 KB)

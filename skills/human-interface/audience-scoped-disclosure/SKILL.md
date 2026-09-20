@@ -243,7 +243,11 @@ The governing rule:
   verifiable message id.
 - `references/relay-delivery.md` — posting a sentence the principal wrote for another person: the
   authorship-vs-transmission gate, the attribution-first format, the send-once rule, and a verified
-  standalone-send recipe including how to resolve the bot token's env var name.
+  standalone-send recipe including how to resolve the bot token's env var name. Also covers the
+  harder case — **composing** (not relaying) a message he asked you to write for a room: the
+  declaration gate, register-matching, scaling the artifact to the emotional task, holding the draft
+  until he says go, shipping a quotation inside its own context — what to report when the transport
+  refuses, and why SENT is not OBSERVED on a group chat.
 - `references/first-contact-continuity-check.md` — an unknown sender opening with assumed continuity
   ("we're on week N", a resumed thread): envelope + registry recipe, the first-contact / stale-record /
   identity-ambiguous decision table, the honest-reply shape, and the internal-organ vocabulary-collision

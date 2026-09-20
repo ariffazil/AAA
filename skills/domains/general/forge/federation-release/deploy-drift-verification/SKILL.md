@@ -541,6 +541,21 @@ organ report the same fact (root / health / tools / build-info / handshake), pro
 report the disagreement rather than picking a winner — a version read from one endpoint is a claim
 about that endpoint only.
 
+- **A test that re-implements the artifact it verifies is not a witness.** When the suite recomputes
+  the output instead of invoking the production code path, a green run proves only that two
+  implementations agree *today* — and the re-implementation is the copy that drifts first while
+  still passing. Invoke the real artifact (subprocess the builder, import the deployed module) and
+  independently recompute only the property you are asserting, so the test is a witness of the
+  contract rather than a second copy of it. The same failure wears a path: a test constant naming a
+  tree that no longer exists, or the build tree rather than the served root, reports as a product
+  defect and is really a relocated artifact. Before repairing either side, grep the symbol — if the
+  function the test calls exists nowhere in the lane, the test outlived the API; re-point it, do not
+  "restore" the function to make it pass. One cross-language consequence: a shared helper placed at
+  a repo root resolves against the ROOT `package.json`, so when the root declares `"type": "module"`
+  and the consuming service dirs declare `"type": "commonjs"`, the helper must be named `.cjs` or
+  its `require()` throws under ESM — and `node --check` on the consumers still passes while the
+  shared module fails at load.
+
 ## Pitfalls
 
 - **A kernel/monitor "deployed SHA" field may be attesting the DEV CHECKOUT, not the deployment.**

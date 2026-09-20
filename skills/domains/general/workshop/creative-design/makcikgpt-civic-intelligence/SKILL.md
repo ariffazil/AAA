@@ -67,6 +67,8 @@ Deliver full draft. Ask ONE question about angle or tone. Nothing publishes with
 - Concrete over abstract. Named office, dated event, specific ringgit.
 - Recurring move: *who pays, who benefits, why were we told last.*
 - No histrionics. Numbers carry the anger.
+- **Register: felt by the ordinary reader, not deciphered by the analyst.** Arif's brief for these pieces is *bahasa manusia penuh rasa* — plain human language that a reader who does not work in the industry (and does not read the filings) feels in the body. Machinery gets named as physical objects and household scenes (lampu buka tutup, muka orang yang kena, anak mak balik rumah), not as frameworks; the analysis arrives *after* the human detail, carried by Makcik in her own words. If a sentence would only land for someone who already knows the sector, it is the wrong register.
+- **Never write as a mirror, a clerk, or a neutral witness.** A mirror reflects the institution's own framing back ("they say it is a polycrisis"), a clerk records facts without consequence, a neutral witness attests without weight. The piece exists to carry the consequence to the reader: name who pays, plant it in one person's ordinary evening, and let the anger come from the arithmetic rather than the adjectives.
 
 ## Pitfalls
 - **F6 MARUAH — charge decisions, not dignity.** Aim at structure and choices. No family, no body, no private life. Editorial read in INT row.

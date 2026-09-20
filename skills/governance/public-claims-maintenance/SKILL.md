@@ -130,6 +130,29 @@ failure mode. Read back what the *served* surface returns, and report the pass a
 `cited / labelled / replaced / deleted` counts, with `deleted` expected to be **zero** for any pass
 whose rule is never-delete. A count of zero deletions is a result worth stating, not an omission.
 
+## A claim about the system's own AUTHORITY STATE
+
+A surface asserting a governance state — `SEALED`, certified, verified, all-clear — is not a stale
+figure. It is a claim about the system, and the system's own state endpoint is its witness. Diff the
+claim against that endpoint before treating the surface as merely behind:
+
+```bash
+curl -s <organ>/health | jq '{runtime_seal_state, working_tree, git_commit, verified}'
+grep -rn 'SEAL ALIVE\|SEALED\|certified\|all green' <surface tree>
+```
+
+A badge the state endpoint contradicts is a **false public claim**, not stale copy. Two repairs
+exist and they are not equivalent: change the surface, or change the state. A wording edit here is an
+authority act, not bookkeeping — it either downgrades what the estate asserts about itself, or it
+leaves the state alone and merely hides the gap.
+
+**When the same badge is mirrored across many surfaces, neither repair is safe to do unilaterally.**
+One edit leaves an inconsistent estate; editing every surface is a federation-wide brand decision
+that sits above the repair lane. Present it as ONE binary — keep, or demote everywhere — together
+with the witness that contradicts it, and let the sovereign decide. This is distinct from the
+identifier case below: there, two contracts disagree and the estate can settle it itself; here the
+estate is not in doubt about the fact, only about who may change what it says.
+
 ## Identifier claims — slot numbers, ids, versions of record
 
 A roster table, an agent registry, or an identity map states *which* thing owns *which* identifier (a slot number, an agent id, a repo name, a version of record). These drift harder than status rows because identifiers get **renumbered**, and a renumber leaves every narrative copy of the old scheme reading as authority.
