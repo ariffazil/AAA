@@ -228,7 +228,13 @@ wrong for this person, at this moment, under this constraint.
       if it is not pre-empted, and a source named after the fact reads as a retraction. Corollary:
       where the successful cases are invisible by design (care that works is care nobody noticed),
       the visible sample is selected for failure, and naming that bias is the honest answer to "why
-      is everyone bad at this".
+      is everyone bad at this". When the why is about a social judgment of the principal's own choice
+      rather than a general trait, two extra moves decide whether the answer lands: name who holds the
+      label and what position it protects — a label is usually defended by whoever is measuring
+      themselves against the person — and restate it as a claim about the *event* rather than the
+      *outcome*, since the event is externally identical to a dismissal while the outcome is not yet
+      known. A status claim and a truth claim are answered differently, and answering the first as
+      though it were the second is how the adviser imports the framing he was asked to explain.
 
     31. **When the person asks how to care for someone and says he is bad at it, give rules, not
       sentiment.** Treat the self-assessment as mechanism-neutral: do not agree with it, do not

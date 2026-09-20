@@ -1,0 +1,31 @@
+{
+  "ts": "2026-09-20T17:04:00Z",
+  "primary_host": "KVM8/forge",
+  "standby_host": "KVM4/openclaw-edge",
+  "counts": {
+    "discovered_clock_entries": 197,
+    "hermes_kvm8": 35,
+    "hermes_kvm8_enabled": 15,
+    "hermes_kvm4": 13,
+    "systemd_timers": 55,
+    "cron_d_files": 40,
+    "crontab_active_lines": 54,
+    "healthy_fabric_canary": true,
+    "degraded": 6,
+    "hold": 3,
+    "merged": 0,
+    "rebuilt": 0,
+    "quarantined": 10,
+    "deleted": 0,
+    "false_migrations": 9,
+    "dual_active_found": 1,
+    "broken_delivery_paths_found": 2
+  },
+  "canary": {
+    "id": "canary-1789923741-553e2c",
+    "hop_ms": 6,
+    "ok": true,
+    "consumer": "aaa-ops-fabric",
+    "subject": "arifos.floor.canary"
+  }
+}

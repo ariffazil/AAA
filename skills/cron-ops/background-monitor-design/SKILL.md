@@ -125,6 +125,29 @@ Step 3 proves the alarm can fire. Step 4 proves it does not re-fire — a monito
 re-alerts the same item every tick gets muted by its reader, and a muted monitor is
 dead. Skip either step and you have an assertion, not a monitor.
 
+### Prove the RECEIVER, not just the sender
+
+A log line saying `alert published` proves the publisher ran. It proves nothing about
+whether anyone heard — and a log is exactly where a dead alert path hides, because it
+reads like success. **Enumerate the live subscribers on the exact channel before
+trusting the path**, then prove the lane end-to-end with a synthetic message.
+
+```bash
+# e.g. NATS: map subject -> connection. A subject no connection holds = a void.
+curl -s 'http://127.0.0.1:4222/connz?subs=1'   # or the transport's own subscriber census
+```
+
+Measured: a drift watchdog published `888_HOLD` on every drift for months, logging
+success each time. A subscriber census found **zero** listeners on that subject while a
+live consumer sat on a differently-named subject, 42k messages deep. The alarm was
+real on the wire and reached nobody. Repointing the subject and publishing one test
+envelope — then reading the *consumer's* log to see it arrive — turned it live.
+
+**Keep verdict semantics in the PAYLOAD, not in the channel name.** Encode what kind of
+alarm it is as fields inside the message (`type`, `schema`, `subject`). A channel whose
+meaning exists only in its name is a channel that gets renamed into silence, and any
+consumer has to reverse-engineer the type from the address.
+
 ## Failure taxonomy — do not collapse these
 
 | State | Means | Action |
@@ -150,6 +173,16 @@ that saying nothing is a valid, expected outcome rather than a failure.
 
 ## Pitfalls
 
+- **"Alert published" in the log is not delivery.** Prove the receiver: enumerate the
+  live subscribers on the exact channel and watch a synthetic message land in the
+  consumer's own log. A path with no subscriber reads as healthy forever.
+- **A `last_status=error` from an older run is not a current failure.** Compare the
+  monitor's `last_run_at` against the mtime of the artefact it guards; if the fix
+  landed after that run, the error is stale and clears at the next fire.
+- **Do not resolve an unacknowledged signal by silently re-baselining.** Preserve the
+  prior baseline as a receipt naming what was acknowledged and what was *not*
+  independently verified; then re-baseline. Erasing the signal is the failure the
+  monitor existed to prevent, and a gate that can only stay red stops being read.
 - **A timestamp anywhere in the gated output makes every tick look changed.** Strip
   clocks from the deterministic path; keep timing in a log, outside the gate.
 - **Do not point delivery at a shared channel by default.** Alerts about a standing

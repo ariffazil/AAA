@@ -27,6 +27,7 @@ autonomy_tier: T1
 | **DISABLED** | could withhold, is configured off | off in config, or behind a flag/env var nothing sets |
 | **BROKEN** | crashes or never executes | syntax error, missing module, unset shell variable, wrong path |
 | **REAL** | can and does withhold | a *recorded* block exists, with a timestamp |
+| **ENFORCED-BY-NOBODY** | can withhold, is never consulted | the control is real, the *platform* never asks for its verdict — its check is absent from the set that gates the protected branch |
 | **UNPROVEN** | no evidence either way | the default when you cannot show it |
 
 Default to **UNPROVEN**. `"nothing failed"` is not `"it works"` — a control that cannot fail produces no failure signal by construction, so its silence carries no information.
@@ -46,6 +47,52 @@ ls -l <output-artifact>; stat -c %y <log>   # 4. HAS IT EVER PRODUCED OUTPUT?
 - **#4** via mtime and its own output artifacts, never by running it. If the trigger file is written by the very probe you are running, its mtime is not liveness evidence — disclose that.
 - A scheduled audit that prints a critical verdict on every run while containing zero exit statements is the loudest theatre there is: maximum alarm signal, minimum consequence.
 - A guard whose refusal requires an opt-in `--strict`/`--enforce` flag that no caller passes is a brake nobody pulls.
+
+## The enforcement layer — who is required to consult it
+
+A control being *able* to withhold is only half the property. A second layer decides whether anyone must
+**ask**. Audit it separately, and never infer it from the workflow file that runs the control:
+
+```bash
+gh api repos/<owner>/<repo>/branches/<branch>/protection \
+  | jq '{required: .required_status_checks.contexts,
+         admins: .enforce_admins.enabled,
+         reviews: .required_pull_request_reviews}'
+gh api repos/<owner>/<repo>/rulesets                  # classic protection may be overlaid — check both
+gh api repos/<owner>/<repo>/rules/branches/<branch>
+```
+
+- **The label is not the enforcement.** A CI job whose title carries words like *mandatory*, *required*,
+  *WAJIB*, *hard gate*, *gate* is a **name**. If its check context is absent from
+  `required_status_checks.contexts`, a failing run blocks nothing and the branch accepts a change with
+  that defect still in it. Put the two facts side by side and let the gap be the finding.
+- `strict: false` means the branch need not even be up to date; `enforce_admins: false` means the rule
+  does not bind the accounts that actually push. Both belong in the same sentence as the verdict, not
+  in footnotes.
+- **Aesthetically-plausible stacks hide this well:** the workflow renders a clean pass/fail table, the
+  run history says FAILURE in red, and the merge lands anyway. Verify against the branch you would
+  actually have to satisfy — not a contributor PR's check list, which can differ from the tip's.
+
+## Label vs. effect, measured in one run
+
+For any control that prints a refusal word, capture **the label count and the action's outcome in the
+same invocation**:
+
+- A control that prints "would block" N times and then exits 0 while the commit / merge / deploy
+  proceeds has measured its own theatre. Get both numbers: N as printed, and the observable that
+  landed anyway. Also read the summary line the control writes for itself — a line saying *nothing was
+  blocked* next to N refusal labels is the finding, stated by the control.
+- **Count the context cost as well.** A guard that emits hundreds of KB per invocation is paid for on
+  every call, by every agent and every human who reads the transcript. Report kilobytes-per-invocation
+  beside the verdict; an expensive control that cannot withhold buys nothing.
+- **A permanently-red gate is functionally DISABLED.** When a gate's failures are dominated by false
+  positives — a test fixture that looks like a credential, a placeholder that looks like a key — its
+  red stops carrying information and reviewers learn to ignore it. That is a different finding from
+  "the gate is broken": classify it as *cannot tell the sample apart from the real thing*, and note
+  that fixing the **detector** restores the signal while suppressing the **fixture** destroys evidence.
+- Read a red gate in **its own log**. Fetch the failed job's output and quote the lines it actually
+  flagged before naming a cause; a job that pools several unrelated scopes into one pass/fail verdict
+  must be reported as such, because its single red cannot say which scope failed.
 
 ## 3. The DEAD END test — the finding that wastes agent work
 
@@ -88,6 +135,11 @@ Any figure in a doctrine or report that is load-bearing for its argument:
 - Every count is **measured in this session**. Never relay a figure from a document as though it were your measurement, and never derive a count by arithmetic on numbers you did not measure.
 - Reading a diagnostic file and agreeing with it is **not** evidence. Independently verify or refute its key claims; state which you confirmed and which you could not.
 - Report **UNDETERMINED** where you cannot prove. A stated gap is a result; a smuggled assumption is a defect.
+- **A predecessor's stated cause is a claim, not a measurement.** A defect narrative inherited between
+  sessions ("the failure is X") sits at the same evidentiary level as any other report. Re-measure the
+  named mechanism before building on it, and when it does not hold, retract it **in the artifact that
+  carries it** — a correction left in chat gets re-cited by the next reader. A named cause is not a
+  measured one.
 - Read every hit **in its enclosing scope** before counting it. A grep hit inside a dated log, inside a negated sentence (`"cite it, never write it"` read as a write target), in a placeholder, or in an unrelated tree is a false positive and will inflate the headline. Correct your own detector before publishing its number — and publish both numbers.
 - **Expect the honest split.** Controls that genuinely hold must be listed as REAL. Do not manufacture a scandal, and do not let the headline outrun the measurement.
 
@@ -106,6 +158,15 @@ Any figure in a doctrine or report that is load-bearing for its argument:
 - **Two brakes is not redundancy.** A second implementation of one control is two half-brakes, not a backup — they drift apart. If the federation has a single-owner rule for controls, cite it.
 - **Kinship is not equivalence.** Two incidents sharing a shape (agents attacking unassigned targets; a deliberately-trained model cheating) are not one story. Collapsing them into one narrative is the same defect as an unmeasured number, and it is the most common move in an external summary.
 - **A control that measures a proxy.** Constraint descriptions can be over-generalised: a word-list brake applied to internal, technical or machine-facing text constrains output the doctrine never scoped it to. Check the tool's own audience/mode switch — if both modes behave identically for the gate in question, say so.
+- **RETRACTED ≠ GONE.** An approach retracted from the mainline can survive whole and mergeable on a
+  published branch. Before writing "none of it remains", sweep the remote refs
+  (`git ls-remote --heads origin`) for the retracted artifact and diff it against the mainline copy.
+  A retraction is a statement about one ref, not about the repository — and if that branch is ever
+  merged for its other content, the retracted artifact rides along.
+- **A green headline is checked against the tip's check conclusions, not its commit message.** "Main is
+  green" is a claim about a specific SHA: enumerate that SHA's runs and name the ones that are not
+  success. A skipped or `action_required` run is not a pass, and one permanently-red check turns the
+  headline into an overstatement.
 - **Do not fix what you audit.** Repairing mid-audit destroys the evidence and puts the auditor in the executor's seat. Report; the repair is a separate authorized act.
 
 ## 9. Running a batch audit across many surfaces
