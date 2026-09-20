@@ -109,7 +109,7 @@ behind `enabled: false`:
 | `state` | `paused_reason` | Meaning |
 |---|---|---|
 | `migrated` | `MIGRATED to <host> ... do not re-enable here (double-fire risk)` | Live on another host. **Never resume here.** |
-| `migrated-system-cron` | `converted to /etc/cron.d/<file>` | Now a raw crontab entry. Re-enabling double-fires it. |
+| `migrated-system-cron` | `converted to /etc/cron.d/<file>` | **Claimed** to be a raw crontab entry. The file is named but never checked — verify it (Step 2c). Re-enabling double-fires it *if the claim is true*. |
 | `paused` | empty | A deliberate stop. Ask before touching. |
 
 A job may be resumed on the source host only once the target provably no longer schedules it.
@@ -136,6 +136,50 @@ scheduler is the common shape. Report the jobs as **orphaned**, not migrated.
 Do not resolve an orphan by quietly enabling it on the source host: a migration that never
 completed also means the delivery ledger and the tool dependencies never moved. Name the finding
 and let the owner choose the home.
+
+## Step 2c — `converted to /etc/cron.d/<file>` is a claim, and one `ls` falsifies it
+
+Step 2b verifies the peer host for `state: migrated`. Its sibling travels unchecked: a job parked
+with `converted to /etc/cron.d/<file>` **names a file nobody ever opens**. Measured on one host:
+**13 jobs** carried that reason and the named prefix matched nothing — not in `/etc/cron.d/`, not in
+`/etc/crontab`, not in any crontab, not on the peer host, and not even as a surviving script under
+any of its likely names. The jobs had been dead 17 days while the book described them as migrated.
+The same host carried `/etc/cron.d/.hermes-cron-ban-<date>/`, a directory of `.disabled` units
+showing that the cron.d approach had since been **banned** — so every one of the 13 cited a
+substrate that was not merely empty but retired. Three of them delivered to a person.
+
+```bash
+# every job claiming a cron.d home, then whether that home exists
+python3 - <<'PY'
+import json
+p = '/root/.hermes/cron/jobs.json'
+d = json.load(open(p))
+for j in (d['jobs'] if isinstance(d, dict) else d):
+    r = str(j.get('paused_reason') or '')
+    if 'cron.d' in r or 'converted' in r:
+        print(f"{j.get('id')}  {str(j.get('name'))[:40]:40}  {r[:60]}")
+PY
+ls -la /etc/cron.d/ | grep -i '<named-prefix>'
+grep -rln '<named-prefix>' /etc/cron.d/ /etc/crontab /var/spool/cron/ 2>/dev/null
+find / -name '*<job-slug>*' -not -path '*/proc/*' 2>/dev/null | head   # the script must exist too
+```
+
+A `paused_reason` is metadata written by whoever parked the job, in the same act of parking it. It
+is **not** a statement about the target, and nothing in the toolchain re-checks it. Note the
+asymmetry that hides the fault: `state: migrated` names a peer you can SSH to, so Step 2b was
+written for it; `converted to <file>` names a path you can `ls` in one command, and because that is
+so cheap nobody does it.
+
+**A ban directory is the strongest signal in the sweep.** Finding `/etc/cron.d/.hermes-cron-ban-<date>/`
+means an operator deliberately retired that substrate *after* the jobs were parked there — so every
+job still citing it as its new home is orphaned by construction, not migrated. Report them as
+**orphaned — target substrate retired**, name the count and the human-facing ones, and do not offer
+to resume them on the source host: they were parked for a reason that predates the ban, and the
+reasons for both decisions live with their owners.
+
+**Do not quietly re-create them either.** Re-creating a job whose script no longer exists on disk
+produces a fresh registry entry that fails on first fire — a second silent outage with a green
+book. Confirm the payload exists before proposing a home.
 
 ## Step 3 — Check the owner host is supervised
 
@@ -632,6 +676,11 @@ inside a 24h window — a migrated expression is rarely re-validated by whoever 
   scheduler.
 - **A missing job is not a paused job.** An absent registry entry (Step 3d) needs a re-create, and
   re-creating it is a trigger to also confirm the script it calls still works on its hot path.
+- **A `paused_reason` is a claim, and nothing in the toolchain re-checks it.** `converted to <file>`
+  is falsifiable with one `ls`; a prefix matching nothing means the work has been dead since the
+  migration, wearing a migration's immunity from audit (Step 2c). Read the reason, **then verify the
+  target**, for every `enabled: false` job you have decided not to touch — the ones you leave alone
+  are exactly the ones no later pass will examine.
 - **A job that has never had a single execution row is not necessarily new** — it may have been
   dropped and restored. Check `executions.db` row count for the job id, not just `created_at`.
 - **A fresh heartbeat file does not mean the jobs are healthy** — it means the ticker runs. A

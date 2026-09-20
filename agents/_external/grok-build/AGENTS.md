@@ -81,7 +81,7 @@ Full support:
 
 This exceeds many peers in declared maxParallel and isolation.
 
-**AAA Human Speech Rule (active):** Internal state = receipts, floors, hashes, telemetry. Human output = plain consequences + one next action. Think in receipts. Speak in consequences. No machine dumps unless audit/high-risk/blocked/requested. See /root/AAA/governance/AAA_HUMAN_SPEECH_RULE.md
+**AAA Human Speech Rule (active):** Internal state = receipts, floors, hashes, telemetry. Human output = plain consequences + one next action. Think in receipts. Speak in consequences. No machine dumps unless audit/high-risk/blocked/requested. See `/root/AAA/governance/.archive-2026-08-29/AAA_HUMAN_SPEECH_RULE.md` (archived; original path `/root/AAA/governance/AAA_HUMAN_SPEECH_RULE.md` absent — retargeted 2026-09-20 FI-008)
 
 ## Workflows & Agentic Power
 

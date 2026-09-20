@@ -108,6 +108,29 @@ is a transition lie.
 - **Probe coverage decays.** Another agent can re-point the binary, add a PATH entry ahead of the
   shim, or move the credential. Stamp the probe with a timestamp and re-run it before publishing a
   sealed verdict.
+- **A workflow that runs is not a control that binds.** A CI gate is enforced only if it appears in
+  the branch's required status checks:
+  ```bash
+  gh api repos/<owner>/<repo>/branches/<branch>/protection --jq '.required_status_checks.contexts'
+  ```
+  A check whose name says mandatory but which is absent from that list is *advisory red*: pushes
+  land anyway, and the red X reads as enforcement to everyone who never opened the list. Check the
+  list before describing any CI gate as binding.
+- **A gate whose reporter crashes fails blind.** When a check fails, confirm it printed the
+  *offending item*, not merely a count. A diagnostic path that throws on its own input emits
+  `❌ N finding(s)` followed by nothing — unreadable, and indistinguishable from a gate that found
+  nothing real. Re-run the checker locally against the checkout and read the findings list before
+  relaying its verdict. Concrete instance: `sorted(pairs)` where each pair is
+  `(filename, dict)` raises `TypeError: '<' not supported between instances of 'dict' and 'dict'`
+  as soon as one file has two findings; sort with an explicit key
+  (`key=lambda x: (x[0], x[1].get("line_number", 0))`). The lesson generalises: any sort over
+  tuples holding a mapping crashes on the duplicate-prefix case, which is exactly the case a
+  reporter must handle.
+- **One check, two code paths, two scopes.** A check that branches on environment (inside a git
+  working tree vs not, CI vs local, repo present vs absent) must carry an identical exclusion and
+  scope list in every branch. Divergent lists yield contradictory verdicts on the same tree — the
+  same run PASSes outside the repo and FAILs inside it. Diff the branches' exclude lists before
+  trusting either verdict, and never widen one branch's scope to clear a red on the other.
 
 ## What the probe licenses
 
