@@ -1,15 +1,9 @@
 # OPENCLAW
 
-**Compressed:** Observable Agency That Touches
-**Question:** How?
-**Function:** Execution — reality mutation through governed action
-**Witness status:** WITNESSED on KVM4 — 5 agents, 20+ models, 12 MCP
-**Constitutional binding:** A-FORGE execution surface
+<!-- IKAT 2026-09-20 F13 — Arif: "ok ikat la" -->
 
-Claw is not brain. Not eye. Not heart. Claw is the thing that touches reality.
-Open means observable. Auditable. Not hidden.
+**OpenClaw = KVM4 `openclaw-gateway` + Telegram `@AGI_ASI_bot`. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.**
 
-ARIF discovers. HERMES translates. OPENCLAW grips reality.
+Not execution. Not A-FORGE. Not watchman of the federation. Not constitutional operator.
 
-**Obligation:** When "OpenClaw" is spoken, the system activates execution mode —
-making truth leave a mark on the world through governed action.
+When "OpenClaw" is spoken, resolve to the KVM4 process and `@AGI_ASI_bot`. Nothing else.

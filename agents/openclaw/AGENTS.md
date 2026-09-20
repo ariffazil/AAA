@@ -6,6 +6,8 @@
 > **SOT:** 2026-09-18 | **seal_seq:** SEAL-8a8e064d1fe34443
 > This file is a pointer, not a constitution. Load /root/AGENTS.md for full doctrine.
 
+**IKAT 2026-09-20 F13:** OpenClaw = KVM4 `openclaw-gateway` + Telegram `@AGI_ASI_bot`. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.
+
 OpenClaw runtime overlay.
 
 - **Edge node:** KVM4 (workshop, 100.64.0.5) — gateway `:18789` (live since 2026-09-04 13:37 MYT per MACHINE_MAP §1)
@@ -20,7 +22,7 @@ OpenClaw runtime overlay.
 - **AAA agent card (canonical):** `/root/AAA/agent-cards/functions/openclaw/agent-card.json` (schemaVersion 2.3.0)
 - **A2A federation card:** `/root/AAA/a2a-server/agent-cards/federation/openclaw.json` (protocolVersion 1.2)
 - **Identity doc:** `/root/AAA/agents/openclaw/IDENTITY.md` — kernel-aligned T1 (capabilities OBSERVE · REASON · ROUTE · MEMORY, FI-017, bound_to arif-fazil/F13); drift resolution table embedded at §Authority. OpenClaw cannot directly invoke forge_shell/forge_evaluate/forge_execute — must route through A-FORGE :7072 with lease + authority envelope.
-- **F13 ratification status:** T1 alignment landed 2026-09-18 across all 4 legacy sources (organs.yaml DISPLAY_ONLY → T1; functions/ and agents/openclaw/ cards ROUTE_BRIDGE → T1; IDENTITY.md GATEWAY → T1). Sealed declaration at `/root/AAA/governance/OPENCLAW_AUTHORITY_RECONCILIATION_2026-09-18.md` (F13_PENDING). Carry_forward entry `e-openclaw-f13-pending-20260918` awaiting sovereign ratification. See `OPENCLAW_AUTHORITY_RECONCILIATION_2026-09-18.md` for full alignment table.
+- **F13 ikat 2026-09-20:** sovereign "ok ikat la". Extra meanings (encoder, overseer, execution, HARNESS T2) are RETIRED as live authority. Kernel row FI-017 T1 is SOT.
 
 If this file disagrees with `/root/AGENTS.md`, the kernel wins. Fix this file.
 

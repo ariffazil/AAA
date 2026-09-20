@@ -180,7 +180,7 @@ components:
     forbidden_domains:
       - constitutional_judgment
       - engineering_execution
-      - human_face  # Hermes owns the human face — OpenClaw is agent-facing
+      - human_face_primary  # Hermes @ASI_arifos_bot is the primary human face. OpenClaw is a Telegram GUEST (@AGI_ASI_bot), not the encoder in front of Hermes.
       - cognitive_research
       - memory_curation  # arifOS memory tiers are canonical
       - skills_library  # Hermes skills are canonical
@@ -196,12 +196,11 @@ components:
       - geox / wealth / well  # domain evidence organs
     partner_organ: hermes  # Hermes is human-facing; OpenClaw is agent-facing
     notes:
-      - Agent-facing mesh router. NOT human-facing (Hermes owns Telegram/CLI/cron).
-      - DISPLAY_ONLY ceiling — can never mutate federation state directly.
-      - Owns WhatsApp/Signal/iMessage/macOS/iOS/Android channels (Hermes owns Telegram).
-      - Cross-channel session continuity via session_id propagation.
-      - Escalation gate: routes F13 holds to Hermes for Arif review.
-      - "Hermes is the face. OpenClaw is the spine. OpenCode is the hands. arifOS is the law. Arif is the sovereign."
+      - IKAT 2026-09-20 F13: OpenClaw = KVM4 openclaw-gateway + Telegram @AGI_ASI_bot. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.
+      - Telegram guest in AAA. Hermes @ASI_arifos_bot is the primary human face.
+      - T1 ceiling — OBSERVE/REASON/ROUTE/MEMORY. Cannot mutate federation state directly.
+      - Does not own WhatsApp/Signal/iMessage as live runtime (those channels are declared, not the Telegram path).
+      - Escalation: F13 holds go to Arif; do not self-judge.
 
   - id: geox
     class: CORE
