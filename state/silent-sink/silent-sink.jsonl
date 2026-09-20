@@ -1,0 +1,3 @@
+{"ts": "2026-09-20T17:59:45Z", "lane": "hermes-asi", "reason": "NONE_OF_THE_ABOVE", "note": "surfaced nothing to the room this cycle", "ref": ""}
+{"ts": "2026-09-20T17:59:45Z", "lane": "openclaw", "reason": "NONE_OF_THE_ABOVE", "note": "cross-host receipt verified, nothing to raise", "ref": ""}
+{"ts": "2026-09-20T17:59:45Z", "lane": "hermes-asi", "reason": "MATERIAL_CHANGE", "note": "ZAI key is identical on KVM8/KVM4/KVM2 (fp cd26e7fd0ff5) — rotation on one host does not revoke it", "ref": "trc-secret-blastradius-20260921"}

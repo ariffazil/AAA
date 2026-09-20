@@ -213,6 +213,72 @@ are witnesses, not authorities. Here that re-derivation
 (c) found one reviewer grade (L05) that was itself a stale carry-forward the compiler
 had smuggled in.
 
+### Rule 3g — Removing a blob means removing EVERY path to it (NEW 2026-09-21)
+
+`git filter-repo --invert-paths` removes *paths*, never objects. A blob dies only
+when **every** historical path that reaches it dies. Two traps, both hit in one
+operation:
+
+- **`git ls-tree -r <ref>` sees only the tip tree.** A path deleted at the tip but
+  alive in history is invisible to it — and the object stays in the pack.
+- **`git rev-list --objects` prints ONE path per object.** It cannot enumerate them.
+  Using it to answer "which branch holds this blob" gives a confident wrong answer.
+
+Enumerate with a raw log walk, then re-measure after the run:
+
+```bash
+git log --all --raw --no-abbrev --format=format: \
+  | awk '$1 ~ /^:/ {print $3"\t"$NF}' | sort -u > /tmp/blob-paths.txt
+# then, after filter-repo: re-list EVERY blob >N MB and confirm it is gone
+```
+
+**A filter-repo run that exits 0 and says "Completely finished" is not a
+verification.** In this operation the same 21.7 MB blob survived the first pass and
+needed a second, because it was reachable from two paths the first pass did not name.
+
+### Rule 3h — `reflog expire --all` + `gc --prune=now` destroys STASHES (NEW 2026-09-21)
+
+The stash stack lives in `.git/logs/refs/stash`. Expiring the reflog erases it.
+Paired with `gc --prune=now` the objects are then unreachable and pruned.
+
+**Never run that pair on a repo that has stashes** without first exporting them:
+
+```bash
+git stash list                                 # count them FIRST
+git stash show -p refs/stash > stash.patch     # per entry
+git show refs/stash^3 -p > stash-untracked.patch
+git show refs/stash^3:path/to/file > file      # untracked payload, verbatim
+```
+
+Recovery if already done: the pre-rewrite bundle still holds the ref
+(`git fetch <bundle> refs/stash:refs/stash`), **but restoring the ref re-imports its
+whole pre-rewrite ancestry** — on this repo `.git` jumped 128 M → 440 M. Extract the
+*content* (patches + files), then drop the ref and gc again.
+
+### Rule 3i — a protected branch is a gate, not a wall; record the toggle (NEW 2026-09-21)
+
+Force-pushing a protected branch needs `allow_force_pushes` temporarily enabled. Do it
+in four recorded steps, never blind:
+
+1. `gh api repos/<o>/<r>/branches/<b>/protection > protection-BEFORE.json` (sha256 it)
+2. PUT a body that changes **only** `allow_force_pushes`
+3. force-push with `--force-with-lease=<ref>:<expected-old-sha>`
+4. PUT the original back and **re-read it**, comparing field-by-field, not by eye
+
+Toggling repo settings is a canonical/external-surface act — do it only under an
+explicit order, and leave both JSONs on disk as the receipt.
+
+### Rule 3j — "cannot push" and "diverged" are different findings (NEW 2026-09-21)
+
+A branch can be **ahead and behind at once** (`--left-right --count origin/main...HEAD`
+→ `12  116`). A plan built on "delete the branch, the blobs are branch-only" is
+premised on a measurement that was never taken; here one of the two blobs was in
+**main's** history, so the tidy plan would have freed 147 MB of a promised 220 MB and
+left main's clone size untouched.
+
+**Probe each blob's ref-reachability before proposing a deletion.** Blob size is not
+where-ness.
+
 ## Workflow (canonical)
 
 ```

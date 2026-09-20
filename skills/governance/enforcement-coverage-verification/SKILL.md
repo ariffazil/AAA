@@ -41,7 +41,7 @@ exists to catch.
 
 | Property | Question | Probe |
 |---|---|---|
-| **Correct when called** | does it deny when invoked? | call the gate directly — exactly what its own suite tests |
+| **Correct when called** | does it deny when invoked, with well-formed input? | call the gate directly with real parameter names taken from its own schema — a malformed call tests the schema, not the boundary |
 | **On every path** | can a caller reach the protected thing without it? | run the intercepted command normally; `type -a <cmd>`; `readlink -f` every hit; check PATH shims, aliases, shell rc files; grep who calls the underlying binary |
 | **Physically enforced** | can the actor acquire the capability regardless? | inspect the credential itself — owner, mode, and whether the caller already shares that identity |
 
@@ -108,6 +108,54 @@ is a transition lie.
 - **Probe coverage decays.** Another agent can re-point the binary, add a PATH entry ahead of the
   shim, or move the credential. Stamp the probe with a timestamp and re-run it before publishing a
   sealed verdict.
+- **A workflow that runs is not a control that binds.** A CI gate is enforced only if it appears in
+  the branch's required status checks:
+  ```bash
+  gh api repos/<owner>/<repo>/branches/<branch>/protection --jq '.required_status_checks.contexts'
+  ```
+  A check whose name says mandatory but which is absent from that list is *advisory red*: pushes
+  land anyway, and the red X reads as enforcement to everyone who never opened the list. Check the
+  list before describing any CI gate as binding.
+- **A gate whose reporter crashes fails blind.** When a check fails, confirm it printed the
+  *offending item*, not merely a count. A diagnostic path that throws on its own input emits
+  `❌ N finding(s)` followed by nothing — unreadable, and indistinguishable from a gate that found
+  nothing real. Re-run the checker locally against the checkout and read the findings list before
+  relaying its verdict. Concrete instance: `sorted(pairs)` where each pair is
+  `(filename, dict)` raises `TypeError: '<' not supported between instances of 'dict' and 'dict'`
+  as soon as one file has two findings; sort with an explicit key
+  (`key=lambda x: (x[0], x[1].get("line_number", 0))`). The lesson generalises: any sort over
+  tuples holding a mapping crashes on the duplicate-prefix case, which is exactly the case a
+  reporter must handle.
+- **One check, two code paths, two scopes.** A check that branches on environment (inside a git
+  working tree vs not, CI vs local, repo present vs absent) must carry an identical exclusion and
+  scope list in every branch. Divergent lists yield contradictory verdicts on the same tree — the
+  same run PASSes outside the repo and FAILs inside it. Diff the branches' exclude lists before
+  trusting either verdict, and never widen one branch's scope to clear a red on the other.
+
+- **A denial from a malformed payload is not evidence the gate holds.** An empty or wrong-shaped
+  argument set fails *schema validation*, and schema validation returns the same terse refusal an
+  authority gate does. A boundary "tested" that way has not been asked the question. Pull the real
+  parameter names from the control's own schema first, send well-formed input, then read *what the
+  refusal cites*: a named floor, an unverified identity, a missing session, an authority class, a
+  required human witness — that is a boundary verdict. A validation error is not a verdict at all,
+  and reporting it as "the gate blocked it" credits the boundary with work the schema did.
+- **Prove the gate discriminates, not merely that it denies.** A gate that refuses everything passes
+  *did it deny?* while being indistinguishable from a broken one. Run a counterfactual control: the
+  legitimate operation the gate is supposed to permit must actually succeed on the same surface, in
+  the same session, before you call the denial enforcement. Denial alone is half a test — without
+  the allow case you cannot separate enforcement from outage, and you will not notice the day the
+  gate starts refusing its intended callers.
+- **Read the refusal's numbers, not the operator printed beside them.** Generated justification text
+  is formatted by the same code path that produced the decision and can invert it — a failed
+  threshold rendered with a satisfied-looking operator (`score: 0.960 >= 0.99` against a 0.99 floor).
+  Re-derive each cited comparison yourself before reporting the gate as having passed or failed a
+  specific floor; a floor that failed is what makes the gate credible, so misreading it as a pass
+  both flatters the control and hides a real finding.
+- **Name the layer that actually refused.** When a stack has several gates, the refusal you received
+  may come from an outer floor rather than the one under audit — and a control that appears to deny
+  may simply be downstream of a different control that denied first. Read the full reason list and
+  attribute the denial to the specific floor that fired, then report the others as *also satisfied*
+  or *not reached*, never as one merged score.
 
 ## What the probe licenses
 

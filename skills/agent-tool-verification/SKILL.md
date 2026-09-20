@@ -83,6 +83,21 @@ def stub_sweep(mod, cases: dict):
   count you did not take cannot be corrected later.
 - **Widen the sweep past the tools you care about.** The stub you were not looking for is the one
   that has been silently answering questions for weeks.
+- **A refusal is not evidence of the gate you assume.** When probing a security or authority gate, a
+  schema rejection and a gate rejection both surface as a refusal, and a refusal obtained with
+  guessed arguments proves only that the arguments were wrong. Read the real parameter names from
+  the tool's published schema first, send a well-formed payload, and only then count the refusal —
+  otherwise "the gate holds" is a claim you never tested. Measured: two unauthenticated calls to a
+  mutation verb returned HOLD and read as an authority gate; re-run with schema-correct arguments the
+  block came from entirely different layers (an unbound session, a missing human witness), and a
+  control call showed **every** verb HOLDs for an unverified actor. The gate was real — it just was
+  not the one first reported, and the control that exposed it cost one extra call.
+- **Read the reason chain, not the verdict word.** A gate that lists its reasons can refuse for a
+  different blocker than the one its headline implies. Worse, a reason string can render a failed
+  floor as if it passed: an inequality printed as `<measured> >= <threshold>` with the measured value
+  *below* the threshold reads as satisfied to anyone skimming. Compare the numbers yourself — never
+  let formatting decide whether a check passed, and never quote a reason string as proof of the
+  check it names.
 
 ---
 

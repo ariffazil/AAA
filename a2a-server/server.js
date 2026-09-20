@@ -5730,7 +5730,9 @@ async function initAsyncBackbone() {
     });
 
     const subVerdicts = natsConnection.subscribe('arifos.verdicts');
-    const subBreaches = natsConnection.subscribe('arifos.floor_breach');
+    const subBreaches = natsConnection.subscribe('arifos.floor.>');
+    // legacy underscore subject — keep until publishers drain
+    const subBreachesLegacy = natsConnection.subscribe('arifos.floor_breach');
 
     (async () => {
       for await (const msg of subVerdicts) {
@@ -5740,7 +5742,23 @@ async function initAsyncBackbone() {
 
     (async () => {
       for await (const msg of subBreaches) {
-        console.log('[nats] arifos.floor_breach:', sc.decode(msg.data));
+        const text = sc.decode(msg.data);
+        console.log('[nats] arifos.floor.>:', text);
+        try {
+          const parsed = JSON.parse(text);
+          await queueTask(
+            parsed.id || `floor-${Date.now()}`,
+            parsed,
+            parsed.reason || msg.subject
+          );
+        } catch (e) {
+          console.warn('[nats] floor event not queued:', e.message);
+        }
+      }
+    })();
+    (async () => {
+      for await (const msg of subBreachesLegacy) {
+        console.log('[nats] arifos.floor_breach (legacy):', sc.decode(msg.data));
       }
     })();
 

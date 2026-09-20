@@ -6,6 +6,10 @@
 # CONSUMERS: /run/arifos inventory clerk (unowned_count) should read this file;
 #             `now` pane, entropy sweeps, and incident triage reference it.
 # LAW: OS-BASE = Ubuntu platform, NOT federation entropy — never audit as organ drift.
+# AMENDED: 2026-09-21 stabilize (Hermes) — registered 9 running-but-unregistered units:
+#             aaa-ops-bus-worker, chron-mcp, mailgw-broker, apa-telegram-bridge, minimax-relay,
+#             minimax-media-mcp, graphiti-mcp, ollama, hermesarifos-bot. Clears reality.json
+#             duplicates[0] = {kind: unowned-running, units: [hermesarifos-bot.service]}.
 # AMENDED: 2026-09-18 stabilize — registered hermes-asi-gateway, hermes-rasa-mcp, hermes-voice-governor,
 #             ack-consumer, session-federation, mcp-media-ingest, forge-bot, aaa-mcp, qwen-serve,
 #             mcp-claim-ledger, mcp-doc-tables, mcp-filings, mcp-numeric-audit, frame-mcp, falkordb
@@ -89,6 +93,9 @@ federation_services:
   - unit: forge-bot.service
     role: FORGE Bot — Telegram gateway 3 (@arifOS_bot -> A-FORGE)
     repo: /opt/forge-bot
+  - unit: apa-telegram-bridge.service
+    role: APA Telegram Bridge — F13 Veto Surface (A-FORGE forge_telegram)
+    repo: /root/A-FORGE/bridges
   AAA:
   - unit: federation-gateway.service
     role: Federation Gateway — cross-organ routing surface
@@ -117,6 +124,15 @@ federation_services:
   - unit: mcp-numeric-audit.service
     role: Numeric Audit MCP — deterministic recomputation and scope audit of brief numbers
     repo: /root/AAA/mcp
+  - unit: aaa-ops-bus-worker.service
+    role: AAA ops fabric — durable JetStream worker + canary
+    repo: /root/scripts
+  - unit: chron-mcp.service
+    role: CHRON Temporal Intelligence Organ — FastMCP server
+    repo: /root/chron
+  - unit: mailgw-broker.service
+    role: arifOS token-custody broker — sanctioned Google Workspace read path
+    repo: /opt/mailgw
   GEOX:
   - unit: geox-mcp.service
     role: GEOX MCP Server — Earth Intelligence MCP Surface (FHS Promoted)
@@ -159,6 +175,12 @@ federation_services:
   - unit: fed-router.service
     role: FED — Federation Router (MCP Server :7074)
     repo: /root/FED
+  - unit: minimax-relay.service
+    role: MiniMax Direct Relay (FED gateway :4011 to api.minimax.io)
+    repo: /root/A-FORGE
+  - unit: minimax-media-mcp.service
+    role: MiniMax Media MCP — TTS/video/image/voice/music (:18092)
+    repo: /opt/minimax-mcp-media
   FRAME:
   - unit: frame-organ.service
     role: FRAME Organ — Federation Reference & Assessment Measurement Engine
@@ -223,6 +245,12 @@ federation_services:
   - unit: redis-server.service
     role: Advanced key-value store
     repo: local data plane
+  - unit: graphiti-mcp.service
+    role: Graphiti MCP knowledge graph (docker, ILMU-native, :18412)
+    repo: /etc/graphiti
+  - unit: ollama.service
+    role: Local inference runtime (:11434) — serves graphiti LLM/embeddings
+    repo: /usr/local/bin
   OS-BASE:
   - unit: atd.service
     role: Deferred execution scheduler
@@ -327,6 +355,9 @@ federation_services:
   - unit: mcp-media-ingest.service
     role: Media Ingest MCP — governed multi-lane media/link ingestion
     repo: /root/.hermes/mcp
+  - unit: hermesarifos-bot.service
+    role: Hermes Archive Bot — Telegram gateway 4 (@hermesarifos_bot)
+    repo: /opt/hermesarifos-bot
 docker_containers:
 - name: searxng
   image: searxng/searxng:latest

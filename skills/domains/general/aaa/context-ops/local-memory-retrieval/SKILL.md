@@ -212,7 +212,7 @@ Adjudicating is not applying. Work the stages until every proposal has a verdict
 8. **Witness the result.** Read back and grep every fact the adjudication claims it preserved; the
    claims are about an artifact that did not exist when you wrote them.
 
-Six rules that hold for every queue:
+Seven rules that hold for every queue:
 
 - **Never adopt a fact the same session falsified.** If a proposal prescribes a mechanism that was
   disproved by reading the source earlier in the session, applying it re-injects a superstition and
@@ -229,6 +229,14 @@ Six rules that hold for every queue:
 - **Report the trade, not just the result.** "Applied 9 operations" hides the two facts dropped to
   fit. State what left, and why.
 - **The queue's summary lines are intent, not evidence.** Read the payload.
+- **A queue that keeps regenerating is a missing-terminal-state problem, not a backlog.** Records
+  carrying no status field have no floor — nothing records that a proposal was already decided, so
+  the same one is re-proposed every generation. And a recursive loader still sees records moved into
+  a `processed-<date>/` archive, so an earlier cleanup can leave the count untouched. Count
+  alternative anchors, not records, and check the loader's glob mode before believing a cleanup
+  reduced anything. Triage steps and the measured numbers: `references/pending-queue-adjudication.md`.
+- **Re-probe the queue's claims about live state.** A proposal asserting a subsystem is broken may
+  sit beside a live reading that contradicts it; applying it installs a retracted fact permanently.
 
 ## Support Files
 

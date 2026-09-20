@@ -80,6 +80,30 @@ identity binding is refused by the authorization gate, and the payload it return
 - An **unmeasured** field is neither pass nor fail. Never report it as either.
 - Re-probe with authority before reporting a failed control.
 
+### 3b. Read WHY it refused — a malformed request is not an authority denial
+
+Both come back as a refusal, and from the outside they look identical. A call rejected for a *schema*
+reason — wrong parameter name, missing required argument, wrong type — has said nothing about the
+caller's authority; it says the **probe** was malformed. Reporting that as enforcement is a false pass
+for the gate you set out to test, because the boundary was never actually exercised.
+
+Split them before drawing any conclusion:
+
+1. Read the refusal's own text. A validation error names the offending field and the expected type; an
+   authority denial names the actor, the missing grant, or the floor that failed.
+2. Fetch the target's real parameter schema (`tools/list`) and re-issue with **well-formed** arguments.
+   Never probe a protected verb with an empty `{}` and call the result a gate test.
+3. Only a refusal returned to a *well-formed* request is evidence about the gate.
+
+Measured: two calls to a seal verb returned `HOLD` when sent with empty arguments — evidence of
+nothing, since a schema rejection would have produced the same `HOLD` string. Re-issued with correct
+parameter names, the refusal turned substantive: a named authority class, an unverified actor, and the
+specific floors that failed. The gate held both times; only the second reading could say so.
+
+Carry the distinction into the finding — `REFUSED_BY_AUTHORITY` versus `REFUSED_BY_REQUEST_SHAPE` —
+because only the first is a security property. A probe that reported the schema case as enforcement
+would have certified a gate it never touched.
+
 ### 4. Attribute the channel before the fault
 
 A config entry is a **permission, not a caller**. Read the entry's target before blaming it.
@@ -153,6 +177,29 @@ Close with what the probe actually established:
   minute, different result = non-determinism in the gate. Report it as the finding.
 - **Don't resolve an open question to close a thread.** State the mechanism you proved; mark the
   rest unresolved.
+
+- **A delta between two readings taken in different warm states is an artifact of the state
+  difference.** A cold first call returns an empty or truncated body; a warm one returns the full
+  payload. Anything that replays a stored baseline against a first-call reading will report a change
+  that never happened — repeatedly and with confidence. Before reporting drift, take several
+  consecutive readings and compare like-with-like: if the warm readings are byte-identical, the
+  flagged delta is measurement, not change. Suspect this whenever a change is reported at a regular
+  interval by an automated prober that runs on its own schedule.
+- **A file on disk is not a file being served.** Confirm the published path, not the authored copy.
+  An artifact present under an authoring directory returned 404 on every candidate URL because that
+  directory was never wired into the reverse proxy — so a finding of "the published copy is stale"
+  was itself false: nothing was published at all. Fetch the artifact at the URL a consumer would
+  use before auditing its contents, and distinguish *absent from the served surface* from *absent*.
+- **Read the comparison, not the operator printed beside it.** A machine-generated reason string can
+  render a failed threshold as satisfied — a score of 0.960 reported as `>= 0.99` against a 0.99
+  floor. The numbers are the evidence; the operator and the connective words came from the same code
+  path that produced the failure. When a verdict's justification is generated rather than measured,
+  re-check the arithmetic yourself before reporting the floor as passed.
+- **A capability reachable without credentials is a surface, not yet a breach — test the boundary
+  before naming it.** An unauthenticated endpoint that returns a full tool schema has exposed the
+  schema; that is all it has shown. Call the operations that actually mutate state and read the
+  refusal they return. Report the exposure and the enforcement separately, with the operation you
+  attempted named for each.
 
 ## Reference files
 

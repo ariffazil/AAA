@@ -109,7 +109,7 @@ behind `enabled: false`:
 | `state` | `paused_reason` | Meaning |
 |---|---|---|
 | `migrated` | `MIGRATED to <host> ... do not re-enable here (double-fire risk)` | Live on another host. **Never resume here.** |
-| `migrated-system-cron` | `converted to /etc/cron.d/<file>` | Now a raw crontab entry. Re-enabling double-fires it. |
+| `migrated-system-cron` | `converted to /etc/cron.d/<file>` | **Claimed** to be a raw crontab entry. The file is named but never checked — verify it (Step 2c). Re-enabling double-fires it *if the claim is true*. |
 | `paused` | empty | A deliberate stop. Ask before touching. |
 
 A job may be resumed on the source host only once the target provably no longer schedules it.
@@ -136,6 +136,50 @@ scheduler is the common shape. Report the jobs as **orphaned**, not migrated.
 Do not resolve an orphan by quietly enabling it on the source host: a migration that never
 completed also means the delivery ledger and the tool dependencies never moved. Name the finding
 and let the owner choose the home.
+
+## Step 2c — `converted to /etc/cron.d/<file>` is a claim, and one `ls` falsifies it
+
+Step 2b verifies the peer host for `state: migrated`. Its sibling travels unchecked: a job parked
+with `converted to /etc/cron.d/<file>` **names a file nobody ever opens**. Measured on one host:
+**13 jobs** carried that reason and the named prefix matched nothing — not in `/etc/cron.d/`, not in
+`/etc/crontab`, not in any crontab, not on the peer host, and not even as a surviving script under
+any of its likely names. The jobs had been dead 17 days while the book described them as migrated.
+The same host carried `/etc/cron.d/.hermes-cron-ban-<date>/`, a directory of `.disabled` units
+showing that the cron.d approach had since been **banned** — so every one of the 13 cited a
+substrate that was not merely empty but retired. Three of them delivered to a person.
+
+```bash
+# every job claiming a cron.d home, then whether that home exists
+python3 - <<'PY'
+import json
+p = '/root/.hermes/cron/jobs.json'
+d = json.load(open(p))
+for j in (d['jobs'] if isinstance(d, dict) else d):
+    r = str(j.get('paused_reason') or '')
+    if 'cron.d' in r or 'converted' in r:
+        print(f"{j.get('id')}  {str(j.get('name'))[:40]:40}  {r[:60]}")
+PY
+ls -la /etc/cron.d/ | grep -i '<named-prefix>'
+grep -rln '<named-prefix>' /etc/cron.d/ /etc/crontab /var/spool/cron/ 2>/dev/null
+find / -name '*<job-slug>*' -not -path '*/proc/*' 2>/dev/null | head   # the script must exist too
+```
+
+A `paused_reason` is metadata written by whoever parked the job, in the same act of parking it. It
+is **not** a statement about the target, and nothing in the toolchain re-checks it. Note the
+asymmetry that hides the fault: `state: migrated` names a peer you can SSH to, so Step 2b was
+written for it; `converted to <file>` names a path you can `ls` in one command, and because that is
+so cheap nobody does it.
+
+**A ban directory is the strongest signal in the sweep.** Finding `/etc/cron.d/.hermes-cron-ban-<date>/`
+means an operator deliberately retired that substrate *after* the jobs were parked there — so every
+job still citing it as its new home is orphaned by construction, not migrated. Report them as
+**orphaned — target substrate retired**, name the count and the human-facing ones, and do not offer
+to resume them on the source host: they were parked for a reason that predates the ban, and the
+reasons for both decisions live with their owners.
+
+**Do not quietly re-create them either.** Re-creating a job whose script no longer exists on disk
+produces a fresh registry entry that fails on first fire — a second silent outage with a green
+book. Confirm the payload exists before proposing a home.
 
 ## Step 3 — Check the owner host is supervised
 
@@ -589,6 +633,118 @@ Ignore `_CANONICAL`, `quarantine`, and `state-snapshots` hits — those are hist
 "No duplicate on this host" requires having looked at every book on it, not only the one your CLI
 reads. A cron-book count taken from one book is a statement about that book.
 
+## Step 3m — Count RULES and CAPABILITIES, never files or triggers
+
+Two counting errors make a sweep look far smaller than the surface it claims to cover, and both are
+invisible because the total is plausible.
+
+**A count of files is not a count of jobs.** One `/etc/cron.d` directory of 40 files held **106
+rules** — a file-per-capability naming convention hides the fan-out. Count non-comment lines the
+scheduler will actually execute, and report the unit you counted:
+
+```bash
+# substrate 3, counted as RULES (the schedulable unit), not as files
+for f in /etc/cron.d/*; do [ -f "$f" ] && n=$(grep -cvE '^\s*(#|$)' "$f"); [ "${n:-0}" -gt 0 ] && echo "$n $f"; done \
+  | sort -rn | awk '{s+=$1} END {print "total cron.d rules:", s}'
+crontab -l | grep -cvE '^\s*(#|$)'          # user crontab rules
+```
+
+Folding all five substrates into one number before reporting is the only honest total: a measured
+pass found **55 systemd timers + 106 cron.d rules + 54 user-crontab rules + 35 gateway-book jobs
+(15 enabled)**, against 104 running services. Any one of those figures quoted alone is an undercount
+presented as the machine.
+
+**A count of triggers is not a count of capabilities.** The load-bearing measure is how many
+triggers converge on the same *responsibility*. Extract the invoked script from every substrate and
+invert the map — one target reached from several surfaces is one capability with several entries:
+
+```python
+# basename of every script each substrate invokes -> set of surfaces that invoke it
+targets.setdefault(os.path.basename(p), set()).add(surface)
+dup = {k: v for k, v in targets.items() if len(v) > 1}   # report these as candidate DUPLICATE_TRIGGER
+```
+
+Then widen past exact-path identity: the expensive duplicates are distinct scripts serving one
+responsibility under different names. Look for families — `*reconcil*`, `*drift*`, `*verify*`,
+`*census*`, `vault*`, `*digest*` — and count how many independent implementations answer each
+question.
+
+**N gates over ONE inventory in one window is DUPLICATE_WORK, not defence in depth.** Five separate
+cron jobs ran against the same skill inventory inside a single 26-minute window on the same four
+daily hours (`skill-matrix`, `skill-entropy-gate`, `skills-census`, `mcp-health-census`,
+`skill-resolution-gate`). Five guardians, one subject, five chances to disagree and no mechanism to
+reconcile them. Merge to one sweep that emits one verdict per dimension; a stacked tower of gates is
+usually five authors each adding a check rather than five independent risks.
+
+## Step 3n — Optimize the institution, not each job
+
+The unit of optimisation is the **capability graph**, never the individual script. Cleaning N jobs
+one at a time can leave the federation strictly more complicated than before, because every local
+fix adds an owner, a schedule and a receipt to a graph that needed fewer of all three.
+
+The convergence order is fixed, and each step is only reached when the one above it is impossible:
+
+```
+DELETE unnecessary → MERGE duplicate → CLARIFY ownership
+  → SIMPLIFY the path → STANDARDISE the envelope → REPAIR broken → ADD a missing primitive LAST
+```
+
+Do not solve complexity by adding an orchestrator. A new coordinator above a duplicated set is the
+most expensive way to keep every existing moving part.
+
+The target is not maximum automation. It is the **smallest coherent causal graph** that observes,
+routes responsibility, acts safely, verifies outcomes, learns from error and recovers — with routine
+complexity absorbed below human attention. Report the DELTA in nodes, duplicate paths and sources of
+truth; "I fixed 12 scripts" is not a convergence claim, and "6 drift detectors → 1 reconciler + 1
+witness" is.
+
+## Step 3o — Classify the detectors before quoting any of them
+
+A drift/degraded label is **one scheduled process's opinion**, and nothing in the substrate
+reconciles the detectors with each other. A measured pass found **six** reconciler/drift-detector
+timers answering one host with independent definitions and no cross-check — at 3-minute,
+15-minute and daily cadences. Six definitions of "drift" is not six times the confidence; it is zero
+shared ground truth, and the loudest one wins by accident because it fires most often.
+
+Assign every detector exactly one role, and report a count that violates it as a chaos source rather
+than as extra coverage:
+
+| role | may do | budget |
+|---|---|---|
+| RECONCILER | compare declared vs actual **and converge** | one per responsibility |
+| DETECTOR | compare and report only | one per audience |
+| WITNESS | independently attest the reconciler's result | at most one, sharing no code with either |
+
+**A deliberate HOLD is not drift, and a declared-vs-deployed comparator cannot tell them apart.** A
+deploy reconciler that pauses because `local ahead of origin (unpushed labor)` is **working
+correctly** — it has deliberately refused to converge. A second detector comparing
+`src=<sha> deployed=<sha>` on the same host reports that same state as `DRIFT`/`degraded`, and a
+third chases the shadow. Before propagating any drift verdict, read the **actor's own log** for a hold
+reason: "the reconciler declined on purpose" and "the artifact is stale" produce an identical SHA
+mismatch and need opposite responses. Unpushed labor is the most common cause on this host — check
+for it before calling any deploy state broken.
+
+**Read the value beside the label, never the label.** Reporters print a status word and a payload that
+can disagree, and the word is what later audits cite:
+
+```
+OK wealth: src=eaa87d5a deployed=UNKNOWN     # the one unmeasurable organ filed as healthy
+L02: Truth Score: 0.960 >= 0.99              # a FAILED threshold rendered with a satisfied operator
+result=success  →  labelled FAILURE          # a passing unit announced as a failure
+```
+
+Three layers, one defect: **the label is produced independently of the value, and the value is the
+only part that was computed.** Practical rules: evaluate every emitted comparison operator against its
+own operands before repeating the line; treat any payload that is `UNKNOWN`/`None`/`null`/`-`/empty
+as **unmeasured** regardless of the word beside it (grep the report for labels adjacent to those
+sentinels); and when a unit reports one verdict in a human-readable string and another in
+`SERVICE_RESULT`/exit state, reconcile by field and report the disagreement instead of picking a
+winner. A monitor that prints a threshold it did not evaluate converts missing measurement into a
+green tick, and the green tick is exactly what the next audit cites as evidence.
+
+**Consequence for the report you write:** never relay a detector's label as a finding. Relay the
+operands, name which detector produced them, and say which of the six you actually read.
+
 ## Step 4 — Snapshot before any resume
 
 `cp jobs.json jobs.json.bak-<ts>` first. A resume batch is reversible only while the prior book
@@ -632,6 +788,11 @@ inside a 24h window — a migrated expression is rarely re-validated by whoever 
   scheduler.
 - **A missing job is not a paused job.** An absent registry entry (Step 3d) needs a re-create, and
   re-creating it is a trigger to also confirm the script it calls still works on its hot path.
+- **A `paused_reason` is a claim, and nothing in the toolchain re-checks it.** `converted to <file>`
+  is falsifiable with one `ls`; a prefix matching nothing means the work has been dead since the
+  migration, wearing a migration's immunity from audit (Step 2c). Read the reason, **then verify the
+  target**, for every `enabled: false` job you have decided not to touch — the ones you leave alone
+  are exactly the ones no later pass will examine.
 - **A job that has never had a single execution row is not necessarily new** — it may have been
   dropped and restored. Check `executions.db` row count for the job id, not just `created_at`.
 - **A fresh heartbeat file does not mean the jobs are healthy** — it means the ticker runs. A
@@ -709,6 +870,22 @@ inside a 24h window — a migrated expression is rarely re-validated by whoever 
 - **After any create or update, re-read the book from disk and confirm the field persisted.** The
   tool response echoing your value back is not evidence it landed in the store — and a target that
   silently reverted is indistinguishable from a working job until it fails to deliver.
+
+- **A count of files is not a count of rules, and a count of triggers is not a count of
+  capabilities.** 40 files in `/etc/cron.d` held 106 rules; five separate jobs ran against one skill
+  inventory in one 26-minute window. Count the schedulable unit and invert the trigger→target map
+  before reporting any total (Step 3m).
+- **Six detectors agreeing is not corroboration.** One reconciler, one detector per audience, one
+  independent witness — anything more is MULTIPLE_SOURCE_OF_TRUTH, and the highest-frequency detector
+  wins the narrative by accident (Step 3o).
+- **A status word is not a measurement, and `UNKNOWN` beside `OK` is unmeasured.** Read the operands
+  and compare them against their own operator before repeating any line as a verdict (Step 3o).
+- **A deliberate HOLD reports identically to drift.** Read the actor's own log for a hold reason —
+  unpushed labor is the usual one — before propagating any DRIFT/DEGRADED label (Step 3o).
+- **Clean N jobs one at a time and the graph can still get more complicated.** Converge on the
+  capability graph in the fixed order DELETE→MERGE→CLARIFY→SIMPLIFY→STANDARDISE→REPAIR→ADD, and
+  report the delta in nodes/duplicate paths/sources of truth, never a count of scripts touched
+  (Step 3n).
 
 ## Related
 

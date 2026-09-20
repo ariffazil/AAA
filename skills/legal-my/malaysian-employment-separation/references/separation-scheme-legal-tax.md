@@ -79,6 +79,22 @@ individuals on a calendar/current-year basis. **No mechanism to spread or apport
 or the exemption across tax years was found in the ruling or the guidance — treat "there may be a
 way to split it" as false until a licensed agent shows otherwise.
 
+**The receipt year is still a lever, even though apportionment is not.** A single payment cannot be
+split, but *which* year takes it follows from the payment date, and the year of assessment runs on
+the calendar. A lump received in a year that also carries a full year of salary stacks on top of
+that salary's chargeable income and is taxed at the top band reached; the same lump received in a
+year with no employment income starts from the bottom of the progressive bands. The arithmetic that
+isolates the effect, and the one to show the person:
+
+```
+marginal tax borne by the lump = tax(other income + lump - exemption) - tax(other income)
+value of deferring            = marginal tax borne  -  tax(lump - exemption)
+```
+
+Deferral is worth nothing if the receiving year is also a salaried year — check before recommending
+it, and never present the mechanic as a spread-over, which does not exist. `scripts/exit_package_calc.py`
+computes both. Route the figure itself to a licensed agent (SKILL.md, Advisory stance 2).
+
 > Confirm the current public ruling's status with the tax authority before relying on it. Portal
 > reorganisations have broken legacy ruling URLs, and the rule is restated on the authority's
 > exemptions page. Do not cite a dead URL as the source.

@@ -63,7 +63,7 @@ CHECKLIST:
 
 # WARGA STATUS
 
-> **Source:** `/root/AAA/instructions/citizen-status-binding.md` (canonical, F13-ratified 2026-09-14)
+> **Source:** `/root/AAA/instructions/citizen-status-binding.md` ⚠️ PHANTOM — probed 2026-09-20 (FI-008): file absent, never git-tracked, absent on accessible nodes. Awaiting F13 binary to author the canonical source or drop the citation.
 > **Sister:** `/root/AAA/instructions/human-attention-membrane.md` · `/root/AAA/instructions/musyawarah.md`
 
 ## Identity

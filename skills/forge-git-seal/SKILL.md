@@ -71,6 +71,8 @@ done
 - Don't commit state files: jobs.json, *.lock, deliveries.db.
 - For code repos, review `git diff --cached --stat` before committing.
 - First line under 72 chars for `git log --oneline` compatibility.
+- **A commit seal is not a history rewrite.** Never "fix" a stale or oversized record by rewriting history — supersede it in a new commit. Evicting a blob from history is a separate governed act with its own snapshot/pin/verify discipline: `git-history-hygiene`.
+- **One writer per repo at a time.** If another lane is rebasing, filtering or pruning, your `git status`/`git log` reads are of a moving target — see `concurrent-agent-writers`.
 
 ## Federation repo map
 

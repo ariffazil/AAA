@@ -253,6 +253,7 @@ only a sentence already in the room.
   itself to appear in the source text; otherwise a generic page about the same country or company
   casts a verdict on a specific claim it never addressed.
 - **Don't skip the full document for a summary of it.** The summary carries the framing; the full document carries the footnotes where the real figure lives.
+- **Never correct another party's count before running their query.** The same repo, corpus or table answers several counts, and they differ legitimately: total history depth versus commits ahead of a base branch, distinct bodies versus distinct addresses, files versus symlinks. Two parties can each be right on a different axis, and a "correction" issued from the wrong one is the most expensive error in this skill — it retracts a figure that was correct, and it spends the credibility of the correction itself. Ask for, or reproduce, the exact command/definition behind their number, state it beside yours, and only then say which of the two answers your question. If you have already issued such a correction, retract it in the same plain shape as any other: own the figure, name the axis you measured, leave their number standing.
 
 ---
 
