@@ -13,6 +13,15 @@ Each subdirectory is an independent skill with its own SKILL.md.
 - `know-math`
 - `know-physics`
 
+> **2026-09-20 — case/path-duplicate collapse (BRIEF-v2 wave 2).** These three names were
+> stored twice: a real directory here *and* a real directory at the skills root, so the
+> loader resolved to one while the other rotted. The skills-root directories are now the
+> single canonical owners; the subdirectories below are **alias symlinks** to them
+> (`knowledge/know-language -> ../know-language`). The names still resolve from the loader.
+> Pre-collapse bodies are preserved at
+> `know-<name>/references/absorbed-know-<name>.md` and
+> `.frozen/2026-09-20-case-dupes/know-<name>/`.
+
 ## Owner
 
 **Owner:** `AAA/knowledge`
