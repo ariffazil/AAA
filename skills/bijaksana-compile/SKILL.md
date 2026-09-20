@@ -77,6 +77,16 @@ If any contradiction found, downgrade effective_verdict and flag in SHADOW.
 
 If you cannot enumerate shadow, you have not audited. You have echoed.
 
+### Rule 3b — Classify objects before compiling "duplicate" tasks (NEW 2026-09-20)
+
+Do not write a task "collapse N duplicates" unless N was counted as **distinct file
+inodes / realpaths**, not path visits through alias directories. Classes:
+
+BODY · ALIAS · PROJECTION · RETIRED · ARCHIVED · CANONICAL · UNKNOWN
+
+State visibility precedes consolidation. Consumer memory listing three alias names
+is not three capabilities. Do not mint a new registry to fix a classification miss.
+
 ### Rule 4 — Compile into entropy-ranked task manifest
 
 For each remaining task, compute:

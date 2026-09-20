@@ -7,7 +7,9 @@ Separates two defects that have OPPOSITE fixes and are routinely reported as one
   TRIGGER  collision  different capabilities, one request   -> disambiguate owners
 
 Declared metadata only: no embeddings, no LLM. Symlinks are DEREFERENCED
-(os.walk(followlinks=True)) because a probe that reads the symlink measures the map.
+(os.walk(followlinks=True)) so a view-tree is not reported empty, THEN collapsed
+by realpath/inode before counting BODIES. Path visits ≠ bodies. 2026-09-20:
+follow-without-dedup produced 610 then 68 "duplicates" that were aliases.
 
 Usage:
   python3 skill-collision-census.py
@@ -48,7 +50,11 @@ FRONT = re.compile(r"^---\s*\n(.*?)\n---\s*\n", re.S)
 
 
 def walk_skills(root: str) -> list:
-    """Every SKILL.md under root, SYMLINKS DEREFERENCED."""
+    """Every SKILL.md under root, SYMLINKS DEREFERENCED.
+
+    Returns visit paths. Callers must count unique os.path.realpath(path)
+    as BODIES. Visit count minus unique reals = ALIAS/PROJECTION names.
+    """
     out = []
     if not os.path.isdir(root):
         return out
@@ -134,14 +140,20 @@ def main(argv=None) -> int:
 
     recs = collections.defaultdict(list)
     per_surface = {}
+    path_visits = 0
+    unique_bodies = set()
     for surf, root in surfaces:
         files = walk_skills(root)
         per_surface[surf] = len(files)
+        path_visits += len(files)
         for p in files:
+            unique_bodies.add(os.path.realpath(p))
             r = parse(p)
             if r:
                 r["surface"] = surf
                 recs[r["name"].lower()].append(r)
+    n_bodies = len(unique_bodies)
+    n_alias = max(0, path_visits - n_bodies)
 
     # IDENTITY collision: one lowercased name resolving to >=2 distinct realpaths.
     identity = {
@@ -180,11 +192,15 @@ def main(argv=None) -> int:
     blob = {
         "per_surface_files": per_surface,
         "file_total": sum(per_surface.values()),
+        "path_visits": path_visits,
+        "unique_bodies": n_bodies,
+        "alias_projections": n_alias,
         "distinct_names": len(recs),
         "identity_collisions": len(identity),
         "case_twins": len(case_twins),
         "trigger_collision_skills": len(collide),
         "trigger_collision_pct": round(100 * len(collide) / max(1, len(recs)), 1),
+        "note": "path_visits follows symlinks; unique_bodies is realpath of SKILL.md. Do not call alias_projections duplicates.",
         "identity": identity,
         "case_twins_map": case_twins,
         "collisions": collide,
