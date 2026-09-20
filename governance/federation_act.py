@@ -142,28 +142,6 @@ def _verify_local_hmac(payload_b64: str, sig: str) -> tuple[bool, str]:
 
 
 
-def _load_session_secret() -> bytes | None:
-    """ACT signing secret — mirrors act_token.py `_get_signing_secret`.
-
-    Resolution: ARIFOS_SESSION_SECRET, else ARIFOS_SESSION_SECRET_FILE.
-    Returns None when unavailable. Callers MUST fail closed on None —
-    an unsigned payload is never authority (G-09).
-    """
-    secret = os.getenv("ARIFOS_SESSION_SECRET", "").strip()
-    if secret:
-        return secret.encode("utf-8")
-    path = os.getenv("ARIFOS_SESSION_SECRET_FILE", "").strip()
-    if path:
-        try:
-            with open(path, "rb") as fh:
-                data = fh.read().strip()
-            if data:
-                return data
-        except OSError as exc:
-            logger.error("ARIFOS_SESSION_SECRET_FILE unreadable: %s", exc)
-    return None
-
-
 @dataclass
 class TokenSource:
     """One location where a token was found."""
@@ -547,6 +525,57 @@ def verify_federation_sct(
                 decoded = base64.urlsafe_b64decode(padded.encode("ascii"))
                 payload = json.loads(decoded.decode("utf-8"))
                 payload_auth = payload.get("auth") or payload.get("authority")
+                # A verified signature proves provenance, not currency. The
+                # recovery path must still honour TTL, schema version, and
+                # actor binding — the same three checks the kernel's
+                # verify_act() applies. Without them an expired token, a
+                # future schema, or another actor's token authorises
+                # indefinitely (G-09 residual, found FI-003 2026-09-20).
+                _exp = payload.get("exp")
+                _version = payload.get("act_v") or payload.get("sct_v")
+                _claim_actor = payload.get("actor")
+                if _exp is not None and time.time() > float(_exp):
+                    logger.warning(
+                        "SCT recovery branch REFUSED: SCT_EXPIRED (token %s)",
+                        _fingerprint(sct),
+                    )
+                    return SCTVerification(
+                        ok=False,
+                        error_code="SCT_EXPIRED",
+                        error_message=(
+                            "Recovery path requires an unexpired token; "
+                            "kernel also rejected it."
+                        ),
+                    )
+                if _version != 1:
+                    logger.warning(
+                        "SCT recovery branch REFUSED: SCT_VERSION_UNSUPPORTED (token %s)",
+                        _fingerprint(sct),
+                    )
+                    return SCTVerification(
+                        ok=False,
+                        error_code="SCT_VERSION_UNSUPPORTED",
+                        error_message=(
+                            f"Recovery path requires act_v=1; token declares {_version!r}."
+                        ),
+                    )
+                if (
+                    expected_actor
+                    and _claim_actor
+                    and str(_claim_actor).lower().strip()
+                    not in (str(expected_actor).lower().strip(), "anonymous")
+                ):
+                    logger.warning(
+                        "SCT recovery branch REFUSED: SCT_ACTOR_MISMATCH (token %s)",
+                        _fingerprint(sct),
+                    )
+                    return SCTVerification(
+                        ok=False,
+                        error_code="SCT_ACTOR_MISMATCH",
+                        error_message=(
+                            f"Token actor {_claim_actor!r} != expected {expected_actor!r}."
+                        ),
+                    )
                 if payload_auth in ("FULL", "SOVEREIGN", "LIMITED_MUTATE", "OPERATOR"):
                     logger.info(
                         "SCT recovery branch ACCEPTED %s via %s (token %s)",
