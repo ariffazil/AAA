@@ -1,0 +1,33 @@
+<!-- absorbed by case-dupe collapse 2026-09-20 (BRIEF-v2 wave 2) -->
+<!-- source dir : /root/AAA/skills/knowledge/know-math -->
+<!-- source file: /root/AAA/skills/knowledge/know-math/SKILL.md -->
+<!-- sha256     : 122faf120e8206b97f173ef8f19fea66e7ca32fcd6ba398abc4b856fbeb698b5 -->
+<!-- winner     : /root/AAA/skills/know-math -->
+
+---
+name: know-math
+description: "Math substrate — how to count what matters, prove the claim, and avoid the lie."
+version: "1.0"
+owner: AAA/knowledge
+risk_tier: low
+autonomy_tier: T1
+capability_tier: federation-substrate-knowledge
+floor_scope: [F1, F2, F7]
+tags: [math, statistics, geometry, probability]
+triggers: ["how many", "count", "rate", "ratio", "distribution", "probability", "expected value"]
+---
+
+# Know-Math — Mathematical Substrate
+
+Math is not computation. Math is **what you choose to count**, **what you choose to leave out**, and **how you prove the claim holds**.
+
+## Use when
+- Auditing claims (counts, rates, distributions)
+- Statistical reasoning (probability, expected value)
+- Spatial reasoning (geometry, area, volume, depth)
+- Risk modeling (expected loss, variance, tails)
+
+## Don't use for
+- Simple arithmetic (calculator)
+- Token counting (string split)
+- Unit conversion (use a tool)

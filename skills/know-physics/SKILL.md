@@ -5,14 +5,20 @@ risk_tier: low
 floor_scope: [F1, F2, F4, F7]
 version: 1.0.0
 layer: knowledge
-description: All reality claims are physical claims. Conservation laws, thermodynamics,
-  causality, entropy. You cannot get something from nothing.
+description: "All reality claims are physical claims. Conservation laws, thermodynamics, causality, entropy. You cannot get something from nothing. Physics substrate — how the world actually moves: forces, fields, conservation laws, and conjugate pairs."
 owner: F13 SOVEREIGN
 status: active
 three_axis: true
 axis_version: 1.0.0
 autonomy_tier: T1
+tags: [physics, energy, momentum, conjugate, conservation, thermodynamics]
+triggers: ["force", "energy", "momentum", "thermodynamics", "conjugate", "field", "equilibrium", "physics check"]
+capability_tier: federation-substrate-knowledge
 ---
+> **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
+> directories differing only in case. The second copy (`/root/AAA/skills/knowledge/know-physics`) is now an alias
+> symlink here. Its full pre-collapse body is preserved at
+> `references/absorbed-know-physics.md` and in `.frozen/2026-09-20-case-dupes/know-physics/`.
 
 # know-physics
 
@@ -63,3 +69,21 @@ autonomy_tier: T1
 ---
 *Forged: 2026-07-11 under F13 SOVEREIGN.*
 *DITEMPA BUKAN DIBERI*
+
+---
+
+## Folded from the `knowledge/know-physics` copy (2026-09-20)
+
+Physics is not engineering. Physics is **what constraints the universe imposes** — conservation laws, conjugate pairs, and the geometry of phase space.
+
+## Use when
+- Energy/momentum/work claims
+- Conjugate-variable reasoning (position↔momentum, energy↔time)
+- Thermodynamics (entropy, equilibrium, dissipation)
+- Geological reasoning (depth, time, strata)
+- Conservation arguments
+
+## Don't use for
+- Engineering sizing (use FORGE)
+- Unit conversion (use a tool)
+- Material selection (use domain organ)
