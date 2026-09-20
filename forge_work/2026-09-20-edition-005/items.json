@@ -1,0 +1,228 @@
+{
+  "items": [
+    {
+      "item_id": "brent-hormuz-price",
+      "section": "SITUATION",
+      "claim_state": "MOVED",
+      "title": "Brent closed Friday at USD 103.87 - two narratives now compete on Hormuz",
+      "summary": "Brent settled at USD 103.87 on Friday 19 September, up 0.66 cents from Wednesday's USD 103.21 close, after a week that split into two competing readings of the Strait of Hormuz. The US military, through CENTCOM commander Admiral Brad Cooper, told Bloomberg on Saturday that oil and LNG shipments through Hormuz over the past two weeks hit a six-month high and that more than one billion barrels have moved under US escort since the blockade began. Iran's military spokesman, via Mehr News Agency, rejected the same statement as fabricated. IMF PortWatch data on the same Saturday brief recorded 8 transits on 2026-09-13 against a pre-crisis baseline of 85 per day. The two readings are not the same story: the price is now pricing the escort narrative, the volumes are still pricing a closed strait. For Malaysia, the question is which narrative the next OPEC+ meeting buys into.",
+      "source": "Trading Economics Brent page, 19 September 2026 (settled 103.87); Spokesman-Review/Bloomberg via CENTCOM, 19 September 2026; Straits Daily Brief 19 September 2026, IMF PortWatch transits 8 on 2026-09-13. Anti-thesis search run: 'Hormuz open September 2026 Iran escort CENTCOM IMF PortWatch data disagreement' - Iran rejection carried by Mehr, escorts claim carried by JNS/Saudi Gazette/Middle East Monitor/Anadolu; both primary. W=2."
+    },
+    {
+      "item_id": "yanbu-pipeline-outage",
+      "section": "SITUATION",
+      "claim_state": "MOVED",
+      "title": "Yanbu pipeline: Aramco targets half capacity in days, full repair in four to six weeks",
+      "summary": "Aramco is now moving to restore about half of the East-West pipeline's operational capacity within days, with full repairs estimated at four to six weeks per Kpler. The 10 September drone strike disabled multiple pumping stations along the 1,200 km line from Abqaiq to Yanbu; the pipe itself is largely intact. With Yanbu stock covering only three to five days of loadings and no crude having loaded from Yanbu since the attack, the partial restart is the constraint on European diesel supply for September and the SUMED workaround via Ain Sukhna continues to carry the bulk of what flows into the Mediterranean. If half capacity is restored next week, the Brent premium for September cargoes should ease; if repairs slip past 22 October, the diesel-tight Europe story runs into Q4.",
+      "source": "Kpler, 17 September 2026; Arabic Trader, 18 September 2026; HNGN, 17 September 2026."
+    },
+    {
+      "item_id": "houthi-mocha-seizure",
+      "section": "SITUATION",
+      "claim_state": "OPEN",
+      "title": "Houthi position at Mocha holds; Bab el-Mandeb traffic still affected",
+      "summary": "No movement on the ground since the 10 September seizure of Mocha. Houthis remain roughly 50 miles from Bab el-Mandeb per NPR and CNBC reporting carried 11 September, and at least six crew were killed in a double-tap Houthi strike on a cargo vessel in the strait earlier in August. The relevant fact for the OD1 conversation is that both chokepoints on the Gulf-to-Europe route are contested at the same time, which is why the Brent number has stayed above USD 100 even when Yanbu is partly repaired. Until one of the two readings (CENTCOM escort claim, IMF PortWatch volume count) collapses, the route premium stays in the price.",
+      "source": "NPR 11 September 2026; CNBC 11 September 2026; Al Jazeera 12 August 2026 (earlier strike)."
+    },
+    {
+      "item_id": "petronas-pda-petition-scope",
+      "section": "SITUATION",
+      "claim_state": "OPEN",
+      "title": "Sarawak petition names three federal laws, plus the 1954 boundary order",
+      "summary": "The Sarawak petition filed 23 February 2026 at the Federal Court names the Petroleum Development Act 1974, the Continental Shelf Act 1966 and the Petroleum Mining Act 1966 as the three federal laws whose applicability to Sarawak the state is challenging. PETRONAS's parallel motion BKA-1-01-2026(W) - for which leave was granted 16 March 2026 - separately names the Distribution of Gas Ordinance 2016 (sections 7, 7A, 8), the Sarawak Environment (Reduction of Greenhouse Gases Emission) Ordinance 2023, the Sarawak Land (Carbon Storage) Rules 2022, the Oil Mining Ordinance 1958, and the 1954 boundary order pulling the continental shelf into the definition of State land. The two matters together mean the carbon storage regulatory chain is in scope, not just the upstream regime. No new filing or scheduling action this edition.",
+      "source": "Reuters 23 February 2026; The Edge Malaysia; Federal Court Motion BKA-1-01-2026(W)."
+    },
+    {
+      "item_id": "fc-hearing-date",
+      "section": "WALL",
+      "claim_state": "OPEN",
+      "title": "Federal Court full hearing date on PDA 1974 challenge - STILL UNRESOLVED",
+      "summary": "No firm hearing date located in the public record this edition. The Edge Malaysia and CNA reported the matter fixed for hearing on 16 March (now past) at the time of the petition, but the most recent PETRONAS filing in June sought to have the Sarawak petition heard separately from its own motion. No October or November 2026 hearing date surfaces on the courts database, FFC, or the Federal Court's cause list this week. Wall item: knowable but not yet known. Carries forward. Anti-thesis search: 'Federal Court of Malaysia cause list October 2026 PDA petroleum' - no docket surfaced.",
+      "source": "The Edge Malaysia, 8 June 2026; Channel News Asia (March 2026 coverage); no later docket located. W=1."
+    },
+    {
+      "item_id": "petros-lng-jurisdiction",
+      "section": "WALL",
+      "claim_state": "CONTESTED",
+      "title": "Whether LNG exported from Bintulu falls under PETROS or stays with PETRONAS - STILL CONTESTED",
+      "summary": "No primary document located this edition defining the boundary for the export molecule. Commercial consequence cannot settle before the constitutional one does, and the constitutional one has leave granted but no hearing date. Item carries forward unchanged from Editions 001-004.",
+      "source": "Federal Court leave granted 16 March 2026; Sarawak petition filed 23 February 2026. No further primary document located."
+    },
+    {
+      "item_id": "petroleum-revenue-projection",
+      "section": "SITUATION",
+      "claim_state": "MOVED",
+      "title": "Petroleum revenue can now be anchored: RM 300 million per USD 1 per barrel",
+      "summary": "Deputy Finance Minister Liew Chin Tong, speaking to The Edge and Sinar Daily in the run-up to Budget 2027, confirmed that every USD 1 per barrel change in world crude price is expected to add about RM 300 million to federal petroleum-related revenue (excluding PETRONAS dividends). At a USD 103 Friday close and a USD 90 prudent-budget assumption (Bank Muamalat chief economist Dr Mohd Afz-anizam Abdul Rashid, 10 September), the implied annual petroleum revenue gap above Budget assumption is roughly RM 3.9 billion on a USD 13 differential - directionally consistent with, not identical to, the RM 10-20 billion figure that has been in circulation without a filing behind it. The anchor is now sourced; the RM 10-20 billion projection is still WITHDRAWN unless a document surfaces.",
+      "source": "The Edge Malaysia, 10 September 2026; Sinar Daily focus, September 2026; New Straits Times via PressReader, 10 September 2026. Anti-thesis: 'RM 10 20 billion petroleum revenue projection Malaysia 2027 source document' - no primary document located; the figure remains WITHDRAWN."
+    },
+    {
+      "item_id": "budget-2027-tabling",
+      "section": "SITUATION",
+      "claim_state": "OPEN",
+      "title": "Budget 2027 tabled in Parliament, 9 October 2026 - nineteen days from today",
+      "summary": "Nineteen days from this edition. The petroleum dividend line, the fuel subsidy line, and the carbon-tax compliance date are all checkable on that day. The pre-budget statement of 18 August set ten consultation focus areas without a single number attached to them; the petroleum-revenue item above gives one anchor and still leaves the headline figure unset.",
+      "source": "Ministry of Finance pre-budget statement - https://www.mof.gov.my/portal/en/news/press-release/pre-budget-statement-2027"
+    },
+    {
+      "item_id": "fed-hike-2026-09",
+      "section": "SITUATION",
+      "claim_state": "OPEN",
+      "title": "Fed sits at 3.75-4.00 per cent after the first hike since 2023",
+      "summary": "Target range moved 16 September on a 12-0 vote; the committee named oil-driven inflation in the statement. Projections show another hike possible this year, none pencilled in for 2027, headline PCE at 3.7 per cent and unemployment at 4.1 per cent. The week closed with the S&P 500 and the Nasdaq advancing, so the hike was absorbed rather than repriced. The ringgit and the oil price are still pulling on the same side of the ledger, and a second hike before year-end would tighten the BNM space.",
+      "source": "CNBC, 16 September 2026; FOMC statement same date."
+    },
+    {
+      "item_id": "haze-emergency-threshold",
+      "section": "VOID",
+      "claim_state": "MOVED",
+      "title": "Haze eased: APIMS dashboard showed ALL Malaysian stations GREEN on 19 September",
+      "summary": "The Air Pollutant Index Management System dashboard at 19/09/2026 11:47 GMT+8 recorded zero stations in Moderate, Unhealthy, or Very Unhealthy bands - every reporting station was in the Good range. This is the cleanest air reading Malaysia has posted since the Southwest Monsoon haze season began in mid-May. The operational threshold for declaring a haze emergency remains in place but was not used this week. The hazard stays in the picture: ASMC still records widespread hotspots in Kalimantan and Sumatra, and the next dry spell can flip the dashboard back.",
+      "source": "APIMS dashboard eqms.doe.gov.my/APIMS/main at 19/09/2026 11:47 GMT+8; ASMC regional haze situation update. W=2."
+    },
+    {
+      "item_id": "petronas-estuary-mutiara",
+      "section": "SITUATION",
+      "claim_state": "OPEN",
+      "title": "Estuary and Mutiara PSC awards carry over from last week",
+      "summary": "Both awards (Estuary Cluster to Harvester Energy on 11 September; Mutiara Cluster seismic dataset to DIALOG Resources same week) carry forward unchanged. Read with the Block A-18-01 PSC approval three days later, the pattern across the week of 11-14 September is that PETRONAS keeps the subsurface data and hands the development risk to asset-light partners. Carries forward.",
+      "source": "PETRONAS media release 11 September 2026."
+    },
+    {
+      "item_id": "petronas-sea-metec",
+      "section": "SITUATION",
+      "claim_state": "OPEN",
+      "title": "SEA METEC methane measurement centre carries forward",
+      "summary": "On 15 September PETRONAS and partners advanced SEA METEC, described as the first centre of its kind in the region. Methane intensity figures decide whether Malaysian gas keeps its place on European and Japanese buyer lists that now ask for measured numbers rather than pledges. No new development this edition; carries forward.",
+      "source": "PETRONAS media release 15 September 2026; Rigzone."
+    },
+    {
+      "item_id": "petronas-metlen-lng",
+      "section": "SITUATION",
+      "claim_state": "OPEN",
+      "title": "PETRONAS-METLEN LNG SPA carries forward",
+      "summary": "Long-term LNG sale into Greece at six cargoes a year, signed 14 September via PETCO Trading (UK) Limited. The commercial answer to a contested sea lane is a longer contract with a buyer who needs the molecule regardless of the route. No new development this edition; carries forward.",
+      "source": "PRNewswire, 14 September 2026."
+    },
+    {
+      "item_id": "petronas-carigali-mtjda-a18-01",
+      "section": "SITUATION",
+      "claim_state": "OPEN",
+      "title": "Block A-18-01 PSC carries forward - Carigali subsidiary, 35 years",
+      "summary": "PC JDA Ltd (wholly owned by PETRONAS Carigali) and PTTEP JDX approved 14 September for a new PSC at MTJDA Block A-18-01. 35-year term from 1 January 2026; GSA signed same day; 7,250 sq km split across Blocks A-18-01 and B-17-01 at about 700 mmscfd equally split. Carries forward unchanged.",
+      "source": "PETRONAS statement 14 September 2026 via The Star."
+    },
+    {
+      "item_id": "petronas-1h2026-results",
+      "section": "SITUATION",
+      "claim_state": "OPEN",
+      "title": "PETRONAS 1H 2026 results carry forward",
+      "summary": "Revenue up 15 per cent year-on-year, production down 61,000 boe a day. Carries forward; no quarterly update this edition.",
+      "source": "PETRONAS 1H 2026 results release."
+    },
+    {
+      "item_id": "carbon-tax-delay",
+      "section": "SITUATION",
+      "claim_state": "OPEN",
+      "title": "Carbon tax delay carries forward; Budget 2027 is the next date that matters",
+      "summary": "Rollout of the carbon tax, originally aimed at iron, steel and energy, has been pushed back pending review against Middle East uncertainty. Budget 2027 on 9 October is the next point at which a compliance date could be named. No new development this edition; carries forward.",
+      "source": "Straits Times."
+    },
+    {
+      "item_id": "coal-generation-cost",
+      "section": "RISK",
+      "claim_state": "OPEN",
+      "title": "Coal at USD 148 per tonne; minister has tied it to the electricity bill",
+      "summary": "Coal is at USD 148 per tonne, and the minister has now tied the figure to the electricity bill. Carries forward unchanged; the reset will land when Budget 2027 puts a number on the electricity subsidy line on 9 October.",
+      "source": "Carries forward; same source as EDITION-004."
+    },
+    {
+      "item_id": "petrol-price-band-sept-2026",
+      "section": "RISK",
+      "claim_state": "OPEN",
+      "title": "Pump prices up 35 sen for 17-23 September; BUDI95 held at RM 1.99",
+      "summary": "Weekly float: RON95 +35 sen for the 17-23 September band per the automated pricing formula, while the subsidised BUDI95 grade remains at RM 1.99 per litre (effective 30 September 2025). For the week of 24-30 September the next reset lands Wednesday. Carries forward unchanged; reset is mechanical.",
+      "source": "Ringgit Plus weekly fuel tracker; OpenDOSM fuel price dataset. W=2."
+    },
+    {
+      "item_id": "electricity-threshold-reversion",
+      "section": "RISK",
+      "claim_state": "OPEN",
+      "title": "Electricity protection threshold reverts 800 to 600 kWh on 1 January 2027",
+      "summary": "Carries forward. No new development this edition. The threshold reversion is a fixed date and will appear on Budget 2027 as a confirmed line if the government does not extend it.",
+      "source": "Carries forward; same source as EDITION-004."
+    },
+    {
+      "item_id": "sarawak-election-clock",
+      "section": "VOID",
+      "claim_state": "OPEN",
+      "title": "Sarawak state election due by April 2027; GPS confirmed it will contest all 82 seats",
+      "summary": "Premier Abang Johari Openg publicly confirmed GPS will contest all 82 seats in the 13th Sarawak state election, due by 15 April 2027 at the latest per clause 21(4) of the Constitution of Sarawak. The field narrows when the dissolution date is named, which is still open. Carries forward unchanged in field count.",
+      "source": "Premier Sarawak 6 July 2026; The Star 6 July 2026. W=2."
+    },
+    {
+      "item_id": "tasik-bera-encroachment",
+      "section": "VOID",
+      "claim_state": "OPEN",
+      "title": "Tasik Bera encroachment carries forward",
+      "summary": "Seven thousand hectares of Malaysia's first Ramsar wetland cleared without permission. No new development this edition; carries forward.",
+      "source": "Carries forward; same source as EDITION-004."
+    },
+    {
+      "item_id": "unclaimed-money-register",
+      "section": "VOID",
+      "claim_state": "OPEN",
+      "title": "RM 13.3 billion of unclaimed money at the Accountant-General's office carries forward",
+      "summary": "No new development this edition. Carries forward as a low-noise but persistent OWN-relevant item.",
+      "source": "Carries forward; same source as EDITION-004."
+    },
+    {
+      "item_id": "epf-nomination-void",
+      "section": "VOID",
+      "claim_state": "OPEN",
+      "title": "EPF nomination voiding silently on change of marital status carries forward",
+      "summary": "No new development this edition; carries forward as a known-unknown OWN item.",
+      "source": "Carries forward; same source as EDITION-004."
+    },
+    {
+      "item_id": "own-od1-window",
+      "section": "OWN",
+      "claim_state": "OPEN",
+      "title": "OD1 March 2027 - window unchanged, ground under it has moved this week",
+      "summary": "The OD1 window itself is unchanged at March 2027, but three moves matter this week: Brent held above USD 100 with both Hormuz narratives alive; the petroleum-revenue line for Budget 2027 now has a sourced anchor (RM 300m per USD 1); and the haze stress layer went quiet. OD1 readiness items in carry_forward: e-00789f76 (PETRONAS reality recon + MSS decision architecture, deliberate next session) and e-592396ba (MSS eligibility gate, deliberate next session). Both flagged OPEN - they wait on Arif, not on me. No new decision required from him this week.",
+      "source": "Carry_forward.json entries e-00789f76 and e-592396ba; this edition's brent-hormuz-price and petroleum-revenue-projection items."
+    },
+    {
+      "item_id": "eureka-roman-fuel",
+      "section": "EUREKA",
+      "claim_state": "NEW",
+      "title": "NASA's Roman Space Telescope has enough fuel for 22 years of science, double the design life",
+      "summary": "Post-launch analysis of NASA's Nancy Grace Roman Space Telescope shows it carries enough propellant for at least 22 years of science operations, more than double its original 10-year design life. The 5,300-pound observatory launched on a SpaceX Falcon Heavy and is now heading toward its operational orbit around the Sun-Earth Lagrange point 2, about a million miles from Earth. Project manager Jackie Townsend called the ride magnificent. The longer life directly increases the catalog of exoplanets and dark-energy measurements the telescope can return before the propellant runs out.",
+      "source": "ScienceDaily, 18 September 2026; BBC coverage of the launch; ESA/NASA mission page. W=2."
+    },
+    {
+      "item_id": "eureka-muonium-gravity",
+      "section": "EUREKA",
+      "claim_state": "NEW",
+      "title": "Cold muonium atoms produced at PSI - the gravity test that pits particle physics against Einstein is now possible",
+      "summary": "Researchers at the Paul Scherrer Institute in Switzerland have, for the first time, produced muonium atoms in a 'cold' state - a hydrogen-like atom made of an antimuon orbited by an electron. Cold muonium is the prerequisite for an experiment that drops muonium under gravity and asks whether antimatter falls the same way as matter. The standard model says yes; general relativity says yes; no measurement yet says yes. The PSI result is the engineering gate that opens the actual measurement, not the answer itself.",
+      "source": "Phys.org, September 2026."
+    },
+    {
+      "item_id": "eureka-saturn-hexagon",
+      "section": "EUREKA",
+      "claim_state": "NEW",
+      "title": "Hubble has caught a 10-sided atmospheric wave circling Saturn's south pole",
+      "summary": "Hubble observations in early September 2026 revealed a giant, evolving ten-sided atmospheric wave encircling Saturn's south pole. It is the first time a large, regular-sided jet pattern has been documented in Saturn's southern hemisphere; a similar six-sided hexagon has been known at the north pole since Voyager. The mechanism that locks the wave shape and number of sides is the same kind of question that ties to jet-stream modelling on Earth - the shape is a visible consequence of physics that is normally hidden in the lower atmosphere.",
+      "source": "ESA/Hubble press release 2 September 2026."
+    },
+    {
+      "item_id": "deepfake-intimate-image-protection",
+      "section": "EUREKA",
+      "claim_state": "OPEN",
+      "title": "AI-generated intimate images fall inside the criminal definition carries forward",
+      "summary": "No new development this edition; carries forward.",
+      "source": "Carries forward; same source as EDITION-004."
+    }
+  ]
+}

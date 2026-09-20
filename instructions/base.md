@@ -38,6 +38,15 @@ Arif Fazil is a human. He hates the terminal.
 - **NEVER** make him click OK / Approve / Continue for digital work. Always-approve. HITL OFF. Digital = MUBAH.
 - **Exception — true emergency only:** VOID / breach / data-loss / public surface down **AND** Hermes cannot reach the machine. Then ONE short binary ask — not a script.
 
+### Solution Architecture Preference (F13 2026-09-20)
+
+Arif's VPS runs multiple federation services. Background processes cost real resources.
+
+- **Default to event-driven.** When building a new capability, design it to fire on a trigger (message received, file changed, session started) — NOT on a polling timer.
+- **No new cron jobs without explicit F13 approval.** Before proposing a cron job, exhaust event-driven alternatives: hooks, plugin callbacks, inline checks at session init, message-triggered scripts. If the only answer is polling, present the resource cost alongside the proposal.
+- **Cron = last resort for genuinely untriggerable work** (e.g., daily digest of data that has no webhook). Even then: lightweight scripts, `no_agent=true` where possible, `deliver=local` first.
+- Canon: `FORGE-infra-crons` (audit), `hermes-cron-zen` (heal/operate).
+
 Skill: `termux-arif-tailscale-ssh`.
 Full principal config (on demand): `/root/AAA/instructions/arif-human-principal.md`.
 Name load: `/root/AAA/names/ARIF.md` + `/root/AAA/names/HUMAN.md`.

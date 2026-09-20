@@ -341,6 +341,24 @@ If floors become sacred — if the constitution sits above reality — shadow re
 - **One commit for two repos:** AAA and arifOS gate independently.
 - **Reporting the amendment as live:** an amendment is a proposal. Saying "sealed" for it is a false receipt.
 
+**Embedding verification trap (F13 2026-09-20)**
+
+When F13 asks "is X already embedded?" — do NOT check one surface and declare. "Embedded" means the principle reaches agents at boot time, not that a file exists somewhere. The correct probe is multi-surface — run all greps in parallel:
+
+1. SOUL.md (Hermes identity — always loaded)
+2. AGENTS.md / base.md (rendered inline every turn)
+3. Boot sequences: `AAA/prompts/INIT_HERMES.md`, `UNIVERSAL_BOOT.md`, `ARIFOS_FEDERATION_INIT.md`
+4. Agent cards: `AAA/a2a-server/agent-cards/` (what other agents see)
+5. Skills: `AAA/skills/` (on-demand loading)
+6. Canon floors: `AAA/canon/FLOORS/`, `AAA/canon/FLOORS/archive/`
+7. The eureka ledgers
+
+Report per-surface hit count. A principle that exists in canon/ but NOT in boot sequences or SOUL.md is **documented, not embedded**. The human-facing question is "will every agent load this?" — if the answer requires a manual `skill_view` call, it is NOT embedded for auto-loading.
+
+"Principles exist" ≠ "Principles embedded" is a semantic trap. 69 files referencing a principle does not mean any single agent loads all 69. Compression into a boot artifact (one screen, one file, always-loaded) is the fix.
+
+**Session closure receipt ≠ boot artifact.** When F13 pastes a compressed artifact and says "I would hand this to every coding agent" — check if it exists on disk AS THAT COMPRESSED FORM. A ceremony audit (gates status, filemap, open items) is a different file from the compressed boot artifact (the 13 Laws, Shadow Test questions, Final Zen). Do not conflate them.
+
 **Tooling traps**
 
 - **Canon-mutate + complex content: write to temp file first.** Shell parsing breaks on JSON parentheses, quotes, and interpolation inside `bash -c "echo '...' >> file"`. The command reports `rc=0` but the content does not land. Fix: write the content to `/tmp/<name>.ext` first, then `cat /tmp/<name>.ext >> <target>` via canon-mutate. `echo -e` and heredocs inside `canon-mutate run ... -- bash -c` break the same way; `cat` from a temp file is the only reliable path. Verify with `grep` after.
@@ -377,6 +395,7 @@ path):
 | `references/commit-gates.md` | `aaa-doctrine-sealing` | the exact gates, labels and the two-ledger layout |
 | `references/external-artifact-intake.md` | `aaa-doctrine-sealing` | auditing a pasted external AI artifact before any of it reaches canon |
 | `references/doctrine-coding-surfaces.md` | `canon-doctrine-sealing` | worked surface-by-surface recipe: fragment skeleton, membrane floor append, always-on line, eureka artifact + JSONL row, verification sweep, report shape |
+| `references/constitutional-compression-patterns.md` | 2026-09-20 session | Two proven compression patterns: Theory→Floor→Kernel→Invariant (69→13→1→1), and Intuition→Formalization (moral physics: constraint extraction → physics → math → code) |
 
 ---
 

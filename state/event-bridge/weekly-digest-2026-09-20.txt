@@ -1,0 +1,3 @@
+=== Weekly Federation Digest — 2026-09-20 14:00 MYT ===
+Capacity: disk=64% mem=37%
+Organs: all healthy
