@@ -25,6 +25,31 @@
 | F12 | INJECTION | Sanitize inputs | Prompt injection = VOID |
 | F13 | SOVEREIGN | Human veto absolute | Arif has the final word |
 
+### Dual-register note (index correction 2026-09-20, FI-008 — additive, no floor text altered)
+
+Two floors carry a SECOND register name. The single-column table above publishes only
+one of each pair, so an agent reading this index alone will emit the wrong word on the
+wrong surface. The reconciliation rule already exists elsewhere and is not new law:
+
+| Floor | Register 1 (kernel / audit surfaces) | Register 2 (public / UI surfaces) | Rule source |
+|-------|--------------------------------------|-----------------------------------|-------------|
+| F06 | MARUAH | EMPATHY | `instructions/build.md:52` — "kernel/audit surfaces emit MARUAH; public/UI surfaces emit EMPATHY" |
+| F02 | label form (`OBS`/`DER`/`INT`/`SPEC`) | band form | `instructions/build.md:53` |
+
+Corroborating canon: `instructions/constitution.md:13` writes the floor as
+**"F06 — EMPATHY ⇄ MARUAH … Dual-registry lossless bridge"**; `canon/SCAR-ARCHITECTURE-OF-REJECTION.md:44`
+states the intent — *"kernel speaks MARUAH (protocol), public surfaces speak EMPATHY
+(experience). Two faces of the same scar-acknowledgment."*
+
+**Not a contradiction. A dual register with an emission rule.** The defect this note closes
+is narrower and real: the rule lived only in prose in one instruction file, so the floor
+INDEX — the file that presents itself as the map — was silently half-true. An index that
+drops half of a rule is the confusion the rule was written to prevent.
+
+**Still open for F13:** the dual register is documented but not machine-enforced. Nothing
+checks that a kernel surface emitting a floor name uses the kernel register. Encoding it
+is a floor-level decision, not an index edit — held.
+
 ---
 
 ## FLOOR 01 — AMANAH (Trustworthiness)
