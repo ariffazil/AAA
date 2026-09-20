@@ -21,7 +21,18 @@ Load this skill the MOMENT the user says any of:
 
 ## Iron Rules (do not skip)
 
-### Rule 1 — Read the substrate FIRST
+**Rule 1 — Read the substrate FIRST (corrected 2026-09-21: read the RUNTIME, not the narrative)**
+
+A carry_forward entry is a report, not a measurement. Three defect classes\u00a0proved
+material in one night, all from treating a stored claim as a live value:
+
+- a session note's `L05 Peace\u00b2 0.700` was copied into a list of MEASURED blockers;
+  the live kernel reported `peace_squared = 1.0` in two independent fields;
+- a remembered task count (22) was narrated for a manifest holding 15;
+- a remembered direction of a git divergence was stated for one never re-checked.
+
+**Every number that reaches a human is probed live in the same turn, or it is
+labelled `REPORTED (carry_forward <id>, not re-measured)`.**
 
 Before compiling anything, read in this order:
 
@@ -136,6 +147,71 @@ Session discovers gap → gap is evidence → skill patch drafted → skill upda
 
 **NEW — 2026-09-18 (post-patch evidence):**
 Session 2026-09-18 (333-AGI / BIJAKSANA compile) discovered `apex_scalars.verdict=SEAL` while G=0.4722 / W3=0.7439 — a vocabulary drift that bypassed Rule 2 entirely because the kernel itself emits the contradiction. Patch applied: explicit apex_scalars contradiction probe in Rule 3 SHADOW enumeration. Future sessions inherit this audit gate.
+
+### Rule 3c — Mechanically stamp time; never hand-write a provenance field (NEW 2026-09-21)
+
+A generated artifact stamps `generated_utc` from `date -u`, never from prose. Two
+manifests in one night declared a `generated_utc` that ran **ahead** of the file's
+own mtime (declared 16:15Z against mtime 16:06Z; declared 16:35Z against 16:14Z).
+A provenance field the artifact could not have reached is a fabricated warrant, and
+an independent judge graded the whole compile F2 FAIL on exactly this.
+
+```bash
+NOW=$(date -u '+%Y-%m-%dT%H:%M:%SZ')   # then interpolate; never type a time
+```
+
+**Count, don't carry.** The same defect class produced "22 tasks" for a manifest
+holding 15 — the number was carried from the *previous* compiler's manifest instead
+of being counted from the artifact. Any N stated to a human must come from
+`len(...)` in the same turn, or it is narration.
+
+### Rule 3d — Verify the DIRECTION of a divergence, both sides (NEW 2026-09-21)
+
+The commonest F2 error in durability claims is not a false number — it is a true
+number pointed the wrong way. A bundle asserted "the G-09 fix and its regression
+suite exist ONLY on this unpushable branch"; both were in fact on `origin/main`, and
+the branch's *own* extra hardening (a TTL/actor/schema residual) was what could not
+leave. Two independent readers caught it; the compiler had not.
+
+```bash
+git cat-file -e HEAD:<path>          # ABSENT vs PRESENT, per side
+git cat-file -e origin/main:<path>
+git merge-base --is-ancestor <fix-commit> HEAD || echo NOT-IN-BRANCH
+git rev-list --left-right --count origin/main...HEAD   # AHEAD **and** BEHIND
+```
+
+A branch can be both ahead and behind. "Cannot push" and "diverged" are different
+findings with different remedies; state which one you measured.
+
+### Rule 3e — Count duplicates by INODE, never by path (NEW 2026-09-21)
+
+Rule 3b said this. The compiler then violated it in the same night: "TWO
+byte-identical copies of `SEALED_EVENTS.jsonl`" were **one inode reached through a
+symlink**. Before writing the word "duplicate", `stat -c '%i'` every path.
+
+```bash
+stat -c '%i %s %n' <path-a> <path-b>   # equal inode => ONE object, not two
+ls -ld <path-a>                        # symlink reveals the alias
+```
+
+### Rule 3f — An evidence bundle given to witnesses is a FROZEN object (NEW 2026-09-21)
+
+The compiler dispatched two verifiers at 00:06:44 and kept mutating the substrate
+they were reading: a commit landed 18 s later, a service rebuild and restart at
+00:11:44-45, a bundle at 00:13. Both readers therefore graded a state that no longer
+existed, and the judge ruled F2 FAIL on "the compile was already false when I read
+it" — a false FAIL on the artifact, produced entirely by the author's own
+concurrency.
+
+**Rule:** finish mutating **before** dispatch, or hand over a snapshot carrying an
+explicit TOCTOU clause naming every mutation that will occur during verification.
+Silence about concurrent mutation reads as an integrity claim.
+
+**And when a review returns**, RE-DERIVE every finding before acting on it — reviewers
+are witnesses, not authorities. Here that re-derivation
+(a) confirmed the inversions, (b) resolved a floor the judge had left UNRESOLVED, and
+(c) found one reviewer grade (L05) that was itself a stale carry-forward the compiler
+had smuggled in.
 
 ## Workflow (canonical)
 
