@@ -2,75 +2,120 @@
 id: repo-intelligence
 name: forge-repo-intelligence
 autonomy_tier: T1
-version: 1.0.0
-description: 'SOLE controller skill for repository intelligence across the arifOS Federation. Exposes 12 '
+version: 2.0.0
+description: "Use when you must know a repository's real state before changing it. Read-only repo/CI/doc intelligence — census, diff, release audit, stub & debris detection, CI diagnosis."
 owner: AAA
 risk_tier: medium
-knowledge_basis:
-  language: true
-  math: false
-  physics: false
-host_compatibility:
-- claude-code
-- codex
-- opencode
-- kimi
-- kimi-code
-- copilot-cli
-dependencies:
-  skills:
-    - FORGE-pr-review
-    - FORGE-pr-governance
-    - FORGE-ci-diagnose
-    - FORGE-issue-triage
-    - FORGE-github-ops
-    - aaa-agent-invariants
-    - code-wiki
-    - parallel-authority-detection
-    - secret-safety-scan
-  servers:
-    - a-forge
-    - github-official
-  tools:
-    - forge_worktree
-    - forge_git_status
-    - forge_git_diff
-    - forge_git_log
-    - forge_filesystem_read
-    - forge_filesystem_grep
-    - forge_github_search
-    - forge_github_get_file
-examples:
-- Audit all 7 federation repos for tag-vs-main drift
-- Cross-repo impact analysis for a contract change
-- Full release audit: tag, commit, CI, artifact, runtime parity
-- PR review with efficient diff pattern: metadata → filenames → critical files → patches
-tests:
-- inventory mode returns all 7 repos with branch, tag, commit, dirty state
-- release_audit mode detects tag-vs-main divergence
-- pr_review mode uses efficient diff pattern (filenames first, then critical patches)
-- cross_repo_impact mode detects contract changes across organ boundaries
-- security mode scans workflows for unpinned actions and missing permissions
-version_lock:
-  schema_version: '1'
-  artifact_hash: pending
-orthogonal_tags:
-  trinitarian:
-  - Ω
-  - Ψ
-  functional:
-  - Meta
-  - Ops
-  - Audit
-  layer: CODING/FI
-  autonomy_tier: T1
-floor_scope:
-- F1
-- F2
-- F11
-capability_tier: fed-agent-subagent
+floor_scope: [F1, F2, F4, F9, F11]
+merged_from:
+  - FORGE-repo-intelligence    # case-duplicate copy (frontmatter was the only delta)
+  - forge-ci-diagnose          # AAA copy
+  - FORGE-ci-diagnose          # .hermes copy — DIVERGENT escalation targets, kept (see CONTRADICTION)
+  - forge-cross-repo-doc-zen   # absorbed 2026-09-20 (docs graph)
+merged_at: "2026-09-20T14:44:58Z"
+merged_by: skill-merge-wave1 / cluster github-repo-ci-pr
+cluster_note: "Observation lane only. The MUTATION lane (branch/commit/PR/merge) is `github-ops`."
+triggers:
+  - repository intelligence
+  - audit repo
+  - find stubs
+  - orphan detection
+  - dead code audit
+  - repo reality audit
+  - corruption score
+  - release audit
+  - tag drift
+  - cross-repo impact
+  - workflow integrity
+  - branch protection audit
+  - manifest reconcile
+  - repo census
+  - ci failure
+  - red CI
+  - github actions log
+  - ci diagnose
+  - failure class
+  - cross-repo documentation
+  - doc graph
+  - floor name drift
+  - deprecated tool names
+tags: [repo, intelligence, audit, ci, read-only, federation]
+capability_tier: fed-reasoning-heavy
 ecology_state: WARM
 ---
+<!-- wave1-merge:FLOW:BEGIN -->
+# forge-repo-intelligence — repository intelligence controller (read-only lane)
+
+> **One controller. Twelve modes. No duplicate logic.**
+> This skill is the SOLE repository intelligence controller for the federation.
+> It ANSWERS what a repo really is. It does not change one —
+> the mutation lane (branch → commit → PR → CI → review → merge) is `github-ops`.
+
+**Lane split (canonical):** `forge-repo-intelligence` = observation (read, probe, classify, report).
+`github-ops` = mutation (auth, branch, commit, push, PR, merge). A finding here is a candidate;
+changing the repo is the other skill's job, with its own authority gate.
+
+## FLOW — pick the mode by observable, then read the mode below
+
+| # | Observable | Mode / reference | What it produces |
+|---|---|---|---|
+| 1 | "what is in this repo / on this tag / is it dirty" | `inventory` | census: branch, HEAD, tag, dirty, ahead/behind |
+| 2 | "how is it built, what are the contracts, who owns it" | `map` | entry points, build/test commands, contract files, CODEOWNERS |
+| 3 | "what changed between A and B / tag vs main" | `delta` | commit diff, tag-vs-main drift, manifest parity |
+| 4 | "review this PR" (no code change requested) | `pr_review` | risk verdict from metadata → filenames → critical patches |
+| 5 | **red X / failing workflow / build-test-lint gate broke** | `ci_diagnose` → `references/forge-ci-diagnose.md` + `references/FORGE-ci-diagnose.md` | failure class + root cause + reversible fix proposal |
+| 6 | "what issues are open, which organ do they belong to" | `issue_triage` | deduplicated, severity-classified, routed list |
+| 7 | "audit workflows / supply chain / secrets" | `security` | unpinned actions, permissions, OIDC, secret patterns |
+| 8 | "this change crosses organ boundaries" | `cross_repo_impact` | affected organs, breaking vs additive, blast radius |
+| 9 | "is the release real — tag, artifact, runtime" | `release_audit` | tag→commit→CI→artifact→deployed→runtime parity |
+| 10 | "is this workflow YAML actually sound" | `workflow_integrity` | parse result, duplicate job IDs, unsafe patterns |
+| 11 | "does our documented tool count match runtime" | `manifest_reconcile` | README/FEDERATION/AGENTS vs live tools/list |
+| 12 | "are we enforcing branch protection" | `ruleset_audit` | protection gaps + remediation |
+| 13 | **"is this code real or theatre" (stubs, orphans, leaks)** | read-only peer `audit/audit-ops`: `references/audit-repo-reality.md` + `references/audit-repository-entropy.md` | stub tiers, corruption score, disposition ledger |
+| 14 | **"do the docs across repos agree"** | `references/forge-cross-repo-doc-zen.md` | orphan docs, wrong floor names, deprecated tool refs, fixed or listed |
+
+Modes 1–12 are the body below. Modes 13–14 are member bodies kept verbatim in `references/`.
+Mode 5's procedure is the two `*-ci-diagnose` references, not the mode stub below.
+
+## CORE RULES (this lane)
+
+1. **UNMEASURED beats a plausible default.** Any field a probe failed to fill stays `UNMEASURED`.
+   Never substitute `0`, `clean`, or `healthy` for "I did not look".
+2. **A clean tree proves only no local changes.** Never equate clean with correct.
+3. **Runtime beats README beats FEDERATION.md.** Reconcile by correcting the weaker source, never by averaging.
+4. **Read-only by default.** No mutation, no unregister, no delete without an authority that is not this skill's.
+5. **Never label a diagnostic-survival job "passed."** If lint fails but `continue-on-error` keeps the
+   workflow green, report the truth.
+6. **Tag discipline:** never silently move a published tag. A tag is an immutable receipt; if it is behind
+   main, issue a corrected tag.
+7. **No agent authors, approves, and merges the same consequential change.** (Crosses into `github-ops`.)
+
+## CONTRADICTION — kept, not averaged
+
+The two CI-diagnose copies name **different escalation successors** for the same failure class:
+
+| failure class | `forge-ci-diagnose` (AAA, `references/forge-ci-diagnose.md`) | `FORGE-ci-diagnose` (.hermes, `references/FORGE-ci-diagnose.md`) |
+|---|---|---|
+| `secret-gate` | `secret-safety-scan` | `FORGE-secret-hygiene` |
+| `cross-repo-break` | `parallel-authority-detection` | `live-probe-audit-pattern` |
+
+`config-error` on a constitutional workflow → `888_JUDGE` in both. Both bodies are preserved verbatim;
+F13 rules on which successor is canonical. Do not silently pick one.
+
+## REFERENCES
+
+| Reference | Source skill | Original path (archived) |
+|---|---|---|
+| `references/FORGE-repo-intelligence.md` | FORGE-repo-intelligence | `/root/AAA/skills/.archive/merge-20260920/repo-intelligence/FORGE-repo-intelligence/` |
+| `references/forge-ci-diagnose.md` | forge-ci-diagnose | `/root/AAA/skills/.archive/merge-20260920/repo-intelligence/forge-ci-diagnose/` |
+| `references/FORGE-ci-diagnose.md` | FORGE-ci-diagnose | `/root/AAA/skills/.archive/merge-20260920/repo-intelligence/FORGE-ci-diagnose/` |
+| `references/forge-cross-repo-doc-zen.md` | forge-cross-repo-doc-zen | `/root/AAA/skills/.archive/merge-20260920/repo-intelligence/forge-cross-repo-doc-zen/` |
+
+Read-only peers owned by another cluster (not absorbed here): `audit/audit-ops`
+(`references/audit-repo-reality.md`, `references/audit-repository-entropy.md`).
+Mutation lane: `github/github-ops`.
+
+<!-- wave1-merge:FLOW:END -->
 # FORGE-repo-intelligence — Controller Skill
 
 > **One controller. Twelve modes. No duplicate logic.**

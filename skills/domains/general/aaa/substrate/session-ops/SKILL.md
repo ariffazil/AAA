@@ -53,6 +53,7 @@ triggers:
   - "naked prior audit"
   - "stale priors"
   - "before T3 autonomous action"
+  - First turn of every new session (auto) OR when Arif signals "/reset_context
   - "First turn of every new session (auto) OR when Arif signals /reset_context"
 description: "Use when a session starts, ends, or is searched. Routes the session lifecycle to one reference: human-first grounding, frozen snapshot init, epistemic prior audit, governance bind, temporal close, history recall, library ops."
 ---

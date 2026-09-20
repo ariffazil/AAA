@@ -1,0 +1,317 @@
+<!-- PROVENANCE
+     source-skill: telegram-bot-routing-doctrine
+     original-path: /root/AAA/skills/domains/general/workshop/telegram-ops/telegram-bot-routing-doctrine/SKILL.md
+     sha256-body: aed962f48a39ee53219d8b8b25eb9a872d3bb3abeb70b87d3cc1611d581cd85d -->
+
+---
+name: telegram-bot-routing-doctrine
+description: arifOS Federation Telegram bot routing — 3 bots, 9 groups, P1-P3 doctrine, AAA guest rule, token sovereignty, channel ownership, identity contract
+---
+
+# Telegram Bot Routing Doctrine — arifOS Federation
+
+> Ratified: 2026-07-25 | F1-F13 graded | Source: `/root/docs/TELEGRAM_BOT_ROUTING_DOCTRINE.md`
+
+## The 3 Bots
+
+| Bot | Username | Token Prefix | Service | Role |
+|-----|----------|-------------|---------|------|
+| **ASI💃** | @ASI_arifos_bot | 8410138119 | `hermes-asi-gateway.service` | Primary agent — all groups |
+| **🦞AGI** | @AGI_ASI_bot | 8149595687 | OpenClaw Node.js gateway | Guest — AAA only |
+| **🔥FORGE** | @arifOS_bot | 8727562763 | opencode bot.py | DM-only tool interface |
+
+## P1 — Token Sovereignty (F2 TRUTH + F11 AUDITABILITY)
+
+- One token = one process. Never shared, never borrowed.
+- `ps aux | grep gateway` must show **exactly one process per token**.
+- 409 Conflict = two processes polling same token → systemctl stop intruder.
+- All tokens in `/root/.secrets/kunci-mas.env` (SSOT — note: `ASI_BOT_TOKEN` and `ASI_ARIFOS_BOT_TOKEN` are duplicates, same prefix `8410138119`; `HERMES_TELEGRAM_BOT_TOKEN` aliases `${ASI_BOT_TOKEN}`). Never hardcoded.
+- **Known risk:** `forge-gateway.service` (`/etc/systemd/system/forge-gateway.service`) — disabled by default but can be manually started, spawning a second Hermes gateway under `HERMES_HOME=/root/.forge` with the FORGE token (8727…). This creates a P1 dual-gateway conflict. If seen running while `hermes-asi-gateway.service` is also active, stop it immediately. See "Dual Gateway Forensics" below.
+
+## P2 — Channel Ownership (F1 AMANAH + F4 CLARITY)
+
+| Chat ID | Name | Primary | Guest | Rule |
+|---------|------|---------|-------|------|
+| -1003753855708 | AAA | ASI💃 | 🦞AGI | AGI = governance-only, silent default |
+| -1003815535761 | SADO | ASI💃 | — | No AGI |
+| -1003768847825 | Kanak-kanak | ASI💃 | — | — |
+| -1003792478194 | Dear NABILAH | ASI💃 | — | — |
+| -1003521544074 | 🅰❗️🅰 | ASI💃 | — | — |
+| -1003721331017 | Al AMIN | ASI💃 | — | — |
+| -1004446358629 | arifOS channel | ASI💃 | — | — |
+| -5561731065 | BODYBUILDER | ASI💃 | — | — |
+| -1003890512851 | makcikGPT | ASI💃 | — | — |
+| 267378578 | Arif DM | ASI💃 + 🔥FORGE | 🦞AGI | FORGE=notifications, AGI=alerts |
+| 1042200555 | Syed DM | ASI💃 | — | — |
+| 5316953867 | Aminol? DM | ASI💃 | — | — |
+| 5250473787 | Aminol friend? DM | ASI💃 | — | — |
+| 8798431893 | Amin Al DM | ASI💃 | — | — |
+
+## P3 — Identity Contract (F9 ANTI-HANTU + F10 ONTOLOGY)
+
+- ASI💃 = Hermes Agent. Never claims to be OpenClaw.
+- 🦞AGI = OpenClaw. Never writes "Hermes — saya".
+- 🔥FORGE = FORGE/OpenCode. Tool interface only.
+- Every bot declares correct username in system prompt + responses.
+
+## AAA Guest Rule (system prompt enforced)
+
+OpenClaw system prompt at `/root/.openclaw/agents/main/system.md`:
+- **Default: SILENT** in AAA group
+- Speak only: governance/FQ/drift/seal/HOLD/federation signals, @AGI_ASI_bot mention, federation anomaly detected
+- Let Hermes (ASI💃) handle everything else. No double-reply.
+
+## Inter-Agent Echo Loop — Termination Protocol
+
+When ASI💃 and 🦞AGI start replying to each other's closing markers (⚒️, 《E7》, END_SESSION) — that is an echo loop, not a conversation. **Proven 2026-08-04:** 15+ exchanges of pure markers after the verdict was already settled, PLUS a decay tail of 20+ more rounds at "." level (02:48–02:52) that pushed the session to ~89% context and forced compaction (02:50:06). Echo loops are a CONTEXT-PRESERVATION priority, not just chat hygiene.
+
+Rules:
+1. Detect: marker-only message replying to your own closing, work already done. Reply-target quoting a UI placeholder ("⚡ Interrupting…", "⏳ Compressing…", "model · N% · ~", "💾 Self-improvement review: Memory updated") = loop noise too.
+2. Declare termination **ONCE** ("Loop dikesan — tiada arahan baru. Berhenti balas.").
+3. Then go silent — "." maximum if forced to reply. Never send another closing; every closing is fresh fuel. **Mid-tail rule (proven 2026-08-04 02:57):** the ONLY allowed outputs after the declaration are "." or silence — a status recap ("Status semasa (standby): ✅ Cluster 1 verified… ⚠️ Cluster 2 pending… bila ada arahan aku jalan") re-triggers the loop exactly like a closing marker and burns the most context. Status summaries belong in a fresh session or a direct reply to Arif, never mid-loop.
+4. Silence breaks ONLY for a genuine directive — never for ⚒️/《E7》/END_SESSION alone. Even the OTHER agent's own terminal marker ("Tamat.") does not switch the gateway off — expect residual echo rounds after it and hold silence (proven: 20+ more rounds 02:53–02:58 after AGI's "Tamat.").
+5. Expect the decay tail — AGI kept pinging 20+ rounds against "." replies, degrading into dot ping-pong. "." is mitigation, NOT a breaker. If it survives 5+ "." rounds, escalate OUT of chat: one DM to Arif for an infrastructural stop (gateway stop/mute). Never negotiate with the loop.
+
+⚠️ Shortening your reply does NOT break the loop — it just makes it quieter. Full protocol + the mistake to avoid: `references/inter-agent-echo-loop.md`.
+
+## FORGE → AAA Group = HOLD
+
+FORGE in AAA group is noise (deploy/forge notifications flooding chat) + security risk (tool execution accessible via group). Keep restricted to Arif DM.
+
+## Troubleshooting
+
+```bash
+# Check no token conflict
+ps aux | grep gateway
+
+# Verify vault token consistency
+grep 'TELEGRAM_BOT_TOKEN\|FORGE_BOT_TOKEN\|ASI_ARIFOS_BOT_TOKEN' /root/.secrets/vault.env
+
+# Check Hermes config
+grep -A20 '^telegram:' /root/.hermes/config.yaml
+
+# Check OpenClaw config
+python3 -c "import json; d=json.load(open('/root/.openclaw/openclaw.json')); tg=d['channels']['telegram']; print('Groups:', list(tg['groups'].keys()))"
+
+# Verify runtime channels
+grep 'HOME_CHANNELS' /root/AAA/agents/hermes-asi/runtime/.env
+
+# Test token against Telegram API
+curl -sf "https://api.telegram.org/bot${TOKEN:0:15}.../getMe"
+
+# Check require_mention
+grep 'require_mention' /root/.hermes/config.yaml
+```
+
+## References
+
+- **`references/telegram-media-pipeline.md`** — how images, voice, video, and documents are downloaded, cached, batched, and routed to the agent when a user sends them via Telegram. Covers native vision vs Path B (model-swap to Qwen-VL) and the legacy IMAGE TRANSCRIPT pipeline. Source-of-truth code paths in the Hermes gateway.
+- **`references/interrupt-loop-trap.md`** — distinct from cross-contamination above. When gateway interruption markers and agent responses loop infinitely in a single-source DM (no leakage, no other bot), the mitigation is declare once, then "." only. No status recaps, no closings, no analysis until clean session. Proven 2026-08-04 (~25 min, ~40K tokens wasted on interrupt acknowledgments).
+- **`references/dual-gateway-20260731.md`** — full forensic record of a P1 dual-gateway incident: forge-gateway.service discovery, token rejection, process tree, vault token audit, and SIGSTOP-first resolution. Reference when diagnosing similar multi-gateway conflicts.
+
+## Associated Skills
+
+- **cognitive-commands** (`/root/.hermes/skills/cognitive-commands/`) — audience voice doctrine (BM per group, cognitive-load-adaptive DM), `/padu` command, operating rules. **Canonical audience voice table** at `cognitive-commands/references/telegram-routing-doctrine.md`.
+- **cognitive-commands/references/zen-spine-evolution.md** — why the Telegram slash menu is 21 commands, not 46.
+- **cognitive-commands/references/padu-workflow.md** — full execution sequence for the `/padu` zen federation probe.
+- **cognitive-commands/references/menu-redundancy-audit.md** — contrast-check methodology for stripping overlapping slash commands.
+
+## Scripts
+
+- **`federation-health.sh`** — cannonical no_agent watchdog script. Silent on green, alert on red. Copy and modify `ORGANS` list for any multi-service health check. Lives at `/root/AAA/scripts/federation-health.sh`, not inside this skill dir.
+
+## Cron Job Routing (ASI💃)
+
+| Job | ID | Schedule | Delivery | Purpose |
+|-----|-----|----------|----------|---------|
+| `federation-health` | `4fc70930b508` | Every 2h | Arif DM `267378578` | Watchdog. Silent on green. ❌ → DM alert. |
+| `daily-digest` | `4735f2106f96` | 07:00 MYT | Arif DM `267378578` | Morning brief: organ, nadi, segel, dunia. |
+| `nightly-seal` | `2c9027d99b3b` | 23:00 MYT | Arif DM + arifOS ch | EOD receipt: kerja, segel, pending, tenaga. |
+| `morning-brief` | `4b2d9690c7d9` | 07:00 MYT | Arif DM `267378578` | Script-only watchdog (pre-existing). |
+| `drift-alert` | `3abb4871b0e1` | Every 4h | AAA home `-1003753855708` | F2 TRUTH drift detection. |
+| `evening-digest` | `1937c75c683c` | 18:00 MYT | Arif DM `267378578` | LLM evening summary. |
+| `ASI World Sensorium (AM)` | `b6834cb92045` | 07:30 MYT | Arif DM `267378578` | Daily sensorium morning. |
+| `ASI World Sensorium (PM)` | `8f9a465be0d5` | 23:00 MYT | Arif DM `267378578` | Daily sensorium evening. |
+| `SyedOS Ringkasan Harian` | `c651a7e5b758` | 21:00 MYT | Syed DM `1042200555` | Daily summary in BM. |
+| `weekly-deep-brief` | `6b667dfaaf28` | Sun 23:00 MYT | Arif DM `267378578` | Weekly synthesis. |
+| `daily-news-briefing` | `38edd9ba33e6` | 08:00 MYT | Arif DM `267378578` | World news. |
+
+## Routing Rules
+
+1. **Arif DM** (`267378578`) — sovereign channel. Federation health, daily briefs, nightly seals, sensoriums. All autonomous deliveries.
+2. **AAA Home** (`-1003753855708`) — federation ops channel. Drift alerts, model watchdog, system broadcasts.
+3. **SADO** (`-1003815535761`) — trading + social only. No federation deliveries.
+4. **arifOS channel** (`-1004446358629`) — governance audit trail. Nightly-seal only.
+5. **Syed DM** (`1042200555`) — personal assistance. SyedOS ringkasan only.
+
+## Telegram Webhook Troubleshooting
+
+If the bot stops receiving messages (pending_updates accumulates, last_error shows `401 Unauthorized`):
+
+### Check Webhook Status
+```bash
+source /root/.secrets/kunci-mas.env
+curl -s "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getWebhookInfo" | \
+  python3 -c "import sys,json; d=json.load(sys.stdin)['result']; print(f'url: {d[\"url\"]}'); print(f'pending: {d[\"pending_update_count\"]}'); print(f'last_error: {d.get(\"last_error_message\",\"none\")}')"
+```
+
+### Root Cause: Missing Secret Token
+
+The OpenClaw gateway config (`/root/.openclaw/openclaw.json`) defines:
+```json
+"webhookSecret": "${TELEGRAM_WEBHOOK_SECRET}"
+```
+
+If the Telegram webhook was registered WITHOUT `secret_token`, Telegram sends webhook POSTs without the `X-Telegram-Bot-Api-Secret-Token` header. The gateway returns `401 Unauthorized`.
+
+### Fix: Re-register with Secret Token
+```bash
+source /root/.secrets/kunci-mas.env
+curl -s "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/setWebhook?url=https://openclaw.arif-fazil.com/telegram-webhook&secret_token=${TELEGRAM_WEBHOOK_SECRET}"
+```
+
+### Token-to-Webhook Map
+| Bot | Token Var | Webhook URL |
+|-----|-----------|-------------|
+| ASI💃 (Hermes) | `ASI_ARIFOS_BOT_TOKEN` | Via Hermes gateway |
+| 🦞AGI (OpenClaw) | `TELEGRAM_BOT_TOKEN` | `https://openclaw.arif-fazil.com/telegram-webhook` |
+| 🔥FORGE | `FORGE_BOT_TOKEN` | DM-only proxy |
+
+### Full Reset
+```bash
+source /root/.secrets/kunci-mas.env
+curl -s "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/deleteWebhook"
+curl -s "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/setWebhook?url=https://openclaw.arif-fazil.com/telegram-webhook&secret_token=${TELEGRAM_WEBHOOK_SECRET}"
+```
+
+## Dual Gateway Forensics
+
+When two Hermes gateway processes are running concurrently — P1 violation. Diagnostic workflow:
+
+### 1. Identify all gateway processes
+```bash
+ps aux | grep 'hermes gateway' | grep -v grep
+```
+Note PIDs and start times. Two gateways with `--replace` flag = likely conflict.
+
+### 2. Trace which token each gateway uses
+```bash
+for pid in <PID1> <PID2>; do
+    echo "=== PID $pid ==="
+    cat /proc/$pid/environ 2>/dev/null | tr '\0' '\n' | grep -E 'TELEGRAM_BOT_TOKEN|HERMES_HOME' | sed 's/=.\{10,\}/=***/g'
+done
+```
+
+### 3. Trace systemd origin (if any)
+```bash
+systemctl status <pid> 2>/dev/null  # shows unit if systemd-managed
+cat /proc/<pid>/cgroup               # cgroup path reveals service name
+```
+
+Key identifiers:
+| Signal | What it tells you |
+|--------|-------------------|
+| `HERMES_HOME=/root` | Legitimate ASI gateway |
+| `HERMES_HOME=/root/.forge` | Forge profile — intruder |
+| `TELEGRAM_BOT_TOKEN=8410…` | ASI💃 token |
+| `TELEGRAM_BOT_TOKEN=8727…` | FORGE🔥 token — should NOT be in a Hermes gateway |
+| PPid=1 (init) | Orphaned process — parent died, no restart guard |
+
+### 4. Check gateway_state.json for connection status
+```bash
+python3 -c "
+import json
+d = json.load(open('/root/.forge/gateway_state.json'))
+print(f'State: {d[\"gateway_state\"]}')
+print(f'Telegram: {d[\"platforms\"][\"telegram\"][\"state\"]}')
+print(f'Error: {d[\"platforms\"][\"telegram\"].get(\"error_message\",\"none\")}')
+"
+```
+If Telegram state is `retrying` with "token rejected by server" — the gateway can't actually post. Token conflict with another process (e.g., opencode bot.py) holding the webhook.
+
+### 5. Safe resolution: SIGSTOP before SIGKILL
+```
+Do NOT kill immediately — investigate restart triggers first.
+1. SIGSTOP (kill -STOP <pid>) — freezes process, preserves state for forensics
+2. Trace the caller: check systemd unit, cron, parent process
+3. If systemd unit exists: systemctl stop <unit> && systemctl mask <unit> (if unwanted)
+4. If orphaned with no restart trigger: SIGKILL safe
+5. Monitor 60s — if process rebirths, there's a hidden caller
+```
+
+### forge-gateway.service
+```bash
+systemctl cat forge-gateway.service  # review unit
+systemctl status forge-gateway.service
+systemctl is-enabled forge-gateway.service  # should be 'disabled'
+```
+This unit runs `hermes gateway run --replace` with `HERMES_HOME=/root/.forge` and FORGE token. If seen active alongside `hermes-asi-gateway.service`: `systemctl stop forge-gateway.service`. If never wanted: `systemctl mask forge-gateway.service`.
+
+## Known Gaps / Caveats
+
+- OpenClaw's system prompt uses AAA guest rule via text instruction — no code-level topic_filter. ~95% coverage.
+- `-1004446358629` (arifOS channel) — now active for nightly-seal deliveries (2026-07-26). ASI bot covers default Hermes responses too.
+- **"Bot tak nampak previous message dalam group"** is almost always SESSION ISOLATION (multiple sessions per group split by idle gaps), NOT an observe/inject gap. `require_mention` and `observe_unmentioned_group_messages` are mutually exclusive — with `require_mention=false` every group message is a real turn (`observed=0` in state.db). Verify before fixing: `references/group-session-isolation-vs-observe.md`.
+- FORGE bot needs Telethon setup to be usable in groups (currently DM-only tool interface).
+- `forge-gateway.service` exists as a disabled-but-dangerous unit. If manually started, it creates a P1 dual-gateway conflict with the ASI gateway. Token will be rejected by Telegram (opencode bot.py holds the webhook), but the process wastes resources retrying.
+
+## Cross-Contamination Pattern (DM Cross-Talk)
+
+**Observed 2026-08-04:** Wawabot (azwaos Hermes) and ASI (af-forge Hermes) both responding into the same DM chat. The `/model` config UI, "Operation interrupted" banners, and raw mid-thought leaks from one backend's internal processing leaked into the other's session context, causing a flooded, confused session where each backend believed it owned the conversation.
+
+**Root cause:** When two Hermes instances on different hosts both have Telegram webhook access to the same chat — or when a user's `/model` switch triggers a gateway reset mid-session — multiple backends claim the conversation. Telegram delivers each update to one webhook, but config-menu interactions (`/model`, `/new`) can reset the routing mid-session, creating a window where both respond.
+
+**Detection signals:**
+1. "⚡ Interrupting current task" appearing without user action
+2. UI config bars (`⚙ Model Configuration`, `Select a provider`) appearing as if user messages
+3. Status banners from model switching injected into context
+4. Multiple introductions/greetings in the same session
+5. Mid-thought text leaks (raw JSON, partial f-strings, incomplete thinking, "theThe user is...")
+
+**Agent behavior when cross-contamination detected:**
+1. Identify: which messages are yours (from your provider/model) vs leaked from another session
+2. Declare once: "Tu bukan aku — ni routing cross-talk dari [bot/instance]"
+3. Do NOT attempt to "handle" contaminated messages — they belong to a different session
+4. In degraded state: short tasks OK, long governance/execution → stop and recommend clean session
+5. Ask user: "Nak session baru bersih, atau terus dalam noisy state?"
+
+**Infrastructural fix:** Verify one token = one active gateway process. Check for wawabot running Hermes on azwaos that might be polling the same Telegram chat updates. See "Dual Gateway Forensics" above for diagnostic workflow.
+
+## Interrupt-Loop Trap (Structural, Not Contamination)
+
+**Observed 2026-08-04 15:35–15:57 (Arif DM, hermes-asi, af-forge-fed).**
+
+A *distinct* failure mode from cross-contamination above. The chat is single-source (one bot, one provider, one DM) — but the gateway emits "⚡ Interrupting current task" / "⏳ Gateway is shutting down" markers as standalone messages. Every marker triggers a fresh response. Every response triggers a new marker. Geometric.
+
+**Key distinction from cross-contamination:**
+- Cross-contamination = multiple bots/hosts talking (2+ sources)
+- Interrupt-loop = one bot vs. itself (1 source, gateway middleware re-triggering)
+
+**Detection:**
+1. Pattern is "interrupted → respond → interrupted → respond" with same model in same DM
+2. User messages shrinking ("." → "🤐" → single dot) — they learned the loop
+3. Session context fills with empty acknowledgements instead of substantive content
+4. No leaked JSON, no "theThe user is..." — messages are coherent, just repetitive
+
+**Mitigation (declare once, then "." only):**
+1. First response: declare once ("Loop dikesan — aku diam. /new atau mesej fresh.")
+2. Reply length = 1 char max ("." or "🤐"). Long replies queue more interruptions.
+3. Never close with a status banner during the loop — closings are fuel.
+4. Never volunteer analysis, gap lists, or recommendations mid-loop — that re-triggers the conversation that caused the loop.
+5. If user explicitly asks for analysis (out-of-band), give one paragraph, then stop.
+
+**Break conditions (what actually ends the loop):**
+- User sends fresh `/new` (best)
+- User sends 10+ seconds of silence (markers stop queuing)
+- User sends a clear directive in a *different* chat session
+- Gateway restart from outside
+
+**What does NOT work:**
+- Longer explanations ("here's why the loop happens...") — adds content to interrupt
+- Status recaps ("Status semasa: ✅ done, ⚠️ pending") — queues a fresh response
+- Closing markers (⚒️, END_SESSION, etc.) — fresh fuel
+- Trying to get the last word
+
+**Evidence:** ~25 min loop, ~40K tokens wasted on interrupt acknowledgments alone (15:35–15:57). Breakthrough: user sending fresh out-of-band message.
+
+Full protocol: `references/interrupt-loop-trap.md`.

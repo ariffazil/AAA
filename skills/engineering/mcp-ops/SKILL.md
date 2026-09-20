@@ -2,7 +2,7 @@
 name: mcp-ops
 description: "Use when working with MCP servers — build, probe, wire, test, govern, retire. One owner for the whole MCP lifecycle."
 id: mcp-ops
-version: 3.0.0
+version: 3.0.1
 owner: AAA
 risk_tier: low
 floor_scope: [F1, F2, F4, F8, F10, F11, F12, F13]
@@ -66,8 +66,46 @@ triggers:
   - "MCP Apps"
   - "MCP governance wrapper"
   - "MCP drift audit"
+  - "MCP 400 on stateless probe"
+  - "MCP CI gate"
+  - "MCP OAuth conformance"
+  - "MCP auto-recovery"
+  - "MCP health check"
+  - "MCP probe"
+  - "MCP schema validation"
+  - "MCP server test"
+  - "MCP server validation"
+  - "MCP server/discover fails"
+  - "MCP smoke test"
+  - "MCP test"
+  - "MCP tool returns empty list"
+  - "MCP tool still returns old output"
+  - "MCP transport test"
+  - "MCP-App surface"
+  - "MCP-Protocol-Version 2026-07-28 vs 2025-11-25"
+  - "MCPChatGPT conformance"
+  - "MCPJam Inspector"
+  - "Ollama cold-start"
+  - "Unknown tool"
+  - "advertised but unreachable"
+  - "check the organ"
+  - "declared vs callable"
+  - "effect of a server.py edit"
+  - "era mismatch diagnose"
+  - "gate change not taking effect"
+  - "is this tool broken"
+  - "model fallback chain"
+  - "patched an MCP server"
+  - "probe this organ"
+  - "registry drift"
+  - "reload an MCP server"
+  - "stateless MCP"
+  - "surface truth"
+  - "tool not callable"
+  - "MCP server procurement"
+  - "which MCP server to adopt"
 negative_triggers:
-  - "choosing WHICH MCP server to buy/adopt (procurement, not operation) → mcp-sota-shopping-list"
+  - "choosing WHICH MCP server to buy/adopt is PROCUREMENT — a lane inside this skill: Stage 1b / references/absorbed-mcp-sota-shopping-list.md (name tombstoned, not a separate skill)"
   - "the target is a WEALTH MCP tool → wealth-mcp-ops"
   - "the target is the Runpod MCP server → runpod-mcp"
   - "the target is the TouchDesigner twozero MCP → touchdesigner-mcp"
@@ -130,7 +168,7 @@ Before this skill is used on any mutating, irreversible, or high-blast-radius ta
 - **Do not run untrusted MCP servers** outside the `arifos-untrusted-sandbox` skill.
 - **Do not hardcode secrets** in server code or client configs; use env vars / SOPS.
 - **Do not treat a successful health check as authority** to act beyond observer class.
-- If the question is *which* server to adopt → `mcp-sota-shopping-list` (procurement). This skill is for operating the ones you have.
+- If the question is *which* server to adopt → **Stage 1b** / `references/absorbed-mcp-sota-shopping-list.md` (procurement is a lane **inside** this skill since v3.0.1; the name `mcp-sota-shopping-list` is a tombstone, not a separate skill).
 
 ---
 
@@ -174,7 +212,13 @@ RFC 8705 (PRM), advertised through the `MCP-Protocol-Version` header.
 beacon verification, pitfalls) · `references/absorbed-forge-mcp-registry-publish.md` (auth, scoped
 tokens, scoped-namespace errors, verification).
 
-**Not this skill:** procurement / "which server should we adopt" → `mcp-sota-shopping-list`.
+### Stage 1b — SHOULD WE ADOPT IT AT ALL (procurement)
+
+**Observable:** you are choosing *whether / which* server to install, not operating one you already have.
+Read `references/absorbed-mcp-sota-shopping-list.md`: the MCP context tax (15+ servers consume 30–40% of the
+session window before any work starts), the install rule (**MCPs for state or data an agent cannot reach from
+a shell — never MCPs wrapping a local CLI**), and the 2026-09 per-category shortlist with live status.
+
 
 ---
 
@@ -563,13 +607,13 @@ hermes mcp test <name>
 
 | Skill | Why it is not merged here |
 |---|---|
-| `mcp-sota-shopping-list` | Procurement reference — choosing a server, not operating one. |
 | `wealth-mcp-ops` | WEALTH-organ MCP tools (testing + hardening); organ-bounded, own repo layout. |
 | `runpod-mcp` | Platform lane: Runpod pods/endpoints/jobs. Distinct triggers and setup. |
 | `touchdesigner-mcp` | Platform lane: twozero MCP for TouchDesigner. Distinct triggers and tool surface. |
 | `runtime-probe` | Focused instrument: one-shot MCP health + schema + transport classification. |
 | `agent-tool-verification` | General claim discipline for any tool, not only MCP. |
 | `qwen-harness-tools` | Model-side built-in harness tools; not MCP at all. |
+| ~~`mcp-sota-shopping-list`~~ | **FOLDED IN (2026-09-20, v3.0.1)** — now Stage 1b / `references/absorbed-mcp-sota-shopping-list.md`; the name is a tombstone. The v3.0.0 decision was to keep it separate as a procurement reference, the second pass folded it so that "which MCP server should we adopt" lands on a reference instead of routing away. **Both statements are kept: the contradiction is the trail.** |
 
 ## References
 
@@ -581,4 +625,8 @@ hermes mcp test <name>
 
 *Consolidated 2026-08-26 from FORGE-mcp-ops, FORGE-mcp-federation-ops, FORGE-mcp-lifeguard.*
 *Consolidated 2026-09-20 (v3.0.0): 19 further MCP names absorbed — see `references/absorbed-INDEX.md`.*
+*2026-09-20 (v3.0.1, second pass): trigger list completed to the full declared union of the 14
+assigned MCP members (36 triggers added — the v3.0.0 list dropped the declared surfaces of mcp-testing,
+mcp-organ-probe, mcp-edit-activation and mcp-ops); mcp-sota-shopping-list folded in as Stage 1b; all 14
+member names archived to `.archive/merge-20260920/mcp/` and left resolving as tombstones.*
 *AAA Skill Library — DITEMPA BUKAN DIBERI ⚒️*
