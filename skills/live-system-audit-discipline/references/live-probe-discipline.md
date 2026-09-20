@@ -22,6 +22,71 @@ One logical name (vault, registry, ledger) can resolve to different physical loc
 host. Before designing a cleanup or migration, enumerate the candidate paths and determine which
 one the consumer reads. Cleaning the path nobody reads fixes nothing while looking like progress.
 
+### Writer and reader on different ledgers — the deferred-witness defect
+
+The severe form is not two copies of the same data. It is two stores of the SAME OBJECT CLASS that
+disagree about membership: the producer appends to one, the verifier reads the other, and neither
+is wrong. Both report healthy; every receipt the loop exists to collect lands with no witness.
+
+```bash
+# the id sets, from every candidate store, before any conclusion about "verification exists"
+python3 - <<'PY'
+import json, pathlib
+stores = [pathlib.Path(".../predictions.json"), pathlib.Path(".../predictions.jsonl")]
+def ids(p):
+    if not p.exists(): return set()
+    raw = p.read_text()
+    rows = ([json.loads(l) for l in raw.splitlines() if l.strip().startswith("{")]
+            if p.suffix == ".jsonl" else json.loads(raw).get("predictions", []))
+    return {r.get("prediction_id") for r in rows if r.get("prediction_id")}
+sets = {str(p): ids(p) for p in stores}
+for k, v in sets.items(): print(len(v), k)
+a, b = sets.values()
+print("overlap:", len(a & b), "| only-A:", len(a - b), "| only-B:", len(b - a))
+PY
+```
+
+An overlap of **zero** is the finding. Report it as such — not as "the verifier is broken".
+
+**Rule out the cheap alternative before naming a mechanism.** If a row looks overdue and the tool
+says nothing is due, load the tool's own input and print the ids. A first, plausible story — the
+row is being skipped on a stale field — is very often wrong: the tool reads a different ledger and
+has never seen that row. The stale-field story and the disjoint-store story produce the same
+symptom and only one of them is true.
+
+**Silent skips: a caught exception is an absence.** A row loop wrapped in a bare `except: pass`
+turns a key-name mismatch (`state` vs `status`), a missing date, or a bad format into a vanished
+row. Accept both key spellings, mark anything unparseable on the row itself, and count it in the
+output. "0 due" must always mean "0 of the rows I loaded", stated with the loaded count.
+
+### Merging stores safely
+
+If you fix it by reading a union, the merge is only half the repair — the other half is the write
+path.
+
+1. **Tag every row with the store it came from** at load time (`_store`), and write each row back
+to its OWN ledger. Without this the union silently MIGRATES every row into whichever file is
+written first — replacing a visible split with a hidden one.
+2. **Key on a real id**, deduplicate on it, and keep the losing store addressable on the row
+   (`_also_in`) so a genuine collision stays visible rather than being resolved by file order.
+3. **Back up a line-oriented store before rewriting it**, and only rewrite the rows you own.
+4. **Test the round trip without any verification in between:** `load → save → reload`, and assert
+   the per-store counts are unchanged. Counts equal before and after is the proof that no migration
+   happened; a total that matches while the split moved is the failure this test exists to catch.
+5. **Report the residual, do not hide it.** The two stores are still two. Converging them is a
+   data decision with an owner; until then, say that the union makes every receipt collectible and
+   leave the ownership question open.
+
+### Still-structural gaps to report alongside the fix
+
+- **A due date with no named keeper.** The record carries a `verify_date` and no owner/witness
+  field, so nothing survives the interval between the claim and its receipt. On any ledger of
+  predictions, check for both and report the missing one as its own finding — a date is not a
+  witness.
+- **A private row in a public store.** Compare the store's schema against its sibling (e.g. events
+  carry an `audience` field, predictions do not) and flag the mismatch, because it decides who is
+  allowed to read the receipt when it lands.
+
 ## Working while others write
 
 Assume other agents share the repo and are committing.
