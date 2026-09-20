@@ -10,7 +10,7 @@
   "namespaces": 150,
   "bodies": 518,
   "projections": 5,
-  "alias_paths": 175,
+  "alias_paths": 199,
   "max_skill_depth": 4,
   "skills_by_depth": {
    "0": 173,
@@ -2733,6 +2733,8 @@
    "owner_layer": "F13 SOVEREIGN (Arif) \u2014 forged by AAA",
    "aliases": [
     "/root/AAA/skills/agent-claim-verification",
+    "/root/AAA/skills/agent-finding-verification",
+    "/root/AAA/skills/audit-falsification-discipline",
     "/root/AAA/skills/audit-intake-verification",
     "/root/AAA/skills/audit-repo-reality",
     "/root/AAA/skills/audit-repository-entropy",
@@ -4860,7 +4862,9 @@
    "deprecated": false,
    "owner_layer": "F13 SOVEREIGN",
    "aliases": [
+    "/root/AAA/skills/arifos-auto-init",
     "/root/AAA/skills/arifos-frozen-snapshot-init",
+    "/root/AAA/skills/hermes-naked-prior-audit",
     "/root/AAA/skills/session-federation-discovery",
     "/root/AAA/skills/session-init-human-first",
     "/root/AAA/skills/session-librarian",
@@ -13352,6 +13356,9 @@
    "deprecated": false,
    "owner_layer": "AAA",
    "aliases": [
+    "/root/AAA/skills/aaa-doctrine-sealing",
+    "/root/AAA/skills/forge-execution-governance",
+    "/root/AAA/skills/forge-governance-analysis",
     "/root/AAA/skills/forge-governance-jsonld",
     "/root/AAA/skills/governance-audit",
     "/root/AAA/skills/governance-benchmark-authoring"
@@ -16752,7 +16759,11 @@
     "/root/AAA/skills/aaa-skill-governor-runtime",
     "/root/AAA/skills/domains/forge/skill-creator",
     "/root/AAA/skills/domains/forge/skill-drift",
-    "/root/AAA/skills/domains/forge/skill-inventory"
+    "/root/AAA/skills/domains/forge/skill-inventory",
+    "/root/AAA/skills/skill-audit-methodology",
+    "/root/AAA/skills/skill-library-integrity",
+    "/root/AAA/skills/skill-taxonomy-reclassification",
+    "/root/AAA/skills/skills-cold-storage-ops"
    ],
    "authority": {
     "risk_tier": "medium",
@@ -17142,8 +17153,17 @@
    "owner_layer": "AAA/telegram-ops",
    "aliases": [
     "/root/AAA/skills/forge-telegram-audit",
+    "/root/AAA/skills/hermes-lane-switch-routing",
+    "/root/AAA/skills/hermes-telegram-gateway-authorization",
     "/root/AAA/skills/hermes-telegram-stack-zen",
-    "/root/AAA/skills/outbound-message-delivery"
+    "/root/AAA/skills/outbound-message-delivery",
+    "/root/AAA/skills/relay-echo-loop-handling",
+    "/root/AAA/skills/telegram-bot-identity-and-group-routing",
+    "/root/AAA/skills/telegram-bot-routing-doctrine",
+    "/root/AAA/skills/telegram-conversation-history-extraction",
+    "/root/AAA/skills/telegram-group-bot-rollout",
+    "/root/AAA/skills/telegram-group-sender-identity",
+    "/root/AAA/skills/telegram-userbot-telethon"
    ],
    "authority": {
     "risk_tier": "high",
@@ -17692,7 +17712,11 @@
    "owner_layer": "AAA",
    "aliases": [
     "/root/AAA/skills/agi-web-optimization",
+    "/root/AAA/skills/forge-web-intelligence",
     "/root/AAA/skills/hermes-research-substrate",
+    "/root/AAA/skills/link-to-evidence",
+    "/root/AAA/skills/sovereign-search",
+    "/root/AAA/skills/web-extraction-fallbacks",
     "/root/AAA/skills/web-scrape",
     "/root/AAA/skills/web-search",
     "/root/AAA/skills/web-search-query-gate-recovery"
