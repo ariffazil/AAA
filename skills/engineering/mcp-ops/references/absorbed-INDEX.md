@@ -69,3 +69,55 @@
 
 `references/pre-merge-mcp-ops-v2.1.0.md` — the 12,322-byte v2.1.0 body (2026-08-26 consolidation of
 FORGE-mcp-ops + FORGE-mcp-federation-ops + FORGE-mcp-lifeguard), preserved before the v3.0.0 rewrite.
+
+---
+
+## FINAL STATE after the convergence pass (2026-09-20, v3.0.1)
+
+Two agents worked this cluster in parallel. The orchestrator's MCP agent (`/root/forge_work/merge-2026-09-20/_mcp_merge/`)
+found the v3.0.0 umbrella already on disk and **completed it instead of duplicating it**:
+
+| Their action | Effect |
+|---|---|
+| triggers 33 -> 71 | union of all 14 assigned members' declared triggers; `triggers_lost: []` |
+| folded `mcp-sota-shopping-list` | `references/absorbed-mcp-sota-shopping-list.md` + **Stage 1b** (procurement lane) |
+| archived 13 member dirs | `/root/AAA/skills/.archive/merge-20260920/mcp/<member>/` + tombstone symlinks at the old paths |
+| wrote | `alias-mcp.json`, `mcp-receipt.json` in `/root/forge_work/merge-2026-09-20/` |
+
+Their pass also **restored** a number of member directories to their original paths (22:37:32) as part of
+its own procedure. Five names that were NOT in its 14-member list were left as real dirs and had their
+aliases re-applied by the wave-1 agent:
+
+| Name | Re-applied outcome |
+|---|---|
+| `forge-fastmcp` | symlink -> `mcp-ops`; restored original preserved at `.frozen/2026-09-20-mcp-consolidation/restored-by-convergence-pass/forge-fastmcp` |
+| `telegram-mcp-product-line` | symlink -> `mcp-ops`; original preserved at `.../restored-by-convergence-pass/domains/general/forge/mcp-ops/telegram-mcp-product-line` |
+| `federation-mcp-drift-audit` | symlink -> `mcp-ops`; original preserved at `.../restored-by-convergence-pass/domains/general/apex/governance-core/federation-mcp-drift-audit` |
+| `wealth-mcp-testing` | symlink -> `wealth-mcp-ops`; original preserved at `.../restored-by-convergence-pass/domains/wealth/forge/mcp-ops/wealth-mcp-testing` |
+| `wealth-mcp-tool-hardening` | symlink -> `wealth-mcp-ops`; original preserved at `.../restored-by-convergence-pass/domains/wealth/forge/mcp-ops/wealth-mcp-tool-hardening` |
+
+Two preservation containers therefore hold the same originals: `.archive/merge-20260920/mcp/` (the
+orchestrator's convention) and `.frozen/2026-09-20-mcp-consolidation/` (this cluster's convention).
+That is deliberate redundancy, not duplication of authorship: content is byte-identical in both.
+
+
+## Second pass — 2026-09-20 (v3.0.1)
+
+| Absorbed name | Original location | Body preserved at | Archive | Frozen copy |
+|---|---|---|---|---|
+| `mcp-sota-shopping-list` | `AAA/skills/mcp-sota-shopping-list` | `references/absorbed-mcp-sota-shopping-list.md` (4-line provenance header; body byte-identical) | `.archive/merge-20260920/mcp/mcp-sota-shopping-list` | — |
+
+**Second-pass corrections to this file's own claims**
+
+- The 14 assigned member names are now archived under
+  `/root/AAA/skills/.archive/merge-20260920/mcp/<name>/` (all 14 carry a `SKILL.md`) *and* their
+  original paths are tombstones resolving to this directory. Between ~22:37 and the second pass those
+  paths had been restored as real directories, so the claim "every absorbed name still resolves — as a
+  symlink to `mcp-ops`" was temporarily false for 13 of the 14; it is true again for those 13.
+- Still **false** for three names this file lists as absorbed, which are outside the second pass's
+  member list and were therefore not touched: `forge-fastmcp`,
+  `domains/general/apex/governance-core/federation-mcp-drift-audit`,
+  `domains/general/forge/mcp-ops/telegram-mcp-product-line` (all still live directories).
+- Trigger list corrected: v3.0.0 advertised 33 triggers, which dropped 36 of the members' declared
+  triggers (`mcp-testing` 18, `mcp-organ-probe` 9, `mcp-edit-activation` 6, `mcp-ops` 3). v3.0.1
+  carries 71 = full declared union (58) + 2 procurement phrases + the 13 legacy siblings' triggers.

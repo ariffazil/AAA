@@ -1,23 +1,37 @@
 # NAMESPACE: telegram-ops
 
-> **Marker file** (added 2026-09-19, Fasa 1 skill hygiene).
-> This directory is a *namespace*, not a skill.
-> Skills live in the subdirectories listed below.
+> **Updated 2026-09-20 (F13 skill-merge) — this directory is now the UMBRELLA, not a namespace.**
+> The skill `telegram-ops` lives here: `SKILL.md` + `references/`.
+> Previous marker (2026-09-19) declared this a namespace holding `outbound-message-delivery`;
+> that skill is now `references/outbound-message-delivery.md`, archived at
+> `/root/AAA/skills/.archive/merge-20260920/telegram/outbound-message-delivery/`.
 
-## Purpose
-This namespace groups related skills under one roof for discovery and routing.
-Each subdirectory is an independent skill with its own SKILL.md.
+## What lives here
 
-## Contained skills (1)
-- `outbound-message-delivery`
+- `SKILL.md` — the umbrella. Its `## FLOW` section is the routing table: **situation / observable →
+  reference file**. Read it first.
+- `references/` — the twelve merged member bodies, byte-identical to the originals, each under a
+  four-line provenance header carrying the source sha256.
+
+Merged members (12 → 1): forge-telegram-audit · hermes-lane-switch-routing ·
+hermes-telegram-gateway-authorization · hermes-telegram-stack-zen · outbound-message-delivery ·
+relay-echo-loop-handling · telegram-bot-identity-and-group-routing · telegram-bot-routing-doctrine ·
+telegram-conversation-history-extraction · telegram-group-bot-rollout ·
+telegram-group-sender-identity · telegram-userbot-telethon
+
+Archive: `/root/AAA/skills/.archive/merge-20260920/telegram/`
+Receipt: `/root/forge_work/merge-2026-09-20/telegram-receipt.json`
+Alias fragment: `/root/forge_work/merge-2026-09-20/alias-telegram.json`
 
 ## Owner
 
 **Owner:** `AAA/telegram-ops`
 
-_Single-writer policy (Fasa 2): owner has write authority; other layers can read but not edit._
-
 ## Conventions
-- Do not edit skill SKILL.md files from this namespace layer.
-- To add a new skill: create subdirectory with SKILL.md, then add to FEDERATED_SKILLS_REGISTRY_V3.yaml.
-- To deprecate: rename subdir to `<name>.DEPRECATED-<date>`, do not delete.
+
+- The umbrella holds rules and routing; a reference holds the procedure. Do not summarise a
+  reference into `SKILL.md`.
+- Do not edit a reference body except to re-sync it with a changed original — and if you do,
+  update its provenance `sha256-body` line.
+- `references/` is a loader support dir: a `SKILL.md` inside it would not be discovered, so it is
+  safe for bodies to keep quoting paths like `references/foo.md` from their original skill.
