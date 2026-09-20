@@ -1,0 +1,36 @@
+{
+  "cluster": "governance",
+  "umbrella": "governance-ops",
+  "merged_at": "2026-09-20T14:36:41Z",
+  "members": {
+    "aaa-doctrine-sealing": {
+      "original_path": "/root/AAA/skills/aaa-governance/aaa-doctrine-sealing",
+      "archived_path": "/root/AAA/skills/.archive/merge-20260920/governance/aaa-doctrine-sealing"
+    },
+    "constitutional-floors": {
+      "original_path": "/root/AAA/skills/domains/general/apex/governance-core/constitutional-floors",
+      "archived_path": "/root/AAA/skills/.archive/merge-20260920/governance/constitutional-floors"
+    },
+    "forge-execution-governance": {
+      "original_path": "/root/AAA/skills/domains/general/apex/governance-core/forge-execution-governance",
+      "archived_path": "/root/AAA/skills/.archive/merge-20260920/governance/forge-execution-governance"
+    },
+    "forge-governance-analysis": {
+      "original_path": "/root/AAA/skills/domains/general/apex/governance-core/forge-governance-analysis",
+      "archived_path": "/root/AAA/skills/.archive/merge-20260920/governance/forge-governance-analysis"
+    },
+    "forge-governance-jsonld": {
+      "original_path": "/root/AAA/skills/forge-governance-jsonld",
+      "archived_path": "/root/AAA/skills/.archive/merge-20260920/governance/forge-governance-jsonld"
+    },
+    "governance-audit": {
+      "original_path": "/root/AAA/skills/governance-audit",
+      "archived_path": "/root/AAA/skills/.archive/merge-20260920/governance/governance-audit"
+    },
+    "governance-benchmark-authoring": {
+      "original_path": "/root/AAA/skills/governance-benchmark-authoring",
+      "archived_path": "/root/AAA/skills/.archive/merge-20260920/governance/governance-benchmark-authoring"
+    }
+  },
+  "note": "member dirs moved here byte-untouched by the governance-ops merge"
+}
