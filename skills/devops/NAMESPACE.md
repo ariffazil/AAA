@@ -8,8 +8,12 @@
 This namespace groups related skills under one roof for discovery and routing.
 Each subdirectory is an independent skill with its own SKILL.md.
 
-## Contained skills (1)
-- `mcp-transport-fix`
+## Contained skills (1 entry · 1 alias)
+- `mcp-transport-fix` — **ALIAS → `/root/AAA/skills/engineering/mcp-ops`** (merged 2026-09-20)
+- `mcp-edit-activation` — **ALIAS → `/root/AAA/skills/engineering/mcp-ops`** (merged 2026-09-20)
+
+> This namespace now holds **no standalone skill**: both entries are aliases pointing at the MCP
+> owner. They are kept so no old name stops resolving (2026-09-20 MCP cluster merge).
 
 ## Owner
 
