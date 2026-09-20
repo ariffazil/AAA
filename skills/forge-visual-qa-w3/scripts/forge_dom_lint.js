@@ -16,6 +16,10 @@
  * WITNESS: W₂ — structural/syntax only. Cannot see pixels. Cannot write W₃.
  */
 
+import { createRequire } from 'node:module';
+// ESM package: bind a module-scoped require (SCAR-001 / esm_require_guard).
+const require = createRequire(import.meta.url);
+
 const fs = require('fs');
 const crypto = require('crypto');
 const { JSDOM } = require('jsdom');
@@ -260,7 +264,7 @@ function main() {
     evidence: `required: [${constraints.required_elements.map(t => {
       const el = doc.querySelector(t);
       return `${t}:${el ? 'present' : 'missing'}`;
-    ).join(', ')}], nav_links: ${doc.querySelectorAll('nav a[href]').length}, deviations: ${deviations.length}`,
+    }).join(', ')}], nav_links: ${doc.querySelectorAll('nav a[href]').length}, deviations: ${deviations.length}`,
     deviations,
     label: 'DER',
     constraints_checked: Object.keys(constraints).filter(k => constraints[k] !== undefined),
