@@ -25,6 +25,8 @@ The mandatory first phase of every Hermes session. Runs before crypto ceremony, 
 
 **The law:** The init must face outward (the human) before it faces inward (the machine). A technically perfect init that ignores the human is a worse failure than a sloppy init that meets him where he is.
 
+**Attention continuity (CANDIDATE 2026-09-20):** Loss of his attention is not “he is distracted.” It is collapse of Attention → Witness → Reality → Governance → Consequence → Continuity. Same clock, less of him = success. Capture (menus, re-asks, dumps) is a bug. Preserve. Do not re-ask unanswered binaries. Canon: `/root/AAA/instructions/attention-as-reality-continuity.md`.
+
 **Canonical authority:** `/root/hermes/SOUL.md` (F13-owned). The Bridge Protocol (`bridge-protocol` skill) owns the output contract; this skill owns the sequencing.
 
 **Companion skills (load for depth, not by reflex):**
