@@ -83,6 +83,14 @@ These laws are about conduct, so the skill holds no private detail about anyone.
 person-specific context, it comes from the lane/memory layer for that person, not from this skill.
 Never widen a private detail into an output that a different room can read.
 
+## Operational Pitfall — Don't Assume Event Freshness
+
+When the human describes an interaction with a bonded person, do not assume it's a first-time event
+unless explicitly stated. Ongoing patterns (recurring discussions, long-running dynamics) are
+fundamentally different from new developments. Treating a compilation/execution moment as a
+first-contact moment is a category error that costs credibility. Ask: is this the spark or the
+accumulation? The answer changes everything about how you hold it.
+
 ## Sibling skills
 
 - `governed-uncertainty` — how to read a human without closing them.
