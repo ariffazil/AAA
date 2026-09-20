@@ -1,0 +1,56 @@
+# MCP Governance Policy — Starter Template
+
+> Copy this file and customize for your MCP server/toolset.
+
+[meta]
+version = "1.0.0"
+created = "2026-08-28"
+signature_algorithm = "ed25519"
+signer = "888-SOVEREIGN"
+chain_hash = "sha256:genesis"
+
+[global]
+max_tools_per_turn = 5
+intent_router_enabled = true
+interceptor_enabled = true
+audit_chain_path = "/root/AAA/governance/audit/mcp-policy-audit-chain.jsonl"
+default_unknown_tool = "UNCHECKED_BLOCK"
+
+# ── Tool Classifications ──
+# Impact Radius: 0=read-only, 1=compute, 2=propose, 3=state-mutation, 4=high-impact, 5=critical
+# arifos_allowed_roles: empty = 888 Sovereign only
+
+[tools.example_read_tool]
+arifos_is_reversible = true
+arifos_impact_radius = 0
+arifos_requires_888_hold = false
+arifos_category = "read_only"
+arifos_allowed_roles = ["333-AGI", "555-ASI", "888-APEX", "A-FORGE"]
+
+[tools.example_compute_tool]
+arifos_is_reversible = true
+arifos_impact_radius = 1
+arifos_requires_888_hold = false
+arifos_category = "compute"
+arifos_allowed_roles = ["333-AGI", "555-ASI", "A-FORGE"]
+
+[tools.example_mutation_tool]
+arifos_is_reversible = false
+arifos_impact_radius = 3
+arifos_requires_888_hold = true
+arifos_category = "state_mutation"
+arifos_allowed_roles = ["333-AGI"]
+
+[tools.example_critical_tool]
+arifos_is_reversible = false
+arifos_impact_radius = 5
+arifos_requires_888_hold = true
+arifos_category = "critical_mutation"
+arifos_allowed_roles = []
+
+# ── Intent Router Domains ──
+
+[intent_router.domains.example_domain]
+keywords = ["keyword1", "keyword2", "keyword3"]
+tools = ["example_read_tool", "example_compute_tool"]
+priority = 1

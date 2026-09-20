@@ -21,7 +21,9 @@ triggers:
 
 # Public Claims Maintenance
 
-The audited direction of this work — checking someone else's report against live state — lives elsewhere. This skill is the **repair direction**: the claims a repository makes about *itself*, in files whose entire purpose is that people believe them.
+The audited direction of this work — checking someone else's report against live state — lives elsewhere (`arifos-evidence-policy` for a pasted verdict and its figures, `live-system-audit-discipline` for probing a running system). This skill is the **repair direction**: the claims a repository makes about *itself*, in files whose entire purpose is that people believe them.
+
+When the repair is not to fix a sentence but to **publish a record a stranger can re-derive** — receipts, denominators, defects, each with a verifier beside it — go to `arifos-evidence-policy` → `references/verifiable-accountability-surface.md`. That is the constructive counterpart to this skill: here you repair a claim, there you make the estate's own numbers checkable from outside.
 
 Fire it whenever a fact changes (a release lands, a report is accepted, a review starts, a version bumps) and the surfaces stating the old fact are not swept. Status tables, `SECURITY.md` gap registries, version pins, and provenance sections are all in scope.
 

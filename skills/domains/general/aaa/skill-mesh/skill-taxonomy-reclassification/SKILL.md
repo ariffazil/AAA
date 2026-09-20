@@ -158,6 +158,59 @@ folds, one SKILL.md per skill, byte-identical before and after. Merging is a *di
 and needs its own mandate; a taxonomy mandate is not a merge mandate. Verify with a sha256 multiset
 of every SKILL.md before vs after: `content lost` must equal 0.
 
+### The merge mandate (what to do when the mandate IS a merge)
+
+When the sovereign asks for fragmentation collapsed — *"mcp skills all under one with proper flow,
+GitHub skills one, governance one"* — the constraint above inverts: `all skills must remain` becomes
+**`all names must resolve, one owner per capability`**. Full recipe, receipt format and grouping
+table: `references/cluster-merge-recipe.md`.
+
+Two rules are always-on for any merge, and both failures are silent:
+
+**A merge unloads every skill whose trigger it dropped.** The umbrella's `triggers:` must be the
+UNION of every member's, computed by a script that parses frontmatter on both sides — never by eye,
+never from a hand-written list. A trigger that vanishes does not error; the skill simply stops
+loading on the situation it used to catch, which is the exact situation the merge was supposed to
+protect. Same discipline for `description`: its first ~57 chars must stand alone as a trigger.
+
+**The shared indices are single-writer, so workers emit fragments.** `SKILL_ALIAS_TABLE.json`,
+`SKILLS_INDEX.json`, `FEDERATED_SKILLS_REGISTRY_V3.yaml` and `PLACEMENT_MANIFEST.json` are read by
+the loader and written by one generator. N concurrent merge agents each editing one of them is a
+lost-update race that reports success and keeps only the last writer. Every worker writes its own
+`alias-<cluster>.json` fragment into the workspace; the orchestrator folds the fragments in once,
+after every worker has returned.
+
+**Case-insensitive name collision is the cheapest duplicate detector, and it lies about being
+safe.** Find the twins, then confirm they are really twins:
+
+```bash
+find <trees> -name SKILL.md -not -path '*/.archive*' \
+  | sed 's|.*/\([^/]*\)/SKILL.md|\1|' | tr 'A-Z' 'a-z' | sort | uniq -d
+```
+
+A name pair like `FORGE-fastmcp` / `forge-fastmcp` **is not byte-identical**. Measured: every pair
+sampled differed by 30-58 bytes, in frontmatter only — so a "safe zero-loss removal" of one copy
+silently discards the newer header fields. `cmp -s a b` first; if it differs, `diff` it and fold the
+delta into the canonical owner BEFORE any symlink replaces the other. Treat divergence as content,
+not as noise to average away.
+
+**Delete nothing, ever — alias everything.** The merge produces one canonical owner directory plus a
+symlink at every name it absorbed. Verify by re-enumerating: the pre- and post-merge SKILL.md count
+is equal, or every decrement is individually explained.
+
+**A multi-writer git repo needs `flock`, because `index.lock` is not a lock.** Parallel merge agents
+on one canonical tree race the index; git's own lock serialises a single command, not a
+read-modify-write sequence. Every commit goes through the same lock file:
+
+```bash
+flock /root/.git-skill-merge.lock git -C <canonical> add -A skills/
+flock /root/.git-skill-merge.lock git -C <canonical> commit -m "skill-merge: <cluster> — <what>"
+```
+
+**Genuinely different capabilities are not fragmentation.** Two skills that share a topic but not a
+capability (operating a thing vs a procurement/selection reference for it) both stay; say which and
+why in the receipt. A wrong merge is as damaging as no merge and is much harder to notice.
+
 **Symlink topology for anything already canonical.** A skill whose physical home is outside the
 harness root (`/root/AAA/skills`, `/root/.agents/skills`) gets a symlink leaf at its coordinate.
 The harness then routes through the matrix without carrying a second drifting copy.
@@ -264,6 +317,9 @@ the uncategorised count moved AND the skill still resolves from its surviving ca
   preserved (optionally against a pre-migration tarball), every map row resolves on disk, rows whose
   target does not exist reported with the real location, strays and flat-layout leftovers listed.
   Non-zero exit on any failure.
+- `references/cluster-merge-recipe.md` — the merge mandate end to end: grouping a cluster into a
+  real flow, divergent-twin handling, alias-and-verify, the per-cluster subagent brief, and the
+  `MERGE_RECEIPT.md` shape (preserved / dropped / left alone).
 
 ## Scoring the layer (APEX × ZEN)
 
