@@ -5,6 +5,16 @@
 > **Domain:** human readiness, vitality, fatigue, dignity  
 > **APEX KERNEL:** REALITY > EVERYTHING
 
+## PROXY→REALITY (Proxy-Reality Paradox)
+
+| | |
+|---|---|
+| **Proxy** | Biometric scores, vitality indices, triadic snapshot numbers |
+| **Reality** | Actual human state — energy, readiness, dignity, meaning |
+| **Failure mode** | Metric reduction — reducing a person to a score; ε_qualia > 0 means the number is always incomplete |
+
+**Every assessment must ask:** "Does this score capture the human, or only the dimension I can measure?"
+
 ## INIT
 
 ```python

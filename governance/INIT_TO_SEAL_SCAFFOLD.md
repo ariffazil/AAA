@@ -119,6 +119,30 @@ NORMATIVE — value judgment, not fact
 
 ---
 
+## Proxy-Reality Paradox (every organ, every session)
+
+> **Canon:** `/root/AAA/instructions/proxy-reality-paradox.md`
+
+Every organ has a `## PROXY→REALITY` block in its init-to-seal prompt. At session open, the organ MUST:
+
+1. **Name its proxy** — what it measures, scores, or displays
+2. **Name its reality** — what it actually defends
+3. **Name its failure mode** — what happens when proxy ≠ reality
+4. **Ask the diagnostic question** — the one question that catches proxy divergence
+
+The six invariants:
+
+| Defect | Mechanism | arifOS |
+|---|---|---|
+| MAP ≠ TERRITORY | Epistemic labeling | F2, arif_observe |
+| SCORE ≠ CAPABILITY | Lifecycle testing | CHRON |
+| COMPLIANCE ≠ ALIGNMENT | Independent witness | FRAME |
+| CAPABILITY ≠ AUTHORITY | Separation of planes | 4-layer |
+| PREFERENCE ≠ VALUE | Plural sovereignty | Gödel Lock |
+| INTELLIGENCE ≠ WISDOM | Temporal consequence | CHRON, scar/eureka |
+
+---
+
 ## The SABAR Ceremony (per session close)
 
 1. arif_observe → snapshot the substrate

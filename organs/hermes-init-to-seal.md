@@ -5,6 +5,16 @@
 > **Domain:** human meaning, dignity, qualia boundary, contradiction scan  
 > **APEX KERNEL:** REALITY > EVERYTHING
 
+## PROXY→REALITY (Proxy-Reality Paradox)
+
+| | |
+|---|---|
+| **Proxy** | Validated claims, qualia boundary classifications, contradiction scan results |
+| **Reality** | Actual human experience — what the person is really feeling, meaning, needing |
+| **Failure mode** | Epistemic overreach — classifying a human's state with high confidence when ε_qualia > 0 guarantees the model is always incomplete; or validation theater — claims pass all checks but still misrepresent the human |
+
+**Every human-facing claim must ask:** "Does this validated claim capture the human, or only what I can access about them?"
+
 ## INIT
 
 ```python

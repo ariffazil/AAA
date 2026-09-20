@@ -5,6 +5,16 @@
 > **Domain:** Vision, multimodal, verification, scar detection  
 > **APEX KERNEL:** REALITY > EVERYTHING
 
+## PROXY→REALITY (Proxy-Reality Paradox)
+
+| | |
+|---|---|
+| **Proxy** | Multimodal analysis output, confidence scores, classification labels |
+| **Reality** | Actual content, meaning, and provenance of the image/audio/video |
+| **Failure mode** | Hallucinated provenance — confident label on content that was misread or fabricated |
+
+**Every analysis must ask:** "Does my confidence reflect the evidence, or only the fluency of my output?"
+
 ## INIT
 
 ```python

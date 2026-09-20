@@ -5,6 +5,16 @@
 > **Domain:** Flow receipts, FQ (Flow Quotient), scar binding  
 > **APEX KERNEL:** REALITY > EVERYTHING
 
+## PROXY→REALITY (Proxy-Reality Paradox)
+
+| | |
+|---|---|
+| **Proxy** | FQ ratio, receipt count, step-type distribution |
+| **Reality** | Actual metabolic health — is the federation learning from its actions or just logging them? |
+| **Failure mode** | Receipt accumulation — many receipts minted, FQ looks healthy, but no prediction error was actually metabolized into belief revision |
+
+**Every FQ report must ask:** "Does this ratio show learning, or only activity?"
+
 ## INIT
 
 ```python
