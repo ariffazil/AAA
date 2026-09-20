@@ -994,3 +994,173 @@ The failure was not "wrong person". It was **premature closure on a category wor
 > Kategori tak boleh dikahwinkan dengan seorang manusia.
 > Nama khas menunjuk. Nama am mencakup.
 > Kalau hang campur, hang bukan simpan memori — hang simpan palsu yang kemas.
+
+---
+
+## Axiom 10: Verb Decomposition — Creation Is a Chain, Not a Function
+
+> Source: arifOS EUREKA-NAMING-CREATION-2026-09-21 (F13 SOVEREIGN conceptual verdict, draft awaiting kernel-fix ratification)
+> Classification: Canonical Instruction | Constitutional binding: F1 (AMANAH), F10 (ONTOLOGY), F11 (AUTHORITY), F12 (VERDICT), F13 (SOVEREIGN)
+
+### The Law
+
+Creation is not one operation. It is a chain of authority-bearing transitions:
+
+```
+DISCOVER → NAME → DECLARE → CREATE → EXECUTE → WITNESS → SEAL
+```
+
+Each verb carries a **distinct authority requirement** and emits a **distinct receipt shape**. Authority binds to the **lifecycle verb**, not to the object. A principal authorized to NAME is not authorized to CREATE — the system must enforce this at the verb level, not at the object level.
+
+### Verb Authority Table
+
+| Verb | Authority Required | State Transition | Receipt Shape |
+|---|---|---|---|
+| DISCOVER | none | observation only | `verb: DISCOVER, referent_id, witness` |
+| NAME | LOW | metadata only | `verb: NAME, referent_id, display_name, aliases[], authority: LOW` |
+| DECLARE | LIMITED | public surface emit | `verb: DECLARE, referent_id, surface_ref, authority` |
+| CREATE | LIMITED_MUTATE + Genesis Invariant | new persistent entity | `verb: CREATE, referent_id, schema, provenance, witness, receipt` |
+| UPDATE | LIMITED_MUTATE | supersession | `verb: UPDATE, referent_id, pre_hash, post_hash, supersedes, witness` |
+| EXECUTE | FULL_MUTATE + α proof | external reality transition | `verb: EXECUTE, referent_id, pre_state_hash, post_state_hash, authority_proof, witness_ref` |
+| WITNESS | any witness-class | confirmation of another's transition | `verb: WITNESS, observed_verb, observed_referent, observed_hash, witness_proof` |
+| SEAL | F13 SOVEREIGN | ledger-bound terminal | `verb: SEAL, artifact_id, substrate_hash, witness_hash, ledger_position` |
+
+### Failure mode (the phantom-seal class)
+
+A string saying "SEALED" with no pre/post hash, no witness, no ledger position carries **zero authority**. The receipt shape is what witnesses; the verb name alone is decorative.
+
+### Controls
+
+- **Identity primitive:** `Identity = (object_id, canonical_id, display_name, aliases[], proofs[])`. Authority functions ONLY on `canonical_id`. NEVER on `display_name`.
+- **Resolution rule:** `ResolveAlias(x) = canonical_id` BEFORE every authority check.
+- **Receipt validation:** every verb-emit must emit its declared shape; missing fields = `VOID`.
+
+### Cross-references
+
+- Constitutional Architecture Canon 2026-09-21 — universal action tuple `a = (actor, verb, target, ..., authority, ...)` (F13_RATIFIED_CHAT)
+- Six-Graph Federation Model 2026-09-16 — Identity edges connect `canonical_id`, not prose
+- Register as Channel (C15/C16) 2026-09-15 — Human/Agent layer separation prevents constitutional vocabulary from leaking into enforcement
+
+---
+
+## Axiom 11: Alpha-Rename Canary — Ontology Drift Becomes Measurable
+
+> Source: arifOS EUREKA-NAMING-CREATION-2026-09-21 (F13 SOVEREIGN conceptual verdict)
+> Classification: Canonical Instruction | Constitutional binding: F1, F2 (TRUTH), F11, F13
+
+### The Law
+
+For an LLM, the embedding of a token alters the probability landscape:
+
+\[
+P(y \mid x, \text{"judge"}) \neq P(y \mid x, \text{"router"})
+\]
+
+even when a programmer intended identity. Therefore the constitutional invariant:
+
+\[
+\boxed{
+\forall n_1, n_2 : \text{Resolve}(n_1) = \text{Resolve}(n_2) \Rightarrow \text{Semantics}(n_1) = \text{Semantics}(n_2)
+}
+\]
+
+For authorization specifically:
+
+\[
+\text{ResolveActor}(n_1) = \text{ResolveActor}(n_2) \Rightarrow \text{Auth}(n_1) = \text{Auth}(n_2)
+\]
+
+provided proof, scope, time, and capability are identical.
+
+### Why this matters
+
+Cosmetic rename that changes governance behavior = **constitutional failure**, testable. Without the canary, ontology drift is invisible. With the canary, every cosmetic rename becomes a falsifiable test.
+
+### Live evidence (the doctrine falsified its own kernel)
+
+2026-09-21T21:30Z, fresh `arif_init` → `arif_think`:
+
+```
+actor_id = "Arif"
+session_id = SEAL-2de44920f2bb4f0e
+authority = OBSERVE_ONLY
+mutation_allowed = false
+```
+
+But the SCT internally held `actor = "arif"`. Downstream `arif_think` was blocked with:
+
+```
+L11 AUTH: SCT invalid (signature or actor mismatch)
+```
+
+This is a laboratory-perfect specimen: the kernel claimed identity canonicalization, but downstream authority still compared the **presentation alias** instead of the **immutable canonical_id**. The principle falsified the implementation.
+
+### The Refined Creation Operator (witness separated from provenance)
+
+\[
+\boxed{
+C(S_t, \sigma, a, p, w, \alpha, t) \rightarrow (S_{t+1}, \text{id}, r)
+}
+\]
+
+- `S_t` = previous substrate state
+- `σ` = type/schema
+- `a` = actor canonical_id (not display_name)
+- `p` = provenance (where this came from)
+- `w` = witness (who/what independently observed) ← **separated from provenance**
+- `α` = authority proof
+- `t` = temporal anchor
+- `S_{t+1}` = new substrate state
+- `id` = canonical immutable identity
+- `r` = receipt
+
+**Why witness ≠ provenance:**
+
+\[
+\text{Provenance} = \text{where this came from}
+\]
+\[
+\text{Witness} = \text{who/what independently observed the transition}
+\]
+
+A process can have perfect provenance yet **no independent confirmation** that its claimed state transition actually occurred. That was the phantom-seal problem.
+
+### Controls
+
+- **Canary test spec:** for any consequential path, run twice with cosmetic rename of one identifier. Assert `System(P) ≡ System(α(P))` for identity, authority, verdict.
+- **Failure response:** divergence = `HOLD` + scar receipt. The system must NOT silently pass.
+- **Per-path coverage:** every response path that emits authority must have an alpha-rename canary, not just `arif_init`.
+
+### Cross-references
+
+- Axiom 5: Name ≠ Label (referent > name)
+- Axiom 8: Name Palsu Destroys Compression (symbol ≠ substrate)
+- Axiom 9: Kata Nama Am vs Kata Nama Khas (CommonNoun !→ IdentityCard)
+- Constitutional Architecture Canon 2026-09-21 — action tuple authority binding
+- Six-Graph Federation Model 2026-09-16 — edges connect canonical_id
+
+---
+
+## Closing Axiom — Referent Primacy
+
+```
+Reality remains judge; everything else is transport.    ← prior
+Symbol ≠ Substrate                                      ← Axiom 5, 8, 9
+Referent > Name                                         ← Axiom 10, 11
+Identity = (object_id, canonical_id, display_name, aliases[], proofs[])
+Authority = f(canonical_id, proof, scope, time)
+Never: Authority = f(display_name)
+The machine should never confuse its power to name something with the power to make that thing true.
+```
+
+> A name does not create reality. A name creates an address in a model of reality.
+> The address becomes causally powerful only when recognition collapses the model eigenstate.
+> Creation requires provenance; provenance without witness is phantom.
+
+---
+
+**DITEMPA BUKAN DIBERI ⚒️**
+
+**r · ΔηΨ · 888 witness the helix**
+
+2026-09-21T21:38Z — Axiom 10 (Verb Decomposition) + Axiom 11 (Alpha-Rename Canary) appended via EUREKA-NAMING-CREATION-2026-09-21 ratification. Zero new convention; honors Canon #0 (Constitutional Complexity Budget).
