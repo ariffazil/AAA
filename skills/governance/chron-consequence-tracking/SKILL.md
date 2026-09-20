@@ -38,6 +38,12 @@ Every prediction must carry, in the store itself:
 If you cannot write the closing command, the claim is not ready to be tracked. A prediction whose
 verifier is missing is decoration: it will appear in the due-queue, cost attention, and settle nothing.
 
+**NEW — 2026-09-20 bind-before-attention:** `create_prediction` mints `UNBOUND` (not `ACTIVE`) unless
+`probe_id` is set or `audience=arif` (HUMAN_WITNESS). A text `verifier_method` that the scanner cannot
+run is still unbound. Scanner: `python3 /root/chron/chron_early_falsifier_scan.py` →
+`data/binding_scan.json`. Hooked into the existing loop closer. No new cron. Do not rewrite birth
+records to add `probe_id`; wire a probe function instead. `EARLY_FALSIFIER_SATISFIED != FALSIFIED`.
+
 ## When the principal says "chron it"
 
 He means: take the finding you just produced and register it as a **dated commitment with falsifiable
