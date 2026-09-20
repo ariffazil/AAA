@@ -2,7 +2,7 @@
 id: trinity-33-canonical
 name: kernel-trinity-33
 version: 1.1.0-2026.07.08
-description: "The canonical 33-repo Trinity (final) "
+description: "The canonical 33-repo Trinity (final) Use when a task touches the 33-repo Trinity — the canonical repo list and which repo owns what."
 owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
 risk_tier: low
 floor_scope: [F2, F7, F8, F11]
@@ -29,6 +29,10 @@ version_lock:
 capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---
+> **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
+> directories differing only in case. The second copy (`/root/.hermes/skills/domains/general/aaa/catalog-ops/KERNEL-trinity-33`) is now an alias
+> symlink here. Its full pre-collapse body is preserved at
+> `references/absorbed-KERNEL-trinity-33.md` and in `.frozen/2026-09-20-case-dupes/KERNEL-trinity-33/`.
 # TRINITY-33 CANONICAL — SKILL
 
 > **APEX verdict: PROCEED · Evidence: L2 AAA/A-FORGE identity + L4 orthogonal synthesis · Band: YELLOW**

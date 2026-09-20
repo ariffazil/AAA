@@ -2,7 +2,7 @@
 id: FORGE-postgres-schema-design
 name: forge-postgres-schema-design
 version: 1.0.0-2026.07.17
-description: "PostgreSQL schema design for the federation data layer — migrations, indexing, and entity modeling. "
+description: "PostgreSQL schema design for the federation data layer — migrations, indexing, and entity modeling."
 owner: A-FORGE
 risk_tier: high
 floor_scope: ['F1', 'F4', 'F11', 'F12']
@@ -10,6 +10,10 @@ autonomy_tier: T2
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
 ---
+> **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
+> directories differing only in case. The second copy (`/root/.hermes/skills/FORGE-postgres-schema-design`) is now an alias
+> symlink here. Its full pre-collapse body is preserved at
+> `references/absorbed-FORGE-postgres-schema-design.md` and in `.frozen/2026-09-20-case-dupes/FORGE-postgres-schema-design/`.
 # ⚒️ PostgreSQL Schema Design — Federation Data Layer
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.

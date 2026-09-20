@@ -4,13 +4,17 @@ id: forge-act-federation-ingress
 owner: A-FORGE
 risk_tier: low
 floor_scope: [F1, F2, F4, F7]
-description: "Wire, verify, and operate federation Arif's Capability Tokens (ACT) across arifOS mint/validate and organ ingress gates (A-FORGE, GEOX, WEALTH, WELL, AAA)."
+description: "Wire, verify, and operate federation Arif's Capability Tokens (ACT; formerly Session Capability Tokens / SCT - see Rename lineage below) across arifOS mint/validate and organ ingress gates (A-FORGE, GEOX, WEALTH, WELL, AAA). Use when: ACT gate (SCT gate), session_token, federation_act (federation_sct), ACT_AMBIGUOUS (SCT_AMBIGUOUS), tool_authority, FORGE_SCT_REQUIRE_MUTATE, 65-case matrix, decision event. Also covers ChatGPT App OAuth 2.1 resource-server alignment (RFC 9728 PRM, canonical resource identity, per-tool securitySchemes) as the EXTERNAL host ingress path alongside the INTERNAL ACT path."
 version: 2026.09.04
 floors: [F1, F2, F11, F12, F13]
 autonomy_tier: T1
 capability_tier: fed-long-context
 ecology_state: WARM
 ---
+> **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
+> directories differing only in case. The second copy (`/root/.hermes/skills/domains/general/forge/federation-topology/FORGE-act-federation-ingress`) is now an alias
+> symlink here. Its full pre-collapse body is preserved at
+> `references/absorbed-FORGE-act-federation-ingress.md` and in `.frozen/2026-09-20-case-dupes/FORGE-act-federation-ingress/`.
 # FORGE — ACT Federation Ingress
 
 > **Canonical:** `/root/AAA/governance/federation_act.py`

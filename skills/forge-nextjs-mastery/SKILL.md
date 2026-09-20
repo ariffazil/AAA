@@ -2,7 +2,7 @@
 id: FORGE-nextjs-mastery
 name: forge-nextjs-mastery
 version: 1.0.0-2026.07.17
-description: "Next.js App Router engineering — server components, streaming, and edge patterns. "
+description: "Next.js App Router engineering — server components, streaming, and edge patterns."
 owner: A-FORGE
 risk_tier: medium
 floor_scope: ['F1', 'F4', 'F12']
@@ -10,6 +10,10 @@ autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---
+> **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
+> directories differing only in case. The second copy (`/root/.hermes/skills/FORGE-nextjs-mastery`) is now an alias
+> symlink here. Its full pre-collapse body is preserved at
+> `references/absorbed-FORGE-nextjs-mastery.md` and in `.frozen/2026-09-20-case-dupes/FORGE-nextjs-mastery/`.
 # ⚒️ Next.js Mastery — App Router Engineering
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.

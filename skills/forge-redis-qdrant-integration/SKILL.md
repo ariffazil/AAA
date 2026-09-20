@@ -2,7 +2,7 @@
 id: FORGE-redis-qdrant-integration
 name: forge-redis-qdrant-integration
 version: 1.0.0-2026.07.17
-description: "Redis + Qdrant integration — caching layer and vector memory for federation semantic search. "
+description: "Redis + Qdrant integration — caching layer and vector memory for federation semantic search."
 owner: A-FORGE
 risk_tier: medium
 floor_scope: ['F1', 'F2', 'F4']
@@ -10,6 +10,10 @@ autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---
+> **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
+> directories differing only in case. The second copy (`/root/.hermes/skills/FORGE-redis-qdrant-integration`) is now an alias
+> symlink here. Its full pre-collapse body is preserved at
+> `references/absorbed-FORGE-redis-qdrant-integration.md` and in `.frozen/2026-09-20-case-dupes/FORGE-redis-qdrant-integration/`.
 # ⚒️ Redis + Qdrant Integration — Caching & Vector Memory
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.

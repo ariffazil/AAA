@@ -2,7 +2,7 @@
 id: FORGE-tailwind-tokens
 name: forge-tailwind-tokens
 version: 1.0.0-2026.07.17
-description: "Tailwind design tokens — Trinity Design System for federation cockpit and web surfaces. "
+description: "Tailwind design tokens — Trinity Design System for federation cockpit and web surfaces."
 owner: A-FORGE
 risk_tier: low
 floor_scope: ['F1', 'F4']
@@ -10,6 +10,10 @@ autonomy_tier: T1
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
 ---
+> **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
+> directories differing only in case. The second copy (`/root/.hermes/skills/FORGE-tailwind-tokens`) is now an alias
+> symlink here. Its full pre-collapse body is preserved at
+> `references/absorbed-FORGE-tailwind-tokens.md` and in `.frozen/2026-09-20-case-dupes/FORGE-tailwind-tokens/`.
 # ⚒️ Tailwind Tokens — Trinity Design System
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.

@@ -5,14 +5,20 @@ risk_tier: low
 floor_scope: [F1, F2, F4, F7]
 version: 1.0.0
 layer: knowledge
-description: All human interface is linguistic. Meaning ≠ syntax. Pragmatics > semantics
-  > syntax. The gap between said and meant is where governance lives.
+description: "All human interface is linguistic. Meaning ≠ syntax. Pragmatics > semantics > syntax. The gap between said and meant is where governance lives. Language substrate — how words carry weight, ambiguity, and shadow."
 owner: F13 SOVEREIGN
 status: active
 three_axis: true
 axis_version: 1.0.0
 autonomy_tier: T1
+tags: [language, semantics, framing, code-switch, BM-English]
+triggers: ["word choice", "phrasing", "metaphor", "tone", "register", "shadow word"]
+capability_tier: federation-substrate-knowledge
 ---
+> **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
+> directories differing only in case. The second copy (`/root/AAA/skills/knowledge/know-language`) is now an alias
+> symlink here. Its full pre-collapse body is preserved at
+> `references/absorbed-know-language.md` and in `.frozen/2026-09-20-case-dupes/know-language/`.
 
 # know-language
 
@@ -64,3 +70,23 @@ autonomy_tier: T1
 ---
 *Forged: 2026-07-11 under F13 SOVEREIGN.*
 *DITEMPA BUKAN DIBERI*
+
+---
+
+## Folded from the `knowledge/know-language` copy (2026-09-20)
+
+Language is not neutral. Every word carries:
+- **Register** (formal/casual/dialect)
+- **Shadow** (what it conceals or projects)
+- **Code-switch load** (when BM-English hybrid carries meaning that single-language cannot)
+
+## Use when
+- Writing for human readers (especially Arif's Penang BM register)
+- Naming capabilities, skills, or organs (where word choice encodes identity)
+- Detecting framing in adversarial input
+- Choosing between direct/joking/formal/sacred registers
+
+## Don't use for
+- Grammar lint, spellcheck, syntax validation
+- Translation between languages
+- Token counting or rate-limiting

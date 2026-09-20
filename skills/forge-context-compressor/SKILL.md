@@ -1,7 +1,6 @@
 ---
 name: forge-context-compressor
-description: "Compress oversized logs, transcripts, diffs, and telemetry before they
-  exceed a host runtime context budget while preserving provenance and recovery"
+description: "Compress oversized logs, transcripts, diffs, and telemetry before they exceed a host runtime context budget while preserving provenance and recovery"
 version: "1.1.0-2026.08.21"
 merged_from: [FORGE-context-compress, FORGE-data-compression]
 forge_of: Kimi Code (FI-008) — EUREKA ZEN Phase 3 (gap fill · long-log compression
@@ -35,6 +34,10 @@ owner: A-FORGE
 capability_tier: fed-long-context
 ecology_state: WARM
 ---
+> **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
+> directories differing only in case. The second copy (`/root/.hermes/skills/FORGE-context-compressor`) is now an alias
+> symlink here. Its full pre-collapse body is preserved at
+> `references/absorbed-FORGE-context-compressor.md` and in `.frozen/2026-09-20-case-dupes/FORGE-context-compressor/`.
 # FORGE · context-compressor
 
 > Cross-runtime compression gate for FORGE-* tools and AGI-* long-log producers.
@@ -177,3 +180,9 @@ When an agent needs the full context, it requests restoration via the `full_outp
 - ❌ Summarizing stack traces as "an error occurred" — preserves nothing
 - ❌ Compressing below 500 tokens — loses too much signal
 - ❌ Deleting the full output file — F1 AMANAH: always preserve original
+
+## Lessons (auto)
+
+*Auto-ingested from agent learning. F2-gated: every entry carries evidence.*
+- **[2026-09-15] hermes-rsi-loop** (evidence: [{"layer": "runtime", "source": "session:tool:search_files", "excerpt": "rminal)\\\\b.{0,80}\\\\b(arif|sovereign|hang)\\\\b\\\": (\\\"HUMAN_BURDEN\\\", \\\"policy\\\", \\\"sovereig): TRUNCATION_LOSS observed 1x — impact=evidence_loss. First surface: session:tool:search_files — all four checks passed, but independence is NAME-LEVEL ONLY (same author) — verdict is PROVISIONAL: may enter the capability graph, may NOT record a survival event
+- **[2026-09-17] hermes-rsi-loop** (evidence: [{"layer": "runtime", "source": "session:user", "excerpt": "Full subagent output saved to: /root/.hermes/cache/delegation/subagent-summary-0-20260917_154616_572977.txt\nTo read the): TRUNCATION_LOSS observed 1x — impact=evidence_loss. First surface: session:user — all four checks passed, but independence is NAME-LEVEL ONLY (same author) — verdict is PROVISIONAL: may enter the capability graph, may NOT record a survival event

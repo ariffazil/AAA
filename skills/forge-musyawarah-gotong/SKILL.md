@@ -2,7 +2,7 @@
 id: forge-musyawarah-gotong
 name: forge-musyawarah-gotong
 version: 1.0.0
-description: "Runtime for musyawarah (independent 333 ARCHITECT + 555 AUDITOR) then gotong-royong (sequential execute hop)."
+description: "Runtime for musyawarah (independent 333 ARCHITECT + 555 AUDITOR) then gotong-royong (sequential execute hop). Authority star, evidence as position files. Not a chatboard. Grok: workflow musyawarah-gotong."
 owner: AAA
 risk_tier: medium
 floor_scope: [F1, F2, F3, F4, F7, F9, F11, F13]
@@ -11,6 +11,10 @@ capability_tier: fed-agent-subagent
 ecology_state: WARM
 tags: [musyawarah, gotong-royong, deliberation, handoff, F3, F13]
 ---
+> **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
+> directories differing only in case. The second copy (`/root/.hermes/skills/FORGE-musyawarah-gotong`) is now an alias
+> symlink here. Its full pre-collapse body is preserved at
+> `references/absorbed-FORGE-musyawarah-gotong.md` and in `.frozen/2026-09-20-case-dupes/FORGE-musyawarah-gotong/`.
 # FORGE-musyawarah-gotong
 
 Make musyawarah and gotong royong fire. Do not role-play both voices in one process.
