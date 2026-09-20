@@ -8,14 +8,14 @@
 This namespace groups related skills under one roof for discovery and routing.
 Each subdirectory is an independent skill with its own SKILL.md.
 
-## Contained skills (15)
+## Contained skills (15 entries · 14 skills + 1 alias)
 - `cicd-deploy`
 - `code-review`
 - `drift-watch`
 - `federation-health`
 - `incident-response`
-- `mcp-ops`
-- `mcp-testing`
+- `mcp-ops` — **owner of the MCP cluster** (absorbed 19 MCP names, 2026-09-20)
+- `mcp-testing` — **ALIAS → `mcp-ops`** (merged 2026-09-20; the name still resolves, it is not a separate skill)
 - `pr-governance`
 - `security-audit`
 - `skill-creator`
