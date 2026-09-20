@@ -44,6 +44,16 @@ REQUIREMENT, because a human is a paradox and the bridge is where that is honour
 first (`machine` vs `human`) and apply the anti-theatre rule to one side; a "de-fluff the library"
 sweep that reaches a human-plane skill has destroyed the feature it was securing.
 
+## LAW 0 — classify the object before diagnosing duplication (2026-09-20)
+
+A path is not a capability. Before any "duplicate" claim, label each hit:
+
+`BODY` · `ALIAS` · `PROJECTION` · `RENDERING` · `RETIRED` · `ARCHIVED` · `CANONICAL` · `UNKNOWN`
+
+Follow symlinks to *see* the tree, then count bodies by `realpath`/`inode`.
+Alias names are transport. Retired is not live. Diagnosis before this step is false work
+(610 then 68 "duplicates" were follow-symlink path visits).
+
 ## LAW 1 — negative proof before creating a skill (anti-redundancy gate)
 
 **No new skill may be created while an owner exists.** Run the gate first:
