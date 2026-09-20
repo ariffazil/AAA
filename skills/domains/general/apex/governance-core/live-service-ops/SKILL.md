@@ -114,6 +114,50 @@ request because a precondition is unset.
 **Prefer adding the missing bind over a lifecycle op.** Never op on the strength of
 `is-active` alone — `LoadState` is the discriminator.
 
+**A monitor's endpoint is part of its claim, so read the address before you believe the
+verdict.** A probe that returns "down" has told you only that nothing answered *at that
+host, port and path*. Three of those four are usually wrong when a service is healthy.
+Discriminate by the status code — only the last two are actually down:
+
+| What came back | What it means |
+|---|---|
+| `200` | up |
+| `401` / `403` | **up**, auth-gated |
+| `400` | **up** — the server parsed the request and rejected its shape |
+| `404` | the **path** is wrong, not the service |
+| connection refused | nothing is listening **on that address** — check the bind |
+| timeout | down, or hung mid-request |
+
+`ss -lntp | grep <port>` shows which addresses a port actually answers on; a service bound to
+one interface is refused on every other. Measured: a gateway bound only to a tailnet address
+answered `200` there and refused on `127.0.0.1`, so two consumers configured against localhost
+reported it unreachable while it served traffic the whole time. Both readings were true.
+
+**A probe list with one hardcoded path for N heterogeneous services mislabels the odd one out,
+and nothing re-checks it.** Measured: a cockpit prober fetched `/health` on a fixed port for every
+organ. Eight matched. The ninth ran an MCP transport on the configured port, so `/health` returned
+`404` there while the real service sat on another port and answered `200` — and the organ was
+published as **dead for 44 days**, ~120 000 missed probes, zero humans noticed, because everything
+else in the list was green. The stale label on the same row (an old role name) was a second tell
+that nobody had read it since it was written.
+
+When you correct such a probe, verify the **verdict flips** (`8/9 alive` → `9/9 alive`), keep a
+backup of the prober before editing, and confirm the new target live rather than trusting the
+edit. A monitoring fix whose before/after verdict is not recorded is indistinguishable from a
+monitoring fix that did nothing.
+
+**A monitor is a service too, and it inherits the same rule as any other claim: verify the
+instrument before acting on its reading.** The same failure looks different from the other side —
+the instrument is honest about what it fetched, and the narrative laid over it ("organ down") is
+the false part.
+
+**An identical value across consecutive reports means the monitor stopped observing.** For any
+counter that only ever grows — a ledger length, a seal sequence, a receipt count — a byte-identical
+figure on two successive runs is not stability, it is a cached or truncated read. Before quoting it,
+compare the value against the artefact's own mtime and against the counter's advance: a chain length
+pinned at the same figure while new entries accumulate means the report is quoting a copy, not the
+ledger. Say which file the number came from and when that file was last written.
+
 ## Verify the mutation landed in the kernel, not just in the file
 
 A change on disk is a request. It is not the process's state. Read the mask from the
@@ -373,6 +417,13 @@ work exists. The durable fix is to push and to widen backup coverage — not to 
    scan that reports it has invented a vulnerability. Use `stat -L -c '%a %U:%G %n'` and
    `readlink -f`; then check the target's mode, not the link's.
 5. Claim before measurement returns — probe is not evidence until it exits.
+6. **A write to a symlinked path lands on the TARGET.** The same resolution that makes `readlink -f`
+   correct for *reading* makes an unguarded write destructive. `test -L <path>` before writing; if it
+   is a link, remove the link and write a real file. A "thin wrapper" placed at a link path wraps
+   nothing — it overwrites the file the link points at, and the loss is silent because the path you
+   wrote to still exists and still looks right. **The tell: the file you meant to create is absent,
+   and the file you meant to call now contains your content.** Recover from version control before
+   doing anything else, then re-verify the target runs.
 
 ## `logrotate --force` is not a dry run
 
@@ -402,6 +453,13 @@ decides to emit*, treat it as a control mutation, not a bugfix: state the
 before/after observable, prove it with an A/B run of the deployed artifact, and
 record the authority that ordered it. A behaviour that silently changes what the
 institution can see needs a receipt naming who authorized it and why.
+
+## Support files
+
+- `references/systemd-oneshot-notify.md` — wiring `ExecStartPost` / `ExecStopPost` on a oneshot unit
+  so the job reports honestly: which hook fires when, which variable is the verdict (and why
+  comparing the disposition word to `0` reports every success as a failure), and why a self-test
+  must never write into the production channel.
 
 ---
 *DITEMPA BUKAN DIBERI*

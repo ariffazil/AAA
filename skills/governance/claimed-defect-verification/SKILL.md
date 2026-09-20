@@ -71,6 +71,26 @@ serialiser**. Never patch the projection first.
 A keep-list cannot preserve a field that was never populated. Comparing *when the fix was written*
 against *when the probe ran* is not evidence the fix works; only the post-restart payload is.
 
+### Check 5 — whose lens produced the claim?
+
+A defect claim is a measurement taken with *your* instruments. Before it is written down, re-take it
+through the lens the system itself uses — the difference between the two lenses is very often the
+entire finding.
+
+| Claim shape | The wrong lens | Re-take it as |
+|---|---|---|
+| "service X's self-report contradicts its repo/state" | you reading the field | the command **that service runs**, in **its** context: `readlink /proc/<pid>/cwd`, `ps -o user= -p <pid>`, then `sudo -u <that-user> <cmd>`. A health field is computed with the process's own cwd, user and config — and a user-level ignore rule makes the same repo read clean to you and dirty to it. |
+| "N jobs/items are dead — delete them" | the `disabled`/`paused` flag | the **reason** field. A paused-with-reason entry is a retirement *tombstone* naming its successor, migration target or authorising directive; it is a record, not a corpse, and deleting it deletes the answer to *why*. If the clutter is the real complaint, fix the **listing**. |
+| "two supervisors / double lifecycle" | `systemctl` active AND the container healthy | `systemctl cat <unit>` — `ExecStartPre=-docker rm -f <name>` plus a launcher means systemd *owns* the container. One lifecycle. Rule out the boring explanation before filing a conflict. |
+| "a monitor or check is failing" | its `last_status` field | compare its `last_run_at` against the mtime of the artefact it guards. An error logged by a run that happened **before** the fix landed is stale, not live — it clears at the next fire. |
+| any of the above, during a long session | the reading you took earlier | re-probe. State moves inside a session — an upgrade, a restart, another writer's commit. Re-take the measurement immediately before any irreversible action; a reading that was true when taken can be false by the time it is acted on. |
+
+**A claim whose consequence is destruction gets the harder probe.** "delete / remove / rewrite N" is the
+load-bearing form of a defect claim: the next reader executes the written ledger, not this conversation.
+Reproduce it through the system's own lens before it enters the ledger, and when it dies there, record
+the retraction **in that same artefact** — a refutation left in chat gets re-filed by the next reader.
+Replace the misleading line; do not append an "UPDATE: actually…" beneath it.
+
 ## Escalation discipline
 
 - Separate **CONFIRMED** from **METHOD-ARTIFACT** from **UNMEASURED** in the write-up. Reporting all
@@ -89,6 +109,10 @@ against *when the probe ran* is not evidence the fix works; only the post-restar
   that actually broke — was never run is decoration, not verification.
 - **A near-miss name is the most convincing false defect.** It reads as a real tool that "used to
   exist", inviting a hunt for a regression that never happened. Grep the listing.
+- **A point-in-time reading is not a standing defect, and a stale one is not a live one.** A field
+  that read `DIRTY`/`dead`/`error` can be correct for its own caller and wrong for yours, or correct
+  when taken and wrong when cited. Both directions of that error are the same failure: quoting a
+  measurement without its lens and its clock.
 - **An unclear-but-valid error is still a client-side answer.** `unauthenticated`, `missing header`,
   `unsupported version` are the protocol doing its job. Read the probe's own actor/step fields before
   characterizing the remote side.
