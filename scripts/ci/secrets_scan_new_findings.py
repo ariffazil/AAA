@@ -122,7 +122,9 @@ def main() -> int:
         return 0
 
     print(f"❌ {len(new_findings)} finding(s) not present in .secrets.baseline:")
-    for filename, entry in sorted(new_findings):
+    for filename, entry in sorted(
+        new_findings, key=lambda item: (item[0], item[1].get("line_number", 0))
+    ):
         print(
             f"  🚫 {entry['type']} in {filename}:{entry['line_number']} "
             f"(hash {entry['hashed_secret'][:16]}…)"
