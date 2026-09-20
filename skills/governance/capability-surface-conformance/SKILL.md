@@ -29,6 +29,12 @@ triggers:
   - "declaration vs enforcement"
   - "is this fix in the causal path"
   - "is this wired in"
+  - "the check exists but does nothing"
+  - "empty handler / no-op function"
+  - "verification always inconclusive"
+  - "fail-open branch"
+  - "the comment says it checks but the code does not"
+  - "doctrine says it enforces"
 ---
 
 # Capability Surface Conformance
@@ -76,6 +82,26 @@ every downstream reader, including the next auditor. Named shapes, all one defec
   measurement
 - a label that overrides a fact in the same payload (a `state == "DEGRADED"` predicate firing
   while `drift` is `false`)
+- a **terminal with an empty body** — a reachable, correctly-wired handler that does nothing
+  (`escalate(){ }`, `def handle(x): pass`). Every upstream report says the lane exists; the lane
+  ends in a function no input can change. This is the degenerate case of the bad-input test below:
+  if nothing you pass alters the output, the control is absent even though its caller is real
+- a **predicate hardcoded to one value while the receipt beside it reports the check passed** — a
+  verification loop pushing `{criterion, passed: false}` for every criterion, declaring
+  `state: "INCONCLUSIVE"`, and emitting `independence_verified: true` in the same return value. Both
+  statements live inside one object, so nothing downstream ever resolves the contradiction
+- a **fail-open recovery branch** — the credential is decoded, a claim inside it is trusted, and the
+  function returns success, with a comment directly above asserting the property that would have
+  prevented exactly this. Read the error path as carefully as the happy path: a fallback written to
+  unblock a lane is where an authority invariant gets dropped, and the comment records the intent,
+  not the shipped code
+
+**A document that describes a gate is not evidence the gate exists.** A ratified doctrine, a spec
+section, a header comment and a receipt field all *describe* a control; none of them are the control.
+A verdict about whether something enforces, formed from the paper that documents it, is a verdict
+about the paper — and it comes out wrong in the flattering direction, because the paper is the
+version someone intended. Open the function that runs on the real path and read its body; a symbol
+that is defined and never imported is doctrine wearing a filename.
 
 **Grade a control by whether a bad input changes its output — never by its name, its test suite,
 or its metadata.** Four proofs, all required:
@@ -179,6 +205,14 @@ of it.
    python3 scripts/mcp_session_probe.py --scan 8088,7071,8081,18082,18083,7073
    ```
 
+10. **A path that RESOLVES is not necessarily a path the reader can USE.** Grade an alias,
+    symlink or projection by the **shape** its target has, not by whether the target exists — the
+    loader reads `<name>/SKILL.md` (or a directory entry), so a link pointing at a *file*, or at a
+    directory that holds no body, resolves cleanly and yields nothing. The existence check passes
+    for every wrong shape; the shape check is the one that finds the defects. Same law as
+    advertised-but-uncallable, one layer down: `broken: 0` answers "does the target exist", and
+    does not answer "can anything read it".
+
 ## Procedure
 
 ### 1. Enumerate every projection
@@ -256,6 +290,23 @@ behaviour actually changed.
 - **Alias residue.** A partial compatibility layer is worse than none: some names resolve,
   most do not, and the ones that resolve look healthy while returning the wrong contract.
   Either complete the translation or remove the aliases.
+- **A view link whose target is a FILE passes every broken-link test and loads nothing.** An alias
+  resolving to `…/<harness>/skills/<name>/SKILL.md` (a file) rather than to a **directory** in the
+  canonical store resolves, so `find -L -xtype l` and every existence check report healthy, while
+  the loader — which reads `<dir>/SKILL.md` — finds nothing. Detect the shape, not the existence:
+  ```bash
+  find <view_root> -type l | while read l; do t=$(realpath "$l"); [ -f "$t" ] && echo "FILE-TARGET $l -> $t"; done
+  ```
+  Measured: 14 such aliases invisible to the canonical census (canonical 850 bodies while the view
+  tree offered 703 resolvable), each one a capability the library claimed and the loader could not
+  serve. Repair order: **copy** the body into the canonical store under its own name (copy, never
+  move — leave the harness copy), then repoint the alias at the canonical **directory**; re-assert
+  that aliases-to-file fell and the canonical count rose. A count that does not move means the copy
+  landed in a path the loader does not read.
+- **A capability whose only copy lives in a harness tree is on loan, not canonicalised.** It is
+  absent from the canonical census, outside the store's own governance, and one `git clean` in that
+  harness away from vanishing. When a view points into a harness/profile tree the finding is not
+  "a broken link" — it is a body that has not been promoted yet.
 - **Projection drift in the opposite direction.** The wire surface can be correct while a
   convenience endpoint is stale. Verify both before declaring either wrong.
 - **Stage/token drift.** A numeric identifier that survives only as a *verdict token*,
