@@ -62,6 +62,10 @@ findings with three separate owners.
    or accumulates proposals.
 7. **Separate structural from incidental.** Name which hop is broken and which is merely
    slow. Never present a partially-closed loop as a working one.
+8. **Probe for receipts that already arrived.** Before reporting a loop as "not closed yet",
+   scan the pending queue for items whose outcome is already determinable from a live instrument.
+   "Waiting for its date" and "waiting for evidence" are different states, and only the second is
+   legitimately open.
 
 ## Pitfalls
 
@@ -108,11 +112,95 @@ findings with three separate owners.
   never asked reality — precisely the defect the loop exists to prevent. The string IS the
   finding: the schema has a slot for the observation and the writer is filling it with the
   intent.
+- **A date-gated verifier is blind to a receipt that arrives early.** When the loop wakes on
+  `verify_at` rather than on the evidence, a prediction whose falsifier is already satisfied sits
+  unscored until its calendar date — and the same defect hides a claim that has already resolved the
+  other way. Probe it directly: load the prediction store, and for every row with no verdict, ask
+  whether a live instrument already answers its threshold; report those rows as
+  `FALSIFIER_ALREADY_SATISFIED` with the reading that satisfied them. Do **not** shortcut this by
+  letting the verifier run early — a claim *about* a future date is not falsified by today's reading,
+  and scoring it early is a transition lie (`SCHEDULED → FALSIFIED` skips the state). The correction
+  is a new state, not a shorter clock: `SCHEDULED → FALSIFIER_ALREADY_SATISFIED → {FALSIFIED |
+  RECOVERED}`.
+- **A store holding two claims about one world is a contradiction you can compute.** When the same
+  ledger carries a predicted band and a sibling organ already publishing the live value for that
+  quantity, diff them on every read. Two mutually exclusive statements sitting unremarked is F2
+  drift no per-hop check catches, because every hop is individually healthy.
+- **A check that names a symbol or path which does not exist is measuring an older design.** A red
+  result of the form `AttributeError: module has no attribute X`, or `FileNotFoundError` on a
+  constant declared at the top of the check file, means the check still points at a shape the system
+  has moved past — a helper that now lives in another language, a directory that was renamed or never
+  existed. Resolve the symbol and the path against disk BEFORE touching production code. Rewriting a
+  working component to satisfy a check written against an older shape is the expensive direction: it
+  silences the check without restoring the property the check was protecting.
+- **A check that witnesses a copy instead of the running artifact certifies the copy.** When one
+  invariant is computed in two places (a builder in one language, a mirror of it in another), the
+  mirror passes while the served path drifts — worse than no check, because it reports green. Test
+  the artifact that actually runs, and recompute the invariant independently on the check side: a
+  cross-language recomputation (one runtime produces the digest, another recomputes it from the same
+  bytes) is a real witness; a re-implementation is not.
 - **A ratified rule with no executor is a write-only ledger in prose.** Before describing a
   doctrine, invariant, or threshold as "in place", resolve it to the thing that enforces it —
   a script, a unit, a cron line, an import, a gate on the write path. Named-but-unenforced is
   the same defect class as a table nobody reads, and it is worse to leave unreported because
   it gets quoted as authority.
+
+### A middleware organ that ran once and stalled
+
+An organ can hold well-formed state files, be scheduled, and be `active` — while having completed
+**one** cycle and then silently stopped. Its own records contain the proof; read them as a series,
+not as evidence of existence.
+
+Measured shape: six cycle records, each valid JSON with a correct schema. Read as a series:
+
+```
+cycle   phase     scars  repairs  baseline  participants
+1       GOLD        6      6      present   {}
+2       RED         7      0      null      {}
+3       REBIRTH     0      0      null      {}
+4       REBIRTH     0      0      null      {}
+5       REBIRTH     0      0      null      {}
+6       RED        10      0      null      {}
+```
+
+And the phase-completion map, which is the field that settles it:
+
+```
+cycle 1: {RED, BLUE, GOLD}    ← the only complete cycle
+cycle 2: {RED}                ← stalled after the first phase
+cycles 3-5: {}                ← opened and completed NOTHING
+cycle 6: {RED}
+```
+
+Rules:
+
+1. **Count completed cycles, not cycle files.** Read the per-cycle phase-completion map. A file
+   that exists is not a cycle that ran — three of the six above produced no phase at all, and an
+   inventory that asks only "is the file there" reports all six as healthy.
+2. **The ratio that matters is observed-vs-repaired, summed since the last repair.** Six scars then
+   `7 + 0 + 0 + 0 + 0 + 10 = 17` scars against **zero** repairs: an organ that sees and does not
+   mend. Report the ratio, not the record count.
+3. **Read the loop's own historical output for named recurring classes, and check each against the
+   live system.** The successful cycle recorded a `recurring_scar_classes` list; one entry named a
+   class that was **still open a month later** when probed directly. That converts "the feedback
+   loop is missing" from theory into a dated prediction the loop failed to act on — the strongest
+   available evidence that it is inert, and cheaper than any argument about design.
+4. **A witness or participant field that is empty in EVERY record means attachment was never
+   wired** — including in the cycle that otherwise succeeded. Do not read a completed cycle as a
+   witnessed one; the emptiness is uniform across success and failure, which is the signature of a
+   step that was never implemented rather than one that failed.
+5. **`baseline: null` from cycle 2 onward means later cycles had nothing to measure against.** A
+   survival or regression claim needs a stored baseline; without it the loop can still emit a
+   verdict, and that verdict is about nothing.
+6. **An instrument exported but never called is decoration.** Grep for CALL SITES, not definitions.
+   A function built to compute the honest state — exported in the package `__init__` and documented
+   as the honest path — had zero callers anywhere, while the dishonest constant-driven path was the
+   one wired to a surface. Extends *a ratified rule with no executor* to the function level: an
+   export list is not an enforcement point.
+7. **Absence of a field in the organ's output propagates upward.** If the leaf organ that would
+   produce a scalar emits no field for it at all, no consumer can measure it — and every surface
+   claiming a value for that scalar is synthesising one. Trace the scalar to its leaf producer
+   before auditing the consumers.
 
 ## Output contract
 

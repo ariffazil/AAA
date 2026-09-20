@@ -36,6 +36,59 @@ Before ANY tool invocation, before ANY technical check:
 
 If no carry_forward or last entry >24h stale: flag WITNESS_DEMAND_UNKNOWN, proceed minimally.
 
+## Step 0b — Temporal Continuity (the human's last known state)
+
+`carry_forward.json` (v3) tracks **federation** state — `entries[]` are decisions, scars,
+open_loops, eurekas, directives. It does **not** natively carry a `human_state`, and `anchors[]`
+sits empty unless something writes it. So "was the human asleep? awake? how long ago did they last
+speak?" is normally **UNKNOWN at session start**, and guessing it from conversational context is
+the failure you are trying to avoid.
+
+A bridge exists. Event-driven, no background process:
+
+```bash
+python3 /root/HERMES/scripts/session-temporal-read.py          # one-line briefing
+python3 /root/HERMES/scripts/session-temporal-read.py --json   # machine-readable
+python3 /root/HERMES/scripts/session-temporal-seal.py --dry-run # what would be sealed
+python3 /root/HERMES/scripts/session-temporal-seal.py --new-session <session_id>  # seal previous, exclude current
+```
+
+- **Seal direction** reads `~/.hermes/state.db` (READ-ONLY) and writes one
+  `session/close` anchor into carry_forward via `carry_forward.py anchor`.
+- **Read direction** returns: gap since last activity, session duration, MYT end time, inferred
+  state, and the last human message snippet.
+- Hook at `/root/HERMES/hooks/temporal-seal/` fires on `session:start`; **no cron job** — the
+  human explicitly rejected background schedulers for this ("I don't want cron yang makan server").
+  Event-driven only.
+- Idempotent: sealed session ids are tracked in `~/.hermes/experience/temporal-seal-state.json`.
+  Re-running is safe and prints `SKIP ... (already sealed)`.
+
+**Anchor shape gotcha:** older anchors carry the session fields at the top level of `state`
+(`session_id`, `ended_at`, `duration_min`, `last_user_msg`); newer ones wrap them in
+`state.human_state`. Both the seal and read scripts must accept **both** shapes — if you touch
+either script, keep the dual-format accept or you silently drop every previously sealed session.
+Name matching must be a **prefix** test (`session/close:*`), not equality.
+
+**state.db access pattern (gateway-safe):**
+```python
+sqlite3.connect("file:/root/.hermes/state.db?mode=ro", uri=True, timeout=10)
+```
+Tables that matter: `sessions` (`id`, `session_key`, `chat_id`, `started_at`, `ended_at`,
+`last_activity_at`), `messages` (`session_id`, `role`, `content`, `timestamp`). Read-only, always.
+Some shell invocations against the gateway's own state DB are blocked from inside the gateway
+process — prefer a script file over a long inline command.
+
+**PITFALL: never make a temporal claim without reading the clock.** The system-prompt date goes
+stale after the first turn, and carry_forward may hold no human state at all. Before saying
+morning / night / late / "tidur" / "bangun" — check: `date '+%H:%M %Z %z'`, or the temporal
+briefing above. Elaborate framing built on an unverified "now" ("it's late, go to sleep") reads as
+insight and lands as an insult when the human has been awake for hours. If no source can confirm
+the time or the human's state, say you don't know — do not infer it from the conversation's mood.
+
+**PITFALL: seal the most recent unsealed session, not history.** Sealing every closed session on
+first run produces a wall of anchors nobody reads and dates the bridge to a backfill. Seal one
+forward from now; leave the backlog.
+
 ## Step 1 — Snapshot Assembly (before first human-facing message)
 
 Internal only, never shown to human:

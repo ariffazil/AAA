@@ -251,6 +251,51 @@ Detect it by asserting the OLD tree sees a value that exists only in live data (
 marker row) while pointed at a fixture; if it does, report the hardcoding as a finding
 and compare old×live against new×live on the SAME real file instead.
 
+## Reproduce the service's own filesystem access
+
+A read or write that fails for the service can succeed for you, and the reverse. Four distinct
+causes all present as the same permission error:
+
+| Cause | Probe |
+|---|---|
+| Immutable attribute | `lsattr <path>` — `i` in the flags |
+| Mode / ownership | `stat -c '%A %U:%G %n' <path>` |
+| ACL | `getfacl -p <path>` — group ACLs grant access that mode bits deny |
+| systemd sandbox | `ReadOnlyPaths`, `InaccessiblePaths`, `ProtectSystem`, `RootDirectory` in the unit and drop-ins |
+
+`sudo -u <user>` does **not** reproduce the service context: it drops supplementary groups and
+omits every sandbox directive. Use a transient unit instead:
+
+```bash
+systemd-run --unit=diag-read --uid=<user> --gid=<group> \
+  --property=SupplementaryGroups=<group> --property=Type=oneshot --wait --pipe \
+  /usr/bin/test -r <path>
+```
+
+Always `systemctl reset-failed diag-*.service` afterwards. A diagnostic unit you leave failed shows
+up in `systemctl --failed` and gets read later as a live organ outage.
+
+**A service starts in the context systemd builds, not the one you can type.** A precondition that
+fails at start time and succeeds when you reproduce it is not evidence the gate is fine — it is a
+non-deterministic precondition until you can show the difference. Two identical probes disagreeing
+seconds apart is signal, not flakiness.
+
+## A start loop that has exhausted is not a service that will recover
+
+Check the counter and the give-up line before assuming anything self-heals:
+
+```bash
+systemctl show <unit> -p NRestarts -p ActiveEnterTimestamp -p ExecMainStatus
+journalctl -u <unit> --since '-10 min' | grep -E 'restart counter|repeated too quickly|Failed to start'
+```
+
+`Start request repeated too quickly` means systemd stopped trying — the unit stays down until a
+human or a lane acts. Report `DOWN — start budget exhausted`, never "it is probably back". Name the
+failing precondition (the `ExecStartPre` exit status identifies it). If that precondition cannot be
+reproduced, classify `FLAKY_PRECONDITION` and leave the mechanism open rather than naming a culprit
+— an unresolved cause is more useful than a guessed one, and the flakiness itself is the finding
+that matters, because it means any future start can fail permanently too.
+
 ## Reversibility
 
 State the rollback before the change. If there is no rollback path, it needs authority.
